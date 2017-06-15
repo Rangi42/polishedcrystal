@@ -4806,11 +4806,10 @@ UpdateMoveData: ; 35e40
 	call GetMoveName
 	jp CopyName1
 
-; 35e5c
-
 IsLeafGuardActive:
 ; returns z if leaf guard applies for enemy
 	call GetOpponentAbilityAfterMoldBreaker
+DoLeafGuardCheck:
 	cp LEAF_GUARD
 	ret nz
 	call GetWeatherAfterCloudNine
@@ -4824,9 +4823,7 @@ PostStatus:
 	farcall RunEnemyStatusHealAbilities
 	ret
 
-BattleCommand_SleepTarget: ; 35e5c
-; sleeptarget
-
+BattleCommand_SleepTarget:
 	call GetOpponentItem
 	ld a, b
 	cp HELD_PREVENT_SLEEP
@@ -4896,38 +4893,116 @@ BattleCommand_SleepTarget: ; 35e5c
 	pop hl
 	jp StdBattleTextBox
 
-; 35ece
+CanPoisonTarget:
+	ld a, b
+	ld b, POISON
+	ld c, STEEL
+	ld d, IMMUNITY
+	ld e, HELD_PREVENT_POISON
+	ld h, 1 << PSN
+	jr CanStatusTarget
+CanBurnTarget:
+	ld a, b
+	ld b, FIRE
+	ld c, FIRE
+	ld d, WATER_VEIL
+	ld e, HELD_PREVENT_BURN
+	ld h, 1 << BRN
+CanParalyzeTarget:
+	ld a, b
+	ld b, ELECTRIC
+	ld c, ELECTRIC
+	ld d, LIMBER
+	ld e, HELD_PREVENT_PARALYZE
+	ld h, 1 << PAR
+CanStatusTarget:
+; Returns:
+;     z -- we can
+;  c|nz -- we can't, due to ability
+; nc|nz -- we can't, failure msg in HL
+	push af
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and h
+	jr nz, .already_statused
+	push de
+	push bc
+	ld a, b
+	call CheckIfTargetIsSomeType
+	pop bc
+	jr z, .cant_type
+	ld a, c
+	call CheckIfTargetIsSomeType
+	jr z, .cant_type
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	pop de
+	cp e
+	jr z, .cant_item
+	pop af
+	and a
+	jr z, .no_mold_breaker
+	call GetOpponentAbilityAfterMoldBreaker
+	jr .got_ability
+.no_mold_breaker
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+.got_ability
+	cp d
+	jr z, .cant_ability
+	call DoLeafGuardCheck
+	jr z, .cant_ability
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ld hl, ButItFailedText
+	ret
+.already_statused
+	cp 1 << BRN
+	ld hl, AlreadyBurnedText
+	jr z, .end
+	cp 1 << PSN
+	ld hl, AlreadyPoisonedText
+	jr z, .end
+	cp 1 << PAR
+	ld hl, AlreadyParalyzedText
+	jr z, .end
+	; Shouldn't happen
+	cp 1 << FRZ
+	ld hl, AlreadyConfusedText ; no AlreadyFrozen
+	jr z, .end
+	ld hl, AlreadyAsleepText
+	jr .end
+.cant_type
+	ld hl, DoesntAffectText
+	pop de
+	jr .end
+.cant_item
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, ProtectedByText
+	; fallthrough
+.end
+	pop af
+	or 1
+	ret
+.cant_ability
+	xor a
+	cp 1
+	ret
 
-
-BattleCommand_PoisonTarget: ; 35eee
-; poisontarget
-
+BattleCommand_PoisonTarget:
 	call CheckSubstituteOpp
 	ret nz
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	and a
+	ld b, 1
+	call CanPoisonTarget
 	ret nz
 	ld a, [TypeModifier]
 	and a
 	ret z
-	call CheckIfTargetIsPoisonType
-	ret z
-	call CheckIfTargetIsSteelType
-	ret z
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_POISON
-	ret z
-	call GetOpponentAbilityAfterMoldBreaker
-	cp IMMUNITY
-	ret z
-	call IsLeafGuardActive
-	ret z
 	ld a, [EffectFailed]
 	and a
-	ret nz
-	call SafeCheckSafeguard
 	ret nz
 
 	call PoisonOpponent
@@ -4941,69 +5016,25 @@ BattleCommand_PoisonTarget: ; 35eee
 	jp PostStatusWithSynchronize
 
 
-BattleCommand_Poison: ; 35f2c
-; poison
-
+BattleCommand_Poison:
 	ld hl, DoesntAffectText
 	ld a, [TypeModifier]
 	and a
 	jp z, .failed
-	call GetOpponentAbilityAfterMoldBreaker
-	cp IMMUNITY
-	jp z, .ability_ok
-	call IsLeafGuardActive
-	jr z, .ability_ok
-	call CheckIfTargetIsPoisonType
-	jp z, .failed
-	call CheckIfTargetIsSteelType
-	jp z, .failed
 
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	ld b, a
-	ld hl, AlreadyPoisonedText
-	and 1 << PSN
-	jp nz, .failed
-
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_POISON
-	jr nz, .do_poison
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
-	ld hl, ProtectedByText
-	jr .failed
-
-.do_poison
-	ld hl, DidntAffect1Text
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
-	jr nz, .failed
-
-	ld a, [hBattleTurn]
-	and a
-	jr z, .mimic_random
-
-	ld a, [wLinkMode]
-	and a
-	jr nz, .mimic_random
-
-	ld a, [InBattleTowerBattle]
-	and a
-	jr nz, .mimic_random
-
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .mimic_random
-
-.mimic_random
 	call CheckSubstituteOpp
+	ld hl, ButItFailedText
 	jr nz, .failed
 	ld a, [AttackMissed]
 	and a
+	ld hl, AttackMissedText
 	jr nz, .failed
+
+	ld b, 1
+	call CanPoisonTarget
+	jr c, .ability_ok
+	jr nz, .failed
+
 	call .check_toxic
 	jr z, .toxic
 
@@ -5140,9 +5171,7 @@ SapHealth: ; 36011
 	ret
 
 
-BattleCommand_BurnTarget: ; 3608c
-; burntarget
-
+BattleCommand_BurnTarget:
 	xor a
 	ld [wNumHits], a
 	call CheckSubstituteOpp
@@ -5151,25 +5180,16 @@ BattleCommand_BurnTarget: ; 3608c
 	call GetBattleVarAddr
 	and a
 	jp nz, Defrost
+	ld b, 1
+	call CanBurnTarget
+	ret nz
 	ld a, [TypeModifier]
 	and a
-	ret z
-	call CheckIfTargetIsFireType
-	ret z
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_BURN
-	ret z
-	call GetOpponentAbilityAfterMoldBreaker
-	cp WATER_VEIL
-	ret z
-	call IsLeafGuardActive
 	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
-	call SafeCheckSafeguard
-	ret nz
+
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	set BRN, [hl]
@@ -5180,13 +5200,9 @@ BattleCommand_BurnTarget: ; 3608c
 
 	ld hl, WasBurnedText
 	call StdBattleTextBox
-
 	jp PostStatusWithSynchronize
 
-; 360dd
-
-
-Defrost: ; 360dd
+Defrost:
 	ld a, [hl]
 	and 1 << FRZ
 	ret z
@@ -5211,12 +5227,7 @@ Defrost: ; 360dd
 	ld hl, DefrostedOpponentText
 	jp StdBattleTextBox
 
-; 36102
-
-
-BattleCommand_FreezeTarget: ; 36102
-; freezetarget
-
+BattleCommand_FreezeTarget:
 	xor a
 	ld [wNumHits], a
 	call CheckSubstituteOpp
@@ -5271,39 +5282,21 @@ BattleCommand_FreezeTarget: ; 36102
 	ld [hl], $1
 	ret
 
-; 36165
-
-
-BattleCommand_ParalyzeTarget: ; 36165
-; paralyzetarget
-
+BattleCommand_ParalyzeTarget:
 	xor a
 	ld [wNumHits], a
 	call CheckSubstituteOpp
 	ret nz
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
+	ld b, 1
+	call CanParalyzeTarget
 	ret nz
 	ld a, [TypeModifier]
 	and a
 	ret z
-	call CheckIfTargetIsElectricType
-	ret z
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_PARALYZE
-	ret z
-	call GetOpponentAbilityAfterMoldBreaker
-	cp LIMBER
-	ret z
-	call IsLeafGuardActive
-	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
-	call SafeCheckSafeguard
-	ret nz
+
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	set PAR, [hl]
@@ -5313,8 +5306,6 @@ BattleCommand_ParalyzeTarget: ; 36165
 	call RefreshBattleHuds
 	call PrintParalyze
 	jp PostStatusWithSynchronize
-
-; 361ac
 
 BattleCommand_BulkUp:
 	ld b, ATTACK
@@ -6110,67 +6101,31 @@ BattleCommand_Curl: ; 365a7
 
 
 BattleCommand_Burn:
-; burn
-
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	bit BRN, a
-	jp nz, .burned
+	ld hl, DoesntAffectText
 	ld a, [TypeModifier]
 	and a
-	jp z, .didnt_affect
-	call GetOpponentAbilityAfterMoldBreaker
-	cp WATER_VEIL
-	jp z, .ability_ok
-	call IsLeafGuardActive
-	jp z, .ability_ok
-	call CheckIfTargetIsFireType
-	jp z, .didnt_affect
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_BURN
-	jr nz, .no_item_protection
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
-	call AnimateFailedMove
-	ld hl, ProtectedByText
-	jp StdBattleTextBox
+	jp z, .failed
 
-.no_item_protection
-	ld a, [hBattleTurn]
-	and a
-	jr z, .dont_sample_failure
-
-	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_sample_failure
-
-	ld a, [InBattleTowerBattle]
-	and a
-	jr nz, .dont_sample_failure
-
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .dont_sample_failure
-
-	call BattleRandom
-	cp 1 + 25 percent
-	jr c, .failed
-
-.dont_sample_failure
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	and a
+	call CheckSubstituteOpp
+	ld hl, ButItFailedText
 	jr nz, .failed
 	ld a, [AttackMissed]
 	and a
+	ld hl, AttackMissedText
 	jr nz, .failed
-	call CheckSubstituteOpp
+
+	ld b, 1
+	call CanBurnTarget
+	jr c, .ability_ok
 	jr nz, .failed
+
+	call AnimateCurrentMove
 	ld c, 30
 	call DelayFrames
-	call AnimateCurrentMove
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_BRN
+	call PlayOpponentBattleAnim
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, BATTLE_VARS_STATUS_OPP
@@ -6182,17 +6137,14 @@ BattleCommand_Burn:
 	call StdBattleTextBox
 	jp PostStatusWithSynchronize
 
-.burned
-	call AnimateFailedMove
-	ld hl, AlreadyBurnedText
-	jp StdBattleTextBox
-
 .failed
-	jp PrintDidntAffect2
+	push hl
+	call AnimateFailedMove
+	pop hl
+	jp StdBattleTextBox
 
 .ability_ok
 	farcall ShowEnemyAbilityActivation
-.didnt_affect
 	call AnimateFailedMove
 	jp PrintDoesntAffect
 
@@ -7369,83 +7321,32 @@ BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit: ; 36db6
 ; 36dc7
 
 
-BattleCommand_Paralyze: ; 36dc7
-; paralyze
-
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	bit PAR, a
-	jr nz, .paralyzed
+BattleCommand_Paralyze:
+	ld hl, DoesntAffectText
 	ld a, [TypeModifier]
 	and a
-	jp z, .didnt_affect
-	call GetOpponentAbilityAfterMoldBreaker
-	cp LIMBER
-	jr z, .ability_ok
-	call IsLeafGuardActive
-	jr z, .ability_ok
-	call CheckIfTargetIsElectricType
-	jr z, .didnt_affect
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_PARALYZE
-	jr nz, .no_item_protection
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
-	call AnimateFailedMove
-	ld hl, ProtectedByText
-	jp StdBattleTextBox
+	jp z, .failed
 
-.no_item_protection
-	ld a, [hBattleTurn]
-	and a
-	jr z, .dont_sample_failure
+	ld b, 1
+	call CanParalyzeTarget
+	jr c, .ability_ok
+	jr nz, .failed
 
-	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_sample_failure
-
-	ld a, [InBattleTowerBattle]
-	and a
-	jr nz, .dont_sample_failure
-
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .dont_sample_failure
-
-	call BattleRandom
-	cp 1 + 25 percent
-	jr c, .failed
-	jr .dont_sample_failure
-
-.paralyzed
-	call AnimateFailedMove
-	ld hl, AlreadyParalyzedText
-	jp StdBattleTextBox
-
-.failed
-	jp PrintDidntAffect2
-
-.ability_ok
-	farcall ShowEnemyAbilityActivation
-.didnt_affect
-	call AnimateFailedMove
-	jp PrintDoesntAffect
-
-.dont_sample_failure
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	and a
+	call CheckSubstituteOpp
+	ld hl, ButItFailedText
 	jr nz, .failed
 	ld a, [AttackMissed]
 	and a
+	ld hl, AttackMissedText
 	jr nz, .failed
-	call CheckSubstituteOpp
-	jr nz, .failed
+
+	call AnimateCurrentMove
 	ld c, 30
 	call DelayFrames
-	call AnimateCurrentMove
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_PAR
+	call PlayOpponentBattleAnim
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, BATTLE_VARS_STATUS_OPP
@@ -7453,10 +7354,20 @@ BattleCommand_Paralyze: ; 36dc7
 	set PAR, [hl]
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
-	call PrintParalyze
+	ld hl, ParalyzedText
+	call StdBattleTextBox
 	jp PostStatusWithSynchronize
 
-; 36e5b
+.failed
+	push hl
+	call AnimateFailedMove
+	pop hl
+	jp StdBattleTextBox
+
+.ability_ok
+	farcall ShowEnemyAbilityActivation
+	call AnimateFailedMove
+	jp PrintDoesntAffect
 
 
 BattleCommand_Substitute: ; 36e7c

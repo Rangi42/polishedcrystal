@@ -116,7 +116,6 @@ Out-of-battle effects:
 * Choice Scarf
 * Choice Specs
 * Destiny Knot
-* Flame Orb
 * Mental Herb
 * Metronome
 * Oval Charm
@@ -125,7 +124,6 @@ Out-of-battle effects:
 * Safe Goggles
 * Shed Shell
 * Shell Bell
-* Toxic Orb
 * Weak Policy
 * White Herb
 * Wide Lens
