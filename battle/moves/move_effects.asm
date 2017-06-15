@@ -66,6 +66,7 @@ XScissor:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 LeechHit:
@@ -92,6 +93,7 @@ DrainKiss:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 MultiHit:
@@ -125,6 +127,7 @@ IcicleSpear:
 	buildopponentrage
 	kingsrock
 	endloop
+	pickpocket
 	raisesub
 	endmove
 
@@ -152,6 +155,7 @@ WildCharge:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 FlinchHit:
@@ -186,6 +190,7 @@ ZenHeadbutt:
 	checkdestinybond
 	buildopponentrage
 	flinchtarget
+	pickpocket
 	endmove
 
 PoisonHit:
@@ -212,6 +217,7 @@ GunkShot:
 	checkdestinybond
 	buildopponentrage
 	poisontarget
+	pickpocket
 	endmove
 
 BurnHit:
@@ -237,6 +243,7 @@ FireBlast:
 	checkdestinybond
 	buildopponentrage
 	burntarget
+	pickpocket
 	endmove
 
 ParalyzeHit:
@@ -266,6 +273,7 @@ ZapCannon:
 	checkdestinybond
 	buildopponentrage
 	paralyzetarget
+	pickpocket
 	endmove
 
 SleepHit:
@@ -287,6 +295,7 @@ SleepHit:
 	checkdestinybond
 	buildopponentrage
 	sleeptarget
+	pickpocket
 	endmove
 
 FreezeHit:
@@ -311,6 +320,7 @@ Blizzard:
 	checkdestinybond
 	buildopponentrage
 	freezetarget
+	pickpocket
 	endmove
 
 ConfuseHit:
@@ -338,6 +348,7 @@ Hurricane:
 	checkdestinybond
 	buildopponentrage
 	confusetarget
+	pickpocket
 	endmove
 
 AttackUpHit:
@@ -361,6 +372,7 @@ MetalClaw:
 	buildopponentrage
 	attackup
 	statupmessage
+	pickpocket
 	endmove
 
 DefenseUpHit:
@@ -384,6 +396,7 @@ SteelWing:
 	buildopponentrage
 	defenseup
 	statupmessage
+	pickpocket
 	endmove
 
 AllUpHit:
@@ -406,6 +419,7 @@ Ancientpower:
 	checkdestinybond
 	buildopponentrage
 	allstatsup
+	pickpocket
 	endmove
 
 AttackDownHit:
@@ -429,6 +443,7 @@ AuroraBeam:
 	buildopponentrage
 	attackdown
 	statdownmessage
+	pickpocket
 	endmove
 
 DefenseDownHit:
@@ -454,6 +469,7 @@ RockSmash:
 	buildopponentrage
 	defensedown
 	statdownmessage
+	pickpocket
 	endmove
 
 SpeedDownHit:
@@ -478,6 +494,7 @@ BubbleBeam:
 	buildopponentrage
 	speeddown
 	statdownmessage
+	pickpocket
 	endmove
 
 SpecialAttackDownHit:
@@ -501,6 +518,7 @@ Moonblast:
 	buildopponentrage
 	specialattackdown
 	statdownmessage
+	pickpocket
 	endmove
 
 SpecialDefenseDownHit:
@@ -531,6 +549,7 @@ ShadowBall:
 	buildopponentrage
 	specialdefensedown
 	statdownmessage
+	pickpocket
 	endmove
 
 AccuracyDownHit:
@@ -555,6 +574,7 @@ Octazooka:
 	buildopponentrage
 	accuracydown
 	statdownmessage
+	pickpocket
 	endmove
 
 EvasionDownHit:
@@ -577,6 +597,7 @@ EvasionDownHit:
 	buildopponentrage
 	evasiondown
 	statdownmessage
+	pickpocket
 	endmove
 
 StaticDamage:
@@ -598,6 +619,7 @@ Psywave:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 DoPoison:
@@ -1167,6 +1189,7 @@ Outrage:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Trap:
@@ -1192,6 +1215,7 @@ Whirlpool:
 	checkdestinybond
 	buildopponentrage
 	traptarget
+	pickpocket
 	endmove
 
 Selfdestruct:
@@ -1234,6 +1258,7 @@ DreamEater:
 	eatdream
 	checkdestinybond
 	buildopponentrage
+	pickpocket
 	endmove
 
 Roar:
@@ -1271,6 +1296,7 @@ PayDay:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 TriAttack:
@@ -1291,6 +1317,7 @@ TriAttack:
 	checkdestinybond
 	buildopponentrage
 	tristatuschance
+	pickpocket
 	endmove
 
 Transform:
@@ -1322,6 +1349,7 @@ SkyAttack:
 	buildopponentrage
 	flinchtarget
 	kingsrock
+	pickpocket
 	endmove
 
 Substitute:
@@ -1350,6 +1378,7 @@ GigaImpact:
 	rechargenextturn
 	checkdestinybond
 	buildopponentrage
+	pickpocket
 	endmove
 
 Rage:
@@ -1371,6 +1400,7 @@ Rage:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Metronome:
@@ -1479,6 +1509,7 @@ Flail:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 FalseSwipe:
@@ -1500,6 +1531,7 @@ FalseSwipe:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 HealBell:
@@ -1535,6 +1567,7 @@ TripleKick:
 	kingsrock
 	endloop
 	raisesub
+	pickpocket
 	endmove
 
 Thief:
@@ -1558,6 +1591,7 @@ Thief:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 MeanLook:
@@ -1588,6 +1622,7 @@ FlameWheel:
 	checkdestinybond
 	buildopponentrage
 	burntarget
+	pickpocket
 	endmove
 
 Curse:
@@ -1669,6 +1704,7 @@ Rollout:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Swagger:
@@ -1709,6 +1745,7 @@ FuryCutter:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Attract:
@@ -1739,6 +1776,7 @@ Return:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 SacredFire:
@@ -1761,6 +1799,7 @@ SacredFire:
 	checkdestinybond
 	buildopponentrage
 	burntarget
+	pickpocket
 	endmove
 
 Magnitude:
@@ -1783,6 +1822,7 @@ Magnitude:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 BatonPass:
@@ -1811,6 +1851,7 @@ Pursuit:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 RapidSpin:
@@ -1832,6 +1873,7 @@ RapidSpin:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 MorningSun:
@@ -1866,6 +1908,7 @@ HiddenPower:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 RainDance:
@@ -1922,6 +1965,7 @@ Twister:
 	checkdestinybond
 	buildopponentrage
 	flinchtarget
+	pickpocket
 	endmove
 
 Earthquake:
@@ -1943,6 +1987,7 @@ Earthquake:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
+	pickpocket
 	endmove
 
 FutureSight:
@@ -1980,6 +2025,7 @@ Gust:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
+	pickpocket
 	endmove
 
 Stomp:
@@ -2002,6 +2048,7 @@ Stomp:
 	checkdestinybond
 	buildopponentrage
 	flinchtarget
+	pickpocket
 	endmove
 
 SolarBeam:
@@ -2025,6 +2072,7 @@ SolarBeam:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Thunder:
@@ -2047,6 +2095,7 @@ Thunder:
 	checkdestinybond
 	buildopponentrage
 	paralyzetarget
+	pickpocket
 	endmove
 
 Teleport:
@@ -2078,6 +2127,7 @@ Dig:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 DefenseCurl:
@@ -2114,6 +2164,7 @@ FlareBlitz:
 	checkdestinybond
 	buildopponentrage
 	burntarget
+	pickpocket
 	endmove
 
 Hex:
@@ -2135,6 +2186,7 @@ Hex:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 OHKOHit:
@@ -2150,6 +2202,7 @@ OHKOHit:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
+	pickpocket
 	endmove
 
 Bide:
@@ -2166,6 +2219,7 @@ Bide:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 RazorWind:
@@ -2188,6 +2242,7 @@ RazorWind:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Mimic:
@@ -2219,6 +2274,7 @@ Snore:
 	buildopponentrage
 	flinchtarget
 	kingsrock
+	pickpocket
 	endmove
 
 DefrostOpponent:
@@ -2256,6 +2312,7 @@ Present:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 Frustration:
@@ -2277,6 +2334,7 @@ Frustration:
 	checkdestinybond
 	buildopponentrage
 	kingsrock
+	pickpocket
 	endmove
 
 PsychUp:
@@ -2324,6 +2382,7 @@ SkullBash:
 	endturn
 	defenseup
 	statupmessage
+	pickpocket
 	endmove
 
 BeatUp:
@@ -2351,4 +2410,5 @@ BeatUp:
 	failuretext
 	raisesub
 	kingsrock
+	pickpocket
 	endmove
