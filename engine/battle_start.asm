@@ -82,8 +82,7 @@ LoadTrainerBattlePokeballTiles:
 ; at the start of every Trainer battle.
 	ld de, TrainerBattlePokeballTiles
 	ld hl, VTiles1 tile $7e
-	ld b, BANK(TrainerBattlePokeballTiles)
-	ld c, 2
+	lb bc, BANK(TrainerBattlePokeballTiles), 2
 	call Request2bpp
 
 	ld a, [rVBK]
@@ -93,8 +92,7 @@ LoadTrainerBattlePokeballTiles:
 
 	ld de, TrainerBattlePokeballTiles
 	ld hl, VTiles4 tile $7e
-	ld b, BANK(TrainerBattlePokeballTiles)
-	ld c, 2
+	lb bc, BANK(TrainerBattlePokeballTiles), 2
 	call Request2bpp
 
 	pop af
@@ -121,8 +119,7 @@ ConvertTrainerBattlePokeballTilesTo2bpp: ; 8c2cf
 
 	pop hl
 	ld de, wDecompressScratch
-	ld b, BANK(ConvertTrainerBattlePokeballTilesTo2bpp) ; BANK(@)
-	ld c, $28
+	lb bc, BANK(ConvertTrainerBattlePokeballTilesTo2bpp), $28 ; BANK(@)
 	call Request2bpp
 	pop af
 	ld [rSVBK], a

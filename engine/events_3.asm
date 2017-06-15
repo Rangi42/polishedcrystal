@@ -175,8 +175,7 @@ LoadMapNameSignGFX: ; b80c6
 
 InitMapNameFrame: ; b80d3
 	hlcoord 0, 0
-	ld b, 2
-	ld c, 18
+	lb bc, 2, 18
 	call InitMapSignAttrMap
 	call PlaceMapNameFrame
 	ret

@@ -428,24 +428,21 @@ PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map_card
-	ld c, $2
-	ld b, MAP_CARD
+	lb bc, MAP_CARD, $2
 	jr .done
 
 .no_map_card
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone_card
-	ld c, $9
-	ld b, PHONE_CARD
+	lb bc, PHONE_CARD, $9
 	jr .done
 
 .no_phone_card
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $d
-	ld b, RADIO_CARD
+	lb bc, RADIO_CARD, $d
 .done
 	jp Pokegear_SwitchPage
 
@@ -545,21 +542,18 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone
-	ld c, $9
-	ld b, PHONE_CARD
+	lb bc, PHONE_CARD, $9
 	jr .done
 
 .no_phone
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $d
-	ld b, RADIO_CARD
+	lb bc, RADIO_CARD, $d
 	jr .done
 
 .left
-	ld c, $0
-	ld b, CLOCK_CARD
+	lb bc, CLOCK_CARD, $0
 .done
 	jp Pokegear_SwitchPage
 
@@ -625,8 +619,7 @@ SkipHiddenOrangeIslandsUp:
 	ld a, [hl]
 	cp FARAWAY_ISLAND + 1
 	ret nz
-	ld a, SHAMOUTI_ISLAND
-	ld [hl], a
+	ld [hl], SHAMOUTI_ISLAND
 	ret
 
 SkipHiddenOrangeIslandsDown:
@@ -741,13 +734,11 @@ PokegearMap_UpdateCursorPosition: ; 910d4
 ; 910e8
 
 TownMap_GetJohtoLandmarkLimits:
-	ld d, SILVER_CAVE
-	ld e, NEW_BARK_TOWN
+	lb de, SILVER_CAVE, NEW_BARK_TOWN
 	ret
 
 TownMap_GetKantoLandmarkLimits: ; 910e8
-	ld d, ROUTE_28
-	ld e, ROUTE_27
+	lb de, ROUTE_28, ROUTE_27
 	ld a, [StatusFlags]
 	bit 6, a
 	ret z
@@ -755,8 +746,7 @@ TownMap_GetKantoLandmarkLimits: ; 910e8
 	ret
 
 TownMap_GetOrangeLandmarkLimits:
-	ld d, FARAWAY_ISLAND
-	ld e, SHAMOUTI_ISLAND
+	lb de, FARAWAY_ISLAND, SHAMOUTI_ISLAND
 	ret
 
 ; 910f9
@@ -796,21 +786,18 @@ PokegearRadio_Joypad: ; 91112 (24:5112)
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone
-	ld c, $9
-	ld b, PHONE_CARD
+	lb bc, PHONE_CARD, $9
 	jr .switch_page
 
 .no_phone
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map
-	ld c, $2
-	ld b, MAP_CARD
+	lb bc, MAP_CARD, $2
 	jr .switch_page
 
 .no_map
-	ld c, $0
-	ld b, CLOCK_CARD
+	lb bc, CLOCK_CARD, $0
 .switch_page
 	jp Pokegear_SwitchPage
 
@@ -852,21 +839,18 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map
-	ld c, $2
-	ld b, MAP_CARD
+	lb bc, MAP_CARD, $2
 	jr .switch_page
 
 .no_map
-	ld c, $0
-	ld b, CLOCK_CARD
+	lb bc, CLOCK_CARD, $0
 	jr .switch_page
 
 .right
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $d
-	ld b, RADIO_CARD
+	lb bc, RADIO_CARD, $d
 .switch_page
 	jp Pokegear_SwitchPage
 
@@ -1849,17 +1833,15 @@ _TownMap: ; 9191c
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 	call TownMap_GetJohtoLandmarkLimits
-	call .loop
 	jr .resume
 .kanto
 	call TownMap_GetKantoLandmarkLimits
-	call .loop
 	jr .resume
 .orange
 	call TownMap_GetOrangeLandmarkLimits
-	call .loop
 
 .resume
+	call .loop
 	pop af
 	ld [VramState], a
 	pop af

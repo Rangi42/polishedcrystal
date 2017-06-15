@@ -117,15 +117,13 @@ _TitleScreen: ; 10ed67
 ; Draw Pokemon logo
 	hlcoord 0, 3
 	lb bc, 7, 20
-	ld d, $80
-	ld e, $14
+	lb de, $80, $14
 	call DrawTitleGraphic
 
 ; Draw copyright text
 	hlbgcoord 4, 0, VBGMap1
 	lb bc, 1, 13
-	ld d, $c
-	ld e, $10
+	lb de, $c, $10
 	call DrawTitleGraphic
 
 IF DEF(FAITHFUL)

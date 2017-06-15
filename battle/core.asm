@@ -3738,8 +3738,7 @@ Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
 	farcall CheckBattleEffects
 	jr c, .cry_no_anim
 	hlcoord 12, 0
-	ld d, $0
-	ld e, ANIM_MON_SLOW
+	lb de, $0, ANIM_MON_SLOW
 	predef AnimateFrontpic
 	jr .skip_cry
 
@@ -5670,8 +5669,7 @@ MoveSelectionScreen: ; 3e4bc
 	jr z, .got_dims
 	hlcoord 4, 17 - NUM_MOVES - 1 - 4
 .got_dims
-	ld b, 4
-	ld c, 14
+	lb bc, 4, 14
 	call TextBox
 
 	hlcoord 6, 17 - NUM_MOVES
@@ -5930,8 +5928,7 @@ MoveInfoBox: ; 3e6c8
 	ld [hBGMapMode], a
 
 	hlcoord 0, 8
-	ld b, 3
-	ld c, 9
+	lb bc, 3, 9
 	call TextBox
 
 	ld a, [PlayerDisableCount]
@@ -7667,8 +7664,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld [MonType], a
 	predef CopyPkmnToTempMon
 	hlcoord 9, 0
-	ld b, $a
-	ld c, $9
+	lb bc, $a, $9
 	call TextBox
 	hlcoord 10, 1
 	ld bc, 6
@@ -9281,8 +9277,7 @@ AddLastBattleToLinkRecord: ; 3fa42
 	pop bc
 	dec b
 	jr nz, .loop3
-	ld b, $0
-	ld c, $1
+	lb bc, $0, $1
 .loop4
 	ld a, b
 	add b
@@ -9379,8 +9374,7 @@ AddLastBattleToLinkRecord: ; 3fa42
 InitBattleDisplay: ; 3fb6c
 	call .InitBackPic
 	hlcoord 0, 12
-	ld b, 4
-	ld c, 18
+	lb bc, 4, 18
 	call TextBox
 	hlcoord 1, 5
 	lb bc, 3, 7
@@ -9577,8 +9571,7 @@ BattleStartMessage: ; 3fc8b
 	jr c, .cry_no_anim
 
 	hlcoord 12, 0
-	ld d, $0
-	ld e, ANIM_MON_NORMAL
+	lb de, $0, ANIM_MON_NORMAL
 	predef AnimateFrontpic
 	jr .skip_cry ; cry is played during the animation
 

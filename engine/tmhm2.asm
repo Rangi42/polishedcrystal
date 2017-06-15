@@ -71,8 +71,7 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	call TMHM_CheckHoveringOverCancel
 	jp nc, TMHM_ExitPocket
 	hlcoord 0, 12
-	ld b, 4
-	ld c, SCREEN_WIDTH - 2
+	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
 	farcall LoadTMHMIconPalette
 	call SetPalettes

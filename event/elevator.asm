@@ -155,8 +155,7 @@ Elevator_GetCurrentFloorText: ; 13512
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	hlcoord 0, 0
-	ld b, 4
-	ld c, 8
+	lb bc, 4, 8
 	call TextBox
 	hlcoord 1, 2
 	ld de, Elevator_CurrentFloorText

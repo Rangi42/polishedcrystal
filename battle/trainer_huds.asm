@@ -247,8 +247,7 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	call ClearBGPalettes
 	call LoadFontsExtra
 	hlcoord 2, 3
-	ld b, 9
-	ld c, 14
+	lb bc, 9, 14
 	call TextBox
 	hlcoord 4, 5
 	ld de, PlayerName

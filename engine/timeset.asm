@@ -45,8 +45,7 @@ endc
 	ld hl, Text_WhatTimeIsIt
 	call PrintText
 	hlcoord 3, 7
-	ld b, 2
-	ld c, 15
+	lb bc, 2, 15
 	call TextBox
 	hlcoord 11, 7
 	ld [hl], "▲"
@@ -379,8 +378,7 @@ Special_SetDayOfWeek: ; 90913
 	ld hl, .WhatDayIsItText
 	call PrintText
 	hlcoord 9, 3
-	ld b, 2
-	ld c, 9
+	lb bc, 2, 9
 	call TextBox
 	hlcoord 14, 3
 	ld [hl], "▲"

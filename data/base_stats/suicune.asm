@@ -16,7 +16,7 @@ if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
 	db INNER_FOCUS ; hidden ability
 else
-	db HYDRATION ; ability 2
+	db INNER_FOCUS ; ability 2
 	db WATER_ABSORB ; hidden ability
 endc
 	db SLOW ; growth rate

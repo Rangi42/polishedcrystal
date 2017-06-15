@@ -516,8 +516,7 @@ LoadEDTile:: ; 323d
 	ld l, 0
 	ld a, SCREEN_HEIGHT
 	ld [hTilesPerCycle], a
-	ld b, 1 << 1 ; not in v/hblank
-	ld c, rSTAT % $100
+	lb bc, (1 << 1), (rSTAT % $100) ; b: not in v/hblank
 
 .loop
 rept SCREEN_WIDTH / 2
