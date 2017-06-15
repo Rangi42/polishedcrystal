@@ -85,10 +85,6 @@ Route leaders:
 
 ## Abilities
 
-In-battle effects:
-
-(All implemented)
-
 Out-of-battle effects:
 
 * Static
@@ -108,7 +104,7 @@ Out-of-battle effects:
 
 ## Items
 
-* Ability Capsule
+* Ability Cap(sule)
 * Assault Vest
 * Big Root
 * Black Sludge
@@ -119,12 +115,13 @@ Out-of-battle effects:
 * Mental Herb
 * Metronome
 * Oval Charm
+* Protect(ive) Pads
 * Quick Powder
 * Rocky Helmet
 * Safe Goggles
 * Shed Shell
 * Shell Bell
-* Weak Policy
+* Weak(ness) Policy
 * White Herb
 * Wide Lens
 * Zoom Lens
