@@ -1231,17 +1231,6 @@ HandleResidualDamage:
 	jp StdBattleTextBox
 ; 3c801
 
-CheckFullHP_b:
-; Checks full HP and sets b to 0 if full, 1 otherwise.
-; Used by effect_commands since farcalls kill flags.
-	call CheckFullHP
-	jr z, .is_full
-	ld b, 1
-	ret
-.is_full
-	ld b, 0
-	ret
-
 CheckFullHP:
 ; check if the user has full HP
 ; z: yes, nz: no
@@ -1373,7 +1362,6 @@ HandleWrap: ; 3c874
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jr nz, .skip_anim
-
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -1382,7 +1370,15 @@ HandleWrap: ; 3c874
 	call SwitchTurn
 
 .skip_anim
+	farcall GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_BINDING_BAND
+	jr nz, .no_binding_band
+	call GetSixthMaxHP
+	jr .subtract_hp
+.no_binding_band
 	call GetEighthMaxHP
+.subtract_hp
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 	jr .print_text
@@ -1394,7 +1390,7 @@ HandleWrap: ; 3c874
 	jp StdBattleTextBox
 ; 3c8e4
 
-HandleLeftovers: ; 3c8eb
+HandleLeftovers:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call SetPlayerTurn
@@ -1422,9 +1418,8 @@ HandleLeftovers: ; 3c8eb
 	call RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
 	jp StdBattleTextBox
-; 3c93c
 
-HandleLeppaBerry: ; 3c93c
+HandleLeppaBerry:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call SetPlayerTurn
@@ -1558,9 +1553,8 @@ HandleLeppaBerry: ; 3c93c
 	call ItemRecoveryAnim
 	ld hl, BattleText_UserRecoveredPPUsing
 	jp StdBattleTextBox
-; 3ca26
 
-HandleFutureSight: ; 3ca26
+HandleFutureSight:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call SetPlayerTurn
@@ -1616,9 +1610,8 @@ HandleFutureSight: ; 3ca26
 
 	call UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
-; 3ca8f
 
-HandleSafeguard: ; 3cafb
+HandleSafeguard:
 	call CheckSpeed
 	jr nz, .enemy_first
 	call .CheckPlayer
@@ -1655,7 +1648,7 @@ HandleSafeguard: ; 3cafb
 	jp StdBattleTextBox
 
 
-HandleScreens: ; 3cb36
+HandleScreens:
 	call CheckSpeed
 	jr nz, .enemy_first
 
@@ -1689,16 +1682,14 @@ HandleScreens: ; 3cb36
 .Copy:
 	ld hl, StringBuffer1
 	jp CopyName2
-; 3cb75
 
 .Your:
 	db "Your@"
 .Enemy:
 	db "Foe@"
-; 3cb80
 
 
-.LightScreenTick: ; 3cb80
+.LightScreenTick:
 	ld a, [de]
 	dec a
 	ld [de], a
@@ -1711,9 +1702,8 @@ HandleScreens: ; 3cb36
 	pop de
 	pop hl
 	ret
-; 3cb91
 
-.ReflectTick: ; 3cb91
+.ReflectTick:
 	inc de
 	ld a, [de]
 	dec a
@@ -1722,9 +1712,8 @@ HandleScreens: ; 3cb36
 	res SCREENS_REFLECT, [hl]
 	ld hl, BattleText_PkmnReflectFaded
 	jp StdBattleTextBox
-; 3cb9e
 
-HandleWeather: ; 3cb9e
+HandleWeather:
 	ld a, [Weather]
 	cp WEATHER_NONE
 	ret z
@@ -1778,7 +1767,7 @@ HandleWeather: ; 3cb9e
 	jp StdBattleTextBox
 
 .ShowWeatherAnimation:
-	call CheckBattleEffects
+	farcall CheckBattleEffects
 	ret c
 	ld hl, .WeatherAnimations
 	ld a, [Weather]
@@ -1790,6 +1779,10 @@ HandleWeather: ; 3cb9e
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
+	xor a
+	ld [wNumHits], a
+	inc a
+	ld [wKickCounter], a
 	jp Call_PlayBattleAnim
 
 .WeatherMessages:
@@ -1874,17 +1867,9 @@ HandleWeatherEffects:
 	call GetSixteenthMaxHP
 	jp SubtractHPFromUser
 
-;SubtractHPFromTarget: ; 3cc39
-;	call SubtractHP
-;	jp UpdateHPBar
-;; 3cc3f
-
-SubtractHPFromUser: ; 3cc3f
-; Subtract HP from Pkmn
+SubtractHPFromUser:
 	call SubtractHP
 	jp UpdateHPBarBattleHuds
-; 3cc45
-
 
 SubtractHP: ; 3cc45
 	ld hl, BattleMonHP
@@ -1916,59 +1901,6 @@ SubtractHP: ; 3cc45
 	ld [Buffer5], a
 	ld [Buffer6], a
 	ret
-; 3cc76
-
-GetSixteenthMaxHP: ; 3cc76
-	call GetQuarterMaxHP
-	; quarter result
-	srl c
-	srl c
-	; round up
-	ld a, c
-	and a
-	jr nz, .ok
-	inc c
-.ok
-	ret
-; 3cc83
-
-
-GetEighthMaxHP: ; 3cc83
-; output: bc
-	call GetQuarterMaxHP
-; assumes nothing can have 1024 or more hp
-; halve result
-	srl c
-; round up
-	ld a, c
-	and a
-	jr nz, .end
-	inc c
-.end
-	ret
-; 3cc8e
-
-
-GetQuarterMaxHP: ; 3cc8e
-; output: bc
-	call GetMaxHP
-
-; quarter result
-	srl b
-	rr c
-	srl b
-	rr c
-
-; assumes nothing can have 1024 or more hp
-; round up
-	ld a, c
-	and a
-	jr nz, .end
-	inc c
-.end
-	ret
-; 3cc9f
-
 
 GetThirdMaxHP::
 ; divides by 3 without using arithmetic helpers (screws up dam calc)
@@ -2019,14 +1951,35 @@ GetThirdMaxHP::
 	inc c
 .end
 	ret
-; 3ccac
 
-
-GetHalfMaxHP: ; 3cc9f
-; output: bc
+GetEighthMaxHP:
 	call GetMaxHP
+	jr EighthHP
 
-; halve result
+GetQuarterMaxHP:
+	call GetMaxHP
+	jr QuarterHP
+
+GetSixthMaxHP:
+	call GetThirdMaxHP
+	jr HalfHP
+
+GetHalfMaxHP:
+	call GetMaxHP
+	jr HalfHP
+
+GetSixteenthMaxHP:
+	call GetMaxHP
+	srl b
+	rr c
+	; fallthrough
+EighthHP:
+	srl b
+	rr c
+QuarterHP:
+	srl b
+	rr c
+HalfHP:
 	srl b
 	rr c
 

@@ -172,6 +172,18 @@ BattleCommand_Transform: ; 371cd
 	call nz, LoadAnim
 	ld hl, TransformedText
 	call StdBattleTextBox
+
+	; Copy ability
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .copy_player_ability
+	ld a, [EnemyAbility]
+	ld [PlayerAbility], a
+	jr .done_ability_copy
+.copy_player_ability
+	ld a, [PlayerAbility]
+	ld [EnemyAbility], a
+.done_ability_copy
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	cp IMPOSTER
