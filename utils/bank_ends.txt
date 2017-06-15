@@ -203,7 +203,6 @@ Bank $62 has $015c bytes of free space
 Bank $66 has $0159 bytes of free space
 Bank $33 has $0157 bytes of free space
 Bank $1e has $0152 bytes of free space
-Bank $33 has $0149 bytes of free space
 Bank $0f has $0143 bytes of free space
 Bank $17 has $013e bytes of free space
 Bank $1b has $0135 bytes of free space
@@ -257,4 +256,4 @@ Bank $05 has $0008 bytes of free space
 Bank $07 has $0007 bytes of free space
 Bank $48 has $0000 bytes of free space
 
-Free space: 105178/2097152 (5.02%)
+Free space: 105215/2097152 (5.02%)
