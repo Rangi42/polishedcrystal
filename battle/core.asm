@@ -1767,7 +1767,7 @@ HandleWeather:
 	jp StdBattleTextBox
 
 .ShowWeatherAnimation:
-	call CheckBattleEffects
+	farcall CheckBattleEffects
 	ret c
 	ld hl, .WeatherAnimations
 	ld a, [Weather]
@@ -1779,6 +1779,10 @@ HandleWeather:
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
+	xor a
+	ld [wNumHits], a
+	inc a
+	ld [wKickCounter], a
 	jp Call_PlayBattleAnim
 
 .WeatherMessages:
