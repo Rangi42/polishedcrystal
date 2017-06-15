@@ -2624,7 +2624,7 @@ BattleCommand_PostHitEffects: ; 35250
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_RAGE, a
-	ret z
+	jr z, .rage_done
 
 	call SwitchTurn
 	call ResetMiss
@@ -2633,12 +2633,65 @@ BattleCommand_PostHitEffects: ; 35250
 	; don't print a failure message if we're maxed out in atk
 	ld a, [FailedMessage]
 	and a
-	jp z, SwitchTurn
+	jr nz, .rage_done_switchturn
 
 	ld hl, RageBuildingText
 	call StdBattleTextBox
 	call BattleCommand_StatUpMessage
-	jp SwitchTurn
+
+.rage_done_switchturn
+	call SwitchTurn
+.rage_done
+	; Do Life Orb recoil
+	call GetUserItem
+	ld a, b
+	cp HELD_LIFE_ORB
+	ret nz
+
+	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect was suppressed)
+	ld a, [EffectFailed]
+	and a
+	jr z, .no_suppressed_effect
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SHEER_FORCE
+	ret z
+
+.no_suppressed_effect
+	push hl
+	xor a
+	farcall GetMaxHP
+	ld a, b
+	ld [hDividend], a
+	ld a, c
+	ld [hDividend + 1], a
+	ld a, 10
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hQuotient + 1]
+	ld b, a
+	ld a, [hQuotient + 2]
+	ld c, a
+	farcall SubtractHPFromUser
+	pop hl
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_UserHurtByItem
+	call StdBattleTextBox
+
+	; if we fainted, abort the rest of the move sequence
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonHP
+	jr z, .got_hp
+	ld hl, EnemyMonHP
+.got_hp
+	ld a, [hli]
+	or [hl]
+	ret nz
+	jp EndMoveEffect ; oops
 
 BattleCommand_Pickpocket:
 ; If the opponent has Pickpocket, proc the item steal now
@@ -3498,6 +3551,7 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .expert_belt
 	cp HELD_METRONOME
 	jr z, .metronome_item
+
 	cp HELD_LIFE_ORB
 	ld a, $da
 	jr z, .life_orb
