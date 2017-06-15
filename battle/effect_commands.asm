@@ -92,7 +92,7 @@ DoMove: ; 3402c
 
 	; endturn_command (-2) is used to terminate branches without ending the read cycle
 	cp endturn_command
-	ret nc
+	jr nc, .endturn_checkwhiteherb
 
 	; The rest of the commands (fd and below) are read from BattleCommandPointers
 	push bc
@@ -110,6 +110,16 @@ DoMove: ; 3402c
 	call .DoMoveEffectCommand
 
 	jr .ReadMoveEffectCommand
+
+.endturn_checkwhiteherb
+	; Proc White Herb
+	push af
+	call CheckWhiteHerb
+	call SwitchTurn
+	call CheckWhiteHerb
+	call SwitchTurn
+	pop af
+	ret
 
 .DoMoveEffectCommand:
 	jp hl
@@ -443,7 +453,42 @@ CantMove: ; 341f0
 
 ; 34216
 
+CheckWhiteHerb:
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_WHITE_HERB
+	ret nz
 
+	; Check if we have any reduced stat changes
+	ld a, [hBattleTurn]
+	and a
+	ld hl, PlayerStatLevels
+	jr z, .got_stat_levels
+	ld hl, EnemyStatLevels
+.got_stat_levels
+	ld b, NUM_LEVEL_STATS
+	ld c, 0
+.stat_loop
+	ld a, [hl]
+	cp BASE_STAT_LEVEL
+	jr nc, .not_lowered
+	ld [hl], BASE_STAT_LEVEL
+	ld c, 1
+.not_lowered
+	inc hl
+	dec b
+	jr nz, .stat_loop
+	dec c
+	ret nz
+	farcall ItemRecoveryAnim
+	call GetUserItem
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, RegainedStatsWithItem
+	call StdBattleTextBox
+	farcall ConsumeUserItem
+	ret
 
 OpponentCantMove: ; 34216
 	call SwitchTurn

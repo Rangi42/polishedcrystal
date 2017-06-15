@@ -1113,6 +1113,15 @@ ProtectedByText: ; 0x815a9
 	prompt
 ; 0x815c1
 
+RegainedStatsWithItem: ; 0x815a9
+	text "<USER>"
+	line "regained stats"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+; 0x815c1
+
 StoleText: ; 0x815da
 	text "<USER>"
 	line "stole @"

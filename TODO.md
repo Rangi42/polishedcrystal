@@ -122,7 +122,6 @@ Out-of-battle effects:
 * Shed Shell
 * Shell Bell
 * Weak(ness) Policy
-* White Herb
 * Wide Lens
 * Zoom Lens
 
