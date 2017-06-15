@@ -4600,8 +4600,6 @@ HandleHealingItems: ; 3dcf9
 	jp UseConfusionHealingItem
 
 HandleStatusOrbs:
-	xor a
-	ld [wNumHits], a
 	call SetPlayerTurn
 	call CheckSpeed
 	call nz, SetEnemyTurn
@@ -4638,6 +4636,8 @@ HandleStatusOrbs:
 	ld hl, WasBurnedText
 	; fallthrough
 .do_status
+	xor a
+	ld [wNumHits], a
 	push hl
 	call Call_PlayBattleAnim
 	pop hl
