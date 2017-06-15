@@ -2022,6 +2022,7 @@ BattleCommand_EffectChance: ; 34ecc
 	ld a, [hl]
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp SHEER_FORCE
 	jr z, .failed
 	cp SERENE_GRACE
