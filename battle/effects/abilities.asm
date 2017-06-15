@@ -1163,6 +1163,8 @@ HandleAbilities:
 
 .do_it
 	ld hl, EndTurnAbilities
+	call UserAbilityJumptable
+	ld hl, StatusHealAbilities
 	jp UserAbilityJumptable
 
 EndTurnAbilities:
