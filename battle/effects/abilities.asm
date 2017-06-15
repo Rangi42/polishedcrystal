@@ -1162,19 +1162,16 @@ HandleAbilities:
 	call SetPlayerTurn
 
 .do_it
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp HARVEST
-	jp z, HarvestAbility
-	cp MOODY
-	jp z, MoodyAbility
-	cp PICKUP
-	jp z, PickupAbility
-	cp SHED_SKIN
-	jp z, ShedSkinAbility
-	cp SPEED_BOOST
-	jp z, SpeedBoostAbility
-	ret
+	ld hl, EndTurnAbilities
+	jp UserAbilityJumptable
+
+EndTurnAbilities:
+	dbw HARVEST, HarvestAbility
+	dbw MOODY, MoodyAbility
+	dbw PICKUP, PickupAbility
+	dbw SHED_SKIN, ShedSkinAbility
+	dbw SPEED_BOOST, SpeedBoostAbility
+	dbw -1, -1
 
 HarvestAbility:
 ; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
