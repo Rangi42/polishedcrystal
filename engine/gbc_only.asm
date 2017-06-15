@@ -27,5 +27,5 @@ GBCOnlyString: ; 4eb38
 	next "Please report this"
 	next "crash to the deve-"
 	next "loper, Rangi42, at"
-	next "tinyurl.com/pkpc2.@"
+	next "tinyurl.com/pkpc3.@"
 ; 4eb76

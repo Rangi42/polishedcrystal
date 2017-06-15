@@ -118,7 +118,7 @@ BattleAnimOAMUpdate: ; cca09
 	bit 6, [hl]
 	jr z, .no_yflip
 	add $8
-	xor $ff
+	cpl
 	inc a
 
 .no_yflip
@@ -138,7 +138,7 @@ BattleAnimOAMUpdate: ; cca09
 	bit 5, [hl]
 	jr z, .no_xflip
 	add $8
-	xor $ff
+	cpl
 	inc a
 
 .no_xflip
@@ -270,7 +270,7 @@ InitBattleAnimBuffer: ; ccaaa
 .done
 	ld [wBattleAnimTempYCoord], a
 	ld a, [hli]
-	xor $ff
+	cpl
 	inc a
 	ld [wBattleAnimTempXOffset], a
 	ret

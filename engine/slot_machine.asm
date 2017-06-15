@@ -328,7 +328,7 @@ Slots_FlashScreen: ; 9296b (24:696b)
 	ret z
 
 	ld a, [rOBP0]
-	xor $ff
+	cpl
 	ld e, a
 	ld d, a
 	jp DmgToCgbObjPals
@@ -1951,7 +1951,7 @@ SlotMachine_AnimateGolem: ; 9321d (24:721d)
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld a, [hl]
-	xor $ff
+	cpl
 	inc a
 	ld [hl], a
 	ld [hSCY], a

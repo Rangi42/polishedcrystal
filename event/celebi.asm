@@ -216,7 +216,7 @@ CelebiEvent_Cosine: ; 49b3b (12:5b3b)
 	and $1f
 	call .SineFunction
 	ld a, h
-	xor $ff
+	cpl
 	inc a
 	ret
 
