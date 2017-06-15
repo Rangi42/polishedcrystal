@@ -2640,8 +2640,31 @@ BattleCommand_PostHitEffects: ; 35250
 	call BattleCommand_StatUpMessage
 	jp SwitchTurn
 
-; 3527b
-
+BattleCommand_Pickpocket:
+; If the opponent has Pickpocket, proc the item steal now
+	; At this point, we can safely reset EffectFailed (This runs after everything else)
+	xor a
+	ld [EffectFailed], a
+	call GetOpponentAbilityAfterMoldBreaker
+	cp PICKPOCKET
+	ret nz
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	jr z, .is_contact
+	ld hl, ContactMoves
+	ld de, 1
+	call IsInArray
+	ret nc
+.is_contact
+	call SwitchTurn
+	call CanStealItem
+	jr nz, .no_pickpocket
+	farcall ShowAbilityActivation
+	call BattleCommand_Thief
+.no_pickpocket
+	call SwitchTurn
+	ret
 
 BattleCommand_RageDamage:
 ; unused (Rage is now Attack boosts again)

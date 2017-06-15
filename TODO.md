@@ -87,8 +87,7 @@ Route leaders:
 
 In-battle effects:
 
-* Speed Boost activates inconsistently
-* Pickpocket
+(All implemented)
 
 Out-of-battle effects:
 
