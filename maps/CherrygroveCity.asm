@@ -118,32 +118,35 @@ CherrygroveSilverTriggerNorth:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 3
+	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	reloadmapafterbattle
+	reloadmap
 	jump .FinishRival
 
 .Totodile:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 1
+	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	reloadmapafterbattle
+	reloadmap
 	jump .FinishRival
 
 .Chikorita:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 2
+	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
-	reloadmapafterbattle
+	reloadmap
 .FinishRival:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER

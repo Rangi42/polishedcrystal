@@ -2119,13 +2119,17 @@ JohtoBadges:: ; d857
 	flag_array NUM_JOHTO_BADGES
 KantoBadges:: ; d858
 	flag_array NUM_KANTO_BADGES
+BadgesEnd::
 
 PokemonJournals::
 	flag_array NUM_POKEMON_JOURNALS
+PokemonJournalsEnd::
+	ds 3 ; extra space set aside
 
 TMsHMs:: ; d859
 	flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
+	ds 5 ; extra space set aside
 
 NumItems:: ; d892
 	ds 1
@@ -2326,7 +2330,7 @@ wErinFightCount::    ds 1
 EventFlags:: ; da72
 	flag_array NUM_EVENTS
 ; db6c
-	ds 90 ; extra space set aside
+	ds 80 ; extra space set aside
 
 wCurBox:: ; db72
 	ds 1
@@ -2445,6 +2449,7 @@ wMapData::
 
 VisitedSpawns:: ; dca5
 	flag_array NUM_SPAWNS
+	ds 2 ; extra space set aside
 
 wDigWarp:: ds 1 ; dcaa
 wDigMapGroup:: ds 1 ; dcab

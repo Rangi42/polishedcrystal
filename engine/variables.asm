@@ -90,7 +90,7 @@ endr
 .CountBadges: ; 806e1
 ; Number of owned badges.
 	ld hl, Badges
-	ld b, (NUM_JOHTO_BADGES + NUM_KANTO_BADGES + 7) / 8
+	ld b, BadgesEnd - Badges
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
@@ -152,7 +152,7 @@ endr
 
 .CountPokemonJournals:
 	ld hl, PokemonJournals
-	ld b, (NUM_POKEMON_JOURNALS + 7) / 8
+	ld b, PokemonJournalsEnd - PokemonJournals
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
