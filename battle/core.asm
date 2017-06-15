@@ -247,6 +247,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleStatBoostingHeldItems
 	call HandleHealingItems
 	farcall HandleAbilities
+	call HandleStatusOrbs
 	call UpdateBattleMonInParty
 	call LoadTileMapToTempTileMap
 	jp HandleEncore
@@ -4597,6 +4598,52 @@ HandleHealingItems: ; 3dcf9
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
 	jp UseConfusionHealingItem
+
+HandleStatusOrbs:
+	xor a
+	ld [wNumHits], a
+	call SetPlayerTurn
+	call CheckSpeed
+	call nz, SetEnemyTurn
+	call .do_it
+	call SwitchTurn
+.do_it
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_SELF_BRN
+	ld b, 1 << BRN
+	jr z, .burn
+	cp HELD_SELF_PSN
+	ld b, 1 << PSN
+	jr z, .poison
+	ret
+.poison
+	push bc
+	ld b, 0
+	farcall CanPoisonTarget
+	pop bc
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	set SUBSTATUS_TOXIC, [hl]
+	ld de, ANIM_PSN
+	ld hl, BadlyPoisonedText
+	jr .do_status
+.burn
+	push bc
+	ld b, 0
+	farcall CanBurnTarget
+	pop bc
+	ret nz
+	ld de, ANIM_BRN
+	ld hl, WasBurnedText
+	; fallthrough
+.do_status
+	push hl
+	call Call_PlayBattleAnim
+	pop hl
+	call SwitchTurn
+	call StdBattleTextBox
+	jp SwitchTurn
 
 HandleHPHealingItem:
 	; only restore HP if HP<=1/2
