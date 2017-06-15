@@ -116,9 +116,7 @@ Out-of-battle effects:
 * Choice Scarf
 * Choice Specs
 * Destiny Knot
-* Expert Belt
 * Flame Orb
-* Life Orb
 * Mental Herb
 * Metronome
 * Oval Charm
