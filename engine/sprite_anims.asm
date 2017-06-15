@@ -529,7 +529,7 @@ endr
 	ld a, [hl]
 	add $2
 	ld [hl], a
-	xor $ff
+	cpl
 	inc a
 	ld d, $20
 	call .Sprites_Sine
@@ -548,7 +548,7 @@ endr
 	ret nc
 	add $2
 	ld [hl], a
-	xor $ff
+	cpl
 	inc a
 	ld d, $20
 	call .Sprites_Sine

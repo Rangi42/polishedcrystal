@@ -790,7 +790,7 @@ StartTrainerBattle_DrawSineWave: ; 8c6f7 (23:46f7)
 	and (1 << 5) - 1
 	call .DoSineWave
 	ld a, h
-	xor -1 ; cpl
+	cpl
 	inc a
 	ret
 

@@ -117,11 +117,11 @@ _AnimateHPBar: ; d627
 	ld a, [Buffer5]
 	ld [wd1f5], a
 	ld a, e
-	xor $ff
+	cpl
 	inc a
 	ld e, a
 	ld a, d
-	xor $ff
+	cpl
 	ld d, a
 	ld bc, -1
 .got_direction
