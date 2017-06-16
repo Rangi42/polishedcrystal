@@ -1293,8 +1293,12 @@ wMartItem9BCD::
 	ds 3
 wMartItem10BCD::
 	ds 3
+wMartItem11BCD::
+	ds 3
+wMartItem12BCD::
+	ds 3
 wMartItemBCDEnd::
-	ds 30
+	ds 24
 
 MenuItemsList::
 CurFruitTree::
