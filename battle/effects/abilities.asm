@@ -356,15 +356,16 @@ ForewarnAbility:
 	ld a, [hli]
 	and a
 	jr z, .done
+	push af
 	push hl
 	; Check for special cases
 	ld de, 1
 	ld hl, DynamicPowerMoves
 	call IsInArray
 	pop hl
+	pop bc
 	jr nc, .not_special
 	; Counter/Mirror Coat are regarded as 160BP moves, everything else as 80BP
-	ld b, a
 	ld c, 160
 	cp COUNTER
 	jr z, .compare_power
@@ -373,7 +374,7 @@ ForewarnAbility:
 	ld c, 80
 	jr .compare_power
 .not_special
-	ld b, a
+	ld a, b
 	dec a
 	push hl
 	ld hl, Moves + MOVE_POWER
@@ -418,8 +419,9 @@ ForewarnAbility:
 	ld a, [Buffer3]
 	and a
 	ret z
+	push af
 	call ShowAbilityActivation
-	ld a, [Buffer3]
+	pop af
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, ForewarnText

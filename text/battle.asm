@@ -1385,8 +1385,7 @@ ShudderedText:
 
 ForewarnText: ; 0x80f02
 	text "<TARGET>"
-	line "has"
-	cont "@"
+	line "has @"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt

@@ -9425,44 +9425,6 @@ BattleCommandJump:
 	ld [BattleScriptBufferLoc + 1], a
 	ret
 
-
-GetMoveAttr: ; 37ea1
-; Assuming hl = Moves + x, return attribute x of move a.
-	push bc
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	call GetMoveByte
-	pop bc
-	ret
-
-; 37ead
-
-
-GetMoveData: ; 37ead
-; Copy move struct a to de.
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, Bank(Moves)
-	jp FarCopyBytes
-
-; 37ebb
-
-
-GetMoveByte: ; 37ebb
-	ld a, BANK(Moves)
-	jp GetFarByte
-
-; 37ec0
-
-
-DisappearUser: ; 37ec0
-	farcall _DisappearUser
-	ret
-
-; 37ec7
-
-
 AppearUserLowerSub: ; 37ec7
 	farcall _AppearUserLowerSub
 	ret
