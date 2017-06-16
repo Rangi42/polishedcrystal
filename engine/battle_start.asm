@@ -596,7 +596,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	dec b
 	jr nz, .loop
 
-	call .loadpokeballgfx ; ld a, [OtherTrainerClass] \ ld de, PokeBallTransition \ ret
+	ld de, PokeBallTransition
 	hlcoord 2, 1
 
 	ld b, SCREEN_WIDTH - 4
@@ -727,11 +727,6 @@ endr
 	RGB 21, 11, 31
 	RGB 13, 05, 31
 	RGB 07, 07, 07
-
-.loadpokeballgfx
-	ld a, [OtherTrainerClass]
-	ld de, PokeBallTransition
-	ret
 
 PokeBallTransition:
 	db %00000011, %11000000

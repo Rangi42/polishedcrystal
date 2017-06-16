@@ -2771,8 +2771,7 @@ BattleCommand_Pickpocket:
 	farcall ShowAbilityActivation
 	call BattleCommand_Thief
 .no_pickpocket
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 BattleCommand_RageDamage:
 ; unused (Rage is now Attack boosts again)
