@@ -587,20 +587,15 @@ ReadObjectEvents:: ; 241f
 	ld a, [wCurrentMapPersonEventCount]
 	call CopyMapObjectHeaders
 
-; get NUM_OBJECTS - [wCurrentMapPersonEventCount]
+; get NUM_OBJECTS - 1 - [wCurrentMapPersonEventCount]
 	ld a, [wCurrentMapPersonEventCount]
 	ld c, a
-	ld a, NUM_OBJECTS ; - 1
+	ld a, NUM_OBJECTS - 1
 	sub c
 	jr z, .skip
-	; jr c, .skip
-
-; stupid waste of time and space
-	ld bc, 1
-	add hl, bc
+	jr c, .skip
+	inc hl
 ; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.
-; Bleeds into wObjectMasks due to a bug.  Uncomment the above subtraction
-; to fix.
 	ld bc, OBJECT_LENGTH
 .loop
 	ld [hl],  0
