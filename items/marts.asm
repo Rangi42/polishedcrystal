@@ -41,22 +41,24 @@ MartsEnd
 
 
 CherrygroveMart: ; 160ed
-	db 4 ; # items
+	db 5 ; # items
 	db POTION
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
+	db FLOWER_MAIL
 	db -1
 ; 160f3
 
 CherrygroveMartAfterDex: ; 160f3
-	db 6 ; # items
+	db 7 ; # items
 	db POKE_BALL
 	db HEAL_BALL
 	db POTION
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
+	db FLOWER_MAIL
 	db -1
 ; 160fa
 
@@ -72,7 +74,6 @@ VioletMart: ; 160fa
 	db X_ATTACK
 	db X_DEFEND
 	db X_SPEED
-	db FLOWER_MAIL
 	db -1
 ; 16106
 
@@ -128,7 +129,6 @@ Goldenrod2FMart2Eevee: ; 16140
 	db TIMER_BALL
 	db QUICK_BALL
 	db ESCAPE_ROPE
-	db REPEL
 	db POKE_DOLL
 	db BLUESKY_MAIL
 	db MORPH_MAIL
@@ -137,6 +137,7 @@ Goldenrod2FMart2Eevee: ; 16140
 ; 16146
 
 Goldenrod3FMart: ; 1612b
+Celadon5FMart2: ; 161e1
 	db 8 ; # items
 	db X_ATTACK
 	db X_DEFEND
@@ -150,6 +151,7 @@ Goldenrod3FMart: ; 1612b
 ; 16134
 
 Goldenrod4FMart: ; 16134
+Celadon5FMart1: ; 161da
 	db 6 ; # items
 	db PROTEIN
 	db IRON
@@ -433,30 +435,6 @@ Celadon4FMart: ; 161d5
 	db -1
 ; 161da
 
-Celadon5FMart1: ; 161da
-	db 6 ; # items
-	db PROTEIN
-	db IRON
-	db CARBOS
-	db CALCIUM
-	db ZINC
-	db HP_UP
-	db -1
-; 161e1
-
-Celadon5FMart2: ; 161e1
-	db 8 ; # items
-	db X_ACCURACY
-	db GUARD_SPEC
-	db DIRE_HIT
-	db X_ATTACK
-	db X_DEFEND
-	db X_SPEED
-	db X_SPCL_ATK
-	db X_SPCL_DEF
-	db -1
-; 161ea
-
 SaffronMart: ; 161f3
 	db 9 ; # items
 	db GREAT_BALL
@@ -507,6 +485,6 @@ ShamoutiMart2:
 	db HEAT_ROCK
 	db SMOOTH_ROCK
 	db ICY_ROCK
-	db EVIOLITE
 	db LIGHT_CLAY
+	db EVIOLITE
 	db -1
