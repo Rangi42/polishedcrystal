@@ -3443,6 +3443,13 @@ ApplyStatBoostDamageAfterUnaware:
 	ret z
 ApplyStatBoostDamage:
 	call GetStatBoost
+	cp 7
+	jr nc, GotStatLevel
+	ld b, a
+	ld a, [CriticalHit]
+	and a
+	ret nz
+	ld a, b
 	jr GotStatLevel
 ApplyDefStatBoostDamageAfterUnaware:
 	ld a, BATTLE_VARS_ABILITY
@@ -3451,10 +3458,13 @@ ApplyDefStatBoostDamageAfterUnaware:
 	ret z
 ApplyDefStatBoostDamage:
 	call GetStatBoost
+	cp 7
+	jr c, .no_crit_negation
 	ld b, a
 	ld a, [CriticalHit]
 	and a
 	ret nz
+.no_crit_negation
 	ld a, 14
 	sub b
 	; fallthrough
