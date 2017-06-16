@@ -3396,7 +3396,6 @@ ApplyPPUp: ; f84c
 .use
 	ld a, [hl]
 	and 3 << 6
-	ld a, [de] ; wasted cycle
 	call nz, ComputeMaxPP
 
 .skip
@@ -3514,8 +3513,6 @@ GetMaxPPOfMove: ; f8ec
 	ld hl, TempMonMoves
 	dec a
 	jr z, .got_nonpartymon ; BOXMON
-
-	ld hl, TempMonMoves ; Wasted cycles
 	dec a
 	jr z, .got_nonpartymon ; BREEDMON
 
