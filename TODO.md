@@ -208,14 +208,13 @@ Some of these may never be added; they're just suggestions.
 * Inverse Battles
 * Battle Factory
 * Medals for achievements
-* Town and route signs have lists of what's wild there (like Habitat Lists in Gen 5 or DexNav in Gen 6)
+* Something like Habitat Lists or DexNav via Prof. Oak's PC
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
-* Add Valencia Island from Pokémon Orange (for Prof. Ivy's lab, where you can battle her) and maybe other Orange Islands
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
@@ -246,7 +245,9 @@ Some of these may never be added; they're just suggestions.
 There are some features that I do *not* ever plan to add to Polished Crystal:
 
 * All 802 Pokémon
-* A third region
+* A third region with badges
 * Mega Evolution
 * Z-moves
+* Ash-Greninja
+* Ash Ketchum
 * Gen VI Exp. Share
