@@ -415,10 +415,12 @@ Options_Sound: ; e43dd
 	jr z, .SetStereo
 .SetMono:
 	res STEREO, [hl]
+	call RestartMapMusic
 	ld de, .Mono
 	jr .Display
 .SetStereo:
 	set STEREO, [hl]
+	call RestartMapMusic
 	ld de, .Stereo
 .Display:
 	hlcoord 11, 13

@@ -152,7 +152,7 @@ TrainerEncounterMusic: ; e9027
 ;	db MUSIC_KIMONO_ENCOUNTER		; caitlin
 ;	db MUSIC_KIMONO_ENCOUNTER		; candela
 ;	db MUSIC_KIMONO_ENCOUNTER		; blanche
-;	db MUSIC_HIKER_ENCOUNTER		; spark
+;	db MUSIC_HIKER_ENCOUNTER		; spark_t
 ;	db MUSIC_LASS_ENCOUNTER			; flannery
 ;	db MUSIC_LASS_ENCOUNTER			; maylene
 ;	db MUSIC_LASS_ENCOUNTER			; skyla

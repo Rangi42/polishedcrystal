@@ -15640,7 +15640,7 @@ SparkGroup:
 ; ================================
 ; ================
 
-	; SPARK
+	; SPARK_T
 	db "Spark@"
 	db TRAINERTYPE_ITEM
 

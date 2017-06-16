@@ -110,7 +110,6 @@ CherrygroveSilverTriggerNorth:
 	waitbutton
 	closetext
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
-	dotrigger $2
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -166,6 +165,8 @@ CherrygroveSilverTriggerNorth:
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	special RunCallback_04
+	special HealPartyEvenForNuzlocke
+	dotrigger $2
 	playmusic MUSIC_CHERRYGROVE_CITY
 	end
 
