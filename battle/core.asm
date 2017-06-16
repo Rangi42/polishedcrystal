@@ -3012,6 +3012,11 @@ LostBattle: ; 3d38e
 	and h
 	jr z, .no_loss_text
 
+	; wild battles have no loss text
+	ld a, [wBattleMode]
+	dec a
+	jr z, .no_loss_text
+
 ; Remove the enemy from the screen.
 	hlcoord 0, 0
 	lb bc, 8, 21
