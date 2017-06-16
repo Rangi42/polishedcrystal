@@ -1,7 +1,11 @@
 TMHMPocket: ; 2c76f (b:476f)
 	ld a, $1
 	ld [hInMenu], a
+	call CountTMsHMs ; This stores the count to wd265.
+	and a
+	jr z, .noicon
 	farcall LoadTMHMIcon
+.noicon
 	call TMHM_PocketLoop
 	ld a, 0 ; not xor a; preserve carry flag
 	ld [hInMenu], a
