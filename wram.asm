@@ -2165,6 +2165,8 @@ PCItems:: ; d8f1
 	ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
 
+	ds 20 ; extra space set aside
+
 wPokegearFlags:: ds 1
 ; bit 0: map
 ; bit 1: radio
@@ -2174,8 +2176,6 @@ wPokegearFlags:: ds 1
 wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 2
 RegisteredItem:: ; d95c
-	ds 1
-
 	ds 1
 
 PlayerState:: ; d95d
@@ -2291,7 +2291,7 @@ wRoute23Trigger::                            ds 1
 wRoute18WestTrigger::                        ds 1
 wShamoutiHotelRestaurantTrigger::            ds 1
 
-	ds 20 ; extra space set aside
+	ds 10 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]
@@ -2330,7 +2330,7 @@ wErinFightCount::    ds 1
 EventFlags:: ; da72
 	flag_array NUM_EVENTS
 ; db6c
-	ds 80 ; extra space set aside
+	ds 30 ; extra space set aside
 
 wCurBox:: ; db72
 	ds 1
