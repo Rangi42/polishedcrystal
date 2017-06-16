@@ -1,4 +1,4 @@
-_DisappearUser: ; fbd54
+_DisappearUser:: ; fbd54
 	xor a
 	ld [hBGMapMode], a
 	ld a, [hBattleTurn]

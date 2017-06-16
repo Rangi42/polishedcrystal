@@ -1,4 +1,4 @@
-Moves: ; 41afb
+Moves:: ; 41afb
 ; Characteristics of each move.
 
 move: MACRO
