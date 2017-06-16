@@ -92,7 +92,7 @@ AzaleaMart: ; 16106
 ; 16111
 
 Goldenrod2FMart1: ; 16118
-	db 10 ; # items
+	db 9 ; # items
 	db POTION
 	db SUPER_POTION
 	db ANTIDOTE
@@ -102,18 +102,18 @@ Goldenrod2FMart1: ; 16118
 	db ICE_HEAL
 	db FULL_HEAL
 	db REVIVE
-	db REPEL
 	db -1
 ; 16121
 
 Goldenrod2FMart2: ; 16121
-	db 9 ; # items
+	db 10 ; # items
 	db POKE_BALL
 	db GREAT_BALL
 	db LUXURY_BALL
 	db TIMER_BALL
 	db QUICK_BALL
 	db ESCAPE_ROPE
+	db REPEL
 	db POKE_DOLL
 	db BLUESKY_MAIL
 	db MORPH_MAIL
@@ -137,6 +137,7 @@ Goldenrod2FMart2Eevee: ; 16140
 ; 16146
 
 Goldenrod3FMart: ; 1612b
+Celadon5FMart2: ; 161e1
 	db 8 ; # items
 	db X_ATTACK
 	db X_DEFEND
@@ -150,6 +151,7 @@ Goldenrod3FMart: ; 1612b
 ; 16134
 
 Goldenrod4FMart: ; 16134
+Celadon5FMart1: ; 161da
 	db 6 ; # items
 	db PROTEIN
 	db IRON
@@ -195,7 +197,8 @@ UndergroundMart: ; 1620e
 ; 16214
 
 EcruteakMart: ; 1615e
-	db 10 ; # items
+	db 11 ; # items
+	db POKE_BALL
 	db GREAT_BALL
 	db NEST_BALL
 	db POTION
@@ -253,12 +256,13 @@ MahoganyMart1: ; 1616a
 ; 16170
 
 MahoganyMart2: ; 16170
-	db 9 ; # items
+	db 10 ; # items
 	db RAGECANDYBAR
 	db AIR_BALLOON
 	db QUICK_CLAW
 	db KINGS_ROCK
 	db GREAT_BALL
+	db SUPER_POTION
 	db HYPER_POTION
 	db SUPER_REPEL
 	db REVIVE
@@ -267,7 +271,8 @@ MahoganyMart2: ; 16170
 ; 1617b
 
 BlackthornMart: ; 1617b
-	db 10 ; # items
+	db 11 ; # items
+	db GREAT_BALL
 	db ULTRA_BALL
 	db DUSK_BALL
 	db HYPER_POTION
@@ -294,16 +299,17 @@ IndigoPlateauMart: ; 16205
 ; 1620e
 
 ViridianMart: ; 16186
-	db 10 ; # items
+	db 11 ; # items
 	db ULTRA_BALL
 	db NET_BALL
 	db HYPER_POTION
-	db FULL_HEAL
-	db REVIVE
 	db ANTIDOTE
 	db PARLYZ_HEAL
 	db AWAKENING
 	db BURN_HEAL
+	db FULL_HEAL
+	db MAX_REPEL
+	db REVIVE
 	db FLOWER_MAIL
 	db -1
 ; 16191
@@ -378,32 +384,33 @@ VermilionMart: ; 161af
 ; 161b9
 
 Celadon2FMart1: ; 161b9
-	db 10 ; # items
-	db QUICK_BALL
-	db TIMER_BALL
+	db 12 ; # items
 	db POTION
 	db SUPER_POTION
 	db HYPER_POTION
 	db MAX_POTION
-	db REVIVE
-	db REPEL
-	db SUPER_REPEL
-	db MAX_REPEL
-	db -1
-; 161c2
-
-Celadon2FMart2: ; 161c2
-	db 10 ; # items
-	db POKE_BALL
-	db GREAT_BALL
-	db ULTRA_BALL
-	db ESCAPE_ROPE
 	db ANTIDOTE
 	db BURN_HEAL
 	db ICE_HEAL
 	db AWAKENING
 	db PARLYZ_HEAL
 	db FULL_HEAL
+	db REVIVE
+	db MAX_REVIVE
+	db -1
+; 161c2
+
+Celadon2FMart2: ; 161c2
+	db 9 ; # items
+	db POKE_BALL
+	db GREAT_BALL
+	db ULTRA_BALL
+	db QUICK_BALL
+	db TIMER_BALL
+	db ESCAPE_ROPE
+	db REPEL
+	db SUPER_REPEL
+	db MAX_REPEL
 	db -1
 ; 161ce
 
@@ -432,30 +439,6 @@ Celadon4FMart: ; 161d5
 	db SURF_MAIL
 	db -1
 ; 161da
-
-Celadon5FMart1: ; 161da
-	db 6 ; # items
-	db PROTEIN
-	db IRON
-	db CARBOS
-	db CALCIUM
-	db ZINC
-	db HP_UP
-	db -1
-; 161e1
-
-Celadon5FMart2: ; 161e1
-	db 8 ; # items
-	db X_ACCURACY
-	db GUARD_SPEC
-	db DIRE_HIT
-	db X_ATTACK
-	db X_DEFEND
-	db X_SPEED
-	db X_SPCL_ATK
-	db X_SPCL_DEF
-	db -1
-; 161ea
 
 SaffronMart: ; 161f3
 	db 9 ; # items
@@ -507,6 +490,6 @@ ShamoutiMart2:
 	db HEAT_ROCK
 	db SMOOTH_ROCK
 	db ICY_ROCK
-	db EVIOLITE
 	db LIGHT_CLAY
+	db EVIOLITE
 	db -1
