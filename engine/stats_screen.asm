@@ -781,7 +781,6 @@ OrangePage_:
 	ld a, [TempMonSpecies]
 	ld c, a
 	farcall GetAbility
-	hlcoord 3, 13
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
 	predef PrintAbility

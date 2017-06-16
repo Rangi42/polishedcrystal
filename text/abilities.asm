@@ -1,18 +1,14 @@
 PrintAbility:
 ; Print ability b at hl.
-	ld a, b
-
-	push hl
-	add a
-	ld hl, AbilityNames
-	ld e, a
-	ld d, 0
-	add hl, de
+	ld l, b
+	ld h, 0
+	ld bc, AbilityNames
+	add hl, hl
+	add hl, bc
 	ld a, [hli]
-	ld e, a
 	ld d, [hl]
-	pop hl
-
+	ld e, a
+	hlcoord 3, 13
 	jp PlaceString
 
 BufferAbility:
@@ -973,7 +969,7 @@ SandForceDescription:
 
 FurCoatDescription:
 	db   "Halves damage from"
-	line "physical moves.@"
+	next "physical moves.@"
 
 CompetitiveDescription:
 	db   "Boosts Spcl.Atk on"

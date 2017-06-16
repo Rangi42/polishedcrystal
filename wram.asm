@@ -2524,9 +2524,9 @@ EndPokedexSeen::
 UnownDex:: ; ded9
 	ds NUM_UNOWN
 UnlockedUnowns:: ; def3
-	ds 1
 
 wFirstUnownSeen:: ds 1
+wFirstMagikarpSeen:: ds 1
 
 
 wDaycareMan:: ; def5
