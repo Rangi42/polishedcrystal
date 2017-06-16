@@ -7,7 +7,7 @@ Bank $05: $7ff8 ($0008)
 Bank $06: $7fb0 ($0050)
 Bank $07: $7ff9 ($0007)
 Bank $08: $7f49 ($00b7)
-Bank $09: $7d6f ($0291)
+Bank $09: $7db6 ($024a)
 Bank $0a: $7fbe ($0042)
 Bank $0b: $7f94 ($006c)
 Bank $0c: $7d99 ($0267)
@@ -95,7 +95,7 @@ Bank $5d: $7504 ($0afc)
 Bank $5e: $7749 ($08b7)
 Bank $5f: $787f ($0781)
 Bank $60: $7e02 ($01fe)
-Bank $61: $7f5f ($00a1)
+Bank $61: $7f62 ($009e)
 Bank $62: $7ea2 ($015e)
 Bank $63: $7b57 ($04a9)
 Bank $64: $7dcf ($0231)
@@ -105,7 +105,7 @@ Bank $67: $7f6a ($0096)
 Bank $68: $7f6f ($0091)
 Bank $69: $7f0e ($00f2)
 Bank $6a: $7ddd ($0223)
-Bank $6b: $7ded ($0213)
+Bank $6b: $7df0 ($0210)
 Bank $6c: $7e90 ($0170)
 Bank $6d: $77f6 ($080a)
 Bank $6e: $7d8c ($0274)
@@ -178,16 +178,16 @@ Bank $47 has $02ea bytes of free space
 Bank $5b has $02db bytes of free space
 Bank $4d has $02be bytes of free space
 Bank $2a has $02bc bytes of free space
-Bank $09 has $0291 bytes of free space
 Bank $19 has $0281 bytes of free space
 Bank $3f has $0279 bytes of free space
 Bank $6e has $0274 bytes of free space
 Bank $0c has $0267 bytes of free space
 Bank $0d has $0264 bytes of free space
+Bank $09 has $024a bytes of free space
 Bank $18 has $023c bytes of free space
 Bank $64 has $0231 bytes of free space
 Bank $6a has $0223 bytes of free space
-Bank $6b has $0213 bytes of free space
+Bank $6b has $0210 bytes of free space
 Bank $60 has $01fe bytes of free space
 Bank $26 has $01e1 bytes of free space
 Bank $3c has $01e1 bytes of free space
@@ -222,8 +222,8 @@ Bank $38 has $00ba bytes of free space
 Bank $08 has $00b7 bytes of free space
 Bank $02 has $00ac bytes of free space
 Bank $0f has $00a6 bytes of free space
-Bank $61 has $00a1 bytes of free space
 Bank $3d has $009f bytes of free space
+Bank $61 has $009e bytes of free space
 Bank $29 has $0096 bytes of free space
 Bank $67 has $0096 bytes of free space
 Bank $68 has $0091 bytes of free space
@@ -256,4 +256,4 @@ Bank $05 has $0008 bytes of free space
 Bank $07 has $0007 bytes of free space
 Bank $48 has $0000 bytes of free space
 
-Free space: 102312/2097152 (4.88%)
+Free space: 102235/2097152 (4.87%)

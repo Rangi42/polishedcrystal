@@ -88,6 +88,7 @@ Leaf:
 	pause 40
 	disappear NAVELROCKROOF_CHRIS
 	disappear NAVELROCKROOF_KRIS
+	setevent EVENT_BEAT_LEAF
 	credits
 	end
 

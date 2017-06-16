@@ -369,10 +369,55 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 .have_pokedex
 	ld a, [BattlePoints]
 	and a
-	ret nz
+	jr nz, .have_bp
 	hlcoord 2, 14
 	lb bc, 1, 16
-	jp ClearBox
+	call ClearBox
+.have_bp
+
+; trainer stars
+	hlcoord 2, 16
+	push hl
+	ld de, EVENT_BEAT_ELITE_FOUR
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	pop hl
+	ld a, c
+	and a
+	jr z, .nostar1
+	ld a, $27
+	ld [hli], a ; beat the Elite 4
+.nostar1
+	push hl
+	ld de, EVENT_BEAT_LEAF
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	pop hl
+	ld a, c
+	and a
+	jr z, .nostar2
+	ld a, $27
+	ld [hli], a ; beat Leaf
+.nostar2
+	push hl
+	ld hl, PokedexCaught
+	ld b, EndPokedexCaught - PokedexCaught
+	call CountSetBits
+	pop hl
+	cp NUM_POKEMON
+	jr c, .nostar3
+	ld a, $27
+	ld [hli], a ; complete Pokédex
+.nostar3
+	push hl
+	ld hl, PokemonJournals
+	ld b, PokemonJournalsEnd - PokemonJournals
+	call CountSetBits
+	pop hl
+	cp NUM_POKEMON_JOURNALS
+	ret c
+	ld [hl], $27 ; read all Pokémon Journals
+	ret
 
 .Dex_PlayTime_BP:
 	db   "#dex"

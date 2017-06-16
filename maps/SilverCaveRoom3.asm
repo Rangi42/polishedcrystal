@@ -48,6 +48,7 @@ Red:
 	special Special_FadeInQuickly
 	pause 30
 	special HealParty
+	setevent EVENT_BEAT_RED
 	playmapmusic
 	end
 

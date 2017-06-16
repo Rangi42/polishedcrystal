@@ -2260,10 +2260,10 @@
 
 ; TODO: reorganize events for final release
 	const EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
+	const EVENT_BEAT_RED
+	const EVENT_BEAT_LEAF
 
 ; Unused placeholder events
-	const EVENT_836
-	const EVENT_837
 	const EVENT_838
 	const EVENT_839
 	const EVENT_83A
