@@ -195,7 +195,6 @@ Some of these may never be added; they're just suggestions.
    * HG/SS Spiky-Eared Pichu theme (for some Spiky-Eared Pichu event) (already exists)
    * R/S/E Route 119
    * R/S/E Route 120
-   * B/W Dragonspiral Tower (for Embedded Tower)
    * B/W Black City (for Silph Co.)
    * B/W Battle! Elite Four (for Caitlin)
    * S/M Malie City (Day) (for Shamouti Shrine)

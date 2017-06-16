@@ -2258,8 +2258,10 @@
 	const EVENT_ROUTE_49_CUT_TREE_1
 	const EVENT_ROUTE_49_CUT_TREE_2
 
+; TODO: reorganize events for final release
+	const EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
+
 ; Unused placeholder events
-	const EVENT_835
 	const EVENT_836
 	const EVENT_837
 	const EVENT_838

@@ -264,6 +264,13 @@ SECTION "Extra Songs 15", ROMX
 
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
+INCLUDE "audio/music/bw/celestialtower.asm"
+
+
+SECTION "Extra Songs 16", ROMX
+
+INCLUDE "audio/music/rse/route101.asm"
+INCLUDE "audio/music/rse/dewfordtown.asm"
 INCLUDE "audio/music/rse/meteorfalls.asm"
 
 

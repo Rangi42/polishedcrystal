@@ -682,7 +682,7 @@ MAP_NONE   EQU 0
 	mapgroup IVYS_LAB,                                    6,  5 ;  3
 	mapgroup IVYS_HOUSE,                                  4,  4 ;  4
 	mapgroup VALENCIA_HOUSE,                              4,  4 ;  5
-	mapgroup VALENCIA_PORT,                               9,  7 ;  6
+	mapgroup VALENCIA_PORT,                               9, 11 ;  6
 
 	newgroup                                                    ; 34
 
