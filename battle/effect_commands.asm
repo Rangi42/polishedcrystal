@@ -2346,6 +2346,7 @@ BattleCommand_CheckFaint:
 	push af
 	call SwitchTurn
 	pop af
+	pop bc
 	jr nz, .no_endure
 	jr .enduring
 .focus_band
