@@ -63,7 +63,7 @@ CherrygroveMartAfterDex: ; 160f3
 ; 160fa
 
 VioletMart: ; 160fa
-	db 10 ; # items
+	db 11 ; # items
 	db POKE_BALL
 	db REPEAT_BALL
 	db POTION
@@ -122,7 +122,7 @@ Goldenrod2FMart2: ; 16121
 ; 1612b
 
 Goldenrod2FMart2Eevee: ; 16140
-	db 10 ; # items
+	db 11 ; # items
 	db POKE_BALL
 	db GREAT_BALL
 	db LUXURY_BALL

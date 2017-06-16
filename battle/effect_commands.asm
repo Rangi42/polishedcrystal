@@ -9172,7 +9172,7 @@ GetUserItemAfterUnnerve:
 	call IsInArray
 	pop hl
 	pop de
-	ret nc
+	ret c
 	ld hl, NoItem
 	ld b, HELD_NONE
 	ret
