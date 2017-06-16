@@ -2323,23 +2323,20 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	call Pokedex_GetSelectedMon
 	call Pokedex_CheckSeen
 	jr z, .QuestionMark
-	ld a, [wFirstUnownSeen]
-	ld [MonVariant], a
-
 	call Pokedex_GetSelectedMon
-	cp PIKACHU
-	jr z, .use_variant_1
-	cp PICHU
-	jr z, .use_variant_1
-	cp ARBOK
-	jr z, .use_variant_1
-	cp MEWTWO
-	jr z, .use_variant_1
-	jr .continue
-.use_variant_1
+	cp UNOWN
+	jr z, .use_first_unown
+	cp MAGIKARP
+	jr z, .use_first_magikarp
 	ld a, 1
-	ld [MonVariant], a
+	jr .continue
+.use_first_unown
+	ld a, [wFirstUnownSeen]
+	jr .continue
+.use_first_magikarp
+	ld a, [wFirstMagikarpSeen]
 .continue
+	ld [MonVariant], a
 	ld a, [wd265]
 	ld [CurPartySpecies], a
 	call GetBaseData

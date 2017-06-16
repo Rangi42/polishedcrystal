@@ -3556,6 +3556,18 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	ld [wFirstUnownSeen], a
 .skip_unown
 
+	ld a, [CurPartySpecies]
+	cp MAGIKARP
+	jr nz, .skip_magikarp
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .skip_magikarp
+	ld hl, EnemyMonForm
+	predef GetVariant
+	ld a, [MonVariant]
+	ld [wFirstMagikarpSeen], a
+.skip_magikarp
+
 	ld hl, EnemyMonHP
 	ld a, [hli]
 	ld [wEnemyHPAtTimeOfPlayerSwitch], a
@@ -8750,6 +8762,7 @@ InitEnemyWildmon: ; 3f607
 	call CopyBytes
 	ld hl, EnemyMonForm
 	predef GetVariant
+
 	ld a, [CurPartySpecies]
 	cp UNOWN
 	jr nz, .skip_unown
@@ -8759,6 +8772,17 @@ InitEnemyWildmon: ; 3f607
 	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
 .skip_unown
+
+	ld a, [CurPartySpecies]
+	cp MAGIKARP
+	jr nz, .skip_magikarp
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .skip_magikarp
+	ld a, [MonVariant]
+	ld [wFirstMagikarpSeen], a
+.skip_magikarp
+
 	ld de, VTiles2
 	predef FrontpicPredef
 	xor a
