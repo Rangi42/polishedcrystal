@@ -731,7 +731,7 @@ _CGB_TrainerCard: ; 9289
 	lb bc, 7, 5
 	ld a, [PlayerGender]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, $0 ; not xor a; preserve carry flag
 	jr z, .got_gender2
 	ld a, $1
 .got_gender2
@@ -846,7 +846,7 @@ _CGB_TrainerCard2:
 	lb bc, 7, 5
 	ld a, [PlayerGender]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, $0 ; not xor a; preserve carry flag
 	jr z, .got_gender2
 	ld a, $1
 .got_gender2

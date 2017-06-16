@@ -31,7 +31,7 @@ BattleExtrasGFX:
 INCBIN "gfx/battle/extras.2bpp"
 
 GFX_Stats: ; f89b0
-INCBIN "gfx/misc/stats.2bpp"
+INCBIN "gfx/stats/stats.2bpp"
 ; f8ac0
 
 StatusIconGFX:
@@ -47,11 +47,11 @@ CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
 
 TownMapGFX: ; f8ba0
-INCBIN "gfx/misc/town_map.2bpp.lz"
+INCBIN "gfx/pokegear/town_map.2bpp.lz"
 ; f8ea4
 
 JohtoKantoGFX:
-INCBIN "gfx/misc/johto-kanto.2bpp"
+INCBIN "gfx/pokegear/johto-kanto.2bpp"
 
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"

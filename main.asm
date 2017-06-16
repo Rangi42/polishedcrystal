@@ -2218,9 +2218,9 @@ INCLUDE "engine/mail.asm"
 SECTION "Crystal Unique", ROMX, BANK[$12]
 
 PackGFX:
-INCBIN "gfx/misc/pack.w40.2bpp"
+INCBIN "gfx/pack/pack.w40.2bpp"
 PackFGFX: ; 48e9b
-INCBIN "gfx/misc/pack_f.w40.2bpp"
+INCBIN "gfx/pack/pack_f.w40.2bpp"
 
 Special_MoveTutor: ; 4925b
 	call FadeToMenu
@@ -5177,10 +5177,10 @@ GetCardPic: ; 8833e
 	jp FarCopyBytes
 
 ChrisCardPic: ; 88365
-INCBIN "gfx/misc/chris_card.5x7.2bpp"
+INCBIN "gfx/trainer_card/chris_card.5x7.2bpp"
 
 KrisCardPic: ; 88595
-INCBIN "gfx/misc/kris_card.5x7.2bpp"
+INCBIN "gfx/trainer_card/kris_card.5x7.2bpp"
 
 GetPlayerBackpic: ; 88825
 	ld hl, ChrisBackpic
@@ -5195,13 +5195,13 @@ GetPlayerBackpic: ; 88825
 	ret
 
 ChrisBackpic: ; 2ba1a
-INCBIN "gfx/misc/chris_back.6x6.2bpp.lz"
+INCBIN "gfx/backs/chris_back.6x6.2bpp.lz"
 
 KrisBackpic: ; 88ed6
-INCBIN "gfx/misc/kris_back.6x6.2bpp.lz"
+INCBIN "gfx/backs/kris_back.6x6.2bpp.lz"
 
-DudeBackpic: ; 2bbaa
-INCBIN "gfx/misc/dude.6x6.2bpp.lz"
+LyraBackpic: ; 2bbaa
+INCBIN "gfx/backs/lyra_back.6x6.2bpp.lz"
 
 HOF_LoadTrainerFrontpic: ; 88840
 	call WaitBGMap
@@ -5700,7 +5700,7 @@ NewPokedexEntry: ; fb877
 ; fb8f1
 
 Footprints: ; f9434
-INCBIN "gfx/misc/footprints.w128.1bpp"
+INCBIN "gfx/pokedex/footprints.w128.1bpp"
 ; fb434
 
 SECTION "Typefaces", ROMX
@@ -6128,7 +6128,7 @@ TownMap_ConvertLineBreakCharacters: ; 1de2c5
 	jp PlaceString
 
 PokegearGFX: ; 1de2e4
-INCBIN "gfx/misc/pokegear.2bpp.lz"
+INCBIN "gfx/pokegear/pokegear.2bpp.lz"
 
 
 SECTION "Tileset Data 8", ROMX, BANK[TILESETS_8]

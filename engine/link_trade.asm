@@ -1,5 +1,5 @@
 LinkCommsBorderGFX:
-INCBIN "gfx/misc/link_border.2bpp"
+INCBIN "gfx/link_trade/border.2bpp"
 ; 16d421
 
 __LoadTradeScreenBorder: ; 16d421

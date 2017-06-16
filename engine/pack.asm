@@ -1750,9 +1750,9 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-INCBIN "gfx/misc/pack_top_row.2bpp"
+INCBIN "gfx/pack/pack_top_row.2bpp"
 PackLeftColumnGFX:
-INCBIN "gfx/misc/pack_left_column.2bpp"
+INCBIN "gfx/pack/pack_left_column.2bpp"
 
 Special_ChooseItem::
 	call DisableSpriteUpdates

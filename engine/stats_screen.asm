@@ -1448,4 +1448,4 @@ CheckFaintedFrzSlp: ; 4e53f
 ; 4e554
 
 CaughtBallsGFX:
-INCBIN "gfx/misc/balls.2bpp"
+INCBIN "gfx/stats/balls.2bpp"
