@@ -388,7 +388,7 @@ CinnabarGymSignText:
 	done
 
 SeafoamIslandsSign:
-	habitatlist SeafoamIslandsSignText, SEAFOAM_ISLANDS
+	jumptext SeafoamIslandsSignText
 
 SeafoamIslandsSignText:
 	text "Seafoam Islands"

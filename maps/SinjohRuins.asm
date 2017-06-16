@@ -8,7 +8,7 @@ SinjohRuins_MapScriptHeader:
 	db 0
 
 SinjohRuinsSignpost:
-	habitatlist SinjohRuinsSignpostText, SINJOH_RUINS
+	jumptext SinjohRuinsSignpostText
 
 SinjohRuinsSignpostText:
 	text "The Sinjoh Ruins"

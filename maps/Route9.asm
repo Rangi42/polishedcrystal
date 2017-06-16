@@ -92,7 +92,7 @@ Route9CutTree:
 	jumpstd cuttree
 
 Route9Sign:
-	habitatlist Route9SignText, ROUTE_9
+	jumptext Route9SignText
 
 Route9HiddenEther:
 	dwb EVENT_ROUTE_9_HIDDEN_ETHER, ETHER

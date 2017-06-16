@@ -84,7 +84,7 @@ ViridianForestWeedleDoll:
 	end
 
 MapViridianForestSignpost1Script:
-	habitatlist ViridianForestSignText1, VIRIDIAN_FOREST
+	jumptext ViridianForestSignText1
 
 MapViridianForestSignpost2Script:
 	jumptext ViridianForestSignText2

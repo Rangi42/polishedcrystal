@@ -395,7 +395,7 @@ Route32CoastTrainerTips:
 	done
 
 Route32CoastUnionCaveSign:
-	habitatlist .Text, UNION_CAVE
+	jumptext .Text
 
 .Text:
 	text "Union Cave"

@@ -199,7 +199,7 @@ HikerBaileyScript:
 	end
 
 Route46Sign:
-	habitatlist Route46SignText, ROUTE_46
+	jumptext Route46SignText
 
 Route46XSpeed:
 	itemball X_SPEED

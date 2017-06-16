@@ -325,7 +325,7 @@ CooltrainerfMeganScript:
 	end
 
 TohjoFallsSign:
-	habitatlist TohjoFallsSignText, TOHJO_FALLS
+	jumptext TohjoFallsSignText
 
 Route27TMDragonClaw:
 	tmhmball TM_DRAGON_CLAW

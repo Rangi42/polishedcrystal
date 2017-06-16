@@ -25,7 +25,7 @@ UragaChannelWestEngineerText:
 	done
 
 ScaryCaveWestSign:
-	habitatlist ScaryCaveWestSignText, URAGA_CHANNEL
+	jumptext ScaryCaveWestSignText
 
 ScaryCaveWestSignText:
 	text "Uraga Channel"

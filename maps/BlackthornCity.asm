@@ -136,7 +136,7 @@ SantosScript:
 	end
 
 BlackthornCitySign:
-	habitatlist BlackthornCitySignText, BLACKTHORN_CITY
+	jumptext BlackthornCitySignText
 
 BlackthornGymSign:
 	jumptext BlackthornGymSignText
@@ -145,7 +145,7 @@ MoveDeletersHouseSign:
 	jumptext MoveDeletersHouseSignText
 
 DragonDensSign:
-	habitatlist DragonDensSignText, DRAGONS_DEN
+	jumptext DragonDensSignText
 
 BlackthornCityTrainerTips:
 	jumptext BlackthornCityTrainerTipsText

@@ -352,10 +352,10 @@ UnknownScript_0x19d259:
 	end
 
 Route43Sign1:
-	habitatlist Route43Sign1Text, ROUTE_43
+	jumptext Route43Sign1Text
 
 Route43Sign2:
-	habitatlist Route43Sign2Text, ROUTE_43
+	jumptext Route43Sign2Text
 
 Route43TrainerTips:
 	jumptext Route43TrainerTipsText
@@ -574,8 +574,8 @@ Route43Sign1Text:
 Route43Sign2Text:
 	text "Route 43"
 
-	para "Mahogany Town -"
-	line "Lake of Rage"
+	para "Lake of Rage -"
+	line "Mahogany Town"
 	done
 
 Route43TrainerTipsText:

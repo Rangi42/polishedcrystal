@@ -21,7 +21,7 @@ PokefanMScript_0x1adb19:
 	done
 
 Route5UndergroundPathSign:
-	habitatlist .Text, UNDERGROUND
+	jumptext .Text
 
 .Text:
 	text "Underground Path"

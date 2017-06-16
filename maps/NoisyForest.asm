@@ -416,7 +416,7 @@ NoisyForestCutTree:
 	jumpstd cuttree
 
 NoisyForestSignpostScript:
-	habitatlist .Text, NOISY_FOREST
+	jumptext .Text
 
 .Text:
 	text "Noisy Forest"

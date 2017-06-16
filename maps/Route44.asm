@@ -306,10 +306,10 @@ CooltrainermAllenScript:
 	end
 
 Route44Sign1:
-	habitatlist Route44Sign1Text, ICE_PATH
+	jumptext Route44Sign1Text
 
 Route44Sign2:
-	habitatlist Route44Sign2Text, ROUTE_44
+	jumptext Route44Sign2Text
 
 FruitTreeScript_0x19da40:
 	fruittree FRUITTREE_ROUTE_44
@@ -512,7 +512,8 @@ UnknownText_0x19df4d:
 	done
 
 Route44Sign1Text:
-	text "Ice Path Ahead"
+	text "Route 44"
+	line "Ice Path Ahead"
 	done
 
 Route44Sign2Text:

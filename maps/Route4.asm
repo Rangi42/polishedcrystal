@@ -148,7 +148,7 @@ Route4TutorAquaTailScript:
 	end
 
 MtMoonSign:
-	habitatlist MtMoonSignText, MT_MOON
+	jumptext MtMoonSignText
 
 Route4HPUp:
 	itemball HP_UP

@@ -352,7 +352,7 @@ ArthurNotThursdayScript:
 	end
 
 Route36Sign:
-	habitatlist Route36SignText, ROUTE_36
+	jumptext Route36SignText
 
 RuinsOfAlphNorthSign:
 	jumptext RuinsOfAlphNorthSignText

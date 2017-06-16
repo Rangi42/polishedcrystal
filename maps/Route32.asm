@@ -609,13 +609,13 @@ Route32CutTree:
 	jumpstd cuttree
 
 Route32Sign:
-	habitatlist Route32SignText, ROUTE_32
+	jumptext Route32SignText
 
 Route32RuinsSign:
 	jumptext Route32RuinsSignText
 
 Route32UnionCaveSign:
-	habitatlist Route32UnionCaveSignText, UNION_CAVE
+	jumptext Route32UnionCaveSignText
 
 Route32HiddenGreatBall:
 	dwb EVENT_ROUTE_32_HIDDEN_GREAT_BALL, GREAT_BALL
