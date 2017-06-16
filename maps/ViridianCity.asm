@@ -102,7 +102,7 @@ ViridianCityCutTree:
 	jumpstd cuttree
 
 ViridianCitySign:
-	habitatlist ViridianCitySignText, VIRIDIAN_CITY
+	jumptext ViridianCitySignText
 
 ViridianGymSign:
 	jumptext ViridianGymSignText

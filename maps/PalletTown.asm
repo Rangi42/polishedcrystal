@@ -25,7 +25,7 @@ PalletTownYoungsterScript:
 	jumptextfaceplayer PalletTownYoungsterText
 
 PalletTownSign:
-	habitatlist PalletTownSignText, PALLET_TOWN
+	jumptext PalletTownSignText
 
 RedsHouseSign:
 	jumptext RedsHouseSignText

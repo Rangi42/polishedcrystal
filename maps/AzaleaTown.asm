@@ -164,7 +164,7 @@ AzaleaTownKurtScript:
 	end
 
 AzaleaTownSign:
-	habitatlist AzaleaTownSignText, AZALEA_TOWN
+	jumptext AzaleaTownSignText
 
 KurtsHouseSign:
 	jumptext KurtsHouseSignText
@@ -173,13 +173,13 @@ AzaleaGymSign:
 	jumptext AzaleaGymSignText
 
 SlowpokeWellSign:
-	habitatlist SlowpokeWellSignText, SLOWPOKE_WELL
+	jumptext SlowpokeWellSignText
 
 CharcoalKilnSign:
 	jumptext CharcoalKilnSignText
 
 AzaleaTownIlextForestSign:
-	habitatlist AzaleaTownIlexForestSignText, ILEX_FOREST
+	jumptext AzaleaTownIlexForestSignText
 
 WhiteApricornTree:
 	fruittree FRUITTREE_AZALEA_TOWN

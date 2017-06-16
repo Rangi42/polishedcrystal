@@ -32,7 +32,7 @@ Bird_keeperBobScript:
 	end
 
 Route18Sign:
-	habitatlist Route18SignText, ROUTE_18
+	jumptext Route18SignText
 
 Bird_keeperBorisSeenText:
 	text "If you're looking"

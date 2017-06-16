@@ -582,7 +582,7 @@ TrainerCooltrainerfKate:
 	end
 
 Route34Sign:
-	habitatlist Route34SignText, ROUTE_34
+	jumptext Route34SignText
 
 Route34TrainerTips:
 	jumptext Route34TrainerTipsText

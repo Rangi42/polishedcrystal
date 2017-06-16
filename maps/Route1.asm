@@ -57,7 +57,7 @@ CooltrainerfQuinnScript:
 	end
 
 Route1Sign:
-	habitatlist Route1SignText, ROUTE_1
+	jumptext Route1SignText
 
 FruitTreeScript_0x1ac581:
 	fruittree FRUITTREE_ROUTE_1

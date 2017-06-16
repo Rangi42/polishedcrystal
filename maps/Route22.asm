@@ -16,7 +16,7 @@ Route22CooltrainerfScript:
 	jumptextfaceplayer Route22CooltrainerfText
 
 VictoryRoadEntranceSign:
-	habitatlist VictoryRoadEntranceSignText, ROUTE_22
+	jumptext VictoryRoadEntranceSignText
 
 Route22CooltrainermText:
 	text "You think you're"

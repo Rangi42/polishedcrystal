@@ -86,13 +86,13 @@ VioletCityCooltrainerM2Script:
 	jumptextfaceplayer VioletCityCooltrainerM2Text
 
 VioletCitySign:
-	habitatlist VioletCitySignText, VIOLET_CITY
+	jumptext VioletCitySignText
 
 VioletGymSign:
 	jumptext VioletGymSignText
 
 SproutTowerSign:
-	habitatlist SproutTowerSignText, SPROUT_TOWER
+	jumptext SproutTowerSignText
 
 EarlsPokemonAcademySign:
 	jumptext EarlsPokemonAcademySignText

@@ -28,7 +28,7 @@ SafariZoneHubUltraBall:
 	itemball ULTRA_BALL
 
 SafariZoneHubAreaSign:
-	habitatlist SafariZoneHubAreaSignText, SAFARI_ZONE
+	jumptext SafariZoneHubAreaSignText
 
 SafariZoneHubRestHouseSign:
 	jumptext SafariZoneHubRestHouseSignText

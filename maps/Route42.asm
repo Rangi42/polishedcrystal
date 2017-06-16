@@ -324,13 +324,16 @@ Route42OfficerScript:
 	jumptextfaceplayer Route42OfficerText
 
 Route42Sign1:
-	habitatlist Route42Sign1Text, ROUTE_42
+	jumptext Route42Sign1Text
 
-MtMortarSign:
-	habitatlist MtMortarSignText, MT_MORTAR
+MtMortarSign1:
+	jumptext MtMortarSign1Text
+
+MtMortarSign2:
+	jumptext MtMortarSign2Text
 
 Route42Sign2:
-	habitatlist Route42Sign2Text, ROUTE_42
+	jumptext Route42Sign2Text
 
 Route42UltraBall:
 	itemball ULTRA_BALL
@@ -567,7 +570,14 @@ Route42Sign1Text:
 	line "Mahogany Town"
 	done
 
-MtMortarSignText:
+MtMortarSign1Text:
+	text "Mt.Mortar"
+
+	para "Waterfall Cave"
+	line "Inside"
+	done
+
+MtMortarSign2Text:
 	text "Mt.Mortar"
 
 	para "Waterfall Cave"
@@ -577,8 +587,8 @@ MtMortarSignText:
 Route42Sign2Text:
 	text "Route 42"
 
-	para "Mahogany Town -"
-	line "Ecruteak City"
+	para "Ecruteak City -"
+	line "Mahogany Town"
 	done
 
 Route42_MapEventHeader:
@@ -602,8 +612,8 @@ Route42_MapEventHeader:
 .Signposts:
 	db 5
 	signpost 10, 4, SIGNPOST_READ, Route42Sign1
-	signpost 5, 7, SIGNPOST_READ, MtMortarSign
-	signpost 9, 45, SIGNPOST_READ, MtMortarSign
+	signpost 5, 7, SIGNPOST_READ, MtMortarSign1
+	signpost 9, 45, SIGNPOST_READ, MtMortarSign2
 	signpost 8, 54, SIGNPOST_READ, Route42Sign2
 	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
 

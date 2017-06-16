@@ -44,7 +44,7 @@ HexManiacAmyScript:
 	end
 
 Route10Sign:
-	habitatlist Route10SignText, ROUTE_10
+	jumptext Route10SignText
 
 Route10HiddenMaxEther:
 	dwb EVENT_ROUTE_10_HIDDEN_MAX_ETHER, MAX_ETHER

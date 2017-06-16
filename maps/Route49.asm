@@ -14,7 +14,7 @@ Route49CutTree:
 	jumpstd cuttree
 
 Route49Sign:
-	habitatlist .Text, ROUTE_49
+	jumptext .Text
 
 .Text:
 	text "Route 49"

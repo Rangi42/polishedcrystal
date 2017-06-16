@@ -175,10 +175,10 @@ TuscanyNotTuesdayScript:
 	end
 
 Route29Sign1:
-	habitatlist Route29Sign1Text, ROUTE_29
+	jumptext Route29Sign1Text
 
 Route29Sign2:
-	habitatlist Route29Sign2Text, ROUTE_29
+	jumptext Route29Sign2Text
 
 Route29CutTree:
 	jumpstd cuttree
@@ -359,8 +359,8 @@ TuscanyNotTuesdayText:
 Route29Sign1Text:
 	text "Route 29"
 
-	para "New Bark Town -"
-	para "Cherrygrove City"
+	para "Cherrygrove City -"
+	line "New Bark Town"
 	done
 
 Route29Sign2Text:

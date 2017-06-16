@@ -280,7 +280,7 @@ GoldenrodHarborStarPiece:
 	itemball STAR_PIECE
 
 GoldenrodHarborSign:
-	habitatlist GoldenrodHarborSignText, GOLDENROD_HARBOR
+	jumptext GoldenrodHarborSignText
 
 GoldenrodHarborCrateSign:
 	jumptext GoldenrodHarborCrateSignText

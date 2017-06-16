@@ -104,7 +104,7 @@ SaffronCitySilphEmployeeScript:
 	jumptextfaceplayer SaffronCitySilphEmployeeText
 
 SaffronCitySign:
-	habitatlist SaffronCitySignText, SAFFRON_CITY
+	jumptext SaffronCitySignText
 
 SaffronGymSign:
 	jumptext SaffronGymSignText

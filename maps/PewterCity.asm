@@ -61,7 +61,7 @@ UnknownScript_0x18c023:
 	end
 
 PewterCitySign:
-	habitatlist PewterCitySignText, PEWTER_CITY
+	jumptext PewterCitySignText
 
 PewterGymSign:
 	jumptext PewterGymSignText

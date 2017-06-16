@@ -218,10 +218,10 @@ Route10Zapdos:
 	end
 
 Route10RockTunnelSign:
-	habitatlist RockTunnelSignText, ROCK_TUNNEL
+	jumptext RockTunnelSignText
 
 PowerPlantSign:
-	habitatlist PowerPlantSignText, POWER_PLANT
+	jumptext PowerPlantSignText
 
 Route10FullRestore:
 	itemball FULL_RESTORE

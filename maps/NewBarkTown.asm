@@ -225,7 +225,7 @@ NewBarkTownSilverScript:
 	end
 
 NewBarkTownSign:
-	habitatlist NewBarkTownSignText, NEW_BARK_TOWN
+	jumptext NewBarkTownSignText
 
 MapNewBarkTownSignpost1Script:
 	jumptext PlayersHouseSignText

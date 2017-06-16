@@ -159,7 +159,7 @@ MapRuinsofAlphOutsideSignpost0Script:
 	jumptext UnknownText_0x58325
 
 MapRuinsofAlphOutsideSignpost1Script:
-	habitatlist UnknownText_0x58342, RUINS_OF_ALPH
+	jumptext UnknownText_0x58342
 
 MapRuinsofAlphOutsideSignpost2Script:
 	jumptext UnknownText_0x58362

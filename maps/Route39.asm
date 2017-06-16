@@ -184,7 +184,7 @@ Route39BeautyScript:
 	jumptextfaceplayer Route39BeautyText
 
 Route39Sign:
-	habitatlist Route39SignText, ROUTE_39
+	jumptext Route39SignText
 
 MoomooFarmSign:
 	jumptext MoomooFarmSignText

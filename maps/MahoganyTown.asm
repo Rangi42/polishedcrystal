@@ -102,7 +102,7 @@ LassScript_0x190095:
 	jumptextfaceplayer UnknownText_0x1902f2
 
 MahoganyTownSign:
-	habitatlist MahoganyTownSignText, MAHOGANY_TOWN
+	jumptext MahoganyTownSignText
 
 MahoganyTownRagecandybarSign:
 	jumptext MahoganyTownRagecandybarSignText

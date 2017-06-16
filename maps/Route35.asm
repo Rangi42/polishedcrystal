@@ -275,7 +275,7 @@ UnknownScript_0x19ca73:
 	end
 
 Route35Sign:
-	habitatlist Route35SignText, ROUTE_35
+	jumptext Route35SignText
 
 Route35TMHoneClaws:
 	tmhmball TM_HONE_CLAWS
