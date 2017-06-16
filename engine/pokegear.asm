@@ -885,7 +885,7 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 	ret
 
 .quit_submenu
-	ld a, $8
+	ld a, $a
 	ld [wJumptableIndex], a
 	ret
 
@@ -925,7 +925,7 @@ PokegearPhone_MakePhoneCall: ; 911eb (24:51eb)
 	farcall Phone_NoSignal
 	ld hl, .OutOfServiceArea
 	call PrintText
-	ld a, $8
+	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
 	jp PrintText
