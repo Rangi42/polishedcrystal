@@ -8826,58 +8826,26 @@ BattleCommand_ClearHazards: ; 37b39
 
 
 BattleCommand_HealMornOrDay:
-	ld d, 0
-	jr BattleCommand_HealTime
 BattleCommand_HealNite:
-	ld d, 1
 BattleCommand_HealTime:
-; d contains default state: 1 = lesser heal. Reverses during night
-; Don't factor in time of day in link battles.
-	ld a, [wLinkMode]
-	and a
-	ld a, 0 ; not xor a; preserve carry flag
-	jr nz, .timecheck_ok
-	ld a, [TimeOfDay]
-	cp NITE
-	ld a, d
-	jr nz, .timecheck_ok
-	; on nighttime, default state is reversed
-	xor 1
-.timecheck_ok
-	add 2
-	ld d, a
-	; d=1: heal 100%, d=2: heal 50%, d=3: heal 25%, d=4: heal 12.5%
-
 	farcall CheckFullHP
 	jr z, .full
-
-	call GetWeatherAfterCloudNine
-	and a
-	jr z, .heal
-
-; Heal amount doubles in sun, halves in any other active weather
-	dec d
-	cp WEATHER_SUN
-	jr z, .heal
-	inc d
-	inc d
-
-.heal
 	call AnimateCurrentMove
 
-	farcall GetMaxHP
-.loop
-	dec d
-	jr z, .done
-	srl b
-	rr c
-	jr .loop
-.done
-	; minimum healing cap is 1
-	ld a, c
-	or b
-	jr nz, .amount_ok
-	inc c
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SUN
+	jr z, .goodheal
+	and a
+	jr nz, .badheal
+	farcall GetHalfMaxHP
+	jr .amount_ok
+.badheal
+	farcall GetQuarterMaxHP
+	jr .amount_ok
+.goodheal
+	farcall GetThirdMaxHP
+	sla c
+	rl b
 .amount_ok
 	farcall RestoreHP
 	call UpdateUserInParty
