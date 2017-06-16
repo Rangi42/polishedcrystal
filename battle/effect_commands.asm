@@ -459,13 +459,21 @@ CheckWhiteHerb:
 	cp HELD_WHITE_HERB
 	ret nz
 
-	; Check if we have any reduced stat changes
+	; Check if we have any reduced stat changes, and don't proc if fainted
 	ld a, [hBattleTurn]
 	and a
+	ld de, BattleMonHP
 	ld hl, PlayerStatLevels
 	jr z, .got_stat_levels
+	ld de, EnemyMonHP
 	ld hl, EnemyStatLevels
 .got_stat_levels
+	ld a, [de]
+	ld b, a
+	inc de
+	ld a, [de]
+	or b
+	ret z
 	ld b, NUM_LEVEL_STATS
 	ld c, 0
 .stat_loop
@@ -2014,6 +2022,7 @@ BattleCommand_EffectChance: ; 34ecc
 	ld a, [hl]
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp SHEER_FORCE
 	jr z, .failed
 	cp SERENE_GRACE
@@ -3434,6 +3443,13 @@ ApplyStatBoostDamageAfterUnaware:
 	ret z
 ApplyStatBoostDamage:
 	call GetStatBoost
+	cp 7
+	jr nc, GotStatLevel
+	ld b, a
+	ld a, [CriticalHit]
+	and a
+	ret nz
+	ld a, b
 	jr GotStatLevel
 ApplyDefStatBoostDamageAfterUnaware:
 	ld a, BATTLE_VARS_ABILITY
@@ -3442,10 +3458,13 @@ ApplyDefStatBoostDamageAfterUnaware:
 	ret z
 ApplyDefStatBoostDamage:
 	call GetStatBoost
+	cp 7
+	jr c, .no_crit_negation
 	ld b, a
 	ld a, [CriticalHit]
 	and a
 	ret nz
+.no_crit_negation
 	ld a, 14
 	sub b
 	; fallthrough
@@ -3630,7 +3649,7 @@ BattleCommand_DamageCalc: ; 35612
 .expert_belt
 	ld a, [TypeModifier]
 	cp $11
-	ld a, $ba
+	ld a, $65
 	call nc, ApplyDamageMod
 	; fallthrough
 .done_attacker_item

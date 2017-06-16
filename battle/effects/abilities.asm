@@ -847,11 +847,11 @@ RattledAbility:
 	; only for bug-, dark or ghost type moves
 	ld a, c
 	cp BUG
-	jr .ok
+	jr z, .ok
 	cp DARK
-	jr .ok
+	jr z, .ok
 	cp GHOST
-	jr .ok
+	jr z, .ok
 	ret
 .ok
 	; fallthrough
