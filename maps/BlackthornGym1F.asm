@@ -128,11 +128,11 @@ BlackthornGymGuyScript:
 	end
 
 BlackthornGymStatue:
+	trainertotext CLAIR, 1, $1
 	checkflag ENGINE_RISINGBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext CLAIR, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 15, .LyraToo
 	jumpstd gymstatue2

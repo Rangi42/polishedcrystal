@@ -137,11 +137,11 @@ TwinsJoandzoe2Script:
 	end
 
 CeladonGymStatue:
+	trainertotext ERIKA, 1, $1
 	checkflag ENGINE_RAINBOWBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext ERIKA, 1, $1
 	jumpstd gymstatue2
 
 UnknownText_0x72b28:

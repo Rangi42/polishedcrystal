@@ -139,12 +139,11 @@ AceDuoElanandida2Script:
 	end
 
 ViridianGymStatue:
+	trainertotext BLUE, 1, $1
 	checkflag ENGINE_EARTHBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
-
 .Beaten:
-	trainertotext BLUE, 1, $1
 	jumpstd gymstatue2
 
 LeaderBlueBeforeText:

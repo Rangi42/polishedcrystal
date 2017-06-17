@@ -111,11 +111,11 @@ VioletGymGuyScript:
 	end
 
 VioletGymStatue:
+	trainertotext FALKNER, 1, $1
 	checkflag ENGINE_ZEPHYRBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext FALKNER, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 8, .LyraToo
 	jumpstd gymstatue2

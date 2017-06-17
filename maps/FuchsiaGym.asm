@@ -231,11 +231,11 @@ FuchsiaGymGuyScript:
 	end
 
 FuchsiaGymStatue:
+	trainertotext JANINE, 1, $1
 	checkflag ENGINE_MARSHBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext JANINE, 1, $1
 	jumpstd gymstatue2
 
 MovementData_0x195f27:

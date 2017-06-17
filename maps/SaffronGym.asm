@@ -168,11 +168,11 @@ SaffronGymGuyScript:
 	end
 
 SaffronGymStatue:
+	trainertotext SABRINA, 1, $1
 	checkflag ENGINE_SOULBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext SABRINA, 1, $1
 	jumpstd gymstatue2
 
 UnknownText_0x189cdf:

@@ -156,11 +156,11 @@ GoldenrodGymGuyScript:
 	end
 
 GoldenrodGymStatue:
+	trainertotext WHITNEY, 1, $1
 	checkflag ENGINE_PLAINBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext WHITNEY, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 10, .LyraToo
 	jumpstd gymstatue2
