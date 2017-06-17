@@ -39,13 +39,19 @@ TrainerCard: ; 25105
 	ld hl, CardBorderGFX
 	ld de, VTiles1 tile ($de - $80)
 	ld bc, 12 tiles
-	ld a, BANK(CardDividerGFX)
+	ld a, BANK(CardBorderGFX)
 	call FarCopyBytes
 
 	ld hl, CardDividerGFX
 	ld de, VTiles2 tile $23
-	ld bc, 5 tiles
+	ld bc, 6 tiles
 	ld a, BANK(CardDividerGFX)
+	call FarCopyBytes
+
+	ld hl, CardStatusGFX
+	ld de, VTiles2 tile $2b
+	ld bc, 4 tiles
+	ld a, BANK(CardStatusGFX)
 	call FarCopyBytes
 
 	call TrainerCard_PrintBorder
@@ -92,8 +98,8 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 	ld de, CardStatusGFX
-	ld hl, VTiles2 tile $2a
-	lb bc, BANK(CardStatusGFX), 5
+	ld hl, VTiles2 tile $2b
+	lb bc, BANK(CardStatusGFX), 4
 	call Request2bpp
 	call TrainerCard_Page1_PrintDexCaught_GameTime
 	jp TrainerCard_IncrementJumptable
@@ -124,8 +130,8 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call WaitBGMap
 
 	ld de, CardBadgesGFX
-	ld hl, VTiles2 tile $2a
-	lb bc, BANK(CardBadgesGFX), 5
+	ld hl, VTiles2 tile $2b
+	lb bc, BANK(CardBadgesGFX), 4
 	call Request2bpp
 	ld de, LeaderGFX
 	ld hl, VTiles2 tile $2f
@@ -190,8 +196,8 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call WaitBGMap
 
 	ld de, CardBadgesGFX
-	ld hl, VTiles2 tile $2a
-	lb bc, BANK(CardBadgesGFX), 5
+	ld hl, VTiles2 tile $2b
+	lb bc, BANK(CardBadgesGFX), 4
 	call Request2bpp
 	ld de, LeaderGFX2
 	ld hl, VTiles2 tile $2f
@@ -267,19 +273,26 @@ TrainerCard_PrintBorder: ; 253b0 (9:53b0)
 	hlcoord 1, 8
 	ld a, $23
 	ld [hli], a
-rept 5
-	inc hl
-endr
+	ld a, $2b
+	ld [hli], a
+	inc a ; $2c
+	ld [hli], a
+	inc a ; $2d
+	ld [hli], a
+	inc a ; $2e
+	ld [hli], a
+	ld a, $24
+	ld [hli], a
 
 	ld e, 4
 .loop4
-	inc a ; $24
-	ld [hli], a
 	inc a ; $25
 	ld [hli], a
 	inc a ; $26
 	ld [hli], a
-	ld a, $23
+	inc a ; $27
+	ld [hli], a
+	ld a, $25 - 1
 	dec e
 	jr nz, .loop4
 	ret
@@ -337,10 +350,6 @@ TrainerCardSetup_ClearBottomHalf:
 	jp ClearBox
 
 TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
-	hlcoord 2, 8
-	ld de, StatusTilemap
-	call TrainerCardSetup_PlaceTilemapString
-
 	hlcoord 2, 10
 	ld de, .Dex_PlayTime_BP
 	call PlaceString
@@ -385,7 +394,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	ld a, c
 	and a
 	jr z, .nostar1
-	ld a, $27
+	ld a, $28
 	ld [hli], a ; beat the Elite 4
 .nostar1
 	push hl
@@ -396,7 +405,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	ld a, c
 	and a
 	jr z, .nostar2
-	ld a, $27
+	ld a, $28
 	ld [hli], a ; beat Leaf
 .nostar2
 	push hl
@@ -406,7 +415,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	pop hl
 	cp NUM_POKEMON
 	jr c, .nostar3
-	ld a, $27
+	ld a, $28
 	ld [hli], a ; complete Pokédex
 .nostar3
 	push hl
@@ -416,7 +425,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	pop hl
 	cp NUM_POKEMON_JOURNALS
 	ret c
-	ld [hl], $27 ; read all Pokémon Journals
+	ld [hl], $28 ; read all Pokémon Journals
 	ret
 
 .Dex_PlayTime_BP:
@@ -425,11 +434,31 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 	next "Battle Pts"
 	next "          Badges▶@"
 
-TrainerCard_Page2_3_InitObjectsAndStrings: ; 2536c (9:536c)
-	ld de, BadgesTilemap
-	hlcoord 2, 8
-	call TrainerCardSetup_PlaceTilemapString
+TrainerCard_Page1_PrintGameTime: ; 25415 (9:5415)
+	hlcoord 11, 12
+	ld de, GameTimeHours
+	lb bc, 2, 4
+	call PrintNum
+	inc hl
+	ld de, GameTimeMinutes
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	call PrintNum
+	ld a, [hVBlankCounter]
+	and $1f
+	ret nz
+	hlcoord 15, 12
+	ld a, [hl]
+	cp ":"
+	jr z, .space
+	ld a, ":"
+	jr .ok
+.space
+	ld a, " "
+.ok
+	ld [hl], a
+	ret
 
+TrainerCard_Page2_3_InitObjectsAndStrings: ; 2536c (9:536c)
 	hlcoord 2, 10
 	ld a, $2f
 	ld c, 4
@@ -457,19 +486,6 @@ endr
 	ld hl, TrainerCard_KantoBadgesOAM
 	jp TrainerCard_Page2_3_OAMUpdate
 
-StatusTilemap:
-BadgesTilemap:
-	db $2a, $2b, $2c, $2d, $2e, $ff ; "STATUS", "BADGES"
-
-TrainerCardSetup_PlaceTilemapString: ; 253a8 (9:53a8)
-.loop
-	ld a, [de]
-	cp $ff
-	ret z
-	ld [hli], a
-	inc de
-	jr .loop
-
 TrainerCard_Page2_3_PlaceLeadersFaces: ; 253f4 (9:53f4)
 	push de
 	push hl
@@ -490,30 +506,6 @@ rept 3
 endr
 	pop hl
 	pop de
-	ret
-
-TrainerCard_Page1_PrintGameTime: ; 25415 (9:5415)
-	hlcoord 11, 12
-	ld de, GameTimeHours
-	lb bc, 2, 4
-	call PrintNum
-	inc hl
-	ld de, GameTimeMinutes
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ld a, [hVBlankCounter]
-	and $1f
-	ret nz
-	hlcoord 15, 12
-	ld a, [hl]
-	cp ":"
-	jr z, .space
-	ld a, ":"
-	jr .ok
-.space
-	ld a, " "
-.ok
-	ld [hl], a
 	ret
 
 TrainerCard_Page2_3_AnimateBadges: ; 25438 (9:5438)
