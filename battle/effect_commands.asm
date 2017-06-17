@@ -6297,7 +6297,7 @@ BattleCommand_CheckRampage: ; 3671a
 	ld [de], a
 .continue_rampage
 	ld b, rampage_command
-	jp SkipToBattleCommand
+	jp SkipToBattleCommandAfter
 
 ; 36751
 
@@ -6908,7 +6908,7 @@ BattleCommand_CheckCharge: ; 36b3a
 	res SUBSTATUS_UNDERGROUND, [hl]
 	res SUBSTATUS_FLYING, [hl]
 	ld b, charge_command
-	jp SkipToBattleCommand
+	jp SkipToBattleCommandAfter
 
 ; 36b4d
 
@@ -8976,7 +8976,7 @@ BattleCommand_SkipSunCharge: ; 37d02
 	cp WEATHER_SUN
 	ret nz
 	ld b, charge_command
-	jp SkipToBattleCommand
+	jp SkipToBattleCommandAfter
 
 ; 37d0d
 
@@ -9006,7 +9006,7 @@ BattleCommand_CheckFutureSight: ; 37d0d
 	ld a, [de]
 	ld [CurDamage + 1], a
 	ld b, futuresight_command
-	jp SkipToBattleCommand
+	jp SkipToBattleCommandAfter
 
 ; 37d34
 
@@ -9363,10 +9363,13 @@ EndMoveEffect:
 	ld b, endmove_command
 	; fallthrough
 SkipToBattleCommand:
-	ld c, 0
+	ld c, 1
+	jr BattleCommandJump
+SkipToBattleCommandAfter:
+	ld c, 2
 	jr BattleCommandJump
 SkipToBattleCommandBackwards:
-	ld c, 1
+	ld c, 0
 BattleCommandJump:
 ; Skip over commands until reaching command b.
 	ld a, [BattleScriptBufferLoc]
@@ -9381,12 +9384,18 @@ BattleCommandJump:
 	ld a, c
 	and a
 	inc hl
-	jr z, .loop
+	jr nz, .loop
 	dec hl
 	dec hl
 	jr .loop
 
 .got_target
+	ld a, c
+	cp 2
+	jr nz, .jump_done
+	; c = 2: skip to command after
+	inc hl
+.jump_done
 	ld a, l
 	ld [BattleScriptBufferLoc], a
 	ld a, h
