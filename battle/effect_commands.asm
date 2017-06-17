@@ -3459,8 +3459,8 @@ ApplyDefStatBoostDamageAfterUnaware:
 ApplyDefStatBoostDamage:
 	call GetStatBoost
 	cp 7
-	jr c, .no_crit_negation
 	ld b, a
+	jr c, .no_crit_negation
 	ld a, [CriticalHit]
 	and a
 	ret nz
@@ -3494,7 +3494,8 @@ BattleCommand_ConfusedDamageCalc:
 	ld de, EnemyDefLevel
 	call ApplyDefStatBoostDamage
 
-	jp DamagePass3
+	call DamagePass3
+	jp DamagePass4
 
 BattleCommand_DamageCalc: ; 35612
 ; Return a damage value for move power d, player level e, enemy defense c and
@@ -3664,8 +3665,8 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplySpecialDefenseDamageMod
 	; fallthrough
 .done_defender_item
-	jp DamagePass3
-
+	call DamagePass3
+	jp DamagePass4
 
 DamagePass1:
 	; Minimum defense value is 1.
@@ -3705,15 +3706,17 @@ DamagePass1:
 
 DamagePass2:
 	; * bp
-	inc hl
+	ld hl, hMultiplier
 	ld [hl], d
 	call Multiply
 
 	; * Attack
 	ld [hl], b
-	call Multiply
+	jp Multiply
 
+DamagePass3:
 	; / Defense
+	ld hl, hMultiplier
 	ld [hl], c
 	ld b, $4
 	call Divide
@@ -3723,7 +3726,7 @@ DamagePass2:
 	ld b, $4
 	jp Divide
 
-DamagePass3:
+DamagePass4:
 	; If we exceed $ffff at this point, skip to capping to 997 as the final damage.
 	ld a, [hQuotient]
 	and a
