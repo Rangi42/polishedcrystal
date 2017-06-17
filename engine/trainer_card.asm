@@ -49,10 +49,7 @@ TrainerCard: ; 25105
 	call FarCopyBytes
 
 	ld hl, CardStatusGFX
-	ld de, VTiles2 tile $2b
-	ld bc, 4 tiles
-	ld a, BANK(CardStatusGFX)
-	call FarCopyBytes
+	call TrainerCard_LoadHeaderGFX
 
 	call TrainerCard_PrintBorder
 	call TrainerCard_PrintTopHalfOfCard
@@ -97,10 +94,8 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call ClearSprites
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
-	ld de, CardStatusGFX
-	ld hl, VTiles2 tile $2b
-	lb bc, BANK(CardStatusGFX), 4
-	call Request2bpp
+	ld hl, CardStatusGFX
+	call TrainerCard_LoadHeaderGFX
 	call TrainerCard_Page1_PrintDexCaught_GameTime
 	jp TrainerCard_IncrementJumptable
 
@@ -129,18 +124,19 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call SetPalettes
 	call WaitBGMap
 
-	ld de, CardBadgesGFX
-	ld hl, VTiles2 tile $2b
-	lb bc, BANK(CardBadgesGFX), 4
-	call Request2bpp
+	ld hl, CardBadgesGFX
+	call TrainerCard_LoadHeaderGFX
+
 	ld de, LeaderGFX
 	ld hl, VTiles2 tile $2f
 	lb bc, BANK(LeaderGFX), $50
 	call Request2bpp
+
 	ld de, BadgeGFX
 	ld hl, VTiles0 tile $00
 	lb bc, BANK(BadgeGFX), $2c
 	call Request2bpp
+
 	call TrainerCard_Page2_3_InitObjectsAndStrings
 	jp TrainerCard_IncrementJumptable
 
@@ -195,18 +191,19 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call SetPalettes
 	call WaitBGMap
 
-	ld de, CardBadgesGFX
-	ld hl, VTiles2 tile $2b
-	lb bc, BANK(CardBadgesGFX), 4
-	call Request2bpp
+	ld hl, CardBadgesGFX
+	call TrainerCard_LoadHeaderGFX
+
 	ld de, LeaderGFX2
 	ld hl, VTiles2 tile $2f
 	lb bc, BANK(LeaderGFX2), $50
 	call Request2bpp
+
 	ld de, BadgeGFX2
 	ld hl, VTiles0 tile $00
 	lb bc, BANK(BadgeGFX2), $2c
 	call Request2bpp
+
 	call TrainerCard_Page2_3_InitObjectsAndStrings
 	jp TrainerCard_IncrementJumptable
 
@@ -231,6 +228,12 @@ TrainerCard_Page3_Joypad: ; 25279 (9:5279)
 	ld a, $2
 	ld [wJumptableIndex], a
 	ret
+
+TrainerCard_LoadHeaderGFX:
+	ld de, VTiles2 tile $2b
+	ld bc, 4 tiles
+	ld a, BANK(CardStatusGFX) ; BANK(CardBadgesGFX)
+	jp FarCopyBytes
 
 TrainerCard_PrintBorder: ; 253b0 (9:53b0)
 	hlcoord 0, 0
