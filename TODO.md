@@ -107,12 +107,8 @@ Out-of-battle effects:
 * Ability Cap(sule)
 * Assault Vest
 * Big Root
-* Choice Band
-* Choice Scarf
-* Choice Specs
 * Destiny Knot
 * Mental Herb
-* Metronome
 * Oval Charm
 * Protect(ive) Pads
 * Quick Powder

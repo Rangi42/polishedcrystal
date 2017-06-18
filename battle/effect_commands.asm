@@ -3521,7 +3521,7 @@ BattleCommand_ConfusedDamageCalc:
 ; Needed because several things are skipped
 	call DamagePass1
 	call DamagePass2
-
+	push bc
 	; This way we ignore Unnerve
 	ld hl, PlayerAtkLevel
 	ld de, EnemyAtkLevel
@@ -3529,7 +3529,7 @@ BattleCommand_ConfusedDamageCalc:
 	ld hl, PlayerDefLevel
 	ld de, EnemyDefLevel
 	call ApplyDefStatBoostDamage
-
+	pop bc
 	call DamagePass3
 	jp DamagePass4
 
@@ -3568,6 +3568,7 @@ BattleCommand_DamageCalc: ; 35612
 
 .skip_technician
 	call DamagePass2
+	push bc
 
 	; Stat changes
 	push de
@@ -3713,6 +3714,7 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplySpecialDefenseDamageMod
 	; fallthrough
 .done_defender_item
+	pop bc
 	call DamagePass3
 	jp DamagePass4
 
