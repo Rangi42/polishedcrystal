@@ -503,10 +503,13 @@ GetSpeed::
 	pop de ; needed early to check quick claw allowance
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
-	cp HELD_CHOICE_SPD
-	jr z, .choice_scarf
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
+	cp HELD_CHOICE
+	jr nz, .done
+	ld a, c
+	cp SPEED
+	jr z, .choice_scarf
 	jr .done
 .quick_claw
 	ld a, d
@@ -3282,6 +3285,7 @@ CheckWhetherSwitchmonIsPredetermined: ; 3d533
 ResetEnemyBattleVars: ; 3d557
 ; and draw empty TextBox
 	xor a
+	ld [EnemySelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastEnemyMove], a
@@ -3755,6 +3759,7 @@ Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
 
 NewEnemyMonStatus: ; 3d834
 	xor a
+	ld [EnemySelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastEnemyMove], a
@@ -4279,6 +4284,7 @@ SendOutPlayerMon: ; 3db5f
 	ld [CurMoveNum], a
 	ld [TypeModifier], a
 	ld [wPlayerMoveStruct + MOVE_ANIM], a
+	ld [PlayerSelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastPlayerMove], a
@@ -4320,6 +4326,7 @@ SendOutPlayerMon: ; 3db5f
 
 NewBattleMonStatus: ; 3dbde
 	xor a
+	ld [PlayerSelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastPlayerMove], a
@@ -5682,11 +5689,36 @@ CheckAmuletCoin: ; 3e4a8
 	ret
 ; 3e4bc
 
-MoveSelectionScreen: ; 3e4bc
+MoveSelectionScreen:
+	; Maybe reset PlayerSelectedMove if the move has disappeared
+	; (possible if we learned a new move and replaced the old)
+	push bc
+	push hl
+	ld hl, BattleMonMoves
+	ld a, [PlayerSelectedMove]
+	ld b, a
+	ld c, 4
+.loop
+	ld a, [hli]
+	and a
+	jr z, .sanity_check_done
+	cp b
+	jr z, .sanity_check_done
+	dec c
+	jr nz, .loop
+.sanity_check_done
+	cp b
+	jr z, .dont_kill_selectedmove
+	xor a
+	ld [PlayerSelectedMove], a
+.dont_kill_selectedmove
+	pop hl
+	pop bc
 	ld a, [wMoveSelectionMenuType]
 	dec a
 	jr z, .ether_elixer_menu
-	call CheckPlayerHasUsableMoves
+	call SetPlayerTurn
+	call CheckUsableMoves
 	ret z ; use Struggle
 	ld hl, BattleMonMoves
 	jr .got_menu_type
@@ -5829,6 +5861,29 @@ MoveSelectionScreen: ; 3e4bc
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
+	ld b, a
+
+	; Some items limit move freedom
+	push bc
+	farcall GetPlayerItem
+	ld a, b
+	pop bc
+
+	cp HELD_CHOICE
+	jr z, .choice_check
+	cp HELD_ASSAULT_VEST
+	jr nz, .ok
+
+	; TODO: Check Assault Vest
+	jr .ok
+.choice_check
+	ld a, [PlayerSelectedMove]
+	and a
+	jr z, .ok
+	cp b
+	jr nz, .choiced
+.ok
+	ld a, b
 	ld [CurPlayerMove], a
 	xor a
 	ret
@@ -5838,10 +5893,30 @@ MoveSelectionScreen: ; 3e4bc
 	jr .place_textbox_start_over
 
 .choiced
+	; Load item into StringBuffer1, move into StringBuffer2
+	ld a, [PlayerSelectedMove]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+
+	; The above places move name into buffer 1, now copy into 2
+	ld hl, StringBuffer1
+	ld de, StringBuffer2
+	ld bc, MOVE_NAME_LENGTH
+	call CopyBytes
+
+	; now place item into StringBuffer1
+	ld a, [BattleMonItem]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
 	ld hl, BattleText_ItemOnlyAllowsMove
 	jr .place_textbox_start_over
 
 .assault_vest
+	ld a, [BattleMonItem]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
 	ld hl, BattleText_ItemPreventsStatusMoves
 	jr .place_textbox_start_over
 
@@ -6145,53 +6220,97 @@ endr
 	jp PrintNum
 ; 3e786
 
-CheckPlayerHasUsableMoves: ; 3e786
-	ld a, STRUGGLE
-	ld [CurPlayerMove], a
-	ld a, [PlayerDisableCount]
+CheckUsableMoves: ; 3e786
+	push bc
+	push de
+	push hl
+
+	; Usable moves
+	ld e, %1111
+
+	; Zero out moves without PP (empty move slots have 0PP)
+	ld a, [hBattleTurn]
 	and a
 	ld hl, BattleMonPP
-	jr nz, .disabled
-
+	jr z, .got_pp
+	ld hl, EnemyMonPP
+.got_pp
+	ld b, %01111111
+	ld c, 4
+.pp_loop
+	rlc b
 	ld a, [hli]
-	or [hl]
-	inc hl
-	or [hl]
-	inc hl
-	or [hl]
 	and $3f
-	ret nz
-	jr .force_struggle
+	jr nz, .pp_next
+	ld a, e
+	and b
+	ld e, a
+.pp_next
+	dec c
+	jr nz, .pp_loop
 
-.disabled
+	; Zero out disabled moves
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerDisableCount]
+	jr z, .got_disable_count
+	ld a, [EnemyDisableCount]
+.got_disable_count
+	and a
+	jr z, .disable_done
+	ld b, %01111111
 	swap a
 	and $f
-	ld b, a
-	ld d, $5
-	xor a
-.loop
-	dec d
-	jr z, .done
-	ld c, [hl]
-	inc hl
-	dec b
-	jr z, .loop
-	or c
-	jr .loop
+.disable_loop
+	rlc b
+	dec a
+	jr nz, .disable_loop
+	ld a, e
+	and b
+	ld e, a
+.disable_done
+	; Item checks
+	push de
+	farcall GetUserItem
+	pop de
+	ld a, b
+	cp HELD_CHOICE
+	jr z, .choiced
+	cp HELD_ASSAULT_VEST
+	jr nz, .items_done
 
-.done
-	and $3f
-	ret nz
-
-.force_struggle
-	ld hl, BattleText_PkmnHasNoMovesLeft
-	call StdBattleTextBox
-	ld c, 60
-	call DelayFrames
-	xor a
+	; Assault Vest check
+	jr .items_done
+.choiced
+	; Check if we did a move yet
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerSelectedMove]
+	ld hl, BattleMonMoves
+	jr z, .got_selected_move
+	ld a, [EnemySelectedMove]
+	ld hl, EnemyMonMoves
+.got_selected_move
+	and a
+	jr z, .items_done
+	ld c, a
+	ld b, %01111111
+.choice_loop
+	rlc b
+	ld a, [hli]
+	cp c
+	jr nz, .choice_loop
+	ld a, e
+	and b
+	ld e, a
+	; fallthrough
+.items_done
+	; TODO !!! Out of space. Get rid of this
+	farcall _CheckUsableMoves
+	pop hl
+	pop de
+	pop bc
 	ret
-; 3e7c1
-
 
 
 ParseEnemyAction: ; 3e7c1
@@ -6221,6 +6340,26 @@ ParseEnemyAction: ; 3e7c1
 	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
 	jp nz, .skip_load
 
+	call SetEnemyTurn
+	call CheckUsableMoves
+	jp z, .struggle
+
+	; Check if we're choice-locked
+	ld a, [EnemySelectedMove]
+	and a
+	jr z, .not_choiced
+	push bc
+	push de
+	push hl
+	farcall GetEnemyItem
+	ld a, b
+	pop hl
+	pop de
+	pop bc
+	cp HELD_CHOICE
+	ld a, [EnemySelectedMove]
+	jr z, .finish
+.not_choiced
 	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	ld a, [LastEnemyMove]

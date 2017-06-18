@@ -478,7 +478,20 @@ OTPartyUsedItems::
 ; Opponent equavilent
 	ds 6
 
-	ds 22 ; unused
+PlayerSelectedMove::
+; what move you *selected* last, used for Choice locking and the
+; Metronome item
+	ds 1
+EnemySelectedMove::
+	ds 1
+
+PlayerMetronomeCount::
+; how much it is boosted (counts even if you don't have the item)
+	ds 1
+EnemyMetronomeCount::
+	ds 1
+
+	ds 16 ; unused
 
 BattleScriptBufferLoc:: ; c6b2
 	ds 2

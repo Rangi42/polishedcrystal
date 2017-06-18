@@ -57,8 +57,10 @@ DoTurn: ; 3401d
 ; 3402c
 
 
-DoMove: ; 3402c
+DoMove:
 ; Get the user's move effect.
+	; Increase move usage counter if applicable
+	call IncreaseMetronomeCount
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	ld c, a
@@ -452,6 +454,40 @@ CantMove: ; 341f0
 	jp AppearUserRaiseSub
 
 ; 34216
+
+IncreaseMetronomeCount:
+	; Don't arbitrarily boost usage counter twice on a turn
+	call CheckUserIsCharging
+	ret nz
+
+	ld a, [hBattleTurn]
+	and a
+	ld de, PlayerSelectedMove
+	ld hl, PlayerMetronomeCount
+	jr z, .got_move_usage
+	ld de, EnemySelectedMove
+	ld hl, EnemyMetronomeCount
+.got_move_usage
+	ld a, [de]
+	ld b, a
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp b
+	jr nz, .reset
+	ld a, [hl]
+	cp 5
+	ret nc
+	inc [hl]
+	ret
+.reset
+	; Struggle doesn't update last move set but does reset count
+	cp STRUGGLE
+	jr z, .done_update_selected_move
+	ld [de], a
+.done_update_selected_move
+	xor a
+	ld [hl], a
+	ret
 
 CheckWhiteHerb:
 	call GetUserItemAfterUnnerve
@@ -3608,10 +3644,8 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .type_boost
 	cp HELD_CATEGORY_BOOST
 	jr z, .category_boost
-	cp HELD_CHOICE_ATK
-	jr z, .choice_atk
-	cp HELD_CHOICE_SAT
-	jr z, .choice_sat
+	cp HELD_CHOICE
+	jr z, .choice
 	cp HELD_EXPERT_BELT
 	jr z, .expert_belt
 	cp HELD_METRONOME
@@ -3636,7 +3670,12 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, $ba
 	call z, ApplyDamageMod
 	jr .done_attacker_item
-.choice_atk
+.choice
+	ld a, c
+	cp SP_ATTACK
+	jr z, .choice_sat
+	cp ATTACK
+	jr nz, .done_attacker_item
 	ld a, $32
 	call ApplyPhysicalAttackDamageMod
 	jr .done_attacker_item
@@ -3645,7 +3684,16 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplySpecialAttackDamageMod
 	jr .done_attacker_item
 .metronome_item
-	; TODO
+	ld b, $55
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerMetronomeCount]
+	jr z, .got_metronome_count
+	ld a, [EnemyMetronomeCount]
+.got_metronome_count
+	swap a
+	add b
+	call ApplyDamageMod
 	jr .done_attacker_item
 .expert_belt
 	ld a, [TypeModifier]
@@ -4854,6 +4902,26 @@ SelfInflictDamageToSubstitute: ; 35de0
 	jp ResetDamage
 
 ; 35e40
+
+_CheckUsableMoves:
+	ld a, e
+	and a
+	ret nz
+
+.force_struggle
+	ld a, [hBattleTurn]
+	xor 1
+	ret z
+
+	; player turn
+	ld a, STRUGGLE
+	ld [CurPlayerMove], a
+	ld hl, BattleText_PkmnHasNoMovesLeft
+	call StdBattleTextBox
+	ld c, 60
+	call DelayFrames
+	xor a
+	ret
 
 
 UpdateMoveData: ; 35e40
@@ -9097,6 +9165,15 @@ CheckHiddenOpponent: ; 37daa
 
 ; 37db2
 
+GetPlayerItem:
+	ld hl, BattleMonItem
+	ld b, [hl]
+	jp GetItemHeldEffect
+
+GetEnemyItem:
+	ld hl, EnemyMonItem
+	ld b, [hl]
+	jp GetItemHeldEffect
 
 GetUserItem: ; 37db2
 ; Return the effect of the user's item in bc, and its id at hl.
