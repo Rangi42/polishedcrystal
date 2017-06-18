@@ -4905,27 +4905,6 @@ SelfInflictDamageToSubstitute: ; 35de0
 
 ; 35e40
 
-_CheckUsableMoves:
-	ld a, e
-	and a
-	ret nz
-
-.force_struggle
-	ld a, [hBattleTurn]
-	xor 1
-	ret z
-
-	; player turn
-	ld a, STRUGGLE
-	ld [CurPlayerMove], a
-	ld hl, BattleText_PkmnHasNoMovesLeft
-	call StdBattleTextBox
-	ld c, 60
-	call DelayFrames
-	xor a
-	ret
-
-
 UpdateMoveData: ; 35e40
 
 	ld a, BATTLE_VARS_MOVE_ANIM

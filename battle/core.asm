@@ -251,7 +251,6 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleLeppaBerry
 	call HandleSafeguard
 	call HandleScreens
-	call HandleStatBoostingHeldItems
 	call HandleHealingItems
 	farcall HandleAbilities
 	call HandleStatusOrbs
@@ -3866,192 +3865,6 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 ; 3d8b3
 
 
-TryToRunAwayFromBattle: ; 3d8b3
-; Run away from battle, with or without item
-	ld a, [BattleType]
-	cp BATTLETYPE_CONTEST
-	jp z, .can_escape
-	cp BATTLETYPE_GHOST
-	jp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
-	jp nc, .cant_escape
-
-	ld a, [wLinkMode]
-	and a
-	jp nz, .can_escape
-
-	ld a, [wBattleMode]
-	dec a
-	jp nz, .cant_run_from_trainer
-
-	ld a, [PlayerAbility]
-	cp RUN_AWAY
-	jr nz, .no_flee_ability
-	call SetPlayerTurn
-	farcall ShowAbilityActivation
-	jp .can_escape
-.no_flee_ability
-	push hl
-	push de
-	ld a, [BattleMonItem]
-	ld [wd265], a
-	ld b, a
-	farcall GetItemHeldEffect
-	ld a, b
-	cp HELD_ESCAPE
-	pop de
-	pop hl
-	jr nz, .no_flee_item
-
-	call SetPlayerTurn
-	call GetItemName
-	ld hl, BattleText_UserFledUsingAStringBuffer1
-	call StdBattleTextBox
-	jp .can_escape
-
-.no_flee_item
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	jp nz, .cant_escape
-
-	ld a, [wPlayerWrapCount]
-	and a
-	jp nz, .cant_escape
-
-	push hl
-	push de
-	call SetPlayerTurn
-	call CheckIfTrappedByAbility_Core
-	pop de
-	pop hl
-	jp z, .ability_prevents_escape
-
-	ld a, [wNumFleeAttempts]
-	inc a
-	ld [wNumFleeAttempts], a
-	ld a, h
-	ld [hStringCmpString2 + 0], a
-	ld a, l
-	ld [hStringCmpString2 + 1], a
-	ld a, d
-	ld [hStringCmpString1 + 0], a
-	ld a, e
-	ld [hStringCmpString1 + 1], a
-	call Call_LoadTempTileMapToTileMap
-	ld de, hStringCmpString2
-	ld hl, hStringCmpString1
-	ld c, $2
-	call StringCmp
-	jr nc, .can_escape
-
-	xor a
-	ld [hMultiplicand], a
-	ld a, $20
-	ld [hMultiplier], a
-	call Multiply
-	ld a, [hProduct + 2]
-	ld [hDividend + 0], a
-	ld a, [hProduct + 3]
-	ld [hDividend + 1], a
-	ld a, [hStringCmpString1 + 0]
-	ld b, a
-	ld a, [hStringCmpString1 + 1]
-	srl b
-	rr a
-	srl b
-	rr a
-	and a
-	jr z, .can_escape
-	ld [hDivisor], a
-	ld b, 2
-	call Divide
-	ld a, [hQuotient + 1]
-	and a
-	jr nz, .can_escape
-	ld a, [wNumFleeAttempts]
-	ld c, a
-.loop
-	dec c
-	jr z, .cant_escape_2
-	ld b, 30
-	ld a, [hQuotient + 2]
-	add b
-	ld [hQuotient + 2], a
-	jr c, .can_escape
-	jr .loop
-
-.cant_escape_2
-	call BattleRandom
-	ld b, a
-	ld a, [hQuotient + 2]
-	cp b
-	jr nc, .can_escape
-	ld a, $1
-	ld [wPlayerAction], a
-.cant_escape
-	ld hl, BattleText_CantEscape
-	jr .print_inescapable_text
-
-.cant_run_from_trainer
-	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
-	jr .print_inescapable_text
-
-.ability_prevents_escape
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	ld b, a
-	farcall BufferAbility
-	ld hl, BattleText_PkmnCantBeRecalledAbility
-
-.print_inescapable_text
-	call StdBattleTextBox
-	ld a, 1
-	ld [wFailedToFlee], a
-	call LoadTileMapToTempTileMap
-	and a
-	ret
-
-.can_escape
-	ld a, [wLinkMode]
-	and a
-	ld a, DRAW
-	jr z, .fled
-	call LoadTileMapToTempTileMap
-	xor a
-	ld [wPlayerAction], a
-	ld a, $f
-	ld [CurMoveNum], a
-	xor a
-	ld [CurPlayerMove], a
-	call LinkBattleSendReceiveAction
-	call Call_LoadTempTileMapToTileMap
-
-	; Got away safely
-	ld a, [wBattleAction]
-	cp BATTLEACTION_FORFEIT
-	ld a, DRAW
-	jr z, .fled
-	dec a
-.fled
-	ld b, a
-	ld a, [wBattleResult]
-	and $c0
-	add b
-	ld [wBattleResult], a
-	call StopDangerSound
-	push de
-	ld de, SFX_RUN
-	call WaitPlaySFX
-	pop de
-	call WaitSFX
-	ld hl, BattleText_GotAwaySafely
-	call StdBattleTextBox
-	call WaitSFX
-	call LoadTileMapToTempTileMap
-	scf
-	ret
-; 3da0d
-
 CheckIfTrappedByAbility_Core:
 	farcall _CheckIfTrappedByAbility
 	ld a, b
@@ -4800,88 +4613,6 @@ UseConfusionHealingItem: ; 3de51
 	ld [hl], a
 	ret
 ; 3de97
-
-HandleStatBoostingHeldItems: ; 3de97
-; The effects handled here are not used in-game.
-	call CheckSpeed
-	jr nz, .enemy_first
-	call .DoPlayer
-	jp .DoEnemy
-
-.enemy_first
-	call .DoEnemy
-	jp .DoPlayer
-; 3dea9
-
-.DoPlayer: ; 3dea9
-	call GetPartymonItem
-	xor a
-	jp .HandleItem
-; 3deb1
-
-.DoEnemy: ; 3deb1
-	call GetOTPartymonItem
-	ld a, $1
-.HandleItem: ; 3deb6
-	ld [hBattleTurn], a
-	ld d, h
-	ld e, l
-	push de
-	push bc
-	ld a, [bc]
-	ld b, a
-	farcall GetItemHeldEffect
-	ld hl, .StatUpItems
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .finish
-	inc hl
-	inc hl
-	cp b
-	jr nz, .loop
-	pop bc
-	ld a, [bc]
-	ld [wd265], a
-	push bc
-	dec hl
-	dec hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, BANK(BattleCommand_AttackUp)
-	rst FarCall
-	pop bc
-	pop de
-	ld a, [FailedMessage]
-	and a
-	ret nz
-	xor a
-	ld [bc], a
-	ld [de], a
-	call GetItemName
-	ld hl, BattleText_UsersStringBuffer1Activated
-	call StdBattleTextBox
-	farcall BattleCommand_StatUpMessage
-	ret
-
-.finish
-	pop bc
-	pop de
-	ret
-; 3defc
-
-.StatUpItems:
-	dbw HELD_ATTACK_UP,     BattleCommand_AttackUp
-	dbw HELD_DEFENSE_UP,    BattleCommand_DefenseUp
-	dbw HELD_SPEED_UP,      BattleCommand_SpeedUp
-	dbw HELD_SP_ATTACK_UP,  BattleCommand_SpecialAttackUp
-	dbw HELD_SP_DEFENSE_UP, BattleCommand_SpecialDefenseUp
-	dbw HELD_ACCURACY_UP,   BattleCommand_AccuracyUp
-	dbw HELD_EVASION_UP,    BattleCommand_EvasionUp
-	db $ff
-; 3df12
-
 
 GetPartymonItem: ; 3df12
 	ld hl, PartyMon1Item
@@ -5674,20 +5405,202 @@ CheckRunSpeed:
 	pop bc
 	pop af
 	ld [hBattleTurn], a
-	; hl: player speed, de: enemy speed
-	jp TryToRunAwayFromBattle
 
-CheckAmuletCoin: ; 3e4a8
+	; hl: player speed, de: enemy speed
+	ld a, [BattleType]
+	cp BATTLETYPE_CONTEST
+	jp z, .can_escape
+	cp BATTLETYPE_GHOST
+	jp z, .can_escape
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	jp nc, .cant_escape
+
+	ld a, [wLinkMode]
+	and a
+	jp nz, .can_escape
+
+	ld a, [wBattleMode]
+	dec a
+	jp nz, .cant_run_from_trainer
+
+	ld a, [PlayerAbility]
+	cp RUN_AWAY
+	jr nz, .no_flee_ability
+	call SetPlayerTurn
+	farcall ShowAbilityActivation
+	jp .can_escape
+.no_flee_ability
+	push hl
+	push de
 	ld a, [BattleMonItem]
+	ld [wd265], a
 	ld b, a
 	farcall GetItemHeldEffect
+	ld a, b
+	cp HELD_ESCAPE
+	pop de
+	pop hl
+	jr nz, .no_flee_item
+
+	call SetPlayerTurn
+	call GetItemName
+	ld hl, BattleText_UserFledUsingAStringBuffer1
+	call StdBattleTextBox
+	jp .can_escape
+
+.no_flee_item
+	ld a, [EnemySubStatus2]
+	bit SUBSTATUS_CANT_RUN, a
+	jp nz, .cant_escape
+
+	ld a, [wPlayerWrapCount]
+	and a
+	jp nz, .cant_escape
+
+	push hl
+	push de
+	call SetPlayerTurn
+	call CheckIfTrappedByAbility_Core
+	pop de
+	pop hl
+	jp z, .ability_prevents_escape
+
+	ld a, [wNumFleeAttempts]
+	inc a
+	ld [wNumFleeAttempts], a
+	ld a, h
+	ld [hStringCmpString2 + 0], a
+	ld a, l
+	ld [hStringCmpString2 + 1], a
+	ld a, d
+	ld [hStringCmpString1 + 0], a
+	ld a, e
+	ld [hStringCmpString1 + 1], a
+	call Call_LoadTempTileMapToTileMap
+	ld de, hStringCmpString2
+	ld hl, hStringCmpString1
+	ld c, $2
+	call StringCmp
+	jr nc, .can_escape
+
+	xor a
+	ld [hMultiplicand], a
+	ld a, $20
+	ld [hMultiplier], a
+	call Multiply
+	ld a, [hProduct + 2]
+	ld [hDividend + 0], a
+	ld a, [hProduct + 3]
+	ld [hDividend + 1], a
+	ld a, [hStringCmpString1 + 0]
+	ld b, a
+	ld a, [hStringCmpString1 + 1]
+	srl b
+	rr a
+	srl b
+	rr a
+	and a
+	jr z, .can_escape
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hQuotient + 1]
+	and a
+	jr nz, .can_escape
+	ld a, [wNumFleeAttempts]
+	ld c, a
+.loop
+	dec c
+	jr z, .cant_escape_2
+	ld b, 30
+	ld a, [hQuotient + 2]
+	add b
+	ld [hQuotient + 2], a
+	jr c, .can_escape
+	jr .loop
+
+.cant_escape_2
+	call BattleRandom
+	ld b, a
+	ld a, [hQuotient + 2]
+	cp b
+	jr nc, .can_escape
+	ld a, $1
+	ld [wPlayerAction], a
+.cant_escape
+	ld hl, BattleText_CantEscape
+	jr .print_inescapable_text
+
+.cant_run_from_trainer
+	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
+	jr .print_inescapable_text
+
+.ability_prevents_escape
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_PkmnCantBeRecalledAbility
+
+.print_inescapable_text
+	call StdBattleTextBox
+	ld a, 1
+	ld [wFailedToFlee], a
+	call LoadTileMapToTempTileMap
+	and a
+	ret
+
+.can_escape
+	ld a, [wLinkMode]
+	and a
+	ld a, DRAW
+	jr z, .fled
+	call LoadTileMapToTempTileMap
+	xor a
+	ld [wPlayerAction], a
+	ld a, $f
+	ld [CurMoveNum], a
+	xor a
+	ld [CurPlayerMove], a
+	call LinkBattleSendReceiveAction
+	call Call_LoadTempTileMapToTileMap
+
+	; Got away safely
+	ld a, [wBattleAction]
+	cp BATTLEACTION_FORFEIT
+	ld a, DRAW
+	jr z, .fled
+	dec a
+.fled
+	ld b, a
+	ld a, [wBattleResult]
+	and $c0
+	add b
+	ld [wBattleResult], a
+	call StopDangerSound
+	push de
+	ld de, SFX_RUN
+	call WaitPlaySFX
+	pop de
+	call WaitSFX
+	ld hl, BattleText_GotAwaySafely
+	call StdBattleTextBox
+	call WaitSFX
+	call LoadTileMapToTempTileMap
+	scf
+	ret
+
+
+CheckAmuletCoin:
+	push hl
+	farcall GetPlayerItem
+	pop hl
 	ld a, b
 	cp HELD_AMULET_COIN
 	ret nz
 	ld a, 1
 	ld [wAmuletCoin], a
 	ret
-; 3e4bc
 
 MoveSelectionScreen:
 	; Maybe reset PlayerSelectedMove if the move has disappeared
@@ -6305,8 +6218,25 @@ CheckUsableMoves: ; 3e786
 	ld e, a
 	; fallthrough
 .items_done
-	; TODO !!! Out of space. Get rid of this
-	farcall _CheckUsableMoves
+	ld a, e
+	and a
+	jr nz, .end
+
+.force_struggle
+	ld a, [hBattleTurn]
+	xor 1
+	jr z, .end
+	ret z
+
+	; player turn
+	ld a, STRUGGLE
+	ld [CurPlayerMove], a
+	ld hl, BattleText_PkmnHasNoMovesLeft
+	call StdBattleTextBox
+	ld c, 60
+	call DelayFrames
+	xor a
+.end
 	pop hl
 	pop de
 	pop bc
