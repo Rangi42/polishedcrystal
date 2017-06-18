@@ -7069,19 +7069,16 @@ BattleCommand_TrapTarget: ; 36c2d
 	ld a, [hl]
 	and a
 	ret nz
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp INFILTRATOR
-	jr z, .bypass_sub
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckSubstituteOpp
 	ret nz
-.bypass_sub
 	push bc
+	push de
+	push hl
 	call GetUserItem
 	ld a, b
 	cp HELD_PROLONG_WRAP
+	pop hl
+	pop de
 	pop bc
 	jr z, .seven_turns
 	call BattleRandom
