@@ -72,6 +72,8 @@ WonderTrade::
 	ld de, EVENT_CAN_GIVE_GS_BALL_TO_KURT
 	ld b, SET_FLAG
 	call EventFlagAction
+	ld de, MUSIC_SPIKY_EARED_PICHU_HGSS
+	call PlayMusic
 	ld hl, .Text_WonderTradeForGSBallPichuText
 	jp PrintText
 

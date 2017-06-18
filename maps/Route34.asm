@@ -1,7 +1,7 @@
 const_value set 2
+	const ROUTE34_RICH_BOY
 	const ROUTE34_YOUNGSTER
 	const ROUTE34_BREEDER
-	const ROUTE34_RICH_BOY
 	const ROUTE34_LASS
 	const ROUTE34_OFFICER_F
 	const ROUTE34_POKEFAN_M
@@ -494,6 +494,7 @@ TrainerBreederJulie:
 	trainer EVENT_BEAT_BREEDER_JULIE, BREEDER, JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
 
 .Script:
+	setevent EVENT_BEAT_BREEDER_JULIE_ONCE
 	end_if_just_battled
 	opentext
 	writetext BreederJulieAfterText
@@ -501,16 +502,120 @@ TrainerBreederJulie:
 	closetext
 	end
 
-TrainerRichBoyIrving:
-	trainer EVENT_BEAT_RICH_BOY_IRVING, RICH_BOY, IRVING, RichBoyIrvingSeenText, RichBoyIrvingBeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
+Route34RichBoyScript:
+	faceplayer
 	opentext
-	writetext RichBoyIrvingAfterText
+	checkevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
+	iftrue .GotBigNugget
+	checkevent EVENT_BEAT_RICH_BOY_IRVING
+	iftrue .Beaten
+	checkevent EVENT_BEAT_CAMPER_TODD
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PICNICKER_GINA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_OFFICERF_MARA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEFANM_BRANDON
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BREEDER_JULIE_ONCE
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE34_RICH_BOY
+	loadtrainer RICH_BOY, IRVING
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_RICH_BOY_IRVING
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem BIG_NUGGET
+	iffalse .Done
+	setevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
+.GotBigNugget:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
 	waitbutton
 	closetext
 	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "I don't need to"
+	line "gamble for Coins."
+
+	para "I'm rich, so I"
+	line "bought my #-"
+	cont "mon with cash!"
+
+	para "You want to battle"
+	line "them? Fine--just"
+
+	para "beat everyone else"
+	line "here first!"
+	done
+
+.QuestionText:
+	text "You really did it!"
+	line "Well then,"
+	cont "noblesse oblige."
+
+	para "Are you ready to"
+	line "fight my top-shelf"
+	cont "team?"
+	done
+
+.RefusedText:
+	text "Not so desperate"
+	line "for prize money"
+	cont "after all?"
+	done
+
+.SeenText:
+	text "I'm a cut above"
+	line "the commoners"
+	cont "you beat here!"
+	done
+
+.BeatenText:
+	text "No! My money"
+	line "wasn't enough…"
+	done
+
+.AfterText1:
+	text "You've clearly"
+	line "earned this item."
+
+	para "Sell it and go on"
+	line "a shopping spree,"
+
+	para "or keep it as a"
+	line "memento of our"
+	cont "battle."
+	done
+
+.AfterText2:
+	text "There are some"
+	line "things that money"
+	cont "can't buy."
+	done
 
 TrainerPokefanmBrandon:
 	trainer EVENT_BEAT_POKEFANM_BRANDON, POKEFANM, BRANDON, PokefanmBrandonSeenText, PokefanmBrandonBeatenText, 0, .Script
@@ -729,26 +834,6 @@ BreederJulieAfterText:
 	para "It seems to make"
 	line "a difference in"
 	cont "battle."
-	done
-
-RichBoyIrvingSeenText:
-	text "I don't need to"
-	line "gamble for Coins."
-
-	para "I'm rich, so I"
-	line "bought my #-"
-	cont "mon with cash!"
-	done
-
-RichBoyIrvingBeatenText:
-	text "No! My money"
-	line "wasn't enough…"
-	done
-
-RichBoyIrvingAfterText:
-	text "There are some"
-	line "things that money"
-	cont "can't buy."
 	done
 
 CamperTodd1SeenText:
@@ -978,9 +1063,9 @@ Route34_MapEventHeader:
 
 .PersonEvents:
 	db 15
+	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyScript, -1
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
-	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyIrving, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
 	person_event SPRITE_OFFICER_F, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
 	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1

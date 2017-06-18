@@ -195,12 +195,10 @@ INCLUDE "maps/FastShipB1F.asm"
 INCLUDE "maps/OlivinePortPassage.asm"
 INCLUDE "maps/VermilionPortPassage.asm"
 INCLUDE "maps/MountMoonSquare.asm"
-INCLUDE "maps/TinTowerRoof.asm"
 INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route42.asm"
 INCLUDE "maps/ElmsHouse.asm"
 INCLUDE "maps/KrissNeighborsHouse.asm"
-INCLUDE "maps/Route26HealSpeechHouse.asm"
 
 
 SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
@@ -257,6 +255,8 @@ INCLUDE "maps/Route2NuggetSpeechHouse.asm"
 INCLUDE "maps/Route2Gate.asm"
 INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/GoldenrodHarborGate.asm"
+INCLUDE "maps/Route26HealSpeechHouse.asm"
+INCLUDE "maps/TinTowerRoof.asm"
 
 
 SECTION "Map Scripts 11", ROMX, BANK[MAP_SCRIPTS_11]

@@ -2262,9 +2262,9 @@
 	const EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
 	const EVENT_BEAT_RED
 	const EVENT_BEAT_LEAF
+	const EVENT_BEAT_BREEDER_JULIE_ONCE
 
 ; Unused placeholder events
-	const EVENT_838
 	const EVENT_839
 	const EVENT_83A
 	const EVENT_83B

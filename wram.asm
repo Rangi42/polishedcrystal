@@ -174,9 +174,10 @@ ScriptVar:: ; c2dd
 wPlayerNextMovement:: ds 1
 wPlayerMovement:: ds 1
 	ds 2
+wc2e2::
 wMovementPerson:: ds 1
 wMovementDataPointer:: ds 3 ; dba
-	ds 4
+wc2e6:: ds 4
 wMovementByteWasControlSwitch:: ds 1
 wMovementPointer:: ds 2 ; c2eb
 	ds 3

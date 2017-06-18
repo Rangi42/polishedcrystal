@@ -241,8 +241,7 @@ BugContest_SetCaughtContestMon: ; e6ce
 	ld [wd265], a
 	farcall DisplayAlreadyCaughtText
 	farcall DisplayCaughtContestMonStats
-	lb bc, 14, 7
-	call PlaceYesNoBox
+	call YesNoBox
 	ret c
 
 .firstcatch
@@ -2778,7 +2777,7 @@ _DeleteSaveData: ; 4d54c
 	call PlayMusic
 	ld hl, .Text_ClearAllSaveData
 	call PrintText
-	ld hl, NoYesMenuDataHeader
+	ld hl, TitleScreenNoYesMenuDataHeader
 	call CopyMenuDataHeader
 	call VerticalMenu
 	ret c
@@ -2803,7 +2802,7 @@ _ResetInitialOptions:
 	call PlayMusic
 	ld hl, .Text_ResetInitialOptions
 	call PrintText
-	ld hl, NoYesMenuDataHeader
+	ld hl, TitleScreenNoYesMenuDataHeader
 	call CopyMenuDataHeader
 	call VerticalMenu
 	ret c
@@ -2824,7 +2823,7 @@ _ResetInitialOptions:
 	text_jump ResetInitialOptionsText
 	db "@"
 
-NoYesMenuDataHeader: ; 0x4d585
+TitleScreenNoYesMenuDataHeader: ; 0x4d585
 	db $00 ; flags
 	db 07, 14 ; start coords
 	db 11, 19 ; end coords

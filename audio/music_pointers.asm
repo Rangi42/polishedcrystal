@@ -174,6 +174,6 @@
 	dba Music_EliteFourBattleSM
 	dba Music_MotherBeastBattleSM
 	dba Music_LugiasSong2000
-;	dba Music_SpikyEaredPichuHGSS
+	dba Music_SpikyEaredPichuHGSS
 
 ; e91a3

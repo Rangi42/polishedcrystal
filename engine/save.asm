@@ -5,7 +5,14 @@ SaveMenu: ; 14a1a
 	call UpdateSprites
 	farcall SaveMenu_LoadEDTile
 	ld hl, UnknownText_0x15283
-	call SaveTheGame_yesorno
+	ld b, BANK(UnknownText_0x15283)
+	call MapTextbox
+	call LoadMenuTextBox
+	call YesNoBox
+	ld a, [wMenuCursorY]
+	dec a
+	call CloseWindow
+	and a
 	jr nz, .refused
 	call AskOverwriteSaveFile
 	jr c, .refused
@@ -175,17 +182,18 @@ AskOverwriteSaveFile: ; 14b89
 	and a
 	jr z, .erase
 	call CompareLoadedAndSavedPlayerID
-	jr z, .yoursavefile
+	jr z, .ok
 	ld hl, UnknownText_0x15297
-	call SaveTheGame_yesorno
+	ld b, BANK(UnknownText_0x15297)
+	call MapTextbox
+	call LoadMenuTextBox
+	call YesNoBox
+	ld a, [wMenuCursorY]
+	dec a
+	call CloseWindow
+	and a
 	jr nz, .refused
 	jr .erase
-
-.yoursavefile
-	ld hl, UnknownText_0x15292
-	call SaveTheGame_yesorno
-	jr nz, .refused
-	jr .ok
 
 .erase
 	call ErasePreviousSave
@@ -198,19 +206,6 @@ AskOverwriteSaveFile: ; 14b89
 	scf
 	ret
 ; 14baf
-
-SaveTheGame_yesorno: ; 14baf
-	ld b, BANK(UnknownText_0x15283)
-	call MapTextbox
-	call LoadMenuTextBox
-	lb bc, 0, 7
-	call PlaceYesNoBox
-	ld a, [wMenuCursorY]
-	dec a
-	call CloseWindow
-	and a
-	ret
-; 14bcb
 
 CompareLoadedAndSavedPlayerID: ; 14bcb
 	ld a, BANK(sPlayerData)
@@ -997,12 +992,6 @@ UnknownText_0x1528d: ; 0x1528d
 	text_jump UnknownText_0x1c4590
 	db "@"
 ; 0x15292
-
-UnknownText_0x15292: ; 0x15292
-	; There is already a save file. Is it OK to overwrite?
-	text_jump UnknownText_0x1c45a3
-	db "@"
-; 0x15297
 
 UnknownText_0x15297: ; 0x15297
 	; There is another save file. Is it OK to overwrite?
