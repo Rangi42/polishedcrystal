@@ -108,7 +108,6 @@ Out-of-battle effects:
 * Ability Cap(sule)
 * Assault Vest
 * Big Root
-* Black Sludge
 * Choice Band
 * Choice Scarf
 * Choice Specs

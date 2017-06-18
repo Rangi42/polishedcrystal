@@ -245,6 +245,9 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
 	ret c
 	call HandleLeftovers
+	; for black sludge
+	call CheckFaint
+	ret c
 	call HandleLeppaBerry
 	call HandleSafeguard
 	call HandleScreens
@@ -1078,17 +1081,11 @@ CheckIfHPIsZero: ; 3c713
 ; 3c716
 
 HandleResidualDamage:
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	call HasUserFainted
@@ -1257,17 +1254,11 @@ CheckFullHP:
 	ret
 
 HandlePerishSong: ; 3c801
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	ld hl, PlayerPerishCount
@@ -1325,17 +1316,11 @@ HandlePerishSong: ; 3c801
 ; 3c874
 
 HandleWrap: ; 3c874
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	ld hl, wPlayerWrapCount
@@ -1396,46 +1381,45 @@ HandleWrap: ; 3c874
 ; 3c8e4
 
 HandleLeftovers:
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jr .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	farcall GetUserItem
 	ld a, [hl]
-	ld [wd265], a
+	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld a, b
 	cp HELD_LEFTOVERS
+	jr z, .leftovers
+	cp HELD_BLACK_SLUDGE
 	ret nz
+	call CheckIfUserIsPoisonType
+	jr z, .leftovers
 
+	; damage instead
+	call GetEighthMaxHP
+	call SubtractHPFromUser
+	ld hl, BattleText_UserHurtByItem
+	jr .print
+.leftovers
 	call CheckFullHP
 	ret z
 	call GetSixteenthMaxHP
 	call RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
+.print
 	jp StdBattleTextBox
 
 HandleLeppaBerry:
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	farcall GetUserItemAfterUnnerve
@@ -1560,17 +1544,11 @@ HandleLeppaBerry:
 	jp StdBattleTextBox
 
 HandleFutureSight:
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	ld hl, wPlayerFutureSightCount
@@ -4603,17 +4581,11 @@ RecallPlayerMon: ; 3dce6
 ; 3dcf9
 
 HandleHealingItems: ; 3dcf9
+	call SetPlayerTurn
 	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	call nz, SetEnemyTurn
 	call .do_it
-	call SetEnemyTurn
-	jr .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
 	call HandleHPHealingItem
@@ -4626,6 +4598,7 @@ HandleStatusOrbs:
 	call nz, SetEnemyTurn
 	call .do_it
 	call SwitchTurn
+
 .do_it
 	farcall GetUserItemAfterUnnerve
 	ld a, b
