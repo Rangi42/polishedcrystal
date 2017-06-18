@@ -6294,7 +6294,7 @@ CheckUsableMoves: ; 3e786
 	and a
 	jr z, .items_done
 	ld c, a
-	ld b, %01111111
+	ld b, %10000000
 .choice_loop
 	rlc b
 	ld a, [hli]
