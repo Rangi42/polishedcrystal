@@ -8409,45 +8409,33 @@ DoubleDamage:
 	ret
 
 DoFuryCutter:
-	ld hl, PlayerFuryCutterCount
 	ld a, [hBattleTurn]
 	and a
-	jr z, .go
+	ld hl, PlayerFuryCutterCount
+	jr z, .got_fury_cutter_count
 	ld hl, EnemyFuryCutterCount
-
-.go
+.got_fury_cutter_count
 	ld a, [AttackMissed]
 	and a
-	jp nz, ResetFuryCutterCount
-
+	jr z, .ok
+	xor a
+	ld [hl], a
+	ret
+.ok
+	; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
+	ld a, [hl]
+	cp 3
+	jr nc, .capped
 	inc [hl]
-
-; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
+.capped
 	ld a, [hl]
 	ld b, a
-	cp 3
-	jr c, .checkdouble
-	ld b, 2
 
 .checkdouble
 	dec b
 	ret z
-
-; Double the damage
-	ld hl, CurDamage + 1
-	sla [hl]
-	dec hl
-	rl [hl]
-	jr nc, .checkdouble
-
-; No overflow
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
-	ret
-
-; 377be
-
+	call DoubleDamage
+	jr .checkdouble
 
 ResetFuryCutterCount: ; 377be
 
