@@ -191,7 +191,6 @@ Some of these may never be added; they're just suggestions.
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
 * More music
-   * HG/SS Spiky-Eared Pichu theme (for some Spiky-Eared Pichu event) (already exists)
    * R/S/E Route 119
    * R/S/E Route 120
    * B/W Black City (for Silph Co.)

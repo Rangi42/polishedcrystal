@@ -169,7 +169,7 @@
 	const MUSIC_ELITE_FOUR_BATTLE_SM           ; a6
 	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; a7
 	const MUSIC_LUGIAS_SONG_2000               ; a8
-	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; a9 ; unused
+	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; a9
 	; special
 	const MUSIC_RADIO_TOWER                    ; aa
 	const MUSIC_MAHOGANY_MART                  ; ab

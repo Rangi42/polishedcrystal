@@ -150,7 +150,7 @@ INCLUDE "audio/music/hgss/lyradeparture.asm"
 INCLUDE "audio/music/hgss/ceruleancity.asm"
 INCLUDE "audio/music/hgss/nuggetbridge.asm"
 INCLUDE "audio/music/hgss/summoningdance.asm"
-;INCLUDE "audio/music/hgss/spikyearedpichu.asm"
+INCLUDE "audio/music/hgss/spikyearedpichu.asm"
 
 
 SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
