@@ -8417,11 +8417,8 @@ DoFuryCutter:
 .got_fury_cutter_count
 	ld a, [AttackMissed]
 	and a
-	jr z, .ok
-	xor a
-	ld [hl], a
-	ret
-.ok
+	jr nz, ResetFuryCutterCount
+
 	; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
 	ld a, [hl]
 	cp 3
@@ -8437,25 +8434,18 @@ DoFuryCutter:
 	call DoubleDamage
 	jr .checkdouble
 
-ResetFuryCutterCount: ; 377be
-
+ResetFuryCutterCount:
 	push hl
-
-	ld hl, PlayerFuryCutterCount
 	ld a, [hBattleTurn]
 	and a
+	ld hl, PlayerFuryCutterCount
 	jr z, .reset
 	ld hl, EnemyFuryCutterCount
-
 .reset
 	xor a
 	ld [hl], a
-
 	pop hl
 	ret
-
-; 377ce
-
 
 INCLUDE "battle/effects/attract.asm"
 
