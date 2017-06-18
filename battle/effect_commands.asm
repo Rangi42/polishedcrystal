@@ -6286,15 +6286,6 @@ BattleCommand_Burn:
 	jp PrintDoesntAffect
 
 
-BattleCommand_Hex:
-; hex
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
-	ret z
-	jp DoubleDamage
-
-
 BattleCommand_RaiseSubNoAnim: ; 365af
 	ld hl, GetMonBackpic
 	ld a, [hBattleTurn]
@@ -7608,44 +7599,6 @@ BattleCommand_Rage: ; 36f1d
 ; 36f25
 
 
-BattleCommand_DoubleFlyingDamage: ; 36f25
-; doubleflyingdamage
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_FLYING, a
-	ret z
-	jr DoubleDamage
-
-; 36f2f
-
-
-BattleCommand_DoubleUndergroundDamage: ; 36f2f
-; doubleundergrounddamage
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
-	ret z
-
-	; fallthrough
-; 36f37
-
-
-DoubleDamage: ; 36f37
-	ld hl, CurDamage + 1
-	sla [hl]
-	dec hl
-	rl [hl]
-	jr nc, .quit
-
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
-.quit
-	ret
-
-; 36f46
-
-
 BattleCommand_LeechSeed: ; 36f9d
 ; leechseed
 	ld a, [AttackMissed]
@@ -8387,10 +8340,75 @@ INCLUDE "battle/effects/perish_song.asm"
 
 INCLUDE "battle/effects/rollout.asm"
 
+BoostJumptable:
+	dbw AVALANCHE, DoAvalanche
+	dbw ACROBATICS, DoAcrobatics
+	dbw FACADE, DoFacade
+	dbw FURY_CUTTER, DoFuryCutter
+	dbw HEX, DoHex
+	dbw -1, -1
 
-BattleCommand_FuryCutter: ; 37792
-; furycutter
+BattleCommand_ConditionalBoost:
+	ld hl, BoostJumptable
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	jp BattleJumptable
 
+DoAvalanche:
+	call CheckOpponentWentFirst
+	jr DoubleDamageIfNZ
+
+DoAcrobatics:
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonItem
+	jr z, .got_item
+	ld hl, EnemyMonItem
+.got_item
+	ld a, [hl]
+	and a
+	jr DoubleDamageIfNZ
+
+DoFacade:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and 1 << BRN | 1 << PSN | 1 << PAR
+	jr DoubleDamageIfNZ
+
+DoHex:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	jr DoubleDamageIfNZ
+
+BattleCommand_DoubleFlyingDamage:
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_FLYING, a
+	jr DoubleDamageIfNZ
+
+BattleCommand_DoubleUndergroundDamage:
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_UNDERGROUND, a
+	; fallthrough
+DoubleDamageIfNZ:
+	ret z
+	; fallthrough
+DoubleDamage:
+	ld hl, CurDamage + 1
+	sla [hl]
+	dec hl
+	rl [hl]
+	jr nc, .quit
+
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+.quit
+	ret
+
+DoFuryCutter:
 	ld hl, PlayerFuryCutterCount
 	ld a, [hBattleTurn]
 	and a

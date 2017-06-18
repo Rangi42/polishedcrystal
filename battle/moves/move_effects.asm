@@ -1,7 +1,4 @@
 NormalHit:
-Avalanche: ; TODO: double damage if hit
-Acrobatics: ; TODO: double damage if not holding item
-Facade: ; TODO: double damage if Psn, Brn, or Prz
 UTurn: ; TODO: switch out after attack
 VoltSwitch: ; TODO: switch out after attacking
 SuckerPunch: ; TODO: fail if foe is not attacking
@@ -1726,7 +1723,12 @@ Swagger:
 	confusetarget
 	endmove
 
+Avalanche:
+Acrobatics:
+Facade:
 FuryCutter:
+Hex:
+ConditionalBoostHit:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1735,7 +1737,7 @@ FuryCutter:
 	damagecalc
 	stab
 	checkhit
-	furycutter
+	conditionalboost
 	damagevariation
 	hittarget
 	failuretext
@@ -2164,28 +2166,6 @@ FlareBlitz:
 	checkdestinybond
 	buildopponentrage
 	burntarget
-	pickpocket
-	endmove
-
-Hex:
-	checkobedience
-	usedmovetext
-	doturn
-	critical
-	damagestats
-	damagecalc
-	stab
-	checkhit
-	hex
-	damagevariation
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 

@@ -114,7 +114,7 @@
 	dw Endure
 	dw Rollout
 	dw Swagger
-	dw FuryCutter
+	dw ConditionalBoostHit
 	dw Attract
 	dw Return
 	dw SacredFire
@@ -141,7 +141,7 @@
 	dw DefenseCurl
 	dw FlareBlitz
 	dw NormalHit
-	dw Hex
+	dw NormalHit
 	dw NormalHit
 	dw OHKOHit
 	dw NormalHit

@@ -123,9 +123,6 @@ Out-of-battle effects:
 
 ## Move effects
 
-* Avalanche does double damage if the user was hit first
-* Acrobatics does double damage if the user has no held item
-* Facade does double damage if the user is Psn, Brn, or Prz
 * U-turn switches out
 * Volt Switch switches out
 * Sucker Punch fails if foe is not attacking

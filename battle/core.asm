@@ -651,8 +651,8 @@ ParsePlayerAction: ; 3c434
 	farcall UpdateMoveData
 	xor a
 	ld [wPlayerCharging], a
-	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_CUTTER
+	ld a, [wPlayerMoveStruct]
+	cp FURY_CUTTER
 	jr z, .continue_fury_cutter
 	xor a
 	ld [PlayerFuryCutterCount], a
@@ -6447,8 +6447,8 @@ ParseEnemyAction: ; 3e7c1
 	ld [wEnemyCharging], a
 
 .raging
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_CUTTER
+	ld a, [wEnemyMoveStruct]
+	cp FURY_CUTTER
 	jr z, .fury_cutter
 	xor a
 	ld [EnemyFuryCutterCount], a

@@ -93,7 +93,7 @@ BattleCommandPointers:
 	dw BattleCommand_CheckCurl
 	dw BattleCommand_RolloutPower
 	dw BattleCommand_BulkUp
-	dw BattleCommand_FuryCutter
+	dw BattleCommand_ConditionalBoost
 	dw BattleCommand_Attract
 	dw BattleCommand_HappinessPower
 	dw BattleCommand_Present
@@ -175,6 +175,5 @@ BattleCommandPointers:
 	dw BattleCommand_StartLoop
 	dw BattleCommand_Curl
 	dw BattleCommand_Burn
-	dw BattleCommand_Hex
 	dw BattleCommand_BounceBack
 	dw BattleCommand_Pickpocket
