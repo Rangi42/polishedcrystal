@@ -2625,10 +2625,70 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	jr nc, .print
 	ld hl, NotVeryEffectiveText
 .print
-	jp StdBattleTextBox
+	push af
+	call StdBattleTextBox
+	pop af
+	ret c
 
-; 351c0
+	; Activate Weakness Policy
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_WEAKNESS_POLICY
+	ret nz
 
+	push hl
+	call SwitchTurn
+	call ResetMiss
+	call BattleCommand_AttackUp2
+	xor a
+	ld b, a
+	ld c, a
+	ld a, [FailedMessage]
+	and a
+	jr z, .ok
+	inc b
+.ok
+	push bc
+	call ResetMiss
+	call BattleCommand_SpecialAttackUp2
+	pop bc
+	ld a, [FailedMessage]
+	and a
+	jr z, .ok2
+	inc c
+	ld a, b
+	and a
+	jr nz, .end
+.ok2
+	farcall ItemRecoveryAnim
+	ld a, b
+	and a
+	jr nz, .atk_msg_done
+	pop hl
+	push hl
+	push bc
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_ItemRaisedAtk
+	call StdBattleTextBox
+.atk_msg_done
+	pop bc
+	ld a, c
+	and a
+	jr nz, .satk_msg_done
+	pop hl
+	push hl
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_ItemRaisedSAtk
+	call StdBattleTextBox
+.satk_msg_done
+	farcall ConsumeUserItem
+.end
+	pop hl
+	jp SwitchTurn
 
 BattleCommand_PostFaintEffects: ; 351c0
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)

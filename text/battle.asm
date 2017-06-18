@@ -120,14 +120,31 @@ BattleText_UserHurtByItem:
 	text "."
 	prompt
 
-BattleText_UserRecoveredPPUsing: ; 0x80899
+BattleText_UserRecoveredPPUsing:
 	text "<USER>"
 	line "recovered PP using"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "."
 	prompt
-; 0x808b6
+
+BattleText_ItemRaisedAtk:
+	text "The @"
+	text_from_ram StringBuffer1
+	text ""
+	line "sharply raised"
+	para "<USER>'s"
+	line "Attack!"
+	prompt
+
+BattleText_ItemRaisedSAtk:
+	text "The @"
+	text_from_ram StringBuffer1
+	text ""
+	line "sharply raised"
+	para "<USER>'s"
+	line "Special Attack!"
+	prompt
 
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
 	text "<TARGET>"

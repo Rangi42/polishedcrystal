@@ -116,7 +116,6 @@ Out-of-battle effects:
 * Safe Goggles
 * Shed Shell
 * Shell Bell
-* Weak(ness) Policy
 * Wide Lens
 * Zoom Lens
 
