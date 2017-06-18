@@ -16,6 +16,12 @@ endm
 	sprite_movement_data SPRITEMOVEFN_STANDING,              RIGHT,  PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_STANDING_RIGHT
 	sprite_movement_data SPRITEMOVEFN_FAST_RANDOM_SPIN,      DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_SPINRANDOM_FAST
 	sprite_movement_data SPRITEMOVEFN_OBEY_DPAD,             DOWN,   PERSON_ACTION_STAND,        $02,    $00,    %0000 ; SPRITEMOVEDATA_PLAYER
+	sprite_movement_data SPRITEMOVEFN_08,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; 0c
+	sprite_movement_data SPRITEMOVEFN_09,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; 0d
+	sprite_movement_data SPRITEMOVEFN_0A,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; 0e
+	sprite_movement_data SPRITEMOVEFN_0B,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; 0f
+	sprite_movement_data SPRITEMOVEFN_0C,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; 10
+	sprite_movement_data SPRITEMOVEFN_0D,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; 11
 	sprite_movement_data SPRITEMOVEFN_STANDING,              UP,     PERSON_ACTION_STAND,        $0c,    $00,    %0000 ; SPRITEMOVEDATA_CUTTABLE_TREE
 	sprite_movement_data SPRITEMOVEFN_FOLLOW,                DOWN,   PERSON_ACTION_STAND,        $02,    $00,    %0000 ; SPRITEMOVEDATA_FOLLOWING
 	sprite_movement_data SPRITEMOVEFN_SCRIPTED,              DOWN,   PERSON_ACTION_STAND,        $02,    $00,    %0000 ; SPRITEMOVEDATA_SCRIPTED
@@ -30,6 +36,7 @@ endm
 	sprite_movement_data SPRITEMOVEFN_SCREENSHAKE,           DOWN,   PERSON_ACTION_00,           $82,    $00,    %0000 ; SPRITEMOVEDATA_SCREENSHAKE
 	sprite_movement_data SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE, LEFT,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE
 	sprite_movement_data SPRITEMOVEFN_SPIN_CLOCKWISE,        RIGHT,  PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_SPINCLOCKWISE
+	sprite_movement_data SPRITEMOVEFN_STRENGTH,              DOWN,   PERSON_ACTION_BIG_LAPRAS,   $2e,    $01,    %1100
 	sprite_movement_data SPRITEMOVEFN_STRENGTH,              DOWN,   PERSON_ACTION_BIG_DOLL,     $2e,    $01,    %1100 ; SPRITEMOVEDATA_BIGDOLL
 	sprite_movement_data SPRITEMOVEFN_BOULDERDUST,           DOWN,   PERSON_ACTION_BOULDER_DUST, $8e,    $01,    %0000 ; SPRITEMOVEDATA_BOULDERDUST
 	sprite_movement_data SPRITEMOVEFN_GRASS,                 DOWN,   PERSON_ACTION_GRASS_SHAKE,  $8e,    $02,    %0000 ; SPRITEMOVEDATA_GRASS
