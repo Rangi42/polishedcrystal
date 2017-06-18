@@ -11,7 +11,6 @@ Pointers445f: ; 445f
 	dw SetFacingBigDollSym,            SetFacingBigDollSym   ; PERSON_ACTION_BIG_SNORLAX
 	dw SetFacingBounce,                SetFacingFreezeBounce ; PERSON_ACTION_BOUNCE
 	dw SetFacingWeirdTree,             SetFacingCurrent      ; PERSON_ACTION_WEIRD_TREE
-	dw SetFacingBigDoll,               SetFacingBigDoll
 	dw SetFacingBigDoll,               SetFacingBigDoll      ; PERSON_ACTION_BIG_DOLL
 	dw SetFacingBoulderDust,           SetFacingStanding     ; PERSON_ACTION_BOULDER_DUST
 	dw SetFacingGrassShake,            SetFacingStanding     ; PERSON_ACTION_GRASS_SHAKE
