@@ -194,7 +194,7 @@ BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
 	ld de, PCString_ReleasePKMN
 	call BillsPC_PlaceString
 	call LoadStandardMenuDataHeader
-	lb bc, 14, 11
+	ld a, 11
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	dec a
@@ -434,7 +434,7 @@ endr
 	ld de, PCString_ReleasePKMN
 	call BillsPC_PlaceString
 	call LoadStandardMenuDataHeader
-	lb bc, 14, 11
+	ld a, 11
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	dec a

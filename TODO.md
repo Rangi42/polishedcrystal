@@ -15,7 +15,6 @@
 
 ## Mechanics
 
-* One confirmation for typical saves, long warning for new games
 * Generate Battle Tower Pokémon
 * Update breeding with the new data structure (engine/breeding/egg.asm and event/daycare.asm)
 * Wild Ghosts and the SilphScope2
@@ -223,6 +222,7 @@ Some of these may never be added; they're just suggestions.
 * Catch rate formula from Gen III
 * Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
+* Port critical captures from Prism
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away

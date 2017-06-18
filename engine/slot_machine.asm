@@ -1696,7 +1696,7 @@ Slots_AskPlayAgain: ; 930e9 (24:70e9)
 	ld hl, .Text_PlayAgain
 	call PrintText
 	call LoadMenuTextBox
-	lb bc, 14, 12
+	ld a, 12
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
 	dec a

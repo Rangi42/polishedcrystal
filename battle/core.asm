@@ -2820,8 +2820,7 @@ AskUseNextPokemon: ; 3d1f8
 	ld hl, BattleText_UseNextMon
 	call StdBattleTextBox
 .loop
-	lb bc, 1, 7
-	call PlaceYesNoBox
+	call YesNoBox
 	ld a, [wMenuCursorY]
 	jr c, .pressed_b
 	and a
@@ -3675,8 +3674,7 @@ OfferSwitch: ; 3d74b
 
 .PlaceBattleChangeText
 	call StdBattleTextBox
-	lb bc, 1, 7
-	call PlaceYesNoBox
+	call YesNoBox
 	ld a, [wMenuCursorY]
 	dec a
 	jr nz, .said_no
