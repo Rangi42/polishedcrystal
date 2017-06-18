@@ -507,13 +507,13 @@ MapObjectMovementPattern: ; 47dd
 	dw .RandomSpin2                  ; SPRITEMOVEFN_FAST_RANDOM_SPIN
 	dw .Standing                     ; SPRITEMOVEFN_STANDING
 	dw .ObeyDPad                     ; SPRITEMOVEFN_OBEY_DPAD
-	dw .Movement08
-	dw .Movement09
-	dw .Movement0a
-	dw .Movement0b
-	dw .Movement0c
-	dw .Movement0d
-	dw .Movement0e
+	dw .Movement08                   ; SPRITEMOVEFN_08
+	dw .Movement09                   ; SPRITEMOVEFN_09
+	dw .Movement0a                   ; SPRITEMOVEFN_0A
+	dw .Movement0b                   ; SPRITEMOVEFN_0B
+	dw .Movement0c                   ; SPRITEMOVEFN_0C
+	dw .Movement0d                   ; SPRITEMOVEFN_0D
+	dw .Movement0e                   ; SPRITEMOVEFN_0E
 	dw .Follow                       ; SPRITEMOVEFN_FOLLOW
 	dw .Script                       ; SPRITEMOVEFN_SCRIPTED
 	dw .Strength                     ; SPRITEMOVEFN_STRENGTH
