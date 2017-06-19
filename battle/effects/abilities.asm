@@ -1679,26 +1679,9 @@ RegeneratorAbility:
 	jp UpdateEnemyMonInParty
 
 AbilityJumptable:
-; hl = jumptable, a = ability. Returns z if no jump was made, nz otherwise
-	ld b, a
-.loop
-	ld a, [hli]
-	cp -1
-	ret z
-	cp b
-	jr z, .got_ability
-	inc hl
-	inc hl
-	jr .loop
-.got_ability
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call .jp_hl
-	or 1
-	ret
-.jp_hl
-	jp hl
+	; If we at some point make the AI learn abilities, keep this.
+	; For now it just jumps to the general jumptable function
+	jp BattleJumptable
 
 DisableAnimations:
 	ld a, 1

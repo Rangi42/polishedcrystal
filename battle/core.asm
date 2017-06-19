@@ -85,9 +85,7 @@ DoBattle: ; 3c000
 	ld a, [hl]
 	ld [CurPartySpecies], a
 	ld [TempBattleMonSpecies], a
-	hlcoord 1, 5
-	ld a, 9
-	call SlideBattlePicOut
+	call SlidePlayerPicOut
 	call LoadTileMapToTempTileMap
 	call ResetBattleParticipants
 	call InitBattleMon
@@ -124,8 +122,6 @@ DoBattle: ; 3c000
 .tutorial_debug
 	jp BattleMenu
 ; 3c0e5
-
-
 
 WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 	call Call_LoadTempTileMapToTileMap
@@ -251,7 +247,6 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleLeppaBerry
 	call HandleSafeguard
 	call HandleScreens
-	call HandleStatBoostingHeldItems
 	call HandleHealingItems
 	farcall HandleAbilities
 	call HandleStatusOrbs
@@ -503,10 +498,13 @@ GetSpeed::
 	pop de ; needed early to check quick claw allowance
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
-	cp HELD_CHOICE_SPD
-	jr z, .choice_scarf
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
+	cp HELD_CHOICE
+	jr nz, .done
+	ld a, c
+	cp SPEED
+	jr z, .choice_scarf
 	jr .done
 .quick_claw
 	ld a, d
@@ -648,8 +646,8 @@ ParsePlayerAction: ; 3c434
 	farcall UpdateMoveData
 	xor a
 	ld [wPlayerCharging], a
-	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_CUTTER
+	ld a, [wPlayerMoveStruct]
+	cp FURY_CUTTER
 	jr z, .continue_fury_cutter
 	xor a
 	ld [PlayerFuryCutterCount], a
@@ -3136,7 +3134,19 @@ MonFaintedAnimation: ; 3d444
 	db "       @"
 ; 3d490
 
-
+SlideUserPicOut:
+	ld a, [hBattleTurn]
+	and a
+	jr nz, SlideEnemyPicOut
+	; fallthrough
+SlidePlayerPicOut:
+	hlcoord 1, 5
+	ld a, 9
+	jr SlideBattlePicOut
+SlideEnemyPicOut:
+	hlcoord 18, 0
+	ld a, 8
+	; fallthrough
 SlideBattlePicOut: ; 3d490
 	ld [hMapObjectIndexBuffer], a
 	ld c, a
@@ -3282,6 +3292,7 @@ CheckWhetherSwitchmonIsPredetermined: ; 3d533
 ResetEnemyBattleVars: ; 3d557
 ; and draw empty TextBox
 	xor a
+	ld [EnemySelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastEnemyMove], a
@@ -3290,9 +3301,7 @@ ResetEnemyBattleVars: ; 3d557
 	ld [wEnemyItemState], a
 	xor a
 	ld [wPlayerWrapCount], a
-	hlcoord 18, 0
-	ld a, 8
-	call SlideBattlePicOut
+	call SlideEnemyPicOut
 	call EmptyBattleTextBox
 	jp LoadStandardMenuDataHeader
 ; 3d57a
@@ -3568,9 +3577,7 @@ FinalPkmnMusicAndAnimation:
 	call EmptyBattleTextBox
 	ld c, 20
 	call DelayFrames
-	hlcoord 18, 0
-	ld a, 8
-	call SlideBattlePicOut
+	call SlideEnemyPicOut
 	; ...play the final Pokémon music...
 	call IsJohtoGymLeader
 	jr nc, .no_music
@@ -3593,9 +3600,7 @@ FinalPkmnMusicAndAnimation:
 	; ...and return the Pokémon
 	call EmptyBattleTextBox
 	call WaitBGMap
-	hlcoord 18, 0
-	ld a, 8
-	call SlideBattlePicOut
+	call SlideEnemyPicOut
 	ld c, 10
 	call DelayFrames
 	call FinalPkmnSlideInEnemyMonFrontpic
@@ -3755,6 +3760,7 @@ Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
 
 NewEnemyMonStatus: ; 3d834
 	xor a
+	ld [EnemySelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastEnemyMove], a
@@ -3860,192 +3866,6 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 	ret
 ; 3d8b3
 
-
-TryToRunAwayFromBattle: ; 3d8b3
-; Run away from battle, with or without item
-	ld a, [BattleType]
-	cp BATTLETYPE_CONTEST
-	jp z, .can_escape
-	cp BATTLETYPE_GHOST
-	jp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
-	jp nc, .cant_escape
-
-	ld a, [wLinkMode]
-	and a
-	jp nz, .can_escape
-
-	ld a, [wBattleMode]
-	dec a
-	jp nz, .cant_run_from_trainer
-
-	ld a, [PlayerAbility]
-	cp RUN_AWAY
-	jr nz, .no_flee_ability
-	call SetPlayerTurn
-	farcall ShowAbilityActivation
-	jp .can_escape
-.no_flee_ability
-	push hl
-	push de
-	ld a, [BattleMonItem]
-	ld [wd265], a
-	ld b, a
-	farcall GetItemHeldEffect
-	ld a, b
-	cp HELD_ESCAPE
-	pop de
-	pop hl
-	jr nz, .no_flee_item
-
-	call SetPlayerTurn
-	call GetItemName
-	ld hl, BattleText_UserFledUsingAStringBuffer1
-	call StdBattleTextBox
-	jp .can_escape
-
-.no_flee_item
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	jp nz, .cant_escape
-
-	ld a, [wPlayerWrapCount]
-	and a
-	jp nz, .cant_escape
-
-	push hl
-	push de
-	call SetPlayerTurn
-	call CheckIfTrappedByAbility_Core
-	pop de
-	pop hl
-	jp z, .ability_prevents_escape
-
-	ld a, [wNumFleeAttempts]
-	inc a
-	ld [wNumFleeAttempts], a
-	ld a, h
-	ld [hStringCmpString2 + 0], a
-	ld a, l
-	ld [hStringCmpString2 + 1], a
-	ld a, d
-	ld [hStringCmpString1 + 0], a
-	ld a, e
-	ld [hStringCmpString1 + 1], a
-	call Call_LoadTempTileMapToTileMap
-	ld de, hStringCmpString2
-	ld hl, hStringCmpString1
-	ld c, $2
-	call StringCmp
-	jr nc, .can_escape
-
-	xor a
-	ld [hMultiplicand], a
-	ld a, $20
-	ld [hMultiplier], a
-	call Multiply
-	ld a, [hProduct + 2]
-	ld [hDividend + 0], a
-	ld a, [hProduct + 3]
-	ld [hDividend + 1], a
-	ld a, [hStringCmpString1 + 0]
-	ld b, a
-	ld a, [hStringCmpString1 + 1]
-	srl b
-	rr a
-	srl b
-	rr a
-	and a
-	jr z, .can_escape
-	ld [hDivisor], a
-	ld b, 2
-	call Divide
-	ld a, [hQuotient + 1]
-	and a
-	jr nz, .can_escape
-	ld a, [wNumFleeAttempts]
-	ld c, a
-.loop
-	dec c
-	jr z, .cant_escape_2
-	ld b, 30
-	ld a, [hQuotient + 2]
-	add b
-	ld [hQuotient + 2], a
-	jr c, .can_escape
-	jr .loop
-
-.cant_escape_2
-	call BattleRandom
-	ld b, a
-	ld a, [hQuotient + 2]
-	cp b
-	jr nc, .can_escape
-	ld a, $1
-	ld [wPlayerAction], a
-.cant_escape
-	ld hl, BattleText_CantEscape
-	jr .print_inescapable_text
-
-.cant_run_from_trainer
-	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
-	jr .print_inescapable_text
-
-.ability_prevents_escape
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	ld b, a
-	farcall BufferAbility
-	ld hl, BattleText_PkmnCantBeRecalledAbility
-
-.print_inescapable_text
-	call StdBattleTextBox
-	ld a, 1
-	ld [wFailedToFlee], a
-	call LoadTileMapToTempTileMap
-	and a
-	ret
-
-.can_escape
-	ld a, [wLinkMode]
-	and a
-	ld a, DRAW
-	jr z, .fled
-	call LoadTileMapToTempTileMap
-	xor a
-	ld [wPlayerAction], a
-	ld a, $f
-	ld [CurMoveNum], a
-	xor a
-	ld [CurPlayerMove], a
-	call LinkBattleSendReceiveAction
-	call Call_LoadTempTileMapToTileMap
-
-	; Got away safely
-	ld a, [wBattleAction]
-	cp BATTLEACTION_FORFEIT
-	ld a, DRAW
-	jr z, .fled
-	dec a
-.fled
-	ld b, a
-	ld a, [wBattleResult]
-	and $c0
-	add b
-	ld [wBattleResult], a
-	call StopDangerSound
-	push de
-	ld de, SFX_RUN
-	call WaitPlaySFX
-	pop de
-	call WaitSFX
-	ld hl, BattleText_GotAwaySafely
-	call StdBattleTextBox
-	call WaitSFX
-	call LoadTileMapToTempTileMap
-	scf
-	ret
-; 3da0d
 
 CheckIfTrappedByAbility_Core:
 	farcall _CheckIfTrappedByAbility
@@ -4279,6 +4099,7 @@ SendOutPlayerMon: ; 3db5f
 	ld [CurMoveNum], a
 	ld [TypeModifier], a
 	ld [wPlayerMoveStruct + MOVE_ANIM], a
+	ld [PlayerSelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastPlayerMove], a
@@ -4320,6 +4141,7 @@ SendOutPlayerMon: ; 3db5f
 
 NewBattleMonStatus: ; 3dbde
 	xor a
+	ld [PlayerSelectedMove], a
 	ld [LastEnemyCounterMove], a
 	ld [LastPlayerCounterMove], a
 	ld [LastPlayerMove], a
@@ -4793,88 +4615,6 @@ UseConfusionHealingItem: ; 3de51
 	ld [hl], a
 	ret
 ; 3de97
-
-HandleStatBoostingHeldItems: ; 3de97
-; The effects handled here are not used in-game.
-	call CheckSpeed
-	jr nz, .enemy_first
-	call .DoPlayer
-	jp .DoEnemy
-
-.enemy_first
-	call .DoEnemy
-	jp .DoPlayer
-; 3dea9
-
-.DoPlayer: ; 3dea9
-	call GetPartymonItem
-	xor a
-	jp .HandleItem
-; 3deb1
-
-.DoEnemy: ; 3deb1
-	call GetOTPartymonItem
-	ld a, $1
-.HandleItem: ; 3deb6
-	ld [hBattleTurn], a
-	ld d, h
-	ld e, l
-	push de
-	push bc
-	ld a, [bc]
-	ld b, a
-	farcall GetItemHeldEffect
-	ld hl, .StatUpItems
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .finish
-	inc hl
-	inc hl
-	cp b
-	jr nz, .loop
-	pop bc
-	ld a, [bc]
-	ld [wd265], a
-	push bc
-	dec hl
-	dec hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, BANK(BattleCommand_AttackUp)
-	rst FarCall
-	pop bc
-	pop de
-	ld a, [FailedMessage]
-	and a
-	ret nz
-	xor a
-	ld [bc], a
-	ld [de], a
-	call GetItemName
-	ld hl, BattleText_UsersStringBuffer1Activated
-	call StdBattleTextBox
-	farcall BattleCommand_StatUpMessage
-	ret
-
-.finish
-	pop bc
-	pop de
-	ret
-; 3defc
-
-.StatUpItems:
-	dbw HELD_ATTACK_UP,     BattleCommand_AttackUp
-	dbw HELD_DEFENSE_UP,    BattleCommand_DefenseUp
-	dbw HELD_SPEED_UP,      BattleCommand_SpeedUp
-	dbw HELD_SP_ATTACK_UP,  BattleCommand_SpecialAttackUp
-	dbw HELD_SP_DEFENSE_UP, BattleCommand_SpecialDefenseUp
-	dbw HELD_ACCURACY_UP,   BattleCommand_AccuracyUp
-	dbw HELD_EVASION_UP,    BattleCommand_EvasionUp
-	db $ff
-; 3df12
-
 
 GetPartymonItem: ; 3df12
 	ld hl, PartyMon1Item
@@ -5667,26 +5407,233 @@ CheckRunSpeed:
 	pop bc
 	pop af
 	ld [hBattleTurn], a
-	; hl: player speed, de: enemy speed
-	jp TryToRunAwayFromBattle
 
-CheckAmuletCoin: ; 3e4a8
+	; hl: player speed, de: enemy speed
+	ld a, [BattleType]
+	cp BATTLETYPE_CONTEST
+	jp z, .can_escape
+	cp BATTLETYPE_GHOST
+	jp z, .can_escape
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	jp nc, .cant_escape
+
+	ld a, [wLinkMode]
+	and a
+	jp nz, .can_escape
+
+	ld a, [wBattleMode]
+	dec a
+	jp nz, .cant_run_from_trainer
+
+	ld a, [PlayerAbility]
+	cp RUN_AWAY
+	jr nz, .no_flee_ability
+	call SetPlayerTurn
+	farcall ShowAbilityActivation
+	jp .can_escape
+.no_flee_ability
+	push hl
+	push de
 	ld a, [BattleMonItem]
+	ld [wd265], a
 	ld b, a
 	farcall GetItemHeldEffect
+	ld a, b
+	cp HELD_ESCAPE
+	pop de
+	pop hl
+	jr nz, .no_flee_item
+
+	call SetPlayerTurn
+	call GetItemName
+	ld hl, BattleText_UserFledUsingAStringBuffer1
+	call StdBattleTextBox
+	jp .can_escape
+
+.no_flee_item
+	ld a, [EnemySubStatus2]
+	bit SUBSTATUS_CANT_RUN, a
+	jp nz, .cant_escape
+
+	ld a, [wPlayerWrapCount]
+	and a
+	jp nz, .cant_escape
+
+	push hl
+	push de
+	call SetPlayerTurn
+	call CheckIfTrappedByAbility_Core
+	pop de
+	pop hl
+	jp z, .ability_prevents_escape
+
+	ld a, [wNumFleeAttempts]
+	inc a
+	ld [wNumFleeAttempts], a
+	ld a, h
+	ld [hStringCmpString2 + 0], a
+	ld a, l
+	ld [hStringCmpString2 + 1], a
+	ld a, d
+	ld [hStringCmpString1 + 0], a
+	ld a, e
+	ld [hStringCmpString1 + 1], a
+	call Call_LoadTempTileMapToTileMap
+	ld de, hStringCmpString2
+	ld hl, hStringCmpString1
+	ld c, $2
+	call StringCmp
+	jr nc, .can_escape
+
+	xor a
+	ld [hMultiplicand], a
+	ld a, $20
+	ld [hMultiplier], a
+	call Multiply
+	ld a, [hProduct + 2]
+	ld [hDividend + 0], a
+	ld a, [hProduct + 3]
+	ld [hDividend + 1], a
+	ld a, [hStringCmpString1 + 0]
+	ld b, a
+	ld a, [hStringCmpString1 + 1]
+	srl b
+	rr a
+	srl b
+	rr a
+	and a
+	jr z, .can_escape
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hQuotient + 1]
+	and a
+	jr nz, .can_escape
+	ld a, [wNumFleeAttempts]
+	ld c, a
+.loop
+	dec c
+	jr z, .cant_escape_2
+	ld b, 30
+	ld a, [hQuotient + 2]
+	add b
+	ld [hQuotient + 2], a
+	jr c, .can_escape
+	jr .loop
+
+.cant_escape_2
+	call BattleRandom
+	ld b, a
+	ld a, [hQuotient + 2]
+	cp b
+	jr nc, .can_escape
+	ld a, $1
+	ld [wPlayerAction], a
+.cant_escape
+	ld hl, BattleText_CantEscape
+	jr .print_inescapable_text
+
+.cant_run_from_trainer
+	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
+	jr .print_inescapable_text
+
+.ability_prevents_escape
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	farcall BufferAbility
+	ld hl, BattleText_PkmnCantBeRecalledAbility
+
+.print_inescapable_text
+	call StdBattleTextBox
+	ld a, 1
+	ld [wFailedToFlee], a
+	call LoadTileMapToTempTileMap
+	and a
+	ret
+
+.can_escape
+	ld a, [wLinkMode]
+	and a
+	ld a, DRAW
+	jr z, .fled
+	call LoadTileMapToTempTileMap
+	xor a
+	ld [wPlayerAction], a
+	ld a, $f
+	ld [CurMoveNum], a
+	xor a
+	ld [CurPlayerMove], a
+	call LinkBattleSendReceiveAction
+	call Call_LoadTempTileMapToTileMap
+
+	; Got away safely
+	ld a, [wBattleAction]
+	cp BATTLEACTION_FORFEIT
+	ld a, DRAW
+	jr z, .fled
+	dec a
+.fled
+	ld b, a
+	ld a, [wBattleResult]
+	and $c0
+	add b
+	ld [wBattleResult], a
+	call StopDangerSound
+	push de
+	ld de, SFX_RUN
+	call WaitPlaySFX
+	pop de
+	call WaitSFX
+	ld hl, BattleText_GotAwaySafely
+	call StdBattleTextBox
+	call WaitSFX
+	call LoadTileMapToTempTileMap
+	scf
+	ret
+
+
+CheckAmuletCoin:
+	push hl
+	farcall GetPlayerItem
+	pop hl
 	ld a, b
 	cp HELD_AMULET_COIN
 	ret nz
 	ld a, 1
 	ld [wAmuletCoin], a
 	ret
-; 3e4bc
 
-MoveSelectionScreen: ; 3e4bc
+MoveSelectionScreen:
+	; Maybe reset PlayerSelectedMove if the move has disappeared
+	; (possible if we learned a new move and replaced the old)
+	push bc
+	push hl
+	ld hl, BattleMonMoves
+	ld a, [PlayerSelectedMove]
+	ld b, a
+	ld c, 4
+.loop
+	ld a, [hli]
+	and a
+	jr z, .sanity_check_done
+	cp b
+	jr z, .sanity_check_done
+	dec c
+	jr nz, .loop
+.sanity_check_done
+	cp b
+	jr z, .dont_kill_selectedmove
+	xor a
+	ld [PlayerSelectedMove], a
+.dont_kill_selectedmove
+	pop hl
+	pop bc
 	ld a, [wMoveSelectionMenuType]
 	dec a
 	jr z, .ether_elixer_menu
-	call CheckPlayerHasUsableMoves
+	call SetPlayerTurn
+	call CheckUsableMoves
 	ret z ; use Struggle
 	ld hl, BattleMonMoves
 	jr .got_menu_type
@@ -5829,6 +5776,29 @@ MoveSelectionScreen: ; 3e4bc
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
+	ld b, a
+
+	; Some items limit move freedom
+	push bc
+	farcall GetPlayerItem
+	ld a, b
+	pop bc
+
+	cp HELD_CHOICE
+	jr z, .choice_check
+	cp HELD_ASSAULT_VEST
+	jr nz, .ok
+
+	; TODO: Check Assault Vest
+	jr .ok
+.choice_check
+	ld a, [PlayerSelectedMove]
+	and a
+	jr z, .ok
+	cp b
+	jr nz, .choiced
+.ok
+	ld a, b
 	ld [CurPlayerMove], a
 	xor a
 	ret
@@ -5838,10 +5808,30 @@ MoveSelectionScreen: ; 3e4bc
 	jr .place_textbox_start_over
 
 .choiced
+	; Load item into StringBuffer1, move into StringBuffer2
+	ld a, [PlayerSelectedMove]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+
+	; The above places move name into buffer 1, now copy into 2
+	ld hl, StringBuffer1
+	ld de, StringBuffer2
+	ld bc, MOVE_NAME_LENGTH
+	call CopyBytes
+
+	; now place item into StringBuffer1
+	ld a, [BattleMonItem]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
 	ld hl, BattleText_ItemOnlyAllowsMove
 	jr .place_textbox_start_over
 
 .assault_vest
+	ld a, [BattleMonItem]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
 	ld hl, BattleText_ItemPreventsStatusMoves
 	jr .place_textbox_start_over
 
@@ -6145,53 +6135,114 @@ endr
 	jp PrintNum
 ; 3e786
 
-CheckPlayerHasUsableMoves: ; 3e786
-	ld a, STRUGGLE
-	ld [CurPlayerMove], a
-	ld a, [PlayerDisableCount]
+CheckUsableMoves: ; 3e786
+	push bc
+	push de
+	push hl
+
+	; Usable moves
+	ld e, %1111
+
+	; Zero out moves without PP (empty move slots have 0PP)
+	ld a, [hBattleTurn]
 	and a
 	ld hl, BattleMonPP
-	jr nz, .disabled
-
+	jr z, .got_pp
+	ld hl, EnemyMonPP
+.got_pp
+	ld b, %01111111
+	ld c, 4
+.pp_loop
+	rlc b
 	ld a, [hli]
-	or [hl]
-	inc hl
-	or [hl]
-	inc hl
-	or [hl]
 	and $3f
-	ret nz
-	jr .force_struggle
+	jr nz, .pp_next
+	ld a, e
+	and b
+	ld e, a
+.pp_next
+	dec c
+	jr nz, .pp_loop
 
-.disabled
+	; Zero out disabled moves
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerDisableCount]
+	jr z, .got_disable_count
+	ld a, [EnemyDisableCount]
+.got_disable_count
+	and a
+	jr z, .disable_done
+	ld b, %01111111
 	swap a
 	and $f
-	ld b, a
-	ld d, $5
-	xor a
-.loop
-	dec d
-	jr z, .done
-	ld c, [hl]
-	inc hl
-	dec b
-	jr z, .loop
-	or c
-	jr .loop
+.disable_loop
+	rlc b
+	dec a
+	jr nz, .disable_loop
+	ld a, e
+	and b
+	ld e, a
+.disable_done
+	; Item checks
+	push de
+	farcall GetUserItem
+	pop de
+	ld a, b
+	cp HELD_CHOICE
+	jr z, .choiced
+	cp HELD_ASSAULT_VEST
+	jr nz, .items_done
 
-.done
-	and $3f
-	ret nz
+	; Assault Vest check
+	jr .items_done
+.choiced
+	; Check if we did a move yet
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerSelectedMove]
+	ld hl, BattleMonMoves
+	jr z, .got_selected_move
+	ld a, [EnemySelectedMove]
+	ld hl, EnemyMonMoves
+.got_selected_move
+	and a
+	jr z, .items_done
+	ld c, a
+	ld b, %10000000
+.choice_loop
+	rlc b
+	ld a, [hli]
+	cp c
+	jr nz, .choice_loop
+	ld a, e
+	and b
+	ld e, a
+	; fallthrough
+.items_done
+	ld a, e
+	and a
+	jr nz, .end
 
 .force_struggle
+	ld a, [hBattleTurn]
+	xor 1
+	jr z, .end
+	ret z
+
+	; player turn
+	ld a, STRUGGLE
+	ld [CurPlayerMove], a
 	ld hl, BattleText_PkmnHasNoMovesLeft
 	call StdBattleTextBox
 	ld c, 60
 	call DelayFrames
 	xor a
+.end
+	pop hl
+	pop de
+	pop bc
 	ret
-; 3e7c1
-
 
 
 ParseEnemyAction: ; 3e7c1
@@ -6221,6 +6272,26 @@ ParseEnemyAction: ; 3e7c1
 	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
 	jp nz, .skip_load
 
+	call SetEnemyTurn
+	call CheckUsableMoves
+	jp z, .struggle
+
+	; Check if we're choice-locked
+	ld a, [EnemySelectedMove]
+	and a
+	jr z, .not_choiced
+	push bc
+	push de
+	push hl
+	farcall GetEnemyItem
+	ld a, b
+	pop hl
+	pop de
+	pop bc
+	cp HELD_CHOICE
+	ld a, [EnemySelectedMove]
+	jr z, .finish
+.not_choiced
 	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	ld a, [LastEnemyMove]
@@ -6308,8 +6379,8 @@ ParseEnemyAction: ; 3e7c1
 	ld [wEnemyCharging], a
 
 .raging
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_FURY_CUTTER
+	ld a, [wEnemyMoveStruct]
+	cp FURY_CUTTER
 	jr z, .fury_cutter
 	xor a
 	ld [EnemyFuryCutterCount], a

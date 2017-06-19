@@ -1,9 +1,4 @@
 NormalHit:
-Avalanche: ; TODO: double damage if hit
-Acrobatics: ; TODO: double damage if not holding item
-Facade: ; TODO: double damage if Psn, Brn, or Prz
-UTurn: ; TODO: switch out after attack
-VoltSwitch: ; TODO: switch out after attacking
 SuckerPunch: ; TODO: fail if foe is not attacking
 AerialAce:
 Aeroblast:
@@ -95,6 +90,31 @@ DrainKiss:
 	kingsrock
 	pickpocket
 	endmove
+
+UTurn:
+VoltSwitch:
+SwitchHit:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	kingsrock
+	pickpocket
+	switchout
+	endmove
+
 
 MultiHit:
 Bonemerang:
@@ -1726,7 +1746,12 @@ Swagger:
 	confusetarget
 	endmove
 
+Avalanche:
+Acrobatics:
+Facade:
 FuryCutter:
+Hex:
+ConditionalBoostHit:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1735,7 +1760,7 @@ FuryCutter:
 	damagecalc
 	stab
 	checkhit
-	furycutter
+	conditionalboost
 	damagevariation
 	hittarget
 	failuretext
@@ -2167,28 +2192,6 @@ FlareBlitz:
 	pickpocket
 	endmove
 
-Hex:
-	checkobedience
-	usedmovetext
-	doturn
-	critical
-	damagestats
-	damagecalc
-	stab
-	checkhit
-	hex
-	damagevariation
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	kingsrock
-	pickpocket
-	endmove
-
 OHKOHit:
 	checkobedience
 	usedmovetext
@@ -2382,33 +2385,5 @@ SkullBash:
 	endturn
 	defenseup
 	statupmessage
-	pickpocket
-	endmove
-
-BeatUp:
-	checkobedience
-	usedmovetext
-	movedelay
-	doturn
-	startloop
-	lowersub
-	checkhit
-	critical
-	beatup
-	damagecalc
-	damagevariation
-	clearmissdamage
-	hittargetnosub
-	failuretext
-	checkfaint
-	criticaltext
-	cleartext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	endloop
-	failuretext
-	raisesub
-	kingsrock
 	pickpocket
 	endmove

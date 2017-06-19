@@ -107,12 +107,8 @@ Out-of-battle effects:
 * Ability Cap(sule)
 * Assault Vest
 * Big Root
-* Choice Band
-* Choice Scarf
-* Choice Specs
 * Destiny Knot
 * Mental Herb
-* Metronome
 * Oval Charm
 * Protect(ive) Pads
 * Quick Powder
@@ -120,18 +116,12 @@ Out-of-battle effects:
 * Safe Goggles
 * Shed Shell
 * Shell Bell
-* Weak(ness) Policy
 * Wide Lens
 * Zoom Lens
 
 
 ## Move effects
 
-* Avalanche does double damage if the user was hit first
-* Acrobatics does double damage if the user has no held item
-* Facade does double damage if the user is Psn, Brn, or Prz
-* U-turn switches out
-* Volt Switch switches out
 * Sucker Punch fails if foe is not attacking
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize

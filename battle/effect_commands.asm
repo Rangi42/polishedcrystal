@@ -57,8 +57,10 @@ DoTurn: ; 3401d
 ; 3402c
 
 
-DoMove: ; 3402c
+DoMove:
 ; Get the user's move effect.
+	; Increase move usage counter if applicable
+	call IncreaseMetronomeCount
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	ld c, a
@@ -453,6 +455,40 @@ CantMove: ; 341f0
 
 ; 34216
 
+IncreaseMetronomeCount:
+	; Don't arbitrarily boost usage counter twice on a turn
+	call CheckUserIsCharging
+	ret nz
+
+	ld a, [hBattleTurn]
+	and a
+	ld de, PlayerSelectedMove
+	ld hl, PlayerMetronomeCount
+	jr z, .got_move_usage
+	ld de, EnemySelectedMove
+	ld hl, EnemyMetronomeCount
+.got_move_usage
+	ld a, [de]
+	ld b, a
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp b
+	jr nz, .reset
+	ld a, [hl]
+	cp 5
+	ret nc
+	inc [hl]
+	ret
+.reset
+	; Struggle doesn't update last move set but does reset count
+	cp STRUGGLE
+	jr z, .done_update_selected_move
+	ld [de], a
+.done_update_selected_move
+	xor a
+	ld [hl], a
+	ret
+
 CheckWhiteHerb:
 	call GetUserItemAfterUnnerve
 	ld a, b
@@ -522,7 +558,6 @@ MoveDisabled: ; 3438d
 	jp StdBattleTextBox
 
 ; 343a5
-
 
 HitConfusion: ; 343a5
 
@@ -1330,19 +1365,15 @@ BattleCommand_Stab: ; 346d2
 	ret
 
 
-BattleCheckTypeMatchup: ; 347c8
-	ld hl, EnemyMonType1
+BattleCheckTypeMatchup:
 	ld a, [hBattleTurn]
 	and a
+	ld hl, EnemyMonType1
 	jr z, CheckTypeMatchup
 	ld hl, BattleMonType1
-
 	; fallthrough
-; 347d3
-
 CheckTypeMatchup:
-; FIXME: Broken in AI usage! (assumes placing move type in a will work, it wont)
-; wrapper that handles ability immunities, because type matchups take predecence,
+; Wrapper that handles ability immunities, because type matchups take predecence,
 ; this matters for Ground pokémon with Lightning Rod (and Trace edge-cases).
 ; Yes, Lightning Rod is useless on ground types since GSC has no doubles.
 	push hl
@@ -2589,10 +2620,70 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	jr nc, .print
 	ld hl, NotVeryEffectiveText
 .print
-	jp StdBattleTextBox
+	push af
+	call StdBattleTextBox
+	pop af
+	ret c
 
-; 351c0
+	; Activate Weakness Policy
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_WEAKNESS_POLICY
+	ret nz
 
+	push hl
+	call SwitchTurn
+	call ResetMiss
+	call BattleCommand_AttackUp2
+	xor a
+	ld b, a
+	ld c, a
+	ld a, [FailedMessage]
+	and a
+	jr z, .ok
+	inc b
+.ok
+	push bc
+	call ResetMiss
+	call BattleCommand_SpecialAttackUp2
+	pop bc
+	ld a, [FailedMessage]
+	and a
+	jr z, .ok2
+	inc c
+	ld a, b
+	and a
+	jr nz, .end
+.ok2
+	farcall ItemRecoveryAnim
+	ld a, b
+	and a
+	jr nz, .atk_msg_done
+	pop hl
+	push hl
+	push bc
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_ItemRaisedAtk
+	call StdBattleTextBox
+.atk_msg_done
+	pop bc
+	ld a, c
+	and a
+	jr nz, .satk_msg_done
+	pop hl
+	push hl
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_ItemRaisedSAtk
+	call StdBattleTextBox
+.satk_msg_done
+	farcall ConsumeUserItem
+.end
+	pop hl
+	jp SwitchTurn
 
 BattleCommand_PostFaintEffects: ; 351c0
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
@@ -3348,7 +3439,6 @@ HailDefenseBoost:
 BattleCommand_StoreEnergy:
 BattleCommand_UnleashEnergy:
 	jp EndMoveEffect
-BattleCommand_BeatUp:
 BattleCommand_PsychUp:
 BattleCommand_FrustrationPower:
 BattleCommand_Present:
@@ -3485,7 +3575,7 @@ BattleCommand_ConfusedDamageCalc:
 ; Needed because several things are skipped
 	call DamagePass1
 	call DamagePass2
-
+	push bc
 	; This way we ignore Unnerve
 	ld hl, PlayerAtkLevel
 	ld de, EnemyAtkLevel
@@ -3493,7 +3583,7 @@ BattleCommand_ConfusedDamageCalc:
 	ld hl, PlayerDefLevel
 	ld de, EnemyDefLevel
 	call ApplyDefStatBoostDamage
-
+	pop bc
 	call DamagePass3
 	jp DamagePass4
 
@@ -3532,6 +3622,7 @@ BattleCommand_DamageCalc: ; 35612
 
 .skip_technician
 	call DamagePass2
+	push bc
 
 	; Stat changes
 	push de
@@ -3608,10 +3699,8 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .type_boost
 	cp HELD_CATEGORY_BOOST
 	jr z, .category_boost
-	cp HELD_CHOICE_ATK
-	jr z, .choice_atk
-	cp HELD_CHOICE_SAT
-	jr z, .choice_sat
+	cp HELD_CHOICE
+	jr z, .choice
 	cp HELD_EXPERT_BELT
 	jr z, .expert_belt
 	cp HELD_METRONOME
@@ -3636,7 +3725,12 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, $ba
 	call z, ApplyDamageMod
 	jr .done_attacker_item
-.choice_atk
+.choice
+	ld a, c
+	cp SP_ATTACK
+	jr z, .choice_sat
+	cp ATTACK
+	jr nz, .done_attacker_item
 	ld a, $32
 	call ApplyPhysicalAttackDamageMod
 	jr .done_attacker_item
@@ -3645,7 +3739,16 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplySpecialAttackDamageMod
 	jr .done_attacker_item
 .metronome_item
-	; TODO
+	ld b, $55
+	ld a, [hBattleTurn]
+	and a
+	ld a, [PlayerMetronomeCount]
+	jr z, .got_metronome_count
+	ld a, [EnemyMetronomeCount]
+.got_metronome_count
+	swap a
+	add b
+	call ApplyDamageMod
 	jr .done_attacker_item
 .expert_belt
 	ld a, [TypeModifier]
@@ -3665,6 +3768,7 @@ BattleCommand_DamageCalc: ; 35612
 	call ApplySpecialDefenseDamageMod
 	; fallthrough
 .done_defender_item
+	pop bc
 	call DamagePass3
 	jp DamagePass4
 
@@ -4854,7 +4958,6 @@ SelfInflictDamageToSubstitute: ; 35de0
 	jp ResetDamage
 
 ; 35e40
-
 
 UpdateMoveData: ; 35e40
 
@@ -6216,15 +6319,6 @@ BattleCommand_Burn:
 	jp PrintDoesntAffect
 
 
-BattleCommand_Hex:
-; hex
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
-	ret z
-	jp DoubleDamage
-
-
 BattleCommand_RaiseSubNoAnim: ; 365af
 	ld hl, GetMonBackpic
 	ld a, [hBattleTurn]
@@ -7538,44 +7632,6 @@ BattleCommand_Rage: ; 36f1d
 ; 36f25
 
 
-BattleCommand_DoubleFlyingDamage: ; 36f25
-; doubleflyingdamage
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_FLYING, a
-	ret z
-	jr DoubleDamage
-
-; 36f2f
-
-
-BattleCommand_DoubleUndergroundDamage: ; 36f2f
-; doubleundergrounddamage
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	bit SUBSTATUS_UNDERGROUND, a
-	ret z
-
-	; fallthrough
-; 36f37
-
-
-DoubleDamage: ; 36f37
-	ld hl, CurDamage + 1
-	sla [hl]
-	dec hl
-	rl [hl]
-	jr nc, .quit
-
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
-.quit
-	ret
-
-; 36f46
-
-
 BattleCommand_LeechSeed: ; 36f9d
 ; leechseed
 	ld a, [AttackMissed]
@@ -8317,69 +8373,112 @@ INCLUDE "battle/effects/perish_song.asm"
 
 INCLUDE "battle/effects/rollout.asm"
 
+BoostJumptable:
+	dbw AVALANCHE, DoAvalanche
+	dbw ACROBATICS, DoAcrobatics
+	dbw FACADE, DoFacade
+	dbw FURY_CUTTER, DoFuryCutter
+	dbw HEX, DoHex
+	dbw -1, -1
 
-BattleCommand_FuryCutter: ; 37792
-; furycutter
+BattleCommand_ConditionalBoost:
+	ld hl, BoostJumptable
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	jp BattleJumptable
 
-	ld hl, PlayerFuryCutterCount
+DoAvalanche:
+	call CheckOpponentWentFirst
+	jr DoubleDamageIfNZ
+
+DoAcrobatics:
 	ld a, [hBattleTurn]
 	and a
-	jr z, .go
-	ld hl, EnemyFuryCutterCount
-
-.go
-	ld a, [AttackMissed]
-	and a
-	jp nz, ResetFuryCutterCount
-
-	inc [hl]
-
-; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
+	ld hl, BattleMonItem
+	jr z, .got_item
+	ld hl, EnemyMonItem
+.got_item
 	ld a, [hl]
-	ld b, a
-	cp 3
-	jr c, .checkdouble
-	ld b, 2
+	and a
+	jr DoubleDamageIfNZ
 
-.checkdouble
-	dec b
+DoFacade:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and 1 << BRN | 1 << PSN | 1 << PAR
+	jr DoubleDamageIfNZ
+
+DoHex:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	jr DoubleDamageIfNZ
+
+BattleCommand_DoubleFlyingDamage:
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_FLYING, a
+	jr DoubleDamageIfNZ
+
+BattleCommand_DoubleUndergroundDamage:
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_UNDERGROUND, a
+	; fallthrough
+DoubleDamageIfNZ:
 	ret z
-
-; Double the damage
+	; fallthrough
+DoubleDamage:
 	ld hl, CurDamage + 1
 	sla [hl]
 	dec hl
 	rl [hl]
-	jr nc, .checkdouble
+	jr nc, .quit
 
-; No overflow
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
+.quit
 	ret
 
-; 377be
-
-
-ResetFuryCutterCount: ; 377be
-
-	push hl
-
-	ld hl, PlayerFuryCutterCount
+DoFuryCutter:
 	ld a, [hBattleTurn]
 	and a
+	ld hl, PlayerFuryCutterCount
+	jr z, .got_fury_cutter_count
+	ld hl, EnemyFuryCutterCount
+.got_fury_cutter_count
+	ld a, [AttackMissed]
+	and a
+	jr nz, ResetFuryCutterCount
+
+	; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
+	ld a, [hl]
+	cp 3
+	jr nc, .capped
+	inc [hl]
+.capped
+	ld a, [hl]
+	ld b, a
+
+.checkdouble
+	dec b
+	ret z
+	call DoubleDamage
+	jr .checkdouble
+
+ResetFuryCutterCount:
+	push hl
+	ld a, [hBattleTurn]
+	and a
+	ld hl, PlayerFuryCutterCount
 	jr z, .reset
 	ld hl, EnemyFuryCutterCount
-
 .reset
 	xor a
 	ld [hl], a
-
 	pop hl
 	ret
-
-; 377ce
-
 
 INCLUDE "battle/effects/attract.asm"
 
@@ -8530,32 +8629,106 @@ BattleCommand_GetMagnitude: ; 37991
 	db 255, 150, 10
 ; 379c9
 
+CheckAnyOtherAliveMons:
+; These return nz if any is alive
+	ld a, [hBattleTurn]
+	and a
+	jr nz, CheckAnyOtherAliveEnemyMons
+	; fallthrough
+CheckAnyOtherAlivePartyMons:
+	ld hl, PartyMon1HP
+	ld de, CurPartyMon
+	ld a, [PartyCount]
+	jr DoCheckAnyOtherAliveMons
+CheckAnyOtherAliveEnemyMons:
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld hl, OTPartyMon1HP
+	ld de, CurOTMon
+	ld a, [OTPartyCount]
+	; fallthrough
+DoCheckAnyOtherAliveMons:
+	ld b, a
+	ld a, [de]
+	ld e, a
+	ld d, b
+	inc e
+	; - 1 to account for the hl++
+	ld bc, PARTYMON_STRUCT_LENGTH - 1
 
-BattleCommand_BatonPass: ; 379c9
-; batonpass
+.loop
+	ld a, [hli]
+	or [hl]
+	jr z, .not_alive
+
+	; Ignore current mon
+	dec e
+	jr z, .not_alive2
+	ret
+.not_alive
+	dec e
+.not_alive2
+	add hl, bc
+	dec d
+	jr nz, .loop
+	ret
+
+BattleCommand_SwitchOut:
+	call CheckAnyOtherAliveMons
+	ret z
+	call UpdateUserInParty
+	farcall SlideUserPicOut
 
 	ld a, [hBattleTurn]
 	and a
-	jp nz, .Enemy
+	jr nz, .enemy
 
+	; Piggyback on Baton Pass routines
+	call DoPlayerBatonPass
 
-; Need something to switch to
-	call CheckAnyOtherAlivePartyMons
+	; Baton Pass routines preserve some stuff, get rid of it
+	; unless we fainted
+	ld hl, BattleMonHP
+	ld a, [hli]
+	or [hl]
+	ret z
+
+	farcall NewBattleMonStatus
+	farcall ResetPlayerStatLevels
+	ret
+.enemy
+	call DoEnemyBatonPass
+	ld hl, EnemyMonHP
+	ld a, [hli]
+	or [hl]
+	ret z
+
+	farcall NewEnemyMonStatus
+	farcall ResetEnemyStatLevels
+	ret
+
+BattleCommand_BatonPass:
+	call CheckAnyOtherAliveMons
 	jp z, FailedBatonPass
 
-	call UpdateBattleMonInParty
 	call AnimateCurrentMove
-
-	ld c, 50
+	ld c, 30
 	call DelayFrames
+	call UpdateUserInParty
 
-; Transition into switchmon menu
+	ld a, [hBattleTurn]
+	and a
+	jr nz, DoEnemyBatonPass
+	; fallthrough
+DoPlayerBatonPass:
+	; Transition into switchmon menu
 	call LoadStandardMenuDataHeader
 	farcall SetUpBattlePartyMenu_NoLoop
 
 	farcall ForcePickSwitchMonInBattle
 
-; Return to battle scene
+	; Return to battle scene
 	call ClearPalettes
 	farcall _LoadBattleFontsHPBar
 	call CloseWindow
@@ -8571,24 +8744,12 @@ BattleCommand_BatonPass: ; 379c9
 	ld hl, PassedBattleMonEntrance
 	call CallBattleCore
 
-	jp ResetBatonPassStatus
+	jr ResetBatonPassStatus
 
-
-.Enemy:
-
-; Wildmons don't have anything to switch to
-	ld a, [wBattleMode]
-	dec a ; WILDMON
-	jp z, FailedBatonPass
-
-	call CheckAnyOtherAliveEnemyMons
-	jp z, FailedBatonPass
-
-	call UpdateEnemyMonInParty
-	call AnimateCurrentMove
+DoEnemyBatonPass:
 	call BatonPass_LinkEnemySwitch
 
-; Passed enemy PartyMon entrance
+	; Passed enemy PartyMon entrance
 	xor a
 	ld [wEnemySwitchMonIndex], a
 	ld hl, EnemySwitch_SetMode
@@ -8608,10 +8769,27 @@ BattleCommand_BatonPass: ; 379c9
 
 	jr ResetBatonPassStatus
 
-; 37a67
+ResetBatonPassStatus:
+; Reset status changes that aren't passed by Baton Pass.
+	; Disable isn't passed.
+	call ResetActorDisable
+	farcall BreakAttraction
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_TRANSFORMED, [hl]
+	res SUBSTATUS_ENCORED, [hl]
 
+	; New mon hasn't used a move yet.
+	ld a, BATTLE_VARS_LAST_MOVE
+	call GetBattleVarAddr
+	ld [hl], 0
 
-BatonPass_LinkPlayerSwitch: ; 37a67
+	xor a
+	ld [wPlayerWrapCount], a
+	ld [wEnemyWrapCount], a
+	ret
+
+BatonPass_LinkPlayerSwitch:
 	ld a, [wLinkMode]
 	and a
 	ret z
@@ -8628,10 +8806,7 @@ BatonPass_LinkPlayerSwitch: ; 37a67
 	ld [wPlayerAction], a
 	ret
 
-; 37a82
-
-
-BatonPass_LinkEnemySwitch: ; 37a82
+BatonPass_LinkEnemySwitch:
 	ld a, [wLinkMode]
 	and a
 	ret z
@@ -8656,106 +8831,9 @@ BatonPass_LinkEnemySwitch: ; 37a82
 .switch
 	jp CloseWindow
 
-; 37aab
-
-
-FailedBatonPass: ; 37aab
+FailedBatonPass:
 	call AnimateFailedMove
 	jp PrintButItFailed
-
-; 37ab1
-
-
-ResetBatonPassStatus: ; 37ab1
-; Reset status changes that aren't passed by Baton Pass.
-
-	; Disable isn't passed.
-	call ResetActorDisable
-
-	; Attraction isn't passed.
-	ld hl, PlayerSubStatus1
-	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, EnemySubStatus1
-	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, PlayerSubStatus2
-
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_TRANSFORMED, [hl]
-	res SUBSTATUS_ENCORED, [hl]
-
-	; New mon hasn't used a move yet.
-	ld a, BATTLE_VARS_LAST_MOVE
-	call GetBattleVarAddr
-	ld [hl], 0
-
-	xor a
-	ld [wPlayerWrapCount], a
-	ld [wEnemyWrapCount], a
-	ret
-
-; 37ae9
-
-
-CheckAnyOtherAlivePartyMons: ; 37ae9
-	ld hl, PartyMon1HP
-	ld a, [PartyCount]
-	ld d, a
-	ld a, [CurBattleMon]
-	ld e, a
-	jr CheckAnyOtherAliveMons
-
-; 37af6
-
-
-CheckAnyOtherAliveEnemyMons: ; 37af6
-	ld hl, OTPartyMon1HP
-	ld a, [OTPartyCount]
-	ld d, a
-	ld a, [CurOTMon]
-	ld e, a
-
-	; fallthrough
-; 37b01
-
-CheckAnyOtherAliveMons: ; 37b01
-; Check for nonzero HP starting from partymon
-; HP at hl for d partymons, besides current mon e.
-
-; Return nz if any are alive.
-
-	xor a
-	ld b, a
-	ld c, a
-.loop
-	ld a, c
-	cp d
-	jr z, .done
-	cp e
-	jr z, .next
-
-	ld a, [hli]
-	or b
-	ld b, a
-	ld a, [hld]
-	or b
-	ld b, a
-
-.next
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	inc c
-	jr .loop
-
-.done
-	ld a, b
-	and a
-	ret
-
-; 37b1d
-
 
 BattleCommand_Pursuit: ; 37b1d
 ; pursuit
@@ -9097,6 +9175,15 @@ CheckHiddenOpponent: ; 37daa
 
 ; 37db2
 
+GetPlayerItem:
+	ld hl, BattleMonItem
+	ld b, [hl]
+	jp GetItemHeldEffect
+
+GetEnemyItem:
+	ld hl, EnemyMonItem
+	ld b, [hl]
+	jp GetItemHeldEffect
 
 GetUserItem: ; 37db2
 ; Return the effect of the user's item in bc, and its id at hl.

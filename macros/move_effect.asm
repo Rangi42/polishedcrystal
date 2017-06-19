@@ -99,7 +99,7 @@ endm
 	command checkcurl               ; 5c
 	command rolloutpower            ; 5d
 	command bulkup                  ; 5e
-	command furycutter              ; 5f
+	command conditionalboost        ; 5f
 	command attract                 ; 60
 	command happinesspower          ; 61
 	command present                 ; 62
@@ -164,7 +164,7 @@ endm
 	command skipsuncharge           ; 9d
 	command thunderaccuracy         ; 9e
 	command teleport                ; 9f
-	command beatup                  ; a0
+	command switchout               ; a0
 	command ragedamage              ; a1
 	command resettypematchup        ; a2
 	command allstatsup              ; a3
@@ -181,9 +181,8 @@ endm
 	command startloop               ; ae
 	command curl                    ; af
 	command burn                    ; b0
-	command hex                     ; b1
-	command bounceback              ; b2
-	command pickpocket              ; b3
+	command bounceback              ; b1
+	command pickpocket              ; b2
 
 	enum_start -1, -1
 	command endmove

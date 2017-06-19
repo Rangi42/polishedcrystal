@@ -26,10 +26,9 @@ endr
 	ret
 ; 856b
 
-PredefPointers:: ; 856b
+PredefPointers::
 ; $4b Predef pointers
 ; address, bank
-
 	add_predef LearnMove ; $00
 	add_predef HealParty
 	add_predef FlagPredef
@@ -74,14 +73,12 @@ PredefPointers:: ; 856b
 	add_predef GetBackpic
 	add_predef FrontpicPredef
 	add_predef DecompressPredef
-	add_predef CheckTypeMatchup
 	add_predef NewPokedexEntry
 	add_predef PlaceStatusString
 	add_predef LoadMonAnimation
-	add_predef AnimateFrontpic ; $30
-	add_predef HOF_AnimateFrontpic
+	add_predef AnimateFrontpic
+	add_predef HOF_AnimateFrontpic ; $30
 	add_predef PrintNature
 	add_predef PrintNatureIndicators
 	add_predef PrintAbility
-	add_predef PrintAbilityDescription ; $35
-; 864c
+	add_predef PrintAbilityDescription ; $34
