@@ -18,7 +18,7 @@ LightningIslandRoofSparkScript:
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
-	loadtrainer SPARK, 1
+	loadtrainer SPARK_T, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SPARK

@@ -1,58 +1,78 @@
-BattleCommand_Thief: ; 37492
-; thief
-
-; Can't steal during link battles.
-	ld a, [wLinkMode]
-	and a
+BattleCommand_Thief:
+	; Pickpocket uses this too
+	call CanStealItem
 	ret nz
 
-; The enemy can't steal items.
-	ld a, [hBattleTurn]
-	and a
-	ret nz
+	; Steal item
+	ld [hl], d
+	xor a
+	ld [bc], a
+	ld a, d
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, StoleText
+	call StdBattleTextBox
 
-; The player needs to be able to steal an item.
+	; Update parties
+	ld a, [CurBattleMon]
+	ld hl, PartyMon1Item
+	call GetPartyLocation
 	ld a, [BattleMonItem]
-	and a
-	ret nz
+	ld [hl], a
+	ld b, a
 
-; The enemy needs to have an item to steal.
+	; Wilds don't have a party struct, but update backup item for them if we stole it
+	ld a, [wBattleMode]
+	dec a
+	jp z, SetBackupItem
+
+	ld a, [CurOTMon]
+	ld hl, OTPartyMon1Item
+	call GetPartyLocation
 	ld a, [EnemyMonItem]
-	and a
-	ret z
+	ld [hl], a
+	ret
 
-; Can't steal mail.
-	ld [wd265], a
-	ld d, a
-	farcall ItemIsMail
-	ret c
-
-; Sticky Hold prevents item theft.
-	call GetOpponentAbilityAfterMoldBreaker
-	cp STICKY_HOLD
-	ret z
-
-; effectchance may prevent theft.
+CanStealItem:
+; Returns z if we can and put item into d, target item addr into bc, user item addr into hl
+	; Maybe Substitute/Sheer Force prevents the steal
 	ld a, [EffectFailed]
 	and a
 	ret nz
 
-; Take item from enemy.
-	ld a, MON_ITEM
-	call OTPartyAttr
+	; Sticky Hold prevents item theft.
+	call GetOpponentAbilityAfterMoldBreaker
+	cp STICKY_HOLD
+	jr z, .cant
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonItem
+	ld bc, EnemyMonItem
+	jr z, .got_target
+	ld hl, EnemyMonItem
+	ld bc, BattleMonItem
+.got_target
+	; Check if user is holding an item already
+	ld a, [hl]
+	and a
+	ret nz
+
+	; Check if target has an item to steal
+	ld a, [bc]
+	and a
+	jr z, .cant
+
+	; Mail can't be stolen
+	ld d, a
+	push bc
+	push de
+	farcall ItemIsMail
+	pop de
+	pop bc
+	jr c, .cant
 	xor a
-	ld [hl], a
-	ld [EnemyMonItem], a
-
-; Give item to player.
-	ld a, MON_ITEM
-	call BattlePartyAttr
-	ld a, [wd265]
-	ld [hl], a
-	ld [BattleMonItem], a
-
-	call GetItemName
-	ld hl, StoleText
-	jp StdBattleTextBox
-
-; 37517
+	ret
+.cant
+	or 1
+	ret

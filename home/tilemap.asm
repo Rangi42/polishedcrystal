@@ -184,8 +184,7 @@ ClearMenuBoxInterior:: ; 1ce1
 	call GetMenuBoxDims
 	dec b
 	dec c
-	call ClearBox
-	ret
+	jp ClearBox
 ; 1cf1
 
 ClearWholeMenuBox:: ; 1cf1
@@ -193,8 +192,7 @@ ClearWholeMenuBox:: ; 1cf1
 	call GetMenuBoxDims
 	inc c
 	inc b
-	call ClearBox
-	ret
+	jp ClearBox
 ; 1cfd
 
 

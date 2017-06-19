@@ -201,8 +201,7 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
-	call ReinitSpriteAnimFrame
-	ret
+	jp ReinitSpriteAnimFrame
 
 CelebiEvent_Cosine: ; 49b3b (12:5b3b)
 	add $10
@@ -217,7 +216,7 @@ CelebiEvent_Cosine: ; 49b3b (12:5b3b)
 	and $1f
 	call .SineFunction
 	ld a, h
-	xor $ff
+	cpl
 	inc a
 	ret
 

@@ -120,8 +120,7 @@ EvolutionAnimation: ; 4e5e1
 	ld a, [PlayerHPPal]
 	ld [CurPartySpecies], a
 	hlcoord 7, 2
-	ld d, $0
-	ld e, ANIM_MON_EVOLVE
+	lb de, $0, ANIM_MON_EVOLVE
 	predef AnimateFrontpic
 
 	pop af
@@ -148,8 +147,7 @@ EvolutionAnimation: ; 4e5e1
 	ret c
 
 	ld a, [PlayerHPPal]
-	call PlayCry
-	ret
+	jp PlayCry
 ; 4e703
 
 .GetSGBLayout: ; 4e703
@@ -358,8 +356,7 @@ EvolutionAnimation: ; 4e5e1
 	dec c
 	jr nz, .loop6
 	pop bc
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 4e831
 
 

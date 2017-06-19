@@ -2,8 +2,7 @@ FieldMoveJumptableReset: ; c6ea
 	xor a
 	ld hl, Buffer1
 	ld bc, 7
-	call ByteFill
-	ret
+	jp ByteFill
 
 FieldMoveJumptable: ; c6f5
 	ld a, [Buffer1]
@@ -30,8 +29,7 @@ GetPartyNick: ; c706
 ; copy text from StringBuffer2 to StringBuffer3
 	ld de, StringBuffer2
 	ld hl, StringBuffer3
-	call CopyName2
-	ret
+	jp CopyName2
 
 CheckEngineFlag: ; c721
 ; Check engine flag de
@@ -140,8 +138,7 @@ FieldMovePokepicScript:
 
 FieldMoveFailed: ; c779
 	ld hl, .CantUseHere
-	call MenuTextBoxBackup
-	ret
+	jp MenuTextBoxBackup
 
 .CantUseHere: ; 0xc780
 	; Can't use that here.
@@ -287,8 +284,7 @@ CutDownGrass: ; c810
 	call GetMovementPermissions
 	call UpdateSprites
 	call DelayFrame
-	call LoadStandardFont
-	ret
+	jp LoadStandardFont
 
 CheckOverworldTileArrays: ; c840
 	; Input: c contains the tile you're facing
@@ -441,8 +437,7 @@ CutDownTree:
 	call GetMovementPermissions
 	call UpdateSprites
 	call DelayFrame
-	call LoadStandardFont
-	ret
+	jp LoadStandardFont
 
 OWFlash: ; c8ac
 	call .CheckUseFlash
@@ -830,8 +825,7 @@ FlyFunction: ; ca3b
 	farcall Function561d
 	call DelayFrame
 	call ReplaceKrisSprite
-	call LoadStandardFont
-	ret
+	jp LoadStandardFont
 
 WaterfallFunction: ; cade
 	call .TryWaterfall
@@ -1201,8 +1195,7 @@ PrepareOverworldMove: ; cd1d
 	add hl, de
 	ld a, [hl]
 	ld [Buffer6], a
-	call GetPartyNick
-	ret
+	jp GetPartyNick
 
 Script_StrengthFromMenu: ; 0xcd29
 	reloadmappart

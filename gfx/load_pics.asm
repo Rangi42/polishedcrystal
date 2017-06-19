@@ -548,8 +548,7 @@ FixBackpicAlignment: ; 5127c
 
 .got_dims
 	ld a, [hl]
-	ld b, $0
-	ld c, $8
+	lb bc, $0, $8
 .loop
 	rra
 	rl b
@@ -609,8 +608,7 @@ PadFrontpic: ; 512ab
 	jr nz, .five_loop
 	ld c, 7 tiles
 	xor a
-	call .Fill
-	ret
+	jp .Fill
 
 .Fill:
 	ld [hli], a

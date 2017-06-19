@@ -32,8 +32,7 @@ MartDialog: ; 15a61
 	xor a
 	ld [EngineBuffer1], a
 	ld [EngineBuffer5], a
-	call StandardMart
-	ret
+	jp StandardMart
 ; 15a6e
 
 HerbShop: ; 15a6e
@@ -43,8 +42,7 @@ HerbShop: ; 15a6e
 	call MartTextBox
 	call BuyMenu
 	ld hl, Text_HerbShop_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 ; 15a84
 
 BargainShop: ; 15a84
@@ -65,8 +63,7 @@ BargainShop: ; 15a84
 
 .skip_set
 	ld hl, Text_BargainShop_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 ; 15aae
 
 Pharmacist: ; 15aae
@@ -76,8 +73,7 @@ Pharmacist: ; 15aae
 	call MartTextBox
 	call BuyMenu
 	ld hl, Text_Pharmacist_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 ; 15ac4
 
 RooftopSale: ; 15ac4
@@ -97,8 +93,7 @@ RooftopSale: ; 15ac4
 	call MartTextBox
 	call BuyMenu
 	ld hl, Text_Mart_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 ; 15aee
 
 AdventurerMart:
@@ -108,8 +103,7 @@ AdventurerMart:
 	call MartTextBox
 	call BuyMenu
 	ld hl, Text_AdventurerMart_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 
 InformalMart:
 	call FarReadMart
@@ -118,8 +112,7 @@ InformalMart:
 	call MartTextBox
 	call BuyMenu
 	ld hl, Text_InformalMart_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 
 TMMart:
 	call FarReadTMMart
@@ -128,8 +121,7 @@ TMMart:
 	call MartTextBox
 	call BuyTMMenu
 	ld hl, Text_Mart_ComeAgain
-	call MartTextBox
-	ret
+	jp MartTextBox
 
 RooftopSaleData1: ; 15aee
 	db 5
@@ -519,8 +511,7 @@ BuyMenu_InitGFX:
 	ld b, SCGB_BUYMENU_PALS
 	call GetSGBLayout
 	call SetPalettes
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .BuyLeftColumnTilemapString:
 	db $0e, $0e, $0e, $0e, $0e, $00
@@ -551,8 +542,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call PrintText
-	ret
+	jp PrintText
 ; 15c91
 
 MartAskPurchaseQuantity: ; 15c91
@@ -796,8 +786,7 @@ StandardMartAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
 	farcall SelectQuantityToBuy
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 15d97
 
 MartConfirmPurchase: ; 15d97
@@ -875,8 +864,7 @@ RooftopSaleAskPurchaseQuantity:
 	call LoadBuyMenuText
 	call .GetSalePrice
 	farcall RooftopSale_SelectQuantityToBuy
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 15df9
 
 .GetSalePrice: ; 15df9
@@ -984,8 +972,7 @@ endr
 	ld bc, SCREEN_WIDTH - 5
 	add hl, bc
 	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
-	call PrintBCDNumber
-	ret
+	jp PrintBCDNumber
 ; 15e4a (5:5e4a)
 
 TMMenuDataHeader_Buy:
@@ -1021,8 +1008,7 @@ endr
 	ld bc, SCREEN_WIDTH - 5
 	add hl, bc
 	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
-	call PrintBCDNumber
-	ret
+	jp PrintBCDNumber
 
 Text_HerbShop_Intro: ; 0x15e4a
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
@@ -1347,13 +1333,11 @@ Text_Mart_SoldForAmount: ; 0x15fbe
 PlayTransactionSound: ; 15fc3
 	call WaitSFX
 	ld de, SFX_TRANSACTION
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 15fcd
 
 MartTextBox: ; 15fcd
 	call MenuTextBox
 	call JoyWaitAorB
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 15fd7

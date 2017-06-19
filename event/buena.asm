@@ -60,8 +60,7 @@ SpecialBuenasPassword: ; 8af6b
 	ld c, a
 	farcall GetBuenasPassword
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 8afd4
 
 SpecialBuenaPrize: ; 8afd4
@@ -144,8 +143,7 @@ SpecialBuenaPrize: ; 8afd4
 	ld hl, .Text_PleaseComeBackAgain
 	call PrintText
 	call JoyWaitAorB
-	call PlayClickSFX
-	ret
+	jp PlayClickSFX
 ; 8b072
 
 .Text_AskWhichPrize: ; 0x8b072
@@ -185,14 +183,12 @@ SpecialBuenaPrize: ; 8afd4
 
 Buena_DisplayBlueCardBalance: ; 8b090
 	ld hl, BlueCardBalanceMenuDataHeader
-	call LoadMenuDataHeader
-	ret
+	jp LoadMenuDataHeader
 ; 8b097
 
 PrintBlueCardBalance: ; 8b097
 	ld de, wBlueCardBalance
-	call .DrawBox
-	ret
+	jp .DrawBox
 ; 8b09e
 
 .DrawBox: ; 8b09e
@@ -216,8 +212,7 @@ PrintBlueCardBalance: ; 8b097
 	ld [hld], a
 	pop de
 	lb bc, 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 ; 8b0ca
 
 .Points_string:
@@ -232,8 +227,7 @@ BlueCardBalanceMenuDataHeader: ; 0x8b0d1
 
 Buena_PlacePrizeMenuBox: ; 8b0d6
 	ld hl, .menudataheader
-	call LoadMenuDataHeader
-	ret
+	jp LoadMenuDataHeader
 ; 8b0dd
 
 .menudataheader ; 0x8b0dd
@@ -302,8 +296,7 @@ Buena_PrizeMenu: ; 8b0e2
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 8b147
 
 .prizepoints ; 8b147

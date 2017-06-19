@@ -166,11 +166,23 @@ Function4440: ; 4440
 	jr nz, SetFacingStanding
 asm_4448 ; use second column
 	ld de, Pointers445f + 2
-	jr asm_444d
 ; 444d
-
 asm_444d
 ; call [4 * ObjectStructs[ObjInd, OBJECT_ACTION] + de]
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld a, [hl]
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
+; 445f
+
 INCLUDE "engine/map_object_action.asm"
 
 CopyNextCoordsTileToStandingCoordsTile: ; 4600
@@ -495,6 +507,13 @@ MapObjectMovementPattern: ; 47dd
 	dw .RandomSpin2                  ; SPRITEMOVEFN_FAST_RANDOM_SPIN
 	dw .Standing                     ; SPRITEMOVEFN_STANDING
 	dw .ObeyDPad                     ; SPRITEMOVEFN_OBEY_DPAD
+	dw .Movement08                   ; SPRITEMOVEFN_08
+	dw .Movement09                   ; SPRITEMOVEFN_09
+	dw .Movement0a                   ; SPRITEMOVEFN_0A
+	dw .Movement0b                   ; SPRITEMOVEFN_0B
+	dw .Movement0c                   ; SPRITEMOVEFN_0C
+	dw .Movement0d                   ; SPRITEMOVEFN_0D
+	dw .Movement0e                   ; SPRITEMOVEFN_0E
 	dw .Follow                       ; SPRITEMOVEFN_FOLLOW
 	dw .Script                       ; SPRITEMOVEFN_SCRIPTED
 	dw .Strength                     ; SPRITEMOVEFN_STRENGTH
@@ -568,6 +587,24 @@ MapObjectMovementPattern: ; 47dd
 	ret
 
 .ObeyDPad:
+	ld hl, Function5000
+	jp HandleMovementData
+
+.Movement08:
+	ld hl, Function5015
+	jp HandleMovementData
+
+.Movement09:
+	ld hl, Function5026
+	jp HandleMovementData
+
+.Movement0a:
+.Movement0b:
+.Movement0c:
+.Movement0e:
+	jp _GetMovementPerson
+
+.Movement0d:
 	ld hl, Function5000
 	jp HandleMovementData
 
@@ -744,8 +781,7 @@ MapObjectMovementPattern: ; 47dd
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_03
-	call IncrementObjectMovementByteIndex
-	ret
+	jp IncrementObjectMovementByteIndex
 
 .MovementSpinTurnLeft:
 	ld de, .DirectionData_Counterclockwise
@@ -777,8 +813,7 @@ MapObjectMovementPattern: ; 47dd
 	ld a, [hl]
 	pop hl
 	ld [hl], a
-	call DecrementObjectMovementByteIndex
-	ret
+	jp DecrementObjectMovementByteIndex
 
 .MovementShadow:
 	call ._MovementShadow_Grass_Emote_BoulderDust
@@ -1027,6 +1062,10 @@ StepTypesJumptable: ; 4b45
 	dw ReturnDigStep            ; STEP_TYPE_RETURN_DIG
 	dw StepTypeTrackingObject   ; STEP_TYPE_TRACKING_OBJECT
 	dw StepType14               ; STEP_TYPE_14
+	dw StepType15               ; STEP_TYPE_15
+	dw StepType16               ; STEP_TYPE_16
+	dw StepType17               ; STEP_TYPE_17
+	dw StepType18               ; STEP_TYPE_18
 	dw SkyfallTop               ; STEP_TYPE_SKYFALL_TOP
 ; 4b79
 
@@ -1059,8 +1098,7 @@ NPCJump: ; 4b86
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res 3, [hl]
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 
 .Land:
 	call AddStepVector
@@ -1102,8 +1140,7 @@ PlayerJump: ; 4bbf
 	ld hl, wPlayerStepFlags
 	set 6, [hl]
 	set 4, [hl]
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 
 .initland
 	call GetNextTile
@@ -1151,8 +1188,7 @@ TeleportFrom: ; 4c18
 	add hl, bc
 	dec [hl]
 	ret nz
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 
 .InitSpinRise:
 	ld hl, OBJECT_STEP_FRAME
@@ -1215,8 +1251,7 @@ TeleportTo: ; 4c89
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 ; 4caa
 
 .DoWait:
@@ -1235,8 +1270,7 @@ TeleportTo: ; 4c89
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 ; 4cc9
 
 .DoDescent:
@@ -1263,8 +1297,7 @@ TeleportTo: ; 4c89
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], 16
-	call IncrementObjectStructField28
-	ret
+	jp IncrementObjectStructField28
 ; 4cf5
 
 .DoFinalSpin:
@@ -1435,6 +1468,17 @@ StepType03: ; 4ddd
 	ld [hl], STEP_TYPE_SLEEP
 	ret
 ; 4df0
+
+StepType18: ; 4df0
+	ld hl, OBJECT_DIRECTION_WALKING
+	add hl, bc
+	ld [hl], STANDING
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	dec [hl]
+	ret nz
+	jp DeleteMapObject
+; 4dff
 
 StepTypeBump: ; 4dff
 	ld hl, OBJECT_STEP_DURATION
@@ -1637,6 +1681,7 @@ StepTypeTrackingObject: ; 4f04
 ; 4f33
 
 StepType14: ; 4f33
+StepType15: ; 4f33
 	call Object28AnonymousJumptable
 ; anonymous dw
 	dw .Init
@@ -1671,8 +1716,7 @@ StepType14: ; 4f33
 	ret
 
 .ok
-	call DeleteMapObject
-	ret
+	jp DeleteMapObject
 
 .GetSign:
 	ld hl, OBJECT_30
@@ -1684,6 +1728,18 @@ StepType14: ; 4f33
 	inc a
 	ret
 ; 4f77
+
+StepType16: ; 4f77
+	call Object28AnonymousJumptable ; ????
+; 4f7a
+StepType17: ; 4f7a
+	call Object28AnonymousJumptable
+; anonymous dw
+	dw .null
+	dw .null
+	dw .null
+.null
+; 4f83
 
 SkyfallTop: ; 4f83
 	call Object28AnonymousJumptable
@@ -1755,9 +1811,43 @@ Function5000: ; unscripted?
 
 GetMovementByte:
 	ld hl, wMovementDataPointer
-	call _GetMovementByte
-	ret
+	jp _GetMovementByte
 ; 5015
+
+Function5015: ; 5015
+	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
+	add hl, bc
+	ld e, [hl]
+	inc [hl]
+	ld d, 0
+	ld hl, wc2e2
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	add hl, de
+	ld a, [hl]
+	ret
+; 5026
+
+Function5026: ; 5026
+	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
+	add hl, bc
+	ld e, [hl]
+	inc [hl]
+	ld d, 0
+	ld hl, wc2e6
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	add hl, de
+	ld a, [hl]
+	ret
+; 5037
+
+_GetMovementPerson: ; 5037
+	ld hl, GetMovementPerson
+	jp HandleMovementData
+; 503d
 
 GetMovementPerson: ; 503d
 	ld a, [wMovementPerson]
@@ -2070,8 +2160,7 @@ Function5602: ; 5602, called at battle start
 	jr z, .ok
 	call Function5629 ; respawn opponent
 .ok
-	call _UpdateSprites
-	ret
+	jp _UpdateSprites
 ; 561d
 
 Function561d: ; 561d
@@ -2096,8 +2185,7 @@ Function5629: ; 5629
 	call GetObjectStruct
 	call DoesObjectHaveASprite
 	ret z
-	call Function5673
-	ret
+	jp Function5673
 ; 5645
 
 Function5645: ; 5645
@@ -2159,8 +2247,7 @@ Function5688: ; 5688
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld [hl], a
-	call UpdateTallGrassFlags
-	ret
+	jp UpdateTallGrassFlags
 ; 56a3
 
 Function56a3: ; 56a3
@@ -2348,8 +2435,7 @@ RefreshPlayerSprite: ; 579d
 	call .TryResetPlayerAction
 	farcall CheckWarpFacingDown
 	call c, SpawnInFacingDown
-	call .SpawnInCustomFacing
-	ret
+	jp .SpawnInCustomFacing
 ; 57bc
 
 .TryResetPlayerAction: ; 57bc
@@ -2379,8 +2465,7 @@ SpawnInFacingDown: ; 57d9
 	xor a
 ContinueSpawnFacing: ; 57db
 	ld bc, PlayerStruct
-	call SetSpriteDirection
-	ret
+	jp SetSpriteDirection
 ; 57e2
 
 SetPlayerPalette: ; 57e2
@@ -2683,8 +2768,7 @@ PRIORITY_HIGH EQU $30
 	ld c, PRIORITY_NORM
 	call .InitSpritesByPriority
 	ld c, PRIORITY_LOW
-	call .InitSpritesByPriority
-	ret
+	jp .InitSpritesByPriority
 
 .DeterminePriorities:
 	xor a

@@ -51,8 +51,7 @@ AI_SwitchOrTryItem: ; 38000
 	; fallthrough
 
 DontSwitch: ; 38041
-	call AI_TryItem
-	ret
+	jp AI_TryItem
 ; 38045
 
 SwitchOften: ; 38045
@@ -241,6 +240,7 @@ endr
 	res SUBSTATUS_RAGE, [hl]
 
 	xor a
+	ld [EnemySelectedMove], a
 	ld [LastPlayerCounterMove], a
 
 	scf

@@ -16,7 +16,7 @@ if DEF(FAITHFUL)
 	db PRESSURE ; ability 2
 	db INNER_FOCUS ; hidden ability
 else
-	db INTIMIDATE ; ability 2
+	db INNER_FOCUS ; ability 2
 	db FLASH_FIRE ; hidden ability
 endc
 	db SLOW ; growth rate

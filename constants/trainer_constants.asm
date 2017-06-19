@@ -1027,7 +1027,7 @@ KRIS EQU __enum__
 
 	trainerclass BLANCHE ; 7d
 
-	trainerclass SPARK ; 7e
+	trainerclass SPARK_T ; 7e
 
 	trainerclass FLANNERY ; 7f
 

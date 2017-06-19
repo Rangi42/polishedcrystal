@@ -140,6 +140,7 @@ AI_Redundant: ; 2c41a
 .Attract: ; 2c4fe
 	farcall CheckOppositeGender
 	jr c, .Redundant
+	jr z, .Redundant
 	ld a, [PlayerSubStatus1]
 	bit SUBSTATUS_IN_LOVE, a
 	ret

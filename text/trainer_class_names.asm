@@ -123,7 +123,7 @@
 	db "Lady@"             ; CAITLIN
 	db "<PK><MN> Trainer@" ; CANDELA
 	db "<PK><MN> Trainer@" ; BLANCHE
-	db "<PK><MN> Trainer@" ; SPARK
+	db "<PK><MN> Trainer@" ; SPARK_T
 	db "Trainer@"          ; FLANNERY
 	db "Fighter@"          ; MAYLENE
 	db "Pilot@"            ; SKYLA

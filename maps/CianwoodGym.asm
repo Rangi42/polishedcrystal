@@ -124,11 +124,11 @@ CianwoodGymBoulder:
 	jumpstd strengthboulder
 
 CianwoodGymStatue:
+	trainertotext CHUCK, 1, $1
 	checkflag ENGINE_STORMBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext CHUCK, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 12, .LyraToo
 	jumpstd gymstatue2

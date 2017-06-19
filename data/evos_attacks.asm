@@ -3621,9 +3621,15 @@ YanmaEvosAttacks:
 	db 22, DRAGON_RAGE ; Supersonic → new move
 	db 27, SUPERSONIC ; Uproar → Supersonic
 	db 30, PURSUIT
+if DEF(FAITHFUL)
+	db 33, ANCIENTPOWER
+	db 38, HYPNOSIS
+	db 43, WING_ATTACK ; Slash → Wing Attack
+else
 	db 33, WING_ATTACK ; AncientPower → Wing Attack
 	db 38, HYPNOSIS
 	db 43, ANCIENTPOWER ; Wing Attack → AncientPower
+endc
 	db 46, SCREECH
 	db 49, U_TURN
 	db 54, AIR_SLASH
@@ -3643,9 +3649,15 @@ YanmegaEvosAttacks:
 	db 22, DRAGON_RAGE ; Supersonic → new move
 	db 27, SUPERSONIC ; Uproar → Supersonic
 	db 30, PURSUIT
+if DEF(FAITHFUL)
+	db 33, ANCIENTPOWER
+	db 38, SLASH ; Feint → Slash
+	db 43, WING_ATTACK ; Slash → Wing Attack
+else
 	db 33, WING_ATTACK ; AncientPower → Wing Attack
 	db 38, SLASH ; Feint → Slash
 	db 43, ANCIENTPOWER ; Slash → AncientPower
+endc
 	db 46, SCREECH
 	db 49, U_TURN
 	db 54, AIR_SLASH
@@ -4469,8 +4481,8 @@ PhanpyEvosAttacks:
 	db 10, ROLLOUT
 	db 15, ENCORE ; Natural Gift → event move
 	db 19, ENDURE
-	db 24, BODY_SLAM ; Slam → similar move
-	db 28, TAKE_DOWN
+	db 24, TAKE_DOWN ; Slam → Take Down
+	db 28, BODY_SLAM ; Take Down → TM move
 	db 33, CHARM
 	db 37, PLAY_ROUGH ; Last Resort → egg move
 	db 42, DOUBLE_EDGE

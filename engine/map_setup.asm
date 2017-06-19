@@ -11,8 +11,7 @@ RunMapSetupScript:: ; 15363
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call ReadMapSetupScript
-	ret
+	jp ReadMapSetupScript
 ; 15377
 
 MapSetupScripts: ; 15377
@@ -334,8 +333,7 @@ CheckReplaceKrisSprite: ; 154f7
 	ret
 
 .ok
-	call ReplaceKrisSprite
-	ret
+	jp ReplaceKrisSprite
 
 .CheckBiking: ; 1550c (5:550c)
 	and a
@@ -399,8 +397,7 @@ CheckReplaceKrisSprite: ; 154f7
 
 FadeOldMapMusic: ; 15567
 	ld a, 6
-	call SkipMusic
-	ret
+	jp SkipMusic
 ; 1556d
 
 RetainOldPalettes: ; 1556d
@@ -414,8 +411,7 @@ RotatePalettesRightMapAndMusic: ; 15574
 	ld a, [MusicFadeIDHi]
 	ld a, $4
 	ld [MusicFade], a
-	call RotateThreePalettesRight
-	ret
+	jp RotateThreePalettesRight
 ; 15587
 
 ForceMapMusic: ; 15587
@@ -426,6 +422,5 @@ ForceMapMusic: ; 15587
 	ld a, $88
 	ld [MusicFade], a
 .notbiking
-	call TryRestartMapMusic
-	ret
+	jp TryRestartMapMusic
 ; 1559a

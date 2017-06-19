@@ -30,8 +30,7 @@ MenuTextBox:: ; 1d4f
 
 LoadMenuTextBox:: ; 1d58
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
-	ret
+	jp LoadMenuDataHeader
 ; 1d5f
 
 .MenuDataHeader: ; 1d5f
@@ -50,8 +49,7 @@ MenuTextBoxBackup:: ; 1d67
 
 LoadStandardMenuDataHeader:: ; 1d6e
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
-	ret
+	jp LoadMenuDataHeader
 ; 1d75
 
 .MenuDataHeader: ; 1d75
@@ -63,8 +61,7 @@ LoadStandardMenuDataHeader:: ; 1d6e
 ; 1d7d
 
 Call_ExitMenu:: ; 1d7d
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 1d81
 
 VerticalMenu::
@@ -100,40 +97,12 @@ GetMenu2:: ; 1dab
 	ret
 ; 1db8
 
-
 YesNoBox:: ; 1dcf
-	lb bc, SCREEN_WIDTH - 6, 7
-
+	ld a, 7 ; wMenuBorderTopCoord
 PlaceYesNoBox:: ; 1dd2
 ; Return nc (yes) or c (no).
-	push bc
 	ld hl, YesNoMenuDataHeader
-	call CopyMenuDataHeader
-	pop bc
-
-	; overflow prevention?
-	ld a, b
-	cp SCREEN_WIDTH - 6
-	jr nc, .okay
-	ld a, SCREEN_WIDTH - 6
-	ld b, a
-
-.okay
-	ld a, b
-	ld [wMenuBorderLeftCoord], a
-	add 5
-	ld [wMenuBorderRightCoord], a
-	ld a, c
-	ld [wMenuBorderTopCoord], a
-	add 4
-	ld [wMenuBorderBottomCoord], a
-	call PushWindow
-	call VerticalMenu
-	push af
-	ld c, $f
-	call DelayFrames
-	call CloseWindow
-	pop af
+	call PlaceTwoChoiceBox
 	jr c, .no
 	ld a, [wMenuCursorY]
 	cp 2 ; no
@@ -145,6 +114,26 @@ PlaceYesNoBox:: ; 1dd2
 	ld a, 2
 	ld [wMenuCursorY], a
 	scf
+	ret
+
+PlaceTwoChoiceBox:
+	push af
+	call CopyMenuDataHeader
+	pop af
+	ld [wMenuBorderTopCoord], a
+	add 4
+	ld [wMenuBorderBottomCoord], a
+	ld a, SCREEN_WIDTH - 6
+	ld [wMenuBorderLeftCoord], a
+	add 5 ; SCREEN_WIDTH - 1
+	ld [wMenuBorderRightCoord], a
+	call PushWindow
+	call VerticalMenu
+	push af
+	ld c, $f
+	call DelayFrames
+	call CloseWindow
+	pop af
 	ret
 ; 1e1d
 
@@ -401,8 +390,7 @@ PlaceMenuStrings:: ; 1f79
 	ld d, h
 	ld e, l
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 1f8d
 
 PlaceNthMenuStrings:: ; 1f8d
@@ -415,8 +403,7 @@ PlaceNthMenuStrings:: ; 1f8d
 	ld d, [hl]
 	ld e, a
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 1f9e
 
 MenuJumptable:: ; 1fa7
@@ -474,8 +461,7 @@ ClearWindowData:: ; 1fbf
 .bytefill ; 1ff0
 	ld bc, $0010
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 ; 1ff8
 
 MenuClickSound:: ; 1ff8
@@ -503,8 +489,7 @@ PlayClickSFX:: ; 2009
 MenuTextBoxWaitButton:: ; 2012
 	call MenuTextBox
 	call WaitButton
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 201c
 
 Place2DMenuItemName:: ; 201c

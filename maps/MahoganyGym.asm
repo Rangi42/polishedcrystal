@@ -128,11 +128,11 @@ MahoganyGymGuyScript:
 	end
 
 MahoganyGymStatue:
+	trainertotext PRYCE, 1, $1
 	checkflag ENGINE_GLACIERBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext PRYCE, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 14, .LyraToo
 	jumpstd gymstatue2

@@ -147,8 +147,7 @@ Mom_GiveItemOrDoll: ; fd0c3
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, PCItems
-	call ReceiveItem
-	ret
+	jp ReceiveItem
 ; fd0eb
 
 

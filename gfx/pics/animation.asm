@@ -62,8 +62,7 @@ endr
 	ld b, [hl]
 	ld c, a
 	pop hl
-	call PokeAnim_InitPicAttributes
-	ret
+	jp PokeAnim_InitPicAttributes
 ; d00b4
 
 SetUpPokeAnim: ; d00b4
@@ -129,8 +128,7 @@ PokeAnim_Wait: ; d00fe
 ; d010b
 
 PokeAnim_Setup: ; d010b
-	ld c, FALSE
-	ld b, 0
+	lb bc, 0, FALSE
 	call PokeAnim_InitAnim
 	call PokeAnim_SetVBank1
 	ld a, [wPokeAnimSceneIndex]
@@ -140,8 +138,7 @@ PokeAnim_Setup: ; d010b
 ; d011d
 
 PokeAnim_Setup2: ; d011d
-	ld c, FALSE
-	ld b, 4
+	lb bc, 4, FALSE
 	call PokeAnim_InitAnim
 	call PokeAnim_SetVBank1
 	ld a, [wPokeAnimSceneIndex]
@@ -151,8 +148,7 @@ PokeAnim_Setup2: ; d011d
 ; d012f
 
 PokeAnim_Extra: ; d012f
-	ld c, TRUE
-	ld b, 0
+	lb bc, 0, TRUE
 	call PokeAnim_InitAnim
 	call PokeAnim_SetVBank1
 	ld a, [wPokeAnimSceneIndex]
@@ -368,8 +364,7 @@ PokeAnim_DoAnimScript: ; d0250
 	dec a
 	ld [wPokeAnimWaitCounter], a
 	ret nz
-	call PokeAnim_StopWaitAnim
-	ret
+	jp PokeAnim_StopWaitAnim
 ; d028e
 
 .SetRepeat: ; d028e
@@ -424,8 +419,7 @@ PokeAnim_GetFrame: ; d02c8
 	push hl
 	call PokeAnim_CopyBitmaskToBuffer
 	pop hl
-	call PokeAnim_ConvertAndApplyBitmask
-	ret
+	jp PokeAnim_ConvertAndApplyBitmask
 ; d02dc
 
 PokeAnim_StartWaitAnim: ; d02dc
@@ -536,8 +530,7 @@ PokeAnim_CopyBitmaskToBuffer: ; d033b
 	pop bc
 	ld de, wPokeAnimBitmaskBuffer
 	ld a, [wPokeAnimBitmaskBank]
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 ; d0356
 
 .GetSize: ; d0356
@@ -816,8 +809,7 @@ PokeAnim_PlaceGraphic: ; d04bd
 	ld h, [hl]
 	ld l, a
 	add hl, bc
-	ld c, 7
-	ld b, 7
+	lb bc, 7, 7
 	ld a, [wPokeAnimGraphicStartTile]
 .loop
 	push bc
@@ -844,10 +836,8 @@ PokeAnim_PlaceGraphic: ; d04bd
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld b, 7
-	ld c, 7
-	call ClearBox
-	ret
+	lb bc, 7, 7
+	jp ClearBox
 ; d0504
 
 PokeAnim_SetVBank1: ; d0504
@@ -866,8 +856,7 @@ PokeAnim_SetVBank1: ; d0504
 
 .SetFlag: ; d051b
 	call PokeAnim_GetAttrMapCoord
-	ld b, 7
-	ld c, 7
+	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
 .row
 	push bc
@@ -889,8 +878,7 @@ PokeAnim_SetVBank1: ; d0504
 
 PokeAnim_SetVBank0: ; d0536
 	call PokeAnim_GetAttrMapCoord
-	ld b, 7
-	ld c, 7
+	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
 .row
 	push bc

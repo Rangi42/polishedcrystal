@@ -193,11 +193,11 @@ VermilionGymTrashCanScript:
 	end
 
 VermilionGymStatue:
+	trainertotext LT_SURGE, 1, $1
 	checkflag ENGINE_THUNDERBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext LT_SURGE, 1, $1
 	jumpstd gymstatue2
 
 VermilionGymElectricFenceScript:

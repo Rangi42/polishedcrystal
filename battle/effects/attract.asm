@@ -5,6 +5,7 @@ BattleCommand_Attract: ; 377ce
 	jr nz, .failed
 	call CheckOppositeGender
 	jr c, .failed
+	jr z, .failed
 	call CheckHiddenOpponent
 	jr nz, .failed
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
@@ -36,6 +37,8 @@ BattleCommand_Attract: ; 377ce
 
 
 CheckOppositeGender: ; 377f5
+; Returns c (either mon is genderless), nc|z (same gender), nc|nz (opposite gender).
+; Don't remove the possibility to check for same gender, Rivalry needs this.
 	ld a, MON_SPECIES
 	call BattlePartyAttr
 	ld a, [hl]
@@ -47,7 +50,7 @@ CheckOppositeGender: ; 377f5
 	ld [MonType], a
 
 	farcall GetGender
-	jr c, .genderless_samegender
+	ret c ; Player mon is genderless
 
 	ld b, 1
 	jr nz, .got_gender
@@ -69,7 +72,7 @@ CheckOppositeGender: ; 377f5
 	ld [MonType], a
 	farcall GetGender
 	pop bc
-	jr c, .genderless_samegender
+	ret c ; Enemy mon is genderless
 
 	ld a, 1
 	jr nz, .got_enemy_gender
@@ -77,12 +80,4 @@ CheckOppositeGender: ; 377f5
 
 .got_enemy_gender
 	xor b
-	jr z, .genderless_samegender
-
-	and a
 	ret
-
-.genderless_samegender
-	scf
-	ret
-; 3784b

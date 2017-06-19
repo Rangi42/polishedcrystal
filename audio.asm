@@ -150,7 +150,7 @@ INCLUDE "audio/music/hgss/lyradeparture.asm"
 INCLUDE "audio/music/hgss/ceruleancity.asm"
 INCLUDE "audio/music/hgss/nuggetbridge.asm"
 INCLUDE "audio/music/hgss/summoningdance.asm"
-;INCLUDE "audio/music/hgss/spikyearedpichu.asm"
+INCLUDE "audio/music/hgss/spikyearedpichu.asm"
 
 
 SECTION "Extra Songs 1", ROMX, BANK[EXTRA_SONGS_1]
@@ -264,7 +264,20 @@ SECTION "Extra Songs 15", ROMX
 
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
+
+
+SECTION "Extra Songs 16", ROMX
+
+INCLUDE "audio/music/rse/route101.asm"
+INCLUDE "audio/music/rse/dewfordtown.asm"
 INCLUDE "audio/music/rse/meteorfalls.asm"
+
+
+SECTION "Extra Songs 16", ROMX
+
+INCLUDE "audio/music/bw/celestialtower.asm"
+INCLUDE "audio/music/bw/blackcity.asm"
+INCLUDE "audio/music/bw/elitefourbattle.asm"
 
 
 SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]

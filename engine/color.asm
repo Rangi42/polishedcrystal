@@ -72,8 +72,7 @@ ApplyHPBarPals:
 .done
 	lb bc, 2, 8
 	ld a, e
-	call FillBoxCGB
-	ret
+	jp FillBoxCGB
 
 LoadPlayerStatusIconPalette:
 	ld a, [PlayerSubStatus2]
@@ -89,8 +88,7 @@ endr
 	ld de, UnknBGPals + 5 palettes + 2
 	ld bc, 2
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 LoadEnemyStatusIconPalette:
 	ld a, [EnemySubStatus2]
@@ -106,8 +104,7 @@ endr
 	ld de, UnknBGPals + 5 palettes + 4
 	ld bc, 2
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 LoadBattleCategoryAndTypePals:
 	ld hl, CategoryIconPals
@@ -132,8 +129,7 @@ endr
 	ld de, UnknBGPals + 6 palettes + 6
 	ld bc, 2
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 LoadItemIconPalette:
 	ld a, [CurSpecies]
@@ -150,8 +146,7 @@ endr
 	ld hl, BlackPalette
 	ld bc, 2
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 LoadTMHMIconPalette:
 	ld a, [CurTMHM]
@@ -176,16 +171,14 @@ endr
 	ld hl, BlackPalette
 	ld bc, 2
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 .cancel:
 	ld hl, TMHMCancelPalette
 	ld de, UnknBGPals + 4 palettes + 2
 	ld bc, 6
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 LoadStatsScreenPals:
 	ld hl, StatsScreenPagePals
@@ -326,16 +319,14 @@ WipeAttrMap:
 	hlcoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 
 ApplyPals:
 	ld hl, UnknBGPals
 	ld de, BGPals
 	ld bc, 16 palettes
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 ApplyAttrMap:
 	ld a, [rLCDC]
@@ -402,16 +393,14 @@ ApplyPartyMenuHPPals: ; 96f3
 .done
 	lb bc, 2, 8
 	ld a, e
-	call FillBoxCGB
-	ret
+	jp FillBoxCGB
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, UnknOBPals
 	ld bc, 8 palettes
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
@@ -419,8 +408,7 @@ InitPokegearPalettes:
 	ld de, UnknOBPals
 	ld bc, 2 palettes
 	ld a, $5
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 GetBattlemonBackpicPalettePointer:
 	push de
@@ -523,8 +511,7 @@ LoadPokemonPalette:
 	ld a, $5
 	ld de, UnknBGPals + 7 palettes + 2
 	ld bc, 4
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 LoadPartyMonPalette:
 	; bc = personality
@@ -552,8 +539,7 @@ LoadPartyMonPalette:
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
 	ld hl, UnknBGPals + 7 palettes + 2
-	call VaryColorsByDVs
-	ret
+	jp VaryColorsByDVs
 
 InitCGBPals::
 	ld a, $1

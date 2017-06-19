@@ -22,8 +22,7 @@ ForceUpdateCGBPals:: ; c37
 ; copy 8 pals to bgpd
 	ld a, %10000000 ; auto increment, index 0
 	ld [rBGPI], a
-	ld c, rBGPD % $100
-	ld b, 4 ; NUM_PALS / 2
+	lb bc, 4, rBGPD % $100 ; 4 = NUM_PALS / 2
 .bgp
 rept 2 palettes
 	ld a, [hli]
@@ -38,8 +37,7 @@ endr
 ; copy 8 pals to obpd
 	ld a, %10000000 ; auto increment, index 0
 	ld [rOBPI], a
-	ld c, rOBPD % $100
-	ld b, 4 ; NUM_PALS / 2
+	lb bc, 4, rOBPD % $100 ; 4 = NUM_PALS / 2
 .obp
 rept 2 palettes
 	ld a, [hli]
@@ -288,8 +286,7 @@ Special_ReloadSpritesNoPalettes:: ; d91
 	ld [rSVBK], a
 	ld a, 1
 	ld [hCGBPalUpdate], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; db1
 
 

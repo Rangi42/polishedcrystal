@@ -1,7 +1,6 @@
 Kurt_PrintTextWhichApricorn: ; 88000
 	ld hl, .Text
-	call PrintText
-	ret
+	jp PrintText
 ; 88007
 
 .Text: ; 0x88007
@@ -12,8 +11,7 @@ Kurt_PrintTextWhichApricorn: ; 88000
 
 Kurt_PrintTextHowMany: ; 8800c
 	ld hl, .Text
-	call PrintText
-	ret
+	jp PrintText
 ; 88013
 
 .Text: ; 0x88013
@@ -52,8 +50,7 @@ Special_SelectApricornForKurt: ; 88018
 	call Kurt_GiveUpSelectedQuantityOfSelectedApricorn
 
 .done
-	call Call_ExitMenu
-	ret
+	jp Call_ExitMenu
 ; 88055
 
 Kurt_SelectApricorn: ; 88055
@@ -154,8 +151,7 @@ Kurt_SelectQuantity: ; 880c2
 	scf
 
 .done
-	call CloseWindow
-	ret
+	jp CloseWindow
 ; 8810d
 
 .MenuDataHeader: ; 0x8810d

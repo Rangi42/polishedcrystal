@@ -206,27 +206,19 @@ CeruleanGymHiddenMachinePart:
 CeruleanGymStatue1:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	iffalse CeruleanGymStatue
-	opentext
-	writetext CeruleanGymNote1
-	waitbutton
-	closetext
-	end
+	jumptext CeruleanGymNote1
 
 CeruleanGymStatue2:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	iffalse CeruleanGymStatue
-	opentext
-	writetext CeruleanGymNote2
-	waitbutton
-	closetext
-	end
+	jumptext CeruleanGymNote2
 
 CeruleanGymStatue:
+	trainertotext MISTY, 1, $1
 	checkflag ENGINE_CASCADEBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext MISTY, 1, $1
 	jumpstd gymstatue2
 
 MovementData_0x1884e3:

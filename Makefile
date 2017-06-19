@@ -13,7 +13,7 @@ RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc faithful-nortc bankfree debug
+.PHONY: all clean crystal faithful nortc faithful-nortc debug bankfree freespace
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -21,8 +21,9 @@ RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 
 PYTHON = python
 RM = rm -f
 
-gfx      := $(PYTHON) gfx.py
-includes := $(PYTHON) utils/scan_includes.py
+gfx       := $(PYTHON) gfx.py
+includes  := $(PYTHON) utils/scan_includes.py
+bank_ends := $(PYTHON) utils/bank_ends.py
 
 
 crystal_obj := \
@@ -40,8 +41,9 @@ text/common_text.o \
 gfx/pics.o
 
 
-all: crystal
+all: crystal freespace
 
+crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
 
@@ -57,13 +59,15 @@ faithful-nortc: RGBASM_FLAGS += -DFAITHFUL -DNO_RTC
 faithful-nortc: ROM_NAME = $(NAME)-faithful-nortc-$(VERSION)
 faithful-nortc: $(NAME)-faithful-nortc-$(VERSION).gbc
 
+debug: RGBASM_FLAGS += -DDEBUG
+debug: ROM_NAME = $(NAME)-$(VERSION)
+debug: $(NAME)-$(VERSION).gbc
+
 bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-debug: RGBASM_FLAGS += -DDEBUG
-debug: ROM_NAME = $(NAME)-$(VERSION)
-debug: $(NAME)-$(VERSION).gbc
+freespace: utils/bank_ends.txt
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
@@ -84,6 +88,8 @@ clean:
 %.2bpp: %.png ; $(gfx) 2bpp $<
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
+
+utils/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;

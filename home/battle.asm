@@ -77,26 +77,16 @@ SwitchTurn::
 	ld [hBattleTurn], a
 	ret
 
-UpdateOpponentInParty:: ; 398e
+UpdateUserInParty::
 	ld a, [hBattleTurn]
 	and a
-	jr z, UpdateEnemyMonInParty
-	jr UpdateBattleMonInParty
-; 3995
-
-UpdateUserInParty:: ; 3995
-	ld a, [hBattleTurn]
-	and a
-	jr z, UpdateBattleMonInParty
-	jr UpdateEnemyMonInParty
-; 399c
-
-UpdateBattleMonInParty:: ; 399c
+	jr nz, UpdateEnemyMonInParty
+	; fallthrough
+UpdateBattleMonInParty::
 ; Update level, status, current HP
-
 	ld a, [CurBattleMon]
-
-UpdateBattleMon:: ; 399f
+	; fallthrough
+UpdateBattleMon::
 	ld hl, PartyMon1Level
 	call GetPartyLocation
 
@@ -105,11 +95,13 @@ UpdateBattleMon:: ; 399f
 	ld hl, BattleMonLevel
 	ld bc, BattleMonMaxHP - BattleMonLevel
 	jp CopyBytes
-; 39b0
 
-UpdateEnemyMonInParty:: ; 39b0
-; Update level, status, current HP
-
+UpdateOpponentInParty::
+	ld a, [hBattleTurn]
+	and a
+	jr nz, UpdateBattleMonInParty
+	; fallthrough
+UpdateEnemyMonInParty::
 ; No wildmons.
 	ld a, [wBattleMode]
 	dec a
@@ -124,8 +116,6 @@ UpdateEnemyMonInParty:: ; 39b0
 	ld hl, EnemyMonLevel
 	ld bc, EnemyMonMaxHP - EnemyMonLevel
 	jp CopyBytes
-; 39c9
-
 
 RefreshBattleHuds:: ; 39c9
 	call UpdateBattleHuds
@@ -137,6 +127,87 @@ RefreshBattleHuds:: ; 39c9
 UpdateBattleHuds:: ; 39d4
 	farcall UpdatePlayerHUD
 	farcall UpdateEnemyHUD
+	ret
+
+GetBackupItemAddr::
+; Returns address of backup item for current mon in hl
+	ld a, [CurBattleMon]
+	ld hl, PartyBackupItems
+	add l
+	ld l, a
+	ret nc
+	inc h
+	ret
+
+SetBackupItem::
+	; If backup is empty, replace with b if our turn (even in trainer battles)
+	ld a, [hBattleTurn]
+	and a
+	ret nz
+
+	call GetBackupItemAddr
+	ld a, [hl]
+	and a
+	ret nz
+	ld [hl], b
+	ret
+
+BackupBattleItems::
+; Copies items from party to a backup of items. Doesn't care if player has less than 6 mons
+; since messing with these item bytes in-battle is safe
+	ld c, 0
+	jr ToggleBattleItems
+RestoreBattleItems::
+; Restores items from PartyBackupItems
+	ld c, 1
+	; fallthrough
+ToggleBattleItems:
+	ld b, 7
+	ld hl, PartyMon1Item
+	ld de, PartyBackupItems
+.loop
+	dec b
+	ret z
+	ld a, c
+	and a
+	jr nz, .restore
+
+	; Backup
+	ld a, [hl]
+	ld [de], a
+	jr .next
+
+.restore
+	ld a, [de]
+	ld [hl], a
+
+.next
+	inc de
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+	jr .loop
+
+GetUsedItemAddr::
+; Returns addr for user's POV's UsedItem
+	ld a, [hBattleTurn]
+	and a
+	ld hl, PartyUsedItems
+	ld a, [CurBattleMon]
+	jr z, .got_target
+	ld hl, OTPartyUsedItems
+
+	; Wildmons use the 1st index
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld a, [CurOTMon]
+.got_target
+	add l
+	ld l, a
+	ret nc
+	inc h
 	ret
 
 ConsumeEnemyItem::
@@ -155,7 +226,22 @@ ConsumeUserItem::
 	ld de, EnemyMonItem
 	ld hl, OTPartyMon1Item
 .got_item_pointers
+	push bc
 	call GetPartyLocation
+	pop bc
+
+	; Air Balloons are consumed permanently, so don't write it to UsedItems
+	ld a, [de]
+	cp AIR_BALLOON
+	jr z, .consume_item
+	push hl
+	push af
+	call GetUsedItemAddr
+	pop af
+	ld [hl], a
+	pop hl
+
+.consume_item
 	xor a
 	ld [de], a
 
@@ -169,8 +255,35 @@ ConsumeUserItem::
 	jr z, .apply_unburden
 
 .has_party_struct
+	ld a, [hl]
+	ld d, a
 	xor a
 	ld [hl], a
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .apply_unburden
+
+	; For players, maybe remove the backup item too if we're dealing with a berry
+	ld a, d
+	ld [CurItem], a
+	push de
+	push bc
+	farcall CheckItemPocket
+	pop bc
+	pop de
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	jr nz, .apply_unburden
+	call GetBackupItemAddr
+
+	; If the backup is different, don't touch it. This prevents consuming i.e. Focus Sash
+	; under the following scenario: Sash procs, steal an Oran Berry, use the Oran Berry
+	ld a, [hl]
+	cp d
+	jr nz, .apply_unburden
+	xor a
+	ld [hl], a
+	
 .apply_unburden
 	; Unburden doubles Speed when an item is consumed
 	ld a, BATTLE_VARS_ABILITY
@@ -181,6 +294,57 @@ ConsumeUserItem::
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	set SUBSTATUS_UNBURDEN, [hl]
+	ret
+
+BattleJumptable::
+; hl = jumptable, a = target. Returns z if no jump was made, nz otherwise
+	; Maybe make this a common function? Maybe one exist?
+	push bc
+	ld b, a
+.loop
+	ld a, [hli]
+	cp -1
+	jr z, .end
+	cp b
+	jr z, .got_target
+	inc hl
+	inc hl
+	jr .loop
+.got_target
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call .jp_hl
+	or 1
+.end
+	pop bc
+	ret
+.jp_hl
+	jp hl
+
+GetMoveAttr::
+; Assuming hl = Moves + x, return attribute x of move a.
+	push bc
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	call GetMoveByte
+	pop bc
+	ret
+
+GetMoveData::
+; Copy move struct a to de.
+	ld hl, Moves
+	ld bc, MOVE_LENGTH
+	call AddNTimes
+	ld a, Bank(Moves)
+	jp FarCopyBytes
+
+GetMoveByte::
+	ld a, BANK(Moves)
+	jp GetFarByte
+
+DisappearUser::
+	farcall _DisappearUser
 	ret
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
@@ -436,6 +600,16 @@ SoundMoves::
 	db SUPERSONIC
 	db -1
 
+SubstituteBypassMoves::
+; used by Magic Bounce so it can check Substitute unconditionally as long as it isn't here
+; (Sound moves aren't included)
+	db ATTRACT
+	db DISABLE
+	db ENCORE
+	db FORESIGHT
+	db SPIKES
+	db -1
+
 DynamicPowerMoves::
 ; used by Forewarn and for move power listing
 	db COUNTER
@@ -470,6 +644,9 @@ CheckIfTargetIsFireType::
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsIceType::
 	ld a, ICE
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsDarkType::
+	ld a, DARK
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType::
 	ld a, ROCK
@@ -752,8 +929,7 @@ BattleTextBox:: ; 3ac3
 	call UpdateSprites
 	call ApplyTilemap
 	pop hl
-	call PrintTextBoxText
-	ret
+	jp PrintTextBoxText
 ; 3ad5
 
 

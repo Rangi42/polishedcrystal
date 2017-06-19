@@ -6,8 +6,7 @@ LoadBattleMenu: ; 24ef2
 	call InterpretBattleMenu
 	ld a, [wMenuCursorBuffer]
 	ld [wd0d2], a
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 24f0b
 
 ContestBattleMenu: ; 24f13
@@ -65,6 +64,5 @@ Function24fb2: ; 24fb2
 	hlcoord 13, 16
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ret
+	jp PrintNum
 ; 24fbf

@@ -1,4 +1,4 @@
-Moves: ; 41afb
+Moves:: ; 41afb
 ; Characteristics of each move.
 
 move: MACRO
@@ -12,7 +12,7 @@ move: MACRO
 	db \8 ; category
 ENDM
 
-	move ACROBATICS,   EFFECT_NORMAL_HIT,         55, FLYING,    100, 15,   0, PHYSICAL
+	move ACROBATICS,   EFFECT_CONDITIONAL_BOOST,  55, FLYING,    100, 15,   0, PHYSICAL
 	move KARATE_CHOP,  EFFECT_NORMAL_HIT,         50, FIGHTING,  100, 25,   0, PHYSICAL
 	move DOUBLE_SLAP,  EFFECT_MULTI_HIT,          15, NORMAL,     85, 10,   0, PHYSICAL
 	move AERIAL_ACE,   EFFECT_ALWAYS_HIT,         60, FLYING,    100, 20,   0, PHYSICAL
@@ -40,7 +40,7 @@ else
 	move FLY,          EFFECT_FLY,                90, FLYING,    100, 15,   0, PHYSICAL
 endc
 	move DAZZLINGLEAM, EFFECT_NORMAL_HIT,         80, FAIRY,     100, 10,   0, SPECIAL
-	move VOLT_SWITCH,  EFFECT_NORMAL_HIT,         70, ELECTRIC,   70, 20,   0, SPECIAL
+	move VOLT_SWITCH,  EFFECT_SWITCH_HIT,         70, ELECTRIC,   70, 20,   0, SPECIAL
 	move VINE_WHIP,    EFFECT_NORMAL_HIT,         45, GRASS,     100, 25,   0, PHYSICAL
 	move STOMP,        EFFECT_STOMP,              65, NORMAL,    100, 20,  30, PHYSICAL
 	move DOUBLE_KICK,  EFFECT_DOUBLE_HIT,         30, FIGHTING,  100, 30,   0, PHYSICAL
@@ -55,7 +55,7 @@ if DEF(FAITHFUL)
 else
 	move FURY_ATTACK,  EFFECT_MULTI_HIT,          20, NORMAL,     85, 20,   0, PHYSICAL
 endc
-	move HEX,          EFFECT_HEX,                65, GHOST,     100, 10,   0, SPECIAL
+	move HEX,          EFFECT_CONDITIONAL_BOOST,  65, GHOST,     100, 10,   0, SPECIAL
 	move TACKLE,       EFFECT_NORMAL_HIT,         40, NORMAL,    100, 35,   0, PHYSICAL
 	move BODY_SLAM,    EFFECT_PARALYZE_HIT,       85, NORMAL,    100, 15,  30, PHYSICAL
 	move WRAP,         EFFECT_TRAP,               15, NORMAL,     90, 20,   0, PHYSICAL
@@ -68,7 +68,7 @@ endc
 	move DOUBLE_EDGE,  EFFECT_RECOIL_HIT,        120, NORMAL,    100, 15,   0, PHYSICAL
 	move HAIL,         EFFECT_HAIL,                0, ICE,       100, 10,   0, STATUS
 	move POISON_STING, EFFECT_POISON_HIT,         15, POISON,    100, 35,  30, PHYSICAL
-	move U_TURN,       EFFECT_NORMAL_HIT,         70, BUG,       100, 20,   0, PHYSICAL
+	move U_TURN,       EFFECT_SWITCH_HIT,         70, BUG,       100, 20,   0, PHYSICAL
 	move PIN_MISSILE,  EFFECT_MULTI_HIT,          25, BUG,        95, 20,   0, PHYSICAL
 	move LEER,         EFFECT_DEFENSE_DOWN,        0, NORMAL,    100, 30,   0, STATUS
 	move BITE,         EFFECT_FLINCH_HIT,         60, DARK,      100, 25,  30, PHYSICAL
@@ -134,7 +134,7 @@ endc
 	move THUNDER,      EFFECT_THUNDER,           110, ELECTRIC,   70, 10,  30, SPECIAL
 	move ROCK_THROW,   EFFECT_NORMAL_HIT,         50, ROCK,       90, 15,   0, PHYSICAL
 	move EARTHQUAKE,   EFFECT_EARTHQUAKE,        100, GROUND,    100, 10,   0, PHYSICAL
-	move AVALANCHE,    EFFECT_AVALANCHE,          60, ICE,       100, 10,   0, PHYSICAL
+	move AVALANCHE,    EFFECT_CONDITIONAL_BOOST,  60, ICE,       100, 10,   0, PHYSICAL
 	move DIG,          EFFECT_FLY,                80, GROUND,    100, 10,   0, PHYSICAL
 	move TOXIC,        EFFECT_TOXIC,               0, POISON,     90, 10,   0, STATUS
 	move CONFUSION,    EFFECT_CONFUSE_HIT,        50, PSYCHIC,   100, 25,  10, SPECIAL
@@ -227,7 +227,7 @@ endc
 	move THIEF,        EFFECT_THIEF,              60, DARK,      100, 25, 100, PHYSICAL
 	move WILL_O_WISP,  EFFECT_BURN,                0, FIRE,       85, 15,   0, STATUS
 	move ZEN_HEADBUTT, EFFECT_FLINCH_HIT,         80, PSYCHIC,    90, 15,  20, PHYSICAL
-	move FACADE,       EFFECT_FACADE,             70, NORMAL,    100, 20,   0, PHYSICAL
+	move FACADE,       EFFECT_CONDITIONAL_BOOST,  70, NORMAL,    100, 20,   0, PHYSICAL
 	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,      100, 25,  10, PHYSICAL
 	move HYPER_VOICE,  EFFECT_NORMAL_HIT,         90, NORMAL,    100, 10,   0, SPECIAL
 	move CURSE,        EFFECT_CURSE,               0, GHOST,     100, 10,   0, STATUS
@@ -270,7 +270,7 @@ endc
 	move SWAGGER,      EFFECT_SWAGGER,             0, NORMAL,     85, 15, 100, STATUS
 	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
 	move SPARK,        EFFECT_PARALYZE_HIT,       65, ELECTRIC,  100, 20,  30, PHYSICAL
-	move FURY_CUTTER,  EFFECT_FURY_CUTTER,        40, BUG,        95, 20,   0, PHYSICAL
+	move FURY_CUTTER,  EFFECT_CONDITIONAL_BOOST,  40, BUG,        95, 20,   0, PHYSICAL
 	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     70, STEEL,      90, 25,  10, PHYSICAL
 	move MEAN_LOOK,    EFFECT_MEAN_LOOK,           0, NORMAL,    100,  5,   0, STATUS
 	move ATTRACT,      EFFECT_ATTRACT,             0, NORMAL,    100, 15,   0, STATUS

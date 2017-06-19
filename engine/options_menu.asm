@@ -5,8 +5,7 @@ _OptionsMenu: ; e41d0
 	ld [hl], $1
 	call ClearBGPalettes
 	hlcoord 0, 0
-	ld b, 16
-	ld c, 18
+	lb bc, 16, 18
 	call TextBox
 	hlcoord 2, 2
 	ld de, StringOptions1
@@ -422,6 +421,11 @@ Options_Sound: ; e43dd
 	set STEREO, [hl]
 	ld de, .Stereo
 .Display:
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT
+	jr z, .DontRestartMapMusic
+	call RestartMapMusic
+.DontRestartMapMusic
 	hlcoord 11, 13
 	call PlaceString
 	and a

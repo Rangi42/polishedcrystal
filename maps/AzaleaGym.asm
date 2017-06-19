@@ -128,11 +128,11 @@ AzaleaGymGuyScript:
 	end
 
 AzaleaGymStatue:
+	trainertotext BUGSY, 1, $1
 	checkflag ENGINE_HIVEBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext BUGSY, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 9, .LyraToo
 	jumpstd gymstatue2

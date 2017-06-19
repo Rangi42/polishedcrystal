@@ -5,7 +5,14 @@ SaveMenu: ; 14a1a
 	call UpdateSprites
 	farcall SaveMenu_LoadEDTile
 	ld hl, UnknownText_0x15283
-	call SaveTheGame_yesorno
+	ld b, BANK(UnknownText_0x15283)
+	call MapTextbox
+	call LoadMenuTextBox
+	call YesNoBox
+	ld a, [wMenuCursorY]
+	dec a
+	call CloseWindow
+	and a
 	jr nz, .refused
 	call AskOverwriteSaveFile
 	jr c, .refused
@@ -31,8 +38,7 @@ SaveAfterLinkTrade: ; 14a58
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
 	farcall SaveRTC
-	call ClearWRAMStateAfterSave
-	ret
+	jp ClearWRAMStateAfterSave
 ; 14a83
 
 ChangeBoxSaveGame: ; 14a83 (5:4a83)
@@ -53,7 +59,7 @@ ChangeBoxSaveGameNoConfirm:
 	push de
 SaveAndChangeBox:
 	call SetWRAMStateForSave
-	call SavingDontTurnOffThePower
+;	call SavingDontTurnOffThePower
 	call SaveBox
 	pop de
 	ld a, e
@@ -115,8 +121,7 @@ MovePkmnWOMail_InsertMon_SaveGame: ; 14ad5
 	ld de, SFX_SAVE
 	call PlaySFX
 	ld c, 24
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 14b34
 
 StartMovePkmnWOMail_SaveGame: ; 14b34
@@ -172,27 +177,23 @@ AddHallOfFameEntry: ; 14b5f
 	ret
 ; 14b85
 
-SaveGameData: ; 14b85
-	call SaveGameData_
-	ret
-; 14b89
-
 AskOverwriteSaveFile: ; 14b89
 	ld a, [wSaveFileExists]
 	and a
 	jr z, .erase
 	call CompareLoadedAndSavedPlayerID
-	jr z, .yoursavefile
+	jr z, .ok
 	ld hl, UnknownText_0x15297
-	call SaveTheGame_yesorno
+	ld b, BANK(UnknownText_0x15297)
+	call MapTextbox
+	call LoadMenuTextBox
+	call YesNoBox
+	ld a, [wMenuCursorY]
+	dec a
+	call CloseWindow
+	and a
 	jr nz, .refused
 	jr .erase
-
-.yoursavefile
-	ld hl, UnknownText_0x15292
-	call SaveTheGame_yesorno
-	jr nz, .refused
-	jr .ok
 
 .erase
 	call ErasePreviousSave
@@ -205,19 +206,6 @@ AskOverwriteSaveFile: ; 14b89
 	scf
 	ret
 ; 14baf
-
-SaveTheGame_yesorno: ; 14baf
-	ld b, BANK(UnknownText_0x15283)
-	call MapTextbox
-	call LoadMenuTextBox
-	lb bc, 0, 7
-	call PlaceYesNoBox
-	ld a, [wMenuCursorY]
-	dec a
-	call CloseWindow
-	and a
-	ret
-; 14bcb
 
 CompareLoadedAndSavedPlayerID: ; 14bcb
 	ld a, BANK(sPlayerData)
@@ -236,9 +224,9 @@ CompareLoadedAndSavedPlayerID: ; 14bcb
 ; 14be3
 
 _SavingDontTurnOffThePower: ; 14be3
-	call SavingDontTurnOffThePower
+;	call SavingDontTurnOffThePower
 SavedTheGame: ; 14be6
-	call SaveGameData_
+	call SaveGameData
 ;	; wait 32 frames
 ;	ld c, $20
 ;	call DelayFrames
@@ -264,8 +252,12 @@ SavedTheGame: ; 14be6
 ; 14c10
 
 
-SaveGameData_: ; 14c10
-	ld a, 1
+SaveGameData:: ; 14c10
+	ld a, [hVBlank]
+	push af
+	ld a, 2
+	ld [hVBlank], a
+	dec a ; ld a, 1
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
 	call ValidateSave
@@ -290,33 +282,35 @@ SaveGameData_: ; 14c10
 	ld [sBattleTowerChallengeState], a
 .ok
 	call CloseSRAM
+	pop af
+	ld [hVBlank], a
 	ret
 ; 14c6b
 
-SavingDontTurnOffThePower: ; 14c99
-	; Prevent joypad interrupts
-	xor a
-	ld [hJoypadReleased], a
-	ld [hJoypadPressed], a
-	ld [hJoypadSum], a
-	ld [hJoypadDown], a
-;	; Save the text speed setting to the stack
-;	ld a, [Options1]
-;	push af
-;	; Set the text speed to super slow
-;	ld a, $3
-;	ld [Options1], a
-	; SAVING... DON'T TURN OFF THE POWER.
-	ld hl, UnknownText_0x15288
-	call PrintText
-;	; Restore the text speed setting
-;	pop af
-;	ld [Options1], a
-;	; Wait for 16 frames
-;	ld c, $10
-;	call DelayFrames
-	ret
-; 14cbb
+;SavingDontTurnOffThePower: ; 14c99
+;	; Prevent joypad interrupts
+;	xor a
+;	ld [hJoypadReleased], a
+;	ld [hJoypadPressed], a
+;	ld [hJoypadSum], a
+;	ld [hJoypadDown], a
+;;	; Save the text speed setting to the stack
+;;	ld a, [Options1]
+;;	push af
+;;	; Set the text speed to super slow
+;;	ld a, $3
+;;	ld [Options1], a
+;	; SAVING... DON'T TURN OFF THE POWER.
+;	ld hl, UnknownText_0x15288
+;	call PrintText
+;;	; Restore the text speed setting
+;;	pop af
+;;	ld [Options1], a
+;;	; Wait for 16 frames
+;;	ld c, $10
+;;	call DelayFrames
+;	ret
+;; 14cbb
 
 
 ErasePreviousSave: ; 14cbb
@@ -361,8 +355,7 @@ HallOfFame_InitSaveIfNeeded: ; 14da0
 	ld a, [wSavedAtLeastOnce]
 	and a
 	ret nz
-	call ErasePreviousSave
-	ret
+	jp ErasePreviousSave
 ; 14da9
 
 ValidateSave: ; 14da9
@@ -429,8 +422,7 @@ SaveChecksum: ; 14e13
 	ld [sChecksum + 0], a
 	ld a, d
 	ld [sChecksum + 1], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14e2d
 
 ValidateBackupSave: ; 14e2d
@@ -440,8 +432,7 @@ ValidateBackupSave: ; 14e2d
 	ld [s0_b208], a
 	ld a, " "
 	ld [s0_bf0f], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14e40
 
 SaveBackupOptions: ; 14e40
@@ -491,8 +482,7 @@ SaveBackupChecksum: ; 14e8b
 	ld [sBackupChecksum + 0], a
 	ld a, d
 	ld [sBackupChecksum + 1], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14ea5
 
 
@@ -557,8 +547,7 @@ TryLoadSaveData: ; 14f1c
 	ld de, StatusFlags
 	ld a, [hl]
 	ld [de], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .backup
 	call CheckBackupSaveFile
@@ -576,8 +565,7 @@ TryLoadSaveData: ; 14f1c
 	ld de, StatusFlags
 	ld a, [hl]
 	ld [de], a
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .corrupt
 	ld hl, DefaultOptions
@@ -620,8 +608,7 @@ CheckPrimarySaveFile: ; 14f84
 	ld [wSaveFileExists], a
 
 .nope
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14faf
 
 CheckBackupSaveFile: ; 14faf
@@ -641,8 +628,7 @@ CheckBackupSaveFile: ; 14faf
 	ld [wSaveFileExists], a
 
 .nope
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 14fd7
 
 
@@ -666,8 +652,7 @@ LoadPlayerData: ; 14fd7 (5:4fd7)
 	ld a, BATTLETOWER_WON_CHALLENGE
 	ld [sBattleTowerChallengeState], a
 .not_4
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 LoadPokemonData: ; 1500c
 	ld a, BANK(sPokemonData)
@@ -1007,12 +992,6 @@ UnknownText_0x1528d: ; 0x1528d
 	text_jump UnknownText_0x1c4590
 	db "@"
 ; 0x15292
-
-UnknownText_0x15292: ; 0x15292
-	; There is already a save file. Is it OK to overwrite?
-	text_jump UnknownText_0x1c45a3
-	db "@"
-; 0x15297
 
 UnknownText_0x15297: ; 0x15297
 	; There is another save file. Is it OK to overwrite?

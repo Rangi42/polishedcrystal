@@ -103,11 +103,11 @@ PewterGymGuyScript:
 	end
 
 PewterGymStatue:
+	trainertotext BROCK, 1, $1
 	checkflag ENGINE_BOULDERBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext BROCK, 1, $1
 	jumpstd gymstatue2
 
 UnknownText_0x1a28d0:

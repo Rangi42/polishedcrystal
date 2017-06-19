@@ -13,8 +13,7 @@ HealMachineAnim: ; 12324
 	ld [Buffer2], a
 	call .DoJumptableFunctions
 	ld a, [Buffer2]
-	call DmgToCgbObjPal1
-	ret
+	jp DmgToCgbObjPal1
 ; 1233e
 
 .DoJumptableFunctions: ; 1233e
@@ -75,8 +74,7 @@ endr
 	ld de, .HealMachineGFX
 	ld hl, VTiles0 tile $7c
 	lb bc, BANK(.HealMachineGFX), $2
-	call Request2bpp
-	ret
+	jp Request2bpp
 ; 12393
 
 .PC_LoadBallsOntoMachine: ; 12393
@@ -118,8 +116,7 @@ endr
 	call .FlashPalettes8Times
 	call WaitSFX
 	ld de, SFX_BOOT_PC
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 123db
 
 .dummy_5 ; 123db
@@ -138,7 +135,7 @@ endr
 ; 123fc
 
 .HealMachineGFX: ; 123fc
-INCBIN "gfx/misc/heal_machine.2bpp"
+INCBIN "gfx/ow_fx/heal_machine.2bpp"
 ; 1241c
 
 .HOF_OAM: ; 1241c

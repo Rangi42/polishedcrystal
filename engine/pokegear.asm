@@ -47,8 +47,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	ld [hBGMapAddress + 1], a
 	ld a, $90
 	ld [hWY], a
-	call ExitPokegearRadio_HandleMusic
-	ret
+	jp ExitPokegearRadio_HandleMusic
 
 .InitTilemap: ; 90bea (24:4bea)
 	call ClearBGPalettes
@@ -85,8 +84,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	call GetSGBLayout
 	call SetPalettes
 	ld a, %11100100
-	call DmgToCgbObjPal0
-	ret
+	jp DmgToCgbObjPal0
 
 Pokegear_LoadGFX: ; 90c4e
 	call ClearVBank1
@@ -130,20 +128,18 @@ Pokegear_LoadGFX: ; 90c4e
 	add hl, de
 	ld de, VTiles0 tile $14
 	ld bc, 4 tiles
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 
 .ssaqua
 	ld hl, FastShipGFX
 	ld de, VTiles0 tile $10
 	ld bc, 8 tiles
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 ; 90cb2
 
 FastShipGFX: ; 90cb2
-INCBIN "gfx/misc/fast_ship.2bpp"
+INCBIN "gfx/pokegear/fast_ship.2bpp"
 ; 90d32
 
 InitPokegearModeIndicatorArrow: ; 90d32 (24:4d32)
@@ -295,8 +291,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	hlcoord 19, 2
 	ld [hl], $17
 	ld a, [wPokegearMapCursorLandmark]
-	call PokegearMap_UpdateLandmarkName
-	ret
+	jp PokegearMap_UpdateLandmarkName
 
 ; 90e72
 
@@ -305,8 +300,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	call Pokegear_LoadTilemapRLE
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
-	ret
+	jp TextBox
 
 ; 90e82
 
@@ -317,8 +311,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	lb bc, 4, 18
 	call TextBox
 	call .PlacePhoneBars
-	call PokegearPhone_UpdateDisplayList
-	ret
+	jp PokegearPhone_UpdateDisplayList
 
 ; 90e98
 
@@ -359,8 +352,7 @@ Pokegear_FinishTilemap: ; 90eb0 (24:4eb0)
 	call nz, .PlaceRadioIcon
 	hlcoord 0, 0
 	ld a, $46
-	call .PlacePokegearCardIcon
-	ret
+	jp .PlacePokegearCardIcon
 
 .PlaceMapIcon: ; 90ee4 (24:4ee4)
 	hlcoord 2, 0
@@ -422,8 +414,7 @@ PokegearClock_Init: ; 90f2d (24:4f2d)
 	call PrintText
 	ld hl, wJumptableIndex
 	inc [hl]
-	call ExitPokegearRadio_HandleMusic
-	ret
+	jp ExitPokegearRadio_HandleMusic
 
 PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	call .UpdateClock
@@ -437,27 +428,23 @@ PokegearClock_Joypad: ; 90f3e (24:4f3e)
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map_card
-	ld c, $2
-	ld b, MAP_CARD
+	lb bc, MAP_CARD, $2
 	jr .done
 
 .no_map_card
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone_card
-	ld c, $9
-	ld b, PHONE_CARD
+	lb bc, PHONE_CARD, $9
 	jr .done
 
 .no_phone_card
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $d
-	ld b, RADIO_CARD
+	lb bc, RADIO_CARD, $d
 .done
-	call Pokegear_SwitchPage
-	ret
+	jp Pokegear_SwitchPage
 
 .quit
 	ld hl, wJumptableIndex
@@ -489,8 +476,7 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	farcall PrintHoursMins
 	ld hl, .DayText
 	bccoord 6, 6
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 
 .DayText: ; 0x90faf
 	text_jump UnknownText_0x1c5821
@@ -513,8 +499,7 @@ PokegearMap_CheckRegion: ; 90fb4 (24:4fb4)
 	ld a, 7
 .done
 	ld [wJumptableIndex], a
-	call ExitPokegearRadio_HandleMusic
-	ret
+	jp ExitPokegearRadio_HandleMusic
 
 PokegearMap_Init: ; 90fcd (24:4fcd)
 	call InitPokegearTilemap
@@ -551,31 +536,26 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld a, [hl]
 	and D_LEFT
 	jr nz, .left
-	call .DPad
-	ret
+	jp .DPad
 
 .right
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone
-	ld c, $9
-	ld b, PHONE_CARD
+	lb bc, PHONE_CARD, $9
 	jr .done
 
 .no_phone
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $d
-	ld b, RADIO_CARD
+	lb bc, RADIO_CARD, $d
 	jr .done
 
 .left
-	ld c, $0
-	ld b, CLOCK_CARD
+	lb bc, CLOCK_CARD, $0
 .done
-	call Pokegear_SwitchPage
-	ret
+	jp Pokegear_SwitchPage
 
 .cancel
 	ld hl, wJumptableIndex
@@ -625,8 +605,7 @@ PokegearMap_ContinueMap: ; 90ff2 (24:4ff2)
 	ld a, [wPokegearMapCursorObjectPointer + 1]
 	ld b, a
 	ld a, [wPokegearMapCursorLandmark]
-	call PokegearMap_UpdateCursorPosition
-	ret
+	jp PokegearMap_UpdateCursorPosition
 
 SkipHiddenOrangeIslandsUp:
 	call CheckSkipNavelRock
@@ -640,8 +619,7 @@ SkipHiddenOrangeIslandsUp:
 	ld a, [hl]
 	cp FARAWAY_ISLAND + 1
 	ret nz
-	ld a, SHAMOUTI_ISLAND
-	ld [hl], a
+	ld [hl], SHAMOUTI_ISLAND
 	ret
 
 SkipHiddenOrangeIslandsDown:
@@ -756,13 +734,11 @@ PokegearMap_UpdateCursorPosition: ; 910d4
 ; 910e8
 
 TownMap_GetJohtoLandmarkLimits:
-	ld d, SILVER_CAVE
-	ld e, NEW_BARK_TOWN
+	lb de, SILVER_CAVE, NEW_BARK_TOWN
 	ret
 
 TownMap_GetKantoLandmarkLimits: ; 910e8
-	ld d, ROUTE_28
-	ld e, ROUTE_27
+	lb de, ROUTE_28, ROUTE_27
 	ld a, [StatusFlags]
 	bit 6, a
 	ret z
@@ -770,8 +746,7 @@ TownMap_GetKantoLandmarkLimits: ; 910e8
 	ret
 
 TownMap_GetOrangeLandmarkLimits:
-	ld d, FARAWAY_ISLAND
-	ld e, SHAMOUTI_ISLAND
+	lb de, FARAWAY_ISLAND, SHAMOUTI_ISLAND
 	ret
 
 ; 910f9
@@ -811,24 +786,20 @@ PokegearRadio_Joypad: ; 91112 (24:5112)
 	ld a, [wPokegearFlags]
 	bit 2, a
 	jr z, .no_phone
-	ld c, $9
-	ld b, PHONE_CARD
+	lb bc, PHONE_CARD, $9
 	jr .switch_page
 
 .no_phone
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map
-	ld c, $2
-	ld b, MAP_CARD
+	lb bc, MAP_CARD, $2
 	jr .switch_page
 
 .no_map
-	ld c, $0
-	ld b, CLOCK_CARD
+	lb bc, CLOCK_CARD, $0
 .switch_page
-	call Pokegear_SwitchPage
-	ret
+	jp Pokegear_SwitchPage
 
 .cancel
 	ld hl, wJumptableIndex
@@ -845,8 +816,7 @@ PokegearPhone_Init: ; 91156 (24:5156)
 	call InitPokegearTilemap
 	call ExitPokegearRadio_HandleMusic
 	ld hl, PokegearText_WhomToCall
-	call PrintText
-	ret
+	jp PrintText
 
 PokegearPhone_Joypad: ; 91171 (24:5171)
 	ld hl, hJoyPressed
@@ -863,31 +833,26 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 	ld a, [hl]
 	and D_RIGHT
 	jr nz, .right
-	call PokegearPhone_GetDPad
-	ret
+	jp PokegearPhone_GetDPad
 
 .left
 	ld a, [wPokegearFlags]
 	bit 0, a
 	jr z, .no_map
-	ld c, $2
-	ld b, MAP_CARD
+	lb bc, MAP_CARD, $2
 	jr .switch_page
 
 .no_map
-	ld c, $0
-	ld b, CLOCK_CARD
+	lb bc, CLOCK_CARD, $0
 	jr .switch_page
 
 .right
 	ld a, [wPokegearFlags]
 	bit 1, a
 	ret z
-	ld c, $d
-	ld b, RADIO_CARD
+	lb bc, RADIO_CARD, $d
 .switch_page
-	call Pokegear_SwitchPage
-	ret
+	jp Pokegear_SwitchPage
 
 .b
 	ld hl, wJumptableIndex
@@ -920,7 +885,7 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 	ret
 
 .quit_submenu
-	ld a, $8
+	ld a, $a
 	ld [wJumptableIndex], a
 	ret
 
@@ -960,11 +925,10 @@ PokegearPhone_MakePhoneCall: ; 911eb (24:51eb)
 	farcall Phone_NoSignal
 	ld hl, .OutOfServiceArea
 	call PrintText
-	ld a, $8
+	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
-	call PrintText
-	ret
+	jp PrintText
 
 ; 9124c (24:524c)
 
@@ -990,8 +954,7 @@ PokegearPhone_FinishPhoneCall: ; 91256 (24:5256)
 	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
-	call PrintText
-	ret
+	jp PrintText
 
 PokegearPhone_GetDPad: ; 9126d (24:526d)
 	ld hl, hJoyLast
@@ -1106,8 +1069,7 @@ PokegearPhone_UpdateDisplayList: ; 912d8 (24:52d8)
 	ld [wPokegearPhoneLoadNameBuffer], a
 	cp $4
 	jr c, .loop
-	call PokegearPhone_UpdateCursor
-	ret
+	jp PokegearPhone_UpdateCursor
 
 ; 9131e (24:531e)
 
@@ -1345,8 +1307,7 @@ Pokegear_SwitchPage: ; 91480 (24:5480)
 	ld [wJumptableIndex], a
 	ld a, b
 	ld [wcf64], a
-	call DeleteSpriteAnimStruct2ToEnd
-	ret
+	jp DeleteSpriteAnimStruct2ToEnd
 
 ExitPokegearRadio_HandleMusic: ; 91492
 	ld a, [wPokegearRadioMusicPlaying]
@@ -1419,7 +1380,7 @@ PokegearText_DeleteStoredNumber: ; 0x914d8
 ; 0x914dd
 
 PokegearSpritesGFX: ; 914dd
-INCBIN "gfx/misc/pokegear_sprites.2bpp.lz"
+INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lz"
 ; 9150d
 
 RadioTilemapRLE: ; 9150d
@@ -1487,8 +1448,7 @@ UpdateRadioStation: ; 9166f (24:566f)
 	jr .loop
 
 .nostation
-	call NoRadioStation
-	ret
+	jp NoRadioStation
 
 .foundstation
 	ld a, [hli]
@@ -1599,8 +1559,7 @@ RadioChannels:
 	jp LoadStation_EvolutionRadio
 
 .NoSignal:
-	call NoRadioStation
-	ret
+	jp NoRadioStation
 
 .InJohto:
 ; if in Johto or on the S.S. Aqua, set carry
@@ -1759,8 +1718,7 @@ RadioMusicRestartDE: ; 91854 (24:5854)
 	pop de
 	ld a, e
 	ld [wMapMusic], a
-	call PlayMusic
-	ret
+	jp PlayMusic
 
 RadioMusicRestartPokemonChannel: ; 91868 (24:5868)
 	push de
@@ -1770,8 +1728,7 @@ RadioMusicRestartPokemonChannel: ; 91868 (24:5868)
 	call PlayMusic
 	pop de
 	ld de, MUSIC_POKEMON_CHANNEL
-	call PlayMusic
-	ret
+	jp PlayMusic
 
 Radio_BackUpFarCallParams: ; 9187c (24:587c)
 	ld [wPokegearRadioChannelBank], a
@@ -1807,8 +1764,7 @@ NoRadioName: ; 918a9 (24:58a9)
 	call ClearBox
 	hlcoord 0, 12
 	ld bc, $412
-	call TextBox
-	ret
+	jp TextBox
 
 ; 918bf
 
@@ -1877,25 +1833,22 @@ _TownMap: ; 9191c
 	cp KANTO_LANDMARK
 	jr nc, .kanto
 	call TownMap_GetJohtoLandmarkLimits
-	call .loop
 	jr .resume
 .kanto
 	call TownMap_GetKantoLandmarkLimits
-	call .loop
 	jr .resume
 .orange
 	call TownMap_GetOrangeLandmarkLimits
-	call .loop
 
 .resume
+	call .loop
 	pop af
 	ld [VramState], a
 	pop af
 	ld [hInMenu], a
 	pop af
 	ld [Options1], a
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 
 .loop
 	call JoyTextDelay
@@ -2021,8 +1974,7 @@ PlayRadio: ; 91a53
 .stop
 	pop af
 	ld [Options1], a
-	call ExitPokegearRadio_HandleMusic
-	ret
+	jp ExitPokegearRadio_HandleMusic
 
 ; 91a87
 
@@ -2053,8 +2005,7 @@ PlayRadio: ; 91a53
 	ld h, b
 	ld l, c
 	ld [hl], "”"
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 ; 91ab9
 
@@ -2267,8 +2218,7 @@ TownMapBubble: ; 91bb5
 	farcall GetLandmarkName
 	hlcoord 2, 1
 	ld de, StringBuffer1
-	call PlaceString
-	ret
+	jp PlaceString
 
 ; 91c17
 
@@ -2390,8 +2340,7 @@ FlyMap: ; 91c90
 	call TownMapJohtoFlips
 	call .MapHud
 	pop af
-	call TownMapPlayerIcon
-	ret
+	jp TownMapPlayerIcon
 
 .KantoFlyMap:
 ; The event that there are no flypoints enabled in a map is not
@@ -2430,8 +2379,7 @@ FlyMap: ; 91c90
 	call TownMapKantoFlips
 	call .MapHud
 	pop af
-	call TownMapPlayerIcon
-	ret
+	jp TownMapPlayerIcon
 
 .NoKanto:
 ; If Indigo Plateau hasn't been visited, we use Johto's map instead
@@ -2619,15 +2567,13 @@ _Area: ; 91d11
 	ld a, e
 	and $10
 	jr nz, .copy_sprites
-	call ClearSprites
-	ret
+	jp ClearSprites
 
 .copy_sprites
 	hlcoord 0, 0
 	ld de, Sprites
 	ld bc, SpritesEnd - Sprites
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 ; 91de9
 
@@ -2649,8 +2595,7 @@ _Area: ; 91d11
 	ld h, b
 	ld l, c
 	ld de, .String_SNest
-	call PlaceString
-	ret
+	jp PlaceString
 
 ; 91e16
 
@@ -2693,8 +2638,7 @@ _Area: ; 91d11
 	ld hl, Sprites
 	decoord 0, 0
 	ld bc, SpritesEnd - Sprites
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 ; 91e5a
 
@@ -2739,8 +2683,7 @@ _Area: ; 91d11
 	ld hl, Sprites + 4 * 4
 	ld bc, SpritesEnd - (Sprites + 4 * 4)
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 
 ; 91e9c
 
@@ -3074,21 +3017,20 @@ LoadTownMapGFX: ; 91ff2
 	ld de, JohtoKantoGFX
 	ld hl, VTiles2 tile $5c
 	lb bc, BANK(JohtoKantoGFX), 5
-	call Request2bpp
-	ret
+	jp Request2bpp
 
 ; 91fff
 
 JohtoMap: ; 91fff
-INCBIN "gfx/misc/johto.bin"
+INCBIN "gfx/pokegear/johto.bin"
 ; 92168
 
 KantoMap: ; 92168
-INCBIN "gfx/misc/kanto.bin"
+INCBIN "gfx/pokegear/kanto.bin"
 ; 922d1
 
 OrangeMap:
-INCBIN "gfx/misc/orange.bin"
+INCBIN "gfx/pokegear/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
 INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"

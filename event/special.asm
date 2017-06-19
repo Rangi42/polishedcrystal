@@ -199,8 +199,7 @@ endr
 	ld a, [hli]
 	ld [ScriptVar], a
 	ld c, [hl]
-	call ChangeHappiness
-	ret
+	jp ChangeHappiness
 
 .nope
 	xor a

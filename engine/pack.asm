@@ -51,16 +51,14 @@ Pack: ; 10000
 	call Pack_InitGFX
 	ld a, [wcf64]
 	ld [wJumptableIndex], a
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 
 .InitItemsPocket: ; 10056 (4:4056)
 	ld a, ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .ItemsPocketMenu: ; 10067 (4:4067)
 	ld hl, ItemsPocketMenuDataHeader
@@ -74,20 +72,17 @@ Pack: ; 10000
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
-	ld b, $b ; Key Items
-	ld c, $3 ; Medicine
+	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
-	call .ItemBallsKey_LoadSubmenu
-	ret
+	jp .ItemBallsKey_LoadSubmenu
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
@@ -101,20 +96,17 @@ Pack: ; 10000
 	ld [wMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wMedicinePocketCursor], a
-	ld b, $1 ; Items
-	ld c, $5 ; Balls
+	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
-	call .ItemBallsKey_LoadSubmenu
-	ret
+	jp .ItemBallsKey_LoadSubmenu
 
 .InitBallsPocket: ; 10186 (4:4186)
 	ld a, BALL - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .BallsPocketMenu: ; 10198 (4:4198)
 	ld hl, BallsPocketMenuDataHeader
@@ -128,12 +120,10 @@ Pack: ; 10000
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
-	ld b, $3 ; Medicine
-	ld c, $7 ; TM/HM
+	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
-	call .ItemBallsKey_LoadSubmenu
-	ret
+	jp .ItemBallsKey_LoadSubmenu
 
 .InitTMHMPocket: ; 100d3 (4:40d3)
 	ld a, TM_HM - 1
@@ -147,8 +137,7 @@ Pack: ; 10000
 
 .TMHMPocketMenu: ; 100e8 (4:40e8)
 	farcall TMHMPocket
-	ld b, $5 ; Balls
-	ld c, $9 ; Berries
+	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
 	ld hl, .MenuDataHeader1
@@ -204,16 +193,14 @@ Pack: ; 10000
 	ld [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
@@ -227,20 +214,17 @@ Pack: ; 10000
 	ld [wBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBerriesPocketCursor], a
-	ld b, $7 ; TM/HM
-	ld c, $b ; Key Items
+	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	call .ItemBallsKey_LoadSubmenu
-	ret
+	jp .ItemBallsKey_LoadSubmenu
 
 .InitKeyItemsPocket: ; 10094 (4:4094)
 	ld a, KEY_ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .KeyItemsPocketMenu: ; 100a6 (4:40a6)
 	ld hl, KeyItemsPocketMenuDataHeader
@@ -254,12 +238,10 @@ Pack: ; 10000
 	ld [wKeyItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wKeyItemsPocketCursor], a
-	ld b, $9 ; Berries
-	ld c, $1 ; Items
+	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	call .ItemBallsKey_LoadSubmenu
-	ret
+	jp .ItemBallsKey_LoadSubmenu
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
 	farcall _CheckTossableItem
@@ -497,12 +479,10 @@ UseItem: ; 10311
 
 .Oak: ; 1032d (4:432d)
 	ld hl, Text_ThisIsntTheTime
-	call Pack_PrintTextNoScroll
-	ret
+	jp Pack_PrintTextNoScroll
 
 .Current: ; 10334 (4:4334)
-	call DoItemEffect
-	ret
+	jp DoItemEffect
 
 .Party: ; 10338 (4:4338)
 	ld a, [PartyCount]
@@ -513,13 +493,11 @@ UseItem: ; 10311
 	ld [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 
 .NoPokemon:
 	ld hl, TextJump_YouDontHaveAPkmn
-	call Pack_PrintTextNoScroll
-	ret
+	jp Pack_PrintTextNoScroll
 
 .Field: ; 10355 (4:4355)
 	call DoItemEffect
@@ -568,13 +546,11 @@ RegisterItem: ; 103c2
 	ld de, SFX_FULL_HEAL
 	call WaitPlaySFX
 	ld hl, Text_RegisteredItem
-	call Pack_PrintTextNoScroll
-	ret
+	jp Pack_PrintTextNoScroll
 
 .cant_register
 	ld hl, Text_CantRegister
-	call Pack_PrintTextNoScroll
-	ret
+	jp Pack_PrintTextNoScroll
 ; 103fd
 
 GiveItem: ; 103fd
@@ -628,13 +604,11 @@ GiveItem: ; 103fd
 	ld [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 
 .NoPokemon: ; 10486 (4:4486)
 	ld hl, TextJump_YouDontHaveAPkmn
-	call Pack_PrintTextNoScroll
-	ret
+	jp Pack_PrintTextNoScroll
 ; 1048d (4:448d)
 .Egg: ; 0x1048d
 	; An EGG can't hold an item.
@@ -699,16 +673,14 @@ BattlePack: ; 10493
 	call Pack_InitGFX
 	ld a, [wcf64]
 	ld [wJumptableIndex], a
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 
 .InitItemsPocket: ; 104e9 (4:44e9)
 	ld a, ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .ItemsPocketMenu: ; 104fa (4:44fa)
 	ld hl, ItemsPocketMenuDataHeader
@@ -722,20 +694,17 @@ BattlePack: ; 10493
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
-	ld b, $b ; Key Items
-	ld c, $3 ; Medicine
+	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
-	call ItemSubmenu
-	ret
+	jp ItemSubmenu
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
@@ -749,20 +718,17 @@ BattlePack: ; 10493
 	ld [wMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wMedicinePocketCursor], a
-	ld b, $1 ; Items
-	ld c, $5 ; Balls
+	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
-	call ItemSubmenu
-	ret
+	jp ItemSubmenu
 
 .InitBallsPocket: ; 10594 (4:4594)
 	ld a, BALL - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .BallsPocketMenu: ; 105a6 (4:45a6)
 	ld hl, BallsPocketMenuDataHeader
@@ -776,12 +742,10 @@ BattlePack: ; 10493
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
-	ld b, $3 ; Medicine
-	ld c, $7 ; TM/HM
+	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
-	call ItemSubmenu
-	ret
+	jp ItemSubmenu
 
 .InitTMHMPocket: ; 10566 (4:4566)
 	ld a, TM_HM - 1
@@ -797,21 +761,18 @@ BattlePack: ; 10493
 
 .TMHMPocketMenu: ; 10581 (4:4581)
 	farcall TMHMPocket
-	ld b, $5 ; Balls
-	ld c, $9 ; Berries
+	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
 	xor a
-	call TMHMSubmenu
-	ret
+	jp TMHMSubmenu
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
@@ -825,20 +786,17 @@ BattlePack: ; 10493
 	ld [wBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBerriesPocketCursor], a
-	ld b, $7 ; TM/HM
-	ld c, $b ; Key Items
+	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	call ItemSubmenu
-	ret
+	jp ItemSubmenu
 
 .InitKeyItemsPocket: ; 10527 (4:4527)
 	ld a, KEY_ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .KeyItemsPocketMenu: ; 10539 (4:4539)
 	ld hl, KeyItemsPocketMenuDataHeader
@@ -852,12 +810,10 @@ BattlePack: ; 10493
 	ld [wKeyItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wKeyItemsPocketCursor], a
-	ld b, $9 ; Berries
-	ld c, $1 ; Items
+	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	call ItemSubmenu
-	ret
+	jp ItemSubmenu
 
 ItemSubmenu: ; 105d3 (4:45d3)
 	farcall CheckItemContext
@@ -944,8 +900,7 @@ TMHMSubmenu: ; 105dc (4:45dc)
 
 .Oak: ; 10645 (4:4645)
 	ld hl, Text_ThisIsntTheTime
-	call Pack_PrintTextNoScroll
-	ret
+	jp Pack_PrintTextNoScroll
 
 .Unused: ; 1064c (4:464c)
 	call DoItemEffect
@@ -963,8 +918,7 @@ TMHMSubmenu: ; 105dc (4:45dc)
 	ld [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 
 .ReturnToBattle: ; 1066c (4:466c)
 	call ClearBGPalettes
@@ -1373,8 +1327,7 @@ endr
 	ld d, [hl]
 	ld hl, VTiles2 tile $20
 	lb bc, BANK(PackGFX), 25
-	call Request2bpp
-	ret
+	jp Request2bpp
 
 .female
 	ld hl, PackFGFXPointers
@@ -1386,8 +1339,7 @@ endr
 	ld d, [hl]
 	ld hl, VTiles2 tile $20
 	lb bc, BANK(PackFGFX), 25
-	call Request2bpp
-	ret
+	jp Request2bpp
 ; 108cc
 
 PackGFXPointers: ; 108cc
@@ -1528,8 +1480,7 @@ Pack_InitGFX: ; 10955
 	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
 	call EnableLCD
-	call DrawPackGFX
-	ret
+	jp DrawPackGFX
 ; 109a5
 
 .PackTilemapString:
@@ -1562,16 +1513,14 @@ Pack_GetItemName: ; 10a1d
 ClearPocketList: ; 10a36 (4:4a36)
 	hlcoord 5, 2
 	lb bc, 10, SCREEN_WIDTH - 5
-	call ClearBox
-	ret
+	jp ClearBox
 
 Pack_InitColors: ; 10a40
 	call WaitBGMap
 	ld b, SCGB_PACKPALS
 	call GetSGBLayout
 	call SetPalettes
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 10a4f
 
 ItemsPocketMenuDataHeader: ; 0x10a4f
@@ -1801,9 +1750,9 @@ Text_PackEmptyString: ; 0x10b0c
 ; 0x10b11
 
 PackMenuGFX:
-INCBIN "gfx/misc/pack_top_row.2bpp"
+INCBIN "gfx/pack/pack_top_row.2bpp"
 PackLeftColumnGFX:
-INCBIN "gfx/misc/pack_left_column.2bpp"
+INCBIN "gfx/pack/pack_left_column.2bpp"
 
 Special_ChooseItem::
 	call DisableSpriteUpdates

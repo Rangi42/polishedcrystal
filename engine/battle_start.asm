@@ -48,8 +48,7 @@ Predef_StartBattle: ; 8c20f
 	ld [rSVBK], a
 	pop af
 	ld [hVBlank], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 8c26d
 
 .InitGFX: ; 8c26d
@@ -69,15 +68,13 @@ Predef_StartBattle: ; 8c20f
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
-	call WipeLYOverrides
-	ret
+	jp WipeLYOverrides
 ; 8c2a0
 
 .LoadPokeballTiles: ; 8c2a0
 	call LoadTrainerBattlePokeballTiles
 	hlbgcoord 0, 0
-	call ConvertTrainerBattlePokeballTilesTo2bpp
-	ret
+	jp ConvertTrainerBattlePokeballTilesTo2bpp
 ; 8c2aa
 
 LoadTrainerBattlePokeballTiles:
@@ -85,8 +82,7 @@ LoadTrainerBattlePokeballTiles:
 ; at the start of every Trainer battle.
 	ld de, TrainerBattlePokeballTiles
 	ld hl, VTiles1 tile $7e
-	ld b, BANK(TrainerBattlePokeballTiles)
-	ld c, 2
+	lb bc, BANK(TrainerBattlePokeballTiles), 2
 	call Request2bpp
 
 	ld a, [rVBK]
@@ -96,8 +92,7 @@ LoadTrainerBattlePokeballTiles:
 
 	ld de, TrainerBattlePokeballTiles
 	ld hl, VTiles4 tile $7e
-	ld b, BANK(TrainerBattlePokeballTiles)
-	ld c, 2
+	lb bc, BANK(TrainerBattlePokeballTiles), 2
 	call Request2bpp
 
 	pop af
@@ -124,8 +119,7 @@ ConvertTrainerBattlePokeballTilesTo2bpp: ; 8c2cf
 
 	pop hl
 	ld de, wDecompressScratch
-	ld b, BANK(ConvertTrainerBattlePokeballTilesTo2bpp) ; BANK(@)
-	ld c, $28
+	lb bc, BANK(ConvertTrainerBattlePokeballTilesTo2bpp), $28 ; BANK(@)
 	call Request2bpp
 	pop af
 	ld [rSVBK], a
@@ -264,8 +258,7 @@ StartTrainerBattle_SetUpBGMap: ; 8c3a1 (23:43a1)
 StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
 	call .DoFlashAnimation
 	ret nc
-	call StartTrainerBattle_NextScene
-	ret
+	jp StartTrainerBattle_NextScene
 
 .DoFlashAnimation: ; 8c3b3 (23:43b3)
 	ld a, [wTimeOfDayPalset]
@@ -332,8 +325,7 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	ld a, [wcf64]
 	cp $60
 	jr nc, .end
-	call .DoSineWave
-	ret
+	jp .DoSineWave
 
 .end
 	ld a, $20
@@ -604,7 +596,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	dec b
 	jr nz, .loop
 
-	call .loadpokeballgfx ; ld a, [OtherTrainerClass] \ ld de, PokeBallTransition \ ret
+	ld de, PokeBallTransition
 	hlcoord 2, 1
 
 	ld b, SCREEN_WIDTH - 4
@@ -685,8 +677,7 @@ endr
 	call LoadEDTile
 
 .nextscene ; 8c673 (23:4673)
-	call StartTrainerBattle_NextScene
-	ret
+	jp StartTrainerBattle_NextScene
 
 .copypals ; 8c677 (23:4677)
 	ld de, UnknBGPals + 7 palettes
@@ -736,11 +727,6 @@ endr
 	RGB 21, 11, 31
 	RGB 13, 05, 31
 	RGB 07, 07, 07
-
-.loadpokeballgfx
-	ld a, [OtherTrainerClass]
-	ld de, PokeBallTransition
-	ret
 
 PokeBallTransition:
 	db %00000011, %11000000
@@ -799,7 +785,7 @@ StartTrainerBattle_DrawSineWave: ; 8c6f7 (23:46f7)
 	and (1 << 5) - 1
 	call .DoSineWave
 	ld a, h
-	xor -1 ; cpl
+	cpl
 	inc a
 	ret
 

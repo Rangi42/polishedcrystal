@@ -83,8 +83,7 @@ endr
 	bccoord 1, 14
 	pop af
 	ld [rSVBK], a
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 ; 11c05d
 
 

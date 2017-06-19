@@ -133,8 +133,7 @@ CheckOwnMonAnywhere: ; 0x4a721
 	jr nc, .loop
 
 	; found!
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .loop
 	push bc
@@ -197,8 +196,7 @@ endr
 
 	; found!
 	pop bc
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .loopboxmon
 	push bc

@@ -74,28 +74,23 @@ MoveReminder:
 	call SpeechTextBox
 .cancel
 	ld hl, Text_MoveReminderCancel
-	call PrintText
-	ret
+	jp PrintText
 
 .egg
 	ld hl, Text_MoveReminderEgg
-	call PrintText
-	ret
+	jp PrintText
 
 .no_gold_leaf
 	ld hl, Text_MoveReminderNoGoldLeaf
-	call PrintText
-	ret
+	jp PrintText
 
 .no_mon
 	ld hl, Text_MoveReminderNoMon
-	call PrintText
-	ret
+	jp PrintText
 
 .no_moves
 	ld hl, Text_MoveReminderNoMoves
-	call PrintText
-	ret
+	jp PrintText
 
 
 GetRemindableMoves:
@@ -293,8 +288,7 @@ ChooseMoveToLearn:
 	ld [wd265], a
 	call GetMoveName
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 
 .PrintDetails
 	ld hl, StringBuffer1

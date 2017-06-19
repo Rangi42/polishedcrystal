@@ -304,8 +304,7 @@ endr
 	ld b, 0
 	ld hl, SpecialPhoneCallList
 	ld a, 6
-	call AddNTimes
-	ret
+	jp AddNTimes
 
 SpecialCallOnlyWhenOutside: ; 90188
 	ld a, [wPermission]
@@ -376,8 +375,7 @@ Function90199: ; 90199 (24:4199)
 .OutOfArea:
 	ld b, BANK(UnknownScript_0x90209)
 	ld de, UnknownScript_0x90209
-	call ExecuteCallbackScript
-	ret
+	jp ExecuteCallbackScript
 
 .DoPhoneCall:
 	ld a, b
@@ -388,8 +386,7 @@ Function90199: ; 90199 (24:4199)
 	ld [wd004], a
 	ld b, BANK(UnknownScript_0x90205)
 	ld de, UnknownScript_0x90205
-	call ExecuteCallbackScript
-	ret
+	jp ExecuteCallbackScript
 ; 90205 (24:4205)
 
 UnknownScript_0x90205: ; 0x90205
@@ -420,8 +417,7 @@ LoadCallerScript: ; 9020d (24:420d)
 .proceed
 	ld de, EngineBuffer2
 	ld bc, 12
-	call FarCopyBytes
-	ret
+	jp FarCopyBytes
 ; 90233 (24:4233)
 
 WrongNumber: ; 90233
@@ -469,14 +465,12 @@ RingTwice_StartCall: ; 9026f
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	call Phone_CallerTextboxWithName
-	ret
+	jp Phone_CallerTextboxWithName
 
 Phone_CallerTextboxWithName: ; 90292 (24:4292)
 	ld a, [wCurrentCaller]
 	ld b, a
-	call Function90363
-	ret
+	jp Function90363
 
 PhoneCall:: ; 9029a
 	ld a, b
@@ -497,8 +491,7 @@ Phone_FirstOfTwoRings: ; 902b3
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	call Phone_CallerTextboxWithName2
-	ret
+	jp Phone_CallerTextboxWithName2
 ; 902c9
 
 Phone_CallerTextboxWithName2: ; 902c9
@@ -514,8 +507,7 @@ endr
 	ld e, a
 	ld a, [PhoneCallerHi]
 	ld d, a
-	call FarPlaceString
-	ret
+	jp FarPlaceString
 ; 902e3
 
 
@@ -547,8 +539,7 @@ HangUp_Beep: ; 9031d
 	ld hl, UnknownText_0x9032a
 	call PrintText
 	ld de, SFX_HANG_UP
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 9032a
 
 UnknownText_0x9032a: ; 9032a
@@ -559,8 +550,7 @@ UnknownText_0x9032a: ; 9032a
 
 HangUp_BoopOn: ; 9032f
 	ld hl, UnknownText_0x90336
-	call PrintText
-	ret
+	jp PrintText
 ; 90336
 
 UnknownText_0x90336: ; 0x90336
@@ -570,8 +560,7 @@ UnknownText_0x90336: ; 0x90336
 
 
 HangUp_BoopOff: ; 9033b
-	call SpeechTextBox
-	ret
+	jp SpeechTextBox
 ; 9033f
 
 Phone_StartRinging: ; 9033f
@@ -579,8 +568,7 @@ Phone_StartRinging: ; 9033f
 	ld de, SFX_CALL
 	call PlaySFX
 	call Phone_CallerTextbox
-	call UpdateSprites
-	ret
+	jp UpdateSprites
 ; 90355
 
 HangUp_Wait20Frames: ; 90355
@@ -588,8 +576,7 @@ HangUp_Wait20Frames: ; 90355
 
 Phone_Wait20Frames
 	ld c, 20
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 90363
 
 
@@ -604,16 +591,14 @@ endr
 	ld d, h
 	ld e, l
 	pop bc
-	call Function90380
-	ret
+	jp Function90380
 
 
 Phone_CallerTextbox: ; 90375
 	hlcoord 0, 0
 	ld b, 2
 	ld c, SCREEN_WIDTH - 2
-	call TextBox
-	ret
+	jp TextBox
 ; 90380
 
 
@@ -683,8 +668,7 @@ endr
 	ld e, a
 	ld d, [hl]
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 ; 903d6 (24:43d6)
 
 NonTrainerCallerNames: ; 903d6

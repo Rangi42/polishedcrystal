@@ -1772,10 +1772,11 @@ ElmsLabLyraTheftGoodbyeText:
 	line "innocent."
 
 	para "I hope he makes"
-	line "real thief return"
+	line "the thief return"
 	cont "that #mon…"
 
-	para "See you later!"
+	para "Well then, see"
+	line "you later!"
 	done
 
 ElmsLabWindowText1:

@@ -1,7 +1,11 @@
 TMHMPocket: ; 2c76f (b:476f)
 	ld a, $1
 	ld [hInMenu], a
+	call CountTMsHMs ; This stores the count to wd265.
+	and a
+	jr z, .noicon
 	farcall LoadTMHMIcon
+.noicon
 	call TMHM_PocketLoop
 	ld a, 0 ; not xor a; preserve carry flag
 	ld [hInMenu], a
@@ -71,8 +75,7 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	call TMHM_CheckHoveringOverCancel
 	jp nc, TMHM_ExitPocket
 	hlcoord 0, 12
-	ld b, 4
-	ld c, SCREEN_WIDTH - 2
+	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
 	farcall LoadTMHMIconPalette
 	call SetPalettes
@@ -285,9 +288,8 @@ TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
 
 CountTMsHMs: ; 2cb2a (b:4b2a)
 	ld hl, TMsHMs
-	ld b, ((NUM_TMS + NUM_HMS) + 7) / 8
-	call CountSetBits
-	ret
+	ld b, TMsHMsEnd - TMsHMs
+	jp CountSetBits
 
 InnerCheckTMHM:
 	and a

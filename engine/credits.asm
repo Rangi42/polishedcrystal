@@ -674,8 +674,7 @@ endr
 	adc BGPals / $100
 	ld d, a
 	ld bc, 24
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 
 CreditsPalettes:

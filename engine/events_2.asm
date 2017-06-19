@@ -530,8 +530,7 @@ CmdQueue_Type4: ; 97ebc
 	add hl, bc
 	ld a, [hl]
 	ld [hSCY], a
-	call _DelCmdQueue
-	ret
+	jp _DelCmdQueue
 ; 97ef9
 
 CmdQueue_Type3: ; 97ef9

@@ -132,7 +132,10 @@
 	dba Music_ChampionBattleDPPt
 	dba Music_Route4BW
 	dba Music_Route12BW
+	dba Music_CelestialTowerBW_NoIntro
+	dba Music_BlackCityBW
 	dba Music_TrainerBattleBW
+	dba Music_EliteFourBattleBW
 	dba Music_WCSBattleBW
 	dba Music_FinalPokemonBW
 	dba Music_RoadToReversalMountainB2W2
@@ -152,6 +155,8 @@
 	dba Music_DiglettsCaveRBY
 	dba Music_CeruleanCaveRBY
 	dba Music_IndigoPlateauRBY
+	dba Music_Route101RSE
+	dba Music_DewfordTownRSE
 	dba Music_MeteorFallsRSE
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
@@ -170,7 +175,7 @@
 	dba Music_TrainerBattleSM
 	dba Music_EliteFourBattleSM
 	dba Music_MotherBeastBattleSM
+	dba Music_SpikyEaredPichuHGSS
 	dba Music_LugiasSong2000
-;	dba Music_SpikyEaredPichuHGSS
 
 ; e91a3

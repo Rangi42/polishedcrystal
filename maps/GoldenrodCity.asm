@@ -21,10 +21,9 @@ GoldenrodCity_MapScriptHeader:
 	dw .Trigger0
 
 .MapCallbacks:
-	db 3
+	db 2
 	dbw MAPCALLBACK_NEWMAP, .FlyPointAndFloria
-	dbw MAPCALLBACK_OBJECTS, .MoveTutor
-	dbw MAPCALLBACK_SPRITES, .RocketScout
+	dbw MAPCALLBACK_OBJECTS, .MoveTutorAndRocketScoutAndGymLass
 
 .FlyPointAndFloria:
 	setflag ENGINE_FLYPOINT_GOLDENROD
@@ -34,24 +33,23 @@ GoldenrodCity_MapScriptHeader:
 .FloriaDone:
 	return
 
-.MoveTutor:
+.MoveTutorAndRocketScoutAndGymLass:
+; Move Tutor
 	checkevent EVENT_BEAT_WHITNEY
-	iffalse .MoveTutorDone
+	iffalse .MoveTutorDisappear
 	checkitem COIN_CASE
 	iffalse .MoveTutorDisappear
 	appear GOLDENRODCITY_POKEFAN_M2
-.MoveTutorDone:
-	return
-
-.MoveTutorDisappear:
+	jump .MoveTutorDone
+.MoveTutorDisappear
 	disappear GOLDENRODCITY_POKEFAN_M2
-	return
-
-.RocketScout:
+.MoveTutorDone
+; Rocket scout
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	iftrue .RocketScoutDone
 	moveperson GOLDENRODCITY_ROCKET1, 29, 17
 .RocketScoutDone
+; Gym Lass
 	checkevent EVENT_GOLDENROD_GYM_WHITNEY
 	iffalse .GymLassDone
 	moveperson GOLDENRODCITY_LASS2, 38, 24

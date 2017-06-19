@@ -28,16 +28,14 @@ SpecialStatsJudge: ; 4f0bc
 
 .cancel
 	ld hl, .Cancel
-	call PrintText
-	ret
+	jp PrintText
 
 .no_mon
 	ret
 
 .egg
 	ld hl, .Egg
-	call PrintText
-	ret
+	jp PrintText
 ; 4f0ee
 
 .Intro
@@ -138,8 +136,7 @@ JudgePokemon:
 	call InformMinDVs
 ;.skip_maxdv
 	ld hl, .Finish
-	call PrintText
-	ret
+	jp PrintText
 
 .InitJudge
 	text "I see… I see…"

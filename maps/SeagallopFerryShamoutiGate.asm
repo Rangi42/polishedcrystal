@@ -53,7 +53,7 @@ SeagallopFerryShamoutiGateSailorScript:
 
 .ToValencia:
 	scall SeagallopFerryShamoutiDepartureScript
-	warp VALENCIA_PORT, $7, $5
+	warp VALENCIA_PORT, $b, $5
 	end
 
 .RefuseFerry

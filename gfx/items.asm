@@ -5,8 +5,7 @@ UpdateItemIconAndDescription::
 UpdateTMHMIconAndDescriptionAndOwnership::
 	farcall UpdateTMHMDescriptionAndOwnership
 	farcall LoadTMHMIconPalette
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 UpdateItemIconAndDescriptionAndBagQuantity::
 	farcall UpdateItemDescriptionAndBagQuantity
@@ -24,8 +23,7 @@ UpdateItemIcon::
 	call GetItemIconBank
 	call DecompressRequest2bpp
 	farcall LoadItemIconPalette
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 GetItemIconBank:
 	lb bc, BANK(ItemIcons1), $9
@@ -45,8 +43,7 @@ LoadTMHMIcon::
 	ld hl, TMHMIcon
 	ld de, VTiles2 tile $17
 	lb bc, BANK(TMHMIcon), $9
-	call DecompressRequest2bpp
-	ret
+	jp DecompressRequest2bpp
 
 ItemIconPointers:
 	dw NoItemIcon

@@ -21,13 +21,11 @@ BattleIntroSlidingPics: ; 4e980
 	ld a, %11100100
 	call DmgToCgbBGPals
 	lb de, %11100100, %11100100
-	call DmgToCgbObjPals
-	ret
+	jp DmgToCgbObjPals
 ; 4e9ab
 
 .subfunction2 ; 4e9ab
-	ld d, $90
-	ld e, $72
+	lb de, $90, $72
 	ld a, $48
 	inc a
 .loop1
@@ -79,8 +77,7 @@ endr
 	ld hl, LYOverrides
 	ld a, $90
 	ld bc, SCREEN_HEIGHT_PX
-	call ByteFill
-	ret
+	jp ByteFill
 ; 4e9f1
 
 .subfunction5 ; 4e9f1

@@ -117,11 +117,11 @@ _AnimateHPBar: ; d627
 	ld a, [Buffer5]
 	ld [wd1f5], a
 	ld a, e
-	xor $ff
+	cpl
 	inc a
 	ld e, a
 	ld a, d
-	xor $ff
+	cpl
 	ld d, a
 	ld bc, -1
 .got_direction
@@ -211,8 +211,7 @@ ShortHPBarAnim_UpdateTiles: ; d730
 	push de
 	call HPBarAnim_RedrawHPBar
 	pop de
-	call HPBarAnim_PaletteUpdate
-	ret
+	jp HPBarAnim_PaletteUpdate
 ; d749
 
 LongHPBarAnim_UpdateTiles: ; d749
@@ -234,8 +233,7 @@ LongHPBarAnim_UpdateTiles: ; d749
 	push de
 	call HPBarAnim_RedrawHPBar
 	pop de
-	call HPBarAnim_PaletteUpdate
-	ret
+	jp HPBarAnim_PaletteUpdate
 ; d771
 
 HPBarAnim_RedrawHPBar: ; d771
@@ -340,8 +338,7 @@ HPBarAnim_BGMapUpdate: ; d7c9
 	ld [hBGMapMode], a
 	ld a, c
 	ld [hBGMapThird], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .load_0
 	ld c, $0
@@ -353,8 +350,7 @@ HPBarAnim_BGMapUpdate: ; d7c9
 	call DelayFrame
 	ld a, c
 	ld [hBGMapThird], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; d839
 
 ShortHPBar_CalcPixelFrame: ; d839

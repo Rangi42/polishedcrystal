@@ -136,8 +136,7 @@ endr
 SpeechTextBox:: ; 103e
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y
-	ld b, TEXTBOX_INNERH
-	ld c, TEXTBOX_INNERW
+	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
 	jp TextBox
 ; 1048
 
@@ -158,8 +157,7 @@ BuenaPrintText:: ; 105a
 
 PrintTextBoxText:: ; 1065
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	call PlaceWholeStringInBoxAtOnce
-	ret
+	jp PlaceWholeStringInBoxAtOnce
 ; 106c
 
 SetUpTextBox:: ; 106c
@@ -510,8 +508,7 @@ endr
 	ld bc, TEXTBOX_INNERW
 	call ByteFill
 	ld c, 5
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 13b6
 
 Text_WaitBGMap:: ; 13b6

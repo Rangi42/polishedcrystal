@@ -38,10 +38,7 @@ StatsScreenInit: ; 4dc8a
 StatsScreenMain: ; 0x4dcd2
 	xor a
 	ld [wJumptableIndex], a
-	; stupid interns
-	ld [wcf64], a
-	ld a, [wcf64]
-	and $fc
+	inc a
 	ld [wcf64], a
 .loop ; 4dce3
 	ld a, [wJumptableIndex]
@@ -72,8 +69,7 @@ StatsScreen_WaitAnim: ; 4dd3a (13:5d3a)
 	jr nz, .try_anim
 	bit 5, [hl]
 	jr nz, .finish
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .try_anim
 	farcall SetUpPokeAnim
@@ -112,13 +108,11 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	ld hl, wcf64
 	set 4, [hl]
 	ld h, 4
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 .egg
 	ld h, 1
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 EggStatsInit: ; 4dda1
 	call EggStatsScreen
@@ -133,8 +127,7 @@ EggStatsJoypad: ; 4ddac (13:5dac)
 	call StatsScreen_GetJoypad
 	jr nc, .check
 	ld h, 0
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 .check
 	bit A_BUTTON_F, a
@@ -144,8 +137,7 @@ EggStatsJoypad: ; 4ddac (13:5dac)
 
 .quit
 	ld h, 7
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 StatsScreen_LoadPage: ; 4ddc6 (13:5dc6)
 	call StatsScreen_LoadGFX
@@ -160,8 +152,7 @@ MonStatsJoypad: ; 4ddd6 (13:5dd6)
 	call StatsScreen_GetJoypad
 	jr nc, .next
 	ld h, 0
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 .next
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
@@ -317,18 +308,15 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	or c
 	ld [wcf64], a
 	ld h, 4
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 .load_mon
 	ld h, 0
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 .b_button ; 4dee4 (13:5ee4)
 	ld h, 7
-	call StatsScreen_SetJumptableIndex
-	ret
+	jp StatsScreen_SetJumptableIndex
 
 StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call .PlaceHPBar
@@ -364,8 +352,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call PlaceString
 	call StatsScreen_PlaceHorizontalDivider
 	call StatsScreen_PlacePageSwitchArrows
-	call StatsScreen_PlaceShinyIcon
-	ret
+	jp StatsScreen_PlaceShinyIcon
 
 .PlaceHPBar: ; 4df45 (13:5f45)
 	ld hl, TempMonHP
@@ -442,12 +429,10 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld hl, wcf64
 	bit 4, [hl]
 	jr nz, .place_frontpic
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 .place_frontpic
-	call StatsScreen_PlaceFrontpic
-	ret
+	jp StatsScreen_PlaceFrontpic
 
 .ClearBox: ; 4dfda (13:5fda)
 	ld a, [wcf64]
@@ -456,8 +441,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call StatsScreen_LoadPageIndicators
 	hlcoord 0, 8
 	lb bc, 10, 20
-	call ClearBox
-	ret
+	jp ClearBox
 
 .LoadPokeBall:
 	; draw border
@@ -728,8 +712,7 @@ endr
 	and a
 	ret z
 	ld [wd265], a
-	call GetItemName
-	ret
+	jp GetItemName
 ; 4e1a0 (13:61a0)
 
 .Item: ; 4e1a0
@@ -799,7 +782,6 @@ OrangePage_:
 	ld a, [TempMonSpecies]
 	ld c, a
 	farcall GetAbility
-	hlcoord 3, 13
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
 	predef PrintAbility
@@ -1144,8 +1126,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	call SetPalettes
 	call .AnimateMon
 	ld a, [CurPartySpecies]
-	call PlayCry2
-	ret
+	jp PlayCry2
 
 .AnimateMon: ; 4e253 (13:6253)
 	ld hl, wcf64
@@ -1154,15 +1135,13 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	cp UNOWN
 	jr z, .unown
 	hlcoord 0, 0
-	call PrepMonFrontpic
-	ret
+	jp PrepMonFrontpic
 
 .unown
 	xor a
 	ld [wBoxAlignment], a
 	hlcoord 0, 0
-	call _PrepMonFrontpic
-	ret
+	jp _PrepMonFrontpic
 
 .AnimateEgg: ; 4e271 (13:6271)
 	ld a, [CurPartySpecies]
@@ -1170,14 +1149,12 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	jr z, .unownegg
 	ld a, TRUE
 	ld [wBoxAlignment], a
-	call .get_animation
-	ret
+	jp .get_animation
 
 .unownegg
 	xor a
 	ld [wBoxAlignment], a
-	call .get_animation
-	ret
+	jp .get_animation
 
 .get_animation ; 4e289 (13:6289)
 	ld a, [CurPartySpecies]
@@ -1187,8 +1164,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	ld de, VTiles2 tile $00
 	predef FrontpicPredef
 	hlcoord 0, 0
-	ld d, $0
-	ld e, $2
+	lb de, $0, $2
 	predef LoadMonAnimation
 	ld hl, wcf64
 	set 6, [hl]
@@ -1319,8 +1295,7 @@ EggStatsScreen: ; 4e33a
 	cp 6
 	ret nc
 	ld de, SFX_2_BOOPS
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 0x4e3c0
 
 EggString: ; 4e3c0
@@ -1430,8 +1405,7 @@ CopyNickname: ; 4e505 (13:6505)
 	push de
 	call CopyBytes
 	pop de
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 .partymon
 	push de
@@ -1475,4 +1449,4 @@ CheckFaintedFrzSlp: ; 4e53f
 ; 4e554
 
 CaughtBallsGFX:
-INCBIN "gfx/misc/balls.2bpp"
+INCBIN "gfx/stats/balls.2bpp"

@@ -456,6 +456,7 @@
 	const EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE
 	const EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE
 	const EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET
+	const EVENT_WARM_BEACH_HIDDEN_PEARL
 
 ; Kurt events
 	const EVENT_GAVE_KURT_RED_APRICORN
@@ -2254,17 +2255,16 @@
 	const EVENT_MURKY_SWAMP_CUT_TREE_2
 	const EVENT_NOISY_FOREST_CUT_TREE_1
 	const EVENT_NOISY_FOREST_CUT_TREE_2
-
-; TODO: organize events
-	const EVENT_WARM_BEACH_HIDDEN_PEARL
 	const EVENT_ROUTE_49_CUT_TREE_1
 	const EVENT_ROUTE_49_CUT_TREE_2
 
+; TODO: reorganize events for final release
+	const EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
+	const EVENT_BEAT_RED
+	const EVENT_BEAT_LEAF
+	const EVENT_BEAT_BREEDER_JULIE_ONCE
+
 ; Unused placeholder events
-	const EVENT_835
-	const EVENT_836
-	const EVENT_837
-	const EVENT_838
 	const EVENT_839
 	const EVENT_83A
 	const EVENT_83B
@@ -2288,4 +2288,100 @@
 	const EVENT_84D
 	const EVENT_84E
 	const EVENT_84F
+	const EVENT_850
+	const EVENT_851
+	const EVENT_852
+	const EVENT_853
+	const EVENT_854
+	const EVENT_855
+	const EVENT_856
+	const EVENT_857
+	const EVENT_858
+	const EVENT_859
+	const EVENT_85A
+	const EVENT_85B
+	const EVENT_85C
+	const EVENT_85D
+	const EVENT_85E
+	const EVENT_85F
+	const EVENT_860
+	const EVENT_861
+	const EVENT_862
+	const EVENT_863
+	const EVENT_864
+	const EVENT_865
+	const EVENT_866
+	const EVENT_867
+	const EVENT_868
+	const EVENT_869
+	const EVENT_86A
+	const EVENT_86B
+	const EVENT_86C
+	const EVENT_86D
+	const EVENT_86E
+	const EVENT_86F
+	const EVENT_870
+	const EVENT_871
+	const EVENT_872
+	const EVENT_873
+	const EVENT_874
+	const EVENT_875
+	const EVENT_876
+	const EVENT_877
+	const EVENT_878
+	const EVENT_879
+	const EVENT_87A
+	const EVENT_87B
+	const EVENT_87C
+	const EVENT_87D
+	const EVENT_87E
+	const EVENT_87F
+	const EVENT_880
+	const EVENT_881
+	const EVENT_882
+	const EVENT_883
+	const EVENT_884
+	const EVENT_885
+	const EVENT_886
+	const EVENT_887
+	const EVENT_888
+	const EVENT_889
+	const EVENT_88A
+	const EVENT_88B
+	const EVENT_88C
+	const EVENT_88D
+	const EVENT_88E
+	const EVENT_88F
+	const EVENT_890
+	const EVENT_891
+	const EVENT_892
+	const EVENT_893
+	const EVENT_894
+	const EVENT_895
+	const EVENT_896
+	const EVENT_897
+	const EVENT_898
+	const EVENT_899
+	const EVENT_89A
+	const EVENT_89B
+	const EVENT_89C
+	const EVENT_89D
+	const EVENT_89E
+	const EVENT_89F
+	const EVENT_8A0
+	const EVENT_8A1
+	const EVENT_8A2
+	const EVENT_8A3
+	const EVENT_8A4
+	const EVENT_8A5
+	const EVENT_8A6
+	const EVENT_8A7
+	const EVENT_8A8
+	const EVENT_8A9
+	const EVENT_8AA
+	const EVENT_8AB
+	const EVENT_8AC
+	const EVENT_8AD
+	const EVENT_8AE
+	const EVENT_8AF
 NUM_EVENTS EQU const_value

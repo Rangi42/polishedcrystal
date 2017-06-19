@@ -9,8 +9,7 @@ HDMATransferTileMapToWRAMBank3:: ; 10402d
 	ld a, $0
 	ld [rVBK], a
 	ld hl, wScratchTileMap
-	call HDMATransferToWRAMBank3
-	ret
+	jp HDMATransferToWRAMBank3
 ; 104047
 
 HDMATransferAttrMapToWRAMBank3: ; 104047
@@ -24,8 +23,7 @@ HDMATransferAttrMapToWRAMBank3: ; 104047
 	ld a, $1
 	ld [rVBK], a
 	ld hl, wScratchAttrMap
-	call HDMATransferToWRAMBank3
-	ret
+	jp HDMATransferToWRAMBank3
 ; 104061
 
 ReloadMapPart:: ; 104061
@@ -410,8 +408,7 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 	ld c, $8
 	ld hl, wScratchTileMap
 	debgcoord 0, 0, VBGMap1
-	call HDMATransfer_Wait127Scanlines
-	ret
+	jp HDMATransfer_Wait127Scanlines
 
 .Copy: ; 10433a (41:433a)
 	ld b, 4
@@ -442,7 +439,8 @@ HeartEmote:      INCBIN "gfx/emotes/heart.2bpp"
 BoltEmote:       INCBIN "gfx/emotes/bolt.2bpp"
 SleepEmote:      INCBIN "gfx/emotes/sleep.2bpp"
 FishEmote:       INCBIN "gfx/emotes/fish.2bpp"
-JumpShadowGFX:   INCBIN "gfx/misc/shadow.2bpp"
-FishingRodGFX2:  INCBIN "gfx/misc/fishing2.2bpp"
-BoulderDustGFX:  INCBIN "gfx/misc/boulderdust.2bpp"
-ShakingGrassGFX: INCBIN "gfx/misc/shaking_grass.2bpp"
+
+JumpShadowGFX:   INCBIN "gfx/ow_fx/shadow.2bpp"
+FishingRodGFX2:  INCBIN "gfx/ow_fx/fishing2.2bpp"
+BoulderDustGFX:  INCBIN "gfx/ow_fx/boulderdust.2bpp"
+ShakingGrassGFX: INCBIN "gfx/ow_fx/shaking_grass.2bpp"

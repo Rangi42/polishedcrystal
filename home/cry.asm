@@ -31,8 +31,7 @@ PlayCry2:: ; 37d5
 	ld [wStereoPanningMask], a
 	ld [CryTracks], a
 	pop af
-	call _PlayCry
-	ret
+	jp _PlayCry
 ; 37e2
 
 _PlayCry:: ; 37e2

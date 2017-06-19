@@ -104,23 +104,47 @@ PerishCountText: ; 0x80864
 	prompt
 ; 0x80880
 
-BattleText_UserRecoveredWithItem: ; 0x80880
+BattleText_UserRecoveredWithItem:
 	text "<USER>"
 	line "recovered with"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "."
 	prompt
-; 0x80899
 
-BattleText_UserRecoveredPPUsing: ; 0x80899
+BattleText_UserHurtByItem:
+	text "<USER>"
+	line "was hurt by"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "."
+	prompt
+
+BattleText_UserRecoveredPPUsing:
 	text "<USER>"
 	line "recovered PP using"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "."
 	prompt
-; 0x808b6
+
+BattleText_ItemRaisedAtk:
+	text "The @"
+	text_from_ram StringBuffer1
+	text ""
+	line "sharply raised"
+	para "<USER>'s"
+	line "Attack!"
+	prompt
+
+BattleText_ItemRaisedSAtk:
+	text "The @"
+	text_from_ram StringBuffer1
+	text ""
+	line "sharply raised"
+	para "<USER>'s"
+	line "Special Attack!"
+	prompt
 
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
 	text "<TARGET>"
@@ -1106,6 +1130,15 @@ ProtectedByText: ; 0x815a9
 	prompt
 ; 0x815c1
 
+RegainedStatsWithItem: ; 0x815a9
+	text "<USER>"
+	line "regained stats"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+; 0x815c1
+
 StoleText: ; 0x815da
 	text "<USER>"
 	line "stole @"
@@ -1320,6 +1353,22 @@ FriskedItemText:
 	text "!"
 	prompt
 
+PickedItemText:
+	text "<USER>"
+	line "harvested"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
+HarvestedItemText:
+	text "<USER>"
+	line "harvested"
+	cont "@"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
 PoisonHealText:
 	text "<USER>'s"
 	line "Poison Heal"
@@ -1353,8 +1402,7 @@ ShudderedText:
 
 ForewarnText: ; 0x80f02
 	text "<TARGET>"
-	line "has"
-	cont "@"
+	line "has @"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt

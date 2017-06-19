@@ -18,8 +18,7 @@ InitIntroGradient::
 	ld de, .IntroGradientGFX
 	ld hl, VTiles2 tile $70
 	lb bc, BANK(.IntroGradientGFX), 3
-	call Get2bpp
-	ret
+	jp Get2bpp
 
 .IntroGradientGFX:
 INCBIN "gfx/misc/intro_gradient.2bpp"
@@ -48,8 +47,7 @@ PrintDayOfWeek: ; 5b05
 	ld h, b
 	ld l, c
 	ld de, .Day
-	call PlaceString
-	ret
+	jp PlaceString
 ; 5b1c
 
 .Days: ; 5b1c
@@ -103,8 +101,7 @@ NewGame: ; 5b6b
 ResetWRAM: ; 5ba7
 	xor a
 	ld [hBGMapMode], a
-	call _ResetWRAM
-	ret
+	jp _ResetWRAM
 ; 5bae
 
 _ResetWRAM: ; 5bae
@@ -237,8 +234,7 @@ ENDC
 
 	farcall DeletePartyMonMail
 
-	call ResetGameTime
-	ret
+	jp ResetGameTime
 ; 5ca1
 
 .InitList: ; 5ca1
@@ -290,8 +286,7 @@ InitializeMagikarpHouse: ; 5cd3
 	ld a, $6
 	ld [hli], a
 	ld de, .Ralph
-	call CopyName2
-	ret
+	jp CopyName2
 ; 5ce3
 
 .Ralph: ; 5ce3
@@ -312,8 +307,7 @@ InitializeNPCNames: ; 5ce9
 
 .Copy:
 	ld bc, NAME_LENGTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 .Rival:
 .Extra:  db "???@"
@@ -491,13 +485,11 @@ DisplaySaveInfoOnContinue: ; 5e85
 	and %10000000
 	jr z, .clock_ok
 	lb de, 4, 8
-	call DisplayContinueDataWithRTCError
-	ret
+	jp DisplayContinueDataWithRTCError
 
 .clock_ok
 	lb de, 4, 8
-	call DisplayNormalContinueData
-	ret
+	jp DisplayNormalContinueData
 ; 5e9a
 
 DisplaySaveInfoOnSave: ; 5e9a
@@ -510,8 +502,7 @@ DisplayNormalContinueData: ; 5e9f
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_PrintGameTime
 	call LoadFontsExtra
-	call UpdateSprites
-	ret
+	jp UpdateSprites
 ; 5eaf
 
 DisplayContinueDataWithRTCError: ; 5eaf
@@ -519,8 +510,7 @@ DisplayContinueDataWithRTCError: ; 5eaf
 	call Continue_DisplayBadgesDexPlayerName
 	call Continue_UnknownGameTime
 	call LoadFontsExtra
-	call UpdateSprites
-	ret
+	jp UpdateSprites
 ; 5ebf
 
 Continue_LoadMenuHeader: ; 5ebf
@@ -535,8 +525,7 @@ Continue_LoadMenuHeader: ; 5ebf
 .pokedex_header
 	call _OffsetMenuDataHeader
 	call MenuBox
-	call PlaceVerticalMenuItems
-	ret
+	jp PlaceVerticalMenuItems
 ; 5ed9
 
 .MenuDataHeader_Dex: ; 5ed9
@@ -601,16 +590,14 @@ Continue_DisplayBadgesDexPlayerName: ; 5f1c
 Continue_PrintGameTime: ; 5f40
 	decoord 9, 8, 0
 	add hl, de
-	call Continue_DisplayGameTime
-	ret
+	jp Continue_DisplayGameTime
 ; 5f48
 
 Continue_UnknownGameTime: ; 5f48
 	decoord 9, 8, 0
 	add hl, de
 	ld de, .three_question_marks
-	call PlaceString
-	ret
+	jp PlaceString
 
 .three_question_marks
 	db " ???@"
@@ -745,8 +732,7 @@ endc
 	call Intro_RotatePalettesLeftFrontpic
 
 	ld hl, ElmText7
-	call PrintText
-	ret
+	jp PrintText
 
 ElmText1: ; 0x6045
 	text_jump _ElmText1
@@ -866,8 +852,7 @@ NamePlayer: ; 0x6074
 	jr z, .Male
 	ld de, .Kris
 .Male:
-	call InitName
-	ret
+	jp InitName
 
 .Chris:
 	db "Chris@@@@@@"
@@ -1151,7 +1136,7 @@ TitleScreenEntrance: ; 62bc
 ; Reversed signage for every other line's position.
 ; This is responsible for the interlaced effect.
 	ld a, e
-	xor $ff
+	cpl
 	inc a
 
 	ld b, 8 * 10 / 2 ; logo height / 2

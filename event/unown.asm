@@ -8,8 +8,7 @@ SpecialHoOhChamber: ; 0x8addb
 	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ld b, SET_FLAG
-	call EventFlagAction
-	ret
+	jp EventFlagAction
 
 .FairyTable:
 	db AZUMARILL
@@ -172,8 +171,7 @@ endr
 	call WaitBGMap2
 	call JoyWaitAorB
 	call PlayClickSFX
-	call CloseWindow
-	ret
+	jp CloseWindow
 ; 8aebc
 
 .UnownText: ; 8aebc

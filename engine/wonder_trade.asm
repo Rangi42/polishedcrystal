@@ -15,8 +15,7 @@ WonderTrade::
 	cp EGG
 	jr nz, .check_gs_ball
 	ld hl, .Text_WonderTradeCantTradeEgg
-	call PrintText
-	ret
+	jp PrintText
 
 .check_gs_ball
 	ld hl, PartyMon1Item
@@ -28,8 +27,7 @@ WonderTrade::
 	cp b
 	jr nz, .continue
 	ld hl, .Text_WonderTradeCantTradeGSBall
-	call PrintText
-	ret
+	jp PrintText
 
 .continue
 	ld hl, PartyMonNicknames
@@ -74,9 +72,10 @@ WonderTrade::
 	ld de, EVENT_CAN_GIVE_GS_BALL_TO_KURT
 	ld b, SET_FLAG
 	call EventFlagAction
+	ld de, MUSIC_SPIKY_EARED_PICHU_HGSS
+	call PlayMusic
 	ld hl, .Text_WonderTradeForGSBallPichuText
-	call PrintText
-	ret
+	jp PrintText
 
 .Text_WonderTradeQuestion:
 	text_jump WonderTradeQuestionText
@@ -523,8 +522,7 @@ GetWonderTradeOTName:
 	ld hl, .WonderTradeOTNameTable
 	ld b, 0
 	ld c, PLAYER_NAME_LENGTH
-	call AddNTimes
-	ret
+	jp AddNTimes
 
 .WonderTradeOTNameTable:
 	db "Nemo@@@@" ; $00

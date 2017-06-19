@@ -3,10 +3,8 @@
 * Large Pokémon animations have backwards tiles in the stats screen
 * Caught Pokémon sent to the PC appear at level 255
 * Some caught Pokémon have wrong held items
-* Dark types are not immune to moves whose priority was increased by Prankster
 * In-battle item use messages show the wrong Pokémon name
 * Some NPC trainers use wrong items
-* Held Berries don't always disappear when used
 * Weather and some ability animations trigger the last used animation too
 * TMs refresh PP
 * Nuzlocke mode sometimes turns on by itself (maybe)
@@ -87,15 +85,6 @@ Route leaders:
 
 ## Abilities
 
-In-battle effects:
-
-* Speed Boost activates inconsistently
-* Harvest
-* Magic Bounce
-* Pickpocket
-* Pickup
-* Rivalry
-
 Out-of-battle effects:
 
 * Static
@@ -115,42 +104,25 @@ Out-of-battle effects:
 
 ## Items
 
-* Ability Capsule
+* Ability Cap(sule)
 * Assault Vest
 * Big Root
-* Binding Band
-* Black Sludge
-* Choice Band
-* Choice Scarf
-* Choice Specs
 * Destiny Knot
-* Expert Belt
-* Flame Orb
-* Life Orb
 * Mental Herb
-* Metronome
 * Oval Charm
+* Protect(ive) Pads
 * Quick Powder
 * Rocky Helmet
 * Safe Goggles
 * Shed Shell
 * Shell Bell
-* Toxic Orb
-* Weak Policy
-* White Herb
 * Wide Lens
 * Zoom Lens
 
 
 ## Move effects
 
-* Avalanche does double damage if the user was hit first
-* Acrobatics does double damage if the user has no held item
-* Facade does double damage if the user is Psn, Brn, or Prz
-* U-turn switches out
-* Volt Switch switches out
 * Sucker Punch fails if foe is not attacking
-* Thief should either fail when wild Pokémon use it, or only apply during battle
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -208,12 +180,8 @@ Some of these may never be added; they're just suggestions.
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
 * More music
-   * HG/SS Spiky-Eared Pichu theme (for some Spiky-Eared Pichu event) (already exists)
    * R/S/E Route 119
    * R/S/E Route 120
-   * B/W Dragonspiral Tower (for Embedded Tower)
-   * B/W Black City (for Silph Co.)
-   * B/W Battle! Elite Four (for Caitlin)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * 60 FPS via [doublespeed](https://github.com/FredrIQ/pokecrystal/tree/doublespeed) mode
@@ -224,13 +192,13 @@ Some of these may never be added; they're just suggestions.
 * Inverse Battles
 * Battle Factory
 * Medals for achievements
+* Something like Habitat Lists or DexNav via the Town Map
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
-* Add Valencia Island from Pokémon Orange (for Prof. Ivy's lab, where you can battle her) and maybe other Orange Islands
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Variety Channel with daily unique music
@@ -240,6 +208,7 @@ Some of these may never be added; they're just suggestions.
 * Catch rate formula from Gen III
 * Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
+* Port critical captures from Prism
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
@@ -261,7 +230,9 @@ Some of these may never be added; they're just suggestions.
 There are some features that I do *not* ever plan to add to Polished Crystal:
 
 * All 802 Pokémon
-* A third region
+* A third region with badges
 * Mega Evolution
 * Z-moves
-* Gen V Exp. Share
+* Ash-Greninja
+* Ash Ketchum
+* Gen VI Exp. Share

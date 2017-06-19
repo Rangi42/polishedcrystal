@@ -174,9 +174,10 @@ ScriptVar:: ; c2dd
 wPlayerNextMovement:: ds 1
 wPlayerMovement:: ds 1
 	ds 2
+wc2e2::
 wMovementPerson:: ds 1
 wMovementDataPointer:: ds 3 ; dba
-	ds 4
+wc2e6:: ds 4
 wMovementByteWasControlSwitch:: ds 1
 wMovementPointer:: ds 2 ; c2eb
 	ds 3
@@ -463,8 +464,40 @@ EnemyDamageTaken:: ; c684
 wBattleReward:: ds 3 ; c686
 wBattleAnimParam::
 wKickCounter:: ds 1 ; c689
-BattleScriptBuffer:: ; c68a
-	ds 40
+
+PartyBackupItems::
+; Back up of party items before a battle. Modified in-battle for consumed/harvested
+; Berries and items stolen from wild Pokémon since those changes are retained
+	ds 6
+
+PartyUsedItems::
+; For the benefit of Pickup/Harvest
+	ds 6
+
+OTPartyUsedItems::
+; Opponent equavilent
+	ds 6
+
+PlayerSelectedMove::
+; what move you *selected* last, used for Choice locking and the
+; Metronome item
+	ds 1
+EnemySelectedMove::
+	ds 1
+
+PlayerMetronomeCount::
+; how much it is boosted (counts even if you don't have the item)
+	ds 1
+EnemyMetronomeCount::
+	ds 1
+
+; Stores enemy struct data temporarily when checking non-current mons
+AITempAbility::
+	ds 1
+AITempItem::
+	ds 1
+
+	ds 16 ; unused
 
 BattleScriptBufferLoc:: ; c6b2
 	ds 2
@@ -1280,8 +1313,12 @@ wMartItem9BCD::
 	ds 3
 wMartItem10BCD::
 	ds 3
+wMartItem11BCD::
+	ds 3
+wMartItem12BCD::
+	ds 3
 wMartItemBCDEnd::
-	ds 30
+	ds 24
 
 MenuItemsList::
 CurFruitTree::
@@ -2106,13 +2143,17 @@ JohtoBadges:: ; d857
 	flag_array NUM_JOHTO_BADGES
 KantoBadges:: ; d858
 	flag_array NUM_KANTO_BADGES
+BadgesEnd::
 
 PokemonJournals::
 	flag_array NUM_POKEMON_JOURNALS
+PokemonJournalsEnd::
+	ds 3 ; extra space set aside
 
 TMsHMs:: ; d859
 	flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
+	ds 5 ; extra space set aside
 
 NumItems:: ; d892
 	ds 1
@@ -2148,6 +2189,8 @@ PCItems:: ; d8f1
 	ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
 
+	ds 20 ; extra space set aside
+
 wPokegearFlags:: ds 1
 ; bit 0: map
 ; bit 1: radio
@@ -2157,8 +2200,6 @@ wPokegearFlags:: ds 1
 wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 2
 RegisteredItem:: ; d95c
-	ds 1
-
 	ds 1
 
 PlayerState:: ; d95d
@@ -2274,7 +2315,7 @@ wRoute23Trigger::                            ds 1
 wRoute18WestTrigger::                        ds 1
 wShamoutiHotelRestaurantTrigger::            ds 1
 
-	ds 20 ; extra space set aside
+	ds 10 ; extra space set aside
 
 
 ;SECTION "Events", WRAMX, BANK [1]
@@ -2313,7 +2354,7 @@ wErinFightCount::    ds 1
 EventFlags:: ; da72
 	flag_array NUM_EVENTS
 ; db6c
-	ds 90 ; extra space set aside
+	ds 30 ; extra space set aside
 
 wCurBox:: ; db72
 	ds 1
@@ -2432,6 +2473,7 @@ wMapData::
 
 VisitedSpawns:: ; dca5
 	flag_array NUM_SPAWNS
+	ds 2 ; extra space set aside
 
 wDigWarp:: ds 1 ; dcaa
 wDigMapGroup:: ds 1 ; dcab
@@ -2506,9 +2548,9 @@ EndPokedexSeen::
 UnownDex:: ; ded9
 	ds NUM_UNOWN
 UnlockedUnowns:: ; def3
-	ds 1
 
 wFirstUnownSeen:: ds 1
+wFirstMagikarpSeen:: ds 1
 
 
 wDaycareMan:: ; def5

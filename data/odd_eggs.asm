@@ -73,8 +73,7 @@ AddEggMonToParty:
 	ld a, "@"
 	ld [de], a
 
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 11ba38
 
 

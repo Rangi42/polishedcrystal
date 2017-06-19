@@ -16,7 +16,7 @@ _Sine:: ; 84d9
 	and %011111
 	call .ApplySineWave
 	ld a, h
-	xor -1
+	cpl
 	inc a
 	ret
 

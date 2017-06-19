@@ -96,16 +96,14 @@ UnknownText_0x1c4590::
 	line "the game."
 	done
 
-UnknownText_0x1c45a3::
-	text "There is already a"
-	line "save file. Is it"
-	cont "OK to overwrite?"
-	done
-
 UnknownText_0x1c45d9::
-	text "There is another"
-	line "save file. Is it"
-	cont "OK to overwrite?"
+	text "Warning! There is"
+	line "a save file from"
+	cont "another game."
+
+	para "Is it OK to over-"
+	line "write the other"
+	cont "save file?"
 	done
 
 UnknownText_0x1c460d::

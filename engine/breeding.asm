@@ -637,7 +637,10 @@ GetEggFrontpic: ; 17224 (5:7224)
 	ld [CurPartySpecies], a
 	ld [CurSpecies], a
 	call GetBaseData
-	ld hl, BattleMonForm
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
 	predef GetVariant
 	pop de
 	predef_jump GetFrontpic
@@ -647,7 +650,10 @@ GetHatchlingFrontpic: ; 1723c (5:723c)
 	ld [CurPartySpecies], a
 	ld [CurSpecies], a
 	call GetBaseData
-	ld hl, BattleMonForm
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
 	predef GetVariant
 	pop de
 	predef_jump FrontpicPredef
@@ -710,8 +716,7 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	call PlayMusic
 	call EnableLCD
 	hlcoord 7, 4
-	ld b, VBGMap0 / $100
-	ld c, $31 ; Egg tiles start here
+	lb bc, VBGMap0 / $100, $31 ; Egg tiles start at c
 	ld a, EGG
 	call Hatch_UpdateFrontpicBGMapCenter
 	ld c, 80
@@ -759,8 +764,7 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	call ClearSprites
 	call Hatch_InitShellFragments
 	hlcoord 6, 3
-	ld b, VBGMap0 / $100
-	ld c, $00 ; Hatchling tiles start here
+	lb bc, VBGMap0 / $100, $00 ; Hatchling tiles start at c
 	ld a, [wJumptableIndex]
 	call Hatch_UpdateFrontpicBGMapCenter
 	call Hatch_ShellFragmentLoop
@@ -768,8 +772,7 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	ld a, [wJumptableIndex]
 	ld [CurPartySpecies], a
 	hlcoord 6, 3
-	ld d, $0
-	ld e, ANIM_MON_HATCH
+	lb de, $0, ANIM_MON_HATCH
 	predef AnimateFrontpic
 	pop af
 	ld [CurSpecies], a
@@ -777,8 +780,7 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 
 Hatch_LoadFrontpicPal: ; 17363 (5:7363)
 	ld [PlayerHPPal], a
-	ld b, SCGB_EVOLUTION
-	ld c, $0
+	lb bc, SCGB_EVOLUTION, $0
 	jp GetSGBLayout
 
 EggHatch_CrackShell: ; 1736d (5:736d)
@@ -804,7 +806,7 @@ EggHatch_CrackShell: ; 1736d (5:736d)
 ; 17393 (5:7393)
 
 EggHatchGFX: ; 17393
-INCBIN "gfx/misc/egg_hatch.2bpp"
+INCBIN "gfx/evo/egg_hatch.2bpp"
 ; 173b3
 
 Hatch_InitShellFragments: ; 173b3 (5:73b3)

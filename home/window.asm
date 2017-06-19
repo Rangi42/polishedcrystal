@@ -44,8 +44,7 @@ CloseText:: ; 2dcf
 	ld [hWY], a
 	call ReplaceKrisSprite
 	farcall ReturnFromMapSetupScript
-	call LoadStandardFont
-	ret
+	jp LoadStandardFont
 ; 2e08
 
 OpenText:: ; 2e08

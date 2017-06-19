@@ -31,8 +31,7 @@ Pokepic:: ; 244e3
 	ld [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 Trainerpic::
 	ld hl, PokepicMenuDataHeader
@@ -58,8 +57,7 @@ Trainerpic::
 	ld [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 ClosePokepic:: ; 24528
 	ld hl, PokepicMenuDataHeader
@@ -87,8 +85,7 @@ LoadGrayscalePalette:
 	ld de, UnknBGPals + 7 palettes + 2
 	ld hl, GrayscalePalette
 	ld bc, 4
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 ; 49418
 
 GrayscalePalette:

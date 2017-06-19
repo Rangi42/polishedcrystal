@@ -4,8 +4,7 @@ Clearwc7e8:: ; 210f
 	ld hl, wc7e8
 	ld bc, 15
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 ; 211b
 
 CheckTriggers:: ; 211b
@@ -234,8 +233,7 @@ CheckWarpTile:: ; 2238
 WarpCheck:: ; 224a
 	call GetDestinationWarpNumber
 	ret nc
-	call CopyWarpData
-	ret
+	jp CopyWarpData
 ; 2252
 
 GetDestinationWarpNumber:: ; 2252
@@ -385,8 +383,7 @@ LoadMapAttributes:: ; 2309
 	call SwitchToMapScriptHeaderBank
 	call ReadMapScripts
 	xor a
-	call ReadMapEventHeader
-	ret
+	jp ReadMapEventHeader
 ; 2317
 
 LoadMapAttributes_SkipPeople:: ; 2317
@@ -394,8 +391,7 @@ LoadMapAttributes_SkipPeople:: ; 2317
 	call SwitchToMapScriptHeaderBank
 	call ReadMapScripts
 	ld a, $1
-	call ReadMapEventHeader
-	ret
+	jp ReadMapEventHeader
 ; 2326
 
 CopyMapHeaders:: ; 2326
@@ -403,8 +399,7 @@ CopyMapHeaders:: ; 2326
 	call SwitchToMapBank
 	call GetSecondaryMapHeaderPointer
 	call CopySecondMapHeader
-	call GetMapConnections
-	ret
+	jp GetMapConnections
 ; 2336
 
 ReadMapEventHeader:: ; 2336
@@ -421,8 +416,7 @@ ReadMapEventHeader:: ; 2336
 	and a
 	ret nz
 
-	call ReadObjectEvents
-	ret
+	jp ReadObjectEvents
 ; 234f
 
 ReadMapScripts:: ; 234f
@@ -509,8 +503,7 @@ ReadMapTriggers:: ; 23ac
 	ret z
 
 	ld bc, 2 ; size of a map trigger header entry
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 23c3
 
 ReadMapCallbacks:: ; 23c3
@@ -526,8 +519,7 @@ ReadMapCallbacks:: ; 23c3
 	ret z
 
 	ld bc, 3
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 23da
 
 ReadWarps:: ; 23da
@@ -542,8 +534,7 @@ ReadWarps:: ; 23da
 	and a
 	ret z
 	ld bc, 5
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 23f1
 
 ReadCoordEvents:: ; 23f1
@@ -560,8 +551,7 @@ ReadCoordEvents:: ; 23f1
 	ret z
 
 	ld bc, 5
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 2408
 
 ReadSignposts:: ; 2408
@@ -578,8 +568,7 @@ ReadSignposts:: ; 2408
 	ret z
 
 	ld bc, 5
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 241f
 
 ReadObjectEvents:: ; 241f
@@ -598,20 +587,15 @@ ReadObjectEvents:: ; 241f
 	ld a, [wCurrentMapPersonEventCount]
 	call CopyMapObjectHeaders
 
-; get NUM_OBJECTS - [wCurrentMapPersonEventCount]
+; get NUM_OBJECTS - 1 - [wCurrentMapPersonEventCount]
 	ld a, [wCurrentMapPersonEventCount]
 	ld c, a
-	ld a, NUM_OBJECTS ; - 1
+	ld a, NUM_OBJECTS - 1
 	sub c
 	jr z, .skip
-	; jr c, .skip
-
-; stupid waste of time and space
-	ld bc, 1
-	add hl, bc
+	jr c, .skip
+	inc hl
 ; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.
-; Bleeds into wObjectMasks due to a bug.  Uncomment the above subtraction
-; to fix.
 	ld bc, OBJECT_LENGTH
 .loop
 	ld [hl],  0
@@ -659,8 +643,7 @@ ClearObjectStructs:: ; 2471
 	ld hl, Object1Struct
 	ld bc, OBJECT_STRUCT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 ; 248a
 
 RestoreFacingAfterWarp:: ; 248a
@@ -711,8 +694,7 @@ LoadBlockData:: ; 24cd
 	call ChangeMap
 	call FillMapConnections
 	ld a, MAPCALLBACK_TILES
-	call RunMapCallback
-	ret
+	jp RunMapCallback
 ; 24e4
 
 ChangeMap:: ; 24e4
@@ -1397,8 +1379,7 @@ BufferScreen:: ; 2879
 	ld h, [hl]
 	ld l, a
 	ld de, wScreenSave
-	ld c, $5
-	ld b, $6
+	lb bc, $6, $5
 .row
 	push bc
 	push hl
@@ -1451,8 +1432,7 @@ SaveScreen:: ; 289d
 .down
 	ld de, wScreenSave
 .vertical
-	ld b, 6
-	ld c, 4
+	lb bc, 6, 4
 	jr SaveScreen_LoadNeighbor
 
 .left
@@ -1463,8 +1443,7 @@ SaveScreen:: ; 289d
 .right
 	ld de, wScreenSave
 .horizontal
-	ld b, 5
-	ld c, 5
+	lb bc, 5, 5
 	jr SaveScreen_LoadNeighbor
 
 LoadNeighboringBlockData:: ; 28e3
@@ -1476,8 +1455,7 @@ LoadNeighboringBlockData:: ; 28e3
 	add 6
 	ld [hConnectionStripLength], a
 	ld de, wScreenSave
-	ld b, 6
-	ld c, 5
+	lb bc, 6, 5
 
 SaveScreen_LoadNeighbor:: ; 28f7
 .row
@@ -1566,8 +1544,7 @@ GetMovementPermissions:: ; 2914
 	dec e
 	call GetCoordTile
 	ld [TileUp], a
-	call .Up
-	ret
+	jp .Up
 ; 296c
 
 .LeftRight:
@@ -1586,8 +1563,7 @@ GetMovementPermissions:: ; 2914
 	inc d
 	call GetCoordTile
 	ld [TileRight], a
-	call .Right
-	ret
+	jp .Right
 ; 298b
 
 .Down:
@@ -1746,8 +1722,7 @@ GetCoordTile:: ; 2a3c
 
 .nocarry2
 	ld a, [TilesetCollisionBank]
-	call GetFarByte
-	ret
+	jp GetFarByte
 
 .nope
 	ld a, -1
@@ -1952,8 +1927,7 @@ FinishExitMenu:: ; 2b5c
 	farcall LoadBlindingFlashPalette
 	call WaitBGMap2
 	farcall FadeInPalettes
-	call EnableSpriteUpdates
-	ret
+	jp EnableSpriteUpdates
 ; 2b74
 
 ReturnToMapWithSpeechTextbox:: ; 0x2b74
@@ -2002,8 +1976,7 @@ ReloadTilesetAndPalettes:: ; 2bae
 	pop af
 	rst Bankswitch
 
-	call EnableLCD
-	ret
+	jp EnableLCD
 ; 2be5
 
 GetMapHeaderPointer:: ; 2be5
@@ -2040,8 +2013,7 @@ GetAnyMapHeaderPointer:: ; 0x2bed
 	dec c
 	ld b, 0
 	ld a, 9
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; 0x2c04
 
 GetMapHeaderMember:: ; 0x2c04
@@ -2235,8 +2207,7 @@ GetBackupLandmark::
 	ld b, a
 	ld a, [BackupMapNumber]
 	ld c, a
-	call GetWorldMapLocation
-	ret
+	jp GetWorldMapLocation
 
 GetMapHeaderMusic:: ; 2cbd
 	push hl

@@ -35,12 +35,6 @@ EnableEvents:: ; 966d0
 	ret
 ; 966d6
 
-CheckBit5_ScriptFlags3: ; 966d6
-	ld hl, ScriptFlags3
-	bit 5, [hl]
-	ret
-; 966dc
-
 EnableWildEncounters: ; 96706
 	ld hl, ScriptFlags3
 	set 4, [hl]
@@ -165,8 +159,7 @@ NextOverworldFrame: ; 967b7
 	and a
 	ret z
 	ld c, a
-	call DelayFrames
-	ret
+	jp DelayFrames
 ; 967c1
 
 HandleMapTimeAndJoypad: ; 967c1
@@ -176,15 +169,13 @@ HandleMapTimeAndJoypad: ; 967c1
 
 	call UpdateTime
 	call GetJoypad
-	call TimeOfDayPals
-	ret
+	jp TimeOfDayPals
 ; 967d1
 
 HandleMapObjects: ; 967d1
 	farcall HandleNPCStep ; engine/map_objects.asm
 	farcall _HandlePlayerStep
-	call _CheckObjectEnteringVisibleRange
-	ret
+	jp _CheckObjectEnteringVisibleRange
 ; 967e1
 
 HandleMapBackground: ; 967e1
@@ -228,8 +219,6 @@ PlayerEvents: ; 9681f
 	ld a, [ScriptRunning]
 	and a
 	ret nz
-
-	call Dummy_CheckScriptFlags3Bit5 ; This is a waste of time
 
 	call CheckTrainerBattle3
 	jr c, .ok
@@ -367,11 +356,6 @@ SetUpFiveStepWildEncounterCooldown: ; 968d1
 	ld [wWildEncounterCooldown], a
 	ret
 ; 968d7
-
-Dummy_CheckScriptFlags3Bit5: ; 968e4
-	call CheckBit5_ScriptFlags3
-	ret
-; 968ec
 
 DoMapTrigger: ; 968ec
 	ld a, [wCurrMapTriggerCount]

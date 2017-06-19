@@ -323,84 +323,83 @@ AI_Smart: ; 386be
 	jr .checkmove
 
 .table_386f2
-	dbw EFFECT_SLEEP,            AI_Smart_Sleep
-	dbw EFFECT_LEECH_HIT,        AI_Smart_LeechHit
-	dbw EFFECT_EXPLOSION,        AI_Smart_Explosion
-	dbw EFFECT_DREAM_EATER,      AI_Smart_DreamEater
-	dbw EFFECT_MIRROR_MOVE,      AI_Smart_MirrorMove
-	dbw EFFECT_EVASION_UP,       AI_Smart_EvasionUp
-	dbw EFFECT_ALWAYS_HIT,       AI_Smart_AlwaysHit
-	dbw EFFECT_ACCURACY_DOWN,    AI_Smart_AccuracyDown
-	dbw EFFECT_HAZE,             AI_Smart_Haze
-	dbw EFFECT_BIDE,             AI_Smart_Bide
-	dbw EFFECT_ROAR,             AI_Smart_Roar
-	dbw EFFECT_HEAL,             AI_Smart_Heal
-	dbw EFFECT_TOXIC,            AI_Smart_Toxic
-	dbw EFFECT_LIGHT_SCREEN,     AI_Smart_LightScreen
-	dbw EFFECT_OHKO,             AI_Smart_Ohko
-	dbw EFFECT_RAZOR_WIND,       AI_Smart_RazorWind
-	dbw EFFECT_SUPER_FANG,       AI_Smart_SuperFang
-	dbw EFFECT_TRAP,             AI_Smart_Bind
-	dbw EFFECT_CONFUSE,          AI_Smart_Confuse
-	dbw EFFECT_SP_DEF_UP_2,      AI_Smart_SpDefenseUp2
-	dbw EFFECT_REFLECT,          AI_Smart_Reflect
-	dbw EFFECT_PARALYZE,         AI_Smart_Paralyze
-	dbw EFFECT_SPEED_DOWN_HIT,   AI_Smart_SpeedDownHit
-	dbw EFFECT_SUBSTITUTE,       AI_Smart_Substitute
-	dbw EFFECT_HYPER_BEAM,       AI_Smart_HyperBeam
-	dbw EFFECT_RAGE,             AI_Smart_Rage
-	dbw EFFECT_MIMIC,            AI_Smart_Mimic
-	dbw EFFECT_LEECH_SEED,       AI_Smart_LeechSeed
-	dbw EFFECT_DISABLE,          AI_Smart_Disable
-	dbw EFFECT_COUNTER,          AI_Smart_Counter
-	dbw EFFECT_ENCORE,           AI_Smart_Encore
-	dbw EFFECT_PAIN_SPLIT,       AI_Smart_PainSplit
-	dbw EFFECT_SNORE,            AI_Smart_Snore
-	dbw EFFECT_LOCK_ON,          AI_Smart_LockOn
-	dbw EFFECT_DEFROST_OPPONENT, AI_Smart_DefrostOpponent
-	dbw EFFECT_SLEEP_TALK,       AI_Smart_SleepTalk
-	dbw EFFECT_DESTINY_BOND,     AI_Smart_DestinyBond
-	dbw EFFECT_REVERSAL,         AI_Smart_Reversal
-	dbw EFFECT_SPITE,            AI_Smart_Spite
-	dbw EFFECT_HEAL_BELL,        AI_Smart_HealBell
-	dbw EFFECT_PRIORITY_HIT,     AI_Smart_PriorityHit
-	dbw EFFECT_THIEF,            AI_Smart_Thief
-	dbw EFFECT_MEAN_LOOK,        AI_Smart_MeanLook
-	dbw EFFECT_FLAME_WHEEL,      AI_Smart_FlameWheel
-	dbw EFFECT_FLARE_BLITZ,      AI_Smart_FlameWheel
-	dbw EFFECT_SACRED_FIRE,      AI_Smart_FlameWheel
-	dbw EFFECT_CURSE,            AI_Smart_Curse
-	dbw EFFECT_PROTECT,          AI_Smart_Protect
-	dbw EFFECT_FORESIGHT,        AI_Smart_Foresight
-	dbw EFFECT_PERISH_SONG,      AI_Smart_PerishSong
-	dbw EFFECT_SANDSTORM,        AI_Smart_Sandstorm
-	dbw EFFECT_ENDURE,           AI_Smart_Endure
-	dbw EFFECT_ROLLOUT,          AI_Smart_Rollout
-	dbw EFFECT_SWAGGER,          AI_Smart_Swagger
-	dbw EFFECT_FURY_CUTTER,      AI_Smart_FuryCutter
-	dbw EFFECT_ATTRACT,          AI_Smart_Attract
-	dbw EFFECT_SAFEGUARD,        AI_Smart_Safeguard
-	dbw EFFECT_MAGNITUDE,        AI_Smart_Magnitude
-	dbw EFFECT_BATON_PASS,       AI_Smart_BatonPass
-	dbw EFFECT_PURSUIT,          AI_Smart_Pursuit
-	dbw EFFECT_RAPID_SPIN,       AI_Smart_RapidSpin
-	dbw EFFECT_MORNING_SUN,      AI_Smart_MorningSun
-	dbw EFFECT_MOONLIGHT,        AI_Smart_Moonlight
-	dbw EFFECT_HIDDEN_POWER,     AI_Smart_HiddenPower
-	dbw EFFECT_RAIN_DANCE,       AI_Smart_RainDance
-	dbw EFFECT_SUNNY_DAY,        AI_Smart_SunnyDay
-	dbw EFFECT_BELLY_DRUM,       AI_Smart_BellyDrum
-	dbw EFFECT_PSYCH_UP,         AI_Smart_PsychUp
-	dbw EFFECT_MIRROR_COAT,      AI_Smart_MirrorCoat
-	dbw EFFECT_SKULL_BASH,       AI_Smart_SkullBash
-	dbw EFFECT_TWISTER,          AI_Smart_Twister
-	dbw EFFECT_EARTHQUAKE,       AI_Smart_Earthquake
-	dbw EFFECT_FUTURE_SIGHT,     AI_Smart_FutureSight
-	dbw EFFECT_GUST,             AI_Smart_Gust
-	dbw EFFECT_STOMP,            AI_Smart_Stomp
-	dbw EFFECT_SOLAR_BEAM,       AI_Smart_SolarBeam
-	dbw EFFECT_THUNDER,          AI_Smart_Thunder
-	dbw EFFECT_FLY,              AI_Smart_Fly
+	dbw EFFECT_SLEEP,             AI_Smart_Sleep
+	dbw EFFECT_LEECH_HIT,         AI_Smart_LeechHit
+	dbw EFFECT_EXPLOSION,         AI_Smart_Explosion
+	dbw EFFECT_DREAM_EATER,       AI_Smart_DreamEater
+	dbw EFFECT_MIRROR_MOVE,       AI_Smart_MirrorMove
+	dbw EFFECT_EVASION_UP,        AI_Smart_EvasionUp
+	dbw EFFECT_ALWAYS_HIT,        AI_Smart_AlwaysHit
+	dbw EFFECT_ACCURACY_DOWN,     AI_Smart_AccuracyDown
+	dbw EFFECT_HAZE,              AI_Smart_Haze
+	dbw EFFECT_BIDE,              AI_Smart_Bide
+	dbw EFFECT_ROAR,              AI_Smart_Roar
+	dbw EFFECT_HEAL,              AI_Smart_Heal
+	dbw EFFECT_TOXIC,             AI_Smart_Toxic
+	dbw EFFECT_LIGHT_SCREEN,      AI_Smart_LightScreen
+	dbw EFFECT_OHKO,              AI_Smart_Ohko
+	dbw EFFECT_RAZOR_WIND,        AI_Smart_RazorWind
+	dbw EFFECT_SUPER_FANG,        AI_Smart_SuperFang
+	dbw EFFECT_TRAP,              AI_Smart_Bind
+	dbw EFFECT_CONFUSE,           AI_Smart_Confuse
+	dbw EFFECT_SP_DEF_UP_2,       AI_Smart_SpDefenseUp2
+	dbw EFFECT_REFLECT,           AI_Smart_Reflect
+	dbw EFFECT_PARALYZE,          AI_Smart_Paralyze
+	dbw EFFECT_SPEED_DOWN_HIT,    AI_Smart_SpeedDownHit
+	dbw EFFECT_SUBSTITUTE,        AI_Smart_Substitute
+	dbw EFFECT_HYPER_BEAM,        AI_Smart_HyperBeam
+	dbw EFFECT_RAGE,              AI_Smart_Rage
+	dbw EFFECT_MIMIC,             AI_Smart_Mimic
+	dbw EFFECT_LEECH_SEED,        AI_Smart_LeechSeed
+	dbw EFFECT_DISABLE,           AI_Smart_Disable
+	dbw EFFECT_COUNTER,           AI_Smart_Counter
+	dbw EFFECT_ENCORE,            AI_Smart_Encore
+	dbw EFFECT_PAIN_SPLIT,        AI_Smart_PainSplit
+	dbw EFFECT_SNORE,             AI_Smart_Snore
+	dbw EFFECT_LOCK_ON,           AI_Smart_LockOn
+	dbw EFFECT_DEFROST_OPPONENT,  AI_Smart_DefrostOpponent
+	dbw EFFECT_SLEEP_TALK,        AI_Smart_SleepTalk
+	dbw EFFECT_DESTINY_BOND,      AI_Smart_DestinyBond
+	dbw EFFECT_REVERSAL,          AI_Smart_Reversal
+	dbw EFFECT_SPITE,             AI_Smart_Spite
+	dbw EFFECT_HEAL_BELL,         AI_Smart_HealBell
+	dbw EFFECT_PRIORITY_HIT,      AI_Smart_PriorityHit
+	dbw EFFECT_THIEF,             AI_Smart_Thief
+	dbw EFFECT_MEAN_LOOK,         AI_Smart_MeanLook
+	dbw EFFECT_FLAME_WHEEL,       AI_Smart_FlameWheel
+	dbw EFFECT_FLARE_BLITZ,       AI_Smart_FlameWheel
+	dbw EFFECT_SACRED_FIRE,       AI_Smart_FlameWheel
+	dbw EFFECT_CURSE,             AI_Smart_Curse
+	dbw EFFECT_PROTECT,           AI_Smart_Protect
+	dbw EFFECT_FORESIGHT,         AI_Smart_Foresight
+	dbw EFFECT_PERISH_SONG,       AI_Smart_PerishSong
+	dbw EFFECT_SANDSTORM,         AI_Smart_Sandstorm
+	dbw EFFECT_ENDURE,            AI_Smart_Endure
+	dbw EFFECT_ROLLOUT,           AI_Smart_Rollout
+	dbw EFFECT_SWAGGER,           AI_Smart_Swagger
+	dbw EFFECT_ATTRACT,           AI_Smart_Attract
+	dbw EFFECT_SAFEGUARD,         AI_Smart_Safeguard
+	dbw EFFECT_MAGNITUDE,         AI_Smart_Magnitude
+	dbw EFFECT_BATON_PASS,        AI_Smart_BatonPass
+	dbw EFFECT_PURSUIT,           AI_Smart_Pursuit
+	dbw EFFECT_RAPID_SPIN,        AI_Smart_RapidSpin
+	dbw EFFECT_MORNING_SUN,       AI_Smart_MorningSun
+	dbw EFFECT_MOONLIGHT,         AI_Smart_Moonlight
+	dbw EFFECT_HIDDEN_POWER,      AI_Smart_HiddenPower
+	dbw EFFECT_RAIN_DANCE,        AI_Smart_RainDance
+	dbw EFFECT_SUNNY_DAY,         AI_Smart_SunnyDay
+	dbw EFFECT_BELLY_DRUM,        AI_Smart_BellyDrum
+	dbw EFFECT_PSYCH_UP,          AI_Smart_PsychUp
+	dbw EFFECT_MIRROR_COAT,       AI_Smart_MirrorCoat
+	dbw EFFECT_SKULL_BASH,        AI_Smart_SkullBash
+	dbw EFFECT_TWISTER,           AI_Smart_Twister
+	dbw EFFECT_EARTHQUAKE,        AI_Smart_Earthquake
+	dbw EFFECT_FUTURE_SIGHT,      AI_Smart_FutureSight
+	dbw EFFECT_GUST,              AI_Smart_Gust
+	dbw EFFECT_STOMP,             AI_Smart_Stomp
+	dbw EFFECT_SOLAR_BEAM,        AI_Smart_SolarBeam
+	dbw EFFECT_THUNDER,           AI_Smart_Thunder
+	dbw EFFECT_FLY,               AI_Smart_Fly
 	db $ff
 ; 387e3
 
@@ -566,32 +565,30 @@ endr
 ; 388a6
 
 
-AI_Smart_Explosion: ; 388a6
+AI_Smart_Explosion:
 ; Selfdestruct, Explosion
-
-; Unless this is the enemy's last Pokemon...
+	; If opponent only has 1 mon left
 	push hl
-	farcall FindAliveEnemyMons
+	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
-	jr nc, .asm_388b7
+	jr nz, .asm_388b7
 
-; ...greatly discourage this move unless this is the player's last Pokemon too.
+	; Then discourage the move unless the player also has 1 mon left
 	push hl
 	call AICheckLastPlayerMon
 	pop hl
 	jr nz, .asm_388c6
 
 .asm_388b7
-; Greatly discourage this move if enemy's HP is above 50%.
+	; Discourage if healthy (50%+)
 	call AICheckEnemyHalfHP
 	jr c, .asm_388c6
 
-; Do nothing if enemy's HP is below 25%.
+	; If <25%, don't discourage
 	call AICheckEnemyQuarterHP
 	ret nc
 
-; If enemy's HP is between 25% and 50%,
-; over 90% chance to greatly discourage this move.
+	; If 25-50%, probably discourage (236/256 of the time)
 	call Random
 	cp 20
 	ret c
@@ -601,7 +598,6 @@ rept 3
 	inc [hl]
 endr
 	ret
-; 388ca
 
 
 AI_Smart_DreamEater: ; 388ca
@@ -761,7 +757,7 @@ endr
 AI_Smart_MirrorMove: ; 3895b
 
 ; If the player did not use any move last turn...
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	and a
 	jr nz, .asm_38968
 
@@ -1355,7 +1351,7 @@ AI_Smart_Rage: ; 38b7f
 
 
 AI_Smart_Mimic: ; 38ba8
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	and a
 	jr z, .asm_38be9
 
@@ -1363,7 +1359,7 @@ AI_Smart_Mimic: ; 38ba8
 	jr nc, .asm_38bef
 
 	push hl
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	call AIGetEnemyMove
 
 	ld a, $1
@@ -1382,7 +1378,7 @@ AI_Smart_Mimic: ; 38ba8
 	dec [hl]
 
 .asm_38bd4
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	push hl
 	ld hl, UsefulMoves
 	ld de, 1
@@ -1408,8 +1404,7 @@ AI_Smart_Mimic: ; 38ba8
 AI_Smart_Counter: ; 38bf1
 	push hl
 	ld hl, PlayerUsedMoves
-	ld c, 4
-	ld b, 0
+	lb bc, 0, 4
 
 .asm_38bf9
 	ld a, [hli]
@@ -1440,7 +1435,7 @@ AI_Smart_Counter: ; 38bf1
 	cp $3
 	jr nc, .asm_38c30
 
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	and a
 	jr z, .asm_38c38
 
@@ -1486,9 +1481,9 @@ AI_Smart_Encore: ; 38c3b
 	jr z, .asm_38c68
 
 	push hl
-	ld a, [wEnemyMoveStruct + MOVE_TYPE]
-	ld hl, EnemyMonType1
-	predef CheckTypeMatchup
+	call SetPlayerTurn
+	farcall BattleCheckTypeMatchup
+	call SetEnemyTurn
 
 	pop hl
 	ld a, [wd265]
@@ -1501,7 +1496,7 @@ AI_Smart_Encore: ; 38c3b
 
 .asm_38c68
 	push hl
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	ld hl, .EncoreMoves
 	ld de, 1
 	call IsInArray
@@ -1611,7 +1606,7 @@ endr
 
 
 AI_Smart_Spite: ; 38cd5
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	and a
 	jr nz, .asm_38ce7
 
@@ -1794,7 +1789,7 @@ AI_Smart_Disable: ; 38dd1
 	jr nc, .asm_38df3
 
 	push hl
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	ld hl, UsefulMoves
 	ld de, 1
 	call IsInArray
@@ -1947,7 +1942,7 @@ endr
 	jp nz, AIDiscourageMove
 
 	push hl
-	farcall FindAliveEnemyMons
+	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
 	jr nc, .asm_38eb0
 
@@ -2079,9 +2074,9 @@ endr
 
 AI_Smart_PerishSong: ; 38f4a
 	push hl
-	farcall FindAliveEnemyMons
+	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
-	jr c, .no
+	jr z, .no
 
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
@@ -2205,35 +2200,7 @@ endr
 ; 38fdb
 
 
-AI_Smart_FuryCutter: ; 38fdb
-; Encourage this move based on Fury Cutter's count.
-
-	ld a, [EnemyFuryCutterCount]
-	and a
-	jr z, .end
-	dec [hl]
-
-	cp 2
-	jr c, .end
-rept 2
-	dec [hl]
-endr
-
-	cp 3
-	jr c, .end
-rept 3
-	dec [hl]
-endr
-
-.end
-
-	; fallthrough
-; 38fef
-
-
-AI_Smart_Rollout: ; 38fef
-; Rollout, Fury Cutter
-
+AI_Smart_Rollout:
 ; 80% chance to discourage this move if the enemy is in love, confused, or paralyzed.
 	ld a, [EnemySubStatus1]
 	bit SUBSTATUS_IN_LOVE, a
@@ -2315,7 +2282,7 @@ AI_Smart_Magnitude:
 AI_Smart_Earthquake: ; 39044
 
 ; Greatly encourage this move if the player is underground and the enemy is faster.
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	cp DIG
 	ret nz
 
@@ -2603,8 +2570,7 @@ AI_Smart_BellyDrum: ; 3913d
 AI_Smart_PsychUp: ; 39152
 	push hl
 	ld hl, EnemyAtkLevel
-	ld b, $8
-	ld c, 100
+	lb bc, $8, 100
 
 ; Calculate the sum of all enemy's stat level modifiers. Add 100 first to prevent underflow.
 ; Put the result in c. c will range between 58 and 142.
@@ -2663,8 +2629,7 @@ endr
 AI_Smart_MirrorCoat: ; 3918b
 	push hl
 	ld hl, PlayerUsedMoves
-	ld c, $4
-	ld b, $0
+	lb bc, $0, $4
 
 .asm_39193
 	ld a, [hli]
@@ -2695,7 +2660,7 @@ AI_Smart_MirrorCoat: ; 3918b
 	cp $3
 	jr nc, .asm_391ca
 
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	and a
 	jr z, .asm_391d2
 
@@ -2729,7 +2694,7 @@ AI_Smart_Twister:
 AI_Smart_Gust: ; 391d5
 
 ; Greatly encourage this move if the player is flying and the enemy is faster.
-	ld a, [LastEnemyCounterMove]
+	ld a, [PlayerSelectedMove]
 	cp FLY
 	ret nz
 
@@ -3291,14 +3256,20 @@ AIDamageCalc: ; 393e7
 	ld de, 1
 	ld hl, .ConstantDamageEffects
 	call IsInArray
-	jr nc, .asm_39400
+	jr nc, .no_special_damage
 	farcall BattleCommand_ConstantDamage
 	ret
 
-.asm_39400
+.no_special_damage
 	farcall EnemyAttackDamage
 	farcall BattleCommand_DamageCalc
 	farcall BattleCommand_Stab
+
+	; Maybe run conditional boost if applicable
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_CONDITIONAL_BOOST
+	ret nz
+	farcall BattleCommand_ConditionalBoost
 	ret
 
 .ConstantDamageEffects:
@@ -3307,8 +3278,6 @@ AIDamageCalc: ; 393e7
 	db EFFECT_LEVEL_DAMAGE
 	db EFFECT_PSYWAVE
 	db $ff
-; 39418
-
 
 AI_Cautious: ; 39418
 ; 90% chance to discourage moves with residual effects after the first turn.

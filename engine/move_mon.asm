@@ -535,7 +535,7 @@ AddTempmonToParty: ; da96
 
 	ld a, [CurPartySpecies]
 	cp UNOWN
-	jr nz, .done
+	jr nz, .not_unown
 	ld hl, PartyMon1Form
 	ld a, [PartyCount]
 	dec a
@@ -548,8 +548,24 @@ AddTempmonToParty: ; da96
 	jr nz, .done
 	ld a, [MonVariant]
 	ld [wFirstUnownSeen], a
-.done
+.not_unown
 
+	ld a, [CurPartySpecies]
+	cp MAGIKARP
+	jr nz, .done
+	ld hl, PartyMon1Form
+	ld a, [PartyCount]
+	dec a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	predef GetVariant
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .done
+	ld a, [MonVariant]
+	ld [wFirstMagikarpSeen], a
+
+.done
 	and a
 	ret
 

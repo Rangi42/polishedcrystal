@@ -11,8 +11,7 @@ UserAbilityJumptable:
 RunEnemyStatusHealAbilities:
 	call SwitchTurn
 	call RunStatusHealAbilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 BattleEntryAbilities:
 	dbw TRACE, TraceAbility
@@ -142,8 +141,7 @@ TraceAbility:
 	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
-	call StdBattleTextBox
-	ret
+	jp StdBattleTextBox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
@@ -358,15 +356,16 @@ ForewarnAbility:
 	ld a, [hli]
 	and a
 	jr z, .done
+	push af
 	push hl
 	; Check for special cases
 	ld de, 1
 	ld hl, DynamicPowerMoves
 	call IsInArray
 	pop hl
+	pop bc
 	jr nc, .not_special
 	; Counter/Mirror Coat are regarded as 160BP moves, everything else as 80BP
-	ld b, a
 	ld c, 160
 	cp COUNTER
 	jr z, .compare_power
@@ -375,7 +374,7 @@ ForewarnAbility:
 	ld c, 80
 	jr .compare_power
 .not_special
-	ld b, a
+	ld a, b
 	dec a
 	push hl
 	ld hl, Moves + MOVE_POWER
@@ -420,8 +419,9 @@ ForewarnAbility:
 	ld a, [Buffer3]
 	and a
 	ret z
+	push af
 	call ShowAbilityActivation
-	ld a, [Buffer3]
+	pop af
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, ForewarnText
@@ -443,8 +443,7 @@ RunEnemyOwnTempoAbility:
 	call GetBattleVar
 	cp OWN_TEMPO
 	call z, OwnTempoAbility
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 RunEnemySynchronizeAbility:
 	call SwitchTurn
@@ -452,8 +451,7 @@ RunEnemySynchronizeAbility:
 	call GetBattleVar
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 SynchronizeAbility:
 	ld a, BATTLE_VARS_STATUS
@@ -523,8 +521,7 @@ AftermathAbility:
 	call SwitchTurn
 	farcall GetQuarterMaxHP
 	farcall SubtractHPFromUser
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
@@ -584,8 +581,7 @@ RunContactAbilities:
 	jr nz, .not_pickpocket
 	call SwitchTurn
 	call PickPocketAbility
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 .not_pickpocket
 ; other abilities only trigger 30% of the time
 ;
@@ -599,8 +595,7 @@ RunContactAbilities:
 	ld b, a
 	call SwitchTurn
 	call .do_enemy_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 .do_enemy_abilities
 	ld a, b
 	cp CUTE_CHARM
@@ -790,8 +785,7 @@ RunEnemyNullificationAbilities:
 ; checks are required.
 	call SwitchTurn
 	call .do_enemy_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
 	call UserAbilityJumptable
@@ -855,11 +849,11 @@ RattledAbility:
 	; only for bug-, dark or ghost type moves
 	ld a, c
 	cp BUG
-	jr .ok
+	jr z, .ok
 	cp DARK
-	jr .ok
+	jr z, .ok
 	cp GHOST
-	jr .ok
+	jr z, .ok
 	ret
 .ok
 	; fallthrough
@@ -954,9 +948,7 @@ DrySkinAbility:
 VoltAbsorbAbility:
 WaterAbsorbAbility:
 	call ShowAbilityActivation
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	jr z, .full_hp
 	farcall GetQuarterMaxHP
 	farcall RestoreHP
@@ -1142,9 +1134,7 @@ WeatherRecoveryAbility:
 	call GetWeatherAfterCloudNine
 	cp b
 	ret nz
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	ret z
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_ABILITY
@@ -1174,24 +1164,122 @@ HandleAbilities:
 	call SetPlayerTurn
 
 .do_it
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp HARVEST
-	jp z, HarvestAbility
-	cp MOODY
-	jp z, MoodyAbility
-	cp PICKUP
-	jp z, PickupAbility
-	cp SHED_SKIN
-	jp z, ShedSkinAbility
-	cp SPEED_BOOST
-	jp z, SpeedBoostAbility
-	ret
+	ld hl, EndTurnAbilities
+	call UserAbilityJumptable
+	ld hl, StatusHealAbilities
+	jp UserAbilityJumptable
+
+EndTurnAbilities:
+	dbw HARVEST, HarvestAbility
+	dbw MOODY, MoodyAbility
+	dbw PICKUP, PickupAbility
+	dbw SHED_SKIN, ShedSkinAbility
+	dbw SPEED_BOOST, SpeedBoostAbility
+	dbw -1, -1
 
 HarvestAbility:
+; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
+	call GetWeatherAfterCloudNine
+	cp WEATHER_SUN
+	jr z, .ok
+	call BattleRandom
+	and 1
+	ret z
+
+.ok
+	; Don't do anything if we have an item already
+	farcall GetUserItem
+	ld a, [hl]
+	and a
+	ret nz
+
+	; Only Berries are picked
+	push hl
+	call GetUsedItemAddr
+	pop de
+	ld a, [hl]
+	and a
+	ret z
+	ld [CurItem], a
+	ld b, a
+	push bc
+	push de
+	push hl
+	farcall CheckItemPocket
+	pop hl
+	pop de
+	pop bc
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	ret nz
+
+	; Kill the used item
+	xor a
+	ld [hl], a
+
+	; Pick up the item
+	ld a, b
+	ld [de], a
+
+	ld hl, HarvestedItemText
+	jr RegainItemByAbility
+
 PickupAbility:
-; TODO: save used up items
-	ret
+; At end of turn, pickup consumed opponent items if we don't have any
+	; Don't do anything if we have an item already
+	farcall GetUserItem
+	ld a, [hl]
+	and a
+	ret nz
+
+	; Does the opponent have a consumed item?
+	push hl
+	call SwitchTurn
+	call GetUsedItemAddr
+	call SwitchTurn
+	pop de
+	ld a, [hl]
+	and a
+	ret z
+
+	; Pick up the item
+	ld [de], a
+
+	; Kill the used item
+	ld b, a
+	xor a
+	ld [hl], a
+	ld a, b
+
+	ld hl, PickedItemText
+	; fallthrough
+RegainItemByAbility:
+	; Update party struct if applicable
+	ld [wNamedObjectIndexBuffer], a
+	push af
+	push hl
+	call GetItemName
+	pop hl
+	call StdBattleTextBox
+	pop bc
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1Item
+	jr z, .got_item_addr
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld a, [CurOTMon]
+	ld hl, OTPartyMon1Item
+.got_item_addr
+	push bc
+	call GetPartyLocation
+	pop bc
+	ld [hl], b
+
+	; Yes, also in trainer battles (unlike Pickup)
+	jp SetBackupItem
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
@@ -1311,8 +1399,7 @@ ApplyDamageAbilities:
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
 	ld hl, DefensiveDamageAbilities
-	call AbilityJumptable
-	ret
+	jp AbilityJumptable
 
 OffensiveDamageAbilities:
 	dbw HUGE_POWER, HugePowerAbility
@@ -1321,6 +1408,7 @@ OffensiveDamageAbilities:
 	dbw BLAZE, BlazeAbility
 	dbw TORRENT, TorrentAbility
 	dbw SWARM, SwarmAbility
+	dbw RIVALRY, RivalryAbility
 	dbw SHEER_FORCE, SheerForceAbility
 	dbw ANALYTIC, AnalyticAbility
 	dbw TINTED_LENS, TintedLensAbility
@@ -1372,6 +1460,16 @@ PinchAbility:
 	call CheckPinch
 	ret nz
 	ld a, $32
+	jp ApplyDamageMod
+
+RivalryAbility:
+; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite gender
+	farcall CheckOppositeGender
+	ret c
+	ld a, $54
+	jr z, .apply_damage_mod
+	ld a, $34
+.apply_damage_mod
 	jp ApplyDamageMod
 
 SheerForceAbility:
@@ -1471,9 +1569,10 @@ PixilateAbility:
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
 	call SwitchTurn
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
+	push af
+	call SwitchTurn
+	pop af
 	ret nz
 	ld a, $12
 	jp ApplyDamageMod
@@ -1569,9 +1668,7 @@ RunSwitchAbilities:
 	ret
 
 RegeneratorAbility:
-	farcall CheckFullHP_b
-	ld a, b
-	and a
+	farcall CheckFullHP
 	ret z
 	call ShowAbilityActivation
 	farcall GetThirdMaxHP
@@ -1582,26 +1679,9 @@ RegeneratorAbility:
 	jp UpdateEnemyMonInParty
 
 AbilityJumptable:
-; hl = jumptable, a = ability. Returns z if no jump was made, nz otherwise
-	ld b, a
-.loop
-	ld a, [hli]
-	cp -1
-	ret z
-	cp b
-	jr z, .got_ability
-	inc hl
-	inc hl
-	jr .loop
-.got_ability
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call .jp_hl
-	or 1
-	ret
-.jp_hl
-	jp hl
+	; If we at some point make the AI learn abilities, keep this.
+	; For now it just jumps to the general jumptable function
+	jp BattleJumptable
 
 DisableAnimations:
 	ld a, 1
@@ -1616,8 +1696,7 @@ EnableAnimations:
 ShowEnemyAbilityActivation::
 	call SwitchTurn
 	call ShowAbilityActivation
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 ShowAbilityActivation::
 	push bc
 	push de
@@ -1640,7 +1719,6 @@ RunOverworldPickupAbility::
 	ret z ; no Pokémon in party?
 .loop
 	dec a
-	ret c
 	cp $ff
 	ret z
 
@@ -1670,7 +1748,7 @@ RunOverworldPickupAbility::
 	call Random
 	cp 1 + (10 percent)
 	ld a, [CurPartyMon]
-	jr c, .loop
+	jr nc, .loop
 
 	call .Pickup
 	ld a, [CurPartyMon]

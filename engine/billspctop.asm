@@ -32,8 +32,7 @@ _BillsPC: ; e3fd
 	call PrintText
 	pop af
 	ld [Options1], a
-	call LoadFontsBattleExtra
-	ret
+	jp LoadFontsBattleExtra
 
 .Text_What: ; 0xe43a
 	; What?
@@ -41,8 +40,7 @@ _BillsPC: ; e3fd
 	db "@"
 
 .LogOut: ; e43f (3:643f)
-	call CloseSubmenu
-	ret
+	jp CloseSubmenu
 
 .UseBillsPC: ; e443 (3:6443)
 	ld hl, .MenuDataHeader
@@ -65,8 +63,7 @@ _BillsPC: ; e3fd
 	ld a, b
 	jr nc, .loop
 .cancel
-	call CloseWindow
-	ret
+	jp CloseWindow
 
 .MenuDataHeader: ; 0xe46f
 	db $40 ; flags
@@ -203,8 +200,7 @@ ClearPCItemScreen: ; e58b
 	lb bc, 4, 18
 	call TextBox
 	call WaitBGMap2
-	call SetPalettes ; load regular palettes?
-	ret
+	jp SetPalettes ; load regular palettes?
 
 CopyBoxmonToTempMon: ; e5bb
 	ld a, [CurPartyMon]
@@ -216,5 +212,4 @@ CopyBoxmonToTempMon: ; e5bb
 	ld a, BANK(sBoxMon1Species)
 	call GetSRAMBank
 	call CopyBytes
-	call CloseSRAM
-	ret
+	jp CloseSRAM

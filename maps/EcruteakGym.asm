@@ -139,11 +139,11 @@ EcruteakGymGuyScript:
 	end
 
 EcruteakGymStatue:
+	trainertotext MORTY, 1, $1
 	checkflag ENGINE_FOGBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	trainertotext MORTY, 1, $1
 	checkcode VAR_BADGES
 	if_greater_than 11, .LyraToo
 	jumpstd gymstatue2

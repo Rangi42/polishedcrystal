@@ -40,8 +40,7 @@ CheckWarpFacingDown: ; 149c6
 	ld de, 1
 	ld hl, .blocks
 	ld a, [PlayerStandingTile]
-	call IsInArray
-	ret
+	jp IsInArray
 ; 149d3
 
 .blocks ; 149d3
@@ -61,8 +60,7 @@ CheckGrassCollision:: ; 149dd
 	ld a, [PlayerStandingTile]
 	ld hl, .blocks
 	ld de, 1
-	call IsInArray
-	ret
+	jp IsInArray
 ; 149ea
 
 .blocks ; 149ea
@@ -83,8 +81,7 @@ CheckCutCollision: ; 149f5
 	ld a, c
 	ld hl, .blocks
 	ld de, 1
-	call IsInArray
-	ret
+	jp IsInArray
 ; 14a00
 
 .blocks ; 14a00

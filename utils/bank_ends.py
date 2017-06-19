@@ -32,7 +32,7 @@ for bank, end, space in zip(range(num_banks), bank_ends, bank_space):
 	print('Bank ${:02x}: ${:04x} (${:04x})'.format(bank, end, space))
 print()
 
-free_banks = sorted(range(num_banks), key = bank_space.__getitem__, reverse=True)
+free_banks = sorted(range(num_banks), key = bank_space.__getitem__, reverse = True)
 for bank in free_banks:
 	space = bank_space[bank]
 	print('Bank ${:02x} has ${:04x} bytes of free space'.format(bank, space))
@@ -41,4 +41,4 @@ print()
 total_size = bank_diff * num_banks
 free_space = sum(bank_space)
 pct_free = free_space * 100.0 / total_size
-print('Free space: {:d}/{:d} ({:.2f}%)'.format(free_space, total_size, pct_free))
+print('Free space: {:.0f}/{:.0f} ({:.2f}%)'.format(free_space, total_size, pct_free))

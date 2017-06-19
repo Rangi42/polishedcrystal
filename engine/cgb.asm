@@ -215,8 +215,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	ld a, $5
 	call FarCopyWRAM
 
-	call ApplyAttrMap
-	ret
+	jp ApplyAttrMap
 ; 8e85
 
 
@@ -732,7 +731,7 @@ _CGB_TrainerCard: ; 9289
 	lb bc, 7, 5
 	ld a, [PlayerGender]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, $0 ; not xor a; preserve carry flag
 	jr z, .got_gender2
 	ld a, $1
 .got_gender2
@@ -847,7 +846,7 @@ _CGB_TrainerCard2:
 	lb bc, 7, 5
 	ld a, [PlayerGender]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, $0 ; not xor a; preserve carry flag
 	jr z, .got_gender2
 	ld a, $1
 .got_gender2
@@ -1012,8 +1011,7 @@ endr
 
 	call WipeAttrMap
 	call ApplyAttrMap
-	call ApplyPals
-	ret
+	jp ApplyPals
 ; 9521
 
 .GameFreakLogoPalette:
@@ -1045,8 +1043,7 @@ _CGB_TradeTube: ; 9555
 	ld hl, .TradeTubeBluePalette
 	call LoadHLPaletteIntoDE
 
-	call WipeAttrMap
-	ret
+	jp WipeAttrMap
 ; 9578
 
 .TradeTubeBluePalette:

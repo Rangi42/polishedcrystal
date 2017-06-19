@@ -117,9 +117,9 @@
 	charmap "z",        $b9
 
 	charmap "é",        $ba
-	charmap "É",        $bb
+	charmap "É",        $bb ; unused
 	charmap "á",        $bc
-	charmap "ê",        $bd
+	charmap "ê",        $bd ; unused
 	charmap "í",        $be
 	charmap "ó",        $bf
 

@@ -148,5 +148,4 @@ ComputeHPBarPixels: ; c699
 AnimateHPBar: ; c6e0
 	call WaitBGMap
 	call _AnimateHPBar
-	call WaitBGMap
-	ret
+	jp WaitBGMap

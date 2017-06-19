@@ -544,8 +544,7 @@ SpecialMapMusic:: ; 3d62
 GetMapMusic:: ; 3d97
 	call SpecialMapMusic
 	ret c
-	call GetMapHeaderMusic
-	ret
+	jp GetMapHeaderMusic
 ; 3d9f
 
 CheckSFX:: ; 3dde

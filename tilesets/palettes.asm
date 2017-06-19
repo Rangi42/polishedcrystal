@@ -3,8 +3,7 @@ LoadBlindingFlashPalette:: ; 49409
 	ld de, UnknBGPals + 7 palettes
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 ; 49418
 
 BlindingFlashPalette: ; 49418
@@ -705,8 +704,7 @@ endr
 	hlcoord 2, 17, AttrMap
 	ld a, $3
 	ld bc, 6
-	call ByteFill
-	ret
+	jp ByteFill
 ; 49811
 
 LoadLinkTradePalette: ; 49811
@@ -723,8 +721,7 @@ LinkTradePalette:
 INCLUDE "tilesets/link_trade.pal"
 
 InitLinkTradePalMap: ; 49856
-	call _InitLinkTradePalMap
-	ret
+	jp _InitLinkTradePalMap
 ; 4985a
 
 LoadSpecialMapOBPalette:
@@ -739,8 +736,7 @@ LoadSpecialMapOBPalette:
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
 	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 .not_vermilion_gym:
 	ld a, [MapGroup]
@@ -785,8 +781,7 @@ LoadSpecialMapOBPalette:
 	ld a, $5
 	ld de, UnknOBPals + 6 palettes
 	ld bc, 1 palettes
-	call FarCopyWRAM
-	ret
+	jp FarCopyWRAM
 
 .not_shamouti_island:
 	ld a, [wTileset]

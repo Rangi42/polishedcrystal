@@ -65,8 +65,7 @@ NPCTrade:: ; fcba8
 	ld a, TRADE_COMPLETE
 
 .done
-	call PrintTradeText
-	ret
+	jp PrintTradeText
 ; fcc07
 
 .TradeAnimation: ; fcc07
@@ -80,8 +79,7 @@ NPCTrade:: ; fcba8
 	ld [wcf64], a
 	pop af
 	ld [wJumptableIndex], a
-	call ReturnToMapWithSpeechTextbox
-	ret
+	jp ReturnToMapWithSpeechTextbox
 ; fcc23
 
 TradeFlagAction: ; fcc4a
@@ -298,8 +296,7 @@ endr
 
 Trade_GetAttributeOfCurrentPartymon: ; fcdd7
 	ld a, [CurPartyMon]
-	call AddNTimes
-	ret
+	jp AddNTimes
 ; fcdde
 
 Trade_GetAttributeOfLastPartymon: ; fcdde
@@ -322,8 +319,7 @@ GetTradeMonName: ; fcde8
 
 CopyTradeName: ; fcdf4
 	ld bc, NAME_LENGTH
-	call CopyBytes
-	ret
+	jp CopyBytes
 ; fcdfb
 
 Trade_CopyTwoBytes: ; fce0f
@@ -400,9 +396,9 @@ ENDM
 
 	; OT names have 3 characters less padding so the total struct is 31 bytes
 	; Goldenrod City
-	npctrade 0, PHANPY,     DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   DUSK_BALL,    SITRUS_BERRY, 37460, "Mike@@@@"
+	npctrade 0, ABRA,       MACHOP,     "Muscle@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   LEVEL_BALL,   SITRUS_BERRY, 37460, "Mike@@@@"
 	; Violet City
-	npctrade 0, TEDDIURSA,  ELEKID,     "Plug@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | HASTY,   MALE,   PREMIER_BALL, PERSIM_BERRY, 48926, "Kyle@@@@"
+	npctrade 0, POLIWAG,    DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   PREMIER_BALL, PERSIM_BERRY, 48926, "Kyle@@@@"
 	; Olivine City
 	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   HEAVY_BALL,   SILK_SCARF,   29189, "Tim@@@@@"
 	; Blackthorn City
@@ -412,7 +408,9 @@ ENDM
 	; Route 14
 	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, HEAL_BALL,    LUCKY_EGG,    26491, "Kim@@@@@"
 	; Goldenrod Harbor
-	npctrade 0, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
+	npctrade 1, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
+	; Ecruteak City
+	npctrade 0, FARFETCH_D, DODUO,      "Clarence@@@", $EE, $EE, $EE, HIDDEN_ABILITY | HASTY,   MALE,   FAST_BALL,    CHERI_BERRY,  43972, "Hari@@@@"
 ; fcf38
 
 
@@ -431,8 +429,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call PrintText
-	ret
+	jp PrintText
 ; fcf53
 
 TradeTexts: ; fcf53
