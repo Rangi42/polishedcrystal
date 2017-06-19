@@ -491,7 +491,17 @@ PlayerMetronomeCount::
 EnemyMetronomeCount::
 	ds 1
 
-	ds 16 ; unused
+; Stores enemy struct data temporarily when checking non-current mons
+AITempAbility:
+	ds 1
+AITempItem:
+	ds 1
+AITempType1:
+	ds 1
+AITempType2:
+	ds 1
+
+	ds 14 ; unused
 
 BattleScriptBufferLoc:: ; c6b2
 	ds 2
