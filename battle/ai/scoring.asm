@@ -1484,9 +1484,9 @@ AI_Smart_Encore: ; 38c3b
 	jr z, .asm_38c68
 
 	push hl
-	ld a, [wEnemyMoveStruct + MOVE_TYPE]
-	ld hl, EnemyMonType1
-	predef CheckTypeMatchup
+	call SetPlayerTurn
+	farcall BattleCheckTypeMatchup
+	call SetEnemyTurn
 
 	pop hl
 	ld a, [wd265]

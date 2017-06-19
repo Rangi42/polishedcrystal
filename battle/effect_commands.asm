@@ -1365,19 +1365,15 @@ BattleCommand_Stab: ; 346d2
 	ret
 
 
-BattleCheckTypeMatchup: ; 347c8
-	ld hl, EnemyMonType1
+BattleCheckTypeMatchup:
 	ld a, [hBattleTurn]
 	and a
+	ld hl, EnemyMonType1
 	jr z, CheckTypeMatchup
 	ld hl, BattleMonType1
-
 	; fallthrough
-; 347d3
-
 CheckTypeMatchup:
-; FIXME: Broken in AI usage! (assumes placing move type in a will work, it wont)
-; wrapper that handles ability immunities, because type matchups take predecence,
+; Wrapper that handles ability immunities, because type matchups take predecence,
 ; this matters for Ground pokémon with Lightning Rod (and Trace edge-cases).
 ; Yes, Lightning Rod is useless on ground types since GSC has no doubles.
 	push hl
