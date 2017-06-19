@@ -559,7 +559,6 @@ MoveDisabled: ; 3438d
 
 ; 343a5
 
-
 HitConfusion: ; 343a5
 
 	ld hl, HurtItselfText
@@ -3444,7 +3443,6 @@ HailDefenseBoost:
 BattleCommand_StoreEnergy:
 BattleCommand_UnleashEnergy:
 	jp EndMoveEffect
-BattleCommand_BeatUp:
 BattleCommand_PsychUp:
 BattleCommand_FrustrationPower:
 BattleCommand_Present:
@@ -8635,32 +8633,106 @@ BattleCommand_GetMagnitude: ; 37991
 	db 255, 150, 10
 ; 379c9
 
+CheckAnyOtherAliveMons:
+; These return nz if any is alive
+	ld a, [hBattleTurn]
+	and a
+	jr nz, CheckAnyOtherAliveEnemyMons
+	; fallthrough
+CheckAnyOtherAlivePartyMons:
+	ld hl, PartyMon1HP
+	ld de, CurPartyMon
+	ld a, [PartyCount]
+	jr DoCheckAnyOtherAliveMons
+CheckAnyOtherAliveEnemyMons:
+	ld a, [wBattleMode]
+	dec a
+	ret z
+	ld hl, OTPartyMon1HP
+	ld de, CurOTMon
+	ld a, [OTPartyCount]
+	; fallthrough
+DoCheckAnyOtherAliveMons:
+	ld b, a
+	ld a, [de]
+	ld e, a
+	ld d, b
+	inc e
+	; - 1 to account for the hl++
+	ld bc, PARTYMON_STRUCT_LENGTH - 1
 
-BattleCommand_BatonPass: ; 379c9
-; batonpass
+.loop
+	ld a, [hli]
+	or [hl]
+	jr z, .not_alive
+
+	; Ignore current mon
+	dec e
+	jr z, .not_alive2
+	ret
+.not_alive
+	dec e
+.not_alive2
+	add hl, bc
+	dec d
+	jr nz, .loop
+	ret
+
+BattleCommand_SwitchOut:
+	call CheckAnyOtherAliveMons
+	ret z
+	call UpdateUserInParty
+	farcall SlideUserPicOut
 
 	ld a, [hBattleTurn]
 	and a
-	jp nz, .Enemy
+	jr nz, .enemy
 
+	; Piggyback on Baton Pass routines
+	call DoPlayerBatonPass
 
-; Need something to switch to
-	call CheckAnyOtherAlivePartyMons
+	; Baton Pass routines preserve some stuff, get rid of it
+	; unless we fainted
+	ld hl, BattleMonHP
+	ld a, [hli]
+	or [hl]
+	ret z
+
+	farcall NewBattleMonStatus
+	farcall ResetPlayerStatLevels
+	ret
+.enemy
+	call DoEnemyBatonPass
+	ld hl, EnemyMonHP
+	ld a, [hli]
+	or [hl]
+	ret z
+
+	farcall NewEnemyMonStatus
+	farcall ResetEnemyStatLevels
+	ret
+
+BattleCommand_BatonPass:
+	call CheckAnyOtherAliveMons
 	jp z, FailedBatonPass
 
-	call UpdateBattleMonInParty
 	call AnimateCurrentMove
-
-	ld c, 50
+	ld c, 30
 	call DelayFrames
+	call UpdateUserInParty
 
-; Transition into switchmon menu
+	ld a, [hBattleTurn]
+	and a
+	jr nz, DoEnemyBatonPass
+	; fallthrough
+DoPlayerBatonPass:
+	; Transition into switchmon menu
 	call LoadStandardMenuDataHeader
 	farcall SetUpBattlePartyMenu_NoLoop
 
 	farcall ForcePickSwitchMonInBattle
 
-; Return to battle scene
+	; Return to battle scene
 	call ClearPalettes
 	farcall _LoadBattleFontsHPBar
 	call CloseWindow
@@ -8676,24 +8748,12 @@ BattleCommand_BatonPass: ; 379c9
 	ld hl, PassedBattleMonEntrance
 	call CallBattleCore
 
-	jp ResetBatonPassStatus
+	jr ResetBatonPassStatus
 
-
-.Enemy:
-
-; Wildmons don't have anything to switch to
-	ld a, [wBattleMode]
-	dec a ; WILDMON
-	jp z, FailedBatonPass
-
-	call CheckAnyOtherAliveEnemyMons
-	jp z, FailedBatonPass
-
-	call UpdateEnemyMonInParty
-	call AnimateCurrentMove
+DoEnemyBatonPass:
 	call BatonPass_LinkEnemySwitch
 
-; Passed enemy PartyMon entrance
+	; Passed enemy PartyMon entrance
 	xor a
 	ld [wEnemySwitchMonIndex], a
 	ld hl, EnemySwitch_SetMode
@@ -8713,10 +8773,27 @@ BattleCommand_BatonPass: ; 379c9
 
 	jr ResetBatonPassStatus
 
-; 37a67
+ResetBatonPassStatus:
+; Reset status changes that aren't passed by Baton Pass.
+	; Disable isn't passed.
+	call ResetActorDisable
+	farcall BreakAttraction
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_TRANSFORMED, [hl]
+	res SUBSTATUS_ENCORED, [hl]
 
+	; New mon hasn't used a move yet.
+	ld a, BATTLE_VARS_LAST_MOVE
+	call GetBattleVarAddr
+	ld [hl], 0
 
-BatonPass_LinkPlayerSwitch: ; 37a67
+	xor a
+	ld [wPlayerWrapCount], a
+	ld [wEnemyWrapCount], a
+	ret
+
+BatonPass_LinkPlayerSwitch:
 	ld a, [wLinkMode]
 	and a
 	ret z
@@ -8733,10 +8810,7 @@ BatonPass_LinkPlayerSwitch: ; 37a67
 	ld [wPlayerAction], a
 	ret
 
-; 37a82
-
-
-BatonPass_LinkEnemySwitch: ; 37a82
+BatonPass_LinkEnemySwitch:
 	ld a, [wLinkMode]
 	and a
 	ret z
@@ -8761,106 +8835,9 @@ BatonPass_LinkEnemySwitch: ; 37a82
 .switch
 	jp CloseWindow
 
-; 37aab
-
-
-FailedBatonPass: ; 37aab
+FailedBatonPass:
 	call AnimateFailedMove
 	jp PrintButItFailed
-
-; 37ab1
-
-
-ResetBatonPassStatus: ; 37ab1
-; Reset status changes that aren't passed by Baton Pass.
-
-	; Disable isn't passed.
-	call ResetActorDisable
-
-	; Attraction isn't passed.
-	ld hl, PlayerSubStatus1
-	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, EnemySubStatus1
-	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, PlayerSubStatus2
-
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_TRANSFORMED, [hl]
-	res SUBSTATUS_ENCORED, [hl]
-
-	; New mon hasn't used a move yet.
-	ld a, BATTLE_VARS_LAST_MOVE
-	call GetBattleVarAddr
-	ld [hl], 0
-
-	xor a
-	ld [wPlayerWrapCount], a
-	ld [wEnemyWrapCount], a
-	ret
-
-; 37ae9
-
-
-CheckAnyOtherAlivePartyMons: ; 37ae9
-	ld hl, PartyMon1HP
-	ld a, [PartyCount]
-	ld d, a
-	ld a, [CurBattleMon]
-	ld e, a
-	jr CheckAnyOtherAliveMons
-
-; 37af6
-
-
-CheckAnyOtherAliveEnemyMons: ; 37af6
-	ld hl, OTPartyMon1HP
-	ld a, [OTPartyCount]
-	ld d, a
-	ld a, [CurOTMon]
-	ld e, a
-
-	; fallthrough
-; 37b01
-
-CheckAnyOtherAliveMons: ; 37b01
-; Check for nonzero HP starting from partymon
-; HP at hl for d partymons, besides current mon e.
-
-; Return nz if any are alive.
-
-	xor a
-	ld b, a
-	ld c, a
-.loop
-	ld a, c
-	cp d
-	jr z, .done
-	cp e
-	jr z, .next
-
-	ld a, [hli]
-	or b
-	ld b, a
-	ld a, [hld]
-	or b
-	ld b, a
-
-.next
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	inc c
-	jr .loop
-
-.done
-	ld a, b
-	and a
-	ret
-
-; 37b1d
-
 
 BattleCommand_Pursuit: ; 37b1d
 ; pursuit

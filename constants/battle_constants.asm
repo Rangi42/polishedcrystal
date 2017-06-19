@@ -521,7 +521,7 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	const EFFECT_CONVERSION2
 	const EFFECT_MIRROR_MOVE
 	const EFFECT_SKULL_BASH
-	const EFFECT_BEAT_UP
+	const EFFECT_SWITCH_HIT
 
 ; Battle vars used in home/battle.asm
 	const_def

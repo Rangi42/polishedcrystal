@@ -158,4 +158,4 @@
 	dw Conversion2
 	dw MirrorMove
 	dw SkullBash
-	dw BeatUp
+	dw SwitchHit

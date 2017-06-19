@@ -77,26 +77,16 @@ SwitchTurn::
 	ld [hBattleTurn], a
 	ret
 
-UpdateOpponentInParty:: ; 398e
+UpdateUserInParty::
 	ld a, [hBattleTurn]
 	and a
-	jr z, UpdateEnemyMonInParty
-	jr UpdateBattleMonInParty
-; 3995
-
-UpdateUserInParty:: ; 3995
-	ld a, [hBattleTurn]
-	and a
-	jr z, UpdateBattleMonInParty
-	jr UpdateEnemyMonInParty
-; 399c
-
-UpdateBattleMonInParty:: ; 399c
+	jr nz, UpdateEnemyMonInParty
+	; fallthrough
+UpdateBattleMonInParty::
 ; Update level, status, current HP
-
 	ld a, [CurBattleMon]
-
-UpdateBattleMon:: ; 399f
+	; fallthrough
+UpdateBattleMon::
 	ld hl, PartyMon1Level
 	call GetPartyLocation
 
@@ -105,11 +95,13 @@ UpdateBattleMon:: ; 399f
 	ld hl, BattleMonLevel
 	ld bc, BattleMonMaxHP - BattleMonLevel
 	jp CopyBytes
-; 39b0
 
-UpdateEnemyMonInParty:: ; 39b0
-; Update level, status, current HP
-
+UpdateOpponentInParty::
+	ld a, [hBattleTurn]
+	and a
+	jr nz, UpdateBattleMonInParty
+	; fallthrough
+UpdateEnemyMonInParty::
 ; No wildmons.
 	ld a, [wBattleMode]
 	dec a
@@ -124,8 +116,6 @@ UpdateEnemyMonInParty:: ; 39b0
 	ld hl, EnemyMonLevel
 	ld bc, EnemyMonMaxHP - EnemyMonLevel
 	jp CopyBytes
-; 39c9
-
 
 RefreshBattleHuds:: ; 39c9
 	call UpdateBattleHuds

@@ -85,9 +85,7 @@ DoBattle: ; 3c000
 	ld a, [hl]
 	ld [CurPartySpecies], a
 	ld [TempBattleMonSpecies], a
-	hlcoord 1, 5
-	ld a, 9
-	call SlideBattlePicOut
+	call SlidePlayerPicOut
 	call LoadTileMapToTempTileMap
 	call ResetBattleParticipants
 	call InitBattleMon
@@ -124,8 +122,6 @@ DoBattle: ; 3c000
 .tutorial_debug
 	jp BattleMenu
 ; 3c0e5
-
-
 
 WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 	call Call_LoadTempTileMapToTileMap
@@ -3138,7 +3134,19 @@ MonFaintedAnimation: ; 3d444
 	db "       @"
 ; 3d490
 
-
+SlideUserPicOut:
+	ld a, [hBattleTurn]
+	and a
+	jr nz, SlideEnemyPicOut
+	; fallthrough
+SlidePlayerPicOut:
+	hlcoord 1, 5
+	ld a, 9
+	jr SlideBattlePicOut
+SlideEnemyPicOut:
+	hlcoord 18, 0
+	ld a, 8
+	; fallthrough
 SlideBattlePicOut: ; 3d490
 	ld [hMapObjectIndexBuffer], a
 	ld c, a
@@ -3293,9 +3301,7 @@ ResetEnemyBattleVars: ; 3d557
 	ld [wEnemyItemState], a
 	xor a
 	ld [wPlayerWrapCount], a
-	hlcoord 18, 0
-	ld a, 8
-	call SlideBattlePicOut
+	call SlideEnemyPicOut
 	call EmptyBattleTextBox
 	jp LoadStandardMenuDataHeader
 ; 3d57a
@@ -3571,9 +3577,7 @@ FinalPkmnMusicAndAnimation:
 	call EmptyBattleTextBox
 	ld c, 20
 	call DelayFrames
-	hlcoord 18, 0
-	ld a, 8
-	call SlideBattlePicOut
+	call SlideEnemyPicOut
 	; ...play the final Pokémon music...
 	call IsJohtoGymLeader
 	jr nc, .no_music
@@ -3596,9 +3600,7 @@ FinalPkmnMusicAndAnimation:
 	; ...and return the Pokémon
 	call EmptyBattleTextBox
 	call WaitBGMap
-	hlcoord 18, 0
-	ld a, 8
-	call SlideBattlePicOut
+	call SlideEnemyPicOut
 	ld c, 10
 	call DelayFrames
 	call FinalPkmnSlideInEnemyMonFrontpic

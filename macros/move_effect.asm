@@ -164,7 +164,7 @@ endm
 	command skipsuncharge           ; 9d
 	command thunderaccuracy         ; 9e
 	command teleport                ; 9f
-	command beatup                  ; a0
+	command switchout               ; a0
 	command ragedamage              ; a1
 	command resettypematchup        ; a2
 	command allstatsup              ; a3

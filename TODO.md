@@ -122,8 +122,6 @@ Out-of-battle effects:
 
 ## Move effects
 
-* U-turn switches out
-* Volt Switch switches out
 * Sucker Punch fails if foe is not attacking
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
