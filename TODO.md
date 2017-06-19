@@ -192,8 +192,6 @@ Some of these may never be added; they're just suggestions.
 * More music
    * R/S/E Route 119
    * R/S/E Route 120
-   * B/W Black City (for Silph Co.)
-   * B/W Battle! Elite Four (for Caitlin)
    * S/M Malie City (Day) (for Shamouti Shrine)
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * 60 FPS via [doublespeed](https://github.com/FredrIQ/pokecrystal/tree/doublespeed) mode
@@ -204,7 +202,7 @@ Some of these may never be added; they're just suggestions.
 * Inverse Battles
 * Battle Factory
 * Medals for achievements
-* Something like Habitat Lists or DexNav via Prof. Oak's PC
+* Something like Habitat Lists or DexNav via the Town Map
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
