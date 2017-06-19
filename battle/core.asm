@@ -3322,196 +3322,13 @@ AddBattleParticipant: ; 3d581
 	predef_jump FlagPredef
 ; 3d599
 
-FindPkmnInOTPartyToSwitchIntoBattle: ; 3d599
-	ld b, $ff
-	ld a, $1
-	ld [Buffer1], a
-	ld [Buffer2], a
-.loop
-	ld hl, Buffer1
-	sla [hl]
-	inc hl
-	sla [hl]
-	inc b
-	ld a, [OTPartyCount]
-	cp b
-	jp z, ScoreMonTypeMatchups
-	ld a, [CurOTMon]
-	cp b
-	jr z, .discourage
-	ld hl, OTPartyMon1HP
-	push bc
-	ld a, b
-	call GetPartyLocation
-	ld a, [hli]
-	ld c, a
-	ld a, [hl]
-	or c
-	pop bc
-	jr z, .discourage
-	call LookUpTheEffectivenessOfEveryMove
-	call IsThePlayerPkmnTypesEffectiveAgainstOTPkmn
-	jr .loop
-
-.discourage
-	ld hl, Buffer2
-	set 0, [hl]
-	jr .loop
-; 3d5d7
-
-LookUpTheEffectivenessOfEveryMove: ; 3d5d7
-	push bc
-	ld hl, OTPartyMon1Moves
-	ld a, b
-	call GetPartyLocation
-	pop bc
-	ld e, NUM_MOVES + 1
-.loop
-	dec e
-	jr z, .done
-	ld a, [hli]
-	and a
-	jr z, .done
-	push hl
-	push de
-	push bc
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld de, wEnemyMoveStruct
-	ld a, BANK(Moves)
-	call FarCopyBytes
-	call SetEnemyTurn
-	farcall BattleCheckTypeMatchup
-	pop bc
-	pop de
-	pop hl
-	ld a, [wd265] ; Get The Effectiveness Modifier
-	cp 10 + 1 ; 1.0 + 0.1
-	jr c, .loop
-	ld hl, Buffer1
-	set 0, [hl]
-	ret
-.done
-	ret
-; 3d618
-
-IsThePlayerPkmnTypesEffectiveAgainstOTPkmn: ; 3d618
-; Calculates the effectiveness of the types of the PlayerPkmn
-; against the OTPkmn
-	push bc
-	ld hl, OTPartyCount
-	ld a, b
-	inc a
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	dec a
-	ld hl, BASEMON_TYPES
-	ld bc, BASEMON_STRUCT_LENGTH
-	call AddNTimes
-	ld de, EnemyMonType
-	ld bc, 2
-	ld a, BANK(BaseData)
-	call FarCopyBytes
-	ld a, [BattleMonType1]
-	ld [wPlayerMoveStruct + MOVE_TYPE], a
-	call SetPlayerTurn
-	farcall BattleCheckTypeMatchup
-	ld a, [wd265]
-	cp 10 + 1 ; 1.0 + 0.1
-	jr nc, .super_effective
-	ld a, [BattleMonType2]
-	ld [wPlayerMoveStruct + MOVE_TYPE], a
-	farcall BattleCheckTypeMatchup
-	ld a, [wd265]
-	cp 10 + 1 ; 1.0 + 0.1
-	jr nc, .super_effective
-	pop bc
-	ret
-
-.super_effective
-	pop bc
-	ld hl, Buffer1
-	bit 0, [hl]
-	jr nz, .reset
-	inc hl
-	set 0, [hl]
-	ret
-
-.reset
-	res 0, [hl]
-	ret
-; 3d672
-
-ScoreMonTypeMatchups: ; 3d672
-.loop1
-	ld hl, Buffer1
-	sla [hl]
-	inc hl
-	sla [hl]
-	jr nc, .loop1
-	ld a, [OTPartyCount]
+FindPkmnInOTPartyToSwitchIntoBattle:
+	farcall GetSwitchScores
+	ld a, [wEnemySwitchMonParam]
 	ld b, a
-	ld c, [hl]
-.loop2
-	sla c
-	jr nc, .okay
-	dec b
-	jr z, .loop5
-	jr .loop2
-
-.okay
-	ld a, [Buffer1]
-	and a
-	jr z, .okay2
-	ld b, $ff
-	ld c, a
-.loop3
-	inc b
-	sla c
-	jr nc, .loop3
-	jr .quit
-
-.okay2
-	ld b, $ff
-	ld a, [Buffer2]
-	ld c, a
-.loop4
-	inc b
-	sla c
-	jr c, .loop4
-	jr .quit
-
-.loop5
-	ld a, [OTPartyCount]
-	ld b, a
-	call BattleRandom
-	and $7
-	cp b
-	jr nc, .loop5
-	ld b, a
-	ld a, [CurOTMon]
-	cp b
-	jr z, .loop5
-	ld hl, OTPartyMon1HP
-	push bc
-	ld a, b
-	call GetPartyLocation
-	pop bc
-	ld a, [hli]
-	ld c, a
-	ld a, [hl]
-	or c
-	jr z, .loop5
-
-.quit
 	ret
-; 3d6ca
 
-LoadEnemyPkmnToSwitchTo: ; 3d6ca
+LoadEnemyPkmnToSwitchTo:
 	; 'b' contains the PartyNr of the Pkmn the AI will switch to
 	ld a, b
 	ld [CurPartyMon], a
@@ -3560,7 +3377,6 @@ LoadEnemyPkmnToSwitchTo: ; 3d6ca
 	ld a, [hl]
 	ld [wEnemyHPAtTimeOfPlayerSwitch + 1], a
 	jp ResetEnemyAbility
-; 3d714
 
 FinalPkmnMusicAndAnimation:
 	; if this is not a link battle...

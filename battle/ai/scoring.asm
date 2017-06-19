@@ -565,32 +565,30 @@ endr
 ; 388a6
 
 
-AI_Smart_Explosion: ; 388a6
+AI_Smart_Explosion:
 ; Selfdestruct, Explosion
-
-; Unless this is the enemy's last Pokemon...
+	; If opponent only has 1 mon left
 	push hl
-	farcall FindAliveEnemyMons
+	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
-	jr nc, .asm_388b7
+	jr nz, .asm_388b7
 
-; ...greatly discourage this move unless this is the player's last Pokemon too.
+	; Then discourage the move unless the player also has 1 mon left
 	push hl
 	call AICheckLastPlayerMon
 	pop hl
 	jr nz, .asm_388c6
 
 .asm_388b7
-; Greatly discourage this move if enemy's HP is above 50%.
+	; Discourage if healthy (50%+)
 	call AICheckEnemyHalfHP
 	jr c, .asm_388c6
 
-; Do nothing if enemy's HP is below 25%.
+	; If <25%, don't discourage
 	call AICheckEnemyQuarterHP
 	ret nc
 
-; If enemy's HP is between 25% and 50%,
-; over 90% chance to greatly discourage this move.
+	; If 25-50%, probably discourage (236/256 of the time)
 	call Random
 	cp 20
 	ret c
@@ -600,7 +598,6 @@ rept 3
 	inc [hl]
 endr
 	ret
-; 388ca
 
 
 AI_Smart_DreamEater: ; 388ca
@@ -1945,7 +1942,7 @@ endr
 	jp nz, AIDiscourageMove
 
 	push hl
-	farcall FindAliveEnemyMons
+	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
 	jr nc, .asm_38eb0
 
@@ -2077,9 +2074,9 @@ endr
 
 AI_Smart_PerishSong: ; 38f4a
 	push hl
-	farcall FindAliveEnemyMons
+	farcall CheckAnyOtherAliveEnemyMons
 	pop hl
-	jr c, .no
+	jr z, .no
 
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a

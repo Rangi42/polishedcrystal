@@ -492,16 +492,12 @@ EnemyMetronomeCount::
 	ds 1
 
 ; Stores enemy struct data temporarily when checking non-current mons
-AITempAbility:
+AITempAbility::
 	ds 1
-AITempItem:
-	ds 1
-AITempType1:
-	ds 1
-AITempType2:
+AITempItem::
 	ds 1
 
-	ds 14 ; unused
+	ds 16 ; unused
 
 BattleScriptBufferLoc:: ; c6b2
 	ds 2

@@ -1413,7 +1413,13 @@ _CheckTypeMatchup: ; 347d3
 	ld hl, PowderMoves
 	call IsInArray
 	jr nc, .skip_powder
-	call CheckIfTargetIsGrassType
+	pop hl
+	push hl
+	ld a, [hli]
+	cp GRASS
+	jp z, .Immune
+	ld a, [hl]
+	cp GRASS
 	jp z, .Immune
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OVERCOAT
@@ -4959,15 +4965,18 @@ SelfInflictDamageToSubstitute: ; 35de0
 
 ; 35e40
 
-UpdateMoveData: ; 35e40
-
+UpdateMoveData:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 	ld d, h
 	ld e, l
 
+	; Don't update if the move doesn't exist
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
+	and a
+	ret z
+
 	ld [CurMove], a
 	ld [wNamedObjectIndexBuffer], a
 
@@ -6586,12 +6595,14 @@ BattleCommand_ForceSwitch: ; 3680f
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
 	jp z, .fail
-	ld a, [hBattleTurn]
-	and a
-	jp nz, .force_player_switch
+	call CheckAnyOtherAliveOpponentMons
+	ret z
 	ld a, [AttackMissed]
 	and a
 	jr nz, .missed
+	ld a, [hBattleTurn]
+	and a
+	jp nz, .force_player_switch
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer
@@ -6625,8 +6636,6 @@ BattleCommand_ForceSwitch: ; 3680f
 	jp .succeed
 
 .trainer
-	call FindAliveEnemyMons
-	jr c, .switch_fail
 	ld a, [wEnemyGoesFirst]
 	and a
 	jr z, .switch_fail
@@ -6680,10 +6689,6 @@ BattleCommand_ForceSwitch: ; 3680f
 	jp .fail
 
 .force_player_switch
-	ld a, [AttackMissed]
-	and a
-	jr nz, .player_miss
-
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .vs_trainer
@@ -6721,9 +6726,6 @@ BattleCommand_ForceSwitch: ; 3680f
 	jr .succeed
 
 .vs_trainer
-	call CheckPlayerHasMonToSwitchTo
-	jr c, .fail
-
 	ld a, [wEnemyGoesFirst]
 	cp $1
 	jr z, .switch_fail
@@ -8640,6 +8642,12 @@ CheckAnyOtherAlivePartyMons:
 	ld de, CurPartyMon
 	ld a, [PartyCount]
 	jr DoCheckAnyOtherAliveMons
+
+CheckAnyOtherAliveOpponentMons:
+	ld a, [hBattleTurn]
+	and a
+	jr nz, CheckAnyOtherAlivePartyMons
+	; fallthrough
 CheckAnyOtherAliveEnemyMons:
 	ld a, [wBattleMode]
 	dec a
