@@ -1,5 +1,4 @@
 NormalHit:
-SuckerPunch: ; TODO: fail if foe is not attacking
 AerialAce:
 Aeroblast:
 AquaTail:
@@ -47,6 +46,28 @@ XScissor:
 	checkobedience
 	usedmovetext
 	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	kingsrock
+	pickpocket
+	endmove
+
+SuckerPunch:
+	checkobedience
+	usedmovetext
+	doturn
+	suckerpunch
 	critical
 	damagestats
 	damagecalc

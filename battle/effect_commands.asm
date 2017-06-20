@@ -2559,6 +2559,31 @@ FailText_CheckOpponentProtect: ; 35157
 
 ; 35165
 
+BattleCommand_SuckerPunch:
+	call CheckOpponentWentFirst
+	jr nz, .failed
+
+	; TODO: Is there a better way to check "player didn't fight"?
+	; Because of how the battle core is designed, a player switch
+	; or item use wont neccessarily imply going first from the
+	; battle move scripts' point of view...
+	ld a, [wPlayerAction]
+	and a
+	jr nz, .failed
+
+	; Now we know that the opponent did pick a move
+	call SwitchTurn
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	push af
+	call SwitchTurn
+	pop af
+	cp STATUS
+	ret nz
+.failed
+	call AnimateFailedMove
+	call TryPrintButItFailed
+	jp EndMoveEffect
 
 BattleCommand_CriticalText: ; 35175
 ; criticaltext

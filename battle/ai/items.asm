@@ -240,7 +240,6 @@ endr
 	res SUBSTATUS_RAGE, [hl]
 
 	xor a
-	ld [EnemySelectedMove], a
 	ld [LastPlayerCounterMove], a
 
 	scf

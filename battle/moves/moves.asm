@@ -33,7 +33,7 @@ else
 endc
 	move GUST,         EFFECT_GUST,               40, FLYING,    100, 35,   0, SPECIAL
 	move WING_ATTACK,  EFFECT_NORMAL_HIT,         60, FLYING,    100, 35,   0, PHYSICAL
-	move SUCKER_PUNCH, EFFECT_PRIORITY_HIT,       70, DARK,      100,  5,   0, PHYSICAL
+	move SUCKER_PUNCH, EFFECT_SUCKER_PUNCH,       70, DARK,      100,  5,   0, PHYSICAL
 if DEF(FAITHFUL)
 	move FLY,          EFFECT_FLY,                90, FLYING,     95, 15,   0, PHYSICAL
 else

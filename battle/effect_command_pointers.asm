@@ -177,3 +177,4 @@ BattleCommandPointers:
 	dw BattleCommand_Burn
 	dw BattleCommand_BounceBack
 	dw BattleCommand_Pickpocket
+	dw BattleCommand_SuckerPunch

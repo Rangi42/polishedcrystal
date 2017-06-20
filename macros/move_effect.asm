@@ -183,6 +183,7 @@ endm
 	command burn                    ; b0
 	command bounceback              ; b1
 	command pickpocket              ; b2
+	command suckerpunch             ; b3
 
 	enum_start -1, -1
 	command endmove

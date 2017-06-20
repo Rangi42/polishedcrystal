@@ -989,6 +989,10 @@ Battle_PlayerFirst: ; 3c664
 	call SetEnemyTurn
 	farcall AI_SwitchOrTryItem
 	push af
+	jr nc, .enemy_used_move
+	ld a, 1
+	ld [wEnemyGoesFirst], a
+.enemy_used_move
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
 	pop bc
 	ld a, [wForcedSwitch]

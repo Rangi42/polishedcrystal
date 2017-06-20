@@ -159,3 +159,4 @@
 	dw MirrorMove
 	dw SkullBash
 	dw SwitchHit
+	dw SuckerPunch
