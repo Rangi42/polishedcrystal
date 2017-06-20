@@ -2575,6 +2575,10 @@ BattleCommand_CriticalText: ; 35175
 	xor a
 	ld [CriticalHit], a
 
+	; Maybe it fainted
+	call HasOpponentFainted
+	jr z, .wait
+
 	; Activate Anger Point here to get proper message order
 	call GetOpponentAbilityAfterMoldBreaker
 	cp ANGER_POINT
@@ -2630,6 +2634,10 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	call StdBattleTextBox
 	pop af
 	ret c
+
+	; Maybe it fainted
+	call HasOpponentFainted
+	ret z
 
 	; Activate Weakness Policy
 	call GetOpponentItemAfterUnnerve
@@ -6461,41 +6469,6 @@ BattleCommand_Teleport: ; 36778
 	jr nz, .failed
 	call CheckIfTrappedByAbility
 	jr z, .failed
-; Only need to check these next things if it's your turn
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy_turn
-; If your level is greater than the opponent's, you run without fail.
-	ld a, [CurPartyLevel]
-	ld b, a
-	ld a, [BattleMonLevel]
-	cp b
-	jr nc, .run_away
-	jr .got_vars
-.enemy_turn
-	ld a, [BattleMonLevel]
-	ld b, a
-	ld a, [CurPartyLevel]
-	cp b
-	jr nc, .run_away
-.got_vars
-; Generate a number between 0 and (YourLevel + TheirLevel).
-	add b
-	ld c, a
-	inc c
-.loop
-	call BattleRandom
-	cp c
-	jr nc, .loop
-; If that number is greater than 4 times your level, run away.
-	srl b
-	srl b
-	cp b
-	jr nc, .run_away
-
-.failed
-	call AnimateFailedMove
-	jp PrintButItFailed
 
 .run_away
 	call UpdateBattleMonInParty
@@ -6513,9 +6486,9 @@ BattleCommand_Teleport: ; 36778
 
 	ld hl, FledFromBattleText
 	jp StdBattleTextBox
-
-; 36804
-
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 CheckIfTrappedByAbility:
 	call _CheckIfTrappedByAbility

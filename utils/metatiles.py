@@ -129,6 +129,7 @@ class PaletteMap(object):
 		'maps/CeruleanCaveB1F.blk': lambda: load_palette('tilesets/cerulean_cave.pal'),
 		'maps/CeruleanGym.blk': lambda: load_palette('tilesets/cerulean_gym.pal'),
 		'maps/CharcoalKiln.blk': lambda: load_palette('tilesets/charcoal_kiln.pal'),
+		'maps/CinnabarLab.blk': lambda: load_palette('tilesets/cinnabar_lab.pal'),
 		'maps/CinnabarVolcano1F.blk': lambda: load_palette('tilesets/cinnabar_volcano.pal'),
 		'maps/CinnabarVolcanoB1F.blk': lambda: load_palette('tilesets/cinnabar_volcano.pal'),
 		'maps/CinnabarVolcanoB2F.blk': lambda: load_palette('tilesets/cinnabar_volcano.pal'),

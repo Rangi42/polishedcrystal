@@ -1061,23 +1061,6 @@ EndUserDestinyBond: ; 3c6fe
 	ret
 ; 3c706
 
-HasUserFainted: ; 3c706
-	ld a, [hBattleTurn]
-	and a
-	jr z, HasPlayerFainted
-HasEnemyFainted: ; 3c70b
-	ld hl, EnemyMonHP
-	jr CheckIfHPIsZero
-
-HasPlayerFainted: ; 3c710
-	ld hl, BattleMonHP
-
-CheckIfHPIsZero: ; 3c713
-	ld a, [hli]
-	or [hl]
-	ret
-; 3c716
-
 HandleResidualDamage:
 	call SetPlayerTurn
 	call CheckSpeed

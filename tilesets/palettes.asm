@@ -86,6 +86,9 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_lightning_island
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
+	ld hl, CinnabarLabPalette
+	cp TILESET_POKEMON_MANSION
+	jp z, .maybe_cinnabar_lab
 	cp TILESET_CELADON_MANSION
 	jp z, .maybe_celadon_mansion_roof
 	cp TILESET_MART
@@ -330,20 +333,20 @@ LoadSpecialMapPalette: ; 494ac
 .maybe_mystri_or_tower
 	ld a, [MapGroup]
 	cp GROUP_MYSTRI_STAGE
-	jp nz, .maybe_embedded_tower
+	jr nz, .maybe_embedded_tower
 	ld a, [MapNumber]
 	cp MAP_MYSTRI_STAGE
-	jp nz, .maybe_embedded_tower
+	jr nz, .maybe_embedded_tower
 	ld hl, MystriStagePalette
 	jp .load_eight_bg_palettes
 
 .maybe_embedded_tower
 	ld a, [MapGroup]
 	cp GROUP_EMBEDDED_TOWER
-	jp nz, .maybe_tin_tower_roof
+	jr nz, .maybe_tin_tower_roof
 	ld a, [MapNumber]
 	cp MAP_EMBEDDED_TOWER
-	jp nz, .maybe_tin_tower_roof
+	jr nz, .maybe_tin_tower_roof
 	ld hl, EmbeddedTowerPalette
 	jp .load_eight_bg_palettes
 
@@ -356,6 +359,16 @@ LoadSpecialMapPalette: ; 494ac
 	jp nz, .do_nothing
 	ld hl, TinTowerRoofPalette
 	jp .load_eight_time_of_day_bg_palettes
+
+.maybe_cinnabar_lab
+	ld a, [MapGroup]
+	cp GROUP_CINNABAR_LAB
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_CINNABAR_LAB
+	jp nz, .do_nothing
+	ld hl, CinnabarLabPalette
+	jp .load_eight_bg_palettes
 
 .maybe_celadon_mansion_roof
 	ld a, [MapGroup]
@@ -593,6 +606,9 @@ INCLUDE "tilesets/embedded_tower.pal"
 
 TinTowerRoofPalette:
 INCLUDE "tilesets/tin_tower_roof.pal"
+
+CinnabarLabPalette:
+INCLUDE "tilesets/cinnabar_lab.pal"
 
 CeladonMansionRoofPalette:
 INCLUDE "tilesets/celadon_mansion_roof.pal"
