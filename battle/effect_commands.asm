@@ -5439,6 +5439,7 @@ SapHealth: ; 36011
 	jr nz, .skip_increase
 	ld c, 1
 .skip_increase
+	call HandleBigRoot
 	; check for Liquid Ooze
 	push bc
 	call GetOpponentAbilityAfterMoldBreaker
@@ -5452,6 +5453,32 @@ SapHealth: ; 36011
 	farcall SubtractHPFromUser
 	ret
 
+HandleBigRoot:
+; Bonus +30% HP drain (or reduction if Liquid Ooze)
+	push bc
+	call GetUserItemAfterUnnerve
+	ld a, b
+	pop bc
+	cp HELD_BIG_ROOT
+	ret nz
+
+	xor a
+	ld hl, hMultiplicand
+	ld [hli], a
+	ld [hl], b
+	inc hl
+	ld [hl], c
+	ld hl, hMultiplier
+	ld [hl], 13
+	call Multiply
+	ld [hl], 10
+	ld b, 4
+	call Divide
+	ld a, [hQuotient + 1]
+	ld b, a
+	ld a, [hQuotient + 2]
+	ld c, a
+	ret
 
 BattleCommand_BurnTarget:
 	xor a

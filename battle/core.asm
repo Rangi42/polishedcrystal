@@ -1180,20 +1180,21 @@ HandleResidualDamage:
 
 	call GetEighthMaxHP
 	call SubtractHPFromUser
+	call SwitchTurn
+	farcall HandleBigRoot
 	ld a, $1
 	ld [hBGMapMode], a
-	ld a, BATTLE_VARS_ABILITY
+	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	cp LIQUID_OOZE
 	jr z, .hurt
-	call RestoreEnemyHP
+	call RestoreHP
 	jr .sap_text
 .hurt
-	farcall ShowAbilityActivation
-	call SwitchTurn
+	farcall ShowEnemyAbilityActivation
 	call SubtractHPFromUser
-	call SwitchTurn
 .sap_text
+	call SwitchTurn
 	ld hl, LeechSeedSapsText
 	call StdBattleTextBox
 .not_seeded

@@ -104,7 +104,6 @@ Out-of-battle effects:
 
 * Ability Cap(sule)
 * Assault Vest
-* Big Root
 * Destiny Knot (In-battle done)
 * Oval Charm
 
