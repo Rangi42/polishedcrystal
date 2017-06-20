@@ -638,12 +638,33 @@ InLoveWithText: ; 0x80ec4
 	prompt
 ; 0x80eda
 
-InfatuationText: ; 0x80eda
+InfatuationText:
 	text "<USER>'s"
 	line "infatuation kept"
 	cont "it from attacking!"
 	prompt
-; 0x80f02
+
+ObliviousPreventedDestinyKnot:
+	text "<USER>'s"
+	line "@"
+	text_from_ram StringBuffer1
+	text ""
+	cont "prevents"
+	cont "@"
+	text_from_ram StringBuffer2
+	text ""
+	cont "infatuating it!"
+	prompt
+
+
+DestinyKnotInfatuatedUser:
+	text "<TARGET>'s"
+	line "@"
+	text_from_ram StringBuffer1
+	text ""
+	cont "infatuated"
+	para "<USER>!"
+	prompt
 
 DisabledMoveText: ; 0x80f02
 	text "<USER>'s"
