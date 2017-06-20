@@ -102,10 +102,6 @@ Out-of-battle effects:
 
 ## Items
 
-In-battle effects:
-
-* Assault Vest
-
 Out-of-battle effects:
 
 * Ability Cap(sule)

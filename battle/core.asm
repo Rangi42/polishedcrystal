@@ -5445,7 +5445,7 @@ MoveSelectionScreen:
 	jr z, .ether_elixer_menu
 	call SetPlayerTurn
 	call CheckUsableMoves
-	ret z ; use Struggle
+	jp nz, .struggle
 	ld hl, BattleMonMoves
 	jr .got_menu_type
 
@@ -5566,50 +5566,21 @@ MoveSelectionScreen:
 	pop af
 	ret nz
 
-	ld hl, BattleMonPP
 	ld a, [wMenuCursorY]
 	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	and $3f
-	jr z, .no_pp_left
-	ld a, [PlayerDisableCount]
-	swap a
-	and $f
+	call CheckUsableMove
 	dec a
-	cp c
+	jr z, .no_pp_left
+	dec a
 	jr z, .move_disabled
-
-	ld a, [wMenuCursorY]
-	ld hl, BattleMonMoves
-	ld c, a
+	dec a
+	jr z, .choiced
+	dec a
+	jr z, .assault_vest
 	ld b, 0
+	ld hl, BattleMonMoves
 	add hl, bc
 	ld a, [hl]
-	ld b, a
-
-	; Some items limit move freedom
-	push bc
-	farcall GetPlayerItem
-	ld a, b
-	pop bc
-
-	cp HELD_CHOICE
-	jr z, .choice_check
-	cp HELD_ASSAULT_VEST
-	jr nz, .ok
-
-	; TODO: Check Assault Vest
-	jr .ok
-.choice_check
-	ld a, [PlayerSelectedMove]
-	and a
-	jr z, .ok
-	cp b
-	jr nz, .choiced
-.ok
-	ld a, b
 	ld [CurPlayerMove], a
 	xor a
 	ret
@@ -5761,7 +5732,16 @@ MoveSelectionScreen:
 	ld a, [wMenuCursorY]
 	ld [wMoveSwapBuffer], a
 	jp MoveSelectionScreen
-; 3e6c8
+
+.struggle
+	ld a, STRUGGLE
+	ld [CurPlayerMove], a
+	ld hl, BattleText_PkmnHasNoMovesLeft
+	call StdBattleTextBox
+	ld c, 60
+	call DelayFrames
+	xor a
+	ret
 
 MoveInfoBox: ; 3e6c8
 	xor a
@@ -5946,115 +5926,124 @@ endr
 	jp PrintNum
 ; 3e786
 
-CheckUsableMoves: ; 3e786
+CheckUsableMoves:
+; Return nz if we have no usable moves
+	ld a, 4
+.loop
+	dec a
+	push af
+	call CheckUsableMove
+	jr z, .usable
+	pop af
+	and a
+	jr nz, .loop
+	inc a
+	ret
+.usable
+	pop af
+	xor a
+	ret
+
+FarCheckUsableMove:
+; Reads/writes to b instead of a for below
+	ld a, b
+	call CheckUsableMove
+	ld b, a
+	ret
+
+CheckUsableMove:
+; Check if move a in the move list is usable. Returns z if usable
+; Note that the first move in the list is move 0, not move 1.
+; If nz, a contains a number describing why it isn't usable:
+; 1 - no PP
+; 2 - disabled
+; 3 - choiced
+; 4 - assault vest on status move
 	push bc
 	push de
 	push hl
 
-	; Usable moves
-	ld e, %1111
-
-	; Zero out moves without PP (empty move slots have 0PP)
+	; Check if we're out of pp
+	ld c, a
+	ld b, 0
 	ld a, [hBattleTurn]
 	and a
 	ld hl, BattleMonPP
 	jr z, .got_pp
 	ld hl, EnemyMonPP
 .got_pp
-	ld b, %01111111
-	ld c, 4
-.pp_loop
-	rlc b
-	ld a, [hli]
+	add hl, bc
+	ld a, [hl]
 	and $3f
-	jr nz, .pp_next
-	ld a, e
-	and b
-	ld e, a
-.pp_next
-	dec c
-	jr nz, .pp_loop
+	ld a, 1
+	jr z, .end
 
-	; Zero out disabled moves
+	; Check Disable
 	ld a, [hBattleTurn]
 	and a
 	ld a, [PlayerDisableCount]
 	jr z, .got_disable_count
 	ld a, [EnemyDisableCount]
 .got_disable_count
-	and a
-	jr z, .disable_done
-	ld b, %01111111
 	swap a
 	and $f
-.disable_loop
-	rlc b
+	jr z, .not_disabled
 	dec a
-	jr nz, .disable_loop
-	ld a, e
-	and b
-	ld e, a
-.disable_done
-	; Item checks
-	push de
+	cp c
+	ld a, 2
+	jr z, .end
+
+.not_disabled
+	; Check items. This requires the actual move so get it into c
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonMoves
+	jr z, .got_moves
+	ld hl, EnemyMonMoves
+.got_moves
+	add hl, bc
+	ld c, [hl]
+	push bc
 	farcall GetUserItem
-	pop de
 	ld a, b
+	pop bc
 	cp HELD_CHOICE
-	jr z, .choiced
+	jr z, .check_choiced
 	cp HELD_ASSAULT_VEST
-	jr nz, .items_done
+	jr nz, .usable
 
 	; Assault Vest check
-	jr .items_done
-.choiced
+	ld hl, Moves + MOVE_CATEGORY
+	ld a, c
+	dec a
+	call GetMoveAttr
+	cp STATUS
+	ld a, 4
+	jr z, .end
+	jr .usable
+.check_choiced
 	; Check if we did a move yet
 	ld a, [hBattleTurn]
 	and a
 	ld a, [PlayerSelectedMove]
-	ld hl, BattleMonMoves
 	jr z, .got_selected_move
 	ld a, [EnemySelectedMove]
-	ld hl, EnemyMonMoves
 .got_selected_move
 	and a
-	jr z, .items_done
-	ld c, a
-	ld b, %10000000
-.choice_loop
-	rlc b
-	ld a, [hli]
+	jr z, .usable
 	cp c
-	jr nz, .choice_loop
-	ld a, e
-	and b
-	ld e, a
-	; fallthrough
-.items_done
-	ld a, e
-	and a
-	jr nz, .end
-
-.force_struggle
-	ld a, [hBattleTurn]
-	xor 1
+	ld a, 3
 	jr z, .end
-	ret z
 
-	; player turn
-	ld a, STRUGGLE
-	ld [CurPlayerMove], a
-	ld hl, BattleText_PkmnHasNoMovesLeft
-	call StdBattleTextBox
-	ld c, 60
-	call DelayFrames
+	; fallthrough
+.usable
 	xor a
 .end
+	and a
 	pop hl
 	pop de
 	pop bc
 	ret
-
 
 ParseEnemyAction: ; 3e7c1
 	ld a, [wEnemyIsSwitching]
@@ -6085,24 +6074,8 @@ ParseEnemyAction: ; 3e7c1
 
 	call SetEnemyTurn
 	call CheckUsableMoves
-	jp z, .struggle
+	jp nz, .struggle
 
-	; Check if we're choice-locked
-	ld a, [EnemySelectedMove]
-	and a
-	jr z, .not_choiced
-	push bc
-	push de
-	push hl
-	farcall GetEnemyItem
-	ld a, b
-	pop hl
-	pop de
-	pop bc
-	cp HELD_CHOICE
-	ld a, [EnemySelectedMove]
-	jr z, .finish
-.not_choiced
 	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	ld a, [LastEnemyMove]
@@ -6123,63 +6096,6 @@ ParseEnemyAction: ; 3e7c1
 .skip_encore
 	call CheckEnemyLockedIn
 	jp nz, ResetVarsForSubstatusRage
-	jr .continue
-
-.continue
-	ld hl, EnemyMonMoves
-	ld de, EnemyMonPP
-	ld b, NUM_MOVES
-.loop
-	ld a, [hl]
-	and a
-	jp z, .struggle
-	ld a, [EnemyDisabledMove]
-	cp [hl]
-	jr z, .disabled
-	ld a, [de]
-	and $3f
-	jr nz, .enough_pp
-
-.disabled
-	inc hl
-	inc de
-	dec b
-	jr nz, .loop
-	jr .struggle
-
-.enough_pp
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .skip_load
-; wild
-.loop2
-	ld hl, EnemyMonMoves
-	call BattleRandom
-	and %11 ; NUM_MOVES - 1
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [EnemyDisableCount]
-	swap a
-	and $f
-	dec a
-	cp c
-	jr z, .loop2
-	ld a, [hl]
-	and a
-	jr z, .loop2
-	ld hl, EnemyMonPP
-	add hl, bc
-	ld b, a
-	ld a, [hl]
-	and $3f
-	jr z, .loop2
-	ld a, c
-	ld [CurEnemyMoveNum], a
-	ld a, b
-
-.finish
-	ld [CurEnemyMove], a
 
 .skip_load
 	call SetEnemyTurn
@@ -6217,8 +6133,9 @@ ParseEnemyAction: ; 3e7c1
 
 .struggle
 	ld a, STRUGGLE
-	jr .finish
-; 3e8c1
+.finish
+	ld [CurEnemyMove], a
+	jr .skip_load
 
 ResetVarsForSubstatusRage: ; 3e8c1
 	xor a

@@ -2,21 +2,16 @@ AIChooseMove: ; 440ce
 ; Score each move in EnemyMonMoves starting from Buffer1. Lower is better.
 ; Pick the move with the lowest score.
 
-; Wildmons attack at random.
-	ld a, [wBattleMode]
-	dec a
-	ret z
-
+	; Linking is handled elsewhere
 	ld a, [wLinkMode]
 	and a
 	ret nz
 
-; No use picking a move if there's no choice.
+	; No use picking a move if there's no choice.
 	farcall CheckEnemyLockedIn
 	ret nz
 
-
-; The default score is 20. Unusable moves are given a score of 80.
+	; The default score is 20
 	ld a, 20
 	ld hl, Buffer1
 rept 3
@@ -24,43 +19,25 @@ rept 3
 endr
 	ld [hl], a
 
-; Don't pick disabled moves.
-	ld a, [EnemyDisabledMove]
+	; Unusable moves are set at 80
+	ld hl, Buffer1 + 3
+	ld a, 4
+.unusable_loop
+	dec a
+	push af
+	farcall FarCheckUsableMove
+	pop af
+	jr z, .unusable_next
+	ld [hl], 80
+.unusable_next
+	dec hl
 	and a
-	jr z, .CheckPP
+	jr nz, .unusable_loop
 
-	ld hl, EnemyMonMoves
-	ld c, 0
-.CheckDisabledMove:
-	cp [hl]
-	jr z, .ScoreDisabledMove
-	inc c
-	inc hl
-	jr .CheckDisabledMove
-.ScoreDisabledMove:
-	ld hl, Buffer1
-	ld b, 0
-	add hl, bc
-	ld [hl], 80
-
-; Don't pick moves with 0 PP.
-.CheckPP:
-	ld hl, Buffer1 - 1
-	ld de, EnemyMonPP
-	ld b, 0
-.CheckMovePP:
-	inc b
-	ld a, b
-	cp EnemyMonMovesEnd - EnemyMonMoves + 1
-	jr z, .ApplyLayers
-	inc hl
-	ld a, [de]
-	inc de
-	and $3f
-	jr nz, .CheckMovePP
-	ld [hl], 80
-	jr .CheckMovePP
-
+	; Wildmons choose moves at random
+	ld a, [wBattleMode]
+	dec a
+	jr z, .DecrementScores
 
 ; Apply AI scoring layers depending on the trainer class.
 .ApplyLayers:
