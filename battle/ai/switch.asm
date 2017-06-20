@@ -44,11 +44,14 @@ GetSwitchScores:
 	ld bc, PartyMon1 - PartyMon1Item
 	add hl, bc
 	ld a, [hl]
+
+	; This makes GetAbility "restore" to the current species when done
+	ld [CurSpecies], a
 	ld bc, PartyMon1Ability - PartyMon1
 	add hl, bc
 	ld c, a
 	ld b, [hl]
-	farcall GetAbility ; calls GetBaseData
+	farcall GetAbility
 	ld a, b
 	ld [EnemyAbility], a
 
