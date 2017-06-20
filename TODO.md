@@ -108,7 +108,6 @@ Out-of-battle effects:
 * Assault Vest
 * Big Root
 * Destiny Knot (In-battle done)
-* Mental Herb
 * Oval Charm
 * Shell Bell
 

@@ -4340,7 +4340,8 @@ endr
 .finish_move
 	call AnimateCurrentMove
 	ld hl, GotAnEncoreText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp CheckEnemyMentalHerb
 
 .failed
 	jp PrintDidntAffect2
@@ -7781,7 +7782,8 @@ BattleCommand_Disable: ; 36fed
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, WasDisabledText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp CheckEnemyMentalHerb
 
 .failed
 	jp FailDisable

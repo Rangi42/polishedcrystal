@@ -11,7 +11,7 @@ Bank $09: $7d88 ($0278)
 Bank $0a: $7fbe ($0042)
 Bank $0b: $7fa0 ($0060)
 Bank $0c: $7d99 ($0267)
-Bank $0d: $7d81 ($027f)
+Bank $0d: $7e13 ($01ed)
 Bank $0e: $7f8a ($0076)
 Bank $0f: $7e6f ($0191)
 Bank $10: $7fa3 ($005d)
@@ -30,7 +30,7 @@ Bank $1c: $7f8b ($0075)
 Bank $1d: $7fef ($0011)
 Bank $1e: $7eae ($0152)
 Bank $1f: $7ff3 ($000d)
-Bank $20: $7eac ($0154)
+Bank $20: $7f06 ($00fa)
 Bank $21: $76bf ($0941)
 Bank $22: $7e3e ($01c2)
 Bank $23: $7fad ($0053)
@@ -176,7 +176,6 @@ Bank $47 has $02ea bytes of free space
 Bank $4d has $02be bytes of free space
 Bank $2a has $02bc bytes of free space
 Bank $19 has $0281 bytes of free space
-Bank $0d has $027f bytes of free space
 Bank $09 has $0278 bytes of free space
 Bank $6e has $0274 bytes of free space
 Bank $3f has $0273 bytes of free space
@@ -188,6 +187,7 @@ Bank $64 has $0231 bytes of free space
 Bank $6a has $0223 bytes of free space
 Bank $6b has $0210 bytes of free space
 Bank $60 has $01fe bytes of free space
+Bank $0d has $01ed bytes of free space
 Bank $26 has $01e1 bytes of free space
 Bank $3c has $01e1 bytes of free space
 Bank $50 has $01d9 bytes of free space
@@ -202,7 +202,6 @@ Bank $03 has $0166 bytes of free space
 Bank $11 has $0161 bytes of free space
 Bank $62 has $015e bytes of free space
 Bank $33 has $0157 bytes of free space
-Bank $20 has $0154 bytes of free space
 Bank $1e has $0152 bytes of free space
 Bank $1b has $0150 bytes of free space
 Bank $66 has $014c bytes of free space
@@ -210,6 +209,7 @@ Bank $04 has $014b bytes of free space
 Bank $17 has $0140 bytes of free space
 Bank $14 has $011c bytes of free space
 Bank $74 has $0104 bytes of free space
+Bank $20 has $00fa bytes of free space
 Bank $6f has $00fa bytes of free space
 Bank $35 has $00f2 bytes of free space
 Bank $69 has $00f2 bytes of free space
@@ -256,4 +256,4 @@ Bank $05 has $0009 bytes of free space
 Bank $07 has $0007 bytes of free space
 Bank $48 has $0000 bytes of free space
 
-Free space: 98801/2097152 (4.71%)
+Free space: 98565/2097152 (4.70%)

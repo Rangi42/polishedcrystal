@@ -88,7 +88,97 @@ BattleCommand_Attract: ; 377ce
 	farcall RunStatusHealAbilities
 	ret
 
+CheckEnemyMentalHerb:
+	call SwitchTurn
+	call CheckMentalHerb
+	jp SwitchTurn
+
 CheckMentalHerb:
+	; Check if we hold it
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_MENTAL_HERB
+	ret nz
+
+	; Keep track of if we're healing stuff in b
+	ld b, 0
+
+	; Check infatuation
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOVE, [hl]
+	jr z, .infatuation_done
+	res SUBSTATUS_IN_LOVE, [hl]
+	set 0, b
+
+.infatuation_done
+	; Check Encore
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	bit SUBSTATUS_ENCORED, [hl]
+	jr z, .encore_done
+	res SUBSTATUS_ENCORED, [hl]
+	set 1, b
+
+	; Also remove other encore vars
+	ld a, [hBattleTurn]
+	and a
+	ld hl, PlayerEncoreCount
+	jr z, .got_encorecount
+	ld hl, EnemyEncoreCount
+.got_encorecount
+	xor a
+	ld [hl], a
+
+.encore_done
+	; Check Disable
+	ld a, [hBattleTurn]
+	and a
+	ld de, PlayerDisableCount
+	ld hl, DisabledMove
+	jr z, .got_disable_vars
+	ld de, EnemyDisableCount
+	ld hl, EnemyDisabledMove
+.got_disable_vars
+	ld a, [de]
+	and a
+	jr z, .disable_done
+	xor a
+	ld [de], a
+	ld [hl], a
+	set 2, b
+
+.disable_done
+	ld a, b
+	and a
+	ret z
+
+	; We healed something, so consume the item
+	push bc
+	farcall ItemRecoveryAnim
+	call GetUserItem
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
+	pop bc
+	bit 0, b
+	ld hl, CuredInfatuationWithItem
+	call nz, .print
+	bit 1, b
+	ld hl, CuredEncoreWithItem
+	call nz, .print
+	bit 2, b
+	ld hl, CuredDisableWithItem
+	call nz, .print
+
+	farcall ConsumeUserItem
+	ret
+
+.print
+	push bc
+	call StdBattleTextBox
+	pop bc
 	ret
 
 CheckOppositeGender: ; 377f5

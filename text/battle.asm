@@ -1148,23 +1148,45 @@ AlreadyParalyzedText: ; 0x81592
 	prompt
 ; 0x815a9
 
-ProtectedByText: ; 0x815a9
+ProtectedByText:
 	text "<TARGET>'s"
 	line "protected by"
 	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt
-; 0x815c1
 
-RegainedStatsWithItem: ; 0x815a9
+RegainedStatsWithItem:
 	text "<USER>"
 	line "regained stats"
 	cont "with @"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt
-; 0x815c1
+
+CuredInfatuationWithItem:
+	text "<USER>"
+	line "cured infatuation"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
+CuredEncoreWithItem:
+	text "<USER>"
+	line "cured Encore"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
+CuredDisableWithItem:
+	text "<USER>"
+	line "cured Disable"
+	cont "with @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
 
 StoleText: ; 0x815da
 	text "<USER>"
