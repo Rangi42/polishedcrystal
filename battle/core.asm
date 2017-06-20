@@ -532,13 +532,11 @@ GetSpeed::
 	jr .done
 .quick_powder
 	; Double speed, but only for Ditto
-	ld a, MON_SPECIES
-	call BattlePartyAttr
 	ld a, [hBattleTurn]
 	and a
-	ld a, [hl]
-	jr nz, .got_species
-	ld a, [TempEnemyMonSpecies]
+	ld hl, BattleMonSpecies
+	jr z, .got_species
+	ld hl, EnemyMonSpecies
 .got_species
 	cp DITTO
 	jr nz, .done
