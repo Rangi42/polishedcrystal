@@ -1391,6 +1391,7 @@ BattleAnim_Selfdestruct:
 	anim_jumpif $1, .loop
 	anim_call BattleAnim_Selfdestruct_branch_cbb8f
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 .loop
@@ -4230,6 +4231,7 @@ BattleAnim_Dynamicpunch:
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $12
 	anim_call BattleAnim_Dynamicpunch_branch_cbb8f
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Megahorn:
