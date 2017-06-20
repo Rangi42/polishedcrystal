@@ -727,6 +727,25 @@ CompareHP::
 	pop hl
 	ret
 
+HasUserFainted::
+	ld a, [hBattleTurn]
+	and a
+	jr z, HasPlayerFainted
+HasEnemyFainted::
+	ld hl, EnemyMonHP
+	jr CheckIfHPIsZero
+
+HasOpponentFainted::
+	ld a, [hBattleTurn]
+	and a
+	jr z, HasEnemyFainted
+HasPlayerFainted::
+	ld hl, BattleMonHP
+CheckIfHPIsZero::
+	ld a, [hli]
+	or [hl]
+	ret
+
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [Weather] otherwise.

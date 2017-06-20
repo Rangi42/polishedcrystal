@@ -2575,6 +2575,10 @@ BattleCommand_CriticalText: ; 35175
 	xor a
 	ld [CriticalHit], a
 
+	; Maybe it fainted
+	call HasOpponentFainted
+	jr z, .wait
+
 	; Activate Anger Point here to get proper message order
 	call GetOpponentAbilityAfterMoldBreaker
 	cp ANGER_POINT
@@ -2630,6 +2634,10 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	call StdBattleTextBox
 	pop af
 	ret c
+
+	; Maybe it fainted
+	call HasOpponentFainted
+	ret z
 
 	; Activate Weakness Policy
 	call GetOpponentItemAfterUnnerve
