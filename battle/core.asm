@@ -1771,12 +1771,17 @@ HandleWeather:
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_SAFETY_GOGGLES
+	jr z, .run_weather_abilities
 	call GetWeatherAfterCloudNine
 	cp WEATHER_HAIL
 	call z, .HandleHail
 	call GetWeatherAfterCloudNine
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
+.run_weather_abilities
 	farcall RunWeatherAbilities
 	ret
 

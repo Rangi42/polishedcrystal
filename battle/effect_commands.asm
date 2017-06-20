@@ -1413,6 +1413,10 @@ _CheckTypeMatchup: ; 347d3
 	ld hl, PowderMoves
 	call IsInArray
 	jr nc, .skip_powder
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_SAFETY_GOGGLES
+	jp z, .Immune
 	pop hl
 	push hl
 	ld a, [hli]

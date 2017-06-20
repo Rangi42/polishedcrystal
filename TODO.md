@@ -113,7 +113,6 @@ Out-of-battle effects:
 * Protect(ive) Pads
 * Quick Powder
 * Rocky Helmet
-* Safe Goggles
 * Shed Shell
 * Shell Bell
 * Wide Lens
