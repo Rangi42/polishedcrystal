@@ -102,9 +102,14 @@ Out-of-battle effects:
 
 ## Items
 
-* Ability Cap(sule)
+In-battle effects:
+
 * Assault Vest
-* Destiny Knot (In-battle done)
+
+Out-of-battle effects:
+
+* Ability Cap(sule)
+* Destiny Knot
 * Oval Charm
 
 
