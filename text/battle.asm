@@ -104,6 +104,12 @@ PerishCountText: ; 0x80864
 	prompt
 ; 0x80880
 
+BattleText_UserLostSomeOfItsHP:
+	text "<USER"
+	line "lost some of its"
+	cont "HP!"
+	prompt
+
 BattleText_UserRecoveredWithItem:
 	text "<USER>"
 	line "recovered with"

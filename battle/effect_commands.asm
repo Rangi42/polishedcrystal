@@ -2893,7 +2893,6 @@ BattleCommand_PostHitEffects: ; 35250
 	ret z
 
 .no_suppressed_effect
-	push hl
 	xor a
 	farcall GetMaxHP
 	ld a, b
@@ -2909,11 +2908,7 @@ BattleCommand_PostHitEffects: ; 35250
 	ld a, [hQuotient + 2]
 	ld c, a
 	farcall SubtractHPFromUser
-	pop hl
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
-	ld hl, BattleText_UserHurtByItem
+	ld hl, BattleText_UserLostSomeOfItsHP
 	call StdBattleTextBox
 
 	; if we fainted, abort the rest of the move sequence
