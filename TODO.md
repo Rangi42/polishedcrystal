@@ -111,7 +111,6 @@ Out-of-battle effects:
 * Mental Herb
 * Oval Charm
 * Quick Powder
-* Rocky Helmet
 * Shell Bell
 
 

@@ -2854,6 +2854,29 @@ BattleCommand_PostHitEffects: ; 35250
 .rage_done_switchturn
 	call SwitchTurn
 .rage_done
+	; Do Rocky Helmet
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_ROCKY_HELMET
+	jr nz, .rocky_helmet_done
+	push hl
+	farcall GetThirdMaxHP
+	srl b
+	rr c
+	ld a, b
+	or c
+	jr nz, .damage_ok
+	inc c
+.damage_ok
+	farcall SubtractHPFromUser
+	pop hl
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_UserHurtByItem
+	call StdBattleTextBox
+
+.rocky_helmet_done
 	; Do Life Orb recoil
 	call GetUserItem
 	ld a, b
