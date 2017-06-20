@@ -2890,14 +2890,8 @@ BattleCommand_Pickpocket:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp PICKPOCKET
 	ret nz
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
-	jr z, .is_contact
-	ld hl, ContactMoves
-	ld de, 1
-	call IsInArray
-	ret nc
+	call CheckContactMove
+	ret c
 .is_contact
 	call SwitchTurn
 	call CanStealItem
@@ -9221,7 +9215,7 @@ GetOpponentItem:
 	call GetUserItem
 	jp SwitchTurn
 
-GetUserItemAfterUnnerve:
+GetUserItemAfterUnnerve::
 ; Returns the effect of the user's item in bc, and its id at hl,
 ; unless it's a Berry and Unnerve is in effect.
 	call GetUserItem

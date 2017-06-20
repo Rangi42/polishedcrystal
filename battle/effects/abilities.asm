@@ -505,17 +505,11 @@ AftermathAbility:
 	ret z
 	; Only contact moves proc Aftermath
 	call SwitchTurn
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
+	call CheckContactMove
 	push af
 	call SwitchTurn
 	pop af
-	jr z, .is_contact
-	ld hl, ContactMoves
-	ld de, 1
-	call IsInArray
-	ret nc
+	ret c
 .is_contact
 	call ShowAbilityActivation
 	call SwitchTurn
@@ -527,14 +521,8 @@ RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	; First, check contact moves. Struggle makes contact, but can't be part of
 	; the array check, being 0xFF (the array terminator)
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
-	jr z, .run_contact_abilities
-	ld hl, ContactMoves
-	ld de, 1
-	call IsInArray
-	jr nc, .skip_contact_abilities
+	call CheckContactMove
+	jr c, .skip_contact_abilities
 .run_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities

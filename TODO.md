@@ -110,7 +110,6 @@ Out-of-battle effects:
 * Destiny Knot
 * Mental Herb
 * Oval Charm
-* Protect(ive) Pads
 * Quick Powder
 * Rocky Helmet
 * Shell Bell
