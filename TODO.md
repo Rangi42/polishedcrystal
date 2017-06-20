@@ -107,7 +107,6 @@ Out-of-battle effects:
 * Big Root
 * Destiny Knot (In-battle done)
 * Oval Charm
-* Shell Bell
 
 
 ## Move effects

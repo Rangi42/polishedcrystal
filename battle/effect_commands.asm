@@ -2879,10 +2879,40 @@ BattleCommand_PostHitEffects: ; 35250
 .rocky_helmet_done
 	; Do Life Orb recoil
 	call GetUserItem
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	push bc
+	call GetItemName
+	pop bc
 	ld a, b
 	cp HELD_LIFE_ORB
+	jr z, .life_orb
+	cp HELD_SHELL_BELL
 	ret nz
 
+	ld a, [CurDamage]
+	ld b, a
+	ld a, [CurDamage + 1]
+	ld c, a
+	or b
+	ret z ; No damage was done
+	srl b
+	rr c
+	srl b
+	rr c
+	srl b
+	rr c
+	ld a, b
+	or c
+	jr nz, .damage_ok2
+	inc c
+.damage_ok2
+	farcall ItemRecoveryAnim
+	farcall RestoreHP
+	ld hl, BattleText_UserRecoveredWithItem
+	jp StdBattleTextBox
+
+.life_orb
 	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect was suppressed)
 	ld a, [EffectFailed]
 	and a
