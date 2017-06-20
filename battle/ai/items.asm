@@ -12,6 +12,11 @@ AI_SwitchOrTryItem: ; 38000
 	farcall CheckEnemyLockedIn
 	ret nz
 
+	farcall GetEnemyItem
+	ld a, b
+	cp HELD_SHED_SHELL
+	jr z, .can_switch
+
 	; check if we're trapped by an ability
 	ld a, [hBattleTurn]
 	push af
@@ -32,6 +37,7 @@ AI_SwitchOrTryItem: ; 38000
 	and a
 	jr nz, DontSwitch
 
+.can_switch
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
 	ld a, [InBattleTowerBattle] ; Load always the first TrainerClass for BattleTower-Trainers
 	and a
@@ -55,7 +61,7 @@ DontSwitch: ; 38041
 ; 38045
 
 SwitchOften: ; 38045
-	farcall CheckAbleToSwitch
+	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -91,7 +97,7 @@ SwitchOften: ; 38045
 ; 38083
 
 SwitchRarely: ; 38083
-	farcall CheckAbleToSwitch
+	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch
@@ -126,7 +132,7 @@ SwitchRarely: ; 38083
 ; 380c1
 
 SwitchSometimes: ; 380c1
-	farcall CheckAbleToSwitch
+	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
 	jp z, DontSwitch

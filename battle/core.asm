@@ -5029,6 +5029,10 @@ TryPlayerSwitch: ; 3e358
 
 .check_trapped
 	call SetPlayerTurn
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_SHED_SHELL
+	jr z, .try_switch
 	call CheckIfTrappedByAbility_Core
 	jr nz, .check_other_trapped
 	ld a, BATTLE_VARS_ABILITY_OPP

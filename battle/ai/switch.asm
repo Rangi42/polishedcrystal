@@ -263,7 +263,7 @@ AICheckMatchupForEnemyMon:
 	inc a
 	ret
 
-CheckAbleToSwitch:
+AIWantsSwitchCheck:
 	call GetSwitchScores
 	ld a, [wEnemyAISwitchScore]
 	and a
