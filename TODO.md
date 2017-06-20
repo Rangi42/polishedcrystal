@@ -92,10 +92,8 @@ Out-of-battle effects:
 * Intimidate
 * Synchronize (wild Pokémon done, gift Pokémon not yet done)
 * Lightning Rod
-* Magma Armor
 * Magnet Pull
 * Pressure
-* Flame Body
 * Keen Eye
 * Hustle
 * Cute Charm

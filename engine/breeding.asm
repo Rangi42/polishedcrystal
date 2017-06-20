@@ -150,29 +150,67 @@ CheckBreedmonCompatibility: ; 16e1d
 ; 16f3e
 
 DoEggStep:: ; 16f3e
+	; Check if Flame Body/Magma Armor applies
 	ld de, PartySpecies
-	ld hl, PartyMon1Happiness
+	ld hl, PartyMon1Ability
+.ability_loop
+	ld a, [de]
+	inc de
+	cp -1
+	jr z, .no_ability_bonus
+	cp EGG
+	jr z, .ability_next
+	ld c, a
+	ld b, [hl]
+	push de
+	push hl
+	call GetAbility
+	pop hl
+	pop de
+	ld a, b
+	ld c, 1
+	cp FLAME_BODY
+	jr z, .ability_ok
+	cp MAGMA_ARMOR
+	jr z, .ability_ok
+.ability_next
+	call .nextpartymon
+	jr .ability_loop
+.no_ability_bonus
 	ld c, 0
+.ability_ok
+	ld de, PartySpecies
+	ld hl, PartyMon1Happiness ; Egg cycles when not hatched
 .loop
 	ld a, [de]
 	inc de
 	cp -1
-	ret z
+	jr z, .done
 	cp EGG
 	jr nz, .next
 	dec [hl]
+	jr z, .hatch
+	ld a, c
+	and a
+	jr z, .next
+	dec [hl]
 	jr nz, .next
+.hatch
 	ld a, 1
 	and a
+.done
+	ld c, 0	; TODO: check if this is needed (was done earlier)
 	ret
 
 .next
+	call .nextpartymon
+	jr .loop
+.nextpartymon
 	push de
 	ld de, PARTYMON_STRUCT_LENGTH
 	add hl, de
 	pop de
-	jr .loop
-; 16f5e
+	ret
 
 OverworldHatchEgg:: ; 16f5e
 	call RefreshScreen

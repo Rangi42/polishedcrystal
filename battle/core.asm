@@ -3594,7 +3594,7 @@ ResetPlayerAbility:
 	ld b, a
 	ld a, [BattleMonSpecies]
 	ld c, a
-	farcall GetAbility
+	call GetAbility
 	ld a, b
 	ld [PlayerAbility], a
 	xor a
@@ -3605,7 +3605,7 @@ ResetEnemyAbility:
 	ld b, a
 	ld a, [EnemyMonSpecies]
 	ld c, a
-	farcall GetAbility
+	call GetAbility
 	ld a, b
 	ld [EnemyAbility], a
 	xor a
@@ -6280,7 +6280,7 @@ LoadEnemyMon: ; 3e8eb
 	ld b, a
 	ld a, [PartyMon1Species]
 	ld c, a
-	farcall GetAbility
+	call GetAbility
 	; ability is in b
 
 ; Make sure everything knows what species we're working with
@@ -6939,7 +6939,7 @@ CheckSleepingTreeMon: ; 3eb38
 	ld b, a
 	ld a, [TempEnemyMonSpecies]
 	ld c, a
-	farcall GetAbility
+	call GetAbility
 	ld a, b
 	cp INSOMNIA
 	jr z, .NotSleeping
