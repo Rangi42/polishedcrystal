@@ -1408,7 +1408,6 @@ BattleAnim_Explosion:
 	anim_jumpif $1, .loop
 	anim_call BattleAnim_Explosion_branch_cbb8f
 	anim_wait 16
-	anim_bgp $e4
 	anim_ret
 
 .loop
@@ -4808,16 +4807,19 @@ BattleAnim_SolarBeam_branch_cbb39:
 BattleAnim_Explosion_branch_cbb62:
 BattleAnim_Selfdestruct_branch_cbb62:
 	anim_sound 0, 0, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17,   3, 0,   8, 0, $0
+	anim_obj ANIM_OBJ_17,   2, 0,   8, 0, $0
 	anim_wait 5
 	anim_sound 0, 0, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17,   7, 0,  13, 0, $0
+	anim_obj ANIM_OBJ_17,   6, 0,  13, 0, $0
 	anim_wait 5
 	anim_sound 0, 0, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17,   3, 0,  13, 0, $0
+	anim_obj ANIM_OBJ_17,   4, 0,  13, 0, $0
 	anim_wait 5
 	anim_sound 0, 0, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17,   7, 0,   8, 0, $0
+	anim_obj ANIM_OBJ_17,   8, 0,   8, 0, $0
+	anim_wait 5
+	anim_sound 0, 0, SFX_EGG_BOMB
+	anim_obj ANIM_OBJ_17,   5, 0,   7, 0, $0
 	anim_wait 5
 	anim_sound 0, 0, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_17,   5, 0,  10, 4, $0
@@ -4828,16 +4830,19 @@ BattleAnim_Explosion_branch_cbb8f:
 BattleAnim_Selfdestruct_branch_cbb8f:
 BattleAnim_Present_branch_cbb8f: ; removed
 	anim_sound 0, 1, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17, -14, 4,   4, 0, $0
+	anim_obj ANIM_OBJ_17, -13, 4,   5, 0, $0
 	anim_wait 5
 	anim_sound 0, 1, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17,  14, 4,   9, 0, $0
+	anim_obj ANIM_OBJ_17,  15, 4,   9, 0, $0
 	anim_wait 5
 	anim_sound 0, 1, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17, -14, 4,   9, 0, $0
+	anim_obj ANIM_OBJ_17, -15, 4,   9, 0, $0
 	anim_wait 5
 	anim_sound 0, 1, SFX_EGG_BOMB
-	anim_obj ANIM_OBJ_17,  14, 4,   4, 0, $0
+	anim_obj ANIM_OBJ_17,  13, 4,   5, 0, $0
+	anim_wait 5
+	anim_sound 0, 1, SFX_EGG_BOMB
+	anim_obj ANIM_OBJ_17, -16, 4,   4, 0, $0
 	anim_wait 5
 	anim_sound 0, 1, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_17, -16, 4,   6, 4, $0
