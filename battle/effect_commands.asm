@@ -1842,17 +1842,40 @@ BattleCommand_CheckHit:
 .stat_changes_done
 	farcall ApplyAccuracyAbilities
 
-	; Check items
-	call GetOpponentItem
+	; Check user items
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_ACCURACY_BOOST
+	jr z, .accuracy_boost_item
+	cp HELD_ZOOM_LENS
+	jr nz, .done_user_items
+	call CheckOpponentWentFirst
+	jr z, .done_user_items
+	ld hl, hMultiplier
+	ld a, 120
+	jr .do_user_item_acc_mod
+.accuracy_boost_item
+	ld a, 100
+	add c
+.do_user_item_acc_mod
+	call Multiply
+	ld a, 100
+	ld [hl], a
+	ld b, 4
+	call Divide
+
+.done_user_items
+	; Check opponent items
+	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_BRIGHTPOWDER
 	jr nz, .brightpowder_done
 	ld hl, hMultiplier
 	ld a, 100
+	dec c
 	ld [hl], a
 	call Multiply
 	ld a, 100
-	add c
 	ld [hl], a
 	ld b, 4
 	call Divide

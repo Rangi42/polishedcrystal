@@ -113,8 +113,6 @@ Out-of-battle effects:
 * Quick Powder
 * Rocky Helmet
 * Shell Bell
-* Wide Lens
-* Zoom Lens
 
 
 ## Move effects
