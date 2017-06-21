@@ -785,7 +785,7 @@ EnemyUsedXAccuracy: ; 384f7
 ; a = ITEM_CONSTANT
 ; b = BATTLE_CONSTANT (ATTACK, DEFENSE, SPEED, SP_ATTACK, SP_DEFENSE, ACCURACY, EVASION)
 EnemyUsedXItem:
-	ld [wd1f1], a
+	ld [CurEnemyItem], a
 	push bc
 	call PrintText_UsedItemOn
 	pop bc
@@ -797,13 +797,13 @@ EnemyUsedXItem:
 ; Parameter
 ; a = ITEM_CONSTANT
 PrintText_UsedItemOn_AND_AIUpdateHUD: ; 38568
-	ld [wd1f1], a
+	ld [CurEnemyItem], a
 	call PrintText_UsedItemOn
 	jp AIUpdateHUD
 ; 38571
 
 PrintText_UsedItemOn: ; 38571
-	ld a, [wd1f1]
+	ld a, [CurEnemyItem]
 	ld [wd265], a
 	call GetItemName
 	ld hl, StringBuffer1
