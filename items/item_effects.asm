@@ -126,22 +126,22 @@ ItemEffects: ; e73c
 	dw ShinyCharm
 	dw OvalCharm
 	dw SilphScope2
-	dw OranBerry
-	dw SitrusBerry
-	dw PechaBerry
-	dw RawstBerry
 	dw CheriBerry
 	dw ChestoBerry
+	dw PechaBerry
+	dw RawstBerry
 	dw AspearBerry
+	dw LeppaBerry
+	dw OranBerry
 	dw PersimBerry
 	dw LumBerry
-	dw LeppaBerry
-	dw PomegBerry
-	dw KelpsyBerry
-	dw QualotBerry
-	dw HondewBerry
-	dw GrepaBerry
-	dw TamatoBerry
+	dw SitrusBerry
+	dw FigyBerry
+	dw LiechiBerry
+	dw GanlonBerry
+	dw SalacBerry
+	dw PetayaBerry
+	dw ApicotBerry
 	dw RedApricorn
 	dw BluApricorn
 	dw YlwApricorn
@@ -2089,7 +2089,8 @@ Lemonade:
 MoomooMilk:
 RageCandyBar:
 OranBerry:
-SitrusBerry: ; f186
+SitrusBerry:
+FigyBerry: ; f186
 	call ItemRestoreHP
 	jp StatusHealer_Jumptable
 ; f18c
@@ -3583,12 +3584,11 @@ GetMthMoveOfCurrentMon: ; f969
 
 ; TODO
 AbilityCap:
-PomegBerry:
-KelpsyBerry:
-QualotBerry:
-HondewBerry:
-GrepaBerry:
-TamatoBerry:
+LiechiBerry:
+GanlonBerry:
+SalacBerry:
+PetayaBerry:
+ApicotBerry:
 	jp IsntTheTimeMessage
 
 INCLUDE "items/pokeball_wobble.asm"
