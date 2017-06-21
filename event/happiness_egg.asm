@@ -218,44 +218,18 @@ DaycareStep:: ; 7282
 	bit 0, a
 	jr z, .daycare_lady
 
-	ld a, [wBreedMon1Level] ; level
-	cp 100
-	jr nc, .daycare_lady
-	ld hl, wBreedMon1Exp + 2 ; exp
-	inc [hl]
-	jr nz, .daycare_lady
-	dec hl
-	inc [hl]
-	jr nz, .daycare_lady
-	dec hl
-	inc [hl]
-	ld a, [hl]
-	cp 5242880 / $10000
-	jr c, .daycare_lady
-	ld a, 5242880 / $10000
-	ld [hl], a
+	ld de, wBreedMon1Level
+	ld hl, wBreedMon1Exp + 2
+	call .daycare_exp
 
 .daycare_lady
 	ld a, [wDaycareLady]
 	bit 0, a
 	jr z, .check_egg
 
-	ld a, [wBreedMon2Level] ; level
-	cp 100
-	jr nc, .check_egg
-	ld hl, wBreedMon2Exp + 2 ; exp
-	inc [hl]
-	jr nz, .check_egg
-	dec hl
-	inc [hl]
-	jr nz, .check_egg
-	dec hl
-	inc [hl]
-	ld a, [hl]
-	cp 5242880 / $10000
-	jr c, .check_egg
-	ld a, 5242880 / $10000
-	ld [hl], a
+	ld de, wBreedMon2Level
+	ld hl, wBreedMon2Exp + 2
+	call .daycare_exp
 
 .check_egg
 	ld hl, wDaycareMan
@@ -299,4 +273,21 @@ DaycareStep:: ; 7282
 	ld hl, wDaycareMan
 	res 5, [hl]
 	set 6, [hl]
+	ret
+
+.daycare_exp
+	ld a, [de]
+	cp 100
+	ret nc
+
+	inc [hl]
+	ret nz
+	dec hl
+	inc [hl]
+	ret nz
+	dec hl
+	ld a, [hl]
+	cp 5242800 / $10000
+	ret nc
+	inc [hl]
 	ret
