@@ -282,7 +282,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld [wd26b], a
 	call GetBaseData
 	ld a, [CurPartyMon]
-	ld hl, PartyMons ; wdcdf (aliases: PartyMon1, PartyMon1Species)
+	ld hl, PartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	push hl

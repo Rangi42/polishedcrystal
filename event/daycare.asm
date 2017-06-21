@@ -568,14 +568,152 @@ DayCare_GiveEgg: ; 169ac
 	ret
 ; 16a31
 
-DayCare_GetCurrentPartyMember: ; 16a31
+DayCare_GetCurrentPartyMember:
 	ld a, [PartyCount]
 	dec a
 	call AddNTimes
 	ld d, h
 	ld e, l
 	ret
-; 16a3b
+
+CheckParentItem:
+; Returns nz if a parent has given item a. a is set to 1 or 2 depending
+; on whether parent 1 or 2 had the item. If both have it, a is set
+; at random
+	push bc
+	ld b, a
+	ld a, [wBreedMon1Item]
+	cp b
+	jr z, .maybe_both
+	ld a, [wBreedMon2Item]
+	cp b
+	pop bc
+	ld a, 2
+	jr z, .ret_nz
+	xor a
+	ret
+.maybe_both
+	ld a, [wBreedMon2Item]
+	cp b
+	pop bc
+	ld a, 1
+	ret nz
+	inc a
+	call RandomRange
+	inc a
+.ret_nz
+	and a
+	ret
+
+GetParentAddr:
+; if a = 2, get parent 2 instead of 1 (assumed on hl). Best used in
+; conjuction with CheckParentItem.
+	cp 2
+	ret nz
+	push bc
+	ld bc, wBreedMon2 - wBreedMon1
+	add hl, bc
+	pop bc
+	ret
+
+DoPowerItemInheritance:
+	ld hl, PowerItems
+	ld e, 0
+.loop
+	ld a, [hli]
+	cp -1
+	ret z
+	call CheckParentItem
+	jr z, .next
+	push hl
+	ld hl, wBreedMon1DVs
+	call GetParentAddr
+	call InheritDV
+	pop hl
+.next
+	inc e
+	jr .loop
+
+PowerItems:
+; Ordered in HP/Atk/Def/Speed/SpAtk/SpDef, doesn't care about actual order
+	db POWER_WEIGHT
+	db POWER_BRACER
+	db POWER_BELT
+	db POWER_ANKLET
+	db POWER_LENS
+	db POWER_BAND
+	db -1
+
+InheritDV:
+; Inherit DV e (0=HP, 1=Atk, 2=Def, 3=Speed, 4=Sp.Atk, 5=Sp.Def)
+; from parent DVs in hl. Returns z if we successfully inherited it.
+; Preserves de+hl
+	; Figure out if we can inherit the DV
+	; Have we inherited as much as we can?
+	ld a, b
+	and a
+	jr z, .cant_inherit
+
+	; Have we already inherited the given stat?
+	push de
+	ld d, %000001
+	inc e
+.dv_check_loop
+	dec e
+	jr z, .got_dv_bit
+	sla d
+	jr .dv_check_loop
+.got_dv_bit
+	ld a, d
+	and c
+	ld a, d
+	pop de
+	jr z, .cant_inherit
+
+	; Mark the stat as inherited and decrease inherit counter
+	or c
+	ld c, a
+	dec b
+
+	; Inherit the stat
+	ld a, e
+	push de
+	push hl
+	ld de, wEggMonDVs
+	srl a
+	; inc/dec doesn't alter carry flag
+	inc a
+.find_dv_loop
+	dec a
+	jr z, .found_dv
+	inc de
+	inc hl
+	jr .find_dv_loop
+.found_dv
+	push de
+	jr nc, .swap_done
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+.swap_done
+	; Take the high nibble from hl and the low from de and put into
+	; the uppermost stack addr (eggmon DV)
+	ld a, [hl]
+	and $f0
+	ld h, a
+	ld a, [de]
+	and $f
+	or h
+	pop de
+	ld [de], a
+	pop hl
+	pop de
+	xor a
+	ret
+.cant_inherit
+	or 1
+	ret
 
 DayCare_InitBreeding: ; 16a3b
 	ld a, [wDaycareLady]
@@ -659,6 +797,8 @@ DayCare_InitBreeding: ; 16a3b
 	ld [wEggMonSpecies], a
 
 	call GetBaseData
+
+	; Set name and item
 	ld hl, wEggNick
 	ld de, .String_EGG
 	call CopyName2
@@ -668,90 +808,255 @@ DayCare_InitBreeding: ; 16a3b
 	call CopyBytes
 	xor a
 	ld [wEggMonItem], a
+
+	; Set moves for the egg
 	ld de, wEggMonMoves
 	xor a
 	ld [Buffer1], a
 	predef FillMoves
 	farcall InitEggMoves
+
+	; Set OTID to the player
 	ld hl, wEggMonID
 	ld a, [PlayerID]
 	ld [hli], a
 	ld a, [PlayerID + 1]
 	ld [hl], a
-	ld a, [CurPartyLevel]
-	ld d, a
-	farcall CalcExpAtLevel
+
+	; Zero EXP
 	ld hl, wEggMonExp
-	ld a, [hMultiplicand]
-	ld [hli], a
-	ld a, [hMultiplicand + 1]
-	ld [hli], a
-	ld a, [hMultiplicand + 2]
-	ld [hl], a
-	; TODO: don't zero the new data (Personality, etc)
 	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	; Zero EVs
 	ld b, wEggMonDVs - wEggMonEVs
 	ld hl, wEggMonEVs
 .loop2
 	ld [hli], a
 	dec b
 	jr nz, .loop2
+
+	; Set random DVs
 	ld hl, wEggMonDVs
 	call Random
 	ld [hli], a
-	ld [TempMonDVs], a
 	call Random
-	ld [hld], a
-	ld [TempMonDVs + 1], a
-	ld de, wBreedMon1DVs
-	ld a, [wBreedMon1Species]
-	cp DITTO
-	jr z, .GotDVs
-	ld de, wBreedMon2DVs
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr z, .GotDVs
-	ld a, BREEDMON
-	ld [MonType], a
-	push hl
-	farcall GetGender
-	pop hl
-	ld de, wBreedMon1DVs
-	ld bc, wBreedMon2DVs
-	jr c, .SkipDVs
-	jr z, .ParentCheck2
-	ld a, [wBreedMotherOrNonDitto]
-	and a
-	jr z, .GotDVs
-	ld d, b
-	ld e, c
-	jr .GotDVs
-
-.ParentCheck2:
-	ld a, [wBreedMotherOrNonDitto]
-	and a
-	jr nz, .GotDVs
-	ld d, b
-	ld e, c
-
-.GotDVs:
-	ld a, [de]
-	inc de
-	and $f
-	ld b, a
-	ld a, [hl]
-	and $f0
-	add b
 	ld [hli], a
-	ld a, [de]
-	and $7
-	ld b, a
-	ld a, [hl]
-	and $f8
-	add b
+	call Random
 	ld [hl], a
 
-.SkipDVs:
+	; Figure out DV inheritance. Normal inheritance is 3 random
+	; DVs from the parents at random. 5 with Destiny Knot.
+	ld a, DESTINY_KNOT
+	call CheckParentItem
+	ld a, 5
+	jr nz, .got_dv_inheritance_count
+	ld a, 3
+.got_dv_inheritance_count
+	ld b, a
+	ld c, %000000 ; Already inherited
+
+	; Power items gurantee certain DVs to be inherited
+	call DoPowerItemInheritance
+
+	; Do the rest of the DVs
+.dv_inherit_loop
+	ld a, 12
+	call RandomRange
+	srl a
+	push af
+	ld a, 2
+	ld hl, wBreedMon1DVs
+	call c, GetParentAddr
+	pop af
+	ld e, a
+	call InheritDV
+	jr z, .dv_inherit_loop
+
+	; Zero the personality data
+	xor a
+	ld [wEggMonPersonality], a
+	ld [wEggMonPersonality + 1], a
+
+	; Do Ability
+	; Ability Capsules greatly boosts HA rate of child: it makes it
+	; so that it gets the HA 25% of the time (50% if both parents
+	; hold it)
+	ld b, 3
+	ld a, [wBreedMon1Item]
+	cp ABILITY_CAP
+	jr nz, .no_parent1_abilitycap
+	dec b
+.no_parent1_abilitycap
+	ld a, [wBreedMon2Item]
+	cp ABILITY_CAP
+	jr nz, .no_parent2_abilitycap
+	dec b
+.no_parent2_abilitycap
+	ld a, b
+	cp 3
+	jr z, .no_ha_boost
+	sla a
+	call BattleRandomRange
+	and a
+	jr nz, .no_ha_boost
+	ld a, HIDDEN_ABILITY
+	jr z, .got_ability
+
+.no_ha_boost
+	; 80% to get mother's ability
+	ld a, [wBreedMotherOrNonDitto]
+	and a
+	ld a, [wBreedMon1Ability]
+	jr z, .got_mother_ability
+	ld a, [wBreedMon2Ability]
+.got_mother_ability
+	ld b, a
+	
+	ld a, 5
+	call RandomRange
+	and a
+	jr z, .random_ability
+
+	ld a, b
+	and ABILITY_MASK
+	jr .got_ability
+
+.random_ability
+	ld a, 40
+	call RandomRange
+	cp 2
+	jr c, .hidden_ability
+	cp 21
+	jr c, .ability2
+	ld a, ABILITY_1
+	jr .got_ability
+.ability2
+	ld a, ABILITY_2
+	jr .got_ability
+.hidden_ability
+	ld a, HIDDEN_ABILITY
+.got_ability
+	ld hl, wEggMonAbility
+	or [hl]
+	ld [hl], a
+
+	; Nature. If a parent holds an Everstone, always inherit that
+	ld hl, wBreedMon1Nature
+	ld a, EVERSTONE
+	call CheckParentItem
+	jr z, .random_nature
+	call GetParentAddr
+	ld a, [hl]
+	and NATURE_MASK
+	jr .got_nature
+
+.random_nature
+	ld a, NUM_NATURES
+	call RandomRange
+.got_nature
+	ld hl, wEggMonNature
+	or [hl]
+	ld [hl], a
+
+	call Random
+	and a
+	jr nz, .not_shiny ; 255/256 not shiny
+
+	; Shiny. Shiny rate after the above pass is:
+	; 1/16 - Usual
+	; 3/16 - Shiny Charm (+2 shiny modifier)
+	; 6/16 - Masuda (+5 shiny modifier)
+	; 8/16 - Both (+7 shiny modifier)
+	ld a, 16
+	call RandomRange
+	ld b, a
+	ld c, 1
+
+	; Check Shiny Charm
+	ld a, SHINY_CHARM
+	ld [CurItem], a
+	push hl
+	push bc
+	push de
+	ld hl, NumKeyItems
+	call CheckItem
+	pop de
+	pop bc
+	pop hl
+	jr nc, .shiny_charm_done
+	inc c
+	inc c
+.shiny_charm_done
+	; The "Masuda method" in the official games is a shiny booster
+	; for when parents of different nationalities trade. Consider
+	; "different OTID" as different nationalities here.
+	ld a, [wBreedMon1ID]
+	ld d, a
+	ld a, [wBreedMon1ID + 1]
+	ld e, a
+	ld a, [wBreedMon2ID]
+	cp d
+	jr nz, .masuda_ok
+	ld a, [wBreedMon2ID + 1]
+	cp e
+	jr z, .masuda_done
+.masuda_ok
+	ld a, 5
+	add c
+	ld c, a
+.masuda_done
+	ld a, b
+	cp c
+	jr nc, .not_shiny
+	ld a, SHINY_MASK
+	ld hl, wEggMonShiny
+	or [hl]
+	ld [hl], a
+.not_shiny
+	; Gender
+	ld a, 8
+	call RandomRange
+	ld b, a
+	ld a, [wEggMonSpecies]
+	dec a
+	push bc
+	ld hl, BASEMON_GENDER
+	ld bc, BASEMON_STRUCT_LENGTH
+	ld a, BANK(BaseData)
+	call GetFarByte
+	pop bc
+	ld c, a
+	ld a, b
+	; if rnd(0..7) < c: female, else male
+	cp c
+	ld a, FEMALE
+	jr c, .got_gender
+	xor a ; ld a, MALE
+.got_gender
+	ld hl, wEggMonGender
+	or [hl]
+	ld [hl], a
+
+	; Ball inheritance: from the mother or non-Ditto. If both
+	; parents share species, pick at random.
+	ld hl, wBreedMon1CaughtBall
+	call .inherit_mother_unless_samespecies
+	ld a, [hl]
+	ld [wEggMonCaughtBall], a
+
+	; Form works the same as Ball
+	ld hl, wBreedMon1Form
+	call .inherit_mother_unless_samespecies
+	ld a, [hl]
+	and FORM_MASK
+	ld hl, wEggMonForm
+	or [hl]
+	ld [hl], a
+
+	; PP, egg cycles, level
 	ld hl, StringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH
@@ -773,8 +1078,25 @@ DayCare_InitBreeding: ; 16a3b
 	ld a, [CurPartyLevel]
 	ld [wEggMonLevel], a
 	ret
-; 16be0
 
-.String_EGG: ; 16be0
+.inherit_mother_unless_samespecies
+	ld a, [wBreedMon1Species]
+	ld b, a
+	ld a, [wBreedMon2Species]
+	cp b
+	jr nz, .use_mother
+	call Random
+	and 1
+	inc a
+	call GetParentAddr
+	ld a, [hl]
+	jr .got_addr
+.use_mother
+	ld a, [wBreedMotherOrNonDitto]
+	inc a
+	call GetParentAddr
+.got_addr
+	ret
+
+.String_EGG:
 	db "Egg@"
-; 16be4
