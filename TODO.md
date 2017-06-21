@@ -90,7 +90,6 @@ Out-of-battle effects:
 Out-of-battle effects:
 
 * Ability Cap(sule)
-* Figy Berry
 
 
 ## Move effects

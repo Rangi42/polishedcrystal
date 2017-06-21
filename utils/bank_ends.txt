@@ -1,7 +1,7 @@
 Bank $00: $3cf2 ($030e)
 Bank $01: $7fde ($0022)
 Bank $02: $7f88 ($0078)
-Bank $03: $7ed6 ($012a)
+Bank $03: $7ee3 ($011d)
 Bank $04: $7eb5 ($014b)
 Bank $05: $7fe8 ($0018)
 Bank $06: $7fb0 ($0050)
@@ -205,7 +205,7 @@ Bank $04 has $014b bytes of free space
 Bank $33 has $0145 bytes of free space
 Bank $17 has $0140 bytes of free space
 Bank $20 has $012d bytes of free space
-Bank $03 has $012a bytes of free space
+Bank $03 has $011d bytes of free space
 Bank $14 has $0114 bytes of free space
 Bank $74 has $0104 bytes of free space
 Bank $6f has $00fa bytes of free space
@@ -256,4 +256,4 @@ Bank $41 has $0008 bytes of free space
 Bank $07 has $0007 bytes of free space
 Bank $48 has $0000 bytes of free space
 
-Free space: 97770/2097152 (4.66%)
+Free space: 97757/2097152 (4.66%)

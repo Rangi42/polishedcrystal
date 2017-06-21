@@ -2416,6 +2416,8 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ld a, [CurItem]
 	cp SITRUS_BERRY
 	jr z, .sitrus_berry
+	cp FIGY_BERRY
+	jr z, .figy_berry
 	push hl
 	ld hl, .Healing
 	ld d, a
@@ -2440,14 +2442,14 @@ endr
 	ret
 ; f3af (3:73af)
 
+.figy_berry
+	call .set_de_to_hp
+	jr .half_hp
 .sitrus_berry
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
+	call .set_de_to_hp
 	srl d
 	rr e
+.half_hp
 	srl d
 	rr e
 	ld a, d
@@ -2455,6 +2457,14 @@ endr
 	jr nz, .okay
 	ld e, 1
 .okay
+	ret
+
+.set_de_to_hp
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	ld a, [hli]
+	ld d, a
+	ld e, [hl]
 	ret
 
 .Healing: ; f3af
