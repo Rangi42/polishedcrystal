@@ -77,7 +77,6 @@ Route leaders:
 Out-of-battle effects:
 
 * Static
-* Suction Cups
 * Intimidate
 * Synchronize (wild Pokémon done, gift Pokémon not yet done)
 * Lightning Rod
@@ -86,7 +85,6 @@ Out-of-battle effects:
 * Keen Eye
 * Hustle
 * Cute Charm
-* Sticky Hold
 * Vital Spirit
 
 ## Items
