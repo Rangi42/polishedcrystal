@@ -579,3 +579,13 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	const WIN
 	const LOSE
 	const DRAW
+
+	const_def
+	const PAL_BATTLE_ENEMY
+	const PAL_BATTLE_PLAYER
+	const PAL_BATTLE_GRAY
+	const PAL_BATTLE_YELLOW
+	const PAL_BATTLE_RED
+	const PAL_BATTLE_GREEN
+	const PAL_BATTLE_BLUE
+	const PAL_BATTLE_BROWN

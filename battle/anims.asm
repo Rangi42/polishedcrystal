@@ -1469,7 +1469,6 @@ BattleAnim_RockThrow:
 	anim_ret
 
 BattleAnim_RockSlide:
-BattleAnim_Avalanche: ; TODO: design custom animation for Avalanche
 	anim_1gfx ANIM_GFX_ROCKS
 	anim_bgeffect ANIM_BG_1F, $c0, $1, $0
 .loop
@@ -1487,6 +1486,29 @@ BattleAnim_Avalanche: ; TODO: design custom animation for Avalanche
 	anim_wait 4
 	anim_sound 0, 1, SFX_STRENGTH
 	anim_obj ANIM_OBJ_1E, -15, 0,   8, 4, $30
+	anim_wait 16
+	anim_loop 4, .loop
+	anim_wait 96
+	anim_ret
+
+BattleAnim_Avalanche:
+	anim_1gfx ANIM_GFX_ROCKS
+	anim_bgeffect ANIM_BG_1F, $c0, $1, $0
+.loop
+	anim_sound 0, 1, SFX_STRENGTH
+	anim_obj ANIM_OBJ_SMALL_ICE_CHUNK,  16, 0,   8, 0, $40
+	anim_wait 4
+	anim_sound 0, 1, SFX_STRENGTH
+	anim_obj ANIM_OBJ_BIG_ICE_CHUNK,  15, 0,   8, 4, $30
+	anim_wait 4
+	anim_sound 0, 1, SFX_STRENGTH
+	anim_obj ANIM_OBJ_SMALL_ICE_CHUNK, -13, 0,   8, 4, $30
+	anim_wait 4
+	anim_sound 0, 1, SFX_STRENGTH
+	anim_obj ANIM_OBJ_BIG_ICE_CHUNK, -14, 0,   8, 0, $40
+	anim_wait 4
+	anim_sound 0, 1, SFX_STRENGTH
+	anim_obj ANIM_OBJ_SMALL_ICE_CHUNK, -15, 0,   8, 4, $30
 	anim_wait 16
 	anim_loop 4, .loop
 	anim_wait 96
@@ -2318,7 +2340,6 @@ BattleAnim_HornAttack:
 	anim_ret
 
 BattleAnim_FuryAttack:
-BattleAnim_IcicleCrash: ; TODO: design custom Icicle Crash animation
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
 	anim_obj ANIM_OBJ_5F,   9, 0,   9, 0, $2
 	anim_wait 8
@@ -2335,6 +2356,26 @@ BattleAnim_IcicleCrash: ; TODO: design custom Icicle Crash animation
 	anim_sound 0, 1, SFX_HORN_ATTACK
 	anim_obj ANIM_OBJ_04, -16, 4,   6, 0, $0
 	anim_wait 8
+	anim_ret
+
+BattleAnim_IcicleCrash:
+	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
+	anim_obj ANIM_OBJ_ICICLE,   9, 0,  10, 0, $3
+	anim_wait 8
+.loop
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_00, -16, 4,   5, 0, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_00, -15, 4,   6, 0, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_00, -16, 4,   7, 0, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_00,  15, 4,   6, 0, $0
+	anim_wait 8
+	anim_loop 3, .loop
 	anim_ret
 
 BattleAnim_PoisonSting:
@@ -2376,24 +2417,23 @@ BattleAnim_PinMissile:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_IcicleSpear: ; TODO: design custom Icicle Spear animation
-BattleAnim_SpikeCannon: ; removed
+BattleAnim_IcicleSpear:
 	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
-.loop
-	anim_obj ANIM_OBJ_60,   8, 0,  11, 4, $18
+	anim_obj ANIM_OBJ_ICICLE,   9, 0,   9, 0, $2
 	anim_wait 8
-	anim_obj ANIM_OBJ_60,   7, 0,  10, 4, $18
-	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_05, -15, 0,   7, 0, $0
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_04,  16, 0,   5, 0, $0
 	anim_wait 8
-	anim_obj ANIM_OBJ_60,   6, 4,  11, 0, $18
-	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_05,  16, 0,   6, 0, $0
+	anim_obj ANIM_OBJ_ICICLE,  10, 0,  11, 0, $2
 	anim_wait 8
-	anim_sound 0, 1, SFX_POISON_STING
-	anim_obj ANIM_OBJ_05, -16, 4,   6, 4, $0
-	anim_loop 3, .loop
-	anim_wait 16
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_04, -15, 0,   7, 0, $0
+	anim_wait 8
+	anim_obj ANIM_OBJ_ICICLE,   9, 4,  10, 0, $2
+	anim_wait 8
+	anim_sound 0, 1, SFX_HORN_ATTACK
+	anim_obj ANIM_OBJ_04, -16, 4,   6, 0, $0
+	anim_wait 8
 	anim_ret
 
 BattleAnim_Transform:
@@ -3435,7 +3475,6 @@ BattleAnim_Spite: ; removed
 	anim_ret
 
 BattleAnim_IceShard:
-; TODO: write an original animation
 	anim_1gfx ANIM_GFX_ICE
 .loop
 	anim_sound 6, 2, SFX_SHINE
@@ -3495,7 +3534,7 @@ BattleAnim_ScaryFace:
 	anim_ret
 
 BattleAnim_FeintAttack:
-BattleAnim_SuckerPunch: ; TODO: design custom animation for U-Turn
+BattleAnim_SuckerPunch: ; TODO: design custom animation for Sucker Punch
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_CURSE
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -5050,27 +5089,6 @@ BattleAnim_ShowMon_1:
 ;	anim_wait 1
 ;	anim_incbgeffect ANIM_BG_21
 ;	anim_call BattleAnim_ShowMon_0
-;	anim_ret
-
-;BattleAnim_HornDrill: ; removed
-;	anim_2gfx ANIM_GFX_HORN, ANIM_GFX_HIT
-;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
-;	anim_obj ANIM_OBJ_5F,   9, 0,  10, 0, $3
-;	anim_wait 8
-;.loop
-;	anim_sound 0, 1, SFX_HORN_ATTACK
-;	anim_obj ANIM_OBJ_00, -16, 4,   5, 0, $0
-;	anim_wait 8
-;	anim_sound 0, 1, SFX_HORN_ATTACK
-;	anim_obj ANIM_OBJ_00, -15, 4,   6, 0, $0
-;	anim_wait 8
-;	anim_sound 0, 1, SFX_HORN_ATTACK
-;	anim_obj ANIM_OBJ_00, -16, 4,   7, 0, $0
-;	anim_wait 8
-;	anim_sound 0, 1, SFX_HORN_ATTACK
-;	anim_obj ANIM_OBJ_00,  15, 4,   6, 0, $0
-;	anim_wait 8
-;	anim_loop 3, .loop
 ;	anim_ret
 
 ;BattleAnim_BeatUp: ; removed

@@ -121,22 +121,11 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 
 High-priority:
 
-* Aerial Ace
 * Aqua Tail
-* Avalanche
 * DazzlinGleam
-* Disarm Voice
-* Earth Power
-* Extrasensory
 * Facade
 * Giga Impact
 * Gunk Shot
-* Hex
-* Hone Claws
-* Ice Shard
-* Icicle Crash
-* Icicle Spear
-* Metal Sound
 * Stone Edge
 * Sucker Punch
 * U-turn
@@ -144,6 +133,13 @@ High-priority:
 
 Low-priority:
 
+* Aerial Ace
+* Disarm Voice
+* Earth Power
+* Extrasensory
+* Hex
+* Hone Claws
+* Metal Sound
 * Volt Switch
 
 
