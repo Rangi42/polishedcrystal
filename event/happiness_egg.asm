@@ -270,19 +270,30 @@ DaycareStep:: ; 7282
 	; Egg initialization shouldn't happen if incompatible, but just in case
 	and a
 	ret z
-	; TODO: check Oval Charm (change odds from 20/50/70 to 40/70/90)
-	cp 3 ; very compatible
-	ld b, 1 + 70 percent
-	jr z, .got_odds
-	cp 2 ; compatible
-	ld b, 1 + 50 percent
-	jr z, .got_odds
-	cp 1 ; slightly compatible
-	ld b, 1 + 20 percent
-	jr z, .got_odds
 
+	dec a ; 1: Semi-compatible
+	ld b, 20
+	ld c, 40
+	jr z, .got_odds
+	dec a ; 2: Compatible
+	ld b, 50
+	ld c, 80
+	jr z, .got_odds
+	; 3: Very compatible
+	ld b, 70
+	ld c, 88
 .got_odds
-	call Random
+	ld a, OVAL_CHARM
+	ld [CurItem], a
+	push bc
+	ld hl, NumKeyItems
+	call CheckItem
+	pop bc
+	jr nc, .no_oval_charm
+	ld b, c
+.no_oval_charm
+	ld a, 100
+	call RandomRange
 	cp b
 	ret nc
 	ld hl, wDaycareMan

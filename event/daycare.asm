@@ -743,10 +743,6 @@ DayCare_InitBreeding: ; 16a3b
 	ld hl, wEggOT
 	ld bc, NAME_LENGTH
 	call ByteFill
-	ld a, [wBreedMon1DVs]
-	ld [TempMonDVs], a
-	ld a, [wBreedMon1DVs + 1]
-	ld [TempMonDVs + 1], a
 	ld a, [wBreedMon1Species]
 	ld [CurPartySpecies], a
 	ld a, $3
