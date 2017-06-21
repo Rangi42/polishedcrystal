@@ -1568,6 +1568,27 @@ GetNature::
 	ld b, NO_NATURE
 	ret
 
+GetLeadAbility::
+; Returns ability of lead mon unless it's an Egg. Used for field
+; abilities
+	ld a, [PartyMon1Species]
+	and a
+	ret z
+	xor EGG
+	ret z
+	push bc
+	push de
+	push hl
+	ld c, a
+	ld a, [PartyMon1Ability]
+	ld b, a
+	call GetAbility
+	ld a, b
+	pop hl
+	pop de
+	pop bc
+	ret
+
 GetAbility::
 ; 'b' contains the target ability to check
 ; 'c' contains the target species

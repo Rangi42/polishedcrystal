@@ -6230,51 +6230,39 @@ LoadEnemyMon: ; 3e8eb
 ; Notes:
 ;   BattleRandom is used to ensure sync between Game Boys
 
-; Clear the whole EnemyMon struct
+	; Clear the whole EnemyMon struct
 	xor a
 	ld hl, EnemyMonSpecies
 	ld bc, EnemyMonEnd - EnemyMon
 	call ByteFill
 
-; We don't need to be here if we're in a link battle
+	; We don't need to be here if we're in a link battle
 	ld a, [wLinkMode]
 	and a
 	jp nz, InitEnemyMon
 
-; and also not in a BattleTower-Battle
+	; and also not in a BattleTower-Battle
 	ld a, [InBattleTowerBattle]
 	bit 0, a
 	jp nz, InitEnemyMon
 
-; Check ability of top party mon and store into b (for Compoundeyes, etc). This needs to
-; be done before the wildmon species metadata is loaded since this also needs to load
-; species metadata on its own
-	ld a, [PartyMon1Ability]
-	ld b, a
-	ld a, [PartyMon1Species]
-	ld c, a
-	call GetAbility
-	; ability is in b
-
-; Make sure everything knows what species we're working with
+	; Make sure everything knows what species we're working with
 	ld a, [TempEnemyMonSpecies]
 	ld [EnemyMonSpecies], a
 	ld [CurSpecies], a
 	ld [CurPartySpecies], a
 
-; Grab the BaseData for this species. Preserve bc (partymon1 ability)
-	push bc
+	; Grab the BaseData for this species
 	call GetBaseData
-	pop bc
 
-; Let's get the item:
+	; Let's get the item:
 
-; Is the item predetermined?
+	; Is the item predetermined?
 	ld a, [wBattleMode]
 	dec a
 	jr z, .WildItem
 
-; If we're in a trainer battle, the item is in the party struct
+	; If we're in a trainer battle, the item is in the party struct
 	ld a, [CurPartyMon]
 	ld hl, OTPartyMon1Item
 	call GetPartyLocation ; bc = PartyMon[CurPartyMon] - PartyMons
@@ -6283,10 +6271,10 @@ LoadEnemyMon: ; 3e8eb
 
 
 .WildItem
-; In a wild battle, we pull from the item slots in BaseData
+	; In a wild battle, we pull from the item slots in BaseData
 
-; Force Item1
-; Used for Snorlax, Ho-Oh, Lugia, and Kanto legendary encounters
+	; Force Item1
+	; Used for Snorlax, Ho-Oh, Lugia, and Kanto legendary encounters
 	ld a, [BattleType]
 	cp BATTLETYPE_FORCEITEM
 	ld a, [BaseItems]
@@ -6297,55 +6285,53 @@ LoadEnemyMon: ; 3e8eb
 	ld a, [BaseItems]
 	jr z, .UpdateItem
 
-; Failing that, it's all up to chance
+	; Failing that, it's all up to chance
 
-	ld a, b
-
+	call GetLeadAbility
 if DEF(FAITHFUL)
 	cp COMPOUND_EYES
 	jr nz, .no_compound_eyes_or_amulet_coin
 else
 	cp COMPOUND_EYES
 	jr z, .compound_eyes
-; If the party lead holds an Amulet Coin, chances are increased
+	; If the party lead holds an Amulet Coin, chances are increased
 	ld a, [PartyMon1Item]
 	cp AMULET_COIN
 	jr nz, .no_compound_eyes_or_amulet_coin
 endc
 
 .compound_eyes:
-; 60% chance of getting Item1 with an Amulet Coin
+	; 60% chance of getting Item1
 	call BattleRandom
 	cp 60 percent
 	ld a, [BaseItems]
 	jr c, .UpdateItem
 
-; 20% chance of getting Item2 (50% of (100% - 60%) = 20%) with an Amulet Coin
+	; 20% chance of getting Item2 (50% of (100% - 60%) = 20%)
 	call BattleRandom
 	cp 50 percent
 	ld a, [BaseItems+1]
 	jr c, .UpdateItem
 
-; 20% chance of not getting an item (100% - 60% - 20% = 20%)
+	; 20% chance of not getting an item (100% - 60% - 20% = 20%)
 	ld a, NO_ITEM
 	jr .UpdateItem
 
-; Default chances without Compound Eyes or Amulet Coin
 .no_compound_eyes_or_amulet_coin:
 
-; 50% chance of getting Item1
+	; 50% chance of getting Item1
 	call BattleRandom
 	cp 50 percent
 	ld a, [BaseItems]
 	jr c, .UpdateItem
 
-; 5% chance of getting Item2 (10% of (100% - 50%) = 5%)
+	; 5% chance of getting Item2 (10% of (100% - 50%) = 5%)
 	call BattleRandom
 	cp 10 percent
 	ld a, [BaseItems+1]
 	jr c, .UpdateItem
 
-; 45% chance of not getting an item (100% - 50% - 5% = 45%)
+	; 45% chance of not getting an item (100% - 50% - 5% = 45%)
 	ld a, NO_ITEM
 
 
@@ -6353,9 +6339,9 @@ endc
 	ld [EnemyMonItem], a
 
 
-; Initialize DVs and personality
+	; Initialize DVs and personality
 
-; If we're in a trainer battle, DVs and personality are predetermined
+	; If we're in a trainer battle, DVs and personality are predetermined
 	ld a, [wBattleMode]
 	and a
 	jr z, .InitDVs
@@ -6364,7 +6350,7 @@ endc
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .InitDVs
 
-; Transformed
+	; Transformed
 	ld hl, wEnemyBackupDVs
 	ld de, EnemyMonDVs
 rept 4
@@ -6379,11 +6365,11 @@ endr
 
 .InitDVs:
 
-; Trainer DVs
+	; Trainer DVs
 
-; All trainers have preset DVs, determined by class
-; See GetTrainerDVsAndPersonality for more on that
-; These are the DVs we'll use if we're actually in a trainer battle
+	; All trainers have preset DVs, determined by class
+	; See GetTrainerDVsAndPersonality for more on that
+	; These are the DVs we'll use if we're actually in a trainer battle
 
 	ld a, [wBattleMode]
 	dec a
@@ -6399,39 +6385,39 @@ endr
 	jp .UpdateDVs
 
 .WildDVs:
-; Roaming monsters (Entei, Raikou) work differently
-; They have their own structs, which are shorter than normal
+	; Roaming monsters (Entei, Raikou) work differently
+	; They have their own structs, which are shorter than normal
 	ld a, [BattleType]
 	cp BATTLETYPE_ROAMING
 	jr nz, .GenerateDVs
 
-; Grab DVs and personality
+	; Grab DVs and personality
 	push bc
 	call GetRoamMonDVsAndPersonality
 	ld b, h
 	ld c, l
-; Grab HP
+	; Grab HP
 	push hl
 	call GetRoamMonHP
 	ld a, [hl]
 	pop hl
 	pop bc
-; Check if the HP has been initialized
+	; Check if the HP has been initialized
 	and a
-; If the RoamMon struct has already been initialized, we're done
+	; If the RoamMon struct has already been initialized, we're done
 	jr z, .GenerateRoamDVs
 	ld b, h
 	ld c, l
 	jp .UpdateDVs
 
-; If it hasn't, we need to initialize the DVs
-; (HP is initialized at the end of the battle)
-; Skip the setting of the DV/Personality buffer since we already have it
+	; If it hasn't, we need to initialize the DVs
+	; (HP is initialized at the end of the battle)
+	; Skip the setting of the DV/Personality buffer since we already have it
 .GenerateDVs:
 	ld hl, DVAndPersonalityBuffer
 .GenerateRoamDVs:
 	push hl
-; Random DVs
+	; Random DVs
 	call BattleRandom
 	ld [hli], a
 	call BattleRandom
@@ -6439,9 +6425,9 @@ endr
 	call BattleRandom
 	ld [hli], a
 
-; Random nature from 0 to 24
-; 50% chance of same nature with Synchronize ability
-	ld a, b
+	; Random nature from 0 to 24
+	; 50% chance of same nature with Synchronize ability
+	call GetLeadAbility
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
 	call BattleRandom
@@ -6456,8 +6442,8 @@ endr
 .got_nature
 	ld b, a
 
-; Random ability
-; 5% hidden ability, otherwise 50% either main ability
+	; Random ability
+	; 5% hidden ability, otherwise 50% either main ability
 	call BattleRandom
 	cp 1 + 5 percent
 	jr c, .hidden_ability
@@ -6475,8 +6461,8 @@ endr
 	add b
 	ld b, a
 
-; Random shininess
-; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
+	; Random shininess
+	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [BattleType]
 	cp BATTLETYPE_SHINY
 	jr z, .shiny
@@ -6511,13 +6497,31 @@ endr
 	add b
 	ld [hli], a
 
-; Random gender
-; Derived from base ratio
-; Random gender selection value
+	; Gender. If lead has Cute Charm, force opposite gender 2/3
+	; of the time
+	call GetLeadAbility
+	cp CUTE_CHARM
+	jr nz, .not_cute_charm
+	ld a, 3
+	call BattleRandomRange
+	and a
+	jr nz, .not_cute_charm
+	ld a, [PartyMon1Gender]
+	cp FEMALE
+	ld a, %111
+	jr z, .cute_charm_ok
+	ld a, %000
+	jr .cute_charm_ok
+
+.not_cute_charm
+	; Random gender
+	; Derived from base ratio
+	; Random gender selection value
 	call BattleRandom
 	and %111
+.cute_charm_ok
 	ld b, a
-; We need the gender ratio to do anything with this.
+	; We need the gender ratio to do anything with this.
 	push hl
 	push bc
 	ld a, [CurPartySpecies]
@@ -6531,7 +6535,7 @@ endr
 	pop hl
 	ld c, a
 	ld a, b
-; Ratios below the value are female, and vice-versa.
+	; Ratios below the value are female, and vice-versa.
 	cp c
 	ld a, FEMALE
 	jr c, .Female

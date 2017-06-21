@@ -78,13 +78,11 @@ Out-of-battle effects:
 
 * Static
 * Intimidate
-* Synchronize (wild Pokémon done, gift Pokémon not yet done)
 * Lightning Rod
 * Magnet Pull
 * Pressure
 * Keen Eye
 * Hustle
-* Cute Charm
 * Vital Spirit
 
 ## Items

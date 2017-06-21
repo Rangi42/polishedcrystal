@@ -265,11 +265,29 @@ endr
 	add b
 	ld [DVAndPersonalityBuffer + 3], a
 
+	; Gender. If lead has Cute Charm, force opposite gender 2/3
+	; of the time
+	call GetLeadAbility
+	cp CUTE_CHARM
+	jr nz, .not_cute_charm
+	ld a, 3
+	call BattleRandomRange
+	and a
+	jr nz, .not_cute_charm
+	ld a, [PartyMon1Gender]
+	cp FEMALE
+	ld a, %111
+	jr z, .cute_charm_ok
+	ld a, %000
+	jr .cute_charm_ok
+
+.not_cute_charm
 ; Random gender
 ; Derived from base ratio
 ; Random gender selection value
 	call Random
 	and %111
+.cute_charm_ok
 	ld b, a
 ; We need the gender ratio to do anything with this.
 	push hl
