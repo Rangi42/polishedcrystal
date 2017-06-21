@@ -91,18 +91,12 @@ Out-of-battle effects:
 
 ## Items
 
-In-battle effects:
-
-* Figy Berry (activate at 25% HP, not 50%)
-* {Liechi, Ganlon, Salac, Petaya, Apicot} Berry
-
 Out-of-battle effects:
 
 * Ability Cap(sule)
 * Destiny Knot
 * Oval Charm
 * Figy Berry
-* {Liechi, Ganlon, Salac, Petaya, Apicot} Berry
 
 
 ## Move effects
