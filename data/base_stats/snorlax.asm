@@ -13,7 +13,7 @@
 	dn 7, 7 ; frontpic dimensions
 	db IMMUNITY ; ability 1
 	db THICK_FAT ; ability 2
-	db IMMUNITY ; hidden ability
+	db GLUTTONY ; hidden ability
 	db SLOW ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

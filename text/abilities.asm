@@ -408,6 +408,7 @@ AbilityDescriptions:
 	dw RivalryDescription
 	dw SteadfastDescription
 	dw SnowCloakDescription
+	dw GluttonyDescription
 	dw AngerPointDescription
 	dw UnburdenDescription
 	dw DrySkinDescription
@@ -749,6 +750,10 @@ SteadfastDescription:
 SnowCloakDescription:
 	db   "Boosts evasion in"
 	next "hailstorms.@"
+
+GluttonyDescription:
+	db   "Encourages early"
+	next "Berry use.@"
 
 AngerPointDescription:
 	db   "Maxes Attack after"

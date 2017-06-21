@@ -4217,6 +4217,7 @@ HandleHealingItems: ; 3dcf9
 .do_it
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
+	call HandleStatBoostBerry
 	jp UseConfusionHealingItem
 
 HandleStatusOrbs:
@@ -4266,6 +4267,43 @@ HandleStatusOrbs:
 	call StdBattleTextBox
 	jp SwitchTurn
 
+HandleStatBoostBerry:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp GLUTTONY
+	jr z, .gluttony
+	call GetQuarterMaxHP
+	jr .compare_hp
+.gluttony
+	call GetHalfMaxHP
+.compare_hp
+	call CompareHP
+	jr z, .ok
+	ret nc
+.ok
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_RAISE_STAT
+	ret nz
+	ld b, c
+	farcall BattleCommand_StatUp
+	ld a, [FailedMessage]
+	and a
+	ret nz
+	call ItemRecoveryAnim
+	farcall GetUserItemAfterUnnerve
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld a, [LoweredStat]
+	and $f
+	ld b, a
+	inc b
+	farcall GetStatName
+	ld hl, BattleText_ItemRaised
+	call StdBattleTextBox
+	jp ConsumeUserItem
+
 HandleHPHealingItem:
 	; only restore HP if HP<=1/2
 	call GetHalfMaxHP
@@ -4277,6 +4315,23 @@ HandleHPHealingItem:
 	ld a, b
 	cp HELD_BERRY
 	ret nz
+	ld a, [hl]
+	cp FIGY_BERRY
+	jr nz, .not_figy
+
+	; Gluttony makes Figy activate at 50%HP like the others
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp GLUTTONY
+	jr z, .figy_ok
+	call GetQuarterMaxHP
+	call CompareHP
+	jr z, .figy_ok
+	ret nc
+.figy_ok
+	call GetHalfMaxHP
+	jr .got_hp_to_restore
+.not_figy
 	ld b, 0 ; c contains HP to restore
 	call ItemRecoveryAnim
 	ld a, [hl]

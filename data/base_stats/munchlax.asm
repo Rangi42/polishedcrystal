@@ -13,7 +13,7 @@
 	dn 6, 6 ; frontpic dimensions
 	db PICKUP ; ability 1
 	db THICK_FAT ; ability 2
-	db PICKUP ; hidden ability
+	db GLUTTONY ; hidden ability
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

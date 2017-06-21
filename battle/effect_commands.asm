@@ -2724,32 +2724,33 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	farcall ItemRecoveryAnim
 	ld a, b
 	and a
-	jr nz, .atk_msg_done
 	pop hl
 	push hl
 	push bc
+	jr nz, .atk_msg_done
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
-	ld hl, BattleText_ItemRaisedAtk
-	call StdBattleTextBox
+	ld a, ATTACK
+	jr .print_msg
 .atk_msg_done
 	pop bc
 	ld a, c
 	and a
 	jr nz, .satk_msg_done
-	pop hl
-	push hl
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
-	ld hl, BattleText_ItemRaisedSAtk
-	call StdBattleTextBox
+	ld a, SP_ATTACK
+	jr .print_msg
 .satk_msg_done
 	farcall ConsumeUserItem
 .end
 	pop hl
 	jp SwitchTurn
+.print_msg
+	ld b, a
+	inc b
+	farcall GetStatName
+	ld hl, BattleText_ItemSharplyRaised
+	jp StdBattleTextBox
 
 BattleCommand_PostFaintEffects: ; 351c0
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
@@ -9347,6 +9348,12 @@ UnnerveItemsBlocked:
 	db PERSIM_BERRY
 	db LUM_BERRY
 	db LEPPA_BERRY
+	db FIGY_BERRY
+	db LIECHI_BERRY
+	db GANLON_BERRY
+	db SALAC_BERRY
+	db PETAYA_BERRY
+	db APICOT_BERRY
 	db -1
 NoItem:
 	db NO_ITEM

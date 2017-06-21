@@ -13,7 +13,7 @@
 	dn 5, 5 ; frontpic dimensions
 	db CHLOROPHYLL ; ability 1
 	db CHLOROPHYLL ; ability 2
-	db CHLOROPHYLL ; hidden ability
+	db GLUTTONY ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 

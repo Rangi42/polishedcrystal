@@ -176,6 +176,7 @@ NO_NATURE   EQU const_value
 	const RIVALRY
 	const STEADFAST
 	const SNOW_CLOAK
+	const GLUTTONY
 	const ANGER_POINT
 	const UNBURDEN
 	const DRY_SKIN

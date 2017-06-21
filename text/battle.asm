@@ -134,22 +134,26 @@ BattleText_UserRecoveredPPUsing:
 	text "."
 	prompt
 
-BattleText_ItemRaisedAtk:
+BattleText_ItemRaised:
 	text "The @"
 	text_from_ram StringBuffer1
 	text ""
-	line "sharply raised"
-	para "<USER>'s"
-	line "Attack!"
+	line "raised"
+	cont "<USER>'s"
+	cont "@"
+	text_from_ram StringBuffer2
+	text "!"
 	prompt
 
-BattleText_ItemRaisedSAtk:
+BattleText_ItemSharplyRaised:
 	text "The @"
 	text_from_ram StringBuffer1
 	text ""
 	line "sharply raised"
-	para "<USER>'s"
-	line "Special Attack!"
+	cont "<USER>'s"
+	cont "@"
+	text_from_ram StringBuffer2
+	text "!"
 	prompt
 
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
