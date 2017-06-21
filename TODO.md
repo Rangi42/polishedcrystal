@@ -119,6 +119,8 @@ Out-of-battle effects:
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
 
+High-priority:
+
 * Aerial Ace
 * Aqua Tail
 * Avalanche
@@ -135,12 +137,14 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 * Icicle Crash
 * Icicle Spear
 * Metal Sound
-* Scald
 * Stone Edge
 * Sucker Punch
 * U-turn
-* Volt Switch
 * Water Pulse
+
+Low-priority:
+
+* Volt Switch
 
 
 ## Post-3.0

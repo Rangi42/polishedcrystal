@@ -328,16 +328,39 @@ BattleAnim_DisarmVoice:
 	anim_ret
 
 BattleAnim_Scald:
-; TODO: write an original animation
-	anim_1gfx ANIM_GFX_BUBBLE
-	anim_bgeffect ANIM_BG_SURF, $0, $0, $0
-	anim_obj ANIM_OBJ_22,  11, 0,  13, 0, $8
+	anim_bgeffect ANIM_BG_30, $0, $0, $0
+	anim_1gfx ANIM_GFX_WATER
+	anim_call BattleAnim_FollowPlayerHead_1
+	anim_sound 0, 1, SFX_HYDRO_PUMP
+	anim_obj ANIM_OBJ_25,  14, 4,   9, 0, $0
+	anim_bgeffect ANIM_BG_31, $1c, $0, $0
+	anim_wait 8
+	;anim_sound 0, 1, SFX_HYDRO_PUMP
+	anim_obj ANIM_OBJ_25,  15, 4,   9, 0, $0
+	anim_bgeffect ANIM_BG_31, $8, $0, $0
+	anim_wait 8
+	;anim_sound 0, 1, SFX_HYDRO_PUMP
+	anim_obj ANIM_OBJ_25, -16, 4,   9, 0, $0
+	anim_bgeffect ANIM_BG_31, $30, $0, $0
+	anim_wait 8
+	;anim_sound 0, 1, SFX_HYDRO_PUMP
+	anim_obj ANIM_OBJ_25, -15, 4,   9, 0, $0
+	anim_bgeffect ANIM_BG_31, $1c, $0, $0
+	anim_wait 8
+	;anim_sound 0, 1, SFX_HYDRO_PUMP
+	anim_obj ANIM_OBJ_25, -14, 4,   9, 0, $0
+	anim_bgeffect ANIM_BG_31, $8, $0, $0
+	anim_wait 16
+	anim_call BattleAnim_ShowMon_1
+	anim_bgeffect ANIM_BG_32, $0, $0, $0
+	anim_wait 16
+	anim_1gfx ANIM_GFX_FIRE
 .loop
-	anim_sound 0, 1, SFX_SURF
-	anim_wait 32
-	anim_loop 4, .loop
-	anim_incobj  1
-	anim_wait 56
+	anim_sound 0, 0, SFX_BURN
+	anim_obj ANIM_OBJ_BURNED,  17, 0,   7, 0, $10
+	anim_wait 4
+	anim_loop 3, .loop
+	anim_wait 6
 	anim_ret
 
 BattleAnim_ThrowPokeBall
@@ -1043,8 +1066,8 @@ BattleAnim_Blizzard:
 	anim_wait 24
 	anim_ret
 
-BattleAnim_WaterPulse:
-; TODO: write an original animation
+BattleAnim_WaterPulse: ; TODO: write an original animation
+BattleAnim_Bubble: ; removed
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_sound 32, 2, SFX_WATER_GUN
 	anim_obj ANIM_OBJ_21,   8, 0,  11, 4, $c1
@@ -3092,15 +3115,6 @@ BattleAnim_WingAttack:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_VoltSwitch: ; TODO: design new animation for Volt Switch
-BattleAnim_Slam: ; removed
-	anim_1gfx ANIM_GFX_HIT
-	anim_sound 0, 1, SFX_WING_ATTACK
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
-	anim_obj ANIM_OBJ_01,  15, 4,   5, 0, $0
-	anim_wait 16
-	anim_ret
-
 BattleAnim_Disable:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_STATUS
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
@@ -3940,6 +3954,7 @@ BattleAnim_MilkDrink:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
+BattleAnim_VoltSwitch: ; TODO: design new animation for Volt Switch
 BattleAnim_Spark:
 	anim_2gfx ANIM_GFX_LIGHTNING, ANIM_GFX_EXPLOSION
 	anim_sound 0, 0, SFX_ZAP_CANNON
@@ -5499,5 +5514,13 @@ BattleAnim_ShowMon_1:
 ;	anim_obj ANIM_OBJ_08, -15, 0,   7, 0, $0
 ;	anim_wait 6
 ;	anim_obj ANIM_OBJ_01, -15, 0,   7, 0, $0
+;	anim_wait 16
+;	anim_ret
+
+;BattleAnim_Slam: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_sound 0, 1, SFX_WING_ATTACK
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
+;	anim_obj ANIM_OBJ_01,  15, 4,   5, 0, $0
 ;	anim_wait 16
 ;	anim_ret

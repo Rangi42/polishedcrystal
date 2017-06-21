@@ -2857,7 +2857,7 @@ MewtwoEvosAttacks:
 	db 46, RECOVER
 	db 55, PSYCHIC_M
 	db 64, NASTY_PLOT ; Barrier → new move
-	db 73, AURA_SPHERE
+	db 73, SCALD
 	db 82, BARRIER ; Amnesia → Barrier
 	db 91, MIST
 	db 100, PSYSTRIKE
