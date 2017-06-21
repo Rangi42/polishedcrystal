@@ -94,7 +94,6 @@ Out-of-battle effects:
 Out-of-battle effects:
 
 * Ability Cap(sule)
-* Destiny Knot
 * Oval Charm
 * Figy Berry
 
