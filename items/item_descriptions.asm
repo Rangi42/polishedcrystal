@@ -146,22 +146,22 @@ ItemDescriptions:
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw SilphScope2Desc
-	dw OranBerryDesc
-	dw SitrusBerryDesc
-	dw PechaBerryDesc
-	dw RawstBerryDesc
 	dw CheriBerryDesc
 	dw ChestoBerryDesc
+	dw PechaBerryDesc
+	dw RawstBerryDesc
 	dw AspearBerryDesc
+	dw LeppaBerryDesc
+	dw OranBerryDesc
 	dw PersimBerryDesc
 	dw LumBerryDesc
-	dw LeppaBerryDesc
-	dw PomegBerryDesc
-	dw KelpsyBerryDesc
-	dw QualotBerryDesc
-	dw HondewBerryDesc
-	dw GrepaBerryDesc
-	dw TamatoBerryDesc
+	dw SitrusBerryDesc
+	dw FigyBerryDesc
+	dw LiechiBerryDesc
+	dw GanlonBerryDesc
+	dw SalacBerryDesc
+	dw PetayaBerryDesc
+	dw ApicotBerryDesc
 	dw RedApricornDesc
 	dw BluApricornDesc
 	dw YlwApricornDesc
@@ -711,13 +711,13 @@ SilphScope2Desc:
 	db   "A scope to see in-"
 	next "visible #mon.@"
 
-OranBerryDesc:
-	db   "A self-restore"
-	next "item. (10HP, Hold)@"
+CheriBerryDesc:
+	db   "A self-cure for"
+	next "paralysis. (Hold)@"
 
-SitrusBerryDesc:
-	db   "Self-restore item."
-	next "(1/4 max HP, Hold)@"
+ChestoBerryDesc:
+	db   "A self-awakening"
+	next "for sleep. (Hold)@"
 
 PechaBerryDesc:
 	db   "A self-cure for"
@@ -727,17 +727,17 @@ RawstBerryDesc:
 	db   "A self-heal for a"
 	next "burn. (Hold)@"
 
-CheriBerryDesc:
-	db   "A self-cure for"
-	next "paralysis. (Hold)@"
-
-ChestoBerryDesc:
-	db   "A self-awakening"
-	next "for sleep. (Hold)@"
-
 AspearBerryDesc:
 	db   "A self-cure for"
 	next "freezing. (Hold)@"
+
+LeppaBerryDesc:
+	db   "A self-restore"
+	next "for PP. (Hold)@"
+
+OranBerryDesc:
+	db   "A self-restore"
+	next "item. (10HP, Hold)@"
 
 PersimBerryDesc:
 	db   "A self-cure for"
@@ -747,33 +747,33 @@ LumBerryDesc:
 	db   "Cures all status"
 	next "problems. (Hold)@"
 
-LeppaBerryDesc:
-	db   "A self-restore"
-	next "for PP. (Hold)@"
+SitrusBerryDesc:
+	db   "Self-restore item."
+	next "(1/4 max HP, Hold)@"
 
-PomegBerryDesc:
-	db   "Lowers the HP of"
-	next "one #mon.@"
+FigyBerryDesc:
+	db   "Self-restore item."
+	next "(1/2 max HP, Hold)@"
 
-KelpsyBerryDesc:
-	db   "Lowers Attack of"
-	next "one #mon.@"
+LiechiBerryDesc:
+	db   "Raises Attack in"
+	next "a pinch.@"
 
-QualotBerryDesc:
-	db   "Lowers Defense of"
-	next "one #mon.@"
+GanlonBerryDesc:
+	db   "Raises Defense in"
+	next "a pinch.@"
 
-HondewBerryDesc:
-	db   "Lowers Spcl.Atk"
-	next "of one #mon.@"
+SalacBerryDesc:
+	db   "Raises Speed in"
+	next "a pinch.@"
 
-GrepaBerryDesc:
-	db   "Lowers Spcl.Def"
-	next "of one #mon.@"
+PetayaBerryDesc:
+	db   "Raises Spcl.Atk"
+	next "in a pinch.@"
 
-TamatoBerryDesc:
-	db   "Lowers Speed of"
-	next "one #mon.@"
+ApicotBerryDesc:
+	db   "Raises Spcl.Def"
+	next "in a pinch.@"
 
 RedApricornDesc:
 	db   "A red Apricorn.@"

@@ -440,31 +440,31 @@ GetBallAnimPal: ; cd249 (33:5249)
 
 ; cd26c (33:526c)
 .balls
-	db POKE_BALL,    4 ; red
-	db GREAT_BALL,   6 ; blue
-	db ULTRA_BALL,   3 ; yellow
-	db MASTER_BALL,  5 ; green
-	db SAFARI_BALL,  7 ; brown
-	db LEVEL_BALL,   7 ; brown
-	db LURE_BALL,    6 ; blue
-	db MOON_BALL,    2 ; gray
-	db FRIEND_BALL,  5 ; green
-	db FAST_BALL,    4 ; red
-	db HEAVY_BALL,   2 ; gray
-	db LOVE_BALL,    4 ; red
-	db PARK_BALL,    3 ; yellow
-	db REPEAT_BALL,  3 ; yellow
-	db TIMER_BALL,   7 ; brown
-	db NEST_BALL,    7 ; brown
-	db NET_BALL,     6 ; blue
-	db DIVE_BALL,    6 ; blue
-	db LUXURY_BALL,  2 ; gray
-	db HEAL_BALL,    4 ; red
-	db QUICK_BALL,   6 ; blue
-	db DUSK_BALL,    5 ; green
-	db PREMIER_BALL, 2 ; gray
-	db CHERISH_BALL, 4 ; red
-	db -1,           2
+	db POKE_BALL,    PAL_BATTLE_RED
+	db GREAT_BALL,   PAL_BATTLE_BLUE
+	db ULTRA_BALL,   PAL_BATTLE_YELLOW
+	db MASTER_BALL,  PAL_BATTLE_GREEN
+	db SAFARI_BALL,  PAL_BATTLE_BROWN
+	db LEVEL_BALL,   PAL_BATTLE_BROWN
+	db LURE_BALL,    PAL_BATTLE_BLUE
+	db MOON_BALL,    PAL_BATTLE_GRAY
+	db FRIEND_BALL,  PAL_BATTLE_GREEN
+	db FAST_BALL,    PAL_BATTLE_RED
+	db HEAVY_BALL,   PAL_BATTLE_GRAY
+	db LOVE_BALL,    PAL_BATTLE_RED
+	db PARK_BALL,    PAL_BATTLE_YELLOW
+	db REPEAT_BALL,  PAL_BATTLE_YELLOW
+	db TIMER_BALL,   PAL_BATTLE_BROWN
+	db NEST_BALL,    PAL_BATTLE_BROWN
+	db NET_BALL,     PAL_BATTLE_BLUE
+	db DIVE_BALL,    PAL_BATTLE_BLUE
+	db LUXURY_BALL,  PAL_BATTLE_GRAY
+	db HEAL_BALL,    PAL_BATTLE_RED
+	db QUICK_BALL,   PAL_BATTLE_BLUE
+	db DUSK_BALL,    PAL_BATTLE_GREEN
+	db PREMIER_BALL, PAL_BATTLE_GRAY
+	db CHERISH_BALL, PAL_BATTLE_RED
+	db -1,           PAL_BATTLE_GRAY
 ; cd284
 BattleAnimFunction_10: ; cd284 (33:5284)
 	call BattleAnim_AnonJumptable

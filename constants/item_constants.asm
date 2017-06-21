@@ -130,23 +130,22 @@
 	const OVAL_CHARM   ; $6f
 	const SILPHSCOPE2  ; $70
 
-	const ORAN_BERRY   ; $71
-	const SITRUS_BERRY ; $72
+	const CHERI_BERRY  ; $71
+	const CHESTO_BERRY ; $72
 	const PECHA_BERRY  ; $73
 	const RAWST_BERRY  ; $74
-	const CHERI_BERRY  ; $75
-	const CHESTO_BERRY ; $76
-	const ASPEAR_BERRY ; $77
+	const ASPEAR_BERRY ; $75
+	const LEPPA_BERRY  ; $76
+	const ORAN_BERRY   ; $77
 	const PERSIM_BERRY ; $78
 	const LUM_BERRY    ; $79
-	const LEPPA_BERRY  ; $7a
-
-	const POMEG_BERRY  ; $7b
-	const KELPSY_BERRY ; $7c
-	const QUALOT_BERRY ; $7d
-	const HONDEW_BERRY ; $7e
-	const GREPA_BERRY  ; $7f
-	const TAMATO_BERRY ; $80
+	const SITRUS_BERRY ; $7a
+	const FIGY_BERRY   ; $7b
+	const LIECHI_BERRY ; $7c
+	const GANLON_BERRY ; $7d
+	const SALAC_BERRY  ; $7e
+	const PETAYA_BERRY ; $7f
+	const APICOT_BERRY ; $80
 
 	const RED_APRICORN ; $81
 	const BLU_APRICORN ; $82
@@ -402,6 +401,8 @@ CANT_TOSS   EQU 1 << CANT_TOSS_F
 	const HELD_WHITE_HERB
 
 	const HELD_BLACK_SLUDGE
+
+	const HELD_RAISE_STAT
 
 ; item attributes
 	const_def

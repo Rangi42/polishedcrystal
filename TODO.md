@@ -1,16 +1,6 @@
 ## Bugs
 
-* Large Pokémon animations have backwards tiles in the stats screen
-* Caught Pokémon sent to the PC appear at level 255
-* Some caught Pokémon have wrong held items
-* In-battle item use messages show the wrong Pokémon name
-* Some NPC trainers use wrong items
-* Weather and some ability animations trigger the last used animation too
-* TMs refresh PP
-* Nuzlocke mode sometimes turns on by itself (maybe)
-* Dig sometimes prints that both Pokémon dug a hole
-* Per-turn status animations might not always work
-* Headbutt overworld animation looks weird (wrong tile ID?)
+See the [Issues](issues/) page.
 
 
 ## Mechanics
@@ -74,7 +64,6 @@ Shamouti Island:
 
 Route leaders:
 
-* Route 34: Rich Boy, gives Big Nugget
 * Route 37: Ace Trainer♀, gives Binding Band
 * Route 39: Cowgirl, gives PP Max
 * Lighthouse: Battle Girl, gives protect Pads
@@ -102,11 +91,18 @@ Out-of-battle effects:
 
 ## Items
 
+In-battle effects:
+
+* Figy Berry (activate at 25% HP, not 50%)
+* {Liechi, Ganlon, Salac, Petaya, Apicot} Berry
+
 Out-of-battle effects:
 
 * Ability Cap(sule)
 * Destiny Knot
 * Oval Charm
+* Figy Berry
+* {Liechi, Ganlon, Salac, Petaya, Apicot} Berry
 
 
 ## Move effects
@@ -123,28 +119,28 @@ Out-of-battle effects:
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
 
-* Aerial Ace
+High-priority:
+
 * Aqua Tail
-* Avalanche
 * DazzlinGleam
-* Disarm Voice
-* Earth Power
-* Extrasensory
 * Facade
 * Giga Impact
 * Gunk Shot
-* Hex
-* Hone Claws
-* Ice Shard
-* Icicle Crash
-* Icicle Spear
-* Metal Sound
-* Scald
 * Stone Edge
 * Sucker Punch
 * U-turn
-* Volt Switch
 * Water Pulse
+
+Low-priority:
+
+* Aerial Ace
+* Disarm Voice
+* Earth Power
+* Extrasensory
+* Hex
+* Hone Claws
+* Metal Sound
+* Volt Switch
 
 
 ## Post-3.0
@@ -191,7 +187,7 @@ Some of these may never be added; they're just suggestions.
 * Make more trainers rematchable
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
-* Either add a 510 EV limit, or replace the 12 unused EV berries and Power items with more useful Berries
+* Either add a 510 EV limit, or replace the 6 Power items with more useful Berries
 * Update breeding to Gen VII, including Destiny Knot, Everstone, and Oval Charm effects
 * Catch rate formula from Gen III
 * Show move stats when overwriting one

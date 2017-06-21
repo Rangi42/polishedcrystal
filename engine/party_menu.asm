@@ -464,11 +464,15 @@ PlacePartyMonGender: ; 502b1
 	jr z, .next
 	ld [CurPartySpecies], a
 	push hl
+	ld a, [CurPartyMon]
+	push af
 	ld a, b
 	ld [CurPartyMon], a
 	xor a
 	ld [MonType], a
 	call GetGender
+	pop af
+	ld [CurPartyMon], a
 	ld a, " "
 	jr c, .got_gender
 	ld a, $5f ; colored "♂"

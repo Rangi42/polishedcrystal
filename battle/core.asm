@@ -7698,19 +7698,19 @@ GiveBattleEVs:
 	set 7, e
 	ret
 .item_atkup
-	set 6, e
+	set (6 - ATTACK), e ; 6
 	ret
 .item_defup
-	set 5, e
+	set (6 - DEFENSE), e ; 5
 	ret
 .item_spdup
-	set 4, e
+	set (6 - SPEED), e ; 4
 	ret
 .item_satup
-	set 3, e
+	set (6 - SP_ATTACK), e ; 3
 	ret
 .item_sdfup
-	set 2, e
+	set (6 - SP_DEFENSE), e ; 2
 	ret
 
 BoostExp: ; 3f106
