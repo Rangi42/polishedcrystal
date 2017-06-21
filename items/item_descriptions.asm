@@ -764,16 +764,16 @@ GanlonBerryDesc:
 	next "a pinch.@"
 
 SalacBerryDesc:
+	db   "Raises Speed in"
+	next "a pinch.@"
+
+PetayaBerryDesc:
 	db   "Raises Spcl.Atk"
 	next "in a pinch.@"
 
-PetayaBerryDesc:
+ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
-
-ApicotBerryDesc:
-	db   "Raises Speed in"
-	next "a pinch.@"
 
 RedApricornDesc:
 	db   "A red Apricorn.@"

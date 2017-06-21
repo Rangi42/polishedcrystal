@@ -226,7 +226,7 @@ GoldenrodDeptStore5F_MapEventHeader:
 	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
 
 PickRandomMysteryGift:
-	ld a, TAMATO_BERRY - ORAN_BERRY + 1
+	ld a, APICOT_BERRY - ORAN_BERRY + 1
 	call RandomRange
 	add ORAN_BERRY
 	ld [CurFruit], a
