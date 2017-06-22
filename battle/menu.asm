@@ -12,6 +12,13 @@ LoadBattleMenu: ; 24ef2
 ContestBattleMenu: ; 24f13
 	ld hl, MenuDataHeader_0x24f89
 	call LoadMenuDataHeader
+	ld a, [wd0d2]
+	ld [wMenuCursorBuffer], a
+	call _2DMenu
+	ld a, [wMenuCursorBuffer]
+	ld [wd0d2], a
+	call ExitMenu
+	ret
 ; 24f19
 
 BattleMenuDataHeader: ; 24f2c
