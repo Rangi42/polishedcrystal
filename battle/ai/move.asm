@@ -11,25 +11,22 @@ AIChooseMove: ; 440ce
 	farcall CheckEnemyLockedIn
 	ret nz
 
-	; The default score is 20
-	ld a, 20
-	ld hl, Buffer1
-rept 3
-	ld [hli], a
-endr
-	ld [hl], a
-
-	; Unusable moves are set at 80
+	; Default score is 20, unusable moves are set to 80.
 	ld hl, Buffer1 + 3
 	ld a, 4
 .unusable_loop
 	dec a
 	push af
+	push hl
+	ld b, a
 	farcall FarCheckUsableMove
-	pop af
+	ld a, 80
 	jr z, .unusable_next
-	ld [hl], 80
+	ld a, 20
 .unusable_next
+	pop hl
+	ld [hl], a
+	pop af
 	dec hl
 	and a
 	jr nz, .unusable_loop
