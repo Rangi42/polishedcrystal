@@ -169,7 +169,6 @@ Some of these may never be added; they're just suggestions.
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Either add a 510 EV limit, or replace the 6 Power items with more useful Berries
-* Update breeding to Gen VII, including Destiny Knot, Everstone, and Oval Charm effects
 * Catch rate formula from Gen III
 * Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
