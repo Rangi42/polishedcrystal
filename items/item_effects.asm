@@ -2161,8 +2161,44 @@ HealHP_SFX_GFX: ; f1db (3:71db)
 	ld [wWhichHPBar], a
 	predef_jump AnimateHPBar
 
+UseItem_SelectMon2:
+; Used on something already: don't reload the graphics
+	call .SelectMon
+	jr UseItem_DoSelectMon
+
+.SelectMon:
+	ld a, b
+	ld [PartyMenuActionText], a
+	push hl
+	push de
+	push bc
+	farcall InitPartyMenuWithCancel
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
+	farcall PartyMenuSelect
+	pop bc
+	pop de
+	pop hl
+	ret
+
 UseItem_SelectMon: ; f1f9 (3:71f9)
 	call .SelectMon
+	jr UseItem_DoSelectMon
+
+.SelectMon:
+	ld a, b
+	ld [PartyMenuActionText], a
+	push hl
+	push de
+	push bc
+	call ClearBGPalettes
+	call ChoosePkmnToUseItemOn
+	pop bc
+	pop de
+	pop hl
+	ret
+
+UseItem_DoSelectMon:
 	ret c
 
 	ld a, [CurPartySpecies]
@@ -2175,19 +2211,6 @@ UseItem_SelectMon: ; f1f9 (3:71f9)
 
 .not_egg
 	and a
-	ret
-
-.SelectMon: ; f20b (3:720b)
-	ld a, b
-	ld [PartyMenuActionText], a
-	push hl
-	push de
-	push bc
-	call ClearBGPalettes
-	call ChoosePkmnToUseItemOn
-	pop bc
-	pop de
-	pop hl
 	ret
 
 ChoosePkmnToUseItemOn: ; f21c (3:721c)
@@ -2748,7 +2771,7 @@ LeppaBerry: ; f5bf
 	ld [wd002], a
 
 .loop
-    ; Party Screen opens to choose on which Pkmn to use the Item
+	; Party Screen opens to choose on which Pkmn to use the Item
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, PPRestoreItem_Cancel
@@ -3595,15 +3618,10 @@ GetMthMoveOfCurrentMon: ; f969
 AbilityCap:
 ; If a pokémon doesn't have its hidden ability, switch between its
 ; 1st and 2nd ability
-	; Not a healing item per se, but reuse its helpers
-	call DoAbilityCap
-	jp StatusHealer_Jumptable
-
-DoAbilityCap:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-	ld a, 2
-	ret c
+.loop
+	jr c, .abort
 
 	push hl
 	ld a, MON_ABILITY
@@ -3611,8 +3629,7 @@ DoAbilityCap:
 	ld a, [hl]
 	and ABILITY_MASK
 	cp HIDDEN_ABILITY
-	ld a, 1
-	jr z, .end
+	jr z, .no_effect
 
 	; Check if the ability would change
 	ld d, h
@@ -3628,8 +3645,7 @@ DoAbilityCap:
 	ld b, a
 	ld a, [BaseAbility2]
 	cp b
-	ld a, 1
-	jr z, .end
+	jr z, .no_effect
 
 	; Ability would change: ask for a confirmation
 	ld a, [de]
@@ -3650,8 +3666,8 @@ DoAbilityCap:
 	call YesNoBox
 	pop de
 	pop bc
-	ld a, 2
-	jr c, .end
+	pop hl
+	jr c, .loopnext
 
 	; Change ability
 	ld a, ABILITY_MASK
@@ -3661,10 +3677,19 @@ DoAbilityCap:
 	and [hl]
 	or c
 	ld [hl], a
-	xor a
-.end
+	call UseDisposableItem
+	ld hl, AbilityChangedText
+	call PrintText
+.abort
+	jp ClearPalettes
+
+.no_effect
+	call WontHaveAnyEffectMessage
 	pop hl
-	ret
+.loopnext
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon2
+	jr .loop
 
 ChangeAbilityToText:
 	text "Change ability to"
@@ -3673,6 +3698,10 @@ ChangeAbilityToText:
 	text "?"
 	done
 
+AbilityChangedText:
+	text "The ability was"
+	line "changed!"
+	prompt
 
 LiechiBerry:
 GanlonBerry:
