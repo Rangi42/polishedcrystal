@@ -44,12 +44,9 @@ TrainerCard: ; 25105
 
 	ld hl, CardDividerGFX
 	ld de, VTiles2 tile $23
-	ld bc, 6 tiles
-	ld a, BANK(CardDividerGFX)
+	ld bc, 10 tiles ; 6 for CardDividerGFX + 4 for CardStatusGFX
+	ld a, BANK(CardDividerGFX) ; BANK(CardStatusGFX)
 	call FarCopyBytes
-
-	ld hl, CardStatusGFX
-	call TrainerCard_LoadHeaderGFX
 
 	call TrainerCard_PrintBorder
 	call TrainerCard_PrintTopHalfOfCard
@@ -94,8 +91,10 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call ClearSprites
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
-	ld hl, CardStatusGFX
+
+	ld de, CardStatusGFX
 	call TrainerCard_LoadHeaderGFX
+
 	call TrainerCard_Page1_PrintDexCaught_GameTime
 	jp TrainerCard_IncrementJumptable
 
@@ -124,7 +123,7 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call SetPalettes
 	call WaitBGMap
 
-	ld hl, CardBadgesGFX
+	ld de, CardBadgesGFX
 	call TrainerCard_LoadHeaderGFX
 
 	ld de, LeaderGFX
@@ -191,7 +190,7 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call SetPalettes
 	call WaitBGMap
 
-	ld hl, CardBadgesGFX
+	ld de, CardBadgesGFX
 	call TrainerCard_LoadHeaderGFX
 
 	ld de, LeaderGFX2
@@ -230,10 +229,9 @@ TrainerCard_Page3_Joypad: ; 25279 (9:5279)
 	ret
 
 TrainerCard_LoadHeaderGFX:
-	ld de, VTiles2 tile $2b
-	ld bc, 4 tiles
-	ld a, BANK(CardStatusGFX) ; BANK(CardBadgesGFX)
-	jp FarCopyBytes
+	ld hl, VTiles2 tile $29
+	lb bc, BANK(CardStatusGFX), $4 ; BANK(CardBadgesGFX)
+	jp Request2bpp
 
 TrainerCard_PrintBorder: ; 253b0 (9:53b0)
 	hlcoord 0, 0
@@ -276,13 +274,13 @@ TrainerCard_PrintBorder: ; 253b0 (9:53b0)
 	hlcoord 1, 8
 	ld a, $23
 	ld [hli], a
-	ld a, $2b
+	ld a, $29
+	ld [hli], a
+	inc a ; $2a
+	ld [hli], a
+	inc a ; $2b
 	ld [hli], a
 	inc a ; $2c
-	ld [hli], a
-	inc a ; $2d
-	ld [hli], a
-	inc a ; $2e
 	ld [hli], a
 	ld a, $24
 	ld [hli], a
@@ -731,7 +729,6 @@ TrainerCard_KantoBadgesOAM:
 
 CardBorderGFX:  INCBIN "gfx/trainer_card/border.2bpp"
 CardDividerGFX: INCBIN "gfx/trainer_card/divider.2bpp"
-
 CardStatusGFX:  INCBIN "gfx/trainer_card/status.2bpp"
 CardBadgesGFX:  INCBIN "gfx/trainer_card/badges.2bpp"
 
