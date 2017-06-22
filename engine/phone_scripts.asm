@@ -715,7 +715,9 @@ JoeyPhoneScript1:
 
 UnknownScript_0xbd392:
 	special RandomPhoneMon
-	farjump UnknownScript_0xa0930
+	farwritetext UnknownText_0x17571d
+	buttonsound
+	farjump PhoneScript_HangupText_Male
 
 UnknownScript_0xbd399:
 	landmarktotext ROUTE_30, $2

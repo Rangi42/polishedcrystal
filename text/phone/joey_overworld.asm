@@ -39,6 +39,31 @@ JoeyPhoneFullText:
 	line "phone's full."
 	done
 
+JoeyTopPercentageText:
+	text "Hey, do you remem-"
+	line "ber my super-cool"
+	cont "@"
+	text_from_ram StringBuffer4
+	text "?"
+
+	para "My @"
+	text_from_ram StringBuffer4
+	text " is"
+	line "different from"
+	cont "regular @"
+	text_from_ram StringBuffer4
+	text "."
+
+	para "It's in the top"
+	line "percentage of"
+	cont "@"
+	text_from_ram StringBuffer4
+	text "."
+
+	para "Do you know what"
+	line "I'm saying?"
+	done
+
 JoeyRematchText:
 	text "I've been waiting!"
 	line "Let's battle now!"
