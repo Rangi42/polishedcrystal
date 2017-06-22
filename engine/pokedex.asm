@@ -579,10 +579,8 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	jr nz, .cancel
 	ld a, [hl]
 	and A_BUTTON
-	jr nz, .do_menu_action
-	ret
+	ret z
 
-.do_menu_action
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, .MenuActionJumptable
 	call Pokedex_LoadPointer
@@ -765,7 +763,7 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 	call DelayFrame
 	ld hl, PokedexLZ
 	ld de, VTiles2 tile $31
-	lb bc, BANK(PokedexLZ), $3a
+	lb bc, BANK(PokedexLZ), $34
 	call DecompressRequest2bpp
 
 .done
@@ -1084,7 +1082,7 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	ld [hl], $39
 	hlcoord 1, 10
 	ld bc, 19
-	ld a, $61
+	ld a, $5f ; horizontal divider
 	call ByteFill
 	hlcoord 1, 17
 	ld bc, 18
@@ -1219,9 +1217,9 @@ Pokedex_DrawSearchResultsScreenBG: ; 40962 (10:4962)
 	hlcoord 8, 8
 	ld [hl], $53
 	hlcoord 8, 9
-	ld [hl], $69
+	ld [hl], $63
 	hlcoord 8, 10
-	ld [hl], $6a
+	ld [hl], $64
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 .BottomWindowText: ; 409ae
@@ -1496,12 +1494,12 @@ Pokedex_PlaceDefaultStringIfNotSeen: ; 40b8d (10:4b8d)
 
 Pokedex_DrawFootprint: ; 40ba0
 	hlcoord 18, 1
-	ld a, $62
+	ld a, $65
 	ld [hli], a
 	inc a
 	ld [hl], a
 	hlcoord 18, 2
-	ld a, $64
+	ld a, $67
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -2383,7 +2381,7 @@ Pokedex_LoadAnyFootprint: ; 4147b
 	push hl
 	ld e, l
 	ld d, h
-	ld hl, VTiles2 tile $62
+	ld hl, VTiles2 tile $65
 	lb bc, BANK(Footprints), 2
 	call Request1bpp
 	pop hl
@@ -2395,7 +2393,7 @@ Pokedex_LoadAnyFootprint: ; 4147b
 
 	ld e, l
 	ld d, h
-	ld hl, VTiles2 tile $64
+	ld hl, VTiles2 tile $67
 	lb bc, BANK(Footprints), 2
 	call Request1bpp
 

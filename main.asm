@@ -2058,7 +2058,7 @@ DisplayDexEntry: ; 4424d
 	call ClearBox
 	hlcoord 1, 10
 	ld bc, SCREEN_WIDTH - 1
-	ld a, $61 ; horizontal divider
+	ld a, $5f ; horizontal divider
 	call ByteFill
 	; page number
 	hlcoord 1, 9
@@ -2088,7 +2088,7 @@ DisplayDexEntry: ; 4424d
 	call ClearBox
 	hlcoord 1, 10
 	ld bc, SCREEN_WIDTH - 1
-	ld a, $61
+	ld a, $5f ; horizontal divider
 	call ByteFill
 	; page number
 	hlcoord 1, 9
@@ -5962,12 +5962,12 @@ DrawPokedexListWindow: ; 1de171 (77:6171)
 .OldMode:
 ; no scroll bar
 	hlcoord 11, 0
-	ld [hl], $66
-	ld a, $67
+	ld [hl], $60
+	ld a, $61
 	hlcoord 11, 1
 	ld b, SCREEN_HEIGHT - 3
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $62
 .Done:
 	ret
 
@@ -5985,12 +5985,12 @@ DrawPokedexSearchResultsWindow: ; 1de1d1 (77:61d1)
 	hlcoord 5, 10
 	ld [hl], $40
 	hlcoord 11, 0
-	ld [hl], $66
-	ld a, $67
+	ld [hl], $60
+	ld a, $61
 	hlcoord 11, 1
 	ld b, SCREEN_HEIGHT / 2
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $62
 	ld a, $34
 	hlcoord 0, 11
 	ld bc, 11
@@ -6000,12 +6000,12 @@ DrawPokedexSearchResultsWindow: ; 1de1d1 (77:61d1)
 	ld bc, 11
 	call ByteFill
 	hlcoord 11, 11
-	ld [hl], $66
-	ld a, $67
+	ld [hl], $60
+	ld a, $61
 	hlcoord 11, 12
 	ld b, 5
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $62
 	hlcoord 0, 12
 	lb bc, 5, 11
 	call ClearBox
@@ -6031,12 +6031,12 @@ DrawDexEntryScreenRightEdge: ; 1de247
 	ld a, h
 	ld [hBGMapAddress + 1], a
 	hlcoord 19, 0
-	ld [hl], $66
+	ld [hl], $60
 	hlcoord 19, 1
-	ld a, $67
+	ld a, $61
 	ld b, 15
 	call Bank77_FillColumn
-	ld [hl], $68
+	ld [hl], $62
 	hlcoord 19, 17
 	ld [hl], $3c
 	xor a

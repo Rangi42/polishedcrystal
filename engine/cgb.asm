@@ -342,7 +342,11 @@ _CGB_Pokedex: ; 8f70
 	ld a, $1
 	call FillBoxCGB
 
-	call InitPartyMenuOBPals
+	ld hl, .SlowpokePalette
+	ld de, UnknOBPals
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
 
 	ld hl, .CursorPalette
 	ld de, UnknOBPals + 7 palettes
@@ -358,6 +362,12 @@ _CGB_Pokedex: ; 8f70
 	RGB 07, 17, 00
 	RGB 06, 16, 03
 	RGB 05, 12, 01
+
+.SlowpokePalette:
+	RGB 31, 31, 31
+	RGB 14, 14, 14
+	RGB 31, 07, 01
+	RGB 00, 00, 00
 
 .CursorPalette: ; 8fc2
 	RGB 00, 00, 00
