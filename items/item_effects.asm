@@ -2121,7 +2121,7 @@ EnergyPowderEnergyRootCommon: ; f192
 ; f1a9
 
 
-ItemRestoreHP: ; f1a9 (3:71a9)
+ItemRestoreHP:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	ld a, 2
@@ -3592,8 +3592,88 @@ GetMthMoveOfCurrentMon: ; f969
 	ret
 ; f971
 
-; TODO
 AbilityCap:
+; If a pokémon doesn't have its hidden ability, switch between its
+; 1st and 2nd ability
+	; Not a healing item per se, but reuse its helpers
+	call DoAbilityCap
+	jp StatusHealer_Jumptable
+
+DoAbilityCap:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	ld a, 2
+	ret c
+
+	push hl
+	ld a, MON_ABILITY
+	call GetPartyParamLocation
+	ld a, [hl]
+	and ABILITY_MASK
+	cp HIDDEN_ABILITY
+	ld a, 1
+	jr z, .end
+
+	; Check if the ability would change
+	ld d, h
+	ld e, l
+	pop hl
+	push hl
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [CurSpecies], a
+	call GetBaseData
+	ld a, [BaseAbility1]
+	ld b, a
+	ld a, [BaseAbility2]
+	cp b
+	ld a, 1
+	jr z, .end
+
+	; Ability would change: ask for a confirmation
+	ld a, [de]
+	and ABILITY_MASK
+	cp ABILITY_1
+	ld a, [BaseAbility2]
+	ld c, ABILITY_2
+	jr z, .got_new_ability
+	ld a, [BaseAbility1]
+	ld c, ABILITY_1
+.got_new_ability
+	ld b, a
+	push bc
+	push de
+	farcall BufferAbility
+	ld hl, ChangeAbilityToText
+	call PrintText
+	call YesNoBox
+	pop de
+	pop bc
+	ld a, 2
+	jr c, .end
+
+	; Change ability
+	ld a, ABILITY_MASK
+	cpl
+	ld h, d
+	ld l, e
+	and [hl]
+	or c
+	ld [hl], a
+	xor a
+.end
+	pop hl
+	ret
+
+ChangeAbilityToText:
+	text "Change ability to"
+	line "@"
+	text_from_ram StringBuffer1
+	text "?"
+	done
+
+
 LiechiBerry:
 GanlonBerry:
 SalacBerry:

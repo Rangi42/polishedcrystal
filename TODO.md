@@ -85,13 +85,6 @@ Out-of-battle effects:
 * Hustle
 * Vital Spirit
 
-## Items
-
-Out-of-battle effects:
-
-* Ability Cap(sule)
-
-
 ## Move effects
 
 * Low Kick's power is based on weight
