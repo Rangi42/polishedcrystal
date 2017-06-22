@@ -283,27 +283,28 @@ BattleAnimations::
 BattleAnim_0:
 	anim_ret
 
-; Moonblast animation by Victoria Lacroix
-; https://github.com/VictoriaLacroix/pokecrystal/commit/f7d84a42fe7d02e9de5d99865ca6177f8bd746d5
+; Moonblast animation from Pokémon Prism
 BattleAnim_Moonblast:
-	anim_1gfx ANIM_GFX_SHINE
+	anim_3gfx ANIM_GFX_GLOBE, ANIM_GFX_BEAM, ANIM_GFX_AEROBLAST
 	anim_bgp $1b
-	anim_bgeffect ANIM_BG_07, $0, $0, $0
-	anim_obj ANIM_OBJ_9E,   0, 0,   5, 0, $0
-	anim_obj ANIM_OBJ_9E,   2, 0,   7, 0, $0
-	anim_obj ANIM_OBJ_9E,   4, 0,   9, 0, $0
-	anim_obj ANIM_OBJ_9E,   6, 0,  11, 0, $0
-	anim_obj ANIM_OBJ_9E,   8, 0,  13, 0, $0
-	anim_wait 1
+	anim_obj ANIM_OBJ_MOON,  6, 0, 9, 0, $1
 	anim_sound 0, 0, SFX_MOONLIGHT
 	anim_wait 63
-	anim_call BattleAnim_FollowPlayerHead_0
-	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
-	anim_sound 0, 0, SFX_TACKLE
-	anim_wait 17
-	anim_call BattleAnim_ShowMon_0
-	anim_wait 12
-	anim_bgp $e4
+	anim_bgeffect ANIM_BG_1F, $50, $4, $10
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_sound 0, 0, SFX_AEROBLAST
+	anim_obj ANIM_OBJ_B3,  9, 0, 11, 0, $0
+	anim_wait 32
+	anim_sound 0, 0, SFX_HYPER_BEAM
+	anim_obj ANIM_OBJ_27, 10, 0, 10, 4, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_HYPER_BEAM
+	anim_obj ANIM_OBJ_27, 12, 0,  9, 4, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_HYPER_BEAM
+	anim_obj ANIM_OBJ_27, 14, 0,  8, 4, $0
+	anim_obj ANIM_OBJ_28, 15, 6,  7, 6, $0
+	anim_wait 48
 	anim_ret
 
 BattleAnim_PlayRough:
@@ -2899,18 +2900,22 @@ BattleAnim_DragonDance:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_HoneClaws: ; TODO: design custom animation for Hone Claws
-BattleAnim_Sharpen: ; removed
-	anim_1gfx ANIM_GFX_SHAPES
-	anim_obp0 $e4
-	anim_call BattleAnim_FollowEnemyFeet_0
-	anim_sound 0, 0, SFX_SHARPEN
-	anim_bgeffect ANIM_BG_18, $0, $1, $40
-	anim_obj ANIM_OBJ_78,   6, 0,  11, 0, $0
-	anim_wait 96
-	anim_incobj  2
-	anim_incbgeffect ANIM_BG_18
-	anim_call BattleAnim_ShowMon_0
+BattleAnim_HoneClaws:
+    anim_1gfx ANIM_GFX_CUT
+.loop
+	anim_sound 0, 1, SFX_SCRATCH
+	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   8, 0,  11, 0, $0
+	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   7, 4,  10, 4, $0
+	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   7, 0,  10, 0, $0
+	anim_sound 0, 1, SFX_SCRATCH
+	anim_wait 32
+	anim_sound 0, 1, SFX_SCRATCH
+	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,   3, 0,  11, 0, $0
+	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,   3, 4,  10, 4, $0
+	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,   4, 0,  10, 0, $0
+	anim_sound 0, 1, SFX_SCRATCH
+	anim_wait 32
+	anim_loop 2, .loop
 	anim_ret
 
 BattleAnim_QuickAttack:
@@ -5541,4 +5546,17 @@ BattleAnim_ShowMon_1:
 ;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
 ;	anim_obj ANIM_OBJ_01,  15, 4,   5, 0, $0
 ;	anim_wait 16
+;	anim_ret
+
+;BattleAnim_Sharpen: ; removed
+;	anim_1gfx ANIM_GFX_SHAPES
+;	anim_obp0 $e4
+;	anim_call BattleAnim_FollowEnemyFeet_0
+;	anim_sound 0, 0, SFX_SHARPEN
+;	anim_bgeffect ANIM_BG_18, $0, $1, $40
+;	anim_obj ANIM_OBJ_78,   6, 0,  11, 0, $0
+;	anim_wait 96
+;	anim_incobj  2
+;	anim_incbgeffect ANIM_BG_18
+;	anim_call BattleAnim_ShowMon_0
 ;	anim_ret

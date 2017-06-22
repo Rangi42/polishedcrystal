@@ -118,7 +118,6 @@ Low-priority:
 * Earth Power
 * Extrasensory
 * Hex
-* Hone Claws
 * Metal Sound
 * Volt Switch
 
