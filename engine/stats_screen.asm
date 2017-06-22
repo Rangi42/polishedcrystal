@@ -38,7 +38,6 @@ StatsScreenInit: ; 4dc8a
 StatsScreenMain: ; 0x4dcd2
 	xor a
 	ld [wJumptableIndex], a
-	inc a
 	ld [wcf64], a
 .loop ; 4dce3
 	ld a, [wJumptableIndex]
