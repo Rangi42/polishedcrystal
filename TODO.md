@@ -6,7 +6,6 @@ See the [Issues](issues/) page.
 ## Mechanics
 
 * Generate Battle Tower Pokémon
-* Update breeding with the new data structure (engine/breeding/egg.asm and event/daycare.asm)
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
@@ -84,6 +83,7 @@ Out-of-battle effects:
 * Keen Eye
 * Hustle
 * Vital Spirit
+
 
 ## Move effects
 
