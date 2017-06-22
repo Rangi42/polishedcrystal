@@ -731,11 +731,11 @@ CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
 	farcall GetUserItemAfterUnnerve
 	ld a, b
-	xor HELD_PROTECTIVE_PADS
+	cp HELD_PROTECTIVE_PADS
 	jr z, .protective_pads
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	xor STRUGGLE ; don't cpl, minimize risk of longterm bugs
+	cp STRUGGLE ; don't cpl, minimize risk of longterm bugs
 	jr z, .struggle
 	ld hl, ContactMoves
 	ld de, 1
