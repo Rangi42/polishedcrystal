@@ -20,9 +20,9 @@ AIChooseMove: ; 440ce
 	push hl
 	ld b, a
 	farcall FarCheckUsableMove
-	ld a, 80
-	jr z, .unusable_next
 	ld a, 20
+	jr z, .unusable_next
+	ld a, 80
 .unusable_next
 	pop hl
 	ld [hl], a
