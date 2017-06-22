@@ -104,6 +104,7 @@ AbilityNames:
 	dw Rivalry
 	dw Steadfast
 	dw SnowCloak
+	dw Gluttony
 	dw AngerPoint
 	dw Unburden
 	dw DrySkin
@@ -236,6 +237,7 @@ MotorDrive:    db "Motor Drive@"
 Rivalry:       db "Rivalry@"
 Steadfast:     db "Steadfast@"
 SnowCloak:     db "Snow Cloak@"
+Gluttony:      db "Gluttony@"
 AngerPoint:    db "Anger Point@"
 Unburden:      db "Unburden@"
 DrySkin:       db "Dry Skin@"
