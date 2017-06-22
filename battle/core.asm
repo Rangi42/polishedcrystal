@@ -1916,7 +1916,7 @@ GetThirdMaxHP::
 .loop_end_skip_add
 	ld a, d
 	pop de
-; floor = 1
+	; floor = 1
 	and a
 	ld c, a
 	jr nz, .end
@@ -1955,14 +1955,13 @@ HalfHP:
 	srl b
 	rr c
 
-; floor = 1
+	; floor = 1
 	ld a, c
 	or b
 	jr nz, .end
 	inc c
 .end
 	ret
-; 3ccac
 
 
 GetMaxHP: ; 3ccac

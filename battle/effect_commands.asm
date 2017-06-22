@@ -4380,104 +4380,75 @@ endr
 ; 35926
 
 
-BattleCommand_PainSplit: ; 35926
-; painsplit
+BattleCommand_PainSplit:
+	call CheckHiddenOpponent
+	jr nz, .failed
 
-	ld a, [AttackMissed]
-	and a
-	jp nz, .ButItFailed
-	call CheckSubstituteOpp
-	jp nz, .ButItFailed
 	call AnimateCurrentMove
-	ld hl, BattleMonMaxHP + 1
-	ld de, EnemyMonMaxHP + 1
-	call .PlayerShareHP
-	ld a, $1
-	ld [wWhichHPBar], a
-	hlcoord 11, 9
-	predef AnimateHPBar
-	ld hl, EnemyMonHP
-	ld a, [hli]
-	ld [Buffer4], a
-	ld a, [hli]
-	ld [Buffer3], a
-	ld a, [hli]
-	ld [Buffer2], a
-	ld a, [hl]
-	ld [Buffer1], a
-	call .EnemyShareHP
-	xor a
-	ld [wWhichHPBar], a
-	call ResetDamage
-	hlcoord 1, 2
-	predef AnimateHPBar
-	farcall _UpdateBattleHUDs
 
-	ld hl, SharedPainText
+	; Get HP
+	ld a, [hBattleTurn]
+	and a
+	ld de, BattleMonHP + 1
+	ld hl, EnemyMonHP + 1
+	jr z, .got_hp
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+
+.got_hp
+	; Set bc to [de] - [hl] (user HP - target HP)
+	ld a, [de]
+	sub [hl]
+	ld c, a
+	dec de
+	dec hl
+	ld a, [de]
+	sbc [hl]
+	jr c, .target_has_more
+	ld b, a
+	or c
+	jr z, .done ; do nothing, they're equal
+
+	; User has more
+.share
+	; updates HP anim buffers
+	push bc
+	farcall GetMaxHP
+	pop bc
+	srl b
+	rr c
+	push bc
+	jr nc, .even_share
+	inc bc ; HP difference is odd, so round down result (HP decrease is done first)
+.even_share
+	farcall SubtractHPFromUser
+	call UpdateUserInParty
+	call SwitchTurn
+	farcall GetMaxHP
+	pop bc
+	farcall RestoreHP
+	call UpdateUserInParty
+	call SwitchTurn
+.done
+	ld hl, SharedPainText ; text is turn agnostic, so turn swap if target>user is OK
 	jp StdBattleTextBox
 
-.PlayerShareHP:
-	ld a, [hld]
-	ld [Buffer1], a
-	ld a, [hld]
-	ld [Buffer2], a
-	ld a, [hld]
+.target_has_more
+	cpl
 	ld b, a
-	ld [Buffer3], a
-	ld a, [hl]
-	ld [Buffer4], a
-	dec de
-	dec de
-	ld a, [de]
-	dec de
-	add b
-	ld [CurDamage + 1], a
-	ld b, [hl]
-	ld a, [de]
-	adc b
-	srl a
-	ld [CurDamage], a
-	ld a, [CurDamage + 1]
-	rr a
-	ld [CurDamage + 1], a
-rept 3
-	inc hl
-endr
-rept 3
-	inc de
-endr
-
-.EnemyShareHP: ; 359ac
-	ld c, [hl]
-	dec hl
-	ld a, [CurDamage + 1]
-	sub c
-	ld b, [hl]
-	dec hl
-	ld a, [CurDamage]
-	sbc b
-	jr nc, .skip
-
-	ld a, [CurDamage]
-	ld b, a
-	ld a, [CurDamage + 1]
-	ld c, a
-.skip
 	ld a, c
-	ld [hld], a
-	ld [Buffer5], a
-	ld a, b
-	ld [hli], a
-	ld [Buffer6], a
-	ret
+	cpl
+	ld c, a
+	inc bc
+	call SwitchTurn
+	call .share
+	jp SwitchTurn
 
-; 359cd
-
-.ButItFailed:
-	jp PrintDidntAffect2
-
-; 359d0
-
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 BattleCommand_LockOn: ; 35a53
 ; lockon
