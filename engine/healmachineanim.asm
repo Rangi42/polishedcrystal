@@ -63,7 +63,6 @@ endr
 	dw .HOF_LoadBallsOntoMachine
 	dw .PlayHealMusic
 	dw .HOF_PlaySFX
-	dw .dummy_5 ; never encountered
 ; 12383
 
 .LoadGFX: ; 12383
@@ -98,7 +97,6 @@ endr
 	call DelayFrames
 	dec b
 	jr nz, .party_loop
-.dummy_5 ; 123db
 	ret
 ; 123bf
 

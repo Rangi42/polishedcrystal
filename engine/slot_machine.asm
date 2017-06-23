@@ -121,7 +121,6 @@ SlotsLoop: ; 927af (24:67af)
 	ld [wCurrSpriteOAMAddr], a
 	farcall DoNextFrameForFirst16Sprites
 	call .PrintCoinsAndPayout
-	call .DummyFunc
 	call DelayFrame
 	and a
 	ret
@@ -129,30 +128,6 @@ SlotsLoop: ; 927af (24:67af)
 .stop
 	scf
 	ret
-
-.DummyFunc: ; 927d3 (24:67d3)
-; dummied out
-	ret
-	ld a, [wReel1ReelAction]
-	and a
-	ret nz
-	ld a, [wReel2ReelAction]
-	and a
-	ret nz
-	ld a, [wFirstTwoReelsMatchingSevens]
-	and a
-	jr nz, .matching_sevens
-	ld a, %11100100
-	jp DmgToCgbBGPals
-
-.matching_sevens
-	ld a, [TextDelayFrames]
-	and $7
-	ret nz
-	ld a, [rBGP]
-	xor %00001100
-	jp DmgToCgbBGPals
-
 ; 927f8
 
 .PrintCoinsAndPayout: ; 927f8 (24:67f8)

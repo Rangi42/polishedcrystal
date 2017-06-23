@@ -470,12 +470,9 @@ GetMapConnections:: ; 2368
 .no_west
 
 	bit EAST_F, b
-	jr z, .no_east
+	ret z
 	ld de, EastMapConnection
-	call GetMapConnection
-.no_east
-
-	ret
+	;jp GetMapConnection
 ; 23a3
 
 GetMapConnection:: ; 23a3

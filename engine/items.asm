@@ -14,7 +14,7 @@ _ReceiveItem:: ; d1d5
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM ; impossible
+	dw TMHM_Dummy
 	dw .Berry
 	dw .KeyItem
 
@@ -38,9 +38,6 @@ _ReceiveItem:: ; d1d5
 	ld hl, NumKeyItems
 	jp ReceiveKeyItem
 
-.TMHM: ; d201
-	ret
-
 _TossItem:: ; d20d
 	call DoesHLEqualNumItems
 	jr nz, .remove
@@ -57,7 +54,7 @@ _TossItem:: ; d20d
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM ; impossible
+	dw TMHM_Dummy
 	dw .Berry
 	dw .KeyItem
 
@@ -68,9 +65,6 @@ _TossItem:: ; d20d
 .Ball: ; d228
 	ld hl, NumBalls
 	jp RemoveItemFromPocket
-
-.TMHM: ; d22e
-	ret
 
 .Berry:
 	ld hl, NumBerries
@@ -103,7 +97,7 @@ _CheckItem:: ; d244
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM ; impossible
+	dw TMHM_Dummy
 	dw .Berry
 	dw .KeyItem
 
@@ -114,9 +108,6 @@ _CheckItem:: ; d244
 .Ball: ; d25f
 	ld hl, NumBalls
 	jp CheckTheItem
-
-.TMHM: ; d265
-	ret
 
 .Berry:
 	ld hl, NumBerries
@@ -179,6 +170,8 @@ GetPocketCapacity: ; d283
 
 .not_berries:
 	ld c, MAX_PC_ITEMS
+TMHM_Dummy:
+KeyItem_Dummy:
 	ret
 
 PutItemInPocket: ; d29c
@@ -530,9 +523,9 @@ _CountItem::
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw .TMHM ; impossible
+	dw TMHM_Dummy
 	dw .Berry
-	dw .KeyItem ; impossible
+	dw KeyItem_Dummy
 
 .Item:
 	ld hl, NumItems
@@ -549,10 +542,6 @@ _CountItem::
 .Berry:
 	ld hl, NumBerries
 	jp CountItemInPocket
-
-.KeyItem:
-.TMHM:
-	ret
 
 CountItemInPocket:
 	inc hl

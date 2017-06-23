@@ -1821,14 +1821,13 @@ BattleAnimFunction_LeechSeed: ; cda4d (33:5a4d)
 	and a
 	jr z, .flutter
 	dec [hl]
+.three: ; cda8c (33:5a8c)
 	ret
 
 .flutter
 	call BattleAnim_IncAnonJumptableIndex
 	ld a, BATTLEANIMFRAMESET_58
-	call ReinitBattleAnimFrameset
-.three: ; cda8c (33:5a8c)
-	ret
+	jp ReinitBattleAnimFrameset
 
 Functioncda8d: ; cda8d (33:5a8d)
 	dec [hl]
