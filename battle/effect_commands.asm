@@ -1886,14 +1886,12 @@ BattleCommand_CheckHit:
 	ld b, a
 	ld a, [hMultiplicand + 1]
 	or b
-	jr nz, .Hit ; final acc ended up >=100%
+	ret nz ; final acc ended up >=100%
 	ld a, [hMultiplicand + 2]
 	ld b, a
 	call BattleRandom
 	cp b
 	jr nc, .Miss
-
-.Hit:
 	ret
 
 
@@ -7171,22 +7169,20 @@ BattleCommand_Charge: ; 36b4d
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
-	cp SOLAR_BEAM
 	ld hl, .SolarBeam
-	jr z, .done
+	cp SOLAR_BEAM
+	ret z
 
-	cp SKY_ATTACK
 	ld hl, .SkyAttack
-	jr z, .done
+	cp SKY_ATTACK
+	ret z
 
-	cp FLY
 	ld hl, .Fly
-	jr z, .done
+	cp FLY
+	ret z
 
-	cp DIG
 	ld hl, .Dig
-
-.done
+	cp DIG
 	ret
 
 .SolarBeam:
@@ -8503,12 +8499,11 @@ DoubleDamage:
 	sla [hl]
 	dec hl
 	rl [hl]
-	jr nc, .quit
+	ret nc
 
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-.quit
 	ret
 
 DoFuryCutter:

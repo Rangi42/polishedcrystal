@@ -237,12 +237,12 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	jr nz, .d_up
 	bit D_DOWN_F, a
 	jr nz, .d_down
-	jr .done
+	ret
 
 .d_down
 	ld a, [MonType]
 	cp BOXMON
-	jr nc, .done
+	ret nc
 	and a
 	ld a, [PartyCount]
 	jr z, .next_mon
@@ -252,7 +252,7 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	ld a, [CurPartyMon]
 	inc a
 	cp b
-	jr z, .done
+	ret z
 	ld [CurPartyMon], a
 	ld b, a
 	ld a, [MonType]
@@ -266,7 +266,7 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 .d_up
 	ld a, [CurPartyMon]
 	and a
-	jr z, .done
+	ret z
 	dec a
 	ld [CurPartyMon], a
 	ld b, a
@@ -297,9 +297,6 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	jr nz, .set_page
 	ld c, $3
 	jr .set_page
-
-.done
-	ret
 
 .set_page
 	ld a, [wcf64]

@@ -1157,7 +1157,6 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	ld a, [hl]
 	add $4
 	ld [hl], a
-
 .four
 	ret
 

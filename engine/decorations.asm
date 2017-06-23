@@ -109,7 +109,8 @@ _KrisDecorationMenu: ; 0x2675c
 	ld a, [hli]
 	ld d, a
 	or e
-	jr z, .done
+	ret z
+
 	push hl
 	call _de_
 	pop hl
@@ -121,8 +122,6 @@ _KrisDecorationMenu: ; 0x2675c
 .next
 	inc hl
 	jr .loop
-.done
-	ret
 ; 26855 (9:6855)
 
 .dw ; 26855
@@ -149,7 +148,8 @@ CheckAllDecorationFlags: ; 2687a
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .done
+	ret z
+
 	push hl
 	push af
 	ld b, CHECK_FLAG
@@ -161,9 +161,6 @@ CheckAllDecorationFlags: ; 2687a
 	call nz, AppendDecoIndex
 	pop hl
 	jr .loop
-
-.done
-	ret
 ; 26891
 
 AppendDecoIndex: ; 26891
@@ -647,11 +644,6 @@ GetDecoName: ; 26c72
 	dw .bigdoll
 ; 26c8c
 
-
-.invalid ; 26c8c
-	ret
-; 26c8d
-
 .plant ; 26c8d
 	ld a, e
 	jr .getdeconame
@@ -704,7 +696,9 @@ GetDecoName: ; 26c72
 	ld d, h
 	ld e, l
 	pop bc
+.invalid ; 26c8c
 	ret
+; 26c8d
 
 .copy ; 26cda
 	ld h, b

@@ -42,10 +42,6 @@ DoAnimFrame: ; 8d24b
 	dw .IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
 	dw .Celebi             ; SPRITE_ANIM_SEQ_CELEBI
 
-
-.Null: ; 8d2a1 (23:52a1)
-	ret
-
 .PartyMon ; 8d2a2 (23:52a2)
 	ld a, [wMenuCursorY]
 
@@ -61,6 +57,7 @@ DoAnimFrame: ; 8d24b
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], $0
+.Null: ; 8d2a1 (23:52a1)
 	ret
 
 .PartyMonSwitch ; 8d2b9 (23:52b9)

@@ -1406,61 +1406,58 @@ AI_Smart_Counter: ; 38bf1
 	ld hl, PlayerUsedMoves
 	lb bc, 0, 4
 
-.asm_38bf9
+.loop
 	ld a, [hli]
 	and a
-	jr z, .asm_38c0e
+	jr z, .next
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_38c0e
+	jr z, .next
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
-	jr nc, .asm_38c0e
+	jr nc, .next
 
 	inc b
 
-.asm_38c0e
+.next
 	dec c
-	jr nz, .asm_38bf9
+	jr nz, .loop
 
 	pop hl
 	ld a, b
 	and a
-	jr z, .asm_38c39
+	jr z, .none
 
 	cp $3
-	jr nc, .asm_38c30
+	jr nc, .all
 
 	ld a, [PlayerSelectedMove]
 	and a
-	jr z, .asm_38c38
+	ret z
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_38c38
+	ret z
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
-	jr nc, .asm_38c38
+	ret nc
 
-
-.asm_38c30
+.all
 	call Random
-	cp $64
-	jr c, .asm_38c38
+	cp 100
+	ret c
 
 	dec [hl]
-
-.asm_38c38
 	ret
 
-.asm_38c39
+.none
 	inc [hl]
 	ret
 ; 38c3b
@@ -2629,62 +2626,60 @@ endr
 AI_Smart_MirrorCoat: ; 3918b
 	push hl
 	ld hl, PlayerUsedMoves
-	lb bc, $0, $4
+	lb bc, 0, 4
 
-.asm_39193
+.loop
 	ld a, [hli]
 	and a
-	jr z, .asm_391a8
+	jr z, .next
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_391a8
+	jr z, .next
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
-	jr c, .asm_391a8
+	jr c, .next
 
 	inc b
 
-.asm_391a8
+.next
 	dec c
-	jr nz, .asm_39193
+	jr nz, .loop
 
 	pop hl
 	ld a, b
 	and a
-	jr z, .asm_391d3
+	jr z, .none
 
 	cp $3
-	jr nc, .asm_391ca
+	jr nc, .all
 
 	ld a, [PlayerSelectedMove]
 	and a
-	jr z, .asm_391d2
+	ret z
 
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
-	jr z, .asm_391d2
+	ret z
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	cp SPECIAL
-	jr c, .asm_391d2
+	ret c
 
-
-.asm_391ca
+.all
 	call Random
 	cp 100
-	jr c, .asm_391d2
-	dec [hl]
+	ret c
 
-.asm_391d2
+	dec [hl]
 	ret
 
-.asm_391d3
+.none
 	inc [hl]
 	ret
 ; 391d5
@@ -3076,12 +3071,12 @@ AI_Opportunist: ; 39315
 .checkmove
 	inc hl
 	dec c
-	jr z, .asm_39347
+	ret z
 
 	ld a, [de]
 	inc de
 	and a
-	jr z, .asm_39347
+	ret z
 
 	push hl
 	push de
@@ -3097,9 +3092,6 @@ AI_Opportunist: ; 39315
 
 	inc [hl]
 	jr .checkmove
-
-.asm_39347
-	ret
 
 .stallmoves
 	db SWORDS_DANCE
@@ -3192,7 +3184,7 @@ AI_Aggressive: ; 39369
 ; Nothing we can do if no attacks did damage.
 	ld a, c
 	and a
-	jr z, .done
+	ret z
 
 ; Discourage moves that do less damage unless they're reckless too.
 	ld hl, Buffer1 - 1
@@ -3202,7 +3194,7 @@ AI_Aggressive: ; 39369
 	inc b
 	ld a, b
 	cp EnemyMonMovesEnd - EnemyMonMoves + 1
-	jr z, .done
+	ret z
 
 ; Ignore this move if it is the highest damaging one.
 	cp c
@@ -3236,9 +3228,6 @@ AI_Aggressive: ; 39369
 ; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
-
-.done
-	ret
 
 .RecklessMoves:
 	db EFFECT_EXPLOSION

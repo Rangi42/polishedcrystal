@@ -1668,14 +1668,13 @@ StatsScreenDPad: ; e2f95 (38:6f95)
 	ld a, [hl]
 	and A_BUTTON | B_BUTTON | D_RIGHT | D_LEFT
 	ld [wMenuJoypad], a
-	jr nz, .pressed_a_b_right_left
+	ret nz
+
 	ld a, [hl]
 	and D_DOWN | D_UP
 	ld [wMenuJoypad], a
-	jr nz, .pressed_down_up
-	jr .pressed_a_b_right_left
+	ret z
 
-.pressed_down_up
 	call _StatsScreenDPad
 	and a
 	jr z, .did_nothing
@@ -1688,9 +1687,7 @@ StatsScreenDPad: ; e2f95 (38:6f95)
 	ld hl, TempMonForm
 	predef GetVariant
 	call GetBaseData
-	call BillsPC_CopyMon
-.pressed_a_b_right_left
-	ret
+	jp BillsPC_CopyMon
 
 .did_nothing
 	xor a

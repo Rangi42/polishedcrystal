@@ -164,7 +164,7 @@ WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 BattleTurn: ; 3c12f
 .loop
 	call CheckContestBattleOver
-	jp c, .quit
+	ret c
 
 	xor a
 	ld [wPlayerIsSwitching], a
@@ -182,19 +182,19 @@ BattleTurn: ; 3c12f
 	jr c, .skip_iteration
 .loop1
 	call BattleMenu
-	jr c, .quit
+	ret c
 	ld a, [BattleEnded]
 	and a
-	jr nz, .quit
+	ret nz
 	ld a, [wForcedSwitch] ; roared/teleported
 	and a
-	jr nz, .quit
+	ret nz
 .skip_iteration
 	call ParsePlayerAction
 	jr nz, .loop1
 
 	call EnemyTriesToFlee
-	jr c, .quit
+	ret c
 
 	call DetermineMoveOrder
 	jr c, .false
@@ -205,20 +205,17 @@ BattleTurn: ; 3c12f
 .proceed
 	ld a, [wForcedSwitch]
 	and a
-	jr nz, .quit
+	ret nz
 
 	ld a, [BattleEnded]
 	and a
-	jr nz, .quit
+	ret nz
 
 	call HandleBetweenTurnEffects
 	ld a, [BattleEnded]
 	and a
-	jr nz, .quit
+	ret nz
 	jp .loop
-
-.quit
-	ret
 ; 3c1bf
 
 
@@ -1409,7 +1406,7 @@ HandleLeppaBerry:
 	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_RESTORE_PP
-	jr nz, .quit
+	ret nz
 	ld hl, PartyMon1PP
 	ld a, [CurBattleMon]
 	call GetPartyLocation
@@ -1440,7 +1437,7 @@ HandleLeppaBerry:
 .loop
 	ld a, [hl]
 	and a
-	jr z, .quit
+	ret z
 	ld a, [de]
 	and $3f
 	jr z, .restore
@@ -1450,8 +1447,6 @@ HandleLeppaBerry:
 	ld a, c
 	cp NUM_MOVES
 	jr nz, .loop
-
-.quit
 	ret
 
 .restore
@@ -1919,9 +1914,8 @@ GetThirdMaxHP::
 	; floor = 1
 	and a
 	ld c, a
-	jr nz, .end
+	ret nz
 	inc c
-.end
 	ret
 
 GetEighthMaxHP:
@@ -1958,9 +1952,8 @@ HalfHP:
 	; floor = 1
 	ld a, c
 	or b
-	jr nz, .end
+	ret nz
 	inc c
-.end
 	ret
 
 
@@ -4580,7 +4573,7 @@ CheckDanger: ; 3df9e
 	jr z, .no_danger
 	ld a, [wDanger]
 	and a
-	jr nz, .done
+	ret nz
 	ld a, [PlayerHPPal]
 	cp HP_RED
 	jr z, .danger
@@ -4588,13 +4581,11 @@ CheckDanger: ; 3df9e
 .no_danger
 	xor a
 	ld [Danger], a
-	jr .done
+	ret
 
 .danger
 	ld hl, Danger
 	set 7, [hl]
-
-.done
 	ret
 ; 3dfbf
 
@@ -5818,8 +5809,7 @@ MoveInfoBox: ; 3e6c8
 
 	hlcoord 1, 10
 	ld de, .Disabled
-	call PlaceString
-	jp .done
+	jp PlaceString
 
 .not_disabled
 	ld hl, wMenuCursorY
@@ -5944,10 +5934,7 @@ MoveInfoBox: ; 3e6c8
 
 	farcall LoadBattleCategoryAndTypePals
 	call WaitBGMap
-	call SetPalettes
-
-.done
-	ret
+	jp SetPalettes
 ; 3e74f
 
 .Disabled:
@@ -8325,7 +8312,7 @@ PlaceExpBar: ; 3f41c
 	ld a, $78 ; full thin bar
 	ld [hli], a
 	dec c
-	jr z, .finish
+	ret z
 	jr .loop1
 
 .next
@@ -8342,8 +8329,6 @@ PlaceExpBar: ; 3f41c
 	ld a, $70 ; empty thin bar
 	dec c
 	jr nz, .loop2
-
-.finish
 	ret
 ; 3f43d
 
@@ -8551,7 +8536,7 @@ InitEnemyTrainer: ; 3f594
 	ld [wBattleMode], a
 
 	call IsBossTrainer
-	jr nc, .done
+	ret nc
 	xor a
 	ld [CurPartyMon], a
 	ld a, [PartyCount]
@@ -8568,12 +8553,10 @@ InitEnemyTrainer: ; 3f594
 .skipfaintedmon
 	pop bc
 	dec b
-	jr z, .done
+	ret z
 	ld hl, CurPartyMon
 	inc [hl]
 	jr .partyloop
-.done
-	ret
 ; 3f607
 
 InitEnemyWildmon: ; 3f607
@@ -8917,7 +8900,7 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	hlcoord 6, 4
 	ld de, sLinkBattleWins
 	call .PrintZerosIfNoSaveFileExists
-	jr c, .quit
+	ret c
 
 	lb bc, 2, 4
 	call PrintNum
@@ -8934,10 +8917,7 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	call .PrintZerosIfNoSaveFileExists
 
 	lb bc, 2, 4
-	call PrintNum
-
-.quit
-	ret
+	jp PrintNum
 
 .PrintZerosIfNoSaveFileExists:
 	ld a, [wSavedAtLeastOnce]

@@ -33,7 +33,7 @@ HealParty: ; c658
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .done
+	ret z
 	cp EGG
 	jr z, .next
 
@@ -46,9 +46,6 @@ HealParty: ; c658
 	inc a
 	ld [CurPartyMon], a
 	jr .loop
-
-.done
-	ret
 
 HealPartyMon: ; c677
 	ld a, MON_SPECIES
@@ -81,7 +78,7 @@ HealPartyMon: ; c677
 	inc hl
 	or [hl]
 	pop hl
-	jr z, .Done
+	ret z
 
 .Revive:
 	ld a, [hli]
@@ -91,7 +88,6 @@ HealPartyMon: ; c677
 	ld [bc], a
 
 	farcall RestoreAllPP
-.Done:
 	ret
 
 ComputeHPBarPixels: ; c699

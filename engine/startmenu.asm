@@ -746,7 +746,7 @@ GiveTakePartyMonItem: ; 12b60
 
 	ld a, [wcf66]
 	and a
-	jr z, .quit
+	ret z
 
 	ld a, [wCurrPocket]
 	cp KEY_ITEM - 1
@@ -759,16 +759,12 @@ GiveTakePartyMonItem: ; 12b60
 	and a
 	jr nz, .next
 
-	call TryGiveItemToPartymon
-	jr .quit
+	jp TryGiveItemToPartymon
 
 .next
 	ld hl, CantBeHeldText
 	call MenuTextBoxBackup
 	jr .loop
-
-.quit
-	ret
 ; 12bd9
 
 
@@ -805,7 +801,7 @@ TryGiveItemToPartymon: ; 12bd9
 	call GetItemName
 	ld hl, SwitchAlreadyHoldingText
 	call StartMenuYesNo
-	jr c, .abort
+	ret c
 
 	call GiveItemToPokemon
 	ld a, [wd265]
@@ -828,10 +824,7 @@ TryGiveItemToPartymon: ; 12bd9
 	ld [CurItem], a
 	call ReceiveItemFromPokemon
 	ld hl, ItemStorageIsFullText
-	call MenuTextBoxBackup
-
-.abort
-	ret
+	jp MenuTextBoxBackup
 ; 12c4c
 
 
@@ -842,11 +835,8 @@ GivePartyItem: ; 12c4c
 	ld [hl], a
 	ld d, a
 	farcall ItemIsMail
-	jr nc, .done
-	call ComposeMailMessage
-
-.done
-	ret
+	ret nc
+	jp ComposeMailMessage
 ; 12c60
 
 
@@ -869,20 +859,15 @@ TakePartyItem: ; 12c60
 	ld [hl], NO_ITEM
 	call GetItemName
 	ld hl, TookFromText
-	call MenuTextBoxBackup
-	jr .asm_12c9a
+	jp MenuTextBoxBackup
 
 .asm_12c8c
 	ld hl, IsntHoldingAnythingText
-	call MenuTextBoxBackup
-	jr .asm_12c9a
+	jp MenuTextBoxBackup
 
 .asm_12c94
 	ld hl, ItemStorageIsFullText
-	call MenuTextBoxBackup
-
-.asm_12c9a
-	ret
+	jp MenuTextBoxBackup
 ; 12c9b
 
 

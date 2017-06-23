@@ -15,15 +15,12 @@ MainMenu: ; 49cdc
 	call LoadMenuDataHeader
 	call MainMenuJoypadLoop
 	call CloseWindow
-	jr c, .quit
+	ret c
 	call ClearTileMap
 	ld a, [MenuSelection]
 	ld hl, .Jumptable
 	rst JumpTable
 	jr MainMenu
-
-.quit
-	ret
 ; 49d14
 
 .MenuDataHeader: ; 49d14

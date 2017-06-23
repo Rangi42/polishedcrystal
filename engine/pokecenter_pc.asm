@@ -333,7 +333,7 @@ KrisWithdrawItemMenu: ; 0x157d1
 	farcall SelectQuantityToToss
 	call ExitMenu
 	call ExitMenu
-	jr c, .done
+	ret c
 
 .withdraw
 	ld a, [wItemQuantityChangeBuffer]
@@ -359,9 +359,6 @@ KrisWithdrawItemMenu: ; 0x157d1
 .PackFull:
 	ld hl, .NoRoomText
 	jp MenuTextBoxBackup
-
-.done
-	ret
 
 .HowManyText: ; 0x15850
 	text_jump _KrissPCHowManyWithdrawText

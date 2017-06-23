@@ -413,10 +413,10 @@ Script_repeattext: ; 96ebb
 	call GetScriptByte
 	ld h, a
 	cp -1
-	jr nz, .done
+	ret nz
 	ld a, l
 	cp -1
-	jr nz, .done
+	ret nz
 	ld hl, wScriptTextBank
 	ld a, [hli]
 	ld b, a
@@ -424,9 +424,6 @@ Script_repeattext: ; 96ebb
 	ld h, [hl]
 	ld l, a
 	jp MapTextbox
-
-.done
-	ret
 ; 96ed9
 
 Script_waitbutton: ; 96ed9
@@ -1934,10 +1931,9 @@ DoTrigger: ; 975fd
 	call GetMapTrigger
 	ld a, d
 	or e
-	jr z, .no_trigger
+	ret z
 	call GetScriptByte
 	ld [de], a
-.no_trigger
 	ret
 ; 97609
 

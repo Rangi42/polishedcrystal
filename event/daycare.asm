@@ -1080,18 +1080,14 @@ DayCare_InitBreeding: ; 16a3b
 	ld b, a
 	ld a, [wBreedMon2Species]
 	cp b
+	ld a, [wBreedMotherOrNonDitto]
 	jr nz, .use_mother
 	call Random
 	and 1
+.use_mother
 	inc a
 	call GetParentAddr
 	ld a, [hl]
-	jr .got_addr
-.use_mother
-	ld a, [wBreedMotherOrNonDitto]
-	inc a
-	call GetParentAddr
-.got_addr
 	ret
 
 .String_EGG:

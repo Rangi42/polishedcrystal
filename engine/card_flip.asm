@@ -404,13 +404,11 @@ GetCoordsOfChosenCard: ; e03ac
 	jr nz, .BottomCard
 	hlcoord 2, 0
 	bcpixel 2, 3
-	jr .done
+	ret
 
 .BottomCard:
 	hlcoord 2, 6
 	bcpixel 8, 3
-
-.done
 	ret
 ; e03c1
 

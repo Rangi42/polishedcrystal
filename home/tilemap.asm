@@ -170,10 +170,8 @@ GetMenuTextStartCoord:: ; 1cc6
 ; bit 7: if set, leave extra room on the left
 	ld a, [wMenuData2Flags]
 	bit 7, a
-	jr z, .bit_7_clear
+	ret z
 	inc c
-
-.bit_7_clear
 	ret
 ; 1ce1
 

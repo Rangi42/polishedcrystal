@@ -742,10 +742,7 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 	ld hl, hJoyPressed
 	ld a, [hl]
 	and A_BUTTON | B_BUTTON
-	jr nz, .a_b
-	jp Pokedex_UnownModeHandleDPadInput
-
-.a_b
+	jr z, Pokedex_UnownModeHandleDPadInput
 	call Pokedex_BlackOutBG
 	ld a, [OptionsBuffer]
 	ld [Options2], a
@@ -758,10 +755,7 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 	ld hl, PokedexLZ
 	ld de, VTiles2 tile $31
 	lb bc, BANK(PokedexLZ), $34
-	call DecompressRequest2bpp
-
-.done
-	ret
+	jp DecompressRequest2bpp
 
 Pokedex_UnownModeHandleDPadInput: ; 40610 (10:4610)
 	ld hl, hJoyLast
@@ -1230,14 +1224,13 @@ Pokedex_PlaceSearchResultsTypeStrings: ; 409cf (10:49cf)
 	ld b, a
 	ld a, [wDexSearchMonType2]
 	and a
-	jr z, .done
+	ret z
 	cp b
-	jr z, .done
+	ret z
 	hlcoord 1, 15
 	call Pokedex_PlaceTypeString
 	hlcoord 0, 15
 	ld [hl], "/"
-.done
 	ret
 
 Pokedex_DrawUnownModeBG: ; 409f1 (10:49f1)
@@ -1623,14 +1616,11 @@ Pokedex_ABCMode: ; 40c30
 	ld c, 0
 .loop2abc
 	cp NUM_POKEMON
-	jr z, .doneabc
+	ret z
 	ld [hl], c
 	inc hl
 	inc a
 	jr .loop2abc
-
-.doneabc
-	ret
 
 AlphabeticalPokedexOrder: ; 0x40c65
 INCLUDE "data/pokedex/order_alpha.asm"
@@ -1887,14 +1877,11 @@ Pokedex_SearchForMons: ; 41086
 
 .zero_remaining_mons
 	cp NUM_POKEMON
-	jr z, .done
+	ret z
 	ld [hl], c
 	inc hl
 	inc a
 	jr .zero_remaining_mons
-
-.done
-	ret
 
 .TypeConversionTable: ; 410f6
 	db NORMAL

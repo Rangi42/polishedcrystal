@@ -421,13 +421,11 @@ MailboxPC: ; 0x44806
 	call LoadMenuDataHeader
 	call VerticalMenu
 	call ExitMenu
-	jr c, .subexit
+	ret c
 	ld a, [wMenuCursorY]
 	dec a
 	ld hl, .JumpTable
 	rst JumpTable
-
-.subexit
 	ret
 ; 0x44861
 

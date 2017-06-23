@@ -72,13 +72,11 @@ SaveAndChangeBox:
 
 Link_SaveGame: ; 14ab2
 	call AskOverwriteSaveFile
-	jr c, .refused
+	ret c
 	call SetWRAMStateForSave
 	call _SavingDontTurnOffThePower
 	call ClearWRAMStateAfterSave
 	and a
-
-.refused
 	ret
 ; 14ac2
 

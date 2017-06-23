@@ -1064,9 +1064,8 @@ endr
 	ld a, [hli]
 	cp -1
 	ld a, NO_ITEM
-	jr z, .done
+	ret z
 	ld a, [hli]
-.done
 	ret
 
 .HeldItems:

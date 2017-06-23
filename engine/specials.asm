@@ -714,16 +714,13 @@ RespawnOneOffs:
 	ld a, HO_OH
 	dec a
 	call CheckCaughtMon
-	jr nz, .CaughtHoOh
+	ret nz
 	ld de, EVENT_TIN_TOWER_ROOF_HO_OH
 	ld b, RESET_FLAG
 	call EventFlagAction
 	ld de, EVENT_FOUGHT_HO_OH
 	ld b, RESET_FLAG
-	call EventFlagAction
-
-.CaughtHoOh
-	ret
+	jp EventFlagAction
 
 BillBoxSwitchCheck:
 	ld a, [wCurBox]

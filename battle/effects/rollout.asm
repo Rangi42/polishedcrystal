@@ -82,7 +82,7 @@ BattleCommand_RolloutPower: ; 37734
 .not_curled
 .loop
 	dec b
-	jr z, .done_damage
+	ret z
 
 	ld hl, CurDamage + 1
 	sla [hl]
@@ -93,7 +93,5 @@ BattleCommand_RolloutPower: ; 37734
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-
-.done_damage
 	ret
 ; 37791

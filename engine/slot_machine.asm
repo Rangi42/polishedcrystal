@@ -1241,6 +1241,7 @@ Slots_CheckMatchedFirstTwoReels: ; 92e94
 	and a
 	ret z
 	scf
+.zero ; 92ed4
 	ret
 
 ; 92ebd
@@ -1262,11 +1263,7 @@ Slots_CheckMatchedFirstTwoReels: ; 92e94
 	call .CheckTopRow
 
 .one ; 92ed1
-	call .CheckMiddleRow
-
-.zero ; 92ed4
-	ret
-
+	jp .CheckMiddleRow
 ; 92ed5
 
 .CheckBottomRow: ; 92ed5
@@ -1356,6 +1353,7 @@ Slots_CheckMatchedAllThreeReels: ; 92f1d
 
 .matched_nontrivial
 	scf
+.zero ; 92f5f
 	ret
 
 ; 92f48
@@ -1371,17 +1369,11 @@ Slots_CheckMatchedAllThreeReels: ; 92f1d
 .three ; 92f50
 	call .CheckUpwardsDiag
 	call .CheckDownwardsDiag
-
 .two ; 92f56
 	call .CheckBottomRow
 	call .CheckTopRow
-
 .one ; 92f5c
-	call .CheckMiddleRow
-
-.zero ; 92f5f
-	ret
-
+	jp .CheckMiddleRow
 ; 92f60
 
 .CheckBottomRow: ; 92f60

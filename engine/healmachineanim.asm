@@ -37,13 +37,10 @@ endr
 	add hl, de
 	ld a, [hl]
 	cp 5
-	jr z, .finish
+	ret z
 	ld hl, .Jumptable
 	rst JumpTable
 	jr .jumpable_loop
-
-.finish
-	ret
 ; 12365
 
 .Pointers: ; 12365
@@ -101,6 +98,7 @@ endr
 	call DelayFrames
 	dec b
 	jr nz, .party_loop
+.dummy_5 ; 123db
 	ret
 ; 123bf
 
@@ -118,10 +116,6 @@ endr
 	ld de, SFX_BOOT_PC
 	jp PlaySFX
 ; 123db
-
-.dummy_5 ; 123db
-	ret
-; 123dc
 
 .PC_ElmsLab_OAM: ; 123dc
 	dsprite   4, 0,   4, 2, $7c, $16

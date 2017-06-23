@@ -350,7 +350,8 @@ LoadOrRegenerateLuckyIDNumber: ; 5d33
 
 Continue: ; 5d65
 	farcall TryLoadSaveFile
-	jr c, .FailToLoad
+	ret c
+
 	call LoadStandardMenuDataHeader
 	call DisplaySaveInfoOnContinue
 	ld a, $1
@@ -359,20 +360,17 @@ Continue: ; 5d65
 	call DelayFrames
 	call ConfirmContinue
 	jr nc, .Check1Pass
-	call CloseWindow
-	jr .FailToLoad
+	jp CloseWindow
 
 .Check1Pass:
 	call Continue_CheckRTC_RestartClock
 	jr nc, .Check2Pass
-	call CloseWindow
-	jr .FailToLoad
+	jp CloseWindow
 
 .Check2Pass:
 	call Continue_CheckEGO_ResetInitialOptions
 ;	jr nc, .Check3Pass
-;	call CloseWindow
-;	jr .FailToLoad
+;	jp CloseWindow
 
 ;.Check3Pass:
 	ld a, $8
@@ -394,9 +392,6 @@ Continue: ; 5d65
 	ld a, MAPSETUP_CONTINUE
 	ld [hMapEntryMethod], a
 	jp FinishContinueFunction
-
-.FailToLoad:
-	ret
 
 .SpawnAfterE4:
 	ld a, SPAWN_NEW_BARK
@@ -424,13 +419,10 @@ ConfirmContinue: ; 5e34
 	call GetJoypad
 	ld hl, hJoyPressed
 	bit A_BUTTON_F, [hl]
-	jr nz, .PressA
+	ret nz
 	bit B_BUTTON_F, [hl]
 	jr z, .loop
 	scf
-	ret
-
-.PressA:
 	ret
 ; 5e48
 

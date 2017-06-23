@@ -237,9 +237,9 @@ IsFieldMove: ; 24e52
 .next
 	ld a, [hli]
 	cp -1
-	jr z, .nope
+	ret z
 	cp MONMENU_MENUOPTION
-	jr z, .nope
+	ret z
 	ld d, [hl]
 	inc hl
 	ld a, [hli]
@@ -247,8 +247,6 @@ IsFieldMove: ; 24e52
 	jr nz, .next
 	ld a, d
 	scf
-
-.nope
 	ret
 ; 24e68
 

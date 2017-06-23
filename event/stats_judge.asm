@@ -20,7 +20,7 @@ SpecialStatsJudge: ; 4f0bc
 	jr z, .egg
 
 	call IsAPokemon
-	jr c, .no_mon
+	ret c
 
 	call ReadDVs
 	call JudgePokemon
@@ -29,9 +29,6 @@ SpecialStatsJudge: ; 4f0bc
 .cancel
 	ld hl, .Cancel
 	jp PrintText
-
-.no_mon
-	ret
 
 .egg
 	ld hl, .Egg

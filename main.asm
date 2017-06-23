@@ -758,17 +758,14 @@ PlaceMenuItemQuantity: ; 0x24ac3
 	ld a, [wItemAttributeParamBuffer]
 	pop hl
 	and a
-	jr nz, .done
+	ret nz
 	ld de, $15
 	add hl, de
 	ld [hl], "×"
 	inc hl
 	ld de, MenuSelectionQuantity
 	lb bc, 1, 2
-	call PrintNum
-
-.done
-	ret
+	jp PrintNum
 
 PlaceMoneyTopRight: ; 24ae8
 	ld hl, MenuDataHeader_0x24b15
@@ -3821,17 +3818,14 @@ CopyPkmnToTempMon: ; 5084a
 	jr z, .copywholestruct
 	ld bc, BOXMON_STRUCT_LENGTH
 	farcall CopyBoxmonToTempMon
-	jr .done
+	ret
 
 .copywholestruct
 	ld a, [CurPartyMon]
 	call AddNTimes
 	ld de, TempMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
-
-.done
-	ret
+	jp CopyBytes
 
 CalcwBufferMonStats: ; 5088b
 	ld bc, wBufferMon
@@ -4198,7 +4192,7 @@ endr
 .loop
 	ld a, [hli]
 	and a
-	jr z, .done
+	ret z
 	push bc
 	push hl
 	push de
@@ -4243,8 +4237,6 @@ endr
 	ld a, b
 	cp NUM_MOVES
 	jr nz, .loop
-
-.done
 	ret
 
 .load_loop ; 50cc9
@@ -4394,7 +4386,7 @@ ListMoves: ; 50d6f
 	pop de
 	ld a, b
 	cp NUM_MOVES
-	jr z, .done
+	ret z
 	jr .moves_loop
 
 .no_more_moves
@@ -4410,8 +4402,6 @@ ListMoves: ; 50d6f
 	inc a
 	cp NUM_MOVES
 	jr nz, .nonmove_loop
-
-.done
 	ret
 
 InitList: ; 50db9
@@ -4665,14 +4655,12 @@ _SwitchPartyMons:
 	dec a
 	ld [Buffer2], a ; wd1eb (aliases: MovementType)
 	cp b
-	jr z, .skip
+	ret z
 	call .SwapMonAndMail
 	ld a, [Buffer3]
 	call .ClearSprite
 	ld a, [Buffer2] ; wd1eb (aliases: MovementType)
-	call .ClearSprite
-.skip
-	ret
+	;jp .ClearSprite
 
 .ClearSprite: ; 50f34 (14:4f34)
 	push af
@@ -5156,13 +5144,11 @@ GetPlayerIcon: ; 8832c
 
 	ld a, [PlayerGender]
 	bit 0, a
-	jr z, .done
+	ret z
 
 ; Female
 	ld de, KrisSpriteGFX
 	ld b, BANK(KrisSpriteGFX)
-
-.done
 	ret
 
 GetCardPic: ; 8833e
@@ -5618,7 +5604,7 @@ INCLUDE "engine/link_trade2.asm"
 PlaySlowCry: ; fb841
 	ld a, [ScriptVar]
 	call LoadCryHeader
-	jr c, .done
+	ret c
 
 	ld hl, CryPitch
 	ld a, [hli]
@@ -5641,10 +5627,7 @@ PlaySlowCry: ; fb841
 	ld a, h
 	ld [CryLength + 1], a
 	farcall _PlayCryHeader
-	call WaitSFX
-
-.done
-	ret
+	jp WaitSFX
 ; fb877
 
 NewPokedexEntry: ; fb877

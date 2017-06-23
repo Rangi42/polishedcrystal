@@ -1687,7 +1687,7 @@ PrintBCDNumber:: ; 38bb
 	dec c
 	jr nz, .loop
 	bit 7, b ; were any non-zero digits printed?
-	jr z, .done ; if so, we are done
+	ret z ; if so, we are done
 .numberEqualsZero ; if every digit of the BCD number is zero
 	bit 6, b ; left or right alignment?
 	jr nz, .skipRightAlignmentAdjustment
@@ -1701,7 +1701,6 @@ PrintBCDNumber:: ; 38bb
 	ld [hl], "0"
 	call PrintLetterDelay
 	inc hl
-.done
 	ret
 ; 0x38f2
 

@@ -120,16 +120,13 @@ OWCutAnimation: ; 8c940
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
-	jr nz, .finish
+	ret nz
 	ld a, 36 * 4
 	ld [wCurrSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
-
-.finish
-	ret
 ; 8c96d
 
 .LoadCutGFX: ; 8c96d

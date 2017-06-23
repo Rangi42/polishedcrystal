@@ -640,7 +640,7 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	ld e, a
 	ld d, 0
 	add hl, de
-	jr .skip2
+	ret
 
 .go
 	ld a, [wPokeAnimBitmaskCurCol]
@@ -651,8 +651,6 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	ld a, h
 	sbc 0
 	ld h, a
-
-.skip2
 	ret
 ; d03f4
 

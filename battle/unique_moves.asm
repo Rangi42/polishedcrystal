@@ -3,7 +3,8 @@ CheckUniqueWildMove:
 .loop
 	ld a, [hli] ; MapGroup
 	cp -1
-	jr z, .notunique
+	ret z
+
 	ld b, a
 	ld a, [MapGroup]
 	cp b
@@ -36,11 +37,13 @@ CheckUniqueWildMove:
 	call RandomRange
 	and a
 	ret nz
+
 .TeachMove
 	ld hl, EnemyMonMoves + 1 ; second move
 	ld a, b
 	ld [hl], a
 	ret
+
 .inc4andloop
 	inc hl
 .inc3andloop
@@ -49,8 +52,6 @@ CheckUniqueWildMove:
 	inc hl
 	inc hl
 	jp .loop
-.notunique
-	ret
 
 
 UniqueWildMoves:

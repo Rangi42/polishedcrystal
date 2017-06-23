@@ -137,12 +137,9 @@ MapEvents: ; 96795
 	call PlayerEvents
 	call DisableEvents
 	farcall ScriptEvents
-	ret
-; 967ae
-
 .no_events ; 967ae
 	ret
-; 967af
+; 967ae
 
 MaxOverworldDelay: ; 967af
 	db 2

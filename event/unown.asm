@@ -38,7 +38,7 @@ SpecialOmanyteChamber: ; 8adef
 	call EventFlagAction
 	ld a, c
 	and a
-	jr nz, .nope
+	ret nz
 
 	ld a, WATER_STONE
 	ld [CurItem], a
@@ -51,7 +51,7 @@ SpecialOmanyteChamber: ; 8adef
 	inc b
 .loop
 	dec b
-	jr z, .nope
+	ret z
 	ld a, b
 	dec a
 	ld [CurPartyMon], a
@@ -67,10 +67,7 @@ SpecialOmanyteChamber: ; 8adef
 	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ld b, SET_FLAG
-	call EventFlagAction
-
-.nope
-	ret
+	jp EventFlagAction
 ; 8ae30
 
 SpecialAerodactylChamber: ; 8ae30

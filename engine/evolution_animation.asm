@@ -108,7 +108,7 @@ EvolutionAnimation: ; 4e5e1
 	call .PlayEvolvedSFX
 	farcall ClearSpriteAnims
 	call .check_statused
-	jr c, .no_anim
+	ret c
 
 	ld a, [wBoxAlignment]
 	push af
@@ -127,9 +127,6 @@ EvolutionAnimation: ; 4e5e1
 	ld [CurPartySpecies], a
 	pop af
 	ld [wBoxAlignment], a
-	ret
-
-.no_anim
 	ret
 
 .cancel_evo

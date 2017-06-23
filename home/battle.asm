@@ -735,14 +735,13 @@ CheckContactMove::
 	jr z, .protective_pads
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE ; don't cpl, minimize risk of longterm bugs
-	jr z, .struggle
+	cp STRUGGLE
+	ret z
 	ld hl, ContactMoves
 	ld de, 1
 	call IsInArray
 .protective_pads
 	ccf
-.struggle
 	ret
 
 HasUserFainted::
