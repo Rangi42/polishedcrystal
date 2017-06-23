@@ -93,7 +93,6 @@ INCLUDE "maps/SlowpokeWellB2F.asm"
 INCLUDE "maps/OlivineLighthouse1F.asm"
 INCLUDE "maps/OlivineLighthouse2F.asm"
 INCLUDE "maps/OlivineLighthouse3F.asm"
-INCLUDE "maps/OlivineLighthouse4F.asm"
 
 
 SECTION "Map Scripts 3", ROMX, BANK[MAP_SCRIPTS_3]
@@ -198,7 +197,6 @@ INCLUDE "maps/MountMoonSquare.asm"
 INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route42.asm"
 INCLUDE "maps/ElmsHouse.asm"
-INCLUDE "maps/KrissNeighborsHouse.asm"
 
 
 SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
@@ -487,8 +485,6 @@ INCLUDE "maps/EcruteakShrineOutside.asm"
 INCLUDE "maps/EcruteakShrineInside.asm"
 INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/VermilionCity.asm"
-INCLUDE "maps/Route2North.asm"
-INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/Route9.asm"
 INCLUDE "maps/Route14.asm"
 INCLUDE "maps/Route22.asm"
@@ -591,7 +587,6 @@ INCLUDE "maps/Route39.asm"
 INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/PewterNidoranSpeechHouse.asm"
 INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
-INCLUDE "maps/ViridianForest.asm"
 
 
 SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
@@ -787,3 +782,13 @@ INCLUDE "maps/IvysLab.asm"
 INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/ValenciaHouse.asm"
 INCLUDE "maps/ValenciaPort.asm"
+
+
+SECTION "Map Scripts 42", ROMX
+
+INCLUDE "maps/KrissNeighborsHouse.asm"
+INCLUDE "maps/Route2North.asm"
+INCLUDE "maps/Route2South.asm"
+INCLUDE "maps/ViridianForest.asm"
+INCLUDE "maps/OlivineLighthouse4F.asm"
+

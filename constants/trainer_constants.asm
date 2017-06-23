@@ -797,6 +797,7 @@ KRIS EQU __enum__
 	const NOZOMI
 	const RONDA
 	const PADMA
+	const EMY
 
 	trainerclass DRAGON_TAMER ; 51
 	const PAUL
@@ -938,6 +939,7 @@ KRIS EQU __enum__
 	const BONITA
 	const SERA
 	const NEESHA
+	const CHIARA
 
 	trainerclass ACE_DUO ; 60
 	const ELANANDIDA1

@@ -8,6 +8,7 @@ const_value set 2
 	const ROUTE37_FRUIT_TREE3
 	const ROUTE37_BEAUTY1
 	const ROUTE37_BEAUTY2
+	const ROUTE37_COOLTRAINERF
 
 Route37_MapScriptHeader:
 .MapTriggers:
@@ -125,6 +126,138 @@ BeautyCassandraScript:
 	closetext
 	end
 
+Route37CooltrainerfChiaraScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_37_LEADER
+	iftrue .GotBindingBand
+	checkevent EVENT_BEAT_COOLTRAINERF_CHIARA
+	iftrue .Beaten
+	checkevent EVENT_BEAT_SCHOOLBOY_ALAN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PSYCHIC_MARK
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_SCHOOLGIRL_MOLLY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_TWINS_ANN_AND_ANNE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PSYCHIC_GREG
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BEAUTY_CALLIE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BEAUTY_CASSANDRA
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE37_COOLTRAINERF
+	loadtrainer COOLTRAINERF, CHIARA
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_COOLTRAINERF_CHIARA
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem BINDING_BAND
+	iffalse .Done
+	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_37_LEADER
+.GotBindingBand:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
+	waitbutton
+	closetext
+	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "I saw how you woke"
+	line "up that Sudowoodo."
+
+	para "You did great!"
+
+	para "And you have a"
+	line "Plain Badge."
+	cont "So do I!"
+
+	para "How about this?"
+	line "Take out all the"
+
+	para "trainers on Routes"
+	line "36 and 37."
+
+	para "Then I'll fight"
+	line "you myself!"
+	done
+
+.QuestionText:
+	text "So you beat every-"
+	line "one else in the"
+	cont "area."
+
+	para "Then it's time for"
+	line "our showdown!"
+
+	para "I use a Binding"
+	line "Band to press my"
+	cont "advantage."
+
+	para "Think you're ready"
+	line "for me?"
+	done
+
+.RefusedText:
+	text "Well, I'm ready"
+	line "when you are!"
+	done
+
+.SeenText:
+	text "You won't last"
+	line "long against my"
+	cont "technique!"
+	done
+
+.BeatenText:
+	text "I'm the one who"
+	line "didn't last?!"
+	done
+
+.AfterText1:
+	text "You observed my"
+	line "technique and"
+	cont "countered it."
+
+	para "Why not try it"
+	line "yourself?"
+
+	para "Here, it's for"
+	line "you!"
+	done
+
+.AfterText2:
+	text "With skill like"
+	line "yours, I'm not the"
+
+	para "only elite trainer"
+	line "who'll want to test"
+	cont "you."
+	done
+
 Route37Sign:
 	jumptext Route37SignText
 
@@ -139,7 +272,6 @@ FruitTreeScript_0x1a8e0d:
 
 Route37HiddenEther:
 	dwb EVENT_ROUTE_37_HIDDEN_ETHER, ETHER
-
 
 TwinsToriandtil1SeenText:
 	text "Til: Tori and I"
@@ -312,7 +444,7 @@ Route37_MapEventHeader:
 	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
 
 .PersonEvents:
-	db 9
+	db 10
 	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
 	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
 	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
@@ -322,3 +454,4 @@ Route37_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0d, -1
 	person_event SPRITE_BEAUTY, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCallie, -1
 	person_event SPRITE_BEAUTY, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassandra, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route37CooltrainerfChiaraScript, -1
