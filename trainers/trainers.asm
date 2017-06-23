@@ -13817,6 +13817,34 @@ endc
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERF
+	db "Chiara@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
+
+	; party
+
+	db 20, WEEPINBELL, BINDING_BAND
+		db WRAP
+		db SLEEP_POWDER
+		db POISONPOWDER
+		db STUN_SPORE
+
+	db 20, AZUMARILL, BINDING_BAND
+		db WHIRLPOOL
+		db PERISH_SONG
+		db AQUA_TAIL
+		db PROTECT
+
+	db 21, CHARMELEON, BINDING_BAND
+		db FIRE_SPIN
+		db DRAGON_RAGE
+		db SMOKESCREEN
+		db PROTECT
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

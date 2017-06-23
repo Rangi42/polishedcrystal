@@ -907,15 +907,16 @@ Group4Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
+	db SPRITE_COOLTRAINER_F ; doesn't walk
 	db SPRITE_SIGHTSEER_M ; doesn't walk
 	db SPRITE_HEX_MANIAC ; doesn't walk
 	db SPRITE_OFFICER ; doesn't walk
-	; 12 walking sprites (9 that walk)
+	; 13 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_WEIRD_TREE
 	db SPRITE_SMEARGLE
 	db SPRITE_SUICUNE
-	; 16 total sprites
+	; 17 total sprites
 	db 0
 
 

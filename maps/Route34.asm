@@ -502,7 +502,7 @@ TrainerBreederJulie:
 	closetext
 	end
 
-Route34RichBoyScript:
+Route34RichBoyIrvingScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
@@ -564,6 +564,10 @@ Route34RichBoyScript:
 	para "I'm rich, so I"
 	line "bought my #-"
 	cont "mon with cash!"
+
+	para "They're strong"
+	line "enough that we"
+	cont "beat Azalea's Gym!"
 
 	para "You want to battle"
 	line "them? Fine--just"
@@ -1063,7 +1067,7 @@ Route34_MapEventHeader:
 
 .PersonEvents:
 	db 15
-	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyScript, -1
+	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1

@@ -198,7 +198,6 @@ INCLUDE "maps/MountMoonSquare.asm"
 INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route42.asm"
 INCLUDE "maps/ElmsHouse.asm"
-INCLUDE "maps/KrissNeighborsHouse.asm"
 
 
 SECTION "Map Scripts 9", ROMX, BANK[MAP_SCRIPTS_9]
@@ -487,8 +486,6 @@ INCLUDE "maps/EcruteakShrineOutside.asm"
 INCLUDE "maps/EcruteakShrineInside.asm"
 INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/VermilionCity.asm"
-INCLUDE "maps/Route2North.asm"
-INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/Route9.asm"
 INCLUDE "maps/Route14.asm"
 INCLUDE "maps/Route22.asm"
@@ -787,3 +784,11 @@ INCLUDE "maps/IvysLab.asm"
 INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/ValenciaHouse.asm"
 INCLUDE "maps/ValenciaPort.asm"
+
+
+SECTION "Map Scripts 42", ROMX
+
+INCLUDE "maps/KrissNeighborsHouse.asm"
+INCLUDE "maps/Route2North.asm"
+INCLUDE "maps/Route2South.asm"
+

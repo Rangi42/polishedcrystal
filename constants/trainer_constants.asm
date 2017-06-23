@@ -938,6 +938,7 @@ KRIS EQU __enum__
 	const BONITA
 	const SERA
 	const NEESHA
+	const CHIARA
 
 	trainerclass ACE_DUO ; 60
 	const ELANANDIDA1
