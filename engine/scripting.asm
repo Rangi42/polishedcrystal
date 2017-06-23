@@ -3002,12 +3002,8 @@ Script_textbox: ; 97b1c
 
 Script_refreshscreen: ; 97b20
 ; script command 0x48
-; parameters:
-;     dummy (SingleByteParam)
 
-	call RefreshScreen
-	call GetScriptByte
-	ret
+	jp RefreshScreen
 ; 97b27
 
 Script_closetext: ; 97b2f

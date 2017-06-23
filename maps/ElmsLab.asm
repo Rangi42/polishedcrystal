@@ -180,7 +180,7 @@ CyndaquilPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue LookAtElmPokeBallScript
 	spriteface ELMSLAB_ELM, DOWN
-	refreshscreen $0
+	refreshscreen
 	pokepic CYNDAQUIL
 	cry CYNDAQUIL
 	waitbutton
@@ -225,7 +225,7 @@ TotodilePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue LookAtElmPokeBallScript
 	spriteface ELMSLAB_ELM, DOWN
-	refreshscreen $0
+	refreshscreen
 	pokepic TOTODILE
 	cry TOTODILE
 	waitbutton
@@ -268,7 +268,7 @@ ChikoritaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue LookAtElmPokeBallScript
 	spriteface ELMSLAB_ELM, DOWN
-	refreshscreen $0
+	refreshscreen
 	pokepic CHIKORITA
 	cry CHIKORITA
 	waitbutton

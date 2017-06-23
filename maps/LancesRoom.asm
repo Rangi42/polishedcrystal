@@ -29,7 +29,7 @@ LancesRoom_MapScriptHeader:
 
 LancesRoom_PlayerWalksIn_DoorsCloseBehind:
 	applymovement PLAYER, LancesRoom_PlayerWalksInMovementData
-	refreshscreen $86
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock $4, $16, $34

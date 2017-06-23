@@ -126,21 +126,21 @@ MapCeladonGameCornerSignpost37Script:
 MapCeladonGameCornerSignpost35Script:
 	random $6
 	if_equal $0, MapCeladonGameCornerSignpost16Script
-	refreshscreen $0
+	refreshscreen
 	writebyte $0
 	special Special_SlotMachine
 	closetext
 	end
 
 MapCeladonGameCornerSignpost16Script:
-	refreshscreen $0
+	refreshscreen
 	writebyte $1
 	special Special_SlotMachine
 	closetext
 	end
 
 MapCeladonGameCornerSignpost11Script:
-	refreshscreen $0
+	refreshscreen
 	special Special_CardFlip
 	closetext
 	end

@@ -134,7 +134,7 @@ UnknownScript_0x5d7be:
 	waitbutton
 	closetext
 	spriteface RADIOTOWER2F_BUENA, DOWN
-	refreshscreen $0
+	refreshscreen
 	special SpecialBuenasPassword
 	closetext
 	iffalse UnknownScript_0x5d845

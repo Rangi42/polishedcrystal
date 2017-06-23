@@ -49,7 +49,7 @@ ReceptionistScript_0x58769:
 	jumptextfaceplayer UnknownText_0x58800
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
-	refreshscreen $0
+	refreshscreen
 	writebyte $0
 	special Special_UnownPuzzle
 	closetext

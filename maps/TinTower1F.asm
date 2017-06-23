@@ -193,7 +193,7 @@ SageScript_0x185188:
 	buttonsound
 	verbosegiveitem RAINBOW_WING
 	closetext
-	refreshscreen $0
+	refreshscreen
 	earthquake 72
 	waitsfx
 	playsound SFX_STRENGTH

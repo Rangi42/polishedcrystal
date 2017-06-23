@@ -128,7 +128,7 @@ CheckForSurfingPikachu:
 
 FieldMovePokepicScript:
 	copybytetovar Buffer6
-	refreshscreen $0
+	refreshscreen
 	pokepic 0, 1
 	cry 0
 	waitsfx

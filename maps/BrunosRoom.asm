@@ -27,7 +27,7 @@ BrunosRoom_MapScriptHeader:
 
 UnknownScript_0x1809ad:
 	applymovement PLAYER, MovementData_0x1809f9
-	refreshscreen $86
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock $4, $e, $2a

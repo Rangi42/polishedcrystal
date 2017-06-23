@@ -242,21 +242,21 @@ Museum1FYoungsterScript:
 	jumptextfaceplayer Museum1FYoungsterText
 
 KabutopsFossilSignpostScript:
-	refreshscreen $0
+	refreshscreen
 	trainerpic KABUTOPS_FOSSIL
 	waitbutton
 	closepokepic
 	jumptext KabutopsFossilSignpostText
 
 OmastarFossilSignpostScript:
-	refreshscreen $0
+	refreshscreen
 	trainerpic OMASTAR_FOSSIL
 	waitbutton
 	closepokepic
 	jumptext OmastarFossilSignpostText
 
 AerodactylFossilSignpostScript:
-	refreshscreen $0
+	refreshscreen
 	trainerpic AERODACTYL_FOSSIL
 	waitbutton
 	closepokepic

@@ -42,7 +42,7 @@ UnknownScript_0x58dd3:
 	end
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
-	refreshscreen $0
+	refreshscreen
 	writebyte $2
 	special Special_UnownPuzzle
 	closetext

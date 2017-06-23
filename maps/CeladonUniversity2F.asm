@@ -208,7 +208,7 @@ CeladonUniversity2FWestwoodsOfficeSign:
 	done
 
 CeladonUniversity2FMagikarpSign:
-	refreshscreen $0
+	refreshscreen
 	pokepic MAGIKARP
 	cry MAGIKARP
 	waitbutton
@@ -221,7 +221,7 @@ CeladonUniversity2FMagikarpSign:
 	done
 
 CeladonUniversity2FCuboneSign:
-	refreshscreen $0
+	refreshscreen
 	trainerpic CUBONE_ARMOR
 	waitbutton
 	closepokepic

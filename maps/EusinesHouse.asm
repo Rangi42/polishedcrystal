@@ -19,7 +19,7 @@ CeladonEusine:
 	writetext NoBeastsText1
 	waitbutton
 	closetext
-	refreshscreen $0
+	refreshscreen
 	pokepic RAIKOU
 	cry RAIKOU
 	waitbutton
@@ -30,7 +30,7 @@ CeladonEusine:
 	writetext NoBeastsText2
 	waitbutton
 	closetext
-	refreshscreen $0
+	refreshscreen
 	pokepic ENTEI
 	cry ENTEI
 	waitbutton
@@ -41,7 +41,7 @@ CeladonEusine:
 	writetext NoBeastsText3
 	waitbutton
 	closetext
-	refreshscreen $0
+	refreshscreen
 	pokepic SUICUNE
 	cry SUICUNE
 	waitbutton

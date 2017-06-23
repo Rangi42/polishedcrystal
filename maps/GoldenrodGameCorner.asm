@@ -291,21 +291,21 @@ GoldenrodGameCornerLeftTheirDrinkScript:
 GoldenrodGameCornerSlotsMachineScript:
 	random 6
 	if_equal 0, GoldenrodGameCornerLuckySlotsMachineScript
-	refreshscreen $0
+	refreshscreen
 	writebyte FALSE
 	special Special_SlotMachine
 	closetext
 	end
 
 GoldenrodGameCornerLuckySlotsMachineScript:
-	refreshscreen $0
+	refreshscreen
 	writebyte TRUE
 	special Special_SlotMachine
 	closetext
 	end
 
 GoldenrodGameCornerCardFlipMachineScript:
-	refreshscreen $0
+	refreshscreen
 	special Special_CardFlip
 	closetext
 	end

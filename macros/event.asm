@@ -477,7 +477,6 @@ opentext: macro
 	enum refreshscreen_command
 refreshscreen: macro
 	db refreshscreen_command
-	db \1 ; dummy
 	endm
 
 	enum closetext_command

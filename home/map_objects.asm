@@ -381,19 +381,6 @@ DeleteObjectStruct:: ; 199f
 	ret
 ; 19a6
 
-CopyPlayerObjectTemplate:: ; 19a6
-	push hl
-	call GetMapObject
-	ld d, b
-	ld e, c
-	ld a, -1
-	ld [de], a
-	inc de
-	pop hl
-	ld bc, OBJECT_LENGTH - 1
-	jp CopyBytes
-; 19b8
-
 LoadMovementDataPointer:: ; 19e9
 ; Load the movement data pointer for person a.
 	ld [wMovementPerson], a

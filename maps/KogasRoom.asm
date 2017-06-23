@@ -27,7 +27,7 @@ UnknownScript_0x180741:
 
 UnknownScript_0x180742:
 	applymovement PLAYER, MovementData_0x18078e
-	refreshscreen $86
+	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
 	changeblock $4, $e, $2a

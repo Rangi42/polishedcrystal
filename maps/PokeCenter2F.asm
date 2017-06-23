@@ -272,7 +272,7 @@ Script_WalkOutOfLinkBattleRoom:
 	end
 
 MapPokeCenter2FSignpost0Script:
-	refreshscreen $0
+	refreshscreen
 	special Special_DisplayLinkRecord
 	closetext
 	end

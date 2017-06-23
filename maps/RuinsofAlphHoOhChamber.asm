@@ -43,7 +43,7 @@ UnknownScript_0x58596:
 	end
 
 MapRuinsofAlphHoOhChamberSignpost2Script:
-	refreshscreen $0
+	refreshscreen
 	writebyte $3
 	special Special_UnownPuzzle
 	closetext

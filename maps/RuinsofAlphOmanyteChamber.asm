@@ -43,7 +43,7 @@ UnknownScript_0x58c12:
 	end
 
 MapRuinsofAlphOmanyteChamberSignpost2Script:
-	refreshscreen $0
+	refreshscreen
 	writebyte $1
 	special Special_UnownPuzzle
 	closetext

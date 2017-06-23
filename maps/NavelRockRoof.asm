@@ -48,7 +48,7 @@ Leaf:
 	special Special_FadeInQuickly
 	pause 30
 	special HealParty
-	refreshscreen $0
+	refreshscreen
 	checknite
 	iffalse .Sun
 	changeblock $6, $0, $76

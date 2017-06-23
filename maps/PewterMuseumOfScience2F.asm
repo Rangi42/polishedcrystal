@@ -70,7 +70,7 @@ Museum2FTutorSeismicTossScript:
 	end
 
 Museum2FMoonStoneSignpostScript:
-	refreshscreen $0
+	refreshscreen
 	trainerpic METEORITE
 	waitbutton
 	closepokepic
