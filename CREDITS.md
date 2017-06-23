@@ -43,6 +43,7 @@
 * coraldev for rowboat and sakura petal tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
+* Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 
