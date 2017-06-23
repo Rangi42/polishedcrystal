@@ -93,7 +93,6 @@ INCLUDE "maps/SlowpokeWellB2F.asm"
 INCLUDE "maps/OlivineLighthouse1F.asm"
 INCLUDE "maps/OlivineLighthouse2F.asm"
 INCLUDE "maps/OlivineLighthouse3F.asm"
-INCLUDE "maps/OlivineLighthouse4F.asm"
 
 
 SECTION "Map Scripts 3", ROMX, BANK[MAP_SCRIPTS_3]
@@ -791,4 +790,5 @@ INCLUDE "maps/KrissNeighborsHouse.asm"
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/ViridianForest.asm"
+INCLUDE "maps/OlivineLighthouse4F.asm"
 

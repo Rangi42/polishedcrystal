@@ -12069,6 +12069,28 @@ BattleGirlGroup:
 	db $ff ; end
 
 ; ================
+
+	; BATTLE_GIRL
+	db "Emy@"
+	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
+
+	; party
+
+	db 28, PRIMEAPE, PROTECT_PADS, PERFECT_DVS, HIDDEN_ABILITY | ADAMANT, FEMALE
+		db CROSS_CHOP
+		db GUNK_SHOT
+		db BULK_UP
+		db NIGHT_SLASH
+
+	db 30, URSARING, PROTECT_PADS, PERFECT_DVS, HIDDEN_ABILITY | ADAMANT, MALE
+		db PLAY_ROUGH
+		db SLASH
+		db BELLY_DRUM
+		db NIGHT_SLASH
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 

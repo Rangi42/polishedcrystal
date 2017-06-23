@@ -2266,7 +2266,7 @@
 
 ; Unused placeholder events
 	const EVENT_BEAT_COOLTRAINERF_CHIARA
-	const EVENT_83A
+	const EVENT_BEAT_BATTLE_GIRL_EMY
 	const EVENT_83B
 	const EVENT_83C
 	const EVENT_83D
