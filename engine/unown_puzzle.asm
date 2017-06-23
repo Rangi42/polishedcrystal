@@ -356,8 +356,7 @@ UnownPuzzle_Quit: ; e13de
 UnownPuzzle_InvalidAction: ; e13e4
 	ld de, SFX_WRONG
 	call PlaySFX
-	call WaitSFX
-	ret
+	jp WaitSFX
 ; e13ee
 
 UnownPuzzle_FillBox: ; e13ee
@@ -846,8 +845,7 @@ endr
 	ld l, a
 	ld de, VTiles2
 	call Decompress
-	call ConvertLoadedPuzzlePieces
-	ret
+	jp ConvertLoadedPuzzlePieces
 ; e17bd
 
 .LZPointers: ; e17bd

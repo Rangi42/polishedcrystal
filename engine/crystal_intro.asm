@@ -184,8 +184,7 @@ PlaceGameFreakPresents_2: ; e46ba
 	decoord 7,11
 	ld bc, .end - .presents
 	call CopyBytes
-	call PlaceGameFreakPresents_AdvanceIndex
-	ret
+	jp PlaceGameFreakPresents_AdvanceIndex
 ; e46d6
 
 .presents
@@ -1890,8 +1889,7 @@ Intro_ClearBGPals: ; e54a3 (39:54a3)
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	call DelayFrame
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 Intro_DecompressRequest2bpp_128Tiles: ; e54c2 (39:54c2)
 	ld a, [rSVBK]

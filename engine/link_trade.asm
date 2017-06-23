@@ -145,8 +145,7 @@ Function16d6ce: ; 16d6ce
 	call Function16d6e1
 	farcall WaitLinkTransfer
 	call Call_ExitMenu
-	call WaitBGMap2
-	ret
+	jp WaitBGMap2
 ; 16d6e1
 
 Function16d6e1: ; 16d6e1
@@ -168,8 +167,7 @@ Function16d6e1: ; 16d6e1
 
 LinkTradeMenu: ; 16d70c
 	call .MenuAction
-	call .GetJoypad
-	ret
+	;jp .GetJoypad
 ; 16d713
 
 .GetJoypad: ; 16d713

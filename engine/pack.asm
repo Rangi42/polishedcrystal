@@ -132,8 +132,7 @@ Pack: ; 10000
 	xor a
 	ld [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .TMHMPocketMenu: ; 100e8 (4:40e8)
 	farcall TMHMPocket
@@ -754,8 +753,7 @@ BattlePack: ; 10493
 	call WaitBGMap_DrawPackGFX
 	ld hl, Text_PackEmptyString
 	call Pack_PrintTextNoScroll
-	call Pack_JumptableNext
-	ret
+	jp Pack_JumptableNext
 
 .TMHMPocketMenu: ; 10581 (4:4581)
 	farcall TMHMPocket
@@ -967,8 +965,7 @@ DepositSellInitPackBuffers: ; 106a5
 	ld [wcf66], a
 	ld [wSwitchItem], a
 	call Pack_InitGFX
-	call Pack_InitColors
-	ret
+	jp Pack_InitColors
 ; 106be
 
 DepositSellPack: ; 106be
@@ -1088,8 +1085,7 @@ DepositSellPack: ; 106be
 InitPocket: ; 10762 (4:4762)
 	ld [wCurrPocket], a
 	call ClearPocketList
-	call WaitBGMap_DrawPackGFX
-	ret
+	jp WaitBGMap_DrawPackGFX
 
 DepositSellTutorial_InterpretJoypad: ; 1076f
 	ld hl, wMenuJoypad
@@ -1257,8 +1253,7 @@ TutorialPack: ; 107bb
 	call InitPocket
 	pop hl
 	call CopyMenuDataHeader
-	call ScrollingMenu
-	ret
+	jp ScrollingMenu
 
 Pack_JumptableNext: ; 10866 (4:4866)
 	ld hl, wJumptableIndex
@@ -1502,8 +1497,7 @@ Pack_GetItemName: ; 10a1d
 	ld a, [CurItem]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
-	call CopyName1
-	ret
+	jp CopyName1
 ; 10a2a
 
 ClearPocketList: ; 10a36 (4:4a36)

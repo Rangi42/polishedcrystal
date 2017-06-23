@@ -207,20 +207,14 @@ InitTime:: ; 677
 
 
 PanicResetClock:: ; 67e
-	call .ClearhRTC
-	call SetClock
-	ret
-; 685
-
-.ClearhRTC: ; 685
 	xor a
 	ld [hRTCSeconds], a
 	ld [hRTCMinutes], a
 	ld [hRTCHours], a
 	ld [hRTCDayLo], a
 	ld [hRTCDayHi], a
-	ret
-; 691
+	;jp SetClock
+; 685
 
 
 SetClock:: ; 691

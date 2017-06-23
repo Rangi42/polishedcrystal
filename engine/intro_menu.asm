@@ -70,8 +70,7 @@ NewGame_ClearTileMapEtc: ; 5b44
 	call ClearTileMap
 	call LoadFontsExtra
 	call LoadStandardFont
-	call ClearWindowData
-	ret
+	jp ClearWindowData
 ; 5b54
 
 OptionsMenu: ; 5b64
@@ -901,8 +900,7 @@ ShrinkPlayer: ; 610f
 	call DelayFrames
 
 	call RotateThreePalettesRight
-	call ClearTileMap
-	ret
+	jp ClearTileMap
 ; 616a
 
 Intro_RotatePalettesLeftFrontpic: ; 616a

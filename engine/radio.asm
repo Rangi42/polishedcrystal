@@ -1638,18 +1638,15 @@ GetBuenasPassword:
 
 .Mon:
 	call .GetTheIndex
-	call GetPokemonName
-	ret
+	jp GetPokemonName
 
 .Item:
 	call .GetTheIndex
-	call GetItemName
-	ret
+	jp GetItemName
 
 .Move:
 	call .GetTheIndex
-	call GetMoveName
-	ret
+	jp GetMoveName
 
 .GetTheIndex:
 	ld h, 0

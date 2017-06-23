@@ -64,8 +64,7 @@ ShakeHeadbuttTree: ; 8c80a
 	ld hl, VTiles1
 	lb bc, BANK(FontNormal), 12
 	call Get1bpp
-	call ReplaceKrisSprite
-	ret
+	jp ReplaceKrisSprite
 ; 8c893
 
 HeadbuttTreeGFX: ; 8c893

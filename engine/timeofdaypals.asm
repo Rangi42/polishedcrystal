@@ -112,8 +112,7 @@ _TimeOfDayPals:: ; 8c011
 _UpdateTimePals:: ; 8c070
 	ld c, $9 ; normal
 	call GetTimePalFade
-	call DmgToCgbTimePals
-	ret
+	jp DmgToCgbTimePals
 ; 8c079
 
 FadeInPalettes:: ; 8c079

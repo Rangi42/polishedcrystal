@@ -13,8 +13,7 @@ ClearSpriteAnims: ; 8cf53
 
 PlaySpriteAnimationsAndDelayFrame: ; 8cf62
 	call PlaySpriteAnimations
-	call DelayFrame
-	ret
+	jp DelayFrame
 ; 8cf69
 
 PlaySpriteAnimations: ; 8cf69

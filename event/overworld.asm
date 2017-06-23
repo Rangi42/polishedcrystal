@@ -1899,8 +1899,7 @@ PutTheRodAway: ; d095
 	ld a, $1
 	ld [PlayerAction], a
 	call UpdateSprites
-	call ReplaceKrisSprite
-	ret
+	jp ReplaceKrisSprite
 
 CurItemToScriptVar:
 	ld a, [CurItem]

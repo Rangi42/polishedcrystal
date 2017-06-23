@@ -238,8 +238,7 @@ PlaySFX:: ; 3c23
 
 WaitPlaySFX:: ; 3c4e
 	call WaitSFX
-	call PlaySFX
-	ret
+	jp PlaySFX
 ; 3c55
 
 

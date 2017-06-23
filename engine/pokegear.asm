@@ -249,8 +249,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	ld [hBGMapMode], a
 	ld c, 3
 	call DelayFrames
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 ; 90e12 (24:4e12)
 
@@ -271,8 +270,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	hlcoord 0, 12
 	lb bc, 4, 18
 	call TextBox
-	call Pokegear_UpdateClock
-	ret
+	jp Pokegear_UpdateClock
 
 ; 90e36 (24:4e36)
 
@@ -1002,15 +1000,13 @@ PokegearPhone_GetDPad: ; 9126d (24:526d)
 	xor a
 	ld [hBGMapMode], a
 	call PokegearPhone_UpdateCursor
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 .done_joypad_update_page
 	xor a
 	ld [hBGMapMode], a
 	call PokegearPhone_UpdateDisplayList
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 PokegearPhone_UpdateCursor: ; 912b7 (24:52b7)
 	ld a, " "
@@ -2518,8 +2514,7 @@ _Area: ; 91d11
 
 .update
 	call .UpdateGFX
-	call .GetAndPlaceNest
-	ret
+	jp .GetAndPlaceNest
 
 .UpdateGFX:
 	call ClearSprites

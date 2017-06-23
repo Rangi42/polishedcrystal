@@ -120,8 +120,7 @@ endr
 	hlcoord 5, 2
 	ld de, .PlayerNameString
 	call PlaceString
-	call .StoreSpriteIconParams
-	ret
+	jp .StoreSpriteIconParams
 
 ; 117a3 (4:57a3)
 
@@ -137,8 +136,7 @@ endr
 	hlcoord 5, 2
 	ld de, .RivalNameString
 	call PlaceString
-	call .StoreSpriteIconParams
-	ret
+	jp .StoreSpriteIconParams
 
 ; 117c3 (4:57c3)
 
@@ -165,8 +163,7 @@ endr
 	hlcoord 5, 2
 	ld de, .BoxNameString
 	call PlaceString
-	call .StoreBoxIconParams
-	ret
+	jp .StoreBoxIconParams
 
 ; 11822 (4:5822)
 
@@ -182,8 +179,7 @@ endr
 	hlcoord 5, 2
 	ld de, .TrendyPhraseString
 	call PlaceString
-	call .StoreSpriteIconParams
-	ret
+	jp .StoreSpriteIconParams
 
 .TrendyPhraseString:
 	db "Trendy phrase?"

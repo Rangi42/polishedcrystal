@@ -454,8 +454,7 @@ Script_SpecialBillCall:: ; 0x90255
 
 RingTwice_StartCall: ; 9026f
 	call .Ring
-	call .Ring
-	ret
+	;jp .Ring
 ; 9027c
 
 .Ring: ; 9027c (24:427c)
@@ -480,8 +479,7 @@ PhoneCall:: ; 9029a
 	ld a, d
 	ld [PhoneCallerHi], a
 	call Phone_FirstOfTwoRings
-	call Phone_FirstOfTwoRings
-	ret
+	;jp Phone_FirstOfTwoRings
 ; 902b3
 
 Phone_FirstOfTwoRings: ; 902b3
@@ -531,8 +529,7 @@ Phone_CallEnd:
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
 	call HangUp_BoopOff
-	call HangUp_Wait20Frames
-	ret
+	jp HangUp_Wait20Frames
 ; 90316
 
 HangUp_Beep: ; 9031d
@@ -607,8 +604,7 @@ Function90380: ; 90380 (24:4380)
 	ld l, e
 	ld a, b
 	call GetCallerTrainerClass
-	call GetCallerName
-	ret
+	jp GetCallerName
 
 CheckCanDeletePhoneNumber: ; 9038a (24:438a)
 	ld a, c
@@ -653,8 +649,7 @@ GetCallerName: ; 903a9 (24:43a9)
 	ld de, SCREEN_WIDTH + 3
 	add hl, de
 	call Phone_GetTrainerClassName
-	call PlaceString
-	ret
+	jp PlaceString
 
 .NotTrainer:
 	push hl

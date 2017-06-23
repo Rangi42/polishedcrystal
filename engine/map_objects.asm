@@ -34,8 +34,7 @@ Function437b: ; 437b
 	call .CheckObjectStillVisible
 	ret c
 	call .HandleStepType
-	call .HandleObjectAction
-	ret
+	jp .HandleObjectAction
 
 .CheckObjectStillVisible:
 	ld hl, OBJECT_FLAGS2
@@ -2166,8 +2165,7 @@ Function561d: ; 561d
 	call Function5645 ; clear sprites
 	ld a, PLAYER
 	call Function5629 ; respawn player
-	call _UpdateSprites
-	ret
+	jp _UpdateSprites
 ; 5629
 
 Function5629: ; 5629
@@ -2392,8 +2390,7 @@ Function56cd: ; 56cd
 
 HandleNPCStep:: ; 576a
 	call .ResetStepVector
-	call .DoStepsForAllObjects
-	ret
+	jp .DoStepsForAllObjects
 
 .ResetStepVector:
 	xor a
@@ -2513,8 +2510,7 @@ SetLeaderIfVisible: ; 5815
 
 StopFollow:: ; 581f
 	call ResetLeader
-	call ResetFollower
-	ret
+	jp ResetFollower
 ; 5826
 
 ResetLeader: ; 5826

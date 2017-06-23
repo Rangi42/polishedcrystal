@@ -22,8 +22,7 @@ rept 4
 	call LoadHLPaletteIntoDE
 endr
 	call InitPartyMenuOBPals
-	call WipeAttrMap
-	ret
+	jp WipeAttrMap
 
 ApplyHPBarPals:
 	ld a, [wWhichHPBar]
@@ -215,8 +214,7 @@ endr
 	call FarCopyWRAM
 	call ApplyPals
 	call WipeAttrMap
-	call ApplyAttrMap
-	ret
+	jp ApplyAttrMap
 
 LoadHLPaletteIntoDE:
 	ld a, [rSVBK]

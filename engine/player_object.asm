@@ -151,11 +151,6 @@ CopyObjectStruct:: ; 80e7
 	ret
 
 CopyMapObjectToObjectStruct: ; 8116
-	call .CopyMapObjectToTempObject
-	call CopyTempObjectToObjectStruct
-	ret
-
-.CopyMapObjectToTempObject: ; 811d
 	ld a, [hObjectStructIndexBuffer]
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, bc
@@ -210,7 +205,8 @@ CopyMapObjectToObjectStruct: ; 8116
 	add hl, bc
 	ld a, [hl]
 	ld [wTempObjectCopyRadius], a
-	ret
+
+	jp CopyTempObjectToObjectStruct
 
 InitializeVisibleSprites: ; 8177
 	ld bc, MapObjects + OBJECT_LENGTH

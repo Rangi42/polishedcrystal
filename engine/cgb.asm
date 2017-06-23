@@ -452,8 +452,7 @@ _CGB_Diploma: ; 91ad
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
-	call ApplyAttrMap
-	ret
+	jp ApplyAttrMap
 ; 91c8
 
 .DiplomaPalette
@@ -494,8 +493,7 @@ endr
 	lb bc, 11, 1
 	ld a, $4
 	call FillBoxCGB
-	call ApplyAttrMap
-	ret
+	jp ApplyAttrMap
 ; 91e4
 
 .PartyMenuBGPalette:
@@ -997,8 +995,7 @@ _CGB_UnownPuzzle: ; 925e
 	ld [rSVBK], a
 
 	call WipeAttrMap
-	call ApplyAttrMap
-	ret
+	jp ApplyAttrMap
 ; 9289
 
 .UnownPuzzlePalette:
@@ -1092,8 +1089,7 @@ _CGB_IntroPals: ; 9591
 	call FillBoxCGB
 
 	call ApplyAttrMap
-	call ApplyPals
-	ret
+	jp ApplyPals
 ; 95e0
 
 .IntroGradientPalette:
@@ -1112,8 +1108,7 @@ _CGB_PlayerOrMonFrontpicPals: ; 9529
 	call VaryBGPal0ByTempMonDVs
 	call WipeAttrMap
 	call ApplyAttrMap
-	call ApplyPals
-	ret
+	jp ApplyPals
 ; 9542
 
 
@@ -1126,8 +1121,7 @@ _CGB_TrainerOrMonFrontpicPals: ; 9578
 	call VaryBGPal0ByTempMonDVs
 	call WipeAttrMap
 	call ApplyAttrMap
-	call ApplyPals
-	ret
+	jp ApplyPals
 ; 9591
 
 

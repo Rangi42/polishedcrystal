@@ -975,8 +975,7 @@ BattleBGEffect_30: ; c85c2 (32:45c2)
 	call BattleBGEffects_ClearLYOverrides
 	ld a, $42
 	call BattleBGEffect_SetLCDStatCustoms1
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffect_31: ; c85ce (32:45ce)
 	ld hl, BG_EFFECT_STRUCT_03
@@ -1008,8 +1007,7 @@ BattleBGEffect_31: ; c85ce (32:45ce)
 
 .done
 	call BattleBGEffects_ClearLYOverrides
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BattleBGEffect_32: ; c8603 (32:4603)
 	jp BattleAnim_ResetLCDStatCustom
@@ -1950,8 +1948,7 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 	call BGEffects_LoadBGPal0_OBPal1
 	ld a, $e4
 	call BGEffects_LoadBGPal1_OBPal0
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .CGB_DMGEnemyData:
 	db $e4, $e4
@@ -2287,8 +2284,7 @@ BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 .two_cgb ; c8e21 (32:4e21)
 	ld a, $e4
 	call BGEffects_LoadBGPal0_OBPal1
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 .three_cgb ; c8e2a (32:4e2a)
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
@@ -2317,8 +2313,7 @@ BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 .four_cgb ; c8e49 (32:4e49)
 	ld a, $e4
 	call BGEffects_LoadBGPal1_OBPal0
-	call EndBattleBGEffect
-	ret
+	jp EndBattleBGEffect
 
 BGEffects_LoadBGPal0_OBPal1: ; c8e52 (32:4e52)
 	ld h, a

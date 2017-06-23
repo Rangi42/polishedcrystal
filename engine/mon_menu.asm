@@ -227,8 +227,7 @@ GetMonSubmenuItems: ; 24dd4
 	call AddMonMenuItem
 	ld a, MONMENU_CANCEL
 	call AddMonMenuItem
-	call TerminateMonSubmenu
-	ret
+	jp TerminateMonSubmenu
 ; 24e52
 
 IsFieldMove: ; 24e52

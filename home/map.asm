@@ -96,8 +96,7 @@ GetMapTrigger:: ; 2147
 
 OverworldTextModeSwitch:: ; 2173
 	call LoadMapPart
-	call FarCallSwapTextboxPalettes
-	ret
+	jp FarCallSwapTextboxPalettes
 ; 217a
 
 LoadMapPart:: ; 217a
@@ -425,8 +424,7 @@ ReadMapScripts:: ; 234f
 	ld h, [hl]
 	ld l, a
 	call ReadMapTriggers
-	call ReadMapCallbacks
-	ret
+	jp ReadMapCallbacks
 ; 235c
 
 CopySecondMapHeader:: ; 235c
@@ -1898,8 +1896,7 @@ FadeToMenu:: ; 2b29
 	call LoadStandardMenuDataHeader
 	farcall FadeOutPalettes
 	call ClearSprites
-	call DisableSpriteUpdates
-	ret
+	jp DisableSpriteUpdates
 ; 2b3c
 
 CloseSubmenu:: ; 2b3c

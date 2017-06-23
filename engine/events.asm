@@ -118,8 +118,7 @@ HandleMap: ; 96773
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground
-	call CheckPlayerState
-	ret
+	jp CheckPlayerState
 ; 96795
 
 MapEvents: ; 96795
@@ -333,8 +332,7 @@ CheckTileEvent: ; 96874
 	ld h, [hl]
 	ld l, a
 	call GetMapScriptHeaderBank
-	call CallScript
-	ret
+	jp CallScript
 ; 968c7
 
 CheckWildEncounterCooldown:: ; 968c7
@@ -545,8 +543,7 @@ TryObjectEvent: ; 969b5
 	ld h, [hl]
 	ld l, a
 	call GetMapScriptHeaderBank
-	call CallScript
-	ret
+	jp CallScript
 ; 96a12
 
 .itemball ; 96a12

@@ -2440,8 +2440,7 @@ WinTrainerBattle: ; 3cfa4
 	or [hl]
 	ret nz
 	call ClearTileMap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 
 .GiveMoney:
 	ld a, [wAmuletCoin]
@@ -3402,8 +3401,7 @@ FinalPkmnMusicAndAnimation:
 	call SlideEnemyPicOut
 	ld c, 10
 	call DelayFrames
-	call FinalPkmnSlideInEnemyMonFrontpic
-	ret
+	jp FinalPkmnSlideInEnemyMonFrontpic
 
 CheckWhetherToAskSwitch: ; 3d714
 	ld a, [wBattleHasJustStarted]
@@ -5056,8 +5054,7 @@ Battle_StatsScreen: ; 3e308
 	ld de, VTiles2
 	ld bc, $31 tiles
 	call CopyBytes
-	call EnableLCD
-	ret
+	jp EnableLCD
 ; 3e358
 
 
@@ -8618,8 +8615,7 @@ ExitBattle: ; 3f69e
 	call ShowLinkBattleParticipantsAfterEnd
 	ld c, 150
 	call DelayFrames
-	call ShowLinkBattleResult
-	ret
+	jp ShowLinkBattleResult
 
 .not_linked
 	ld a, [wBattleResult]
@@ -8729,8 +8725,7 @@ CheckPayDay: ; 3f71d
 	bit 0, a
 	ret z
 	call ClearTileMap
-	call ClearBGPalettes
-	ret
+	jp ClearBGPalettes
 ; 3f759
 
 ShowLinkBattleParticipantsAfterEnd: ; 3f759
@@ -8778,8 +8773,7 @@ ShowLinkBattleResult: ; 3f77c
 	call CloseSRAM
 
 	call WaitPressAorB_BlinkCursor
-	call ClearTileMap
-	ret
+	jp ClearTileMap
 ; 3f7f7
 
 .Win:
@@ -8808,8 +8802,7 @@ DisplayLinkRecord: ; 3f836
 	call SetPalettes
 	ld c, 8
 	call DelayFrames
-	call WaitPressAorB_BlinkCursor
-	ret
+	jp WaitPressAorB_BlinkCursor
 ; 3f85f
 
 
@@ -9106,9 +9099,9 @@ AddLastBattleToLinkRecord: ; 3fa42
 
 .done
 	call .StoreResult
-	call .FindOpponentAndAppendRecord
-	ret
+	jp .FindOpponentAndAppendRecord
 ; 3faa0
+
 .StoreResult: ; 3faa0
 	ld a, [wBattleResult]
 	and $f
@@ -9325,8 +9318,7 @@ InitBattleDisplay: ; 3fb6c
 
 .InitBackPic: ; 3fbf8
 	call GetTrainerBackpic
-	call CopyBackpic
-	ret
+	jp CopyBackpic
 ; 3fbff
 
 

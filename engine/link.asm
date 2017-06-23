@@ -327,8 +327,7 @@ LinkTimeout: ; 283b2
 	call ClearScreen
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
-	call WaitBGMap2
-	ret
+	jp WaitBGMap2
 ; 283ed
 
 .TooMuchTimeHasElapsed: ; 0x283ed

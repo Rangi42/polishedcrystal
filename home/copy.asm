@@ -82,8 +82,7 @@ DecompressRequest2bpp:: ; e73
 
 	ld de, sScratch
 	call Request2bpp
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; e8d
 
 

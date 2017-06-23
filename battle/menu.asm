@@ -17,8 +17,7 @@ ContestBattleMenu: ; 24f13
 	call _2DMenu
 	ld a, [wMenuCursorBuffer]
 	ld [wd0d2], a
-	call ExitMenu
-	ret
+	jp ExitMenu
 ; 24f19
 
 BattleMenuDataHeader: ; 24f2c

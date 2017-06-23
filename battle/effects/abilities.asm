@@ -328,8 +328,7 @@ AnticipationAbility:
 .got_move_struct2
 	ld a, BANK(Moves)
 	call FarCopyBytes
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 ForewarnAbility:
 ; A note on moves with non-regular damage: Bulbapedia and Showdown has conflicting info on
@@ -486,8 +485,8 @@ RunFaintAbilities:
 	call SwitchTurn
 	pop af
 	call .opponent_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
+
 .user_abilities
 	cp MOXIE
 	jp z, MoxieAbility
@@ -540,8 +539,8 @@ RunHitAbilities:
 	pop af
 	pop bc
 	call .do_enemy_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
+
 .do_enemy_abilities
 	cp CURSED_BODY
 	jp z, CursedBodyAbility
@@ -584,6 +583,7 @@ RunContactAbilities:
 	call SwitchTurn
 	call .do_enemy_abilities
 	jp SwitchTurn
+
 .do_enemy_abilities
 	ld a, b
 	cp CUTE_CHARM
@@ -784,8 +784,7 @@ RunEnemyNullificationAbilities:
 	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 NullificationAbilities:
 	dbw DRY_SKIN, DrySkinAbility
@@ -999,8 +998,7 @@ ApplyAccuracyAbilities:
 	call SwitchTurn
 	ld a, b
 	call .enemy_abilities
-	call SwitchTurn
-	ret
+	jp SwitchTurn
 
 .user_abilities
 	ld hl, hMultiplier

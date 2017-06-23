@@ -3,8 +3,7 @@
 
 LoadMenuDataHeader::
 	call CopyMenuDataHeader
-	call PushWindow
-	ret
+	jp PushWindow
 
 CopyMenuDataHeader::
 	ld de, wMenuDataHeader
@@ -43,8 +42,7 @@ LoadMenuTextBox:: ; 1d58
 
 MenuTextBoxBackup:: ; 1d67
 	call MenuTextBox
-	call CloseWindow
-	ret
+	jp CloseWindow
 ; 1d6e
 
 LoadStandardMenuDataHeader:: ; 1d6e
@@ -154,8 +152,7 @@ YesNoMenuDataHeader:: ; 1e1d
 
 OffsetMenuDataHeader:: ; 1e2e
 	call _OffsetMenuDataHeader
-	call PushWindow
-	ret
+	jp PushWindow
 ; 1e35
 
 _OffsetMenuDataHeader:: ; 1e35
@@ -189,8 +186,7 @@ DoNthMenu:: ; 1e5d
 	call InitMenuCursorAndButtonPermissions
 	call GetStaticMenuJoypad
 	call GetMenuJoypad
-	call MenuClickSound
-	ret
+	jp MenuClickSound
 ; 1e70
 
 SetUpMenu:: ; 1e70
@@ -205,8 +201,7 @@ DrawVariableLengthMenuBox::
 	call CopyMenuData2
 	call GetMenuIndexSet
 	call AutomaticGetMenuBottomCoord
-	call MenuBox
-	ret
+	jp MenuBox
 
 MenuWriteText::
 	xor a

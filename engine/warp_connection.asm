@@ -21,11 +21,11 @@ EnterMapConnection: ; 1045d6
 	ld a, [wPlayerStepDirection]
 	and a
 	jp z, EnterSouthConnection
-	cp 1
+	dec a
 	jp z, EnterNorthConnection
-	cp 2
+	dec a
 	jp z, EnterWestConnection
-	cp 3
+	dec a
 	jp z, EnterEastConnection
 	ret
 ; 1045ed
@@ -300,8 +300,7 @@ LoadGraphics: ; 1047cf
 	ld [hTileAnimFrame], a
 	farcall RefreshSprites
 	call LoadFontsExtra
-	call LoadStandardFont
-	ret
+	jp LoadStandardFont
 
 LoadMapPalettes: ; 1047eb
 	ld b, SCGB_MAPPALS

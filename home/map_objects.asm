@@ -377,8 +377,7 @@ ApplyDeletionToMapObject:: ; 1967
 
 DeleteObjectStruct:: ; 199f
 	call ApplyDeletionToMapObject
-	call MaskObject
-	ret
+	jp MaskObject
 ; 19a6
 
 LoadMovementDataPointer:: ; 19e9

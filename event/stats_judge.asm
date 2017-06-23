@@ -23,8 +23,7 @@ SpecialStatsJudge: ; 4f0bc
 	ret c
 
 	call ReadDVs
-	call JudgePokemon
-	ret
+	jp JudgePokemon
 
 .cancel
 	ld hl, .Cancel
@@ -188,8 +187,7 @@ JudgeDVTotal:
 	ld hl, .Perfect
 .okay
 	call PrintText
-	call JoyWaitAorB
-	ret
+	jp JoyWaitAorB
 
 .AbsoluteWorst
 	text "Oh my! Your #-"
@@ -374,8 +372,7 @@ JudgeMaxDV:
 	ld hl, .Perfect
 .okay
 	call PrintText
-	call JoyWaitAorB
-	ret
+	jp JoyWaitAorB
 
 .Decent
 	text "It has rather"

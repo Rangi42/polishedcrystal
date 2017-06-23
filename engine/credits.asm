@@ -587,8 +587,7 @@ ConstructCreditsTilemap: ; 109a95 (42:5a95)
 	ld [hBGMapAddress], a
 	hlcoord 0, 0
 	call .InitTopPortion
-	call WaitBGMap2
-	ret
+	jp WaitBGMap2
 
 .InitTopPortion: ; 109aff (42:5aff)
 	ld b, 5

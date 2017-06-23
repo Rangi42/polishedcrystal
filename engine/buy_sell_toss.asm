@@ -37,8 +37,7 @@ CalculateMaximumQuantity:
 SelectQuantityToToss: ; 24fbf
 	ld hl, TossItem_MenuDataHeader
 	call LoadMenuDataHeader
-	call Toss_Sell_Loop
-	ret
+	jp Toss_Sell_Loop
 ; 24fc9
 
 SelectQuantityToBuy: ; 24fc9
@@ -51,8 +50,7 @@ RooftopSale_SelectQuantityToBuy: ; 24fcf
 	call CalculateMaximumQuantity
 	ld hl, BuyItem_MenuDataHeader
 	call LoadMenuDataHeader
-	call Toss_Sell_Loop
-	ret
+	jp Toss_Sell_Loop
 ; 24fe1
 
 SelectQuantityToSell: ; 24fe1
@@ -63,8 +61,7 @@ SelectQuantityToSell: ; 24fe1
 	ld [Buffer2], a
 	ld hl, SellItem_MenuDataHeader
 	call LoadMenuDataHeader
-	call Toss_Sell_Loop
-	ret
+	;jp Toss_Sell_Loop
 ; 24ff9
 
 Toss_Sell_Loop: ; 24ff9
@@ -190,8 +187,7 @@ ret_25097: ; 25097
 
 DisplayPurchasePrice: ; 25098
 	call BuySell_MultiplyPrice
-	call BuySell_DisplaySubtotal
-	ret
+	jp BuySell_DisplaySubtotal
 ; 2509f
 
 DisplaySellingPrice: ; 2509f
@@ -245,8 +241,7 @@ BuySell_DisplaySubtotal: ; 250d1
 	ld de, hMoneyTemp
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 ; 250ed
 
 TossItem_MenuDataHeader: ; 0x250ed

@@ -76,8 +76,7 @@ StartMenu:: ; 125cd
 	call ExitMenu
 .ReturnEnd2:
 	call CloseText
-	call UpdateTimePals
-	ret
+	jp UpdateTimePals
 
 .GetInput:
 ; Return carry on exit, and no-carry on selection.
@@ -585,8 +584,7 @@ PartyMonItemName: ; 12a6c
 	ld a, [CurItem]
 	ld [wd265], a
 	call GetItemName
-	call CopyName1
-	ret
+	jp CopyName1
 ; 12a79
 
 
@@ -789,8 +787,7 @@ TryGiveItemToPartymon: ; 12bd9
 	call GiveItemToPokemon
 	ld hl, MadeHoldText
 	call MenuTextBoxBackup
-	call GivePartyItem
-	ret
+	jp GivePartyItem
 
 .please_remove_mail
 	ld hl, PleaseRemoveMailText
@@ -1838,8 +1835,7 @@ String_PowAcc:
 
 Function132d3: ; 132d3
 	call Function132da
-	call Function132fe
-	ret
+	jp Function132fe
 ; 132da
 
 Function132da: ; 132da

@@ -1,11 +1,5 @@
 
 _Diploma: ; 1dd702
-	call PlaceDiplomaOnScreen
-	call WaitPressAorB_BlinkCursor
-	ret
-; 1dd709
-
-PlaceDiplomaOnScreen: ; 1dd709
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -31,7 +25,8 @@ PlaceDiplomaOnScreen: ; 1dd709
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call SetPalettes
-	jp DelayFrame
+	call DelayFrame
+	jp WaitPressAorB_BlinkCursor
 ; 1dd760
 
 .PlayerString:

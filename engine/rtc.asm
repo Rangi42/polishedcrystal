@@ -192,6 +192,5 @@ Function170923: ; 170923
 	ld hl, $aa5d
 	ld bc, $0011
 	call ByteFill
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 ; 17093c

@@ -184,8 +184,7 @@ Function24a40: ; 24a40 (9:4a40)
 	call ItemSwitch_GetNthItem
 	ld de, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 Function24a4d: ; 24a4d (9:4a4d)
 	call ItemSwitch_GetNthItem
@@ -193,8 +192,7 @@ Function24a4d: ; 24a4d (9:4a4d)
 	ld e, l
 	ld hl, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 ItemSwitch_GetNthItem: ; 24a5c (9:4a5c)
 	push af

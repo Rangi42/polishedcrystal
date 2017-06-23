@@ -884,8 +884,7 @@ Hatch_InitShellFragments: ; 173b3 (5:73b3)
 .done
 	ld de, SFX_EGG_HATCH
 	call PlaySFX
-	call EggHatch_DoAnimFrame
-	ret
+	jp EggHatch_DoAnimFrame
 ; 173ef (5:73ef)
 
 .SpriteData: ; 173ef

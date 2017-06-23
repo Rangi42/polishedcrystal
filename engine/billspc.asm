@@ -69,8 +69,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
-	call BillsPC_IncrementJumptableIndex
-	ret
+	jp BillsPC_IncrementJumptableIndex
 
 .HandleJoypad: ; e241a (38:641a)
 	ld hl, hJoyPressed ; $ffa7
@@ -92,8 +91,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .a_button
 	call BillsPC_GetSelectedPokemonSpecies
@@ -319,8 +317,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
-	call BillsPC_IncrementJumptableIndex
-	ret
+	jp BillsPC_IncrementJumptableIndex
 
 .Joypad: ; e2612 (38:6612)
 	ld hl, hJoyPressed ; $ffa7
@@ -342,8 +339,8 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
-	call DelayFrame
-	ret
+	jp DelayFrame
+
 .a_button
 	call BillsPC_GetSelectedPokemonSpecies
 	and a
@@ -563,8 +560,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
-	call BillsPC_IncrementJumptableIndex
-	ret
+	jp BillsPC_IncrementJumptableIndex
 ; e27eb
 
 .Joypad: ; e27eb
@@ -588,8 +584,7 @@ _MovePKMNWithoutMail: ; e2759
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .d_pad
 	xor a
@@ -717,8 +712,7 @@ endr
 	call ClearSprites
 	call BillsPC_UpdateInsertCursor
 	call WaitBGMap
-	call BillsPC_IncrementJumptableIndex
-	ret
+	jp BillsPC_IncrementJumptableIndex
 ; e2903
 
 .Joypad2: ; e2903
@@ -740,8 +734,7 @@ endr
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 .dpad_2
 	xor a
@@ -1660,8 +1653,7 @@ BillsPC_StatsScreen: ; e2f7e (38:6f7e)
 	ld [MonType], a
 	predef StatsScreenInit
 	call BillsPC_InitGFX
-	call MaxVolume
-	ret
+	jp MaxVolume
 
 StatsScreenDPad: ; e2f95 (38:6f95)
 	ld hl, hJoyPressed ; $ffa7
@@ -1988,8 +1980,7 @@ endr
 	cp [hl]
 	jr z, .same_box
 	call .CopyFromBox
-	call .CopyToBox
-	ret
+	jp .CopyToBox
 
 .same_box
 	call .CopyFromBox
@@ -2009,8 +2000,7 @@ endr
 
 .BoxToParty: ; e327d
 	call .CopyFromBox
-	call .CopyToParty
-	ret
+	jp .CopyToParty
 ; e3284
 
 .PartyToParty: ; e3284
@@ -2216,8 +2206,7 @@ BillsPC_InitGFX: ; e33e8 (38:73e8)
 	call Decompress
 	ld a, 6
 	call SkipMusic
-	call EnableLCD
-	ret
+	jp EnableLCD
 ; e3419 (38:7419)
 
 PCSelectLZ: INCBIN "gfx/pc/pc.2bpp.lz"

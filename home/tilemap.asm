@@ -25,8 +25,7 @@ RestoreTileBackup:: ; 0x1c23
 	call MenuBoxCoord2Tile
 	call .copy
 	call MenuBoxCoord2Attr
-	call .copy
-	ret
+	;jp .copy
 ; 0x1c30
 
 .copy ; 0x1c30

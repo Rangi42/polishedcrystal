@@ -230,8 +230,7 @@ Pokedex_InitMainScreen: ; 4013c (10:413c)
 	ld a, 7
 	ld [wDexListingHeight], a
 	call Pokedex_PrintListing
-	call Pokedex_IncrementDexPointer
-	ret
+	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateMainScreen: ; 401ae (10:41ae)
 	ld hl, hJoyPressed
@@ -314,8 +313,7 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	call Pokedex_GetSGBLayout
 	ld a, [CurPartySpecies]
 	call PlayCry
-	call Pokedex_IncrementDexPointer
-	ret
+	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateDexEntryScreen: ; 40258 (10:4258)
 	ld de, DexEntryScreen_ArrowCursorData
@@ -451,8 +449,7 @@ Pokedex_InitOptionScreen: ; 4039d (10:439d)
 	call WaitBGMap
 	ld a, SCGB_POKEDEX_SEARCH_OPTION
 	call Pokedex_GetSGBLayout
-	call Pokedex_IncrementDexPointer
-	ret
+	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateOptionScreen: ; 403be (10:43be)
 	ld a, [wUnlockedUnownMode]
@@ -559,8 +556,7 @@ Pokedex_InitSearchScreen: ; 40443 (10:4443)
 	call WaitBGMap
 	ld a, SCGB_POKEDEX_SEARCH_OPTION
 	call Pokedex_GetSGBLayout
-	call Pokedex_IncrementDexPointer
-	ret
+	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	ld de, .ArrowCursorData
@@ -601,8 +597,7 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 
 .MenuAction_MonSearchType: ; 404b0
 	call Pokedex_NextSearchMonType
-	call Pokedex_PlaceSearchScreenTypeStrings
-	ret
+	jp Pokedex_PlaceSearchScreenTypeStrings
 
 .MenuAction_BeginSearch: ; 404b7
 	call Pokedex_SearchForMons
@@ -619,8 +614,7 @@ Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
 	call Pokedex_DrawSearchScreenBG
 	call Pokedex_InitArrowCursor
 	call Pokedex_PlaceSearchScreenTypeStrings
-	call WaitBGMap
-	ret
+	jp WaitBGMap
 
 .show_search_results
 	ld [wDexListingEnd], a
@@ -676,8 +670,7 @@ Pokedex_InitSearchResultsScreen: ; 4050a (10:450a)
 	ld [CurPartySpecies], a
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
-	call Pokedex_IncrementDexPointer
-	ret
+	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateSearchResultsScreen: ; 40562 (10:4562)
 	ld hl, hJoyPressed
@@ -735,8 +728,7 @@ Pokedex_InitUnownMode: ; 405bd (10:45bd)
 	call WaitBGMap
 	ld a, SCGB_POKEDEX_UNOWN_MODE
 	call Pokedex_GetSGBLayout
-	call Pokedex_IncrementDexPointer
-	ret
+	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateUnownMode: ; 405df (10:45df)
 	ld hl, hJoyPressed
@@ -799,8 +791,7 @@ Pokedex_UnownModeHandleDPadInput: ; 40610 (10:4610)
 	ld a, $1
 	ld [hBGMapMode], a
 	call DelayFrame
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 Pokedex_UnownModeEraseCursor: ; 40654 (10:4654)
 	ld c, " "
@@ -1097,8 +1088,7 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	hlcoord 0, 17
 	ld de, .MenuItems
 	call Pokedex_PlaceString
-	call Pokedex_PlaceFrontpicTopLeftCorner
-	ret
+	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 .HeightImperial: ; 40852
 	db "Ht  ?′??″", $ff ; HT  ?'??"
@@ -2299,8 +2289,7 @@ Pokedex_FillBox: ; 413fe (10:53fe)
 Pokedex_BlackOutBG: ; 41401 (10:5401)
 ; Make BG palettes black so that the BG becomes all black.
 	call _Pokedex_JustBlackOutBG
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 _Pokedex_JustBlackOutBG:
 	ld a, [rSVBK]
@@ -2441,8 +2430,7 @@ Pokedex_LoadGFX: ; 414b7
 	call Decompress
 	ld a, 6
 	call SkipMusic
-	call EnableLCD
-	ret
+	jp EnableLCD
 
 Pokedex_LoadInvertedFont: ; 414fb
 	call LoadStandardFont
