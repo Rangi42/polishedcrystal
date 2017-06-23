@@ -117,16 +117,139 @@ PokefanfRuthScript:
 	closetext
 	end
 
-TrainerCowgirlAnnie:
-	trainer EVENT_BEAT_COWGIRL_ANNIE, COWGIRL, ANNIE, CowgirlAnnieSeenText, CowgirlAnnieBeatenText, 0, CowgirlAnnieScript
-
-CowgirlAnnieScript:
-	end_if_just_battled
+Route39CowgirlAnnieScript:
+	faceplayer
 	opentext
-	writetext CowgirlAnnieAfterText
+	checkevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
+	iftrue .GotPPMax
+	checkevent EVENT_BEAT_COWGIRL_ANNIE
+	iftrue .Beaten
+	checkevent EVENT_BEAT_BIRD_KEEPER_TOBY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_SAILOR_HARRY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_LASS_DANA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_SCHOOLBOY_CHAD
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BEAUTY_VALENCIA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BEAUTY_OLIVIA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEFANM_DEREK
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEFANF_RUTH
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_SAILOR_EUGENE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PSYCHIC_NORMAN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEFANF_JAIME
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE39_COWGIRL
+	loadtrainer COWGIRL, ANNIE
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_COWGIRL_ANNIE
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem PP_MAX
+	iffalse .Done
+	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
+.GotPPMax:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
 	waitbutton
 	closetext
 	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "Hey! Don't scare"
+	line "the Miltank!"
+
+	para "…Oh, you want to"
+	line "battle?"
+
+	para "I'm doing farm"
+	line "work right now…"
+
+	para "Tell ya what--"
+	line "beat everyone else"
+
+	para "from Ecruteak to"
+	line "Olivine and I'll"
+	cont "fight ya."
+	done
+
+.QuestionText:
+	text "I'm done with my"
+	line "chores, and you're"
+
+	para "done clearing"
+	line "these routes."
+
+	para "Now then, my team"
+	line "beat Morty, and I"
+
+	para "reckon we can beat"
+	line "you."
+
+	para "What do you say?"
+	done
+
+.RefusedText:
+	text "Shucks. Back to"
+	line "tending the Mil-"
+	cont "tank, then."
+	done
+
+.SeenText:
+	text "I'll show ya what"
+	line "a Cowgirl can do!"
+	done
+
+.BeatenText:
+	text "I spilled some"
+	line "milk…"
+	done
+
+.AfterText1:
+	text "Whew! That was an"
+	line "intense break!"
+
+	para "Thanks for the"
+	line "fun, partner."
+
+	para "Take this with"
+	line "ya!"
+	done
+
+.AfterText2:
+	text "We make cheese"
+	line "and yogurt out"
+	cont "of Miltank milk."
+	done
 
 TrainerSailorEugene:
 	trainer EVENT_BEAT_SAILOR_EUGENE, SAILOR, EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, SailorEugeneScript
@@ -198,25 +321,8 @@ FruitTreeScript_0x1a5bf4:
 Route39HiddenNugget:
 	dwb EVENT_ROUTE_39_HIDDEN_NUGGET, NUGGET
 
-
 Route39MiltankText:
 	text "Miltank: Mooo!"
-	done
-
-CowgirlAnnieSeenText:
-	text "Hey! Don't scare"
-	line "the Miltank!"
-	done
-
-CowgirlAnnieBeatenText:
-	text "I spilled some"
-	line "milk…"
-	done
-
-CowgirlAnnieAfterText:
-	text "We make cheese"
-	line "and yogurt out"
-	cont "of Miltank milk."
 	done
 
 SailorEugeneSeenText:
@@ -416,5 +522,5 @@ Route39_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a5bf4, -1
 	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
-	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerCowgirlAnnie, -1
+	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
 	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route39BeautyScript, -1

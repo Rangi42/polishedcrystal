@@ -588,7 +588,6 @@ INCLUDE "maps/Route39.asm"
 INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/PewterNidoranSpeechHouse.asm"
 INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
-INCLUDE "maps/ViridianForest.asm"
 
 
 SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
@@ -791,4 +790,5 @@ SECTION "Map Scripts 42", ROMX
 INCLUDE "maps/KrissNeighborsHouse.asm"
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
+INCLUDE "maps/ViridianForest.asm"
 

@@ -226,8 +226,8 @@ Route39Farmhouse_MapEventHeader:
 
 .Signposts:
 	db 2
-	signpost 1, 0, SIGNPOST_READ, FarmhouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, FarmhouseBookshelf
+	signpost 1, 6, SIGNPOST_READ, FarmhouseBookshelf
+	signpost 1, 7, SIGNPOST_READ, FarmhouseBookshelf
 
 .PersonEvents:
 	db 2
