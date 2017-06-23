@@ -211,13 +211,7 @@ Pokedex_InitMainScreen: ; 4013c (10:413c)
 	call Pokedex_DrawMainScreenBG
 	ld a, $5
 	ld [hSCX], a
-
-	ld a, [wCurrentDexMode]
-	cp DEXMODE_OLD
-	ld a, $4a
-	jr z, .okay
 	ld a, $47
-.okay
 	ld [hWX], a
 	xor a
 	ld [hWY], a
@@ -1943,12 +1937,15 @@ Pokedex_DisplayTypeNotFoundMessage: ; 41107
 Pokedex_UpdateCursorOAM: ; 41148 (10:5148)
 	ld a, [wCurrentDexMode]
 	cp DEXMODE_OLD
-	jp z, Pokedex_PutOldModeCursorOAM
+	jr z, .old
 	call Pokedex_PutNewModeABCModeCursorOAM
-	call Pokedex_PutScrollbarOAM
-	ret
+	jr .ok
+.old
+	call Pokedex_PutOldModeCursorOAM
+.ok
+	jp Pokedex_PutScrollbarOAM
 
-Pokedex_PutOldModeCursorOAM: ; 41157 (10:5157)
+Pokedex_PutOldModeCursorOAM:
 	ld hl, .CursorOAM
 	ld a, [wDexListingCursor]
 	or a
@@ -1963,25 +1960,21 @@ Pokedex_PutOldModeCursorOAM: ; 41157 (10:5157)
 	db $10, $4f, $32, $07
 	db $10, $57, $32, $07
 	db $10, $5f, $32, $07
-	db $10, $67, $33, $07
-	db $10, $7e, $33, $27
-	db $10, $86, $32, $27
-	db $10, $8e, $32, $27
-	db $10, $96, $32, $27
-	db $10, $9e, $31, $27
-	db $18, $9e, $30, $27
+	db $10, $80, $32, $27
+	db $10, $88, $32, $27
+	db $10, $90, $32, $27
+	db $10, $98, $31, $27
+	db $18, $98, $30, $27
 	db $20, $47, $30, $47
 	db $28, $47, $31, $47
 	db $28, $4f, $32, $47
 	db $28, $57, $32, $47
 	db $28, $5f, $32, $47
-	db $28, $67, $33, $47
-	db $28, $7e, $33, $67
-	db $28, $86, $32, $67
-	db $28, $8e, $32, $67
-	db $28, $96, $32, $67
-	db $28, $9e, $31, $67
-	db $20, $9e, $30, $67
+	db $28, $80, $32, $67
+	db $28, $88, $32, $67
+	db $28, $90, $32, $67
+	db $28, $98, $31, $67
+	db $20, $98, $30, $67
 	db $ff
 
 .CursorAtTopOAM: ; 411c8
@@ -1992,25 +1985,21 @@ Pokedex_PutOldModeCursorOAM: ; 41157 (10:5157)
 	db $10, $4f, $35, $07
 	db $10, $57, $35, $07
 	db $10, $5f, $35, $07
-	db $10, $67, $36, $07
-	db $10, $7e, $36, $27
-	db $10, $86, $35, $27
-	db $10, $8e, $35, $27
-	db $10, $96, $35, $27
-	db $10, $9e, $34, $27
-	db $18, $9e, $30, $27
+	db $10, $80, $35, $27
+	db $10, $88, $35, $27
+	db $10, $90, $35, $27
+	db $10, $98, $34, $27
+	db $18, $98, $30, $27
 	db $20, $47, $30, $47
 	db $28, $47, $31, $47
 	db $28, $4f, $32, $47
 	db $28, $57, $32, $47
 	db $28, $5f, $32, $47
-	db $28, $67, $33, $47
-	db $28, $7e, $33, $67
-	db $28, $86, $32, $67
-	db $28, $8e, $32, $67
-	db $28, $96, $32, $67
-	db $28, $9e, $31, $67
-	db $20, $9e, $30, $67
+	db $28, $80, $32, $67
+	db $28, $88, $32, $67
+	db $28, $90, $32, $67
+	db $28, $98, $31, $67
+	db $20, $98, $30, $67
 	db $ff
 
 Pokedex_PutNewModeABCModeCursorOAM: ; 41229 (10:5229)
@@ -2043,8 +2032,14 @@ Pokedex_PutNewModeABCModeCursorOAM: ; 41229 (10:5229)
 Pokedex_UpdateSearchResultsCursorOAM: ; 41281 (10:5281)
 	ld a, [wCurrentDexMode]
 	cp DEXMODE_OLD
-	jp z, Pokedex_PutOldModeCursorOAM
 	ld hl, .CursorOAM
+	jp nz, Pokedex_LoadCursorOAM
+	ld hl, .OldCursorOAM
+	ld a, [wDexListingCursor]
+	or a
+	jr nz, .ok
+	ld hl, .OldCursorAtTopOAM
+.ok
 	jp Pokedex_LoadCursorOAM
 
 .CursorOAM: ; 41290
@@ -2072,6 +2067,60 @@ Pokedex_UpdateSearchResultsCursorOAM: ; 41281 (10:5281)
 	db $2b, $96, $32, $67
 	db $2b, $9e, $31, $67
 	db $23, $9e, $30, $67
+	db $ff
+
+.OldCursorOAM:
+	db $18, $47, $30, $07
+	db $10, $47, $31, $07
+	db $10, $4f, $32, $07
+	db $10, $57, $32, $07
+	db $10, $5f, $32, $07
+	db $10, $67, $33, $07
+	db $10, $7e, $33, $27
+	db $10, $86, $32, $27
+	db $10, $8e, $32, $27
+	db $10, $96, $32, $27
+	db $10, $9e, $31, $27
+	db $18, $9e, $30, $27
+	db $20, $47, $30, $47
+	db $28, $47, $31, $47
+	db $28, $4f, $32, $47
+	db $28, $57, $32, $47
+	db $28, $5f, $32, $47
+	db $28, $67, $33, $47
+	db $28, $7e, $33, $67
+	db $28, $86, $32, $67
+	db $28, $8e, $32, $67
+	db $28, $96, $32, $67
+	db $28, $9e, $31, $67
+	db $20, $9e, $30, $67
+	db $ff
+
+.OldCursorAtTopOAM:
+	db $18, $47, $30, $07
+	db $10, $47, $34, $07
+	db $10, $4f, $35, $07
+	db $10, $57, $35, $07
+	db $10, $5f, $35, $07
+	db $10, $67, $36, $07
+	db $10, $7e, $36, $27
+	db $10, $86, $35, $27
+	db $10, $8e, $35, $27
+	db $10, $96, $35, $27
+	db $10, $9e, $34, $27
+	db $18, $9e, $30, $27
+	db $20, $47, $30, $47
+	db $28, $47, $31, $47
+	db $28, $4f, $32, $47
+	db $28, $57, $32, $47
+	db $28, $5f, $32, $47
+	db $28, $67, $33, $47
+	db $28, $7e, $33, $67
+	db $28, $86, $32, $67
+	db $28, $8e, $32, $67
+	db $28, $96, $32, $67
+	db $28, $9e, $31, $67
+	db $20, $9e, $30, $67
 	db $ff
 
 Pokedex_LoadCursorOAM: ; 412f1 (10:52f1)

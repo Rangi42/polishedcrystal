@@ -5946,9 +5946,6 @@ DrawPokedexListWindow: ; 1de171 (77:6171)
 	ld [hl], $3f
 	hlcoord 5, 16
 	ld [hl], $40
-	ld a, [wCurrentDexMode]
-	cp DEXMODE_OLD
-	jr z, .OldMode
 ; scroll bar
 	hlcoord 11, 0
 	ld [hl], $50
@@ -5957,18 +5954,6 @@ DrawPokedexListWindow: ; 1de171 (77:6171)
 	ld b, SCREEN_HEIGHT - 3
 	call Bank77_FillColumn
 	ld [hl], $52
-	jr .Done
-
-.OldMode:
-; no scroll bar
-	hlcoord 11, 0
-	ld [hl], $60
-	ld a, $61
-	hlcoord 11, 1
-	ld b, SCREEN_HEIGHT - 3
-	call Bank77_FillColumn
-	ld [hl], $62
-.Done:
 	ret
 
 DrawPokedexSearchResultsWindow: ; 1de1d1 (77:61d1)
