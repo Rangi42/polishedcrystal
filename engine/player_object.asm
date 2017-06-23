@@ -20,6 +20,8 @@ SpawnPlayer: ; 8029
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
 	xor a
+	ld hl, PlayerObjectTemplate
+	call CopyPlayerObjectTemplate
 	ld b, $0
 	call PlayerSpawn_ConvertCoords
 	xor a
@@ -46,6 +48,13 @@ SpawnPlayer: ; 8029
 	ld a, PLAYER
 	ld [wCenteredObject], a
 	ret
+
+PlayerObjectTemplate: ; 8071
+; A dummy map object used to initialize the player object.
+; Shorter than the actual amount copied by two bytes.
+; Said bytes seem to be unused, but the game freezes when you first spawn
+; in your room if this is not loaded.
+	person_event SPRITE_CHRIS, -4, -4, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, PERSONTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject:: ; 807e
 	push de
