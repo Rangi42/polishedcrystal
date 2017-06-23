@@ -1945,7 +1945,7 @@ Pokedex_UpdateCursorOAM: ; 41148 (10:5148)
 .ok
 	jp Pokedex_PutScrollbarOAM
 
-Pokedex_PutOldModeCursorOAM: ; 41157 (10:5157)
+Pokedex_PutOldModeCursorOAM:
 	ld hl, .CursorOAM
 	ld a, [wDexListingCursor]
 	or a
@@ -2030,6 +2030,9 @@ Pokedex_PutNewModeABCModeCursorOAM: ; 41229 (10:5229)
 	db $ff
 
 Pokedex_UpdateSearchResultsCursorOAM: ; 41281 (10:5281)
+	ld a, [wCurrentDexMode]
+	cp DEXMODE_OLD
+	jp z, Pokedex_PutOldModeCursorOAM
 	ld hl, .CursorOAM
 	jp Pokedex_LoadCursorOAM
 
