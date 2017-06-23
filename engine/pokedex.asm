@@ -1935,76 +1935,18 @@ Pokedex_DisplayTypeNotFoundMessage: ; 41107
 	next "was not found.@"
 
 Pokedex_UpdateCursorOAM: ; 41148 (10:5148)
+	ld hl, .CursorOAM
 	ld a, [wCurrentDexMode]
 	cp DEXMODE_OLD
-	jr z, .old
-	call Pokedex_PutNewModeABCModeCursorOAM
-	jr .ok
-.old
-	call Pokedex_PutOldModeCursorOAM
-.ok
-	jp Pokedex_PutScrollbarOAM
-
-Pokedex_PutOldModeCursorOAM:
-	ld hl, .CursorOAM
+	jr nz, .ok
+	ld hl, .OldCursorOAM
 	ld a, [wDexListingCursor]
 	or a
-	jr nz, .okay
-	ld hl, .CursorAtTopOAM
-.okay
-	jp Pokedex_LoadCursorOAM
-
-.CursorOAM: ; 41167
-	db $18, $47, $30, $07
-	db $10, $47, $31, $07
-	db $10, $4f, $32, $07
-	db $10, $57, $32, $07
-	db $10, $5f, $32, $07
-	db $10, $80, $32, $27
-	db $10, $88, $32, $27
-	db $10, $90, $32, $27
-	db $10, $98, $31, $27
-	db $18, $98, $30, $27
-	db $20, $47, $30, $47
-	db $28, $47, $31, $47
-	db $28, $4f, $32, $47
-	db $28, $57, $32, $47
-	db $28, $5f, $32, $47
-	db $28, $80, $32, $67
-	db $28, $88, $32, $67
-	db $28, $90, $32, $67
-	db $28, $98, $31, $67
-	db $20, $98, $30, $67
-	db $ff
-
-.CursorAtTopOAM: ; 411c8
-; OAM data for when the cursor is at the top of the list. The tiles at the top
-; are cut off so they don't show up outside the list area.
-	db $18, $47, $30, $07
-	db $10, $47, $34, $07
-	db $10, $4f, $35, $07
-	db $10, $57, $35, $07
-	db $10, $5f, $35, $07
-	db $10, $80, $35, $27
-	db $10, $88, $35, $27
-	db $10, $90, $35, $27
-	db $10, $98, $34, $27
-	db $18, $98, $30, $27
-	db $20, $47, $30, $47
-	db $28, $47, $31, $47
-	db $28, $4f, $32, $47
-	db $28, $57, $32, $47
-	db $28, $5f, $32, $47
-	db $28, $80, $32, $67
-	db $28, $88, $32, $67
-	db $28, $90, $32, $67
-	db $28, $98, $31, $67
-	db $20, $98, $30, $67
-	db $ff
-
-Pokedex_PutNewModeABCModeCursorOAM: ; 41229 (10:5229)
-	ld hl, .CursorOAM
-	jp Pokedex_LoadCursorOAM
+	jr nz, .ok
+	ld hl, .OldCursorAtTopOAM
+.ok
+	call Pokedex_LoadCursorOAM
+	jp Pokedex_PutScrollbarOAM
 
 .CursorOAM: ; 41230
 	db $1b, $47, $30, $07
@@ -2029,11 +1971,59 @@ Pokedex_PutNewModeABCModeCursorOAM: ; 41229 (10:5229)
 	db $23, $98, $30, $67
 	db $ff
 
+.OldCursorOAM: ; 41167
+	db $18, $47, $30, $07
+	db $10, $47, $31, $07
+	db $10, $4f, $32, $07
+	db $10, $57, $32, $07
+	db $10, $5f, $32, $07
+	db $10, $80, $32, $27
+	db $10, $88, $32, $27
+	db $10, $90, $32, $27
+	db $10, $98, $31, $27
+	db $18, $98, $30, $27
+	db $20, $47, $30, $47
+	db $28, $47, $31, $47
+	db $28, $4f, $32, $47
+	db $28, $57, $32, $47
+	db $28, $5f, $32, $47
+	db $28, $80, $32, $67
+	db $28, $88, $32, $67
+	db $28, $90, $32, $67
+	db $28, $98, $31, $67
+	db $20, $98, $30, $67
+	db $ff
+
+.OldCursorAtTopOAM: ; 411c8
+; OAM data for when the cursor is at the top of the list. The tiles at the top
+; are cut off so they don't show up outside the list area.
+	db $18, $47, $30, $07
+	db $10, $47, $34, $07
+	db $10, $4f, $35, $07
+	db $10, $57, $35, $07
+	db $10, $5f, $35, $07
+	db $10, $80, $35, $27
+	db $10, $88, $35, $27
+	db $10, $90, $35, $27
+	db $10, $98, $34, $27
+	db $18, $98, $30, $27
+	db $20, $47, $30, $47
+	db $28, $47, $31, $47
+	db $28, $4f, $32, $47
+	db $28, $57, $32, $47
+	db $28, $5f, $32, $47
+	db $28, $80, $32, $67
+	db $28, $88, $32, $67
+	db $28, $90, $32, $67
+	db $28, $98, $31, $67
+	db $20, $98, $30, $67
+	db $ff
+
 Pokedex_UpdateSearchResultsCursorOAM: ; 41281 (10:5281)
+	ld hl, .CursorOAM
 	ld a, [wCurrentDexMode]
 	cp DEXMODE_OLD
-	ld hl, .CursorOAM
-	jp nz, Pokedex_LoadCursorOAM
+	jr nz, .ok
 	ld hl, .OldCursorOAM
 	ld a, [wDexListingCursor]
 	or a
@@ -2134,15 +2124,11 @@ Pokedex_LoadCursorOAM: ; 412f1 (10:52f1)
 	swap a
 	add [hl]
 	inc hl
+rept 3
 	ld [de], a
 	inc de
 	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
+endr
 	ld [de], a
 	inc de
 	jr .loop
