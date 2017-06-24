@@ -358,22 +358,34 @@ _CGB_Pokedex: ; 8f70
 ; 8fba
 
 .GreenPicPalette: ; 8fba
+if !DEF(MONOCHROME)
 	RGB 11, 23, 00
 	RGB 07, 17, 00
 	RGB 06, 16, 03
 	RGB 05, 12, 01
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 .SlowpokePalette:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 14, 14, 14
 	RGB 31, 07, 01
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 .CursorPalette: ; 8fc2
+if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 	RGB 11, 23, 00
 	RGB 07, 17, 00
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 ; 8fca
 
 
@@ -456,11 +468,14 @@ _CGB_Diploma: ; 91ad
 ; 91c8
 
 .DiplomaPalette
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 30, 22, 17
 	RGB 16, 14, 19
 	RGB 00, 00, 00
-
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 _CGB_MapPals: ; 91c8
 	call LoadMapPals
@@ -497,11 +512,14 @@ endr
 ; 91e4
 
 .PartyMenuBGPalette:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 17, 19, 31
 	RGB 14, 16, 31
 	RGB 00, 00, 00
-
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 _CGB_Evolution: ; 91e4
 	ld de, UnknBGPals
@@ -965,10 +983,14 @@ _CGB_BillsPC: ; 8fca
 ; 9009
 
 .OrangePalette: ; 9036
+if !DEF(MONOCHROME)
 	RGB 31, 15, 00
 	RGB 23, 12, 00
 	RGB 15, 07, 00
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 ; 903e
 
 
@@ -987,7 +1009,6 @@ _CGB_UnownPuzzle: ; 925e
 	ld [rSVBK], a
 	ld hl, UnknOBPals
 	; RGB 31, 00, 00
-	ld a, $1f
 	ld [hli], a
 	xor a
 	ld [hl], a
@@ -999,10 +1020,14 @@ _CGB_UnownPuzzle: ; 925e
 ; 9289
 
 .UnownPuzzlePalette:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 24, 20, 11
 	RGB 18, 13, 11
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 
 _CGB_GameFreakLogo: ; 94fa
@@ -1022,16 +1047,24 @@ endr
 ; 9521
 
 .GameFreakLogoPalette:
+if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 	RGB 08, 11, 11
 	RGB 21, 21, 21
 	RGB 31, 31, 31
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 .GameFreakDittoPalette: ; 9521
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 13, 11, 00
 	RGB 23, 12, 28
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 ; 9529
 
 
@@ -1054,16 +1087,24 @@ _CGB_TradeTube: ; 9555
 ; 9578
 
 .TradeTubeBluePalette:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 18, 20, 27
 	RGB 11, 15, 23
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 .TradeTubeRedPalette:
+if !DEF(MONOCHROME)
 	RGB 27, 31, 27
 	RGB 31, 19, 10
 	RGB 31, 07, 04
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 
 _CGB_IntroPals: ; 9591
@@ -1093,10 +1134,14 @@ _CGB_IntroPals: ; 9591
 ; 95e0
 
 .IntroGradientPalette:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 27, 31, 31
 	RGB 19, 31, 31
 	RGB 09, 30, 31
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 
 _CGB_PlayerOrMonFrontpicPals: ; 9529

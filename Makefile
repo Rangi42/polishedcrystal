@@ -13,7 +13,7 @@ RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc faithful-nortc debug bankfree freespace
+.PHONY: all clean crystal faithful nortc faithful-nortc debug bankfree freespace monochrome
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -59,9 +59,13 @@ faithful-nortc: RGBASM_FLAGS += -DFAITHFUL -DNO_RTC
 faithful-nortc: ROM_NAME = $(NAME)-faithful-nortc-$(VERSION)
 faithful-nortc: $(NAME)-faithful-nortc-$(VERSION).gbc
 
-debug: RGBASM_FLAGS += -DDEBUG
+debug: RGBASM_FLAGS += -DDEBUG -DMONOCHROME
 debug: ROM_NAME = $(NAME)-$(VERSION)
 debug: $(NAME)-$(VERSION).gbc
+
+monochrome: RGBASM_FLAGS += -DMONOCHROME
+monochrome: ROM_NAME = $(NAME)-$(VERSION)
+monochrome: $(NAME)-$(VERSION).gbc
 
 bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff

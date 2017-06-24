@@ -88,5 +88,9 @@ LoadGrayscalePalette:
 ; 49418
 
 GrayscalePalette:
+if !DEF(MONOCHROME)
 	RGB 20, 20, 20
 	RGB 10, 10, 10
+else
+	MONOCHROME_RGB_TWO
+endc
