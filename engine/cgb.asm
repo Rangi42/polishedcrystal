@@ -1008,11 +1008,19 @@ _CGB_UnownPuzzle: ; 925e
 	ld a, $5
 	ld [rSVBK], a
 	ld hl, UnknOBPals
+if !DEF(MONOCHROME)
 	; RGB 31, 00, 00
 	ld a, $1f
 	ld [hli], a
 	xor a
 	ld [hl], a
+else
+	; RGB 31, 31, 31
+	xor a
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+endc
 	pop af
 	ld [rSVBK], a
 
