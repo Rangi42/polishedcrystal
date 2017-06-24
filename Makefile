@@ -59,7 +59,7 @@ faithful-nortc: RGBASM_FLAGS += -DFAITHFUL -DNO_RTC
 faithful-nortc: ROM_NAME = $(NAME)-faithful-nortc-$(VERSION)
 faithful-nortc: $(NAME)-faithful-nortc-$(VERSION).gbc
 
-debug: RGBASM_FLAGS += -DDEBUG -DMONOCHROME
+debug: RGBASM_FLAGS += -DDEBUG
 debug: ROM_NAME = $(NAME)-$(VERSION)
 debug: $(NAME)-$(VERSION).gbc
 
