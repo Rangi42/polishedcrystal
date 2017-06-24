@@ -1974,8 +1974,7 @@ Pokedex_UpdateSearchResultsCursorOAM:
 
 Pokedex_UpdateCursor:
 	push bc
-	ld b, 3
-	ld c, 0
+	lb bc, 3, 0
 	ld a, [wCurrentDexMode]
 	cp DEXMODE_OLD
 	jr nz, .ok

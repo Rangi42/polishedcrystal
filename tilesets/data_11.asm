@@ -27,3 +27,6 @@ INCBIN "tilesets/pokemon_mansion_metatiles.bin"
 
 Tileset33Coll:
 INCLUDE "tilesets/pokemon_mansion_collision.asm"
+
+Tileset03Coll:
+INCLUDE "tilesets/kanto1_collision.asm"

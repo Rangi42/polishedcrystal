@@ -15,6 +15,3 @@ INCBIN "gfx/tilesets/kanto1.2bpp.lz"
 
 Tileset03Meta:
 INCBIN "tilesets/kanto1_metatiles.bin"
-
-Tileset03Coll:
-INCLUDE "tilesets/kanto1_collision.asm"
