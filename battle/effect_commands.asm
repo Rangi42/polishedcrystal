@@ -1851,16 +1851,16 @@ BattleCommand_CheckHit:
 	jr nz, .done_user_items
 	call CheckOpponentWentFirst
 	jr z, .done_user_items
-	ld hl, hMultiplier
 	ld a, 120
 	jr .do_user_item_acc_mod
 .accuracy_boost_item
 	ld a, 100
 	add c
 .do_user_item_acc_mod
-	call Multiply
-	ld a, 100
+	ld hl, hMultiplier
 	ld [hl], a
+	call Multiply
+	ld [hl], 100
 	ld b, 4
 	call Divide
 
