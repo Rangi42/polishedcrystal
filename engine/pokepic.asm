@@ -8,9 +8,15 @@ Pokepic:: ; 244e3
 	and a
 	jr nz, .partymon
 	farcall LoadPokemonPalette
+	ld a, 1
+	ld [MonVariant], a
 	jr .got_palette
 .partymon
 	farcall LoadPartyMonPalette
+	ld hl, PartyMon1Form
+	ld a, [CurPartyMon]
+	farcall GetPartyLocation
+	farcall GetVariant
 .got_palette
 	call UpdateTimePals
 	xor a

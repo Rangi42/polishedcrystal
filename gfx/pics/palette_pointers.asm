@@ -528,7 +528,7 @@ PorygonZPalette:        INCLUDE "gfx/pics/porygon_z/normal.pal"
 PorygonZShinyPalette:   INCLUDE "gfx/pics/porygon_z/shiny.pal"
 EggPalette:             INCLUDE "gfx/pics/egg/normal.pal"
 EggShinyPalette:        INCLUDE "gfx/pics/egg/shiny.pal"
-else:
+else
 rept 254
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO

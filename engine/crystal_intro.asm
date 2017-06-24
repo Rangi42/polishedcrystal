@@ -361,10 +361,12 @@ if !DEF(MONOCHROME)
 	RGB 26, 19, 02
 	RGB 26, 19, 00
 else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
+rept 4
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+endr
 endc
 ; e47cc
 
@@ -1623,29 +1625,74 @@ endr
 
 .BWFade: ; e5288
 ; Fade between black and white.
+if !DEF(MONOCHROME)
 hue = 0
 rept 32
 	RGB hue, hue, hue
 hue = hue + 1
 endr
+else
+rept 8
+	RGB_MONOCHROME_BLACK
+endr
+rept 8
+	RGB_MONOCHROME_DARK
+endr
+rept 8
+	RGB_MONOCHROME_LIGHT
+endr
+rept 8
+	RGB_MONOCHROME_WHITE
+endr
+endc
 ; e52c8
 
 .BlackLBlueFade: ; e52c8
 ; Fade between black and light blue.
+if !DEF(MONOCHROME)
 hue = 0
 rept 32
 	RGB 0, hue / 2, hue
 hue = hue + 1
 endr
+else
+rept 8
+	RGB_MONOCHROME_BLACK
+endr
+rept 8
+	RGB_MONOCHROME_DARK
+endr
+rept 8
+	RGB_MONOCHROME_LIGHT
+endr
+rept 8
+	RGB_MONOCHROME_WHITE
+endr
+endc
 ; e5308
 
 .BlackBlueFade: ; e5308
 ; Fade between black and blue.
+if !DEF(MONOCHROME)
 hue = 0
 rept 32
 	RGB 0, 0, hue
 hue = hue + 1
 endr
+else
+rept 8
+	RGB_MONOCHROME_BLACK
+endr
+rept 8
+	RGB_MONOCHROME_DARK
+endr
+rept 8
+	RGB_MONOCHROME_LIGHT
+endr
+rept 8
+	RGB_MONOCHROME_WHITE
+endr
+endc
 ; e5348
 
 Intro_Scene20_AppearUnown: ; e5348 (39:5348)
@@ -1778,6 +1825,7 @@ endr
 ; e53db (39:53db)
 
 .FastFadePalettes: ; e53db
+if !DEF(MONOCHROME)
 hue = 31
 rept 8
 	RGB hue, hue, hue
@@ -1785,14 +1833,37 @@ hue = hue + -1
 	RGB hue, hue, hue
 hue = hue + -2
 endr
+else
+rept 4
+	RGB_MONOCHROME_WHITE
+endr
+rept 4
+	RGB_MONOCHROME_LIGHT
+endr
+rept 4
+	RGB_MONOCHROME_DARK
+endr
+rept 4
+	RGB_MONOCHROME_BLACK
+endr
+endc
 ; e53fb
 
 .SlowFadePalettes: ; e53fb
+if !DEF(MONOCHROME)
 hue = 31
 rept 16
 	RGB hue, hue, hue
 hue = hue + -1
 endr
+else
+rept 8
+	RGB_MONOCHROME_WHITE
+endr
+rept 8
+	RGB_MONOCHROME_LIGHT
+endr
+endc
 ; e541b
 
 Intro_LoadTilemap: ; e541b (39:541b)
