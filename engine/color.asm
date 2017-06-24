@@ -311,14 +311,29 @@ ResetBGPals:
 	ld hl, UnknBGPals
 	ld c, 8
 .loop
-	ld a, $ff
+if !DEF(MONOCHROME)
+	ld a, $ff ; RGB 31, 31, 31
 rept 4
 	ld [hli], a
 endr
-	xor a
+	xor a ; RGB 00, 00, 00
 rept 4
 	ld [hli], a
 endr
+else
+rept 2
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [hli], a
+endr
+rept 2
+	ld a, PAL_MONOCHROME_BLACK % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_BLACK / $100
+	ld [hli], a
+endr
+endc
 	dec c
 	jr nz, .loop
 
