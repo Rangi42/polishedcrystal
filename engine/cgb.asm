@@ -1015,10 +1015,9 @@ if !DEF(MONOCHROME)
 	xor a
 	ld [hl], a
 else
-	; RGB 31, 31, 31
-	xor a
-	ld a, $ff
+	ld a, PAL_MONOCHROME_WHITE % $100
 	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
 	ld [hl], a
 endc
 	pop af

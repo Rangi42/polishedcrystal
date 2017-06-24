@@ -3733,10 +3733,17 @@ InitDisplayForLeafCredits: ; 4e8c2
 	ld hl, wd000 ; UnknBGPals
 	ld c, 4 tiles
 .load_white_palettes
+if !DEF(MONOCHROME)
 	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [hli], a
 	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [hli], a
+else
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [hli], a
+endc
 	dec c
 	jr nz, .load_white_palettes
 	xor a
@@ -5361,16 +5368,15 @@ LoadPoisonBGPals: ; cbcdd
 	ld c, $20
 .loop
 if !DEF(MONOCHROME)
-; RGB 31, 21, 28
-	ld a, (palred 31 + palgreen 21 + palblue 28) % $100
+; RGB 28, 21, 31
+	ld a, (palred 28 + palgreen 21 + palblue 31) % $100
 	ld [hli], a
-	ld a, (palred 31 + palgreen 21 + palblue 28) / $100
+	ld a, (palred 28 + palgreen 21 + palblue 31) / $100
 	ld [hli], a
 else
-; RGB 31, 31, 31
-	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld a, PAL_MONOCHROME_WHITE % $100
 	ld [hli], a
-	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld a, PAL_MONOCHROME_WHITE / $100
 	ld [hli], a
 endc
 	dec c
