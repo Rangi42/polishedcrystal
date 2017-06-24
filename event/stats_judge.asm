@@ -157,11 +157,9 @@ JudgePokemon:
 .SetDV:
 ; Flag best DVs and DVs at zero
 	and $f
-	jr nz, .bad_done
-	ld a, d
-	or c
-	ld c, a
-.bad_done
+	; Flag bad DV
+	cp 1
+	rl c
 	cp e
 	jr c, .good_done
 	ld e, a
