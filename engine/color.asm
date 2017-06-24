@@ -238,12 +238,21 @@ LoadPalette_White_Col1_Col2_Black:
 	ld a, $5
 	ld [rSVBK], a
 
+if !DEF(MONOCHROME)
 	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [de], a
 	inc de
 	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [de], a
 	inc de
+else
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [de], a
+	inc de
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [de], a
+	inc de
+endc
 
 	ld c, 2 * 2
 .loop
@@ -253,11 +262,20 @@ LoadPalette_White_Col1_Col2_Black:
 	dec c
 	jr nz, .loop
 
+if !DEF(MONOCHROME)
 	xor a ; RGB 00, 00, 00
 rept 2
 	ld [de], a
 	inc de
 endr
+else
+	ld a, PAL_MONOCHROME_BLACK % $100
+	ld [de], a
+	inc de
+	ld a, PAL_MONOCHROME_BLACK / $100
+	ld [de], a
+	inc de
+endc
 
 	pop af
 	ld [rSVBK], a
@@ -293,14 +311,29 @@ ResetBGPals:
 	ld hl, UnknBGPals
 	ld c, 8
 .loop
-	ld a, $ff
+if !DEF(MONOCHROME)
+	ld a, $ff ; RGB 31, 31, 31
 rept 4
 	ld [hli], a
 endr
-	xor a
+	xor a ; RGB 00, 00, 00
 rept 4
 	ld [hli], a
 endr
+else
+rept 2
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [hli], a
+endr
+rept 2
+	ld a, PAL_MONOCHROME_BLACK % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_BLACK / $100
+	ld [hli], a
+endr
+endc
 	dec c
 	jr nz, .loop
 
