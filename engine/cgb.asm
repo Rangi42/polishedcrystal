@@ -1009,6 +1009,7 @@ _CGB_UnownPuzzle: ; 925e
 	ld [rSVBK], a
 	ld hl, UnknOBPals
 	; RGB 31, 00, 00
+	ld a, $1f
 	ld [hli], a
 	xor a
 	ld [hl], a
