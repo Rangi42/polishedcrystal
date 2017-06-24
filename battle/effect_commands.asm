@@ -6187,7 +6187,7 @@ BattleCommand_StatDownFailText: ; 3646a
 ; 3648f
 
 
-GetStatName: ; 3648f
+GetStatName:
 	ld hl, .names
 	ld c, "@"
 .CheckName:
@@ -6213,7 +6213,6 @@ GetStatName: ; 3648f
 	db "Accuracy@"
 	db "Evasion@"
 	db "stats@" ; used by Curse
-; 364e6
 
 
 StatLevelMultipliers: ; 364e6

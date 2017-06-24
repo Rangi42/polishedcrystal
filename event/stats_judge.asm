@@ -1,6 +1,5 @@
-; Stats Judge code by TPP Anniversary Crystal 251
+; Stats Judge code originally by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/event/poke_seer.asm
-
 
 SpecialStatsJudge: ; 4f0bc
 	ld hl, .Intro
@@ -9,7 +8,6 @@ SpecialStatsJudge: ; 4f0bc
 	jr c, .cancel
 	ld hl, .Which
 	call PrintText
-	call JoyWaitAorB
 
 	ld b, $6
 	farcall SelectMonFromParty
@@ -22,7 +20,6 @@ SpecialStatsJudge: ; 4f0bc
 	call IsAPokemon
 	ret c
 
-	call ReadDVs
 	jp JudgePokemon
 
 .cancel
@@ -50,7 +47,7 @@ SpecialStatsJudge: ; 4f0bc
 .Which
 	text "Which #mon"
 	line "should I judge?"
-	done
+	prompt
 
 .Cancel
 	text "You don't need me"
@@ -62,486 +59,362 @@ SpecialStatsJudge: ; 4f0bc
 	line "I can't do that!"
 	done
 
-
-ReadDVs:
+JudgePokemon:
 	ld a, MON_DVS
 	call GetPartyParamLocation
-	ld a, [hli]
-	ld c, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hl]
-	ld e, a
-	ld hl, wd002
-; HP
-	ld a, c
-	swap a
-	and $f
-	ld [hli], a
-; Attack
-	ld a, c
-	and $f
-	ld [hli], a
-; Defense
-	ld a, d
-	swap a
-	and $f
-	ld [hli], a
-; Speed
-	ld a, d
-	and $f
-	ld [hli], a
-; Special Attack
-	ld a, e
-	swap a
-	and $f
-	ld [hli], a
-; Special Defense
-	ld a, e
-	and $f
-	ld [hli], a
-	ret
-
-
-JudgePokemon:
-	ld hl, .InitJudge
+	push hl
+	ld hl, .i_see
 	call PrintText
-	call JoyWaitAorB
-	call GetDVTotal
-	; push bc
-	call JudgeDVTotal
-	ld hl, .Incidentally
-	call PrintText
-	call JoyWaitAorB
+	pop hl
+	push hl
+	; b: Good stats, c: Bad stats, d: Total, e: Best
+	ld b, %000000
+	ld c, %000000
+	ld d, %100000
+	ld e, 0
+.loop
+	ld a, [hli]
+	push af
+	swap a
+	call .SetDV
+	pop af
+	call .SetDV
+	jr nc, .loop
 
-;	pop bc
-;	ld a, b
-;	and a
-;	jr z, .skip_maxdv
-;	cp 75
-;	jr z, .skip_maxdv
-	call GetMaxDV
+	; Now figure out total
+	pop hl
 	push bc
-	call InformMaxDVs
-	pop bc
-	call JudgeMaxDV
-	ld hl, .Conclude
+	ld b, 3
+.loop2
+	ld a, [hli]
+	push af
+	swap a
+	call .AddDV
+	pop af
+	call .AddDV
+	dec b
+	jr nz, .loop2
+
+	; Print total text
+	push de
+	ld a, d
+	cp 46
+	ld hl, .decent_total
+	jr c, .total_ok
+	cp 61
+	ld hl, .above_average_total
+	jr c, .total_ok
+	cp 76
+	ld hl, .relatively_superior_total
+	jr c, .total_ok
+	ld hl, .outstanding_total
+.total_ok
 	call PrintText
-	call JoyWaitAorB
-	call GetMinDV
-	call InformMinDVs
-;.skip_maxdv
-	ld hl, .Finish
+	ld hl, .total_after
+	call PrintText
+	pop de
+	pop bc
+
+	; Print max DV(s)
+	ld hl, .best_table
+	call .PrintDV
+
+	; Print how good it is
+	ld a, e
+	cp 8
+	ld hl, .ok_best
+	jr c, .got_best_text
+	cp 13
+	ld hl, .good_best
+	jr c, .got_best_text
+	cp 15
+	ld hl, .fantastic_best
+	jr c, .got_best_text
+	ld hl, .very_best
+.got_best_text
+	push bc
+	call PrintText
+	ld hl, .conclude_best
+	call PrintText
+	pop bc
+
+	; Print bad DVs
+	ld b, c
+	ld hl, .zero_table
+	call .PrintDV
+
+	; We're done
+	ld hl, .finish
 	jp PrintText
 
-.InitJudge
-	text "I see… I see…"
-	done
-
-.Incidentally
-	text "Incidentally…"
-	done
-
-.Conclude
-	text "That's how I judge"
-	line "it."
-	done
-
-.Finish
-	text "Come again some-"
-	line "time."
-	done
-
-
-GetDVTotal:
-	ld hl, wd002
-	ld b, 0
-	ld c, 6
-.loop
-	ld a, [hli]
-	add b
-	ld b, a
-	dec c
-	jr nz, .loop
+.AddDV:
+; Add DV to total
+	and $f
+	add d
+	ld d, a
 	ret
 
-
-JudgeDVTotal:
-	ld a, b
-	; max dv total is 6 * 15 = 90
-	and a
-	ld hl, .AbsoluteWorst
-	jr z, .okay
-	cp 25
-	ld hl, .Poor
-	jr c, .okay
-	cp 40
-	ld hl, .Unremarkable
-	jr c, .okay
-	cp 60
-	ld hl, .Decent
-	jr c, .okay
-	cp 90
-	ld hl, .Strong
-	jr c, .okay
-	ld hl, .Perfect
-.okay
-	call PrintText
-	jp JoyWaitAorB
-
-.AbsoluteWorst
-	text "Oh my! Your #-"
-	line "mon has so little"
-	cont "potential!"
-
-	para "I've never seen a"
-	line "#mon so weak!"
-	done
-
-.Poor
-	text "Your #mon"
-	line "seems to be lac-"
-	cont "king in potential."
-	done
-
-.Unremarkable
-	text "Your #mon's"
-	line "potential is"
-	cont "unremarkable."
-	done
-
-.Decent
-	text "Your #mon seems"
-	line "to be decent"
-	cont "overall."
-	done
-
-.Strong
-	text "Your #mon seems"
-	line "to be spectacular"
-	cont "overall."
-	done
-
-.Perfect
-	text "I don't even need"
-	line "to look closely"
-
-	para "to see your #-"
-	line "mon's perfection!"
-	done
-
-
-GetMaxDV:
-	ld hl, wd002
-	ld b, 0
-	ld c, 6
-.loop
-	ld a, [hli]
-	cp b
-	jr c, .skip
+.SetDV:
+; Flag best DVs and DVs at zero
+	and $f
+	jr nz, .bad_done
+	ld a, d
+	or c
+	ld c, a
+.bad_done
+	cp e
+	jr c, .good_done
+	ld e, a
+	jr z, .goodreset_done
+	xor a
 	ld b, a
-.skip
-	dec c
-	jr nz, .loop
-	; We found the max value, now let's get which ones are equal.
-	ld hl, wd002
-	ld c, 6
-	ld d, 0
-.loop2
+.goodreset_done
+	ld a, d
+	or b
+	ld b, a
+.good_done
 	srl d
-	ld a, [hli]
-	cp b
-	jr nz, .skip2
-	set 4, d
-.skip2
-	dec c
-	jr nz, .loop2
 	ret
 
-
-InformMaxDVs:
-	ld c, 5
-	ld b, 0
-.loop
-	srl d
-	jr nc, .next
-	push de
+.PrintDV:
+; Prints stat info, used to note best and 0 DVs
+	sla b
+	sla b
+	ld d, 6
+.best_loop
+	sla b
+	jr nc, .best_next
+	call JudgeGetStatName
 	push bc
-	ld a, 6
-	sub c
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, StatNames
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, StringBuffer1
-.loop1
-	ld a, [hli]
-	ld [de], a
-	cp "@"
-	jr z, .done1
-	inc de
-	jr .loop1
-.done1
-	ld a, b
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, .WhichStatTexts
-	add hl, de
+	push de
+	push hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	call PrintText
-	call JoyWaitAorB
-	pop bc
+	pop hl
 	pop de
-	inc b
-.next
-	dec c
-	jr nz, .loop
+	pop bc
+	inc hl
+	inc hl
+.best_next
+	dec d
+	jr nz, .best_loop
 	ret
 
-.WhichStatTexts
-	dw .FirstStatText
-	dw .SecondStatText
-	dw .ThirdStatText
-	dw .FourthStatText
-	dw .FifthStatText
-	dw .SixthStatText
+.i_see
+	text "I see… I see…"
+	prompt
 
-.FirstStatText
-	text "Its greatest po-"
-	line "tential lies in"
+.decent_total
+	text "This #mon's"
+	line "potential is"
+	cont "decent all around."
+	prompt
+
+.above_average_total
+	text "This #mon's"
+	line "potential is"
+	cont "above-average"
+	cont "overall."
+	prompt
+
+.relatively_superior_total
+	text "This #mon's"
+	line "potential is"
+	cont "relatively"
+	cont "superior"
+	cont "overall."
+	prompt
+
+.outstanding_total
+	text "This #mon's"
+	line "potential is"
+	cont "outstanding"
+	cont "overall."
+	prompt
+
+.total_after
+	text "That's how I judge"
+	line "it, anyway."
+	prompt
+
+.best_table
+	dw .first_best
+	dw .second_best
+	dw .third_best
+	dw .fourth_best
+	dw .fifth_best
+	dw .sixth_best
+
+.first_best
+	text "Incidentally, I'd"
+	line "say that its best"
+	cont "potential lies in"
 	cont "its @"
 	text_from_ram StringBuffer1
 	text "."
-	done
+	prompt
 
-.SecondStatText
+.second_best
 	text "Its @"
 	text_from_ram StringBuffer1
 	text " is"
 	line "equally good."
-	done
+	prompt
 
-.ThirdStatText
+.third_best
 	text "Its @"
 	text_from_ram StringBuffer1
 	text " is"
 	line "also impressive."
-	done
+	prompt
 
-.FourthStatText
+.fourth_best
 	text "Its @"
 	text_from_ram StringBuffer1
 	text " is"
 	line "good as well."
-	done
+	prompt
 
-.FifthStatText
+.fifth_best
 	text "Its @"
 	text_from_ram StringBuffer1
 	text " is"
 	line "also good."
-	done
+	prompt
 
-.SixthStatText
+.sixth_best
 	text "Well, its @"
 	text_from_ram StringBuffer1
 	text ""
 	line "is worth mention-"
 	cont "ing also."
-	done
+	prompt
 
-
-JudgeMaxDV:
-	ld a, b
-	cp 7
-	ld hl, .Decent
-	jr c, .okay
-	cp 12
-	ld hl, .Good
-	jr c, .okay
-	cp 15
-	ld hl, .Fantastic
-	jr c, .okay
-	ld hl, .Perfect
-.okay
-	call PrintText
-	jp JoyWaitAorB
-
-.Decent
+.ok_best
 	text "It has rather"
 	line "decent stats, I'd"
 	cont "say."
-	done
+	prompt
 
-.Good
+.good_best
 	text "It's definitely"
 	line "got some good"
 	cont "stats."
-	done
+	prompt
 
-.Fantastic
+.fantastic_best
 	text "This #mon has"
-	line "some pretty fan-"
-	cont "tastic stats."
-	done
+	line "some fantastic"
+	cont "stats."
+	prompt
 
-.Perfect
+.very_best
 	text "Stats like those…"
 	line "They simply can't"
 	cont "be beat!"
-	done
+	prompt
 
+.conclude_best
+	text "That's how I judge"
+	line "it."
+	prompt
 
-GetMinDV:
-	; Find DVs equal to zero
-	ld hl, wd002
-	ld c, 6
-	ld d, 0
-.loop
-	srl d
-	ld a, [hli]
-	and a
-	jr nz, .skip
-	set 4, d
-.skip
-	dec c
-	jr nz, .loop
-	ret
+.zero_table
+	dw .first_zero
+	dw .second_zero
+	dw .third_zero
+	dw .fourth_zero
+	dw .fifth_zero
+	dw .sixth_zero
 
-
-InformMinDVs:
-	ld c, 5
-	ld b, 0
-.loop
-	srl d
-	jr nc, .next
-	push de
-	push bc
-	ld a, 6
-	sub c
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, StatNames
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, StringBuffer1
-.loop1
-	ld a, [hli]
-	ld [de], a
-	cp "@"
-	jr z, .done1
-	inc de
-	jr .loop1
-.done1
-	ld a, b
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, .WhichStatTexts
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call PrintText
-	call JoyWaitAorB
-	pop bc
-	pop de
-	inc b
-.next
-	dec c
-	jr nz, .loop
-	ret
-
-.WhichStatTexts
-	dw .FirstStatText
-	dw .SecondStatText
-	dw .ThirdStatText
-	dw .FourthStatText
-	dw .FifthStatText
-	dw .SixthStatText
-
-.FirstStatText
+.first_zero
 	text "But its @"
 	text_from_ram StringBuffer1
 	text "…"
 	line "It's pretty dis-"
 	cont "mal, you know?"
-	done
+	prompt
 
-.SecondStatText
+.second_zero
 	text "And its @"
 	text_from_ram StringBuffer1
 	text ""
 	line "is pretty disap-"
 	cont "pointing, too."
-	done
+	prompt
 
-.ThirdStatText
+.third_zero
 	text "I'm afraid its"
 	line "@"
 	text_from_ram StringBuffer1
 	text " is pretty"
 	cont "bad, too…"
-	done
+	prompt
 
-.FourthStatText
+.fourth_zero
 	text "I'm not too happy"
 	line "with its @"
 	text_from_ram StringBuffer1
 	text ""
 	cont "either."
-	done
+	prompt
 
-.FifthStatText
+.fifth_zero
 	text "Its @"
 	text_from_ram StringBuffer1
 	text ""
 	line "is pretty disap-"
 	cont "pointing, too."
-	done
+	prompt
 
-.SixthStatText
+.sixth_zero
 	text "Well, its @"
 	text_from_ram StringBuffer1
 	text ""
 	line "is nothing to brag"
 	cont "about, that's for"
 	cont "sure."
+	prompt
+
+.finish
+	text "Come again,"
+	line "some time."
 	done
 
+JudgeGetStatName:
+	push bc
+	push de
+	push hl
+	ld hl, .names
+.loop
+	dec d
+	jr z, .got_stat
+.inner_loop
+	ld a, [hli]
+	cp "@"
+	jr z, .loop
+	jr .inner_loop
 
-StatNames:
-	dw .hp
-	dw .atk
-	dw .def
-	dw .spd
-	dw .sat
-	dw .sdf
-.hp
-	db "HP@"
-.atk
-	db "Attack@"
-.def
-	db "Defense@"
-.spd
-	db "Speed@"
-.sat
-	db "Spcl.Atk@"
-.sdf
+.got_stat
+	ld de, StringBuffer1
+	ld bc, StringBuffer2 - StringBuffer1
+	call CopyBytes
+	pop hl
+	pop de
+	pop bc
+	ret
+
+.names
 	db "Spcl.Def@"
+	db "Spcl.Atk@"
+	db "Speed@"
+	db "Defense@"
+	db "Attack@"
+	db "HP@"
 
-
-GetCaughtGender: ; 4f301
+GetCaughtGender:
 	ld hl, MON_CAUGHTGENDER
 	add hl, bc
 
@@ -550,4 +423,3 @@ GetCaughtGender: ; 4f301
 	rl a
 	ld c, a
 	ret
-; 4f31c
