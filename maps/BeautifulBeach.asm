@@ -7,6 +7,7 @@ const_value set 2
 	const BEAUTIFULBEACH_ARTIST
 	const BEAUTIFULBEACH_POKE_BALL1
 	const BEAUTIFULBEACH_POKE_BALL2
+	const BEAUTIFULBEACH_FRUIT_TREE
 
 BeautifulBeach_MapScriptHeader:
 .MapTriggers:
@@ -243,7 +244,7 @@ BeautifulBeach_MapEventHeader:
 	signpost 19, 29, SIGNPOST_READ, BeautifulBeachVillaSign
 
 .PersonEvents:
-	db 8
+	db 9
 	person_event SPRITE_LADY, 18, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyBryony, -1
 	person_event SPRITE_SIGHTSEER_M, 26, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermJaska, -1
 	person_event SPRITE_COOLTRAINER_M, 23, 33, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerVince, -1
@@ -252,3 +253,4 @@ BeautifulBeach_MapEventHeader:
 	person_event SPRITE_ARTIST, 13, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerArtistMarlene, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 19, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BeautifulBeachLuxuryBall, EVENT_BEAUTIFUL_BEACH_LUXURY_BALL
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BeautifulBeachFullRestore, EVENT_BEAUTIFUL_BEACH_FULL_RESTORE
+	person_event SPRITE_BALL_CUT_FRUIT, 13, -2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

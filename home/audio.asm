@@ -461,6 +461,20 @@ SpecialMapMusic:: ; 3d62
 
 .not_route_23
 	ld a, [MapGroup]
+	cp GROUP_QUIET_CAVE_1F ; GROUP_QUIET_CAVE_B1F, GROUP_QUIET_CAVE_B2F, GROUP_QUIET_CAVE_B3F
+	jr nz, .not_quiet_cave
+	ld a, [MapNumber]
+	cp MAP_QUIET_CAVE_1F
+	jr z, .no
+	cp MAP_QUIET_CAVE_B1F
+	jr z, .no
+	cp MAP_QUIET_CAVE_B2F
+	jr z, .no
+	cp MAP_QUIET_CAVE_B3F
+	jr z, .no
+
+.not_quiet_cave
+	ld a, [MapGroup]
 	cp GROUP_SCARY_CAVE_SHIPWRECK
 	jr nz, .not_shipwreck
 	ld a, [MapNumber]
@@ -477,7 +491,7 @@ SpecialMapMusic:: ; 3d62
 
 .not_lugia_chamber
 	ld a, [MapGroup]
-	cp GROUP_ROUTE_16_SOUTH ; same as GROUP_ROUTE_18_WEST
+	cp GROUP_ROUTE_16_SOUTH ; GROUP_ROUTE_18_WEST
 	jr nz, .not_cycling_road_bike
 	ld a, [MapNumber]
 	cp MAP_ROUTE_16_SOUTH
