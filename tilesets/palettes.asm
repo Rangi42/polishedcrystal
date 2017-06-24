@@ -7,10 +7,14 @@ LoadBlindingFlashPalette:: ; 49409
 ; 49418
 
 BlindingFlashPalette: ; 49418
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 08, 19, 28
 	RGB 05, 05, 16
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 ; 49420
 
 LoadSpecialMapPalette: ; 494ac
@@ -495,165 +499,466 @@ LoadSpecialMapPalette: ; 494ac
 	scf
 	ret
 
-PokeComPalette: ; 49501
+PokeComPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/pokecom.pal"
-; 49541
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
-BattleTowerPalette: ; 49550
+BattleTowerPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/battle_tower.pal"
-; 49590
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
-IcePathPalette: ; 4959f
+IcePathPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/ice_path.pal"
-; 495df
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 GatePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/gate.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 HotelPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/hotel.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 QuietCavePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/quiet_cave.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 RuinsPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/ruins.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 SafariZonePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/safari_zone.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 PokeCenterPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/pokecenter.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 ShamoutiPokeCenterPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/shamouti_pokecenter.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 FarawayIslandPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/faraway_island.pal"
+else
+rept 32
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 ShamoutiIslandPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/shamouti_island.pal"
+else
+rept 32
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 ValenciaIslandPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/valencia_island.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
-RadioTowerPalette: ; 4963d
+RadioTowerPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/radio_tower.pal"
-; 4967d
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
+
 
 HauntedRadioTowerPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/haunted_radio_tower.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 HauntedPokemonTowerPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/haunted_pokemon_tower.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 YellowForestPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/yellow_forest.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 MurkySwampPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/murky_swamp.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 WillsRoomPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/wills_room.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 KogasRoomPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/kogas_room.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 BrunosRoomPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/brunos_room.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 KarensRoomPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/karens_room.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 LancesRoomPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/lances_room.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CeruleanGymPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/cerulean_gym.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 SaffronGymPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/saffron_gym.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 ViridianGymPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/viridian_gym.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 FuchsiaGymPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/fuchsia_gym.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 GameCornerPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/game_corner.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CharcoalKilnPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/charcoal_kiln.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 OaksLabPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/oaks_lab.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 IvysLabPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/ivys_lab.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 DragonShrinePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/dragon_shrine.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 LightningIslandPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/lightning_island.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 MystriStagePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/mystri_stage.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 EmbeddedTowerPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/embedded_tower.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 TinTowerRoofPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/tin_tower_roof.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CinnabarLabPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/cinnabar_lab.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CeladonMansionRoofPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/celadon_mansion_roof.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 MartPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/mart.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 GoldenrodDeptStoreRoofPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/goldenrod_dept_store_roof.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CeladonHomeDecorStore4FPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/celadon_home_decor_store_4f.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 VioletEcruteakPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/violet_ecruteak.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 BellchimeTrailPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/bellchime_trail.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 DimCavePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/dim_cave.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 ScaryCavePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/scary_cave.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CinnabarVolcanoPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/cinnabar_volcano.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 CeruleanCavePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/cerulean_cave.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 SilverCavePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/silver_cave.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 DarkCavePalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/dark_cave.pal"
+else
+rept 8
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 NavelRockPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/navel_rock.pal"
+else
+rept 24
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 MartBluePalette:
+if !DEF(MONOCHROME)
 	RGB 20, 27, 28
 	RGB 06, 22, 25
 	RGB 04, 17, 19
 	RGB 07, 07, 07
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 LinkTrade_Layout_FillBox: ; 49336
 .row
@@ -827,30 +1132,47 @@ LoadSpecialMapOBPalette:
 	jr .load_time_of_day_tree_palette
 
 VermilionGymOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 30, 28, 26
 	RGB 31, 31, 30
 	RGB 19, 24, 31
 	RGB 05, 10, 27
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 LightningIslandOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 19, 15, 10
 	RGB 31, 31, 31
 	RGB 31, 27, 01
 	RGB 31, 16, 01
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 RockTunnelOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 15, 14, 24
 	RGB 31, 30, 31
 	RGB 24, 18, 31
 	RGB 12, 08, 18
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 MurkySwampOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 15, 14, 24
 	RGB 07, 14, 13
 	RGB 04, 08, 07
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 ShamoutiIslandOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 28, 31, 16
 	RGB 16, 26, 12
 	RGB 07, 18, 06
@@ -865,8 +1187,14 @@ ShamoutiIslandOBPalette_Tree:
 	RGB 08, 13, 11
 	RGB 04, 09, 06
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc
 
 SafariZoneOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 22, 31, 10
 	RGB 13, 26, 10
 	RGB 06, 20, 08
@@ -881,8 +1209,14 @@ SafariZoneOBPalette_Tree:
 	RGB 07, 13, 08
 	RGB 03, 10, 06
 	RGB 01, 03, 05
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc
 
 FarawayIslandOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 09, 23, 30
 	RGB 08, 13, 25
@@ -897,8 +1231,14 @@ FarawayIslandOBPalette_Tree:
 	RGB 05, 10, 27
 	RGB 05, 06, 22
 	RGB 03, 03, 05
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc
 
 FarawayJungleOBPalette_Tree:
+if !DEF(MONOCHROME)
 	RGB 19, 31, 16
 	RGB 13, 24, 12
 	RGB 00, 17, 07
@@ -913,3 +1253,8 @@ FarawayJungleOBPalette_Tree:
 	RGB 08, 11, 11
 	RGB 00, 08, 06
 	RGB 03, 05, 03
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc

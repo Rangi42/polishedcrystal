@@ -46,6 +46,13 @@ UnknownScript_0x1a001e:
 	pause 10
 	dotrigger $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
+	checkevent EVENT_GOT_HM05_WHIRLPOOL
+	iftrue .NoLyra
+	domaptrigger ROUTE_42, $1
+	jump .Continue
+.NoLyra
+	domaptrigger ROUTE_42, $2
+.Continue
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE

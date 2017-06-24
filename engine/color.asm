@@ -751,13 +751,31 @@ endr
 	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
 
 .TilesetBGPalette:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/bg.pal"
+else
+rept 43
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 .MapObjectPals:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/ob.pal"
+else
+rept 32
+	MONOCHROME_RGB_FOUR
+endr
+endc
 
 .RoofPals:
+if !DEF(MONOCHROME)
 INCLUDE "tilesets/roof.pal"
+else
+rept 70
+	MONOCHROME_RGB_TWO
+endr
+endc
 
 
 INCLUDE "gfx/pics/palette_pointers.asm"

@@ -701,6 +701,7 @@ endr
 ; 8c6a1 (23:46a1)
 
 .timepals
+if !DEF(MONOCHROME)
 ; morn
 	RGB 31, 24, 18
 	RGB 31, 15, 17
@@ -721,12 +722,22 @@ endr
 	RGB 07, 03, 03
 	RGB 00, 00, 00
 	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+endc
 
 .armored_mewtwo_pals
+if !DEF(MONOCHROME)
 	RGB 29, 18, 31
 	RGB 21, 11, 31
 	RGB 13, 05, 31
 	RGB 07, 07, 07
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 PokeBallTransition:
 	db %00000011, %11000000

@@ -1,6 +1,7 @@
 
 TrainerPalettes: ; b0ce
 
+if !DEF(MONOCHROME)
 PlayerPalette:           INCLUDE "gfx/trainers/cal.pal"
 KrisPalette:
 KayPalette:              INCLUDE "gfx/trainers/kay.pal"
@@ -146,3 +147,11 @@ AerodactylFossilPalette: INCLUDE "gfx/trainers/aerodactyl_fossil.pal"
 CuboneArmorPalette:      INCLUDE "gfx/trainers/cubone_armor.pal"
 MeteoritePalette:        INCLUDE "gfx/trainers/meteorite.pal"
 SilhouettePalette:       INCLUDE "gfx/trainers/silhouette.pal"
+else
+PlayerPalette:
+KrisPalette:
+Lyra1Palette:
+rept 144
+	MONOCHROME_RGB_TWO
+endr
+endc

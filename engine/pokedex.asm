@@ -1159,7 +1159,7 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	db $3b, " Search ", $3c, $ff
 
 .TypeLeftRightArrows: ; 40935
-	db $3d, "        ", $3e, $ff
+	db $3d, "        ", $f0, $ff
 
 .Types: ; 40940
 	db   "Type1"
@@ -1232,7 +1232,7 @@ Pokedex_DrawUnownModeBG: ; 409f1 (10:49f1)
 	lb bc, 1, 13
 	call Pokedex_PlaceBorder
 	hlcoord 2, 15
-	ld [hl], $3d
+	ld [hl], $5c
 	hlcoord 16, 15
 	ld [hl], $3e
 	hlcoord 6, 5
@@ -1974,8 +1974,7 @@ Pokedex_UpdateSearchResultsCursorOAM:
 
 Pokedex_UpdateCursor:
 	push bc
-	ld b, 3
-	ld c, 0
+	lb bc, 3, 0
 	ld a, [wCurrentDexMode]
 	cp DEXMODE_OLD
 	jr nz, .ok

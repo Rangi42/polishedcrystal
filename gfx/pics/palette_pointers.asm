@@ -1,12 +1,18 @@
 PokemonPalettes: ; a8ce
 
+if !DEF(MONOCHROME)
 ; 000
 	RGB 30, 22, 17
 	RGB 16, 14, 19
 ; 000 shiny
 	RGB 30, 22, 17
 	RGB 16, 14, 19
+else
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+endc
 
+if !DEF(MONOCHROME)
 BulbasaurPalette:       INCLUDE "gfx/pics/bulbasaur/normal.pal"
 BulbasaurShinyPalette:  INCLUDE "gfx/pics/bulbasaur/shiny.pal"
 IvysaurPalette:         INCLUDE "gfx/pics/ivysaur/normal.pal"
@@ -522,11 +528,23 @@ PorygonZPalette:        INCLUDE "gfx/pics/porygon_z/normal.pal"
 PorygonZShinyPalette:   INCLUDE "gfx/pics/porygon_z/shiny.pal"
 EggPalette:             INCLUDE "gfx/pics/egg/normal.pal"
 EggShinyPalette:        INCLUDE "gfx/pics/egg/shiny.pal"
+else
+rept 254
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+endr
+endc
 
+if !DEF(MONOCHROME)
 ; 255
 MewtwoArmoredPalette:   INCLUDE "gfx/pics/mewtwo_armored/normal.pal"
 ; 255 shiny
 	RGB 30, 22, 17
 	RGB 16, 14, 19
+else
+MewtwoArmoredPalette:
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+endc
 
 ; b0ce
