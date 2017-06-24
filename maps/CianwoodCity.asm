@@ -48,10 +48,10 @@ UnknownScript_0x1a001e:
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftrue .NoLyra
-	domaptrigger ROUTE_36, $1
+	domaptrigger ROUTE_42, $1
 	jump .Continue
 .NoLyra
-	domaptrigger ROUTE_36, $2
+	domaptrigger ROUTE_42, $2
 .Continue
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
