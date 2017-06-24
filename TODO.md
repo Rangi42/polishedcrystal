@@ -6,7 +6,6 @@ See the [Issues](issues/) page.
 ## Mechanics
 
 * Generate Battle Tower Pokémon
-* Stats Judge supports six DVs
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
