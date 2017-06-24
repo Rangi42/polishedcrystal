@@ -122,7 +122,13 @@ Route42LyraScript:
 	closetext
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraLeave
 	disappear ROUTE42_LYRA
+	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
+	iftrue .NoSuicune
 	dotrigger $2
+	jump .Finish
+.NoSuicune
+	dotrigger $0
+.Finish
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special RunCallback_04
 	playmapmusic
