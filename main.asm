@@ -5360,11 +5360,19 @@ LoadPoisonBGPals: ; cbcdd
 	ld hl, BGPals
 	ld c, $20
 .loop
+if !DEF(MONOCHROME)
 ; RGB 31, 21, 28
 	ld a, (palred 31 + palgreen 21 + palblue 28) % $100
 	ld [hli], a
 	ld a, (palred 31 + palgreen 21 + palblue 28) / $100
 	ld [hli], a
+else
+; RGB 31, 31, 31
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld [hli], a
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld [hli], a
+endc
 	dec c
 	jr nz, .loop
 	pop af

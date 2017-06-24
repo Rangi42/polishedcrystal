@@ -398,7 +398,7 @@ ENDM
 	; Goldenrod City
 	npctrade 0, ABRA,       MACHOP,     "Muscle@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   LEVEL_BALL,   SITRUS_BERRY, 37460, "Mike@@@@"
 	; Violet City
-	npctrade 0, POLIWAG,    DIGLETT,    "Boota@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | JOLLY,   MALE,   PREMIER_BALL, PERSIM_BERRY, 48926, "Kyle@@@@"
+	npctrade 0, POLIWAG,    VOLTORB,    "Mimic@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | TIMID,   MALE,   PREMIER_BALL, PERSIM_BERRY, 48926, "Kyle@@@@"
 	; Olivine City
 	npctrade 1, STEELIX,    KANGASKHAN, "Joey@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   HEAVY_BALL,   SILK_SCARF,   29189, "Tim@@@@@"
 	; Blackthorn City
