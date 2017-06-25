@@ -464,7 +464,7 @@ RingTwice_StartCall: ; 9026f
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	jp Phone_CallerTextboxWithName
+	;jp Phone_CallerTextboxWithName
 
 Phone_CallerTextboxWithName: ; 90292 (24:4292)
 	ld a, [wCurrentCaller]
@@ -489,7 +489,7 @@ Phone_FirstOfTwoRings: ; 902b3
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	jp Phone_CallerTextboxWithName2
+	;jp Phone_CallerTextboxWithName2
 ; 902c9
 
 Phone_CallerTextboxWithName2: ; 902c9
@@ -565,7 +565,9 @@ Phone_StartRinging: ; 9033f
 	ld de, SFX_CALL
 	call PlaySFX
 	call Phone_CallerTextbox
-	jp UpdateSprites
+	call UpdateSprites
+	farcall WaitBGMap
+	ret
 ; 90355
 
 HangUp_Wait20Frames: ; 90355
@@ -573,7 +575,9 @@ HangUp_Wait20Frames: ; 90355
 
 Phone_Wait20Frames
 	ld c, 20
-	jp DelayFrames
+	call DelayFrames
+	farcall WaitBGMap
+	ret
 ; 90363
 
 
