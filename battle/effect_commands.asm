@@ -2854,6 +2854,8 @@ BattleCommand_PostHitEffects: ; 35250
 	call SwitchTurn
 .rage_done
 	; Do Rocky Helmet
+	call CheckContactMove
+	jr c, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_ROCKY_HELMET
