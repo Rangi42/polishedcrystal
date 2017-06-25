@@ -463,16 +463,14 @@ PlacePartyMonGender: ; 502b1
 	call PartyMenuCheckEgg
 	jr z, .next
 	ld [CurPartySpecies], a
-	push hl
 	ld a, [CurPartyMon]
 	push af
 	ld a, b
 	ld [CurPartyMon], a
+	push hl
 	xor a
 	ld [MonType], a
 	call GetGender
-	pop af
-	ld [CurPartyMon], a
 	ld a, " "
 	jr c, .got_gender
 	ld a, $5f ; colored "♂"
@@ -482,6 +480,8 @@ PlacePartyMonGender: ; 502b1
 .got_gender
 	pop hl
 	ld [hli], a
+	pop af
+	ld [CurPartyMon], a
 
 .next
 	pop hl
