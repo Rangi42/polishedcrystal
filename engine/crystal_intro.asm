@@ -510,11 +510,11 @@ IntroScene1: ; e495b (39:495b)
 	ld [rSVBK], a
 	ld hl, Palette_365ad
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_365ad
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -841,11 +841,11 @@ IntroScene11: ; e4c86 (39:4c86)
 	ld [rSVBK], a
 	ld hl, Palette_365ad
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_365ad
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -1045,11 +1045,11 @@ IntroScene15: ; e4e40 (39:4e40)
 	ld [rSVBK], a
 	ld hl, Palette_e77dd
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_e77dd
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -1117,11 +1117,11 @@ IntroScene17: ; e4ef5 (39:4ef5)
 	ld [rSVBK], a
 	ld hl, Palette_e6d6d
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_e6d6d
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -1189,11 +1189,11 @@ IntroScene19: ; e4f7e (39:4f7e)
 	ld [rSVBK], a
 	ld hl, Palette_e77dd
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_e77dd
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -1341,11 +1341,11 @@ IntroScene26: ; e50bb (39:50bb)
 	ld [rSVBK], a
 	ld hl, Palette_e679d
 	ld de, UnknBGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	ld hl, Palette_e679d
 	ld de, BGPals
-	ld bc, $80
+	ld bc, 16 palettes
 	call CopyBytes
 	pop af
 	ld [rSVBK], a
@@ -1599,9 +1599,20 @@ endr
 	push hl
 	push bc
 	ld hl, BGPals
-	ld bc, 4 * 16
+if !DEF(MONOCHROME)
+	ld bc, 8 palettes
 	xor a
 	call ByteFill
+else
+	ld b, (8 palettes) / 2
+.mono_loop
+	ld a, PAL_MONOCHROME_BLACK % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_BLACK / $100
+	ld [hli], a
+	dec b
+	jr nz, .mono_loop
+endc
 	pop bc
 	pop hl
 
@@ -1697,7 +1708,7 @@ rept 8
 	RGB_MONOCHROME_LIGHT
 endr
 rept 8
-	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
 endr
 endc
 ; e5308
@@ -1718,10 +1729,10 @@ rept 8
 	RGB_MONOCHROME_DARK
 endr
 rept 8
-	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
 endr
 rept 8
-	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
 endr
 endc
 ; e5348
@@ -1898,7 +1909,7 @@ rept 8
 	RGB_MONOCHROME_WHITE
 endr
 rept 8
-	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
 endr
 endc
 ; e541b
@@ -2009,10 +2020,22 @@ Intro_ClearBGPals: ; e54a3 (39:54a3)
 	ld a, $5
 	ld [rSVBK], a
 
+; Fill BGPals and OBPals with $0000 (black)
 	ld hl, BGPals
-	ld bc, 16 * 8
+if !DEF(MONOCHROME)
+	ld bc, 16 palettes
 	xor a
 	call ByteFill
+else
+	ld b, (16 palettes) / 2
+.mono_loop
+	ld a, PAL_MONOCHROME_BLACK % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_BLACK / $100
+	ld [hli], a
+	dec b
+	jr nz, .mono_loop
+endc
 
 	pop af
 	ld [rSVBK], a
@@ -2424,8 +2447,8 @@ rept 8
 	RGB_MONOCHROME_BLACK
 endr
 	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_LIGHT
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR

@@ -570,9 +570,20 @@ ClearPalettes:: ; 3317
 
 ; Fill BGPals and OBPals with $ffff (white)
 	ld hl, BGPals
+if !DEF(MONOCHROME)
 	ld bc, 16 palettes
 	ld a, $ff
 	call ByteFill
+else
+	ld b, (16 palettes) / 2
+.mono_loop
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [hli], a
+	dec b
+	jr nz, .mono_loop
+endc
 
 	pop af
 	ld [rSVBK], a
