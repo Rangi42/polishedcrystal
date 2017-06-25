@@ -1401,6 +1401,7 @@ BattleAnim_SetBGPals: ; cc91a
 	push af
 	ld a, $5
 	ld [rSVBK], a
+if !DEF(MONOCHROME)
 	ld a, b
 	cp $1b
 	ld a, [rBGP]
@@ -1431,6 +1432,9 @@ BattleAnim_SetBGPals: ; cc91a
 	ld a, $e4
 .not_1b
 	push af
+else
+	ld a, [rBGP]
+endc
 	ld hl, BGPals
 	ld de, UnknBGPals
 	ld b, a
@@ -1438,7 +1442,11 @@ BattleAnim_SetBGPals: ; cc91a
 	call CopyPals
 	ld hl, OBPals
 	ld de, UnknOBPals
+if !DEF(MONOCHROME)
 	pop af
+else
+	ld a, [rBGP]
+endc
 	ld b, a
 	ld c, 2
 	call CopyPals
