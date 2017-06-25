@@ -2206,9 +2206,20 @@ _Pokedex_JustBlackOutBG:
 	ld a, $5
 	ld [rSVBK], a
 	ld hl, UnknBGPals
-	ld bc, $40
+if !DEF(MONOCHROME)
+	ld bc, 8 palettes
 	xor a
 	call ByteFill
+else
+	ld b, (8 palettes) / 2
+.mono_loop
+	ld a, PAL_MONOCHROME_BLACK % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_BLACK / $100
+	ld [hli], a
+	dec b
+	jr nz, .mono_loop
+endc
 	pop af
 	ld [rSVBK], a
 	ld a, $ff
