@@ -298,7 +298,7 @@ AIWantsSwitchCheck:
 	jr nc, .set_switch_score
 	; little improvement
 	ld b, $10
-	cp 8
+	cp 9
 	jr nc, .set_switch_score
 	; No reason to switch
 	ret
