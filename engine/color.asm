@@ -585,20 +585,34 @@ InitCGBPals::
 	ld [rBGPI], a
 	ld c, 4 * 8
 .bgpals_loop
+if !DEF(MONOCHROME)
 	ld a, $7fff % $100
 	ld [rBGPD], a
 	ld a, $7fff / $100
 	ld [rBGPD], a
+else
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [rBGPD], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [rBGPD], a
+endc
 	dec c
 	jr nz, .bgpals_loop
 	ld a, $80
 	ld [rOBPI], a
 	ld c, 4 * 8
 .obpals_loop
+if !DEF(MONOCHROME)
 	ld a, $7fff % $100
 	ld [rOBPD], a
 	ld a, $7fff / $100
 	ld [rOBPD], a
+else
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [rOBPD], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [rOBPD], a
+endc
 	dec c
 	jr nz, .obpals_loop
 	ld a, [rSVBK]
@@ -616,10 +630,17 @@ InitCGBPals::
 .LoadWhitePals:
 	ld c, 4 * 16
 .loop
+if !DEF(MONOCHROME)
 	ld a, $7fff % $100
 	ld [hli], a
 	ld a, $7fff / $100
 	ld [hli], a
+else
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [hli], a
+endc
 	dec c
 	jr nz, .loop
 	ret
