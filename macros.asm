@@ -249,3 +249,8 @@ jumptable: MACRO
 	ld l, a
 	jp hl
 endm
+
+
+if DEF(MONOCHROME)
+INCLUDE "macros/monochrome.asm"
+endc
