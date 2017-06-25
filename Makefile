@@ -11,9 +11,22 @@ RGBASM_FLAGS =
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l linkerscript.link -p $(FILLER)
 RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
+ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
+RGBASM_FLAGS += -DFAITHFUL
+endif
+ifeq ($(filter nortc,$(MAKECMDGOALS)),nortc)
+RGBASM_FLAGS += -DNO_RTC
+endif
+ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
+RGBASM_FLAGS += -DMONOCHROME
+endif
+ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
+RGBASM_FLAGS += -DDEBUG
+endif
+
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc faithful-nortc debug bankfree freespace monochrome
+.PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -47,25 +60,10 @@ crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
 
-faithful: RGBASM_FLAGS += -DFAITHFUL
-faithful: ROM_NAME = $(NAME)-faithful-$(VERSION)
-faithful: $(NAME)-faithful-$(VERSION).gbc
-
-nortc: RGBASM_FLAGS += -DNO_RTC
-nortc: ROM_NAME = $(NAME)-nortc-$(VERSION)
-nortc: $(NAME)-nortc-$(VERSION).gbc
-
-faithful-nortc: RGBASM_FLAGS += -DFAITHFUL -DNO_RTC
-faithful-nortc: ROM_NAME = $(NAME)-faithful-nortc-$(VERSION)
-faithful-nortc: $(NAME)-faithful-nortc-$(VERSION).gbc
-
-debug: RGBASM_FLAGS += -DDEBUG
-debug: ROM_NAME = $(NAME)-$(VERSION)
-debug: $(NAME)-$(VERSION).gbc
-
-monochrome: RGBASM_FLAGS += -DMONOCHROME
-monochrome: ROM_NAME = $(NAME)-$(VERSION)
-monochrome: $(NAME)-$(VERSION).gbc
+faithful: crystal
+nortc: crystal
+monochrome: crystal
+debug: crystal
 
 bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
