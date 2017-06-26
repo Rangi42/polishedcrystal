@@ -338,7 +338,7 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
 	ld a, [CurTMHM]
-	cp HM01
+	cp HM01 + 1 ; off by one error?
 	jr c, .TM
 	ld hl, Text_BootedHM ; Booted up an HM
 .TM:

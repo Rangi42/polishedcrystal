@@ -15,6 +15,7 @@ See the [Issues](issues/) page.
 
 ## Aesthetics
 
+* Improve switching with U-turn and Volt Switch (print a message, and clear the text before sending out)
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
 * Make Eggs use their Pokémon's palette
