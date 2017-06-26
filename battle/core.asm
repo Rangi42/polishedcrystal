@@ -6685,7 +6685,7 @@ endr
 .TreeMon:
 ; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
-	ld a, SLP ; Asleep for 7 turns
+	ld a, SLP & 3 ; Asleep for 3 turns
 	jr c, .UpdateStatus
 ; Otherwise, no status
 	xor a

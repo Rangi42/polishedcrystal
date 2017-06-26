@@ -147,7 +147,8 @@ DoPlayerMovement:: ; 80000
 	add hl, bc
 	ld a, [hl]
 	ld [WalkingDirection], a
-	jr .continue_walk
+	ld a, STEP_BIKE
+	jr .finish
 
 .water_table
 	db RIGHT
@@ -223,6 +224,7 @@ DoPlayerMovement:: ; 80000
 
 .continue_walk
 	ld a, STEP_WALK
+.finish
 	call .DoStep
 	ld a, 5
 	scf

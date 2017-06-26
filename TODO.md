@@ -8,7 +8,9 @@ See the [Issues](issues/) page.
 * Generate Battle Tower Pokémon
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
+* Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
+* Day-Care Man gives Eggs outside his house for convenience, like in Gen VI
 
 
 ## Aesthetics

@@ -17,7 +17,7 @@ NurseScript_0x191603:
 SightseerMScript_0x191606:
 	faceplayer
 	opentext
-	checkevent EVENT_FOUGHT_SNORLAX
+	checkevent EVENT_VERMILION_CITY_SNORLAX
 	iftrue UnknownScript_0x191614
 	writetext UnknownText_0x191620
 	waitbutton

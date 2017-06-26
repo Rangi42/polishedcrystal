@@ -6,6 +6,7 @@ const_value set 2
 	const CERULEANCITY_FISHER
 	const CERULEANCITY_YOUNGSTER
 	const CERULEANCITY_COOLTRAINER_M2
+	const CERULEANCITY_CUT_TREE
 
 CeruleanCity_MapScriptHeader:
 .MapTriggers:
@@ -329,7 +330,7 @@ CeruleanCity_MapEventHeader:
 	signpost 17, 4, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
 
 .PersonEvents:
-	db 7
+	db 8
 	person_event SPRITE_COOLTRAINER_M, 26, 30, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
 	person_event SPRITE_SUPER_NERD, 15, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x18401d, -1
 	person_event SPRITE_SLOWBRO, 24, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeruleanCitySlowbro, -1
@@ -337,3 +338,4 @@ CeruleanCity_MapEventHeader:
 	person_event SPRITE_FISHER, 22, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
 	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	person_event SPRITE_COOLTRAINER_M, 14, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanCaveGuardScript, EVENT_BEAT_BLUE
+	person_event SPRITE_BALL_CUT_FRUIT, 20, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE

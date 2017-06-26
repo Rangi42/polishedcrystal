@@ -66,6 +66,7 @@ Route7Snorlax:
 	loadwildmon SNORLAX, 60
 	startbattle
 	disappear ROUTE7_BIG_SNORLAX
+	setevent EVENT_FOUGHT_SNORLAX
 	reloadmapafterbattle
 	end
 

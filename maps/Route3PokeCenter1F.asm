@@ -96,7 +96,7 @@ Route3PokeCenter1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalKarenScript
 
 .PersonEvents:

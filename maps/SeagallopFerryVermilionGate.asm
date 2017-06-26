@@ -41,9 +41,9 @@ SeagallopFerryVermilionGateSailorScript:
 	checkitem ORANGETICKET
 	iftrue .have_orangeticket
 	checkitem MYSTICTICKET
-	iftrue .have_mysticticket
+	iftrue .have_mysticticket_no_orangeticket
 	checkitem OLD_SEA_MAP
-	iftrue .have_old_sea_map
+	iftrue .use_old_sea_map
 	writetext SeagallopFerryClosedText
 	waitbutton
 	closetext
@@ -53,7 +53,7 @@ SeagallopFerryVermilionGateSailorScript:
 	checkitem MYSTICTICKET
 	iftrue .have_orangeticket_and_mysticticket
 	checkitem OLD_SEA_MAP
-	iftrue .have_orangeticket_and_old_sea_map
+	iftrue .use_orangeticket_or_old_sea_map
 .use_orangeticket
 	writetext SeagallopFerryOrangeTicketQuestionText
 	yesorno
@@ -63,9 +63,9 @@ SeagallopFerryVermilionGateSailorScript:
 	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, $6, $5
 	end
 
-.have_mysticticket
+.have_mysticticket_no_orangeticket
 	checkitem OLD_SEA_MAP
-	iftrue .have_mysticticket_and_old_sea_map
+	iftrue .use_mysticticket_or_old_sea_map
 .use_mysticticket
 	writetext SeagallopFerryMysticTicketQuestionText
 	yesorno
@@ -86,7 +86,6 @@ SeagallopFerryVermilionGateSailorScript:
 	if_equal $2, .use_mysticticket
 	jump .no_ferry
 
-.have_old_sea_map
 .use_old_sea_map
 	writetext SeagallopFerryOldSeaMapQuestionText
 	yesorno
@@ -96,7 +95,7 @@ SeagallopFerryVermilionGateSailorScript:
 	warp FARAWAY_ISLAND, $c, $2a
 	end
 
-.have_orangeticket_and_old_sea_map
+.use_mysticticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
 	loadmenudata MysticOldSeaMapMenuDataHeader
 	verticalmenu
@@ -105,7 +104,7 @@ SeagallopFerryVermilionGateSailorScript:
 	if_equal $2, .use_old_sea_map
 	jump .no_ferry
 
-.have_mysticticket_and_old_sea_map
+.use_orangeticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
 	loadmenudata OrangeOldSeaMapMenuDataHeader
 	verticalmenu
