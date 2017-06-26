@@ -12850,11 +12850,21 @@ AromaLadyGroup:
 
 	; AROMA_LADY
 	db "Bryony@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_MOVES
 
 	; party
+
 	db 55, BELLOSSOM
+		db SOLAR_BEAM
+		db SUNNY_DAY
+		db STUN_SPORE
+		db GROWTH
+
 	db 55, BELLOSSOM
+		db SOLAR_BEAM
+		db SUNNY_DAY
+		db STUN_SPORE
+		db GROWTH
 
 	db $ff ; end
 
