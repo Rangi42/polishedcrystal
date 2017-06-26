@@ -6125,6 +6125,8 @@ ParseEnemyAction: ; 3e7c1
 	jp .finish
 
 .not_linked
+	call CheckUsableMoves
+	jp nz, .struggle
 	ld hl, EnemySubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	jr z, .skip_encore
