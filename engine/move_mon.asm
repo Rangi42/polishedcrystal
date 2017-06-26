@@ -158,6 +158,8 @@ endr
 	and $f
 	jr z, .generateDVsAndPersonality
 	farcall GetTrainerDVsAndPersonality
+	pop hl
+	push hl
 	jp .initializetrainermonstats
 
 .generateDVsAndPersonality
