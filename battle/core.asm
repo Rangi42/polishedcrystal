@@ -6071,7 +6071,7 @@ CheckUsableMove:
 	jr z, .usable
 	cp c
 	ld a, 3
-	jr z, .end
+	jr nz, .end
 
 	; fallthrough
 .usable
