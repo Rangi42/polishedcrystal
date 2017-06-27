@@ -2619,6 +2619,86 @@ _LoadMapPart:: ; 4d15b
 	jr nz, .loop
 	ret
 
+PhoneRing_LoadEDTile: ; 4d188
+	ld a, [wSpriteUpdatesEnabled]
+	cp $0
+	jp z, WaitBGMap
+
+; What follows is a modified version of LoadEDTile.
+	ld a, [hBGMapMode]
+	push af
+	xor a
+	ld [hBGMapMode], a
+	ld a, [hMapAnims]
+	push af
+	xor a
+	ld [hMapAnims], a
+.wait
+	ld a, [rLY]
+	cp $8f
+	jr c, .wait
+
+	di
+	ld a, $1 ; BANK(VBGMap2)
+	ld [rVBK], a
+	hlcoord 0, 0, AttrMap
+	call .StackPointerMagic
+	ld a, $0 ; BANK(VBGMap0)
+	ld [rVBK], a
+	hlcoord 0, 0
+	call .StackPointerMagic
+.wait2
+	ld a, [rLY]
+	cp $8f
+	jr c, .wait2
+	ei
+
+	pop af
+	ld [hMapAnims], a
+	pop af
+	ld [hBGMapMode], a
+	ret
+
+.StackPointerMagic: ; 4d1cb
+; Copy all tiles to VBGMap
+	ld [hSPBuffer], sp
+	ld sp, hl
+	ld a, [hBGMapAddress + 1]
+	ld h, a
+	ld l, 0
+	ld a, SCREEN_HEIGHT
+	ld [hTilesPerCycle], a
+	lb bc, (1 << 1), (rSTAT % $100) ; b: not in v/hblank
+
+.loop
+rept SCREEN_WIDTH / 2
+	pop de
+; if in v/hblank, wait until not in v/hblank
+.loop\@
+	ld a, [$ff00+c]
+	and b
+	jr nz, .loop\@
+; load BGMap0
+	ld [hl], e
+	inc l
+	ld [hl], d
+	inc l
+endr
+
+	ld de, $20 - SCREEN_WIDTH
+	add hl, de
+	ld a, [hTilesPerCycle]
+	dec a
+	ld [hTilesPerCycle], a
+	jr nz, .loop
+
+	ld a, [hSPBuffer]
+	ld l, a
+	ld a, [hSPBuffer + 1]
+	ld h, a
+	ld sp, hl
+	ret
+
 Shrink1Pic: ; 4d249
 INCBIN "gfx/shrink/shrink1.2bpp.lz"
 

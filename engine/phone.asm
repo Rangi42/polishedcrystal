@@ -520,15 +520,15 @@ HangUp:: ; 902eb
 Phone_CallEnd:
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call HangUp_BoopOff
+	call SpeechTextBox
 	call HangUp_Wait20Frames
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call HangUp_BoopOff
+	call SpeechTextBox
 	call HangUp_Wait20Frames
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call HangUp_BoopOff
+	call SpeechTextBox
 	jp HangUp_Wait20Frames
 ; 90316
 
@@ -556,27 +556,21 @@ UnknownText_0x90336: ; 0x90336
 ; 0x9033b
 
 
-HangUp_BoopOff: ; 9033b
-	jp SpeechTextBox
-; 9033f
-
 Phone_StartRinging: ; 9033f
 	call WaitSFX
 	ld de, SFX_CALL
 	call PlaySFX
 	call Phone_CallerTextbox
 	call UpdateSprites
-	farcall WaitBGMap
+	farcall PhoneRing_LoadEDTile
 	ret
 ; 90355
 
 HangUp_Wait20Frames: ; 90355
-	jr Phone_Wait20Frames
-
-Phone_Wait20Frames
+Phone_Wait20Frames:
 	ld c, 20
 	call DelayFrames
-	farcall WaitBGMap
+	farcall PhoneRing_LoadEDTile
 	ret
 ; 90363
 
@@ -614,8 +608,8 @@ CheckCanDeletePhoneNumber: ; 9038a (24:438a)
 	ld a, c
 	call GetCallerTrainerClass
 	ld a, c
-	; and a
-	ret nz
+;	and a
+;	ret nz
 	ld a, b
 	cp PHONECONTACT_MOM
 	ret z
