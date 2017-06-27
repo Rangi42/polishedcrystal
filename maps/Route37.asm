@@ -280,6 +280,7 @@ TwinsToriandtil1SeenText:
 	done
 
 TwinsToriandtil1BeatenText:
+TwinsToriandtil2BeatenText:
 	text "Til & Tori: Nnn… A"
 	line "little too strong."
 	done
@@ -296,11 +297,6 @@ TwinsToriandtil2SeenText:
 	text "Tori: Til and I"
 	line "are in this to-"
 	cont "gether!"
-	done
-
-TwinsToriandtil2BeatenText:
-	text "Til & Tori: Nnn… A"
-	line "little too strong."
 	done
 
 UnknownText_0x1a8eec:
