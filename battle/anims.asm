@@ -1415,6 +1415,7 @@ BattleAnim_Selfdestruct:
 	anim_jumpif $1, .loop
 	anim_call BattleAnim_Selfdestruct_branch_cbb8f
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 .loop
@@ -1423,6 +1424,7 @@ BattleAnim_Selfdestruct:
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
 	anim_loop 2, .loop
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Explosion:
@@ -1441,6 +1443,7 @@ BattleAnim_Explosion:
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
 	anim_loop 2, .loop
 	anim_wait 16
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_Acid:

@@ -386,9 +386,8 @@ DayCare_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, DayCareBookshelf
-	signpost 1, 1, SIGNPOST_READ, DayCareBookshelf
+	db 1
+	signpost 1, 5, SIGNPOST_READ, DayCareBookshelf
 
 .PersonEvents:
 	db 3

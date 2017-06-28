@@ -6,7 +6,7 @@
 	db WATER, WATER
 	db 3 ; catch rate
 	db 215 ; base exp
-	db NO_ITEM ; item 1
+	db LUM_BERRY ; item 1
 	db NO_ITEM ; item 2
 	db GENDERLESS ; gender
 	db 80 ; step cycles to hatch
