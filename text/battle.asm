@@ -105,7 +105,7 @@ PerishCountText: ; 0x80864
 ; 0x80880
 
 BattleText_UserLostSomeOfItsHP:
-	text "<USER"
+	text "<USER>"
 	line "lost some of its"
 	cont "HP!"
 	prompt
