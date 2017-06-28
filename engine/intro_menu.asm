@@ -297,8 +297,8 @@ InitializeNPCNames: ; 5ce9
 	ld de, RivalName
 	call .Copy
 
-	ld hl, .Extra
-	ld de, ExtraName
+	ld hl, .Backup
+	ld de, BackupName
 	call .Copy
 
 	ld hl, .Trendy
@@ -309,7 +309,7 @@ InitializeNPCNames: ; 5ce9
 	jp CopyBytes
 
 .Rival:
-.Extra:  db "???@"
+.Backup: db "???@"
 .Trendy: db "Rainbow@"
 ; 5d23
 

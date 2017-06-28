@@ -3703,9 +3703,9 @@ CatchTutorial:: ; 4e554
 	dw .DudeTutorial
 
 .DudeTutorial: ; 4e56a (13:656a)
-; Back up your name to your Mom's name.
+; Back up your name
 	ld hl, PlayerName
-	ld de, ExtraName
+	ld de, BackupName
 	ld bc, NAME_LENGTH
 	call CopyBytes
 ; Copy Dude's name to your name
@@ -3726,7 +3726,7 @@ CatchTutorial:: ; 4e554
 	farcall StartBattle
 	call StopAutoInput
 
-	ld hl, ExtraName
+	ld hl, BackupName
 	ld de, PlayerName
 	ld bc, NAME_LENGTH
 	jp CopyBytes

@@ -1995,7 +1995,7 @@ PlayerGender:: ; d472
 
 PlayerName::   ds NAME_LENGTH ; d47d
 RivalName::    ds NAME_LENGTH ; d488
-ExtraName::    ds NAME_LENGTH ; d493
+BackupName::   ds NAME_LENGTH ; d493
 TrendyPhrase:: ds NAME_LENGTH ; d49e
 
 wSavedAtLeastOnce:: ds 1
@@ -2091,7 +2091,7 @@ MapObjectsEnd::
 wObjectMasks:: ds NUM_OBJECTS ; d81e
 
 VariableSprites:: ; d82e
-	ds $20
+	ds $100 - SPRITE_VARS
 
 wEnteredMapFromContinue:: ds 1 ; d83e
 	ds 2
@@ -2188,8 +2188,6 @@ KeyItemsEnd::
 PCItems:: ; d8f1
 	ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
-
-	ds 20 ; extra space set aside
 
 wPokegearFlags:: ds 1
 ; bit 0: map
