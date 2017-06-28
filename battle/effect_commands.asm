@@ -5162,6 +5162,7 @@ CanBurnTarget:
 	ld d, WATER_VEIL
 	ld e, HELD_PREVENT_BURN
 	ld h, 1 << BRN
+	jr CanStatusTarget
 CanParalyzeTarget:
 	ld a, b
 	ld b, ELECTRIC
