@@ -204,11 +204,15 @@ Tileset29Anim:
 Tileset30Anim:
 	dw NULL,  ForestTreeLeftAnimation
 	dw NULL,  ForestTreeRightAnimation
+	dw NULL,  ForestTree2LeftAnimation
+	dw NULL,  ForestTree2RightAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  ForestTreeLeftAnimation2
 	dw NULL,  ForestTreeRightAnimation2
+	dw NULL,  ForestTree2LeftAnimation2
+	dw NULL,  ForestTree2RightAnimation2
 	dw NULL,  AnimateFlowerTile
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
@@ -513,7 +517,7 @@ endr
 
 	add WaterTileFrames % $100
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc WaterTileFrames / $100
 	ld h, a
 
@@ -551,7 +555,7 @@ endr
 
 	add KantoWaterTileFrames % $100
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc KantoWaterTileFrames / $100
 	ld h, a
 
@@ -600,7 +604,7 @@ AnimateFarawayWaterTile:
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 
@@ -614,18 +618,14 @@ AnimateFarawayWaterTile:
 
 
 ForestTreeLeftAnimation: ; fc45c
-	ld hl, sp+$0
-	ld b, h
-	ld c, l
-
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
-	jr nz, .asm_fc46c
-	ld hl, ForestTreeLeftFrames
-	jr .asm_fc47d
+	ret z
 
-.asm_fc46c
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 rept 3
@@ -633,129 +633,218 @@ rept 3
 endr
 	add ForestTreeLeftFrames % $100
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc ForestTreeLeftFrames / $100
 	ld h, a
-
-.asm_fc47d
 	ld sp, hl
-	ld hl, VTiles2 tile $05
+	ld hl, VTiles2 tile $5a
 	jp WriteTile
 ; fc484
 
+ForestTreeRightAnimation: ; fc4c4
+; Only during the Celebi event.
+	ld a, [wCelebiEvent]
+	bit 2, a
+	ret z
+
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+	ld a, [TileAnimationTimer]
+	call GetForestTreeFrame
+rept 3
+	add a
+endr
+	add ForestTreeLeftFrames % $100
+	ld l, a
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTreeLeftFrames / $100
+	ld h, a
+	push bc
+	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
+	add hl, bc
+	pop bc
+	ld sp, hl
+	ld hl, VTiles2 tile $5b
+	jp WriteTile
+; fc4f2
+
+
+ForestTreeLeftAnimation2: ; fc4f2
+; Only during the Celebi event.
+	ld a, [wCelebiEvent]
+	bit 2, a
+	ret z
+
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+	ld a, [TileAnimationTimer]
+	call GetForestTreeFrame
+	xor 2
+rept 3
+	add a
+endr
+	add ForestTreeLeftFrames % $100
+	ld l, a
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTreeLeftFrames / $100
+	ld h, a
+	ld sp, hl
+	ld hl, VTiles2 tile $5a
+	jp WriteTile
+; fc51c
+
+
+ForestTreeRightAnimation2: ; fc51c
+; Only during the Celebi event.
+	ld a, [wCelebiEvent]
+	bit 2, a
+	ret z
+
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+	ld a, [TileAnimationTimer]
+	call GetForestTreeFrame
+	xor 2
+rept 3
+	add a
+endr
+	add ForestTreeLeftFrames % $100
+	ld l, a
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTreeLeftFrames / $100
+	ld h, a
+	push bc
+	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
+	add hl, bc
+	pop bc
+	ld sp, hl
+	ld hl, VTiles2 tile $5b
+	jp WriteTile
+; fc54c
 
 ForestTreeLeftFrames: ; fc484
 	INCBIN "gfx/tilesets/forest-tree/1.2bpp"
 	INCBIN "gfx/tilesets/forest-tree/2.2bpp"
 ; fc4a4
-
 ForestTreeRightFrames: ; fc4a4
 	INCBIN "gfx/tilesets/forest-tree/3.2bpp"
 	INCBIN "gfx/tilesets/forest-tree/4.2bpp"
 ; fc4c4
 
 
-ForestTreeRightAnimation: ; fc4c4
-	ld hl, sp+$0
-	ld b, h
-	ld c, l
-
+ForestTree2LeftAnimation:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
-	jr nz, .asm_fc4d4
-	ld hl, ForestTreeRightFrames
-	jr .asm_fc4eb
+	ret z
 
-.asm_fc4d4
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 rept 3
 	add a
 endr
-	add ForestTreeLeftFrames % $100
+	add ForestTree2LeftFrames % $100
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc ForestTreeLeftFrames / $100
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTree2LeftFrames / $100
 	ld h, a
-	push bc
-	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
-	add hl, bc
-	pop bc
-
-.asm_fc4eb
 	ld sp, hl
-	ld hl, VTiles2 tile $06
+	ld hl, VTiles2 tile $60
 	jp WriteTile
-; fc4f2
 
-
-ForestTreeLeftAnimation2: ; fc4f2
-	ld hl, sp+$0
-	ld b, h
-	ld c, l
-
+ForestTree2RightAnimation:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
-	jr nz, .asm_fc502
-	ld hl, ForestTreeLeftFrames
-	jr .asm_fc515
+	ret z
 
-.asm_fc502
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+	ld a, [TileAnimationTimer]
+	call GetForestTreeFrame
+rept 3
+	add a
+endr
+	add ForestTree2LeftFrames % $100
+	ld l, a
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTree2LeftFrames / $100
+	ld h, a
+	push bc
+	ld bc, ForestTree2RightFrames - ForestTree2LeftFrames
+	add hl, bc
+	pop bc
+	ld sp, hl
+	ld hl, VTiles2 tile $63
+	jp WriteTile
+
+
+ForestTree2LeftAnimation2:
+; Only during the Celebi event.
+	ld a, [wCelebiEvent]
+	bit 2, a
+	ret z
+
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 	xor 2
 rept 3
 	add a
 endr
-	add ForestTreeLeftFrames % $100
+	add ForestTree2LeftFrames % $100
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc ForestTreeLeftFrames / $100
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTree2LeftFrames / $100
 	ld h, a
-
-.asm_fc515
 	ld sp, hl
-	ld hl, VTiles2 tile $05
+	ld hl, VTiles2 tile $60
 	jp WriteTile
-; fc51c
 
 
-ForestTreeRightAnimation2: ; fc51c
-	ld hl, sp+$0
-	ld b, h
-	ld c, l
-
+ForestTree2RightAnimation2:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
-	jr nz, .asm_fc52c
-	ld hl, ForestTreeRightFrames
-	jr .asm_fc545
+	ret z
 
-.asm_fc52c
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 	xor 2
 rept 3
 	add a
 endr
-	add ForestTreeLeftFrames % $100
+	add ForestTree2LeftFrames % $100
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc ForestTreeLeftFrames / $100
+	ld a, 0 ; not xor a; preserve carry flag
+	adc ForestTree2LeftFrames / $100
 	ld h, a
 	push bc
-	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
+	ld bc, ForestTree2RightFrames - ForestTree2LeftFrames
 	add hl, bc
 	pop bc
-
-.asm_fc545
 	ld sp, hl
-	ld hl, VTiles2 tile $06
+	ld hl, VTiles2 tile $63
 	jp WriteTile
-; fc54c
+
+ForestTree2LeftFrames:
+	INCBIN "gfx/tilesets/forest-tree-2/1.2bpp"
+	INCBIN "gfx/tilesets/forest-tree-2/2.2bpp"
+ForestTree2RightFrames:
+	INCBIN "gfx/tilesets/forest-tree-2/3.2bpp"
+	INCBIN "gfx/tilesets/forest-tree-2/4.2bpp"
 
 
 GetForestTreeFrame: ; fc54c
@@ -936,7 +1025,7 @@ AnimateSproutPillarTile: ; fc645
 	ld hl, .frames
 	add l
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 	ld a, [hl]
@@ -954,7 +1043,7 @@ AnimateSproutPillarTile: ; fc645
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 
@@ -1007,7 +1096,7 @@ AnimateWhirlpoolTile: ; fc678
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 
