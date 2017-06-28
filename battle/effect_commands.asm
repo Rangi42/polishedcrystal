@@ -2730,14 +2730,14 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld a, ATTACK
-	jr .print_msg
+	call .print_msg
 .atk_msg_done
 	pop bc
 	ld a, c
 	and a
 	jr nz, .satk_msg_done
 	ld a, SP_ATTACK
-	jr .print_msg
+	call .print_msg
 .satk_msg_done
 	farcall ConsumeUserItem
 .end
