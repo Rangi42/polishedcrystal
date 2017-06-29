@@ -1813,33 +1813,11 @@ BattleCommand_CheckHit:
 	ld [hMultiplicand + 2], a
 
 	ld hl, hMultiplier
-	ld a, b
-	cp 7
-	jr c, .accuracy_not_lowered
-	; No need to multiply/divide if acc=eva
-	jr z, .stat_changes_done
 
-.accuracy_not_lowered
-	; Multiply by min(acc-4,3)
-	ld a, b
-	sub 4
-	cp 3
-	jr nc, .got_multiplier
-	ld a, 3
-.got_multiplier
-	ld [hl], a
-	call Multiply
-	; Divide by min(10-acc,3)
-	ld a, 10
-	sub b
-	cp 3
-	jr nc, .got_divisor
-	ld a, 3
-.got_divisor
-	ld [hl], a
-	ld b, 4
-	call Divide
-.stat_changes_done
+	; Apply stat changes
+	call DoStatChangeMod
+	add $11
+	call ApplyDamageMod
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
@@ -1851,18 +1829,9 @@ BattleCommand_CheckHit:
 	jr nz, .done_user_items
 	call CheckOpponentWentFirst
 	jr z, .done_user_items
-	ld a, 120
-	jr .do_user_item_acc_mod
 .accuracy_boost_item
-	ld a, 100
-	add c
-.do_user_item_acc_mod
-	ld hl, hMultiplier
-	ld [hl], a
-	call Multiply
-	ld [hl], 100
-	ld b, 4
-	call Divide
+	ld a, c
+	call ApplyDamageMod
 
 .done_user_items
 	; Check opponent items
@@ -1870,15 +1839,8 @@ BattleCommand_CheckHit:
 	ld a, b
 	cp HELD_BRIGHTPOWDER
 	jr nz, .brightpowder_done
-	ld hl, hMultiplier
-	ld a, 100
-	dec c
-	ld [hl], a
-	call Multiply
-	ld a, 100
-	ld [hl], a
-	ld b, 4
-	call Divide
+	ld a, c
+	call ApplyDamageMod
 .brightpowder_done
 	; Accuracy modifiers done. Grab data
 	; from hMultiplicand
@@ -3669,16 +3631,25 @@ ApplyDefStatBoostDamage:
 	; fallthrough
 GotStatLevel:
 	ld b, a
+	call DoStatChangeMod
+	jp ApplyDamageMod
+
+FarDoStatChangeMod:
+	call DoStatChangeMod
+	ld b, a
+	ret
+
+DoStatChangeMod:
 	cp 7
 	jr nc, .higher
 	ld a, $29
 	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
-	jp ApplyDamageMod
+	ret
 .higher
 	ld a, $1b
 	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
 	swap a ; we want to add, not reduce damage
-	jp ApplyDamageMod
+	ret
 
 BattleCommand_ConfusedDamageCalc:
 ; Needed because several things are skipped
@@ -3769,9 +3740,8 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp GUTS
-	jr nz, .burn_done
 	ld a, $12
-	call ApplyPhysicalAttackDamageMod
+	call z, ApplyPhysicalAttackDamageMod
 
 .burn_done
 	; Flash Fire

@@ -945,7 +945,7 @@ WaterAbsorbAbility:
 	jp StdBattleTextBox
 
 ApplySpeedAbilities:
-; Passive speed boost abilities. Speed in bc
+; Passive speed boost abilities
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SWIFT_SWIM
@@ -959,7 +959,8 @@ ApplySpeedAbilities:
 	ld a, BATTLE_VARS_STATUS
 	and a
 	ret z
-	jr .semidouble
+	ld a, $32
+	jr .apply_mod
 .swift_swim
 	ld h, WEATHER_RAIN
 	jr .weather_ability
@@ -972,20 +973,9 @@ ApplySpeedAbilities:
 	call GetWeatherAfterCloudNine
 	cp h
 	ret nz
-	; double
-	sla c
-	rl b
-	ret
-.semidouble
-	; 50% boost
-	ld h, b
-	ld l, c
-	srl b
-	rr c
-	add hl, bc
-	ld b, h
-	ld c, l
-	ret
+	ld a, $21
+.apply_mod
+	jp ApplyDamageMod
 
 ApplyAccuracyAbilities:
 ; Passive accuracy boost/reduction abilities.

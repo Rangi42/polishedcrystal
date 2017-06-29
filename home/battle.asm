@@ -388,6 +388,8 @@ ApplySpecialDefenseDamageMod::
 	jr ApplySpecialAttackDamageMod
 
 ApplyDamageMod::
+; a = $xy: multiply multiplicands by x, then divide by y
+; Used by things other than damage
 	push bc
 	push hl
 	ld b, a
