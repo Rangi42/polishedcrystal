@@ -10,7 +10,7 @@ CherrygroveCity_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
+	db 2
 	dbw MAPCALLBACK_NEWMAP, .FlyPoint
 	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
 
