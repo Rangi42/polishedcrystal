@@ -250,7 +250,6 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call UpdateBattleMonInParty
 	call LoadTileMapToTempTileMap
 	jp HandleEncore
-; 3c23c
 
 CheckFaint:
 	ld a, [hLinkPlayerNumber]
@@ -412,10 +411,6 @@ DetermineMoveOrder: ; 3c314
 
 GetSpeed::
 ; Sets bc to speed after items and stat changes.
-; If d=1, check (and proc) Quick Claw, which increases b by
-; 128, effectively increasing final speed by 32768. This way,
-; no awkward specific checks need to be made for Quick Claw
-; ties and similar.
 	push hl
 	push de
 	ld a, [hBattleTurn]
@@ -426,107 +421,53 @@ GetSpeed::
 	ld a, [EnemySpdLevel]
 	ld hl, EnemyMonSpeed
 .got_speed
-	ld b, [hl]
-	inc hl
-	ld c, [hl]
-	ld d, a
-
-	; Apply stat changes
-	sub 7
-	jr z, .stat_changes_done
-	jr nc, .no_overflow1
-	xor a
-.no_overflow1
-	add 2
-	ld [hMultiplier], a
+	ld b, a
 	xor a
 	ld [hMultiplicand + 0], a
-	ld a, b
+	ld a, [hli]
 	ld [hMultiplicand + 1], a
-	ld a, c
+	ld a, [hl]
 	ld [hMultiplicand + 2], a
-	call Multiply
-	ld b, 4
-	ld a, 7
-	sub d
-	jr nc, .no_overflow2
-	xor a
-.no_overflow2
-	add 2
-	ld [hDivisor], a
-	call Divide
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	ld c, a
-.stat_changes_done
-	; Apply paralyze effect
+
+	; Apply stat changes
+	farcall FarDoStatChangeMod
+	ld a, b
+	call ApplyDamageMod
+
+	; Halve speed if paralyzed unless we have Quick Feet
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and 1 << PAR
-	jr z, .paralyze_check_done
-	; Quick Feet ignores this
+	bit PAR, a
+	jr z, .paralyze_done
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp QUICK_FEET
-	jr nz, .paralyze_check_done
-	; Cut speed in half. Consistent with
-	; VII (I-VI quartered it)
-	srl b
-	rr c
-.paralyze_check_done
+	ld a, $12
+	call nz, ApplyDamageMod
+
+.paralyze_done
 	farcall ApplySpeedAbilities
 
 	; Apply Unburden
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
 	bit SUBSTATUS_UNBURDEN, a
-	jr z, .unburden_done
-	sla c
-	rl b
+	ld a, $21
+	call nz, ApplyDamageMod
 
 .unburden_done
 	; Apply item effects
-	push bc
-	farcall GetUserItem
-	ld h, c
+	farcall GetUserItemAfterUnnerve
 	ld a, b
-	pop bc
-	pop de ; needed early to check quick claw allowance
-	cp HELD_QUICK_CLAW
-	jr z, .quick_claw
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
 	cp HELD_CHOICE
 	jr nz, .done
 	ld a, c
 	cp SPEED
-	jr z, .choice_scarf
-	jr .done
-.quick_claw
-	ld a, d
-	and a
-	jr z, .done ; don't apply quick claw
-	push hl
-	call BattleRandom
-	pop hl
-	cp h
-	jr nc, .done
-	; TODO: item animation
-	ld a, b
-	add 128
-	ld b, a
-	jr .done
-.choice_scarf
-	; Add a 50% boost
-	ld h, b
-	ld l, c
-	srl b
-	rr c
-	add hl, bc
-	ld b, h
-	ld c, l
-	jr .done
+	jr nz, .done
+	ld a, $32
+	jr .apply_item_mod
 .quick_powder
 	; Double speed, but only for Ditto
 	ld a, [hBattleTurn]
@@ -537,9 +478,23 @@ GetSpeed::
 .got_species
 	cp DITTO
 	jr nz, .done
-	sla c
-	rl b
+	ld a, $21
+.apply_item_mod
+	call ApplyDamageMod
 .done
+	ld a, [hMultiplicand + 0]
+	and a
+	jr z, .not_capped
+	ld b, $ff
+	ld c, $ff
+	jr .end
+.not_capped
+	ld a, [hMultiplicand + 1]
+	ld b, a
+	ld a, [hMultiplicand + 2]
+	ld c, a
+.end
+	pop de
 	pop hl
 	ret
 
@@ -4340,7 +4295,7 @@ UseBattleItem:
 	call StdBattleTextBox
 	jp ConsumeUserItem
 
-ItemRecoveryAnim:
+ItemRecoveryAnim::
 	push hl
 	push de
 	push bc
