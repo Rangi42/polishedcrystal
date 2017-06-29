@@ -5602,7 +5602,7 @@ BattleCommand_Growth:
 	ld c, SP_ATTACK
 	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
-	jp nz, BattleCommand_DoubleUp
+	jr nz, BattleCommand_DoubleUp
 	ld b, $10 | ATTACK
 	ld c, $10 | SP_ATTACK
 	jr BattleCommand_DoubleUp
@@ -5714,7 +5714,7 @@ BattleCommand_AccuracyUp2: ; 361dc
 BattleCommand_EvasionUp2: ; 361e0
 ; evasionup2
 	ld b, $10 | EVASION
-	jr BattleCommand_StatUp
+	;jr BattleCommand_StatUp
 
 BattleCommand_StatUp: ; 361e4
 ; statup
