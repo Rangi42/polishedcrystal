@@ -1,6 +1,7 @@
-const_value set 2
+const_value set 3
 	const LYRASHOUSE2F_LYRA
 	const LYRASHOUSE2F_PIDGEOT
+	const LYRASHOUSE2F_N64
 
 LyrasHouse2F_MapScriptHeader:
 .MapTriggers:
@@ -97,7 +98,9 @@ LyrasHousePCText:
 	done
 
 LyrasHouseN64Text:
-	text "It's an N64."
+	text "It's a limited-"
+	line "edition Pikachu"
+	cont "N64!"
 	done
 
 LyrasHouse2F_MapEventHeader:
@@ -109,13 +112,13 @@ LyrasHouse2F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 4
+	db 3
 	signpost 1, 4, SIGNPOST_READ, LyrasHousePC
 	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
 	signpost 1, 7, SIGNPOST_READ, PokemonJournalProfElmScript
-	signpost 2, 6, SIGNPOST_READ, LyrasHouseN64
 
 .PersonEvents:
-	db 2
+	db 3
 	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseLyra, EVENT_LYRA_IN_HER_ROOM
 	person_event SPRITE_PIDGEOT, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, LyrasHousePidgeot, EVENT_LYRA_IN_HER_ROOM
+	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_SCRIPT, 0, LyrasHouseN64, -1

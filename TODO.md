@@ -145,10 +145,47 @@ Some of these may never be added; they're just suggestions.
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
+   * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
+   * Add Gen 3 and 4 Pokémon from [Hoenn Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Hoenn_Sound) and [Sinnoh Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Sinnoh_Sound)
+   * Add some Gen 3 and 4 legendaries in appropriate places; tentative ideas:
+      * Regirock, Regice, and Registeel in new ruins like in Platinum
+      * Regigigas in Mt. Silver after you catch the three Regis
+      * Latios and Latias on Southern Island via the Eon Ticket
+      * Groudon, Kyogre, and Rayquaza in the Embedded Tower
+      * Deoxys in the crater on Route 3
+      * Jirachi in some event involving a demixed [Per Aspera Ad Astra](https://www.youtube.com/watch?v=TJYiwDoCgd0)
+      * Uxie, Mesprit, and Azelf in the Nameless Cavern near Lake of Rage
+      * Dialga, Palkia, and Giratina in the Sinjoh Ruins
+      * Cresselia in Red's bedroom
+      * Darkrai in Blue's bedroom
+      * Heatran?
+      * Phione from an Egg given by Wallace
+      * Victini
+      * Magearna
+   * Add certain other Gen 3 and 4 Pokémon; Prism's dex is similar to my own taste
+      * Ralts → Kirlia → Gardevoir / Gallade
+      * Surskit → Masquerain (buff and retype to Bug/Water with Levitate)
+      * Mawile and Sableye
+      * Aron → Lairon → Aggron
+      * Torkoal
+      * Lunatone and Solrock
+      * Feebas and Milotic
+      * Snorunt → Glalie / Froslas
+      * Relicanth
+      * Bagon → Shelgon → Salamence
+      * Beldum → Metang → Metagross
+      * Spiritomb
+      * Riolu → Lucario
+      * Rotom (switch forms in Silph Co.)
+      * Sigilyph in the Ruins of Alph grass
+      * Litwick → Lampent → Chandelure
+      * Pawniard → Bisharp
+      * Skiddo → Gogoat
 * More music
    * R/S/E Route 119
    * R/S/E Route 120
    * S/M Malie City (Day) (for Shamouti Shrine)
+* More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/doublespeed) mode
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)

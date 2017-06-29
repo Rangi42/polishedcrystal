@@ -1679,8 +1679,9 @@ LoadSpecialMapOBPalette:
 	jr nz, .not_vermilion_gym
 	ld hl, VermilionGymOBPalette_Tree
 .load_tree_palette:
-	ld a, $5
 	ld de, UnknOBPals + 6 palettes
+.load_single_palette:
+	ld a, $5
 	ld bc, 1 palettes
 	jp FarCopyWRAM
 
@@ -1724,10 +1725,7 @@ LoadSpecialMapOBPalette:
 	and 3
 	ld bc, 1 palettes
 	call AddNTimes
-	ld a, $5
-	ld de, UnknOBPals + 6 palettes
-	ld bc, 1 palettes
-	jp FarCopyWRAM
+	jr .load_tree_palette
 
 .not_shamouti_island:
 	ld a, [wTileset]
@@ -1749,12 +1747,23 @@ LoadSpecialMapOBPalette:
 .not_faraway_island:
 	ld a, [MapGroup]
 	cp GROUP_FARAWAY_JUNGLE
-	ret nz
+	jr nz, .not_faraway_jungle
 	ld a, [MapNumber]
 	cp MAP_FARAWAY_JUNGLE
-	ret nz
+	jr nz, .not_faraway_jungle
 	ld hl, FarawayJungleOBPalette_Tree
 	jr .load_time_of_day_tree_palette
+
+.not_faraway_jungle:
+	ld a, [MapGroup]
+	cp GROUP_LYRAS_HOUSE_2F
+	ret nz
+	ld a, [MapNumber]
+	cp MAP_LYRAS_HOUSE_2F
+	ret nz
+	ld hl, LyrasHouse2FOBPalette_Rock
+	ld de, UnknOBPals + 7 palettes
+	jp .load_single_palette
 
 VermilionGymOBPalette_Tree:
 if !DEF(MONOCHROME)
@@ -1882,4 +1891,14 @@ else
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR_NIGHT
+endc
+
+LyrasHouse2FOBPalette_Rock:
+if !DEF(MONOCHROME)
+	RGB 30, 28, 26
+	RGB 30, 28, 02
+	RGB 08, 14, 24
+	RGB 07, 07, 07
+else
+	MONOCHROME_RGB_FOUR
 endc
