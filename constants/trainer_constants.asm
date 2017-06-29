@@ -827,6 +827,7 @@ KRIS EQU __enum__
 	const ROGER
 	const EZEKIEL
 	const BIFF
+	const GEDDY
 
 	trainerclass GUITARISTF ; 55
 	const JANET
@@ -859,6 +860,7 @@ KRIS EQU __enum__
 	const BRETT
 	const VINCE
 	const OSWALD
+	const JORDAN
 
 	trainerclass ARTIST ; 59
 	const REINA
@@ -871,12 +873,14 @@ KRIS EQU __enum__
 	const BRYONY
 	const HEATHER
 	const HOLLY
+	const PEONY
 
 	trainerclass SIGHTSEERM ; 5b
 	const JASKA
 	const BLAISE
 	const GARETH
 	const CHESTER
+	const HARI
 
 	trainerclass SIGHTSEERF ; 5c
 	const ROSIE

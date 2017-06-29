@@ -12416,6 +12416,17 @@ GuitaristMGroup:
 	db $ff ; end
 
 ; ================
+
+	; GUITARISTM
+	db "Geddy@"
+	db TRAINERTYPE_NORMAL
+
+	; TODD: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12751,6 +12762,17 @@ TamerGroup:
 	db $ff ; end
 
 ; ================
+
+	; TAMER
+	db "Jordan@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12894,6 +12916,17 @@ AromaLadyGroup:
 	db $ff ; end
 
 ; ================
+
+	; AROMA_LADY
+	db "Peony@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -12936,6 +12969,17 @@ SightseerMGroup:
 
 	; SIGHTSEERM
 	db "Chester@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
+
+	; SIGHTSEERM
+	db "Hari@"
 	db TRAINERTYPE_NORMAL
 
 	; TODO: party
@@ -13886,6 +13930,9 @@ endc
 ; ================================
 
 
+SECTION "Enemy Trainer Parties 2", ROMX
+
+
 AceDuoGroup:
 ; ================================
 ; ================
@@ -14058,9 +14105,6 @@ AceDuoGroup:
 
 ; ================
 ; ================================
-
-
-SECTION "Enemy Trainer Parties 2", ROMX
 
 
 VeteranMGroup:
