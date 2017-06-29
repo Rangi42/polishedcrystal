@@ -1671,6 +1671,40 @@ InitLinkTradePalMap: ; 49856
 ; 4985a
 
 LoadSpecialMapOBPalette:
+	ld a, [wTileset]
+	cp TILESET_SHAMOUTI_ISLAND
+	jr z, .load_bg_tree_palette
+	cp TILESET_SAFARI_ZONE
+	jr nz, .not_shamouti_or_safari
+.load_bg_tree_palette
+	ld hl, UnknBGPals + 2 palettes
+.load_tree_palette:
+	ld de, UnknOBPals + 6 palettes
+.load_single_palette:
+	ld a, $5
+	ld bc, 1 palettes
+	jp FarCopyWRAM
+
+.not_shamouti_or_safari:
+	cp TILESET_FARAWAY_ISLAND
+	jr nz, .not_faraway
+	ld a, [MapNumber]
+	cp MAP_FARAWAY_JUNGLE
+	ld hl, UnknBGPals + 1 palettes ; grass
+	jr z, .load_tree_palette
+	; MAP_FARAWAY_ISLAND
+	ld hl, UnknBGPals + 6 palettes ; puddle
+	jr .load_tree_palette
+
+.not_faraway:
+	ld a, [MapGroup]
+	cp GROUP_MURKY_SWAMP
+	jr nz, .not_murky_swamp
+	ld a, [MapNumber]
+	cp MAP_MURKY_SWAMP
+	jr z, .load_bg_tree_palette
+
+.not_murky_swamp:
 	ld a, [MapGroup]
 	cp GROUP_VERMILION_GYM
 	jr nz, .not_vermilion_gym
@@ -1678,12 +1712,7 @@ LoadSpecialMapOBPalette:
 	cp MAP_VERMILION_GYM
 	jr nz, .not_vermilion_gym
 	ld hl, VermilionGymOBPalette_Tree
-.load_tree_palette:
-	ld de, UnknOBPals + 6 palettes
-.load_single_palette:
-	ld a, $5
-	ld bc, 1 palettes
-	jp FarCopyWRAM
+	jr .load_tree_palette
 
 .not_vermilion_gym:
 	ld a, [MapGroup]
@@ -1707,55 +1736,6 @@ LoadSpecialMapOBPalette:
 
 .not_rock_tunnel_2f:
 	ld a, [MapGroup]
-	cp GROUP_MURKY_SWAMP
-	jr nz, .not_murky_swamp
-	ld a, [MapNumber]
-	cp MAP_MURKY_SWAMP
-	jr nz, .not_murky_swamp
-	ld hl, MurkySwampOBPalette_Tree
-	jr .load_tree_palette
-
-.not_murky_swamp:
-	ld a, [wTileset]
-	cp TILESET_SHAMOUTI_ISLAND
-	jr nz, .not_shamouti_island
-	ld hl, ShamoutiIslandOBPalette_Tree
-.load_time_of_day_tree_palette:
-	ld a, [TimeOfDayPal]
-	and 3
-	ld bc, 1 palettes
-	call AddNTimes
-	jr .load_tree_palette
-
-.not_shamouti_island:
-	ld a, [wTileset]
-	cp TILESET_SAFARI_ZONE
-	jr nz, .not_safari_zone
-	ld hl, SafariZoneOBPalette_Tree
-	jr .load_time_of_day_tree_palette
-
-.not_safari_zone:
-	ld a, [MapGroup]
-	cp GROUP_FARAWAY_ISLAND
-	jr nz, .not_faraway_island
-	ld a, [MapNumber]
-	cp MAP_FARAWAY_ISLAND
-	jr nz, .not_faraway_island
-	ld hl, FarawayIslandOBPalette_Tree
-	jr .load_time_of_day_tree_palette
-
-.not_faraway_island:
-	ld a, [MapGroup]
-	cp GROUP_FARAWAY_JUNGLE
-	jr nz, .not_faraway_jungle
-	ld a, [MapNumber]
-	cp MAP_FARAWAY_JUNGLE
-	jr nz, .not_faraway_jungle
-	ld hl, FarawayJungleOBPalette_Tree
-	jr .load_time_of_day_tree_palette
-
-.not_faraway_jungle:
-	ld a, [MapGroup]
 	cp GROUP_LYRAS_HOUSE_2F
 	ret nz
 	ld a, [MapNumber]
@@ -1763,11 +1743,11 @@ LoadSpecialMapOBPalette:
 	ret nz
 	ld hl, LyrasHouse2FOBPalette_Rock
 	ld de, UnknOBPals + 7 palettes
-	jp .load_single_palette
+	jr .load_single_palette
 
 VermilionGymOBPalette_Tree:
 if !DEF(MONOCHROME)
-	RGB 30, 28, 26
+	RGB 27, 31, 27
 	RGB 31, 31, 30
 	RGB 19, 24, 31
 	RGB 05, 10, 27
@@ -1793,104 +1773,6 @@ if !DEF(MONOCHROME)
 	RGB 12, 08, 18
 else
 	MONOCHROME_RGB_FOUR_OW
-endc
-
-MurkySwampOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 15, 14, 24
-	RGB 07, 14, 13
-	RGB 04, 08, 07
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-ShamoutiIslandOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 28, 31, 16
-	RGB 16, 26, 12
-	RGB 07, 18, 06
-	RGB 07, 07, 07
-
-	RGB 27, 31, 27
-	RGB 16, 26, 12
-	RGB 07, 18, 06
-	RGB 07, 07, 07
-
-	RGB 15, 14, 24
-	RGB 08, 13, 11
-	RGB 04, 09, 06
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_NIGHT
-endc
-
-SafariZoneOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 22, 31, 10
-	RGB 13, 26, 10
-	RGB 06, 20, 08
-	RGB 03, 09, 08
-
-	RGB 22, 31, 10
-	RGB 13, 26, 10
-	RGB 06, 20, 08
-	RGB 03, 09, 08
-
-	RGB 11, 16, 08
-	RGB 07, 13, 08
-	RGB 03, 10, 06
-	RGB 01, 03, 05
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_NIGHT
-endc
-
-FarawayIslandOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 09, 23, 30
-	RGB 08, 13, 25
-	RGB 07, 07, 13
-
-	RGB 31, 31, 31
-	RGB 09, 23, 30
-	RGB 08, 13, 25
-	RGB 07, 07, 13
-
-	RGB 15, 14, 24
-	RGB 05, 10, 27
-	RGB 05, 06, 22
-	RGB 03, 03, 05
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_NIGHT
-endc
-
-FarawayJungleOBPalette_Tree:
-if !DEF(MONOCHROME)
-	RGB 19, 31, 16
-	RGB 13, 24, 12
-	RGB 00, 17, 07
-	RGB 07, 11, 07
-
-	RGB 19, 31, 16
-	RGB 13, 24, 12
-	RGB 00, 17, 07
-	RGB 07, 11, 07
-
-	RGB 11, 14, 14
-	RGB 08, 11, 11
-	RGB 00, 08, 06
-	RGB 03, 05, 03
-else
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_NIGHT
 endc
 
 LyrasHouse2FOBPalette_Rock:
