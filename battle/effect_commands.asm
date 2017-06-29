@@ -7974,7 +7974,10 @@ BattleCommand_Heal: ; 3713e
 	call GetBattleVar
 	cp REST
 	jr nz, .not_rest
-
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and SLP
+	jp nz, BattleEffect_ButItFailed
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INSOMNIA
