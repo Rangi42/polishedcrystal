@@ -1251,6 +1251,7 @@ Group20Sprites:
 
 Group21Sprites:
 ; Route7
+; Route16North
 ; Route16South
 ; Route17
 ; UragaChannelEast
@@ -1280,7 +1281,6 @@ Group23Sprites:
 ; Route22
 ; ViridianCity
 ; ViridianForest
-; Route16North
 ; Route16West
 	db SPRITE_BEAUTY
 	db SPRITE_BUG_CATCHER
@@ -1340,7 +1340,6 @@ Group31Sprites:
 ; BeautifulBeach
 ; RockyBeach
 ; WarmBeach
-; ShamoutiShrineRuins
 ; ShamoutiCoast
 	db SPRITE_ARTIST
 	db SPRITE_COOLTRAINER_M
@@ -1405,18 +1404,23 @@ Group33Sprites:
 
 Group34Sprites:
 ; SaffronCity
+; ShamoutiShrineRuins
 	db SPRITE_BLACK_BELT
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
-	db SPRITE_LASS
+	db SPRITE_LADY
 	db SPRITE_POKEFAN_M
-	db SPRITE_SCIENTIST
-	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	db SPRITE_LAWRENCE ; doesn't walk
+	db SPRITE_FISHER ; doesn't walk
+	db SPRITE_GRAMPS ; doesn't walk
+	db SPRITE_LASS ; doesn't walk
+	db SPRITE_SCIENTIST ; doesn't walk
+	db SPRITE_SUPER_NERD ; doesn't walk
+	; 12 walking sprites (6 that walk)
 	db SPRITE_SILPH_EMPLOYEE
-	; 10 total sprites
+	db SPRITE_BALL_CUT_FRUIT
+	; 14 total sprites
 	db 0
 
 
