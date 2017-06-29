@@ -430,7 +430,7 @@ GetSpeed::
 	ld [hMultiplicand + 2], a
 
 	; Apply stat changes
-	call FarDoStatChangeMod
+	farcall FarDoStatChangeMod
 	ld a, b
 	call ApplyDamageMod
 
