@@ -2835,15 +2835,30 @@ BattleCommand_PostHitEffects: ; 35250
 	cp HELD_SHELL_BELL
 	jr z, .shell_bell
 	cp HELD_FLINCH_UP
-	jr nz, .checkfaint
+	call z, .flinch_up
+	jp .checkfaint
+.flinch_up
+	; Ensure that the move doesn't already have a flinch
+	; rate. TODO: consolidate these effects maybe
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_FLINCH_HIT
+	ret z
+	cp EFFECT_SKY_ATTACK
+	ret z
+	cp EFFECT_TWISTER
+	ret z
+	cp EFFECT_STOMP
+	ret z
+	cp EFFECT_SNORE
+	ret z
 
 	; Flinch items procs even after Rocky Helmet fainting
 	ld a, 100
 	call BattleRandomRange
 	cp c
-	jr nc, .checkfaint
-
-	jp FlinchTarget
+	call c, FlinchTarget
+	ret
 .shell_bell
 	call .checkfaint
 	ret z
