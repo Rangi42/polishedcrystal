@@ -126,6 +126,14 @@ BattleText_UserHurtByItem:
 	text "."
 	prompt
 
+BattleText_UserItemLetItMoveFirst::
+	text "<USER>'s"
+	line "@"
+	text_from_ram StringBuffer1
+	text " let it"
+	cont "move first."
+	prompt
+
 BattleText_UserRecoveredPPUsing:
 	text "<USER>"
 	line "recovered PP using"

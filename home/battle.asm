@@ -780,13 +780,55 @@ GetWeatherAfterCloudNine::
 	xor a
 	ret
 
-CheckSpeed::
-; Quick Claw only applies for moves
-	ld d, 0
-	jr CheckSpeedInner
 CheckSpeedWithQuickClaw::
-	ld d, 1
-CheckSpeedInner:
+	; Quick Claw has a chance to override speed
+	ld a, [hBattleTurn]
+	ld e, a
+	ld d, 0
+	push de
+	call SetPlayerTurn
+	call CheckSpeed
+	call nz, SetEnemyTurn
+	pop de
+	call .do_it
+	call SwitchTurn
+	call .do_it
+	ld a, e
+	ld [hBattleTurn], a
+	ld a, d ; +1: player, -1: enemy, 0: both/neither
+	and a
+	jr z, CheckSpeed
+	dec a
+	ret
+.do_it
+	push de
+	farcall GetUserItemAfterUnnerve
+	pop de
+	ld a, b
+	cp HELD_QUICK_CLAW
+	ret nz
+	ld a, 100
+	call BattleRandomRange
+	cp c
+	ret nc
+	push de
+	farcall ItemRecoveryAnim
+	farcall GetUserItemAfterUnnerve
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, BattleText_UserItemLetItMoveFirst
+	call StdBattleTextBox
+	pop de
+	inc d
+	ld a, [hBattleTurn]
+	and a
+	ret z
+	dec d
+	dec d
+	ret
+
+CheckSpeed::
 ; Compares speed stat, applying items (usually, see above) and
 ; stat changes. and see who ends up on top. Returns z if the player
 ; outspeeds, otherwise nz, randomly on tie (which also sets carry)

@@ -4298,7 +4298,7 @@ UseBattleItem:
 	call StdBattleTextBox
 	jp ConsumeUserItem
 
-ItemRecoveryAnim:
+ItemRecoveryAnim::
 	push hl
 	push de
 	push bc

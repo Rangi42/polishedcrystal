@@ -978,87 +978,53 @@ ApplySpeedAbilities:
 	jp ApplyDamageMod
 
 ApplyAccuracyAbilities:
-; Passive accuracy boost/reduction abilities.
-; Current accuracy is in mul/div addresses
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	call .user_abilities
+	ld hl, UserAccuracyAbilities
+	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
-	ld b, a
-	call SwitchTurn
-	ld a, b
-	call .enemy_abilities
-	jp SwitchTurn
+	ld hl, TargetAccuracyAbilities
+	jp AbilityJumptable
 
-.user_abilities
-	ld hl, hMultiplier
-	cp COMPOUND_EYES
-	jr z, CompoundEyesAbility
-	cp HUSTLE
-	jr z, HustleAccuracyAbility
-	ret
+UserAccuracyAbilities:
+	dbw COMPOUND_EYES, CompoundEyesAbility
+	dbw HUSTLE, HustleAbility
+	dbw -1, -1
 
-.enemy_abilities
-	ld hl, hMultiplier
-	cp SAND_VEIL
-	jr z, SandVeilAbility
-	cp TANGLED_FEET
-	jr z, TangledFeetAbility
-	cp SNOW_CLOAK
-	jr z, SnowCloakAbility
-	cp WONDER_SKIN
-	jr z, WonderSkinAbility
-	ret
+TargetAccuracyAbilities:
+	dbw TANGLED_FEET, TangledFeetAbility
+	dbw WONDER_SKIN, WonderSkinAbility
+	dbw SAND_VEIL, SandVeilAbility
+	dbw SNOW_CLOAK, SnowCloakAbility
+	dbw -1, -1
 
 CompoundEyesAbility:
 ; Increase accuracy by 30%
-	ld [hl], 13
-	call Multiply
-	ld [hl], 10
-	ld b, 4
-	jp Divide
+	ld a, $da
+	jp ApplyDamageMod
 
 HustleAccuracyAbility:
 ; Decrease accuracy for physical attacks by 20%
-	ld a, BATTLE_VARS_MOVE_CATEGORY
-	call GetBattleVar
-	cp PHYSICAL
-	ret nz
-	ld [hl], 5
-	call Multiply
-	ld [hl], 6
-	ld b, 4
-	jp Divide
+	ld a, $45
+	jp ApplyPhysicalAttackDamageMod
 
 TangledFeetAbility:
-; Decrease accuracy by 50% while confused
-	push hl
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	bit SUBSTATUS_CONFUSED, [hl]
-	pop hl
+; Double evasion if confused
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	bit SUBSTATUS_CONFUSED, a
 	ret z
-	ld [hl], 2
-	ld b, 4
-	jp Divide
+	ld a, $12
+	jp ApplyDamageMod
 
 WonderSkinAbility:
-; Decrease accuracy by 50% for status moves
-	ld a, [wEnemyMoveStructCategory]
-	ld b, a
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_cat
-	ld a, [wPlayerMoveStructCategory]
-	ld b, a
-.got_cat
-	ld a, b
+; Double evasion for status moves
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
 	cp STATUS
 	ret nz
-
-	ld [hl], 2
-	ld b, 4
-	jp Divide
+	ld a, $12
+	jp ApplyDamageMod
 
 SandVeilAbility:
 	ld b, WEATHER_SANDSTORM
@@ -1066,15 +1032,12 @@ SandVeilAbility:
 SnowCloakAbility:
 	ld b, WEATHER_HAIL
 WeatherAccAbility:
-; Decrease accuracy by 20% in relevant weather
+; Decrease target accuracy by 20% in relevant weather
 	call GetWeatherAfterCloudNine
 	cp b
 	ret nz
-	ld [hl], 4
-	call Multiply
-	ld [hl], 5
-	ld b, 4
-	jp Divide
+	ld a, $45
+	jp ApplyDamageMod
 
 RunWeatherAbilities:
 	ld hl, WeatherAbilities
