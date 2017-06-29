@@ -8,7 +8,11 @@ else
 	;   hp  atk  def  spd  sat  sdf
 endc
 
+if DEF(FAITHFUL)
 	db GROUND, GROUND
+else
+	db GROUND, GHOST
+endc
 	db 75 ; catch rate
 if DEF(FAITHFUL)
 	db 124 ; base exp
