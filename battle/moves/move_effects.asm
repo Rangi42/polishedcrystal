@@ -46,6 +46,7 @@ XScissor:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -59,7 +60,6 @@ XScissor:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -67,6 +67,7 @@ SuckerPunch:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	suckerpunch
 	critical
 	damagestats
@@ -81,7 +82,6 @@ SuckerPunch:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -94,6 +94,7 @@ DrainKiss:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -108,7 +109,6 @@ DrainKiss:
 	draintarget
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -118,6 +118,7 @@ SwitchHit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -131,7 +132,6 @@ SwitchHit:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	switchout
 	endmove
@@ -149,6 +149,7 @@ IcicleSpear:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	startloop
 	lowersub
 	checkhit
@@ -166,7 +167,6 @@ IcicleSpear:
 	supereffectivelooptext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	endloop
 	pickpocket
 	raisesub
@@ -181,6 +181,7 @@ WildCharge:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -195,7 +196,6 @@ WildCharge:
 	recoil
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -216,6 +216,7 @@ ZenHeadbutt:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -243,6 +244,7 @@ GunkShot:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -269,6 +271,7 @@ FireBlast:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -299,6 +302,7 @@ ZapCannon:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -321,6 +325,7 @@ SleepHit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -346,6 +351,7 @@ Blizzard:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -374,6 +380,7 @@ Hurricane:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -397,6 +404,7 @@ MetalClaw:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -421,6 +429,7 @@ SteelWing:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -445,6 +454,7 @@ Ancientpower:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -468,6 +478,7 @@ AuroraBeam:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -494,6 +505,7 @@ RockSmash:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -519,6 +531,7 @@ BubbleBeam:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -543,6 +556,7 @@ Moonblast:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -574,6 +588,7 @@ ShadowBall:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -599,6 +614,7 @@ Octazooka:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -622,6 +638,7 @@ EvasionDownHit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -651,6 +668,7 @@ Psywave:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	constantdamage
 	checkhit
 	resettypematchup
@@ -659,7 +677,6 @@ Psywave:
 	checkfaint
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -669,6 +686,7 @@ Toxic:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	stab
@@ -681,6 +699,7 @@ WillOWisp:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	stab
@@ -695,6 +714,7 @@ Glare:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	stab
 	checkhit
 	bounceback
@@ -710,6 +730,7 @@ Spore:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	checksafeguard
@@ -720,6 +741,7 @@ DoFreeze:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	checksafeguard
@@ -733,6 +755,7 @@ SweetKiss:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	checksafeguard
@@ -963,6 +986,7 @@ Growl:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	attackdown
@@ -978,6 +1002,7 @@ Leer:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	defensedown
@@ -993,6 +1018,7 @@ StringShot:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	speeddown
@@ -1007,6 +1033,7 @@ SpecialAttackDown:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	specialattackdown
@@ -1021,6 +1048,7 @@ SpecialDefenseDown:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	specialdefensedown
@@ -1038,6 +1066,7 @@ Flash:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	accuracydown
@@ -1052,6 +1081,7 @@ EvasionDown:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	evasiondown
@@ -1067,6 +1097,7 @@ Charm:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	attackdown2
@@ -1082,6 +1113,7 @@ Screech:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	defensedown2
@@ -1097,6 +1129,7 @@ ScaryFace:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	speeddown2
@@ -1111,6 +1144,7 @@ SpecialAttackDown2:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	specialattackdown2
@@ -1126,6 +1160,7 @@ MetalSound:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	specialdefensedown2
@@ -1140,6 +1175,7 @@ AccuracyDown2:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	accuracydown2
@@ -1154,6 +1190,7 @@ EvasionDown2:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	evasiondown2
@@ -1213,6 +1250,7 @@ Outrage:
 	checkrampage
 	checkobedience
 	doturn
+	pressure
 	rampage
 	usedmovetext
 	checkhit
@@ -1229,7 +1267,6 @@ Outrage:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1241,6 +1278,7 @@ Whirlpool:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	critical
 	damagestats
@@ -1264,6 +1302,7 @@ Explosion:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1278,13 +1317,13 @@ Explosion:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	endmove
 
 DreamEater:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1306,6 +1345,7 @@ Roar:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	forceswitch
@@ -1322,6 +1362,7 @@ PayDay:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1336,7 +1377,6 @@ PayDay:
 	payday
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1344,6 +1384,7 @@ TriAttack:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1365,6 +1406,7 @@ Transform:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	transform
 	endmove
 
@@ -1372,6 +1414,7 @@ SkyAttack:
 	checkcharge
 	checkobedience
 	doturn
+	pressure
 	charge
 	usedmovetext
 	critical
@@ -1389,7 +1432,6 @@ SkyAttack:
 	checkdestinybond
 	buildopponentrage
 	flinchtarget
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1405,6 +1447,7 @@ GigaImpact:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1426,6 +1469,7 @@ Rage:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1440,7 +1484,6 @@ Rage:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1455,6 +1498,7 @@ LeechSeed:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	leechseed
@@ -1471,6 +1515,7 @@ Disable:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	disable
@@ -1486,13 +1531,13 @@ Counter:
 	checkfaint
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	endmove
 
 Encore:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	encore
@@ -1502,6 +1547,7 @@ PainSplit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	painsplit
 	endmove
@@ -1510,6 +1556,7 @@ LockOn:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	lockon
 	endmove
@@ -1518,6 +1565,7 @@ Sketch:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	sketch
 	endmove
 
@@ -1532,6 +1580,7 @@ DestinyBond:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	destinybond
 	endmove
 
@@ -1540,6 +1589,7 @@ Flail:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	constantdamage
 	stab
 	checkhit
@@ -1549,7 +1599,6 @@ Flail:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1557,6 +1606,7 @@ FalseSwipe:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1571,7 +1621,6 @@ FalseSwipe:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1586,6 +1635,7 @@ TripleKick:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	startloop
 	lowersub
 	checkhit
@@ -1605,7 +1655,6 @@ TripleKick:
 	checkdestinybond
 	buildopponentrage
 	kickcounter
-	kingsrock
 	endloop
 	raisesub
 	pickpocket
@@ -1615,6 +1664,7 @@ Thief:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1631,7 +1681,6 @@ Thief:
 	thief
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1639,6 +1688,7 @@ MeanLook:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	bounceback
 	arenatrap
 	endmove
@@ -1647,6 +1697,7 @@ FlameWheel:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1684,6 +1735,7 @@ Spikes:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	bounceback
 	spikes
 	endmove
@@ -1692,6 +1744,7 @@ Foresight:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	foresight
@@ -1729,6 +1782,7 @@ Rollout:
 	checkcurl
 	checkobedience
 	doturn
+	pressure
 	usedmovetext
 	critical
 	damagestats
@@ -1744,7 +1798,6 @@ Rollout:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1752,6 +1805,7 @@ Swagger:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	switchturn
@@ -1776,6 +1830,7 @@ ConditionalBoostHit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1790,7 +1845,6 @@ ConditionalBoostHit:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1798,6 +1852,7 @@ Attract:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	attract
@@ -1807,6 +1862,7 @@ Return:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	happinesspower
@@ -1821,7 +1877,6 @@ Return:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1829,6 +1884,7 @@ SacredFire:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1852,6 +1908,7 @@ Magnitude:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	getmagnitude
@@ -1867,7 +1924,6 @@ Magnitude:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1882,6 +1938,7 @@ Pursuit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1896,7 +1953,6 @@ Pursuit:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1904,6 +1960,7 @@ RapidSpin:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -1918,7 +1975,6 @@ RapidSpin:
 	clearhazards
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1940,6 +1996,7 @@ HiddenPower:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	hiddenpower
 	damagecalc
@@ -1953,7 +2010,6 @@ HiddenPower:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -1988,13 +2044,13 @@ MirrorCoat:
 	checkfaint
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	endmove
 
 Twister:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2018,6 +2074,7 @@ Earthquake:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2041,6 +2098,7 @@ FutureSight:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	damagestats
 	damagecalc
 	futuresight
@@ -2057,6 +2115,7 @@ Gust:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2078,6 +2137,7 @@ Stomp:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2101,6 +2161,7 @@ SolarBeam:
 	checkcharge
 	checkobedience
 	doturn
+	pressure
 	skipsuncharge
 	charge
 	usedmovetext
@@ -2117,7 +2178,6 @@ SolarBeam:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2125,6 +2185,7 @@ Thunder:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2156,6 +2217,7 @@ Dig:
 	checkcharge
 	checkobedience
 	doturn
+	pressure
 	charge
 	usedmovetext
 	critical
@@ -2172,7 +2234,6 @@ Dig:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2193,6 +2254,7 @@ FlareBlitz:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2217,6 +2279,7 @@ OHKOHit:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	stab
 	ohko
 	hittarget
@@ -2242,7 +2305,6 @@ Bide:
 	checkfaint
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2250,6 +2312,7 @@ RazorWind:
 	checkcharge
 	checkobedience
 	doturn
+	pressure
 	charge
 	usedmovetext
 	critical
@@ -2265,7 +2328,6 @@ RazorWind:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2273,6 +2335,7 @@ Mimic:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	mimic
 	endmove
@@ -2281,6 +2344,7 @@ Snore:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	damagecalc
@@ -2297,7 +2361,6 @@ Snore:
 	checkdestinybond
 	buildopponentrage
 	flinchtarget
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2305,6 +2368,7 @@ DefrostOpponent:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	defrostopponent
 	endmove
 
@@ -2312,6 +2376,7 @@ Spite:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	bounceback
 	spite
@@ -2321,6 +2386,7 @@ Present:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	critical
 	damagestats
@@ -2335,7 +2401,6 @@ Present:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2343,6 +2408,7 @@ Frustration:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	critical
 	damagestats
 	frustrationpower
@@ -2357,7 +2423,6 @@ Frustration:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	pickpocket
 	endmove
 
@@ -2365,6 +2430,7 @@ PsychUp:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	psychup
 	endmove
 
@@ -2372,6 +2438,7 @@ Conversion2:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	checkhit
 	conversion2
 	endmove
@@ -2380,6 +2447,7 @@ MirrorMove:
 	checkobedience
 	usedmovetext
 	doturn
+	pressure
 	mirrormove
 	endmove
 
@@ -2387,6 +2455,7 @@ SkullBash:
 	checkcharge
 	checkobedience
 	doturn
+	pressure
 	charge
 	usedmovetext
 	critical
@@ -2402,7 +2471,6 @@ SkullBash:
 	supereffectivetext
 	checkdestinybond
 	buildopponentrage
-	kingsrock
 	endturn
 	defenseup
 	statupmessage

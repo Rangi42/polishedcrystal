@@ -75,7 +75,7 @@ BattleCommandPointers:
 	dw BattleCommand_Spite
 	dw BattleCommand_FalseSwipe
 	dw BattleCommand_HealBell
-	dw BattleCommand_KingsRock
+	dw BattleCommand_Pressure
 	dw BattleCommand_TripleKick
 	dw BattleCommand_KickCounter
 	dw BattleCommand_Thief

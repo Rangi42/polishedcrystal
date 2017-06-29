@@ -457,16 +457,13 @@ GetSpeed::
 
 .unburden_done
 	; Apply item effects
-	push bc
-	farcall GetUserItem
-	ld h, c
+	farcall GetUserItemAfterUnnerve
 	ld a, b
-	pop bc
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
 	cp HELD_CHOICE
 	jr nz, .done
-	ld a, h
+	ld a, c
 	cp SPEED
 	jr nz, .done
 	ld a, $32

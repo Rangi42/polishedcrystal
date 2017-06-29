@@ -945,135 +945,53 @@ BattleCommand_UsedMoveText: ; 34541
 ; 34548
 
 
-CheckUserIsCharging: ; 34548
-
+CheckUserIsCharging:
 	ld a, [hBattleTurn]
 	and a
-	ld a, [wPlayerCharging] ; player
+	ld a, [wPlayerCharging]
 	jr z, .end
-	ld a, [wEnemyCharging] ; enemy
+	ld a, [wEnemyCharging]
 .end
 	and a
 	ret
 
-; 34555
-
-
-BattleCommand_DoTurn: ; 34555
+BattleCommand_DoTurn:
 	call CheckUserIsCharging
 	ret nz
 
-	ld hl, BattleMonPP
-	ld de, PlayerSubStatus3
-	ld bc, PlayerTurnsTaken
-
 	ld a, [hBattleTurn]
 	and a
-	jr z, .proceed
-
-	ld hl, EnemyMonPP
-	ld de, EnemySubStatus3
-	ld bc, EnemyTurnsTaken
-
-.proceed
-
-; If we've gotten this far, this counts as a turn.
-	ld a, [bc]
-	inc a
-	ld [bc], a
-
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
-	ret z
-
-	ld a, [de]
-	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE
+	ld hl, PlayerTurnsTaken
+	jr z, .got_turns_taken
+	ld hl, EnemyTurnsTaken
+.got_turns_taken
+	; If we've gotten this far, this counts as a turn.
+	inc [hl]
+	ld a, [hl]
+	and a
+	jr nz, .no_overflow
+	dec [hl]
+.no_overflow
+	; Consume PP
+	call BattleConsumePP
 	ret nz
 
-	call .consume_pp
-	ld a, b
-	and a
-	jp nz, EndMoveEffect
-
-	; SubStatus2
-	inc de
-	inc de
-
-	ld a, [de]
-	bit SUBSTATUS_TRANSFORMED, a
-	ret nz
-
-	ld a, [hBattleTurn]
-	and a
-
-	ld hl, PartyMon1PP
-	ld a, [CurBattleMon]
-	jr z, .player
-
-; mimic this part entirely if wildbattle
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-
-	ld hl, OTPartyMon1PP
-	ld a, [CurOTMon]
-
-.player
-	call GetPartyLocation
-
-.consume_pp
-	ld a, [hBattleTurn]
-	and a
-	ld a, [CurMoveNum]
-	jr z, .okay
-	ld a, [CurEnemyMoveNum]
-
-.okay
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	and $3f
-	jr z, .out_of_pp
-	dec [hl]
-	ld a, [hl]
-	and $3f
-	jr z, .take_one_pp_only
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp PRESSURE
-	jr nz, .take_one_pp_only
-	dec [hl]
-.take_one_pp_only
-	ld b, 0
-	ret
-
-.wild
-	ld hl, wWildMonPP
-	jp .consume_pp
-
-.out_of_pp
+	; Out of PP
 	call BattleCommand_MoveDelay
-; get move effect
+
+	; Different message if continuous
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-; continuous?
 	ld hl, .continuousmoves
 	ld de, 1
 	call IsInArray
 
-; 'has no pp left for [move]'
 	ld hl, HasNoPPLeftText
 	jr c, .print
-; 'but no pp is left for the move'
 	ld hl, NoPPLeftText
 .print
 	call StdBattleTextBox
-	ld b, 1
-	ret
-
-; 34602
+	jp EndMoveEffect
 
 .continuousmoves ; 34602
 	db EFFECT_RAZOR_WIND
@@ -1087,6 +1005,71 @@ BattleCommand_DoTurn: ; 34555
 	db $ff
 ; 3460b
 
+BattleCommand_Pressure:
+	; Ignores Mold Breaker
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	cp PRESSURE
+	ret nz
+	; fallthrough
+BattleConsumePP:
+; Also used by DoTurn: return z if user has no PP left
+	call CheckUserIsCharging
+	ret nz
+
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp STRUGGLE
+	jr z, .end
+
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE
+	ret nz
+
+	ld a, [hBattleTurn]
+	and a
+	ld a, [CurMoveNum]
+	ld de, BattleMonPP
+	ld hl, PartyMon1PP
+	jr z, .got_pp_vars
+	ld a, [wBattleMode]
+	dec a
+	ld a, [CurEnemyMoveNum]
+	ld de, EnemyMonPP
+	ld hl, wWildMonPP
+	jr z, .got_pp_vars_ok
+	ld hl, OTPartyMon1PP
+.got_pp_vars
+	push af
+	push de
+	call GetPartyLocation
+	pop de
+	pop af
+.got_pp_vars_ok
+	; Swap de and hl
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	and a
+	ret z
+	dec a
+	ld [hl], a
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	and SUBSTATUS_TRANSFORMED
+	ret nz
+	ld a, [hl]
+	ld [de], a
+.end
+	or 1
+	ret
 
 BattleCommand_Critical: ; 34631
 ; critical
@@ -2840,7 +2823,6 @@ BattleCommand_PostHitEffects: ; 35250
 	call StdBattleTextBox
 
 .rocky_helmet_done
-	; Do Life Orb recoil
 	call GetUserItem
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
@@ -2851,7 +2833,20 @@ BattleCommand_PostHitEffects: ; 35250
 	cp HELD_LIFE_ORB
 	jr z, .life_orb
 	cp HELD_SHELL_BELL
-	ret nz
+	jr z, .shell_bell
+	cp HELD_FLINCH_UP
+	jr nz, .checkfaint
+
+	; Flinch items procs even after Rocky Helmet fainting
+	ld a, 100
+	call BattleRandomRange
+	cp c
+	jr nc, .checkfaint
+
+	jp FlinchTarget
+.shell_bell
+	call .checkfaint
+	ret z
 
 	ld a, [CurDamage]
 	ld b, a
@@ -2876,6 +2871,9 @@ BattleCommand_PostHitEffects: ; 35250
 	jp StdBattleTextBox
 
 .life_orb
+	call .checkfaint
+	ret z
+
 	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect was suppressed)
 	ld a, [EffectFailed]
 	and a
@@ -2904,6 +2902,7 @@ BattleCommand_PostHitEffects: ; 35250
 	ld hl, BattleText_UserLostSomeOfItsHP
 	call StdBattleTextBox
 
+.checkfaint
 	; if we fainted, abort the rest of the move sequence
 	ld a, [hBattleTurn]
 	and a
@@ -2914,7 +2913,9 @@ BattleCommand_PostHitEffects: ; 35250
 	ld a, [hli]
 	or [hl]
 	ret nz
-	jp EndMoveEffect ; oops
+	call EndMoveEffect ; oops
+	xor a
+	ret
 
 BattleCommand_Pickpocket:
 ; If the opponent has Pickpocket, proc the item steal now
