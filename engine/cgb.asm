@@ -342,9 +342,9 @@ _CGB_Pokedex: ; 8f70
 	ld a, $1
 	call FillBoxCGB
 
-	ld hl, .SlowpokePalette
+	ld hl, PokegearOBPals
 	ld de, UnknOBPals
-	ld bc, 1 palettes
+	ld bc, 2 palettes
 	ld a, $5
 	call FarCopyWRAM
 
@@ -363,16 +363,6 @@ if !DEF(MONOCHROME)
 	RGB 07, 17, 00
 	RGB 06, 16, 03
 	RGB 05, 12, 01
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-.SlowpokePalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 14, 14, 14
-	RGB 31, 07, 01
-	RGB 00, 00, 00
 else
 	MONOCHROME_RGB_FOUR
 endc

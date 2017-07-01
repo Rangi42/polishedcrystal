@@ -118,8 +118,8 @@ ENDM
 	landmark 132, 104, Route46Name
 	landmark 152,  76, SilverCaveName
 	landmark 110, 140, FastShipName
-	landmark 132,  38, SinjohRuinsName
-	landmark 132,  34, MystriStageName
+	landmark 128,  44, SinjohRuinsName
+	landmark 128,  44, MystriStageName
 	landmark  60, 116, PalletTownName
 	landmark  60, 104, Route1Name
 	landmark  60,  92, ViridianCityName
