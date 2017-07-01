@@ -305,6 +305,7 @@ BattleAnim_Moonblast:
 	anim_obj ANIM_OBJ_27, 14, 0,  8, 4, $0
 	anim_obj ANIM_OBJ_28, 15, 6,  7, 6, $0
 	anim_wait 48
+	anim_bgp $e4
 	anim_ret
 
 BattleAnim_PlayRough:

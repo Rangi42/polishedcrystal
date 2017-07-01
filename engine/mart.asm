@@ -7,9 +7,9 @@
 	const MARTTEXT_SOLD_OUT
 
 OpenMartDialog:: ; 15a45
-	call GetMart
 	ld a, c
 	ld [EngineBuffer1], a
+	call GetMart
 	call LoadMartPointer
 	ld a, [EngineBuffer1]
 	ld hl, .dialogs
@@ -77,14 +77,12 @@ Pharmacist: ; 15aae
 ; 15ac4
 
 RooftopSale: ; 15ac4
-	ld b, BANK(RooftopSaleData1)
+	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
 	ld de, RooftopSaleData1
 	ld hl, StatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .ok
-	ld b, BANK(RooftopSaleData2)
 	ld de, RooftopSaleData2
-
 .ok
 	call LoadMartPointer
 	call ReadMart
@@ -131,6 +129,7 @@ RooftopSaleData1: ; 15aee
 	dbw FULL_HEAL,     300
 	dbw REVIVE,       1200
 	db -1
+
 RooftopSaleData2: ; 15aff
 	db 5
 	dbw HYPER_POTION, 1000
@@ -421,12 +420,14 @@ ReadMart: ; 15c25
 ; 15c51
 
 BargainShopData: ; 15c51
-	db 5
-	dbw NUGGET,     4500
-	dbw PEARL,       650
-	dbw BIG_PEARL,  3500
-	dbw STARDUST,    900
-	dbw STAR_PIECE, 4600
+	db 7
+	dbw NUGGET,       4500
+	dbw BIG_NUGGET,   8500
+	dbw PEARL,         650
+	dbw BIG_PEARL,    3500
+	dbw PEARL_STRING, 6500
+	dbw STARDUST,     1000
+	dbw STAR_PIECE,   4600
 	db -1
 ; 15c62
 
