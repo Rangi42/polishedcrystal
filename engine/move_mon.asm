@@ -361,8 +361,7 @@ endr
 	push hl
 	ld bc, MON_EVS - 1
 	add hl, bc
-	ld c, STAT_HP
-	ld b, FALSE
+	lb bc, FALSE, STAT_HP
 	call CalcPkmnStatC
 	ld a, [hProduct + 2]
 	ld [de], a

@@ -98,8 +98,6 @@ ReadTrainerParty: ; 39771
 .dv3_ok
 	ld [de], a
 
-	; TODO: regenerate stats (after TryAddMonToParty) with new DVs (will fix #133)
-
 .not_dvs
 ; personality?
 	ld a, [OtherTrainerType]
@@ -121,8 +119,6 @@ ReadTrainerParty: ; 39771
 	inc de
 	call GetNextTrainerDataByte
 	ld [de], a
-
-	; TODO: regenerate stats (after TryAddMonToParty) with new nature (will fix #133)
 
 .not_personality
 ; nickname?
@@ -219,6 +215,25 @@ ReadTrainerParty: ; 39771
 	pop hl
 
 .not_moves
+; custom DVs or nature may alter max HP
+	ld a, [OtherTrainerType]
+	and TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
+	jr z, .no_hp_fix
+	ld a, [OTPartyCount]
+	dec a
+	jr nz, .no_hp_fix
+	push hl
+	ld hl, OTPartyMon1EVs - 1
+	lb bc, FALSE, STAT_HP
+	predef CalcPkmnStatC
+	ld hl, OTPartyMon1HP
+	ld a, [hMultiplicand + 1]
+	ld [hli], a
+	ld a, [hMultiplicand + 2]
+	ld [hl], a
+	pop hl
+.no_hp_fix
+
 	jp .loop2
 
 ; 397e3
