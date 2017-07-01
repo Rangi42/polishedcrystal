@@ -574,7 +574,7 @@ endr
 	dwb .BargainShopPointers, 1
 	dwb .PharmacyPointers, 0
 	dwb .StandardMartPointers, 2
-	dwb .AdventurerMartPointers, 2
+	dwb .AdventurerMartPointers, 0
 	dwb .InformalMartPointers, 0
 	dwb .TMMartPointers, 0
 ; 15cbf
