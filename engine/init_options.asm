@@ -50,8 +50,7 @@ SetInitialOptions:
 ;	call ClearBGPalettes
 
 	hlcoord 0, 0
-	ld b, SCREEN_HEIGHT - 2
-	ld c, SCREEN_WIDTH - 2
+	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call TextBox
 
 	hlcoord 2, 2

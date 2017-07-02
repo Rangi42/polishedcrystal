@@ -595,8 +595,7 @@ Options_NextPrevious:
 .Display:
 	push de
 	hlcoord 0, 0
-	ld b, 16
-	ld c, 18
+	lb bc, 16, 18
 	call TextBox
 	pop de
 	hlcoord 2, 2

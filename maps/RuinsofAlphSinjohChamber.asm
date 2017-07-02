@@ -124,18 +124,15 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 
 PlayUnownSound1:
 	call SFXChannelsOff
-	ld d, 0
-	ld e, SFX_INTRO_UNOWN_1
+	ld de, SFX_INTRO_UNOWN_1
 	jp PlaySFX
 
 PlayUnownSound2:
 	call SFXChannelsOff
-	ld d, 0
-	ld e, SFX_INTRO_UNOWN_2
+	ld de, SFX_INTRO_UNOWN_2
 	jp PlaySFX
 
 PlayUnownSound3:
 	call SFXChannelsOff
-	ld d, 0
-	ld e, SFX_INTRO_UNOWN_3
+	ld de, SFX_INTRO_UNOWN_3
 	jp PlaySFX

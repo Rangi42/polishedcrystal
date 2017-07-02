@@ -5,7 +5,7 @@ AI_Basic: ; 38591
 
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
 	ret z
@@ -82,7 +82,7 @@ AI_Setup: ; 385e0
 
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
 	ret z
@@ -160,7 +160,7 @@ AI_Types: ; 38635
 
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
 	ret z
@@ -206,8 +206,7 @@ AI_Types: ; 38635
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
 	ld d, a
 	ld hl, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
-	ld c, 0
+	lb bc, (NUM_MOVES + 1), 0
 .checkmove2
 	dec b
 	jr z, .asm_38693
@@ -249,7 +248,7 @@ AI_Offensive: ; 386a2
 
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
 	ret z
@@ -279,7 +278,7 @@ AI_Smart: ; 386be
 
 	ld hl, Buffer1
 	ld de, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
 	ret z
@@ -486,7 +485,7 @@ AI_Smart_LockOn: ; 3881d
 	jr c, .asm_38875
 
 	ld hl, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld c, NUM_MOVES + 1
 .asm_3884f
 	dec c
 	jr z, .asm_38877
@@ -536,7 +535,7 @@ endr
 	push hl
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld c, NUM_MOVES + 1
 
 .asm_3888b
 	inc hl
@@ -2957,7 +2956,7 @@ AIHasMoveEffect: ; 392ca
 
 	push hl
 	ld hl, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves
+	ld c, NUM_MOVES
 
 .checkmove
 	ld a, [hli]
@@ -2998,7 +2997,7 @@ AIHasMoveInArray: ; 392e6
 	jr z, .done
 
 	ld b, a
-	ld c, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld c, NUM_MOVES + 1
 	ld de, EnemyMonMoves
 
 .check
@@ -3067,7 +3066,7 @@ AI_Opportunist: ; 39315
 .asm_39322
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld c, NUM_MOVES + 1
 .checkmove
 	inc hl
 	dec c
@@ -3141,7 +3140,7 @@ AI_Aggressive: ; 39369
 .checkmove
 	inc b
 	ld a, b
-	cp EnemyMonMovesEnd - EnemyMonMoves + 1
+	cp NUM_MOVES + 1
 	jr z, .gotstrongestmove
 
 	ld a, [hli]
@@ -3193,7 +3192,7 @@ AI_Aggressive: ; 39369
 .checkmove2
 	inc b
 	ld a, b
-	cp EnemyMonMovesEnd - EnemyMonMoves + 1
+	cp NUM_MOVES + 1
 	ret z
 
 ; Ignore this move if it is the highest damaging one.
@@ -3277,7 +3276,7 @@ AI_Cautious: ; 39418
 
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld c, NUM_MOVES + 1
 .asm_39425
 	inc hl
 	dec c
@@ -3329,7 +3328,7 @@ AI_Status: ; 39453
 	ld [hBattleTurn], a
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld b, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
 	ret z
@@ -3376,23 +3375,19 @@ AI_Status: ; 39453
 
 .poison
 	ld a, POISON
-	ld b, IMMUNITY
-	ld c, HELD_PREVENT_POISON
+	lb bc, IMMUNITY, HELD_PREVENT_POISON
 	jr .checkstatus
 .paralyze
 	ld a, ELECTRIC
-	ld b, LIMBER
-	ld c, HELD_PREVENT_PARALYZE
+	lb bc, LIMBER, HELD_PREVENT_PARALYZE
 	jr .checkstatus
 .burn
 	ld a, FIRE
-	ld b, WATER_VEIL
-	ld c, HELD_PREVENT_BURN
+	lb bc, WATER_VEIL, HELD_PREVENT_BURN
 	jr .checkstatus
 .freeze
 	ld a, ICE
-	ld b, MAGMA_ARMOR
-	ld c, HELD_PREVENT_FREEZE
+	lb bc, MAGMA_ARMOR, HELD_PREVENT_FREEZE
 	jr .checkstatus
 .sleep
 	; has 2 abilities, check one of them here
@@ -3400,12 +3395,10 @@ AI_Status: ; 39453
 	cp VITAL_SPIRIT
 	jr z, .pop_and_discourage
 
-	ld b, INSOMNIA
-	ld c, HELD_PREVENT_SLEEP
+	lb bc, INSOMNIA, HELD_PREVENT_SLEEP
 	jr .checkstatus_after_type
 .confusion
-	ld b, OWN_TEMPO
-	ld c, HELD_PREVENT_CONFUSE
+	lb bc, OWN_TEMPO, HELD_PREVENT_CONFUSE
 	jr .checkstatus_after_type
 .attract
 	ld b, OBLIVIOUS
@@ -3479,7 +3472,7 @@ AI_Risky: ; 394a9
 
 	ld hl, Buffer1 - 1
 	ld de, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves + 1
+	ld c, NUM_MOVES + 1
 .checkmove
 	inc hl
 	dec c

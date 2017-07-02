@@ -485,8 +485,7 @@ GetSpeed::
 	ld a, [hMultiplicand + 0]
 	and a
 	jr z, .not_capped
-	ld b, $ff
-	ld c, $ff
+	lb bc, $ff, $ff
 	jr .end
 .not_capped
 	ld a, [hMultiplicand + 1]
@@ -7601,8 +7600,7 @@ GiveBattleEVs:
 ; e: set to abcdef00, where a: HP EV boosted, etc, for
 ; power items
 	push de
-	ld d, 0
-	ld e, 0
+	lb de, 0, 0
 	; check pokérus
 	ld hl, MON_PKRUS
 	add hl, bc

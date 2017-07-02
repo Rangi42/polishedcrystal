@@ -400,8 +400,7 @@ ContestScore: ; 13900
 	call .AddContestStat
 
 	; DVs (6 points per DV that's at least 8)
-	ld b, 0
-	ld c, 6
+	lb bc, 0, 6
 
 	ld a, [wContestMonDVs + 0]
 	and $f

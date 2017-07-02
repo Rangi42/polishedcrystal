@@ -153,8 +153,7 @@ HDMATransfer_Wait123Scanlines_toBGMap: ; 1041b7 (41:41b7)
 	ld d, a
 	ld a, [hBGMapAddress]
 	ld e, a
-	ld c, 2 * SCREEN_HEIGHT
-	ld b, $7b
+	lb bc, $7b, 2 * SCREEN_HEIGHT
 	jr _continue_HDMATransfer
 ; 1041c1 (41:41c1)
 

@@ -68,10 +68,8 @@ JudgePokemon:
 	pop hl
 	push hl
 	; b: Good stats, c: Bad stats, d: Total, e: Best
-	ld b, %000000
-	ld c, %000000
-	ld d, %100000
-	ld e, 0
+	lb bc, %000000, %000000
+	lb de, %100000, 0
 .loop
 	ld a, [hli]
 	push af

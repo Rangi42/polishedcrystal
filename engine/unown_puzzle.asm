@@ -90,8 +90,7 @@ UnownPuzzle: ; e1190
 ; e124e
 
 InitUnownPuzzlePiecePositions: ; e124e
-	ld c,  1
-	ld b, 16
+	lb bc, 16, 1
 .load_loop
 	call Random
 	and $f

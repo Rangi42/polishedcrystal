@@ -630,15 +630,13 @@ EffectSporeAbility:
 	call GetBattleVar
 	cp VITAL_SPIRIT
 	ret z
-	ld b, INSOMNIA
-	ld c, HELD_PREVENT_SLEEP
+	lb bc, INSOMNIA, HELD_PREVENT_SLEEP
 	ld d, SLP
 	jr AfflictStatusAbility
 FlameBodyAbility:
 	call CheckIfTargetIsFireType
 	ret z
-	ld b, WATER_VEIL
-	ld c, HELD_PREVENT_BURN
+	lb bc, WATER_VEIL, HELD_PREVENT_BURN
 	ld d, BRN
 	jr AfflictStatusAbility
 PoisonTouchAbility:
@@ -649,15 +647,13 @@ PoisonPointAbility:
 	ret z
 	call CheckIfTargetIsSteelType
 	ret z
-	ld b, IMMUNITY
-	ld c, HELD_PREVENT_POISON
+	lb bc, IMMUNITY, HELD_PREVENT_POISON
 	ld d, PSN
 	jr AfflictStatusAbility
 StaticAbility:
 	call CheckIfTargetIsElectricType
 	ret z
-	ld b, LIMBER
-	ld c, HELD_PREVENT_PARALYZE
+	lb bc, LIMBER, HELD_PREVENT_PARALYZE
 	ld d, PAR
 AfflictStatusAbility
 ; While BattleCommand_Whatever already does all these checks,
@@ -1235,10 +1231,8 @@ MoodyAbility:
 	jr z, .got_stat_levels
 	ld hl, EnemyStatLevels
 .got_stat_levels
-	ld b, 0 ; bitfield of nonmaxed stats
-	ld c, 0 ; bitfield of nonminimized stats
-	ld d, 1 ; bit to OR into b/c
-	ld e, 0 ; loop counter
+	lb bc, 0, 0 ; bitfield of nonmaxed stats, bitfield of nonminimized stats
+	lb de, 1, 0 ; bit to OR into b/c, loop counter
 .loop1
 	ld a, [hl]
 	cp 13
@@ -1272,8 +1266,7 @@ MoodyAbility:
 	and $7
 	cp 7
 	jr z, .loop2 ; there are only 7 stats (0-6)
-	ld d, 1
-	ld e, 0 ; counter
+	lb de, 1, 0 ; e = counter
 .loop3
 	cp e
 	jr z, .loop3_done
@@ -1310,8 +1303,7 @@ MoodyAbility:
 	and $7
 	cp 7
 	jr z, .loop4
-	ld d, 1
-	ld e, 0 ; counter
+	lb de, 1, 0 ; e = counter
 .loop5
 	cp e
 	jr z, .loop5_done
@@ -1694,8 +1686,7 @@ RunOverworldPickupAbility::
 	jr .loop
 
 .Pickup:
-	ld b, 0
-	ld c, 0
+	lb bc, 0, 0
 ; Pickup selects from a table, giving better rewards scaling with level and randomness
 	call Random
 	cp 1 + (2 percent)

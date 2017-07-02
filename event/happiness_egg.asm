@@ -246,16 +246,13 @@ DaycareStep:: ; 7282
 	ret z
 
 	dec a ; 1: Semi-compatible
-	ld b, 20
-	ld c, 40
+	lb bc, 20, 40
 	jr z, .got_odds
 	dec a ; 2: Compatible
-	ld b, 50
-	ld c, 80
+	lb bc, 50, 80
 	jr z, .got_odds
 	; 3: Very compatible
-	ld b, 70
-	ld c, 88
+	lb bc, 70, 88
 .got_odds
 	ld a, OVAL_CHARM
 	ld [CurItem], a

@@ -454,8 +454,7 @@ Special_SetDayOfWeek: ; 90913
 	xor a
 	ld [hBGMapMode], a
 	hlcoord 10, 4
-	ld b, 2
-	ld c, 9
+	lb bc, 2, 9
 	call ClearBox
 	hlcoord 10, 5
 	call .PlaceWeekdayString

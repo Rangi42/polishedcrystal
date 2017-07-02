@@ -129,8 +129,7 @@ _TitleScreen: ; 10ed67
 IF DEF(FAITHFUL)
 	hlbgcoord 17, 0, VBGMap1
 	lb bc, 1, 1
-	ld d, $19
-	ld e, $10
+	lb de, $19, $10
 	call DrawTitleGraphic
 endc
 
@@ -330,8 +329,7 @@ DrawTitleGraphic: ; 10eeef
 
 InitializeBackground: ; 10ef06
 	ld hl, Sprites
-	ld d, -$22
-	ld e, $0
+	lb de, -$22, $0
 	ld c, 5
 .loop
 	push bc
@@ -346,8 +344,7 @@ InitializeBackground: ; 10ef06
 ; 10ef1c
 
 .InitColumn: ; 10ef1c
-	ld c, $6
-	ld b, $40
+	lb bc, $40, $6
 .loop2
 	ld a, d
 	ld [hli], a

@@ -510,8 +510,7 @@ CheckWhiteHerb:
 	ld a, [de]
 	or b
 	ret z
-	ld b, NUM_LEVEL_STATS
-	ld c, 0
+	lb bc, NUM_LEVEL_STATS, 0
 .stat_loop
 	ld a, [hl]
 	cp BASE_STAT_LEVEL
@@ -3436,8 +3435,7 @@ LightBallBoost: ; 353c3
 ; holding a Light Ball, double it.
 	push bc
 	push de
-	ld b, PIKACHU
-	ld c, PIKACHU
+	lb bc, PIKACHU, PIKACHU
 	ld d, LIGHT_BALL
 	call SpeciesItemBoost
 	pop de
@@ -4175,12 +4173,10 @@ BattleCommand_ConstantDamage: ; 35726
 
 
 BattleCommand_Counter:
-	ld b, EFFECT_COUNTER
-	ld c, PHYSICAL
+	lb bc, EFFECT_COUNTER, PHYSICAL
 	jr BattleCommand_Counterattack
 BattleCommand_MirrorCoat:
-	ld b, EFFECT_MIRROR_COAT
-	ld c, SPECIAL
+	lb bc, EFFECT_MIRROR_COAT, SPECIAL
 BattleCommand_Counterattack:
 	ld a, 1
 	ld [AttackMissed], a
@@ -5135,26 +5131,20 @@ BattleCommand_SleepTarget:
 
 CanPoisonTarget:
 	ld a, b
-	ld b, POISON
-	ld c, STEEL
-	ld d, IMMUNITY
-	ld e, HELD_PREVENT_POISON
+	lb bc, POISON, STEEL
+	lb de, IMMUNITY, HELD_PREVENT_POISON
 	ld h, 1 << PSN
 	jr CanStatusTarget
 CanBurnTarget:
 	ld a, b
-	ld b, FIRE
-	ld c, FIRE
-	ld d, WATER_VEIL
-	ld e, HELD_PREVENT_BURN
+	lb bc, FIRE, FIRE
+	lb de, WATER_VEIL, HELD_PREVENT_BURN
 	ld h, 1 << BRN
 	jr CanStatusTarget
 CanParalyzeTarget:
 	ld a, b
-	ld b, ELECTRIC
-	ld c, ELECTRIC
-	ld d, LIMBER
-	ld e, HELD_PREVENT_PARALYZE
+	lb bc, ELECTRIC, ELECTRIC
+	lb de, LIMBER, HELD_PREVENT_PARALYZE
 	ld h, 1 << PAR
 CanStatusTarget:
 ; Returns:
@@ -5576,29 +5566,23 @@ BattleCommand_ParalyzeTarget:
 	jp PostStatusWithSynchronize
 
 BattleCommand_BulkUp:
-	ld b, ATTACK
-	ld c, DEFENSE
+	lb bc, ATTACK, DEFENSE
 	jr BattleCommand_DoubleUp
 BattleCommand_CalmMind:
-	ld b, SP_ATTACK
-	ld c, SP_DEFENSE
+	lb bc, SP_ATTACK, SP_DEFENSE
 	jr BattleCommand_DoubleUp
 BattleCommand_Growth:
-	ld b, ATTACK
-	ld c, SP_ATTACK
+	lb bc, ATTACK, SP_ATTACK
 	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
 	jr nz, BattleCommand_DoubleUp
-	ld b, $10 | ATTACK
-	ld c, $10 | SP_ATTACK
+	lb bc, ($10 | ATTACK), ($10 | SP_ATTACK)
 	jr BattleCommand_DoubleUp
 BattleCommand_DragonDance:
-	ld b, ATTACK
-	ld c, SPEED
+	lb bc, ATTACK, SPEED
 	jr BattleCommand_DoubleUp
 BattleCommand_HoneClaws:
-	ld b, ATTACK
-	ld c, ACCURACY
+	lb bc, ATTACK, ACCURACY
 BattleCommand_DoubleUp:
 ; stats to raise are in bc
 	push bc ; StatUp clobbers c (via CheckIfStatCanBeRaised), which we want to retain
@@ -9012,23 +8996,19 @@ BattleCommand_HiddenPower: ; 37be8
 
 
 BattleCommand_StartSun:
-	ld b, WEATHER_SUN
-	ld c, HELD_PROLONG_SUN
+	lb bc, WEATHER_SUN, HELD_PROLONG_SUN
 	ld hl, SunGotBrightText
 	jr BattleCommand_StartWeather
 BattleCommand_StartRain:
-	ld b, WEATHER_RAIN
-	ld c, HELD_PROLONG_RAIN
+	lb bc, WEATHER_RAIN, HELD_PROLONG_RAIN
 	ld hl, DownpourText
 	jr BattleCommand_StartWeather
 BattleCommand_StartSandstorm:
-	ld b, WEATHER_SANDSTORM
-	ld c, HELD_PROLONG_SANDSTORM
+	lb bc, WEATHER_SANDSTORM, HELD_PROLONG_SANDSTORM
 	ld hl, SandstormBrewedText
 	jr BattleCommand_StartWeather
 BattleCommand_StartHail:
-	ld b, WEATHER_HAIL
-	ld c, HELD_PROLONG_HAIL
+	lb bc, WEATHER_HAIL, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 BattleCommand_StartWeather:
 	ld a, [Weather]

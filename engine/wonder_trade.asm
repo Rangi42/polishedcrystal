@@ -520,8 +520,7 @@ GetGSBallPichu:
 GetWonderTradeOTName:
 ; hl = .WonderTradeOTNameTable + a * PLAYER_NAME_LENGTH
 	ld hl, .WonderTradeOTNameTable
-	ld b, 0
-	ld c, PLAYER_NAME_LENGTH
+	lb bc, 0, PLAYER_NAME_LENGTH
 	jp AddNTimes
 
 .WonderTradeOTNameTable:
@@ -785,8 +784,7 @@ GetWonderTradeOTName:
 GetWonderTradeOTGender:
 ; a = [.WonderTradeOTGenderTable + a]
 	ld hl, .WonderTradeOTGenderTable
-	ld b, 0
-	ld c, 1
+	lb bc, 0, 1
 	call AddNTimes
 	ld a, [hl]
 	ret

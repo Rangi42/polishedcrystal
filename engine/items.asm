@@ -547,8 +547,7 @@ CountItemInPocket:
 	inc hl
 	ld a, [CurItem]
 	ld d, a
-	ld b, 0
-	ld c, 0
+	lb bc, 0, 0
 .loop
 	ld a, [hli]
 	cp -1

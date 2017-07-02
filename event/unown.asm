@@ -126,8 +126,7 @@ Special_DisplayUnownWords: ; 8ae68
 	and a
 	jr z, .load
 
-	ld d, $0
-	ld e, $5
+	lb de, $0, $5
 .loop
 	add hl, de
 	dec a
@@ -142,8 +141,7 @@ Special_DisplayUnownWords: ; 8ae68
 	call ApplyTilemap
 	call MenuBoxCoord2Tile
 	inc hl
-	ld d, $0
-	ld e, $14
+	ld de, $14
 rept 2
 	add hl, de
 endr
@@ -219,8 +217,7 @@ endr
 	push hl
 	ld [hli], a
 	ld [hld], a
-	ld b, 0
-	ld c, SCREEN_WIDTH
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld [hli], a
 	ld [hl], a
@@ -262,8 +259,7 @@ endr
 	inc a
 	ld [hld], a
 	dec a
-	ld b, 0
-	ld c, SCREEN_WIDTH
+	ld bc, SCREEN_WIDTH
 	add hl, bc
 	ld c, $10
 	add c

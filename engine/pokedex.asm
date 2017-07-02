@@ -1238,8 +1238,7 @@ Pokedex_DrawUnownModeBG: ; 409f1 (10:49f1)
 	hlcoord 6, 5
 	call Pokedex_PlaceFrontpicAtHL
 	ld de, 0
-	ld b, 0
-	ld c, NUM_UNOWN
+	lb bc, 0, NUM_UNOWN
 .loop
 	ld hl, UnownDex
 	add hl, de

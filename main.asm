@@ -27,8 +27,7 @@ PlaceWaitingText:: ; 4000
 	db "Waiting…!@"
 
 LoadPushOAM:: ; 4031
-	ld b, PushOAMEnd - PushOAM
-	ld c, hPushOAM - $ff00
+	lb bc, (PushOAMEnd - PushOAM), (hPushOAM - $ff00)
 	ld hl, PushOAM
 .loop
 	ld a, [hli]
@@ -634,8 +633,7 @@ UpdateTMHMDescription:
 	ld a, [MenuSelection]
 	ld [CurSpecies], a
 	hlcoord 0, 12
-	ld b, 4
-	ld c, SCREEN_WIDTH - 2
+	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
 	ld a, [MenuSelection]
 	cp -1
@@ -3844,8 +3842,7 @@ ResetDisplayBetweenHallOfFameMons: ; 4e906
 	call ByteFill
 	hlbgcoord 0, 0
 	ld de, wDecompressScratch
-	ld b, $0
-	ld c, $40
+	lb bc, $0, $40
 	call Request2bpp
 	pop af
 	ld [rSVBK], a

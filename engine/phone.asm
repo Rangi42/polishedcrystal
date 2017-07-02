@@ -591,8 +591,7 @@ endr
 
 Phone_CallerTextbox: ; 90375
 	hlcoord 0, 0
-	ld b, 2
-	ld c, SCREEN_WIDTH - 2
+	lb bc, 2, SCREEN_WIDTH - 2
 	jp TextBox
 ; 90380
 
