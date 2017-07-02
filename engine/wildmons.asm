@@ -44,7 +44,8 @@ FindNest: ; 2a01f
 	ld hl, JohtoWaterWildMons
 	call .FindWater
 	call .RoamMon1
-	jp .RoamMon2
+	call .RoamMon2
+	jp .RoamMon3
 
 .kanto
 	decoord 0, 0
@@ -201,6 +202,22 @@ endr
 	inc de
 	ret
 ; 2a0e7
+
+.RoamMon3: ; 2a0cf
+	ld a, [wRoamMon3Species]
+	ld b, a
+	ld a, [wNamedObjectIndexBuffer]
+	cp b
+	ret nz
+	ld a, [wRoamMon3MapGroup]
+	ld b, a
+	ld a, [wRoamMon3MapNumber]
+	ld c, a
+	call .AppendNest
+	ret nc
+	ld [de], a
+	inc de
+	ret
 
 TryWildEncounter:: ; 2a0e7
 ; Try to trigger a wild encounter.
