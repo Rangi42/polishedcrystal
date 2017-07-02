@@ -4218,14 +4218,14 @@ GetGender: ; 50bdd
 ; Fixed values ignore the Personality gender value.
 	cp GENDERLESS
 	jr z, .Genderless
-	cp ALL_MALE
+	and a ; cp ALL_MALE
 	jr z, .Male
 	cp ALL_FEMALE
 	jr z, .Female
 
 ; Otherwise, use the Personality gender value directly.
 	ld a, b
-	cp MALE
+	and a ; cp MALE
 	jr z, .Male
 
 .Female:

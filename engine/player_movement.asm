@@ -34,7 +34,7 @@ DoPlayerMovement:: ; 80000
 
 .TranslateIntoMovement:
 	ld a, [PlayerState]
-	cp PLAYER_NORMAL
+	and a ; cp PLAYER_NORMAL
 	jr z, .Normal
 	cp PLAYER_SURF
 	jr z, .Surf
@@ -791,7 +791,7 @@ DoPlayerMovement:: ; 80000
 .RunCheck:
 
 	ld a, [PlayerState]
-	cp PLAYER_NORMAL
+	and a ; cp PLAYER_NORMAL
 	ret nz
 	ld a, [hJoypadDown]
 	and B_BUTTON

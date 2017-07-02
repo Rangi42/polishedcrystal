@@ -56,14 +56,14 @@ TRUE  EQU 1
 ; joypad
 
 	const_def
-	const A_BUTTON_F
-	const B_BUTTON_F
-	const SELECT_F
-	const START_F
-	const D_RIGHT_F
-	const D_LEFT_F
-	const D_UP_F
-	const D_DOWN_F
+	const A_BUTTON_F ; 0
+	const B_BUTTON_F ; 1
+	const SELECT_F   ; 2
+	const START_F    ; 3
+	const D_RIGHT_F  ; 4
+	const D_LEFT_F   ; 5
+	const D_UP_F     ; 6
+	const D_DOWN_F   ; 7
 
 NO_INPUT   EQU %00000000
 A_BUTTON   EQU 1 << A_BUTTON_F
@@ -113,15 +113,16 @@ TEXTBOX_INNERY EQU TEXTBOX_Y + 2
 
 
 ; movement
-STEP_SLOW EQU 0
-STEP_WALK EQU 1
-STEP_BIKE EQU 2
-STEP_LEDGE EQU 3
-STEP_ICE EQU 4
-STEP_TURN EQU 5
-STEP_BACK_LEDGE EQU 6
-STEP_WALK_IN_PLACE EQU 7
-STEP_SPIN EQU 8
+	const_def
+	const STEP_SLOW
+	const STEP_WALK
+	const STEP_BIKE
+	const STEP_LEDGE
+	const STEP_ICE
+	const STEP_TURN
+	const STEP_BACK_LEDGE
+	const STEP_WALK_IN_PLACE
+	const STEP_SPIN
 
 
 ; ai

@@ -1926,7 +1926,7 @@ BikeFunction: ; d0b3
 	call .CheckEnvironment
 	jr c, .CannotUseBike
 	ld a, [PlayerState]
-	cp PLAYER_NORMAL
+	and a ; cp PLAYER_NORMAL
 	jr z, .GetOnBike
 	cp PLAYER_BIKE
 	jr z, .GetOffBike

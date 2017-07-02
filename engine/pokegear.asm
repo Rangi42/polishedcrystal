@@ -2497,7 +2497,7 @@ _Area: ; 91d11
 
 .left
 	ld a, [wd003]
-	cp JOHTO_REGION ; min
+	and a ; cp JOHTO_REGION ; min
 	ret z
 
 	dec a
@@ -2712,7 +2712,7 @@ _Area: ; 91d11
 	cp KANTO_LANDMARK
 	jr nc, .player_in_kanto
 	ld a, [wd003]
-	cp JOHTO_REGION
+	and a ; cp JOHTO_REGION
 	jr nz, .clear
 .ok
 	and a

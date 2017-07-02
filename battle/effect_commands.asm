@@ -3824,7 +3824,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, c
 	cp SP_ATTACK
 	jr z, .choice_sat
-	cp ATTACK
+	and a ; cp ATTACK
 	jr nz, .done_attacker_item
 	ld a, $32
 	call ApplyPhysicalAttackDamageMod
@@ -5881,7 +5881,7 @@ BattleCommand_StatDown: ; 362e3
 	jr .no_relevant_ability
 .atk
 	ld a, c
-	cp ATTACK
+	and a ; cp ATTACK
 	jr z, .Failed
 .def
 	ld a, c

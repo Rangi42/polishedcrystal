@@ -507,10 +507,10 @@ _GetGrassWildmonPointer:
 	farcall RegionCheck
 	ld a, e
 	ld hl, JohtoGrassWildMons
-	cp JOHTO_REGION
+	and a ; cp JOHTO_REGION
 	ret z
 	ld hl, KantoGrassWildMons
-	cp KANTO_REGION
+	dec a ; cp KANTO_REGION
 	ret z
 	ld hl, OrangeGrassWildMons
 	ret
@@ -519,10 +519,10 @@ _GetWaterWildmonPointer:
 	farcall RegionCheck
 	ld a, e
 	ld hl, JohtoWaterWildMons
-	cp JOHTO_REGION
+	and a ; cp JOHTO_REGION
 	ret z
 	ld hl, KantoWaterWildMons
-	cp KANTO_REGION
+	dec a ; cp KANTO_REGION
 	ret z
 	ld hl, OrangeWaterWildMons
 	ret

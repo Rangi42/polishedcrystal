@@ -292,6 +292,7 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 	const PAL_OW_TREE   ; 06
 	const PAL_OW_ROCK   ; 07
 
+; for party menu icons
 const_value SET PAL_OW_SILVER
 	const PAL_OW_GRAY   ; $05
 	const PAL_OW_YELLOW ; $06

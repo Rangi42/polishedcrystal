@@ -885,7 +885,7 @@ StatUpAbility:
 WeakArmorAbility:
 	; only physical moves activate this
 	ld a, b
-	cp PHYSICAL
+	and a ; cp PHYSICAL
 	ret nz
 
 	ld b, DEFENSE
@@ -1500,7 +1500,7 @@ GutsAbility:
 PixilateAbility:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
-	cp NORMAL
+	and a ; cp NORMAL
 	ret nz
 	ld a, $65
 	jp ApplyDamageMod

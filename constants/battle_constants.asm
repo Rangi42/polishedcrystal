@@ -10,7 +10,7 @@ BASE_STAT_LEVEL EQU 7
 ; matchups, baseline is $10 for better doubling/halving
 SUPER_EFFECTIVE    EQU $20
 NOT_VERY_EFFECTIVE EQU $08
-NO_EFFECT          EQU 00
+NO_EFFECT          EQU $00
 
 	const_def
 	const ATTACK
@@ -290,12 +290,12 @@ const_value SET 1
 	const BATTLE_VARS_LAST_MOVE_OPP
 
 ; status
+SLP EQU 7 ; 7 turns
 const_value SET 3
 	const PSN
 	const BRN
 	const FRZ
 	const PAR
-	const SLP ; 7 turns
 
 ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 

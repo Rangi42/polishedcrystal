@@ -2189,7 +2189,7 @@ GetCurrentLandmark::
 	ld a, [MapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	cp SPECIAL_MAP
+	and a ; cp SPECIAL_MAP
 	ret nz
 
 ; In a special map, get the backup map group / map id

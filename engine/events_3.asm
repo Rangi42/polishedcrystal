@@ -69,14 +69,14 @@ ReturnFromMapSetupScript:: ; b8000
 	ld a, [wPreviousLandmark]
 	cp c
 	ret z
-	cp SPECIAL_MAP
+	and a ; cp SPECIAL_MAP
 	ret
 ; b8070
 
 .CheckSpecialMap: ; b8070
 	cp -1
 	ret z
-	cp SPECIAL_MAP
+	and a ; cp SPECIAL_MAP
 	ret z
 	cp RADIO_TOWER
 	ret z

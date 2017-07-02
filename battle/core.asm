@@ -1632,7 +1632,7 @@ HandleScreens:
 
 HandleWeather:
 	ld a, [Weather]
-	cp WEATHER_NONE
+	and a ; cp WEATHER_NONE
 	ret z
 
 	ld hl, WeatherCount
@@ -1643,7 +1643,7 @@ HandleWeather:
 	; able to time it out, but otherwise check
 	; Cloud Nine
 	call GetWeatherAfterCloudNine
-	cp WEATHER_NONE
+	and a ; cp WEATHER_NONE
 	ret z
 
 	ld hl, .WeatherMessages
