@@ -30,7 +30,7 @@ DeleteMapObject:: ; 4357
 	ret
 ; 437b
 
-Function437b: ; 437b
+HandleCurNPCStep: ; 437b
 	call .CheckObjectStillVisible
 	ret c
 	call .HandleStepType
@@ -159,7 +159,7 @@ Function437b: ; 437b
 	jr asm_444d
 ; 4440
 
-Function4440: ; 4440
+HandleMapObjectAction_Stationary: ; 4440
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE, [hl]
@@ -211,7 +211,7 @@ CopyNextCoordsTileToStandingCoordsTile: ; 4600
 	ret
 ; 462a
 
-Function462a: ; 462a
+CopyCurCoordsToNextCoords: ; 462a
 	ld hl, OBJECT_MAP_X
 	add hl, bc
 	ld a, [hl]
@@ -573,7 +573,7 @@ MapObjectMovementPattern: ; 47dd
 	jp RandomStepDuration_Fast
 
 .Standing:
-	call Function462a
+	call CopyCurCoordsToNextCoords
 	call EndSpriteMovement
 	ld hl, OBJECT_ACTION
 	add hl, bc
@@ -647,7 +647,7 @@ MapObjectMovementPattern: ; 47dd
 	ret
 
 .ok2
-	call Function462a
+	call CopyCurCoordsToNextCoords
 .ok
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -1009,7 +1009,7 @@ MapObjectMovementPattern: ; 47dd
 
 .NewDuration:
 	call EndSpriteMovement
-	call Function462a
+	call CopyCurCoordsToNextCoords
 RandomStepDuration_Slow: ; 4b1d
 	call Random
 	ld a, [hRandomAdd]
@@ -2118,7 +2118,7 @@ CopyTempObjectData: ; 55b9
 	ret
 ; 55e0
 
-Function55e0:: ; 55e0
+UpdateMapObjectDataAndSprites:: ; 55e0
 	ld a, [VramState]
 	bit 0, a
 	ret z
@@ -2128,7 +2128,7 @@ Function55e0:: ; 55e0
 	ld [hMapObjectIndexBuffer], a
 	call DoesObjectHaveASprite
 	jr z, .ok
-	call Function565c
+	call UpdateCurObjectData
 .ok
 	ld hl, OBJECT_STRUCT_LENGTH
 	add hl, bc
@@ -2141,29 +2141,29 @@ Function55e0:: ; 55e0
 	ret
 ; 5602
 
-Function5602: ; 5602, called at battle start
-	call Function5645 ; clear sprites
+BattleStart_HideAllSpritesExceptBattleParticipants: ; 5602, called at battle start
+	call MaskAllObjectStructs ; clear sprites
 	ld a, PLAYER
-	call Function5629 ; respawn player
+	call RespawnObject ; respawn player
 	ld a, [wBattleScriptFlags]
 	bit 7, a
 	jr z, .ok
 	ld a, [hLastTalked]
 	and a
 	jr z, .ok
-	call Function5629 ; respawn opponent
+	call RespawnObject ; respawn opponent
 .ok
 	jp _UpdateSprites
 ; 561d
 
-Function561d: ; 561d
-	call Function5645 ; clear sprites
+ReturnFromFly_SpawnOnlyPlayer: ; 561d
+	call MaskAllObjectStructs ; clear sprites
 	ld a, PLAYER
-	call Function5629 ; respawn player
+	call RespawnObject ; respawn player
 	jp _UpdateSprites
 ; 5629
 
-Function5629: ; 5629
+RespawnObject: ; 5629
 	cp NUM_OBJECTS
 	ret nc
 	call GetMapObject
@@ -2177,10 +2177,14 @@ Function5629: ; 5629
 	call GetObjectStruct
 	call DoesObjectHaveASprite
 	ret z
-	jp Function5673
+	call IsObjectOnScreen
+	jr c, SetFacing_Standing
+	call HandleMapObjectAction_Stationary
+	xor a
+	ret
 ; 5645
 
-Function5645: ; 5645
+MaskAllObjectStructs: ; 5645
 	xor a
 	ld bc, ObjectStructs
 .loop
@@ -2197,36 +2201,13 @@ Function5645: ; 5645
 	ret
 ; 565c
 
-Function565c: ; 565c
+UpdateCurObjectData: ; 565c
 	push bc
-	call Function56cd
+	call CheckCurSpriteCoveredByTextBox
 	pop bc
 	jr c, SetFacing_Standing
-	call Function56a3
+	call IsObjectOnScreen
 	jr c, SetFacing_Standing
-	call Function5688
-	farcall Function4440
-	xor a
-	ret
-; 5673
-
-Function5673: ; 5673
-	call Function56a3
-	jr c, SetFacing_Standing
-	call Function4440
-	xor a
-	ret
-; 5680
-
-SetFacing_Standing: ; 5680
-	ld hl, OBJECT_FACING_STEP
-	add hl, bc
-	ld [hl], STANDING
-	scf
-	ret
-; 5688
-
-Function5688: ; 5688
 	push bc
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
@@ -2239,10 +2220,21 @@ Function5688: ; 5688
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld [hl], a
-	jp UpdateTallGrassFlags
-; 56a3
+	call UpdateTallGrassFlags
+	call HandleMapObjectAction_Stationary
+	xor a
+	ret
+; 5673
 
-Function56a3: ; 56a3
+SetFacing_Standing: ; 5680
+	ld hl, OBJECT_FACING_STEP
+	add hl, bc
+	ld [hl], STANDING
+	scf
+	ret
+; 5688
+
+IsObjectOnScreen: ; 56a3
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
 	ld d, [hl]
@@ -2255,7 +2247,7 @@ Function56a3: ; 56a3
 	cp d
 	jr z, .equal_x
 	jr nc, .nope
-	add $b
+	add SCREEN_WIDTH / 2 + 1
 	cp d
 	jr c, .nope
 .equal_x
@@ -2263,7 +2255,7 @@ Function56a3: ; 56a3
 	cp e
 	jr z, .equal_y
 	jr nc, .nope
-	add $a
+	add SCREEN_HEIGHT / 2 + 1
 	cp e
 	jr c, .nope
 .equal_y
@@ -2275,7 +2267,8 @@ Function56a3: ; 56a3
 	ret
 ; 56cd
 
-Function56cd: ; 56cd
+CheckCurSpriteCoveredByTextBox: ; 56cd
+; x coord
 	ld a, [wPlayerBGMapOffsetX]
 	ld d, a
 	ld hl, OBJECT_SPRITE_X_OFFSET
@@ -2285,9 +2278,9 @@ Function56cd: ; 56cd
 	add hl, bc
 	add [hl]
 	add d
-	cp $f0
+	cp -2 * 8
 	jr nc, .ok1
-	cp $a0
+	cp SCREEN_WIDTH * 8
 	jp nc, .nope
 .ok1
 	and %00000111
@@ -2304,7 +2297,8 @@ Function56cd: ; 56cd
 	jr c, .ok3
 	sub BG_MAP_WIDTH
 .ok3
-	ld [hUsedSpriteIndex], a
+	ld [hCurSpriteXCoord], a
+; y coord
 	ld a, [wPlayerBGMapOffsetY]
 	ld e, a
 	ld hl, OBJECT_SPRITE_Y_OFFSET
@@ -2314,9 +2308,9 @@ Function56cd: ; 56cd
 	add hl, bc
 	add [hl]
 	add e
-	cp $f0
+	cp -2 * 8
 	jr nc, .ok4
-	cp $90
+	cp SCREEN_HEIGHT * 8
 	jr nc, .nope
 .ok4
 	and %00000111
@@ -2333,10 +2327,11 @@ Function56cd: ; 56cd
 	jr c, .ok6
 	sub BG_MAP_HEIGHT
 .ok6
-	ld [hUsedSpriteTile], a
+	ld [hCurSpriteYCoord], a
+	; priority check
 	ld hl, OBJECT_PALETTE
 	add hl, bc
-	bit 7, [hl]
+	bit OAM_PRIORITY, [hl]
 	jr z, .ok7
 	ld a, d
 	add 2
@@ -2346,21 +2341,21 @@ Function56cd: ; 56cd
 	ld e, a
 .ok7
 	ld a, d
-	ld [hFFBF], a
+	ld [hCurSpriteXPixel], a
 .loop
-	ld a, [hFFBF]
+	ld a, [hCurSpriteXPixel]
 	ld d, a
 	ld a, [hUsedSpriteTile]
 	add e
 	dec a
-	cp $12
+	cp SCREEN_HEIGHT
 	jr nc, .ok9
 	ld b, a
 .next
 	ld a, [hUsedSpriteIndex]
 	add d
 	dec a
-	cp $14
+	cp SCREEN_WIDTH
 	jr nc, .ok8
 	ld c, a
 	push bc
@@ -2397,7 +2392,7 @@ HandleNPCStep:: ; 576a
 	ld [hMapObjectIndexBuffer], a
 	call DoesObjectHaveASprite
 	jr z, .next
-	call Function437b
+	call HandleCurNPCStep
 .next
 	ld hl, OBJECT_STRUCT_LENGTH
 	add hl, bc
@@ -2831,7 +2826,7 @@ PRIORITY_HIGH EQU $30
 	add hl, bc
 	ld a, [hl]
 	and %01111111
-	ld [hFFC1], a
+	ld [hCurSpriteTile], a
 	xor a
 	bit 7, [hl]
 	jr nz, .skip1
@@ -2860,7 +2855,7 @@ PRIORITY_HIGH EQU $30
 	jr z, .skip4
 	or %10000000
 .skip4
-	ld [hFFC2], a
+	ld [hCurSpriteOAMFlags], a
 	ld hl, OBJECT_SPRITE_X
 	add hl, bc
 	ld a, [hl]
@@ -2871,7 +2866,7 @@ PRIORITY_HIGH EQU $30
 	ld e, a
 	ld a, [wPlayerBGMapOffsetX]
 	add e
-	ld [hFFBF], a
+	ld [hCurSpriteXPixel], a
 	ld hl, OBJECT_SPRITE_Y
 	add hl, bc
 	ld a, [hl]
@@ -2882,7 +2877,7 @@ PRIORITY_HIGH EQU $30
 	ld e, a
 	ld a, [wPlayerBGMapOffsetY]
 	add e
-	ld [hFFC0], a
+	ld [hCurSpriteYPixel], a
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld a, [hl]
@@ -2907,19 +2902,19 @@ PRIORITY_HIGH EQU $30
 	cp SpritesEnd % $100
 	jr nc, .full
 .addsprite
-	ld a, [hFFC0]
+	ld a, [hCurSpriteYPixel]
 	add [hl]
 	inc hl
 	ld [bc], a
 	inc c
-	ld a, [hFFBF]
+	ld a, [hCurSpriteXPixel]
 	add [hl]
 	inc hl
 	ld [bc], a
 	inc c
 	ld e, [hl]
 	inc hl
-	ld a, [hFFC1]
+	ld a, [hCurSpriteTile]
 	bit 2, e
 	jr z, .nope1
 	xor a
@@ -2931,7 +2926,7 @@ PRIORITY_HIGH EQU $30
 	ld a, e
 	bit 1, a
 	jr z, .nope2
-	ld a, [hFFC2]
+	ld a, [hCurSpriteOAMFlags]
 	or e
 .nope2
 	and %11110000

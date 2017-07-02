@@ -589,7 +589,7 @@ UpdateSprites:: ; 1ad2
 	bit 0, a
 	ret z
 
-	farcall Function55e0
+	farcall UpdateMapObjectDataAndSprites
 	farcall _UpdateSprites
 	ret
 ; 1ae5

@@ -822,7 +822,7 @@ FlyFunction: ; ca3b
 	end
 
 .ReturnFromFly: ; cacb
-	farcall Function561d
+	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
 	call ReplaceKrisSprite
 	jp LoadStandardFont

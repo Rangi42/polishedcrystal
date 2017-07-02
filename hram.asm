@@ -77,10 +77,15 @@ hPrintNum10        EQU $ffbc
 
 hUsedSpriteIndex   EQU $ffbd
 hUsedSpriteTile    EQU $ffbe
-hFFBF              EQU $ffbf
-hFFC0              EQU $ffc0
-hFFC1              EQU $ffc1
-hFFC2              EQU $ffc2
+
+hCurSpriteXCoord   EQU $ffbd
+hCurSpriteYCoord   EQU $ffbe
+
+hCurSpriteXPixel   EQU $ffbf
+hCurSpriteYPixel   EQU $ffc0
+hCurSpriteTile     EQU $ffc1
+hCurSpriteOAMFlags EQU $ffc2
+
 hMoneyTemp         EQU $ffc3
 
 hLCDCPointer       EQU $ffc6
