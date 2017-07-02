@@ -96,7 +96,7 @@ endr
 .DecrementScores:
 	ld hl, Buffer1
 	ld de, EnemyMonMoves
-	ld c, EnemyMonMovesEnd - EnemyMonMoves
+	ld c, NUM_MOVES
 
 .DecrementNextScore:
 	; If the enemy has no moves, this will infinite.

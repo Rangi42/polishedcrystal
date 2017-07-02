@@ -859,7 +859,7 @@ wPokedexDataEnd::
 
 wMiscEnd::
 
-wc7e8:: ds 15
+	ds 15
 
 SECTION "Overworld Map", WRAM0 [$c800]
 

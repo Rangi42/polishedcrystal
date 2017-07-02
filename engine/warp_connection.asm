@@ -1,6 +1,5 @@
 
 RunCallback_05_03: ; 1045b0
-	call Clearwc7e8
 	call ResetMapBufferEventFlags
 	call ResetFlashIfOutOfCave
 	call GetCurrentMapTrigger

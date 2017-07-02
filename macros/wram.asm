@@ -60,7 +60,6 @@ battle_struct: MACRO
 \1Species::        db
 \1Item::           db
 \1Moves::          ds NUM_MOVES
-\1MovesEnd::
 \1DVs::
 \1HPAtkDV::        db
 \1DefSpdDV::       db

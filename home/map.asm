@@ -1,12 +1,5 @@
 ; Functions dealing with rendering and interacting with maps.
 
-Clearwc7e8:: ; 210f
-	ld hl, wc7e8
-	ld bc, 15
-	xor a
-	jp ByteFill
-; 211b
-
 CheckTriggers:: ; 211b
 ; Checks wCurrentMapTriggerPointer.  If it's empty, returns -1 in a.  Otherwise, returns the active trigger ID in a.
 	push hl
