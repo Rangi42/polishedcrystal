@@ -2026,17 +2026,8 @@ FullRestore: ; f128
 	jp z, StatusHealer_NoEffect
 
 	call IsMonAtFullHealth
-	jr c, .NotAtFullHealth
+	jp nc, FullyHealStatus
 
-	jp FullyHealStatus
-
-.NotAtFullHealth:
-	call .FullRestore
-	jp StatusHealer_Jumptable
-; f144
-
-
-.FullRestore: ; f144
 	xor a
 	ld [Danger], a
 	call ReviveFullHP
@@ -2053,8 +2044,8 @@ FullRestore: ; f128
 	call ItemActionTextWaitButton
 	call UseDisposableItem
 	xor a
-	ret
-; f16a
+	jp StatusHealer_Jumptable
+; f144
 
 
 PersimBerry: ; f16a
@@ -2162,10 +2153,6 @@ HealHP_SFX_GFX: ; f1db (3:71db)
 
 UseItem_SelectMon2:
 ; Used on something already: don't reload the graphics
-	call .SelectMon
-	jr UseItem_DoSelectMon
-
-.SelectMon:
 	ld a, b
 	ld [PartyMenuActionText], a
 	push hl
@@ -2178,13 +2165,9 @@ UseItem_SelectMon2:
 	pop bc
 	pop de
 	pop hl
-	ret
-
-UseItem_SelectMon: ; f1f9 (3:71f9)
-	call .SelectMon
 	jr UseItem_DoSelectMon
 
-.SelectMon:
+UseItem_SelectMon: ; f1f9 (3:71f9)
 	ld a, b
 	ld [PartyMenuActionText], a
 	push hl
@@ -2195,7 +2178,7 @@ UseItem_SelectMon: ; f1f9 (3:71f9)
 	pop bc
 	pop de
 	pop hl
-	ret
+	;jr UseItem_DoSelectMon
 
 UseItem_DoSelectMon:
 	ret c

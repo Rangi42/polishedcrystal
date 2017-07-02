@@ -128,20 +128,15 @@ StartMenu:: ; 125cd
 ; 126b1
 
 .ReturnRedraw: ; 126b1
-	call .Clear
-	jp .Reopen
-; 126b7
-
-.Clear: ; 126b7
 	call ClearBGPalettes
 	call Call_ExitMenu
 	call ReloadTilesetAndPalettes
 	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatus
 	call UpdateSprites
-	jp FinishExitMenu
-; 126d3
-
+	call FinishExitMenu
+	jp .Reopen
+; 126b7
 
 .MenuDataHeader:
 	db $40 ; tile backup
