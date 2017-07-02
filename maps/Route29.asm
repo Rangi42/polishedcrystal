@@ -66,7 +66,7 @@ Route29Tutorial1:
 	disappear ROUTE29_LYRA
 	dotrigger $0
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	playmapmusic
 	end
@@ -104,7 +104,7 @@ Route29Tutorial2:
 	disappear ROUTE29_LYRA
 	dotrigger $0
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	playmapmusic
 	end

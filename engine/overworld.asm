@@ -17,19 +17,15 @@ _ReplaceKrisSprite:: ; 14135
 ; 14146
 
 RefreshSprites:: ; 14168
-	call .Refresh
-	jp RunCallback_04
-; 1416f
-
-.Refresh: ; 1416f
 	xor a
 	ld bc, UsedSpritesEnd - UsedSprites
 	ld hl, UsedSprites
 	call ByteFill
 	call GetPlayerSprite
 	call AddMapSprites
-	jp LoadAndSortSprites
-; 14183
+	call LoadAndSortSprites
+	jp MapCallbackSprites_LoadUsedSpritesGFX
+; 1416f
 
 GetPlayerSprite: ; 14183
 ; Get Chris or Kris's sprite.
@@ -133,7 +129,7 @@ endr
 ; 14209
 
 
-RunCallback_04: ; 14209
+MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
 	call GetUsedSprites

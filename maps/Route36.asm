@@ -86,7 +86,7 @@ DidntCatchSudowoodo:
 	reloadmapafterbattle
 	applymovement ROUTE36_WEIRD_TREE, WeirdTreeMovement_Flee
 	disappear ROUTE36_WEIRD_TREE
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	special RefreshSprites
 	end
 

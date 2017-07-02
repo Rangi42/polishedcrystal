@@ -46,7 +46,7 @@ Copycat:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 .Part2:
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .Part7
 	opentext
@@ -70,7 +70,7 @@ Copycat:
 .Part6:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	opentext
 	writetext UnknownText_0x18b028
 	waitbutton
@@ -99,7 +99,7 @@ Copycat:
 .Part11:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	opentext
 	writetext UnknownText_0x18b116
 	waitbutton
@@ -142,7 +142,7 @@ Copycat:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 .Part17:
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Part18
@@ -164,7 +164,7 @@ Copycat:
 .Part21:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	opentext
 	writetext UnknownText_0x18b2f5
 	waitbutton

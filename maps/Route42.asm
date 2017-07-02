@@ -27,7 +27,7 @@ Route42LyraScript1:
 	special Special_FadeOutMusic
 	pause 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -40,7 +40,7 @@ Route42LyraScript2:
 	special Special_FadeOutMusic
 	pause 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -53,7 +53,7 @@ Route42LyraScript3:
 	special Special_FadeOutMusic
 	pause 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -64,7 +64,7 @@ Route42LyraScript4:
 	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -75,7 +75,7 @@ Route42LyraScript5:
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -130,7 +130,7 @@ Route42LyraScript:
 	dotrigger $0
 .Finish
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playmapmusic
 	end
 

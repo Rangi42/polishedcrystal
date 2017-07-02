@@ -119,7 +119,7 @@ Route10NorthLawrenceEncounter2Script:
 	special Special_FadeOutMusic
 	pause 15
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_LAWRENCE
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkcode VAR_FACING
 	if_equal UP, .up
 	if_equal DOWN, .down

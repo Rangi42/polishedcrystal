@@ -116,7 +116,7 @@ NewBarkTown_LyraFinalTrigger4:
 
 NewBarkTown_LyraFinalTrigger:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
@@ -160,7 +160,7 @@ NewBarkTown_LyraFinalTrigger:
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye3_NBT
 	disappear NEWBARKTOWN_LYRA
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $2
 	playmapmusic
 	end

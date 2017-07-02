@@ -164,7 +164,7 @@ CherrygroveSilverTriggerNorth:
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	special HealPartyEvenForNuzlocke
 	dotrigger $2
 	playmusic MUSIC_CHERRYGROVE_CITY

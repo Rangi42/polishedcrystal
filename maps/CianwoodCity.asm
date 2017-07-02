@@ -57,7 +57,7 @@ UnknownScript_0x1a001e:
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7
@@ -82,7 +82,7 @@ UnknownScript_0x1a001e:
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00ec
 	disappear CIANWOODCITY_EUSINE
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	pause 20
 	special Special_FadeOutMusic
 	playmapmusic

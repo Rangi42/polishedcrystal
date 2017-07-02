@@ -32,7 +32,7 @@ OlivineCityRivalGymScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
@@ -50,7 +50,7 @@ OlivineCityRivalGymScript:
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 OlivineCityRivalLighthouseScript:
@@ -59,7 +59,7 @@ OlivineCityRivalLighthouseScript:
 	special Special_FadeOutMusic
 	moveperson OLIVINECITY_OLIVINE_RIVAL, $21, $13
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
@@ -77,7 +77,7 @@ OlivineCityRivalLighthouseScript:
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 TrainerSailorHarvey:

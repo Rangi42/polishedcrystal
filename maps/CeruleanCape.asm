@@ -72,7 +72,7 @@ UnknownScript_0x19eee0:
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	dotrigger $0
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_BEAUTY
-	special RunCallback_04
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	special RestartMapMusic
 	end
 
