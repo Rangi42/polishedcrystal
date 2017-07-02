@@ -5,7 +5,7 @@ _OptionsMenu: ; e41d0
 	ld [hl], $1
 	call ClearBGPalettes
 	hlcoord 0, 0
-	lb bc, 16, 18
+	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call TextBox
 	hlcoord 2, 2
 	ld de, StringOptions1
