@@ -173,6 +173,16 @@ BattleCommand_Transform: ; 371cd
 	ld hl, TransformedText
 	call StdBattleTextBox
 
+	; Update revealed moves if player transformed: the AI knows what its own moves are...
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .move_reveal_done
+	ld hl, BattleMonMoves
+	ld de, PlayerUsedMoves
+	ld bc, NUM_MOVES
+	call CopyBytes
+
+.move_reveal_done
 	; Copy ability
 	ld a, [hBattleTurn]
 	and a
