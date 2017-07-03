@@ -769,15 +769,12 @@ GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [Weather] otherwise.
 	ld a, [PlayerAbility]
-	cp CLOUD_NINE
-	jr z, .suppress
+	xor CLOUD_NINE
+	ret z
 	ld a, [EnemyAbility]
-	cp CLOUD_NINE
-	jr z, .suppress
+	xor CLOUD_NINE
+	ret z
 	ld a, [Weather]
-	ret
-.suppress
-	xor a
 	ret
 
 CheckSpeedWithQuickClaw::
