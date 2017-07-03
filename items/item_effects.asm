@@ -309,8 +309,18 @@ CherishBall: ; e8a2
 
 	ld a, [PartyCount]
 	cp PARTY_LENGTH
-	jr nz, .room_in_party
+	jr z, .check_room
 
+	; Copy wildmon's item to item backup struct in case we catch
+	ld hl, PartyBackupItems
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [EnemyMonItem]
+	ld [hl], a
+	jr .room_in_party
+
+.check_room
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
 	ld a, [sBoxCount]
