@@ -193,6 +193,7 @@ AI_TryItem: ; 38105
 	ld de, wEnemyTrainerItem1
 .loop
 	ld a, [hl]
+	; Reset carry so the battle loop doesn't think we ended up performing a move...
 	and a
 	inc a
 	ret z
@@ -202,10 +203,10 @@ AI_TryItem: ; 38105
 	jr z, .has_item
 	inc de
 	ld a, [de]
+	dec de
 	cp [hl]
 	jr z, .has_item
 
-	dec de
 rept 3
 	inc hl
 endr
