@@ -1765,19 +1765,17 @@ BattleCommand_CheckHit:
 	; are both combined additively. For example,
 	; acc-3 and eva+3 is 3/9, not 3/12. In addition,
 	; the change is capped at -6 or +6
-	ld a, 7
+	ld a, 6
 	add b
 	sub c
-	jr c, .min_acc
-	jr z, .min_acc
-	cp 14
-	jr c, .got_acc_stat
-	; max accuracy
-	ld a, 13
-	jr .got_acc_stat
-.min_acc
-	ld a, 1
-.got_acc_stat
+	jr nc, .min_acc_ok
+	xor a
+.min_acc_ok
+	sub 12
+	jr c, .max_acc_ok
+	xor a
+.max_acc_ok
+	add 13
 	ld b, a
 	xor a
 	ld [hMultiplicand + 0], a
@@ -3654,6 +3652,7 @@ FarDoStatChangeMod:
 	ret
 
 DoStatChangeMod:
+	ld a, b
 	cp 7
 	jr nc, .higher
 	ld a, $29
