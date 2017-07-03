@@ -170,7 +170,7 @@ DayCareManScript_Outside:
 	if_equal $1, .end_fail
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
-	if_equal RIGHT, .walk_around_player
+	if_equal LEFT, .walk_around_player
 	applymovement ROUTE34_GRAMPS1, Route34MovementData_DayCareManWalksBackInside
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS1
@@ -708,18 +708,10 @@ Route34HiddenRareCandy:
 Route34HiddenSuperPotion:
 	dwb EVENT_ROUTE_34_HIDDEN_SUPER_POTION, SUPER_POTION
 
-Route34MovementData_DayCareManWalksBackInside:
-	slow_step_left
-	slow_step_left
-	slow_step_up
-	step_end
-
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
-	slow_step_down
-	slow_step_left
-	slow_step_left
 	slow_step_up
-	slow_step_up
+Route34MovementData_DayCareManWalksBackInside:
+	slow_step_right
 	step_end
 
 Route34MovementData_AdjustPlayer1:
@@ -1071,9 +1063,9 @@ Route34_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
 	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	person_event SPRITE_OFFICER_F, 11, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
+	person_event SPRITE_OFFICER_F, 10, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
 	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
-	person_event SPRITE_GRAMPS, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
+	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
 	person_event SPRITE_DAYCARE_MON_1, 18, 14, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1
 	person_event SPRITE_DAYCARE_MON_2, 19, 17, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon2Script, EVENT_DAYCARE_MON_2
 	person_event SPRITE_COOLTRAINER_F, 48, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
