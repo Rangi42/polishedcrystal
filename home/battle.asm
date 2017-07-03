@@ -131,12 +131,13 @@ UpdateBattleHuds:: ; 39d4
 
 GetBackupItemAddr::
 ; Returns address of backup item for current mon in hl
+	push bc
 	ld a, [CurBattleMon]
+	ld c, a
+	ld b, 0
 	ld hl, PartyBackupItems
-	add l
-	ld l, a
-	ret nc
-	inc h
+	add hl, bc
+	pop bc
 	ret
 
 SetBackupItem::

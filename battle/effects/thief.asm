@@ -67,7 +67,9 @@ CanStealItem:
 	ld d, a
 	push bc
 	push de
+	push hl
 	farcall ItemIsMail
+	pop hl
 	pop de
 	pop bc
 	jr c, .cant
