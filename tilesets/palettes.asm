@@ -473,6 +473,7 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .load_eight_bg_palettes
 	cp DARK_CAVE
 	jp z, .load_eight_bg_palettes
+	ld hl, WhirlIslandsPalette
 	cp WHIRL_ISLANDS
 	jp z, .load_eight_bg_palettes
 	ld hl, ScaryCavePalette
@@ -1414,6 +1415,26 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+WhirlIslandsPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/whirl_islands.pal"
+else
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 ScaryCavePalette:
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/scary_cave.pal"
@@ -1737,13 +1758,34 @@ LoadSpecialMapOBPalette:
 .not_rock_tunnel_2f:
 	ld a, [MapGroup]
 	cp GROUP_LYRAS_HOUSE_2F
-	ret nz
+	jr nz, .not_lyras_house_2f
 	ld a, [MapNumber]
 	cp MAP_LYRAS_HOUSE_2F
-	ret nz
+	jr nz, .not_lyras_house_2f
 	ld hl, LyrasHouse2FOBPalette_Rock
+	jr .load_rock_palette
+
+.not_lyras_house_2f:
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	cp CINNABAR_VOLCANO
+	jr z, .load_bg_rock_palette
+	cp DIM_CAVE
+	jr z, .load_bg_rock_palette
+	cp ICE_PATH
+	jr z, .load_bg_rock_palette
+	cp SEAFOAM_ISLANDS
+	jr z, .load_bg_rock_palette
+	cp WHIRL_ISLANDS
+	ret nz
+.load_bg_rock_palette
+	ld hl, UnknBGPals + 5 palettes
+.load_rock_palette
 	ld de, UnknOBPals + 7 palettes
-	jr .load_single_palette
+	jp .load_single_palette
 
 VermilionGymOBPalette_Tree:
 if !DEF(MONOCHROME)
