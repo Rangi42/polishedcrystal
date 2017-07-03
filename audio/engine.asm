@@ -245,6 +245,8 @@ UpdateChannels: ; e8125
 
 .Channel1:
 	ld a, [Danger]
+	cp 255
+	jr z, .Channel5
 	bit 7, a
 	ret nz
 .Channel5:
