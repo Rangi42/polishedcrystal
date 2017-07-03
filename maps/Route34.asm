@@ -170,7 +170,7 @@ DayCareManScript_Outside:
 	if_equal $1, .end_fail
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
-	if_equal RIGHT, .walk_around_player
+	if_equal LEFT, .walk_around_player
 	applymovement ROUTE34_GRAMPS1, Route34MovementData_DayCareManWalksBackInside
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS1
