@@ -251,6 +251,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Nightmare with Facade.
 * Add: Giga Impact.
 * Add: NPC trainers can have nicknamed Pokémon.
+* Add: NPC trainers can have custom EVs.
 * Add: Accuracy and evasion work like in Gen VI.
 * Add: Substitute blocks sound-based moves.
 * Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
