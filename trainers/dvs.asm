@@ -10,9 +10,6 @@ rept 6
 endr
 
 	ld a, [hli]
-if !DEF(TRAINER_EVS)
-	xor a
-endc
 rept 6
 	ld [de], a
 	inc de

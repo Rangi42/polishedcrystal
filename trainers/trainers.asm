@@ -4,6 +4,7 @@
 	; Type
 		; TRAINERTYPE_NORMAL:      level, species (2 bytes)
 		; TRAINERTYPE_ITEM:        item (1 byte)
+		; TRAINERTYPE_EVS:         EVs (1 byte, marks the setting of all EVs)
 		; TRAINERTYPE_DVS:         DVs (3 bytes)
 		; TRAINERTYPE_PERSONALITY: personality (2 bytes)
 		; TRAINERTYPE_NICKNAME:    nickname (max 10 bytes)

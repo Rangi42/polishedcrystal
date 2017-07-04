@@ -61,6 +61,30 @@ ReadTrainerParty: ; 39771
 	ld [de], a
 
 .not_item
+; EVs?
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_EVS, a
+	jr z, .not_evs
+	push hl
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1EVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+
+	call GetNextTrainerDataByte
+	push hl
+	ld h, d
+	ld l, e
+rept 6
+	ld [hli], a
+endr
+	pop hl
+
+.not_evs
 ; DVs?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_DVS, a
@@ -216,7 +240,7 @@ ReadTrainerParty: ; 39771
 .not_moves
 	; custom DVs or nature may alter stats
 	ld a, [OtherTrainerType]
-	and TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
+	and TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
 	jr z, .no_stat_recalc
 	push hl
 	ld a, [OTPartyCount]
