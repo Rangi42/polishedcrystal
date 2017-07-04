@@ -5,7 +5,7 @@ ReadTrainerParty: ; 39771
 
 	ld a, [wLinkMode]
 	and a
-	ret nz
+	ret nz ; populated elsewhere
 
 	ld hl, OTPartyCount
 	xor a
@@ -61,6 +61,30 @@ ReadTrainerParty: ; 39771
 	ld [de], a
 
 .not_item
+; EVs?
+	ld a, [OtherTrainerType]
+	bit TRNTYPE_EVS, a
+	jr z, .not_evs
+	push hl
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1EVs
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld d, h
+	ld e, l
+	pop hl
+
+	call GetNextTrainerDataByte
+	push hl
+	ld h, d
+	ld l, e
+rept 6
+	ld [hli], a
+endr
+	pop hl
+
+.not_evs
 ; DVs?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_DVS, a
@@ -211,32 +235,41 @@ ReadTrainerParty: ; 39771
 	dec b
 	jr nz, .copy_pp
 .copied_pp
-
 	pop hl
 
 .not_moves
-; custom DVs or nature may alter max HP
+	; custom DVs or nature may alter stats
 	ld a, [OtherTrainerType]
-	and TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
-	jr z, .no_hp_fix
+	and TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
+	jr z, .no_stat_recalc
+	push hl
 	ld a, [OTPartyCount]
 	dec a
-	jr nz, .no_hp_fix
+	ld hl, OTPartyMon1MaxHP
+	ld bc, PARTYMON_STRUCT_LENGTH
+	push af
+	call AddNTimes
+	pop af
 	push hl
 	ld hl, OTPartyMon1EVs - 1
-	lb bc, FALSE, STAT_HP
-	predef CalcPkmnStatC
-	ld hl, OTPartyMon1HP
-	ld a, [hMultiplicand + 1]
-	ld [hli], a
-	ld a, [hMultiplicand + 2]
-	ld [hl], a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	pop de
+	ld b, TRUE
+	push de
+	predef CalcPkmnStats
 	pop hl
-.no_hp_fix
-
+	inc hl
+	ld c, [hl]
+	dec hl
+	ld b, [hl]
+	dec hl
+	ld [hl], c
+	dec hl
+	ld [hl], b
+	pop hl
+.no_stat_recalc
 	jp .loop2
-
-; 397e3
 
 Battle_GetTrainerName:: ; 39939
 	ld a, [InBattleTowerBattle]
