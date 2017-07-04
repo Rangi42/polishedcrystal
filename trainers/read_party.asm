@@ -5,7 +5,7 @@ ReadTrainerParty: ; 39771
 
 	ld a, [wLinkMode]
 	and a
-	ret nz
+	ret nz ; populated elsewhere
 
 	ld hl, OTPartyCount
 	xor a
@@ -214,9 +214,38 @@ ReadTrainerParty: ; 39771
 	pop hl
 
 .not_moves
+	; custom DVs or nature may alter stats
+	ld a, [OtherTrainerType]
+	and TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
+	jr z, .no_stat_recalc
+	push hl
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1MaxHP
+	ld bc, PARTYMON_STRUCT_LENGTH
+	push af
+	call AddNTimes
+	pop af
+	push hl
+	ld hl, OTPartyMon1EVs - 1
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	pop de
+	ld b, TRUE
+	push de
+	predef CalcPkmnStats
+	pop hl
+	inc hl
+	ld c, [hl]
+	dec hl
+	ld b, [hl]
+	dec hl
+	ld [hl], c
+	dec hl
+	ld [hl], b
+	pop hl
+.no_stat_recalc
 	jp .loop2
-
-; 397e3
 
 Battle_GetTrainerName:: ; 39939
 	ld a, [InBattleTowerBattle]
