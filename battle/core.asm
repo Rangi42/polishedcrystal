@@ -6444,7 +6444,7 @@ endr
 	ld a, 3
 	call BattleRandomRange
 	and a
-	jr nz, .not_cute_charm
+	jr z, .not_cute_charm
 	ld a, [PartyMon1Gender]
 	cp FEMALE
 	ld a, %111
