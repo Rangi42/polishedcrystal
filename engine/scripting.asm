@@ -1558,14 +1558,14 @@ Script_reloadmapafterbattle: ; 97459
 	bit 0, d
 	jr z, .was_wild
 	farcall MomTriesToBuySomething
-	farcall RunOverworldPickupAbility
+	farcall RunPostBattleAbilities
 	jr .done
 
 .was_wild
 	ld a, [wBattleResult]
 	bit 1, a ; set on fleeing
 	jr nz, .skip_pickup
-	farcall RunOverworldPickupAbility
+	farcall RunPostBattleAbilities
 .skip_pickup
 	ld a, [wBattleResult]
 	bit 7, a

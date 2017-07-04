@@ -1643,24 +1643,18 @@ ShowAbilityActivation::
 	pop bc
 	ret
 
-RunOverworldPickupAbility::
-; iterates the party and checks for potentially picking up items.
+RunPostBattleAbilities::
+; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)
 	ld a, [PartyMons]
-	and a
-	ret z ; no Pokémon in party?
+	jr .first_pass
 .loop
+	ld a, [CurPartyMon]
+.first_pass
 	dec a
 	cp $ff
 	ret z
 
 	ld [CurPartyMon], a
-
-	ld a, MON_ITEM
-	call GetPartyParamLocation
-	ld a, [hl]
-	and a
-	ld a, [CurPartyMon]
-	jr nz, .loop
 
 	push bc
 	ld a, MON_ABILITY
@@ -1672,40 +1666,52 @@ RunOverworldPickupAbility::
 	farcall GetAbility
 	ld a, b
 	pop bc
+	cp NATURAL_CURE
+	jr z, .natural_cure
 	cp PICKUP
-	ld a, [CurPartyMon]
-	jr nz, .loop
+	call z, .Pickup
+	jr .loop
 
-	call Random
-	cp 1 + (10 percent)
-	ld a, [CurPartyMon]
-	jr nc, .loop
-
-	call .Pickup
-	ld a, [CurPartyMon]
+.natural_cure
+	; Heal status
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	xor a
+	ld [hl], a
 	jr .loop
 
 .Pickup:
+	ld a, MON_ITEM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and a
+	ret nz
+
+	call Random
+	cp 1 + (10 percent)
+	ret nc
+
 	lb bc, 0, 0
 ; Pickup selects from a table, giving better rewards scaling with level and randomness
-	call Random
-	cp 1 + (2 percent)
+	ld a, 100
+	call RandomRange
+	cp 2
 	jr c, .RarePickup
-	cp 1 + (6 percent)
+	cp 6
 	call c, .IncBC
-	cp 1 + (10 percent)
+	cp 10
 	call c, .IncBC
-	cp 1 + (20 percent)
+	cp 20
 	call c, .IncBC
-	cp 1 + (30 percent)
+	cp 30
 	call c, .IncBC
-	cp 1 + (40 percent)
+	cp 40
 	call c, .IncBC
-	cp 1 + (50 percent)
+	cp 50
 	call c, .IncBC
-	cp 1 + (60 percent)
+	cp 60
 	call c, .IncBC
-	cp 1 + (70 percent)
+	cp 70
 	call c, .IncBC
 	ld hl, BasePickupTable
 .DoneRandomizing:
