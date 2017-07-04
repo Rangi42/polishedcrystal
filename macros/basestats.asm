@@ -39,6 +39,7 @@ x = 0
 y = 0
 w = 0
 q = 0
+r = 0
 	rept _NARG
 	if def(\1_TMNUM)
 	if \1_TMNUM < 25
@@ -50,7 +51,11 @@ y = y | (1 << ((\1_TMNUM) - 1 - 24))
 	if \1_TMNUM < 73
 w = w | (1 << ((\1_TMNUM) - 1 - 48))
 	else
+	if \1_TMNUM < 97
 q = q | (1 << ((\1_TMNUM) - 1 - 72))
+	else
+r = r | (1 << ((\1_TMNUM) - 1 - 96))
+	endc
 	endc
 	endc
 	endc
@@ -77,4 +82,5 @@ w = w >> 8
 	db q & $ff
 q = q >> 8
 	endr
+	db r & $ff
 ENDM

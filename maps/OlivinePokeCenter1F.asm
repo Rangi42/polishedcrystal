@@ -59,14 +59,12 @@ PokemonJournalJasmineScript:
 	jumptext PokemonJournalJasmineText
 
 UnknownText_0x9c00e:
-	text "The sailor in the"
-	line "Olivine Café next"
+	text "There's this guy in"
+	line "Cianwood City who"
+	cont "looks weak, but he"
 
-	para "door is really"
-	line "generous."
-
-	para "He taught my"
-	line "#mon Strength."
+	para "taught my #-"
+	line "mon Strength."
 
 	para "Now it can move"
 	line "big boulders."

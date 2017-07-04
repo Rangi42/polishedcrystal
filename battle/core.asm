@@ -7101,6 +7101,13 @@ GiveExperiencePoints: ; 3ee3b
 
 	call GiveBattleEVs
 
+; No experience at level 100
+	ld hl, MON_LEVEL
+	add hl, bc
+	ld a, [hl]
+	cp MAX_LEVEL
+	jp z, .skip_stats
+
 	push bc
 	xor a
 	ld [hMultiplicand + 0], a
@@ -7114,8 +7121,9 @@ GiveExperiencePoints: ; 3ee3b
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
-; Boost Experience for traded Pokemon
 	pop bc
+
+; Boost experience for traded Pokemon
 	ld hl, MON_ID
 	add hl, bc
 	ld a, [PlayerID]
@@ -7129,13 +7137,12 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, [InitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_boost
-
 .boosted
 	call BoostExp
 	ld a, $1
 
 .no_boost
-; Boost experience for a Trainer Battle
+; Boost experience for a trainer battle
 	ld [StringBuffer2 + 2], a
 	ld a, [wBattleMode]
 	dec a
