@@ -6175,15 +6175,14 @@ LoadEnemyMon: ; 3e8eb
 	ld bc, EnemyMonEnd - EnemyMon
 	call ByteFill
 
-	; We don't need to be here if we're in a link battle
+	; We don't need to be here if we're in a link battle or battle tower. In a trainer
+	; battle, we need the base experience, so that check is (slightly) later.
 	ld a, [wLinkMode]
 	and a
-	jp nz, InitEnemyMon
-
-	; and also not in a BattleTower-Battle
+	jr nz, .initenemymon
 	ld a, [InBattleTowerBattle]
 	bit 0, a
-	jp nz, InitEnemyMon
+	jr nz, .initenemymon
 
 	; Make sure everything knows what species we're working with
 	ld a, [TempEnemyMonSpecies]
@@ -6191,27 +6190,28 @@ LoadEnemyMon: ; 3e8eb
 	ld [CurSpecies], a
 	ld [CurPartySpecies], a
 
+	; Mark as seen
+	dec a
+	ld c, a
+	ld b, SET_FLAG
+	ld hl, PokedexSeen
+	predef FlagPredef
+
 	; Grab the BaseData for this species
 	call GetBaseData
 
-	; Let's get the item:
+	ld a, [BaseExp]
+	ld [EnemyMonBaseExp], a
 
-	; Is the item predetermined?
 	ld a, [wBattleMode]
 	dec a
-	jr z, .WildItem
+.initenemymon
+	jp nz, InitEnemyMon
 
-	; If we're in a trainer battle, the item is in the party struct
-	ld a, [CurPartyMon]
-	ld hl, OTPartyMon1Item
-	call GetPartyLocation ; bc = PartyMon[CurPartyMon] - PartyMons
-	ld a, [hl]
-	jr .UpdateItem
+	ld a, [BaseCatchRate]
+	ld [EnemyMonCatchRate], a
 
-
-.WildItem
-	; In a wild battle, we pull from the item slots in BaseData
-
+	; Let's get the item:
 	; Force Item1
 	; Used for Snorlax, Ho-Oh, Lugia, and Kanto legendary encounters
 	ld a, [BattleType]
@@ -6257,7 +6257,6 @@ endc
 	jr .UpdateItem
 
 .no_compound_eyes_or_amulet_coin:
-
 	; 50% chance of getting Item1
 	call BattleRandom
 	cp 50 percent
@@ -6272,58 +6271,10 @@ endc
 
 	; 45% chance of not getting an item (100% - 50% - 5% = 45%)
 	ld a, NO_ITEM
-
-
 .UpdateItem:
 	ld [EnemyMonItem], a
 
-
 	; Initialize DVs and personality
-
-	; If we're in a trainer battle, DVs and personality are predetermined
-	ld a, [wBattleMode]
-	and a
-	jr z, .InitDVs
-
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	jr z, .InitDVs
-
-	; Transformed
-	ld hl, wEnemyBackupDVs
-	ld de, EnemyMonDVs
-rept 4
-	ld a, [hli]
-	ld [de], a
-	inc de
-endr
-	ld a, [hl]
-	ld [de], a
-	jp .Happiness
-
-
-.InitDVs:
-
-	; Trainer DVs
-
-	; All trainers have preset DVs, determined by class
-	; See GetTrainerDVsAndPersonality for more on that
-	; These are the DVs we'll use if we're actually in a trainer battle
-
-	ld a, [wBattleMode]
-	dec a
-	jr z, .WildDVs
-
-	ld a, [CurPartyMon]
-	ld hl, OTPartyMon1DVs
-	call GetPartyLocation
-	ld de, DVAndPersonalityBuffer
-	ld bc, 5 ; 3 DVs + 2 personality bytes
-	call CopyBytes
-	ld bc, DVAndPersonalityBuffer
-	jp .UpdateDVs
-
-.WildDVs:
 	; Roaming monsters (Entei, Raikou) work differently
 	; They have their own structs, which are shorter than normal
 	ld a, [BattleType]
@@ -6482,7 +6433,7 @@ endr
 .Female
 	ld b, a
 
-; Form 1
+	; Form 1
 	ld a, 1
 	add b
 	ld [hl], a
@@ -6499,12 +6450,7 @@ endr
 	ld a, [bc]
 	ld [hl], a
 
-; We've still got more to do if we're dealing with a wild monster
-	ld a, [wBattleMode]
-	dec a
-	jp nz, .Happiness
-
-; Unown
+	; Unown
 	ld a, [TempEnemyMonSpecies]
 	cp UNOWN
 	jr nz, .EkansArbok
@@ -6518,10 +6464,10 @@ endr
 	and $ff - FORM_MASK
 	add b
 	ld [EnemyMonForm], a
-; Get letter based on form
+	; Get letter based on form
 	ld hl, EnemyMonForm
 	predef GetVariant
-; Can't use any letters that haven't been unlocked
+	; Can't use any letters that haven't been unlocked
 	push de
 	call CheckUnownLetter
 	pop de
@@ -6554,7 +6500,7 @@ endr
 	cp MAGIKARP
 	jr nz, .Happiness
 
-; Random Magikarp pattern
+	; Random Magikarp pattern
 	ld a, NUM_MAGIKARP
 	call BattleRandomRange
 	inc a
@@ -6564,30 +6510,30 @@ endr
 	add b
 	ld [EnemyMonForm], a
 
-; Get Magikarp's length
+	; Get Magikarp's length
 	ld de, EnemyMonDVs
 	ld bc, PlayerID
 	farcall CalcMagikarpLength
 
-; We're clear if the length is < 1536
+	; We're clear if the length is < 1536
 	ld a, [MagikarpLength]
 	cp $06 ; $600 = 1536
 	jr nz, .CheckMagikarpArea
 
-; 5% chance of skipping size checks
+	; 5% chance of skipping size checks
 	call Random
 	cp $0c ; / $100
 	jr c, .CheckMagikarpArea
-; Try again if > 1614
+	; Try again if > 1614
 	ld a, [MagikarpLength + 1]
 	cp $50
 	jp nc, .GenerateDVs
 
-; 20% chance of skipping this check
+	; 20% chance of skipping this check
 	call Random
 	cp $32 ; / $100
 	jr c, .CheckMagikarpArea
-; Try again if > 1598
+	; Try again if > 1598
 	ld a, [MagikarpLength + 1]
 	cp $40
 	jp nc, .GenerateDVs
@@ -6599,110 +6545,73 @@ endr
 	ld a, [MapNumber]
 	cp MAP_LAKE_OF_RAGE
 	jr nz, .Happiness
-; 40% chance of not flooring
+	; 40% chance of not flooring
 	call Random
 	cp $64 ; / $100
 	jr c, .Happiness
-; Floor at length 1024
+	; Floor at length 1024
 	ld a, [MagikarpLength]
 	cp 1024 >> 8
 	jp c, .GenerateDVs ; try again
 
 
-; Finally done with DVs
+	; Finally done with DVs
 
 .Happiness:
-; Set happiness
+	; Set happiness
 	ld a, BASE_HAPPINESS
 	ld [EnemyMonHappiness], a
-; Set level
+	; Set level
 	ld a, [CurPartyLevel]
 	ld [EnemyMonLevel], a
-; Fill stats
+	; Fill stats
 	ld de, EnemyMonMaxHP
 	ld b, FALSE
 	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS - 1))
 	predef CalcPkmnStats
 
-; If we're in a trainer battle,
-; get the rest of the parameters from the party struct
-	ld a, [wBattleMode]
-	cp TRAINER_BATTLE
-	jr z, .OpponentParty
-
-; If we're in a wild battle, check wild-specific stuff
-	and a
-	jr z, .TreeMon
-
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	jp nz, .Moves
-
-.TreeMon:
-; If we're headbutting trees, some monsters enter battle asleep
+	; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
 	ld a, SLP & 3 ; Asleep for 3 turns
 	jr c, .UpdateStatus
-; Otherwise, no status
+	; Otherwise, no status
 	xor a
 
 .UpdateStatus:
 	ld hl, EnemyMonStatus
 	ld [hli], a
 
-; Unused byte
+	; Unused byte
 	xor a
 	ld [hli], a
 
-; Full HP..
+	; Full HP..
 	ld a, [EnemyMonMaxHP]
 	ld [hli], a
 	ld a, [EnemyMonMaxHP + 1]
 	ld [hl], a
 
-; ..unless it's a RoamMon
+	; ..unless it's a RoamMon
 	ld a, [BattleType]
 	cp BATTLETYPE_ROAMING
 	jr nz, .Moves
 
-; Grab HP
+	; Grab HP
 	call GetRoamMonHP
 	ld a, [hl]
-; Check if it's been initialized again
+	; Check if it's been initialized again
 	and a
 	jr z, .InitRoamHP
-; Update from the struct if it has
+	; Update from the struct if it has
 	ld a, [hl]
 	ld [EnemyMonHP + 1], a
 	jr .Moves
 
 .InitRoamHP:
-; HP only uses the lo byte in the RoamMon struct since
-; Raikou/Entei/Suicune will have < 256 hp at level 40
+	; HP only uses the lo byte in the RoamMon struct since
+	; Raikou/Entei/Suicune will have < 256 hp at level 40
 	ld a, [EnemyMonHP + 1]
 	ld [hl], a
-	jr .Moves
-
-
-.OpponentParty:
-; Get HP from the party struct
-	ld hl, (OTPartyMon1HP + 1)
-	ld a, [CurPartyMon]
-	call GetPartyLocation
-	ld a, [hld]
-	ld [EnemyMonHP + 1], a
-	ld a, [hld]
-	ld [EnemyMonHP], a
-
-; Make sure everything knows which monster the opponent is using
-	ld a, [CurPartyMon]
-	ld [CurOTMon], a
-
-; Get status from the party struct
-	dec hl
-	ld a, [hl] ; OTPartyMonStatus
-	ld [EnemyMonStatus], a
-
 
 .Moves:
 	ld hl, BaseType1
@@ -6726,22 +6635,9 @@ if !DEF(FAITHFUL)
 .not_armored_mewtwo
 endc
 
-; Get moves
+	; Get moves
 	ld de, EnemyMonMoves
-; Are we in a trainer battle?
-	ld a, [wBattleMode]
-	cp TRAINER_BATTLE
-	jr nz, .WildMoves
-; Then copy moves from the party struct
-	ld hl, OTPartyMon1Moves
-	ld a, [CurPartyMon]
-	call GetPartyLocation
-	ld bc, NUM_MOVES
-	call CopyBytes
-	jp .PP
-
-.WildMoves:
-; Clear EnemyMonMoves
+	; Clear EnemyMonMoves
 	xor a
 	ld h, d
 	ld l, e
@@ -6749,36 +6645,19 @@ rept 3
 	ld [hli], a
 endr
 	ld [hl], a
-; Make sure the predef knows this isn't a partymon
+	; Make sure the predef knows this isn't a partymon
 	ld [MagikarpLength], a
-; Fill moves based on level
+	; Fill moves based on level
 	predef FillMoves
 
 	call CheckUniqueWildMove
 
-.PP:
-; Trainer battle?
-	ld a, [wBattleMode]
-	cp TRAINER_BATTLE
-	jr z, .TrainerPP
-
-; Fill wild PP
+	; Fill wild PP
 	ld hl, EnemyMonMoves
 	ld de, EnemyMonPP
 	predef FillPP
-	jr .Finish
 
-.TrainerPP:
-; Copy PP from the party struct
-	ld hl, OTPartyMon1PP
-	ld a, [CurPartyMon]
-	call GetPartyLocation
-	ld de, EnemyMonPP
-	ld bc, NUM_MOVES
-	call CopyBytes
-
-.Finish:
-; Only the first five base stats are copied..
+	; Only the first five base stats are copied..
 	ld hl, BaseStats
 	ld de, EnemyMonBaseStats
 	ld b, BaseSpecialDefense - BaseStats
@@ -6789,56 +6668,13 @@ endr
 	dec b
 	jr nz, .loop
 
-	ld a, [BaseCatchRate]
-	ld [de], a
-	inc de
-
-	ld a, [BaseExp]
-	ld [de], a
-
 	ld a, [TempEnemyMonSpecies]
-	ld [wd265], a
-
-; Did we catch it?
-	ld a, [wBattleMode]
-	and a
-	ret z
-
-; Update enemy nick
-	ld a, [wBattleMode]
-	dec a
-	jr z, .no_nickname
-	ld a, [OtherTrainerType]
-	bit TRNTYPE_NICKNAME, a
-	jr z, .no_nickname
-	ld a, [CurPartyMon]
-	ld hl, OTPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
-	call AddNTimes
-	jr .got_nickname
-.no_nickname
+	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, StringBuffer1
-.got_nickname
 	ld de, EnemyMonNick
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-
-; Saw this mon
-	ld a, [TempEnemyMonSpecies]
-	dec a
-	ld c, a
-	ld b, SET_FLAG
-	ld hl, PokedexSeen
-	predef FlagPredef
-
-	ld hl, EnemyMonStats
-	ld de, EnemyStats
-	ld bc, EnemyMonStatsEnd - EnemyMonStats
-	call CopyBytes
-
-	ret
-; 3eb38
+	jp CopyBytes
 
 
 CheckSleepingTreeMon: ; 3eb38

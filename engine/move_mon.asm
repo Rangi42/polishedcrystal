@@ -47,13 +47,15 @@ TryAddMonToParty: ; d88c
 	ld hl, PlayerName
 	ld bc, NAME_LENGTH
 	call CopyBytes
-	ld a, [MonType]
-	and $f
-	jr nz, .skipnickname
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
+	ld a, [MonType]
+	and $f
+	ld hl, OTPartyMonNicknames
+	jr nz, .got_target_nick
 	ld hl, PartyMonNicknames
+.got_target_nick
 	ld a, [hMoveMon]
 	dec a
 	call SkipNames
@@ -147,22 +149,24 @@ endr
 	ld a, [hProduct + 3]
 	ld [de], a
 	inc de
+
+	; EVs, DVs, personality
+	pop hl
+	push hl
+	ld a, [MonType]
+	and $f
+	jr z, .generateEVsDVsAndPersonality
+	farcall GetTrainerEVsDVsAndPersonality
+	pop hl
+	push hl
+	jp .initializetrainermonstats
+
+.generateEVsDVsAndPersonality
 	xor a
 rept 6 ; EVs
 	ld [de], a
 	inc de
 endr
-	pop hl
-	push hl
-	ld a, [MonType]
-	and $f
-	jr z, .generateDVsAndPersonality
-	farcall GetTrainerDVsAndPersonality
-	pop hl
-	push hl
-	jp .initializetrainermonstats
-
-.generateDVsAndPersonality
 	ld a, [CurPartySpecies]
 	ld [wd265], a
 	dec a
@@ -434,8 +438,22 @@ endr
 	pop hl
 	ld bc, MON_EVS - 1
 	add hl, bc
-	ld b, FALSE
+	ld b, TRUE
+	push hl
+	push de
 	call CalcPkmnStats
+	pop hl
+	push bc
+	inc hl
+	ld c, [hl]
+	dec hl
+	ld b, [hl]
+	dec hl
+	ld [hl], c
+	dec hl
+	ld [hl], b
+	pop bc
+	pop hl
 
 .next3
 	ld a, [MonType]
