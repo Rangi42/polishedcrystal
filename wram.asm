@@ -1834,7 +1834,7 @@ BaseEVYield1:: ; d244
 BaseEVYield2:: ; d246
 	ds 1
 BaseTMHM:: ; d24e
-	ds 12
+	ds 13
 
 
 CurDamage:: ; d256
