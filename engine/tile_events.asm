@@ -53,18 +53,26 @@ CheckWarpFacingDown: ; 149c6
 
 CheckGrassCollision:: ; 149dd
 	ld a, [PlayerStandingTile]
-	jr CheckCutGrassCollision
+	ld hl, .blocks
+	ld de, 1
+	jp IsInArray
+
+.blocks ; 149ea
+	db COLL_TALL_GRASS
+	db COLL_LONG_GRASS
+	db COLL_WATER
+	db -1
+; 149f5
 
 CheckCutCollision: ; 149f5
 	ld a, c
-CheckCutGrassCollision:
 	ld hl, .blocks
 	ld de, 1
 	jp IsInArray
 ; 149ea
 
-.blocks ; 149ea
+.blocks ; 14a00
 	db COLL_TALL_GRASS
 	db COLL_LONG_GRASS
 	db -1
-; 149f5
+; 14a07
