@@ -1028,32 +1028,37 @@ BattleConsumePP:
 
 	ld a, [hBattleTurn]
 	and a
-	ld a, [CurMoveNum]
+	ld a, [CurPartyMon]
+	ld bc, CurMoveNum
 	ld de, BattleMonPP
 	ld hl, PartyMon1PP
-	jr z, .got_pp_vars
+	jr z, .set_party_pp
 	ld a, [wBattleMode]
 	dec a
-	ld a, [CurEnemyMoveNum]
+	ld a, [CurOTMon]
+	ld bc, CurEnemyMoveNum
 	ld de, EnemyMonPP
 	ld hl, wWildMonPP
-	jr z, .got_pp_vars_ok
+	jr z, .pp_vars_ok
 	ld hl, OTPartyMon1PP
-.got_pp_vars
-	push af
+.set_party_pp
+	push bc
 	push de
 	call GetPartyLocation
 	pop de
-	pop af
-.got_pp_vars_ok
+	pop bc
+.pp_vars_ok
+	ld a, [bc]
+	ld c, a
+	ld b, 0
+	add hl, bc
+
 	; Swap de and hl
 	push de
 	ld d, h
 	ld e, l
 	pop hl
 
-	ld c, a
-	ld b, 0
 	add hl, bc
 	ld a, [hl]
 	and a
