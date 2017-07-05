@@ -755,12 +755,12 @@ NormalStep: ; 5412
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
-	call CheckSuperTallGrassTile
+	cp COLL_LONG_GRASS
 	jr z, .shake_grass
-	call CheckPuddleTile
+	cp COLL_TALL_GRASS
 	jr z, .shake_grass
-	call CheckGrassTile
-	jr c, .skip_grass
+	cp COLL_PUDDLE
+	jr nz, .skip_grass
 
 .shake_grass
 	call ShakeGrass

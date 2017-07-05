@@ -315,7 +315,7 @@ CheckTileEvent: ; 96874
 
 .warp_tile
 	ld a, [PlayerStandingTile]
-	call CheckPitTile
+	cp COLL_HOLE
 	jr nz, .not_pit
 	ld a, PLAYEREVENT_FALL
 	scf

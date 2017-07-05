@@ -120,8 +120,8 @@ DoPlayerMovement:: ; 80000
 
 	ld a, [PlayerStandingTile]
 	ld c, a
-	call CheckWhirlpoolTile
-	jr c, .not_whirlpool
+	cp COLL_WHIRLPOOL
+	jr nz, .not_whirlpool
 	ld a, 3
 	scf
 	ret
@@ -204,13 +204,11 @@ DoPlayerMovement:: ; 80000
 
 .warps
 	ld a, c
-	cp $71 ; door
+	cp COLL_DOOR
 	jr z, .down
-	cp $79
+	cp COLL_STAIRCASE
 	jr z, .down
-	cp $7a ; stairs
-	jr z, .down
-	cp $7b ; cave
+	cp COLL_CAVE
 	jr nz, .no_walk
 
 .down
@@ -284,8 +282,8 @@ DoPlayerMovement:: ; 80000
 	jr nz, .spin
 
 	ld a, [PlayerStandingTile]
-	call CheckIceTile
-	jr nc, .ice
+	cp COLL_ICE
+	jr z, .ice
 
 	ld a, [Options2]
 	and 1 << RUNNING_SHOES
@@ -464,7 +462,10 @@ DoPlayerMovement:: ; 80000
 	ret
 
 .EdgeWarps:
-	db $70, $78, $76, $7e
+	db COLL_WARP_CARPET_DOWN
+	db COLL_WARP_CARPET_UP
+	db COLL_WARP_CARPET_LEFT
+	db COLL_WARP_CARPET_RIGHT
 ; 8025f
 
 .DoStep:
@@ -860,13 +861,13 @@ CheckStandingOnIce:: ; 80404
 	cp $f0
 	jr z, .not_ice
 	ld a, [PlayerStandingTile]
-	call CheckIceTile
-	jr nc, .yep
+	cp COLL_ICE
+	jr z, .ice
 	ld a, [PlayerState]
 	cp PLAYER_SLIP
 	jr nz, .not_ice
 
-.yep
+.ice
 	scf
 	ret
 
@@ -879,7 +880,7 @@ CheckSpinning::
 	ld a, [PlayerStandingTile]
 	call CheckSpinTile
 	jr z, .start_spin
-	call CheckStopSpinTile
+	cp COLL_STOP_SPIN
 	jr z, .stop_spin
 	ld a, [wSpinning]
 	and a

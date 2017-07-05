@@ -244,10 +244,10 @@ UpdateTallGrassFlags: ; 463f
 ; 4661
 
 SetTallGrassFlags: ; 4661
-	call CheckSuperTallGrassTile
+	cp COLL_LONG_GRASS
 	jr z, .set
-	call CheckGrassTile
-	jr c, .reset
+	cp COLL_TALL_GRASS
+	jr nz, .reset
 .set
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
@@ -623,7 +623,7 @@ MapObjectMovementPattern: ; 47dd
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
-	call CheckPitTile
+	cp COLL_HOLE
 	jr z, .on_pit
 	ld hl, OBJECT_FLAGS2
 	add hl, bc

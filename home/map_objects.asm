@@ -118,117 +118,29 @@ GetTileCollision:: ; 185d
 	ret
 ; 1875
 
-CheckGrassTile:: ; 1875
-	ld d, a
-	and $f0
-	cp $10
-	jr z, .ok_10
-	cp $20
-	jr z, .ok_20
-	scf
-	ret
-
-.ok_10
-	ld a, d
-	and 7
-	ret z
-	scf
-	ret
-; For some reason, the above code is duplicated down here.
-.ok_20
-	ld a, d
-	and 7
-	ret z
-	scf
-	ret
-; 188e
-
-CheckSuperTallGrassTile:: ; 188e
-	cp $14
-	ret z
-	cp $1c
-	ret
-; 1894
-
-CheckPuddleTile::
-	cp $85
-	ret
-
-CheckHeadbuttTreeTile:: ; 189a
-	cp $15
-	ret z
-	cp $1d
-	ret
-; 18a0
-
-CheckCounterTile:: ; 18a0
-	cp $90
-	ret z
-	cp $98
-	ret
-; 18a6
-
-CheckPitTile:: ; 18a6
-	cp $60
-	ret z
-	cp $68
-	ret
-; 18ac
-
-CheckIceTile:: ; 18ac
-	cp $23
-	ret z
-	cp $2b
-	ret z
-	scf
-	ret
-; 18b4
-
-CheckWhirlpoolTile:: ; 18b4
-	cp $24
-	ret z
-	cp $2c
-	ret z
-	scf
-	ret
-; 18bd
-
-CheckWaterfallTile:: ; 18bd
-	cp $33
-;	ret z
-;	cp $3b
-	ret
-; 18c3
-
 CheckSpinTile::
-	cp $81
+	cp COLL_SPIN_UP
 	ld c, UP
 	ret z
-	cp $82
+	cp COLL_SPIN_DOWN
 	ld c, DOWN
 	ret z
-	cp $83
+	cp COLL_SPIN_LEFT
 	ld c, LEFT
 	ret z
-	cp $84
+	cp COLL_SPIN_RIGHT
 	ld c, RIGHT
 	ret z
 	ld c, STANDING
 	ret
 
-CheckStopSpinTile::
-	cp $80
-	ret
-
 CheckStandingOnEntrance:: ; 18c3
 	ld a, [PlayerStandingTile]
-	cp $71 ; door
+	cp COLL_DOOR
 	ret z
-	cp $79
+	cp COLL_STAIRCASE
 	ret z
-	cp $7a ; stairs
-	ret z
-	cp $7b ; cave
+	cp COLL_CAVE
 	ret
 ; 18d2
 

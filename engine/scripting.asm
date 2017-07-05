@@ -1021,7 +1021,15 @@ Script_waitsfx: ; 971c3
 Script_warpsound: ; 971c7
 ; script command 0x87
 
-	farcall Function14a07
+	ld a, [PlayerStandingTile]
+	ld de, SFX_ENTER_DOOR
+	cp COLL_DOOR
+	jr z, .play
+	ld de, SFX_WARP_TO
+	cp COLL_WARP_PANEL
+	jr z, .play
+	ld de, SFX_EXIT_BUILDING
+.play
 	jp PlaySFX
 ; 971d1
 

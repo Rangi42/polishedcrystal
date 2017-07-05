@@ -1974,7 +1974,6 @@ GetAnyMapHeaderPointer:: ; 0x2bed
 
 ; inputs:
 ; b = map group, c = map number
-; XXX de = ???
 
 ; outputs:
 ; hl points to the map header
