@@ -130,10 +130,6 @@ DoPlayerMovement:: ; 80000
 	and $f0
 	cp $30 ; moving water
 	jr z, .water
-	cp $40 ; moving land 1
-	jr z, .land1
-	cp $50 ; moving land 2
-	jr z, .land2
 	cp $70 ; warps
 	jr z, .warps
 	jr .no_walk
@@ -155,52 +151,6 @@ DoPlayerMovement:: ; 80000
 	db LEFT
 	db UP
 	db DOWN
-
-.land1
-	ld a, c
-	and 7
-	ld c, a
-	ld b, 0
-	ld hl, .land1_table
-	add hl, bc
-	ld a, [hl]
-	cp STANDING
-	jr z, .no_walk
-	ld [WalkingDirection], a
-	jr .continue_walk
-
-.land1_table
-	db STANDING
-	db RIGHT
-	db LEFT
-	db UP
-	db DOWN
-	db STANDING
-	db STANDING
-	db STANDING
-
-.land2
-	ld a, c
-	and 7
-	ld c, a
-	ld b, 0
-	ld hl, .land2_table
-	add hl, bc
-	ld a, [hl]
-	cp STANDING
-	jr z, .no_walk
-	ld [WalkingDirection], a
-	jr .continue_walk
-
-.land2_table
-	db RIGHT
-	db LEFT
-	db UP
-	db DOWN
-	db STANDING
-	db STANDING
-	db STANDING
-	db STANDING
 
 .warps
 	ld a, c
