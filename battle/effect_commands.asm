@@ -1746,7 +1746,12 @@ BattleCommand_CheckHit:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
-	jr z, .check_opponent_unaware
+	jr nz, .avoid_evasion_boost
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp KEEN_EYE
+	jr nz, .check_opponent_unaware
+.avoid_evasion_boost
 	ld a, c
 	cp 7
 	jr c, .check_opponent_unaware
