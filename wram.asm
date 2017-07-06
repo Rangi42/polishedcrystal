@@ -1132,8 +1132,8 @@ wFarCallHLBuffer::
 	ds 2
 PredefAddress:: ; cfb7
 	ds 2
-wFarCallBCBuffer:: ; cfb9
-	ds 2
+
+	ds 2 ; unused
 
 wcfbb:: ds 1
 GameTimerPause:: ; cfbc

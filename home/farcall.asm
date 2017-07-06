@@ -61,21 +61,17 @@ RstFarCall::
 ReturnFarCall::
 	ld [wFarCallSavedA], a
 	; We want to retain the contents of f.
-	; To do this, we can pop to bc instead of af.
-	ld a, b
-	ld [wFarCallBCBuffer], a
-	ld a, c
-	ld [wFarCallBCBuffer + 1], a
-
-	; Restore the working bank.
-	pop bc
-	ld a, b
+	; To accomplish this, mess with the stack a bit...
+	push af
+	push hl
+	ld hl, sp + 2 ; a flags
+	ld a, [hli]
+	inc l ; faster than inc hl (stack is always c000-c100...)
+	ld [hl], a ; write to flags
+	pop hl
+	pop af
+	pop af
 	rst Bankswitch
-
-	ld a, [wFarCallBCBuffer]
-	ld b, a
-	ld a, [wFarCallBCBuffer + 1]
-	ld c, a
 	ld a, [wFarCallSavedA]
 	ret
 
