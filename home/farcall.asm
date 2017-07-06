@@ -28,16 +28,26 @@ FarCall_hl::
 
 RstFarCall::
 ; Calls BANK(x):x where x is assumed to be defined below the rst FarCall, and skips these
-; to avoid running them as instructions, to save space. Preserves bc, de
+; to avoid running them as instructions, to save space. Preserves flags, bc, de
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a
-	ld a, [hli]
 	inc hl
+	inc hl
+	push af
+	sub $80
+	jr nc, .jump
+	ld [hBuffer], a
+	pop af
 	push hl
+	jr .ok
+.jump
+	pop af
+.ok
 	dec hl
-	ld h, [hl]
-	ld l, a
+	ld a, [hld]
+	ld l, [hl]
+	ld h, a
 	ld a, [hROMBank]
 	push af
 	ld a, [hBuffer]
