@@ -10,17 +10,12 @@ VermilionPort_MapScriptHeader:
 	dw .Trigger1
 
 .MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+	db 0
 
 .Trigger1:
 	priorityjump UnknownScript_0x74da6
 .Trigger0:
 	end
-
-.FlyPoint:
-	setflag ENGINE_FLYPOINT_VERMILION
-	return
 
 UnknownScript_0x74da6:
 	applymovement PLAYER, MovementData_0x74ef3
