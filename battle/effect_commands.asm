@@ -3764,7 +3764,7 @@ BattleCommand_DamageCalc: ; 35612
 	call GetBattleVar
 	cp GUTS
 	ld a, $12
-	call z, ApplyPhysicalAttackDamageMod
+	call nz, ApplyPhysicalAttackDamageMod
 
 .burn_done
 	; Flash Fire
