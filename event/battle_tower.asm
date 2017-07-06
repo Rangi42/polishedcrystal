@@ -345,8 +345,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	ld [hUsedSpriteIndex], a
 	ld a, [hl]
 	ld [hUsedSpriteTile], a
-	farcall GetUsedSprite
-	ret
+	farjp GetUsedSprite
 ; 170b90
 
 .Sprites:

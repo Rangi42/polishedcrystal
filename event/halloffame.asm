@@ -31,8 +31,7 @@ HallOfFame:: ; 0x8640e
 	call AnimateHallOfFame
 	pop af
 	ld b, a
-	farcall Credits
-	ret
+	farjp Credits
 ; 0x86455
 
 LeafCredits:: ; 86455
@@ -56,8 +55,7 @@ LeafCredits:: ; 86455
 	farcall SetCreditsSpawn
 	ld a, [StatusFlags]
 	ld b, a
-	farcall Credits
-	ret
+	farjp Credits
 ; 8648e
 
 HallOfFame_FadeOutMusic: ; 8648e
@@ -608,8 +606,7 @@ HOF_AnimatePlayerPic: ; 86810
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	call WaitBGMap
-	farcall ProfOaksPCRating
-	ret
+	farjp ProfOaksPCRating
 ; 868ed
 
 .PlayTime:

@@ -285,8 +285,7 @@ HPBarAnim_PaletteUpdate: ; d7b4
 	call SetHPPal
 	ld a, [wd1f0]
 	ld c, a
-	farcall ApplyHPBarPals
-	ret
+	farjp ApplyHPBarPals
 ; d7c9
 
 HPBarAnim_BGMapUpdate: ; d7c9

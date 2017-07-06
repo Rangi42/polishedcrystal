@@ -103,8 +103,7 @@ Kurt_SelectApricorn: ; 88055
 	ld a, [MenuSelection]
 	and a
 	ret z
-	farcall PlaceMenuItemName
-	ret
+	farjp PlaceMenuItemName
 ; 880ab
 
 .Quantity: ; 880ab
@@ -114,8 +113,7 @@ Kurt_SelectApricorn: ; 88055
 	ret z
 	ld a, [wItemQuantityChangeBuffer]
 	ld [MenuSelectionQuantity], a
-	farcall PlaceMenuItemQuantity
-	ret
+	farjp PlaceMenuItemQuantity
 ; 880c2
 
 Kurt_SelectQuantity: ; 880c2
@@ -165,8 +163,7 @@ Kurt_SelectQuantity: ; 880c2
 	add hl, de
 	ld d, h
 	ld e, l
-	farcall PlaceMenuItemName
-	ret
+	farjp PlaceMenuItemName
 ; 88126
 
 PlaceApricornQuantity: ; 88126

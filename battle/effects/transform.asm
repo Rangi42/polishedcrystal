@@ -198,7 +198,6 @@ BattleCommand_Transform: ; 371cd
 	call GetBattleVar
 	cp IMPOSTER
 	ret z ; avoid infinite loop
-	farcall RunActivationAbilitiesInner
-	ret
+	farjp RunActivationAbilitiesInner
 
 ; 372c6

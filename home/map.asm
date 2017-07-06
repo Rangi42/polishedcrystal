@@ -660,8 +660,7 @@ RestoreFacingAfterWarp:: ; 248a
 	call .backup
 
 .skip
-	farcall GetCoordOfUpperLeftCorner
-	ret
+	farjp GetCoordOfUpperLeftCorner
 ; 24ba
 
 .backup

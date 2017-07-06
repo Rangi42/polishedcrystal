@@ -48,23 +48,19 @@ FarCopyBytesDouble_DoubleBankSwitch:: ; def
 ; dfd
 
 ReplaceKrisSprite:: ; e4a
-	farcall _ReplaceKrisSprite
-	ret
+	farjp _ReplaceKrisSprite
 ; e51
 
 LoadStandardFont:: ; e51
-	farcall _LoadStandardFont
-	ret
+	farjp _LoadStandardFont
 ; e58
 
 LoadFontsBattleExtra:: ; e58
-	farcall _LoadFontsBattleExtra
-	ret
+	farjp _LoadFontsBattleExtra
 ; e5f
 
 LoadFontsExtra:: ; e5f
-	farcall LoadFrame
-	ret
+	farjp LoadFrame
 ; e6c
 
 DecompressRequest2bpp:: ; e73

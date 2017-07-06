@@ -49,8 +49,7 @@ ReturnFromMapSetupScript:: ; b8000
 	ld [wLandmarkSignTimer], a
 	call LoadMapNameSignGFX
 	call InitMapNameFrame
-	farcall HDMATransfer_OnlyTopFourRows
-	ret
+	farjp HDMATransfer_OnlyTopFourRows
 
 .dont_do_map_sign
 	ld a, [wCurrentLandmark]

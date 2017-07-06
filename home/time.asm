@@ -15,8 +15,7 @@ UpdateTime:: ; 5a7
 	call GetClock
 	call FixDays
 	call FixTime
-	farcall GetTimeOfDay
-	ret
+	farjp GetTimeOfDay
 ; 5b7
 
 
@@ -200,8 +199,7 @@ SetDayOfWeek:: ; 663
 	ld [StringBuffer2 + 3], a
 
 InitTime:: ; 677
-	farcall _InitTime
-	ret
+	farjp _InitTime
 ; 67e
 
 

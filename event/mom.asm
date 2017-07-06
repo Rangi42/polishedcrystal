@@ -563,8 +563,7 @@ Mom_WithdrawDepositMenuJoypad: ; 16571
 	ld c, l
 	ld b, h
 	ld de, StringBuffer2
-	farcall GiveMoney
-	ret
+	farjp GiveMoney
 
 .decrementdigit
 	ld hl, .DigitQuantities
@@ -572,8 +571,7 @@ Mom_WithdrawDepositMenuJoypad: ; 16571
 	ld c, l
 	ld b, h
 	ld de, StringBuffer2
-	farcall TakeMoney
-	ret
+	farjp TakeMoney
 ; 16607
 
 .getdigitquantity ; 16607

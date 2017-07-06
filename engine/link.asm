@@ -1429,13 +1429,11 @@ String_TooBadTheTradeWasCanceled: ; 28ece
 Predef_LinkTextbox: ; 28eef
 	ld d, h
 	ld e, l
-	farcall LinkTextbox
-	ret
+	farjp LinkTextbox
 ; 28ef8
 
 LoadTradeScreenBorder: ; 28ef8
-	farcall _LoadTradeScreenBorder
-	ret
+	farjp _LoadTradeScreenBorder
 ; 28eff
 
 SetTradeRoomBGPals: ; 28eff

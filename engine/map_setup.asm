@@ -308,8 +308,7 @@ LoadObjectsRunCallback_02: ; 154d7
 	ld a, MAPCALLBACK_OBJECTS
 	call RunMapCallback
 	farcall LoadObjectMasks
-	farcall InitializeVisibleSprites
-	ret
+	farjp InitializeVisibleSprites
 ; 154ea (5:54ea)
 
 DelayClearingOldSprites: ; 154eb
@@ -401,8 +400,7 @@ FadeOldMapMusic: ; 15567
 ; 1556d
 
 RetainOldPalettes: ; 1556d
-	farcall _UpdateTimePals
-	ret
+	farjp _UpdateTimePals
 
 RotatePalettesRightMapAndMusic: ; 15574
 	ld e, 0

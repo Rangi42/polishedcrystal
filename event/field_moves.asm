@@ -7,8 +7,7 @@ BlindingFlash:: ; 8c7e1
 	ld b, SCGB_MAPPALS
 	call GetSGBLayout
 	farcall LoadBlindingFlashPalette
-	farcall FadeInPalettes
-	ret
+	farjp FadeInPalettes
 ; 8c80a
 
 ShakeHeadbuttTree: ; 8c80a

@@ -514,8 +514,7 @@ BattleBGEffect_HeadFollow: ; c8281 (32:4281)
 	jp EndBattleBGEffect
 
 _QueueBattleAnimation: ; c82ee (32:42ee)
-	farcall QueueBattleAnimation
-	ret
+	farjp QueueBattleAnimation
 
 BattleBGEffect_27: ; c82f5 (32:42f5)
 	call BattleBGEffects_AnonJumptable

@@ -1671,8 +1671,7 @@ LoadLinkTradePalette: ; 49811
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
 	call FarCopyWRAM
-	farcall ApplyPals
-	ret
+	farjp ApplyPals
 ; 49826
 
 LinkTradePalette:

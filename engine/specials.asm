@@ -194,8 +194,7 @@ SpecialNone: ; c224
 Special_SetPlayerPalette: ; c225
 	ld a, [ScriptVar]
 	ld d, a
-	farcall SetPlayerPalette
-	ret
+	farjp SetPlayerPalette
 ; c230
 
 Special_GameCornerPrizeMonCheckDex: ; c230
@@ -284,8 +283,7 @@ DefaultTrendyPhrase:
 	db "Sushi@"
 
 SpecialNameRater: ; c2b9
-	farcall NameRater
-	ret
+	farjp NameRater
 ; c2c0
 
 Special_TownMap: ; c2c0
@@ -319,8 +317,7 @@ BugContestJudging: ; c34a
 MapRadio: ; c355
 	ld a, [ScriptVar]
 	ld e, a
-	farcall PlayRadio
-	ret
+	farjp PlayRadio
 ; c360
 
 Special_UnownPuzzle: ; c360
@@ -454,8 +451,7 @@ Special_ResetLuckyNumberShowFlag: ; c422
 	farcall RestartLuckyNumberCountdown
 	ld hl, wLuckyNumberShowFlag
 	res 0, [hl]
-	farcall LoadOrRegenerateLuckyIDNumber
-	ret
+	farjp LoadOrRegenerateLuckyIDNumber
 ; c434
 
 Special_CheckLuckyNumberShowFlag: ; c434

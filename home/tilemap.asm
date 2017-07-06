@@ -1,6 +1,5 @@
 PushWindow:: ; 1c00
-	farcall _PushWindow
-	ret
+	farjp _PushWindow
 ; 1c07
 
 ExitMenu:: ; 0x1c07
@@ -10,8 +9,7 @@ ExitMenu:: ; 0x1c07
 	ret
 
 InitVerticalMenuCursor:: ; 0x1c10
-	farcall _InitVerticalMenuCursor
-	ret
+	farjp _InitVerticalMenuCursor
 
 CloseWindow:: ; 0x1c17
 	push af

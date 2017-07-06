@@ -122,20 +122,16 @@ DoAnimFrame: ; 8d24b
 	ret
 
 .NamingScreenCursor ; 8d36c (23:536c)
-	farcall NamingScreen_AnimateCursor
-	ret
+	farjp NamingScreen_AnimateCursor
 
 .ComposeMailCursor ; 8d373 (23:5373)
-	farcall ComposeMail_AnimateCursor
-	ret
+	farjp ComposeMail_AnimateCursor
 
 .GameFreakLogo: ; 8d37a (23:537a)
-	farcall GameFreakLogoJumper
-	ret
+	farjp GameFreakLogoJumper
 
 .SlotsGolem: ; 8d422 (23:5422)
-	farcall SlotMachine_AnimateGolem
-	ret
+	farjp SlotMachine_AnimateGolem
 
 .SlotsChansey: ; 8d429 (23:5429)
 	farcall Slots_AnimateChansey
@@ -184,8 +180,7 @@ DoAnimFrame: ; 8d24b
 ;	ret
 
 .PokegearModeArrow ; 8d475 (23:5475)
-	farcall AnimatePokegearModeIndicatorArrow
-	ret
+	farjp AnimatePokegearModeIndicatorArrow
 
 .TradePokeBall ; 8d483 (23:5483)
 	call .anonymous_dw
@@ -332,8 +327,7 @@ DoAnimFrame: ; 8d24b
 	jp DeinitializeSprite
 
 .TradeMonBubble ; 8d543 (23:5543)
-	farcall TradeAnim_AnimateTrademonInTube
-	ret
+	farjp TradeAnim_AnimateTrademonInTube
 
 .RevealNewMon: ; 8d54a (23:554a)
 	ld hl, SPRITEANIMSTRUCT_0C
@@ -372,8 +366,7 @@ DoAnimFrame: ; 8d24b
 	jp DeinitializeSprite
 
 .RadioTuningKnob: ; 8d578 (23:5578)
-	farcall AnimateTuningKnob
-	ret
+	farjp AnimateTuningKnob
 
 .CutGrassLeaves ; 8d57f (23:557f)
 	ld hl, SPRITEANIMSTRUCT_0D
@@ -598,8 +591,7 @@ endr
 	ret
 
 .Celebi ; 8d6be (23:56be)
-	farcall UpdateCelebiPosition
-	ret
+	farjp UpdateCelebiPosition
 
 .anonymous_dw ; 8d6c5 (23:56c5)
 	ld hl, sp+$0

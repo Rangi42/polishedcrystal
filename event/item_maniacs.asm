@@ -95,5 +95,4 @@ FossilManiacItemRewards:
 Give_hMoneyTemp:
 	ld de, Money
 	ld bc, hMoneyTemp
-	farcall GiveMoney
-	ret
+	farjp GiveMoney

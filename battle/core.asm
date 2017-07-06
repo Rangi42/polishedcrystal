@@ -1730,8 +1730,7 @@ HandleWeatherEffects:
 	cp WEATHER_SANDSTORM
 	call z, .HandleSandstorm
 .run_weather_abilities
-	farcall RunWeatherAbilities
-	ret
+	farjp RunWeatherAbilities
 
 .HandleSandstorm
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -2830,8 +2829,7 @@ SetUpBattlePartyMenu_NoLoop: ; 3d2f7
 SetUpBattlePartyMenu: ; switch to fullscreen menu?
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
-	farcall InitPartyMenuGFX
-	ret
+	farjp InitPartyMenuGFX
 ; 3d313
 
 JumpToPartyMenuAndPrintText: ; 3d313
@@ -2843,8 +2841,7 @@ JumpToPartyMenuAndPrintText: ; 3d313
 ; 3d329
 
 SelectBattleMon: ; 3d329
-	farcall PartyMenuSelect
-	ret
+	farjp PartyMenuSelect
 ; 3d33c
 
 PickPartyMonInBattle: ; 3d33c
@@ -3686,8 +3683,7 @@ BattleCheckEnemyShininess: ; 3da79
 BattleCheckShininess: ; 3da7c
 	ld b, h
 	ld c, l
-	farcall CheckShininess
-	ret
+	farjp CheckShininess
 ; 3da85
 
 GetPartyMonDVs: ; 3da85
@@ -4499,8 +4495,7 @@ DrawPlayerHUD: ; 3df58
 	ld [hl], $55
 	inc hl
 	ld [hl], $56
-	farcall InstantReloadPaletteHack
-	ret
+	farjp InstantReloadPaletteHack
 ; 3df98
 
 UpdatePlayerHPPal: ; 3df98
@@ -4740,8 +4735,7 @@ endr
 	ld [hl], $57
 	inc hl
 	ld [hl], $58
-	farcall InstantReloadPaletteHack
-	ret
+	farjp InstantReloadPaletteHack
 ; 3e127
 
 UpdateEnemyHPPal: ; 3e127
@@ -4968,8 +4962,7 @@ BattleMenuPKMN_Loop:
 ; 3e2f5
 
 .GetMenu: ; 3e2f5
-	farcall BattleMonMenu
-	ret
+	farjp BattleMonMenu
 ; 3e308
 
 Battle_StatsScreen: ; 3e308
@@ -6147,8 +6140,7 @@ CheckEnemyLockedIn: ; 3e8d1
 ; 3e8e4
 
 LinkBattleSendReceiveAction: ; 3e8e4
-	farcall _LinkBattleSendReceiveAction
-	ret
+	farjp _LinkBattleSendReceiveAction
 ; 3e8eb
 
 
@@ -6929,17 +6921,14 @@ BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
 
 ApplyStatLevelMultiplierOnAllStats:
 	farcall CalcPlayerStats
-	farcall CalcEnemyStats
-	ret
+	farjp CalcEnemyStats
 
 _LoadBattleFontsHPBar: ; 3ed9f
-	farcall LoadBattleFontsHPBar
-	ret
+	farjp LoadBattleFontsHPBar
 ; 3eda6
 
 _LoadStatusIcons: ; 3eda6
-	farcall LoadStatusIcons
-	ret
+	farjp LoadStatusIcons
 ; 3edad
 
 
@@ -8413,8 +8402,7 @@ ExitBattle: ; 3f69e
 	xor a
 	ld [wForceEvolution], a
 	predef EvolveAfterBattle
-	farcall GivePokerus
-	ret
+	farjp GivePokerus
 ; 3f6d0
 
 HandleNuzlockeFlags:
@@ -8523,8 +8511,7 @@ ShowLinkBattleParticipantsAfterEnd: ; 3f759
 	ld a, [EnemyMonStatus]
 	ld [hl], a
 	call ClearTileMap
-	farcall _ShowLinkBattleParticipants
-	ret
+	farjp _ShowLinkBattleParticipants
 ; 3f77c
 
 ShowLinkBattleResult: ; 3f77c
@@ -8755,8 +8742,7 @@ BattleEnd_HandleRoamMons: ; 3f998
 	ret nz
 
 .update_roam_mons
-	farcall UpdateRoamMons
-	ret
+	farjp UpdateRoamMons
 ; 3f9d1
 
 GetRoamMonMapGroup: ; 3f9d1

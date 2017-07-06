@@ -1490,13 +1490,11 @@ Text_AskNicknameNewlyCaughtMon: ; 0xedf5
 ; 0xedfa
 
 ReturnToBattle_UseBall: ; edfa (3:6dfa)
-	farcall _ReturnToBattle_UseBall
-	ret
+	farjp _ReturnToBattle_UseBall
 
 
 Bicycle: ; ee08
-	farcall BikeFunction
-	ret
+	farjp BikeFunction
 ; ee0f
 
 
@@ -2214,8 +2212,7 @@ ChoosePkmnToUseItemOn: ; f21c (3:721c)
 	call WaitBGMap
 	call SetPalettes
 	call DelayFrame
-	farcall PartyMenuSelect
-	ret
+	farjp PartyMenuSelect
 
 ItemActionText: ; f24a (3:724a)
 	ld [PartyMenuActionText], a
@@ -2688,8 +2685,7 @@ endr
 	ld a, [CurBattleMon]
 	ld [CurPartyMon], a
 	ld c, HAPPINESS_USEDXITEM
-	farcall ChangeHappiness
-	ret
+	farjp ChangeHappiness
 ; f504
 
 .x_item_table ; f504
@@ -2738,14 +2734,12 @@ SuperRod: ; f5ad
 ; f5b1
 
 UseRod: ; f5b1
-	farcall FishFunction
-	ret
+	farjp FishFunction
 ; f5b8
 
 
 Itemfinder: ; f5b8
-	farcall ItemFinder
-	ret
+	farjp ItemFinder
 ; f5bf
 
 
@@ -3043,20 +3037,17 @@ UnknownText_0xf739: ; 0xf739
 
 
 SquirtBottle: ; f73e
-	farcall _Squirtbottle
-	ret
+	farjp _Squirtbottle
 ; f745
 
 
 CardKey: ; f745
-	farcall _CardKey
-	ret
+	farjp _CardKey
 ; f74c
 
 
 BasementKey: ; f74c
-	farcall _BasementKey
-	ret
+	farjp _BasementKey
 ; f753
 
 

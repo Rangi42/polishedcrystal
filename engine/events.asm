@@ -100,8 +100,7 @@ EnterMap: ; 9673e
 	ld [hMapEntryMethod], a
 	ld a, 2 ; HandleMap
 	ld [MapStatus], a
-	farcall DeleteSavedMusic
-	ret
+	farjp DeleteSavedMusic
 ; 9676d
 
 HandleMap: ; 96773
@@ -177,8 +176,7 @@ HandleMapObjects: ; 967d1
 HandleMapBackground: ; 967e1
 	farcall _UpdateSprites
 	farcall ScrollScreen
-	farcall PlaceMapNameSign
-	ret
+	farjp PlaceMapNameSign
 ; 967f4
 
 CheckPlayerState: ; 967f4
@@ -205,8 +203,7 @@ _CheckObjectEnteringVisibleRange: ; 96812
 	ld hl, wPlayerStepFlags
 	bit 6, [hl]
 	ret z
-	farcall CheckObjectEnteringVisibleRange
-	ret
+	farjp CheckObjectEnteringVisibleRange
 ; 9681f
 
 PlayerEvents: ; 9681f

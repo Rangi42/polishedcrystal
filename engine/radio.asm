@@ -914,8 +914,7 @@ StartPokemonMusicChannel:
 	jr z, .SunTueThurSun
 	ld de, MUSIC_POKEMON_LULLABY
 .SunTueThurSun:
-	farcall RadioMusicRestartDE
-	ret
+	farjp RadioMusicRestartDE
 
 BenIntroText1:
 	; BEN: #MON MUSIC
@@ -1942,8 +1941,7 @@ StartRadioStation:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	farcall RadioMusicRestartDE
-	ret
+	farjp RadioMusicRestartDE
 
 RadioChannelSongs:
 	dw MUSIC_POKEMON_TALK

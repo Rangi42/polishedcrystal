@@ -85,8 +85,7 @@ BattleCommand_Attract: ; 377ce
 
 .do_it
 	call CheckMentalHerb
-	farcall RunStatusHealAbilities
-	ret
+	farjp RunStatusHealAbilities
 
 CheckEnemyMentalHerb:
 	call SwitchTurn
@@ -172,8 +171,7 @@ CheckMentalHerb:
 	ld hl, CuredDisableWithItem
 	call nz, .print
 
-	farcall ConsumeUserItem
-	ret
+	farjp ConsumeUserItem
 
 .print
 	push bc

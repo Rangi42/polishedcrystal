@@ -301,13 +301,11 @@ GetBattleAnimTileOffset: ; ccb31 (33:4b31)
 	ret
 
 _ExecuteBGEffects: ; ccb48
-	farcall ExecuteBGEffects
-	ret
+	farjp ExecuteBGEffects
 
 ; ccb4f
 
 _QueueBGEffect: ; ccb4f (33:4b4f)
-	farcall QueueBGEffect
-	ret
+	farjp QueueBGEffect
 
 ; ccb56 (33:4b56)

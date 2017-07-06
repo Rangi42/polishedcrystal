@@ -1712,8 +1712,7 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyBytes
 	call CloseSRAM
-	farcall CalcwBufferMonStats
-	ret
+	farjp CalcwBufferMonStats
 
 .party
 	ld hl, PartySpecies
@@ -1754,8 +1753,7 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	ld bc, BOXMON_STRUCT_LENGTH
 	call CopyMonToTemp
 	call CloseSRAM
-	farcall CalcwBufferMonStats
-	ret
+	farjp CalcwBufferMonStats
 
 DepositPokemon: ; e307c (38:707c)
 	ld a, [wBillsPC_CursorPosition]
@@ -1958,8 +1956,7 @@ endr
 .dw_return ; e322a
 	pop af
 	ld e, a
-	farcall MovePkmnWOMail_InsertMon_SaveGame
-	ret
+	farjp MovePkmnWOMail_InsertMon_SaveGame
 ; e3233
 
 .Saving_LeaveOn:
@@ -2059,8 +2056,7 @@ endr
 	farcall CalcwBufferMonStats
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
-	ret
+	farjp RemoveMonFromPartyOrBox
 ; e32fa
 
 .CopyToBox: ; e32fa
@@ -2072,8 +2068,7 @@ endr
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
 	ld [CurPartyMon], a
-	farcall InsertPokemonIntoBox
-	ret
+	farjp InsertPokemonIntoBox
 ; e3316
 
 .CopyFromParty: ; e3316
@@ -2092,8 +2087,7 @@ endr
 	call CopyMonToTemp
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
-	ret
+	farjp RemoveMonFromPartyOrBox
 ; e3346
 
 .CopyToParty: ; e3346
@@ -2101,8 +2095,7 @@ endr
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
 	ld [CurPartyMon], a
-	farcall InsertPokemonIntoParty
-	ret
+	farjp InsertPokemonIntoParty
 ; e3357
 
 CopySpeciesToTemp: ; e3357 (38:7357)
@@ -2488,8 +2481,7 @@ BillsPC_ChangeBoxSubmenu: ; e36f9 (38:76f9)
 	ld a, [wCurBox]
 	cp e
 	ret z
-	farcall ChangeBoxSaveGame
-	ret
+	farjp ChangeBoxSaveGame
 
 .Name:
 	ld b, $3 ; box

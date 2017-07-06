@@ -289,8 +289,7 @@ Script_special: ; 96e26
 	ld e, a
 	call GetScriptByte
 	ld d, a
-	farcall Special
-	ret
+	farjp Special
 ; 96e35
 
 Script_ptcallasm:
@@ -490,15 +489,13 @@ Script_pokepic: ; 96f16
 	ld [CurPartySpecies], a
 	call GetScriptByte
 	ld [IsCurMonInParty], a
-	farcall Pokepic
-	ret
+	farjp Pokepic
 ; 96f29
 
 Script_closepokepic: ; 96f29
 ; script command 0x57
 
-	farcall ClosePokepic
-	ret
+	farjp ClosePokepic
 ; 96f30
 
 Script_verticalmenu: ; 96f30
@@ -538,8 +535,7 @@ Script_battletowertext: ; 96f52
 	call SetUpTextBox
 	call GetScriptByte
 	ld c, a
-	farcall BattleTowerText
-	ret
+	farjp BattleTowerText
 ; 96f60
 
 Script_verbosegiveitem: ; 96f60
@@ -732,8 +728,7 @@ Script_pokemart: ; 97065
 	ld d, a
 	ld a, [ScriptBank]
 	ld b, a
-	farcall OpenMartDialog
-	ret
+	farjp OpenMartDialog
 ; 9707c
 
 Script_elevator: ; 9707c
@@ -763,8 +758,7 @@ Script_trade: ; 97099
 
 	call GetScriptByte
 	ld e, a
-	farcall NPCTrade
-	ret
+	farjp NPCTrade
 ; 970a4
 
 Script_phonecall: ; 970a4
@@ -778,15 +772,13 @@ Script_phonecall: ; 970a4
 	ld d, a
 	ld a, [ScriptBank]
 	ld b, a
-	farcall PhoneCall
-	ret
+	farjp PhoneCall
 ; 970b7
 
 Script_hangup: ; 970b7
 ; script command 0x99
 
-	farcall HangUp
-	ret
+	farjp HangUp
 ; 970be
 
 Script_askforphonenumber: ; 970be
@@ -851,8 +843,7 @@ Script_swarm: ; 970fc
 	ld d, a
 	call GetScriptByte
 	ld e, a
-	farcall StoreSwarmMapIndices
-	ret
+	farjp StoreSwarmMapIndices
 ; 9710f
 
 Script_trainertext: ; 9710f
@@ -953,8 +944,7 @@ Script_encountermusic: ; 9717a
 
 	ld a, [OtherTrainerClass]
 	ld e, a
-	farcall PlayTrainerEncounterMusic
-	ret
+	farjp PlayTrainerEncounterMusic
 ; 97185
 
 Script_playmapmusic: ; 97185
@@ -1101,8 +1091,7 @@ ApplyMovement: ; 971fa
 ; 97221
 
 SetFlagsForMovement_2: ; 97221
-	farcall _SetFlagsForMovement_2
-	ret
+	farjp _SetFlagsForMovement_2
 ; 97228
 
 Script_applymovement2: ; 97228
@@ -1277,8 +1266,7 @@ Script_disappear: ; 972ee
 	ld a, [hMapObjectIndexBuffer]
 	ld b, 1 ; set
 	call ApplyEventActionAppearDisappear
-	farcall _UpdateSprites
-	ret
+	farjp _UpdateSprites
 ; 9730b
 
 ApplyEventActionAppearDisappear: ; 9730b
@@ -1313,15 +1301,13 @@ Script_follow: ; 97325
 	call GetScriptByte
 	call GetScriptPerson
 	ld c, a
-	farcall StartFollow
-	ret
+	farjp StartFollow
 ; 9733a
 
 Script_stopfollow: ; 9733a
 ; script command 0x71
 
-	farcall StopFollow
-	ret
+	farjp StopFollow
 ; 97341
 
 Script_moveperson: ; 97341
@@ -1340,8 +1326,7 @@ Script_moveperson: ; 97341
 	call GetScriptByte
 	add 4
 	ld e, a
-	farcall CopyDECoordsToMapObject
-	ret
+	farjp CopyDECoordsToMapObject
 ; 9735b
 
 Script_writepersonxy: ; 9735b
@@ -1356,8 +1341,7 @@ Script_writepersonxy: ; 9735b
 	ld a, [hLastTalked]
 .ok
 	ld b, a
-	farcall WritePersonXY
-	ret
+	farjp WritePersonXY
 ; 9736f
 
 Script_follownotexact: ; 9736f
@@ -1372,8 +1356,7 @@ Script_follownotexact: ; 9736f
 	call GetScriptByte
 	call GetScriptPerson
 	ld c, a
-	farcall FollowNotExact
-	ret
+	farjp FollowNotExact
 ; 97384
 
 Script_loademote: ; 97384
@@ -1387,8 +1370,7 @@ Script_loademote: ; 97384
 	ld a, [ScriptVar]
 .not_var_emote
 	ld c, a
-	farcall LoadEmote
-	ret
+	farjp LoadEmote
 ; 97396
 
 Script_showemote: ; 97396
@@ -2096,8 +2078,7 @@ Script_writecode: ; 97693
 
 GetVarAction: ; 9769e
 	ld c, a
-	farcall _GetVarAction
-	ret
+	farjp _GetVarAction
 ; 976a6
 
 Script_pokenamemem: ; 976ae
@@ -2304,8 +2285,7 @@ Script_givepokeitem: ; 97792
 	ld a, [ScriptBank]
 	call FarCopyBytes
 	pop bc
-	farcall GivePokeItem
-	ret
+	farjp GivePokeItem
 ; 977b7
 
 Script_checkpokeitem: ; 977b7
@@ -2319,8 +2299,7 @@ Script_checkpokeitem: ; 977b7
 	ld d, a
 	ld a, [ScriptBank]
 	ld b, a
-	farcall CheckPokeItem
-	ret
+	farjp CheckPokeItem
 ; 977ca
 
 Script_giveitem: ; 977ca
@@ -2397,8 +2376,7 @@ Script_givemoney: ; 97829
 
 	call GetMoneyAccount
 	call LoadMoneyAmountToMem
-	farcall GiveMoney
-	ret
+	farjp GiveMoney
 ; 97836
 
 Script_takemoney: ; 97836
@@ -2409,8 +2387,7 @@ Script_takemoney: ; 97836
 
 	call GetMoneyAccount
 	call LoadMoneyAmountToMem
-	farcall TakeMoney
-	ret
+	farjp TakeMoney
 ; 97843
 
 Script_checkmoney: ; 97843
@@ -2469,8 +2446,7 @@ Script_givecoins: ; 97881
 ;     coins (CoinByteParam)
 
 	call LoadCoinAmountToMem
-	farcall GiveCoins
-	ret
+	farjp GiveCoins
 ; 9788b
 
 Script_takecoins: ; 9788b
@@ -2479,8 +2455,7 @@ Script_takecoins: ; 9788b
 ;     coins (CoinByteParam)
 
 	call LoadCoinAmountToMem
-	farcall TakeCoins
-	ret
+	farjp TakeCoins
 ; 97895
 
 Script_checkcoins: ; 97895
@@ -2758,8 +2733,7 @@ Script_checkflag: ; 979d7
 ; 979ee
 
 _EngineFlagAction: ; 979ee
-	farcall EngineFlagAction
-	ret
+	farjp EngineFlagAction
 ; 979f5
 
 Script_wildoff: ; 979f5
@@ -2965,8 +2939,7 @@ Script_warpcheck: ; 97af6
 
 	call WarpCheck
 	ret nc
-	farcall EnableEvents
-	ret
+	farjp EnableEvents
 ; 97b01
 
 Script_newloadmap: ; 97b08
@@ -3219,8 +3192,7 @@ Script_trainerpic:
 	ld a, [ScriptVar]
 .ok
 	ld [TrainerClass], a
-	farcall Trainerpic
-	ret
+	farjp Trainerpic
 ; 96f29
 
 Script_givetmhm:

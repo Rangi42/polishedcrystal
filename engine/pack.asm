@@ -1749,8 +1749,7 @@ Special_ChooseItem::
 	call LoadStandardMenuDataHeader
 	call DepositSellInitPackBuffers
 	call .PickItem
-	farcall ReturnToMapWithSpeechTextbox
-	ret
+	farjp ReturnToMapWithSpeechTextbox
 
 .PickItem:
 	xor a ; ld a, FALSE

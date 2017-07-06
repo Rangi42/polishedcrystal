@@ -149,8 +149,7 @@ MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	jr z, .outdoor
 	ld c, EMOTE_BOULDER_DUST
 .outdoor
-	farcall LoadEmote
-	ret
+	farjp LoadEmote
 ; 14236
 
 

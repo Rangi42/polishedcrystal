@@ -901,8 +901,7 @@ WeakArmorAbility:
 	and a
 	jp nz, EnableAnimations
 .speedupmessage
-	farcall BattleCommand_StatUpMessage
-	ret
+	farjp BattleCommand_StatUpMessage
 .failed_defensedown
 ; If we can still raise Speed, do that and show ability activation anyway
 	farcall ResetMiss
@@ -934,8 +933,7 @@ WaterAbsorbAbility:
 	farcall CheckFullHP
 	jr z, .full_hp
 	farcall GetQuarterMaxHP
-	farcall RestoreHP
-	ret
+	farjp RestoreHP
 .full_hp
 	ld hl, HPIsFullText
 	jp StdBattleTextBox
@@ -1056,8 +1054,7 @@ SolarPowerWeatherAbility:
 	ret nz
 	call ShowAbilityActivation
 	farcall GetEighthMaxHP
-	farcall SubtractHPFromUser
-	ret
+	farjp SubtractHPFromUser
 
 IceBodyAbility:
 	ld b, WEATHER_HAIL
@@ -1081,8 +1078,7 @@ WeatherRecoveryAbility:
 .eighth_max_hp
 	farcall GetEighthMaxHP
 .restore
-	farcall RestoreHP
-	ret
+	farjp RestoreHP
 
 HandleAbilities:
 ; Abilities handled at the end of the turn.

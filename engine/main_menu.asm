@@ -222,16 +222,13 @@ Function49ed0: ; 49ed0
 
 
 MainMenu_NewGame: ; 49ee0
-	farcall NewGame
-	ret
+	farjp NewGame
 ; 49ee7
 
 MainMenu_Options: ; 49ee7
-	farcall OptionsMenu
-	ret
+	farjp OptionsMenu
 ; 49eee
 
 MainMenu_Continue: ; 49eee
-	farcall Continue
-	ret
+	farjp Continue
 ; 49ef5

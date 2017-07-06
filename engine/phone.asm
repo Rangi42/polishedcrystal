@@ -153,8 +153,7 @@ CheckPhoneCall:: ; 90074 (24:4074)
 	ret
 
 .timecheck ; 900a6 (24:40a6)
-	farcall CheckReceiveCallTimer
-	ret
+	farjp CheckReceiveCallTimer
 
 CheckPhoneContactTimeOfDay: ; 900ad (24:40ad)
 	push hl
@@ -562,16 +561,14 @@ Phone_StartRinging: ; 9033f
 	call PlaySFX
 	call Phone_CallerTextbox
 	call UpdateSprites
-	farcall PhoneRing_LoadEDTile
-	ret
+	farjp PhoneRing_LoadEDTile
 ; 90355
 
 HangUp_Wait20Frames: ; 90355
 Phone_Wait20Frames:
 	ld c, 20
 	call DelayFrames
-	farcall PhoneRing_LoadEDTile
-	ret
+	farjp PhoneRing_LoadEDTile
 ; 90363
 
 

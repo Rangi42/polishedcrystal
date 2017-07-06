@@ -2747,8 +2747,7 @@ _Area: ; 91d11
 	jr z, .Sinjoh
 	cp MYSTRI_STAGE
 	jr z, .Sinjoh
-	farcall GetPlayerIcon
-	ret
+	farjp GetPlayerIcon
 
 .FastShip:
 	ld de, FastShipGFX

@@ -258,8 +258,7 @@ EvolutionAnimation: ; 4e5e1
 	call GetPartyLocation
 	ld b, h
 	ld c, l
-	farcall CheckFaintedFrzSlp
-	ret
+	farjp CheckFaintedFrzSlp
 ; 4e7a6
 
 .PlayEvolvedSFX: ; 4e7a6

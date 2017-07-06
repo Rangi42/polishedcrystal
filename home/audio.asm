@@ -428,8 +428,7 @@ TryRestartMapMusic:: ; 3d2f
 	ret
 
 .restore
-	farcall RestoreMusic
-	ret
+	farjp RestoreMusic
 ; 3d47
 
 RestartMapMusic:: ; 3d47

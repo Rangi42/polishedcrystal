@@ -126,8 +126,7 @@ RefreshBattleHuds:: ; 39c9
 
 UpdateBattleHuds:: ; 39d4
 	farcall UpdatePlayerHUD
-	farcall UpdateEnemyHUD
-	ret
+	farjp UpdateEnemyHUD
 
 GetBackupItemAddr::
 ; Returns address of backup item for current mon in hl
@@ -345,8 +344,7 @@ GetMoveByte::
 	jp GetFarByte
 
 DisappearUser::
-	farcall _DisappearUser
-	ret
+	farjp _DisappearUser
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::

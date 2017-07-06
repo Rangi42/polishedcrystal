@@ -999,8 +999,7 @@ IntroScene14: ; e4dfa (39:4dfa)
 	ret
 
 .asm_e4e2c
-	farcall DeinitializeAllSprites
-	ret
+	farjp DeinitializeAllSprites
 
 .asm_e4e33
 	ld a, [wGlobalAnimXOffset]

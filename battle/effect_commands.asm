@@ -530,8 +530,7 @@ CheckWhiteHerb:
 	call GetItemName
 	ld hl, RegainedStatsWithItem
 	call StdBattleTextBox
-	farcall ConsumeUserItem
-	ret
+	farjp ConsumeUserItem
 
 OpponentCantMove: ; 34216
 	call SwitchTurn
@@ -938,8 +937,7 @@ IgnoreSleepOnly: ; 3451f
 
 BattleCommand_UsedMoveText: ; 34541
 ; usedmovetext
-	farcall DisplayUsedMoveText
-	ret
+	farjp DisplayUsedMoveText
 
 ; 34548
 
@@ -2401,8 +2399,7 @@ BattleCommand_CheckFaint:
 .not_enduring2
 	dec a
 	jr nz, .enduring_with_item
-	farcall ShowEnemyAbilityActivation
-	ret
+	farjp ShowEnemyAbilityActivation
 
 .enduring_with_item
 	push af
@@ -2531,8 +2528,7 @@ FailText_CheckOpponentProtect: ; 35157
 .printmsg
 	jp StdBattleTextBox
 .ability_immune
-	farcall RunEnemyNullificationAbilities
-	ret
+	farjp RunEnemyNullificationAbilities
 
 ; 35165
 
@@ -5064,8 +5060,7 @@ PostStatusWithSynchronize:
 	farcall RunEnemySynchronizeAbility
 PostStatus:
 	farcall UseEnemyHeldStatusHealingItem
-	farcall RunEnemyStatusHealAbilities
-	ret
+	farjp RunEnemyStatusHealAbilities
 
 BattleCommand_SleepTarget:
 	call GetOpponentItem
@@ -5403,12 +5398,10 @@ SapHealth: ; 36011
 	pop bc
 	cp LIQUID_OOZE
 	jr z, .damage
-	farcall RestoreHP
-	ret
+	farjp RestoreHP
 .damage
 	farcall ShowEnemyAbilityActivation
-	farcall SubtractHPFromUser
-	ret
+	farjp SubtractHPFromUser
 
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)
@@ -6054,8 +6047,7 @@ BattleCommand_StatDownMessage: ; 363e9
 	call BattleTextBox
 	; Competitive/Defiant activates here to give proper messages. A bit awkward,
 	; but the alternative is to rewrite the stat-down logic.
-	farcall RunEnemyStatIncreaseAbilities
-	ret
+	farjp RunEnemyStatIncreaseAbilities
 
 .stat
 	text_jump UnknownText_0x1c0ceb
@@ -7418,8 +7410,7 @@ BattleCommand_ConfuseTarget: ; 36d1d
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
 	jr nz, .no_own_tempo
-	farcall ShowEnemyAbilityActivation
-	ret
+	farjp ShowEnemyAbilityActivation
 .no_own_tempo
 	ld a, [EffectFailed]
 	and a
@@ -7505,8 +7496,7 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	call StdBattleTextBox
 
 	farcall UseEnemyConfusionHealingItem
-	farcall RunEnemyStatusHealAbilities
-	ret
+	farjp RunEnemyStatusHealAbilities
 
 ; 36db6
 
@@ -8025,8 +8015,7 @@ BattleCommand_Heal: ; 3713e
 
 .ability_prevents_rest
 	call AnimateFailedMove
-	farcall ShowAbilityActivation
-	ret
+	farjp ShowAbilityActivation
 
 .hp_full
 	call AnimateFailedMove
@@ -8749,8 +8738,7 @@ BattleCommand_SwitchOut:
 	ret z
 
 	farcall NewBattleMonStatus
-	farcall ResetPlayerStatLevels
-	ret
+	farjp ResetPlayerStatLevels
 .enemy
 	call DoEnemyBatonPass
 	ld hl, EnemyMonHP
@@ -8759,8 +8747,7 @@ BattleCommand_SwitchOut:
 	ret z
 
 	farcall NewEnemyMonStatus
-	farcall ResetEnemyStatLevels
-	ret
+	farjp ResetEnemyStatLevels
 
 BattleCommand_BatonPass:
 	call CheckAnyOtherAliveMons
@@ -8997,8 +8984,7 @@ BattleCommand_HiddenPower: ; 37be8
 	ld a, [AttackMissed]
 	and a
 	ret nz
-	farcall HiddenPowerDamage
-	ret
+	farjp HiddenPowerDamage
 
 ; 37bf4
 
@@ -9543,15 +9529,13 @@ BattleCommandJump:
 	ret
 
 AppearUserLowerSub: ; 37ec7
-	farcall _AppearUserLowerSub
-	ret
+	farjp _AppearUserLowerSub
 
 ; 37ece
 
 
 AppearUserRaiseSub: ; 37ece
-	farcall _AppearUserRaiseSub
-	ret
+	farjp _AppearUserRaiseSub
 
 ; 37ed5
 

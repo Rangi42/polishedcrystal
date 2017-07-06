@@ -80,8 +80,7 @@ ReadMailMessage: ; 445f4
 	call AddNTimes
 	ld d, h
 	ld e, l
-	farcall ReadAnyMail
-	ret
+	farjp ReadAnyMail
 
 MoveMailFromPCToParty: ; 44607
 	ld a, BANK(sMailboxCount)

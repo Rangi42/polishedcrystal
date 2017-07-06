@@ -326,8 +326,7 @@ Special_GiveParkBalls: ; 135db
 	ld [wContestMon], a
 	ld a, 20
 	ld [wParkBallsRemaining], a
-	farcall StartBugContestTimer
-	ret
+	farjp StartBugContestTimer
 
 BugCatchingContestBattleScript:: ; 0x135eb
 	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST
@@ -608,8 +607,7 @@ UpdateItemDescription: ; 0x244c3
 	cp -1
 	ret z
 	decoord 1, 14
-	farcall PrintItemDescription
-	ret
+	farjp PrintItemDescription
 
 BagXString:
 	db "Bag ×@"
@@ -639,8 +637,7 @@ UpdateTMHMDescription:
 	cp -1
 	ret z
 	decoord 1, 14
-	farcall PrintTMHMDescription
-	ret
+	farjp PrintTMHMDescription
 
 OwnedTMString:
 	db "Owned@"
@@ -991,8 +988,7 @@ LevelUpHappinessMod: ; 2709e
 	ld c, HAPPINESS_GAINLEVELATHOME
 
 .ok
-	farcall ChangeHappiness
-	ret
+	farjp ChangeHappiness
 
 INCLUDE "trainers/dvs.asm"
 
@@ -1017,8 +1013,7 @@ _ReturnToBattle_UseBall: ; 2715c
 	call SetPalettes
 	farcall LoadPlayerStatusIcon
 	farcall LoadEnemyStatusIcon
-	farcall InstantReloadPaletteHack
-	ret
+	farjp InstantReloadPaletteHack
 
 MoveEffectsPointers: ; 271f4
 INCLUDE "battle/moves/move_effects_pointers.asm"
@@ -2858,8 +2853,7 @@ _DeleteSaveData: ; 4d54c
 	ld a, [wMenuCursorY]
 	cp $1
 	ret z
-	farcall EmptyAllSRAMBanks
-	ret
+	farjp EmptyAllSRAMBanks
 
 .Text_ClearAllSaveData: ; 0x4d580
 	; Clear all save data?
@@ -3896,8 +3890,7 @@ CopyPkmnToTempMon: ; 5084a
 	cp OTPARTYMON
 	jr z, .copywholestruct
 	ld bc, BOXMON_STRUCT_LENGTH
-	farcall CopyBoxmonToTempMon
-	ret
+	farjp CopyBoxmonToTempMon
 
 .copywholestruct
 	ld a, [CurPartyMon]
@@ -5464,8 +5457,7 @@ endc
 	ld [hCGBPalUpdate], a
 	ld c, 4
 	call DelayFrames
-	farcall _UpdateTimePals
-	ret
+	farjp _UpdateTimePals
 
 TheEndGFX:: ; cbd2e
 INCBIN "gfx/credits/theend.2bpp"
@@ -5886,8 +5878,7 @@ _UpdateBattleHUDs:
 	farcall DrawEnemyHUD
 	ld hl, EnemyHPPal
 	call SetHPPal
-	farcall FinishBattleAnim
-	ret
+	farjp FinishBattleAnim
 
 SECTION "Common Text 1", ROMX, BANK[$6C]
 

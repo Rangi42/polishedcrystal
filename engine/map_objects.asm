@@ -2079,8 +2079,7 @@ InitTempObject: ; 55ac
 	ret nc
 	ld d, h
 	ld e, l
-	farcall CopyTempObjectToObjectStruct
-	ret
+	farjp CopyTempObjectToObjectStruct
 ; 55b9
 
 CopyTempObjectData: ; 55b9
@@ -2480,8 +2479,7 @@ StartFollow:: ; 5803
 	ret c
 	ld a, c
 	call SetFollowerIfVisible
-	farcall QueueFollowerFirstStep
-	ret
+	farjp QueueFollowerFirstStep
 ; 5815
 
 SetLeaderIfVisible: ; 5815

@@ -78,8 +78,7 @@ StatsScreen_WaitAnim: ; 4dd3a (13:5d3a)
 .finish
 	ld hl, wcf64
 	res 5, [hl]
-	farcall HDMATransferTileMapToWRAMBank3
-	ret
+	farjp HDMATransferTileMapToWRAMBank3
 
 StatsScreen_SetJumptableIndex: ; 4dd62 (13:5d62)
 	ld a, [wJumptableIndex]
@@ -756,8 +755,7 @@ endr
 	db "Nature/@"
 
 .OrangePage:
-	farcall OrangePage_
-	ret
+	farjp OrangePage_
 
 
 ; Fourth stats page code by TPP Anniversary Crystal 251

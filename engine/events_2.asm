@@ -170,8 +170,7 @@ _TryWildEncounter_BugContest: ; 97d23
 	call TryWildEncounter_BugContest
 	ret nc
 	call ChooseWildEncounter_BugContest
-	farcall CheckRepelEffect
-	ret
+	farjp CheckRepelEffect
 ; 97d31
 
 ChooseWildEncounter_BugContest:: ; 97d31

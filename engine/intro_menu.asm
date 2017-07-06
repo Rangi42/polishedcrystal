@@ -74,8 +74,7 @@ NewGame_ClearTileMapEtc: ; 5b44
 ; 5b54
 
 OptionsMenu: ; 5b64
-	farcall _OptionsMenu
-	ret
+	farjp _OptionsMenu
 ; 5b6b
 
 NewGame: ; 5b6b
@@ -316,8 +315,7 @@ InitializeNPCNames: ; 5ce9
 InitializeWorld: ; 5d23
 	call ShrinkPlayer
 	farcall SpawnPlayer
-	farcall _InitializeStartDay
-	ret
+	farjp _InitializeStartDay
 ; 5d33
 
 LoadOrRegenerateLuckyIDNumber: ; 5d33
@@ -1068,8 +1066,7 @@ StartTitleScreen: ; 6219
 
 
 .TitleScreen: ; 6274
-	farcall _TitleScreen
-	ret
+	farjp _TitleScreen
 ; 627b
 
 RunTitleScreen: ; 627b
@@ -1137,8 +1134,7 @@ TitleScreenEntrance: ; 62bc
 	dec b
 	jr nz, .loop
 
-	farcall AnimateTitleCrystal
-	ret
+	farjp AnimateTitleCrystal
 
 .done
 ; Next scene

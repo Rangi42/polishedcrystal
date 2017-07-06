@@ -303,8 +303,7 @@ endr
 	ld hl, StatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	ret z
-	farcall StartMenu_DrawBugContestStatusBox
-	ret
+	farjp StartMenu_DrawBugContestStatusBox
 ; 128de
 
 .DrawBugContestStatus: ; 128de
@@ -313,8 +312,7 @@ endr
 	jr nz, .contest
 	ret
 .contest
-	farcall StartMenu_PrintBugContestStatus
-	ret
+	farjp StartMenu_PrintBugContestStatus
 ; 128ed
 
 

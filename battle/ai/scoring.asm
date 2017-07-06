@@ -3245,8 +3245,7 @@ AIDamageCalc: ; 393e7
 	ld hl, .ConstantDamageEffects
 	call IsInArray
 	jr nc, .no_special_damage
-	farcall BattleCommand_ConstantDamage
-	ret
+	farjp BattleCommand_ConstantDamage
 
 .no_special_damage
 	farcall EnemyAttackDamage
@@ -3257,8 +3256,7 @@ AIDamageCalc: ; 393e7
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_CONDITIONAL_BOOST
 	ret nz
-	farcall BattleCommand_ConditionalBoost
-	ret
+	farjp BattleCommand_ConditionalBoost
 
 .ConstantDamageEffects:
 	db EFFECT_SUPER_FANG

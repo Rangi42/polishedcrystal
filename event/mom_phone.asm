@@ -106,8 +106,7 @@ CheckBalance_MomItem2: ; fd044
 .AddMoney:
 	ld de, MomItemTriggerBalance
 	ld bc, hMoneyTemp
-	farcall AddMoney
-	ret
+	farjp AddMoney
 ; fd0a6
 
 
@@ -123,8 +122,7 @@ MomBuysItem_DeductFunds: ; fd0a6 (3f:50a6)
 	ld [hMoneyTemp + 2], a
 	ld de, wMomsMoney
 	ld bc, hMoneyTemp
-	farcall TakeMoney
-	ret
+	farjp TakeMoney
 
 
 Mom_GiveItemOrDoll: ; fd0c3

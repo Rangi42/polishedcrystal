@@ -1,6 +1,5 @@
 DoItemEffect:: ; 2f3f
-	farcall _DoItemEffect
-	ret
+	farjp _DoItemEffect
 ; 2f46
 
 CheckTossableItem:: ; 2f46
