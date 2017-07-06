@@ -169,7 +169,7 @@ SECTION "bank2", ROMX, BANK[$2]
 
 INCLUDE "engine/player_object.asm"
 INCLUDE "engine/sine.asm"
-INCLUDE "engine/predef.asm"
+INCLUDE "data/predefs.asm"
 INCLUDE "engine/color.asm"
 
 SECTION "bank3", ROMX, BANK[$3]
