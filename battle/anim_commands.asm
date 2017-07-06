@@ -1209,9 +1209,7 @@ BattleAnimCmd_Sound: ; cc7cd (33:47cd)
 	call GetBattleAnimByte
 	ld e, a
 	ld d, 0
-	farcall PlayStereoSFX
-
-	ret
+	farjp PlayStereoSFX
 ; cc7f8 (33:47f8)
 
 .GetPanning: ; cc7f8
