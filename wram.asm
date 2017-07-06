@@ -1128,8 +1128,10 @@ VBlankOccurred:: ; cfb3
 
 PredefID:: ; cfb4
 	ds 1
+wFarCallHLBuffer::
 PredefTemp:: ; cfb5
 	ds 2
+wFarCallSavedA:: ; only uses the first byte
 PredefAddress:: ; cfb7
 	ds 2
 wFarCallBCBuffer:: ; cfb9

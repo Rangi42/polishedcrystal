@@ -314,13 +314,11 @@ BattleJumptable::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call .jp_hl
+	call _hl_
 	or 1
 .end
 	pop bc
 	ret
-.jp_hl
-	jp hl
 
 GetMoveAttr::
 ; Assuming hl = Moves + x, return attribute x of move a.
