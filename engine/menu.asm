@@ -1,7 +1,7 @@
 _2DMenu_:: ; 2400e
 	ld hl, CopyMenuData2
 	ld a, [wMenuData2_2DMenuItemStringsBank]
-	rst FarCall
+	call FarCall_hl
 
 	call Draw2DMenu
 	call UpdateSprites
@@ -12,7 +12,7 @@ _2DMenu_:: ; 2400e
 _InterpretBattleMenu:: ; 24022
 	ld hl, CopyMenuData2
 	ld a, [wMenuData2_2DMenuItemStringsBank]
-	rst FarCall
+	call FarCall_hl
 
 	call Draw2DMenu
 	call UpdateSprites
@@ -81,7 +81,7 @@ GetMenuNumberOfRows: ; 240d3
 	ret
 ; 240db
 
-Place2DMenuItemStrings: ; 240db
+Place2DMenuItemStrings:
 	ld hl, wMenuData2_2DMenuItemStringsAddr
 	ld e, [hl]
 	inc hl
@@ -120,9 +120,7 @@ Place2DMenuItemStrings: ; 240db
 	or h
 	ret z
 	ld a, [wMenuData2_2DMenuFunctionBank]
-	rst FarCall
-	ret
-; 2411a
+	jp FarCall_hl
 
 
 Init2DMenuCursorPosition: ; 2411a (9:411a)

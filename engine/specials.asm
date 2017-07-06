@@ -11,8 +11,7 @@ endr
 	ld h, [hl]
 	ld l, a
 	ld a, b
-	rst FarCall
-	ret
+	jp FarCall_hl
 ; c029
 
 SpecialsPointers:: ; c029
@@ -367,7 +366,7 @@ Special_StartGameCornerGame: ; c39a
 	ld h, [hl]
 	ld l, a
 	pop af
-	rst FarCall
+	call FarCall_hl
 	jp ExitAllMenus
 ; c3ae
 

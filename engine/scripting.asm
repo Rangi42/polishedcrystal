@@ -266,7 +266,7 @@ StopScript: ; 96e11
 	ret
 ; 96e17
 
-Script_callasm: ; 96e17
+Script_callasm:
 ; script command 0xe
 ; parameters:
 ;     asm (AsmPointerParam)
@@ -278,9 +278,7 @@ Script_callasm: ; 96e17
 	call GetScriptByte
 	ld h, a
 	ld a, b
-	rst FarCall
-	ret
-; 96e26
+	jp FarCall_hl
 
 Script_special: ; 96e26
 ; script command 0xf
@@ -295,7 +293,7 @@ Script_special: ; 96e26
 	ret
 ; 96e35
 
-Script_ptcallasm: ; 96e35
+Script_ptcallasm:
 ; script command 0x10
 ; parameters:
 ;     asm (PointerToAsmPointerParam)
@@ -310,9 +308,7 @@ Script_ptcallasm: ; 96e35
 	ld h, [hl]
 	ld l, a
 	ld a, b
-	rst FarCall
-	ret
-; 96e45
+	jp FarCall_hl
 
 Script_jumptextfaceplayer: ; 96e45
 ; script command 0x51
@@ -510,7 +506,7 @@ Script_verticalmenu: ; 96f30
 
 	ld a, [ScriptBank]
 	ld hl, VerticalMenu
-	rst FarCall
+	call FarCall_hl
 	ld a, [wMenuCursorY]
 	jr nc, .ok
 	xor a
@@ -524,7 +520,7 @@ Script__2dmenu: ; 96f41
 
 	ld a, [ScriptBank]
 	ld hl, _2DMenu
-	rst FarCall
+	call FarCall_hl
 	ld a, [wMenuCursorBuffer]
 	jr nc, .ok
 	xor a
@@ -2284,7 +2280,7 @@ Script_stringtotext: ; 9777d
 	ld d, a
 	ld a, [ScriptBank]
 	ld hl, CopyName1
-	rst FarCall
+	call FarCall_hl
 	ld de, StringBuffer2
 	jp ConvertMemToText
 ; 97792

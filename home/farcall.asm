@@ -1,4 +1,4 @@
-FarCall_de:: ; 2d54
+FarCall_de::
 ; Call a:de.
 ; Preserves other registers.
 
@@ -13,10 +13,8 @@ FarCall_de:: ; 2d54
 .de
 	push de
 	ret
-; 2d63
 
-
-FarCall_hl:: ; 2d63
+FarCall_hl::
 ; Call a:hl.
 ; Preserves other registers.
 
@@ -26,7 +24,25 @@ FarCall_hl:: ; 2d63
 	ld a, [hBuffer]
 	rst Bankswitch
 	call FarJump_hl
-; 2d6e
+	jr ReturnFarCall
+
+RstFarCall::
+; Calls BANK(x):x where x is assumed to be defined below the rst FarCall, and skips these
+; to avoid running them as instructions, to save space. Preserves bc, de
+	pop hl
+	ld a, [hli]
+	ld [hBuffer], a
+	ld a, [hli]
+	inc hl
+	push hl
+	dec hl
+	ld h, [hl]
+	ld l, a
+	ld a, [hROMBank]
+	push af
+	ld a, [hBuffer]
+	rst Bankswitch
+	call FarJump_hl
 
 ReturnFarCall:: ; 2d6e
 ; We want to retain the contents of f.

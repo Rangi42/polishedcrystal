@@ -5,7 +5,7 @@ SECTION "rst0",ROM0[0]
 	jp Start
 
 SECTION "rst8",ROM0[FarCall]
-	jp FarCall_hl
+	jp RstFarCall
 
 SECTION "rst10",ROM0[Bankswitch]
 	ld [hROMBank], a

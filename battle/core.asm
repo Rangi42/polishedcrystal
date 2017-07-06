@@ -4054,17 +4054,16 @@ PursuitSwitch: ; 3dc5b
 
 	; Kludge: if player is target, override CurPlayerMon to
 	; properly update party struct (FIXME: make this unneccessary)
-	ld hl, DoPlayerTurn
 	ld a, [hBattleTurn]
 	and a
-	jr z, .do_turn
-	ld hl, DoEnemyTurn
+	jr nz, .enemy
+	farcall DoPlayerTurn
+	jr .finish_pursuit
+.enemy
 	ld a, [LastPlayerMon]
 	ld [CurBattleMon], a
-.do_turn
-	ld a, BANK(DoPlayerTurn)
-	rst FarCall
-
+	farcall DoEnemyTurn
+.finish_pursuit
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld a, $ff
@@ -4349,15 +4348,6 @@ UseHeldStatusHealingItem: ; 3dde9
 	res SUBSTATUS_CONFUSED, [hl]
 
 .skip_confuse
-	ld hl, CalcPlayerStats
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_pointer
-	ld hl, CalcEnemyStats
-
-.got_pointer
-	ld a, BANK(CalcEnemyStats)
-	rst FarCall
 	call ItemRecoveryAnim
 	call UseBattleItem
 	ld a, $1
@@ -8157,7 +8147,7 @@ GetBackpic_DoAnim: ; 3f46f
 	xor a
 	ld [hBattleTurn], a
 	ld a, BANK(BattleAnimCommands)
-	rst FarCall
+	call FarCall_hl
 	pop af
 	ld [hBattleTurn], a
 	ret
@@ -8195,7 +8185,7 @@ GetFrontpic_DoAnim: ; 3f4b4
 	push af
 	call SetEnemyTurn
 	ld a, BANK(BattleAnimCommands)
-	rst FarCall
+	call FarCall_hl
 	pop af
 	ld [hBattleTurn], a
 	ret

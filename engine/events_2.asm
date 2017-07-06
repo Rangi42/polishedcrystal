@@ -431,7 +431,7 @@ _DelCmdQueue: ; 97e72
 	ret
 ; 97e79
 
-HandleQueuedCommand: ; 97e79
+HandleQueuedCommand:
 	ld hl, CMDQUEUE_TYPE
 	add hl, bc
 	ld a, [hl]
@@ -452,9 +452,7 @@ endr
 	ld h, [hl]
 	ld l, a
 	pop af
-	rst FarCall
-	ret
-; 97e94
+	jp FarCall_hl
 
 .Jumptable_ba: ; 97e94
 	dba CmdQueue_Null

@@ -3753,7 +3753,6 @@ BattleCommand_DamageCalc: ; 35612
 
 	; Ability boosts. Some are done elsewhere depending on needs.
 	farcall ApplyDamageAbilities
-	ld hl, hMultiplier ; The Ability logic changes hl
 
 	; If we're burned (and don't have Guts), halve damage
 	ld a, BATTLE_VARS_STATUS
@@ -9455,10 +9454,7 @@ PlayOpponentBattleAnim: ; 37e54
 
 CallBattleCore: ; 37e73
 	ld a, BANK(BattleCore)
-	rst FarCall
-	ret
-
-; 37e77
+	jp FarCall_hl
 
 ShowPotentialAbilityActivation:
 ; This avoids duplicating checks to avoid text spam. This will run
