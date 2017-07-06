@@ -29,25 +29,12 @@ Random:: ; 2f8c
 	ret
 ; 2f9f
 
-BattleRandom:: ; 2f9f
+BattleRandom::
 ; _BattleRandom lives in another bank.
 
 ; It handles all RNG calls in the battle engine, allowing
 ; link battles to remain in sync using a shared PRNG.
-
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_BattleRandom)
-	rst Bankswitch
-
-	call _BattleRandom
-
-	ld [PredefTemp + 1], a
-	pop af
-	rst Bankswitch
-	ld a, [PredefTemp + 1]
-	ret
-; 2fb1
+	farjp _BattleRandom
 
 
 RandomRange:: ; 2fb1

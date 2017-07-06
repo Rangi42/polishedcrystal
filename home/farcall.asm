@@ -41,11 +41,11 @@ RstFarCall::
 	push af
 	sub $80
 	jr nc, .jump
-	ld [hBuffer], a
 	pop af
 	push hl
 	jr .ok
 .jump
+	ld [hBuffer], a
 	pop af
 .ok
 	dec hl
@@ -56,9 +56,10 @@ RstFarCall::
 	push af
 	ld a, [hBuffer]
 	rst Bankswitch
-	call RecoverHLAndCall
+	call RetrieveHLAndCallFunction
 
 ReturnFarCall::
+	ld [wFarCallSavedA], a
 	; We want to retain the contents of f.
 	; To do this, we can pop to bc instead of af.
 	ld a, b
@@ -75,13 +76,14 @@ ReturnFarCall::
 	ld b, a
 	ld a, [wFarCallBCBuffer + 1]
 	ld c, a
+	ld a, [wFarCallSavedA]
 	ret
 
-RecoverHLAndCall:
+RetrieveHLAndCallFunction:
 	push hl
-	ld [PredefTemp], a
+	ld [wFarCallHLBuffer], a
 	ld h, a
-	ld [PredefTemp + 1], a
+	ld [wFarCallHLBuffer + 1], a
 	ld l, a
 	ld a, [wFarCallSavedA]
 	ret

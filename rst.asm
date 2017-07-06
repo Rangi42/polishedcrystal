@@ -19,20 +19,10 @@ SECTION "rst20",ROM0[$20]
 	rst $38
 
 SECTION "rst28",ROM0[JumpTable]
-	push de
-	ld e, a
-	ld d, 0
-rept 2
-	add hl, de
-endr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	pop de
-	jp hl
+	jp _Jumptable
 
-; SECTION "rst30",ROM0[$30]
-; rst30 is midst rst28
+SECTION "rst30",ROM0[Predef]
+	jp _Predef
 
 SECTION "rst38",ROM0[$38]
 	rst $38

@@ -1126,12 +1126,10 @@ TextDelayFrames:: ; cfb2
 VBlankOccurred:: ; cfb3
 	ds 1
 
-PredefID:: ; cfb4
+wFarCallSavedA::
 	ds 1
 wFarCallHLBuffer::
-PredefTemp:: ; cfb5
 	ds 2
-wFarCallSavedA:: ; only uses the first byte
 PredefAddress:: ; cfb7
 	ds 2
 wFarCallBCBuffer:: ; cfb9

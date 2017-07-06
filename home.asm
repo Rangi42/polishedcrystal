@@ -138,6 +138,19 @@ HideSprites:: ; 3016
 
 INCLUDE "home/copy2.asm"
 
+_Jumptable:
+	push de
+	ld e, a
+	ld d, 0
+rept 2
+	add hl, de
+endr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop de
+	jp hl
+
 LoadTileMapToTempTileMap:: ; 309d
 ; Load TileMap into TempTileMap
 	ld a, [rSVBK]
