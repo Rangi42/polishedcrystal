@@ -1,7 +1,7 @@
 FarCall_de::
 ; Call a:de.
 ; Preserves other registers.
-
+; TODO: Get rid of this, it's only used in one place
 	ld [hBuffer], a
 	ld a, [hROMBank]
 	push af
@@ -21,10 +21,7 @@ FarCall_hl::
 	ld [hBuffer], a
 	ld a, [hROMBank]
 	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-	call _hl_
-	jr ReturnFarCall
+	jr DoFarCall
 
 RstFarCall::
 ; Call the following dba pointer on the stack. Doesn't mangle registers in the process
@@ -54,6 +51,7 @@ RstFarCall::
 	ld h, a
 	ld a, [hROMBank]
 	push af
+DoFarCall:
 	ld a, [hBuffer]
 	rst Bankswitch
 	call RetrieveHLAndCallFunction
