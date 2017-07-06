@@ -81,9 +81,9 @@ ReturnFarCall::
 
 RetrieveHLAndCallFunction:
 	push hl
-	ld [wFarCallHLBuffer], a
+	ld hl, wFarCallHLBuffer
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld [wFarCallHLBuffer + 1], a
-	ld l, a
 	ld a, [wFarCallSavedA]
 	ret
