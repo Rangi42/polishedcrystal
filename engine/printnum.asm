@@ -161,6 +161,11 @@ _PrintNum:: ; c4c7
 	ld [hl], a
 	pop af
 	ld [hPrintNum1], a
+	inc e
+	dec e
+	jr nz, .money_leading_zero
+	inc hl
+	ld [hl], "."
 
 .money_leading_zero
 	call .AdvancePointer
