@@ -326,50 +326,59 @@ CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
-	dbw TILESET_BATTLE_TOWER_OUT, .battle_tower_out
 	dbw TILESET_KANTO_1, .kanto1
+	dbw TILESET_KANTO_2, .kanto2
 	dbw TILESET_PARK, .park
 	dbw TILESET_FOREST, .forest
 	dbw TILESET_SAFARI_ZONE, .safari_zone
+	dbw TILESET_SHAMOUTI_ISLAND, .shamouti_island
+	dbw TILESET_VALENCIA_ISLAND, .valencia_island
 	dbw TILESET_FARAWAY_ISLAND, .faraway_island
-	dbw TILESET_KANTO_2, .kanto2
 	db -1
 
-.johto1 ; Johto OW
 ; Which meta tile are we facing, which should we replace it with, and which animation?
-	db $03, $02, $01
-	db -1
 
+.shamouti_island ; Shamouti Island
+	db $95, $4c, $01
+.johto1 ; Johto OW
 .johto2 ; Goldenrod area
+.valencia_island ; Valencia Island
 	db $03, $02, $01
 	db -1
 
 .kanto1 ; Kanto OW
+	db $94, $0a, $01
+	db $95, $0a, $01
+	db $96, $0a, $01
+	db $97, $0a, $01
+	db $98, $0a, $01
+	db $99, $0a, $01
+	db $9c, $0a, $01
+	db $9d, $0a, $01
+	db $a0, $0a, $01
+	db $a1, $0a, $01
+.kanto2 ; Route 23
 	db $0b, $0a, $01
 	db -1
 
-.battle_tower_out ; outside Battle Tower
-	db $03, $02, $01
-	db -1
-
 .park ; National Park
-	db $13, $03, $01
 	db $03, $04, $01
+	db $13, $03, $01
 	db -1
 
 .forest ; Ilex Forest + Yellow Forest
-	db $2e, $01, $01
-	db $2f, $2c, $01
-	db $30, $0e, $01
-	db $31, $0c, $01
-	db $51, $01, $01
-	db $52, $09, $01
-	db $53, $11, $01
+	db $03, $01, $01
+	db $07, $05, $01
+	db $13, $11, $01
+	db $17, $19, $01
+	db $3b, $37, $01
+	db $4b, $47, $01
+	db $57, $0b, $01
 	db -1
 
 .safari_zone ; Safari Zone
 	db $03, $01, $01
-	db $07, $01, $01
+	db $07, $03, $01
 	db $24, $20, $01
 	db $25, $21, $01
 	db $26, $22, $01
@@ -378,10 +387,11 @@ CutGrassBlockPointers: ; c862
 	db $29, $0a, $01
 	db $2a, $0a, $01
 	db $2b, $0a, $01
-	db $2c, $0a, $01
-	db $2d, $0a, $01
-	db $2e, $0a, $01
-	db $2f, $0a, $01
+	db $2c, $28, $01
+	db $2d, $29, $01
+	db $2e, $2a, $01
+	db $2f, $2b, $01
+	db $4b, $27, $01
 	db -1
 
 .faraway_island ; Faraway Island
@@ -394,9 +404,6 @@ CutGrassBlockPointers: ; c862
 	db $0d, $02, $01
 	db $0e, $02, $01
 	db $0f, $02, $01
-	db -1
-
-.kanto2 ; Route 23
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4

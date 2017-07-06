@@ -124,9 +124,9 @@ WarmBeachLassScript:
 	iffalse .NoBuy
 	checkmoney $0, 4000
 	if_equal $2, .NotEnoughMoney
-	giveitem LEFTOVERS
+	giveitem SHELL_BELL
 	iffalse .NoRoom
-	setflag ENGINE_BOUGHT_LEFTOVERS
+	setflag ENGINE_SEASHORE_SHELL_BELL
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
