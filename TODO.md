@@ -219,6 +219,7 @@ Some of these may never be added; they're just suggestions.
 * Kurt gives Balls right away once per day
 * Replace the Apricorns with an Apricorn Box and add more Berries
 * Add the improved PRNG from Prism
+* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
 * Evolution Guru says how your lead Pokémon can evolve
 * Sometimes wild Pokémon know an egg move
 * Get better Wonder Trade items at higher levels

@@ -315,7 +315,11 @@ FarReadMart: ; 15bbb
 	jr .ReadMartItem
 ; 15be5
 
+; FarReadTMMart needs to use GetFarByte from MartPointerBank.
+; ReadMart could just load from hl directly.
+; But their structures are identical, so here they both use GetFarByte.
 FarReadTMMart:
+ReadMart: ; 15c25
 ; Load the mart pointer.  Mart data is local (no need for bank).
 	ld hl, MartPointer
 	ld a, [hli]
@@ -443,51 +447,6 @@ GetMartPrice: ; 15bf0
 	sub "0"
 	ret
 ; 15c25
-
-ReadMart: ; 15c25
-; Load the mart pointer.  Mart data is local (no need for bank).
-	ld hl, MartPointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	push hl
-; set hl to the first item
-	inc hl
-	ld bc, wMartItem1BCD
-	ld de, CurMart + 1
-.loop
-; copy the item to CurMart + (ItemIndex)
-	ld a, [hli]
-	ld [de], a
-	inc de
-; -1 is the terminator
-	cp -1
-	jr z, .done
-
-	push de
-; copy the price to de
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-; convert the price to 3-byte BCD at [bc]
-	push hl
-	ld h, b
-	ld l, c
-	call GetMartPrice
-	ld b, h
-	ld c, l
-	pop hl
-
-	pop de
-	jr .loop
-
-.done
-	pop hl
-	ld a, [hl]
-	ld [CurMart], a
-	ret
-; 15c51
 
 BuyMenu: ; 15c62
 	call BuyMenu_InitGFX
