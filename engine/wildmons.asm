@@ -1101,27 +1101,32 @@ endr
 	; nicknames have uneven length, so always use the first mon
 	bit TRNTYPE_NICKNAME, b
 	jr nz, .got_mon
-	; NORMAL uses 2 bytes per mon
+	; TRAINERTYPE_NORMAL uses 2 bytes per mon
 	ld c, 2
-	; ITEM uses 1 more byte
+	; TRAINERTYPE_ITEM uses 1 more byte
 	bit TRNTYPE_ITEM, b
 	jr z, .no_item
 	inc c
 .no_item
-	; DVS uses 3 more bytes
+	; TRAINERTYPE_EVs uses 1 more byte
+	bit TRNTYPE_EVS, b
+	jr z, .no_evs
+	inc c
+.no_evs
+	; TRAINERTYPE_DVS uses 3 more bytes
 	bit TRNTYPE_DVS, b
 	jr z, .no_dvs
 	inc c
 	inc c
 	inc c
 .no_dvs
-	; PERSONALITY uses 2 more bytes
+	; TRAINERTYPE_PERSONALITY uses 2 more bytes
 	bit TRNTYPE_PERSONALITY, b
 	jr z, .no_personality
 	inc c
 	inc c
 .no_personality
-	; MOVES uses 4 more bytes
+	; TRAINERTYPE_MOVES uses 4 more bytes
 	bit TRNTYPE_MOVES, b
 	jr z, .no_moves
 	inc c
