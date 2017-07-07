@@ -1037,11 +1037,7 @@ BattleConsumePP:
 	jr z, .pp_vars_ok
 	ld hl, OTPartyMon1PP
 .set_party_pp
-	push bc
-	push de
 	call GetPartyLocation
-	pop de
-	pop bc
 .pp_vars_ok
 	ld a, [bc]
 	ld c, a
