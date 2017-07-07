@@ -505,14 +505,6 @@ endr
 .caught
 	ld a, [wEnemyBackupSpecies]
 	ld [EnemyMonSpecies], a
-	ld [CurSpecies], a
-	ld [CurPartySpecies], a
-	call GetBaseData
-
-	ld de, EnemyMonMaxHP
-	ld b, FALSE
-	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS -1))
-	predef CalcPkmnStats
 
 	ld hl, wEnemyBackupDVs
 	ld de, EnemyMonDVs
@@ -556,6 +548,16 @@ endr
 	predef FlagPredef
 
 	farcall GiveExperiencePointsAfterCatch
+
+	ld a, [EnemyMonSpecies]
+	ld [CurSpecies], a
+	ld [CurPartySpecies], a
+	call GetBaseData
+
+	ld de, EnemyMonMaxHP
+	ld b, FALSE
+	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS -1))
+	predef CalcPkmnStats
 
 	ld a, [EnemyMonLevel]
 	ld [CurPartyLevel], a
