@@ -1329,6 +1329,17 @@ BattleCommand_Stab: ; 346d2
 	call Divide
 
 	; Store in curDamage
+	ld a, [hMultiplicand]
+	and a
+	jr z, .damage_ok
+
+	; Store $ffff
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+	ret
+
+.damage_ok
 	ld a, [hMultiplicand + 1]
 	ld [hli], a
 	ld b, a
@@ -3921,83 +3932,30 @@ DamagePass3:
 	jp Divide
 
 DamagePass4:
-	; If we exceed $ffff at this point, skip to capping to 997 as the final damage.
+	; Add 2 unless damage is at least $ff00 -- set CurDamage to $ff** in that case.
+	ld hl, CurDamage
 	ld a, [hQuotient]
 	and a
-	jr nz, .Cap
+	jr z, .damage_ok
 
-	; Update CurDamage (capped at 997).
-	ld hl, CurDamage
-	ld b, [hl]
-	ld a, [hQuotient + 2]
-	add b
-	ld [hQuotient + 2], a
-	jr nc, .dont_cap_1
+	; Store $ff**
+	ld [hl], $ff
+.end
+	or 1
+	ret
 
+.damage_ok
 	ld a, [hQuotient + 1]
-	inc a
-	ld [hQuotient + 1], a
-	and a
-	jr z, .Cap
-
-.dont_cap_1
-	ld a, [hQuotient + 1]
-	cp 998 / $100
-	jr c, .dont_cap_2
-
-	cp 998 / $100 + 1
-	jr nc, .Cap
-
-	ld a, [hQuotient + 2]
-	cp 998 % $100
-	jr nc, .Cap
-
-.dont_cap_2
-	inc hl
-
-	ld a, [hQuotient + 2]
-	ld b, [hl]
-	add b
-	ld [hld], a
-
-	ld a, [hQuotient + 1]
-	ld b, [hl]
-	adc b
-	ld [hl], a
-	jr c, .Cap
-
-	ld a, [hl]
-	cp 998 / $100
-	jr c, .dont_cap_3
-
-	cp 998 / $100 + 1
-	jr nc, .Cap
-
-	inc hl
-	ld a, [hld]
-	cp 998 % $100
-	jr c, .dont_cap_3
-
-.Cap:
-	ld a, 997 / $100
 	ld [hli], a
-	ld a, 997 % $100
-	ld [hld], a
-
-
-.dont_cap_3
-	; Minimum neutral damage is 2 (bringing the cap to 999).
-	inc hl
-	ld a, [hl]
+	ld b, a
+	inc b
+	jr z, .end
+	ld a, [hQuotient + 2]
 	add 2
 	ld [hld], a
-	jr nc, .dont_floor
+	jr nc, .end
 	inc [hl]
-.dont_floor
-
-	ld a, 1
-	and a
-	ret
+	jr .end
 
 
 BattleCommand_ConstantDamage: ; 35726
