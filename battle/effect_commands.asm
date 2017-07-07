@@ -5039,74 +5039,58 @@ PostStatus:
 	farjp RunEnemyStatusHealAbilities
 
 BattleCommand_SleepTarget:
-	call GetOpponentItem
-	ld a, b
-	cp HELD_PREVENT_SLEEP
-	jr nz, .not_protected_by_item
-
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
-	ld hl, ProtectedByText
-	jr .fail
-
-.not_protected_by_item
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
-	ld d, h
-	ld e, l
-	ld a, [de]
-	and SLP
-	ld hl, AlreadyAsleepText
-	jr nz, .fail
-
-	ld a, [AttackMissed]
-	and a
-	jp nz, PrintDidntAffect2
-
-	call GetOpponentAbilityAfterMoldBreaker
-	cp INSOMNIA
-	jr z, .ability_ok
-	cp VITAL_SPIRIT
-	jr z, .ability_ok
-	call IsLeafGuardActive
-	jr z, .ability_ok
-	ld a, [de]
-	and a
-	jr nz, .fail
+	ld b, 1
+	call CanSleepTarget
+	jr c, .ability_ok
+	jr nz, .failed
 
 	call CheckSubstituteOpp
-	jr nz, .fail
+	ld hl, ButItFailedText
+	jr nz, .failed
+	ld a, [AttackMissed]
+	and a
+	ld hl, AttackMissedText
+	jr nz, .failed
 
 	call AnimateCurrentMove
-
-.random_loop
-	call BattleRandom
-	and %11
-	jr z, .random_loop
+	ld c, 30
+	call DelayFrames
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_SLP
+	call PlayOpponentBattleAnim
+	ld a, $1
+	ld [hBGMapMode], a
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	push hl
+	ld a, 3
+	call BattleRandomRange
 	inc a
-	ld [de], a
+	pop hl
+	ld [hl], a
 	call UpdateOpponentInParty
-	call RefreshBattleHuds
-
+	call UpdateBattleHuds
 	ld hl, FellAsleepText
 	call StdBattleTextBox
-
 	call PostStatus
+
+	; Check if we were cured
 	ld a, BATTLE_VARS_STATUS_OPP
 	cp 1 << SLP
 	jp z, OpponentCantMove
 	ret
 
-.ability_ok
-	farcall ShowEnemyAbilityActivation
-	jp PrintDidntAffect2
-
-.fail
+.failed
 	push hl
 	call AnimateFailedMove
 	pop hl
 	jp StdBattleTextBox
+
+.ability_ok
+	farcall ShowEnemyAbilityActivation
+	call AnimateFailedMove
+	jp PrintDoesntAffect
 
 CanPoisonTarget:
 	ld a, b
@@ -5125,6 +5109,11 @@ CanParalyzeTarget:
 	lb bc, ELECTRIC, ELECTRIC
 	lb de, LIMBER, HELD_PREVENT_PARALYZE
 	ld h, 1 << PAR
+CanSleepTarget:
+	ld a, b
+	lb bc, -1, -1
+	lb de, INSOMNIA, HELD_PREVENT_SLEEP
+	ld h, SLP
 CanStatusTarget:
 ; Returns:
 ;     z -- we can
@@ -5158,6 +5147,11 @@ CanStatusTarget:
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 .got_ability
+	; Vital Spirit does the same thing as Insomnia so treat it as Insomnia.
+	cp VITAL_SPIRIT
+	jr nz, .no_replace
+	ld a, INSOMNIA
+.no_replace
 	cp d
 	jr z, .cant_ability
 	call DoLeafGuardCheck
