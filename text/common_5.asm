@@ -215,19 +215,16 @@ UnknownText_0x1c58bc::
 
 UnknownText_0x1c58d1::
 	text "Here you go!"
-	para ""
 	done
 
 UnknownText_0x1c58e0::
 	text "You don't have"
 	line "enough points."
-	para ""
 	done
 
 UnknownText_0x1c58ff::
 	text "You have no room"
 	line "for it."
-	para ""
 	done
 
 UnknownText_0x1c591a::
