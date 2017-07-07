@@ -226,9 +226,7 @@ ConsumeUserItem::
 	ld de, EnemyMonItem
 	ld hl, OTPartyMon1Item
 .got_item_pointers
-	push bc
 	call GetPartyLocation
-	pop bc
 
 	; Air Balloons are consumed permanently, so don't write it to UsedItems
 	ld a, [de]

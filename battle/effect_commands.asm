@@ -6693,12 +6693,10 @@ BattleCommand_ForceSwitch: ; 3680f
 	cp c
 	jr z, .random_loop_trainer
 	push af
-	push bc
 	ld hl, OTPartyMon1HP
 	call GetPartyLocation
 	ld a, [hli]
 	or [hl]
-	pop bc
 	pop de
 	jr z, .random_loop_trainer
 	ld a, d
@@ -6785,12 +6783,10 @@ BattleCommand_ForceSwitch: ; 3680f
 	jr z, .random_loop_trainer_playeristarget
 
 	push af
-	push bc
 	ld hl, PartyMon1HP
 	call GetPartyLocation
 	ld a, [hli]
 	or [hl]
-	pop bc
 	pop de
 	jr z, .random_loop_trainer_playeristarget
 

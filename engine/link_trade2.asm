@@ -42,11 +42,9 @@ Functionfb5dd: ; fb5dd
 	ld a, c
 	cp d
 	jr z, .next
-	push bc
 	ld a, c
 	ld hl, PartyMon1HP
 	call GetPartyLocation
-	pop bc
 	ld a, [hli]
 	or [hl]
 	jr nz, .done

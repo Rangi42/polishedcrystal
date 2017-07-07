@@ -3497,9 +3497,7 @@ SetGiftPartyMonCaughtData: ; 4dba3
 	ld a, [PartyCount]
 	dec a
 	ld hl, PartyMon1CaughtData
-	push bc
 	call GetPartyLocation
-	pop bc
 SetGiftMonCaughtData: ; 4dbaf
 	; CaughtGender
 	; b contains it

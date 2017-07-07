@@ -1204,9 +1204,7 @@ RegainItemByAbility:
 	ld a, [CurOTMon]
 	ld hl, OTPartyMon1Item
 .got_item_addr
-	push bc
 	call GetPartyLocation
-	pop bc
 	ld [hl], b
 
 	; Yes, also in trainer battles (unlike Pickup)
