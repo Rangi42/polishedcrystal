@@ -127,7 +127,6 @@ SpecialsPointers:: ; c029
 	add_special CheckCaughtCelebi
 	add_special SpecialStatsJudge
 	add_special SpecialBuenasPassword
-	add_special SpecialBuenaPrize
 	add_special TeachDratiniExtremeSpeed
 	add_special Special_SampleKenjiBreakCountdown
 	add_special SpecialBeastsCheck

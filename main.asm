@@ -799,6 +799,21 @@ MenuDataHeader_0x24b1d: ; 0x24b1d
 	dw NULL
 	db 1 ; default option
 
+PlaceBlueCardPointsTopRight:
+	hlcoord 11, 0
+	lb bc, 1, 7
+	call TextBox
+	hlcoord 12, 1
+	ld de, .PointsString
+	call PlaceString
+	ld de, wBlueCardBalance
+	lb bc, 0 | 1, 3
+	hlcoord 16, 1
+	jp PrintNum
+
+.PointsString:
+	db "Pts@"
+
 Special_DisplayCoinCaseBalance: ; 24b25
 	; Place a text box of size 1x7 at 11, 0.
 	hlcoord 11, 0
@@ -806,9 +821,6 @@ Special_DisplayCoinCaseBalance: ; 24b25
 	call TextBox
 	hlcoord 12, 0
 	ld de, CoinString
-	call PlaceString
-	hlcoord 17, 1
-	ld de, ShowMoney_TerminatorString
 	call PlaceString
 	ld de, Coins
 	lb bc, 2, 5
@@ -838,8 +850,6 @@ MoneyString: ; 24b83
 	db "Money@"
 CoinString: ; 24b89
 	db "Coin@"
-ShowMoney_TerminatorString: ; 24b8e
-	db "@"
 
 StartMenu_DrawBugContestStatusBox: ; 24bdc
 	hlcoord 0, 0

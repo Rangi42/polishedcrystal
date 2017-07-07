@@ -317,7 +317,7 @@ ReceptionistScript_0x5d8ff:
 	iffalse UnknownScript_0x5d90f
 	writetext UnknownText_0x5e392
 	buttonsound
-	special SpecialBuenaPrize
+	pokemart MARTTYPE_BLUECARD, 0
 	closetext
 	end
 
