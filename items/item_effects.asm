@@ -505,6 +505,9 @@ endr
 .caught
 	ld a, [wEnemyBackupSpecies]
 	ld [EnemyMonSpecies], a
+	ld [CurSpecies], a
+	ld [CurPartySpecies], a
+	call GetBaseData
 
 	ld de, EnemyMonMaxHP
 	ld b, FALSE
