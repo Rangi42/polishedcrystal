@@ -3774,7 +3774,7 @@ BattleCommand_DamageCalc: ; 35612
 
 	ld a, BATTLE_VARS_ABILITY
 	cp SNIPER
-	ld a, $21
+	ld a, $94
 	jr z, .got_crit_mod
 	ld a, $32
 .got_crit_mod

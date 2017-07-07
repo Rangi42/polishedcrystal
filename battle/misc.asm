@@ -66,11 +66,10 @@ DoWeatherModifiers: ; fbda4
 	lb de, WATER, FIRE
 .check_movetype
 	ld a, b ; move type
-	cp d
-	jr z, .boost
 	cp e
 	jr z, .reduce
-	ret z
+	cp d
+	ret nz
 .boost
 	ld a, [wTypeMatchup]
 	ld b, a
