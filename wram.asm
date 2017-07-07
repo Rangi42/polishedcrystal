@@ -497,7 +497,10 @@ AITempAbility::
 AITempItem::
 	ds 1
 
-	ds 16 ; unused
+wEnemyBackupSpecies::
+	ds 1
+
+	ds 15 ; unused
 
 BattleScriptBufferLoc:: ; c6b2
 	ds 2
@@ -593,7 +596,7 @@ wSafariMonAngerCount:: ds 1
 wSafariMonEating:: ds 2
 wEnemyBackupDVs:: ; used when enemy is transformed
 	ds 3
-wEnemyBackupPersonality:: ; TODO: used when enemy is transformed
+wEnemyBackupPersonality:: ; Assumed to be below DVs
 wEnemyBackupShiny::
 wEnemyBackupAbility::
 wEnemyBackupNature::

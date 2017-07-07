@@ -349,29 +349,9 @@ CherishBall: ; e8a2
 	cp MASTER_BALL
 	jp z, .catch_without_fail
 	ld a, [CurItem]
-	ld c, a
 	ld hl, BallMultiplierFunctionTable
+	call BattleJumptable
 
-.get_multiplier_loop
-	ld a, [hli]
-	cp $ff
-	jr z, .skip_or_return_from_ball_fn
-	cp c
-	jr z, .call_ball_function
-rept 2
-	inc hl
-endr
-	jr .get_multiplier_loop
-
-.call_ball_function
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, .skip_or_return_from_ball_fn
-	push de
-	jp hl
-
-.skip_or_return_from_ball_fn
 	ld a, [CurItem]
 	cp LEVEL_BALL
 	ld a, b
@@ -521,73 +501,21 @@ endr
 	cp $4
 	ld hl, Text_ThreeShakes
 	jp z, .shake_and_break_free
+
 .caught
+	ld a, [wEnemyBackupSpecies]
+	ld [EnemyMonSpecies], a
 
-	ld hl, EnemyMonStatus
-	ld a, [hli]
-	push af
-	inc hl
-	ld a, [hli]
-	push af
-	ld a, [hl]
-	push af
-	push hl
-	ld hl, EnemyMonItem
-	ld a, [hl]
-	push af
-	push hl
-	ld hl, EnemySubStatus2
-	ld a, [hl]
-	push af
-	set SUBSTATUS_TRANSFORMED, [hl]
-	bit SUBSTATUS_TRANSFORMED, a
-	jr z, .not_ditto
+	ld de, EnemyMonMaxHP
+	ld b, FALSE
+	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS -1))
+	predef CalcPkmnStats
 
-	; not only useless but introduces the Ditto transform glitch
-	; ld a, DITTO
-	; ld [TempEnemyMonSpecies], a
-	jr .load_data
-
-.not_ditto
-	set SUBSTATUS_TRANSFORMED, [hl]
 	ld hl, wEnemyBackupDVs
-	ld a, [EnemyMonDVs]
-	ld [hli], a
-	ld a, [EnemyMonDVs + 1]
-	ld [hli], a
-	ld a, [EnemyMonDVs + 2]
-	ld [hl], a
-	ld hl, wEnemyBackupPersonality
-	ld a, [EnemyMonPersonality]
-	ld [hli], a
-	ld a, [EnemyMonPersonality + 1]
-	ld [hl], a
+	ld de, EnemyMonDVs
+	ld bc, 5
+	call CopyBytes
 
-.load_data
-	ld a, [TempEnemyMonSpecies]
-	ld [CurPartySpecies], a
-	ld a, [EnemyMonLevel]
-	ld [CurPartyLevel], a
-	farcall LoadEnemyMon
-
-	pop af
-	ld [EnemySubStatus2], a
-
-	pop hl
-	pop af
-	ld [hl], a
-	pop hl
-	pop af
-	ld [hld], a
-	pop af
-	ld [hld], a
-	dec hl
-	pop af
-	ld [hl], a
-
-	ld hl, EnemySubStatus2
-	bit SUBSTATUS_TRANSFORMED, [hl]
-	jr nz, .Transformed
 	ld hl, wWildMonMoves
 	ld de, EnemyMonMoves
 	ld bc, NUM_MOVES
@@ -597,7 +525,6 @@ endr
 	ld de, EnemyMonPP
 	ld bc, NUM_MOVES
 	call CopyBytes
-.Transformed:
 
 	ld a, [EnemyMonSpecies]
 	push af

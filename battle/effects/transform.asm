@@ -57,29 +57,8 @@ BattleCommand_Transform: ; 371cd
 	inc de
 	ld bc, NUM_MOVES
 	call CopyBytes
-	ld a, [hBattleTurn]
-	and a
-	jr z, .mimic_enemy_backup
-	ld a, [de]
-	ld [wEnemyBackupDVs], a
-	inc de
-	ld a, [de]
-	ld [wEnemyBackupDVs + 1], a
-	inc de
-	ld a, [de]
-	ld [wEnemyBackupDVs + 2], a
-	inc de
-	ld a, [de]
-	ld [wEnemyBackupPersonality], a
-	inc de
-	ld a, [de]
-	ld [wEnemyBackupPersonality + 1], a
-	dec de
-	dec de
-	dec de
-	dec de
-.mimic_enemy_backup
-; copy DVs and personality
+
+	; copy DVs and personality
 	ld a, [hli]
 	ld [de], a
 	inc de

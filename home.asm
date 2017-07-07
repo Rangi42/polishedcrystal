@@ -1770,11 +1770,13 @@ GetPartyParamLocation:: ; 3917
 	ret
 ; 3927
 
-GetPartyLocation:: ; 3927
+GetPartyLocation::
 ; Add the length of a PartyMon struct to hl a times.
+	push bc
 	ld bc, PARTYMON_STRUCT_LENGTH
-	jp AddNTimes
-; 392d
+	call AddNTimes
+	pop bc
+	ret
 
 INCLUDE "home/battle.asm"
 

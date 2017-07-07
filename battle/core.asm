@@ -3697,10 +3697,6 @@ GetPartyMonDVs: ; 3da85
 ; 3da97
 
 GetEnemyMonDVs: ; 3da97
-	ld hl, EnemyMonDVs
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	ret z
 	ld hl, wEnemyBackupDVs
 	ld a, [wBattleMode]
 	dec a
@@ -3720,10 +3716,6 @@ GetPartyMonPersonality:
 	jp GetPartyLocation
 
 GetEnemyMonPersonality:
-	ld hl, EnemyMonPersonality
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	ret z
 	ld hl, wEnemyBackupPersonality
 	ld a, [wBattleMode]
 	dec a
@@ -4625,12 +4617,8 @@ DrawEnemyHUD: ; 3e043
 	ld l, c
 	dec hl
 
-	ld hl, EnemyMonDVs
+	call GetEnemyMonDVs
 	ld de, TempMonDVs
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	jr z, .ok
-	ld hl, wEnemyBackupDVs
 .ok
 rept 4
 	ld a, [hli]
@@ -8337,6 +8325,8 @@ InitEnemyWildmon: ; 3f607
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
 	call LoadEnemyMon
+	ld a, [EnemyMonSpecies]
+	ld [wEnemyBackupSpecies], a
 	ld hl, EnemyMonMoves
 	ld de, wWildMonMoves
 	ld bc, NUM_MOVES
@@ -8344,6 +8334,10 @@ InitEnemyWildmon: ; 3f607
 	ld hl, EnemyMonPP
 	ld de, wWildMonPP
 	ld bc, NUM_MOVES
+	call CopyBytes
+	ld hl, EnemyMonDVs
+	ld de, wEnemyBackupDVs
+	ld bc, 5
 	call CopyBytes
 	ld hl, EnemyMonForm
 	predef GetVariant
