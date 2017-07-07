@@ -94,7 +94,7 @@ DoMove:
 
 	; endturn_command (-2) is used to terminate branches without ending the read cycle
 	cp endturn_command
-	jr nc, .endturn_checkwhiteherb
+	jr nc, .endturn_herb
 
 	; The rest of the commands (fd and below) are read from BattleCommandPointers
 	push bc
@@ -113,13 +113,14 @@ DoMove:
 
 	jr .ReadMoveEffectCommand
 
-.endturn_checkwhiteherb
+.endturn_herb
 	; Proc White Herb
 	push af
 	call CheckWhiteHerb
 	call SwitchTurn
 	call CheckWhiteHerb
 	call SwitchTurn
+	call CheckPowerHerb
 	pop af
 	ret
 
@@ -492,21 +493,16 @@ CheckWhiteHerb:
 	cp HELD_WHITE_HERB
 	ret nz
 
-	; Check if we have any reduced stat changes, and don't proc if fainted
+	call HasUserFainted
+	ret z
+
+	; Check if we have any reduced stat changes
 	ld a, [hBattleTurn]
 	and a
-	ld de, BattleMonHP
 	ld hl, PlayerStatLevels
 	jr z, .got_stat_levels
-	ld de, EnemyMonHP
 	ld hl, EnemyStatLevels
 .got_stat_levels
-	ld a, [de]
-	ld b, a
-	inc de
-	ld a, [de]
-	or b
-	ret z
 	lb bc, NUM_LEVEL_STATS, 0
 .stat_loop
 	ld a, [hl]
@@ -528,6 +524,35 @@ CheckWhiteHerb:
 	ld hl, RegainedStatsWithItem
 	call StdBattleTextBox
 	farjp ConsumeUserItem
+
+CheckPowerHerb:
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_POWER_HERB
+	ret nz
+
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
+	call HasUserFainted
+	ret z
+
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_CHARGED, a
+	ret z
+
+	farcall ItemRecoveryAnim
+	call GetUserItem
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+
+	ld hl, BattleText_UserChargedWithItem
+	call StdBattleTextBox
+	farcall ConsumeUserItem
+	jp ResetTurn
 
 OpponentCantMove: ; 34216
 	call SwitchTurn
@@ -6930,7 +6955,7 @@ FlinchTarget: ; 36ab5
 ; 36abf
 
 
-CheckOpponentWentFirst: ; 36abf
+CheckOpponentWentFirst:
 ; Returns a=0, z if user went first
 ; Returns a=1, nz if opponent went first
 	push bc
@@ -6940,45 +6965,6 @@ CheckOpponentWentFirst: ; 36abf
 	xor b ; 1 if opponent went first
 	pop bc
 	ret
-
-; 36ac9
-
-
-BattleCommand_KingsRock: ; 36ac9
-	ld a, [AttackMissed]
-	and a
-	ret nz
-
-	call CheckSubstituteOpp
-	ret nz
-
-	call GetUserItem
-	ld a, b
-	cp HELD_FLINCH_UP ; King's Rock/Razor Fang
-	ret nz
-
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVarAddr
-	ld d, h
-	ld e, l
-	call GetUserItem
-	call BattleRandom
-	cp c
-	jr z, .ok
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp STENCH
-	ret nc
-	farcall ShowAbilityActivation
-.ok
-	call EndRechargeOpp
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVarAddr
-	set SUBSTATUS_FLINCHED, [hl]
-	ret
-
-; 36af3
-
 
 BattleCommand_CheckCharge: ; 36b3a
 ; checkcharge
@@ -7068,19 +7054,7 @@ BattleCommand_Charge: ; 36b4d
 
 	ld hl, .UsedText
 	call BattleTextBox
-
-	ld a, [hBattleTurn]
-	and a
-	ld hl, BattleMonItem
-	jr z, .got_item
-	ld hl, EnemyMonItem
-.got_item
-	ld a, [hl]
-	cp POWER_HERB
-	jp nz, EndMoveEffect
-	farcall ConsumeUsersItem
-	ld hl, .PowerHerb
-	jp BattleTextBox
+	jp EndMoveEffect
 
 .UsedText:
 	text_jump UnknownText_0x1c0d0e ; "[USER]"
@@ -7124,10 +7098,6 @@ BattleCommand_Charge: ; 36b4d
 	text_jump UnknownText_0x1c0d6c
 	db "@"
 ; 36c2c
-
-.PowerHerb:
-	text_jump Text_PowerHerbActivated
-	db "@"
 
 BattleCommand_TrapTarget: ; 36c2d
 ; traptarget

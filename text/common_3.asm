@@ -396,12 +396,6 @@ UnknownText_0x1c0d6c::
 	line "dug a hole!"
 	prompt
 
-Text_PowerHerbActivated::
-	text "<USER>'s"
-	line "Power Herb"
-	cont "activated!"
-	prompt
-
 UnknownText_0x1c0db0::
 	text "Huh?"
 	para "@@"

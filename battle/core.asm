@@ -9255,38 +9255,6 @@ BattleStartMessage: ; 3fc8b
 	jp StdBattleTextBox
 ; 3fd26
 
-ConsumeUsersItem:
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	ld a, (1 << SUBSTATUS_UNDERGROUND) | (1 << SUBSTATUS_FLYING)
-	and [hl]
-	jr nz, .skip_anim
-	farcall BattleCommand_SwitchTurn
-	call ItemRecoveryAnim
-	farcall BattleCommand_SwitchTurn
-.skip_anim
-	res SUBSTATUS_CHARGED, [hl]
-	res SUBSTATUS_UNDERGROUND, [hl]
-	res SUBSTATUS_FLYING, [hl]
-	ld a, [hBattleTurn]
-	and a
-	jr z, .PlayerItem
-	call GetOTPartymonItem
-	xor a
-	ld [bc], a
-	ld a, [wBattleMode]
-	dec a
-	ret z
-	xor a
-	ld [hl], a
-	ret
-.PlayerItem
-	call GetPartymonItem
-	xor a
-	ld [bc], a
-	ld [hl], a
-	ret
-
 CheckPluralTrainer:
 	ld a, [OtherTrainerClass]
 	cp TWINS

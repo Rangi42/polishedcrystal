@@ -164,6 +164,14 @@ BattleText_ItemSharplyRaised:
 	text "!"
 	prompt
 
+BattleText_UserChargedWithItem:
+	text "<USER>"
+	line "became charged"
+	cont "using @"
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
+
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
 	text "<TARGET>"
 	line "was hit by Future"
