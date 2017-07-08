@@ -3,7 +3,7 @@ Bank $01: $7f65 ($009b)
 Bank $02: $7f1c ($00e4)
 Bank $03: $7e3e ($01c2)
 Bank $04: $7fac ($0054)
-Bank $05: $7f83 ($007d)
+Bank $05: $7fc1 ($003f)
 Bank $06: $7fb9 ($0047)
 Bank $07: $7ff9 ($0007)
 Bank $08: $7f04 ($00fc)
@@ -159,11 +159,7 @@ Bank $0f has $04a9 bytes of free space
 Bank $63 has $04a9 bytes of free space
 Bank $75 has $049a bytes of free space
 Bank $7d has $0458 bytes of free space
-<<<<<<< HEAD
-=======
 Bank $7e has $0451 bytes of free space
-Bank $71 has $040d bytes of free space
->>>>>>> parent of 3374f5f... Start working on new battle tower pokémon initialization.
 Bank $45 has $0407 bytes of free space
 Bank $49 has $0404 bytes of free space
 Bank $71 has $03eb bytes of free space
@@ -236,7 +232,6 @@ Bank $15 has $0085 bytes of free space
 Bank $67 has $0085 bytes of free space
 Bank $44 has $0080 bytes of free space
 Bank $7f has $0080 bytes of free space
-Bank $05 has $007d bytes of free space
 Bank $10 has $0075 bytes of free space
 Bank $25 has $0075 bytes of free space
 Bank $3a has $0072 bytes of free space
@@ -249,6 +244,7 @@ Bank $04 has $0054 bytes of free space
 Bank $06 has $0047 bytes of free space
 Bank $14 has $0047 bytes of free space
 Bank $30 has $0040 bytes of free space
+Bank $05 has $003f bytes of free space
 Bank $2e has $0036 bytes of free space
 Bank $7a has $0032 bytes of free space
 Bank $41 has $002c bytes of free space
@@ -260,4 +256,4 @@ Bank $07 has $0007 bytes of free space
 Bank $12 has $0001 bytes of free space
 Bank $48 has $0000 bytes of free space
 
-Free space: 98449/2097152 (4.69%)
+Free space: 98035/2097152 (4.67%)

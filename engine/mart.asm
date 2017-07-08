@@ -1141,7 +1141,53 @@ TMMenuDataHeader_Buy:
 	dba UpdateTMHMIconAndDescriptionAndOwnership
 ; 15e30
 
+MartMenu_PrintBCDPrices: ; 15e30
+	ld a, [wScrollingMenuCursorPosition]
+	ld c, a
+	ld b, 0
+	ld hl, wMartItem1BCD
+rept 3
+	add hl, bc
+endr
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+	ld bc, SCREEN_WIDTH - 4
+	add hl, bc
+	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
+	jp PrintBCDNumber
+; 15e4a (5:5e4a)
+
 BlueCardMenuDataHeader_Buy:
+	db $40 ; flags
+	db 03, 06 ; start coords
+	db 11, 19 ; end coords
+	dw .menudata2
+	db 1 ; default option
+; 0x15e20
+
+.menudata2 ; 0x15e20
+	db $30 ; pointers
+	db 4, 8 ; rows, columns
+	db 1 ; horizontal spacing
+	dbw 0, CurMart
+	dba PlaceMenuItemName
+	dba .PrintPointCosts
+	dba UpdateItemIconAndDescriptionAndBagQuantity
+
+.PrintPointCosts:
+	call GetCursorItemPointCost
+	ld bc, SCREEN_WIDTH - 4
+	add hl, bc
+	lb bc, 1, 3
+	call PrintNum
+	ld de, .PointsString
+	jp PlaceString
+
+.PointsString:
+	db " Pts@"
+
 BTMenuDataHeader_Buy:
 	db $40 ; flags
 	db 03, 06 ; start coords
@@ -1156,41 +1202,32 @@ BTMenuDataHeader_Buy:
 	db 1 ; horizontal spacing
 	dbw 0, CurMart
 	dba PlaceMenuItemName
-	dba MartMenu_PrintPointCosts
+	dba .PrintPointCosts
 	dba UpdateItemIconAndDescriptionAndBagQuantity
 
-MartMenu_PrintBCDPrices: ; 15e30
-	ld a, [wScrollingMenuCursorPosition]
-	ld c, a
-	ld b, 0
-	ld hl, wMartItem1BCD
-rept 3
-	add hl, bc
-endr
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-	ld bc, SCREEN_WIDTH - 5
-	add hl, bc
-	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
-	jp PrintBCDNumber
-; 15e4a (5:5e4a)
-
-MartMenu_PrintPointCosts:
-	ld a, [wScrollingMenuCursorPosition]
-	ld c, a
-	ld b, 0
-	ld hl, wMartItem1BCD
-	add hl, bc
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-	ld bc, SCREEN_WIDTH - 1
+.PrintPointCosts:
+	call GetCursorItemPointCost
+	ld bc, SCREEN_WIDTH - 3
 	add hl, bc
 	lb bc, 1, 3
-	jp PrintNum
+	call PrintNum
+	ld de, .PointsString
+	jp PlaceString
+
+.PointsString:
+	db " BP@"
+
+GetCursorItemPointCost:
+	ld a, [wScrollingMenuCursorPosition]
+	ld c, a
+	ld b, 0
+	ld hl, wMartItem1BCD
+	add hl, bc
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+	ret
 
 Text_HerbShop_Intro: ; 0x15e4a
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
