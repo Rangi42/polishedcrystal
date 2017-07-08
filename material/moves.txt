@@ -23,15 +23,15 @@ MIRROR_COAT [Dream World Girafarig, Mantine]
 MIST [Dream World Poliwag]
 PERISH_SONG [Dream World Cubone]
 
-Gunk Shot: Meowth, Mankey, Mew, Teddiursa, Mantine, Phanpy
-Heal Bell: Jynx, Lapras, Mew, Chinchou, Misdreavus, Snubbull
-Low Kick: Golduck, Hitmonchan, Mewtwo, Mew, Typhlosion, Totodile, Snubbull, Sneasel, Ursaring, Tyranitar
-Metronome: Mankey, Poliwhirl, Abra, Machop, Geodude, Gengar, Drowzee, Hitmonlee, Hitmonchan, Mr.Mime, Jynx, Mewtwo, Mew, Politoed, Snubbull, Teddiursa, Miltank
-Pain Split: Jigglypuff, Porygon, Mew, Pineco, Dunsparce
-Sky Attack: Doduo, Mew, Crobat, Togetic, Lugia
-* Sucker Punch: NidoranM, Bellsprout, Geodude, Voltorb, Hitmonlee, Mew, Chinchou, Natu, Umbreon, Misdreavus, Girafarig, Corsola, Houndour, Hitmontop, Celebi
-Super Fang: NidoranF, NidoranM, Mew, Snubbull
-Twister: Charizard, Butterfree, Zubat, Venomoth, Articuno, Zapdos, Moltres, Mew, Togetic, Hitmontop
-Nightmare: Butterfree, Clefairy, Jigglypuff, Meowth, Abra, Slowpoke, Lapras, Porygon, Mewtwo, Espeon, Umbreon, Misdreavus, Girafarig, Dunsparce, Sneasel, Houndour, Porygon2, Tyranitar, Lugia, Ho-Oh, Celebi
+GUNK SHOT: Meowth, Mankey, Mew, Teddiursa, Mantine, Phanpy
+HEAL BELL: Jynx, Lapras, Mew, Chinchou, Misdreavus, Snubbull
+LOW KICK: Golduck, Hitmonchan, Mewtwo, Mew, Typhlosion, Totodile, Snubbull, Sneasel, Ursaring, Tyranitar
+METRONOME: Mankey, Poliwhirl, Abra, Machop, Geodude, Gengar, Drowzee, Hitmonlee, Hitmonchan, Mr.Mime, Jynx, Mewtwo, Mew, Politoed, Snubbull, Teddiursa, Miltank
+PAIN SPLIT: Jigglypuff, Porygon, Mew, Pineco, Dunsparce
+SKY ATTACK: Doduo, Mew, Crobat, Togetic, Lugia
+* SUCKER PUNCH: NidoranM, Bellsprout, Geodude, Voltorb, Hitmonlee, Mew, Chinchou, Natu, Umbreon, Misdreavus, Girafarig, Corsola, Houndour, Hitmontop, Celebi
+SUPER FANG: NidoranF, NidoranM, Mew, Snubbull
+TWISTER: Charizard, Butterfree, Zubat, Venomoth, Articuno, Zapdos, Moltres, Mew, Togetic, Hitmontop
+NIGHTMARE: Butterfree, Clefairy, Jigglypuff, Meowth, Abra, Slowpoke, Lapras, Porygon, Mewtwo, Espeon, Umbreon, Misdreavus, Girafarig, Dunsparce, Sneasel, Houndour, Porygon2, Tyranitar, Lugia, Ho-Oh, Celebi
 
 http://www.serebii.net/blackwhite/dreamworldattacks.shtml

@@ -400,3 +400,13 @@ TMMartCostsThisMuchText::
 	deciram hMoneyTemp, 3, 7
 	text "."
 	done
+
+BTMartCostsThisMuchText::
+	deciram wItemQuantityChangeBuffer, 1, 2
+	text " @"
+	text_from_ram StringBuffer1
+	text "(s)"
+	line "will be @"
+	deciram hMoneyTemp, 3, 3
+	text " BP."
+	done

@@ -53,6 +53,11 @@ RooftopSale_SelectQuantityToBuy: ; 24fcf
 	jp Toss_Sell_Loop
 ; 24fe1
 
+BT_SelectQuantityToBuy:
+	ld hl, BTBuyItem_MenuDataHeader
+	call LoadMenuDataHeader
+	jp Toss_Sell_Loop
+
 SelectQuantityToSell: ; 24fe1
 	farcall GetItemPrice
 	ld a, d
@@ -228,6 +233,25 @@ Sell_HalvePrice: ; 250c1
 ; 250d1
 
 BuySell_DisplaySubtotal: ; 250d1
+	call DisplayPurchasePriceCommon
+	lb bc, PRINTNUM_MONEY | 3, 7
+	call PrintNum
+	jp WaitBGMap
+; 250ed
+
+BTDisplayPurchaseCost:
+	call BuySell_MultiplyPrice
+	call DisplayPurchasePriceCommon
+	lb bc, 3, 4
+	call PrintNum
+	ld de, .BPString
+	call PlaceString
+	jp WaitBGMap
+
+.BPString:
+	db " BP@"
+
+DisplayPurchasePriceCommon:
 	push hl
 	ld hl, hMoneyTemp
 	ld a, [hProduct + 1]
@@ -239,10 +263,7 @@ BuySell_DisplaySubtotal: ; 250d1
 	pop hl
 	inc hl
 	ld de, hMoneyTemp
-	lb bc, PRINTNUM_MONEY | 3, 7
-	call PrintNum
-	jp WaitBGMap
-; 250ed
+	ret
 
 TossItem_MenuDataHeader: ; 0x250ed
 	db $40 ; flags
@@ -267,3 +288,10 @@ SellItem_MenuDataHeader: ; 0x250fd
 	dw DisplaySellingPrice
 	db 0 ; default option
 ; 0x25105
+
+BTBuyItem_MenuDataHeader:
+	db $40 ; flags
+	db 15, 08 ; start coords
+	db 17, 19 ; end coords
+	dw BTDisplayPurchaseCost
+	db -1 ; default option

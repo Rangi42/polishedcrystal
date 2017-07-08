@@ -27,6 +27,7 @@ OpenMartDialog:: ; 15a45
 	dw InformalMart
 	dw TMMart
 	dw BlueCardMart
+	dw BTMart
 ; 15a61
 
 MartDialog: ; 15a61
@@ -177,6 +178,15 @@ BlueCardMart:
 	db PP_UP,        6
 	db AMULET_COIN,  7
 	db -1
+
+BTMart:
+	call FarReadBTMart
+	call LoadStandardMenuDataHeader
+	ld hl, Text_BTMart_HowMayIHelpYou
+	call MartTextBox
+	call BTBuyMenu
+	ld hl, Text_BTMart_ComeAgain
+	jp MartTextBox
 
 LoadMartPointer: ; 15b10
 	ld a, b
@@ -370,6 +380,10 @@ ReadMart: ; 15c25
 	ld [CurMart], a
 	ret
 
+; FarReadBTMart needs to use GetFarByte from MartPointerBank.
+; ReadBlueCardMart could just load from hl directly.
+; But their structures are identical, so here they both use GetFarByte.
+FarReadBTMart:
 ReadBlueCardMart:
 ; Load the mart pointer.  Mart data is local (no need for bank).
 	ld hl, MartPointer
@@ -383,7 +397,9 @@ ReadBlueCardMart:
 	ld de, CurMart + 1
 .loop
 ; copy the item to CurMart + (ItemIndex)
-	ld a, [hli]
+	ld a, [MartPointerBank]
+	call GetFarByte
+	inc hl
 	ld [de], a
 	inc de
 ; -1 is the terminator
@@ -391,14 +407,18 @@ ReadBlueCardMart:
 	jr z, .done
 
 ; copy the point cost to [bc]
-	ld a, [hli]
+	ld a, [MartPointerBank]
+	call GetFarByte
+	inc hl
 	ld [bc], a
+
 	inc bc
 	jr .loop
 
 .done
 	pop hl
-	ld a, [hl]
+	ld a, [MartPointerBank]
+	call GetFarByte
 	ld [CurMart], a
 	ret
 
@@ -450,13 +470,10 @@ GetMartPrice: ; 15bf0
 
 BuyMenu: ; 15c62
 	call BuyMenu_InitGFX
-	xor a
-	ld [wMenuScrollPositionBackup], a
-	ld a, 1
-	ld [wMenuCursorBufferBackup], a
 .loop
 	call BuyMenuLoop ; menu loop
 	jr nc, .loop
+BuyMenu_Finish:
 	call ReturnToMapWithSpeechTextbox
 	and a
 	ret
@@ -465,29 +482,24 @@ BuyMenu: ; 15c62
 BuyTMMenu:
 	call BuyMenu_InitGFX
 	farcall LoadTMHMIcon
-	xor a
-	ld [wMenuScrollPositionBackup], a
-	ld a, 1
-	ld [wMenuCursorBufferBackup], a
 .loop
 	call BuyTMMenuLoop ; menu loop
 	jr nc, .loop
-	call ReturnToMapWithSpeechTextbox
-	and a
-	ret
+	jr BuyMenu_Finish
 
 BlueCardBuyMenu:
 	call BuyMenu_InitGFX
-	xor a
-	ld [wMenuScrollPositionBackup], a
-	ld a, 1
-	ld [wMenuCursorBufferBackup], a
 .loop
 	call BlueCardBuyMenuLoop ; menu loop
 	jr nc, .loop
-	call ReturnToMapWithSpeechTextbox
-	and a
-	ret
+	jr BuyMenu_Finish
+
+BTBuyMenu:
+	call BuyMenu_InitGFX
+.loop
+	call BTBuyMenuLoop ; menu loop
+	jr nc, .loop
+	jr BuyMenu_Finish
 
 BuyMenu_InitGFX:
 	xor a
@@ -538,6 +550,11 @@ BuyMenu_InitGFX:
 	ld b, SCGB_BUYMENU_PALS
 	call GetSGBLayout
 	call SetPalettes
+; Not graphics-related, but common to all BuyMenu_InitGFX callers
+	xor a
+	ld [wMenuScrollPositionBackup], a
+	ld a, 1
+	ld [wMenuCursorBufferBackup], a
 	jp DelayFrame
 
 .BuyLeftColumnTilemapString:
@@ -607,6 +624,7 @@ endr
 	dwb .InformalMartPointers, 0
 	dwb .TMMartPointers, 0
 	dwb .BlueCardMartPointers, 0
+	dwb .BTMartPointers, 0
 ; 15cbf
 
 .StandardMartPointers: ; 15cbf
@@ -672,6 +690,14 @@ endr
 	dw Text_BlueCardMart_InsufficientFunds
 	dw Text_BlueCardMart_BagFull
 	dw Text_BlueCardMart_HereYouGo
+	dw BlueCardBuyMenuLoop
+
+.BTMartPointers:
+	dw Text_BTMart_HowMany
+	dw Text_BTMart_CostsThisMuch
+	dw Text_BTMart_InsufficientFunds
+	dw Text_BTMart_BagFull
+	dw Text_BTMart_HereYouGo
 	dw BlueCardBuyMenuLoop
 
 
@@ -782,15 +808,47 @@ BlueCardBuyMenuLoop:
 	call MartConfirmPurchase
 	jr c, .cancel
 	call BlueCardMartComparePoints
-	jr c, MartMenuLoop_InsufficientFunds
+	jp c, MartMenuLoop_InsufficientFunds
 	ld hl, NumItems
 	call ReceiveItem
-	jr nc, MartMenuLoop_InsufficientBagSpace
+	jp nc, MartMenuLoop_InsufficientBagSpace
 	call PlayTransactionSound
 	ld a, [wBlueCardBalance]
 	ld hl, hMoneyTemp
 	sub [hl]
 	ld [wBlueCardBalance], a
+	ld a, MARTTEXT_HERE_YOU_GO
+	call LoadBuyMenuText
+	call JoyWaitAorB
+.cancel
+	call SpeechTextBox
+	and a
+	ret
+
+BTBuyMenuLoop:
+	farcall PlaceBattlePointsTopRight
+	call UpdateSprites
+	ld hl, BTMenuDataHeader_Buy
+	call CopyMenuDataHeader
+	call DoMartScrollingMenu
+	call SpeechTextBox
+	ld a, [wMenuJoypad]
+	cp B_BUTTON
+	jp z, MartMenuLoop_SetCarry
+	call BTMartAskPurchaseQuantity
+	jr c, .cancel
+	call BTMartConfirmPurchase
+	jr c, .cancel
+	call BTMartCompareBP
+	jp c, MartMenuLoop_InsufficientFunds
+	ld hl, NumItems
+	call ReceiveItem
+	jp nc, MartMenuLoop_InsufficientBagSpace
+	call PlayTransactionSound
+	ld a, [BattlePoints]
+	ld hl, hMoneyTemp + 2
+	sub [hl]
+	ld [BattlePoints], a
 	ld a, MARTTEXT_HERE_YOU_GO
 	call LoadBuyMenuText
 	call JoyWaitAorB
@@ -835,6 +893,7 @@ StandardMartAskPurchaseQuantity:
 ; 15d97
 
 MartConfirmPurchase: ; 15d97
+BTMartConfirmPurchase:
 	predef PartyMonItemName
 	ld a, MARTTEXT_COSTS_THIS_MUCH
 	call LoadBuyMenuText
@@ -968,9 +1027,43 @@ endr
 	text_jump AlreadyHaveTMText
 	db "@"
 
+BTMartAskPurchaseQuantity:
+	ld a, MARTTEXT_HOW_MANY
+	call LoadBuyMenuText
+; store point cost in c
+	ld a, [wMartItemID]
+	ld e, a
+	ld d, $0
+	ld hl, MartPointer
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	inc hl
+	add hl, de
+	add hl, de
+	inc hl
+	ld a, [hl]
+	ld c, a
+	ld [Buffer2], a
+	xor a
+	ld [Buffer1], a
+; divide BP balance by cost to get maximum quantity
+	ld a, [BattlePoints]
+	call SimpleDivide
+	ld a, b
+	and a
+	jr nz, .ok
+	ld a, 1
+.ok
+	ld [wItemQuantityBuffer], a
+	farcall BT_SelectQuantityToBuy
+	jp ExitMenu
+
 BlueCardMartComparePoints:
+; no need for a "BlueCardMartAskPurchaseQuantity"
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
+; store point cost in [hMoneyTemp]
 	ld a, [wMartItemID]
 	ld e, a
 	ld d, $0
@@ -984,12 +1077,22 @@ BlueCardMartComparePoints:
 	inc hl
 	ld a, [hl]
 	ld [hMoneyTemp], a
+; compare point balance with cost
 	ld d, a
 	ld a, [wBlueCardBalance]
 	cp d
 	ret
 
+BTMartCompareBP:
+; compare BP balance with cost
+	ld a, [hMoneyTemp + 2]
+	ld d, a
+	ld a, [BattlePoints]
+	cp d
+	ret
+
 Text_Mart_HowMany: ; 0x15e0e
+Text_BTMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4bfd
 	db "@"
@@ -1016,11 +1119,47 @@ MenuDataHeader_Buy: ; 0x15e18
 	db 1 ; horizontal spacing
 	dbw 0, CurMart
 	dba PlaceMenuItemName
-	dba .PrintBCDPrices
+	dba MartMenu_PrintBCDPrices
 	dba UpdateItemIconAndDescriptionAndBagQuantity
 ; 15e30
 
-.PrintBCDPrices: ; 15e30
+TMMenuDataHeader_Buy:
+	db $40 ; flags
+	db 03, 06 ; start coords
+	db 11, 19 ; end coords
+	dw .menudata2
+	db 1 ; default option
+; 0x15e20
+
+.menudata2 ; 0x15e20
+	db $30 ; pointers
+	db 4, 8 ; rows, columns
+	db 1 ; horizontal spacing
+	dbw 0, CurMart
+	dba PlaceMenuTMHMName
+	dba MartMenu_PrintBCDPrices
+	dba UpdateTMHMIconAndDescriptionAndOwnership
+; 15e30
+
+BlueCardMenuDataHeader_Buy:
+BTMenuDataHeader_Buy:
+	db $40 ; flags
+	db 03, 06 ; start coords
+	db 11, 19 ; end coords
+	dw .menudata2
+	db 1 ; default option
+; 0x15e20
+
+.menudata2 ; 0x15e20
+	db $30 ; pointers
+	db 4, 8 ; rows, columns
+	db 1 ; horizontal spacing
+	dbw 0, CurMart
+	dba PlaceMenuItemName
+	dba MartMenu_PrintPointCosts
+	dba UpdateItemIconAndDescriptionAndBagQuantity
+
+MartMenu_PrintBCDPrices: ; 15e30
 	ld a, [wScrollingMenuCursorPosition]
 	ld c, a
 	ld b, 0
@@ -1038,59 +1177,7 @@ endr
 	jp PrintBCDNumber
 ; 15e4a (5:5e4a)
 
-TMMenuDataHeader_Buy:
-	db $40 ; flags
-	db 03, 06 ; start coords
-	db 11, 19 ; end coords
-	dw .menudata2
-	db 1 ; default option
-; 0x15e20
-
-.menudata2 ; 0x15e20
-	db $30 ; pointers
-	db 4, 8 ; rows, columns
-	db 1 ; horizontal spacing
-	dbw 0, CurMart
-	dba PlaceMenuTMHMName
-	dba .PrintBCDPrices
-	dba UpdateTMHMIconAndDescriptionAndOwnership
-; 15e30
-
-.PrintBCDPrices: ; 15e30
-	ld a, [wScrollingMenuCursorPosition]
-	ld c, a
-	ld b, 0
-	ld hl, wMartItem1BCD
-rept 3
-	add hl, bc
-endr
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-	ld bc, SCREEN_WIDTH - 5
-	add hl, bc
-	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
-	jp PrintBCDNumber
-
-BlueCardMenuDataHeader_Buy:
-	db $40 ; flags
-	db 03, 06 ; start coords
-	db 11, 19 ; end coords
-	dw .menudata2
-	db 1 ; default option
-; 0x15e20
-
-.menudata2 ; 0x15e20
-	db $30 ; pointers
-	db 4, 8 ; rows, columns
-	db 1 ; horizontal spacing
-	dbw 0, CurMart
-	dba PlaceMenuItemName
-	dba .PrintPointCosts
-	dba UpdateItemIconAndDescriptionAndBagQuantity
-
-.PrintPointCosts:
+MartMenu_PrintPointCosts:
 	ld a, [wScrollingMenuCursorPosition]
 	ld c, a
 	ld b, 0
@@ -1273,6 +1360,7 @@ Text_BlueCardMart_CostsThisMuch: ; 0x8b077
 ; 0x8b07c
 
 Text_BlueCardMart_InsufficientFunds: ; 0x8b081
+Text_BTMart_InsufficientFunds:
 	; You don't have enough points.
 	text_jump UnknownText_0x1c58e0
 	db "@"
@@ -1295,6 +1383,11 @@ Text_BlueCardMart_ComeAgain: ; 0x8b08b
 	text_jump UnknownText_0x1c591a
 	db "@"
 ; 0x8b090
+
+Text_BTMart_CostsThisMuch:
+	; @  @  will be ¥@ .
+	text_jump BTMartCostsThisMuchText
+	db "@"
 
 SellMenu: ; 15eb3
 	call DisableSpriteUpdates
@@ -1395,6 +1488,7 @@ Text_Mart_ICanPayThisMuch: ; 0x15f78
 ; 0x15f7d
 
 Text_Mart_HowMayIHelpYou: ; 0x15f83
+Text_BTMart_HowMayIHelpYou:
 	; Welcome! How may I help you?
 	text_jump UnknownText_0x1c4f62
 	db "@"
@@ -1417,6 +1511,7 @@ MenuDataHeader_BuySell: ; 0x15f88
 ; 0x15f96
 
 Text_Mart_HereYouGo: ; 0x15fa0
+Text_BTMart_HereYouGo:
 	; Here you are. Thank you!
 	text_jump UnknownText_0x1c4f80
 	db "@"
@@ -1429,6 +1524,7 @@ Text_Mart_InsufficientFunds: ; 0x15fa5
 ; 0x15faa
 
 Text_Mart_BagFull: ; 0x15faa
+Text_BTMart_BagFull:
 	; You can't carry any more items.
 	text_jump UnknownText_0x1c4fb7
 	db "@"
@@ -1441,6 +1537,7 @@ TextMart_CantBuyFromYou: ; 0x15faf
 ; 0x15fb4
 
 Text_Mart_ComeAgain: ; 0x15fb4
+Text_BTMart_ComeAgain:
 	; Please come again!
 	text_jump UnknownText_0x1c4ff9
 	db "@"

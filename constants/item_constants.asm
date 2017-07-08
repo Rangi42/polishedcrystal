@@ -432,6 +432,7 @@ ITEMMENU_CLOSE   EQU 6
 	const MARTTYPE_INFORMAL
 	const MARTTYPE_TM
 	const MARTTYPE_BLUECARD
+	const MARTTYPE_BP
 
 
 ; marts
@@ -473,6 +474,9 @@ ITEMMENU_CLOSE   EQU 6
 	const MART_FUCHSIA
 	const MART_SHAMOUTI_1
 	const MART_SHAMOUTI_2
+	const MART_BT_1
+	const MART_BT_2
+	const MART_BT_3
 
 
 ; PartyMenuActionText

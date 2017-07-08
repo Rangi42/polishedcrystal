@@ -1,0 +1,197 @@
+Trendy phrase girl:
+	text "Oh my gosh!"
+
+	para "Don't you, like,"
+	line "think <TRENDY>"
+	cont "is the coolest?"
+
+	para "It's totally tren-"
+	line "dy!"
+	done
+
+Hex Maniac:
+	text "Ah…"
+
+	para "You aren't the"
+	line "one…"
+	done
+
+Looker:
+	text "Hello, there."
+
+	para "You wouldn't happ-"
+	line "en to know about a"
+	cont "Team Galactic, wo-"
+
+	para "uld you?"
+
+	para "…"
+
+	para "Haha, I suppose"
+	line "not. Sorry to"
+	cont "disturb you."
+	done
+
+Artist1SeenText:
+	text "Ah, what to do"
+	line "about this…"
+	done
+
+Artist1DefeatText:
+	text "Ah! I know just"
+	line "how I'll finish!"
+	done
+
+Artist1AfterText:
+	text "Thanks for that!"
+
+	para "Now I can finish"
+	line "my painting!"
+	done
+
+Artist2SeenText:
+	text "Smeargle, this"
+	line "paint needs more"
+	cont "blue!"
+
+	para "Kyah! Art thief!"
+	done
+
+Artist2DefeatText:
+	text "Oh, it was just"
+	line "a kid…"
+	done
+
+Artist2AfterText:
+	text "Ok, Smeargle!"
+	line "More red, now!"
+	done
+
+AromaGirl1SeenText:
+	text "I smell something"
+	line "nice!"
+	done
+
+AromaGirl1DefeatText:
+	text "Flowers make good"
+	line "perfume!"
+	done
+
+AromaGirl1AfterText:
+	text "I heard that far"
+	line "away from here,"
+	cont "people use perfume"
+
+	para "to strengthen the-"
+	line "ir bonds with"
+	cont "their #mon."
+	done
+
+Gentleman1SeenText:
+	text "Ha-hum! My Arcani-"
+	line "ne demands battle!"
+
+	para "You shall do!"
+	done
+
+Gentleman1DefeatText:
+	text "How dare you!"
+	done
+
+Gentleman1AfterText:
+	text "Arcanine is one of"
+	line "the few #mon"
+	cont "that can use Extr-"
+
+	para "emespeed."
+	done
+
+Tamer1SeenText:
+	text "My #mon are"
+	line "mean, lean fighti-"
+	cont "ng machines!"
+	done
+
+Tamer1DefeatText:
+	text "Sorry, you're a"
+	line "different beast."
+	done
+
+Tamer1AfterText:
+	text "Please, teach me"
+	line "your ways!"
+	done
+
+RichBoySeenText:
+	text "Daddy wouldn't"
+	line "buy me Zigzagoon!"
+
+	para "I got this stupid"
+	line "Ninetales instead!"
+	done
+
+RichBoyDefeatText:
+	text "Surely I'd have"
+	line "won with a Zigzag-"
+	cont "oon."
+	done
+
+RichBoyAfterText:
+	text "I suppose I'll be"
+	line "able to get one"
+	cont "when our cruise"
+
+	para "goes to Hoenn."
+	done
+
+LadySeenText:
+	text "Ohohohoho!"
+
+	para "My Persian is sim-"
+	line "ply dying to Slash"
+	cont "your #mon!"
+	done
+
+LadyDefeatText:
+	text "Ohohohoho!"
+	done
+
+LadyAfterText:
+	text "Ohohohoho!"
+
+	para "You win this time!"
+	done
+
+JugglerSeenText:
+	text "Hup! Hup!"
+
+	para "Electrode are pre-"
+	line "tty heavy!"
+	done
+
+JugglerDefeatText:
+	text "Oh, no!"
+	line "I dropped one!"
+	done
+
+JugglerAfterText:
+	text "Hup! Hup!"
+
+	para "Back to the grind!"
+	done
+
+
+PokefanM:
+Do you want to see my Pokemon?
+I said see them, not KO them!
+
+= The ORANGE ISLANDS are so\npeaceful...\pThat's why I came here in the first\nplace!
+
+= I really do enjoy resting here and\nlooking up at the stars, especially\lat this time of night when comets\lfly.
+
+= Another day of fishing...
+= Another day of losing...
+= Another day of sulking...\pLife is boring...
+
+
+Megumin with Explosion Weezing

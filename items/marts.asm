@@ -36,6 +36,9 @@ Marts: ; 160a9
 	dw FuchsiaMart
 	dw ShamoutiMart1
 	dw ShamoutiMart2
+	dw BattleTowerMart1
+	dw BattleTowerMart2
+	dw BattleTowerMart3
 MartsEnd
 ; 160ed
 
@@ -492,4 +495,40 @@ ShamoutiMart2:
 	db ICY_ROCK
 	db LIGHT_CLAY
 	db EVIOLITE
+	db -1
+
+BattleTowerMart1:
+	db 9 ; # items
+	db CHOICE_BAND,  1
+	db CHOICE_SCARF, 1
+	db CHOICE_SPECS, 1
+	db EXPERT_BELT,  1
+	db MUSCLE_BAND,  1
+	db WISE_GLASSES, 1
+	db METRONOME_I,  1
+	db BINDING_BAND, 1
+	db GRIP_CLAW,    1
+	db -1
+
+BattleTowerMart2:
+	db 8 ; # items
+	db RARE_CANDY,   1
+	db PP_MAX,       1
+	db ABILITY_CAP,  1
+	db WEAK_POLICY,  1
+	db LIFE_ORB,     1
+	db FLAME_ORB,    1
+	db TOXIC_ORB,    1
+	db BLACK_SLUDGE, 1
+	db -1
+
+BattleTowerMart3:
+	db 7 ; # items
+	db MACHO_BRACE,  1
+	db FOCUS_BAND,   1
+	db FOCUS_SASH,   1
+	db ASSAULT_VEST, 1
+	db PROTECT_PADS, 1
+	db ROCKY_HELMET, 1
+	db SAFE_GOGGLES, 1
 	db -1

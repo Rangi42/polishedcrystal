@@ -26,7 +26,6 @@ box_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1HyperTrained::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -71,7 +70,6 @@ battle_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1HyperTrained::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -234,7 +232,6 @@ trademon: MACRO
 \1Nature:: ds 1
 \1Gender::
 \1IsEgg::
-\1HyperTrained::
 \1Form:: ds 1
 \1ID:: ds 2 ; wc6ff | wc731
 \1CaughtData:: ds 1 ; wc701 | wc733

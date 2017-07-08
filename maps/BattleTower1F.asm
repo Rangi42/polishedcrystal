@@ -105,7 +105,7 @@ Script_WalkToBattleTowerElevator:
 	warpsound
 	disappear BATTLETOWER1F_RECEPTIONIST
 	stopfollow
-	applymovement PLAYER, MovementData_BattleTowerHallwayPlayerEntersElevator
+	applymovement PLAYER, MovementData_BattleTower1FPlayerEntersElevator
 	warpcheck
 	end
 
@@ -196,6 +196,27 @@ BattleTowerTutorWaterPulseScript:
 BattleTowerNurse:
 	jumpstd pokecenternurse
 
+BattleTowerClerk1:
+	faceplayer
+	opentext
+	pokemart MARTTYPE_BP, MART_BT_1
+	closetext
+	end
+
+BattleTowerClerk2:
+	faceplayer
+	opentext
+	pokemart MARTTYPE_BP, MART_BT_2
+	closetext
+	end
+
+BattleTowerClerk3:
+	faceplayer
+	opentext
+	pokemart MARTTYPE_BP, MART_BT_3
+	closetext
+	end
+
 CooltrainerFScript_0x9e568:
 	jumptextfaceplayer Text_BattleTowerCooltrainerF
 
@@ -212,53 +233,8 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
 	step_up
-MovementData_BattleTowerHallwayPlayerEntersElevator:
+MovementData_BattleTower1FPlayerEntersElevator:
 	step_up
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerWalksIn:
-	step_up
-	step_up
-	step_up
-	step_up
-	turn_head_right
-	step_end
-
-MovementData_BattleTowerBattleRoomOpponentWalksIn:
-	slow_step_down
-	slow_step_down
-	slow_step_down
-	turn_head_left
-	step_end
-
-MovementData_BattleTowerBattleRoomOpponentWalksOut:
-	turn_head_up
-	slow_step_up
-	slow_step_up
-	slow_step_up
-	step_end
-
-MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer:
-	slow_step_right
-	slow_step_right
-	slow_step_up
-	slow_step_up
-	step_end
-
-MovementData_BattleTowerBattleRoomReceptionistWalksAway:
-	slow_step_down
-	slow_step_down
-	slow_step_left
-	slow_step_left
-	turn_head_right
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist:
-	turn_head_down
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerTurnsToFaceNextOpponent:
-	turn_head_right
 	step_end
 
 Text_BattleTowerWelcomesYou: ; 0x9e5ab
@@ -501,9 +477,9 @@ BattleTower1F_MapEventHeader:
 	db 9
 	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
 	person_event SPRITE_NURSE, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerNurse, -1
-	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerClerk1, -1
+	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BattleTowerClerk2, -1
+	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BattleTowerClerk3, -1
 	person_event SPRITE_DRAGON_TAMER, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
 	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9e568, -1
 	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9e56b, -1

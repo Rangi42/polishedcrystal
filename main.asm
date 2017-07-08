@@ -806,13 +806,27 @@ PlaceBlueCardPointsTopRight:
 	hlcoord 12, 1
 	ld de, .PointsString
 	call PlaceString
-	ld de, wBlueCardBalance
-	lb bc, 0 | 1, 3
+	lb bc, 1, 3
 	hlcoord 16, 1
+	ld de, wBlueCardBalance
 	jp PrintNum
 
 .PointsString:
 	db "Pts@"
+
+PlaceBattlePointsTopRight:
+	hlcoord 12, 0
+	lb bc, 1, 6
+	call TextBox
+	lb bc, 1, 3
+	hlcoord 13, 1
+	ld de, BattlePoints
+	call PrintNum
+	ld de, .BPString
+	jp PlaceString
+
+.BPString:
+	db " BP@"
 
 Special_DisplayCoinCaseBalance: ; 24b25
 	; Place a text box of size 1x7 at 11, 0.

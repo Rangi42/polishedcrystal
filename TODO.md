@@ -10,7 +10,6 @@ See the [Issues](issues/) page.
 * More location-unique wild moves
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Day-Care Man gives Eggs outside his house for convenience, like in Gen VI
 
 
 ## Aesthetics
@@ -26,7 +25,6 @@ See the [Issues](issues/) page.
 ## Events
 
 * Soul House + Radio Tower event to get Expn Card
-* Battle Tower merchants selling items for BP
 
 
 ## Characters
