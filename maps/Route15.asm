@@ -10,6 +10,7 @@ const_value set 2
 	const ROUTE15_TWIN1
 	const ROUTE15_TWIN2
 	const ROUTE15_POKE_BALL
+	const ROUTE15_CUT_TREE
 
 Route15_MapScriptHeader:
 .MapTriggers:
@@ -337,7 +338,7 @@ Route15_MapEventHeader:
 	signpost 9, 19, SIGNPOST_READ, Route15Sign
 
 .PersonEvents:
-	db 11
+	db 12
 	person_event SPRITE_YOUNGSTER, 10, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyKipp, -1
 	person_event SPRITE_YOUNGSTER, 13, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyTommy, -1
 	person_event SPRITE_YOUNGSTER, 10, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyBilly, -1
@@ -349,3 +350,4 @@ Route15_MapEventHeader:
 	person_event SPRITE_TWIN, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia1, -1
 	person_event SPRITE_TWIN, 5, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia2, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route15PPUp, EVENT_ROUTE_15_PP_UP
+	person_event SPRITE_BALL_CUT_FRUIT, 6, 43, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_14_CUT_TREE_3

@@ -350,9 +350,9 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 17
 
 	mapgroup ROUTE_12_SOUTH,                             44, 10 ;  1
-	mapgroup ROUTE_13_EAST,                              11, 23 ;  2
-	mapgroup ROUTE_13_WEST,                              11, 12 ;  3
-	mapgroup ROUTE_14,                                   18, 12 ;  4
+	mapgroup ROUTE_13_EAST,                              10, 23 ;  2
+	mapgroup ROUTE_13_WEST,                              10, 12 ;  3
+	mapgroup ROUTE_14,                                   19, 12 ;  4
 	mapgroup ROUTE_15,                                    9, 20 ;  5
 	mapgroup ROUTE_18_EAST,                              11, 14 ;  6
 	mapgroup FUCHSIA_CITY,                               18, 20 ;  7
@@ -368,7 +368,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 17
 	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 18
 	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 19
-	mapgroup LUCKY_ISLAND,                               16, 23 ; 20
+	mapgroup LUCKY_ISLAND,                               17, 23 ; 20
 
 	newgroup                                                    ; 18
 

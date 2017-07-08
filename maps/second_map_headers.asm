@@ -237,25 +237,25 @@
 
 	map_header_2 LuckyIsland, LUCKY_ISLAND, $43, NORTH | WEST
 	connection north, ROUTE_13_EAST, Route13East, 0, 0, 23
-	connection west, ROUTE_14, Route14, 0, 0, 18
+	connection west, ROUTE_14, Route14, 0, 0, 17
 
 	map_header_2 Route15, ROUTE_15, $f, WEST | EAST
 	connection west, FUCHSIA_CITY, FuchsiaCity, -3, 6, 12
-	connection east, ROUTE_14, Route14, -3, 6, 12
+	connection east, ROUTE_14, Route14, -3, 7, 12
 
 	map_header_2 Route14, ROUTE_14, $43, NORTH | WEST | EAST
 	connection north, ROUTE_13_WEST, Route13West, 0, 0, 12
-	connection west, ROUTE_15, Route15, 9, 0, 9
-	connection east, LUCKY_ISLAND, LuckyIsland, 0, 0, 16
+	connection west, ROUTE_15, Route15, 10, 0, 9
+	connection east, LUCKY_ISLAND, LuckyIsland, 0, 0, 15
 
 	map_header_2 Route13East, ROUTE_13_EAST, $43, NORTH | SOUTH | WEST
 	connection north, ROUTE_12_SOUTH, Route12South, 13, 0, 10
 	connection south, LUCKY_ISLAND, LuckyIsland, 0, 0, 23
-	connection west, ROUTE_13_WEST, Route13West, 0, 0, 11
+	connection west, ROUTE_13_WEST, Route13West, 0, 0, 10
 
 	map_header_2 Route13West, ROUTE_13_WEST, $43, SOUTH | EAST
 	connection south, ROUTE_14, Route14, 0, 0, 12
-	connection east, ROUTE_13_EAST, Route13East, 0, 0, 11
+	connection east, ROUTE_13_EAST, Route13East, 0, 0, 10
 
 	map_header_2 Route12North, ROUTE_12_NORTH, $43, NORTH | SOUTH
 	connection north, LAVENDER_TOWN, LavenderTown, 0, 0, 10
