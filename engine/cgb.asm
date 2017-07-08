@@ -617,11 +617,24 @@ _CGB_PokedexSearchOption: ; 93ba
 
 
 _CGB_BuyMenu: ; 9499
-	ld hl, BuyMenuPals
+	ld a, [EngineBuffer1]
+	cp MARTTYPE_BLUECARD
+	ld hl, BlueCardMartMenuPals
+	jr z, .ok
+	cp MARTTYPE_BP
+	ld hl, BTMartMenuPals
+	jr z, .ok
+	ld hl, MartMenuPals
+.ok
 	ld de, UnknBGPals
-	ld bc, 5 palettes
+	ld bc, 3 palettes
 	ld a, $5
 	call FarCopyWRAM
+
+rept 2
+	ld hl, TMHMCancelPalette
+	call LoadPalette_White_Col1_Col2_Black
+endr
 
 	call WipeAttrMap
 

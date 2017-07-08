@@ -583,7 +583,7 @@ if !DEF(MONOCHROME)
 	RGB 15, 14, 16
 ; BLUE CARD
 	RGB 15, 22, 31
-	RGB 05, 15, 31
+	RGB 07, 13, 31
 ; ORANGETICKET
 	RGB 31, 24, 18
 	RGB 31, 18, 06
@@ -1581,7 +1581,7 @@ endr
 endc
 
 
-BuyMenuPals:
+MartMenuPals:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 06, 22, 25
@@ -1597,18 +1597,52 @@ if !DEF(MONOCHROME)
 	RGB 06, 22, 25
 	RGB 04, 17, 19
 	RGB 31, 00, 00
-
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
-
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 31, 31, 31
-	RGB 00, 00, 00
 else
-rept 5
+rept 3
+	MONOCHROME_RGB_FOUR
+endr
+endc
+
+BlueCardMartMenuPals:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 07, 13, 31
+	RGB 06, 10, 19
+	RGB 00, 00, 00
+
+	RGB 15, 15, 31
+	RGB 07, 13, 31
+	RGB 06, 10, 19
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 07, 13, 31
+	RGB 06, 10, 19
+	RGB 31, 00, 00
+else
+rept 3
+	MONOCHROME_RGB_FOUR
+endr
+endc
+
+BTMartMenuPals:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 17, 23, 30
+	RGB 13, 18, 26
+	RGB 00, 00, 00
+
+	RGB 15, 15, 31
+	RGB 17, 23, 30
+	RGB 13, 18, 26
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 17, 23, 30
+	RGB 13, 18, 26
+	RGB 31, 00, 00
+else
+rept 3
 	MONOCHROME_RGB_FOUR
 endr
 endc
