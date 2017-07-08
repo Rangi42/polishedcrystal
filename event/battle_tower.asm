@@ -91,7 +91,6 @@ RunBattleTowerTrainer: ; 17024d
 	ld [wLinkMode], a
 	farcall HealPartyEvenForNuzlocke
 	call ReadBTTrainerParty
-	farcall PopulateBattleTowerTeam
 
 	predef StartBattle
 

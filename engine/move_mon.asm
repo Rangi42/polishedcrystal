@@ -1145,7 +1145,7 @@ SentPkmnIntoBox: ; de6e
 	ld [de], a
 	inc de
 
-	; Set all 6 EVs to 0
+    ; Set all 6 EVs to 0
 	xor a
 	ld b, 6
 .loop2
