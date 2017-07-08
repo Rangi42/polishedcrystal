@@ -361,6 +361,262 @@ BattleTowerTrainers: ; 1f814e
 	db "Palmer@@@@", TOWERTYCOON
 ; 1f8450
 
+PopulateBattleTowerTeam:
+; Loads 3 pokémon from a set and places it in OTPartyMon
+	; Zerofill the OTPartyMon struct
+	xor a
+	ld hl, OTPartyMons
+	ld bc, OTPartyMonsEnd - OTPartyMons
+	call ByteFill
+
+	; Set party size
+	ld a, BATTLETOWER_NROFPKMNS
+	ld [OTPartyCount], a
+
+	; Get the set and size
+	ld a, [wNrOfBeatenBattleTowerTrainers]
+	call BT_GetTargetSet
+	call BT_GetSetSize
+	ld d, a
+
+	; Pick randomly among the set but never duplicate species.
+	ld e, 0
+	push hl
+	push de
+.loop
+	pop de
+	pop hl
+	ld a, e
+	cp BATTLETOWER_NROFPKMNS
+	jp z, .set_nicknames
+	push hl
+	push de
+	ld a, d
+	call RandomRange
+	ld bc, BattleTowerPokemon2 - BattleTowerPokemon1
+	call AddNTimes
+
+	; Verify that the species hasn't been chosen already
+	ld a, [hl]
+	ld d, a
+	inc e
+.species_loop
+	dec e
+	jr z, .species_ok
+	push hl
+	ld hl, OTPartyMon1Species
+	ld a, e
+	dec a
+	call GetPartyLocation
+	ld a, [hl]
+	pop hl
+	cp d
+	jr z, .loop ; Duplicate species -- re-roll
+	jr .species_loop
+.species_ok
+	; Species is OK. Store species data in OTPartyMon and OTPartySpecies
+	pop de
+	push de
+	push hl
+	ld a, e
+	ld hl, OTPartySpecies
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld b, h
+	ld c, l
+	ld hl, OTPartyMon1Species
+	call GetPartyLocation
+	pop de
+
+	; OTPartyMon in hl, target battle tower data in de
+	; Species, and poll base data for experience and stats later
+	ld a, [de]
+	ld [hl], a
+	ld [bc], a
+	push hl
+	push de
+	ld [CurSpecies], a
+	ld [CurPartySpecies], a
+	call GetBaseData
+	pop de
+	pop hl
+	inc de
+
+	ld bc, OTPartyMon1Item - OTPartyMon1Species
+	add hl, bc
+	ld a, [de]
+	ld [hl], a
+	inc de
+
+	ld bc, OTPartyMon1Moves - OTPartyMon1Item
+	add hl, bc
+	ld b, NUM_MOVES
+	call .Copy
+
+	push hl
+	push de
+	push hl
+	ld bc, OTPartyMon1PP - OTPartyMon1Moves
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	predef FillPP
+	pop de
+	pop hl
+
+	ld bc, OTPartyMon1DVs - OTPartyMon1Moves
+	add hl, bc
+	ld b, 3
+	call .Copy
+
+	ld bc, OTPartyMon1Personality - OTPartyMon1DVs
+	add hl, bc
+	ld b, 2
+	call .Copy
+
+	; We're done copying the struct. Now generate the rest.
+	; Happiness is always 255
+	ld bc, OTPartyMon1Happiness - OTPartyMon1Personality
+	add hl, bc
+	ld [hl], 255
+
+	; Set EVs to 252
+	ld bc, OTPartyMon1EVs - OTPartyMon1Happiness
+	add hl, bc
+	push hl
+	ld bc, 6
+	ld a, 252
+	call ByteFill
+	pop hl
+
+	; Set level to 50
+	ld bc, OTPartyMon1Level - OTPartyMon1EVs
+	add hl, bc
+	ld a, 50
+	ld [hl], a
+	ld [CurPartyLevel], a ; for stat calculation
+
+	; Set up Exp properly
+	ld bc, OTPartyMon1Exp - OTPartyMon1Level
+	add hl, bc
+	push hl
+	farcall CalcExpAtLevel
+	pop hl
+	push hl
+	ld a, [hProduct + 1]
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+	pop hl
+
+	; Calculate stats
+	ld bc, OTPartyMon1MaxHP - OTPartyMon1Exp
+	add hl, bc
+	push hl
+	ld bc, OTPartyMon1EVs - OTPartyMon1MaxHP
+	add hl, bc
+	pop de
+	ld b, TRUE
+	push de
+	predef CalcPkmnStats
+	pop hl
+	push hl
+	ld bc, OTPartyMon1HP - OTPartyMon1MaxHP
+	add hl, bc
+	pop de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hl], a
+	pop de
+	inc e
+	push de
+	jp .loop
+
+.set_nicknames
+	; Initialize trainer nicknames
+	ld a, [OTPartyCount]
+	ld d, a
+.nick_loop
+	dec d
+	push de
+	ld a, d
+	ld hl, OTPartyMon1Species
+	call GetPartyLocation
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetPokemonName
+	ld hl, OTPartyMonNicknames
+	pop de
+	push de
+	ld a, d
+	call SkipNames
+	ld d, h
+	ld e, l
+	ld hl, StringBuffer1
+	ld bc, PKMN_NAME_LENGTH
+	call CopyBytes
+	pop de
+	ld a, d
+	and a
+	jr nz, .nick_loop
+	ret
+
+.Copy:
+	push hl
+.copy_loop
+	ld a, [de]
+	ld [hli], a
+	inc de
+	dec b
+	jr nz, .copy_loop
+	pop hl
+	ret
+
+BT_GetTargetSet:
+; Set hl to target set a. If a is higher than the amount of sets, gives the last set.
+	cp BATTLETOWER_NUM_SETS
+	jr c, .ok
+	ld a, BATTLETOWER_NUM_SETS - 1
+.ok
+	inc a
+	ld hl, BattleTowerMons
+	ld bc, BattleTowerPokemon2 - BattleTowerPokemon1
+	ld d, a
+.loop
+	dec d
+	ret z
+.loop_inner
+	ld a, [hl]
+	inc a
+	jr z, .next
+	add hl, bc
+	jr .loop_inner
+.next
+	inc hl
+	jr .loop
+
+BT_GetSetSize:
+; Return size of battle tower set in hl
+	ld bc, BattleTowerPokemon2 - BattleTowerPokemon1
+	push hl
+	ld d, 0
+.loop
+	ld a, [hl]
+	inc a
+	jr z, .done
+	add hl, bc
+	inc d
+	jr .loop
+.done
+	pop hl
+	ld a, d
+	ret
 
 BattleTowerMons: ; 1f8450
 ; 10 groups of 21 mons.
@@ -493,10 +749,9 @@ BattleTowerPokemon2:
 	db TOXIC, PSYCHIC, FIRE_PUNCH, HEADBUTT
 	db $67, $36, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons2:
-
 	db UMBREON
 	db LEFTOVERS
 	db PROTECT, TOXIC, MUD_SLAP, ATTRACT
@@ -622,10 +877,9 @@ BattleTowerMons2:
 	db CALM_MIND, EARTHQUAKE, SURF, RAIN_DANCE
 	db $45, $54, $55 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons3:
-
 	db JOLTEON
 	db LUM_BERRY
 	db THUNDERBOLT, THUNDER_WAVE, ROAR, MUD_SLAP
@@ -751,10 +1005,9 @@ BattleTowerMons3:
 	db LOW_KICK, KARATE_CHOP, REVERSAL, FOCUS_ENERGY
 	db $67, $76, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons4:
-
 	db TAUROS
 	db SITRUS_BERRY
 	db RETURN, HYPER_BEAM, EARTHQUAKE, IRON_TAIL
@@ -880,10 +1133,9 @@ BattleTowerMons4:
 	db LIGHT_SCREEN, THUNDERPUNCH, SWIFT, THUNDERBOLT
 	db $76, $57, $66 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons5:
-
 	db KINGDRA
 	db SITRUS_BERRY
 	db SURF, HYPER_BEAM, BLIZZARD, DRAGONBREATH
@@ -1009,10 +1261,9 @@ BattleTowerMons5:
 	db BLIZZARD, HYPER_BEAM, ROAR, ICY_WIND
 	db $54, $55, $44 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons6:
-
 	db KINGDRA
 	db LEFTOVERS
 	db DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
@@ -1138,10 +1389,9 @@ BattleTowerMons6:
 	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, RETURN
 	db $57, $65, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons7:
-
 	db JOLTEON
 	db LUM_BERRY
 	db THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
@@ -1267,10 +1517,9 @@ BattleTowerMons7:
 	db HYDRO_PUMP, ICE_PUNCH, HYPER_BEAM, IRON_TAIL
 	db $67, $66, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons8:
-
 	db JOLTEON
 	db LUM_BERRY
 	db THUNDER_WAVE, THUNDERBOLT, IRON_TAIL, ROAR
@@ -1396,10 +1645,9 @@ BattleTowerMons8:
 	db ROAR, SHADOW_BALL, HYPER_BEAM, THUNDERPUNCH
 	db $57, $65, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons9:
-
 	db UMBREON
 	db KINGS_ROCK
 	db FEINT_ATTACK, MUD_SLAP, MOONLIGHT, CONFUSE_RAY
@@ -1525,10 +1773,9 @@ BattleTowerMons9:
 	db TOXIC, SLUDGE_BOMB, ATTRACT, GIGA_DRAIN
 	db $45, $44, $55 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
-
+	db $ff
 
 BattleTowerMons10:
-
 	db HOUNDOOM
 	db CHESTO_BERRY
 	db CRUNCH, FLAMETHROWER, ROAR, REST
@@ -1654,3 +1901,4 @@ BattleTowerMons10:
 	db SURF, RAIN_DANCE, ZAP_CANNON, CONFUSE_RAY
 	db $57, $65, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
+	db $ff
