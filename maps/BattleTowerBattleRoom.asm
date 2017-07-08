@@ -88,14 +88,14 @@ Script_DontSaveAndEndTheSession: ; 0x9f4a3
 	special Special_BattleTower_SetChallengeState
 	closetext
 	special FadeOutPalettes
-	warpfacing UP, BATTLE_TOWER_1F, $7, $7
+	warpfacing UP, BATTLE_TOWER_1F, $a, $8
 	opentext
 	jump Script_BattleTowerHopeToServeYouAgain
 
 Script_FailedBattleTowerChallenge:
 	pause 60
 	special Special_BattleTower_Fade
-	warpfacing UP, BATTLE_TOWER_1F, $7, $7
+	warpfacing UP, BATTLE_TOWER_1F, $a, $8
 	writebyte BATTLETOWER_NO_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	opentext
@@ -108,11 +108,51 @@ Script_BeatenAllTrainers: ; 0x9f4d9
 	pause 60
 	setevent EVENT_BEAT_PALMER
 	special Special_BattleTower_Fade
-	warpfacing UP, BATTLE_TOWER_1F, $7, $7
+	warpfacing UP, BATTLE_TOWER_1F, $a, $8
 Script_BeatenAllTrainers2:
 	opentext
 	writetext Text_CongratulationsYouveBeatenAllTheTrainers
 	jump Script_GivePlayerHisPrize
+
+MovementData_BattleTowerBattleRoomPlayerWalksIn:
+	step_up
+	step_up
+	step_up
+	step_up
+	turn_head_right
+	step_end
+
+MovementData_BattleTowerBattleRoomOpponentWalksIn:
+	slow_step_down
+	slow_step_down
+	slow_step_down
+	turn_head_left
+	step_end
+
+MovementData_BattleTowerBattleRoomOpponentWalksOut:
+	turn_head_up
+	slow_step_up
+	slow_step_up
+	slow_step_up
+	step_end
+
+MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer:
+	slow_step_right
+	slow_step_up
+	slow_step_up
+	step_end
+
+MovementData_BattleTowerBattleRoomReceptionistWalksAway:
+	slow_step_down
+	slow_step_down
+	slow_step_left
+MovementData_BattleTowerBattleRoomPlayerTurnsToFaceNextOpponent:
+	turn_head_right
+	step_end
+
+MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist:
+	turn_head_down
+	step_end
 
 Text_YourPokemonWillBeHealedToFullHealth: ; 0x9ee92
 	text "Your #mon will"
@@ -173,4 +213,4 @@ BattleTowerBattleRoom_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_YOUNGSTER, 0, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
-	person_event SPRITE_RECEPTIONIST, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_RECEPTIONIST, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

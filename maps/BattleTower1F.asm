@@ -105,7 +105,7 @@ Script_WalkToBattleTowerElevator:
 	warpsound
 	disappear BATTLETOWER1F_RECEPTIONIST
 	stopfollow
-	applymovement PLAYER, MovementData_BattleTowerHallwayPlayerEntersElevator
+	applymovement PLAYER, MovementData_BattleTower1FPlayerEntersElevator
 	warpcheck
 	end
 
@@ -233,53 +233,8 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
 	step_up
-MovementData_BattleTowerHallwayPlayerEntersElevator:
+MovementData_BattleTower1FPlayerEntersElevator:
 	step_up
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerWalksIn:
-	step_up
-	step_up
-	step_up
-	step_up
-	turn_head_right
-	step_end
-
-MovementData_BattleTowerBattleRoomOpponentWalksIn:
-	slow_step_down
-	slow_step_down
-	slow_step_down
-	turn_head_left
-	step_end
-
-MovementData_BattleTowerBattleRoomOpponentWalksOut:
-	turn_head_up
-	slow_step_up
-	slow_step_up
-	slow_step_up
-	step_end
-
-MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer:
-	slow_step_right
-	slow_step_right
-	slow_step_up
-	slow_step_up
-	step_end
-
-MovementData_BattleTowerBattleRoomReceptionistWalksAway:
-	slow_step_down
-	slow_step_down
-	slow_step_left
-	slow_step_left
-	turn_head_right
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist:
-	turn_head_down
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerTurnsToFaceNextOpponent:
-	turn_head_right
 	step_end
 
 Text_BattleTowerWelcomesYou: ; 0x9e5ab
