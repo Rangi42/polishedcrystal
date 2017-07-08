@@ -388,7 +388,7 @@ PopulateBattleTowerTeam:
 	pop hl
 	ld a, e
 	cp BATTLETOWER_NROFPKMNS
-	jp z, .set_nicknames
+	jp z, .set_level
 	push hl
 	push de
 	ld a, d
@@ -430,17 +430,10 @@ PopulateBattleTowerTeam:
 	pop de
 
 	; OTPartyMon in hl, target battle tower data in de
-	; Species, and poll base data for experience and stats later
+	; Species
 	ld a, [de]
 	ld [hl], a
 	ld [bc], a
-	push hl
-	push de
-	ld [CurSpecies], a
-	ld [CurPartySpecies], a
-	call GetBaseData
-	pop de
-	pop hl
 	inc de
 
 	ld bc, OTPartyMon1Item - OTPartyMon1Species
@@ -491,54 +484,15 @@ PopulateBattleTowerTeam:
 	call ByteFill
 	pop hl
 
-	; Set level to 50
-	ld bc, OTPartyMon1Level - OTPartyMon1EVs
-	add hl, bc
-	ld a, 50
-	ld [hl], a
-	ld [CurPartyLevel], a ; for stat calculation
-
-	; Set up Exp properly
-	ld bc, OTPartyMon1Exp - OTPartyMon1Level
-	add hl, bc
-	push hl
-	farcall CalcExpAtLevel
-	pop hl
-	push hl
-	ld a, [hProduct + 1]
-	ld [hli], a
-	ld a, [hProduct + 2]
-	ld [hli], a
-	ld a, [hProduct + 3]
-	ld [hl], a
-	pop hl
-
-	; Calculate stats
-	ld bc, OTPartyMon1MaxHP - OTPartyMon1Exp
-	add hl, bc
-	push hl
-	ld bc, OTPartyMon1EVs - OTPartyMon1MaxHP
-	add hl, bc
-	pop de
-	ld b, TRUE
-	push de
-	predef CalcPkmnStats
-	pop hl
-	push hl
-	ld bc, OTPartyMon1HP - OTPartyMon1MaxHP
-	add hl, bc
-	pop de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hl], a
 	pop de
 	inc e
 	push de
 	jp .loop
 
-.set_nicknames
+.set_level
+	ld a, 50
+	call BT_SetLevel
+
 	; Initialize trainer nicknames
 	ld a, [OTPartyCount]
 	ld d, a
@@ -617,6 +571,84 @@ BT_GetSetSize:
 	pop hl
 	ld a, d
 	ret
+
+BT_SetLevel:
+; Set level of all pokémon in your and opponent's party to a and set HP to max HP
+	ld d, a
+	ld a, [PartyCount]
+	ld hl, PartyMon1
+	call .set_level
+	ld a, [OTPartyCount]
+	ld hl, OTPartyMon1
+.set_level
+	dec a
+	ld e, a
+.loop
+	push hl
+	ld a, e
+	push de
+	call GetPartyLocation
+
+	; Get base stats and experience group
+	ld bc, PartyMon1Species - PartyMon1
+	add hl, bc
+	ld a, [hl]
+	ld [CurSpecies], a
+	ld [CurPartySpecies], a
+	push hl
+	call GetBaseData
+	pop hl
+
+	ld bc, PartyMon1Level - PartyMon1Species
+	add hl, bc
+	pop de
+	push de
+	ld a, d
+	ld [hl], a
+	ld [CurPartyLevel], a ; for stat calculation
+
+	; Set up Exp properly
+	ld bc, PartyMon1Exp - PartyMon1Level
+	add hl, bc
+	push hl
+	farcall CalcExpAtLevel
+	pop hl
+	push hl
+	ld a, [hProduct + 1]
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+	pop hl
+
+	; Calculate stats
+	ld bc, PartyMon1MaxHP - PartyMon1Exp
+	add hl, bc
+	push hl
+	ld bc, PartyMon1EVs - PartyMon1MaxHP
+	add hl, bc
+	pop de
+	ld b, TRUE
+	push de
+	predef CalcPkmnStats
+	pop hl
+	push hl
+	ld bc, OTPartyMon1HP - OTPartyMon1MaxHP
+	add hl, bc
+	pop de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hl], a
+	pop de
+	pop hl
+	ld a, e
+	and a
+	ret z
+	dec e
+	jr .loop
 
 BattleTowerMons: ; 1f8450
 ; 10 groups of 21 mons.
