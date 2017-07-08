@@ -518,7 +518,7 @@ BattleTowerMart2:
 	db LIFE_ORB,     1
 	db FLAME_ORB,    1
 	db TOXIC_ORB,    1
-	db BLACK_SLUDGE, 255
+	db BLACK_SLUDGE, 1
 	db -1
 
 BattleTowerMart3:

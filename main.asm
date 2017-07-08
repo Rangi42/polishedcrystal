@@ -800,16 +800,6 @@ MenuDataHeader_0x24b1d: ; 0x24b1d
 	db 1 ; default option
 
 PlaceBlueCardPointsTopRight:
-	call TopRightPointsCommon
-	ld de, wBlueCardBalance
-	jp PrintNum
-
-PlaceBattlePointsTopRight:
-	call TopRightPointsCommon
-	ld de, BattlePoints
-	jp PrintNum
-
-TopRightPointsCommon:
 	hlcoord 11, 0
 	lb bc, 1, 7
 	call TextBox
@@ -818,10 +808,25 @@ TopRightPointsCommon:
 	call PlaceString
 	lb bc, 1, 3
 	hlcoord 16, 1
-	ret
+	ld de, wBlueCardBalance
+	jp PrintNum
 
 .PointsString:
 	db "Pts@"
+
+PlaceBattlePointsTopRight:
+	hlcoord 12, 0
+	lb bc, 1, 6
+	call TextBox
+	lb bc, 1, 3
+	hlcoord 13, 1
+	ld de, BattlePoints
+	call PrintNum
+	ld de, .BPString
+	jp PlaceString
+
+.BPString:
+	db " BP@"
 
 Special_DisplayCoinCaseBalance: ; 24b25
 	; Place a text box of size 1x7 at 11, 0.
