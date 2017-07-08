@@ -4041,7 +4041,7 @@ PursuitSwitch: ; 3dc5b
 	push af
 
 	; Kludge: if player is target, override CurPlayerMon to
-	; properly update party struct (FIXME: make this unneccessary)
+	; properly update party struct (TODO: make this unneccessary)
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy

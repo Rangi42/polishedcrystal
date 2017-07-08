@@ -282,6 +282,7 @@ MON_ABILITY              EQUS "(PartyMon1Ability - PartyMon1)"
 MON_NATURE               EQUS "(PartyMon1Nature - PartyMon1)"
 MON_GENDER               EQUS "(PartyMon1Gender - PartyMon1)"
 MON_IS_EGG               EQUS "(PartyMon1IsEgg - PartyMon1)"
+MON_IS_DEAD              EQUS "(PartyMon1IsDead - PartyMon1)"
 MON_FORM                 EQUS "(PartyMon1Form - PartyMon1)"
 MON_PP                   EQUS "(PartyMon1PP - PartyMon1)"
 MON_HAPPINESS            EQUS "(PartyMon1Happiness - PartyMon1)"
@@ -306,13 +307,13 @@ BOXMON_STRUCT_LENGTH     EQUS "(PartyMon1End - PartyMon1)"
 PARTYMON_STRUCT_LENGTH   EQUS "(PartyMon1StatsEnd - PartyMon1)"
 
 ; apply to MON_FORM
-SHINY_MASK         EQU %10000000
-ABILITY_MASK       EQU %01100000
-NATURE_MASK        EQU %00011111
-GENDER_MASK        EQU %10000000
-IS_EGG_MASK        EQU %01000000
-HYPER_TRAINED_MASK EQU %00100000
-FORM_MASK          EQU %00011111
+SHINY_MASK   EQU %10000000
+ABILITY_MASK EQU %01100000
+NATURE_MASK  EQU %00011111
+GENDER_MASK  EQU %10000000
+IS_EGG_MASK  EQU %01000000
+IS_DEAD_MASK EQU %00100000
+FORM_MASK    EQU %00011111
 
 ; apply to MON_CAUGHTDATA
 CAUGHTGENDER_MASK EQU %10000000
