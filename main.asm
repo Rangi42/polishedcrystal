@@ -800,16 +800,25 @@ MenuDataHeader_0x24b1d: ; 0x24b1d
 	db 1 ; default option
 
 PlaceBlueCardPointsTopRight:
+	call TopRightPointsCommon
+	ld de, wBlueCardBalance
+	jp PrintNum
+
+PlaceBattlePointsTopRight:
+	call TopRightPointsCommon
+	ld de, BattlePoints
+	jp PrintNum
+
+TopRightPointsCommon:
 	hlcoord 11, 0
 	lb bc, 1, 7
 	call TextBox
 	hlcoord 12, 1
 	ld de, .PointsString
 	call PlaceString
-	ld de, wBlueCardBalance
-	lb bc, 0 | 1, 3
+	lb bc, 1, 3
 	hlcoord 16, 1
-	jp PrintNum
+	ret
 
 .PointsString:
 	db "Pts@"

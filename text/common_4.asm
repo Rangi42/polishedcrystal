@@ -400,3 +400,15 @@ TMMartCostsThisMuchText::
 	deciram hMoneyTemp, 3, 7
 	text "."
 	done
+
+; TODO: print quantity along with name and cost
+BTMartCostsThisMuchText::
+	text "@"
+;	text_from_ram StringBuffer2
+;	text " @"
+	text_from_ram StringBuffer1
+	text ""
+	line "will be @"
+	deciram hMoneyTemp, 3, 3
+	text " BP."
+	done
