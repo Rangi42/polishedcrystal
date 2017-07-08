@@ -498,7 +498,7 @@ ShamoutiMart2:
 	db -1
 
 BattleTowerMart1:
-	db 8 ; # items
+	db 9 ; # items
 	db CHOICE_BAND,  1
 	db CHOICE_SCARF, 1
 	db CHOICE_SPECS, 1
@@ -506,6 +506,7 @@ BattleTowerMart1:
 	db MUSCLE_BAND,  1
 	db WISE_GLASSES, 1
 	db METRONOME_I,  1
+	db BINDING_BAND, 1
 	db GRIP_CLAW,    1
 	db -1
 
@@ -522,7 +523,7 @@ BattleTowerMart2:
 	db -1
 
 BattleTowerMart3:
-	db 8 ; # items
+	db 7 ; # items
 	db MACHO_BRACE,  1
 	db FOCUS_BAND,   1
 	db FOCUS_SASH,   1
@@ -530,5 +531,4 @@ BattleTowerMart3:
 	db PROTECT_PADS, 1
 	db ROCKY_HELMET, 1
 	db SAFE_GOGGLES, 1
-	db BINDING_BAND, 1
 	db -1
