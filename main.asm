@@ -804,23 +804,22 @@ PlaceBlueCardPointsTopRight:
 	lb bc, 1, 7
 	call TextBox
 	hlcoord 12, 1
-	ld de, .PointsString
-	call PlaceString
-	lb bc, 1, 3
-	hlcoord 16, 1
 	ld de, wBlueCardBalance
-	jp PrintNum
+	lb bc, 1, 3
+	call PrintNum
+	ld de, .PointsString
+	jp PlaceString
 
 .PointsString:
-	db "Pts@"
+	db " Pts@"
 
 PlaceBattlePointsTopRight:
 	hlcoord 12, 0
 	lb bc, 1, 6
 	call TextBox
-	lb bc, 1, 3
 	hlcoord 13, 1
 	ld de, BattlePoints
+	lb bc, 1, 3
 	call PrintNum
 	ld de, .BPString
 	jp PlaceString
