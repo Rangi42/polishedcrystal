@@ -196,13 +196,13 @@
 	connection east, ROUTE_15, Route15, 9, 0, 9
 
 	map_header_2 Route18East, ROUTE_18_EAST, $43, WEST | EAST
-	connection west, ROUTE_18_WEST, Route18West, 0, 0, 9
+	connection west, ROUTE_18_WEST, Route18West, 0, 0, 11
 	connection east, FUCHSIA_CITY, FuchsiaCity, -3, 4, 14
 
 	map_header_2 Route18West, ROUTE_18_WEST, $43, NORTH | WEST | EAST
 	connection north, ROUTE_17, Route17, 0, 0, 10
 	connection west, URAGA_CHANNEL_EAST, UragaChannelEast, 0, 0, 9
-	connection east, ROUTE_18_EAST, Route18East, 0, 0, 9
+	connection east, ROUTE_18_EAST, Route18East, 0, 0, 11
 
 	map_header_2 UragaChannelEast, URAGA_CHANNEL_EAST, $43, WEST | EAST
 	connection west, URAGA_CHANNEL_WEST, UragaChannelWest, 0, 0, 9
