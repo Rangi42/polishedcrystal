@@ -89,6 +89,7 @@
 	dba TamerPic
 	dba ArtistPic
 	dba AromaLadyPic
+	dba WaitressPic
 	dba SightseermPic
 	dba SightseerfPic
 	dba SightseersPic
@@ -129,6 +130,7 @@
 	dba MaylenePic
 	dba SkylaPic
 	dba ValeriePic
+	dba KukuiPic
 	dba VictorPic
 	dba BillPic
 	dba YellowPic
