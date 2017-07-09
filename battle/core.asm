@@ -7,6 +7,7 @@ DoBattle: ; 3c000
 	ld [wBattleParticipantsIncludingFainted], a
 	ld [wPlayerAction], a
 	ld [BattleEnded], a
+	ld [InverseBattleScore], a
 	inc a
 	ld [wBattleHasJustStarted], a
 	ld hl, OTPartyMon1HP

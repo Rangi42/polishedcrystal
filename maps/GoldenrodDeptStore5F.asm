@@ -74,7 +74,6 @@ GoldenrodDeptStore5FTwinScript:
 	writetext UnknownText_0x56279
 	buttonsound
 	callasm PickRandomMysteryGift
-	copybytetovar CurFruit
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM
 	iffalse .NoRoom
@@ -229,5 +228,5 @@ PickRandomMysteryGift:
 	ld a, APICOT_BERRY - ORAN_BERRY + 1
 	call RandomRange
 	add ORAN_BERRY
-	ld [CurFruit], a
+	ld [ScriptVar], a
 	ret

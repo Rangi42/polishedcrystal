@@ -1465,6 +1465,7 @@ wUsingItemWithSelect:: ds 1 ; d0ef
 CurMart:: ds 16 ; d0f0
 CurMartEnd::
 	ds CurMart - @
+InverseBattleScore::
 CurElevator:: ds 1
 CurElevatorFloors::
 wCurMessageIndex:: ds 1

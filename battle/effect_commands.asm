@@ -2653,9 +2653,17 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ld a, [TypeModifier]
 	cp $10 ; 1.0
 	ret z
-	ld hl, SuperEffectiveText
-	jr nc, .print
+	jr nc, .super_effective
 	ld hl, NotVeryEffectiveText
+	ld a, [InverseBattleScore]
+	dec a
+	ld [InverseBattleScore], a
+	jr .print
+.super_effective
+	ld hl, SuperEffectiveText
+	ld a, [InverseBattleScore]
+	inc a
+	ld [InverseBattleScore], a
 .print
 	push af
 	call StdBattleTextBox

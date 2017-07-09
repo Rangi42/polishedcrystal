@@ -6,6 +6,7 @@ See the [Issues](issues/) page.
 ## Mechanics
 
 * Generate Battle Tower Pokémon
+* Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves
 * Finish wild rosters
@@ -15,10 +16,6 @@ See the [Issues](issues/) page.
 ## Aesthetics
 
 * Improve switching with U-turn and Volt Switch (print a message, and clear the text before sending out)
-* Add separate throwing animation graphics for more Poké Ball designs
-* Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
-* Make Eggs use their Pokémon's palette
-* Animate item activations like Quick Claw
 * Use a side view for Falkner's Pidgeotto in Dark Cave
 
 
@@ -29,7 +26,6 @@ See the [Issues](issues/) page.
 
 ## Characters
 
-* Inver in Route 16 house
 * Pay Day tutor in Goldenrod Game Corner
 * Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
 * Silph Co. mart
@@ -224,6 +220,10 @@ Some of these may never be added; they're just suggestions.
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
+* Add separate throwing animation graphics for more Poké Ball designs
+* Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
+* Make Eggs use their Pokémon's palette
+* Animate item activations like Quick Claw
 * Use Mart interface for selling decorations, with a red sidebar
 * Show walking animation faster when running
 * Faster Bicycle, or slower Running Shoes
