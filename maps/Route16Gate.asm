@@ -24,10 +24,10 @@ Route16GateOfficerText:
 Route16Gate_MapEventHeader:
 .Warps:
 	db 4
-	warp_def $4, $0, 4, ROUTE_16_NORTH
-	warp_def $5, $0, 5, ROUTE_16_NORTH
-	warp_def $4, $9, 6, ROUTE_16_NORTH
-	warp_def $5, $9, 7, ROUTE_16_NORTH
+	warp_def $4, $0, 2, ROUTE_16_NORTHWEST
+	warp_def $5, $0, 3, ROUTE_16_NORTHWEST
+	warp_def $4, $9, 3, ROUTE_16_NORTHEAST
+	warp_def $5, $9, 4, ROUTE_16_NORTHEAST
 
 .XYTriggers:
 	db 0

@@ -559,7 +559,8 @@ SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
 
 INCLUDE "maps/Route5.asm"
 INCLUDE "maps/Route7.asm"
-INCLUDE "maps/Route16North.asm"
+INCLUDE "maps/Route16Northeast.asm"
+INCLUDE "maps/Route16Northwest.asm"
 INCLUDE "maps/Route16South.asm"
 INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"

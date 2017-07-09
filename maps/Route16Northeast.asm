@@ -1,7 +1,7 @@
 const_value set 2
-	const ROUTE16NORTH_CUT_TREE
+	const ROUTE16NORTHEAST_CUT_TREE
 
-Route16North_MapScriptHeader:
+Route16Northeast_MapScriptHeader:
 .MapTriggers:
 	db 0
 
@@ -11,14 +11,11 @@ Route16North_MapScriptHeader:
 Route16NorthCutTree:
 	jumpstd cuttree
 
-Route16North_MapEventHeader:
+Route16Northeast_MapEventHeader:
 .Warps:
-	db 7
-	warp_def $1, $1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
+	db 4
 	warp_def $a, $e, 3, ROUTE_16_17_GATE
 	warp_def $b, $e, 4, ROUTE_16_17_GATE
-	warp_def $4, $9, 1, ROUTE_16_GATE
-	warp_def $5, $9, 2, ROUTE_16_GATE
 	warp_def $4, $e, 3, ROUTE_16_GATE
 	warp_def $5, $e, 4, ROUTE_16_GATE
 

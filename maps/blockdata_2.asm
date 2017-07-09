@@ -210,7 +210,8 @@ Route6_BlockData:
 Route7_BlockData:
 	INCBIN "maps/Route7.blk"
 
-Route16North_BlockData:
+Route16Northeast_BlockData:
+Route16Northwest_BlockData:
 Route16South_BlockData:
 	INCBIN "maps/Route16.blk"
 

@@ -219,16 +219,20 @@
 	map_header_2 Route16South, ROUTE_16_SOUTH, $f, SOUTH
 	connection south, ROUTE_17, Route17, 0, 0, 10
 
-	map_header_2 Route16North, ROUTE_16_NORTH, $f, WEST | EAST
+	map_header_2 Route16Northeast, ROUTE_16_NORTHEAST, $f, WEST | EAST
+	connection west, ROUTE_16_WEST, Route16West, 0, 0, 11
+	connection east, CELADON_CITY, CeladonCity, -3, 7, 10
+
+	map_header_2 Route16Northwest, ROUTE_16_NORTHWEST, $f, WEST | EAST
 	connection west, ROUTE_16_WEST, Route16West, 0, 0, 11
 	connection east, CELADON_CITY, CeladonCity, -3, 7, 10
 
 	map_header_2 Route16West, ROUTE_16_WEST, $f, WEST | EAST
 	connection west, ROUTE_2_SOUTH, Route2South, -3, 5, 10
-	connection east, ROUTE_16_NORTH, Route16North, 0, 0, 11
+	connection east, ROUTE_16_NORTHWEST, Route16Northwest, 0, 0, 11
 
 	map_header_2 CeladonCity, CELADON_CITY, $f, WEST | EAST
-	connection west, ROUTE_16_NORTH, Route16North, 10, 0, 8
+	connection west, ROUTE_16_NORTHEAST, Route16Northeast, 10, 0, 8
 	connection east, ROUTE_7, Route7, 5, 0, 9
 
 	map_header_2 Route7, ROUTE_7, $f, WEST | EAST

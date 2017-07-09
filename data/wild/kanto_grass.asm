@@ -729,7 +729,7 @@
 	db 55, QUAGSIRE
 	db 57, QUAGSIRE
 
-	map ROUTE_16_NORTH
+	map ROUTE_16_NORTHWEST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
 	db 53, GRIMER

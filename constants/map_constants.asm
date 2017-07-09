@@ -425,7 +425,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 21
 
 	mapgroup ROUTE_7,                                     9, 10 ;  1
-	mapgroup ROUTE_16_NORTH,                             11, 11 ;  2
+	mapgroup ROUTE_16_NORTHEAST,                         11, 11 ;  2
 	mapgroup ROUTE_16_SOUTH,                             11, 11 ;  3
 	mapgroup ROUTE_17,                                   63, 10 ;  4
 	mapgroup ROUTE_18_WEST,                               9, 10 ;  5
@@ -525,7 +525,8 @@ MAP_NONE   EQU 0
 	mapgroup VIRIDIAN_FOREST_VIRIDIAN_GATE,                4, 5 ; 16
 	mapgroup VIRIDIAN_FOREST_PEWTER_GATE,                  4, 5 ; 17
 	mapgroup ROUTE_1_VIRIDIAN_GATE,                        4, 5 ; 18
-	mapgroup ROUTE_16_WEST,                              11, 34 ; 19
+	mapgroup ROUTE_16_NORTHWEST,                         11, 11 ; 19
+	mapgroup ROUTE_16_WEST,                              11, 34 ; 20
 
 	newgroup                                                    ; 24
 
