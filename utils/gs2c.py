@@ -95,10 +95,14 @@ def convert_line(line):
 		_, drums = line.split(None, 1)
 		return 'togglenoise %s' % (drums,)
 
-	# Example: pkmsSetArp $C == unknownmusic0xde $C
+	# Example: pkmsSetArp $E4 == sound_duty 0, 1, 2, 3
 	if line.startswith('pkmsSetArp'):
 		_, x = line.split(None, 1)
-		return 'unknownmusic0xde %s' % (x,)
+		b1 = x & 0b11
+		b2 = (x & 0b1100) >> 2
+		b3 = (x & 0b110000) >> 4
+		b4 = (x & 0b11000000) >> 6
+		return 'sound_duty %s, %s, %s, %s' % (b1, b2, b3, b4)
 
 	# Example: pkmsSetTempo 0, $80 == tempo $80
 	if line.startswith('pkmsSetTempo'):
