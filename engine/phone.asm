@@ -494,7 +494,7 @@ Phone_FirstOfTwoRings: ; 902b3
 Phone_CallerTextboxWithName2: ; 902c9
 	call Phone_CallerTextbox
 	hlcoord 1, 2
-	ld [hl], $62
+	ld [hl], "<PHONE>"
 rept 2
 	inc hl
 endr
