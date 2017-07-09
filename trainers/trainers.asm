@@ -12919,6 +12919,13 @@ AromaLadyGroup:
 ; ================================
 
 
+WaitressGroup:
+; ================================
+; ================
+; ================
+; ================================
+
+
 SightseerMGroup:
 ; ================================
 ; ================
@@ -16096,6 +16103,28 @@ ValerieGroup:
 		db CALM_MIND
 		db DRAIN_KISS
 		db HYPER_VOICE
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
+KukuiGroup:
+; ================================
+; ================
+
+	; KUKUI
+	db "Kukui@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 67, GRANBULL
+	db 65, NINETALES
+	db 66, MAGNEZONE
+	db 66, SNORLAX
+	db 65, HONCHKROW
+	db 68, POLIWRATH
 
 	db $ff ; end
 

@@ -117,6 +117,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER		; tamer
 	db MUSIC_BEAUTY_ENCOUNTER		; artist
 	db MUSIC_BEAUTY_ENCOUNTER		; aroma_lady
+	db MUSIC_BEAUTY_ENCOUNTER		; waitress
 	db MUSIC_HIKER_ENCOUNTER		; sightseerm
 	db MUSIC_BEAUTY_ENCOUNTER		; sightseerf
 	db MUSIC_HIKER_ENCOUNTER		; sightseers
@@ -157,6 +158,8 @@ TrainerEncounterMusic: ; e9027
 ;	db MUSIC_LASS_ENCOUNTER			; maylene
 ;	db MUSIC_LASS_ENCOUNTER			; skyla
 ;	db MUSIC_KIMONO_ENCOUNTER		; valerie
+;	db MUSIC_HIKER_ENCOUNTER		; kukui
+;	db MUSIC_HIKER_ENCOUNTER		; victor
 ;	db MUSIC_POKEMANIAC_ENCOUNTER	; bill_t
 ;	db MUSIC_LASS_ENCOUNTER			; yellow
 ;	db MUSIC_HIKER_ENCOUNTER		; walker

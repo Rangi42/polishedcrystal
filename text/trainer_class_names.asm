@@ -88,6 +88,7 @@
 	db "Tamer@"            ; TAMER
 	db "Artist@"           ; ARTIST
 	db "Aroma Lady@"       ; AROMA_LADY
+	db "Waitress@"         ; WAITRESS
 	db "Sightseer@"        ; SIGHTSEERM
 	db "Sightseer@"        ; SIGHTSEERF
 	db "Sightseers@"       ; SIGHTSEERS
@@ -128,6 +129,7 @@
 	db "Fighter@"          ; MAYLENE
 	db "Pilot@"            ; SKYLA
 	db "Designer@"         ; VALERIE
+	db "<PK><MN> Trainer@" ; KUKUI
 	db "Surfer@"           ; VICTOR
 	db "#Maniac@"          ; BILL_T
 	db "<PK><MN> Trainer@" ; YELLOW

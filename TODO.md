@@ -32,6 +32,7 @@ See the [Issues](issues/) page.
 * Battle Elm to get S.S. Ticket
 * Rematch Eusine and Bill somehow
 * Battle Ivy on Valencia Island
+* Battle Kukui on Route 22
 
 Shamouti Island:
 

@@ -120,6 +120,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; tamer
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; artist
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; aroma lady
+	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; waitress
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; sightseerm
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; sightseerf
 	db  72, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; sightseers
@@ -160,6 +161,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; maylene
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; skyla
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; valerie
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; kukui
 	db 192, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; victor
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bill
 	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; yellow

@@ -1,6 +1,6 @@
 const_value set 2
 	const ROUTE28FAMOUSSPEECHHOUSE_CELEBRITY
-	const ROUTE28FAMOUSSPEECHHOUSE_PIDGEOT
+	const ROUTE28FAMOUSSPEECHHOUSE_SKARMORY
 
 Route28FamousSpeechHouse_MapScriptHeader:
 .MapTriggers:
@@ -26,10 +26,10 @@ Celebrity:
 	closetext
 	end
 
-CelebritysPidgeot:
+CelebritysSkarmory:
 	opentext
-	writetext CelebritysPidgeotText
-	cry PIDGEOT
+	writetext CelebritysSkarmoryText
+	cry SKARMORY
 	waitbutton
 	closetext
 	end
@@ -57,8 +57,8 @@ CelebrityText2:
 	line "left alone…"
 	done
 
-CelebritysPidgeotText:
-	text "Pidgeot: Geot!"
+CelebritysSkarmoryText:
+	text "Skarmory: Scree!"
 	done
 
 Route28FamousSpeechHouse_MapEventHeader:
@@ -76,4 +76,4 @@ Route28FamousSpeechHouse_MapEventHeader:
 .PersonEvents:
 	db 2
 	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Celebrity, -1
-	person_event SPRITE_PIDGEOT, 5, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CelebritysPidgeot, -1
+	person_event SPRITE_SKARMORY, 5, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CelebritysSkarmory, -1

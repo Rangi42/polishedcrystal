@@ -1,6 +1,6 @@
 const_value set 3
 	const LYRASHOUSE2F_LYRA
-	const LYRASHOUSE2F_PIDGEOT
+	const LYRASHOUSE2F_AMPHAROS
 	const LYRASHOUSE2F_N64
 
 LyrasHouse2F_MapScriptHeader:
@@ -13,10 +13,10 @@ LyrasHouse2F_MapScriptHeader:
 LyrasHouseLyra:
 	jumptextfaceplayer LyrasHouseLyraText
 
-LyrasHousePidgeot:
+LyrasHouseAmpharos:
 	opentext
-	writetext LyrasHousePidgeotText
-	cry PIDGEOT
+	writetext LyrasHouseAmpharosText
+	cry AMPHAROS
 	waitbutton
 	closetext
 	end
@@ -67,8 +67,9 @@ LyrasHouseLyraText:
 	line "lately…"
 	done
 
-LyrasHousePidgeotText:
-	text "Pidgeot: Geot!"
+LyrasHouseAmpharosText:
+	text "Ampharos: Palu!"
+	line "Palulu!"
 	done
 
 LyrasRadioText1:
@@ -120,5 +121,5 @@ LyrasHouse2F_MapEventHeader:
 .PersonEvents:
 	db 3
 	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseLyra, EVENT_LYRA_IN_HER_ROOM
-	person_event SPRITE_PIDGEOT, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, LyrasHousePidgeot, EVENT_LYRA_IN_HER_ROOM
+	person_event SPRITE_AMPHAROS, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseAmpharos, EVENT_LYRA_IN_HER_ROOM
 	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_SCRIPT, 0, LyrasHouseN64, -1

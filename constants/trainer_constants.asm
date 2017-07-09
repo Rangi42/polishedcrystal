@@ -875,26 +875,28 @@ KRIS EQU __enum__
 	const HOLLY
 	const PEONY
 
-	trainerclass SIGHTSEERM ; 5b
+	trainerclass WAITRESS ; 5b
+
+	trainerclass SIGHTSEERM ; 5c
 	const JASKA
 	const BLAISE
 	const GARETH
 	const CHESTER
 	const HARI
 
-	trainerclass SIGHTSEERF ; 5c
+	trainerclass SIGHTSEERF ; 5d
 	const ROSIE
 	const KAMILA
 	const NOELLE
 	const PILAR
 
-	trainerclass SIGHTSEERS ; 5d
+	trainerclass SIGHTSEERS ; 5e
 	const LIANDSU1
 	const LIANDSU2
 	const CYANDVI1
 	const CYANDVI2
 
-	trainerclass COOLTRAINERM ; 5e
+	trainerclass COOLTRAINERM ; 5f
 	const GAVEN1
 	const GAVEN2
 	const GAVEN3
@@ -918,7 +920,7 @@ KRIS EQU __enum__
 	const COOLTRAINERM_RAYMOND
 	const FERGUS
 
-	trainerclass COOLTRAINERF ; 5f
+	trainerclass COOLTRAINERF ; 60
 	const BETH1
 	const BETH2
 	const BETH3
@@ -945,7 +947,7 @@ KRIS EQU __enum__
 	const NEESHA
 	const CHIARA
 
-	trainerclass ACE_DUO ; 60
+	trainerclass ACE_DUO ; 61
 	const ELANANDIDA1
 	const ELANANDIDA2
 	const ARAANDBELA1
@@ -959,115 +961,117 @@ KRIS EQU __enum__
 	const DANANDCARA1
 	const DANANDCARA2
 
-	trainerclass VETERANM ; 61
+	trainerclass VETERANM ; 62
 	const MATT
 	const REMY
 
-	trainerclass VETERANF ; 62
+	trainerclass VETERANF ; 63
 	const JOANNE
 	const SYLVIE
 
-	trainerclass PROTON ; 63
+	trainerclass PROTON ; 64
 	const PROTON1
 	const PROTON2
 
-	trainerclass PETREL ; 64
+	trainerclass PETREL ; 65
 	const PETREL1
 	const PETREL2
 
-	trainerclass ARCHER ; 65
+	trainerclass ARCHER ; 66
 	const ARCHER1
 	const ARCHER2
 
-	trainerclass ARIANA ; 66
+	trainerclass ARIANA ; 67
 	const ARIANA1
 	const ARIANA2
 
-	trainerclass GIOVANNI ; 67
+	trainerclass GIOVANNI ; 68
 	const GIOVANNI1
 	const GIOVANNI2
 
-	trainerclass PROF_OAK ; 68
+	trainerclass PROF_OAK ; 69
 
-	trainerclass PROF_ELM ; 69
+	trainerclass PROF_ELM ; 6a
 
-	trainerclass PROF_IVY ; 6a
+	trainerclass PROF_IVY ; 6b
 
-	trainerclass MYSTICALMAN ; 6b
+	trainerclass MYSTICALMAN ; 6c
 	const EUSINE
 
-	trainerclass KARATE_KING ; 6c
+	trainerclass KARATE_KING ; 6d
 	const KIYO
 
-	trainerclass TOWERTYCOON ; 6d
+	trainerclass TOWERTYCOON ; 6e
 
-	trainerclass JESSIE_JAMES ; 6e
+	trainerclass JESSIE_JAMES ; 6f
 
-	trainerclass LORELEI ; 6f
+	trainerclass LORELEI ; 70
 
-	trainerclass AGATHA ; 70
+	trainerclass AGATHA ; 71
 
-	trainerclass STEVEN ; 71
+	trainerclass STEVEN ; 72
 
-	trainerclass CYNTHIA ; 72
+	trainerclass CYNTHIA ; 73
 
-	trainerclass INVER ; 73
+	trainerclass INVER ; 74
 
-	trainerclass CHERYL ; 74
+	trainerclass CHERYL ; 75
 
-	trainerclass RILEY ; 75
+	trainerclass RILEY ; 76
 
-	trainerclass BUCK ; 76
+	trainerclass BUCK ; 77
 
-	trainerclass MARLEY ; 77
+	trainerclass MARLEY ; 78
 
-	trainerclass MIRA ; 78
+	trainerclass MIRA ; 79
 
-	trainerclass ANABEL ; 79
+	trainerclass ANABEL ; 7a
 
-	trainerclass DARACH ; 7a
+	trainerclass DARACH ; 7b
 
-	trainerclass CAITLIN ; 7b
+	trainerclass CAITLIN ; 7c
 
-	trainerclass CANDELA ; 7c
+	trainerclass CANDELA ; 7d
 
-	trainerclass BLANCHE ; 7d
+	trainerclass BLANCHE ; 7e
 
-	trainerclass SPARK_T ; 7e
+	trainerclass SPARK_T ; 7f
 
-	trainerclass FLANNERY ; 7f
+	trainerclass FLANNERY ; 80
 
-	trainerclass MAYLENE ; 80
+	trainerclass MAYLENE ; 81
 
-	trainerclass SKYLA ; 81
+	trainerclass SKYLA ; 82
 
-	trainerclass VALERIE ; 82
+	trainerclass VALERIE ; 83
 
-	trainerclass VICTOR  ; 83
+	trainerclass KUKUI ; 84
 
-	trainerclass BILL_T ; 84
+	trainerclass VICTOR  ; 85
 
-	trainerclass YELLOW ; 85
+	trainerclass BILL_T ; 86
 
-	trainerclass WALKER ; 86
+	trainerclass YELLOW ; 87
 
-	trainerclass IMAKUNI ; 87
+	trainerclass WALKER ; 88
 
-	trainerclass LAWRENCE ; 88
+	trainerclass IMAKUNI ; 89
 
-	trainerclass REI ; 89
+	trainerclass LAWRENCE ; 8a
 
-	trainerclass OMASTAR_FOSSIL ; 8a
+	trainerclass REI ; 8b
 
-	trainerclass KABUTOPS_FOSSIL ; 8b
+	trainerclass OMASTAR_FOSSIL ; 8c
 
-	trainerclass AERODACTYL_FOSSIL ; 8c
+	trainerclass KABUTOPS_FOSSIL ; 8d
 
-	trainerclass CUBONE_ARMOR ; 8d
+	trainerclass AERODACTYL_FOSSIL ; 8e
 
-	trainerclass METEORITE ; 8e
+	trainerclass CUBONE_ARMOR ; 8f
 
-	trainerclass SILHOUETTE ; 8f
+	trainerclass METEORITE ; 90
+
+	trainerclass SILHOUETTE ; 91
 
 NUM_TRAINER_CLASSES EQU __enum__
 

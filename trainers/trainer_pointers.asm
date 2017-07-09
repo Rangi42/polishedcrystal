@@ -91,6 +91,7 @@ TrainerGroups: ; 0x39999
 	dba TamerGroup
 	dba ArtistGroup
 	dba AromaLadyGroup
+	dba WaitressGroup
 	dba SightseerMGroup
 	dba SightseerFGroup
 	dba SightseersGroup
@@ -131,6 +132,7 @@ TrainerGroups: ; 0x39999
 	dba MayleneGroup
 	dba SkylaGroup
 	dba ValerieGroup
+	dba KukuiGroup
 	dba VictorGroup
 	dba BillGroup
 	dba YellowGroup

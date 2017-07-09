@@ -540,6 +540,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Waitress
+	db 0, 0 ; items
+	db 12 ; base reward
+	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Sightseerm
 	db 0, 0 ; items
 	db 18 ; base reward
@@ -776,6 +782,12 @@ TrainerClassAttributes: ; 3959c
 
 ; Valerie
 	db HYPER_POTION, 0 ; items
+	db 25 ; base reward
+	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Kukui
+	db FULL_RESTORE, 0 ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
 	dw CONTEXT_USE + SWITCH_SOMETIMES
