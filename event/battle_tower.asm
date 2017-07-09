@@ -306,7 +306,7 @@ Special_BattleTower_BeginChallenge: ; 170a9c (5c:4a9c)
 	ret
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
-	farcall Function_LoadOpponentTrainerAndPokemons
+	farcall Function_LoadOpponentTrainer
 	ld a, [rSVBK]
 	push af
 	ld a, $3
