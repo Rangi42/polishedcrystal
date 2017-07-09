@@ -1,4 +1,4 @@
-Function_LoadOpponentTrainerAndPokemons: ; 1f8000
+Function_LoadOpponentTrainer: ; 1f8000
 	ld a, [rSVBK]
 	push af
 	ld a, BANK(BT_OTTrainer)
@@ -10,17 +10,16 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	ld bc, BT_OTTrainerEnd - BT_OTTrainer
 	call ByteFill
 
-	; Write $ff into the Item-Slots
-	ld a, $ff
-	ld [BT_OTPkmn1Item], a
-	ld [BT_OTPkmn2Item], a
-	ld [BT_OTPkmn3Item], a
-
 	ld a, BANK(sBTTrainers)
 	call GetSRAMBank
 	ld a, [sNrOfBeatenBattleTowerTrainers]
 	call CloseSRAM
-	cp BATTLETOWER_NROFTRAINERS - 1
+
+	; Every 3rd complete battle tower session, meet the tycoon
+.tycoon_loop
+	sub BATTLETOWER_NROFTRAINERS * 3
+	jr nc, .tycoon_loop
+	inc a
 	jr z, .load_tycoon
 
 	ld a, [hRandomAdd]
@@ -71,169 +70,10 @@ Function_LoadOpponentTrainerAndPokemons: ; 1f8000
 	ld bc, NAME_LENGTH
 	call CopyBytes
 
-; Copy random Pokémon
-	ld de, BT_OTPkmn1
-	call LoadRandomBattleTowerPkmn
-	ld de, BT_OTPkmn2
-	call LoadRandomBattleTowerPkmn
-	ld de, BT_OTPkmn3
-	call LoadRandomBattleTowerPkmn
-
-	ld a, [sBTPkmnPrevTrainer1]
-	ld [sBTPkmnPrevPrevTrainer1], a
-	ld a, [sBTPkmnPrevTrainer2]
-	ld [sBTPkmnPrevPrevTrainer2], a
-	ld a, [sBTPkmnPrevTrainer3]
-	ld [sBTPkmnPrevPrevTrainer3], a
-	ld a, [BT_OTPkmn1]
-	ld [sBTPkmnPrevTrainer1], a
-	ld a, [BT_OTPkmn2]
-	ld [sBTPkmnPrevTrainer2], a
-	ld a, [BT_OTPkmn3]
-	ld [sBTPkmnPrevTrainer3], a
 	call CloseSRAM
 
 	pop af
 	ld [rSVBK], a
-	ret
-
-LoadRandomBattleTowerPkmn:
-	ld a, BANK(sBTPkmnPrevTrainer1)
-	call GetSRAMBank
-
-.FindARandomBattleTowerPkmn:
-	; From Which LevelGroup are the Pkmn loaded
-	; a = 1..10
-	ld a, [wBTChoiceOfLvlGroup] ; [$d800]
-	dec a
-	ld hl, BattleTowerMons
-	ld bc, BattleTowerMons2 - BattleTowerMons1
-	call AddNTimes
-
-	ld a, [hRandomAdd]
-	ld b, a
-.resample
-	call Random
-	ld a, [hRandomAdd]
-	add b
-	ld b, a
-	and $1f
-	cp BATTLETOWER_NRMONSPERLEVELBRACKET
-	jr nc, .resample
-	; in register 'a' is the chosen Pkmn of the LevelGroup
-
-	; Check if Pkmn was already loaded before
-	; Check current and the 2 previous teams
-	; includes check if item is double at the current team
-	ld bc, BattleTowerPokemon2 - BattleTowerPokemon1
-	call AddNTimes
-	ld a, [hli] ; species
-	ld b, a
-	ld a, [hld] ; item
-	ld c, a
-	ld a, [BT_OTPkmn1]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [BT_OTPkmn1Item]
-	cp c
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [BT_OTPkmn2]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [BT_OTPkmn2Item]
-	cp c
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [BT_OTPkmn3]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [BT_OTPkmn3Item]
-	cp c
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [sBTPkmnPrevTrainer1]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [sBTPkmnPrevTrainer2]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [sBTPkmnPrevTrainer3]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [sBTPkmnPrevPrevTrainer1]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [sBTPkmnPrevPrevTrainer2]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-	ld a, [sBTPkmnPrevPrevTrainer3]
-	cp b
-	jr z, .FindARandomBattleTowerPkmn
-
-; hl = source battle tower pkmn
-; de = destination party_struct
-
-; TODO: dynamically calculate the rest of the data
-
-	; copy species + item + moves
-	ld bc, 6
-	call CopyBytes
-	; skip id + exp + evs
-	ld bc, 11
-	push hl
-	ld h, d
-	ld l, e
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	; copy dvs + personality
-	ld bc, 5
-	call CopyBytes
-	; skip pp + happiness + pokerus + caughtdata
-	ld bc, 9
-	push hl
-	ld h, d
-	ld l, e
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-	; level
-	ld a, [wBTChoiceOfLvlGroup]
-	ld c, 10
-	call SimpleMultiply
-	ld [de], a
-	inc de
-	; skip status + unused + hp + stats
-	ld bc, 16
-	push hl
-	ld h, d
-	ld l, e
-	add hl, bc
-	ld d, h
-	ld e, l
-	pop hl
-
-	ld a, [wd265]
-	push af
-	push de
-
-	ld hl, -PARTYMON_STRUCT_LENGTH
-	add hl, de
-	ld a, [hl]
-	ld [wd265], a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	push hl
-	call GetPokemonName
-	ld h, d
-	ld l, e
-	pop de
-	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-
-	pop de
-	pop af
-	ld [wd265], a
 	ret
 
 BattleTowerTrainers: ; 1f814e
