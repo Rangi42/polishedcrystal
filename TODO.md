@@ -224,6 +224,7 @@ Some of these may never be added; they're just suggestions.
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
+* Use Mart interface for selling decorations, with a red sidebar
 * Show walking animation faster when running
 * Faster Bicycle, or slower Running Shoes
 * Use RBY's Surf and Bike themes in Kanto
