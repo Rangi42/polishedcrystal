@@ -2655,20 +2655,17 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ret z
 	push af
 	ld a, [InverseBattleScore]
+	ld hl, SuperEffectiveText
 	jr nc, .super_effective
 	ld hl, NotVeryEffectiveText
 	dec a
-	cp 127 ; -129 wraps around
-	jr z, .print
-	jr .update
+	dec a
 .super_effective
-	ld hl, SuperEffectiveText
 	inc a
-	cp -128 ; 128 wraps around
-	jr z, .print
-.update
+	cp $80
+	jr z, .score_ok
 	ld [InverseBattleScore], a
-.print
+.score_ok
 	call StdBattleTextBox
 	pop af
 	ret c
