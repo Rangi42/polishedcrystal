@@ -334,7 +334,7 @@ endr
 	push de
 	inc hl
 	inc hl
-	call FillPP
+	predef FillPP
 	pop de
 	pop hl
 rept NUM_MOVES
