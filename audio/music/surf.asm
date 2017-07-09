@@ -4,8 +4,6 @@ Music_Surf: ; f518a
 	musicheader 1, 3, Music_Surf_Ch3
 ; f5193
 
-	db $3
-
 Music_Surf_Ch1: ; f5194
 	tempo 108
 	volume $77

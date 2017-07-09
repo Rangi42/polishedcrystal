@@ -4,8 +4,6 @@ Music_Route1: ; ec000
 	musicheader 1, 3, Music_Route1_Ch3
 ; ec009
 
-	db $3
-
 Music_Route1_Ch1: ; ec00a
 	stereopanning $f
 	tempo 184

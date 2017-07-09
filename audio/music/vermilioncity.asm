@@ -4,8 +4,6 @@ Music_VermilionCity: ; eb676
 	musicheader 1, 3, Music_VermilionCity_Ch3
 ; eb67f
 
-	db $3
-
 Music_VermilionCity_Ch1: ; eb680
 	stereopanning $f
 	tempo 176

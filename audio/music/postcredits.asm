@@ -3,8 +3,6 @@ Music_PostCredits: ; cfd9e
 	musicheader 1, 2, Music_PostCredits_Ch2
 ; cfda4
 
-	db $2
-
 Music_PostCredits_Ch1: ; cfda5
 	tempo 271
 	volume $77

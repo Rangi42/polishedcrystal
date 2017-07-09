@@ -4,8 +4,6 @@ Music_DancingHall: ; ef9bc
 	musicheader 1, 3, Music_DancingHall_Ch3
 ; ef9c5
 
-	db $3
-
 Music_DancingHall_Ch1: ; ef9c6
 	tempo 208
 	volume $77

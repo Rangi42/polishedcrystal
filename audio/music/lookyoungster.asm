@@ -61,8 +61,6 @@ Music_LookYoungster_branch_f66ea: ; f66ea
 	loopchannel 0, Music_LookYoungster_branch_f66ea
 ; f670e
 
-	db $ff
-
 Music_LookYoungster_Ch2: ; f670f
 	stereopanning $f0
 	vibrato $12, $26
@@ -159,8 +157,6 @@ Music_LookYoungster_branch_f672f: ; f672f
 	note __, 1
 	loopchannel 0, Music_LookYoungster_branch_f672f
 ; f6783
-
-	db $ff
 
 Music_LookYoungster_Ch3: ; f6784
 	stereopanning $ff
@@ -295,5 +291,3 @@ Music_LookYoungster_branch_f67ae: ; f67ae
 	note __, 1
 	loopchannel 0, Music_LookYoungster_branch_f67ae
 ; f6810
-
-	db $ff

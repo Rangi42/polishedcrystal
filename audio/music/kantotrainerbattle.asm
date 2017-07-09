@@ -4,8 +4,6 @@ Music_KantoTrainerBattle: ; ec9fa
 	musicheader 1, 3, Music_KantoTrainerBattle_Ch3
 ; eca03
 
-	db $3
-
 Music_KantoTrainerBattle_Ch1: ; eca04
 	tempo 114
 	volume $77

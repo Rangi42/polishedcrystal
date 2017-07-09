@@ -4,8 +4,6 @@ Music_LookKimonoGirl: ; f79b8
 	musicheader 1, 3, Music_LookKimonoGirl_Ch3
 ; f79c1
 
-	db $3
-
 Music_LookKimonoGirl_Ch1: ; f79c2
 	tempo 160
 	volume $77

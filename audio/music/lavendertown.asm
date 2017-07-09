@@ -4,8 +4,6 @@ Music_LavenderTown: ; ef72f
 	musicheader 1, 3, Music_LavenderTown_Ch3
 ; ef738
 
-	db $3
-
 Music_LavenderTown_Ch1: ; ef739
 	tempo 160
 	volume $77
