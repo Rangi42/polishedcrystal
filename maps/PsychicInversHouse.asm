@@ -10,7 +10,7 @@ PsychicInversHouse_MapScriptHeader:
 	db 0
 
 PsychicInversHouseHexManiacScript:
-	jumptext PsychicInversHouseHexManiacText
+	jumptextfaceplayer PsychicInversHouseHexManiacText
 
 PsychicInverScript:
 	faceplayer

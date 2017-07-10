@@ -391,12 +391,10 @@ EnterMapMusic:: ; 3d03
 
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
-	ld de, MUSIC_BICYCLE
+	call GetMapMusic
 	ld a, [PlayerState]
 	cp PLAYER_BIKE
-	jr z, .play
-	call GetMapMusic
-.play
+	call z, GetBikeMusic
 	push de
 	ld de, MUSIC_NONE
 	call PlayMusic

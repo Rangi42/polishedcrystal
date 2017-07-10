@@ -1948,31 +1948,7 @@ BikeFunction: ; d0b3
 	call PlayMusic
 	call DelayFrame
 	call MaxVolume
-	ld de, MUSIC_BICYCLE
-	ld a, [MapGroup]
-	cp GROUP_ROUTE_18_WEST
-	jr nz, .not_route_18_west
-	ld a, [MapNumber]
-	cp MAP_ROUTE_18_WEST
-	jr nz, .not_route_18_west
-	ld de, MUSIC_BICYCLE_XY
-	jr .not_quiet_cave
-.not_route_18_west
-	ld a, [MapGroup]
-	cp GROUP_QUIET_CAVE_1F ; GROUP_QUIET_CAVE_B1F, GROUP_QUIET_CAVE_B2F, GROUP_QUIET_CAVE_B3F
-	jr nz, .not_quiet_cave
-	ld a, [MapNumber]
-	cp MAP_QUIET_CAVE_1F
-	jr z, .quiet_cave
-	cp MAP_QUIET_CAVE_B1F
-	jr z, .quiet_cave
-	cp MAP_QUIET_CAVE_B2F
-	jr z, .quiet_cave
-	cp MAP_QUIET_CAVE_B3F
-	jr nz, .not_quiet_cave
-.quiet_cave
-	ld de, MUSIC_NONE
-.not_quiet_cave
+	call GetBikeMusic
 	ld a, e
 	ld [wMapMusic], a
 	call PlayMusic
@@ -2029,6 +2005,33 @@ BikeFunction: ; d0b3
 
 .nope
 	scf
+	ret
+
+GetBikeMusic::
+	ld de, MUSIC_BICYCLE_XY
+	ld a, [MapGroup]
+	cp GROUP_ROUTE_17 ; GROUP_ROUTE_18_WEST
+	jr nz, .not_cycling_road
+	ld a, [MapNumber]
+	cp MAP_ROUTE_17
+	ret z
+	cp MAP_ROUTE_18_WEST
+	ret z
+	ld a, [MapGroup]
+.not_cycling_road
+	ld de, MUSIC_NONE
+	cp GROUP_QUIET_CAVE_1F ; GROUP_QUIET_CAVE_B1F, GROUP_QUIET_CAVE_B2F, GROUP_QUIET_CAVE_B3F
+	jr nz, .not_quiet_cave
+	cp MAP_QUIET_CAVE_1F
+	ret z
+	cp MAP_QUIET_CAVE_B1F
+	ret z
+	cp MAP_QUIET_CAVE_B2F
+	ret z
+	cp MAP_QUIET_CAVE_B3F
+	ret z
+.not_quiet_cave
+	ld de, MUSIC_BICYCLE
 	ret
 
 Script_GetOnBike: ; 0xd13e
