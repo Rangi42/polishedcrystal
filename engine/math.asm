@@ -1,196 +1,147 @@
-_Multiply:: ; 66de
+_Multiply::
+; Multiply hMultiplicand (3 bytes) by hMultiplier. Result in hProduct.
+; All values are big endian.
 
 ; hMultiplier is one byte.
-	ld a, 8
-	ld b, a
+; performs dehl * a
+	push hl
+	push de
+	push bc
+
+	ld a, [hMultiplicand]
+	ld e, a
+	ld a, [hMultiplicand + 1]
+	ld h, a
+	ld a, [hMultiplicand + 2]
+	ld l, a
 
 	xor a
+	ld d, a
 	ld [hProduct], a
-	ld [hMathBuffer + 1], a
-	ld [hMathBuffer + 2], a
-	ld [hMathBuffer + 3], a
-	ld [hMathBuffer + 4], a
-
-
-.loop
+	ld [hProduct + 1], a
+	ld [hProduct + 2], a
+	ld [hProduct + 3], a
 	ld a, [hMultiplier]
-	srl a
-	ld [hMultiplier], a
+	and a
+	jr z, .done
+.loop
+	rra
 	jr nc, .next
 
-	ld a, [hMathBuffer + 4]
-	ld c, a
-	ld a, [hMultiplicand + 2]
-	add c
-	ld [hMathBuffer + 4], a
+	ld c, a ; store multiplier in c
 
-	ld a, [hMathBuffer + 3]
-	ld c, a
-	ld a, [hMultiplicand + 1]
-	adc c
-	ld [hMathBuffer + 3], a
-
-	ld a, [hMathBuffer + 2]
-	ld c, a
-	ld a, [hMultiplicand + 0]
-	adc c
-	ld [hMathBuffer + 2], a
-
-	ld a, [hMathBuffer + 1]
-	ld c, a
+	ld a, [hProduct + 3]
+	add l
+	ld [hProduct + 3], a
+	ld a, [hProduct + 2]
+	adc h
+	ld [hProduct + 2], a
+	ld a, [hProduct + 1]
+	adc e
+	ld [hProduct + 1], a
 	ld a, [hProduct]
-	adc c
-	ld [hMathBuffer + 1], a
-
-.next
-	dec b
-	jr z, .done
-
-
-; hMultiplicand <<= 1
-
-	ld a, [hMultiplicand + 2]
-	add a
-	ld [hMultiplicand + 2], a
-
-	ld a, [hMultiplicand + 1]
-	rla
-	ld [hMultiplicand + 1], a
-
-	ld a, [hMultiplicand + 0]
-	rla
-	ld [hMultiplicand + 0], a
-
-	ld a, [hProduct]
-	rla
+	adc d
 	ld [hProduct], a
 
-	jr .loop
-
-
-.done
-	ld a, [hMathBuffer + 4]
-	ld [hProduct + 3], a
-
-	ld a, [hMathBuffer + 3]
-	ld [hProduct + 2], a
-
-	ld a, [hMathBuffer + 2]
-	ld [hProduct + 1], a
-
-	ld a, [hMathBuffer + 1]
-	ld [hProduct + 0], a
-
-	ret
-; 673e
-
-
-_Divide:: ; 673e
-	xor a
-	ld [hMathBuffer + 0], a
-	ld [hMathBuffer + 1], a
-	ld [hMathBuffer + 2], a
-	ld [hMathBuffer + 3], a
-	ld [hMathBuffer + 4], a
-
-	ld a, 9
-	ld e, a
-
-.loop
-	ld a, [hMathBuffer + 0]
-	ld c, a
-	ld a, [hDividend + 1]
-	sub c
-	ld d, a
-
-	ld a, [hDivisor]
-	ld c, a
-	ld a, [hDividend + 0]
-	sbc c
-	jr c, .next
-
-	ld [hDividend + 0], a
-
-	ld a, d
-	ld [hDividend + 1], a
-
-	ld a, [hMathBuffer + 4]
-	inc a
-	ld [hMathBuffer + 4], a
-
-	jr .loop
+	ld a, c ; retrieve multiplier
 
 .next
+	add hl, hl
+	rl e
+	rl d
+	and a
+	jr nz, .loop
+.done
+	pop bc
+	pop de
+	pop hl
+	ret
+
+_Divide::
+; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
+; All values are big endian.
+	ld a, [hDivisor]
+	and a
+	jr z, .div0
+	push hl
+	push de
+	push bc
+
+	ld a, [hDivisor]
+	ld d, a
+	ld c, hDividend % $100
+	ld e, 0
+	ld l, e
+.loop
+	push bc
+	ld b, 8
+	ld a, [$ff00+c]
+	ld h, a
+	ld l, 0
+.loop2
+	sla h
+	rl e
+	ld a, e
+	jr c, .carry
+	cp d
+	jr c, .skip
+.carry
+	sub d
+	ld e, a
+	inc l
+.skip
 	ld a, b
 	cp 1
 	jr z, .done
-
-	ld a, [hMathBuffer + 4]
-	add a
-	ld [hMathBuffer + 4], a
-
-	ld a, [hMathBuffer + 3]
-	rla
-	ld [hMathBuffer + 3], a
-
-	ld a, [hMathBuffer + 2]
-	rla
-	ld [hMathBuffer + 2], a
-
-	ld a, [hMathBuffer + 1]
-	rla
-	ld [hMathBuffer + 1], a
-
-	dec e
-	jr nz, .next2
-
-	ld e, 8
-	ld a, [hMathBuffer + 0]
-	ld [hDivisor], a
-	xor a
-	ld [hMathBuffer + 0], a
-
-	ld a, [hDividend + 1]
-	ld [hDividend + 0], a
-
-	ld a, [hDividend + 2]
-	ld [hDividend + 1], a
-
-	ld a, [hDividend + 3]
-	ld [hDividend + 2], a
-
-.next2
-	ld a, e
-	cp 1
-	jr nz, .okay
+	sla l
 	dec b
-
-.okay
-	ld a, [hDivisor]
-	srl a
-	ld [hDivisor], a
-
-	ld a, [hMathBuffer + 0]
-	rr a
-	ld [hMathBuffer + 0], a
-
-	jr .loop
-
+	jr .loop2
 .done
-	ld a, [hDividend + 1]
-	ld [hDivisor], a
+	ld a, c
+	add hMathBuffer - hDividend
+	ld c, a
+	ld a, l
+	ld [$ff00+c], a
+	pop bc
+	inc c
+	dec b
+	jr nz, .loop
 
-	ld a, [hMathBuffer + 4]
-	ld [hDividend + 3], a
-
-	ld a, [hMathBuffer + 3]
-	ld [hDividend + 2], a
-
-	ld a, [hMathBuffer + 2]
+	xor a
+	ld [hDividend], a
 	ld [hDividend + 1], a
-
-	ld a, [hMathBuffer + 1]
-	ld [hDividend + 0], a
-
+	ld [hDividend + 2], a
+	ld [hDividend + 3], a
+	ld a, e
+	ld [hRemainder], a
+	ld a, c
+	sub hDividend % $100
+	ld b, a
+	ld a, c
+	add hMathBuffer - hDividend - 1
+	ld c, a
+	ld a, [$ff00+c]
+	ld [hDividend + 3], a
+	dec b
+	jr z, .finished
+	dec c
+	ld a, [$ff00+c]
+	ld [hDividend + 2], a
+	dec b
+	jr z, .finished
+	dec c
+	ld a, [$ff00+c]
+	ld [hDividend + 1], a
+	dec b
+	jr z, .finished
+	dec c
+	ld a, [$ff00+c]
+	ld [hDividend], a
+.finished
+	pop bc
+	pop de
+	pop hl
 	ret
-; 67c1
+.div0
+	; deliberately crash the game (maybe make a real crash handler?)
+	rst 0
