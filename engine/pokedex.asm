@@ -1916,27 +1916,28 @@ Pokedex_UpdateCursorOAM: ; 41148 (10:5148)
 	jp Pokedex_PutScrollbarOAM
 
 .CursorOAM: ; 41230
-	db $10, $47, $31, $07
-	db $10, $4f, $32, $07
-	db $10, $57, $32, $07
-	db $10, $5f, $33, $07
-	db $10, $80, $33, $27
-	db $10, $88, $32, $27
-	db $10, $90, $32, $27
-	db $10, $98, $31, $27
-	db $fe ; Tells LoadCursorOAM to set c = 0
-	db $18, $47, $30, $07
-	db $18, $98, $30, $27
-	db $20, $47, $30, $47
-	db $28, $47, $31, $47
-	db $28, $4f, $32, $47
-	db $28, $57, $32, $47
-	db $28, $5f, $33, $47
-	db $28, $80, $33, $67
-	db $28, $88, $32, $67
-	db $28, $90, $32, $67
-	db $28, $98, $31, $67
-	db $20, $98, $30, $67
+	; y, x, tile, OAM attributes
+	db $10, $47, $31, $7
+	db $10, $4f, $32, $7
+	db $10, $57, $32, $7
+	db $10, $5f, $33, $7
+	db $10, $80, $33, $7 | X_FLIP
+	db $10, $88, $32, $7 | X_FLIP
+	db $10, $90, $32, $7 | X_FLIP
+	db $10, $98, $31, $7 | X_FLIP
+	db $fe ; tells LoadCursorOAM to set c = 0
+	db $18, $47, $30, $7
+	db $18, $98, $30, $7 | X_FLIP
+	db $20, $47, $30, $7 | Y_FLIP
+	db $28, $47, $31, $7 | Y_FLIP
+	db $28, $4f, $32, $7 | Y_FLIP
+	db $28, $57, $32, $7 | Y_FLIP
+	db $28, $5f, $33, $7 | Y_FLIP
+	db $28, $80, $33, $7 | X_FLIP | Y_FLIP
+	db $28, $88, $32, $7 | X_FLIP | Y_FLIP
+	db $28, $90, $32, $7 | X_FLIP | Y_FLIP
+	db $28, $98, $31, $7 | X_FLIP | Y_FLIP
+	db $20, $98, $30, $7 | X_FLIP | Y_FLIP
 	db $ff
 
 Pokedex_UpdateSearchResultsCursorOAM:
@@ -1944,31 +1945,32 @@ Pokedex_UpdateSearchResultsCursorOAM:
 	jp Pokedex_UpdateCursor
 
 .CursorOAM:
-	db $10, $47, $31, $07
-	db $10, $4f, $32, $07
-	db $10, $57, $32, $07
-	db $10, $5f, $32, $07
-	db $10, $67, $33, $07
-	db $10, $7e, $33, $27
-	db $10, $86, $32, $27
-	db $10, $8e, $32, $27
-	db $10, $96, $32, $27
-	db $10, $9e, $31, $27
-	db $fe
-	db $18, $47, $30, $07
-	db $18, $9e, $30, $27
-	db $20, $47, $30, $47
-	db $28, $47, $31, $47
-	db $28, $4f, $32, $47
-	db $28, $57, $32, $47
-	db $28, $5f, $32, $47
-	db $28, $67, $33, $47
-	db $28, $7e, $33, $67
-	db $28, $86, $32, $67
-	db $28, $8e, $32, $67
-	db $28, $96, $32, $67
-	db $28, $9e, $31, $67
-	db $20, $9e, $30, $67
+	; y, x, tile, OAM attributes
+	db $10, $47, $31, $7
+	db $10, $4f, $32, $7
+	db $10, $57, $32, $7
+	db $10, $5f, $32, $7
+	db $10, $67, $33, $7
+	db $10, $7e, $33, $7 | X_FLIP
+	db $10, $86, $32, $7 | X_FLIP
+	db $10, $8e, $32, $7 | X_FLIP
+	db $10, $96, $32, $7 | X_FLIP
+	db $10, $9e, $31, $7 | X_FLIP
+	db $fe ; tells LoadCursorOAM to set c = 0
+	db $18, $47, $30, $7
+	db $18, $9e, $30, $7 | X_FLIP
+	db $20, $47, $30, $7 | Y_FLIP
+	db $28, $47, $31, $7 | Y_FLIP
+	db $28, $4f, $32, $7 | Y_FLIP
+	db $28, $57, $32, $7 | Y_FLIP
+	db $28, $5f, $32, $7 | Y_FLIP
+	db $28, $67, $33, $7 | Y_FLIP
+	db $28, $7e, $33, $7 | X_FLIP | Y_FLIP
+	db $28, $86, $32, $7 | X_FLIP | Y_FLIP
+	db $28, $8e, $32, $7 | X_FLIP | Y_FLIP
+	db $28, $96, $32, $7 | X_FLIP | Y_FLIP
+	db $28, $9e, $31, $7 | X_FLIP | Y_FLIP
+	db $20, $9e, $30, $7 | X_FLIP | Y_FLIP
 	db $ff
 
 Pokedex_UpdateCursor:
