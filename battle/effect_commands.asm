@@ -5574,8 +5574,10 @@ BattleCommand_DoubleUp:
 	call z, .msg_animate
 	pop bc
 	ld b, c
+	push de
 	call ResetMiss
 	call BattleCommand_StatUp
+	pop de
 	ld a, [FailedMessage]
 	and a
 	jr z, .msg_animate
@@ -5589,11 +5591,18 @@ BattleCommand_DoubleUp:
 .msg_animate
 	ld a, e
 	and a
-	jp nz, BattleCommand_StatUpMessage
-	ld a, 1
+	push de
+	jr nz, .statupmessage
+	inc a
 	ld [wKickCounter], a
 	call AnimateCurrentMove
-	jp BattleCommand_StatUpMessage
+	pop de
+	inc e
+	push de
+.statupmessage
+	call BattleCommand_StatUpMessage
+	pop de
+	ret
 
 BattleCommand_AttackUp: ; 361ac
 ; attackup
