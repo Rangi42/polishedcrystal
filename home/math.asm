@@ -33,17 +33,24 @@ SimpleMultiply:: ; 3105
 ; 3110
 
 
-SimpleDivide:: ; 3110
+SimpleDivide::
 ; Divide a by c. Return quotient b and remainder a.
+	inc c
+	dec c
+	jr z, .div0
 	ld b, 0
+	and a
+	ret z
 .loop
 	inc b
 	sub c
 	jr nc, .loop
-	dec b
+	ret z
 	add c
+	dec b
 	ret
-; 3119
+.div0
+	rst 0 ; crash
 
 
 Multiply:: ; 3119
