@@ -4,10 +4,6 @@ _Multiply::
 
 ; hMultiplier is one byte.
 ; performs dehl * a
-	push hl
-	push de
-	push bc
-
 	ld a, [hMultiplicand]
 	ld e, a
 	ld a, [hMultiplicand + 1]
@@ -23,7 +19,7 @@ _Multiply::
 	ld [hProduct + 3], a
 	ld a, [hMultiplier]
 	and a
-	jr z, .done
+	ret z
 .loop
 	rra
 	jr nc, .next
@@ -51,10 +47,6 @@ _Multiply::
 	rl d
 	and a
 	jr nz, .loop
-.done
-	pop bc
-	pop de
-	pop hl
 	ret
 
 _Divide::
@@ -63,9 +55,6 @@ _Divide::
 	ld a, [hDivisor]
 	and a
 	jr z, .div0
-	push hl
-	push de
-	push bc
 
 	ld a, [hDivisor]
 	ld d, a
@@ -123,24 +112,20 @@ _Divide::
 	ld a, [$ff00+c]
 	ld [hDividend + 3], a
 	dec b
-	jr z, .finished
+	ret z
 	dec c
 	ld a, [$ff00+c]
 	ld [hDividend + 2], a
 	dec b
-	jr z, .finished
+	ret z
 	dec c
 	ld a, [$ff00+c]
 	ld [hDividend + 1], a
 	dec b
-	jr z, .finished
+	ret z
 	dec c
 	ld a, [$ff00+c]
 	ld [hDividend], a
-.finished
-	pop bc
-	pop de
-	pop hl
 	ret
 .div0
 	; deliberately crash the game (maybe make a real crash handler?)
