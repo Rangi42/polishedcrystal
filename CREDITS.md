@@ -32,11 +32,11 @@
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
 * Kuroko Aizawa for sprites of Cheryl, Aroma Lady, and Artist.
+* JaceDeane for sprites of Kukui and Victor.
 * Mateo for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* JaceDeane for Victor's sprite.
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
