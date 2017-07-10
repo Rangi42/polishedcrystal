@@ -699,7 +699,6 @@ SpriteMons: ; 14495
 	db WEEDLE
 	db PIDGEY
 	db PIDGEOTTO
-	db PIDGEOT
 	db RATTATA
 	db PIKACHU
 	db NIDORAN_F
