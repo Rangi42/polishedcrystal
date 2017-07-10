@@ -176,6 +176,7 @@ Some of these may never be added; they're just suggestions.
       * Litwick → Lampent → Chandelure
       * Pawniard → Bisharp
       * Skiddo → Gogoat
+      * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
 * More music
    * R/S/E Route 119
    * R/S/E Route 120
