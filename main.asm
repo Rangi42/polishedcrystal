@@ -5783,7 +5783,7 @@ Footprints: ; f9434
 INCBIN "gfx/pokedex/footprints.w128.1bpp"
 ; fb434
 
-SECTION "Typefaces", ROMX
+SECTION "Typefaces", ROMX, BANK[$7E]
 
 INCLUDE "gfx/font.asm"
 
