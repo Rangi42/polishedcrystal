@@ -101,6 +101,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_olivine_lighthouse_roof
 	cp TILESET_HOME_DECOR_STORE
 	jp z, .maybe_celadon_home_decor_store_4f
+	cp TILESET_JOHTO_3
+	jp z, .maybe_sinjoh_ruins
 	cp TILESET_JOHTO_1
 	jp z, .maybe_special_johto_1
 	cp TILESET_CAVE
@@ -414,6 +416,16 @@ LoadSpecialMapPalette: ; 494ac
 	jp nz, .do_nothing
 	ld hl, CeladonHomeDecorStore4FPalette
 	jp .load_eight_bg_palettes
+
+.maybe_sinjoh_ruins
+	ld a, [MapGroup]
+	cp GROUP_SINJOH_RUINS
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_SINJOH_RUINS
+	jp nz, .do_nothing
+	ld hl, SinjohRuinsPalette
+	jp .load_eight_time_of_day_bg_palettes
 
 .maybe_special_johto_1
 	ld hl, VioletEcruteakPalette
@@ -1320,6 +1332,40 @@ endr
 	RGB_MONOCHROME_BLACK
 rept 2
 	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+SinjohRuinsPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/sinjoh_ruins.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
 endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
