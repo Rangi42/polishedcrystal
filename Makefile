@@ -30,13 +30,12 @@ endif
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-
 PYTHON = python
 RM = rm -f
 
 gfx       := $(PYTHON) gfx.py
 includes  := $(PYTHON) utils/scan_includes.py
-bank_ends := $(PYTHON) utils/bank_ends.py
+bank_ends := $(PYTHON) utils/bank_ends.py $(NAME)-$(VERSION)
 
 
 crystal_obj := \

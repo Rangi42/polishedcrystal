@@ -7,13 +7,15 @@ Taken from Pokémon Prism.
 """
 
 from __future__ import print_function
+import sys
 
 bank_diff = 0x4000
 num_banks = 0x80
 bank_ends = []
 bank_space = []
+rom_name = sys.argv[1]
 
-with open('polishedcrystal-2.2.0.gbc', 'rb') as f1, open('polishedcrystal-2.2.0-0xff.gbc', 'rb') as f2:
+with open(rom_name + '.gbc', 'rb') as f1, open(rom_name + '-0xff.gbc', 'rb') as f2:
 	for bank in range(num_banks):
 		empty_bank = True
 		for i in range(bank_diff):
