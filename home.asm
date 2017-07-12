@@ -1787,17 +1787,17 @@ PushLYOverrides:: ; 3b0c
 	ret z
 
 	ld a, LYOverridesBackup % $100
-	ld [Requested2bppSource], a
+	ld [hRequestedVTileSource], a
 	ld a, LYOverridesBackup / $100
-	ld [Requested2bppSource + 1], a
+	ld [hRequestedVTileSource + 1], a
 
 	ld a, LYOverrides % $100
-	ld [Requested2bppDest], a
+	ld [hRequestedVTileDest], a
 	ld a, LYOverrides / $100
-	ld [Requested2bppDest + 1], a
+	ld [hRequestedVTileDest + 1], a
 
 	ld a, (LYOverridesEnd - LYOverrides) / 16
-	ld [Requested2bpp], a
+	ld [hRequested2bpp], a
 	ret
 ; 3b2a
 

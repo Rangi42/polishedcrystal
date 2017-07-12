@@ -23,6 +23,19 @@ FarCall_hl::
 	push af
 	jr DoFarCall
 
+
+FarCallInBankB:
+	ld a, b
+	ld [hBuffer], a
+	ld a, h
+	ld [wFarCallHLBuffer], a
+	ld a, l
+	ld [wFarCallHLBuffer + 1], a
+	pop hl
+	ld a, [hROMBank]
+	push af
+	jr DoFarCall
+
 RstFarCall::
 ; Call the following dba pointer on the stack. Doesn't mangle registers in the process
 	ld [wFarCallSavedA], a

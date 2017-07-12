@@ -151,7 +151,9 @@ Init:: ; 17d
 	ld [MBC3LatchClock], a
 	ld [MBC3SRamEnable], a
 
-	call NormalSpeed
+	ld a, [hCGB]
+	and a
+	call nz, DoubleSpeed
 
 	xor a
 	ld [rIF], a

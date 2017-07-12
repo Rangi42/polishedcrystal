@@ -1989,15 +1989,15 @@ Intro_RustleGrass: ; e546d (39:546d)
 	ld hl, .RustlingGrassPointers
 	add hl, de
 	ld a, [hli]
-	ld [Requested2bppSource], a
+	ld [hRequestedVTileSource], a
 	ld a, [hli]
-	ld [Requested2bppSource + 1], a
+	ld [hRequestedVTileSource + 1], a
 	ld a, (VTiles2 tile $09) % $100
-	ld [Requested2bppDest], a
+	ld [hRequestedVTileDest], a
 	ld a, (VTiles2 tile $09) / $100
-	ld [Requested2bppDest + 1], a
+	ld [hRequestedVTileDest + 1], a
 	ld a, 4
-	ld [Requested2bppSize], a
+	ld [hRequested2bpp], a
 	ret
 ; e5496 (39:5496)
 

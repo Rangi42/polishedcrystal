@@ -1026,21 +1026,7 @@ wUnownPuzzleHeldPiece::
 wCardFlipWhichCard::
 wcf66:: ds 1
 
-Requested2bpp:: ; cf67
-Requested2bppSize::
-	ds 1
-Requested2bppSource:: ; cf68
-	ds 2
-Requested2bppDest:: ; cf6a
-	ds 2
-
-Requested1bpp:: ; cf6c
-Requested1bppSize::
-	ds 1
-Requested1bppSource:: ; cf6d
-	ds 2
-Requested1bppDest:: ; cf6f
-	ds 2
+	ds 10 ; unused
 
 wWindowStackPointer:: dw ; cf71
 wMenuJoypad:: ds 1   ; cf73

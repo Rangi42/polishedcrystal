@@ -139,6 +139,11 @@ hDMATransfer       EQU $ffe8
 hFFEA              EQU $ffea
 hClockResetTrigger EQU $ffeb
 
+hRequested2bpp          EQU $fff1
+hRequested1bpp          EQU $fff2
+hRequestedVTileDest    EQU $fff3
+hRequestedVTileSource  EQU $fff5
+
 hTmpd              EQU $fff7
 hTmpe              EQU $fff8
 

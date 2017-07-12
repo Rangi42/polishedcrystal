@@ -191,7 +191,7 @@ VBlank1:: ; 337
 	jr c, .done
 
 	call UpdateBGMap
-	call Serve2bppRequest@VBlank
+	call Serve2bppRequest
 
 	call hPushOAM
 .done
@@ -261,7 +261,7 @@ VBlank3:: ; 396
 	jr c, .done
 
 	call UpdateBGMap
-	call Serve2bppRequest@VBlank
+	call Serve2bppRequest
 
 	call hPushOAM
 .done
