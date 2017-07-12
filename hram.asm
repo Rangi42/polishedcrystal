@@ -43,8 +43,7 @@ hConnectedMapWidth EQU $ffb0
 
 hPastLeadingZeroes EQU $ffb3
 
-hStringCmpString1  EQU $ffb1
-hStringCmpString2  EQU $ffb5
+hLZAddress         EQU $ffb1
 
 ; Arithmetic addresses aren't seperate, to simplify
 ; chain usage. The exact format is (all big endian):
