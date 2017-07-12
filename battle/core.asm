@@ -1014,9 +1014,9 @@ EndUserDestinyBond:
 	ret
 
 SetFastestTurn:
-	call SetPlayerTurn
 	call CheckSpeed
 	jp nz, SetEnemyTurn
+	jp SetPlayerTurn
 
 HandleResidualDamage:
 	call SetFastestTurn
