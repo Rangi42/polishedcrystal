@@ -7,6 +7,7 @@ Taken from Pokémon Prism.
 """
 
 from __future__ import print_function
+
 import sys
 
 bank_diff = 0x4000
