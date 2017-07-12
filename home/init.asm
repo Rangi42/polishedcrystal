@@ -56,9 +56,6 @@ Init:: ; 17d
 	ld [rTAC], a
 	ld [$d000], a
 
-	ld a, %100 ; Start timer at 4096Hz
-	ld [rTAC], a
-
 .wait
 	ld a, [rLY]
 	cp 145
@@ -157,7 +154,7 @@ Init:: ; 17d
 
 	xor a
 	ld [rIF], a
-	ld a, %1111 ; VBlank, LCDStat, Timer, Serial interrupts
+	ld a, %1011 ; Serial interrupts, LCDStat, VBlank
 	ld [rIE], a
 	ei
 

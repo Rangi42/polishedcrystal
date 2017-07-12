@@ -65,7 +65,7 @@ Gen2ToGen2LinkComms: ; 28177
 	call DelayFrames
 	xor a
 	ld [rIF], a
-	ld a, $8
+	ld a, %00011
 	ld [rIE], a
 	ld hl, wd1f3
 	ld de, EnemyMonSpecies
@@ -94,7 +94,7 @@ Gen2ToGen2LinkComms: ; 28177
 .not_trading
 	xor a
 	ld [rIF], a
-	ld a, $1d
+	ld a, %11001
 	ld [rIE], a
 	ld de, MUSIC_NONE
 	call PlayMusic
@@ -1478,7 +1478,7 @@ WaitForOtherPlayerToExit: ; 29c92
 	push af
 	xor a
 	ld [rIF], a
-	ld a, $f
+	ld a, %01011
 	ld [rIE], a
 	pop af
 	ld [rIF], a

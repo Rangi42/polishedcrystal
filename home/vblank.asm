@@ -230,7 +230,7 @@ VBlank1:: ; 337
 	xor a
 	ld [rIF], a
 	; enable ints besides joypad
-	ld a, %1111 ; serial timer lcdstat vblank
+	ld a, %1011 ; serial lcdstat vblank
 	ld [rIE], a
 	; rerequest ints
 	ld a, b
@@ -296,7 +296,7 @@ VBlank3:: ; 396
 	xor a
 	ld [rIF], a
 	; enable ints besides joypad
-	ld a, %1111 ; serial timer lcdstat vblank
+	ld a, %1011 ; serial lcdstat vblank
 	ld [rIE], a
 	; request ints
 	ld a, b
@@ -382,7 +382,7 @@ VBlank5:: ; 400
 	xor a
 	ld [rIF], a
 	; enable ints besides joypad
-	ld a, %1111 ; serial timer lcdstat vblank
+	ld a, %1011 ; serial lcdstat vblank
 	ld [rIE], a
 	ret
 ; 436
