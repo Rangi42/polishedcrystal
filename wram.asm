@@ -134,8 +134,7 @@ wMusicEnd::
 
 SECTION "WRAM", WRAM0
 
-	ds 2 ; unused
-
+wLZAddress:: dw ; c2c2
 wLZBank::    db ; c2c4
 
 	ds 1
