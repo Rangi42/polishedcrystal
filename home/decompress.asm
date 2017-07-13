@@ -75,11 +75,11 @@ LZ_LONG_HI   EQU %00000011
 	; Save the output address
 	; for rewrite commands.
 	ld a, e
-	ld [hLZAddress], a
+	ld [wLZAddress], a
 	ld a, d
-	ld [hLZAddress + 1], a
+	ld [wLZAddress + 1], a
 
-.Main
+.Main:
 	ld a, [hl]
 	cp LZ_END
 	ret z
@@ -99,9 +99,9 @@ LZ_LONG_HI   EQU %00000011
 	add a ; << 3
 	add a
 
-; This is our new control code.
+        ; This is our new control code.
 	and LZ_CMD
-	ld [hBuffer], a
+	push af
 
 	ld a, [hli]
 	and LZ_LONG_HI
@@ -115,7 +115,7 @@ LZ_LONG_HI   EQU %00000011
 
 
 .short
-	ld [hBuffer], a
+	push af
 
 	ld a, [hli]
 	and LZ_LEN
@@ -127,14 +127,12 @@ LZ_LONG_HI   EQU %00000011
 
 
 .command
-	; Modify loop counts to support 8 bit loop counters
+	; Increment loop counts.
+	; We bail the moment they hit 0.
 	inc b
 	inc c
-	dec c
-	jr nz, .cWillNotunderflow
-	dec b
-.cWillNotunderflow
-	ld a, [hBuffer]
+
+	pop af
 
 	bit LZ_RW, a
 	jr nz, .rewrite
@@ -145,88 +143,87 @@ LZ_LONG_HI   EQU %00000011
 	jr z, .Alt
 	cp LZ_ZERO
 	jr z, .Zero
-
+;.Literal:
 ; Read literal data for bc bytes.
 .lloop
+	dec c
+	jr nz, .lnext
+	dec b
+	jp z, .Main
+
+.lnext
 	ld a, [hli]
 	ld [de], a
 	inc de
-	dec c
-	jr nz, .lloop
-	dec b
-	jr nz, .lloop
-	jr .Main
+	jr .lloop
 
-.Iter
+
+.Iter:
 ; Write the same byte for bc bytes.
 	ld a, [hli]
-; temporarily swap hl and de
-.zeroEntryPoint
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+
 .iloop
-	ld [hli], a
 	dec c
-	jr nz, .iloop
+	jr nz, .inext
 	dec b
-	jr nz, .iloop
-; swap hl and de back
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-	jr .Main
+	jp z, .Main
 
-.Alt
+.inext
+	ld [de], a
+	inc de
+	jr .iloop
+
+
+.Alt:
 ; Alternate two bytes for bc bytes.
-
-; save source
-	push hl
-; swap hl and de temporarily for speed
-	push de
+	dec c
+	jr nz, .anext1
+	dec b
+	jp z, .adone1
+.anext1
 	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	pop hl
-; d = byte 1
-; e = byte 2
-; hl = destination
-.aloop
-	ld a, d
-	ld [hli], a
+	ld [de], a
+	inc de
 
 	dec c
-	jr nz, .anext
+	jr nz, .anext2
 	dec b
-	jr z, .adone
-.anext
-	ld a, e
-	ld [hli], a
+	jp z, .adone2
+.anext2
+	ld a, [hld]
+	ld [de], a
+	inc de
 
-	dec c
-	jr nz, .aloop
-	dec b
-	jr nz, .aloop
-.adone
-	ld d, h
-	ld e, l ; restore destination to hl
-	pop hl
-; Skip past the bytes we were alternating.
+	jr .Alt
+
+	; Skip past the bytes we were alternating.
+.adone1
 	inc hl
+.adone2
 	inc hl
 	jr .Main
 
 
-.Zero
+.Zero:
 ; Write 0 for bc bytes.
 	xor a
-	jr .zeroEntryPoint
+
+.zloop
+	dec c
+	jr nz, .znext
+	dec b
+	jp z, .Main
+
+.znext
+	ld [de], a
+	inc de
+	jr .zloop
+
 
 .rewrite
 ; Repeat decompressed data from output.
 	push hl
+	push af
 
 	ld a, [hli]
 	bit 7, a ; sign
@@ -236,14 +233,13 @@ LZ_LONG_HI   EQU %00000011
 ; hl = de - a
 	; Since we can't subtract a from de,
 	; Make it negative and add de.
-	; equivalent to hl + $ff00 + !a
 	and %01111111
 	cpl
 	add e
 	ld l, a
-	ld h, d
-	jr c, .ok
-	dec h
+	ld a, -1
+	adc d
+	ld h, a
 	jr .ok
 
 .positive
@@ -251,15 +247,15 @@ LZ_LONG_HI   EQU %00000011
 	ld l, [hl]
 	ld h, a
 	; add to starting output address
-	ld a, [hLZAddress]
+	ld a, [wLZAddress]
 	add l
 	ld l, a
-	ld a, [hLZAddress + 1]
+	ld a, [wLZAddress + 1]
 	adc h
 	ld h, a
 
 .ok
-	ld a, [hBuffer]
+	pop af
 
 	cp LZ_REPEAT
 	jr z, .Repeat
@@ -278,47 +274,60 @@ LZ_LONG_HI   EQU %00000011
 ; For now, it defaults to LZ_REPEAT.
 
 
-.Repeat
+.Repeat:
 ; Copy decompressed data for bc bytes.
+	dec c
+	jr nz, .rnext
+	dec b
+	jr z, .donerw
+
+.rnext
 	ld a, [hli]
 	ld [de], a
 	inc de
-	dec c
-	jr nz, .Repeat
-	dec b
-	jr nz, .Repeat
-	jr .donerw
+	jr .Repeat
 
-.Flip
+
+.Flip:
 ; Copy bitflipped decompressed data for bc bytes.
+	dec c
+	jr nz, .fnext
+	dec b
+	jp z, .donerw
+
+.fnext
 	ld a, [hli]
 	push bc
-	ld b, 0
-rept 8
+	lb bc, 0, 8
+
+.floop
 	rra
 	rl b
-endr
+	dec c
+	jr nz, .floop
+
 	ld a, b
 	pop bc
 
 	ld [de], a
 	inc de
+	jr .Flip
 
-	dec c
-	jr nz, .Flip
-	dec b
-	jr nz, .Flip
-	jr .donerw
 
-.Reverse
+.Reverse:
 ; Copy reversed decompressed data for bc bytes.
+	dec c
+	jr nz, .rvnext
+
+	dec b
+	jp z, .donerw
+
+.rvnext
 	ld a, [hld]
 	ld [de], a
 	inc de
-	dec c
-	jr nz, .Reverse
-	dec b
-	jr nz, .Reverse
+	jr .Reverse
+
 
 .donerw
 	pop hl
@@ -329,3 +338,4 @@ endr
 .next
 	inc hl
 	jp .Main
+; c2f

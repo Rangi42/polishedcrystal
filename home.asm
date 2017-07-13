@@ -449,7 +449,7 @@ WaitBGMap:: ; 31f6
 	ld a, 1 ; BG Map 0 tiles
 	ld [hBGMapMode], a
 ; Wait for it to do its magic
-	ld c, 2
+	ld c, 4
 	jp DelayFrames
 ; 3200
 
