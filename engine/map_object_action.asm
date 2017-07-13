@@ -49,23 +49,22 @@ SetFacingStepAction: ; 44c1
 
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
+	inc [hl]
 	ld a, [hl]
-	inc a
-	and %00001111
-	ld [hl], a
-
 	rrca
 	rrca
-	and %00000011
+	rrca
+	and %11
 	ld d, a
-
-	call GetSpriteDirection
+	ld hl, OBJECT_FACING
+	add hl, bc
+	ld a, [hl]
+	and %00001100
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], a
 	ret
-; 44e4
 
 SetFacingSkyfall: ; 44e4
 	ld hl, OBJECT_FLAGS1

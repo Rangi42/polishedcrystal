@@ -30,22 +30,33 @@ DeleteMapObject:: ; 4357
 	ret
 ; 437b
 
-HandleCurNPCStep: ; 437b
+HandleCurNPCStep:
 	call .CheckObjectStillVisible
 	ret c
 	call .HandleStepType
 	jp .HandleObjectAction
 
-.CheckObjectStillVisible:
+.CheckObjectStillVisible
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res 6, [hl]
+	ld a, [hMapObjectIndexBuffer]
+	and a
+	jr nz, .notPlayer
+; hardcode for crossing over connections
+	ld a, [YCoord]
+	inc a
+	jr z, .yes
+	ld a, [XCoord]
+	inc a
+	jr z, .yes
+.notPlayer
 	ld a, [XCoord]
 	ld e, a
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
 	ld a, [hl]
-	add 1
+	inc a
 	sub e
 	jr c, .ok
 	cp MAPOBJECT_SCREEN_WIDTH
@@ -55,7 +66,7 @@ HandleCurNPCStep: ; 437b
 	ld hl, OBJECT_NEXT_MAP_Y
 	add hl, bc
 	ld a, [hl]
-	add 1
+	inc a
 	sub e
 	jr c, .ok
 	cp MAPOBJECT_SCREEN_HEIGHT
@@ -71,7 +82,7 @@ HandleCurNPCStep: ; 437b
 	ld hl, OBJECT_INIT_X
 	add hl, bc
 	ld a, [hl]
-	add 1
+	inc a
 	sub e
 	jr c, .ok2
 	cp MAPOBJECT_SCREEN_WIDTH
@@ -81,7 +92,7 @@ HandleCurNPCStep: ; 437b
 	ld hl, OBJECT_INIT_Y
 	add hl, bc
 	ld a, [hl]
-	add 1
+	inc a
 	sub e
 	jr c, .ok2
 	cp MAPOBJECT_SCREEN_HEIGHT
@@ -106,45 +117,41 @@ HandleCurNPCStep: ; 437b
 	and a
 	ret
 
-.HandleStepType:
+.HandleStepType
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .zero
+	jr z, .null_step_type
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 5, [hl]
+	bit OBJECT_DISABLE_STEP_TYPE, [hl]
 	ret nz
-
 	cp STEP_TYPE_SLEEP
-	jr z, .one
-	jr .ok3
+	jr z, .map_object_movement_pattern
+	jr .do_step_type
 
-.zero
+.null_step_type
 	call ObjectMovementReset
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 5, [hl]
+	bit OBJECT_DISABLE_STEP_TYPE, [hl]
 	ret nz
-
-.one
+.map_object_movement_pattern
 	call MapObjectMovementPattern
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld a, [hl]
 	and a
 	ret z
-
 	cp STEP_TYPE_SLEEP
 	ret z
-
-.ok3
+.do_step_type
 	ld hl, StepTypesJumptable
 	rst JumpTable
 	ret
 
-.HandleObjectAction:
+.HandleObjectAction
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE, [hl]
@@ -153,11 +160,10 @@ HandleCurNPCStep: ; 437b
 	add hl, bc
 	bit 6, [hl]
 	jr nz, SetFacingStanding
-	bit 5, [hl]
+	bit OBJECT_DISABLE_STEP_TYPE, [hl]
 	jr nz, asm_4448
 	ld de, Pointers445f ; use first column
 	jr asm_444d
-; 4440
 
 HandleMapObjectAction_Stationary: ; 4440
 	ld hl, OBJECT_FLAGS1
@@ -339,7 +345,7 @@ AddStepVector: ; 46d7
 	ret
 ; 46e9
 
-GetStepVector: ; 46e9
+GetStepVector:
 ; Return (x, y, duration, speed) in (d, e, a, h).
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -357,27 +363,46 @@ GetStepVector: ; 46e9
 	inc hl
 	ld a, [hli]
 	ld h, [hl]
+	push af
+	push hl
+	ld hl, OBJECT_DIRECTION_WALKING
+	add hl, bc
+	ld a, [hl]
+	cp (STEP_SLOW << 2 | RIGHT) + 1
+	jr c, .slowStep
+	pop hl
+	pop af
+	and a
 	ret
-; 4700
+.slowStep
+	pop hl
+	pop af
+	scf
+	ret
 
-StepVectors: ; 4700
+StepVectors:
 ; x,  y, duration, speed
 	; slow
+	db  0,  1, 32, 1
+	db  0, -1, 32, 1
+	db -1,  0, 32, 1
+	db  1,  0, 32, 1
+	; normal
 	db  0,  1, 16, 1
 	db  0, -1, 16, 1
 	db -1,  0, 16, 1
 	db  1,  0, 16, 1
-	; normal
+	; fast
 	db  0,  2,  8, 2
 	db  0, -2,  8, 2
 	db -2,  0,  8, 2
 	db  2,  0,  8, 2
-	; fast
-	db  0,  4,  4, 4
-	db  0, -4,  4, 4
-	db -4,  0,  4, 4
-	db  4,  0,  4, 4
-; 4730
+	; running shoes
+	db  0,  2,  8, 2
+	db  0, -2,  8, 2
+	db -2,  0,  8, 2
+	db  2,  0,  8, 2
+
 GetStepVectorSign: ; 4730
 	add a
 	ret z  ; 0 or 128
@@ -2377,22 +2402,14 @@ CheckCurSpriteCoveredByTextBox: ; 56cd
 	ret
 ; 576a
 
-HandleNPCStep:: ; 576a
+HandleNPCStep::
+	call .ResetStepVector
 	xor a
-	ld [wPlayerStepVectorX], a
-	ld [wPlayerStepVectorY], a
-	ld [wPlayerStepFlags], a
-	ld a, -1
-	ld [wPlayerStepDirection], a
-
 	ld bc, ObjectStructs
-	xor a
 .loop
 	ld [hMapObjectIndexBuffer], a
 	call DoesObjectHaveASprite
-	jr z, .next
-	call HandleCurNPCStep
-.next
+	call nz, HandleCurNPCStep
 	ld hl, OBJECT_STRUCT_LENGTH
 	add hl, bc
 	ld b, h
@@ -2402,7 +2419,19 @@ HandleNPCStep:: ; 576a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
 	ret
-; 579d
+
+.ResetStepVector
+	xor a
+	ld [wPlayerStepVectorX], a
+	ld [wPlayerStepVectorY], a
+	ld a, [wPlayerStepFlags]
+	bit 6, a
+	ld a, $0
+	ld [wPlayerStepFlags], a
+	ret nz
+	dec a
+	ld [wPlayerStepDirection], a
+	ret
 
 RefreshPlayerSprite: ; 579d
 	ld a, movement_step_sleep_1

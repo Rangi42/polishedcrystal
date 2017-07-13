@@ -123,13 +123,6 @@ VBlank0:: ; 2b1
 	xor a
 	ld [VBlankOccurred], a
 
-	ld a, [OverworldDelay]
-	and a
-	jr z, .ok
-	dec a
-	ld [OverworldDelay], a
-.ok
-
 	ld a, [TextDelayFrames]
 	and a
 	jr z, .ok2

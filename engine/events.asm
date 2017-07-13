@@ -103,7 +103,7 @@ EnterMap: ; 9673e
 	farjp DeleteSavedMusic
 ; 9676d
 
-HandleMap: ; 96773
+HandleMap:
 	call ResetOverworldDelay
 	call HandleMapTimeAndJoypad
 	call HandleCmdQueue
@@ -114,11 +114,12 @@ HandleMap: ; 96773
 	cp 2 ; HandleMap
 	ret nz
 
+	call .background_events
+.background_events
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground
 	jp CheckPlayerState
-; 96795
 
 MapEvents: ; 96795
 	ld a, [MapEventStatus]
@@ -139,23 +140,21 @@ MapEvents: ; 96795
 	ret
 ; 967ae
 
-MaxOverworldDelay: ; 967af
-	db 2
-; 967b0
-
-ResetOverworldDelay: ; 967b0
-	ld a, [MaxOverworldDelay]
-	ld [OverworldDelay], a
+ResetOverworldDelay:
+	ld hl, OverworldDelay
+	bit 7, [hl]
+	res 7, [hl]
+	ret nz
+	ld [hl], 2
 	ret
-; 967b7
 
-NextOverworldFrame: ; 967b7
+NextOverworldFrame:
 	ld a, [OverworldDelay]
 	and a
-	ret z
-	ld c, a
-	jp DelayFrames
-; 967c1
+	jp nz, DelayFrame
+	ld a, $82
+	ld [OverworldDelay], a
+	ret
 
 HandleMapTimeAndJoypad: ; 967c1
 	ld a, [MapEventStatus]
