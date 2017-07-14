@@ -982,7 +982,7 @@ ApplyAccuracyAbilities:
 
 UserAccuracyAbilities:
 	dbw COMPOUND_EYES, CompoundEyesAbility
-	dbw HUSTLE, HustleAbility
+	dbw HUSTLE, HustleAccuracyAbility
 	dbw -1, -1
 
 TargetAccuracyAbilities:
