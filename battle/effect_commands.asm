@@ -5074,7 +5074,7 @@ BattleCommand_SleepTarget:
 	push hl
 	ld a, 3
 	call BattleRandomRange
-	inc a
+	add 2
 	pop hl
 	ld [hl], a
 	call UpdateOpponentInParty
