@@ -397,6 +397,7 @@ INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
 INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route43Gate.asm"
 INCLUDE "maps/Route38EcruteakGate.asm"
+INCLUDE "maps/Route49.asm"
 
 
 SECTION "Map Scripts 17", ROMX, BANK[MAP_SCRIPTS_17]
@@ -634,6 +635,7 @@ INCLUDE "maps/CeladonUniversityClassroom1.asm"
 INCLUDE "maps/CeladonUniversityClassroom2.asm"
 INCLUDE "maps/CeladonUniversityClassroom3.asm"
 INCLUDE "maps/CeladonUniversityClassroom4.asm"
+INCLUDE "maps/ValenciaHouse.asm"
 
 
 SECTION "Map Scripts 31", ROMX
@@ -698,6 +700,9 @@ INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/OlivinePort.asm"
 INCLUDE "maps/VermilionPort.asm"
 INCLUDE "maps/GoldenrodHarbor.asm"
+INCLUDE "maps/SoulHouseB1F.asm"
+INCLUDE "maps/SoulHouseB2F.asm"
+INCLUDE "maps/SoulHouseB3F.asm"
 
 
 SECTION "Map Scripts 36", ROMX
@@ -719,11 +724,7 @@ INCLUDE "maps/SaffronHitmontopKidHouse.asm"
 INCLUDE "maps/SaffronBookSpeechHouse.asm"
 INCLUDE "maps/SaffronOrreSpeechHouse.asm"
 INCLUDE "maps/SaffronRichSpeechHouse.asm"
-INCLUDE "maps/SoulHouseB1F.asm"
-INCLUDE "maps/SoulHouseB2F.asm"
-INCLUDE "maps/SoulHouseB3F.asm"
 INCLUDE "maps/Route16West.asm"
-INCLUDE "maps/PsychicInversHouse.asm"
 
 
 SECTION "Map Scripts 38", ROMX
@@ -733,14 +734,16 @@ INCLUDE "maps/DimCave2F.asm"
 INCLUDE "maps/DimCave3F.asm"
 INCLUDE "maps/DimCave4F.asm"
 INCLUDE "maps/DimCave5F.asm"
-INCLUDE "maps/Route32CoastHouse.asm"
-INCLUDE "maps/OlivineLighthouseRoof.asm"
 
 
 SECTION "Map Scripts 39", ROMX
 
 INCLUDE "maps/BattleTower2F.asm"
-
+INCLUDE "maps/KrissNeighborsHouse.asm"
+INCLUDE "maps/OlivineLighthouse4F.asm"
+INCLUDE "maps/OlivineLighthouseRoof.asm"
+INCLUDE "maps/Route32CoastHouse.asm"
+INCLUDE "maps/PsychicInversHouse.asm"
 
 SECTION "Map Scripts 40", ROMX
 
@@ -778,18 +781,13 @@ INCLUDE "maps/RockyBeachHouse.asm"
 SECTION "Map Scripts 41", ROMX
 
 INCLUDE "maps/ValenciaIsland.asm"
-INCLUDE "maps/Route49.asm"
-INCLUDE "maps/IvysLab.asm"
-INCLUDE "maps/IvysHouse.asm"
-INCLUDE "maps/ValenciaHouse.asm"
 INCLUDE "maps/ValenciaPort.asm"
 
 
 SECTION "Map Scripts 42", ROMX
 
-INCLUDE "maps/KrissNeighborsHouse.asm"
+INCLUDE "maps/IvysHouse.asm"
+INCLUDE "maps/IvysLab.asm"
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/ViridianForest.asm"
-INCLUDE "maps/OlivineLighthouse4F.asm"
-
