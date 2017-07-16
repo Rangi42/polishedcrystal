@@ -222,10 +222,6 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_43_GATE,                               4,  5 ;  4
 	mapgroup ROUTE_43,                                   27, 10 ;  5
 	mapgroup LAKE_OF_RAGE,                               18, 20 ;  6
-	mapgroup SINJOH_RUINS,                               13,  9 ;  7
-	mapgroup SINJOH_RUINS_HOUSE,                           4, 4 ;  8
-	mapgroup MYSTRI_STAGE,                                9,  7 ;  9
-	mapgroup EMBEDDED_TOWER,                             12, 11 ; 10
 
 	newgroup                                                    ; 10
 
@@ -685,6 +681,13 @@ MAP_NONE   EQU 0
 	mapgroup VALENCIA_PORT,                               9, 11 ;  6
 
 	newgroup                                                    ; 34
+
+	mapgroup SINJOH_RUINS,                               13,  9 ;  1
+	mapgroup SINJOH_RUINS_HOUSE,                           4, 4 ;  2
+	mapgroup MYSTRI_STAGE,                                9,  7 ;  3
+	mapgroup EMBEDDED_TOWER,                             12, 11 ;  4
+
+	newgroup                                                    ; 35
 
 	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 12 ;  2

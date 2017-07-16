@@ -797,6 +797,7 @@ OutdoorSprites: ; 144b8
 	dw Group32Sprites
 	dw Group33Sprites
 	dw Group34Sprites
+	dw Group35Sprites
 
 
 ; OlivineCity connects to Route40
@@ -1398,6 +1399,13 @@ Group33Sprites:
 
 
 Group34Sprites:
+; SinjohRuins
+	; 0 walking sprites
+	; 0 total sprites
+	db 0
+
+
+Group35Sprites:
 ; SaffronCity
 ; ShamoutiShrineRuins
 	db SPRITE_BLACK_BELT

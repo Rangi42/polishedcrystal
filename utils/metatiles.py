@@ -177,6 +177,7 @@ class PaletteMap(object):
 		'maps/SilverCaveRoom1.blk': lambda: load_palette('tilesets/silver_cave.pal'),
 		'maps/SilverCaveRoom2.blk': lambda: load_palette('tilesets/silver_cave.pal'),
 		'maps/SilverCaveRoom3.blk': lambda: load_palette('tilesets/silver_cave.pal'),
+		'maps/SinjohRuins.blk': lambda: load_palette('tilesets/sinjoh_ruins.pal')[8:16],
 		'maps/TinTowerRoof.blk': lambda: load_palette('tilesets/tin_tower_roof.pal')[8:16],
 		'maps/VioletCity.blk': lambda: load_palette('tilesets/violet_ecruteak.pal')[8:16],
 		'maps/ViridianGym.blk': lambda: load_palette('tilesets/viridian_gym.pal'),

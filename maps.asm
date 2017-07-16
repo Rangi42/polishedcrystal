@@ -783,7 +783,6 @@ INCLUDE "maps/IvysLab.asm"
 INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/ValenciaHouse.asm"
 INCLUDE "maps/ValenciaPort.asm"
-INCLUDE "maps/OlivineLighthouse4F.asm"
 
 
 SECTION "Map Scripts 42", ROMX
@@ -792,3 +791,5 @@ INCLUDE "maps/KrissNeighborsHouse.asm"
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/ViridianForest.asm"
+INCLUDE "maps/OlivineLighthouse4F.asm"
+
