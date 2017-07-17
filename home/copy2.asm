@@ -30,23 +30,8 @@ ByteFill:: ; 0x3041
 
 GetFarByte:: ; 0x304d
 ; retrieve a single byte from a:hl, and return it in a.
-	; bankswitch to new bank
-	ld [hBuffer], a
-	ld a, [hROMBank]
-	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-
-	; get byte from new bank
+	call FarCallInBankA
 	ld a, [hl]
-	ld [hBuffer], a
-
-	; bankswitch to previous bank
-	pop af
-	rst Bankswitch
-
-	; return retrieved value in a
-	ld a, [hBuffer]
 	ret
 
 GetFarHalfword:: ; 0x305d
