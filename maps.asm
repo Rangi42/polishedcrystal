@@ -617,7 +617,7 @@ INCLUDE "maps/CeruleanBikeShop.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
 
 
-SECTION "Map Scripts 29", ROMX
+SECTION "Map Scripts 29", ROMX, BANK[MAP_SCRIPTS_29]
 
 INCLUDE "maps/CeladonUniversity1F.asm"
 INCLUDE "maps/CeladonUniversity2F.asm"
@@ -629,7 +629,7 @@ INCLUDE "maps/CeladonUniversityWillowsOffice.asm"
 INCLUDE "maps/CeladonUniversityLounge.asm"
 
 
-SECTION "Map Scripts 30", ROMX
+SECTION "Map Scripts 30", ROMX, BANK[MAP_SCRIPTS_30]
 
 INCLUDE "maps/CeladonUniversityClassroom1.asm"
 INCLUDE "maps/CeladonUniversityClassroom2.asm"
@@ -638,7 +638,7 @@ INCLUDE "maps/CeladonUniversityClassroom4.asm"
 INCLUDE "maps/ValenciaHouse.asm"
 
 
-SECTION "Map Scripts 31", ROMX
+SECTION "Map Scripts 31", ROMX, BANK[MAP_SCRIPTS_31]
 
 INCLUDE "maps/CeladonUniversityHyperTestRoom.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
@@ -650,7 +650,7 @@ INCLUDE "maps/SafariZoneWestRestHouse1.asm"
 INCLUDE "maps/SafariZoneWestRestHouse2.asm"
 
 
-SECTION "Map Scripts 32", ROMX
+SECTION "Map Scripts 32", ROMX, BANK[MAP_SCRIPTS_32]
 
 INCLUDE "maps/CeladonHotel1F.asm"
 INCLUDE "maps/CeladonHotel2F.asm"
@@ -663,7 +663,7 @@ INCLUDE "maps/CeladonOldManSpeechHouse.asm"
 INCLUDE "maps/CeladonDevelopmentSpeechHouse.asm"
 
 
-SECTION "Map Scripts 33", ROMX
+SECTION "Map Scripts 33", ROMX, BANK[MAP_SCRIPTS_33]
 
 INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/MountMoon1F.asm"
@@ -673,7 +673,7 @@ INCLUDE "maps/Route18East.asm"
 INCLUDE "maps/Route18West.asm"
 
 
-SECTION "Map Scripts 34", ROMX
+SECTION "Map Scripts 34", ROMX, BANK[MAP_SCRIPTS_34]
 
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route34Coast.asm"
@@ -694,7 +694,7 @@ INCLUDE "maps/SafariZoneWest.asm"
 INCLUDE "maps/Route19BeachHouse.asm"
 
 
-SECTION "Map Scripts 35", ROMX
+SECTION "Map Scripts 35", ROMX, BANK[MAP_SCRIPTS_35]
 
 INCLUDE "maps/NewBarkTown.asm"
 INCLUDE "maps/OlivinePort.asm"
@@ -705,7 +705,7 @@ INCLUDE "maps/SoulHouseB2F.asm"
 INCLUDE "maps/SoulHouseB3F.asm"
 
 
-SECTION "Map Scripts 36", ROMX
+SECTION "Map Scripts 36", ROMX, BANK[MAP_SCRIPTS_36]
 
 INCLUDE "maps/Route23.asm"
 INCLUDE "maps/MurkySwamp.asm"
@@ -718,7 +718,7 @@ INCLUDE "maps/ScaryCaveShipwreck.asm"
 INCLUDE "maps/PokemonTrainerFanClub.asm"
 
 
-SECTION "Map Scripts 37", ROMX
+SECTION "Map Scripts 37", ROMX, BANK[MAP_SCRIPTS_37]
 
 INCLUDE "maps/SaffronHitmontopKidHouse.asm"
 INCLUDE "maps/SaffronBookSpeechHouse.asm"
@@ -727,7 +727,7 @@ INCLUDE "maps/SaffronRichSpeechHouse.asm"
 INCLUDE "maps/Route16West.asm"
 
 
-SECTION "Map Scripts 38", ROMX
+SECTION "Map Scripts 38", ROMX, BANK[MAP_SCRIPTS_38]
 
 INCLUDE "maps/DimCave1F.asm"
 INCLUDE "maps/DimCave2F.asm"
@@ -736,7 +736,7 @@ INCLUDE "maps/DimCave4F.asm"
 INCLUDE "maps/DimCave5F.asm"
 
 
-SECTION "Map Scripts 39", ROMX
+SECTION "Map Scripts 39", ROMX, BANK[MAP_SCRIPTS_39]
 
 INCLUDE "maps/BattleTower2F.asm"
 INCLUDE "maps/KrissNeighborsHouse.asm"
@@ -745,7 +745,7 @@ INCLUDE "maps/OlivineLighthouseRoof.asm"
 INCLUDE "maps/Route32CoastHouse.asm"
 INCLUDE "maps/PsychicInversHouse.asm"
 
-SECTION "Map Scripts 40", ROMX
+SECTION "Map Scripts 40", ROMX, BANK[MAP_SCRIPTS_40]
 
 INCLUDE "maps/ShamoutiIsland.asm"
 INCLUDE "maps/BeautifulBeach.asm"
@@ -757,7 +757,7 @@ INCLUDE "maps/ShamoutiTunnel.asm"
 INCLUDE "maps/NoisyForest.asm"
 
 
-SECTION "Map Scripts 41", ROMX
+SECTION "Map Scripts 41", ROMX, BANK[MAP_SCRIPTS_41]
 
 INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiPokeCenter1F.asm"
@@ -776,15 +776,11 @@ INCLUDE "maps/BeautifulBeachVilla.asm"
 INCLUDE "maps/WarmBeachShack.asm"
 INCLUDE "maps/WarmBeachHouse.asm"
 INCLUDE "maps/RockyBeachHouse.asm"
-
-
-SECTION "Map Scripts 41", ROMX
-
 INCLUDE "maps/ValenciaIsland.asm"
 INCLUDE "maps/ValenciaPort.asm"
 
 
-SECTION "Map Scripts 42", ROMX
+SECTION "Map Scripts 42", ROMX, BANK[MAP_SCRIPTS_42]
 
 INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/IvysLab.asm"
