@@ -56,7 +56,7 @@ HandlePlayerStep: ; d4e5 (3:54e5)
 	ld a, [hl]
 	ld hl, .Jumptable
 	rst JumpTable
-.fail ; d510 (3:5510)
+.fail
 	ret
 
 .Jumptable: ; d4f2 (3:54f2)
@@ -67,65 +67,50 @@ HandlePlayerStep: ; d4e5 (3:54e5)
 	dw .fail
 
 UpdatePlayerCoords: ; d511 (3:5511)
+	ld hl, YCoord
 	ld a, [wPlayerStepDirection]
 	and a
-	jr nz, .check_step_down
-	ld hl, YCoord
-	inc [hl]
-	ret
-
-.check_step_down
-	cp UP
-	jr nz, .check_step_left
-	ld hl, YCoord
-	dec [hl]
-	ret
-
-.check_step_left
-	cp LEFT
-	jr nz, .check_step_right
-	ld hl, XCoord
-	dec [hl]
-	ret
-
-.check_step_right
-	cp RIGHT
+	jr z, .incrementCoord
+	dec a
+	jr z, .decrementCoord
+	inc hl
+	dec a
+	jr z, .decrementCoord
+	dec a
 	ret nz
-	ld hl, XCoord
+.incrementCoord
 	inc [hl]
+	ret
+.decrementCoord
+	dec [hl]
 	ret
 
 UpdateOverworldMap: ; d536 (3:5536)
 	ld a, [wPlayerStepDirection]
 	and a
-	jr z, .step_down
-	cp UP
-	jr z, .step_up
-	cp LEFT
-	jr z, .step_left
-	cp RIGHT
-	jr z, .step_right
-	ret
-
-.step_down
-	call .ScrollOverworldMapDown
-	call LoadMapPart
-	jp ScrollMapUp
-
-.step_up
-	call .ScrollOverworldMapUp
-	call LoadMapPart
-	jp ScrollMapDown
-
-.step_left
-	call .ScrollOverworldMapLeft
-	call LoadMapPart
-	jp ScrollMapRight
-
-.step_right
+	jr z, .stepDown
+	dec a
+	jr z, .stepUp
+	dec a
+	jr z, .stepLeft
+	dec a
+	ret nz
+; step right
 	call .ScrollOverworldMapRight
 	call LoadMapPart
 	jp ScrollMapLeft
+.stepDown
+	call .ScrollOverworldMapDown
+	call LoadMapPart
+	jp ScrollMapUp
+.stepUp
+	call .ScrollOverworldMapUp
+	call LoadMapPart
+	jp ScrollMapDown
+.stepLeft
+	call .ScrollOverworldMapLeft
+	call LoadMapPart
+	jp ScrollMapRight
 
 .ScrollOverworldMapDown: ; d571 (3:5571)
 	ld a, [wBGMapAnchor]
@@ -167,7 +152,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	ld hl, wMetatileStandingY
 	dec [hl]
 	ld a, [hl]
-	cp -1 ; was 0
+	inc a
 	ret nz
 	ld [hl], $1
 	ld hl, wOverworldMapAnchor
@@ -194,7 +179,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	ld hl, wMetatileStandingX
 	dec [hl]
 	ld a, [hl]
-	cp -1
+	inc a
 	ret nz
 	ld [hl], 1
 	ld hl, wOverworldMapAnchor
@@ -222,9 +207,8 @@ UpdateOverworldMap: ; d536 (3:5536)
 	ret nz
 	ld [hl], 0
 	ld hl, wOverworldMapAnchor
-	ld a, [hl]
-	add 1
-	ld [hli], a
-	ret nc
+	inc [hl]
+	ret nz
+	inc hl
 	inc [hl]
 	ret
