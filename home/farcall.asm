@@ -26,6 +26,7 @@ FarCall_hl::
 
 FarCallInBankB:
 	ld a, b
+FarCallInBankA:
 	ld [hBuffer], a
 	ld a, h
 	ld [wFarCallHLBuffer], a
