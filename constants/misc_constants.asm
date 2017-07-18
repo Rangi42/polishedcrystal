@@ -124,6 +124,7 @@ TEXTBOX_INNERY EQU TEXTBOX_Y + 2
 	const STEP_BACK_LEDGE
 	const STEP_WALK_IN_PLACE
 	const STEP_SPIN
+	const STEP_FAST ; same as STEP_RUN but without doubling animation speed
 
 ; ai
 CONTEXT_USE_F      EQU 6

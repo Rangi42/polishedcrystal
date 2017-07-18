@@ -93,6 +93,10 @@ MovementPointers:
 	dw Movement_run_step_up           ; 5b
 	dw Movement_run_step_left         ; 5c
 	dw Movement_run_step_right        ; 5d
+	dw Movement_fast_step_down        ; 5e
+	dw Movement_fast_step_up          ; 5f
+	dw Movement_fast_step_left        ; 60
+	dw Movement_fast_step_right       ; 61
 
 Movement_teleport_from: ; 5129
 	ld hl, OBJECT_STEP_TYPE
@@ -497,6 +501,22 @@ Movement_step_left:
 
 Movement_step_right:
 	ld a, STEP_WALK << 2 | RIGHT
+	jr Movement_do_step
+
+Movement_fast_step_down:
+	ld a, STEP_RUN << 2 | DOWN
+	jr Movement_do_step
+
+Movement_fast_step_up:
+	ld a, STEP_RUN << 2 | UP
+	jr Movement_do_step
+
+Movement_fast_step_left:
+	ld a, STEP_RUN << 2 | LEFT
+	jr Movement_do_step
+
+Movement_fast_step_right:
+	ld a, STEP_RUN << 2 | RIGHT
 	jr Movement_do_step
 
 Movement_big_step_down:

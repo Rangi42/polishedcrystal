@@ -328,7 +328,7 @@ DoPlayerMovement:: ; 80000
 	and a
 	jr nz, .ExitWater
 
-	ld a, STEP_WALK
+	ld a, STEP_FAST
 	call .DoStep
 	scf
 	ret
@@ -460,16 +460,17 @@ DoPlayerMovement:: ; 80000
 	ret
 
 .Steps:
-	dw .SlowStep
-	dw .NormalStep
-	dw .FastStep
-	dw .Run
+	dw .SlowStep ; x0.5
+	dw .NormalStep ; x1
+	dw .FastStep ; x4
+	dw .Run ; x2, doubles animation speed
 	dw .JumpStep
 	dw .SlideStep
 	dw .TurningStep
 	dw .BackJumpStep
 	dw .InPlace
 	dw .SpinStep
+	dw .Fast ; x2
 
 .SlowStep:
 	slow_step_down
@@ -521,6 +522,11 @@ DoPlayerMovement:: ; 80000
 	turn_in_up
 	turn_in_left
 	turn_in_right
+.Fast
+	fast_step_down
+	fast_step_up
+	fast_step_left
+	fast_step_right
 
 .StandInPlace: ; 802b3
 	ld a, movement_step_sleep_1

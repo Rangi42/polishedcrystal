@@ -474,3 +474,23 @@ run_step_left: macro
 run_step_right: macro
 	db movement_run_step_right ; $5d
 	endm
+
+	enum movement_fast_step_down
+fast_step_down: macro
+	db movement_fast_step_down ; $5e
+	endm
+
+	enum movement_fast_step_up
+fast_step_up: macro
+	db movement_fast_step_up ; $5f
+	endm
+
+	enum movement_fast_step_left
+fast_step_left: macro
+	db movement_fast_step_left ; $60
+	endm
+
+	enum movement_fast_step_right
+fast_step_right: macro
+	db movement_fast_step_right ; $61
+	endm
