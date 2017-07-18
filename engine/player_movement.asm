@@ -240,7 +240,7 @@ DoPlayerMovement:: ; 80000
 	jr nz, .RunByDefault
 
 	call .RunCheck
-	jr z, .fast
+	jr z, .run
 	jp .DoNotRun
 
 .RunByDefault
@@ -280,6 +280,20 @@ DoPlayerMovement:: ; 80000
 .ice
 	ld a, STEP_ICE
 	call .DoStep
+	scf
+	ret
+
+.run
+	ld a, STEP_RUN
+	call .DoStep
+;   Trainer faces player -- not a current feature
+;	push af
+;	ld a, [WalkingDirection]
+;	cp STANDING
+;	jr z, .skip_trainer
+;	call CheckTrainerRun
+;.skip_trainer
+;	pop af
 	scf
 	ret
 
@@ -449,6 +463,7 @@ DoPlayerMovement:: ; 80000
 	dw .SlowStep
 	dw .NormalStep
 	dw .FastStep
+	dw .Run
 	dw .JumpStep
 	dw .SlideStep
 	dw .TurningStep
@@ -471,6 +486,11 @@ DoPlayerMovement:: ; 80000
 	big_step_up
 	big_step_left
 	big_step_right
+.Run
+	run_step_down
+	run_step_up
+	run_step_left
+	run_step_right
 .JumpStep:
 	jump_step_down
 	jump_step_up
@@ -501,7 +521,6 @@ DoPlayerMovement:: ; 80000
 	turn_in_up
 	turn_in_left
 	turn_in_right
-; 802b3
 
 .StandInPlace: ; 802b3
 	ld a, movement_step_sleep_1

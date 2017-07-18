@@ -15,6 +15,7 @@ Pointers445f: ; 445f
 	dw SetFacingBoulderDust,           SetFacingStanding     ; PERSON_ACTION_BOULDER_DUST
 	dw SetFacingGrassShake,            SetFacingStanding     ; PERSON_ACTION_GRASS_SHAKE
 	dw SetFacingSkyfall,               SetFacingCurrent      ; PERSON_ACTION_SKYFALL
+	dw SetFacingRun,                   SetFacingCurrent      ; PERSON_ACTION_RUN
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -63,7 +64,7 @@ SetFacingBumpAction:
 	ld [hl], a
 	ret
 
-SetFacingSkyfall: ; 44e4
+SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING, [hl]
@@ -73,12 +74,12 @@ SetFacingSkyfall: ; 44e4
 	add hl, bc
 	ld a, [hl]
 	add 2
-	and %00001111
 	ld [hl], a
 
 	rrca
 	rrca
-	and %00000011
+	rrca
+	and %11
 	ld d, a
 
 	call GetSpriteDirection
@@ -87,7 +88,6 @@ SetFacingSkyfall: ; 44e4
 	add hl, bc
 	ld [hl], a
 	ret
-; 4508
 
 SetFacingCounterclockwiseSpin: ; 4529
 	call CounterclockwiseSpinAction
@@ -105,11 +105,7 @@ SetFacingCounterclockwiseSpin2: ; 4539
 	jp SetFacingStanding
 ; 453f
 
-CounterclockwiseSpinAction: ; 453f
-; Here, OBJECT_STEP_FRAME consists of two 2-bit components,
-; using only bits 0,1 and 4,5.
-; bits 0,1 is a timer (4 overworld frames)
-; bits 4,5 determines the facing - the direction is counterclockwise.
+CounterclockwiseSpinAction:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld a, [hl]
@@ -120,7 +116,7 @@ CounterclockwiseSpinAction: ; 453f
 	inc a
 	and %00001111
 	ld d, a
-	cp 4
+	cp 2
 	jr c, .ok
 
 	ld d, 0
@@ -143,11 +139,9 @@ CounterclockwiseSpinAction: ; 453f
 	add hl, bc
 	ld [hl], a
 	ret
-; 456a
 
-.Directions: ; 456a
+.Directions
 	db OW_DOWN, OW_RIGHT, OW_UP, OW_LEFT
-; 456e
 
 SetFacingFish: ; 456e
 	call GetSpriteDirection
@@ -158,28 +152,24 @@ SetFacingFish: ; 456e
 	add hl, bc
 	ld [hl], a
 	ret
-; 457b
 
-SetFacingShadow: ; 457b
+SetFacingShadow:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], FACING_SHADOW
 	ret
-; 4582
 
-SetFacingEmote: ; 4582 emote
+SetFacingEmote:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], FACING_EMOTE
 	ret
-; 4589
 
-SetFacingBigDollSym: ; 4589
+SetFacingBigDollSym:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld [hl], FACING_BIG_DOLL_SYM
 	ret
-; 4590
 
 SetFacingBounce: ; 4590
 	ld hl, OBJECT_STEP_FRAME
@@ -252,7 +242,7 @@ SetFacingBoulderDust: ; 45da
 	ret
 ; 45ed
 
-SetFacingGrassShake: ; 45ed
+SetFacingGrassShake:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	inc [hl]
@@ -267,4 +257,24 @@ SetFacingGrassShake: ; 45ed
 .ok
 	ld [hl], a
 	ret
-; 4600
+
+SetFacingRun:
+	ld hl, OBJECT_FLAGS1
+	add hl, bc
+	bit SLIDING, [hl]
+	jp nz, SetFacingCurrent
+
+	ld hl, OBJECT_STEP_FRAME
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
+	rrca
+	rrca
+	and %11
+	ld d, a
+	call GetSpriteDirection
+	or d
+	ld hl, OBJECT_FACING_STEP
+	add hl, bc
+	ld [hl], a
+	ret

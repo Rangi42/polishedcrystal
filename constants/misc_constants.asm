@@ -117,13 +117,13 @@ TEXTBOX_INNERY EQU TEXTBOX_Y + 2
 	const STEP_SLOW
 	const STEP_WALK
 	const STEP_BIKE
+	const STEP_RUN
 	const STEP_LEDGE
 	const STEP_ICE
 	const STEP_TURN
 	const STEP_BACK_LEDGE
 	const STEP_WALK_IN_PLACE
 	const STEP_SPIN
-
 
 ; ai
 CONTEXT_USE_F      EQU 6

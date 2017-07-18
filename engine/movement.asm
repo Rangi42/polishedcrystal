@@ -1,4 +1,4 @@
-MovementPointers: ; 5075
+MovementPointers:
 	dw Movement_turn_head_down        ; 00
 	dw Movement_turn_head_up          ; 01
 	dw Movement_turn_head_left        ; 02
@@ -89,8 +89,10 @@ MovementPointers: ; 5075
 	dw Movement_rock_smash            ; 57
 	dw Movement_return_dig            ; 58
 	dw Movement_skyfall_top           ; 59
-; 5129
-
+	dw Movement_run_step_down         ; 5a
+	dw Movement_run_step_up           ; 5b
+	dw Movement_run_step_left         ; 5c
+	dw Movement_run_step_right        ; 5d
 
 Movement_teleport_from: ; 5129
 	ld hl, OBJECT_STEP_TYPE
@@ -465,66 +467,74 @@ TurnHead: ; 52ee
 	ret
 ; 5300
 
-Movement_slow_step_down: ; 5300
+Movement_slow_step_down:
 	ld a, STEP_SLOW << 2 | DOWN
-	jp NormalStep
-; 5305
+	jr Movement_do_step
 
-Movement_slow_step_up: ; 5305
+Movement_slow_step_up:
 	ld a, STEP_SLOW << 2 | UP
-	jp NormalStep
-; 530a
+	jr Movement_do_step
 
-Movement_slow_step_left: ; 530a
+Movement_slow_step_left:
 	ld a, STEP_SLOW << 2 | LEFT
-	jp NormalStep
-; 530f
+	jr Movement_do_step
 
-Movement_slow_step_right: ; 530f
+Movement_slow_step_right:
 	ld a, STEP_SLOW << 2 | RIGHT
-	jp NormalStep
-; 5314
+	jr Movement_do_step
 
-Movement_step_down: ; 5314
+Movement_step_down:
 	ld a, STEP_WALK << 2 | DOWN
-	jp NormalStep
-; 5319
+	jr Movement_do_step
 
-Movement_step_up: ; 5319
+Movement_step_up:
 	ld a, STEP_WALK << 2 | UP
-	jp NormalStep
-; 531e
+	jr Movement_do_step
 
-Movement_step_left: ; 531e
+Movement_step_left:
 	ld a, STEP_WALK << 2 | LEFT
-	jp NormalStep
-; 5323
+	jr Movement_do_step
 
-Movement_step_right: ; 5323
+Movement_step_right:
 	ld a, STEP_WALK << 2 | RIGHT
-	jp NormalStep
-; 5328
+	jr Movement_do_step
 
-Movement_big_step_down: ; 5328
+Movement_big_step_down:
 	ld a, STEP_BIKE << 2 | DOWN
-	jp NormalStep
-; 532d
+	jr Movement_do_step
 
-Movement_big_step_up: ; 532d
+Movement_big_step_up:
 	ld a, STEP_BIKE << 2 | UP
-	jp NormalStep
-; 5332
+	jr Movement_do_step
 
-Movement_big_step_left: ; 5332
+Movement_big_step_left:
 	ld a, STEP_BIKE << 2 | LEFT
-	jp NormalStep
-; 5337
+	jr Movement_do_step
 
-Movement_big_step_right: ; 5337
+Movement_big_step_right:
 	ld a, STEP_BIKE << 2 | RIGHT
+Movement_do_step:
+	ld d, PERSON_ACTION_STEP
+Movement_normal_step:
 	jp NormalStep
-; 533c
 
+Movement_run_step_down:
+	ld a, STEP_RUN << 2 | DOWN  ; STEP_RUN
+	jr Movement_do_run
+
+Movement_run_step_up:
+	ld a, STEP_RUN << 2 | UP    ; STEP_RUN
+	jr Movement_do_run
+
+Movement_run_step_left:
+	ld a, STEP_RUN << 2 | LEFT  ; STEP_RUN
+	jr Movement_do_run
+
+Movement_run_step_right:
+	ld a, STEP_RUN << 2 | RIGHT ; STEP_RUN
+Movement_do_run:
+	ld d, PERSON_ACTION_RUN
+	jr Movement_normal_step
 
 Movement_turn_away_down: ; 533c
 	ld a, STEP_SLOW << 2 | DOWN
@@ -741,11 +751,14 @@ TurnStep: ; 5400
 ; 5412
 
 NormalStep: ; 5412
+	push de
 	call InitStep
 	call UpdateTallGrassFlags
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_STEP
+	pop de
+	ld [hl], d
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
