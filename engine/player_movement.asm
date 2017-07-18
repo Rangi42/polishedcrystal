@@ -328,7 +328,7 @@ DoPlayerMovement:: ; 80000
 	and a
 	jr nz, .ExitWater
 
-	ld a, STEP_BIKE
+	ld a, STEP_WALK
 	call .DoStep
 	scf
 	ret
