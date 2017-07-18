@@ -2735,7 +2735,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ld hl, BattleText_ItemSharplyRaised
 	jp StdBattleTextBox
 
-BattleCommand_PostFaintEffects: ; 351c0
+BattleCommand_PostFaintEffects:
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
 	ld hl, EnemyMonHP
 	ld a, [hBattleTurn]
@@ -2779,6 +2779,7 @@ BattleCommand_PostFaintEffects: ; 351c0
 
 .no_dbond
 	farcall RunFaintAbilities
+	call BattleCommand_PostHitEffects
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_MULTI_HIT
@@ -2794,14 +2795,14 @@ BattleCommand_PostFaintEffects: ; 351c0
 .finish
 	jp EndMoveEffect
 
-; 35250
-
-
-BattleCommand_PostHitEffects: ; 35250
-; previously buildopponentrage
+BattleCommand_PostHitEffects:
+; This can run even if someone is fainted. Take this into account.
+	call HasEnemyFainted
+	jr z, .skip_sub_check
 	call CheckSubstituteOpp
 	ret nz
 
+.skip_sub_check
 	ld a, [AttackMissed]
 	and a
 	ret nz
@@ -2809,6 +2810,8 @@ BattleCommand_PostHitEffects: ; 35250
 	farcall RunHitAbilities
 
 	; Burst air balloons
+	call HasEnemyFainted
+	jr z, .air_balloon_done
 	call CheckAirBalloon
 	jr nz, .air_balloon_done
 
@@ -2817,6 +2820,8 @@ BattleCommand_PostHitEffects: ; 35250
 	call ConsumeEnemyItem
 
 .air_balloon_done
+	call HasEnemyFainted
+	jr z, .rage_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_RAGE, a
@@ -2839,6 +2844,8 @@ BattleCommand_PostHitEffects: ; 35250
 	call SwitchTurn
 .rage_done
 	; Do Rocky Helmet
+	call HasUserFainted
+	jr z, .rocky_helmet_done
 	call CheckContactMove
 	jr c, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
@@ -2880,6 +2887,8 @@ BattleCommand_PostHitEffects: ; 35250
 .flinch_up
 	; Ensure that the move doesn't already have a flinch
 	; rate. TODO: consolidate these effects maybe
+	call HasEnemyFainted
+	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_FLINCH_HIT
@@ -2959,14 +2968,7 @@ BattleCommand_PostHitEffects: ; 35250
 
 .checkfaint
 	; if we fainted, abort the rest of the move sequence
-	ld a, [hBattleTurn]
-	and a
-	ld hl, BattleMonHP
-	jr z, .got_hp
-	ld hl, EnemyMonHP
-.got_hp
-	ld a, [hli]
-	or [hl]
+	call HasUserFainted
 	ret nz
 	call EndMoveEffect ; oops
 	xor a
