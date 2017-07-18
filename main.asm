@@ -5207,6 +5207,7 @@ endr
 	dw MayleneFinalPkmnText
 	dw SkylaFinalPkmnText
 	dw ValerieFinalPkmnText
+	dw NULL ; Kukui
 	dw NULL ; Victor
 	dw BillFinalPkmnText
 	dw YellowFinalPkmnText
