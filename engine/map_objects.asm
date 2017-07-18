@@ -324,6 +324,14 @@ GetNextTile:
 
 AddStepVector:
 	call GetStepVector
+	jr nc, .ok
+	ld hl, OBJECT_STEP_DURATION
+	add hl, bc
+	ld a, [hl]
+	and %1
+	jr nz, .ok
+	lb de, 0, 0
+.ok
 	ld hl, OBJECT_SPRITE_X
 	add hl, bc
 	ld a, [hl]
@@ -373,11 +381,11 @@ GetStepVector:
 
 StepVectors:
 ; x,  y, duration, speed
-	; slow -- duration should be 32 but currently breaks in that case
-	db  0,  1, 16, 1
-	db  0, -1, 16, 1
-	db -1,  0, 16, 1
-	db  1,  0, 16, 1
+	; slow
+	db  0,  1, 32, 1
+	db  0, -1, 32, 1
+	db -1,  0, 32, 1
+	db  1,  0, 32, 1
 	; normal
 	db  0,  1, 16, 1
 	db  0, -1, 16, 1
