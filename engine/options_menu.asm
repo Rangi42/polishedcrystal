@@ -533,9 +533,11 @@ Options_Typeface:
 	and $ff - FONT_MASK
 	or c
 	ld [hl], a
+	call .NonePressed
 	push bc
 	call LoadStandardFont
 	pop bc
+	ret
 
 .NonePressed:
 	ld b, 0
