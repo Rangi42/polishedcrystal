@@ -135,7 +135,6 @@ hCGB               EQU $ffe6
 hSGB               EQU $ffe7
 hDMATransfer       EQU $ffe8
 
-hFFEA              EQU $ffea
 hClockResetTrigger EQU $ffeb
 
 hRequested2bpp          EQU $fff1
