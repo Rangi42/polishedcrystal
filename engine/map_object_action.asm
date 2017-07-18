@@ -41,7 +41,8 @@ SetFacingStandAction: ; 44b5
 	jp SetFacingCurrent
 ; 44c1
 
-SetFacingStepAction: ; 44c1
+SetFacingStepAction:
+SetFacingBumpAction:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING, [hl]
@@ -56,10 +57,7 @@ SetFacingStepAction: ; 44c1
 	rrca
 	and %11
 	ld d, a
-	ld hl, OBJECT_FACING
-	add hl, bc
-	ld a, [hl]
-	and %00001100
+	call GetSpriteDirection
 	or d
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -91,31 +89,6 @@ SetFacingSkyfall: ; 44e4
 	ld [hl], a
 	ret
 ; 4508
-
-SetFacingBumpAction: ; 4508
-	ld hl, OBJECT_FLAGS1
-	add hl, bc
-	bit SLIDING, [hl]
-	jp nz, SetFacingCurrent
-
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	inc [hl]
-
-	ld a, [hl]
-	rrca
-	rrca
-	rrca
-	and %00000011
-	ld d, a
-
-	call GetSpriteDirection
-	or d
-	ld hl, OBJECT_FACING_STEP
-	add hl, bc
-	ld [hl], a
-	ret
-; 4529
 
 SetFacingCounterclockwiseSpin: ; 4529
 	call CounterclockwiseSpinAction
