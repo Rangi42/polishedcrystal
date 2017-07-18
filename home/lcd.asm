@@ -43,8 +43,10 @@ DisableLCD:: ; 568
 .wait
 ; Wait until VBlank would normally happen
 	ld a, [rLY]
-	cp 145
-	jr nz, .wait
+	cp $90
+	jr c, .wait
+	cp $99
+	jr z, .wait
 
 	ld a, [rLCDC]
 	and %01111111 ; lcd enable off

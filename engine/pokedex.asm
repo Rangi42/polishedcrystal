@@ -2330,8 +2330,9 @@ Pokedex_LoadAnyFootprint: ; 4147b
 	ret
 
 
-Pokedex_LoadGFX: ; 414b7
+Pokedex_LoadGFX:
 	call DisableLCD
+Pokedex_LoadGFX2:
 	ld hl, VTiles2
 	ld bc, $31 tiles
 	xor a
@@ -2408,7 +2409,7 @@ _NewPokedexEntry: ; 41a7f
 	call DisableLCD
 	call LoadStandardFont
 	call LoadFontsExtra
-	call Pokedex_LoadGFX
+	call Pokedex_LoadGFX2
 	call Pokedex_LoadAnyFootprint
 	ld a, [wd265]
 	ld [CurPartySpecies], a
