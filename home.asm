@@ -442,27 +442,21 @@ CompareLong:: ; 31e4
 	ret
 ; 31f3
 
-ClearBGPalettes:: ; 31f3
+ClearBGPalettes::
 	call ClearPalettes
-WaitBGMap:: ; 31f6
-; Tell VBlank to update BG Map
-	ld a, 1 ; BG Map 0 tiles
-	ld [hBGMapMode], a
-; Wait for it to do its magic
-	ld c, 3
-	jp DelayFrames
-; 3200
+	jr WaitBGMap
 
-WaitBGMap2:: ; 0x3200
+WaitBGMap2::
 	ld a, 2
 	ld [hBGMapMode], a
 	ld c, 3
 	call DelayFrames
+WaitBGMap::
+; Tell VBlank to update BG Map
 	ld a, 1
 	ld [hBGMapMode], a
 	ld c, 3
 	jp DelayFrames
-; 0x3218
 
 ApplyTilemap:: ; 321c
 	ld a, [wSpriteUpdatesEnabled]
