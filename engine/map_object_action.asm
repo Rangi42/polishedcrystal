@@ -32,14 +32,13 @@ SetFacingCurrent: ; 44aa
 	ret
 ; 44b5
 
-SetFacingStandAction: ; 44b5
+SetFacingStandAction:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
 	ld a, [hl]
 	and 1
-	jr nz, SetFacingStepAction
-	jp SetFacingCurrent
-; 44c1
+	jp z, SetFacingCurrent
+	; fallthrough
 
 SetFacingStepAction:
 SetFacingBumpAction:
