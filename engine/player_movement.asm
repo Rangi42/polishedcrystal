@@ -245,7 +245,7 @@ DoPlayerMovement:: ; 80000
 
 .RunByDefault
 	call .RunCheck
-	jr nz, .fast
+	jr nz, .run
 
 .DoNotRun
 ; Downhill riding is slower when not moving down.
