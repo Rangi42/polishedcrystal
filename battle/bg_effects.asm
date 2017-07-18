@@ -343,7 +343,7 @@ BattleBGEffect_HideMon: ; c81b3 (32:41b3)
 	call ClearBox
 	pop bc
 	xor a
-	ld [hBGMapThird], a
+	ld [hBGMapHalf], a
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
@@ -591,7 +591,7 @@ BattleBGEffect_27: ; c82f5 (32:42f5)
 	jr nz, .row2
 .okay2
 	xor a
-	ld [hBGMapThird], a
+	ld [hBGMapHalf], a
 	ld a, $1
 	ld [hBGMapMode], a
 	call BattleBGEffects_IncrementJumptable

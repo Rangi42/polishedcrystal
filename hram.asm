@@ -111,7 +111,7 @@ hBGMapMode         EQU $ffd4
 ; 0 - top third
 ; 1 - middle third
 ; 2 - bottom third
-hBGMapThird        EQU $ffd5
+hBGMapHalf         EQU $ffd5
 hBGMapAddress      EQU $ffd6
 
 hOAMUpdate         EQU $ffd8

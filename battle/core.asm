@@ -6817,7 +6817,7 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	ret z
 	xor a
 	ld [hBGMapMode], a
-	ld [hBGMapThird], a
+	ld [hBGMapHalf], a
 	ld d, $0
 	push bc
 	push hl
@@ -6878,7 +6878,7 @@ BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
 	ret z
 	xor a
 	ld [hBGMapMode], a
-	ld [hBGMapThird], a
+	ld [hBGMapHalf], a
 	ld d, $0
 	push bc
 	push hl

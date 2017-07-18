@@ -111,7 +111,7 @@ WaitTop::
 .loop
 	call DelayFrame
 .loop_inner
-	ld a, [hBGMapThird]
+	ld a, [hBGMapHalf]
 	and a
 	jr nz, .loop
 .done
@@ -122,7 +122,7 @@ WaitTop::
 HALF_HEIGHT EQU SCREEN_HEIGHT / 2
 
 UpdateBGMap:: ; 164c
-; Update the BG Map, in thirds, from TileMap and AttrMap.
+; Update the BG Map, in halves, from TileMap and AttrMap.
 
 	ld a, [hBGMapMode]
 	and $7f
@@ -142,7 +142,7 @@ UpdateBGMap:: ; 164c
 	jr z, .DoBGMap1Attributes
 	dec a
 ; Update from a specific row
-; does not update hBGMapThird
+; does not update hBGMapHalf
 	dec a
 	coord bc, 0, 0
 	jr z, .DoCustomSourceTiles
@@ -161,7 +161,7 @@ UpdateBGMap:: ; 164c
 	xor a
 	ld h, a
 	ld d, a
-	ld a, [hBGMapThird] ; multiply by 20 to get the tilemap offset
+	ld a, [hBGMapHalf] ; multiply by 20 to get the tilemap offset
 	ld l, a
 	ld e, a
 	add hl, hl ; hl = hl * 2
@@ -171,7 +171,7 @@ UpdateBGMap:: ; 164c
 	add hl, hl ; hl = (5*hl)*4
 	add hl, bc
 	ld sp, hl
-	ld a, [hBGMapThird] ; multiply by 32 to get the bg map offset
+	ld a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -205,7 +205,7 @@ UpdateBGMap:: ; 164c
 	ld [hSPBuffer], sp
 
 ; Which half?
-	ld a, [hBGMapThird]
+	ld a, [hBGMapHalf]
 	and a ; 0
 	jr z, .AttributeMapTop
 ; bottom row
@@ -229,7 +229,7 @@ UpdateBGMap:: ; 164c
 .DoBGMap1Tiles
 	ld [hSPBuffer], sp
 ; Which half?
-	ld a, [hBGMapThird]
+	ld a, [hBGMapHalf]
 	and a ; 0
 	jr z, .TileMapTop
 ; bottom row
@@ -246,7 +246,7 @@ UpdateBGMap:: ; 164c
 	inc a
 .startCopy
 ; Which half to update next time
-	ld [hBGMapThird], a
+	ld [hBGMapHalf], a
 ; Rows of tiles in a half
 	ld a, SCREEN_HEIGHT / 2
 .startCustomCopy

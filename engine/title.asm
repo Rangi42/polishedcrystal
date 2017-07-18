@@ -260,7 +260,7 @@ SuicuneFrameIterator: ; 10eea7
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, $3
-	ld [hBGMapThird], a
+	ld [hBGMapHalf], a
 	ret
 ; 10eece
 
