@@ -236,7 +236,7 @@ LoadBallIconGFX: ; 2c165
 	ld de, .gfx
 	ld hl, VTiles0 tile $31
 	lb bc, BANK(LoadBallIconGFX), 4
-	jp Get2bpp_2
+	jp Get2bpp
 ; 2c172
 
 .gfx ; 2c172

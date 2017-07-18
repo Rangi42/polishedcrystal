@@ -1,38 +1,5 @@
 ; Functions to copy data from ROM.
 
-
-Get2bpp_2:: ; dc9
-	ld a, [rLCDC]
-	bit 7, a
-	jp z, Copy2bpp
-
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_Get2bpp)
-	rst Bankswitch
-	call _Get2bpp
-	pop af
-	rst Bankswitch
-
-	ret
-; ddc
-
-Get1bpp_2:: ; ddc
-	ld a, [rLCDC]
-	bit 7, a
-	jp z, Copy1bpp
-
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_Get1bpp)
-	rst Bankswitch
-	call _Get1bpp
-	pop af
-	rst Bankswitch
-
-	ret
-; def
-
 FarCopyBytesDouble_DoubleBankSwitch:: ; def
 	ld [hBuffer], a
 	ld a, [hROMBank]

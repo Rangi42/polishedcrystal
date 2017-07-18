@@ -529,15 +529,17 @@ Options_Typeface:
 	dec c
 
 .Save:
+	push hl
+	push bc
+	call .NonePressed
+	pop bc
+	pop hl
 	ld a, [hl]
 	and $ff - FONT_MASK
 	or c
 	ld [hl], a
-	call .NonePressed
-	push bc
-	call LoadStandardFont
-	pop bc
-	ret
+	call DelayFrame
+	jp LoadStandardFont
 
 .NonePressed:
 	ld b, 0

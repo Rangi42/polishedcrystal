@@ -73,7 +73,7 @@ _LoadStandardFont:: ; fb449
 	ld a, [rLCDC]
 	bit 7, a
 	jr z, .one
-	call Get1bpp_2
+	call Get1bpp
 	jr .ok
 .one
 	call Copy1bpp
@@ -84,7 +84,7 @@ _LoadStandardFont:: ; fb449
 	ld a, [rLCDC]
 	bit 7, a
 	jp z, Copy1bpp
-	jp Get1bpp_2
+	jp Get1bpp
 ; fb48a
 
 LoadStandardFontPointer::
@@ -117,7 +117,7 @@ _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleExtrasGFX
 	ld hl, VTiles2 tile $5f
 	lb bc, BANK(BattleExtrasGFX), 26
-	call Get2bpp_2
+	call Get2bpp
 ; fb4cc
 
 LoadFrame:: ; fb4cc
@@ -129,11 +129,11 @@ LoadFrame:: ; fb4cc
 	ld e, l
 	ld hl, VTiles2 tile $79
 	lb bc, BANK(Frames), TILES_PER_FRAME
-	call Get1bpp_2
+	call Get1bpp
 	ld hl, VTiles2 tile $7f
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
-	jp Get1bpp_2
+	jp Get1bpp
 ; fb4f2
 
 LoadBattleFontsHPBar: ; fb4f2
@@ -224,5 +224,5 @@ LoadStatsGFX: ; fb571
 	ld de, GFX_Stats
 	ld hl, VTiles2 tile $31
 	lb bc, BANK(GFX_Stats), 14
-	jp Get2bpp_2
+	jp Get2bpp
 ; fb57e

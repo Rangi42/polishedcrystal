@@ -99,7 +99,7 @@ Pokegear_LoadGFX: ; 90c4e
 	ld de, JohtoKantoGFX
 	ld hl, VTiles2 tile $5c
 	lb bc, BANK(JohtoKantoGFX), 5
-	call Get2bpp_2
+	call Get2bpp
 	ld hl, PokegearSpritesGFX
 	ld de, VTiles0
 	ld a, BANK(PokegearSpritesGFX)
