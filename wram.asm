@@ -1404,7 +1404,7 @@ CurBattleMon:: ; d0d4
 CurMoveNum:: ; d0d5
 	ds 1
 
-wLastPocket:: ds 1
+	ds 1 ; unused
 
 wPCItemsCursor:: ds 1
 wPartyMenuCursor:: ds 1
@@ -2421,7 +2421,8 @@ wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
 wUnusedTwoDayTimerOn:: ds 3 ; unused
-	ds 9
+wLastPocket:: ds 1
+	ds 8
 wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
 wDailyRematchFlags:: ds 4

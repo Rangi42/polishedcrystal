@@ -8439,7 +8439,6 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wd0d2], a
 	ld [CurMoveNum], a
 	ld [wBallsPocketCursor], a
-	ld [wLastPocket], a
 	ld [wMenuScrollPosition], a
 	ld [wKeyItemsPocketScrollPosition], a
 	ld [wItemsPocketScrollPosition], a
