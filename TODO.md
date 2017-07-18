@@ -15,8 +15,8 @@ See the [Issues](issues/) page.
 
 ## Aesthetics
 
+* Animation frames of Magikarp variants need their patterns
 * Improve switching with U-turn and Volt Switch (print a message, and clear the text before sending out)
-* Use a side view for Falkner's Pidgeotto in Dark Cave
 
 
 ## Events

@@ -3,7 +3,7 @@
 
 ## Code
 
-* FredrIQ for multiple feature code contributions (specifically: Abilities, Natures affecting stats, better status effect AI, accuracy in move descriptions, the Hurricane+Blizzard weather accuracy check, and porting TPP's caught data stats screen).
+* FIQ for multiple feature code contributions (specifically: abilities, natures affecting stats, better AI, various item and move effects, and other battle engine features; and porting TPP's caught data stats screen).
 * The TPP Anniversary Crystal 251 dev team for making their code publically usable (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, and caught data stats page code).
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
@@ -30,9 +30,9 @@
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
+* JaceDeane for animations of Magikarp and Red's Pikachu, and sprites of Kukui and Victor.
 * spritershawn for sprites of Red, Blue, and Green.
 * Kuroko Aizawa for sprites of Cheryl, Aroma Lady, and Artist.
-* JaceDeane for sprites of Kukui and Victor.
 * Mateo for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.

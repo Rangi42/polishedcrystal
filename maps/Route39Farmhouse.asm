@@ -21,7 +21,7 @@ PokefanMScript_0x9ceb4:
 	end
 
 UnknownScript_0x9cec5:
-	checkitem MOOMOO_MILK
+	checkflag ENGINE_BOUGHT_MOOMOO_MILK
 	iftrue UnknownScript_0x9cf08
 	writetext UnknownText_0x9cfe1
 	special PlaceMoneyTopRight
@@ -48,6 +48,7 @@ UnknownScript_0x9cec5:
 	takemoney $0, 6000
 
 .Done:
+	setflag ENGINE_BOUGHT_MOOMOO_MILK
 	special PlaceMoneyTopRight
 	waitsfx
 	playsound SFX_TRANSACTION

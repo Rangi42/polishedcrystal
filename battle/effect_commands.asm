@@ -3528,38 +3528,36 @@ SpeciesItemBoost: ; 353d1
 
 
 SandstormSpDefBoost:
-	call GetWeatherAfterCloudNine
-	cp WEATHER_SANDSTORM
-	ret nz
-	call CheckIfTargetIsRockType
-	ret z
-	push hl
-	ld h, b
-	ld l, c
-	add hl, hl
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-
-
+	push bc
+	lb bc, WEATHER_SANDSTORM, ROCK
+	jr WeatherDefenseBoost
 HailDefenseBoost:
+	push bc
+	lb bc, WEATHER_HAIL, ICE
+WeatherDefenseBoost:
 	call GetWeatherAfterCloudNine
-	cp WEATHER_HAIL
-	ret nz
-	call CheckIfTargetIsIceType
+	cp b
+	ld a, c
+	pop bc
 	ret z
+	push bc
+	push de
+	push hl
+	call CheckIfTargetIsSomeType
+	pop hl
+	pop de
+	pop bc
+	ret nz
 	push hl
 	ld h, b
 	ld l, c
-	add hl, hl
+	srl b
+	rr c
 	add hl, bc
 	ld b, h
 	ld c, l
 	pop hl
 	ret
-
 
 ; Unused, but kept for now to avoid random bugs
 BattleCommand_StoreEnergy:
@@ -5074,7 +5072,7 @@ BattleCommand_SleepTarget:
 	push hl
 	ld a, 3
 	call BattleRandomRange
-	inc a
+	add 2
 	pop hl
 	ld [hl], a
 	call UpdateOpponentInParty

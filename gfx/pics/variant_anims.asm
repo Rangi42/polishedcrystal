@@ -47,17 +47,17 @@ ArbokAgathaAnimation: INCLUDE "gfx/pics/arbok_agatha/anim0.asm"
 ArbokArianaAnimation: INCLUDE "gfx/pics/arbok_ariana/anim0.asm"
 
 MagikarpAnimations:
-MagikarpPlainAnimation:   INCLUDE "gfx/pics/magikarp_plain/anim0.asm"
-MagikarpSkellyAnimation:  INCLUDE "gfx/pics/magikarp_skelly/anim0.asm"
-MagikarpCalico1Animation: INCLUDE "gfx/pics/magikarp_calico1/anim0.asm"
-MagikarpCalico2Animation: INCLUDE "gfx/pics/magikarp_calico2/anim0.asm"
-MagikarpCalico3Animation: INCLUDE "gfx/pics/magikarp_calico3/anim0.asm"
-MagikarpTwoToneAnimation: INCLUDE "gfx/pics/magikarp_twotone/anim0.asm"
-MagikarpOrcaAnimation:    INCLUDE "gfx/pics/magikarp_orca/anim0.asm"
-MagikarpDapplesAnimation: INCLUDE "gfx/pics/magikarp_dapples/anim0.asm"
-MagikarpTigerAnimation:   INCLUDE "gfx/pics/magikarp_tiger/anim0.asm"
-MagikarpZebraAnimation:   INCLUDE "gfx/pics/magikarp_zebra/anim0.asm"
-MagikarpStripeAnimation:  INCLUDE "gfx/pics/magikarp_stripe/anim0.asm"
+MagikarpPlainAnimation:
+MagikarpSkellyAnimation:
+MagikarpCalico1Animation:
+MagikarpCalico2Animation:
+MagikarpCalico3Animation:
+MagikarpTwoToneAnimation:
+MagikarpOrcaAnimation:
+MagikarpDapplesAnimation:
+MagikarpTigerAnimation:
+MagikarpZebraAnimation:
+MagikarpStripeAnimation:  INCLUDE "gfx/pics/magikarp/anim0.asm"
 
 MewtwoAnimations:
 MewtwoPlainAnimation:   INCLUDE "gfx/pics/mewtwo_plain/anim0.asm"

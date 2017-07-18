@@ -201,7 +201,7 @@ ENDM
 	engine_flag DailyFlags4, 0 ; seashore shell bell
 	engine_flag DailyFlags4, 1 ; shamouti restaurant challenge ; $68
 	engine_flag DailyFlags4, 2 ; fought psychic inver
-	engine_flag DailyFlags4, 3 ; daily unused
+	engine_flag DailyFlags4, 3 ; bought moomoo milk
 	engine_flag DailyFlags4, 4 ; daily unused
 	engine_flag DailyFlags4, 5 ; daily unused
 	engine_flag DailyFlags4, 6 ; daily unused

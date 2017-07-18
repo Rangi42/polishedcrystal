@@ -202,6 +202,12 @@
 	RGB 09, 02, 09
 	RGB 06, 00, 06
 
+; Sinjoh Ruins
+	RGB 21, 08, 05
+	RGB 13, 07, 06
+	RGB 10, 04, 03
+	RGB 06, 04, 04
+
 ; Saffron City
 	RGB 31, 26, 00
 	RGB 31, 15, 00

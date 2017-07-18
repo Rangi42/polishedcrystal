@@ -997,7 +997,7 @@ EnemyTurn_EndOpponentProtectEndureDestinyBond: ; 3c6de
 	jp EndOpponentProtectEndureDestinyBond
 ; 3c6ed
 
-EndOpponentProtectEndureDestinyBond: ; 3c6ed
+EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_PROTECT, [hl]
@@ -1006,19 +1006,20 @@ EndOpponentProtectEndureDestinyBond: ; 3c6ed
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	ret
-; 3c6fe
 
-EndUserDestinyBond: ; 3c6fe
+EndUserDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	ret
-; 3c706
+
+SetFastestTurn:
+	call CheckSpeed
+	jp nz, SetEnemyTurn
+	jp SetPlayerTurn
 
 HandleResidualDamage:
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1190,9 +1191,7 @@ CheckFullHP:
 	ret
 
 HandlePerishSong: ; 3c801
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1252,9 +1251,7 @@ HandlePerishSong: ; 3c801
 ; 3c874
 
 HandleWrap: ; 3c874
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1317,9 +1314,7 @@ HandleWrap: ; 3c874
 ; 3c8e4
 
 HandleLeftovers:
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1351,9 +1346,7 @@ HandleLeftovers:
 	jp StdBattleTextBox
 
 HandleLeppaBerry:
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1478,9 +1471,7 @@ HandleLeppaBerry:
 	jp StdBattleTextBox
 
 HandleFutureSight:
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1530,11 +1521,8 @@ HandleFutureSight:
 
 HandleSafeguard:
 	call CheckSpeed
-	jr nz, .enemy_first
-	call .CheckPlayer
-	jr .CheckEnemy
+	jr z, .player_first
 
-.enemy_first
 	call .CheckEnemy
 .CheckPlayer:
 	ld a, [PlayerScreens]
@@ -1548,6 +1536,8 @@ HandleSafeguard:
 	xor a
 	jr .print
 
+.player_first
+	call .CheckPlayer
 .CheckEnemy:
 	ld a, [EnemyScreens]
 	bit SCREENS_SAFEGUARD, a
@@ -3922,12 +3912,7 @@ HandleFirstAirBalloon:
 ; speed checks to see whose air balloon to announce first.
 	ld a, [hBattleTurn]
 	push af
-	call SetPlayerTurn
-	call CheckSpeed
-	jr z, .got_order
-	call SetEnemyTurn
-.got_order
-	; No Spikes are actually on the field, but this prints the Air Balloon message
+	call SetFastestTurn
 	call SpikesDamage
 	call SwitchTurn
 	call SpikesDamage
@@ -3941,14 +3926,7 @@ RunBothActivationAbilities:
 ; just matter for weather abilities.
 	ld a, [hBattleTurn]
 	push af
-	call SetPlayerTurn
-	call CheckSpeed
-	jr z, .got_order
-	call SetEnemyTurn
-.got_order
-	; Don't run RunActivationAbilities, it
-	; will make Traced abilities activate
-	; twice
+	call SetFastestTurn
 	farcall RunActivationAbilitiesInner
 	call SwitchTurn
 	farcall RunActivationAbilitiesInner
@@ -4140,9 +4118,7 @@ RecallPlayerMon: ; 3dce6
 ; 3dcf9
 
 HandleHealingItems: ; 3dcf9
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -4153,9 +4129,7 @@ HandleHealingItems: ; 3dcf9
 	jp UseConfusionHealingItem
 
 HandleStatusOrbs:
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 

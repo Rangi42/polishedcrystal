@@ -863,7 +863,7 @@ PorygonZFrontpic:         INCBIN "gfx/pics/porygon_z/front.2bpp.lz"
 PorygonZBackpic:          INCBIN "gfx/pics/porygon_z/back.2bpp.lz"
 
 
-SECTION "Pics 24", ROMX
+SECTION "Pics 24", ROMX, BANK[$77]
 
 PIPic:                    INCBIN "gfx/trainers/pi.2bpp.lz"
 TamerPic:                 INCBIN "gfx/trainers/tamer.2bpp.lz"
@@ -878,7 +878,7 @@ CuboneArmorPic:           INCBIN "gfx/trainers/cubone_armor.2bpp.lz"
 SilhouettePic:            INCBIN "gfx/trainers/silhouette.2bpp.lz"
 
 
-SECTION "Pics 25", ROMX
+SECTION "Pics 25", ROMX, BANK[$2F]
 
 MagikarpPlainFrontpic:    INCBIN "gfx/pics/magikarp_plain/front.2bpp.lz"
 MagikarpPlainBackpic:     INCBIN "gfx/pics/magikarp_plain/back.2bpp.lz"
@@ -890,6 +890,10 @@ MagikarpCalico2Frontpic:  INCBIN "gfx/pics/magikarp_calico2/front.2bpp.lz"
 MagikarpCalico2Backpic:   INCBIN "gfx/pics/magikarp_calico2/back.2bpp.lz"
 MagikarpCalico3Frontpic:  INCBIN "gfx/pics/magikarp_calico3/front.2bpp.lz"
 MagikarpCalico3Backpic:   INCBIN "gfx/pics/magikarp_calico3/back.2bpp.lz"
+
+
+SECTION "Pics 26", ROMX, BANK[$3F]
+
 MagikarpTwoToneFrontpic:  INCBIN "gfx/pics/magikarp_twotone/front.2bpp.lz"
 MagikarpTwoToneBackpic:   INCBIN "gfx/pics/magikarp_twotone/back.2bpp.lz"
 MagikarpOrcaFrontpic:     INCBIN "gfx/pics/magikarp_orca/front.2bpp.lz"

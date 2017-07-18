@@ -106,6 +106,20 @@ MAP_SCRIPTS_25            EQU $6C
 MAP_SCRIPTS_26            EQU $45
 MAP_SCRIPTS_27            EQU $5F
 MAP_SCRIPTS_28            EQU $7C
+MAP_SCRIPTS_29            EQU $46
+MAP_SCRIPTS_30            EQU $7F
+MAP_SCRIPTS_31            EQU $10
+MAP_SCRIPTS_32            EQU $04
+MAP_SCRIPTS_33            EQU $2E
+MAP_SCRIPTS_34            EQU $11
+MAP_SCRIPTS_35            EQU $3E
+MAP_SCRIPTS_36            EQU $35
+MAP_SCRIPTS_37            EQU $13
+MAP_SCRIPTS_38            EQU $25
+MAP_SCRIPTS_39            EQU $36
+MAP_SCRIPTS_40            EQU $7B
+MAP_SCRIPTS_41            EQU $12
+MAP_SCRIPTS_42            EQU $1B
 
 
 ; audio.o

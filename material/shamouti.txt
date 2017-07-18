@@ -1,0 +1,112 @@
+............ Ioana
+....... Marguerite
+............ Semra
+........... Alisha
+............ Lenie
+............Louise
+............ Carla
+.......... Celeste
+
+
+At our restaurant, you can enjoy more than just exquisite dining. You may also partake in battles. Bon appetit!
+
+Guitarist(M):
+pre-battle - “I'm a one-man band, baby. Let the music play!”
+win battle - “Rock on!”
+post-battle - “Feel those rocking notes!”
+
+Can I take a selfie with your Pokémon?
+Snap!
+I've dropped my phone, like, five times. The screen's cracked, but the camera works!
+
+Sightseer(M) 4 (?):
+pre-battle - “While I'm travelling, I like to read in between seeing the sights.”
+win battle - “You're a tough one to read.”
+post-battle - “If the world is like a book, to not travel is like reading only a single page.”
+
+Sightseer(F) 4 (?):
+pre-battle - “I've heard so much about Shamouti Island. What a wonderful place!”
+win battle - “Wonderful!”
+post-battle - “Sometimes the greatest beauty is in the little things.
+Remember that and life's much more fulfilling.”
+
+Guitarist(F) 1 (Colleen):
+pre-battle - “There's something magical about this island.”
+win battle - “There was nothing magical about that.”
+post-battle - “I'm feeling so inspired by this place, I already wrote a new song! Wanna listen? No? Aww… Too bad.”
+party - Electabuzz, Magnemite, Magneton
+
+Rich Boy 1 (Rupert):
+pre-battle - “You believe you can best me? What a load of old tosh.”
+win battle - “I'm gobsmacked!”
+post-battle - “How did we lose, father? These Pokemon cost a fortune!”
+party - Porygon2, Blissey, Ninetales
+
+Gentleman 1 (Bernard):
+pre-battle - “Enough of this argy-bargy. I shall see to you myself!”
+win battle - “What a corker!”
+post-battle “Don't worry Rupert, we'll buy better Pokemon.”
+party - Ampharos, Golduck, Arcanine
+
+Schoolgirl 1 (Rachel):
+pre-battle - “I've been learning about Shamouti Island at school.”
+win battle - “We didn't learn about Pokemon yet.”
+post-battle - “Mommy and Daddy brought me here to see the things I learnt about at school.”
+
+Lady 1 (Anna):
+pre-battle - “Wh-Who 'r ya?”
+win battle - “Wha…? What jus' happent?”
+post-battle - “*hiccup* (new line) M-maybe I had tuh mush... tuh drink?”
+
+Rich Boy (Aaron):
+pre-battle - “What are you doing here!?”
+win battle - “Hmph. Get lost.”
+post-battle - “My pa owns the ship that brings people here.”
+
+1: “Is this your first visit to Shamouti Island? It's a tropical paradise rich in natural history. You may also see some interesting Pokemon here.”
+2: “Shamouti Island is so far south, it stays warm all year round!”
+4 (Rich Boy): “Ow. I was just walking through the market, minding my own business, when suddenly - get this - I tripped over some vase that some inconsiderate trader left on the floor. Like, who does that? Really.”
+5 (Rich Boy): “I simply won't tolerate anything less than perfection. This is the best vacation spot money can buy.”
+6 (Rich Boy): “I sailed here on father's yacht. Well, I was chauffeur driven, of course.”
+7 (Little girl): “Have you heard about the Shamouti Island festival? It happens once a year. There's a parade, and balloons! Everyone even gets to wear fun costumes! It's my absolute favourite time of year!”
+11: “Have you heard of Professor Ivy? Her and Professor Oak pioneered research into the relationships between Pokemon and people. Ivy sometimes visits this island, so I'm hoping to meet her.”
+12: “For centuries, inhabitants of this island have performed a ceremony honoring the so-called Chosen One that would tame the birds of legend, should they release their might on the world. Which birds are these? The heck if I know, but it's a great story, don'cha think?”
+13: “Professor Ivy says ancient texts hint at this being the source of the Earth's water supply! We're surrounded by ocean, sure, but how is that even possible?”
+14: “This island has a lot of history, but I'm just here to party. Bring it on!”
+18 (Lass): Lots of little pink flowers grow on this island. Everything's so pretty!”
+19: “The Pokemon in the island's forest are well known for being super loud. I wonder if they're ok.”
+20 (Near Noisy Forest): “I'm not even in the forest and I can hear the Pokemon inside it. What's going on in there?”
+
+21 (Lady in tourist information centre): “You'd like a tour of the shrine? I'm sorry, but the building is structurally unsafe after a major storm.”
+22: “Welcome to the Shamouti Island Tourist Information Centre. Enjoy your stay!”
+
+23 (in Shamouti nature reserve house): “You might have noticed the pink flowers on this island. They're a national treasure.”
+24 (in Shamouti nature reserve house): “We preserve the natural environment of this island to keep it free of trash dropped by tourists.”
+25 (in Shamouti nature reserve house): “Nature is a wonderful thing. We do what we can to protect this island and all that resides here.”
+26 (in Shamouti nature reserve house): “Lots of rare berries grow on Shamouti Island. It's the only place you'll find them in all of Kanto and Johto!”
+
+27 (Sightseer): “In my region, we have a Pokemon that likes to match wits with the local Slowking. The one on this island sounds like a cut above the rest, though!”
+28: As we say on this island; when in doubt, ask Slowking! It's the smartest Pokemon around.”
+
+mainland:
+red lass
+brown gramps - Shamouti Island is a popular tourist destination. This tunnel leads to our shrine dedicated to the Guardian of the Seas. Please enjoy your stay!
+blue cooltrainerm
+blue youngster (pikablu)
+
+pokecenter:
+brown granny - You must be from out of town. Shamouti Island isn't actually part of Johto or Kanto. It never gets cold or snowy here. Isn't that nice?
+
+warm beach:
+red teacher
+blue youngster
+slowking
+
+warm beach house (beach shack):
+blue gramps
+blue granny
+
+rocky beach house:
+brown black belt
+weavile
+green youngster

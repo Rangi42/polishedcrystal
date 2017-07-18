@@ -285,6 +285,9 @@ GoldenrodHarborSign:
 GoldenrodHarborCrateSign:
 	jumptext GoldenrodHarborCrateSignText
 
+GoldenrodHarborHiddenRevive:
+	dw EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE, REVIVE
+
 GoldenrodHarborFisherText:
 	text "If you're fishing,"
 	line "you have to be"
@@ -507,9 +510,10 @@ GoldenrodHarbor_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 2
+	db 3
 	signpost 19, 29, SIGNPOST_READ, GoldenrodHarborSign
 	signpost 15, 28, SIGNPOST_READ, GoldenrodHarborCrateSign
+	signpost 21, 22, SIGNPOST_ITEM, GoldenrodHarborHiddenRevive
 
 .PersonEvents:
 	db 12

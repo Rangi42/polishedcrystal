@@ -24,7 +24,3 @@ INCBIN "tilesets/safari_metatiles.bin"
 
 Tileset31Coll:
 INCLUDE "tilesets/safari_collision.asm"
-
-Tileset26GFX:
-Tileset32GFX:
-INCBIN "gfx/tilesets/ruins.2bpp.lz"
