@@ -259,13 +259,13 @@ Route30HiddenPotion:
 	dwb EVENT_ROUTE_30_HIDDEN_POTION, POTION
 
 Route30_JoeysRattataAttacksMovement:
-	big_step_up
-	big_step_down
+	run_step_up
+	run_step_down
 	step_end
 
 Route30_MikeysPidgeyAttacksMovement:
-	big_step_down
-	big_step_up
+	run_step_down
+	run_step_up
 	step_end
 
 Text_UseTackle:

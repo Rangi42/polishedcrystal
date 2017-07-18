@@ -462,8 +462,8 @@ UnknownScript_0x6adc8:
 	end
 
 MovementData_0x6add1:
-	big_step_down
-	big_step_right
+	run_step_down
+	run_step_right
 	turn_head_up
 	step_end
 

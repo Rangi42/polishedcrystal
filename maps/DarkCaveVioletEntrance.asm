@@ -90,8 +90,8 @@ DarkCaveVioletEntranceHiddenElixer:
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 	fix_facing
-	big_step_right
-	big_step_left
+	run_step_right
+	run_step_left
 	remove_fixed_facing
 	step_end
 

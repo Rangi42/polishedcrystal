@@ -944,25 +944,25 @@ AideWalksBackMovement:
 
 ElmJumpUpMovement:
 	fix_facing
-	big_step_up
+	run_step_up
 	remove_fixed_facing
 	step_end
 
 ElmJumpDownMovement:
 	fix_facing
-	big_step_down
+	run_step_down
 	remove_fixed_facing
 	step_end
 
 ElmJumpLeftMovement:
 	fix_facing
-	big_step_left
+	run_step_left
 	remove_fixed_facing
 	step_end
 
 ElmJumpRightMovement:
 	fix_facing
-	big_step_right
+	run_step_right
 	remove_fixed_facing
 	step_end
 

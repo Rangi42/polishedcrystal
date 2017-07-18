@@ -209,14 +209,14 @@ SchoolboyRickyScript:
 
 MovementData_0x76871:
 	fix_facing
-	big_step_right
+	run_step_right
 	remove_fixed_facing
 	turn_head_down
 	step_end
 
 MovementData_0x76876:
 	fix_facing
-	big_step_left
+	run_step_left
 	remove_fixed_facing
 	turn_head_down
 	step_end

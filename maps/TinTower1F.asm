@@ -263,7 +263,7 @@ TinTowerSuicuneMovement:
 
 TinTowerPlayerMovement2:
 	fix_facing
-	big_step_down
+	run_step_down
 	remove_fixed_facing
 	step_end
 

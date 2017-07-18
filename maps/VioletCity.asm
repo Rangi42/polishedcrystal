@@ -116,8 +116,8 @@ VioletCityHiddenPokeBall:
 	dwb EVENT_VIOLET_CITY_HIDDEN_POKE_BALL, POKE_BALL
 
 VioletCityFollowEarl_MovementData:
-	big_step_down
-	big_step_down
+	run_step_down
+	run_step_down
 	turn_head_down
 	turn_head_left
 	turn_head_up
@@ -126,15 +126,15 @@ VioletCityFollowEarl_MovementData:
 	turn_head_left
 	turn_head_up
 	turn_head_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
 	turn_head_right
 	turn_head_down
 	turn_head_left
@@ -145,7 +145,7 @@ VioletCityFollowEarl_MovementData:
 	turn_head_up
 	turn_head_right
 	turn_head_down
-	big_step_down
+	run_step_down
 	turn_head_down
 	turn_head_left
 	turn_head_up
@@ -154,14 +154,14 @@ VioletCityFollowEarl_MovementData:
 	turn_head_left
 	turn_head_up
 	turn_head_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
 	turn_head_right
 	turn_head_down
 	turn_head_left
@@ -170,7 +170,7 @@ VioletCityFollowEarl_MovementData:
 	turn_head_down
 	turn_head_left
 	turn_head_up
-	big_step_up
+	run_step_up
 	turn_head_down
 	step_end
 

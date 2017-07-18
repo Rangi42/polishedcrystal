@@ -66,18 +66,18 @@ JamesEnterMovementData:
 	step_end
 
 JessieLeaveMovementData:
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_left
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_left
 	step_end
 
 JamesLeaveMovementData:
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
 	step_end
 
 TrainerArcher2:

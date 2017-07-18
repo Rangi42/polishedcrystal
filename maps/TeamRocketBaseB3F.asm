@@ -245,8 +245,8 @@ MovementData_0x6e142:
 	step_end
 
 MovementData_0x6e144:
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
 	step_end
 
 MovementData_0x6e147:
@@ -256,28 +256,28 @@ MovementData_0x6e147:
 	step_sleep_8
 	step_sleep_8
 	slow_step_right
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_right
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_left
-	big_step_left
+	run_step_down
+	run_step_down
+	run_step_down
+	run_step_right
+	run_step_down
+	run_step_down
+	run_step_down
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_left
+	run_step_left
 	step_end
 
 RocketBaseRivalEnterMovement:
@@ -303,7 +303,7 @@ RocketBaseRivalLeaveMovement:
 
 RocketBaseRivalShovesPlayerMovement:
 	fix_facing
-	big_step_right
+	run_step_right
 	remove_fixed_facing
 	step_end
 

@@ -141,13 +141,13 @@ BurnedTowerSuicuneMovement2:
 	fix_facing
 	fast_jump_step_left
 	fast_jump_step_up
-	big_step_up
+	run_step_up
 	fast_jump_step_right
 	step_end
 
 BurnedTowerSuicuneMovement3:
 	fix_facing
-	big_step_up
+	run_step_up
 	fast_jump_step_right
 	fast_jump_step_down
 	fast_jump_step_down

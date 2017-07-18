@@ -444,12 +444,12 @@ CeruleanCapeHiddenBottleCap:
 	dwb EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP, BOTTLE_CAP
 
 MovementData_0x19efe8:
-	big_step_down
+	run_step_down
 	step_end
 
 MovementData_0x19efea:
-	big_step_down
-	big_step_down
+	run_step_down
+	run_step_down
 	step_end
 
 MovementData_0x19efed:

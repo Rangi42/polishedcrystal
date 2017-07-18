@@ -222,15 +222,15 @@ CeruleanGymStatue:
 	jumpstd gymstatue2
 
 MovementData_0x1884e3:
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
+	run_step_down
+	run_step_down
+	run_step_down
+	run_step_down
 	step_end
 
 MovementData_0x1884e8:
-	big_step_right
-	big_step_down
+	run_step_right
+	run_step_down
 	step_end
 
 MovementData_0x1884eb:
@@ -246,7 +246,7 @@ MovementData_0x1884eb:
 	step_end
 
 MovementData_0x1884f5:
-	big_step_down
+	run_step_down
 	step_end
 
 MovementData_0x1884f7:

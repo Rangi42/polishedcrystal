@@ -382,7 +382,7 @@ MovementData_0x18d2d4:
 
 MovementData_0x18d2da:
 	fix_facing
-	big_step_left
+	run_step_left
 	step_end
 
 MovementData_0x18d2dd:

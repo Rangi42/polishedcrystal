@@ -98,7 +98,7 @@ LawrenceApproachRightMovementData:
 LawrenceBumpLeftMovementData:
 LawrenceBumpRightMovementData:
 	fix_facing
-	big_step_up
+	run_step_up
 	remove_fixed_facing
 	step_sleep_8
 	step_sleep_8

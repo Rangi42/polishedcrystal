@@ -213,13 +213,13 @@ SupernerdShawnScript:
 	end
 
 MovementData_0x76004:
-	big_step_right
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
+	run_step_right
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_up
 	step_end
 
 MovementData_0x7600c:

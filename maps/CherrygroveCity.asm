@@ -308,19 +308,19 @@ CherrygroveCity_RivalWalksToYou:
 	step_end
 
 CherrygroveCity_RivalPushesYouOutOfTheWay:
-	big_step_down
+	run_step_down
 	turn_head_up
 	step_end
 
 CherrygroveCity_RivalExitsStageLeft:
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_up
-	big_step_up
-	big_step_left
-	big_step_left
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_up
+	run_step_up
+	run_step_left
+	run_step_left
 	step_end
 
 GuideGentIntroText:

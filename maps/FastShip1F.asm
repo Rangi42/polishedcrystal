@@ -154,10 +154,10 @@ MovementData_0x75217:
 	step_end
 
 MovementData_0x7521b:
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
 	step_end
 
 MovementData_0x75220:
@@ -165,21 +165,21 @@ MovementData_0x75220:
 	step_end
 
 MovementData_0x75222:
-	big_step_down
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
+	run_step_down
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_down
+	run_step_down
+	run_step_down
+	run_step_down
 	step_end
 
 MovementData_0x7522e:
-	big_step_right
+	run_step_right
 	turn_head_left
 	step_end
 

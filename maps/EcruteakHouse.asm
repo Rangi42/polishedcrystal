@@ -131,14 +131,14 @@ GrampsScript_0x980c4:
 
 MovementData_0x980c7:
 	fix_facing
-	big_step_left
+	run_step_left
 	remove_fixed_facing
 	turn_head_down
 	step_end
 
 MovementData_0x980cc:
 	fix_facing
-	big_step_right
+	run_step_right
 	remove_fixed_facing
 	turn_head_down
 	step_end

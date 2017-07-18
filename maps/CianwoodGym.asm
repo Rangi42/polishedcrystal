@@ -137,8 +137,8 @@ CianwoodGymStatue:
 
 CianwoodGymMovement_ChuckChucksBoulder:
 	set_sliding
-	big_step_left
-	big_step_up
+	run_step_left
+	run_step_up
 	fast_jump_step_right
 	remove_sliding
 	step_end

@@ -370,32 +370,32 @@ MovementData_0x6d21f:
 	step_end
 
 MovementData_0x6d224:
-	big_step_left
-	big_step_left
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_left
+	run_step_left
+	run_step_left
+	run_step_up
+	run_step_up
+	run_step_up
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_left
 	turn_head_down
 	step_end
 
 MovementData_0x6d22f:
-	big_step_left
-	big_step_left
-	big_step_up
-	big_step_up
-	big_step_left
-	big_step_left
+	run_step_left
+	run_step_left
+	run_step_up
+	run_step_up
+	run_step_left
+	run_step_left
 	step_end
 
 MovementData_0x6d236:
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
 	step_end
 
 MovementData_0x6d23b:
@@ -418,16 +418,16 @@ MovementData_0x6d244:
 	step_end
 
 MovementData_0x6d248:
-	big_step_left
+	run_step_left
 	step_end
 
 MovementData_0x6d24a:
-	big_step_left
+	run_step_left
 	step_end
 
 MovementData_0x6d24c:
-	big_step_left
-	big_step_up
+	run_step_left
+	run_step_up
 	turn_head_left
 	step_end
 

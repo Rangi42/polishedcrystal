@@ -112,14 +112,14 @@ GrannyScript_0x6c3ee:
 
 MovementData_0x6c3f6:
 	fix_facing
-	big_step_left
-	big_step_right
+	run_step_left
+	run_step_right
 	remove_fixed_facing
 	step_end
 
 MovementData_0x6c3fb:
 	fix_facing
-	big_step_left
+	run_step_left
 	remove_fixed_facing
 	turn_head_down
 	turn_head_left
@@ -129,7 +129,7 @@ MovementData_0x6c3fb:
 
 MovementData_0x6c403:
 	fix_facing
-	big_step_left
+	run_step_left
 	remove_fixed_facing
 	step_end
 

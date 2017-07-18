@@ -239,12 +239,12 @@ CinnabarLabHidePlayerMovementData:
 	step_end
 
 CinnabarLabPan1MovementData:
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_up
-	big_step_up
-	big_step_up
+	run_step_left
+	run_step_left
+	run_step_left
+	run_step_up
+	run_step_up
+	run_step_up
 	step_end
 
 CinnabarLabScientist1Thrown1MovementData:
@@ -254,7 +254,7 @@ CinnabarLabScientist1Thrown1MovementData:
 	step_up
 	remove_fixed_facing
 	remove_sliding
-	big_step_left
+	run_step_left
 	step_end
 
 CinnabarLabScientist1Thrown2MovementData:
@@ -263,12 +263,12 @@ CinnabarLabScientist1Thrown2MovementData:
 	step_end
 
 CinnabarLabPan2MovementData:
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
+	run_step_right
 	step_end
 
 CinnabarLabScientist2Thrown1MovementData:
@@ -278,7 +278,7 @@ CinnabarLabScientist2Thrown1MovementData:
 	step_up
 	remove_fixed_facing
 	remove_sliding
-	big_step_right
+	run_step_right
 	step_end
 
 CinnabarLabScientist2Thrown2MovementData:
