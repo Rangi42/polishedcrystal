@@ -563,14 +563,7 @@ RunContactAbilities:
 	cp POISON_TOUCH
 	call z, PoisonTouchAbility
 .skip_user_ability
-	call GetOpponentAbilityAfterMoldBreaker
-	cp PICKPOCKET
-	jr nz, .not_pickpocket
-	call SwitchTurn
-	call PickPocketAbility
-	jp SwitchTurn
-.not_pickpocket
-; other abilities only trigger 30% of the time
+; abilities only trigger 30% of the time
 ;
 ; Abilities always run from the ability user's perspective. This is
 ; consistent. Thus, a switchturn happens here. Feel free to rework
@@ -586,8 +579,6 @@ RunContactAbilities:
 
 .do_enemy_abilities
 	ld a, b
-	cp CUTE_CHARM
-	jp z, CuteCharmAbility
 	cp EFFECT_SPORE
 	jp z, EffectSporeAbility
 	cp FLAME_BODY
@@ -596,6 +587,8 @@ RunContactAbilities:
 	jp z, PoisonPointAbility
 	cp STATIC
 	jp z, StaticAbility
+	cp CUTE_CHARM
+	jp z, CuteCharmAbility
 	ret
 
 CursedBodyAbility:
@@ -609,9 +602,6 @@ CuteCharmAbility:
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_Attract
 	jp EnableAnimations
-
-PickPocketAbility:
-	ret
 
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
@@ -660,6 +650,8 @@ AfflictStatusAbility
 ; duplicating them here is minor logic, and it avoids spamming
 ; needless ability activations that ends up not actually doing
 ; anything.
+	call HasEnemyFainted
+	ret z
 	ld a, BATTLE_VARS_ABILITY_OPP
 	push de
 	call GetBattleVar
@@ -845,6 +837,8 @@ SteadfastAbility:
 SpeedBoostAbility:
 	ld b, SPEED
 StatUpAbility:
+	call HasUserFainted
+	ret z
 	ld a, [AttackMissed]
 	push af
 	xor a
