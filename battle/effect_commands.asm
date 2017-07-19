@@ -6995,9 +6995,7 @@ BattleCommand_CheckCharge: ; 36b3a
 ; 36b4d
 
 
-BattleCommand_Charge: ; 36b4d
-; charge
-
+BattleCommand_Charge:
 	call BattleCommand_ClearText
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
@@ -7053,8 +7051,9 @@ BattleCommand_Charge: ; 36b4d
 	set SUBSTATUS_FLYING, [hl]
 
 .dont_set_digging
+	; If we called this move from something else, update last move appropriately.
 	call CheckUserIsCharging
-	jr nz, .mimic
+	jr nz, .last_move_ok
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
 	call GetBattleVarAddr
 	ld [hl], b
@@ -7062,7 +7061,7 @@ BattleCommand_Charge: ; 36b4d
 	call GetBattleVarAddr
 	ld [hl], b
 
-.mimic
+.last_move_ok
 	call ResetDamage
 
 	ld hl, .UsedText
