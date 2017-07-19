@@ -4033,7 +4033,7 @@ PursuitSwitch: ; 3dc5b
 .finish_pursuit
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
-	ld a, $ff
+	xor a
 	ld [hl], a
 
 	pop af

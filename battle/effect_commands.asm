@@ -42,7 +42,6 @@ DoEnemyTurn: ; 3400a
 
 DoTurn: ; 3401d
 ; Read in and execute the user's move effects for this turn.
-
 	xor a
 	ld [wTurnEnded], a
 
@@ -125,10 +124,13 @@ DoMove:
 	ret
 
 CheckTurn:
-BattleCommand_CheckTurn: ; 34084
-; checkturn
-
+BattleCommand_CheckTurn:
 ; Repurposed as hardcoded turn handling. Useless as a command.
+	; Move 0 immediately ends the turn (Used by Pursuit)
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	and a
+	jp z, EndTurn
 
 	xor a
 	ld [AttackMissed], a
