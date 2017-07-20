@@ -801,7 +801,7 @@ CheckEncounterRoamMon: ; 2a2ce
 	ld hl, wRoamMon1MapGroup
 	ld c, a
 	ld b, 0
-	ld a, 7 ; length of the RoamMon struct
+	ld a, wRoamMon1End - wRoamMon1 ; length of the RoamMon struct
 	call AddNTimes
 	ld a, d
 	cp [hl]
