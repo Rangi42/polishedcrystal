@@ -21,7 +21,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Events
 
-* Soul House + Radio Tower event to get Expn Card
+* Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
 * Shamouti hotel restaurant needs NPCs to battle that change every day
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 
