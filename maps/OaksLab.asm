@@ -131,6 +131,7 @@ Oak:
 	opentext
 	writetext OakOpenMtSilverText
 	buttonsound
+	setevent EVENT_BEAT_PROF_OAK
 	setevent EVENT_OPENED_MT_SILVER
 	jump .CheckPokedex
 

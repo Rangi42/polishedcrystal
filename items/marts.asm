@@ -459,11 +459,11 @@ SaffronMart: ; 161f3
 
 SilphCoMart:
 	db 5 ; # items
-	db UP_GRADE
-	db DUBIOUS_DISC
 	db MAX_POTION
 	db MAX_REPEL
 	db DUSK_BALL
+	db UP_GRADE
+	db DUBIOUS_DISC
 	db -1
 
 FuchsiaMart: ; 161ea

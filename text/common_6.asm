@@ -100,6 +100,20 @@ WonderTradeForGSBallPichuText::
 	line "it carefully."
 	prompt
 
+SilphMartIntroText::
+	text "Employees like me"
+	line "have access to"
+	cont "company swag!"
+
+	para "Want to buy some?"
+	done
+
+SilphMartComeAgainText::
+	text "Come again! I"
+	line "could use the"
+	cont "side income."
+	done
+
 AdventurerMartIntroText::
 	text "I picked up some"
 	line "rare items abroad!"
