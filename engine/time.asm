@@ -83,17 +83,16 @@ CheckReceiveCallDelay:
 	call GetMinutesSinceIfLessThan60
 
 	; Double effective time if lead mon has Lightning Rod, which boosts call rate
-	push af
+	push bc
+	ld b, a
 	call GetLeadAbility
 	cp LIGHTNING_ROD
-	jr nz, .not_lightning_rod
-	pop af
+	ld a, b
+	pop bc
+	jr nz, .ok
 	add a
 	jr nc, .ok
 	ld a, -1
-	jr .ok
-.not_lightning_rod
-	pop af
 .ok
 	ld hl, wReceiveCallDelay_MinsRemaining
 	jp UpdateTimeRemaining
