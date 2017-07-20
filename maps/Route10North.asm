@@ -74,7 +74,9 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_HidePlayer
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
+	disappear ROUTE10_LAWRENCE
 	moveperson ROUTE10_LAWRENCE, 13, 52
+	appear ROUTE10_LAWRENCE
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applymovement PLAYER, Route10NorthMovementData_ShowPlayer
 	disappear ROUTE10_KRIS

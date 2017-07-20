@@ -1412,12 +1412,12 @@ Group35Sprites:
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_LADY
+	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
 	db SPRITE_YOUNGSTER
 	db SPRITE_LAWRENCE ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
-	db SPRITE_LASS ; doesn't walk
 	db SPRITE_SCIENTIST ; doesn't walk
 	db SPRITE_SUPER_NERD ; doesn't walk
 	; 12 walking sprites (6 that walk)
