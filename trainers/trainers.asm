@@ -12214,6 +12214,17 @@ endc
 	db $ff ; end
 
 ; ================
+
+	; DRAGON_TAMER
+	db "Aegon@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -13954,6 +13965,17 @@ endc
 	db $ff ; end
 
 ; ================
+
+	; COOLTRAINERF
+	db "Lenie@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -14230,6 +14252,17 @@ endc
 	db $ff ; end
 
 ; ================
+
+	; VETERANM
+	db "Barkhorn@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
+
+	db $ff ; end
+
+; ================
 ; ================================
 
 
@@ -14324,6 +14357,17 @@ VeteranFGroup:
 		db ROCK_SLIDE
 		db SCARY_FACE
 		db DARK_PULSE
+
+	db $ff ; end
+
+; ================
+
+	; VETERANF
+	db "Litvyak@"
+	db TRAINERTYPE_NORMAL
+
+	; TODO: party
+	db 50, BULBASAUR
 
 	db $ff ; end
 

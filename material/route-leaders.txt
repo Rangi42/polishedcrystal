@@ -1,6 +1,6 @@
 Route 43:
 before Pryce
-Ace Trainer F (new)
+Ace Trainer F Lenie (new)
 gives Flame Orb
 Alakazam with Synchronize, Flame Orb
 Machamp with Guts, Flame Orb, Facade
@@ -8,7 +8,7 @@ Pidgeot with Quick Feet, Flame Orb
 
 Route 44:
 before Clair
-Veteran M (new)
+Veteran M Barkhorn (new)
 gives Rocky Helmet
 Pupitar with Rocky Helmet, Sandstorm
 Forretress with Rocky Helmet, Spikes
@@ -17,16 +17,16 @@ Umbreon with Rocky Helmet
 
 Route 46:
 before Lyra
-Dragon Tamer (new)
+Dragon Tamer Aegon (new)
 gives Focus Sash
 Dragonite with Focus Sash, Dragon Dance
 Kingdra with Focus Sash, Dragon Dance
 Charizard with Focus Sash, Dragon Dance
 Charizard with Focus Sash, Dragon Dance
 
-Route 26/27:
+Route 26:
 before Elite 4
-Veteran F
+Veteran F Litvyak (new)
 gives Choice Specs
 Modest Alakazam with Choice Specs, Synchronize, Psychic, Shadow Ball, Hidden Power Fire, Focus Blast
 Modest Porygon-Z with Choice Specs, Tri Attack, Dark Pulse, Ice Beam, Hidden Power Ground

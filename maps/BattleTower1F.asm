@@ -88,9 +88,11 @@ ReceptionistScript_0x9e3e2:
 	line "Battle Points as"
 	cont "compensation."
 
-	para "You can exchange"
-	line "them for useful"
-	cont "items."
+	para "You can trade them"
+	line "for useful items"
+
+	para "at the Exchange"
+	line "Service Corner."
 
 	para "<PLAYER> received"
 	line "10 Battle Points!@"
