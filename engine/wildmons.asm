@@ -219,12 +219,13 @@ endr
 	inc de
 	ret
 
-TryWildEncounter:: ; 2a0e7
+TryWildEncounter::
 ; Try to trigger a wild encounter.
-	call .EncounterRate
-	jr nc, .no_battle
+	; Do this first, because this affects some abilities messing with encounter rate
 	call ChooseWildEncounter
 	jr nz, .no_battle
+	call .EncounterRate
+	jr nc, .no_battle
 	call CheckRepelEffect
 	jr nc, .no_battle
 	xor a
@@ -237,17 +238,16 @@ TryWildEncounter:: ; 2a0e7
 	ld a, 1
 	and a
 	ret
-; 2a103
 
-.EncounterRate: ; 2a103
+.EncounterRate:
 	call GetMapEncounterRate
 	call ApplyMusicEffectOnEncounterRate
 	call ApplyCleanseTagEffectOnEncounterRate
-	call ApplyAbilityEffectOnEncounterRate
+	call SetBattlerLevel
+	call ApplyAbilityEffectsOnEncounterMon
 	call Random
 	cp b
 	ret
-; 2a111
 
 GetMapEncounterRate: ; 2a111
 	ld hl, wMornEncounterRate
@@ -281,7 +281,7 @@ ApplyMusicEffectOnEncounterRate:: ; 2a124
 	ret
 ; 2a138
 
-ApplyCleanseTagEffectOnEncounterRate:: ; 2a138
+ApplyCleanseTagEffectOnEncounterRate::
 ; Cleanse Tag halves encounter rate.
 	ld hl, PartyMon1Item
 	ld de, PARTYMON_STRUCT_LENGTH
@@ -299,73 +299,97 @@ ApplyCleanseTagEffectOnEncounterRate:: ; 2a138
 .cleansetag
 	srl b
 	ret
-; 2a14f
 
-ApplyAbilityEffectOnEncounterRate::
+SetBattlerLevel:
+; Sets c to the level of the first nonfainted mon (to be sent first into wild fights)
 	push bc
-	ld a, [PartyMon1Ability]
-	ld b, a
-	ld a, [PartyMon1Species]
-	ld c, a
-	farcall GetAbility
-	ld a, b
+	ld hl, PartyMon1HP
+	ld bc, PARTYMON_STRUCT_LENGTH - 1
+.loop
+	ld a, [hli]
+	or [hl]
+	jr nz, .ok
+	add hl, bc
+	jr .loop
+
+.ok
 	pop bc
-	cp ARENA_TRAP
-	jr z, .double
-	cp ILLUMINATE
-	jr z, .double
-	cp NO_GUARD
-	jr z, .semidouble
-	cp SWARM
-	jr z, .semidouble
-	cp QUICK_FEET
-	jr z, .halve
-	cp STENCH
-	jr z, .halve
-	ret
-
-.double
-	sla b
-	ret
-
-.semidouble
-	ld a, b
-	srl a
-	add b
-	ld b, a
-	ret
-
-.halve
-	srl b
+	; Set hl to level of said mon
+rept 4
+	dec hl
+endr
+	ld c, [hl]
 	ret
 
 ChooseWildEncounter: ; 2a14f
+	ld c, $ff
+_ChooseWildEncounter:
+	push bc
 	call LoadWildMonDataPointer
+	pop bc
 	jp nc, .nowildbattle
+	push bc
 	call CheckEncounterRoamMon
+	pop bc
 	jp c, .startwildbattle
 
 rept 3
 	inc hl
 endr
+	push bc
 	call CheckOnWater
+	pop bc
 	ld de, .WaterMonTable
-	jr z, .watermon
+	ld b, $4
+	jr z, .got_table
 rept 2
 	inc hl
 endr
 	ld a, [TimeOfDay]
+	push bc
 	ld bc, $e
 	call AddNTimes
+	pop bc
 	ld de, .GrassMonTable
+	ld b, $c
 
-.watermon
-; hl contains the pointer to the wild mon data, let's save that to the stack
+.got_table
+	; Check if we want to force a type
+	inc c
+	jr z, .get_random_mon
+	dec c
+
+	; Check if we can actually encounter a valid species of the given type
+	push de
 	push hl
-.randomloop
-	call Random
-	cp 100
-	jr nc, .randomloop
+.force_loop
+	inc hl ; We don't care about level
+	ld a, [hli]
+	ld [CurSpecies], a
+	push bc
+	push hl
+	call GetBaseData
+	pop hl
+	pop bc
+	ld a, [BaseType1]
+	cp c
+	jr z, .can_force_type
+	ld a, [BaseType2]
+	cp c
+	jr z, .can_force_type
+	dec b
+	dec b
+	jr nz, .force_loop
+	ld c, $ff
+.can_force_type
+	inc c
+	pop hl
+	pop de
+.get_random_mon
+	dec c
+	push hl ; wild mon data pointer
+	ld a, 100
+	call RandomRange
 	inc a ; 1 <= a <= 100
 	ld b, a
 	ld h, d
@@ -379,14 +403,19 @@ endr
 	jr .prob_bracket_loop
 
 .got_it
+	ld a, c
 	ld c, [hl]
 	ld b, 0
 	pop hl
+	push hl
 	add hl, bc ; this selects our mon
+	ld c, a
 	ld a, [hli]
 	ld b, a
 ; If the Pokemon is encountered by surfing, we need to give the levels some variety.
+	push bc
 	call CheckOnWater
+	pop bc
 	jr nz, .ok
 ; Check if we buff the wild mon, and by how much.
 	call Random
@@ -408,17 +437,35 @@ endr
 	ld [CurPartyLevel], a
 	ld b, [hl]
 	ld a, b
+	pop hl
 	call ValidateTempWildMonSpecies
 	jr c, .nowildbattle
 
 	cp UNOWN
-	jr nz, .done
+	jr nz, .unown_check_done
 
 	ld a, [UnlockedUnowns]
 	and a
 	jr z, .nowildbattle
 
-.done
+.unown_check_done
+	; Check if we're forcing type
+	ld [CurSpecies], a
+	push bc
+	push hl
+	call GetBaseData
+	pop hl
+	pop bc
+	ld a, [BaseType1]
+	cp c
+	jr z, .type_ok
+	ld a, [BaseType2]
+	cp c
+	jr z, .type_ok
+	inc c
+	jr nz, .get_random_mon
+
+.type_ok
 	jr .loadwildmon
 
 .nowildbattle
@@ -466,37 +513,101 @@ endr
 	db 100, $4 ; 10% chance
 ; 2a1df
 
-CheckRepelEffect:: ; 2a1df
+CheckRepelEffect::
 ; If there is no active Repel, there's no need to be here.
 	ld a, [wRepelEffect]
 	and a
 	jr z, .encounter
-; Get the first Pokemon in your party that isn't fainted.
-	ld hl, PartyMon1HP
-	ld bc, PARTYMON_STRUCT_LENGTH - 1
-.loop
-	ld a, [hli]
-	or [hl]
-	jr nz, .ok
-	add hl, bc
-	jr .loop
-
-.ok
-; to PartyMonLevel
-rept 4
-	dec hl
-endr
+	call SetBattlerLevel
 
 	ld a, [CurPartyLevel]
-	cp [hl]
-	jr nc, .encounter
-	and a
+	cp c
+.encounter
+	ccf
 	ret
 
-.encounter
-	scf
+ApplyAbilityEffectsOnEncounterMon:
+	call GetLeadAbility
+	ld hl, .AbilityEffects
+	jp BattleJumptable
+
+.AbilityEffects:
+	dbw ARENA_TRAP,   .ArenaTrap
+	dbw HUSTLE,       .Hustle
+	dbw ILLUMINATE,   .Illuminate
+	dbw INTIMIDATE,   .Intimidate
+	dbw KEEN_EYE,     .KeenEye
+	dbw MAGNET_PULL,  .MagnetPull
+	dbw NO_GUARD,     .NoGuard
+	dbw PRESSURE,     .Pressure
+	dbw QUICK_FEET,   .QuickFeet
+	dbw STATIC,       .Static
+	dbw STENCH,       .Stench
+	dbw SWARM,        .Swarm
+	dbw VITAL_SPIRIT, .VitalSpirit
+	dbw -1, -1
+
+.ArenaTrap:
+.Illuminate:
+.double_encounter_rate
+	sla b
+	jr .avoid_rate_overflow
+
+.NoGuard:
+.Swarm:
+.semidouble_encounter_rate
+	ld a, b
+	srl b
+	add b
+	ld b, a
+.avoid_rate_overflow
+	ret nc
+	ld b, $ff
 	ret
-; 2a200
+
+.QuickFeet:
+.Stench:
+.halve_encounter_rate
+	srl b
+.avoid_rate_underflow
+	ret nc
+	ld b, 1
+	ret
+
+.Hustle:
+.Pressure:
+.VitalSpirit:
+; Increase encounter rate by 50% if the foe's level exceed leading non-fainted mon
+	ld a, [CurPartyLevel]
+	cp c
+	ret c
+	ret z
+	jr .semidouble_encounter_rate
+
+.Intimidate:
+.KeenEye:
+; Halve encounter rate if enemy is 5+ levels below leading nonfainted mon
+	ld a, [CurPartyLevel]
+	add 5
+	cp c
+	ret nc
+	jr .halve_encounter_rate
+
+.MagnetPull:
+	push bc
+	ld c, STEEL
+	jr .force_wildtype
+.Static:
+	push bc
+	ld c, ELECTRIC
+.force_wildtype
+	; Force type (if we can) 50% of the time
+	call Random
+	and 1
+	ret z
+	call _ChooseWildEncounter
+	pop bc
+	ret
 
 LoadWildMonDataPointer: ; 2a200
 	call CheckOnWater

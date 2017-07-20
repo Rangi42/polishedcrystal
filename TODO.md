@@ -73,14 +73,7 @@ Route leaders:
 
 Out-of-battle effects:
 
-* Static
-* Intimidate
 * Lightning Rod
-* Magnet Pull
-* Pressure
-* Keen Eye
-* Hustle
-* Vital Spirit
 
 
 ## Move effects
