@@ -3819,6 +3819,7 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .no_crit
 
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp SNIPER
 	ld a, $94
 	jr z, .got_crit_mod

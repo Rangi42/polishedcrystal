@@ -11,7 +11,7 @@ Bank $09: $7e88 ($0178)
 Bank $0a: $7f50 ($00b0)
 Bank $0b: $7f72 ($008e)
 Bank $0c: $7a39 ($05c7)
-Bank $0d: $7d21 ($02df)
+Bank $0d: $7d24 ($02dc)
 Bank $0e: $7eab ($0155)
 Bank $0f: $7b1d ($04e3)
 Bank $10: $7f8d ($0073)
@@ -27,7 +27,7 @@ Bank $19: $7f92 ($006e)
 Bank $1a: $7adb ($0525)
 Bank $1b: $7f70 ($0090)
 Bank $1c: $7cfd ($0303)
-Bank $1d: $7de9 ($0217)
+Bank $1d: $7de0 ($0220)
 Bank $1e: $7ed7 ($0129)
 Bank $1f: $7ff3 ($000d)
 Bank $20: $7ed6 ($012a)
@@ -122,7 +122,7 @@ Bank $78: $7c51 ($03af)
 Bank $79: $7b57 ($04a9)
 Bank $7a: $7fce ($0032)
 Bank $7b: $7925 ($06db)
-Bank $7c: $7b55 ($04ab)
+Bank $7c: $7b59 ($04a7)
 Bank $7d: $7ba8 ($0458)
 Bank $7e: $7c2a ($03d6)
 Bank $7f: $7fa6 ($005a)
@@ -154,8 +154,8 @@ Bank $1a has $0525 bytes of free space
 Bank $4f has $04e8 bytes of free space
 Bank $65 has $04e7 bytes of free space
 Bank $0f has $04e3 bytes of free space
-Bank $7c has $04ab bytes of free space
 Bank $79 has $04a9 bytes of free space
+Bank $7c has $04a7 bytes of free space
 Bank $7d has $0458 bytes of free space
 Bank $45 has $0407 bytes of free space
 Bank $49 has $0404 bytes of free space
@@ -172,8 +172,8 @@ Bank $1c has $0303 bytes of free space
 Bank $54 has $02fc bytes of free space
 Bank $72 has $02f3 bytes of free space
 Bank $36 has $02e1 bytes of free space
-Bank $0d has $02df bytes of free space
 Bank $2a has $02df bytes of free space
+Bank $0d has $02dc bytes of free space
 Bank $3f has $02c6 bytes of free space
 Bank $71 has $02c4 bytes of free space
 Bank $4d has $02be bytes of free space
@@ -181,7 +181,7 @@ Bank $27 has $0299 bytes of free space
 Bank $18 has $0241 bytes of free space
 Bank $64 has $0224 bytes of free space
 Bank $6a has $0221 bytes of free space
-Bank $1d has $0217 bytes of free space
+Bank $1d has $0220 bytes of free space
 Bank $60 has $0200 bytes of free space
 Bank $6b has $0200 bytes of free space
 Bank $59 has $01ff bytes of free space
@@ -256,4 +256,4 @@ Bank $16 has $0009 bytes of free space
 Bank $07 has $0007 bytes of free space
 Bank $48 has $0000 bytes of free space
 
-Free space: 88324/2097152 (4.21%)
+Free space: 88326/2097152 (4.21%)
