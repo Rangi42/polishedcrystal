@@ -3450,7 +3450,11 @@ MareepEvosAttacks:
 	db 0 ; no more level-up moves
 
 FlaaffyEvosAttacks:
+if DEF(FAITHFUL)
 	db EVOLVE_LEVEL, 30, AMPHAROS
+else
+	db EVOLVE_LEVEL, 40, AMPHAROS
+endc
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, GROWL
@@ -3472,16 +3476,17 @@ FlaaffyEvosAttacks:
 AmpharosEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, THUNDERPUNCH ; evolution move
+	db 1, FIRE_PUNCH
+	db 1, DRAGON_PULSE
 	db 1, TACKLE
 	db 1, GROWL
 	db 4, THUNDER_WAVE
 	db 8, THUNDERSHOCK
 	db 11, SAND_ATTACK ; Cotton Spore → egg move
 	db 16, SPARK ; Charge → new move
-	db 18, HEAL_BELL ; Take Down → HGSS tutor move
-	db 22, TAKE_DOWN ; Electro Ball → Take Down
+	db 20, HEAL_BELL ; Take Down → HGSS tutor move
+	db 25, TAKE_DOWN ; Electro Ball → Take Down
 	db 29, CONFUSE_RAY
-	db 30, FIRE_PUNCH
 	db 35, POWER_GEM
 	db 40, THUNDERBOLT ; Discharge → TM move
 	db 46, SAFEGUARD ; Cotton Guard → egg move

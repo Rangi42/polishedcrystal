@@ -53,14 +53,50 @@ UnknownScript_0x9e3e0:
 	end
 
 ReceptionistScript_0x9e3e2:
-	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
-	if_equal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
+; TODO: let the player fight in Battle Tower once it's finished
+;	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
+;	if_equal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
+;	opentext
+;	writetext Text_BattleTowerWelcomesYou
+;	buttonsound
+;	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
+;	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
+;	jump Script_BattleTowerIntroductionYesNo
+	faceplayer
 	opentext
-	writetext Text_BattleTowerWelcomesYou
-	buttonsound
-	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
-	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
-	jump Script_BattleTowerIntroductionYesNo
+	writetext .NotYetImplementedText
+	waitbutton
+	checkevent EVENT_260
+	iftrue .GotFreeBP
+	writetext .FreeBPText
+	checkcode VAR_BATTLEPOINTS
+	addvar 10
+	writevarcode VAR_BATTLEPOINTS
+	setevent EVENT_260
+.GotFreeBP
+	closetext
+	end
+
+.NotYetImplementedText
+	text "I'm sorry, Battle"
+	line "Tower is not yet"
+	cont "ready."
+	done
+
+.FreeBPText
+	text "Please take these"
+	line "Battle Points as"
+	cont "compensation."
+
+	para "You can exchange"
+	line "them for useful"
+	cont "items."
+
+	para "<PLAYER> received"
+	line "10 Battle Points!@"
+	sound_item
+	text_waitbutton
+	db "@"
 
 Script_Menu_ChallengeExplanationCancel: ; 0x9e3fc
 	writetext Text_WantToGoIntoABattleRoom
