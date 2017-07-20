@@ -2425,19 +2425,19 @@ SwarmFlags:: ds 1
 wStartDay:: ds 1
 
 FruitTreeFlags:: flag_array NUM_FRUIT_TREES ; dc27
-	ds 2 ; extra space set aside
+	ds 4 ; extra space set aside
 
 NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
-	ds 2 ; extra space set aside
+	ds 4 ; extra space set aside
 
 wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
 wBugContestStartTime:: ds 4 ; day, hour, min, sec ; dc35
-wUnusedTwoDayTimerOn:: ds 3 ; unused
 wLastPocket:: ds 1
-	ds 8
 wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
+	ds 3
+
 wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4
 wDailyPhoneTimeOfDayFlags:: ds 4
@@ -2454,7 +2454,7 @@ PoisonStepCount:: ; dc74
 	ds 1
 
 wPhoneList:: ds CONTACT_LIST_SIZE ; dc7c
-	ds 20 ; extra space set aside
+	ds 24 ; extra space set aside
 
 wHappinessStepCount:: ds 1
 
@@ -2476,7 +2476,7 @@ wMapData::
 
 VisitedSpawns:: ; dca5
 	flag_array NUM_SPAWNS
-	ds 2 ; extra space set aside
+	ds 4 ; extra space set aside
 
 wDigWarp:: ds 1 ; dcaa
 wDigMapGroup:: ds 1 ; dcab
@@ -2489,8 +2489,6 @@ BackupMapGroup:: ; dcae
 	ds 1
 BackupMapNumber:: ; dcaf
 	ds 1
-
-	ds 2
 
 wLastSpawnMapGroup:: ds 1
 wLastSpawnMapNumber:: ds 1
