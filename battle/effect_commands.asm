@@ -3129,25 +3129,18 @@ if !DEF(FAITHFUL)
 	call HailDefenseBoost
 endc
 
+	ld hl, BattleMonAttack
 	ld a, [EnemyAbility]
 	cp INFILTRATOR
-	jr z, .physicalcrit
+	jr z, .thickcluborlightball
 	ld a, [EnemyScreens]
 	bit SCREENS_REFLECT, a
-	jr z, .physicalcrit
+	jr z, .thickcluborlightball
+	ld a, [CriticalHit]
+	and a
+	jr nz, .thickcluborlightball
 	sla c
 	rl b
-
-.physicalcrit
-	ld hl, BattleMonAttack
-	call GetDamageStatsCritical
-	jr c, .thickcluborlightball
-
-	ld hl, EnemyDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, PlayerAttack
 	jr .thickcluborlightball
 
 .special
@@ -3172,25 +3165,18 @@ endc
 	ld c, [hl]
 
 .lightscreen
+	ld hl, BattleMonSpclAtk
 	ld a, [EnemyAbility]
 	cp INFILTRATOR
-	jr z, .specialcrit
+	jr z, .lightball
 	ld a, [EnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
-	jr z, .specialcrit
+	jr z, .lightball
+	ld a, [CriticalHit]
+	and a
+	jr nz, .lightball
 	sla c
 	rl b
-
-.specialcrit
-	ld hl, BattleMonSpclAtk
-	call GetDamageStatsCritical
-	jr c, .lightball
-
-	ld hl, EnemySpDef
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, PlayerSpAtk
 
 .lightball
 ; Note: Returns player special attack at hl in hl.
@@ -3243,25 +3229,18 @@ if !DEF(FAITHFUL)
 	call HailDefenseBoost
 endc
 
+	ld hl, EnemyMonAttack
 	ld a, [PlayerAbility]
 	cp INFILTRATOR
-	jr z, .physicalcrit
+	jr z, .thickcluborlightball
 	ld a, [PlayerScreens]
 	bit SCREENS_REFLECT, a
-	jr z, .physicalcrit
+	jr z, .thickcluborlightball
+	ld a, [CriticalHit]
+	and a
+	jr nz, .thickcluborlightball
 	sla c
 	rl b
-
-.physicalcrit
-	ld hl, EnemyMonAttack
-	call GetDamageStatsCritical
-	jr c, .thickcluborlightball
-
-	ld hl, PlayerDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, EnemyStats
 	jr .thickcluborlightball
 
 .special
@@ -3277,7 +3256,7 @@ endc
 
 	call SandstormSpDefBoost
 
-	jp .lightscreen
+	jr .lightscreen
 
 .psystrike
 	ld hl, BattleMonDefense
@@ -3286,25 +3265,18 @@ endc
 	ld c, [hl]
 
 .lightscreen
+	ld hl, EnemyMonSpclAtk
 	ld a, [PlayerAbility]
 	cp INFILTRATOR
-	jr z, .specialcrit
+	jr z, .lightball
 	ld a, [PlayerScreens]
 	bit SCREENS_LIGHT_SCREEN, a
-	jr z, .specialcrit
+	jr z, .lightball
+	ld a, [CriticalHit]
+	and a
+	jr nz, .lightball
 	sla c
 	rl b
-
-.specialcrit
-	ld hl, EnemyMonSpclAtk
-	call GetDamageStatsCritical
-	jr c, .lightball
-
-	ld hl, PlayerSpDef
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	ld hl, EnemySpAtk
 
 .lightball
 ; Note: Returns enemy special attack at hl in hl.
@@ -3374,64 +3346,6 @@ TruncateHL_BC: ; 3534d
 .done
 	ld b, l
 	ret
-
-; 35378
-
-
-GetDamageStatsCritical: ; 35378
-; Return carry if non-critical.
-
-	ld a, [CriticalHit]
-	and a
-	scf
-	ret z
-
-	; fallthrough
-; 3537e
-
-
-GetDamageStats: ; 3537e
-; Return the attacker's offensive stat and the defender's defensive
-; stat based on whether the attacking type is physical or special.
-
-	push hl
-	push bc
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy
-	ld a, [wPlayerMoveStructCategory]
-	cp SPECIAL
-; special
-	ld a, [PlayerSAtkLevel]
-	ld b, a
-	ld a, [EnemySDefLevel]
-	jr nc, .end
-; physical
-	ld a, [PlayerAtkLevel]
-	ld b, a
-	ld a, [EnemyDefLevel]
-	jr .end
-
-.enemy
-	ld a, [wEnemyMoveStructCategory]
-	cp SPECIAL
-; special
-	ld a, [EnemySAtkLevel]
-	ld b, a
-	ld a, [PlayerSDefLevel]
-	jr nc, .end
-; physical
-	ld a, [EnemyAtkLevel]
-	ld b, a
-	ld a, [PlayerDefLevel]
-.end
-	cp b
-	pop bc
-	pop hl
-	ret
-
-; 353b5
-
 
 ThickClubOrLightBallBoost: ; 353b5
 ; Return in hl the stat value at hl.
