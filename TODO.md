@@ -69,13 +69,6 @@ Route leaders:
 * Route 46: Dragon Tamer, gives Focus Sash
 
 
-## Abilities
-
-Out-of-battle effects:
-
-* Lightning Rod
-
-
 ## Move effects
 
 * Low Kick's power is based on weight

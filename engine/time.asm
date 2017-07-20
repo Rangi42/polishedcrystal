@@ -77,18 +77,30 @@ RestartReceiveCallDelay: ; 1142e
 	jp CopyDayHourMinToHL
 ; 1143c
 
-CheckReceiveCallDelay: ; 1143c
+CheckReceiveCallDelay:
 	ld hl, wReceiveCallDelay_StartTime
 	call CalcMinsHoursDaysSince
 	call GetMinutesSinceIfLessThan60
+
+	; Double effective time if lead mon has Lightning Rod, which boosts call rate
+	push af
+	call GetLeadAbility
+	cp LIGHTNING_ROD
+	jr nz, .not_lightning_rod
+	pop af
+	add a
+	jr nc, .ok
+	ld a, -1
+	jr .ok
+.not_lightning_rod
+	pop af
+.ok
 	ld hl, wReceiveCallDelay_MinsRemaining
 	jp UpdateTimeRemaining
-; 1144c
 
-RestartDailyResetTimer: ; 1144c
+RestartDailyResetTimer:
 	ld hl, wDailyResetTimer
 	jp InitOneDayCountdown
-; 11452
 
 CheckDailyResetTimer:: ; 11452
 	ld hl, wDailyResetTimer
