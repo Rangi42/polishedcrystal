@@ -5825,29 +5825,7 @@ BattleCommand_StatDown: ; 362e3
 	call CheckHiddenOpponent
 	jr nz, .Failed
 
-; Speed/Accuracy/Evasion reduction don't involve stats.
-; TODO: make attack/defense stat changes not mess with stats either
 	ld [hl], b
-	ld a, c
-	cp ACCURACY
-	jr nc, .Hit
-	cp SPEED
-	jr z, .Hit
-
-	push hl
-	ld hl, EnemyMonStats + 1
-	ld de, EnemyStats
-	ld a, [hBattleTurn]
-	and a
-	jr z, .do_enemy
-	ld hl, BattleMonStats + 1
-	ld de, PlayerStats
-.do_enemy
-	call TryLowerStat
-	pop hl
-	jr z, .CouldntLower
-
-.Hit:
 	xor a
 	ld [FailedMessage], a
 	ret
@@ -5935,10 +5913,7 @@ BattleCommand_StatUpMessage: ; 363b8
 	text_jump UnknownText_0x1c0ce0
 	db "@"
 
-; 363e9
-
-
-BattleCommand_StatDownMessage: ; 363e9
+BattleCommand_StatDownMessage:
 	ld a, [FailedMessage]
 	and a
 	ret nz
@@ -5969,55 +5944,6 @@ BattleCommand_StatDownMessage: ; 363e9
 .fell
 	text_jump UnknownText_0x1c0d06
 	db "@"
-
-; 3641a
-
-
-TryLowerStat: ; 3641a
-; Lower stat c from stat struct hl (buffer de).
-
-	push bc
-	sla c
-	ld b, 0
-	add hl, bc
-	; add de, c
-	ld a, c
-	add e
-	ld e, a
-	jr nc, .no_carry
-	inc d
-.no_carry
-	pop bc
-
-; The lowest possible stat is 1.
-	ld a, [hld]
-	sub 1
-	jr nz, .not_min
-	ld a, [hl]
-	and a
-	ret z
-
-.not_min
-	ld a, [hBattleTurn]
-	and a
-	jr z, .Player
-
-	call SwitchTurn
-	call CalcPlayerStats
-	call SwitchTurn
-	jr .end
-
-.Player:
-	call SwitchTurn
-	call CalcEnemyStats
-	call SwitchTurn
-.end
-	ld a, 1
-	and a
-	ret
-
-; 3644c
-
 
 BattleCommand_StatUpFailText: ; 3644c
 ; statupfailtext
@@ -6175,37 +6101,6 @@ LowerStat:: ; 36532
 
 .got_num_stages
 	ld [hl], b
-	ld a, c
-	cp 5
-	jr nc, .accuracy_evasion
-
-	push hl
-	ld hl, BattleMonStats + 1
-	ld de, PlayerStats
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_target_2
-	ld hl, EnemyMonStats + 1
-	ld de, EnemyStats
-
-.got_target_2
-	call TryLowerStat
-	pop hl
-	jr z, .failed
-
-.accuracy_evasion
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player
-
-	call CalcEnemyStats
-
-	jr .finish
-
-.player
-	call CalcPlayerStats
-
-.finish
 	xor a
 	ld [FailedMessage], a
 	ret
@@ -6330,19 +6225,6 @@ BattleCommand_LowerSubNoAnim: ; 365c3
 	ld [hBGMapMode], a
 	call CallBattleCore
 	jp WaitBGMap
-
-CalcPlayerStats:
-	ld hl, PlayerStats
-	ld de, BattleMonAttack
-	jr CalcStats
-CalcEnemyStats:
-	ld hl, EnemyStats
-	ld de, EnemyMonAttack
-CalcStats:
-; Used to handle stat changes, but now only ensures that *MonAttack has the right content
-	ld bc, 10
-	jp CopyBytes
-
 
 BattleCommand_CheckRampage: ; 3671a
 ; checkrampage
@@ -7778,17 +7660,6 @@ BattleCommand_ResetStats: ; 3710e
 	ld hl, EnemyStatLevels
 	call .Fill
 
-	ld a, [hBattleTurn]
-	push af
-
-	call SetPlayerTurn
-	call CalcPlayerStats
-	call SetEnemyTurn
-	call CalcEnemyStats
-
-	pop af
-	ld [hBattleTurn], a
-
 	call AnimateCurrentMove
 
 	ld hl, EliminatedStatsText
@@ -8643,8 +8514,6 @@ DoEnemyBatonPass:
 	call CallBattleCore
 	ld a, 1
 	ld [wTypeMatchup], a
-	ld hl, ApplyStatLevelMultiplierOnAllStats
-	call CallBattleCore
 
 	ld hl, SpikesDamage
 	call CallBattleCore

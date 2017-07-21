@@ -508,20 +508,7 @@ BattleScriptBufferLoc:: ; c6b2
 wTurnEnded:: ds 1 ; c6b4
 	ds 1
 
-PlayerStats:: ; c6b6
-PlayerAttack:: ds 2
-PlayerDefense:: ds 2
-PlayerSpeed:: ds 2
-PlayerSpAtk:: ds 2
-PlayerSpDef:: ds 2
-	ds 1
-EnemyStats:: ; c6c1
-EnemyAttack:: ds 2
-EnemyDefense:: ds 2
-EnemySpeed:: ds 2
-EnemySpAtk:: ds 2
-EnemySpDef:: ds 2
-	ds 1
+	ds 12 ; unused
 
 PlayerStatLevels:: ; c6cc
 ; 07 neutral

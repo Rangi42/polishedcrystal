@@ -113,10 +113,6 @@ BattleCommand_Transform: ; 371cd
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
-	ld hl, EnemyStats
-	ld de, PlayerStats
-	ld bc, 2 * 5
-	call BattleSideCopy
 	ld hl, EnemyStatLevels
 	ld de, PlayerStatLevels
 	ld bc, 8
