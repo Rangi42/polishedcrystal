@@ -65,7 +65,7 @@ Gen2ToGen2LinkComms: ; 28177
 	call DelayFrames
 	xor a
 	ld [rIF], a
-	ld a, %00011
+	ld a, %01000
 	ld [rIE], a
 	ld hl, wd1f3
 	ld de, EnemyMonSpecies
