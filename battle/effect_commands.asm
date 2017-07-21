@@ -2789,7 +2789,12 @@ BattleCommand_PostFaintEffects:
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_TRIPLE_KICK
+	jr z, .multiple_hit_raise_sub
+	cp EFFECT_SWITCH_HIT
 	jr nz, .finish
+	call HasUserFainted
+	call nz, BattleCommand_SwitchOut
+	jr .finish
 
 .multiple_hit_raise_sub
 	call BattleCommand_RaiseSub
@@ -8436,11 +8441,27 @@ BattleCommand_SwitchOut:
 	call CheckAnyOtherAliveMons
 	ret z
 	call UpdateUserInParty
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleText_WentBackToPlayer
+	jr z, .got_text
+	ld hl, BattleText_WentBackToEnemy
+.got_text
+	call StdBattleTextBox
 	farcall SlideUserPicOut
+	ld c, 20
+	call DelayFrames
+	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
+	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
+	call ClearBox
 
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy
+
+	hlcoord 9, 7
+	lb bc, 5, 11
+	call ClearBox
 
 	; Piggyback on Baton Pass routines
 	call DoPlayerBatonPass
