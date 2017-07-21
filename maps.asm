@@ -488,7 +488,6 @@ INCLUDE "maps/OlivineCity.asm"
 INCLUDE "maps/VermilionCity.asm"
 INCLUDE "maps/Route9.asm"
 INCLUDE "maps/Route14.asm"
-INCLUDE "maps/Route22.asm"
 INCLUDE "maps/Route15.asm"
 INCLUDE "maps/Route33.asm"
 INCLUDE "maps/Route37.asm"
@@ -596,6 +595,7 @@ SECTION "Map Scripts 27", ROMX, BANK[MAP_SCRIPTS_27]
 INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/FightingDojo.asm"
 INCLUDE "maps/CherrygroveBay.asm"
+INCLUDE "maps/Route22.asm"
 
 
 SECTION "Map Scripts 28", ROMX, BANK[MAP_SCRIPTS_28]
@@ -786,7 +786,7 @@ INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/IvysLab.asm"
 
 
-SECTION "Map Scripts 43", ROMX
+SECTION "Map Scripts 43", ROMX, BANK[$5]
 
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"

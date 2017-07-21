@@ -1,9 +1,6 @@
 ; Save/Restore Music code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/misc/restoremusic.asm
 
-
-SECTION "restore_music", ROMX
-
 SaveMusic::
 	; back up old music state
 	push hl

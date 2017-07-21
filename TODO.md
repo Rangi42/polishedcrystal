@@ -3,9 +3,16 @@
 The final, non-beta 3.0 release should include all of these.
 
 
-### Mechanics
+### General
 
 * Search for "TODO" in the code and finish it
+* Fix bugs, including everything on the [Issues](/issues)
+* Give NPCs better teams, using the new held items
+* Adjust the difficulty curve as needed
+
+
+### Mechanics
+
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
@@ -46,12 +53,14 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Saffron City Trainer Fan Club
 * Valencia Island
 * Route 49
+* Safari Zone rest houses
 
 Shamouti Island:
 
 * Shamouti Island (outdoor market instead of Mart) (MART_SHAMOUTI_1 and MART_SHAMOUTI_2)
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
+* Beautiful Beach villa (needs a larger map, maybe with the mansion tileset)
 
 Route leaders: (see [material/route-leaders.txt](material/route-leaders.txt))
 

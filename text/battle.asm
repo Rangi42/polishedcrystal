@@ -1917,6 +1917,11 @@ ValerieFinalPkmnText:
 	text "Oh my…"
 	prompt
 
+KukuiFinalPkmnText:
+	text "My soul burns hot,"
+	line "yeah!"
+	prompt
+
 BillFinalPkmnText:
 	text "Yeehah!"
 	line "What a battle!"

@@ -1286,7 +1286,7 @@ Group23Sprites:
 	db SPRITE_LADY
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	db SPRITE_COOLTRAINER_M ; doesn't walk
+	db SPRITE_KUKUI ; doesn't walk
 	db SPRITE_COOLTRAINER_F ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT

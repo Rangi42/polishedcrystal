@@ -47,6 +47,8 @@ PushOAM: ; 403f
 	ret
 PushOAMEnd
 
+INCLUDE "home/restore_music.asm"
+
 INCLUDE "engine/map_objects.asm"
 
 INCLUDE "engine/intro_menu.asm"
@@ -1049,7 +1051,7 @@ Kurt_SelectQuantity_InterpretJoypad: ; 27a28
 	ld b, a
 	ret
 
-SECTION "Wild Data", ROMX
+SECTION "Wild Data", ROMX, BANK[$6E]
 
 INCLUDE "engine/wildmons.asm"
 
@@ -1417,14 +1419,6 @@ FindFirstAliveMonAndStartBattle: ; 2ee2f
 	ld [hMapAnims], a
 	ret
 
-
-PUSHS
-
-INCLUDE "home/restore_music.asm"
-
-POPS
-
-
 PlayBattleMusic: ; 2ee6c
 
 	push hl
@@ -1739,7 +1733,7 @@ SECTION "Effect Commands", ROMX, BANK[$D]
 
 INCLUDE "battle/effect_commands.asm"
 
-SECTION "Enemy Trainers", ROMX
+SECTION "Enemy Trainers", ROMX, BANK[$73]
 
 INCLUDE "battle/ai/items.asm"
 
@@ -1829,15 +1823,15 @@ SECTION "Battle Core", ROMX, BANK[$F]
 
 INCLUDE "battle/core.asm"
 
-SECTION "Effect Command Pointers", ROMX
+SECTION "Effect Command Pointers", ROMX, BANK[$1]
 
 INCLUDE "battle/effect_command_pointers.asm"
 
-SECTION "Pokedex", ROMX
+SECTION "Pokedex", ROMX, BANK[$70]
 
 INCLUDE "engine/pokedex.asm"
 
-SECTION "Moves", ROMX
+SECTION "Moves", ROMX, BANK[$1C]
 
 INCLUDE "battle/moves/moves.asm"
 
@@ -5207,7 +5201,7 @@ endr
 	dw MayleneFinalPkmnText
 	dw SkylaFinalPkmnText
 	dw ValerieFinalPkmnText
-	dw NULL ; Kukui
+	dw KukuiFinalPkmnText ; Kukui
 	dw NULL ; Victor
 	dw BillFinalPkmnText
 	dw YellowFinalPkmnText
@@ -5433,15 +5427,15 @@ SECTION "sprites_2", ROMX, BANK[$31]
 
 INCLUDE "gfx/overworld/sprites_2.asm"
 
-SECTION "sprites_3", ROMX
+SECTION "sprites_3", ROMX, BANK[$75]
 
 INCLUDE "gfx/overworld/sprites_3.asm"
 
-SECTION "sprites_4", ROMX
+SECTION "sprites_4", ROMX, BANK[$22]
 
 INCLUDE "gfx/overworld/sprites_4.asm"
 
-SECTION "sprites_5", ROMX
+SECTION "sprites_5", ROMX, BANK[$23]
 
 INCLUDE "gfx/overworld/sprites_5.asm"
 
@@ -5484,7 +5478,7 @@ endc
 TheEndGFX:: ; cbd2e
 INCBIN "gfx/credits/theend.2bpp"
 
-SECTION "Substitute and Ghost", ROMX
+SECTION "Substitute and Ghost", ROMX, BANK[$6]
 
 SubstituteFrontpic: INCBIN "gfx/battle/substitute-front.2bpp.lz"
 SubstituteBackpic:  INCBIN "gfx/battle/substitute-back.2bpp.lz"
@@ -5632,7 +5626,7 @@ INCLUDE "gfx/pics/variant_anims.asm"
 INCLUDE "gfx/pics/variant_extra_pointers.asm"
 INCLUDE "gfx/pics/variant_extras.asm"
 
-SECTION "Pic Animations 4", ROMX
+SECTION "Pic Animations 4", ROMX, BANK[$29]
 
 ; Bitmasks
 INCLUDE "gfx/pics/bitmask_pointers.asm"
@@ -6239,10 +6233,10 @@ INCLUDE "data/odd_eggs.asm"
 
 SECTION "bank7F", ROMX, BANK[$7F]
 
+SECTION "Fainting Cry", ROMX, BANK[$1]
+
 ; Low-pitched fainting cry routine from Pokémon TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
-SECTION "Fainting Cry", ROMX
-
 PlayFaintingCry:
 ; b contains species index
 	ld a, b
@@ -6273,6 +6267,6 @@ PlayFaintingCry:
 	farcall _PlayCryHeader
 	jp WaitSFX
 
-SECTION "Move Reminder", ROMX
+SECTION "Move Reminder", ROMX, BANK[$8]
 
 INCLUDE "event/move_reminder.asm"

@@ -19,7 +19,7 @@
 ; * "9" cannot be used in nicknames
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
-; TODO: swap ABILITY_1 and ABILITy_2 in base data as need so that ABILITY_1 is the better one for default NPCs
+; TODO: swap ABILITY_1 and ABILITy_2 in base data as need so that ABILITY_1 is the better one for default NPCs (e.g. NPCs should have Sturdy when possible)
 
 
 SECTION "Enemy Trainer Parties 1", ROMX, BANK[$E]
@@ -237,7 +237,7 @@ BugsyGroup:
 		db DOUBLE_TEAM
 		db SONIC_BOOM
 
-	db 17, SCYTHER, SITRUS_BERRY, 32, ABILITY_1 | QUIRKY, FEMALE
+	db 17, SCYTHER, METRONOME, 32, ABILITY_1 | QUIRKY, FEMALE
 		db QUICK_ATTACK
 		db LEER
 		db PURSUIT
@@ -413,7 +413,7 @@ MortyGroup:
 		db NASTY_PLOT
 		db SHADOW_BALL
 
-	db 26, GENGAR, SITRUS_BERRY, 64, ABILITY_2 | QUIRKY, MALE ; Levitate
+	db 26, GENGAR, WIDE_LENS, 64, ABILITY_2 | QUIRKY, MALE ; Levitate
 		db HYPNOSIS
 		db THUNDERBOLT
 		db SHADOW_BALL
@@ -507,7 +507,7 @@ endc
 		db TRIPLE_KICK
 		db RAPID_SPIN
 
-	db 31, POLIWRATH, SITRUS_BERRY, 80
+	db 31, POLIWRATH, ZOOM_LENS, 80
 		db ICE_PUNCH
 		db HYPNOSIS
 		db WATERFALL
@@ -599,7 +599,7 @@ JasmineGroup:
 		db METAL_CLAW
 		db SLASH
 
-	db 37, STEELIX, SITRUS_BERRY, 96
+	db 37, STEELIX, LEFTOVERS, 96
 		db BODY_SLAM
 		db SCREECH
 		db ROCK_SLIDE
@@ -803,7 +803,7 @@ endc
 		db ICE_BEAM
 		db DRAGONBREATH
 
-	db 47, KINGDRA, SITRUS_BERRY, 128, ABILITY_2 | QUIRKY, FEMALE ; Sniper
+	db 47, KINGDRA, SHELL_BELL, 128, ABILITY_2 | QUIRKY, FEMALE ; Sniper
 		db SMOKESCREEN
 		db HYPER_BEAM
 		db DRAGON_PULSE
@@ -13558,7 +13558,7 @@ CooltrainerMGroup:
 ; ================================
 
 
-SECTION "Enemy Trainer Parties 2", ROMX
+SECTION "Enemy Trainer Parties 2", ROMX, BANK[$74]
 
 
 CooltrainerFGroup:
@@ -16264,16 +16264,33 @@ KukuiGroup:
 
 	; KUKUI
 	db "Kukui@"
+	db TRAINERTYPE_EVS
+
+	; party
+	; TODO: movesets, etc
+	db 67, GRANBULL, 244
+	db 65, NINETALES, 244
+	db 66, MAGNEZONE, 244
+	db 66, SNORLAX, 244
+	db 65, HONCHKROW, 244
+	db 68, POLIWRATH, 244
+
+	db $ff ; end
+
+; ================
+
+	; KUKUI
+	db "Kukui@"
 	db TRAINERTYPE_NORMAL
 
 	; party
 	; TODO: movesets, etc
-	db 67, GRANBULL
-	db 65, NINETALES
-	db 66, MAGNEZONE
-	db 66, SNORLAX
-	db 65, HONCHKROW
-	db 68, POLIWRATH
+	db 74, GRANBULL
+	db 72, NINETALES
+	db 73, MAGNEZONE
+	db 73, SNORLAX
+	db 72, HONCHKROW
+	db 75, POLIWRATH
 
 	db $ff ; end
 
