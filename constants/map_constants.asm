@@ -648,7 +648,7 @@ MAP_NONE   EQU 0
 	mapgroup SHAMOUTI_TOURIST_CENTER,                     4,  4 ; 17
 	mapgroup SHAMOUTI_MERCHANT,                           4,  4 ; 18
 	mapgroup SHAMOUTI_HOUSE,                              4,  4 ; 19
-	mapgroup BEAUTIFUL_BEACH_VILLA,                       4,  4 ; 20
+	mapgroup BEAUTIFUL_BEACH_VILLA,                       4,  5 ; 20
 	mapgroup WARM_BEACH_SHACK,                            4,  4 ; 21
 	mapgroup WARM_BEACH_HOUSE,                            4,  4 ; 22
 	mapgroup ROCKY_BEACH_HOUSE,                           4,  4 ; 23

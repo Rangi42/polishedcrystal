@@ -377,8 +377,8 @@ INCLUDE "maps/MahoganyTown.asm"
 
 SECTION "Map Scripts 16", ROMX, BANK[MAP_SCRIPTS_16]
 
-INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/VermilionPokeCenter1F.asm"
+INCLUDE "maps/AzaleaMart.asm"
 INCLUDE "maps/PokeCenter2F.asm"
 INCLUDE "maps/Route32.asm"
 INCLUDE "maps/VermilionHouseFishingSpeechHouse.asm"
@@ -759,8 +759,19 @@ INCLUDE "maps/NoisyForest.asm"
 
 SECTION "Map Scripts 41", ROMX, BANK[MAP_SCRIPTS_41]
 
-INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/ShamoutiPokeCenter1F.asm"
+INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
+INCLUDE "maps/ShamoutiTouristCenter.asm"
+INCLUDE "maps/ShamoutiMerchant.asm"
+INCLUDE "maps/ShamoutiHouse.asm"
+INCLUDE "maps/BeautifulBeachVilla.asm"
+INCLUDE "maps/WarmBeachShack.asm"
+INCLUDE "maps/WarmBeachHouse.asm"
+INCLUDE "maps/RockyBeachHouse.asm"
+
+
+SECTION "Map Scripts 42", ROMX, BANK[MAP_SCRIPTS_42]
+
 INCLUDE "maps/ShamoutiHotel1F.asm"
 INCLUDE "maps/ShamoutiHotel2F.asm"
 INCLUDE "maps/ShamoutiHotel3F.asm"
@@ -769,24 +780,17 @@ INCLUDE "maps/ShamoutiHotelRoom2B.asm"
 INCLUDE "maps/ShamoutiHotelRoom3B.asm"
 INCLUDE "maps/ShamoutiHotelRoom3C.asm"
 INCLUDE "maps/ShamoutiHotelRestaurant.asm"
-INCLUDE "maps/ShamoutiTouristCenter.asm"
-INCLUDE "maps/ShamoutiMerchant.asm"
-INCLUDE "maps/ShamoutiHouse.asm"
-INCLUDE "maps/BeautifulBeachVilla.asm"
-INCLUDE "maps/WarmBeachShack.asm"
-INCLUDE "maps/WarmBeachHouse.asm"
-INCLUDE "maps/RockyBeachHouse.asm"
+
+
+SECTION "Map Scripts 43", ROMX, BANK[MAP_SCRIPTS_43]
+
 INCLUDE "maps/ValenciaIsland.asm"
 INCLUDE "maps/ValenciaPort.asm"
-
-
-SECTION "Map Scripts 42", ROMX, BANK[MAP_SCRIPTS_42]
-
 INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/IvysLab.asm"
 
 
-SECTION "Map Scripts 43", ROMX, BANK[$5]
+SECTION "Map Scripts 44", ROMX, BANK[MAP_SCRIPTS_44]
 
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"

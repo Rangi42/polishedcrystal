@@ -32,13 +32,11 @@ The final, non-beta 3.0 release should include all of these.
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine and Bill somehow
-* Battle Kukui on Route 22 (rematchable like Flannery, Maylene, Skyla, and Valerie) (EVENT_BEAT_KUKUI)
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 
 Shamouti Island:
 
 * Caitlin and Darach in Beautiful Beach villa (EVENT_BEAT_DARACH and EVENT_BEAT_CAITLIN)
-* Body Slam tutor in Warm Beach house (EVENT_LISTENED_TO_BODY_SLAM_INTRO)
 * Trendy phrase guy in hotel lobby (ENGINE_CHANGED_TRENDY_PHRASE)
 * Looker in hotel room (not S.S. Aqua)
 * Sightseer in hotel mentions that Bottle Caps can be used for Hyper Training in Alola

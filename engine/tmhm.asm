@@ -123,7 +123,7 @@ TMHMMoves: ; 1167a
 	db WHIRLPOOL    ; HM05 (Route 42)
 	db WATERFALL    ; HM06 (Ice Path)
 	db AQUA_TAIL    ; MT01 (Route 4)
-	db BODY_SLAM    ; MT02 (TODO: Warm Beach)
+	db BODY_SLAM    ; MT02 (Warm Beach)
 	db COUNTER      ; MT03 (Celadon Dept. Store)
 	db DEFENSE_CURL ; MT04 (Mt. Mortar)
 	db DOUBLE_EDGE  ; MT05 (Safari Zone)
