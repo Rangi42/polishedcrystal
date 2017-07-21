@@ -63,7 +63,6 @@ INCLUDE "maps/GoldenrodDeptStoreRoof.asm"
 INCLUDE "maps/GoldenrodHPUpHouse.asm"
 INCLUDE "maps/GoldenrodNetBallHouse.asm"
 INCLUDE "maps/GoldenrodBandHouse.asm"
-INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
 SECTION "Map Scripts 2", ROMX, BANK[MAP_SCRIPTS_2]
@@ -105,6 +104,7 @@ INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 INCLUDE "maps/VioletNicknameSpeechHouse.asm"
+INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
 SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
