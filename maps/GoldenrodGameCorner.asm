@@ -28,7 +28,42 @@ GoldenrodGameCornerPokefanM3Script:
 	end
 
 GoldenrodGameCornerFisherScript:
-	jumptextfaceplayer GoldenrodGameCornerFisherText
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_PAY_DAY_INTRO
+	iftrue GoldenrodGameCornerTutorPayDayScript
+	writetext GoldenrodGameCornerFisherText
+	waitbutton
+	setevent EVENT_LISTENED_TO_PAY_DAY_INTRO
+GoldenrodGameCornerTutorPayDayScript:
+	writetext Text_GoldenrodGameCornerTutorPayDayQuestion
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	yesorno
+	iffalse .TutorRefused
+	writebyte PAY_DAY
+	writetext Text_GoldenrodGameCornerTutorClear
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	writetext Text_GoldenrodGameCornerTutorRefused
+	waitbutton
+	closetext
+	end
+
+.NoSilverLeaf
+	waitbutton
+	writetext Text_GoldenrodGameCornerTutorNoSilverLeaf
+	waitbutton
+	closetext
+	end
+
+.TeachMove
+	takeitem SILVER_LEAF
+	writetext Text_GoldenrodGameCornerTutorTaught
+	waitbutton
+	closetext
+	end
 
 GoldenrodGameCornerCoinVendorScript:
 	jumpstd gamecornercoinvendor
@@ -128,7 +163,6 @@ GoldenrodGameCornerPrizeVendor_NoCoinCaseScript:
 	closetext
 	end
 
-
 GoldenrodGameCornerTMVendorMenuData:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -143,7 +177,6 @@ GoldenrodGameCornerTMVendorMenuData:
 	db "TM24    4000@"
 	db "TM13    4000@"
 	db "Cancel@"
-
 
 GoldenrodGameCornerPrizeMonVendorScript:
 	faceplayer
@@ -217,7 +250,6 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	takecoins 1500
 	jump .loop
 
-
 .MenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -232,7 +264,6 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	db "Cubone      800@"
 	db "Clefairy   1500@"
 	db "Cancel@"
-
 
 GoldenrodGameCornerPharmacistScript:
 	faceplayer
@@ -359,6 +390,46 @@ GoldenrodGameCornerPrizeVendorNoCoinCaseText:
 	line "a Coin Case."
 	done
 
+GoldenrodGameCornerFisherText:
+	text "Today's my pay day!"
+	line "Time to celebrate"
+	cont "with some slots!"
+
+	para "…You know, #mon"
+	line "get a Pay Day too."
+	done
+
+Text_GoldenrodGameCornerTutorPayDayQuestion:
+	text "If you give me a"
+	line "Silver Leaf, I'll"
+
+	para "teach Pay Day to"
+	line "your #mon."
+	done
+
+Text_GoldenrodGameCornerTutorNoSilverLeaf:
+	text "You don't have a"
+	line "Silver Leaf?"
+	cont "Never mind then."
+	done
+
+Text_GoldenrodGameCornerTutorRefused:
+	text "Never mind then."
+	done
+
+Text_GoldenrodGameCornerTutorClear:
+	text ""
+	done
+
+Text_GoldenrodGameCornerTutorTaught:
+	text "Pay Day nets you"
+	line "more money after a"
+	cont "battle."
+
+	para "Keep using it and"
+	line "you'll be rich!"
+	done
+
 GoldenrodGameCornerPharmacistText:
 	text "I always play this"
 	line "slot machine. It"
@@ -428,15 +499,6 @@ GoldenrodGameCornerPokefanM2Text:
 GoldenrodGameCornerPokefanM3Text:
 	text "Wahahah! The coins"
 	line "keep rolling in!"
-	done
-
-GoldenrodGameCornerFisherText:
-	text "What do you call a"
-	line "Pikachu that plays"
-	cont "cards?"
-
-	para "A Poker-mon!"
-	line "Haha! Get it?"
 	done
 
 GoldenrodGameCornerLeftTheirDrinkText:

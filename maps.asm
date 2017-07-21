@@ -63,7 +63,6 @@ INCLUDE "maps/GoldenrodDeptStoreRoof.asm"
 INCLUDE "maps/GoldenrodHPUpHouse.asm"
 INCLUDE "maps/GoldenrodNetBallHouse.asm"
 INCLUDE "maps/GoldenrodBandHouse.asm"
-INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
 SECTION "Map Scripts 2", ROMX, BANK[MAP_SCRIPTS_2]
@@ -105,6 +104,7 @@ INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 INCLUDE "maps/VioletNicknameSpeechHouse.asm"
+INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
 SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
@@ -524,7 +524,6 @@ INCLUDE "maps/SeafoamIslandsB3F.asm"
 INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
 INCLUDE "maps/Route48.asm"
-INCLUDE "maps/PalletTown.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
@@ -554,6 +553,7 @@ INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
 INCLUDE "maps/Route27RestHouse.asm"
 INCLUDE "maps/LavenderTown.asm"
+INCLUDE "maps/PalletTown.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]
