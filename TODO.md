@@ -23,15 +23,8 @@ The final, non-beta 3.0 release should include all of these.
 ### Events
 
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
-* Shamouti hotel restaurant needs NPCs to battle that change every day
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
-
-
-### Characters
-
-* Battle Elm to get S.S. Ticket (EVENT_BEAT_PROF_ELM)
 * Rematch Eusine and Bill somehow
-* Battle Ivy on Valencia Island (EVENT_BEAT_PROF_IVY)
 * Battle Kukui on Route 22 (rematchable like Flannery, Maylene, Skyla, and Valerie) (EVENT_BEAT_KUKUI)
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 
@@ -58,7 +51,7 @@ Shamouti Island:
 
 * Shamouti Island (outdoor market instead of Mart) (MART_SHAMOUTI_1 and MART_SHAMOUTI_2)
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
-* Shamouti Restaurant (works like Seven Stars Restaurant)
+* Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 Route leaders: (see [material/route-leaders.txt](material/route-leaders.txt))
 

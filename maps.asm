@@ -784,6 +784,10 @@ SECTION "Map Scripts 42", ROMX, BANK[MAP_SCRIPTS_42]
 
 INCLUDE "maps/IvysHouse.asm"
 INCLUDE "maps/IvysLab.asm"
+
+
+SECTION "Map Scripts 43", ROMX
+
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/ViridianForest.asm"

@@ -1390,11 +1390,11 @@ Group33Sprites:
 	db SPRITE_LASS
 	db SPRITE_SAILOR
 	db SPRITE_SIGHTSEER_M
-	db SPRITE_ROCKER
 	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	db SPRITE_ROCKER ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 9 total sprites
+	; 11 total sprites
 	db 0
 
 
