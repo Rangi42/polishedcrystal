@@ -8441,7 +8441,17 @@ BattleCommand_SwitchOut:
 	call CheckAnyOtherAliveMons
 	ret z
 	call UpdateUserInParty
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleText_WentBackToPlayer
+	jr z, .got_text
+	ld hl, BattleText_WentBackToEnemy
+.got_text
+	call StdBattleTextBox
 	farcall SlideUserPicOut
+	ld c, 30
+	call DelayFrames
+	call ClearBox
 
 	ld a, [hBattleTurn]
 	and a
