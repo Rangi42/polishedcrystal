@@ -5,6 +5,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
+* Search for "TODO" in the code and finish it
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
