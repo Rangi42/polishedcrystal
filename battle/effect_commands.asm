@@ -2789,7 +2789,12 @@ BattleCommand_PostFaintEffects:
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_TRIPLE_KICK
+	jr z, .multiple_hit_raise_sub
+	cp EFFECT_SWITCH_HIT
 	jr nz, .finish
+	call HasUserFainted
+	call nz, BattleCommand_SwitchOut
+	jr .finish
 
 .multiple_hit_raise_sub
 	call BattleCommand_RaiseSub
