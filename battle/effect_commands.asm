@@ -8449,13 +8449,19 @@ BattleCommand_SwitchOut:
 .got_text
 	call StdBattleTextBox
 	farcall SlideUserPicOut
-	ld c, 30
+	ld c, 20
 	call DelayFrames
+	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
+	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
 	call ClearBox
 
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy
+
+	hlcoord 9, 7
+	lb bc, 5, 11
+	call ClearBox
 
 	; Piggyback on Baton Pass routines
 	call DoPlayerBatonPass
