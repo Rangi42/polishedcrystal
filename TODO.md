@@ -29,7 +29,6 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Characters
 
-* Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals (EVENT_GOT_EXPERT_BELT)
 * Battle Elm to get S.S. Ticket (EVENT_BEAT_PROF_ELM)
 * Rematch Eusine and Bill somehow
 * Battle Ivy on Valencia Island (EVENT_BEAT_PROF_IVY)

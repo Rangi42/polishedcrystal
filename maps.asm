@@ -524,7 +524,6 @@ INCLUDE "maps/SeafoamIslandsB3F.asm"
 INCLUDE "maps/CliffEdgeGate.asm"
 INCLUDE "maps/Route47.asm"
 INCLUDE "maps/Route48.asm"
-INCLUDE "maps/PalletTown.asm"
 
 
 SECTION "Map Scripts 24", ROMX, BANK[MAP_SCRIPTS_24]
@@ -554,6 +553,7 @@ INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
 INCLUDE "maps/Route27RestHouse.asm"
 INCLUDE "maps/LavenderTown.asm"
+INCLUDE "maps/PalletTown.asm"
 
 
 SECTION "Map Scripts 25", ROMX, BANK[MAP_SCRIPTS_25]

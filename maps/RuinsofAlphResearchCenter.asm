@@ -226,7 +226,7 @@ MapRuinsofAlphResearchCenterSignpost1Script:
 	end
 
 UnknownScript_0x59241:
-	count_unown_caught
+	checkcode VAR_UNOWNCOUNT
 	writetext UnknownText_0x597d9
 	waitbutton
 	closetext
@@ -467,7 +467,7 @@ UnknownText_0x597d9:
 	line "Name: Unown"
 
 	para "A total of @"
-	deciram wd002, 1, 2
+	deciram ScriptVar, 1, 2
 	text ""
 	line "kinds found."
 	done
