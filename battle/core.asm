@@ -1814,81 +1814,42 @@ SubtractHP: ; 3cc45
 	ret
 
 GetThirdMaxHP::
-; divides by 3 without using arithmetic helpers (screws up dam calc)
-; Parts of this function relies on the fact that the result can't
-; be more than 1 byte (Blissey's base 255 HP is at most 718 at L100)
-; This works because x/3 is x/4 + x/16 + x/64 + ...
+; Assumes HP<768
 	call GetMaxHP
-	push de
-	ld d, 0
-	; if b is nonzero, involve b in the bitshift
-	ld a, b
-	and a
-	ld a, c
-	jr z, .loop
-
-	and 3
-	ld e, a
-	srl b
-	rr c
-	srl b
-	rr c
-	jr .postshift
+	xor a
+	inc b
 .loop
-	cp 3
-	jr c, .loop_end_skip_add
-	jr z, .loop_end
-	and 3
-	ld e, a
-	srl c
-	srl c
-.postshift
-	ld a, d
-	add c
-	ld d, a
-	ld a, c
-	add e
-	ld c, a
-	jr .loop
-.loop_end
-	inc d
-.loop_end_skip_add
-	ld a, d
-	pop de
-	; floor = 1
-	and a
+	dec b
+	inc a
+	dec bc
+	dec bc
+	dec bc
+	inc b
+	jr nz, .loop
+	dec a
 	ld c, a
 	ret nz
 	inc c
 	ret
 
-GetEighthMaxHP:
-	call GetMaxHP
-	jr EighthHP
+GetSixteenthMaxHP:
+	call GetEighthMaxHP
+	jr HalfHP
 
-GetQuarterMaxHP:
-	call GetMaxHP
-	jr QuarterHP
+GetEighthMaxHP:
+	call GetQuarterMaxHP
+	jr HalfHP
 
 GetSixthMaxHP:
 	call GetThirdMaxHP
 	jr HalfHP
 
-GetHalfMaxHP:
-	call GetMaxHP
+GetQuarterMaxHP:
+	call GetHalfMaxHP
 	jr HalfHP
 
-GetSixteenthMaxHP:
+GetHalfMaxHP:
 	call GetMaxHP
-	srl b
-	rr c
-	; fallthrough
-EighthHP:
-	srl b
-	rr c
-QuarterHP:
-	srl b
-	rr c
 HalfHP:
 	srl b
 	rr c
