@@ -1832,33 +1832,24 @@ GetThirdMaxHP::
 	inc c
 	ret
 
-GetEighthMaxHP:
-	call GetMaxHP
-	jr EighthHP
+GetSixteenthMaxHP:
+	call GetEighthMaxHP
+	jr HalfHP
 
-GetQuarterMaxHP:
-	call GetMaxHP
-	jr QuarterHP
+GetEighthMaxHP:
+	call GetQuarterMaxHP
+	jr HalfHP
 
 GetSixthMaxHP:
 	call GetThirdMaxHP
 	jr HalfHP
 
-GetHalfMaxHP:
-	call GetMaxHP
+GetQuarterMaxHP:
+	call GetHalfMaxHP
 	jr HalfHP
 
-GetSixteenthMaxHP:
+GetHalfMaxHP:
 	call GetMaxHP
-	srl b
-	rr c
-	; fallthrough
-EighthHP:
-	srl b
-	rr c
-QuarterHP:
-	srl b
-	rr c
 HalfHP:
 	srl b
 	rr c
