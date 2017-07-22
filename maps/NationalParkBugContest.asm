@@ -99,25 +99,6 @@ YoungsterScript_0x5c934:
 	closetext
 	end
 
-MapNationalParkBugContestSignpost0Script:
-	jumptext UnknownText_0x5cba7
-
-MapNationalParkBugContestSignpost1Script:
-	jumptext UnknownText_0x5cbc8
-
-MapNationalParkBugContestSignpost3Script:
-	jumptext UnknownText_0x5cc1d
-
-NationalParkBugContestShinyStone:
-	itemball SHINY_STONE
-
-NationalParkBugContestTMDig:
-	tmhmball TM_DIG
-
-NationalParkBugContestHiddenFullHeal:
-	dwb EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL, FULL_HEAL
-
-
 UnknownText_0x5c94c:
 	text "Don: I'm going to"
 	line "win! Don't bother"
@@ -197,33 +178,6 @@ UnknownText_0x5cb64:
 	line "for sure."
 	done
 
-UnknownText_0x5cba7:
-	text "Relaxation Square"
-	line "National Park"
-	done
-
-UnknownText_0x5cbc8:
-	text "What is this"
-	line "notice?"
-
-	para "Please battle only"
-	line "in the grass."
-
-	para "National Park"
-	line "Warden's Office"
-	done
-
-UnknownText_0x5cc1d:
-	text "Trainer Tips"
-
-	para "Pokemon become"
-	line "happier from"
-
-	para "haircuts, bless-"
-	line "ings, photographs,"
-	cont "and other treats."
-	done
-
 NationalParkBugContest_MapEventHeader:
 .Warps:
 	db 4
@@ -237,10 +191,10 @@ NationalParkBugContest_MapEventHeader:
 
 .Signposts:
 	db 4
-	signpost 44, 16, SIGNPOST_READ, MapNationalParkBugContestSignpost0Script
-	signpost 31, 29, SIGNPOST_READ, MapNationalParkBugContestSignpost1Script
-	signpost 47, 8, SIGNPOST_ITEM, NationalParkBugContestHiddenFullHeal
-	signpost 4, 14, SIGNPOST_READ, MapNationalParkBugContestSignpost3Script
+	signpost 44, 16, SIGNPOST_READ, MapNationalParkSignpost0Script
+	signpost 31, 29, SIGNPOST_READ, MapNationalParkSignpost1Script
+	signpost 47, 8, SIGNPOST_ITEM, NationalParkHiddenFullHeal
+	signpost 4, 14, SIGNPOST_READ, MapNationalParkSignpost3Script
 
 .PersonEvents:
 	db 12
@@ -254,5 +208,5 @@ NationalParkBugContest_MapEventHeader:
 	person_event SPRITE_BUG_CATCHER, 27, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x5c924, EVENT_BUG_CATCHING_CONTESTANT_8A
 	person_event SPRITE_YOUNGSTER, 8, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5c92c, EVENT_BUG_CATCHING_CONTESTANT_9A
 	person_event SPRITE_YOUNGSTER, 34, 19, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5c934, EVENT_BUG_CATCHING_CONTESTANT_10A
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NationalParkBugContestShinyStone, EVENT_NATIONAL_PARK_SHINY_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 43, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, NationalParkBugContestTMDig, EVENT_NATIONAL_PARK_TM_DIG
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NationalParkShinyStone, EVENT_NATIONAL_PARK_SHINY_STONE
+	person_event SPRITE_BALL_CUT_FRUIT, 43, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, NationalParkTMDig, EVENT_NATIONAL_PARK_TM_DIG

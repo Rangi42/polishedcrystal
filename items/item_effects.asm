@@ -1810,13 +1810,9 @@ HealStatus: ; f030 (3:7030)
 	call GetItemHealingAction
 	ld a, c
 	cp %11111111
-	jr nz, .not_full_heal
+	ret nz
 	ld hl, PlayerSubStatus3
 	res SUBSTATUS_CONFUSED, [hl]
-.not_full_heal
-	push bc
-	farcall CalcPlayerStats
-	pop bc
 	ret
 
 GetItemHealingAction: ; f058 (3:7058)

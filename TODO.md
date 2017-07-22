@@ -1,89 +1,74 @@
-## Bugs
+## Missing content
 
-See the [Issues](issues/) page.
+The final, non-beta 3.0 release should include all of these.
 
 
-## Mechanics
+### General
+
+* Search for "TODO" in the code and finish it
+* Fix bugs, including everything on the [Issues](/issues)
+* Give NPCs better teams, using the new held items
+* Adjust the difficulty curve as needed
+
+
+### Mechanics
 
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
-* More location-unique wild moves
+* More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
 
 
-## Aesthetics
+### Aesthetics
 
 * Animation frames of Magikarp variants need their patterns
 * Improve switching with U-turn and Volt Switch (print a message, and clear the text before sending out)
 
 
-## Events
+### Events
 
-* Soul House + Radio Tower event to get Expn Card
-
-
-## Characters
-
-* Pay Day tutor in Goldenrod Game Corner
-* Man in Silver Cave Pokémon Center gives Expert Belt for reading all the Journals
-* Silph Co. mart
-* Battle Elm to get S.S. Ticket
+* Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
+* Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine and Bill somehow
-* Battle Ivy on Valencia Island
-* Battle Kukui on Route 22
+* Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 
 Shamouti Island:
 
-* Caitlin and Darach in Beautiful Beach villa
-* Body Slam tutor in Warm Beach house
-* Trendy phrase guy in hotel lobby
+* Caitlin and Darach in Beautiful Beach villa (EVENT_BEAT_DARACH and EVENT_BEAT_CAITLIN)
+* Trendy phrase guy in hotel lobby (ENGINE_CHANGED_TRENDY_PHRASE)
 * Looker in hotel room (not S.S. Aqua)
 * Sightseer in hotel mentions that Bottle Caps can be used for Hyper Training in Alola
 
 
-## Maps
+### Maps
 
-Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view)), visible and hidden items, wild Pokémon, and unique wild moves.
+Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
 * Valencia Island
 * Route 49
+* Safari Zone rest houses
 
 Shamouti Island:
 
-* Shamouti Island (outdoor market instead of Mart)
-* Shamouti Hotel (haunted room)
-* Shamouti Restaurant (works like Seven Stars Restaurant)
+* Shamouti Island (outdoor market instead of Mart) (MART_SHAMOUTI_1 and MART_SHAMOUTI_2)
+* Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
+* Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
+* Beautiful Beach villa (needs a larger map, maybe with the mansion tileset)
 
-Route leaders:
+Route leaders: (see [material/route-leaders.txt](material/route-leaders.txt))
 
-* Route 37: Ace Trainer♀, gives Binding Band
-* Route 39: Cowgirl, gives PP Max
-* Lighthouse: Battle Girl, gives protect Pads
-* Route 43: Ace Trainer♀, gives Flame Orb
-* Route 44: Veteran♂, gives Rocky Helmet
-* Route 46: Dragon Tamer, gives Focus Sash
-
-
-## Abilities
-
-Out-of-battle effects:
-
-* Static
-* Intimidate
-* Lightning Rod
-* Magnet Pull
-* Pressure
-* Keen Eye
-* Hustle
-* Vital Spirit
+* Route 43: Ace Trainer♀ Lenie, gives Flame Orb
+* Route 44: Veteran♂ Barkhorn, gives Rocky Helmet
+* Route 46: Dragon Tamer Aegon, gives Focus Sash
+* Route 26/27: Veteran♀ Litvyak, gives Choice Specs
 
 
-## Move effects
+### Move effects
 
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
@@ -93,7 +78,7 @@ Out-of-battle effects:
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 
 
-## Move animations
+### Move animations
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
 
@@ -120,7 +105,8 @@ Low-priority:
 * Volt Switch
 
 
-## Post-3.0
+
+## Postponed until 4.0
 
 Some of these may never be added; they're just suggestions.
 
@@ -188,7 +174,6 @@ Some of these may never be added; they're just suggestions.
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
 * Rock Climb areas
-* Inverse Battles
 * Battle Factory
 * Medals for achievements
 * Something like Habitat Lists or DexNav via the Town Map

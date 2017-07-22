@@ -3657,10 +3657,6 @@ endc
 	ld de, BattleMonNick
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
-	ld hl, BattleMonStats
-	ld de, PlayerStats
-	ld bc, BattleMonStatsEnd - BattleMonStats
-	call CopyBytes
 	jp ResetPlayerAbility
 ; 3da74
 
@@ -3751,10 +3747,6 @@ InitEnemyMon: ; 3dabd
 	call SkipNames
 	ld de, EnemyMonNick
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
-	ld hl, EnemyMonStats
-	ld de, EnemyStats
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_STATS
 	call CopyBytes
 	ld hl, BaseType1
 	ld de, EnemyMonType1
@@ -4033,7 +4025,7 @@ PursuitSwitch: ; 3dc5b
 .finish_pursuit
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
-	ld a, $ff
+	xor a
 	ld [hl], a
 
 	pop af
@@ -5119,7 +5111,6 @@ PassedBattleMonEntrance: ; 3e459
 	call InitBattleMon
 	xor a
 	ld [wd265], a
-	call ApplyStatLevelMultiplierOnAllStats
 	call SendOutPlayerMon
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
@@ -6897,10 +6888,6 @@ BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
 ; 3ec2c
 
 
-ApplyStatLevelMultiplierOnAllStats:
-	farcall CalcPlayerStats
-	farjp CalcEnemyStats
-
 _LoadBattleFontsHPBar: ; 3ed9f
 	farjp LoadBattleFontsHPBar
 ; 3eda6
@@ -7262,19 +7249,9 @@ GiveExperiencePoints: ; 3ee3b
 	add hl, bc
 	ld a, [hl]
 	ld [BattleMonLevel], a
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .transformed
-	ld hl, MON_STATS
-	add hl, bc
-	ld de, PlayerStats
-	ld bc, BattleMonStatsEnd - BattleMonStats
-	call CopyBytes
 
-.transformed
 	xor a
 	ld [wd265], a
-	call ApplyStatLevelMultiplierOnAllStats
 	farcall UpdatePlayerHUD
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap

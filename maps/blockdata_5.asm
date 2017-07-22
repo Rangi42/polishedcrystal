@@ -73,6 +73,12 @@ WarmBeach_BlockData:
 RockyBeach_BlockData:
 	INCBIN "maps/RockyBeach.blk"
 
+BeautifulBeachVilla_BlockData:
+	INCBIN "maps/BeautifulBeachVilla.blk"
+
+WarmBeachShack_BlockData:
+	INCBIN "maps/WarmBeachShack.blk"
+
 ShamoutiShrineRuins_BlockData:
 	INCBIN "maps/ShamoutiShrineRuins.blk"
 

@@ -235,17 +235,16 @@ ScriptCommandTable: ; 96cb1
 	dw Script_wait                       ; a5
 	dw Script_check_save                 ; a6
 	dw Script_count_seen_caught          ; a7
-	dw Script_count_unown_caught         ; a8
-	dw Script_trainerpic                 ; a9
-	dw Script_givetmhm                   ; aa
-	dw Script_checktmhm                  ; ab
-	dw Script_verbosegivetmhm            ; ac
-	dw Script_tmhmnotify                 ; ad
-	dw Script_tmhmtotext                 ; ae
-	dw Script_checkdarkness              ; af
-	dw Script_checkunits                 ; b0
-	dw Script_unowntypeface              ; b1
-	dw Script_restoretypeface            ; b2
+	dw Script_trainerpic                 ; a8
+	dw Script_givetmhm                   ; a9
+	dw Script_checktmhm                  ; aa
+	dw Script_verbosegivetmhm            ; ab
+	dw Script_tmhmnotify                 ; ac
+	dw Script_tmhmtotext                 ; ad
+	dw Script_checkdarkness              ; ae
+	dw Script_checkunits                 ; af
+	dw Script_unowntypeface              ; b0
+	dw Script_restoretypeface            ; b1
 ; 96e05
 
 StartScript: ; 96e05
@@ -3170,15 +3169,6 @@ Script_count_seen_caught:
 	ld b, EndPokedexCaught - PokedexCaught
 	call CountSetBits
 	ld [wd003], a
-	ret
-
-Script_count_unown_caught:
-; script command 0xab
-
-	ld a, VAR_UNOWNCOUNT
-	call GetVarAction
-	ld a, [de]
-	ld [wd002], a
 	ret
 
 Script_trainerpic:

@@ -2,6 +2,7 @@ const_value set 2
 	const SILPHCO3F_SILPH_EMPLOYEE
 	const SILPHCO3F_SCIENTIST1
 	const SILPHCO3F_SCIENTIST2
+	const SILPHCO3F_SCIENTIST3
 	const SILPHCO3F_OFFICER
 	const SILPHCO3F_GENTLEMAN
 
@@ -34,6 +35,13 @@ SilphCo3FScientist1Script:
 
 SilphCo3FScientist2Script:
 	jumptextfaceplayer SilphCo3FScientist2Text
+
+SilphCo3FScientist3Script:
+	faceplayer
+	opentext
+	pokemart MARTTYPE_SILPH, MART_SILPH_CO
+	closetext
+	end
 
 SilphCo3FOfficerScript:
 	jumptextfaceplayer SilphCo3FOfficerText
@@ -151,9 +159,10 @@ SilphCo3F_MapEventHeader:
 	signpost 3, 13, SIGNPOST_READ, SilphCo3FBookshelf
 
 .PersonEvents:
-	db 5
+	db 6
 	person_event SPRITE_SILPH_EMPLOYEE, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo3FSilphEmployeeScript, -1
 	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FScientist1Script, -1
 	person_event SPRITE_SCIENTIST, 7, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FScientist2Script, -1
+	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FScientist3Script, -1
 	person_event SPRITE_OFFICER, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FOfficerScript, -1
 	person_event SPRITE_GENTLEMAN, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SilphCo3FGentlemanScript, -1

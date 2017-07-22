@@ -126,8 +126,6 @@ ShamoutiHotel_BlockData:
 ShamoutiTouristCenter_BlockData:
 ShamoutiMerchant_BlockData:
 ShamoutiHouse_BlockData:
-BeautifulBeachVilla_BlockData:
-WarmBeachShack_BlockData:
 WarmBeachHouse_BlockData:
 RockyBeachHouse_BlockData:
 IvysHouse_BlockData:

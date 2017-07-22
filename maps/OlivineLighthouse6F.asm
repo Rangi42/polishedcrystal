@@ -38,7 +38,6 @@ UnknownScript_0x60bab:
 	closetext
 	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	spriteface OLIVINELIGHTHOUSE6F_AMPHAROS, LEFT
 	opentext
 	playmusic MUSIC_HEAL
 	writetext UnknownText_0x60e44
@@ -85,7 +84,6 @@ UnknownScript_0x60c25:
 	closetext
 	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	spriteface OLIVINELIGHTHOUSE6F_AMPHAROS, LEFT
 	opentext
 	writetext UnknownText_0x60ef1
 	waitbutton

@@ -336,9 +336,31 @@ endr
 	call Random
 	and GENDER_MASK
 	ld b, a
-	; Form 1
+	; Form
+	ld a, [wOTTrademonSpecies]
+	cp UNOWN
+	jr z, .unown
+	cp EKANS
+	jr z, .ekans_arbok
+	cp ARBOK
+	jr z, .ekans_arbok
+	cp MAGIKARP
+	jr z, .magikarp
 	ld a, 1
-	and FORM_MASK
+	jr .got_form_count
+.unown
+	ld a, NUM_UNOWN
+	jr .got_form_count
+.ekans_arbok
+	ld a, 2
+	jr .got_form_count
+.magikarp
+	ld a, NUM_MAGIKARP
+.got_form_count
+	push bc
+	call RandomRange
+	pop bc
+	inc a
 	add b
 	ld [Buffer1 + 1], a
 	ld hl, Buffer1

@@ -17,16 +17,6 @@ Professor Oak: If a wild Pokémon appears, your Pokémon can battle it. With it 
 Professor Oak: There is nothing more that I can do for you. Enjoy the rest of your journey with that new Pokémon!
 
 
-
-Welcome to the Exchange Service Corner! Would you like to trade in your BP for some prizes?
-Please come back any time you want!
-<ITEM> will cost <N> BP. Is that OK?
-You put away the <ITEM> in the <NAME> Pocket.
-I'm sorry, but you don’t have enough BP.
-I'm sorry, but your Bag is full.
-Please choose the item you would like.
-
-
 Some Trainers rely on a Pokémon's potential alone. But you can use items and medicines to help improve a Pokémon's capabilities.
 
 Mountain climbing and Pokémon are similar in a sense. They both come down to potential! I do not rely on items or medicines but rather potential and training for battle!

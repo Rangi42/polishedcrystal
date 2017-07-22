@@ -5,7 +5,7 @@ const_value set 2
 	const ROUTE34_LASS
 	const ROUTE34_OFFICER_F
 	const ROUTE34_POKEFAN_M
-	const ROUTE34_GRAMPS1
+	const ROUTE34_GRAMPS
 	const ROUTE34_DAYCARE_MON_1
 	const ROUTE34_DAYCARE_MON_2
 	const ROUTE34_COOLTRAINER_F1
@@ -13,7 +13,6 @@ const_value set 2
 	const ROUTE34_COOLTRAINER_F3
 	const ROUTE34_POKE_BALL
 	const ROUTE34_LYRA
-	const ROUTE34_GRAMPS2
 
 Route34_MapScriptHeader:
 .MapTriggers:
@@ -27,6 +26,8 @@ Route34_MapScriptHeader:
 	clearevent EVENT_BEAT_BREEDER_JULIE
 
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
+	iftrue .PutDaycareManOutside
+	checktriggers
 	iftrue .PutDaycareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
@@ -71,10 +72,10 @@ Route34LyraTrigger2:
 	closetext
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ROUTE34_LYRA
-	spriteface ROUTE34_GRAMPS2, UP
+	spriteface ROUTE34_GRAMPS, UP
 	pause 10
 	applymovement ROUTE34_LYRA, Route34MovementData_LyraComesDown
-	spriteface ROUTE34_GRAMPS2, LEFT
+	spriteface ROUTE34_GRAMPS, LEFT
 	opentext
 	writetext Route34LyraGoodWorkText
 	waitbutton
@@ -143,9 +144,9 @@ Route34LyraTrigger2:
 	writetext Route34LyraFollowMeText
 	waitbutton
 	closetext
-	applymovement ROUTE34_GRAMPS2, Route34MovementData_GrampsEntersDayCare
+	applymovement ROUTE34_GRAMPS, Route34MovementData_GrampsEntersDayCare
 	playsound SFX_EXIT_BUILDING
-	disappear ROUTE34_GRAMPS2
+	disappear ROUTE34_GRAMPS
 	follow ROUTE34_LYRA, PLAYER
 	applymovement ROUTE34_LYRA, Route34MovementData_LyraEntersDayCare
 	stopfollow
@@ -171,16 +172,16 @@ DayCareManScript_Outside:
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
 	if_equal LEFT, .walk_around_player
-	applymovement ROUTE34_GRAMPS1, Route34MovementData_DayCareManWalksBackInside
+	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside
 	playsound SFX_ENTER_DOOR
-	disappear ROUTE34_GRAMPS1
+	disappear ROUTE34_GRAMPS
 .end_fail
 	end
 
 .walk_around_player
-	applymovement ROUTE34_GRAMPS1, Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer
+	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer
 	playsound SFX_ENTER_DOOR
-	disappear ROUTE34_GRAMPS1
+	disappear ROUTE34_GRAMPS
 	end
 
 DaycareMon1Script:
@@ -1058,7 +1059,7 @@ Route34_MapEventHeader:
 	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
 
 .PersonEvents:
-	db 15
+	db 14
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
 	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
@@ -1073,4 +1074,3 @@ Route34_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET
 	person_event SPRITE_GOLDENROD_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
-	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GRANDPA_ROUTE_34

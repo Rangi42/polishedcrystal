@@ -1476,6 +1476,17 @@ ForewarnText: ; 0x80f02
 	text "!"
 	prompt
 
+BattleText_WentBackToPlayer:
+	text "<USER> went"
+	line "back to <PLAYER>!"
+	prompt
+
+BattleText_WentBackToEnemy:
+	text "<USER>"
+	line "went back to"
+	cont "<ENEMY>!"
+	prompt
+
 ScaredText:
 	text "<USER> is too"
 	line "scared to move!"
@@ -1904,6 +1915,11 @@ SkylaFinalPkmnText:
 
 ValerieFinalPkmnText:
 	text "Oh my…"
+	prompt
+
+KukuiFinalPkmnText:
+	text "My soul burns hot,"
+	line "yeah!"
 	prompt
 
 BillFinalPkmnText:

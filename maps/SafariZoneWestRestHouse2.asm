@@ -52,7 +52,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	end
 
 .IntroText:
-	text "Hey there!"
+	text "Hi there!"
 
 	para "Good to see some-"
 	line "one else exploring"
@@ -75,7 +75,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	done
 
 .RematchText:
-	text "Hey there,"
+	text "Hi there,"
 	line "<PLAYER>!"
 
 	para "Good to see you"

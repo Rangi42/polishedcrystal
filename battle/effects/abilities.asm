@@ -91,12 +91,8 @@ HealStatusAbility:
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
 	and a
-	jr z, .is_player
-	farcall CalcEnemyStats
+	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
-.is_player
-	farcall CalcPlayerStats
-	jp UpdateBattleMonInParty
 
 OwnTempoAbility:
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -881,7 +877,7 @@ WeakArmorAbility:
 	ld b, DEFENSE
 	call DisableAnimations
 	farcall ResetMiss
-	farcall LowerStat
+	farcall LowerStat ; can't be resisted
 	ld a, [FailedMessage]
 	and a
 	jr nz, .failed_defensedown

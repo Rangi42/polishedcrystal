@@ -20,12 +20,7 @@ VermilionCity_MapScriptHeader:
 	db 0
 
 .MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.FlyPoint:
-	setflag ENGINE_FLYPOINT_VERMILION
-	return
+	db 0
 
 LawrenceLeftIntroScript:
 	spriteface PLAYER, UP
@@ -54,6 +49,7 @@ LawrenceLeftIntroScript:
 	disappear VERMILIONCITY_LAWRENCE
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_ROCKER
 	dotrigger $1
+	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic
 	end
 
@@ -84,6 +80,7 @@ LawrenceRightIntroScript:
 	disappear VERMILIONCITY_LAWRENCE
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_ROCKER
 	dotrigger $1
+	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic
 	end
 

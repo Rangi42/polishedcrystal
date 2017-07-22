@@ -23,6 +23,7 @@ OpenMartDialog:: ; 15a45
 	dw BargainShop
 	dw Pharmacist
 	dw RooftopSale
+	dw SilphMart
 	dw AdventurerMart
 	dw InformalMart
 	dw TMMart
@@ -126,6 +127,15 @@ RooftopSale: ; 15ac4
 	dbw PROTEIN,      8000
 	db -1
 ; 15b10
+
+SilphMart:
+	call FarReadMart
+	call LoadStandardMenuDataHeader
+	ld hl, Text_SilphMart_Intro
+	call MartTextBox
+	call BuyMenu
+	ld hl, Text_SilphMart_ComeAgain
+	jp MartTextBox
 
 AdventurerMart:
 	call FarReadMart
@@ -620,6 +630,7 @@ endr
 	dwb .BargainShopPointers, 1
 	dwb .PharmacyPointers, 0
 	dwb .StandardMartPointers, 2
+	dwb .SilphMartPointers, 0
 	dwb .AdventurerMartPointers, 0
 	dwb .InformalMartPointers, 0
 	dwb .TMMartPointers, 0
@@ -659,6 +670,14 @@ endr
 	dw Text_Pharmacy_HereYouGo
 	dw BuyMenuLoop
 ; 15cef
+
+.SilphMartPointers:
+	dw Text_SilphMart_HowMany
+	dw Text_SilphMart_CostsThisMuch
+	dw Text_SilphMart_InsufficientFunds
+	dw Text_SilphMart_BagFull
+	dw Text_SilphMart_HereYouGo
+	dw BuyMenuLoop
 
 .AdventurerMartPointers:
 	dw Text_AdventurerMart_HowMany
@@ -1284,6 +1303,7 @@ Text_BargainShop_CostsThisMuch: ; 0x15e72
 ; 0x15e77
 
 Text_BargainShop_HereYouGo: ; 0x15e77
+Text_SilphMart_HereYouGo:
 Text_AdventurerMart_HereYouGo:
 	; Thanks.
 	text_jump UnknownText_0x1c4dcd
@@ -1323,6 +1343,7 @@ Text_Pharmacist_Intro: ; 0x15e90
 ; 0x15e95
 
 Text_Pharmacy_HowMany: ; 0x15e95
+Text_SilphMart_HowMany:
 Text_AdventurerMart_HowMany:
 Text_InformalMart_HowMany:
 	; How many?
@@ -1331,6 +1352,7 @@ Text_InformalMart_HowMany:
 ; 0x15e9a
 
 Text_Pharmacy_CostsThisMuch: ; 0x15e9a
+Text_SilphMart_CostsThisMuch:
 Text_InformalMart_CostsThisMuch:
 	; @ (S) will cost ¥@ .
 	text_jump UnknownText_0x1c4e89
@@ -1345,6 +1367,7 @@ Text_InformalMart_HereYouGo:
 ; 0x15ea4
 
 Text_Pharmacy_BagFull: ; 0x15ea4
+Text_SilphMart_BagFull:
 Text_InformalMart_BagFull:
 	; You don't have any more space.
 	text_jump UnknownText_0x1c4eb9
@@ -1352,6 +1375,7 @@ Text_InformalMart_BagFull:
 ; 0x15ea9
 
 Text_Pharmacy_InsufficientFunds: ; 0x15ea9
+Text_SilphMart_InsufficientFunds:
 Text_InformalMart_InsufficientFunds:
 	; Huh? That's not enough money.
 	text_jump UnknownText_0x1c4ed8
@@ -1365,7 +1389,18 @@ Text_InformalMart_ComeAgain:
 	db "@"
 ; 0x15eb3
 
+Text_SilphMart_Intro:
+	; Employees like me have access to company swag! Want to buy some?
+	text_jump SilphMartIntroText
+	db "@"
+
+Text_SilphMart_ComeAgain:
+	; Come again! I could use the side income.
+	text_jump SilphMartComeAgainText
+	db "@"
+
 Text_AdventurerMart_Intro:
+	; I picked up some rare items abroad!
 	text_jump AdventurerMartIntroText
 	db "@"
 
@@ -1397,7 +1432,6 @@ Text_BlueCardMart_CostsThisMuch: ; 0x8b077
 ; 0x8b07c
 
 Text_BlueCardMart_InsufficientFunds: ; 0x8b081
-Text_BTMart_InsufficientFunds:
 	; You don't have enough points.
 	text_jump UnknownText_0x1c58e0
 	db "@"
@@ -1421,9 +1455,29 @@ Text_BlueCardMart_ComeAgain: ; 0x8b08b
 	db "@"
 ; 0x8b090
 
+Text_BTMart_HowMayIHelpYou:
+	; Welcome to the Exchange Service Corner! You can trade in your BP for prizes.
+	text_jump BTMartHowMayIHelpYouText
+	db "@"
+
 Text_BTMart_CostsThisMuch:
-	; @  @  will be ¥@ .
+	; @  @(s)  will cost @ BP.
 	text_jump BTMartCostsThisMuchText
+	db "@"
+
+Text_BTMart_InsufficientFunds:
+	; I'm sorry, but you don’t have enough BP.
+	text_jump BTMartInsufficientFundsText
+	db "@"
+
+Text_BTMart_BagFull:
+	; I'm sorry, but your Bag is full.
+	text_jump BTMartBagFullText
+	db "@"
+
+Text_BTMart_ComeAgain:
+	; Please come back any time you want!
+	text_jump BTMartComeAgainText
 	db "@"
 
 SellMenu: ; 15eb3
@@ -1525,7 +1579,6 @@ Text_Mart_ICanPayThisMuch: ; 0x15f78
 ; 0x15f7d
 
 Text_Mart_HowMayIHelpYou: ; 0x15f83
-Text_BTMart_HowMayIHelpYou:
 	; Welcome! How may I help you?
 	text_jump UnknownText_0x1c4f62
 	db "@"
@@ -1561,7 +1614,6 @@ Text_Mart_InsufficientFunds: ; 0x15fa5
 ; 0x15faa
 
 Text_Mart_BagFull: ; 0x15faa
-Text_BTMart_BagFull:
 	; You can't carry any more items.
 	text_jump UnknownText_0x1c4fb7
 	db "@"
@@ -1574,7 +1626,6 @@ TextMart_CantBuyFromYou: ; 0x15faf
 ; 0x15fb4
 
 Text_Mart_ComeAgain: ; 0x15fb4
-Text_BTMart_ComeAgain:
 	; Please come again!
 	text_jump UnknownText_0x1c4ff9
 	db "@"

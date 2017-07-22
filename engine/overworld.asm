@@ -1286,7 +1286,7 @@ Group23Sprites:
 	db SPRITE_LADY
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	db SPRITE_COOLTRAINER_M ; doesn't walk
+	db SPRITE_KUKUI ; doesn't walk
 	db SPRITE_COOLTRAINER_F ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
@@ -1390,11 +1390,11 @@ Group33Sprites:
 	db SPRITE_LASS
 	db SPRITE_SAILOR
 	db SPRITE_SIGHTSEER_M
-	db SPRITE_ROCKER
 	db SPRITE_YOUNGSTER
-	; 8 walking sprites
+	db SPRITE_ROCKER ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 9 total sprites
+	; 11 total sprites
 	db 0
 
 
@@ -1412,12 +1412,12 @@ Group35Sprites:
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_LADY
+	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
 	db SPRITE_YOUNGSTER
 	db SPRITE_LAWRENCE ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
-	db SPRITE_LASS ; doesn't walk
 	db SPRITE_SCIENTIST ; doesn't walk
 	db SPRITE_SUPER_NERD ; doesn't walk
 	; 12 walking sprites (6 that walk)
