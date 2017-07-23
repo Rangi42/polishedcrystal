@@ -62,7 +62,14 @@ ValenciaPortFisherScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Have you noticed"
+	line "the sea?"
+
+	para "These waters are"
+	line "different from"
+
+	para "those found in"
+	line "Kanto and Johto."
 	done
 
 ValenciaPortHiddenMaxPotion:
