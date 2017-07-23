@@ -2032,6 +2032,8 @@ wNoRTCDayLo:: ds 1   ;; = hRTCDayLo
 wNoRTCHours:: ds 1   ;; = hRTCHours
 wNoRTCMinutes:: ds 1 ;; = hRTCMinutes
 wNoRTCSeconds:: ds 1 ;; = hRTCSeconds
+else
+	ds 5
 endc
 
 	ds 1
