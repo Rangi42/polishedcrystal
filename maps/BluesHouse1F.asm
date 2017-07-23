@@ -67,7 +67,11 @@ UnknownScript_0x19b12a:
 	end
 
 BluesHouse1FTV:
+	checkcode VAR_FACING
+	if_not_equal UP, .wrongside
 	jumptext BluesHouse1FTVText
+.wrongside
+	jumpstd tv
 
 UnknownText_0x19b130:
 	text "Daisy: Hi! My kid"

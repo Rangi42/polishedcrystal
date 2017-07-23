@@ -209,11 +209,12 @@ WindowScript:
 	farjumptext WindowText
 
 TVScript:
-	opentext
-	farwritetext TVText
-	waitbutton
-	closetext
-	end
+	checkcode VAR_FACING
+	if_not_equal UP, WrongSideScript
+	farjumptext TVText
+
+WrongSideScript:
+	farjumptext WrongSideText
 
 Radio1Script:
 	opentext

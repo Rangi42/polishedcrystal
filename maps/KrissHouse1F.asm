@@ -373,7 +373,11 @@ StoveScript:
 	jumptext StoveText
 
 TVScript:
+	checkcode VAR_FACING
+	if_not_equal UP, .wrongside
 	jumptext TVText
+.wrongside
+	jumpstd tv
 
 KrissHouse1FSlowStepLeftMovementData:
 	slow_step_left

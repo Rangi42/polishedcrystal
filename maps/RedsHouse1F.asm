@@ -25,7 +25,11 @@ RedsMom:
 	end
 
 RedsHouse1FTV:
+	checkcode VAR_FACING
+	if_not_equal UP, .wrongside
 	jumptext RedsHouse1FTVText
+.wrongside
+	jumpstd tv
 
 RedsMomText1:
 	text "Hi!"

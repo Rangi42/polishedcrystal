@@ -165,6 +165,10 @@ TVText:
 	text "It's a TV."
 	done
 
+WrongSideText:
+	text "Oops, wrong side."
+	done
+
 RefrigeratorText:
 	text "It's a fridge."
 	done
