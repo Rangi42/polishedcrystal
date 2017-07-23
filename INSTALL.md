@@ -1,4 +1,4 @@
-The source files are assembled into a rom using [**rgbds**](https://github.com/bentley/rgbds).
+The source files are assembled into a rom using [**rgbds**](https://github.com/rednex/rgbds).
 These instructions explain how to set up the tools required to build.
 
 If you run into trouble, ask on irc ([**freenode#pret**](https://kiwiirc.com/client/irc.freenode.net/?#pret)).
@@ -70,7 +70,7 @@ To build on Windows, install [**Cygwin**](http://cygwin.com/install.html) with t
 
 In the installer, select the following packages: `make` `git` `gettext` `python` `gcc-core`
 
-Then get the [**rgbds 0.3.1**](https://github.com/bentley/rgbds/releases/). Other versions are not compatible. Extract the archive and put all the `exe` and `dll` files individually in `C:\cygwin64\usr\local\bin`.
+Then get [**rgbds 0.3.1**](https://github.com/bentley/rgbds/releases/). Other versions are not compatible. Extract the archive and put all the `exe` and `dll` files individually in `C:\cygwin64\usr\local\bin`.
 
 In the **Cygwin terminal**:
 
@@ -95,7 +95,7 @@ make [faithful] [nortc] [monochrome] [debug]
 For example, to build a mononchrome faithful version:
 
 ```bash
-make faitful monochrome
+make faithful monochrome
 ```
 
 ## Notes
