@@ -24,7 +24,7 @@ The final, non-beta 3.0 release should include all of these.
 ### Aesthetics
 
 * Animation frames of Magikarp variants need their patterns
-* Improve switching with U-turn and Volt Switch (print a message, and clear the text before sending out)
+* Play a shiny flash when Pokémon are caught (from Prism)
 
 
 ### Events
@@ -188,6 +188,11 @@ Some of these may never be added; they're just suggestions.
 * Make more trainers rematchable
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
+* Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)
+   * Ruby [sub_8054164](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L937), Emerald [sub_8085B2C](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2662): picks the random wild Pokémon (called on map initialization and every step), stored in gUnknown_02029814
+   * Ruby [sub_8054050](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L893): plays the cry of gUnknown_02029814 if on a non-water encounter tile at volume 50–80 instead of the usual 125
+   * Ruby [sub_80540D0](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L906): might randomly play the cry (run with time-based events)
+   * Emerald [wild_encounter_related](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2544): raises call probability for Swarm ability
 * Either add a 510 EV limit, or replace the 6 Power items with more useful Berries
 * Catch rate formula from Gen III
 * Show move stats when overwriting one
@@ -202,18 +207,16 @@ Some of these may never be added; they're just suggestions.
 * Add the improved PRNG from Prism
 * Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
 * Evolution Guru says how your lead Pokémon can evolve
-* Sometimes wild Pokémon know an egg move
+* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
+* Rarely wild Pokémon know an egg move (could be a Habitat List/DexNav reward)
 * Get better Wonder Trade items at higher levels
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
-* Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
+* Use Mart interface for selling decorations, with a red sidebar
 * Add separate throwing animation graphics for more Poké Ball designs
-* Play Pokémon cry+animation when they escape a Poké Ball, and shiny flash when they're caught
+* Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Make Eggs use their Pokémon's palette
 * Animate item activations like Quick Claw
-* Use Mart interface for selling decorations, with a red sidebar
-* Show walking animation faster when running
-* Faster Bicycle, or slower Running Shoes
 * Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
 
