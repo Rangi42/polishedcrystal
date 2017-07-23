@@ -6,6 +6,10 @@ My goal is to create what the title says: an improved, polished version of Poké
 
 I've had vague plans to make a Pokémon game for years. I'm very impressed by the effort that's gone into disassembling Pokémon Crystal and making the code so well-organized. Thanks to making it open-source (and to the ROM hackers that inspired me), I'm finally making this game a reality.
 
+> There are many ways to create games but the way we work at Game Freak may be a little different from other companies. That is, we constantly change and tweak what we have come up with. To make a fun game even more fun and polish it up, we take what we have made and start thinking about it from scratch. And to make the game the most fun to play we make endless changes and tweaks no matter how long it takes. It may not be the best way, but I think these tweaks are important to make our games fun and better.
+
+– Junichi Masuda, "[HIDDEN POWER of masuda No. 7](https://www.gamefreak.co.jp/blog/dir_english/?p=21)"
+
 > We've been greedy in the amount of gameplay elements we've squeezed in there. There's so much included that I even had colleagues saying to me: "Are you sure you should be going this far with a remake?" In that sense, it's not simply a remake—I think it's more than that. For that reason, I would like to see these games enjoyed by as large a number of people as possible.
 
 – Shigeki Morimoto, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/6-Pokemon-Players-Past-and-Present/6-Pokemon-Players-Past-and-Present-226100.html)"

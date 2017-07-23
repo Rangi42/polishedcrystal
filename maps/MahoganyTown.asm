@@ -104,8 +104,13 @@ LassScript_0x190095:
 MahoganyTownSign:
 	jumptext MahoganyTownSignText
 
-MahoganyTownRagecandybarSign:
-	jumptext MahoganyTownRagecandybarSignText
+MahoganyTownSouvenirShopSign:
+	checkevent EVENT_MAHOGANY_MART_OWNERS
+	iftrue .rockets
+	jumptext MahoganyTownSouvenirShopSignText2
+
+.rockets
+	jumptext MahoganyTownSouvenirShopSignText1
 
 MahoganyGymSign:
 	jumptext MahoganyGymSignText
@@ -214,10 +219,20 @@ MahoganyTownSignText:
 	line "Home of the Ninja"
 	done
 
-MahoganyTownRagecandybarSignText:
-	text "While visiting"
-	line "Mahogany Town, try"
-	cont "a RageCandyBar!"
+MahoganyTownSouvenirShopSignText1:
+	text "Just a Souvenir"
+	line "Shop"
+
+	para "Nothing Suspicious"
+	line "About It"
+
+	para "No Need to Be"
+	line "Alarmed"
+	done
+
+MahoganyTownSouvenirShopSignText2:
+	text "Grandma's"
+	line "Souvenir Shop"
 	done
 
 MahoganyGymSignText:
@@ -246,7 +261,7 @@ MahoganyTown_MapEventHeader:
 .Signposts:
 	db 3
 	signpost 5, 1, SIGNPOST_READ, MahoganyTownSign
-	signpost 7, 9, SIGNPOST_READ, MahoganyTownRagecandybarSign
+	signpost 7, 9, SIGNPOST_READ, MahoganyTownSouvenirShopSign
 	signpost 13, 3, SIGNPOST_READ, MahoganyGymSign
 
 .PersonEvents:

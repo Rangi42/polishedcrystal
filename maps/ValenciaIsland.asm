@@ -11,14 +11,28 @@ ValenciaIslandCooltrainermScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "A couple of strong"
+	line "trainers live in"
+	cont "that house."
+
+	para "They're a mother"
+	line "and her daughter…"
+	cont "Or mayber her son?"
+
+	para "Anyway, they're on"
+	line "vacation now."
 	done
 
 ValenciaIslandYoungsterScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Prof.Ivy is really"
+	line "cool!"
+
+	para "She helped my"
+	line "#mon when they"
+	cont "were sick!"
 	done
 
 ValenciaIslandSign:

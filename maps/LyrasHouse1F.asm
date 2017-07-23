@@ -42,7 +42,11 @@ LyrasStoveScript:
 	jumptext LyrasStoveText
 
 LyrasTVScript:
+	checkcode VAR_FACING
+	if_not_equal UP, .wrongside
 	jumptext LyrasTVText
+.wrongside
+	jumpstd tv
 
 LyrasDadInsideText:
 	text "Hi, <PLAYER>!"

@@ -22,14 +22,23 @@ Route49LadyScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Look at the grass"
+	line "and trees here!"
+
+	para "Valencia is full"
+	line "of unique flora."
 	done
 
 Route49YoungsterScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "This landscape"
+	line "makes me feel like"
+
+	para "an adventurer in"
+	line "the middle of the"
+	cont "jungle!"
 	done
 
 TrainerSightseermHari:
@@ -44,15 +53,24 @@ TrainerSightseermHari:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Hey! I came here"
+	line "to meet Prof.Ivy!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "What? You already"
+	line "know her?"
 	done
 
 .AfterText:
-	text "TODO"
+	text "I've been traveling"
+	line "a lot just to meet"
+
+	para "every #mon"
+	line "Prof."
+
+	para "Wanna see the pho-"
+	line "tos I took?"
 	done
 
 TrainerTamerJordan:
@@ -67,15 +85,24 @@ TrainerTamerJordan:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Be careful! #-"
+	line "mon here can be"
+	cont "really wild!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Whoa! Looks like"
+	line "yours are wilder."
 	done
 
 .AfterText:
-	text "TODO"
+	text "How did you tame"
+	line "your #mon so"
+	cont "well?"
+
+	para "They're strong,"
+	line "but calm at the"
+	cont "same time."
 	done
 
 TrainerAromaLadyPeony:
@@ -90,15 +117,22 @@ TrainerAromaLadyPeony:
 	end
 
 .SeenText:
-	text "TODO"
+	text "Do you want to see"
+	line "my Bellossom?"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Aw… Bellossom"
+	line "didn't want to"
+	cont "battle…"
 	done
 
 .AfterText:
-	text "TODO"
+	text "My Bellossom loves"
+	line "living on this"
+
+	para "peaceful little"
+	line "island."
 	done
 
 TrainerGuitaristmGeddy:
@@ -113,15 +147,32 @@ TrainerGuitaristmGeddy:
 	end
 
 .SeenText:
-	text "TODO"
+	text "It seems to me I"
+	line "could live my life"
+
+	para "a lot better than"
+	line "I think I am…"
+
+	para "I guess that's why"
+	line "they call me…"
+
+	para "They call me the"
+	line "working man!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Good battle!"
+	line "I may write a"
+	cont "song about it."
 	done
 
 .AfterText:
-	text "TODO"
+	text "You think that I'm"
+	line "playing a guitar?"
+	cont "Wrong!"
+
+	para "It's a 6-string"
+	line "bass."
 	done
 
 Route49WhiteHerb:

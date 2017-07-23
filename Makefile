@@ -53,7 +53,7 @@ text/common_text.o \
 gfx/pics.o
 
 
-all: crystal freespace
+all: crystal
 
 crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
