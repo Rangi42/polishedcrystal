@@ -17,7 +17,7 @@ ENDM
 	trigger_def TRAINER_HOUSE_B1F,                      wTrainerHouseB1FTrigger
 	trigger_def POKEMON_LEAGUE_GATE,                    wPokemonLeagueGateTrigger
 	trigger_def SAFFRON_TRAIN_STATION,                  wSaffronTrainStationTrigger
-	trigger_def ROUTE_16_GATE,                          wRoute16GateTrigger
+	trigger_def ROUTE_16_17_GATE,                       wRoute1617GateTrigger
 	trigger_def ROUTE_18_GATE,                          wRoute18GateTrigger
 	trigger_def INDIGO_PLATEAU_POKECENTER_1F,           wIndigoPlateauPokecenter1FTrigger
 	trigger_def WILLS_ROOM,                             wWillsRoomTrigger

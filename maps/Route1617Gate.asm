@@ -11,11 +11,27 @@ Route1617Gate_MapScriptHeader:
 OfficerScript_0x733ea:
 	jumptextfaceplayer UnknownText_0x73408
 
+StepUpOneTrigger:
+	checkitem BICYCLE
+	iftrue DoNothingScript
+	applymovement PLAYER, StepUpOneMovementData
+	jump UnknownScript_0x733f3
+
+StepUpTwoTrigger:
+	checkitem BICYCLE
+	iftrue DoNothingScript
+	applymovement PLAYER, StepUpTwoMovementData
+	jump UnknownScript_0x733f3
+
+StepUpThreeTrigger:
+	checkitem BICYCLE
+	iftrue DoNothingScript
+	applymovement PLAYER, StepUpThreeMovementData
+	jump UnknownScript_0x733f3
+
 UnknownScript_0x733ed:
 	checkitem BICYCLE
-	iffalse UnknownScript_0x733f3
-	end
-
+	iftrue DoNothingScript
 UnknownScript_0x733f3:
 	showemote EMOTE_SHOCK, ROUTE1617GATE_OFFICER, 15
 	spriteface PLAYER, UP
@@ -24,11 +40,20 @@ UnknownScript_0x733f3:
 	waitbutton
 	closetext
 	applymovement PLAYER, MovementData_0x73405
+DoNothingScript:
 	end
 
 MovementData_0x73405:
 	step_right
 	turn_head_left
+	step_end
+
+StepUpThreeMovementData:
+	step_up
+StepUpTwoMovementData:
+	step_up
+StepUpOneMovementData:
+	step_up
 	step_end
 
 UnknownText_0x73408:
@@ -69,9 +94,9 @@ Route1617Gate_MapEventHeader:
 	db 5
 	xy_trigger 0, $3, $5, UnknownScript_0x733ed
 	xy_trigger 0, $4, $5, UnknownScript_0x733ed
-	xy_trigger 0, $5, $5, UnknownScript_0x733ed
-	xy_trigger 0, $6, $5, UnknownScript_0x733ed
-	xy_trigger 0, $7, $5, UnknownScript_0x733ed
+	xy_trigger 0, $5, $5, StepUpOneTrigger
+	xy_trigger 0, $6, $5, StepUpTwoTrigger
+	xy_trigger 0, $7, $5, StepUpThreeTrigger
 
 .Signposts:
 	db 0

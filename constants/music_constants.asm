@@ -1,5 +1,4 @@
 	const_def
-
 	const MUSIC_NONE                           ; 00
 	const MUSIC_TITLE                          ; 01
 	const MUSIC_ROUTE_1                        ; 02
@@ -172,6 +171,8 @@
 	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; a9
 	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; aa
 	const MUSIC_LUGIAS_SONG_2000               ; ab
+NUM_MUSIC EQU const_value
+
 	; special
 	const MUSIC_RADIO_TOWER                    ; ac
 	const MUSIC_MAHOGANY_MART                  ; ad
