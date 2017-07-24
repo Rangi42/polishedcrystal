@@ -518,7 +518,7 @@ NewBarkTown_MapEventHeader:
 .Warps:
 	db 5
 	warp_def $3, $6, 1, ELMS_LAB
-	warp_def $5, $f, 1, SHAMOUTI_HOTEL_1F
+	warp_def $5, $f, 1, KRISS_HOUSE_1F
 	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
 	warp_def $d, $b, 1, LYRAS_HOUSE_1F
 	warp_def $2, $a, 2, ELMS_HOUSE
