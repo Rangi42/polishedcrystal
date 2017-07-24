@@ -38,19 +38,17 @@ The final, non-beta 3.0 release should include all of these.
 Shamouti Island:
 
 * Caitlin and Darach in Beautiful Beach villa (EVENT_BEAT_DARACH and EVENT_BEAT_CAITLIN)
-* Trendy phrase guy in hotel lobby (ENGINE_CHANGED_TRENDY_PHRASE)
 * Looker in hotel room (not S.S. Aqua)
-* Sightseer in hotel mentions that Bottle Caps can be used for Hyper Training in Alola
 
 
 ### Maps
 
-Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
+Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
-* Valencia Island (NPCs)
+* Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
 

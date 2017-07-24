@@ -773,11 +773,6 @@ SECTION "Map Scripts 42", ROMX, BANK[MAP_SCRIPTS_42]
 INCLUDE "maps/ShamoutiHotel1F.asm"
 INCLUDE "maps/ShamoutiHotel2F.asm"
 INCLUDE "maps/ShamoutiHotel3F.asm"
-INCLUDE "maps/ShamoutiHotelRoom2A.asm"
-INCLUDE "maps/ShamoutiHotelRoom2B.asm"
-INCLUDE "maps/ShamoutiHotelRoom3B.asm"
-INCLUDE "maps/ShamoutiHotelRoom3C.asm"
-INCLUDE "maps/ShamoutiHotelRestaurant.asm"
 
 
 SECTION "Map Scripts 43", ROMX, BANK[MAP_SCRIPTS_43]
@@ -803,3 +798,12 @@ INCLUDE "maps/Route43.asm"
 SECTION "Map Scripts 46", ROMX, BANK[MAP_SCRIPTS_46]
 
 INCLUDE "maps/Route44.asm"
+
+
+SECTION "Map Scripts 47", ROMX, BANK[MAP_SCRIPTS_47]
+
+INCLUDE "maps/ShamoutiHotelRoom2A.asm"
+INCLUDE "maps/ShamoutiHotelRoom2B.asm"
+INCLUDE "maps/ShamoutiHotelRoom3B.asm"
+INCLUDE "maps/ShamoutiHotelRoom3C.asm"
+INCLUDE "maps/ShamoutiHotelRestaurant.asm"

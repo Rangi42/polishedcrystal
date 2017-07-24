@@ -309,7 +309,7 @@ InitializeNPCNames: ; 5ce9
 
 .Rival:
 .Backup: db "???@"
-.Trendy: db "Rainbow@"
+.Trendy: db "Prism@"
 ; 5d23
 
 InitializeWorld: ; 5d23

@@ -260,26 +260,27 @@ SpecialNameRival: ; 0xc29d
 	ld b, $2 ; rival
 	ld de, RivalName
 	farcall _NamingScreen
-	; default to "SILVER"
+	; default to "Silver"
 	ld hl, RivalName
-	ld de, DefaultRivalName
+	ld de, .DefaultRivalName
 	jp InitName
 ; 0xc2b2
 
-DefaultRivalName: ; 0xc2b2
+.DefaultRivalName: ; 0xc2b2
 	db "Silver@"
 
 SpecialTrendyPhrase:
-	ld b, $4 ; trendy phrase
+	ld b, $3 ; trendy phrase
 	ld de, TrendyPhrase
 	farcall _NamingScreen
+	; default to "Nothing"
 	ld hl, TrendyPhrase
-	ld de, DefaultTrendyPhrase
+	ld de, .DefaultTrendyPhrase
 	jp InitName
 ; 0xc2b2
 
-DefaultTrendyPhrase:
-	db "Sushi@"
+.DefaultTrendyPhrase:
+	db "Nothing@"
 
 SpecialNameRater: ; c2b9
 	farjp NameRater

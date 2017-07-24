@@ -127,6 +127,7 @@ MAP_SCRIPTS_43            EQU $21
 MAP_SCRIPTS_44            EQU $5
 MAP_SCRIPTS_45            EQU $5A
 MAP_SCRIPTS_46            EQU $47
+MAP_SCRIPTS_47            EQU $D
 
 
 ; audio.o

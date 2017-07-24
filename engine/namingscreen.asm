@@ -76,8 +76,8 @@ endr
 	dw .Pokemon
 	dw .Player
 	dw .Rival
-	dw .Box
 	dw .TrendyPhrase
+	dw .Box
 
 .Pokemon: ; 1173e (4:573e)
 	ld a, [CurPartySpecies]
@@ -145,6 +145,18 @@ endr
 
 ; 117d1
 
+.TrendyPhrase:
+	ld de, ArtistSpriteGFX
+	ld b, BANK(ArtistSpriteGFX)
+	call .LoadSprite
+	hlcoord 5, 2
+	ld de, .TrendyPhraseString
+	call PlaceString
+	jp .StoreSpriteIconParams
+
+.TrendyPhraseString:
+	db "What's trendy?@"
+
 .Box: ; 117f5 (4:57f5)
 	ld de, BallCutFruitSpriteGFX
 	ld hl, VTiles0 tile $00
@@ -172,18 +184,6 @@ endr
 
 ; 1182c
 
-.TrendyPhrase:
-	ld de, RockerSpriteGFX
-	ld b, BANK(RockerSpriteGFX)
-	call .LoadSprite
-	hlcoord 5, 2
-	ld de, .TrendyPhraseString
-	call PlaceString
-	jp .StoreSpriteIconParams
-
-.TrendyPhraseString:
-	db "Trendy phrase?"
-
 .LoadSprite: ; 11847 (4:5847)
 	push de
 	ld hl, VTiles0 tile $00
@@ -205,12 +205,18 @@ endr
 	ld b, SPRITE_ANIM_INDEX_RED_WALK
 	ld a, d
 	cp KrisSpriteGFX / $100
-	jr nz, .not_kris
+	jr z, .maybe_blue
+	cp ArtistSpriteGFX / $100
+	jr nz, .not_blue
+.maybe_blue
 	ld a, e
 	cp KrisSpriteGFX % $100
-	jr nz, .not_kris
+	jr z, .blue
+	cp ArtistSpriteGFX % $100
+	jr nz, .not_blue
+.blue
 	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-.not_kris
+.not_blue
 	ld a, b
 	depixel 4, 4, 4, 0
 	jp _InitSpriteAnimStruct
@@ -241,7 +247,7 @@ NamingScreen_IsTargetBox: ; 1189c
 	push bc
 	push af
 	ld a, [wNamingScreenType]
-	sub $3
+	sub $4
 	ld b, a
 	pop af
 	dec b
