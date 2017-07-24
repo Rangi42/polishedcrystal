@@ -1254,7 +1254,18 @@ endr
 	ld h, [hl]
 	ld l, a
 	pop af
+	cp 27
+	jr z, .exclamation
+	cp 28
+	jr z, .question
 	add "A" - 1
+	jr .got_letter
+.exclamation
+	ld a, "!"
+	jr .got_letter
+.question
+	ld a, "?"
+.got_letter
 	ld [hl], a
 	inc de
 	inc b
