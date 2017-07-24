@@ -1,5 +1,5 @@
 const_value set 2
-	const ROUTE43_VETERAN_F
+	const ROUTE43_SIGHTSEER_F
 	const ROUTE43_SUPER_NERD1
 	const ROUTE43_SUPER_NERD2
 	const ROUTE43_SUPER_NERD3
@@ -36,12 +36,12 @@ UnknownScript_0x19d05c:
 	domaptrigger ROUTE_43_GATE, $1
 	return
 
-Route43VeteranfScript:
+Route43SightseerfScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
 	iftrue .GotFlameOrb
-	checkevent EVENT_BEAT_VETERANF_LENIE
+	checkevent EVENT_BEAT_SIGHTSEERF_LENIE
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BREEDER_JODY_ONCE
 	iffalse .RouteNotCleared
@@ -66,11 +66,11 @@ Route43VeteranfScript:
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
-	setlasttalked ROUTE43_VETERAN_F
-	loadtrainer VETERANF, LENIE
+	setlasttalked ROUTE43_SIGHTSEER_F
+	loadtrainer SIGHTSEERF, LENIE
 	startbattle
 	reloadmapafterbattle
-	setevent EVENT_BEAT_VETERANF_LENIE
+	setevent EVENT_BEAT_SIGHTSEERF_LENIE
 	opentext
 .Beaten:
 	writetext .AfterText1
@@ -711,7 +711,7 @@ Route43_MapEventHeader:
 
 .PersonEvents:
 	db 13
-	person_event SPRITE_VETERAN_F, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route43VeteranfScript, -1
+	person_event SPRITE_LADY, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route43SightseerfScript, -1
 	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
 	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
 	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1

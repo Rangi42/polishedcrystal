@@ -890,6 +890,7 @@ KRIS EQU __enum__
 	const KAMILA
 	const NOELLE
 	const PILAR
+	const LENIE
 
 	trainerclass SIGHTSEERS ; 5e
 	const LIANDSU1
@@ -970,7 +971,6 @@ KRIS EQU __enum__
 	trainerclass VETERANF ; 63
 	const JOANNE
 	const SYLVIE
-	const LENIE
 	const LITVYAK
 
 	trainerclass PROTON ; 64

@@ -1018,7 +1018,7 @@ Group9Sprites:
 	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	db SPRITE_VETERAN_F ; doesn't walk
+	db SPRITE_LADY ; doesn't walk
 	; 10 walking sprites (9 that walk)
 	db SPRITE_GYARADOS_TOP_LEFT
 	db SPRITE_GYARADOS_TOP_RIGHT
