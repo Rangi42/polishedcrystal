@@ -1322,14 +1322,15 @@ Group30Sprites:
 ; Route22Past
 	db SPRITE_FISHER
 	db SPRITE_SCIENTIST
+	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_CELEBI
 	db SPRITE_LYRA
 	db SPRITE_SILVER
 	db SPRITE_GIOVANNI
-	; 7 walking sprites
+	; 8 walking sprites
 	db SPRITE_ROCK_BOULDER_FOSSIL
-	; 8 total sprites
+	; 9 total sprites
 	db 0
 
 
