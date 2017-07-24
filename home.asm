@@ -1597,8 +1597,8 @@ GetLeadAbility::
 	ld a, [PartyMon1Species]
 	xor EGG
 	ret z
-	xor EGG
-	ret z
+	xor EGG ; revert to original species
+	ret z ; in case species was 0
 	push bc
 	push de
 	push hl
