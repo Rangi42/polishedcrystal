@@ -308,7 +308,6 @@ endc
 	cp $80 - 7 * 7 + 1
 	jr c, .no_overflow
 
-	; TODO: fix corrupt/extra loaded tiles
 	push bc
 	ld de, wDecompressScratch
 	ld a, [hROMBank]
@@ -349,12 +348,12 @@ endc
 	db SYLVEON,    $71 - 7 * 7 + 1
 	db MISMAGIUS,  $71 - 7 * 7 + 1
 	db ELECTIVIRE, $76 - 7 * 7 + 1
-	db WEAVILE,    $80 - 7 * 7 + 1 ; TODO - fix flip
-	db LEAFEON,    $81 - 7 * 7 + 1 ; TODO - fix flip
-	db GLISCOR,    $83 - 7 * 7 + 1 ; TODO - fix flip
-	db RHYPERIOR,  $85 - 7 * 7 + 1 ; TODO - fix flip
-	db TOGEKISS,   $88 - 7 * 7 + 1 ; TODO - fix flip
-	db MAGMORTAR,  $8b - 7 * 7 + 1 ; TODO - fix flip
+	db WEAVILE,    $80 - 7 * 7 + 1
+	db LEAFEON,    $81 - 7 * 7 + 1
+	db GLISCOR,    $83 - 7 * 7 + 1
+	db RHYPERIOR,  $85 - 7 * 7 + 1
+	db TOGEKISS,   $88 - 7 * 7 + 1
+	db MAGMORTAR,  $8b - 7 * 7 + 1
 	db -1,         7 * 7
 
 LoadOrientedFrontpicTiles: ; 5114f

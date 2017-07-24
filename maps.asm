@@ -448,8 +448,7 @@ INCLUDE "maps/Route20.asm"
 INCLUDE "maps/Route21.asm"
 INCLUDE "maps/Route25.asm"
 INCLUDE "maps/Route35.asm"
-INCLUDE "maps/Route43.asm"
-INCLUDE "maps/Route44.asm"
+INCLUDE "maps/Route38.asm"
 
 
 SECTION "Map Scripts 20", ROMX, BANK[MAP_SCRIPTS_20]
@@ -463,7 +462,6 @@ INCLUDE "maps/Route28.asm"
 INCLUDE "maps/Route29.asm"
 INCLUDE "maps/Route30.asm"
 INCLUDE "maps/Route31.asm"
-INCLUDE "maps/Route38.asm"
 
 
 SECTION "Map Scripts 21", ROMX, BANK[MAP_SCRIPTS_21]
@@ -795,3 +793,13 @@ SECTION "Map Scripts 44", ROMX, BANK[MAP_SCRIPTS_44]
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/ViridianForest.asm"
+
+
+SECTION "Map Scripts 45", ROMX, BANK[MAP_SCRIPTS_45]
+
+INCLUDE "maps/Route43.asm"
+
+
+SECTION "Map Scripts 46", ROMX, BANK[MAP_SCRIPTS_46]
+
+INCLUDE "maps/Route44.asm"

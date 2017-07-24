@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE45_DRAGON_TAMER
 	const ROUTE45_BATTLE_GIRL
 	const ROUTE45_POKEFAN_M1
 	const ROUTE45_POKEFAN_M2
@@ -20,6 +21,97 @@ Route45_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+Route45Dragon_tamerScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
+	iftrue .GotFocusSash
+	checkevent EVENT_BEAT_DRAGON_TAMER_AEGON
+	iftrue .Beaten
+	checkevent EVENT_BEAT_BATTLE_GIRL_NOZOMI
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BLACKBELT_KENJI
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_HIKER_ERIK
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_HIKER_MICHAEL
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_HIKER_PARRY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_HIKER_TIMOTHY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERM_RYAN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERF_KELLY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_CAMPER_QUENTIN
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE45_DRAGON_TAMER
+	loadtrainer DRAGON_TAMER, AEGON
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_DRAGON_TAMER_AEGON
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem FOCUS_SASH
+	iffalse .Done
+	setevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
+.GotFocusSash:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
+	waitbutton
+	closetext
+	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "TODO"
+	done
+
+.QuestionText:
+	text "TODO"
+	done
+
+.RefusedText:
+	text "TODO"
+	done
+
+.SeenText:
+	text "TODO"
+	done
+
+.BeatenText:
+	text "TODO"
+	done
+
+.AfterText1:
+	text "TODO"
+	done
+
+.AfterText2:
+	text "TODO"
+	done
 
 TrainerBattleGirlNozomi:
 	trainer EVENT_BEAT_BATTLE_GIRL_NOZOMI, BATTLE_GIRL, NOZOMI, BattleGirlNozomiSeenText, BattleGirlNozomiBeatenText, 0, BattleGirlNozomiScript
@@ -549,7 +641,8 @@ Route45_MapEventHeader:
 	signpost 78, 17, SIGNPOST_ITEM, Route45HiddenPpUp
 
 .PersonEvents:
-	db 14
+	db 15
+	person_event SPRITE_DRAGON_TAMER, 75, 19, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
 	person_event SPRITE_COOLTRAINER_F, 59, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlNozomi, -1
 	person_event SPRITE_POKEFAN_M, 18, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerErik, -1
 	person_event SPRITE_POKEFAN_M, 65, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerMichael, -1

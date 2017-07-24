@@ -17,22 +17,30 @@ ValenciaIslandCooltrainermScript:
 
 	para "They're a mother"
 	line "and her daughter…"
-	cont "Or mayber her son?"
+	cont "Or maybe her son?"
 
 	para "Anyway, they're on"
 	line "vacation now."
 	done
 
 ValenciaIslandYoungsterScript:
-	jumptextfaceplayer .Text
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .Female
+	jumptextfaceplayer .Text1
 
-.Text:
-	text "Prof.Ivy is really"
-	line "cool!"
+.Female
+	jumptextfaceplayer .Text2
 
-	para "She helped my"
-	line "#mon when they"
-	cont "were sick!"
+.Text1:
+	text "Prof.Ivy is smokin'"
+	line "hot, don't you"
+	cont "think?"
+	done
+
+.Text2:
+	text "You may be cute,"
+	text "but Prof.Ivy is"
+	line "smokin' hot!"
 	done
 
 ValenciaIslandSign:

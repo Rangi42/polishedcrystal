@@ -60,13 +60,6 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 * Beautiful Beach villa (needs a larger map, maybe with the mansion tileset)
 
-Route leaders: (see [material/route-leaders.txt](material/route-leaders.txt))
-
-* Route 43: Ace Trainer♀ Lenie, gives Flame Orb
-* Route 44: Veteran♂ Barkhorn, gives Rocky Helmet
-* Route 46: Dragon Tamer Aegon, gives Focus Sash
-* Route 26/27: Veteran♀ Litvyak, gives Choice Specs
-
 
 ### Move effects
 

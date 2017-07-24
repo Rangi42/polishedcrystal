@@ -947,7 +947,6 @@ KRIS EQU __enum__
 	const SERA
 	const NEESHA
 	const CHIARA
-	const LENIE
 
 	trainerclass ACE_DUO ; 61
 	const ELANANDIDA1
@@ -971,6 +970,7 @@ KRIS EQU __enum__
 	trainerclass VETERANF ; 63
 	const JOANNE
 	const SYLVIE
+	const LENIE
 	const LITVYAK
 
 	trainerclass PROTON ; 64
