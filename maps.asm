@@ -26,17 +26,17 @@ SECTION "Map Blockdata 3", ROMX, BANK[MAPS_3]
 INCLUDE "maps/blockdata_3.asm"
 
 
-SECTION "Map Blockdata 4", ROMX, BANK[$7F]
+SECTION "Map Blockdata 4", ROMX, BANK[MAPS_4]
 
 INCLUDE "maps/blockdata_4.asm"
 
 
-SECTION "Map Blockdata 5", ROMX, BANK[$A]
+SECTION "Map Blockdata 5", ROMX, BANK[MAPS_5]
 
 INCLUDE "maps/blockdata_5.asm"
 
 
-SECTION "Map Blockdata 6", ROMX, BANK[$38]
+SECTION "Map Blockdata 6", ROMX, BANK[MAPS_6]
 
 INCLUDE "maps/blockdata_6.asm"
 

@@ -77,6 +77,9 @@ MAP_HEADERS               EQU $25
 MAPS_1                    EQU $2A
 MAPS_2                    EQU $2B
 MAPS_3                    EQU $2C
+MAPS_4                    EQU $7F
+MAPS_5                    EQU $A
+MAPS_6                    EQU $38
 
 MAP_SCRIPTS_1             EQU $15
 MAP_SCRIPTS_2             EQU $16

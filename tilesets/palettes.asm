@@ -148,10 +148,10 @@ LoadSpecialMapPalette: ; 494ac
 
 ; hack to replace green with Poké Mart blue for maps using Mart.blk
 	ld a, [MapBlockDataBank]
-	cp $2b ; BANK(CherrygroveMart_BlockData)
+	cp MAPS_2 ; BANK(CherrygroveMart_BlockData)
 	jr nz, .not_mart
 	ld a, [MapBlockDataPointer]
-	cp $d8 ; CherrygroveMart_BlockData % $100
+	and a ; cp $00 ; CherrygroveMart_BlockData % $100
 	jr nz, .not_mart
 	ld a, [MapBlockDataPointer + 1]
 	cp $40 ; CherrygroveMart_BlockData / $100
