@@ -604,8 +604,7 @@ ApplyAbilityEffectsOnEncounterMon:
 	; Force type (if we can) 50% of the time
 	call Random
 	and 1
-	ret z
-	call _ChooseWildEncounter
+	call z, _ChooseWildEncounter
 	pop bc
 	ret
 
