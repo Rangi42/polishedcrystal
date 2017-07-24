@@ -1589,7 +1589,7 @@ GetLeadAbility::
 ; Returns ability of lead mon unless it's an Egg. Used for field
 ; abilities
 	ld a, [PartyMon1Species]
-	and a
+	xor EGG
 	ret z
 	xor EGG
 	ret z
