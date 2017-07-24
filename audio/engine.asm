@@ -2313,12 +2313,18 @@ SetLRTracks: ; e8b1b
 ; e8b30
 
 _PlayMusic:: ; e8b30
+; unlock music
+	push de
+	ld b, SET_FLAG
+	ld hl, UnlockedMusic
+	call FlagAction
+	pop de
 ; load music
 	call MusicOff
 	ld hl, MusicID
 	ld [hl], e ; song number
 	inc hl
-	ld [hl], d ; MusicIDHi (always $)
+	ld [hl], d ; MusicIDHi (always 0)
 	ld hl, Music
 	add hl, de ; three
 	add hl, de ; byte

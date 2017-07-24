@@ -2005,8 +2005,6 @@ GameTimeSeconds:: ; d4c7
 GameTimeFrames:: ; d4c8
 	ds 1
 
-	ds 2
-
 CurDay:: ; d4cb
 	ds 1
 
@@ -2128,12 +2126,17 @@ BadgesEnd::
 PokemonJournals::
 	flag_array NUM_POKEMON_JOURNALS
 PokemonJournalsEnd::
-	ds 3 ; extra space set aside
+	ds 2 ; extra space set aside
+
+UnlockedMusic::
+	flag_array NUM_MUSIC
+UnlockedMusicEnd::
+	ds 2 ; extra space set aside
 
 TMsHMs:: ; d859
 	flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
-	ds 5 ; extra space set aside
+	ds 2 ; extra space set aside
 
 NumItems:: ; d892
 	ds 1
@@ -2206,7 +2209,7 @@ wCeruleanCapeTrigger::                       ds 1 ; d978
 wTrainerHouseB1FTrigger::                    ds 1 ; d979
 wPokemonLeagueGateTrigger::                  ds 1 ; d97a
 wSaffronTrainStationTrigger::                ds 1 ; d97b
-wRoute16GateTrigger::                        ds 1 ; d97c
+wRoute1617GateTrigger::                      ds 1 ; d97c
 wRoute18GateTrigger::                        ds 1 ; d97d
 wIndigoPlateauPokecenter1FTrigger::          ds 1 ; d97e
 wWillsRoomTrigger::                          ds 1 ; d97f
@@ -2327,12 +2330,12 @@ wKenjiFightCount::   ds 1 ; unused
 wParryFightCount::   ds 1
 wErinFightCount::    ds 1
 ; da0e
-	ds 10 ; extra space set aside
+	ds 4 ; extra space set aside
 
 EventFlags:: ; da72
 	flag_array NUM_EVENTS
 ; db6c
-	ds 30 ; extra space set aside
+	ds 20 ; extra space set aside
 
 wCurBox:: ; db72
 	ds 1
@@ -2401,10 +2404,10 @@ SwarmFlags:: ds 1
 wStartDay:: ds 1
 
 FruitTreeFlags:: flag_array NUM_FRUIT_TREES ; dc27
-	ds 4 ; extra space set aside
+	ds 1 ; extra space set aside
 
 NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
-	ds 4 ; extra space set aside
+	ds 1 ; extra space set aside
 
 wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
@@ -2430,7 +2433,7 @@ PoisonStepCount:: ; dc74
 	ds 1
 
 wPhoneList:: ds CONTACT_LIST_SIZE ; dc7c
-	ds 24 ; extra space set aside
+	ds 4 ; extra space set aside
 
 wHappinessStepCount:: ds 1
 
@@ -2452,7 +2455,7 @@ wMapData::
 
 VisitedSpawns:: ; dca5
 	flag_array NUM_SPAWNS
-	ds 4 ; extra space set aside
+	ds 1 ; extra space set aside
 
 wDigWarp:: ds 1 ; dcaa
 wDigMapGroup:: ds 1 ; dcab

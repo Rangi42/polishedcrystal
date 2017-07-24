@@ -49,9 +49,9 @@ Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDu
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
-* Valencia Island
-* Route 49
-* Safari Zone rest houses
+* Valencia Island (NPCs)
+* Route 49 (wild Pokémon and unique wild moves)
+* Safari Zone rest houses (NPCs and maybe trainers)
 
 Shamouti Island:
 
@@ -186,6 +186,7 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
+* Some sort of music player, in-game or via Options, that uses the UnlockedMusic flag_array
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)
