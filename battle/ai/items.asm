@@ -728,6 +728,8 @@ AI_HealStatus: ; 384e0
 	ld [EnemyMonStatus], a
 	ld hl, EnemySubStatus2
 	res SUBSTATUS_TOXIC, [hl]
+	ld hl, EnemySubStatus3
+	res SUBSTATUS_CONFUSED, [hl]
 	ret
 ; 384f7
 
