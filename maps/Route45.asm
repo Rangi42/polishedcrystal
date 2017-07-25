@@ -86,31 +86,70 @@ Route45Dragon_tamerScript:
 	end
 
 .IntroText:
-	text "TODO"
+	text "I'm training my"
+	line "dragons here."
+
+	para "Huh? A battle?"
+	line "I want a good one,"
+
+	para "so prove to me"
+	line "that you're strong."
+
+	para "Win against every"
+	line "trainer on this"
+
+	para "route and I'll"
+	line "battle you."
 	done
 
 .QuestionText:
-	text "TODO"
+	text "Oh, you're ready."
+	line "It's time for a"
+	cont "duel: your #mon"
+	cont "versus my dragons."
+
+	para "Should we start"
+	line "now?"
 	done
 
 .RefusedText:
-	text "TODO"
+	text "No problem."
+	line "I'll keep on"
+	cont "training."
 	done
 
 .SeenText:
-	text "TODO"
+	text "Let's see if you"
+	line "can handle my"
+
+	para "dragons' unyield-"
+	line "ing focus."
+	cont "Go, Dragonite!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "How powerful!"
+	line "My #mon were"
+	cont "no match for you."
 	done
 
 .AfterText1:
-	text "TODO"
+	text "Your strength"
+	line "rivals my own!"
+
+	para "Take this. You"
+	line "deserve it."
 	done
 
 .AfterText2:
-	text "TODO"
+	text "The art of train-"
+	line "ing Dragon-type"
+	cont "#mon is just"
+	cont "amazing."
+
+	para "You should become"
+	line "a Dragon Tamer"
+	cont "too."
 	done
 
 TrainerBattleGirlNozomi:

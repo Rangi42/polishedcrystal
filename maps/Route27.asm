@@ -126,31 +126,68 @@ Route27VeteranfScript:
 	end
 
 .IntroText:
-	text "TODO"
+	text "Hm! If you're here,"
+	line "then you must be"
+
+	para "heading for the"
+	line "#mon League."
+
+	para "Want to train"
+	line "with me?"
+
+	para "Then beat everyone"
+	line "else on Routes 26"
+	cont "and 27."
+
+	para "I'll wait for you"
+	line "here."
 	done
 
 .QuestionText:
-	text "TODO"
+	text "Hm. You beat the"
+	line "rest faster than"
+	cont "I expected."
+
+	para "Let's train."
 	done
 
 .RefusedText:
-	text "TODO"
+	text "It's okay."
+	line "I can wait."
 	done
 
 .SeenText:
-	text "TODO"
+	text "My #mon are"
+	line "all wearing"
+	cont "Choice Specs."
+
+	para "They may look"
+	line "weird, but they"
+	cont "are powerful."
 	done
 
 .BeatenText:
-	text "TODO"
+	text "You're ready for"
+	line "the #mon"
+	cont "League, I'm sure!"
 	done
 
 .AfterText1:
-	text "TODO"
+	text "Choice Specs will"
+	line "boost a #mon's"
+	cont "Special Attack,"
+
+	para "but it can only"
+	line "use one move."
+
+	para "Take a pair"
+	line "yourself."
 	done
 
 .AfterText2:
-	text "TODO"
+	text "Good luck! Say"
+	line "hello to Lance"
+	cont "for me."
 	done
 
 TrainerPsychicGilbert:
