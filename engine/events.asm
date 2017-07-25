@@ -301,6 +301,10 @@ CheckTileEvent: ; 96874
 	call RandomEncounter
 	ret c
 
+	call CheckAmbientCry
+	jr z, .ok
+	call PlayCry2
+
 .ok
 	xor a
 	ret

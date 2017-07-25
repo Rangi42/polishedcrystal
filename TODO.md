@@ -120,6 +120,23 @@ Some of these may never be added; they're just suggestions.
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
    * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
    * Add Gen 3 and 4 Pokémon from [Hoenn Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Hoenn_Sound) and [Sinnoh Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Sinnoh_Sound)
+      * Zigzagoon → Linoone
+      * Whismur → Loudred → Exploud
+      * Makuhita → Hariyama
+      * Plusle and Minun
+      * Numel → Camerupt
+      * Spoink → Grumpig
+      * Spinda (with spotted forms from Pokémon Orange)
+      * Absol
+      * Meditite → Medicham
+      * Bidoof → Bibarel
+      * Shinx → Luxio → Luxray (retype to Electric/Dark)
+      * Budew → Roselia → Roserade
+      * Buizel → Floatzel
+      * Chingling → Chimecho
+      * Bronzor → Bronzong
+      * Chatot
+      * Carnivine
    * Add some Gen 3 and 4 legendaries in appropriate places; tentative ideas:
       * Regirock, Regice, and Registeel in new ruins like in Platinum
       * Regigigas in Mt. Silver after you catch the three Regis
@@ -142,7 +159,7 @@ Some of these may never be added; they're just suggestions.
       * Aron → Lairon → Aggron
       * Torkoal
       * Lunatone and Solrock
-      * Feebas and Milotic
+      * Feebas → Milotic
       * Snorunt → Glalie / Froslas
       * Relicanth
       * Bagon → Shelgon → Salamence
@@ -173,6 +190,7 @@ Some of these may never be added; they're just suggestions.
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
+* Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
