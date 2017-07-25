@@ -587,6 +587,7 @@ endm
 	treemon_map ROUTE_32_COAST, 4
 	treemon_map ROUTE_34_COAST, 3
 	treemon_map ROUTE_35_COAST, 3
+	treemon_map NOISY_FOREST, 3
 	db -1
 ; b82c5
 
