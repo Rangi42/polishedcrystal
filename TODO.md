@@ -111,7 +111,6 @@ Some of these may never be added; they're just suggestions.
    * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
    * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
-   * Nidoran♂ and Nidoran♀ as separate forms, freeing up another slot
 * More Pokémon
    * Rewrite Eggs to use the IsEgg bitflag instead of $fe
    * Rewrite Bill's PC to not use $ff as a terminator
@@ -119,6 +118,13 @@ Some of these may never be added; they're just suggestions.
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
    * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
+      * Lickilicky
+      * Ambipom
+      * Azurill
+      * Wynaut
+      * Happiny
+      * Bonsly
+      * Mantyke
    * Add Gen 3 and 4 Pokémon from [Hoenn Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Hoenn_Sound) and [Sinnoh Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Sinnoh_Sound)
       * Zigzagoon → Linoone
       * Whismur → Loudred → Exploud
@@ -150,8 +156,8 @@ Some of these may never be added; they're just suggestions.
       * Darkrai in Blue's bedroom
       * Heatran?
       * Phione from an Egg given by Wallace
-      * Victini
-      * Magearna
+      * Victini on a cruise to Liberty Garden
+      * Magearna in the Ruins of Alph
    * Add certain other Gen 3 and 4 Pokémon; Prism's dex is similar to my own taste
       * Ralts → Kirlia → Gardevoir / Gallade
       * Surskit → Masquerain (buff and retype to Bug/Water with Levitate)
@@ -160,7 +166,7 @@ Some of these may never be added; they're just suggestions.
       * Torkoal
       * Lunatone and Solrock
       * Feebas → Milotic
-      * Snorunt → Glalie / Froslas
+      * Snorunt → Glalie / Froslass
       * Relicanth
       * Bagon → Shelgon → Salamence
       * Beldum → Metang → Metagross
