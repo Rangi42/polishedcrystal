@@ -68,7 +68,7 @@ bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-freespace: utils/bank_ends.txt
+freespace: utils/bank_ends.txt roms.md5
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
@@ -91,6 +91,9 @@ clean:
 %.lz: % ; $(gfx) lz $<
 
 utils/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
+
+roms.md5: crystal
+	md5sum $(NAME)-$(VERSION).gbc > roms.md5
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
