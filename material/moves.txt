@@ -1,46 +1,54 @@
-Bellsprout/Weepinbell/Victreebel: Sucker Punch (HGSS tutor)
-Caterpie/Metapod/Butterfree: Twister (HGSS tutor), X-Scissor (Prism tutor)
-Chinchou/Lanturn: Heal Bell (HGSS tutor)
 Drowzee/Hypno: Tri Attack (RBY TM), Baton Pass (purified)
-Dunsparce: Pain Split (HGSS tutor)
-Eevee: Focus Energy (RBY learnset), Charm (purified), Earth Power (Prism tutor)
+Eevee: Focus Energy (RBY learnset), Charm (purified)
 Girafarig: Mirror Coat (Dream World), Sucker Punch (HGSS tutor)
-Growlithe/Arcanine: Dragon Rage (RBY TM), Charm (purified), Dragon Dance (Prism tutor)
+Growlithe/Arcanine: Dragon Rage (RBY TM), Charm (purified)
 Houndour/Houndoom: Charm (purified), Night Slash (Prism tutor)
-Jigglypuff/Wigglytuff: Tri Attack (RBY TM), Pain Split (HGSS tutor), Moonlight (Prism tutor)
-Jynx: Heal Bell (HGSS tutor)
-Lapras: Heal Bell (HGSS tutor)
-Larvitar/Pupitar/Tyranitar: Low Kick (HGSS tutor), Dragon Pulse (Prism tutor)
-Mankey/Primeape: Gunk Shot (HGSS tutor), Metronome (RBY TM)
-Mantine: Mirror Coat (Dream World), Gunk Shot (HGSS tutor)
+Jigglypuff/Wigglytuff: Tri Attack (RBY TM), Pain Split (HGSS tutor)
 Meowth/Persian: Hypnosis (Dream World), Gunk Shot (HGSS tutor)
-Miltank: Metronome (HGSS tutor)
 Natu/Xatu: Baton Pass (purified), Sucker Punch (HGSS tutor)
-NidoranF/Nidorina/Nidoqueen: Super Fang (HGSS tutor)
-NidoranM/Nidorino/Nidoking: Sucker Punch (HGSS tutor), Super Fang (HGSS tutor)
-Phanpy/Donphan: Gunk Shot (HGSS tutor)
-Poliwag/Poliwhirl/Poliwrath: Mist (Dream World)
 Psyduck/Golduck: Charm (purified), Low Kick (HGSS tutor)
-Scyther: Crunch (Prism tutor), Glare (new)
-Slowpoke/Slowbro: Tri Attack (RBY TM)
-Snubbull/Granbull: Heal Bell (HGSS tutor), Low Kick (HGSS tutor), Metronome (RBY TM), Super Fang (HGSS tutor)
-Teddiursa/Ursaring: Gunk Shot (HGSS tutor), Metronome (RBY TM)
-Zubat/Golbat/Crobat: Sky Attack (HGSS tutor), Twister (HGSS tutor)
 
-Diglett/Dugtrio: Charm (purified)
-Doduo/Dodrio: Baton Pass (purified)
-Ponyta/Rapidash: Baton Pass (purified)
-Swinub/Piloswine/Mamoswine: Charm (purified)
-Vulpix/Ninetales: Charm (purified)
-Weedle/Kakuna/Beedrill: Baton Pass (purified)
-Wobbuffet: Charm (purified)
+Original:
+Scyther: Glare
 
-Chansey: Haze (Prism tutor)
-Exeggcute/Exeggutor: Confuse Ray (Prism tutor)
-Koffing/Weezing: Crunch (Prism tutor)
-Marill/Azumarill: Focus Energy (Prism tutor)
-Rhyhorn/Rhydon/Rhyperior: Crunch (Prism tutor)
-Sentret/Furret: Recover (Prism tutor)
-Tangela/Tangrowth: Sludge (Prism tutor)
-Venonat/Venomoth: Night Shade (Prism tutor)
-Yanma/Yanmega: Feint Attack (Prism tutor)
+RBY TM:
+Mankey/Primeape: Metronome
+Slowpoke/Slowbro: Tri Attack
+
+HGSS tutor:
+Bellsprout/Weepinbell/Victreebel: Sucker Punch
+Caterpie/Metapod/Butterfree: Twister
+Chinchou/Lanturn: Heal Bell
+Dunsparce: Pain Split
+Jynx: Heal Bell
+Lapras: Heal Bell
+Mantine: Gunk Shot
+Miltank: Metronome
+NidoranF/Nidorina/Nidoqueen: Super Fang
+NidoranM/Nidorino/Nidoking: Sucker Punch, Super Fang
+Phanpy/Donphan: Gunk Shot
+Snubbull/Granbull: Heal Bell, Low Kick, Metronome, Super Fang
+Teddiursa/Ursaring: Gunk Shot, Metronome
+Zubat/Golbat/Crobat: Sky Attack, Twister
+
+Purified:
+Diglett/Dugtrio: Charm
+Doduo/Dodrio: Baton Pass
+Ponyta/Rapidash: Baton Pass
+Swinub/Piloswine/Mamoswine: Charm
+Vulpix/Ninetales: Charm
+Weedle/Kakuna/Beedrill: Baton Pass
+Wobbuffet: Charm
+
+Dream World:
+Poliwag/Poliwhirl/Poliwrath: Mist
+
+Prism tutor:
+Chansey: Haze
+Exeggcute/Exeggutor: Confuse Ray
+Marill/Azumarill: Focus Energy
+Pineco/Forretress: Smokescreen
+Sentret/Furret: Recover
+Tangela/Tangrowth: Sludge
+Venonat/Venomoth: Night Shade
+Yanma/Yanmega: Feint Attack

@@ -199,15 +199,15 @@ CaterpieEvosAttacks:
 MetapodEvosAttacks:
 	db EVOLVE_LEVEL, 10, BUTTERFREE
 	db 0 ; no more evolutions
-	db 1, TACKLE ; new move
-	db 1, STRING_SHOT ; new move
+	db 1, TACKLE ; Caterpie move
+	db 1, STRING_SHOT ; Caterpie move
 	db 1, HARDEN ; evolution move
 	db 0 ; no more level-up moves
 
 ButterfreeEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, TACKLE ; new move
-	db 1, STRING_SHOT ; new move
+	db 1, TACKLE ; Caterpie move
+	db 1, STRING_SHOT ; Caterpie move
 	db 1, GUST
 	db 11, CONFUSION
 	db 13, POISONPOWDER
@@ -236,15 +236,15 @@ WeedleEvosAttacks:
 KakunaEvosAttacks:
 	db EVOLVE_LEVEL, 10, BEEDRILL
 	db 0 ; no more evolutions
-	db 1, POISON_STING ; new move
-	db 1, STRING_SHOT ; new move
+	db 1, POISON_STING ; Weedle move
+	db 1, STRING_SHOT ; Weedle move
 	db 1, HARDEN ; evolution move
 	db 0 ; no more level-up moves
 
 BeedrillEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, POISON_STING ; new move
-	db 1, STRING_SHOT ; new move
+	db 1, POISON_STING ; Weedle move
+	db 1, STRING_SHOT ; Weedle move
 	db 1, FURY_ATTACK
 	db 14, RAGE
 	db 27, PURSUIT
@@ -703,6 +703,7 @@ JigglypuffEvosAttacks:
 
 WigglytuffEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, MOONLIGHT ; new move
 	db 1, DOUBLE_EDGE
 	db 1, PLAY_ROUGH
 	db 1, SING
@@ -1038,7 +1039,7 @@ MankeyEvosAttacks:
 	db 33, THRASH
 	db 36, SUBMISSION ; Close Combat → RBY TM move
 	db 40, SCREECH
-	db 43, COUNTER ; Stomping Tantrum → egg move
+	db 43, GUNK_SHOT ; Stomping Tantrum → HGSS tutor move
 	db 47, OUTRAGE
 	db 0 ; no more level-up moves
 
@@ -1060,7 +1061,7 @@ PrimeapeEvosAttacks:
 	db 35, THRASH
 	db 39, SUBMISSION ; Close Combat → RBY TM move
 	db 44, SCREECH
-	db 48, COUNTER ; Stomping Tantrum → egg move
+	db 48, GUNK_SHOT ; Stomping Tantrum → HGSS tutor move
 	db 53, OUTRAGE
 	db 0 ; no more level-up moves
 
@@ -1090,6 +1091,7 @@ GrowlitheEvosAttacks:
 
 ArcanineEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, DRAGON_DANCE ; new move
 	db 1, GROWL
 	db 1, BITE
 	db 1, ROAR
@@ -4111,7 +4113,7 @@ ScizorEvosAttacks:
 	db 33, BUG_BUZZ ; Razor Wind → egg move
 	db 37, HARDEN ; Iron Defense → similar move
 	db 41, X_SCISSOR
-	db 45, NIGHT_SLASH
+	db 45, CRUNCH ; Night Slash → Prism tutor move
 	db 49, BATON_PASS ; Double Hit → egg move
 	db 50, IRON_HEAD
 	db 57, SWORDS_DANCE
@@ -4392,7 +4394,7 @@ MantineEvosAttacks:
 	db 14, WING_ATTACK
 	db 16, HEADBUTT
 	db 19, WATER_PULSE
-	db 23, PROTECT ; Wide Guard → similar move
+	db 23, MIRROR_COAT ; Wide Guard → Dream World move
 	db 27, TAKE_DOWN
 	db 32, AGILITY
 	db 36, AIR_SLASH
@@ -4801,6 +4803,7 @@ PupitarEvosAttacks:
 TyranitarEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, STOMP ; evolution move
+	db 1, LOW_KICK ; HGSS tutor move
 	db 1, BITE
 	db 1, LEER
 	db 5, SANDSTORM
