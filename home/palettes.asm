@@ -14,7 +14,7 @@ ForceUpdateCGBPals:: ; c37
 
 	ld a, [rSVBK]
 	push af
-	ld a, 5 ; BANK(BGPals)
+	ld a, BANK(BGPals)
 	ld [rSVBK], a
 
 	ld hl, BGPals ; 5:d080
@@ -276,7 +276,7 @@ ClearVBank1:: ; d79
 Special_ReloadSpritesNoPalettes:: ; d91
 	ld a, [rSVBK]
 	push af
-	ld a, 5 ; BANK(BGPals)
+	ld a, BANK(BGPals)
 	ld [rSVBK], a
 	ld hl, BGPals
 	ld bc, $40 + $10

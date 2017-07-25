@@ -8168,7 +8168,7 @@ InitEnemy: ; 3f55e
 BackUpVBGMap2: ; 3f568
 	ld a, [rSVBK]
 	push af
-	ld a, $6 ; BANK(wDecompressScratch)
+	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 	ld hl, wDecompressScratch
 	ld bc, $40 tiles ; VBGMap3 - VBGMap2

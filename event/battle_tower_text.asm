@@ -5,7 +5,7 @@ BattleTowerText:: ; 11c000
 ; 3: Player won
 	ld a, [rSVBK]
 	push af
-	ld a, 3 ; BANK(BT_OTTrainerClass)
+	ld a, BANK(BT_OTTrainerClass)
 	ld [rSVBK], a
 	ld hl, BT_OTTrainerClass
 	ld a, [hl]

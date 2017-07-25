@@ -93,7 +93,7 @@ Pharmacist: ; 15aae
 ; 15ac4
 
 RooftopSale: ; 15ac4
-	ld b, BANK(.RooftopSaleData1) ; BANK(RooftopSaleData2)
+	ld b, BANK(.RooftopSaleData1) ; BANK(.RooftopSaleData2)
 	ld de, .RooftopSaleData1
 	ld hl, StatusFlags
 	bit 6, [hl] ; hall of fame

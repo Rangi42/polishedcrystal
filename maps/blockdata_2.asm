@@ -1,6 +1,3 @@
-; Keep Mart.blk at the top of its bank so that its address doesn't change
-; This is necessary because tilesets/palettes.asm:LoadSpecialMapPalette
-; hard-codes its address, because the labels are inaccessible there
 OlivineMart_BlockData:
 EcruteakMart_BlockData:
 BlackthornMart_BlockData:
@@ -14,6 +11,7 @@ LavenderMart_BlockData:
 ViridianMart_BlockData:
 SaffronMart_BlockData:
 CherrygroveMart_BlockData:
+GenericMart_BlockData:: ; used by tilesets/palettes.asm:LoadSpecialMapPalette
 	INCBIN "maps/Mart.blk"
 
 Route14_BlockData:

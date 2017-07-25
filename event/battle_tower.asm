@@ -182,7 +182,7 @@ CopyBTTrainerToTemp: ; 1704a2
 ; copy the BattleTower-Trainer data that lies at 'BT_OTTrainer' to 'wBT_OTTemp'
 	ld a, [rSVBK]
 	push af
-	ld a, $3 ; BANK(BT_OTTrainer)
+	ld a, BANK(BT_OTTrainer)
 	ld [rSVBK], a
 
 	ld hl, BT_OTTrainer ; $d100

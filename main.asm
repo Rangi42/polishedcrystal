@@ -2512,11 +2512,11 @@ SaveMenu_LoadEDTile: ; 4cf45 (13:4f45)
 	jr c, .WaitLY
 
 	di
-	ld a, 1 ; BANK(VBGMap2)
+	ld a, BANK(VBGMap2)
 	ld [rVBK], a
 	hlcoord 0, 0, AttrMap
 	call .LoadEDTile
-	xor a ; BANK(VBGMap0)
+	xor a ; ld a, BANK(VBGMap0)
 	ld [rVBK], a
 	hlcoord 0, 0
 	call .LoadEDTile
@@ -2649,11 +2649,11 @@ PhoneRing_LoadEDTile: ; 4d188
 	jr c, .wait
 
 	di
-	ld a, $1 ; BANK(VBGMap2)
+	ld a, BANK(VBGMap2)
 	ld [rVBK], a
 	hlcoord 0, 0, AttrMap
 	call .StackPointerMagic
-	ld a, $0 ; BANK(VBGMap0)
+	xor a ; ld a, BANK(VBGMap0)
 	ld [rVBK], a
 	hlcoord 0, 0
 	call .StackPointerMagic

@@ -738,7 +738,7 @@ LoadMapPals:
 	call AddNTimes
 	ld de, UnknOBPals
 	ld bc, 8 palettes
-	ld a, $5 ; BANK(UnknOBPals)
+	ld a, BANK(UnknOBPals)
 	call FarCopyWRAM
 
 	farcall LoadSpecialMapOBPalette
