@@ -128,6 +128,11 @@ InformalMartIntroText::
 	line "some supplies?"
 	done
 
+BazaarMartIntroText::
+	text "Come take a look"
+	line "at my wares!"
+	done
+
 MoveReminderIntroText::
 	text "Me? I'm the"
 	line "Move Maniac."

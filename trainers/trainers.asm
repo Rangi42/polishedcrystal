@@ -14868,12 +14868,12 @@ ProfIvyGroup:
 
 	; party
 	; TODO: movesets, etc
-	db 64, BUTTERFREE
-	db 63, POLITOED
-	db 63, VICTREEBEL
-	db 62, RHYPERIOR
-	db 62, NIDOQUEEN
-	db 65, GYARADOS
+	db 65, BUTTERFREE
+	db 64, POLITOED
+	db 64, VICTREEBEL
+	db 63, RHYPERIOR
+	db 63, NIDOQUEEN
+	db 66, GYARADOS
 
 	db $ff ; end
 

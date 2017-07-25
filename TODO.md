@@ -55,10 +55,9 @@ Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/
 
 Shamouti Island:
 
-* Shamouti Island (outdoor market instead of Mart) (MART_SHAMOUTI_1 and MART_SHAMOUTI_2)
+* Shamouti Island
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
-* Beautiful Beach villa (needs a larger map, maybe with the mansion tileset)
 
 
 ### Move effects

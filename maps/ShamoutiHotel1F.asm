@@ -141,6 +141,13 @@ ShamoutiHotel1FYoungsterScript:
 	cont "right now!"
 	done
 
+ShamoutiHotelRestaurantSign:
+	jumptext .Text
+
+.Text:
+	text "Oasis Restaurant"
+	done
+
 ShamoutiHotel1F_MapEventHeader:
 .Warps:
 	db 4
@@ -153,7 +160,8 @@ ShamoutiHotel1F_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 1
+	signpost 0, 15, SIGNPOST_READ, ShamoutiHotelRestaurantSign
 
 .PersonEvents:
 	db 5
