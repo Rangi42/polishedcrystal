@@ -2484,6 +2484,7 @@ GyaradosEvosAttacks:
 LaprasEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ANCIENTPOWER ; HGSS tutor move
+	db 1, DRAGON_RAGE ; RBY TM move
 	db 1, BITE ; event move
 	db 1, SING
 	db 1, GROWL
@@ -2684,6 +2685,7 @@ KabutopsEvosAttacks:
 
 AerodactylEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, DRAGON_RAGE ; RBY TM move
 	db 1, WING_ATTACK
 	db 1, SUPERSONIC
 	db 1, BITE
@@ -2723,6 +2725,7 @@ SnorlaxEvosAttacks:
 ArticunoEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, GUST
+	db 1, TWISTER ; tutor move
 	db 1, ICY_WIND ; Powder Snow → similar move
 	db 8, MIST
 	db 15, ICE_SHARD
@@ -2743,6 +2746,7 @@ ArticunoEvosAttacks:
 ZapdosEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, PECK
+	db 1, TWISTER ; tutor move
 	db 1, THUNDERSHOCK
 	db 8, THUNDER_WAVE
 	db 15, PROTECT ; Detect → similar move
@@ -2763,6 +2767,7 @@ ZapdosEvosAttacks:
 MoltresEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WING_ATTACK
+	db 1, TWISTER ; tutor move
 	db 1, EMBER
 	db 8, FIRE_SPIN
 	db 15, SAFEGUARD ; Agility → Safeguard
@@ -3444,7 +3449,7 @@ MareepEvosAttacks:
 	db 29, POWER_GEM
 	db 32, THUNDERBOLT ; Discharge → TM move
 	db 36, SAFEGUARD ; Cotton Guard → egg move
-	db 39, FLASH_CANNON ; Signal Beam → TM move
+	db 39, DAZZLINGLEAM ; Signal Beam → new move
 	db 43, LIGHT_SCREEN
 	db 46, THUNDER
 	db 0 ; no more level-up moves
@@ -3468,7 +3473,7 @@ endc
 	db 34, POWER_GEM
 	db 38, THUNDERBOLT ; Discharge → TM move
 	db 43, SAFEGUARD ; Cotton Guard → egg move
-	db 47, FLASH_CANNON ; Signal Beam → TM move
+	db 47, DAZZLINGLEAM ; Signal Beam → new move
 	db 52, LIGHT_SCREEN
 	db 56, THUNDER
 	db 0 ; no more level-up moves
@@ -3490,7 +3495,7 @@ AmpharosEvosAttacks:
 	db 35, POWER_GEM
 	db 40, THUNDERBOLT ; Discharge → TM move
 	db 46, SAFEGUARD ; Cotton Guard → egg move
-	db 51, FLASH_CANNON ; Signal Beam → TM move
+	db 51, DAZZLINGLEAM ; Signal Beam → new move
 	db 57, LIGHT_SCREEN
 	db 62, THUNDER
 	db 65, DRAGON_PULSE
@@ -3737,7 +3742,7 @@ UmbreonEvosAttacks:
 	db 25, TOXIC ; Assurance → TM move
 	db 29, SCREECH
 	db 33, MOONLIGHT
-	db 37, DARK_PULSE ; Mean Look → TM move
+	db 37, SUCKER_PUNCH ; Mean Look → tutor move
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
 	db 45, MEAN_LOOK ; Guard Swap → Mean Look
 	db 0 ; no more level-up moves
@@ -4567,7 +4572,7 @@ HitmontopEvosAttacks:
 	db 28, COUNTER
 	db 33, TRIPLE_KICK
 	db 37, AGILITY
-	db 42, ENDURE ; Gyro Ball → TM move
+	db 42, TWISTER ; Gyro Ball → tutor move
 	db 46, FORESIGHT ; Wide Guard + Quick Guard → new move
 	db 50, PROTECT ; Detect → similar move
 	db 55, SUBMISSION ; Close Combat → new move

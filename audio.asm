@@ -279,7 +279,7 @@ SECTION "Extra Songs 17", ROMX, BANK[$7]
 INCLUDE "audio/music/bw/gymleaderbattle.asm"
 
 
-SECTION "Extra Songs 18", ROMX, BANK[$F]
+SECTION "Extra Songs 18", ROMX, BANK[$1A]
 
 INCLUDE "audio/music/bw/finalpokemon.asm"
 
