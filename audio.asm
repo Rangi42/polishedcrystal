@@ -233,44 +233,38 @@ INCLUDE "audio/music/rse/gymleaderbattle.asm"
 INCLUDE "audio/music/dppt/gymleaderbattle.asm"
 
 
-SECTION "Extra Songs 11", ROMX
-
-INCLUDE "audio/music/bw/gymleaderbattle.asm"
-INCLUDE "audio/music/bw/finalpokemon.asm"
-
-
-SECTION "Extra Songs 12", ROMX, BANK[$43]
+SECTION "Extra Songs 11", ROMX, BANK[$43]
 
 INCLUDE "audio/music/sm/wildbattle.asm"
 INCLUDE "audio/music/sm/trainerbattle.asm"
 
 
-SECTION "Extra Songs 13", ROMX, BANK[$19]
+SECTION "Extra Songs 12", ROMX, BANK[$19]
 
 INCLUDE "audio/music/sm/elitefourbattle.asm"
 INCLUDE "audio/music/sm/motherbeastbattle.asm"
 
 
-SECTION "Extra Songs 14", ROMX, BANK[$1B]
+SECTION "Extra Songs 13", ROMX, BANK[$1B]
 
 INCLUDE "audio/music/hgss/cianwoodcity.asm"
 INCLUDE "audio/music/custom/lugiassong.asm"
 
 
-SECTION "Extra Songs 15", ROMX, BANK[$20]
+SECTION "Extra Songs 14", ROMX, BANK[$20]
 
 INCLUDE "audio/music/dppt/starkmountain.asm"
 INCLUDE "audio/music/oras/wallyencounter.asm"
 INCLUDE "audio/music/oras/wallybattle.asm"
 
 
-SECTION "Extra Songs 16", ROMX, BANK[$A]
+SECTION "Extra Songs 15", ROMX, BANK[$A]
 
 INCLUDE "audio/music/oras/zinniaencounter.asm"
 INCLUDE "audio/music/oras/zinniabattle.asm"
 
 
-SECTION "Extra Songs 17", ROMX, BANK[$5B]
+SECTION "Extra Songs 16", ROMX, BANK[$5B]
 
 INCLUDE "audio/music/rse/route101.asm"
 INCLUDE "audio/music/rse/dewfordtown.asm"
@@ -278,6 +272,16 @@ INCLUDE "audio/music/rse/meteorfalls.asm"
 INCLUDE "audio/music/bw/celestialtower.asm"
 INCLUDE "audio/music/bw/blackcity.asm"
 INCLUDE "audio/music/bw/elitefourbattle.asm"
+
+
+SECTION "Extra Songs 17", ROMX, BANK[$7]
+
+INCLUDE "audio/music/bw/gymleaderbattle.asm"
+
+
+SECTION "Extra Songs 18", ROMX, BANK[$F]
+
+INCLUDE "audio/music/bw/finalpokemon.asm"
 
 
 SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]
