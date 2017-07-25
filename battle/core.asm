@@ -9221,9 +9221,8 @@ CheckUniqueWildMove:
 	ld b, a
 	jr .TeachMove
 .ChanceToTeach
-	; 25% chance to teach other moves
 	call Random
-	cp 25 percent + 1
+	cp 50 percent + 1
 	ret nc
 .TeachMove
 	ld hl, EnemyMonMoves + 1 ; second move
