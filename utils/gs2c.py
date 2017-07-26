@@ -12,6 +12,8 @@ import os.path
 def parseint(s):
 	if s.startswith('$'):
 		return int(s[1:], 16)
+	elif s.startswith('%'):
+		return int(s[1:], 2)
 	return int(s)
 
 def hexint(n):
@@ -97,12 +99,13 @@ def convert_line(line):
 
 	# Example: pkmsSetArp $E4 == sound_duty 0, 1, 2, 3
 	if line.startswith('pkmsSetArp'):
-		_, x = line.split(None, 1)
-		b1 = x & 0b11
-		b2 = (x & 0b1100) >> 2
-		b3 = (x & 0b110000) >> 4
-		b4 = (x & 0b11000000) >> 6
-		return 'sound_duty %s, %s, %s, %s' % (b1, b2, b3, b4)
+		_, duty = line.split(None, 1)
+		duty = parseint(duty)
+		d1 = duty & 0b11
+		d2 = (duty & 0b1100) >> 2
+		d3 = (duty & 0b110000) >> 4
+		d4 = (duty & 0b11000000) >> 6
+		return 'sound_duty %s, %s, %s, %s' % (d1, d2, d3, d4)
 
 	# Example: pkmsSetTempo 0, $80 == tempo $80
 	if line.startswith('pkmsSetTempo'):
