@@ -375,6 +375,8 @@ LoadSpriteGFX: ; 14306
 
 SortUsedSprites: ; 1431e
 ; Bubble-sort sprites by type.
+; TODO: verify whether this is necessary; remove it otherwise.
+; Note that overworld sprite sets are already manually sorted.
 
 ; Run backwards through UsedSprites to find the last one.
 
