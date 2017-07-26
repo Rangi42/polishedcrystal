@@ -47,11 +47,19 @@ ReturnFromMapSetupScript:: ; b8000
 ; Display for 60 frames
 	ld a, 60
 	ld [wLandmarkSignTimer], a
+	ld a, [hVBlank]
+	push af
+	ld a, 2
+	ld [hVBlank], a
+	farcall RefreshSprites
 	call LoadMapNameSignGFX
 	call InitMapNameFrame
+	pop af
+	ld [hVBlank], a
 	farjp HDMATransfer_OnlyTopFourRows
 
 .dont_do_map_sign
+	farcall RefreshSprites
 	ld a, [wCurrentLandmark]
 	ld [wPreviousLandmark], a
 	ld a, $90

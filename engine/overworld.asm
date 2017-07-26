@@ -167,9 +167,7 @@ GetSprite: ; 1423c
 
 	ld hl, SpriteHeaders ; address
 	dec a
-	ld c, a
-	ld b, 0
-	ld a, 6
+	ld bc, 6
 	call AddNTimes
 	; load the address into de
 	ld a, [hli]
