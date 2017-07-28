@@ -1,14 +1,20 @@
 	db NOCTOWL ; 164
 
+if DEF(FAITHFUL)
 	db 100,  50,  50,  70,  86,  96
 	;   hp  atk  def  spd  sat  sdf
+else
+	db 100,  50,  50,  70,  96,  96
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db NORMAL, FLYING
+	db 90 ; catch rate
 else
 	db GHOST, FLYING
+	db 80 ; catch rate
 endc
-	db 90 ; catch rate
 	db 162 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
