@@ -336,8 +336,8 @@ RenderMusicPlayer:
 
 .changingPitch
 	call GetJoypad
-	jbutton D_LEFT, .ChangingPitchleft
-	jbutton D_RIGHT, .ChangingPitchright
+	jbutton D_DOWN | D_LEFT, .ChangingPitchdownleft
+	jbutton D_UP | D_RIGHT, .ChangingPitchupright
 	jbutton A_BUTTON, .ChangingPitchb
 	jbutton B_BUTTON, .ChangingPitchb
 	ld a, 2
@@ -483,11 +483,11 @@ RenderMusicPlayer:
 	ei
 	ret
 
-.ChangingPitchleft
+.ChangingPitchdownleft
 	ld a, [wTranspositionInterval]
 	dec a
 	jr .ChangingPitchChangePitch
-.ChangingPitchright
+.ChangingPitchupright
 	ld a, [wTranspositionInterval]
 	inc a
 .ChangingPitchChangePitch
@@ -1373,8 +1373,6 @@ GetSongArtist2:
 .Additional:
 	db "Additional Credits:@"
 
-PER_PAGE EQU 15
-
 SongSelector:
 	ld bc, MPKeymapEnd - MPKeymap
 	ld hl, MPKeymap
@@ -1386,12 +1384,9 @@ SongSelector:
 	call ByteFill
 	call ClearSprites
 	hlcoord 0, 0
-	ld de, MusicListText
-	call PlaceString
-	hlcoord 0, 1
-	lb bc, 15, 18
+	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call TextBox
-	hlcoord 0, 9
+	hlcoord 0, 8
 	ld [hl], "▶"
 	ld a, [wSongSelection]
 	ld [wSelectorTop], a ; backup, in case of B button
@@ -1481,12 +1476,12 @@ UpdateSelectorNames:
 	push hl
 	pop de
 .loop
-	hlcoord 1, 2
+	hlcoord 1, 1
 	ld a, c
 	ld [wSelectorCur], a
 	push bc
 	ld a, b
-	ld bc, $14
+	ld bc, SCREEN_WIDTH
 	call AddNTimes
 	call MPLPlaceString
 	inc de
@@ -1503,7 +1498,7 @@ UpdateSelectorNames:
 	ld de, SongInfo
 .noOverflow
 	ld a, b
-	cp PER_PAGE
+	cp 16 ; songs per page
 	jr nz, .loop
 	ret
 
@@ -1580,7 +1575,7 @@ NoteNames:
 
 ; ┌─┐│└┘
 MPTilemap:
-db "──┘ Music Player └──"
+db "                    "
 db "                    "
 db "Song:               "
 db "                    "
@@ -1622,8 +1617,6 @@ NoteOAM:
 	db 0, 0, $60, BEHIND_BG
 NoteOAMEnd:
 
-MusicListText:
-	db "───┘ Music List └───"
 BlankName:
 	db "@"
 
