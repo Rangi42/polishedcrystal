@@ -1,5 +1,5 @@
 NAME := polishedcrystal
-VERSION := 2.2.0
+VERSION := 3.0.0-beta
 
 TITLE := PKPCRYSTAL
 MCODE := PKPC

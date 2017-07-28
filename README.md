@@ -327,6 +327,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
+* Add: Music player with piano roll by Sanqui.
 * Add: Instant text option.
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
