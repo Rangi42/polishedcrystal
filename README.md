@@ -269,6 +269,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Pidgeot can learn Focus Blast.
 * Add: Misdreavus can learn Disarm Voice.
 * Add: Espeon can learn Power Gem.
+* Add: Dig has 90 BP.
 * Add: Give in-game trades good natures.
 * Add: TM prices from OR/AS.
 * Add: Show quantity in Bag in marts.
