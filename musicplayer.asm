@@ -16,13 +16,6 @@ INCBIN "gfx/music_player/note_lines.2bpp"
 
 SECTION "Music Player", ROMX
 
-NotePals:
-	RGB 31, 31, 31
-	RGB 07, 31, 07
-	RGB 07, 07, 31
-	RGB 31, 07, 07
-NotePalsEnd:
-
 placestring_: MACRO
 	hlcoord \1, \2
 	ld de, \3
@@ -63,9 +56,9 @@ MPLoadPalette:
 	ld a, 5
 	ld [rSVBK], a
 
-	ld hl, NotePals
+	ld hl, .NotePals
 	ld de, OBPals
-	ld bc, NotePalsEnd - NotePals
+	ld bc, 4 palettes
 	call CopyBytes
 
 	pop af
@@ -75,6 +68,12 @@ MPLoadPalette:
 	ld a, 1
 	ld [hCGBPalUpdate], a
 	ret
+
+.NotePals:
+	RGB 31, 31, 31 ; white
+	RGB 07, 31, 07 ; green
+	RGB 07, 07, 31 ; blue
+	RGB 31, 07, 07 ; red
 
 MusicPlayer::
 	;ld de, 1
@@ -98,7 +97,7 @@ MusicPlayer::
 	ld b, BANK(MusicTestGFX)
 	ld c, 12
 	ld de, MusicTestGFX
-	ld hl, VTiles0 tile $c4
+	ld hl, VTiles0 tile $d9
 	call Request2bpp
 
 	ld de, PianoGFX
@@ -120,9 +119,8 @@ MusicPlayer::
 	call RenderWaveform
 	pop af
 	inc a
-	cp $f ; $f'th waveform isn't real!
+	cp 16
 	jr nz, .waveform_loop
-
 
 	call DelayFrame
 	call MPLoadPalette
@@ -188,9 +186,13 @@ MPlayerTilemap:
 	call DelayFrame
 
 	ld a, [wSongSelection]
-	and a ; let's see if a song is currently selected
+	; let's see if a song is currently selected
+	cp NUM_MUSIC
+	jr nc, .bad_selection
+	and a
 	jp nz, .redraw
-	ld a, [wMapMusic]
+.bad_selection
+	ld a, MUSIC_MAIN_MENU
 	jp .redraw
 
 	ld a, [rSVBK]
@@ -217,36 +219,42 @@ MPlayerTilemap:
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
 	jr .loop
+
 .left
 	ld a, [wSongSelection]
 	dec a
-	cp a, $0
+	cp $0
 	jr nz, .redraw
 	ld a, NUM_MUSIC - 1
 	jr .redraw
+
 .right
 	ld a, [wSongSelection]
 	inc a
-	cp a, NUM_MUSIC
+	cp NUM_MUSIC
 	jr nz, .redraw
 	ld a, 1
 	jr .redraw
+
 .down
 	ld a, [wSongSelection]
-	sub a, 10
+	sub 10
 	jr z, .zerofix
-	cp a, NUM_MUSIC
+	cp NUM_MUSIC
 	jr c, .redraw
+
 .zerofix
 	ld a, NUM_MUSIC - 1
 	jr .redraw
+
 .up
 	ld a, [wSongSelection]
-	add a, 10
-	cp a, NUM_MUSIC
+	add 10
+	cp NUM_MUSIC
 	jr c, .redraw
 	ld a, 1
 	jr .redraw
+
 .start
 	xor a
 	ld [hMPState], a
@@ -254,6 +262,7 @@ MPlayerTilemap:
 	ld [rSVBK], a
 	call SongSelector
 	jp MPlayerTilemap
+
 .redraw
 	ld [wSongSelection], a
 
@@ -282,7 +291,8 @@ MPlayerTilemap:
 	ld de, .daystring
 	ld a, [MusicPlayerOptions]
 	bit 2, a
-	jr nz, .nitemusic
+	jr z, .drawtimestring
+	ld de, .nitestring
 .drawtimestring
 	call PlaceString
 
@@ -294,13 +304,13 @@ MPlayerTilemap:
 	ld [hBGMapThird], a
 	call DelayFrame
 	jp .loop
-.nitemusic
-	ld de, .nitestring
-	jr .drawtimestring
+
 .nitestring
 	db "Nite@"
+
 .daystring
 	db "    @"
+
 .a
 	ld a, [wSongSelection]
 	ld e, a
@@ -322,7 +332,7 @@ MPlayerTilemap:
 	xor a
 	ld [wChannelSelector], a
 	hlcoord 0, 12
-	ld a, $ee
+	ld a, "▼"
 	ld [hl], a
 	jp .songEditorLoop
 
@@ -448,6 +458,7 @@ MPlayerTilemap:
 	jr z, .waveunderflow
 	ld a, b
 	jr .changed
+
 .songEditordown
 	ld a, [wChannelSelector]
 	cp 2
@@ -459,11 +470,13 @@ MPlayerTilemap:
 	jr z, .waveoverflow
 	ld a, b
 	jr .changed
+
 .waveunderflow
 	ld a, [Channel3Intensity]
 	and $f0
 	add $e
 	jr .changed
+
 .waveoverflow
 	ld a, [Channel3Intensity]
 	and $f0
@@ -491,17 +504,17 @@ MPlayerTilemap:
 	hlcoord 0, 12
 	add l
 	ld l, a
-	ld a, $ee
+	ld a, "▼"
 	ret nc
 	inc h
 	ret
 .channelSelectorloadhlnite
 	hlcoord 15, 1
-	ld a, $ed
+	ld a, "▶"
 	ret
 .channelSelectorloadhlpitch
 	hlcoord 16, 2
-	ld a, $ed
+	ld a, "▶"
 	ret
 
 .exit
@@ -546,7 +559,7 @@ MPlayerTilemap:
 	bit 7, a
 	jr nz, .negative
 	hlcoord 17, 2
-	ld a, $c5
+	ld a, $da
 	ld [hl], a
 	lb bc, 1, 3
 	ld de, wTranspositionInterval
@@ -645,7 +658,7 @@ DrawChData:
 	ld a, " "
 	jr .pickedhitchar
 .hit
-	ld a, $cf
+	ld a, $e4
 .pickedhitchar
 	ld [hl], a
 	xor a
@@ -661,7 +674,7 @@ DrawChData:
 	jr c, .okc4
 
 	push af
-	ld a, $cf
+	ld a, $e4
 	ld [hli], a
 	ld [hld], a
 	pop af
@@ -670,7 +683,7 @@ DrawChData:
 
 .okc4
 	and 7
-	add $c7
+	add $dc
 	ld [hli], a
 	ld [hld], a
 	ret
@@ -705,7 +718,7 @@ DrawChData:
 	dec hl
 	dec hl
 	dec hl
-	ld a, $c7
+	ld a, $dc
 	ld de, 20
 	add hl, de
 	ld [hli], a
@@ -738,7 +751,7 @@ DrawChData:
 	jr c, .ok
 
 	push af
-	ld a, $cf
+	ld a, $e4
 	ld [hli], a
 	ld [hld], a
 	pop af
@@ -747,7 +760,7 @@ DrawChData:
 
 .ok
 	and 7
-	add $c7
+	add $dc
 	ld [hli], a
 	ld [hld], a
 	ld a, [wTmpCh]
@@ -770,7 +783,7 @@ DrawChData:
 
 RenderWaveform:
 ;	ld a, [wCurTrackIntensity]
-;	and a, $f ; only 0-9 are valid
+;	and $f ; only 0-9 are valid (+10 for RBY Lavender Town)
 ;	ld b, a
 ;	ld a, [wRenderedWaveform]
 ;	cp b
@@ -778,25 +791,23 @@ RenderWaveform:
 ;	ld a, b
 	ld [wRenderedWaveform], a
 
-
 	ld a, [wRenderedWaveform]
 	ld l, a
 	ld h, $0
 	; hl << 4
 	; each wavepattern is $f bytes long
 	; so seeking is done in $10s
+rept 4
 	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
+endr
 	ld de, WaveSamples
 	add hl, de
+	; load wavepattern into wWaveformTmp
 	ld de, wWaveformTmp
 	ld bc, 16
 	ld a, BANK(WaveSamples)
 	call FarCopyBytes ; copy bc bytes from a:hl to de
 RenderSpecialWaveform:
-
 	ld hl, TempMon
 	ld bc, BOXMON_STRUCT_LENGTH
 	xor a
@@ -846,7 +857,7 @@ RenderSpecialWaveform:
 	ld hl, TempMon
 	jr .drawloop
 .secondtile
-	ld hl, TempMon + 16 ; ???
+	ld hl, TempMon + 16
 	jr .drawloop
 .done
 	ld hl, VTiles2 tile $40
@@ -1100,7 +1111,7 @@ SetVisualIntensity:
 	ld bc, Channel2 - Channel1
 	call AddNTimes
 	ld a, [hl]
-	cp a, 0
+	cp 0
 	jr z, .skip
 	ld a,[wTmpCh]
 	ld hl, Channel1Intensity
@@ -1108,7 +1119,7 @@ SetVisualIntensity:
 	push af
 	call AddNTimes
 	pop af
-	cp a, 2
+	cp 2
 	jr z, .wavChannel
 	ld a, [hl]
 	ld e, a
@@ -1133,11 +1144,11 @@ SetVisualIntensity:
 .wavChannel
 	ld a, [hl]
 	and $F0
-	cp a, $10
+	cp $10
 	jr z, .full
-	cp a, $20
+	cp $20
 	jr z, .half
-	cp a, $30
+	cp $30
 	jr z, .quarter
 	xor a
 	jr .setWavVol
@@ -1166,11 +1177,11 @@ UpdateVisualIntensity:
 	ld c, 4
 	ld hl, wVolTimer
 	ld a, [hl]
-	sub a, 60
+	sub 60
 	ld [hl], a
 	ret nc
 .timerup
-	add a, 64
+	add 64
 	ldi [hl], a
 .updateChannels
 	inc hl
@@ -1215,7 +1226,7 @@ UpdateVisualIntensity:
 	dec c
 	ret z
 	ld a, c
-	cp a, 2
+	cp 2
 	jr z, .nextChannel
 	jr .updateChannels
 
@@ -1329,8 +1340,13 @@ DrawSongInfo:
 	call PlaceString
 	inc de
 	push de
-	call GetSongOrigin
+	ld de, .PokemonString
 	hlcoord 0, 3
+	call PlaceString
+	pop de
+	push de
+	call GetSongOrigin
+	hlcoord 8, 3
 	call PlaceString
 	pop de
 	inc de
@@ -1346,6 +1362,9 @@ DrawSongInfo:
 	call PlaceString
 	pop de
 	ret
+
+.PokemonString:
+	db "#mon @"
 
 GetSongOrigin:
 	ld a, [de]
@@ -1392,14 +1411,18 @@ GetSongArtist2:
 	cp b
 	jr nz, .loop
 	push hl
-	ld de, Additional
+	ld de, .Additional
 	hlcoord 0, 10
 	call PlaceString
 	pop de
 	ret
+
 .noname
 	ld de, BlankName
 	ret
+
+.Additional:
+	db "Additional Credits:@"
 
 PER_PAGE EQU 15
 
@@ -1586,33 +1609,27 @@ MPLPlaceString:
 	ret
 
 LoadingText:
-	db "LOADING…@"
-
-MusicPlayerText:
-	db "--- MUSIC PLAYER ---@"
-
-ZeroText:
-	db "000@"
+	db "Loading…@"
 
 NoteNames:
 	db "- @"
 	db "C @"
-	db "C", 198, "@"
+	db "C", $db, "@"
 	db "D @"
-	db "D", 198, "@"
+	db "D", $db, "@"
 	db "E @"
 	db "F @"
-	db "F", 198, "@"
+	db "F", $db, "@"
 	db "G @"
-	db "G", 198, "@"
+	db "G", $db, "@"
 	db "A @"
-	db "A", 198, "@"
+	db "A", $db, "@"
 	db "B @"
-	db "XX@"
+	db "--@"
 
 ; ┌─┐│└┘
 MPTilemap:
-db "──┘ MUSIC PLAYER └──"
+db "──┘ Music Player └──"
 db "                    "
 db "Song:               "
 db "                    "
@@ -1625,11 +1642,14 @@ db "                    "
 db "                    "
 db "                    "
 db "                    "
+; Ch1 ─ Ch2 ─ Wave ─ Noise ──
 db $08, $09, $0a, "─", $1f, $08, $09, $0b, "─", $1f, $0c, $0d, $0e, "─", $1f, $0f, $10, $11, "──"
 db "    │    │    │Set  "
 db "    │    │    │     "
 db "    │    │    │     "
+MPKeymap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
+MPKeymapEnd:
 MPTilemapEnd:
 
 ChannelsOnTilemaps:
@@ -1637,33 +1657,25 @@ ChannelsOnTilemaps:
 	db $08, $09, $0b
 	db $0c, $0d, $0e
 	db $0f, $10, $11
+
 ChannelsOffTilemaps:
 	db $12, $13, $14
 	db $12, $13, $15
 	db $16, $17, $18
 	db $19, $1a, $1b
 
-MPKeymap:
-db 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5
-MPKeymapEnd:
-
 NoteOAM:
-	db 0, 0, $20, $80
-	db 0, 0, $40, $80
-	db 0, 0, $60, $80
-NoteOAMEnd
-
-Additional:
-	db "Additional Credits:@"
+	; y, x, tile id, OAM attributes
+	db 0, 0, $20, BEHIND_BG
+	db 0, 0, $40, BEHIND_BG
+	db 0, 0, $60, BEHIND_BG
+NoteOAMEnd:
 
 MusicListText:
-	db "───┘ Music List └───@"
-
-
-
-
+	db "───┘ Music List └───"
 BlankName:
-	db " @"
+	db "@"
+
 SongInfo:
 	; title, origin, composer, additional credits
 	db "Title Screen@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, 0
@@ -1764,7 +1776,7 @@ SongInfo:
 	db "Battle Tower Lobby@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
 	db "Pokécom Center@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, 0
 	db "Surfing Pikachu@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, 0
-	db "Jessie & James Appear@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, 0
+	db "Jessie & James      Appear@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, 0
 	db "Poké Mart@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
 	db "Cianwood City@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
 	db "Cerulean City@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
@@ -1796,9 +1808,9 @@ SongInfo:
 	db "Black City@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Trainer@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Elite Four@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Vs.World Championship Finals@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
+	db "Vs.World Champion-  ship Finals@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
 	db "Final Pokémon@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Road to Reversal Mountain@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Road to Reversal    Mountain@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Reversal Mountain@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "White Treehollow@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Champion@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
@@ -1840,25 +1852,26 @@ SongInfo:
 	db -1
 
 Origin:
-	db ORIGIN_RB, "Pokémon Red@"
-	db ORIGIN_Y, "Pokémon Yellow@"
-	db ORIGIN_GS, "Pokémon Gold@"
-	db ORIGIN_C, "Pokémon Crystal@"
-	db ORIGIN_RSE, "Pokémon Emerald@"
-	db ORIGIN_FRLG, "Pokémon FireRed@"
-	db ORIGIN_DPPT, "Pokémon Platinum@"
-	db ORIGIN_HGSS, "Pokémon HeartGold@"
-	db ORIGIN_B2W2, "Pokémon Black@"
-	db ORIGIN_B2W2, "Pokémon Black 2@"
-	db ORIGIN_XY, "Pokémon X@"
-	db ORIGIN_ORAS, "Pokémon Omega Ruby@"
-	db ORIGIN_SM, "Pokémon Sun@"
-	db ORIGIN_ANIME, "Pokémon anime@"
+	db ORIGIN_RB, "Red@"
+	db ORIGIN_Y, "Yellow@"
+	db ORIGIN_GS, "Gold@"
+	db ORIGIN_C, "Crystal@"
+	db ORIGIN_RSE, "Emerald@"
+	db ORIGIN_FRLG, "FireRed@"
+	db ORIGIN_DPPT, "Platinum@"
+	db ORIGIN_HGSS, "HeartGold@"
+	db ORIGIN_BW, "Black@"
+	db ORIGIN_B2W2, "Black 2@"
+	db ORIGIN_XY, "X@"
+	db ORIGIN_ORAS, "Omega Ruby@"
+	db ORIGIN_SM, "Sun@"
+	db ORIGIN_ANIME, "2000@"
 	db -1
 
 Artist:
 	db COMPOSER_JUNICHI_MASUDA, "Junichi Masuda@"
 	db COMPOSER_GO_ICHINOSE, "Go Ichinose@"
+	db COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, "Junichi Masuda,     Go Ichinose@"
 	db COMPOSER_MORIKAZU_AOKI, "Morikazu Aoki@"
 	db COMPOSER_ICHIRO_SHIMAKURA, "Ichiro Shimakura@"
 	db COMPOSER_SHOTA_KAGEYAMA, "Shota Kageyama@"
@@ -1867,6 +1880,5 @@ Artist:
 	db COMPOSER_PUM, "Pum@"
 	db COMPOSER_SHANTYTOWN, "ShantyTown@"
 	db COMPOSER_PIGU, "Pigu@"
-	db COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, "Junichi Masuda,     Go Ichinose@"
 	db COMPOSER_END, "@"
 	db -1

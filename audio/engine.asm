@@ -2728,7 +2728,7 @@ LoadMusicByte:: ; e8d76
 ReloadWaveform::
     ; called from the music player
 	ld a, [wCurTrackIntensity]
-	and $f ; only 0-9 are valid (+10 for rby lavender town)
+	and $f ; only 0-9 are valid (+10 for RBY Lavender Town)
 	ld l, a
 	ld h, 0
 	; hl << 4

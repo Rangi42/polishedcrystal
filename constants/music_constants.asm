@@ -195,16 +195,15 @@ const_value = 1
 	const ORIGIN_ANIME ; d
 
 const_value = 1
-	const COMPOSER_JUNICHI_MASUDA             ;  1
-	const COMPOSER_GO_ICHINOSE                ;  2
-	const COMPOSER_MORIKAZU_AOKI              ;  3
-	const COMPOSER_ICHIRO_SHIMAKURA           ;  4
-	const COMPOSER_SHOTA_KAGEYAMA             ;  5
-	const COMPOSER_FROGGESTSPIRIT             ;  6
-	const COMPOSER_MMMMMM                     ;  7
-	const COMPOSER_PUM                        ;  8
-	const COMPOSER_SHANTYTOWN                 ;  9
-	const COMPOSER_PIGU                       ;  a
-	const COMPOSER_END                        ;  b
-
-COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE EQU $18
+	const COMPOSER_JUNICHI_MASUDA             ; 1
+	const COMPOSER_GO_ICHINOSE                ; 2
+	const COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE ; 3
+	const COMPOSER_MORIKAZU_AOKI              ; 4
+	const COMPOSER_ICHIRO_SHIMAKURA           ; 5
+	const COMPOSER_SHOTA_KAGEYAMA             ; 6
+	const COMPOSER_FROGGESTSPIRIT             ; 7
+	const COMPOSER_MMMMMM                     ; 8
+	const COMPOSER_PUM                        ; 9
+	const COMPOSER_SHANTYTOWN                 ; a
+	const COMPOSER_PIGU                       ; b
+	const COMPOSER_END                        ; c
