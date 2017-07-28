@@ -239,11 +239,4 @@ MainMenu_Continue: ; 49eee
 ; 49ef5
 
 MainMenu_MusicPlayer:
-	ld a, [MusicPlayerOptions]
-	or 2 ; sets bit for Whole soundtrack
-	ld [MusicPlayerOptions], a
-	farcall MusicPlayer
-	ld a, [MusicPlayerOptions]
-	and $f9 ; resets bits for nite music force, and whole soundtrack
-	ld [MusicPlayerOptions], a
-	ret
+	farjp MusicPlayer

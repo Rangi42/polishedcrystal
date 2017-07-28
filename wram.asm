@@ -1206,7 +1206,6 @@ TextBoxFrame:: ; cfce
 TextBoxFlags::
 	ds 1
 
-MusicPlayerOptions::
 	ds 1
 
 Options2:: ; cfd1

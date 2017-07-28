@@ -16,37 +16,10 @@ INCBIN "gfx/music_player/note_lines.2bpp"
 
 SECTION "Music Player", ROMX
 
-placestring_: MACRO
-	hlcoord \1, \2
-	ld de, \3
-	call PlaceString
-	ENDM
-
 jbutton: MACRO
 	ld a, [hJoyPressed]
 	and \1
 	jp nz, \2 ; TODO jx
-	ENDM
-
-printbit: MACRO
-	ld hl, \1
-	bit \2, [hl]
-	decoord \3, \4
-	jr z, .notset\@
-	ld a, \5
-	ld [de], a
-	jr .end\@
-.notset\@
-	ld a, \6
-	ld [de], a
-.end\@
-	inc de
-	ENDM
-
-textbox: MACRO
-	hlcoord \1, \2
-	ld bc, ( (\4 - \2) << 8) + (\3 - \1)
-	call TextBox
 	ENDM
 
 MPLoadPalette:
@@ -104,7 +77,7 @@ MusicPlayer::
 	farcall LoadFrame
 
 	ld b, BANK(MusicTestGFX)
-	ld c, 12
+	ld c, 9
 	ld de, MusicTestGFX
 	ld hl, VTiles0 tile $d9
 	call Request2bpp
@@ -303,13 +276,6 @@ RenderMusicPlayer:
 	call PrintNum
 	call DrawSongInfo
 	hlcoord 16, 1
-	ld de, .daystring
-	ld a, [MusicPlayerOptions]
-	bit 2, a
-	jr z, .drawtimestring
-	ld de, .nitestring
-.drawtimestring
-	call PlaceString
 
 	ld a, 5
 	ld [hVBlank], a
@@ -319,12 +285,6 @@ RenderMusicPlayer:
 	ld [hBGMapThird], a
 	call DelayFrame
 	jp .loop
-
-.nitestring
-	db "Nite@"
-
-.daystring
-	db "    @"
 
 .a
 	ld a, [wSongSelection]
@@ -349,7 +309,7 @@ RenderMusicPlayer:
 	hlcoord 0, 12
 	ld a, "▼"
 	ld [hl], a
-	jp .songEditorLoop
+	;jp .songEditorLoop
 
 .songEditorLoop
 	call UpdateVisualIntensity
@@ -373,6 +333,7 @@ RenderMusicPlayer:
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
 	jr .songEditorLoop
+
 .changingPitch
 	call GetJoypad
 	jbutton D_LEFT, .ChangingPitchleft
@@ -383,7 +344,6 @@ RenderMusicPlayer:
 	ld [hBGMapThird], a ; prioritize refreshing the note display
 	jr .songEditorLoop
 
-
 .songEditorleft
 	call .channelSelectorloadhl
 	ld a, $7f
@@ -392,7 +352,7 @@ RenderMusicPlayer:
 	dec a
 	cp -1
 	jr nz, .noOverflow
-	ld a, 5
+	ld a, 4
 .noOverflow
 	ld [wChannelSelector], a
 	call .channelSelectorloadhl
@@ -405,7 +365,7 @@ RenderMusicPlayer:
 	ld [hl], a
 	ld a, [wChannelSelector]
 	inc a
-	cp 6
+	cp 5
 	jr nz, .noOverflow2
 	xor a
 .noOverflow2
@@ -417,8 +377,6 @@ RenderMusicPlayer:
 .songEditora
 	ld a, [wChannelSelector]
 	cp 4
-	jr z, .niteToggle
-	cp 5
 	jr z, .changePitch
 	ld c, a
 	ld b, 0
@@ -428,33 +386,13 @@ RenderMusicPlayer:
 	xor 1
 	ld [hl], a
 	call DrawChannelLabel
+	jp .songEditorLoop
 
-	jp .songEditorLoop
-.niteToggle
-	ld a, [MusicPlayerOptions]
-	xor 4
-	ld [MusicPlayerOptions], a
-	ld a, [wSongSelection]
-	ld e, a
-	ld d, 0
-	farcall PlayMusic2
-	hlcoord 16, 1
-	ld de, .daystring
-	ld a, [MusicPlayerOptions]
-	bit 2, a
-	jr z, .songEditordrawtimestring
-	ld de, .nitestring
-.songEditordrawtimestring
-	call PlaceString
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
-	jp .songEditorLoop
 .changePitch
 	ld a, 1
 	ld [wChangingPitch], a
 	hlcoord 16, 2
-	ld a, $ec
+	ld a, "▷"
 	ld [hl], a
 	xor a
 	ld [hBGMapThird], a
@@ -511,8 +449,6 @@ RenderMusicPlayer:
 .channelSelectorloadhl
 	ld a, [wChannelSelector]
 	cp 4
-	jr z, .channelSelectorloadhlnite
-	cp 5
 	jr z, .channelSelectorloadhlpitch
 	ld c, 5
 	call SimpleMultiply
@@ -523,10 +459,7 @@ RenderMusicPlayer:
 	ret nc
 	inc h
 	ret
-.channelSelectorloadhlnite
-	hlcoord 15, 1
-	ld a, "▶"
-	ret
+
 .channelSelectorloadhlpitch
 	hlcoord 16, 2
 	ld a, "▶"
@@ -559,7 +492,7 @@ RenderMusicPlayer:
 	inc a
 .ChangingPitchChangePitch
 	ld [wTranspositionInterval], a
-	ld de, EmptyPitch
+	ld de, .EmptyPitch
 	hlcoord 17, 2
 	call PlaceString
 	ld a, [wTranspositionInterval]
@@ -574,7 +507,7 @@ RenderMusicPlayer:
 	bit 7, a
 	jr nz, .negative
 	hlcoord 17, 2
-	ld a, $da
+	ld a, "+"
 	ld [hl], a
 	lb bc, 1, 3
 	ld de, wTranspositionInterval
@@ -583,6 +516,7 @@ RenderMusicPlayer:
 	ld [hBGMapThird], a
 	call DelayFrame
 	jp .songEditorLoop
+
 .negative
 	xor $ff
 	inc a
@@ -602,14 +536,14 @@ RenderMusicPlayer:
 	xor a
 	ld [wChangingPitch], a
 	hlcoord 16, 2
-	ld a, $ed
+	ld a, "▶"
 	ld [hl], a
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
 	jp .songEditorLoop
 
-EmptyPitch: db "   @"
+.EmptyPitch: db "   @"
 
 DrawChannelLabel:
 	and a
@@ -673,7 +607,7 @@ DrawChData:
 	ld a, " "
 	jr .pickedhitchar
 .hit
-	ld a, $e4
+	ld a, $e1
 .pickedhitchar
 	ld [hl], a
 	xor a
@@ -689,7 +623,7 @@ DrawChData:
 	jr c, .okc4
 
 	push af
-	ld a, $e4
+	ld a, $e1
 	ld [hli], a
 	ld [hld], a
 	pop af
@@ -698,7 +632,7 @@ DrawChData:
 
 .okc4
 	and 7
-	add $dc
+	add $d9
 	ld [hli], a
 	ld [hld], a
 	ret
@@ -733,7 +667,7 @@ DrawChData:
 	dec hl
 	dec hl
 	dec hl
-	ld a, $dc
+	ld a, $d9
 	ld de, 20
 	add hl, de
 	ld [hli], a
@@ -766,7 +700,7 @@ DrawChData:
 	jr c, .ok
 
 	push af
-	ld a, $e4
+	ld a, $e1
 	ld [hli], a
 	ld [hld], a
 	pop af
@@ -775,7 +709,7 @@ DrawChData:
 
 .ok
 	and 7
-	add $dc
+	add $d9
 	ld [hli], a
 	ld [hld], a
 	ld a, [wTmpCh]
@@ -1454,7 +1388,9 @@ SongSelector:
 	hlcoord 0, 0
 	ld de, MusicListText
 	call PlaceString
-	textbox 0, 1, $12, $10
+	hlcoord 0, 1
+	lb bc, 15, 18
+	call TextBox
 	hlcoord 0, 9
 	ld [hl], "▶"
 	ld a, [wSongSelection]
@@ -1629,16 +1565,16 @@ LoadingText:
 NoteNames:
 	db "- @"
 	db "C @"
-	db "C", $db, "@"
+	db "C<SHARP>@"
 	db "D @"
-	db "D", $db, "@"
+	db "D<SHARP>@"
 	db "E @"
 	db "F @"
-	db "F", $db, "@"
+	db "F<SHARP>@"
 	db "G @"
-	db "G", $db, "@"
+	db "G<SHARP>@"
 	db "A @"
-	db "A", $db, "@"
+	db "A<SHARP>@"
 	db "B @"
 	db "--@"
 
