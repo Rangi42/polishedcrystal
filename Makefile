@@ -44,6 +44,7 @@ main.o \
 home.o \
 audio.o \
 maps.o \
+musicplayer.o \
 engine/events.o \
 engine/credits.o \
 data/egg_moves.o \

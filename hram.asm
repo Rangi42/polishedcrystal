@@ -139,6 +139,9 @@ hDMATransfer       EQU $ffe8
 hFFEA              EQU $ffea
 hClockResetTrigger EQU $ffeb
 
+hMPState           EQU $ffed
+hBuffer2           EQU $ffee
+
 hTmpd              EQU $fff7
 hTmpe              EQU $fff8
 

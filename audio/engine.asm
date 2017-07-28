@@ -408,51 +408,7 @@ UpdateChannels: ; e8125
 
 .asm_e8268
 	push hl
-	ld a, [wCurTrackIntensity]
-	and $f ; only 0-9 are valid (+10 for rby lavender town)
-	ld l, a
-	ld h, 0
-	; hl << 4
-	; each wavepattern is $f bytes long
-	; so seeking is done in $10s
-rept 4
-	add hl, hl
-endr
-	ld de, WaveSamples
-	add hl, de
-	; load wavepattern into rWave_0-rWave_f
-	ld a, [hli]
-	ld [rWave_0], a
-	ld a, [hli]
-	ld [rWave_1], a
-	ld a, [hli]
-	ld [rWave_2], a
-	ld a, [hli]
-	ld [rWave_3], a
-	ld a, [hli]
-	ld [rWave_4], a
-	ld a, [hli]
-	ld [rWave_5], a
-	ld a, [hli]
-	ld [rWave_6], a
-	ld a, [hli]
-	ld [rWave_7], a
-	ld a, [hli]
-	ld [rWave_8], a
-	ld a, [hli]
-	ld [rWave_9], a
-	ld a, [hli]
-	ld [rWave_a], a
-	ld a, [hli]
-	ld [rWave_b], a
-	ld a, [hli]
-	ld [rWave_c], a
-	ld a, [hli]
-	ld [rWave_d], a
-	ld a, [hli]
-	ld [rWave_e], a
-	ld a, [hli]
-	ld [rWave_f], a
+	call ReloadWaveform
 	pop hl
 	ld a, [wCurTrackIntensity]
 	and $f0
@@ -2769,6 +2725,55 @@ LoadMusicByte:: ; e8d76
 
 ; e8d80
 
+ReloadWaveform::
+    ; called from the music player
+	ld a, [wCurTrackIntensity]
+	and $f ; only 0-9 are valid (+10 for rby lavender town)
+	ld l, a
+	ld h, 0
+	; hl << 4
+	; each wavepattern is $f bytes long
+	; so seeking is done in $10s
+rept 4
+	add hl, hl
+endr
+	ld de, WaveSamples
+	add hl, de
+	; load wavepattern into rWave_0-rWave_f
+	ld a, [hli]
+	ld [rWave_0], a
+	ld a, [hli]
+	ld [rWave_1], a
+	ld a, [hli]
+	ld [rWave_2], a
+	ld a, [hli]
+	ld [rWave_3], a
+	ld a, [hli]
+	ld [rWave_4], a
+	ld a, [hli]
+	ld [rWave_5], a
+	ld a, [hli]
+	ld [rWave_6], a
+	ld a, [hli]
+	ld [rWave_7], a
+	ld a, [hli]
+	ld [rWave_8], a
+	ld a, [hli]
+	ld [rWave_9], a
+	ld a, [hli]
+	ld [rWave_a], a
+	ld a, [hli]
+	ld [rWave_b], a
+	ld a, [hli]
+	ld [rWave_c], a
+	ld a, [hli]
+	ld [rWave_d], a
+	ld a, [hli]
+	ld [rWave_e], a
+	ld a, [hli]
+	ld [rWave_f], a
+	ret
+
 FrequencyTable: ; e8d80
 	dw 0     ; __
 	dw $f82c ; C_
@@ -2797,7 +2802,7 @@ FrequencyTable: ; e8d80
 	dw $fded ; B_
 ; e8db2
 
-WaveSamples: ; e8db2
+WaveSamples:: ; e8db2
 	; these are streams of 32 4-bit values used as wavepatterns
 	; nothing interesting here!
 	dn 0, 2, 4, 6, 8, 10, 12, 14, 15, 15, 15, 14, 14, 13, 13, 12, 12, 11, 10, 9, 8, 7, 6, 5, 4, 4, 3, 3, 2, 2, 1, 1

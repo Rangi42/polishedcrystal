@@ -176,3 +176,35 @@ NUM_MUSIC EQU const_value
 	; special
 	const MUSIC_RADIO_TOWER                    ; ac
 	const MUSIC_MAHOGANY_MART                  ; ad
+
+
+const_value = 1
+	const ORIGIN_RB    ; 0
+	const ORIGIN_Y     ; 1
+	const ORIGIN_GS    ; 2
+	const ORIGIN_C     ; 3
+	const ORIGIN_RSE   ; 4
+	const ORIGIN_FRLG  ; 5
+	const ORIGIN_DPPT  ; 6
+	const ORIGIN_HGSS  ; 7
+	const ORIGIN_BW    ; 8
+	const ORIGIN_B2W2  ; 9
+	const ORIGIN_XY    ; a
+	const ORIGIN_ORAS  ; b
+	const ORIGIN_SM    ; c
+	const ORIGIN_ANIME ; d
+
+const_value = 1
+	const COMPOSER_JUNICHI_MASUDA             ;  1
+	const COMPOSER_GO_ICHINOSE                ;  2
+	const COMPOSER_MORIKAZU_AOKI              ;  3
+	const COMPOSER_ICHIRO_SHIMAKURA           ;  4
+	const COMPOSER_SHOTA_KAGEYAMA             ;  5
+	const COMPOSER_FROGGESTSPIRIT             ;  6
+	const COMPOSER_MMMMMM                     ;  7
+	const COMPOSER_PUM                        ;  8
+	const COMPOSER_SHANTYTOWN                 ;  9
+	const COMPOSER_PIGU                       ;  a
+	const COMPOSER_END                        ;  b
+
+COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE EQU $18

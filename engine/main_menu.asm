@@ -43,29 +43,34 @@ MainMenu: ; 49cdc
 	db "Continue@"
 	db "New Game@"
 	db "Options@"
+	db "Music Player@"
 
 .Jumptable: ; 0x49d60
 
 	dw MainMenu_Continue
 	dw MainMenu_NewGame
 	dw MainMenu_Options
+	dw MainMenu_MusicPlayer
 ; 0x49d6c
 
 CONTINUE       EQU 0
 NEW_GAME       EQU 1
 OPTION         EQU 2
+MUSIC_PLAYER   EQU 3
 
 MainMenuItems:
 ; .NewGameMenu: ; 0x49d6c
-	db 2
+	db 3
 	db NEW_GAME
 	db OPTION
+	db MUSIC_PLAYER
 	db -1
 ; .ContinueMenu: ; 0x49d70
-	db 3
+	db 4
 	db CONTINUE
 	db NEW_GAME
 	db OPTION
+	db MUSIC_PLAYER
 	db -1
 
 MainMenu_GetWhichMenu: ; 49da4
@@ -232,3 +237,13 @@ MainMenu_Options: ; 49ee7
 MainMenu_Continue: ; 49eee
 	farjp Continue
 ; 49ef5
+
+MainMenu_MusicPlayer:
+	ld a, [MusicPlayerOptions]
+	or 2 ; sets bit for Whole soundtrack
+	ld [MusicPlayerOptions], a
+	farcall MusicPlayer
+	ld a, [MusicPlayerOptions]
+	and $f9 ; resets bits for nite music force, and whole soundtrack
+	ld [MusicPlayerOptions], a
+	ret
