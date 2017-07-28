@@ -9,34 +9,6 @@ StackBottom::
 Stack::
 StackTop::
 	ds 1
-	ds wc000 - @
-
-; music player
-wSongSelection:: ds 2
-wNumNoteLines:: ds 1
-wTmpCh:: ds 1
-wChLastNotes:: ds 3
-wVolTimer:: ds 1
-wC1Vol:: ds 1
-wC1VolSub:: ds 1
-wC2Vol:: ds 1
-wC2VolSub:: ds 1
-wC3Vol:: ds 1
-wC3VolSub:: ds 1
-wC4Vol:: ds 1
-wC4VolSub:: ds 1
-wNoteEnded:: ds 3
-wSelectorTop:: ds 1
-wSelectorCur:: ds 1
-wChannelSelector:: ds 1
-wChannelSelectorSwitches:: ds 8
-wNoiseHit:: ds 1
-wTranspositionInterval:: ds 1
-wChangingPitch:: ds 1
-wTmp:: ds 1
-wRenderedWaveform:: ds 1
-wSpecialWaveform:: ds 1
-wWaveformTmp:: ds 16
 
 
 SECTION "WRAM Audio", WRAM0
@@ -327,6 +299,34 @@ wBT_OTTemp:: battle_tower_struct wBT_OTTemp
 	ds wc608 - @
 
 	hall_of_fame wHallOfFameTemp
+	ds wc608 - @
+
+; music player
+wSongSelection:: ds 2
+wNumNoteLines:: ds 1
+wTmpCh:: ds 1
+wChLastNotes:: ds 3
+wVolTimer:: ds 1
+wC1Vol:: ds 1
+wC1VolSub:: ds 1
+wC2Vol:: ds 1
+wC2VolSub:: ds 1
+wC3Vol:: ds 1
+wC3VolSub:: ds 1
+wC4Vol:: ds 1
+wC4VolSub:: ds 1
+wNoteEnded:: ds 3
+wSelectorTop:: ds 1
+wSelectorCur:: ds 1
+wChannelSelector:: ds 1
+wChannelSelectorSwitches:: ds 8
+wNoiseHit:: ds 1
+wTranspositionInterval:: ds 1
+wChangingPitch:: ds 1
+wTmp:: ds 1
+wRenderedWaveform:: ds 1
+wSpecialWaveform:: ds 1
+wWaveformTmp:: ds 16
 	ds wc608 - @
 
 wMisc:: ; ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)

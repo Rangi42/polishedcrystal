@@ -187,7 +187,7 @@ SECTION "Extra Songs 4", ROMX, BANK[EXTRA_SONGS_4]
 INCLUDE "audio/music/bw/route4.asm"
 INCLUDE "audio/music/bw/route12.asm"
 INCLUDE "audio/music/bw/trainerbattle.asm"
-INCLUDE "audio/music/b2w2/wcsbattle.asm"
+INCLUDE "audio/music/bw/wcsbattle.asm"
 
 
 SECTION "Extra Songs 5", ROMX
