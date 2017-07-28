@@ -86,6 +86,13 @@ MusicPlayer::
 	ld a, $f
 	ld [rIE], a
 	ei
+
+	ld hl, TextBoxFrame
+	ld a, [hl]
+	push af
+	xor a
+	ld [hl], a
+
 	call ClearTileMap
 	hlcoord 6, 5
 	ld de, LoadingText
@@ -93,6 +100,8 @@ MusicPlayer::
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
+
+	farcall LoadFrame
 
 	ld b, BANK(MusicTestGFX)
 	ld c, 12
@@ -155,8 +164,14 @@ MusicPlayer::
 	pop af
 	ld [rSVBK], a
 
-MPlayerTilemap:
+	call RenderMusicPlayer
 
+	pop af
+	ld hl, TextBoxFrame
+	ld [hl], a
+	ret
+
+RenderMusicPlayer:
 	ld bc, MPTilemapEnd - MPTilemap
 	ld hl, MPTilemap
 	decoord 0, 0
@@ -261,7 +276,7 @@ MPlayerTilemap:
 	ld a, [hBuffer2]
 	ld [rSVBK], a
 	call SongSelector
-	jp MPlayerTilemap
+	jp RenderMusicPlayer
 
 .redraw
 	ld [wSongSelection], a
