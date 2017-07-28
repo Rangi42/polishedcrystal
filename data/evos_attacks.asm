@@ -3133,7 +3133,7 @@ HoothootEvosAttacks:
 	db 10, CONFUSION
 	db 13, NIGHT_SHADE ; Echoed Voice → event move
 	db 16, ZEN_HEADBUTT
-	db 19, PSYBEAM ; Psycho Shift → new move
+	db 19, HEX ; Psycho Shift → new move
 	db 22, EXTRASENSORY
 	db 25, TAKE_DOWN
 	db 28, REFLECT
@@ -3157,7 +3157,7 @@ NoctowlEvosAttacks:
 	db 10, CONFUSION
 	db 13, NIGHT_SHADE ; Echoed Voice → event move
 	db 16, ZEN_HEADBUTT
-	db 19, PSYBEAM ; Psycho Shift → new move
+	db 19, HEX ; Psycho Shift → new move
 	db 23, EXTRASENSORY
 	db 27, TAKE_DOWN
 	db 31, REFLECT
