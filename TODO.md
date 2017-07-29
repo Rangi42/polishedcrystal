@@ -200,6 +200,8 @@ Some of these may never be added; they're just suggestions.
 * Battle Factory
 * Medals for achievements
 * Something like Habitat Lists or DexNav via the Town Map
+* Something like Poké Radar or Pokéwalker
+* Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
@@ -232,7 +234,6 @@ Some of these may never be added; they're just suggestions.
 * Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
 * Evolution Guru says how your lead Pokémon can evolve
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-* Rarely wild Pokémon know an egg move (could be a Habitat List/DexNav reward)
 * Get better Wonder Trade items at higher levels
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
