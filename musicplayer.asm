@@ -76,14 +76,6 @@ else
 endc
 
 MusicPlayer::
-	di
-	call DoubleSpeed
-	xor a
-	ld [rIF], a
-	ld a, $f
-	ld [rIE], a
-	ei
-
 	call ClearTileMap
 	call MPLoadPalette
 
@@ -477,13 +469,6 @@ RenderMusicPlayer:
 	call ClearSprites
 	ld hl, rLCDC
 	res 2, [hl] ; 8x8 sprites
-	di
-	call NormalSpeed
-	xor a
-	ld [rIF], a
-	ld a, $f
-	ld [rIE], a
-	ei
 	ret
 
 .ChangingPitchdownleft
