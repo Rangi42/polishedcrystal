@@ -31,9 +31,14 @@ MPLoadPalette:
 	ld a, 5
 	ld [rSVBK], a
 
+	ld hl, .PlayerPals
+	ld de, BGPals
+	ld bc, 1 palettes
+	call CopyBytes
+
 	ld hl, .NotePals
 	ld de, OBPals
-	ld bc, 4 palettes
+	ld bc, 1 palettes
 	call CopyBytes
 
 	pop af
@@ -43,6 +48,19 @@ MPLoadPalette:
 	ld a, 1
 	ld [hCGBPalUpdate], a
 	ret
+
+.PlayerPals:
+if !DEF(MONOCHROME)
+	RGB 02, 03, 04
+	RGB 02, 03, 04
+	RGB 26, 28, 30
+	RGB 26, 28, 30
+else
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+endc
 
 .NotePals:
 if !DEF(MONOCHROME)
