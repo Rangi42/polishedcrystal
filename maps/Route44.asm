@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE44_VETERAN_M
 	const ROUTE44_FISHER1
 	const ROUTE44_FISHER2
 	const ROUTE44_YOUNGSTER1
@@ -17,6 +18,93 @@ Route44_MapScriptHeader:
 
 .MapCallbacks:
 	db 0
+
+Route44VeteranmScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
+	iftrue .GotRockyHelmet
+	checkevent EVENT_BEAT_VETERANM_BARKHORN
+	iftrue .Beaten
+	checkevent EVENT_BEAT_BIRD_KEEPER_VANCE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PSYCHIC_PHIL
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_WILTON
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_EDGAR
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERF_CYBIL
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEMANIAC_ZACH
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERM_ALLEN
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE44_VETERAN_M
+	loadtrainer VETERANM, BARKHORN
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_VETERANM_BARKHORN
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem ROCKY_HELMET
+	iffalse .Done
+	setevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
+.GotRockyHelmet:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
+	waitbutton
+	closetext
+	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "TODO"
+	done
+
+.QuestionText:
+	text "TODO"
+	done
+
+.RefusedText:
+	text "TODO"
+	done
+
+.SeenText:
+	text "TODO"
+	done
+
+.BeatenText:
+	text "TODO"
+	done
+
+.AfterText1:
+	text "TODO"
+	done
+
+.AfterText2:
+	text "TODO"
+	done
 
 TrainerBird_keeperVance1:
 	trainer EVENT_BEAT_BIRD_KEEPER_VANCE, BIRD_KEEPER, VANCE1, Bird_keeperVance1SeenText, Bird_keeperVance1BeatenText, 0, Bird_keeperVance1Script
@@ -538,12 +626,13 @@ Route44_MapEventHeader:
 	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
 
 .PersonEvents:
-	db 11
+	db 12
+	person_event SPRITE_VETERAN_M, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
 	person_event SPRITE_FISHER, 3, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	person_event SPRITE_FISHER, 13, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherEdgar, -1
 	person_event SPRITE_YOUNGSTER, 9, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicPhil, -1
 	person_event SPRITE_SUPER_NERD, 2, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
-	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
+	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
 	person_event SPRITE_COOLTRAINER_M, 15, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
 	person_event SPRITE_COOLTRAINER_F, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19da40, -1

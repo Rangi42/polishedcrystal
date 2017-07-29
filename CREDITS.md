@@ -5,6 +5,7 @@
 
 * FIQ for multiple feature code contributions (specifically: abilities, natures affecting stats, better AI, various item and move effects, and other battle engine features; and porting TPP's caught data stats screen).
 * The TPP Anniversary Crystal 251 dev team for making their code publically usable (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, and caught data stats page code).
+* Sanqui for the music player with piano roll visualization.
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
@@ -51,6 +52,7 @@
 ## Content
 
 * Mateo for the shared universe of Red++ and Pokémon Christmas, including Shamouti Island and Ecruteak Shrine.
+* Pia Carrot for Valencia Island and Route 49 from Pokémon Orange.
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 
 

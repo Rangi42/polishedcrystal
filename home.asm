@@ -492,11 +492,11 @@ LoadEDTile:: ; 323d
 	jr c, .wait
 
 	di
-	ld a, 1 ; BANK(VTiles3)
+	ld a, BANK(VTiles3)
 	ld [rVBK], a
 	hlcoord 0, 0, AttrMap
 	call .StackPointerMagic
-	xor a ; BANK(VTiles0)
+	xor a ; ld a, BANK(VTiles0)
 	ld [rVBK], a
 	hlcoord 0, 0
 	call .StackPointerMagic

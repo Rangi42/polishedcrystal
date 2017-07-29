@@ -1,4 +1,5 @@
 const_value set 2
+	const ROUTE43_SIGHTSEER_F
 	const ROUTE43_SUPER_NERD1
 	const ROUTE43_SUPER_NERD2
 	const ROUTE43_SUPER_NERD3
@@ -35,10 +36,100 @@ UnknownScript_0x19d05c:
 	domaptrigger ROUTE_43_GATE, $1
 	return
 
+Route43SightseerfScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
+	iftrue .GotFlameOrb
+	checkevent EVENT_BEAT_SIGHTSEERF_LENIE
+	iftrue .Beaten
+	checkevent EVENT_BEAT_BREEDER_JODY_ONCE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_SR_AND_JR_IVY_AND_AMY
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_CAMPER_SPENCER
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEMANIAC_BEN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEMANIAC_BRENT
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_POKEMANIAC_RON
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_MARVIN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PICNICKER_TIFFANY
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE43_SIGHTSEER_F
+	loadtrainer SIGHTSEERF, LENIE
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_SIGHTSEERF_LENIE
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem FLAME_ORB
+	iffalse .Done
+	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
+.GotFlameOrb:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
+	waitbutton
+	closetext
+	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "TODO"
+	done
+
+.QuestionText:
+	text "TODO"
+	done
+
+.RefusedText:
+	text "TODO"
+	done
+
+.SeenText:
+	text "TODO"
+	done
+
+.BeatenText:
+	text "TODO"
+	done
+
+.AfterText1:
+	text "TODO"
+	done
+
+.AfterText2:
+	text "TODO"
+	done
+
 TrainerBreederJody:
 	trainer EVENT_BEAT_BREEDER_JODY, BREEDER, JODY, BreederJodySeenText, BreederJodyBeatenText, 0, BreederJodyScript
 
 BreederJodyScript:
+	setevent EVENT_BEAT_BREEDER_JODY_ONCE
 	end_if_just_battled
 	opentext
 	writetext BreederJodyAfterText
@@ -619,7 +710,8 @@ Route43_MapEventHeader:
 	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
 
 .PersonEvents:
-	db 12
+	db 13
+	person_event SPRITE_LADY, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route43SightseerfScript, -1
 	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
 	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
 	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1

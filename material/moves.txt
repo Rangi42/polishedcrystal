@@ -1,95 +1,54 @@
-Possible location exclusive moves:
+Drowzee/Hypno: Tri Attack (RBY TM), Baton Pass (purified)
+Eevee: Focus Energy (RBY learnset), Charm (purified)
+Girafarig: Mirror Coat (Dream World), Sucker Punch (HGSS tutor)
+Growlithe/Arcanine: Dragon Rage (RBY TM), Charm (purified)
+Houndour/Houndoom: Charm (purified), Night Slash (Prism tutor)
+Jigglypuff/Wigglytuff: Tri Attack (RBY TM), Pain Split (HGSS tutor)
+Meowth/Persian: Hypnosis (Dream World), Gunk Shot (HGSS tutor)
+Natu/Xatu: Baton Pass (purified), Sucker Punch (HGSS tutor)
+Psyduck/Golduck: Charm (purified), Low Kick (HGSS tutor)
 
-https://www.reddit.com/r/pokemon/comments/5mvd3t/name_some_moves_you_want_certain_pokemon_to_gain/
-Scizor - Glare and Crabhammer
-Ampharos - DazzlinGleam
-Kindgra - Flamethrower and Fire Blast
+Original:
+Scyther: Glare
 
-FOCUS_ENERGY: Eevee
-LEER: Charmander
-METRONOME: Elekid, Magby
-MIST: Vaporeon
-SLASH: Pinsir
-STOMP: Tauros
-DRAGON RAGE: Growlithe, Lapras, Aerodactyl
-TRI ATTACK: Jigglypuff, Slowpoke, Drowzee, Chansey, Mewtwo
-BATON_PASS [purified: Beedrill, Rapidash, Dodrio, Hypno, Zapdos, Natu]
-CHARM [purified: Vulpix, Dugtrio, Golduck, Growlithe, Swinub, Houndour; Eevee, Wobuffet]
-DRAGON_DANCE [Larvitar event move]
-ENCORE [Dream World Psyduck]
-HYPNOSIS [Dream World Zubat, Meowth]
-LEECH_SEED [Dream World Tangela, Chikorita]
-MIRROR_COAT [Dream World Girafarig, Mantine]
-MIST [Dream World Poliwag]
-PERISH_SONG [Dream World Cubone]
+RBY TM:
+Mankey/Primeape: Metronome
+Slowpoke/Slowbro: Tri Attack
 
-GUNK SHOT: Meowth, Mankey, Mew, Teddiursa, Mantine, Phanpy
-HEAL BELL: Jynx, Lapras, Mew, Chinchou, Misdreavus, Snubbull
-LOW KICK: Golduck, Hitmonchan, Mewtwo, Mew, Typhlosion, Totodile, Snubbull, Sneasel, Ursaring, Tyranitar
-METRONOME: Mankey, Poliwhirl, Abra, Machop, Geodude, Gengar, Drowzee, Hitmonlee, Hitmonchan, Mr.Mime, Jynx, Mewtwo, Mew, Politoed, Snubbull, Teddiursa, Miltank
-PAIN SPLIT: Jigglypuff, Porygon, Mew, Pineco, Dunsparce
-SKY ATTACK: Doduo, Mew, Crobat, Togetic, Lugia
-* SUCKER PUNCH: NidoranM, Bellsprout, Geodude, Voltorb, Hitmonlee, Mew, Chinchou, Natu, Umbreon, Misdreavus, Girafarig, Corsola, Houndour, Hitmontop, Celebi
-SUPER FANG: NidoranF, NidoranM, Mew, Snubbull
-TWISTER: Charizard, Butterfree, Zubat, Venomoth, Articuno, Zapdos, Moltres, Mew, Togetic, Hitmontop
-NIGHTMARE: Butterfree, Clefairy, Jigglypuff, Meowth, Abra, Slowpoke, Lapras, Porygon, Mewtwo, Espeon, Umbreon, Misdreavus, Girafarig, Dunsparce, Sneasel, Houndour, Porygon2, Tyranitar, Lugia, Ho-Oh, Celebi
+HGSS tutor:
+Bellsprout/Weepinbell/Victreebel: Sucker Punch
+Caterpie/Metapod/Butterfree: Twister
+Chinchou/Lanturn: Heal Bell
+Dunsparce: Pain Split
+Jynx: Heal Bell
+Lapras: Heal Bell
+Mantine: Gunk Shot
+Miltank: Metronome
+NidoranF/Nidorina/Nidoqueen: Super Fang
+NidoranM/Nidorino/Nidoking: Sucker Punch, Super Fang
+Phanpy/Donphan: Gunk Shot
+Snubbull/Granbull: Heal Bell, Low Kick, Metronome, Super Fang
+Teddiursa/Ursaring: Gunk Shot, Metronome
+Zubat/Golbat/Crobat: Sky Attack, Twister
 
-http://www.serebii.net/blackwhite/dreamworldattacks.shtml
+Purified:
+Diglett/Dugtrio: Charm
+Doduo/Dodrio: Baton Pass
+Ponyta/Rapidash: Baton Pass
+Swinub/Piloswine/Mamoswine: Charm
+Vulpix/Ninetales: Charm
+Weedle/Kakuna/Beedrill: Baton Pass
+Wobbuffet: Charm
+
+Dream World:
+Poliwag/Poliwhirl/Poliwrath: Mist
 
 Prism tutor:
-CATERPIE	X_SCISSOR
-METAPOD	X_SCISSOR
-BUTTERFREE	X_SCISSOR
-PIKACHU	BARRIER
-RAICHU	BARRIER
-JIGGLYPUFF	MOONLIGHT
-WIGGLYTUFF	MOONLIGHT
-ZUBAT	OUTRAGE
-GOLBAT	OUTRAGE
-PARAS	CONFUSE_RAY
-PARASECT	CONFUSE_RAY
-VENONAT	NIGHT_SHADE
-VENOMOTH	NIGHT_SHADE
-GROWLITHE	DRAGON_DANCE
-ARCANINE	DRAGON_DANCE
-PONYTA	NASTY_PLOT
-RAPIDASH	NASTY_PLOT
-SLOWPOKE	GROWTH
-SLOWBRO	GROWTH
-GASTLY	MOONBLAST
-HAUNTER	MOONBLAST
-GENGAR	MOONBLAST
-EXEGGCUTE	CONFUSE_RAY
-EXEGGUTOR	CONFUSE_RAY
-HITMONLEE	TAKE_DOWN
-HITMONCHAN	TAKE_DOWN
-KOFFING	CRUNCH
-WEEZING	CRUNCH
-RHYHORN	DRAGON_DANCE
-RHYDON	DRAGON_DANCE
-CHANSEY	HAZE
-TANGELA	SLUDGE
-SCYTHER	CRUNCH
-EEVEE	EARTH_POWER
-SENTRET	RECOVER
-FURRET	RECOVER
-MAREEP	PURSUIT
-FLAAFFY	PURSUIT
-AMPHAROS	PURSUIT
-MARILL	FOCUS_ENERGY
-AZUMARILL	FOCUS_ENERGY
-YANMA	FEINT_ATTACK
-YANMEGA	FEINT_ATTACK
-PINECO	SMOKESCREEN
-FORRETRESS	SMOKESCREEN
-GLIGAR	X_SCISSOR
-GLISCOR	X_SCISSOR
-SNEASEL	CRUNCH
-WEAVILE	CRUNCH
-TEDDIURSA	CRUNCH
-URSARING	CRUNCH
-HOUNDOUR	NIGHT_SLASH
-HOUNDOOM	NIGHT_SLASH
-LARVITAR	DRAGON_PULSE
-PUPITAR	DRAGON_PULSE
-TYRANITAR	DRAGON_PULSE
+Chansey: Haze
+Exeggcute/Exeggutor: Confuse Ray
+Marill/Azumarill: Focus Energy
+Pineco/Forretress: Smokescreen
+Sentret/Furret: Recover
+Tangela/Tangrowth: Sludge
+Venonat/Venomoth: Night Shade
+Yanma/Yanmega: Feint Attack

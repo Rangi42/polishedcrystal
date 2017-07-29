@@ -77,6 +77,9 @@ MAP_HEADERS               EQU $25
 MAPS_1                    EQU $2A
 MAPS_2                    EQU $2B
 MAPS_3                    EQU $2C
+MAPS_4                    EQU $7F
+MAPS_5                    EQU $A
+MAPS_6                    EQU $38
 
 MAP_SCRIPTS_1             EQU $15
 MAP_SCRIPTS_2             EQU $16
@@ -122,6 +125,9 @@ MAP_SCRIPTS_41            EQU $12
 MAP_SCRIPTS_42            EQU $C
 MAP_SCRIPTS_43            EQU $21
 MAP_SCRIPTS_44            EQU $5
+MAP_SCRIPTS_45            EQU $5A
+MAP_SCRIPTS_46            EQU $47
+MAP_SCRIPTS_47            EQU $D
 
 
 ; audio.o

@@ -18,6 +18,7 @@ endc
 ; 49420
 
 LoadSpecialMapPalette: ; 494ac
+	GLOBAL GenericMart_BlockData
 	call GetMapHeaderTimeOfDayNybble
 	cp PALETTE_DARK
 	jr nz, .not_dark
@@ -146,15 +147,15 @@ LoadSpecialMapPalette: ; 494ac
 	ld bc, 8 palettes
 	call FarCopyWRAM
 
-; hack to replace green with Poké Mart blue for maps using Mart.blk
+; replace green with Poké Mart blue for maps using Mart.blk
 	ld a, [MapBlockDataBank]
-	cp $2b ; BANK(CherrygroveMart_BlockData)
+	cp BANK(GenericMart_BlockData)
 	jr nz, .not_mart
 	ld a, [MapBlockDataPointer]
-	cp $d8 ; CherrygroveMart_BlockData % $100
+	cp GenericMart_BlockData % $100
 	jr nz, .not_mart
 	ld a, [MapBlockDataPointer + 1]
-	cp $40 ; CherrygroveMart_BlockData / $100
+	cp GenericMart_BlockData / $100
 	jr nz, .not_mart
 	ld hl, MartBluePalette
 	ld a, $5

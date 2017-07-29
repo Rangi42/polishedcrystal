@@ -61,6 +61,12 @@ pre-battle - “What are you doing here!?”
 win battle - “Hmph. Get lost.”
 post-battle - “My pa owns the ship that brings people here.”
 
+Swimmer(F) (Bolla):
+pre-battle - “When I swim out here it’s like I’m in my own little bubble.”
+win battle - “You burst my bubble!”
+post-battle - “We all live in our own bubbles. It’s not until they pop that we see what life is like for others.”
+party - Something with Bubblebeam
+
 1: “Is this your first visit to Shamouti Island? It's a tropical paradise rich in natural history. You may also see some interesting Pokemon here.”
 2: “Shamouti Island is so far south, it stays warm all year round!”
 4 (Rich Boy): “Ow. I was just walking through the market, minding my own business, when suddenly - get this - I tripped over some vase that some inconsiderate trader left on the floor. Like, who does that? Really.”

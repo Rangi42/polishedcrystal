@@ -12,7 +12,12 @@ ValenciaHouseLassScript:
 	jumptextfaceplayer .Text
 
 .Text:
-	text "TODO"
+	text "Prof.Ivy is really"
+	line "cool!"
+
+	para "She helped my"
+	line "#mon when they"
+	cont "were sick!"
 	done
 
 ValenciaHouse_MapEventHeader:

@@ -549,6 +549,9 @@ endr
 
 	farcall GiveExperiencePointsAfterCatch
 
+	ld a, [EnemyMonLevel]
+	ld [CurPartyLevel], a
+
 	ld a, [EnemyMonSpecies]
 	ld [CurSpecies], a
 	ld [CurPartySpecies], a
@@ -559,8 +562,6 @@ endr
 	ld hl, EnemyMonDVs - (MON_DVS - (MON_EVS -1))
 	predef CalcPkmnStats
 
-	ld a, [EnemyMonLevel]
-	ld [CurPartyLevel], a
 	pop af
 	ld [wWildMon], a
 	ld [CurPartySpecies], a

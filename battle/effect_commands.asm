@@ -5039,6 +5039,7 @@ CanParalyzeTarget:
 	lb bc, ELECTRIC, ELECTRIC
 	lb de, LIMBER, HELD_PREVENT_PARALYZE
 	ld h, 1 << PAR
+	jr CanStatusTarget
 CanSleepTarget:
 	ld a, b
 	lb bc, -1, -1

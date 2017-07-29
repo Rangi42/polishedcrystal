@@ -18,15 +18,15 @@ ProfIvyScript:
 	writetext .RequestText
 	yesorno
 	iffalse .NoBerry
-	checkitem FIGY_BERRY
+	checkitem LIECHI_BERRY
 	iffalse .NoBerry
-	takeitem FIGY_BERRY
-	checkitem FIGY_BERRY
+	takeitem LIECHI_BERRY
+	checkitem LIECHI_BERRY
 	iffalse .Return1
-	takeitem FIGY_BERRY
-	checkitem FIGY_BERRY
+	takeitem LIECHI_BERRY
+	checkitem LIECHI_BERRY
 	iffalse .Return2
-	takeitem FIGY_BERRY
+	takeitem LIECHI_BERRY
 	writetext .OkayText
 	waitbutton
 	closetext
@@ -78,9 +78,9 @@ ProfIvyScript:
 	end
 
 .Return2:
-	giveitem FIGY_BERRY
+	giveitem LIECHI_BERRY
 .Return1:
-	giveitem FIGY_BERRY
+	giveitem LIECHI_BERRY
 .NoBerry:
 	writetext .NoBerryText
 	waitbutton
@@ -107,7 +107,7 @@ ProfIvyScript:
 	line "helping it."
 
 	para "Can you please"
-	line "find three Figy"
+	line "find three Liechi"
 	cont "Berries for it?"
 	done
 
@@ -116,8 +116,8 @@ ProfIvyScript:
 	line "stand…"
 
 	para "You don't have"
-	line "three Figy Berries"
-	cont "to spare."
+	line "three Liechi"
+	cont "Berries to spare."
 	done
 
 .OkayText:

@@ -302,6 +302,34 @@ wBT_OTTemp:: battle_tower_struct wBT_OTTemp
 	hall_of_fame wHallOfFameTemp
 	ds wc608 - @
 
+; music player
+wSongSelection:: ds 2
+wNumNoteLines:: ds 1
+wTmpCh:: ds 1
+wChLastNotes:: ds 3
+wVolTimer:: ds 1
+wC1Vol:: ds 1
+wC1VolSub:: ds 1
+wC2Vol:: ds 1
+wC2VolSub:: ds 1
+wC3Vol:: ds 1
+wC3VolSub:: ds 1
+wC4Vol:: ds 1
+wC4VolSub:: ds 1
+wNoteEnded:: ds 3
+wSelectorTop:: ds 1
+wSelectorCur:: ds 1
+wChannelSelector:: ds 1
+wChannelSelectorSwitches:: ds 8
+wNoiseHit:: ds 1
+wTranspositionInterval:: ds 1
+wChangingPitch:: ds 1
+wTmp:: ds 1
+wRenderedWaveform:: ds 1
+wSpecialWaveform:: ds 1
+wWaveformTmp:: ds 16
+	ds wc608 - @
+
 wMisc:: ; ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 	ds 10
 wc612::
@@ -1483,6 +1511,7 @@ IsCurMonInParty::
 wItemQuantityChangeBuffer:: ds 1
 wItemQuantityBuffer:: ds 1
 
+TempMPWaveform::
 TempMon:: ; d10e
 	party_struct TempMon
 
@@ -2662,6 +2691,11 @@ SECTION "WRAM 4 RM", WRAMX [$d200], BANK [4]
 SoundEngineBackup::
 
 
+SECTION "Music Player Notes", WRAMX [$d800], BANK [4]
+
+wMPNotes:: ds 4 * 256
+
+
 SECTION "GBC Video", WRAMX, BANK [5]
 
 ; 8 4-color palettes
@@ -2771,4 +2805,3 @@ INCLUDE "sram.asm"
 SECTION "WRAM 7", WRAMX, BANK [7]
 wWindowStack:: ds $1000 - 1
 wWindowStackBottom:: ds 1
-

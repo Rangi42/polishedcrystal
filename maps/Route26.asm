@@ -4,6 +4,7 @@ const_value set 2
 	const ROUTE26_COOLTRAINER_F1
 	const ROUTE26_COOLTRAINER_F2
 	const ROUTE26_YOUNGSTER
+	const ROUTE26_COOLTRAINER_F3
 	const ROUTE26_FISHER
 	const ROUTE26_DRAGON_TAMER2
 	const ROUTE26_FRUIT_TREE
@@ -241,6 +242,17 @@ PsychicRichardScript:
 	closetext
 	end
 
+TrainerBattleGirlRonda:
+	trainer EVENT_BEAT_BATTLE_GIRL_RONDA, BATTLE_GIRL, RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText, 0, BattleGirlRondaScript
+
+BattleGirlRondaScript:
+	end_if_just_battled
+	opentext
+	writetext BattleGirlRondaAfterText
+	waitbutton
+	closetext
+	end
+
 TrainerFisherScott:
 	trainer EVENT_BEAT_FISHER_SCOTT, FISHER, SCOTT, FisherScottSeenText, FisherScottBeatenText, 0, FisherScottScript
 
@@ -405,6 +417,26 @@ UnknownText_0x1a5278:
 	line "complacent."
 	done
 
+BattleGirlRondaSeenText:
+	text "Stop! I challenge"
+	line "you to a duel!"
+	done
+
+BattleGirlRondaBeatenText:
+	text "Victory is yours!"
+	done
+
+BattleGirlRondaAfterText:
+	text "You see some of"
+	line "the world's str-"
+
+	para "ongest trainers"
+	line "come through here."
+
+	para "And I get to fight"
+	line "them all!"
+	done
+
 FisherScottSeenText:
 	text "I'm feeling great"
 	line "today!"
@@ -467,12 +499,13 @@ Route26_MapEventHeader:
 	signpost 6, 8, SIGNPOST_READ, Route26Sign
 
 .PersonEvents:
-	db 10
+	db 11
 	person_event SPRITE_GUIDE_GENT, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
 	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
 	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
 	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
 	person_event SPRITE_YOUNGSTER, 79, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1
+	person_event SPRITE_COOLTRAINER_F, 82, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
 	person_event SPRITE_FISHER, 100, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
 	person_event SPRITE_GUIDE_GENT, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 54, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a4ec2, -1

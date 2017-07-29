@@ -23,6 +23,8 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Aesthetics
 
+* Draw Kukui's overworld sprite
+* Draw Caitlin's sleeping overworld sprite
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 
@@ -37,35 +39,25 @@ The final, non-beta 3.0 release should include all of these.
 Shamouti Island:
 
 * Caitlin and Darach in Beautiful Beach villa (EVENT_BEAT_DARACH and EVENT_BEAT_CAITLIN)
-* Trendy phrase guy in hotel lobby (ENGINE_CHANGED_TRENDY_PHRASE)
 * Looker in hotel room (not S.S. Aqua)
-* Sightseer in hotel mentions that Bottle Caps can be used for Hyper Training in Alola
 
 
 ### Maps
 
-Maps need NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
+Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
-* Valencia Island (NPCs)
+* Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
 
 Shamouti Island:
 
-* Shamouti Island (outdoor market instead of Mart) (MART_SHAMOUTI_1 and MART_SHAMOUTI_2)
+* Shamouti Island
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
-* Beautiful Beach villa (needs a larger map, maybe with the mansion tileset)
-
-Route leaders: (see [material/route-leaders.txt](material/route-leaders.txt))
-
-* Route 43: Ace Trainer♀ Lenie, gives Flame Orb
-* Route 44: Veteran♂ Barkhorn, gives Rocky Helmet
-* Route 46: Dragon Tamer Aegon, gives Focus Sash
-* Route 26/27: Veteran♀ Litvyak, gives Choice Specs
 
 
 ### Move effects
@@ -119,7 +111,6 @@ Some of these may never be added; they're just suggestions.
    * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
    * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
-   * Nidoran♂ and Nidoran♀ as separate forms, freeing up another slot
 * More Pokémon
    * Rewrite Eggs to use the IsEgg bitflag instead of $fe
    * Rewrite Bill's PC to not use $ff as a terminator
@@ -127,7 +118,31 @@ Some of these may never be added; they're just suggestions.
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
    * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
+      * Lickilicky
+      * Ambipom
+      * Azurill
+      * Wynaut
+      * Happiny
+      * Bonsly
+      * Mantyke
    * Add Gen 3 and 4 Pokémon from [Hoenn Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Hoenn_Sound) and [Sinnoh Sound](https://bulbapedia.bulbagarden.net/wiki/Hoenn_Sound#Sinnoh_Sound)
+      * Zigzagoon → Linoone
+      * Whismur → Loudred → Exploud
+      * Makuhita → Hariyama
+      * Plusle and Minun
+      * Numel → Camerupt
+      * Spoink → Grumpig
+      * Spinda (with spotted forms from Pokémon Orange)
+      * Absol
+      * Meditite → Medicham
+      * Bidoof → Bibarel
+      * Shinx → Luxio → Luxray (retype to Electric/Dark)
+      * Budew → Roselia → Roserade
+      * Buizel → Floatzel
+      * Chingling → Chimecho
+      * Bronzor → Bronzong
+      * Chatot
+      * Carnivine
    * Add some Gen 3 and 4 legendaries in appropriate places; tentative ideas:
       * Regirock, Regice, and Registeel in new ruins like in Platinum
       * Regigigas in Mt. Silver after you catch the three Regis
@@ -141,8 +156,8 @@ Some of these may never be added; they're just suggestions.
       * Darkrai in Blue's bedroom
       * Heatran?
       * Phione from an Egg given by Wallace
-      * Victini
-      * Magearna
+      * Victini on a cruise to Liberty Garden
+      * Magearna in the Ruins of Alph
    * Add certain other Gen 3 and 4 Pokémon; Prism's dex is similar to my own taste
       * Ralts → Kirlia → Gardevoir / Gallade
       * Surskit → Masquerain (buff and retype to Bug/Water with Levitate)
@@ -150,8 +165,8 @@ Some of these may never be added; they're just suggestions.
       * Aron → Lairon → Aggron
       * Torkoal
       * Lunatone and Solrock
-      * Feebas and Milotic
-      * Snorunt → Glalie / Froslas
+      * Feebas → Milotic
+      * Snorunt → Glalie / Froslass
       * Relicanth
       * Bagon → Shelgon → Salamence
       * Beldum → Metang → Metagross
@@ -181,6 +196,7 @@ Some of these may never be added; they're just suggestions.
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
 * Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
+* Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)

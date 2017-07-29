@@ -128,6 +128,42 @@ ShamoutiIslandFisherScript:
 	line "rude!"
 	done
 
+ShamoutiIslandMerchant1Script:
+	faceplayer
+	opentext
+	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1
+	closetext
+	end
+
+ShamoutiIslandMerchant2Script:
+	faceplayer
+	opentext
+	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_2
+	closetext
+	end
+
+ShamoutiIslandSign:
+	jumptext .Text
+
+.Text:
+	text "Shamouti Island"
+	done
+
+ShamoutiHotelSign:
+	jumptext .Text
+
+.Text:
+	text "Shamouti Hotel"
+	done
+
+ShamoutiTouristCenterSign:
+	jumptext .Text
+
+.Text:
+	text "Shamouti Tourist"
+	line "Center"
+	done
+
 ShamoutiIsland_MapEventHeader:
 .Warps:
 	db 6
@@ -142,13 +178,18 @@ ShamoutiIsland_MapEventHeader:
 	db 0
 
 .Signposts:
-	db 0
+	db 3
+	signpost 16, 16, SIGNPOST_READ, ShamoutiIslandSign
+	signpost 6, 26, SIGNPOST_READ, ShamoutiTouristCenterSign
+	signpost 6, 32, SIGNPOST_READ, ShamoutiHotelSign
 
 .PersonEvents:
-	db 6
+	db 8
 	person_event SPRITE_BALL_CUT_FRUIT, 13, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFruitTree, -1
 	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
 	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	person_event SPRITE_MARILL, 14, 25, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandPikabluScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	person_event SPRITE_FISHER, 2, 20, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFisherScript, -1
 	person_event SPRITE_FISHER, 2, 23, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFisherScript, -1
+	person_event SPRITE_GRAMPS, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandMerchant1Script, -1
+	person_event SPRITE_COOLTRAINER_M, 16, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandMerchant2Script, -1

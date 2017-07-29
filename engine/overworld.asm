@@ -373,6 +373,8 @@ LoadSpriteGFX: ; 14306
 
 SortUsedSprites: ; 1431e
 ; Bubble-sort sprites by type.
+; TODO: verify whether this is necessary; remove it otherwise.
+; Note that overworld sprite sets are already manually sorted.
 
 ; Run backwards through UsedSprites to find the last one.
 
@@ -846,10 +848,11 @@ Group2Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
-	; 10 walking sprites (8 that walk)
+	db SPRITE_VETERAN_M ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SUICUNE
-	; 12 total sprites
+	; 13 total sprites
 	db 0
 
 
@@ -1015,13 +1018,14 @@ Group9Sprites:
 	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	; 9 walking sprites
+	db SPRITE_LADY ; doesn't walk
+	; 10 walking sprites (9 that walk)
 	db SPRITE_GYARADOS_TOP_LEFT
 	db SPRITE_GYARADOS_TOP_RIGHT
 	db SPRITE_GYARADOS_BOTTOM_LEFT
 	db SPRITE_GYARADOS_BOTTOM_RIGHT
 	db SPRITE_BALL_CUT_FRUIT
-	; 14 total sprites
+	; 15 total sprites
 	db 0
 
 
@@ -1052,11 +1056,12 @@ Group26Sprites:
 	db SPRITE_COSPLAYER ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
 	db SPRITE_POKEFAN_M ; doesn't walk
-	; 12 walking sprites (9 that walk)
+	db SPRITE_VETERAN_F ; doesn't walk
+	; 13 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_PIDGEY
 	db SPRITE_RATTATA
-	; 15 total sprites
+	; 16 total sprites
 	db 0
 
 
@@ -1317,14 +1322,15 @@ Group30Sprites:
 ; Route22Past
 	db SPRITE_FISHER
 	db SPRITE_SCIENTIST
+	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_CELEBI
 	db SPRITE_LYRA
 	db SPRITE_SILVER
 	db SPRITE_GIOVANNI
-	; 7 walking sprites
+	; 8 walking sprites
 	db SPRITE_ROCK_BOULDER_FOSSIL
-	; 8 total sprites
+	; 9 total sprites
 	db 0
 
 

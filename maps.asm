@@ -26,17 +26,17 @@ SECTION "Map Blockdata 3", ROMX, BANK[MAPS_3]
 INCLUDE "maps/blockdata_3.asm"
 
 
-SECTION "Map Blockdata 4", ROMX, BANK[$7F]
+SECTION "Map Blockdata 4", ROMX, BANK[MAPS_4]
 
 INCLUDE "maps/blockdata_4.asm"
 
 
-SECTION "Map Blockdata 5", ROMX, BANK[$A]
+SECTION "Map Blockdata 5", ROMX, BANK[MAPS_5]
 
 INCLUDE "maps/blockdata_5.asm"
 
 
-SECTION "Map Blockdata 6", ROMX, BANK[$38]
+SECTION "Map Blockdata 6", ROMX, BANK[MAPS_6]
 
 INCLUDE "maps/blockdata_6.asm"
 
@@ -88,7 +88,6 @@ INCLUDE "maps/UnionCaveB1FNorth.asm"
 INCLUDE "maps/UnionCaveB1FSouth.asm"
 INCLUDE "maps/UnionCaveB2F.asm"
 INCLUDE "maps/SlowpokeWellB1F.asm"
-INCLUDE "maps/SlowpokeWellB2F.asm"
 INCLUDE "maps/OlivineLighthouse1F.asm"
 INCLUDE "maps/OlivineLighthouse2F.asm"
 INCLUDE "maps/OlivineLighthouse3F.asm"
@@ -105,6 +104,7 @@ INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 INCLUDE "maps/VioletNicknameSpeechHouse.asm"
 INCLUDE "maps/GoldenrodSpeechHouse.asm"
+INCLUDE "maps/SlowpokeWellB2F.asm"
 
 
 SECTION "Map Scripts 4", ROMX, BANK[MAP_SCRIPTS_4]
@@ -448,8 +448,7 @@ INCLUDE "maps/Route20.asm"
 INCLUDE "maps/Route21.asm"
 INCLUDE "maps/Route25.asm"
 INCLUDE "maps/Route35.asm"
-INCLUDE "maps/Route43.asm"
-INCLUDE "maps/Route44.asm"
+INCLUDE "maps/Route38.asm"
 
 
 SECTION "Map Scripts 20", ROMX, BANK[MAP_SCRIPTS_20]
@@ -463,7 +462,6 @@ INCLUDE "maps/Route28.asm"
 INCLUDE "maps/Route29.asm"
 INCLUDE "maps/Route30.asm"
 INCLUDE "maps/Route31.asm"
-INCLUDE "maps/Route38.asm"
 
 
 SECTION "Map Scripts 21", ROMX, BANK[MAP_SCRIPTS_21]
@@ -775,11 +773,6 @@ SECTION "Map Scripts 42", ROMX, BANK[MAP_SCRIPTS_42]
 INCLUDE "maps/ShamoutiHotel1F.asm"
 INCLUDE "maps/ShamoutiHotel2F.asm"
 INCLUDE "maps/ShamoutiHotel3F.asm"
-INCLUDE "maps/ShamoutiHotelRoom2A.asm"
-INCLUDE "maps/ShamoutiHotelRoom2B.asm"
-INCLUDE "maps/ShamoutiHotelRoom3B.asm"
-INCLUDE "maps/ShamoutiHotelRoom3C.asm"
-INCLUDE "maps/ShamoutiHotelRestaurant.asm"
 
 
 SECTION "Map Scripts 43", ROMX, BANK[MAP_SCRIPTS_43]
@@ -795,3 +788,22 @@ SECTION "Map Scripts 44", ROMX, BANK[MAP_SCRIPTS_44]
 INCLUDE "maps/Route2North.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/ViridianForest.asm"
+
+
+SECTION "Map Scripts 45", ROMX, BANK[MAP_SCRIPTS_45]
+
+INCLUDE "maps/Route43.asm"
+
+
+SECTION "Map Scripts 46", ROMX, BANK[MAP_SCRIPTS_46]
+
+INCLUDE "maps/Route44.asm"
+
+
+SECTION "Map Scripts 47", ROMX, BANK[MAP_SCRIPTS_47]
+
+INCLUDE "maps/ShamoutiHotelRoom2A.asm"
+INCLUDE "maps/ShamoutiHotelRoom2B.asm"
+INCLUDE "maps/ShamoutiHotelRoom3B.asm"
+INCLUDE "maps/ShamoutiHotelRoom3C.asm"
+INCLUDE "maps/ShamoutiHotelRestaurant.asm"

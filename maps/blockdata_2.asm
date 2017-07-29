@@ -1,6 +1,3 @@
-Route14_BlockData:
-	INCBIN "maps/Route14.blk"
-
 OlivineMart_BlockData:
 EcruteakMart_BlockData:
 BlackthornMart_BlockData:
@@ -14,7 +11,11 @@ LavenderMart_BlockData:
 ViridianMart_BlockData:
 SaffronMart_BlockData:
 CherrygroveMart_BlockData:
+GenericMart_BlockData:: ; used by tilesets/palettes.asm:LoadSpecialMapPalette
 	INCBIN "maps/Mart.blk"
+
+Route14_BlockData:
+	INCBIN "maps/Route14.blk"
 
 Route10North_BlockData:
 	INCBIN "maps/Route10North.blk"

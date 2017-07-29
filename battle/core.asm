@@ -8183,7 +8183,7 @@ InitEnemy: ; 3f55e
 BackUpVBGMap2: ; 3f568
 	ld a, [rSVBK]
 	push af
-	ld a, $6 ; BANK(wDecompressScratch)
+	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 	ld hl, wDecompressScratch
 	ld bc, $40 tiles ; VBGMap3 - VBGMap2
@@ -9203,4 +9203,52 @@ CheckPluralTrainer:
 	and a
 	ret
 
-INCLUDE "battle/unique_moves.asm"
+CheckUniqueWildMove:
+	ld a, [MapGroup]
+	ld b, a
+	ld a, [MapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	ld c, a
+	ld hl, UniqueWildMoves
+.loop
+	ld a, [hli] ; landmark
+	cp -1
+	ret z
+	cp c
+	jr nz, .inc2andloop
+	ld a, [hli] ; species
+	ld b, a
+	ld a, [CurPartySpecies]
+	cp b
+	jr nz, .inc1andloop
+	ld a, [hli] ; move
+	ld b, a
+	cp FLY
+	jr nz, .ChanceToTeach
+	ld a, [PlayerState]
+	cp PLAYER_SURF
+	jr z, .SurfingPikachu
+	cp PLAYER_SURF_PIKA
+	jr nz, .ChanceToTeach
+.SurfingPikachu
+	ld a, SURF
+	ld b, a
+	jr .TeachMove
+.ChanceToTeach
+	call Random
+	cp 50 percent + 1
+	ret nc
+.TeachMove
+	ld hl, EnemyMonMoves + 1 ; second move
+	ld a, b
+	ld [hl], a
+	ret
+
+.inc2andloop
+	inc hl
+.inc1andloop
+	inc hl
+	jr .loop
+
+INCLUDE "data/unique_wild_moves.asm"

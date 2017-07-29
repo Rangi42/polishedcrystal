@@ -264,10 +264,12 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Charizard is Fire/Dragon.
 * Add: Yanma is Bug/Dragon.
 * Add: Ampharos is Electric/Dragon.
+* Add: Noctowl is Ghost/Flying.
 * Add: Politoed can learn Energy Ball.
 * Add: Pidgeot can learn Focus Blast.
 * Add: Misdreavus can learn Disarm Voice.
 * Add: Espeon can learn Power Gem.
+* Add: Dig has 90 BP.
 * Add: Give in-game trades good natures.
 * Add: TM prices from OR/AS.
 * Add: Show quantity in Bag in marts.
@@ -325,6 +327,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
+* Add: Music player with piano roll by Sanqui.
 * Add: Instant text option.
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.

@@ -890,6 +890,7 @@ KRIS EQU __enum__
 	const KAMILA
 	const NOELLE
 	const PILAR
+	const LENIE
 
 	trainerclass SIGHTSEERS ; 5e
 	const LIANDSU1
@@ -947,7 +948,6 @@ KRIS EQU __enum__
 	const SERA
 	const NEESHA
 	const CHIARA
-	const LENIE
 
 	trainerclass ACE_DUO ; 61
 	const ELANANDIDA1

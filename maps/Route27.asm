@@ -1,5 +1,5 @@
 const_value set 2
-	const ROUTE27_BATTLE_GIRL
+	const ROUTE27_VETERAN_F
 	const ROUTE27_COOLTRAINER_M1
 	const ROUTE27_COOLTRAINER_M2
 	const ROUTE27_COOLTRAINER_F1
@@ -52,16 +52,143 @@ FisherScript_0x1a089c:
 FruitTreeScript_Route27LumBerry:
 	fruittree FRUITTREE_ROUTE_27
 
-TrainerBattleGirlRonda:
-	trainer EVENT_BEAT_BATTLE_GIRL_RONDA, BATTLE_GIRL, RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText, 0, BattleGirlRondaScript
-
-BattleGirlRondaScript:
-	end_if_just_battled
+Route27VeteranfScript:
+	faceplayer
 	opentext
-	writetext BattleGirlRondaAfterText
+	checkevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
+	iftrue .GotChoiceSpecs
+	checkevent EVENT_BEAT_VETERANF_LITVYAK
+	iftrue .Beaten
+	checkevent EVENT_BEAT_PSYCHIC_GILBERT
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BIRD_KEEPER_JOSE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERM_BLAKE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_ACE_DUO_JAKE_AND_BRI
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERF_REENA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERF_MEGAN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_DRAGON_TAMER_KAZU
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERM_GAVEN
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERF_JOYCE
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_COOLTRAINERF_BETH
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_PSYCHIC_RICHARD
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_BATTLE_GIRL_RONDA
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_FISHER_SCOTT
+	iffalse .RouteNotCleared
+	checkevent EVENT_BEAT_DRAGON_TAMER_ERICK
+	iffalse .RouteNotCleared
+	writetext .QuestionText
+	yesorno
+	iffalse .NoBattle
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE27_VETERAN_F
+	loadtrainer VETERANF, LITVYAK
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_VETERANF_LITVYAK
+	opentext
+.Beaten:
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem CHOICE_SPECS
+	iffalse .Done
+	setevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
+.GotChoiceSpecs:
+	writetext .AfterText2
+	waitbutton
+.Done:
+	closetext
+	end
+
+.RouteNotCleared:
+	writetext .IntroText
 	waitbutton
 	closetext
 	end
+
+.NoBattle:
+	writetext .RefusedText
+	waitbutton
+	closetext
+	end
+
+.IntroText:
+	text "Hm! If you're here,"
+	line "then you must be"
+
+	para "heading for the"
+	line "#mon League."
+
+	para "Want to train"
+	line "with me?"
+
+	para "Then beat everyone"
+	line "else on Routes 26"
+	cont "and 27."
+
+	para "I'll wait for you"
+	line "here."
+	done
+
+.QuestionText:
+	text "Hm. You beat the"
+	line "rest faster than"
+	cont "I expected."
+
+	para "Let's train."
+	done
+
+.RefusedText:
+	text "It's okay."
+	line "I can wait."
+	done
+
+.SeenText:
+	text "My #mon are"
+	line "all wearing"
+	cont "Choice Specs."
+
+	para "They may look"
+	line "weird, but they"
+	cont "are powerful."
+	done
+
+.BeatenText:
+	text "You're ready for"
+	line "the #mon"
+	cont "League, I'm sure!"
+	done
+
+.AfterText1:
+	text "Choice Specs will"
+	line "boost a #mon's"
+	cont "Special Attack,"
+
+	para "but it can only"
+	line "use one move."
+
+	para "Take a pair"
+	line "yourself."
+	done
+
+.AfterText2:
+	text "Good luck! Say"
+	line "hello to Lance"
+	cont "for me."
+	done
 
 TrainerPsychicGilbert:
 	trainer EVENT_BEAT_PSYCHIC_GILBERT, PSYCHIC_T, GILBERT, PsychicGilbertSeenText, PsychicGilbertBeatenText, 0, PsychicGilbertScript
@@ -361,26 +488,6 @@ UnknownText_0x1a0a71:
 	line "gear Map and see."
 	done
 
-BattleGirlRondaSeenText:
-	text "Stop! I challenge"
-	line "you to a duel!"
-	done
-
-BattleGirlRondaBeatenText:
-	text "Victory is yours!"
-	done
-
-BattleGirlRondaAfterText:
-	text "You see some of"
-	line "the world's str-"
-
-	para "ongest trainers"
-	line "come through here."
-
-	para "And I get to fight"
-	line "them all!"
-	done
-
 CooltrainermBlakeSeenText:
 	text "You look pretty"
 	line "strong."
@@ -556,7 +663,7 @@ Route27_MapEventHeader:
 
 .PersonEvents:
 	db 13
-	person_event SPRITE_COOLTRAINER_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
+	person_event SPRITE_VETERAN_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 59, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
