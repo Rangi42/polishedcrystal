@@ -45,10 +45,17 @@ MPLoadPalette:
 	ret
 
 .NotePals:
+if !DEF(MONOCHROME)
 	RGB 31, 31, 31 ; white
 	RGB 07, 31, 07 ; green
 	RGB 07, 07, 31 ; blue
 	RGB 31, 07, 07 ; red
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_DARK
+endc
 
 MusicPlayer::
 	;ld de, 1
