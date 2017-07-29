@@ -240,7 +240,6 @@ Some of these may never be added; they're just suggestions.
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Make Eggs use their Pokémon's palette
-* Animate item activations like Quick Claw
 * Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
 
