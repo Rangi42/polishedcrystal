@@ -1117,6 +1117,19 @@ ParseMusic: ; e85e1
 	and $f
 	call SetNoteDuration
 	; get note pitch (top nybble)
+
+	ld a, [CurChannel]
+	ld e, a
+	ld d, 0
+	ld hl, wChannelSelectorSwitches
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .notMuted
+	xor a
+	jr .rest
+.notMuted
+
 	ld a, [CurMusicByte]
 	swap a
 	and $f
@@ -1266,6 +1279,10 @@ GetNoiseSample: ; e86c5
 	ld a, [CurMusicByte]
 	and $f
 	call SetNoteDuration
+	; check wChannelSelectorSwitches
+	ld a, [wChannelSelectorSwitches+3]
+	and a
+	ret nz
 	; check current channel
 	ld a, [CurChannel]
 	bit 2, a ; are we in a sfx channel?
@@ -2079,9 +2096,6 @@ GetFrequency: ; e8a5d
 ; 	de: frequency
 
 ; get octave
-	ld a, [hMPState]
-	and a
-	jr z, .added
 	ld a, [wTranspositionInterval]
 	bit 7, a
 	jr nz, .negative

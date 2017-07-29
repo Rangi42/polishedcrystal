@@ -101,9 +101,9 @@ Low-priority:
 
 * Show duty cycles for channels 1 and 2
 * Allow varying tempo as well as pitch
-* Make disabling channels actually work
 * Hold Up/Down to continuously scroll in the song list
 * Fix the piano roll graphics "leaking" into the song list
+* Use the UnlockedMusic flag_array in some capacity
 
 
 ## Postponed until 4.0
@@ -210,7 +210,6 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Some sort of music player, in-game or via Options, that uses the UnlockedMusic flag_array
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)

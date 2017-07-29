@@ -131,18 +131,11 @@ MusicPlayer::
 
 	call ClearSprites
 
+	ld hl, MusicPlayerWRAM
+	ld bc, MusicPlayerWRAMEnd - MusicPlayerWRAM
 	xor a
-	ld [wNumNoteLines], a
-	ld [wChLastNotes], a
-	ld [wChLastNotes+1], a
-	ld [wChLastNotes+2], a
-	ld [wChannelSelectorSwitches], a
-	ld [wChannelSelectorSwitches+1], a
-	ld [wChannelSelectorSwitches+2], a
-	ld [wChannelSelectorSwitches+3], a
-	ld [wTranspositionInterval], a
-	ld [wSpecialWaveform], a
-	ld [hMPState], a
+	call ByteFill
+
 	ld a, $ff
 	ld [wRenderedWaveform], a
 
@@ -581,13 +574,6 @@ endr
 	ret
 
 DrawChData:
-	ld a, [wSpecialWaveform]
-	and a
-	jr z, .notspecial
-	call RenderSpecialWaveform
-	xor a
-	ld [wSpecialWaveform], a
-.notspecial
 	hlcoord 0, 14
 .ch
 	ld [wTmpCh], a
@@ -746,7 +732,6 @@ endr
 	ld bc, 16
 	ld a, BANK(WaveSamples)
 	call FarCopyBytes ; copy bc bytes from a:hl to de
-RenderSpecialWaveform:
 	ld hl, TempMPWaveform
 	ld bc, BOXMON_STRUCT_LENGTH
 	xor a
