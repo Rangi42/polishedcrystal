@@ -76,9 +76,6 @@ else
 endc
 
 MusicPlayer::
-	;ld de, 1
-	;call PlayMusic
-	;call WhiteBGMap
 	di
 	call DoubleSpeed
 	xor a
@@ -86,12 +83,6 @@ MusicPlayer::
 	ld a, $f
 	ld [rIE], a
 	ei
-
-	ld hl, TextBoxFrame
-	ld a, [hl]
-	push af
-	xor a
-	ld [hl], a
 
 	call ClearTileMap
 	call MPLoadPalette
@@ -103,8 +94,6 @@ MusicPlayer::
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
-
-	farcall LoadFrame
 
 	ld b, BANK(MusicTestGFX)
 	ld c, 9
@@ -167,13 +156,7 @@ MusicPlayer::
 	call ByteFill
 	pop af
 	ld [rSVBK], a
-
-	call RenderMusicPlayer
-
-	pop af
-	ld hl, TextBoxFrame
-	ld [hl], a
-	ret
+; fallthrough
 
 RenderMusicPlayer:
 	ld bc, SCREEN_WIDTH * 5
@@ -330,7 +313,6 @@ RenderMusicPlayer:
 	hlcoord 0, 12
 	ld a, "▼"
 	ld [hl], a
-	;jp .songEditorLoop
 
 .songEditorLoop
 	call UpdateVisualIntensity
@@ -549,6 +531,7 @@ DrawTranspositionInterval:
 	ld de, wTranspositionInterval
 	ld a, "+"
 	jr .printnum
+
 .negative
 	xor $ff
 	inc a
@@ -605,8 +588,6 @@ DrawChData:
 	xor a
 	ld [wSpecialWaveform], a
 .notspecial
-
-	ld a, 0
 	hlcoord 0, 14
 .ch
 	ld [wTmpCh], a
@@ -749,16 +730,7 @@ DrawChData:
 	ret
 
 RenderWaveform:
-;	ld a, [wCurTrackIntensity]
-;	and $f ; only 0-9 are valid (+10 for RBY Lavender Town)
-;	ld b, a
-;	ld a, [wRenderedWaveform]
-;	cp b
-;	ret z
-;	ld a, b
 	ld [wRenderedWaveform], a
-
-	ld a, [wRenderedWaveform]
 	ld l, a
 	ld h, $0
 	; hl << 4
@@ -829,11 +801,9 @@ RenderSpecialWaveform:
 .done
 	ld hl, VTiles2 tile $40
 	ld a, [wRenderedWaveform]
+rept 5
 	sla a
-	sla a
-	sla a
-	sla a
-	sla a
+endr
 	ld l, a
 	jr nc, .gothl
 	inc h
@@ -1256,15 +1226,13 @@ GetOctaveAddr:
 	ld a, [wTmpCh]
 	ld hl, Channel1Octave
 	ld bc, Channel2 - Channel1
-	call AddNTimes
-	ret
+	jp AddNTimes
 
 GetIntensityAddr:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
-	call AddNTimes
-	ret
+	jp AddNTimes
 
 GetSongInfo:
 	ld a, [wSongSelection]
@@ -1288,9 +1256,9 @@ GetSongInfo:
 	xor a
 	ret
 .nextline
+rept 3
 	inc hl
-	inc hl
-	inc hl
+endr
 	jr .loop
 .noname
 	scf
@@ -1406,8 +1374,11 @@ GetSongArtist2:
 	db "Arranger:@"
 
 GetBlankName:
-	ld de, BlankName
+	ld de, .BlankName
 	ret
+
+.BlankName:
+	db "@"
 
 SongSelector:
 	ld bc, SCREEN_WIDTH
@@ -1503,7 +1474,6 @@ SongSelector:
 	ld [wSongSelection], a
 	ret
 
-
 UpdateSelectorNames:
 	call GetSongInfo
 	ld a, [wSongSelection]
@@ -1550,7 +1520,7 @@ MPLPlaceString:
 	lb bc, 1, 3
 	call PrintNum
 	pop de
-	ld [hl], "│"
+	ld [hl], " "
 	inc hl
 	ld b, 0
 .loop
@@ -1609,13 +1579,11 @@ NoteNames:
 	db "B @"
 	db "--@"
 
-; ┌─┐│└┘
 MPTilemap:
-; Ch1 ─ Ch2 ─ Wave ─ Noise ──
-db $08, $09, $0a, "─", $1f, $08, $09, $0b, "─", $1f, $0c, $0d, $0e, "─", $1f, $0f, $10, $11, "──"
-db "    │    │    │Set  "
-db "    │    │    │     "
-db "    │    │    │     "
+db $08, $09, $0a, $1e, $1f, $08, $09, $0b, $1e, $1f, $0c, $0d, $0e, $1e, $1f, $0f, $10, $11, $1e, $1e
+db "    ", $1d, "    ", $1d, "    ", $1d, "Set  "
+db "    ", $1d, "    ", $1d, "    ", $1d, "     "
+db "    ", $1d, "    ", $1d, "    ", $1d, "     "
 MPKeymap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
 
@@ -1636,9 +1604,6 @@ NoteOAM:
 	db 0, 0, $20, BEHIND_BG
 	db 0, 0, $40, BEHIND_BG
 	db 0, 0, $60, BEHIND_BG
-
-BlankName:
-	db "@"
 
 SongInfo:
 	; title, origin, composer, additional credits
@@ -1792,7 +1757,7 @@ SongInfo:
 	db "Power Plant@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHANTYTOWN
 	db "Reversal Mountain@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Meteor Falls@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Lugia's Song@", ORIGIN_ANIME, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
+	db "Lugia's Song@", ORIGIN_M02, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
 	db "Vs.Lugia@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
 	db "Summoning Dance@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Ho-Oh@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
@@ -1829,7 +1794,7 @@ Origin:
 	db ORIGIN_XY, "X/Y@"
 	db ORIGIN_ORAS, "OR/AS@"
 	db ORIGIN_SM, "S/M@"
-	db ORIGIN_ANIME, "M02@"
+	db ORIGIN_M02, "M02@"
 	db -1
 
 Artist:
@@ -1844,5 +1809,4 @@ Artist:
 	db COMPOSER_PUM, "Pum@"
 	db COMPOSER_SHANTYTOWN, "ShantyTown@"
 	db COMPOSER_PIGU, "Pigu@"
-	db COMPOSER_END, "@"
 	db -1

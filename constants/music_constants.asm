@@ -192,7 +192,7 @@ const_value = 1
 	const ORIGIN_XY    ; a
 	const ORIGIN_ORAS  ; b
 	const ORIGIN_SM    ; c
-	const ORIGIN_ANIME ; d
+	const ORIGIN_M02   ; d
 
 const_value = 1
 	const COMPOSER_JUNICHI_MASUDA             ; 1
@@ -206,4 +206,3 @@ const_value = 1
 	const COMPOSER_PUM                        ; 9
 	const COMPOSER_SHANTYTOWN                 ; a
 	const COMPOSER_PIGU                       ; b
-	const COMPOSER_END                        ; c
