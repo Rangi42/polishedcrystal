@@ -528,7 +528,7 @@ DrawTranspositionInterval:
 .negative
 	xor $ff
 	inc a
-	ld de, wTmp
+	ld de, wTmpValue
 	ld [de], a
 	ld a, "-"
 .printnum

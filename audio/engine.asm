@@ -1101,6 +1101,12 @@ ParseMusic: ; e85e1
 	jr ParseMusic ; start over
 
 .readnote
+	ld a, [CurChannel]
+	cp $3
+	jr nz, .notnoise
+	ld a, 1
+	ld [wNoiseHit], a
+.notnoise
 ; CurMusicByte contains current note
 ; special notes
 	ld hl, Channel1Flags - Channel1

@@ -273,16 +273,20 @@ wC3VolSub:: ds 1
 wC4Vol:: ds 1
 wC4VolSub:: ds 1
 wNoteEnded:: ds 3
-wSelectorTop:: ds 1
-wSelectorCur:: ds 1
-wChannelSelector:: ds 1
-wChannelSelectorSwitches:: ds 8
-wNoiseHit:: ds 1
-wTranspositionInterval:: ds 1
-wChangingPitch:: ds 1
-wTmp:: ds 1
 wRenderedWaveform:: ds 1
 wWaveformTmp:: ds 16
+wTmpValue:: ds 1
+; song list
+wSelectorTop:: ds 1
+wSelectorCur:: ds 1
+; song editor
+wChannelSelector:: ds 1
+wChangingPitch:: ds 1
+; audio engine input
+wChannelSelectorSwitches:: ds 4
+wTranspositionInterval:: ds 1
+; audio engine output
+wNoiseHit:: ds 1
 MusicPlayerWRAMEnd::
 
 
