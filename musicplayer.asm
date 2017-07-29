@@ -94,9 +94,12 @@ MusicPlayer::
 	ld [hl], a
 
 	call ClearTileMap
+	call MPLoadPalette
+
 	hlcoord 6, 5
 	ld de, LoadingText
 	call PlaceString
+
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
@@ -132,7 +135,7 @@ MusicPlayer::
 	jr nz, .waveform_loop
 
 	call DelayFrame
-	call MPLoadPalette
+
 	ld hl, rLCDC
 	set 7, [hl]
 	ei
@@ -173,12 +176,12 @@ MusicPlayer::
 	ret
 
 RenderMusicPlayer:
-	ld bc, MPTilemapEnd - MPTilemap
+	ld bc, SCREEN_WIDTH * 5
 	ld hl, MPTilemap
-	decoord 0, 0
+	decoord 0, 13
 	call CopyBytes
 
-	ld bc, NoteOAMEnd - NoteOAM
+	ld bc, 4 * 3
 	ld hl, NoteOAM
 	ld de, Sprites
 	call CopyBytes
@@ -282,26 +285,16 @@ RenderMusicPlayer:
 .redraw
 	ld [wSongSelection], a
 
-	; if this takes too long, don't let the user see
-	; blank fields blink in
+	; if this takes too long, don't let the user see blank fields blink in
 	; disable copying the map during vblank
 	ld a, 2
 	ld [hVBlank], a
 
 	ld a, " "
-	hlcoord 5, 2
-	ld bc, 3
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * 13
 	call ByteFill
-	hlcoord 0, 3
-	ld bc, 60
-	call ByteFill
-	hlcoord 0, 8
-	ld bc, 90
-	call ByteFill
-	hlcoord 5, 1
-	ld de, wSongSelection
-	lb bc, 1, 3
-	call PrintNum
+
 	call DrawSongInfo
 	call DrawTranspositionInterval
 
@@ -1308,37 +1301,54 @@ DrawSongInfo:
 	call GetSongInfo
 	ret c ; no data
 
-	push hl
-	pop de
-	hlcoord 0, 4
-	call PlaceString
-	inc de
-	push de
-	ld de, .PokemonString
+	call GetSongTitle
 	hlcoord 0, 3
 	call PlaceString
-	pop de
+	inc de
+
 	push de
 	call GetSongOrigin
-	hlcoord 8, 3
+	hlcoord 0, 1
+	push de
+	call DrawSongID
+	pop de
+	inc hl
 	call PlaceString
 	pop de
 	inc de
+
 	push de
 	call GetSongArtist
-	hlcoord 0, 8
+	hlcoord 0, 7
 	call PlaceString
 	pop de
 	inc de
+
 	push de
 	call GetSongArtist2
-	hlcoord 0, 11
+	hlcoord 0, 10
 	call PlaceString
 	pop de
 	ret
 
-.PokemonString:
-	db "#mon @"
+DrawSongID:
+	ld a, "<SHARP>"
+	ld [hli], a
+	ld a, [wSongSelection]
+	cp 10
+	jr c, .print_digit
+	lb bc, 1, 2
+	cp 100
+	jr c, .print_id
+	lb bc, 1, 3
+.print_id
+	ld de, wSongSelection
+	jp PrintNum
+
+.print_digit
+	add "0"
+	ld [hli], a
+	ret
 
 GetSongOrigin:
 	ld a, [de]
@@ -1347,14 +1357,12 @@ GetSongOrigin:
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .noname
+	jr z, GetBlankName
 	cp b
 	jr nz, .loop
+GetSongTitle:
 	push hl
 	pop de
-	ret
-.noname
-	ld de, BlankName
 	ret
 
 GetSongArtist:
@@ -1364,15 +1372,18 @@ GetSongArtist:
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .noname
+	jr z, GetBlankName
 	cp b
 	jr nz, .loop
 	push hl
+	ld de, .Composer
+	hlcoord 0, 6
+	call PlaceString
 	pop de
 	ret
-.noname
-	ld de, BlankName
-	ret
+
+.Composer:
+	db "Composer:@"
 
 GetSongArtist2:
 	ld a, [de]
@@ -1381,25 +1392,25 @@ GetSongArtist2:
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .noname
+	jr z, GetBlankName
 	cp b
 	jr nz, .loop
 	push hl
-	ld de, .Additional
-	hlcoord 0, 10
+	ld de, .Arranger
+	hlcoord 0, 9
 	call PlaceString
 	pop de
 	ret
 
-.noname
+.Arranger:
+	db "Arranger:@"
+
+GetBlankName:
 	ld de, BlankName
 	ret
 
-.Additional:
-	db "Additional Credits:@"
-
 SongSelector:
-	ld bc, MPKeymapEnd - MPKeymap
+	ld bc, SCREEN_WIDTH
 	ld hl, MPKeymap
 	decoord 0, 17
 	call CopyBytes
@@ -1600,19 +1611,6 @@ NoteNames:
 
 ; ┌─┐│└┘
 MPTilemap:
-db "                    "
-db "Song:               "
-db "                    "
-db "                    "
-db "                    "
-db "                    "
-db "                    "
-db "Composer:           "
-db "                    "
-db "                    "
-db "                    "
-db "                    "
-db "                    "
 ; Ch1 ─ Ch2 ─ Wave ─ Noise ──
 db $08, $09, $0a, "─", $1f, $08, $09, $0b, "─", $1f, $0c, $0d, $0e, "─", $1f, $0f, $10, $11, "──"
 db "    │    │    │Set  "
@@ -1620,8 +1618,6 @@ db "    │    │    │     "
 db "    │    │    │     "
 MPKeymap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
-MPKeymapEnd:
-MPTilemapEnd:
 
 ChannelsOnTilemaps:
 	db $08, $09, $0a
@@ -1640,7 +1636,6 @@ NoteOAM:
 	db 0, 0, $20, BEHIND_BG
 	db 0, 0, $40, BEHIND_BG
 	db 0, 0, $60, BEHIND_BG
-NoteOAMEnd:
 
 BlankName:
 	db "@"
@@ -1703,7 +1698,7 @@ SongInfo:
 	db "Spotted! Kimono Girl@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
 	db "Burned Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Eusine Appears@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
-	db "Prof.Oak's Pokémon Talk@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Prof.Oak's Pokémon   Talk@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Route 38@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Pokémon March@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Olivine Lighthouse@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
@@ -1821,20 +1816,20 @@ SongInfo:
 	db -1
 
 Origin:
-	db ORIGIN_RB, "Red@"
-	db ORIGIN_Y, "Yellow@"
-	db ORIGIN_GS, "Gold@"
-	db ORIGIN_C, "Crystal@"
-	db ORIGIN_RSE, "Emerald@"
-	db ORIGIN_FRLG, "FireRed@"
-	db ORIGIN_DPPT, "Platinum@"
-	db ORIGIN_HGSS, "HeartGold@"
-	db ORIGIN_BW, "Black@"
-	db ORIGIN_B2W2, "Black 2@"
-	db ORIGIN_XY, "X@"
-	db ORIGIN_ORAS, "Omega Ruby@"
-	db ORIGIN_SM, "Sun@"
-	db ORIGIN_ANIME, "2000@"
+	db ORIGIN_RB, "R/B@"
+	db ORIGIN_Y, "Y@"
+	db ORIGIN_GS, "G/S@"
+	db ORIGIN_C, "C@"
+	db ORIGIN_RSE, "R/S/E@"
+	db ORIGIN_FRLG, "FR/LG@"
+	db ORIGIN_DPPT, "D/P/Pt@"
+	db ORIGIN_HGSS, "HG/SS@"
+	db ORIGIN_BW, "B/W@"
+	db ORIGIN_B2W2, "B2/W2@"
+	db ORIGIN_XY, "X/Y@"
+	db ORIGIN_ORAS, "OR/AS@"
+	db ORIGIN_SM, "S/M@"
+	db ORIGIN_ANIME, "M02@"
 	db -1
 
 Artist:
