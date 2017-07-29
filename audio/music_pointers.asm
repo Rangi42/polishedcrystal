@@ -1,181 +1,174 @@
 ; e906e
 	dba Music_Nothing ; 0xe91a3
+	dba Music_CrystalOpening ; 0x1786e8
 	dba Music_TitleScreen ; 0xeb808
-	dba Music_Route1 ; 0xec000
-	dba Music_Route3 ; 0xec2ca
-	dba Music_Route12 ; 0xec506
-	dba Music_MagnetTrain ; 0xef5f0
-	dba Music_KantoGymBattle ; 0xec720
-	dba Music_KantoTrainerBattle ; 0xec9fa
-	dba Music_KantoWildBattle ; 0xed06d
-	dba Music_PokemonCenter ; 0xed5c6
-	dba Music_LookHiker ; 0xf7411
-	dba Music_LookLass ; 0xed79b
-	dba Music_LookOfficer ; 0xed82d
-	dba Music_HealPokemon ; 0xf0697
-	dba Music_LavenderTown ; 0xef72f
-	dba Music_ViridianForest ; 0xed8dd
-	dba Music_MtMoon ; 0xedb29
+	dba Music_MainMenu ; 0xf78fd
+	dba Music_NewBarkTown ; 0xeb2d3
+	dba Music_Mom ; 0xf6bf2
+	dba Music_ElmsLab ; 0xea040
+	dba Music_LyraEncounterHGSS
+	dba Music_RivalBattleXY
+	dba Music_LyraDepartureHGSS
+	dba Music_Route29 ; 0xf0386
+	dba Music_JohtoWildBattle ; 0xf5dc5
+	dba Music_JohtoWildBattleNight ; 0xf605c
+	dba Music_WildPokemonVictory ; 0xf4518
+	dba Music_CherrygroveCity ; 0xf5b03
 	dba Music_ShowMeAround ; 0xedbd8
+	dba Music_PokemonCenter ; 0xed5c6
+	dba Music_HealPokemon ; 0xf0697
+	dba Music_SuccessfulCapture ; 0xf4602
+	dba Music_LookYoungster ; 0xf66c3
+	dba Music_JohtoTrainerBattle ; 0xf6096
+	dba Music_TrainerVictory ; 0xebeab
+	dba Music_Route30 ; 0xefc01
+	dba Music_VioletCity ; 0xf0000
+	dba Music_SproutTower ; 0xf6974
+	dba Music_LookSage ; 0xee35e
+	dba Music_MartHGSS
+	dba Music_UnionCave ; 0xf5c60
+	dba Music_RuinsOfAlphInterior ; 0xebd9e
+	dba Music_RuinsOfAlphRadio ; 0xeedcb
+	dba Music_AzaleaTown ; 0xf57e8
+	dba Music_LookRocket ; 0xf74a2
+	dba Music_RocketBattle ; 0xe9b6f
+	dba Music_Route36 ; 0xe94e9
+	dba Music_LookRival ; 0xf4f79
+	dba Music_RivalBattle ; 0xe974f
+	dba Music_AfterTheRivalFight ; 0xf5127
+	dba Music_Evolution ; 0xf06e1
+	dba Music_GoldenrodCity ; 0xeb453
+	dba Music_PokeComCenter ; 0x17961d
+	dba Music_Gym ; 0xf48ae
+	dba Music_JohtoGymBattle ; 0xea50d
+	dba Music_FinalPokemonBW
+	dba Music_GymLeaderVictory ; 0xf462c
+	dba Music_PokemonChannel ; 0xee45f
+	dba Music_BuenasPassword ; 0x178153
 	dba Music_GameCorner ; 0xedd6d
 	dba Music_Bicycle ; 0xee119
-	dba Music_HallOfFame ; 0xf05bf
-	dba Music_ViridianCity ; 0xf4000
-	dba Music_CeladonCity ; 0xf435b
-	dba Music_TrainerVictory ; 0xebeab
-	dba Music_WildPokemonVictory ; 0xf4518
-	dba Music_GymLeaderVictory ; 0xf462c
-	dba Music_MtMoonSquare ; 0xf4815
-	dba Music_Gym ; 0xf48ae
-	dba Music_PalletTown ; 0xf4b0c
-	dba Music_ProfOaksPokemonTalk ; 0xf4c9f
-	dba Music_ProfOak ; 0xf4dea
-	dba Music_LookRival ; 0xf4f79
-	dba Music_AfterTheRivalFight ; 0xf5127
-	dba Music_Surf ; 0xf518a
-	dba Music_Evolution ; 0xf06e1
+	dba Music_LookLass ; 0xed79b
 	dba Music_NationalPark ; 0xf54e8
-	dba Music_Credits ; 0x1f31c
-	dba Music_AzaleaTown ; 0xf57e8
-	dba Music_CherrygroveCity ; 0xf5b03
-	dba Music_LookKimonoGirl ; 0xf79b8
-	dba Music_UnionCave ; 0xf5c60
-	dba Music_JohtoWildBattle ; 0xf5dc5
-	dba Music_JohtoTrainerBattle ; 0xf6096
-	dba Music_Route30 ; 0xefc01
-	dba Music_EcruteakCity ; 0xef2d0
-	dba Music_VioletCity ; 0xf0000
-	dba Music_JohtoGymBattle ; 0xea50d
-	dba Music_ChampionBattle ; 0xea9c1
-	dba Music_RivalBattle ; 0xe974f
-	dba Music_RocketBattle ; 0xe9b6f
-	dba Music_ElmsLab ; 0xea040
-	dba Music_DarkCave ; 0xea2be
-	dba Music_Route29 ; 0xf0386
-	dba Music_Route36 ; 0xe94e9
-	dba Music_SSAqua ; 0xead99
-	dba Music_LookYoungster ; 0xf66c3
-	dba Music_LookBeauty ; 0xeee3e
-	dba Music_LookRocket ; 0xf74a2
-	dba Music_LookPokemaniac ; 0xebde1
-	dba Music_LookSage ; 0xee35e
-	dba Music_NewBarkTown ; 0xeb2d3
-	dba Music_GoldenrodCity ; 0xeb453
-	dba Music_VermilionCity ; 0xeb676
-	dba Music_PokemonChannel ; 0xee45f
-	dba Music_PokeFluteChannel ; 0xf7b13
-	dba Music_TinTower ; 0xf6811
-	dba Music_SproutTower ; 0xf6974
-	dba Music_BurnedTower ; 0xf6a99
-	dba Music_Lighthouse ; 0xee569
-	dba Music_LakeOfRage ; 0xee6c5
-	dba Music_IndigoPlateau ; 0xee852
-	dba Music_Route37 ; 0xee94b
-	dba Music_RocketHideout ; 0xeeb75
-	dba Music_DragonsDen ; 0xeece8
-	dba Music_JohtoWildBattleNight ; 0xf605c
-	dba Music_RuinsOfAlphRadio ; 0xeedcb
-	dba Music_SuccessfulCapture ; 0xf4602
-	dba Music_Route26 ; 0xeefb2
-	dba Music_Mom ; 0xf6bf2
-	dba Music_VictoryRoad ; 0xf6c72
-	dba Music_PokemonLullaby ; 0xf6d79
-	dba Music_PokemonMarch ; 0xf6e23
-	dba Music_MainMenu ; 0xf78fd
-	dba Music_RuinsOfAlphInterior ; 0xebd9e
-	dba Music_RocketTheme ; 0xf766d
-	dba Music_DancingHall ; 0xef9bc
-	dba Music_ContestResults ; 0xefb3e
 	dba Music_BugCatchingContest ; 0xf7c16
-	dba Music_LakeOfRageRocketRadio ; 0xef5b1
-	dba Music_PostCredits ; 0xcfd9e
-
-; Crystal adds the following songs:
-
-	dba Music_Clair ; 0x1fa8d
-	dba Music_BuenasPassword ; 0x178153
+	dba Music_ContestResults ; 0xefb3e
+	dba Music_EcruteakCity ; 0xef2d0
+	dba Music_DancingHall ; 0xef9bc
+	dba Music_LookKimonoGirl ; 0xf79b8
+	dba Music_BurnedTower ; 0xf6a99
 	dba Music_LookMysticalMan ; 0x17843b
-	dba Music_CrystalOpening ; 0x1786e8
-	dba Music_BattleTowerTheme ; 0x178889
-	dba Music_SuicuneBattle ; 0x178b81
-	dba Music_BattleTowerLobby ; 0x17948b
-	dba Music_PokeComCenter ; 0x17961d
-
-; Polished Crystal adds the following songs:
-
-	dba Music_SurfingPikachu
-	dba Music_LookJessieJames
-	dba Music_MartHGSS
+	dba Music_ProfOaksPokemonTalk ; 0xf4c9f
+	dba Music_Route37 ; 0xee94b
+	dba Music_PokemonMarch ; 0xf6e23
+	dba Music_Lighthouse ; 0xee569
+	dba Music_Surf ; 0xf518a
 	dba Music_CianwoodCityHGSS
-	dba Music_CeruleanCityHGSS
-	dba Music_CinnabarIslandHGSS
-	dba Music_NuggetBridgeHGSS
 	dba Music_Route47HGSS
+	dba Music_LookJessieJames
 	dba Music_SafariZoneGateHGSS
-	dba Music_LyraEncounterHGSS
-	dba Music_LyraDepartureHGSS
-	dba Music_HoOhBattleHGSS
-	dba Music_LugiaBattleHGSS
-	dba Music_SummoningDanceHGSS
-	dba Music_Route203DPPt
-	dba Music_Route205DPPt
-	dba Music_Route209DPPt
-	dba Music_Route210DPPt
-	dba Music_CanalaveCityDPPt
-	dba Music_SunyshoreCityDPPt
-	dba Music_OreburghGateDPPt
+	dba Music_SurfingPikachu
+	dba Music_LakeOfRage ; 0xee6c5
 	dba Music_StarkMountainDPPt
-	dba Music_MountCoronetDPPt
-	dba Music_EternaForestDPPt
-	dba Music_GameCornerDPPt
-	dba Music_TrainerBattleDPPt
-	dba Music_ChampionBattleDPPt
+	dba Music_LakeOfRageRocketRadio ; 0xef5b1
+	dba Music_RocketHideout ; 0xeeb75
+	dba Music_LookPokemaniac ; 0xebde1
+	dba Music_RocketTheme ; 0xf766d
+	dba Music_DarkCave ; 0xea2be
+	dba Music_DragonsDen ; 0xeece8
+	dba Music_Clair ; 0x1fa8d
 	dba Music_Route4BW
-	dba Music_Route12BW
-	dba Music_CelestialTowerBW_NoIntro
+	dba Music_TinTower ; 0xf6811
+	dba Music_SuicuneBattle ; 0x178b81
+	dba Music_Route26 ; 0xeefb2
+	dba Music_IndigoPlateauRBY
+	dba Music_VictoryRoad ; 0xf6c72
+	dba Music_IndigoPlateau ; 0xee852
+	dba Music_EliteFourBattleSM
+	dba Music_ChampionBattle ; 0xea9c1
+	dba Music_HallOfFame ; 0xf05bf
+	dba Music_SSAqua ; 0xead99
+	dba Music_VermilionCity ; 0xeb676
+	dba Music_KantoGymBattle ; 0xec720
 	dba Music_BlackCityBW
-	dba Music_TrainerBattleBW
-	dba Music_EliteFourBattleBW
-	dba Music_WCSBattleBW
-	dba Music_FinalPokemonBW
-	dba Music_RoadToReversalMountainB2W2
-	dba Music_ReversalMountainWhite2
-	dba Music_WhiteTreehollowWhite2
-	dba Music_ChampionBattleB2W2
-	dba Music_TitleScreenXY
-	dba Music_BicycleXY
-	dba Music_LaverreCityXY
-	dba Music_FrostCavernXY
-	dba Music_PowerPlantXY
-	dba Music_RivalBattleXY
-	dba Music_GymLeaderBattleXY
 	dba Music_LavenderTownRBY
 	dba Music_PokemonTowerRBY
-	dba Music_CinnabarMansionRBY
+	dba Music_LavenderTown ; 0xef72f
+	dba Music_KantoWildBattle ; 0xed06d
+	dba Music_CeruleanCityHGSS
+	dba Music_NuggetBridgeHGSS
+	dba Music_MagnetTrain ; 0xef5f0
+	dba Music_PokemonLullaby ; 0xf6d79
+	dba Music_CeladonCity ; 0xf435b
+	dba Music_GameCornerDPPt
+	dba Music_CanalaveCityDPPt
+	dba Music_BicycleXY
+	dba Music_Route12 ; 0xec506
+	dba Music_PokeFluteChannel ; 0xf7b13
+	dba Music_Route209DPPt
+	dba Music_Route210DPPt
 	dba Music_DiglettsCaveRBY
-	dba Music_CeruleanCaveRBY
-	dba Music_IndigoPlateauRBY
-	dba Music_Route101RSE
-	dba Music_DewfordTownRSE
-	dba Music_MeteorFallsRSE
+	dba Music_ViridianForest ; 0xed8dd
+	dba Music_LookHiker ; 0xf7411
+	dba Music_ViridianCity ; 0xf4000
+	dba Music_Route3 ; 0xec2ca
+	dba Music_LookOfficer ; 0xed82d
+	dba Music_MtMoon ; 0xedb29
+	dba Music_MtMoonSquare ; 0xf4815
+	dba Music_Route1 ; 0xec000
+	dba Music_PalletTown ; 0xf4b0c
+	dba Music_ProfOak ; 0xf4dea
+	dba Music_LookBeauty ; 0xeee3e
+	dba Music_KantoTrainerBattle ; 0xec9fa
+	dba Music_CinnabarIslandHGSS
+	dba Music_CinnabarMansionRBY
+	dba Music_TrainerBattleDPPt
+	dba Music_EternaForestDPPt
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
-	dba Music_AbandonedShipRSE
+	dba Music_BattleTowerTheme ; 0x178889
+	dba Music_BattleTowerLobby ; 0x17948b
+	dba Music_TrainerBattleBW
+	dba Music_FrontierBrainBattleRSE
+	dba Music_ZinniaEncounterORAS
+	dba Music_Route205DPPt
+	dba Music_WildBattleSM
+	dba Music_SunyshoreCityDPPt
+	dba Music_TrainerBattleSM
+	dba Music_Route203DPPt
+	dba Music_WhiteTreehollowWhite2
+	dba Music_LaverreCityXY
+	dba Music_Route101RSE
+	dba Music_DewfordTownRSE
+	dba Music_OreburghGateDPPt
+	dba Music_Route12BW
+	dba Music_RoadToReversalMountainB2W2
+	dba Music_ZinniaBattleORAS
+	dba Music_WallyEncounterORAS
+	dba Music_WallyBattleORAS
+	dba Music_SpikyEaredPichuHGSS
+	dba Music_MotherBeastBattleSM
+	dba Music_FrostCavernXY
+	dba Music_PowerPlantXY
+	dba Music_ReversalMountainWhite2
+	dba Music_MeteorFallsRSE
+	dba Music_LugiasSong2000
+	dba Music_LugiaBattleHGSS
+	dba Music_SummoningDanceHGSS
+	dba Music_HoOhBattleHGSS
+	dba Music_CeruleanCaveRBY
+	dba Music_KantoLegendBattleXY
 	dba Music_GymLeaderBattleRSE
 	dba Music_GymLeaderBattleDPPt
 	dba Music_GymLeaderBattleBW
+	dba Music_GymLeaderBattleXY
+	dba Music_EliteFourBattleBW
+	dba Music_CelestialTowerBW_NoIntro
 	dba Music_ChampionBattleRSE
-	dba Music_FrontierBrainBattleRSE
-	dba Music_KantoLegendBattleXY
-	dba Music_WallyEncounterORAS
-	dba Music_WallyBattleORAS
-	dba Music_ZinniaEncounterORAS
-	dba Music_ZinniaBattleORAS
-	dba Music_WildBattleSM
-	dba Music_TrainerBattleSM
-	dba Music_EliteFourBattleSM
-	dba Music_MotherBeastBattleSM
-	dba Music_SpikyEaredPichuHGSS
-	dba Music_LugiasSong2000
-
+	dba Music_MountCoronetDPPt
+	dba Music_ChampionBattleDPPt
+	dba Music_WCSBattleBW
+	dba Music_AbandonedShipRSE
+	dba Music_ChampionBattleB2W2
+	dba Music_Credits ; 0x1f31c
+	dba Music_PostCredits ; 0xcfd9e
+	dba Music_TitleScreenXY
 ; e91a3
