@@ -16,6 +16,8 @@ INCBIN "gfx/music_player/note_lines.2bpp"
 
 SECTION "Music Player", ROMX
 
+MAX_PITCH_TRANSPOSITION EQU 12
+
 jbutton: MACRO
 	ld a, [hJoyPressed]
 	and \1
@@ -121,6 +123,7 @@ MusicPlayer::
 	ld [wChannelSelectorSwitches+1], a
 	ld [wChannelSelectorSwitches+2], a
 	ld [wChannelSelectorSwitches+3], a
+	ld [wTranspositionInterval], a
 	ld [wSpecialWaveform], a
 	ld [hMPState], a
 	ld a, $ff
@@ -270,12 +273,12 @@ RenderMusicPlayer:
 	hlcoord 0, 8
 	ld bc, 90
 	call ByteFill
-	hlcoord 5, 2
+	hlcoord 5, 1
 	ld de, wSongSelection
 	lb bc, 1, 3
 	call PrintNum
 	call DrawSongInfo
-	hlcoord 16, 1
+	call DrawTranspositionInterval
 
 	ld a, 5
 	ld [hVBlank], a
@@ -391,7 +394,7 @@ RenderMusicPlayer:
 .changePitch
 	ld a, 1
 	ld [wChangingPitch], a
-	hlcoord 16, 2
+	hlcoord 16, 1
 	ld a, "▷"
 	ld [hl], a
 	xor a
@@ -461,7 +464,7 @@ RenderMusicPlayer:
 	ret
 
 .channelSelectorloadhlpitch
-	hlcoord 16, 2
+	hlcoord 16, 1
 	ld a, "▶"
 	ret
 
@@ -486,47 +489,20 @@ RenderMusicPlayer:
 .ChangingPitchdownleft
 	ld a, [wTranspositionInterval]
 	dec a
+	cp -(MAX_PITCH_TRANSPOSITION + 1)
+	jr nz, .ChangingPitchChangePitch
+	ld a, MAX_PITCH_TRANSPOSITION
 	jr .ChangingPitchChangePitch
+
 .ChangingPitchupright
 	ld a, [wTranspositionInterval]
 	inc a
+	cp MAX_PITCH_TRANSPOSITION + 1
+	jr nz, .ChangingPitchChangePitch
+	ld a, -MAX_PITCH_TRANSPOSITION
 .ChangingPitchChangePitch
 	ld [wTranspositionInterval], a
-	ld de, .EmptyPitch
-	hlcoord 17, 2
-	call PlaceString
-	ld a, [wTranspositionInterval]
-	and a
-	jr nz, .nonzero
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
-	jp .songEditorLoop
-
-.nonzero
-	bit 7, a
-	jr nz, .negative
-	hlcoord 17, 2
-	ld a, "+"
-	ld [hl], a
-	lb bc, 1, 3
-	ld de, wTranspositionInterval
-	call PrintNum
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
-	jp .songEditorLoop
-
-.negative
-	xor $ff
-	inc a
-	ld de, wTmp
-	ld [de], a
-	hlcoord 17, 2
-	ld a, "-"
-	ld [hl], a
-	lb bc, 1, 3
-	call PrintNum
+	call DrawTranspositionInterval
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
@@ -535,13 +511,37 @@ RenderMusicPlayer:
 .ChangingPitchb
 	xor a
 	ld [wChangingPitch], a
-	hlcoord 16, 2
+	hlcoord 16, 1
 	ld a, "▶"
 	ld [hl], a
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
 	jp .songEditorLoop
+
+DrawTranspositionInterval:
+	hlcoord 17, 1
+	ld de, .EmptyPitch
+	call PlaceString
+	ld a, [wTranspositionInterval]
+	and a
+	ret z
+	bit 7, a
+	jr nz, .negative
+	ld de, wTranspositionInterval
+	ld a, "+"
+	jr .printnum
+.negative
+	xor $ff
+	inc a
+	ld de, wTmp
+	ld [de], a
+	ld a, "-"
+.printnum
+	hlcoord 17, 1
+	ld [hl], a
+	lb bc, 1, 3
+	jp PrintNum
 
 .EmptyPitch: db "   @"
 
@@ -757,12 +757,12 @@ endr
 	ld a, BANK(WaveSamples)
 	call FarCopyBytes ; copy bc bytes from a:hl to de
 RenderSpecialWaveform:
-	ld hl, TempMon
+	ld hl, TempMPWaveform
 	ld bc, BOXMON_STRUCT_LENGTH
 	xor a
 	call ByteFill
 
-	ld hl, TempMon
+	ld hl, TempMPWaveform
 	ld de, wWaveformTmp
 	ld b, 1
 
@@ -803,10 +803,10 @@ RenderSpecialWaveform:
 	jr z, .done
 	cp $9
 	jr nc, .secondtile
-	ld hl, TempMon
+	ld hl, TempMPWaveform
 	jr .drawloop
 .secondtile
-	ld hl, TempMon + 16
+	ld hl, TempMPWaveform + 16
 	jr .drawloop
 .done
 	ld hl, VTiles2 tile $40
@@ -822,7 +822,7 @@ RenderSpecialWaveform:
 .gothl
 	ld b, 0
 	ld c, 2
-	ld de, TempMon
+	ld de, TempMPWaveform
 	call Request2bpp
 	ret
 
@@ -1576,8 +1576,8 @@ NoteNames:
 ; ┌─┐│└┘
 MPTilemap:
 db "                    "
-db "                    "
 db "Song:               "
+db "                    "
 db "                    "
 db "                    "
 db "                    "

@@ -1524,6 +1524,7 @@ IsCurMonInParty::
 wItemQuantityChangeBuffer:: ds 1
 wItemQuantityBuffer:: ds 1
 
+TempMPWaveform::
 TempMon:: ; d10e
 	party_struct TempMon
 

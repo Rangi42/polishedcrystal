@@ -2079,6 +2079,33 @@ GetFrequency: ; e8a5d
 ; 	de: frequency
 
 ; get octave
+	ld a, [hMPState]
+	and a
+	jr z, .added
+	ld a, [wTranspositionInterval]
+	bit 7, a
+	jr nz, .negative
+	add e
+	ld e, a
+	cp 13
+	jr c, .added
+	sub 12
+	ld e, a
+	dec d
+	jr .added
+.negative
+	dec e
+	add e
+	jr c, .c
+	inc a
+	add 12
+	ld e, a
+	inc d
+	jr .added
+.c
+	inc a
+	ld e, a
+.added
 	; get starting octave
 	ld hl, Channel1PitchOffset - Channel1
 	add hl, bc
