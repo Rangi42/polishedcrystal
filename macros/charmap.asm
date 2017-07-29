@@ -86,8 +86,8 @@
 	charmap ")",        $9b
 	charmap ".",        $9c
 	charmap ",",        $9d
-
-; unused: 9e-9f
+	charmap "+",        $9e
+	charmap "<SHARP>",  $9f
 
 	charmap "a",        $a0
 	charmap "b",        $a1
