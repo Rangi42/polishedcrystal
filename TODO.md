@@ -97,6 +97,14 @@ Low-priority:
 * Volt Switch
 
 
+### Music player
+
+* Show duty cycles for channels 1 and 2
+* Allow varying tempo as well as pitch
+* Make disabling channels actually work
+* Hold Up/Down to continuously scroll in the song list
+* Fix the piano roll graphics "leaking" into the song list
+
 
 ## Postponed until 4.0
 

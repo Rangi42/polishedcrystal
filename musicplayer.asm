@@ -1408,7 +1408,9 @@ SongSelector:
 	call UpdateSelectorNames
 .loop
 	call DelayFrame
+
 	call GetJoypad
+
 	jbutton A_BUTTON, .a
 	jbutton B_BUTTON, .exit
 	jbutton D_DOWN, .down
@@ -1416,6 +1418,7 @@ SongSelector:
 	jbutton D_LEFT, .left
 	jbutton D_RIGHT, .right
 	jr .loop
+
 .a
 	ld a, [wSongSelection]
 	cp NUM_MUSIC - 7
@@ -1430,6 +1433,7 @@ SongSelector:
 	ld d, 0
 	farcall PlayMusic2
 	ret
+
 .down
 	ld a, [wSongSelection]
 	inc a
@@ -1440,6 +1444,7 @@ SongSelector:
 	ld [wSongSelection], a
 	call UpdateSelectorNames
 	jr .loop
+
 .up
 	ld a, [wSongSelection]
 	dec a
@@ -1449,26 +1454,29 @@ SongSelector:
 .noOverflowU
 	ld [wSongSelection], a
 	call UpdateSelectorNames
-	jr .loop
+	jp .loop
+
 .left
 	ld a, [wSongSelection]
 	sub 10
 	jr nc, .noOverflowL
-	ld a, NUM_MUSIC - 1
+	add NUM_MUSIC
 .noOverflowL
 	ld [wSongSelection], a
 	call UpdateSelectorNames
 	jp .loop
+
 .right
 	ld a, [wSongSelection]
 	add 10
 	cp NUM_MUSIC
 	jr c, .noOverflowR
-	ld a, 1
+	sub NUM_MUSIC
 .noOverflowR
 	ld [wSongSelection], a
 	call UpdateSelectorNames
 	jp .loop
+
 .exit
 	ld a, [wSelectorTop]
 	ld [wSongSelection], a
@@ -1722,7 +1730,7 @@ SongInfo:
 	db "Mt.Moon Square@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Route 1@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Pallet Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Oak's Lab@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Prof.Oak Appears@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Spotted! Beauty@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
 	db "Vs.Kanto Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 2
 	db "Cinnabar Island@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
