@@ -254,27 +254,9 @@ RenderMusicPlayer:
 
 .redraw
 	ld [wSongSelection], a
-
-	; if this takes too long, don't let the user see blank fields blink in
-	; disable copying the map during vblank
-	ld a, 2
-	ld [hVBlank], a
-
-	ld a, " "
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * 13
-	call ByteFill
-
-	call DrawSongInfo
-	call DrawTranspositionInterval
-
-	ld a, 5
-	ld [hVBlank], a
-
-	; refresh top two portions
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
+	ld a, -1
+	ld [wChannelSelector], a
+	call DrawPianoRollOverlay
 	jp .loop
 
 .a
@@ -308,34 +290,20 @@ RenderMusicPlayer:
 	call DrawChData
 	call DrawNotes
 
-	ld a, [wChangingPitch]
-	and a
-	jr nz, .changingPitch
 	call GetJoypad
 	jbutton D_LEFT, .songEditorleft
 	jbutton D_RIGHT, .songEditorright
 	jbutton A_BUTTON, .songEditora
-	jbutton B_BUTTON, .songEditorb
+	jbutton B_BUTTON | SELECT, .songEditorselectb
 	jbutton D_UP, .songEditorup
 	jbutton D_DOWN, .songEditordown
-	jbutton SELECT, .songEditorselect
 
-	ld a, 2
-	ld [hBGMapThird], a ; prioritize refreshing the note display
-	jr .songEditorLoop
-
-.changingPitch
-	call GetJoypad
-	jbutton D_DOWN | D_LEFT, .ChangingPitchdownleft
-	jbutton D_UP | D_RIGHT, .ChangingPitchupright
-	jbutton A_BUTTON, .ChangingPitchb
-	jbutton B_BUTTON, .ChangingPitchb
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
 	jr .songEditorLoop
 
 .songEditorleft
-	call .channelSelectorclear
+	call ClearChannelSelector
 	ld a, [wChannelSelector]
 	dec a
 	cp -1
@@ -343,11 +311,11 @@ RenderMusicPlayer:
 	ld a, 4
 .noOverflow
 	ld [wChannelSelector], a
-	call .channelSelectormark
+	call DrawChannelSelector
 	jp .songEditorLoop
 
 .songEditorright
-	call .channelSelectorclear
+	call ClearChannelSelector
 	ld a, [wChannelSelector]
 	inc a
 	cp 5
@@ -355,13 +323,13 @@ RenderMusicPlayer:
 	xor a
 .noOverflow2
 	ld [wChannelSelector], a
-	call .channelSelectormark
+	call DrawChannelSelector
 	jp .songEditorLoop
 
 .songEditora
 	ld a, [wChannelSelector]
 	cp 4
-	jr z, .changePitch
+	jp z, .Togglesonginfo
 	ld c, a
 	ld b, 0
 	ld hl, wChannelSelectorSwitches
@@ -372,19 +340,18 @@ RenderMusicPlayer:
 	call DrawChannelLabel
 	jp .songEditorLoop
 
-.changePitch
-	ld a, 1
-	ld [wChangingPitch], a
-	hlcoord 16, 1
-	ld a, "▷"
+.Togglesonginfo
+	ld hl, wSongInfoSwitch
+	ld a, [hl]
+	xor 1
 	ld [hl], a
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
+	call DrawPianoRollOverlay
 	jp .songEditorLoop
 
 .songEditorup
 	ld a, [wChannelSelector]
+	cp 4
+	jp z, .ChangingPitchup
 	cp 2
 	jp nz, .songEditorLoop
 	ld a, [Channel3Intensity]
@@ -396,8 +363,18 @@ RenderMusicPlayer:
 	ld a, b
 	jr .changed
 
+.ChangingPitchup
+	ld a, [wTranspositionInterval]
+	inc a
+	cp MAX_PITCH_TRANSPOSITION + 1
+	jr nz, .ChangingPitchChangePitch
+	ld a, -MAX_PITCH_TRANSPOSITION
+	jr .ChangingPitchChangePitch
+
 .songEditordown
 	ld a, [wChannelSelector]
+	cp 4
+	jp z, .ChangingPitchdown
 	cp 2
 	jp nz, .songEditorLoop
 	ld a, [Channel3Intensity]
@@ -407,6 +384,20 @@ RenderMusicPlayer:
 	jr z, .waveoverflow
 	ld a, b
 	jr .changed
+
+.ChangingPitchdown
+	ld a, [wTranspositionInterval]
+	dec a
+	cp -(MAX_PITCH_TRANSPOSITION + 1)
+	jr nz, .ChangingPitchChangePitch
+	ld a, MAX_PITCH_TRANSPOSITION
+.ChangingPitchChangePitch
+	ld [wTranspositionInterval], a
+	call DrawTranspositionInterval
+	xor a
+	ld [hBGMapThird], a
+	call DelayFrame
+	jp .songEditorLoop
 
 .waveunderflow
 	ld a, [Channel3Intensity]
@@ -423,46 +414,11 @@ RenderMusicPlayer:
 	farcall ReloadWaveform
 	jp .songEditorLoop
 
-.songEditorselect
-.songEditorb
-	call .channelSelectorclear
+.songEditorselectb
+	call ClearChannelSelector
+	xor a
+	ld [wChannelSelector], a
 	jp .loop
-
-.channelSelectormark
-	ld a, [wChannelSelector]
-	cp 4
-	jr z, .channelSelectormarkpitch
-	call .channelSelectormultiply
-	ld [hl], "◀"
-	ret
-
-.channelSelectormarkpitch
-	hlcoord 16, 1
-	ld [hl], "▶"
-	ret
-
-.channelSelectorclear
-	ld a, [wChannelSelector]
-	cp 4
-	jr z, .channelSelectorclearpitch
-	call .channelSelectormultiply
-	ld [hl], $1e
-	ret
-
-.channelSelectorclearpitch
-	hlcoord 16, 1
-	ld [hl], " "
-	ret
-
-.channelSelectormultiply
-	ld c, 5
-	call SimpleMultiply
-	hlcoord 3, 14
-	add l
-	ld l, a
-	ret nc
-	inc h
-	ret
 
 .exit
 	xor a
@@ -482,38 +438,28 @@ RenderMusicPlayer:
 	ei
 	ret
 
-.ChangingPitchdownleft
-	ld a, [wTranspositionInterval]
-	dec a
-	cp -(MAX_PITCH_TRANSPOSITION + 1)
-	jr nz, .ChangingPitchChangePitch
-	ld a, MAX_PITCH_TRANSPOSITION
-	jr .ChangingPitchChangePitch
+DrawPianoRollOverlay:
+	; if this takes too long, don't let the user see blank fields blink in
+	; disable copying the map during vblank
+	ld a, 2
+	ld [hVBlank], a
 
-.ChangingPitchupright
-	ld a, [wTranspositionInterval]
-	inc a
-	cp MAX_PITCH_TRANSPOSITION + 1
-	jr nz, .ChangingPitchChangePitch
-	ld a, -MAX_PITCH_TRANSPOSITION
-.ChangingPitchChangePitch
-	ld [wTranspositionInterval], a
+	ld a, " "
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * 13
+	call ByteFill
+
+	call DrawSongInfo
 	call DrawTranspositionInterval
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
-	jp .songEditorLoop
+	call DrawChannelSelector
 
-.ChangingPitchb
-	xor a
-	ld [wChangingPitch], a
-	hlcoord 16, 1
-	ld a, "▶"
-	ld [hl], a
+	ld a, 5
+	ld [hVBlank], a
+
+	; refresh top two portions
 	xor a
 	ld [hBGMapThird], a
-	call DelayFrame
-	jp .songEditorLoop
+	jp DelayFrame
 
 DrawTranspositionInterval:
 	hlcoord 17, 1
@@ -541,6 +487,44 @@ DrawTranspositionInterval:
 	jp PrintNum
 
 .EmptyPitch: db "   @"
+
+DrawChannelSelector:
+	ld a, [wChannelSelector]
+	cp -1
+	ret z
+	cp 4
+	jr z, .pitch
+	call _LocateChannelSelector
+	ld [hl], "◀"
+	ret
+
+.pitch:
+	hlcoord 16, 1
+	ld [hl], "▶"
+	ret
+
+ClearChannelSelector:
+	ld a, [wChannelSelector]
+	cp 4
+	jr z, .pitch
+	call _LocateChannelSelector
+	ld [hl], $1e
+	ret
+
+.pitch
+	hlcoord 16, 1
+	ld [hl], " "
+	ret
+
+_LocateChannelSelector:
+	ld c, 5
+	call SimpleMultiply
+	hlcoord 3, 14
+	add l
+	ld l, a
+	ret nc
+	inc h
+	ret
 
 DrawChannelLabel:
 	and a
@@ -1257,6 +1241,13 @@ DrawSongInfo:
 	call GetSongInfo
 	ret c ; no data
 
+	ld a, [wSongInfoSwitch]
+	and a
+	jr z, .info
+	hlcoord 0, 1
+	jr DrawSongID
+
+.info
 	call GetSongTitle
 	hlcoord 0, 3
 	call PlaceString

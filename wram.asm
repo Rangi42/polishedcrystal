@@ -273,6 +273,7 @@ wC3VolSub:: ds 1
 wC4Vol:: ds 1
 wC4VolSub:: ds 1
 wNoteEnded:: ds 3
+wSongInfoSwitch:: ds 1
 wRenderedWaveform:: ds 1
 wPitchesTmp:: ds 4
 wWaveformTmp:: ds 16
@@ -282,7 +283,6 @@ wSelectorTop:: ds 1
 wSelectorCur:: ds 1
 ; song editor
 wChannelSelector:: ds 1
-wChangingPitch:: ds 1
 ; audio engine input
 wChannelSelectorSwitches:: ds 4
 wTranspositionInterval:: ds 1
