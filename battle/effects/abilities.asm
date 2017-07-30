@@ -1197,8 +1197,11 @@ RegainItemByAbility:
 	call GetPartyLocation
 	ld [hl], b
 
-	; Yes, also in trainer battles (unlike Pickup)
-	jp SetBackupItem
+	; Update item backup in wild battles
+	ld a, [wBattleMode]
+	dec a
+	jp z, SetBackupItem
+	ret
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
