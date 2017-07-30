@@ -85,12 +85,12 @@ Music_LavenderTownRBY_branch_bba5:
 
 Music_LavenderTownRBY_Ch3:
 	vibrato 4, 17
-	notetype 12, $3f
+	notetype 12, $3a ; waveform 10
 	note __, 16
 	note __, 16
 	note __, 16
 	note __, 16
-	notetype 12, $2a
+	notetype 12, $2a ; waveform 10
 Music_LavenderTownRBY_branch_bbb9:
 	octave 4
 	note E_, 16
@@ -120,13 +120,13 @@ Music_LavenderTownRBY_branch_bbb9:
 	note B_, 4
 	octave 4
 	note E_, 4
-	notetype 12, $3f
+	notetype 12, $3a ; waveform 10
 	octave 6
 	note B_, 4
 	note G_, 4
 	note F#, 4
 	note B_, 4
-	notetype 12, $2f
+	notetype 12, $2a ; waveform 10
 	note B_, 4
 	note G_, 4
 	note F#, 4
@@ -168,7 +168,7 @@ Music_LavenderTownRBY_branch_bbb9:
 	note B_, 4
 	octave 4
 	note E_, 4
-	notetype 12, $2f
+	notetype 12, $2a ; waveform 10
 	octave 6
 	note B_, 4
 	note G_, 4

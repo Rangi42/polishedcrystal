@@ -300,7 +300,7 @@ Music_PokemonTowerRBY_branch_7f0ee:
 
 Music_PokemonTowerRBY_Ch3:
 	vibrato 4, 17
-	notetype 12, 19
+	notetype 12, $13
 	note __, 8
 	octave 5
 	note G_, 8
@@ -408,7 +408,7 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	note __, 7
 	note G_, 1
 	note __, 15
-	notetype 12, $1a
+	notetype 12, $1a ; waveform 10
 	octave 4
 	note F#, 1
 	note __, 3
@@ -430,7 +430,7 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	note __, 3
 	note F#, 1
 	note __, 7
-	notetype 12, 19
+	notetype 12, $13
 	octave 6
 	note E_, 1
 	note __, 1

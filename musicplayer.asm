@@ -108,13 +108,13 @@ MusicPlayer::
 	call Request2bpp
 
 ; Prerender all waveforms
-	ld a, 0
+	xor a
 .waveform_loop:
 	push af
 	call RenderWaveform
 	pop af
 	inc a
-	cp 16
+	cp NUM_VALID_WAVEFORMS
 	jr nz, .waveform_loop
 
 	call DelayFrame
@@ -384,17 +384,11 @@ SongEditor:
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
-	dec a
-	ld b, a
 	and $f
-	cp $f
-	jr z, .underflow_up
-	ld a, b
-	jr .change_wave
-.underflow_up
-	ld a, [Channel3Intensity]
-	and $f0
-	add $e
+	inc a
+	cp NUM_VALID_WAVEFORMS
+	jr nz, .change_wave
+	xor a
 	jr .change_wave
 
 .down:
@@ -406,16 +400,16 @@ SongEditor:
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
-	inc a
-	ld b, a
 	and $f
-	jr z, .overflow_down
-	ld a, b
-	jr .change_wave
-.overflow_down
+	dec a
+	cp -1
+	jr nz, .change_wave
+	ld a, NUM_VALID_WAVEFORMS - 1
+.change_wave:
+	ld b, a
 	ld a, [Channel3Intensity]
 	and $f0
-.change_wave:
+	or b
 	ld [Channel3Intensity], a
 	ld [wCurTrackIntensity], a
 	farcall ReloadWaveform
