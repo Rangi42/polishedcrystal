@@ -98,7 +98,7 @@ MusicPlayer::
 	call Request2bpp
 
 	ld de, PianoGFX
-	lb bc, BANK(PianoGFX), 30
+	lb bc, BANK(PianoGFX), 32
 	ld hl, VTiles2
 	call Request2bpp
 
@@ -528,7 +528,7 @@ ClearChannelSelector:
 	cp MP_EDIT_PITCH
 	jr z, .pitch
 	call _LocateChannelSelector
-	ld [hl], $1c
+	ld [hl], $1e
 	ret
 
 .pitch:
@@ -584,7 +584,7 @@ DrawChData:
 	hlcoord 0, MP_HUD_TOP + 1
 .loop:
 	ld [wTmpCh], a
-	call _DrawCh1_2
+	call _DrawCh1_2_3
 	inc a
 	ld de, 2
 	add hl, de
@@ -592,6 +592,11 @@ DrawChData:
 	jr c, .loop
 
 	; channel 4
+	hlcoord 18, MP_HUD_TOP + 1
+	ld a, [MusicNoiseSampleSet]
+	add $f6
+	ld [hl], a
+
 	hlcoord 17, MP_HUD_TOP + 2
 	ld a, [wNoiseHit]
 	and a
@@ -604,32 +609,9 @@ DrawChData:
 	ld [hl], a
 	xor a
 	ld [wNoiseHit], a
-	hlcoord 19, MP_HUD_TOP + 1
-	ld a, [MusicNoiseSampleSet]
-	add $f6
-	ld [hl], a
-	hlcoord 16, MP_HUD_TOP + 3
-	ld a, [wC4Vol]
-	and $f
-	cp 8
-	jr c, .ok
-
-	push af
-	ld a, $e1
-	ld [hli], a
-	ld [hld], a
-	pop af
-	ld de, -SCREEN_WIDTH
-	add hl, de
-
-.ok:
-	and 7
-	add $d9
-	ld [hli], a
-	ld [hld], a
 	ret
 
-_DrawCh1_2:
+_DrawCh1_2_3:
 	push af
 	push hl
 	call CheckChannelOn
@@ -683,9 +665,6 @@ _DrawCh1_2:
 	add hl, de
 	ld [hli], a
 	ld [hld], a
-	add hl, de
-	ld [hli], a
-	ld [hld], a
 
 	push hl
 	call CheckChannelOn
@@ -708,19 +687,7 @@ _DrawCh1_2:
 
 .not_playing_2
 	and $f
-	cp 8
-	jr c, .ok
-
-	push af
-	ld a, $e1
-	ld [hli], a
-	ld [hld], a
-	pop af
-	ld de, -SCREEN_WIDTH
-	add hl, de
-
-.ok:
-	and 7
+	srl a
 	add $d9
 	ld [hli], a
 	ld [hld], a
@@ -1586,10 +1553,9 @@ NoteNames:
 
 MPTilemap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
-db $07, $08, $09, $1c, $1d, $07, $08, $0a, $1c, $1d, $0b, $0c, $0d, $1c, $1d, $0e, $0f, $10, $1c, $1c
-db "    ", $1b, "    ", $1b, "    ", $1b, "Set  "
-db "    ", $1b, "    ", $1b, "    ", $1b, "     "
-db "    ", $1b, "    ", $1b, "    ", $1b, "     "
+db $07, $08, $09, $1e, $1d, $07, $08, $0a, $1e, $1d, $0b, $0c, $0d, $1e, $1d, $0e, $0f, $10, $1e, $1e
+db "    ", $1f, "    ", $1f, "    ", $1f, $1b, $1c, "   "
+db "    ", $1f, "    ", $1f, "    ", $1f, "     "
 
 ChannelsOnTilemaps:
 	db $07, $08, $09
