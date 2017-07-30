@@ -90,7 +90,7 @@ MusicPlayer::
 	call DelayFrame
 
 	ld b, BANK(MusicTestGFX)
-	ld c, 9
+	ld c, 13
 	ld de, MusicTestGFX
 	ld hl, VTiles0 tile $d9
 	call Request2bpp
@@ -627,12 +627,30 @@ DrawChData:
 	call PlaceString
 	call GetOctaveAddr
 	ld d, [hl]
-	ld a, $fe
+	ld a, "8"
 	sub d
 	pop hl
 	inc hl
 	inc hl
 	ld [hli], a
+
+	ld a, [wTmpCh]
+	cp 2
+	jr nc, .no_duty_cycle
+	push hl
+	ld de, SCREEN_WIDTH
+	add hl, de
+	push hl
+	call GetDutyCycleAddr
+	ld a, [hl]
+	pop hl
+	rl a
+	rl a
+	and 3
+	add $e2
+	ld [hl], a
+	pop hl
+.no_duty_cycle
 
 	push hl
 	dec hl
@@ -942,7 +960,7 @@ DrawNewNote:
 	pop hl
 	ld a, [hl]
 	dec a
-	ld hl, Pitchels
+	ld hl, .Pitchels
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -950,6 +968,9 @@ DrawNewNote:
 	add b
 	ld c, a
 	jp WriteNotePitch
+
+.Pitchels:
+	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
 
 DrawLongerNote:
 	ld a,[wTmpCh]
@@ -1173,9 +1194,6 @@ AddNoteToOld:
 	ld [wNumNoteLines], a
 	ret
 
-Pitchels:
-	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
-
 GetPitchAddr:
 	ld a, [wTmpCh]
 	add a
@@ -1203,6 +1221,12 @@ GetIntensityAddr:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
+	jp AddNTimes
+
+GetDutyCycleAddr:
+	ld a, [wTmpCh]
+	ld hl, Channel1DutyCycle
+	ld bc, Channel2 - Channel1
 	jp AddNTimes
 
 GetSongInfo:

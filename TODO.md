@@ -99,7 +99,6 @@ Low-priority:
 
 ### Music player
 
-* Show duty cycles for channels 1 and 2
 * Allow varying tempo as well as pitch
 * Hold Up/Down to continuously scroll in the song list
 * Fix the piano roll graphics "leaking" into the song list
