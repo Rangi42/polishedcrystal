@@ -408,7 +408,7 @@ ENDM
 	; Route 14
 	npctrade 3, WOBBUFFET,  CHANSEY,    "Chance@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, HEAL_BALL,    LUCKY_EGG,    26491, "Kim@@@@@"
 	; Goldenrod Harbor
-	npctrade 1, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CALM,    FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
+	npctrade 1, TENTACOOL,  GRIMER,     "Gail@@@@@@@", $EE, $EE, $EE, HIDDEN_ABILITY | CAREFUL, FEMALE, LURE_BALL,    EVIOLITE,     50082, "Jacques@"
 	; Ecruteak City
 	npctrade 0, FARFETCH_D, DODUO,      "Clarence@@@", $EE, $EE, $EE, HIDDEN_ABILITY | HASTY,   MALE,   FAST_BALL,    CHERI_BERRY,  43972, "Hari@@@@"
 ; fcf38

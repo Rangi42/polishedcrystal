@@ -44,9 +44,9 @@ Music_CianwoodCityHGSS_branch_ef2e5:
 	note G#, 10
 	note __, 2
 	stereopanning $ff
-	octave 3
 	note F_, 8
 	stereopanning $f
+	octave 3
 	note E_, 1
 	note F_, 11
 	note F#, 4

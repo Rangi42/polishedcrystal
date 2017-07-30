@@ -97,6 +97,13 @@ Low-priority:
 * Volt Switch
 
 
+### Music player
+
+* Allow varying tempo as well as pitch
+* Hold Up/Down to continuously scroll in the song list
+* Fix the piano roll graphics "leaking" into the song list
+* Use the UnlockedMusic flag_array in some capacity
+
 
 ## Postponed until 4.0
 
@@ -192,6 +199,8 @@ Some of these may never be added; they're just suggestions.
 * Battle Factory
 * Medals for achievements
 * Something like Habitat Lists or DexNav via the Town Map
+* Something like Poké Radar or Pokéwalker
+* Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
@@ -202,7 +211,6 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Some sort of music player, in-game or via Options, that uses the UnlockedMusic flag_array
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)
@@ -225,7 +233,6 @@ Some of these may never be added; they're just suggestions.
 * Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
 * Evolution Guru says how your lead Pokémon can evolve
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-* Rarely wild Pokémon know an egg move (could be a Habitat List/DexNav reward)
 * Get better Wonder Trade items at higher levels
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
@@ -233,7 +240,6 @@ Some of these may never be added; they're just suggestions.
 * Add separate throwing animation graphics for more Poké Ball designs
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Make Eggs use their Pokémon's palette
-* Animate item activations like Quick Claw
 * Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
 

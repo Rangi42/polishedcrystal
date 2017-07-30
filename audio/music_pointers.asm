@@ -105,6 +105,7 @@
 	dba Music_PokeFluteChannel ; 0xf7b13
 	dba Music_Route209DPPt
 	dba Music_Route210DPPt
+	dba Music_Route225DPPt
 	dba Music_DiglettsCaveRBY
 	dba Music_ViridianForest ; 0xed8dd
 	dba Music_LookHiker ; 0xf7411

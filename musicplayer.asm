@@ -16,8 +16,6 @@ INCBIN "gfx/music_player/note_lines.2bpp"
 
 SECTION "Music Player", ROMX
 
-MAX_PITCH_TRANSPOSITION EQU 12
-
 jbutton: MACRO
 	ld a, [hJoyPressed]
 	and \1
@@ -79,23 +77,19 @@ MusicPlayer::
 	call ClearTileMap
 	call MPLoadPalette
 
-	hlcoord 6, 5
-	ld de, LoadingText
-	call PlaceString
-
 	xor a
 	ld [hBGMapHalf], a
 	call DelayFrame
 
 	ld b, BANK(MusicTestGFX)
-	ld c, 9
+	ld c, 13
 	ld de, MusicTestGFX
 	ld hl, VTiles0 tile $d9
 	call Request2bpp
 
 	ld de, PianoGFX
 	ld b, BANK(PianoGFX)
-	ld c, $20
+	ld c, 30
 	ld hl, VTiles2
 	call Request2bpp
 
@@ -123,18 +117,11 @@ MusicPlayer::
 
 	call ClearSprites
 
+	ld hl, MusicPlayerWRAM
+	ld bc, MusicPlayerWRAMEnd - MusicPlayerWRAM
 	xor a
-	ld [wNumNoteLines], a
-	ld [wChLastNotes], a
-	ld [wChLastNotes+1], a
-	ld [wChLastNotes+2], a
-	ld [wChannelSelectorSwitches], a
-	ld [wChannelSelectorSwitches+1], a
-	ld [wChannelSelectorSwitches+2], a
-	ld [wChannelSelectorSwitches+3], a
-	ld [wTranspositionInterval], a
-	ld [wSpecialWaveform], a
-	ld [hMPState], a
+	call ByteFill
+
 	ld a, $ff
 	ld [wRenderedWaveform], a
 
@@ -259,27 +246,9 @@ RenderMusicPlayer:
 
 .redraw
 	ld [wSongSelection], a
-
-	; if this takes too long, don't let the user see blank fields blink in
-	; disable copying the map during vblank
-	ld a, 2
-	ld [hVBlank], a
-
-	ld a, " "
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * 13
-	call ByteFill
-
-	call DrawSongInfo
-	call DrawTranspositionInterval
-
-	ld a, 5
-	ld [hVBlank], a
-
-	; refresh top two portions
-	xor a
-	ld [hBGMapHalf], a
-	call DelayFrame
+	ld a, -1
+	ld [wChannelSelector], a
+	call DrawPianoRollOverlay
 	jp .loop
 
 .a
@@ -302,8 +271,8 @@ RenderMusicPlayer:
 .select
 	xor a
 	ld [wChannelSelector], a
-	hlcoord 0, 12
-	ld a, "▼"
+	hlcoord 3, 14
+	ld a, "◀"
 	ld [hl], a
 
 .songEditorLoop
@@ -313,36 +282,21 @@ RenderMusicPlayer:
 	call DrawChData
 	call DrawNotes
 
-	ld a, [wChangingPitch]
-	and a
-	jr nz, .changingPitch
 	call GetJoypad
 	jbutton D_LEFT, .songEditorleft
 	jbutton D_RIGHT, .songEditorright
 	jbutton A_BUTTON, .songEditora
-	jbutton B_BUTTON, .songEditorb
+	jbutton B_BUTTON | SELECT, .songEditorselectb
 	jbutton D_UP, .songEditorup
 	jbutton D_DOWN, .songEditordown
-	jbutton SELECT, .songEditorselect
+	jbutton START, .songEditorstart
 
-	ld a, 2
-	ld [hBGMapHalf], a ; prioritize refreshing the note display
-	jr .songEditorLoop
-
-.changingPitch
-	call GetJoypad
-	jbutton D_DOWN | D_LEFT, .ChangingPitchdownleft
-	jbutton D_UP | D_RIGHT, .ChangingPitchupright
-	jbutton A_BUTTON, .ChangingPitchb
-	jbutton B_BUTTON, .ChangingPitchb
 	ld a, 2
 	ld [hBGMapHalf], a ; prioritize refreshing the note display
 	jr .songEditorLoop
 
 .songEditorleft
-	call .channelSelectorloadhl
-	ld a, $7f
-	ld [hl], a
+	call ClearChannelSelector
 	ld a, [wChannelSelector]
 	dec a
 	cp -1
@@ -350,14 +304,11 @@ RenderMusicPlayer:
 	ld a, 4
 .noOverflow
 	ld [wChannelSelector], a
-	call .channelSelectorloadhl
-	ld [hl], a
+	call DrawChannelSelector
 	jp .songEditorLoop
 
 .songEditorright
-	call .channelSelectorloadhl
-	ld a, $7f
-	ld [hl], a
+	call ClearChannelSelector
 	ld a, [wChannelSelector]
 	inc a
 	cp 5
@@ -365,14 +316,13 @@ RenderMusicPlayer:
 	xor a
 .noOverflow2
 	ld [wChannelSelector], a
-	call .channelSelectorloadhl
-	ld [hl], a
+	call DrawChannelSelector
 	jp .songEditorLoop
 
 .songEditora
 	ld a, [wChannelSelector]
 	cp 4
-	jr z, .changePitch
+	jp z, .songEditorLoop
 	ld c, a
 	ld b, 0
 	ld hl, wChannelSelectorSwitches
@@ -383,19 +333,10 @@ RenderMusicPlayer:
 	call DrawChannelLabel
 	jp .songEditorLoop
 
-.changePitch
-	ld a, 1
-	ld [wChangingPitch], a
-	hlcoord 16, 1
-	ld a, "▷"
-	ld [hl], a
-	xor a
-	ld [hBGMapHalf], a
-	call DelayFrame
-	jp .songEditorLoop
-
 .songEditorup
 	ld a, [wChannelSelector]
+	cp 4
+	jp z, .ChangingPitchup
 	cp 2
 	jp nz, .songEditorLoop
 	ld a, [Channel3Intensity]
@@ -407,8 +348,18 @@ RenderMusicPlayer:
 	ld a, b
 	jr .changed
 
+.ChangingPitchup
+	ld a, [wTranspositionInterval]
+	inc a
+	cp MAX_PITCH_TRANSPOSITION + 1
+	jr nz, .ChangingPitchChangePitch
+	ld a, -MAX_PITCH_TRANSPOSITION
+	jr .ChangingPitchChangePitch
+
 .songEditordown
 	ld a, [wChannelSelector]
+	cp 4
+	jp z, .ChangingPitchdown
 	cp 2
 	jp nz, .songEditorLoop
 	ld a, [Channel3Intensity]
@@ -418,6 +369,20 @@ RenderMusicPlayer:
 	jr z, .waveoverflow
 	ld a, b
 	jr .changed
+
+.ChangingPitchdown
+	ld a, [wTranspositionInterval]
+	dec a
+	cp -(MAX_PITCH_TRANSPOSITION + 1)
+	jr nz, .ChangingPitchChangePitch
+	ld a, MAX_PITCH_TRANSPOSITION
+.ChangingPitchChangePitch
+	ld [wTranspositionInterval], a
+	call DrawTranspositionInterval
+	xor a
+	ld [hBGMapHalf], a
+	call DelayFrame
+	jp .songEditorLoop
 
 .waveunderflow
 	ld a, [Channel3Intensity]
@@ -434,31 +399,19 @@ RenderMusicPlayer:
 	farcall ReloadWaveform
 	jp .songEditorLoop
 
-.songEditorselect
-.songEditorb
-	call .channelSelectorloadhl
-	ld a, $7f
-	ld [hl], a
+.songEditorselectb
+	call ClearChannelSelector
+	xor a
+	ld [wChannelSelector], a
 	jp .loop
 
-.channelSelectorloadhl
-	ld a, [wChannelSelector]
-	cp 4
-	jr z, .channelSelectorloadhlpitch
-	ld c, 5
-	call SimpleMultiply
-	hlcoord 0, 12
-	add l
-	ld l, a
-	ld a, "▼"
-	ret nc
-	inc h
-	ret
-
-.channelSelectorloadhlpitch
-	hlcoord 16, 1
-	ld a, "▶"
-	ret
+.songEditorstart
+	ld hl, wSongInfoSwitch
+	ld a, [hl]
+	xor 1
+	ld [hl], a
+	call DrawPianoRollOverlay
+	jp .songEditorLoop
 
 .exit
 	xor a
@@ -471,38 +424,28 @@ RenderMusicPlayer:
 	res 2, [hl] ; 8x8 sprites
 	ret
 
-.ChangingPitchdownleft
-	ld a, [wTranspositionInterval]
-	dec a
-	cp -(MAX_PITCH_TRANSPOSITION + 1)
-	jr nz, .ChangingPitchChangePitch
-	ld a, MAX_PITCH_TRANSPOSITION
-	jr .ChangingPitchChangePitch
+DrawPianoRollOverlay:
+	; if this takes too long, don't let the user see blank fields blink in
+	; disable copying the map during vblank
+	ld a, 2
+	ld [hVBlank], a
 
-.ChangingPitchupright
-	ld a, [wTranspositionInterval]
-	inc a
-	cp MAX_PITCH_TRANSPOSITION + 1
-	jr nz, .ChangingPitchChangePitch
-	ld a, -MAX_PITCH_TRANSPOSITION
-.ChangingPitchChangePitch
-	ld [wTranspositionInterval], a
+	ld a, " "
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * 13
+	call ByteFill
+
+	call DrawSongInfo
 	call DrawTranspositionInterval
-	xor a
-	ld [hBGMapHalf], a
-	call DelayFrame
-	jp .songEditorLoop
+	call DrawChannelSelector
 
-.ChangingPitchb
-	xor a
-	ld [wChangingPitch], a
-	hlcoord 16, 1
-	ld a, "▶"
-	ld [hl], a
+	ld a, 5
+	ld [hVBlank], a
+
+	; refresh top two portions
 	xor a
 	ld [hBGMapHalf], a
-	call DelayFrame
-	jp .songEditorLoop
+	jp DelayFrame
 
 DrawTranspositionInterval:
 	hlcoord 17, 1
@@ -520,16 +463,54 @@ DrawTranspositionInterval:
 .negative
 	xor $ff
 	inc a
-	ld de, wTmp
+	ld de, wTmpValue
 	ld [de], a
 	ld a, "-"
 .printnum
 	hlcoord 17, 1
-	ld [hl], a
-	lb bc, 1, 3
+	ld [hli], a
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	jp PrintNum
 
 .EmptyPitch: db "   @"
+
+DrawChannelSelector:
+	ld a, [wChannelSelector]
+	cp -1
+	ret z
+	cp 4
+	jr z, .pitch
+	call _LocateChannelSelector
+	ld [hl], "◀"
+	ret
+
+.pitch:
+	hlcoord 16, 1
+	ld [hl], "▶"
+	ret
+
+ClearChannelSelector:
+	ld a, [wChannelSelector]
+	cp 4
+	jr z, .pitch
+	call _LocateChannelSelector
+	ld [hl], $1c
+	ret
+
+.pitch
+	hlcoord 16, 1
+	ld [hl], " "
+	ret
+
+_LocateChannelSelector:
+	ld c, 5
+	call SimpleMultiply
+	hlcoord 3, 14
+	add l
+	ld l, a
+	ret nc
+	inc h
+	ret
 
 DrawChannelLabel:
 	and a
@@ -548,7 +529,7 @@ DrawChannelLabel:
 	add hl, de
 	push hl
 
-	hlcoord 0, 13
+	hlcoord 0, 14
 	ld a, [wChannelSelector]
 	ld c, 5
 	call SimpleMultiply
@@ -566,14 +547,7 @@ endr
 	ret
 
 DrawChData:
-	ld a, [wSpecialWaveform]
-	and a
-	jr z, .notspecial
-	call RenderSpecialWaveform
-	xor a
-	ld [wSpecialWaveform], a
-.notspecial
-	hlcoord 0, 14
+	hlcoord 0, 15
 .ch
 	ld [wTmpCh], a
 	call .Draw
@@ -584,7 +558,7 @@ DrawChData:
 	jr c, .ch
 
 	; Ch4 handling goes here.
-	hlcoord 17, 15
+	hlcoord 17, 16
 	ld a, [wNoiseHit]
 	and a
 	jr nz, .hit
@@ -596,11 +570,11 @@ DrawChData:
 	ld [hl], a
 	xor a
 	ld [wNoiseHit], a
-	hlcoord 19, 14
+	hlcoord 19, 15
 	ld a, [MusicNoiseSampleSet]
 	add $f6
 	ld [hl], a
-	hlcoord 16, 16
+	hlcoord 16, 17
 	ld a, [wC4Vol]
 	and $f
 	cp 8
@@ -611,7 +585,7 @@ DrawChData:
 	ld [hli], a
 	ld [hld], a
 	pop af
-	ld de, -20
+	ld de, -SCREEN_WIDTH
 	add hl, de
 
 .okc4
@@ -640,19 +614,38 @@ DrawChData:
 	call PlaceString
 	call GetOctaveAddr
 	ld d, [hl]
-	ld a, $fe
+	ld a, "8"
 	sub d
 	pop hl
 	inc hl
 	inc hl
 	ld [hli], a
 
+	ld a, [wTmpCh]
+	cp 2
+	jr nc, .no_duty_cycle
+	push hl
+	ld de, SCREEN_WIDTH
+	add hl, de
+	push hl
+	call GetDutyCycleAddr
+	ld a, [hl]
+	pop hl
+	and %11000000
+	swap a
+	srl a
+	srl a
+	add $e2
+	ld [hl], a
+	pop hl
+.no_duty_cycle
+
 	push hl
 	dec hl
 	dec hl
 	dec hl
 	ld a, $d9
-	ld de, 20
+	ld de, SCREEN_WIDTH
 	add hl, de
 	ld [hli], a
 	ld [hld], a
@@ -688,7 +681,7 @@ DrawChData:
 	ld [hli], a
 	ld [hld], a
 	pop af
-	ld de, -20
+	ld de, -SCREEN_WIDTH
 	add hl, de
 
 .ok
@@ -699,7 +692,7 @@ DrawChData:
 	ld a, [wTmpCh]
 	cp 2
 	jr nz, .notch3
-	hlcoord 12, 15
+	hlcoord 12, 16
 	; pick the waveform
 	ld a, [Channel3Intensity]
 	and $f
@@ -731,7 +724,6 @@ endr
 	ld bc, 16
 	ld a, BANK(WaveSamples)
 	call FarCopyBytes ; copy bc bytes from a:hl to de
-RenderSpecialWaveform:
 	ld hl, TempMPWaveform
 	ld bc, BOXMON_STRUCT_LENGTH
 	xor a
@@ -820,7 +812,7 @@ DrawNotes:
 	ld a, [hMPState]
 	inc a
 	ld [hMPState], a
-	cp 145 + 1
+	cp PIANO_ROLL_HEIGHT_PX + 1 + 1
 	jr c, .skip
 	ld a, 1
 	ld [hMPState], a
@@ -829,7 +821,7 @@ DrawNotes:
 	push af
 	call .copynotes
 	pop af
-	add 144
+	add PIANO_ROLL_HEIGHT_PX
 	call nc, .copynotes
 	pop af
 	ld [rSVBK], a
@@ -841,7 +833,7 @@ DrawNotes:
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, wWaveformTmp
+	ld hl, wPitchesTmp
 	jp CopyBytes
 
 CheckEndedNote:
@@ -956,7 +948,7 @@ DrawNewNote:
 	pop hl
 	ld a, [hl]
 	dec a
-	ld hl, Pitchels
+	ld hl, .Pitchels
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -964,6 +956,9 @@ DrawNewNote:
 	add b
 	ld c, a
 	jp WriteNotePitch
+
+.Pitchels:
+	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
 
 DrawLongerNote:
 	ld a,[wTmpCh]
@@ -989,7 +984,7 @@ WriteBlankNote:
 	ld c, a
 
 WriteNotePitch:
-	ld hl, wWaveformTmp ; recycle
+	ld hl, wPitchesTmp
 	ld a, [wTmpCh]
 	ld e, a
 	ld d, 0
@@ -1065,7 +1060,7 @@ SetVisualIntensity:
 	ret
 .wavChannel
 	ld a, [hl]
-	and $F0
+	and $f0
 	cp $10
 	jr z, .full
 	cp $20
@@ -1187,9 +1182,6 @@ AddNoteToOld:
 	ld [wNumNoteLines], a
 	ret
 
-Pitchels:
-	db 1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27
-
 GetPitchAddr:
 	ld a, [wTmpCh]
 	add a
@@ -1217,6 +1209,12 @@ GetIntensityAddr:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
+	jp AddNTimes
+
+GetDutyCycleAddr:
+	ld a, [wTmpCh]
+	ld hl, Channel1DutyCycle
+	ld bc, Channel2 - Channel1
 	jp AddNTimes
 
 GetSongInfo:
@@ -1254,6 +1252,13 @@ DrawSongInfo:
 	call GetSongInfo
 	ret c ; no data
 
+	ld a, [wSongInfoSwitch]
+	and a
+	jr z, .info
+	hlcoord 0, 1
+	jr DrawSongID
+
+.info
 	call GetSongTitle
 	hlcoord 0, 3
 	call PlaceString
@@ -1305,14 +1310,8 @@ DrawSongID:
 
 GetSongOrigin:
 	ld a, [de]
-	ld b, a
-	ld hl, Origin
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, GetBlankName
-	cp b
-	jr nz, .loop
+	ld hl, SongOrigins
+	call GetNthString
 GetSongTitle:
 	push hl
 	pop de
@@ -1320,14 +1319,8 @@ GetSongTitle:
 
 GetSongArtist:
 	ld a, [de]
-	ld b, a
-	ld hl, Artist
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, GetBlankName
-	cp b
-	jr nz, .loop
+	ld hl, SongArtists
+	call GetNthString
 	push hl
 	ld de, .Composer
 	hlcoord 0, 6
@@ -1340,44 +1333,33 @@ GetSongArtist:
 
 GetSongArtist2:
 	ld a, [de]
-	ld b, a
-	ld hl, Artist
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, GetBlankName
-	cp b
-	jr nz, .loop
+	ld hl, SongArtists
+	call GetNthString
 	push hl
+	ld a, [hl]
+	cp "@"
+	jr z, .finish
 	ld de, .Arranger
 	hlcoord 0, 9
 	call PlaceString
+.finish
 	pop de
 	ret
 
 .Arranger:
 	db "Arranger:@"
 
-GetBlankName:
-	ld de, .BlankName
-	ret
-
-.BlankName:
-	db "@"
-
 SongSelector:
-	ld bc, SCREEN_WIDTH
-	ld hl, MPKeymap
-	decoord 0, 17
-	call CopyBytes
-	ld a, " "
 	hlcoord 0, 0
-	ld bc, 340
+	ld a, " "
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	call ClearSprites
+
 	hlcoord 0, 0
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call TextBox
+
 	hlcoord 0, 8
 	ld [hl], "▶"
 	ld a, [wSongSelection]
@@ -1393,14 +1375,16 @@ SongSelector:
 	call UpdateSelectorNames
 .loop
 	call DelayFrame
+
 	call GetJoypad
 	jbutton A_BUTTON, .a
-	jbutton B_BUTTON, .exit
+	jbutton B_BUTTON | START, .exit
 	jbutton D_DOWN, .down
 	jbutton D_UP, .up
 	jbutton D_LEFT, .left
 	jbutton D_RIGHT, .right
 	jr .loop
+
 .a
 	ld a, [wSongSelection]
 	cp NUM_MUSIC - 7
@@ -1415,6 +1399,7 @@ SongSelector:
 	ld d, 0
 	farcall PlayMusic2
 	ret
+
 .down
 	ld a, [wSongSelection]
 	inc a
@@ -1425,6 +1410,7 @@ SongSelector:
 	ld [wSongSelection], a
 	call UpdateSelectorNames
 	jr .loop
+
 .up
 	ld a, [wSongSelection]
 	dec a
@@ -1434,26 +1420,29 @@ SongSelector:
 .noOverflowU
 	ld [wSongSelection], a
 	call UpdateSelectorNames
-	jr .loop
+	jp .loop
+
 .left
 	ld a, [wSongSelection]
 	sub 10
 	jr nc, .noOverflowL
-	ld a, NUM_MUSIC - 1
+	add NUM_MUSIC
 .noOverflowL
 	ld [wSongSelection], a
 	call UpdateSelectorNames
 	jp .loop
+
 .right
 	ld a, [wSongSelection]
 	add 10
 	cp NUM_MUSIC
 	jr c, .noOverflowR
-	ld a, 1
+	sub NUM_MUSIC
 .noOverflowR
 	ld [wSongSelection], a
 	call UpdateSelectorNames
 	jp .loop
+
 .exit
 	ld a, [wSelectorTop]
 	ld [wSongSelection], a
@@ -1545,9 +1534,6 @@ MPLPlaceString:
 	pop de
 	ret
 
-LoadingText:
-	db "Loading…@"
-
 NoteNames:
 	db "- @"
 	db "C @"
@@ -1565,24 +1551,23 @@ NoteNames:
 	db "--@"
 
 MPTilemap:
-db $08, $09, $0a, $1e, $1f, $08, $09, $0b, $1e, $1f, $0c, $0d, $0e, $1e, $1f, $0f, $10, $11, $1e, $1e
-db "    ", $1d, "    ", $1d, "    ", $1d, "Set  "
-db "    ", $1d, "    ", $1d, "    ", $1d, "     "
-db "    ", $1d, "    ", $1d, "    ", $1d, "     "
-MPKeymap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
+db $07, $08, $09, $1c, $1d, $07, $08, $0a, $1c, $1d, $0b, $0c, $0d, $1c, $1d, $0e, $0f, $10, $1c, $1c
+db "    ", $1b, "    ", $1b, "    ", $1b, "Set  "
+db "    ", $1b, "    ", $1b, "    ", $1b, "     "
+db "    ", $1b, "    ", $1b, "    ", $1b, "     "
 
 ChannelsOnTilemaps:
-	db $08, $09, $0a
-	db $08, $09, $0b
-	db $0c, $0d, $0e
-	db $0f, $10, $11
+	db $07, $08, $09
+	db $07, $08, $0a
+	db $0b, $0c, $0d
+	db $0e, $0f, $10
 
 ChannelsOffTilemaps:
-	db $12, $13, $14
-	db $12, $13, $15
-	db $16, $17, $18
-	db $19, $1a, $1b
+	db $11, $12, $13
+	db $11, $12, $14
+	db $15, $16, $17
+	db $18, $19, $1a
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
@@ -1592,132 +1577,133 @@ NoteOAM:
 
 SongInfo:
 	; title, origin, composer, additional credits
-	db "Opening@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, 0
-	db "Title Screen@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, 0
-	db "Main Menu@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "New Bark Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, 0
-	db "Mom@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Elm's Lab@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Opening@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Title Screen@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Main Menu@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "New Bark Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
+	db "Mom@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Elm's Lab@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Lyra Appears@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Rival@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Lyra Departs@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Route 29@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Johto Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Johto Wild Night@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Victory! Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Cherrygrove City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Follow Me!@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Pokémon Center@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Heal Pokémon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Captured Pokémon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Spotted! Youngster@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Johto Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Victory! Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 30@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Violet City@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Sprout Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Spotted! Sage@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
+	db "Route 29@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Johto Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Johto Wild Night@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Victory! Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Cherrygrove City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Follow Me!@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon Center@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Heal Pokémon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Captured Pokémon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Youngster@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Johto Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Victory! Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 30@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Violet City@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Sprout Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Sage@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
 	db "Poké Mart@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "Union Cave@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Ruins of Alph@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Unown Radio@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Azalea Town@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Spotted! Team Rocket@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Vs.Team Rocket@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 34@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Rival Appears@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Rival@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Rival Departs@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Evolution@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Goldenrod City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "PokéCom Center@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, 0
-	db "Gym@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Johto Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Union Cave@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Ruins of Alph@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Unown Radio@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Azalea Town@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Spotted! Team Rocket@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Vs.Team Rocket@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 34@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Rival Appears@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Rival@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Rival Departs@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Evolution@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Goldenrod City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "PokéCom Center@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Gym@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Johto Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Final Pokémon@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Victory! Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Pokémon Channel@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Buena's Password@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
-	db "Game Corner@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Bicycle@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Spotted! Lass@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "National Park@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Bug-Catching Contest@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Bug-Catching ContestRanking@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Ecruteak City@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Dance Theater@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Spotted! Kimono Girl@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Burned Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Eusine Appears@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
-	db "Prof.Oak's Pokémon   Talk@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 38@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Pokémon March@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Olivine Lighthouse@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Surfing@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
+	db "Victory! Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon Channel@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Buena's Password@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Game Corner@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Bicycle@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Lass@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "National Park@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Bug-Catching Contest@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Bug-Catching ContestRanking@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Ecruteak City@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Dance Theater@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Spotted! Kimono Girl@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Burned Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Eusine Appears@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Prof.Oak's Pokémon   Talk@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 38@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon March@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Olivine Lighthouse@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Surfing@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
 	db "Cianwood City@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
 	db "Route 47@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Jessie & James      Appear@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, 0
+	db "Jessie & James      Appear@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Safari Zone Gate@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Surfing Pikachu@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 42@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Surfing Pikachu@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 42@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Stark Mountain@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "Rocket Radio@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Rocket Hideout@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Spotted! Pokémaniac@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Radio Tower Occu-   pied!@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Ice Path@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Dragon's Den@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Clair@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
+	db "Rocket Radio@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Rocket Hideout@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Pokémaniac@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Radio Tower Occu-   pied!@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Ice Path@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Dragon's Den@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Clair@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
 	db "Route 4@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Bell Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Suicune@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 26@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Indigo Plateau@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, 0
-	db "Victory Road@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Indigo Plateau@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Bell Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Suicune@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 26@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Indigo Plateau@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Victory Road@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Indigo Plateau@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Vs.Elite Four@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Vs.Champion@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Hall of Fame@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "S.S.Aqua@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Vermilion City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Kanto Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Vs.Champion@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Hall of Fame@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "S.S.Aqua@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Vermilion City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Kanto Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Black City@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Lavender Town@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, 0
-	db "Pokémon Tower@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, 0
-	db "Lavender Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, 0
-	db "Vs.Kanto Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Lavender Town@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon Tower@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Lavender Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
+	db "Vs.Kanto Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Cerulean City@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Route 24@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "Magnet Train@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Pokémon Lullaby@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Celadon City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Magnet Train@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Pokémon Lullaby@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Celadon City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Game Corner@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Canalave City@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Bicycle@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHANTYTOWN
-	db "Route 11@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Poké Flute@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
+	db "Route 11@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Poké Flute@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Route 209@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Route 210@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "Diglett's Cave@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, 0
-	db "Viridian Forest@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, 0
-	db "Spotted! Hiker@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Pewter City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 3@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Spotted! Officer@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Mt.Moon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Mt.Moon Square@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Route 1@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Pallet Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Oak's Lab@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Spotted! Beauty@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 0
-	db "Vs.Kanto Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, 2
+	db "Route 225@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Diglett's Cave@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Viridian Forest@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
+	db "Spotted! Hiker@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pewter City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 3@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Officer@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Mt.Moon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Mt.Moon Square@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 1@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pallet Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Prof.Oak Appears@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Beauty@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Kanto Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Cinnabar Island@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "Cinnabar Mansion@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, 0
+	db "Cinnabar Mansion@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Vs.Trainer@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Eterna Forest@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Mt.Chimney@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Mt.Pyre@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Battle Tower@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
-	db "Battle Tower Lobby@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, 0
+	db "Battle Tower@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Battle Tower Lobby@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
 	db "Vs.Trainer@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Frontier Brain@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Zinnia Appears@", ORIGIN_ORAS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
@@ -1746,7 +1732,7 @@ SongInfo:
 	db "Vs.Lugia@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
 	db "Summoning Dance@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Ho-Oh@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
-	db "Cerulean Cave@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, 0
+	db "Cerulean Cave@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
 	db "Vs.Kanto Legend@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
 	db "Vs.Gym Leader@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Gym Leader@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
@@ -1760,38 +1746,37 @@ SongInfo:
 	db "Vs.World Champion-  ship Finals@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU
 	db "Abandoned Ship@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Champion@", ORIGIN_B2W2, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
-	db "Post-Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, 0
+	db "Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Post-Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
 	db "Title@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHANTYTOWN
 	db -1
 
-Origin:
-	db ORIGIN_RB, "R/B@"
-	db ORIGIN_Y, "Y@"
-	db ORIGIN_GS, "G/S@"
-	db ORIGIN_C, "C@"
-	db ORIGIN_RSE, "R/S/E@"
-	db ORIGIN_FRLG, "FR/LG@"
-	db ORIGIN_DPPT, "D/P/Pt@"
-	db ORIGIN_HGSS, "HG/SS@"
-	db ORIGIN_BW, "B/W@"
-	db ORIGIN_B2W2, "B2/W2@"
-	db ORIGIN_XY, "X/Y@"
-	db ORIGIN_ORAS, "OR/AS@"
-	db ORIGIN_SM, "S/M@"
-	db ORIGIN_M02, "M02@"
-	db -1
+SongOrigins:
+	db "R/B@"
+	db "Y@"
+	db "G/S@"
+	db "C@"
+	db "R/S/E@"
+	db "FR/LG@"
+	db "D/P/Pt@"
+	db "HG/SS@"
+	db "B/W@"
+	db "B2/W2@"
+	db "X/Y@"
+	db "OR/AS@"
+	db "S/M@"
+	db "M02@"
 
-Artist:
-	db COMPOSER_JUNICHI_MASUDA, "Junichi Masuda@"
-	db COMPOSER_GO_ICHINOSE, "Go Ichinose@"
-	db COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, "Junichi Masuda,     Go Ichinose@"
-	db COMPOSER_MORIKAZU_AOKI, "Morikazu Aoki@"
-	db COMPOSER_ICHIRO_SHIMAKURA, "Ichiro Shimakura@"
-	db COMPOSER_SHOTA_KAGEYAMA, "Shota Kageyama@"
-	db COMPOSER_FROGGESTSPIRIT, "FroggestSpirit@"
-	db COMPOSER_MMMMMM, "Mmmmmm@"
-	db COMPOSER_PUM, "Pum@"
-	db COMPOSER_SHANTYTOWN, "ShantyTown@"
-	db COMPOSER_PIGU, "Pigu@"
-	db -1
+SongArtists:
+	db "@"
+	db "Junichi Masuda@"
+	db "Go Ichinose@"
+	db "Junichi Masuda,     Go Ichinose@"
+	db "Morikazu Aoki@"
+	db "Ichiro Shimakura@"
+	db "Shota Kageyama@"
+	db "FroggestSpirit@"
+	db "Mmmmmm@"
+	db "Pum@"
+	db "ShantyTown@"
+	db "Pigu@"
