@@ -1143,7 +1143,13 @@ HarvestAbility:
 	ld [de], a
 
 	ld hl, HarvestedItemText
-	jr RegainItemByAbility
+	call RegainItemByAbility
+
+	; For the player, update backup items
+	ld a, [hBattleTurn]
+	and a
+	ret nz
+	jp SetBackupItem
 
 PickupAbility:
 ; At end of turn, pickup consumed opponent items if we don't have any
@@ -1196,11 +1202,6 @@ RegainItemByAbility:
 .got_item_addr
 	call GetPartyLocation
 	ld [hl], b
-
-	; Update item backup in wild battles
-	ld a, [wBattleMode]
-	dec a
-	jp z, SetBackupItem
 	ret
 
 MoodyAbility:
