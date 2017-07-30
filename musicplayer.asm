@@ -297,6 +297,7 @@ RenderMusicPlayer:
 	jbutton B_BUTTON | SELECT, .songEditorselectb
 	jbutton D_UP, .songEditorup
 	jbutton D_DOWN, .songEditordown
+	jbutton START, .songEditorstart
 
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
@@ -328,8 +329,6 @@ RenderMusicPlayer:
 
 .songEditora
 	ld a, [wChannelSelector]
-	cp 4
-	jp z, .Togglesonginfo
 	ld c, a
 	ld b, 0
 	ld hl, wChannelSelectorSwitches
@@ -338,14 +337,6 @@ RenderMusicPlayer:
 	xor 1
 	ld [hl], a
 	call DrawChannelLabel
-	jp .songEditorLoop
-
-.Togglesonginfo
-	ld hl, wSongInfoSwitch
-	ld a, [hl]
-	xor 1
-	ld [hl], a
-	call DrawPianoRollOverlay
 	jp .songEditorLoop
 
 .songEditorup
@@ -419,6 +410,14 @@ RenderMusicPlayer:
 	xor a
 	ld [wChannelSelector], a
 	jp .loop
+
+.songEditorstart
+	ld hl, wSongInfoSwitch
+	ld a, [hl]
+	xor 1
+	ld [hl], a
+	call DrawPianoRollOverlay
+	jp .songEditorLoop
 
 .exit
 	xor a
@@ -1388,7 +1387,7 @@ SongSelector:
 
 	call GetJoypad
 	jbutton A_BUTTON, .a
-	jbutton B_BUTTON, .exit
+	jbutton B_BUTTON | START, .exit
 	jbutton D_DOWN, .down
 	jbutton D_UP, .up
 	jbutton D_LEFT, .left
