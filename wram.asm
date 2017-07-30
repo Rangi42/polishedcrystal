@@ -2174,7 +2174,7 @@ PokemonJournalsEnd::
 	ds 2 ; extra space set aside
 
 UnlockedMusic::
-	flag_array NUM_MUSIC
+	flag_array NUM_SONGS
 UnlockedMusicEnd::
 	ds 2 ; extra space set aside
 

@@ -16,16 +16,21 @@ INCBIN "gfx/music_player/note_lines.2bpp"
 
 SECTION "Music Player", ROMX
 
-jbutton: MACRO
+jrbutton: MACRO
 	ld a, [hJoyPressed]
 	and \1
-	jp nz, \2 ; TODO jx
+	jr nz, \2
+	ENDM
+
+jpbutton: MACRO
+	ld a, [hJoyPressed]
+	and \1
+	jp nz, \2
 	ENDM
 
 MPLoadPalette:
 	ld a, [rSVBK]
 	push af
-
 	ld a, 5
 	ld [rSVBK], a
 
@@ -89,21 +94,18 @@ MusicPlayer::
 	ld [hBGMapThird], a
 	call DelayFrame
 
-	ld b, BANK(MusicTestGFX)
-	ld c, 13
 	ld de, MusicTestGFX
+	lb bc, BANK(MusicTestGFX), 13
 	ld hl, VTiles0 tile $d9
 	call Request2bpp
 
 	ld de, PianoGFX
-	ld b, BANK(PianoGFX)
-	ld c, 30
+	lb bc, BANK(PianoGFX), 30
 	ld hl, VTiles2
 	call Request2bpp
 
 	ld de, NotesGFX
-	ld b, BANK(NotesGFX)
-	ld c, $80
+	lb bc, BANK(NotesGFX), $80
 	ld hl, VTiles0
 	call Request2bpp
 
@@ -146,9 +148,9 @@ MusicPlayer::
 ; fallthrough
 
 RenderMusicPlayer:
-	ld bc, SCREEN_WIDTH * 5
+	ld bc, SCREEN_WIDTH * MP_HUD_HEIGHT
 	ld hl, MPTilemap
-	decoord 0, 13
+	decoord 0, PIANO_ROLL_HEIGHT
 	call CopyBytes
 
 	ld bc, 4 * 3
@@ -160,7 +162,7 @@ RenderMusicPlayer:
 	ld [hOAMUpdate], a ; we will manually do it in LCD interrupt
 
 	ld hl, wChannelSelectorSwitches
-	ld a, 3
+	ld a, NUM_MUSIC_CHANS - 1
 .chlabelloop
 	ld [wChannelSelector], a
 	ld a, [hli]
@@ -169,14 +171,14 @@ RenderMusicPlayer:
 	pop hl
 	ld a, [wChannelSelector]
 	dec a
-	cp $ff
+	cp -1
 	jr nz, .chlabelloop
 
 	call DelayFrame
 
 	ld a, [wSongSelection]
 	; let's see if a song is currently selected
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr nc, .bad_selection
 	and a
 	jp nz, .redraw
@@ -196,14 +198,14 @@ RenderMusicPlayer:
 	call DrawNotes
 
 	call GetJoypad
-	jbutton B_BUTTON, .exit
-	jbutton D_LEFT, .left
-	jbutton D_RIGHT, .right
-	jbutton D_DOWN, .down
-	jbutton D_UP, .up
-	jbutton A_BUTTON, .a
-	jbutton SELECT, .select
-	jbutton START, .start
+	jpbutton B_BUTTON, .exit
+	jpbutton D_LEFT, .left
+	jpbutton D_RIGHT, .right
+	jpbutton D_DOWN, .down
+	jpbutton D_UP, .up
+	jpbutton A_BUTTON, .a
+	jpbutton SELECT, .select
+	jpbutton START, .start
 
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
@@ -212,15 +214,14 @@ RenderMusicPlayer:
 .left
 	ld a, [wSongSelection]
 	dec a
-	cp $0
 	jr nz, .redraw
-	ld a, NUM_MUSIC - 1
+	ld a, NUM_SONGS - 1
 	jr .redraw
 
 .right
 	ld a, [wSongSelection]
 	inc a
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr nz, .redraw
 	ld a, 1
 	jr .redraw
@@ -229,17 +230,17 @@ RenderMusicPlayer:
 	ld a, [wSongSelection]
 	sub 10
 	jr z, .zerofix
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr c, .redraw
 
 .zerofix
-	ld a, NUM_MUSIC - 1
+	ld a, NUM_SONGS - 1
 	jr .redraw
 
 .up
 	ld a, [wSongSelection]
 	add 10
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr c, .redraw
 	ld a, 1
 	jr .redraw
@@ -279,7 +280,7 @@ RenderMusicPlayer:
 .select
 	xor a
 	ld [wChannelSelector], a
-	hlcoord 3, 14
+	hlcoord 3, MP_HUD_TOP
 	ld a, "◀"
 	ld [hl], a
 
@@ -291,13 +292,13 @@ RenderMusicPlayer:
 	call DrawNotes
 
 	call GetJoypad
-	jbutton D_LEFT, .songEditorleft
-	jbutton D_RIGHT, .songEditorright
-	jbutton A_BUTTON, .songEditora
-	jbutton B_BUTTON | SELECT, .songEditorselectb
-	jbutton D_UP, .songEditorup
-	jbutton D_DOWN, .songEditordown
-	jbutton START, .songEditorstart
+	jpbutton D_LEFT, .songEditorleft
+	jpbutton D_RIGHT, .songEditorright
+	jpbutton A_BUTTON, .songEditora
+	jpbutton B_BUTTON | SELECT, .songEditorselectb
+	jpbutton D_UP, .songEditorup
+	jpbutton D_DOWN, .songEditordown
+	jpbutton START, .songEditorstart
 
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
@@ -309,7 +310,7 @@ RenderMusicPlayer:
 	dec a
 	cp -1
 	jr nz, .noOverflow
-	ld a, 4
+	ld a, NUM_MP_EDIT_FIELDS - 1 ; MP_EDIT_PITCH
 .noOverflow
 	ld [wChannelSelector], a
 	call DrawChannelSelector
@@ -319,9 +320,9 @@ RenderMusicPlayer:
 	call ClearChannelSelector
 	ld a, [wChannelSelector]
 	inc a
-	cp 5
+	cp NUM_MP_EDIT_FIELDS
 	jr nz, .noOverflow2
-	xor a
+	xor a ; ld a, MP_EDIT_CH1
 .noOverflow2
 	ld [wChannelSelector], a
 	call DrawChannelSelector
@@ -329,7 +330,7 @@ RenderMusicPlayer:
 
 .songEditora
 	ld a, [wChannelSelector]
-	cp 4
+	cp MP_EDIT_PITCH
 	jp z, .songEditorLoop
 	ld c, a
 	ld b, 0
@@ -343,9 +344,9 @@ RenderMusicPlayer:
 
 .songEditorup
 	ld a, [wChannelSelector]
-	cp 4
+	cp MP_EDIT_PITCH
 	jp z, .ChangingPitchup
-	cp 2
+	cp MP_EDIT_WAVE
 	jp nz, .songEditorLoop
 	ld a, [Channel3Intensity]
 	dec a
@@ -366,9 +367,9 @@ RenderMusicPlayer:
 
 .songEditordown
 	ld a, [wChannelSelector]
-	cp 4
+	cp MP_EDIT_PITCH
 	jp z, .ChangingPitchdown
-	cp 2
+	cp MP_EDIT_WAVE
 	jp nz, .songEditorLoop
 	ld a, [Channel3Intensity]
 	inc a
@@ -409,7 +410,7 @@ RenderMusicPlayer:
 
 .songEditorselectb
 	call ClearChannelSelector
-	xor a
+	xor a ; ld a, MP_EDIT_CH1
 	ld [wChannelSelector], a
 	jp .loop
 
@@ -447,7 +448,7 @@ DrawPianoRollOverlay:
 
 	ld a, " "
 	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * 13
+	ld bc, SCREEN_WIDTH * PIANO_ROLL_HEIGHT
 	call ByteFill
 
 	call DrawSongInfo
@@ -493,7 +494,7 @@ DrawChannelSelector:
 	ld a, [wChannelSelector]
 	cp -1
 	ret z
-	cp 4
+	cp MP_EDIT_PITCH
 	jr z, .pitch
 	call _LocateChannelSelector
 	ld [hl], "◀"
@@ -506,7 +507,7 @@ DrawChannelSelector:
 
 ClearChannelSelector:
 	ld a, [wChannelSelector]
-	cp 4
+	cp MP_EDIT_PITCH
 	jr z, .pitch
 	call _LocateChannelSelector
 	ld [hl], $1c
@@ -520,7 +521,7 @@ ClearChannelSelector:
 _LocateChannelSelector:
 	ld c, 5
 	call SimpleMultiply
-	hlcoord 3, 14
+	hlcoord 3, MP_HUD_TOP
 	add l
 	ld l, a
 	ret nc
@@ -544,7 +545,7 @@ DrawChannelLabel:
 	add hl, de
 	push hl
 
-	hlcoord 0, 14
+	hlcoord 0, MP_HUD_TOP
 	ld a, [wChannelSelector]
 	ld c, 5
 	call SimpleMultiply
@@ -562,7 +563,7 @@ endr
 	ret
 
 DrawChData:
-	hlcoord 0, 15
+	hlcoord 0, MP_HUD_TOP + 1
 .ch
 	ld [wTmpCh], a
 	call .Draw
@@ -573,7 +574,7 @@ DrawChData:
 	jr c, .ch
 
 	; Ch4 handling goes here.
-	hlcoord 17, 16
+	hlcoord 17, MP_HUD_TOP + 2
 	ld a, [wNoiseHit]
 	and a
 	jr nz, .hit
@@ -585,11 +586,11 @@ DrawChData:
 	ld [hl], a
 	xor a
 	ld [wNoiseHit], a
-	hlcoord 19, 15
+	hlcoord 19, MP_HUD_TOP + 1
 	ld a, [MusicNoiseSampleSet]
 	add $f6
 	ld [hl], a
-	hlcoord 16, 17
+	hlcoord 16, MP_HUD_TOP + 3
 	ld a, [wC4Vol]
 	and $f
 	cp 8
@@ -637,7 +638,7 @@ DrawChData:
 	ld [hli], a
 
 	ld a, [wTmpCh]
-	cp 2
+	cp CHAN3
 	jr nc, .no_duty_cycle
 	push hl
 	ld de, SCREEN_WIDTH
@@ -671,7 +672,7 @@ DrawChData:
 	push hl
 	call CheckChannelOn
 	pop hl
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr c, .isNotPlaying2
 
 	push hl
@@ -679,7 +680,7 @@ DrawChData:
 	ld a, [hl]
 	and a
 	pop hl
-	ld a, 0
+	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .isNotPlaying2
 
 	push hl
@@ -707,7 +708,7 @@ DrawChData:
 	ld a, [wTmpCh]
 	cp 2
 	jr nz, .notch3
-	hlcoord 12, 16
+	hlcoord 12, MP_HUD_TOP + 2
 	; pick the waveform
 	ld a, [Channel3Intensity]
 	and $f
@@ -800,22 +801,21 @@ endr
 	jr nc, .gothl
 	inc h
 .gothl
-	ld b, 0
-	ld c, 2
+	lb bc, 0, 2
 	ld de, TempMPWaveform
 	call Request2bpp
 	ret
 
 DrawNotes:
-	ld a, 0
+	xor a ; ld a, CHAN1
 	ld [wTmpCh], a
 	call DrawNote
 	call CheckForVolumeBarReset
-	ld a, 1
+	ld a, CHAN2
 	ld [wTmpCh], a
 	call DrawNote
 	call CheckForVolumeBarReset
-	ld a, 2
+	ld a, CHAN3
 	ld [wTmpCh], a
 	call DrawNote
 	call CheckForVolumeBarReset
@@ -877,7 +877,7 @@ CheckChannelOn:
 	ld bc, Channel2 - Channel1
 	ld hl, Channel1Flags
 	call AddNTimes
-	bit 0, [hl]
+	bit SOUND_CHANNEL_ON, [hl]
 	jr z, NoteEnded
 
 ; Rest flag
@@ -886,7 +886,7 @@ CheckChannelOn:
 	ld a, [wTmpCh]
 	ld hl, Channel1NoteFlags
 	call AddNTimes
-	bit 5, [hl]
+	bit SOUND_REST, [hl]
 	jr nz, NoteEnded
 
 ; Do an IO check too if the note's envelope is 0
@@ -947,14 +947,12 @@ DrawNote:
 DrawChangedNote:
 	ld [hl], b
 	call SetVisualIntensity
-	; spillover
-
 DrawNewNote:
 	call GetPitchAddr
 	push hl
 	inc hl
 	ld a, [hl]
-	xor $f ; why are lower octaves higher.
+	xor $f ; octaves are in reverse order
 	sub $8
 	ld bc, 28
 	ld hl, 8
@@ -1043,7 +1041,7 @@ SetVisualIntensity:
 	ld bc, Channel2 - Channel1
 	call AddNTimes
 	ld a, [hl]
-	cp 0
+	and a
 	jr z, .skip
 	ld a,[wTmpCh]
 	ld hl, Channel1Intensity
@@ -1169,20 +1167,16 @@ AddNoteToOld:
 	add a
 	ld c, a
 	ld b, 0
-	ld hl, Sprites + 4 * 3
+	ld hl, Sprites + 3 * 4
 	add hl, bc
 	push hl
 	pop de
 	pop hl
+rept 3
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 
@@ -1382,7 +1376,7 @@ SongSelector:
 	cp 8
 	jr nc, .noOverflow
 	ld b, a
-	ld a, NUM_MUSIC - 1
+	ld a, NUM_SONGS - 1
 	add b
 .noOverflow
 	sub 7
@@ -1392,19 +1386,19 @@ SongSelector:
 	call DelayFrame
 
 	call GetJoypad
-	jbutton A_BUTTON, .a
-	jbutton B_BUTTON | START, .exit
-	jbutton D_DOWN, .down
-	jbutton D_UP, .up
-	jbutton D_LEFT, .left
-	jbutton D_RIGHT, .right
+	jpbutton A_BUTTON, .a
+	jpbutton B_BUTTON | START, .exit
+	jpbutton D_DOWN, .down
+	jpbutton D_UP, .up
+	jpbutton D_LEFT, .left
+	jpbutton D_RIGHT, .right
 	jr .loop
 
 .a
 	ld a, [wSongSelection]
-	cp NUM_MUSIC - 7
+	cp NUM_SONGS - 7
 	jr c, .noOverflow2
-	sub NUM_MUSIC - 8
+	sub NUM_SONGS - 8
 	jr .finish
 .noOverflow2
 	add 7
@@ -1418,7 +1412,7 @@ SongSelector:
 .down
 	ld a, [wSongSelection]
 	inc a
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr c, .noOverflowD
 	ld a, 1
 .noOverflowD
@@ -1429,9 +1423,8 @@ SongSelector:
 .up
 	ld a, [wSongSelection]
 	dec a
-	cp 0
 	jr nz, .noOverflowU
-	ld a, NUM_MUSIC - 1
+	ld a, NUM_SONGS - 1
 .noOverflowU
 	ld [wSongSelection], a
 	call UpdateSelectorNames
@@ -1441,7 +1434,7 @@ SongSelector:
 	ld a, [wSongSelection]
 	sub 10
 	jr nc, .noOverflowL
-	add NUM_MUSIC
+	add NUM_SONGS
 .noOverflowL
 	ld [wSongSelection], a
 	call UpdateSelectorNames
@@ -1450,9 +1443,9 @@ SongSelector:
 .right
 	ld a, [wSongSelection]
 	add 10
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr c, .noOverflowR
-	sub NUM_MUSIC
+	sub NUM_SONGS
 .noOverflowR
 	ld [wSongSelection], a
 	call UpdateSelectorNames
@@ -1487,7 +1480,7 @@ UpdateSelectorNames:
 	inc b
 	inc c
 	ld a, c
-	cp NUM_MUSIC
+	cp NUM_SONGS
 	jr c, .noOverflow
 	ld c, 1
 	ld de, SongInfo

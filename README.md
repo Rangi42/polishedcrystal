@@ -10,10 +10,6 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 – Junichi Masuda, "[HIDDEN POWER of masuda No. 7](https://www.gamefreak.co.jp/blog/dir_english/?p=21)"
 
-> We've been greedy in the amount of gameplay elements we've squeezed in there. There's so much included that I even had colleagues saying to me: "Are you sure you should be going this far with a remake?" In that sense, it's not simply a remake—I think it's more than that. For that reason, I would like to see these games enjoyed by as large a number of people as possible.
-
-– Shigeki Morimoto, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/6-Pokemon-Players-Past-and-Present/6-Pokemon-Players-Past-and-Present-226100.html)"
-
 
 ## Download and Play
 
