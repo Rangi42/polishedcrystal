@@ -644,9 +644,10 @@ DrawChData:
 	call GetDutyCycleAddr
 	ld a, [hl]
 	pop hl
-	rl a
-	rl a
-	and 3
+	and %11000000
+	swap a
+	srl a
+	srl a
 	add $e2
 	ld [hl], a
 	pop hl

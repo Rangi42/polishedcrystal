@@ -38,8 +38,7 @@ LCD:: ; 552
 	ld [$fe00+4*2], a ; OAM 2 y
 
 	ld a, [hMPState]
-	dec a
-	add 2
+	inc a
 	add l
 	jr nc, .ok
 	sub SCREEN_HEIGHT_PX
