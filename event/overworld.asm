@@ -763,13 +763,18 @@ FlyFunction: ; ca3b
 	call CheckFlyAllowedOnMap
 	jr nz, .indoors
 
-; assumes all the Shamouti Island and Valencia Island maps are in their own group
 	ld a, [MapGroup]
 	cp GROUP_SHAMOUTI_ISLAND
 	jr z, .indoors
 	cp GROUP_VALENCIA_ISLAND
 	jr z, .indoors
+	cp GROUP_SHAMOUTI_SHRINE_RUINS
+	jr nz, .outdoors
+	ld a, [MapNumber]
+	cp MAP_SHAMOUTI_SHRINE_RUINS
+	jr z, .indoors
 
+.outdoors
 	xor a
 	ld [hMapAnims], a
 	call LoadStandardMenuDataHeader
