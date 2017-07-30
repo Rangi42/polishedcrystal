@@ -43,3 +43,5 @@ NUM_MP_EDIT_FIELDS EQU const_value
 	const COMPOSER_PUM                        ; 9
 	const COMPOSER_SHANTYTOWN                 ; a
 	const COMPOSER_PIGU                       ; b
+	const COMPOSER_PIGU_PIKALAXALT            ; c
+	const COMPOSER_GACT_PIGU                  ; d

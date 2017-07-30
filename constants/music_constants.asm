@@ -174,6 +174,6 @@
 	const MUSIC_TITLE_XY                       ; ac
 NUM_SONGS EQU const_value
 
-	; special
-	const MUSIC_RADIO_TOWER                    ; ad
-	const MUSIC_MAHOGANY_MART                  ; ae
+; special
+MUSIC_RADIO_TOWER EQU -1
+MUSIC_MAHOGANY_MART EQU -2
