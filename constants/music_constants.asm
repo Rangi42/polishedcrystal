@@ -179,7 +179,7 @@ NUM_MUSIC EQU const_value
 	const MUSIC_MAHOGANY_MART                  ; ae
 
 
-const_value = 1
+	const_def
 	const ORIGIN_RB    ; 0
 	const ORIGIN_Y     ; 1
 	const ORIGIN_GS    ; 2
@@ -195,7 +195,8 @@ const_value = 1
 	const ORIGIN_SM    ; c
 	const ORIGIN_M02   ; d
 
-const_value = 1
+	const_def
+	const COMPOSER_NONE                       ; 0
 	const COMPOSER_JUNICHI_MASUDA             ; 1
 	const COMPOSER_GO_ICHINOSE                ; 2
 	const COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE ; 3

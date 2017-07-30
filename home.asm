@@ -745,10 +745,9 @@ GetNthString:: ; 3411
 
 	push bc
 	ld b, a
-	ld c, "@"
 .readChar
 	ld a, [hli]
-	cp c
+	cp "@"
 	jr nz, .readChar
 	dec b
 	jr nz, .readChar
