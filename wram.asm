@@ -274,6 +274,7 @@ wC4Vol:: ds 1
 wC4VolSub:: ds 1
 wNoteEnded:: ds 3
 wRenderedWaveform:: ds 1
+wPitchesTmp:: ds 4
 wWaveformTmp:: ds 16
 wTmpValue:: ds 1
 ; song list

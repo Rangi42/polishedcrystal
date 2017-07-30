@@ -26,23 +26,23 @@ LCD:: ; 552
 
 .musicplayer
 	ld a, [rLY]
-	cp 144 - 8
+	cp PIANO_ROLL_HEIGHT_PX
 	jr nc, .donemp
 
 	push hl
 
 	ld l, a
-	add $11
+	add SCREEN_HEIGHT - 1
 	ld [$fe00+4*0], a ; OAM 0 y
 	ld [$fe00+4*1], a ; OAM 1 y
 	ld [$fe00+4*2], a ; OAM 2 y
 
 	ld a, [hMPState]
 	dec a
-	add 2 + 8
+	add 2
 	add l
 	jr nc, .ok
-	sub 144
+	sub SCREEN_HEIGHT_PX
 .ok
 
 	ld h, 0

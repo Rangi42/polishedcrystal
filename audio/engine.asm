@@ -1104,6 +1104,9 @@ ParseMusic: ; e85e1
 	ld a, [CurChannel]
 	cp $3
 	jr nz, .notnoise
+	ld a, [wChannelSelectorSwitches+3]
+	and a
+	jr nz, .notnoise
 	ld a, 1
 	ld [wNoiseHit], a
 .notnoise
@@ -1134,8 +1137,8 @@ ParseMusic: ; e85e1
 	jr z, .notMuted
 	xor a
 	jr .rest
-.notMuted
 
+.notMuted
 	ld a, [CurMusicByte]
 	swap a
 	and $f

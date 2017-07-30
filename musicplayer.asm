@@ -16,8 +16,6 @@ INCBIN "gfx/music_player/note_lines.2bpp"
 
 SECTION "Music Player", ROMX
 
-MAX_PITCH_TRANSPOSITION EQU 12
-
 jbutton: MACRO
 	ld a, [hJoyPressed]
 	and \1
@@ -87,10 +85,6 @@ MusicPlayer::
 	call ClearTileMap
 	call MPLoadPalette
 
-	hlcoord 6, 5
-	ld de, LoadingText
-	call PlaceString
-
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
@@ -103,7 +97,7 @@ MusicPlayer::
 
 	ld de, PianoGFX
 	ld b, BANK(PianoGFX)
-	ld c, $20
+	ld c, 32
 	ld hl, VTiles2
 	call Request2bpp
 
@@ -303,8 +297,8 @@ RenderMusicPlayer:
 .select
 	xor a
 	ld [wChannelSelector], a
-	hlcoord 0, 12
-	ld a, "▼"
+	hlcoord 3, 14
+	ld a, "◀"
 	ld [hl], a
 
 .songEditorLoop
@@ -341,9 +335,7 @@ RenderMusicPlayer:
 	jr .songEditorLoop
 
 .songEditorleft
-	call .channelSelectorloadhl
-	ld a, $7f
-	ld [hl], a
+	call .channelSelectorclear
 	ld a, [wChannelSelector]
 	dec a
 	cp -1
@@ -351,14 +343,11 @@ RenderMusicPlayer:
 	ld a, 4
 .noOverflow
 	ld [wChannelSelector], a
-	call .channelSelectorloadhl
-	ld [hl], a
+	call .channelSelectormark
 	jp .songEditorLoop
 
 .songEditorright
-	call .channelSelectorloadhl
-	ld a, $7f
-	ld [hl], a
+	call .channelSelectorclear
 	ld a, [wChannelSelector]
 	inc a
 	cp 5
@@ -366,8 +355,7 @@ RenderMusicPlayer:
 	xor a
 .noOverflow2
 	ld [wChannelSelector], a
-	call .channelSelectorloadhl
-	ld [hl], a
+	call .channelSelectormark
 	jp .songEditorLoop
 
 .songEditora
@@ -437,28 +425,43 @@ RenderMusicPlayer:
 
 .songEditorselect
 .songEditorb
-	call .channelSelectorloadhl
-	ld a, $7f
-	ld [hl], a
+	call .channelSelectorclear
 	jp .loop
 
-.channelSelectorloadhl
+.channelSelectormark
 	ld a, [wChannelSelector]
 	cp 4
-	jr z, .channelSelectorloadhlpitch
-	ld c, 5
-	call SimpleMultiply
-	hlcoord 0, 12
-	add l
-	ld l, a
-	ld a, "▼"
-	ret nc
-	inc h
+	jr z, .channelSelectormarkpitch
+	call .channelSelectormultiply
+	ld [hl], "◀"
 	ret
 
-.channelSelectorloadhlpitch
+.channelSelectormarkpitch
 	hlcoord 16, 1
-	ld a, "▶"
+	ld [hl], "▶"
+	ret
+
+.channelSelectorclear
+	ld a, [wChannelSelector]
+	cp 4
+	jr z, .channelSelectorclearpitch
+	call .channelSelectormultiply
+	ld [hl], $1e
+	ret
+
+.channelSelectorclearpitch
+	hlcoord 16, 1
+	ld [hl], " "
+	ret
+
+.channelSelectormultiply
+	ld c, 5
+	call SimpleMultiply
+	hlcoord 3, 14
+	add l
+	ld l, a
+	ret nc
+	inc h
 	ret
 
 .exit
@@ -556,7 +559,7 @@ DrawChannelLabel:
 	add hl, de
 	push hl
 
-	hlcoord 0, 13
+	hlcoord 0, 14
 	ld a, [wChannelSelector]
 	ld c, 5
 	call SimpleMultiply
@@ -574,7 +577,7 @@ endr
 	ret
 
 DrawChData:
-	hlcoord 0, 14
+	hlcoord 0, 15
 .ch
 	ld [wTmpCh], a
 	call .Draw
@@ -585,7 +588,7 @@ DrawChData:
 	jr c, .ch
 
 	; Ch4 handling goes here.
-	hlcoord 17, 15
+	hlcoord 17, 16
 	ld a, [wNoiseHit]
 	and a
 	jr nz, .hit
@@ -597,11 +600,11 @@ DrawChData:
 	ld [hl], a
 	xor a
 	ld [wNoiseHit], a
-	hlcoord 19, 14
+	hlcoord 19, 15
 	ld a, [MusicNoiseSampleSet]
 	add $f6
 	ld [hl], a
-	hlcoord 16, 16
+	hlcoord 16, 17
 	ld a, [wC4Vol]
 	and $f
 	cp 8
@@ -612,7 +615,7 @@ DrawChData:
 	ld [hli], a
 	ld [hld], a
 	pop af
-	ld de, -20
+	ld de, -SCREEN_WIDTH
 	add hl, de
 
 .okc4
@@ -653,7 +656,7 @@ DrawChData:
 	dec hl
 	dec hl
 	ld a, $d9
-	ld de, 20
+	ld de, SCREEN_WIDTH
 	add hl, de
 	ld [hli], a
 	ld [hld], a
@@ -689,7 +692,7 @@ DrawChData:
 	ld [hli], a
 	ld [hld], a
 	pop af
-	ld de, -20
+	ld de, -SCREEN_WIDTH
 	add hl, de
 
 .ok
@@ -700,7 +703,7 @@ DrawChData:
 	ld a, [wTmpCh]
 	cp 2
 	jr nz, .notch3
-	hlcoord 12, 15
+	hlcoord 12, 16
 	; pick the waveform
 	ld a, [Channel3Intensity]
 	and $f
@@ -820,7 +823,7 @@ DrawNotes:
 	ld a, [hMPState]
 	inc a
 	ld [hMPState], a
-	cp 145 + 1
+	cp PIANO_ROLL_HEIGHT_PX + 1 + 1
 	jr c, .skip
 	ld a, 1
 	ld [hMPState], a
@@ -829,7 +832,7 @@ DrawNotes:
 	push af
 	call .copynotes
 	pop af
-	add 144
+	add PIANO_ROLL_HEIGHT_PX
 	call nc, .copynotes
 	pop af
 	ld [rSVBK], a
@@ -841,7 +844,7 @@ DrawNotes:
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, wWaveformTmp
+	ld hl, wPitchesTmp
 	jp CopyBytes
 
 CheckEndedNote:
@@ -989,7 +992,7 @@ WriteBlankNote:
 	ld c, a
 
 WriteNotePitch:
-	ld hl, wWaveformTmp ; recycle
+	ld hl, wPitchesTmp
 	ld a, [wTmpCh]
 	ld e, a
 	ld d, 0
@@ -1065,7 +1068,7 @@ SetVisualIntensity:
 	ret
 .wavChannel
 	ld a, [hl]
-	and $F0
+	and $f0
 	cp $10
 	jr z, .full
 	cp $20
@@ -1366,18 +1369,16 @@ GetBlankName:
 	db "@"
 
 SongSelector:
-	ld bc, SCREEN_WIDTH
-	ld hl, MPKeymap
-	decoord 0, 17
-	call CopyBytes
-	ld a, " "
 	hlcoord 0, 0
-	ld bc, 340
+	ld a, " "
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	call ClearSprites
+
 	hlcoord 0, 0
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call TextBox
+
 	hlcoord 0, 8
 	ld [hl], "▶"
 	ld a, [wSongSelection]
@@ -1395,7 +1396,6 @@ SongSelector:
 	call DelayFrame
 
 	call GetJoypad
-
 	jbutton A_BUTTON, .a
 	jbutton B_BUTTON, .exit
 	jbutton D_DOWN, .down
@@ -1553,9 +1553,6 @@ MPLPlaceString:
 	pop de
 	ret
 
-LoadingText:
-	db "Loading…@"
-
 NoteNames:
 	db "- @"
 	db "C @"
@@ -1573,12 +1570,11 @@ NoteNames:
 	db "--@"
 
 MPTilemap:
+db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
 db $08, $09, $0a, $1e, $1f, $08, $09, $0b, $1e, $1f, $0c, $0d, $0e, $1e, $1f, $0f, $10, $11, $1e, $1e
 db "    ", $1d, "    ", $1d, "    ", $1d, "Set  "
 db "    ", $1d, "    ", $1d, "    ", $1d, "     "
 db "    ", $1d, "    ", $1d, "    ", $1d, "     "
-MPKeymap:
-db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
 
 ChannelsOnTilemaps:
 	db $08, $09, $0a
