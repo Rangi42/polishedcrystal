@@ -97,7 +97,7 @@ MusicPlayer::
 
 	ld de, PianoGFX
 	ld b, BANK(PianoGFX)
-	ld c, 32
+	ld c, 30
 	ld hl, VTiles2
 	call Request2bpp
 
@@ -507,7 +507,7 @@ ClearChannelSelector:
 	cp 4
 	jr z, .pitch
 	call _LocateChannelSelector
-	ld [hl], $1e
+	ld [hl], $1c
 	ret
 
 .pitch
@@ -1565,22 +1565,22 @@ NoteNames:
 
 MPTilemap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
-db $08, $09, $0a, $1e, $1f, $08, $09, $0b, $1e, $1f, $0c, $0d, $0e, $1e, $1f, $0f, $10, $11, $1e, $1e
-db "    ", $1d, "    ", $1d, "    ", $1d, "Set  "
-db "    ", $1d, "    ", $1d, "    ", $1d, "     "
-db "    ", $1d, "    ", $1d, "    ", $1d, "     "
+db $07, $08, $09, $1c, $1d, $07, $08, $0a, $1c, $1d, $0b, $0c, $0d, $1c, $1d, $0e, $0f, $10, $1c, $1c
+db "    ", $1b, "    ", $1b, "    ", $1b, "Set  "
+db "    ", $1b, "    ", $1b, "    ", $1b, "     "
+db "    ", $1b, "    ", $1b, "    ", $1b, "     "
 
 ChannelsOnTilemaps:
-	db $08, $09, $0a
-	db $08, $09, $0b
-	db $0c, $0d, $0e
-	db $0f, $10, $11
+	db $07, $08, $09
+	db $07, $08, $0a
+	db $0b, $0c, $0d
+	db $0e, $0f, $10
 
 ChannelsOffTilemaps:
-	db $12, $13, $14
-	db $12, $13, $15
-	db $16, $17, $18
-	db $19, $1a, $1b
+	db $11, $12, $13
+	db $11, $12, $14
+	db $15, $16, $17
+	db $18, $19, $1a
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
