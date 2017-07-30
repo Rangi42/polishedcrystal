@@ -329,6 +329,8 @@ RenderMusicPlayer:
 
 .songEditora
 	ld a, [wChannelSelector]
+	cp 4
+	jp z, .songEditorLoop
 	ld c, a
 	ld b, 0
 	ld hl, wChannelSelectorSwitches
@@ -481,8 +483,8 @@ DrawTranspositionInterval:
 	ld a, "-"
 .printnum
 	hlcoord 17, 1
-	ld [hl], a
-	lb bc, 1, 3
+	ld [hli], a
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	jp PrintNum
 
 .EmptyPitch: db "   @"
