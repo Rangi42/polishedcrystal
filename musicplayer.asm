@@ -199,13 +199,13 @@ RenderMusicPlayer:
 
 	call GetJoypad
 	jpbutton B_BUTTON, .exit
-	jpbutton D_LEFT, .left
-	jpbutton D_RIGHT, .right
-	jpbutton D_DOWN, .down
-	jpbutton D_UP, .up
-	jpbutton A_BUTTON, .a
-	jpbutton SELECT, .select
-	jpbutton START, .start
+	jrbutton D_LEFT, .left
+	jrbutton D_RIGHT, .right
+	jrbutton D_DOWN, .down
+	jrbutton D_UP, .up
+	jrbutton A_BUTTON, .a
+	jrbutton SELECT, .select
+	jrbutton START, .start
 
 	ld a, 2
 	ld [hBGMapThird], a ; prioritize refreshing the note display
@@ -292,12 +292,12 @@ RenderMusicPlayer:
 	call DrawNotes
 
 	call GetJoypad
-	jpbutton D_LEFT, .songEditorleft
-	jpbutton D_RIGHT, .songEditorright
-	jpbutton A_BUTTON, .songEditora
+	jrbutton D_LEFT, .songEditorleft
+	jrbutton D_RIGHT, .songEditorright
+	jrbutton A_BUTTON, .songEditora
 	jpbutton B_BUTTON | SELECT, .songEditorselectb
-	jpbutton D_UP, .songEditorup
-	jpbutton D_DOWN, .songEditordown
+	jrbutton D_UP, .songEditorup
+	jrbutton D_DOWN, .songEditordown
 	jpbutton START, .songEditorstart
 
 	ld a, 2
@@ -1386,12 +1386,12 @@ SongSelector:
 	call DelayFrame
 
 	call GetJoypad
-	jpbutton A_BUTTON, .a
-	jpbutton B_BUTTON | START, .exit
-	jpbutton D_DOWN, .down
-	jpbutton D_UP, .up
-	jpbutton D_LEFT, .left
-	jpbutton D_RIGHT, .right
+	jrbutton A_BUTTON, .a
+	jrbutton B_BUTTON | START, .exit
+	jrbutton D_DOWN, .down
+	jrbutton D_UP, .up
+	jrbutton D_LEFT, .left
+	jrbutton D_RIGHT, .right
 	jr .loop
 
 .a
