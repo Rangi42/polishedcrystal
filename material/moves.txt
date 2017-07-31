@@ -17,7 +17,6 @@ Slowpoke/Slowbro: Tri Attack
 
 HGSS tutor:
 Bellsprout/Weepinbell/Victreebel: Sucker Punch
-Caterpie/Metapod/Butterfree: Twister
 Chinchou/Lanturn: Heal Bell
 Dunsparce: Pain Split
 Jynx: Heal Bell

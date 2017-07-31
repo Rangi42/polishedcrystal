@@ -74,26 +74,29 @@ Shamouti Island:
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
 
-High-priority:
+High priority:
 
-* Aqua Tail
-* DazzlinGleam
-* Facade
 * Giga Impact
-* Gunk Shot
 * Stone Edge
 * Sucker Punch
 * U-turn
 * Water Pulse
 
-Low-priority:
+Low priority:
 
 * Aerial Ace
+* Aqua Tail
+* Bulldoze
+* Close Combat
+* DazzlinGleam
 * Disarm Voice
 * Earth Power
 * Extrasensory
+* Facade
+* Gunk Shot
 * Hex
-* Metal Sound
+* Roost
+* Toxic Spikes
 * Volt Switch
 
 

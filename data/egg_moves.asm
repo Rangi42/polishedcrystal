@@ -160,6 +160,7 @@ VenonatEggMoves:
 	db BATON_PASS
 	db MORNING_SUN
 	db SCREECH
+	db TOXIC_SPIKES
 	db $ff
 
 DiglettEggMoves:
@@ -201,6 +202,7 @@ MankeyEggMoves:
 	db COUNTER
 	db GUNK_SHOT
 	db NIGHT_SLASH
+	db CLOSE_COMBAT
 	db $ff
 
 GrowlitheEggMoves:
@@ -212,6 +214,7 @@ GrowlitheEggMoves:
 	db FLARE_BLITZ
 	db BODY_SLAM
 	db SAFEGUARD
+	db CLOSE_COMBAT
 	db $ff
 
 PoliwagEggMoves:
@@ -236,6 +239,7 @@ MachopEggMoves:
 	db BULK_UP
 	db LIGHT_SCREEN
 	db MACH_PUNCH
+	db CLOSE_COMBAT
 	db $ff
 
 BellsproutEggMoves:
@@ -286,6 +290,7 @@ FarfetchDEggMoves:
 	db QUICK_ATTACK
 	db STEEL_WING
 	db NIGHT_SLASH
+	db ROOST
 	db $ff
 
 DoduoEggMoves:
@@ -379,6 +384,7 @@ KoffingEggMoves:
 	db SCREECH
 	db DESTINY_BOND
 	db PAIN_SPLIT
+	db TOXIC_SPIKES
 	db $ff
 
 RhyhornEggMoves:
@@ -457,6 +463,7 @@ PinsirEggMoves:
 	db FLAIL
 	db FURY_ATTACK
 	db QUICK_ATTACK
+	db CLOSE_COMBAT
 	db $ff
 
 LaprasEggMoves:
@@ -477,6 +484,7 @@ OmanyteEggMoves:
 	db BUBBLE_BEAM
 	db HAZE
 	db SPIKES
+	db TOXIC_SPIKES
 	db SUPERSONIC
 	db WATER_PULSE
 	db $ff
@@ -497,6 +505,7 @@ AerodactylEggMoves:
 	db FORESIGHT
 	db PURSUIT
 	db STEEL_WING
+	db ROOST
 	db $ff
 
 DratiniEggMoves:
@@ -525,7 +534,7 @@ CyndaquilEggMoves:
 	db FORESIGHT
 	db FURY_SWIPES
 	db REVERSAL
-	db SUBMISSION
+	db CLOSE_COMBAT
 	db THRASH
 	db QUICK_ATTACK
 	db $ff
@@ -557,6 +566,7 @@ HoothootEggMoves:
 	db SUPERSONIC
 	db WING_ATTACK
 	db SKY_ATTACK
+	db MOONLIGHT
 	db $ff
 
 LedybaEggMoves:
@@ -576,6 +586,7 @@ SpinarakEggMoves:
 	db SONIC_BOOM
 	db POISON_JAB
 	db NIGHT_SLASH
+	db TOXIC_SPIKES
 	db $ff
 
 ChinchouEggMoves:
@@ -613,12 +624,13 @@ NatuEggMoves:
 	db QUICK_ATTACK
 	db STEEL_WING
 	db ZEN_HEADBUTT
+	db ROOST
 	db $ff
 
 MareepEggMoves:
 	db AGILITY
 	db REFLECT
-	db SAND_ATTACK
+	db MUD_SLAP
 	db SCREECH
 	db THUNDERBOLT
 	db TAKE_DOWN
@@ -658,6 +670,7 @@ MurkrowEggMoves:
 	db SCREECH
 	db WING_ATTACK
 	db SKY_ATTACK
+	db ROOST
 	db $ff
 
 MisdreavusEggMoves:
@@ -686,6 +699,7 @@ PinecoEggMoves:
 	db PIN_MISSILE
 	db SWIFT
 	db REFLECT
+	db TOXIC_SPIKES
 	db $ff
 
 DunsparceEggMoves:
@@ -715,6 +729,7 @@ SnubbullEggMoves:
 	db CRUNCH
 	db HEAL_BELL
 	db LICK
+	db CLOSE_COMBAT
 	db $ff
 
 QwilfishEggMoves:
@@ -755,6 +770,7 @@ TeddiursaEggMoves:
 	db COUNTER
 	db GUNK_SHOT
 	db NIGHT_SLASH
+	db CLOSE_COMBAT
 	db $ff
 
 SlugmaEggMoves:
