@@ -17,16 +17,11 @@ endr
 	ld b, [hl]
 	ld a, b
 	and RETVAR_EXECUTE
-	jr nz, .call
+	jp nz, _de_
 	ld a, b
 	and RETVAR_ADDR_DE
 	ret nz
 	ld a, [de]
-	jr .loadstringbuffer2
-
-.call
-	jp _de_
-
 .loadstringbuffer2 ; 8066c (20:466c)
 	ld de, StringBuffer2
 	ld [de], a
@@ -66,6 +61,7 @@ endr
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
 	dwb BattlePoints,                   RETVAR_ADDR_DE
 	dwb .CountPokemonJournals,          RETVAR_EXECUTE
+	dwb .CountTrainerStars,             RETVAR_EXECUTE
 	dwb NULL,                           RETVAR_STRBUF2
 ; 806c5
 
@@ -155,4 +151,51 @@ endr
 	ld b, PokemonJournalsEnd - PokemonJournals
 	call CountSetBits
 	ld a, [wd265]
+	jp .loadstringbuffer2
+
+.CountTrainerStars:
+	ld b, 0
+	; star for beating the Elite Four
+	push bc
+	ld de, EVENT_BEAT_ELITE_FOUR
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	pop bc
+	and a
+	jr z, .nostar1
+	inc b
+.nostar1
+	; star for beating Leaf
+	push bc
+	ld de, EVENT_BEAT_LEAF
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	pop bc
+	and a
+	jr z, .nostar2
+	inc b
+.nostar2
+	; star for completing the Pokédex
+	push bc
+	ld hl, PokedexCaught
+	ld b, EndPokedexCaught - PokedexCaught
+	call CountSetBits
+	pop bc
+	cp NUM_POKEMON
+	jr c, .nostar3
+	inc b
+.nostar3
+	; star for reading all Pokémon Journals
+	push bc
+	ld hl, PokemonJournals
+	ld b, PokemonJournalsEnd - PokemonJournals
+	call CountSetBits
+	pop bc
+	cp NUM_POKEMON_JOURNALS
+	jr c, .nostar4
+	inc b
+.nostar4
+	ld a, b
 	jp .loadstringbuffer2

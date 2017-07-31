@@ -43,6 +43,7 @@ Predef_LoadCGBLayout: ; 8d59
 	dw _CGB_PackPals
 	dw _CGB_TrainerCard
 	dw _CGB_TrainerCard2
+	dw _CGB_TrainerCard3
 	dw _CGB_PokedexUnownMode
 	dw _CGB_BillsPC
 	dw _CGB_UnownPuzzle
@@ -702,14 +703,39 @@ _CGB_PackPals: ; 93d3
 ; 9439
 
 
-_CGB_TrainerCard: ; 9289
-	ld de, UnknBGPals
+_CGB_TrainerCard:
+	call LoadFirstTwoTrainerCardPals
 
-	xor a ; CHRIS
-	call GetTrainerPalettePointer
+	ld hl, BronzeTrainerCardPals
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, KRIS ; also FALKNER
+	ld hl, SilverTrainerCardPals
+	call LoadPalette_White_Col1_Col2_Black
+
+	ld hl, GoldTrainerCardPals
+	call LoadPalette_White_Col1_Col2_Black
+
+	ld hl, CrystalTrainerCardPals
+	call LoadPalette_White_Col1_Col2_Black
+
+	; Trainer stars
+	hlcoord 2, 16, AttrMap
+	ld a, $2 ; bronze
+	ld [hli], a
+	inc a ; silver
+	ld [hli], a
+	inc a ; gold
+	ld [hli], a
+	inc a ; crystal
+	ld [hl], a
+
+	jp _CGB_FinishLayout
+
+
+_CGB_TrainerCard2: ; 9289
+	call LoadFirstTwoTrainerCardPals
+
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -725,15 +751,11 @@ _CGB_TrainerCard: ; 9289
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, CHUCK
+	ld a, JASMINE ; CHUCK
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, JASMINE
-	call GetTrainerPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld a, CLAIR ; also PRYCE
+	ld a, CLAIR ; PRYCE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -744,56 +766,34 @@ _CGB_TrainerCard: ; 9289
 	ld a, $5
 	call FarCopyWRAM
 
-	; Border
-	hlcoord 0, 0, AttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, [PlayerGender]
-	and a
-	ld a, $1
-	jr z, .got_gender
-	xor a
-.got_gender
-	call ByteFill
-
-	; Player
-	hlcoord 14, 1, AttrMap
-	lb bc, 7, 5
-	ld a, [PlayerGender]
-	and a
-	ld a, $0 ; not xor a; preserve carry flag
-	jr z, .got_gender2
-	ld a, $1
-.got_gender2
-	call FillBoxCGB
-
 	; Falkner
 	hlcoord 3, 10, AttrMap
 	lb bc, 3, 3
-	ld a, $1
+	ld a, $2
 	call FillBoxCGB
 
 	; Bugsy
 	hlcoord 7, 10, AttrMap
 	lb bc, 3, 3
-	ld a, $2
+	ld a, $3
 	call FillBoxCGB
 
 	; Whitney
 	hlcoord 11, 10, AttrMap
 	lb bc, 3, 3
-	ld a, $3
+	ld a, $4
 	call FillBoxCGB
 
 	; Morty
 	hlcoord 15, 10, AttrMap
 	lb bc, 3, 3
-	ld a, $4
+	ld a, $5
 	call FillBoxCGB
 
 	; Chuck
 	hlcoord 3, 13, AttrMap
 	lb bc, 3, 3
-	ld a, $5
+	ld a, $6
 	call FillBoxCGB
 
 	; Jasmine
@@ -818,25 +818,18 @@ _CGB_TrainerCard: ; 9289
 ; 9373
 
 
-_CGB_TrainerCard2:
-	ld de, UnknBGPals
-	xor a ; CHRIS
-	call GetTrainerPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-
-	ld a, KRIS
-	call GetTrainerPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
+_CGB_TrainerCard3:
+	call LoadFirstTwoTrainerCardPals
 
 	ld a, BROCK
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, SABRINA ; also BLAINE
+	ld a, SABRINA ; BLAINE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld a, ERIKA ; also LT_SURGE
+	ld a, ERIKA ; LT_SURGE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -858,28 +851,6 @@ _CGB_TrainerCard2:
 	ld bc, 8 palettes
 	ld a, $5
 	call FarCopyWRAM
-
-	; Border
-	hlcoord 0, 0, AttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, [PlayerGender]
-	and a
-	ld a, $1
-	jr z, .got_gender
-	xor a
-.got_gender
-	call ByteFill
-
-	; Player
-	hlcoord 14, 1, AttrMap
-	lb bc, 7, 5
-	ld a, [PlayerGender]
-	and a
-	ld a, $0 ; not xor a; preserve carry flag
-	jr z, .got_gender2
-	ld a, $1
-.got_gender2
-	call FillBoxCGB
 
 	; Lt.Surge
 	hlcoord 3, 10, AttrMap
@@ -930,6 +901,47 @@ _CGB_TrainerCard2:
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
+
+
+LoadFirstTwoTrainerCardPals:
+	; trainer card
+	ld c, VAR_TRAINER_STARS
+	farcall _GetVarAction
+	ld a, [StringBuffer2]
+	ld bc, TrainerCardPals
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, bc
+	ld de, UnknBGPals
+	call LoadPalette_White_Col1_Col2_Black
+
+	; player sprite
+	ld a, [PlayerGender]
+	and a
+	ld a, CHRIS
+	jr z, .got_gender
+	ld a, KRIS
+.got_gender
+	call GetTrainerPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+
+	push de
+	; border
+	hlcoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	xor a
+	call ByteFill
+
+	; player
+	hlcoord 14, 1, AttrMap
+	lb bc, 7, 5
+	ld a, $1
+	call FillBoxCGB
+
+	pop de
+	ret
 
 
 _CGB_PokedexUnownMode: ; 903e

@@ -1484,6 +1484,44 @@ endr
 endc
 
 
+TrainerCardPals:
+DefaultTrainerCardPals:
+if !DEF(MONOCHROME)
+	RGB 30, 24, 12
+	RGB 10, 18, 28
+else
+	MONOCHROME_RGB_TWO
+endc
+BronzeTrainerCardPals:
+if !DEF(MONOCHROME)
+	RGB 27, 17, 07
+	RGB 18, 11, 04
+else
+	MONOCHROME_RGB_TWO
+endc
+SilverTrainerCardPals:
+if !DEF(MONOCHROME)
+	RGB 21, 23, 25
+	RGB 13, 15, 17
+else
+	MONOCHROME_RGB_TWO
+endc
+GoldTrainerCardPals:
+if !DEF(MONOCHROME)
+	RGB 31, 25, 09
+	RGB 19, 14, 02
+else
+	MONOCHROME_RGB_TWO
+endc
+CrystalTrainerCardPals:
+if !DEF(MONOCHROME)
+	RGB 18, 26, 27
+	RGB 06, 17, 31
+else
+	MONOCHROME_RGB_TWO
+endc
+
+
 DiplomaPals:
 if !DEF(MONOCHROME)
 ; gray

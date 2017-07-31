@@ -92,6 +92,11 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 
+	ld b, SCGB_TRAINER_CARD
+	call GetSGBLayout
+	call SetPalettes
+	call WaitBGMap
+
 	ld de, CardStatusGFX
 	call TrainerCard_LoadHeaderGFX
 
@@ -118,7 +123,7 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 
-	ld b, SCGB_TRAINER_CARD
+	ld b, SCGB_TRAINER_CARD_2
 	call GetSGBLayout
 	call SetPalettes
 	call WaitBGMap
@@ -185,7 +190,7 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 
-	ld b, SCGB_TRAINER_CARD_2
+	ld b, SCGB_TRAINER_CARD_3
 	call GetSGBLayout
 	call SetPalettes
 	call WaitBGMap
@@ -386,48 +391,17 @@ TrainerCard_Page1_PrintDexCaught_GameTime: ; 2530a (9:530a)
 .have_bp
 
 ; trainer stars
+	ld c, VAR_TRAINER_STARS
+	farcall _GetVarAction
+	ld a, [StringBuffer2]
 	hlcoord 2, 16
-	push hl
-	ld de, EVENT_BEAT_ELITE_FOUR
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	pop hl
-	ld a, c
-	and a
-	jr z, .nostar1
-	ld a, $28
-	ld [hli], a ; beat the Elite 4
-.nostar1
-	push hl
-	ld de, EVENT_BEAT_LEAF
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	pop hl
-	ld a, c
-	and a
-	jr z, .nostar2
-	ld a, $28
-	ld [hli], a ; beat Leaf
-.nostar2
-	push hl
-	ld hl, PokedexCaught
-	ld b, EndPokedexCaught - PokedexCaught
-	call CountSetBits
-	pop hl
-	cp NUM_POKEMON
-	jr c, .nostar3
-	ld a, $28
-	ld [hli], a ; complete Pokédex
-.nostar3
-	push hl
-	ld hl, PokemonJournals
-	ld b, PokemonJournalsEnd - PokemonJournals
-	call CountSetBits
-	pop hl
-	cp NUM_POKEMON_JOURNALS
-	ret c
-	ld [hl], $28 ; read all Pokémon Journals
-	ret
+.star_loop
+	dec a
+	cp -1
+	ret z
+	ld [hl], $28
+	inc hl
+	jr .star_loop
 
 .Dex_PlayTime_BP:
 	db   "#dex"
