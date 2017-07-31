@@ -4406,7 +4406,7 @@ MantineEvosAttacks:
 	db 27, TAKE_DOWN
 	db 32, AGILITY
 	db 36, AIR_SLASH
-	db 39, RECOVER ; Aqua Ring → similar move
+	db 39, ROOST ; Aqua Ring → similar move
 	db 46, MIRROR_COAT ; Bounce → Dream World move
 	db 49, HYDRO_PUMP
 	db 0 ; no more level-up moves
