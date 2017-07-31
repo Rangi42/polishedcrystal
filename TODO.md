@@ -64,6 +64,7 @@ Shamouti Island:
 
 ### Move effects
 
+* Spikes and Toxic Spikes can be layered
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
