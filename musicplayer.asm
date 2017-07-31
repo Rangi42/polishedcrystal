@@ -32,12 +32,12 @@ MusicPlayerPals:
 if !DEF(MONOCHROME)
 	RGB 02, 03, 04
 	RGB 02, 03, 04
-	RGB 26, 28, 30
+	RGB 10, 12, 14
 	RGB 26, 28, 30
 else
 	RGB_MONOCHROME_BLACK
 	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
 endc
 
@@ -611,12 +611,12 @@ _DrawCh1_2_3:
 	call CheckChannelOn
 	ld a, 0
 	ld hl, NoteNames
-	jr c, .not_playing
+	jr c, .blank_note_name
 	call GetPitchAddr
 	ld a, [hl]
 	ld hl, NoteNames
 	call GetNthString
-.not_playing
+.blank_note_name
 	ld e, l
 	ld d, h
 	pop hl
@@ -664,22 +664,19 @@ _DrawCh1_2_3:
 	call CheckChannelOn
 	pop hl
 	ld a, 0 ; not xor a; preserve carry flag
-	jr c, .not_playing_2
-
+	jr c, .blank_volume
 	push hl
 	call GetPitchAddr
 	ld a, [hl]
 	and a
 	pop hl
 	ld a, 0 ; not xor a; preserve carry flag
-	jr z, .not_playing_2
-
+	jr z, .blank_volume
 	push hl
 	call GetIntensityAddr
 	ld a, [hl]
 	pop hl
-
-.not_playing_2
+.blank_volume
 	and $f
 	srl a
 	add $d9
@@ -721,8 +718,9 @@ endr
 	ld bc, 16
 	ld a, BANK(WaveSamples)
 	call FarCopyBytes ; copy bc bytes from a:hl to de
+
 	ld hl, TempMPWaveform
-	ld bc, BOXMON_STRUCT_LENGTH
+	ld bc, 2 tiles
 	xor a
 	call ByteFill
 
@@ -763,14 +761,14 @@ endr
 	inc de
 	inc b
 	ld a, b
-	cp $11
+	cp TILE_WIDTH * 2 + 1
 	jr z, .done
-	cp $9
+	cp TILE_WIDTH + 1
 	jr nc, .tile2
 	ld hl, TempMPWaveform
 	jr .loop
 .tile2
-	ld hl, TempMPWaveform + 16
+	ld hl, TempMPWaveform + 1 tiles
 	jr .loop
 .done
 	ld hl, VTiles2 tile $40

@@ -260,7 +260,11 @@ UnknownText_0x6a3e2:
 	cont "est bug #mon"
 	cont "is the winner."
 
+if DEF(NO_RTC)
+	para "You have 120"
+else
 	para "You have 20"
+endc
 	line "minutes."
 
 	para "If you run out of"

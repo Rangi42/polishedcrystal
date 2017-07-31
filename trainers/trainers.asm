@@ -141,21 +141,21 @@ FalknerGroup:
 
 	db 11, PIDGEY, NO_ITEM, 16
 		db TACKLE
-		db SAND_ATTACK
-		db GUST
 		db MUD_SLAP
+		db GUST
+		db ROOST
 
 	db 11, HOOTHOOT, NO_ITEM, 16
 		db TACKLE
 		db HYPNOSIS
 		db CONFUSION
-		db MUD_SLAP
+		db ROOST
 
 	db 13, PIDGEOTTO, LUM_BERRY, 16
-		db QUICK_ATTACK
-		db SAND_ATTACK
-		db GUST
 		db MUD_SLAP
+		db GUST
+		db QUICK_ATTACK
+		db ROOST
 
 	db $ff ; end
 
@@ -201,7 +201,7 @@ FalknerGroup:
 		db HURRICANE
 		db TWISTER
 		db STEEL_WING
-		db ROAR
+		db ROOST
 
 	db $ff ; end
 
@@ -284,7 +284,7 @@ endc
 	db 75, PINSIR, SCOPE_LENS, ABILITY_1 | QUIRKY, MALE
 		db MEGAHORN
 		db SWORDS_DANCE
-		db SUBMISSION
+		db CLOSE_COMBAT
 		db EARTHQUAKE
 
 	db 75, SCYTHER, EVIOLITE, ABILITY_1 | QUIRKY, FEMALE
@@ -566,7 +566,7 @@ endc
 	db 72, HITMONTOP, KINGS_ROCK
 		db RAPID_SPIN
 		db TOXIC
-		db SUBMISSION
+		db CLOSE_COMBAT
 		db TRIPLE_KICK
 
 	db 75, POLIWRATH, LEFTOVERS
@@ -592,7 +592,7 @@ JasmineGroup:
 	; party
 
 	db 34, SKARMORY, NO_ITEM, 96
-		db SAND_ATTACK
+		db MUD_SLAP
 		db DRILL_PECK
 		db SPIKES
 		db STEEL_WING
@@ -633,7 +633,7 @@ JasmineGroup:
 
 	db 74, SKARMORY, LEFTOVERS, $EE, $EE, $EE
 		db SPIKES
-		db METAL_SOUND
+		db SCREECH
 		db DRILL_PECK
 		db STEEL_WING
 
@@ -1105,11 +1105,7 @@ BrunoGroup:
 		db SWORDS_DANCE
 		db EARTHQUAKE
 		db MEGAHORN
-if DEF(FAITHFUL)
-		db SUBMISSION
-else
-		db STRENGTH
-endc
+		db CLOSE_COMBAT
 
 	db 51, HITMONLEE, FOCUS_BAND, 220
 		db SUCKER_PUNCH
@@ -1155,11 +1151,7 @@ endc
 		db SWORDS_DANCE
 		db EARTHQUAKE
 		db MEGAHORN
-if DEF(FAITHFUL)
-		db SUBMISSION
-else
-		db STRENGTH
-endc
+		db CLOSE_COMBAT
 
 	db 70, HITMONLEE, FOCUS_BAND
 		db BULK_UP
@@ -1202,7 +1194,7 @@ KarenGroup:
 	; party
 
 	db 53, UMBREON, LEFTOVERS, 240
-		db SAND_ATTACK
+		db MUD_SLAP
 		db CONFUSE_RAY
 		db FEINT_ATTACK
 		db MEAN_LOOK
@@ -1908,7 +1900,7 @@ SabrinaGroup:
 	; party
 
 	db 61, ESPEON, NO_ITEM, 160
-		db SAND_ATTACK
+		db MUD_SLAP
 		db QUICK_ATTACK
 		db SWIFT
 		db PSYCHIC_M
@@ -2421,7 +2413,7 @@ Rival1Group:
 		db REFLECT
 		db RAZOR_LEAF
 		db POISONPOWDER
-		db FAIRY_WIND
+		db DISARM_VOICE
 
 	db $ff ; end
 
@@ -4593,7 +4585,7 @@ TwinsGroup:
 		db GROWL
 		db THUNDER_WAVE
 		db THUNDERSHOCK
-		db SAND_ATTACK
+		db MUD_SLAP
 
 	db $ff ; end
 
@@ -4609,7 +4601,7 @@ TwinsGroup:
 		db GROWL
 		db THUNDER_WAVE
 		db THUNDERSHOCK
-		db SAND_ATTACK
+		db MUD_SLAP
 
 	db 16, MARILL
 		db DEFENSE_CURL
@@ -4880,7 +4872,7 @@ FisherGroup:
 		db RAIN_DANCE
 		db HYPNOSIS
 		db WATERFALL
-		db SUBMISSION
+		db CLOSE_COMBAT
 
 	db 43, QWILFISH
 		db ROLLOUT
@@ -5560,7 +5552,7 @@ BirdKeeperGroup:
 		db GUST
 		db QUICK_ATTACK
 		db RAGE
-		db SAND_ATTACK
+		db MUD_SLAP
 
 	db 24, PIDGEOTTO
 		db GUST
@@ -10098,8 +10090,8 @@ RichBoyGroup:
 	db 17, SYLVEON, KINGS_ROCK, $EE, $EE, $EE, ABILITY_2 | QUIRKY, FEMALE
 		db HEADBUTT
 		db ATTRACT
-		db SAND_ATTACK
-		db FAIRY_WIND
+		db MUD_SLAP
+		db DISARM_VOICE
 
 	db $ff ; end
 
@@ -10406,7 +10398,7 @@ SailorGroup:
 		db SURF
 		db STRENGTH
 		db ICE_PUNCH
-		db SUBMISSION
+		db CLOSE_COMBAT
 
 	db $ff ; end
 
@@ -10855,7 +10847,7 @@ SwimmerMGroup:
 		db AQUA_TAIL
 		db PLAY_ROUGH
 		db ROLLOUT
-		db SUBMISSION
+		db CLOSE_COMBAT
 
 	db $ff ; end
 
@@ -13209,7 +13201,7 @@ CooltrainerMGroup:
 		db PROTECT
 
 	db 39, FLAREON
-		db SAND_ATTACK
+		db MUD_SLAP
 		db QUICK_ATTACK
 		db BITE
 		db FIRE_SPIN
@@ -13237,7 +13229,7 @@ CooltrainerMGroup:
 		db PROTECT
 
 	db 41, FLAREON
-		db SAND_ATTACK
+		db MUD_SLAP
 		db QUICK_ATTACK
 		db BITE
 		db FIRE_SPIN
@@ -13346,7 +13338,7 @@ CooltrainerMGroup:
 	; party
 
 	db 35, PIDGEOT
-		db SAND_ATTACK
+		db MUD_SLAP
 		db QUICK_ATTACK
 		db ROAR
 		db AERIAL_ACE
@@ -13515,9 +13507,9 @@ CooltrainerMGroup:
 
 	db 9, MAREEP, AIR_BALLOON, 12, $DD, $DD, $DD, ABILITY_1 | RASH, MALE
 		db TACKLE
-		db SAND_ATTACK
 		db THUNDER_WAVE
 		db THUNDERSHOCK
+		db MUD_SLAP
 
 	db $ff ; end
 
@@ -15329,7 +15321,7 @@ StevenGroup:
 
 	db 61, SKARMORY, QUICK_CLAW
 		db SPIKES
-		db METAL_SOUND
+		db SCREECH
 		db DRILL_PECK
 		db STEEL_WING
 
@@ -15389,7 +15381,7 @@ endc
 
 	db 78, SKARMORY, QUICK_CLAW
 		db SPIKES
-		db METAL_SOUND
+		db SCREECH
 		db DRILL_PECK
 		db STEEL_WING
 
@@ -16168,7 +16160,7 @@ ValerieGroup:
 	db 38, TOGETIC, NO_ITEM, 112
 		db ANCIENTPOWER
 		db SOFTBOILED
-		db FAIRY_WIND
+		db DISARM_VOICE
 		db ENCORE
 
 	db 40, SYLVEON, SITRUS_BERRY, 112
@@ -16209,7 +16201,7 @@ ValerieGroup:
 		db PLAY_ROUGH
 		db WATERFALL
 		db DIZZY_PUNCH
-		db SUBMISSION
+		db CLOSE_COMBAT
 
 	db 58, TOGEKISS, WISE_GLASSES, 160
 		db AURA_SPHERE
@@ -16255,7 +16247,7 @@ ValerieGroup:
 		db PLAY_ROUGH
 		db WATERFALL
 		db RETURN
-		db SUBMISSION
+		db CLOSE_COMBAT
 
 	db 74, TOGEKISS, WISE_GLASSES
 		db AURA_SPHERE
@@ -16532,7 +16524,7 @@ WalkerGroup:
 	; party
 
 	db 75, SKARMORY, LEFTOVERS
-		db METAL_SOUND
+		db SCREECH
 		db SPIKES
 		db DRILL_PECK
 		db NIGHT_SLASH

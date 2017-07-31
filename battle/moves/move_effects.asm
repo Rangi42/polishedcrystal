@@ -13,7 +13,6 @@ DrillPeck:
 EggBomb:
 Extremespeed:
 FeintAttack:
-FairyWind:
 HiJumpKick:
 HornAttack:
 HydroPump:
@@ -175,7 +174,6 @@ IcicleSpear:
 RecoilHit:
 DoubleEdge:
 Struggle:
-Submission:
 TakeDown:
 WildCharge:
 	checkobedience
@@ -528,6 +526,7 @@ RockSmash:
 SpeedDownHit:
 IcyWind:
 BubbleBeam:
+Bulldoze:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1084,7 +1083,6 @@ SpecialDefenseDown:
 	endmove
 
 AccuracyDown:
-SandAttack:
 Smokescreen:
 Flash:
 	checkobedience
@@ -1180,7 +1178,6 @@ SpecialAttackDown2:
 	endmove
 
 SpecialDefenseDown2:
-MetalSound:
 	checkobedience
 	usedmovetext
 	doturn

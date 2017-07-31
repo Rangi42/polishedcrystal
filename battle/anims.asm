@@ -27,7 +27,7 @@ BattleAnimations::
 	dw BattleAnim_FlareBlitz
 	dw BattleAnim_StoneEdge
 	dw BattleAnim_FocusBlast
-	dw BattleAnim_SandAttack
+	dw BattleAnim_ToxicSpikes
 	dw BattleAnim_Headbutt
 	dw BattleAnim_HornAttack
 	dw BattleAnim_FuryAttack
@@ -65,7 +65,7 @@ BattleAnimations::
 	dw BattleAnim_HyperBeam
 	dw BattleAnim_Peck
 	dw BattleAnim_DrillPeck
-	dw BattleAnim_Submission
+	dw BattleAnim_CloseCombat
 	dw BattleAnim_LowKick
 	dw BattleAnim_Counter
 	dw BattleAnim_SeismicToss
@@ -131,9 +131,9 @@ BattleAnimations::
 	dw BattleAnim_Swift
 	dw BattleAnim_IronHead
 	dw BattleAnim_IcicleSpear
-	dw BattleAnim_FairyWind
+	dw BattleAnim_Bulldoze
 	dw BattleAnim_CalmMind
-	dw BattleAnim_MetalSound
+	dw BattleAnim_Roost
 	dw BattleAnim_Softboiled
 	dw BattleAnim_HiJumpKick
 	dw BattleAnim_Glare
@@ -1396,20 +1396,6 @@ BattleAnim_Gust:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_FairyWind:
-BattleAnim_SweetScent2: ; removed
-	anim_2gfx ANIM_GFX_FLOWER, ANIM_GFX_MISC
-	anim_obj ANIM_OBJ_FLOWER,   8, 0,  12, 0, $2
-	anim_wait 2
-	anim_obj ANIM_OBJ_FLOWER,   8, 0,  10, 0, $2
-	anim_wait 64
-	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $15
-	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $2a
-	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $3f
-	anim_bgeffect ANIM_BG_06, $0, $2, $0
-	anim_wait 128
-	anim_ret
-
 BattleAnim_Selfdestruct:
 	anim_1gfx ANIM_GFX_EXPLOSION
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $24
@@ -1737,6 +1723,7 @@ BattleAnim_DoubleTeam:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
+BattleAnim_Roost: ; TODO: design custom animation for Roost
 BattleAnim_Recover:
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -1977,7 +1964,6 @@ BattleAnim_Supersonic:
 	anim_ret
 
 BattleAnim_Screech:
-BattleAnim_MetalSound: ; TODO: design custom animation for Metal Sound
 	anim_1gfx ANIM_GFX_PSYCHIC
 	anim_bgeffect ANIM_BG_1F, $8, $1, $20
 	anim_sound 6, 2, SFX_SCREECH
@@ -2067,8 +2053,8 @@ BattleAnim_MindReader: ; removed
 	anim_wait 32
 	anim_ret
 
-BattleAnim_DizzyPunch:
 BattleAnim_UTurn: ; TODO: design custom animation for U-Turn
+BattleAnim_DizzyPunch:
 	anim_2gfx ANIM_GFX_STATUS, ANIM_GFX_HIT
 	anim_sound 0, 1, SFX_MEGA_PUNCH
 	anim_obj ANIM_OBJ_00, -15, 0,   5, 0, $0
@@ -2091,8 +2077,8 @@ BattleAnim_Rest:
 	anim_wait 32
 	anim_ret
 
-BattleAnim_Splash:
 BattleAnim_Facade: ; TODO: design custom animation for Facade
+BattleAnim_Splash:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_VICEGRIP
 	anim_call BattleAnim_FollowPlayerHead_0
@@ -2128,11 +2114,6 @@ BattleAnim_Dig:
 .fail
 	anim_bgeffect ANIM_BG_ENTER_MON, $0, $1, $0
 	anim_wait 32
-	anim_ret
-
-BattleAnim_SandAttack:
-	anim_1gfx ANIM_GFX_SAND
-	anim_call BattleAnim_SandAttack_branch_cbc5b
 	anim_ret
 
 BattleAnim_StringShot:
@@ -2250,7 +2231,8 @@ BattleAnim_DoubleEdge:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Submission:
+BattleAnim_CloseCombat: ; TODO: design new animation for Close Combat
+BattleAnim_Submission: ; removed
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_FollowEnemyFeet_1
 	anim_bgeffect ANIM_BG_26, $0, $0, $0
@@ -2319,17 +2301,6 @@ BattleAnim_Mist:
 	anim_sound 0, 0, SFX_SURF
 .loop
 	anim_obj ANIM_OBJ_5C,   6, 0,   7, 0, $0
-	anim_wait 8
-	anim_loop 10, .loop
-	anim_wait 96
-	anim_ret
-
-BattleAnim_GunkShot: ; TODO: design new animation for Gunk Shot
-BattleAnim_Smog: ; removed
-	anim_1gfx ANIM_GFX_HAZE
-	anim_sound 0, 1, SFX_BUBBLE_BEAM
-.loop
-	anim_obj ANIM_OBJ_5D, -16, 4,   2, 0, $0
 	anim_wait 8
 	anim_loop 10, .loop
 	anim_wait 96
@@ -2586,8 +2557,8 @@ BattleAnim_NightSlash:
 	anim_bgp $e4
 	anim_ret
 
-BattleAnim_Flash:
 BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam
+BattleAnim_Flash:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 1, SFX_FLASH
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
@@ -3542,8 +3513,8 @@ BattleAnim_ScaryFace:
 	anim_wait 64
 	anim_ret
 
-BattleAnim_FeintAttack:
 BattleAnim_SuckerPunch: ; TODO: design custom animation for Sucker Punch
+BattleAnim_FeintAttack:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_CURSE
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -3614,6 +3585,7 @@ BattleAnim_BellyDrum:
 	anim_wait 12
 	anim_ret
 
+BattleAnim_GunkShot: ; TODO: design new animation for Gunk Shot
 BattleAnim_SludgeBomb:
 	anim_2gfx ANIM_GFX_EGG, ANIM_GFX_POISON
 	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
@@ -3646,6 +3618,7 @@ BattleAnim_Octazooka:
 .done
 	anim_ret
 
+BattleAnim_ToxicSpikes: ; TODO: design new animation for Toxic Spikes
 BattleAnim_Spikes:
 	anim_1gfx ANIM_GFX_MISC
 	anim_sound 6, 2, SFX_MENU
@@ -3950,6 +3923,7 @@ BattleAnim_Charm:
 	anim_wait 4
 	anim_ret
 
+BattleAnim_Bulldoze: ; TODO: design new animation for Bulldoze
 BattleAnim_Rollout:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_SPARK
@@ -4990,7 +4964,6 @@ BattleAnim_BulletPunch_branch_cbc43:
 	anim_ret
 
 BattleAnim_MudSlap_branch_cbc5b:
-BattleAnim_SandAttack_branch_cbc5b:
 .loop
 	anim_sound 6, 2, SFX_MENU
 	anim_obj ANIM_OBJ_58,   8, 0,  11, 4, $4
@@ -5544,6 +5517,16 @@ BattleAnim_ShowMon_1:
 ;	anim_wait 16
 ;	anim_ret
 
+;BattleAnim_Smog: ; removed
+;	anim_1gfx ANIM_GFX_HAZE
+;	anim_sound 0, 1, SFX_BUBBLE_BEAM
+;.loop
+;	anim_obj ANIM_OBJ_5D, -16, 4,   2, 0, $0
+;	anim_wait 8
+;	anim_loop 10, .loop
+;	anim_wait 96
+;	anim_ret
+
 ;BattleAnim_Slam: ; removed
 ;	anim_1gfx ANIM_GFX_HIT
 ;	anim_sound 0, 1, SFX_WING_ATTACK
@@ -5563,4 +5546,17 @@ BattleAnim_ShowMon_1:
 ;	anim_incobj  2
 ;	anim_incbgeffect ANIM_BG_18
 ;	anim_call BattleAnim_ShowMon_0
+;	anim_ret
+
+;BattleAnim_SweetScent2: ; removed
+;	anim_2gfx ANIM_GFX_FLOWER, ANIM_GFX_MISC
+;	anim_obj ANIM_OBJ_FLOWER,   8, 0,  12, 0, $2
+;	anim_wait 2
+;	anim_obj ANIM_OBJ_FLOWER,   8, 0,  10, 0, $2
+;	anim_wait 64
+;	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $15
+;	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $2a
+;	anim_obj ANIM_OBJ_COTTON, -15, 0,   5, 0, $3f
+;	anim_bgeffect ANIM_BG_06, $0, $2, $0
+;	anim_wait 128
 ;	anim_ret
