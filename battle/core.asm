@@ -1094,9 +1094,9 @@ HandleResidualDamage:
 	ld de, EnemyToxicCount
 .check_toxic
 
-	ld a, BATTLE_VARS_SUBSTATUS2
+	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	bit SUBSTATUS_TOXIC, a
+	bit TOX, a
 	jr z, .did_toxic
 	call GetSixteenthMaxHP
 	ld a, [de]
@@ -3473,6 +3473,7 @@ endr
 	ld [EnemyDisableCount], a
 	ld [EnemyFuryCutterCount], a
 	ld [EnemyProtectCount], a
+	ld [EnemyToxicCount], a
 	ld [wEnemyRageCounter], a
 	ld [EnemyDisabledMove], a
 	ld [wEnemyMinimized], a
@@ -3842,6 +3843,7 @@ endr
 	ld [PlayerDisableCount], a
 	ld [PlayerFuryCutterCount], a
 	ld [PlayerProtectCount], a
+	ld [PlayerToxicCount], a
 	ld [wPlayerRageCounter], a
 	ld [DisabledMove], a
 	ld [wPlayerMinimized], a
@@ -3873,6 +3875,18 @@ HandleFirstAirBalloon:
 	pop af
 	ld [hBattleTurn], a
 	ret
+
+RemoveToxicAfterBattle::
+; removes toxic from mons after battle
+	ld a, [PartyMons]
+	ld hl, PartyMon1Status
+	ld bc, PARTYMON_STRUCT_LENGTH
+.loop
+	sub 1
+	ret c
+	res TOX, [hl]
+	add hl, bc
+	jr .loop
 
 RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
@@ -4010,22 +4024,20 @@ SpikesDamage_GotAbility:
 	ret nz
 
 	ld a, [hl]
-	ld hl, WasPoisonedText
 	and SCREENS_TOXIC_SPIKES
 	cp (SCREENS_TOXIC_SPIKES / 3) * 2
+	ld a, 1 << PSN
+	ld hl, WasPoisonedText
 	jr nz, .no_toxic
+	or 1 << TOX
 	ld hl, BadlyPoisonedText
-	push hl
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	set SUBSTATUS_TOXIC, [hl]
-	pop hl
 .no_toxic
 	push bc
 	push hl
+	push af
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
-	ld a, 1 << PSN
+	pop af
 	ld [hl], a
 	ld de, ANIM_PSN
 	call Call_PlayBattleAnim
@@ -4195,7 +4207,7 @@ HandleStatusOrbs:
 	ld b, 1 << BRN
 	jr z, .burn
 	cp HELD_SELF_PSN
-	ld b, 1 << PSN
+	ld b, 1 << PSN | 1 << TOX
 	jr z, .poison
 	ret
 .poison
@@ -4204,9 +4216,6 @@ HandleStatusOrbs:
 	farcall CanPoisonTarget
 	pop bc
 	ret nz
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVarAddr
-	set SUBSTATUS_TOXIC, [hl]
 	ld de, ANIM_PSN
 	ld hl, BadlyPoisonedText
 	jr .do_status
@@ -4393,10 +4402,6 @@ UseHeldStatusHealingItem: ; 3dde9
 	push bc
 	call UpdateUserInParty
 	pop bc
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	and [hl]
-	res SUBSTATUS_TOXIC, [hl]
 	ld a, b
 	cp ALL_STATUS
 	jr nz, .skip_confuse

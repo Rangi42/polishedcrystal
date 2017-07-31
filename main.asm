@@ -4334,11 +4334,8 @@ endr
 	ret
 
 GetStatusConditionIndex:
-; a is the SubStatus2 value, for checking Toxic
 ; de points to status, e.g. from a party_struct or battle_struct
-; return the status condition index in b
-	bit SUBSTATUS_TOXIC, a
-	jr nz, .tox
+; return the status condition index in a
 	push de
 	inc de
 	inc de
@@ -4350,41 +4347,37 @@ GetStatusConditionIndex:
 	pop de
 	jr z, .fnt
 	ld a, [de]
-	bit PSN, a
-	jr nz, .psn
-	bit PAR, a
-	jr nz, .par
-	bit BRN, a
-	jr nz, .brn
-	bit FRZ, a
-	jr nz, .frz
+	ld b, a
 	and SLP
+	ld a, 0
 	jr nz, .slp
-.ok
 	xor a
-	jr .done
-.psn
-	ld a, 1
-	jr .done
-.par
-	ld a, 2
-	jr .done
-.slp
-	ld a, 3
-	jr .done
-.brn
-	ld a, 4
-	jr .done
-.frz
-	ld a, 5
-	jr .done
-.fnt
-	ld a, 6
+	bit TOX, b
+	jr nz, .tox
+	bit PSN, b
+	jr nz, .psn
+	bit PAR, b
+	jr nz, .par
+	bit BRN, b
+	jr nz, .brn
+	bit FRZ, b
+	jr nz, .frz
 	jr .done
 .tox
-	ld a, 7
+	inc a
+.fnt
+	inc a
+.frz
+	inc a
+.brn
+	inc a
+.slp
+	inc a
+.par
+	inc a
+.psn
+	inc a
 .done
-	ld b, a
 	ret
 
 PlaceStatusString: ; 50d0a

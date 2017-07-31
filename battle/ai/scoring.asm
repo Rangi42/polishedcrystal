@@ -625,8 +625,8 @@ AI_Smart_EvasionUp: ; 388d4
 	jr nc, .asm_388f2
 
 ; ...greatly encourage this move if player is badly poisoned.
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_388ef
 
 ; ...70% chance to greatly encourage this move if player is not badly poisoned.
@@ -676,8 +676,8 @@ endr
 ; 100% chance to end up here if enemy's HP is below 25%.
 ; In other words, we only end up here if the move has not been encouraged or dismissed.
 .asm_38911
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_38938
 
 	ld a, [PlayerSubStatus4]
@@ -808,8 +808,8 @@ AI_Smart_AccuracyDown: ; 38985
 	jr nc, .asm_389a0
 
 ; ...greatly encourage this move if player is badly poisoned.
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_3899d
 
 ; ...70% chance to greatly encourage this move if player is not badly poisoned.
@@ -855,8 +855,8 @@ endr
 
 ; We only end up here if the move has not been already encouraged.
 .asm_389bf
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_389e6
 
 	ld a, [PlayerSubStatus4]
@@ -1055,8 +1055,8 @@ AI_Smart_Bind: ; 38a71
 
 ; 50% chance to greatly encourage this move if player is either
 ; badly poisoned, in love, identified, or stuck in Rollout.
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_38a91
 
 	ld a, [PlayerSubStatus1]
@@ -1823,8 +1823,8 @@ AI_Smart_MeanLook: ; 38dfb
 	jp z, AIDiscourageMove
 
 ; 80% chance to greatly encourage this move if the player is badly poisoned
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_38e26
 
 ; 80% chance to greatly encourage this move if the player is either
@@ -1999,8 +1999,8 @@ AI_Smart_Protect: ; 38ed2
 	bit SUBSTATUS_CHARGED, a
 	jr nz, .asm_38f0d
 
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [BattleMonStatus]
+	bit TOX, a
 	jr nz, .asm_38f0d
 	ld a, [PlayerSubStatus4]
 	bit SUBSTATUS_LEECH_SEED, a

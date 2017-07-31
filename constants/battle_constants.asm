@@ -296,8 +296,9 @@ const_value SET 3
 	const BRN
 	const FRZ
 	const PAR
+	const TOX
 
-ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
+ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + (1 << TOX) + SLP
 
 ; substatus
 	enum_start 7, -1
@@ -318,7 +319,6 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	enum SUBSTATUS_TRANSFORMED
 	enum SUBSTATUS_MAGIC_BOUNCE
 	enum SUBSTATUS_UNKNOWN_3
-	enum SUBSTATUS_TOXIC
 
 	enum_start 7, -1
 	enum SUBSTATUS_CONFUSED

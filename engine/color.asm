@@ -78,7 +78,6 @@ LoadPlayerStatusIconPalette:
 	ld de, BattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPals
-	ld a, b
 	ld c, a
 	ld b, 0
 rept 2
@@ -94,7 +93,6 @@ LoadEnemyStatusIconPalette:
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPals
-	ld a, b
 	ld c, a
 	ld b, 0
 rept 2

@@ -5093,19 +5093,19 @@ CanStatusTarget:
 	ld hl, ButItFailedText
 	ret
 .already_statused
-	cp 1 << BRN
+	bit BRN, a
 	ld hl, AlreadyBurnedText
-	jr z, .end
-	cp 1 << PSN
+	jr nz, .end
+	bit PSN, a
 	ld hl, AlreadyPoisonedText
-	jr z, .end
-	cp 1 << PAR
+	jr nz, .end
+	bit PAR, a
 	ld hl, AlreadyParalyzedText
-	jr z, .end
+	jr nz, .end
 	; Shouldn't happen
-	cp 1 << FRZ
+	bit FRZ, a
 	ld hl, AlreadyConfusedText ; no AlreadyFrozen
-	jr z, .end
+	jr nz, .end
 	ld hl, AlreadyAsleepText
 	jr .end
 .cant_type
@@ -5179,7 +5179,7 @@ BattleCommand_Poison:
 	jr .finished
 
 .toxic
-	set SUBSTATUS_TOXIC, [hl]
+	set TOX, [hl]
 	xor a
 	ld [de], a
 	call .apply_poison
@@ -5211,7 +5211,7 @@ BattleCommand_Poison:
 
 
 .check_toxic ; 35fc9
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	ld a, [hBattleTurn]
 	and a
@@ -7722,9 +7722,6 @@ BattleCommand_Heal:
 	pop af
 	jr z, .ability_prevents_rest
 	call BattleCommand_MoveDelay
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_TOXIC, [hl]
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	ld a, [hl]

@@ -83,10 +83,6 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	and [hl]
-	res SUBSTATUS_TOXIC, [hl]
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
@@ -1556,7 +1552,7 @@ ShedSkinAbility:
 	; fallthrough
 NaturalCureAbility:
 HealAllStatusAbility:
-	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
+	ld a, ALL_STATUS
 	jp HealStatusAbility
 
 AngerPointAbility:

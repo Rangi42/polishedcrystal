@@ -327,8 +327,8 @@ AI_Items: ; 39196
 	jp .DontUse
 
 .StatusCheckContext:
-	ld a, [EnemySubStatus2]
-	bit SUBSTATUS_TOXIC, a
+	ld a, [EnemyMonStatus]
+	bit TOX, a
 	jr z, .FailToxicCheck
 	ld a, [EnemyToxicCount]
 	cp 4
@@ -726,8 +726,6 @@ AI_HealStatus: ; 384e0
 	xor a
 	ld [hl], a
 	ld [EnemyMonStatus], a
-	ld hl, EnemySubStatus2
-	res SUBSTATUS_TOXIC, [hl]
 	ld hl, EnemySubStatus3
 	res SUBSTATUS_CONFUSED, [hl]
 	ret
