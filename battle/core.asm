@@ -248,6 +248,7 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleHealingItems
 	farcall HandleAbilities
 	call HandleStatusOrbs
+	call HandleRoost
 	call UpdateBattleMonInParty
 	call LoadTileMapToTempTileMap
 	jp HandleEncore
@@ -3910,41 +3911,139 @@ SpikesDamage_CheckMoldBreaker:
 ; Called when a Pokémon with Mold Breaker uses Roar/Whirlwind.
 ; This is neccessary because it negates Levitate (but not Magic Guard for some reason),
 ; but can't be checked unconditionally since other kind of switches ignore MB as usual.
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
-	cp MOLD_BREAKER
-	jr z, SpikesDamage_SkipLevitate
+	call SwitchTurn
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	call SwitchTurn
+	ld c, 1
+	jr SpikesDamage_GotAbility
 SpikesDamage: ; 3dc23
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	cp LEVITATE
-	jr z, HandleAirBalloon ; still print the message even if we have levitate
-SpikesDamage_SkipLevitate:
+	ld b, a
+	ld c, 0
+SpikesDamage_GotAbility:
+; Input: b: ability, c: 1 if forced out, 0 otherwise
+	push bc
 	call HandleAirBalloon
+	pop bc
 	ret z
-	ld a, BATTLE_VARS_ABILITY
-	cp MAGIC_GUARD
+
+	ld a, b
+	cp LEVITATE
 	ret z
+
+	; Flying-types aren't affected by Spikes.
+	push bc
+	call CheckIfUserIsFlyingType
+	pop bc
+	ret z
+
 	ld a, [hBattleTurn]
 	and a
 	ld hl, PlayerScreens
 	jr z, .ok
 	ld hl, EnemyScreens
 .ok
+	push hl
+	call .Spikes
+	pop hl
+	call .ToxicSpikes
+	ret
 
-	bit SCREENS_SPIKES, [hl]
+.Spikes:
+	ld a, b
+	cp MAGIC_GUARD
 	ret z
 
-	; Flying-types aren't affected by Spikes.
-	call CheckIfUserIsFlyingType
+	ld a, [hl]
+	and SCREENS_SPIKES
 	ret z
 
-	call GetEighthMaxHP
+	ld hl, GetEighthMaxHP
+	sub SCREENS_SPIKES / 3
+	jr z, .got_hp
+	ld hl, GetSixthMaxHP
+	sub SCREENS_SPIKES / 3
+	jr z, .got_hp
+	ld hl, GetQuarterMaxHP
+.got_hp
+	call _hl_
 	call SubtractHPFromUser
 	call UpdateUserInParty
 
 	ld hl, BattleText_UserHurtBySpikes
 	jp StdBattleTextBox
+
+.ToxicSpikes:
+	ld a, [hl]
+	and SCREENS_TOXIC_SPIKES
+	ret z
+
+	push af
+	push bc
+	push hl
+	call CheckIfUserIsPoisonType
+	pop hl
+	pop bc
+	jr nz, .no_poison_type
+	pop af
+
+	; Grounded Poison types absorb the Toxic Spikes
+	cpl
+	and [hl]
+	ld [hl], a
+	ret
+
+.no_poison_type
+	pop af
+	push bc
+	push hl
+	call SwitchTurn
+	ld b, c
+	farcall CanPoisonTarget
+	push af
+	call SwitchTurn
+	pop af
+	pop hl
+	pop bc
+	ret nz
+
+	ld a, [hl]
+	ld hl, WasPoisonedText
+	and SCREENS_TOXIC_SPIKES
+	cp (SCREENS_TOXIC_SPIKES / 3) * 2
+	jr nz, .no_toxic
+	ld hl, BadlyPoisonedText
+	push hl
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	set SUBSTATUS_TOXIC, [hl]
+	pop hl
+.no_toxic
+	push bc
+	push hl
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	ld a, 1 << PSN
+	ld [hl], a
+	ld de, ANIM_PSN
+	call Call_PlayBattleAnim
+	call RefreshBattleHuds
+	pop hl
+
+	call SwitchTurn
+	call StdBattleTextBox
+	pop bc
+	ld a, c
+	and a
+	jr z, .no_synchronize
+	farcall PostStatusWithSynchronize
+	jr .poststatus_done
+.no_synchronize
+	farcall PostStatus
+.poststatus_done
+	jp SwitchTurn
 
 HandleAirBalloon:
 ; prints air balloon msg and returns z if we have air balloon
@@ -4083,11 +4182,14 @@ HandleHealingItems: ; 3dcf9
 
 HandleStatusOrbs:
 	call SetFastestTurn
+	; Done for target to simplify checks so invert
+	; turn
+	call SwitchTurn
 	call .do_it
 	call SwitchTurn
 
 .do_it
-	farcall GetUserItemAfterUnnerve
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_SELF_BRN
 	ld b, 1 << BRN
@@ -4101,7 +4203,8 @@ HandleStatusOrbs:
 	ld b, 0
 	farcall CanPoisonTarget
 	pop bc
-	ld a, BATTLE_VARS_SUBSTATUS2
+	ret nz
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	set SUBSTATUS_TOXIC, [hl]
 	ld de, ANIM_PSN
@@ -4117,14 +4220,52 @@ HandleStatusOrbs:
 	ld hl, WasBurnedText
 	; fallthrough
 .do_status
+	push hl
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	ld [hl], b
 	xor a
 	ld [wNumHits], a
-	push hl
-	call Call_PlayBattleAnim
+	farcall PlayOpponentBattleAnim
+	call RefreshBattleHuds
 	pop hl
+	jp StdBattleTextBox
+
+HandleRoost:
+	call SetFastestTurn
+	call .do_it
 	call SwitchTurn
-	call StdBattleTextBox
-	jp SwitchTurn
+
+.do_it
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVarAddr
+	bit SUBSTATUS_ROOST, [hl]
+	res SUBSTATUS_ROOST, [hl]
+	ret z
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonType1
+	jr z, .got_types
+	ld hl, EnemyMonType1
+.got_types
+	; Check which type is ???
+	ld a, [hl]
+	cp UNKNOWN_T
+	jr z, .got_target
+	inc hl
+	ld a, [hl]
+	cp UNKNOWN_T
+	jr nz, .aerliate
+.got_target
+	ld [hl], FLYING
+	ret
+.aerliate
+	; Set Flying types on both
+	ld a, FLYING
+	ld [hld], a
+	ld [hl], a
+	ret
 
 HandleStatBoostBerry:
 	ld a, BATTLE_VARS_ABILITY

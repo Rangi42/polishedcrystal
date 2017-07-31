@@ -184,6 +184,9 @@ endm
 	command bounceback              ; b1
 	command pickpocket              ; b2
 	command suckerpunch             ; b3
+	command toxicspikes             ; b4
+	command roost                   ; b5
+	command closecombat             ; b6
 
 	enum_start -1, -1
 	command endmove

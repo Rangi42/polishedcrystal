@@ -5467,11 +5467,34 @@ BattleCommand_ParalyzeTarget:
 	call PrintParalyze
 	jp PostStatusWithSynchronize
 
+BattleCommand_CloseCombat:
+	lb bc, DEFENSE, SP_DEFENSE
+BattleCommand_SelfStatDownHit:
+; input: 1-2 stats to decrease in b and c respectivey
+	push bc
+	call .lower
+	pop bc
+	ld b, c
+.lower
+	ld a, b
+	and a
+	ret z
+	push bc
+	call ResetMiss
+	pop bc
+	call LowerStat
+	call SwitchTurn
+	call BattleCommand_StatDownMessage
+	jp SwitchTurn
+
 BattleCommand_BulkUp:
 	lb bc, ATTACK, DEFENSE
 	jr BattleCommand_DoubleUp
 BattleCommand_CalmMind:
 	lb bc, SP_ATTACK, SP_DEFENSE
+	jr BattleCommand_DoubleUp
+BattleCommand_DragonDance:
+	lb bc, ATTACK, SPEED
 	jr BattleCommand_DoubleUp
 BattleCommand_Growth:
 	lb bc, ATTACK, SP_ATTACK
@@ -5479,9 +5502,6 @@ BattleCommand_Growth:
 	cp WEATHER_SUN
 	jr nz, BattleCommand_DoubleUp
 	lb bc, ($10 | ATTACK), ($10 | SP_ATTACK)
-	jr BattleCommand_DoubleUp
-BattleCommand_DragonDance:
-	lb bc, ATTACK, SPEED
 	jr BattleCommand_DoubleUp
 BattleCommand_HoneClaws:
 	lb bc, ATTACK, ACCURACY
@@ -7657,9 +7677,7 @@ BattleCommand_Conversion: ; 3707f
 ; 3710e
 
 
-BattleCommand_ResetStats: ; 3710e
-; resetstats
-
+BattleCommand_ResetStats:
 	ld a, BASE_STAT_LEVEL
 	ld hl, PlayerStatLevels
 	call .Fill
@@ -7680,12 +7698,7 @@ BattleCommand_ResetStats: ; 3710e
 	jr nz, .loop
 	ret
 
-; 3713e
-
-
-BattleCommand_Heal: ; 3713e
-; heal
-
+BattleCommand_Heal:
 	farcall CheckFullHP
 	jr z, .hp_full
 	ld a, BATTLE_VARS_MOVE
@@ -7743,7 +7756,37 @@ BattleCommand_Heal: ; 3713e
 	ld hl, HPIsFullText
 	jp StdBattleTextBox
 
-; 371cd
+BattleCommand_Roost:
+; Remove the flying type until endturn
+	call CheckIfUserIsFlyingType
+	ret nz
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleMonType1
+	jr z, .got_types
+	ld hl, EnemyMonType1
+.got_types
+	; Check if both types are flying
+	ld a, [hli]
+	cp FLYING
+	jr nz, .not_double_flying
+	ld a, [hld]
+	cp FLYING
+	jr z, .normalize
+.not_double_flying
+	ld [hl], UNKNOWN_T
+	jr .types_ok
+.normalize
+	; Pure Flying types become Normal
+	ld a, NORMAL
+	ld [hli], a
+	ld [hl], a
+.types_ok
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVarAddr
+	set SUBSTATUS_ROOST, [hl]
+	ret
 
 INCLUDE "battle/effects/transform.asm"
 
@@ -8650,24 +8693,36 @@ BattleCommand_ClearHazards: ; 37b39
 	ld hl, ShedLeechSeedText
 	call StdBattleTextBox
 .not_leeched
-
-	ld hl, PlayerScreens
-	ld de, wPlayerWrapCount
 	ld a, [hBattleTurn]
 	and a
+	ld hl, PlayerScreens
+	ld de, wPlayerWrapCount
 	jr z, .got_screens_wrap
 	ld hl, EnemyScreens
 	ld de, wEnemyWrapCount
 .got_screens_wrap
-	bit SCREENS_SPIKES, [hl]
-	jr z, .no_spikes
-	res SCREENS_SPIKES, [hl]
-	ld hl, BlewSpikesText
 	push de
+	ld a, [hl]
+	and SCREENS_SPIKES
+	jr z, .no_spikes
+	cpl
+	and [hl]
+	ld [hl], a
+	push hl
+	ld hl, BlewSpikesText
 	call StdBattleTextBox
-	pop de
+	pop hl
 .no_spikes
-
+	ld a, [hl]
+	and SCREENS_TOXIC_SPIKES
+	jr z, .no_toxic_spikes
+	cpl
+	and [hl]
+	ld [hl], a
+	ld hl, BlewToxicSpikesText
+	call StdBattleTextBox
+.no_toxic_spikes
+	pop de
 	ld a, [de]
 	and a
 	ret z

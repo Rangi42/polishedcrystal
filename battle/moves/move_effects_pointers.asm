@@ -160,3 +160,6 @@
 	dw SkullBash
 	dw SwitchHit
 	dw SuckerPunch
+	dw ToxicSpikes
+	dw Roost
+	dw CloseCombat

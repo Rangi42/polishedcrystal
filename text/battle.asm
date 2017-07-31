@@ -1250,12 +1250,17 @@ ProtectingItselfText: ; 0x8167a
 	done
 ; 0x81691
 
-SpikesText: ; 0x81691
+SpikesText:
 	text "Spikes scattered"
 	line "all around"
 	cont "<TARGET>!"
 	prompt
-; 0x816b1
+
+ToxicSpikesText:
+	text "Toxic spikes"
+	line "scattered around"
+	cont "<TARGET>!"
+	prompt
 
 IdentifiedText: ; 0x816b1
 	text "<USER>"
@@ -1326,11 +1331,16 @@ ShedLeechSeedText: ; 0x8177a
 	prompt
 ; 0x8178e
 
-BlewSpikesText: ; 0x8178e
+BlewSpikesText:
 	text "<USER>"
 	line "blew away Spikes!"
 	prompt
-; 0x817a3
+
+BlewToxicSpikesText:
+	text "<USER>"
+	line "blew away Toxic"
+	cont "Spikes!"
+	prompt
 
 DownpourText: ; 0x817a3
 	text "It started"

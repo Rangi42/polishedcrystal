@@ -658,6 +658,30 @@ EvasionDownHit:
 	pickpocket
 	endmove
 
+CloseCombat:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	closecombat
+	checkdestinybond
+	buildopponentrage
+	statdownmessage
+	pickpocket
+	endmove
+
 StaticDamage:
 Sonicboom:
 DragonRage:
@@ -1243,6 +1267,14 @@ MilkDrink:
 	heal
 	endmove
 
+Roost:
+	checkobedience
+	usedmovetext
+	doturn
+	heal
+	roost
+	endmove
+
 Rampage:
 Thrash:
 PetalDance:
@@ -1738,6 +1770,15 @@ Spikes:
 	pressure
 	bounceback
 	spikes
+	endmove
+
+ToxicSpikes:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	bounceback
+	toxicspikes
 	endmove
 
 Foresight:
