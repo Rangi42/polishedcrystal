@@ -16,7 +16,6 @@ Mankey/Primeape: Metronome
 Slowpoke/Slowbro: Tri Attack
 
 HGSS tutor:
-Bellsprout/Weepinbell/Victreebel: Sucker Punch
 Chinchou/Lanturn: Heal Bell
 Dunsparce: Pain Split
 Jynx: Heal Bell
@@ -25,17 +24,13 @@ Mantine: Gunk Shot
 Miltank: Metronome
 NidoranF/Nidorina/Nidoqueen: Super Fang
 NidoranM/Nidorino/Nidoking: Sucker Punch, Super Fang
-Phanpy/Donphan: Gunk Shot
 Snubbull/Granbull: Heal Bell, Low Kick, Metronome, Super Fang
-Teddiursa/Ursaring: Gunk Shot, Metronome
+Teddiursa/Ursaring: Metronome
 Zubat/Golbat/Crobat: Sky Attack, Twister
 
 Purified:
-Diglett/Dugtrio: Charm
-Doduo/Dodrio: Baton Pass
 Ponyta/Rapidash: Baton Pass
 Swinub/Piloswine/Mamoswine: Charm
-Vulpix/Ninetales: Charm
 Weedle/Kakuna/Beedrill: Baton Pass
 Wobbuffet: Charm
 

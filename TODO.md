@@ -8,6 +8,7 @@ The final, non-beta 3.0 release should include all of these.
 * Search for "TODO" in the code and finish it
 * Fix bugs, including everything on the [Issues](/issues)
 * Give NPCs better teams, using the new held items
+* Trim egg moves to just leave the possible ones
 * Adjust the difficulty curve as needed
 
 
@@ -31,6 +32,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Events
 
+* Bulldoze move tutor in Mt. Mortar (move the Defense Curl tutor elsewhere)
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine and Bill somehow

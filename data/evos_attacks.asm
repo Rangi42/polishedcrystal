@@ -649,8 +649,8 @@ VulpixEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, EMBER
 	db 4, GROWL ; Tail Whip → new move
-	db 7, ROAR
-	db 9, ASTONISH ; Baby-Doll Eyes → new move
+	db 7, ASTONISH ; Roar → new move
+	db 9, CHARM ; Baby-Doll Eyes → similar move
 	db 10, QUICK_ATTACK
 	db 12, CONFUSE_RAY
 	db 15, FIRE_SPIN
@@ -892,7 +892,7 @@ else
 endc
 	db 4, GROWL
 	db 7, ASTONISH
-	db 10, HEADBUTT ; Mud-Slap → egg move
+	db 10, CHARM ; Mud-Slap → XD move
 	db 14, MAGNITUDE
 	db 18, BULLDOZE
 	db 22, SUCKER_PUNCH
@@ -920,7 +920,7 @@ else
 endc
 	db 4, GROWL
 	db 7, ASTONISH
-	db 10, HEADBUTT ; Mud-Slap → egg move
+	db 10, CHARM ; Mud-Slap → XD move
 	db 14, MAGNITUDE
 	db 18, BULLDOZE
 	db 22, SUCKER_PUNCH
@@ -1275,7 +1275,7 @@ BellsproutEvosAttacks:
 	db 35, MORNING_SUN ; Gastro Acid → new move
 	db 39, RAZOR_LEAF
 	db 41, POISON_JAB
-	db 47, BODY_SLAM ; Slam → similar move
+	db 47, SUCKER_PUNCH ; Slam → HGSS tutor move
 	db 50, SWORDS_DANCE ; Wring Out → egg move
 	db 0 ; no more level-up moves
 
@@ -1294,7 +1294,7 @@ WeepinbellEvosAttacks:
 	db 39, MORNING_SUN ; Gastro Acid → new move
 	db 44, RAZOR_LEAF
 	db 47, POISON_JAB
-	db 54, BODY_SLAM ; Slam → similar move
+	db 54, SUCKER_PUNCH ; Slam → HGSS tutor move
 	db 58, SWORDS_DANCE ; Wring Out → egg move
 	db 0 ; no more level-up moves
 
@@ -1568,7 +1568,7 @@ DoduoEvosAttacks:
 	db 8, RAGE
 	db 12, FURY_ATTACK
 	db 15, PURSUIT
-	db 19, ENDURE ; Pluck → TM move
+	db 19, BATON_PASS ; Pluck → XD move
 	db 22, DOUBLE_KICK ; Double Hit → new move
 	db 26, AGILITY
 	db 29, DOUBLE_TEAM ; Uproar → TM move
@@ -1589,7 +1589,7 @@ DodrioEvosAttacks:
 	db 9, RAGE
 	db 12, FURY_ATTACK
 	db 15, PURSUIT
-	db 19, ENDURE ; Pluck → TM move
+	db 19, BATON_PASS ; Pluck → XD move
 	db 22, DOUBLE_KICK ; Double Hit → new move
 	db 26, AGILITY
 	db 29, DOUBLE_TEAM ; Uproar → TM move
@@ -4210,6 +4210,7 @@ TeddiursaEvosAttacks:
 
 UrsaringEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, GUNK_SHOT ; HGSS tutor move
 	db 1, THIEF ; Covet → TM move
 	db 1, SCRATCH
 	db 1, LEER
@@ -4511,6 +4512,7 @@ PhanpyEvosAttacks:
 DonphanEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, FURY_ATTACK ; evolution move
+	db 1, GUNK_SHOT ; HGSS tutor move
 	db 1, HORN_ATTACK
 	db 1, GROWL
 	db 1, DEFENSE_CURL

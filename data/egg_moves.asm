@@ -117,6 +117,7 @@ VulpixEggMoves:
 	db EXTRASENSORY
 	db CHARM
 	db ENERGY_BALL
+	db ROAR
 	db $ff
 
 JigglypuffEggMoves:
