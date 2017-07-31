@@ -214,14 +214,14 @@ ButterfreeEvosAttacks:
 	db 13, STUN_SPORE
 	db 13, SLEEP_POWDER
 	db 17, PSYBEAM
-	db 19, HYPNOSIS ; Silver Wind → new move
+	db 19, TWISTER ; Silver Wind → HGSS tutor move
 	db 23, SUPERSONIC
 	db 25, SAFEGUARD
-	db 29, MORNING_SUN ; Whirlwind → new move
+	db 29, HYPNOSIS ; Whirlwind → new move
 	db 31, BUG_BUZZ
 	db 35, MORNING_SUN ; Rage Powder → new move
 	db 37, AGILITY ; Captivate → new move
-	db 41, TWISTER ; Tailwind → HGSS tutot move
+	db 41, MORNING_SUN ; Tailwind → new move
 	db 43, AIR_SLASH
 	db 47, PSYCHIC_M ; Quiver Dance → TM move
 	db 0 ; no more level-up moves
@@ -2697,10 +2697,10 @@ AerodactylEvosAttacks:
 	db 1, SCARY_FACE
 	db 9, ROAR
 	db 17, AGILITY
-	db 25, ANCIENTPOWER
+	db 25, TWISTER ; AncientPower → HGSS tutor move
 	db 33, CRUNCH
 	db 41, TAKE_DOWN
-	db 49, TWISTER ; Sky Drop → HGSS tutor move
+	db 49, ANCIENTPOWER ; Sky Drop → AncientPower
 	db 57, IRON_HEAD
 	db 65, HYPER_BEAM
 	db 73, ROCK_SLIDE
@@ -2729,8 +2729,8 @@ SnorlaxEvosAttacks:
 
 ArticunoEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, EXTRASENSORY ; event move
 	db 1, GUST
-	db 1, ROOST
 	db 1, TWISTER ; tutor move
 	db 1, ICY_WIND ; Powder Snow → similar move
 	db 8, MIST
@@ -2744,15 +2744,15 @@ ArticunoEvosAttacks:
 	db 64, REFLECT ; Tailwind → Reflect
 	db 71, BLIZZARD
 	db 78, SKY_ATTACK ; Sheer Cold → HGSS tutor move
-	db 85, EXTRASENSORY ; Roost → event move
+	db 85, ROOST
 	db 92, HURRICANE
 	db 99, AEROBLAST ; new move
 	db 0 ; no more level-up moves
 
 ZapdosEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, EXTRASENSORY ; event move
 	db 1, PECK
-	db 1, ROOST
 	db 1, TWISTER ; tutor move
 	db 1, THUNDERSHOCK
 	db 8, THUNDER_WAVE
@@ -2766,15 +2766,15 @@ ZapdosEvosAttacks:
 	db 64, LIGHT_SCREEN
 	db 71, THUNDER ; Drill Peck → Thunder
 	db 78, SKY_ATTACK ; Thunder → HGSS tutor move
-	db 85, EXTRASENSORY ; Roost → event move
+	db 85, ROOST
 	db 92, HURRICANE ; Zap Cannon → new move
 	db 99, ZAP_CANNON
 	db 0 ; no more level-up moves
 
 MoltresEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, EXTRASENSORY ; event move
 	db 1, WING_ATTACK
-	db 1, ROOST
 	db 1, TWISTER ; tutor move
 	db 1, EMBER
 	db 8, FIRE_SPIN
@@ -2788,7 +2788,7 @@ MoltresEvosAttacks:
 	db 64, WILL_O_WISP ; Heat Wave → event move
 	db 71, FIRE_BLAST ; Solar Beam → TM move
 	db 78, SKY_ATTACK
-	db 85, EXTRASENSORY ; Roost → event move
+	db 85, ROOST
 	db 92, HURRICANE
 	db 99, SOLAR_BEAM
 	db 0 ; no more level-up moves
@@ -2837,11 +2837,10 @@ DragoniteEvosAttacks:
 	db 1, CLOSE_COMBAT
 	db 1, FIRE_PUNCH
 	db 1, THUNDERPUNCH
-	db 1, RECOVER
+	db 1, ROOST
 	db 1, WRAP
 	db 1, LEER
 	db 1, THUNDER_WAVE
-	db 1, TWISTER
 	db 1, WING_ATTACK ; evolution move
 	db 5, THUNDER_WAVE
 	db 11, TWISTER
@@ -3141,11 +3140,11 @@ HoothootEvosAttacks:
 	db 13, NIGHT_SHADE ; Echoed Voice → event move
 	db 16, ZEN_HEADBUTT
 	db 19, HEX ; Psycho Shift → new move
-	db 22, EXTRASENSORY
+	db 22, TWISTER ; Extrasensory → HGSS tutor move
 	db 25, TAKE_DOWN
 	db 28, REFLECT
 	db 31, AIR_SLASH
-	db 34, TWISTER ; Uproar → HGSS tutor move
+	db 34, EXTRASENSORY ; Uproar → Extrasensory
 	db 37, ROOST
 	db 40, MOONBLAST
 	db 43, SKY_ATTACK ; Synchronoise → HGSS tutor move
@@ -3165,11 +3164,11 @@ NoctowlEvosAttacks:
 	db 13, NIGHT_SHADE ; Echoed Voice → event move
 	db 16, ZEN_HEADBUTT
 	db 19, HEX ; Psycho Shift → new move
-	db 23, EXTRASENSORY
+	db 23, TWISTER ; Extrasensory → HGSS tutor move
 	db 27, TAKE_DOWN
 	db 31, REFLECT
 	db 35, AIR_SLASH
-	db 39, TWISTER ; Uproar → HGSS tutor move
+	db 39, EXTRASENSORY ; Uproar → Extrasensory
 	db 43, ROOST
 	db 47, MOONBLAST
 	db 51, SKY_ATTACK ; Synchronoise → HGSS tutor move
@@ -3416,8 +3415,8 @@ NatuEvosAttacks:
 	db 23, CONFUSE_RAY
 	db 28, RECOVER ; Wish → similar move
 	db 33, PSYCHIC_M
-	db 36, HAZE ; Miracle Eye → egg move
-	db 39, TWISTER ; Psycho Shift → HGSS tutor move
+	db 36, TWISTER ; Miracle Eye → HGSS tutor move
+	db 39, HAZE ; Psycho Shift → egg move
 	db 44, FUTURE_SIGHT
 	db 47, HEX ; Power Swap + Guard Swap → new move
 	db 50, SKY_ATTACK ; Me First → HGSS tutor move
@@ -3436,8 +3435,8 @@ XatuEvosAttacks:
 	db 23, CONFUSE_RAY
 	db 29, RECOVER ; Wish → similar move
 	db 35, PSYCHIC_M
-	db 39, HAZE ; Miracle Eye → egg move
-	db 43, TWISTER ; Psycho Shift → HGSS tutor move
+	db 39, TWISTER ; Miracle Eye → HGSS tutor move
+	db 43, HAZE ; Psycho Shift → egg move
 	db 49, FUTURE_SIGHT
 	db 53, HEX ; Power Swap + Guard Swap → new move
 	db 57, SKY_ATTACK ; Me First → HGSS tutor move
@@ -3802,13 +3801,13 @@ MurkrowEvosAttacks:
 	db 15, WING_ATTACK
 	db 21, NIGHT_SHADE
 	db 25, THIEF ; Assurance → TM move
-	db 31, TWISTER ; Taunt → HGSS tutor move
+	db 31, SWAGGER ; Taunt → TM move
 	db 35, FEINT_ATTACK
 	db 41, MEAN_LOOK
-	db 45, PERISH_SONG ; Foul Play → egg move
+	db 45, TWISTER ; Foul Play → HGSS tutor move
 	db 50, DRILL_PECK ; Tailwind → egg move
 	db 55, SUCKER_PUNCH
-	db 61, TWISTER ; Torment → HGSS tutor move
+	db 61, PERISH_SONG ; Torment → egg move
 	db 65, SKY_ATTACK ; Quash → egg move
 	db 0 ; no more level-up moves
 
@@ -3821,8 +3820,8 @@ HonchkrowEvosAttacks:
 	db 1, WING_ATTACK
 	db 25, SWAGGER
 	db 35, NASTY_PLOT
-	db 45, PERISH_SONG ; Foul Play → egg move
-	db 55, NIGHT_SLASH
+	db 45, NIGHT_SLASH ; Foul Play → Night Slash
+	db 55, PERISH_SONG ; Night Slash → egg move
 	db 65, SKY_ATTACK ; Quash → egg move
 	db 75, DARK_PULSE
 	db 0 ; no more level-up moves
@@ -4403,12 +4402,12 @@ MantineEvosAttacks:
 	db 14, WING_ATTACK
 	db 16, HEADBUTT
 	db 19, WATER_PULSE
-	db 23, MIRROR_COAT ; Wide Guard → Dream World move
+	db 23, TWISTER ; Wide Guard → egg move
 	db 27, TAKE_DOWN
 	db 32, AGILITY
 	db 36, AIR_SLASH
-	db 39, RECOVER ; Aqua Ring → similar move
-	db 46, TWISTER ; Bounce → egg move
+	db 39, ROOST ; Aqua Ring → similar move
+	db 46, MIRROR_COAT ; Bounce → Dream World move
 	db 49, HYDRO_PUMP
 	db 0 ; no more level-up moves
 
@@ -4420,7 +4419,7 @@ SkarmoryEvosAttacks:
 	db 9, METAL_CLAW
 	db 12, FURY_CUTTER ; Air Cutter → event move
 	db 17, FURY_ATTACK
-	db 20, DRILL_PECK ; Feint → egg move
+	db 20, TWISTER ; Feint → HGSS tutor move
 	db 23, SWIFT
 	db 28, SPIKES
 	db 31, AGILITY
@@ -4428,7 +4427,7 @@ SkarmoryEvosAttacks:
 	db 39, SLASH
 	db 42, SCREECH ; Metal Sound → similar move
 	db 45, AIR_SLASH
-	db 50, TWISTER ; Autotomize → HGSS tutor move
+	db 50, DRILL_PECK ; Autotomize → egg move
 	db 53, NIGHT_SLASH
 	db 57, SKY_ATTACK ; HGSS tutor move
 	db 0 ; no more level-up moves
@@ -4584,7 +4583,7 @@ HitmontopEvosAttacks:
 	db 28, COUNTER
 	db 33, TRIPLE_KICK
 	db 37, AGILITY
-	db 42, TWISTER ; Gyro Ball → tutor move
+	db 42, TWISTER ; Gyro Ball → HGSS tutor move
 	db 46, FORESIGHT ; Wide Guard + Quick Guard → new move
 	db 50, PROTECT ; Detect → similar move
 	db 55, CLOSE_COMBAT
