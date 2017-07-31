@@ -11,7 +11,6 @@ ResetGameTime:: ; 208a
 
 
 GameTimer:: ; 209e
-
 	nop
 
 	ld a, [rSVBK]
@@ -69,7 +68,7 @@ UpdateGameTimer:: ; 20ad
 ;; increase the "fake" RTC by 6 seconds (24 in-game hours will pass in 4 real-world hours)
 ;; this does not affect the rate of the "hours played" time which remains real-time.
 if DEF(NO_RTC)
-rept 6
+rept NO_RTC_SPEEDUP
 	call UpdateNoRTC
 endr
 endc

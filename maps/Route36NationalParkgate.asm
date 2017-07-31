@@ -65,7 +65,7 @@ Route36NationalParkgate_MapScriptHeader:
 	checkcode VAR_CONTESTMINUTES
 	addvar $1
 	RAM2MEM $0
-	writetext UnknownText_0x6b284
+	writetext UnknownText_0x6a79a
 	yesorno
 	iffalse .GoBackToContest
 	writetext UnknownText_0x6b2c5
@@ -82,7 +82,7 @@ Route36NationalParkgate_MapScriptHeader:
 	jumpstd bugcontestresults
 
 .GoBackToContest:
-	writetext UnknownText_0x6b300
+	writetext UnknownText_0x6a823
 	waitbutton
 	closetext
 	spriteface PLAYER, LEFT
@@ -147,7 +147,7 @@ Route36OfficerScriptContest:
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
 	scall Route36Parkgate_DayToText
-	writetext UnknownText_0x6add5
+	writetext UnknownText_0x6a2eb
 	yesorno
 	iffalse .DecidedNotToJoinContest
 	checkcode VAR_PARTYCOUNT
@@ -157,13 +157,13 @@ Route36OfficerScriptContest:
 .ResumeStartingContest:
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special PlayMapMusic
-	writetext UnknownText_0x6ae87
+	writetext UnknownText_0x6a39d
 	buttonsound
 	waitsfx
-	writetext UnknownText_0x6aeb1
+	writetext UnknownText_0x6a3c7
 	playsound SFX_ITEM
 	waitsfx
-	writetext UnknownText_0x6aecc
+	writetext UnknownText_0x6a3e2
 	waitbutton
 	closetext
 	setflag ENGINE_BUG_CONTEST_TIMER
@@ -184,46 +184,46 @@ Route36OfficerScriptContest:
 .ContinueLeavingMons:
 	special CheckFirstMonIsEgg
 	if_equal $1, .FirstMonIsEgg
-	writetext UnknownText_0x6afb0
+	writetext UnknownText_0x6a4c6
 	yesorno
 	iffalse .RefusedToLeaveMons
 	special ContestDropOffMons
 	iftrue .FirstMonIsFainted
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
-	writetext UnknownText_0x6b021
+	writetext UnknownText_0x6a537
 	buttonsound
-	writetext UnknownText_0x6b055
+	writetext UnknownText_0x6a56b
 	playsound SFX_GOT_SAFARI_BALLS
 	waitsfx
 	buttonsound
 	jump .ResumeStartingContest
 
 .DecidedNotToJoinContest:
-	writetext UnknownText_0x6b0c6
+	writetext UnknownText_0x6a5dc
 	waitbutton
 	closetext
 	end
 
 .RefusedToLeaveMons:
-	writetext UnknownText_0x6b081
+	writetext UnknownText_0x6a597
 	waitbutton
 	closetext
 	end
 
 .FirstMonIsFainted:
-	writetext UnknownText_0x6b0f2
+	writetext UnknownText_0x6a608
 	waitbutton
 	closetext
 	end
 
 .BoxFull:
-	writetext UnknownText_0x6b166
+	writetext UnknownText_0x6a67c
 	waitbutton
 	closetext
 	end
 
 .FirstMonIsEgg:
-	writetext UnknownText_0x6b209
+	writetext UnknownText_0x6a71f
 	waitbutton
 	closetext
 	end
@@ -237,7 +237,7 @@ Route36Officer_ContestHasConcluded:
 	iftrue .SitrusBerry
 	checkevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
 	iftrue .OranBerry
-	writetext UnknownText_0x6b32b
+	writetext UnknownText_0x6a84f
 	waitbutton
 	closetext
 	end
@@ -467,183 +467,12 @@ MovementData_0x6add1:
 	turn_head_up
 	step_end
 
-UnknownText_0x6add5:
-	text "Today's @"
-	text_from_ram StringBuffer3
-	text "."
-	line "That means the"
-
-	para "Bug-Catching Con-"
-	line "test is on today."
-
-	para "The rules are sim-"
-	line "ple."
-
-	para "Using one of your"
-	line "#mon, catch a"
-
-	para "bug #mon to be"
-	line "judged."
-
-	para "Would you like to"
-	line "give it a try?"
-	done
-
-UnknownText_0x6ae87:
-	text "Here are the Park"
-	line "Balls for the"
-	cont "Contest."
-	done
-
-UnknownText_0x6aeb1:
-	text "<PLAYER> received"
-	line "20 Park Balls."
-	done
-
-UnknownText_0x6aecc:
-	text "The person who"
-	line "gets the strong-"
-	cont "est bug #mon"
-	cont "is the winner."
-
-	para "You have 20"
-	line "minutes."
-
-	para "If you run out of"
-	line "Park Balls, you're"
-	cont "done."
-
-	para "You can keep the"
-	line "last #mon you"
-	cont "catch as your own."
-
-	para "Go out and catch"
-	line "the strongest bug"
-
-	para "#mon you can"
-	line "find!"
-	done
-
-UnknownText_0x6afb0:
-	text "Uh-oh…"
-
-	para "You have more than"
-	line "one #mon."
-
-	para "You'll have to use"
-	line "@"
-	text_from_ram StringBuffer3
-	text ", the"
-
-	para "first #mon in"
-	line "your party."
-
-	para "Is that OK with"
-	line "you?"
-	done
-
-UnknownText_0x6b021:
-	text "Fine, we'll hold"
-	line "your other #mon"
-	cont "while you compete."
-	done
-
-UnknownText_0x6b055:
-	text "<PLAYER>'s #mon"
-	line "were left with the"
-	cont "Contest Helper."
-	done
-
-UnknownText_0x6b081:
-	text "Please choose the"
-	line "#mon to be used"
-
-	para "in the Contest,"
-	line "then come see me."
-	done
-
-UnknownText_0x6b0c6:
-	text "OK. We hope you'll"
-	line "take part in the"
-	cont "future."
-	done
-
-UnknownText_0x6b0f2:
-	text "Uh-oh…"
-	line "The first #mon"
-
-	para "in your party"
-	line "can't battle."
-
-	para "Please switch it"
-	line "with the #mon"
-
-	para "you want to use,"
-	line "then come see me."
-	done
-
-UnknownText_0x6b166:
-	text "Uh-oh…"
-	line "Both your party"
-
-	para "and your PC Box"
-	line "are full."
-
-	para "You have no room"
-	line "to put the bug"
-	cont "#mon you catch."
-
-	para "Please make room"
-	line "in your party or"
-
-	para "your PC Box, then"
-	line "come see me."
-	done
-
-UnknownText_0x6b209:
-	text "Uh-oh…"
-	line "You have an Egg as"
-
-	para "the first #mon"
-	line "in your party."
-
-	para "Please switch it"
-	line "with the #mon"
-
-	para "you want to use,"
-	line "then come see me."
-	done
-
-UnknownText_0x6b284:
-	text "You still have @"
-	text_from_ram StringBuffer3
-	text ""
-	line "minute(s) left."
-
-	para "Do you want to"
-	line "finish now?"
-	done
-
 UnknownText_0x6b2c5:
 	text "OK. Please wait"
 	line "here for the"
 
 	para "announcement of"
 	line "the winners."
-	done
-
-UnknownText_0x6b300:
-	text "OK. Please go back"
-	line "outside and finish"
-	cont "up."
-	done
-
-UnknownText_0x6b32b:
-	text "Today's Contest is"
-	line "over. We hope you"
-
-	para "will participate"
-	line "in the future."
 	done
 
 UnknownText_0x6b370:

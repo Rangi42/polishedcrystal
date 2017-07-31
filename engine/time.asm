@@ -148,7 +148,11 @@ Special_SampleKenjiBreakCountdown: ; 11485
 ; 11490
 
 StartBugContestTimer: ; 11490
+if DEF(NO_RTC)
+	ld a, 20 * NO_RTC_SPEEDUP
+else
 	ld a, 20
+endc
 	ld [wBugContestMinsRemaining], a
 	xor a
 	ld [wBugContestSecsRemaining], a
