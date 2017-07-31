@@ -5902,7 +5902,6 @@ INCLUDE "text/phone/reena_overworld.asm"
 INCLUDE "text/phone/joey_overworld.asm"
 INCLUDE "text/phone/wade_overworld.asm"
 INCLUDE "text/phone/ralph_overworld.asm"
-INCLUDE "text/phone/liz_overworld.asm"
 
 SECTION "bank6D", ROMX, BANK[$6D]
 
@@ -5910,6 +5909,7 @@ INCLUDE "text/phone/mom.asm"
 INCLUDE "text/phone/bill.asm"
 INCLUDE "text/phone/elm.asm"
 INCLUDE "text/phone/trainers1.asm"
+INCLUDE "text/phone/liz_overworld.asm"
 
 SECTION "bank72", ROMX, BANK[$72]
 

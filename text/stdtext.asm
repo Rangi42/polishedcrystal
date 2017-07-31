@@ -58,6 +58,43 @@ NurseAskHealText:
 	line "#mon?"
 	done
 
+NurseFourTrainerStarsText:
+	text "We can heal your"
+	line "#mon to perfect"
+	cont "health."
+
+	para "Shall we…"
+
+	para "Th-that Trainer"
+	line "Card!"
+
+	para "That wonderful"
+	line "shade! And all"
+	cont "those stars!"
+
+	para "I've seen several"
+	line "gold Trainer Cards"
+	cont "before…"
+
+	para "But you're the"
+	line "first to top them"
+
+	para "with that impress-"
+	line "ive Trainer Card."
+
+	para "Please, <PLAYER>,"
+	line "may I heal your"
+	cont "#mon?"
+	done
+
+NurseTheUsualText:
+	text "Great to see you"
+	line "again, <PLAYER>!"
+
+	para "You want the"
+	line "usual, right?"
+	done
+
 NurseTakePokemonText:
 	text "OK, may I see your"
 	line "#mon?"
