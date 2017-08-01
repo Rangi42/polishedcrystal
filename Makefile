@@ -8,7 +8,7 @@ ROMVERSION := 0x30
 FILLER = 0x00
 
 RGBASM_FLAGS =
-RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l linkerscript.link -p $(FILLER)
+RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l contents/contents.link -p $(FILLER)
 RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)

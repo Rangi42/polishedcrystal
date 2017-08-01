@@ -304,7 +304,7 @@ ItemIconPointers:
 	dw NoItemIcon
 
 
-SECTION "Item Icons 1", ROMX, BANK[$41]
+SECTION "Item Icons 1", ROMX
 
 ItemIcons1:
 NoItemIcon:       INCBIN "gfx/items/no_item.2bpp.lz"
@@ -468,7 +468,7 @@ BlackGlassesIcon: INCBIN "gfx/items/blackglasses.2bpp.lz"
 PinkBowIcon:      INCBIN "gfx/items/pink_bow.2bpp.lz"
 
 
-SECTION "Item Icons 2", ROMX, BANK[$43]
+SECTION "Item Icons 2", ROMX
 
 ItemIcons2:
 ScopeLensIcon:    INCBIN "gfx/items/scope_lens.2bpp.lz"

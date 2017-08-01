@@ -22,7 +22,7 @@
 ; TODO: swap ABILITY_1 and ABILITy_2 in base data as need so that ABILITY_1 is the better one for default NPCs (e.g. NPCs should have Sturdy when possible)
 
 
-SECTION "Enemy Trainer Parties 1", ROMX, BANK[$E]
+SECTION "Enemy Trainer Parties 1", ROMX
 
 
 KayGroup:
@@ -13593,7 +13593,7 @@ CooltrainerMGroup:
 ; ================================
 
 
-SECTION "Enemy Trainer Parties 2", ROMX, BANK[$74]
+SECTION "Enemy Trainer Parties 2", ROMX
 
 
 CooltrainerFGroup:

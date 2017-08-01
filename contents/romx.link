@@ -1,256 +1,280 @@
-ROMX $1
+ROMX $01
+	org $4000
 	"bank1"
-	"bank5B"
+	"Effect Command Pointers"
 
-ROMX $2
+ROMX $02
+	org $4000
 	"bank2"
 	"Trainer Pic Pointers"
 
-ROMX $3
+ROMX $03
+	org $4000
 	"bank3"
 
-ROMX $4
+ROMX $04
+	org $4000
 	"bank4"
 	"Variant Pic Pointers"
 
-ROMX $5
+ROMX $05
+	org $4000
 	"bank5"
 
-ROMX $7 ; ROOFS
+ROMX $06
+	org $4000
+	"Substitute and Ghost"
+
+ROMX $07
+	org $4000
 	"Roofs"
 
-ROMX $8 ; EGG_MOVES
+ROMX $08
+	org $4000
 	"bank8"
 	"Egg Moves"
 
-ROMX $9
+ROMX $09
+	org $4000
 	"bank9"
 
-ROMX $a
+ROMX $0A
+	org $4000
 	"bankA"
 
-ROMX $b
+ROMX $0B
+	org $4000
 	"bankB"
 
-ROMX $d
+ROMX $0D
+	org $4000
 	"Effect Commands"
 
-ROMX $e
+ROMX $0E
+	org $4000
 	"Enemy Trainer Pointers"
 	"Enemy Trainer Parties 1"
 
-ROMX $f
+ROMX $0F
+	org $4000
 	"Battle Core"
 
-ROMX $10 ; EVOS_ATTACKS
+ROMX $10
+	org $4000
 	"bank10"
 	"Evolutions and Attacks"
 
 ROMX $11
+	org $4000
 	"bank11"
 
 ROMX $12
+	org $4000
 	"Crystal Unique"
 
 ROMX $13
+	org $4000
 	"bank13"
 
 ROMX $14
+	org $4000
 	"bank14"
 
 ROMX $19
+	org $4000
 	"bank19"
 
+ROMX $1C
+	org $4000
+	"Moves"
+
 ROMX $20
+	org $4000
 	"bank20"
 
 ROMX $21
+	org $4000
 	"bank21"
 
 ROMX $22
+	org $4000
 	"bank22"
+	"sprites_4"
 
 ROMX $23
+	org $4000
 	"bank23"
+	"sprites_5"
 
 ROMX $24
+	org $4000
 	"bank24"
 
-ROMX $25 ; MAP_HEADERS, EVENTS
+ROMX $25
+	org $4000
 	"Map Headers"
 	"Events"
 
 ROMX $28
+	org $4000
 	"Phone Engine"
 
 ROMX $29
+	org $4000
 	"Phone Text"
+	"Pic Animations 4"
 
-ROMX $2e
+ROMX $2E
+	org $4000
 	"bank2E"
 
-ROMX $2f
+ROMX $2F
+	org $4000
 	"bank2F"
 
 ROMX $30
+	org $4000
 	"sprites_1"
 
 ROMX $31
+	org $4000
 	"sprites_2"
 
 ROMX $32
+	org $4000
 	"bg_effects"
 
 ROMX $33
+	org $4000
 	"bank33"
 
 ROMX $34
+	org $4000
 	"Pic Animations 1"
 
 ROMX $35
+	org $4000
 	"Pic Animations 2"
 
 ROMX $36
+	org $4000
 	"Pic Animations 3"
 
 ROMX $38
+	org $4000
 	"bank38"
 
 ROMX $39
+	org $4000
 	"bank39"
 
-ROMX $3a ; AUDIO
+ROMX $3A
+	org $4000
 	"Audio"
 
-ROMX $3c ; SOUND_EFFECTS, CRIES
+ROMX $3C
+	org $4000
 	"Sound Effects"
 	"Cries"
 
-ROMX $3e
+ROMX $3E
+	org $4000
 	"bank3E"
 
-ROMX $3f
+ROMX $3F
+	org $4000
 	"bank3F"
 
 ROMX $40
+	org $4000
 	"bank40"
 
 ROMX $41
+	org $4000
 	"bank41"
 	"Item Icons 1"
 
-ROMX $42 ; CREDITS
+ROMX $42
+	org $4000
 	"Intro Logo"
 	"Credits"
 
 ROMX $43
+	org $4000
 	"bank43"
 	"Item Icons 2"
 
 ROMX $48
+	org $4000
 	"Pic Pointers"
 
-ROMX $5d
+ROMX $5D
+	org $4000
 	"bank5D"
 
-ROMX $5e ; CRYSTAL_SOUND_EFFECTS
+ROMX $5E
+	org $4000
 	"bank5E"
 	"Crystal Sound Effects"
 
-ROMX $60 ; POKEDEX_ENTRIES_1
+ROMX $60
+	org $4000
 	"Pokedex Entries 001-064"
 
-ROMX $6c
+ROMX $6C
+	org $4000
 	"Common Text 1"
 
-ROMX $6d
+ROMX $6D
+	org $4000
 	"bank6D"
 
-ROMX $6e ; POKEDEX_ENTRIES_2
+ROMX $6E
+	org $4000
 	"Pokedex Entries 065-128"
+	"Wild Data"
 
-ROMX $6f
+ROMX $6F
+	org $4000
 	"Text 1"
 	"Second Map Headers"
 
 ROMX $70
+	org $4000
 	"Text 2"
+	"Pokedex"
 
 ROMX $71
+	org $4000
 	"Text 3"
 
 ROMX $72
+	org $4000
 	"bank72"
 
-ROMX $73 ; POKEDEX_ENTRIES_3
+ROMX $73
+	org $4000
 	"Pokedex Entries 129-192"
+	"Enemy Trainers"
 
-ROMX $74 ; POKEDEX_ENTRIES_4
-	"Pokedex Entries 193-251"
+ROMX $74
+	org $4000
+	"Pokedex Entries 193-253"
+	"Enemy Trainer Parties 2"
+
+ROMX $75
+	org $4000
+	"sprites_3"
 
 ROMX $77
+	org $4000
 	"bank77"
 
-ROMX $7b
+ROMX $7B
+	org $4000
 	"bank7B"
 
-ROMX $7e
+ROMX $7E
+	org $4000
 	"bank7E"
-
-ROMX $7f
-	"bank7F"
-
-
-SRAM 0
-	"Scratch"
-
-SRAM 1
-	"Save"
-	"Active Box"
-	"Link Battle Data"
-	"SRAM Hall of Fame"
-	"SRAM Battle Tower"
-
-SRAM 2
-	"Boxes 1-7"
-
-SRAM 3
-	"Boxes 8-14"
-
-
-VRAM 0
-	"VRAM0"
-
-VRAM 1
-	"VRAM1"
-
-
-WRAM0
-	"Stack"
-	"WRAM Audio"
-	"WRAM"
-	ORG $c4a0
-	"Tilemap"
-	"Battle"
-	ORG $cd21
-	"Video"
-
-WRAMX 1
-	"WRAM 1"
-	"Enemy Party"
-	"Party"
-
-WRAMX 2
-	"Pic Animations"
-
-WRAMX 3
-	"Battle Tower"
-
-WRAMX 5
-	"GBC Video"
-
-WRAMX6
-	"WRAM 6"
-
-WRAMX 7
-	"WRAM 7"
+	"Typefaces"

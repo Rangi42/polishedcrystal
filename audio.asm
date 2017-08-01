@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Audio", ROMX, BANK[AUDIO]
+SECTION "Audio", ROMX
 
 INCLUDE "audio/engine.asm"
 
@@ -323,18 +323,19 @@ SECTION "Music Custom", ROMX
 INCLUDE "audio/music/custom/lugiassong.asm"
 
 
-SECTION "Sound Effects", ROMX, BANK[SOUND_EFFECTS]
+SECTION "Sound Effects", ROMX
 
 INCLUDE "audio/sfx.asm"
 
 
-SECTION "Crystal Sound Effects", ROMX, BANK[CRYSTAL_SOUND_EFFECTS]
+SECTION "Crystal Sound Effects", ROMX
 
 INCLUDE "audio/sfx_crystal.asm"
 
 
-SECTION "Cries", ROMX, BANK[CRIES]
+SECTION "Cries", ROMX
 
-CryHeaders:: INCLUDE "audio/cry_headers.asm"
+CryHeaders::
+INCLUDE "audio/cry_headers.asm"
 
 INCLUDE "audio/cries.asm"

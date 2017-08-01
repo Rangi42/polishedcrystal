@@ -1,0 +1,53 @@
+WRAM0
+	org $c000
+	"Stack"
+	align 8
+	"WRAM Audio"
+	"WRAM"
+	org $c300
+	"wSpriteAnims"
+	org $c400
+	"Sprites"
+	org $c4a0
+	"Tilemap"
+	"Battle"
+	org $c800
+	"Overworld Map"
+	org $cd21
+	"Video"
+
+WRAMX $1
+	org $d000
+	"WRAM 1"
+	"Enemy Party"
+	"Map Triggers"
+	"WRAM Events"
+	"Party"
+
+WRAMX $2
+	org $d000
+	"Pic Animations"
+
+WRAMX $3
+	org $d000
+	"Battle Tower"
+
+WRAMX $4
+	org $d200
+	"WRAM 4 RM"
+	org $d800
+	"Music Player Notes"
+
+WRAMX $5
+	org $d000
+	"GBC Video"
+	org $d300
+	"Battle Animations"
+
+WRAMX $6
+	org $d000
+	"WRAM 6"
+
+WRAMX $7
+	org $d000
+	"WRAM 7"

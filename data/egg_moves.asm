@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Egg Moves", ROMX, BANK[EGG_MOVES]
+SECTION "Egg Moves", ROMX
 
 
 INCLUDE "data/egg_move_pointers.asm"

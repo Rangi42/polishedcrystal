@@ -1,0 +1,7 @@
+VRAM $0
+	org $8000
+	"VRAM0"
+
+VRAM $1
+	org $8000
+	"VRAM1"

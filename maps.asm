@@ -1,12 +1,12 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Map Headers", ROMX, BANK[MAP_HEADERS]
+SECTION "Map Headers", ROMX
 
 INCLUDE "maps/map_headers.asm"
 
 
-SECTION "Second Map Headers", ROMX, BANK[SECOND_MAP_HEADERS]
+SECTION "Second Map Headers", ROMX
 
 INCLUDE "maps/second_map_headers.asm"
 

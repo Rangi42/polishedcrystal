@@ -1,12 +1,12 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Pic Pointers", ROMX, BANK[PIC_POINTERS]
+SECTION "Pic Pointers", ROMX
 
 PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
 
 
-SECTION "Variant Pic Pointers", ROMX, BANK[VARIANT_PIC_POINTERS]
+SECTION "Variant Pic Pointers", ROMX
 
 UnownPicPointers::    INCLUDE "gfx/pics/unown_pic_pointers.asm"
 PikachuPicPointers::  INCLUDE "gfx/pics/pikachu_pic_pointers.asm"
@@ -16,7 +16,7 @@ MagikarpPicPointers:: INCLUDE "gfx/pics/magikarp_pic_pointers.asm"
 MewtwoPicPointers::   INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
-SECTION "Trainer Pic Pointers", ROMX, BANK[TRAINER_PIC_POINTERS]
+SECTION "Trainer Pic Pointers", ROMX
 
 TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
 

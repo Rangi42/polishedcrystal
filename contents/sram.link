@@ -1,0 +1,23 @@
+SRAM $0
+	org $a000
+	"Scratch"
+	org $a600
+	"SRAM Bank 0"
+	org $b200
+	"Backup Save"
+
+SRAM $1
+	org $a000
+	"Save"
+	"Active Box"
+	"Link Battle Data"
+	"SRAM Hall of Fame"
+	"SRAM Battle Tower"
+
+SRAM $2
+	org $a000
+	"Boxes 1-7"
+
+SRAM $3
+	org $a000
+	"Boxes 8-14"

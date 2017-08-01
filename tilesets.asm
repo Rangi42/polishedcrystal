@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Roofs", ROMX, BANK[ROOFS]
+SECTION "Roofs", ROMX
 
 INCLUDE "tilesets/roofs.asm"
 

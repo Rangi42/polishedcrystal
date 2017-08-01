@@ -2,7 +2,9 @@ INCLUDE "includes.asm"
 INCLUDE "macros/wram.asm"
 INCLUDE "vram.asm"
 
+
 SECTION "Stack", WRAM0
+
 wc000::
 StackBottom::
 	ds $100 - 1
@@ -12,6 +14,7 @@ StackTop::
 
 
 SECTION "WRAM Audio", WRAM0
+
 wMusic::
 MusicPlaying:: ; c100
 ; nonzero if playing
@@ -132,6 +135,7 @@ wMapMusic:: ; c2c0
 wDontPlayMapMusicOnReload:: ds 1
 wMusicEnd::
 
+
 SECTION "WRAM", WRAM0
 
 wLZAddress:: dw ; c2c2
@@ -214,7 +218,9 @@ TilePermissions:: ; c2fe
 
 	ds 1
 
-SECTION "wSpriteAnims", WRAM0 [$c300]
+
+SECTION "wSpriteAnims", WRAM0
+
 ; wSpriteAnimDict is a 10x2 dictionary.
 ; keys: taken from third column of SpriteAnimSeqData
 ; values: VTiles
@@ -293,7 +299,7 @@ wNoiseHit:: ds 1
 MusicPlayerWRAMEnd::
 
 
-SECTION "Sprites", WRAM0 [$c400]
+SECTION "Sprites", WRAM0
 
 Sprites:: ; c400
 ; 4 bytes per sprite
@@ -322,6 +328,7 @@ TileMapEnd::
 
 
 SECTION "Battle", WRAM0
+
 wc608::
 wOddEgg:: party_struct OddEgg
 wOddEggName:: ds PKMN_NAME_LENGTH
@@ -884,7 +891,8 @@ wMiscEnd::
 
 	ds 15
 
-SECTION "Overworld Map", WRAM0 [$c800]
+
+SECTION "Overworld Map", WRAM0
 
 OverworldMap:: ; c800
 	ds 1300
@@ -956,7 +964,9 @@ wcc4a:: ds 22
 wcc9e:: ds 22
 	ds 108
 
+
 SECTION "Video", WRAM0
+
 CreditsPos::
 BGMapBuffer::
 	ds 10
@@ -1242,7 +1252,7 @@ wDaysSince:: ds 1
 wRAM0End:: ; cfd8
 
 
-SECTION "WRAM 1", WRAMX, BANK [1]
+SECTION "WRAM 1", WRAMX
 
 wd000:: ds 1
 DefaultSpawnpoint::
@@ -1884,7 +1894,9 @@ OtherTrainerType::
 TrainerGroupBank::
 	ds 1
 
-SECTION "Enemy Party", WRAMX, BANK [1]
+
+SECTION "Enemy Party", WRAMX
+
 wPokedexShowPointerAddr::
 wd26b:: ds 1
 	ds 1
@@ -1895,7 +1907,6 @@ wd271:: ds 5
 	ds wd26b - @
 
 
-; SECTION "Enemy Party", WRAMX, BANK [1]
 OTPlayerName:: ds NAME_LENGTH ; d26b
 OTPlayerID:: ds 2 ; d276
 	ds 8
@@ -2238,7 +2249,7 @@ FarfetchdPosition:: ; d964
 	ds 1 ; which position the ilex farfetch'd is in
 
 
-;SECTION "Map Triggers", WRAMX, BANK [1]
+SECTION "Map Triggers", WRAMX
 
 wPokecenter2FTrigger::                       ds 1 ; d972
 wTradeCenterTrigger::                        ds 1 ; d973
@@ -2339,7 +2350,7 @@ wShamoutiHotelRestaurantTrigger::            ds 1
 	ds 10 ; extra space set aside
 
 
-;SECTION "Events", WRAMX, BANK [1]
+SECTION "WRAM Events", WRAMX
 
 wJackFightCount::    ds 1 ; d9f2
 wBeverlyFightCount:: ds 1 ; unused
@@ -2529,7 +2540,7 @@ wMapDataEnd::
 wSpinning:: ds 1
 
 
-SECTION "Party", WRAMX, BANK [1]
+SECTION "Party", WRAMX
 
 wPokemonData::
 
@@ -2629,7 +2640,7 @@ wPokemonDataEnd::
 wGameDataEnd::
 
 
-SECTION "Pic Animations", WRAMX, BANK [2]
+SECTION "Pic Animations", WRAMX
 
 TempTileMap::
 ; 20x18 grid of 8x8 tiles
@@ -2668,7 +2679,7 @@ wPokeAnimBitmaskBuffer:: ds 1
 wPokeAnimStructEnd::
 
 
-SECTION "Battle Tower", WRAMX, BANK [3]
+SECTION "Battle Tower", WRAMX
 
 	ds $100
 
@@ -2697,17 +2708,17 @@ wVermilionGymTrashCan2::
 	ds $7fe
 
 
-SECTION "WRAM 4 RM", WRAMX [$d200], BANK [4]
+SECTION "WRAM 4 RM", WRAMX
 
 SoundEngineBackup::
 
 
-SECTION "Music Player Notes", WRAMX [$d800], BANK [4]
+SECTION "Music Player Notes", WRAMX
 
 wMPNotes:: ds 4 * 256
 
 
-SECTION "GBC Video", WRAMX, BANK [5]
+SECTION "GBC Video", WRAMX
 
 ; 8 4-color palettes
 UnknBGPals:: ds 8 palettes ; d000
@@ -2736,7 +2747,7 @@ LYOverridesBackup:: ; d200
 LYOverridesBackupEnd::
 
 
-SECTION "Battle Animations", WRAMX [$d300], BANK [5]
+SECTION "Battle Animations", WRAMX
 
 wBattleAnimTileDict:: ds 10
 
@@ -2801,7 +2812,7 @@ wSurfWaveBGEffectEnd::
 wBattleAnimEnd::
 
 
-SECTION "WRAM 6", WRAMX, BANK [6]
+SECTION "WRAM 6", WRAMX
 
 wDecompressScratch::
 wScratchTileMap::
@@ -2810,9 +2821,11 @@ wScratchAttrMap::
 	ds $400
 w6_d800::
 
-INCLUDE "sram.asm"
 
+SECTION "WRAM 7", WRAMX
 
-SECTION "WRAM 7", WRAMX, BANK [7]
 wWindowStack:: ds $1000 - 1
 wWindowStackBottom:: ds 1
+
+
+INCLUDE "sram.asm"
