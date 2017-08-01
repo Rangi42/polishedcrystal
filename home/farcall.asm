@@ -26,11 +26,11 @@ FarCall_hl::
 RstFarCall::
 ; Call the following dba pointer on the stack.
 ; Preserves a, bc, de, hl
-	ld [wFarCallSavedA], a
+	ld [hFarCallSavedA], a
 	ld a, h
-	ld [wFarCallHLBuffer], a
+	ld [hPredefTemp], a
 	ld a, l
-	ld [wFarCallHLBuffer + 1], a
+	ld [hPredefTemp + 1], a
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a
@@ -54,7 +54,7 @@ DoFarCall:
 	call RetrieveHLAndCallFunction
 
 ReturnFarCall::
-	ld [wFarCallSavedA], a
+	ld [hFarCallSavedA], a
 	; We want to retain the contents of f.
 	; To accomplish this, mess with the stack a bit...
 	push af
@@ -67,14 +67,14 @@ ReturnFarCall::
 	pop af
 	pop af
 	rst Bankswitch
-	ld a, [wFarCallSavedA]
+	ld a, [hFarCallSavedA]
 	ret
 
 RetrieveHLAndCallFunction:
 	push hl
-	ld hl, wFarCallHLBuffer
+	ld hl, hPredefTemp
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
-	ld a, [wFarCallSavedA]
+	ld a, [hFarCallSavedA]
 	ret

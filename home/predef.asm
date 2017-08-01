@@ -1,11 +1,11 @@
 _Predef::
 ; Call predefined function on the stack.
 ; Preserves a, bc, de, hl.
-	ld [wFarCallSavedA], a
+	ld [hFarCallSavedA], a
 	ld a, h
-	ld [wFarCallHLBuffer], a
+	ld [hPredefTemp], a
 	ld a, l
-	ld [wFarCallHLBuffer + 1], a
+	ld [hPredefTemp + 1], a
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a
