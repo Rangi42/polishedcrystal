@@ -283,6 +283,7 @@ wSelectorTop:: ds 1
 wSelectorCur:: ds 1
 ; song editor
 wChannelSelector:: ds 1
+wAdjustingTempo:: ds 1
 ; audio engine input
 wChannelSelectorSwitches:: ds 4
 wPitchTransposition:: ds 1

@@ -68,38 +68,8 @@ ROMX $13
 ROMX $14
 	"bank14" ; $4000
 
-ROMX $15 ; MAP_SCRIPTS_1
-	"Map Scripts 1" ; $4000
-
-ROMX $16 ; MAP_SCRIPTS_2
-	"Map Scripts 2" ; $4000
-
-ROMX $17 ; MAP_SCRIPTS_3
-	"Map Scripts 3" ; $4000
-
-ROMX $18 ; MAP_SCRIPTS_4
-	"Map Scripts 4" ; $4000
-
 ROMX $19
 	"bank19" ; $4000
-
-ROMX $1a ; MAP_SCRIPTS_5
-	"Map Scripts 5" ; $4000
-
-ROMX $1b ; MAP_SCRIPTS_6
-	"Map Scripts 6" ; $4000
-
-ROMX $1c ; MAP_SCRIPTS_7
-	"Map Scripts 7" ; $4000
-
-ROMX $1d ; MAP_SCRIPTS_8
-	"Map Scripts 8" ; $4000
-
-ROMX $1e ; MAP_SCRIPTS_9
-	"Map Scripts 9" ; $4000
-
-ROMX $1f ; MAP_SCRIPTS_10
-	"Map Scripts 10" ; $4000
 
 ROMX $20
 	"bank20" ; $4000
@@ -132,12 +102,6 @@ ROMX $2a ; MAPS_1
 
 ROMX $2b ; MAPS_2
 	"Map Blockdata 2" ; $4000
-
-ROMX $26 ; MAP_SCRIPTS_11
-	"Map Scripts 11" ; $4000
-
-ROMX $27 ; MAP_SCRIPTS_12
-	"Map Scripts 12" ; $4000
 
 ROMX $2c ; MAPS_3, EXTRA_SONGS_1
 	"Map Blockdata 3" ; $4000
@@ -221,9 +185,6 @@ ROMX $43
 	"bank43"
 	"Item Icons 2"
 
-ROMX $45 ; MAP_SCRIPTS_26
-	"Map Scripts 26" ; $4000
-
 ROMX $46
 	"Extra Songs 4" ; $4000
 
@@ -302,49 +263,11 @@ ROMX $5e ; SONGS_5, CRYSTAL_SOUND_EFFECTS
 	"Songs 5" ; $401f
 	"Crystal Sound Effects" ; $784e
 
-ROMX $5f ; MAP_SCRIPTS_27
-	"Map Scripts 27" ; $4000
-
-ROMX $60 ; MAP_SCRIPTS_13, POKEDEX_ENTRIES_1
-	"Map Scripts 13" ; $4000
+ROMX $60 ; POKEDEX_ENTRIES_1
 	"Pokedex Entries 001-064" ; $634c
 
-ROMX $61 ; MAP_SCRIPTS_14
-	"Map Scripts 14" ; $4000
-
-ROMX $62 ; MAP_SCRIPTS_15
-	"Map Scripts 15" ; $4000
-
-ROMX $63 ; MAP_SCRIPTS_16
-	"Map Scripts 16" ; $4000
-
-ROMX $64 ; MAP_SCRIPTS_17
-	"Map Scripts 17" ; $4000
-
-ROMX $65 ; MAP_SCRIPTS_18
-	"Map Scripts 18" ; $4000
-
-ROMX $66 ; MAP_SCRIPTS_19
-	"Map Scripts 19" ; $4000
-
-ROMX $67 ; MAP_SCRIPTS_20
-	"Map Scripts 20" ; $4000
-
-ROMX $68 ; MAP_SCRIPTS_21
-	"Map Scripts 21" ; $4000
-
-ROMX $69 ; MAP_SCRIPTS_22
-	"Map Scripts 22" ; $4000
-
-ROMX $6a ; MAP_SCRIPTS_23
-	"Map Scripts 23" ; $4000
-
-ROMX $6b ; MAP_SCRIPTS_24
-	"Map Scripts 24" ; $4000
-
-ROMX $6c ; MAP_SCRIPTS_25
+ROMX $6c
 	"Common Text 1" ; $4000
-	"Map Scripts 25" ; $606b
 
 ROMX $6d
 	"bank6D" ; $4000
@@ -389,9 +312,6 @@ ROMX $7a
 
 ROMX $7b
 	"bank7B" ; $4000
-
-ROMX $7c ; MAP_SCRIPTS_28
-	"Map Scripts 28" ; $4000
 
 ROMX $7d ; EXTRA_SONGS_3
 	"Extra Songs 3" ; $4000

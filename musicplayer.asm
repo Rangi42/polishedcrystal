@@ -89,6 +89,7 @@ MusicPlayer::
 	ld a, 1
 	ld [hCGBPalUpdate], a
 
+	; refresh top two portions
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
@@ -226,8 +227,9 @@ MusicPlayerLoop:
 	jrbutton START, .start
 	jpbutton SELECT, .select
 
+	; prioritize refreshing the note display
 	ld a, 2
-	ld [hBGMapThird], a ; prioritize refreshing the note display
+	ld [hBGMapThird], a
 	jr MusicPlayerLoop
 
 .left:
@@ -337,8 +339,9 @@ SongEditor:
 	jpbutton START, .start
 	jpbutton SELECT | B_BUTTON, .select_b
 
+	; prioritize refreshing the note display
 	ld a, 2
-	ld [hBGMapThird], a ; prioritize refreshing the note display
+	ld [hBGMapThird], a
 	jr SongEditor
 
 .left:
@@ -369,13 +372,13 @@ SongEditor:
 
 .a:
 ; for pitch: nothing
-; for tempo: apply tempo adjustment
+; for tempo: enter tempo adjustment mode
 ; otherwise: toggle editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jp z, SongEditor
 	cp MP_EDIT_TEMPO
-	jp z, .a_tempo
+	jp z, AdjustTempo
 	ld c, a
 	ld b, 0
 	ld hl, wChannelSelectorSwitches
@@ -389,12 +392,12 @@ SongEditor:
 .up:
 ; for wave: next waveform
 ; for pitch: increase pitch transposition
-; for tempo: increase tempo adjustment
+; for tempo: previous editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .up_pitch
 	cp MP_EDIT_TEMPO
-	jr z, .up_tempo
+	jr z, .left
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
@@ -408,12 +411,12 @@ SongEditor:
 .down:
 ; for wave: previous waveform
 ; for pitch: decrease pitch transposition
-; for tempo: decrease tempo adjustment
+; for tempo: next editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .down_pitch
 	cp MP_EDIT_TEMPO
-	jr z, .down_tempo
+	jr z, .right
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
@@ -449,35 +452,7 @@ SongEditor:
 .change_pitch:
 	ld [wPitchTransposition], a
 	call DrawPitchTransposition
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
-	jp SongEditor
-
-.a_tempo:
-	ld a, [wSongSelection]
-	ld e, a
-	ld d, 0
-	farcall PlayMusic2
-	jp SongEditor
-
-.up_tempo:
-	ld a, [wTempoAdjustment]
-	inc a
-	cp MAX_TEMPO_ADJUSTMENT + 1
-	jr nz, .change_tempo
-	ld a, -MAX_TEMPO_ADJUSTMENT
-	jr .change_tempo
-
-.down_tempo:
-	ld a, [wTempoAdjustment]
-	dec a
-	cp -(MAX_TEMPO_ADJUSTMENT + 1)
-	jr nz, .change_tempo
-	ld a, MAX_TEMPO_ADJUSTMENT
-.change_tempo:
-	ld [wTempoAdjustment], a
-	call DrawTempoAdjustment
+	; refresh top two portions
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
@@ -500,6 +475,115 @@ SongEditor:
 	call DrawPitchTransposition
 	call DrawTempoAdjustment
 	jp MusicPlayerLoop
+
+AdjustTempo:
+	ld a, 1
+	ld [wAdjustingTempo], a
+
+	call DrawChannelSelector
+	; refresh top two portions
+	xor a
+	ld [hBGMapThird], a
+	call DelayFrame
+
+.loop:
+	call UpdateVisualIntensity
+	call DelayFrame
+
+	call DrawChData
+	call DrawNotes
+
+	call GetJoypad
+	jrbutton D_UP, .up
+	jrbutton D_DOWN, .down
+	jrbutton D_RIGHT, .right
+	jrbutton D_LEFT, .left
+	jrbutton A_BUTTON, .a
+	jpbutton B_BUTTON, .b
+	jpbutton START, .start
+
+	; prioritize refreshing the note display
+	ld a, 2
+	ld [hBGMapThird], a
+	jr .loop
+
+.up:
+; increase tempo adjustment
+	ld a, [wTempoAdjustment]
+	inc a
+	cp MAX_TEMPO_ADJUSTMENT + 1
+	jr nz, .change_tempo
+	ld a, -MAX_TEMPO_ADJUSTMENT
+	jr .change_tempo
+
+.down:
+; decrease tempo adjustment
+	ld a, [wTempoAdjustment]
+	dec a
+	cp -(MAX_TEMPO_ADJUSTMENT + 1)
+	jr nz, .change_tempo
+	ld a, MAX_TEMPO_ADJUSTMENT
+	jr .change_tempo
+
+.right:
+; increase tempo adjustment by 10
+	ld a, [wTempoAdjustment]
+	cp MAX_TEMPO_ADJUSTMENT - 10 + 1
+	jr c, .no_overflow_right
+	cp -MAX_TEMPO_ADJUSTMENT
+	jr nc, .no_overflow_right
+	ld a, MAX_TEMPO_ADJUSTMENT - 10
+.no_overflow_right
+	add 10
+	jr .change_tempo
+
+.left:
+; decrease tempo adjustment by 10
+	ld a, [wTempoAdjustment]
+	cp MAX_TEMPO_ADJUSTMENT + 1
+	jr c, .no_underflow_left
+	cp -(MAX_TEMPO_ADJUSTMENT - 10)
+	jr nc, .no_underflow_left
+	ld a, -(MAX_TEMPO_ADJUSTMENT - 10)
+.no_underflow_left
+	sub 10
+.change_tempo:
+	ld [wTempoAdjustment], a
+	call DrawTempoAdjustment
+	; refresh top two portions
+	xor a
+	ld [hBGMapThird], a
+	call DelayFrame
+	jp .loop
+
+.a:
+; apply tempo adjustment
+	ld a, [wSongSelection]
+	ld e, a
+	ld d, 0
+	farcall PlayMusic2
+; fallthrough
+
+.b:
+; exit tempo adjustment mode
+	xor a
+	ld [wAdjustingTempo], a
+	call DrawChannelSelector
+	call DrawTempoAdjustment
+	; refresh top two portions
+	xor a
+	ld [hBGMapThird], a
+	call DelayFrame
+	jp SongEditor
+
+.start:
+; toggle piano roll info overlay
+	ld hl, wSongInfoSwitch
+	ld a, [hl]
+	xor 1
+	ld [hl], a
+	call DrawPianoRollOverlay
+	jp .loop
 
 DrawPianoRollOverlay:
 	; if this takes too long, don't let the user see blank fields blink in
@@ -603,7 +687,13 @@ DrawChannelSelector:
 .tempo:
 	hlcoord 14, 2
 .draw
-	ld [hl], "▶"
+	ld a, [wAdjustingTempo]
+	and a
+	ld a, "▶"
+	jr z, .ok
+	ld a, "▷"
+.ok
+	ld [hl], a
 	ret
 
 ClearChannelSelector:
