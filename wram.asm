@@ -1149,14 +1149,7 @@ TextDelayFrames:: ; cfb2
 VBlankOccurred:: ; cfb3
 	ds 1
 
-wFarCallSavedA::
-	ds 1
-wFarCallHLBuffer::
-	ds 2
-PredefAddress:: ; cfb7
-	ds 2
-
-	ds 2 ; unused
+	ds 7 ; unused
 
 wcfbb:: ds 1
 GameTimerPause:: ; cfbc

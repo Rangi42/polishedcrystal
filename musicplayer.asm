@@ -188,7 +188,7 @@ RenderMusicPlayer:
 	call DelayFrame
 
 	ld a, [rSVBK]
-	ld [hBuffer2], a
+	ld [hMPBuffer], a
 
 	ld a, [wSongSelection]
 	; let's see if a song is currently selected
@@ -292,7 +292,7 @@ MusicPlayerLoop:
 	xor a
 	ld [hMPState], a
 	ld [hVBlank], a
-	ld a, [hBuffer2]
+	ld a, [hMPBuffer]
 	ld [rSVBK], a
 	call ClearSprites
 	ld hl, rLCDC
@@ -310,7 +310,7 @@ MusicPlayerLoop:
 ; open song selector
 	xor a
 	ld [hMPState], a
-	ld a, [hBuffer2]
+	ld a, [hMPBuffer]
 	ld [rSVBK], a
 	call SongSelector
 	jp RenderMusicPlayer

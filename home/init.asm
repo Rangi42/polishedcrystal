@@ -31,8 +31,6 @@ _Start:: ; 16e
 
 .load
 	ld [hCGB], a
-	ld [hFFEA], a
-; 17d
 
 
 Init:: ; 17d
@@ -83,14 +81,10 @@ Init:: ; 17d
 ; Clear HRAM
 	ld a, [hCGB]
 	push af
-	ld a, [hFFEA]
-	push af
 	xor a
 	ld hl, HRAM_START
 	ld bc, HRAM_END - HRAM_START
 	call ByteFill
-	pop af
-	ld [hFFEA], a
 	pop af
 	ld [hCGB], a
 

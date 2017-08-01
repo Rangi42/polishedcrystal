@@ -41,6 +41,13 @@ hObjectStructIndexBuffer EQU $ffb0
 hConnectionStripLength EQU $ffaf
 hConnectedMapWidth EQU $ffb0
 
+hPredefTemp        EQU $ffb1
+
+; can only use the bytes reserved for hPredefTemp in contained functions, unless you know what you're doing
+
+hBuffer2           EQU $ffb1
+hBuffer3           EQU $ffb2
+
 hPastLeadingZeroes EQU $ffb3
 
 hStringCmpString1  EQU $ffb1
@@ -136,12 +143,12 @@ hCGB               EQU $ffe6
 hSGB               EQU $ffe7
 hDMATransfer       EQU $ffe8
 
-hFFEA              EQU $ffea
+hFarCallSavedA     EQU $ffe9
+
 hClockResetTrigger EQU $ffeb
 
 hMPState           EQU $ffed
-hBuffer2           EQU $ffee
-
+hMPBuffer          EQU $ffee
 hTmpd              EQU $fff7
 hTmpe              EQU $fff8
 
