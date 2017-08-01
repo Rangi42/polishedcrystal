@@ -9,18 +9,15 @@ __LoadTradeScreenBorder: ; 16d421
 	jp Get2bpp
 ; 16d42e
 
-Function16d42e: ; 16d42e
-	ld hl, Tilemap_16d465
+LoadMobileLinkTradeFullscreenTilemap: ; 16d42e
+	ld hl, MobileLinkTradeFullscreenTilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	jp CopyBytes
 ; 16d43b
 
-Tilemap_16d465:
+MobileLinkTradeFullscreenTilemap:
 INCBIN "gfx/link_trade/16d465.tilemap"
-
-Tilemap_16d5cd:
-INCBIN "gfx/link_trade/16d5cd.tilemap"
 
 Tilemap_16d5f5:
 INCBIN "gfx/link_trade/16d5f5.tilemap"
@@ -125,11 +122,7 @@ LinkComms_LoadPleaseWaitTextboxBorderGFX: ; 16d69a
 ; 16d6a7
 
 Function16d6ae: ; 16d6ae
-	call Function16d42e
-	ld hl, Tilemap_16d5cd
-	decoord 0, 0
-	ld bc, 2 * SCREEN_WIDTH
-	call CopyBytes
+	call LoadMobileLinkTradeFullscreenTilemap
 	ld hl, Tilemap_16d5f5
 	decoord 0, 16
 	ld bc, 2 * SCREEN_WIDTH

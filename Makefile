@@ -92,7 +92,7 @@ clean:
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
 
-utils/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
+contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
 roms.md5: crystal
 	md5sum $(NAME)-$(VERSION).gbc > roms.md5
