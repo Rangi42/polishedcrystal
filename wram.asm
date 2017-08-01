@@ -274,9 +274,9 @@ wC4Vol:: ds 1
 wC4VolSub:: ds 1
 wNoteEnded:: ds 3
 wSongInfoSwitch:: ds 1
-wRenderedWaveform:: ds 1
+;wRenderedWaveform:: ds 1
 wPitchesTmp:: ds 4
-wWaveformTmp:: ds 16
+;wWaveformTmp:: ds 16
 wTmpValue:: ds 1
 ; song list
 wSelectorTop:: ds 1
@@ -1527,7 +1527,7 @@ IsCurMonInParty::
 wItemQuantityChangeBuffer:: ds 1
 wItemQuantityBuffer:: ds 1
 
-TempMPWaveform::
+;TempMPWaveform::
 TempMon:: ; d10e
 	party_struct TempMon
 
