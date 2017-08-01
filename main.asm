@@ -550,25 +550,9 @@ INCLUDE "event/mom.asm"
 INCLUDE "event/daycare.asm"
 INCLUDE "engine/breeding.asm"
 
-SECTION "Tileset Data 1", ROMX, BANK[TILESETS_1]
-
-INCLUDE "tilesets/data_1.asm"
-
-SECTION "Roofs", ROMX, BANK[ROOFS]
-
-INCLUDE "tilesets/roofs.asm"
-
-SECTION "Tileset Data 2", ROMX, BANK[TILESETS_2]
-
-INCLUDE "tilesets/data_2.asm"
-
 SECTION "bank8", ROMX, BANK[$8]
 
 INCLUDE "engine/clock_reset.asm"
-
-SECTION "Tileset Data 3", ROMX, BANK[TILESETS_3]
-
-INCLUDE "tilesets/data_3.asm"
 
 SECTION "bank9", ROMX, BANK[$9]
 
@@ -1724,10 +1708,6 @@ PlaceGraphic: ; 2ef6e
 	dec b
 	jr nz, .x2
 	ret
-
-SECTION "Tileset Data 4", ROMX, BANK[TILESETS_4]
-
-INCLUDE "tilesets/data_4.asm"
 
 SECTION "Effect Commands", ROMX, BANK[$D]
 
@@ -5354,10 +5334,6 @@ INCLUDE "text/phone/kenji_overworld.asm"
 INCLUDE "text/phone/parry_overworld.asm"
 INCLUDE "text/phone/erin_overworld.asm"
 
-SECTION "Tileset Data 5", ROMX, BANK[TILESETS_5]
-
-INCLUDE "tilesets/data_5.asm"
-
 SECTION "bank2E", ROMX, BANK[$2E]
 
 INCLUDE "engine/events_3.asm"
@@ -5637,10 +5613,6 @@ SECTION "Pic Animations 3", ROMX, BANK[$36]
 INCLUDE "gfx/pics/johto_frames.asm"
 INCLUDE "gfx/pics/variant_frame_pointers.asm"
 INCLUDE "gfx/pics/variant_frames.asm"
-
-SECTION "Tileset Data 6", ROMX, BANK[TILESETS_6]
-
-INCLUDE "tilesets/data_6.asm"
 
 SECTION "bank38", ROMX, BANK[$38]
 
@@ -5923,9 +5895,7 @@ INCLUDE "battle/move_names.asm"
 
 INCLUDE "engine/landmarks.asm"
 
-SECTION "Tileset Data 7", ROMX, BANK[TILESETS_7]
-
-INCLUDE "tilesets/data_7.asm"
+SECTION "bank77", ROMX, BANK[$77]
 
 PrintHoursMins ; 1dd6bb (77:56bb)
 ; Hours in b, minutes in c
@@ -6181,39 +6151,6 @@ TownMap_ConvertLineBreakCharacters: ; 1de2c5
 
 PokegearGFX: ; 1de2e4
 INCBIN "gfx/pokegear/pokegear.2bpp.lz"
-
-
-SECTION "Tileset Data 8", ROMX, BANK[TILESETS_8]
-
-INCLUDE "tilesets/data_8.asm"
-
-SECTION "Tileset Data 9", ROMX, BANK[TILESETS_9]
-
-INCLUDE "tilesets/data_9.asm"
-
-SECTION "Tileset Data 10", ROMX, BANK[$34]
-
-INCLUDE "tilesets/data_10.asm"
-
-SECTION "Tileset Data 11", ROMX, BANK[$7A]
-
-INCLUDE "tilesets/data_11.asm"
-
-SECTION "Tileset Data 12", ROMX, BANK[$76]
-
-INCLUDE "tilesets/data_12.asm"
-
-SECTION "Tileset Data 13", ROMX, BANK[$B]
-
-INCLUDE "tilesets/data_13.asm"
-
-SECTION "Tileset Data 14", ROMX, BANK[$28]
-
-INCLUDE "tilesets/data_14.asm"
-
-SECTION "Tileset Data 15", ROMX, BANK[$42]
-
-INCLUDE "tilesets/data_15.asm"
 
 SECTION "bank7B", ROMX, BANK[$7B]
 

@@ -44,6 +44,7 @@ main.o \
 home.o \
 audio.o \
 maps.o \
+tilesets.o \
 musicplayer.o \
 engine/events.o \
 engine/credits.o \

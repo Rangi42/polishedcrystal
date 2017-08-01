@@ -6,39 +6,12 @@ SECTION "Map Headers", ROMX, BANK[MAP_HEADERS]
 INCLUDE "maps/map_headers.asm"
 
 
-SECTION "Second Map Headers", ROMX, BANK[$6F]
+SECTION "Second Map Headers", ROMX, BANK[SECOND_MAP_HEADERS]
 
 INCLUDE "maps/second_map_headers.asm"
 
 
-SECTION "Map Blockdata 1", ROMX, BANK[MAPS_1]
-
-INCLUDE "maps/blockdata_1.asm"
-
-
-SECTION "Map Blockdata 2", ROMX, BANK[MAPS_2]
-
-INCLUDE "maps/blockdata_2.asm"
-
-
-SECTION "Map Blockdata 3", ROMX, BANK[MAPS_3]
-
-INCLUDE "maps/blockdata_3.asm"
-
-
-SECTION "Map Blockdata 4", ROMX, BANK[MAPS_4]
-
-INCLUDE "maps/blockdata_4.asm"
-
-
-SECTION "Map Blockdata 5", ROMX, BANK[MAPS_5]
-
-INCLUDE "maps/blockdata_5.asm"
-
-
-SECTION "Map Blockdata 6", ROMX, BANK[MAPS_6]
-
-INCLUDE "maps/blockdata_6.asm"
+INCLUDE "maps/block_data.asm"
 
 
 SECTION "Special Map Scripts", ROMX
@@ -456,10 +429,10 @@ SECTION "Pallet Scripts", ROMX
 
 INCLUDE "maps/PalletTown.asm"
 INCLUDE "maps/OaksLab.asm"
-INCLUDE "maps/BluesHouse1F.asm"
-INCLUDE "maps/BluesHouse2F.asm"
 INCLUDE "maps/RedsHouse1F.asm"
 INCLUDE "maps/RedsHouse2F.asm"
+INCLUDE "maps/BluesHouse1F.asm"
+INCLUDE "maps/BluesHouse2F.asm"
 
 
 SECTION "Viridian Scripts", ROMX
@@ -810,9 +783,9 @@ INCLUDE "maps/SilverCaveItemRooms.asm"
 
 SECTION "Seagallop Ferry Scripts", ROMX
 
-INCLUDE "maps/SeagallopFerryNavelGate.asm"
-INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/SeagallopFerryVermilionGate.asm"
+INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
+INCLUDE "maps/SeagallopFerryNavelGate.asm"
 
 
 SECTION "Shamouti Scripts", ROMX
