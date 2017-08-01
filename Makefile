@@ -35,7 +35,7 @@ RM = rm -f
 
 gfx       := $(PYTHON) gfx.py
 includes  := $(PYTHON) utils/scan_includes.py
-bank_ends := $(PYTHON) utils/bank_ends.py $(NAME)-$(VERSION)
+bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
 
 crystal_obj := \
@@ -70,7 +70,7 @@ bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-freespace: utils/bank_ends.txt roms.md5
+freespace: contents/bank_ends.txt roms.md5
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
