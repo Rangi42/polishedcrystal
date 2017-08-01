@@ -10,7 +10,6 @@ sScratch::
 
 SECTION "SRAM Bank 0", SRAM
 
-; a600
 sPartyMail::
 sPartyMon1Mail::       mailmsg sPartyMon1Mail
 sPartyMon2Mail::       mailmsg sPartyMon2Mail
@@ -19,7 +18,6 @@ sPartyMon4Mail::       mailmsg sPartyMon4Mail
 sPartyMon5Mail::       mailmsg sPartyMon5Mail
 sPartyMon6Mail::       mailmsg sPartyMon6Mail
 
-; a71a
 sPartyMailBackup::
 sPartyMon1MailBackup:: mailmsg sPartyMon1MailBackup
 sPartyMon2MailBackup:: mailmsg sPartyMon2MailBackup
@@ -28,7 +26,6 @@ sPartyMon4MailBackup:: mailmsg sPartyMon4MailBackup
 sPartyMon5MailBackup:: mailmsg sPartyMon5MailBackup
 sPartyMon6MailBackup:: mailmsg sPartyMon6MailBackup
 
-; a834
 sMailboxCount:: ds 1
 sMailbox::
 sMailbox1::            mailmsg sMailbox1
@@ -42,7 +39,6 @@ sMailbox8::            mailmsg sMailbox8
 sMailbox9::            mailmsg sMailbox9
 sMailbox10::           mailmsg sMailbox10
 
-; aa0b
 sMailboxCountBackup:: ds 1
 sMailboxBackup::
 sMailbox1Backup::      mailmsg sMailbox1Backup
@@ -56,7 +52,6 @@ sMailbox8Backup::      mailmsg sMailbox8Backup
 sMailbox9Backup::      mailmsg sMailbox9Backup
 sMailbox10Backup::     mailmsg sMailbox10Backup
 
-; abe2
 	ds 164
 
 sRTCStatusFlags:: ds 8
@@ -76,9 +71,7 @@ sBackupMapData::     ds wMapDataEnd - wMapData
 sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
 sBackupGameDataEnd::
 
-; bd83
 	ds $18a
-; bf0d
 
 sBackupChecksum:: ds 2
 s0_bf0f:: ds 1 ; loaded with 0x7f, used to check save corruption
@@ -96,18 +89,15 @@ sMapData::     ds wMapDataEnd - wMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 
-; ab83
 	ds $18a
-; ad0d
 
 sChecksum::   ds 2
 s1_ad0f::     ds 1 ; loaded with 0x7f, used to check save corruption
 
 
 SECTION "Active Box", SRAM
-; ad10
+
 	box sBox
-; b160
 
 	ds $f4
 
@@ -116,17 +106,19 @@ SECTION "Link Battle Data", SRAM
 
 sLinkBattleResults:: ds $c
 
-sLinkBattleStats:: ; b260
+sLinkBattleStats::
 sLinkBattleWins::   ds 2
-sLinkBattleLosses:: ds 2 ; b262
-sLinkBattleDraws::  ds 2 ; b264
+sLinkBattleLosses:: ds 2
+sLinkBattleDraws::  ds 2
+
 link_battle_record: MACRO
 \1Name:: ds NAME_LENGTH +- 1
 \1ID:: ds 2
 \1Wins:: ds 2
 \1Losses:: ds 2
 \1Draws:: ds 2
-endm
+ENDM
+
 sLinkBattleRecord::
 sLinkBattleRecord1:: link_battle_record sLinkBattleRecord1
 sLinkBattleRecord2:: link_battle_record sLinkBattleRecord2
@@ -138,7 +130,7 @@ sLinkBattleStatsEnd::
 
 SECTION "SRAM Hall of Fame", SRAM
 
-sHallOfFame:: ; b2c0
+sHallOfFame::
 ; temporary until I can find a way to macrofy it
 	hall_of_fame sHallOfFame01
 	hall_of_fame sHallOfFame02
@@ -170,6 +162,7 @@ sHallOfFame:: ; b2c0
 	hall_of_fame sHallOfFame28
 	hall_of_fame sHallOfFame29
 	hall_of_fame sHallOfFame30
+sHallOfFameEnd::
 
 ; x = 1
 ; rept NUM_HOF_TEAMS
@@ -183,30 +176,30 @@ sHallOfFame:: ; b2c0
 ; endc
 ; x = x + 1
 ; endr
-sHallOfFameEnd::
 
 
 SECTION "SRAM Battle Tower", SRAM
 
 ; data of the BattleTower must be in SRAM because you can save and leave between battles
-sBattleTowerChallengeState:: ds 1
+
 ; 0: normal
 ; 2: battle tower
+sBattleTowerChallengeState:: ds 1
 
-sBattleTower:: ; be46
+sBattleTower::
 sNrOfBeatenBattleTowerTrainers:: ds 1
 sBTChoiceOfLevelGroup:: ds 1
+
 ; The 7 trainers of the BattleTower are saved here, so nobody appears more than once
 sBTTrainers:: ; sbe48
 	ds BATTLETOWER_NROFTRAINERS
+
 sBattleTowerNewSaveFile:: ds 1
-; Pkmn of previous trainer
-sBTPkmnOfTrainers:: ; 0xbe51
-sBTPkmnPrevTrainer1::
-	ds 1
+
+sBTPkmnOfTrainers::
+sBTPkmnPrevTrainer1:: ds 1
 sBTPkmnPrevTrainer2:: ds 1
 sBTPkmnPrevTrainer3:: ds 1
-; Pkmn of preprevious trainer
 sBTPkmnPrevPrevTrainer1:: ds 1
 sBTPkmnPrevPrevTrainer2:: ds 1
 sBTPkmnPrevPrevTrainer3:: ds 1
