@@ -20,8 +20,7 @@ WRAMX $1
 	org $d000
 	"WRAM 1"
 	"Enemy Party"
-;	"Map Triggers"
-;	"WRAM Events"
+	"Game Data"
 	"Party"
 
 WRAMX $2

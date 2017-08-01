@@ -1999,6 +1999,9 @@ wBugContestSecsRemaining:: ds 1
 	ds 2
 wMapStatusEnd:: ds 2
 
+
+SECTION "Game Data", WRAMX
+
 wGameData::
 wPlayerData::
 PlayerID::
@@ -2236,8 +2239,6 @@ FarfetchdPosition::
 	ds 1 ; which position the ilex farfetch'd is in
 
 
-;SECTION "Map Triggers", WRAMX
-
 wPokecenter2FTrigger::                       ds 1
 wTradeCenterTrigger::                        ds 1
 wColosseumTrigger::                          ds 1
@@ -2336,8 +2337,6 @@ wShamoutiHotelRestaurantTrigger::            ds 1
 
 	ds 10 ; extra space set aside
 
-
-;SECTION "WRAM Events", WRAMX
 
 wJackFightCount::    ds 1
 wBeverlyFightCount:: ds 1 ; unused
