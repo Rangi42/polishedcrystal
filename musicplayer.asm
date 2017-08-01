@@ -599,13 +599,16 @@ DrawChData:
 	ld [hl], a
 
 	hlcoord 17, MP_HUD_TOP + 2
+	ld a, [wChannelSelectorSwitches + CHAN4]
+	and a
+	jr nz, .blank_hit
 	ld a, [wNoiseHit]
 	and a
-	jr nz, .hit
-	ld a, " "
-	jr .got_hit
-.hit
+	jr z, .blank_hit
 	ld a, $e1
+	jr .got_hit
+.blank_hit
+	ld a, " "
 .got_hit
 	ld [hl], a
 	xor a

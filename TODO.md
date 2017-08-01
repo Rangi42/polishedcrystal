@@ -105,7 +105,6 @@ Low priority:
 ### Music player
 
 * Allow varying tempo as well as pitch
-* Hide all channel data when it is disabled (note name, duty cycle, volume, and waveform)
 * Hold Up/Down to continuously scroll in the song list
 * Fix the piano roll graphics "leaking" into the song list
 * Use the UnlockedMusic flag_array to hide unheard song titles
