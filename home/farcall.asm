@@ -24,7 +24,8 @@ FarCall_hl::
 	jr DoFarCall
 
 RstFarCall::
-; Call the following dba pointer on the stack. Doesn't mangle registers in the process
+; Call the following dba pointer on the stack.
+; Preserves a, bc, de, hl
 	ld [wFarCallSavedA], a
 	ld a, h
 	ld [wFarCallHLBuffer], a
@@ -33,26 +34,22 @@ RstFarCall::
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a
+	add a
+	jr c, .farjp
 	inc hl
 	inc hl
-	push af
-	sub $80
-	jr nc, .jump
-	pop af
 	push hl
-	jr .ok
-.jump
-	ld [hBuffer], a
-	pop af
-.ok
 	dec hl
-	ld a, [hld]
-	ld l, [hl]
-	ld h, a
+	dec hl
+.farjp
 	ld a, [hROMBank]
 	push af
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 DoFarCall:
 	ld a, [hBuffer]
+	and $7f
 	rst Bankswitch
 	call RetrieveHLAndCallFunction
 
