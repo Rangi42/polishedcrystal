@@ -5321,61 +5321,74 @@ CheckRunSpeed:
 	ld a, [wNumFleeAttempts]
 	inc a
 	ld [wNumFleeAttempts], a
-	ld a, h
-	ld [hStringCmpString2 + 0], a
-	ld a, l
-	ld [hStringCmpString2 + 1], a
-	ld a, d
-	ld [hStringCmpString1 + 0], a
-	ld a, e
-	ld [hStringCmpString1 + 1], a
-	call Call_LoadTempTileMapToTileMap
-	ld de, hStringCmpString2
-	ld hl, hStringCmpString1
-	ld c, $2
-	call StringCmp
-	jr nc, .can_escape
 
-	xor a
-	ld [hMultiplicand], a
-	ld a, $20
-	ld [hMultiplier], a
-	call Multiply
-	ld a, [hProduct + 2]
-	ld [hDividend + 0], a
-	ld a, [hProduct + 3]
-	ld [hDividend + 1], a
-	ld a, [hStringCmpString1 + 0]
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+
+	ld a, [de]
 	ld b, a
-	ld a, [hStringCmpString1 + 1]
-	srl b
-	rr a
-	srl b
-	rr a
-	and a
+	inc de
+	ld a, [de]
+	ld e, a
+	ld d, b
+	; hl = player speed
+	; de = enemy speed
+
+	push hl
+	push de
+	call Call_LoadTempTileMapToTileMap
+	pop de
+	pop hl
+
+	; compare hl and de
+	ld a, l
+	sub e
+	ld a, h
+	sbc d
+	jr nc, .can_escape
+	; multiply player speed by 32
+	add hl, hl ; x2
+	add hl, hl ; x4
+	add hl, hl ; x8
+	add hl, hl ; x16
+	add hl, hl ; x32
+
+	; store PSpeed*32 into dividend
+	ld a, h
+	ld [hDividend], a
+	ld a, l
+	ld [hDividend + 1], a
+
+	; divide ESpeed by 4
+	srl d
+	rr e
+	srl d
+	rr e
+	ld a, e
+	and a ; prevent division by 0
 	jr z, .can_escape
+	; calculate PSpeed*32/(ESpeed/4)
 	ld [hDivisor], a
 	ld b, 2
 	call Divide
 	ld a, [hQuotient + 1]
-	and a
+	and a ; player can escape if result is greater than 255
 	jr nz, .can_escape
 	ld a, [wNumFleeAttempts]
 	ld c, a
-.loop
-	dec c
-	jr z, .cant_escape_2
-	ld b, 30
 	ld a, [hQuotient + 2]
-	add b
-	ld [hQuotient + 2], a
+	jr .handleLoop
+.loop
+	add 30
 	jr c, .can_escape
-	jr .loop
-
-.cant_escape_2
+.handleLoop
+	dec c
+	jr nz, .loop
+	ld c, a
 	call BattleRandom
 	ld b, a
-	ld a, [hQuotient + 2]
+	ld a, c
 	cp b
 	jr nc, .can_escape
 	ld a, $1

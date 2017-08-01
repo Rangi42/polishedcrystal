@@ -50,9 +50,6 @@ hBuffer3           EQU $ffb2
 
 hPastLeadingZeroes EQU $ffb3
 
-hStringCmpString1  EQU $ffb1
-hStringCmpString2  EQU $ffb5
-
 ; Arithmetic addresses aren't seperate, to simplify
 ; chain usage. The exact format is (all big endian):
 ;  hDividend   hProduct
