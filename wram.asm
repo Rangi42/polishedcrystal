@@ -285,7 +285,8 @@ wSelectorCur:: ds 1
 wChannelSelector:: ds 1
 ; audio engine input
 wChannelSelectorSwitches:: ds 4
-wTranspositionInterval:: ds 1
+wPitchTransposition:: ds 1
+wTempoAdjustment:: ds 1
 ; audio engine output
 wNoiseHit:: ds 1
 MusicPlayerWRAMEnd::

@@ -348,7 +348,7 @@ SongEditor:
 	dec a
 	cp -1
 	jr nz, .no_underflow
-	ld a, NUM_MP_EDIT_FIELDS - 1 ; MP_EDIT_PITCH
+	ld a, NUM_MP_EDIT_FIELDS - 1 ; MP_EDIT_TEMPO
 .no_underflow
 	ld [wChannelSelector], a
 	call DrawChannelSelector
@@ -368,10 +368,14 @@ SongEditor:
 	jr SongEditor
 
 .a:
-; toggle editable field (except pitch)
+; for pitch: nothing
+; for tempo: apply tempo adjustment
+; otherwise: toggle editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
-	jr z, SongEditor
+	jp z, SongEditor
+	cp MP_EDIT_TEMPO
+	jp z, .a_tempo
 	ld c, a
 	ld b, 0
 	ld hl, wChannelSelectorSwitches
@@ -385,9 +389,12 @@ SongEditor:
 .up:
 ; for wave: next waveform
 ; for pitch: increase pitch transposition
+; for tempo: increase tempo adjustment
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .up_pitch
+	cp MP_EDIT_TEMPO
+	jr z, .up_tempo
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
@@ -401,9 +408,12 @@ SongEditor:
 .down:
 ; for wave: previous waveform
 ; for pitch: decrease pitch transposition
+; for tempo: decrease tempo adjustment
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .down_pitch
+	cp MP_EDIT_TEMPO
+	jr z, .down_tempo
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
@@ -423,7 +433,7 @@ SongEditor:
 	jp SongEditor
 
 .up_pitch:
-	ld a, [wTranspositionInterval]
+	ld a, [wPitchTransposition]
 	inc a
 	cp MAX_PITCH_TRANSPOSITION + 1
 	jr nz, .change_pitch
@@ -431,14 +441,43 @@ SongEditor:
 	jr .change_pitch
 
 .down_pitch:
-	ld a, [wTranspositionInterval]
+	ld a, [wPitchTransposition]
 	dec a
 	cp -(MAX_PITCH_TRANSPOSITION + 1)
 	jr nz, .change_pitch
 	ld a, MAX_PITCH_TRANSPOSITION
 .change_pitch:
-	ld [wTranspositionInterval], a
-	call DrawTranspositionInterval
+	ld [wPitchTransposition], a
+	call DrawPitchTransposition
+	xor a
+	ld [hBGMapThird], a
+	call DelayFrame
+	jp SongEditor
+
+.a_tempo:
+	ld a, [wSongSelection]
+	ld e, a
+	ld d, 0
+	farcall PlayMusic2
+	jp SongEditor
+
+.up_tempo:
+	ld a, [wTempoAdjustment]
+	inc a
+	cp MAX_TEMPO_ADJUSTMENT + 1
+	jr nz, .change_tempo
+	ld a, -MAX_TEMPO_ADJUSTMENT
+	jr .change_tempo
+
+.down_tempo:
+	ld a, [wTempoAdjustment]
+	dec a
+	cp -(MAX_TEMPO_ADJUSTMENT + 1)
+	jr nz, .change_tempo
+	ld a, MAX_TEMPO_ADJUSTMENT
+.change_tempo:
+	ld [wTempoAdjustment], a
+	call DrawTempoAdjustment
 	xor a
 	ld [hBGMapThird], a
 	call DelayFrame
@@ -458,7 +497,8 @@ SongEditor:
 	call ClearChannelSelector
 	xor a ; ld a, MP_EDIT_CH1
 	ld [wChannelSelector], a
-	call DrawTranspositionInterval
+	call DrawPitchTransposition
+	call DrawTempoAdjustment
 	jp MusicPlayerLoop
 
 DrawPianoRollOverlay:
@@ -483,13 +523,13 @@ DrawPianoRollOverlay:
 	ld [hBGMapThird], a
 	jp DelayFrame
 
-DrawTranspositionInterval:
-	hlcoord 16, 1
-	ld de, .EmptyPitch
+DrawPitchTransposition:
+	hlcoord 15, 1
+	ld de, _EmptyPitchOrTempo
 	call PlaceString
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
-	ld a, [wTranspositionInterval]
+	ld a, [wPitchTransposition]
 	jr z, .continue
 	and a
 	ret z
@@ -497,7 +537,7 @@ DrawTranspositionInterval:
 	ld [hl], "P"
 	bit 7, a
 	jr nz, .negative
-	ld de, wTranspositionInterval
+	ld de, wPitchTransposition
 	ld a, "+"
 	jr .printnum
 .negative
@@ -507,26 +547,62 @@ DrawTranspositionInterval:
 	ld [de], a
 	ld a, "-"
 .printnum
-	hlcoord 17, 1
+	hlcoord 16, 1
 	ld [hli], a
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	jp PrintNum
 
-.EmptyPitch: db "    @"
+DrawTempoAdjustment:
+	hlcoord 15, 2
+	ld de, _EmptyPitchOrTempo
+	call PlaceString
+	ld a, [wChannelSelector]
+	cp MP_EDIT_TEMPO
+	ld a, [wTempoAdjustment]
+	jr z, .continue
+	and a
+	ret z
+.continue
+	ld [hl], "T"
+	bit 7, a
+	jr nz, .negative
+	ld de, wTempoAdjustment
+	ld a, "+"
+	jr .printnum
+.negative
+	xor $ff
+	inc a
+	ld de, wTmpValue
+	ld [de], a
+	ld a, "-"
+.printnum
+	hlcoord 16, 2
+	ld [hli], a
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	jp PrintNum
+
+_EmptyPitchOrTempo: db "    @"
 
 DrawChannelSelector:
-	call DrawTranspositionInterval
+	call DrawPitchTransposition
+	call DrawTempoAdjustment
 	ld a, [wChannelSelector]
 	cp -1
 	ret z
 	cp MP_EDIT_PITCH
 	jr z, .pitch
+	cp MP_EDIT_TEMPO
+	jr z, .tempo
 	call _LocateChannelSelector
 	ld [hl], "◀"
 	ret
 
 .pitch:
-	hlcoord 15, 1
+	hlcoord 14, 1
+	jr .draw
+.tempo:
+	hlcoord 14, 2
+.draw
 	ld [hl], "▶"
 	ret
 
@@ -534,12 +610,19 @@ ClearChannelSelector:
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .pitch
+	cp MP_EDIT_TEMPO
+	jr z, .tempo
 	call _LocateChannelSelector
 	ld [hl], $1e
-	jr DrawTranspositionInterval
+	call DrawPitchTransposition
+	jr DrawTempoAdjustment
 
 .pitch:
-	hlcoord 15, 1
+	hlcoord 14, 1
+	jr .clear
+.tempo:
+	hlcoord 14, 2
+.clear
 	ld [hl], " "
 	ret
 

@@ -1889,6 +1889,23 @@ Music_Tempo: ; e899a
 	ld d, a
 	call GetMusicByte
 	ld e, a
+	ld a, [CurChannel]
+	cp CHAN5
+	jp nc, SetGlobalTempo
+	push hl
+	ld a, [wTempoAdjustment]
+	ld l, a
+	bit 7, a
+	jr nz, .negative
+	ld h, 0
+	jr .ok
+.negative
+	ld h, $ff
+.ok
+	add hl, de
+	push hl
+	pop de
+	pop hl
 	jp SetGlobalTempo
 
 ; e89a6
@@ -2105,7 +2122,7 @@ GetFrequency: ; e8a5d
 ; 	de: frequency
 
 ; get octave
-	ld a, [wTranspositionInterval]
+	ld a, [wPitchTransposition]
 	bit 7, a
 	jr nz, .negative
 	add e
