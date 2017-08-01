@@ -868,6 +868,7 @@ MoveEffectPriorities: ; 3c5df
 	db PROTECT,       4
 	db ENDURE,        4
 	db EXTREMESPEED,  2
+	db AQUA_JET,      1
 	db SUCKER_PUNCH,  1
 	db BULLET_PUNCH,  1
 	db ICE_SHARD,     1

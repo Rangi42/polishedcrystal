@@ -1016,7 +1016,6 @@ BattleCommand_DoTurn:
 
 .continuousmoves ; 34602
 	db EFFECT_RAZOR_WIND
-	db EFFECT_SKY_ATTACK
 	db EFFECT_SKULL_BASH
 	db EFFECT_SOLAR_BEAM
 	db EFFECT_FLY
@@ -1993,8 +1992,6 @@ BattleCommand_CheckHit:
 	ret z
 	cp THUNDER
 	ret z
-	cp TWISTER
-	ret z
 	cp HURRICANE
 	ret
 
@@ -2106,8 +2103,6 @@ BattleCommand_LowerSub: ; 34eee
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_RAZOR_WIND
-	jr z, .charge_turn
-	cp EFFECT_SKY_ATTACK
 	jr z, .charge_turn
 	cp EFFECT_SKULL_BASH
 	jr z, .charge_turn
@@ -2899,10 +2894,6 @@ BattleCommand_PostHitEffects:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_FLINCH_HIT
-	ret z
-	cp EFFECT_SKY_ATTACK
-	ret z
-	cp EFFECT_TWISTER
 	ret z
 	cp EFFECT_STOMP
 	ret z
@@ -4627,8 +4618,6 @@ BattleCommand_SleepTalk: ; 35b33
 	cp EFFECT_SKULL_BASH
 	ret z
 	cp EFFECT_RAZOR_WIND
-	ret z
-	cp EFFECT_SKY_ATTACK
 	ret z
 	cp EFFECT_SOLAR_BEAM
 	ret z
@@ -6901,10 +6890,6 @@ BattleCommand_Charge:
 	cp SOLAR_BEAM
 	ret z
 
-	ld hl, .SkyAttack
-	cp SKY_ATTACK
-	ret z
-
 	ld hl, .Fly
 	cp FLY
 	ret z
@@ -6916,11 +6901,6 @@ BattleCommand_Charge:
 .SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
-	db "@"
-
-.SkyAttack:
-; 'is glowing!'
-	text_jump UnknownText_0x1c0d4e
 	db "@"
 
 .Fly:

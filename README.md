@@ -253,6 +253,10 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Sand-Attack with Toxic Spikes.
 * Add: Replace Fairy Wind with Bulldoze.
 * Add: Replace Metal Sound with Roost.
+* Add: Replace Sky Attack with Brave Bird.
+* Add: Replace Twister with Aqua Jet.
+* Add: Replace Sludge with Venoshock.
+* Add: Replace Egg Bomb with Skill Swap.
 * Add: Giga Impact.
 * Add: NPC trainers can have nicknamed Pokémon.
 * Add: NPC trainers can have custom EVs.

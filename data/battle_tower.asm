@@ -984,7 +984,7 @@ BattleTowerMons4:
 
 	db EXEGGUTOR
 	db BRIGHTPOWDER
-	db EGG_BOMB, STOMP, MEGA_DRAIN, CONFUSION
+	db OUTRAGE, STOMP, MEGA_DRAIN, CONFUSION
 	db $ef, $7e, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -996,7 +996,7 @@ BattleTowerMons4:
 
 	db MUK
 	db QUICK_CLAW
-	db SCREECH, TOXIC, SLUDGE, HARDEN
+	db SCREECH, TOXIC, SLUDGE_BOMB, HARDEN
 	db $67, $56, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1478,7 +1478,7 @@ BattleTowerMons8:
 
 	db MOLTRES
 	db CHARCOAL
-	db FLAMETHROWER, SKY_ATTACK, STEEL_WING, HYPER_BEAM
+	db FLAMETHROWER, BRAVE_BIRD, STEEL_WING, HYPER_BEAM
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1710,7 +1710,7 @@ BattleTowerMons10:
 
 	db PIDGEOT
 	db KINGS_ROCK
-	db DRILL_PECK, STEEL_WING, HURRICANE, TWISTER
+	db DRILL_PECK, STEEL_WING, HURRICANE, SWIFT
 	db $cf, $dc, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 

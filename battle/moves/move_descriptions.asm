@@ -119,10 +119,10 @@
 	dw MetronomeDescription
 	dw ScaldDescription
 	dw SelfdestructDescription
-	dw EggBombDescription
+	dw SkillSwapDescription
 	dw LickDescription
 	dw GunkShotDescription
-	dw SludgeDescription
+	dw VenoshockDescription
 	dw EarthPowerDescription
 	dw FireBlastDescription
 	dw WaterfallDescription
@@ -141,7 +141,7 @@
 	dw BulletPunchDescription
 	dw LeechLifeDescription
 	dw DrainKissDescription
-	dw SkyAttackDescription
+	dw BraveBirdDescription
 	dw TransformDescription
 	dw WaterPulseDescription
 	dw DizzyPunchDescription
@@ -237,7 +237,7 @@
 	dw MoonlightDescription
 	dw HiddenPowerDescription
 	dw CrossChopDescription
-	dw TwisterDescription
+	dw AquaJetDescription
 	dw RainDanceDescription
 	dw SunnyDayDescription
 	dw CrunchDescription
@@ -325,7 +325,6 @@ FocusBlastDescription:
 	next "lower Spcl.Def.@"
 
 PoisonStingDescription:
-SludgeDescription:
 PoisonJabDescription:
 GunkShotDescription:
 	db   "An attack that may"
@@ -512,7 +511,6 @@ LightScreenDescription:
 	db   "Ups Spcl.Def with"
 	next "a wall of light.@"
 
-SkyAttackDescription:
 SolarBeamDescription:
 	db   "1st turn: Prepare"
 	next "2nd turn: Attack@"
@@ -629,6 +627,7 @@ DoubleEdgeDescription:
 
 FlareBlitzDescription:
 WildChargeDescription:
+BraveBirdDescription:
 	db   "A charge that also"
 	next "hurts the user.@"
 
@@ -758,9 +757,13 @@ SelfdestructDescription:
 	db   "Powerful but makes"
 	next "the user faint.@"
 
-EggBombDescription:
-	db   "Eggs are hurled at"
-	next "the foe.@"
+SkillSwapDescription:
+	db   "Swaps abilities"
+	next "with the foe.@"
+
+VenoshockDescription:
+	db   "Damage doubles if"
+	next "foe is poisoned.@"
 
 IcicleSpearDescription:
 	db   "Fires icicles to"
@@ -1036,9 +1039,9 @@ HiddenPowerDescription:
 	db   "The type varies"
 	next "with the #mon.@"
 
-TwisterDescription:
-	db   "Whips up a tornado"
-	next "to attack.@"
+AquaJetDescription:
+	db   "A speedy lunge."
+	next "Hits first.@"
 
 MirrorCoatDescription:
 	db   "Counters a Spcl."

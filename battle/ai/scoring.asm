@@ -391,7 +391,6 @@ AI_Smart: ; 386be
 	dbw EFFECT_PSYCH_UP,          AI_Smart_PsychUp
 	dbw EFFECT_MIRROR_COAT,       AI_Smart_MirrorCoat
 	dbw EFFECT_SKULL_BASH,        AI_Smart_SkullBash
-	dbw EFFECT_TWISTER,           AI_Smart_Twister
 	dbw EFFECT_EARTHQUAKE,        AI_Smart_Earthquake
 	dbw EFFECT_FUTURE_SIGHT,      AI_Smart_FutureSight
 	dbw EFFECT_GUST,              AI_Smart_Gust
@@ -2685,7 +2684,6 @@ AI_Smart_MirrorCoat: ; 3918b
 ; 391d5
 
 
-AI_Smart_Twister:
 AI_Smart_Gust: ; 391d5
 
 ; Greatly encourage this move if the player is flying and the enemy is faster.

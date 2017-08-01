@@ -81,7 +81,6 @@
 	dw TriAttack
 	dw SuperFang
 	dw Transform
-	dw SkyAttack
 	dw Substitute
 	dw HyperBeam
 	dw Rage
@@ -129,7 +128,6 @@
 	dw SunnyDay
 	dw BellyDrum
 	dw MirrorCoat
-	dw Twister
 	dw Earthquake
 	dw FutureSight
 	dw Gust
