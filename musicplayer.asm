@@ -458,6 +458,7 @@ SongEditor:
 	call ClearChannelSelector
 	xor a ; ld a, MP_EDIT_CH1
 	ld [wChannelSelector], a
+	call DrawTranspositionInterval
 	jp MusicPlayerLoop
 
 DrawPianoRollOverlay:
@@ -472,7 +473,6 @@ DrawPianoRollOverlay:
 	call ByteFill
 
 	call DrawSongInfo
-	call DrawTranspositionInterval
 	call DrawChannelSelector
 
 	ld a, 5
@@ -484,12 +484,17 @@ DrawPianoRollOverlay:
 	jp DelayFrame
 
 DrawTranspositionInterval:
-	hlcoord 17, 1
+	hlcoord 16, 1
 	ld de, .EmptyPitch
 	call PlaceString
+	ld a, [wChannelSelector]
+	cp MP_EDIT_PITCH
 	ld a, [wTranspositionInterval]
+	jr z, .continue
 	and a
 	ret z
+.continue
+	ld [hl], "P"
 	bit 7, a
 	jr nz, .negative
 	ld de, wTranspositionInterval
@@ -507,9 +512,10 @@ DrawTranspositionInterval:
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	jp PrintNum
 
-.EmptyPitch: db "   @"
+.EmptyPitch: db "    @"
 
 DrawChannelSelector:
+	call DrawTranspositionInterval
 	ld a, [wChannelSelector]
 	cp -1
 	ret z
@@ -520,7 +526,7 @@ DrawChannelSelector:
 	ret
 
 .pitch:
-	hlcoord 16, 1
+	hlcoord 15, 1
 	ld [hl], "▶"
 	ret
 
@@ -530,10 +536,10 @@ ClearChannelSelector:
 	jr z, .pitch
 	call _LocateChannelSelector
 	ld [hl], $1e
-	ret
+	jr DrawTranspositionInterval
 
 .pitch:
-	hlcoord 16, 1
+	hlcoord 15, 1
 	ld [hl], " "
 	ret
 
