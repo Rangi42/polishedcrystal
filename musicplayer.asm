@@ -479,6 +479,8 @@ SongEditor:
 AdjustTempo:
 	ld a, 1
 	ld [wAdjustingTempo], a
+	ld a, [wTempoAdjustment]
+	ld [wTmpValue], a
 
 	call DrawChannelSelector
 	; refresh top two portions
@@ -557,15 +559,18 @@ AdjustTempo:
 	jp .loop
 
 .a:
-; apply tempo adjustment
+; apply tempo adjustment and exit tempo adjustment mode
 	ld a, [wSongSelection]
 	ld e, a
 	ld d, 0
 	farcall PlayMusic2
-; fallthrough
+	jr .exit
 
 .b:
-; exit tempo adjustment mode
+; discard adjustment and exit tempo adjustment mode
+	ld a, [wTmpValue]
+	ld [wTempoAdjustment], a
+.exit:
 	xor a
 	ld [wAdjustingTempo], a
 	call DrawChannelSelector
@@ -665,7 +670,7 @@ DrawTempoAdjustment:
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	jp PrintNum
 
-_EmptyPitchOrTempo: db "    @"
+_EmptyPitchOrTempo: db "     @"
 
 DrawChannelSelector:
 	call DrawPitchTransposition
