@@ -30,7 +30,7 @@
 	add_tm DIG          ; $1b
 	add_tm PSYCHIC      ; $1c
 	add_tm SHADOW_BALL  ; $1d
-	add_tm MUD_SLAP     ; $1e
+	add_tm ROOST        ; $1e
 	add_tm DOUBLE_TEAM  ; $1f
 	add_tm REFLECT      ; $20
 	add_tm FLASH_CANNON ; $21
@@ -82,27 +82,28 @@ NUM_HMS = const_value - HM01
 
 	add_mt AQUA_TAIL    ; $4c
 	add_mt BODY_SLAM    ; $4d
-	add_mt COUNTER      ; $4e
-	add_mt DEFENSE_CURL ; $4f
-	add_mt DOUBLE_EDGE  ; $50
-	add_mt DREAM_EATER  ; $51
-	add_mt EARTH_POWER  ; $52
-	add_mt FIRE_PUNCH   ; $53
-	add_mt HEADBUTT     ; $54
-	add_mt HYPER_VOICE  ; $55
-	add_mt ICE_PUNCH    ; $56
-	add_mt ICY_WIND     ; $57
-	add_mt IRON_HEAD    ; $58
-	add_mt PAY_DAY      ; $59
-	add_mt ROLLOUT      ; $5a
-	add_mt SEED_BOMB    ; $5b
-	add_mt SEISMIC_TOSS ; $5c
-	add_mt SLEEP_TALK   ; $5d
-	add_mt SUBSTITUTE   ; $5e
-	add_mt SUCKER_PUNCH ; $5f
-	add_mt SWAGGER      ; $60
-	add_mt THUNDERPUNCH ; $61
-	add_mt VOLT_SWITCH  ; $62
-	add_mt WATER_PULSE  ; $63
-	add_mt ZAP_CANNON   ; $64
-	add_mt ZEN_HEADBUTT ; $65
+	add_mt BULLDOZE     ; $4e
+	add_mt COUNTER      ; $4f
+	add_mt DEFENSE_CURL ; $50
+	add_mt DOUBLE_EDGE  ; $51
+	add_mt DREAM_EATER  ; $52
+	add_mt EARTH_POWER  ; $53
+	add_mt FIRE_PUNCH   ; $54
+	add_mt HEADBUTT     ; $55
+	add_mt HYPER_VOICE  ; $56
+	add_mt ICE_PUNCH    ; $57
+	add_mt ICY_WIND     ; $58
+	add_mt IRON_HEAD    ; $59
+	add_mt PAY_DAY      ; $5a
+	add_mt ROLLOUT      ; $5b
+	add_mt SEED_BOMB    ; $5c
+	add_mt SEISMIC_TOSS ; $5d
+	add_mt SLEEP_TALK   ; $5e
+	add_mt SUBSTITUTE   ; $5f
+	add_mt SUCKER_PUNCH ; $60
+	add_mt SWAGGER      ; $61
+	add_mt THUNDERPUNCH ; $62
+	add_mt VOLT_SWITCH  ; $63
+	add_mt WATER_PULSE  ; $64
+	add_mt ZAP_CANNON   ; $65
+	add_mt ZEN_HEADBUTT ; $66

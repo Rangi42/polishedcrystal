@@ -51,7 +51,7 @@ FalknerScript_0x683c2:
 	waitsfx
 	setflag ENGINE_ZEPHYRBADGE
 .FightDone:
-	checkevent EVENT_GOT_TM31_MUD_SLAP
+	checkevent EVENT_GOT_TM31_ROOST
 	iftrue .SpeechAfterTM
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
@@ -59,8 +59,8 @@ FalknerScript_0x683c2:
 	specialphonecall SPECIALCALL_ASSISTANT
 	writetext UnknownText_0x685c8
 	buttonsound
-	verbosegivetmhm TM_MUD_SLAP
-	setevent EVENT_GOT_TM31_MUD_SLAP
+	verbosegivetmhm TM_ROOST
+	setevent EVENT_GOT_TM31_ROOST
 	writetext UnknownText_0x68648
 	waitbutton
 	closetext
@@ -191,17 +191,11 @@ UnknownText_0x68648:
 	cont "you want."
 
 	para "TM31 contains"
-	line "Mud-Slap."
+	line "Roost."
 
-	para "It reduces the"
-	line "enemy's accuracy"
-
-	para "while it causes"
-	line "damage."
-
-	para "In other words, it"
-	line "is both defensive"
-	cont "and offensive."
+	para "It lands on the"
+	line "ground to restore"
+	cont "half the max HP."
 	done
 
 UnknownText_0x68735:

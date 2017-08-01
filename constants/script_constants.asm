@@ -32,7 +32,8 @@ LAST_TALKED EQU -2
 	const VAR_KENJI_BREAK      ; 1a
 	const VAR_BATTLEPOINTS     ; 1b
 	const VAR_PKMN_JOURNALS    ; 1c
-NUM_VARS EQU const_value       ; 1d
+	const VAR_TRAINER_STARS    ; 1d
+NUM_VARS EQU const_value       ; 1e
 
 RETVAR_STRBUF2 EQU (0 << 6)
 RETVAR_ADDR_DE EQU (1 << 6)

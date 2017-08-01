@@ -60,7 +60,7 @@ EvolutionMoves::
 	db EXTREMESPEED ; ARCANINE
 	db NO_MOVE      ; POLIWAG
 	db NO_MOVE      ; POLIWHIRL
-	db SUBMISSION   ; POLIWRATH
+	db CLOSE_COMBAT ; POLIWRATH
 	db NO_MOVE      ; ABRA
 	db FORESIGHT    ; KADABRA
 	db FORESIGHT    ; ALAKAZAM
@@ -116,8 +116,8 @@ EvolutionMoves::
 	db NO_MOVE      ; HORSEA
 	db NO_MOVE      ; SEADRA
 	db NO_MOVE      ; TOGEPI
-	db FAIRY_WIND   ; TOGETIC
-	db FAIRY_WIND   ; TOGEKISS
+	db DISARM_VOICE ; TOGETIC
+	db DISARM_VOICE ; TOGEKISS
 	db NO_MOVE      ; STARYU
 	db NO_MOVE      ; STARMIE
 	db NO_MOVE      ; MR__MIME
@@ -236,7 +236,7 @@ EvolutionMoves::
 	db NO_MOVE      ; TYROGUE
 	db LOW_KICK     ; HITMONTOP
 	db NO_MOVE      ; ELEKID
-	db CROSS_CHOP   ; ELECTIVIRE
+	db CLOSE_COMBAT ; ELECTIVIRE
 	db NO_MOVE      ; MAGBY
 	db FLASH_CANNON ; MAGMORTAR
 	db NO_MOVE      ; MILTANK
@@ -250,5 +250,5 @@ EvolutionMoves::
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH
 	db NO_MOVE      ; CELEBI
-	db FAIRY_WIND   ; SYLVEON
+	db DISARM_VOICE ; SYLVEON
 	db NASTY_PLOT   ; PORYGON_Z

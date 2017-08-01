@@ -13,7 +13,6 @@ DrillPeck:
 EggBomb:
 Extremespeed:
 FeintAttack:
-FairyWind:
 HiJumpKick:
 HornAttack:
 HydroPump:
@@ -175,7 +174,6 @@ IcicleSpear:
 RecoilHit:
 DoubleEdge:
 Struggle:
-Submission:
 TakeDown:
 WildCharge:
 	checkobedience
@@ -528,6 +526,7 @@ RockSmash:
 SpeedDownHit:
 IcyWind:
 BubbleBeam:
+Bulldoze:
 	checkobedience
 	usedmovetext
 	doturn
@@ -654,6 +653,30 @@ EvasionDownHit:
 	checkdestinybond
 	buildopponentrage
 	evasiondown
+	statdownmessage
+	pickpocket
+	endmove
+
+CloseCombat:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	closecombat
+	checkdestinybond
+	buildopponentrage
 	statdownmessage
 	pickpocket
 	endmove
@@ -1060,7 +1083,6 @@ SpecialDefenseDown:
 	endmove
 
 AccuracyDown:
-SandAttack:
 Smokescreen:
 Flash:
 	checkobedience
@@ -1156,7 +1178,6 @@ SpecialAttackDown2:
 	endmove
 
 SpecialDefenseDown2:
-MetalSound:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1241,6 +1262,14 @@ MilkDrink:
 	usedmovetext
 	doturn
 	heal
+	endmove
+
+Roost:
+	checkobedience
+	usedmovetext
+	doturn
+	heal
+	roost
 	endmove
 
 Rampage:
@@ -1738,6 +1767,15 @@ Spikes:
 	pressure
 	bounceback
 	spikes
+	endmove
+
+ToxicSpikes:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	bounceback
+	toxicspikes
 	endmove
 
 Foresight:

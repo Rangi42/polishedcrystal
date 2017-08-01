@@ -59,6 +59,8 @@ StdScripts::
 
 PokeCenterNurseScript:
 	opentext
+	checkevent EVENT_NURSE_SAW_FOUR_TRAINER_STARS
+	iftrue .four_star_center
 	checkmorn
 	iftrue .morn
 	checkday
@@ -110,10 +112,24 @@ PokeCenterNurseScript:
 	jump .ok
 
 .ok
+	checkcode VAR_TRAINER_STARS
+	if_not_equal 4, .ask_heal
+	farwritetext NurseFourTrainerStarsText
+	setevent EVENT_NURSE_SAW_FOUR_TRAINER_STARS
+	jump .answer_heal
+
+.ask_heal
 	farwritetext NurseAskHealText
+.answer_heal
 	yesorno
 	iffalse .done
+	jump .heal_pokemon
 
+.four_star_center
+	farwritetext NurseTheUsualText
+	yesorno
+	iffalse .done
+.heal_pokemon
 	farwritetext NurseTakePokemonText
 	pause 20
 	spriteface LAST_TALKED, LEFT

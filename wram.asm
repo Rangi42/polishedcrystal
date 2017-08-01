@@ -275,18 +275,20 @@ wC4Vol:: ds 1
 wC4VolSub:: ds 1
 wNoteEnded:: ds 3
 wSongInfoSwitch:: ds 1
-wRenderedWaveform:: ds 1
+;wRenderedWaveform:: ds 1
 wPitchesTmp:: ds 4
-wWaveformTmp:: ds 16
+;wWaveformTmp:: ds 16
 wTmpValue:: ds 1
 ; song list
 wSelectorTop:: ds 1
 wSelectorCur:: ds 1
 ; song editor
 wChannelSelector:: ds 1
+wAdjustingTempo:: ds 1
 ; audio engine input
 wChannelSelectorSwitches:: ds 4
-wTranspositionInterval:: ds 1
+wPitchTransposition:: ds 1
+wTempoAdjustment:: ds 1
 ; audio engine output
 wNoiseHit:: ds 1
 MusicPlayerWRAMEnd::
@@ -1514,7 +1516,7 @@ IsCurMonInParty::
 wItemQuantityChangeBuffer:: ds 1
 wItemQuantityBuffer:: ds 1
 
-TempMPWaveform::
+;TempMPWaveform::
 TempMon:: ; d10e
 	party_struct TempMon
 
@@ -2161,7 +2163,7 @@ PokemonJournalsEnd::
 	ds 2 ; extra space set aside
 
 UnlockedMusic::
-	flag_array NUM_MUSIC
+	flag_array NUM_SONGS
 UnlockedMusicEnd::
 	ds 2 ; extra space set aside
 

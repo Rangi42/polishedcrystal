@@ -296,8 +296,9 @@ const_value SET 3
 	const BRN
 	const FRZ
 	const PAR
+	const TOX
 
-ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
+ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + (1 << TOX) + SLP
 
 ; substatus
 	enum_start 7, -1
@@ -318,7 +319,6 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	enum SUBSTATUS_TRANSFORMED
 	enum SUBSTATUS_MAGIC_BOUNCE
 	enum SUBSTATUS_UNKNOWN_3
-	enum SUBSTATUS_TOXIC
 
 	enum_start 7, -1
 	enum SUBSTATUS_CONFUSED
@@ -335,17 +335,18 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	enum SUBSTATUS_RAGE
 	enum SUBSTATUS_RECHARGE
 	enum SUBSTATUS_SUBSTITUTE
-	enum SUBSTATUS_UNKNOWN_1
+	enum SUBSTATUS_ROOST
 	enum SUBSTATUS_FOCUS_ENERGY
 	enum SUBSTATUS_MIST
 	enum SUBSTATUS_CURLED ; formely in its own substatus
 
-; environmental
-	enum_start 4, -1
-	enum SCREENS_REFLECT
-	enum SCREENS_LIGHT_SCREEN
-	enum SCREENS_SAFEGUARD
-	enum SCREENS_SPIKES
+; environmental, things that stack are bitmasks
+SCREENS_REFLECT      EQU 0 ; %00000001
+SCREENS_LIGHT_SCREEN EQU 1 ; %00000010
+SCREENS_SAFEGUARD    EQU 2 ; %00000100
+;SCREENS_MIST         EQU 3   %00001000 TODO
+SCREENS_SPIKES       EQU     %00110000
+SCREENS_TOXIC_SPIKES EQU     %11000000
 
 ; weather
 	const_def
@@ -524,6 +525,9 @@ ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + SLP
 	const EFFECT_SKULL_BASH
 	const EFFECT_SWITCH_HIT
 	const EFFECT_SUCKER_PUNCH
+	const EFFECT_TOXIC_SPIKES
+	const EFFECT_ROOST
+	const EFFECT_CLOSE_COMBAT
 
 ; Battle vars used in home/battle.asm
 	const_def

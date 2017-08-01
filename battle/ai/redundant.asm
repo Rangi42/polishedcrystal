@@ -112,8 +112,10 @@ AI_Redundant: ; 2c41a
 
 .Spikes: ; 2c4e3
 	ld a, [PlayerScreens]
-	bit SCREENS_SPIKES, a
-	ret
+	and SCREENS_SPIKES
+	cp SCREENS_SPIKES
+	jr z, .Redundant
+	jr .NotRedundant
 
 .Foresight: ; 2c4e9
 	ld a, [PlayerSubStatus1]

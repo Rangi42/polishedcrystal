@@ -50,6 +50,12 @@ CanStealItem:
 	ld hl, BattleMonItem
 	ld bc, EnemyMonItem
 	jr z, .got_target
+
+	; Wildmons can't steal items
+	ld a, [wBattleMode]
+	dec a
+	ret z
+
 	ld hl, EnemyMonItem
 	ld bc, BattleMonItem
 .got_target

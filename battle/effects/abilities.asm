@@ -83,10 +83,6 @@ HealStatusAbility:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	and [hl]
-	res SUBSTATUS_TOXIC, [hl]
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
 	ld a, [hBattleTurn]
@@ -1143,7 +1139,13 @@ HarvestAbility:
 	ld [de], a
 
 	ld hl, HarvestedItemText
-	jr RegainItemByAbility
+	call RegainItemByAbility
+
+	; For the player, update backup items
+	ld a, [hBattleTurn]
+	and a
+	ret nz
+	jp SetBackupItem
 
 PickupAbility:
 ; At end of turn, pickup consumed opponent items if we don't have any
@@ -1196,9 +1198,7 @@ RegainItemByAbility:
 .got_item_addr
 	call GetPartyLocation
 	ld [hl], b
-
-	; Yes, also in trainer battles (unlike Pickup)
-	jp SetBackupItem
+	ret
 
 MoodyAbility:
 ; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
@@ -1552,7 +1552,7 @@ ShedSkinAbility:
 	; fallthrough
 NaturalCureAbility:
 HealAllStatusAbility:
-	ld a, 1 << PSN | 1 << BRN | 1 << FRZ | 1 << PAR | SLP
+	ld a, ALL_STATUS
 	jp HealStatusAbility
 
 AngerPointAbility:

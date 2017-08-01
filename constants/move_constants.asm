@@ -28,7 +28,7 @@
 	const FLARE_BLITZ  ; $19
 	const STONE_EDGE   ; $1a
 	const FOCUS_BLAST  ; $1b
-	const SAND_ATTACK  ; $1c
+	const TOXIC_SPIKES ; $1c
 	const HEADBUTT     ; $1d
 	const HORN_ATTACK  ; $1e
 	const FURY_ATTACK  ; $1f
@@ -66,7 +66,7 @@
 	const HYPER_BEAM   ; $3f
 	const PECK         ; $40
 	const DRILL_PECK   ; $41
-	const SUBMISSION   ; $42
+	const CLOSE_COMBAT ; $42
 	const LOW_KICK     ; $43
 	const COUNTER      ; $44
 	const SEISMIC_TOSS ; $45
@@ -132,9 +132,9 @@
 	const SWIFT        ; $81
 	const IRON_HEAD    ; $82
 	const ICICLE_SPEAR ; $83
-	const FAIRY_WIND   ; $84
+	const BULLDOZE     ; $84
 	const CALM_MIND    ; $85
-	const METAL_SOUND  ; $86
+	const ROOST        ; $86
 	const SOFTBOILED   ; $87
 	const HI_JUMP_KICK ; $88
 	const GLARE        ; $89

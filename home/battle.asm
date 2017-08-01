@@ -489,6 +489,7 @@ ContactMoves::
 	db BITE
 	db BODY_SLAM
 	db BULLET_PUNCH
+	db CLOSE_COMBAT
 	db COUNTER
 	db CRABHAMMER
 	db CROSS_CHOP
@@ -550,7 +551,6 @@ ContactMoves::
 	db STEEL_WING
 	db STOMP
 	db STRENGTH
-	db SUBMISSION
 	db SUPER_FANG
 	db TACKLE
 	db TAKE_DOWN
@@ -589,7 +589,6 @@ SoundMoves::
 	db DISARM_VOICE
 	db GROWL
 	db HYPER_VOICE
-	db METAL_SOUND
 	db PERISH_SONG
 	db ROAR
 	db SCREECH
@@ -605,6 +604,7 @@ SubstituteBypassMoves::
 	db ENCORE
 	db FORESIGHT
 	db SPIKES
+	db TOXIC_SPIKES
 	db -1
 
 DynamicPowerMoves::

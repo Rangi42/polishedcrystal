@@ -26,7 +26,7 @@
 	dw FlareBlitzDescription
 	dw StoneEdgeDescription
 	dw FocusBlastDescription
-	dw SandAttackDescription
+	dw ToxicSpikesDescription
 	dw HeadbuttDescription
 	dw HornAttackDescription
 	dw FuryAttackDescription
@@ -64,7 +64,7 @@
 	dw HyperBeamDescription
 	dw PeckDescription
 	dw DrillPeckDescription
-	dw SubmissionDescription
+	dw CloseCombatDescription
 	dw LowKickDescription
 	dw CounterDescription
 	dw SeismicTossDescription
@@ -130,9 +130,9 @@
 	dw SwiftDescription
 	dw IronHeadDescription
 	dw IcicleSpearDescription
-	dw FairyWindDescription
+	dw BulldozeDescription
 	dw CalmMindDescription
-	dw MetalSoundDescription
+	dw RoostDescription
 	dw SoftboiledDescription
 	dw HiJumpKickDescription
 	dw GlareDescription
@@ -404,7 +404,6 @@ StringShotDescription:
 	db   "A move that lowers"
 	next "the foe's Speed.@"
 
-SandAttackDescription:
 SmokescreenDescription:
 FlashDescription:
 	db   "A move that lowers"
@@ -422,9 +421,9 @@ ScaryFaceDescription:
 	db   "Sharply lowers the"
 	next "foe's Speed.@"
 
-MetalSoundDescription:
-	db   "Sharply lowers the"
-	next "foe's Spcl.Def.@"
+RoostDescription:
+	db   "Lands to restore"
+	next "1/2 the max HP.@"
 
 PoisonpowderDescription:
 	db   "A move that may"
@@ -679,9 +678,9 @@ DrillPeckDescription:
 	db   "A strong, spin-"
 	next "ning-peck attack.@"
 
-SubmissionDescription:
-	db   "An attack that al-"
-	next "so hurts the user.@"
+CloseCombatDescription:
+	db   "Lowers the user's"
+	next "Def and Sp.Def.@"
 
 CounterDescription:
 	db   "Returns a physical"
@@ -767,9 +766,9 @@ IcicleSpearDescription:
 	db   "Fires icicles to"
 	next "hit 2-5 times.@"
 
-FairyWindDescription:
-	db   "Strikes the foe"
-	next "with fairy wind.@"
+BulldozeDescription:
+	db   "A Ground attack"
+	next "that lowers Speed.@"
 
 HiJumpKickDescription:
 	db   "May miss and hurt"
@@ -890,7 +889,11 @@ OctazookaDescription:
 
 SpikesDescription:
 	db   "Hurts foes when"
-	next "they switch out.@"
+	next "they switch in.@"
+
+ToxicSpikesDescription:
+	db   "Poisons foes when"
+	next "they switch in.@"
 
 ZapCannonDescription:
 	db   "An attack that"

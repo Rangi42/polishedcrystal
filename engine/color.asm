@@ -78,7 +78,6 @@ LoadPlayerStatusIconPalette:
 	ld de, BattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPals
-	ld a, b
 	ld c, a
 	ld b, 0
 rept 2
@@ -94,7 +93,6 @@ LoadEnemyStatusIconPalette:
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPals
-	ld a, b
 	ld c, a
 	ld b, 0
 rept 2
@@ -132,12 +130,12 @@ endr
 
 LoadItemIconPalette:
 	ld a, [CurSpecies]
-	ld hl, ItemIconPalettes
-	ld c, a
-	ld b, 0
-rept 4
+	ld bc, ItemIconPalettes
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
 	add hl, bc
-endr
 	ld de, UnknBGPals + 4 palettes + 2
 	ld bc, 4
 	ld a, $5

@@ -150,7 +150,6 @@ LoadPlayerStatusIcon:
 	ld a, [PlayerSubStatus2]
 	ld de, BattleMonStatus
 	farcall GetStatusConditionIndex
-	ld a, b
 	ld hl, StatusIconGFX
 	ld de, 2 tiles
 .loop
@@ -174,7 +173,6 @@ LoadEnemyStatusIcon:
 	ld a, [EnemySubStatus2]
 	ld de, EnemyMonStatus
 	farcall GetStatusConditionIndex
-	ld a, b
 	ld hl, EnemyStatusIconGFX
 	ld de, 2 tiles
 .loop

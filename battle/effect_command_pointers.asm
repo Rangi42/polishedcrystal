@@ -178,3 +178,6 @@ BattleCommandPointers:
 	dw BattleCommand_BounceBack
 	dw BattleCommand_Pickpocket
 	dw BattleCommand_SuckerPunch
+	dw BattleCommand_ToxicSpikes
+	dw BattleCommand_Roost
+	dw BattleCommand_CloseCombat
