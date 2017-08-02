@@ -806,6 +806,16 @@ JustifiedAbility:
 	cp DARK
 	ret nz
 MoxieAbility:
+	; Don't run if battle is over
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy
+	ld a, [wBattleMode]
+	dec a
+	ret z
+.enemy
+	farcall CheckAnyOtherAliveOpponentMons
+	ret z
 SapSipperAbility:
 	ld b, ATTACK
 	jr StatUpAbility
