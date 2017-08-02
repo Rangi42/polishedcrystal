@@ -30,6 +30,32 @@ jpbutton: MACRO
 	jp nz, \2
 	ENDM
 
+jrheldbutton: MACRO
+	ld a, [TextDelayFrames]
+	and a
+	jr nz, \3
+	ld a, [hJoyDown]
+	and \1
+	jr z, \3
+	ld a, \4
+	ld [TextDelayFrames], a
+	jr \2
+\3:
+	ENDM
+
+jpheldbutton: MACRO
+	ld a, [TextDelayFrames]
+	and a
+	jr nz, \3
+	ld a, [hJoyDown]
+	and \1
+	jr z, \3
+	ld a, \4
+	ld [TextDelayFrames], a
+	jp \2
+\3:
+	ENDM
+
 MusicPlayerPals:
 if !DEF(MONOCHROME)
 	RGB 02, 03, 04
@@ -210,14 +236,8 @@ _RedrawMusicPlayer:
 MusicPlayerLoop:
 	ld a, $4
 	ld [rSVBK], a
-	call UpdateVisualIntensity
-	call DelayFrame
 
-	call DrawChData
-	call DrawNotes
-
-	call GetJoypad
-
+	call MPUpdateUIAndGetJoypad
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
 	jrbutton D_DOWN, .down
@@ -324,18 +344,12 @@ MusicPlayerLoop:
 ; fallthrough
 
 SongEditor:
-	call UpdateVisualIntensity
-	call DelayFrame
-
-	call DrawChData
-	call DrawNotes
-
-	call GetJoypad
+	call MPUpdateUIAndGetJoypad
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
 	jrbutton A_BUTTON, .a
-	jrbutton D_UP, .up
-	jrbutton D_DOWN, .down
+	jrheldbutton D_UP, .up, .no_up, 10
+	jrheldbutton D_DOWN, .down, .no_down, 10
 	jpbutton START, .start
 	jpbutton SELECT | B_BUTTON, .select_b
 
@@ -368,7 +382,7 @@ SongEditor:
 .no_overflow
 	ld [wChannelSelector], a
 	call DrawChannelSelector
-	jr SongEditor
+	jp SongEditor
 
 .a:
 ; for pitch: nothing
@@ -392,12 +406,9 @@ SongEditor:
 .up:
 ; for wave: next waveform
 ; for pitch: increase pitch transposition
-; for tempo: previous editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .up_pitch
-	cp MP_EDIT_TEMPO
-	jr z, .left
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
@@ -411,12 +422,9 @@ SongEditor:
 .down:
 ; for wave: previous waveform
 ; for pitch: decrease pitch transposition
-; for tempo: next editable field
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	jr z, .down_pitch
-	cp MP_EDIT_TEMPO
-	jr z, .right
 	cp MP_EDIT_WAVE
 	jp nz, SongEditor
 	ld a, [Channel3Intensity]
@@ -489,17 +497,11 @@ AdjustTempo:
 	call DelayFrame
 
 .loop:
-	call UpdateVisualIntensity
-	call DelayFrame
-
-	call DrawChData
-	call DrawNotes
-
-	call GetJoypad
-	jrbutton D_UP, .up
-	jrbutton D_DOWN, .down
-	jrbutton D_RIGHT, .right
-	jrbutton D_LEFT, .left
+	call MPUpdateUIAndGetJoypad
+	jrheldbutton D_UP, .up, .no_up, 6
+	jrheldbutton D_DOWN, .down, .no_down, 6
+	jrheldbutton D_RIGHT, .right, .no_right, 18
+	jrheldbutton D_LEFT, .left, .no_left, 18
 	jrbutton A_BUTTON, .a
 	jpbutton B_BUTTON, .b
 	jpbutton START, .start
@@ -1550,15 +1552,15 @@ SongSelector:
 	sub MP_LIST_CURSOR_Y - 1
 	ld [wSongSelection], a
 	call UpdateSelectorNames
+
 .loop:
 	call DelayFrame
-
-	call GetJoypad
+	call MPGetJoypad
 	jrbutton A_BUTTON, .a
-	jrbutton D_UP, .up
-	jrbutton D_DOWN, .down
-	jrbutton D_LEFT, .left
-	jrbutton D_RIGHT, .right
+	jrheldbutton D_UP, .up, .no_up, 6
+	jrheldbutton D_DOWN, .down, .no_down, 6
+	jrheldbutton D_LEFT, .left, .no_left, 18
+	jrheldbutton D_RIGHT, .right, .no_right, 18
 	jrbutton START | B_BUTTON, .start_b
 	jr .loop
 
@@ -1589,7 +1591,7 @@ SongSelector:
 .no_underflow_up
 	ld [wSongSelection], a
 	call UpdateSelectorNames
-	jr .loop
+	jp .loop
 
 .down:
 ; next song
@@ -1601,7 +1603,7 @@ SongSelector:
 .no_overflow_down
 	ld [wSongSelection], a
 	call UpdateSelectorNames
-	jr .loop
+	jp .loop
 
 .left:
 ; 10 songs back
@@ -1613,7 +1615,7 @@ SongSelector:
 	sub MP_LIST_PAGE_SKIP
 	ld [wSongSelection], a
 	call UpdateSelectorNames
-	jr .loop
+	jp .loop
 
 .right:
 ; 10 songs ahead
@@ -1666,6 +1668,20 @@ UpdateSelectorNames:
 	cp 16 ; songs per page
 	jr nz, .loop
 	ret
+
+MPUpdateUIAndGetJoypad:
+	call UpdateVisualIntensity
+	call DelayFrame
+	call DrawChData
+	call DrawNotes
+MPGetJoypad:
+	ld a, [TextDelayFrames]
+	and a
+	jr z, .ok2
+	dec a
+	ld [TextDelayFrames], a
+.ok2
+	jp GetJoypad
 
 MPLPlaceString:
 	push hl
