@@ -5457,6 +5457,10 @@ BattleCommand_ParalyzeTarget:
 	jp PostStatusWithSynchronize
 
 BattleCommand_CloseCombat:
+	ld a, [AttackMissed]
+	and a
+	ret nz
+
 	lb bc, DEFENSE, SP_DEFENSE
 BattleCommand_SelfStatDownHit:
 ; input: 1-2 stats to decrease in b and c respectivey
@@ -7517,6 +7521,35 @@ BattleCommand_Disable: ; 36fed
 
 ; 3705c
 
+BattleCommand_KnockOff:
+	ld a, [AttackMissed]
+	and a
+	ret nz
+
+	call CheckSubstituteOpp
+	ret nz
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp STICKY_HOLD
+	ret z
+
+	call GetOpponentItem
+	ld a, [hl]
+	and a
+	ret z
+
+	ld [wNamedObjectIndexBuffer], a
+	xor a
+	ld [hl], a
+	call GetItemName
+	ld hl, KnockedOffItemText
+	call StdBattleTextBox
+	ld a, MON_ITEM
+	call OpponentPartyAttr
+	ret z
+	xor a
+	ld [hl], a
+	ret
 
 BattleCommand_PayDay: ; 3705c
 ; payday
@@ -7556,6 +7589,80 @@ BattleCommand_PayDay: ; 3705c
 
 ; 3707f
 
+BattleCommand_SkillSwap:
+	call CheckHiddenOpponent
+	jr nz, .failed
+
+	ld a, [PlayerAbility]
+	ld b, a
+	ld a, [EnemyAbility]
+	ld [PlayerAbility], a
+	ld a, b
+	ld [EnemyAbility], a
+
+	ld hl, SwappedAbilitiesText
+	call StdBattleTextBox
+
+	; Don't use RunBothActivationAbilities, because
+	; Skill Swap always runs the user first
+	farcall RunActivationAbilitiesInner
+	call SwitchTurn
+	farcall RunActivationAbilitiesInner
+	jp SwitchTurn
+
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
+
+BattleCommand_Trick:
+	ld a, [AttackMissed]
+	and a
+	jr nz, .failed
+
+	call CheckSubstituteOpp
+	jr nz, .failed
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp STICKY_HOLD
+	jr z, .ability_failed
+
+	call GetUserItem
+	ld a, [hl]
+	and a
+	jr z, .failed
+	push hl
+	call GetOpponentItem
+	ld a, [hl]
+	and a
+	pop de
+	jr z, .failed
+
+	ld a, [de]
+	ld b, [hl]
+	ld [hl], a
+	ld a, b
+	ld [de], a
+
+	ld hl, SwappedItemsText
+	call StdBattleTextBox
+
+	ld a, MON_ITEM
+	call BattlePartyAttr
+	ld a, [BattleMonItem]
+	ld [hl], a
+
+	ld a, MON_ITEM
+	call OTPartyAttr
+	ret z
+	ld a, [EnemyMonItem]
+	ld [hl], a
+	ret
+
+.ability_failed
+	call ShowEnemyAbilityActivation
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 BattleCommand_Conversion: ; 3707f
 ; conversion
@@ -8158,6 +8265,8 @@ BoostJumptable:
 	dbw FACADE, DoFacade
 	dbw FURY_CUTTER, DoFuryCutter
 	dbw HEX, DoHex
+	dbw VENOSHOCK, DoVenoshock
+;	dbw KNOCK_OFF, DoKnockOff
 	dbw -1, -1
 
 BattleCommand_ConditionalBoost:
@@ -8191,6 +8300,12 @@ DoHex:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and a
+	jr DoubleDamageIfNZ
+
+DoVenoshock:
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	bit PSN, a
 	jr DoubleDamageIfNZ
 
 BattleCommand_DoubleFlyingDamage:
@@ -8244,6 +8359,30 @@ DoFuryCutter:
 	ret z
 	call DoubleDamage
 	jr .checkdouble
+
+DoKnockOff:
+	call CheckSubstituteOpp
+	ret nz
+
+	call GetOpponentItem
+	ld a, [hl]
+	and a
+	ret z
+
+	ld hl, CurDamage
+	ld a, [hli]
+	ld b, a
+	ld c, [hl]
+	push bc
+	srl b
+	rr c
+	pop hl
+	add hl, bc
+	ld a, h
+	ld [CurDamage], a
+	ld a, l
+	ld [CurDamage + 1], a
+	ret
 
 ResetFuryCutterCount:
 	push hl

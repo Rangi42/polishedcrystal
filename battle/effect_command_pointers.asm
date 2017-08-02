@@ -181,3 +181,6 @@ BattleCommandPointers:
 	dw BattleCommand_ToxicSpikes
 	dw BattleCommand_Roost
 	dw BattleCommand_CloseCombat
+	dw BattleCommand_SkillSwap
+	dw BattleCommand_Trick
+	dw BattleCommand_KnockOff

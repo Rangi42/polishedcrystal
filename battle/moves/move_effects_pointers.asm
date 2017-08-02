@@ -161,3 +161,6 @@
 	dw ToxicSpikes
 	dw Roost
 	dw CloseCombat
+	dw SkillSwap
+	dw Trick
+	dw KnockOff

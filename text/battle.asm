@@ -847,11 +847,20 @@ GotAnEncoreText: ; 0x81109
 	prompt
 ; 0x8111b
 
-SharedPainText: ; 0x8111b
+SharedPainText:
 	text "The battlers"
 	line "shared pain!"
 	prompt
-; 0x81136
+
+SwappedAbilitiesText:
+	text "The battlers"
+	line "swapped abilities!"
+	prompt
+
+SwappedItemsText:
+	text "The battlers"
+	line "swapped items!"
+	prompt
 
 TookAimText: ; 0x81136
 	text "<USER>"
@@ -1208,14 +1217,21 @@ CuredDisableWithItem:
 	text "!"
 	prompt
 
-StoleText: ; 0x815da
+StoleText:
 	text "<USER>"
 	line "stole @"
 	text_from_ram StringBuffer1
 	text ""
 	cont "from its foe!"
 	prompt
-; 0x815f7
+
+KnockedOffItemText:
+	text "<USER>"
+	line "knocked off"
+	cont ""
+	text_from_ram StringBuffer1
+	text "!"
+	prompt
 
 CantEscapeNowText: ; 0x815f7
 	text "<TARGET>"
