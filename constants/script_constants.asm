@@ -39,6 +39,7 @@ RETVAR_STRBUF2 EQU (0 << 6)
 RETVAR_ADDR_DE EQU (1 << 6)
 RETVAR_EXECUTE EQU (2 << 6)
 
+; see engine/events.asm:PlayerEventScriptPointers
 const_value SET -1
 	const PLAYEREVENT_MAPSCRIPT
 	const PLAYEREVENT_NONE

@@ -635,8 +635,7 @@ ClearObjectStructs:: ; 2471
 ; 248a
 
 RestoreFacingAfterWarp:: ; 248a
-	call GetMapScriptHeaderBank
-	rst Bankswitch
+	call SwitchToMapScriptHeaderBank
 
 	ld hl, MapEventHeaderPointer
 	ld a, [hli]
@@ -930,7 +929,7 @@ CallMapScript:: ; 2631
 	ld a, [ScriptRunning]
 	and a
 	ret nz
-	call GetMapScriptHeaderBank
+	ld a, [MapScriptHeaderBank]
 	jr CallScript
 ; 263b
 
@@ -943,7 +942,7 @@ RunMapCallback:: ; 263b
 	call .FindCallback
 	jr nc, .done
 
-	call GetMapScriptHeaderBank
+	ld a, [MapScriptHeaderBank]
 	ld b, a
 	ld d, h
 	ld e, l
@@ -2076,11 +2075,6 @@ SwitchToMapScriptHeaderBank:: ; 2c52
 	rst Bankswitch
 	ret
 ; 2c57
-
-GetMapScriptHeaderBank:: ; 2c57
-	ld a, [MapScriptHeaderBank]
-	ret
-; 2c5b
 
 GetAnyMapBlockdataBank:: ; 2c5b
 ; Return the blockdata bank for group b map c.

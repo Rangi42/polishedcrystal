@@ -117,7 +117,13 @@ Low priority:
 
 * Finish and merge the optimizations branch
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
-* Port PERSONTYPE_STDSCRIPT (for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc), PERSONTYPE_TEXT, PERSONTYPE_GENERICTRAINER, and SIGNPOST_STDSCRIPT (for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath) from Prism
+* SIGNPOST_JUMPTEXT
+* SIGNPOST_JUMPSTD for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath
+* PERSONTYPE_JUMPTEXTFP
+* PERSONTYPE_JUMPSTD for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc
+* PERSONTYPE_MART
+* PERSONTYPE_FRUITTREE
+* PERSONTYPE_GENERICTRAINER
 
 
 ## Postponed until 4.0

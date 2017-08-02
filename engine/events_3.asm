@@ -309,7 +309,7 @@ endr
 
 CheckForHiddenItems: ; b8172
 ; Checks to see if there are hidden items on the screen that have not yet been found.  If it finds one, returns carry.
-	call GetMapScriptHeaderBank
+	ld a, [MapScriptHeaderBank]
 	ld [Buffer1], a
 ; Get the coordinate of the bottom right corner of the screen, and load it in wd1ec/wd1ed.
 	ld a, [XCoord]

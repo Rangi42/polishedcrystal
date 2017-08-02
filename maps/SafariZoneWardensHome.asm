@@ -24,15 +24,6 @@ WardensGranddaughter:
 	closetext
 	end
 
-WardenPhoto:
-	jumptext WardenPhotoText
-
-SafariZonePhoto:
-	jumptext SafariZonePhotoText
-
-WardensHomeBookshelf:
-	jumpstd picturebookshelf
-
 WardensGranddaughterText1:
 	text "My grandpa is the"
 	line "Safari Zone War-"
@@ -87,9 +78,9 @@ SafariZoneWardensHome_MapEventHeader:
 
 .Signposts:
 	db 3
-	signpost 1, 0, SIGNPOST_READ, WardensHomeBookshelf
-	signpost 0, 7, SIGNPOST_READ, WardenPhoto
-	signpost 0, 9, SIGNPOST_READ, SafariZonePhoto
+	signpost 1, 0, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 0, 7, SIGNPOST_JUMPTEXT, WardenPhotoText
+	signpost 0, 9, SIGNPOST_JUMPTEXT, SafariZonePhotoText
 
 .PersonEvents:
 	db 1

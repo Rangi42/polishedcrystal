@@ -28,8 +28,20 @@ person_event: macro
 	dn \8, \9 ; color_function
 	shift
 	db \9 ; sight_range
+if \8 == PERSONTYPE_JUMPSTD
+	shift 
+	db \9, 0 ; stdscript
+else
+if \8 == PERSONTYPE_MART
+	shift
+	db \9 ; mart type
+	shift
+	db \9 ; mart id
+else
 	shift
 	dw \9 ; pointer
+endc
+endc
 	shift
 	dw \9 ; event flag
 	endm
@@ -38,7 +50,11 @@ signpost: macro
 	db \1 ; y
 	db \2 ; x
 	db \3 ; function
+if \3 == SIGNPOST_JUMPSTD
+	db \4, 0 ; stdscript
+else
 	dw \4 ; pointer
+endc
 	endm
 
 xy_trigger: macro

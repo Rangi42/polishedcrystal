@@ -678,7 +678,6 @@ EmotesPointers: ; 144d
 ; dw source address
 ; db length, bank
 ; dw dest address
-
 	emote_header ShockEmote,      4, $78
 	emote_header QuestionEmote,   4, $78
 	emote_header HappyEmote,      4, $78

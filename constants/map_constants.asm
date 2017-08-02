@@ -801,6 +801,7 @@ OW_UP    EQU UP    << 2
 OW_LEFT  EQU LEFT  << 2
 OW_RIGHT EQU RIGHT << 2
 
+; see engine/overworld.asm:EmotesPointers
 	const_def
 	const EMOTE_SHOCK ; 0
 	const EMOTE_QUESTION ; 1
@@ -816,6 +817,7 @@ OW_RIGHT EQU RIGHT << 2
 	const EMOTE_SHAKING_GRASS ; 11
 EMOTE_MEM EQU -1
 
+; see engine/events.asm:TryReadSign.signs
 	const_def
 	const SIGNPOST_READ
 	const SIGNPOST_UP
@@ -825,11 +827,13 @@ EMOTE_MEM EQU -1
 	const SIGNPOST_IFSET
 	const SIGNPOST_IFNOTSET
 	const SIGNPOST_ITEM
-	const SIGNPOST_COPY
+	const SIGNPOST_JUMPTEXT
+	const SIGNPOST_JUMPSTD
 
 ; I'm relocating spawn constants here, so that they can be used anywhere in the disassembly.
 
 
+; see engine/spawn_points.asm:SpawnPoints
 const_value = -1
 	const SPAWN_N_A
 
@@ -877,16 +881,21 @@ FIXED_FACING EQU 2
 SLIDING      EQU 3
 EMOTE_OBJECT EQU 7
 
+; see engine/events.asm:TryObjectEvent.pointers
 	const_def
 	const PERSONTYPE_SCRIPT
 	const PERSONTYPE_ITEMBALL
 	const PERSONTYPE_TRAINER
 	const PERSONTYPE_TMHMBALL
-	const PERSONTYPE_4
-	const PERSONTYPE_5
-	const PERSONTYPE_6
+	const PERSONTYPE_JUMPTEXT
+	const PERSONTYPE_JUMPTEXTFP
+	const PERSONTYPE_JUMPSTD
+	const PERSONTYPE_MART
+	const PERSONTYPE_FRUITTREE
+	const PERSONTYPE_GENERICTRAINER
 
 ; fruit trees
+; see engine/fruit_trees.asm:FruitTreeItems
 const_value SET 1
 	const FRUITTREE_ROUTE_29        ; 01
 	const FRUITTREE_ROUTE_30_1      ; 02

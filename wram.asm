@@ -1344,6 +1344,7 @@ CurInput::
 wElevatorPointerBank::
 wCurCoordEventTriggerID::
 wCurSignpostYCoord::
+wTemporaryScriptBuffer::
 EngineBuffer1::
 	ds 1
 
