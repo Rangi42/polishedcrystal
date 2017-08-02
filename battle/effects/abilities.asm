@@ -805,6 +805,7 @@ JustifiedAbility:
 	ld a, c
 	cp DARK
 	ret nz
+	jr AttackUpAbility
 MoxieAbility:
 	; Don't run if battle is over
 	ld a, [hBattleTurn]
@@ -817,6 +818,7 @@ MoxieAbility:
 	farcall CheckAnyOtherAliveOpponentMons
 	ret z
 SapSipperAbility:
+AttackUpAbility:
 	ld b, ATTACK
 	jr StatUpAbility
 LightningRodAbility:
