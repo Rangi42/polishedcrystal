@@ -526,6 +526,9 @@ SCREENS_TOXIC_SPIKES EQU     %11000000
 	const EFFECT_TOXIC_SPIKES
 	const EFFECT_ROOST
 	const EFFECT_CLOSE_COMBAT
+	const EFFECT_SKILL_SWAP
+	const EFFECT_TRICK
+	const EFFECT_KNOCK_OFF
 
 ; Battle vars used in home/battle.asm
 	const_def

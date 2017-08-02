@@ -1,56 +1,48 @@
-UserPartyAttr:: ; 3945
+; *PartyAttr returns address to attribute in hl, content
+; in a. Returns z if dealing with a wildmon (no party
+; struct), otherwise nz.
+UserPartyAttr::
+; Return z if wildmon
 	push af
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .ot
+	jr nz, OTPartyAttrPre
+BattlePartyAttrPre:
 	pop af
-	jr BattlePartyAttr
-.ot
-	pop af
-	jr OTPartyAttr
-; 3951
-
-
-;OpponentPartyAttr:: ; 3951
-;	push af
-;	ld a, [hBattleTurn]
-;	and a
-;	jr z, .ot
-;	pop af
-;	jr BattlePartyAttr
-;.ot
-;	pop af
-;	jr OTPartyAttr
-;; 395d
-
-
-BattlePartyAttr:: ; 395d
-; Get attribute a from the active BattleMon's party struct.
-	push bc
-	ld c, a
-	ld b, 0
+BattlePartyAttr::
+; Returns nz (not a wildmon)
 	ld hl, PartyMons
-	add hl, bc
-	ld a, [CurBattleMon]
-	call GetPartyLocation
-	pop bc
-	ret
-; 396d
-
-
-OTPartyAttr:: ; 396d
-; Get attribute a from the active EnemyMon's party struct.
 	push bc
 	ld c, a
+	ld a, [CurBattleMon]
+DoBattlePartyAttr:
 	ld b, 0
-	ld hl, OTPartyMon1Species
 	add hl, bc
-	ld a, [CurOTMon]
 	call GetPartyLocation
+	or 1
+	ld a, [hl]
 	pop bc
 	ret
-; 397d
 
+OpponentPartyAttr::
+; Return z if wildmon
+	push af
+	ld a, [hBattleTurn]
+	and a
+	jr nz, BattlePartyAttrPre
+OTPartyAttrPre:
+	pop af
+OTPartyAttr::
+; Return z if wildmon
+	ld a, [wBattleMode]
+	dec a
+	ret z
+
+	ld hl, OTPartyMons
+	push bc
+	ld c, a
+	ld a, [CurOTMon]
+	jr DoBattlePartyAttr
 
 ResetDamage:: ; 397d
 	xor a

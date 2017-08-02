@@ -1,4 +1,3 @@
-SkillSwap: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -1381,6 +1380,23 @@ Roar:
 	forceswitch
 	endmove
 
+SkillSwap:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	skillswap
+	endmove
+
+Trick:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	checkhit
+	trick
+	endmove
+
 Conversion:
 	checkobedience
 	usedmovetext
@@ -1405,6 +1421,29 @@ PayDay:
 	criticaltext
 	supereffectivetext
 	payday
+	checkdestinybond
+	buildopponentrage
+	pickpocket
+	endmove
+
+KnockOff:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	conditionalboost
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	knockoff
 	checkdestinybond
 	buildopponentrage
 	pickpocket
