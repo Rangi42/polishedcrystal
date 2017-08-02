@@ -510,11 +510,8 @@ AftermathAbility:
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
-	; First, check contact moves. Struggle makes contact, but can't be part of
-	; the array check, being 0xFF (the array terminator)
 	call CheckContactMove
 	jr c, .skip_contact_abilities
-.run_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
@@ -591,6 +588,10 @@ RunContactAbilities:
 	ret
 
 CursedBodyAbility:
+	ld a, 10
+	call BattleRandomRange
+	cp 3
+	ret nc
 	call DisableAnimations
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_Disable
