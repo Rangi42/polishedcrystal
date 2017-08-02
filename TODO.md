@@ -117,6 +117,7 @@ Low priority:
 
 * Finish and merge the optimizations branch
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
+* Optimize battle command engine, including parameterized commands
 * SIGNPOST_JUMPTEXT
 * SIGNPOST_JUMPSTD for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath
 * PERSONTYPE_JUMPTEXTFP
