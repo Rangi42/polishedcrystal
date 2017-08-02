@@ -3879,12 +3879,13 @@ HandleFirstAirBalloon:
 
 RemoveToxicAfterBattle::
 ; removes toxic from mons after battle
-	ld a, [PartyMons]
+	ld a, [PartyCount]
 	ld hl, PartyMon1Status
 	ld bc, PARTYMON_STRUCT_LENGTH
+	inc a
 .loop
-	sub 1
-	ret c
+	dec a
+	ret z
 	res TOX, [hl]
 	add hl, bc
 	jr .loop

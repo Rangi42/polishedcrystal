@@ -1629,7 +1629,7 @@ ShowAbilityActivation::
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)
-	ld a, [PartyMons]
+	ld a, [PartyCount]
 	jr .first_pass
 .loop
 	ld a, [CurPartyMon]
