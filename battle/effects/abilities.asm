@@ -510,11 +510,8 @@ AftermathAbility:
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
-	; First, check contact moves. Struggle makes contact, but can't be part of
-	; the array check, being 0xFF (the array terminator)
 	call CheckContactMove
 	jr c, .skip_contact_abilities
-.run_contact_abilities
 	call RunContactAbilities
 .skip_contact_abilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
@@ -536,6 +533,13 @@ RunHitAbilities:
 .do_enemy_abilities
 	cp CURSED_BODY
 	jp z, CursedBodyAbility
+	push bc
+	push af
+	call HasUserFainted
+	pop bc
+	ld a, b
+	pop bc
+	ret z
 	cp JUSTIFIED
 	jp z, JustifiedAbility
 	cp RATTLED
@@ -584,6 +588,10 @@ RunContactAbilities:
 	ret
 
 CursedBodyAbility:
+	ld a, 10
+	call BattleRandomRange
+	cp 3
+	ret nc
 	call DisableAnimations
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_Disable
@@ -805,6 +813,7 @@ JustifiedAbility:
 	ld a, c
 	cp DARK
 	ret nz
+	jr AttackUpAbility
 MoxieAbility:
 	; Don't run if battle is over
 	ld a, [hBattleTurn]
@@ -817,6 +826,7 @@ MoxieAbility:
 	farcall CheckAnyOtherAliveOpponentMons
 	ret z
 SapSipperAbility:
+AttackUpAbility:
 	ld b, ATTACK
 	jr StatUpAbility
 LightningRodAbility:
