@@ -113,6 +113,13 @@ Low priority:
 * Use the UnlockedMusic flag_array to hide unheard song titles
 
 
+### Optimizations
+
+* Finish and merge the optimizations branch
+* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
+* Port PERSONTYPE_STDSCRIPT (for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc), PERSONTYPE_TEXT, PERSONTYPE_GENERICTRAINER, and SIGNPOST_STDSCRIPT (for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath) from Prism
+
+
 ## Postponed until 4.0
 
 Some of these may never be added; they're just suggestions.
