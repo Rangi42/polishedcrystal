@@ -18,43 +18,47 @@ INCBIN "gfx/music_player/waveforms.2bpp"
 
 SECTION "Music Player", ROMX
 
-jrbutton: MACRO
-	ld a, [hJoyPressed]
+jrbutton: macro
+; assumes hl == hJoyPressed
+	ld a, [hl]
 	and \1
 	jr nz, \2
-	ENDM
+endm
 
-jpbutton: MACRO
-	ld a, [hJoyPressed]
+jpbutton: macro
+; assumes hl == hJoyPressed
+	ld a, [hl]
 	and \1
 	jp nz, \2
-	ENDM
+endm
 
-jrheldbutton: MACRO
+jrheldbutton: macro
+; assumes hl == hJoyDown
 	ld a, [TextDelayFrames]
 	and a
 	jr nz, \3
-	ld a, [hJoyDown]
+	ld a, [hl]
 	and \1
 	jr z, \3
 	ld a, \4
 	ld [TextDelayFrames], a
 	jr \2
 \3:
-	ENDM
+endm
 
-jpheldbutton: MACRO
+jpheldbutton: macro
+; assumes hl == hJoyDown
 	ld a, [TextDelayFrames]
 	and a
 	jr nz, \3
-	ld a, [hJoyDown]
+	ld a, [hl]
 	and \1
 	jr z, \3
 	ld a, \4
 	ld [TextDelayFrames], a
 	jp \2
 \3:
-	ENDM
+endm
 
 MusicPlayerPals:
 if !DEF(MONOCHROME)
@@ -238,6 +242,7 @@ MusicPlayerLoop:
 	ld [rSVBK], a
 
 	call MPUpdateUIAndGetJoypad
+	ld hl, hJoyPressed
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
 	jrbutton D_DOWN, .down
@@ -345,11 +350,13 @@ MusicPlayerLoop:
 
 SongEditor:
 	call MPUpdateUIAndGetJoypad
+	ld hl, hJoyDown
+	jrheldbutton D_UP, .up, .no_up, 10
+	jpheldbutton D_DOWN, .down, .no_down, 10
+	ld hl, hJoyPressed
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
 	jrbutton A_BUTTON, .a
-	jrheldbutton D_UP, .up, .no_up, 10
-	jrheldbutton D_DOWN, .down, .no_down, 10
 	jpbutton START, .start
 	jpbutton SELECT | B_BUTTON, .select_b
 
@@ -498,13 +505,15 @@ AdjustTempo:
 
 .loop:
 	call MPUpdateUIAndGetJoypad
+	ld hl, hJoyDown
 	jrheldbutton D_UP, .up, .no_up, 6
 	jrheldbutton D_DOWN, .down, .no_down, 6
 	jrheldbutton D_RIGHT, .right, .no_right, 18
 	jrheldbutton D_LEFT, .left, .no_left, 18
+	ld hl, hJoyPressed
 	jrbutton A_BUTTON, .a
-	jpbutton B_BUTTON, .b
-	jpbutton START, .start
+	jrbutton B_BUTTON, .b
+	jrbutton START, .start
 
 	; prioritize refreshing the note display
 	ld a, 2
@@ -1556,11 +1565,13 @@ SongSelector:
 .loop:
 	call DelayFrame
 	call MPGetJoypad
-	jrbutton A_BUTTON, .a
+	ld hl, hJoyDown
 	jrheldbutton D_UP, .up, .no_up, 6
 	jrheldbutton D_DOWN, .down, .no_down, 6
 	jrheldbutton D_LEFT, .left, .no_left, 18
 	jrheldbutton D_RIGHT, .right, .no_right, 18
+	ld hl, hJoyPressed
+	jrbutton A_BUTTON, .a
 	jrbutton START | B_BUTTON, .start_b
 	jr .loop
 
