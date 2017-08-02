@@ -48,7 +48,7 @@ GourmetManiacItemRewards:
 	dbw SODA_POP,     300
 	dbw LEMONADE,     350
 	dbw MOOMOO_MILK,  500
-	dbw RAGECANDYBAR, 6000
+	dbw RAGECANDYBAR, 300
 	dbw RARE_CANDY,   10000
 	dbw STICK,        2000
 	dbw LEFTOVERS,    4000

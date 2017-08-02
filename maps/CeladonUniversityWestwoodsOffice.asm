@@ -37,7 +37,7 @@ CeladonUniversityWestwoodsOfficeChildScript:
 
 	para "…Maybe I should"
 	line "quit snacking on"
-	cont "RageCandyBars."
+	cont "Cakes of Rage."
 
 	para "You can have this"
 	line "one."

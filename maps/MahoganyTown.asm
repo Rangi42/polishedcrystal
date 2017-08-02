@@ -139,8 +139,8 @@ UnknownText_0x1900b0:
 	para "Since you're new,"
 	line "you should try a"
 
-	para "yummy RageCandy-"
-	line "Bar!"
+	para "yummy Cake of"
+	line "Rage!"
 
 	para "Right now, it can"
 	line "be yours for just"
@@ -166,7 +166,7 @@ UnknownText_0x190188:
 	done
 
 UnknownText_0x1901a6:
-	text "RageCandyBar's"
+	text "Cakes of Rage are"
 	line "sold out."
 
 	para "I'm packing up."
