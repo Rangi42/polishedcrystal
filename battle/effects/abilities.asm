@@ -536,6 +536,13 @@ RunHitAbilities:
 .do_enemy_abilities
 	cp CURSED_BODY
 	jp z, CursedBodyAbility
+	push bc
+	push af
+	call HasUserFainted
+	pop bc
+	ld a, b
+	pop bc
+	ret z
 	cp JUSTIFIED
 	jp z, JustifiedAbility
 	cp RATTLED
