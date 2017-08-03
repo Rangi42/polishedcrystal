@@ -1112,3 +1112,8 @@ unowntypeface: macro
 restoretypeface: macro
 	db restoretypeface_command
 	endm
+
+	enum jumpstashedtext_command
+jumpstashedtext: macro
+	db jumpstashedtext_command
+	endm

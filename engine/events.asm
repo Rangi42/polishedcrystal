@@ -517,6 +517,7 @@ TryObjectEvent: ; 969b5
 	dw .jumpstd    ; PERSONTYPE_JUMPSTD
 	dw .mart       ; PERSONTYPE_MART
 	dw .fruittree  ; PERSONTYPE_FRUITTREE
+	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER

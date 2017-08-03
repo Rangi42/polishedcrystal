@@ -1404,13 +1404,17 @@ wWinTextPointer::
 	ds 1
 
 wPhoneScriptPointer:: ds 1
+wGenericTempTrainerHeaderEnd::
+
 wLossTextPointer:: ds 2
 wScriptAfterPointer:: ds 2
 wRunningTrainerBattleScript:: ds 1
 MenuItemsListEnd::
 wTempTrainerHeaderEnd::
+
 wPlayerTurningDirection:: ds 1
-	ds 23
+wStashedTextPointer:: ds 2
+	ds 21
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1::
