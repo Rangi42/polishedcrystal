@@ -1,13 +1,30 @@
-const_value set 2
-	const OLIVINELIGHTHOUSE4F_SAILOR
-	const OLIVINELIGHTHOUSE4F_LASS
-
 OlivineLighthouse4F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+OlivineLighthouse4F_MapEventHeader:
+
+.Warps: db 10
+	warp_def $3, $d, 1, OLIVINE_LIGHTHOUSE_3F
+	warp_def $5, $3, 2, OLIVINE_LIGHTHOUSE_5F
+	warp_def $7, $9, 3, OLIVINE_LIGHTHOUSE_5F
+	warp_def $5, $9, 3, OLIVINE_LIGHTHOUSE_3F
+	warp_def $9, $10, 6, OLIVINE_LIGHTHOUSE_3F
+	warp_def $9, $11, 7, OLIVINE_LIGHTHOUSE_3F
+	warp_def $3, $8, 8, OLIVINE_LIGHTHOUSE_3F
+	warp_def $3, $9, 9, OLIVINE_LIGHTHOUSE_3F
+	warp_def $7, $10, 4, OLIVINE_LIGHTHOUSE_5F
+	warp_def $7, $11, 5, OLIVINE_LIGHTHOUSE_5F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_SAILOR, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
+	person_event SPRITE_LASS, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 
 TrainerLassConnie:
 	trainer EVENT_BEAT_LASS_CONNIE, LASS, CONNIE, LassConnieSeenText, LassConnieBeatenText, 0, LassConnieScript
@@ -81,28 +98,3 @@ UnknownText_0x5b63c:
 	para "Jasmine can come"
 	line "back to the Gym."
 	done
-
-OlivineLighthouse4F_MapEventHeader:
-.Warps:
-	db 10
-	warp_def $3, $d, 1, OLIVINE_LIGHTHOUSE_3F
-	warp_def $5, $3, 2, OLIVINE_LIGHTHOUSE_5F
-	warp_def $7, $9, 3, OLIVINE_LIGHTHOUSE_5F
-	warp_def $5, $9, 3, OLIVINE_LIGHTHOUSE_3F
-	warp_def $9, $10, 6, OLIVINE_LIGHTHOUSE_3F
-	warp_def $9, $11, 7, OLIVINE_LIGHTHOUSE_3F
-	warp_def $3, $8, 8, OLIVINE_LIGHTHOUSE_3F
-	warp_def $3, $9, 9, OLIVINE_LIGHTHOUSE_3F
-	warp_def $7, $10, 4, OLIVINE_LIGHTHOUSE_5F
-	warp_def $7, $11, 5, OLIVINE_LIGHTHOUSE_5F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_SAILOR, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
-	person_event SPRITE_LASS, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE

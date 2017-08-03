@@ -1,15 +1,33 @@
+RuinsofAlphSinjohChamber_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+RuinsofAlphSinjohChamber_MapEventHeader:
+
+.Warps: db 2
+	warp_def $9, $5, 12, RUINS_OF_ALPH_OUTSIDE
+	warp_def $9, $4, 12, RUINS_OF_ALPH_OUTSIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 2, 5, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
+	signpost 3, 4, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
+	signpost 3, 6, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
+
+.PersonEvents: db 4
+	person_event SPRITE_PAPER_UNOWN_W, 1, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
+	person_event SPRITE_POKEDEX_UNOWN_A, 1, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
+	person_event SPRITE_BOOK_UNOWN_R, 5, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
+	person_event SPRITE_SIGN_UNOWN_P, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
+
 const_value set 2
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_W
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_A
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_R
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_P
-
-RuinsofAlphSinjohChamber_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 RuinsofAlphSinjohChamberSignpost:
 	unowntypeface
@@ -45,16 +63,16 @@ RuinsofAlphSinjohChamberSignpost:
 	waitsfx
 	pause 7
 	; Call assembly so the fourth sound will play
-	callasm PlayUnownSound3 ; playsound SFX_INTRO_UNOWN_3
+	callasm .PlayUnownSound3 ; playsound SFX_INTRO_UNOWN_3
 	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, UP
 	pause 10
-	callasm PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
+	callasm .PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
 	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, UP
 	pause 10
-	callasm PlayUnownSound1 ; playsound SFX_INTRO_UNOWN_1
+	callasm .PlayUnownSound1 ; playsound SFX_INTRO_UNOWN_1
 	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, UP
 	pause 10
-	callasm PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
+	callasm .PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
 	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, UP
 	waitsfx
 	pause 30
@@ -75,6 +93,21 @@ RuinsofAlphSinjohChamberSignpost:
 .HeardIntro
 	warp MYSTRI_STAGE, $6, $d
 	end
+
+.PlayUnownSound1:
+	call SFXChannelsOff
+	ld de, SFX_INTRO_UNOWN_1
+	jp PlaySFX
+
+.PlayUnownSound2:
+	call SFXChannelsOff
+	ld de, SFX_INTRO_UNOWN_2
+	jp PlaySFX
+
+.PlayUnownSound3:
+	call SFXChannelsOff
+	ld de, SFX_INTRO_UNOWN_3
+	jp PlaySFX
 
 RuinsofAlphSinjohChamberStatue:
 	jumptext RuinsofAlphSinjohChamberStatueText
@@ -99,40 +132,3 @@ RuinsofAlphSinjohChamberStatueText:
 	line "an ancient #-"
 	cont "mon."
 	done
-
-RuinsofAlphSinjohChamber_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $9, $5, 12, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 12, RUINS_OF_ALPH_OUTSIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 2, 5, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
-	signpost 3, 4, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
-	signpost 3, 6, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_PAPER_UNOWN_W, 1, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
-	person_event SPRITE_POKEDEX_UNOWN_A, 1, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
-	person_event SPRITE_BOOK_UNOWN_R, 5, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
-	person_event SPRITE_SIGN_UNOWN_P, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
-
-PlayUnownSound1:
-	call SFXChannelsOff
-	ld de, SFX_INTRO_UNOWN_1
-	jp PlaySFX
-
-PlayUnownSound2:
-	call SFXChannelsOff
-	ld de, SFX_INTRO_UNOWN_2
-	jp PlaySFX
-
-PlayUnownSound3:
-	call SFXChannelsOff
-	ld de, SFX_INTRO_UNOWN_3
-	jp PlaySFX

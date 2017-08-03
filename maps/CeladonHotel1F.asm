@@ -1,15 +1,32 @@
-const_value set 2
-	const CELADONHOTEL1F_GRAMPS
-	const CELADONHOTEL1F_LADY
-	const CELADONHOTEL1F_COOLTRAINERF
-	const CELADONHOTEL1F_RICH_BOY
-
 CeladonHotel1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonHotel1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $7, $3, 11, CELADON_CITY
+	warp_def $7, $4, 11, CELADON_CITY
+	warp_def $0, $10, 1, CELADON_HOTEL_2F
+	warp_def $0, $c, 1, CELADON_HOTEL_POOL
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 2, 7, SIGNPOST_READ, CeladonHotel1FSignpost1Script
+	signpost 0, 13, SIGNPOST_READ, CeladonHotel1FSignpost2Script
+	signpost 0, 17, SIGNPOST_READ, CeladonHotel1FSignpost3Script
+
+.PersonEvents: db 4
+	person_event SPRITE_RICH_BOY, 6, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FRichBoyGeraldScript, -1
+	person_event SPRITE_GRAMPS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHotel1FGrampsScript, -1
+	person_event SPRITE_LADY, 4, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FLadyScript, -1
+	person_event SPRITE_COOLTRAINER_F, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonHotel1FCooltrainerFScript, -1
+
+const_value set 2
+	const CELADONHOTEL1F_RICH_BOY
 
 CeladonHotel1FGrampsScript:
 	jumptextfaceplayer CeladonHotel1FGrampsText
@@ -131,27 +148,3 @@ CeladonHotel1FSignpost3Text:
 	text "Suites"
 	line "Upstairs"
 	done
-
-CeladonHotel1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $7, $3, 11, CELADON_CITY
-	warp_def $7, $4, 11, CELADON_CITY
-	warp_def $0, $10, 1, CELADON_HOTEL_2F
-	warp_def $0, $c, 1, CELADON_HOTEL_POOL
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 2, 7, SIGNPOST_READ, CeladonHotel1FSignpost1Script
-	signpost 0, 13, SIGNPOST_READ, CeladonHotel1FSignpost2Script
-	signpost 0, 17, SIGNPOST_READ, CeladonHotel1FSignpost3Script
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_GRAMPS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHotel1FGrampsScript, -1
-	person_event SPRITE_LADY, 4, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FLadyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonHotel1FCooltrainerFScript, -1
-	person_event SPRITE_RICH_BOY, 6, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FRichBoyGeraldScript, -1

@@ -1,14 +1,24 @@
-const_value set 2
-	const KRISSNEIGHBORSHOUSE_COOLTRAINER_F
-	const KRISSNEIGHBORSHOUSE_POKEFAN_F
-	const KRISSNEIGHBORSHOUSE_YOUNGSTER
-
 KrissNeighborsHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+KrissNeighborsHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, NEW_BARK_TOWN
+	warp_def $7, $3, 3, NEW_BARK_TOWN
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 5, SIGNPOST_READ, KrissNeighborsHouseRadio
+
+.PersonEvents: db 3
+	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, KrissNeighborsDaughter, -1
+	person_event SPRITE_POKEFAN_F, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, KrissNeighbor, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
+	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, KrissNeighborsHusband, -1
 
 KrissNeighborsDaughter:
 	jumptextfaceplayer KrissNeighborsDaughterText
@@ -106,22 +116,3 @@ KrisNeighborRadioText4:
 	text "#mon!"
 	line "#mon Channel…"
 	done
-
-KrissNeighborsHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, NEW_BARK_TOWN
-	warp_def $7, $3, 3, NEW_BARK_TOWN
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 5, SIGNPOST_READ, KrissNeighborsHouseRadio
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, KrissNeighborsDaughter, -1
-	person_event SPRITE_POKEFAN_F, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, KrissNeighbor, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
-	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, KrissNeighborsHusband, -1

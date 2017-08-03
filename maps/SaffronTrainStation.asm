@@ -1,15 +1,30 @@
+SaffronTrainStation_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SaffronTrainStation_MapEventHeader:
+
+.Warps: db 4
+	warp_def $11, $8, 6, SAFFRON_CITY
+	warp_def $11, $9, 6, SAFFRON_CITY
+	warp_def $5, $6, 4, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def $5, $b, 3, GOLDENROD_MAGNET_TRAIN_STATION
+
+.XYTriggers: db 1
+	xy_trigger 0, $6, $b, Script_ArriveFromGoldenrod
+
+.Signposts: db 0
+
+.PersonEvents: db 4
+	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
+	person_event SPRITE_GYM_GUY, 14, 10, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
+	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x18a889, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	person_event SPRITE_LASS, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x18a88c, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+
 const_value set 2
 	const SAFFRONTRAINSTATION_OFFICER
-	const SAFFRONTRAINSTATION_GYM_GUY
-	const SAFFRONTRAINSTATION_TEACHER
-	const SAFFRONTRAINSTATION_LASS
-
-SaffronTrainStation_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 OfficerScript_0x18a81e:
 	faceplayer
@@ -210,25 +225,3 @@ UnknownText_0x18ab20:
 	para "ride the Magnet"
 	line "Train have passes."
 	done
-
-SaffronTrainStation_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $11, $8, 6, SAFFRON_CITY
-	warp_def $11, $9, 6, SAFFRON_CITY
-	warp_def $5, $6, 4, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_def $5, $b, 3, GOLDENROD_MAGNET_TRAIN_STATION
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $6, $b, Script_ArriveFromGoldenrod
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
-	person_event SPRITE_GYM_GUY, 14, 10, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
-	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x18a889, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-	person_event SPRITE_LASS, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x18a88c, EVENT_SAFFRON_TRAIN_STATION_POPULATION

@@ -1,25 +1,43 @@
+DragonsDenB1F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, DragonsDenB1FCheckSilver
+
+DragonsDenB1F_MapEventHeader:
+
+.Warps: db 2
+	warp_def $3, $14, 3, DRAGONS_DEN_1F
+	warp_def $1d, $13, 1, DRAGON_SHRINE
+
+.XYTriggers: db 1
+	xy_trigger 1, $1e, $13, DragonsDenB1F_ClairTrigger
+
+.Signposts: db 4
+	signpost 24, 18, SIGNPOST_READ, MapDragonsDenB1FSignpost0Script
+	signpost 29, 33, SIGNPOST_ITEM, DragonsDenB1FHiddenRevive
+	signpost 17, 21, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxPotion
+	signpost 15, 31, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxElixer
+
+.PersonEvents: db 11
+	person_event SPRITE_CLAIR, 30, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
+	person_event SPRITE_SILVER, 23, 20, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverScript_0x18c97e, EVENT_RIVAL_DRAGONS_DEN
+	person_event SPRITE_DRAGON_TAMER, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerDragonTamerDarin, -1
+	person_event SPRITE_DRAGON_TAMER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerAdam, -1
+	person_event SPRITE_COOLTRAINER_M, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara1, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara2, -1
+	person_event SPRITE_TWIN, 29, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
+	person_event SPRITE_TWIN, 29, 31, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FDragonFang, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
+	person_event SPRITE_BALL_CUT_FRUIT, 20, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
+
 const_value set 2
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
-	const DRAGONSDENB1F_DRAGON_TAMER1
-	const DRAGONSDENB1F_DRAGON_TAMER2
-	const DRAGONSDENB1F_COOLTRAINER_M
-	const DRAGONSDENB1F_COOLTRAINER_F
-	const DRAGONSDENB1F_TWIN1
-	const DRAGONSDENB1F_TWIN2
-	const DRAGONSDENB1F_POKE_BALL1
-	const DRAGONSDENB1F_POKE_BALL2
-	const DRAGONSDENB1F_POKE_BALL3
 
-DragonsDenB1F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .CheckSilver
-
-.CheckSilver:
+DragonsDenB1FCheckSilver:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftrue .CheckDay
 	disappear DRAGONSDENB1F_SILVER
@@ -471,34 +489,3 @@ TwinsLeaandpia2AfterText:
 	para "Master will be"
 	line "angry with you."
 	done
-
-DragonsDenB1F_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $3, $14, 3, DRAGONS_DEN_1F
-	warp_def $1d, $13, 1, DRAGON_SHRINE
-
-.XYTriggers:
-	db 1
-	xy_trigger 1, $1e, $13, DragonsDenB1F_ClairTrigger
-
-.Signposts:
-	db 4
-	signpost 24, 18, SIGNPOST_READ, MapDragonsDenB1FSignpost0Script
-	signpost 29, 33, SIGNPOST_ITEM, DragonsDenB1FHiddenRevive
-	signpost 17, 21, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxPotion
-	signpost 15, 31, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxElixer
-
-.PersonEvents:
-	db 11
-	person_event SPRITE_CLAIR, 30, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
-	person_event SPRITE_SILVER, 23, 20, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverScript_0x18c97e, EVENT_RIVAL_DRAGONS_DEN
-	person_event SPRITE_DRAGON_TAMER, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerDragonTamerDarin, -1
-	person_event SPRITE_DRAGON_TAMER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerAdam, -1
-	person_event SPRITE_COOLTRAINER_M, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara1, -1
-	person_event SPRITE_COOLTRAINER_F, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara2, -1
-	person_event SPRITE_TWIN, 29, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
-	person_event SPRITE_TWIN, 29, 31, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FDragonFang, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FCalcium, EVENT_DRAGONS_DEN_B1F_CALCIUM
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DragonsDenB1FMaxElixer, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER

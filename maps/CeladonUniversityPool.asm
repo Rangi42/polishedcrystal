@@ -1,16 +1,28 @@
+CeladonUniversityPool_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityPool_MapEventHeader:
+
+.Warps: db 2
+	warp_def $9, $6, 6, CELADON_UNIVERSITY_2F
+	warp_def $9, $7, 6, CELADON_UNIVERSITY_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 5
+	person_event SPRITE_SWIMMER_GUY, 5, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolFergusScript, -1
+	person_event SPRITE_LASS, 1, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolLassScript, -1
+	person_event SPRITE_SWIMMER_GIRL, 4, 4, SPRITEMOVEDATA_SWIM_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolSwimmer_girlScript, -1
+	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolTeacherScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CeladonUniversityPoolWaterStone, EVENT_CELADON_UNIVERSITY_POOL_WATER_STONE
+
 const_value set 2
 	const CELADONUNIVERSITYPOOL_FERGUS
-	const CELADONUNIVERSITYPOOL_LASS
-	const CELADONUNIVERSITYPOOL_SWIMMER_GIRL
-	const CELADONUNIVERSITYPOOL_TEACHER
-	const CELADONUNIVERSITYPOOL_POKE_BALL
-
-CeladonUniversityPool_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 CeladonUniversityPoolFergusScript:
 	faceplayer
@@ -181,23 +193,3 @@ CeladonUniversityPoolTeacherScript:
 
 CeladonUniversityPoolWaterStone:
 	itemball WATER_STONE
-
-CeladonUniversityPool_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $9, $6, 6, CELADON_UNIVERSITY_2F
-	warp_def $9, $7, 6, CELADON_UNIVERSITY_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_SWIMMER_GUY, 5, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolFergusScript, -1
-	person_event SPRITE_LASS, 1, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolLassScript, -1
-	person_event SPRITE_SWIMMER_GIRL, 4, 4, SPRITEMOVEDATA_SWIM_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolSwimmer_girlScript, -1
-	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolTeacherScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CeladonUniversityPoolWaterStone, EVENT_CELADON_UNIVERSITY_POOL_WATER_STONE

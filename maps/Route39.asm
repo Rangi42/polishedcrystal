@@ -1,23 +1,39 @@
-const_value set 2
-	const ROUTE39_SAILOR
-	const ROUTE39_POKEFAN_M
-	const ROUTE39_POKEFAN_F1
-	const ROUTE39_MILTANK1
-	const ROUTE39_MILTANK2
-	const ROUTE39_MILTANK3
-	const ROUTE39_MILTANK4
-	const ROUTE39_YOUNGSTER
-	const ROUTE39_FRUIT_TREE
-	const ROUTE39_POKEFAN_F2
-	const ROUTE39_COWGIRL
-	const ROUTE39_BEAUTY
-
 Route39_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route39_MapEventHeader:
+
+.Warps: db 2
+	warp_def $3, $1, 1, ROUTE_39_BARN
+	warp_def $3, $5, 1, ROUTE_39_FARMHOUSE
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 31, 5, SIGNPOST_READ, Route39TrainerTips
+	signpost 5, 9, SIGNPOST_READ, MoomooFarmSign
+	signpost 7, 15, SIGNPOST_READ, Route39Sign
+	signpost 13, 5, SIGNPOST_ITEM, Route39HiddenNugget
+
+.PersonEvents: db 12
+	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
+	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
+	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
+	person_event SPRITE_POKEFAN_F, 19, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
+	person_event SPRITE_MILTANK, 12, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
+	person_event SPRITE_MILTANK, 11, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
+	person_event SPRITE_MILTANK, 15, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
+	person_event SPRITE_MILTANK, 13, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
+	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a5bf4, -1
+	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
+	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route39BeautyScript, -1
+
+const_value set 2
+	const ROUTE39_COWGIRL
 
 Route39Miltank:
 	opentext
@@ -493,34 +509,3 @@ Route39TrainerTipsText:
 	para "Use Headbutt on"
 	line "any tree you see!"
 	done
-
-Route39_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $3, $1, 1, ROUTE_39_BARN
-	warp_def $3, $5, 1, ROUTE_39_FARMHOUSE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 31, 5, SIGNPOST_READ, Route39TrainerTips
-	signpost 5, 9, SIGNPOST_READ, MoomooFarmSign
-	signpost 7, 15, SIGNPOST_READ, Route39Sign
-	signpost 13, 5, SIGNPOST_ITEM, Route39HiddenNugget
-
-.PersonEvents:
-	db 12
-	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
-	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
-	person_event SPRITE_POKEFAN_F, 19, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
-	person_event SPRITE_MILTANK, 12, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_MILTANK, 11, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_MILTANK, 15, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_MILTANK, 13, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a5bf4, -1
-	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
-	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
-	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route39BeautyScript, -1

@@ -1,16 +1,33 @@
+MountMoonSquare_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x77093
+	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x77097
+
+MountMoonSquare_MapEventHeader:
+
+.Warps: db 2
+	warp_def $b, $16, 10, MOUNT_MOON_B1F
+	warp_def $7, $d, 1, MOUNT_MOON_GIFT_SHOP
+
+.XYTriggers: db 1
+	xy_trigger 0, $b, $7, ClefairyDance
+
+.Signposts: db 2
+	signpost 7, 7, SIGNPOST_ITEM, MountMoonSquareHiddenMoonStone
+	signpost 7, 17, SIGNPOST_READ, DontLitterSign
+
+.PersonEvents: db 3
+	person_event SPRITE_CLEFAIRY_WALK, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	person_event SPRITE_CLEFAIRY_WALK, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MtMoonSquareRock, EVENT_MT_MOON_SQUARE_ROCK
+
 const_value set 2
 	const MOUNTMOONSQUARE_CLEFAIRY1
 	const MOUNTMOONSQUARE_CLEFAIRY2
 	const MOUNTMOONSQUARE_ROCK
-
-MountMoonSquare_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x77093
-	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x77097
 
 UnknownScript_0x77093:
 	setevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
@@ -128,24 +145,3 @@ DontLitterSignText:
 	text "Mt.Moon Square"
 	line "Don't Litter"
 	done
-
-MountMoonSquare_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $b, $16, 10, MOUNT_MOON_B1F
-	warp_def $7, $d, 1, MOUNT_MOON_GIFT_SHOP
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $b, $7, ClefairyDance
-
-.Signposts:
-	db 2
-	signpost 7, 7, SIGNPOST_ITEM, MountMoonSquareHiddenMoonStone
-	signpost 7, 17, SIGNPOST_READ, DontLitterSign
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_CLEFAIRY_WALK, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	person_event SPRITE_CLEFAIRY_WALK, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MtMoonSquareRock, EVENT_MT_MOON_SQUARE_ROCK

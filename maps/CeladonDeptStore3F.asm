@@ -1,20 +1,36 @@
-const_value set 2
-	const CELADONDEPTSTORE3F_CLERK1
-	const CELADONDEPTSTORE3F_CLERK2
-	const CELADONDEPTSTORE3F_YOUNGSTER
-	const CELADONDEPTSTORE3F_SUPER_NERD
-	const CELADONDEPTSTORE3F_CLERK3
-	const CELADONDEPTSTORE3F_SNES
-	const CELADONDEPTSTORE3F_N64
-	const CELADONDEPTSTORE3F_GAMECUBE
-	const CELADONDEPTSTORE3F_WII
-
 CeladonDeptStore3F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonDeptStore3F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $0, $c, 1, CELADON_DEPT_STORE_2F
+	warp_def $0, $f, 2, CELADON_DEPT_STORE_4F
+	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore3FDirectory
+	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore3FElevatorButton
+	signpost 3, 2, SIGNPOST_READ, CeladonDeptStore3FRPG
+	signpost 3, 5, SIGNPOST_READ, CeladonDeptStore3FSportsGame
+	signpost 5, 2, SIGNPOST_READ, CeladonDeptStore3FPuzzleGame
+	signpost 5, 5, SIGNPOST_READ, CeladonDeptStore3FFightingGame
+
+.PersonEvents: db 9
+	person_event SPRITE_CLERK, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x70d29, -1
+	person_event SPRITE_CLERK, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
+	person_event SPRITE_YOUNGSTER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70d31, -1
+	person_event SPRITE_SUPER_NERD, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x70d4a, -1
+	person_event SPRITE_CLERK, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VideoGameClerkScript, -1
+	person_event SPRITE_SNES, 3, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
+	person_event SPRITE_N64, 5, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
+	person_event SPRITE_GAMECUBE, 3, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
+	person_event SPRITE_WII, 5, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1
 
 ClerkScript_0x70d29:
 	faceplayer
@@ -408,34 +424,3 @@ CeladonDeptStore3FFightingGameText:
 	text "A fighting game!"
 	line "Looks tough!"
 	done
-
-CeladonDeptStore3F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $0, $c, 1, CELADON_DEPT_STORE_2F
-	warp_def $0, $f, 2, CELADON_DEPT_STORE_4F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore3FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore3FElevatorButton
-	signpost 3, 2, SIGNPOST_READ, CeladonDeptStore3FRPG
-	signpost 3, 5, SIGNPOST_READ, CeladonDeptStore3FSportsGame
-	signpost 5, 2, SIGNPOST_READ, CeladonDeptStore3FPuzzleGame
-	signpost 5, 5, SIGNPOST_READ, CeladonDeptStore3FFightingGame
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_CLERK, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x70d29, -1
-	person_event SPRITE_CLERK, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
-	person_event SPRITE_YOUNGSTER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70d31, -1
-	person_event SPRITE_SUPER_NERD, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x70d4a, -1
-	person_event SPRITE_CLERK, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VideoGameClerkScript, -1
-	person_event SPRITE_SNES, 3, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
-	person_event SPRITE_N64, 5, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
-	person_event SPRITE_GAMECUBE, 3, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
-	person_event SPRITE_WII, 5, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1

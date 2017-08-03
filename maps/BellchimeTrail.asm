@@ -1,16 +1,31 @@
+BellchimeTrail_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw BellchimeTrailTrigger0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkScript
+
+BellchimeTrail_MapEventHeader:
+
+.Warps: db 3
+	warp_def $4, $4, 1, WISE_TRIOS_ROOM
+	warp_def $5, $4, 2, WISE_TRIOS_ROOM
+	warp_def $9, $15, 1, TIN_TOWER_1F ; hole
+
+.XYTriggers: db 1
+	xy_trigger 1, $9, $15, BellchimeTrailPanUpScript
+
+.Signposts: db 1
+	signpost 12, 22, SIGNPOST_READ, TinTowerSign
+
+.PersonEvents: db 1
+	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
+
 const_value set 2
 	const BELLCHIMETRAIL_VALERIE
 
-BellchimeTrail_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkScript
-
-.Trigger0:
+BellchimeTrailTrigger0:
 	priorityjump BellchimeTrailStepDownScript
 	end
 
@@ -320,22 +335,3 @@ TinTowerSignText:
 	line "mon is said to"
 	cont "roost here."
 	done
-
-BellchimeTrail_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $4, $4, 1, WISE_TRIOS_ROOM
-	warp_def $5, $4, 2, WISE_TRIOS_ROOM
-	warp_def $9, $15, 1, TIN_TOWER_1F ; hole
-
-.XYTriggers:
-	db 1
-	xy_trigger 1, $9, $15, BellchimeTrailPanUpScript
-
-.Signposts:
-	db 1
-	signpost 12, 22, SIGNPOST_READ, TinTowerSign
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL

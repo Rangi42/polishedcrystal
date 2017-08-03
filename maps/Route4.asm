@@ -1,18 +1,30 @@
-const_value set 2
-	const ROUTE4_YOUNGSTER
-	const ROUTE4_LASS1
-	const ROUTE4_LASS2
-	const ROUTE4_POKE_BALL
-	const ROUTE4_SUPER_NERD1
-	const ROUTE4_SUPER_NERD2
-	const ROUTE4_COOLTRAINER_M
-
 Route4_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route4_MapEventHeader:
+
+.Warps: db 1
+	warp_def $5, $2, 8, MOUNT_MOON_B1F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 7, 5, SIGNPOST_READ, MtMoonSign
+	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
+
+.PersonEvents: db 9
+	person_event SPRITE_YOUNGSTER, 3, 49, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
+	person_event SPRITE_LASS, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
+	person_event SPRITE_YOUNGSTER, 9, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
+	person_event SPRITE_LASS, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
+	person_event SPRITE_LASS, 6, 33, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP
+	person_event SPRITE_SUPER_NERD, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
+	person_event SPRITE_SUPER_NERD, 3, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
 
 TrainerYoungsterOliver:
 	trainer EVENT_BEAT_YOUNGSTER_OLIVER, YOUNGSTER, OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText, 0, YoungsterOliverScript
@@ -337,28 +349,3 @@ MtMoonSignText:
 	text "Mt.Moon"
 	line "Tunnel Entrance"
 	done
-
-Route4_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $5, $2, 8, MOUNT_MOON_B1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 7, 5, SIGNPOST_READ, MtMoonSign
-	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_YOUNGSTER, 3, 49, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
-	person_event SPRITE_LASS, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
-	person_event SPRITE_YOUNGSTER, 9, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
-	person_event SPRITE_LASS, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
-	person_event SPRITE_LASS, 6, 33, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route4HPUp, EVENT_ROUTE_4_HP_UP
-	person_event SPRITE_SUPER_NERD, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
-	person_event SPRITE_SUPER_NERD, 3, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE

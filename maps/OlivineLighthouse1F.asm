@@ -1,13 +1,25 @@
-const_value set 2
-	const OLIVINELIGHTHOUSE1F_SAILOR
-	const OLIVINELIGHTHOUSE1F_POKEFAN_F
-
 OlivineLighthouse1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+OlivineLighthouse1F_MapEventHeader:
+
+.Warps: db 5
+	warp_def $11, $a, 8, OLIVINE_CITY
+	warp_def $11, $b, 8, OLIVINE_CITY
+	warp_def $b, $3, 1, OLIVINE_LIGHTHOUSE_2F
+	warp_def $d, $10, 3, OLIVINE_LIGHTHOUSE_2F
+	warp_def $d, $11, 4, OLIVINE_LIGHTHOUSE_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_SAILOR, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
+	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x5ae6a, -1
 
 SailorScript_0x5ae67:
 	faceplayer
@@ -57,23 +69,3 @@ UnknownText_0x5aec2:
 	line "made in honor of"
 	cont "those #mon."
 	done
-
-OlivineLighthouse1F_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $11, $a, 8, OLIVINE_CITY
-	warp_def $11, $b, 8, OLIVINE_CITY
-	warp_def $b, $3, 1, OLIVINE_LIGHTHOUSE_2F
-	warp_def $d, $10, 3, OLIVINE_LIGHTHOUSE_2F
-	warp_def $d, $11, 4, OLIVINE_LIGHTHOUSE_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_SAILOR, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
-	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x5ae6a, -1

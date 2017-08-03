@@ -1,15 +1,27 @@
-const_value set 2
-	const GOLDENRODPOKECOMCENTEROFFICE_SCIENTIST1
-	const GOLDENRODPOKECOMCENTEROFFICE_SCIENTIST2
-	const GOLDENRODPOKECOMCENTEROFFICE_SCIENTIST3
-
 
 GoldenrodPokeComCenterOffice_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodPokeComCenterOffice_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $0, 3, GOLDENROD_POKECOM_CENTER_1F
+	warp_def $7, $1, 3, GOLDENROD_POKECOM_CENTER_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 2, 6, SIGNPOST_UP, Computer0Script
+	signpost 5, 6, SIGNPOST_UP, Computer1Script
+	signpost 2, 3, SIGNPOST_UP, Computer2Script
+
+.PersonEvents: db 3
+	person_event SPRITE_SCIENTIST, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d1, -1
+	person_event SPRITE_SCIENTIST, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d4, -1
+	person_event SPRITE_SCIENTIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d7, -1
 
 ScientistScript_0x625d1:
 	jumptextfaceplayer UnknownText_0x62674
@@ -110,24 +122,3 @@ UnknownText_0x62b26:
 
 	para "…… …… ……"
 	done
-
-GoldenrodPokeComCenterOffice_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $0, 3, GOLDENROD_POKECOM_CENTER_1F
-	warp_def $7, $1, 3, GOLDENROD_POKECOM_CENTER_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 2, 6, SIGNPOST_UP, Computer0Script
-	signpost 5, 6, SIGNPOST_UP, Computer1Script
-	signpost 2, 3, SIGNPOST_UP, Computer2Script
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_SCIENTIST, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d1, -1
-	person_event SPRITE_SCIENTIST, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d4, -1
-	person_event SPRITE_SCIENTIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d7, -1

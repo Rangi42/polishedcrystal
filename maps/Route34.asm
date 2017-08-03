@@ -1,30 +1,54 @@
+Route34_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
+
+Route34_MapEventHeader:
+
+.Warps: db 5
+	warp_def $25, $d, 1, ROUTE_34_ILEX_FOREST_GATE
+	warp_def $25, $e, 2, ROUTE_34_ILEX_FOREST_GATE
+	warp_def $e, $b, 1, DAYCARE
+	warp_def $f, $b, 2, DAYCARE
+	warp_def $f, $d, 3, DAYCARE
+
+.XYTriggers: db 3
+	xy_trigger 1, $11, $8, Route34LyraTrigger1
+	xy_trigger 1, $11, $9, Route34LyraTrigger2
+	xy_trigger 1, $11, $a, Route34LyraTrigger3
+
+.Signposts: db 5
+	signpost 6, 12, SIGNPOST_READ, Route34Sign
+	signpost 33, 13, SIGNPOST_READ, Route34TrainerTips
+	signpost 13, 10, SIGNPOST_READ, DayCareSign
+	signpost 32, 8, SIGNPOST_ITEM, Route34HiddenRareCandy
+	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
+
+.PersonEvents: db 14
+	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
+	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
+	person_event SPRITE_GOLDENROD_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
+	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
+	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
+	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
+	person_event SPRITE_OFFICER_F, 10, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
+	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
+	person_event SPRITE_DAYCARE_MON_1, 18, 14, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1
+	person_event SPRITE_DAYCARE_MON_2, 19, 17, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon2Script, EVENT_DAYCARE_MON_2
+	person_event SPRITE_COOLTRAINER_F, 48, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
+	person_event SPRITE_COOLTRAINER_F, 48, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
+	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET
+
 const_value set 2
 	const ROUTE34_RICH_BOY
-	const ROUTE34_YOUNGSTER
-	const ROUTE34_BREEDER
-	const ROUTE34_LASS
-	const ROUTE34_OFFICER_F
-	const ROUTE34_POKEFAN_M
 	const ROUTE34_GRAMPS
-	const ROUTE34_DAYCARE_MON_1
-	const ROUTE34_DAYCARE_MON_2
-	const ROUTE34_COOLTRAINER_F1
-	const ROUTE34_COOLTRAINER_F2
-	const ROUTE34_COOLTRAINER_F3
-	const ROUTE34_POKE_BALL
 	const ROUTE34_LYRA
 
-Route34_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, .EggCheckCallback
-
-.EggCheckCallback:
+Route34RebattleBreederAndEggCheckCallback:
 	clearevent EVENT_BEAT_BREEDER_JULIE
-
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
 	iftrue .PutDaycareManOutside
 	checktriggers
@@ -1034,43 +1058,3 @@ DayCareSignText:
 	para "Let Us Raise Your"
 	line "#mon For You!"
 	done
-
-Route34_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $25, $d, 1, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $25, $e, 2, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $e, $b, 1, DAYCARE
-	warp_def $f, $b, 2, DAYCARE
-	warp_def $f, $d, 3, DAYCARE
-
-.XYTriggers:
-	db 3
-	xy_trigger 1, $11, $8, Route34LyraTrigger1
-	xy_trigger 1, $11, $9, Route34LyraTrigger2
-	xy_trigger 1, $11, $a, Route34LyraTrigger3
-
-.Signposts:
-	db 5
-	signpost 6, 12, SIGNPOST_READ, Route34Sign
-	signpost 33, 13, SIGNPOST_READ, Route34TrainerTips
-	signpost 13, 10, SIGNPOST_READ, DayCareSign
-	signpost 32, 8, SIGNPOST_ITEM, Route34HiddenRareCandy
-	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
-
-.PersonEvents:
-	db 14
-	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
-	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
-	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
-	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	person_event SPRITE_OFFICER_F, 10, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
-	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
-	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
-	person_event SPRITE_DAYCARE_MON_1, 18, 14, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1
-	person_event SPRITE_DAYCARE_MON_2, 19, 17, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon2Script, EVENT_DAYCARE_MON_2
-	person_event SPRITE_COOLTRAINER_F, 48, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
-	person_event SPRITE_COOLTRAINER_F, 48, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
-	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route34Nugget, EVENT_ROUTE_34_NUGGET
-	person_event SPRITE_GOLDENROD_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34

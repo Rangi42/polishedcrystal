@@ -1,15 +1,26 @@
+TinTowerRoof_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, TinTowerRoofHoOh
+
+TinTowerRoof_MapEventHeader:
+
+.Warps: db 1
+	warp_def $d, $7, 2, TIN_TOWER_10F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_HO_OH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
+
 const_value set 2
 	const TINTOWERROOF_HO_OH
 
-TinTowerRoof_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, .HoOh
-
-.HoOh:
+TinTowerRoofHoOh:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftrue .NoAppear
 	checkitem RAINBOW_WING
@@ -43,18 +54,3 @@ TinTowerHoOh:
 HoOhText:
 	text "Shaoooh!"
 	done
-
-TinTowerRoof_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $d, $7, 2, TIN_TOWER_10F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_HO_OH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH

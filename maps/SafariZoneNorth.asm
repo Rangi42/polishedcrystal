@@ -1,17 +1,39 @@
-const_value set 2
-	const SAFARIZONENORTH_BATTLE_GIRL
-	const SAFARIZONENORTH_YOUNGSTER
-	const SAFARIZONENORTH_BEAUTY
-	const SAFARIZONENORTH_COOLTRAINER_F
-	const SAFARIZONENORTH_POKE_BALL1
-	const SAFARIZONENORTH_POKE_BALL2
-
 SafariZoneNorth_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SafariZoneNorth_MapEventHeader:
+
+.Warps: db 9
+	warp_def $20, $29, 3, SAFARI_ZONE_EAST
+	warp_def $21, $29, 4, SAFARI_ZONE_EAST
+	warp_def $25, $a, 3, SAFARI_ZONE_WEST
+	warp_def $25, $b, 4, SAFARI_ZONE_WEST
+	warp_def $25, $16, 7, SAFARI_ZONE_HUB
+	warp_def $25, $17, 8, SAFARI_ZONE_HUB
+	warp_def $5, $25, 1, SAFARI_ZONE_NORTH_REST_HOUSE
+	warp_def $25, $4, 1, SAFARI_ZONE_WEST
+	warp_def $25, $5, 2, SAFARI_ZONE_WEST
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 33, 15, SIGNPOST_READ, SafariZoneNorthAreaSign
+	signpost 6, 38, SIGNPOST_READ, SafariZoneNorthRestHouseSign
+	signpost 30, 28, SIGNPOST_READ, SafariZoneNorthTrainerTips1Sign
+	signpost 34, 20, SIGNPOST_READ, SafariZoneNorthTrainerTips2Sign
+	signpost 27, 5, SIGNPOST_READ, SafariZoneNorthTrainerTips3Sign
+	signpost 19, 31, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
+
+.PersonEvents: db 6
+	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
+	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
+	person_event SPRITE_BEAUTY, 9, 36, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
+	person_event SPRITE_COOLTRAINER_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 18, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthEviolite, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
+	person_event SPRITE_BALL_CUT_FRUIT, 9, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthProtein, EVENT_SAFARI_ZONE_NORTH_PROTEIN
 
 TrainerBattleGirlPadma:
 	trainer EVENT_BEAT_BATTLE_GIRL_PADMA, BATTLE_GIRL, PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript
@@ -255,37 +277,3 @@ SafariZoneNorthTrainerTips3SignText:
 	line "sign has been"
 	cont "torn away…"
 	done
-
-SafariZoneNorth_MapEventHeader:
-.Warps:
-	db 9
-	warp_def $20, $29, 3, SAFARI_ZONE_EAST
-	warp_def $21, $29, 4, SAFARI_ZONE_EAST
-	warp_def $25, $a, 3, SAFARI_ZONE_WEST
-	warp_def $25, $b, 4, SAFARI_ZONE_WEST
-	warp_def $25, $16, 7, SAFARI_ZONE_HUB
-	warp_def $25, $17, 8, SAFARI_ZONE_HUB
-	warp_def $5, $25, 1, SAFARI_ZONE_NORTH_REST_HOUSE
-	warp_def $25, $4, 1, SAFARI_ZONE_WEST
-	warp_def $25, $5, 2, SAFARI_ZONE_WEST
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 33, 15, SIGNPOST_READ, SafariZoneNorthAreaSign
-	signpost 6, 38, SIGNPOST_READ, SafariZoneNorthRestHouseSign
-	signpost 30, 28, SIGNPOST_READ, SafariZoneNorthTrainerTips1Sign
-	signpost 34, 20, SIGNPOST_READ, SafariZoneNorthTrainerTips2Sign
-	signpost 27, 5, SIGNPOST_READ, SafariZoneNorthTrainerTips3Sign
-	signpost 19, 31, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
-	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
-	person_event SPRITE_BEAUTY, 9, 36, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
-	person_event SPRITE_COOLTRAINER_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthEviolite, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneNorthProtein, EVENT_SAFARI_ZONE_NORTH_PROTEIN

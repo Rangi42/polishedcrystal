@@ -1,25 +1,40 @@
+CeruleanGym_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw CeruleanGymTrigger0
+	dw CeruleanGymTrigger1
+
+.MapCallbacks: db 0
+
+CeruleanGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $f, $4, 5, CERULEAN_CITY
+	warp_def $f, $5, 5, CERULEAN_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 8, 3, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
+	signpost 13, 2, SIGNPOST_READ, CeruleanGymStatue1
+	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
+
+.PersonEvents: db 8
+	person_event SPRITE_ROCKET, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
+	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SWIMMER_GIRL, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJoy, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SAILOR, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_GYM_GUY, 13, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
+
 const_value set 2
 	const CERULEANGYM_ROCKET
-	const CERULEANGYM_MISTY
-	const CERULEANGYM_SWIMMER_GIRL1
-	const CERULEANGYM_SWIMMER_GIRL2
-	const CERULEANGYM_SWIMMER_GIRL3
-	const CERULEANGYM_SAILOR1
-	const CERULEANGYM_SAILOR2
-	const CERULEANGYM_GYM_GUY
 
-CeruleanGym_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 0
-
-.Trigger1:
+CeruleanGymTrigger1:
 	priorityjump UnknownScript_0x1883de
-.Trigger0:
+CeruleanGymTrigger0:
 	end
 
 UnknownScript_0x1883de:
@@ -488,29 +503,3 @@ CeruleanGymSomethingUnderwaterText:
 	line "under the water…"
 	cont "Wonder what it is?"
 	done
-
-CeruleanGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $f, $4, 5, CERULEAN_CITY
-	warp_def $f, $5, 5, CERULEAN_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 8, 3, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
-	signpost 13, 2, SIGNPOST_READ, CeruleanGymStatue1
-	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_ROCKET, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
-	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJoy, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SAILOR, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_GYM_GUY, 13, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM

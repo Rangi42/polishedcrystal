@@ -1,16 +1,29 @@
-const_value set 2
-	const TRAINERHOUSE1F_RECEPTIONIST
-	const TRAINERHOUSE1F_COOLTRAINER_M
-	const TRAINERHOUSE1F_COOLTRAINER_F
-	const TRAINERHOUSE1F_YOUNGSTER
-	const TRAINERHOUSE1F_GENTLEMAN
-
 TrainerHouse1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+TrainerHouse1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $b, $4, 3, VIRIDIAN_CITY
+	warp_def $b, $5, 3, VIRIDIAN_CITY
+	warp_def $2, $8, 1, TRAINER_HOUSE_B1F
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 0, 7, SIGNPOST_READ, MapTrainerHouse1FSignpost0Script
+	signpost 0, 9, SIGNPOST_READ, MapTrainerHouse1FSignpost1Script
+	signpost 6, 4, SIGNPOST_READ, MapTrainerHouse1FSignpost2Script
+
+.PersonEvents: db 5
+	person_event SPRITE_RECEPTIONIST, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9af67, -1
+	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9af6a, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9af6d, -1
+	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x9af70, -1
+	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x9af73, -1
 
 ReceptionistScript_0x9af67:
 	jumptextfaceplayer UnknownText_0x9af7f
@@ -136,27 +149,3 @@ UnknownText_0x9b2c1:
 	para "It's completely"
 	line "illegible…"
 	done
-
-TrainerHouse1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $b, $4, 3, VIRIDIAN_CITY
-	warp_def $b, $5, 3, VIRIDIAN_CITY
-	warp_def $2, $8, 1, TRAINER_HOUSE_B1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 0, 7, SIGNPOST_READ, MapTrainerHouse1FSignpost0Script
-	signpost 0, 9, SIGNPOST_READ, MapTrainerHouse1FSignpost1Script
-	signpost 6, 4, SIGNPOST_READ, MapTrainerHouse1FSignpost2Script
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_RECEPTIONIST, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9af67, -1
-	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9af6a, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9af6d, -1
-	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x9af70, -1
-	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x9af73, -1

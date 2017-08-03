@@ -1,21 +1,66 @@
+EcruteakGym_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw EcruteakGymTrigger0
+
+.MapCallbacks: db 0
+
+EcruteakGym_MapEventHeader:
+
+.Warps: db 33
+	warp_def $11, $4, 10, ECRUTEAK_CITY
+	warp_def $11, $5, 10, ECRUTEAK_CITY
+	warp_def $e, $4, 4, ECRUTEAK_GYM
+	warp_def $4, $2, 3, ECRUTEAK_GYM
+	warp_def $4, $3, 3, ECRUTEAK_GYM
+	warp_def $4, $4, 3, ECRUTEAK_GYM
+	warp_def $5, $4, 3, ECRUTEAK_GYM
+	warp_def $7, $6, 3, ECRUTEAK_GYM
+	warp_def $4, $7, 3, ECRUTEAK_GYM
+	warp_def $6, $2, 3, ECRUTEAK_GYM
+	warp_def $6, $3, 3, ECRUTEAK_GYM
+	warp_def $6, $4, 3, ECRUTEAK_GYM
+	warp_def $6, $5, 3, ECRUTEAK_GYM
+	warp_def $6, $7, 3, ECRUTEAK_GYM
+	warp_def $7, $7, 3, ECRUTEAK_GYM
+	warp_def $8, $4, 3, ECRUTEAK_GYM
+	warp_def $8, $5, 3, ECRUTEAK_GYM
+	warp_def $8, $6, 3, ECRUTEAK_GYM
+	warp_def $8, $7, 3, ECRUTEAK_GYM
+	warp_def $8, $2, 3, ECRUTEAK_GYM
+	warp_def $9, $2, 3, ECRUTEAK_GYM
+	warp_def $a, $2, 3, ECRUTEAK_GYM
+	warp_def $b, $2, 3, ECRUTEAK_GYM
+	warp_def $a, $4, 3, ECRUTEAK_GYM
+	warp_def $a, $5, 3, ECRUTEAK_GYM
+	warp_def $c, $2, 3, ECRUTEAK_GYM
+	warp_def $c, $3, 3, ECRUTEAK_GYM
+	warp_def $c, $4, 3, ECRUTEAK_GYM
+	warp_def $c, $5, 3, ECRUTEAK_GYM
+	warp_def $a, $7, 3, ECRUTEAK_GYM
+	warp_def $b, $7, 3, ECRUTEAK_GYM
+	warp_def $c, $7, 3, ECRUTEAK_GYM
+	warp_def $d, $7, 3, ECRUTEAK_GYM
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 15, 3, SIGNPOST_READ, EcruteakGymStatue
+	signpost 15, 6, SIGNPOST_READ, EcruteakGymStatue
+
+.PersonEvents: db 7
+	person_event SPRITE_GRAMPS, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS
+	person_event SPRITE_MORTY, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MortyScript_0x99d58, -1
+	person_event SPRITE_SAGE, 7, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSageJeffrey, -1
+	person_event SPRITE_SAGE, 13, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSagePing, -1
+	person_event SPRITE_GRANNY, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumMartha, -1
+	person_event SPRITE_GRANNY, 9, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumGrace, -1
+	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakGymGuyScript, -1
+
 const_value set 2
-	const ECRUTEAKGYM_MORTY
-	const ECRUTEAKGYM_SAGE1
-	const ECRUTEAKGYM_SAGE2
-	const ECRUTEAKGYM_GRANNY1
-	const ECRUTEAKGYM_GRANNY2
-	const ECRUTEAKGYM_GYM_GUY
 	const ECRUTEAKGYM_GRAMPS
 
-EcruteakGym_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+EcruteakGymTrigger0:
 	priorityjump UnknownScript_0x99dc6
 	end
 
@@ -370,58 +415,3 @@ UnknownText_0x9a49c:
 
 	para "Hohohoho."
 	done
-
-EcruteakGym_MapEventHeader:
-.Warps:
-	db 33
-	warp_def $11, $4, 10, ECRUTEAK_CITY
-	warp_def $11, $5, 10, ECRUTEAK_CITY
-	warp_def $e, $4, 4, ECRUTEAK_GYM
-	warp_def $4, $2, 3, ECRUTEAK_GYM
-	warp_def $4, $3, 3, ECRUTEAK_GYM
-	warp_def $4, $4, 3, ECRUTEAK_GYM
-	warp_def $5, $4, 3, ECRUTEAK_GYM
-	warp_def $7, $6, 3, ECRUTEAK_GYM
-	warp_def $4, $7, 3, ECRUTEAK_GYM
-	warp_def $6, $2, 3, ECRUTEAK_GYM
-	warp_def $6, $3, 3, ECRUTEAK_GYM
-	warp_def $6, $4, 3, ECRUTEAK_GYM
-	warp_def $6, $5, 3, ECRUTEAK_GYM
-	warp_def $6, $7, 3, ECRUTEAK_GYM
-	warp_def $7, $7, 3, ECRUTEAK_GYM
-	warp_def $8, $4, 3, ECRUTEAK_GYM
-	warp_def $8, $5, 3, ECRUTEAK_GYM
-	warp_def $8, $6, 3, ECRUTEAK_GYM
-	warp_def $8, $7, 3, ECRUTEAK_GYM
-	warp_def $8, $2, 3, ECRUTEAK_GYM
-	warp_def $9, $2, 3, ECRUTEAK_GYM
-	warp_def $a, $2, 3, ECRUTEAK_GYM
-	warp_def $b, $2, 3, ECRUTEAK_GYM
-	warp_def $a, $4, 3, ECRUTEAK_GYM
-	warp_def $a, $5, 3, ECRUTEAK_GYM
-	warp_def $c, $2, 3, ECRUTEAK_GYM
-	warp_def $c, $3, 3, ECRUTEAK_GYM
-	warp_def $c, $4, 3, ECRUTEAK_GYM
-	warp_def $c, $5, 3, ECRUTEAK_GYM
-	warp_def $a, $7, 3, ECRUTEAK_GYM
-	warp_def $b, $7, 3, ECRUTEAK_GYM
-	warp_def $c, $7, 3, ECRUTEAK_GYM
-	warp_def $d, $7, 3, ECRUTEAK_GYM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 15, 3, SIGNPOST_READ, EcruteakGymStatue
-	signpost 15, 6, SIGNPOST_READ, EcruteakGymStatue
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_MORTY, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MortyScript_0x99d58, -1
-	person_event SPRITE_SAGE, 7, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSageJeffrey, -1
-	person_event SPRITE_SAGE, 13, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSagePing, -1
-	person_event SPRITE_GRANNY, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumMartha, -1
-	person_event SPRITE_GRANNY, 9, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumGrace, -1
-	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakGymGuyScript, -1
-	person_event SPRITE_GRAMPS, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS

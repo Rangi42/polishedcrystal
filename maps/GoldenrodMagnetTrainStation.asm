@@ -1,14 +1,29 @@
+GoldenrodMagnetTrainStation_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodMagnetTrainStation_MapEventHeader:
+
+.Warps: db 4
+	warp_def $11, $8, 5, GOLDENROD_CITY
+	warp_def $11, $9, 5, GOLDENROD_CITY
+	warp_def $5, $6, 4, SAFFRON_TRAIN_STATION
+	warp_def $5, $b, 3, SAFFRON_TRAIN_STATION
+
+.XYTriggers: db 1
+	xy_trigger 0, $6, $b, Script_ArriveFromSaffron
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
+	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55143, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
+	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
+
 const_value set 2
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
-	const GOLDENRODMAGNETTRAINSTATION_GENTLEMAN
-	const GOLDENRODMAGNETTRAINSTATION_COOLTRAINER_F
-
-GoldenrodMagnetTrainStation_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 OfficerScript_0x550ec:
 	faceplayer
@@ -185,24 +200,3 @@ GoldenrodMagnetTrainStationCooltrainerfText2:
 
 	para "It's so cool!"
 	done
-
-GoldenrodMagnetTrainStation_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $11, $8, 5, GOLDENROD_CITY
-	warp_def $11, $9, 5, GOLDENROD_CITY
-	warp_def $5, $6, 4, SAFFRON_TRAIN_STATION
-	warp_def $5, $b, 3, SAFFRON_TRAIN_STATION
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $6, $b, Script_ArriveFromSaffron
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
-	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55143, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1

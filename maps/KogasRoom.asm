@@ -1,16 +1,27 @@
-const_value set 2
-	const KOGASROOM_KOGA
-
 KogasRoom_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw KogasRoomTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x18072d
 
-.Trigger0:
+KogasRoom_MapEventHeader:
+
+.Warps: db 4
+	warp_def $11, $4, 2, WILLS_ROOM
+	warp_def $11, $5, 3, WILLS_ROOM
+	warp_def $2, $4, 1, BRUNOS_ROOM
+	warp_def $2, $5, 2, BRUNOS_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_KOGA, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript_0x18075a, -1
+
+KogasRoomTrigger0:
 	priorityjump UnknownScript_0x180742
 	end
 
@@ -171,21 +182,3 @@ KogaAfterRematchText:
 	line "myself to my"
 	cont "training."
 	done
-
-KogasRoom_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $11, $4, 2, WILLS_ROOM
-	warp_def $11, $5, 3, WILLS_ROOM
-	warp_def $2, $4, 1, BRUNOS_ROOM
-	warp_def $2, $5, 2, BRUNOS_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_KOGA, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript_0x18075a, -1

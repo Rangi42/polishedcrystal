@@ -1,12 +1,28 @@
+SafariZoneWestRestHouse2_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SafariZoneWestRestHouse2_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 8, SAFARI_ZONE_WEST
+	warp_def $7, $3, 8, SAFARI_ZONE_WEST
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
+	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
+
+.PersonEvents: db 1
+	person_event SPRITE_FLANNERY, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
+
 const_value set 2
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY
-
-SafariZoneWestRestHouse2_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 SafariZoneWestRestHouse2FlanneryScript:
 	faceplayer
@@ -125,24 +141,3 @@ SafariZoneWestRestHouse2FlanneryScript:
 	line "Don't be shy about"
 	cont "it if you return!"
 	done
-
-SafariZoneWestRestHouse2_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 8, SAFARI_ZONE_WEST
-	warp_def $7, $3, 8, SAFARI_ZONE_WEST
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_FLANNERY, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
-

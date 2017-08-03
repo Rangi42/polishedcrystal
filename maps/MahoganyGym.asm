@@ -1,18 +1,29 @@
-const_value set 2
-	const MAHOGANYGYM_PRYCE
-	const MAHOGANYGYM_SKIER1
-	const MAHOGANYGYM_BOARDER1
-	const MAHOGANYGYM_SKIER2
-	const MAHOGANYGYM_BOARDER2
-	const MAHOGANYGYM_BOARDER3
-	const MAHOGANYGYM_GYM_GUY
-
 MahoganyGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+MahoganyGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $4, 3, MAHOGANY_TOWN
+	warp_def $11, $5, 3, MAHOGANY_TOWN
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 15, 3, SIGNPOST_READ, MahoganyGymStatue
+	signpost 15, 6, SIGNPOST_READ, MahoganyGymStatue
+
+.PersonEvents: db 7
+	person_event SPRITE_PRYCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PryceScript_0x199a9e, -1
+	person_event SPRITE_SKIER, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
+	person_event SPRITE_BOARDER, 17, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderRonald, -1
+	person_event SPRITE_SKIER, 17, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierClarissa, -1
+	person_event SPRITE_BOARDER, 9, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderBrad, -1
+	person_event SPRITE_BOARDER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
+	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MahoganyGymGuyScript, -1
 
 PryceScript_0x199a9e:
 	faceplayer
@@ -359,27 +370,3 @@ MahoganyGymGuyWinText:
 	para "bridged the gen-"
 	line "eration gap!"
 	done
-
-MahoganyGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $4, 3, MAHOGANY_TOWN
-	warp_def $11, $5, 3, MAHOGANY_TOWN
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 15, 3, SIGNPOST_READ, MahoganyGymStatue
-	signpost 15, 6, SIGNPOST_READ, MahoganyGymStatue
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_PRYCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PryceScript_0x199a9e, -1
-	person_event SPRITE_SKIER, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
-	person_event SPRITE_BOARDER, 17, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderRonald, -1
-	person_event SPRITE_SKIER, 17, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierClarissa, -1
-	person_event SPRITE_BOARDER, 9, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderBrad, -1
-	person_event SPRITE_BOARDER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
-	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MahoganyGymGuyScript, -1

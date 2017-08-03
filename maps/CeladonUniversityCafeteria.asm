@@ -1,18 +1,31 @@
+CeladonUniversityCafeteria_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityCafeteria_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $d, 2, CELADON_UNIVERSITY_2F
+	warp_def $7, $e, 2, CELADON_UNIVERSITY_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 0, 10, SIGNPOST_READ, CeladonUniversityCafeteriaSign
+
+.PersonEvents: db 7
+	person_event SPRITE_COOLTRAINER_M, 2, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCoreyScript, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCooltrainerfScript, -1
+	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBeautyScript, -1
+	person_event SPRITE_YOUNGSTER, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster1Script, -1
+	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaLadyScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster2Script, -1
+	person_event SPRITE_BAKER, 3, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBakerScript, -1
+
 const_value set 2
 	const CELADONUNIVERSITYCAFETERIA_COREY
-	const CELADONUNIVERSITYCAFETERIA_COOLTRAINER_F
-	const CELADONUNIVERSITYCAFETERIA_BEAUTY
-	const CELADONUNIVERSITYCAFETERIA_YOUNGSTER1
-	const CELADONUNIVERSITYCAFETERIA_LADY
-	const CELADONUNIVERSITYCAFETERIA_YOUNGSTER2
-	const CELADONUNIVERSITYCAFETERIA_BAKER
-
-CeladonUniversityCafeteria_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 CeladonUniversityCafeteriaCoreyScript:
 	faceplayer
@@ -326,26 +339,3 @@ CeladonUniversityCafeteriaSign:
 	line "when you are"
 	cont "finished eating."
 	done
-
-CeladonUniversityCafeteria_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $d, 2, CELADON_UNIVERSITY_2F
-	warp_def $7, $e, 2, CELADON_UNIVERSITY_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 0, 10, SIGNPOST_READ, CeladonUniversityCafeteriaSign
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_COOLTRAINER_M, 2, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCoreyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCooltrainerfScript, -1
-	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBeautyScript, -1
-	person_event SPRITE_YOUNGSTER, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster1Script, -1
-	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaLadyScript, -1
-	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster2Script, -1
-	person_event SPRITE_BAKER, 3, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBakerScript, -1

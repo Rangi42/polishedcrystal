@@ -1,13 +1,21 @@
-const_value set 2
-	const SLOWPOKEWELLB2F_GYM_GUY
-	const SLOWPOKEWELLB2F_POKE_BALL
-
 SlowpokeWellB2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SlowpokeWellB2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $b, $9, 2, SLOWPOKE_WELL_B1F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_GYM_GUY, 4, 5, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SlowpokeWellB2FDampRock, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
 
 GymGuyScript_0x5ad0b:
 	faceplayer
@@ -60,19 +68,3 @@ UnknownText_0x5adf2:
 	line "ly, so I can see"
 	cont "one evolve."
 	done
-
-SlowpokeWellB2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $b, $9, 2, SLOWPOKE_WELL_B1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_GYM_GUY, 4, 5, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SlowpokeWellB2FDampRock, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK

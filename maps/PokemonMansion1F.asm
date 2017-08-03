@@ -1,17 +1,35 @@
-const_value set 2
-	const POKEMONMANSION1F_BURGLAR1
-	const POKEMONMANSION1F_BURGLAR2
-	const POKEMONMANSION1F_POKE_BALL1
-	const POKEMONMANSION1F_POKE_BALL2
-	const POKEMONMANSION1F_POKE_BALL3
-	const POKEMONMANSION1F_POKE_BALL4
-
 PokemonMansion1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PokemonMansion1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $1b, $5, 3, CINNABAR_ISLAND
+	warp_def $1b, $6, 3, CINNABAR_ISLAND
+	warp_def $17, $15, 1, POKEMON_MANSION_B1F
+
+.XYTriggers: db 0
+
+.Signposts: db 8
+	signpost 12, 21, SIGNPOST_ITEM, PokemonMansion1FHiddenFullRestore
+	signpost 23, 14, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
+	signpost 5, 2, SIGNPOST_READ, PokemonMansion1FMewtwoStatue
+	signpost 23, 15, SIGNPOST_READ, PokemonMansion1FFlowerPot
+	signpost 23, 18, SIGNPOST_READ, PokemonMansion1FFlowerPot
+	signpost 23, 19, SIGNPOST_READ, PokemonMansion1FFlowerPot
+	signpost 19, 18, SIGNPOST_READ, PokemonMansion1FFlowerPot
+	signpost 19, 19, SIGNPOST_READ, PokemonMansion1FFlowerPot
+
+.PersonEvents: db 6
+	person_event SPRITE_PHARMACIST, 10, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
+	person_event SPRITE_PHARMACIST, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FMoonStone, EVENT_POKEMON_MANSION_1F_MOON_STONE
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FEscapeRope, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FProtein, EVENT_POKEMON_MANSION_1F_PROTEIN
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FIron, EVENT_POKEMON_MANSION_1F_IRON
 
 TrainerBurglarPete:
 	trainer EVENT_BEAT_BURGLAR_PETE, BURGLAR, PETE, BurglarPeteSeenText, BurglarPeteBeatenText, 0, BurglarPeteScript
@@ -137,33 +155,3 @@ PokemonMansion1FFlowerPotText:
 	text "It's filled with"
 	line "soil and ashes…"
 	done
-
-PokemonMansion1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $1b, $5, 3, CINNABAR_ISLAND
-	warp_def $1b, $6, 3, CINNABAR_ISLAND
-	warp_def $17, $15, 1, POKEMON_MANSION_B1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 8
-	signpost 12, 21, SIGNPOST_ITEM, PokemonMansion1FHiddenFullRestore
-	signpost 23, 14, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
-	signpost 5, 2, SIGNPOST_READ, PokemonMansion1FMewtwoStatue
-	signpost 23, 15, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 23, 18, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 23, 19, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 19, 18, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 19, 19, SIGNPOST_READ, PokemonMansion1FFlowerPot
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_PHARMACIST, 10, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
-	person_event SPRITE_PHARMACIST, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FMoonStone, EVENT_POKEMON_MANSION_1F_MOON_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FEscapeRope, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FProtein, EVENT_POKEMON_MANSION_1F_PROTEIN
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PokemonMansion1FIron, EVENT_POKEMON_MANSION_1F_IRON

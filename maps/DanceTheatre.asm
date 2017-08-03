@@ -1,21 +1,32 @@
-const_value set 2
-	const DANCETHEATRE_KIMONO_GIRL1
-	const DANCETHEATRE_KIMONO_GIRL2
-	const DANCETHEATRE_KIMONO_GIRL3
-	const DANCETHEATRE_KIMONO_GIRL4
-	const DANCETHEATRE_KIMONO_GIRL5
-	const DANCETHEATRE_GENTLEMAN
-	const DANCETHEATRE_RHYDON
-	const DANCETHEATRE_COOLTRAINER_M
-	const DANCETHEATRE_GRANNY
-	const DANCETHEATRE_LADY
-
 DanceTheatre_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+DanceTheatre_MapEventHeader:
+
+.Warps: db 2
+	warp_def $d, $5, 8, ECRUTEAK_CITY
+	warp_def $d, $6, 8, ECRUTEAK_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 6, 5, SIGNPOST_UP, MapDanceTheatreSignpost1Script
+	signpost 6, 6, SIGNPOST_UP, MapDanceTheatreSignpost1Script
+
+.PersonEvents: db 10
+	person_event SPRITE_KIMONO_GIRL, 2, 0, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlNaoko, -1
+	person_event SPRITE_KIMONO_GIRL, 1, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlSayo, -1
+	person_event SPRITE_KIMONO_GIRL, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerKimono_girlZuki, -1
+	person_event SPRITE_KIMONO_GIRL, 1, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlKuni, -1
+	person_event SPRITE_KIMONO_GIRL, 2, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlMiki, -1
+	person_event SPRITE_GENTLEMAN, 10, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x994c6, -1
+	person_event SPRITE_RHYDON, 8, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RhydonScript_0x9951b, -1
+	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x99525, -1
+	person_event SPRITE_GRANNY, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x99528, -1
+	person_event SPRITE_LADY, 10, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, DanceTheatreLadyScript, -1
 
 TrainerKimono_girlNaoko:
 	trainer EVENT_BEAT_KIMONO_GIRL_NAOKO, KIMONO_GIRL, NAOKO, Kimono_girlNaokoSeenText, Kimono_girlNaokoBeatenText, 0, Kimono_girlNaokoScript
@@ -352,30 +363,3 @@ UnknownText_0x99b79:
 	line "that's decorated"
 	cont "with flowers."
 	done
-
-DanceTheatre_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $d, $5, 8, ECRUTEAK_CITY
-	warp_def $d, $6, 8, ECRUTEAK_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 6, 5, SIGNPOST_UP, MapDanceTheatreSignpost1Script
-	signpost 6, 6, SIGNPOST_UP, MapDanceTheatreSignpost1Script
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_KIMONO_GIRL, 2, 0, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlNaoko, -1
-	person_event SPRITE_KIMONO_GIRL, 1, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlSayo, -1
-	person_event SPRITE_KIMONO_GIRL, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerKimono_girlZuki, -1
-	person_event SPRITE_KIMONO_GIRL, 1, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlKuni, -1
-	person_event SPRITE_KIMONO_GIRL, 2, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlMiki, -1
-	person_event SPRITE_GENTLEMAN, 10, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x994c6, -1
-	person_event SPRITE_RHYDON, 8, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RhydonScript_0x9951b, -1
-	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x99525, -1
-	person_event SPRITE_GRANNY, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x99528, -1
-	person_event SPRITE_LADY, 10, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, DanceTheatreLadyScript, -1

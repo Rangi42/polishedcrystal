@@ -1,14 +1,26 @@
-const_value set 2
-	const SPROUTTOWER2F_SAGE1
-	const SPROUTTOWER2F_SAGE2
-	const SPROUTTOWER2F_POKE_BALL
-
 SproutTower2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SproutTower2F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $4, $4, 3, SPROUT_TOWER_1F
+	warp_def $6, $0, 4, SPROUT_TOWER_1F
+	warp_def $3, $f, 5, SPROUT_TOWER_1F
+	warp_def $e, $8, 1, SPROUT_TOWER_3F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 15, 10, SIGNPOST_READ, MapSproutTower2FSignpost0Script
+
+.PersonEvents: db 3
+	person_event SPRITE_SAGE, 3, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
+	person_event SPRITE_SAGE, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SproutTower2FXAccuracy, EVENT_SPROUT_TOWER2F_X_ACCURACY
 
 TrainerSageNico:
 	trainer EVENT_BEAT_SAGE_NICO, SAGE, NICO, SageNicoSeenText, SageNicoBeatenText, 0, SageNicoScript
@@ -83,24 +95,3 @@ UnknownText_0x1848c8:
 	para "It looks very"
 	line "distinguished."
 	done
-
-SproutTower2F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $4, $4, 3, SPROUT_TOWER_1F
-	warp_def $6, $0, 4, SPROUT_TOWER_1F
-	warp_def $3, $f, 5, SPROUT_TOWER_1F
-	warp_def $e, $8, 1, SPROUT_TOWER_3F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 15, 10, SIGNPOST_READ, MapSproutTower2FSignpost0Script
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_SAGE, 3, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
-	person_event SPRITE_SAGE, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SproutTower2FXAccuracy, EVENT_SPROUT_TOWER2F_X_ACCURACY

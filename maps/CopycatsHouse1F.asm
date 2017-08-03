@@ -1,14 +1,24 @@
-const_value set 2
-	const COPYCATSHOUSE1F_POKEFAN_M
-	const COPYCATSHOUSE1F_POKEFAN_F
-	const COPYCATSHOUSE1F_BLISSEY
-
 CopycatsHouse1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CopycatsHouse1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $2, 8, SAFFRON_CITY
+	warp_def $7, $3, 8, SAFFRON_CITY
+	warp_def $0, $3, 1, COPYCATS_HOUSE_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x18ad13, -1
+	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x18ad16, -1
+	person_event SPRITE_BLISSEY, 5, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlisseyScript_0x18ad2a, -1
 
 PokefanMScript_0x18ad13:
 	jumptextfaceplayer UnknownText_0x18ad34
@@ -71,22 +81,3 @@ UnknownText_0x18add3:
 UnknownText_0x18ae4b:
 	text "Blissey: Bliisii!"
 	done
-
-CopycatsHouse1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $2, 8, SAFFRON_CITY
-	warp_def $7, $3, 8, SAFFRON_CITY
-	warp_def $0, $3, 1, COPYCATS_HOUSE_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x18ad13, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x18ad16, -1
-	person_event SPRITE_BLISSEY, 5, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlisseyScript_0x18ad2a, -1

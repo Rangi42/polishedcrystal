@@ -1,13 +1,24 @@
-const_value set 2
-	const ROUTE39FARMHOUSE_POKEFAN_M
-	const ROUTE39FARMHOUSE_POKEFAN_F
-
 Route39Farmhouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route39Farmhouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 2, ROUTE_39
+	warp_def $7, $3, 2, ROUTE_39
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 1, 6, SIGNPOST_READ, FarmhouseBookshelf
+	signpost 1, 7, SIGNPOST_READ, FarmhouseBookshelf
+
+.PersonEvents: db 2
+	person_event SPRITE_POKEFAN_M, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
+	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1
 
 PokefanMScript_0x9ceb4:
 	faceplayer
@@ -215,22 +226,3 @@ UnknownText_0x9d1c7:
 	line "you ought to use"
 	cont "it, hon."
 	done
-
-Route39Farmhouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 2, ROUTE_39
-	warp_def $7, $3, 2, ROUTE_39
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 1, 6, SIGNPOST_READ, FarmhouseBookshelf
-	signpost 1, 7, SIGNPOST_READ, FarmhouseBookshelf
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_POKEFAN_M, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1

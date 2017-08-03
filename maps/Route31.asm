@@ -1,23 +1,38 @@
-const_value set 2
-	const ROUTE31_FISHER
-	const ROUTE31_YOUNGSTER
-	const ROUTE31_COOLTRAINER_M
-	const ROUTE31_BUG_CATCHER
-	const ROUTE31_CUT_TREE1
-	const ROUTE31_CUT_TREE2
-	const ROUTE31_FRUIT_TREE
-	const ROUTE31_POKE_BALL1
-	const ROUTE31_POKE_BALL2
-
 Route31_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .CheckMomCall
+.MapTriggers: db 0
 
-.CheckMomCall:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, Route31CheckMomCall
+
+Route31_MapEventHeader:
+
+.Warps: db 3
+	warp_def $6, $4, 3, ROUTE_31_VIOLET_GATE
+	warp_def $7, $4, 4, ROUTE_31_VIOLET_GATE
+	warp_def $5, $22, 1, DARK_CAVE_VIOLET_ENTRANCE
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 5, 7, SIGNPOST_READ, Route31Sign
+	signpost 5, 31, SIGNPOST_READ, DarkCaveSign
+
+.PersonEvents: db 9
+	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
+	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31YoungsterScript, -1
+	person_event SPRITE_CHERRYGROVE_RIVAL, 13, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_1
+	person_event SPRITE_BALL_CUT_FRUIT, 10, 25, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_2
+	person_event SPRITE_BALL_CUT_FRUIT, 7, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31FruitTree, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
+
+const_value set 2
+	const ROUTE31_COOLTRAINER_M
+
+Route31CheckMomCall:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iffalse .DoMomCall
 	return
@@ -583,30 +598,3 @@ Route31SignText:
 DarkCaveSignText:
 	text "Dark Cave"
 	done
-
-Route31_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $6, $4, 3, ROUTE_31_VIOLET_GATE
-	warp_def $7, $4, 4, ROUTE_31_VIOLET_GATE
-	warp_def $5, $22, 1, DARK_CAVE_VIOLET_ENTRANCE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 5, 7, SIGNPOST_READ, Route31Sign
-	signpost 5, 31, SIGNPOST_READ, DarkCaveSign
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31YoungsterScript, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
-	person_event SPRITE_CHERRYGROVE_RIVAL, 13, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 25, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_2
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31FruitTree, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL

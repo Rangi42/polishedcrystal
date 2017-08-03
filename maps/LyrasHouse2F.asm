@@ -4,11 +4,27 @@ const_value set 3
 	const LYRASHOUSE2F_N64
 
 LyrasHouse2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+LyrasHouse2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $0, 3, LYRAS_HOUSE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 1, 4, SIGNPOST_READ, LyrasHousePC
+	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
+	signpost 1, 7, SIGNPOST_READ, PokemonJournalProfElmScript
+
+.PersonEvents: db 3
+	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseLyra, EVENT_LYRA_IN_HER_ROOM
+	person_event SPRITE_AMPHAROS, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseAmpharos, EVENT_LYRA_IN_HER_ROOM
+	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_SCRIPT, 0, LyrasHouseN64, -1
 
 LyrasHouseLyra:
 	jumptextfaceplayer LyrasHouseLyraText
@@ -103,23 +119,3 @@ LyrasHouseN64Text:
 	line "edition Pikachu"
 	cont "N64!"
 	done
-
-LyrasHouse2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $0, 3, LYRAS_HOUSE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 1, 4, SIGNPOST_READ, LyrasHousePC
-	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
-	signpost 1, 7, SIGNPOST_READ, PokemonJournalProfElmScript
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseLyra, EVENT_LYRA_IN_HER_ROOM
-	person_event SPRITE_AMPHAROS, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseAmpharos, EVENT_LYRA_IN_HER_ROOM
-	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_SCRIPT, 0, LyrasHouseN64, -1

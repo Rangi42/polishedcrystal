@@ -1,18 +1,33 @@
+Colosseum_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw ColosseumTrigger0
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
+	dbw MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
+
+Colosseum_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $4, 3, POKECENTER_2F
+	warp_def $7, $5, 3, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 4, 4, SIGNPOST_RIGHT, MapColosseumSignpost1Script
+	signpost 4, 5, SIGNPOST_LEFT, MapColosseumSignpost1Script
+
+.PersonEvents: db 2
+	person_event SPRITE_CHRIS, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_GAVE_KURT_APRICORNS
+	person_event SPRITE_CHRIS, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_RECEIVED_BALLS_FROM_KURT
+
 const_value set 2
 	const COLOSSEUM_CHRIS1
 	const COLOSSEUM_CHRIS2
 
-Colosseum_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
-	dbw MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
-
-.Trigger0:
+ColosseumTrigger0:
 	priorityjump ColosseumScript_Initialize
 	end
 
@@ -53,22 +68,3 @@ ChrisScript_0x193499:
 	text "Your friend is"
 	line "ready."
 	done
-
-Colosseum_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $4, 3, POKECENTER_2F
-	warp_def $7, $5, 3, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 4, 4, SIGNPOST_RIGHT, MapColosseumSignpost1Script
-	signpost 4, 5, SIGNPOST_LEFT, MapColosseumSignpost1Script
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_CHRIS, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_CHRIS, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_RECEIVED_BALLS_FROM_KURT

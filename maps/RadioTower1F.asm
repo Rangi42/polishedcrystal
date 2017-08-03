@@ -1,18 +1,34 @@
-const_value set 2
-	const RADIOTOWER1F_RECEPTIONIST
-	const RADIOTOWER1F_LASS
-	const RADIOTOWER1F_YOUNGSTER
-	const RADIOTOWER1F_ROCKET
-	const RADIOTOWER1F_FELICITY
-	const RADIOTOWER1F_COOLTRAINER_F
-	const RADIOTOWER1F_WHITNEY
-
 RadioTower1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+RadioTower1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $2, 11, GOLDENROD_CITY
+	warp_def $7, $3, 11, GOLDENROD_CITY
+	warp_def $0, $f, 2, RADIO_TOWER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 3, SIGNPOST_READ, MapRadioTower1FSignpost0Script
+	signpost 0, 13, SIGNPOST_READ, MapRadioTower1FSignpost1Script
+
+.PersonEvents: db 7
+	person_event SPRITE_RECEPTIONIST, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_WHITNEY, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
+	person_event SPRITE_RECEPTIONIST, 6, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
+	person_event SPRITE_LASS, 5, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x5ce51, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5ce54, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_COOLTRAINER_F, 6, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
+
+const_value set 2
+	const RADIOTOWER1F_FELICITY
+	const RADIOTOWER1F_WHITNEY
 
 ReceptionistScript_0x5cd29:
 	faceplayer
@@ -576,28 +592,3 @@ UnknownText_0x5d631:
 	line "to collect differ-"
 	cont "ent ID numbers!"
 	done
-
-RadioTower1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $2, 11, GOLDENROD_CITY
-	warp_def $7, $3, 11, GOLDENROD_CITY
-	warp_def $0, $f, 2, RADIO_TOWER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower1FSignpost0Script
-	signpost 0, 13, SIGNPOST_READ, MapRadioTower1FSignpost1Script
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_RECEPTIONIST, 6, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
-	person_event SPRITE_LASS, 5, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x5ce51, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5ce54, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_RECEPTIONIST, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_COOLTRAINER_F, 6, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_WHITNEY, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY

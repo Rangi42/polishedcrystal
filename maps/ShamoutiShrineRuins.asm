@@ -1,15 +1,28 @@
+ShamoutiShrineRuins_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+ShamoutiShrineRuins_MapEventHeader:
+
+.Warps: db 2
+	warp_def $12, $2, 3, NOISY_FOREST
+	warp_def $13, $2, 4, NOISY_FOREST
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 10, 7, SIGNPOST_ITEM, ShamoutiShrineRuinsHiddenMaxRevive
+
+.PersonEvents: db 4
+	person_event SPRITE_LAWRENCE, 11, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLawrenceScript, EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
+	person_event SPRITE_GRAMPS, 17, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsGrampsScript, -1
+	person_event SPRITE_LADY, 13, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLadyScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 27, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ShamoutiShrineRuinsRareCandy, EVENT_SHAMOUTI_SHRINE_RUINS_RARE_CANDY
+
 const_value set 2
 	const SHAMOUTISHRINERUINS_LAWRENCE
-	const SHAMOUTISHRINERUINS_GRAMPS
-	const SHAMOUTISHRINERUINS_LADY
-	const SHAMOUTISHRINERUINS_POKE_BALL
-
-ShamoutiShrineRuins_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 ShamoutiShrineRuinsLawrenceScript:
 	special Special_FadeOutMusic
@@ -197,23 +210,3 @@ ShamoutiShrineRuinsRareCandy:
 
 ShamoutiShrineRuinsHiddenMaxRevive:
 	dwb EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-ShamoutiShrineRuins_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $12, $2, 3, NOISY_FOREST
-	warp_def $13, $2, 4, NOISY_FOREST
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 10, 7, SIGNPOST_ITEM, ShamoutiShrineRuinsHiddenMaxRevive
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_LAWRENCE, 11, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLawrenceScript, EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
-	person_event SPRITE_GRAMPS, 17, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsGrampsScript, -1
-	person_event SPRITE_LADY, 13, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLadyScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 27, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ShamoutiShrineRuinsRareCandy, EVENT_SHAMOUTI_SHRINE_RUINS_RARE_CANDY

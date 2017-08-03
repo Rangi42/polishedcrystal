@@ -1,20 +1,35 @@
+GoldenrodDeptStore5F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, GoldenrodDeptStore5FCheckIfSunday
+
+GoldenrodDeptStore5F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $0, $c, 1, GOLDENROD_DEPT_STORE_4F
+	warp_def $0, $f, 1, GOLDENROD_DEPT_STORE_6F
+	warp_def $0, $2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 14, SIGNPOST_READ, GoldenrodDeptStore5FDirectory
+	signpost 0, 3, SIGNPOST_READ, GoldenrodDeptStore5FElevatorButton
+
+.PersonEvents: db 6
+	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
+	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x5609c, -1
+	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x56130, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Mike, -1
+	person_event SPRITE_POKEFAN_M, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x5613a, -1
+	person_event SPRITE_TWIN, 5, 13, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodDeptStore5FTwinScript, -1
+
 const_value set 2
-	const GOLDENRODDEPTSTORE5F_CLERK
-	const GOLDENRODDEPTSTORE5F_LASS
-	const GOLDENRODDEPTSTORE5F_MIKE
-	const GOLDENRODDEPTSTORE5F_POKEFAN_M
-	const GOLDENRODDEPTSTORE5F_TWIN
 	const GOLDENRODDEPTSTORE5F_RECEPTIONIST
 
-GoldenrodDeptStore5F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, .CheckIfSunday
-
-.CheckIfSunday:
+GoldenrodDeptStore5FCheckIfSunday:
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .yes
 	disappear GOLDENRODDEPTSTORE5F_RECEPTIONIST
@@ -73,7 +88,7 @@ GoldenrodDeptStore5FTwinScript:
 	iftrue .GotDailyBerry
 	writetext UnknownText_0x56279
 	buttonsound
-	callasm PickRandomMysteryGift
+	callasm .PickRandomMysteryGift
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM
 	iffalse .NoRoom
@@ -91,6 +106,13 @@ GoldenrodDeptStore5FTwinScript:
 	waitbutton
 	closetext
 	end
+
+.PickRandomMysteryGift:
+	ld a, APICOT_BERRY - ORAN_BERRY + 1
+	call RandomRange
+	add ORAN_BERRY
+	ld [ScriptVar], a
+	ret
 
 LassScript_0x56130:
 	jumptextfaceplayer UnknownText_0x562ad
@@ -199,34 +221,3 @@ GoldenrodDeptStore5FDirectoryText:
 
 	para "5F TM Corner"
 	done
-
-GoldenrodDeptStore5F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $0, $c, 1, GOLDENROD_DEPT_STORE_4F
-	warp_def $0, $f, 1, GOLDENROD_DEPT_STORE_6F
-	warp_def $0, $2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 14, SIGNPOST_READ, GoldenrodDeptStore5FDirectory
-	signpost 0, 3, SIGNPOST_READ, GoldenrodDeptStore5FElevatorButton
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x5609c, -1
-	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x56130, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Mike, -1
-	person_event SPRITE_POKEFAN_M, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x5613a, -1
-	person_event SPRITE_TWIN, 5, 13, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodDeptStore5FTwinScript, -1
-	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
-
-PickRandomMysteryGift:
-	ld a, APICOT_BERRY - ORAN_BERRY + 1
-	call RandomRange
-	add ORAN_BERRY
-	ld [ScriptVar], a
-	ret

@@ -1,15 +1,30 @@
+Route48_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route48_MapEventHeader:
+
+.Warps: db 1
+	warp_def $5, $b, 3, YELLOW_FOREST_GATE
+
+.XYTriggers: db 1
+	xy_trigger 0, $c, $14, Route48JessieJamesScript
+
+.Signposts: db 1
+	signpost 11, 27, SIGNPOST_READ, Route48YellowForestSign
+
+.PersonEvents: db 4
+	person_event SPRITE_ARCHER, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_JESSIE, 12, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
+	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
+	person_event SPRITE_BALL_CUT_FRUIT, 13, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route48Nugget, EVENT_ROUTE_48_NUGGET
+
 const_value set 2
 	const ROUTE48_ARCHER
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES
-	const ROUTE48_POKE_BALL
-
-Route48_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 Route48JessieJamesScript:
 	checkevent EVENT_BEAT_JESSIE_AND_JAMES
@@ -174,23 +189,3 @@ Route48YellowForestSignText:
 	para "North to"
 	line "Yellow Forest"
 	done
-
-Route48_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $5, $b, 3, YELLOW_FOREST_GATE
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $c, $14, Route48JessieJamesScript
-
-.Signposts:
-	db 1
-	signpost 11, 27, SIGNPOST_READ, Route48YellowForestSign
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_ARCHER, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_JESSIE, 12, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
-	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route48Nugget, EVENT_ROUTE_48_NUGGET

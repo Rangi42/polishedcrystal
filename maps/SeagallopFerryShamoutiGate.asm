@@ -1,19 +1,30 @@
+SeagallopFerryShamoutiGate_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw SeagallopFerryShamoutiGateTrigger0
+	dw SeagallopFerryShamoutiGateTrigger1
+
+.MapCallbacks: db 0
+
+SeagallopFerryShamoutiGate_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $6, 1, BEAUTIFUL_BEACH
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	person_event SPRITE_TWIN, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateTwinScript, -1
+
 const_value set 2
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
-	const SEAGALLOPFERRYSHAMOUTIGATE_TWIN
 
-SeagallopFerryShamoutiGate_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 0
-
-.Trigger1:
+SeagallopFerryShamoutiGateTrigger1:
 	priorityjump SeagallopFerryShamoutiGate_PlayerArrives
-.Trigger0:
+SeagallopFerryShamoutiGateTrigger0:
 	end
 
 SeagallopFerryShamoutiGate_PlayerArrives:
@@ -152,19 +163,3 @@ SeagallopFerryShamoutiGateTwinText:
 
 	para "Have a nice stay!"
 	done
-
-SeagallopFerryShamoutiGate_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $6, 1, BEAUTIFUL_BEACH
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_TWIN, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateTwinScript, -1

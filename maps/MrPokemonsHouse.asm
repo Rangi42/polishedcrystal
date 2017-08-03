@@ -1,17 +1,36 @@
+MrPokemonsHouse_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw MrPokemonsHouseTrigger0
+
+.MapCallbacks: db 0
+
+MrPokemonsHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 2, ROUTE_30
+	warp_def $7, $3, 2, ROUTE_30
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 1, 0, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
+	signpost 1, 1, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
+	signpost 1, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
+	signpost 1, 7, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
+	signpost 4, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost4Script
+
+.PersonEvents: db 3
+	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
+	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	person_event SPRITE_POKEDEX_UNOWN_A, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+
 const_value set 2
 	const MRPOKEMONSHOUSE_GENTLEMAN
 	const MRPOKEMONSHOUSE_OAK
 	const MRPOKEMONSHOUSE_POKEDEX
 
-MrPokemonsHouse_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+MrPokemonsHouseTrigger0:
 	priorityjump .MrPokemonEvent
 	end
 
@@ -401,26 +420,3 @@ MrPokemonsHouse_StrangeCoinsText:
 	para "Maybe they're from"
 	line "another country…"
 	done
-
-MrPokemonsHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 2, ROUTE_30
-	warp_def $7, $3, 2, ROUTE_30
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 1, 0, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
-	signpost 1, 1, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
-	signpost 1, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
-	signpost 1, 7, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
-	signpost 4, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost4Script
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
-	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	person_event SPRITE_POKEDEX_UNOWN_A, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK

@@ -1,25 +1,40 @@
+PokeCenter2F_MapScriptHeader:
+
+.MapTriggers: db 3
+	dw PokeCenter2FTrigger0
+	dw PokeCenter2FTrigger1
+	dw PokeCenter2FTrigger2
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, Script_ChangePokeCenter2FMap
+
+PokeCenter2F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $0, -1, POKECENTER_2F
+	warp_def $0, $5, 1, TRADE_CENTER
+	warp_def $0, $9, 1, COLOSSEUM
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 3, 7, SIGNPOST_READ, MapPokeCenter2FSignpost0Script
+
+.PersonEvents: db 3
+	person_event SPRITE_LINK_RECEPTIONIST, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
+
 const_value set 2
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
-	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
 
-PokeCenter2F_MapScriptHeader:
-.MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, Script_ChangePokeCenter2FMap
-
-.Trigger1:
+PokeCenter2FTrigger1:
 	priorityjump Script_LeftCableTradeCenter
-.Trigger0:
+PokeCenter2FTrigger0:
 	end
 
-.Trigger2:
+PokeCenter2FTrigger2:
 	priorityjump Script_LeftCableColosseum
 	end
 
@@ -40,18 +55,37 @@ Script_BattleRoomClosed:
 	end
 
 Script_ChangePokeCenter2FMap:
-	callasm CheckPokeCenter2FRegion
+	callasm .CheckPokeCenter2FRegion
 	if_equal $0, .done
-	if_equal $2, .shamouti
+	if_equal $2, .shamouti2f
 	changemap KantoPokeCenter2F_BlockData
 .done
 	return
 
-.shamouti
+.shamouti2f
 	changemap KantoPokeCenter2F_BlockData
 	changeblock $0, $6, $3c
 	changeblock $2, $0, $4a
 	return
+
+.CheckPokeCenter2FRegion:
+	call GetBackupLandmark
+	ld hl, ScriptVar
+	cp SHAMOUTI_LANDMARK
+	jr nc, .shamouti
+	cp KANTO_LANDMARK
+	jr nc, .kanto
+.johto
+	ld [hl], JOHTO_REGION
+	ret
+
+.kanto
+	ld [hl], KANTO_REGION
+	ret
+
+.shamouti
+	ld [hl], ORANGE_REGION
+	ret
 
 LinkReceptionistScript_Trade:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -421,42 +455,3 @@ Text_LikeTheLook:
 	text "How does this"
 	line "style look to you?"
 	done
-
-PokeCenter2F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $0, -1, POKECENTER_2F
-	warp_def $0, $5, 1, TRADE_CENTER
-	warp_def $0, $9, 1, COLOSSEUM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 3, 7, SIGNPOST_READ, MapPokeCenter2FSignpost0Script
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_LINK_RECEPTIONIST, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
-
-CheckPokeCenter2FRegion:
-	call GetBackupLandmark
-	ld hl, ScriptVar
-	cp SHAMOUTI_LANDMARK
-	jr nc, .shamouti
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld [hl], JOHTO_REGION
-	ret
-
-.kanto
-	ld [hl], KANTO_REGION
-	ret
-
-.shamouti
-	ld [hl], ORANGE_REGION
-	ret

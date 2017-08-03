@@ -1,14 +1,23 @@
-const_value set 2
-	const PEWTERMART_CLERK
-	const PEWTERMART_YOUNGSTER
-	const PEWTERMART_SUPER_NERD
-
 PewterMart_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PewterMart_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, PEWTER_CITY
+	warp_def $7, $3, 3, PEWTER_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x1a2dcb, -1
+	person_event SPRITE_YOUNGSTER, 2, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a2dd2, -1
+	person_event SPRITE_SUPER_NERD, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1a2dd5, -1
 
 ClerkScript_0x1a2dcb:
 	opentext
@@ -44,21 +53,3 @@ UnknownText_0x1a2e3a:
 	para "Lake of Rage were"
 	line "excellent."
 	done
-
-PewterMart_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, PEWTER_CITY
-	warp_def $7, $3, 3, PEWTER_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x1a2dcb, -1
-	person_event SPRITE_YOUNGSTER, 2, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a2dd2, -1
-	person_event SPRITE_SUPER_NERD, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x1a2dd5, -1

@@ -1,14 +1,29 @@
+OlivineLighthouse6F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+OlivineLighthouse6F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $f, $9, 1, OLIVINE_LIGHTHOUSE_5F
+	warp_def $5, $10, 6, OLIVINE_LIGHTHOUSE_5F
+	warp_def $5, $11, 7, OLIVINE_LIGHTHOUSE_5F
+	warp_def $3, $9, 1, OLIVINE_LIGHTHOUSE_ROOF
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_JASMINE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, OlivineLighthouse6FSuperPotion, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
+
 const_value set 2
 	const OLIVINELIGHTHOUSE6F_JASMINE
 	const OLIVINELIGHTHOUSE6F_AMPHAROS
-	const OLIVINELIGHTHOUSE6F_POKE_BALL
-
-OlivineLighthouse6F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 JasmineScript_0x60b91:
 	faceplayer
@@ -244,23 +259,3 @@ UnknownText_0x60f3d:
 	text "Amphy: Palu!"
 	line "Palulu!"
 	done
-
-OlivineLighthouse6F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $f, $9, 1, OLIVINE_LIGHTHOUSE_5F
-	warp_def $5, $10, 6, OLIVINE_LIGHTHOUSE_5F
-	warp_def $5, $11, 7, OLIVINE_LIGHTHOUSE_5F
-	warp_def $3, $9, 1, OLIVINE_LIGHTHOUSE_ROOF
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_JASMINE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, OlivineLighthouse6FSuperPotion, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION

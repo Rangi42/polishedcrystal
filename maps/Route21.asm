@@ -1,24 +1,33 @@
-const_value set 2
-	const ROUTE21_SWIMMER_GIRL1
-	const ROUTE21_SWIMMER_GIRL2
-	const ROUTE21_SWIMMER_GIRL3
-	const ROUTE21_SWIMMER_GUY1
-	const ROUTE21_SWIMMER_GUY2
-	const ROUTE21_SWIMMER_GUY3
-	const ROUTE21_FISHER1
-	const ROUTE21_FISHER2
-	const ROUTE21_FISHER3
-	const ROUTE21_FISHER4
-	const ROUTE21_YOUNGSTER1
-	const ROUTE21_YOUNGSTER2
-	const ROUTE21_POKE_BALL
-
 Route21_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route21_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 37, 12, SIGNPOST_ITEM, Route21HiddenStardust1
+	signpost 66, 5, SIGNPOST_ITEM, Route21HiddenStardust2
+
+.PersonEvents: db 13
+	person_event SPRITE_SWIMMER_GIRL, 13, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
+	person_event SPRITE_SWIMMER_GIRL, 29, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfChelan, -1
+	person_event SPRITE_SWIMMER_GIRL, 45, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKendra, -1
+	person_event SPRITE_SWIMMER_GUY, 72, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermEsteban, -1
+	person_event SPRITE_SWIMMER_GUY, 85, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermDuane, -1
+	person_event SPRITE_SWIMMER_GUY, 89, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSeth, -1
+	person_event SPRITE_FISHER, 21, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMurphy, -1
+	person_event SPRITE_FISHER, 25, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherArnold, -1
+	person_event SPRITE_FISHER, 36, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLiam, -1
+	person_event SPRITE_FISHER, 56, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
+	person_event SPRITE_YOUNGSTER, 62, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
+	person_event SPRITE_YOUNGSTER, 83, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 26, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route21StarPiece, EVENT_ROUTE_21_STAR_PIECE
 
 TrainerSwimmerfNikki:
 	trainer EVENT_BEAT_SWIMMERF_NIKKI, SWIMMERF, NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText, 0, SwimmerfNikkiScript
@@ -381,31 +390,3 @@ Route21HiddenStardust1:
 
 Route21HiddenStardust2:
 	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_2, STARDUST
-
-Route21_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 37, 12, SIGNPOST_ITEM, Route21HiddenStardust1
-	signpost 66, 5, SIGNPOST_ITEM, Route21HiddenStardust2
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_SWIMMER_GIRL, 13, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
-	person_event SPRITE_SWIMMER_GIRL, 29, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfChelan, -1
-	person_event SPRITE_SWIMMER_GIRL, 45, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKendra, -1
-	person_event SPRITE_SWIMMER_GUY, 72, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermEsteban, -1
-	person_event SPRITE_SWIMMER_GUY, 85, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermDuane, -1
-	person_event SPRITE_SWIMMER_GUY, 89, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSeth, -1
-	person_event SPRITE_FISHER, 21, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMurphy, -1
-	person_event SPRITE_FISHER, 25, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherArnold, -1
-	person_event SPRITE_FISHER, 36, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLiam, -1
-	person_event SPRITE_FISHER, 56, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
-	person_event SPRITE_YOUNGSTER, 62, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
-	person_event SPRITE_YOUNGSTER, 83, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route21StarPiece, EVENT_ROUTE_21_STAR_PIECE

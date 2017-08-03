@@ -1,14 +1,23 @@
-const_value set 2
-	const DARKCAVEBLACKTHORNENTRANCE_PHARMACIST
-	const DARKCAVEBLACKTHORNENTRANCE_POKE_BALL1
-	const DARKCAVEBLACKTHORNENTRANCE_POKE_BALL2
-
 DarkCaveBlackthornEntrance_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+DarkCaveBlackthornEntrance_MapEventHeader:
+
+.Warps: db 2
+	warp_def $3, $17, 1, ROUTE_45
+	warp_def $19, $3, 2, DARK_CAVE_VIOLET_ENTRANCE
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_PHARMACIST, 3, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 24, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DarkCaveBlackthornEntranceRevive, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, DarkCaveBlackthornEntranceTMDarkPulse, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE
 
 PharmacistScript_0x18c720:
 	faceplayer
@@ -60,21 +69,3 @@ UnknownText_0x18c80c:
 	line "the power of Dark-"
 	cont "type moves."
 	done
-
-DarkCaveBlackthornEntrance_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $3, $17, 1, ROUTE_45
-	warp_def $19, $3, 2, DARK_CAVE_VIOLET_ENTRANCE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_PHARMACIST, 3, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 24, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DarkCaveBlackthornEntranceRevive, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, DarkCaveBlackthornEntranceTMDarkPulse, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE

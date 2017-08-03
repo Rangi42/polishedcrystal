@@ -1,12 +1,23 @@
-const_value set 2
-	const BLUESHOUSE1F_DAISY
-
 BluesHouse1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+BluesHouse1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $2, 2, PALLET_TOWN
+	warp_def $7, $3, 2, PALLET_TOWN
+	warp_def $0, $7, 1, BLUES_HOUSE_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 5, SIGNPOST_READ, BluesHouse1FTV
+
+.PersonEvents: db 1
+	person_event SPRITE_DAISY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaisyScript_0x19b0d0, -1
 
 DaisyScript_0x19b0d0:
 	faceplayer
@@ -157,21 +168,3 @@ BluesHouse1FTVText:
 	line "that aren't shown"
 	cont "in Johto…"
 	done
-
-BluesHouse1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $2, 2, PALLET_TOWN
-	warp_def $7, $3, 2, PALLET_TOWN
-	warp_def $0, $7, 1, BLUES_HOUSE_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 5, SIGNPOST_READ, BluesHouse1FTV
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_DAISY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaisyScript_0x19b0d0, -1

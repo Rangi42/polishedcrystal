@@ -1,3 +1,31 @@
+ValeriesHouse_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
+
+ValeriesHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $3, 12, ECRUTEAK_CITY
+	warp_def $7, $4, 12, ECRUTEAK_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 2, SIGNPOST_READ, ValeriesHouseRadio
+
+.PersonEvents: db 8
+	person_event SPRITE_VALERIE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseValerieScript, EVENT_VALERIE_ECRUTEAK_CITY
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseRedFairyBookScript, EVENT_RED_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ValeriesHouseBlueFairyBookScript, EVENT_BLUE_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValeriesHouseGreenFairyBookScript, EVENT_GREEN_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseBrownFairyBookScript, EVENT_BROWN_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ValeriesHouseVioletFairyBookScript, EVENT_VIOLET_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHousePinkFairyBookScript, EVENT_PINK_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseYellowFairyBookScript, EVENT_YELLOW_FAIRY_BOOK
+
 const_value set 2
 	const VALERIESHOUSE_VALERIE
 	const VALERIESHOUSE_RED_FAIRY_BOOK
@@ -7,14 +35,6 @@ const_value set 2
 	const VALERIESHOUSE_VIOLET_FAIRY_BOOK
 	const VALERIESHOUSE_PINK_FAIRY_BOOK
 	const VALERIESHOUSE_YELLOW_FAIRY_BOOK
-
-ValeriesHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
 SetupValerieAfterMorningWalkScript:
 	checkevent EVENT_FOUGHT_SUICUNE
@@ -192,27 +212,3 @@ ValeriesHouseYellowFairyBookText:
 	line "tree stands atop"
 	cont "a glass mountain…"
 	done
-
-ValeriesHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $3, 12, ECRUTEAK_CITY
-	warp_def $7, $4, 12, ECRUTEAK_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 2, SIGNPOST_READ, ValeriesHouseRadio
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_VALERIE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseValerieScript, EVENT_VALERIE_ECRUTEAK_CITY
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseRedFairyBookScript, EVENT_RED_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ValeriesHouseBlueFairyBookScript, EVENT_BLUE_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValeriesHouseGreenFairyBookScript, EVENT_GREEN_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseBrownFairyBookScript, EVENT_BROWN_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ValeriesHouseVioletFairyBookScript, EVENT_VIOLET_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHousePinkFairyBookScript, EVENT_PINK_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseYellowFairyBookScript, EVENT_YELLOW_FAIRY_BOOK

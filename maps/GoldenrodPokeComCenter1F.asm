@@ -1,23 +1,50 @@
-const_value set 2
-	const GOLDENRODPOKECOMCENTER1F_NURSE
-	const GOLDENRODPOKECOMCENTER1F_GAMEBOY_KID
-	const GOLDENRODPOKECOMCENTER1F_LASS1
-	const GOLDENRODPOKECOMCENTER1F_POKEFAN_F
-	const GOLDENRODPOKECOMCENTER1F_LINK_RECEPTIONIST
-	const GOLDENRODPOKECOMCENTER1F_SUPER_NERD
-	const GOLDENRODPOKECOMCENTER1F_YOUNGSTER
-	const GOLDENRODPOKECOMCENTER1F_TEACHER
-	const GOLDENRODPOKECOMCENTER1F_ROCKER
-	const GOLDENRODPOKECOMCENTER1F_GRAMPS
-	const GOLDENRODPOKECOMCENTER1F_LASS2
-	const GOLDENRODPOKECOMCENTER1F_SIGN
-
 GoldenrodPokeComCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodPokeComCenter1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $f, $6, 15, GOLDENROD_CITY
+	warp_def $f, $7, 15, GOLDENROD_CITY
+	warp_def $6, $1, 2, GOLDENROD_POKECOM_CENTER_OFFICE
+	warp_def $f, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 16
+	signpost 7, 11, SIGNPOST_READ, PokemonJournalWhitneyScript
+	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
+	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
+	signpost 7, 24, SIGNPOST_RIGHT, NewsMachineScript
+	signpost 9, 24, SIGNPOST_RIGHT, NewsMachineScript
+	signpost 10, 24, SIGNPOST_RIGHT, NewsMachineScript
+	signpost 11, 25, SIGNPOST_UP, NewsMachineScript
+	signpost 11, 26, SIGNPOST_UP, NewsMachineScript
+	signpost 11, 27, SIGNPOST_UP, NewsMachineScript
+	signpost 11, 28, SIGNPOST_UP, NewsMachineScript
+	signpost 5, 29, SIGNPOST_LEFT, NewsMachineScript
+	signpost 6, 29, SIGNPOST_LEFT, NewsMachineScript
+	signpost 7, 29, SIGNPOST_LEFT, NewsMachineScript
+	signpost 8, 29, SIGNPOST_LEFT, NewsMachineScript
+	signpost 9, 29, SIGNPOST_LEFT, NewsMachineScript
+	signpost 10, 29, SIGNPOST_LEFT, NewsMachineScript
+
+.PersonEvents: db 12
+	person_event SPRITE_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
+	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x6101e, -1
+	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass1Script_0x61021, -1
+	person_event SPRITE_POKEFAN_F, 14, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
+	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
+	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript, -1
+	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript, -1
+	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript, -1
+	person_event SPRITE_ROCKER, 6, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockerScript, -1
+	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript, -1
+	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass2Script, -1
+	person_event SPRITE_SIGN_UNOWN_P, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
 
 NurseScript_0x60f91:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
@@ -422,48 +449,3 @@ UnknownText_0x62222:
 	para "here makes me feel"
 	line "younger!"
 	done
-
-GoldenrodPokeComCenter1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $f, $6, 15, GOLDENROD_CITY
-	warp_def $f, $7, 15, GOLDENROD_CITY
-	warp_def $6, $1, 2, GOLDENROD_POKECOM_CENTER_OFFICE
-	warp_def $f, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 16
-	signpost 7, 11, SIGNPOST_READ, PokemonJournalWhitneyScript
-	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 7, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 9, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 10, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 11, 25, SIGNPOST_UP, NewsMachineScript
-	signpost 11, 26, SIGNPOST_UP, NewsMachineScript
-	signpost 11, 27, SIGNPOST_UP, NewsMachineScript
-	signpost 11, 28, SIGNPOST_UP, NewsMachineScript
-	signpost 5, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 6, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 7, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 8, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 9, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 10, 29, SIGNPOST_LEFT, NewsMachineScript
-
-.PersonEvents:
-	db 12
-	person_event SPRITE_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
-	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x6101e, -1
-	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass1Script_0x61021, -1
-	person_event SPRITE_POKEFAN_F, 14, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
-	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript, -1
-	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript, -1
-	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript, -1
-	person_event SPRITE_ROCKER, 6, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockerScript, -1
-	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript, -1
-	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass2Script, -1
-	person_event SPRITE_SIGN_UNOWN_P, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1

@@ -1,20 +1,31 @@
-const_value set 2
-	const BRUNOSROOM_BRUNO
-
 BrunosRoom_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, .BrunosRoomDoors
+.MapTriggers: db 1
+	dw BrunosRoomTrigger0
 
-.Trigger0:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, BrunosRoomBrunosRoomDoors
+
+BrunosRoom_MapEventHeader:
+
+.Warps: db 4
+	warp_def $11, $4, 3, KOGAS_ROOM
+	warp_def $11, $5, 4, KOGAS_ROOM
+	warp_def $2, $4, 1, KARENS_ROOM
+	warp_def $2, $5, 2, KARENS_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_BRUNO, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrunoScript_0x1809c5, -1
+
+BrunosRoomTrigger0:
 	priorityjump UnknownScript_0x1809ad
 	end
 
-.BrunosRoomDoors:
+BrunosRoomBrunosRoomDoors:
 	checkevent EVENT_BRUNOS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepDoorClosed
 	changeblock $4, $e, $2a
@@ -164,21 +175,3 @@ BrunoAfterRematchText:
 
 	para "Continue on!"
 	done
-
-BrunosRoom_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $11, $4, 3, KOGAS_ROOM
-	warp_def $11, $5, 4, KOGAS_ROOM
-	warp_def $2, $4, 1, KARENS_ROOM
-	warp_def $2, $5, 2, KARENS_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_BRUNO, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrunoScript_0x1809c5, -1

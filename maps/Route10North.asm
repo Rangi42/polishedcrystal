@@ -1,36 +1,57 @@
+Route10North_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw Route10NorthTrigger0
+	dw Route10NorthTrigger1
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
+	dbw MAPCALLBACK_OBJECTS, Route10NorthZapdos
+
+Route10North_MapEventHeader:
+
+.Warps: db 5
+	warp_def $23, $b, 1, ROUTE_10_POKECENTER_1F
+	warp_def $33, $3, 1, POWER_PLANT
+	warp_def $2b, $4, 1, ROCK_TUNNEL_2F
+	warp_def $21, $8, 1, ROCK_TUNNEL_1F
+	warp_def $1, $a, 1, DIM_CAVE_5F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 53, 5, SIGNPOST_READ, PowerPlantSign
+	signpost 35, 7, SIGNPOST_READ, Route10RockTunnelSign
+
+.PersonEvents: db 10
+	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
+	person_event SPRITE_CHRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	person_event SPRITE_KRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route10FullRestore, EVENT_ROUTE_10_FULL_RESTORE
+	person_event SPRITE_BALL_CUT_FRUIT, 21, 7, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_1
+	person_event SPRITE_BALL_CUT_FRUIT, 21, 9, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_2
+	person_event SPRITE_BALL_CUT_FRUIT, 21, 11, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_3
+	person_event SPRITE_BALL_CUT_FRUIT, 21, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_4
+
 const_value set 2
 	const ROUTE10_ZAPDOS
 	const ROUTE10_LAWRENCE
 	const ROUTE10_LAWRENCES_ZAPDOS
 	const ROUTE10_CHRIS
 	const ROUTE10_KRIS
-	const ROUTE10_POKE_BALL
-	const ROUTE10_CUT_TREE1
-	const ROUTE10_CUT_TREE2
-	const ROUTE10_CUT_TREE3
-	const ROUTE10_CUT_TREE4
 
-Route10North_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-	dbw MAPCALLBACK_OBJECTS, .Zapdos
-
-.Trigger1:
+Route10NorthTrigger1:
 	priorityjump Route10NorthLawrenceEncounter1Script
-.Trigger0:
+Route10NorthTrigger0:
 	end
 
-.FlyPoint:
+Route10NorthFlyPoint:
 	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
 	return
 
-.Zapdos:
+Route10NorthZapdos:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iffalse .NoAppear
 	checkevent EVENT_ZAPDOS_GONE
@@ -390,33 +411,3 @@ Route10NorthMovementData_PanDown:
 Route10NorthMovementData_ShowPlayer:
 	show_person
 	step_end
-
-Route10North_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $23, $b, 1, ROUTE_10_POKECENTER_1F
-	warp_def $33, $3, 1, POWER_PLANT
-	warp_def $2b, $4, 1, ROCK_TUNNEL_2F
-	warp_def $21, $8, 1, ROCK_TUNNEL_1F
-	warp_def $1, $a, 1, DIM_CAVE_5F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 53, 5, SIGNPOST_READ, PowerPlantSign
-	signpost 35, 7, SIGNPOST_READ, Route10RockTunnelSign
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
-	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
-	person_event SPRITE_CHRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_KRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route10FullRestore, EVENT_ROUTE_10_FULL_RESTORE
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 7, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 9, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_2
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 11, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_3
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_4

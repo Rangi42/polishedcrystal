@@ -1,3 +1,41 @@
+CinnabarLab_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw CinnabarLabTrigger0
+
+.MapCallbacks: db 0
+
+CinnabarLab_MapEventHeader:
+
+.Warps: db 0
+;	warp_def $9, $e, 3, CINNABAR_LAB
+;	warp_def $9, $f, 3, CINNABAR_LAB
+;	warp_def $6, $2, 2, CINNABAR_LAB
+
+.XYTriggers: db 1
+	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
+
+.Signposts: db 8
+	signpost 14, 8, SIGNPOST_READ, CinnabarLabRoom1Sign
+	signpost 14, 9, SIGNPOST_READ, CinnabarLabLockedDoorSign
+	signpost 14, 16, SIGNPOST_READ, CinnabarLabRoom2Sign
+	signpost 14, 17, SIGNPOST_READ, CinnabarLabLockedDoorSign
+	signpost 14, 24, SIGNPOST_READ, CinnabarLabRoom3Sign
+	signpost 14, 25, SIGNPOST_READ, CinnabarLabLockedDoorSign
+	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
+	signpost 6, 3, SIGNPOST_ITEM, CinnabarLabHiddenBerserkGene
+
+.PersonEvents: db 9
+	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_ARMORED_MEWTWO, 4, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
+	person_event SPRITE_SCIENTIST, 4, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
+	person_event SPRITE_MEWTWO, 7, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_MEWTWO
+	person_event SPRITE_CELEBI, 8, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
+	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
+	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
+
 const_value set 2
 	const CINNABARLAB_GIOVANNI
 	const CINNABARLAB_ARMORED_MEWTWO
@@ -9,15 +47,7 @@ const_value set 2
 	const CINNABARLAB_CHRIS
 	const CINNABARLAB_KRIS
 
-CinnabarLab_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+CinnabarLabTrigger0:
 	priorityjump CinnabarLabStepDownScript
 	end
 
@@ -417,37 +447,3 @@ CinnabarLabGiovanniStopText:
 CinnabarLabCelebiText:
 	text "Celebi: Biii!"
 	done
-
-CinnabarLab_MapEventHeader:
-.Warps:
-	db 0
-;	warp_def $9, $e, 3, CINNABAR_LAB
-;	warp_def $9, $f, 3, CINNABAR_LAB
-;	warp_def $6, $2, 2, CINNABAR_LAB
-
-.XYTriggers:
-	db 1
-	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
-
-.Signposts:
-	db 8
-	signpost 14, 8, SIGNPOST_READ, CinnabarLabRoom1Sign
-	signpost 14, 9, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 14, 16, SIGNPOST_READ, CinnabarLabRoom2Sign
-	signpost 14, 17, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 14, 24, SIGNPOST_READ, CinnabarLabRoom3Sign
-	signpost 14, 25, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
-	signpost 6, 3, SIGNPOST_ITEM, CinnabarLabHiddenBerserkGene
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_ARMORED_MEWTWO, 4, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
-	person_event SPRITE_SCIENTIST, 4, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
-	person_event SPRITE_MEWTWO, 7, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_MEWTWO
-	person_event SPRITE_CELEBI, 8, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
-	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
-	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS

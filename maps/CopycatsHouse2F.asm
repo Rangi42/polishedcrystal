@@ -1,18 +1,30 @@
+CopycatsHouse2F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
+
+CopycatsHouse2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $3, 3, COPYCATS_HOUSE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 6
+	person_event SPRITE_COPYCAT, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Copycat, EVENT_COPYCAT_1
+	person_event SPRITE_COPYCAT, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Copycat, EVENT_COPYCAT_2
+	person_event SPRITE_DODRIO, 4, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrio, -1
+	person_event SPRITE_CLEFAIRY, 1, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CopycatsHouse2FDoll, EVENT_COPYCATS_HOUSE_2F_DOLL
+	person_event SPRITE_GENGAR, 1, 2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CopycatsHouse2FDoll, -1
+	person_event SPRITE_MURKROW, 1, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopycatsHouse2FDoll, -1
+
 const_value set 2
 	const COPYCATSHOUSE2F_COPYCAT1
 	const COPYCATSHOUSE2F_COPYCAT2
-	const COPYCATSHOUSE2F_DODRIO
-	const COPYCATSHOUSE2F_CLEFAIRY_DOLL
-	const COPYCATSHOUSE2F_GENGAR_DOLL
-	const COPYCATSHOUSE2F_MURKROW_DOLL
-
-CopycatsHouse2F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
 
 CopycatsHouse2FCallback:
 	checkflag ENGINE_PLAYER_IS_FEMALE
@@ -356,23 +368,3 @@ CopycatsHouse2FDollText:
 
 	para "It's only a doll…"
 	done
-
-CopycatsHouse2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $3, 3, COPYCATS_HOUSE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_COPYCAT, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Copycat, EVENT_COPYCAT_1
-	person_event SPRITE_COPYCAT, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Copycat, EVENT_COPYCAT_2
-	person_event SPRITE_DODRIO, 4, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrio, -1
-	person_event SPRITE_CLEFAIRY, 1, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CopycatsHouse2FDoll, EVENT_COPYCATS_HOUSE_2F_DOLL
-	person_event SPRITE_GENGAR, 1, 2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CopycatsHouse2FDoll, -1
-	person_event SPRITE_MURKROW, 1, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopycatsHouse2FDoll, -1

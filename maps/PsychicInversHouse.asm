@@ -1,13 +1,26 @@
-const_value set 2
-	const PSYCHICINVERSHOUSE_HEX_MANIAC
-	const PSYCHICINVERSHOUSE_INVER
-
 PsychicInversHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PsychicInversHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 1, ROUTE_16_WEST
+	warp_def $7, $3, 1, ROUTE_16_WEST
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 7, SIGNPOST_READ, PsychicInversHouseBookshelf
+
+.PersonEvents: db 2
+	person_event SPRITE_YOUNGSTER, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
+	person_event SPRITE_HEX_MANIAC, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInversHouseHexManiacScript, -1
+
+const_value set 2
+	const PSYCHICINVERSHOUSE_INVER
 
 PsychicInversHouseHexManiacScript:
 	jumptextfaceplayer PsychicInversHouseHexManiacText
@@ -65,12 +78,12 @@ PsychicInverScript:
 
 .Score4_6
 	writetext InverseBattle4_6PointRewardText
-	callasm PsychicInverRandomBerry
+	callasm .RandomBerry
 	jump .Reward
 
 .Score7_9
 	writetext InverseBattle7_9PointRewardText
-	callasm PsychicInverRandomStone
+	callasm .RandomStone
 	jump .Reward
 
 .No
@@ -84,6 +97,20 @@ PsychicInverScript:
 	waitbutton
 	closetext
 	end
+
+.RandomBerry:
+	ld a, APICOT_BERRY - LUM_BERRY + 1
+	call RandomRange
+	add LUM_BERRY
+	ld [ScriptVar], a
+	ret
+
+.RandomStone:
+	ld a, EVERSTONE - LEAF_STONE + 1
+	call RandomRange
+	add LEAF_STONE
+	ld [ScriptVar], a
+	ret
 
 PsychicInverGreetingText:
 	text "Oh. I wasn't ex-"
@@ -201,35 +228,3 @@ PsychicInversHouseHexManiacText:
 
 PsychicInversHouseBookshelf:
 	jumpstd difficultbookshelf
-
-PsychicInversHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 1, ROUTE_16_WEST
-	warp_def $7, $3, 1, ROUTE_16_WEST
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 7, SIGNPOST_READ, PsychicInversHouseBookshelf
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_HEX_MANIAC, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInversHouseHexManiacScript, -1
-	person_event SPRITE_YOUNGSTER, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
-
-PsychicInverRandomBerry:
-	ld a, APICOT_BERRY - LUM_BERRY + 1
-	call RandomRange
-	add LUM_BERRY
-	ld [ScriptVar], a
-	ret
-
-PsychicInverRandomStone:
-	ld a, EVERSTONE - LEAF_STONE + 1
-	call RandomRange
-	add LEAF_STONE
-	ld [ScriptVar], a
-	ret

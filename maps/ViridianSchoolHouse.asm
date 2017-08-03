@@ -1,17 +1,32 @@
-const_value set 2
-	const VIRIDIANSCHOOLHOUSE_TEACHER
-	const VIRIDIANSCHOOLHOUSE_LASS1
-	const VIRIDIANSCHOOLHOUSE_BOOK
-	const VIRIDIANSCHOOLHOUSE_YOUNGSTER
-	const VIRIDIANSCHOOLHOUSE_GAMEBOY_KID
-	const VIRIDIANSCHOOLHOUSE_LASS2
-
 ViridianSchoolHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+ViridianSchoolHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $9, $2, 8, VIRIDIAN_CITY
+	warp_def $9, $3, 8, VIRIDIAN_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 0, 3, SIGNPOST_READ, ViridianSchoolHouseBlackboardScript
+	signpost 1, 6, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
+	signpost 1, 7, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
+
+.PersonEvents: db 6
+	person_event SPRITE_GAMEBOY_KID, 6, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseGameBoyKidScript, -1
+	person_event SPRITE_TEACHER, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseTeacherScript, -1
+	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass1Script, -1
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseNotesScript, -1
+	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseYoungsterScript, -1
+	person_event SPRITE_LASS, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass2Script, -1
+
+const_value set 2
+	const VIRIDIANSCHOOLHOUSE_GAMEBOY_KID
 
 ViridianSchoolHouseTeacherScript:
 	jumptextfaceplayer ViridianSchoolHouseTeacherText
@@ -132,27 +147,3 @@ ViridianSchoolHouseBookshelfText:
 	line "books and study"
 	cont "guides."
 	done
-
-ViridianSchoolHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $9, $2, 8, VIRIDIAN_CITY
-	warp_def $9, $3, 8, VIRIDIAN_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 0, 3, SIGNPOST_READ, ViridianSchoolHouseBlackboardScript
-	signpost 1, 6, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
-	signpost 1, 7, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_TEACHER, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseTeacherScript, -1
-	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass1Script, -1
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseNotesScript, -1
-	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseYoungsterScript, -1
-	person_event SPRITE_GAMEBOY_KID, 6, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseGameBoyKidScript, -1
-	person_event SPRITE_LASS, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass2Script, -1

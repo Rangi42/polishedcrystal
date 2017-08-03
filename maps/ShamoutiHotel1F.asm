@@ -1,19 +1,31 @@
-const_value set 2
-	const SHAMOUTIHOTEL1F_RECEPTIONIST
-	const SHAMOUTIHOTEL1F_ARTIST
-	const SHAMOUTIHOTEL1F_COOLTRAINER_M
-	const SHAMOUTIHOTEL1F_LADY
-	const SHAMOUTIHOTEL1F_YOUNGSTER
-
 ShamoutiHotel1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .RestaurantTrigger
+.MapTriggers: db 0
 
-.RestaurantTrigger:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, ShamoutiHotel1FRestaurantTrigger
+
+ShamoutiHotel1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $7, $8, 2, SHAMOUTI_ISLAND
+	warp_def $7, $9, 2, SHAMOUTI_ISLAND
+	warp_def $0, $2, 1, SHAMOUTI_HOTEL_2F
+	warp_def $0, $e, 1, SHAMOUTI_HOTEL_RESTAURANT
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 0, 15, SIGNPOST_READ, ShamoutiHotelRestaurantSign
+
+.PersonEvents: db 5
+	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FReceptionistScript, -1
+	person_event SPRITE_ARTIST, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FCooltrainermScript, -1
+	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FLadyScript, -1
+	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FYoungsterScript, -1
+
+ShamoutiHotel1FRestaurantTrigger:
 	domaptrigger SHAMOUTI_HOTEL_RESTAURANT, $0
 	return
 
@@ -147,26 +159,3 @@ ShamoutiHotelRestaurantSign:
 .Text:
 	text "Oasis Restaurant"
 	done
-
-ShamoutiHotel1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $7, $8, 2, SHAMOUTI_ISLAND
-	warp_def $7, $9, 2, SHAMOUTI_ISLAND
-	warp_def $0, $2, 1, SHAMOUTI_HOTEL_2F
-	warp_def $0, $e, 1, SHAMOUTI_HOTEL_RESTAURANT
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 0, 15, SIGNPOST_READ, ShamoutiHotelRestaurantSign
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FReceptionistScript, -1
-	person_event SPRITE_ARTIST, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FCooltrainermScript, -1
-	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FLadyScript, -1
-	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FYoungsterScript, -1

@@ -1,15 +1,26 @@
-const_value set 2
-	const VERMILIONPOKECENTER1F_NURSE
-	const VERMILIONPOKECENTER1F_SIGHTSEER_M
-	const VERMILIONPOKECENTER1F_SAILOR
-	const VERMILIONPOKECENTER1F_BUG_CATCHER
-
 VermilionPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+VermilionPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 2, VERMILION_CITY
+	warp_def $7, $6, 2, VERMILION_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalLtSurgeScript
+
+.PersonEvents: db 4
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x191603, -1
+	person_event SPRITE_SIGHTSEER_M, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SightseerMScript_0x191606, -1
+	person_event SPRITE_SAILOR, 5, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x19161a, -1
+	person_event SPRITE_BUG_CATCHER, 4, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x19161d, -1
 
 NurseScript_0x191603:
 	jumpstd pokecenternurse
@@ -98,24 +109,3 @@ PokemonJournalLtSurgeText:
 	para "by #mon to pow-"
 	line "er his plane."
 	done
-
-VermilionPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 2, VERMILION_CITY
-	warp_def $7, $6, 2, VERMILION_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalLtSurgeScript
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x191603, -1
-	person_event SPRITE_SIGHTSEER_M, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SightseerMScript_0x191606, -1
-	person_event SPRITE_SAILOR, 5, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x19161a, -1
-	person_event SPRITE_BUG_CATCHER, 4, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x19161d, -1

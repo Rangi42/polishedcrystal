@@ -1,14 +1,30 @@
+MystriStage_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+MystriStage_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $6, 1, SINJOH_RUINS
+	warp_def $11, $7, 1, SINJOH_RUINS
+
+.XYTriggers: db 2
+	xy_trigger 1, $9, $6, MystriStageTrigger1Script
+	xy_trigger 1, $9, $7, MystriStageTrigger2Script
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_CYNTHIA, 8, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
+	person_event SPRITE_CYNTHIA, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
+	person_event SPRITE_EGG, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
+
 const_value set 2
 	const MYSTRISTAGE_CYNTHIA1
 	const MYSTRISTAGE_CYNTHIA2
 	const MYSTRISTAGE_EGG
-
-MystriStage_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 MystriStageTrigger1Script:
 	spriteface PLAYER, UP
@@ -366,23 +382,3 @@ MystriStageMovementData_CynthiaStepsUp:
 	step_up
 	step_right
 	step_end
-
-MystriStage_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $6, 1, SINJOH_RUINS
-	warp_def $11, $7, 1, SINJOH_RUINS
-
-.XYTriggers:
-	db 2
-	xy_trigger 1, $9, $6, MystriStageTrigger1Script
-	xy_trigger 1, $9, $7, MystriStageTrigger2Script
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_CYNTHIA, 8, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
-	person_event SPRITE_CYNTHIA, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
-	person_event SPRITE_EGG, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG

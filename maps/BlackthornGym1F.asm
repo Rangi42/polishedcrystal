@@ -1,19 +1,35 @@
-const_value set 2
-	const BLACKTHORNGYM1F_CLAIR
-	const BLACKTHORNGYM1F_COOLTRAINER_M
-	const BLACKTHORNGYM1F_DRAGON_TAMER
-	const BLACKTHORNGYM1F_COOLTRAINER_F
-	const BLACKTHORNGYM1F_GYM_GUY
-
 BlackthornGym1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, .Boulders
+.MapTriggers: db 0
 
-.Boulders:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, BlackthornGym1FBoulders
+
+BlackthornGym1F_MapEventHeader:
+
+.Warps: db 7
+	warp_def $11, $4, 1, BLACKTHORN_CITY
+	warp_def $11, $5, 1, BLACKTHORN_CITY
+	warp_def $7, $1, 1, BLACKTHORN_GYM_2F
+	warp_def $9, $7, 2, BLACKTHORN_GYM_2F
+	warp_def $6, $2, 3, BLACKTHORN_GYM_2F
+	warp_def $7, $7, 4, BLACKTHORN_GYM_2F
+	warp_def $6, $7, 5, BLACKTHORN_GYM_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 15, 3, SIGNPOST_READ, BlackthornGymStatue
+	signpost 15, 6, SIGNPOST_READ, BlackthornGymStatue
+
+.PersonEvents: db 5
+	person_event SPRITE_CLAIR, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
+	person_event SPRITE_COOLTRAINER_M, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermMike, -1
+	person_event SPRITE_DRAGON_TAMER, 14, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerPaul, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfLola, -1
+	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
+
+BlackthornGym1FBoulders:
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_1
 	iffalse .skip1
 	changeblock $8, $2, $3b
@@ -365,30 +381,3 @@ BlackthornGymGuyWinText:
 	line "to becoming the"
 	cont "#mon Champion!"
 	done
-
-BlackthornGym1F_MapEventHeader:
-.Warps:
-	db 7
-	warp_def $11, $4, 1, BLACKTHORN_CITY
-	warp_def $11, $5, 1, BLACKTHORN_CITY
-	warp_def $7, $1, 1, BLACKTHORN_GYM_2F
-	warp_def $9, $7, 2, BLACKTHORN_GYM_2F
-	warp_def $6, $2, 3, BLACKTHORN_GYM_2F
-	warp_def $7, $7, 4, BLACKTHORN_GYM_2F
-	warp_def $6, $7, 5, BLACKTHORN_GYM_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 15, 3, SIGNPOST_READ, BlackthornGymStatue
-	signpost 15, 6, SIGNPOST_READ, BlackthornGymStatue
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_CLAIR, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
-	person_event SPRITE_COOLTRAINER_M, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermMike, -1
-	person_event SPRITE_DRAGON_TAMER, 14, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerPaul, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfLola, -1
-	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1

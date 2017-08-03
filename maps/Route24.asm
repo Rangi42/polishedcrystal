@@ -1,12 +1,22 @@
+Route24_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route24_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+
 const_value set 2
 	const ROUTE24_ROCKET
-
-Route24_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 TrainerGruntM31:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_31, GRUNTM, 31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa
@@ -113,17 +123,3 @@ UnknownText_0x1adee1:
 	line "do what now on"
 	cont "from, me?"
 	done
-
-Route24_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET

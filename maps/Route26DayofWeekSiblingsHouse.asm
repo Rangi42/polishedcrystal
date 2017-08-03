@@ -1,12 +1,21 @@
-const_value set 2
-	const ROUTE26DAYOFWEEKSIBLINGSHOUSE_BOOK
-
 Route26DayofWeekSiblingsHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route26DayofWeekSiblingsHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, ROUTE_26
+	warp_def $7, $3, 3, ROUTE_26
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1
 
 BookScript_0x7b1e4:
 	opentext
@@ -69,19 +78,3 @@ UnknownText_0x7b2b9:
 	para "Sunday, Sunny"
 	line "Route 37"
 	done
-
-Route26DayofWeekSiblingsHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, ROUTE_26
-	warp_def $7, $3, 3, ROUTE_26
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1

@@ -1,15 +1,35 @@
-const_value set 2
-	const SAFARIZONEWEST_LASS
-	const SAFARIZONEWEST_CAMPER
-	const SAFARIZONEWEST_TAMER
-	const SAFARIZONEWEST_POKE_BALL
-
 SafariZoneWest_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SafariZoneWest_MapEventHeader:
+
+.Warps: db 8
+	warp_def $2, $16, 7, SAFARI_ZONE_NORTH
+	warp_def $2, $17, 8, SAFARI_ZONE_NORTH
+	warp_def $2, $1c, 3, SAFARI_ZONE_NORTH
+	warp_def $2, $1d, 4, SAFARI_ZONE_NORTH
+	warp_def $18, $1f, 5, SAFARI_ZONE_HUB
+	warp_def $19, $1f, 6, SAFARI_ZONE_HUB
+	warp_def $d, $d, 1, SAFARI_ZONE_WEST_REST_HOUSE_1
+	warp_def $5, $5, 1, SAFARI_ZONE_WEST_REST_HOUSE_2
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 24, 26, SIGNPOST_READ, SafariZoneWestAreaSign
+	signpost 14, 14, SIGNPOST_READ, SafariZoneWestRestHouseSign
+	signpost 6, 28, SIGNPOST_READ, SafariZoneWestTrainerTips1Sign
+	signpost 5, 19, SIGNPOST_READ, SafariZoneWestTrainerTips2Sign
+	signpost 6, 13, SIGNPOST_ITEM, SafariZoneWestHiddenNugget
+
+.PersonEvents: db 4
+	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
+	person_event SPRITE_YOUNGSTER, 12, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
+	person_event SPRITE_COOLTRAINER_M, 19, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneWestMaxRevive, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
 
 TrainerLassDuplica:
 	trainer EVENT_BEAT_LASS_DUPLICA, LASS, DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript
@@ -155,33 +175,3 @@ SafariZoneWestTrainerTips2SignText:
 	para "get a boost to"
 	line "their Spcl.Def."
 	done
-
-SafariZoneWest_MapEventHeader:
-.Warps:
-	db 8
-	warp_def $2, $16, 7, SAFARI_ZONE_NORTH
-	warp_def $2, $17, 8, SAFARI_ZONE_NORTH
-	warp_def $2, $1c, 3, SAFARI_ZONE_NORTH
-	warp_def $2, $1d, 4, SAFARI_ZONE_NORTH
-	warp_def $18, $1f, 5, SAFARI_ZONE_HUB
-	warp_def $19, $1f, 6, SAFARI_ZONE_HUB
-	warp_def $d, $d, 1, SAFARI_ZONE_WEST_REST_HOUSE_1
-	warp_def $5, $5, 1, SAFARI_ZONE_WEST_REST_HOUSE_2
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 24, 26, SIGNPOST_READ, SafariZoneWestAreaSign
-	signpost 14, 14, SIGNPOST_READ, SafariZoneWestRestHouseSign
-	signpost 6, 28, SIGNPOST_READ, SafariZoneWestTrainerTips1Sign
-	signpost 5, 19, SIGNPOST_READ, SafariZoneWestTrainerTips2Sign
-	signpost 6, 13, SIGNPOST_ITEM, SafariZoneWestHiddenNugget
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
-	person_event SPRITE_YOUNGSTER, 12, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
-	person_event SPRITE_COOLTRAINER_M, 19, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneWestMaxRevive, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE

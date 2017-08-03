@@ -1,18 +1,35 @@
+CeladonUniversityClassroom4_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityClassroom4_MapEventHeader:
+
+.Warps: db 2
+	warp_def $b, $2, 9, CELADON_UNIVERSITY_1F
+	warp_def $b, $3, 9, CELADON_UNIVERSITY_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
+	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
+	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf2
+
+.PersonEvents: db 7
+	person_event SPRITE_COOLTRAINER_M, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4RaymondScript, -1
+	person_event SPRITE_CANDELA, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4CandelaScript, EVENT_CELADON_UNIVERSITY_CANDELA
+	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4TeacherScript, EVENT_SHAMOUTI_COAST_CANDELA
+	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Bug_catcherScript, -1
+	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4FisherScript, -1
+	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4LadyScript, -1
+	person_event SPRITE_RICH_BOY, 9, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Rich_boyScript, -1
+
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM4_RAYMOND
-	const CELADONUNIVERSITYCLASSROOM4_CANDELA
-	const CELADONUNIVERSITYCLASSROOM4_TEACHER
-	const CELADONUNIVERSITYCLASSROOM4_BUG_CATCHER
-	const CELADONUNIVERSITYCLASSROOM4_FISHER
-	const CELADONUNIVERSITYCLASSROOM4_LADY
-	const CELADONUNIVERSITYCLASSROOM4_RICH_BOY
-
-CeladonUniversityClassroom4_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 CeladonUniversityClassroom4RaymondScript:
 	faceplayer
@@ -321,30 +338,3 @@ CeladonUniversityClassroom4Bookshelf2:
 	para "What's this doing"
 	line "here?"
 	done
-
-CeladonUniversityClassroom4_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $b, $2, 9, CELADON_UNIVERSITY_1F
-	warp_def $b, $3, 9, CELADON_UNIVERSITY_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom4Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf2
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_COOLTRAINER_M, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4RaymondScript, -1
-	person_event SPRITE_CANDELA, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4CandelaScript, EVENT_CELADON_UNIVERSITY_CANDELA
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4TeacherScript, EVENT_SHAMOUTI_COAST_CANDELA
-	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Bug_catcherScript, -1
-	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4FisherScript, -1
-	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4LadyScript, -1
-	person_event SPRITE_RICH_BOY, 9, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Rich_boyScript, -1

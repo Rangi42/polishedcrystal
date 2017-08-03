@@ -1,25 +1,42 @@
+Route35NationalParkgate_MapScriptHeader:
+
+.MapTriggers: db 3
+	dw Route35NationalParkgateTrigger0
+	dw Route35NationalParkgateTrigger1
+	dw Route35NationalParkgateTrigger2
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, Route35NationalParkgate_CheckIfStillInContest
+
+Route35NationalParkgate_MapEventHeader:
+
+.Warps: db 4
+	warp_def $0, $3, 3, NATIONAL_PARK
+	warp_def $0, $4, 4, NATIONAL_PARK
+	warp_def $7, $3, 3, ROUTE_35
+	warp_def $7, $4, 3, ROUTE_35
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 0, 5, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
+
+.PersonEvents: db 3
+	person_event SPRITE_OFFICER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
+	person_event SPRITE_BUG_MANIAC, 5, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6a2d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
+	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
+
 const_value set 2
 	const ROUTE35NATIONALPARKGATE_OFFICER1
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
 
-Route35NationalParkgate_MapScriptHeader:
-.MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, Route35NationalParkgate_CheckIfStillInContest
-
 	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay
 
-.Trigger2:
+Route35NationalParkgateTrigger2:
 	priorityjump Route35NationalParkGate_LeavingContestEarly
-.Trigger0:
-.Trigger1:
+Route35NationalParkgateTrigger0:
+Route35NationalParkgateTrigger1:
 	end
 
 Route35NationalParkgate_CheckIfStillInContest:
@@ -437,24 +454,3 @@ UnknownText_0x6a90e:
 	para "have at the end of"
 	line "the contest."
 	done
-
-Route35NationalParkgate_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $0, $3, 3, NATIONAL_PARK
-	warp_def $0, $4, 4, NATIONAL_PARK
-	warp_def $7, $3, 3, ROUTE_35
-	warp_def $7, $4, 3, ROUTE_35
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 0, 5, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_OFFICER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	person_event SPRITE_BUG_MANIAC, 5, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6a2d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
-	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY

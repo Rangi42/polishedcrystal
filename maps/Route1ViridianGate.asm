@@ -1,13 +1,24 @@
-const_value set 2
-	const ROUTE1VIRIDIANGATE_OFFICER
-	const ROUTE1VIRIDIANGATE_ROCKER
-
 Route1ViridianGate_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route1ViridianGate_MapEventHeader:
+
+.Warps: db 4
+	warp_def $0, $4, 6, VIRIDIAN_CITY
+	warp_def $0, $5, 7, VIRIDIAN_CITY
+	warp_def $7, $4, 1, ROUTE_1
+	warp_def $7, $5, 1, ROUTE_1
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route1ViridianGateOfficerScript, -1
+	person_event SPRITE_ROCKER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route1ViridianGateRockerScript, -1
 
 Route1ViridianGateOfficerScript:
 	jumptextfaceplayer Route1ViridianGateOfficerText
@@ -31,22 +42,3 @@ Route1ViridianGateRockerText:
 	line "the road to Vir-"
 	cont "idian City?"
 	done
-
-Route1ViridianGate_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $0, $4, 6, VIRIDIAN_CITY
-	warp_def $0, $5, 7, VIRIDIAN_CITY
-	warp_def $7, $4, 1, ROUTE_1
-	warp_def $7, $5, 1, ROUTE_1
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route1ViridianGateOfficerScript, -1
-	person_event SPRITE_ROCKER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route1ViridianGateRockerScript, -1

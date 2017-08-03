@@ -1,13 +1,23 @@
-const_value set 2
-	const ECRUTEAKDESTINYKNOTHOUSE_COOLTRAINER_F
-	const ECRUTEAKDESTINYKNOTHOUSE_RICH_BOY
-
 EcruteakDestinyKnotHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+EcruteakDestinyKnotHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $3, 17, ECRUTEAK_CITY
+	warp_def $7, $4, 17, ECRUTEAK_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 2, SIGNPOST_READ, DestinyKnotHouseRadio
+
+.PersonEvents: db 2
+	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseCooltrainerFScript, -1
+	person_event SPRITE_RICH_BOY, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseRichBoyScript, -1
 
 EcruteakDestinyKnotHouseCooltrainerFScript:
 	faceplayer
@@ -95,21 +105,3 @@ EcruteakDestinyKnotHouseCooltrainerFText4:
 	para "Are you some kind"
 	line "of Chosen One?"
 	done
-
-EcruteakDestinyKnotHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $3, 17, ECRUTEAK_CITY
-	warp_def $7, $4, 17, ECRUTEAK_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 2, SIGNPOST_READ, DestinyKnotHouseRadio
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseCooltrainerFScript, -1
-	person_event SPRITE_RICH_BOY, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseRichBoyScript, -1

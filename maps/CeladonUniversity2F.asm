@@ -1,18 +1,38 @@
-const_value set 2
-	const CELADONUNIVERSITY2F_COOLTRAINER_F
-	const CELADONUNIVERSITY2F_COOLTRAINER_M
-	const CELADONUNIVERSITY2F_YOUNGSTER1
-	const CELADONUNIVERSITY2F_COWGIRL
-	const CELADONUNIVERSITY2F_BUG_CATCHER
-	const CELADONUNIVERSITY2F_LASS
-	const CELADONUNIVERSITY2F_YOUNGSTER2
-
 CeladonUniversity2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversity2F_MapEventHeader:
+
+.Warps: db 6
+	warp_def $8, $17, 3, CELADON_UNIVERSITY_1F
+	warp_def $0, $7, 1, CELADON_UNIVERSITY_CAFETERIA
+	warp_def $8, $5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
+	warp_def $0, $d, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
+	warp_def $8, $13, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
+	warp_def $0, $15, 1, CELADON_UNIVERSITY_POOL
+
+.XYTriggers: db 0
+
+.Signposts: db 7
+	signpost 0, 6, SIGNPOST_READ, CeladonUniversity2FCafeteriaSign
+	signpost 0, 12, SIGNPOST_READ, CeladonUniversity2FHyperTestSign
+	signpost 0, 20, SIGNPOST_READ, CeladonUniversity2FPoolSign
+	signpost 8, 4, SIGNPOST_READ, CeladonUniversity2FWillowsOfficeSign
+	signpost 8, 18, SIGNPOST_READ, CeladonUniversity2FWestwoodsOfficeSign
+	signpost 1, 16, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
+	signpost 1, 24, SIGNPOST_READ, CeladonUniversity2FCuboneSign
+
+.PersonEvents: db 7
+	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainermScript, -1
+	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster1Script, -1
+	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCowgirlScript, -1
+	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FBug_catcherScript, -1
+	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FLassScript, -1
+	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster2Script, -1
 
 CeladonUniversity2FCooltrainerfScript:
 	faceplayer
@@ -232,36 +252,3 @@ CeladonUniversity2FCuboneSign:
 	line "and skull helmet"
 	cont "of a Cubone."
 	done
-
-CeladonUniversity2F_MapEventHeader:
-.Warps:
-	db 6
-	warp_def $8, $17, 3, CELADON_UNIVERSITY_1F
-	warp_def $0, $7, 1, CELADON_UNIVERSITY_CAFETERIA
-	warp_def $8, $5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
-	warp_def $0, $d, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
-	warp_def $8, $13, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
-	warp_def $0, $15, 1, CELADON_UNIVERSITY_POOL
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 7
-	signpost 0, 6, SIGNPOST_READ, CeladonUniversity2FCafeteriaSign
-	signpost 0, 12, SIGNPOST_READ, CeladonUniversity2FHyperTestSign
-	signpost 0, 20, SIGNPOST_READ, CeladonUniversity2FPoolSign
-	signpost 8, 4, SIGNPOST_READ, CeladonUniversity2FWillowsOfficeSign
-	signpost 8, 18, SIGNPOST_READ, CeladonUniversity2FWestwoodsOfficeSign
-	signpost 1, 16, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
-	signpost 1, 24, SIGNPOST_READ, CeladonUniversity2FCuboneSign
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainermScript, -1
-	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster1Script, -1
-	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCowgirlScript, -1
-	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FBug_catcherScript, -1
-	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FLassScript, -1
-	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster2Script, -1

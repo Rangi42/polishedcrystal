@@ -1,14 +1,23 @@
-const_value set 2
-	const WARMBEACHHOUSE_GRAMPS
-	const WARMBEACHHOUSE_GRANNY
-	const WARMBEACHHOUSE_BOOK
-
 WarmBeachHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+WarmBeachHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, WARM_BEACH
+	warp_def $7, $3, 3, WARM_BEACH
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseGrampsScript, -1
+	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseGrannyScript, -1
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseBookScript, -1
 
 WarmBeachHouseGrampsScript:
 	jumptextfaceplayer .Text
@@ -104,21 +113,3 @@ WarmBeachHouseBookScript:
 	cont "by the guardian's"
 	cont "song…"
 	done
-
-WarmBeachHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, WARM_BEACH
-	warp_def $7, $3, 3, WARM_BEACH
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseGrampsScript, -1
-	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseGrannyScript, -1
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseBookScript, -1

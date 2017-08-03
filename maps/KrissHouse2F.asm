@@ -1,30 +1,41 @@
-const_value set 2
-	const KRISSHOUSE2F_CONSOLE
-	const KRISSHOUSE2F_DOLL_1
-	const KRISSHOUSE2F_DOLL_2
-	const KRISSHOUSE2F_BIG_DOLL
-
 KrissHouse2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .InitializeRoom
-	dbw MAPCALLBACK_TILES, .SetSpawn
+.MapTriggers: db 0
 
-.InitializeRoom:
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
+	dbw MAPCALLBACK_TILES, KrissHouse2FSetSpawn
+
+KrissHouse2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $7, 3, KRISS_HOUSE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 1, 2, SIGNPOST_READ, KrissHousePC
+	signpost 1, 3, SIGNPOST_READ, KrissHouseRadio
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfElmScript
+	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
+
+.PersonEvents: db 4
+	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
+	person_event SPRITE_DOLL_1, 4, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
+	person_event SPRITE_DOLL_2, 4, 5, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
+	person_event SPRITE_BIG_DOLL, 1, 0, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+
+KrissHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
 	setevent EVENT_IN_YOUR_ROOM
 	checkevent EVENT_INITIALIZED_EVENTS
 	iftrue .SkipInizialization
 	jumpstd initializeevents
-	return
 
 .SkipInizialization:
 	return
 
-.SetSpawn:
+KrissHouse2FSetSpawn:
 	special ToggleMaptileDecorations
 	return
 
@@ -123,25 +134,3 @@ PokemonJournalProfElmText:
 	line "often argue about"
 	cont "research."
 	done
-
-KrissHouse2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $7, 3, KRISS_HOUSE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 1, 2, SIGNPOST_READ, KrissHousePC
-	signpost 1, 3, SIGNPOST_READ, KrissHouseRadio
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfElmScript
-	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
-	person_event SPRITE_DOLL_1, 4, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
-	person_event SPRITE_DOLL_2, 4, 5, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
-	person_event SPRITE_BIG_DOLL, 1, 0, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL

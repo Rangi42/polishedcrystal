@@ -1,3 +1,41 @@
+Route36NationalParkgate_MapScriptHeader:
+
+.MapTriggers: db 3
+	dw Route36NationalParkgateTrigger0
+	dw Route36NationalParkgateTrigger1
+	dw Route36NationalParkgateTrigger2
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, Route36NationalParkgateCheckIfContestRunning
+	dbw MAPCALLBACK_OBJECTS, Route36NationalParkgateCheckIfContestAvailable
+
+Route36NationalParkgate_MapEventHeader:
+
+.Warps: db 4
+	warp_def $4, $0, 1, NATIONAL_PARK
+	warp_def $5, $0, 2, NATIONAL_PARK
+	warp_def $4, $9, 1, ROUTE_36
+	warp_def $5, $9, 2, ROUTE_36
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 0, 6, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
+
+.PersonEvents: db 12
+	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
+	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad06, EVENT_BUG_CATCHING_CONTESTANT_1B
+	person_event SPRITE_BUG_MANIAC, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6ad1a, EVENT_BUG_CATCHING_CONTESTANT_2B
+	person_event SPRITE_COOLTRAINER_M, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x6ad2e, EVENT_BUG_CATCHING_CONTESTANT_3B
+	person_event SPRITE_POKEFAN_M, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x6ad42, EVENT_BUG_CATCHING_CONTESTANT_4B
+	person_event SPRITE_BUG_CATCHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad56, EVENT_BUG_CATCHING_CONTESTANT_5B
+	person_event SPRITE_YOUNGSTER, 6, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ad6a, EVENT_BUG_CATCHING_CONTESTANT_6B
+	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x6ad7e, EVENT_BUG_CATCHING_CONTESTANT_7B
+	person_event SPRITE_BUG_CATCHER, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad92, EVENT_BUG_CATCHING_CONTESTANT_8B
+	person_event SPRITE_YOUNGSTER, 7, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ada6, EVENT_BUG_CATCHING_CONTESTANT_9B
+	person_event SPRITE_YOUNGSTER, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6adba, EVENT_BUG_CATCHING_CONTESTANT_10B
+	person_event SPRITE_OFFICER, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6acf4, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
+
 const_value set 2
 	const ROUTE36NATIONALPARKGATE_OFFICER1
 	const ROUTE36NATIONALPARKGATE_BUG_CATCHER1
@@ -12,25 +50,13 @@ const_value set 2
 	const ROUTE36NATIONALPARKGATE_YOUNGSTER3
 	const ROUTE36NATIONALPARKGATE_OFFICER2
 
-Route36NationalParkgate_MapScriptHeader:
-.MapTriggers:
-	db 3
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .CheckIfContestRunning
-	dbw MAPCALLBACK_OBJECTS, .CheckIfContestAvailable
-
-.Trigger2:
-	priorityjump .LeftTheContestEarly
-.Trigger0:
-.Trigger1:
+Route36NationalParkgateTrigger2:
+	priorityjump Route36NationalParkgateLeftTheContestEarly
+Route36NationalParkgateTrigger0:
+Route36NationalParkgateTrigger1:
 	end
 
-.CheckIfContestRunning:
+Route36NationalParkgateCheckIfContestRunning:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .BugContestIsRunning
 	dotrigger $0
@@ -40,7 +66,7 @@ Route36NationalParkgate_MapScriptHeader:
 	dotrigger $2
 	return
 
-.CheckIfContestAvailable:
+Route36NationalParkgateCheckIfContestAvailable:
 	checkevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	iftrue .Return
 	checkcode VAR_WEEKDAY
@@ -59,7 +85,7 @@ Route36NationalParkgate_MapScriptHeader:
 .Return:
 	return
 
-.LeftTheContestEarly:
+Route36NationalParkgateLeftTheContestEarly:
 	spriteface PLAYER, UP
 	opentext
 	checkcode VAR_CONTESTMINUTES
@@ -637,33 +663,3 @@ UnknownText_0x6b97f:
 	line "we were holding"
 	cont "for you."
 	done
-
-Route36NationalParkgate_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $4, $0, 1, NATIONAL_PARK
-	warp_def $5, $0, 2, NATIONAL_PARK
-	warp_def $4, $9, 1, ROUTE_36
-	warp_def $5, $9, 2, ROUTE_36
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 0, 6, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
-
-.PersonEvents:
-	db 12
-	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad06, EVENT_BUG_CATCHING_CONTESTANT_1B
-	person_event SPRITE_BUG_MANIAC, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6ad1a, EVENT_BUG_CATCHING_CONTESTANT_2B
-	person_event SPRITE_COOLTRAINER_M, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x6ad2e, EVENT_BUG_CATCHING_CONTESTANT_3B
-	person_event SPRITE_POKEFAN_M, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x6ad42, EVENT_BUG_CATCHING_CONTESTANT_4B
-	person_event SPRITE_BUG_CATCHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad56, EVENT_BUG_CATCHING_CONTESTANT_5B
-	person_event SPRITE_YOUNGSTER, 6, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ad6a, EVENT_BUG_CATCHING_CONTESTANT_6B
-	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x6ad7e, EVENT_BUG_CATCHING_CONTESTANT_7B
-	person_event SPRITE_BUG_CATCHER, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad92, EVENT_BUG_CATCHING_CONTESTANT_8B
-	person_event SPRITE_YOUNGSTER, 7, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ada6, EVENT_BUG_CATCHING_CONTESTANT_9B
-	person_event SPRITE_YOUNGSTER, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6adba, EVENT_BUG_CATCHING_CONTESTANT_10B
-	person_event SPRITE_OFFICER, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6acf4, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY

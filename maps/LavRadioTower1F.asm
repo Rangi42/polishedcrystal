@@ -1,17 +1,29 @@
-const_value set 2
-	const LAVRADIOTOWER1F_RECEPTIONIST
-	const LAVRADIOTOWER1F_OFFICER
-	const LAVRADIOTOWER1F_SUPER_NERD1
-	const LAVRADIOTOWER1F_GENTLEMAN
-	const LAVRADIOTOWER1F_SUPER_NERD2
-
 LavRadioTower1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_OBJECTS, LavRadioTower1FUpstairsScript
+
+LavRadioTower1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $2, 7, LAVENDER_TOWN
+	warp_def $7, $3, 7, LAVENDER_TOWN
+	warp_def $0, $f, 255, LAV_RADIO_TOWER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 11, SIGNPOST_READ, MapLavRadioTower1FSignpost0Script
+	signpost 0, 5, SIGNPOST_READ, MapLavRadioTower1FSignpost1Script
+
+.PersonEvents: db 5
+	person_event SPRITE_RECEPTIONIST, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x7ee63, -1
+	person_event SPRITE_OFFICER, 1, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7ee66, -1
+	person_event SPRITE_SUPER_NERD, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ee69, -1
+	person_event SPRITE_GENTLEMAN, 1, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7ee6c, -1
+	person_event SPRITE_SUPER_NERD, 6, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7eea2, -1
 
 LavRadioTower1FUpstairsScript:
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
@@ -232,26 +244,3 @@ UnknownText_0x7f36b:
 	para "This must be the"
 	line "reference library."
 	done
-
-LavRadioTower1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $2, 7, LAVENDER_TOWN
-	warp_def $7, $3, 7, LAVENDER_TOWN
-	warp_def $0, $f, 255, LAV_RADIO_TOWER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 11, SIGNPOST_READ, MapLavRadioTower1FSignpost0Script
-	signpost 0, 5, SIGNPOST_READ, MapLavRadioTower1FSignpost1Script
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_RECEPTIONIST, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x7ee63, -1
-	person_event SPRITE_OFFICER, 1, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7ee66, -1
-	person_event SPRITE_SUPER_NERD, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ee69, -1
-	person_event SPRITE_GENTLEMAN, 1, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7ee6c, -1
-	person_event SPRITE_SUPER_NERD, 6, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7eea2, -1

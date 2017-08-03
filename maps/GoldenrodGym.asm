@@ -1,18 +1,33 @@
-const_value set 2
-	const GOLDENRODGYM_WHITNEY
-	const GOLDENRODGYM_LASS1
-	const GOLDENRODGYM_LASS2
-	const GOLDENRODGYM_LASS3
-	const GOLDENRODGYM_BEAUTY1
-	const GOLDENRODGYM_BEAUTY2
-	const GOLDENRODGYM_GYM_GUY
-
 GoldenrodGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $2, 1, GOLDENROD_CITY
+	warp_def $11, $3, 1, GOLDENROD_CITY
+
+.XYTriggers: db 1
+	xy_trigger 1, $5, $8, WhitneyCriesScript
+
+.Signposts: db 2
+	signpost 15, 1, SIGNPOST_READ, GoldenrodGymStatue
+	signpost 15, 4, SIGNPOST_READ, GoldenrodGymStatue
+
+.PersonEvents: db 7
+	person_event SPRITE_LASS, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath1, -1
+	person_event SPRITE_WHITNEY, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
+	person_event SPRITE_LASS, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerLassCarrie, -1
+	person_event SPRITE_LASS, 7, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath2, -1
+	person_event SPRITE_BEAUTY, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyVictoria, -1
+	person_event SPRITE_BEAUTY, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautySamantha, -1
+	person_event SPRITE_GYM_GUY, 15, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1
+
+const_value set 2
+	const GOLDENRODGYM_LASS2
 
 WhitneyScript_0x5400c:
 	faceplayer
@@ -402,28 +417,3 @@ GoldenrodGymGuyWinText:
 	line "was busy admiring"
 	cont "the ladies here."
 	done
-
-GoldenrodGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $2, 1, GOLDENROD_CITY
-	warp_def $11, $3, 1, GOLDENROD_CITY
-
-.XYTriggers:
-	db 1
-	xy_trigger 1, $5, $8, WhitneyCriesScript
-
-.Signposts:
-	db 2
-	signpost 15, 1, SIGNPOST_READ, GoldenrodGymStatue
-	signpost 15, 4, SIGNPOST_READ, GoldenrodGymStatue
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_WHITNEY, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
-	person_event SPRITE_LASS, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerLassCarrie, -1
-	person_event SPRITE_LASS, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath1, -1
-	person_event SPRITE_LASS, 7, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath2, -1
-	person_event SPRITE_BEAUTY, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyVictoria, -1
-	person_event SPRITE_BEAUTY, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautySamantha, -1
-	person_event SPRITE_GYM_GUY, 15, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1

@@ -1,18 +1,34 @@
-const_value set 2
-	const RADIOTOWER4F_FISHER
-	const RADIOTOWER4F_TEACHER
-	const RADIOTOWER4F_MEOWTH
-	const RADIOTOWER4F_ROCKET
-	const RADIOTOWER4F_PROTON
-	const RADIOTOWER4F_ROCKET_GIRL
-	const RADIOTOWER4F_SCIENTIST
-
 RadioTower4F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+RadioTower4F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $0, $0, 1, RADIO_TOWER_5F
+	warp_def $0, $9, 2, RADIO_TOWER_3F
+	warp_def $0, $c, 2, RADIO_TOWER_5F
+	warp_def $0, $11, 3, RADIO_TOWER_3F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 7, SIGNPOST_READ, MapRadioTower4FSignpost0Script
+	signpost 0, 15, SIGNPOST_READ, MapRadioTower4FSignpost1Script
+
+.PersonEvents: db 7
+	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_FISHER, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x5eb82, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	person_event SPRITE_TEACHER, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5eb85, -1
+	person_event SPRITE_MEOWTH, 7, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTowerMeowth, -1
+	person_event SPRITE_PROTON, 1, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET_GIRL, 4, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_SCIENTIST, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+
+const_value set 2
+	const RADIOTOWER4F_ROCKET
 
 FisherScript_0x5eb82:
 	jumptextfaceplayer UnknownText_0x5ec12
@@ -244,29 +260,3 @@ UnknownText_0x5effe:
 UnknownText_0x5f00d:
 	text "4F Studio 2"
 	done
-
-RadioTower4F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $0, $0, 1, RADIO_TOWER_5F
-	warp_def $0, $9, 2, RADIO_TOWER_3F
-	warp_def $0, $c, 2, RADIO_TOWER_5F
-	warp_def $0, $11, 3, RADIO_TOWER_3F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 7, SIGNPOST_READ, MapRadioTower4FSignpost0Script
-	signpost 0, 15, SIGNPOST_READ, MapRadioTower4FSignpost1Script
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_FISHER, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x5eb82, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_TEACHER, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5eb85, -1
-	person_event SPRITE_MEOWTH, 7, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTowerMeowth, -1
-	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_PROTON, 1, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET_GIRL, 4, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

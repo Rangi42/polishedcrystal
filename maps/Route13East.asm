@@ -1,21 +1,31 @@
-const_value set 2
-	const ROUTE13EAST_YOUNGSTER1
-	const ROUTE13EAST_YOUNGSTER2
-	const ROUTE13EAST_YOUNGSTER3
-	const ROUTE13EAST_LASS1
-	const ROUTE13EAST_YOUNGSTER4
-	const ROUTE13EAST_LASS2
-	const ROUTE13EAST_POKEFAN_M1
-	const ROUTE13EAST_POKEFAN_M2
-	const ROUTE13EAST_GRAMPS
-	const ROUTE13EAST_CUT_TREE
-
 Route13East_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route13East_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 13, 11, SIGNPOST_READ, Route13TrainerTips
+	signpost 11, 27, SIGNPOST_READ, Route13Sign
+	signpost 13, 12, SIGNPOST_ITEM, Route13HiddenCalcium
+
+.PersonEvents: db 10
+	person_event SPRITE_YOUNGSTER, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPerry, -1
+	person_event SPRITE_YOUNGSTER, 1, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBret, -1
+	person_event SPRITE_YOUNGSTER, 5, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperTanner, -1
+	person_event SPRITE_LASS, 9, 41, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerPiper, -1
+	person_event SPRITE_YOUNGSTER, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleTimandsue1, -1
+	person_event SPRITE_LASS, 6, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleTimandsue2, -1
+	person_event SPRITE_POKEFAN_M, 8, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
+	person_event SPRITE_POKEFAN_M, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
+	person_event SPRITE_GRAMPS, 13, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route13EastGrampsScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 30, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE
 
 TrainerBird_keeperPerry:
 	trainer EVENT_BEAT_BIRD_KEEPER_PERRY, BIRD_KEEPER, PERRY, Bird_keeperPerrySeenText, Bird_keeperPerryBeatenText, 0, Bird_keeperPerryScript
@@ -296,29 +306,3 @@ Route13SignText:
 
 Route13HiddenCalcium:
 	dwb EVENT_ROUTE_13_HIDDEN_CALCIUM, CALCIUM
-
-Route13East_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 13, 11, SIGNPOST_READ, Route13TrainerTips
-	signpost 11, 27, SIGNPOST_READ, Route13Sign
-	signpost 13, 12, SIGNPOST_ITEM, Route13HiddenCalcium
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_YOUNGSTER, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPerry, -1
-	person_event SPRITE_YOUNGSTER, 1, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBret, -1
-	person_event SPRITE_YOUNGSTER, 5, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperTanner, -1
-	person_event SPRITE_LASS, 9, 41, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerPiper, -1
-	person_event SPRITE_YOUNGSTER, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleTimandsue1, -1
-	person_event SPRITE_LASS, 6, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleTimandsue2, -1
-	person_event SPRITE_POKEFAN_M, 8, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
-	person_event SPRITE_POKEFAN_M, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
-	person_event SPRITE_GRAMPS, 13, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route13EastGrampsScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 30, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE

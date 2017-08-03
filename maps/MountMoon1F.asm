@@ -1,24 +1,40 @@
+MountMoon1F_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw MountMoon1FTrigger0
+
+.MapCallbacks: db 0
+
+MountMoon1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $17, $b, 1, ROUTE_3
+	warp_def $c, $16, 1, MOUNT_MOON_B1F
+	warp_def $9, $b, 2, MOUNT_MOON_B1F
+	warp_def $4, $4, 3, MOUNT_MOON_B1F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 17, 2, SIGNPOST_ITEM, MountMoon1FHiddenRareCandy
+	signpost 16, 12, SIGNPOST_ITEM, MountMoon1FHiddenFullRestore
+
+.PersonEvents: db 10
+	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	person_event SPRITE_BUG_MANIAC, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
+	person_event SPRITE_LASS, 14, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1
+	person_event SPRITE_SUPER_NERD, 21, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdJovan, -1
+	person_event SPRITE_BUG_MANIAC, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
+	person_event SPRITE_LASS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
+	person_event SPRITE_POKEFAN_M, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MountMoon1FRevive, EVENT_MOUNT_MOON_1F_REVIVE
+	person_event SPRITE_BALL_CUT_FRUIT, 20, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MountMoon1FXAccuracy, EVENT_MOUNT_MOON_1F_X_ACCURACY
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MountMoon1FCalcium, EVENT_MOUNT_MOON_1F_CALCIUM
+
 const_value set 2
 	const MOUNTMOON1F_SILVER
-	const MOUNTMOON1F_BUG_MANIAC1
-	const MOUNTMOON1F_LASS1
-	const MOUNTMOON1F_SUPER_NERD
-	const MOUNTMOON1F_BUG_MANIAC2
-	const MOUNTMOON1F_LASS2
-	const MOUNTMOON1F_HIKER
-	const MOUNTMOON1F_POKE_BALL1
-	const MOUNTMOON1F_POKE_BALL2
-	const MOUNTMOON1F_POKE_BALL3
 
-MountMoon1F_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+MountMoon1FTrigger0:
 	priorityjump .RivalBattle
 	end
 
@@ -374,32 +390,3 @@ HikerMarcosAfterText:
 	line "I was beaten by a"
 	cont "kid just like you."
 	done
-
-MountMoon1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $17, $b, 1, ROUTE_3
-	warp_def $c, $16, 1, MOUNT_MOON_B1F
-	warp_def $9, $b, 2, MOUNT_MOON_B1F
-	warp_def $4, $4, 3, MOUNT_MOON_B1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 17, 2, SIGNPOST_ITEM, MountMoon1FHiddenRareCandy
-	signpost 16, 12, SIGNPOST_ITEM, MountMoon1FHiddenFullRestore
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
-	person_event SPRITE_BUG_MANIAC, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
-	person_event SPRITE_LASS, 14, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1
-	person_event SPRITE_SUPER_NERD, 21, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdJovan, -1
-	person_event SPRITE_BUG_MANIAC, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
-	person_event SPRITE_LASS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
-	person_event SPRITE_POKEFAN_M, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MountMoon1FRevive, EVENT_MOUNT_MOON_1F_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MountMoon1FXAccuracy, EVENT_MOUNT_MOON_1F_X_ACCURACY
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MountMoon1FCalcium, EVENT_MOUNT_MOON_1F_CALCIUM

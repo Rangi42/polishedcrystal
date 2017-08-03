@@ -1,19 +1,72 @@
+CeladonGameCorner_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonGameCorner_MapEventHeader:
+
+.Warps: db 2
+	warp_def $d, $e, 6, CELADON_CITY
+	warp_def $d, $f, 6, CELADON_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 38
+	signpost 6, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 7, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 8, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 9, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 10, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 11, 1, SIGNPOST_LEFT, MapCeladonGameCornerSignpost11Script
+	signpost 6, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 7, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 8, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 9, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost9Script
+	signpost 10, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	signpost 11, 6, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost11Script
+	signpost 6, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 7, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 8, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 9, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 10, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost16Script
+	signpost 11, 7, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
+	signpost 6, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 7, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 8, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 9, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 10, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 11, 12, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
+	signpost 6, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 7, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 8, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 9, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 10, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 11, 13, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
+	signpost 6, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 7, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 8, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost32Script
+	signpost 9, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 10, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	signpost 11, 18, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
+	signpost 0, 15, SIGNPOST_READ, MapCeladonGameCornerSignpost36Script
+	signpost 0, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost37Script
+
+.PersonEvents: db 8
+	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
+	person_event SPRITE_TEACHER, 7, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
+	person_event SPRITE_FISHING_GURU, 7, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
+	person_event SPRITE_GRAMPS, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
+	person_event SPRITE_CLERK, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ClerkScript_0x7211d, -1
+	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x72120, -1
+	person_event SPRITE_FISHER, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
+	person_event SPRITE_GYM_GUY, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonGymGuyScript, -1
+
 const_value set 2
-	const CELADONGAMECORNER_CLERK
-	const CELADONGAMECORNER_RECEPTIONIST
 	const CELADONGAMECORNER_POKEFAN_M
 	const CELADONGAMECORNER_TEACHER
 	const CELADONGAMECORNER_FISHING_GURU
-	const CELADONGAMECORNER_FISHER
-	const CELADONGAMECORNER_GYM_GUY
 	const CELADONGAMECORNER_GRAMPS
-
-CeladonGameCorner_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 ClerkScript_0x7211d:
 	jumpstd gamecornercoinvendor
@@ -308,64 +361,3 @@ UnknownText_0x72567:
 
 	para "Huh? It's empty!"
 	done
-
-CeladonGameCorner_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $d, $e, 6, CELADON_CITY
-	warp_def $d, $f, 6, CELADON_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 38
-	signpost 6, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 7, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 8, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 9, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 10, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 11, 1, SIGNPOST_LEFT, MapCeladonGameCornerSignpost11Script
-	signpost 6, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 7, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 8, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 9, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost9Script
-	signpost 10, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 11, 6, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost11Script
-	signpost 6, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 9, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost16Script
-	signpost 11, 7, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
-	signpost 6, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 9, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 11, 12, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
-	signpost 6, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 9, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 11, 13, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
-	signpost 6, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost32Script
-	signpost 9, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 11, 18, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
-	signpost 0, 15, SIGNPOST_READ, MapCeladonGameCornerSignpost36Script
-	signpost 0, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost37Script
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_CLERK, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ClerkScript_0x7211d, -1
-	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x72120, -1
-	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
-	person_event SPRITE_TEACHER, 7, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
-	person_event SPRITE_FISHING_GURU, 7, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
-	person_event SPRITE_FISHER, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
-	person_event SPRITE_GYM_GUY, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonGymGuyScript, -1
-	person_event SPRITE_GRAMPS, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1

@@ -1,25 +1,36 @@
-const_value set 2
-	const ROUTE26_DRAGON_TAMER1
-	const ROUTE26_COOLTRAINER_M
-	const ROUTE26_COOLTRAINER_F1
-	const ROUTE26_COOLTRAINER_F2
-	const ROUTE26_YOUNGSTER
-	const ROUTE26_COOLTRAINER_F3
-	const ROUTE26_FISHER
-	const ROUTE26_DRAGON_TAMER2
-	const ROUTE26_FRUIT_TREE
-	const ROUTE26_POKE_BALL1
-	const ROUTE26_POKE_BALL2
-
 Route26_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_SPRITES, .DragonTamerSprite
+.MapTriggers: db 0
 
-.DragonTamerSprite:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_SPRITES, Route26DragonTamerSprite
+
+Route26_MapEventHeader:
+
+.Warps: db 3
+	warp_def $5, $7, 3, POKEMON_LEAGUE_GATE
+	warp_def $39, $f, 1, ROUTE_26_HEAL_SPEECH_HOUSE
+	warp_def $47, $5, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 6, 8, SIGNPOST_READ, Route26Sign
+
+.PersonEvents: db 11
+	person_event SPRITE_GUIDE_GENT, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
+	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
+	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
+	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
+	person_event SPRITE_YOUNGSTER, 79, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1
+	person_event SPRITE_COOLTRAINER_F, 82, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
+	person_event SPRITE_FISHER, 100, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
+	person_event SPRITE_GUIDE_GENT, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 54, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a4ec2, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route26MaxElixer, EVENT_ROUTE_26_MAX_ELIXER
+	person_event SPRITE_BALL_CUT_FRUIT, 34, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route26TMDragonPulse, EVENT_ROUTE_26_TM_DRAGON_PULSE
+
+Route26DragonTamerSprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
 	return
 
@@ -483,31 +494,3 @@ Route26SignText:
 	para "#mon League"
 	line "Reception Gate"
 	done
-
-Route26_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $5, $7, 3, POKEMON_LEAGUE_GATE
-	warp_def $39, $f, 1, ROUTE_26_HEAL_SPEECH_HOUSE
-	warp_def $47, $5, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 6, 8, SIGNPOST_READ, Route26Sign
-
-.PersonEvents:
-	db 11
-	person_event SPRITE_GUIDE_GENT, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
-	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
-	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
-	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
-	person_event SPRITE_YOUNGSTER, 79, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1
-	person_event SPRITE_COOLTRAINER_F, 82, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
-	person_event SPRITE_FISHER, 100, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
-	person_event SPRITE_GUIDE_GENT, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 54, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a4ec2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route26MaxElixer, EVENT_ROUTE_26_MAX_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route26TMDragonPulse, EVENT_ROUTE_26_TM_DRAGON_PULSE

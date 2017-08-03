@@ -1,15 +1,26 @@
-const_value set 2
-	const ROUTE32POKECENTER1F_NURSE
-	const ROUTE32POKECENTER1F_FISHING_GURU
-	const ROUTE32POKECENTER1F_COOLTRAINER_F
-	const ROUTE32POKECENTER1F_POKEFAN_M
-
 Route32PokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route32PokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 1, ROUTE_32
+	warp_def $7, $6, 1, ROUTE_32
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalKurtScript
+
+.PersonEvents: db 4
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x69b52, -1
+	person_event SPRITE_FISHING_GURU, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x69b55, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x69b80, -1
+	person_event SPRITE_POKEFAN_M, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1
 
 NurseScript_0x69b52:
 	jumpstd pokecenternurse
@@ -188,24 +199,3 @@ PokemonJournalKurtText:
 	para "granddaughter"
 	line "Maizie."
 	done
-
-Route32PokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 1, ROUTE_32
-	warp_def $7, $6, 1, ROUTE_32
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalKurtScript
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x69b52, -1
-	person_event SPRITE_FISHING_GURU, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x69b55, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x69b80, -1
-	person_event SPRITE_POKEFAN_M, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1

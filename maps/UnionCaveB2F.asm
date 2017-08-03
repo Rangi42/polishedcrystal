@@ -1,20 +1,31 @@
+UnionCaveB2F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, UnionCaveB2FLapras
+
+UnionCaveB2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $3, $5, 2, UNION_CAVE_B1F_SOUTH
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 6
+	person_event SPRITE_LAPRAS, 31, 11, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, UnionCaveLapras, EVENT_UNION_CAVE_B2F_LAPRAS
+	person_event SPRITE_COOLTRAINER_M, 19, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermNick, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfGwen, -1
+	person_event SPRITE_COOLTRAINER_F, 30, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfEmma, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB2FElixer, EVENT_UNION_CAVE_B2F_ELIXER
+	person_event SPRITE_BALL_CUT_FRUIT, 19, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB2FHyperPotion, EVENT_UNION_CAVE_B2F_HYPER_POTION
+
 const_value set 2
-	const UNIONCAVEB2F_COOLTRAINER_M
-	const UNIONCAVEB2F_COOLTRAINER_F1
-	const UNIONCAVEB2F_COOLTRAINER_F2
-	const UNIONCAVEB2F_POKE_BALL1
-	const UNIONCAVEB2F_POKE_BALL2
 	const UNIONCAVEB2F_LAPRAS
 
-UnionCaveB2F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, .Lapras
-
-.Lapras:
+UnionCaveB2FLapras:
 	checkflag ENGINE_UNION_CAVE_LAPRAS
 	iftrue .NoAppear
 	checkcode VAR_WEEKDAY
@@ -140,23 +151,3 @@ UnknownText_0x5a52b:
 	para "I wanted to see"
 	line "that #mon…"
 	done
-
-UnionCaveB2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $3, $5, 2, UNION_CAVE_B1F_SOUTH
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_COOLTRAINER_M, 19, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermNick, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfGwen, -1
-	person_event SPRITE_COOLTRAINER_F, 30, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfEmma, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB2FElixer, EVENT_UNION_CAVE_B2F_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UnionCaveB2FHyperPotion, EVENT_UNION_CAVE_B2F_HYPER_POTION
-	person_event SPRITE_LAPRAS, 31, 11, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, UnionCaveLapras, EVENT_UNION_CAVE_B2F_LAPRAS

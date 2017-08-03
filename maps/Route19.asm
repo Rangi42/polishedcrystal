@@ -1,27 +1,45 @@
-const_value set 2
-	const ROUTE19_SWIMMER_GIRL
-	const ROUTE19_SWIMMER_GUY1
-	const ROUTE19_SWIMMER_GUY2
-	const ROUTE19_SWIMMER_GUY3
-	const ROUTE19_COSPLAYER
-	const ROUTE19_ENGINEER1
-	const ROUTE19_ENGINEER2
-	const ROUTE19_POKE_BALL
-	const ROUTE19_ROCK1
-	const ROUTE19_ROCK2
-	const ROUTE19_ROCK3
-	const ROUTE19_ROCK4
-	const ROUTE19_ROCK5
-
 Route19_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, .ClearRocks
+.MapTriggers: db 0
 
-.ClearRocks:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, Route19ClearRocks
+
+Route19_MapEventHeader:
+
+.Warps: db 2
+	warp_def $1, $7, 3, ROUTE_19_FUCHSIA_GATE
+	warp_def $d, $5, 1, ROUTE_19_BEACH_HOUSE
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 15, 11, SIGNPOST_READ, Route19Sign
+	signpost -1, 11, SIGNPOST_READ, CarefulSwimmingSign
+	signpost 3, 5, SIGNPOST_ITEM, Route19HiddenRevive
+	signpost 11, 3, SIGNPOST_ITEM, Route19HiddenMaxRevive
+	signpost 15, 5, SIGNPOST_ITEM, Route19HiddenPearl1
+	signpost 13, 13, SIGNPOST_ITEM, Route19HiddenPearl2
+
+.PersonEvents: db 13
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 11, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_SWIMMER_GIRL, 34, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfDawn, -1
+	person_event SPRITE_SWIMMER_GUY, 34, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermTucker, -1
+	person_event SPRITE_SWIMMER_GUY, 20, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
+	person_event SPRITE_SWIMMER_GUY, 43, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
+	person_event SPRITE_COSPLAYER, 51, 13, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerBrooke, -1
+	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
+	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 52, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route19BigPearl, EVENT_ROUTE_19_BIG_PEARL
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+
+const_value set 2
+	const ROUTE19_ROCK2
+
+Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .Done
 	changeblock $6, $4, $7a
@@ -290,37 +308,3 @@ CarefulSwimmingSignText:
 
 	para "Fuchsia Police"
 	done
-
-Route19_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $1, $7, 3, ROUTE_19_FUCHSIA_GATE
-	warp_def $d, $5, 1, ROUTE_19_BEACH_HOUSE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 15, 11, SIGNPOST_READ, Route19Sign
-	signpost -1, 11, SIGNPOST_READ, CarefulSwimmingSign
-	signpost 3, 5, SIGNPOST_ITEM, Route19HiddenRevive
-	signpost 11, 3, SIGNPOST_ITEM, Route19HiddenMaxRevive
-	signpost 15, 5, SIGNPOST_ITEM, Route19HiddenPearl1
-	signpost 13, 13, SIGNPOST_ITEM, Route19HiddenPearl2
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_SWIMMER_GIRL, 34, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfDawn, -1
-	person_event SPRITE_SWIMMER_GUY, 34, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermTucker, -1
-	person_event SPRITE_SWIMMER_GUY, 20, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
-	person_event SPRITE_SWIMMER_GUY, 43, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
-	person_event SPRITE_COSPLAYER, 51, 13, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerBrooke, -1
-	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
-	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 52, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route19BigPearl, EVENT_ROUTE_19_BIG_PEARL
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 11, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1

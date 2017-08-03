@@ -1,12 +1,21 @@
-const_value set 2
-	const ROUTE30BERRYSPEECHHOUSE_POKEFAN_M
-
 Route30BerrySpeechHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route30BerrySpeechHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 1, ROUTE_30
+	warp_def $7, $3, 1, ROUTE_30
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x196d64, -1
 
 PokefanMScript_0x196d64:
 	faceplayer
@@ -46,19 +55,3 @@ UnknownText_0x196dec:
 	line "Mulch in Goldenrod"
 	cont "City."
 	done
-
-Route30BerrySpeechHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 1, ROUTE_30
-	warp_def $7, $3, 1, ROUTE_30
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x196d64, -1

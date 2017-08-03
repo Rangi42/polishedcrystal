@@ -1,16 +1,27 @@
-const_value set 2
-	const CIANWOODPOKECENTER1F_NURSE
-	const CIANWOODPOKECENTER1F_LASS
-	const CIANWOODPOKECENTER1F_GYM_GUY
-	const CIANWOODPOKECENTER1F_SUPER_NERD
-	const CIANWOODPOKECENTER1F_RICH_BOY
-
 CianwoodPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CianwoodPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 3, CIANWOOD_CITY
+	warp_def $7, $6, 3, CIANWOOD_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalChuckScript
+
+.PersonEvents: db 5
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9dbcf, -1
+	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9dbd2, -1
+	person_event SPRITE_GYM_GUY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
+	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x9dbea, -1
+	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CianwoodPokeCenterRichBoyScript, -1
 
 NurseScript_0x9dbcf:
 	jumpstd pokecenternurse
@@ -160,25 +171,3 @@ PokemonJournalChuckText:
 	line "heavy waterfall"
 	cont "to work them off."
 	done
-
-CianwoodPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 3, CIANWOOD_CITY
-	warp_def $7, $6, 3, CIANWOOD_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalChuckScript
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9dbcf, -1
-	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9dbd2, -1
-	person_event SPRITE_GYM_GUY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
-	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x9dbea, -1
-	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CianwoodPokeCenterRichBoyScript, -1

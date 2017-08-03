@@ -1,9 +1,23 @@
 BluesHouse2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+BluesHouse2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $7, 3, BLUES_HOUSE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 1, 0, SIGNPOST_READ, BluesHouse2FPCScript
+	signpost 5, 3, SIGNPOST_READ, BluesHouse2FSNESScript
+	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
+	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
+
+.PersonEvents: db 0
 
 BluesHouse2FPCScript:
 	jumptext BluesHouse2FPCText
@@ -27,21 +41,3 @@ BluesHouse2FSNESText:
 	para "Better get going--"
 	line "no time to lose!"
 	done
-
-BluesHouse2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $7, 3, BLUES_HOUSE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 1, 0, SIGNPOST_READ, BluesHouse2FPCScript
-	signpost 5, 3, SIGNPOST_READ, BluesHouse2FSNESScript
-	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
-
-.PersonEvents:
-	db 0

@@ -1,22 +1,35 @@
-const_value set 2
-	const ROUTE37_WEIRD_TREE1
-	const ROUTE37_WEIRD_TREE2
-	const ROUTE37_YOUNGSTER
-	const ROUTE37_FRUIT_TREE1
-	const ROUTE37_SUNNY
-	const ROUTE37_FRUIT_TREE2
-	const ROUTE37_FRUIT_TREE3
-	const ROUTE37_BEAUTY1
-	const ROUTE37_BEAUTY2
-	const ROUTE37_COOLTRAINERF
-
 Route37_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_OBJECTS, SunnyCallback
+
+Route37_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 3, 5, SIGNPOST_READ, Route37Sign
+	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
+
+.PersonEvents: db 10
+	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
+	person_event SPRITE_COOLTRAINER_F, 18, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route37CooltrainerfChiaraScript, -1
+	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
+	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
+	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e09, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0b, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 7, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0d, -1
+	person_event SPRITE_BEAUTY, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCallie, -1
+	person_event SPRITE_BEAUTY, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassandra, -1
+
+const_value set 2
+	const ROUTE37_SUNNY
+	const ROUTE37_COOLTRAINERF
 
 SunnyCallback:
 	checkcode VAR_WEEKDAY
@@ -426,28 +439,3 @@ BeautyCassandraAfterText:
 Route37SignText:
 	text "Route 37"
 	done
-
-Route37_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 3, 5, SIGNPOST_READ, Route37Sign
-	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
-	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
-	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e09, -1
-	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0b, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0d, -1
-	person_event SPRITE_BEAUTY, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCallie, -1
-	person_event SPRITE_BEAUTY, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassandra, -1
-	person_event SPRITE_COOLTRAINER_F, 18, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route37CooltrainerfChiaraScript, -1

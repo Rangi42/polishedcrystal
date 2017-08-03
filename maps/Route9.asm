@@ -1,20 +1,30 @@
-const_value set 2
-	const ROUTE9_YOUNGSTER1
-	const ROUTE9_LASS1
-	const ROUTE9_YOUNGSTER2
-	const ROUTE9_LASS2
-	const ROUTE9_POKEFAN_M1
-	const ROUTE9_POKEFAN_M2
-	const ROUTE9_POKE_BALL1
-	const ROUTE9_POKE_BALL2
-	const ROUTE9_CUT_TREE
-
 Route9_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route9_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 7, 21, SIGNPOST_READ, Route9Sign
+	signpost 15, 51, SIGNPOST_ITEM, Route9HiddenEther
+	signpost 12, 42, SIGNPOST_ITEM, Route9HiddenSoftSand
+
+.PersonEvents: db 9
+	person_event SPRITE_YOUNGSTER, 11, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
+	person_event SPRITE_LASS, 8, 43, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerHeidi, -1
+	person_event SPRITE_YOUNGSTER, 4, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1
+	person_event SPRITE_LASS, 15, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerEdna, -1
+	person_event SPRITE_POKEFAN_M, 3, 34, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerTim, -1
+	person_event SPRITE_POKEFAN_M, 15, 44, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSidney, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route9MaxPotion, EVENT_ROUTE_9_MAX_POTION
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 45, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route9TMFlashCannon, EVENT_ROUTE_9_TM_FLASH_CANNON
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 4, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route9CutTree, EVENT_ROUTE_9_CUT_TREE
 
 TrainerCamperDean:
 	trainer EVENT_BEAT_CAMPER_DEAN, CAMPER, DEAN, CamperDeanSeenText, CamperDeanBeatenText, 0, CamperDeanScript
@@ -219,28 +229,3 @@ Route9SignText:
 	para "Cerulean City -"
 	line "Rock Tunnel"
 	done
-
-Route9_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 7, 21, SIGNPOST_READ, Route9Sign
-	signpost 15, 51, SIGNPOST_ITEM, Route9HiddenEther
-	signpost 12, 42, SIGNPOST_ITEM, Route9HiddenSoftSand
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_YOUNGSTER, 11, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
-	person_event SPRITE_LASS, 8, 43, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerHeidi, -1
-	person_event SPRITE_YOUNGSTER, 4, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1
-	person_event SPRITE_LASS, 15, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerEdna, -1
-	person_event SPRITE_POKEFAN_M, 3, 34, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerTim, -1
-	person_event SPRITE_POKEFAN_M, 15, 44, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSidney, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route9MaxPotion, EVENT_ROUTE_9_MAX_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 45, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route9TMFlashCannon, EVENT_ROUTE_9_TM_FLASH_CANNON
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 4, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route9CutTree, EVENT_ROUTE_9_CUT_TREE

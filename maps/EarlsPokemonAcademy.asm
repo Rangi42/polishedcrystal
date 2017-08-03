@@ -1,17 +1,35 @@
+EarlsPokemonAcademy_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+EarlsPokemonAcademy_MapEventHeader:
+
+.Warps: db 2
+	warp_def $f, $3, 3, VIOLET_CITY
+	warp_def $f, $4, 3, VIOLET_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 1, 0, SIGNPOST_READ, PokemonJournalWillScript
+	signpost 1, 1, SIGNPOST_READ, PokemonJournalWillScript
+	signpost 0, 3, SIGNPOST_READ, AcademyBlackboard
+	signpost 0, 4, SIGNPOST_READ, AcademyBlackboard
+
+.PersonEvents: db 6
+	person_event SPRITE_FISHER, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, AcademyEarl, EVENT_EARLS_ACADEMY_EARL
+	person_event SPRITE_GAMEBOY_KID, 11, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a86, -1
+	person_event SPRITE_GAMEBOY_KID, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a91, -1
+	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x68a83, -1
+	person_event SPRITE_CHILD, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChildScript_0x68a9c, -1
+	person_event SPRITE_BOOK_UNOWN_R, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, AcademyNotebook, -1
+
 const_value set 2
 	const EARLSPOKEMONACADEMY_EARL
-	const EARLSPOKEMONACADEMY_YOUNGSTER
 	const EARLSPOKEMONACADEMY_GAMEBOY_KID1
 	const EARLSPOKEMONACADEMY_GAMEBOY_KID2
-	const EARLSPOKEMONACADEMY_CHILD
-	const EARLSPOKEMONACADEMY_BOOK
-
-EarlsPokemonAcademy_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 AcademyEarl:
 	applymovement EARLSPOKEMONACADEMY_EARL, MovementData_0x68b2d
@@ -416,28 +434,3 @@ PokemonJournalWillText:
 	line "refuses to specu-"
 	cont "late."
 	done
-
-EarlsPokemonAcademy_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $f, $3, 3, VIOLET_CITY
-	warp_def $f, $4, 3, VIOLET_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 1, 0, SIGNPOST_READ, PokemonJournalWillScript
-	signpost 1, 1, SIGNPOST_READ, PokemonJournalWillScript
-	signpost 0, 3, SIGNPOST_READ, AcademyBlackboard
-	signpost 0, 4, SIGNPOST_READ, AcademyBlackboard
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_FISHER, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, AcademyEarl, EVENT_EARLS_ACADEMY_EARL
-	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x68a83, -1
-	person_event SPRITE_GAMEBOY_KID, 11, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a86, -1
-	person_event SPRITE_GAMEBOY_KID, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a91, -1
-	person_event SPRITE_CHILD, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChildScript_0x68a9c, -1
-	person_event SPRITE_BOOK_UNOWN_R, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, AcademyNotebook, -1

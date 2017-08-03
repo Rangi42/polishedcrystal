@@ -1,17 +1,31 @@
-const_value set 2
-	const PALLETTOWN_TEACHER
-	const PALLETTOWN_FISHER
-	const PALLETTOWN_YOUNGSTER
-
 PalletTown_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+.MapTriggers: db 0
 
-.FlyPoint:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, PalletTownFlyPoint
+
+PalletTown_MapEventHeader:
+
+.Warps: db 3
+	warp_def $5, $5, 1, REDS_HOUSE_1F
+	warp_def $5, $d, 1, BLUES_HOUSE_1F
+	warp_def $b, $c, 1, OAKS_LAB
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 9, 7, SIGNPOST_READ, PalletTownSign
+	signpost 5, 3, SIGNPOST_READ, RedsHouseSign
+	signpost 13, 13, SIGNPOST_READ, OaksLabSign
+	signpost 5, 11, SIGNPOST_READ, BluesHouseSign
+
+.PersonEvents: db 3
+	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1ac6d5, -1
+	person_event SPRITE_FISHER, 14, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1ac6d8, -1
+	person_event SPRITE_YOUNGSTER, 7, 17, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PalletTownYoungsterScript, -1
+
+PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET
 	return
 
@@ -86,26 +100,3 @@ OaksLabSignText:
 BluesHouseSignText:
 	text "Blue's House"
 	done
-
-PalletTown_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $5, $5, 1, REDS_HOUSE_1F
-	warp_def $5, $d, 1, BLUES_HOUSE_1F
-	warp_def $b, $c, 1, OAKS_LAB
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 9, 7, SIGNPOST_READ, PalletTownSign
-	signpost 5, 3, SIGNPOST_READ, RedsHouseSign
-	signpost 13, 13, SIGNPOST_READ, OaksLabSign
-	signpost 5, 11, SIGNPOST_READ, BluesHouseSign
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1ac6d5, -1
-	person_event SPRITE_FISHER, 14, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1ac6d8, -1
-	person_event SPRITE_YOUNGSTER, 7, 17, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PalletTownYoungsterScript, -1

@@ -1,13 +1,26 @@
-const_value set 2
-	const CELADONUNIVERSITYWESTWOODSOFFICE_CHILD
-	const CELADONUNIVERSITYWESTWOODSOFFICE_BOOK
-
 CeladonUniversityWestwoodsOffice_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityWestwoodsOffice_MapEventHeader:
+
+.Warps: db 2
+	warp_def $5, $3, 5, CELADON_UNIVERSITY_2F
+	warp_def $5, $4, 5, CELADON_UNIVERSITY_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 0, 2, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeSignpost1
+	signpost 0, 3, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeSignpost2
+	signpost 1, 4, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeBookshelf
+	signpost 1, 5, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeBookshelf
+
+.PersonEvents: db 2
+	person_event SPRITE_CHILD, 3, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
+	person_event SPRITE_BOOK_UNOWN_R, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeBookScript, -1
 
 CeladonUniversityWestwoodsOfficeChildScript:
 	faceplayer
@@ -101,24 +114,3 @@ CeladonUniversityWestwoodsOfficeBookshelf:
 	para "…Might give that"
 	line "one a miss."
 	done
-
-CeladonUniversityWestwoodsOffice_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $5, $3, 5, CELADON_UNIVERSITY_2F
-	warp_def $5, $4, 5, CELADON_UNIVERSITY_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeSignpost1
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeSignpost2
-	signpost 1, 4, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeBookshelf
-	signpost 1, 5, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeBookshelf
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_CHILD, 3, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
-	person_event SPRITE_BOOK_UNOWN_R, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeBookScript, -1

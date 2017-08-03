@@ -1,22 +1,44 @@
+IcePathB1F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
+
+IcePathB1F_MapEventHeader:
+
+.Warps: db 8
+	warp_def $f, $3, 3, ICE_PATH_1F
+	warp_def $3, $11, 1, ICE_PATH_B2F_MAHOGANY_SIDE
+	warp_def $2, $b, 3, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def $7, $4, 4, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def $c, $5, 5, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def $d, $c, 6, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def $19, $5, 4, ICE_PATH_1F
+	warp_def $1b, $b, 1, ICE_PATH_B2F_BLACKTHORN_SIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 30, 17, SIGNPOST_ITEM, IcePathB1FHiddenMaxPotion
+
+.PersonEvents: db 8
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 11, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_2
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_3
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 17, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_4
+	person_event SPRITE_SKIER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
+	person_event SPRITE_BOARDER, 23, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
+	person_event SPRITE_SKIER, 24, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 35, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IcePathB1FIron, EVENT_ICE_PATH_B1F_IRON
+
 const_value set 2
-	const ICEPATHB1F_SKIER1
-	const ICEPATHB1F_BOARDER
-	const ICEPATHB1F_SKIER2
 	const ICEPATHB1F_BOULDER1
 	const ICEPATHB1F_BOULDER2
 	const ICEPATHB1F_BOULDER3
 	const ICEPATHB1F_BOULDER4
-	const ICEPATHB1F_POKE_BALL
 
-IcePathB1F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
-
-.SetUpStoneTable:
+IcePathB1FSetUpStoneTable:
 	writecmdqueue .CommandQueue
 	return
 
@@ -219,34 +241,3 @@ IcePathBoulderFellThroughText:
 	text "The boulder fell"
 	line "through."
 	done
-
-
-IcePathB1F_MapEventHeader:
-.Warps:
-	db 8
-	warp_def $f, $3, 3, ICE_PATH_1F
-	warp_def $3, $11, 1, ICE_PATH_B2F_MAHOGANY_SIDE
-	warp_def $2, $b, 3, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $7, $4, 4, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $c, $5, 5, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $d, $c, 6, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $19, $5, 4, ICE_PATH_1F
-	warp_def $1b, $b, 1, ICE_PATH_B2F_BLACKTHORN_SIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 30, 17, SIGNPOST_ITEM, IcePathB1FHiddenMaxPotion
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_SKIER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
-	person_event SPRITE_BOARDER, 23, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
-	person_event SPRITE_SKIER, 24, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 11, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_3
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 17, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_4
-	person_event SPRITE_BALL_CUT_FRUIT, 35, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IcePathB1FIron, EVENT_ICE_PATH_B1F_IRON

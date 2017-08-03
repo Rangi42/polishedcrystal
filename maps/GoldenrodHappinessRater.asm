@@ -1,14 +1,24 @@
-const_value set 2
-	const GOLDENRODHAPPINESSRATER_TEACHER
-	const GOLDENRODHAPPINESSRATER_POKEFAN_M
-	const GOLDENRODHAPPINESSRATER_TWIN
-
 GoldenrodHappinessRater_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodHappinessRater_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, GOLDENROD_CITY
+	warp_def $7, $3, 3, GOLDENROD_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 7, SIGNPOST_READ, HappinessRatersHouseRadio
+
+.PersonEvents: db 3
+	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x54953, -1
+	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x54997, -1
+	person_event SPRITE_TWIN, 6, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x5499a, -1
 
 TeacherScript_0x54953:
 	faceplayer
@@ -132,22 +142,3 @@ UnknownText_0x54b67:
 	line "on my #mon, it"
 	cont "acts really glad!"
 	done
-
-GoldenrodHappinessRater_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, GOLDENROD_CITY
-	warp_def $7, $3, 3, GOLDENROD_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 7, SIGNPOST_READ, HappinessRatersHouseRadio
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x54953, -1
-	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x54997, -1
-	person_event SPRITE_TWIN, 6, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x5499a, -1

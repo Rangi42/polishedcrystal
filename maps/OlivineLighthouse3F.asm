@@ -1,16 +1,35 @@
-const_value set 2
-	const OLIVINELIGHTHOUSE3F_SAILOR
-	const OLIVINELIGHTHOUSE3F_GENTLEMAN
-	const OLIVINELIGHTHOUSE3F_YOUNGSTER
-	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
-	const OLIVINELIGHTHOUSE3F_POKE_BALL
-
 OlivineLighthouse3F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+OlivineLighthouse3F_MapEventHeader:
+
+.Warps: db 9
+	warp_def $3, $d, 1, OLIVINE_LIGHTHOUSE_4F
+	warp_def $3, $5, 2, OLIVINE_LIGHTHOUSE_2F
+	warp_def $5, $9, 4, OLIVINE_LIGHTHOUSE_4F
+	warp_def $b, $10, 5, OLIVINE_LIGHTHOUSE_2F
+	warp_def $b, $11, 6, OLIVINE_LIGHTHOUSE_2F
+	warp_def $9, $10, 5, OLIVINE_LIGHTHOUSE_4F
+	warp_def $9, $11, 6, OLIVINE_LIGHTHOUSE_4F
+	warp_def $3, $8, 7, OLIVINE_LIGHTHOUSE_4F
+	warp_def $3, $9, 8, OLIVINE_LIGHTHOUSE_4F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 4
+	person_event SPRITE_COOLTRAINER_F, 14, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
+	person_event SPRITE_SAILOR, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSailorTerrell, -1
+	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	person_event SPRITE_YOUNGSTER, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, OlivineLighthouse3FEther, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
+
+const_value set 2
+	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
 
 OlivineLighthouse3FBattleGirlEmy:
 	faceplayer
@@ -244,30 +263,3 @@ UnknownText_0x5b457:
 	line "use Rock #mon"
 	cont "like Onix."
 	done
-
-OlivineLighthouse3F_MapEventHeader:
-.Warps:
-	db 9
-	warp_def $3, $d, 1, OLIVINE_LIGHTHOUSE_4F
-	warp_def $3, $5, 2, OLIVINE_LIGHTHOUSE_2F
-	warp_def $5, $9, 4, OLIVINE_LIGHTHOUSE_4F
-	warp_def $b, $10, 5, OLIVINE_LIGHTHOUSE_2F
-	warp_def $b, $11, 6, OLIVINE_LIGHTHOUSE_2F
-	warp_def $9, $10, 5, OLIVINE_LIGHTHOUSE_4F
-	warp_def $9, $11, 6, OLIVINE_LIGHTHOUSE_4F
-	warp_def $3, $8, 7, OLIVINE_LIGHTHOUSE_4F
-	warp_def $3, $9, 8, OLIVINE_LIGHTHOUSE_4F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_SAILOR, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSailorTerrell, -1
-	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	person_event SPRITE_YOUNGSTER, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
-	person_event SPRITE_COOLTRAINER_F, 14, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, OlivineLighthouse3FEther, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
