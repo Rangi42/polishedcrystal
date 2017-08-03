@@ -1339,6 +1339,7 @@ wMartItemBCDEnd::
 	ds 24
 
 MenuItemsList::
+CurItemBallContents::
 CurFruitTree::
 CurInput::
 wElevatorPointerBank::
@@ -1350,6 +1351,7 @@ EngineBuffer1::
 
 wd03f::
 wJumpStdScriptBuffer::
+CurItemBallQuantity::
 CurFruit::
 MartPointerBank::
 wElevatorPointerLo::

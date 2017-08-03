@@ -35,7 +35,7 @@ WarehouseEntrance_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 9, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
 	person_event SPRITE_SUPER_NERD, 27, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
 	person_event SPRITE_SUPER_NERD, 6, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacDonald, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 25, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, WarehouseEntranceCoinCase, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+	person_event SPRITE_BALL_CUT_FRUIT, 25, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 	person_event SPRITE_COSPLAYER, 18, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1
 
 const_value set 2
@@ -437,9 +437,6 @@ WarehouseEntranceScript_ShopClosed:
 	waitbutton
 	closetext
 	end
-
-WarehouseEntranceCoinCase:
-	itemball COIN_CASE
 
 MapWarehouseEntranceSignpost1Script:
 	jumptext UnknownText_0x7c91a

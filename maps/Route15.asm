@@ -26,7 +26,7 @@ Route15_MapEventHeader:
 	person_event SPRITE_POKEFAN_F, 4, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfEleanor, -1
 	person_event SPRITE_TWIN, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia1, -1
 	person_event SPRITE_TWIN, 5, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route15PPUp, EVENT_ROUTE_15_PP_UP
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_ROUTE_15_PP_UP
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 43, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_14_CUT_TREE_3
 
 TrainerTeacherColette:
@@ -141,9 +141,6 @@ TwinsKayandtia2Script:
 
 Route15Sign:
 	jumptext Route15SignText
-
-Route15PPUp:
-	itemball PP_UP
 
 TeacherColetteSeenText:
 	text "Have you forgotten"

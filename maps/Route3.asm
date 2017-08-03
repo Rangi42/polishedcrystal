@@ -35,7 +35,7 @@ Route3_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 19, 61, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerHikerDwight, -1
 	person_event SPRITE_COOLTRAINER_M, 12, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
 	person_event SPRITE_COOLTRAINER_F, 12, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route3BigRoot, EVENT_ROUTE_3_BIG_ROOT
+	person_event SPRITE_BALL_CUT_FRUIT, 14, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_ROOT, 1, EVENT_ROUTE_3_BIG_ROOT
 
 Route3FlyPoint:
 	setflag ENGINE_FLYPOINT_MT_MOON
@@ -363,9 +363,6 @@ TrainerAceDuoZacandjen2:
 	line "trainer you'll"
 	cont "become."
 	done
-
-Route3BigRoot:
-	itemball BIG_ROOT
 
 MapRoute3Signpost0Script:
 	jumptext UnknownText_0x1ae163

@@ -20,7 +20,7 @@ Route35Coast_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 10, 36, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperBryan, -1
 	person_event SPRITE_LASS, 15, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrBeaandmay1, -1
 	person_event SPRITE_LASS, 16, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrBeaandmay2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route35CoastBigPearl, EVENT_ROUTE_35_COAST_BIG_PEARL
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_PEARL, 1, EVENT_ROUTE_35_COAST_BIG_PEARL
 
 TrainerSwimmermWalter:
 	trainer EVENT_BEAT_SWIMMERM_WALTER, SWIMMERM, WALTER, SwimmermWalterSeenText, SwimmermWalterBeatenText, 0, TrainerSwimmermWalterScript
@@ -87,9 +87,6 @@ TrainerSrandjrBeaandmay2Script:
 	waitbutton
 	closetext
 	end
-
-Route35CoastBigPearl:
-	itemball BIG_PEARL
 
 Route35CoastHiddenStarPiece:
 	dwb EVENT_ROUTE_35_COAST_HIDDEN_STAR_PIECE, STAR_PIECE

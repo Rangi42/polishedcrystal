@@ -20,7 +20,7 @@ GoldenrodHarbor_MapEventHeader:
 .PersonEvents: db 12
 	person_event SPRITE_FISHER, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	person_event SPRITE_FISHER, 5, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherPaton, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, GoldenrodHarborStarPiece, EVENT_GOLDENROD_HARBOR_STAR_PIECE
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	person_event SPRITE_LASS, 15, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborLass1Script, -1
 	person_event SPRITE_POKEFAN_M, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
 	person_event SPRITE_MAGIKARP, 15, 21, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborMagikarpScript, -1
@@ -287,9 +287,6 @@ Jacques:
 
 GoldenrodHarborLass2Script:
 	jumptextfaceplayer GoldenrodHarborLass2Text
-
-GoldenrodHarborStarPiece:
-	itemball STAR_PIECE
 
 GoldenrodHarborSign:
 	jumptext GoldenrodHarborSignText

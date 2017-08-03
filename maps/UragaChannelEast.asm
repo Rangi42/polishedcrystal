@@ -23,8 +23,8 @@ UragaChannelEast_MapEventHeader:
 	person_event SPRITE_SWIMMER_GIRL, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 22, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermKieran, -1
 	person_event SPRITE_BIKER, 15, 34, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBikerTyrone, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UragaChannelEastDiveBall, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, UragaChannelEastEviolite, EVENT_URAGA_CHANNEL_EAST_EVIOLITE
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DIVE_BALL, 1, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, EVIOLITE, 1, EVENT_URAGA_CHANNEL_EAST_EVIOLITE
 
 TrainerSwimmerfWoda:
 	trainer EVENT_BEAT_SWIMMERF_WODA, SWIMMERF, WODA, .SeenText, .BeatenText, 0, .Script
@@ -112,12 +112,6 @@ TrainerBikerTyrone:
 	line "currents dragged"
 	cont "me here."
 	done
-
-UragaChannelEastDiveBall:
-	itemball DIVE_BALL
-
-UragaChannelEastEviolite:
-	itemball EVIOLITE
 
 UragaChannelSign:
 	jumptext UragaChannelSignText
