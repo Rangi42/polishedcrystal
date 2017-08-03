@@ -500,34 +500,25 @@ TryObjectEvent: ; 969b5
 	ld a, [hl]
 	and %00001111
 
-	push bc
-	ld de, 3
-	ld hl, .pointers
-	call IsInArray
-	pop bc
+	cp NUM_PERSONTYPES
 	ret nc
 
-	inc hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld hl, .pointers
+	rst JumpTable
+	ret
 
-.pointers
-	dbw PERSONTYPE_SCRIPT, .script
-	dbw PERSONTYPE_ITEMBALL, .itemball
-	dbw PERSONTYPE_TRAINER, .trainer
-	dbw PERSONTYPE_TMHMBALL, .tmhmball
-	dbw PERSONTYPE_JUMPTEXT, .jumptext
-	dbw PERSONTYPE_JUMPTEXTFP, .jumptextfaceplayer
-	dbw PERSONTYPE_JUMPSTD, .jumpstd
-	dbw PERSONTYPE_MART, .mart
-	dbw PERSONTYPE_FRUITTREE, .fruittree
-;	dbw PERSONTYPE_GENERICTRAINER, .generictrainer ; TODO
-	db -1
-; 96a04
+.pointers:
+	dw .script     ; PERSONTYPE_SCRIPT
+	dw .itemball   ; PERSONTYPE_ITEMBALL
+	dw .trainer    ; PERSONTYPE_TRAINER
+	dw .tmhmball   ; PERSONTYPE_TMHMBALL
+	dw .jumptext   ; PERSONTYPE_JUMPTEXT
+	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
+	dw .jumpstd    ; PERSONTYPE_JUMPSTD
+	dw .mart       ; PERSONTYPE_MART
+	dw .fruittree  ; PERSONTYPE_FRUITTREE
 
-.script ; 96a04
+.script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hli]
@@ -537,7 +528,7 @@ TryObjectEvent: ; 969b5
 	jp CallScript
 ; 96a12
 
-.itemball ; 96a12
+.itemball:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hli]
@@ -550,16 +541,14 @@ TryObjectEvent: ; 969b5
 	ld a, PLAYEREVENT_ITEMBALL
 	scf
 	ret
-; 96a29
 
-.trainer ; 96a29
+.trainer:
 	call TalkToTrainer
 	ld a, PLAYEREVENT_TALKTOTRAINER
 	scf
 	ret
-; 96a30
 
-.tmhmball ; 96a30
+.tmhmball:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hli]
@@ -572,13 +561,12 @@ TryObjectEvent: ; 969b5
 	ld a, PLAYEREVENT_TMHMBALL
 	scf
 	ret
-; 96a32
 
-.jumptext ; 96a32
+.jumptext:
 	ld a, jumptext_command
 	jr .continue_text
 
-.jumptextfaceplayer ; 96a34
+.jumptextfp:
 	ld a, jumptextfaceplayer_command
 .continue_text
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -593,7 +581,7 @@ TryObjectEvent: ; 969b5
 	ld [de], a
 	jr .call_temporary_script_buffer
 
-.jumpstd ; 96a36
+.jumpstd:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hl]
@@ -607,7 +595,7 @@ TryObjectEvent: ; 969b5
 	ld a, [MapScriptHeaderBank]
 	jp CallScript
 
-.mart
+.mart:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld de, wTemporaryScriptBuffer
@@ -621,7 +609,7 @@ TryObjectEvent: ; 969b5
 	ld [de], a
 	jr .call_temporary_script_buffer
 
-.fruittree
+.fruittree:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hl]

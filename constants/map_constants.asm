@@ -892,7 +892,7 @@ EMOTE_OBJECT EQU 7
 	const PERSONTYPE_JUMPSTD    ; 6
 	const PERSONTYPE_MART       ; 7
 	const PERSONTYPE_FRUITTREE  ; 8
-;	const PERSONTYPE_GENERICTRAINER ; TODO
+NUM_PERSONTYPES EQU const_value
 
 ; fruit trees
 ; see engine/fruit_trees.asm:FruitTreeItems

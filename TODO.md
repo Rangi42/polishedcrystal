@@ -118,12 +118,14 @@ Low priority:
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
 * Optimize battle command engine, including parameterized commands
 * SIGNPOST_JUMPTEXT
-* SIGNPOST_JUMPSTD for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath
+* SIGNPOST_JUMPSTD (for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath)
 * PERSONTYPE_JUMPTEXTFP
-* PERSONTYPE_JUMPSTD for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc
+* PERSONTYPE_JUMPSTD (for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc)
+* PERSONTYPE_ITEMBALL (no script needed)
+* PERSONTYPE_TMHMBALL (no script needed)
 * PERSONTYPE_MART
 * PERSONTYPE_FRUITTREE
-* PERSONTYPE_GENERICTRAINER
+* PERSONTYPE_GENERICTRAINER (implement)
 
 
 ## Postponed until 4.0
