@@ -1078,10 +1078,9 @@ BattleConsumePP:
 
 	add hl, bc
 	ld a, [hl]
-	and a
+	and $3f
 	ret z
-	dec a
-	ld [hl], a
+	dec [hl]
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
 	and SUBSTATUS_TRANSFORMED
