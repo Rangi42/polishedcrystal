@@ -523,7 +523,7 @@ TryObjectEvent: ; 969b5
 	dbw PERSONTYPE_JUMPSTD, .jumpstd
 	dbw PERSONTYPE_MART, .mart
 	dbw PERSONTYPE_FRUITTREE, .fruittree
-	dbw PERSONTYPE_GENERICTRAINER, .generictrainer
+;	dbw PERSONTYPE_GENERICTRAINER, .generictrainer ; TODO
 	db -1
 ; 96a04
 
@@ -552,7 +552,6 @@ TryObjectEvent: ; 969b5
 	ret
 ; 96a29
 
-.generictrainer ; TODO
 .trainer ; 96a29
 	call TalkToTrainer
 	ld a, PLAYEREVENT_TALKTOTRAINER

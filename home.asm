@@ -1212,16 +1212,13 @@ CheckTrainerBattle:: ; 360d
 	ld a, [hl]
 	and $f
 	cp PERSONTYPE_TRAINER
-	jr z, .is_trainer
-	cp PERSONTYPE_GENERICTRAINER
 	jr nz, .next
-.is_trainer
 
 ; Is visible on the map
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
-	inc a
+	cp -1
 	jr z, .next
 
 ; Is facing the player...
