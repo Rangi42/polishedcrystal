@@ -27,7 +27,7 @@ Route21_MapEventHeader:
 	person_event SPRITE_FISHER, 56, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
 	person_event SPRITE_YOUNGSTER, 62, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
 	person_event SPRITE_YOUNGSTER, 83, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route21StarPiece, EVENT_ROUTE_21_STAR_PIECE
+	person_event SPRITE_BALL_CUT_FRUIT, 26, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
 
 TrainerSwimmerfNikki:
 	trainer EVENT_BEAT_SWIMMERF_NIKKI, SWIMMERF, NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText, 0, SwimmerfNikkiScript
@@ -381,9 +381,6 @@ TrainerBird_keeperEaston:
 	line "the #mon start-"
 	cont "ed using us…"
 	done
-
-Route21StarPiece:
-	itemball STAR_PIECE
 
 Route21HiddenStardust1:
 	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_1, STARDUST

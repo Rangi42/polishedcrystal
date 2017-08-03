@@ -16,8 +16,8 @@ DarkCaveBlackthornEntrance_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_PHARMACIST, 3, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 24, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DarkCaveBlackthornEntranceRevive, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, DarkCaveBlackthornEntranceTMDarkPulse, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE
+	person_event SPRITE_BALL_CUT_FRUIT, 24, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_DARK_PULSE, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE
 
 PharmacistScript_0x18c720:
 	faceplayer
@@ -35,12 +35,6 @@ UnknownScript_0x18c735:
 UnknownScript_0x18c739:
 	closetext
 	end
-
-DarkCaveBlackthornEntranceRevive:
-	itemball REVIVE
-
-DarkCaveBlackthornEntranceTMDarkPulse:
-	tmhmball TM_DARK_PULSE
 
 UnknownText_0x18c73f:
 	text "Whoa! You startled"

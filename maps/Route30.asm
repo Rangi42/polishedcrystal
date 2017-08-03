@@ -32,7 +32,7 @@ Route30_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 39, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree2, -1
 	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CooltrainerFScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 35, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route30Antidote, EVENT_ROUTE_30_ANTIDOTE
+	person_event SPRITE_BALL_CUT_FRUIT, 35, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
 const_value set 2
 	const ROUTE30_YOUNGSTER1
@@ -262,9 +262,6 @@ BerryMastersHouseSign:
 
 Route30TrainerTips:
 	jumptext Route30TrainerTipsText
-
-Route30Antidote:
-	itemball ANTIDOTE
 
 Route30CutTree:
 	jumpstd cuttree

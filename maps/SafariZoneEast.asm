@@ -22,9 +22,9 @@ SafariZoneEast_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_COWGIRL, 11, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerCowgirlApril, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastCarbos, EVENT_SAFARI_ZONE_EAST_CARBOS
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastSilverPowder, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SafariZoneEastFullRestore, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CARBOS, 1, EVENT_SAFARI_ZONE_EAST_CARBOS
+	person_event SPRITE_BALL_CUT_FRUIT, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SILVERPOWDER, 1, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_RESTORE, 1, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
 
 TrainerCowgirlApril:
 	trainer EVENT_BEAT_COWGIRL_APRIL, COWGIRL, APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText, 0, CowgirlAprilScript
@@ -45,15 +45,6 @@ SafariZoneEastRestHouseSign:
 
 SafariZoneEastTrainerTipsSign:
 	jumptext SafariZoneEastTrainerTipsSignText
-
-SafariZoneEastCarbos:
-	itemball CARBOS
-
-SafariZoneEastSilverPowder:
-	itemball SILVERPOWDER
-
-SafariZoneEastFullRestore:
-	itemball FULL_RESTORE
 
 CowgirlAprilSeenText:
 	text "Yeehaw!"

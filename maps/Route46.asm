@@ -23,7 +23,7 @@ Route46_MapEventHeader:
 	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a978f, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9791, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route46XSpeed, EVENT_ROUTE_46_X_SPEED
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
 
 Route46HikerScript:
 	faceplayer
@@ -211,9 +211,6 @@ HikerBaileyScript:
 
 Route46Sign:
 	jumptext Route46SignText
-
-Route46XSpeed:
-	itemball X_SPEED
 
 FruitTreeScript_0x1a978f:
 	fruittree FRUITTREE_ROUTE_46_1

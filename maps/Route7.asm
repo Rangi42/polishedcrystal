@@ -20,7 +20,7 @@ Route7_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_BIG_SNORLAX, 0, 1, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
 	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route7MentalHerb, EVENT_ROUTE_7_MENTAL_HERB
+	person_event SPRITE_BALL_CUT_FRUIT, 1, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
 const_value set 2
 	const ROUTE7_BIG_SNORLAX
@@ -98,9 +98,6 @@ Route7Snorlax:
 
 	para "Snorlax woke up!"
 	done
-
-Route7MentalHerb:
-	itemball MENTAL_HERB
 
 Route7UndergroundPathSign:
 	jumptext .Text

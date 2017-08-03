@@ -17,6 +17,7 @@ roam_map: MACRO
 ENDM
 
 person_event: macro
+PERSON_EVENT_NARG = _NARG
 	db \1 ; sprite
 	db \2 + 4 ; y
 	db \3 + 4 ; x
@@ -25,18 +26,18 @@ person_event: macro
 	db \7 ; clock_hour
 	db \8 ; clock_daytime
 	shift
-	dn \8, \9 ; color_function
+	dn \8, \9 ; color, persontype
 	shift
 	db \9 ; sight_range
-if \8 == PERSONTYPE_JUMPSTD
+if \8 == PERSONTYPE_JUMPSTD || \8 == PERSONTYPE_TMHMBALL
 	shift 
-	db \9, 0 ; stdscript
+	db \9, 0 ; stdscript || tmhmball contents
 else
-if \8 == PERSONTYPE_MART
+if PERSON_EVENT_NARG == 14 ; PERSONTYPE_MART || PERSONTYPE_ITEMBALL
 	shift
-	db \9 ; mart type
+	db \9 ; mart type || itemball contents
 	shift
-	db \9 ; mart id
+	db \9 ; mart id || itemball quantity
 else
 	shift
 	dw \9 ; pointer

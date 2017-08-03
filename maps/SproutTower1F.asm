@@ -25,7 +25,7 @@ SproutTower1F_MapEventHeader:
 	person_event SPRITE_GRANNY, 12, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
 	person_event SPRITE_TEACHER, 9, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x184507, -1
 	person_event SPRITE_SAGE, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SproutTower1FParlyzHeal, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
+	person_event SPRITE_BALL_CUT_FRUIT, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PARLYZ_HEAL, 1, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
 
 SageScript_0x1844fe:
 	jumptextfaceplayer UnknownText_0x1845d8
@@ -53,9 +53,6 @@ SageChowScript:
 	waitbutton
 	closetext
 	end
-
-SproutTower1FParlyzHeal:
-	itemball PARLYZ_HEAL
 
 MapSproutTower1FSignpost1Script:
 	jumptext UnknownText_0x1846d6

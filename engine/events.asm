@@ -517,6 +517,7 @@ TryObjectEvent: ; 969b5
 	dw .jumpstd    ; PERSONTYPE_JUMPSTD
 	dw .mart       ; PERSONTYPE_MART
 	dw .fruittree  ; PERSONTYPE_FRUITTREE
+	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -529,36 +530,27 @@ TryObjectEvent: ; 969b5
 ; 96a12
 
 .itemball:
+	ld a, PLAYEREVENT_ITEMBALL
+	jr .continue_ball
+
+.tmhmball:
+	ld a, PLAYEREVENT_TMHMBALL
+.continue_ball
+	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [MapScriptHeaderBank]
-	ld de, EngineBuffer1
-	ld bc, 2
-	call FarCopyBytes
-	ld a, PLAYEREVENT_ITEMBALL
+	ld e, [hl]
+	ld hl, CurItemBallContents
+	ld [hli], a
+	ld [hl], e
+	pop af
 	scf
 	ret
 
 .trainer:
 	call TalkToTrainer
 	ld a, PLAYEREVENT_TALKTOTRAINER
-	scf
-	ret
-
-.tmhmball:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [MapScriptHeaderBank]
-	ld de, EngineBuffer1
-	ld bc, 1
-	call FarCopyBytes
-	ld a, PLAYEREVENT_TMHMBALL
 	scf
 	ret
 
@@ -587,8 +579,7 @@ TryObjectEvent: ; 969b5
 	ld a, [hl]
 	ld hl, wTemporaryScriptBuffer + 1
 	ld [hld], a
-	ld a, jumpstd_command
-	ld [hl], a
+	ld [hl], jumpstd_command
 .call_temporary_script_buffer
 	ld hl, wTemporaryScriptBuffer
 .call_script_in_bank

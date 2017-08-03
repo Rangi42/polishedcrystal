@@ -26,7 +26,7 @@ SeafoamIslandsB2F_MapEventHeader:
 	person_event SPRITE_SKIER, 4, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierCady, -1
 	person_event SPRITE_BOARDER, 5, 16, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderShaun, -1
 	person_event SPRITE_BOARDER, 8, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderBryce, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SeafoamIslandsB2FWaterStone, EVENT_SEAFOAM_ISLANDS_B2F_WATER_STONE
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, WATER_STONE, 1, EVENT_SEAFOAM_ISLANDS_B2F_WATER_STONE
 
 TrainerSkierCady:
 	trainer EVENT_BEAT_SKIER_CADY, SKIER, CADY, SkierCadySeenText, SkierCadyBeatenText, 0, SkierCadyScript
@@ -60,9 +60,6 @@ BoarderBryceScript:
 	waitbutton
 	closetext
 	end
-
-SeafoamIslandsB2FWaterStone:
-	itemball WATER_STONE
 
 SeafoamIslandsB2FHiddenPearl1:
 	dwb EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1, PEARL

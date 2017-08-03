@@ -9,3 +9,10 @@ trainer: MACRO
 	db \2, \3
 	dw \4, \5, \6, \7
 ENDM
+
+generictrainer: MACRO
+	; flag, group, id, seen text, win text
+	dw \1
+	db \2, \3
+	dw \4, \5
+ENDM
