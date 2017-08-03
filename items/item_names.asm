@@ -52,7 +52,7 @@
 	db "Soda Pop@"
 	db "Lemonade@"
 	db "Moomoo Milk@"
-	db "RageCandyBar@"
+	db "Cake of Rage@"
 	db "Sacred Ash@"
 	db "EnergyPowder@"
 	db "Energy Root@"

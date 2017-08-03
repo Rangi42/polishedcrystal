@@ -29,49 +29,46 @@ FarCallInBankB:
 FarCallInBankA:
 	ld [hBuffer], a
 	ld a, h
-	ld [wFarCallHLBuffer], a
+	ld [hPredefTemp], a
 	ld a, l
-	ld [wFarCallHLBuffer + 1], a
+	ld [hPredefTemp + 1], a
 	pop hl
 	ld a, [hROMBank]
 	push af
 	jr DoFarCall
 
 RstFarCall::
-; Call the following dba pointer on the stack. Doesn't mangle registers in the process
-	ld [wFarCallSavedA], a
+; Call the following dba pointer on the stack.
+; Preserves a, bc, de, hl
+	ld [hFarCallSavedA], a
 	ld a, h
-	ld [wFarCallHLBuffer], a
+	ld [hPredefTemp], a
 	ld a, l
-	ld [wFarCallHLBuffer + 1], a
+	ld [hPredefTemp + 1], a
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a
+	add a
+	jr c, .farjp
 	inc hl
 	inc hl
-	push af
-	sub $80
-	jr nc, .jump
-	pop af
 	push hl
-	jr .ok
-.jump
-	ld [hBuffer], a
-	pop af
-.ok
 	dec hl
-	ld a, [hld]
-	ld l, [hl]
-	ld h, a
+	dec hl
+.farjp
 	ld a, [hROMBank]
 	push af
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 DoFarCall:
 	ld a, [hBuffer]
+	and $7f
 	rst Bankswitch
 	call RetrieveHLAndCallFunction
 
 ReturnFarCall::
-	ld [wFarCallSavedA], a
+	ld [hFarCallSavedA], a
 	; We want to retain the contents of f.
 	; To accomplish this, mess with the stack a bit...
 	push af
@@ -84,14 +81,14 @@ ReturnFarCall::
 	pop af
 	pop af
 	rst Bankswitch
-	ld a, [wFarCallSavedA]
+	ld a, [hFarCallSavedA]
 	ret
 
 RetrieveHLAndCallFunction:
 	push hl
-	ld hl, wFarCallHLBuffer
+	ld hl, hPredefTemp
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
-	ld a, [wFarCallSavedA]
+	ld a, [hFarCallSavedA]
 	ret

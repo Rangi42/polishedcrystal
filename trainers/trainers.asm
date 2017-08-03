@@ -22,7 +22,7 @@
 ; TODO: swap ABILITY_1 and ABILITy_2 in base data as need so that ABILITY_1 is the better one for default NPCs (e.g. NPCs should have Sturdy when possible)
 
 
-SECTION "Enemy Trainer Parties 1", ROMX, BANK[$E]
+SECTION "Enemy Trainer Parties 1", ROMX
 
 
 KayGroup:
@@ -183,23 +183,23 @@ FalknerGroup:
 		db DRILL_PECK
 		db TRIPLE_KICK
 		db PURSUIT
-		db QUICK_ATTACK
+		db BRAVE_BIRD
 
 	db 70, TOGEKISS, LEFTOVERS
 		db ANCIENTPOWER
-		db AIR_SLASH
+		db HURRICANE
 		db NASTY_PLOT
 		db SOFTBOILED
 
 	db 72, HONCHKROW, BLACKGLASSES
-		db DRILL_PECK
+		db BRAVE_BIRD
 		db NIGHT_SLASH
-		db PURSUIT
+		db SUCKER_PUNCH
 		db CONFUSE_RAY
 
 	db 75, PIDGEOT, SHARP_BEAK
 		db HURRICANE
-		db TWISTER
+		db HYPER_BEAM
 		db STEEL_WING
 		db ROOST
 
@@ -785,7 +785,7 @@ ClairGroup:
 
 	db 43, GYARADOS, NO_ITEM, 128, ABILITY_1 | QUIRKY, FEMALE
 		db CRUNCH
-		db TWISTER
+		db THRASH
 		db DRAGONBREATH
 		db AQUA_TAIL
 
@@ -1217,11 +1217,11 @@ KarenGroup:
 		db CURSE
 		db DESTINY_BOND
 
-	db 54, HONCHKROW, BLACKGLASSES, 240
+	db 55, HONCHKROW, BLACKGLASSES, 240
 		db DRILL_PECK
 		db SUCKER_PUNCH
 		db PURSUIT
-		db FEINT_ATTACK
+		db BRAVE_BIRD
 
 	db 57, HOUNDOOM, CHARCOAL, 240
 		db ROAR
@@ -1257,11 +1257,11 @@ KarenGroup:
 		db SHADOW_BALL
 		db DESTINY_BOND
 
-	db 72, HONCHKROW, BLACKGLASSES
+	db 73, HONCHKROW, BLACKGLASSES
 		db DRILL_PECK
 		db SUCKER_PUNCH
-		db PURSUIT
 		db NIGHT_SLASH
+		db BRAVE_BIRD
 
 	db 74, TYRANITAR, SOFT_SAND
 		db EARTHQUAKE
@@ -2114,7 +2114,7 @@ BlueGroup:
 	db 68, EXEGGUTOR, MIRACLE_SEED
 		db PSYCHIC_M
 		db LEECH_SEED
-		db EGG_BOMB
+		db STOMP
 		db GIGA_DRAIN
 
 	db 68, ARCANINE, CHARCOAL
@@ -4669,13 +4669,13 @@ TwinsGroup:
 
 	db 38, DRATINI
 		db THUNDER_WAVE
-		db TWISTER
+		db DRAGON_PULSE
 		db FLAMETHROWER
 		db HEADBUTT
 
 	db 38, DRATINI
 		db THUNDER_WAVE
-		db TWISTER
+		db DRAGON_PULSE
 		db ICE_BEAM
 		db HEADBUTT
 
@@ -4691,13 +4691,13 @@ TwinsGroup:
 
 	db 38, DRATINI
 		db THUNDER_WAVE
-		db TWISTER
+		db DRAGON_PULSE
 		db ICE_BEAM
 		db HEADBUTT
 
 	db 38, DRATINI
 		db THUNDER_WAVE
-		db TWISTER
+		db DRAGON_PULSE
 		db FLAMETHROWER
 		db HEADBUTT
 
@@ -4930,7 +4930,7 @@ FisherGroup:
 
 	db 38, GYARADOS
 		db WATERFALL
-		db TWISTER
+		db DRAGON_PULSE
 		db DRAGON_RAGE
 		db RAIN_DANCE
 
@@ -5360,11 +5360,11 @@ BirdKeeperGroup:
 
 	; party
 
-	db 52, FARFETCH_D
+	db 55, FARFETCH_D
 		db SWORDS_DANCE
 		db NIGHT_SLASH
 		db PROTECT
-		db FLY
+		db BRAVE_BIRD
 
 	db $ff ; end
 
@@ -5558,7 +5558,7 @@ BirdKeeperGroup:
 		db GUST
 		db QUICK_ATTACK
 		db RAGE
-		db TWISTER
+		db NO_MOVE ; TODO
 
 	db 27, GOLDUCK
 		db SURF
@@ -7066,7 +7066,7 @@ PokemaniacGroup:
 	db 47, CHANSEY
 		db ROLLOUT
 		db ATTRACT
-		db EGG_BOMB
+		db RETURN
 		db SOFTBOILED
 
 	db $ff ; end
@@ -7389,7 +7389,7 @@ SuperNerdGroup:
 
 	db 39, SEADRA
 		db SMOKESCREEN
-		db TWISTER
+		db OUTRAGE
 		db SURF
 		db WATERFALL
 
@@ -12176,7 +12176,7 @@ DragonTamerGroup:
 
 	db 38, SEADRA
 		db SMOKESCREEN
-		db TWISTER
+		db AQUA_JET
 		db WATER_PULSE
 		db OUTRAGE
 
@@ -13593,7 +13593,7 @@ CooltrainerMGroup:
 ; ================================
 
 
-SECTION "Enemy Trainer Parties 2", ROMX, BANK[$74]
+SECTION "Enemy Trainer Parties 2", ROMX
 
 
 CooltrainerFGroup:
@@ -14346,9 +14346,9 @@ VeteranFGroup:
 		db SLEEP_POWDER
 
 	db 38, PIDGEOT, QUICK_CLAW
+		db ROOST
 		db FLY
 		db SWIFT
-		db TWISTER
 		db ROAR
 
 	db 39, SCYTHER, EVIOLITE
@@ -14513,7 +14513,7 @@ PetrelGroup:
 	db 39, KOFFING, EVIOLITE
 		db TACKLE
 		db SELFDESTRUCT
-		db SLUDGE
+		db VENOSHOCK
 		db SMOKESCREEN
 
 	db 39, GOLBAT, EVIOLITE
@@ -14531,7 +14531,7 @@ PetrelGroup:
 	db 40, WEEZING, SILK_SCARF
 		db TACKLE
 		db EXPLOSION
-		db SLUDGE
+		db VENOSHOCK
 		db SMOKESCREEN
 
 	db 39, RATICATE, KINGS_ROCK
@@ -14645,7 +14645,7 @@ ArcherGroup:
 	db 28, WEEZING, SILK_SCARF, 88
 		db WILL_O_WISP
 		db SELFDESTRUCT
-		db SLUDGE
+		db VENOSHOCK
 		db SMOKESCREEN
 
 	db 32, HOUNDOOM, KINGS_ROCK, 88
@@ -16495,11 +16495,11 @@ WalkerGroup:
 		db REFLECT
 		db EXTRASENSORY
 
-	db 30, PIDGEOT, NO_ITEM, 92
-		db GUST
-		db TWISTER
-		db SWIFT
+	db 30, PIDGEOTTO, NO_ITEM, 92
 		db MUD_SLAP
+		db ROOST
+		db SWIFT
+		db AIR_SLASH
 
 	db 29, AERODACTYL, NO_ITEM, 92
 		db WING_ATTACK
@@ -16536,7 +16536,7 @@ WalkerGroup:
 		db REFLECT
 
 	db 74, PIDGEOT, BRIGHTPOWDER
-		db TWISTER
+		db ROOST
 		db EXTREMESPEED
 		db HURRICANE
 		db ROAR
@@ -16733,7 +16733,7 @@ ReiGroup:
 		db DRILL_PECK
 		db SUCKER_PUNCH
 		db PURSUIT
-		db FEINT_ATTACK
+		db BRAVE_BIRD
 
 	db 57, NOCTOWL, QUICK_CLAW, 160
 		db SHADOW_BALL
@@ -16779,7 +16779,7 @@ ReiGroup:
 		db DRILL_PECK
 		db SUCKER_PUNCH
 		db PURSUIT
-		db FEINT_ATTACK
+		db BRAVE_BIRD
 
 	db 72, NOCTOWL, QUICK_CLAW
 		db SHADOW_BALL

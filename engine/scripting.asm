@@ -719,15 +719,18 @@ Script_pokemart: ; 97065
 ;     dialog_id (SingleByteParam)
 ;     mart_id (MultiByteParam)
 
+	call Script_faceplayer
+	call Script_textbox
 	call GetScriptByte
 	ld c, a
 	call GetScriptByte
+	ld d, 0
 	ld e, a
-	call GetScriptByte
-	ld d, a
 	ld a, [ScriptBank]
 	ld b, a
-	farjp OpenMartDialog
+	farcall OpenMartDialog
+	call Script_closetext
+	jp Script_end
 ; 9707c
 
 Script_elevator: ; 9707c

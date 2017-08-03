@@ -187,6 +187,9 @@ endm
 	command toxicspikes             ; b4
 	command roost                   ; b5
 	command closecombat             ; b6
+	command skillswap               ; b7
+	command trick                   ; b8
+	command knockoff                ; b9
 
 	enum_start -1, -1
 	command endmove

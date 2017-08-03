@@ -868,6 +868,7 @@ MoveEffectPriorities: ; 3c5df
 	db PROTECT,       4
 	db ENDURE,        4
 	db EXTREMESPEED,  2
+	db AQUA_JET,      1
 	db SUCKER_PUNCH,  1
 	db BULLET_PUNCH,  1
 	db ICE_SHARD,     1
@@ -3878,12 +3879,13 @@ HandleFirstAirBalloon:
 
 RemoveToxicAfterBattle::
 ; removes toxic from mons after battle
-	ld a, [PartyMons]
+	ld a, [PartyCount]
 	ld hl, PartyMon1Status
 	ld bc, PARTYMON_STRUCT_LENGTH
+	inc a
 .loop
-	sub 1
-	ret c
+	dec a
+	ret z
 	res TOX, [hl]
 	add hl, bc
 	jr .loop
@@ -5320,6 +5322,7 @@ CheckRunSpeed:
 
 	ld a, [wNumFleeAttempts]
 	inc a
+	ld [wNumFleeAttempts], a
 
 	ld a, [hli]
 	ld l, [hl]
@@ -5331,8 +5334,8 @@ CheckRunSpeed:
 	ld a, [de]
 	ld e, a
 	ld d, b
-; hl = player speed
-; de = enemy speed
+	; hl = player speed
+	; de = enemy speed
 
 	push hl
 	push de
@@ -5340,26 +5343,26 @@ CheckRunSpeed:
 	pop de
 	pop hl
 
-; compare hl and de
+	; compare hl and de
 	ld a, l
 	sub e
 	ld a, h
 	sbc d
 	jr nc, .can_escape
-; multiply player speed by 32
+	; multiply player speed by 32
 	add hl, hl ; x2
 	add hl, hl ; x4
 	add hl, hl ; x8
 	add hl, hl ; x16
 	add hl, hl ; x32
 
-; store PSpeed*32 into dividend
+	; store PSpeed*32 into dividend
 	ld a, h
 	ld [hDividend], a
 	ld a, l
 	ld [hDividend + 1], a
 
-; divide ESpeed by 4
+	; divide ESpeed by 4
 	srl d
 	rr e
 	srl d
@@ -5367,7 +5370,7 @@ CheckRunSpeed:
 	ld a, e
 	and a ; prevent division by 0
 	jr z, .can_escape
-; calculate PSpeed*32/(ESpeed/4)
+	; calculate PSpeed*32/(ESpeed/4)
 	ld [hDivisor], a
 	ld b, 2
 	call Divide

@@ -8,9 +8,6 @@ TM62 (Silver Wind)	In the southwest part of the route
 route 8:
 TM41 (Torment)	South of the Bikers
 
-route 9:
-TM91 (Flash Cannon)	Northeast corner of the route, past Hiker Eoin (requires Cut)
-
 route 10:
 TM69 (Rock Polish)	On a ledge in the center of the southern portion of the route (requires Strength)
 

@@ -1,6 +1,7 @@
 NormalHit:
 AerialAce:
 Aeroblast:
+AquaJet:
 AquaTail:
 AuraSphere:
 BulletPunch:
@@ -10,7 +11,6 @@ Cut:
 Dazzlingleam:
 DragonClaw:
 DrillPeck:
-EggBomb:
 Extremespeed:
 FeintAttack:
 HiJumpKick:
@@ -176,6 +176,7 @@ DoubleEdge:
 Struggle:
 TakeDown:
 WildCharge:
+BraveBird:
 	checkobedience
 	usedmovetext
 	doturn
@@ -235,7 +236,6 @@ ZenHeadbutt:
 
 PoisonHit:
 PoisonSting:
-Sludge:
 SludgeBomb:
 PoisonJab:
 GunkShot:
@@ -1380,6 +1380,23 @@ Roar:
 	forceswitch
 	endmove
 
+SkillSwap:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	skillswap
+	endmove
+
+Trick:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	checkhit
+	trick
+	endmove
+
 Conversion:
 	checkobedience
 	usedmovetext
@@ -1404,6 +1421,29 @@ PayDay:
 	criticaltext
 	supereffectivetext
 	payday
+	checkdestinybond
+	buildopponentrage
+	pickpocket
+	endmove
+
+KnockOff:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	conditionalboost
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	knockoff
 	checkdestinybond
 	buildopponentrage
 	pickpocket
@@ -1437,31 +1477,6 @@ Transform:
 	doturn
 	pressure
 	transform
-	endmove
-
-SkyAttack:
-	checkcharge
-	checkobedience
-	doturn
-	pressure
-	charge
-	usedmovetext
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	effectchance
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	flinchtarget
-	pickpocket
 	endmove
 
 Substitute:
@@ -1864,6 +1879,7 @@ Acrobatics:
 Facade:
 FuryCutter:
 Hex:
+Venoshock:
 ConditionalBoostHit:
 	checkobedience
 	usedmovetext
@@ -2082,30 +2098,6 @@ MirrorCoat:
 	checkfaint
 	checkdestinybond
 	buildopponentrage
-	endmove
-
-Twister:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	doubleflyingdamage
-	checkhit
-	effectchance
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	flinchtarget
-	pickpocket
 	endmove
 
 Earthquake:

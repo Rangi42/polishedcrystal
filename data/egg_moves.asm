@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Egg Moves", ROMX, BANK[EGG_MOVES]
+SECTION "Egg Moves", ROMX
 
 
 INCLUDE "data/egg_move_pointers.asm"
@@ -12,7 +12,6 @@ EggMoves::
 BulbasaurEggMoves:
 	db CHARM
 	db PETAL_DANCE
-	db SLUDGE
 	db LIGHT_SCREEN
 	db SAFEGUARD
 	db $ff
@@ -34,6 +33,7 @@ SquirtleEggMoves:
 	db HAZE
 	db MIRROR_COAT
 	db MIST
+	db AQUA_JET
 	db $ff
 
 PidgeyEggMoves:
@@ -45,6 +45,7 @@ PidgeyEggMoves:
 	db STEEL_WING
 	db CHARM
 	db EXTREMESPEED
+	db BRAVE_BIRD
 	db $ff
 
 RattataEggMoves:
@@ -64,6 +65,7 @@ MarillEggMoves:
 	db SUPERSONIC
 	db LIGHT_SCREEN
 	db CALM_MIND
+	db AQUA_JET
 	db $ff
 
 EkansEggMoves:
@@ -136,6 +138,7 @@ ZubatEggMoves:
 	db PURSUIT
 	db QUICK_ATTACK
 	db ZEN_HEADBUTT
+	db BRAVE_BIRD
 	db $ff
 
 OddishEggMoves:
@@ -300,6 +303,7 @@ DoduoEggMoves:
 	db HAZE
 	db SUPERSONIC
 	db QUICK_ATTACK
+	db BRAVE_BIRD
 	db $ff
 
 SeelEggMoves:
@@ -515,6 +519,7 @@ DratiniEggMoves:
 	db MIST
 	db SUPERSONIC
 	db WATER_PULSE
+	db AQUA_JET
 	db $ff
 
 ChikoritaEggMoves:
@@ -549,6 +554,7 @@ TotodileEggMoves:
 	db ANCIENTPOWER
 	db ROCK_SLIDE
 	db WATER_PULSE
+	db AQUA_JET
 	db $ff
 
 SentretEggMoves:
@@ -566,7 +572,7 @@ HoothootEggMoves:
 	db NIGHT_SHADE
 	db SUPERSONIC
 	db WING_ATTACK
-	db SKY_ATTACK
+	db BRAVE_BIRD
 	db MOONLIGHT
 	db $ff
 
@@ -670,7 +676,7 @@ MurkrowEggMoves:
 	db QUICK_ATTACK
 	db SCREECH
 	db WING_ATTACK
-	db SKY_ATTACK
+	db BRAVE_BIRD
 	db ROOST
 	db $ff
 
@@ -741,6 +747,7 @@ QwilfishEggMoves:
 	db SUPERSONIC
 	db POISON_JAB
 	db WATER_PULSE
+	db AQUA_JET
 	db $ff
 
 HeracrossEggMoves:
@@ -817,7 +824,6 @@ MantineEggMoves:
 	db HAZE
 	db MIRROR_COAT
 	db SPLASH
-	db TWISTER
 	db HYDRO_PUMP
 	db GUNK_SHOT
 	db $ff
@@ -825,7 +831,7 @@ MantineEggMoves:
 SkarmoryEggMoves:
 	db DRILL_PECK
 	db PURSUIT
-	db SKY_ATTACK
+	db BRAVE_BIRD
 	db $ff
 
 HoundourEggMoves:

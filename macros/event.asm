@@ -914,7 +914,7 @@ end_all: macro
 pokemart: macro
 	db pokemart_command
 	db \1 ; dialog_id
-	dw \2 ; mart_id
+	db \2 ; mart_id
 	endm
 
 	enum elevator_command

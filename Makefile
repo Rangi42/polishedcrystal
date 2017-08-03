@@ -8,7 +8,7 @@ ROMVERSION := 0x30
 FILLER = 0x00
 
 RGBASM_FLAGS =
-RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l linkerscript.link -p $(FILLER)
+RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l contents/contents.link -p $(FILLER)
 RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
@@ -35,7 +35,7 @@ RM = rm -f
 
 gfx       := $(PYTHON) gfx.py
 includes  := $(PYTHON) utils/scan_includes.py
-bank_ends := $(PYTHON) utils/bank_ends.py $(NAME)-$(VERSION)
+bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
 
 crystal_obj := \
@@ -44,6 +44,7 @@ main.o \
 home.o \
 audio.o \
 maps.o \
+tilesets.o \
 musicplayer.o \
 engine/events.o \
 engine/credits.o \
@@ -69,7 +70,7 @@ bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-freespace: utils/bank_ends.txt roms.md5
+freespace: contents/bank_ends.txt roms.md5
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
@@ -91,7 +92,7 @@ clean:
 %.1bpp: %.png ; $(gfx) 1bpp $<
 %.lz: % ; $(gfx) lz $<
 
-utils/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
+contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
 roms.md5: crystal
 	md5sum $(NAME)-$(VERSION).gbc > roms.md5

@@ -33,6 +33,7 @@ The final, non-beta 3.0 release should include all of these.
 ### Events
 
 * Bulldoze move tutor in Mt. Mortar (move the Defense Curl tutor elsewhere)
+* Venoshock and Skill Swap tutors
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine and Bill somehow
@@ -78,7 +79,9 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 
 High priority:
 
+* Aqua Jet
 * Giga Impact
+* Skill Swap
 * Stone Edge
 * Sucker Punch
 * U-turn
@@ -99,14 +102,28 @@ Low priority:
 * Hex
 * Roost
 * Toxic Spikes
+* Venoshock
 * Volt Switch
 
 
 ### Music player
 
-* Hold Up/Down to continuously scroll in the song list
 * Fix the piano roll graphics "leaking" into the song list
 * Use the UnlockedMusic flag_array to hide unheard song titles
+
+
+### Optimizations
+
+* Finish and merge the optimizations branch
+* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
+* Optimize battle command engine, including parameterized commands
+* SIGNPOST_JUMPTEXT
+* SIGNPOST_JUMPSTD for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath
+* PERSONTYPE_JUMPTEXTFP
+* PERSONTYPE_JUMPSTD for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc
+* PERSONTYPE_MART
+* PERSONTYPE_FRUITTREE
+* PERSONTYPE_GENERICTRAINER
 
 
 ## Postponed until 4.0

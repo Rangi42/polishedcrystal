@@ -14,9 +14,7 @@ code_directory         = './'
 tileset_filename       = 'constants/tilemap_constants.asm'
 map_headers_filename   = 'maps/map_headers.asm'
 map_headers_2_filename = 'maps/second_map_headers.asm'
-block_data_filenames   = {'maps/blockdata_1.asm', 'maps/blockdata_2.asm',
-                          'maps/blockdata_3.asm', 'maps/blockdata_4.asm',
-                          'maps/blockdata_5.asm', 'maps/blockdata_6.asm'}
+block_data_filename    = 'maps/block_data.asm'
 block_filename_fmt     = 'maps/%s.blk'
 metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
 
@@ -115,19 +113,18 @@ def read_map_tilesets():
 				tileset_maps[tileset_id].add(map_name)
 
 def read_block_filenames():
-	for block_data_filename in block_data_filenames:
-		with open(code_directory + block_data_filename, 'r') as f:
-			map_names = []
-			for line in f:
-				line = line.strip()
-				if line.endswith('_BlockData:'):
-					map_names.append(line[:-11])
-				elif line.startswith('INCBIN "maps/') and line.endswith('.blk"'):
-					block_data_name = line[13:-5]
-					for map_name in map_names:
-						if map_name != block_data_name:
-							map_block_data_exceptions[map_name] = block_data_name
-					map_names[:] = []
+	with open(code_directory + block_data_filename, 'r') as f:
+		map_names = []
+		for line in f:
+			line = line.strip()
+			if line.endswith('_BlockData:'):
+				map_names.append(line[:-11])
+			elif line.startswith('INCBIN "maps/') and line.endswith('.blk"'):
+				block_data_name = line[13:-5]
+				for map_name in map_names:
+					if map_name != block_data_name:
+						map_block_data_exceptions[map_name] = block_data_name
+				map_names[:] = []
 
 def read_used_block_ids():
 	for map_name, tileset_id in map_tilesets.items():
@@ -182,7 +179,7 @@ def main():
 	read_tileset_ids()
 	print('Reading map tilesets from %s...' % map_headers_filename, file=sys.stderr)
 	read_map_tilesets()
-	print('Reading block file names from %s...' % ', '.join(block_data_filenames), file=sys.stderr)
+	print('Reading block file names from %s...' % block_data_filename, file=sys.stderr)
 	read_block_filenames()
 	print('Reading used block IDs from each %s...' % (block_filename_fmt % '<name>'), file=sys.stderr)
 	read_used_block_ids()

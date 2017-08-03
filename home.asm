@@ -1,18 +1,22 @@
 INCLUDE "includes.asm"
 
-SECTION "NULL", ROM0[0]
+
+SECTION "NULL", ROM0
+
 NULL::
 
 INCLUDE "rst.asm"
 INCLUDE "interrupts.asm"
 
-SECTION "Header", ROM0[$100]
+
+SECTION "Header", ROM0
 
 Start::
 	nop
 	jp _Start
 
-SECTION "Home", ROM0[$150]
+
+SECTION "Home", ROM0
 
 INCLUDE "home/init.asm"
 INCLUDE "home/vblank.asm"
@@ -1202,13 +1206,16 @@ CheckTrainerBattle:: ; 360d
 	ld a, [hl]
 	and $f
 	cp PERSONTYPE_TRAINER
+	jr z, .is_trainer
+	cp PERSONTYPE_GENERICTRAINER
 	jr nz, .next
+.is_trainer
 
 ; Is visible on the map
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
-	cp -1
+	inc a
 	jr z, .next
 
 ; Is facing the player...
@@ -1274,7 +1281,7 @@ TalkToTrainer:: ; 3674
 	ld [EngineBuffer3], a
 
 LoadTrainer_continue:: ; 367e
-	call GetMapScriptHeaderBank
+	ld a, [MapScriptHeaderBank]
 	ld [EngineBuffer1], a
 
 	ld a, [hLastTalked]
@@ -1385,7 +1392,7 @@ PrintWinLossText:: ; 3718
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call GetMapScriptHeaderBank
+	ld a, [MapScriptHeaderBank]
 	call FarPrintText
 	call WaitBGMap
 	jp WaitPressAorB_BlinkCursor

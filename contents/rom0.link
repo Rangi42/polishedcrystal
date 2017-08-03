@@ -1,0 +1,32 @@
+ROM0
+	org $0000
+	"NULL"
+	"rst0"
+	org $0008 ; FarCall
+	"rst8"
+	org $0010 ; Bankswitch
+	"rst10"
+	org $0018 ; unused
+	"rst18"
+	org $0020 ; unused
+	"rst20"
+	org $0028 ; JumpTable
+	"rst28"
+	org $0030 ; Predef
+	"rst30"
+	org $0038 ; unused
+	"rst38"
+	org $0040
+	"vblank"
+	org $0048
+	"lcd"
+	org $0050
+	"timer"
+	org $0058
+	"serial"
+	org $0060
+	"joypad"
+	org $0100
+	"Header"
+	org $0150
+	"Home"

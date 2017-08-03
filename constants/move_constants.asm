@@ -121,10 +121,10 @@
 	const METRONOME    ; $76
 	const SCALD        ; $77
 	const SELFDESTRUCT ; $78
-	const EGG_BOMB     ; $79
+	const SKILL_SWAP   ; $79
 	const LICK         ; $7a
 	const GUNK_SHOT    ; $7b
-	const SLUDGE       ; $7c
+	const VENOSHOCK    ; $7c
 	const EARTH_POWER  ; $7d
 	const FIRE_BLAST   ; $7e
 	const WATERFALL    ; $7f
@@ -143,7 +143,7 @@
 	const BULLET_PUNCH ; $8c
 	const LEECH_LIFE   ; $8d
 	const DRAIN_KISS   ; $8e
-	const SKY_ATTACK   ; $8f
+	const BRAVE_BIRD   ; $8f
 	const TRANSFORM    ; $90
 	const WATER_PULSE  ; $91
 	const DIZZY_PUNCH  ; $92
@@ -239,7 +239,7 @@
 	const MOONLIGHT    ; $ec
 	const HIDDEN_POWER ; $ed
 	const CROSS_CHOP   ; $ee
-	const TWISTER      ; $ef
+	const AQUA_JET     ; $ef
 	const RAIN_DANCE   ; $f0
 	const SUNNY_DAY    ; $f1
 	const CRUNCH       ; $f2

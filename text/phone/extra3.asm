@@ -142,7 +142,7 @@ UnknownText_0x1743e3: ; 0x1743e3
 	para "If your opponent"
 	line "is Flying, your"
 
-	para "Twister becomes"
+	para "Thunder becomes"
 	line "more powerful."
 	done
 ; 0x174433
@@ -184,7 +184,7 @@ UnknownText_0x174522: ; 0x174522
 	text "Did you know…?"
 
 	para "If the sunlight is"
-	line "harsh, water-type"
+	line "harsh, Water-type"
 
 	para "moves become much"
 	line "weaker."
@@ -195,7 +195,7 @@ UnknownText_0x174571: ; 0x174571
 	text "Did you know…?"
 
 	para "When it's raining,"
-	line "fire-type moves"
+	line "Fire-type moves"
 
 	para "become much weaker"
 	line "than usual."
