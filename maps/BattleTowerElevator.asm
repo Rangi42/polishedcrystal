@@ -1,15 +1,27 @@
+BattleTowerElevator_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw BattleTowerElevatorTrigger0
+
+.MapCallbacks: db 0
+
+BattleTowerElevator_MapEventHeader:
+
+.Warps: db 2
+	warp_def $3, $1, 1, BATTLE_TOWER_HALLWAY
+	warp_def $3, $2, 1, BATTLE_TOWER_HALLWAY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_RECEPTIONIST, 2, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
 const_value set 2
 	const BATTLETOWERELEVATOR_RECEPTIONIST
 
-BattleTowerElevator_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+BattleTowerElevatorTrigger0:
 	priorityjump .RideElevator
 	dotrigger $1
 	end
@@ -43,19 +55,3 @@ MovementData_BattleTowerElevatorPlayerWalksIn:
 MovementData_BattleTowerElevatorExitElevator:
 	step_down
 	step_end
-
-BattleTowerElevator_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $3, $1, 1, BATTLE_TOWER_HALLWAY
-	warp_def $3, $2, 1, BATTLE_TOWER_HALLWAY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_RECEPTIONIST, 2, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MovementData_BattleTowerElevatorReceptionistWalksIn, -1

@@ -1,31 +1,44 @@
+BattleTowerBattleRoom_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw BattleTowerBattleRoomEnterBattleRoom
+
+.MapCallbacks: db 0
+
+BattleTowerBattleRoom_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $3, 4, BATTLE_TOWER_HALLWAY
+	warp_def $7, $4, 4, BATTLE_TOWER_HALLWAY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_YOUNGSTER, 0, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
+	person_event SPRITE_RECEPTIONIST, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
 const_value set 2
-	const BATTLETOWERBATTLEROOM_YOUNGSTER
+	const BATTLETOWERBATTLEROOM_OPPONENT
 	const BATTLETOWERBATTLEROOM_RECEPTIONIST
 
-BattleTowerBattleRoom_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .EnterBattleRoom
-
-.MapCallbacks:
-	db 0
-
-.EnterBattleRoom: ; 0x9f419
-	disappear BATTLETOWERBATTLEROOM_YOUNGSTER
+BattleTowerBattleRoomEnterBattleRoom:
+	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	priorityjump Script_BattleRoom
 	dotrigger $1
 	end
 
-Script_BattleRoom: ; 0x9f421
+Script_BattleRoom:
 	applymovement PLAYER, MovementData_BattleTowerBattleRoomPlayerWalksIn
 ; beat all 7 opponents in a row
-Script_BattleRoomLoop: ; 0x9f425
-	writebyte BATTLETOWERBATTLEROOM_YOUNGSTER
+Script_BattleRoomLoop:
+	writebyte BATTLETOWERBATTLEROOM_OPPONENT
 	special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
-	appear BATTLETOWERBATTLEROOM_YOUNGSTER
+	appear BATTLETOWERBATTLEROOM_OPPONENT
 	warpsound
 	waitsfx
-	applymovement BATTLETOWERBATTLEROOM_YOUNGSTER, MovementData_BattleTowerBattleRoomOpponentWalksIn
+	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksIn
 	opentext
 	battletowertext 1
 	buttonsound
@@ -36,9 +49,9 @@ Script_BattleRoomLoop: ; 0x9f425
 	if_not_equal $0, Script_FailedBattleTowerChallenge
 	copybytetovar wNrOfBeatenBattleTowerTrainers ; wcf64
 	if_equal BATTLETOWER_NROFTRAINERS, Script_BeatenAllTrainers
-	applymovement BATTLETOWERBATTLEROOM_YOUNGSTER, MovementData_BattleTowerBattleRoomOpponentWalksOut
+	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksOut
 	warpsound
-	disappear BATTLETOWERBATTLEROOM_YOUNGSTER
+	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer
 	applymovement PLAYER, MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist
 	opentext
@@ -62,13 +75,13 @@ Script_BattleRoomLoop: ; 0x9f425
 .ShownText
 	yesorno
 	iffalse Script_DontBattleNextOpponent
-Script_ContinueAndBattleNextOpponent: ; 0x9f477
+Script_ContinueAndBattleNextOpponent:
 	closetext
 	applymovement PLAYER, MovementData_BattleTowerBattleRoomPlayerTurnsToFaceNextOpponent
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksAway
 	jump Script_BattleRoomLoop
 
-Script_DontBattleNextOpponent: ; 0x9f483
+Script_DontBattleNextOpponent:
 	writetext Text_SaveAndEndTheSession
 	yesorno
 	iffalse Script_DontSaveAndEndTheSession
@@ -80,7 +93,7 @@ Script_DontBattleNextOpponent: ; 0x9f483
 	waitsfx
 	special FadeOutPalettes
 	special SoftReset
-Script_DontSaveAndEndTheSession: ; 0x9f4a3
+Script_DontSaveAndEndTheSession:
 	writetext Text_CancelYourBattleRoomChallenge
 	yesorno
 	iffalse Script_ContinueAndBattleNextOpponent
@@ -104,7 +117,7 @@ Script_FailedBattleTowerChallenge:
 	closetext
 	end
 
-Script_BeatenAllTrainers: ; 0x9f4d9
+Script_BeatenAllTrainers:
 	pause 60
 	setevent EVENT_BEAT_PALMER
 	special Special_BattleTower_Fade
@@ -154,13 +167,13 @@ MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist:
 	turn_head_down
 	step_end
 
-Text_YourPokemonWillBeHealedToFullHealth: ; 0x9ee92
+Text_YourPokemonWillBeHealedToFullHealth:
 	text "Your #mon will"
 	line "be healed to full"
 	cont "health."
 	done
 
-Text_NextUpOpponentNo: ; 0x9eebc
+Text_NextUpOpponentNo:
 	text "Next up, opponent"
 	line "no.@"
 	text_from_ram StringBuffer3
@@ -183,34 +196,17 @@ Text_NextUpTycoon:
 	cont "Tycoon?"
 	done
 
-Text_SaveAndEndTheSession: ; 0x9ef5e
+Text_SaveAndEndTheSession:
 	text "Save and end the"
 	line "session?"
 	done
 
-Text_CancelYourBattleRoomChallenge: ; 0x9efbf
+Text_CancelYourBattleRoomChallenge:
 	text "Cancel your Battle"
 	line "Room challenge?"
 	done
 
-Text_ThanksForVisiting: ; 0x9ea49
+Text_ThanksForVisiting:
 	text "Thanks for"
 	line "visiting!"
 	done
-
-BattleTowerBattleRoom_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $3, 4, BATTLE_TOWER_HALLWAY
-	warp_def $7, $4, 4, BATTLE_TOWER_HALLWAY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_YOUNGSTER, 0, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
-	person_event SPRITE_RECEPTIONIST, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

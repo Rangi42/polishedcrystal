@@ -1,26 +1,22 @@
 AzaleaPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
 
 AzaleaPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
+
+.Warps: db 3
 	warp_def $7, $5, 1, AZALEA_TOWN
 	warp_def $7, $6, 1, AZALEA_TOWN
 	warp_def $7, $0, 1, POKECENTER_2F
 
-.XYTriggers:
-	db 0
+.XYTriggers: db 0
 
-.Signposts:
-	db 1
+.Signposts: db 1
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalBugsyScript
 
-.PersonEvents:
-	db 5
+.PersonEvents: db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FGentlemanText, -1
 	person_event SPRITE_SIGHTSEER_M, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FSightseermText, -1

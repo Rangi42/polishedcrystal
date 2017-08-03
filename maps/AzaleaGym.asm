@@ -1,26 +1,22 @@
 AzaleaGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
 
 AzaleaGym_MapEventHeader:
-.Warps:
-	db 2
+
+.Warps: db 2
 	warp_def $f, $4, 5, AZALEA_TOWN
 	warp_def $f, $5, 5, AZALEA_TOWN
 
-.XYTriggers:
-	db 0
+.XYTriggers: db 0
 
-.Signposts:
-	db 2
+.Signposts: db 2
 	signpost 13, 3, SIGNPOST_READ, AzaleaGymStatue
 	signpost 13, 6, SIGNPOST_READ, AzaleaGymStatue
 
-.PersonEvents:
-	db 7
+.PersonEvents: db 7
 	person_event SPRITE_BUGSY, 7, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, AzaleaGymBugsyScript, -1
 	person_event SPRITE_BUG_CATCHER, 3, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, TrainerBug_catcherBenny, -1
 	person_event SPRITE_BUG_CATCHER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, TrainerBug_catcherAl, -1

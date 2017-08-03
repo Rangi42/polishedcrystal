@@ -1,23 +1,38 @@
+BattleTower1F_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw BattleTower1FTrigger0
+
+.MapCallbacks: db 0
+
+BattleTower1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $d, $a, 3, BATTLE_TOWER_OUTSIDE
+	warp_def $d, $b, 4, BATTLE_TOWER_OUTSIDE
+	warp_def $0, $a, 1, BATTLE_TOWER_ELEVATOR
+	warp_def $5, $0, 1, BATTLE_TOWER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 7, 11, SIGNPOST_READ, MapBattleTower1FSignpost0Script
+
+.PersonEvents: db 9
+	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
+	person_event SPRITE_NURSE, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
+	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_MART, 0, MARTTYPE_BP, MART_BT_1, -1
+	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_MART, 0, MARTTYPE_BP, MART_BT_2, -1
+	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_MART, 0, MARTTYPE_BP, MART_BT_3, -1
+	person_event SPRITE_DRAGON_TAMER, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, Text_BattleTowerCooltrainerF, -1
+	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Text_BattleTowerBugCatcher, -1
+	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Text_BattleTowerGranny, -1
+
 const_value set 2
 	const BATTLETOWER1F_RECEPTIONIST
-	const BATTLETOWER1F_NURSE
-	const BATTLETOWER1F_CLERK1
-	const BATTLETOWER1F_CLERK2
-	const BATTLETOWER1F_CLERK3
-	const BATTLETOWER1F_DRAGON_TAMER
-	const BATTLETOWER1F_COOLTRAINER_F
-	const BATTLETOWER1F_BUG_CATCHER
-	const BATTLETOWER1F_GRANNY
 
-BattleTower1F_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+BattleTower1FTrigger0:
 	special Special_BattleTower_CheckSaveFileExistsAndIsYours
 	iffalse .Done
 	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
@@ -100,14 +115,14 @@ ReceptionistScript_0x9e3e2:
 	text_waitbutton
 	db "@"
 
-Script_Menu_ChallengeExplanationCancel: ; 0x9e3fc
+Script_Menu_ChallengeExplanationCancel:
 	writetext Text_WantToGoIntoABattleRoom
 	special Special_BattleTower_MainMenu
 	if_equal $1, Script_ChoseChallenge
 	if_equal $2, Script_BattleTowerExplanation
 	jump Script_BattleTowerHopeToServeYouAgain
 
-Script_ChoseChallenge: ; 0x9e40f
+Script_ChoseChallenge:
 	special Special_BattleTower_ResetTrainersSRAM
 	special Special_BattleTower_CheckForRules
 	if_not_equal $0, Script_WaitButton
@@ -147,7 +162,7 @@ Script_WalkToBattleTowerElevator:
 	warpcheck
 	end
 
-Script_GivePlayerHisPrize: ; 0x9e47a
+Script_GivePlayerHisPrize:
 	writebyte BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	checkcode VAR_BATTLEPOINTS
@@ -165,11 +180,11 @@ Script_GivePlayerHisPrize: ; 0x9e47a
 	loadvar BattlePoints, 255
 	jump .Finish
 
-Script_BattleTowerIntroductionYesNo: ; 0x9e49e
+Script_BattleTowerIntroductionYesNo:
 	writetext Text_WouldYouLikeToHearAboutTheBattleTower
 	yesorno
 	iffalse Script_BattleTowerSkipExplanation
-Script_BattleTowerExplanation: ; 0x9e4a5
+Script_BattleTowerExplanation:
 	writetext Text_BattleTowerIntroduction
 Script_BattleTowerSkipExplanation:
 	special Special_BattleTower_MarkNewSaveFile
@@ -181,7 +196,7 @@ Script_BattleTowerHopeToServeYouAgain:
 	closetext
 	end
 
-Script_WaitButton: ; 0x9e4bb
+Script_WaitButton:
 	waitbutton
 	closetext
 	end
@@ -231,39 +246,6 @@ BattleTowerTutorWaterPulseScript:
 	closetext
 	end
 
-BattleTowerNurse:
-	jumpstd pokecenternurse
-
-BattleTowerClerk1:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_BP, MART_BT_1
-	closetext
-	end
-
-BattleTowerClerk2:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_BP, MART_BT_2
-	closetext
-	end
-
-BattleTowerClerk3:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_BP, MART_BT_3
-	closetext
-	end
-
-CooltrainerFScript_0x9e568:
-	jumptextfaceplayer Text_BattleTowerCooltrainerF
-
-BugCatcherScript_0x9e56b:
-	jumptextfaceplayer Text_BattleTowerBugCatcher
-
-GrannyScript_0x9e56e:
-	jumptextfaceplayer Text_BattleTowerGranny
-
 MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
@@ -275,7 +257,7 @@ MovementData_BattleTower1FPlayerEntersElevator:
 	step_up
 	step_end
 
-Text_BattleTowerWelcomesYou: ; 0x9e5ab
+Text_BattleTowerWelcomesYou:
 	text "Battle Tower"
 	line "welcomes you!"
 
@@ -283,17 +265,17 @@ Text_BattleTowerWelcomesYou: ; 0x9e5ab
 	line "to a Battle Room."
 	done
 
-Text_WantToGoIntoABattleRoom: ; 0x9e5ea
+Text_WantToGoIntoABattleRoom:
 	text "Want to go into a"
 	line "Battle Room?"
 	done
 
-Text_RightThisWayToYourBattleRoom: ; 0x9e60a
+Text_RightThisWayToYourBattleRoom:
 	text "Right this way to"
 	line "your Battle Room."
 	done
 
-Text_BattleTowerIntroduction: ; 0x9e886
+Text_BattleTowerIntroduction:
 	text "Battle Tower is a"
 	line "facility made for"
 	cont "#mon battles."
@@ -327,7 +309,7 @@ Text_BattleTowerIntroduction: ; 0x9e886
 	line "challenge."
 	prompt
 
-Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
+Text_CongratulationsYouveBeatenAllTheTrainers:
 	text "Congratulations!"
 
 	para "You've beaten all"
@@ -337,32 +319,32 @@ Text_CongratulationsYouveBeatenAllTheTrainers: ; 0x9eaef
 	line "this great prize!"
 	prompt
 
-Text_PlayerGotReward: ; 0x9eb7e
+Text_PlayerGotReward:
 	text "<PLAYER> earned"
 	line "3 Battle Points!@"
 	sound_item
 	text_waitbutton
 	db "@"
 
-Text_WeHopeToServeYouAgain: ; 0x9ec09
+Text_WeHopeToServeYouAgain:
 	text "We hope to serve"
 	line "you again."
 	done
 
-Text_WouldYouLikeToHearAboutTheBattleTower: ; 0x9ec3d
+Text_WouldYouLikeToHearAboutTheBattleTower:
 	text "Would you like to"
 	line "hear about the"
 	cont "Battle Tower?"
 	done
 
-Text_ReadBattleTowerRules: ; 0x9ed3c
+Text_ReadBattleTowerRules:
 	text "Battle Tower rules"
 	line "are written here."
 
 	para "Read the rules?"
 	done
 
-Text_BattleTowerRules: ; 0x9ed72
+Text_BattleTowerRules:
 	text "Three #mon may"
 	line "enter battles."
 
@@ -394,7 +376,7 @@ Text_BattleTower_LeftWithoutSaving:
 	line "invalid."
 	done
 
-Text_SaveBeforeEnteringBattleRoom: ; 0x9ef1f
+Text_SaveBeforeEnteringBattleRoom:
 	text "Before entering"
 	line "the Battle Room,"
 
@@ -410,7 +392,7 @@ Text_WeveBeenWaitingForYou:
 	line "please."
 	done
 
-Text_ConfirmBattleRoomLevel: ; 0x9f1e5
+Text_ConfirmBattleRoomLevel:
 	text "Your #mon"
 	line "qualify for a"
 
@@ -463,7 +445,7 @@ Text_BattleTowerTutorTaught:
 	cont "Pulse too!"
 	done
 
-Text_BattleTowerCooltrainerF: ; 0x9f2a4
+Text_BattleTowerCooltrainerF:
 	text "There are lots of"
 	line "Battle Rooms, but"
 
@@ -471,7 +453,7 @@ Text_BattleTowerCooltrainerF: ; 0x9f2a4
 	line "them all!"
 	done
 
-Text_BattleTowerGranny: ; 0x9f2e3
+Text_BattleTowerGranny:
 	text "It's a grueling"
 	line "task, not being"
 
@@ -485,7 +467,7 @@ Text_BattleTowerGranny: ; 0x9f2e3
 	line "winning battles."
 	done
 
-Text_BattleTowerBugCatcher: ; 0x9f35b
+Text_BattleTowerBugCatcher:
 	text "I'm trying to see"
 	line "how far I can go"
 
@@ -495,30 +477,3 @@ Text_BattleTowerBugCatcher: ; 0x9f35b
 	para "Don't let there be"
 	line "any fire #mon…"
 	done
-
-BattleTower1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $d, $a, 3, BATTLE_TOWER_OUTSIDE
-	warp_def $d, $b, 4, BATTLE_TOWER_OUTSIDE
-	warp_def $0, $a, 1, BATTLE_TOWER_ELEVATOR
-	warp_def $5, $0, 1, BATTLE_TOWER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 7, 11, SIGNPOST_READ, MapBattleTower1FSignpost0Script
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
-	person_event SPRITE_NURSE, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerNurse, -1
-	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerClerk1, -1
-	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BattleTowerClerk2, -1
-	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BattleTowerClerk3, -1
-	person_event SPRITE_DRAGON_TAMER, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9e568, -1
-	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9e56b, -1
-	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x9e56e, -1
