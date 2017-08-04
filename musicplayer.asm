@@ -418,14 +418,15 @@ SongEditor:
 	ld a, [wChannelSelector]
 	ld hl, .up_jumptable
 	rst JumpTable
+	jp SongEditor
 
 .up_jumptable
-	dw .up_ch1_2  ; MP_EDIT_CH1
-	dw .up_ch1_2  ; MP_EDIT_CH2
-	dw .up_wave   ; MP_EDIT_WAVE
-	dw .up_noise  ; MP_EDIT_NOISE
-	dw .up_pitch  ; MP_EDIT_PITCH
-	dw SongEditor ; MP_EDIT_TEMPO
+	dw .up_ch1_2 ; MP_EDIT_CH1
+	dw .up_ch1_2 ; MP_EDIT_CH2
+	dw .up_wave  ; MP_EDIT_WAVE
+	dw .up_noise ; MP_EDIT_NOISE
+	dw .up_pitch ; MP_EDIT_PITCH
+	dw .return   ; MP_EDIT_TEMPO
 
 .down:
 ; for ch1/ch2: previous duty cycle
@@ -435,6 +436,7 @@ SongEditor:
 	ld a, [wChannelSelector]
 	ld hl, .down_jumptable
 	rst JumpTable
+	jp SongEditor
 
 .down_jumptable:
 	dw .down_ch1_2 ; MP_EDIT_CH1
@@ -442,7 +444,7 @@ SongEditor:
 	dw .down_wave  ; MP_EDIT_WAVE
 	dw .down_noise ; MP_EDIT_NOISE
 	dw .down_pitch ; MP_EDIT_PITCH
-	dw SongEditor  ; MP_EDIT_TEMPO
+	dw .return     ; MP_EDIT_TEMPO
 
 .start:
 ; toggle piano roll info overlay
@@ -473,8 +475,8 @@ SongEditor:
 	cp b
 	ld a, [hl]
 	jr nz, .no_ch1_2_overflow
-	sub c
 	and %00111111
+	sub c
 .no_ch1_2_overflow
 	add c
 	jr .change_ch1_2
@@ -497,7 +499,7 @@ SongEditor:
 .change_ch1_2:
 	ld [hl], a
 	ld [wCurTrackDuty], a
-	jp SongEditor
+	ret
 
 .up_wave:
 ; next waveform
@@ -525,14 +527,15 @@ SongEditor:
 	ld [Channel3Intensity], a
 	ld [wCurTrackIntensity], a
 	farcall ReloadWaveform
-	jp SongEditor
+	ret
 
 ; TODO: up/down for noise adjusts MusicNoiseSampleSet
 .up_noise:
 ; next noise set
 .down_noise:
 ; previous noise set
-	jp SongEditor
+.return:
+	ret
 
 .up_pitch:
 ; increase pitch transposition
@@ -556,8 +559,7 @@ SongEditor:
 	; refresh top two portions
 	xor a
 	ld [hBGMapThird], a
-	call DelayFrame
-	jp SongEditor
+	jp DelayFrame
 
 AdjustTempo:
 	ld a, 1
