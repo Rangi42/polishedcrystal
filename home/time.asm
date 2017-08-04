@@ -1,6 +1,7 @@
 ; Functions relating to the timer interrupt and the real-time-clock.
 
-
+; do not talk to the RTC hardware in the no-RTC patch
+if !DEF(NO_RTC)
 LatchClock:: ; 59c
 ; latch clock counter data
 	xor a
@@ -9,34 +10,29 @@ LatchClock:: ; 59c
 	ld [MBC3LatchClock], a
 	ret
 ; 5a7
-
+endc
 
 UpdateTime:: ; 5a7
-	call GetClock
-	call FixDays
-	call FixTime
+	call GetClock ; read the clock hardware
+	call FixDays  ; keep the number of days passed in-bounds
+	call FixTime  ; calculate the time based on the start time and RTC duration
 	farjp GetTimeOfDay
 ; 5b7
-
 
 GetClock:: ; 5b7
 ; store clock data in hRTCDayHi-hRTCSeconds
 
-;; kroc - NoRTC patch
 if DEF(NO_RTC)
-;; pull RTC time from the copy in RAM which is being incremented alongside the game timer
 	ld hl, wNoRTC
 	ld de, hRTCDayHi
 	ld bc, 5
 	jp CopyBytes
 else
-
 ; enable clock r/w
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
 
 ; clock data is 'backwards' in hram
-
 	call LatchClock
 	ld hl, MBC3SRamBank
 	ld de, MBC3RTC
@@ -66,10 +62,8 @@ else
 
 ; unlatch clock / disable clock r/w
 	jp CloseSRAM
-
 endc
 ; 5e8
-
 
 FixDays:: ; 5e8
 ; fix day count
@@ -132,14 +126,12 @@ FixDays:: ; 5e8
 	ret
 ; 61d
 
-
 FixTime:: ; 61d
 ; add ingame time (set at newgame) to current time
 ;				  day     hr    min    sec
 ; store time in CurDay, hHours, hMinutes, hSeconds
 
-; second
-	ld a, [hRTCSeconds] ; S
+	ld a, [hRTCSeconds]
 	ld c, a
 	ld a, [StartSecond]
 	add c
@@ -149,9 +141,8 @@ FixTime:: ; 61d
 .updatesec
 	ld [hSeconds], a
 
-; minute
 	ccf ; carry is set, so turn it off
-	ld a, [hRTCMinutes] ; M
+	ld a, [hRTCMinutes]
 	ld c, a
 	ld a, [StartMinute]
 	adc c
@@ -161,9 +152,8 @@ FixTime:: ; 61d
 .updatemin
 	ld [hMinutes], a
 
-; hour
 	ccf ; carry is set, so turn it off
-	ld a, [hRTCHours] ; H
+	ld a, [hRTCHours]
 	ld c, a
 	ld a, [StartHour]
 	adc c
@@ -173,9 +163,8 @@ FixTime:: ; 61d
 .updatehr
 	ld [hHours], a
 
-; day
 	ccf ; carry is set, so turn it off
-	ld a, [hRTCDayLo] ; DL
+	ld a, [hRTCDayLo]
 	ld c, a
 	ld a, [StartDay]
 	adc c
@@ -202,8 +191,6 @@ InitTime:: ; 677
 	farjp _InitTime
 ; 67e
 
-
-
 PanicResetClock:: ; 67e
 	xor a
 	ld [hRTCSeconds], a
@@ -211,51 +198,45 @@ PanicResetClock:: ; 67e
 	ld [hRTCHours], a
 	ld [hRTCDayLo], a
 	ld [hRTCDayHi], a
-	;jp SetClock
+; fallthrough
 ; 685
-
 
 SetClock:: ; 691
 ; set clock data from hram
 
-;; kroc - noRTC patch
+; do not talk to the RTC hardware in the no-RTC patch
 if DEF(NO_RTC)
-;; take the data from the copy in RAM that gets saved/loaded in SRAM,
-;; this gets incremented along with the game timer
-	;;ld hl, hRTCDayHi
-	;;ld de, wNoRTC
-	;;ld bc, 5
-	;;jp CopyBytes
+	ld hl, hRTCDayHi
+	ld de, wNoRTC
+	ld bc, 5
+	jp CopyBytes
 else
-
 ; enable clock r/w
 	ld a, SRAM_ENABLE
 	ld [MBC3SRamEnable], a
 
 ; set clock data
 ; stored 'backwards' in hram
-
 	call LatchClock
 	ld hl, MBC3SRamBank
 	ld de, MBC3RTC
 
-; seconds
 	ld [hl], RTC_S
 	ld a, [hRTCSeconds]
 	ld [de], a
-; minutes
+
 	ld [hl], RTC_M
 	ld a, [hRTCMinutes]
 	ld [de], a
-; hours
+
 	ld [hl], RTC_H
 	ld a, [hRTCHours]
 	ld [de], a
-; day lo
+
 	ld [hl], RTC_DL
 	ld a, [hRTCDayLo]
 	ld [de], a
-; day hi
+
 	ld [hl], RTC_DH
 	ld a, [hRTCDayHi]
 	res 6, a ; make sure timer is active
@@ -263,10 +244,8 @@ else
 
 ; cleanup
 	jp CloseSRAM ; unlatch clock, disable clock r/w
-
 endc
 ; 6c4
-
 
 RecordRTCStatus:: ; 6d3
 ; append flags to sRTCStatusFlags
