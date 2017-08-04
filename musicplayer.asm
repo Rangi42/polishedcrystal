@@ -411,67 +411,38 @@ SongEditor:
 	jp SongEditor
 
 .up:
+; for ch1/ch2: next duty cycle
 ; for wave: next waveform
+; for noise: next noise set
 ; for pitch: increase pitch transposition
 	ld a, [wChannelSelector]
-	cp MP_EDIT_PITCH
-	jr z, .up_pitch
-	cp MP_EDIT_WAVE
-	jp nz, SongEditor
-	ld a, [Channel3Intensity]
-	and $f
-	inc a
-	cp NUM_VALID_WAVEFORMS
-	jr nz, .change_wave
-	xor a
-	jr .change_wave
+	ld hl, .up_jumptable
+	rst JumpTable
+
+.up_jumptable
+	dw .up_ch1_2  ; MP_EDIT_CH1
+	dw .up_ch1_2  ; MP_EDIT_CH2
+	dw .up_wave   ; MP_EDIT_WAVE
+	dw .up_noise  ; MP_EDIT_NOISE
+	dw .up_pitch  ; MP_EDIT_PITCH
+	dw SongEditor ; MP_EDIT_TEMPO
 
 .down:
+; for ch1/ch2: previous duty cycle
 ; for wave: previous waveform
+; for noise: previous noise set
 ; for pitch: decrease pitch transposition
 	ld a, [wChannelSelector]
-	cp MP_EDIT_PITCH
-	jr z, .down_pitch
-	cp MP_EDIT_WAVE
-	jp nz, SongEditor
-	ld a, [Channel3Intensity]
-	and $f
-	dec a
-	cp -1
-	jr nz, .change_wave
-	ld a, NUM_VALID_WAVEFORMS - 1
-.change_wave:
-	ld b, a
-	ld a, [Channel3Intensity]
-	and $f0
-	or b
-	ld [Channel3Intensity], a
-	ld [wCurTrackIntensity], a
-	farcall ReloadWaveform
-	jp SongEditor
+	ld hl, .down_jumptable
+	rst JumpTable
 
-.up_pitch:
-	ld a, [wPitchTransposition]
-	inc a
-	cp MAX_PITCH_TRANSPOSITION + 1
-	jr nz, .change_pitch
-	ld a, -MAX_PITCH_TRANSPOSITION
-	jr .change_pitch
-
-.down_pitch:
-	ld a, [wPitchTransposition]
-	dec a
-	cp -(MAX_PITCH_TRANSPOSITION + 1)
-	jr nz, .change_pitch
-	ld a, MAX_PITCH_TRANSPOSITION
-.change_pitch:
-	ld [wPitchTransposition], a
-	call DrawPitchTransposition
-	; refresh top two portions
-	xor a
-	ld [hBGMapThird], a
-	call DelayFrame
-	jp SongEditor
+.down_jumptable:
+	dw .down_ch1_2 ; MP_EDIT_CH1
+	dw .down_ch1_2 ; MP_EDIT_CH2
+	dw .down_wave  ; MP_EDIT_WAVE
+	dw .down_noise ; MP_EDIT_NOISE
+	dw .down_pitch ; MP_EDIT_PITCH
+	dw SongEditor  ; MP_EDIT_TEMPO
 
 .start:
 ; toggle piano roll info overlay
@@ -490,6 +461,103 @@ SongEditor:
 	call DrawPitchTransposition
 	call DrawTempoAdjustment
 	jp MusicPlayerLoop
+
+.up_ch1_2:
+; next duty cycle
+	ld a, [wChannelSelector]
+	ld [wTmpCh], a
+	call GetDutyCycleAddr
+	ld a, [hl]
+	lb bc, %11000000, %01000000
+	and b
+	cp b
+	ld a, [hl]
+	jr nz, .no_ch1_2_overflow
+	sub c
+	and %00111111
+.no_ch1_2_overflow
+	add c
+	jr .change_ch1_2
+
+.down_ch1_2:
+; previous duty cycle
+	ld a, [wChannelSelector]
+	ld [wTmpCh], a
+	call GetDutyCycleAddr
+	ld a, [hl]
+	lb bc, %11000000, %01000000
+	and b
+	and a
+	ld a, [hl]
+	jr nz, .no_ch1_2_underflow
+	add c
+	and %00111111
+.no_ch1_2_underflow
+	sub c
+.change_ch1_2:
+	ld [hl], a
+	ld [wCurTrackDuty], a
+	jp SongEditor
+
+.up_wave:
+; next waveform
+	ld a, [Channel3Intensity]
+	and $f
+	inc a
+	cp NUM_VALID_WAVEFORMS
+	jr nz, .change_wave
+	xor a
+	jr .change_wave
+
+.down_wave:
+; previous waveform
+	ld a, [Channel3Intensity]
+	and $f
+	dec a
+	cp -1
+	jr nz, .change_wave
+	ld a, NUM_VALID_WAVEFORMS - 1
+.change_wave:
+	ld b, a
+	ld a, [Channel3Intensity]
+	and $f0
+	or b
+	ld [Channel3Intensity], a
+	ld [wCurTrackIntensity], a
+	farcall ReloadWaveform
+	jp SongEditor
+
+; TODO: up/down for noise adjusts MusicNoiseSampleSet
+.up_noise:
+; next noise set
+.down_noise:
+; previous noise set
+	jp SongEditor
+
+.up_pitch:
+; increase pitch transposition
+	ld a, [wPitchTransposition]
+	inc a
+	cp MAX_PITCH_TRANSPOSITION + 1
+	jr nz, .change_pitch
+	ld a, -MAX_PITCH_TRANSPOSITION
+	jr .change_pitch
+
+.down_pitch:
+; decrease pitch transposition
+	ld a, [wPitchTransposition]
+	dec a
+	cp -(MAX_PITCH_TRANSPOSITION + 1)
+	jr nz, .change_pitch
+	ld a, MAX_PITCH_TRANSPOSITION
+.change_pitch:
+	ld [wPitchTransposition], a
+	call DrawPitchTransposition
+	; refresh top two portions
+	xor a
+	ld [hBGMapThird], a
+	call DelayFrame
+	jp SongEditor
 
 AdjustTempo:
 	ld a, 1
@@ -1372,25 +1440,17 @@ endr
 	ret
 
 GetPitchAddr:
-	ld a, [wTmpCh]
-	add a
-	ld hl, PitchAddrs
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-PitchAddrs:
-	dw Channel1Pitch
-	dw Channel2Pitch
-	dw Channel3Pitch
+	ld hl, Channel1Pitch
+	jr _GetChannelMemberAddr
 
 GetOctaveAddr:
-	ld a, [wTmpCh]
 	ld hl, Channel1Octave
+	jr _GetChannelMemberAddr
+
+GetDutyCycleAddr:
+	ld hl, Channel1DutyCycle
+_GetChannelMemberAddr:
+	ld a, [wTmpCh]
 	ld bc, Channel2 - Channel1
 	jp AddNTimes
 
@@ -1398,12 +1458,6 @@ GetIntensityAddr:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
-	jp AddNTimes
-
-GetDutyCycleAddr:
-	ld a, [wTmpCh]
-	ld hl, Channel1DutyCycle
-	ld bc, Channel2 - Channel1
 	jp AddNTimes
 
 GetSongInfo:
