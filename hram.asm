@@ -4,16 +4,26 @@ hPushOAM           EQU $ff80 ; 10 bytes
 hROMBankBackup     EQU $ff8a
 hBuffer            EQU $ff8b
 
+; Real Time Clock cache:
+; ----------------------
+; the actual RTC hardware is read through memory-mapped IO that has to be
+; latched and un-latched, therefore the RTC hardware is read each frame and
+; the values stored in this cache. code  in the game that works with RTC time
+; values use this cache instead of working directly with the hardware. this
+; allows our 'NoRTC' version to manually update the clock faster than usual
+; and the rest of the game is pretty much none-the-wiser
 hRTCDayHi          EQU $ff8d
 hRTCDayLo          EQU $ff8e
 hRTCHours          EQU $ff8f
 hRTCMinutes        EQU $ff90
 hRTCSeconds        EQU $ff91
 
+; Time of Day:
+; ------------
+; this is the time on the clock inside the game. this is calculated from the
+; time set when a new game was started and the current duration of the RTC
 hHours             EQU $ff94
-
 hMinutes           EQU $ff96
-
 hSeconds           EQU $ff98
 
 hVBlankCounter     EQU $ff9b
