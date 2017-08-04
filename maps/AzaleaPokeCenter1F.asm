@@ -18,10 +18,10 @@ AzaleaPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, AzaleaPokeCenter1FCooltrainermScript, -1
 	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FGentlemanText, -1
 	person_event SPRITE_SIGHTSEER_M, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FSightseermText, -1
 	person_event SPRITE_POKEFAN_F, 5, 2, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FPokefanfText, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, AzaleaPokeCenter1FCooltrainermScript, -1
 
 PokemonJournalBugsyScript:
 	setflag ENGINE_READ_BUGSY_JOURNAL
@@ -41,6 +41,39 @@ PokemonJournalBugsyScript:
 
 	para "he no longer par-"
 	line "ticipates."
+	done
+
+AzaleaPokeCenter1FCooltrainermScript:
+	checknite
+	iftrue .Nite
+	jumptextfaceplayer .DayText
+
+.Nite
+	jumptextfaceplayer .NiteText
+
+.DayText:
+	text "For a guy who"
+	line "makes # Balls,"
+
+	para "Kurt isn't much of"
+	line "a trainer."
+
+	para "He does have a"
+	line "#mon, but he"
+
+	para "doesn't use it"
+	line "much."
+	done
+
+.NiteText:
+	text "Kurt and Prof.Oak"
+	line "are old friends."
+
+	para "They're also close"
+	line "with Agatha, a"
+
+	para "former member of"
+	line "the Elite Four."
 	done
 
 AzaleaPokeCenter1FGentlemanText:
@@ -84,45 +117,4 @@ AzaleaPokeCenter1FPokefanfText:
 
 	para "everyone used"
 	line "Apricorns."
-	done
-
-AzaleaPokeCenter1FCooltrainermScript:
-	faceplayer
-	opentext
-	checknite
-	iftrue .nite
-	writetext .DayText
-	waitbutton
-	closetext
-	end
-
-.nite
-	writetext .NiteText
-	waitbutton
-	closetext
-	end
-
-.DayText:
-	text "For a guy who"
-	line "makes # Balls,"
-
-	para "Kurt isn't much of"
-	line "a trainer."
-
-	para "He does have a"
-	line "#mon, but he"
-
-	para "doesn't use it"
-	line "much."
-	done
-
-.NiteText:
-	text "Kurt and Prof.Oak"
-	line "are old friends."
-
-	para "They're also close"
-	line "with Agatha, a"
-
-	para "former member of"
-	line "the Elite Four."
 	done

@@ -3,7 +3,7 @@ AzaleaTown_MapScriptHeader:
 .MapTriggers: db 0
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, AzaleaTownFlypoint
+	dbw MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
 
 AzaleaTown_MapEventHeader:
 
@@ -20,7 +20,7 @@ AzaleaTown_MapEventHeader:
 .XYTriggers: db 3
 	xy_trigger 1, $a, $5, AzaleaTownRivalBattleTrigger1
 	xy_trigger 1, $b, $5, AzaleaTownRivalBattleTrigger2
-	xy_trigger 2, $6, $9, AzaleaTown_CelebiEventScript
+	xy_trigger 2, $6, $9, AzaleaTown_CelebiTrigger
 
 .Signposts: db 7
 	signpost 9, 19, SIGNPOST_JUMPTEXT, AzaleaTownSignText
@@ -34,11 +34,11 @@ AzaleaTown_MapEventHeader:
 .PersonEvents: db 12
 	person_event SPRITE_AZALEA_ROCKET, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
 	person_event SPRITE_KURT, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
-	person_event SPRITE_AZALEA_ROCKET, 9, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaTownRocket1Text, EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
-	person_event SPRITE_AZALEA_ROCKET, 16, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaTownRocket2Text, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_GRAMPS, 9, 21, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownGrampsScript, -1
 	person_event SPRITE_TEACHER, 13, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, AzaleaTownTeacherText, -1
 	person_event SPRITE_YOUNGSTER, 9, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, AzaleaTownYoungsterText, -1
+	person_event SPRITE_AZALEA_ROCKET, 9, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaTownRocket1Text, EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
+	person_event SPRITE_AZALEA_ROCKET, 16, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaTownRocket2Text, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_SLOWPOKE, 17, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	person_event SPRITE_SLOWPOKE, 9, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	person_event SPRITE_SLOWPOKE, 9, 29, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
@@ -49,7 +49,7 @@ const_value set 2
 	const AZALEATOWN_SILVER
 	const AZALEATOWN_KURT
 
-AzaleaTownFlypoint:
+AzaleaTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_AZALEA
 	return
 
@@ -117,7 +117,7 @@ AzaleaTownRivalBattleScript:
 	waitbutton
 	closetext
 	spriteface PLAYER, LEFT
-	applymovement AZALEATOWN_SILVER, AzaleaTownRivalBattleExitMovement
+	applymovement AZALEATOWN_SILVER, .ExitMovement
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_SILVER
 	domaptrigger ROUTE_34, $1
@@ -189,6 +189,12 @@ AzaleaTownRivalBattleScript:
 	line "distraction."
 	done
 
+.ExitMovement:
+	step_left
+	step_left
+	step_left
+	step_end
+
 AzaleaTownRivalBattleApproachMovement1:
 	step_left
 	step_left
@@ -209,13 +215,7 @@ AzaleaTownRivalBattleApproachMovement2:
 	turn_head_down
 	step_end
 
-AzaleaTownRivalBattleExitMovement:
-	step_left
-	step_left
-	step_left
-	step_end
-
-AzaleaTown_CelebiEventScript:
+AzaleaTown_CelebiTrigger:
 	applymovement PLAYER, .WalkOutOfKurtsHouseMovement
 	opentext
 	writetext .Text1
@@ -307,20 +307,12 @@ AzaleaTownHiddenFullHeal:
 	dwb EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL, FULL_HEAL
 
 AzaleaTownGrampsScript:
-	faceplayer
-	opentext
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue .ClearedWell
-	writetext .Text1
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .Text1
 
 .ClearedWell:
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .Text2
 
 .Text1:
 	text "The Slowpoke have"
@@ -341,15 +333,6 @@ AzaleaTownGrampsScript:
 
 	para "goofing off some-"
 	line "where."
-	done
-
-AzaleaTownRocket1Text:
-	text "It's unsafe to go"
-	line "in there, so I'm"
-	cont "standing guard."
-
-	para "Aren't I a good"
-	line "Samaritan?"
 	done
 
 AzaleaTownTeacherText:
@@ -377,6 +360,24 @@ AzaleaTownYoungsterText:
 	cont "down trees."
 	done
 
+AzaleaTownRocket1Text:
+	text "It's unsafe to go"
+	line "in there, so I'm"
+	cont "standing guard."
+
+	para "Aren't I a good"
+	line "Samaritan?"
+	done
+
+AzaleaTownRocket2Text:
+	text "Do you know about"
+	line "SlowpokeTail? I"
+	cont "heard it's tasty!"
+
+	para "Aren't you glad I"
+	line "told you that?"
+	done
+
 AzaleaTownSlowpokeScript:
 	opentext
 	writetext .Text1
@@ -395,15 +396,6 @@ AzaleaTownSlowpokeScript:
 
 .Text2:
 	text "…… ……Yawn?"
-	done
-
-AzaleaTownRocket2Text:
-	text "Do you know about"
-	line "SlowpokeTail? I"
-	cont "heard it's tasty!"
-
-	para "Aren't you glad I"
-	line "told you that?"
 	done
 
 AzaleaTownKurtScript:

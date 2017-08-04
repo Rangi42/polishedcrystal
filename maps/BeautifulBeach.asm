@@ -14,30 +14,39 @@ BeautifulBeach_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 21, 14, SIGNPOST_READ, BeautifulBeachWelcomeSign
-	signpost 19, 29, SIGNPOST_READ, BeautifulBeachVillaSign
+	signpost 21, 14, SIGNPOST_JUMPTEXT, BeautifulBeachWelcomeSignText
+	signpost 19, 29, SIGNPOST_JUMPTEXT, BeautifulBeachVillaSignText
 
 .PersonEvents: db 9
-	person_event SPRITE_LADY, 18, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyBryony, -1
-	person_event SPRITE_SIGHTSEER_M, 26, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermJaska, -1
-	person_event SPRITE_COOLTRAINER_M, 23, 33, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerVince, -1
-	person_event SPRITE_LADY, 22, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSightseerfRosie, -1
-	person_event SPRITE_SWIMMER_GIRL, 13, 12, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerSwimmerfRachel, -1
-	person_event SPRITE_ARTIST, 13, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerArtistMarlene, -1
+	person_event SPRITE_LADY, 18, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyBryony, -1
+	person_event SPRITE_SIGHTSEER_M, 26, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermJaska, -1
+	person_event SPRITE_COOLTRAINER_M, 23, 33, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerVince, -1
+	person_event SPRITE_LADY, 22, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseerfRosie, -1
+	person_event SPRITE_SWIMMER_GIRL, 13, 12, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSwimmerfRachel, -1
+	person_event SPRITE_ARTIST, 13, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerArtistMarlene, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 19, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, LUXURY_BALL, 1, EVENT_BEAUTIFUL_BEACH_LUXURY_BALL
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_RESTORE, 1, EVENT_BEAUTIFUL_BEACH_FULL_RESTORE
 	person_event SPRITE_BALL_CUT_FRUIT, 13, -2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-TrainerAromaLadyBryony:
-	trainer EVENT_BEAT_AROMA_LADY_BRYONY, AROMA_LADY, BRYONY, .SeenText, .BeatenText, 0, .Script
+BeautifulBeachWelcomeSignText:
+	text "Welcome to"
+	line "Shamouti Island!"
 
-.Script:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	para "The main island"
+	line "is just east."
+	done
+
+BeautifulBeachVillaSignText:
+	text "Island Villa"
+	done
+
+GenericTrainerAromaLadyBryony:
+	generictrainer EVENT_BEAT_AROMA_LADY_BRYONY, AROMA_LADY, BRYONY, .SeenText, .BeatenText
+
+	text "I am always in-"
+	line "vigorated by the"
+	cont "scents here."
+	done
 
 .SeenText:
 	text "Tropical flowers,"
@@ -54,22 +63,15 @@ TrainerAromaLadyBryony:
 	cont "to win?"
 	done
 
-.AfterText:
-	text "I am always in-"
-	line "vigorated by the"
-	cont "scents here."
+GenericTrainerSightseermJaska:
+	generictrainer EVENT_BEAT_SIGHTSEERM_JASKA, SIGHTSEERM, JASKA, .SeenText, .BeatenText
+
+	text "I know it's silly,"
+	line "but I feel safer"
+
+	para "traveling with a"
+	line "good-luck charm."
 	done
-
-TrainerSightseermJaska:
-	trainer EVENT_BEAT_SIGHTSEERM_JASKA, SIGHTSEERM, JASKA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
 
 .SeenText:
 	text "My lucky socks"
@@ -82,24 +84,15 @@ TrainerSightseermJaska:
 	line "me win battles…"
 	done
 
-.AfterText:
-	text "I know it's silly,"
-	line "but I feel safer"
+GenericTrainerTamerVince:
+	generictrainer EVENT_BEAT_TAMER_VINCE, TAMER, VINCE, .SeenText, .BeatenText
 
-	para "travelling with a"
-	line "good-luck charm."
+	text "My #mon are"
+	line "expertly tamed,"
+
+	para "but I remain as"
+	line "wild as ever!"
 	done
-
-TrainerTamerVince:
-	trainer EVENT_BEAT_TAMER_VINCE, TAMER, VINCE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
 
 .SeenText:
 	text "My roaring spirit"
@@ -111,24 +104,16 @@ TrainerTamerVince:
 	text "Nyuh?! ROAR!"
 	done
 
-.AfterText:
-	text "My #mon are"
-	line "expertly tamed,"
+GenericTrainerSightseerfRosie:
+	generictrainer EVENT_BEAT_SIGHTSEERF_ROSIE, SIGHTSEERF, ROSIE, .SeenText, .BeatenText
 
-	para "but I remain as"
-	line "wild as ever!"
+	text "Shamouti Island"
+	line "has so much"
+	cont "history!"
+
+	para "I can't wait to"
+	line "photograph it."
 	done
-
-TrainerSightseerfRosie:
-	trainer EVENT_BEAT_SIGHTSEERF_ROSIE, SIGHTSEERF, ROSIE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
 
 .SeenText:
 	text "The shrine, the"
@@ -143,25 +128,12 @@ TrainerSightseerfRosie:
 	cont "first."
 	done
 
-.AfterText:
-	text "Shamouti Island"
-	line "has so much"
-	cont "history!"
+GenericTrainerSwimmerfRachel:
+	generictrainer EVENT_BEAT_SWIMMERF_RACHEL, SWIMMERF, RACHEL, .SeenText, .BeatenText
 
-	para "I can't wait to"
-	line "photograph it."
+	text "I could spend all"
+	line "day in this water."
 	done
-
-TrainerSwimmerfRachel:
-	trainer EVENT_BEAT_SWIMMERF_RACHEL, SWIMMERF, RACHEL, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
 
 .SeenText:
 	text "White sand and"
@@ -177,34 +149,9 @@ TrainerSwimmerfRachel:
 	line "beautifully!"
 	done
 
-.AfterText:
-	text "I could spend all"
-	line "day in this water."
-	done
+GenericTrainerArtistMarlene:
+	generictrainer EVENT_BEAT_ARTIST_MARLENE, ARTIST, MARLENE, .SeenText, .BeatenText
 
-TrainerArtistMarlene:
-	trainer EVENT_BEAT_ARTIST_MARLENE, ARTIST, MARLENE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
-
-.SeenText:
-	text "My Smeargle trio"
-	line "can paint any"
-	cont "scene!"
-	done
-
-.BeatenText:
-	text "They couldn't win"
-	line "a battle…"
-	done
-
-.AfterText:
 	text "The three primary"
 	line "colors of paint"
 
@@ -216,20 +163,13 @@ TrainerArtistMarlene:
 	cont "and green."
 	done
 
-BeautifulBeachWelcomeSign:
-	jumptext .Text
-
-.Text:
-	text "Welcome to"
-	line "Shamouti Island!"
-
-	para "The main island"
-	line "is just east."
+.SeenText:
+	text "My Smeargle trio"
+	line "can paint any"
+	cont "scene!"
 	done
 
-BeautifulBeachVillaSign:
-	jumptext .Text
-
-.Text:
-	text "Island Villa"
+.BeatenText:
+	text "They couldn't win"
+	line "a battle…"
 	done

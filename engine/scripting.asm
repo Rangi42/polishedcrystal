@@ -240,6 +240,7 @@ ScriptCommandTable:
 	dw Script_unowntypeface              ; b0
 	dw Script_restoretypeface            ; b1
 	dw Script_jumpstashedtext            ; b2
+	dw Script_jumpopenedtext             ; b3
 
 StartScript:
 	ld hl, ScriptFlags
@@ -295,12 +296,7 @@ Script_ptcallasm:
 Script_jumptextfaceplayer:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
-	ld a, [ScriptBank]
-	ld [wScriptTextBank], a
-	call GetScriptByte
-	ld [wScriptTextAddr], a
-	call GetScriptByte
-	ld [wScriptTextAddr + 1], a
+	call _GetTextPointer
 	ld b, BANK(JumpTextFacePlayerScript)
 	ld hl, JumpTextFacePlayerScript
 	jp ScriptJump
@@ -308,25 +304,37 @@ Script_jumptextfaceplayer:
 Script_jumptext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
-	ld a, [ScriptBank]
-	ld [wScriptTextBank], a
-	call GetScriptByte
-	ld [wScriptTextAddr], a
-	call GetScriptByte
-	ld [wScriptTextAddr + 1], a
+	call _GetTextPointer
 	ld b, BANK(JumpTextScript)
 	ld hl, JumpTextScript
+	jp ScriptJump
+
+Script_jumpopenedtext:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	call _GetTextPointer
+	ld b, BANK(JumpOpenedTextScript)
+	ld hl, JumpOpenedTextScript
 	jp ScriptJump
 
 JumpTextFacePlayerScript:
 	faceplayer
 JumpTextScript:
 	opentext
+JumpOpenedTextScript:
 	repeattext -1, -1
 	waitbutton
 	closetext
 	end
 
+_GetTextPointer:
+	ld a, [ScriptBank]
+	ld [wScriptTextBank], a
+	call GetScriptByte
+	ld [wScriptTextAddr], a
+	call GetScriptByte
+	ld [wScriptTextAddr + 1], a
+	ret
 
 Script_farjumptext:
 ; parameters:
@@ -341,6 +349,16 @@ Script_farjumptext:
 	ld hl, JumpTextScript
 	jp ScriptJump
 
+Script_jumpstashedtext:
+	ld a, [ScriptBank]
+	ld [wScriptTextBank], a
+	ld a, [wStashedTextPointer]
+	ld [wScriptTextAddr], a
+	ld a, [wStashedTextPointer + 1]
+	ld [wScriptTextAddr + 1], a
+	ld b, BANK(JumpTextScript)
+	ld hl, JumpTextScript
+	jp ScriptJump
 
 Script_writetext:
 ; parameters:
@@ -2771,16 +2789,3 @@ Script_restoretypeface:
 	xor a
 	ld [OptionsBuffer], a
 	jp LoadStandardFont
-
-Script_jumpstashedtext:
-; parameters:
-;     text_pointer (RawTextPointerLabelParam)
-	ld a, [ScriptBank]
-	ld [wScriptTextBank], a
-	ld a, [wStashedTextPointer]
-	ld [wScriptTextAddr], a
-	ld a, [wStashedTextPointer + 1]
-	ld [wScriptTextAddr + 1], a
-	ld b, BANK(JumpTextScript)
-	ld hl, JumpTextScript
-	jp ScriptJump

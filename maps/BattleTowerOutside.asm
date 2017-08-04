@@ -1,7 +1,7 @@
 BattleTowerOutside_MapScriptHeader:
 
 .MapTriggers: db 1
-	dw BattleTowerOutsideTrigger0
+	dw BattleTowerOutsideStepDownTrigger
 
 .MapCallbacks: db 0
 
@@ -14,8 +14,8 @@ BattleTowerOutside_MapEventHeader:
 	warp_def $9, $9, 2, BATTLE_TOWER_1F ; hole
 
 .XYTriggers: db 2
-	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpScript1
-	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpScript2
+	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpTrigger1
+	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpTrigger2
 
 .Signposts: db 1
 	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
@@ -26,11 +26,11 @@ BattleTowerOutside_MapEventHeader:
 	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideSailorText, -1
 	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-BattleTowerOutsideTrigger0:
-	priorityjump .StepDownScript
+BattleTowerOutsideStepDownTrigger:
+	priorityjump .Script
 	end
 
-.StepDownScript:
+.Script:
 	checkcode VAR_YCOORD
 	if_not_equal $9, .Done
 	checkcode VAR_XCOORD
@@ -47,12 +47,12 @@ BattleTowerOutsideTrigger0:
 	step_down
 	step_end
 
-BattleTowerOutsidePanUpScript1:
+BattleTowerOutsidePanUpTrigger1:
 	scall BattleTowerOutsidePanUpHelperScript
 	warpfacing UP, BATTLE_TOWER_1F, $a, $d
 	end
 
-BattleTowerOutsidePanUpScript2:
+BattleTowerOutsidePanUpTrigger2:
 	scall BattleTowerOutsidePanUpHelperScript
 	warpfacing UP, BATTLE_TOWER_1F, $b, $d
 	end

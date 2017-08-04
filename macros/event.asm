@@ -1117,3 +1117,9 @@ restoretypeface: macro
 jumpstashedtext: macro
 	db jumpstashedtext_command
 	endm
+
+	enum jumpopenedtext_command
+jumpopenedtext: macro
+	db jumpopenedtext_command
+	dw \1 ; text_pointer
+	endm

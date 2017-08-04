@@ -3,7 +3,7 @@ DragonsDenB1F_MapScriptHeader:
 .MapTriggers: db 0
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, DragonsDenB1FCheckSilver
+	dbw MAPCALLBACK_NEWMAP, DragonsDenB1FSilverCallback
 
 DragonsDenB1F_MapEventHeader:
 
@@ -12,23 +12,23 @@ DragonsDenB1F_MapEventHeader:
 	warp_def $1d, $13, 1, DRAGON_SHRINE
 
 .XYTriggers: db 1
-	xy_trigger 1, $1e, $13, DragonsDenB1F_ClairTrigger
+	xy_trigger 1, $1e, $13, DragonsDenB1FClairTrigger
 
 .Signposts: db 4
-	signpost 24, 18, SIGNPOST_READ, MapDragonsDenB1FSignpost0Script
+	signpost 24, 18, SIGNPOST_READ, DragonsDenShrineSignText
 	signpost 29, 33, SIGNPOST_ITEM, DragonsDenB1FHiddenRevive
 	signpost 17, 21, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxPotion
 	signpost 15, 31, SIGNPOST_ITEM, DragonsDenB1FHiddenMaxElixer
 
 .PersonEvents: db 11
 	person_event SPRITE_CLAIR, 30, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
-	person_event SPRITE_SILVER, 23, 20, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverScript_0x18c97e, EVENT_RIVAL_DRAGONS_DEN
-	person_event SPRITE_DRAGON_TAMER, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerDragonTamerDarin, -1
-	person_event SPRITE_DRAGON_TAMER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerAdam, -1
-	person_event SPRITE_COOLTRAINER_M, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara1, -1
-	person_event SPRITE_COOLTRAINER_F, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoDanandcara2, -1
-	person_event SPRITE_TWIN, 29, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia1, -1
-	person_event SPRITE_TWIN, 29, 31, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsLeaandpia2, -1
+	person_event SPRITE_SILVER, 23, 20, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DragonsDenB1FSilverScript, EVENT_RIVAL_DRAGONS_DEN
+	person_event SPRITE_DRAGON_TAMER, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerDragonTamerDarin, -1
+	person_event SPRITE_DRAGON_TAMER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerAdam, -1
+	person_event SPRITE_COOLTRAINER_M, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoDanandcara1, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoDanandcara2, -1
+	person_event SPRITE_TWIN, 29, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsLeaandpia1, -1
+	person_event SPRITE_TWIN, 29, 31, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsLeaandpia2, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 16, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DRAGON_FANG, 1, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CALCIUM, 1, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_ELIXER, 1, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
@@ -37,7 +37,7 @@ const_value set 2
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
 
-DragonsDenB1FCheckSilver:
+DragonsDenB1FSilverCallback:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftrue .CheckDay
 	disappear DRAGONSDENB1F_SILVER
@@ -55,27 +55,27 @@ DragonsDenB1FCheckSilver:
 	appear DRAGONSDENB1F_SILVER
 	return
 
-DragonsDenB1F_ClairTrigger:
+DragonsDenB1FClairTrigger:
 	appear DRAGONSDENB1F_CLAIR
 	opentext
-	writetext ClairText_Wait
+	writetext .WaitText
 	pause 30
 	closetext
 	showemote EMOTE_SHOCK, PLAYER, 15
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_CLAIR
-	applymovement DRAGONSDENB1F_CLAIR, MovementDragonsDen_ClairWalksToYou
+	applymovement DRAGONSDENB1F_CLAIR, .WalksToYouMovement
 	opentext
-	writetext ClairText_GiveDragonbreathDragonDen
+	writetext .GiveTMText
 	buttonsound
 	verbosegivetmhm TM_DRAGONBREATH
 	setevent EVENT_GOT_TM21_DRAGONBREATH
-	writetext ClairText_DescribeDragonbreathDragonDen
+	writetext .DescribeDragonBreathText
 	buttonsound
-	writetext ClairText_WhatsTheMatterDragonDen
+	writetext ClairPokemonLeagueDirectionsText ; in BlackthornGym1F.asm
 	waitbutton
 	closetext
-	applymovement DRAGONSDENB1F_CLAIR, MovementDragonsDen_ClairWalksAway
+	applymovement DRAGONSDENB1F_CLAIR, .WalksAwayMovement
 	special Special_FadeOutMusic
 	pause 30
 	special RestartMapMusic
@@ -85,73 +85,65 @@ DragonsDenB1F_ClairTrigger:
 	clearevent EVENT_LYRA_IN_HER_ROOM
 	end
 
-TrainerDragonTamerDarin:
-	trainer EVENT_BEAT_DRAGON_TAMER_DARIN, DRAGON_TAMER, DARIN, DragonTamerDarinSeenText, DragonTamerDarinBeatenText, 0, DragonTamerDarinScript
+.WaitText:
+	text "Wait!"
+	done
 
-DragonTamerDarinScript:
-	end_if_just_battled
-	opentext
-	writetext DragonTamerDarinAfterText
-	waitbutton
-	closetext
-	end
+.GiveTMText:
+	text "Clair: I'm sorry"
+	line "about this."
 
-TrainerDragonTamerAdam:
-	trainer EVENT_BEAT_DRAGON_TAMER_ADAM, DRAGON_TAMER, ADAM, DragonTamerAdamSeenText, DragonTamerAdamBeatenText, 0, DragonTamerAdamScript
+	para "Here, take this as"
+	line "my apology."
+	done
 
-DragonTamerAdamScript:
-	end_if_just_battled
-	opentext
-	writetext DragonTamerAdamAfterText
-	waitbutton
-	closetext
-	end
+.DescribeDragonBreathText:
+	text "That contains"
+	line "DragonBreath."
 
-TrainerAceDuoDanandcara1:
-	trainer EVENT_BEAT_ACE_DUO_DAN_AND_CARA, ACE_DUO, DANANDCARA1, AceDuoDanandcara1SeenText, AceDuoDanandcara1BeatenText, 0, AceDuoDanandcara1Script
+	para "No, it doesn't"
+	line "have anything to"
+	cont "do with my breath."
 
-AceDuoDanandcara1Script:
-	end_if_just_battled
-	opentext
-	writetext AceDuoDanandcara1AfterText
-	waitbutton
-	closetext
-	end
+	para "If you don't want"
+	line "it, you don't have"
+	cont "to take it."
+	done
 
-TrainerAceDuoDanandcara2:
-	trainer EVENT_BEAT_ACE_DUO_DAN_AND_CARA, ACE_DUO, DANANDCARA2, AceDuoDanandcara2SeenText, AceDuoDanandcara2BeatenText, 0, AceDuoDanandcara2Script
+.WalksToYouMovement:
+	slow_step_right
+	slow_step_right
+	slow_step_right
+	slow_step_right
+	step_end
 
-AceDuoDanandcara2Script:
-	end_if_just_battled
-	opentext
-	writetext AceDuoDanandcara2AfterText
-	waitbutton
-	closetext
-	end
+.WalksAwayMovement:
+	slow_step_left
+	slow_step_left
+	slow_step_left
+	slow_step_left
+	step_end
 
-TrainerTwinsLeaandpia1:
-	trainer EVENT_BEAT_TWINS_LEA_AND_PIA, TWINS, LEAANDPIA1, TwinsLeaandpia1SeenText, TwinsLeaandpia1BeatenText, 0, TwinsLeaandpia1Script
+DragonsDenShrineSignText:
+	text "Dragon Shrine"
 
-TwinsLeaandpia1Script:
-	end_if_just_battled
-	opentext
-	writetext TwinsLeaandpia1AfterText
-	waitbutton
-	closetext
-	end
+	para "A shrine honoring"
+	line "the dragon #mon"
 
-TrainerTwinsLeaandpia2:
-	trainer EVENT_BEAT_TWINS_LEA_AND_PIA, TWINS, LEAANDPIA1, TwinsLeaandpia2SeenText, TwinsLeaandpia2BeatenText, 0, TwinsLeaandpia2Script
+	para "said to have lived"
+	line "in Dragon's Den."
+	done
 
-TwinsLeaandpia2Script:
-	end_if_just_battled
-	opentext
-	writetext TwinsLeaandpia2AfterText
-	waitbutton
-	closetext
-	end
+DragonsDenB1FHiddenRevive:
+	dwb EVENT_DRAGONS_DEN_B1F_HIDDEN_REVIVE, REVIVE
 
-SilverScript_0x18c97e:
+DragonsDenB1FHiddenMaxPotion:
+	dwb EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION, MAX_POTION
+
+DragonsDenB1FHiddenMaxElixer:
+	dwb EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER, MAX_ELIXER
+
+DragonsDenB1FSilverScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	faceplayer
 	opentext
@@ -159,9 +151,9 @@ SilverScript_0x18c97e:
 	iftrue .SilverTalkAgain
 	checkevent EVENT_GOT_RIVALS_EGG
 	iftrue .SilverTalk
-	writetext SilverText_Training1
+	writetext .Training1Text
 	waitbutton
-	writetext SilverText_GiveEgg
+	writetext .GiveEggText
 	buttonsound
 	checkcode VAR_PARTYCOUNT
 	if_equal PARTY_LENGTH, .PartyFull
@@ -179,10 +171,10 @@ SilverScript_0x18c97e:
 .GiveCyndaquilEgg:
 	giveegg CYNDAQUIL, EGG_LEVEL
 .GotRivalsEgg
-	farwritetext UnknownText_0x1bdfa5
+	farwritetext UnknownText_0x1bdfa5 ; in text/common_1.asm
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
-	writetext SilverText_DescribeEgg
+	writetext .DescribeEggText
 	waitbutton
 	closetext
 	setevent EVENT_GOT_RIVALS_EGG
@@ -192,13 +184,14 @@ SilverScript_0x18c97e:
 	end
 
 .PartyFull:
-	writetext SilverText_PartyFull
+	writetext .PartyFullText
 	waitbutton
 	closetext
+	special RestartMapMusic
 	end
 
 .SilverTalk:
-	writetext SilverText_Training1
+	writetext .Training1Text
 	waitbutton
 	closetext
 	setevent EVENT_GAVE_KURT_APRICORNS
@@ -206,107 +199,13 @@ SilverScript_0x18c97e:
 	end
 
 .SilverTalkAgain:
-	writetext SilverText_Training2
+	writetext .Training2Text
 	waitbutton
 	closetext
 	special RestartMapMusic
 	end
 
-MapDragonsDenB1FSignpost0Script:
-	jumptext DragonShrineSignpostText
-
-DragonsDenB1FHiddenRevive:
-	dwb EVENT_DRAGONS_DEN_B1F_HIDDEN_REVIVE, REVIVE
-
-DragonsDenB1FHiddenMaxPotion:
-	dwb EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION, MAX_POTION
-
-DragonsDenB1FHiddenMaxElixer:
-	dwb EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER, MAX_ELIXER
-
-MovementDragonsDen_ClairWalksToYou:
-	slow_step_right
-	slow_step_right
-	slow_step_right
-	slow_step_right
-	step_end
-
-MovementDragonsDen_ClairWalksAway:
-	slow_step_left
-	slow_step_left
-	slow_step_left
-	slow_step_left
-	step_end
-
-ClairText_Wait:
-	text "Wait!"
-	done
-
-ClairText_GiveDragonbreathDragonDen:
-	text "Clair: I'm sorry"
-	line "about this."
-
-	para "Here, take this as"
-	line "my apology."
-	done
-
-ClairText_DescribeDragonbreathDragonDen:
-	text "That contains"
-	line "DragonBreath."
-
-	para "No, it doesn't"
-	line "have anything to"
-	cont "do with my breath."
-
-	para "If you don't want"
-	line "it, you don't have"
-	cont "to take it."
-	done
-
-ClairText_WhatsTheMatterDragonDen:
-	text "Clair: What's the"
-	line "matter? Aren't you"
-
-	para "going on to the"
-	line "#mon League?"
-
-	para "Do you know how to"
-	line "get there?"
-
-	para "From here, go to"
-	line "New Bark Town."
-
-	para "Then Surf east to"
-	line "#mon League."
-
-	para "The route there is"
-	line "very tough."
-
-	para "Don't you dare"
-	line "lose at the #-"
-	cont "mon League!"
-
-	para "If you do, I'll"
-	line "feel even worse"
-
-	para "about having lost"
-	line "to you!"
-
-	para "Give it everything"
-	line "you've got."
-	done
-
-DragonShrineSignpostText:
-	text "Dragon Shrine"
-
-	para "A shrine honoring"
-	line "the dragon #mon"
-
-	para "said to have lived"
-	line "in Dragon's Den."
-	done
-
-SilverText_GiveEgg:
+.GiveEggText:
 	text "…"
 	line "Listen."
 
@@ -318,7 +217,7 @@ SilverText_GiveEgg:
 	cont "Here. Take it."
 	done
 
-SilverText_DescribeEgg:
+.DescribeEggText:
 	text "Humph. Are you"
 	line "through here?"
 
@@ -326,12 +225,12 @@ SilverText_DescribeEgg:
 	line "my way."
 	done
 
-SilverText_PartyFull:
+.PartyFullText:
 	text "Humph. You don't"
 	line "have any room…"
 	done
 
-SilverText_Training1:
+.Training1Text:
 	text "…"
 	line "What? <PLAYER>?"
 
@@ -351,7 +250,7 @@ SilverText_Training1:
 	line "mon trainer…"
 	done
 
-SilverText_Training2:
+.Training2Text:
 	text "…"
 
 	para "Whew…"
@@ -360,16 +259,9 @@ SilverText_Training2:
 	line "of my way…"
 	done
 
-DragonTamerDarinSeenText:
-	text "You! How dare you"
-	line "enter uninvited!"
-	done
+GenericTrainerDragonTamerDarin:
+	generictrainer EVENT_BEAT_DRAGON_TAMER_DARIN, DRAGON_TAMER, DARIN, .SeenText, .BeatenText
 
-DragonTamerDarinBeatenText:
-	text "S-strong!"
-	done
-
-DragonTamerDarinAfterText:
 	text "The Shrine ahead"
 	line "is home to the"
 
@@ -380,17 +272,18 @@ DragonTamerDarinAfterText:
 	line "to just go in!"
 	done
 
-DragonTamerAdamSeenText:
-	text "You shouldn't be"
-	line "in here!"
+.SeenText:
+	text "You! How dare you"
+	line "enter uninvited!"
 	done
 
-DragonTamerAdamBeatenText:
-	text "No! I was"
-	line "defeated!"
+.BeatenText:
+	text "S-strong!"
 	done
 
-DragonTamerAdamAfterText:
+GenericTrainerDragonTamerAdam:
+	generictrainer EVENT_BEAT_DRAGON_TAMER_ADAM, DRAGON_TAMER, ADAM, .SeenText, .BeatenText
+
 	text "Not even the power"
 	line "of dragons could"
 	cont "stop you."
@@ -402,18 +295,19 @@ DragonTamerAdamAfterText:
 	line "looking for."
 	done
 
-AceDuoDanandcara1SeenText:
-	text "Dan: I may not"
-	line "use dragons, but"
-	cont "I'm still strong!"
+.SeenText:
+	text "You shouldn't be"
+	line "in here!"
 	done
 
-AceDuoDanandcara1BeatenText:
-	text "Dan: You were"
-	line "even stronger!"
+.BeatenText:
+	text "No! I was"
+	line "defeated!"
 	done
 
-AceDuoDanandcara1AfterText:
+GenericTrainerAceDuoDanandcara1:
+	generictrainer EVENT_BEAT_ACE_DUO_DAN_AND_CARA, ACE_DUO, DANANDCARA1, .SeenText, .BeatenText
+
 	text "Dan: Soon I'll"
 	line "get permission"
 
@@ -430,18 +324,20 @@ AceDuoDanandcara1AfterText:
 	line "approval."
 	done
 
-AceDuoDanandcara2SeenText:
-	text "Cara: Do you want"
-	line "to train dragons"
-	cont "too?"
+.SeenText:
+	text "Dan: I may not"
+	line "use dragons, but"
+	cont "I'm still strong!"
 	done
 
-AceDuoDanandcara2BeatenText:
-	text "Cara: Oh yikes,"
-	line "I lost!"
+.BeatenText:
+	text "Dan: You were"
+	line "even stronger!"
 	done
 
-AceDuoDanandcara2AfterText:
+GenericTrainerAceDuoDanandcara2:
+	generictrainer EVENT_BEAT_ACE_DUO_DAN_AND_CARA, ACE_DUO, DANANDCARA2, .SeenText, .BeatenText
+
 	text "Cara: Dragons are"
 	line "difficult to"
 
@@ -452,31 +348,46 @@ AceDuoDanandcara2AfterText:
 	line "everyone."
 	done
 
-TwinsLeaandpia1SeenText:
-	text "It's a stranger we"
-	line "don't know."
+.SeenText:
+	text "Cara: Do you want"
+	line "to train dragons"
+	cont "too?"
 	done
 
-TwinsLeaandpia1BeatenText:
-	text "Ouchies."
+.BeatenText:
+	text "Cara: Oh yikes,"
+	line "I lost!"
 	done
 
-TwinsLeaandpia1AfterText:
+GenericTrainerTwinsLeaandpia1:
+	generictrainer EVENT_BEAT_TWINS_LEA_AND_PIA, TWINS, LEAANDPIA1, .SeenText, .BeatenText
+
 	text "It was like having"
 	line "to battle Lance."
 	done
 
-TwinsLeaandpia2SeenText:
-	text "Who are you?"
+.SeenText:
+	text "It's a stranger we"
+	line "don't know."
 	done
 
-TwinsLeaandpia2BeatenText:
-	text "Meanie."
+.BeatenText:
+	text "Ouchies."
 	done
 
-TwinsLeaandpia2AfterText:
+GenericTrainerTwinsLeaandpia2:
+	generictrainer EVENT_BEAT_TWINS_LEA_AND_PIA, TWINS, LEAANDPIA1, .SeenText, .BeatenText
+
 	text "We'll tell on you."
 
 	para "Master will be"
 	line "angry with you."
+	done
+
+.SeenText:
+	text "Who are you?"
+	done
+
+.BeatenText:
+	text "Meanie."
 	done

@@ -125,6 +125,8 @@ Low priority:
 * PERSONTYPE_MART
 * PERSONTYPE_FRUITTREE
 * PERSONTYPE_GENERICTRAINER
+* PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)
+* PERSONTYPE_TRADE (script pointer → trade ID)
 
 
 ## Postponed until 4.0

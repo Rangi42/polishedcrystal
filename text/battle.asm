@@ -60,13 +60,13 @@ BattleText_EnemyFled: ; 0x807cf
 ; 0x807e2
 
 HurtByPoisonText: ; 0x807e2
-	text "<USER>"
-	line "is hurt by poison!"
+	text "<USER> is"
+	line "hurt by poison!"
 	prompt
 ; 0x807f8
 
 HurtByBurnText: ; 0x807f8
-	text "<USER>'s"
+	text "<USER> is"
 	line "hurt by its burn!"
 	prompt
 ; 0x8080e
@@ -78,7 +78,7 @@ LeechSeedSapsText: ; 0x8080e
 ; 0x80822
 
 HurtByCurseText: ; 0x80836
-	text "<USER>'s"
+	text "<USER> is"
 	line "hurt by the curse!"
 	prompt
 ; 0x8084d
@@ -97,7 +97,7 @@ HailHitsText:
 	prompt
 
 PerishCountText: ; 0x80864
-	text "<USER>'s"
+	text "<USER> is"
 	line "Perish count is @"
 	deciram wd265, 1, 1
 	text "!"
@@ -397,7 +397,7 @@ BattleText_UserFledUsingAStringBuffer1: ; 0x80b89
 ; 0x80ba0
 
 BattleText_UserHurtBySpikes: ; 0x80bae
-	text "<USER>'s"
+	text "<USER> is"
 	line "hurt by spikes!"
 	prompt
 ; 0x80bc2
@@ -555,7 +555,7 @@ MustRechargeText: ; 0x80d27
 ; 0x80d39
 
 DisabledNoMoreText: ; 0x80d39
-	text "<USER>'s"
+	text "<USER> is"
 	line "disabled no more!"
 	prompt
 ; 0x80d4f
@@ -573,7 +573,7 @@ HurtItselfText: ; 0x80d5f
 ; 0x80d81
 
 ConfusedNoMoreText: ; 0x80d81
-	text "<USER>'s"
+	text "<USER> is"
 	line "confused no more!"
 	prompt
 ; 0x80d97
@@ -594,13 +594,13 @@ BattleText_ItemHealedConfusion: ; ItemHealedConfusion
 ; 0x80dcc
 
 AlreadyConfusedText: ; 0x80dcc
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "already confused!"
 	prompt
 ; 0x80de2
 
 BattleText_UsersHurtByStringBuffer1: ; 0x80de2
-	text "<USER>'s"
+	text "<USER> is"
 	line "hurt by"
 	cont "@"
 	text_from_ram StringBuffer1
@@ -800,7 +800,7 @@ CrashedText: ; 0x81046
 ; 0x81061
 
 UnaffectedText: ; 0x81061
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "unaffected!"
 	prompt
 ; 0x81071
@@ -878,7 +878,7 @@ SketchedText: ; 0x81143
 ; 0x81156
 
 DestinyBondEffectText: ; 0x81156
-	text "<USER>'s"
+	text "<USER> is"
 	line "trying to take its"
 	cont "opponent with it!"
 	prompt
@@ -897,7 +897,7 @@ FellAsleepText: ; 0x811b1
 ; 0x811c1
 
 AlreadyAsleepText: ; 0x811c1
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "already asleep!"
 	prompt
 ; 0x811d5
@@ -909,13 +909,13 @@ WasPoisonedText: ; 0x811d5
 ; 0x811e6
 
 BadlyPoisonedText: ; 0x811e6
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "badly poisoned!"
 	prompt
 ; 0x811fa
 
 AlreadyPoisonedText: ; 0x811fa
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "already poisoned!"
 	prompt
 ; 0x81210
@@ -945,7 +945,7 @@ DefrostedOpponentText: ; 0x8124b
 ; 0x8125d
 
 AlreadyBurnedText:
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "already burned!"
 	prompt
 
@@ -1000,26 +1000,26 @@ EnemyHitTimesText: ; 0x812f8
 ; 0x8130b
 
 MistText: ; 0x8130b
-	text "<USER>'s"
+	text "<USER> is"
 	line "shrouded in mist!"
 	prompt
 ; 0x81321
 
 ProtectedByMistText: ; 0x81321
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "protected by mist."
 	prompt
 ; 0x81338
 
 GettingPumpedText: ; 0x81338
 	interpret_data
-	text "<USER>'s"
+	text "<USER> is"
 	line "getting pumped!"
 	prompt
 ; 0x8134d
 
 RecoilText: ; 0x8134d
-	text "<USER>'s"
+	text "<USER> is"
 	line "hit with recoil!"
 	prompt
 ; 0x81362
@@ -1159,26 +1159,26 @@ DraggedOutText: ; 0x81544
 ; 0x81558
 
 ParalyzedText: ; 0x81558
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "paralyzed! It"
 	cont "might not attack!"
 	prompt
 ; 0x8157d
 
 FullyParalyzedText: ; 0x8157d
-	text "<USER>'s"
+	text "<USER> is"
 	line "fully paralyzed!"
 	prompt
 ; 0x81592
 
 AlreadyParalyzedText: ; 0x81592
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "already paralyzed!"
 	prompt
 ; 0x815a9
 
 ProtectedByText:
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "protected by"
 	cont "@"
 	text_from_ram StringBuffer1
@@ -1261,7 +1261,7 @@ ProtectedItselfText: ; 0x81665
 ; 0x8167a
 
 ProtectingItselfText: ; 0x8167a
-	text "<TARGET>'s"
+	text "<TARGET> is"
 	line "protecting itself!"
 	done
 ; 0x81691
@@ -1315,7 +1315,7 @@ FellInLoveText: ; 0x8170b
 ; 0x8171c
 
 CoveredByVeilText: ; 0x8171c
-	text "<USER>'s"
+	text "<USER> is"
 	line "covered by a veil!"
 	prompt
 ; 0x81733

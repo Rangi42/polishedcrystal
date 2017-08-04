@@ -1,10 +1,10 @@
 BellchimeTrail_MapScriptHeader:
 
 .MapTriggers: db 1
-	dw BellchimeTrailTrigger0
+	dw BellchimeTrailStepDownTrigger
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkScript
+	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
 
 BellchimeTrail_MapEventHeader:
 
@@ -14,10 +14,10 @@ BellchimeTrail_MapEventHeader:
 	warp_def $9, $15, 1, TIN_TOWER_1F ; hole
 
 .XYTriggers: db 1
-	xy_trigger 1, $9, $15, BellchimeTrailPanUpScript
+	xy_trigger 1, $9, $15, BellchimeTrailPanUpTrigger
 
 .Signposts: db 1
-	signpost 12, 22, SIGNPOST_READ, TinTowerSign
+	signpost 12, 22, SIGNPOST_JUMPTEXT, TinTowerSignText
 
 .PersonEvents: db 1
 	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
@@ -25,11 +25,25 @@ BellchimeTrail_MapEventHeader:
 const_value set 2
 	const BELLCHIMETRAIL_VALERIE
 
-BellchimeTrailTrigger0:
-	priorityjump BellchimeTrailStepDownScript
+BellchimeTrailStepDownTrigger:
+	priorityjump .Script
 	end
 
-SetupValerieMorningWalkScript:
+.Script:
+	checkcode VAR_YCOORD
+	if_not_equal $9, .Done
+	checkcode VAR_XCOORD
+	if_not_equal $15, .Done
+	applymovement PLAYER, .StepDownMovement
+.Done
+	dotrigger $1
+	end
+
+.StepDownMovement:
+	step_down
+	step_end
+
+SetupValerieMorningWalkCallback:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iffalse .Disappear
 	checkevent EVENT_BEAT_VALERIE
@@ -46,21 +60,11 @@ SetupValerieMorningWalkScript:
 	disappear BELLCHIMETRAIL_VALERIE
 	return
 
-BellchimeTrailStepDownScript:
-	checkcode VAR_YCOORD
-	if_not_equal $9, .Done
-	checkcode VAR_XCOORD
-	if_not_equal $15, .Done
-	applymovement PLAYER, BellchimeTrailStepDownMovementData
-.Done
-	dotrigger $1
-	end
-
-BellchimeTrailPanUpScript:
+BellchimeTrailPanUpTrigger:
 	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, BellchimeTrailHidePlayerMovementData
+	applymovement PLAYER, .HidePlayerMovement
 	waitsfx
-	applymovement PLAYER, BellchimeTrailPanUpMovementData
+	applymovement PLAYER, .PanUpMovement
 	disappear PLAYER
 	pause 10
 	special Special_FadeOutMusic
@@ -70,6 +74,26 @@ BellchimeTrailPanUpScript:
 	warpfacing UP, TIN_TOWER_1F, $7, $f
 	end
 
+.HidePlayerMovement:
+	hide_person
+	step_end
+
+.PanUpMovement:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
+
+TinTowerSignText:
+	text "Bell Tower"
+
+	para "A legendary #-"
+	line "mon is said to"
+	cont "roost here."
+	done
+
 BellchimeTrailValerieScript:
 	faceplayer
 	opentext
@@ -77,52 +101,49 @@ BellchimeTrailValerieScript:
 	iftrue .Rematch
 	checkevent EVENT_LISTENED_TO_VALERIE
 	iftrue .Listened
-	writetext BellchimeTrailValerieIntroText
+	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_VALERIE
 .Listened:
-	writetext BellchimeTrailValerieBattleText
+	writetext .BattleText
 	yesorno
 	iffalse .Refused
-	writetext BellchimeTrailValerieAcceptedText
+	writetext .AcceptedText
 	waitbutton
 	closetext
-	winlosstext BellchimeTrailValerieBeatenText, 0
+	winlosstext .BeatenText, 0
 	setlasttalked BELLCHIMETRAIL_VALERIE
 	loadtrainer VALERIE, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_VALERIE
 	opentext
-	writetext BellchimeTrailValerieRewardText
+	writetext .RewardText
 	buttonsound
 	verbosegivetmhm TM_DAZZLINGLEAM
 	setevent EVENT_GOT_TM60_DAZZLINGLEAM_FROM_VALERIE
-	writetext BellchimeTrailValerieFarewellText
+	writetext .FarewellText
 .Depart
 	waitbutton
 	closetext
 	checkcode VAR_FACING
 	if_not_equal RIGHT, .SkipGoAround
-	applymovement BELLCHIMETRAIL_VALERIE, MovementData_ValerieDeparts2
+	applymovement BELLCHIMETRAIL_VALERIE, .ValerieGoesAroundMovement
 .SkipGoAround
-	applymovement BELLCHIMETRAIL_VALERIE, MovementData_ValerieDeparts1
+	applymovement BELLCHIMETRAIL_VALERIE, .ValerieDepartsMovement
 	disappear BELLCHIMETRAIL_VALERIE
 	clearevent EVENT_VALERIE_ECRUTEAK_CITY
 	setflag ENGINE_VALERIE_MORNING_WALK
 	end
 
 .Refused:
-	writetext BellchimeTrailValerieRefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .Rematch:
-	writetext BellchimeTrailValerieRematchText
+	writetext .RematchText
 	waitbutton
 	closetext
-	winlosstext BellchimeTrailValerieRematchBeatenText, 0
+	winlosstext .RematchBeatenText, 0
 	setlasttalked BELLCHIMETRAIL_VALERIE
 	checkcode VAR_BADGES
 	if_equal 16, .Battle3
@@ -147,44 +168,10 @@ BellchimeTrailValerieScript:
 
 .AfterRematch:
 	opentext
-	writetext BellchimeTrailValerieRematchFarewellText
+	writetext .RematchFarewellText
 	jump .Depart
 
-TinTowerSign:
-	jumptext TinTowerSignText
-
-BellchimeTrailStepDownMovementData:
-	step_down
-	step_end
-
-BellchimeTrailHidePlayerMovementData:
-	hide_person
-	step_end
-
-BellchimeTrailPanUpMovementData:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-MovementData_ValerieDeparts1:
-	step_left
-	step_left
-	step_left
-	step_up
-	step_up
-	step_left
-	step_left
-	step_end
-
-MovementData_ValerieDeparts2:
-	step_down
-	step_left
-	step_end
-
-BellchimeTrailValerieIntroText:
+.IntroText:
 	text "If it isn't the"
 	line "trainer who faced"
 	cont "Suicune…"
@@ -211,7 +198,7 @@ BellchimeTrailValerieIntroText:
 	cont "#mon."
 	done
 
-BellchimeTrailValerieBattleText:
+.BattleText:
 	text "Valerie: I train"
 	line "the elusive Fairy"
 	cont "type."
@@ -224,11 +211,11 @@ BellchimeTrailValerieBattleText:
 	line "with me?"
 	done
 
-BellchimeTrailValerieRefusedText:
+.RefusedText:
 	text "Valerie: Alas…"
 	done
 
-BellchimeTrailValerieAcceptedText:
+.AcceptedText:
 	text "Valerie: I hope"
 	line "our battle will"
 
@@ -236,7 +223,7 @@ BellchimeTrailValerieAcceptedText:
 	line "to you."
 	done
 
-BellchimeTrailValerieBeatenText:
+.BeatenText:
 	text "I hope the sun is"
 	line "shining tomorrow…"
 
@@ -245,7 +232,7 @@ BellchimeTrailValerieBeatenText:
 	cont "smile."
 	done
 
-BellchimeTrailValerieRewardText:
+.RewardText:
 	text "Valerie: Yes… that"
 	line "was a fine battle."
 
@@ -258,7 +245,7 @@ BellchimeTrailValerieRewardText:
 	cont "gift from me."
 	done
 
-BellchimeTrailValerieFarewellText:
+.FarewellText:
 	text "Valerie: Oh? My,"
 	line "what a curious"
 	cont "feeling…"
@@ -283,7 +270,7 @@ BellchimeTrailValerieFarewellText:
 	line "again, farewell."
 	done
 
-BellchimeTrailValerieRematchText:
+.RematchText:
 	text "Valerie: Oh, if it"
 	line "isn't my young"
 	cont "trainer…"
@@ -308,7 +295,7 @@ BellchimeTrailValerieRematchText:
 	line "strong."
 	done
 
-BellchimeTrailValerieRematchBeatenText:
+.RematchBeatenText:
 	text "I hope that you"
 	line "will find things"
 
@@ -316,7 +303,7 @@ BellchimeTrailValerieRematchBeatenText:
 	line "about tomorrow…"
 	done
 
-BellchimeTrailValerieRematchFarewellText:
+.RematchFarewellText:
 	text "That was truly a"
 	line "captivating"
 	cont "battle."
@@ -328,10 +315,17 @@ BellchimeTrailValerieRematchFarewellText:
 	line "again, farewell."
 	done
 
-TinTowerSignText:
-	text "Bell Tower"
+.ValerieGoesAroundMovement:
+	step_down
+	step_left
+	step_end
 
-	para "A legendary #-"
-	line "mon is said to"
-	cont "roost here."
-	done
+.ValerieDepartsMovement:
+	step_left
+	step_left
+	step_left
+	step_up
+	step_up
+	step_left
+	step_left
+	step_end
