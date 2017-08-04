@@ -147,14 +147,14 @@ MusicPlayer::
 ;	call RenderWaveform
 ;	pop af
 ;	inc a
-;	cp NUM_VALID_WAVEFORMS
+;	cp NUM_WAVEFORMS
 ;	jr nz, .waveform_loop
 
 ; Rendered waveforms would have difficulty filling their integrals with
 ; the dark hue. TPP Crystal dealt with this by doubling their width.
 ; Here we just use a static image.
 	ld de, WaveformsGFX
-	lb bc, BANK(WaveformsGFX), NUM_VALID_WAVEFORMS * 2
+	lb bc, BANK(WaveformsGFX), NUM_WAVEFORMS * 2
 	ld hl, VTiles2 tile $40
 	call Request2bpp
 
@@ -506,7 +506,7 @@ SongEditor:
 	ld a, [Channel3Intensity]
 	and $f
 	inc a
-	cp NUM_VALID_WAVEFORMS
+	cp NUM_WAVEFORMS
 	jr nz, .change_wave
 	xor a
 	jr .change_wave
@@ -518,7 +518,7 @@ SongEditor:
 	dec a
 	cp -1
 	jr nz, .change_wave
-	ld a, NUM_VALID_WAVEFORMS - 1
+	ld a, NUM_WAVEFORMS - 1
 .change_wave:
 	ld b, a
 	ld a, [Channel3Intensity]
@@ -529,11 +529,24 @@ SongEditor:
 	farcall ReloadWaveform
 	ret
 
-; TODO: up/down for noise adjusts MusicNoiseSampleSet
 .up_noise:
 ; next noise set
+	ld a, [MusicNoiseSampleSet]
+	inc a
+	cp NUM_NOISE_SETS
+	jr nz, .change_noise
+	xor a
+	jr .change_noise
+
 .down_noise:
 ; previous noise set
+	ld a, [MusicNoiseSampleSet]
+	dec a
+	cp -1
+	jr nz, .change_noise
+	ld a, NUM_NOISE_SETS - 1
+.change_noise:
+	ld [MusicNoiseSampleSet], a
 .return:
 	ret
 
