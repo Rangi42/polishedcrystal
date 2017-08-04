@@ -1337,6 +1337,7 @@ ApplyDamageAbilities:
 	jp AbilityJumptable
 
 OffensiveDamageAbilities:
+	dbw TECHNICIAN, TechnicianAbility
 	dbw HUGE_POWER, HugePowerAbility
 	dbw HUSTLE, HustleAbility
 	dbw OVERGROW, OvergrowAbility
@@ -1364,6 +1365,13 @@ DefensiveDamageAbilities:
 	dbw DRY_SKIN, EnemyDrySkinAbility
 	dbw FUR_COAT, EnemyFurCoatAbility
 	dbw -1, -1
+
+TechnicianAbility:
+	ld a, d
+	cp 61
+	ret nc
+	ld a, $32
+	jp ApplyDamageMod
 
 HugePowerAbility:
 ; Doubles physical attack
