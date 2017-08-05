@@ -885,14 +885,16 @@ EMOTE_OBJECT EQU 7
 	const_def
 	const PERSONTYPE_SCRIPT         ; 0
 	const PERSONTYPE_ITEMBALL       ; 1
-	const PERSONTYPE_TRAINER        ; 2
-	const PERSONTYPE_TMHMBALL       ; 3
-	const PERSONTYPE_JUMPTEXT       ; 4
-	const PERSONTYPE_JUMPTEXTFP     ; 5
-	const PERSONTYPE_JUMPSTD        ; 6
-	const PERSONTYPE_MART           ; 7
-	const PERSONTYPE_FRUITTREE      ; 8
-	const PERSONTYPE_GENERICTRAINER ; 9
+	const PERSONTYPE_TMHMBALL       ; 2
+	const PERSONTYPE_JUMPTEXT       ; 3
+	const PERSONTYPE_JUMPTEXTFP     ; 4
+	const PERSONTYPE_JUMPSTD        ; 5
+	const PERSONTYPE_TRAINER        ; 6
+	const PERSONTYPE_GENERICTRAINER ; 7
+	const PERSONTYPE_MART           ; 8
+	const PERSONTYPE_POKEMON        ; 9
+	const PERSONTYPE_NPCTRADE       ; a
+	const PERSONTYPE_FRUITTREE      ; b
 NUM_PERSONTYPES EQU const_value
 
 ; fruit trees

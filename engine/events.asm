@@ -510,14 +510,16 @@ TryObjectEvent: ; 969b5
 .pointers:
 	dw .script     ; PERSONTYPE_SCRIPT
 	dw .itemball   ; PERSONTYPE_ITEMBALL
-	dw .trainer    ; PERSONTYPE_TRAINER
 	dw .tmhmball   ; PERSONTYPE_TMHMBALL
+	dw .trainer    ; PERSONTYPE_TRAINER
+	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 	dw .jumptext   ; PERSONTYPE_JUMPTEXT
 	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
 	dw .jumpstd    ; PERSONTYPE_JUMPSTD
 	dw .mart       ; PERSONTYPE_MART
+	dw .pokemon    ; PERSONTYPE_POKEMON
+	dw .npctrade   ; PERSONTYPE_NPCTRADE
 	dw .fruittree  ; PERSONTYPE_FRUITTREE
-	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -599,6 +601,12 @@ TryObjectEvent: ; 969b5
 	ld a, [hl]
 	ld [de], a
 	jr .call_temporary_script_buffer
+
+.npctrade:
+	; TODO
+
+.pokemon:
+	; TODO
 
 .fruittree:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
