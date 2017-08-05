@@ -1,23 +1,43 @@
+Route30_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route30_MapEventHeader:
+
+.Warps: db 2
+	warp_def $27, $7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
+	warp_def $5, $11, 1, MR_POKEMONS_HOUSE
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 43, 9, SIGNPOST_READ, Route30Sign
+	signpost 29, 13, SIGNPOST_READ, MrPokemonsHouseDirectionsSign
+	signpost 5, 15, SIGNPOST_READ, MrPokemonsHouseSign
+	signpost 21, 3, SIGNPOST_READ, Route30TrainerTips
+	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
+	signpost 39, 5, SIGNPOST_READ, BerryMastersHouseSign
+
+.PersonEvents: db 12
+	person_event SPRITE_YOUNGSTER, 26, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
+	person_event SPRITE_PIDGEY, 24, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
+	person_event SPRITE_RATTATA, 25, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
+	person_event SPRITE_YOUNGSTER, 28, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
+	person_event SPRITE_YOUNGSTER, 23, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterMikey, -1
+	person_event SPRITE_CHERRYGROVE_RIVAL, 7, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDon, -1
+	person_event SPRITE_YOUNGSTER, 30, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CutTree, EVENT_ROUTE_30_CUT_TREE
+	person_event SPRITE_BALL_CUT_FRUIT, 39, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree2, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CooltrainerFScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 35, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
+
 const_value set 2
 	const ROUTE30_YOUNGSTER1
-	const ROUTE30_YOUNGSTER2
-	const ROUTE30_YOUNGSTER3
-	const ROUTE30_BUG_CATCHER
-	const ROUTE30_YOUNGSTER4
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA
-	const ROUTE30_CUT_TREE
-	const ROUTE30_FRUIT_TREE1
-	const ROUTE30_FRUIT_TREE2
-	const ROUTE30_COOLTRAINER_F
-	const ROUTE30_POKE_BALL
-
-Route30_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 YoungsterJoey_ImportantBattleScript:
 	waitsfx
@@ -243,9 +263,6 @@ BerryMastersHouseSign:
 Route30TrainerTips:
 	jumptext Route30TrainerTipsText
 
-Route30Antidote:
-	itemball ANTIDOTE
-
 Route30CutTree:
 	jumpstd cuttree
 
@@ -416,36 +433,3 @@ YoungsterJoeyText_GiveHPUpAfterBattle:
 	para "I'm going to get"
 	line "tougher too."
 	done
-
-Route30_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $27, $7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
-	warp_def $5, $11, 1, MR_POKEMONS_HOUSE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 43, 9, SIGNPOST_READ, Route30Sign
-	signpost 29, 13, SIGNPOST_READ, MrPokemonsHouseDirectionsSign
-	signpost 5, 15, SIGNPOST_READ, MrPokemonsHouseSign
-	signpost 21, 3, SIGNPOST_READ, Route30TrainerTips
-	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
-	signpost 39, 5, SIGNPOST_READ, BerryMastersHouseSign
-
-.PersonEvents:
-	db 12
-	person_event SPRITE_YOUNGSTER, 26, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
-	person_event SPRITE_YOUNGSTER, 28, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
-	person_event SPRITE_YOUNGSTER, 23, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterMikey, -1
-	person_event SPRITE_CHERRYGROVE_RIVAL, 7, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDon, -1
-	person_event SPRITE_YOUNGSTER, 30, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
-	person_event SPRITE_PIDGEY, 24, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
-	person_event SPRITE_RATTATA, 25, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CutTree, EVENT_ROUTE_30_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 39, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree2, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CooltrainerFScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 35, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route30Antidote, EVENT_ROUTE_30_ANTIDOTE

@@ -1,22 +1,37 @@
+GiovannisCave_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw GiovannisCaveTrigger0
+	dw GiovannisCaveTrigger1
+
+.MapCallbacks: db 0
+
+GiovannisCave_MapEventHeader:
+
+.Warps: db 1
+	warp_def $7, $f, 3, TOHJO_FALLS
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 2, 15, SIGNPOST_READ, GiovannisCaveRadioScript
+	signpost 6, 12, SIGNPOST_ITEM, GiovannisCaveHiddenBerserkGene
+
+.PersonEvents: db 5
+	person_event SPRITE_CELEBI, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
+	person_event SPRITE_LYRA, 5, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
+	person_event SPRITE_GIOVANNI, 3, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GiovannisCaveRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 16, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GiovannisCaveRock, -1
+
 const_value set 2
 	const GIOVANNISCAVE_CELEBI
 	const GIOVANNISCAVE_LYRA
 	const GIOVANNISCAVE_GIOVANNI
-	const GIOVANNISCAVE_ROCK1
-	const GIOVANNISCAVE_ROCK2
 
-GiovannisCave_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 0
-
-.Trigger1:
+GiovannisCaveTrigger1:
 	priorityjump GiovannisCaveCelebiEventScript
-.Trigger0:
+GiovannisCaveTrigger0:
 	end
 
 GiovannisCaveCelebiEventScript:
@@ -344,24 +359,3 @@ GiovannisCaveLyraWantsToLeaveText:
 	para "Please let us go"
 	line "back to our time!"
 	done
-
-GiovannisCave_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $7, $f, 3, TOHJO_FALLS
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 2, 15, SIGNPOST_READ, GiovannisCaveRadioScript
-	signpost 6, 12, SIGNPOST_ITEM, GiovannisCaveHiddenBerserkGene
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_CELEBI, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
-	person_event SPRITE_LYRA, 5, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
-	person_event SPRITE_GIOVANNI, 3, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GiovannisCaveRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 16, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GiovannisCaveRock, -1

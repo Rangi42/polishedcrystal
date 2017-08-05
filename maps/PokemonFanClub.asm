@@ -1,17 +1,32 @@
-const_value set 2
-	const POKEMONFANCLUB_GENTLEMAN
-	const POKEMONFANCLUB_RECEPTIONIST
-	const POKEMONFANCLUB_FISHER
-	const POKEMONFANCLUB_TEACHER
-	const POKEMONFANCLUB_CLEFAIRY_DOLL
-	const POKEMONFANCLUB_ODDISH
-
 PokemonFanClub_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PokemonFanClub_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, VERMILION_CITY
+	warp_def $7, $3, 3, VERMILION_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 0, 7, SIGNPOST_READ, MapPokemonFanClubSignpost0Script
+	signpost 0, 9, SIGNPOST_READ, MapPokemonFanClubSignpost1Script
+	signpost 1, 0, SIGNPOST_READ, PokemonJournalGreenScript
+
+.PersonEvents: db 6
+	person_event SPRITE_CLEFAIRY, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClefairyDoll, EVENT_VERMILION_FAN_CLUB_DOLL
+	person_event SPRITE_GENTLEMAN, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
+	person_event SPRITE_RECEPTIONIST, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x191821, -1
+	person_event SPRITE_FISHER, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
+	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x19186b, -1
+	person_event SPRITE_ODDISH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FanClubOddish, -1
+
+const_value set 2
+	const POKEMONFANCLUB_CLEFAIRY_DOLL
 
 GentlemanScript_0x1917e9:
 	faceplayer
@@ -314,27 +329,3 @@ PokemonJournalGreenText:
 	line "ated by legendary"
 	cont "#mon."
 	done
-
-PokemonFanClub_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, VERMILION_CITY
-	warp_def $7, $3, 3, VERMILION_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 0, 7, SIGNPOST_READ, MapPokemonFanClubSignpost0Script
-	signpost 0, 9, SIGNPOST_READ, MapPokemonFanClubSignpost1Script
-	signpost 1, 0, SIGNPOST_READ, PokemonJournalGreenScript
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_GENTLEMAN, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
-	person_event SPRITE_RECEPTIONIST, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x191821, -1
-	person_event SPRITE_FISHER, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
-	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x19186b, -1
-	person_event SPRITE_CLEFAIRY, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClefairyDoll, EVENT_VERMILION_FAN_CLUB_DOLL
-	person_event SPRITE_ODDISH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FanClubOddish, -1

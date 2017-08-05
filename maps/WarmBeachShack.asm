@@ -1,13 +1,22 @@
-const_value set 2
-	const WARMBEACHSHACK_FISHER1
-	const WARMBEACHSHACK_FISHER2
-
 WarmBeachShack_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+WarmBeachShack_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 1, WARM_BEACH
+	warp_def $7, $3, 1, WARM_BEACH
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_FISHER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
+	person_event SPRITE_FISHER, 3, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
 
 WarmBeachShackFisherScript:
 	faceplayer
@@ -83,20 +92,3 @@ Text_WarmBeachShackTutorTaught:
 	text "Come again!"
 	line "Boioing!"
 	done
-
-WarmBeachShack_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 1, WARM_BEACH
-	warp_def $7, $3, 1, WARM_BEACH
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_FISHER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
-	person_event SPRITE_FISHER, 3, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1

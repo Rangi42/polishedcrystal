@@ -1,13 +1,24 @@
-const_value set 2
-	const ROUTE40BATTLETOWERGATE_ROCKER
-	const ROUTE40BATTLETOWERGATE_TWIN
-
 Route40BattleTowerGate_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route40BattleTowerGate_MapEventHeader:
+
+.Warps: db 4
+	warp_def $7, $4, 1, ROUTE_40
+	warp_def $7, $5, 1, ROUTE_40
+	warp_def $0, $4, 1, BATTLE_TOWER_OUTSIDE
+	warp_def $0, $5, 2, BATTLE_TOWER_OUTSIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_ROCKER, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RockerScript_0x9f669, -1
+	person_event SPRITE_TWIN, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TwinScript_0x9f66c, -1
 
 RockerScript_0x9f669:
 	jumptextfaceplayer UnknownText_0x9f716
@@ -37,22 +48,3 @@ UnknownText_0x9f7c8:
 	para "I have to go train"
 	line "them now!"
 	done
-
-Route40BattleTowerGate_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $7, $4, 1, ROUTE_40
-	warp_def $7, $5, 1, ROUTE_40
-	warp_def $0, $4, 1, BATTLE_TOWER_OUTSIDE
-	warp_def $0, $5, 2, BATTLE_TOWER_OUTSIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_ROCKER, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RockerScript_0x9f669, -1
-	person_event SPRITE_TWIN, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TwinScript_0x9f66c, -1

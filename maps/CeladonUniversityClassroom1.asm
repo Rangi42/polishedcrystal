@@ -1,18 +1,35 @@
+CeladonUniversityClassroom1_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityClassroom1_MapEventHeader:
+
+.Warps: db 2
+	warp_def $b, $2, 6, CELADON_UNIVERSITY_1F
+	warp_def $b, $3, 6, CELADON_UNIVERSITY_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
+	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
+	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf2
+
+.PersonEvents: db 7
+	person_event SPRITE_IMAKUNI, 7, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
+	person_event SPRITE_ANDY, 2, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1AndyScript, -1
+	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Dragon_tamerScript, -1
+	person_event SPRITE_LADY, 5, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1LadyScript, -1
+	person_event SPRITE_ARTIST, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist1Script, -1
+	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist2Script, -1
+	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist3Script, -1
+
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI
-	const CELADONUNIVERSITYCLASSROOM1_ANDY
-	const CELADONUNIVERSITYCLASSROOM1_DRAGON_TAMER
-	const CELADONUNIVERSITYCLASSROOM1_LADY
-	const CELADONUNIVERSITYCLASSROOM1_ARTIST1
-	const CELADONUNIVERSITYCLASSROOM1_ARTIST2
-	const CELADONUNIVERSITYCLASSROOM1_ARTIST3
-
-CeladonUniversityClassroom1_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 CeladonUniversityClassroom1ImakuniScript:
 	faceplayer
@@ -236,30 +253,3 @@ CeladonUniversityClassroom1Bookshelf2:
 	para "called Lilycove"
 	line "Museum."
 	done
-
-CeladonUniversityClassroom1_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $b, $2, 6, CELADON_UNIVERSITY_1F
-	warp_def $b, $3, 6, CELADON_UNIVERSITY_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf2
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_IMAKUNI, 7, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
-	person_event SPRITE_ANDY, 2, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1AndyScript, -1
-	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Dragon_tamerScript, -1
-	person_event SPRITE_LADY, 5, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1LadyScript, -1
-	person_event SPRITE_ARTIST, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist1Script, -1
-	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist2Script, -1
-	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist3Script, -1

@@ -1,33 +1,29 @@
 AzaleaGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
 
 AzaleaGym_MapEventHeader:
-.Warps:
-	db 2
+
+.Warps: db 2
 	warp_def $f, $4, 5, AZALEA_TOWN
 	warp_def $f, $5, 5, AZALEA_TOWN
 
-.XYTriggers:
-	db 0
+.XYTriggers: db 0
 
-.Signposts:
-	db 2
+.Signposts: db 2
 	signpost 13, 3, SIGNPOST_READ, AzaleaGymStatue
 	signpost 13, 6, SIGNPOST_READ, AzaleaGymStatue
 
-.PersonEvents:
-	db 7
+.PersonEvents: db 7
 	person_event SPRITE_BUGSY, 7, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, AzaleaGymBugsyScript, -1
-	person_event SPRITE_BUG_CATCHER, 3, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, TrainerBug_catcherBenny, -1
-	person_event SPRITE_BUG_CATCHER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, TrainerBug_catcherAl, -1
-	person_event SPRITE_BUG_CATCHER, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, TrainerBug_catcherJosh, -1
-	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, TrainerTwinsAmyandmay1, -1
-	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, TrainerTwinsAmyandmay2, -1
 	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, AzaleaGymGuyScript, -1
+	person_event SPRITE_BUG_CATCHER, 3, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherBenny, -1
+	person_event SPRITE_BUG_CATCHER, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherAl, -1
+	person_event SPRITE_BUG_CATCHER, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherJosh, -1
+	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmay1, -1
+	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmay2, -1
 
 AzaleaGymStatue:
 	trainertotext BUGSY, 1, $1
@@ -71,16 +67,10 @@ AzaleaGymBugsyScript:
 	buttonsound
 	verbosegivetmhm TM_FURY_CUTTER
 	setevent EVENT_GOT_TM49_FURY_CUTTER
-	writetext .FuryCutterSpeech
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .FuryCutterSpeech
 
 .GotFuryCutter:
-	writetext .BugMonsAreDeep
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .BugMonsAreDeep
 
 .SeenText:
 	text "I'm Bugsy!"
@@ -165,167 +155,13 @@ AzaleaGymBugsyScript:
 	line "ites thoroughly."
 	done
 
-TrainerBug_catcherBenny:
-	trainer EVENT_BEAT_BUG_CATCHER_BENNY, BUG_CATCHER, BENNY, .SeenText, .BeatenText, 0, .AfterScript
-
-.AfterScript:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
-
-.SeenText:
-	text "Bug #mon evolve"
-	line "young. So they get"
-
-	para "stronger that much"
-	line "faster."
-	done
-
-.BeatenText:
-	text "Just evolving"
-	line "isn't enough!"
-	done
-
-.AfterText:
-	text "#mon become"
-	line "stronger if they"
-	cont "evolve. Really!"
-	done
-
-TrainerBug_catcherAl:
-	trainer EVENT_BEAT_BUG_CATCHER_AL, BUG_CATCHER, AL, .SeenText, .BeatenText, 0, .AfterScript
-
-.AfterScript:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
-
-.SeenText:
-	text "Bug #mon are"
-	line "cool and tough!"
-
-	para "I'll prove it to"
-	line "you!"
-	done
-
-.BeatenText:
-	text "You proved how"
-	line "tough you are…"
-	done
-
-.AfterText:
-	text "They're so cool,"
-	line "but most girls"
-
-	para "don't like bug"
-	line "#mon."
-
-	para "I don't know why…"
-	done
-
-TrainerBug_catcherJosh:
-	trainer EVENT_BEAT_BUG_CATCHER_JOSH, BUG_CATCHER, JOSH, .SeenText, .BeatenText, 0, .AfterScript
-
-.AfterScript:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
-
-.SeenText:
-	text "You saved all the"
-	line "Slowpoke? Whew,"
-	cont "you're mighty!"
-
-	para "But my grown-up"
-	line "#mon are pretty"
-	cont "tough too!"
-	done
-
-.BeatenText:
-	text "Urrgggh!"
-	done
-
-.AfterText:
-	text "I guess I should"
-	line "teach them better"
-	cont "moves…"
-	done
-
-TrainerTwinsAmyandmay1:
-	trainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY1, .SeenText, TrainerTwinsAmyandmayBeatenText, 0, .AfterScript
-
-.AfterScript:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
-
-.SeenText:
-	text "Amy: Hi! Are you"
-	line "challenging the"
-	cont "Leader? No way!"
-	done
-
-.AfterText:
-	text "Amy: You're"
-	line "really strong!"
-	done
-
-TrainerTwinsAmyandmay2:
-	trainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY2, .SeenText, TrainerTwinsAmyandmayBeatenText, 0, .AfterScript
-
-.AfterScript:
-	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
-
-.SeenText:
-	text "May: You want to"
-	line "see the Leader?"
-	cont "We come first!"
-	done
-
-.AfterText:
-	text "May: Our bug #-"
-	line "mon lost! Oh, what"
-	cont "a shame."
-	done
-
-TrainerTwinsAmyandmayBeatenText:
-	text "Amy & May: Oh,"
-	line "double goodness!"
-	done
-
 AzaleaGymGuyScript:
-	faceplayer
 	checkevent EVENT_BEAT_BUGSY
-	iftrue .AzaleaGymGuyWinScript
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	iftrue .Won
+	jumptextfaceplayer .Text
 
-.AzaleaGymGuyWinScript:
-	opentext
-	writetext .WinText
-	waitbutton
-	closetext
-	end
+.Won:
+	jumptextfaceplayer .WinText
 
 .Text:
 	text "Yo, challenger!"
@@ -359,4 +195,104 @@ AzaleaGymGuyScript:
 	para "With people like"
 	line "you, the future of"
 	cont "#mon is bright!"
+	done
+
+GenericTrainerBug_catcherBenny:
+	generictrainer EVENT_BEAT_BUG_CATCHER_BENNY, BUG_CATCHER, BENNY, .SeenText, .BeatenText
+
+	text "#mon become"
+	line "stronger if they"
+	cont "evolve. Really!"
+	done
+
+.SeenText:
+	text "Bug #mon evolve"
+	line "young. So they get"
+
+	para "stronger that much"
+	line "faster."
+	done
+
+.BeatenText:
+	text "Just evolving"
+	line "isn't enough!"
+	done
+
+GenericTrainerBug_catcherAl:
+	generictrainer EVENT_BEAT_BUG_CATCHER_AL, BUG_CATCHER, AL, .SeenText, .BeatenText
+
+	text "They're so cool,"
+	line "but most girls"
+
+	para "don't like bug"
+	line "#mon."
+
+	para "I don't know why…"
+	done
+
+.SeenText:
+	text "Bug #mon are"
+	line "cool and tough!"
+
+	para "I'll prove it to"
+	line "you!"
+	done
+
+.BeatenText:
+	text "You proved how"
+	line "tough you are…"
+	done
+
+GenericTrainerBug_catcherJosh:
+	generictrainer EVENT_BEAT_BUG_CATCHER_JOSH, BUG_CATCHER, JOSH, .SeenText, .BeatenText
+
+	text "I guess I should"
+	line "teach them better"
+	cont "moves…"
+	done
+
+.SeenText:
+	text "You saved all the"
+	line "Slowpoke? Whew,"
+	cont "you're mighty!"
+
+	para "But my grown-up"
+	line "#mon are pretty"
+	cont "tough too!"
+	done
+
+.BeatenText:
+	text "Urrgggh!"
+	done
+
+GenericTrainerTwinsAmyandmay1:
+	generictrainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY1, .SeenText, TrainerTwinsAmyandmayBeatenText
+
+	text "Amy: You're"
+	line "really strong!"
+	done
+
+.SeenText:
+	text "Amy: Hi! Are you"
+	line "challenging the"
+	cont "Leader? No way!"
+	done
+
+GenericTrainerTwinsAmyandmay2:
+	generictrainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY2, .SeenText, TrainerTwinsAmyandmayBeatenText
+
+	text "May: Our bug #-"
+	line "mon lost! Oh, what"
+	cont "a shame."
+	done
+
+.SeenText:
+	text "May: You want to"
+	line "see the Leader?"
+	cont "We come first!"
+	done
+
+TrainerTwinsAmyandmayBeatenText:
+	text "Amy & May: Oh,"
+	line "double goodness!"
 	done

@@ -1,22 +1,34 @@
-const_value set 2
-	const CELADONHOMEDECORSTORE4F_CLERK
-	const CELADONHOMEDECORSTORE4F_BIG_SNORLAX_DOLL_TOP_LEFT
-	const CELADONHOMEDECORSTORE4F_BIG_SNORLAX_DOLL_TOP_RIGHT
-	const CELADONHOMEDECORSTORE4F_BIG_SNORLAX_DOLL_BOTTOM_LEFT
-	const CELADONHOMEDECORSTORE4F_BIG_SNORLAX_DOLL_BOTTOM_RIGHT
-	const CELADONHOMEDECORSTORE4F_BIG_LAPRAS_DOLL_TOP_LEFT
-	const CELADONHOMEDECORSTORE4F_BIG_LAPRAS_DOLL_TOP_RIGHT
-	const CELADONHOMEDECORSTORE4F_BIG_LAPRAS_DOLL_BOTTOM_LEFT
-	const CELADONHOMEDECORSTORE4F_BIG_LAPRAS_DOLL_BOTTOM_RIGHT
-	const CELADONHOMEDECORSTORE4F_BIG_ONIX_DOLL
-
 
 CeladonHomeDecorStore4F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonHomeDecorStore4F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $9, 2, CELADON_HOME_DECOR_STORE_3F
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore4FDirectory
+	signpost 5, 2, SIGNPOST_READ, BigOnixDollScript
+	signpost 5, 3, SIGNPOST_READ, BigOnixDollScript
+	signpost 6, 2, SIGNPOST_READ, BigOnixDollScript
+	signpost 6, 3, SIGNPOST_READ, BigOnixDollScript
+
+.PersonEvents: db 9
+	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigDollClerkScript, -1
+	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 4, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	person_event SPRITE_GYARADOS_TOP_LEFT, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	person_event SPRITE_GYARADOS_TOP_LEFT, 4, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 
 BigDollClerkScript:
 	jumptextfaceplayer BigDollClerkText
@@ -208,31 +220,3 @@ CeladonHomeDecorStore4FDirectoryText:
 
 	para "4F: Jumbo Dolls"
 	done
-
-CeladonHomeDecorStore4F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $9, 2, CELADON_HOME_DECOR_STORE_3F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore4FDirectory
-	signpost 5, 2, SIGNPOST_READ, BigOnixDollScript
-	signpost 5, 3, SIGNPOST_READ, BigOnixDollScript
-	signpost 6, 2, SIGNPOST_READ, BigOnixDollScript
-	signpost 6, 3, SIGNPOST_READ, BigOnixDollScript
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigDollClerkScript, -1
-	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 4, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	person_event SPRITE_GYARADOS_TOP_LEFT, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-	person_event SPRITE_GYARADOS_TOP_LEFT, 4, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1

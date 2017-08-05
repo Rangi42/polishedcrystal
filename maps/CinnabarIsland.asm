@@ -1,16 +1,33 @@
+CinnabarIsland_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, CinnabarIslandFlyPoint
+
+CinnabarIsland_MapEventHeader:
+
+.Warps: db 3
+	warp_def $f, $b, 1, CINNABAR_POKECENTER_1F
+	warp_def $9, $12, 1, CINNABAR_VOLCANO_1F
+	warp_def $7, $7, 1, POKEMON_MANSION_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 15, 9, SIGNPOST_READ, CinnabarIslandGymSign
+	signpost 11, 9, SIGNPOST_READ, CinnabarIslandSign
+	signpost 11, 21, SIGNPOST_READ, CinnabarIslandVolcanoWarningSign
+	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
+
+.PersonEvents: db 2
+	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
+
 const_value set 2
 	const CINNABARISLAND_BLUE
-	const CINNABARISLAND_POKE_BALL
 
-CinnabarIsland_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.FlyPoint:
+CinnabarIslandFlyPoint:
 	setflag ENGINE_FLYPOINT_CINNABAR
 	return
 
@@ -41,9 +58,6 @@ CinnabarIslandBlue:
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
-
-CinnabarIslandMagmarizer:
-	itemball MAGMARIZER
 
 CinnabarIslandGymSign:
 	jumptext CinnabarIslandGymSignText
@@ -175,25 +189,3 @@ CinnabarIslandVolcanoWarningSignText:
 	cont "without a means"
 	cont "of escape!"
 	done
-
-CinnabarIsland_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $f, $b, 1, CINNABAR_POKECENTER_1F
-	warp_def $9, $12, 1, CINNABAR_VOLCANO_1F
-	warp_def $7, $7, 1, POKEMON_MANSION_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 15, 9, SIGNPOST_READ, CinnabarIslandGymSign
-	signpost 11, 9, SIGNPOST_READ, CinnabarIslandSign
-	signpost 11, 21, SIGNPOST_READ, CinnabarIslandVolcanoWarningSign
-	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CinnabarIslandMagmarizer, EVENT_CINNABAR_ISLAND_MAGMARIZER

@@ -1,20 +1,38 @@
-const_value set 2
-	const DIGLETTSCAVE_SUPER_NERD
-	const DIGLETTSCAVE_POKEFAN_M1
-	const DIGLETTSCAVE_POKEFAN_M2
-	const DIGLETTSCAVE_POKEFAN_M3
-	const DIGLETTSCAVE_ENGINEER
-	const DIGLETTSCAVE_POKEFAN_M4
-	const DIGLETTSCAVE_COOLTRAINER_F
-	const DIGLETTSCAVE_POKE_BALL1
-	const DIGLETTSCAVE_POKE_BALL2
-
 DiglettsCave_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+DiglettsCave_MapEventHeader:
+
+.Warps: db 6
+	warp_def $f, $25, 10, VERMILION_CITY
+	warp_def $d, $27, 5, DIGLETTS_CAVE
+	warp_def $5, $25, 4, ROUTE_2_NORTH
+	warp_def $3, $27, 6, DIGLETTS_CAVE
+	warp_def $1f, $25, 2, DIGLETTS_CAVE
+	warp_def $5, $5, 4, DIGLETTS_CAVE
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 15, 8, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
+	signpost 33, 34, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRepel
+
+.PersonEvents: db 9
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DiglettsCaveDiglettDoll, EVENT_DECO_DIGLETT_DOLL
+	person_event SPRITE_SUPER_NERD, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
+	person_event SPRITE_POKEFAN_M, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
+	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
+	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
+	person_event SPRITE_ENGINEER, 20, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
+	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x74002, -1
+	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveCooltrainerfScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 28, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
+
+const_value set 2
+	const DIGLETTSCAVE_POKE_BALL2
 
 DiglettsCaveFossilManiacScript:
 	faceplayer
@@ -269,9 +287,6 @@ else
 endc
 	done
 
-DiglettsCaveRareBone:
-	itemball RARE_BONE
-
 DiglettsCaveDiglettDoll:
 	disappear DIGLETTSCAVE_POKE_BALL2
 	setevent EVENT_DECO_DIGLETT_DOLL
@@ -300,33 +315,3 @@ DiglettsCaveHiddenMaxRevive:
 
 DiglettsCaveHiddenMaxRepel:
 	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL, MAX_REPEL
-
-DiglettsCave_MapEventHeader:
-.Warps:
-	db 6
-	warp_def $f, $25, 10, VERMILION_CITY
-	warp_def $d, $27, 5, DIGLETTS_CAVE
-	warp_def $5, $25, 4, ROUTE_2_NORTH
-	warp_def $3, $27, 6, DIGLETTS_CAVE
-	warp_def $1f, $25, 2, DIGLETTS_CAVE
-	warp_def $5, $5, 4, DIGLETTS_CAVE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 15, 8, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
-	signpost 33, 34, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRepel
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_SUPER_NERD, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
-	person_event SPRITE_POKEFAN_M, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
-	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
-	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
-	person_event SPRITE_ENGINEER, 20, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
-	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x74002, -1
-	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveCooltrainerfScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DiglettsCaveRareBone, EVENT_DIGLETTS_CAVE_RARE_BONE
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DiglettsCaveDiglettDoll, EVENT_DECO_DIGLETT_DOLL

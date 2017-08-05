@@ -1,13 +1,25 @@
+Route19BeachHouse_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route19BeachHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 2, ROUTE_19
+	warp_def $7, $3, 2, ROUTE_19
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
+	person_event SPRITE_SURFING_PIKACHU, 4, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1
+
 const_value set 2
 	const ROUTE19BEACHHOUSE_VICTOR
-	const ROUTE19BEACHHOUSE_PUKA
-
-Route19BeachHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 Route19BeachHouseVictorScript:
 	faceplayer
@@ -132,20 +144,3 @@ Route19BeachHouseSurfingPikachuScript:
 .Text:
 	text "Puka: Pi-kaa!"
 	done
-
-Route19BeachHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 2, ROUTE_19
-	warp_def $7, $3, 2, ROUTE_19
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
-	person_event SPRITE_SURFING_PIKACHU, 4, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1

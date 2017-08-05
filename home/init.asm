@@ -52,7 +52,7 @@ Init:: ; 17d
 	ld [rOBP1], a
 	ld [rTMA], a
 	ld [rTAC], a
-	ld [$d000], a
+	ld [wd000], a
 
 .wait
 	ld a, [rLY]

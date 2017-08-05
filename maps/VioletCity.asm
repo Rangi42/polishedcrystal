@@ -1,31 +1,58 @@
+VioletCity_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, VioletCityFlyPoint
+	dbw MAPCALLBACK_SPRITES, VioletCitySwimmerGuySprite
+
+VioletCity_MapEventHeader:
+
+.Warps: db 11
+	warp_def $15, $9, 2, VIOLET_MART
+	warp_def $15, $12, 1, VIOLET_GYM
+	warp_def $15, $1e, 1, EARLS_POKEMON_ACADEMY
+	warp_def $13, $3, 1, VIOLET_NICKNAME_SPEECH_HOUSE
+	warp_def $1d, $1f, 1, VIOLET_POKECENTER_1F
+	warp_def $21, $15, 1, VIOLET_ONIX_TRADE_HOUSE
+	warp_def $5, $17, 1, SPROUT_TOWER_1F
+	warp_def $1c, $27, 1, ROUTE_31_VIOLET_GATE
+	warp_def $1d, $27, 2, ROUTE_31_VIOLET_GATE
+	warp_def $c, $2, 3, ROUTE_36_VIOLET_GATE
+	warp_def $d, $2, 4, ROUTE_36_VIOLET_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 24, 24, SIGNPOST_READ, VioletCitySign
+	signpost 21, 15, SIGNPOST_READ, VioletGymSign
+	signpost  8, 24, SIGNPOST_READ, SproutTowerSign
+	signpost 21, 27, SIGNPOST_READ, EarlsPokemonAcademySign
+	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
+	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
+
+.PersonEvents: db 13
+	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
+	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
+	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM1Script, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerFScript, -1
+	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGrampsScript, -1
+	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
+	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 23, 36, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityCutTree, EVENT_VIOLET_CITY_CUT_TREE
+	person_event SPRITE_BALL_CUT_FRUIT, 33, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 6, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
+	person_event SPRITE_BALL_CUT_FRUIT, 11, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
+	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM2Script, -1
+
 const_value set 2
 	const VIOLETCITY_EARL
-	const VIOLETCITY_LASS
-	const VIOLETCITY_COOLTRAINER_M1
-	const VIOLETCITY_COOLTRAINER_F
-	const VIOLETCITY_GRAMPS
-	const VIOLETCITY_YOUNGSTER
-	const VIOLETCITY_FISHER
-	const VIOLETCITY_CUT_TREE
-	const VIOLETCITY_FRUIT_TREE
-	const VIOLETCITY_POKE_BALL1
-	const VIOLETCITY_POKE_BALL2
-	const VIOLETCITY_COOLTRAINER_M2
 
-VioletCity_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.FlyPoint:
+VioletCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIOLET
 	return
 
-.SwimmerGuySprite:
+VioletCitySwimmerGuySprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	return
 
@@ -96,12 +123,6 @@ SproutTowerSign:
 
 EarlsPokemonAcademySign:
 	jumptext EarlsPokemonAcademySignText
-
-VioletCityPPUp:
-	itemball PP_UP
-
-VioletCityRareCandy:
-	itemball RARE_CANDY
 
 VioletCityCutTree:
 	jumpstd cuttree
@@ -323,45 +344,3 @@ EarlsPokemonAcademySignText:
 	text "Earl's #mon"
 	line "Academy"
 	done
-
-VioletCity_MapEventHeader:
-.Warps:
-	db 11
-	warp_def $15, $9, 2, VIOLET_MART
-	warp_def $15, $12, 1, VIOLET_GYM
-	warp_def $15, $1e, 1, EARLS_POKEMON_ACADEMY
-	warp_def $13, $3, 1, VIOLET_NICKNAME_SPEECH_HOUSE
-	warp_def $1d, $1f, 1, VIOLET_POKECENTER_1F
-	warp_def $21, $15, 1, VIOLET_ONIX_TRADE_HOUSE
-	warp_def $5, $17, 1, SPROUT_TOWER_1F
-	warp_def $1c, $27, 1, ROUTE_31_VIOLET_GATE
-	warp_def $1d, $27, 2, ROUTE_31_VIOLET_GATE
-	warp_def $c, $2, 3, ROUTE_36_VIOLET_GATE
-	warp_def $d, $2, 4, ROUTE_36_VIOLET_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 24, 24, SIGNPOST_READ, VioletCitySign
-	signpost 21, 15, SIGNPOST_READ, VioletGymSign
-	signpost  8, 24, SIGNPOST_READ, SproutTowerSign
-	signpost 21, 27, SIGNPOST_READ, EarlsPokemonAcademySign
-	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
-	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
-	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM1Script, -1
-	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerFScript, -1
-	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGrampsScript, -1
-	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
-	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 36, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityCutTree, EVENT_VIOLET_CITY_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, VioletCityPPUp, EVENT_VIOLET_CITY_PP_UP
-	person_event SPRITE_BALL_CUT_FRUIT, 11, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, VioletCityRareCandy, EVENT_VIOLET_CITY_RARE_CANDY
-	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM2Script, -1

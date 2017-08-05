@@ -1,12 +1,24 @@
 IndigoPlateau_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+.MapTriggers: db 0
 
-.FlyPoint:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, IndigoPlateauFlyPoint
+
+IndigoPlateau_MapEventHeader:
+
+.Warps: db 2
+	warp_def $5, $9, 1, INDIGO_PLATEAU_POKECENTER_1F
+	warp_def $5, $a, 2, INDIGO_PLATEAU_POKECENTER_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 7, 11, SIGNPOST_READ, IndigoPlateauSign
+
+.PersonEvents: db 0
+
+IndigoPlateauFlyPoint:
 	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
 	return
 
@@ -21,19 +33,3 @@ IndigoPlateauSignText:
 
 	para "#mon League HQ"
 	done
-
-IndigoPlateau_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $5, $9, 1, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def $5, $a, 2, INDIGO_PLATEAU_POKECENTER_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 7, 11, SIGNPOST_READ, IndigoPlateauSign
-
-.PersonEvents:
-	db 0

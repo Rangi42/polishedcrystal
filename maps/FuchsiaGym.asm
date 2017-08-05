@@ -1,17 +1,35 @@
+FuchsiaGym_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+FuchsiaGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $4, 2, FUCHSIA_CITY
+	warp_def $11, $5, 2, FUCHSIA_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 15, 3, SIGNPOST_READ, FuchsiaGymStatue
+	signpost 15, 6, SIGNPOST_READ, FuchsiaGymStatue
+
+.PersonEvents: db 6
+	person_event SPRITE_JANINE, 7, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineScript_0x195db9, -1
+	person_event SPRITE_FUCHSIA_GYM_1, 10, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym1Script_0x195e1b, -1
+	person_event SPRITE_FUCHSIA_GYM_2, 11, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym2Script_0x195e55, -1
+	person_event SPRITE_FUCHSIA_GYM_3, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym3Script_0x195e8f, -1
+	person_event SPRITE_FUCHSIA_GYM_4, 2, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym4Script_0x195ec9, -1
+	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaGymGuyScript, -1
+
 const_value set 2
 	const FUCHSIAGYM_JANINE
 	const FUCHSIAGYM_FUCHSIA_GYM_1
 	const FUCHSIAGYM_FUCHSIA_GYM_2
 	const FUCHSIAGYM_FUCHSIA_GYM_3
 	const FUCHSIAGYM_FUCHSIA_GYM_4
-	const FUCHSIAGYM_GYM_GUY
-
-FuchsiaGym_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 JanineScript_0x195db9:
 	checkflag ENGINE_MARSHBADGE
@@ -401,26 +419,3 @@ FuchsiaGymGuyWinText:
 	line "battle, trainer"
 	cont "from Johto!"
 	done
-
-FuchsiaGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $4, 2, FUCHSIA_CITY
-	warp_def $11, $5, 2, FUCHSIA_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 15, 3, SIGNPOST_READ, FuchsiaGymStatue
-	signpost 15, 6, SIGNPOST_READ, FuchsiaGymStatue
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_JANINE, 7, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineScript_0x195db9, -1
-	person_event SPRITE_FUCHSIA_GYM_1, 10, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym1Script_0x195e1b, -1
-	person_event SPRITE_FUCHSIA_GYM_2, 11, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym2Script_0x195e55, -1
-	person_event SPRITE_FUCHSIA_GYM_3, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym3Script_0x195e8f, -1
-	person_event SPRITE_FUCHSIA_GYM_4, 2, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym4Script_0x195ec9, -1
-	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaGymGuyScript, -1

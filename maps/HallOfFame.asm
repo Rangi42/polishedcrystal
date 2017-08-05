@@ -1,15 +1,27 @@
+HallOfFame_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw HallOfFameTrigger0
+
+.MapCallbacks: db 0
+
+HallOfFame_MapEventHeader:
+
+.Warps: db 2
+	warp_def $d, $4, 3, LANCES_ROOM
+	warp_def $d, $5, 4, LANCES_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_LANCE, 12, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
 const_value set 2
 	const HALLOFFAME_LANCE
 
-HallOfFame_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+HallOfFameTrigger0:
 	priorityjump HallOfFameScript
 	end
 
@@ -173,19 +185,3 @@ HallOfFame_SilverTrophySentText:
 	text "Silver Trophy"
 	line "was sent home."
 	done
-
-HallOfFame_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $d, $4, 3, LANCES_ROOM
-	warp_def $d, $5, 4, LANCES_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_LANCE, 12, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

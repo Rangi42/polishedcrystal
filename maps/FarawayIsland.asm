@@ -1,28 +1,42 @@
+FarawayIsland_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw FarawayIslandTrigger0
+	dw FarawayIslandTrigger1
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, FarawayIslandVisited
+	dbw MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
+
+FarawayIsland_MapEventHeader:
+
+.Warps: db 2
+	warp_def $8, $16, 1, FARAWAY_JUNGLE
+	warp_def $8, $17, 2, FARAWAY_JUNGLE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 34, 4, SIGNPOST_READ, FarawayIslandSign
+
+.PersonEvents: db 2
+	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND
+
 const_value set 2
 	const FARAWAYISLAND_SAILOR
 	const FARAWAYISLAND_LAWRENCE
 
-FarawayIsland_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .Visited
-	dbw MAPCALLBACK_SPRITES, .SetupLawrence
-
-.Trigger1:
+FarawayIslandTrigger1:
 	priorityjump FarawayIsland_PlayerArrives
-.Trigger0:
+FarawayIslandTrigger0:
 	end
 
-.Visited:
+FarawayIslandVisited:
 	setevent EVENT_VISITED_FARAWAY_ISLAND
 	return
 
-.SetupLawrence:
+FarawayIslandSetupLawrence:
 	disappear FARAWAYISLAND_LAWRENCE
 	checkevent EVENT_BEAT_LAWRENCE
 	iffalse .Done
@@ -236,21 +250,3 @@ FarawayIslandSignText:
 
 	para "…ji”"
 	done
-
-FarawayIsland_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $8, $16, 1, FARAWAY_JUNGLE
-	warp_def $8, $17, 2, FARAWAY_JUNGLE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 34, 4, SIGNPOST_READ, FarawayIslandSign
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND

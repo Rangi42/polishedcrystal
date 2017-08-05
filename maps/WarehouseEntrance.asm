@@ -1,28 +1,50 @@
+WarehouseEntrance_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 3
+	dbw MAPCALLBACK_NEWMAP, WarehouseEntranceResetSwitches
+	dbw MAPCALLBACK_TILES, WarehouseEntranceCheckBasementKey
+	dbw MAPCALLBACK_OBJECTS, WarehouseEntranceCheckDayOfWeek
+
+WarehouseEntrance_MapEventHeader:
+
+.Warps: db 6
+	warp_def $2, $1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def $22, $1, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def $6, $10, 4, WAREHOUSE_ENTRANCE
+	warp_def $23, $d, 3, WAREHOUSE_ENTRANCE
+	warp_def $23, $e, 3, WAREHOUSE_ENTRANCE
+	warp_def $1f, $e, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
+	signpost 6, 17, SIGNPOST_READ, MapWarehouseEntranceSignpost1Script
+	signpost 13, 4, SIGNPOST_ITEM, WarehouseEntranceHiddenParlyzHeal
+	signpost 18, 2, SIGNPOST_ITEM, WarehouseEntranceHiddenSuperPotion
+	signpost 8, 15, SIGNPOST_ITEM, WarehouseEntranceHiddenAntidote
+
+.PersonEvents: db 10
+	person_event SPRITE_GRAMPS, 11, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
+	person_event SPRITE_SUPER_NERD, 14, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
+	person_event SPRITE_SUPER_NERD, 15, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
+	person_event SPRITE_GRANNY, 21, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7c132, EVENT_WAREHOUSE_ENTRANCE_GRANNY
+	person_event SPRITE_SUPER_NERD, 31, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdEric, -1
+	person_event SPRITE_SUPER_NERD, 9, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
+	person_event SPRITE_SUPER_NERD, 27, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
+	person_event SPRITE_SUPER_NERD, 6, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacDonald, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 25, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+	person_event SPRITE_COSPLAYER, 18, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1
+
 const_value set 2
-	const WAREHOUSEENTRANCE_SUPER_NERD1
-	const WAREHOUSEENTRANCE_SUPER_NERD2
-	const WAREHOUSEENTRANCE_SUPER_NERD3
-	const WAREHOUSEENTRANCE_SUPER_NERD4
-	const WAREHOUSEENTRANCE_POKE_BALL
 	const WAREHOUSEENTRANCE_GRAMPS
 	const WAREHOUSEENTRANCE_SUPER_NERD5
 	const WAREHOUSEENTRANCE_SUPER_NERD6
 	const WAREHOUSEENTRANCE_GRANNY
-	const WAREHOUSEENTRANCE_COSPLAYER
 
-WarehouseEntrance_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 3
-	dbw MAPCALLBACK_NEWMAP, .ResetSwitches
-
-	dbw MAPCALLBACK_TILES, .CheckBasementKey
-
-	dbw MAPCALLBACK_OBJECTS, .CheckDayOfWeek
-
-.ResetSwitches:
+WarehouseEntranceResetSwitches:
 	clearevent EVENT_SWITCH_1
 	clearevent EVENT_SWITCH_2
 	clearevent EVENT_SWITCH_3
@@ -42,7 +64,7 @@ WarehouseEntrance_MapScriptHeader:
 	copyvartobyte UndergroundSwitchPositions
 	return
 
-.CheckBasementKey:
+WarehouseEntranceCheckBasementKey:
 	checkevent EVENT_USED_BASEMENT_KEY
 	iffalse .LockBasementDoor
 	return
@@ -51,7 +73,7 @@ WarehouseEntrance_MapScriptHeader:
 	changeblock $10, $6, $3d
 	return
 
-.CheckDayOfWeek:
+WarehouseEntranceCheckDayOfWeek:
 	checkcode VAR_WEEKDAY
 	if_equal MONDAY, .Monday
 	if_equal TUESDAY, .Tuesday
@@ -416,9 +438,6 @@ WarehouseEntranceScript_ShopClosed:
 	closetext
 	end
 
-WarehouseEntranceCoinCase:
-	itemball COIN_CASE
-
 MapWarehouseEntranceSignpost1Script:
 	jumptext UnknownText_0x7c91a
 
@@ -679,37 +698,3 @@ UnknownText_0x7c91a:
 	text "NO ENTRY BEYOND"
 	line "THIS POINT"
 	done
-
-WarehouseEntrance_MapEventHeader:
-.Warps:
-	db 6
-	warp_def $2, $1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $22, $1, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $6, $10, 4, WAREHOUSE_ENTRANCE
-	warp_def $23, $d, 3, WAREHOUSE_ENTRANCE
-	warp_def $23, $e, 3, WAREHOUSE_ENTRANCE
-	warp_def $1f, $e, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
-	signpost 6, 17, SIGNPOST_READ, MapWarehouseEntranceSignpost1Script
-	signpost 13, 4, SIGNPOST_ITEM, WarehouseEntranceHiddenParlyzHeal
-	signpost 18, 2, SIGNPOST_ITEM, WarehouseEntranceHiddenSuperPotion
-	signpost 8, 15, SIGNPOST_ITEM, WarehouseEntranceHiddenAntidote
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_SUPER_NERD, 31, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdEric, -1
-	person_event SPRITE_SUPER_NERD, 9, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
-	person_event SPRITE_SUPER_NERD, 27, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
-	person_event SPRITE_SUPER_NERD, 6, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacDonald, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 25, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, WarehouseEntranceCoinCase, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
-	person_event SPRITE_GRAMPS, 11, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
-	person_event SPRITE_SUPER_NERD, 14, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
-	person_event SPRITE_SUPER_NERD, 15, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
-	person_event SPRITE_GRANNY, 21, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7c132, EVENT_WAREHOUSE_ENTRANCE_GRANNY
-	person_event SPRITE_COSPLAYER, 18, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1

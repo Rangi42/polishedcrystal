@@ -1,17 +1,30 @@
+NavelRockRoof_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
+
+NavelRockRoof_MapEventHeader:
+
+.Warps: db 1
+	warp_def $f, $9, 14, NAVEL_ROCK_INSIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_LEAF, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
+	person_event SPRITE_CHRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	person_event SPRITE_KRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+
 const_value set 2
 	const NAVELROCKROOF_GREEN
 	const NAVELROCKROOF_CHRIS
 	const NAVELROCKROOF_KRIS
 
-NavelRockRoof_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_SPRITES, .DailyLeafRematchCallback
-
-.DailyLeafRematchCallback:
+NavelRockRoofDailyLeafRematchCallback:
 	disappear NAVELROCKROOF_GREEN
 	checkflag ENGINE_LEAF_IN_NAVEL_ROCK
 	iftrue .Disappear
@@ -119,20 +132,3 @@ NavelRockRoofPanUpMovementData:
 NavelRockRoofStepUpMovementData:
 	slow_step_up
 	step_end
-
-NavelRockRoof_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $f, $9, 14, NAVEL_ROCK_INSIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_LEAF, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
-	person_event SPRITE_CHRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_KRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK

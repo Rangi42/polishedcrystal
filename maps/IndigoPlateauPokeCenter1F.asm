@@ -1,20 +1,39 @@
+IndigoPlateauPokeCenter1F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x18000a
+
+IndigoPlateauPokeCenter1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $d, $9, 1, INDIGO_PLATEAU
+	warp_def $d, $a, 2, INDIGO_PLATEAU
+	warp_def $d, $0, 1, POKECENTER_2F
+	warp_def $3, $c, 1, WILLS_ROOM
+
+.XYTriggers: db 2
+	xy_trigger 0, $4, $e, PlateauRivalBattle1
+	xy_trigger 0, $4, $f, PlateauRivalBattle2
+
+.Signposts: db 1
+	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript
+
+.PersonEvents: db 8
+	person_event SPRITE_SILVER, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
+	person_event SPRITE_LYRA, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
+	person_event SPRITE_YELLOW, 9, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
+	person_event SPRITE_NURSE, 7, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18012c, -1
+	person_event SPRITE_CLERK, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x18012f, -1
+	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x180136, -1
+	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeleportGuyScript, EVENT_TELEPORT_GUY
+	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, AbraScript, EVENT_TELEPORT_GUY
+
 const_value set 2
-	const INDIGOPLATEAUPOKECENTER1F_NURSE
-	const INDIGOPLATEAUPOKECENTER1F_CLERK
-	const INDIGOPLATEAUPOKECENTER1F_COOLTRAINER_M
-	const INDIGOPLATEAUPOKECENTER1F_GRAMPS
-	const INDIGOPLATEAUPOKECENTER1F_ABRA
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW
-
-IndigoPlateauPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x18000a
 
 UnknownScript_0x18000a:
 	domaptrigger WILLS_ROOM, $0
@@ -643,31 +662,3 @@ IndigoPlateauYellowDownMovement:
 	step_down
 	step_down
 	step_end
-
-IndigoPlateauPokeCenter1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $d, $9, 1, INDIGO_PLATEAU
-	warp_def $d, $a, 2, INDIGO_PLATEAU
-	warp_def $d, $0, 1, POKECENTER_2F
-	warp_def $3, $c, 1, WILLS_ROOM
-
-.XYTriggers:
-	db 2
-	xy_trigger 0, $4, $e, PlateauRivalBattle1
-	xy_trigger 0, $4, $f, PlateauRivalBattle2
-
-.Signposts:
-	db 1
-	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_NURSE, 7, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18012c, -1
-	person_event SPRITE_CLERK, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x18012f, -1
-	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x180136, -1
-	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeleportGuyScript, EVENT_TELEPORT_GUY
-	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, AbraScript, EVENT_TELEPORT_GUY
-	person_event SPRITE_SILVER, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
-	person_event SPRITE_LYRA, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
-	person_event SPRITE_YELLOW, 9, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW

@@ -1,24 +1,33 @@
-const_value set 2
-	const ROUTE17_BIKER1
-	const ROUTE17_BIKER2
-	const ROUTE17_BIKER3
-	const ROUTE17_BIKER4
-	const ROUTE17_BIKER5
-	const ROUTE17_BIKER6
-	const ROUTE17_BIKER7
-	const ROUTE17_BIKER8
-	const ROUTE17_BIKER9
-	const ROUTE17_ROUGHNECK1
-	const ROUTE17_ROUGHNECK2
-	const ROUTE17_ROUGHNECK3
-
 Route17_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
+
+Route17_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 71, 11, SIGNPOST_ITEM, Route17HiddenMaxEther
+	signpost 123, 10, SIGNPOST_ITEM, Route17HiddenMaxElixer
+
+.PersonEvents: db 12
+	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
+	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
+	person_event SPRITE_BIKER, 24, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerJacob, -1
+	person_event SPRITE_BIKER, 37, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerDan, -1
+	person_event SPRITE_BIKER, 56, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
+	person_event SPRITE_BIKER, 65, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
+	person_event SPRITE_BIKER, 72, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerAiden, -1
+	person_event SPRITE_BIKER, 86, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerTeddy, -1
+	person_event SPRITE_BIKER, 128, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_ROUGHNECK, 29, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRoughneckBrian, -1
+	person_event SPRITE_ROUGHNECK, 42, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckTheron, -1
+	person_event SPRITE_ROUGHNECK, 91, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckMarkey, -1
 
 UnknownScript_0x1ad0ab:
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -345,30 +354,3 @@ Route17HiddenMaxEther:
 
 Route17HiddenMaxElixer:
 	dwb EVENT_ROUTE_17_HIDDEN_MAX_ELIXER, MAX_ELIXER
-
-Route17_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 71, 11, SIGNPOST_ITEM, Route17HiddenMaxEther
-	signpost 123, 10, SIGNPOST_ITEM, Route17HiddenMaxElixer
-
-.PersonEvents:
-	db 12
-	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
-	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
-	person_event SPRITE_BIKER, 24, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerJacob, -1
-	person_event SPRITE_BIKER, 37, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerDan, -1
-	person_event SPRITE_BIKER, 56, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
-	person_event SPRITE_BIKER, 65, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
-	person_event SPRITE_BIKER, 72, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerAiden, -1
-	person_event SPRITE_BIKER, 86, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerTeddy, -1
-	person_event SPRITE_BIKER, 128, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_ROUGHNECK, 29, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRoughneckBrian, -1
-	person_event SPRITE_ROUGHNECK, 42, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckTheron, -1
-	person_event SPRITE_ROUGHNECK, 91, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckMarkey, -1

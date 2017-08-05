@@ -1,16 +1,27 @@
-const_value set 2
-	const CHERRYGROVEPOKECENTER1F_NURSE
-	const CHERRYGROVEPOKECENTER1F_FISHER
-	const CHERRYGROVEPOKECENTER1F_GENTLEMAN
-	const CHERRYGROVEPOKECENTER1F_TEACHER
-	const CHERRYGROVEPOKECENTER1F_LADY
-
 CherrygrovePokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CherrygrovePokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 2, CHERRYGROVE_CITY
+	warp_def $7, $6, 2, CHERRYGROVE_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalRedScript
+
+.PersonEvents: db 5
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x19696d, -1
+	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x196970, -1
+	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x196973, -1
+	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x196976, -1
+	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FLadyScript, -1
 
 NurseScript_0x19696d:
 	jumpstd pokecenternurse
@@ -106,25 +117,3 @@ PokemonJournalRedText:
 	para "League Champion in"
 	line "record time."
 	done
-
-CherrygrovePokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 2, CHERRYGROVE_CITY
-	warp_def $7, $6, 2, CHERRYGROVE_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalRedScript
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x19696d, -1
-	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x196970, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x196973, -1
-	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x196976, -1
-	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FLadyScript, -1

@@ -1,19 +1,30 @@
-const_value set 2
-	const SEAFOAMGYM_BLAINE
-	const SEAFOAMGYM_SCIENTIST1
-	const SEAFOAMGYM_SCIENTIST2
-	const SEAFOAMGYM_SUPER_NERD1
-	const SEAFOAMGYM_SCIENTIST3
-	const SEAFOAMGYM_SUPER_NERD2
-	const SEAFOAMGYM_SUPER_NERD3
-	const SEAFOAMGYM_GYM_GUY
-
 SeafoamGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SeafoamGym_MapEventHeader:
+
+.Warps: db 1
+	warp_def $14, $c, 2, SEAFOAM_ISLANDS_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 8
+	person_event SPRITE_GYM_GUY, 20, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
+	person_event SPRITE_SCIENTIST, 16, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLowell, -1
+	person_event SPRITE_SCIENTIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistDennett, -1
+	person_event SPRITE_SUPER_NERD, 12, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdCary, -1
+	person_event SPRITE_SCIENTIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLinden, -1
+	person_event SPRITE_SUPER_NERD, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdWaldo, -1
+	person_event SPRITE_SUPER_NERD, 14, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMerle, -1
+	person_event SPRITE_BLAINE, 11, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
+
+const_value set 2
+	const SEAFOAMGYM_GYM_GUY
 
 TrainerScientistLowell:
 	trainer EVENT_BEAT_SCIENTIST_LOWELL, SCIENTIST, LOWELL, ScientistLowellSeenText, ScientistLowellBeatenText, 0, ScientistLowellScript
@@ -366,25 +377,3 @@ SeafoamGymGuyWinText2:
 	para "There's no need"
 	line "for a building."
 	done
-
-SeafoamGym_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $14, $c, 2, SEAFOAM_ISLANDS_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_SCIENTIST, 16, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLowell, -1
-	person_event SPRITE_SCIENTIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistDennett, -1
-	person_event SPRITE_SUPER_NERD, 12, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdCary, -1
-	person_event SPRITE_SCIENTIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLinden, -1
-	person_event SPRITE_SUPER_NERD, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdWaldo, -1
-	person_event SPRITE_SUPER_NERD, 14, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMerle, -1
-	person_event SPRITE_BLAINE, 11, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
-	person_event SPRITE_GYM_GUY, 20, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY

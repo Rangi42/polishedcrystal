@@ -883,16 +883,19 @@ EMOTE_OBJECT EQU 7
 
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
-	const PERSONTYPE_SCRIPT
-	const PERSONTYPE_ITEMBALL
-	const PERSONTYPE_TRAINER
-	const PERSONTYPE_TMHMBALL
-	const PERSONTYPE_JUMPTEXT
-	const PERSONTYPE_JUMPTEXTFP
-	const PERSONTYPE_JUMPSTD
-	const PERSONTYPE_MART
-	const PERSONTYPE_FRUITTREE
-	const PERSONTYPE_GENERICTRAINER
+	const PERSONTYPE_SCRIPT         ; 0
+	const PERSONTYPE_ITEMBALL       ; 1
+	const PERSONTYPE_TMHMBALL       ; 2
+	const PERSONTYPE_JUMPTEXT       ; 3
+	const PERSONTYPE_JUMPTEXTFP     ; 4
+	const PERSONTYPE_JUMPSTD        ; 5
+	const PERSONTYPE_TRAINER        ; 6
+	const PERSONTYPE_GENERICTRAINER ; 7
+	const PERSONTYPE_MART           ; 8
+	const PERSONTYPE_POKEMON        ; 9
+	const PERSONTYPE_NPCTRADE       ; a
+	const PERSONTYPE_FRUITTREE      ; b
+NUM_PERSONTYPES EQU const_value
 
 ; fruit trees
 ; see engine/fruit_trees.asm:FruitTreeItems

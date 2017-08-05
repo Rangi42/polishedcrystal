@@ -1,14 +1,23 @@
-const_value set 2
-	const GOLDENRODHPUPHOUSE_POKEFAN_M
-	const GOLDENRODHPUPHOUSE_POKEFAN_F
-	const GOLDENRODHPUPHOUSE_PIKACHU
-
 GoldenrodHPUpHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodHPUpHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 18, GOLDENROD_CITY
+	warp_def $7, $3, 18, GOLDENROD_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanMScript, -1
+	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanFScript, -1
+	person_event SPRITE_PIKACHU, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePikachuScript, -1
 
 GoldenrodHPUpHousePokefanMScript:
 	faceplayer
@@ -72,21 +81,3 @@ GoldenrodHPUpHousePokefanFText:
 GoldenrodHPUpHousePikachuText:
 	text "Pikachu: Pika!"
 	done
-
-GoldenrodHPUpHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 18, GOLDENROD_CITY
-	warp_def $7, $3, 18, GOLDENROD_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanMScript, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanFScript, -1
-	person_event SPRITE_PIKACHU, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePikachuScript, -1

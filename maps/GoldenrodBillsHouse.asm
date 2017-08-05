@@ -1,14 +1,23 @@
-const_value set 2
-	const GOLDENRODBILLSHOUSE_GRAMPS
-	const GOLDENRODBILLSHOUSE_POKEFAN_F
-	const GOLDENRODBILLSHOUSE_TWIN
-
 GoldenrodBillsHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodBillsHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 4, GOLDENROD_CITY
+	warp_def $7, $3, 4, GOLDENROD_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x189538, -1
+	person_event SPRITE_POKEFAN_F, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsMom, -1
+	person_event SPRITE_TWIN, 4, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BillsSister, -1
 
 GrampsScript_0x189538:
 	faceplayer
@@ -600,21 +609,3 @@ UnknownText_0x55069:
 	para "#mon storage"
 	line "system."
 	done
-
-GoldenrodBillsHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 4, GOLDENROD_CITY
-	warp_def $7, $3, 4, GOLDENROD_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x189538, -1
-	person_event SPRITE_POKEFAN_F, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsMom, -1
-	person_event SPRITE_TWIN, 4, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BillsSister, -1

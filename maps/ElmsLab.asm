@@ -1,3 +1,60 @@
+ElmsLab_MapScriptHeader:
+
+.MapTriggers: db 8
+	dw ElmsLabTrigger0
+	dw ElmsLabTrigger1
+	dw ElmsLabTrigger2
+	dw ElmsLabTrigger3
+	dw ElmsLabTrigger4
+	dw ElmsLabTrigger5
+	dw ElmsLabTrigger6
+	dw ElmsLabTrigger7
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, ElmsLabCallback_MoveElm
+
+ElmsLab_MapEventHeader:
+
+.Warps: db 2
+	warp_def $b, $4, 1, NEW_BARK_TOWN
+	warp_def $b, $5, 1, NEW_BARK_TOWN
+
+.XYTriggers: db 7
+	xy_trigger 1, $6, $4, LabTryToLeaveScript
+	xy_trigger 1, $6, $5, LabTryToLeaveScript
+	xy_trigger 3, $5, $4, MeetCopScript
+	xy_trigger 3, $5, $5, MeetCopScript2
+	xy_trigger 5, $8, $4, AideScript_WalkPotions1
+	xy_trigger 5, $8, $5, AideScript_WalkPotions2
+	xy_trigger 6, $6, $4, LyraBattleScript
+
+.Signposts: db 16
+	signpost 1, 2, SIGNPOST_READ, ElmsLabHealingMachine
+	signpost 1, 6, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 1, 7, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 1, 8, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 1, 9, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 7, 0, SIGNPOST_READ, ElmsLabTravelTip1
+	signpost 7, 1, SIGNPOST_READ, ElmsLabTravelTip2
+	signpost 7, 2, SIGNPOST_READ, ElmsLabTravelTip3
+	signpost 7, 3, SIGNPOST_READ, ElmsLabTravelTip4
+	signpost 7, 6, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 7, 7, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 7, 8, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 7, 9, SIGNPOST_READ, ElmsLabBookshelf
+	signpost 3, 9, SIGNPOST_READ, ElmsLabTrashcan
+	signpost 0, 5, SIGNPOST_READ, ElmsLabWindow
+	signpost 5, 3, SIGNPOST_DOWN, ElmsLabPC
+
+.PersonEvents: db 7
+	person_event SPRITE_ELM, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
+	person_event SPRITE_SCIENTIST, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	person_event SPRITE_OFFICER, 3, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
+	person_event SPRITE_LYRA, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
+
 const_value set 2
 	const ELMSLAB_ELM
 	const ELMSLAB_ELMS_AIDE
@@ -7,37 +64,21 @@ const_value set 2
 	const ELMSLAB_OFFICER
 	const ELMSLAB_LYRA
 
-ElmsLab_MapScriptHeader:
-.MapTriggers:
-	db 8
-	dw .Trigger0
-	dw .Trigger1
-	dw .Trigger2
-	dw .Trigger3
-	dw .Trigger4
-	dw .Trigger5
-	dw .Trigger6
-	dw .Trigger7
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, .Callback_MoveElm
-
-.Trigger0:
+ElmsLabTrigger0:
 	priorityjump ElmsLab_AutowalkUpToElm
-.Trigger1:
-.Trigger2:
-.Trigger3:
-.Trigger4:
-.Trigger5:
-.Trigger6:
+ElmsLabTrigger1:
+ElmsLabTrigger2:
+ElmsLabTrigger3:
+ElmsLabTrigger4:
+ElmsLabTrigger5:
+ElmsLabTrigger6:
 	end
 
-.Trigger7:
+ElmsLabTrigger7:
 	priorityjump ElmsLab_AutoAideSpeech
 	end
 
-.Callback_MoveElm:
+ElmsLabCallback_MoveElm:
 	checktriggers
 	iftrue .Skip
 	moveperson ELMSLAB_ELM, $3, $4
@@ -1848,48 +1889,3 @@ ElmsLabPCText:
 	para "…It says on the"
 	line "screen…"
 	done
-
-ElmsLab_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $b, $4, 1, NEW_BARK_TOWN
-	warp_def $b, $5, 1, NEW_BARK_TOWN
-
-.XYTriggers:
-	db 7
-	xy_trigger 1, $6, $4, LabTryToLeaveScript
-	xy_trigger 1, $6, $5, LabTryToLeaveScript
-	xy_trigger 3, $5, $4, MeetCopScript
-	xy_trigger 3, $5, $5, MeetCopScript2
-	xy_trigger 5, $8, $4, AideScript_WalkPotions1
-	xy_trigger 5, $8, $5, AideScript_WalkPotions2
-	xy_trigger 6, $6, $4, LyraBattleScript
-
-.Signposts:
-	db 16
-	signpost 1, 2, SIGNPOST_READ, ElmsLabHealingMachine
-	signpost 1, 6, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 1, 7, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 1, 8, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 1, 9, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 0, SIGNPOST_READ, ElmsLabTravelTip1
-	signpost 7, 1, SIGNPOST_READ, ElmsLabTravelTip2
-	signpost 7, 2, SIGNPOST_READ, ElmsLabTravelTip3
-	signpost 7, 3, SIGNPOST_READ, ElmsLabTravelTip4
-	signpost 7, 6, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 7, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 8, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 9, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 3, 9, SIGNPOST_READ, ElmsLabTrashcan
-	signpost 0, 5, SIGNPOST_READ, ElmsLabWindow
-	signpost 5, 3, SIGNPOST_DOWN, ElmsLabPC
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_ELM, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
-	person_event SPRITE_SCIENTIST, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	person_event SPRITE_OFFICER, 3, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
-	person_event SPRITE_LYRA, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB

@@ -1,22 +1,40 @@
+LancesRoom_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw LancesRoomTrigger0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, LancesRoomCheckDoor
+
+LancesRoom_MapEventHeader:
+
+.Warps: db 4
+	warp_def $17, $4, 3, KARENS_ROOM
+	warp_def $17, $5, 4, KARENS_ROOM
+	warp_def $1, $4, 1, HALL_OF_FAME
+	warp_def $1, $5, 2, HALL_OF_FAME
+
+.XYTriggers: db 2
+	xy_trigger 1, $5, $4, Script_ApproachLanceFromLeft
+	xy_trigger 1, $5, $5, Script_ApproachLanceFromRight
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_LANCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript_0x180e7b, -1
+	person_event SPRITE_TEACHER, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+	person_event SPRITE_OAK, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+
 const_value set 2
 	const LANCESROOM_LANCE
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK
 
-LancesRoom_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, .CheckDoor
-
-.Trigger0:
+LancesRoomTrigger0:
 	priorityjump LancesRoom_PlayerWalksIn_DoorsCloseBehind
 	end
 
-.CheckDoor:
+LancesRoomCheckDoor:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	iffalse .LanceEntranceOpen
 	changeblock $4, $16, $34
@@ -381,25 +399,3 @@ UnknownText_0x1813c5:
 	line "We haven't done"
 	cont "the interview!"
 	done
-
-LancesRoom_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $17, $4, 3, KARENS_ROOM
-	warp_def $17, $5, 4, KARENS_ROOM
-	warp_def $1, $4, 1, HALL_OF_FAME
-	warp_def $1, $5, 2, HALL_OF_FAME
-
-.XYTriggers:
-	db 2
-	xy_trigger 1, $5, $4, Script_ApproachLanceFromLeft
-	xy_trigger 1, $5, $5, Script_ApproachLanceFromRight
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_LANCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript_0x180e7b, -1
-	person_event SPRITE_TEACHER, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
-	person_event SPRITE_OAK, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY

@@ -1,19 +1,33 @@
+VioletGym_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw VioletGymTrigger0
+
+.MapCallbacks: db 0
+
+VioletGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $f, $4, 2, VIOLET_CITY
+	warp_def $f, $5, 2, VIOLET_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 13, 3, SIGNPOST_READ, VioletGymStatue
+	signpost 13, 6, SIGNPOST_READ, VioletGymStatue
+
+.PersonEvents: db 5
+	person_event SPRITE_GYM_GUY, 13, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
+	person_event SPRITE_FALKNER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FalknerScript_0x683c2, EVENT_VIOLET_GYM_FALKNER
+	person_event SPRITE_YOUNGSTER, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperRod, EVENT_VIOLET_GYM_FALKNER
+	person_event SPRITE_YOUNGSTER, 10, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperAbe, EVENT_VIOLET_GYM_FALKNER
+	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletGymGuyScript, EVENT_VIOLET_GYM_FALKNER
+
 const_value set 2
-	const VIOLETGYM_FALKNER
-	const VIOLETGYM_YOUNGSTER1
-	const VIOLETGYM_YOUNGSTER2
-	const VIOLETGYM_GYM_GUY1
 	const VIOLETGYM_GYM_GUY2
 
-VioletGym_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+VioletGymTrigger0:
 	priorityjump VioletGymFalknerAwayScript
 	end
 
@@ -299,25 +313,3 @@ VioletGymGuyFalknerAwayText:
 
 	para "Come back later."
 	done
-
-VioletGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $f, $4, 2, VIOLET_CITY
-	warp_def $f, $5, 2, VIOLET_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 13, 3, SIGNPOST_READ, VioletGymStatue
-	signpost 13, 6, SIGNPOST_READ, VioletGymStatue
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_FALKNER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FalknerScript_0x683c2, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_YOUNGSTER, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperRod, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_YOUNGSTER, 10, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperAbe, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletGymGuyScript, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_GYM_GUY, 13, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER

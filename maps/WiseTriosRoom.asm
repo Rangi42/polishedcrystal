@@ -1,18 +1,33 @@
-const_value set 2
-	const WISETRIOSROOM_ELDER1
-	const WISETRIOSROOM_ELDER2
-	const WISETRIOSROOM_ELDER3
-	const WISETRIOSROOM_ELDER4
-	const WISETRIOSROOM_ELDER5
-	const WISETRIOSROOM_ELDER6
-
 WiseTriosRoom_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x98574
+
+WiseTriosRoom_MapEventHeader:
+
+.Warps: db 3
+	warp_def $4, $7, 1, BELLCHIME_TRAIL
+	warp_def $5, $7, 2, BELLCHIME_TRAIL
+	warp_def $4, $1, 5, ECRUTEAK_HOUSE
+
+.XYTriggers: db 1
+	xy_trigger 0, $4, $7, UnknownScript_0x985a3
+
+.Signposts: db 0
+
+.PersonEvents: db 6
+	person_event SPRITE_ELDER, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x985a0, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	person_event SPRITE_ELDER, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	person_event SPRITE_ELDER, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x9859a, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	person_event SPRITE_ELDER, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+	person_event SPRITE_ELDER, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x9859d, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	person_event SPRITE_ELDER, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
+
+const_value set 2
+	const WISETRIOSROOM_ELDER3
+	const WISETRIOSROOM_ELDER6
 
 UnknownScript_0x98574:
 	checkevent EVENT_FOUGHT_SUICUNE
@@ -335,26 +350,3 @@ UnknownText_0x98db5:
 	para "Suicune will put"
 	line "you to the test."
 	done
-
-WiseTriosRoom_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $4, $7, 1, BELLCHIME_TRAIL
-	warp_def $5, $7, 2, BELLCHIME_TRAIL
-	warp_def $4, $1, 5, ECRUTEAK_HOUSE
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $4, $7, UnknownScript_0x985a3
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_ELDER, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x9859a, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
-	person_event SPRITE_ELDER, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x9859d, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
-	person_event SPRITE_ELDER, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x985a0, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
-	person_event SPRITE_ELDER, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	person_event SPRITE_ELDER, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	person_event SPRITE_ELDER, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2

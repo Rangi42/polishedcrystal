@@ -1,17 +1,37 @@
+RadioTower5F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+RadioTower5F_MapEventHeader:
+
+.Warps: db 2
+	warp_def $0, $0, 1, RADIO_TOWER_4F
+	warp_def $0, $c, 3, RADIO_TOWER_4F
+
+.XYTriggers: db 2
+	xy_trigger 0, $3, $0, FakeDirectorScript
+	xy_trigger 1, $5, $10, RadioTower5FRocketBossTrigger
+
+.Signposts: db 3
+	signpost 0, 3, SIGNPOST_READ, MapRadioTower5FSignpost0Script
+	signpost 0, 11, SIGNPOST_READ, MapRadioTower5FSignpost2Script
+	signpost 0, 15, SIGNPOST_READ, MapRadioTower5FSignpost2Script
+
+.PersonEvents: db 6
+	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, EVENT_RADIO_TOWER_DIRECTOR
+	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Petrel1Script, EVENT_RADIO_TOWER_PETREL
+	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ARIANA, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
+
 const_value set 2
 	const RADIOTOWER5F_DIRECTOR
 	const RADIOTOWER5F_PETREL
 	const RADIOTOWER5F_ARCHER
 	const RADIOTOWER5F_ARIANA
-	const RADIOTOWER5F_ROCKER
-	const RADIOTOWER5F_POKE_BALL
-
-RadioTower5F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 FakeDirectorScript:
 	spriteface RADIOTOWER5F_DIRECTOR, UP
@@ -129,9 +149,6 @@ RadioTower5FRocketBossTrigger:
 
 Ben:
 	jumptextfaceplayer BenText
-
-RadioTower5FUltraBall:
-	itemball ULTRA_BALL
 
 MapRadioTower5FSignpost0Script:
 	jumptext SignpostRadioTower5FOffice
@@ -423,29 +440,3 @@ SignpostRadioTower5FOffice:
 SignpostRadioTower5FStudio:
 	text "5F Studio 1"
 	done
-
-RadioTower5F_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $0, $0, 1, RADIO_TOWER_4F
-	warp_def $0, $c, 3, RADIO_TOWER_4F
-
-.XYTriggers:
-	db 2
-	xy_trigger 0, $3, $0, FakeDirectorScript
-	xy_trigger 1, $5, $10, RadioTower5FRocketBossTrigger
-
-.Signposts:
-	db 3
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower5FSignpost0Script
-	signpost 0, 11, SIGNPOST_READ, MapRadioTower5FSignpost2Script
-	signpost 0, 15, SIGNPOST_READ, MapRadioTower5FSignpost2Script
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, EVENT_RADIO_TOWER_DIRECTOR
-	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Petrel1Script, EVENT_RADIO_TOWER_PETREL
-	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ARIANA, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RadioTower5FUltraBall, EVENT_RADIO_TOWER_5F_ULTRA_BALL

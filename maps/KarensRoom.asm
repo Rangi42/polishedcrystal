@@ -1,16 +1,27 @@
-const_value set 2
-	const KARENSROOM_KAREN
-
 KarensRoom_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw KarensRoomTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x180bc1
 
-.Trigger0:
+KarensRoom_MapEventHeader:
+
+.Warps: db 4
+	warp_def $11, $4, 3, BRUNOS_ROOM
+	warp_def $11, $5, 4, BRUNOS_ROOM
+	warp_def $2, $4, 1, LANCES_ROOM
+	warp_def $2, $5, 2, LANCES_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_KAREN, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript_0x180bee, -1
+
+KarensRoomTrigger0:
 	priorityjump UnknownScript_0x180bd6
 	end
 
@@ -174,21 +185,3 @@ KarenAfterRematchText:
 	line "forward to meeting"
 	cont "you again."
 	done
-
-KarensRoom_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $11, $4, 3, BRUNOS_ROOM
-	warp_def $11, $5, 4, BRUNOS_ROOM
-	warp_def $2, $4, 1, LANCES_ROOM
-	warp_def $2, $5, 2, LANCES_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_KAREN, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript_0x180bee, -1

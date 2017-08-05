@@ -1,19 +1,29 @@
-const_value set 2
-	const ROUTE6_POKEFAN_M1
-	const ROUTE6_POKEFAN_M2
-	const ROUTE6_POKEFAN_M3
-	const ROUTE6_TWIN1
-	const ROUTE6_TWIN2
-	const ROUTE6_YOUNGSTER
-	const ROUTE6_COOLTRAINER_F
-	const ROUTE6_OFFICER_F
-
 Route6_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route6_MapEventHeader:
+
+.Warps: db 2
+	warp_def $9, $11, 1, ROUTE_6_UNDERGROUND_ENTRANCE
+	warp_def $1, $6, 3, ROUTE_6_SAFFRON_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 11, 19, SIGNPOST_READ, Route6UndergroundPathSign
+
+.PersonEvents: db 8
+	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 2, PokefanMScript_0x1ad951, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	person_event SPRITE_POKEFAN_M, 24, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
+	person_event SPRITE_POKEFAN_M, 24, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
+	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani1, -1
+	person_event SPRITE_TWIN, 17, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani2, -1
+	person_event SPRITE_YOUNGSTER, 27, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterChaz, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfWanda, -1
+	person_event SPRITE_OFFICER_F, 19, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, OfficerfJennyScript, -1
 
 TrainerPokefanmRex:
 	trainer EVENT_BEAT_POKEFANM_REX, POKEFANM, REX, PokefanmRexSeenText, PokefanmRexBeatenText, 0, PokefanmRexScript
@@ -272,27 +282,3 @@ Route6UndergroundPathSignText:
 	para "Cerulean City -"
 	line "Vermilion City"
 	done
-
-Route6_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $9, $11, 1, ROUTE_6_UNDERGROUND_ENTRANCE
-	warp_def $1, $6, 3, ROUTE_6_SAFFRON_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 11, 19, SIGNPOST_READ, Route6UndergroundPathSign
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 2, PokefanMScript_0x1ad951, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
-	person_event SPRITE_POKEFAN_M, 24, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
-	person_event SPRITE_POKEFAN_M, 24, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
-	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani1, -1
-	person_event SPRITE_TWIN, 17, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani2, -1
-	person_event SPRITE_YOUNGSTER, 27, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterChaz, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfWanda, -1
-	person_event SPRITE_OFFICER_F, 19, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, OfficerfJennyScript, -1

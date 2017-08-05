@@ -1,20 +1,34 @@
+EcruteakPokeCenter1F_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw EcruteakPokeCenter1FTrigger0
+
+.MapCallbacks: db 0
+
+EcruteakPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 6, ECRUTEAK_CITY
+	warp_def $7, $6, 6, ECRUTEAK_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalMortyScript
+
+.PersonEvents: db 6
+	person_event SPRITE_BILL, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FBillScript, EVENT_ECRUTEAK_POKE_CENTER_BILL
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FNurseScript, -1
+	person_event SPRITE_POKEFAN_M, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1
+	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FLassScript, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FCooltrainerFScript, -1
+	person_event SPRITE_GYM_GUY, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FGymGuyScript, -1
+
 const_value set 2
-	const ECRUTEAKPOKECENTER1F_NURSE
-	const ECRUTEAKPOKECENTER1F_POKEFAN_M
-	const ECRUTEAKPOKECENTER1F_LASS
-	const ECRUTEAKPOKECENTER1F_COOLTRAINER_F
-	const ECRUTEAKPOKECENTER1F_GYM_GUY
 	const ECRUTEAKPOKECENTER1F_BILL
 
-EcruteakPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+EcruteakPokeCenter1FTrigger0:
 	priorityjump .BillAbandonsTimeCapsule
 	end
 
@@ -325,26 +339,3 @@ PokemonJournalMortyText:
 	para "down into the dep-"
 	line "ths of my heart…”"
 	done
-
-EcruteakPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 6, ECRUTEAK_CITY
-	warp_def $7, $6, 6, ECRUTEAK_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalMortyScript
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FNurseScript, -1
-	person_event SPRITE_POKEFAN_M, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1
-	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FLassScript, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FCooltrainerFScript, -1
-	person_event SPRITE_GYM_GUY, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FGymGuyScript, -1
-	person_event SPRITE_BILL, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FBillScript, EVENT_ECRUTEAK_POKE_CENTER_BILL

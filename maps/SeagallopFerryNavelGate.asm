@@ -1,22 +1,33 @@
+SeagallopFerryNavelGate_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw SeagallopFerryNavelGateTrigger0
+	dw SeagallopFerryNavelGateTrigger1
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, SeagallopFerryNavelGateVisited
+
+SeagallopFerryNavelGate_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $6, 1, NAVEL_ROCK_OUTSIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryNavelGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+
 const_value set 2
 	const SEAGALLOPFERRYNAVELGATE_SAILOR
 
-SeagallopFerryNavelGate_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .Visited
-
-.Trigger1:
+SeagallopFerryNavelGateTrigger1:
 	priorityjump SeagallopFerryNavelGate_PlayerArrives
-.Trigger0:
+SeagallopFerryNavelGateTrigger0:
 	end
 
-.Visited:
+SeagallopFerryNavelGateVisited:
 	setevent EVENT_VISITED_NAVEL_ROCK
 	return
 
@@ -105,18 +116,3 @@ SeagallopFerryNavelRockRefusedText:
 	text "I'll be waiting"
 	line "right here."
 	done
-
-SeagallopFerryNavelGate_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $6, 1, NAVEL_ROCK_OUTSIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryNavelGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY

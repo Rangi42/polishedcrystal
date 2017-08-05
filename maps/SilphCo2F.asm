@@ -1,15 +1,32 @@
-const_value set 2
-	const SILPHCO2F_SCIENTIST1
-	const SILPHCO2F_SCIENTIST2
-	const SILPHCO2F_SILPH_EMPLOYEE1
-	const SILPHCO2F_SILPH_EMPLOYEE2
-
 SilphCo2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SilphCo2F_MapEventHeader:
+
+.Warps: db 2
+	warp_def $0, $d, 3, SILPH_CO_1F
+	warp_def $0, $b, 1, SILPH_CO_3F
+
+.XYTriggers: db 0
+
+.Signposts: db 8
+	signpost 2, 3, SIGNPOST_READ, SilphCo2FDeptSign
+	signpost 2, 9, SIGNPOST_READ, SilphCo2FDeptSign
+	signpost 0, 5, SIGNPOST_READ, SilphCo2FElevator
+	signpost 3, 0, SIGNPOST_READ, SilphCo2FBookshelf
+	signpost 3, 6, SIGNPOST_READ, SilphCo2FBookshelf
+	signpost 3, 7, SIGNPOST_READ, SilphCo2FBookshelf
+	signpost 3, 12, SIGNPOST_READ, SilphCo2FBookshelf
+	signpost 3, 13, SIGNPOST_READ, SilphCo2FBookshelf
+
+.PersonEvents: db 4
+	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
+	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist2Script, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee1Script, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee2Script, -1
 
 SilphCo2FScientist1Script:
 	faceplayer
@@ -104,30 +121,3 @@ SilphCo2FDeptSignText:
 SilphCo2FElevatorText:
 	text "Out Of Order"
 	done
-
-SilphCo2F_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $0, $d, 3, SILPH_CO_1F
-	warp_def $0, $b, 1, SILPH_CO_3F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 8
-	signpost 2, 3, SIGNPOST_READ, SilphCo2FDeptSign
-	signpost 2, 9, SIGNPOST_READ, SilphCo2FDeptSign
-	signpost 0, 5, SIGNPOST_READ, SilphCo2FElevator
-	signpost 3, 0, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 6, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 7, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 12, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 13, SIGNPOST_READ, SilphCo2FBookshelf
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist2Script, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee1Script, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee2Script, -1

@@ -1,24 +1,49 @@
+FastShip1F_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw FastShip1FTrigger0
+	dw FastShip1FTrigger1
+
+.MapCallbacks: db 0
+
+FastShip1F_MapEventHeader:
+
+.Warps: db 12
+	warp_def $1, $19, -1, FAST_SHIP_1F
+	warp_def $8, $1b, 1, FAST_SHIP_CABINS_NNW_NNE_NE
+	warp_def $8, $17, 2, FAST_SHIP_CABINS_NNW_NNE_NE
+	warp_def $8, $13, 3, FAST_SHIP_CABINS_NNW_NNE_NE
+	warp_def $8, $f, 1, FAST_SHIP_CABINS_SW_SSW_NW
+	warp_def $f, $f, 2, FAST_SHIP_CABINS_SW_SSW_NW
+	warp_def $f, $13, 4, FAST_SHIP_CABINS_SW_SSW_NW
+	warp_def $f, $17, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def $f, $1b, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def $f, $3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def $e, $6, 1, FAST_SHIP_B1F
+	warp_def $e, $1e, 2, FAST_SHIP_B1F
+
+.XYTriggers: db 2
+	xy_trigger 2, $6, $18, WorriedGrandpaTriggerLeft
+	xy_trigger 2, $6, $19, WorriedGrandpaTriggerRight
+
+.Signposts: db 0
+
+.PersonEvents: db 4
+	person_event SPRITE_SAILOR, 2, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x75160, -1
+	person_event SPRITE_GENTLEMAN, 6, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_FAST_SHIP_1F_GENTLEMAN
+	person_event SPRITE_SAILOR, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
+	person_event SPRITE_SAILOR, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751e4, -1
+
 const_value set 2
 	const FASTSHIP1F_SAILOR1
-	const FASTSHIP1F_SAILOR2
-	const FASTSHIP1F_SAILOR3
 	const FASTSHIP1F_GENTLEMAN
 
-FastShip1F_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 0
-
-.Trigger1:
-	priorityjump .PriorityJump2
-.Trigger0:
+FastShip1FTrigger1:
+	priorityjump FastShip1FPriorityJump2
+FastShip1FTrigger0:
 	end
 
-.PriorityJump2:
+FastShip1FPriorityJump2:
 	applymovement FASTSHIP1F_SAILOR1, MovementData_0x7520e
 	applymovement PLAYER, MovementData_0x75217
 	applymovement FASTSHIP1F_SAILOR1, MovementData_0x75211
@@ -270,34 +295,3 @@ UnknownText_0x754be:
 	line "has arrived in"
 	cont "Vermilion City."
 	done
-
-FastShip1F_MapEventHeader:
-.Warps:
-	db 12
-	warp_def $1, $19, -1, FAST_SHIP_1F
-	warp_def $8, $1b, 1, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def $8, $17, 2, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def $8, $13, 3, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def $8, $f, 1, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def $f, $f, 2, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def $f, $13, 4, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def $f, $17, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $f, $1b, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $f, $3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $e, $6, 1, FAST_SHIP_B1F
-	warp_def $e, $1e, 2, FAST_SHIP_B1F
-
-.XYTriggers:
-	db 2
-	xy_trigger 2, $6, $18, WorriedGrandpaTriggerLeft
-	xy_trigger 2, $6, $19, WorriedGrandpaTriggerRight
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_SAILOR, 2, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x75160, -1
-	person_event SPRITE_SAILOR, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
-	person_event SPRITE_SAILOR, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751e4, -1
-	person_event SPRITE_GENTLEMAN, 6, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_FAST_SHIP_1F_GENTLEMAN

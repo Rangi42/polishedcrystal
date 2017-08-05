@@ -1,22 +1,33 @@
-const_value set 2
-	const ROUTE11_YOUNGSTER1
-	const ROUTE11_YOUNGSTER2
-	const ROUTE11_YOUNGSTER3
-	const ROUTE11_YOUNGSTER4
-	const ROUTE11_YOUNGSTER5
-	const ROUTE11_YOUNGSTER6
-	const ROUTE11_ENGINEER1
-	const ROUTE11_ENGINEER2
-	const ROUTE11_ROCKER
-	const ROUTE11_COOLTRAINER_F
-	const ROUTE11_FRUIT_TREE
-
 Route11_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route11_MapEventHeader:
+
+.Warps: db 2
+	warp_def $8, $2f, 1, ROUTE_11_GATE
+	warp_def $9, $2f, 2, ROUTE_11_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 7, 5, SIGNPOST_READ, Route11Sign
+	signpost 5, 44, SIGNPOST_ITEM, Route11HiddenRevive
+
+.PersonEvents: db 11
+	person_event SPRITE_YOUNGSTER, 14, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
+	person_event SPRITE_YOUNGSTER, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
+	person_event SPRITE_YOUNGSTER, 2, 21, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlfie, -1
+	person_event SPRITE_YOUNGSTER, 7, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
+	person_event SPRITE_YOUNGSTER, 6, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
+	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicUri, -1
+	person_event SPRITE_ENGINEER, 15, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerBernie, -1
+	person_event SPRITE_ENGINEER, 14, 38, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
+	person_event SPRITE_ROCKER, 3, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
+	person_event SPRITE_COOLTRAINER_F, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x68055, -1
 
 TrainerYoungsterOwen:
 	trainer EVENT_BEAT_YOUNGSTER_OWEN, YOUNGSTER, OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript
@@ -319,31 +330,3 @@ Route11HiddenRevive:
 Route11SignText:
 	text "Route 11"
 	done
-
-Route11_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $8, $2f, 1, ROUTE_11_GATE
-	warp_def $9, $2f, 2, ROUTE_11_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 7, 5, SIGNPOST_READ, Route11Sign
-	signpost 5, 44, SIGNPOST_ITEM, Route11HiddenRevive
-
-.PersonEvents:
-	db 11
-	person_event SPRITE_YOUNGSTER, 14, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
-	person_event SPRITE_YOUNGSTER, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
-	person_event SPRITE_YOUNGSTER, 2, 21, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlfie, -1
-	person_event SPRITE_YOUNGSTER, 7, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
-	person_event SPRITE_YOUNGSTER, 6, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
-	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicUri, -1
-	person_event SPRITE_ENGINEER, 15, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerBernie, -1
-	person_event SPRITE_ENGINEER, 14, 38, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
-	person_event SPRITE_ROCKER, 3, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
-	person_event SPRITE_COOLTRAINER_F, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x68055, -1

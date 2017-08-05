@@ -1,12 +1,23 @@
+IceIslandRoof_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+IceIslandRoof_MapEventHeader:
+
+.Warps: db 1
+	warp_def $7, $3, 2, ICE_ISLAND
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_BLANCHE, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
+
 const_value set 2
 	const ICEISLANDROOF_BLANCHE
-
-IceIslandRoof_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 IceIslandRoofBlancheScript:
 	faceplayer
@@ -61,18 +72,3 @@ IceIslandRoofBlancheScript:
 IceIslandRoofBlancheTeleport:
 	teleport_from
 	step_end
-
-IceIslandRoof_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $7, $3, 2, ICE_ISLAND
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_BLANCHE, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE

@@ -359,7 +359,6 @@ SECTION "Blackthorn Scripts", ROMX
 
 INCLUDE "maps/BlackthornPokeCenter1F.asm"
 INCLUDE "maps/BlackthornMart.asm"
-INCLUDE "maps/BlackthornGym1F.asm"
 INCLUDE "maps/BlackthornGym2F.asm"
 INCLUDE "maps/BlackthornCity.asm"
 INCLUDE "maps/BlackthornDragonSpeechHouse.asm"
@@ -369,6 +368,7 @@ INCLUDE "maps/MoveDeletersHouse.asm"
 
 SECTION "Dragon's Den Scripts", ROMX
 
+INCLUDE "maps/BlackthornGym1F.asm" ; shares text with DragonsDen1F.asm
 INCLUDE "maps/DragonsDen1F.asm"
 INCLUDE "maps/DragonsDenB1F.asm"
 INCLUDE "maps/DragonShrine.asm"

@@ -1078,10 +1078,9 @@ BattleConsumePP:
 
 	add hl, bc
 	ld a, [hl]
-	and a
+	and $3f
 	ret z
-	dec a
-	ld [hl], a
+	dec [hl]
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
 	and SUBSTATUS_TRANSFORMED
@@ -3655,20 +3654,6 @@ BattleCommand_DamageCalc: ; 35612
 
 .skip_zero_damage_check
 	call DamagePass1
-
-	; Check Technician seperately since it's move power-dependant
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp TECHNICIAN
-	jr nz, .skip_technician
-	ld a, d
-	cp 61 ; Technician applies for moves with 60BP or less.
-	jr c, .skip_technician
-	srl a
-	add d
-	ld d, a
-
-.skip_technician
 	call DamagePass2
 	push bc
 

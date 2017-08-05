@@ -1,25 +1,52 @@
-const_value set 2
-	const ROUTE42_FISHER
-	const ROUTE42_POKEFAN_M
-	const ROUTE42_SUPER_NERD
-	const ROUTE42_CUT_TREE
-	const ROUTE42_FRUIT_TREE1
-	const ROUTE42_FRUIT_TREE2
-	const ROUTE42_FRUIT_TREE3
-	const ROUTE42_POKE_BALL1
-	const ROUTE42_POKE_BALL2
-	const ROUTE42_SUICUNE
-	const ROUTE42_OFFICERM1
-	const ROUTE42_OFFICERF
-	const ROUTE42_OFFICERM2
-	const ROUTE42_LYRA
-
 Route42_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route42_MapEventHeader:
+
+.Warps: db 5
+	warp_def $8, $0, 3, ROUTE_42_ECRUTEAK_GATE
+	warp_def $9, $0, 4, ROUTE_42_ECRUTEAK_GATE
+	warp_def $5, $a, 1, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def $9, $1c, 2, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def $7, $2e, 3, MOUNT_MORTAR_1F_OUTSIDE
+
+.XYTriggers: db 6
+	xy_trigger 1, $6, $c, Route42LyraScript1
+	xy_trigger 1, $7, $c, Route42LyraScript2
+	xy_trigger 1, $8, $c, Route42LyraScript3
+	xy_trigger 1, $9, $c, Route42LyraScript4
+	xy_trigger 1, $6, $a, Route42LyraScript5
+	xy_trigger 2, $e, $18, Route42SuicuneScript
+
+.Signposts: db 5
+	signpost 10, 4, SIGNPOST_READ, Route42Sign1
+	signpost 5, 7, SIGNPOST_READ, MtMortarSign1
+	signpost 9, 45, SIGNPOST_READ, MtMortarSign2
+	signpost 8, 54, SIGNPOST_READ, Route42Sign2
+	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
+
+.PersonEvents: db 14
+	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
+	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
+	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
+	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 13, 24, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route42CutTree, EVENT_ROUTE_42_CUT_TREE
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934d, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934f, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
+	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
+
+const_value set 2
+	const ROUTE42_SUICUNE
+	const ROUTE42_LYRA
 
 Route42LyraScript1:
 	spriteface PLAYER, LEFT
@@ -341,12 +368,6 @@ MtMortarSign2:
 Route42Sign2:
 	jumptext Route42Sign2Text
 
-Route42UltraBall:
-	itemball ULTRA_BALL
-
-Route42SuperPotion:
-	itemball SUPER_POTION
-
 Route42CutTree:
 	jumpstd cuttree
 
@@ -596,46 +617,3 @@ Route42Sign2Text:
 	para "Ecruteak City -"
 	line "Mahogany Town"
 	done
-
-Route42_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $8, $0, 3, ROUTE_42_ECRUTEAK_GATE
-	warp_def $9, $0, 4, ROUTE_42_ECRUTEAK_GATE
-	warp_def $5, $a, 1, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def $9, $1c, 2, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def $7, $2e, 3, MOUNT_MORTAR_1F_OUTSIDE
-
-.XYTriggers:
-	db 6
-	xy_trigger 1, $6, $c, Route42LyraScript1
-	xy_trigger 1, $7, $c, Route42LyraScript2
-	xy_trigger 1, $8, $c, Route42LyraScript3
-	xy_trigger 1, $9, $c, Route42LyraScript4
-	xy_trigger 1, $6, $a, Route42LyraScript5
-	xy_trigger 2, $e, $18, Route42SuicuneScript
-
-.Signposts:
-	db 5
-	signpost 10, 4, SIGNPOST_READ, Route42Sign1
-	signpost 5, 7, SIGNPOST_READ, MtMortarSign1
-	signpost 9, 45, SIGNPOST_READ, MtMortarSign2
-	signpost 8, 54, SIGNPOST_READ, Route42Sign2
-	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
-
-.PersonEvents:
-	db 14
-	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
-	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
-	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 24, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route42CutTree, EVENT_ROUTE_42_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934d, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934f, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION
-	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
-	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
-	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42

@@ -1,18 +1,29 @@
-const_value set 2
-	const ROUTE46_POKEFAN_M1
-	const ROUTE46_POKEFAN_M2
-	const ROUTE46_YOUNGSTER
-	const ROUTE46_LASS
-	const ROUTE46_FRUIT_TREE1
-	const ROUTE46_FRUIT_TREE2
-	const ROUTE46_POKE_BALL
-
 Route46_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route46_MapEventHeader:
+
+.Warps: db 3
+	warp_def $21, $7, 1, ROUTE_29_46_GATE
+	warp_def $21, $8, 2, ROUTE_29_46_GATE
+	warp_def $5, $e, 3, DARK_CAVE_VIOLET_ENTRANCE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 27, 9, SIGNPOST_READ, Route46Sign
+
+.PersonEvents: db 7
+	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
+	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
+	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
+	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a978f, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9791, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
 
 Route46HikerScript:
 	faceplayer
@@ -201,9 +212,6 @@ HikerBaileyScript:
 Route46Sign:
 	jumptext Route46SignText
 
-Route46XSpeed:
-	itemball X_SPEED
-
 FruitTreeScript_0x1a978f:
 	fruittree FRUITTREE_ROUTE_46_1
 
@@ -337,27 +345,3 @@ Route46SignText:
 	text "Route 46"
 	line "Mountain Rd. Ahead"
 	done
-
-Route46_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $21, $7, 1, ROUTE_29_46_GATE
-	warp_def $21, $8, 2, ROUTE_29_46_GATE
-	warp_def $5, $e, 3, DARK_CAVE_VIOLET_ENTRANCE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 27, 9, SIGNPOST_READ, Route46Sign
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
-	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
-	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
-	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a978f, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9791, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route46XSpeed, EVENT_ROUTE_46_X_SPEED

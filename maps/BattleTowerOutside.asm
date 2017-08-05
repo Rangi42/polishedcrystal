@@ -1,22 +1,36 @@
-const_value set 2
-	const BATTLETOWEROUTSIDE_YOUNGSTER
-	const BATTLETOWEROUTSIDE_BEAUTY
-	const BATTLETOWEROUTSIDE_SAILOR
-	const BATTLETOWEROUTSIDE_LASS
-
 BattleTowerOutside_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 1
+	dw BattleTowerOutsideStepDownTrigger
 
-.Trigger0:
-	priorityjump BattleTowerOutsideStepDownScript
+.MapCallbacks: db 0
+
+BattleTowerOutside_MapEventHeader:
+
+.Warps: db 4
+	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def $15, $9, 4, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def $9, $8, 1, BATTLE_TOWER_1F ; hole
+	warp_def $9, $9, 2, BATTLE_TOWER_1F ; hole
+
+.XYTriggers: db 2
+	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpTrigger1
+	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpTrigger2
+
+.Signposts: db 1
+	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
+
+.PersonEvents: db 4
+	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideYoungsterText, -1
+	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideBeautyText, -1
+	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideSailorText, -1
+	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
+BattleTowerOutsideStepDownTrigger:
+	priorityjump .Script
 	end
 
-BattleTowerOutsideStepDownScript:
+.Script:
 	checkcode VAR_YCOORD
 	if_not_equal $9, .Done
 	checkcode VAR_XCOORD
@@ -24,66 +38,56 @@ BattleTowerOutsideStepDownScript:
 	if_equal $9, .Down
 	jump .Done
 .Down
-	applymovement PLAYER, BattleTowerOutsideStepDownMovementData
+	applymovement PLAYER, .StepDownMovement
 .Done
 	dotrigger $1
 	end
 
-BattleTowerOutsidePanUpScript1:
-	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, BattleTowerOutsideHidePlayerMovementData
-	waitsfx
-	applymovement PLAYER, BattleTowerOutsidePanUpMovementData
-	disappear PLAYER
-	pause 10
-	special Special_FadeOutMusic
-	special FadeOutPalettes
-	pause 15
-	dotrigger $0
-	warpfacing UP, BATTLE_TOWER_1F, $a, $d
-	end
-
-BattleTowerOutsidePanUpScript2:
-	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, BattleTowerOutsideHidePlayerMovementData
-	waitsfx
-	applymovement PLAYER, BattleTowerOutsidePanUpMovementData
-	disappear PLAYER
-	pause 10
-	special Special_FadeOutMusic
-	special FadeOutPalettes
-	pause 15
-	dotrigger $0
-	warpfacing UP, BATTLE_TOWER_1F, $b, $d
-	end
-
-BattleTowerOutsideYoungsterScript:
-	jumptextfaceplayer BattleTowerOutsideYoungsterText
-
-BattleTowerOutsideBeautyScript:
-	jumptextfaceplayer BattleTowerOutsideBeautyText
-
-BattleTowerOutsideSailorScript:
-	jumptextfaceplayer BattleTowerOutsideSailorText
-
-MapBattleTowerOutsideSignpost0Script:
-	jumptext BattleTowerOutsideText_UltimateChallenge
-
-BattleTowerOutsideStepDownMovementData:
+.StepDownMovement:
 	step_down
 	step_end
 
-BattleTowerOutsideHidePlayerMovementData:
+BattleTowerOutsidePanUpTrigger1:
+	scall BattleTowerOutsidePanUpHelperScript
+	warpfacing UP, BATTLE_TOWER_1F, $a, $d
+	end
+
+BattleTowerOutsidePanUpTrigger2:
+	scall BattleTowerOutsidePanUpHelperScript
+	warpfacing UP, BATTLE_TOWER_1F, $b, $d
+	end
+
+BattleTowerOutsidePanUpHelperScript:
+	playsound SFX_EXIT_BUILDING
+	applymovement PLAYER, .HidePlayerMovement
+	waitsfx
+	applymovement PLAYER, .PanUpMovement
+	disappear PLAYER
+	pause 10
+	special Special_FadeOutMusic
+	special FadeOutPalettes
+	pause 15
+	dotrigger $0
+	end
+
+.HidePlayerMovement:
 	hide_person
 	step_end
 
-BattleTowerOutsidePanUpMovementData:
+.PanUpMovement:
 	step_up
 	step_up
 	step_up
 	step_up
 	step_up
 	step_end
+
+BattleTowerOutsideSignText:
+	text "Battle Tower"
+
+	para "Take the Ultimate"
+	line "Trainer Challenge!"
+	done
 
 BattleTowerOutsideYoungsterText:
 	text "Wow, the Battle"
@@ -115,34 +119,3 @@ BattleTowerOutsideSailorText:
 	para "I have to win it"
 	line "all. That I must!"
 	done
-
-BattleTowerOutsideText_UltimateChallenge:
-	text "Battle Tower"
-
-	para "Take the Ultimate"
-	line "Trainer Challenge!"
-	done
-
-BattleTowerOutside_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $15, $9, 4, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $9, $8, 1, BATTLE_TOWER_1F ; hole
-	warp_def $9, $9, 2, BATTLE_TOWER_1F ; hole
-
-.XYTriggers:
-	db 2
-	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpScript1
-	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpScript2
-
-.Signposts:
-	db 1
-	signpost 10, 10, SIGNPOST_READ, MapBattleTowerOutsideSignpost0Script
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
-	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
-	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, -1
-	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

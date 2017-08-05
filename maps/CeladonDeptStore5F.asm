@@ -1,16 +1,28 @@
-const_value set 2
-	const CELADONDEPTSTORE5F_CLERK1
-	const CELADONDEPTSTORE5F_CLERK2
-	const CELADONDEPTSTORE5F_GENTLEMAN
-	const CELADONDEPTSTORE5F_SAILOR
-	const CELADONDEPTSTORE5F_TEACHER
-
 CeladonDeptStore5F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonDeptStore5F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $0, $c, 1, CELADON_DEPT_STORE_4F
+	warp_def $0, $f, 1, CELADON_DEPT_STORE_6F
+	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore5FDirectory
+	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore5FElevatorButton
+
+.PersonEvents: db 5
+	person_event SPRITE_CLERK, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x71004, -1
+	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x7100c, -1
+	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x71014, -1
+	person_event SPRITE_SAILOR, 3, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x71017, -1
+	person_event SPRITE_TEACHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7101a, -1
 
 ClerkScript_0x71004:
 	faceplayer
@@ -73,26 +85,3 @@ CeladonDeptStore5FDirectoryText:
 
 	para "5F: Drug Store"
 	done
-
-CeladonDeptStore5F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $0, $c, 1, CELADON_DEPT_STORE_4F
-	warp_def $0, $f, 1, CELADON_DEPT_STORE_6F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore5FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore5FElevatorButton
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_CLERK, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x71004, -1
-	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x7100c, -1
-	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x71014, -1
-	person_event SPRITE_SAILOR, 3, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x71017, -1
-	person_event SPRITE_TEACHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7101a, -1

@@ -1215,7 +1215,7 @@ CheckTrainerBattle:: ; 360d
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
 	add hl, de
 	ld a, [hl]
-	inc a
+	cp -1
 	jr z, .next
 
 ; Is facing the player...
@@ -1287,22 +1287,57 @@ LoadTrainer_continue:: ; 367e
 	ld a, [hLastTalked]
 	call GetMapObject
 
+	ld hl, MAPOBJECT_COLOR
+	add hl, bc
+	ld a, [hl]
+	and $f
+	cp PERSONTYPE_GENERICTRAINER
+	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [EngineBuffer1]
 	call GetFarHalfword
 	ld de, wTempTrainerHeader
+	pop af
+	push af
+	ld bc, wGenericTempTrainerHeaderEnd - wTempTrainerHeader
+	jr z, .skipCopyingLossPtrAndScriptPtr
 	ld bc, wTempTrainerHeaderEnd - wTempTrainerHeader
+.skipCopyingLossPtrAndScriptPtr
 	ld a, [EngineBuffer1]
 	call FarCopyBytes
+	pop af
+	jr nz, .notGenericTrainer
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+	; store 0 loss pointer
+	xor a
+	ld [hli], a
+	ld [hli], a
+	; store generic trainer script in script pointer
+	ld a, .generic_trainer_script % $100
+	ld [hli], a
+	ld [hl], .generic_trainer_script / $100
+	; store after-battle text in wStashedTextPointer
+	ld hl, wStashedTextPointer
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hl], a
+.notGenericTrainer
 	xor a
 	ld [wRunningTrainerBattleScript], a
 	scf
 	ret
 ; 36a5
 
-FacingPlayerDistance_bc:: ; 36a5
+.generic_trainer_script
+	end_if_just_battled
+	jumpstashedtext
 
+FacingPlayerDistance_bc:: ; 36a5
 	push de
 	call FacingPlayerDistance
 	ld b, d

@@ -1,14 +1,24 @@
-const_value set 2
-	const CLIFFEDGEGATE_RECEPTIONIST
-	const CLIFFEDGEGATE_SCIENTIST
-	const CLIFFEDGEGATE_ROCKET
-
 CliffEdgeGate_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CliffEdgeGate_MapEventHeader:
+
+.Warps: db 2
+	warp_def $13, $11, 8, CIANWOOD_CITY
+	warp_def $13, $3, 1, ROUTE_47
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 6, 17, SIGNPOST_ITEM, CliffEdgeGateHiddenBigPearl
+
+.PersonEvents: db 3
+	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CliffEdgeGateReceptionistScript, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST
 
 CliffEdgeGateReceptionistScript:
 	jumptextfaceplayer CliffEdgeGateReceptionistText
@@ -159,22 +169,3 @@ GruntM12AfterText:
 	para "We're nabbing them"
 	line "all for ourselves!"
 	done
-
-CliffEdgeGate_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $13, $11, 8, CIANWOOD_CITY
-	warp_def $13, $3, 1, ROUTE_47
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 6, 17, SIGNPOST_ITEM, CliffEdgeGateHiddenBigPearl
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CliffEdgeGateReceptionistScript, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST

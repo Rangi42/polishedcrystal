@@ -1,16 +1,30 @@
-const_value set 2
-	const VIOLETPOKECENTER1F_NURSE
-	const VIOLETPOKECENTER1F_GAMEBOY_KID
-	const VIOLETPOKECENTER1F_GENTLEMAN
-	const VIOLETPOKECENTER1F_YOUNGSTER
-	const VIOLETPOKECENTER1F_SCIENTIST
-
 VioletPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+VioletPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 5, VIOLET_CITY
+	warp_def $7, $6, 5, VIOLET_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalFalknerScript
+
+.PersonEvents: db 5
+	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletPokeCenterNurse, -1
+	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x69540, -1
+	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x69543, -1
+	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x69546, -1
+
+const_value set 2
+	const VIOLETPOKECENTER1F_SCIENTIST
 
 VioletPokeCenterNurse:
 	jumpstd pokecenternurse
@@ -211,25 +225,3 @@ PokemonJournalFalknerText:
 	para "led the Violet Gym"
 	line "before him."
 	done
-
-VioletPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 5, VIOLET_CITY
-	warp_def $7, $6, 5, VIOLET_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalFalknerScript
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletPokeCenterNurse, -1
-	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x69540, -1
-	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x69543, -1
-	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x69546, -1
-	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER

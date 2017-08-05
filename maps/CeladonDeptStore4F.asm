@@ -1,15 +1,27 @@
-const_value set 2
-	const CELADONDEPTSTORE4F_CLERK1
-	const CELADONDEPTSTORE4F_SUPER_NERD
-	const CELADONDEPTSTORE4F_YOUNGSTER
-	const CELADONDEPTSTORE4F_CLERK2
-
 CeladonDeptStore4F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonDeptStore4F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $0, $c, 1, CELADON_DEPT_STORE_5F
+	warp_def $0, $f, 2, CELADON_DEPT_STORE_3F
+	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore4FDirectory
+	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore4FElevatorButton
+
+.PersonEvents: db 4
+	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x70f0d, -1
+	person_event SPRITE_SUPER_NERD, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x70f15, -1
+	person_event SPRITE_YOUNGSTER, 2, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70f18, -1
+	person_event SPRITE_CLERK, 5, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PosterClerkScript, -1
 
 ClerkScript_0x70f0d:
 	faceplayer
@@ -177,25 +189,3 @@ CeladonDeptStore4FDirectoryText:
 
 	para "4F: Wiseman Gifts"
 	done
-
-CeladonDeptStore4F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $0, $c, 1, CELADON_DEPT_STORE_5F
-	warp_def $0, $f, 2, CELADON_DEPT_STORE_3F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore4FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore4FElevatorButton
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x70f0d, -1
-	person_event SPRITE_SUPER_NERD, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x70f15, -1
-	person_event SPRITE_YOUNGSTER, 2, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x70f18, -1
-	person_event SPRITE_CLERK, 5, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PosterClerkScript, -1

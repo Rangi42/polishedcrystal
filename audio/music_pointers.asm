@@ -88,7 +88,6 @@
 	dba Music_SSAqua ; 0xead99
 	dba Music_VermilionCity ; 0xeb676
 	dba Music_KantoGymBattle ; 0xec720
-	dba Music_BlackCityBW
 	dba Music_LavenderTownRBY
 	dba Music_PokemonTowerRBY
 	dba Music_LavenderTown ; 0xef72f
@@ -96,6 +95,7 @@
 	dba Music_CeruleanCityHGSS
 	dba Music_NuggetBridgeHGSS
 	dba Music_MagnetTrain ; 0xef5f0
+	dba Music_BlackCityBW
 	dba Music_PokemonLullaby ; 0xf6d79
 	dba Music_CeladonCity ; 0xf435b
 	dba Music_GameCornerDPPt
@@ -156,6 +156,7 @@
 	dba Music_SummoningDanceHGSS
 	dba Music_HoOhBattleHGSS
 	dba Music_CeruleanCaveRBY
+	dba Music_AbandonedShipRSE
 	dba Music_KantoLegendBattleXY
 	dba Music_GymLeaderBattleRSE
 	dba Music_GymLeaderBattleDPPt
@@ -167,7 +168,6 @@
 	dba Music_MountCoronetDPPt
 	dba Music_ChampionBattleDPPt
 	dba Music_WCSBattleBW
-	dba Music_AbandonedShipRSE
 	dba Music_ChampionBattleB2W2
 	dba Music_Credits ; 0x1f31c
 	dba Music_PostCredits ; 0xcfd9e

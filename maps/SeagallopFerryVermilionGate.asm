@@ -1,18 +1,29 @@
+SeagallopFerryVermilionGate_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw SeagallopFerryVermilionGateTrigger0
+	dw SeagallopFerryVermilionGateTrigger1
+
+.MapCallbacks: db 0
+
+SeagallopFerryVermilionGate_MapEventHeader:
+
+.Warps: db 1
+	warp_def $0, $6, 11, VERMILION_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryVermilionGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+
 const_value set 2
 	const SEAGALLOPFERRYVERMILIONGATE_SAILOR
 
-SeagallopFerryVermilionGate_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 0
-
-.Trigger1:
+SeagallopFerryVermilionGateTrigger1:
 	priorityjump SeagallopFerryVermilionGate_PlayerArrives
-.Trigger0:
+SeagallopFerryVermilionGateTrigger0:
 	end
 
 SeagallopFerryVermilionGate_PlayerArrives:
@@ -294,18 +305,3 @@ SeagallopFerryDepartureText:
 SeagallopFerryVermilionCityRefusedText:
 	text "Come again!"
 	done
-
-SeagallopFerryVermilionGate_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $0, $6, 11, VERMILION_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryVermilionGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY

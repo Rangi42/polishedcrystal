@@ -1,13 +1,33 @@
 RuinsofAlphOmanyteChamber_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw RuinsofAlphOmanyteChamberTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58bf8
 
-.Trigger0:
+RuinsofAlphOmanyteChamber_MapEventHeader:
+
+.Warps: db 5
+	warp_def $9, $3, 3, RUINS_OF_ALPH_OUTSIDE
+	warp_def $9, $4, 3, RUINS_OF_ALPH_OUTSIDE
+	warp_def $3, $3, 6, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $3, $4, 7, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $0, $4, 1, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphOmanyteChamberSignpost1Script
+	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphOmanyteChamberSignpost1Script
+	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost2Script
+	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost3Script
+	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost4Script
+	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost5Script
+
+.PersonEvents: db 0
+
+RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iffalse .End
@@ -133,27 +153,3 @@ UnknownText_0x58d26:
 	para "sea by twisting"
 	line "its ten tentacles."
 	done
-
-RuinsofAlphOmanyteChamber_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $9, $3, 3, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 3, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 6, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 7, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphOmanyteChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphOmanyteChamberSignpost1Script
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost5Script
-
-.PersonEvents:
-	db 0

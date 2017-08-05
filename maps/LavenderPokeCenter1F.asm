@@ -1,15 +1,26 @@
-const_value set 2
-	const LAVENDERPOKECENTER1F_NURSE
-	const LAVENDERPOKECENTER1F_GENTLEMAN
-	const LAVENDERPOKECENTER1F_TEACHER
-	const LAVENDERPOKECENTER1F_YOUNGSTER
-
 LavenderPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+LavenderPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 1, LAVENDER_TOWN
+	warp_def $7, $6, 1, LAVENDER_TOWN
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalMrFujiScript
+
+.PersonEvents: db 4
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x7e6a0, -1
+	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7e6a3, -1
+	person_event SPRITE_TEACHER, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7e6a6, -1
+	person_event SPRITE_YOUNGSTER, 5, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x7e6a9, -1
 
 NurseScript_0x7e6a0:
 	jumpstd pokecenternurse
@@ -99,24 +110,3 @@ PokemonJournalMrFujiText:
 	para "respected in Lav-"
 	line "ender Town."
 	done
-
-LavenderPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 1, LAVENDER_TOWN
-	warp_def $7, $6, 1, LAVENDER_TOWN
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalMrFujiScript
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x7e6a0, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7e6a3, -1
-	person_event SPRITE_TEACHER, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7e6a6, -1
-	person_event SPRITE_YOUNGSTER, 5, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x7e6a9, -1

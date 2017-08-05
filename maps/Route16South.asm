@@ -1,13 +1,23 @@
-const_value set 2
-	const ROUTE16_OFFICER_F
-
 Route16South_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
+
+Route16South_MapEventHeader:
+
+.Warps: db 2
+	warp_def $a, $9, 1, ROUTE_16_17_GATE
+	warp_def $b, $9, 2, ROUTE_16_17_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 9, 5, SIGNPOST_READ, CyclingRoadSign
+
+.PersonEvents: db 1
+	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 UnknownScript_0x1ad318:
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -80,20 +90,3 @@ CyclingRoadSignText:
 	para "Downhill coasting"
 	line "all the way!"
 	done
-
-Route16South_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $a, $9, 1, ROUTE_16_17_GATE
-	warp_def $b, $9, 2, ROUTE_16_17_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 9, 5, SIGNPOST_READ, CyclingRoadSign
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1

@@ -1,16 +1,30 @@
-const_value set 2
-	const FASTSHIPCABINS_SW_SSW_NW_FISHER
-	const FASTSHIPCABINS_SW_SSW_NW_BUG_CATCHER
-	const FASTSHIPCABINS_SW_SSW_NW_RICH_BOY
-	const FASTSHIPCABINS_SW_SSW_NW_BEAUTY
-	const FASTSHIPCABINS_SW_SSW_NW_ROCKER
-
 FastShipCabins_SW_SSW_NW_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+FastShipCabins_SW_SSW_NW_MapEventHeader:
+
+.Warps: db 5
+	warp_def $0, $2, 5, FAST_SHIP_1F
+	warp_def $13, $2, 6, FAST_SHIP_1F
+	warp_def $13, $3, 6, FAST_SHIP_1F
+	warp_def $1f, $2, 7, FAST_SHIP_1F
+	warp_def $1f, $3, 7, FAST_SHIP_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 1, 7, SIGNPOST_READ, FastShipBed
+	signpost 2, 7, SIGNPOST_READ, FastShipBed
+
+.PersonEvents: db 5
+	person_event SPRITE_FISHER, 15, 1, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	person_event SPRITE_BUG_CATCHER, 15, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	person_event SPRITE_RICH_BOY, 27, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	person_event SPRITE_BEAUTY, 26, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	person_event SPRITE_ROCKER, 28, 3, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 
 TrainerFirebreatherLyle:
 	trainer EVENT_BEAT_FIREBREATHER_LYLE, FIREBREATHER, LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText, 0, FirebreatherLyleScript
@@ -247,28 +261,3 @@ FastShipArrivedVermilionText:
 	line "has arrived in"
 	cont "Vermilion City."
 	done
-
-FastShipCabins_SW_SSW_NW_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $0, $2, 5, FAST_SHIP_1F
-	warp_def $13, $2, 6, FAST_SHIP_1F
-	warp_def $13, $3, 6, FAST_SHIP_1F
-	warp_def $1f, $2, 7, FAST_SHIP_1F
-	warp_def $1f, $3, 7, FAST_SHIP_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 1, 7, SIGNPOST_READ, FastShipBed
-	signpost 2, 7, SIGNPOST_READ, FastShipBed
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_FISHER, 15, 1, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	person_event SPRITE_BUG_CATCHER, 15, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	person_event SPRITE_RICH_BOY, 27, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	person_event SPRITE_BEAUTY, 26, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_ROCKER, 28, 3, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND

@@ -1,19 +1,43 @@
-const_value set 2
-	const VIRIDIAN_FOREST_POKE_BALL1
-	const VIRIDIAN_FOREST_POKE_BALL2
-	const VIRIDIAN_FOREST_POKE_BALL3
-	const VIRIDIAN_FOREST_BUG_MANIAC1
-	const VIRIDIAN_FOREST_BUG_MANIAC2
-	const VIRIDIAN_FOREST_BUG_MANIAC3
-	const VIRIDIAN_FOREST_BUG_MANIAC4
-	const VIRIDIAN_FOREST_BUG_MANIAC5
-
 ViridianForest_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+ViridianForest_MapEventHeader:
+
+.Warps: db 3
+	warp_def $5, $3, 1, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_def $2f, $12, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	warp_def $2f, $13, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 11
+	signpost 7, 4, SIGNPOST_READ, MapViridianForestSignpost1Script
+	signpost 26, 6, SIGNPOST_READ, MapViridianForestSignpost2Script
+	signpost 19, 28, SIGNPOST_READ, MapViridianForestSignpost3Script
+	signpost 34, 18, SIGNPOST_READ, MapViridianForestSignpost4Script
+	signpost 42, 26, SIGNPOST_READ, MapViridianForestSignpost5Script
+	signpost 44, 20, SIGNPOST_READ, MapViridianForestSignpost6Script
+	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
+	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
+	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenMulch
+	signpost 9, 30, SIGNPOST_ITEM, ViridianForestHiddenRevive
+	signpost 14, 3, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
+
+.PersonEvents: db 8
+	person_event SPRITE_BALL_CUT_FRUIT, 18, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
+	person_event SPRITE_BALL_CUT_FRUIT, 31, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
+	person_event SPRITE_BALL_CUT_FRUIT, 33, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
+	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
+	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
+	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
+	person_event SPRITE_BUG_MANIAC, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
+	person_event SPRITE_BUG_MANIAC, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
+
+const_value set 2
+	const VIRIDIAN_FOREST_POKE_BALL3
 
 TrainerBug_maniacDane:
 	trainer EVENT_BEAT_BUG_MANIAC_DANE, BUG_MANIAC, DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText, 0, .Script
@@ -100,12 +124,6 @@ MapViridianForestSignpost5Script:
 
 MapViridianForestSignpost6Script:
 	jumptext ViridianForestSignText6
-
-ViridianForestDireHit:
-	itemball DIRE_HIT
-
-ViridianForestMaxPotion:
-	itemball MAX_POTION
 
 ViridianForestHiddenMaxEther:
 	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER, MAX_ETHER
@@ -283,38 +301,3 @@ ViridianForestSignText6:
 	para "When healthy,"
 	line "they may escape!"
 	done
-
-ViridianForest_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $5, $3, 1, VIRIDIAN_FOREST_PEWTER_GATE
-	warp_def $2f, $12, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
-	warp_def $2f, $13, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 11
-	signpost 7, 4, SIGNPOST_READ, MapViridianForestSignpost1Script
-	signpost 26, 6, SIGNPOST_READ, MapViridianForestSignpost2Script
-	signpost 19, 28, SIGNPOST_READ, MapViridianForestSignpost3Script
-	signpost 34, 18, SIGNPOST_READ, MapViridianForestSignpost4Script
-	signpost 42, 26, SIGNPOST_READ, MapViridianForestSignpost5Script
-	signpost 44, 20, SIGNPOST_READ, MapViridianForestSignpost6Script
-	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
-	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
-	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenMulch
-	signpost 9, 30, SIGNPOST_ITEM, ViridianForestHiddenRevive
-	signpost 14, 3, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_BALL_CUT_FRUIT, 31, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ViridianForestDireHit, EVENT_ROUTE_2_DIRE_HIT
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ViridianForestMaxPotion, EVENT_ROUTE_2_MAX_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
-	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
-	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
-	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
-	person_event SPRITE_BUG_MANIAC, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
-	person_event SPRITE_BUG_MANIAC, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1

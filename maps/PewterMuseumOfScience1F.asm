@@ -1,16 +1,40 @@
-const_value set 2
-	const PEWTERMUSEUMOFSCIENCE1F_RECEPTIONIST
-	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST1
-	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
-	const PEWTERMUSEUMOFSCIENCE1F_GRAMPS
-	const PEWTERMUSEUMOFSCIENCE1F_YOUNGSTER
-
 PewterMuseumOfScience1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PewterMuseumOfScience1F_MapEventHeader:
+
+.Warps: db 5
+	warp_def $7, $a, 6, PEWTER_CITY
+	warp_def $7, $b, 6, PEWTER_CITY
+	warp_def $7, $10, 7, PEWTER_CITY
+	warp_def $7, $11, 7, PEWTER_CITY
+	warp_def $7, $7, 1, PEWTER_MUSEUM_OF_SCIENCE_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 9
+	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
+	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
+	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
+	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 15, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 17, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 18, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+
+.PersonEvents: db 5
+	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
+	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
+	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FScientistScript, -1
+	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FGrampsScript, -1
+	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FYoungsterScript, -1
+
+const_value set 2
+	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
 
 Museum1FFossilScientistScript:
 	faceplayer
@@ -423,35 +447,3 @@ TakeGoodCareOfItText:
 	text "Take good care"
 	line "of it!"
 	done
-
-PewterMuseumOfScience1F_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $7, $a, 6, PEWTER_CITY
-	warp_def $7, $b, 6, PEWTER_CITY
-	warp_def $7, $10, 7, PEWTER_CITY
-	warp_def $7, $11, 7, PEWTER_CITY
-	warp_def $7, $7, 1, PEWTER_MUSEUM_OF_SCIENCE_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 9
-	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
-	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
-	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
-	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 15, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 17, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 18, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
-	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FScientistScript, -1
-	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
-	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FGrampsScript, -1
-	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FYoungsterScript, -1

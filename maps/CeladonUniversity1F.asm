@@ -1,19 +1,49 @@
-const_value set 2
-	const CELADONUNIVERSITY1F_SUPER_NERD
-	const CELADONUNIVERSITY1F_LASS
-	const CELADONUNIVERSITY1F_COOLTRAINER_M
-	const CELADONUNIVERSITY1F_YOUNGSTER
-	const CELADONUNIVERSITY1F_CHILD
-	const CELADONUNIVERSITY1F_POKEFAN_M
-	const CELADONUNIVERSITY1F_RECEPTIONIST
-	const CELADONUNIVERSITY1F_COOLTRAINER_F
-
 CeladonUniversity1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversity1F_MapEventHeader:
+
+.Warps: db 10
+	warp_def $13, $e, 13, CELADON_CITY
+	warp_def $13, $f, 13, CELADON_CITY
+	warp_def $c, $19, 1, CELADON_UNIVERSITY_2F
+	warp_def $c, $15, 1, CELADON_UNIVERSITY_LIBRARY_1F
+	warp_def $0, $f, 1, CELADON_UNIVERSITY_DEANS_OFFICE
+	warp_def $4, $3, 1, CELADON_UNIVERSITY_CLASSROOM_1
+	warp_def $4, $9, 1, CELADON_UNIVERSITY_CLASSROOM_2
+	warp_def $4, $15, 1, CELADON_UNIVERSITY_CLASSROOM_3
+	warp_def $4, $1b, 1, CELADON_UNIVERSITY_CLASSROOM_4
+	warp_def $c, $3, 1, CELADON_UNIVERSITY_LOUNGE
+
+.XYTriggers: db 0
+
+.Signposts: db 13
+	signpost 0, 14, SIGNPOST_READ, CeladonUniversity1FDeansOfficeSign
+	signpost 4, 2, SIGNPOST_READ, CeladonUniversity1FClassroom1Sign
+	signpost 4, 8, SIGNPOST_READ, CeladonUniversity1FClassroom2Sign
+	signpost 4, 20, SIGNPOST_READ, CeladonUniversity1FClassroom3Sign
+	signpost 4, 26, SIGNPOST_READ, CeladonUniversity1FClassroom4Sign
+	signpost 12, 2, SIGNPOST_READ, CeladonUniversity1FStudentLoungeSign
+	signpost 12, 20, SIGNPOST_READ, CeladonUniversity1FLibrarySign
+	signpost 5, 22, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
+	signpost 5, 23, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
+	signpost 13, 6, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
+	signpost 13, 7, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
+	signpost 13, 26, SIGNPOST_READ, CeladonUniversity1FBookshelf
+	signpost 13, 27, SIGNPOST_READ, CeladonUniversity1FBookshelf
+
+.PersonEvents: db 8
+	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FSuperNerdScript, -1
+	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FLassScript, -1
+	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainermScript, -1
+	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FYoungsterScript, -1
+	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FChildScript, -1
+	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FPokefanmScript, -1
+	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FReceptionistScript, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainerfScript, -1
 
 CeladonUniversity1FSuperNerdScript:
 	jumptextfaceplayer .Text
@@ -206,47 +236,3 @@ CeladonUniversity1FBookshelf:
 	line "scribbled all over"
 	cont "them."
 	done
-
-CeladonUniversity1F_MapEventHeader:
-.Warps:
-	db 10
-	warp_def $13, $e, 13, CELADON_CITY
-	warp_def $13, $f, 13, CELADON_CITY
-	warp_def $c, $19, 1, CELADON_UNIVERSITY_2F
-	warp_def $c, $15, 1, CELADON_UNIVERSITY_LIBRARY_1F
-	warp_def $0, $f, 1, CELADON_UNIVERSITY_DEANS_OFFICE
-	warp_def $4, $3, 1, CELADON_UNIVERSITY_CLASSROOM_1
-	warp_def $4, $9, 1, CELADON_UNIVERSITY_CLASSROOM_2
-	warp_def $4, $15, 1, CELADON_UNIVERSITY_CLASSROOM_3
-	warp_def $4, $1b, 1, CELADON_UNIVERSITY_CLASSROOM_4
-	warp_def $c, $3, 1, CELADON_UNIVERSITY_LOUNGE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 13
-	signpost 0, 14, SIGNPOST_READ, CeladonUniversity1FDeansOfficeSign
-	signpost 4, 2, SIGNPOST_READ, CeladonUniversity1FClassroom1Sign
-	signpost 4, 8, SIGNPOST_READ, CeladonUniversity1FClassroom2Sign
-	signpost 4, 20, SIGNPOST_READ, CeladonUniversity1FClassroom3Sign
-	signpost 4, 26, SIGNPOST_READ, CeladonUniversity1FClassroom4Sign
-	signpost 12, 2, SIGNPOST_READ, CeladonUniversity1FStudentLoungeSign
-	signpost 12, 20, SIGNPOST_READ, CeladonUniversity1FLibrarySign
-	signpost 5, 22, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 5, 23, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 6, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 7, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 26, SIGNPOST_READ, CeladonUniversity1FBookshelf
-	signpost 13, 27, SIGNPOST_READ, CeladonUniversity1FBookshelf
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FSuperNerdScript, -1
-	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FLassScript, -1
-	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainermScript, -1
-	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FYoungsterScript, -1
-	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FChildScript, -1
-	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FPokefanmScript, -1
-	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FReceptionistScript, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainerfScript, -1

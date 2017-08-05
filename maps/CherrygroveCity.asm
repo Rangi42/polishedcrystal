@@ -1,24 +1,45 @@
+CherrygroveCity_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
+	dbw MAPCALLBACK_SPRITES, CherrygroveCitySwimmerGuySprite
+
+CherrygroveCity_MapEventHeader:
+
+.Warps: db 5
+	warp_def $3, $17, 2, CHERRYGROVE_MART
+	warp_def $3, $1d, 1, CHERRYGROVE_POKECENTER_1F
+	warp_def $7, $11, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
+	warp_def $9, $19, 1, GUIDE_GENTS_HOUSE
+	warp_def $b, $1f, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
+
+.XYTriggers: db 3
+	xy_trigger 0, $7, $21, CherrygroveGuideGentTrigger
+	xy_trigger 1, $6, $21, CherrygroveSilverTriggerNorth
+	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
+
+.Signposts: db 2
+	signpost 8, 30, SIGNPOST_READ, CherrygroveCitySign
+	signpost 9, 23, SIGNPOST_READ, GuideGentsHouseSign
+
+.PersonEvents: db 5
+	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
+	person_event SPRITE_CHERRYGROVE_RIVAL, 6, 39, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
+	person_event SPRITE_TEACHER, 12, 27, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
+	person_event SPRITE_YOUNGSTER, 7, 23, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
+	person_event SPRITE_FISHER, 12, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
+
 const_value set 2
 	const CHERRYGROVECITY_GRAMPS
 	const CHERRYGROVECITY_SILVER
-	const CHERRYGROVECITY_TEACHER
-	const CHERRYGROVECITY_YOUNGSTER
-	const CHERRYGROVECITY_FISHER
 
-CherrygroveCity_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.FlyPoint:
+CherrygroveCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
 	return
 
-.SwimmerGuySprite:
+CherrygroveCitySwimmerGuySprite:
 	checkevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
 	iftrue .done
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
@@ -518,31 +539,3 @@ CherrygroveCitySignText:
 GuideGentsHouseSignText:
 	text "Guide Gent's House"
 	done
-
-CherrygroveCity_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $3, $17, 2, CHERRYGROVE_MART
-	warp_def $3, $1d, 1, CHERRYGROVE_POKECENTER_1F
-	warp_def $7, $11, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
-	warp_def $9, $19, 1, GUIDE_GENTS_HOUSE
-	warp_def $b, $1f, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
-
-.XYTriggers:
-	db 3
-	xy_trigger 0, $7, $21, CherrygroveGuideGentTrigger
-	xy_trigger 1, $6, $21, CherrygroveSilverTriggerNorth
-	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
-
-.Signposts:
-	db 2
-	signpost 8, 30, SIGNPOST_READ, CherrygroveCitySign
-	signpost 9, 23, SIGNPOST_READ, GuideGentsHouseSign
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
-	person_event SPRITE_CHERRYGROVE_RIVAL, 6, 39, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
-	person_event SPRITE_TEACHER, 12, 27, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
-	person_event SPRITE_YOUNGSTER, 7, 23, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
-	person_event SPRITE_FISHER, 12, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1

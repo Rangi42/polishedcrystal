@@ -1,13 +1,25 @@
+Route22_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route22_MapEventHeader:
+
+.Warps: db 1
+	warp_def $5, $3, 1, POKEMON_LEAGUE_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 7, 5, SIGNPOST_READ, VictoryRoadEntranceSign
+
+.PersonEvents: db 2
+	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route22CooltrainerfScript, -1
+
 const_value set 2
 	const ROUTE22_KUKUI
-	const ROUTE22_COOLTRAINER_F
-
-Route22_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 KukuiScript:
 	faceplayer
@@ -161,20 +173,3 @@ VictoryRoadEntranceSign:
 	para "#mon League"
 	line "Reception Gate"
 	done
-
-Route22_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $5, $3, 1, POKEMON_LEAGUE_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 7, 5, SIGNPOST_READ, VictoryRoadEntranceSign
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route22CooltrainerfScript, -1

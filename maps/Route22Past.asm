@@ -1,18 +1,31 @@
+Route22Past_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw Route22PastTrigger0
+
+.MapCallbacks: db 0
+
+Route22Past_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 4
+	person_event SPRITE_CELEBI, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_LYRA, 7, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_SILVER, 2, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_GIOVANNI, 2, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
 const_value set 2
 	const ROUTE22PAST_CELEBI
 	const ROUTE22PAST_LYRA
 	const ROUTE22PAST_SILVER
 	const ROUTE22PAST_GIOVANNI
 
-Route22Past_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+Route22PastTrigger0:
 	priorityjump Route22PastCelebiEventScript
 	end
 
@@ -409,20 +422,3 @@ Route22PastLyraOhNoText:
 	para "It's Celebi's"
 	line "Time Travel!"
 	done
-
-Route22Past_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_CELEBI, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_LYRA, 7, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_SILVER, 2, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_GIOVANNI, 2, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

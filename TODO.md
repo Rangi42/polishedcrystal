@@ -25,7 +25,6 @@ The final, non-beta 3.0 release should include all of these.
 ### Aesthetics
 
 * Draw Kukui's overworld sprite
-* Draw Caitlin's sleeping overworld sprite
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 
@@ -36,7 +35,8 @@ The final, non-beta 3.0 release should include all of these.
 * Venoshock and Skill Swap tutors
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
-* Rematch Eusine and Bill somehow
+* Rematch Eusine in Celadon City if you have Suicune in your party
+* Rematch Bill in his house somehow
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 
 Shamouti Island:
@@ -118,12 +118,16 @@ Low priority:
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
 * Optimize battle command engine, including parameterized commands
 * SIGNPOST_JUMPTEXT
-* SIGNPOST_JUMPSTD for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath
+* SIGNPOST_JUMPSTD (for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath)
 * PERSONTYPE_JUMPTEXTFP
-* PERSONTYPE_JUMPSTD for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc
+* PERSONTYPE_JUMPSTD (for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc)
+* PERSONTYPE_ITEMBALL (no script needed)
+* PERSONTYPE_TMHMBALL (no script needed)
 * PERSONTYPE_MART
 * PERSONTYPE_FRUITTREE
 * PERSONTYPE_GENERICTRAINER
+* PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)
+* PERSONTYPE_TRADE (script pointer → trade ID)
 
 
 ## Postponed until 4.0

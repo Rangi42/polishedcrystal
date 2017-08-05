@@ -1,27 +1,44 @@
+Route27_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_SPRITES, Route27DragonTamerSprite
+
+Route27_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE
+	warp_def $5, $1a, 1, TOHJO_FALLS
+	warp_def $5, $24, 2, TOHJO_FALLS
+
+.XYTriggers: db 2
+	xy_trigger 0, $a, $12, UnknownScript_0x1a0873
+	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
+
+.Signposts: db 1
+	signpost 7, 25, SIGNPOST_READ, TohjoFallsSign
+
+.PersonEvents: db 13
+	person_event SPRITE_VETERAN_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
+	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 3, FisherScript_0x1a089c, -1
+	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
+	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
+	person_event SPRITE_COOLTRAINER_F, 6, 59, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
+	person_event SPRITE_COOLTRAINER_F, 10, 72, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
+	person_event SPRITE_COOLTRAINER_F, 6, 37, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
+	person_event SPRITE_YOUNGSTER, 7, 65, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
+	person_event SPRITE_YOUNGSTER, 13, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose1, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_DRAGON_CLAW, EVENT_ROUTE_27_TM_DRAGON_CLAW
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 53, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_CANDY, 1, EVENT_ROUTE_27_RARE_CANDY
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 71, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 60, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_Route27LumBerry, -1
+
 const_value set 2
 	const ROUTE27_VETERAN_F
-	const ROUTE27_COOLTRAINER_M1
-	const ROUTE27_COOLTRAINER_M2
-	const ROUTE27_COOLTRAINER_F1
-	const ROUTE27_COOLTRAINER_F2
-	const ROUTE27_COOLTRAINER_F3
-	const ROUTE27_YOUNGSTER1
-	const ROUTE27_YOUNGSTER2
-	const ROUTE27_POKE_BALL1
-	const ROUTE27_POKE_BALL2
-	const ROUTE27_POKE_BALL3
 	const ROUTE27_FISHER
-	const ROUTE27_FRUIT_TREE
 
-Route27_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_SPRITES, .DragonTamerSprite
-
-.DragonTamerSprite:
+Route27DragonTamerSprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
 	return
 
@@ -454,15 +471,6 @@ CooltrainerfMeganScript:
 TohjoFallsSign:
 	jumptext TohjoFallsSignText
 
-Route27TMDragonClaw:
-	tmhmball TM_DRAGON_CLAW
-
-Route27RareCandy:
-	itemball RARE_CANDY
-
-Route27DestinyKnot:
-	itemball DESTINY_KNOT
-
 MovementData_0x1a0a66:
 	step_left
 	step_left
@@ -644,35 +652,3 @@ TohjoFallsSignText:
 	para "The Link Between"
 	line "Kanto and Johto"
 	done
-
-Route27_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE
-	warp_def $5, $1a, 1, TOHJO_FALLS
-	warp_def $5, $24, 2, TOHJO_FALLS
-
-.XYTriggers:
-	db 2
-	xy_trigger 0, $a, $12, UnknownScript_0x1a0873
-	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
-
-.Signposts:
-	db 1
-	signpost 7, 25, SIGNPOST_READ, TohjoFallsSign
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_VETERAN_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
-	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
-	person_event SPRITE_COOLTRAINER_F, 6, 59, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
-	person_event SPRITE_COOLTRAINER_F, 10, 72, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
-	person_event SPRITE_COOLTRAINER_F, 6, 37, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
-	person_event SPRITE_YOUNGSTER, 7, 65, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
-	person_event SPRITE_YOUNGSTER, 13, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, Route27TMDragonClaw, EVENT_ROUTE_27_TM_DRAGON_CLAW
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 53, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route27RareCandy, EVENT_ROUTE_27_RARE_CANDY
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 71, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route27DestinyKnot, EVENT_ROUTE_27_DESTINY_KNOT
-	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 3, FisherScript_0x1a089c, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 60, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_Route27LumBerry, -1

@@ -1,13 +1,33 @@
 RuinsofAlphAerodactylChamber_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw RuinsofAlphAerodactylChamberTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58db9
 
-.Trigger0:
+RuinsofAlphAerodactylChamber_MapEventHeader:
+
+.Warps: db 5
+	warp_def $9, $3, 4, RUINS_OF_ALPH_OUTSIDE
+	warp_def $9, $4, 4, RUINS_OF_ALPH_OUTSIDE
+	warp_def $3, $3, 8, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $3, $4, 9, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $0, $4, 1, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphAerodactylChamberSignpost1Script
+	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphAerodactylChamberSignpost1Script
+	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
+	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
+	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
+	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
+
+.PersonEvents: db 0
+
+RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iffalse .End
 	priorityjump UnknownScript_0x58dd3
@@ -132,27 +152,3 @@ UnknownText_0x58ee7:
 	para "prey with saw-like"
 	line "fangs."
 	done
-
-RuinsofAlphAerodactylChamber_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $9, $3, 4, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 4, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 8, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 9, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphAerodactylChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphAerodactylChamberSignpost1Script
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
-
-.PersonEvents:
-	db 0

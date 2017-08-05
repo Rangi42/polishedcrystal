@@ -2,14 +2,30 @@ const_value set 2
 	const BATTLETOWERHALLWAY_RECEPTIONIST
 
 BattleTowerHallway_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 1
+	dw BattleTowerHallwayTrigger0
 
-.Trigger0:
+.MapCallbacks: db 0
+
+BattleTowerHallway_MapEventHeader:
+
+.Warps: db 6
+	warp_def $1, $b, 1, BATTLE_TOWER_ELEVATOR
+	warp_def $0, $5, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def $0, $7, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def $0, $9, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def $0, $d, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def $0, $f, 1, BATTLE_TOWER_BATTLE_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_RECEPTIONIST, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
+BattleTowerHallwayTrigger0:
 	priorityjump .ChooseBattleRoom
 	dotrigger $1
 	end
@@ -107,23 +123,3 @@ Text_PleaseStepThisWay: ; 0x9ec26
 	text "Please step this"
 	line "way."
 	done
-
-BattleTowerHallway_MapEventHeader:
-.Warps:
-	db 6
-	warp_def $1, $b, 1, BATTLE_TOWER_ELEVATOR
-	warp_def $0, $5, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $7, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $9, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $d, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $f, 1, BATTLE_TOWER_BATTLE_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_RECEPTIONIST, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTowerHallway_MapEventHeader, -1

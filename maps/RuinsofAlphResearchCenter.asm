@@ -1,21 +1,39 @@
+RuinsofAlphResearchCenter_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw RuinsofAlphResearchCenterTrigger0
+	dw RuinsofAlphResearchCenterTrigger1
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
+
+RuinsofAlphResearchCenter_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 6, RUINS_OF_ALPH_OUTSIDE
+	warp_def $7, $3, 6, RUINS_OF_ALPH_OUTSIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 5, 6, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost0Script
+	signpost 4, 3, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
+	signpost 1, 7, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost2Script
+	signpost 0, 5, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost3Script
+
+.PersonEvents: db 3
+	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
+	person_event SPRITE_SCIENTIST, 2, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
+	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+
 const_value set 2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST1
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 
-RuinsofAlphResearchCenter_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
-
-.Trigger1:
+RuinsofAlphResearchCenterTrigger1:
 	priorityjump UnknownScript_0x59192
-.Trigger0:
+RuinsofAlphResearchCenterTrigger0:
 	end
 
 UnknownScript_0x59185:
@@ -497,25 +515,3 @@ UnknownText_0x59886:
 	line "Mysteries of the"
 	cont "Ancients…"
 	done
-
-RuinsofAlphResearchCenter_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 6, RUINS_OF_ALPH_OUTSIDE
-	warp_def $7, $3, 6, RUINS_OF_ALPH_OUTSIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 5, 6, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost0Script
-	signpost 4, 3, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
-	signpost 1, 7, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost2Script
-	signpost 0, 5, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost3Script
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
-	person_event SPRITE_SCIENTIST, 2, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
-	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST

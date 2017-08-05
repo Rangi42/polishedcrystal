@@ -1,14 +1,23 @@
-const_value set 2
-	const GOLDENRODBANDHOUSE_ROCKER1
-	const GOLDENRODBANDHOUSE_ROCKER2
-	const GOLDENRODBANDHOUSE_COOLTRAINER_F
-
 GoldenrodBandHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+GoldenrodBandHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 20, GOLDENROD_CITY
+	warp_def $7, $3, 20, GOLDENROD_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_ROCKER, 3, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodBandHouseRocker1Script, -1
+	person_event SPRITE_ROCKER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodBandHouseRocker2Script, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodBandHouseCooltrainerFScript, -1
 
 GoldenrodBandHouseRocker1Script:
 	jumptextfaceplayer GoldenrodBandHouseRocker1Text
@@ -46,21 +55,3 @@ GoldenrodBandHouseCooltrainerFText:
 
 	para "Don't be a hater!"
 	done
-
-GoldenrodBandHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 20, GOLDENROD_CITY
-	warp_def $7, $3, 20, GOLDENROD_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_ROCKER, 3, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodBandHouseRocker1Script, -1
-	person_event SPRITE_ROCKER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodBandHouseRocker2Script, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodBandHouseCooltrainerFScript, -1

@@ -11,9 +11,7 @@ hRTCMinutes        EQU $ff90
 hRTCSeconds        EQU $ff91
 
 hHours             EQU $ff94
-
 hMinutes           EQU $ff96
-
 hSeconds           EQU $ff98
 
 hVBlankCounter     EQU $ff9b

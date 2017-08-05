@@ -1,23 +1,37 @@
+Route44_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route44_MapEventHeader:
+
+.Warps: db 1
+	warp_def $7, $38, 1, ICE_PATH_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 7, 53, SIGNPOST_READ, Route44Sign1
+	signpost 10, 6, SIGNPOST_READ, Route44Sign2
+	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
+
+.PersonEvents: db 12
+	person_event SPRITE_VETERAN_M, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
+	person_event SPRITE_FISHER, 3, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
+	person_event SPRITE_FISHER, 13, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherEdgar, -1
+	person_event SPRITE_YOUNGSTER, 9, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicPhil, -1
+	person_event SPRITE_SUPER_NERD, 2, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
+	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
+	person_event SPRITE_COOLTRAINER_M, 15, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
+	person_event SPRITE_COOLTRAINER_F, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19da40, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 45, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
+	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
+
 const_value set 2
 	const ROUTE44_VETERAN_M
-	const ROUTE44_FISHER1
-	const ROUTE44_FISHER2
-	const ROUTE44_YOUNGSTER1
-	const ROUTE44_SUPER_NERD
-	const ROUTE44_YOUNGSTER2
-	const ROUTE44_COOLTRAINER_M
-	const ROUTE44_COOLTRAINER_F
-	const ROUTE44_FRUIT_TREE
-	const ROUTE44_POKE_BALL1
-	const ROUTE44_POKE_BALL2
-	const ROUTE44_POKE_BALL3
-
-Route44_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 Route44VeteranmScript:
 	faceplayer
@@ -402,15 +416,6 @@ Route44Sign2:
 FruitTreeScript_0x19da40:
 	fruittree FRUITTREE_ROUTE_44
 
-Route44MaxRevive:
-	itemball MAX_REVIVE
-
-Route44UltraBall:
-	itemball ULTRA_BALL
-
-Route44MaxRepel:
-	itemball MAX_REPEL
-
 Route44HiddenElixer:
 	dwb EVENT_ROUTE_44_HIDDEN_ELIXER, ELIXER
 
@@ -610,32 +615,3 @@ Route44Sign2Text:
 	para "Mahogany Town -"
 	line "Blackthorn City"
 	done
-
-Route44_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $7, $38, 1, ICE_PATH_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 7, 53, SIGNPOST_READ, Route44Sign1
-	signpost 10, 6, SIGNPOST_READ, Route44Sign2
-	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
-
-.PersonEvents:
-	db 12
-	person_event SPRITE_VETERAN_M, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
-	person_event SPRITE_FISHER, 3, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
-	person_event SPRITE_FISHER, 13, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherEdgar, -1
-	person_event SPRITE_YOUNGSTER, 9, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicPhil, -1
-	person_event SPRITE_SUPER_NERD, 2, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
-	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
-	person_event SPRITE_COOLTRAINER_M, 15, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
-	person_event SPRITE_COOLTRAINER_F, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19da40, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route44MaxRevive, EVENT_ROUTE_44_MAX_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 45, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route44UltraBall, EVENT_ROUTE_44_ULTRA_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route44MaxRepel, EVENT_ROUTE_44_MAX_REPEL

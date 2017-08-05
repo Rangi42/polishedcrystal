@@ -1,12 +1,24 @@
-const_value set 2
-	const LAKEOFRAGEHIDDENPOWERHOUSE_FISHER
-
 LakeofRageHiddenPowerHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+LakeofRageHiddenPowerHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 1, LAKE_OF_RAGE
+	warp_def $7, $3, 1, LAKE_OF_RAGE
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 1, 5, SIGNPOST_READ, HiddenPowerHouseRadio
+	signpost 1, 6, SIGNPOST_READ, HiddenPowerHouseBookshelf
+	signpost 1, 7, SIGNPOST_READ, HiddenPowerHouseBookshelf
+
+.PersonEvents: db 1
+	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
 
 HiddenPowerGuy:
 	faceplayer
@@ -67,22 +79,3 @@ HiddenPowerGuyText2:
 HiddenPowerGuyText3:
 	text "I am meditating…"
 	done
-
-LakeofRageHiddenPowerHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 1, LAKE_OF_RAGE
-	warp_def $7, $3, 1, LAKE_OF_RAGE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 1, 5, SIGNPOST_READ, HiddenPowerHouseRadio
-	signpost 1, 6, SIGNPOST_READ, HiddenPowerHouseBookshelf
-	signpost 1, 7, SIGNPOST_READ, HiddenPowerHouseBookshelf
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1

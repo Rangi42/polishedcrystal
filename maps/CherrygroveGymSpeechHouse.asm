@@ -1,13 +1,22 @@
-const_value set 2
-	const CHERRYGROVEGYMSPEECHHOUSE_POKEFAN_M
-	const CHERRYGROVEGYMSPEECHHOUSE_CHILD
-
 CherrygroveGymSpeechHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CherrygroveGymSpeechHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 3, CHERRYGROVE_CITY
+	warp_def $7, $3, 3, CHERRYGROVE_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x196ae1, -1
+	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ChildScript_0x196ae4, -1
 
 PokefanMScript_0x196ae1:
 	jumptextfaceplayer UnknownText_0x196aea
@@ -40,20 +49,3 @@ UnknownText_0x196b65:
 	para "friend's to make"
 	line "them tougher!"
 	done
-
-CherrygroveGymSpeechHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 3, CHERRYGROVE_CITY
-	warp_def $7, $3, 3, CHERRYGROVE_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x196ae1, -1
-	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ChildScript_0x196ae4, -1

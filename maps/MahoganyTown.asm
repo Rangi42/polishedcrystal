@@ -1,18 +1,38 @@
+MahoganyTown_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, MahoganyTownFlyPoint
+
+MahoganyTown_MapEventHeader:
+
+.Warps: db 5
+	warp_def $7, $b, 1, MAHOGANY_MART_1F
+	warp_def $7, $11, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
+	warp_def $d, $6, 1, MAHOGANY_GYM
+	warp_def $d, $f, 1, MAHOGANY_POKECENTER_1F
+	warp_def $1, $9, 3, ROUTE_43_MAHOGANY_GATE
+
+.XYTriggers: db 2
+	xy_trigger 0, $8, $13, UnknownScript_0x190013
+	xy_trigger 0, $9, $13, UnknownScript_0x190013
+
+.Signposts: db 3
+	signpost 5, 1, SIGNPOST_READ, MahoganyTownSign
+	signpost 7, 9, SIGNPOST_READ, MahoganyTownSouvenirShopSign
+	signpost 13, 3, SIGNPOST_READ, MahoganyGymSign
+
+.PersonEvents: db 4
+	person_event SPRITE_POKEFAN_M, 8, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
+	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
+	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x190092, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
+	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x190095, EVENT_MAHOGANY_MART_OWNERS
+
 const_value set 2
 	const MAHOGANYTOWN_POKEFAN_M
-	const MAHOGANYTOWN_GRAMPS
-	const MAHOGANYTOWN_FISHER
-	const MAHOGANYTOWN_LASS
 
-MahoganyTown_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-
-.FlyPoint:
+MahoganyTownFlyPoint:
 	setflag ENGINE_FLYPOINT_MAHOGANY
 	return
 
@@ -243,30 +263,3 @@ MahoganyGymSignText:
 	para "The Teacher of"
 	line "Winter's Harshness"
 	done
-
-MahoganyTown_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $7, $b, 1, MAHOGANY_MART_1F
-	warp_def $7, $11, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
-	warp_def $d, $6, 1, MAHOGANY_GYM
-	warp_def $d, $f, 1, MAHOGANY_POKECENTER_1F
-	warp_def $1, $9, 3, ROUTE_43_MAHOGANY_GATE
-
-.XYTriggers:
-	db 2
-	xy_trigger 0, $8, $13, UnknownScript_0x190013
-	xy_trigger 0, $9, $13, UnknownScript_0x190013
-
-.Signposts:
-	db 3
-	signpost 5, 1, SIGNPOST_READ, MahoganyTownSign
-	signpost 7, 9, SIGNPOST_READ, MahoganyTownSouvenirShopSign
-	signpost 13, 3, SIGNPOST_READ, MahoganyGymSign
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_POKEFAN_M, 8, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
-	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
-	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x190092, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x190095, EVENT_MAHOGANY_MART_OWNERS

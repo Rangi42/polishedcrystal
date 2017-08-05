@@ -1,14 +1,27 @@
-const_value set 2
-	const CELADONDEPTSTORE1F_RECEPTIONIST
-	const CELADONDEPTSTORE1F_GENTLEMAN
-	const CELADONDEPTSTORE1F_TEACHER
-
 CeladonDeptStore1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonDeptStore1F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $7, $7, 1, CELADON_CITY
+	warp_def $7, $8, 1, CELADON_CITY
+	warp_def $0, $f, 2, CELADON_DEPT_STORE_2F
+	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore1FDirectory
+	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore1FElevatorButton
+
+.PersonEvents: db 3
+	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x709e0, -1
+	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x709e3, -1
+	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x709e6, -1
 
 ReceptionistScript_0x709e0:
 	jumptextfaceplayer UnknownText_0x709ef
@@ -72,25 +85,3 @@ CeladonDeptStore1FDirectoryText:
 	para "6F: Rooftop"
 	line "    Atrium"
 	done
-
-CeladonDeptStore1F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $7, $7, 1, CELADON_CITY
-	warp_def $7, $8, 1, CELADON_CITY
-	warp_def $0, $f, 2, CELADON_DEPT_STORE_2F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore1FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore1FElevatorButton
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x709e0, -1
-	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x709e3, -1
-	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x709e6, -1

@@ -1,22 +1,32 @@
-const_value set 2
-	const STORMYBEACH_SWIMMER_GIRL
-	const STORMYBEACH_YOUNGSTER1
-	const STORMYBEACH_YOUNGSTER2
-	const STORMYBEACH_LASS
-	const STORMYBEACH_SWIMMER_GUY
-	const STORMYBEACH_GRAMPS
-	const STORMYBEACH_POKE_BALL
-	const STORMYBEACH_ROCK1
-	const STORMYBEACH_ROCK2
-	const STORMYBEACH_ROCK3
-	const STORMYBEACH_ROCK4
-
 StormyBeach_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+StormyBeach_MapEventHeader:
+
+.Warps: db 2
+	warp_def $4, $1e, 1, MURKY_SWAMP
+	warp_def $4, $1f, 2, MURKY_SWAMP
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 6, 17, SIGNPOST_ITEM, StormyBeachHiddenStardust
+
+.PersonEvents: db 11
+	person_event SPRITE_GOLDENROD_LYRA, 13, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfBarbara, -1
+	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJulian, -1
+	person_event SPRITE_YOUNGSTER, 7, 28, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerCamperFelix, -1
+	person_event SPRITE_LASS, 11, 24, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerLily, -1
+	person_event SPRITE_SWIMMER_GUY, 17, 26, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, StormyBeachSwimmermScript, -1
+	person_event SPRITE_GRAMPS, 12, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, StormyBeachGrampsScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 7, 34, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ZINC, 1, EVENT_STORMY_BEACH_ZINC
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 16, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 17, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 18, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
 
 TrainerSwimmerfBarbara:
 	trainer EVENT_BEAT_SWIMMERF_BARBARA, SWIMMERF, BARBARA, .SeenText, .BeatenText, 0, .Script
@@ -161,38 +171,8 @@ StormyBeachGrampsScript:
 	cont "swamp."
 	done
 
-StormyBeachZinc:
-	itemball ZINC
-
 StormyBeachRock:
 	jumpstd smashrock
 
 StormyBeachHiddenStardust:
 	dwb EVENT_STORMY_BEACH_HIDDEN_STARDUST, STARDUST
-
-StormyBeach_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $4, $1e, 1, MURKY_SWAMP
-	warp_def $4, $1f, 2, MURKY_SWAMP
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 6, 17, SIGNPOST_ITEM, StormyBeachHiddenStardust
-
-.PersonEvents:
-	db 11
-	person_event SPRITE_GOLDENROD_LYRA, 13, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfBarbara, -1
-	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJulian, -1
-	person_event SPRITE_YOUNGSTER, 7, 28, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerCamperFelix, -1
-	person_event SPRITE_LASS, 11, 24, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerLily, -1
-	person_event SPRITE_SWIMMER_GUY, 17, 26, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, StormyBeachSwimmermScript, -1
-	person_event SPRITE_GRAMPS, 12, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, StormyBeachGrampsScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 34, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, StormyBeachZinc, EVENT_STORMY_BEACH_ZINC
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 16, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 17, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 18, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, StormyBeachRock, -1

@@ -1,26 +1,44 @@
-const_value set 2
-	const ROUTE43_SIGHTSEER_F
-	const ROUTE43_SUPER_NERD1
-	const ROUTE43_SUPER_NERD2
-	const ROUTE43_SUPER_NERD3
-	const ROUTE43_FISHER
-	const ROUTE43_LASS1
-	const ROUTE43_YOUNGSTER
-	const ROUTE43_BREEDER
-	const ROUTE43_LASS2
-	const ROUTE43_LASS3
-	const ROUTE43_CUT_TREE
-	const ROUTE43_FRUIT_TREE
-	const ROUTE43_POKE_BALL
-
 Route43_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 2
+.MapTriggers: db 0
+
+.MapCallbacks: db 2
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
+
+Route43_MapEventHeader:
+
+.Warps: db 5
+	warp_def $33, $9, 1, ROUTE_43_MAHOGANY_GATE
+	warp_def $33, $a, 2, ROUTE_43_MAHOGANY_GATE
+	warp_def $23, $11, 3, ROUTE_43_GATE
+	warp_def $1f, $11, 1, ROUTE_43_GATE
+	warp_def $1f, $12, 2, ROUTE_43_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 3, 13, SIGNPOST_READ, Route43Sign1
+	signpost 49, 11, SIGNPOST_READ, Route43Sign2
+	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
+
+.PersonEvents: db 13
+	person_event SPRITE_LADY, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route43SightseerfScript, -1
+	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
+	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
+	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
+	person_event SPRITE_FISHER, 16, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerFisherMarvin, -1
+	person_event SPRITE_LASS, 10, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany1, -1
+	person_event SPRITE_YOUNGSTER, 40, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperSpencer, -1
+	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
+	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1
+	person_event SPRITE_LASS, 25, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy2, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 28, 2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route43CutTree, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 26, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19d266, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 32, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
+
+const_value set 2
+	const ROUTE43_SIGHTSEER_F
 
 Route43RebattleBreederScript:
 	clearevent EVENT_BEAT_BREEDER_JODY
@@ -457,9 +475,6 @@ Route43CutTree:
 FruitTreeScript_0x19d266:
 	fruittree FRUITTREE_ROUTE_43
 
-Route43MaxEther:
-	itemball MAX_ETHER
-
 PokemaniacBenSeenText:
 	text "I love #mon!"
 
@@ -690,37 +705,3 @@ Route43TrainerTipsText:
 	para "weak against your"
 	line "#mon's type."
 	done
-
-Route43_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $33, $9, 1, ROUTE_43_MAHOGANY_GATE
-	warp_def $33, $a, 2, ROUTE_43_MAHOGANY_GATE
-	warp_def $23, $11, 3, ROUTE_43_GATE
-	warp_def $1f, $11, 1, ROUTE_43_GATE
-	warp_def $1f, $12, 2, ROUTE_43_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 3, 13, SIGNPOST_READ, Route43Sign1
-	signpost 49, 11, SIGNPOST_READ, Route43Sign2
-	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_LADY, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route43SightseerfScript, -1
-	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
-	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1
-	person_event SPRITE_SUPER_NERD, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
-	person_event SPRITE_FISHER, 16, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerFisherMarvin, -1
-	person_event SPRITE_LASS, 10, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany1, -1
-	person_event SPRITE_YOUNGSTER, 40, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperSpencer, -1
-	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
-	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1
-	person_event SPRITE_LASS, 25, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route43CutTree, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19d266, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 32, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, Route43MaxEther, EVENT_ROUTE_43_MAX_ETHER

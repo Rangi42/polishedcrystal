@@ -1,17 +1,27 @@
-const_value set 2
-	const ICEPATHB3F_POKE_BALL
-	const ICEPATHB3F_ROCK
-	const ICEPATHB3F_LORELEI
-
 IcePathB3F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
 
-IcePathB3FNevermeltice:
-	itemball NEVERMELTICE
+.MapCallbacks: db 0
+
+IcePathB3F_MapEventHeader:
+
+.Warps: db 2
+	warp_def $5, $3, 2, ICE_PATH_B2F_MAHOGANY_SIDE
+	warp_def $5, $f, 2, ICE_PATH_B2F_BLACKTHORN_SIDE
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 3, 16, SIGNPOST_READ, MapIcePathB3FIceRockScript
+
+.PersonEvents: db 3
+	person_event SPRITE_LORELEI, 2, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB3FRock, -1
+
+const_value set 2
+	const ICEPATHB3F_LORELEI
 
 IcePathB3FRock:
 	jumpstd smashrock
@@ -221,22 +231,3 @@ LoreleiRematchAfterText:
 	line "#mon master is"
 	cont "a life's work."
 	done
-
-IcePathB3F_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $5, $3, 2, ICE_PATH_B2F_MAHOGANY_SIDE
-	warp_def $5, $f, 2, ICE_PATH_B2F_BLACKTHORN_SIDE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 3, 16, SIGNPOST_READ, MapIcePathB3FIceRockScript
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IcePathB3FNevermeltice, EVENT_ICE_PATH_B3F_NEVERMELTICE
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB3FRock, -1
-	person_event SPRITE_LORELEI, 2, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1

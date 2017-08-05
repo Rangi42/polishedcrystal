@@ -1,17 +1,38 @@
-const_value set 2
-	const RUINSOFALPHKABUTOCHAMBER_RECEPTIONIST
-	const RUINSOFALPHKABUTOCHAMBER_SCIENTIST
-
 RuinsofAlphKabutoChamber_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw RuinsofAlphKabutoChamberTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58737
 
-.Trigger0:
+RuinsofAlphKabutoChamber_MapEventHeader:
+
+.Warps: db 5
+	warp_def $9, $3, 2, RUINS_OF_ALPH_OUTSIDE
+	warp_def $9, $4, 2, RUINS_OF_ALPH_OUTSIDE
+	warp_def $3, $3, 4, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $3, $4, 5, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $0, $4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphKabutoChamberSignpost1Script
+	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphKabutoChamberSignpost1Script
+	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
+	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
+	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
+	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
+
+.PersonEvents: db 2
+	person_event SPRITE_SCIENTIST, 1, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
+	person_event SPRITE_RECEPTIONIST, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x58769, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
+
+const_value set 2
+	const RUINSOFALPHKABUTOCHAMBER_SCIENTIST
+
+RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iffalse .End
 	priorityjump UnknownScript_0x58751
@@ -225,29 +246,3 @@ UnknownText_0x58b3f:
 	para "Eyes on its back"
 	line "scanned the area."
 	done
-
-RuinsofAlphKabutoChamber_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $9, $3, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 4, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 5, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphKabutoChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphKabutoChamberSignpost1Script
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_RECEPTIONIST, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x58769, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	person_event SPRITE_SCIENTIST, 1, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1

@@ -1,18 +1,29 @@
-const_value set 2
-	const ROUTE38_YOUNGSTER1
-	const ROUTE38_LASS
-	const ROUTE38_YOUNGSTER2
-	const ROUTE38_BEAUTY1
-	const ROUTE38_SAILOR
-	const ROUTE38_FRUIT_TREE
-	const ROUTE38_BEAUTY2
-
 Route38_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route38_MapEventHeader:
+
+.Warps: db 2
+	warp_def $8, $23, 1, ROUTE_38_ECRUTEAK_GATE
+	warp_def $9, $23, 2, ROUTE_38_ECRUTEAK_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 7, 33, SIGNPOST_READ, Route38Sign
+	signpost 13, 5, SIGNPOST_READ, Route38TrainerTips
+
+.PersonEvents: db 7
+	person_event SPRITE_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
+	person_event SPRITE_LASS, 3, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
+	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
+	person_event SPRITE_BEAUTY, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
+	person_event SPRITE_SAILOR, 5, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a1f33, -1
+	person_event SPRITE_BEAUTY, 8, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
 
 TrainerBird_keeperToby:
 	trainer EVENT_BEAT_BIRD_KEEPER_TOBY, BIRD_KEEPER, TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText, 0, .script
@@ -471,27 +482,3 @@ Route38TrainerTipsText:
 	line "#mon and stops"
 	cont "its evolution."
 	done
-
-Route38_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $8, $23, 1, ROUTE_38_ECRUTEAK_GATE
-	warp_def $9, $23, 2, ROUTE_38_ECRUTEAK_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 7, 33, SIGNPOST_READ, Route38Sign
-	signpost 13, 5, SIGNPOST_READ, Route38TrainerTips
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
-	person_event SPRITE_LASS, 3, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
-	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
-	person_event SPRITE_BEAUTY, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
-	person_event SPRITE_SAILOR, 5, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a1f33, -1
-	person_event SPRITE_BEAUTY, 8, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1

@@ -1,15 +1,26 @@
-const_value set 2
-	const CIANWOODLUGIASPEECHHOUSE_TEACHER
-	const CIANWOODLUGIASPEECHHOUSE_LASS
-	const CIANWOODLUGIASPEECHHOUSE_TWIN
-	const CIANWOODLUGIASPEECHHOUSE_BLACK_BELT
-
 CianwoodLugiaSpeechHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CianwoodLugiaSpeechHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 6, CIANWOOD_CITY
+	warp_def $7, $3, 6, CIANWOOD_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 1, 0, SIGNPOST_READ, CianwoodLugiaSpeechHouseBookshelf
+	signpost 1, 1, SIGNPOST_READ, CianwoodLugiaSpeechHouseBookshelf
+
+.PersonEvents: db 4
+	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x9e1b0, -1
+	person_event SPRITE_LASS, 5, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9e1b3, -1
+	person_event SPRITE_TWIN, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TwinScript_0x9e1b6, -1
+	person_event SPRITE_BLACK_BELT, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CianwoodHouseBlackBeltScript, -1
 
 CianwoodHouseBlackBeltScript:
 	faceplayer
@@ -99,24 +110,3 @@ UnknownText_0x9e2a9:
 	line "special move to"
 	cont "get past them."
 	done
-
-CianwoodLugiaSpeechHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 6, CIANWOOD_CITY
-	warp_def $7, $3, 6, CIANWOOD_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, CianwoodLugiaSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, CianwoodLugiaSpeechHouseBookshelf
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x9e1b0, -1
-	person_event SPRITE_LASS, 5, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9e1b3, -1
-	person_event SPRITE_TWIN, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TwinScript_0x9e1b6, -1
-	person_event SPRITE_BLACK_BELT, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CianwoodHouseBlackBeltScript, -1

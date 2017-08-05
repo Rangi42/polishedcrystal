@@ -1,22 +1,39 @@
+BlackthornGym2F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
+
+BlackthornGym2F_MapEventHeader:
+
+.Warps: db 5
+	warp_def $7, $1, 3, BLACKTHORN_GYM_1F
+	warp_def $9, $7, 4, BLACKTHORN_GYM_1F
+	warp_def $5, $2, 5, BLACKTHORN_GYM_1F ; hole
+	warp_def $7, $8, 6, BLACKTHORN_GYM_1F ; hole
+	warp_def $3, $8, 7, BLACKTHORN_GYM_1F ; hole
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 8
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 16, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
+	person_event SPRITE_COOLTRAINER_M, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermCody, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfFran, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
+
 const_value set 2
-	const BLACKTHORNGYM2F_COOLTRAINER_M
-	const BLACKTHORNGYM2F_COOLTRAINER_F
 	const BLACKTHORNGYM2F_BOULDER1
 	const BLACKTHORNGYM2F_BOULDER2
 	const BLACKTHORNGYM2F_BOULDER3
-	const BLACKTHORNGYM2F_BOULDER4
-	const BLACKTHORNGYM2F_BOULDER5
-	const BLACKTHORNGYM2F_BOULDER6
 
-BlackthornGym2F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_CMDQUEUE, .Boulders
-
-.Boulders:
+BlackthornGym2FBoulders:
 	writecmdqueue .BoulderCmdQueue
 	return
 
@@ -40,8 +57,6 @@ BlackthornGym2F_MapScriptHeader:
 
 .Disappear6:
 	disappear BLACKTHORNGYM2F_BOULDER3
-	jump .Fall
-
 .Fall:
 	pause 30
 	scall .FX
@@ -55,7 +70,6 @@ BlackthornGym2F_MapScriptHeader:
 	playsound SFX_STRENGTH
 	earthquake 80
 	end
-
 
 BlackthornGymBoulder:
 	jumpstd strengthboulder
@@ -126,29 +140,3 @@ BlackthornGym2FBoulderFellText:
 	text "The boulder fell"
 	line "through!"
 	done
-
-BlackthornGym2F_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $7, $1, 3, BLACKTHORN_GYM_1F
-	warp_def $9, $7, 4, BLACKTHORN_GYM_1F
-	warp_def $5, $2, 5, BLACKTHORN_GYM_1F ; hole
-	warp_def $7, $8, 6, BLACKTHORN_GYM_1F ; hole
-	warp_def $3, $8, 7, BLACKTHORN_GYM_1F ; hole
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_COOLTRAINER_M, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermCody, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfFran, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 16, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1

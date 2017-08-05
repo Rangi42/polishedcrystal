@@ -1,26 +1,54 @@
+BurnedTower1F_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw BurnedTower1FTrigger0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
+
+BurnedTower1F_MapEventHeader:
+
+.Warps: db 14
+	warp_def $f, $7, 13, ECRUTEAK_CITY
+	warp_def $f, $8, 13, ECRUTEAK_CITY
+	warp_def $9, $8,  1, BURNED_TOWER_B1F
+	warp_def $5, $3,  1, BURNED_TOWER_B1F
+	warp_def $6, $3,  1, BURNED_TOWER_B1F
+	warp_def $6, $2,  1, BURNED_TOWER_B1F
+	warp_def $4, $d,  2, BURNED_TOWER_B1F
+	warp_def $5, $d,  2, BURNED_TOWER_B1F
+	warp_def $7, $8,  3, BURNED_TOWER_B1F
+	warp_def $e, $3,  4, BURNED_TOWER_B1F
+	warp_def $e, $2,  4, BURNED_TOWER_B1F
+	warp_def $e, $c,  5, BURNED_TOWER_B1F
+	warp_def $e, $d,  5, BURNED_TOWER_B1F
+	warp_def $f, $5,  6, BURNED_TOWER_B1F
+
+.XYTriggers: db 1
+	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
+
+.Signposts: db 2
+	signpost  7,  6, SIGNPOST_ITEM, BurnedTower1FHiddenEther
+	signpost 11, 11, SIGNPOST_ITEM, BurnedTower1FHiddenUltraBall
+
+.PersonEvents: db 7
+	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BurnedTower1FEusineScript, EVENT_BURNED_TOWER_1F_EUSINE
+	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BurnedTower1FRock, -1
+	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BurnedTower1FMortyScript, EVENT_BURNED_TOWER_MORTY
+	person_event SPRITE_BALL_CUT_FRUIT, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
+	person_event SPRITE_HEX_MANIAC, 1, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
+	person_event SPRITE_FISHER, 3, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
+
 const_value set 2
-	const BURNEDTOWER1F_ROCK
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_SILVER
-	const BURNEDTOWER1F_MORTY
-	const BURNEDTOWER1F_POKE_BALL
-	const BURNEDTOWER1F_HEX_MANIAC
-	const BURNEDTOWER1F_FISHER
 
-BurnedTower1F_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, .HoleAndLadder
-
-.Trigger0:
-	priorityjump .EusineTrigger
+BurnedTower1FTrigger0:
+	priorityjump BurnedTower1FEusineTriggerScript
 	end
 
-.HoleAndLadder:
+BurnedTower1FHoleAndLadder:
 	checkevent EVENT_HOLE_IN_BURNED_TOWER
 	iftrue .Next
 	changeblock $8, $8, $32 ; hole
@@ -31,7 +59,7 @@ BurnedTower1F_MapScriptHeader:
 .Done:
 	return
 
-.EusineTrigger:
+BurnedTower1FEusineTriggerScript:
 	spriteface BURNEDTOWER1F_EUSINE, DOWN
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_EUSINE, 15
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
@@ -152,9 +180,6 @@ BurnedTower1FHiddenEther:
 
 BurnedTower1FHiddenUltraBall:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
-
-BurnedTower1FHPUp:
-	itemball HP_UP
 
 BurnedTowerMovement_PlayerWalksToSilver:
 	step_left
@@ -332,40 +357,3 @@ FirebreatherNedAfterText:
 	line "better than"
 	cont "anyone!"
 	done
-
-BurnedTower1F_MapEventHeader:
-.Warps:
-	db 14
-	warp_def $f, $7, 13, ECRUTEAK_CITY
-	warp_def $f, $8, 13, ECRUTEAK_CITY
-	warp_def $9, $8,  1, BURNED_TOWER_B1F
-	warp_def $5, $3,  1, BURNED_TOWER_B1F
-	warp_def $6, $3,  1, BURNED_TOWER_B1F
-	warp_def $6, $2,  1, BURNED_TOWER_B1F
-	warp_def $4, $d,  2, BURNED_TOWER_B1F
-	warp_def $5, $d,  2, BURNED_TOWER_B1F
-	warp_def $7, $8,  3, BURNED_TOWER_B1F
-	warp_def $e, $3,  4, BURNED_TOWER_B1F
-	warp_def $e, $2,  4, BURNED_TOWER_B1F
-	warp_def $e, $c,  5, BURNED_TOWER_B1F
-	warp_def $e, $d,  5, BURNED_TOWER_B1F
-	warp_def $f, $5,  6, BURNED_TOWER_B1F
-
-.XYTriggers:
-	db 1
-	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
-
-.Signposts:
-	db 2
-	signpost  7,  6, SIGNPOST_ITEM, BurnedTower1FHiddenEther
-	signpost 11, 11, SIGNPOST_ITEM, BurnedTower1FHiddenUltraBall
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BurnedTower1FRock, -1
-	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BurnedTower1FEusineScript, EVENT_BURNED_TOWER_1F_EUSINE
-	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
-	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BurnedTower1FMortyScript, EVENT_BURNED_TOWER_MORTY
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BurnedTower1FHPUp, EVENT_BURNED_TOWER_1F_HP_UP
-	person_event SPRITE_HEX_MANIAC, 1, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
-	person_event SPRITE_FISHER, 3, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1

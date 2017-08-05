@@ -1,27 +1,61 @@
-const_value set 2
-	const SAFFRONCITY_LASS1
-	const SAFFRONCITY_POKEFAN_M
-	const SAFFRONCITY_COOLTRAINER_M
-	const SAFFRONCITY_COOLTRAINER_F
-	const SAFFRONCITY_FISHER
-	const SAFFRONCITY_YOUNGSTER1
-	const SAFFRONCITY_YOUNGSTER2
-	const SAFFRONCITY_LASS2
-	const SAFFRONCITY_BLACK_BELT1
-	const SAFFRONCITY_BLACK_BELT2
-	const SAFFRONCITY_SUPER_NERD
-	const SAFFRONCITY_SCIENTIST
-	const SAFFRONCITY_SILPH_EMPLOYEE
-
 SaffronCity_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
+.MapTriggers: db 0
 
-.FlyPoint:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
+
+SaffronCity_MapEventHeader:
+
+.Warps: db 20
+	warp_def $3, $1a, 1, FIGHTING_DOJO
+	warp_def $3, $22, 1, SAFFRON_GYM
+	warp_def $b, $19, 2, SAFFRON_MART
+	warp_def $1d, $9, 1, SAFFRON_POKECENTER_1F
+	warp_def $1d, $1b, 1, MR_PSYCHICS_HOUSE
+	warp_def $3, $8, 2, SAFFRON_TRAIN_STATION
+	warp_def $15, $12, 1, SILPH_CO_1F
+	warp_def $b, $9, 1, COPYCATS_HOUSE_1F
+	warp_def $1, $12, 3, ROUTE_5_SAFFRON_CITY_GATE
+	warp_def $12, $0, 3, ROUTE_7_SAFFRON_GATE
+	warp_def $13, $0, 4, ROUTE_7_SAFFRON_GATE
+	warp_def $23, $10, 1, ROUTE_6_SAFFRON_GATE
+	warp_def $23, $11, 2, ROUTE_6_SAFFRON_GATE
+	warp_def $12, $27, 1, ROUTE_8_SAFFRON_GATE
+	warp_def $13, $27, 2, ROUTE_8_SAFFRON_GATE
+	warp_def $b, $22, 1, POKEMON_TRAINER_FAN_CLUB
+	warp_def $1d, $5, 1, SAFFRON_ORRE_SPEECH_HOUSE
+	warp_def $1d, $d, 1, SAFFRON_BOOK_SPEECH_HOUSE
+	warp_def $1d, $15, 1, SAFFRON_HITMONTOP_KID_HOUSE
+	warp_def $b, $d, 1, SAFFRON_RICH_SPEECH_HOUSE
+
+.XYTriggers: db 0
+
+.Signposts: db 7
+	signpost 5, 21, SIGNPOST_READ, SaffronCitySign
+	signpost 5, 33, SIGNPOST_READ, SaffronGymSign
+	signpost 5, 25, SIGNPOST_READ, FightingDojoSign
+	signpost 21, 15, SIGNPOST_READ, SilphCoSign
+	signpost 29, 25, SIGNPOST_READ, MrPsychicsHouseSign
+	signpost 5, 11, SIGNPOST_READ, SaffronCityMagnetTrainStationSign
+	signpost 12, 32, SIGNPOST_READ, PokemonTrainerFanClubSign
+
+.PersonEvents: db 13
+	person_event SPRITE_LASS, 14, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
+	person_event SPRITE_POKEFAN_M, 30, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
+	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x199352, -1
+	person_event SPRITE_COOLTRAINER_F, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x199355, -1
+	person_event SPRITE_FISHER, 12, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
+	person_event SPRITE_YOUNGSTER, 19, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936c, -1
+	person_event SPRITE_YOUNGSTER, 22, 35, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936f, -1
+	person_event SPRITE_LASS, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x199372, -1
+	person_event SPRITE_BLACK_BELT, 24, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt1Script, -1
+	person_event SPRITE_BLACK_BELT, 25, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt2Script, -1
+	person_event SPRITE_SUPER_NERD, 8, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCitySuperNerdScript, -1
+	person_event SPRITE_SCIENTIST, 22, 23, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCityScientistScript, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCitySilphEmployeeScript, -1
+
+SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON
 	return
 
@@ -349,56 +383,3 @@ PokemonTrainerFanClubSignText:
 	line "scribbled their"
 	cont "names here…"
 	done
-
-SaffronCity_MapEventHeader:
-.Warps:
-	db 20
-	warp_def $3, $1a, 1, FIGHTING_DOJO
-	warp_def $3, $22, 1, SAFFRON_GYM
-	warp_def $b, $19, 2, SAFFRON_MART
-	warp_def $1d, $9, 1, SAFFRON_POKECENTER_1F
-	warp_def $1d, $1b, 1, MR_PSYCHICS_HOUSE
-	warp_def $3, $8, 2, SAFFRON_TRAIN_STATION
-	warp_def $15, $12, 1, SILPH_CO_1F
-	warp_def $b, $9, 1, COPYCATS_HOUSE_1F
-	warp_def $1, $12, 3, ROUTE_5_SAFFRON_CITY_GATE
-	warp_def $12, $0, 3, ROUTE_7_SAFFRON_GATE
-	warp_def $13, $0, 4, ROUTE_7_SAFFRON_GATE
-	warp_def $23, $10, 1, ROUTE_6_SAFFRON_GATE
-	warp_def $23, $11, 2, ROUTE_6_SAFFRON_GATE
-	warp_def $12, $27, 1, ROUTE_8_SAFFRON_GATE
-	warp_def $13, $27, 2, ROUTE_8_SAFFRON_GATE
-	warp_def $b, $22, 1, POKEMON_TRAINER_FAN_CLUB
-	warp_def $1d, $5, 1, SAFFRON_ORRE_SPEECH_HOUSE
-	warp_def $1d, $d, 1, SAFFRON_BOOK_SPEECH_HOUSE
-	warp_def $1d, $15, 1, SAFFRON_HITMONTOP_KID_HOUSE
-	warp_def $b, $d, 1, SAFFRON_RICH_SPEECH_HOUSE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 7
-	signpost 5, 21, SIGNPOST_READ, SaffronCitySign
-	signpost 5, 33, SIGNPOST_READ, SaffronGymSign
-	signpost 5, 25, SIGNPOST_READ, FightingDojoSign
-	signpost 21, 15, SIGNPOST_READ, SilphCoSign
-	signpost 29, 25, SIGNPOST_READ, MrPsychicsHouseSign
-	signpost 5, 11, SIGNPOST_READ, SaffronCityMagnetTrainStationSign
-	signpost 12, 32, SIGNPOST_READ, PokemonTrainerFanClubSign
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_LASS, 14, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
-	person_event SPRITE_POKEFAN_M, 30, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x199352, -1
-	person_event SPRITE_COOLTRAINER_F, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x199355, -1
-	person_event SPRITE_FISHER, 12, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
-	person_event SPRITE_YOUNGSTER, 19, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936c, -1
-	person_event SPRITE_YOUNGSTER, 22, 35, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936f, -1
-	person_event SPRITE_LASS, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x199372, -1
-	person_event SPRITE_BLACK_BELT, 24, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt1Script, -1
-	person_event SPRITE_BLACK_BELT, 25, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt2Script, -1
-	person_event SPRITE_SUPER_NERD, 8, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCitySuperNerdScript, -1
-	person_event SPRITE_SCIENTIST, 22, 23, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCityScientistScript, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCitySilphEmployeeScript, -1

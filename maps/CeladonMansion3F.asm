@@ -1,15 +1,30 @@
-const_value set 2
-	const CELADONMANSION3F_COOLTRAINER_M
-	const CELADONMANSION3F_GYM_GUY
-	const CELADONMANSION3F_SUPER_NERD
-	const CELADONMANSION3F_FISHER
-
 CeladonMansion3F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonMansion3F_MapEventHeader:
+
+.Warps: db 4
+	warp_def $0, $0, 1, CELADON_MANSION_ROOF
+	warp_def $0, $1, 2, CELADON_MANSION_2F
+	warp_def $0, $6, 3, CELADON_MANSION_2F
+	warp_def $0, $7, 2, CELADON_MANSION_ROOF
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 8, 5, SIGNPOST_UP, MapCeladonMansion3FSignpost0Script
+	signpost 3, 4, SIGNPOST_UP, MapCeladonMansion3FSignpost1Script
+	signpost 6, 1, SIGNPOST_UP, MapCeladonMansion3FSignpost2Script
+	signpost 3, 1, SIGNPOST_UP, MapCeladonMansion3FSignpost3Script
+
+.PersonEvents: db 4
+	person_event SPRITE_COOLTRAINER_M, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
+	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x71696, -1
+	person_event SPRITE_SUPER_NERD, 7, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x716bc, -1
+	person_event SPRITE_FISHER, 4, 0, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x716bf, -1
 
 CooltrainerMScript_0x71670:
 	faceplayer
@@ -137,28 +152,3 @@ UnknownText_0x71996:
 	cont "als. There's even"
 	cont "a # Doll."
 	done
-
-CeladonMansion3F_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $0, $0, 1, CELADON_MANSION_ROOF
-	warp_def $0, $1, 2, CELADON_MANSION_2F
-	warp_def $0, $6, 3, CELADON_MANSION_2F
-	warp_def $0, $7, 2, CELADON_MANSION_ROOF
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 8, 5, SIGNPOST_UP, MapCeladonMansion3FSignpost0Script
-	signpost 3, 4, SIGNPOST_UP, MapCeladonMansion3FSignpost1Script
-	signpost 6, 1, SIGNPOST_UP, MapCeladonMansion3FSignpost2Script
-	signpost 3, 1, SIGNPOST_UP, MapCeladonMansion3FSignpost3Script
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_COOLTRAINER_M, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
-	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x71696, -1
-	person_event SPRITE_SUPER_NERD, 7, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x716bc, -1
-	person_event SPRITE_FISHER, 4, 0, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x716bf, -1

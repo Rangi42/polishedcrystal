@@ -1,14 +1,27 @@
+TrainerHouseB1F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+TrainerHouseB1F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $4, $9, 3, TRAINER_HOUSE_1F
+
+.XYTriggers: db 1
+	xy_trigger 0, $3, $7, TrainerHouseReceptionistScript
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
+	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_KAY
+	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+
 const_value set 2
 	const TRAINERHOUSEB1F_CAL
 	const TRAINERHOUSEB1F_KAY
-	const TRAINERHOUSEB1F_RECEPTIONIST
-
-TrainerHouseB1F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 TrainerHouseReceptionistScript:
 	spriteface PLAYER, UP
@@ -181,21 +194,3 @@ TrainerHouseB1FEarnedBattlePointText:
 	sound_item
 	text_waitbutton
 	db "@"
-
-TrainerHouseB1F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $4, $9, 3, TRAINER_HOUSE_1F
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $3, $7, TrainerHouseReceptionistScript
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
-	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_KAY
-	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

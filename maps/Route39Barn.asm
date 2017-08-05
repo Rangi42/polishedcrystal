@@ -1,14 +1,27 @@
+Route39Barn_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route39Barn_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $3, 1, ROUTE_39
+	warp_def $7, $4, 1, ROUTE_39
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_TWIN, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
+	person_event SPRITE_TWIN, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
+	person_event SPRITE_MILTANK, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MooMoo, -1
+
 const_value set 2
 	const ROUTE39BARN_TWIN1
 	const ROUTE39BARN_TWIN2
-	const ROUTE39BARN_MOOMOO
-
-Route39Barn_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 TwinScript_0x9cc76:
 	faceplayer
@@ -239,21 +252,3 @@ Text_RefusedToGiveBerry:
 
 	para "Miltank looks sad."
 	done
-
-Route39Barn_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $3, 1, ROUTE_39
-	warp_def $7, $4, 1, ROUTE_39
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_TWIN, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
-	person_event SPRITE_TWIN, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
-	person_event SPRITE_MILTANK, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MooMoo, -1

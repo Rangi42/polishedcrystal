@@ -1,14 +1,23 @@
-const_value set 2
-	const ROUTE33_POKEFAN_M
-	const ROUTE33_TWIN
-	const ROUTE33_FRUIT_TREE
-
 Route33_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+Route33_MapEventHeader:
+
+.Warps: db 1
+	warp_def $9, $b, 3, UNION_CAVE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 11, 11, SIGNPOST_READ, Route33Sign
+
+.PersonEvents: db 3
+	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
+	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route33FruitTreeScript, -1
 
 TrainerHikerAnthony:
 	trainer EVENT_BEAT_HIKER_ANTHONY, HIKER, ANTHONY1, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
@@ -201,21 +210,3 @@ SchoolgirlImogenAfterText:
 Route33SignText:
 	text "Route 33"
 	done
-
-Route33_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $9, $b, 3, UNION_CAVE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 11, 11, SIGNPOST_READ, Route33Sign
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route33FruitTreeScript, -1

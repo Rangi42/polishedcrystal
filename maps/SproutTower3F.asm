@@ -1,18 +1,36 @@
-const_value set 2
-	const SPROUTTOWER3F_SAGE1
-	const SPROUTTOWER3F_SAGE2
-	const SPROUTTOWER3F_SAGE3
-	const SPROUTTOWER3F_ELDER
-	const SPROUTTOWER3F_POKE_BALL1
-	const SPROUTTOWER3F_POKE_BALL2
-	const SPROUTTOWER3F_SILVER
-
 SproutTower3F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+SproutTower3F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $e, $8, 4, SPROUT_TOWER_2F
+
+.XYTriggers: db 1
+	xy_trigger 0, $9, $9, UnknownScript_0x184947
+
+.Signposts: db 6
+	signpost 1, 6, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 1, 9, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 0, 7, SIGNPOST_READ, MapSproutTower3FSignpost3Script
+	signpost 0, 8, SIGNPOST_READ, MapSproutTower3FSignpost3Script
+	signpost 15, 3, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 15, 12, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+
+.PersonEvents: db 7
+	person_event SPRITE_SILVER, 4, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
+	person_event SPRITE_SAGE, 13, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
+	person_event SPRITE_SAGE, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
+	person_event SPRITE_SAGE, 11, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
+	person_event SPRITE_ELDER, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
+	person_event SPRITE_BALL_CUT_FRUIT, 1, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
+
+const_value set 2
+	const SPROUTTOWER3F_SILVER
 
 UnknownScript_0x184947:
 	spriteface PLAYER, UP
@@ -122,12 +140,6 @@ MapSproutTower3FSignpost3Script:
 
 MapSproutTower3FSignpost5Script:
 	jumptext UnknownText_0x184f61
-
-SproutTower3FPotion:
-	itemball POTION
-
-SproutTower3FEscapeRope:
-	itemball ESCAPE_ROPE
 
 MovementData_0x184a1d:
 	step_up
@@ -314,31 +326,3 @@ UnknownText_0x184f61:
 	para "It looks very"
 	line "distinguished."
 	done
-
-SproutTower3F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $e, $8, 4, SPROUT_TOWER_2F
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $9, $9, UnknownScript_0x184947
-
-.Signposts:
-	db 6
-	signpost 1, 6, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 1, 9, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 0, 7, SIGNPOST_READ, MapSproutTower3FSignpost3Script
-	signpost 0, 8, SIGNPOST_READ, MapSproutTower3FSignpost3Script
-	signpost 15, 3, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 15, 12, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_SAGE, 13, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
-	person_event SPRITE_SAGE, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
-	person_event SPRITE_SAGE, 11, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
-	person_event SPRITE_ELDER, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SproutTower3FPotion, EVENT_SPROUT_TOWER_3F_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SproutTower3FEscapeRope, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
-	person_event SPRITE_SILVER, 4, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER

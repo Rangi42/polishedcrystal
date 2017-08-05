@@ -1,14 +1,25 @@
-const_value set 2
-	const CERULEANPOKECENTER1F_NURSE
-	const CERULEANPOKECENTER1F_SUPER_NERD
-	const CERULEANPOKECENTER1F_GYM_GUY
-
 CeruleanPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeruleanPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 4, CERULEAN_CITY
+	warp_def $7, $6, 4, CERULEAN_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalMistyScript
+
+.PersonEvents: db 3
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18820f, -1
+	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x188212, -1
+	person_event SPRITE_GYM_GUY, 5, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18821e, -1
 
 NurseScript_0x18820f:
 	jumpstd pokecenternurse
@@ -79,23 +90,3 @@ PokemonJournalMistyText:
 	para "a former member of"
 	line "the Elite Four."
 	done
-
-CeruleanPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 4, CERULEAN_CITY
-	warp_def $7, $6, 4, CERULEAN_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalMistyScript
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18820f, -1
-	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x188212, -1
-	person_event SPRITE_GYM_GUY, 5, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18821e, -1

@@ -1,12 +1,23 @@
-const_value set 2
-	const MANIASHOUSE_ROCKER
-
 ManiasHouse_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+ManiasHouse_MapEventHeader:
+
+.Warps: db 2
+	warp_def $7, $2, 1, CIANWOOD_CITY
+	warp_def $7, $3, 1, CIANWOOD_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 1, 5, SIGNPOST_READ, ManiasHouseRadio
+	signpost 1, 7, SIGNPOST_READ, ManiasHouseBookshelf
+
+.PersonEvents: db 1
+	person_event SPRITE_ROCKER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
 
 ManiaScript:
 	faceplayer
@@ -200,21 +211,3 @@ ManiaText_WobbuffetIsYourLastMon:
 	para "you going to use"
 	line "in battle?"
 	done
-
-ManiasHouse_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $7, $2, 1, CIANWOOD_CITY
-	warp_def $7, $3, 1, CIANWOOD_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 1, 5, SIGNPOST_READ, ManiasHouseRadio
-	signpost 1, 7, SIGNPOST_READ, ManiasHouseBookshelf
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_ROCKER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1

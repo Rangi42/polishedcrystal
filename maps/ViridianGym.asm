@@ -1,19 +1,30 @@
-const_value set 2
-	const VIRIDIANGYM_BLUE
-	const VIRIDIANGYM_GYM_GUY
-	const VIRIDIANGYM_COOLTRAINERM1
-	const VIRIDIANGYM_COOLTRAINERF1
-	const VIRIDIANGYM_COOLTRAINERF2
-	const VIRIDIANGYM_COOLTRAINERF3
-	const VIRIDIANGYM_COOLTRAINERM2
-	const VIRIDIANGYM_COOLTRAINERF4
-
 ViridianGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+ViridianGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $2d, $6, 1, VIRIDIAN_CITY
+	warp_def $2d, $7, 1, VIRIDIAN_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 43, 4, SIGNPOST_READ, ViridianGymStatue
+	signpost 43, 9, SIGNPOST_READ, ViridianGymStatue
+
+.PersonEvents: db 8
+	person_event SPRITE_BLUE, 2, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
+	person_event SPRITE_GYM_GUY, 43, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
+	person_event SPRITE_COOLTRAINER_M, 35, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoAraandbela1, -1
+	person_event SPRITE_COOLTRAINER_F, 35, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoAraandbela2, -1
+	person_event SPRITE_COOLTRAINER_F, 34, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfSalma, -1
+	person_event SPRITE_COOLTRAINER_F, 20, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfBonita, -1
+	person_event SPRITE_COOLTRAINER_M, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida1, -1
+	person_event SPRITE_COOLTRAINER_F, 8, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida2, -1
 
 BlueScript_0x9aa26:
 	faceplayer
@@ -397,28 +408,3 @@ AceDuoElanandida2AfterText:
 	para "Strategy is also"
 	line "important!"
 	done
-
-ViridianGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $2d, $6, 1, VIRIDIAN_CITY
-	warp_def $2d, $7, 1, VIRIDIAN_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 43, 4, SIGNPOST_READ, ViridianGymStatue
-	signpost 43, 9, SIGNPOST_READ, ViridianGymStatue
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_BLUE, 2, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
-	person_event SPRITE_GYM_GUY, 43, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
-	person_event SPRITE_COOLTRAINER_M, 35, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoAraandbela1, -1
-	person_event SPRITE_COOLTRAINER_F, 35, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoAraandbela2, -1
-	person_event SPRITE_COOLTRAINER_F, 34, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfSalma, -1
-	person_event SPRITE_COOLTRAINER_F, 20, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfBonita, -1
-	person_event SPRITE_COOLTRAINER_M, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida1, -1
-	person_event SPRITE_COOLTRAINER_F, 8, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoElanandida2, -1

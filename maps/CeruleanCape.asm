@@ -1,26 +1,45 @@
+CeruleanCape_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeruleanCape_MapEventHeader:
+
+.Warps: db 3
+	warp_def $5, $b, 1, BILLS_HOUSE
+	warp_def $1d, $2a, 1, DIM_CAVE_2F
+	warp_def $1d, $2b, 1, DIM_CAVE_2F
+
+.XYTriggers: db 2
+	xy_trigger 1, $6, $6, UnknownScript_0x19eea0
+	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
+
+.Signposts: db 3
+	signpost 5, 9, SIGNPOST_READ, BillsHouseSign
+	signpost 12, 35, SIGNPOST_ITEM, CeruleanCapeHiddenPearlString
+	signpost 4, 14, SIGNPOST_ITEM, CeruleanCapeHiddenBottleCap
+
+.PersonEvents: db 15
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
+	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
+	person_event SPRITE_COOLTRAINER_M, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 6, -2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_CUT_TREE
+	person_event SPRITE_SWIMMER_GUY, 7, 27, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
+	person_event SPRITE_SWIMMER_GUY, 16, 45, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
+	person_event SPRITE_SWIMMER_GUY, 23, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 21, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
+	person_event SPRITE_GENTLEMAN, 27, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
+	person_event SPRITE_GENTLEMAN, 26, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
+	person_event SPRITE_COOLTRAINER_F, 32, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerGuitaristfMorgan, -1
+	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
+	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 1, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
+
 const_value set 2
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_MISTY_BOYFRIEND
-	const CERULEANCAPE_COOLTRAINER_M
-	const CERULEANCAPE_CUT_TREE
-	const CERULEANCAPE_SWIMMER_GUY1
-	const CERULEANCAPE_SWIMMER_GUY2
-	const CERULEANCAPE_SWIMMER_GUY3
-	const CERULEANCAPE_BEAUTY1
-	const CERULEANCAPE_BEAUTY2
-	const CERULEANCAPE_GENTLEMAN1
-	const CERULEANCAPE_GENTLEMAN2
-	const CERULEANCAPE_COOLTRAINER_F
-	const CERULEANCAPE_LADY
-	const CERULEANCAPE_FISHER
-	const CERULEANCAPE_POKE_BALL
-
-CeruleanCape_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 UnknownScript_0x19eea0:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
@@ -431,9 +450,6 @@ TrainerFisherLeroy:
 	line "catch is Magikarp…"
 	done
 
-CeruleanCapeShellBell:
-	itemball SHELL_BELL
-
 BillsHouseSign:
 	jumptext BillsHouseSignText
 
@@ -561,39 +577,3 @@ BillsHouseSignText:
 	text "Sea Cottage"
 	line "Bill's House"
 	done
-
-CeruleanCape_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $5, $b, 1, BILLS_HOUSE
-	warp_def $1d, $2a, 1, DIM_CAVE_2F
-	warp_def $1d, $2b, 1, DIM_CAVE_2F
-
-.XYTriggers:
-	db 2
-	xy_trigger 1, $6, $6, UnknownScript_0x19eea0
-	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
-
-.Signposts:
-	db 3
-	signpost 5, 9, SIGNPOST_READ, BillsHouseSign
-	signpost 12, 35, SIGNPOST_ITEM, CeruleanCapeHiddenPearlString
-	signpost 4, 14, SIGNPOST_ITEM, CeruleanCapeHiddenBottleCap
-
-.PersonEvents:
-	db 15
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	person_event SPRITE_COOLTRAINER_M, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, -2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_CUT_TREE
-	person_event SPRITE_SWIMMER_GUY, 7, 27, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
-	person_event SPRITE_SWIMMER_GUY, 16, 45, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
-	person_event SPRITE_SWIMMER_GUY, 23, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 21, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
-	person_event SPRITE_GENTLEMAN, 27, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
-	person_event SPRITE_GENTLEMAN, 26, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
-	person_event SPRITE_COOLTRAINER_F, 32, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerGuitaristfMorgan, -1
-	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
-	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 1, CeruleanCapeShellBell, EVENT_CERULEAN_CAPE_SHELL_BELL

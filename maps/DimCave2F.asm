@@ -1,21 +1,38 @@
-const_value set 2
-	const DIMCAVE2F_FALLEN_BOULDER
-	const DIMCAVE2F_ENGINEER
-	const DIMCAVE2F_POKEFAN_M
-	const DIMCAVE2F_FISHER
-	const DIMCAVE2F_POKE_BALL1
-	const DIMCAVE2F_POKE_BALL2
-	const DIMCAVE2F_POKE_BALL3
-
 DimCave2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, .BouldersLand
+.MapTriggers: db 0
 
-.BouldersLand:
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, DimCave2FBouldersLand
+
+DimCave2F_MapEventHeader:
+
+.Warps: db 8
+	warp_def $1, $f, 2, CERULEAN_CAPE
+	warp_def $5, $1d, 4, DIM_CAVE_3F
+	warp_def $19, $1b, 5, DIM_CAVE_3F
+	warp_def $14, $e, 6, DIM_CAVE_3F ; hole
+	warp_def $2, $1e, 1, DIM_CAVE_1F
+	warp_def $11, $5, 2, DIM_CAVE_1F
+	warp_def $12, $1c, 3, DIM_CAVE_1F
+	warp_def $20, $1a, 4, DIM_CAVE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 4, 6, SIGNPOST_ITEM, DimCave2FHiddenStardust
+	signpost 19, 2, SIGNPOST_ITEM, DimCave2FHiddenMoonStone
+
+.PersonEvents: db 7
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
+	person_event SPRITE_ENGINEER, 12, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
+	person_event SPRITE_POKEFAN_M, 16, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
+	person_event SPRITE_FISHER, 21, 24, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DimCave2FFisherScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
+	person_event SPRITE_BALL_CUT_FRUIT, 15, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IRON, 1, EVENT_DIM_CAVE_2F_IRON
+	person_event SPRITE_BALL_CUT_FRUIT, 33, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
+
+DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
 	iftrue .skip
 	changeblock $e, $14, $c5
@@ -173,47 +190,8 @@ DimCave2FFallenBoulderScript:
 	line "button."
 	done
 
-DimCave1FMaxRevive:
-	itemball MAX_REVIVE
-
-DimCave1FIron:
-	itemball IRON
-
-DimCave1FTMFacade:
-	tmhmball TM_FACADE
-
 DimCave2FHiddenStardust:
 	dwb EVENT_DIM_CAVE_2F_HIDDEN_STARDUST, STARDUST
 
 DimCave2FHiddenMoonStone:
 	dwb EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE, MOON_STONE
-
-DimCave2F_MapEventHeader:
-.Warps:
-	db 8
-	warp_def $1, $f, 2, CERULEAN_CAPE
-	warp_def $5, $1d, 4, DIM_CAVE_3F
-	warp_def $19, $1b, 5, DIM_CAVE_3F
-	warp_def $14, $e, 6, DIM_CAVE_3F ; hole
-	warp_def $2, $1e, 1, DIM_CAVE_1F
-	warp_def $11, $5, 2, DIM_CAVE_1F
-	warp_def $12, $1c, 3, DIM_CAVE_1F
-	warp_def $20, $1a, 4, DIM_CAVE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 4, 6, SIGNPOST_ITEM, DimCave2FHiddenStardust
-	signpost 19, 2, SIGNPOST_ITEM, DimCave2FHiddenMoonStone
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
-	person_event SPRITE_ENGINEER, 12, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
-	person_event SPRITE_POKEFAN_M, 16, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
-	person_event SPRITE_FISHER, 21, 24, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DimCave2FFisherScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave1FMaxRevive, EVENT_DIM_CAVE_2F_MAX_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave1FIron, EVENT_DIM_CAVE_2F_IRON
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, DimCave1FTMFacade, EVENT_DIM_CAVE_2F_TM_FACADE

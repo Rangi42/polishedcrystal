@@ -1,19 +1,46 @@
-const_value set 2
-	const CELADONUNIVERSITYLIBRARY1F_LADY
-	const CELADONUNIVERSITYLIBRARY1F_GENTLEMAN
-	const CELADONUNIVERSITYLIBRARY1F_COOLTRAINER_F
-	const CELADONUNIVERSITYLIBRARY1F_GAMEBOY_KID
-	const CELADONUNIVERSITYLIBRARY1F_POKEFAN_F
-	const CELADONUNIVERSITYLIBRARY1F_COOLTRAINER_M
-	const CELADONUNIVERSITYLIBRARY1F_TEACHER
-	const CELADONUNIVERSITYLIBRARY1F_BOOK
-
 CeladonUniversityLibrary1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityLibrary1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $b, $6, 4, CELADON_UNIVERSITY_1F
+	warp_def $b, $7, 4, CELADON_UNIVERSITY_1F
+	warp_def $0, $7, 1, CELADON_UNIVERSITY_LIBRARY_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 14
+	signpost 0, 4, SIGNPOST_READ, CeladonUniversityLibrary1FSignpost1
+	signpost 0, 10, SIGNPOST_READ, CeladonUniversityLibrary1FSignpost2
+	signpost 3, 0, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf1
+	signpost 3, 1, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf2
+	signpost 3, 2, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf3
+	signpost 3, 3, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf4
+	signpost 3, 4, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf5
+	signpost 3, 5, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf6
+	signpost 7, 0, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf7
+	signpost 7, 1, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf8
+	signpost 7, 2, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf9
+	signpost 7, 3, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf10
+	signpost 7, 4, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf11
+	signpost 7, 5, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf12
+
+.PersonEvents: db 8
+	person_event SPRITE_GAMEBOY_KID, 5, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGameboyKidScript, -1
+	person_event SPRITE_LADY, 3, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FLadyScript, -1
+	person_event SPRITE_GENTLEMAN, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGentlemanScript, -1
+	person_event SPRITE_COOLTRAINER_F, 5, 0, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainerfScript, -1
+	person_event SPRITE_POKEFAN_F, 8, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FPokefan_fScript, -1
+	person_event SPRITE_COOLTRAINER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainermScript, -1
+	person_event SPRITE_TEACHER, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FTeacherScript, -1
+	person_event SPRITE_BOOK_UNOWN_R, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FBookScript, -1
+
+const_value set 2
+	const CELADONUNIVERSITYLIBRARY1F_GAMEBOY_KID
 
 CeladonUniversityLibrary1FLadyScript:
 	jumptextfaceplayer .Text
@@ -331,41 +358,3 @@ CeladonUniversityLibrary1FBookshelf12:
 	cont "Joe King."
 	cont "Puntastic!"
 	done
-
-CeladonUniversityLibrary1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $b, $6, 4, CELADON_UNIVERSITY_1F
-	warp_def $b, $7, 4, CELADON_UNIVERSITY_1F
-	warp_def $0, $7, 1, CELADON_UNIVERSITY_LIBRARY_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 14
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityLibrary1FSignpost1
-	signpost 0, 10, SIGNPOST_READ, CeladonUniversityLibrary1FSignpost2
-	signpost 3, 0, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf1
-	signpost 3, 1, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf2
-	signpost 3, 2, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf3
-	signpost 3, 3, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf4
-	signpost 3, 4, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf5
-	signpost 3, 5, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf6
-	signpost 7, 0, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf7
-	signpost 7, 1, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf8
-	signpost 7, 2, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf9
-	signpost 7, 3, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf10
-	signpost 7, 4, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf11
-	signpost 7, 5, SIGNPOST_READ, CeladonUniversityLibrary1FBookshelf12
-
-.PersonEvents:
-	db 8
-	person_event SPRITE_LADY, 3, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FLadyScript, -1
-	person_event SPRITE_GENTLEMAN, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGentlemanScript, -1
-	person_event SPRITE_COOLTRAINER_F, 5, 0, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainerfScript, -1
-	person_event SPRITE_GAMEBOY_KID, 5, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGameboyKidScript, -1
-	person_event SPRITE_POKEFAN_F, 8, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FPokefan_fScript, -1
-	person_event SPRITE_COOLTRAINER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainermScript, -1
-	person_event SPRITE_TEACHER, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FTeacherScript, -1
-	person_event SPRITE_BOOK_UNOWN_R, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FBookScript, -1

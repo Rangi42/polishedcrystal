@@ -1,17 +1,34 @@
+VictoryRoad2F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+VictoryRoad2F_MapEventHeader:
+
+.Warps: db 5
+	warp_def $9, $19, 4, ROUTE_23
+	warp_def $b, $3, 2, VICTORY_ROAD_1F
+	warp_def $4, $3, 1, VICTORY_ROAD_3F
+	warp_def $7, $f, 2, VICTORY_ROAD_3F
+	warp_def $9, $13, 3, VICTORY_ROAD_3F
+
+.XYTriggers: db 1
+	xy_trigger 0, $9, $19, UnknownScript_0x74492
+
+.Signposts: db 1
+	signpost 5, 5, SIGNPOST_ITEM, VictoryRoad2FHiddenMaxPotion
+
+.PersonEvents: db 6
+	person_event SPRITE_SILVER, 9, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	person_event SPRITE_VETERAN_F, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
+	person_event SPRITE_VETERAN_F, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
+	person_event SPRITE_BALL_CUT_FRUIT, 5, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
+	person_event SPRITE_BALL_CUT_FRUIT, 14, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
+
 const_value set 2
 	const VICTORYROAD2F_SILVER
-	const VICTORYROAD2F_VETERAN_F1
-	const VICTORYROAD2F_VETERAN_F2
-	const VICTORYROAD2F_POKE_BALL1
-	const VICTORYROAD2F_POKE_BALL2
-	const VICTORYROAD2F_POKE_BALL3
-
-VictoryRoad2F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 UnknownScript_0x74492:
 	spriteface PLAYER, LEFT
@@ -90,15 +107,6 @@ VeteranfSylvieScript:
 	waitbutton
 	closetext
 	end
-
-VictoryRoad2FTMEarthquake:
-	tmhmball TM_EARTHQUAKE
-
-VictoryRoad2FFullRestore:
-	itemball FULL_RESTORE
-
-VictoryRoad2FHPUp:
-	itemball HP_UP
 
 VictoryRoad2FHiddenMaxPotion:
 	dwb EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION, MAX_POTION
@@ -228,29 +236,3 @@ VeteranfSylvieAfterText:
 	line "capture Moltres"
 	cont "already?"
 	done
-
-VictoryRoad2F_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $9, $19, 4, ROUTE_23
-	warp_def $b, $3, 2, VICTORY_ROAD_1F
-	warp_def $4, $3, 1, VICTORY_ROAD_3F
-	warp_def $7, $f, 2, VICTORY_ROAD_3F
-	warp_def $9, $13, 3, VICTORY_ROAD_3F
-
-.XYTriggers:
-	db 1
-	xy_trigger 0, $9, $19, UnknownScript_0x74492
-
-.Signposts:
-	db 1
-	signpost 5, 5, SIGNPOST_ITEM, VictoryRoad2FHiddenMaxPotion
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_SILVER, 9, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
-	person_event SPRITE_VETERAN_F, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
-	person_event SPRITE_VETERAN_F, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, VictoryRoad2FTMEarthquake, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, VictoryRoad2FFullRestore, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, VictoryRoad2FHPUp, EVENT_VICTORY_ROAD_2F_HP_UP

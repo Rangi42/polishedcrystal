@@ -1,13 +1,26 @@
+EmbeddedTower_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+EmbeddedTower_MapEventHeader:
+
+.Warps: db 2
+	warp_def $17, $a, 6, ROUTE_47
+	warp_def $17, $b, 6, ROUTE_47
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven1Script, EVENT_EMBEDDED_TOWER_STEVEN_1
+	person_event SPRITE_STEVEN, 11, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven2Script, EVENT_EMBEDDED_TOWER_STEVEN_2
+
 const_value set 2
 	const EMBEDDEDTOWER_STEVEN1
 	const EMBEDDEDTOWER_STEVEN2
-
-EmbeddedTower_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 EmbeddedTowerSteven1Script:
 	faceplayer
@@ -245,20 +258,3 @@ EmbeddedTowerSteven2AfterText:
 	para "I learn more about"
 	line "#mon!"
 	done
-
-EmbeddedTower_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $17, $a, 6, ROUTE_47
-	warp_def $17, $b, 6, ROUTE_47
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven1Script, EVENT_EMBEDDED_TOWER_STEVEN_1
-	person_event SPRITE_STEVEN, 11, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven2Script, EVENT_EMBEDDED_TOWER_STEVEN_2

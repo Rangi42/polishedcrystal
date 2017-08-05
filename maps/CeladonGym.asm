@@ -1,18 +1,29 @@
-const_value set 2
-	const CELADONGYM_ERIKA
-	const CELADONGYM_LASS1
-	const CELADONGYM_LASS2
-	const CELADONGYM_BEAUTY
-	const CELADONGYM_LADY
-	const CELADONGYM_TWIN1
-	const CELADONGYM_TWIN2
-
 CeladonGym_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $4, 8, CELADON_CITY
+	warp_def $11, $5, 8, CELADON_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 15, 3, SIGNPOST_READ, CeladonGymStatue
+	signpost 15, 6, SIGNPOST_READ, CeladonGymStatue
+
+.PersonEvents: db 7
+	person_event SPRITE_ERIKA, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
+	person_event SPRITE_LASS, 8, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassMichelle, -1
+	person_event SPRITE_LASS, 8, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTanya, -1
+	person_event SPRITE_BEAUTY, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyJulia, -1
+	person_event SPRITE_LADY, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAroma_ladyDahlia, -1
+	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe1, -1
+	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe2, -1
 
 ErikaScript_0x72a6a:
 	faceplayer
@@ -322,27 +333,3 @@ UnknownText_0x72fc0:
 	text "Erika is much,"
 	line "much stronger!"
 	done
-
-CeladonGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $4, 8, CELADON_CITY
-	warp_def $11, $5, 8, CELADON_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 15, 3, SIGNPOST_READ, CeladonGymStatue
-	signpost 15, 6, SIGNPOST_READ, CeladonGymStatue
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_ERIKA, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
-	person_event SPRITE_LASS, 8, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassMichelle, -1
-	person_event SPRITE_LASS, 8, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTanya, -1
-	person_event SPRITE_BEAUTY, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyJulia, -1
-	person_event SPRITE_LADY, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAroma_ladyDahlia, -1
-	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe1, -1
-	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe2, -1

@@ -1,13 +1,26 @@
-const_value set 2
-	const OLIVINELIGHTHOUSE2F_SAILOR
-	const OLIVINELIGHTHOUSE2F_GENTLEMAN
-
 OlivineLighthouse2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+OlivineLighthouse2F_MapEventHeader:
+
+.Warps: db 6
+	warp_def $b, $3, 3, OLIVINE_LIGHTHOUSE_1F
+	warp_def $3, $5, 2, OLIVINE_LIGHTHOUSE_3F
+	warp_def $d, $10, 4, OLIVINE_LIGHTHOUSE_1F
+	warp_def $d, $11, 5, OLIVINE_LIGHTHOUSE_1F
+	warp_def $b, $10, 4, OLIVINE_LIGHTHOUSE_3F
+	warp_def $b, $11, 5, OLIVINE_LIGHTHOUSE_3F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 2
+	person_event SPRITE_SAILOR, 3, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
+	person_event SPRITE_GENTLEMAN, 8, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1
 
 TrainerGentlemanAlfred:
 	trainer EVENT_BEAT_GENTLEMAN_ALFRED, GENTLEMAN, ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, GentlemanAlfredScript
@@ -194,24 +207,3 @@ UnknownText_0x5b1b6:
 	line "that medicine from"
 	cont "before."
 	done
-
-OlivineLighthouse2F_MapEventHeader:
-.Warps:
-	db 6
-	warp_def $b, $3, 3, OLIVINE_LIGHTHOUSE_1F
-	warp_def $3, $5, 2, OLIVINE_LIGHTHOUSE_3F
-	warp_def $d, $10, 4, OLIVINE_LIGHTHOUSE_1F
-	warp_def $d, $11, 5, OLIVINE_LIGHTHOUSE_1F
-	warp_def $b, $10, 4, OLIVINE_LIGHTHOUSE_3F
-	warp_def $b, $11, 5, OLIVINE_LIGHTHOUSE_3F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 2
-	person_event SPRITE_SAILOR, 3, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
-	person_event SPRITE_GENTLEMAN, 8, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1

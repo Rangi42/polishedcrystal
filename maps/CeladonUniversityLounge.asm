@@ -1,17 +1,32 @@
+CeladonUniversityLounge_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityLounge_MapEventHeader:
+
+.Warps: db 2
+	warp_def $b, $4, 10, CELADON_UNIVERSITY_1F
+	warp_def $b, $5, 10, CELADON_UNIVERSITY_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 5, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf1
+	signpost 8, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
+	signpost 7, 0, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
+
+.PersonEvents: db 6
+	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
+	person_event SPRITE_LASS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeLassScript, -1
+	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeRichBoyScript, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeCooltrainerfScript, -1
+	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeSuper_nerd1Script, -1
+	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeSuper_nerd2Script, -1
+
 const_value set 2
 	const CELADONUNIVERSITYLOUNGE_NEESHA
-	const CELADONUNIVERSITYLOUNGE_LASS
-	const CELADONUNIVERSITYLOUNGE_RICH_BOY
-	const CELADONUNIVERSITYLOUNGE_COOLTRAINER_F
-	const CELADONUNIVERSITYLOUNGE_SUPER_NERD1
-	const CELADONUNIVERSITYLOUNGE_SUPER_NERD2
-
-CeladonUniversityLounge_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 CeladonUniversityLoungeNeeshaScript:
 	faceplayer
@@ -264,27 +279,3 @@ CeladonUniversityLoungeComputer:
 	para "around a 2D"
 	line "Celadon City."
 	done
-
-CeladonUniversityLounge_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $b, $4, 10, CELADON_UNIVERSITY_1F
-	warp_def $b, $5, 10, CELADON_UNIVERSITY_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 5, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf1
-	signpost 8, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
-	signpost 7, 0, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
-
-.PersonEvents:
-	db 6
-	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
-	person_event SPRITE_LASS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeLassScript, -1
-	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeRichBoyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeCooltrainerfScript, -1
-	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeSuper_nerd1Script, -1
-	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeSuper_nerd2Script, -1

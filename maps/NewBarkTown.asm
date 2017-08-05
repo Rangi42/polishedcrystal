@@ -1,25 +1,54 @@
+NewBarkTown_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
+	dbw MAPCALLBACK_SPRITES, NewBarkTownSwimmerGuySprite
+
+NewBarkTown_MapEventHeader:
+
+.Warps: db 5
+	warp_def $3, $6, 1, ELMS_LAB
+	warp_def $5, $f, 1, KRISS_HOUSE_1F
+	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
+	warp_def $d, $b, 1, LYRAS_HOUSE_1F
+	warp_def $2, $a, 2, ELMS_HOUSE
+
+.XYTriggers: db 7
+	xy_trigger 0, $8, $1, NewBarkTown_TeacherStopsYouTrigger1
+	xy_trigger 0, $9, $1, NewBarkTown_TeacherStopsYouTrigger2
+	xy_trigger 0, $4, $6, NewBarkTown_LyraIntroTrigger
+	xy_trigger 1, $6, $11, NewBarkTown_LyraFinalTrigger1
+	xy_trigger 1, $7, $11, NewBarkTown_LyraFinalTrigger2
+	xy_trigger 1, $8, $11, NewBarkTown_LyraFinalTrigger3
+	xy_trigger 1, $9, $11, NewBarkTown_LyraFinalTrigger4
+
+.Signposts: db 5
+	signpost 8, 8, SIGNPOST_READ, NewBarkTownSign
+	signpost 5, 13, SIGNPOST_READ, MapNewBarkTownSignpost1Script
+	signpost 3, 3, SIGNPOST_READ, MapNewBarkTownSignpost2Script
+	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
+	signpost 2, 3, SIGNPOST_ITEM, MapNewBarkTownHiddenPotion
+
+.PersonEvents: db 5
+	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
+	person_event SPRITE_CHERRYGROVE_RIVAL, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+	person_event SPRITE_NEW_BARK_LYRA, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
+	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
+	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, NewBarkTownYoungsterScript, -1
+
 const_value set 2
 	const NEWBARKTOWN_TEACHER
-	const NEWBARKTOWN_FISHER
-	const NEWBARKTOWN_YOUNGSTER
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
 
-NewBarkTown_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_NEWMAP, .FlyPoint
-	dbw MAPCALLBACK_SPRITES, .SwimmerGuySprite
-
-.FlyPoint:
+NewBarkTownFlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	return
 
-.SwimmerGuySprite:
+NewBarkTownSwimmerGuySprite:
 	checkevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
 	iftrue .done
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
@@ -513,38 +542,3 @@ ElmsLabSignText:
 LyrasHouseSignText:
 	text "Lyra's House"
 	done
-
-NewBarkTown_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $3, $6, 1, ELMS_LAB
-	warp_def $5, $f, 1, KRISS_HOUSE_1F
-	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
-	warp_def $d, $b, 1, LYRAS_HOUSE_1F
-	warp_def $2, $a, 2, ELMS_HOUSE
-
-.XYTriggers:
-	db 7
-	xy_trigger 0, $8, $1, NewBarkTown_TeacherStopsYouTrigger1
-	xy_trigger 0, $9, $1, NewBarkTown_TeacherStopsYouTrigger2
-	xy_trigger 0, $4, $6, NewBarkTown_LyraIntroTrigger
-	xy_trigger 1, $6, $11, NewBarkTown_LyraFinalTrigger1
-	xy_trigger 1, $7, $11, NewBarkTown_LyraFinalTrigger2
-	xy_trigger 1, $8, $11, NewBarkTown_LyraFinalTrigger3
-	xy_trigger 1, $9, $11, NewBarkTown_LyraFinalTrigger4
-
-.Signposts:
-	db 5
-	signpost 8, 8, SIGNPOST_READ, NewBarkTownSign
-	signpost 5, 13, SIGNPOST_READ, MapNewBarkTownSignpost1Script
-	signpost 3, 3, SIGNPOST_READ, MapNewBarkTownSignpost2Script
-	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
-	signpost 2, 3, SIGNPOST_ITEM, MapNewBarkTownHiddenPotion
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
-	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
-	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, NewBarkTownYoungsterScript, -1
-	person_event SPRITE_CHERRYGROVE_RIVAL, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
-	person_event SPRITE_NEW_BARK_LYRA, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN

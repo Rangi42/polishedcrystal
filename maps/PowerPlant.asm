@@ -1,18 +1,35 @@
+PowerPlant_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PowerPlant_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $2, 2, ROUTE_10_NORTH
+	warp_def $11, $3, 2, ROUTE_10_NORTH
+
+.XYTriggers: db 1
+	xy_trigger 1, $c, $5, PowerPlantGuardPhoneScript
+
+.Signposts: db 2
+	signpost 1, 0, SIGNPOST_READ, PowerPlantBookshelf
+	signpost 1, 1, SIGNPOST_READ, PowerPlantBookshelf
+
+.PersonEvents: db 7
+	person_event SPRITE_OFFICER, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
+	person_event SPRITE_GYM_GUY, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e15, -1
+	person_event SPRITE_GYM_GUY, 11, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e29, -1
+	person_event SPRITE_OFFICER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188e3d, -1
+	person_event SPRITE_GYM_GUY, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e51, -1
+	person_event SPRITE_FISHER, 10, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
+	person_event SPRITE_GYM_GUY, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PowerPlantForestScript, -1
+
 const_value set 2
 	const POWERPLANT_OFFICER1
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2
-	const POWERPLANT_OFFICER2
-	const POWERPLANT_GYM_GUY3
-	const POWERPLANT_FISHER
-	const POWERPLANT_FOREST
-
-PowerPlant_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 PowerPlantGuardPhoneScript:
 	playsound SFX_CALL
@@ -422,28 +439,3 @@ PowerPlantForestText:
 	para "have something to"
 	line "do with it?"
 	done
-
-PowerPlant_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $2, 2, ROUTE_10_NORTH
-	warp_def $11, $3, 2, ROUTE_10_NORTH
-
-.XYTriggers:
-	db 1
-	xy_trigger 1, $c, $5, PowerPlantGuardPhoneScript
-
-.Signposts:
-	db 2
-	signpost 1, 0, SIGNPOST_READ, PowerPlantBookshelf
-	signpost 1, 1, SIGNPOST_READ, PowerPlantBookshelf
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_OFFICER, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
-	person_event SPRITE_GYM_GUY, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e15, -1
-	person_event SPRITE_GYM_GUY, 11, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e29, -1
-	person_event SPRITE_OFFICER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188e3d, -1
-	person_event SPRITE_GYM_GUY, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e51, -1
-	person_event SPRITE_FISHER, 10, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
-	person_event SPRITE_GYM_GUY, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PowerPlantForestScript, -1

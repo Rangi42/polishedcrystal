@@ -1,16 +1,26 @@
-const_value set 2
-	const PEWTERMUSEUMOFSCIENCE2F_SCIENTIST
-	const PEWTERMUSEUMOFSCIENCE2F_CHILD
-	const PEWTERMUSEUMOFSCIENCE2F_TEACHER
-	const PEWTERMUSEUMOFSCIENCE2F_LASS
-	const PEWTERMUSEUMOFSCIENCE2F_POKEFAN_M
-
 PewterMuseumOfScience2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+PewterMuseumOfScience2F_MapEventHeader:
+
+.Warps: db 1
+	warp_def $7, $7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 6, 3, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
+	signpost 2, 11, SIGNPOST_READ, Museum2FSpaceShuttleSignpostScript
+
+.PersonEvents: db 5
+	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum2FScientistScript, -1
+	person_event SPRITE_CHILD, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Museum2FChildScript, -1
+	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FTeacherScript, -1
+	person_event SPRITE_LASS, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FLassScript, -1
+	person_event SPRITE_POKEFAN_M, 5, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FPokefanMScript, -1
 
 Museum2FScientistScript:
 	jumptextfaceplayer Museum2FScientistText
@@ -198,24 +208,3 @@ Museum2FMoonStoneSignpostText:
 Museum2FSpaceShuttleSignpostText:
 	text "Space Shuttle"
 	done
-
-PewterMuseumOfScience2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $7, $7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 6, 3, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
-	signpost 2, 11, SIGNPOST_READ, Museum2FSpaceShuttleSignpostScript
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum2FScientistScript, -1
-	person_event SPRITE_CHILD, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Museum2FChildScript, -1
-	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FTeacherScript, -1
-	person_event SPRITE_LASS, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FLassScript, -1
-	person_event SPRITE_POKEFAN_M, 5, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FPokefanMScript, -1

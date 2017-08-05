@@ -1,19 +1,32 @@
-const_value set 2
-	const RADIOTOWER3F_SUPER_NERD
-	const RADIOTOWER3F_GYM_GUY
-	const RADIOTOWER3F_COOLTRAINER_F
-	const RADIOTOWER3F_ROCKET1
-	const RADIOTOWER3F_ROCKET2
-	const RADIOTOWER3F_ROCKET3
-	const RADIOTOWER3F_SCIENTIST
-
 RadioTower3F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, CardKeyShutterCallback
+
+RadioTower3F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $0, $0, 1, RADIO_TOWER_2F
+	warp_def $0, $7, 2, RADIO_TOWER_4F
+	warp_def $0, $11, 4, RADIO_TOWER_4F
+
+.XYTriggers: db 0
+
+.Signposts: db 3
+	signpost 0, 3, SIGNPOST_READ, MapRadioTower3FSignpost0Script
+	signpost 0, 9, SIGNPOST_READ, MapRadioTower3FSignpost1Script
+	signpost 2, 14, SIGNPOST_UP, MapRadioTower3FSignpost2Script
+
+.PersonEvents: db 7
+	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x5e553, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
+	person_event SPRITE_COOLTRAINER_F, 3, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
+	person_event SPRITE_ROCKET, 1, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_ROCKET, 6, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	person_event SPRITE_SCIENTIST, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
@@ -325,29 +338,3 @@ UnknownText_0x5eae4:
 	text "#mon Music with"
 	line "Host DJ Ben"
 	done
-
-RadioTower3F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $0, $0, 1, RADIO_TOWER_2F
-	warp_def $0, $7, 2, RADIO_TOWER_4F
-	warp_def $0, $11, 4, RADIO_TOWER_4F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 3
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower3FSignpost0Script
-	signpost 0, 9, SIGNPOST_READ, MapRadioTower3FSignpost1Script
-	signpost 2, 14, SIGNPOST_UP, MapRadioTower3FSignpost2Script
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x5e553, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
-	person_event SPRITE_ROCKET, 1, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 6, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

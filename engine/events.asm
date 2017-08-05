@@ -499,34 +499,28 @@ TryObjectEvent: ; 969b5
 	ld a, [hl]
 	and %00001111
 
-	push bc
-	ld de, 3
-	ld hl, .pointers
-	call IsInArray
-	pop bc
+	cp NUM_PERSONTYPES
 	ret nc
 
-	inc hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld hl, .pointers
+	rst JumpTable
+	ret
 
-.pointers
-	dbw PERSONTYPE_SCRIPT, .script
-	dbw PERSONTYPE_ITEMBALL, .itemball
-	dbw PERSONTYPE_TRAINER, .trainer
-	dbw PERSONTYPE_TMHMBALL, .tmhmball
-	dbw PERSONTYPE_JUMPTEXT, .jumptext
-	dbw PERSONTYPE_JUMPTEXTFP, .jumptextfaceplayer
-	dbw PERSONTYPE_JUMPSTD, .jumpstd
-	dbw PERSONTYPE_MART, .mart
-	dbw PERSONTYPE_FRUITTREE, .fruittree
-	dbw PERSONTYPE_GENERICTRAINER, .generictrainer
-	db -1
-; 96a04
+.pointers:
+	dw .script     ; PERSONTYPE_SCRIPT
+	dw .itemball   ; PERSONTYPE_ITEMBALL
+	dw .tmhmball   ; PERSONTYPE_TMHMBALL
+	dw .trainer    ; PERSONTYPE_TRAINER
+	dw .trainer    ; PERSONTYPE_GENERICTRAINER
+	dw .jumptext   ; PERSONTYPE_JUMPTEXT
+	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
+	dw .jumpstd    ; PERSONTYPE_JUMPSTD
+	dw .mart       ; PERSONTYPE_MART
+	dw .pokemon    ; PERSONTYPE_POKEMON
+	dw .npctrade   ; PERSONTYPE_NPCTRADE
+	dw .fruittree  ; PERSONTYPE_FRUITTREE
 
-.script ; 96a04
+.script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hli]
@@ -536,49 +530,36 @@ TryObjectEvent: ; 969b5
 	jp CallScript
 ; 96a12
 
-.itemball ; 96a12
+.itemball:
+	ld a, PLAYEREVENT_ITEMBALL
+	jr .continue_ball
+
+.tmhmball:
+	ld a, PLAYEREVENT_TMHMBALL
+.continue_ball
+	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [MapScriptHeaderBank]
-	ld de, EngineBuffer1
-	ld bc, 2
-	call FarCopyBytes
-	ld a, PLAYEREVENT_ITEMBALL
+	ld e, [hl]
+	ld hl, CurItemBallContents
+	ld [hli], a
+	ld [hl], e
+	pop af
 	scf
 	ret
-; 96a29
 
-.generictrainer ; TODO
-.trainer ; 96a29
+.trainer:
 	call TalkToTrainer
 	ld a, PLAYEREVENT_TALKTOTRAINER
 	scf
 	ret
-; 96a30
 
-.tmhmball ; 96a30
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [MapScriptHeaderBank]
-	ld de, EngineBuffer1
-	ld bc, 1
-	call FarCopyBytes
-	ld a, PLAYEREVENT_TMHMBALL
-	scf
-	ret
-; 96a32
-
-.jumptext ; 96a32
+.jumptext:
 	ld a, jumptext_command
 	jr .continue_text
 
-.jumptextfaceplayer ; 96a34
+.jumptextfp:
 	ld a, jumptextfaceplayer_command
 .continue_text
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -593,21 +574,20 @@ TryObjectEvent: ; 969b5
 	ld [de], a
 	jr .call_temporary_script_buffer
 
-.jumpstd ; 96a36
+.jumpstd:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hl]
 	ld hl, wTemporaryScriptBuffer + 1
 	ld [hld], a
-	ld a, jumpstd_command
-	ld [hl], a
+	ld [hl], jumpstd_command
 .call_temporary_script_buffer
 	ld hl, wTemporaryScriptBuffer
 .call_script_in_bank
 	ld a, [MapScriptHeaderBank]
 	jp CallScript
 
-.mart
+.mart:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld de, wTemporaryScriptBuffer
@@ -621,7 +601,13 @@ TryObjectEvent: ; 969b5
 	ld [de], a
 	jr .call_temporary_script_buffer
 
-.fruittree
+.npctrade:
+	; TODO
+
+.pokemon:
+	; TODO
+
+.fruittree:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
 	ld a, [hl]

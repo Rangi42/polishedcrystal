@@ -1,14 +1,25 @@
-const_value set 2
-	const ILEXFORESTAZALEAGATE_OFFICER
-	const ILEXFORESTAZALEAGATE_GRANNY
-	const ILEXFORESTAZALEAGATE_SCIENTIST
-
 IlexForestAzaleaGate_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+IlexForestAzaleaGate_MapEventHeader:
+
+.Warps: db 4
+	warp_def $4, $0, 2, ILEX_FOREST
+	warp_def $5, $0, 3, ILEX_FOREST
+	warp_def $4, $9, 7, AZALEA_TOWN
+	warp_def $5, $9, 8, AZALEA_TOWN
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 3
+	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x62c7a, -1
+	person_event SPRITE_GRANNY, 6, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x62c7d, -1
+	person_event SPRITE_SCIENTIST, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide1Script, -1
 
 OfficerScript_0x62c7a:
 	jumptextfaceplayer UnknownText_0x62c80
@@ -140,23 +151,3 @@ ProfOaksAide1ExplainText:
 	para "Use them to com-"
 	line "plete the #dex!"
 	done
-
-IlexForestAzaleaGate_MapEventHeader:
-.Warps:
-	db 4
-	warp_def $4, $0, 2, ILEX_FOREST
-	warp_def $5, $0, 3, ILEX_FOREST
-	warp_def $4, $9, 7, AZALEA_TOWN
-	warp_def $5, $9, 8, AZALEA_TOWN
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 3
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x62c7a, -1
-	person_event SPRITE_GRANNY, 6, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x62c7d, -1
-	person_event SPRITE_SCIENTIST, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide1Script, -1

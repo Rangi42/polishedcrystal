@@ -1,24 +1,55 @@
-const_value set 2
-	const BATTLETOWER2F_RILEY
-	const BATTLETOWER2F_LADY
-	const BATTLETOWER2F_BUCK
-	const BATTLETOWER2F_TWIN
-	const BATTLETOWER2F_MIRA
-	const BATTLETOWER2F_YOUNGSTER
-	const BATTLETOWER2F_CHERYL
-	const BATTLETOWER2F_COOLTRAINER_M
-	const BATTLETOWER2F_MARLEY
-	const BATTLETOWER2F_SUPER_NERD
-	const BATTLETOWER2F_ANABEL
-	const BATTLETOWER2F_BLACK_BELT
-	const BATTLETOWER2F_PIKACHU
-
 BattleTower2F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+BattleTower2F_MapEventHeader:
+.Warps: db 1
+	warp_def $1, $0, 4, BATTLE_TOWER_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 4
+	signpost 3, 4, SIGNPOST_READ, BattleTower2FTVScript
+	signpost 3, 5, SIGNPOST_READ, BattleTower2FTVScript
+	signpost 3, 16, SIGNPOST_READ, BattleTower2FTVScript
+	signpost 3, 17, SIGNPOST_READ, BattleTower2FTVScript
+
+.PersonEvents: db 13
+	person_event SPRITE_CHERYL, 6, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FCherylScript, EVENT_BATTLE_TOWER_CHERYL
+	person_event SPRITE_RILEY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
+	person_event SPRITE_BUCK, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FBuckScript, EVENT_BATTLE_TOWER_BUCK
+	person_event SPRITE_MARLEY, 8, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMarleyScript, EVENT_BATTLE_TOWER_MARLEY
+	person_event SPRITE_MIRA, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMiraScript, EVENT_BATTLE_TOWER_MIRA
+	person_event SPRITE_ANABEL, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FAnabelScript, EVENT_BATTLE_TOWER_ANABEL
+	person_event SPRITE_COOLTRAINER_M, 6, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, BattleTower2FCooltrainermText, EVENT_MURKY_SWAMP_CHERYL
+	person_event SPRITE_LADY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, BattleTower2FLadyText, EVENT_DIM_CAVE_RILEY
+	person_event SPRITE_TWIN, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, BattleTower2FTwinText, EVENT_CINNABAR_VOLCANO_BUCK
+	person_event SPRITE_SUPER_NERD, 8, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, BattleTower2FSuperNerdText, EVENT_QUIET_CAVE_MARLEY
+	person_event SPRITE_PIKACHU, 8, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTower2FPikachuScript, EVENT_QUIET_CAVE_MARLEY
+	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
+	person_event SPRITE_BLACK_BELT, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
+
+const_value set 2
+	const BATTLETOWER2F_CHERYL
+	const BATTLETOWER2F_RILEY
+	const BATTLETOWER2F_BUCK
+	const BATTLETOWER2F_MARLEY
+	const BATTLETOWER2F_MIRA
+	const BATTLETOWER2F_ANABEL
+
+BattleTower2FTVScript:
+	checkcode VAR_FACING
+	if_not_equal UP, .wrongside
+	jumptext .Text
+.wrongside
+	jumpstd tv
+
+.Text:
+	text "There's an intense"
+	line "battle on the TV."
+	done
 
 BattleTower2FCherylScript:
 	faceplayer
@@ -483,10 +514,7 @@ BattleTower2FAnabelScript:
 	line "appointing…"
 	done
 
-BattleTower2FCooltrainermScript:
-	jumptextfaceplayer .Text
-
-.Text:
+BattleTower2FCooltrainermText:
 	text "I need to go, but"
 	line "I just can't stop"
 
@@ -494,10 +522,7 @@ BattleTower2FCooltrainermScript:
 	line "battle!"
 	done
 
-BattleTower2FLadyScript:
-	jumptextfaceplayer .Text
-
-.Text:
+BattleTower2FLadyText:
 	text "What makes me most"
 	line "happy being a"
 	cont "trainer?"
@@ -509,10 +534,7 @@ BattleTower2FLadyScript:
 	line "friends!"
 	done
 
-BattleTower2FTwinScript:
-	jumptextfaceplayer .Text
-
-.Text:
+BattleTower2FTwinText:
 	text "Some people are"
 	line "surprised to see"
 
@@ -525,10 +547,7 @@ BattleTower2FTwinScript:
 	cont "myself, you know?"
 	done
 
-BattleTower2FSuper_nerdScript:
-	jumptextfaceplayer .Text
-
-.Text:
+BattleTower2FSuperNerdText:
 	text "Hehe! All the"
 	line "trainers around us"
 	cont "look so pathetic!"
@@ -554,10 +573,7 @@ BattleTower2FPikachuScript:
 	text "Pikachu: Pichuu!"
 	done
 
-BattleTower2FYoungsterScript:
-	jumptextfaceplayer .Text
-
-.Text:
+BattleTower2FYoungsterText:
 	text "To be strong is to"
 	line "be weak."
 
@@ -572,10 +588,7 @@ BattleTower2FYoungsterScript:
 	cont "deep."
 	done
 
-BattleTower2FBlack_beltScript:
-	jumptextfaceplayer .Text
-
-.Text:
+BattleTower2FBlackbeltText:
 	text "The karate gi is"
 	line "the uniform of"
 	cont "fighters!"
@@ -586,42 +599,3 @@ BattleTower2FBlack_beltScript:
 	para "the Battle Tower"
 	line "than this!"
 	done
-
-BattleTower2FTV:
-	jumptext .Text
-
-.Text:
-	text "There's an intense"
-	line "battle on the TV."
-	done
-
-BattleTower2F_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $1, $0, 4, BATTLE_TOWER_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 4
-	signpost 3, 4, SIGNPOST_READ, BattleTower2FTV
-	signpost 3, 5, SIGNPOST_READ, BattleTower2FTV
-	signpost 3, 16, SIGNPOST_READ, BattleTower2FTV
-	signpost 3, 17, SIGNPOST_READ, BattleTower2FTV
-
-.PersonEvents:
-	db 13
-	person_event SPRITE_RILEY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
-	person_event SPRITE_LADY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BattleTower2FLadyScript, EVENT_DIM_CAVE_RILEY
-	person_event SPRITE_BUCK, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FBuckScript, EVENT_BATTLE_TOWER_BUCK
-	person_event SPRITE_TWIN, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTower2FTwinScript, EVENT_CINNABAR_VOLCANO_BUCK
-	person_event SPRITE_MIRA, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMiraScript, EVENT_BATTLE_TOWER_MIRA
-	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BattleTower2FYoungsterScript, EVENT_SCARY_CAVE_MIRA
-	person_event SPRITE_CHERYL, 6, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FCherylScript, EVENT_BATTLE_TOWER_CHERYL
-	person_event SPRITE_COOLTRAINER_M, 6, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTower2FCooltrainermScript, EVENT_MURKY_SWAMP_CHERYL
-	person_event SPRITE_MARLEY, 8, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMarleyScript, EVENT_BATTLE_TOWER_MARLEY
-	person_event SPRITE_SUPER_NERD, 8, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTower2FSuper_nerdScript, EVENT_QUIET_CAVE_MARLEY
-	person_event SPRITE_ANABEL, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FAnabelScript, EVENT_BATTLE_TOWER_ANABEL
-	person_event SPRITE_BLACK_BELT, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BattleTower2FBlack_beltScript, EVENT_NOISY_FOREST_ANABEL
-	person_event SPRITE_PIKACHU, 8, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTower2FPikachuScript, EVENT_QUIET_CAVE_MARLEY

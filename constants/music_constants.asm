@@ -88,14 +88,14 @@
 	const MUSIC_SS_AQUA                        ; 56
 	const MUSIC_VERMILION_CITY                 ; 57
 	const MUSIC_KANTO_GYM_LEADER_BATTLE        ; 58
-	const MUSIC_BLACK_CITY_BW                  ; 59
-	const MUSIC_LAVENDER_TOWN_RBY              ; 5a
-	const MUSIC_POKEMON_TOWER_RBY              ; 5b
-	const MUSIC_LAVENDER_TOWN                  ; 5c
-	const MUSIC_KANTO_WILD_BATTLE              ; 5d
-	const MUSIC_CERULEAN_CITY_HGSS             ; 5e
-	const MUSIC_NUGGET_BRIDGE_HGSS             ; 5f
-	const MUSIC_MAGNET_TRAIN                   ; 60
+	const MUSIC_LAVENDER_TOWN_RBY              ; 59
+	const MUSIC_POKEMON_TOWER_RBY              ; 5a
+	const MUSIC_LAVENDER_TOWN                  ; 5b
+	const MUSIC_KANTO_WILD_BATTLE              ; 5c
+	const MUSIC_CERULEAN_CITY_HGSS             ; 5d
+	const MUSIC_NUGGET_BRIDGE_HGSS             ; 5e
+	const MUSIC_MAGNET_TRAIN                   ; 5f
+	const MUSIC_BLACK_CITY_BW                  ; 60
 	const MUSIC_POKEMON_LULLABY                ; 61
 	const MUSIC_CELADON_CITY                   ; 62
 	const MUSIC_GAME_CORNER_DPPT               ; 63
@@ -156,18 +156,18 @@
 	const MUSIC_SUMMONING_DANCE_HGSS           ; 9a
 	const MUSIC_HO_OH_BATTLE_HGSS              ; 9b
 	const MUSIC_CERULEAN_CAVE_RBY              ; 9c
-	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; 9d
-	const MUSIC_GYM_LEADER_BATTLE_RSE          ; 9e
-	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; 9f
-	const MUSIC_GYM_LEADER_BATTLE_BW           ; a0
-	const MUSIC_GYM_LEADER_BATTLE_XY           ; a1
-	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a2
-	const MUSIC_CELESTIAL_TOWER_BW             ; a3
-	const MUSIC_CHAMPION_BATTLE_RSE            ; a4
-	const MUSIC_MOUNT_CORONET_DPPT             ; a5
-	const MUSIC_CHAMPION_BATTLE_DPPT           ; a6
-	const MUSIC_WCS_BATTLE_BW                  ; a7
-	const MUSIC_ABANDONED_SHIP_RSE             ; a8
+	const MUSIC_ABANDONED_SHIP_RSE             ; 9d
+	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; 9e
+	const MUSIC_GYM_LEADER_BATTLE_RSE          ; 9f
+	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a0
+	const MUSIC_GYM_LEADER_BATTLE_BW           ; a1
+	const MUSIC_GYM_LEADER_BATTLE_XY           ; a2
+	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a3
+	const MUSIC_CELESTIAL_TOWER_BW             ; a4
+	const MUSIC_CHAMPION_BATTLE_RSE            ; a5
+	const MUSIC_MOUNT_CORONET_DPPT             ; a6
+	const MUSIC_CHAMPION_BATTLE_DPPT           ; a7
+	const MUSIC_WCS_BATTLE_BW                  ; a8
 	const MUSIC_CHAMPION_BATTLE_B2W2           ; a9
 	const MUSIC_CREDITS                        ; aa
 	const MUSIC_POST_CREDITS                   ; ab

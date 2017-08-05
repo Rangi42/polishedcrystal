@@ -1,12 +1,23 @@
+FireIslandRoof_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+FireIslandRoof_MapEventHeader:
+
+.Warps: db 1
+	warp_def $7, $3, 2, FIRE_ISLAND
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_CANDELA, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
+
 const_value set 2
 	const FIREISLANDROOF_CANDELA
-
-FireIslandRoof_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 0
 
 FireIslandRoofCandelaScript:
 	faceplayer
@@ -61,18 +72,3 @@ FireIslandRoofCandelaScript:
 FireIslandRoofCandelaTeleport:
 	teleport_from
 	step_end
-
-FireIslandRoof_MapEventHeader:
-.Warps:
-	db 1
-	warp_def $7, $3, 2, FIRE_ISLAND
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_CANDELA, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA

@@ -1326,6 +1326,7 @@ wMartItemBCDEnd::
 	ds 24
 
 MenuItemsList::
+CurItemBallContents::
 CurFruitTree::
 CurInput::
 wElevatorPointerBank::
@@ -1337,6 +1338,7 @@ EngineBuffer1::
 
 wd03f::
 wJumpStdScriptBuffer::
+CurItemBallQuantity::
 CurFruit::
 MartPointerBank::
 wElevatorPointerLo::
@@ -1389,13 +1391,17 @@ wWinTextPointer::
 	ds 1
 
 wPhoneScriptPointer:: ds 1
+wGenericTempTrainerHeaderEnd::
+
 wLossTextPointer:: ds 2
 wScriptAfterPointer:: ds 2
 wRunningTrainerBattleScript:: ds 1
 MenuItemsListEnd::
 wTempTrainerHeaderEnd::
+
 wPlayerTurningDirection:: ds 1
-	ds 23
+wStashedTextPointer:: ds 2
+	ds 21
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1::
@@ -2010,44 +2016,32 @@ wSavedAtLeastOnce:: ds 1
 wSpawnAfterChampion:: ds 1
 
 ; init time set at newgame
-StartDay::
-	ds 1
-StartHour::
-	ds 1
-StartMinute::
-	ds 1
-StartSecond::
-	ds 1
+StartDay:: ds 1
+StartHour:: ds 1
+StartMinute:: ds 1
+StartSecond:: ds 1
 
-wRTC::
-	ds 8
-wDST::
-	ds 1
+GameSaveTime:: ds 8 ; in-game wall clock time at save
+wDST:: ds 1
 
-GameTimeCap::
-	ds 1
-GameTimeHours::
-	ds 2
-GameTimeMinutes::
-	ds 1
-GameTimeSeconds::
-	ds 1
-GameTimeFrames::
-	ds 1
+GameTimeCap:: ds 1 ; flag for timer hitting 999:59:59.00
+GameTimeHours:: ds 2
+GameTimeMinutes:: ds 1
+GameTimeSeconds:: ds 1
+GameTimeFrames:: ds 1
 
-CurDay::
-	ds 1
+CurDay:: ds 1
 
-;; Kroc - noRTC Patch
-;; backup of the fake RTC's contents
+; do not talk to the RTC hardware in the no-RTC patch
 if DEF(NO_RTC)
 wNoRTC::
-wNoRTCDayHi:: ds 1   ;; = hRTCDayHi
-wNoRTCDayLo:: ds 1   ;; = hRTCDayLo
-wNoRTCHours:: ds 1   ;; = hRTCHours
-wNoRTCMinutes:: ds 1 ;; = hRTCMinutes
-wNoRTCSeconds:: ds 1 ;; = hRTCSeconds
+wNoRTCDayHi::   ds 1 ; copied to hRTCDayHi
+wNoRTCDayLo::   ds 1 ; copied to hRTCDayLo
+wNoRTCHours::   ds 1 ; copied to hRTCHours
+wNoRTCMinutes:: ds 1 ; copied to hRTCMinutes
+wNoRTCSeconds:: ds 1 ; copied to hRTCSeconds
 else
+; reserve equal space in RTC versions so that saved games remain compatible
 	ds 5
 endc
 

@@ -1,17 +1,34 @@
-const_value set 2
-	const CELADONUNIVERSITYCLASSROOM2_BLANCHE
-	const CELADONUNIVERSITYCLASSROOM2_TEACHER
-	const CELADONUNIVERSITYCLASSROOM2_YOUNGSTER
-	const CELADONUNIVERSITYCLASSROOM2_CHILD
-	const CELADONUNIVERSITYCLASSROOM2_LADY
-	const CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M
-
 CeladonUniversityClassroom2_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CeladonUniversityClassroom2_MapEventHeader:
+
+.Warps: db 2
+	warp_def $b, $2, 7, CELADON_UNIVERSITY_1F
+	warp_def $b, $3, 7, CELADON_UNIVERSITY_1F
+
+.XYTriggers: db 0
+
+.Signposts: db 5
+	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
+	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
+	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
+	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf1
+	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf2
+
+.PersonEvents: db 5
+	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1
+	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2BlancheScript, EVENT_CELADON_UNIVERSITY_BLANCHE
+	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, EVENT_SHAMOUTI_COAST_BLANCHE
+	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2YoungsterScript, -1
+	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2ChildScript, -1
+	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2LadyScript, -1
+
+const_value set 2
+	const CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M
 
 CeladonUniversityClassroom2BlancheScript:
 	jumptextfaceplayer .Text
@@ -162,29 +179,3 @@ CeladonUniversityClassroom2Bookshelf2:
 	cont "the 1980s."
 	cont "Heavy!"
 	done
-
-CeladonUniversityClassroom2_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $b, $2, 7, CELADON_UNIVERSITY_1F
-	warp_def $b, $3, 7, CELADON_UNIVERSITY_1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 5
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf2
-
-.PersonEvents:
-	db 5
-	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2BlancheScript, EVENT_CELADON_UNIVERSITY_BLANCHE
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, EVENT_SHAMOUTI_COAST_BLANCHE
-	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2YoungsterScript, -1
-	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2ChildScript, -1
-	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2LadyScript, -1
-	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1

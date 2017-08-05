@@ -1,22 +1,54 @@
+VermilionGym_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, VermilionGymDoorsScript
+
+VermilionGym_MapEventHeader:
+
+.Warps: db 2
+	warp_def $11, $4, 7, VERMILION_CITY
+	warp_def $11, $5, 7, VERMILION_CITY
+
+.XYTriggers: db 0
+
+.Signposts: db 17
+	signpost 7, 1, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 7, 3, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 7, 5, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 7, 7, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 7, 9, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 9, 1, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 9, 3, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 9, 5, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 9, 7, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 9, 9, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 11, 1, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 11, 3, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 11, 5, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 11, 7, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 11, 9, SIGNPOST_READ, VermilionGymTrashCanScript
+	signpost 15, 3, SIGNPOST_READ, VermilionGymStatue
+	signpost 15, 6, SIGNPOST_READ, VermilionGymStatue
+
+.PersonEvents: db 10
+	person_event SPRITE_ELECTRIC_FENCE_LEFT, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE_LEFT, 4, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 4, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_SURGE, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SurgeScript_0x1920a5, -1
+	person_event SPRITE_GENTLEMAN, 8, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGregory, -1
+	person_event SPRITE_ROCKER, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmVincent, -1
+	person_event SPRITE_SUPER_NERD, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerJugglerHorton, -1
+	person_event SPRITE_COOLTRAINER_F, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristfJanet, -1
+	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, VermilionGymGuyScript, -1
+
 const_value set 2
-	const VERMILIONGYM_SURGE
-	const VERMILIONGYM_GENTLEMAN
-	const VERMILIONGYM_ROCKER
-	const VERMILIONGYM_SUPER_NERD
-	const VERMILIONGYM_COOLTRAINER_F
-	const VERMILIONGYM_GYM_GUY
 	const VERMILIONGYM_FENCE_1_LEFT
 	const VERMILIONGYM_FENCE_1_RIGHT
 	const VERMILIONGYM_FENCE_2_LEFT
 	const VERMILIONGYM_FENCE_2_RIGHT
-
-VermilionGym_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_TILES, VermilionGymDoorsScript
 
 VermilionGymDoorsScript:
 	checkevent EVENT_VERMILION_GYM_SWITCH_2
@@ -417,48 +449,6 @@ VermilionGymElectricFenceText:
 	text "An electric fence!"
 	line "Don't touch it!"
 	done
-
-VermilionGym_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $11, $4, 7, VERMILION_CITY
-	warp_def $11, $5, 7, VERMILION_CITY
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 17
-	signpost 7, 1, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 7, 3, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 7, 5, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 7, 7, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 7, 9, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 9, 1, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 9, 3, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 9, 5, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 9, 7, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 9, 9, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 11, 1, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 11, 3, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 11, 5, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 11, 7, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 11, 9, SIGNPOST_READ, VermilionGymTrashCanScript
-	signpost 15, 3, SIGNPOST_READ, VermilionGymStatue
-	signpost 15, 6, SIGNPOST_READ, VermilionGymStatue
-
-.PersonEvents:
-	db 10
-	person_event SPRITE_SURGE, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SurgeScript_0x1920a5, -1
-	person_event SPRITE_GENTLEMAN, 8, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGregory, -1
-	person_event SPRITE_ROCKER, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmVincent, -1
-	person_event SPRITE_SUPER_NERD, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerJugglerHorton, -1
-	person_event SPRITE_COOLTRAINER_F, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristfJanet, -1
-	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, VermilionGymGuyScript, -1
-	person_event SPRITE_ELECTRIC_FENCE_LEFT, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_ELECTRIC_FENCE_LEFT, 4, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
-	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 4, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
 
 ; Vermilion Gym trash can code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/maps/VermilionGym.asm

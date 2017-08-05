@@ -29,14 +29,14 @@ FindItemInBallScript:: ; 0x122ce
 .TryReceiveItem: ; 122f8
 	xor a
 	ld [ScriptVar], a
-	ld a, [EngineBuffer1]
+	ld a, [CurItemBallContents]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld hl, StringBuffer3
 	call CopyName2
-	ld a, [EngineBuffer1]
+	ld a, [CurItemBallContents]
 	ld [CurItem], a
-	ld a, [CurFruit]
+	ld a, [CurItemBallQuantity]
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, NumItems
 	call ReceiveItem
@@ -65,7 +65,7 @@ FindTMHMInBallScript::
 .ReceiveTMHM:
 	xor a
 	ld [ScriptVar], a
-	ld a, [EngineBuffer1]
+	ld a, [CurItemBallContents]
 	ld [wNamedObjectIndexBuffer], a
 	call GetTMHMName
 	ld hl, StringBuffer3
@@ -86,7 +86,7 @@ FindTMHMInBallScript::
 	ld [hli], a
 	call CopyName2
 
-	ld a, [EngineBuffer1]
+	ld a, [CurItemBallContents]
 	ld [CurTMHM], a
 	call ReceiveTMHM
 	ld a, $1

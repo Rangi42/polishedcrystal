@@ -1,18 +1,31 @@
+DragonShrine_MapScriptHeader:
+
+.MapTriggers: db 1
+	dw DragonShrineTrigger0
+
+.MapCallbacks: db 0
+
+DragonShrine_MapEventHeader:
+
+.Warps: db 2
+	warp_def $9, $4, 2, DRAGONS_DEN_B1F
+	warp_def $9, $5, 2, DRAGONS_DEN_B1F
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 4
+	person_event SPRITE_ELDER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d1a5, EVENT_GAVE_KURT_APRICORNS
+	person_event SPRITE_CLAIR, 8, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
+	person_event SPRITE_ELDER, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d205, EVENT_GAVE_KURT_APRICORNS
+	person_event SPRITE_ELDER, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d20d, EVENT_GAVE_KURT_APRICORNS
+
 const_value set 2
 	const DRAGONSHRINE_ELDER1
-	const DRAGONSHRINE_ELDER2
-	const DRAGONSHRINE_ELDER3
 	const DRAGONSHRINE_CLAIR
 
-DragonShrine_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
-
-.MapCallbacks:
-	db 0
-
-.Trigger0:
+DragonShrineTrigger0:
 	priorityjump DragonShrineTestScript
 	end
 
@@ -667,22 +680,3 @@ UnknownText_0x18da0b:
 UnknownText_0x18dab4:
 	text "………………………………"
 	done
-
-DragonShrine_MapEventHeader:
-.Warps:
-	db 2
-	warp_def $9, $4, 2, DRAGONS_DEN_B1F
-	warp_def $9, $5, 2, DRAGONS_DEN_B1F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_ELDER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d1a5, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_ELDER, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d205, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_ELDER, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d20d, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_CLAIR, 8, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR

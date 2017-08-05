@@ -1,13 +1,33 @@
 RuinsofAlphHoOhChamber_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw RuinsofAlphHoOhChamberTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x5857c
 
-.Trigger0:
+RuinsofAlphHoOhChamber_MapEventHeader:
+
+.Warps: db 5
+	warp_def $9, $3, 1, RUINS_OF_ALPH_OUTSIDE
+	warp_def $9, $4, 1, RUINS_OF_ALPH_OUTSIDE
+	warp_def $3, $3, 2, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $3, $4, 3, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def $0, $4, 1, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 6
+	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphHoOhChamberSignpost1Script
+	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphHoOhChamberSignpost1Script
+	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
+	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost3Script
+	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
+	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost5Script
+
+.PersonEvents: db 0
+
+RuinsofAlphHoOhChamberTrigger0:
 	special SpecialHoOhChamber
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	iffalse .End
@@ -133,27 +153,3 @@ UnknownText_0x586aa:
 	para "rainbow-colored"
 	line "wings."
 	done
-
-RuinsofAlphHoOhChamber_MapEventHeader:
-.Warps:
-	db 5
-	warp_def $9, $3, 1, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 1, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 2, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 3, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphHoOhChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphHoOhChamberSignpost1Script
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost5Script
-
-.PersonEvents:
-	db 0

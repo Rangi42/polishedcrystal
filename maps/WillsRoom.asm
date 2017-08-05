@@ -1,16 +1,26 @@
-const_value set 2
-	const WILLSROOM_WILL
-
 WillsRoom_MapScriptHeader:
-.MapTriggers:
-	db 1
-	dw .Trigger0
 
-.MapCallbacks:
-	db 1
+.MapTriggers: db 1
+	dw WillsRoomTrigger0
+
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_TILES, UnknownScript_0x1804cb
 
-.Trigger0:
+WillsRoom_MapEventHeader:
+
+.Warps: db 3
+	warp_def $11, $5, 4, INDIGO_PLATEAU_POKECENTER_1F
+	warp_def $2, $4, 1, KOGAS_ROOM
+	warp_def $2, $5, 2, KOGAS_ROOM
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 1
+	person_event SPRITE_WILL, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, WillScript_0x1804f8, -1
+
+WillsRoomTrigger0:
 	priorityjump UnknownScript_0x1804e0
 	end
 
@@ -172,20 +182,3 @@ WillAfterRematchText:
 	line "about losing"
 	cont "this way."
 	done
-
-WillsRoom_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $11, $5, 4, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def $2, $4, 1, KOGAS_ROOM
-	warp_def $2, $5, 2, KOGAS_ROOM
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 1
-	person_event SPRITE_WILL, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, WillScript_0x1804f8, -1

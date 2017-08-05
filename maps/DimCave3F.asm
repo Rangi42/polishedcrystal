@@ -1,24 +1,42 @@
+DimCave3F_MapScriptHeader:
+
+.MapTriggers: db 0
+
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_TILES, DimCave3FBouldersLand
+	dbw MAPCALLBACK_CMDQUEUE, DimCave3FSetUpStoneTable
+
+DimCave3F_MapEventHeader:
+
+.Warps: db 6
+	warp_def $5, $5, 4, DIM_CAVE_4F
+	warp_def $16, $1c, 5, DIM_CAVE_4F
+	warp_def $a, $f, 6, DIM_CAVE_4F ; hole
+	warp_def $5, $1d, 2, DIM_CAVE_2F
+	warp_def $19, $1b, 3, DIM_CAVE_2F
+	warp_def $15, $e, 4, DIM_CAVE_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 2
+	signpost 5, 2, SIGNPOST_ITEM, DimCave3FHiddenStarPiece
+	signpost 6, 26, SIGNPOST_ITEM, DimCave3FHiddenZinc
+
+.PersonEvents: db 9
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FBoulder, EVENT_BOULDER_IN_DIM_CAVE_3F
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
+	person_event SPRITE_ENGINEER, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
+	person_event SPRITE_BLACK_BELT, 11, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
+	person_event SPRITE_POKEFAN_M, 27, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
+	person_event SPRITE_POKEFAN_M, 22, 25, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, METAL_COAT, 1, EVENT_DIM_CAVE_3F_METAL_COAT
+	person_event SPRITE_BALL_CUT_FRUIT, 9, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, LIGHT_CLAY, 1, EVENT_DIM_CAVE_3F_LIGHT_CLAY
+	person_event SPRITE_BALL_CUT_FRUIT, 29, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
+
 const_value set 2
 	const DIMCAVE3F_BOULDER
-	const DIMCAVE3F_FALLEN_BOULDER
-	const DIMCAVE3F_ENGINEER
-	const DIMCAVE3F_BLACK_BELT
-	const DIMCAVE3F_POKEFAN_M1
-	const DIMCAVE3F_POKEFAN_M2
-	const DIMCAVE3F_POKE_BALL1
-	const DIMCAVE3F_POKE_BALL2
-	const DIMCAVE3F_POKE_BALL3
 
-DimCave3F_MapScriptHeader:
-.MapTriggers:
-	db 0
-
-.MapCallbacks:
-	db 2
-	dbw MAPCALLBACK_TILES, .BouldersLand
-	dbw MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
-
-.BouldersLand:
+DimCave3FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
 	iftrue .skip
 	changeblock $e, $8, $c7
@@ -26,7 +44,7 @@ DimCave3F_MapScriptHeader:
 .skip
 	return
 
-.SetUpStoneTable:
+DimCave3FSetUpStoneTable:
 	writecmdqueue .CommandQueue
 	return
 
@@ -36,7 +54,7 @@ DimCave3F_MapScriptHeader:
 
 .StoneTable:
 	stonetable 6, DIMCAVE3F_BOULDER, .Boulder
-	db -1
+	db -1 ; end
 
 .Boulder:
 	disappear DIMCAVE3F_BOULDER
@@ -193,47 +211,8 @@ DimCave3FFallenBoulderScript:
 DimCave3FBoulder:
 	jumpstd strengthboulder
 
-DimCave3FMetalCoat:
-	itemball METAL_COAT
-
-DimCave3FLightClay:
-	itemball LIGHT_CLAY
-
-DimCave3FEscapeRope:
-	itemball ESCAPE_ROPE
-
 DimCave3FHiddenStarPiece:
 	dwb EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE, STAR_PIECE
 
 DimCave3FHiddenZinc:
 	dwb EVENT_DIM_CAVE_3F_HIDDEN_ZINC, ZINC
-
-DimCave3F_MapEventHeader:
-.Warps:
-	db 6
-	warp_def $5, $5, 4, DIM_CAVE_4F
-	warp_def $16, $1c, 5, DIM_CAVE_4F
-	warp_def $a, $f, 6, DIM_CAVE_4F ; hole
-	warp_def $5, $1d, 2, DIM_CAVE_2F
-	warp_def $19, $1b, 3, DIM_CAVE_2F
-	warp_def $15, $e, 4, DIM_CAVE_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 2
-	signpost 5, 2, SIGNPOST_ITEM, DimCave3FHiddenStarPiece
-	signpost 6, 26, SIGNPOST_ITEM, DimCave3FHiddenZinc
-
-.PersonEvents:
-	db 9
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FBoulder, EVENT_BOULDER_IN_DIM_CAVE_3F
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
-	person_event SPRITE_ENGINEER, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
-	person_event SPRITE_BLACK_BELT, 11, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
-	person_event SPRITE_POKEFAN_M, 27, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
-	person_event SPRITE_POKEFAN_M, 22, 25, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave3FMetalCoat, EVENT_DIM_CAVE_3F_METAL_COAT
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave3FLightClay, EVENT_DIM_CAVE_3F_LIGHT_CLAY
-	person_event SPRITE_BALL_CUT_FRUIT, 29, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DimCave3FEscapeRope, EVENT_DIM_CAVE_3F_ESCAPE_ROPE

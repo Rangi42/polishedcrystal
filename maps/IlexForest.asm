@@ -1,35 +1,61 @@
+IlexForest_MapScriptHeader:
+
+.MapTriggers: db 2
+	dw IlexForestTrigger0
+	dw IlexForestTrigger1
+
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
+
+IlexForest_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $3, 3, ROUTE_34_ILEX_FOREST_GATE
+	warp_def $2c, $5, 1, ILEX_FOREST_AZALEA_GATE
+	warp_def $2d, $5, 2, ILEX_FOREST_AZALEA_GATE
+
+.XYTriggers: db 0
+
+.Signposts: db 8
+	signpost 19, 5, SIGNPOST_READ, MapIlexForestSignpost0Script
+	signpost 9, 13, SIGNPOST_ITEM, IlexForestHiddenEther
+	signpost 16, 24, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
+	signpost 19, 3, SIGNPOST_ITEM, IlexForestHiddenFullHeal
+	signpost 9, 20, SIGNPOST_READ, MapIlexForestMossRockScript
+	signpost 24, 10, SIGNPOST_UP, MapIlexForestSignpost4Script
+	signpost 24, 25, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf1
+	signpost 8, 19, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
+
+.PersonEvents: db 14
+	person_event SPRITE_FARFETCH_D, 33, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
+	person_event SPRITE_BLACK_BELT, 30, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
+	person_event SPRITE_KURT, 31, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_KURT
+	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestLassScript, EVENT_ILEX_FOREST_LASS
+	person_event SPRITE_CELEBI, 26, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
+	person_event SPRITE_LYRA, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA
+	person_event SPRITE_BALL_CUT_FRUIT, 27, 10, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCutTree, EVENT_ILEX_FOREST_CUT_TREE
+	person_event SPRITE_YOUNGSTER, 30, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
+	person_event SPRITE_ROCKER, 16, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestHeadbuttGuyScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 34, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_ILEX_FOREST_REVIVE
+	person_event SPRITE_BUG_CATCHER, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 0, TrainerBug_catcherWayne, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 19, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_ATTACK, 1, EVENT_ILEX_FOREST_X_ATTACK
+	person_event SPRITE_BALL_CUT_FRUIT, 17, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
+	person_event SPRITE_BALL_CUT_FRUIT, 3, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MULCH, 1, EVENT_ILEX_FOREST_MULCH
+
 const_value set 2
-	const ILEXFOREST_CUT_TREE
 	const ILEXFOREST_FARFETCHD
-	const ILEXFOREST_YOUNGSTER
 	const ILEXFOREST_BLACK_BELT
-	const ILEXFOREST_ROCKER
-	const ILEXFOREST_POKE_BALL1
 	const ILEXFOREST_KURT
 	const ILEXFOREST_LASS
-	const ILEXFOREST_BUG_CATCHER
-	const ILEXFOREST_POKE_BALL2
-	const ILEXFOREST_POKE_BALL3
-	const ILEXFOREST_POKE_BALL4
 	const ILEXFOREST_CELEBI
 	const ILEXFOREST_LYRA
 
-IlexForest_MapScriptHeader:
-.MapTriggers:
-	db 2
-	dw .Trigger0
-	dw .Trigger1
-
-.MapCallbacks:
-	db 1
-	dbw MAPCALLBACK_OBJECTS, .FarfetchdCallback
-
-.Trigger1:
+IlexForestTrigger1:
 	priorityjump IlexForestFinishCelebiEventScript
-.Trigger0:
+IlexForestTrigger0:
 	end
 
-.FarfetchdCallback:
+IlexForestFarfetchdCallback:
 	checkevent EVENT_GOT_HM01_CUT
 	iftrue .Static
 	copybytetovar FarfetchdPosition
@@ -480,18 +506,6 @@ Bug_catcherWayneScript:
 
 IlexForestLassScript:
 	jumptextfaceplayer Text_IlexForestLass
-
-IlexForestRevive:
-	itemball REVIVE
-
-IlexForestXAttack:
-	itemball X_ATTACK
-
-IlexForestAntidote:
-	itemball ANTIDOTE
-
-IlexForestMulch:
-	itemball MULCH
 
 IlexForestHiddenEther:
 	dwb EVENT_ILEX_FOREST_HIDDEN_ETHER, ETHER
@@ -1287,41 +1301,3 @@ Bug_catcherWayneAfterText:
 	line "Headbutt in other"
 	cont "places too."
 	done
-
-IlexForest_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $3, 3, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $2c, $5, 1, ILEX_FOREST_AZALEA_GATE
-	warp_def $2d, $5, 2, ILEX_FOREST_AZALEA_GATE
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 8
-	signpost 19, 5, SIGNPOST_READ, MapIlexForestSignpost0Script
-	signpost 9, 13, SIGNPOST_ITEM, IlexForestHiddenEther
-	signpost 16, 24, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
-	signpost 19, 3, SIGNPOST_ITEM, IlexForestHiddenFullHeal
-	signpost 9, 20, SIGNPOST_READ, MapIlexForestMossRockScript
-	signpost 24, 10, SIGNPOST_UP, MapIlexForestSignpost4Script
-	signpost 24, 25, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf1
-	signpost 8, 19, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
-
-.PersonEvents:
-	db 14
-	person_event SPRITE_BALL_CUT_FRUIT, 27, 10, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCutTree, EVENT_ILEX_FOREST_CUT_TREE
-	person_event SPRITE_FARFETCH_D, 33, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
-	person_event SPRITE_YOUNGSTER, 30, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
-	person_event SPRITE_BLACK_BELT, 30, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
-	person_event SPRITE_ROCKER, 16, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestHeadbuttGuyScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IlexForestRevive, EVENT_ILEX_FOREST_REVIVE
-	person_event SPRITE_KURT, 31, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_KURT
-	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestLassScript, EVENT_ILEX_FOREST_LASS
-	person_event SPRITE_BUG_CATCHER, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 0, TrainerBug_catcherWayne, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IlexForestXAttack, EVENT_ILEX_FOREST_X_ATTACK
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IlexForestAntidote, EVENT_ILEX_FOREST_ANTIDOTE
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IlexForestMulch, EVENT_ILEX_FOREST_MULCH
-	person_event SPRITE_CELEBI, 26, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
-	person_event SPRITE_LYRA, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA

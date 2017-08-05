@@ -1,18 +1,25 @@
-const_value set 2
-	const CHERRYGROVEBAY_HIKER1
-	const CHERRYGROVEBAY_HIKER2
-	const CHERRYGROVEBAY_FISHER
-	const CHERRYGROVEBAY_SWIMMER_GUY
-	const CHERRYGROVEBAY_SWIMMER_GIRL1
-	const CHERRYGROVEBAY_SWIMMER_GIRL2
-	const CHERRYGROVEBAY_POKE_BALL
-
 CherrygroveBay_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+CherrygroveBay_MapEventHeader:
+
+.Warps: db 0
+
+.XYTriggers: db 0
+
+.Signposts: db 0
+
+.PersonEvents: db 7
+	person_event SPRITE_POKEFAN_M, 20, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
+	person_event SPRITE_POKEFAN_M, 10, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
+	person_event SPRITE_FISHER, 21, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 2, CherrygroveBayFisherScript, -1
+	person_event SPRITE_GUIDE_GENT, 30, 8, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermThomas, -1
+	person_event SPRITE_SWIMMER_GIRL, 10, 7, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
+	person_event SPRITE_SWIMMER_GIRL, 27, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 12, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
 
 CherrygroveBayHikerScript:
 	faceplayer
@@ -181,9 +188,6 @@ CherrygroveBayFisherScript:
 	line "I fish."
 	done
 
-CherrygroveBayShinyStone:
-	itemball SHINY_STONE
-
 CherrygroveBayHikerText:
 	text "I don't believe in"
 	line "legendary #mon"
@@ -228,23 +232,3 @@ Text_CherrygroveBayTutorTaught:
 	line "knows how to use"
 	cont "Earth Power."
 	done
-
-CherrygroveBay_MapEventHeader:
-.Warps:
-	db 0
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 0
-
-.PersonEvents:
-	db 7
-	person_event SPRITE_POKEFAN_M, 20, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
-	person_event SPRITE_POKEFAN_M, 10, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
-	person_event SPRITE_FISHER, 21, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 2, CherrygroveBayFisherScript, -1
-	person_event SPRITE_GUIDE_GENT, 30, 8, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermThomas, -1
-	person_event SPRITE_SWIMMER_GIRL, 10, 7, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
-	person_event SPRITE_SWIMMER_GIRL, 27, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CherrygroveBayShinyStone, EVENT_CHERRYGROVE_BAY_SHINY_STONE

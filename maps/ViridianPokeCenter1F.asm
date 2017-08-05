@@ -1,15 +1,26 @@
-const_value set 2
-	const VIRIDIANPOKECENTER1F_NURSE
-	const VIRIDIANPOKECENTER1F_COOLTRAINER_M
-	const VIRIDIANPOKECENTER1F_COOLTRAINER_F
-	const VIRIDIANPOKECENTER1F_BUG_CATCHER
-
 ViridianPokeCenter1F_MapScriptHeader:
-.MapTriggers:
-	db 0
 
-.MapCallbacks:
-	db 0
+.MapTriggers: db 0
+
+.MapCallbacks: db 0
+
+ViridianPokeCenter1F_MapEventHeader:
+
+.Warps: db 3
+	warp_def $7, $5, 5, VIRIDIAN_CITY
+	warp_def $7, $6, 5, VIRIDIAN_CITY
+	warp_def $7, $0, 1, POKECENTER_2F
+
+.XYTriggers: db 0
+
+.Signposts: db 1
+	signpost 1, 10, SIGNPOST_READ, PokemonJournalBlueScript
+
+.PersonEvents: db 4
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9b690, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9b693, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9b6a7, -1
+	person_event SPRITE_BUG_CATCHER, 6, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9b6aa, -1
 
 NurseScript_0x9b690:
 	jumpstd pokecenternurse
@@ -85,24 +96,3 @@ PokemonJournalBlueText:
 	para "every year in the"
 	line "House of Memories."
 	done
-
-ViridianPokeCenter1F_MapEventHeader:
-.Warps:
-	db 3
-	warp_def $7, $5, 5, VIRIDIAN_CITY
-	warp_def $7, $6, 5, VIRIDIAN_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
-
-.XYTriggers:
-	db 0
-
-.Signposts:
-	db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalBlueScript
-
-.PersonEvents:
-	db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9b690, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9b693, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x9b6a7, -1
-	person_event SPRITE_BUG_CATCHER, 6, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x9b6aa, -1
