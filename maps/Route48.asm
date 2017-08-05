@@ -48,7 +48,7 @@ Route48JessieJamesScript:
 	loadtrainer JESSIE_JAMES, 1
 	startbattle
 	dontrestartmapmusic
-	reloadmap
+	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	opentext

@@ -113,8 +113,9 @@ SailorScript_0x755f1:
 	writetext UnknownText_0x75812
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x75897, 0
+	winlosstext UnknownText_0x75897, UnknownText_0x75897
 	loadtrainer SAILOR, STANLY
+	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	reloadmap
 	special HealParty
