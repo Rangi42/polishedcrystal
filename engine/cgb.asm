@@ -93,6 +93,9 @@ _CGB_BattleColors: ; 8ddb
 
 	call GetEnemyFrontpicPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+	ld a, [TempEnemyMonSpecies]
+	and a
+	jr z, .trainer_sprite
 	push de
 	; hl = DVs
 	farcall GetEnemyMonDVs
@@ -104,6 +107,7 @@ _CGB_BattleColors: ; 8ddb
 	ld hl, UnknBGPals + 1 palettes + 2
 	call VaryColorsByDVs
 	pop de
+.trainer_sprite
 
 	ld a, [EnemyHPPal]
 	ld l, a
