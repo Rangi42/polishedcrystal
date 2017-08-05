@@ -1,0 +1,165 @@
+# Changelog
+
+These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
+
+* Add: Medicine and Berry pockets in the Bag.
+* Add: Store up to 20 phone numbers in Pokégear.
+* Add: Always keep the option to Teleport away from Indigo Plateau.
+* Add: Portrait for the meteorite in Pewter Museum.
+* Add: Special sprite for Red's Pikachu.
+* Add: Johto and Kanto forms for Arbok.
+* Add: Drain Kiss drains 75% HP.
+* Add: Update Pokémon, move, and item attributes to Gen VII:
+   * Super Potion heals 60 HP.
+   * Hyper Potion heals 120 HP and costs ¥1500.
+   * Fresh Water heals 30 HP.
+   * Soda Pop heals 50 HP.
+   * Lemonade heals 70 HP and costs ¥400.
+   * X items sharply raise stats and cost twice as much.
+   * Tackle has 40 power.
+   * Sucker Punch has 70 power.
+   * Leech Life has 80 power and 10 PP.
+   * Thunder Wave has 90% accuracy.
+   * Swagger has 85% accuracy.
+   * Paralysis halves (not quarters) Speed.
+   * Burn does 1/16 (not 1/8) damage per turn.
+   * Confusion has a 33% chance (not 50%) to hit self.
+   * Gengar has the ability Cursed Body. (Can also have Levitate in non-Faithful.)
+   * Raikou, Entei, and Suicune have the hidden ability Inner Focus. (Faithful only.)
+   * New item: Protect Pads (abbreviated "Protective Pads"). "Protect the holder from effects caused by making direct contact with the target."
+   * Paralysis halves Speed.
+   * Timer Ball catch rate multiplier is 1 + (turns passed * 3) / 10.
+   * Nest Ball catch rate multiplier is (41 − enemy mon level) / 5.
+* Add: Flash is required to return Falkner to the Gym.
+* Add: Replace Spike Cannon with Icicle Spear.
+* Add: Replace Twineedle with U-turn.
+* Add: Replace Whirlwind with Sucker Punch.
+* Add: Replace Vital Throw with Aura Sphere.
+* Add: Replace Nightmare with Facade.
+* Add: Replace Submission with Close Combat.
+* Add: Replace Sand-Attack with Toxic Spikes.
+* Add: Replace Fairy Wind with Bulldoze.
+* Add: Replace Metal Sound with Roost.
+* Add: Replace Sky Attack with Brave Bird.
+* Add: Replace Twister with Aqua Jet.
+* Add: Replace Sludge with Venoshock.
+* Add: Replace Egg Bomb with Skill Swap.
+* Add: Giga Impact.
+* Add: NPC trainers can have nicknamed Pokémon.
+* Add: NPC trainers can have custom EVs.
+* Add: Accuracy and evasion work like in Gen VI.
+* Add: Substitute blocks sound-based moves.
+* Add: Gen III critical hit mechanics (ignore -Atk and +Def stat changes, don't ignore burn).
+* Add: Grass-type Pokémon are immune to PoisonPowder, Stun Spore, Sleep Powder, and Spore.
+* Add: Marowak is Ground/Ghost.
+* Add: Charizard is Fire/Dragon.
+* Add: Yanma is Bug/Dragon.
+* Add: Ampharos is Electric/Dragon.
+* Add: Noctowl is Ghost/Flying.
+* Add: Politoed can learn Energy Ball.
+* Add: Pidgeot can learn Focus Blast.
+* Add: Misdreavus can learn Disarm Voice.
+* Add: Espeon can learn Power Gem.
+* Add: Dig has 90 BP.
+* Add: Give in-game trades good natures.
+* Add: TM prices from OR/AS.
+* Add: Show quantity in Bag in marts.
+* Add: Get a free Premier Ball with every 10 Balls bought.
+* Add: Show Pokémon portraits when using field moves (thanks to TPP:AC).
+* Add: Time boundaries from HG/SS (day lasts until 8 PM, not 6 PM).
+* Add: Use DVs to vary Pokémon colors like in Stadium.
+* Add: Update random Wonder Trade OT names.
+* Add: Rock Smash has 60 power (non-Faithful).
+* Add: Strength is Fighting-type (non-Faithful).
+* Add: Submission has 120 power (non-Faithful).
+* Add: Trainers have max happiness for Return.
+* Add: 1/2048 chance for Wonder Traded Pokémon to have Pokérus.
+* Add: Buy 12 Moomoo Milk at once.
+* Add: Show TM names before buying them and when picking them up.
+* Add: Say which pocket is full if an item can't be picked up.
+* Add: Use Yellow's encounter music for Jessie & James.
+* Add: Large red Gyarados sprite.
+* Add: Route 23 between Pokémon League Gate and Victory Road.
+* Add: Oak's lab looks different from Elm's lab.
+* Add: Grass-green for Faraway Island.
+* Add: TM prices from OR/AS.
+* Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
+* Add: Update random Wonder Trade OT names.
+* Add: Use original Jynx sprite.
+* Add: Make overworld sprites darker at night.
+* Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
+* Add: Olivine Gym has its two trainers from HGSS.
+* Add: Unlock frame type 9.
+* Add: Choose a typeface/font.
+* Add: XY Bicycle music for Cycling Road.
+* Add: Prof.Oak gives you the Oval Charm for seeing all 253 Pokémon, and the Shiny Charm for catching all 253.
+* Add: Prof.Elm is in the intro.
+* Add: Cosplayer, Bug Maniac, Ruin Maniac, Lady, Baker, Tamer, Artist, Aroma Lady, Sightseer♂, and Sightseer♀ trainer classes.
+* Add: New Trainer Card based on the Name Cards from the Mobile Adapter system.
+* Add: Show PC box quantity.
+* Add: Pokémon stats show caught Poké Ball.
+* Add: Nest, Net, Dive, Luxury, and Heal Balls.
+* Add: Cerulean Bike Shop from HGSS.
+* Add: Elite 4 rooms have floor arenas.
+* Add: Confirm gender selection.
+* Add: Colored party Pokémon icons.
+* Add: Magikarp Jump patterns.
+* Add: Headbutt trees to get Silver and Gold Leaves.
+* Add: Smash rocks to get various items.
+* Add: Item maniacs from B/W.
+* Add: Fish to get items based on the Rod (Bottle Caps with Super Rod).
+* Add: Mulch regrows Berries.
+* Add: Three battle styles: set, switch, and predict.
+* Add: Battle Scene → Battle Effects.
+* Add: Final Lyra battle.
+* Add: Unown ! and ?.
+* Add: In-battle symbol to show that Nuzlocke mode prevents capture.
+* Add: Status icons in battle.
+* Add: Reset initial options by pressing Left+B at the title screen.
+* Add: Music resumes where it left off after a battle (from TPP).
+* Add: Use a proper menu for resurrecting Fossils.
+* Add: Music player with piano roll by Sanqui.
+* Add: Instant text option.
+* Add: Imperial or metric units.
+* Add: 12-hour or 24-hour clock.
+* Add: Item icons in the Bag.
+* Add: Replace Jigglypuff Poster with Marill Poster.
+* Add: Briefly beep to warn of low HP.
+* Add: Play B/W final Pokémon music for Gym Leaders and Elite 4.
+* Add: New title music after beating the Elite 4.
+* Add: Larger Kanto routes, like in RBY.
+* Add: Proper inverted colors in battle (by MeroMero).
+* Add: Evolution moves from Gen VII.
+* Add: Move Reminder supports pre-evolution and evolution moves.
+* Add: Dark battle intro at night.
+* Add: Show genders in party menu.
+* Add: Vending machines have a 1/32 chance of giving an extra item.
+* Add: Cross whirlpools, don't remove them (like HGSS).
+* Add: Rename RageCandyBar to Cake of Rage.
+* Fix: Lt. Surge's electric fence color does not override speech bubbles.
+* Fix: Zap Cannon has 120 power.
+* Fix: Pay Day pays 5 times the user's level, not 2.
+* Fix: Explosion and Self-Destruct do not halve Defense.
+* Fix: Quick Ball catch rate multiplier is 5 on the first turn.
+* Fix: Minimize raises evasion by two stages.
+* Fix: Munchlax, Magnezone, and Tangrowth have their relatives' cries.
+* Fix: Game console names in room.
+* Fix: Yellow Forest gate clerk does not face you.
+* Fix: Read hidden Ruins of Alph tablet from one direction.
+* Fix: Ice Rock tile collision data.
+* Fix: Adjust some trainer levels and rosters.
+* Fix: Move a trainer in Viridian Gym to prevent getting stuck on spinners.
+* Fix: Fix some sprites.
+* Fix: Sandstorm and Hail double, not halve, Special Defense and Defense.
+* Fix: Enemy Psystrike uses player's Defense.
+* Fix: Sketch fails if user is transformed.
+* Fix: Wild encounter battle transitions correctly depend on relative levels.
+* Fix: Dig and Fly prevent capture.
+* Fix: Yellow Carpet is buyable.
+* Fix: Tangrowth can learn Curse.
+* Fix: Lyra's Bag is the female version.
+* Fix: Incorrect Cowgirl and Misty sprites.
+* Fix: Pokémon caught during the Bug-Catching Contest are recorded as caught in Goldenrod Harbor.
+* Fix: Magnet Train tracks were missing tiles.
+* Fix: Shiny icon is the star from Gen 3+.
+* Fix: SPRITE_DRAGONITE uses Dragonite's side view.
