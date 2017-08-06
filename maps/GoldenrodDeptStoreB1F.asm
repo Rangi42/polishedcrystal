@@ -4,6 +4,7 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 
 .MapCallbacks: db 2
 	dbw MAPCALLBACK_TILES, UnknownScript_0x7d781
+	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
 
 GoldenrodDeptStoreB1F_MapEventHeader:
 
@@ -25,8 +26,6 @@ GoldenrodDeptStoreB1F_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 8, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7d7b3, -1
 	person_event SPRITE_BLACK_BELT, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x7d7b6, -1
 	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MachokeScript_0x7d7b9, -1
-
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
 
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY

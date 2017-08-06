@@ -8479,7 +8479,7 @@ HandleNuzlockeFlags:
 	ret nz
 
 	; Dupes clause: don't count duplicate encounters
-	ld a, [EnemyMonSpecies]
+	ld a, [wEnemyBackupSpecies]
 	dec a
 	call CheckCaughtMon
 	ret nz
