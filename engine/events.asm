@@ -511,11 +511,11 @@ TryObjectEvent: ; 969b5
 	dw .script     ; PERSONTYPE_SCRIPT
 	dw .itemball   ; PERSONTYPE_ITEMBALL
 	dw .tmhmball   ; PERSONTYPE_TMHMBALL
-	dw .trainer    ; PERSONTYPE_TRAINER
-	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 	dw .jumptext   ; PERSONTYPE_JUMPTEXT
 	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
 	dw .jumpstd    ; PERSONTYPE_JUMPSTD
+	dw .trainer    ; PERSONTYPE_TRAINER
+	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 	dw .mart       ; PERSONTYPE_MART
 	dw .pokemon    ; PERSONTYPE_POKEMON
 	dw .npctrade   ; PERSONTYPE_NPCTRADE
