@@ -1,3 +1,11 @@
+# To Do
+
+> You know it's sitting back and looking at it that you realize that Gamefreak is actually really good devs.
+> Like you have Pokemon and it's a simple formula "How can you fuck it up?" and then all of these Romhacks basically go "Like this."
+
+– Anonymous, [/vp/](http://boards.4chan.org/vp/)
+
+
 ## Missing content
 
 The final, non-beta 3.0 release should include all of these.

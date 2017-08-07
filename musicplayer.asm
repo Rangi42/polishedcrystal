@@ -234,11 +234,12 @@ MusicPlayerLoop:
 	ld [rSVBK], a
 
 	call MPUpdateUIAndGetJoypad
+	ld hl, hJoyDown
+	jrheldbutton D_UP, .up, .no_up, 12
+	jrheldbutton D_DOWN, .down, .no_down, 12
+	jrheldbutton D_LEFT, .left, .no_left, 12
+	jrheldbutton D_RIGHT, .right, .no_right, 12
 	ld hl, hJoyPressed
-	jrbutton D_LEFT, .left
-	jrbutton D_RIGHT, .right
-	jrbutton D_DOWN, .down
-	jrbutton D_UP, .up
 	jrbutton A_BUTTON, .a
 	jrbutton B_BUTTON, .b
 	jrbutton START, .start
@@ -249,33 +250,24 @@ MusicPlayerLoop:
 	ld [hBGMapHalf], a
 	jr MusicPlayerLoop
 
-.left:
+.up:
 ; previous song
 	ld a, [wSongSelection]
 	dec a
-	jr nz, _RedrawMusicPlayer
+	jp nz, _RedrawMusicPlayer
 	ld a, NUM_SONGS - 1
-	jr _RedrawMusicPlayer
+	jp _RedrawMusicPlayer
 
-.right:
+.down:
 ; next song
 	ld a, [wSongSelection]
 	inc a
 	cp NUM_SONGS
-	jr nz, _RedrawMusicPlayer
+	jp nz, _RedrawMusicPlayer
 	ld a, 1
-	jr _RedrawMusicPlayer
+	jp _RedrawMusicPlayer
 
-.up:
-; 10 songs ahead
-	ld a, [wSongSelection]
-	add MP_LIST_PAGE_SKIP
-	cp NUM_SONGS
-	jr c, _RedrawMusicPlayer
-	ld a, 1
-	jr _RedrawMusicPlayer
-
-.down:
+.left:
 ; 10 songs back
 	ld a, [wSongSelection]
 	sub MP_LIST_PAGE_SKIP
@@ -284,6 +276,15 @@ MusicPlayerLoop:
 	jp c, _RedrawMusicPlayer
 .zerofix
 	ld a, NUM_SONGS - 1
+	jp _RedrawMusicPlayer
+
+.right:
+; 10 songs ahead
+	ld a, [wSongSelection]
+	add MP_LIST_PAGE_SKIP
+	cp NUM_SONGS
+	jp c, _RedrawMusicPlayer
+	ld a, 1
 	jp _RedrawMusicPlayer
 
 .a:
