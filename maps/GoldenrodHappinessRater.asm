@@ -13,12 +13,12 @@ GoldenrodHappinessRater_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, HappinessRatersHouseRadio
+	signpost 1, 7, SIGNPOST_JUMPSTD, radio2
 
 .PersonEvents: db 3
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x54953, -1
-	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x54997, -1
-	person_event SPRITE_TWIN, 6, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x5499a, -1
+	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x54b04, -1
+	person_event SPRITE_TWIN, 6, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x54b67, -1
 
 TeacherScript_0x54953:
 	faceplayer
@@ -34,49 +34,22 @@ TeacherScript_0x54953:
 	jump UnknownScript_0x54991
 
 UnknownScript_0x54973:
-	writetext UnknownText_0x549fc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x549fc
 
 UnknownScript_0x54979:
-	writetext UnknownText_0x54a2c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54a2c
 
 UnknownScript_0x5497f:
-	writetext UnknownText_0x54a5a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54a5a
 
 UnknownScript_0x54985:
-	writetext UnknownText_0x54a8e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54a8e
 
 UnknownScript_0x5498b:
-	writetext UnknownText_0x54a9f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54a9f
 
 UnknownScript_0x54991:
-	writetext UnknownText_0x54ad1
-	waitbutton
-	closetext
-	end
-
-PokefanMScript_0x54997:
-	jumptextfaceplayer UnknownText_0x54b04
-
-TwinScript_0x5499a:
-	jumptextfaceplayer UnknownText_0x54b67
-
-HappinessRatersHouseRadio:
-	jumpstd radio2
+	jumpopenedtext UnknownText_0x54ad1
 
 UnknownText_0x549a3:
 	text "If you treat your"

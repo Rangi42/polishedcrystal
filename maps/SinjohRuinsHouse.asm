@@ -13,8 +13,8 @@ SinjohRuinsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 0, SIGNPOST_READ, SinjohRuinsHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, SinjohRuinsHouseBookshelf
+	signpost 1, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 4
 	person_event SPRITE_CYNTHIA, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
@@ -86,9 +86,6 @@ SinjohRuinsHouseCynthiaScript:
 	waitbutton
 	closetext
 	end
-
-SinjohRuinsHouseBookshelf:
-	jumpstd difficultbookshelf
 
 SinjohRuinsHousePokefanmText:
 	text "A long time ago,"

@@ -13,8 +13,8 @@ ManiasHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 5, SIGNPOST_READ, ManiasHouseRadio
-	signpost 1, 7, SIGNPOST_READ, ManiasHouseBookshelf
+	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
+	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_ROCKER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
@@ -106,12 +106,6 @@ ManiaScript:
 	waitbutton
 	closetext
 	end
-
-ManiasHouseRadio:
-	jumpstd radio2
-
-ManiasHouseBookshelf:
-	jumpstd picturebookshelf
 
 ManiaText_AskLookAfterWobbuffet:
 	text "I, I'm in shock!"

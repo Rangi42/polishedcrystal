@@ -13,8 +13,8 @@ CianwoodLugiaSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 0, SIGNPOST_READ, CianwoodLugiaSpeechHouseBookshelf
-	signpost 1, 1, SIGNPOST_READ, CianwoodLugiaSpeechHouseBookshelf
+	signpost 1, 0, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 1, 1, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 4
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x9e1b0, -1
@@ -47,9 +47,6 @@ LassScript_0x9e1b3:
 
 TwinScript_0x9e1b6:
 	jumptextfaceplayer UnknownText_0x9e2a9
-
-CianwoodLugiaSpeechHouseBookshelf:
-	jumpstd picturebookshelf
 
 CianwoodHouseBlackBeltText1:
 	text "I went to the Gym"

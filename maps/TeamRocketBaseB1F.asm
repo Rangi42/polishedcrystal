@@ -56,8 +56,8 @@ TeamRocketBaseB1F_MapEventHeader:
 	signpost 15, 8, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	signpost 15, 22, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	signpost 5, 24, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 11, 20, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost7Script
-	signpost 11, 21, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost7Script
+	signpost 11, 20, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 11, 21, SIGNPOST_JUMPSTD, teamrocketoath
 	signpost 11, 3, SIGNPOST_ITEM, TeamRocketBaseB1FHiddenRevive
 
 .PersonEvents: db 6
@@ -573,9 +573,6 @@ GruntM16Script:
 
 MapTeamRocketBaseB1FSignpost5Script:
 	jumptext SecurityCameraText
-
-MapTeamRocketBaseB1FSignpost7Script:
-	jumpstd teamrocketoath
 
 MapTeamRocketBaseB1FSignpost0Script:
 	opentext

@@ -13,7 +13,7 @@ LakeofRageMagikarpHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, MagikarpHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_FISHING_GURU, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x19a6ae, -1
@@ -93,9 +93,6 @@ UnknownScript_0x19a722:
 	waitbutton
 	closetext
 	end
-
-MagikarpHouseBookshelf:
-	jumpstd difficultbookshelf
 
 UnknownText_0x19a72e:
 	text "Lake of Rage is"

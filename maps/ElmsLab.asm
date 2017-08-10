@@ -30,19 +30,19 @@ ElmsLab_MapEventHeader:
 
 .Signposts: db 16
 	signpost 1, 2, SIGNPOST_READ, ElmsLabHealingMachine
-	signpost 1, 6, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 1, 7, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 1, 8, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 1, 9, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 0, SIGNPOST_READ, ElmsLabTravelTip1
-	signpost 7, 1, SIGNPOST_READ, ElmsLabTravelTip2
-	signpost 7, 2, SIGNPOST_READ, ElmsLabTravelTip3
-	signpost 7, 3, SIGNPOST_READ, ElmsLabTravelTip4
-	signpost 7, 6, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 7, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 8, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 7, 9, SIGNPOST_READ, ElmsLabBookshelf
-	signpost 3, 9, SIGNPOST_READ, ElmsLabTrashcan
+	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 0, SIGNPOST_JUMPTEXT, ElmsLabTravelTip1Text
+	signpost 7, 1, SIGNPOST_JUMPTEXT, ElmsLabTravelTip2Text
+	signpost 7, 2, SIGNPOST_JUMPTEXT, ElmsLabTravelTip3Text
+	signpost 7, 3, SIGNPOST_JUMPTEXT, ElmsLabTravelTip4Text
+	signpost 7, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 8, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 9, SIGNPOST_JUMPTEXT, ElmsLabTrashcanText
 	signpost 0, 5, SIGNPOST_READ, ElmsLabWindow
 	signpost 5, 3, SIGNPOST_DOWN, ElmsLabPC
 
@@ -829,26 +829,8 @@ ElmsLabWindow:
 	closetext
 	end
 
-ElmsLabTravelTip1:
-	jumptext ElmsLabTravelTip1Text
-
-ElmsLabTravelTip2:
-	jumptext ElmsLabTravelTip2Text
-
-ElmsLabTravelTip3:
-	jumptext ElmsLabTravelTip3Text
-
-ElmsLabTravelTip4:
-	jumptext ElmsLabTravelTip4Text
-
-ElmsLabTrashcan:
-	jumptext ElmsLabTrashcanText
-
 ElmsLabPC:
 	jumptext ElmsLabPCText
-
-ElmsLabBookshelf:
-	jumpstd difficultbookshelf
 
 ElmsLab_WalkUpToElmMovement:
 	step_up

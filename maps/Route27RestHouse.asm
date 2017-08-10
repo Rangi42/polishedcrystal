@@ -13,7 +13,7 @@ Route27RestHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, RestHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RestHouseWoman, -1
@@ -45,9 +45,6 @@ RestHouseWoman:
 	waitbutton
 	closetext
 	end
-
-RestHouseBookshelf:
-	jumpstd difficultbookshelf
 
 RestHouseWomanText1:
 	text "Where are you off"

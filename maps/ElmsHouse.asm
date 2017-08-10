@@ -13,28 +13,13 @@ ElmsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 1, 0, SIGNPOST_READ, ElmsHouseFridge
-	signpost 1, 6, SIGNPOST_READ, ElmsHousePC
-	signpost 1, 7, SIGNPOST_READ, ElmsHouseBookshelf
+	signpost 1, 0, SIGNPOST_JUMPTEXT, ElmsHouseFridgeText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, ElmsHousePCText
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 2
-	person_event SPRITE_TEACHER, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElmsWife, -1
-	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ElmsSon, -1
-
-ElmsWife:
-	jumptextfaceplayer ElmsWifeText
-
-ElmsSon:
-	jumptextfaceplayer ElmsSonText
-
-ElmsHouseFridge:
-	jumptext ElmsHouseFridgeText
-
-ElmsHousePC:
-	jumptext ElmsHousePCText
-
-ElmsHouseBookshelf:
-	jumpstd difficultbookshelf
+	person_event SPRITE_TEACHER, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, ElmsWifeText, -1
+	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, ElmsSonText, -1
 
 ElmsWifeText:
 	text "Hi, <PLAYER>! My"

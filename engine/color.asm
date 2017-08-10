@@ -753,7 +753,7 @@ LoadMapPals:
 	ld l, a
 	ld h, 0
 rept 3
-	add hl,hl
+	add hl, hl
 endr
 	ld de, .RoofPals
 	add hl, de

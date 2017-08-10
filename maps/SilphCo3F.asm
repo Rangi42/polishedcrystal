@@ -12,14 +12,14 @@ SilphCo3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 2, 3, SIGNPOST_READ, SilphCo3FDeptSign
-	signpost 2, 9, SIGNPOST_READ, SilphCo3FDeptSign
-	signpost 0, 5, SIGNPOST_READ, SilphCo3FElevator
-	signpost 3, 0, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 6, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 7, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 12, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 13, SIGNPOST_READ, SilphCo3FBookshelf
+	signpost 2, 3, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
+	signpost 2, 9, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
+	signpost 0, 5, SIGNPOST_JUMPTEXT, SilphCo3FElevatorText
+	signpost 3, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 12, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 13, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 6
 	person_event SPRITE_SILPH_EMPLOYEE, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo3FSilphEmployeeScript, -1
@@ -64,15 +64,6 @@ SilphCo3FOfficerScript:
 
 SilphCo3FGentlemanScript:
 	jumptextfaceplayer SilphCo3FGentlemanText
-
-SilphCo3FDeptSign:
-	jumptext SilphCo3FDeptSignText
-
-SilphCo3FElevator:
-	jumptext SilphCo3FElevatorText
-
-SilphCo3FBookshelf:
-	jumpstd difficultbookshelf
 
 SilphCo3FSilphEmployeeText1:
 	text "Silph and Devon"

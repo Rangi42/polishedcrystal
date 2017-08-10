@@ -975,7 +975,7 @@ ApplyPitchWheel: ; e84f9
 	ld e, a
 	ld a, d
 	sbc a, 0
-	ld d,a
+	ld d, a
 	; Compare the dw at [Channel*PitchWheelTarget] to de.
 	; If frequency is lower, we're finished.
 	; Otherwise, load the frequency and set two flags.

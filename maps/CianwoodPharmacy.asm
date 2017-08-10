@@ -13,9 +13,9 @@ CianwoodPharmacy_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 1, 5, SIGNPOST_READ, CianwoodPharmacyRadio
-	signpost 1, 6, SIGNPOST_READ, CianwoodPharmacyBookshelf
-	signpost 1, 7, SIGNPOST_READ, CianwoodPharmacyBookshelf
+	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
+	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_PHARMACIST, 3, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
@@ -49,12 +49,6 @@ CianwoodPharmacist:
 	closetext
 	spriteface CIANWOODPHARMACY_PHARMACIST, UP
 	end
-
-CianwoodPharmacyRadio:
-	jumpstd radio2
-
-CianwoodPharmacyBookshelf:
-	jumpstd difficultbookshelf
 
 PharmacistGiveSecretpotionText:
 	text "Your #mon ap-"

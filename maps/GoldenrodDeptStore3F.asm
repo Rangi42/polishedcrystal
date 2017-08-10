@@ -14,32 +14,13 @@ GoldenrodDeptStore3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 14, SIGNPOST_READ, GoldenrodDeptStore3FDirectory
-	signpost 0, 3, SIGNPOST_READ, GoldenrodDeptStore3FElevatorButton
+	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore3FDirectoryText
+	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 3
-	person_event SPRITE_CLERK, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x55db8, -1
-	person_event SPRITE_SUPER_NERD, 5, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x55dc0, -1
-	person_event SPRITE_ROCKER, 5, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockerScript_0x55dc3, -1
-
-ClerkScript_0x55db8:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_3F
-	closetext
-	end
-
-SuperNerdScript_0x55dc0:
-	jumptextfaceplayer UnknownText_0x55dcc
-
-RockerScript_0x55dc3:
-	jumptextfaceplayer UnknownText_0x55e15
-
-GoldenrodDeptStore3FDirectory:
-	jumptext GoldenrodDeptStore3FDirectoryText
-
-GoldenrodDeptStore3FElevatorButton:
-	jumpstd elevatorbutton
+	person_event SPRITE_CLERK, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_STANDARD, MART_GOLDENROD_3F, -1
+	person_event SPRITE_SUPER_NERD, 5, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55dcc, -1
+	person_event SPRITE_ROCKER, 5, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55e15, -1
 
 UnknownText_0x55dcc:
 	text "I, I, I'm really"

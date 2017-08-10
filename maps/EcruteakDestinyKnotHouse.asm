@@ -13,7 +13,7 @@ EcruteakDestinyKnotHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 2, SIGNPOST_READ, DestinyKnotHouseRadio
+	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
 .PersonEvents: db 2
 	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseCooltrainerFScript, -1
@@ -55,9 +55,6 @@ EcruteakDestinyKnotHouseRichBoyScript:
 	waitbutton
 	closetext
 	end
-
-DestinyKnotHouseRadio:
-	jumpstd radio2
 
 EcruteakDestinyKnotHouseCooltrainerFText1:
 	text "Two mighty bird"

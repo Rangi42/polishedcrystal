@@ -22,14 +22,14 @@ TeamRocketBaseB3F_MapEventHeader:
 .Signposts: db 10
 	signpost 9, 10, SIGNPOST_IFNOTSET, BossDoor
 	signpost 9, 11, SIGNPOST_IFNOTSET, BossDoor
-	signpost 1, 10, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 1, 11, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 1, 12, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 1, 13, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 4, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 5, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 6, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 7, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
+	signpost 1, 10, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 1, 11, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 1, 12, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 1, 13, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 4, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 5, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 6, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 7, SIGNPOST_JUMPSTD, teamrocketoath
 
 .PersonEvents: db 14
 	person_event SPRITE_LANCE, 14, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceGetPasswordScript, EVENT_TEAM_ROCKET_BASE_B3F_LANCE_PASSWORDS
@@ -219,9 +219,6 @@ BossDoor:
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	waitsfx
 	end
-
-MapTeamRocketBaseB3FSignpost9Script:
-	jumpstd teamrocketoath
 
 MovementData_0x6e12a:
 	step_right

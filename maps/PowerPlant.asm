@@ -14,8 +14,8 @@ PowerPlant_MapEventHeader:
 	xy_trigger 1, $c, $5, PowerPlantGuardPhoneScript
 
 .Signposts: db 2
-	signpost 1, 0, SIGNPOST_READ, PowerPlantBookshelf
-	signpost 1, 1, SIGNPOST_READ, PowerPlantBookshelf
+	signpost 1, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 7
 	person_event SPRITE_OFFICER, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
@@ -214,9 +214,6 @@ PowerPlantTutorZapCannonScript:
 
 PowerPlantForestScript:
 	jumptextfaceplayer PowerPlantForestText
-
-PowerPlantBookshelf:
-	jumpstd difficultbookshelf
 
 MovementData_0x188ed5:
 	step_right

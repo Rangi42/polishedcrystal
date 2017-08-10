@@ -13,8 +13,8 @@ Route39Farmhouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 6, SIGNPOST_READ, FarmhouseBookshelf
-	signpost 1, 7, SIGNPOST_READ, FarmhouseBookshelf
+	signpost 1, 6, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 2
 	person_event SPRITE_POKEFAN_M, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
@@ -129,9 +129,6 @@ UnknownScript_0x9cf2f:
 	waitbutton
 	closetext
 	end
-
-FarmhouseBookshelf:
-	jumpstd picturebookshelf
 
 UnknownText_0x9cf38:
 	text "My Miltank ain't"

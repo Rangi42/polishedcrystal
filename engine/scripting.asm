@@ -2584,7 +2584,7 @@ ExitScriptSubroutine:
 	ld d, $0
 	ld hl, wScriptStack
 rept 3
-	add hl,de
+	add hl, de
 endr
 	ld a, [hli]
 	ld b, a

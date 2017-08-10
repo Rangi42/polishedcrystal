@@ -13,8 +13,8 @@ SaffronBookSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 5, SIGNPOST_READ, SaffronBookSpeechHouseBookshelf1
-	signpost 1, 7, SIGNPOST_READ, SaffronBookSpeechHouseBookshelf2
+	signpost 1, 5, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 2
 	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SaffronBookSpeechHouseLassScript, -1
@@ -25,12 +25,6 @@ SaffronBookSpeechHouseLassScript:
 
 SaffronBookSpeechHouseBookScript:
 	jumptext SaffronBookSpeechHouseBookText
-
-SaffronBookSpeechHouseBookshelf1:
-	jumpstd picturebookshelf
-
-SaffronBookSpeechHouseBookshelf2:
-	jumpstd difficultbookshelf
 
 SaffronBookSpeechHouseLassText:
 	text "I absolutely love"

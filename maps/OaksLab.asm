@@ -13,22 +13,22 @@ OaksLab_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 16
-	signpost 1, 6, SIGNPOST_READ, OaksLabBookshelf
-	signpost 1, 7, SIGNPOST_READ, OaksLabBookshelf
-	signpost 1, 8, SIGNPOST_READ, OaksLabBookshelf
-	signpost 1, 9, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 0, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 1, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 2, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 3, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 6, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 7, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 8, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 9, SIGNPOST_READ, OaksLabBookshelf
-	signpost 0, 4, SIGNPOST_READ, OaksLabPoster1
-	signpost 0, 5, SIGNPOST_READ, OaksLabPoster2
-	signpost 3, 9, SIGNPOST_READ, OaksLabTrashcan
-	signpost 1, 0, SIGNPOST_READ, OaksLabPC
+	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 2, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 8, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 0, 4, SIGNPOST_JUMPTEXT, OaksLabPoster1Text
+	signpost 0, 5, SIGNPOST_JUMPTEXT, OaksLabPoster2Text
+	signpost 3, 9, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
+	signpost 1, 0, SIGNPOST_JUMPTEXT, OaksLabPCText
 
 .PersonEvents: db 8
 	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
@@ -273,21 +273,6 @@ OaksAssistant2Script:
 
 OaksAssistant3Script:
 	jumptextfaceplayer OaksAssistant3Text
-
-OaksLabBookshelf:
-	jumpstd difficultbookshelf
-
-OaksLabPoster1:
-	jumptext OaksLabPoster1Text
-
-OaksLabPoster2:
-	jumptext OaksLabPoster2Text
-
-OaksLabTrashcan:
-	jumptext OaksLabTrashcanText
-
-OaksLabPC:
-	jumptext OaksLabPCText
 
 OakWelcomeKantoText:
 	text "Oak: Ah, <PLAYER>!"

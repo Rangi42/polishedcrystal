@@ -17,7 +17,7 @@ DayCare_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 5, SIGNPOST_READ, DayCareBookshelf
+	signpost 1, 5, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 3
 	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
@@ -185,9 +185,6 @@ DayCareLadyScript:
 	waitbutton
 	closetext
 	end
-
-DayCareBookshelf:
-	jumpstd difficultbookshelf
 
 DayCareMovementData_LyraApproachesGrandma:
 	step_right

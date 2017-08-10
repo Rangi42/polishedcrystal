@@ -14,51 +14,23 @@ GoldenrodDeptStore2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 14, SIGNPOST_READ, GoldenrodDeptStore2FDirectory
-	signpost 0, 3, SIGNPOST_READ, GoldenrodDeptStore2FElevatorButton
+	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore2FDirectoryText
+	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 5
-	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x55b5d, -1
+	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_STANDARD, MART_GOLDENROD_2F_1, -1
 	person_event SPRITE_CLERK, 6, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x55b65, -1
-	person_event SPRITE_YOUNGSTER, 6, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x55b6d, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x55b70, -1
-	person_event SPRITE_GENTLEMAN, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55b73, -1
-
-ClerkScript_0x55b5d:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_1
-	closetext
-	end
+	person_event SPRITE_YOUNGSTER, 6, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55c25, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55c7b, -1
+	person_event SPRITE_GENTLEMAN, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55cb7, -1
 
 ClerkScript_0x55b65:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_EEVEE
 	iftrue .eevee
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2
-	closetext
-	end
 
 .eevee
 	pokemart MARTTYPE_STANDARD, MART_GOLDENROD_2F_2_EEVEE
-	closetext
-	end
-
-YoungsterScript_0x55b6d:
-	jumptextfaceplayer UnknownText_0x55c25
-
-CooltrainerFScript_0x55b70:
-	jumptextfaceplayer UnknownText_0x55c7b
-
-GentlemanScript_0x55b73:
-	jumptextfaceplayer UnknownText_0x55cb7
-
-GoldenrodDeptStore2FDirectory:
-	jumptext GoldenrodDeptStore2FDirectoryText
-
-GoldenrodDeptStore2FElevatorButton:
-	jumpstd elevatorbutton
 
 UnknownText_0x55c25:
 	text "#gear can store"

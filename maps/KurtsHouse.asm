@@ -14,13 +14,13 @@ KurtsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 7
-	signpost 1, 6, SIGNPOST_READ, KurtsHouseRadio
-	signpost 0, 8, SIGNPOST_READ, KurtsHouseOakPhoto
-	signpost 0, 9, SIGNPOST_READ, KurtsHouseOakPhoto
+	signpost 1, 6, SIGNPOST_JUMPSTD, radio2
+	signpost 0, 8, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
+	signpost 0, 9, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
 	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	signpost 1, 2, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	signpost 1, 3, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	signpost 1, 4, SIGNPOST_READ, KurtsHouseCelebiStatue
+	signpost 1, 4, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
 
 .PersonEvents: db 5
 	person_event SPRITE_KURT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
@@ -443,18 +443,9 @@ KurtsHouseSlowpoke:
 	closetext
 	end
 
-KurtsHouseOakPhoto:
-	jumptext KurtsHouseOakPhotoText
-
-KurtsHouseCelebiStatue:
-	jumptext KurtsHouseCelebiStatueText
-
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumptext PokemonJournalProfWestwoodText
-
-KurtsHouseRadio:
-	jumpstd radio2
 
 MovementData_0x18e466:
 	big_step_down

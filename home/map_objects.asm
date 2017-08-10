@@ -373,7 +373,7 @@ GetSpriteMovementFunction:: ; 1a2f
 	ld e, a
 	ld d, 0
 rept SPRITEMOVEDATA_FIELDS
-	add hl,de
+	add hl, de
 endr
 	ld a, [hl]
 	ret
@@ -386,7 +386,7 @@ GetInitialFacing:: ; 1a47
 	ld d, 0
 	ld hl, SpriteMovementData + 1 ; init facing
 rept SPRITEMOVEDATA_FIELDS
-	add hl,de
+	add hl, de
 endr
 	ld a, BANK(SpriteMovementData)
 	call GetFarByte
