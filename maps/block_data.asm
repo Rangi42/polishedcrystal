@@ -1,4 +1,4 @@
-SECTION "Map Blockdata 1", ROMX
+SECTION "Special Map Blockdata", ROMX
 
 CherrygrovePokeCenter1F_BlockData:
 VioletPokeCenter1F_BlockData:
@@ -163,7 +163,7 @@ ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.blk"
 
 
-SECTION "Map Blockdata 2", ROMX
+SECTION "Map Blockdata 1", ROMX
 
 CeruleanPoliceStation_BlockData:
 CeruleanBerryPowderHouse_BlockData:
@@ -313,7 +313,7 @@ UnionCaveB1FNorth_BlockData:
 	INCBIN "maps/UnionCaveB1FNorth.blk"
 
 
-SECTION "Map Blockdata 3", ROMX
+SECTION "Map Blockdata 2", ROMX
 
 UnionCaveB1FSouth_BlockData:
 	INCBIN "maps/UnionCaveB1FSouth.blk"
@@ -464,7 +464,7 @@ TinTower1F_BlockData:
 	INCBIN "maps/TinTower1F.blk"
 
 
-SECTION "Map Blockdata 4", ROMX
+SECTION "Map Blockdata 3", ROMX
 
 TinTower2F_BlockData:
 	INCBIN "maps/TinTower2F.blk"
@@ -618,7 +618,7 @@ MountMortar2FInside_BlockData:
 	INCBIN "maps/MountMortar2FInside.blk"
 
 
-SECTION "Map Blockdata 5", ROMX
+SECTION "Map Blockdata 4", ROMX
 
 MountMortarB1F_BlockData:
 	INCBIN "maps/MountMortarB1F.blk"
@@ -770,7 +770,7 @@ PewterCity_BlockData:
 	INCBIN "maps/PewterCity.blk"
 
 
-SECTION "Map Blockdata 6", ROMX
+SECTION "Map Blockdata 5", ROMX
 
 PewterMuseumOfScience1F_BlockData:
 	INCBIN "maps/PewterMuseumOfScience1F.blk"
@@ -924,7 +924,7 @@ CeladonChiefHouse_BlockData:
 	INCBIN "maps/CeladonChiefHouse.blk"
 
 
-SECTION "Map Blockdata 7", ROMX
+SECTION "Map Blockdata 6", ROMX
 
 CeladonDeptStore1F_BlockData:
 	INCBIN "maps/CeladonDeptStore1F.blk"
@@ -1077,7 +1077,7 @@ LuckyIslandHidden_BlockData:
 	INCBIN "maps/LuckyIslandHidden.blk"
 
 
-SECTION "Map Blockdata 8", ROMX
+SECTION "Map Blockdata 7", ROMX
 
 SafariZoneHub_BlockData:
 	INCBIN "maps/SafariZoneHub.blk"
@@ -1229,7 +1229,7 @@ ValenciaPort_BlockData:
 	INCBIN "maps/ValenciaPort.blk"
 
 
-SECTION "Map Blockdata 9", ROMX
+SECTION "Map Blockdata 8", ROMX
 
 IvysLab_BlockData:
 	INCBIN "maps/IvysLab.blk"
@@ -1384,7 +1384,7 @@ Route35_BlockData:
 	INCBIN "maps/Route35.blk"
 
 
-SECTION "Map Blockdata 10", ROMX
+SECTION "Map Blockdata 9", ROMX
 
 Route35Coast_BlockData:
 	INCBIN "maps/Route35Coast.blk"
