@@ -7,6 +7,7 @@ Route35NationalParkgate_MapScriptHeader:
 
 .MapCallbacks: db 2
 	dbw MAPCALLBACK_NEWMAP, Route35NationalParkgate_CheckIfStillInContest
+	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay
 
 Route35NationalParkgate_MapEventHeader:
 
@@ -30,8 +31,6 @@ const_value set 2
 	const ROUTE35NATIONALPARKGATE_OFFICER1
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
-
-	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay
 
 Route35NationalParkgateTrigger2:
 	priorityjump Route35NationalParkGate_LeavingContestEarly
