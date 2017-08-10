@@ -51,7 +51,7 @@ CeladonCity_MapEventHeader:
 	person_event SPRITE_LASS, 22, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x1a9f62, -1
 	person_event SPRITE_BIG_SNORLAX, 10, 45, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX
 	person_event SPRITE_LASS, 23, 35, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonCityLassScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 32, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonCityCutTree, EVENT_CELADON_CITY_CUT_TREE
+	person_event SPRITE_BALL_CUT_FRUIT, 34, 32, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_CELADON_CITY_CUT_TREE
 
 CeladonCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
@@ -136,9 +136,6 @@ CeladonCitySign:
 
 CeladonGymSign:
 	jumptext CeladonGymSignText
-
-CeladonCityCutTree:
-	jumpstd cuttree
 
 CeladonUniversitySign:
 	jumptext CeladonUniversitySignText

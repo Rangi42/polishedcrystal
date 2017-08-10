@@ -126,9 +126,7 @@ Low priority:
 * Optimize battle command engine, including parameterized commands
 * SIGNPOST_JUMPTEXT
 * PERSONTYPE_JUMPTEXTFP
-* PERSONTYPE_JUMPSTD (for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc)
-* PERSONTYPE_ITEMBALL (no script needed)
-* PERSONTYPE_TMHMBALL (no script needed)
+* PERSONTYPE_JUMPSTD (for smashrock, strengthboulder, and pokecenternurse)
 * PERSONTYPE_MART
 * PERSONTYPE_FRUITTREE
 * PERSONTYPE_GENERICTRAINER

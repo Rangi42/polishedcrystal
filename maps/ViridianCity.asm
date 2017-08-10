@@ -32,8 +32,8 @@ ViridianCity_MapEventHeader:
 	person_event SPRITE_FISHER, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
 	person_event SPRITE_BUG_CATCHER, 21, 17, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x1a9a90, -1
 	person_event SPRITE_YOUNGSTER, 23, 31, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianCityYoungsterScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 14, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_2
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 14, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_VIRIDIAN_CITY_CUT_TREE_1
+	person_event SPRITE_BALL_CUT_FRUIT, 22, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_VIRIDIAN_CITY_CUT_TREE_2
 
 ViridianCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIRIDIAN
@@ -116,9 +116,6 @@ BugCatcherScript_0x1a9a90:
 
 ViridianCityYoungsterScript:
 	jumptextfaceplayer ViridianCityYoungsterText
-
-ViridianCityCutTree:
-	jumpstd cuttree
 
 ViridianCitySign:
 	jumptext ViridianCitySignText

@@ -18,15 +18,12 @@ SilverCaveOutside_MapEventHeader:
 	signpost 19, 9, SIGNPOST_ITEM, SilverCaveOutsideHiddenFullRestore
 
 .PersonEvents: db 2
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 31, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCaveOutsideCutTree, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 34, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCaveOutsideCutTree, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_2
+	person_event SPRITE_BALL_CUT_FRUIT, 18, 31, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1
+	person_event SPRITE_BALL_CUT_FRUIT, 17, 34, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_2
 
 SilverCaveOutsideFlyPoint:
 	setflag ENGINE_FLYPOINT_SILVER_CAVE
 	return
-
-SilverCaveOutsideCutTree:
-	jumpstd cuttree
 
 MtSilverSign:
 	jumptext MtSilverSignText

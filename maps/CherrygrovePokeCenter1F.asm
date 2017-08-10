@@ -17,43 +17,59 @@ CherrygrovePokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalRedScript
 
 .PersonEvents: db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x19696d, -1
-	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x196970, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x196973, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x196976, -1
-	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FLadyScript, -1
+	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19698a, -1
+	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1969c8, -1
+	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CherrygrovePokeCenter1FLadyText, -1
 
-NurseScript_0x19696d:
-	jumpstd pokecenternurse
+PokemonJournalRedScript:
+	setflag ENGINE_READ_RED_JOURNAL
+	jumptext .Text
 
-FisherScript_0x196970:
-	jumptextfaceplayer UnknownText_0x19698a
+.Text:
+	text "#mon Journal"
 
-GentlemanScript_0x196973:
-	jumptextfaceplayer UnknownText_0x1969c8
+	para "Special Feature:"
+	line "<PK><MN> Trainer Red!"
+
+	para "Red is said to"
+	line "have defeated his"
+
+	para "rival Blue for the"
+	line "title of #mon"
+
+	para "League Champion in"
+	line "record time."
+	done
 
 TeacherScript_0x196976:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue UnknownScript_0x196984
-	writetext UnknownText_0x1969f1
-	waitbutton
-	closetext
-	end
+	iftrue .GaveEgg
+	jumpopenedtext .Text1
 
-UnknownScript_0x196984:
-	writetext UnknownText_0x196a46
-	waitbutton
-	closetext
-	end
+.GaveEgg:
+	jumpopenedtext .Text2
 
-CherrygrovePokeCenter1FLadyScript:
-	jumptextfaceplayer CherrygrovePokeCenter1FLadyText
+.Text1:
+	text "The Communication"
+	line "Center upstairs"
+	cont "was just built."
 
-PokemonJournalRedScript:
-	setflag ENGINE_READ_RED_JOURNAL
-	jumptext PokemonJournalRedText
+	para "But they're still"
+	line "finishing it up."
+	done
+
+.Text2:
+	text "The Communication"
+	line "Center upstairs"
+	cont "was just built."
+
+	para "I traded #mon"
+	line "there already!"
+	done
 
 UnknownText_0x19698a:
 	text "It's great. I can"
@@ -69,24 +85,6 @@ UnknownText_0x1969c8:
 	cont "to use."
 	done
 
-UnknownText_0x1969f1:
-	text "The Communication"
-	line "Center upstairs"
-	cont "was just built."
-
-	para "But they're still"
-	line "finishing it up."
-	done
-
-UnknownText_0x196a46:
-	text "The Communication"
-	line "Center upstairs"
-	cont "was just built."
-
-	para "I traded #mon"
-	line "there already!"
-	done
-
 CherrygrovePokeCenter1FLadyText:
 	text "#mon Journal"
 	line "has such fascin-"
@@ -100,20 +98,4 @@ CherrygrovePokeCenter1FLadyText:
 
 	para "only place with"
 	line "a subscription."
-	done
-
-PokemonJournalRedText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "<PK><MN> Trainer Red!"
-
-	para "Red is said to"
-	line "have defeated his"
-
-	para "rival Blue for the"
-	line "title of #mon"
-
-	para "League Champion in"
-	line "record time."
 	done

@@ -17,38 +17,34 @@ CeruleanPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalMistyScript
 
 .PersonEvents: db 3
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18820f, -1
-	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x188212, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_GYM_GUY, 5, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18821e, -1
+	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x188221, -1
 
-NurseScript_0x18820f:
-	jumpstd pokecenternurse
+PokemonJournalMistyScript:
+	setflag ENGINE_READ_MISTY_JOURNAL
+	jumptext .Text
 
-SuperNerdScript_0x188212:
-	jumptextfaceplayer UnknownText_0x188221
+.Text:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Misty!"
+
+	para "Misty is said to"
+	line "worship Lorelei,"
+
+	para "a former member of"
+	line "the Elite Four."
+	done
 
 GymGuyScript_0x18821e:
 	checkunits
 	iftrue .metric
 	jumptextfaceplayer UnknownText_0x1882ff_Imperial
+
 .metric
 	jumptextfaceplayer UnknownText_0x1882ff_Metric
-
-PokemonJournalMistyScript:
-	setflag ENGINE_READ_MISTY_JOURNAL
-	jumptext PokemonJournalMistyText
-
-UnknownText_0x188221:
-	text "For battles, I'd"
-	line "much rather use"
-
-	para "#mon I've been"
-	line "raising, even if"
-
-	para "they're weaker"
-	line "than some newly"
-	cont "caught #mon."
-	done
 
 UnknownText_0x1882ff_Imperial:
 	text "The Magnet Train"
@@ -78,15 +74,14 @@ UnknownText_0x1882ff_Metric:
 	line "Johto accessible."
 	done
 
-PokemonJournalMistyText:
-	text "#mon Journal"
+UnknownText_0x188221:
+	text "For battles, I'd"
+	line "much rather use"
 
-	para "Special Feature:"
-	line "Leader Misty!"
+	para "#mon I've been"
+	line "raising, even if"
 
-	para "Misty is said to"
-	line "worship Lorelei,"
-
-	para "a former member of"
-	line "the Elite Four."
+	para "they're weaker"
+	line "than some newly"
+	cont "caught #mon."
 	done

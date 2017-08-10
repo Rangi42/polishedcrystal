@@ -17,26 +17,35 @@ MahoganyPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalPryceScript
 
 .PersonEvents: db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x19a356, -1
-	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19a359, -1
-	person_event SPRITE_YOUNGSTER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19a35c, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x19a35f, -1
-
-NurseScript_0x19a356:
-	jumpstd pokecenternurse
-
-PokefanMScript_0x19a359:
-	jumptextfaceplayer UnknownText_0x19a362
-
-YoungsterScript_0x19a35c:
-	jumptextfaceplayer UnknownText_0x19a3b3
-
-CooltrainerFScript_0x19a35f:
-	jumptextfaceplayer UnknownText_0x19a418
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
+	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19a362, -1
+	person_event SPRITE_YOUNGSTER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19a3b3, -1
+	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19a418, -1
 
 PokemonJournalPryceScript:
 	setflag ENGINE_READ_PRYCE_JOURNAL
-	jumptext PokemonJournalPryceText
+	jumptext .Text
+
+.Text:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Pryce!"
+
+	para "Pryce's middle name"
+	line "is Willow."
+
+	para "His fighting style"
+	line "is said to be as"
+
+	para "flexible as a"
+	line "willow tree in"
+	cont "winter, which has"
+
+	para "earned him the"
+	line "nickname “the"
+	cont "winter trainer”."
+	done
 
 UnknownText_0x19a362:
 	text "What's this? Team"
@@ -66,25 +75,4 @@ UnknownText_0x19a418:
 	para "evolve, but they"
 	line "also learn moves"
 	cont "more slowly."
-	done
-
-PokemonJournalPryceText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "Leader Pryce!"
-
-	para "Pryce's middle name"
-	line "is Willow."
-
-	para "His fighting style"
-	line "is said to be as"
-
-	para "flexible as a"
-	line "willow tree in"
-	cont "winter, which has"
-
-	para "earned him the"
-	line "nickname “the"
-	cont "winter trainer”."
 	done
