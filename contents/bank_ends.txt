@@ -105,13 +105,13 @@ Bank $67: $7f51 ($00af)
 Bank $68: $7f89 ($0077)
 Bank $69: $7fc2 ($003e)
 Bank $6a: $7fe0 ($0020)
-Bank $6b: $7fb4 ($004c)
-Bank $6c: $7fc3 ($003d)
+Bank $6b: $7f9c ($0064)
+Bank $6c: $7fab ($0055)
 Bank $6d: $7fb9 ($0047)
 Bank $6e: $7e45 ($01bb)
 Bank $6f: $7f2a ($00d6)
 Bank $70: $7fdb ($0025)
-Bank $71: $7fde ($0022)
+Bank $71: $7fd4 ($002c)
 Bank $72: $7d0e ($02f2)
 Bank $73: $7fa2 ($005e)
 Bank $74: $7fd7 ($0029)
@@ -174,24 +174,24 @@ Bank $54 has $0068 bytes of free space
 Bank $0a has $0066 bytes of free space
 Bank $44 has $0066 bytes of free space
 Bank $42 has $0065 bytes of free space
+Bank $6b has $0064 bytes of free space
 Bank $2d has $0063 bytes of free space
 Bank $73 has $005e bytes of free space
 Bank $4d has $005a bytes of free space
 Bank $14 has $0058 bytes of free space
 Bank $1c has $0056 bytes of free space
 Bank $3c has $0055 bytes of free space
+Bank $6c has $0055 bytes of free space
 Bank $36 has $0053 bytes of free space
 Bank $45 has $0053 bytes of free space
 Bank $37 has $004d bytes of free space
 Bank $64 has $004c bytes of free space
-Bank $6b has $004c bytes of free space
 Bank $0f has $0048 bytes of free space
 Bank $6d has $0047 bytes of free space
 Bank $12 has $0040 bytes of free space
 Bank $30 has $0040 bytes of free space
 Bank $69 has $003e bytes of free space
 Bank $4c has $003d bytes of free space
-Bank $6c has $003d bytes of free space
 Bank $02 has $003c bytes of free space
 Bank $21 has $003c bytes of free space
 Bank $2e has $0039 bytes of free space
@@ -205,6 +205,7 @@ Bank $39 has $0030 bytes of free space
 Bank $1b has $002f bytes of free space
 Bank $23 has $002f bytes of free space
 Bank $41 has $002c bytes of free space
+Bank $71 has $002c bytes of free space
 Bank $62 has $0029 bytes of free space
 Bank $74 has $0029 bytes of free space
 Bank $05 has $0026 bytes of free space
@@ -216,7 +217,6 @@ Bank $70 has $0025 bytes of free space
 Bank $25 has $0024 bytes of free space
 Bank $35 has $0023 bytes of free space
 Bank $5e has $0023 bytes of free space
-Bank $71 has $0022 bytes of free space
 Bank $1f has $0020 bytes of free space
 Bank $6a has $0020 bytes of free space
 Bank $11 has $001f bytes of free space
@@ -256,4 +256,4 @@ Bank $56 has $0000 bytes of free space
 Bank $5a has $0000 bytes of free space
 Bank $5f has $0000 bytes of free space
 
-Free space: 72152/2097152 (3.44%)
+Free space: 72210/2097152 (3.44%)

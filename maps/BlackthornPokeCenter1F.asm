@@ -17,89 +17,65 @@ BlackthornPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalClairScript
 
 .PersonEvents: db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x195b79, -1
-	person_event SPRITE_GENTLEMAN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x195b7c, -1
-	person_event SPRITE_TWIN, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x195b7f, -1
-	person_event SPRITE_COOLTRAINER_M, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x195b82, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_SCIENTIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide4Script, -1
+	person_event SPRITE_COOLTRAINER_M, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPSTD, 0, happinesschecknpc, -1
+	person_event SPRITE_GENTLEMAN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BlackthornPokeCenter1FGentlemanText, -1
+	person_event SPRITE_TWIN, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, BlackthornPokeCenter1FTwinText, -1
 
-NurseScript_0x195b79:
-	jumpstd pokecenternurse
+PokemonJournalClairScript:
+	setflag ENGINE_READ_CLAIR_JOURNAL
+	jumptext .Text
 
-GentlemanScript_0x195b7c:
-	jumptextfaceplayer UnknownText_0x195b85
+.Text:
+	text "#mon Journal"
 
-TwinScript_0x195b7f:
-	jumptextfaceplayer UnknownText_0x195bfd
+	para "Special Feature:"
+	line "Leader Clair!"
 
-CooltrainerMScript_0x195b82:
-	jumpstd happinesschecknpc
+	para "Clair's bright blue"
+	line "outfit and cape"
+
+	para "have made her the"
+	line "latest name in"
+	cont "fashion."
+	done
 
 ProfOaksAide4Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
 	iftrue .Explain
-	writetext ProfOaksAide4HiText
+	writetext .HiText
 	waitbutton
 	count_seen_caught
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 59, .HereYouGo
 .UhOh
-	writetext ProfOaksAide4UhOhText
+	writetext .UhOhText
 	waitbutton
 	closetext
 	end
 
 .HereYouGo
-	writetext ProfOaksAide4HereYouGoText
+	writetext .HereYouGoText
 	waitbutton
 	verbosegiveitem LUCKY_EGG
 	iffalse .NoRoom
 	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
 .Explain
-	writetext ProfOaksAide4ExplainText
+	writetext .ExplainText
 	waitbutton
 	closetext
 	end
 
 .NoRoom
-	writetext ProfOaksAide4NoRoomText
+	writetext .NoRoomText
 	waitbutton
 	closetext
 	end
 
-PokemonJournalClairScript:
-	setflag ENGINE_READ_CLAIR_JOURNAL
-	jumptext PokemonJournalClairText
-
-UnknownText_0x195b85:
-	text "Deep inside far-"
-	line "off Indigo Plateau"
-
-	para "is the #mon"
-	line "League."
-
-	para "I hear the best"
-	line "trainers gather"
-
-	para "there from around"
-	line "the country."
-	done
-
-UnknownText_0x195bfd:
-	text "There was this"
-	line "move I just had"
-
-	para "to teach my #-"
-	line "mon."
-
-	para "So I got the Move"
-	line "Deleter to make it"
-	cont "forget an HM move."
-	done
-
-ProfOaksAide4HiText:
+.HiText:
 	text "Hello there! I'm"
 	line "Prof.Oak's aide."
 
@@ -116,7 +92,7 @@ ProfOaksAide4HiText:
 	line "of #mon?"
 	done
 
-ProfOaksAide4UhOhText:
+.UhOhText:
 	text "Let's see…"
 	line "Uh-oh! You've only"
 
@@ -130,7 +106,7 @@ ProfOaksAide4UhOhText:
 	cont "60 kinds."
 	done
 
-ProfOaksAide4HereYouGoText:
+.HereYouGoText:
 	text "Let's see…"
 	line "Great job! You've"
 
@@ -143,13 +119,13 @@ ProfOaksAide4HereYouGoText:
 	line "Here you go!"
 	done
 
-ProfOaksAide4NoRoomText:
+.NoRoomText:
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
 	done
 
-ProfOaksAide4ExplainText:
+.ExplainText:
 	text "That Lucky Egg"
 	line "helps a #mon"
 
@@ -160,16 +136,28 @@ ProfOaksAide4ExplainText:
 	line "plete the #dex!"
 	done
 
-PokemonJournalClairText:
-	text "#mon Journal"
+BlackthornPokeCenter1FGentlemanText:
+	text "Deep inside far-"
+	line "off Indigo Plateau"
 
-	para "Special Feature:"
-	line "Leader Clair!"
+	para "is the #mon"
+	line "League."
 
-	para "Clair's bright blue"
-	line "outfit and cape"
+	para "I hear the best"
+	line "trainers gather"
 
-	para "have made her the"
-	line "latest name in"
-	cont "fashion."
+	para "there from around"
+	line "the country."
+	done
+
+BlackthornPokeCenter1FTwinText:
+	text "There was this"
+	line "move I just had"
+
+	para "to teach my #-"
+	line "mon."
+
+	para "So I got the Move"
+	line "Deleter to make it"
+	cont "forget an HM move."
 	done

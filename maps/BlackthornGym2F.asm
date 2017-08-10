@@ -19,14 +19,14 @@ BlackthornGym2F_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 8
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 16, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
-	person_event SPRITE_COOLTRAINER_M, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermCody, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfFran, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 16, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, -1
+	person_event SPRITE_COOLTRAINER_M, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermCody, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfFran, -1
 
 const_value set 2
 	const BLACKTHORNGYM2F_BOULDER1
@@ -59,55 +59,22 @@ BlackthornGym2FBoulders:
 	disappear BLACKTHORNGYM2F_BOULDER3
 .Fall:
 	pause 30
-	scall .FX
-	opentext
-	writetext BlackthornGym2FBoulderFellText
-	waitbutton
-	closetext
-	end
-
-.FX:
 	playsound SFX_STRENGTH
 	earthquake 80
-	end
-
-BlackthornGymBoulder:
-	jumpstd strengthboulder
-
-TrainerCooltrainermCody:
-	trainer EVENT_BEAT_COOLTRAINERM_CODY, COOLTRAINERM, CODY, CooltrainermCodySeenText, CooltrainermCodyBeatenText, 0, CooltrainermCodyScript
-
-CooltrainermCodyScript:
-	end_if_just_battled
 	opentext
-	writetext CooltrainermCodyAfterText
+	writetext .Text
 	waitbutton
 	closetext
 	end
 
-TrainerCooltrainerfFran:
-	trainer EVENT_BEAT_COOLTRAINERF_FRAN, COOLTRAINERF, FRAN, CooltrainerfFranSeenText, CooltrainerfFranBeatenText, 0, CooltrainerfFranScript
-
-CooltrainerfFranScript:
-	end_if_just_battled
-	opentext
-	writetext CooltrainerfFranAfterText
-	waitbutton
-	closetext
-	end
-
-CooltrainermCodySeenText:
-	text "It's not as if we"
-	line "all use Dragon-"
-	cont "type #mon."
+.Text:
+	text "The boulder fell"
+	line "through!"
 	done
 
-CooltrainermCodyBeatenText:
-	text "Rats! If only I"
-	line "had a dragon!"
-	done
+GenericTrainerCooltrainermCody:
+	generictrainer EVENT_BEAT_COOLTRAINERM_CODY, COOLTRAINERM, CODY, .SeenText, .BeatenText
 
-CooltrainermCodyAfterText:
 	text "Members of our"
 	line "dragon-user clan"
 
@@ -118,7 +85,25 @@ CooltrainermCodyAfterText:
 	line "it."
 	done
 
-CooltrainerfFranSeenText:
+.SeenText:
+	text "It's not as if we"
+	line "all use Dragon-"
+	cont "type #mon."
+	done
+
+.BeatenText:
+	text "Rats! If only I"
+	line "had a dragon!"
+	done
+
+GenericTrainerCooltrainerfFran:
+	generictrainer EVENT_BEAT_COOLTRAINERF_FRAN, COOLTRAINERF, FRAN, .SeenText, .BeatenText
+
+	text "Uh-oh… Clair is"
+	line "going to be mad…"
+	done
+
+.SeenText:
 	text "I can't allow a"
 	line "nameless trainer"
 	cont "past me!"
@@ -127,16 +112,6 @@ CooltrainerfFranSeenText:
 	line "livid if I did!"
 	done
 
-CooltrainerfFranBeatenText:
+.BeatenText:
 	text "Awww… I lost…"
-	done
-
-CooltrainerfFranAfterText:
-	text "Uh-oh… Clair is"
-	line "going to be mad…"
-	done
-
-BlackthornGym2FBoulderFellText:
-	text "The boulder fell"
-	line "through!"
 	done
