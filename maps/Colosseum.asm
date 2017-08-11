@@ -58,9 +58,8 @@ MapColosseumSignpost1Script:
 	end
 
 ChrisScript_0x193499:
-	jumptext .FriendReadyText
+	thistext
 
-.FriendReadyText:
 	text "Your friend is"
 	line "ready."
 	done

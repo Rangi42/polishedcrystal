@@ -54,9 +54,8 @@ const_value set 2
 	const CELADONUNIVERSITYLIBRARY2F_ARTIST
 
 CeladonUniversityLibrary2FCosplayerScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "It's great being"
 	line "in the city!"
 
@@ -68,9 +67,8 @@ CeladonUniversityLibrary2FCosplayerScript:
 	done
 
 CeladonUniversityLibrary2FLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Never judge a book"
 	line "by its cover."
 
@@ -102,9 +100,8 @@ CeladonUniversityLibrary2FArtistScript:
 	done
 
 CeladonUniversityLibrary2FSuper_nerdScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The “net send”"
 	line "command will show"
 
@@ -122,18 +119,16 @@ CeladonUniversityLibrary2FSuper_nerdScript:
 	done
 
 CeladonUniversityLibrary2FCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "This is my book."
 	line "And I'm going to"
 	cont "READ IT!"
 	done
 
 CeladonUniversityLibrary2FYoungsterScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm reading about a"
 	line "legendary #mon"
 
@@ -144,9 +139,8 @@ CeladonUniversityLibrary2FYoungsterScript:
 	done
 
 CeladonUniversityLibrary2FBookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book con-"
 	line "taining #mon"
 
@@ -159,9 +153,8 @@ CeladonUniversityLibrary2FBookshelf1:
 	done
 
 CeladonUniversityLibrary2FBookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "This book is"
 	line "falling apart."
 
@@ -176,9 +169,8 @@ CeladonUniversityLibrary2FBookshelf2:
 	done
 
 CeladonUniversityLibrary2FBookshelf3:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book with a"
 	line "giant padlock on"
 	cont "the cover."
@@ -188,9 +180,8 @@ CeladonUniversityLibrary2FBookshelf3:
 	done
 
 CeladonUniversityLibrary2FBookshelf4:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "This book's written"
 	line "in a foreign"
 	cont "language!"
@@ -200,9 +191,8 @@ CeladonUniversityLibrary2FBookshelf4:
 	done
 
 CeladonUniversityLibrary2FBookshelf5:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Behind these"
 	line "books…"
 
@@ -211,9 +201,8 @@ CeladonUniversityLibrary2FBookshelf5:
 	done
 
 CeladonUniversityLibrary2FBookshelf6:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "#mon that have"
 
@@ -227,9 +216,8 @@ CeladonUniversityLibrary2FBookshelf6:
 	done
 
 CeladonUniversityLibrary2FBookshelf7:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "#mon Contests."
 
@@ -241,9 +229,8 @@ CeladonUniversityLibrary2FBookshelf7:
 	done
 
 CeladonUniversityLibrary2FBookshelf8:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "A boy is shown"
 	line "riding a #mon"
 
@@ -256,9 +243,8 @@ CeladonUniversityLibrary2FBookshelf8:
 	done
 
 CeladonUniversityLibrary2FBookshelf9:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book de-"
 	line "picting a world"
 
@@ -273,9 +259,8 @@ CeladonUniversityLibrary2FBookshelf9:
 	done
 
 CeladonUniversityLibrary2FBookshelf10:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "an island of giant"
 	cont "#mon robots."
@@ -285,9 +270,8 @@ CeladonUniversityLibrary2FBookshelf10:
 	done
 
 CeladonUniversityLibrary2FBookshelf11:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "“Forgive and"
 	line "Forget” by Saul"
 	cont "Goode."
@@ -298,18 +282,16 @@ CeladonUniversityLibrary2FBookshelf11:
 	done
 
 CeladonUniversityLibrary2FBookshelf12:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "“Weightlessness”"
 	line "by Andy Gravity."
 	cont "Sounds flighty!"
 	done
 
 CeladonUniversityLibrary2FBookshelf13:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book"
 	line "explaining the"
 
@@ -320,9 +302,8 @@ CeladonUniversityLibrary2FBookshelf13:
 	done
 
 CeladonUniversityLibrary2FBookshelf14:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "This book is"
 	line "covered in"
 	cont "cobwebs."
@@ -333,9 +314,8 @@ CeladonUniversityLibrary2FBookshelf14:
 	done
 
 CeladonUniversityLibrary2FBookshelf15:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book de-"
 	line "picting a fearsome"
 	cont "#mon."
@@ -348,9 +328,8 @@ CeladonUniversityLibrary2FBookshelf15:
 	done
 
 CeladonUniversityLibrary2FBookshelf16:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "“Ancient #-"
 	line "mopolis: A History"
 
@@ -362,9 +341,8 @@ CeladonUniversityLibrary2FBookshelf16:
 	done
 
 CeladonUniversityLibrary2FBookshelf17:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book titled"
 	line "“Typecasting: The"
 
@@ -373,9 +351,8 @@ CeladonUniversityLibrary2FBookshelf17:
 	done
 
 CeladonUniversityLibrary2FBookshelf18:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "an ancient tree"
 
@@ -387,9 +364,8 @@ CeladonUniversityLibrary2FBookshelf18:
 	done
 
 CeladonUniversityLibrary2FBookshelf19:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a copy of the"
 	line "original route for"
 	cont "the Magnet Train!"
@@ -400,9 +376,8 @@ CeladonUniversityLibrary2FBookshelf19:
 	done
 
 CeladonUniversityLibrary2FBookshelf20:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Red books,"
 	line "blue books,"
 	cont "yellow books,"
@@ -413,9 +388,8 @@ CeladonUniversityLibrary2FBookshelf20:
 	done
 
 CeladonUniversityLibrary2FComputer1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a login"
 	line "screen with a"
 
@@ -424,17 +398,15 @@ CeladonUniversityLibrary2FComputer1:
 	done
 
 CeladonUniversityLibrary2FComputer2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Someone forgot to"
 	line "log out!"
 	done
 
 CeladonUniversityLibrary2FComputer3:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a story"
 	line "full of grammar"
 	cont "and spelling"
@@ -442,9 +414,8 @@ CeladonUniversityLibrary2FComputer3:
 	done
 
 CeladonUniversityLibrary2FComputer4:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a web page"
 	line "about how to be a"
 	cont "“l33t h4x0r”."

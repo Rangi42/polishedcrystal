@@ -27,9 +27,8 @@ CeladonUniversityClassroom3_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3Super_nerdScript, -1
 
 CeladonUniversityClassroom3SparkScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Hey! I'm Spark."
 	line "I teach Science--"
 
@@ -49,9 +48,8 @@ CeladonUniversityClassroom3SparkScript:
 	done
 
 CeladonUniversityClassroom3TeacherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Are you looking"
 	line "for Spark?"
 
@@ -64,9 +62,8 @@ CeladonUniversityClassroom3TeacherScript:
 	done
 
 CeladonUniversityClassroom3ChildScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "#mon inside"
 	line "# Balls are"
 
@@ -83,9 +80,8 @@ CeladonUniversityClassroom3ChildScript:
 	done
 
 CeladonUniversityClassroom3LassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "My instructor said"
 	line "that Magneton is a"
 
@@ -101,9 +97,8 @@ CeladonUniversityClassroom3LassScript:
 	done
 
 CeladonUniversityClassroom3Super_nerdScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Have you heard of"
 	line "the Electric-type"
 	cont "#mon Mareep?"
@@ -120,9 +115,8 @@ CeladonUniversityClassroom3Super_nerdScript:
 	done
 
 CeladonUniversityClassroom3Blackboard:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "'Phylogenetics'"
 	line "is on the board."
 
@@ -140,9 +134,8 @@ CeladonUniversityClassroom3Blackboard:
 	done
 
 CeladonUniversityClassroom3Bookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book of"
 	line "prototype designs"
 
@@ -155,9 +148,8 @@ CeladonUniversityClassroom3Bookshelf1:
 	done
 
 CeladonUniversityClassroom3Bookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a paper writ-"
 	line "ten by Prof."
 	cont "Silktree."

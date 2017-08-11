@@ -18,9 +18,8 @@ ValenciaHouse_MapEventHeader:
 	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValenciaHouseLassScript, -1
 
 ValenciaHouseLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Prof.Ivy is really"
 	line "cool!"
 

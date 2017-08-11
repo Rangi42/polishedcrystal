@@ -30,9 +30,8 @@ ShamoutiHotel1FRestaurantTrigger:
 	return
 
 ShamoutiHotel1FReceptionistScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Welcome to the"
 	line "Shamouti Hotel."
 
@@ -106,9 +105,8 @@ ShamoutiHotel1FArtistScript:
 	done
 
 ShamoutiHotel1FCooltrainermScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "So <TRENDY> is"
 	line "the hot new thing?"
 
@@ -116,9 +114,8 @@ ShamoutiHotel1FCooltrainermScript:
 	done
 
 ShamoutiHotel1FLadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Have you ever"
 	line "found a Bottle Cap"
 	cont "while fishing?"
@@ -136,17 +133,15 @@ ShamoutiHotel1FLadyScript:
 	done
 
 ShamoutiHotel1FYoungsterScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I heard that"
 	line "<TRENDY> is “in”"
 	cont "right now!"
 	done
 
 ShamoutiHotelRestaurantSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Oasis Restaurant"
 	done

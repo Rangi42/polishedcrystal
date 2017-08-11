@@ -153,9 +153,8 @@ CeladonUniversityPoolFergusScript:
 	done
 
 CeladonUniversityPoolLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Ouch!"
 
 	para "I'm working out a"
@@ -163,9 +162,8 @@ CeladonUniversityPoolLassScript:
 	done
 
 CeladonUniversityPoolSwimmer_girlScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I applied for a"
 	line "special program to"
 
@@ -178,9 +176,8 @@ CeladonUniversityPoolSwimmer_girlScript:
 	done
 
 CeladonUniversityPoolTeacherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "OK, five more"
 	line "laps!"
 	done

@@ -19,15 +19,13 @@ IvysHouse_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysHouseCharityScript, -1
 
 IvysHouseFaithScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Faith: TODO"
 	done
 
 IvysHouseCharityScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Charity: TODO"
 	done

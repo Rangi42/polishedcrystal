@@ -166,9 +166,8 @@ TrainerHikerDerrick:
 	done
 
 DimCave2FFallenBoulderScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's stuck on the"
 	line "button."
 	done

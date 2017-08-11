@@ -323,9 +323,8 @@ TrainerCoupleFoxandrae2:
 	done
 
 Route32CoastLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Pant, pant…"
 
 	para "I finally got"
@@ -345,9 +344,8 @@ Route32CoastFruitTree:
 	fruittree FRUITTREE_ROUTE_32_COAST
 
 Route32CoastTrainerTips:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Trainer Tips"
 
 	para "A #mon with the"
@@ -358,9 +356,8 @@ Route32CoastTrainerTips:
 	done
 
 Route32CoastUnionCaveSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Union Cave"
 	line "Ahead"
 	done

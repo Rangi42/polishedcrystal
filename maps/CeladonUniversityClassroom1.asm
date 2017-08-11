@@ -137,9 +137,8 @@ CeladonUniversityClassroom1ImakuniScript:
 	done
 
 CeladonUniversityClassroom1AndyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Hello there!"
 	line "I'm Prof.Andy,"
 
@@ -158,18 +157,16 @@ CeladonUniversityClassroom1AndyScript:
 	done
 
 CeladonUniversityClassroom1Dragon_tamerScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I've been holding"
 	line "this pose for a"
 	cont "while now."
 	done
 
 CeladonUniversityClassroom1LadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "You meet some"
 	line "unique people in"
 	cont "art class, but"
@@ -180,18 +177,16 @@ CeladonUniversityClassroom1LadyScript:
 	done
 
 CeladonUniversityClassroom1Artist1Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "It's tough getting"
 	line "the folds of this"
 	cont "cape just right."
 	done
 
 CeladonUniversityClassroom1Artist2Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Aah-choo!"
 
 	para "Ugh. We just had a"
@@ -206,9 +201,8 @@ CeladonUniversityClassroom1Artist2Script:
 	done
 
 CeladonUniversityClassroom1Artist3Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I work a lot dur-"
 	line "ing the day, so I"
 
@@ -217,9 +211,8 @@ CeladonUniversityClassroom1Artist3Script:
 	done
 
 CeladonUniversityClassroom1Blackboard:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a descrip-"
 	line "tion of two-point"
 
@@ -228,9 +221,8 @@ CeladonUniversityClassroom1Blackboard:
 	done
 
 CeladonUniversityClassroom1Bookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "Smeargle, a"
 	cont "#mon artist."
@@ -240,9 +232,8 @@ CeladonUniversityClassroom1Bookshelf1:
 	done
 
 CeladonUniversityClassroom1Bookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a brochure"
 	line "showcasing fine"
 	cont "art from a place"

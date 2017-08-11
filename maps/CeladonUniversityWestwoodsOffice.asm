@@ -63,9 +63,8 @@ CeladonUniversityWestwoodsOfficeChildScript:
 	done
 
 CeladonUniversityWestwoodsOfficeBookScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Dear Diary,"
 
 	para "My work compiling"
@@ -89,25 +88,22 @@ CeladonUniversityWestwoodsOfficeBookScript:
 	done
 
 CeladonUniversityWestwoodsOfficeSignpost1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a portrait of"
 	line "Westwood I."
 	done
 
 CeladonUniversityWestwoodsOfficeSignpost2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a portrait of"
 	line "Westwood III."
 	done
 
 CeladonUniversityWestwoodsOfficeBookshelf:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "The Complete Works"
 	line "of Prof.Westwood."
 

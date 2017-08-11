@@ -1011,25 +1011,14 @@ Script_applyonemovement:
 	farcall SetFlagsForMovement_2
 	pop bc
 
-	ld a, [hROMBank]
-	push af
-	ld a, [ScriptBank]
-	rst Bankswitch
-
-	ld a, c
-	ld [wMovementPerson], a
-	ld a, [hROMBank]
-	ld [wMovementDataPointer], a
 	ld a, [ScriptPos]
-	ld [wMovementDataPointer + 1], a
+	ld l, a
 	ld a, [ScriptPos + 1]
-	ld [wMovementDataPointer + 2], a
-	farcall PrepareMovementDataPointer
-
-	pop hl
-	ld a, h
-	rst Bankswitch
-
+	ld h, a
+	call SkipTwoScriptBytes
+	ld a, [ScriptBank]
+	ld b, a
+	call GetMovementData
 	ret c
 
 	ld a, SCRIPT_WAIT_MOVEMENT

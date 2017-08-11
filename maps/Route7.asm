@@ -93,9 +93,8 @@ Route7Snorlax:
 	done
 
 Route7UndergroundPathSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "What's this flyer?"
 
 	para "“Uncouth trainers"
@@ -115,8 +114,7 @@ Route7UndergroundPathSign:
 	done
 
 Route7LockedDoor:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's locked…"
 	done

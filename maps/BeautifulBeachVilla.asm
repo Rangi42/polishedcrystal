@@ -22,36 +22,31 @@ BeautifulBeachVilla_MapEventHeader:
 	person_event SPRITE_BOOK_UNOWN_R, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DarachsBookNiteScript, -1
 
 DarachMornDayScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "TODO"
 	done
 
 DarachNiteScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "TODO"
 	done
 
 CaitlinMornDayScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "TODO"
 	done
 
 CaitlinNiteScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "TODO"
 	done
 
 DarachsBookNiteScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "TODO"
 	done

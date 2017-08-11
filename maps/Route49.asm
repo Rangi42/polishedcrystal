@@ -28,9 +28,8 @@ Route49_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 15, 20, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_49_CUT_TREE_2
 
 Route49LadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Look at the grass"
 	line "and trees here!"
 
@@ -39,9 +38,8 @@ Route49LadyScript:
 	done
 
 Route49YoungsterScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "This landscape"
 	line "makes me feel like"
 
@@ -172,9 +170,8 @@ Route49FruitTree:
 	fruittree FRUITTREE_ROUTE_49
 
 Route49Sign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Route 49"
 	line "Valencia Island"
 	done

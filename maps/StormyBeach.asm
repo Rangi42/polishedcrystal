@@ -131,9 +131,8 @@ TrainerPicnickerLily:
 	done
 
 StormyBeachSwimmermScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "We're here on a"
 	line "camping trip,"
 
@@ -142,9 +141,8 @@ StormyBeachSwimmermScript:
 	done
 
 StormyBeachGrampsScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Can you feel it in"
 	line "the air? A storm"
 	cont "is brewing."

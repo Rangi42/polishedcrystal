@@ -22,9 +22,8 @@ CeladonUniversityDeansOffice_MapEventHeader:
 	person_event SPRITE_DEAN, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityDeansOfficeDeanScript, -1
 
 CeladonUniversityDeansOfficeDeanScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "How-dean there,"
 	line "young trainer!"
 
@@ -40,18 +39,16 @@ CeladonUniversityDeansOfficeDeanScript:
 	done
 
 CeladonUniversityDeansOfficeSignpost1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's the Dean's"
 	line "graduate degree"
 	cont "in Education."
 	done
 
 CeladonUniversityDeansOfficeSignpost2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a picture of"
 	line "the Dean in what"
 
@@ -60,9 +57,8 @@ CeladonUniversityDeansOfficeSignpost2:
 	done
 
 CeladonUniversityDeansOfficeComputer:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a draft"
 	line "email asking"
 
@@ -71,9 +67,8 @@ CeladonUniversityDeansOfficeComputer:
 	done
 
 CeladonUniversityDeansOfficeBookshelf:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a complete set"
 	line "of books of the"
 

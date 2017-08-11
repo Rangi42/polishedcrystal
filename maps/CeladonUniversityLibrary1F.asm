@@ -43,9 +43,8 @@ const_value set 2
 	const CELADONUNIVERSITYLIBRARY1F_GAMEBOY_KID
 
 CeladonUniversityLibrary1FLadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "This library is on"
 	line "university"
 	cont "grounds, but it's"
@@ -57,17 +56,15 @@ CeladonUniversityLibrary1FLadyScript:
 	done
 
 CeladonUniversityLibrary1FGentlemanScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Shh! Can't you see"
 	line "I'm reading here?"
 	done
 
 CeladonUniversityLibrary1FCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Prof.Oak used to"
 	line "teach here, so the"
 
@@ -92,9 +89,8 @@ CeladonUniversityLibrary1FGameboyKidScript:
 	done
 
 CeladonUniversityLibrary1FPokefan_fScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "We have a mutual"
 	line "lending agreement"
 
@@ -141,9 +137,8 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	done
 
 CeladonUniversityLibrary1FTeacherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm the head"
 	line "librarian."
 
@@ -155,9 +150,8 @@ CeladonUniversityLibrary1FTeacherScript:
 	done
 
 CeladonUniversityLibrary1FBookScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "flower arranging."
 
@@ -166,9 +160,8 @@ CeladonUniversityLibrary1FBookScript:
 	done
 
 CeladonUniversityLibrary1FSignpost1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Please do not"
 	line "disturb students"
 
@@ -177,9 +170,8 @@ CeladonUniversityLibrary1FSignpost1:
 	done
 
 CeladonUniversityLibrary1FSignpost2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Please do not"
 	line "bring food or"
 
@@ -188,9 +180,8 @@ CeladonUniversityLibrary1FSignpost2:
 	done
 
 CeladonUniversityLibrary1FBookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Huh? Someone left"
 	line "an old photograph"
 	cont "in this book."
@@ -204,9 +195,8 @@ CeladonUniversityLibrary1FBookshelf1:
 	done
 
 CeladonUniversityLibrary1FBookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a photo album"
 	line "containing many"
 
@@ -219,9 +209,8 @@ CeladonUniversityLibrary1FBookshelf2:
 	done
 
 CeladonUniversityLibrary1FBookshelf3:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "a man who taught"
 
@@ -234,9 +223,8 @@ CeladonUniversityLibrary1FBookshelf3:
 	done
 
 CeladonUniversityLibrary1FBookshelf4:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "#mon palin-"
 	cont "dromes."
@@ -247,9 +235,8 @@ CeladonUniversityLibrary1FBookshelf4:
 	done
 
 CeladonUniversityLibrary1FBookshelf5:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "This book is about"
 	line "Toy #mon that"
 
@@ -262,9 +249,8 @@ CeladonUniversityLibrary1FBookshelf5:
 	done
 
 CeladonUniversityLibrary1FBookshelf6:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "a #mon puppet"
 	cont "that can't tell"
@@ -276,9 +262,8 @@ CeladonUniversityLibrary1FBookshelf6:
 	done
 
 CeladonUniversityLibrary1FBookshelf7:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a bo…"
 	line "wait…"
 
@@ -293,9 +278,8 @@ CeladonUniversityLibrary1FBookshelf7:
 	done
 
 CeladonUniversityLibrary1FBookshelf8:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book writ-"
 	line "ten by a fishing"
 	cont "guru providing"
@@ -309,9 +293,8 @@ CeladonUniversityLibrary1FBookshelf8:
 	done
 
 CeladonUniversityLibrary1FBookshelf9:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a manual"
 	line "explaining the"
 
@@ -320,9 +303,8 @@ CeladonUniversityLibrary1FBookshelf9:
 	done
 
 CeladonUniversityLibrary1FBookshelf10:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a cookbook"
 	line "full of #mon-"
 	cont "themed recipes!"
@@ -334,9 +316,8 @@ CeladonUniversityLibrary1FBookshelf10:
 	done
 
 CeladonUniversityLibrary1FBookshelf11:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a guide to"
 	line "Poffin blending."
 
@@ -346,9 +327,8 @@ CeladonUniversityLibrary1FBookshelf11:
 	done
 
 CeladonUniversityLibrary1FBookshelf12:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "“The Secret Life"
 	line "of Laughter” by"
 	cont "Joe King."

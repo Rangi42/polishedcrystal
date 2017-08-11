@@ -163,9 +163,8 @@ CeladonUniversityClassroom4RaymondScript:
 	done
 
 CeladonUniversityClassroom4CandelaScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Hi! I'm Candela."
 	line "I teach #mon"
 	cont "Battling!"
@@ -179,9 +178,8 @@ CeladonUniversityClassroom4CandelaScript:
 	done
 
 CeladonUniversityClassroom4TeacherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm just a sub-"
 	line "stitute."
 
@@ -194,9 +192,8 @@ CeladonUniversityClassroom4TeacherScript:
 	done
 
 CeladonUniversityClassroom4Bug_catcherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "My lecturer said"
 	line "my #mon could"
 
@@ -209,9 +206,8 @@ CeladonUniversityClassroom4Bug_catcherScript:
 	done
 
 CeladonUniversityClassroom4FisherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The prof said my"
 	line "#mon was a"
 	cont "wonder!"
@@ -221,9 +217,8 @@ CeladonUniversityClassroom4FisherScript:
 	done
 
 CeladonUniversityClassroom4LadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The professor said"
 	line "my #mon simply"
 	cont "amazed her."
@@ -273,9 +268,8 @@ CeladonUniversityClassroom4Rich_boyScript:
 	done
 
 CeladonUniversityClassroom4Blackboard:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Be aware of these"
 	line "factors in battle:"
 	cont "- Type chart"
@@ -323,9 +317,8 @@ CeladonUniversityClassroom4Bookshelf1:
 	done
 
 CeladonUniversityClassroom4Bookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a #mon"
 	line "coloring book."
 

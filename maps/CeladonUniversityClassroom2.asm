@@ -31,9 +31,8 @@ const_value set 2
 	const CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M
 
 CeladonUniversityClassroom2BlancheScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I am Blanche."
 	line "I teach History"
 	cont "here."
@@ -46,9 +45,8 @@ CeladonUniversityClassroom2BlancheScript:
 	done
 
 CeladonUniversityClassroom2TeacherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm afraid Blanche"
 	line "isn't available."
 
@@ -60,9 +58,8 @@ CeladonUniversityClassroom2TeacherScript:
 	done
 
 CeladonUniversityClassroom2YoungsterScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Flipping through"
 	line "my notes at the"
 	cont "speed of--YOW!"
@@ -70,9 +67,8 @@ CeladonUniversityClassroom2YoungsterScript:
 	done
 
 CeladonUniversityClassroom2ChildScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "We just had a"
 	line "lecture on Prof."
 
@@ -89,9 +85,8 @@ CeladonUniversityClassroom2ChildScript:
 	done
 
 CeladonUniversityClassroom2LadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "You're from Johto?"
 	line "That region has"
 
@@ -124,9 +119,8 @@ CeladonUniversityClassroom2CooltrainermScript:
 	done
 
 CeladonUniversityClassroom2Blackboard:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a timeline"
 	line "of recent history."
 
@@ -152,9 +146,8 @@ CeladonUniversityClassroom2Blackboard:
 	done
 
 CeladonUniversityClassroom2Bookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "how the Gong Tower"
 	cont "in Ecruteak City"
@@ -164,9 +157,8 @@ CeladonUniversityClassroom2Bookshelf1:
 	done
 
 CeladonUniversityClassroom2Bookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book of"
 	line "slang terms from"
 	cont "the 1980s."

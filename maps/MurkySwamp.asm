@@ -335,9 +335,8 @@ TrainerFisherDundee:
 	done
 
 MurkySwampYoungsterScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Man! This place is"
 	line "such a maze."
 

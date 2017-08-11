@@ -197,9 +197,8 @@ LinkReceptionistScript_Trade:
 	end
 
 Script_TradeCenterClosed:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm sorry--the"
 	line "Trade Machine is"
 	cont "being adjusted."
@@ -267,9 +266,8 @@ LinkReceptionistScript_Battle:
 	end
 
 Script_BattleRoomClosed:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm sorry--the"
 	line "Battle Machine is"
 	cont "being adjusted."

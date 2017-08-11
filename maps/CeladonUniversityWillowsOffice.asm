@@ -24,9 +24,8 @@ CeladonUniversityWillowsOffice_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityWillowsOfficeScientistScript, -1
 
 CeladonUniversityWillowsOfficeWillowScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Hello there!"
 	line "I am Prof.Willow."
 
@@ -52,9 +51,8 @@ CeladonUniversityWillowsOfficeWillowScript:
 	done
 
 CeladonUniversityWillowsOfficeScientistScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I get to work as"
 	line "Prof.Willow's"
 	cont "aide!"
@@ -70,9 +68,8 @@ CeladonUniversityWillowsOfficeScientistScript:
 	done
 
 CeladonUniversityWillowsOfficeBlackboard:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Someone wrote “DO"
 	line "NOT ERASE” with"
 
@@ -82,9 +79,8 @@ CeladonUniversityWillowsOfficeBlackboard:
 	done
 
 CeladonUniversityWillowsOfficeBookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a book about"
 	line "ecological niches"
 
@@ -94,9 +90,8 @@ CeladonUniversityWillowsOfficeBookshelf1:
 	done
 
 CeladonUniversityWillowsOfficeBookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a promotional"
 	line "flyer for the"
 	cont "Safari Zone."
@@ -107,9 +102,8 @@ CeladonUniversityWillowsOfficeBookshelf2:
 	done
 
 CeladonUniversityWillowsOfficeComputer:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "“Pokemon Transfer"
 	line "System” is on the"
 	cont "screen."

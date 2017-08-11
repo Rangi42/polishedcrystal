@@ -416,9 +416,8 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Prof.Westwood@"
 
 CeladonUniversityHyperTestRoomScientistScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The Hyper Test is"
 	line "a rite of passage"
 
@@ -432,17 +431,15 @@ CeladonUniversityHyperTestRoomScientistScript:
 	done
 
 CeladonUniversityHyperTestRoomTwin1Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'll pass the Hyper"
 	line "Test before you!"
 	done
 
 CeladonUniversityHyperTestRoomTwin2Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "No, I'll pass the"
 	line "Hyper Test before"
 	cont "you!"
@@ -454,17 +451,15 @@ CeladonUniversityHyperTestRoomMagikarpSign:
 	cry MAGIKARP
 	waitbutton
 	closepokepic
-	jumptext .Text
+	thistext
 
-.Text:
 	text "A Magikarp is"
 	line "swimming around."
 	done
 
 CeladonUniversityHyperTestRoomBookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "This book has a"
 	line "bookmark in it."
 
@@ -473,9 +468,8 @@ CeladonUniversityHyperTestRoomBookshelf1:
 	done
 
 CeladonUniversityHyperTestRoomBookshelf2:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a copy of"
 	line "Nintendo Power!"
 
@@ -485,9 +479,8 @@ CeladonUniversityHyperTestRoomBookshelf2:
 	done
 
 CeladonUniversityHyperTestRoomComputer:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a file on"
 	line "the desktop named"
 	cont "questions.txt."

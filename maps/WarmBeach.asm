@@ -81,9 +81,8 @@ TrainerAromaLadyHolly:
 	done
 
 WarmBeachCooltrainermScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "There's a #mon"
 	line "here that talks!"
 
@@ -95,9 +94,8 @@ WarmBeachCooltrainermScript:
 	done
 
 WarmBeachCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I've been selected"
 	line "as the festival"
 	cont "maiden this year,"
@@ -112,9 +110,8 @@ WarmBeachCooltrainerfScript:
 	done
 
 WarmBeachSlowkingScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "I could use"
 	line "pants…"
 	done
@@ -190,9 +187,8 @@ WarmBeachLassScript:
 	done
 
 WarmBeachLadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Those islands"
 	line "across the water"
 
@@ -210,16 +206,14 @@ WarmBeachLadyScript:
 	done
 
 WarmBeachShackSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Beach Shack"
 	done
 
 WarmBeachShrine:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's a shrine"
 	line "dedicated to the"
 

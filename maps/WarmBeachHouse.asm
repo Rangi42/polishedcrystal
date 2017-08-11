@@ -20,16 +20,14 @@ WarmBeachHouse_MapEventHeader:
 	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachHouseBookScript, -1
 
 WarmBeachHouseGrampsScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "TODO"
 	done
 
 WarmBeachHouseGrannyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "TODO"
 	done
 

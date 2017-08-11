@@ -146,9 +146,8 @@ KukuiScript:
 	done
 
 Route22CooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The name “Kanto”"
 	line "means “east of the"
 	cont "barrier.”"
@@ -159,9 +158,8 @@ Route22CooltrainerfScript:
 	done
 
 VictoryRoadEntranceSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Route 22"
 
 	para "#mon League"

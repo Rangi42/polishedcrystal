@@ -110,9 +110,8 @@ CeladonUniversity2FCooltrainerfScript:
 	done
 
 CeladonUniversity2FCooltrainermScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The cafeteria gets"
 	line "pretty crowded,"
 
@@ -121,9 +120,8 @@ CeladonUniversity2FCooltrainermScript:
 	done
 
 CeladonUniversity2FYoungster1Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I failed the"
 	line "Hyper Test again…"
 
@@ -132,18 +130,16 @@ CeladonUniversity2FYoungster1Script:
 	done
 
 CeladonUniversity2FCowgirlScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "My class is going"
 	line "on a field trip to"
 	cont "the Safari Zone!"
 	done
 
 CeladonUniversity2FBug_catcherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Prof.Willow sends"
 	line "his assistants to"
 
@@ -155,9 +151,8 @@ CeladonUniversity2FBug_catcherScript:
 	done
 
 CeladonUniversity2FLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "In addition to"
 	line "being the Celadon"
 	cont "Gym Leader,"
@@ -171,9 +166,8 @@ CeladonUniversity2FLassScript:
 	done
 
 CeladonUniversity2FYoungster2Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Prof.Westwood is a"
 	line "little eccentric."
 
@@ -185,38 +179,33 @@ CeladonUniversity2FYoungster2Script:
 	done
 
 CeladonUniversity2FCafeteriaSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Cafeteria"
 	done
 
 CeladonUniversity2FHyperTestSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Hyper Test Room"
 	done
 
 CeladonUniversity2FPoolSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Swimming Pool"
 	done
 
 CeladonUniversity2FWillowsOfficeSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Prof.Willow's"
 	line "Office"
 	done
 
 CeladonUniversity2FWestwoodsOfficeSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Prof.Westwood's"
 	line "Office"
 	done
@@ -227,9 +216,8 @@ CeladonUniversity2FMagikarpSign:
 	cry MAGIKARP
 	waitbutton
 	closepokepic
-	jumptext .Text
+	thistext
 
-.Text:
 	text "A Magikarp is"
 	line "swimming around."
 	done
@@ -239,9 +227,8 @@ CeladonUniversity2FCuboneSign:
 	trainerpic CUBONE_ARMOR
 	waitbutton
 	closepokepic
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's the Thick Club"
 	line "and skull helmet"
 	cont "of a Cubone."

@@ -69,9 +69,8 @@ ValenciaPortSailorScript:
 	step_end
 
 ValenciaPortFisherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Have you noticed"
 	line "the sea?"
 

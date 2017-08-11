@@ -280,9 +280,8 @@ IvysLabWindowText:
 
 PokemonJournalProfIvyScript:
 	setflag ENGINE_READ_PROF_IVY_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"

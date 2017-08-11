@@ -15,8 +15,8 @@ RockyBeach_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 24, 22, SIGNPOST_READ, RockyBeachSignpost1
-	signpost 10, 24, SIGNPOST_READ, RockyBeachSignpost2
+	signpost 24, 22, SIGNPOST_JUMPTEXT, RockyBeachSign1Text
+	signpost 10, 24, SIGNPOST_JUMPTEXT, RockyBeachSign2Text
 
 .PersonEvents: db 11
 	person_event SPRITE_SIGHTSEER_M, 21, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermBlaise, -1
@@ -25,7 +25,7 @@ RockyBeach_MapEventHeader:
 	person_event SPRITE_LADY, 18, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyHeather, -1
 	person_event SPRITE_BREEDER, 13, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerBreederBrenda, -1
 	person_event SPRITE_SWIMMER_GUY, 7, 14, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermEzra, -1
-	person_event SPRITE_YOUNGSTER, 10, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, RockyBeachYoungsterScript, EVENT_NOISY_FOREST_PIKABLU
+	person_event SPRITE_YOUNGSTER, 10, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, RockyBeachYoungsterScript, EVENT_NOISY_FOREST_PIKABLU
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_HEAL, 1, EVENT_ROCKY_BEACH_FULL_HEAL
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PEARL_STRING, 1, EVENT_ROCKY_BEACH_PEARL_STRING
 	person_event SPRITE_FISHER, 32, 20, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiIslandFisherText, -1
@@ -34,6 +34,18 @@ RockyBeach_MapEventHeader:
 RockyBeachRebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_BRENDA
 	return
+
+RockyBeachSign1Text:
+	text "Rocky Beach"
+	done
+
+RockyBeachSign2Text:
+	text "Noisy Forest"
+	line "Ahead"
+
+	para "Thru to"
+	line "Shrine Ruins"
+	done
 
 TrainerSightseermBlaise:
 	trainer EVENT_BEAT_SIGHTSEERM_BLAISE, SIGHTSEERM, BLAISE, .SeenText, .BeatenText, 0, .Script
@@ -206,13 +218,9 @@ TrainerSwimmermEzra:
 	done
 
 RockyBeachYoungsterScript:
-	trainer EVENT_TOLD_ABOUT_PIKABLU, 0, 0, .Text1, 0, 0, .Script
+	generictrainer EVENT_TOLD_ABOUT_PIKABLU, 0, 0, .Text1, 0
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .Text1
-
-.Text1:
+.Text1
 	text "Oh, no. Oh, no…"
 
 	para "My Pikablu is"
@@ -227,22 +235,4 @@ RockyBeachYoungsterScript:
 
 	para "Oh, what should I"
 	line "do…?"
-	done
-
-RockyBeachSignpost1:
-	jumptext .Text
-
-.Text:
-	text "Rocky Beach"
-	done
-
-RockyBeachSignpost2:
-	jumptext .Text
-
-.Text:
-	text "Noisy Forest"
-	line "Ahead"
-
-	para "Thru to"
-	line "Shrine Ruins"
 	done

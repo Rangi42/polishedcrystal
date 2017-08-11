@@ -25,9 +25,8 @@ ValenciaIsland_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 18, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 
 ValenciaIslandCooltrainermScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "A couple of strong"
 	line "trainers live in"
 	cont "that house."
@@ -61,9 +60,8 @@ ValenciaIslandYoungsterScript:
 	done
 
 ValenciaIslandSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Valencia Island"
 
 	para "Bitter Oranges"
@@ -71,9 +69,8 @@ ValenciaIslandSign:
 	done
 
 ValenciaIslandGoneFishingSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Gone Fishing"
 
 	para "(On vacation"
@@ -81,23 +78,20 @@ ValenciaIslandGoneFishingSign:
 	done
 
 ValenciaIslandLockedDoor:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's locked…"
 	done
 
 IvysLabSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Ivy Research"
 	line "№.2 Bayview"
 	done
 
 IvysHouseSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Ivy's House"
 	done

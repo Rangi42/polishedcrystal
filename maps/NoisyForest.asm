@@ -283,9 +283,8 @@ TrainerBird_keeperTrent:
 	done
 
 NoisyForestTeacherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I come here for my"
 	line "morning stroll."
 
@@ -295,9 +294,8 @@ NoisyForestTeacherScript:
 	done
 
 NoisyForestChildScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Gah! This place"
 	line "is deafening!"
 	done

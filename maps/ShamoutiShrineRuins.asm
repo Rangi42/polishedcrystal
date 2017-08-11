@@ -155,9 +155,8 @@ ShamoutiShrineRuinsLawrenceScript:
 	done
 
 ShamoutiShrineRuinsGrampsScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "This shrine was"
 	line "magnificent when"
 	cont "I was a child."
@@ -183,9 +182,8 @@ ShamoutiShrineRuinsGrampsScript:
 	done
 
 ShamoutiShrineRuinsLadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I simply had to"
 	line "stop at Shamouti"
 

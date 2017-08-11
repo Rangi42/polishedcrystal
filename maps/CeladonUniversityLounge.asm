@@ -159,9 +159,8 @@ CeladonUniversityLoungeNeeshaScript:
 	done
 
 CeladonUniversityLoungeLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Next month we're"
 	line "going on a trip"
 	cont "to Mt.Moon."
@@ -171,9 +170,8 @@ CeladonUniversityLoungeLassScript:
 	done
 
 CeladonUniversityLoungeRichBoyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Have you ever"
 	line "wondered why"
 
@@ -187,9 +185,8 @@ CeladonUniversityLoungeRichBoyScript:
 	done
 
 CeladonUniversityLoungeCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "#mon with"
 	line "reduced physical"
 
@@ -199,9 +196,8 @@ CeladonUniversityLoungeCooltrainerfScript:
 	done
 
 CeladonUniversityLoungeSuper_nerd1Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "What do you get if"
 	line "you cross a joke"
 
@@ -212,9 +208,8 @@ CeladonUniversityLoungeSuper_nerd1Script:
 	done
 
 CeladonUniversityLoungeSuper_nerd2Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm writing scripts"
 	line "for a game."
 
@@ -223,9 +218,8 @@ CeladonUniversityLoungeSuper_nerd2Script:
 	done
 
 CeladonUniversityLoungeBookshelf1:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's stuffed full"
 	line "of copies of"
 	cont "#mon manga!"
@@ -261,9 +255,8 @@ CeladonUniversityLoungeBookshelf2:
 	done
 
 CeladonUniversityLoungeComputer:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a player"
 	line "character running"
 

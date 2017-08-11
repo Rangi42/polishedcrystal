@@ -150,9 +150,8 @@ TrainerBeautyNicole:
 	done
 
 Route16WestSignpost:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Route 16"
 	done
 

@@ -218,9 +218,8 @@ TrainerEngineerSmith:
 	done
 
 DiglettsCaveCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Look at all these"
 	line "cute Diglett!"
 
@@ -229,9 +228,8 @@ DiglettsCaveCooltrainerfScript:
 	done
 
 PokefanMScript_0x74002:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 if DEF(FAITHFUL)
 	text "A bunch of Diglett"
 	line "popped out of the"

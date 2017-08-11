@@ -153,9 +153,8 @@ TrainerHikerTony:
 	done
 
 CherrygroveBayFisherScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I can watch"
 	line "Cherrygrove City"
 

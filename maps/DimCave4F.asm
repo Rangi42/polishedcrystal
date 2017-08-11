@@ -61,9 +61,8 @@ DimCave4FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	jumptext .Text
+	thistext
 
-.Text:
 	text "The boulder fell"
 	line "through."
 	done
@@ -137,9 +136,8 @@ TrainerScientistNigel:
 	done
 
 DimCave4FSuper_nerdScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm walking along"
 	line "the tracks, just"
 
@@ -154,9 +152,8 @@ DimCave4FSuper_nerdScript:
 	done
 
 DimCave4FFallenBoulderScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's stuck on the"
 	line "button."
 	done

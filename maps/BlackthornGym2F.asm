@@ -61,9 +61,8 @@ BlackthornGym2FBoulders:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	jumptext .Text
+	thistext
 
-.Text:
 	text "The boulder fell"
 	line "through!"
 	done

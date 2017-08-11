@@ -46,9 +46,8 @@ CeladonUniversity1F_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainerfScript, -1
 
 CeladonUniversity1FSuperNerdScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Some academics be-"
 	line "lieve there are"
 
@@ -67,9 +66,8 @@ CeladonUniversity1FSuperNerdScript:
 	done
 
 CeladonUniversity1FLassScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "This place offers"
 	line "courses of study"
 
@@ -81,9 +79,8 @@ CeladonUniversity1FLassScript:
 	done
 
 CeladonUniversity1FCooltrainermScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Everyone at this"
 	line "university is a"
 	cont "#mon trainer."
@@ -97,9 +94,8 @@ CeladonUniversity1FCooltrainermScript:
 	done
 
 CeladonUniversity1FYoungsterScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Magikarp is the"
 	line "university's mascot"
 	cont "#mon."
@@ -110,9 +106,8 @@ CeladonUniversity1FYoungsterScript:
 	done
 
 CeladonUniversity1FChildScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Ugh! I can't find"
 	line "my next class…"
 
@@ -120,9 +115,8 @@ CeladonUniversity1FChildScript:
 	done
 
 CeladonUniversity1FPokefanmScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm the janitor!"
 
 	para "Be careful, the"
@@ -130,9 +124,8 @@ CeladonUniversity1FPokefanmScript:
 	done
 
 CeladonUniversity1FReceptionistScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Welcome to Celadon"
 	line "University!"
 
@@ -154,9 +147,8 @@ CeladonUniversity1FReceptionistScript:
 	done
 
 CeladonUniversity1FCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm studying to be"
 	line "a #mon nurse."
 
@@ -168,67 +160,58 @@ CeladonUniversity1FCooltrainerfScript:
 	done
 
 CeladonUniversity1FDeansOfficeSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Dean's Office"
 	done
 
 CeladonUniversity1FClassroom1Sign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "W2 Art"
 	done
 
 CeladonUniversity1FClassroom2Sign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "W1 History"
 	done
 
 CeladonUniversity1FClassroom3Sign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "E1 Science"
 	done
 
 CeladonUniversity1FClassroom4Sign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "E2 Battling"
 	done
 
 CeladonUniversity1FStudentLoungeSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Student Lounge"
 	done
 
 CeladonUniversity1FLibrarySign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Library"
 	done
 
 CeladonUniversity1FTrophyCaseSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "The case is full"
 	line "of trophies and"
 	cont "medals."
 	done
 
 CeladonUniversity1FBookshelf:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There are tons of"
 	line "yearbooks here."
 

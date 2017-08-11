@@ -62,9 +62,8 @@ DimCave3FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	jumptext .Text
+	thistext
 
-.Text:
 	text "The boulder fell"
 	line "through."
 	done
@@ -179,9 +178,8 @@ DimCave3FPokefanmScript:
 	done
 
 DimCave3FFallenBoulderScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's stuck on the"
 	line "button."
 	done

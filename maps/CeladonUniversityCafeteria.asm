@@ -159,9 +159,8 @@ CeladonUniversityCafeteriaCoreyScript:
 	done
 
 CeladonUniversityCafeteriaCooltrainerfScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "This place makes"
 	line "the best Cinnabar-"
 	cont "style hamburger"
@@ -174,9 +173,8 @@ CeladonUniversityCafeteriaCooltrainerfScript:
 	done
 
 CeladonUniversityCafeteriaBeautyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "The cook finally"
 	line "made another batch"
 	cont "of Old Gateau!"
@@ -186,9 +184,8 @@ CeladonUniversityCafeteriaBeautyScript:
 	done
 
 CeladonUniversityCafeteriaYoungster1Script:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I asked the cafe-"
 	line "teria to stock"
 	cont "Casteliacones."
@@ -199,9 +196,8 @@ CeladonUniversityCafeteriaYoungster1Script:
 	done
 
 CeladonUniversityCafeteriaLadyScript:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "I'm on a diet."
 	line "Today it's a"
 	para "nutritious Slip"
@@ -311,9 +307,8 @@ CeladonUniversityCafeteriaBakerScript:
 	done
 
 CeladonUniversityCafeteriaSign:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "Please clean up"
 	line "when you are"
 	cont "finished eating."
