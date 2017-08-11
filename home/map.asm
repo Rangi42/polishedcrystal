@@ -1102,6 +1102,9 @@ ObjectEventText::
 	db "@"
 ; 0x26f7
 
+EndEvent::
+	end
+
 CheckObjectMask:: ; 2707
 	ld a, [hMapObjectIndexBuffer]
 	ld e, a

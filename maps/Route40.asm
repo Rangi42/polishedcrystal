@@ -13,7 +13,7 @@ Route40_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 10, 14, SIGNPOST_READ, Route40Sign
+	signpost 10, 14, SIGNPOST_JUMPTEXT, Route40SignText
 	signpost 8, 7, SIGNPOST_ITEM, Route40HiddenHyperPotion
 
 .PersonEvents: db 12
@@ -22,9 +22,9 @@ Route40_MapEventHeader:
 	person_event SPRITE_SWIMMER_GUY, 31, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermRandall, -1
 	person_event SPRITE_SWIMMER_GIRL, 19, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfElaine, -1
 	person_event SPRITE_SWIMMER_GIRL, 25, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route40Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route40Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route40Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_LASS, 13, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a61c4, -1
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a61c7, -1
 	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x1a61d3, -1
@@ -105,12 +105,12 @@ YoungsterScript_0x1a61d6:
 	jumptextfaceplayer UnknownText_0x1a6564
 
 MonicaScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
-	iftrue MonicaMondayScript
+	jumptextfaceplayer_iftrue MonicaMondayText
 	checkcode VAR_WEEKDAY
 	if_not_equal MONDAY, MonicaNotMondayScript
+	faceplayer
+	opentext
 	checkevent EVENT_MET_MONICA_OF_MONDAY
 	iftrue .MetMonica
 	writetext MeetMonicaText
@@ -122,29 +122,13 @@ MonicaScript:
 	verbosegiveitem SHARP_BEAK
 	iffalse MonicaDoneScript
 	setevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
-	writetext MonicaGaveGiftText
-	waitbutton
-	closetext
-	end
-
-MonicaMondayScript:
-	writetext MonicaMondayText
-	waitbutton
-MonicaDoneScript:
-	closetext
-	end
+	jumpopenedtext MonicaGaveGiftText
 
 MonicaNotMondayScript:
-	writetext MonicaNotMondayText
-	waitbutton
-	closetext
+	jumptextfaceplayer MonicaNotMondayText
+
+MonicaDoneScript:
 	end
-
-Route40Sign:
-	jumptext Route40SignText
-
-Route40Rock:
-	jumpstd smashrock
 
 Route40HiddenHyperPotion:
 	dwb EVENT_ROUTE_40_HIDDEN_HYPER_POTION, HYPER_POTION

@@ -14,15 +14,19 @@ Route19_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 15, 11, SIGNPOST_READ, Route19Sign
-	signpost -1, 11, SIGNPOST_READ, CarefulSwimmingSign
+	signpost 15, 11, SIGNPOST_JUMPTEXT, Route19SignText
+	signpost -1, 11, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
 	signpost 3, 5, SIGNPOST_ITEM, Route19HiddenRevive
 	signpost 11, 3, SIGNPOST_ITEM, Route19HiddenMaxRevive
 	signpost 15, 5, SIGNPOST_ITEM, Route19HiddenPearl1
 	signpost 13, 13, SIGNPOST_ITEM, Route19HiddenPearl2
 
 .PersonEvents: db 13
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 11, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 11, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_SWIMMER_GIRL, 34, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfDawn, -1
 	person_event SPRITE_SWIMMER_GUY, 34, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermTucker, -1
 	person_event SPRITE_SWIMMER_GUY, 20, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
@@ -31,13 +35,9 @@ Route19_MapEventHeader:
 	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
 	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 52, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_PEARL, 1, EVENT_ROUTE_19_BIG_PEARL
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route19Rock, -1
 
 const_value set 2
-	const ROUTE19_ROCK2
+	const ROUTE19_ROCK1
 
 Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
@@ -48,7 +48,7 @@ Route19ClearRocks:
 	changeblock $6, $6, $7a
 	changeblock $c, $6, $7a
 	changeblock $8, $8, $7a
-	disappear ROUTE19_ROCK2
+	disappear ROUTE19_ROCK1
 .Done:
 	return
 
@@ -108,45 +108,14 @@ CosplayerBrookeScript:
 	end
 
 EngineerScript_0x19ea4d:
-	faceplayer
-	opentext
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue UnknownScript_0x19ea5b
-	writetext UnknownText_0x19ecaf
-	waitbutton
-	closetext
-	end
-
-UnknownScript_0x19ea5b:
-	writetext UnknownText_0x19ed24
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer_iftrue UnknownText_0x19ecaf
+	jumptextfaceplayer UnknownText_0x19ed24
 
 EngineerScript_0x19ea61:
-	faceplayer
-	opentext
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue .RocksCleared
-	writetext Route19EngineerText1
-	waitbutton
-	closetext
-	end
-
-.RocksCleared:
-	writetext Route19EngineerText2
-	waitbutton
-	closetext
-	end
-
-Route19Rock:
-	jumpstd smashrock
-
-Route19Sign:
-	jumptext Route19SignText
-
-CarefulSwimmingSign:
-	jumptext CarefulSwimmingSignText
+	jumptextfaceplayer_iftrue Route19EngineerText2
+	jumptextfaceplayer Route19EngineerText1
 
 Route19HiddenRevive:
 	dwb EVENT_ROUTE_19_HIDDEN_REVIVE, REVIVE

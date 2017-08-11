@@ -23,7 +23,7 @@ DimCave3F_MapEventHeader:
 	signpost 6, 26, SIGNPOST_ITEM, DimCave3FHiddenZinc
 
 .PersonEvents: db 9
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FBoulder, EVENT_BOULDER_IN_DIM_CAVE_3F
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, EVENT_BOULDER_IN_DIM_CAVE_3F
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
 	person_event SPRITE_ENGINEER, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
 	person_event SPRITE_BLACK_BELT, 11, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
@@ -207,9 +207,6 @@ DimCave3FFallenBoulderScript:
 	text "It's stuck on the"
 	line "button."
 	done
-
-DimCave3FBoulder:
-	jumpstd strengthboulder
 
 DimCave3FHiddenStarPiece:
 	dwb EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE, STAR_PIECE

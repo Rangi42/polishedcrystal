@@ -24,7 +24,7 @@ RockTunnelB1F_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 17, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_ROCK_TUNNEL_B1F_PP_UP
 	person_event SPRITE_BALL_CUT_FRUIT, 2, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_ROCK_TUNNEL_B1F_REVIVE
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 25, 10, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockTunnelB1FBoulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 25, 10, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, -1
 
 TrainerFirebreatherDick:
 	trainer EVENT_BEAT_FIREBREATHER_DICK, FIREBREATHER, DICK, FirebreatherDickSeenText, FirebreatherDickBeatenText, 0, FirebreatherDickScript
@@ -50,9 +50,6 @@ HexManiacVivianScript:
 
 RockTunnelB1FHiddenMaxPotion:
 	dwb EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION, MAX_POTION
-
-RockTunnelB1FBoulder:
-	jumpstd strengthboulder
 
 FirebreatherDickSeenText:
 	text "I'm using fire to"

@@ -13,21 +13,15 @@ IcePathB3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 3, 16, SIGNPOST_READ, MapIcePathB3FIceRockScript
+	signpost 3, 16, SIGNPOST_JUMPTEXT, Text_IcePathB3FIceRock
 
 .PersonEvents: db 3
 	person_event SPRITE_LORELEI, 2, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB3FRock, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 
 const_value set 2
 	const ICEPATHB3F_LORELEI
-
-IcePathB3FRock:
-	jumpstd smashrock
-
-MapIcePathB3FIceRockScript:
-	jumptext Text_IcePathB3FIceRock
 
 LoreleiScript:
 	faceplayer
@@ -60,16 +54,10 @@ LoreleiAfterIntroScript:
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 LoreleiAfterScript:
-	writetext LoreleiAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LoreleiAfterText
 
 LoreleiNoBattleScript:
-	writetext LoreleiNoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LoreleiNoBattleText
 
 LoreleiRematchScript:
 	checkevent EVENT_BEAT_LORELEI_AGAIN

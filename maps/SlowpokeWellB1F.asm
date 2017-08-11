@@ -22,7 +22,7 @@ SlowpokeWellB1F_MapEventHeader:
 	person_event SPRITE_KURT, 14, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x5a5d5, EVENT_SLOWPOKE_WELL_KURT
 	person_event SPRITE_SLOWPOKE, 4, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a681, EVENT_SLOWPOKE_WELL_SLOWPOKES
 	person_event SPRITE_SLOWPOKE, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a695, EVENT_SLOWPOKE_WELL_SLOWPOKES
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeWellB1FBoulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 2, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, strengthboulder, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
 const_value set 2
@@ -40,11 +40,7 @@ TrainerGruntM29:
 
 GruntM29Script:
 	end_if_just_battled
-	opentext
-	writetext TrainerGruntM29SlowpokeProfitText
-	waitbutton
-	closetext
-	end
+	jumptext TrainerGruntM29SlowpokeProfitText
 
 TrainerProton2:
 	trainer EVENT_BEAT_PROTON_2, PROTON, PROTON2, Proton2SeenText, Proton2BeatenText, 0, Proton2Script
@@ -104,11 +100,7 @@ TrainerGruntF1:
 
 GruntF1Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5ab8d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ab8d
 
 SlowpokeScript_0x5a681:
 	faceplayer
@@ -121,10 +113,7 @@ SlowpokeScript_0x5a681:
 	end
 
 UnknownScript_0x5a68f:
-	writetext UnknownText_0x5ac09
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5ac09
 
 SlowpokeScript_0x5a695:
 	faceplayer
@@ -134,9 +123,6 @@ SlowpokeScript_0x5a695:
 	waitbutton
 	closetext
 	end
-
-SlowpokeWellB1FBoulder:
-	jumpstd strengthboulder
 
 KurtSlowpokeWellVictoryMovementData:
 	step_left
