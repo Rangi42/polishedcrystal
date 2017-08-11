@@ -818,12 +818,13 @@ ParasEvosAttacks:
 	db 33, GROWTH
 	db 38, GIGA_DRAIN
 	db 43, LEECH_LIFE ; Aromatherapy → TM move
-	db 49, MORNING_SUN ; Rage Powder → new move
+	db 49, MOONLIGHT ; Rage Powder → new move
 	db 54, X_SCISSOR
 	db 0 ; no more level-up moves
 
 ParasectEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, SHADOW_CLAW ; evolution move
 	db 1, SCRATCH
 	db 6, STUN_SPORE
 	db 6, POISONPOWDER
@@ -834,7 +835,7 @@ ParasectEvosAttacks:
 	db 37, GROWTH
 	db 44, GIGA_DRAIN
 	db 51, LEECH_LIFE ; Aromatherapy → TM move
-	db 59, MORNING_SUN ; Rage Powder → new move
+	db 59, MOONLIGHT ; Rage Powder → new move
 	db 66, X_SCISSOR
 	db 0 ; no more level-up moves
 
@@ -1431,6 +1432,7 @@ RapidashEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POISON_JAB
 	db 1, MEGAHORN
+	db 1, PLAY_ROUGH ; new move
 	db 1, GROWL
 	db 1, TACKLE
 	db 1, FURY_ATTACK ; evolution move
@@ -3504,13 +3506,13 @@ AmpharosEvosAttacks:
 
 BellossomEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, PETAL_DANCE ; evolution move
 	db 1, MEGA_DRAIN
 	db 1, HEAL_BELL ; new move
 	db 1, SUNNY_DAY
 	db 1, STUN_SPORE
 	db 1, GROWTH
-	db 69, SOLAR_BEAM ; Leaf Storm → TM move
+	db 59, PETAL_DANCE ; evolution move
+	db 64, SOLAR_BEAM ; Leaf Storm → TM move
 	db 0 ; no more level-up moves
 
 RhyperiorEvosAttacks:
@@ -4872,7 +4874,7 @@ CelebiEvosAttacks:
 	db 19, ENERGY_BALL ; Magical Leaf → TM move
 	db 28, ANCIENTPOWER
 	db 37, BATON_PASS
-	db 46, PSYCHIC_M ; Natural Gift → TM move
+	db 46, MOONBLAST ; Natural Gift → new move
 	db 55, LIGHT_SCREEN ; Heal Block → TM move
 	db 64, FUTURE_SIGHT
 	db 73, HEAL_BELL ; Healing Wish → Heal Bell

@@ -157,6 +157,7 @@ ParasEggMoves:
 	db PSYBEAM
 	db PURSUIT
 	db SCREECH
+	db SHADOW_CLAW
 	db $ff
 
 VenonatEggMoves:
@@ -277,6 +278,7 @@ PonytaEggMoves:
 	db QUICK_ATTACK
 	db FLAME_WHEEL
 	db EXTREMESPEED
+	db PLAY_ROUGH
 	db $ff
 
 SlowpokeEggMoves:

@@ -7,6 +7,7 @@ INCLUDE "maps/EcruteakPokeCenter1F.asm"
 INCLUDE "maps/OlivinePokeCenter1F.asm"
 INCLUDE "maps/CianwoodPokeCenter1F.asm"
 
+
 SECTION "Pokemon Center Scripts 2", ROMX
 
 INCLUDE "maps/MahoganyPokeCenter1F.asm"
@@ -16,6 +17,7 @@ INCLUDE "maps/ViridianPokeCenter1F.asm"
 INCLUDE "maps/PewterPokeCenter1F.asm"
 INCLUDE "maps/CeruleanPokeCenter1F.asm"
 
+
 SECTION "Pokemon Center Scripts 3", ROMX
 
 INCLUDE "maps/VermilionPokeCenter1F.asm"
@@ -24,6 +26,7 @@ INCLUDE "maps/CeladonPokeCenter1F.asm"
 INCLUDE "maps/SaffronPokeCenter1F.asm"
 INCLUDE "maps/FuchsiaPokeCenter1F.asm"
 INCLUDE "maps/CinnabarPokeCenter1F.asm"
+
 
 SECTION "Pokemon Center Scripts 4", ROMX
 
@@ -35,11 +38,13 @@ INCLUDE "maps/Route32PokeCenter1F.asm"
 INCLUDE "maps/GoldenrodPokeComCenter1F.asm"
 INCLUDE "maps/GoldenrodPokeComCenterOffice.asm"
 
+
 SECTION "Special Map Scripts", ROMX
 
 INCLUDE "maps/PokeCenter2F.asm"
 INCLUDE "maps/TradeCenter.asm"
 INCLUDE "maps/Colosseum.asm"
+
 
 SECTION "Battle Tower Scripts", ROMX
 
@@ -50,6 +55,7 @@ INCLUDE "maps/BattleTowerElevator.asm"
 INCLUDE "maps/BattleTowerHallway.asm"
 INCLUDE "maps/BattleTowerOutside.asm"
 
+
 SECTION "New Bark Scripts", ROMX
 
 INCLUDE "maps/NewBarkTown.asm"
@@ -57,12 +63,14 @@ INCLUDE "maps/ElmsHouse.asm"
 INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/KrissNeighborsHouse.asm"
 
+
 SECTION "New Bark Scripts 2", ROMX
 
 INCLUDE "maps/KrissHouse1F.asm"
 INCLUDE "maps/KrissHouse2F.asm"
 INCLUDE "maps/LyrasHouse1F.asm"
 INCLUDE "maps/LyrasHouse2F.asm"
+
 
 SECTION "Cherrygrove Scripts", ROMX
 
@@ -73,16 +81,19 @@ INCLUDE "maps/CherrygroveGymSpeechHouse.asm"
 INCLUDE "maps/GuideGentsHouse.asm"
 INCLUDE "maps/MrPokemonsHouse.asm"
 
+
 SECTION "Cherrygrove Bay Scripts", ROMX
 
 INCLUDE "maps/CherrygroveBay.asm"
 INCLUDE "maps/Route32Coast.asm"
 INCLUDE "maps/Route32CoastHouse.asm"
 
+
 SECTION "Dark Cave Scripts", ROMX
 
 INCLUDE "maps/DarkCaveVioletEntrance.asm"
 INCLUDE "maps/DarkCaveBlackthornEntrance.asm"
+
 
 SECTION "Violet Scripts", ROMX
 
@@ -93,11 +104,13 @@ INCLUDE "maps/VioletNicknameSpeechHouse.asm"
 INCLUDE "maps/VioletOnixTradeHouse.asm"
 INCLUDE "maps/EarlsPokemonAcademy.asm"
 
+
 SECTION "Sprout Tower Scripts", ROMX
 
 INCLUDE "maps/SproutTower1F.asm"
 INCLUDE "maps/SproutTower2F.asm"
 INCLUDE "maps/SproutTower3F.asm"
+
 
 SECTION "Ruins of Alph Scripts", ROMX
 
@@ -106,6 +119,7 @@ INCLUDE "maps/RuinsofAlphResearchCenter.asm"
 INCLUDE "maps/RuinsofAlphEntranceChamber.asm"
 INCLUDE "maps/RuinsofAlphInnerChamber.asm"
 INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
+
 
 SECTION "Ruins of Alph Scripts 2", ROMX
 
@@ -122,11 +136,13 @@ INCLUDE "maps/RuinsofAlphHoOhWordRoom.asm"
 INCLUDE "maps/RuinsofAlphKabutoWordRoom.asm"
 INCLUDE "maps/RuinsofAlphOmanyteWordRoom.asm"
 
+
 SECTION "Sinjoh Ruins Scripts", ROMX
 
 INCLUDE "maps/SinjohRuins.asm"
 INCLUDE "maps/SinjohRuinsHouse.asm"
 INCLUDE "maps/MystriStage.asm"
+
 
 SECTION "Union Cave Scripts", ROMX
 
@@ -134,6 +150,7 @@ INCLUDE "maps/UnionCave1F.asm"
 INCLUDE "maps/UnionCaveB1FNorth.asm"
 INCLUDE "maps/UnionCaveB1FSouth.asm"
 INCLUDE "maps/UnionCaveB2F.asm"
+
 
 SECTION "Azalea Scripts", ROMX
 
@@ -143,10 +160,12 @@ INCLUDE "maps/AzaleaGym.asm"
 INCLUDE "maps/CharcoalKiln.asm"
 INCLUDE "maps/KurtsHouse.asm"
 
+
 SECTION "Slowpoke Well Scripts", ROMX
 
 INCLUDE "maps/SlowpokeWellB1F.asm"
 INCLUDE "maps/SlowpokeWellB2F.asm"
+
 
 SECTION "Ilex Forest Scripts", ROMX
 
@@ -154,11 +173,13 @@ INCLUDE "maps/IlexForest.asm"
 INCLUDE "maps/IlexForestAzaleaGate.asm"
 INCLUDE "maps/Route34IlexForestGate.asm"
 
+
 SECTION "Murky Swamp Scripts", ROMX
 
 INCLUDE "maps/MurkySwamp.asm"
 INCLUDE "maps/StormyBeach.asm"
 INCLUDE "maps/Route34Coast.asm"
+
 
 SECTION "Goldenrod Scripts", ROMX
 
@@ -166,6 +187,7 @@ INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/GoldenrodGym.asm"
 INCLUDE "maps/GoldenrodGameCorner.asm"
 INCLUDE "maps/DayCare.asm"
+
 
 SECTION "Goldenrod Scripts 2", ROMX
 
@@ -177,6 +199,7 @@ INCLUDE "maps/GoldenrodHappinessRater.asm"
 INCLUDE "maps/GoldenrodMagnetTrainStation.asm"
 INCLUDE "maps/GoldenrodNameRater.asm"
 
+
 SECTION "Goldenrod Scripts 3", ROMX
 
 INCLUDE "maps/GoldenrodHarbor.asm"
@@ -185,6 +208,7 @@ INCLUDE "maps/GoldenrodBandHouse.asm"
 INCLUDE "maps/GoldenrodNetBallHouse.asm"
 INCLUDE "maps/GoldenrodPPSpeechHouse.asm"
 INCLUDE "maps/GoldenrodSpeechHouse.asm"
+
 
 SECTION "Goldenrod Dept Store Scripts", ROMX
 
@@ -198,6 +222,7 @@ INCLUDE "maps/GoldenrodDeptStoreB1F.asm"
 INCLUDE "maps/GoldenrodDeptStoreElevator.asm"
 INCLUDE "maps/GoldenrodDeptStoreRoof.asm"
 
+
 SECTION "Radio Tower Scripts", ROMX
 
 INCLUDE "maps/RadioTower1F.asm"
@@ -206,16 +231,19 @@ INCLUDE "maps/RadioTower3F.asm"
 INCLUDE "maps/RadioTower4F.asm"
 INCLUDE "maps/RadioTower5F.asm"
 
+
 SECTION "Underground Warehouse Scripts", ROMX
 
 INCLUDE "maps/UndergroundWarehouse.asm"
 INCLUDE "maps/UndergroundPathSwitchRoomEntrances.asm"
 INCLUDE "maps/WarehouseEntrance.asm"
 
+
 SECTION "National Park Scripts", ROMX
 
 INCLUDE "maps/NationalPark.asm"
 INCLUDE "maps/NationalParkBugContest.asm"
+
 
 SECTION "Ecruteak Scripts", ROMX
 
@@ -228,6 +256,7 @@ INCLUDE "maps/EcruteakLugiaSpeechHouse.asm"
 INCLUDE "maps/DanceTheatre.asm"
 INCLUDE "maps/WiseTriosRoom.asm"
 
+
 SECTION "Ecruteak Scripts 2", ROMX
 
 INCLUDE "maps/EcruteakShrineOutside.asm"
@@ -236,6 +265,7 @@ INCLUDE "maps/EcruteakCherishBallHouse.asm"
 INCLUDE "maps/EcruteakDestinyKnotHouse.asm"
 INCLUDE "maps/ValeriesHouse.asm"
 INCLUDE "maps/BellchimeTrail.asm"
+
 
 SECTION "Tin Tower Scripts", ROMX
 
@@ -253,6 +283,7 @@ INCLUDE "maps/TinTowerRoof.asm"
 INCLUDE "maps/BurnedTower1F.asm"
 INCLUDE "maps/BurnedTowerB1F.asm"
 
+
 SECTION "Olivine Scripts", ROMX
 
 INCLUDE "maps/OlivineCity.asm"
@@ -265,6 +296,7 @@ INCLUDE "maps/OlivinePortPassage.asm"
 INCLUDE "maps/OlivinePunishmentSpeechHouse.asm"
 INCLUDE "maps/OlivineTimsHouse.asm"
 
+
 SECTION "Olivine Lighthouse Scripts", ROMX
 
 INCLUDE "maps/OlivineLighthouse1F.asm"
@@ -274,6 +306,7 @@ INCLUDE "maps/OlivineLighthouse4F.asm"
 INCLUDE "maps/OlivineLighthouse5F.asm"
 INCLUDE "maps/OlivineLighthouse6F.asm"
 INCLUDE "maps/OlivineLighthouseRoof.asm"
+
 
 SECTION "Whirl Island Scripts", ROMX
 
@@ -286,6 +319,7 @@ INCLUDE "maps/WhirlIslandB2F.asm"
 INCLUDE "maps/WhirlIslandCave.asm"
 INCLUDE "maps/WhirlIslandLugiaChamber.asm"
 
+
 SECTION "Cianwood Scripts", ROMX
 
 INCLUDE "maps/CianwoodCity.asm"
@@ -296,12 +330,14 @@ INCLUDE "maps/CianwoodPharmacy.asm"
 INCLUDE "maps/ManiasHouse.asm"
 INCLUDE "maps/StatsJudgesHouse.asm"
 
+
 SECTION "Yellow Forest Scripts", ROMX
 
 INCLUDE "maps/YellowForest.asm"
 INCLUDE "maps/YellowForestGate.asm"
 INCLUDE "maps/CliffCave.asm"
 INCLUDE "maps/CliffEdgeGate.asm"
+
 
 SECTION "Quiet Cave Scripts", ROMX
 
@@ -311,12 +347,14 @@ INCLUDE "maps/QuietCaveB2F.asm"
 INCLUDE "maps/QuietCaveB3F.asm"
 INCLUDE "maps/EmbeddedTower.asm"
 
+
 SECTION "Mount Mortar Scripts", ROMX
 
 INCLUDE "maps/MountMortar1FOutside.asm"
 INCLUDE "maps/MountMortar1FInside.asm"
 INCLUDE "maps/MountMortar2FInside.asm"
 INCLUDE "maps/MountMortarB1F.asm"
+
 
 SECTION "Mahogany Scripts", ROMX
 
@@ -325,17 +363,20 @@ INCLUDE "maps/MahoganyMart1F.asm"
 INCLUDE "maps/MahoganyGym.asm"
 INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 
+
 SECTION "Lake of Rage Scripts", ROMX
 
 INCLUDE "maps/LakeofRage.asm"
 INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
 INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 
+
 SECTION "Team Rocket Base Scripts", ROMX
 
 INCLUDE "maps/TeamRocketBaseB1F.asm"
 INCLUDE "maps/TeamRocketBaseB2F.asm"
 INCLUDE "maps/TeamRocketBaseB3F.asm"
+
 
 SECTION "Ice Path Scripts", ROMX
 
@@ -345,6 +386,7 @@ INCLUDE "maps/IcePathB2FMahoganySide.asm"
 INCLUDE "maps/IcePathB2FBlackthornSide.asm"
 INCLUDE "maps/IcePathB3F.asm"
 
+
 SECTION "Blackthorn Scripts", ROMX
 
 INCLUDE "maps/BlackthornCity.asm"
@@ -352,6 +394,7 @@ INCLUDE "maps/BlackthornMart.asm"
 INCLUDE "maps/BlackthornDragonSpeechHouse.asm"
 INCLUDE "maps/BlackthornEmysHouse.asm"
 INCLUDE "maps/MoveDeletersHouse.asm"
+
 
 SECTION "Dragon's Den Scripts", ROMX
 
@@ -361,16 +404,19 @@ INCLUDE "maps/DragonShrine.asm"
 INCLUDE "maps/BlackthornGym1F.asm" ; shares text with DragonsDen1F.asm
 INCLUDE "maps/BlackthornGym2F.asm"
 
+
 SECTION "Victory Road Scripts", ROMX
 
 INCLUDE "maps/VictoryRoad1F.asm"
 INCLUDE "maps/VictoryRoad2F.asm"
 INCLUDE "maps/VictoryRoad3F.asm"
 
+
 SECTION "Tohjo Falls Scripts", ROMX
 
 INCLUDE "maps/TohjoFalls.asm"
 INCLUDE "maps/GiovannisCave.asm"
+
 
 SECTION "Indigo Plateau Scripts", ROMX
 
@@ -383,6 +429,7 @@ INCLUDE "maps/LancesRoom.asm"
 INCLUDE "maps/HallOfFame.asm"
 INCLUDE "maps/PokemonLeagueGate.asm"
 
+
 SECTION "Fast Ship Scripts", ROMX
 
 INCLUDE "maps/FastShip1F.asm"
@@ -390,6 +437,7 @@ INCLUDE "maps/FastShipB1F.asm"
 INCLUDE "maps/FastShipCabins_NNW_NNE_NE.asm"
 INCLUDE "maps/FastShipCabins_SW_SSW_NW.asm"
 INCLUDE "maps/FastShipCabins_SE_SSE_CaptainsCabin.asm"
+
 
 SECTION "Pallet Scripts", ROMX
 
@@ -399,6 +447,7 @@ INCLUDE "maps/RedsHouse1F.asm"
 INCLUDE "maps/RedsHouse2F.asm"
 INCLUDE "maps/BluesHouse1F.asm"
 INCLUDE "maps/BluesHouse2F.asm"
+
 
 SECTION "Viridian Scripts", ROMX
 
@@ -410,11 +459,13 @@ INCLUDE "maps/ViridianSchoolHouse.asm"
 INCLUDE "maps/TrainerHouse1F.asm"
 INCLUDE "maps/TrainerHouseB1F.asm"
 
+
 SECTION "Viridian Forest Scripts", ROMX
 
 INCLUDE "maps/ViridianForest.asm"
 INCLUDE "maps/ViridianForestPewterGate.asm"
 INCLUDE "maps/ViridianForestViridianGate.asm"
+
 
 SECTION "Pewter Scripts", ROMX
 
@@ -424,10 +475,12 @@ INCLUDE "maps/PewterGym.asm"
 INCLUDE "maps/PewterNidoranSpeechHouse.asm"
 INCLUDE "maps/PewterSnoozeSpeechHouse.asm"
 
+
 SECTION "Pewter Museum Scripts", ROMX
 
 INCLUDE "maps/PewterMuseumOfScience1F.asm"
 INCLUDE "maps/PewterMuseumOfScience2F.asm"
+
 
 SECTION "Mount Moon Scripts", ROMX
 
@@ -436,6 +489,7 @@ INCLUDE "maps/MountMoonB1F.asm"
 INCLUDE "maps/MountMoonB2F.asm"
 INCLUDE "maps/MountMoonGiftShop.asm"
 INCLUDE "maps/MountMoonSquare.asm"
+
 
 SECTION "Cerulean Scripts", ROMX
 
@@ -446,6 +500,7 @@ INCLUDE "maps/CeruleanGymBadgeSpeechHouse.asm"
 INCLUDE "maps/CeruleanPoliceStation.asm"
 INCLUDE "maps/CeruleanTradeSpeechHouse.asm"
 
+
 SECTION "Cerulean Scripts 2", ROMX
 
 INCLUDE "maps/CeruleanBerryPowderHouse.asm"
@@ -453,16 +508,19 @@ INCLUDE "maps/CeruleanBikeShop.asm"
 INCLUDE "maps/CeruleanCoupleHouse.asm"
 INCLUDE "maps/CeruleanWaterShowSpeechHouse.asm"
 
+
 SECTION "Cerulean Cave Scripts", ROMX
 
 INCLUDE "maps/CeruleanCave1F.asm"
 INCLUDE "maps/CeruleanCave2F.asm"
 INCLUDE "maps/CeruleanCaveB1F.asm"
 
+
 SECTION "Cerulean Cape Scripts", ROMX
 
 INCLUDE "maps/CeruleanCape.asm"
 INCLUDE "maps/BillsHouse.asm"
+
 
 SECTION "Vermilion Scripts", ROMX
 
@@ -478,9 +536,11 @@ INCLUDE "maps/VermilionPortPassage.asm"
 INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
 INCLUDE "maps/PokemonFanClub.asm"
 
+
 SECTION "Diglett's Cave Scripts", ROMX
 
 INCLUDE "maps/DiglettsCave.asm"
+
 
 SECTION "Rock Tunnel Scripts", ROMX
 
@@ -488,6 +548,7 @@ INCLUDE "maps/RockTunnel1F.asm"
 INCLUDE "maps/RockTunnel2F.asm"
 INCLUDE "maps/RockTunnelB1F.asm"
 INCLUDE "maps/PowerPlant.asm"
+
 
 SECTION "Dim Cave Scripts", ROMX
 
@@ -497,6 +558,7 @@ INCLUDE "maps/DimCave3F.asm"
 INCLUDE "maps/DimCave4F.asm"
 INCLUDE "maps/DimCave5F.asm"
 
+
 SECTION "Lavender Scripts", ROMX
 
 INCLUDE "maps/LavenderTown.asm"
@@ -505,12 +567,14 @@ INCLUDE "maps/LavenderNameRater.asm"
 INCLUDE "maps/LavenderTownSpeechHouse.asm"
 INCLUDE "maps/MrFujisHouse.asm"
 
+
 SECTION "Soul House Scripts", ROMX
 
 INCLUDE "maps/SoulHouse.asm"
 INCLUDE "maps/SoulHouseB1F.asm"
 INCLUDE "maps/SoulHouseB2F.asm"
 INCLUDE "maps/SoulHouseB3F.asm"
+
 
 SECTION "Lav Radio Tower Scripts", ROMX
 
@@ -520,6 +584,7 @@ INCLUDE "maps/LavRadioTower3F.asm"
 INCLUDE "maps/LavRadioTower4F.asm"
 INCLUDE "maps/LavRadioTower5F.asm"
 
+
 SECTION "Haunted Radio Tower Scripts", ROMX
 
 INCLUDE "maps/HauntedRadioTower2F.asm"
@@ -528,12 +593,14 @@ INCLUDE "maps/HauntedRadioTower4F.asm"
 INCLUDE "maps/HauntedRadioTower5F.asm"
 INCLUDE "maps/HauntedRadioTower6F.asm"
 
+
 SECTION "Celadon Scripts", ROMX
 
 INCLUDE "maps/CeladonCity.asm"
 INCLUDE "maps/CeladonGym.asm"
 INCLUDE "maps/CeladonGameCorner.asm"
 INCLUDE "maps/CeladonGameCornerPrizeRoom.asm"
+
 
 SECTION "Celadon Scripts 2", ROMX
 
@@ -543,6 +610,7 @@ INCLUDE "maps/CeladonDevelopmentSpeechHouse.asm"
 INCLUDE "maps/CeladonOldManSpeechHouse.asm"
 INCLUDE "maps/EusinesHouse.asm"
 INCLUDE "maps/PsychicInversHouse.asm"
+
 
 SECTION "Celadon Dept Store Scripts", ROMX
 
@@ -554,6 +622,7 @@ INCLUDE "maps/CeladonDeptStore5F.asm"
 INCLUDE "maps/CeladonDeptStore6F.asm"
 INCLUDE "maps/CeladonDeptStoreElevator.asm"
 
+
 SECTION "Celadon Mansion Scripts", ROMX
 
 INCLUDE "maps/CeladonMansion1F.asm"
@@ -562,12 +631,14 @@ INCLUDE "maps/CeladonMansion3F.asm"
 INCLUDE "maps/CeladonMansionRoof.asm"
 INCLUDE "maps/CeladonMansionRoofHouse.asm"
 
+
 SECTION "Celadon Home Decor Store Scripts", ROMX
 
 INCLUDE "maps/CeladonHomeDecorStore1F.asm"
 INCLUDE "maps/CeladonHomeDecorStore2F.asm"
 INCLUDE "maps/CeladonHomeDecorStore3F.asm"
 INCLUDE "maps/CeladonHomeDecorStore4F.asm"
+
 
 SECTION "Celadon Hotel Scripts", ROMX
 
@@ -577,6 +648,7 @@ INCLUDE "maps/CeladonHotelPool.asm"
 INCLUDE "maps/CeladonHotelRoom1.asm"
 INCLUDE "maps/CeladonHotelRoom2.asm"
 INCLUDE "maps/CeladonHotelRoom3.asm"
+
 
 SECTION "Celadon University Scripts", ROMX
 
@@ -589,6 +661,7 @@ INCLUDE "maps/CeladonUniversityPool.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"
 INCLUDE "maps/CeladonUniversityWillowsOffice.asm"
 
+
 SECTION "Celadon University Classroom Scripts", ROMX
 
 INCLUDE "maps/CeladonUniversityClassroom1.asm"
@@ -597,10 +670,12 @@ INCLUDE "maps/CeladonUniversityClassroom3.asm"
 INCLUDE "maps/CeladonUniversityClassroom4.asm"
 INCLUDE "maps/CeladonUniversityHyperTestRoom.asm"
 
+
 SECTION "Celadon University Library Scripts", ROMX
 
 INCLUDE "maps/CeladonUniversityLibrary1F.asm"
 INCLUDE "maps/CeladonUniversityLibrary2F.asm"
+
 
 SECTION "Saffron Scripts", ROMX
 
@@ -613,6 +688,7 @@ INCLUDE "maps/SaffronOrreSpeechHouse.asm"
 INCLUDE "maps/SaffronRichSpeechHouse.asm"
 INCLUDE "maps/SaffronTrainStation.asm"
 
+
 SECTION "Saffron Scripts 2", ROMX
 
 INCLUDE "maps/FightingDojo.asm"
@@ -621,15 +697,18 @@ INCLUDE "maps/CopycatsHouse2F.asm"
 INCLUDE "maps/MrPsychicsHouse.asm"
 INCLUDE "maps/Underground.asm"
 
+
 SECTION "Silph Co Scripts", ROMX
 
 INCLUDE "maps/SilphCo1F.asm"
 INCLUDE "maps/SilphCo2F.asm"
 INCLUDE "maps/SilphCo3F.asm"
 
+
 SECTION "Pokemon Trainer Fan Club Scripts", ROMX
 
 INCLUDE "maps/PokemonTrainerFanClub.asm"
+
 
 SECTION "Fuchsia Scripts", ROMX
 
@@ -639,6 +718,7 @@ INCLUDE "maps/FuchsiaGym.asm"
 INCLUDE "maps/FuchsiaBillSpeechHouse.asm"
 INCLUDE "maps/SafariZoneWardensHome.asm"
 INCLUDE "maps/LuckyIsland.asm"
+
 
 SECTION "Safari Zone Scripts", ROMX
 
@@ -653,10 +733,12 @@ INCLUDE "maps/SafariZoneWestRestHouse1.asm"
 INCLUDE "maps/SafariZoneWestRestHouse2.asm"
 INCLUDE "maps/SafariZoneFuchsiaGate.asm"
 
+
 SECTION "Uraga Channel Scripts", ROMX
 
 INCLUDE "maps/UragaChannelEast.asm"
 INCLUDE "maps/UragaChannelWest.asm"
+
 
 SECTION "Scary Cave Scripts", ROMX
 
@@ -664,21 +746,25 @@ INCLUDE "maps/ScaryCave1F.asm"
 INCLUDE "maps/ScaryCaveB1F.asm"
 INCLUDE "maps/ScaryCaveShipwreck.asm"
 
+
 SECTION "Cinnabar Scripts", ROMX
 
 INCLUDE "maps/CinnabarIsland.asm"
 INCLUDE "maps/CinnabarLab.asm"
+
 
 SECTION "Pokemon Mansion Scripts", ROMX
 
 INCLUDE "maps/PokemonMansion1F.asm"
 INCLUDE "maps/PokemonMansionB1F.asm"
 
+
 SECTION "Cinnabar Volcano Scripts", ROMX
 
 INCLUDE "maps/CinnabarVolcano1F.asm"
 INCLUDE "maps/CinnabarVolcanoB1F.asm"
 INCLUDE "maps/CinnabarVolcanoB2F.asm"
+
 
 SECTION "Seafoam Islands Scripts", ROMX
 
@@ -689,6 +775,7 @@ INCLUDE "maps/SeafoamIslandsB2F.asm"
 INCLUDE "maps/SeafoamIslandsB3F.asm"
 INCLUDE "maps/SeafoamIslandsB4F.asm"
 
+
 SECTION "Silver Cave Scripts", ROMX
 
 INCLUDE "maps/SilverCaveOutside.asm"
@@ -697,11 +784,13 @@ INCLUDE "maps/SilverCaveRoom2.asm"
 INCLUDE "maps/SilverCaveRoom3.asm"
 INCLUDE "maps/SilverCaveItemRooms.asm"
 
+
 SECTION "Seagallop Ferry Scripts", ROMX
 
 INCLUDE "maps/SeagallopFerryVermilionGate.asm"
 INCLUDE "maps/SeagallopFerryShamoutiGate.asm"
 INCLUDE "maps/SeagallopFerryNavelGate.asm"
+
 
 SECTION "Shamouti Scripts", ROMX
 
@@ -712,12 +801,14 @@ INCLUDE "maps/ShamoutiTouristCenter.asm"
 INCLUDE "maps/RockyBeach.asm" ; shares text with ShamoutiIsland.asm
 INCLUDE "maps/RockyBeachHouse.asm"
 
+
 SECTION "Shamouti Scripts 2", ROMX
 
 INCLUDE "maps/NoisyForest.asm"
 INCLUDE "maps/ShamoutiShrineRuins.asm"
 INCLUDE "maps/ShamoutiTunnel.asm"
 INCLUDE "maps/ShamoutiCoast.asm"
+
 
 SECTION "Shamouti Hotel Scripts", ROMX
 
@@ -730,6 +821,7 @@ INCLUDE "maps/ShamoutiHotelRoom2B.asm"
 INCLUDE "maps/ShamoutiHotelRoom3B.asm"
 INCLUDE "maps/ShamoutiHotelRoom3C.asm"
 
+
 SECTION "Shamouti Beach Scripts", ROMX
 
 INCLUDE "maps/BeautifulBeach.asm"
@@ -737,6 +829,7 @@ INCLUDE "maps/BeautifulBeachVilla.asm"
 INCLUDE "maps/WarmBeach.asm"
 INCLUDE "maps/WarmBeachHouse.asm"
 INCLUDE "maps/WarmBeachShack.asm"
+
 
 SECTION "Elemental Island Scripts", ROMX
 
@@ -747,6 +840,7 @@ INCLUDE "maps/FireIslandRoof.asm"
 INCLUDE "maps/IceIslandRoof.asm"
 INCLUDE "maps/LightningIslandRoof.asm"
 
+
 SECTION "Valencia Scripts", ROMX
 
 INCLUDE "maps/ValenciaIsland.asm"
@@ -755,16 +849,19 @@ INCLUDE "maps/ValenciaPort.asm"
 INCLUDE "maps/IvysLab.asm"
 INCLUDE "maps/IvysHouse.asm"
 
+
 SECTION "Navel Rock Scripts", ROMX
 
 INCLUDE "maps/NavelRockOutside.asm"
 INCLUDE "maps/NavelRockInside.asm"
 INCLUDE "maps/NavelRockRoof.asm"
 
+
 SECTION "Faraway Island Scripts", ROMX
 
 INCLUDE "maps/FarawayIsland.asm"
 INCLUDE "maps/FarawayJungle.asm"
+
 
 SECTION "Routes 1-4 Scripts", ROMX
 
@@ -776,6 +873,7 @@ INCLUDE "maps/Route2NuggetSpeechHouse.asm"
 INCLUDE "maps/Route2South.asm"
 INCLUDE "maps/Route3.asm"
 INCLUDE "maps/Route4.asm"
+
 
 SECTION "Routes 5-8 Scripts", ROMX
 
@@ -791,6 +889,7 @@ INCLUDE "maps/Route7SaffronGate.asm"
 INCLUDE "maps/Route8.asm"
 INCLUDE "maps/Route8SaffronGate.asm"
 
+
 SECTION "Routes 9-11 Scripts", ROMX
 
 INCLUDE "maps/Route9.asm"
@@ -799,6 +898,7 @@ INCLUDE "maps/Route10South.asm"
 INCLUDE "maps/Route11.asm"
 INCLUDE "maps/Route11Gate.asm"
 INCLUDE "maps/Route11Gate2F.asm"
+
 
 SECTION "Routes 12-14 Scripts", ROMX
 
@@ -810,6 +910,7 @@ INCLUDE "maps/Route12SuperRodHouse.asm"
 INCLUDE "maps/Route13East.asm"
 INCLUDE "maps/Route13West.asm"
 INCLUDE "maps/Route14.asm"
+
 
 SECTION "Routes 15-17 Scripts", ROMX
 
@@ -826,6 +927,7 @@ INCLUDE "maps/Route16South.asm"
 INCLUDE "maps/Route16West.asm"
 INCLUDE "maps/Route17.asm"
 
+
 SECTION "Routes 18-20 Scripts", ROMX
 
 INCLUDE "maps/Route18East.asm"
@@ -837,12 +939,14 @@ INCLUDE "maps/Route19BeachHouse.asm"
 INCLUDE "maps/Route19FuchsiaGate.asm"
 INCLUDE "maps/Route20.asm"
 
+
 SECTION "Routes 21-23 Scripts", ROMX
 
 INCLUDE "maps/Route21.asm"
 INCLUDE "maps/Route22.asm"
 INCLUDE "maps/Route22Past.asm"
 INCLUDE "maps/Route23.asm"
+
 
 SECTION "Routes 24-26 Scripts", ROMX
 
@@ -851,6 +955,7 @@ INCLUDE "maps/Route25.asm"
 INCLUDE "maps/Route26.asm"
 INCLUDE "maps/Route26DayofWeekSiblingsHouse.asm"
 INCLUDE "maps/Route26HealSpeechHouse.asm"
+
 
 SECTION "Routes 27-29 Scripts", ROMX
 
@@ -861,6 +966,7 @@ INCLUDE "maps/Route28FamousSpeechHouse.asm"
 INCLUDE "maps/Route29.asm"
 INCLUDE "maps/Route2946Gate.asm"
 
+
 SECTION "Routes 30-32 Scripts", ROMX
 
 INCLUDE "maps/Route30.asm"
@@ -869,6 +975,7 @@ INCLUDE "maps/Route31.asm"
 INCLUDE "maps/Route31VioletGate.asm"
 INCLUDE "maps/Route32.asm"
 INCLUDE "maps/Route32RuinsofAlphGate.asm"
+
 
 SECTION "Routes 33-35 Scripts", ROMX
 
@@ -880,6 +987,7 @@ INCLUDE "maps/Route35Goldenrodgate.asm"
 INCLUDE "maps/Route35NationalParkgate.asm"
 INCLUDE "maps/Route36NationalParkgate.asm" ; shares text with Route35NationalParkgate.asm
 
+
 SECTION "Routes 36-38 Scripts", ROMX
 
 INCLUDE "maps/Route36.asm"
@@ -888,6 +996,7 @@ INCLUDE "maps/Route36VioletGate.asm"
 INCLUDE "maps/Route37.asm"
 INCLUDE "maps/Route38.asm"
 INCLUDE "maps/Route38EcruteakGate.asm"
+
 
 SECTION "Routes 39-41 Scripts", ROMX
 
@@ -898,6 +1007,7 @@ INCLUDE "maps/Route40.asm"
 INCLUDE "maps/Route40BattleTowerGate.asm"
 INCLUDE "maps/Route41.asm"
 
+
 SECTION "Routes 42-44 Scripts", ROMX
 
 INCLUDE "maps/Route42.asm"
@@ -907,11 +1017,13 @@ INCLUDE "maps/Route43Gate.asm"
 INCLUDE "maps/Route43MahoganyGate.asm"
 INCLUDE "maps/Route44.asm"
 
+
 SECTION "Routes 45-47 Scripts", ROMX
 
 INCLUDE "maps/Route45.asm"
 INCLUDE "maps/Route46.asm"
 INCLUDE "maps/Route47.asm"
+
 
 SECTION "Routes 48-49 Scripts", ROMX
 

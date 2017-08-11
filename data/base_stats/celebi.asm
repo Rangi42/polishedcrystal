@@ -3,7 +3,11 @@
 	db 100, 100, 100, 100, 100, 100
 	;   hp  atk  def  spd  sat  sdf
 
+if DEF(FAITHFUL)
 	db PSYCHIC, GRASS
+else
+	db GRASS, FAIRY
+endc
 	db 45 ; catch rate
 	db 64 ; base exp
 	db LUM_BERRY ; item 1
