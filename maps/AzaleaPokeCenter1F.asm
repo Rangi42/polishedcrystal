@@ -25,9 +25,8 @@ AzaleaPokeCenter1F_MapEventHeader:
 
 PokemonJournalBugsyScript:
 	setflag ENGINE_READ_BUGSY_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -45,13 +44,9 @@ PokemonJournalBugsyScript:
 
 AzaleaPokeCenter1FCooltrainermScript:
 	checknite
-	iftrue .Nite
-	jumptextfaceplayer .DayText
+	jumptextfaceplayer_iftrue .NiteText
+	thistextfaceplayer
 
-.Nite
-	jumptextfaceplayer .NiteText
-
-.DayText:
 	text "For a guy who"
 	line "makes # Balls,"
 

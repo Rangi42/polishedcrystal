@@ -45,35 +45,45 @@ ProfOaksAide4Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
-	iftrue .Explain
+	jumpopenedtext_iftrue .ExplainText
 	writetext .HiText
 	waitbutton
 	count_seen_caught
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 59, .HereYouGo
-.UhOh
-	writetext .UhOhText
-	waitbutton
-	closetext
-	end
+	thisopenedtext
+
+	text "Let's see…"
+	line "Uh-oh! You've only"
+
+	para "caught @"
+	deciram wd003, 1, 3
+	text " kinds"
+	line "of #mon."
+
+	para "Come back and see"
+	line "me when you catch"
+	cont "60 kinds."
+	done
 
 .HereYouGo
 	writetext .HereYouGoText
 	waitbutton
 	verbosegiveitem LUCKY_EGG
-	iffalse .NoRoom
+	jumpopenedtext_iffalse .NoRoomText
 	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
-.Explain
-	writetext .ExplainText
-	waitbutton
-	closetext
-	end
+	thisopenedtext
 
-.NoRoom
-	writetext .NoRoomText
-	waitbutton
-	closetext
-	end
+.ExplainText:
+	text "That Lucky Egg"
+	line "helps a #mon"
+
+	para "gain more exper-"
+	line "ience than usual."
+
+	para "Use it to com-"
+	line "plete the #dex!"
+	done
 
 .HiText:
 	text "Hello there! I'm"
@@ -90,20 +100,6 @@ ProfOaksAide4Script:
 
 	para "at least 60 kinds"
 	line "of #mon?"
-	done
-
-.UhOhText:
-	text "Let's see…"
-	line "Uh-oh! You've only"
-
-	para "caught @"
-	deciram wd003, 1, 3
-	text " kinds"
-	line "of #mon."
-
-	para "Come back and see"
-	line "me when you catch"
-	cont "60 kinds."
 	done
 
 .HereYouGoText:
@@ -123,17 +119,6 @@ ProfOaksAide4Script:
 	text "Oh! I see you"
 	line "don't have any"
 	cont "room for this."
-	done
-
-.ExplainText:
-	text "That Lucky Egg"
-	line "helps a #mon"
-
-	para "gain more exper-"
-	line "ience than usual."
-
-	para "Use it to com-"
-	line "plete the #dex!"
 	done
 
 BlackthornPokeCenter1FGentlemanText:

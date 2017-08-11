@@ -2565,7 +2565,7 @@ Function587a: ; 587a
 	ret
 ; 5897
 
-_SetFlagsForMovement_2:: ; 5897
+SetFlagsForMovement_2:: ; 5897
 	ld a, [wObjectFollow_Leader]
 	cp -1
 	ret z

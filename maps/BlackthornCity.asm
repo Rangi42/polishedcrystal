@@ -98,7 +98,7 @@ BlackthornCityTrainerTipsText:
 
 SantosScript:
 	checkevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
-	iftrue .Saturday
+	jumptextfaceplayer_iftrue .SaturdayText
 	checkcode VAR_WEEKDAY
 	if_not_equal SATURDAY, .NotSaturday
 	faceplayer
@@ -120,11 +120,12 @@ SantosScript:
 	closetext
 	end
 
-.Saturday:
-	jumptextfaceplayer .SaturdayText
-
 .NotSaturday:
-	jumptextfaceplayer .NotSaturdayText
+	thistextfaceplayer
+
+	text "Santos: Today's"
+	line "not Saturday…"
+	done
 
 .MeetText:
 	text "Santos: …"
@@ -161,25 +162,13 @@ SantosScript:
 	line "more gifts…"
 	done
 
-.NotSaturdayText:
-	text "Santos: Today's"
-	line "not Saturday…"
-	done
-
 BlackthornDragonTamer1Script:
 	checkevent EVENT_BEAT_CLAIR
-	iftrue .BeatClair
+	jumptextfaceplayer_iftrue .ClairIsBeatenText
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRadioTower
-	jumptextfaceplayer .ClairIsOutText
+	jumptextfaceplayer_iftrue .ClairIsInText
+	thistextfaceplayer
 
-.ClearedRadioTower:
-	jumptextfaceplayer .ClairIsInText
-
-.BeatClair:
-	jumptextfaceplayer .ClairIsBeatenText
-
-.ClairIsOutText:
 	text "I am sorry."
 
 	para "Clair, our Gym"
@@ -220,13 +209,9 @@ BlackthornDragonTamer1Script:
 
 BlackthornBlackbeltScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRadioTower
-	jumptextfaceplayer .Text1
+	jumptextfaceplayer_iftrue .Text2
+	thistextfaceplayer
 
-.ClearedRadioTower:
-	jumptextfaceplayer .Text2
-
-.Text1:
 	text "My radio's busted?"
 	line "Lately, I only get"
 	cont "this weird signal."

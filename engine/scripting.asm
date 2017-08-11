@@ -1,6 +1,5 @@
 ; Event scripting commands.
 
-
 EnableScriptMode::
 	push af
 	ld a, SCRIPT_READ
@@ -241,6 +240,18 @@ ScriptCommandTable:
 	dw Script_restoretypeface            ; b1
 	dw Script_jumpstashedtext            ; b2
 	dw Script_jumpopenedtext             ; b3
+	dw Script_jumptext_iftrue            ; b4
+	dw Script_jumptext_iffalse           ; b5
+	dw Script_jumptextfaceplayer_iftrue  ; b6
+	dw Script_jumptextfaceplayer_iffalse ; b7
+	dw Script_jumpopenedtext_iftrue      ; b8
+	dw Script_jumpopenedtext_iffalse     ; b9
+	dw Script_thistext                   ; ba
+	dw Script_thistextfaceplayer         ; bb
+	dw Script_thisopenedtext             ; bc
+	dw Script_showtext                   ; bd
+	dw Script_showtextfaceplayer         ; be
+	dw Script_applyonemovement           ; bf
 
 StartScript:
 	ld hl, ScriptFlags
@@ -293,26 +304,89 @@ Script_ptcallasm:
 	ld a, b
 	jp FarCall_hl
 
+Script_jumptextfaceplayer_iftrue:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	ld a, [ScriptVar]
+	and a
+	jr nz, Script_jumptextfaceplayer
+	jp SkipTwoScriptBytes
+
+Script_jumptextfaceplayer_iffalse:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	ld a, [ScriptVar]
+	and a
+	jp nz, SkipTwoScriptBytes
+; fallthrough
+
 Script_jumptextfaceplayer:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	call _GetTextPointer
+	jr _Do_textfaceplayer
+
+Script_thistextfaceplayer:
+	call _GetThisTextPointer
+_Do_textfaceplayer:
 	ld b, BANK(JumpTextFacePlayerScript)
 	ld hl, JumpTextFacePlayerScript
 	jp ScriptJump
+
+Script_jumptext_iftrue:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	ld a, [ScriptVar]
+	and a
+	jr nz, Script_jumptext
+	jp SkipTwoScriptBytes
+
+Script_jumptext_iffalse:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	ld a, [ScriptVar]
+	and a
+	jp nz, SkipTwoScriptBytes
+; fallthrough
 
 Script_jumptext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	call _GetTextPointer
+	jr _Do_jumptext
+
+Script_thistext:
+	call _GetThisTextPointer
+_Do_jumptext:
 	ld b, BANK(JumpTextScript)
 	ld hl, JumpTextScript
 	jp ScriptJump
+
+Script_jumpopenedtext_iftrue:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	ld a, [ScriptVar]
+	and a
+	jr nz, Script_jumpopenedtext
+	jp SkipTwoScriptBytes
+
+Script_jumpopenedtext_iffalse:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	ld a, [ScriptVar]
+	and a
+	jp nz, SkipTwoScriptBytes
+; fallthrough
 
 Script_jumpopenedtext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	call _GetTextPointer
+	jr _Do_jumpopenedtext
+
+Script_thisopenedtext:
+	call _GetThisTextPointer
+_Do_jumpopenedtext:
 	ld b, BANK(JumpOpenedTextScript)
 	ld hl, JumpOpenedTextScript
 	jp ScriptJump
@@ -333,6 +407,15 @@ _GetTextPointer:
 	call GetScriptByte
 	ld [wScriptTextAddr], a
 	call GetScriptByte
+	ld [wScriptTextAddr + 1], a
+	ret
+
+_GetThisTextPointer:
+	ld a, [ScriptBank]
+	ld [wScriptTextBank], a
+	ld a, [ScriptPos]
+	ld [wScriptTextAddr], a
+	ld a, [ScriptPos + 1]
 	ld [wScriptTextAddr + 1], a
 	ret
 
@@ -503,7 +586,6 @@ Script_verbosegiveitem:
 	ld de, GiveItemScript
 	jp ScriptCall
 
-
 GiveItemScript:
 	writetext ReceivedItemText
 	iffalse .Full
@@ -521,7 +603,6 @@ GiveItemScript:
 ReceivedItemText:
 	text_jump UnknownText_0x1c4719
 	db "@"
-
 
 Script_verbosegiveitem2:
 ; parameters:
@@ -576,7 +657,6 @@ Script_specialsound:
 .play
 	call PlaySFX
 	jp WaitSFX
-
 
 GetPocketName:
 	farcall CheckItemPocket
@@ -635,7 +715,6 @@ CurTMHMName:
 	ld [wd265], a
 	jp GetTMHMName
 
-
 PutItemInPocketText:
 	text_jump UnknownText_0x1c472c
 	db "@"
@@ -643,7 +722,6 @@ PutItemInPocketText:
 PocketIsFullText:
 	text_jump UnknownText_0x1c474b
 	db "@"
-
 
 Script_pokemart:
 ; parameters:
@@ -916,6 +994,48 @@ Script_setlasttalked:
 	ld [hLastTalked], a
 	ret
 
+Script_applyonemovement:
+; parameters:
+;     person (SingleByteParam)
+;     data (MovementDataParam)
+	call GetScriptByte
+	call GetScriptPerson
+	ld c, a
+
+	push bc
+	ld a, c
+	farcall SetFlagsForMovement_1
+	pop bc
+
+	push bc
+	farcall SetFlagsForMovement_2
+	pop bc
+
+	ld a, [hROMBank]
+	push af
+	ld a, [ScriptBank]
+	rst Bankswitch
+
+	ld a, c
+	ld [wMovementPerson], a
+	ld a, [hROMBank]
+	ld [wMovementDataPointer], a
+	ld a, [ScriptPos]
+	ld [wMovementDataPointer + 1], a
+	ld a, [ScriptPos + 1]
+	ld [wMovementDataPointer + 2], a
+	farcall PrepareMovementDataPointer
+
+	pop hl
+	ld a, h
+	rst Bankswitch
+
+	ret c
+
+	ld a, SCRIPT_WAIT_MOVEMENT
+	ld [ScriptMode], a
+	jp StopScript
+
 Script_applymovement:
 ; parameters:
 ;     person (SingleByteParam)
@@ -923,6 +1043,15 @@ Script_applymovement:
 	call GetScriptByte
 	call GetScriptPerson
 	ld c, a
+	jr ApplyMovement
+
+Script_applymovement2:
+; apply movement to last talked
+; parameters:
+;     data (MovementPointerLabelParam)
+	ld a, [hLastTalked]
+	ld c, a
+; fallthrough
 
 ApplyMovement:
 	push bc
@@ -931,7 +1060,7 @@ ApplyMovement:
 	pop bc
 
 	push bc
-	call SetFlagsForMovement_2
+	farcall SetFlagsForMovement_2
 	pop bc
 
 	call GetScriptByte
@@ -946,17 +1075,6 @@ ApplyMovement:
 	ld a, SCRIPT_WAIT_MOVEMENT
 	ld [ScriptMode], a
 	jp StopScript
-
-SetFlagsForMovement_2:
-	farjp _SetFlagsForMovement_2
-
-Script_applymovement2:
-; apply movement to last talked
-; parameters:
-;     data (MovementPointerLabelParam)
-	ld a, [hLastTalked]
-	ld c, a
-	jp ApplyMovement
 
 Script_faceplayer:
 	ld a, [hLastTalked]
@@ -1223,7 +1341,6 @@ ShowEmoteScript:
 	step_sleep_1
 	step_end
 
-
 Script_earthquake:
 ; parameters:
 ;     param (DecimalParam)
@@ -1347,7 +1464,7 @@ Script_reloadmapafterbattle:
 	ld de, Script_SpecialBillCall
 	farcall LoadScriptBDE
 .done
-	jp Script_reloadmap
+; fallthrough
 
 Script_reloadmap:
 	xor a
@@ -2500,10 +2617,21 @@ Script_textbox:
 Script_refreshscreen:
 	jp RefreshScreen
 
+Script_showtextfaceplayer:
+	call Script_faceplayer
+; fallthrough
+
+Script_showtext:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+	call Script_textbox
+	call Script_writetext
+	call Script_waitbutton
+; fallthrough
+
 Script_closetext:
 	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
 	jp CloseText
-
 
 Script_passtoengine:
 ; parameters:

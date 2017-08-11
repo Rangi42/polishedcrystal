@@ -1123,3 +1123,74 @@ jumpopenedtext: macro
 	db jumpopenedtext_command
 	dw \1 ; text_pointer
 	endm
+
+	enum jumptext_iftrue_command
+jumptext_iftrue: macro
+	db jumptext_iftrue_command
+	dw \1 ; text_pointer
+	endm
+
+	enum jumptext_iffalse_command
+jumptext_iffalse: macro
+	db jumptext_iffalse_command
+	dw \1 ; text_pointer
+	endm
+
+	enum jumptextfaceplayer_iftrue_command
+jumptextfaceplayer_iftrue: macro
+	db jumptextfaceplayer_iftrue_command
+	dw \1 ; text_pointer
+	endm
+
+	enum jumptextfaceplayer_iffalse_command
+jumptextfaceplayer_iffalse: macro
+	db jumptextfaceplayer_iffalse_command
+	dw \1 ; text_pointer
+	endm
+
+	enum jumpopenedtext_iftrue_command
+jumpopenedtext_iftrue: macro
+	db jumpopenedtext_iftrue_command
+	dw \1 ; text_pointer
+	endm
+
+	enum jumpopenedtext_iffalse_command
+jumpopenedtext_iffalse: macro
+	db jumpopenedtext_iffalse_command
+	dw \1 ; text_pointer
+	endm
+
+	enum thistext_command
+thistext: macro
+	db thistext_command
+	endm
+
+	enum thistextfaceplayer_command
+thistextfaceplayer: macro
+	db thistextfaceplayer_command
+	endm
+
+	enum thisopenedtext_command
+thisopenedtext: macro
+	db thisopenedtext_command
+	endm
+
+	enum showtext_command
+showtext: macro
+	db showtext_command
+	dw \1 ; text_pointer
+	endm
+
+	enum showtextfaceplayer_command
+showtextfaceplayer: macro
+	db showtextfaceplayer_command
+	dw \1 ; text_pointer
+	endm
+
+	enum applyonemovement_command
+applyonemovement: macro
+	db applyonemovement_command
+	db \1 ; person
+	db movement_\2 ; movement data
+	db movement_step_end
+	endm

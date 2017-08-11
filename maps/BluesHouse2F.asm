@@ -12,18 +12,12 @@ BluesHouse2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 1, 0, SIGNPOST_READ, BluesHouse2FPCScript
-	signpost 5, 3, SIGNPOST_READ, BluesHouse2FSNESScript
+	signpost 1, 0, SIGNPOST_JUMPTEXT, BluesHouse2FPCText
+	signpost 5, 3, SIGNPOST_JUMPTEXT, BluesHouse2FSNESText
 	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
 	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
 
 .PersonEvents: db 0
-
-BluesHouse2FPCScript:
-	jumptext BluesHouse2FPCText
-
-BluesHouse2FSNESScript:
-	jumptext BluesHouse2FSNESText
 
 BluesHouse2FPCText:
 	text "There's a program"

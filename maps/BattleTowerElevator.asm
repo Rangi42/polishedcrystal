@@ -29,29 +29,21 @@ BattleTowerElevatorTrigger0:
 .RideElevator:
 	follow BATTLETOWERELEVATOR_RECEPTIONIST, PLAYER
 	applymovement BATTLETOWERELEVATOR_RECEPTIONIST, MovementData_BattleTowerElevatorReceptionistWalksIn
-	applymovement PLAYER, MovementData_BattleTowerElevatorPlayerWalksIn
+	applyonemovement PLAYER, turn_head_down
 	special Special_BattleTower_MaxVolume
 	playsound SFX_ELEVATOR
 	earthquake 60
 	waitsfx
 	follow BATTLETOWERELEVATOR_RECEPTIONIST, PLAYER
-	applymovement BATTLETOWERELEVATOR_RECEPTIONIST, MovementData_BattleTowerElevatorExitElevator
+	applyonemovement BATTLETOWERELEVATOR_RECEPTIONIST, step_down
 	stopfollow
 	warpsound
 	disappear BATTLETOWERELEVATOR_RECEPTIONIST
-	applymovement PLAYER, MovementData_BattleTowerElevatorExitElevator
+	applyonemovement PLAYER, step_down
 	warpcheck
 	end
 
 MovementData_BattleTowerElevatorReceptionistWalksIn:
 	step_right
 	turn_head_down
-	step_end
-
-MovementData_BattleTowerElevatorPlayerWalksIn:
-	turn_head_down
-	step_end
-
-MovementData_BattleTowerElevatorExitElevator:
-	step_down
 	step_end

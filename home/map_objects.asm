@@ -312,6 +312,7 @@ LoadMovementDataPointer:: ; 19e9
 	ld [wMovementDataPointer + 1], a
 	ld a, h
 	ld [wMovementDataPointer + 2], a
+PrepareMovementDataPointer::
 	ld a, [wMovementPerson]
 	call CheckObjectVisibility
 	ret c

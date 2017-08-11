@@ -81,12 +81,9 @@ BattleTowerHallwayTrigger0:
 
 .EnterBattleRoom: ; 0x9f61f
 	faceperson PLAYER, BATTLETOWERHALLWAY_RECEPTIONIST
-	opentext
-	writetext Text_PleaseStepThisWay
-	waitbutton
-	closetext
+	showtext Text_PleaseStepThisWay
 	stopfollow
-	applymovement PLAYER, MovementData_BattleTowerHallwayPlayerEntersBattleRoom
+	applyonemovement PLAYER, step_up
 	warpcheck
 	end
 
@@ -113,10 +110,6 @@ MovementData_BattleTowerHallwayWalkTo5060Room:
 	step_up
 	step_left
 	turn_head_right
-	step_end
-
-MovementData_BattleTowerHallwayPlayerEntersBattleRoom:
-	step_up
 	step_end
 
 Text_PleaseStepThisWay: ; 0x9ec26

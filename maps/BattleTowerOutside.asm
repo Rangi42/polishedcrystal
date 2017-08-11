@@ -35,17 +35,12 @@ BattleTowerOutsideStepDownTrigger:
 	if_not_equal $9, .Done
 	checkcode VAR_XCOORD
 	if_equal $8, .Down
-	if_equal $9, .Down
-	jump .Done
+	if_not_equal $9, .Done
 .Down
-	applymovement PLAYER, .StepDownMovement
+	applyonemovement PLAYER, step_down
 .Done
 	dotrigger $1
 	end
-
-.StepDownMovement:
-	step_down
-	step_end
 
 BattleTowerOutsidePanUpTrigger1:
 	scall BattleTowerOutsidePanUpHelperScript
@@ -59,7 +54,7 @@ BattleTowerOutsidePanUpTrigger2:
 
 BattleTowerOutsidePanUpHelperScript:
 	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, .HidePlayerMovement
+	applyonemovement PLAYER, hide_person
 	waitsfx
 	applymovement PLAYER, .PanUpMovement
 	disappear PLAYER
@@ -69,10 +64,6 @@ BattleTowerOutsidePanUpHelperScript:
 	pause 15
 	dotrigger $0
 	end
-
-.HidePlayerMovement:
-	hide_person
-	step_end
 
 .PanUpMovement:
 	step_up

@@ -22,9 +22,8 @@ BillsHouse_MapEventHeader:
 
 PokemonJournalBillScript:
 	setflag ENGINE_READ_BILL_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -51,14 +50,14 @@ BillsHousePCText:
 	done
 
 BillsHouseBillScript:
+	checkevent EVENT_BEAT_POKEMANIAC_BILL
+	jumptextfaceplayer_iftrue .AfterText
+	special SpecialBeastsCheck
+	jumptextfaceplayer_iffalse .IntroText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_POKEMANIAC_BILL
-	iftrue .Beaten
 	writetext .IntroText
 	waitbutton
-	special SpecialBeastsCheck
-	iffalse .NoBattle
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -67,13 +66,18 @@ BillsHouseBillScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEMANIAC_BILL
-	opentext
-.Beaten:
-	writetext .AfterText
-	waitbutton
-.NoBattle:
-	closetext
-	end
+	thistext
+
+.AfterText:
+	text "That was one rad"
+	line "battle!"
+
+	para "Any #Maniac"
+	line "would be thrilled"
+
+	para "to see what"
+	line "you've caught."
+	done
 
 .IntroText:
 	text "Bill: Eevee is"
@@ -121,15 +125,4 @@ BillsHouseBillScript:
 
 .BeatenText:
 	text "Yeehah!"
-	done
-
-.AfterText:
-	text "That was one rad"
-	line "battle!"
-
-	para "Any #Maniac"
-	line "would be thrilled"
-
-	para "to see what"
-	line "you've caught."
 	done

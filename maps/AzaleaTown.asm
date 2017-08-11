@@ -74,10 +74,7 @@ AzaleaTownRivalBattleTrigger2:
 	spriteface PLAYER, UP
 AzaleaTownRivalBattleScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext .SeenText
-	waitbutton
-	closetext
+	showtext .SeenText
 	setevent EVENT_RIVAL_AZALEA_TOWN
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -112,10 +109,7 @@ AzaleaTownRivalBattleScript:
 .AfterBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
+	showtext .AfterText
 	spriteface PLAYER, LEFT
 	applymovement AZALEATOWN_SILVER, .ExitMovement
 	playsound SFX_EXIT_BUILDING
@@ -308,13 +302,9 @@ AzaleaTownHiddenFullHeal:
 
 AzaleaTownGrampsScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iftrue .ClearedWell
-	jumptextfaceplayer .Text1
+	jumptextfaceplayer_iftrue .Text2
+	thistextfaceplayer
 
-.ClearedWell:
-	jumptextfaceplayer .Text2
-
-.Text1:
 	text "The Slowpoke have"
 	line "disappeared from"
 	cont "town…"
@@ -399,12 +389,8 @@ AzaleaTownSlowpokeScript:
 	done
 
 AzaleaTownKurtScript:
-	faceplayer
-	opentext
-	writetext AzaleaTownKurtText
-	waitbutton
+	showtextfaceplayer AzaleaTownKurtText
 	spriteface AZALEATOWN_KURT, LEFT
-	closetext
 	end
 
 AzaleaTownKurtText:
