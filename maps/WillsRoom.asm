@@ -1,10 +1,10 @@
 WillsRoom_MapScriptHeader:
 
 .MapTriggers: db 1
-	dw WillsRoomTrigger0
+	dw WillsRoomEntranceTrigger
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, UnknownScript_0x1804cb
+	dbw MAPCALLBACK_TILES, WillsRoomDoorCallback
 
 WillsRoom_MapEventHeader:
 
@@ -18,25 +18,14 @@ WillsRoom_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_WILL, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, WillScript_0x1804f8, -1
+	person_event SPRITE_WILL, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, WillScript, -1
 
-WillsRoomTrigger0:
-	priorityjump UnknownScript_0x1804e0
+WillsRoomEntranceTrigger:
+	priorityjump .Script
 	end
 
-UnknownScript_0x1804cb:
-	checkevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
-	iffalse UnknownScript_0x1804d5
-	changeblock $4, $e, $2a
-UnknownScript_0x1804d5:
-	checkevent EVENT_WILLS_ROOM_EXIT_OPEN
-	iffalse UnknownScript_0x1804df
-	changeblock $4, $2, $16
-UnknownScript_0x1804df:
-	return
-
-UnknownScript_0x1804e0:
-	applymovement PLAYER, MovementData_0x18052c
+.Script:
+	applymovement PLAYER, WalkIntoEliteFourRoomMovement
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
@@ -48,38 +37,40 @@ UnknownScript_0x1804e0:
 	waitsfx
 	end
 
-WillScript_0x1804f8:
-	faceplayer
+WillsRoomDoorCallback:
+	checkevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
+	iffalse .KeepDoorClosed
+	changeblock $4, $e, $2a
+.KeepDoorClosed:
+	checkevent EVENT_WILLS_ROOM_EXIT_OPEN
+	iffalse .OpenDoor
+	changeblock $4, $2, $16
+.OpenDoor:
+	return
+
+WillScript:
 	checkcode VAR_BADGES
-	if_equal 16, WillRematchScript
+	if_equal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_WILL
-	iftrue UnknownScript_0x180526
-	showtext UnknownText_0x180531
-	winlosstext UnknownText_0x18062c, 0
+	iftrue_jumptextfaceplayer .AfterText
+	showtextfaceplayer .SeenText
+	winlosstext .BeatenText, 0
 	loadtrainer WILL, 1
 	startbattle
 	reloadmapafterbattle
-	scall UnknownScript_0x180526
-	jump WillEndBattleScript
+	showtext .AfterText
+	jump .EndBattle
 
-UnknownScript_0x180526:
-	jumptext UnknownText_0x180644
-
-WillRematchScript:
+.Rematch:
 	checkevent EVENT_BEAT_ELITE_4_WILL
-	iftrue .AfterBattle
-	showtext WillBeforeRematchText
-	winlosstext UnknownText_0x18062c, 0
+	iftrue_jumptextfaceplayer .AfterRematchText
+	showtextfaceplayer .SeenRematchText
+	winlosstext .BeatenText, 0
 	loadtrainer WILL, 2
 	startbattle
 	reloadmapafterbattle
-	scall .AfterBattle
-	jump WillEndBattleScript
-
-.AfterBattle:
-	jumptext WillAfterRematchText
-
-WillEndBattleScript:
+	showtext .AfterRematchText
+.EndBattle:
 	playsound SFX_ENTER_DOOR
 	changeblock $4, $2, $16
 	reloadmappart
@@ -88,14 +79,7 @@ WillEndBattleScript:
 	waitsfx
 	end
 
-MovementData_0x18052c:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-UnknownText_0x180531:
+.SeenText:
 	text "Welcome to the"
 	line "#mon League,"
 	cont "<PLAYER>."
@@ -121,12 +105,12 @@ UnknownText_0x180531:
 	line "option!"
 	done
 
-UnknownText_0x18062c:
+.BeatenText:
 	text "I… I can't…"
 	line "believe it…"
 	done
 
-UnknownText_0x180644:
+.AfterText:
 	text "Even though I was"
 	line "defeated, I won't"
 	cont "change my course."
@@ -144,7 +128,7 @@ UnknownText_0x180644:
 	line "of the Elite Four."
 	done
 
-WillBeforeRematchText:
+.SeenRematchText:
 	text "So, you have"
 	line "finally appeared."
 
@@ -160,7 +144,7 @@ WillBeforeRematchText:
 	line "battle!"
 	done
 
-WillAfterRematchText:
+.AfterRematchText:
 	text "I've expended all"
 	line "my power."
 

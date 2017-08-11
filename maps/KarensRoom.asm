@@ -1,10 +1,10 @@
 KarensRoom_MapScriptHeader:
 
 .MapTriggers: db 1
-	dw KarensRoomTrigger0
+	dw KarensRoomEntranceTrigger
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, UnknownScript_0x180bc1
+	dbw MAPCALLBACK_TILES, KarensRoomDoorCallback
 
 KarensRoom_MapEventHeader:
 
@@ -19,25 +19,14 @@ KarensRoom_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_KAREN, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript_0x180bee, -1
+	person_event SPRITE_KAREN, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript, -1
 
-KarensRoomTrigger0:
-	priorityjump UnknownScript_0x180bd6
+KarensRoomEntranceTrigger:
+	priorityjump .Script
 	end
 
-UnknownScript_0x180bc1:
-	checkevent EVENT_KARENS_ROOM_ENTRANCE_CLOSED
-	iffalse UnknownScript_0x180bcb
-	changeblock $4, $e, $2a
-UnknownScript_0x180bcb:
-	checkevent EVENT_KARENS_ROOM_EXIT_OPEN
-	iffalse UnknownScript_0x180bd5
-	changeblock $4, $2, $16
-UnknownScript_0x180bd5:
-	return
-
-UnknownScript_0x180bd6:
-	applymovement PLAYER, MovementData_0x180c22
+.Script:
+	applymovement PLAYER, WalkIntoEliteFourRoomMovement
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
@@ -49,38 +38,40 @@ UnknownScript_0x180bd6:
 	waitsfx
 	end
 
-KarenScript_0x180bee:
-	faceplayer
+KarensRoomDoorCallback:
+	checkevent EVENT_KARENS_ROOM_ENTRANCE_CLOSED
+	iffalse .KeepDoorClosed
+	changeblock $4, $e, $2a
+.KeepDoorClosed:
+	checkevent EVENT_KARENS_ROOM_EXIT_OPEN
+	iffalse .OpenDoor
+	changeblock $4, $2, $16
+.OpenDoor:
+	return
+
+KarenScript:
 	checkcode VAR_BADGES
-	if_equal 16, KarenRematchScript
+	if_equal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_KAREN
-	iftrue UnknownScript_0x180c1c
-	showtext UnknownText_0x180c27
-	winlosstext UnknownText_0x180cf8, 0
+	iftrue_jumptextfaceplayer .AfterText
+	showtextfaceplayer .SeenText
+	winlosstext .BeatenText, 0
 	loadtrainer KAREN, 1
 	startbattle
 	reloadmapafterbattle
-	scall UnknownScript_0x180c1c
-	jump KarenEndBattleScript
+	showtext .AfterText
+	jump .EndBattle
 
-UnknownScript_0x180c1c:
-	jumptext UnknownText_0x180d29
-
-KarenRematchScript:
+.Rematch:
 	checkevent EVENT_BEAT_ELITE_4_KAREN
-	iftrue .AfterBattle
-	showtext KarenBeforeRematchText
-	winlosstext UnknownText_0x180cf8, 0
+	iftrue_jumptextfaceplayer .AfterRematchText
+	showtextfaceplayer .SeenRematchText
+	winlosstext .BeatenText, 0
 	loadtrainer KAREN, 2
 	startbattle
 	reloadmapafterbattle
-	scall .AfterBattle
-	jump KarenEndBattleScript
-
-.AfterBattle:
-	jumptext KarenAfterRematchText
-
-KarenEndBattleScript:
+	showtext .AfterRematchText
+.EndBattle:
 	playsound SFX_ENTER_DOOR
 	changeblock $4, $2, $16
 	reloadmappart
@@ -89,14 +80,7 @@ KarenEndBattleScript:
 	waitsfx
 	end
 
-MovementData_0x180c22:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_end
-
-UnknownText_0x180c27:
+.SeenText:
 	text "I am Karen of the"
 	line "Elite Four."
 
@@ -119,13 +103,13 @@ UnknownText_0x180c27:
 	para "Let's go."
 	done
 
-UnknownText_0x180cf8:
+.BeatenText:
 	text "Well, aren't you"
 	line "good. I like that"
 	cont "in a trainer."
 	done
 
-UnknownText_0x180d29:
+.AfterText:
 	text "Strong #mon."
 
 	para "Weak #mon."
@@ -148,7 +132,7 @@ UnknownText_0x180d29:
 	line "pion is waiting."
 	done
 
-KarenBeforeRematchText:
+.SeenRematchText:
 	text "You fought through"
 	line "the ranks to reach"
 	cont "me. I'm impressed."
@@ -162,7 +146,7 @@ KarenBeforeRematchText:
 	para "Let's begin!"
 	done
 
-KarenAfterRematchText:
+.AfterRematchText:
 	text "I will not stray"
 	line "from my chosen"
 	cont "path."

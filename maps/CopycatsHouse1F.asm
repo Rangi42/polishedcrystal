@@ -16,29 +16,11 @@ CopycatsHouse1F_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 3
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18ad34, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x18ad16, -1
-	person_event SPRITE_BLISSEY, 5, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlisseyScript_0x18ad2a, -1
+	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CopycatsHouse1FPokefanMText, -1
+	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CopycatsHouse1FPokefanFScript, -1
+	person_event SPRITE_BLISSEY, 5, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CopycatsHouse1FBlisseyScript, -1
 
-PokefanFScript_0x18ad16:
-	faceplayer
-	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x18ad24
-	jumpopenedtext UnknownText_0x18ad95
-
-UnknownScript_0x18ad24:
-	jumpopenedtext UnknownText_0x18add3
-
-BlisseyScript_0x18ad2a:
-	opentext
-	writetext UnknownText_0x18ae4b
-	cry BLISSEY
-	waitbutton
-	closetext
-	end
-
-UnknownText_0x18ad34:
+CopycatsHouse1FPokefanMText:
 	text "My daughter likes"
 	line "to mimic people."
 
@@ -49,7 +31,11 @@ UnknownText_0x18ad34:
 	line "around here."
 	done
 
-UnknownText_0x18ad95:
+CopycatsHouse1FPokefanFScript:
+	checkevent EVENT_RETURNED_MACHINE_PART
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
+
 	text "My daughter is so"
 	line "self-centered…"
 
@@ -57,7 +43,7 @@ UnknownText_0x18ad95:
 	line "friends."
 	done
 
-UnknownText_0x18add3:
+.Text2:
 	text "She recently lost"
 	line "the # Doll that"
 
@@ -69,6 +55,14 @@ UnknownText_0x18add3:
 	cont "better at mimicry…"
 	done
 
-UnknownText_0x18ae4b:
+CopycatsHouse1FBlisseyScript:
+	opentext
+	writetext .Text
+	cry BLISSEY
+	waitbutton
+	closetext
+	end
+
+.Text:
 	text "Blissey: Bliisii!"
 	done
