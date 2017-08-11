@@ -87,31 +87,69 @@ Route44VeteranmScript:
 	jumpopenedtext .RefusedText
 
 .IntroText:
-	text "TODO"
+	text "My #mon are"
+	line "wearing Rocky"
+	cont "Helmets."
+
+	para "Want to challenge"
+	line "them?"
+
+	para "Okay, then you've"
+	line "got to beat every"
+
+	para "trainer on this"
+	cont "route first."
 	done
 
 .QuestionText:
-	text "TODO"
+	text "I saw your"
+	line "battles."
+
+	para "Your #mon are"
+	line "really tough."
+
+	para "Are you ready?"
 	done
 
 .RefusedText:
-	text "TODO"
+	text "You beat Team"
+	line "Rocket and you're"
+	cont "scared of me?"
+
+	para "Do I look that"
+	line "scary?"
 	done
 
 .SeenText:
-	text "TODO"
+	text "I'll show you the"
+	line "power of my Rocky"
+	cont "Helmets!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Bah. These Helmets"
+	line "weren't enough."
 	done
 
 .AfterText1:
-	text "TODO"
+	text "You're really"
+	line "strong for someone"
+	cont "so young."
+	cont "Keep it up!"
+
+	para "Take one of these"
+	line "Rocky Helmets."
+
+	para "You can use it as"
+	line "well as me."
 	done
 
 .AfterText2:
-	text "TODO"
+	text "You're a very"
+	line "quiet person."
+
+	para "Has anybody told"
+	line "you that before?"
 	done
 
 TrainerBird_keeperVance1:

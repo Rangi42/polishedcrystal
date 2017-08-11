@@ -110,31 +110,81 @@ Route43SightseerfScript:
 	jumpopenedtext .RefusedText
 
 .IntroText:
-	text "TODO"
+	text "I'm seeking out"
+	line "strong trainers"
+
+	para "in Johto, but I"
+	line "haven't found any."
+
+	para "Hmmm… You seem"
+	line "promising."
+
+	para "I can see it in"
+	line "your eyes."
+
+	para "Let's battle--but"
+	line "first, I want to"
+
+	para "see you conquer"
+	line "this route by"
+
+	para "beating everyone"
+	line "else."
 	done
 
 .QuestionText:
-	text "TODO"
+	text "Excellent! Time to"
+	line "test my new stra-"
+	cont "tegy…"
+
+	para "Ready for a"
+	line "battle?"
 	done
 
 .RefusedText:
-	text "TODO"
+	text "Aw… I was so"
+	line "anxious!"
+
+	para "Don't make me"
+	line "wait!"
 	done
 
 .SeenText:
-	text "TODO"
+	text "Let's see how"
+	line "strong Johto's"
+	cont "trainers can be."
+
+	para "Face my Flame Orb"
+	line "strategy!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Awesome! ♥"
 	done
 
 .AfterText1:
-	text "TODO"
+	text "Wow! I've finally"
+	line "found what I was"
+	cont "looking for!"
+
+	para "I'll give you a"
+	line "Flame Orb, but"
+
+	para "please be careful"
+	line "if you give it to"
+	cont "a #mon."
 	done
 
 .AfterText2:
-	text "TODO"
+	text "I love visiting"
+	line "new places and"
+
+	para "challenging every"
+	line "trainer there."
+
+	para "I'll keep looking"
+	line "for strong train-"
+	cont "ers like you."
 	done
 
 TrainerBreederJody:

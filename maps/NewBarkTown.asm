@@ -174,7 +174,7 @@ NewBarkTownTeacherScript:
 	iftrue_jumptextfaceplayer Text_TellMomIfLeaving
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumptextfaceplayer Text_YourMonIsAdorable
-	iftrue_jumptextfaceplayer Text_RefreshingBreeze
+	jumptextfaceplayer Text_RefreshingBreeze
 
 NewBarkTownSilverScript:
 	showtext NewBarkTownRivalText1
