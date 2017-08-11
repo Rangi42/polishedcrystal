@@ -35,17 +35,17 @@ CeladonUniversity2F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FYoungster2Text, -1
 
 CeladonUniversity2FCooltrainerfScript:
+	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
+	iftrue_jumptextfaceplayer .Text5
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
-	iftrue .GotItem
 	writetext .Text1
 	waitbutton
 	writetext .Text2
 	yesorno
-	iffalse .NoFreshWater
+	iffalse_jumpopenedtext .Text6
 	takeitem FRESH_WATER
-	iffalse .NoFreshWater
+	iffalse_jumpopenedtext .Text6
 	writetext .Text3
 	waitbutton
 	writetext .Text4
@@ -53,19 +53,21 @@ CeladonUniversity2FCooltrainerfScript:
 	verbosegiveitem RARE_CANDY
 	iffalse .NoRoomForRareCandy
 	setevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
-.GotItem:
-	writetext .Text5
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.NoFreshWater:
-	jumpopenedtext .Text6
+.Text5:
+	text "That Fresh Water"
+	line "really is re-"
+	cont "freshing!"
+	done
 
 .NoRoomForRareCandy:
 	giveitem FRESH_WATER
-	jumpopenedtext .Text7
+	thisopenedtext
+
+	text "Oh… Keep your"
+	line "Fresh Water then…"
+	done
 
 .Text1:
 	text "Wow, I'm thirsty!"
@@ -93,20 +95,9 @@ CeladonUniversity2FCooltrainerfScript:
 	line "Here, take this!"
 	done
 
-.Text5:
-	text "That Fresh Water"
-	line "really is re-"
-	cont "freshing!"
-	done
-
 .Text6:
 	text "Oh… But I'm so"
 	line "thirsty…"
-	done
-
-.Text7:
-	text "Oh… Keep your"
-	line "Fresh Water then…"
 	done
 
 CeladonUniversity2FCooltrainermText:

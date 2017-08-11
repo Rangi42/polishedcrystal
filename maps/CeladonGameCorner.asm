@@ -53,34 +53,28 @@ CeladonGameCorner_MapEventHeader:
 	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x72521
 
 .PersonEvents: db 8
+	person_event SPRITE_CLERK, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPSTD, 0, gamecornercoinvendor, -1
+	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x721d0, -1
 	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
 	person_event SPRITE_TEACHER, 7, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
 	person_event SPRITE_FISHING_GURU, 7, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
-	person_event SPRITE_GRAMPS, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
-	person_event SPRITE_CLERK, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPSTD, 0, gamecornercoinvendor, -1
-	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x721d0, -1
 	person_event SPRITE_FISHER, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
 	person_event SPRITE_GYM_GUY, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonGymGuyText, -1
-
-const_value set 2
-	const CELADONGAMECORNER_POKEFAN_M
-	const CELADONGAMECORNER_TEACHER
-	const CELADONGAMECORNER_FISHING_GURU
-	const CELADONGAMECORNER_GRAMPS
+	person_event SPRITE_GRAMPS, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
 
 PokefanMScript_0x72123:
 	showtextfaceplayer UnknownText_0x72215
-	spriteface CELADONGAMECORNER_POKEFAN_M, LEFT
+	spriteface LAST_TALKED, LEFT
 	end
 
 TeacherScript_0x7212e:
 	showtextfaceplayer UnknownText_0x72242
-	spriteface CELADONGAMECORNER_TEACHER, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 FishingGuruScript_0x72139:
 	showtextfaceplayer UnknownText_0x72295
-	spriteface CELADONGAMECORNER_FISHING_GURU, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 FisherScript_0x72144:
@@ -142,7 +136,7 @@ UnknownScript_0x72184:
 
 GrampsScript_0x72190:
 	showtextfaceplayer UnknownText_0x724ad
-	spriteface CELADONGAMECORNER_GRAMPS, LEFT
+	spriteface LAST_TALKED, LEFT
 	end
 
 MapCeladonGameCornerSignpost35Script:

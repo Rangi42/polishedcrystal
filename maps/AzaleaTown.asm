@@ -390,7 +390,7 @@ AzaleaTownSlowpokeScript:
 
 AzaleaTownKurtScript:
 	showtextfaceplayer AzaleaTownKurtText
-	spriteface AZALEATOWN_KURT, LEFT
+	spriteface LAST_TALKED, LEFT
 	end
 
 AzaleaTownKurtText:

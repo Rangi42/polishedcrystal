@@ -19,7 +19,7 @@ BeautifulBeachVilla_MapEventHeader:
 	person_event SPRITE_DARACH, 4, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_JUMPTEXTFP, 0, DarachNiteText, -1
 	person_event SPRITE_CAITLIN, 4, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_JUMPTEXTFP, 0, CaitlinMornDayText, -1
 	person_event SPRITE_WEIRD_TREE, 2, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CaitlinNiteScript, -1
-	person_event SPRITE_BOOK_UNOWN_R, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DarachsBookNiteScript, -1
+	person_event SPRITE_BOOK_UNOWN_R, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXT, 0, DarachsBookText, -1
 
 DarachMornDayText:
 	text "TODO"
@@ -39,8 +39,6 @@ CaitlinNiteScript:
 	text "TODO"
 	done
 
-DarachsBookNiteScript:
-	thistext
-
+DarachsBookText:
 	text "TODO"
 	done

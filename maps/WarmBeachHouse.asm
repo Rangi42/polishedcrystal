@@ -31,18 +31,34 @@ WarmBeachHouseBookScript:
 	opentext
 	writetext .Text0
 	yesorno
-	iffalse .Done
+	iffalse_endtext
 	writetext .Text1
 	yesorno
-	iffalse .Done
+	iffalse_endtext
 	writetext .Text2
 	yesorno
-	iffalse .Done
-	writetext .Text3
-	waitbutton
-.Done
-	closetext
-	end
+	iffalse_endtext
+	thisopenedtext
+
+	text "From the trio of"
+	line "islands, ancient"
+	cont "spheres shall you"
+	cont "take."
+
+	para "For between life"
+	line "and death, all the"
+	cont "difference you'll"
+	cont "make."
+
+	para "Climb to the"
+	line "shrine to right"
+	cont "what is wrong,"
+
+	para "and the world"
+	line "shall be healed"
+	cont "by the guardian's"
+	cont "song…"
+	done
 
 .Text0:
 	text "The Shamouti"
@@ -85,25 +101,4 @@ WarmBeachHouseBookScript:
 	cont "beast of the sea."
 
 	para "Keep reading?"
-	done
-
-.Text3:
-	text "From the trio of"
-	line "islands, ancient"
-	cont "spheres shall you"
-	cont "take."
-
-	para "For between life"
-	line "and death, all the"
-	cont "difference you'll"
-	cont "make."
-
-	para "Climb to the"
-	line "shrine to right"
-	cont "what is wrong,"
-
-	para "and the world"
-	line "shall be healed"
-	cont "by the guardian's"
-	cont "song…"
 	done

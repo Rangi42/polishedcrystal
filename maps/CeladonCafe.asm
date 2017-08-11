@@ -17,57 +17,17 @@ CeladonCafe_MapEventHeader:
 	signpost 1, 7, SIGNPOST_JUMPTEXT, EatathonContestTrashCanText
 
 .PersonEvents: db 7
+	person_event SPRITE_MAYLENE, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MayleneScript, -1
+	person_event SPRITE_TEACHER, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
 	person_event SPRITE_FISHER, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73051, -1
 	person_event SPRITE_FISHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x73062, -1
 	person_event SPRITE_FISHER, 2, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73073, -1
-	person_event SPRITE_TEACHER, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
-	person_event SPRITE_MAYLENE, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MayleneScript, -1
-	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x73049, -1
+	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x730de, -1
 	person_event SPRITE_BAKER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CeladonCafeBakerText, -1
 
 const_value set 2
-	const CELADONCAFE_FISHER1
-	const CELADONCAFE_FISHER2
-	const CELADONCAFE_FISHER3
-	const CELADONCAFE_TEACHER
 	const CELADONCAFE_MAYLENE
-
-SuperNerdScript_0x73049:
-	faceplayer
-	jumptext UnknownText_0x730de
-
-FisherScript_0x73051:
-	showtext UnknownText_0x73129
-	showtextfaceplayer UnknownText_0x7313a
-	spriteface CELADONCAFE_FISHER1, LEFT
-	end
-
-FisherScript_0x73062:
-	showtext UnknownText_0x7316a
-	showtextfaceplayer UnknownText_0x73178
-	spriteface CELADONCAFE_FISHER2, RIGHT
-	end
-
-FisherScript_0x73073:
-	showtext UnknownText_0x731ae
-	showtextfaceplayer UnknownText_0x731bd
-	spriteface CELADONCAFE_FISHER3, RIGHT
-	end
-
-TeacherScript_0x73084:
-	checkitem COIN_CASE
-	iftrue UnknownScript_0x7309a
-	showtext UnknownText_0x73201
-	showtextfaceplayer UnknownText_0x73212
-	spriteface CELADONCAFE_TEACHER, LEFT
-	end
-
-UnknownScript_0x7309a:
-	showtext UnknownText_0x73254
-	spriteface CELADONCAFE_TEACHER, RIGHT
-	showtext UnknownText_0x73278
-	spriteface CELADONCAFE_TEACHER, LEFT
-	end
+	const CELADONCAFE_TEACHER
 
 MayleneScript:
 	showtext MayleneText1
@@ -108,6 +68,39 @@ MayleneScript:
 	waitbutton
 	closetext
 	spriteface CELADONCAFE_MAYLENE, RIGHT
+	end
+
+TeacherScript_0x73084:
+	checkitem COIN_CASE
+	iftrue .NoCoinCase
+	showtext UnknownText_0x73201
+	showtextfaceplayer UnknownText_0x73212
+	spriteface LAST_TALKED, LEFT
+	end
+
+.NoCoinCase:
+	showtext UnknownText_0x73254
+	spriteface CELADONCAFE_TEACHER, RIGHT
+	showtext UnknownText_0x73278
+	spriteface CELADONCAFE_TEACHER, LEFT
+	end
+
+FisherScript_0x73051:
+	showtext UnknownText_0x73129
+	showtextfaceplayer UnknownText_0x7313a
+	spriteface LAST_TALKED, LEFT
+	end
+
+FisherScript_0x73062:
+	showtext UnknownText_0x7316a
+	showtextfaceplayer UnknownText_0x73178
+	spriteface LAST_TALKED, RIGHT
+	end
+
+FisherScript_0x73073:
+	showtext UnknownText_0x731ae
+	showtextfaceplayer UnknownText_0x731bd
+	spriteface LAST_TALKED, RIGHT
 	end
 
 UnknownText_0x730de:

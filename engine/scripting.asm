@@ -252,6 +252,8 @@ ScriptCommandTable:
 	dw Script_showtext                   ; bd
 	dw Script_showtextfaceplayer         ; be
 	dw Script_applyonemovement           ; bf
+	dw Script_iftrue_endtext             ; c0
+	dw Script_iffalse_endtext            ; c1
 
 StartScript:
 	ld hl, ScriptFlags
@@ -2906,3 +2908,17 @@ Script_restoretypeface:
 	xor a
 	ld [OptionsBuffer], a
 	jp LoadStandardFont
+
+Script_iftrue_endtext:
+	ld a, [ScriptVar]
+	and a
+	ret z
+	call Script_closetext
+	jp Script_end
+
+Script_iffalse_endtext:
+	ld a, [ScriptVar]
+	and a
+	ret nz
+	call Script_closetext
+	jp Script_end

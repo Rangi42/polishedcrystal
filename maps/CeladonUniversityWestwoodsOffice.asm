@@ -20,24 +20,25 @@ CeladonUniversityWestwoodsOffice_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_CHILD, 3, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
-	person_event SPRITE_BOOK_UNOWN_R, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeBookScript, -1
+	person_event SPRITE_BOOK_UNOWN_R, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXT, 0, CeladonUniversityWestwoodsOfficeBookText, -1
 
 CeladonUniversityWestwoodsOfficeChildScript:
+	checkevent EVENT_GOT_RAGECANDYBAR_IN_UNIVERSITY
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_RAGECANDYBAR_IN_UNIVERSITY
-	iftrue .GotItem
 	writetext .Text1
 	buttonsound
 	verbosegiveitem RAGECANDYBAR
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_RAGECANDYBAR_IN_UNIVERSITY
-.GotItem:
-	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
+
+.Text2:
+	text "I'll just buy some"
+	line "ramen in the cafe-"
+	cont "teria."
+	done
 
 .Text1:
 	text "I was told there"
@@ -56,15 +57,7 @@ CeladonUniversityWestwoodsOfficeChildScript:
 	line "one."
 	done
 
-.Text2:
-	text "I'll just buy some"
-	line "ramen in the cafe-"
-	cont "teria."
-	done
-
-CeladonUniversityWestwoodsOfficeBookScript:
-	thistext
-
+CeladonUniversityWestwoodsOfficeBookText:
 	text "Dear Diary,"
 
 	para "My work compiling"

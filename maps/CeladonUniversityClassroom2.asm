@@ -20,15 +20,12 @@ CeladonUniversityClassroom2_MapEventHeader:
 	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2Bookshelf2Text
 
 .PersonEvents: db 5
-	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1
 	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom2BlancheText, EVENT_CELADON_UNIVERSITY_BLANCHE
 	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom2TeacherText, EVENT_SHAMOUTI_COAST_BLANCHE
 	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom2YoungsterText, -1
 	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom2ChildText, -1
 	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom2LadyText, -1
-
-const_value set 2
-	const CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M
+	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1
 
 CeladonUniversityClassroom2BlancheText:
 	text "I am Blanche."
@@ -87,7 +84,7 @@ CeladonUniversityClassroom2LadyText:
 CeladonUniversityClassroom2CooltrainermScript:
 	showtext .Text1
 	showtextfaceplayer .Text2
-	spriteface CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M, UP
+	spriteface LAST_TALKED, UP
 	end
 
 .Text1:

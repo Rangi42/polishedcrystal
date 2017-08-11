@@ -1194,3 +1194,13 @@ applyonemovement: macro
 	db movement_\2 ; movement data
 	db movement_step_end
 	endm
+
+	enum iftrue_endtext_command
+iftrue_endtext: macro
+	db iftrue_endtext_command
+	endm
+
+	enum iffalse_endtext_command
+iffalse_endtext: macro
+	db iffalse_endtext_command
+	endm

@@ -40,7 +40,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	writetext .IntroText2
 .AfterIntro
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoBattleText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -54,30 +54,28 @@ CeladonUniversityCafeteriaCoreyScript:
 .Beaten
 	setevent EVENT_INTRODUCED_CELADON_FOUR
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	iftrue .GotItem
+	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	buttonsound
 	verbosegiveitem CHOICE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-.GotItem:
-	writetext .FinalText
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.NoBattle:
-	jumpopenedtext .NoBattleText
+.FinalText:
+	text "You'd be a star"
+	line "student if you"
+	cont "enrolled here."
 
-.NotFinished:
-	jumpopenedtext .AfterText1
+	para "But you have other"
+	line "goals, don't you?"
+	done
 
 .IntroText1:
 	text "I'm Corey! I'm one"
@@ -147,15 +145,6 @@ CeladonUniversityCafeteriaCoreyScript:
 
 	para "Take this as a"
 	line "memento!"
-	done
-
-.FinalText:
-	text "You'd be a star"
-	line "student if you"
-	cont "enrolled here."
-
-	para "But you have other"
-	line "goals, don't you?"
 	done
 
 CeladonUniversityCafeteriaCooltrainerfText:

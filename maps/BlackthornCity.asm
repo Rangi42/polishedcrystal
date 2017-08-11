@@ -112,13 +112,20 @@ SantosScript:
 	writetext .GivesGiftText
 	buttonsound
 	verbosegiveitem SPELL_TAG
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
-	writetext .GaveGiftText
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
+
+	text "Santos: …"
+
+	para "Spell Tag…"
+
+	para "Ghost-type moves"
+	line "get stronger…"
+
+	para "It will frighten"
+	line "you…"
+	done
 
 .NotSaturday:
 	thistextfaceplayer
@@ -138,18 +145,6 @@ SantosScript:
 
 .GivesGiftText:
 	text "You can have this…"
-	done
-
-.GaveGiftText:
-	text "Santos: …"
-
-	para "Spell Tag…"
-
-	para "Ghost-type moves"
-	line "get stronger…"
-
-	para "It will frighten"
-	line "you…"
 	done
 
 .SaturdayText:

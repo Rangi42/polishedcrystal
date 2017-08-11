@@ -124,6 +124,7 @@ Low priority:
 * Finish and merge the optimizations branch
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
 * Optimize battle command engine, including parameterized commands
+* Look for `:\n\tclosetext\n\tend` and use `iftrue_endtext` or `iffalse_endtext` instead
 * PERSONTYPE_GENERICTRAINER
 * PERSONTYPE_FRUITTREE (implement)
 * PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)

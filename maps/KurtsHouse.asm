@@ -335,21 +335,21 @@ KurtMakingBallsScript:
 	writetext UnknownText_0x18e7d8
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_KURT2, UP
+	spriteface LAST_TALKED, UP
 	end
 
 Script_FirstTimeBuggingKurt:
 	writetext UnknownText_0x18e863
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_KURT2, UP
+	spriteface LAST_TALKED, UP
 	setevent EVENT_BUGGING_KURT_TOO_MUCH
 	end
 
 KurtScript_ImCheckingItNow:
 	writetext UnknownText_0x18e934
 	waitbutton
-	spriteface KURTSHOUSE_KURT2, UP
+	spriteface LAST_TALKED, UP
 	jumpopenedtext UnknownText_0x18e949
 
 KurtsGranddaughter1:
@@ -386,14 +386,14 @@ KurtsGranddaughter2Subscript:
 	writetext KurtsGranddaughterHelpText
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_TWIN2, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 .GSBall:
 	writetext KurtsGranddaughterGSBallText
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_TWIN2, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 KurtsGranddaughterFunScript:

@@ -20,9 +20,6 @@ CianwoodPharmacy_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_PHARMACIST, 3, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
 
-const_value set 2
-	const CIANWOODPHARMACY_PHARMACIST
-
 CianwoodPharmacist:
 	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
 	iftrue .Mart
@@ -41,12 +38,12 @@ CianwoodPharmacist:
 	writetext PharmacistDescribeSecretpotionText
 	waitbutton
 	closetext
-	spriteface CIANWOODPHARMACY_PHARMACIST, UP
+	spriteface LAST_TALKED, UP
 	end
 
 .Mart:
 	scall .PokeMart
-	spriteface CIANWOODPHARMACY_PHARMACIST, UP
+	spriteface LAST_TALKED, UP
 	end
 
 .PokeMart:

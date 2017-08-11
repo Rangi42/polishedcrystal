@@ -57,12 +57,8 @@ MapBattleTower1FSignpost0Script:
 	opentext
 	writetext Text_ReadBattleTowerRules
 	yesorno
-	iffalse UnknownScript_0x9e3e0
-	writetext Text_BattleTowerRules
-	waitbutton
-UnknownScript_0x9e3e0:
-	closetext
-	end
+	iffalse_endtext
+	jumpopenedtext Text_BattleTowerRules
 
 ReceptionistScript_0x9e3e2:
 ; TODO: let the player fight in Battle Tower once it's finished

@@ -251,7 +251,7 @@ RocketScript_0x198a1a:
 	writetext UnknownText_0x198d2a
 	waitbutton
 	closetext
-	spriteface GOLDENRODCITY_ROCKET1, UP
+	spriteface LAST_TALKED, UP
 	end
 
 GoldenrodCityGymLassScript:

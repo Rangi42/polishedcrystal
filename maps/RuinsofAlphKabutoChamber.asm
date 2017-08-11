@@ -26,11 +26,8 @@ RuinsofAlphKabutoChamber_MapEventHeader:
 	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
 
 .PersonEvents: db 2
-	person_event SPRITE_SCIENTIST, 1, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
 	person_event SPRITE_RECEPTIONIST, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-
-const_value set 2
-	const RUINSOFALPHKABUTOCHAMBER_SCIENTIST
+	person_event SPRITE_SCIENTIST, 1, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
 
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
@@ -109,7 +106,7 @@ UnknownScript_0x587c0:
 	writetext UnknownText_0x588f5
 	waitbutton
 	closetext
-	spriteface RUINSOFALPHKABUTOCHAMBER_SCIENTIST, UP
+	spriteface LAST_TALKED, UP
 	end
 
 UnknownScript_0x587c9:

@@ -18,17 +18,14 @@ GoldenrodDeptStore4F_MapEventHeader:
 	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 4
-	person_event SPRITE_GAMEBOY_KID, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x55ef7, -1
 	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_STANDARD, MART_GOLDENROD_4F, -1
+	person_event SPRITE_GAMEBOY_KID, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x55ef7, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55f08, -1
 	person_event SPRITE_BUG_CATCHER, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x55f52, -1
 
-const_value set 2
-	const GOLDENRODDEPTSTORE4F_GAMEBOY_KID
-
 GameboyKidScript_0x55ef7:
 	showtextfaceplayer UnknownText_0x55f74
-	spriteface GOLDENRODDEPTSTORE4F_GAMEBOY_KID, DOWN
+	spriteface LAST_TALKED, DOWN
 	end
 
 UnknownText_0x55f08:
