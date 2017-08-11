@@ -126,7 +126,6 @@ Low priority:
 * Optimize battle command engine, including parameterized commands
 * SIGNPOST_JUMPTEXT
 * PERSONTYPE_JUMPTEXTFP
-* PERSONTYPE_JUMPSTD (for pokecenternurse)
 * PERSONTYPE_MART
 * PERSONTYPE_FRUITTREE
 * PERSONTYPE_GENERICTRAINER

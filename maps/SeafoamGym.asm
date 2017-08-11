@@ -31,66 +31,42 @@ TrainerScientistLowell:
 
 ScientistLowellScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistLowellAfterText
-	waitbutton
-	closetext
-	end
+	jumptext ScientistLowellAfterText
 
 TrainerScientistDennett:
 	trainer EVENT_BEAT_SCIENTIST_DENNETT, SCIENTIST, DENNETT, ScientistDennettSeenText, ScientistDennettBeatenText, 0, ScientistDennettScript
 
 ScientistDennettScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistDennettAfterText
-	waitbutton
-	closetext
-	end
+	jumptext ScientistDennettAfterText
 
 TrainerSupernerdCary:
 	trainer EVENT_BEAT_SUPER_NERD_CARY, SUPER_NERD, CARY, SupernerdCarySeenText, SupernerdCaryBeatenText, 0, SupernerdCaryScript
 
 SupernerdCaryScript:
 	end_if_just_battled
-	opentext
-	writetext SupernerdCaryAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SupernerdCaryAfterText
 
 TrainerScientistLinden:
 	trainer EVENT_BEAT_SCIENTIST_LINDEN, SCIENTIST, LINDEN, ScientistLindenSeenText, ScientistLindenBeatenText, 0, ScientistLindenScript
 
 ScientistLindenScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistLindenAfterText
-	waitbutton
-	closetext
-	end
+	jumptext ScientistLindenAfterText
 
 TrainerSupernerdWaldo:
 	trainer EVENT_BEAT_SUPER_NERD_WALDO, SUPER_NERD, WALDO, SupernerdWaldoSeenText, SupernerdWaldoBeatenText, 0, SupernerdWaldoScript
 
 SupernerdWaldoScript:
 	end_if_just_battled
-	opentext
-	writetext SupernerdWaldoAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SupernerdWaldoAfterText
 
 TrainerSupernerdMerle:
 	trainer EVENT_BEAT_SUPER_NERD_MERLE, SUPER_NERD, MERLE, SupernerdMerleSeenText, SupernerdMerleBeatenText, 0, SupernerdMerleScript
 
 SupernerdMerleScript:
 	end_if_just_battled
-	opentext
-	writetext SupernerdMerleAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SupernerdMerleAfterText
 
 BlaineScript_0x1ab4fb:
 	faceplayer
@@ -141,16 +117,10 @@ BlaineScript_0x1ab4fb:
 	buttonsound
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
-	writetext BlaineOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BlaineOutroText
 
 BlaineAfterTMScript:
-	writetext UnknownText_0x1ab71c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1ab71c
 
 SeafoamGymGuyScript:
 	faceplayer
@@ -164,10 +134,7 @@ SeafoamGymGuyScript:
 	end
 
 .TalkedToSeafoamGymGuyScript:
-	writetext SeafoamGymGuyWinText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SeafoamGymGuyWinText2
 
 ScientistLowellSeenText:
 	text "This lab coat"

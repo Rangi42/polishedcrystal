@@ -31,55 +31,35 @@ TrainerYoungsterOliver:
 
 YoungsterOliverScript:
 	end_if_just_battled
-	opentext
-	writetext YoungsterOliverAfterText
-	waitbutton
-	closetext
-	end
+	jumptext YoungsterOliverAfterText
 
 TrainerLassJennifer:
 	trainer EVENT_BEAT_LASS_JENNIFER, LASS, JENNIFER, LassJenniferSeenText, LassJenniferBeatenText, 0, LassJenniferScript
 
 LassJenniferScript:
 	end_if_just_battled
-	opentext
-	writetext LassJenniferAfterText
-	waitbutton
-	closetext
-	end
+	jumptext LassJenniferAfterText
 
 TrainerBird_keeperHank:
 	trainer EVENT_BEAT_BIRD_KEEPER_HANK, BIRD_KEEPER, HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText, 0, Bird_keeperHankScript
 
 Bird_keeperHankScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae258
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ae258
 
 TrainerPicnickerHope:
 	trainer EVENT_BEAT_PICNICKER_HOPE, PICNICKER, HOPE, PicnickerHopeSeenText, PicnickerHopeBeatenText, 0, PicnickerHopeScript
 
 PicnickerHopeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae320
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ae320
 
 TrainerPicnickerSharon:
 	trainer EVENT_BEAT_PICNICKER_SHARON, PICNICKER, SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText, 0, PicnickerSharonScript
 
 PicnickerSharonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae369
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ae369
 
 Route4SuperNerd1Script:
 	faceplayer
@@ -102,23 +82,14 @@ Route4TutorIronHeadScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route4Tutor1Refused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor1Refused
 
 .NoSilverLeaf
-	writetext Text_Route4TutorsNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4TutorsNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route4Tutor1Taught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor1Taught
 
 Route4SuperNerd2Script:
 	faceplayer
@@ -141,23 +112,14 @@ Route4TutorAquaTailScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route4Tutor2Refused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor2Refused
 
 .NoSilverLeaf
-	writetext Text_Route4TutorsNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4TutorsNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route4Tutor2Taught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor2Taught
 
 MtMoonSign:
 	jumptext MtMoonSignText

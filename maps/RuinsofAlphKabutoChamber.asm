@@ -116,26 +116,17 @@ UnknownScript_0x587c0:
 	end
 
 UnknownScript_0x587c9:
-	writetext UnknownText_0x5897c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5897c
 
 UnknownScript_0x587cf:
-	writetext UnknownText_0x594cb
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x594cb
 
 MapRuinsofAlphKabutoChamberSignpost1Script:
 	jumptext UnknownText_0x58b1a
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
-	opentext
-	writetext UnknownText_0x58b3f
-	waitbutton
-	closetext
+	showtext UnknownText_0x58b3f
 	restoretypeface
 	end
 
@@ -158,11 +149,7 @@ MapRuinsofAlphKabutoChamberSignpost5Script:
 	end
 
 UnknownScript_0x587f7:
-	opentext
-	writetext UnknownText_0x58afa
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58afa
 
 MovementData_0x587fe:
 	db $59 ; movement

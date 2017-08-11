@@ -57,10 +57,7 @@ UnknownScript_0x59192:
 	playsound SFX_TRANSACTION
 	pause 30
 	spriteface RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
-	opentext
-	writetext UnknownText_0x59278
-	waitbutton
-	closetext
+	showtext UnknownText_0x59278
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59274
 	opentext
 	writetext UnknownText_0x592fa
@@ -82,16 +79,10 @@ ScientistScript_0x591d1:
 	iftrue .Conclusion
 	checkcode VAR_UNOWNCOUNT
 	if_equal NUM_UNOWN, UnknownScript_0x591df
-	writetext UnknownText_0x59311
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x59311
 
 .Conclusion:
-	writetext RuinsofAlphResearchCenterScientistConclusionText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RuinsofAlphResearchCenterScientistConclusionText
 
 UnknownScript_0x591df:
 	writetext UnknownText_0x5935f
@@ -117,10 +108,7 @@ UnknownScript_0x591df:
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 15
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST1, 15
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST2, 15
-	opentext
-	writetext RuinsofAlphResearchCenterScientistShockedText
-	waitbutton
-	closetext
+	showtext RuinsofAlphResearchCenterScientistShockedText
 	checkcode VAR_FACING
 	if_equal UP, .GoAround
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
@@ -167,22 +155,13 @@ ScientistScript_0x591e5:
 	iftrue UnknownScript_0x59205
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue UnknownScript_0x591ff
-	writetext UnknownText_0x593ed
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x593ed
 
 UnknownScript_0x591ff:
-	writetext UnknownText_0x59478
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x59478
 
 UnknownScript_0x59205:
-	writetext UnknownText_0x59445
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x59445
 
 UnknownScript_0x5920b:
 	writetext UnknownText_0x594cb
@@ -198,26 +177,17 @@ ScientistScript_0x59214:
 	if_greater_than 3, UnknownScript_0x5922e
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue UnknownScript_0x59228
-	writetext UnknownText_0x5954f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5954f
 
 UnknownScript_0x59228:
-	writetext UnknownText_0x595cb
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x595cb
 
 UnknownScript_0x5922e:
 	checkcode VAR_UNOWNCOUNT
 	if_equal NUM_UNOWN, ResearchCompleteScript_0x596d3
 	checkcode VAR_UNOWNCOUNT
 	if_greater_than 10, ResearchOngoingScript_0x59669
-	writetext UnknownText_0x59769
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x59769
 
 ResearchCompleteScript_0x596d3:
 	writetext UnknownText_0x596d3
@@ -227,10 +197,7 @@ ResearchCompleteScript_0x596d3:
 	end
 
 ResearchOngoingScript_0x59669:
-	writetext UnknownText_0x59669
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x59669
 
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
@@ -238,17 +205,11 @@ MapRuinsofAlphResearchCenterSignpost1Script:
 	iffalse UnknownScript_0x59241
 	checkevent EVENT_DECO_UNOWN_DOLL
 	iftrue UnknownScript_0x59241
-	writetext UnknownText_0x597b6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x597b6
 
 UnknownScript_0x59241:
 	checkcode VAR_UNOWNCOUNT
-	writetext UnknownText_0x597d9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x597d9
 
 MapRuinsofAlphResearchCenterSignpost2Script:
 	jumptext UnknownText_0x5980e

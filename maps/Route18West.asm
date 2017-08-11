@@ -26,10 +26,7 @@ Route18WestAlwaysOnBike:
 Route18WestBikeCheckScript:
 	callasm .CheckPlayerState
 	if_equal PLAYER_BIKE, .done
-	opentext
-	writetext Route18WestBikeWarningText
-	waitbutton
-	closetext
+	showtext Route18WestBikeWarningText
 	applymovement PLAYER, Route18WestStepDownMovementData
 .done
 	end
@@ -44,11 +41,7 @@ TrainerBikerCharles:
 
 BikerCharlesScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad293
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ad293
 
 Route18WestStepDownMovementData:
 	step_down

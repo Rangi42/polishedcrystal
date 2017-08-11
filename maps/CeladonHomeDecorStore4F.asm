@@ -34,16 +34,10 @@ BigDollClerkScript:
 	jumptextfaceplayer BigDollClerkText
 
 BigDollClerkNoSaleScript:
-	writetext BigDollClerkNoSaleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigDollClerkNoSaleText
 
 BigDollClerkNoMoneyScript:
-	writetext BigDollClerkNoMoneyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigDollClerkNoMoneyText
 
 BigLaprasDollScript:
 	opentext
@@ -60,16 +54,10 @@ BigLaprasDollScript:
 	writetext BoughtBigLaprasDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BigLaprasDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigLaprasDollSentText
 
 .OwnBigLaprasDoll:
-	writetext BigLaprasDollText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigLaprasDollText
 
 BigSnorlaxDollScript:
 	opentext
@@ -86,16 +74,10 @@ BigSnorlaxDollScript:
 	writetext BoughtBigSnorlaxDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BigSnorlaxDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigSnorlaxDollSentText
 
 .OwnBigSnorlaxDoll:
-	writetext BigSnorlaxDollText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigSnorlaxDollText
 
 BigOnixDollScript:
 	opentext
@@ -112,16 +94,10 @@ BigOnixDollScript:
 	writetext BoughtBigOnixDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BigOnixDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigOnixDollSentText
 
 .OwnBigOnixDoll:
-	writetext BigOnixDollText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigOnixDollText
 
 CeladonHomeDecorStore4FDirectory:
 	jumptext CeladonHomeDecorStore4FDirectoryText

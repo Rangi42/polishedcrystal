@@ -94,10 +94,7 @@ MapRuinsofAlphOmanyteChamberSignpost1Script:
 
 MapRuinsofAlphOmanyteChamberSignpost3Script:
 	unowntypeface
-	opentext
-	writetext UnknownText_0x58d26
-	waitbutton
-	closetext
+	showtext UnknownText_0x58d26
 	restoretypeface
 	end
 
@@ -120,11 +117,7 @@ MapRuinsofAlphOmanyteChamberSignpost5Script:
 	end
 
 UnknownScript_0x58c85:
-	opentext
-	writetext UnknownText_0x58ce1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58ce1
 
 MovementData_0x58c8c:
 	db $59 ; movement

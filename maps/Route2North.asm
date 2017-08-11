@@ -32,11 +32,7 @@ TrainerBug_maniacEd:
 
 Bug_maniacEdScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac3cf
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac3cf
 
 Route2NorthCooltrainermScript:
 	jumptextfaceplayer Route2NorthCooltrainermText

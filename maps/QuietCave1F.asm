@@ -33,44 +33,28 @@ TrainerHexManiacAshley:
 
 HexManiacAshleyScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacAshleyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HexManiacAshleyAfterText
 
 TrainerCooltrainermHenri:
 	trainer EVENT_BEAT_COOLTRAINERM_HENRI, COOLTRAINERM, HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText, 0, CooltrainermHenriScript
 
 CooltrainermHenriScript:
 	end_if_just_battled
-	opentext
-	writetext CooltrainermHenriAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CooltrainermHenriAfterText
 
 TrainerHikerGrady:
 	trainer EVENT_BEAT_HIKER_GRADY, HIKER, GRADY, HikerGradySeenText, HikerGradyBeatenText, 0, HikerGradyScript
 
 HikerGradyScript:
 	end_if_just_battled
-	opentext
-	writetext HikerGradyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HikerGradyAfterText
 
 TrainerScientistCarl:
 	trainer EVENT_BEAT_SCIENTIST_CARL, SCIENTIST, CARL, ScientistCarlSeenText, ScientistCarlBeatenText, 0, ScientistCarlScript
 
 ScientistCarlScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistCarlAfterText
-	waitbutton
-	closetext
-	end
+	jumptext ScientistCarlAfterText
 
 HexManiacAshleySeenText:
 	text "The spirits have"

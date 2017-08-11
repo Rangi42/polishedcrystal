@@ -40,33 +40,21 @@ TrainerBattleGirlPadma:
 
 BattleGirlPadmaScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlPadmaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BattleGirlPadmaAfterText
 
 TrainerYoungsterTyler:
 	trainer EVENT_BEAT_YOUNGSTER_TYLER, YOUNGSTER, TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
 
 YoungsterTylerScript:
 	end_if_just_battled
-	opentext
-	writetext YoungsterTylerAfterText
-	waitbutton
-	closetext
-	end
+	jumptext YoungsterTylerAfterText
 
 TrainerBeautyRachael:
 	trainer EVENT_BEAT_BEAUTY_RACHAEL, BEAUTY, RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
 
 BeautyRachaelScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyRachaelAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BeautyRachaelAfterText
 
 SafariZoneNorthCooltrainerFScript:
 	faceplayer
@@ -89,23 +77,14 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_SafariZoneNorthTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_SafariZoneNorthTutorRefused
 
 .NoSilverLeaf
-	writetext Text_SafariZoneNorthTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_SafariZoneNorthTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_SafariZoneNorthTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_SafariZoneNorthTutorTaught
 
 SafariZoneNorthAreaSign:
 	jumptext SafariZoneNorthAreaSignText

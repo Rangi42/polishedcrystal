@@ -34,84 +34,43 @@ const_value set 2
 
 SuperNerdScript_0x73049:
 	faceplayer
-	opentext
-	writetext UnknownText_0x730de
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x730de
 
 FisherScript_0x73051:
-	opentext
-	writetext UnknownText_0x73129
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext UnknownText_0x7313a
-	waitbutton
-	closetext
+	showtext UnknownText_0x73129
+	showtextfaceplayer UnknownText_0x7313a
 	spriteface CELADONCAFE_FISHER1, LEFT
 	end
 
 FisherScript_0x73062:
-	opentext
-	writetext UnknownText_0x7316a
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext UnknownText_0x73178
-	waitbutton
-	closetext
+	showtext UnknownText_0x7316a
+	showtextfaceplayer UnknownText_0x73178
 	spriteface CELADONCAFE_FISHER2, RIGHT
 	end
 
 FisherScript_0x73073:
-	opentext
-	writetext UnknownText_0x731ae
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext UnknownText_0x731bd
-	waitbutton
-	closetext
+	showtext UnknownText_0x731ae
+	showtextfaceplayer UnknownText_0x731bd
 	spriteface CELADONCAFE_FISHER3, RIGHT
 	end
 
 TeacherScript_0x73084:
 	checkitem COIN_CASE
 	iftrue UnknownScript_0x7309a
-	opentext
-	writetext UnknownText_0x73201
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext UnknownText_0x73212
-	waitbutton
-	closetext
+	showtext UnknownText_0x73201
+	showtextfaceplayer UnknownText_0x73212
 	spriteface CELADONCAFE_TEACHER, LEFT
 	end
 
 UnknownScript_0x7309a:
-	opentext
-	writetext UnknownText_0x73254
-	waitbutton
-	closetext
+	showtext UnknownText_0x73254
 	spriteface CELADONCAFE_TEACHER, RIGHT
-	opentext
-	writetext UnknownText_0x73278
-	waitbutton
-	closetext
+	showtext UnknownText_0x73278
 	spriteface CELADONCAFE_TEACHER, LEFT
 	end
 
 MayleneScript:
-	opentext
-	writetext MayleneText1
-	waitbutton
-	closetext
+	showtext MayleneText1
 	faceplayer
 	opentext
 	writetext MayleneText2

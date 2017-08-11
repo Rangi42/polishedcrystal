@@ -80,11 +80,7 @@ CeladonUniversityLibrary1FCooltrainerfScript:
 	done
 
 CeladonUniversityLibrary1FGameboyKidScript:
-	faceplayer
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
+	showtextfaceplayer .Text
 	spriteface CELADONUNIVERSITYLIBRARY1F_GAMEBOY_KID, DOWN
 	end
 

@@ -61,11 +61,7 @@ BlackthornGym2FBoulders:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	jumptext .Text
 
 .Text:
 	text "The boulder fell"

@@ -61,17 +61,11 @@ CeladonUniversity2FCooltrainerfScript:
 	end
 
 .NoFreshWater:
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text6
 
 .NoRoomForRareCandy:
 	giveitem FRESH_WATER
-	writetext .Text7
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text7
 
 .Text1:
 	text "Wow, I'm thirsty!"

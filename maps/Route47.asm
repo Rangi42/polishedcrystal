@@ -52,110 +52,70 @@ TrainerHikerDevin:
 
 HikerDevinScript:
 	end_if_just_battled
-	opentext
-	writetext HikerDevinAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HikerDevinAfterText
 
 TrainerCamperGrant:
 	trainer EVENT_BEAT_CAMPER_GRANT, CAMPER, GRANT, CamperGrantSeenText, CamperGrantBeatenText, 0, CamperGrantScript
 
 CamperGrantScript:
 	end_if_just_battled
-	opentext
-	writetext CamperGrantAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CamperGrantAfterText
 
 TrainerAceDuoThomandkae1:
 	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE1, AceDuoThomandkae1SeenText, AceDuoThomandkae1BeatenText, 0, AceDuoThomandkae1Script
 
 AceDuoThomandkae1Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoThomandkae1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext AceDuoThomandkae1AfterText
 
 TrainerAceDuoThomandkae2:
 	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE2, AceDuoThomandkae2SeenText, AceDuoThomandkae2BeatenText, 0, AceDuoThomandkae2Script
 
 AceDuoThomandkae2Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoThomandkae2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext AceDuoThomandkae2AfterText
 
 TrainerCoupleDuffandeda1:
 	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA1, CoupleDuffandeda1SeenText, CoupleDuffandeda1BeatenText, 0, CoupleDuffandeda1Script
 
 CoupleDuffandeda1Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleDuffandeda1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext CoupleDuffandeda1AfterText
 
 TrainerCoupleDuffandeda2:
 	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA2, CoupleDuffandeda2SeenText, CoupleDuffandeda2BeatenText, 0, CoupleDuffandeda2Script
 
 CoupleDuffandeda2Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleDuffandeda2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext CoupleDuffandeda2AfterText
 
 TrainerCowgirlDaniela:
 	trainer EVENT_BEAT_COWGIRL_DANIELA, COWGIRL, DANIELA, CowgirlDanielaSeenText, CowgirlDanielaBeatenText, 0, CowgirlDanielaScript
 
 CowgirlDanielaScript:
 	end_if_just_battled
-	opentext
-	writetext CowgirlDanielaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CowgirlDanielaAfterText
 
 TrainerGruntF6:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_6, GRUNTF, 6, GruntF6SeenText, GruntF6BeatenText, 0, GruntF6Script
 
 GruntF6Script:
 	end_if_just_battled
-	opentext
-	writetext GruntF6AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntF6AfterText
 
 TrainerGruntM23:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_23, GRUNTM, 23, GruntM23SeenText, GruntM23BeatenText, 0, GruntM23Script
 
 GruntM23Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM23AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM23AfterText
 
 TrainerGruntM26:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_26, GRUNTM, 26, GruntM26SeenText, GruntM26BeatenText, 0, GruntM26Script
 
 GruntM26Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM26AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM26AfterText
 
 Route47RocketGirlScript:
 	jumptextfaceplayer Route47RocketGirlText

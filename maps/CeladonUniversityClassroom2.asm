@@ -100,15 +100,8 @@ CeladonUniversityClassroom2LadyScript:
 	done
 
 CeladonUniversityClassroom2CooltrainermScript:
-	opentext
-	writetext .Text1
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext .Text2
-	waitbutton
-	closetext
+	showtext .Text1
+	showtextfaceplayer .Text2
 	spriteface CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M, UP
 	end
 

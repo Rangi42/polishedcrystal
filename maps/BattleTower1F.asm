@@ -41,10 +41,7 @@ BattleTower1FTrigger0:
 	jump .Done
 
 .ResumeChallenge
-	opentext
-	writetext Text_WeveBeenWaitingForYou
-	waitbutton
-	closetext
+	showtext Text_WeveBeenWaitingForYou
 	priorityjump Script_ResumeBattleTowerChallenge
 	end
 
@@ -191,10 +188,7 @@ Script_BattleTowerSkipExplanation:
 	jump Script_Menu_ChallengeExplanationCancel
 
 Script_BattleTowerHopeToServeYouAgain:
-	writetext Text_WeHopeToServeYouAgain
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WeHopeToServeYouAgain
 
 Script_WaitButton:
 	waitbutton
@@ -228,23 +222,14 @@ BattleTowerTutorWaterPulseScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_BattleTowerTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_BattleTowerTutorRefused
 
 .NoSilverLeaf
-	writetext Text_BattleTowerTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_BattleTowerTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_BattleTowerTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_BattleTowerTutorTaught
 
 MovementData_BattleTower1FWalkToElevator:
 	step_up

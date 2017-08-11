@@ -47,10 +47,7 @@ Museum1FFossilScientistScript:
 	iftrue .own_dome
 	checkitem OLD_AMBER
 	iftrue .ask_old_amber
-	writetext NoFossilsText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoFossilsText
 
 .own_helix
 	checkitem DOME_FOSSIL
@@ -110,10 +107,7 @@ Museum1FFossilScientistScript:
 	if_equal $2, ResurrectDomeFossil
 	if_equal $3, ResurrectOldAmber
 .maybe_later:
-	writetext MaybeLaterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MaybeLaterText
 
 HelixDomeMenuDataHeader:
 	db $40 ; flags
@@ -181,10 +175,7 @@ ResurrectHelixFossil:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke OMANYTE, 20
-	writetext TakeGoodCareOfItText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext TakeGoodCareOfItText
 
 ResurrectDomeFossil:
 	checkcode VAR_PARTYCOUNT
@@ -195,10 +186,7 @@ ResurrectDomeFossil:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke KABUTO, 20
-	writetext TakeGoodCareOfItText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext TakeGoodCareOfItText
 
 ResurrectOldAmber:
 	checkcode VAR_PARTYCOUNT
@@ -209,10 +197,7 @@ ResurrectOldAmber:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke AERODACTYL, 20
-	writetext TakeGoodCareOfItText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext TakeGoodCareOfItText
 
 ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
@@ -234,10 +219,7 @@ ResurrectAFossilScript:
 	end
 
 NoRoomForFossilPokemon:
-	writetext NoRoomForFossilPokemonText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoRoomForFossilPokemonText
 
 Museum1FReceptionistScript:
 	faceplayer
@@ -245,16 +227,10 @@ Museum1FReceptionistScript:
 	checkcode VAR_FACING
 	if_equal DOWN, .Sneak
 	if_equal LEFT, .Sneak
-	writetext Museum1FReceptionistText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Museum1FReceptionistText1
 
 .Sneak:
-	writetext Museum1FReceptionistText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Museum1FReceptionistText2
 
 Museum1FScientistScript:
 	jumptextfaceplayer Museum1FScientistText

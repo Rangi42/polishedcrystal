@@ -78,23 +78,14 @@ CeladonCityTutorSwaggerScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_CeladonCityTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CeladonCityTutorRefused
 
 .NoSilverLeaf
-	writetext Text_CeladonCityTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CeladonCityTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_CeladonCityTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CeladonCityTutorTaught
 
 FisherScript_0x1a9f43:
 	jumptextfaceplayer UnknownText_0x1a9f7d

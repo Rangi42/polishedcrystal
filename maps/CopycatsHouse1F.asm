@@ -28,16 +28,10 @@ PokefanFScript_0x18ad16:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x18ad24
-	writetext UnknownText_0x18ad95
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18ad95
 
 UnknownScript_0x18ad24:
-	writetext UnknownText_0x18add3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18add3
 
 BlisseyScript_0x18ad2a:
 	opentext

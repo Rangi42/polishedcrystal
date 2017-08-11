@@ -53,10 +53,7 @@ UnknownScript_0x19eea0:
 	spriteface CERULEANCAPE_MISTY, UP
 	pause 10
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19efed
-	opentext
-	writetext UnknownText_0x19f006
-	waitbutton
-	closetext
+	showtext UnknownText_0x19f006
 	spriteface PLAYER, DOWN
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
 	spriteface PLAYER, LEFT
@@ -79,10 +76,7 @@ UnknownScript_0x19eee0:
 	spriteface CERULEANCAPE_MISTY, UP
 	pause 10
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19eff4
-	opentext
-	writetext UnknownText_0x19f006
-	waitbutton
-	closetext
+	showtext UnknownText_0x19f006
 	spriteface PLAYER, UP
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
 	spriteface PLAYER, LEFT
@@ -129,11 +123,7 @@ TrainerSwimmermRomeo:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Admire my fitness!"
@@ -158,11 +148,7 @@ TrainerSwimmermMalcolm:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "My #mon and I"
@@ -190,11 +176,7 @@ TrainerSwimmermArmand:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Ugh. Would that"
@@ -223,11 +205,7 @@ TrainerBeautyBridget:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Hey! You're block-"
@@ -250,11 +228,7 @@ TrainerBeautyVeronica:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I don't date much,"
@@ -284,11 +258,7 @@ TrainerGentlemanCamus:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Seeing you reminds"
@@ -317,11 +287,7 @@ TrainerGentlemanGeoffrey:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I wanted a change,"
@@ -348,11 +314,7 @@ TrainerGuitaristfMorgan:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Listen to that"
@@ -425,11 +387,7 @@ TrainerFisherLeroy:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I keep catching"

@@ -31,66 +31,42 @@ TrainerCamperDean:
 
 CamperDeanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aafd9
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1aafd9
 
 TrainerPicnickerHeidi:
 	trainer EVENT_BEAT_PICNICKER_HEIDI, PICNICKER, HEIDI, PicnickerHeidiSeenText, PicnickerHeidiBeatenText, 0, PicnickerHeidiScript
 
 PicnickerHeidiScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ab07c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ab07c
 
 TrainerCamperSid:
 	trainer EVENT_BEAT_CAMPER_SID, CAMPER, SID, CamperSidSeenText, CamperSidBeatenText, 0, CamperSidScript
 
 CamperSidScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ab0f6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ab0f6
 
 TrainerPicnickerEdna:
 	trainer EVENT_BEAT_PICNICKER_EDNA, PICNICKER, EDNA, PicnickerEdnaSeenText, PicnickerEdnaBeatenText, 0, PicnickerEdnaScript
 
 PicnickerEdnaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ab15f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ab15f
 
 TrainerHikerTim:
 	trainer EVENT_BEAT_HIKER_TIM, HIKER, TIM, HikerTimSeenText, HikerTimBeatenText, 0, HikerTimScript
 
 HikerTimScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ab210
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ab210
 
 TrainerHikerSidney:
 	trainer EVENT_BEAT_HIKER_SIDNEY, HIKER, SIDNEY, HikerSidneySeenText, HikerSidneyBeatenText, 0, HikerSidneyScript
 
 HikerSidneyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ab278
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ab278
 
 Route9Sign:
 	jumptext Route9SignText

@@ -81,10 +81,7 @@ SailorScript_0x74dc4:
 	end
 
 UnknownScript_0x74e1a:
-	writetext UnknownText_0x74f31
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74f31
 
 UnknownScript_0x74e20:
 	spriteface VERMILIONPORT_SAILOR2, RIGHT
@@ -139,10 +136,7 @@ UnknownScript_0x74e86:
 	end
 
 UnknownScript_0x74e87:
-	writetext UnknownText_0x74fa7
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74fa7
 
 UnknownScript_0x74e8d:
 	writetext UnknownText_0x74fa7
@@ -177,30 +171,17 @@ SailorScript_0x74e97:
 	jump SailorScript_0x74dc4
 
 UnknownScript_0x74ed4:
-	writetext UnknownText_0x74ff2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74ff2
 
 UnknownScript_0x74eda:
-	writetext UnknownText_0x75059
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x75059
 
 UnknownScript_0x74ee0:
-	writetext UnknownText_0x75080
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x75080
 
 SuperNerdScript_0x74ee6:
 	faceplayer
-	opentext
-	writetext UnknownText_0x750a6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x750a6
 
 VermilionPortHiddenIron:
 	dwb EVENT_VERMILION_PORT_HIDDEN_IRON, IRON

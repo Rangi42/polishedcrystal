@@ -29,11 +29,7 @@ TrainerRuin_maniacLeland:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm on the trail of"
@@ -58,11 +54,7 @@ TrainerRuin_maniacPetry:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'll go anywhere"

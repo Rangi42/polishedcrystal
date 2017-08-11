@@ -91,15 +91,9 @@ TwinScript_0x56754:
 	jumptextfaceplayer UnknownText_0x56839
 
 SuperNerdScript_0x56757:
-	opentext
-	writetext UnknownText_0x56867
-	waitbutton
-	closetext
+	showtext UnknownText_0x56867
 	spriteface GOLDENRODDEPTSTOREROOF_SUPER_NERD, UP
-	opentext
-	writetext UnknownText_0x56871
-	waitbutton
-	closetext
+	showtext UnknownText_0x56871
 	spriteface GOLDENRODDEPTSTOREROOF_SUPER_NERD, RIGHT
 	end
 

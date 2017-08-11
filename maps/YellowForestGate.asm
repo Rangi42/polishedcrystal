@@ -26,11 +26,7 @@ YellowForestGateOfficerScript:
 	jumptextfaceplayer YellowForestGateOfficerText
 
 YellowForestGateNurseScript:
-	faceplayer
-	opentext
-	writetext YellowForestGateNurseText
-	waitbutton
-	closetext
+	showtextfaceplayer YellowForestGateNurseText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	playmusic MUSIC_HEAL
@@ -38,11 +34,7 @@ YellowForestGateNurseScript:
 	pause 60
 	special Special_FadeInQuickly
 	special RestartMapMusic
-	opentext
-	writetext YellowForestGateNurseHealedText
-	waitbutton
-	closetext
-	end
+	jumptext YellowForestGateNurseHealedText
 
 YellowForestGateChanseyScript:
 	opentext

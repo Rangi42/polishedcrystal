@@ -39,10 +39,7 @@ UnknownScript_0x73611:
 UnknownScript_0x73617:
 	showemote EMOTE_SHOCK, ROUTE18GATE_OFFICER, 15
 	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x7364d
-	waitbutton
-	closetext
+	showtext UnknownText_0x7364d
 	applymovement PLAYER, MovementData_0x73629
 	end
 

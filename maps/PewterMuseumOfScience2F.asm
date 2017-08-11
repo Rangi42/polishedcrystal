@@ -61,23 +61,14 @@ Museum2FTutorSeismicTossScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Museum2FTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Museum2FTutorRefused
 
 .NoSilverLeaf
-	writetext Text_Museum2FTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Museum2FTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Museum2FTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Museum2FTutorTaught
 
 Museum2FMoonStoneSignpostScript:
 	refreshscreen

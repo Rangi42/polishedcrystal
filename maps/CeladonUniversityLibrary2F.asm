@@ -82,15 +82,8 @@ CeladonUniversityLibrary2FLassScript:
 	done
 
 CeladonUniversityLibrary2FArtistScript:
-	opentext
-	writetext .Text1
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext .Text2
-	waitbutton
-	closetext
+	showtext .Text1
+	showtextfaceplayer .Text2
 	spriteface CELADONUNIVERSITYLIBRARY2F_ARTIST, RIGHT
 	end
 

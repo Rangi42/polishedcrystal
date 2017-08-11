@@ -85,10 +85,7 @@ UnknownScript_0x1a5b59:
 	jump UnknownScript_0x1a5b7e
 
 UnknownScript_0x1a5b5c:
-	writetext UnknownText_0x1a5dec
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a5dec
 
 UnknownScript_0x1a5b62:
 	jumpstd asknumber1m
@@ -127,11 +124,7 @@ TrainerPokefanfRuth:
 
 PokefanfRuthScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5db2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a5db2
 
 Route39CowgirlAnnieScript:
 	faceplayer
@@ -189,16 +182,10 @@ Route39CowgirlAnnieScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Hey! Don't scare"
@@ -272,22 +259,14 @@ TrainerSailorEugene:
 
 SailorEugeneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5c4d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a5c4d
 
 TrainerPsychicNorman:
 	trainer EVENT_BEAT_PSYCHIC_NORMAN, PSYCHIC_T, NORMAN, PsychicNormanSeenText, PsychicNormanBeatenText, 0, PsychicNormanScript
 
 PsychicNormanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5e57
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a5e57
 
 PokefanFScript_0x1a5bbe:
 	faceplayer
@@ -308,16 +287,10 @@ PokefanFScript_0x1a5bbe:
 	end
 
 UnknownScript_0x1a5bdf:
-	writetext UnknownText_0x1a5f31
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a5f31
 
 UnknownScript_0x1a5be5:
-	writetext UnknownText_0x1a5ec4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a5ec4
 
 Route39BeautyScript:
 	jumptextfaceplayer Route39BeautyText

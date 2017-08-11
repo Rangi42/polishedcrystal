@@ -127,16 +127,10 @@ IlexForestCharcoalApprenticeScript:
 	opentext
 	checkevent EVENT_HERDED_FARFETCHD
 	iftrue .DoneFarfetchd
-	writetext UnknownText_0x6ef5c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6ef5c
 
 .DoneFarfetchd:
-	writetext UnknownText_0x6f019
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6f019
 
 IlexForestFarfetchdScript:
 	copybytetovar FarfetchdPosition
@@ -449,10 +443,7 @@ IlexForestCharcoalMasterScript:
 	end
 
 .AlreadyGotCut:
-	writetext Text_CharcoalMasterTalkAfter
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CharcoalMasterTalkAfter
 
 IlexForestHeadbuttGuyScript:
 	faceplayer
@@ -475,34 +466,21 @@ IlexForestTutorHeadbuttScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_IlexForestTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IlexForestTutorRefused
 
 .NoSilverLeaf
-	writetext Text_IlexForestTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IlexForestTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_IlexForestTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IlexForestTutorTaught
 
 TrainerBug_catcherWayne:
 	trainer EVENT_BEAT_BUG_CATCHER_WAYNE, BUG_CATCHER, WAYNE, Bug_catcherWayneSeenText, Bug_catcherWayneBeatenText, 0, Bug_catcherWayneScript
 
 Bug_catcherWayneScript:
 	end_if_just_battled
-	opentext
-	writetext Bug_catcherWayneAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Bug_catcherWayneAfterText
 
 IlexForestLassScript:
 	jumptextfaceplayer Text_IlexForestLass
@@ -575,20 +553,14 @@ MapIlexForestSignpost4Script:
 	iffalse .DidntCatchCelebi
 	appear ILEXFOREST_KURT
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef4e
-	opentext
-	writetext Text_KurtCaughtCelebi
-	waitbutton
-	closetext
+	showtext Text_KurtCaughtCelebi
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef53
 	disappear ILEXFOREST_KURT
 .DidntCatchCelebi:
 	end
 
 .StartGiovanniEvent:
-	opentext
-	writetext Text_IlexForestShrine
-	waitbutton
-	closetext
+	showtext Text_IlexForestShrine
 	showemote EMOTE_SHOCK, PLAYER, 15
 	appear ILEXFOREST_CELEBI
 	playsound SFX_BALL_POOF
@@ -600,10 +572,7 @@ MapIlexForestSignpost4Script:
 	pause 15
 	applymovement ILEXFOREST_CELEBI, MovementData_CelebiDance
 	pause 15
-	opentext
-	writetext Text_CelebiDancedBeautifully
-	waitbutton
-	closetext
+	showtext Text_CelebiDancedBeautifully
 	playsound SFX_JUMP_OVER_LEDGE
 	applymovement ILEXFOREST_CELEBI, MovementData_CelebiHop
 	applymovement PLAYER, MovementData_PlayerFollowCelebi
@@ -614,10 +583,7 @@ MapIlexForestSignpost4Script:
 	appear ILEXFOREST_LYRA
 	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraApproaches
 	spriteface PLAYER, LEFT
-	opentext
-	writetext Text_IlexForestLyraHello
-	waitbutton
-	closetext
+	showtext Text_IlexForestLyraHello
 	special RestartMapMusic
 	pause 30
 	playsound SFX_GAME_FREAK_LOGO_GS
@@ -634,10 +600,7 @@ MapIlexForestSignpost4Script:
 	pause 15
 	spriteface ILEXFOREST_LYRA, RIGHT
 	spriteface PLAYER, LEFT
-	opentext
-	writetext Text_IlexForestLyraWhatWasThat
-	waitbutton
-	closetext
+	showtext Text_IlexForestLyraWhatWasThat
 	cry CELEBI
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, MovementData_PlayerStepBack

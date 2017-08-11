@@ -40,16 +40,10 @@ OfficerScript_0x18abe8:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .OfficerScriptAfterPowerRestored
-	writetext UnknownText_0x18ac36
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18ac36
 
 .OfficerScriptAfterPowerRestored
-	writetext UnknownText_0x18aca8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18aca8
 
 SilphCo1FGentlemanScript:
 	jumptextfaceplayer SilphCo1FGentlemanText

@@ -35,16 +35,10 @@ RestHouseWoman:
 	verbosegivetmhm TM_REST
 	setevent EVENT_GOT_TM44_REST
 .AlreadyGotItem:
-	writetext RestHouseRestDescription
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RestHouseRestDescription
 
 .Disloyal:
-	writetext RestHouseWomanDisloyalText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RestHouseWomanDisloyalText
 
 RestHouseWomanText1:
 	text "Where are you off"

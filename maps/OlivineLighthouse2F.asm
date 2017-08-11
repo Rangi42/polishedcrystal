@@ -27,11 +27,7 @@ TrainerGentlemanAlfred:
 
 GentlemanAlfredScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b13e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5b13e
 
 TrainerSailorHuey1:
 	trainer EVENT_BEAT_SAILOR_HUEY, SAILOR, HUEY1, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script

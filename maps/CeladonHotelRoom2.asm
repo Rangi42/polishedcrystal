@@ -37,17 +37,11 @@ CeladonHotelRoom2SuperNerdScript:
 	end
 
 .NoBottleCap:
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .NoRoom:
 	giveitem BOTTLE_CAP
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text6
 
 .Text1:
 	text "I used to collect"

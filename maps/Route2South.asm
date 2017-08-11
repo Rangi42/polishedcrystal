@@ -29,22 +29,14 @@ TrainerBug_maniacRob:
 
 Bug_maniacRobScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac34d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac34d
 
 TrainerBug_maniacDoug:
 	trainer EVENT_BEAT_BUG_MANIAC_DOUG, BUG_MANIAC, DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText, 0, Bug_maniacDougScript
 
 Bug_maniacDougScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac423
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac423
 
 Route2Sign:
 	jumptext Route2SignText

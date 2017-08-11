@@ -53,16 +53,10 @@ EmbeddedTowerSteven1Script:
 	jump EmbeddedTowerBeatSteven1Script
 
 .NotYet:
-	writetext EmbeddedTowerSteven1NotNowText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EmbeddedTowerSteven1NotNowText
 
 .Refused:
-	writetext EmbeddedTowerSteven1NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EmbeddedTowerSteven1NoText
 
 EmbeddedTowerBeatSteven1Script:
 	checkevent EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
@@ -98,16 +92,10 @@ EmbeddedTowerSteven2Script:
 	setevent EVENT_BEAT_STEVEN
 	opentext
 .Beat:
-	writetext EmbeddedTowerSteven2AfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EmbeddedTowerSteven2AfterText
 
 .Refused:
-	writetext EmbeddedTowerSteven2NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EmbeddedTowerSteven2NoText
 
 EmbeddedTowerSteven1IntroText:
 	text "Hello! I'm Steven."

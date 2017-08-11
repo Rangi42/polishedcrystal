@@ -38,10 +38,7 @@ UnknownScript_0x74492:
 	appear VICTORYROAD2F_SILVER
 	applymovement VICTORYROAD2F_SILVER, MovementData_0x74539
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext UnknownText_0x7455f
-	waitbutton
-	closetext
+	showtext UnknownText_0x7455f
 	setevent EVENT_RIVAL_VICTORY_ROAD
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue UnknownScript_0x744ff
@@ -76,10 +73,7 @@ UnknownScript_0x7450f:
 UnknownScript_0x7451f:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext UnknownText_0x746ce
-	waitbutton
-	closetext
+	showtext UnknownText_0x746ce
 	applymovement VICTORYROAD2F_SILVER, MovementData_0x7454c
 	disappear VICTORYROAD2F_SILVER
 	dotrigger $1
@@ -91,22 +85,14 @@ TrainerVeteranfJoanne:
 
 VeteranfJoanneScript:
 	end_if_just_battled
-	opentext
-	writetext VeteranfJoanneAfterText
-	waitbutton
-	closetext
-	end
+	jumptext VeteranfJoanneAfterText
 
 TrainerVeteranfSylvie:
 	trainer EVENT_BEAT_VETERANF_SYLVIE, VETERANF, SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText, 0, VeteranfSylvieScript
 
 VeteranfSylvieScript:
 	end_if_just_battled
-	opentext
-	writetext VeteranfSylvieAfterText
-	waitbutton
-	closetext
-	end
+	jumptext VeteranfSylvieAfterText
 
 VictoryRoad2FHiddenMaxPotion:
 	dwb EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION, MAX_POTION

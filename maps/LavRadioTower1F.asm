@@ -51,10 +51,7 @@ GentlemanScript_0x7ee6c:
 	iftrue .UnknownScript_0x7ee8e
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .UnknownScript_0x7ee80
-	writetext UnknownText_0x7effb
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7effb
 
 .UnknownScript_0x7ee80:
 	writetext UnknownText_0x7f0a1
@@ -63,10 +60,7 @@ GentlemanScript_0x7ee6c:
 	scall .UnknownScript_0x7ee94
 	setflag ENGINE_EXPN_CARD
 .UnknownScript_0x7ee8e:
-	writetext UnknownText_0x7f141
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7f141
 
 .UnknownScript_0x7ee94:
 	jumpstd receiveitem
@@ -80,16 +74,10 @@ SuperNerdScript_0x7eea2:
 	opentext
 	checkflag ENGINE_EXPN_CARD
 	iftrue UnknownScript_0x7eeb0
-	writetext UnknownText_0x7f193
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7f193
 
 UnknownScript_0x7eeb0:
-	writetext UnknownText_0x7f248
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7f248
 
 MapLavRadioTower1FSignpost0Script:
 	jumptext UnknownText_0x7f2e3

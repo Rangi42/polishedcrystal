@@ -27,22 +27,14 @@ TrainerSageNico:
 
 SageNicoScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1847ff
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1847ff
 
 TrainerSageEdmond:
 	trainer EVENT_BEAT_SAGE_EDMOND, SAGE, EDMOND, SageEdmondSeenText, SageEdmondBeatenText, 0, SageEdmondScript
 
 SageEdmondScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x18486f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x18486f
 
 MapSproutTower2FSignpost0Script:
 	jumptext UnknownText_0x1848c8

@@ -39,23 +39,14 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_MrPsychicsHouseTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MrPsychicsHouseTutorRefused
 
 .NoSilverLeaf
-	writetext Text_MrPsychicsHouseTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MrPsychicsHouseTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_MrPsychicsHouseTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MrPsychicsHouseTutorTaught
 
 MrPsychicText:
 	text "…"

@@ -63,10 +63,7 @@ BurnedTower1FEusineTriggerScript:
 	spriteface BURNEDTOWER1F_EUSINE, DOWN
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_EUSINE, 15
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
-	opentext
-	writetext BurnedTower1FEusineIntroText
-	waitbutton
-	closetext
+	showtext BurnedTower1FEusineIntroText
 	moveperson BURNEDTOWER1F_EUSINE, $7, $e
 	dotrigger $1
 	end
@@ -80,10 +77,7 @@ BurnedTowerRivalBattleScript:
 	applymovement PLAYER, BurnedTowerMovement_PlayerWalksToSilver
 	applymovement BURNEDTOWER1F_SILVER, BurnedTowerMovement_SilverWalksToPlayer
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext BurnedTowerSilver_BeforeText
-	waitbutton
-	closetext
+	showtext BurnedTowerSilver_BeforeText
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -117,10 +111,7 @@ BurnedTowerRivalBattleScript:
 .returnfrombattle
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext BurnedTowerSilver_AfterText1
-	waitbutton
-	closetext
+	showtext BurnedTowerSilver_AfterText1
 	dotrigger $2
 	setevent EVENT_RIVAL_BURNED_TOWER
 	special Special_FadeOutMusic
@@ -135,10 +126,7 @@ BurnedTowerRivalBattleScript:
 	applymovement PLAYER, BurnedTower1FMovement_PlayerStartsToFall
 	playsound SFX_KINESIS
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 20
-	opentext
-	writetext BurnedTowerSilver_AfterText2
-	waitbutton
-	closetext
+	showtext BurnedTowerSilver_AfterText2
 	setevent EVENT_HOLE_IN_BURNED_TOWER
 	pause 15
 	warpcheck
@@ -155,22 +143,14 @@ TrainerHexManiacTamara:
 
 HexManiacTamaraScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacTamaraAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HexManiacTamaraAfterText
 
 TrainerFirebreatherNed:
 	trainer EVENT_BEAT_FIREBREATHER_NED, FIREBREATHER, NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
 
 FirebreatherNedScript:
 	end_if_just_battled
-	opentext
-	writetext FirebreatherNedAfterText
-	waitbutton
-	closetext
-	end
+	jumptext FirebreatherNedAfterText
 
 BurnedTower1FHiddenEther:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ETHER, ETHER

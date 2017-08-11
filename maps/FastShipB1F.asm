@@ -75,10 +75,7 @@ SailorScript_0x76767:
 	end
 
 UnknownScript_0x76787:
-	writetext UnknownText_0x76907
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x76907
 
 UnknownScript_0x7678d:
 	writetext UnknownText_0x7692e
@@ -90,137 +87,87 @@ UnknownScript_0x7678d:
 
 UnknownScript_0x76799:
 	buttonsound
-	writetext UnknownText_0x7696d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7696d
 
 UnknownScript_0x767a0:
-	writetext UnknownText_0x7699d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7699d
 
 TrainerSailorJeff:
 	trainer EVENT_BEAT_SAILOR_JEFF, SAILOR, JEFF, SailorJeffSeenText, SailorJeffBeatenText, 0, SailorJeffScript
 
 SailorJeffScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76a38
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76a38
 
 TrainerPicnickerDebra:
 	trainer EVENT_BEAT_PICNICKER_DEBRA, PICNICKER, DEBRA, PicnickerDebraSeenText, PicnickerDebraBeatenText, 0, PicnickerDebraScript
 
 PicnickerDebraScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76a99
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76a99
 
 TrainerJugglerFritz:
 	trainer EVENT_BEAT_JUGGLER_FRITZ, JUGGLER, FRITZ, JugglerFritzSeenText, JugglerFritzBeatenText, 0, JugglerFritzScript
 
 JugglerFritzScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76b02
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76b02
 
 TrainerBakerSharyn:
 	trainer EVENT_BEAT_BAKER_SHARYN, BAKER, SHARYN, BakerSharynSeenText, BakerSharynBeatenText, 0, BakerSharynScript
 
 BakerSharynScript:
 	end_if_just_battled
-	opentext
-	writetext BakerSharynAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BakerSharynAfterText
 
 TrainerSailorGarrett:
 	trainer EVENT_BEAT_SAILOR_GARRETT, SAILOR, GARRETT, SailorGarrettSeenText, SailorGarrettBeatenText, 0, SailorGarrettScript
 
 SailorGarrettScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76b7a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76b7a
 
 TrainerFisherJonah:
 	trainer EVENT_BEAT_FISHER_JONAH, FISHER, JONAH, FisherJonahSeenText, FisherJonahBeatenText, 0, FisherJonahScript
 
 FisherJonahScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76c22
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76c22
 
 TrainerBlackbeltWai:
 	trainer EVENT_BEAT_BLACKBELT_WAI, BLACKBELT_T, WAI, BlackbeltWaiSeenText, BlackbeltWaiBeatenText, 0, BlackbeltWaiScript
 
 BlackbeltWaiScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76c9e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76c9e
 
 TrainerSailorKenneth:
 	trainer EVENT_BEAT_SAILOR_KENNETH, SAILOR, KENNETH, SailorKennethSeenText, SailorKennethBeatenText, 0, SailorKennethScript
 
 SailorKennethScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76d5f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76d5f
 
 TrainerTeacherShirley:
 	trainer EVENT_BEAT_TEACHER_SHIRLEY, TEACHER, SHIRLEY, TeacherShirleySeenText, TeacherShirleyBeatenText, 0, TeacherShirleyScript
 
 TeacherShirleyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76de1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76de1
 
 TrainerSchoolboyNate:
 	trainer EVENT_BEAT_SCHOOLBOY_NATE, SCHOOLBOY, NATE, SchoolboyNateSeenText, SchoolboyNateBeatenText, 0, SchoolboyNateScript
 
 SchoolboyNateScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76e3d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76e3d
 
 TrainerSchoolboyRicky:
 	trainer EVENT_BEAT_SCHOOLBOY_RICKY, SCHOOLBOY, RICKY, SchoolboyRickySeenText, SchoolboyRickyBeatenText, 0, SchoolboyRickyScript
 
 SchoolboyRickyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76eb6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76eb6
 
 MovementData_0x76871:
 	fix_facing

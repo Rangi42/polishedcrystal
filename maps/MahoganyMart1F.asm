@@ -55,26 +55,17 @@ PharmacistScript_0x6c367:
 	end
 
 UnknownScript_0x6c375:
-	writetext UnknownText_0x6c46b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6c46b
 
 BlackBeltScript_0x6c37b:
 	faceplayer
 	opentext
 	checkevent EVENT_DECIDED_TO_HELP_LANCE
 	iftrue UnknownScript_0x6c389
-	writetext UnknownText_0x6c494
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6c494
 
 UnknownScript_0x6c389:
-	writetext UnknownText_0x6c501
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6c501
 
 UnknownScript_0x6c38f:
 	pause 15
@@ -89,10 +80,7 @@ UnknownScript_0x6c38f:
 	disappear MAHOGANYMART1F_DRAGONITE
 	pause 15
 	applymovement MAHOGANYMART1F_LANCE, MovementData_0x6c407
-	opentext
-	writetext UnknownText_0x6c549
-	waitbutton
-	closetext
+	showtext UnknownText_0x6c549
 	follow MAHOGANYMART1F_LANCE, PLAYER
 	applymovement MAHOGANYMART1F_LANCE, MovementData_0x6c40a
 	applymovement MAHOGANYMART1F_PHARMACIST, MovementData_0x6c403
@@ -108,10 +96,7 @@ UnknownScript_0x6c38f:
 	closetext
 	setevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART
 	spriteface MAHOGANYMART1F_LANCE, LEFT
-	opentext
-	writetext UnknownText_0x6c5ba
-	waitbutton
-	closetext
+	showtext UnknownText_0x6c5ba
 	applymovement MAHOGANYMART1F_LANCE, MovementData_0x6c412
 	playsound SFX_EXIT_BUILDING
 	disappear MAHOGANYMART1F_LANCE

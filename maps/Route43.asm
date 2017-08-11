@@ -104,16 +104,10 @@ Route43SightseerfScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "TODO"
@@ -149,55 +143,35 @@ TrainerBreederJody:
 BreederJodyScript:
 	setevent EVENT_BEAT_BREEDER_JODY_ONCE
 	end_if_just_battled
-	opentext
-	writetext BreederJodyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BreederJodyAfterText
 
 TrainerSrandjrIvyandamy1:
 	trainer EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SR_AND_JR, IVYANDAMY1, SrandjrIvyandamy1SeenText, SrandjrIvyandamy1BeatenText, 0, SrandjrIvyandamy1Script
 
 SrandjrIvyandamy1Script:
 	end_if_just_battled
-	opentext
-	writetext SrandjrIvyandamy1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext SrandjrIvyandamy1AfterText
 
 TrainerSrandjrIvyandamy2:
 	trainer EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SR_AND_JR, IVYANDAMY2, SrandjrIvyandamy2SeenText, SrandjrIvyandamy2BeatenText, 0, SrandjrIvyandamy2Script
 
 SrandjrIvyandamy2Script:
 	end_if_just_battled
-	opentext
-	writetext SrandjrIvyandamy2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext SrandjrIvyandamy2AfterText
 
 TrainerCamperSpencer:
 	trainer EVENT_BEAT_CAMPER_SPENCER, CAMPER, SPENCER, CamperSpencerSeenText, CamperSpencerBeatenText, 0, CamperSpencerScript
 
 CamperSpencerScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19d57e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19d57e
 
 TrainerPokemaniacBen:
 	trainer EVENT_BEAT_POKEMANIAC_BEN, POKEMANIAC, BEN, PokemaniacBenSeenText, PokemaniacBenBeatenText, 0, PokemaniacBenScript
 
 PokemaniacBenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19d2d2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19d2d2
 
 TrainerPokemaniacBrent1:
 	trainer EVENT_BEAT_POKEMANIAC_BRENT, POKEMANIAC, BRENT1, PokemaniacBrent1SeenText, PokemaniacBrent1BeatenText, 0, PokemaniacBrent1Script
@@ -309,22 +283,14 @@ TrainerPokemaniacRon:
 
 PokemaniacRonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19d3f8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19d3f8
 
 TrainerFisherMarvin:
 	trainer EVENT_BEAT_FISHER_MARVIN, FISHER, MARVIN, FisherMarvinSeenText, FisherMarvinBeatenText, 0, FisherMarvinScript
 
 FisherMarvinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19d4d3
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19d4d3
 
 TrainerPicnickerTiffany1:
 	trainer EVENT_BEAT_PICNICKER_TIFFANY, PICNICKER, TIFFANY1, PicnickerTiffany1SeenText, PicnickerTiffany1BeatenText, 0, PicnickerTiffany1Script
@@ -419,10 +385,7 @@ UnknownScript_0x19d230:
 	jump UnknownScript_0x19d259
 
 UnknownScript_0x19d233:
-	writetext UnknownText_0x19d64b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19d64b
 
 UnknownScript_0x19d239:
 	jumpstd asknumber1f

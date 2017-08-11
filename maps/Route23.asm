@@ -214,10 +214,7 @@ Route23RisingBadgeTriggerScript:
 	db "Rising Badge@"
 
 Route23OfficerNoBadgeScript:
-	writetext Route23OfficerNoBadgeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route23OfficerNoBadgeText
 
 VictoryRoadSign:
 	jumptext VictoryRoadSignText

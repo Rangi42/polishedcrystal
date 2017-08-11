@@ -50,16 +50,10 @@ JasmineScript_0x9c12f:
 	buttonsound
 	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
-	writetext UnknownText_0x9c3a5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9c3a5
 
 UnknownScript_0x9c172:
-	writetext UnknownText_0x9c3d1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9c3d1
 
 OlivineGymGuyScript:
 	faceplayer
@@ -67,25 +61,13 @@ OlivineGymGuyScript:
 	iftrue .OlivineGymGuyWinScript
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iffalse .OlivineGymGuyPreScript
-	opentext
-	writetext OlivineGymGuyText
-	waitbutton
-	closetext
-	end
+	jumptext OlivineGymGuyText
 
 .OlivineGymGuyWinScript:
-	opentext
-	writetext OlivineGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumptext OlivineGymGuyWinText
 
 .OlivineGymGuyPreScript:
-	opentext
-	writetext OlivineGymGuyPreText
-	waitbutton
-	closetext
-	end
+	jumptext OlivineGymGuyPreText
 
 OlivineGymLassConnie:
 	trainer EVENT_SPOKE_TO_LASS_CONNIE, 0, 0, OlivineGymLassConnieSeenText, 0, 0, OlivineGymLassConnieScript
@@ -96,16 +78,10 @@ OlivineGymLassConnieScript:
 	opentext
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .BeatJasmine
-	writetext OlivineGymLassConnieSeenText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OlivineGymLassConnieSeenText
 
 .BeatJasmine
-	writetext OlivineGymLassConnieAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OlivineGymLassConnieAfterText
 
 OlivineGymGentlemanPreston:
 	trainer EVENT_SPOKE_TO_GENTLEMAN_PRESTON, 0, 0, OlivineGymGentlemanPrestonSeenText, 0, 0, OlivineGymGentlemanPrestonScript
@@ -116,16 +92,10 @@ OlivineGymGentlemanPrestonScript:
 	opentext
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .BeatJasmine
-	writetext OlivineGymGentlemanPrestonSeenText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OlivineGymGentlemanPrestonSeenText
 
 .BeatJasmine
-	writetext OlivineGymGentlemanPrestonAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OlivineGymGentlemanPrestonAfterText
 
 OlivineGymStatue:
 	trainertotext JASMINE, 1, $1

@@ -34,10 +34,7 @@ CeladonEusine:
 	writebyte RAIKOU
 	special SpecialMonCheck
 	iftrue .OwnRaikou
-	opentext
-	writetext EusineShowsRaikouText
-	waitbutton
-	closetext
+	showtext EusineShowsRaikouText
 	refreshscreen
 	pokepic RAIKOU
 	cry RAIKOU
@@ -49,10 +46,7 @@ CeladonEusine:
 	writebyte ENTEI
 	special SpecialMonCheck
 	iftrue .OwnEntei
-	opentext
-	writetext EusineShowsEnteiText
-	waitbutton
-	closetext
+	showtext EusineShowsEnteiText
 	refreshscreen
 	pokepic ENTEI
 	cry ENTEI
@@ -64,10 +58,7 @@ CeladonEusine:
 	writebyte SUICUNE
 	special SpecialMonCheck
 	iftrue .OwnSuicune
-	opentext
-	writetext EusineShowsSuicuneText
-	waitbutton
-	closetext
+	showtext EusineShowsSuicuneText
 	refreshscreen
 	pokepic SUICUNE
 	cry SUICUNE
@@ -76,11 +67,7 @@ CeladonEusine:
 	writebyte SUICUNE
 	special SpecialSeenMon
 .OwnSuicune
-	opentext
-	writetext EusineQuestHintText
-	waitbutton
-	closetext
-	end
+	jumptext EusineQuestHintText
 
 .HoOh:
 	writetext EusineLeavesCeladonText
@@ -113,16 +100,10 @@ EusinesHouseGrampsScript:
 	opentext
 	checkevent EVENT_SET_WHEN_FOUGHT_HO_OH
 	iftrue .EusineLeft
-	writetext EusinesHouseGrampsText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EusinesHouseGrampsText1
 
 .EusineLeft:
-	writetext EusinesHouseGrampsText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EusinesHouseGrampsText2
 
 CeladonEusineText1:
 	text "Eusine: Hi!"

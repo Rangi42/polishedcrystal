@@ -53,22 +53,13 @@ DiglettsCaveFossilManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	writetext .ThankYouText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .ThankYouText
 
 .NoItem:
-	writetext .NoItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoItemText
 
 .WrongItem:
-	writetext .WrongItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WrongItemText
 
 .GreetingText:
 	text "Hey, check it out."
@@ -128,11 +119,7 @@ TrainerHikerGerard:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Aah! I think that"
@@ -158,11 +145,7 @@ TrainerHikerDent:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm headed to"
@@ -190,11 +173,7 @@ TrainerBlackbeltInigo:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Prepare for"
@@ -220,11 +199,7 @@ TrainerEngineerSmith:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "How did Diglett"
@@ -295,10 +270,7 @@ DiglettsCaveDiglettDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext .SentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .SentText
 
 .FoundText:
 	text "<PLAYER> found"

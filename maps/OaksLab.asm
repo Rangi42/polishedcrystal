@@ -136,10 +136,7 @@ Oak:
 	writetext OakLabShinyCharmText
 	waitbutton
 .NoShinyCharm
-	writetext OakLabGoodbyeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OakLabGoodbyeText
 
 .BattleOak:
 	checkevent EVENT_LISTENED_TO_OAK_INTRO
@@ -199,10 +196,7 @@ BulbasaurDollScript:
 	waitbutton
 	writetext BulbasaurDollSentText
 	waitbutton
-	writetext ProfOakAfterTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOakAfterTradeText
 
 CharmanderDollScript:
 	opentext
@@ -222,10 +216,7 @@ CharmanderDollScript:
 	waitbutton
 	writetext CharmanderDollSentText
 	waitbutton
-	writetext ProfOakAfterTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOakAfterTradeText
 
 SquirtleDollScript:
 	opentext
@@ -245,22 +236,13 @@ SquirtleDollScript:
 	waitbutton
 	writetext SquirtleDollSentText
 	waitbutton
-	writetext ProfOakAfterTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOakAfterTradeText
 
 NoStoneScript:
-	writetext NoStoneText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoStoneText
 
 NoTradeScript:
-	writetext NoTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoTradeText
 
 OaksLabPokedexScript:
 	jumptext OaksLabPokedexText

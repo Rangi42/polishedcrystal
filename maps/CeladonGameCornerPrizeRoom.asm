@@ -103,28 +103,16 @@ CeladonPrizeRoom_alreadyhavetm:
 	jump CeladonPrizeRoom_tmcounterloop
 
 CeladonPrizeRoom_notenoughcoins:
-	writetext CeladonPrizeRoom_NotEnoughCoinsText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_NotEnoughCoinsText
 
 CeladonPrizeRoom_notenoughroom:
-	writetext CeladonPrizeRoom_NotEnoughRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
 
 CeladonPrizeRoom_cancel:
-	writetext CeladonPrizeRoom_ComeAgainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 CeladonPrizeRoom_NoCoinCase:
-	writetext CeladonPrizeRoom_NoCoinCaseText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 
 
 CeladonPrizeRoom_TMMenuDataHeader:

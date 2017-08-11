@@ -47,22 +47,13 @@ OfficerScript_0x69d37:
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
-	writetext UnknownText_0x69ed6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69ed6
 
 .partyfull
-	writetext UnknownText_0x69f56
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69f56
 
 .refused
-	writetext UnknownText_0x69f74
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69f74
 
 .questcomplete
 	writetext UnknownText_0x69f8b
@@ -95,16 +86,10 @@ BreederScript_0x69dc6:
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .aftersudowoodo
-	writetext UnknownText_0x6a00a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a00a
 
 .aftersudowoodo
-	writetext UnknownText_0x6a09a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a09a
 
 FisherScript_0x69dda:
 	jumptextfaceplayer UnknownText_0x6a0cb

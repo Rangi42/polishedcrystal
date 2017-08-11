@@ -57,55 +57,35 @@ TrainerSwimmerfDawn:
 
 SwimmerfDawnScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19ebad
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19ebad
 
 TrainerSwimmermTucker:
 	trainer EVENT_BEAT_SWIMMERM_TUCKER, SWIMMERM, TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText, 0, SwimmermTuckerScript
 
 SwimmermTuckerScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19eb3b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19eb3b
 
 TrainerSwimmermJerome:
 	trainer EVENT_BEAT_SWIMMERM_JEROME, SWIMMERM, JEROME, SwimmermJeromeSeenText, SwimmermJeromeBeatenText, 0, SwimmermJeromeScript
 
 SwimmermJeromeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19ec7e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19ec7e
 
 TrainerSwimmermHarold:
 	trainer EVENT_BEAT_SWIMMERM_HAROLD, SWIMMERM, HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText, 0, SwimmermHaroldScript
 
 SwimmermHaroldScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19eab4
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19eab4
 
 TrainerCosplayerBrooke:
 	trainer EVENT_BEAT_COSPLAYER_BROOKE, COSPLAYER, BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText, 0, CosplayerBrookeScript
 
 CosplayerBrookeScript:
 	end_if_just_battled
-	opentext
-	writetext CosplayerBrookeAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CosplayerBrookeAfterText
 
 EngineerScript_0x19ea4d:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED

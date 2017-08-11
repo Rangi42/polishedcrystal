@@ -31,11 +31,7 @@ TrainerCowgirlApril:
 
 CowgirlAprilScript:
 	end_if_just_battled
-	opentext
-	writetext CowgirlAprilAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CowgirlAprilAfterText
 
 SafariZoneEastAreaSign:
 	jumptext SafariZoneEastAreaSignText

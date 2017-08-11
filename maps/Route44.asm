@@ -81,16 +81,10 @@ Route44VeteranmScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "TODO"
@@ -256,11 +250,7 @@ TrainerPsychicPhil:
 
 PsychicPhilScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19dcfc
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19dcfc
 
 TrainerFisherWilton1:
 	trainer EVENT_BEAT_FISHER_WILTON, FISHER, WILTON1, FisherWilton1SeenText, FisherWilton1BeatenText, 0, FisherWilton1Script
@@ -368,44 +358,28 @@ TrainerFisherEdgar:
 
 FisherEdgarScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19db6f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19db6f
 
 TrainerCooltrainerfCybil:
 	trainer EVENT_BEAT_COOLTRAINERF_CYBIL, COOLTRAINERF, CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText, 0, CooltrainerfCybilScript
 
 CooltrainerfCybilScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19df4d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19df4d
 
 TrainerPokemaniacZach:
 	trainer EVENT_BEAT_POKEMANIAC_ZACH, POKEMANIAC, ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText, 0, PokemaniacZachScript
 
 PokemaniacZachScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19dd7e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19dd7e
 
 TrainerCooltrainermAllen:
 	trainer EVENT_BEAT_COOLTRAINERM_ALLEN, COOLTRAINERM, ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText, 0, CooltrainermAllenScript
 
 CooltrainermAllenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19de66
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19de66
 
 Route44Sign1:
 	jumptext Route44Sign1Text

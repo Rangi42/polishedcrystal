@@ -53,35 +53,20 @@ CeladonDeptStore3FTutorCounterScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_CeladonDeptStore3FTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CeladonDeptStore3FTutorRefused
 
 .NoSilverLeaf
-	writetext Text_CeladonDeptStore3FTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CeladonDeptStore3FTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_CeladonDeptStore3FTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CeladonDeptStore3FTutorTaught
 
 VideoGameClerkNoSaleScript:
-	writetext VideoGameClerkNoSaleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext VideoGameClerkNoSaleText
 
 VideoGameClerkNoMoneyScript:
-	writetext VideoGameClerkNoMoneyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext VideoGameClerkNoMoneyText
 
 CeladonDeptStore3FSnesScript:
 	opentext
@@ -98,16 +83,10 @@ CeladonDeptStore3FSnesScript:
 	writetext BoughtSnesText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext SnesSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SnesSentText
 
 .OwnSnes:
-	writetext CeladonDeptStore3FSnesText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonDeptStore3FSnesText
 
 CeladonDeptStore3FN64Script:
 	opentext
@@ -124,16 +103,10 @@ CeladonDeptStore3FN64Script:
 	writetext BoughtN64Text
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext N64SentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext N64SentText
 
 .OwnN64:
-	writetext CeladonDeptStore3FN64Text
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonDeptStore3FN64Text
 
 CeladonDeptStore3FGameCubeScript:
 	opentext
@@ -150,16 +123,10 @@ CeladonDeptStore3FGameCubeScript:
 	writetext BoughtGameCubeText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext GameCubeSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GameCubeSentText
 
 .OwnGameCube:
-	writetext CeladonDeptStore3FGameCubeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonDeptStore3FGameCubeText
 
 CeladonDeptStore3FWiiScript:
 	opentext
@@ -176,16 +143,10 @@ CeladonDeptStore3FWiiScript:
 	writetext BoughtWiiText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext WiiSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext WiiSentText
 
 .OwnWii:
-	writetext CeladonDeptStore3FWiiText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonDeptStore3FWiiText
 
 CeladonDeptStore3FClerk2Text:
 	text "There's a neat move"

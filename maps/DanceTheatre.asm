@@ -33,55 +33,35 @@ TrainerKimono_girlNaoko:
 
 Kimono_girlNaokoScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x99579
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x99579
 
 TrainerKimono_girlSayo:
 	trainer EVENT_BEAT_KIMONO_GIRL_SAYO, KIMONO_GIRL, SAYO, Kimono_girlSayoSeenText, Kimono_girlSayoBeatenText, 0, Kimono_girlSayoScript
 
 Kimono_girlSayoScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x9960b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x9960b
 
 TrainerKimono_girlZuki:
 	trainer EVENT_BEAT_KIMONO_GIRL_ZUKI, KIMONO_GIRL, ZUKI, Kimono_girlZukiSeenText, Kimono_girlZukiBeatenText, 0, Kimono_girlZukiScript
 
 Kimono_girlZukiScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x99688
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x99688
 
 TrainerKimono_girlKuni:
 	trainer EVENT_BEAT_KIMONO_GIRL_KUNI, KIMONO_GIRL, KUNI, Kimono_girlKuniSeenText, Kimono_girlKuniBeatenText, 0, Kimono_girlKuniScript
 
 Kimono_girlKuniScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x99714
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x99714
 
 TrainerKimono_girlMiki:
 	trainer EVENT_BEAT_KIMONO_GIRL_MIKI, KIMONO_GIRL, MIKI, Kimono_girlMikiSeenText, Kimono_girlMikiBeatenText, 0, Kimono_girlMikiScript
 
 Kimono_girlMikiScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x997a8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x997a8
 
 GentlemanScript_0x994c6:
 	faceplayer
@@ -105,32 +85,20 @@ GentlemanScript_0x994c6:
 UnknownScript_0x994f3:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue UnknownScript_0x994ff
-	writetext UnknownText_0x99891
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x99891
 
 UnknownScript_0x994ff:
-	writetext UnknownText_0x998d4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x998d4
 
 UnknownScript_0x99505:
 	writetext UnknownText_0x9991a
 	buttonsound
 	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
-	writetext UnknownText_0x9999b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9999b
 
 UnknownScript_0x99515:
-	writetext UnknownText_0x999d5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x999d5
 
 RhydonScript_0x9951b:
 	opentext

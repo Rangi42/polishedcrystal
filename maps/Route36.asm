@@ -84,17 +84,11 @@ SudowoodoScript:
 	iffalse DidntUseSquirtbottleScript
 	closetext
 WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
-	opentext
-	writetext UsedSquirtbottleText
-	waitbutton
-	closetext
+	showtext UsedSquirtbottleText
 	waitsfx
 	playsound SFX_SANDSTORM
 	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
-	opentext
-	writetext SudowoodoAttackedText
-	waitbutton
-	closetext
+	showtext SudowoodoAttackedText
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO
@@ -137,10 +131,7 @@ Route36FloriaScript:
 	end
 
 .SecondTimeTalking:
-	writetext FloriaText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FloriaText2
 
 Route36RockSmashGuyScript:
 	faceplayer
@@ -149,10 +140,7 @@ Route36RockSmashGuyScript:
 	iftrue .AlreadyGotRockSmash
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
-	writetext RockSmashGuyText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RockSmashGuyText1
 
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
@@ -160,26 +148,17 @@ Route36RockSmashGuyScript:
 	verbosegivetmhm TM_ROCK_SMASH
 	setevent EVENT_GOT_TM50_ROCK_SMASH
 .AlreadyGotRockSmash:
-	writetext RockSmashGuyText3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RockSmashGuyText3
 
 LassScript_0x1940e0:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
-	writetext UnknownText_0x1945b8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1945b8
 
 .ClearedSudowoodo:
-	writetext UnknownText_0x19469e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19469e
 
 TrainerSchoolboyAlan1:
 	trainer EVENT_BEAT_SCHOOLBOY_ALAN, SCHOOLBOY, ALAN1, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
@@ -324,22 +303,14 @@ TrainerPsychicMark:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19471e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19471e
 
 TrainerSchoolgirlMolly:
 	trainer EVENT_BEAT_SCHOOLGIRL_MOLLY, SCHOOLGIRL, MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlMollyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolgirlMollyAfterText
 
 ArthurScript:
 	faceplayer
@@ -359,10 +330,7 @@ ArthurScript:
 	verbosegiveitem HARD_STONE
 	iffalse .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
-	writetext ArthurGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ArthurGaveGiftText
 
 .AlreadyGotStone:
 	writetext ArthurThursdayText
@@ -372,10 +340,7 @@ ArthurScript:
 	end
 
 ArthurNotThursdayScript:
-	writetext ArthurNotThursdayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ArthurNotThursdayText
 
 Route36Sign:
 	jumptext Route36SignText

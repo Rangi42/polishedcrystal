@@ -90,27 +90,18 @@ Route34LyraTrigger3:
 	applymovement PLAYER, Route34MovementData_AdjustPlayer2
 Route34LyraTrigger2:
 	special Special_FadeOutMusic
-	opentext
-	writetext Route34LyraText_Grandpa
-	waitbutton
-	closetext
+	showtext Route34LyraText_Grandpa
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ROUTE34_LYRA
 	spriteface ROUTE34_GRAMPS, UP
 	pause 10
 	applymovement ROUTE34_LYRA, Route34MovementData_LyraComesDown
 	spriteface ROUTE34_GRAMPS, LEFT
-	opentext
-	writetext Route34LyraGoodWorkText
-	waitbutton
-	closetext
+	showtext Route34LyraGoodWorkText
 	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
 	pause 15
 	spriteface ROUTE34_LYRA, DOWN
-	opentext
-	writetext Route34LyraGreetingText
-	waitbutton
-	closetext
+	showtext Route34LyraGreetingText
 	applymovement PLAYER, Route34MovementData_PlayerApproachesLyra
 	pause 10
 	spriteface ROUTE34_LYRA, RIGHT
@@ -126,10 +117,7 @@ Route34LyraTrigger2:
 	closetext
 	spriteface ROUTE34_LYRA, DOWN
 	pause 10
-	opentext
-	writetext Route34LyraChallengeText
-	waitbutton
-	closetext
+	showtext Route34LyraChallengeText
 	setevent EVENT_LYRA_ROUTE_34
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -164,10 +152,7 @@ Route34LyraTrigger2:
 	reloadmapafterbattle
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 .AfterBattle
-	opentext
-	writetext Route34LyraFollowMeText
-	waitbutton
-	closetext
+	showtext Route34LyraFollowMeText
 	applymovement ROUTE34_GRAMPS, Route34MovementData_GrampsEntersDayCare
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_GRAMPS
@@ -312,10 +297,7 @@ TrainerCamperTodd1:
 	end
 
 .SaleIsOn:
-	writetext CamperToddSaleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CamperToddSaleText
 
 .AskNumber:
 	jumpstd asknumber1m
@@ -504,16 +486,10 @@ OfficerfMaraScript:
 	end
 
 .AfterScript:
-	writetext OfficerfMaraAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficerfMaraAfterText
 
 .NoFight:
-	writetext OfficerfMaraDaytimeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficerfMaraDaytimeText
 
 TrainerBreederJulie:
 	trainer EVENT_BEAT_BREEDER_JULIE, BREEDER, JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
@@ -521,11 +497,7 @@ TrainerBreederJulie:
 .Script:
 	setevent EVENT_BEAT_BREEDER_JULIE_ONCE
 	end_if_just_battled
-	opentext
-	writetext BreederJulieAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BreederJulieAfterText
 
 Route34RichBoyIrvingScript:
 	faceplayer
@@ -571,16 +543,10 @@ Route34RichBoyIrvingScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I don't need to"
@@ -651,11 +617,7 @@ TrainerPokefanmBrandon:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext PokefanmBrandonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext PokefanmBrandonAfterText
 
 TrainerCooltrainerfIrene:
 	trainer EVENT_BEAT_COOLTRAINERF_IRENE, COOLTRAINERF, IRENE, CooltrainerfIreneSeenText, CooltrainerfIreneBeatenText, 0, .Script
@@ -665,16 +627,10 @@ TrainerCooltrainerfIrene:
 	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
 	iftrue .GotPowerHerb
-	writetext CooltrainerfIreneAfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfIreneAfterText1
 
 .GotPowerHerb:
-	writetext CooltrainerfIreneAfterText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfIreneAfterText2
 
 TrainerCooltrainerfJenn:
 	trainer EVENT_BEAT_COOLTRAINERF_JENN, COOLTRAINERF, JENN, CooltrainerfJennSeenText, CooltrainerfJennBeatenText, 0, .Script
@@ -684,16 +640,10 @@ TrainerCooltrainerfJenn:
 	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
 	iftrue .GotPowerHerb
-	writetext CooltrainerfJennAfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfJennAfterText1
 
 .GotPowerHerb:
-	writetext CooltrainerfJennAfterText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfJennAfterText2
 
 TrainerCooltrainerfKate:
 	trainer EVENT_BEAT_COOLTRAINERF_KATE, COOLTRAINERF, KATE, CooltrainerfKateSeenText, CooltrainerfKateBeatenText, 0, .Script

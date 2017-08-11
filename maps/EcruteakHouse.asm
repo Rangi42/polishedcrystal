@@ -83,16 +83,10 @@ SageScript_0x98062:
 	iftrue .CheckForClearBell
 	checkflag ENGINE_FOGBADGE
 	iftrue .BlockPassage_GotFogBadge
-	writetext UnknownText_0x980d1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x980d1
 
 .BlockPassage_GotFogBadge:
-	writetext UnknownText_0x98131
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x98131
 
 .CheckForClearBell:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
@@ -101,10 +95,7 @@ SageScript_0x98062:
 	iftrue .Event000
 	checkitem CLEAR_BELL
 	iftrue .RingClearBell
-	writetext UnknownText_0x981a4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x981a4
 
 .RingClearBell:
 	writetext UnknownText_0x98250
@@ -117,32 +108,20 @@ SageScript_0x98062:
 	end
 
 .AllowedThrough:
-	writetext UnknownText_0x9837e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9837e
 
 .Event000:
-	writetext UnknownText_0x98391
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x98391
 
 SageScript_0x980b0:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_CLEAR_BELL
 	iftrue .GotClearBell
-	writetext UnknownText_0x9840b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9840b
 
 .GotClearBell:
-	writetext UnknownText_0x9846f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9846f
 
 GrampsScript_0x980c4:
 	jumptextfaceplayer UnknownText_0x984ab

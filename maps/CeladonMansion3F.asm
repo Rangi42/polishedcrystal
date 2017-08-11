@@ -44,10 +44,7 @@ UnknownScript_0x7167e:
 	writetext UnknownText_0x71760
 	buttonsound
 	special Diploma
-	writetext UnknownText_0x71763
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x71763
 
 GymGuyScript_0x71696:
 	jumptextfaceplayer UnknownText_0x717b4

@@ -36,26 +36,17 @@ const_value set 2
 FakeDirectorScript:
 	spriteface RADIOTOWER5F_DIRECTOR, UP
 	showemote EMOTE_SHOCK, RADIOTOWER5F_DIRECTOR, 15
-	opentext
-	writetext FakeDirectorTextBefore1
-	waitbutton
-	closetext
+	showtext FakeDirectorTextBefore1
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorMovement
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	opentext
-	writetext FakeDirectorTextBefore2
-	waitbutton
-	closetext
+	showtext FakeDirectorTextBefore2
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorSpinMovement
 	appear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
 	spriteface RADIOTOWER5F_PETREL, UP
 	pause 10
-	opentext
-	writetext FakeDirectorTextBefore3
-	waitbutton
-	closetext
+	showtext FakeDirectorTextBefore3
 	winlosstext FakeDirectorWinText, 0
 	setlasttalked RADIOTOWER5F_PETREL
 	loadtrainer PETREL, PETREL1
@@ -81,29 +72,19 @@ TrainerAriana1:
 
 Ariana1Script:
 	end_if_just_battled
-	opentext
-	writetext Ariana1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext Ariana1AfterText
 
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface RADIOTOWER5F_ARCHER, RIGHT
-	opentext
-	writetext RadioTower5FRocketBossBeforeText
-	waitbutton
-	closetext
+	showtext RadioTower5FRocketBossBeforeText
 	winlosstext RadioTower5FRocketBossWinText, 0
 	setlasttalked RADIOTOWER5F_ARCHER
 	loadtrainer ARCHER, ARCHER1
 	startbattle
 	reloadmapafterbattle
-	opentext
-	writetext RadioTower5FRocketBossAfterText
-	waitbutton
-	closetext
+	showtext RadioTower5FRocketBossAfterText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear RADIOTOWER5F_ARCHER

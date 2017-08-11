@@ -115,11 +115,7 @@ ReleaseTheBeasts:
 	end
 
 BurnedTowerB1FEusine:
-	faceplayer
-	opentext
-	writetext BurnedTowerB1FEusineText
-	waitbutton
-	closetext
+	showtextfaceplayer BurnedTowerB1FEusineText
 	checkcode VAR_FACING
 	if_equal $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1

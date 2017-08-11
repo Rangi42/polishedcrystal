@@ -55,11 +55,7 @@ ViridianSchoolHouseYoungsterScript:
 	end
 
 ViridianSchoolHouseGameBoyKidScript:
-	faceplayer
-	opentext
-	writetext ViridianSchoolHouseGameBoyKidText
-	waitbutton
-	closetext
+	showtextfaceplayer ViridianSchoolHouseGameBoyKidText
 	spriteface VIRIDIANSCHOOLHOUSE_GAMEBOY_KID, DOWN
 	end
 

@@ -24,16 +24,10 @@ OfficerScript_0x1ab3f6:
 	opentext
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .RocksCleared
-	writetext UnknownText_0x1ab40a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1ab40a
 
 .RocksCleared:
-	writetext UnknownText_0x1ab48a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1ab48a
 
 UnknownText_0x1ab40a:
 	text "Cinnabar's volcano"

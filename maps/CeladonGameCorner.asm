@@ -72,29 +72,17 @@ ReceptionistScript_0x72120:
 	jumptextfaceplayer UnknownText_0x721d0
 
 PokefanMScript_0x72123:
-	faceplayer
-	opentext
-	writetext UnknownText_0x72215
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x72215
 	spriteface CELADONGAMECORNER_POKEFAN_M, LEFT
 	end
 
 TeacherScript_0x7212e:
-	faceplayer
-	opentext
-	writetext UnknownText_0x72242
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x72242
 	spriteface CELADONGAMECORNER_TEACHER, RIGHT
 	end
 
 FishingGuruScript_0x72139:
-	faceplayer
-	opentext
-	writetext UnknownText_0x72295
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x72295
 	spriteface CELADONGAMECORNER_FISHING_GURU, RIGHT
 	end
 
@@ -159,11 +147,7 @@ CeladonGymGuyScript:
 	jumptextfaceplayer CeladonGymGuyText
 
 GrampsScript_0x72190:
-	faceplayer
-	opentext
-	writetext UnknownText_0x724ad
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x724ad
 	spriteface CELADONGAMECORNER_GRAMPS, LEFT
 	end
 

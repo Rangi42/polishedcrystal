@@ -81,10 +81,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueLeft
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext SeafoamIslandsB4FLawrenceSpeechText
-	waitbutton
-	closetext
+	showtext SeafoamIslandsB4FLawrenceSpeechText
 	spriteface SEAFOAMISLANDSB4F_LAWRENCE, UP
 	opentext
 	writetext SeafoamIslandsB4FLawrenceEscapeRopeText

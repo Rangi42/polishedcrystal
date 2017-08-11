@@ -59,10 +59,7 @@ DimCave2FTutorSubstituteScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .QuestionText:
 	text "I can teach you my"
@@ -82,10 +79,7 @@ DimCave2FTutorSubstituteScript:
 
 .NoSilverLeaf
 	waitbutton
-	writetext .NoSilverLeafText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoSilverLeafText
 
 .NoSilverLeafText:
 	text "Come find me again"
@@ -95,10 +89,7 @@ DimCave2FTutorSubstituteScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext .TaughtText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .TaughtText
 
 .TaughtText:
 	text "How's that? Your"
@@ -121,11 +112,7 @@ TrainerEngineerLang:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "We mined ore from"
@@ -156,11 +143,7 @@ TrainerHikerDerrick:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "♪ A-hiking we"

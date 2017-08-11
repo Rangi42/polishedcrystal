@@ -56,22 +56,13 @@ ShamoutiHotel1FArtistScript:
 	buttonsound
 	special SpecialTrendyPhrase
 	setflag ENGINE_CHANGED_TRENDY_PHRASE
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .SetTrendyPhraseToday
-	writetext .Text4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text4
 
 .Yes
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .Text1:
 	text "No matter where"

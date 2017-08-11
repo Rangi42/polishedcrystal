@@ -34,11 +34,7 @@ TrainerYoungsterOwen:
 
 YoungsterOwenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x680b2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x680b2
 
 YoungsterOwenSeenText:
 	text "There's no cheat-"
@@ -66,11 +62,7 @@ TrainerYoungsterJason:
 
 YoungsterJasonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6814a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6814a
 
 YoungsterJasonSeenText:
 	text "It itches and"
@@ -96,11 +88,7 @@ TrainerYoungsterAlfie:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Three, two, one,"
@@ -122,11 +110,7 @@ TrainerPsychicHerman:
 
 PsychicHermanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6817b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6817b
 
 PsychicHermanSeenText:
 	text "…"
@@ -148,11 +132,7 @@ TrainerPsychicFidel:
 
 PsychicFidelScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x681ec
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x681ec
 
 PsychicFidelSeenText:
 	text "I can see it…"
@@ -180,11 +160,7 @@ TrainerPsychicUri:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "It happened one"
@@ -211,11 +187,7 @@ TrainerEngineerBernie:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Careful!"
@@ -238,11 +210,7 @@ TrainerEngineerCamden:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I learned engin-"
@@ -268,11 +236,7 @@ TrainerGuitaristmRoger:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Strangers passing"
@@ -298,11 +262,7 @@ TrainerGuitaristfRitsuko:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Hey ho, let's go!"

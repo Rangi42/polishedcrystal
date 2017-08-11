@@ -46,23 +46,14 @@ MountMortarB1FTutorDefenseCurlScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_MountMortarB1FTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MountMortarB1FTutorRefused
 
 .NoSilverLeaf
-	writetext Text_MountMortarB1FTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MountMortarB1FTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_MountMortarB1FTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MountMortarB1FTutorTaught
 
 KiyoScript_0x7e1f6:
 	faceplayer
@@ -94,16 +85,10 @@ UnknownScript_0x7e217:
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 UnknownScript_0x7e231:
-	writetext UnknownText_0x7e36a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7e36a
 
 UnknownScript_0x7e237:
-	writetext UnknownText_0x7e3df
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7e3df
 
 MountMortarB1FHiddenMaxRevive:
 	dwb EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE

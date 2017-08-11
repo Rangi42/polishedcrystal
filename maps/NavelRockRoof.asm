@@ -38,22 +38,14 @@ NavelRockRoofDailyLeafRematchCallback:
 
 Leaf:
 	special Special_FadeOutMusic
-	faceplayer
-	opentext
-	writetext LeafText
-	waitbutton
-	closetext
+	showtextfaceplayer LeafText
 	winlosstext LeafWinLossText, LeafWinLossText
 	loadtrainer LEAF, 1
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	special Special_FadeOutMusic
-	faceplayer
-	opentext
-	writetext LeafAfterText
-	waitbutton
-	closetext
+	showtextfaceplayer LeafAfterText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear NAVELROCKROOF_GREEN

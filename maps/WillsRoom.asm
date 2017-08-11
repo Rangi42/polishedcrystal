@@ -54,10 +54,7 @@ WillScript_0x1804f8:
 	if_equal 16, WillRematchScript
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue UnknownScript_0x180526
-	opentext
-	writetext UnknownText_0x180531
-	waitbutton
-	closetext
+	showtext UnknownText_0x180531
 	winlosstext UnknownText_0x18062c, 0
 	loadtrainer WILL, 1
 	startbattle
@@ -66,19 +63,12 @@ WillScript_0x1804f8:
 	jump WillEndBattleScript
 
 UnknownScript_0x180526:
-	opentext
-	writetext UnknownText_0x180644
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x180644
 
 WillRematchScript:
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue .AfterBattle
-	opentext
-	writetext WillBeforeRematchText
-	waitbutton
-	closetext
+	showtext WillBeforeRematchText
 	winlosstext UnknownText_0x18062c, 0
 	loadtrainer WILL, 2
 	startbattle
@@ -87,11 +77,7 @@ WillRematchScript:
 	jump WillEndBattleScript
 
 .AfterBattle:
-	opentext
-	writetext WillAfterRematchText
-	waitbutton
-	closetext
-	end
+	jumptext WillAfterRematchText
 
 WillEndBattleScript:
 	playsound SFX_ENTER_DOOR

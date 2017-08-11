@@ -75,16 +75,10 @@ CeladonUniversityLoungeNeeshaScript:
 	end
 
 .NoBattle:
-	writetext .NoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoBattleText
 
 .NotFinished:
-	writetext .AfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText1
 
 .IntroText1:
 	text "Hi! I'm Neesha!"
@@ -251,10 +245,7 @@ CeladonUniversityLoungeBookshelf2:
 	end
 
 .GotItem
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .Text1:
 	text "This book has a"

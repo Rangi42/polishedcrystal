@@ -28,22 +28,14 @@ TrainerSkierMaria:
 
 SkierMariaScript:
 	end_if_just_battled
-	opentext
-	writetext SkierMariaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SkierMariaAfterText
 
 TrainerBoarderStefan:
 	trainer EVENT_BEAT_BOARDER_STEFAN, BOARDER, STEFAN, BoarderStefanSeenText, BoarderStefanBeatenText, 0, BoarderStefanScript
 
 BoarderStefanScript:
 	end_if_just_battled
-	opentext
-	writetext BoarderStefanAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BoarderStefanAfterText
 
 SkierMariaSeenText:
 	text "Were you admiring"

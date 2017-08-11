@@ -62,11 +62,7 @@ DimCave3FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	jumptext .Text
 
 .Text:
 	text "The boulder fell"
@@ -78,11 +74,7 @@ TrainerEngineerHugo:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Cave-in!"
@@ -108,11 +100,7 @@ TrainerBlackbeltTakeo:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm training here"
@@ -137,11 +125,7 @@ TrainerHikerFloyd:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "This cave makes me"
@@ -170,16 +154,10 @@ DimCave3FPokefanmScript:
 	writetext .QuestionText
 	yesorno
 	iftrue .Yes
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .Yes:
-	writetext .YesText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .YesText
 
 .QuestionText:
 	text "Are you lost?"

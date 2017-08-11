@@ -29,11 +29,7 @@ TrainerSuper_nerdGregg:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "These carts are"
@@ -56,11 +52,7 @@ TrainerScientistDexter:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm a hydrologist"
@@ -88,11 +80,7 @@ TrainerGuitaristmBiff:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I dig rock and"

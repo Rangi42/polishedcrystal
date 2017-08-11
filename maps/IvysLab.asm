@@ -109,16 +109,10 @@ ProfIvyScript:
 .Return1:
 	giveitem LIECHI_BERRY
 .NoBerry:
-	writetext .NoBerryText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoBerryText
 
 .NoBattle:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .RequestText:
 	text "Ivy: Hello again,"
@@ -201,16 +195,10 @@ IvysLabHopeScript:
 	opentext
 	checkevent EVENT_HEALED_NIDORINO
 	iftrue .HealedNidorino
-	writetext .Text1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text1
 
 .HealedNidorino:
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .Text1:
 	text "Hope: Prof.Ivy"
@@ -238,10 +226,7 @@ IvysLabNidorinoScript:
 	writebyte NIDORINO
 	special PlaySlowCry
 	buttonsound
-	writetext .WeakText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WeakText
 
 .Healed:
 	writetext IvysLabNidorinoText

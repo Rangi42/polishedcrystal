@@ -40,11 +40,7 @@ TrainerPokemaniacAndrew:
 
 PokemaniacAndrewScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a181
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a181
 
 PokemaniacAndrewSeenText:
 	text "Who's there?"
@@ -69,11 +65,7 @@ TrainerPokemaniacCalvin:
 
 PokemaniacCalvinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a230
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a230
 
 PokemaniacCalvinSeenText:
 	text "I came all the way"
@@ -105,11 +97,7 @@ TrainerHikerPhillip:
 
 HikerPhillipScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a073
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a073
 
 HikerPhillipSeenText:
 	text "It's been a while"
@@ -138,11 +126,7 @@ TrainerHikerLeonard:
 
 HikerLeonardScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a0fb
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a0fb
 
 HikerLeonardSeenText:
 	text "What do you know!"
@@ -169,11 +153,7 @@ TrainerFirebreatherJay:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I learned how to"
@@ -202,11 +182,7 @@ TrainerSuper_nerdRory:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "This'll be over"
@@ -231,11 +207,7 @@ TrainerRuin_maniacGlyn:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "My #mon were"

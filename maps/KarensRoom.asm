@@ -55,10 +55,7 @@ KarenScript_0x180bee:
 	if_equal 16, KarenRematchScript
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue UnknownScript_0x180c1c
-	opentext
-	writetext UnknownText_0x180c27
-	waitbutton
-	closetext
+	showtext UnknownText_0x180c27
 	winlosstext UnknownText_0x180cf8, 0
 	loadtrainer KAREN, 1
 	startbattle
@@ -67,19 +64,12 @@ KarenScript_0x180bee:
 	jump KarenEndBattleScript
 
 UnknownScript_0x180c1c:
-	opentext
-	writetext UnknownText_0x180d29
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x180d29
 
 KarenRematchScript:
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue .AfterBattle
-	opentext
-	writetext KarenBeforeRematchText
-	waitbutton
-	closetext
+	showtext KarenBeforeRematchText
 	winlosstext UnknownText_0x180cf8, 0
 	loadtrainer KAREN, 2
 	startbattle
@@ -88,11 +78,7 @@ KarenRematchScript:
 	jump KarenEndBattleScript
 
 .AfterBattle:
-	opentext
-	writetext KarenAfterRematchText
-	waitbutton
-	closetext
-	end
+	jumptext KarenAfterRematchText
 
 KarenEndBattleScript:
 	playsound SFX_ENTER_DOOR

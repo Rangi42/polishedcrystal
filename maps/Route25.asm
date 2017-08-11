@@ -32,77 +32,49 @@ TrainerSchoolboyDudley:
 
 SchoolboyDudleyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f1b5
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f1b5
 
 TrainerLassEllen:
 	trainer EVENT_BEAT_LASS_ELLEN, LASS, ELLEN, LassEllenSeenText, LassEllenBeatenText, 0, LassEllenScript
 
 LassEllenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f208
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f208
 
 TrainerSchoolboyJoe:
 	trainer EVENT_BEAT_SCHOOLBOY_JOE, SCHOOLBOY, JOE, SchoolboyJoeSeenText, SchoolboyJoeBeatenText, 0, SchoolboyJoeScript
 
 SchoolboyJoeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f25c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f25c
 
 TrainerLassLaura:
 	trainer EVENT_BEAT_LASS_LAURA, LASS, LAURA, LassLauraSeenText, LassLauraBeatenText, 0, LassLauraScript
 
 LassLauraScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f2a6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f2a6
 
 TrainerCamperLloyd:
 	trainer EVENT_BEAT_CAMPER_LLOYD, CAMPER, LLOYD, CamperLloydSeenText, CamperLloydBeatenText, 0, CamperLloydScript
 
 CamperLloydScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f2f8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f2f8
 
 TrainerLassShannon:
 	trainer EVENT_BEAT_LASS_SHANNON, LASS, SHANNON, LassShannonSeenText, LassShannonBeatenText, 0, LassShannonScript
 
 LassShannonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f35b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f35b
 
 TrainerSupernerdPat:
 	trainer EVENT_BEAT_SUPER_NERD_PAT, SUPER_NERD, PAT, SupernerdPatSeenText, SupernerdPatBeatenText, 0, SupernerdPatScript
 
 SupernerdPatScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f41a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19f41a
 
 Route25MewYoungsterScript:
 	jumptextfaceplayer Route25MewYoungsterText

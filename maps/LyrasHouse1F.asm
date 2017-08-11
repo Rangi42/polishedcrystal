@@ -29,22 +29,13 @@ LyrasDadScript:
 	iffalse .LyraInside
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftrue .LyraTraining
-	writetext LyrasDadHelpingText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LyrasDadHelpingText
 
 .LyraInside
-	writetext LyrasDadInsideText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LyrasDadInsideText
 
 .LyraTraining
-	writetext LyrasDadTrainingText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LyrasDadTrainingText
 
 LyrasFridgeScript:
 	jumptext LyrasFridgeText

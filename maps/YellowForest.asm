@@ -51,51 +51,31 @@ TrainerSchoolgirlSarah:
 
 SchoolgirlSarahScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlSarahAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolgirlSarahAfterText
 
 TrainerSchoolgirlIsabel:
 	trainer EVENT_BEAT_SCHOOLGIRL_ISABEL, SCHOOLGIRL, ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
 
 SchoolgirlIsabelScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlIsabelAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolgirlIsabelAfterText
 
 TrainerTeacherKathryn:
 	trainer EVENT_BEAT_TEACHER_KATHRYN, TEACHER, KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
 
 TeacherKathrynScript:
 	end_if_just_battled
-	opentext
-	writetext TeacherKathrynAfterText
-	waitbutton
-	closetext
-	end
+	jumptext TeacherKathrynAfterText
 
 TrainerBreederSophie:
 	trainer EVENT_BEAT_BREEDER_SOPHIE, BREEDER, SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
 
 BreederSophieScript:
 	end_if_just_battled
-	opentext
-	writetext BreederSophieAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BreederSophieAfterText
 
 YellowForestWalkerScript:
-	faceplayer
-	opentext
-	writetext YellowForestWalkerSeenText
-	waitbutton
-	closetext
+	showtextfaceplayer YellowForestWalkerSeenText
 	winlosstext YellowForestWalkerBeatenText, 0
 	setlasttalked YELLOWFOREST_WALKER
 	loadtrainer WALKER, 1
@@ -118,10 +98,7 @@ YellowForestWalkerScript:
 	cry SKARMORY
 	waitsfx
 	spriteface YELLOWFOREST_WALKER, DOWN
-	opentext
-	writetext YellowForestWalkerFlyText
-	waitbutton
-	closetext
+	showtext YellowForestWalkerFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -139,10 +116,7 @@ YellowForestYellowScript:
 	iffalse YellowForestYellowBattleScript
 	checkevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
 	iffalse YellowBattleAfterBallScript
-	writetext YellowForestYellowGoodbyeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext YellowForestYellowGoodbyeText
 
 YellowForestYellowBattleScript:
 	writetext YellowForestYellowGreetingText
@@ -199,23 +173,14 @@ YellowForestTutorSeedBombScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_YellowForestTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_YellowForestTutorRefused
 
 .NoSilverLeaf
-	writetext Text_YellowForestTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_YellowForestTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_YellowForestTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_YellowForestTutorTaught
 
 YellowForestSuperNerdScript:
 	jumptextfaceplayer YellowForestSuperNerdText
@@ -228,10 +193,7 @@ YellowForestSurfPikachuDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext YellowForestSurfPikachuDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext YellowForestSurfPikachuDollSentText
 
 YellowForestHiddenBigMushroom:
 	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM, BIG_MUSHROOM

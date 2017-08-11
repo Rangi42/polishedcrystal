@@ -33,10 +33,7 @@ FireIslandRoofCandelaScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CANDELA
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
+	showtext .AfterText
 	playsound SFX_WARP_TO
 	applymovement FIREISLANDROOF_CANDELA, FireIslandRoofCandelaTeleport
 	disappear FIREISLANDROOF_CANDELA
@@ -44,10 +41,7 @@ FireIslandRoofCandelaScript:
 	end
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .GreetingText:
 	text "TODO"

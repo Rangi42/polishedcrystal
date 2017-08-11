@@ -27,11 +27,7 @@ const_value set 2
 	const GOLDENRODDEPTSTORE4F_GAMEBOY_KID
 
 GameboyKidScript_0x55ef7:
-	faceplayer
-	opentext
-	writetext UnknownText_0x55f74
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x55f74
 	spriteface GOLDENRODDEPTSTORE4F_GAMEBOY_KID, DOWN
 	end
 

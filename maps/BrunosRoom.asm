@@ -55,10 +55,7 @@ BrunoScript_0x1809c5:
 	if_equal 16, BrunoRematchScript
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue UnknownScript_0x1809f3
-	opentext
-	writetext UnknownText_0x1809fe
-	waitbutton
-	closetext
+	showtext UnknownText_0x1809fe
 	winlosstext UnknownText_0x180b23, 0
 	loadtrainer BRUNO, 1
 	startbattle
@@ -67,19 +64,12 @@ BrunoScript_0x1809c5:
 	jump BrunoEndBattleScript
 
 UnknownScript_0x1809f3:
-	opentext
-	writetext UnknownText_0x180b3c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x180b3c
 
 BrunoRematchScript:
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue .AfterBattle
-	opentext
-	writetext BrunoBeforeRematchText
-	waitbutton
-	closetext
+	showtext BrunoBeforeRematchText
 	winlosstext UnknownText_0x180b23, 0
 	loadtrainer BRUNO, 2
 	startbattle
@@ -88,11 +78,7 @@ BrunoRematchScript:
 	jump BrunoEndBattleScript
 
 .AfterBattle:
-	opentext
-	writetext BrunoAfterRematchText
-	waitbutton
-	closetext
-	end
+	jumptext BrunoAfterRematchText
 
 BrunoEndBattleScript:
 	playsound SFX_ENTER_DOOR

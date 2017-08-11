@@ -34,11 +34,7 @@ TrainerBreederCarlene:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "My team is bred"
@@ -66,10 +62,7 @@ Route7Snorlax:
 	opentext
 	special SpecialSnorlaxAwake
 	iftrue .Awake
-	writetext .AsleepText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AsleepText
 
 .Awake:
 	writetext .AwakeText

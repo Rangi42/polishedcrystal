@@ -36,83 +36,43 @@ NationalParkBugContest_MapEventHeader:
 
 BugCatcherScript_0x5c8ec:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c94c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c94c
 
 BugManiacScript_0x5c8f4:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c973
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c973
 
 CooltrainerMScript_0x5c8fc:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c9a3
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c9a3
 
 PokefanMScript_0x5c904:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c9cc
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c9cc
 
 BugCatcherScript_0x5c90c:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5ca15
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ca15
 
 YoungsterScript_0x5c914:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5ca52
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ca52
 
 LassScript_0x5c91c:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5ca8f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ca8f
 
 BugCatcherScript_0x5c924:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5cac8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5cac8
 
 YoungsterScript_0x5c92c:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5cb25
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5cb25
 
 YoungsterScript_0x5c934:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5cb64
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5cb64
 
 UnknownText_0x5c94c:
 	text "Don: I'm going to"

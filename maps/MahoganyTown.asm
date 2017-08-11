@@ -56,11 +56,7 @@ UnknownScript_0x19002f:
 	end
 
 UnknownScript_0x190039:
-	opentext
-	writetext UnknownText_0x1901a6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1901a6
 
 UnknownScript_0x190040:
 	opentext
@@ -76,44 +72,26 @@ UnknownScript_0x190040:
 	playsound SFX_TRANSACTION
 	takemoney $0, 300
 	special PlaceMoneyTopRight
-	writetext UnknownText_0x19014a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19014a
 
 UnknownScript_0x19006c:
-	writetext UnknownText_0x19015b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19015b
 
 UnknownScript_0x190072:
-	writetext UnknownText_0x190178
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x190178
 
 UnknownScript_0x190078:
-	writetext UnknownText_0x190188
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x190188
 
 GrampsScript_0x19007e:
 	faceplayer
 	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19008c
-	writetext UnknownText_0x1901e5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1901e5
 
 UnknownScript_0x19008c:
-	writetext UnknownText_0x19021d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19021d
 
 FisherScript_0x190092:
 	jumptextfaceplayer UnknownText_0x190276

@@ -45,16 +45,10 @@ ClerkScript_0x54750:
 	setflag ENGINE_BIKE_SHOP_CALL_ENABLED
 	setevent EVENT_GOT_BICYCLE
 UnknownScript_0x54775:
-	writetext UnknownText_0x5485f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5485f
 
 UnknownScript_0x5477b:
-	writetext UnknownText_0x54898
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54898
 
 MapGoldenrodBikeShopSignpost8Script:
 	jumptext UnknownText_0x548ed

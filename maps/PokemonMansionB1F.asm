@@ -35,11 +35,7 @@ TrainerScientistBraydon:
 
 ScientistBraydonScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistBraydonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext ScientistBraydonAfterText
 
 PokemonMansionDiaryScript:
 	jumptext PokemonMansionDiaryText
@@ -67,10 +63,7 @@ PokemonMansionB1FHiddenRareCandy:
 	itemtotext RARE_CANDY, $0
 	writetext PokemonMansionB1FFoundRareCandyText
 	buttonsound
-	writetext PokemonMansionB1FNoRoomForRareCandyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PokemonMansionB1FNoRoomForRareCandyText
 
 PokemonMansionB1FHiddenBerserkGene:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_BERSERK_GENE
@@ -92,10 +85,7 @@ PokemonMansionB1FHiddenBerserkGene:
 	itemtotext BERSERK_GENE, $0
 	writetext PokemonMansionB1FFoundBerserkGeneText
 	buttonsound
-	writetext PokemonMansionB1FNoRoomForBerserkGeneText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PokemonMansionB1FNoRoomForBerserkGeneText
 
 PokemonMansionB1FMewtwoStatue:
 	jumptext PokemonMansionB1FMewtwoStatueText

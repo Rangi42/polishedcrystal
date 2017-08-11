@@ -82,11 +82,7 @@ CinnabarVolcano1FBouldersFall:
 .Fall:
 	pause 30
 	scall .FX
-	opentext
-	writetext CinnabarVolcano1FBoulderFellText
-	waitbutton
-	closetext
-	end
+	jumptext CinnabarVolcano1FBoulderFellText
 
 .FX:
 	playsound SFX_STRENGTH
@@ -132,10 +128,7 @@ CinnabarVolcano1FBuckScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Howdy! I'm Buck."
@@ -208,22 +201,14 @@ TrainerScientistOskar:
 
 ScientistOskarScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistOskarAfterText
-	waitbutton
-	closetext
-	end
+	jumptext ScientistOskarAfterText
 
 TrainerSuperNerdLuis:
 	trainer EVENT_BEAT_SUPER_NERD_LUIS, SUPER_NERD, LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText, 0, SuperNerdLuisScript
 
 SuperNerdLuisScript:
 	end_if_just_battled
-	opentext
-	writetext SuperNerdLuisAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SuperNerdLuisAfterText
 
 CinnabarVolcano1FHiddenFullRestore:
 	dwb EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE

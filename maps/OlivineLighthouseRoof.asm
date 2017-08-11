@@ -77,16 +77,10 @@ OlivineLighthouseRoofSkylaScript:
 	waitbutton
 	setevent EVENT_INTRODUCED_SKYLA
 .Introduced2
-	writetext .WaitingText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WaitingText
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Skyla: Who are"

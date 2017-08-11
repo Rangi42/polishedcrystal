@@ -70,10 +70,7 @@ OlivineCityRivalGymScript:
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalExitsGym
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext OlivineCityRivalGymText
-	waitbutton
-	closetext
+	showtext OlivineCityRivalGymText
 	spriteface PLAYER, RIGHT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesGym
 	dotrigger $1
@@ -95,10 +92,7 @@ OlivineCityRivalLighthouseScript:
 	waitsfx
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalExitsLighthouse
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext OlivineCityRivalLighthouseText
-	waitbutton
-	closetext
+	showtext OlivineCityRivalLighthouseText
 	playsound SFX_TACKLE
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown2
 	spriteface PLAYER, LEFT
@@ -115,38 +109,24 @@ TrainerSailorHarvey:
 
 TrainerSailorHarveyScript:
 	end_if_just_battled
-	opentext
-	writetext SailorHarveyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SailorHarveyAfterText
 
 TrainerLassRose:
 	trainer EVENT_BEAT_LASS_ROSE, LASS, ROSE, LassRoseSeenText, LassRoseBeatenText, 0, TrainerLassRoseScript
 
 TrainerLassRoseScript:
 	end_if_just_battled
-	opentext
-	writetext LassRoseAfterText
-	waitbutton
-	closetext
-	end
+	jumptext LassRoseAfterText
 
 OlivineCityYoungster1Script:
 	faceplayer
 	opentext
 	random $2
 	if_equal $0, UnknownScript_0x1a88b4
-	writetext UnknownText_0x1a8b04
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a8b04
 
 UnknownScript_0x1a88b4:
-	writetext UnknownText_0x1a8b41
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a8b41
 
 OlivineCitySailor1Script:
 	jumptextfaceplayer OlivineCitySailor1Text

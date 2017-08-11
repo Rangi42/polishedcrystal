@@ -136,16 +136,10 @@ GrampsScript_0x7008e:
 	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x7009c
-	writetext UnknownText_0x703f8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x703f8
 
 UnknownScript_0x7009c:
-	writetext UnknownText_0x70421
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x70421
 
 SuperNerdScript_0x700a2:
 	jumptextfaceplayer UnknownText_0x70444
@@ -176,44 +170,28 @@ TrainerFisherAndre:
 
 FisherAndreScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7058f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7058f
 
 TrainerFisherRaymond:
 	trainer EVENT_BEAT_FISHER_RAYMOND, FISHER, RAYMOND, FisherRaymondSeenText, FisherRaymondBeatenText, 0, FisherRaymondScript
 
 FisherRaymondScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x70611
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x70611
 
 TrainerCooltrainermAaron:
 	trainer EVENT_BEAT_COOLTRAINERM_AARON, COOLTRAINERM, AARON, CooltrainermAaronSeenText, CooltrainermAaronBeatenText, 0, CooltrainermAaronScript
 
 CooltrainermAaronScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7069c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7069c
 
 TrainerCooltrainerfLois:
 	trainer EVENT_BEAT_COOLTRAINERF_LOIS, COOLTRAINERF, LOIS, CooltrainerfLoisSeenText, CooltrainerfLoisBeatenText, 0, CooltrainerfLoisScript
 
 CooltrainerfLoisScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x70752
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x70752
 
 WesleyScript:
 	faceplayer
@@ -233,10 +211,7 @@ WesleyScript:
 	verbosegiveitem BLACK_BELT
 	iffalse WesleyDoneScript
 	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
-	writetext WesleyGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext WesleyGaveGiftText
 
 WesleyWednesdayScript:
 	writetext WesleyWednesdayText
@@ -246,10 +221,7 @@ WesleyDoneScript:
 	end
 
 WesleyNotWednesdayScript:
-	writetext WesleyNotWednesdayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext WesleyNotWednesdayText
 
 LakeofRageHiddenFullRestore:
 	dwb EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE, FULL_RESTORE

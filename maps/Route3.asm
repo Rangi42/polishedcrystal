@@ -46,11 +46,7 @@ TrainerYoungsterRegis:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Youngster? Good-"
@@ -75,11 +71,7 @@ TrainerYoungsterJimmy:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I can run like the"
@@ -103,11 +95,7 @@ TrainerYoungsterWarren:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Hmmm… I don't know"
@@ -130,11 +118,7 @@ TrainerFirebreatherOtis:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Ah! The weather's"
@@ -157,11 +141,7 @@ TrainerFirebreatherBurt:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Step right up and"
@@ -186,11 +166,7 @@ TrainerBlackbeltManford:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Slow down and give"
@@ -214,11 +190,7 @@ TrainerBlackbeltAnder:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Wait a moment!"
@@ -242,11 +214,7 @@ TrainerHikerBruce:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "My Bag is digging"
@@ -271,11 +239,7 @@ TrainerHikerDwight:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Peace!"
@@ -307,11 +271,7 @@ TrainerAceDuoZacandjen1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Zac: Really, you"
@@ -337,11 +297,7 @@ TrainerAceDuoZacandjen2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Jen: Huh? You'd"

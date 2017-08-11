@@ -21,11 +21,7 @@ const_value set 2
 	const CERULEANBIKESHOP_CLERK
 
 CeruleanBikeShopClerkScript:
-	faceplayer
-	opentext
-	writetext CeruleanBikeShopClerkText
-	waitbutton
-	closetext
+	showtextfaceplayer CeruleanBikeShopClerkText
 	spriteface CERULEANBIKESHOP_CLERK, UP
 	end
 

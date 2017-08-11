@@ -38,55 +38,35 @@ TrainerYoungsterJosh:
 
 YoungsterJoshScript:
 	end_if_just_battled
-	opentext
-	writetext YoungsterJoshAfterText
-	waitbutton
-	closetext
-	end
+	jumptext YoungsterJoshAfterText
 
 TrainerBird_keeperMick:
 	trainer EVENT_BEAT_BIRD_KEEPER_MICK, BIRD_KEEPER, MICK, Bird_keeperMickSeenText, Bird_keeperMickBeatenText, 0, Bird_keeperMickScript
 
 Bird_keeperMickScript:
 	end_if_just_battled
-	opentext
-	writetext Bird_keeperMickAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Bird_keeperMickAfterText
 
 TrainerHexManiacEsther:
 	trainer EVENT_BEAT_HEX_MANIAC_ESTHER, HEX_MANIAC, ESTHER, HexManiacEstherSeenText, HexManiacEstherBeatenText, 0, HexManiacEstherScript
 
 HexManiacEstherScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacEstherAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HexManiacEstherAfterText
 
 TrainerCooltrainermConnor:
 	trainer EVENT_BEAT_COOLTRAINERM_CONNOR, COOLTRAINERM, CONNOR, CooltrainermConnorSeenText, CooltrainermConnorBeatenText, 0, CooltrainermConnorScript
 
 CooltrainermConnorScript:
 	end_if_just_battled
-	opentext
-	writetext CooltrainermConnorAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CooltrainermConnorAfterText
 
 TrainerSuperNerdMiguel:
 	trainer EVENT_BEAT_SUPER_NERD_MIGUEL, SUPER_NERD, MIGUEL, SuperNerdMiguelSeenText, SuperNerdMiguelBeatenText, 0, SuperNerdMiguelScript
 
 SuperNerdMiguelScript:
 	end_if_just_battled
-	opentext
-	writetext SuperNerdMiguelAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SuperNerdMiguelAfterText
 
 MountMoonB2FHiddenEther:
 	dwb EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER, ETHER

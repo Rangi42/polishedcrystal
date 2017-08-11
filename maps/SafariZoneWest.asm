@@ -36,33 +36,21 @@ TrainerLassDuplica:
 
 LassDuplicaScript:
 	end_if_just_battled
-	opentext
-	writetext LassDuplicaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext LassDuplicaAfterText
 
 TrainerCamperAmos:
 	trainer EVENT_BEAT_CAMPER_AMOS, CAMPER, AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
 
 CamperAmosScript:
 	end_if_just_battled
-	opentext
-	writetext CamperAmosAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CamperAmosAfterText
 
 TrainerTamerBrett:
 	trainer EVENT_BEAT_TAMER_BRETT, TAMER, BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
 
 TamerBrettScript:
 	end_if_just_battled
-	opentext
-	writetext TamerBrettAfterText
-	waitbutton
-	closetext
-	end
+	jumptext TamerBrettAfterText
 
 SafariZoneWestAreaSign:
 	jumptext SafariZoneWestAreaSignText

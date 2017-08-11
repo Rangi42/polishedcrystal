@@ -46,16 +46,10 @@ BakerScript_0x9c8c1:
 	setevent EVENT_BEAT_BAKER_CHELSIE
 	opentext
 BakerChelsieAfterScript:
-	writetext BakerChelsieAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BakerChelsieAfterText
 
 BakerChelsieNoBattleScript:
-	writetext BakerChelsieNoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BakerChelsieNoBattleText
 
 OlivineCafeLyraScript:
 	faceplayer

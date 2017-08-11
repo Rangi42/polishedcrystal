@@ -144,10 +144,7 @@ KurtScript_0x18e178:
 	end
 
 .IMakeBallsFromApricorns:
-	writetext UnknownText_0x18e6c9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e6c9
 
 .AskApricorn:
 	writetext UnknownText_0x18e736
@@ -193,16 +190,10 @@ KurtScript_0x18e178:
 	setevent EVENT_GAVE_KURT_APRICORNS
 	setflag ENGINE_KURT_MAKING_BALLS
 .WaitForApricorns:
-	writetext UnknownText_0x18e779
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e779
 
 .Cancel:
-	writetext UnknownText_0x18e7bc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e7bc
 
 ._ThatTurnedOutGreat:
 	setevent EVENT_RECEIVED_BALLS_FROM_KURT
@@ -301,10 +292,7 @@ KurtScript_0x18e178:
 	iffalse .NotMakingBalls
 	writetext UnknownText_0x18e934
 	waitbutton
-	writetext UnknownText_0x18e949
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e949
 
 .NotMakingBalls:
 	writetext UnknownText_0x18e95c
@@ -362,10 +350,7 @@ KurtScript_ImCheckingItNow:
 	writetext UnknownText_0x18e934
 	waitbutton
 	spriteface KURTSHOUSE_KURT2, UP
-	writetext UnknownText_0x18e949
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e949
 
 KurtsGranddaughter1:
 	faceplayer
@@ -381,32 +366,16 @@ KurtsGranddaughter1:
 	iftrue .SlowpokeBack
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	iftrue .Lonely
-	opentext
-	writetext KurtsGranddaughterSlowpokeGoneText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterSlowpokeGoneText
 
 .SlowpokeBack:
-	opentext
-	writetext KurtsGranddaughterSlowpokeBackText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterSlowpokeBackText
 
 .Lonely:
-	opentext
-	writetext KurtsGranddaughterLonelyText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterLonelyText
 
 .Dad:
-	opentext
-	writetext KurtsGranddaughterDadText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterDadText
 
 KurtsGranddaughter2:
 	faceplayer
@@ -428,11 +397,7 @@ KurtsGranddaughter2Subscript:
 	end
 
 KurtsGranddaughterFunScript:
-	opentext
-	writetext KurtsGranddaughterFunText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterFunText
 
 KurtsHouseSlowpoke:
 	faceplayer

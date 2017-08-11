@@ -34,10 +34,7 @@ ProfOaksAide2Script:
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 29, .HereYouGo
 .UhOh
-	writetext ProfOaksAide2UhOhText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide2UhOhText
 
 .HereYouGo
 	writetext ProfOaksAide2HereYouGoText
@@ -46,16 +43,10 @@ ProfOaksAide2Script:
 	iffalse .NoRoom
 	setevent EVENT_GOT_EXP_SHARE_FROM_PROF_OAKS_AIDE
 .Explain
-	writetext ProfOaksAide2ExplainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide2ExplainText
 
 .NoRoom
-	writetext ProfOaksAide2NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide2NoRoomText
 
 UnknownText_0x9cbda:
 	text "Where did you say"

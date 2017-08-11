@@ -140,55 +140,35 @@ TrainerSupernerdEric:
 
 SupernerdEricScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c36c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7c36c
 
 TrainerSupernerdTeru:
 	trainer EVENT_BEAT_SUPER_NERD_TERU, SUPER_NERD, TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText, 0, SupernerdTeruScript
 
 SupernerdTeruScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c410
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7c410
 
 TrainerPokemaniacIssac:
 	trainer EVENT_BEAT_POKEMANIAC_ISSAC, POKEMANIAC, ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText, 0, PokemaniacIssacScript
 
 PokemaniacIssacScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c498
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7c498
 
 TrainerPokemaniacDonald:
 	trainer EVENT_BEAT_POKEMANIAC_DONALD, POKEMANIAC, DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText, 0, PokemaniacDonaldScript
 
 PokemaniacDonaldScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c52f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7c52f
 
 TrainerCosplayerClara:
 	trainer EVENT_BEAT_COSPLAYER_CLARA, COSPLAYER, CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText, 0, CosplayerClaraScript
 
 CosplayerClaraScript:
 	end_if_just_battled
-	opentext
-	writetext CosplayerClaraAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CosplayerClaraAfterText
 
 GrannyScript_0x7c132:
 	opentext
@@ -283,22 +263,13 @@ OlderHaircutBrotherScript:
 	jump UnknownScript_0x7c2cd
 
 .Refused:
-	writetext UnknownText_0x7c6ea
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c6ea
 
 .NotEnoughMoney:
-	writetext UnknownText_0x7c709
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c709
 
 .AlreadyGotHaircut:
-	writetext UnknownText_0x7c72b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c72b
 
 YoungerHaircutBrotherScript:
 	opentext
@@ -366,22 +337,13 @@ YoungerHaircutBrotherScript:
 	jump UnknownScript_0x7c2cd
 
 .Refused:
-	writetext UnknownText_0x7c842
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c842
 
 .NotEnoughMoney:
-	writetext UnknownText_0x7c85b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c85b
 
 .AlreadyGotHaircut:
-	writetext UnknownText_0x7c87b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c87b
 
 UnknownScript_0x7c2bb:
 	writetext HaircutBrosText_SlightlyHappier
@@ -410,10 +372,7 @@ BasementDoorScript::
 	iftrue .Open
 	checkitem BASEMENT_KEY
 	iftrue .Unlock
-	writetext UnknownText_0x7c5b0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c5b0
 
 .Unlock:
 	playsound SFX_TRANSACTION
@@ -427,16 +386,10 @@ BasementDoorScript::
 	end
 
 .Open:
-	writetext UnknownText_0x7c5c3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c5c3
 
 WarehouseEntranceScript_ShopClosed:
-	writetext UnknownText_0x7c904
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c904
 
 MapWarehouseEntranceSignpost1Script:
 	jumptext UnknownText_0x7c91a

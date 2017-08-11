@@ -45,10 +45,7 @@ MountMoon1FTrigger0:
 	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementBefore
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext MountMoonSilverTextBefore
-	waitbutton
-	closetext
+	showtext MountMoonSilverTextBefore
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -82,10 +79,7 @@ MountMoon1FTrigger0:
 .FinishBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext MountMoonSilverTextAfter
-	waitbutton
-	closetext
+	showtext MountMoonSilverTextAfter
 	applymovement PLAYER, MountMoon1FPlayerMovement
 	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementAfter
 	disappear MOUNTMOON1F_SILVER
@@ -101,66 +95,42 @@ TrainerBugManiacKenta:
 
 BugManiacKentaScript:
 	end_if_just_battled
-	opentext
-	writetext BugManiacKentaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacKentaAfterText
 
 TrainerLassMiriam:
 	trainer EVENT_BEAT_LASS_MIRIAM, LASS, MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
 
 LassMiriamScript:
 	end_if_just_battled
-	opentext
-	writetext LassMiriamAfterText
-	waitbutton
-	closetext
-	end
+	jumptext LassMiriamAfterText
 
 TrainerSuperNerdJovan:
 	trainer EVENT_BEAT_SUPER_NERD_JOVAN, SUPER_NERD, JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
 
 SuperNerdJovanScript:
 	end_if_just_battled
-	opentext
-	writetext SuperNerdJovanAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SuperNerdJovanAfterText
 
 TrainerBugManiacRobby:
 	trainer EVENT_BEAT_BUG_MANIAC_ROBBY, BUG_MANIAC, ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
 
 BugManiacRobbyScript:
 	end_if_just_battled
-	opentext
-	writetext BugManiacRobbyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacRobbyAfterText
 
 TrainerLassIris:
 	trainer EVENT_BEAT_LASS_IRIS, LASS, IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
 
 LassIrisScript:
 	end_if_just_battled
-	opentext
-	writetext LassIrisAfterText
-	waitbutton
-	closetext
-	end
+	jumptext LassIrisAfterText
 
 TrainerHikerMarcos:
 	trainer EVENT_BEAT_HIKER_MARCOS, HIKER, MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
 
 HikerMarcosScript:
 	end_if_just_battled
-	opentext
-	writetext HikerMarcosAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HikerMarcosAfterText
 
 MountMoon1FHiddenRareCandy:
 	dwb EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY, RARE_CANDY

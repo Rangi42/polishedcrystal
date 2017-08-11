@@ -185,10 +185,7 @@ UndergroundSilverBattleScript:
 	domaptrigger BURNED_TOWER_1F, 1
 .Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext UndergroundSilverBeforeText
-	waitbutton
-	closetext
+	showtext UndergroundSilverBeforeText
 	setevent EVENT_RIVAL_UNDERGROUND_PATH
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -223,77 +220,49 @@ UndergroundSilverBattleScript:
 .FinishRivalBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext UndergroundSilverAfterText
-	waitbutton
-	closetext
-	end
+	jumptext UndergroundSilverAfterText
 
 TrainerGruntM11:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_11, GRUNTM, 11, GruntM11SeenText, GruntM11BeatenText, 0, GruntM11Script
 
 GruntM11Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM11AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM11AfterText
 
 TrainerGruntM25:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_25, GRUNTM, 25, GruntM25SeenText, GruntM25BeatenText, 0, GruntM25Script
 
 GruntM25Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM25AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM25AfterText
 
 TrainerBurglarDuncan:
 	trainer EVENT_BEAT_BURGLAR_DUNCAN, BURGLAR, DUNCAN, BurglarDuncanSeenText, BurglarDuncanBeatenText, 0, BurglarDuncanScript
 
 BurglarDuncanScript:
 	end_if_just_battled
-	opentext
-	writetext BurglarDuncanAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BurglarDuncanAfterText
 
 TrainerBurglarOrson:
 	trainer EVENT_BEAT_BURGLAR_ORSON, BURGLAR, ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText, 0, BurglarOrsonScript
 
 BurglarOrsonScript:
 	end_if_just_battled
-	opentext
-	writetext BurglarOrsonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BurglarOrsonAfterText
 
 TrainerGruntM13:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_13, GRUNTM, 13, GruntM13SeenText, GruntM13BeatenText, 0, GruntM13Script
 
 GruntM13Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM13AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM13AfterText
 
 TrainerGruntF3:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_3, GRUNTF, 3, GruntF3SeenText, GruntF3BeatenText, 0, GruntF3Script
 
 GruntF3Script:
 	end_if_just_battled
-	opentext
-	writetext GruntF3AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntF3AfterText
 
 Switch1Script:
 	opentext

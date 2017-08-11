@@ -94,10 +94,7 @@ MapRuinsofAlphHoOhChamberSignpost1Script:
 
 MapRuinsofAlphHoOhChamberSignpost3Script:
 	unowntypeface
-	opentext
-	writetext UnknownText_0x586aa
-	waitbutton
-	closetext
+	showtext UnknownText_0x586aa
 	restoretypeface
 	end
 
@@ -120,11 +117,7 @@ MapRuinsofAlphHoOhChamberSignpost5Script:
 	end
 
 UnknownScript_0x58609:
-	opentext
-	writetext UnknownText_0x58665
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58665
 
 MovementData_0x58610:
 	db $59 ; movement

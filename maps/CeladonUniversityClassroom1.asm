@@ -65,10 +65,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	end
 
 .NoBattle:
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .Text1:
 	text "Huh? W…Who are"

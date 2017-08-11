@@ -30,10 +30,7 @@ OfficerScript_0x550ec:
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .MagnetTrainToSaffron
-	writetext UnknownText_0x55160
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x55160
 
 .MagnetTrainToSaffron:
 	writetext UnknownText_0x551b7
@@ -59,26 +56,16 @@ OfficerScript_0x550ec:
 	step_end
 
 .PassNotInBag:
-	writetext UnknownText_0x5522c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5522c
 
 .DecidedNotToRide:
-	writetext UnknownText_0x5524f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5524f
 
 Script_ArriveFromSaffron:
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x55146
 	applymovement PLAYER, MovementData_0x55158
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x5514b
-	opentext
-	writetext UnknownText_0x5526a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5526a
 
 GentlemanScript_0x55143:
 	jumptextfaceplayer UnknownText_0x552a3

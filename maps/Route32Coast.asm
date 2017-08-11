@@ -45,11 +45,7 @@ TrainerSwimmermMichel:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I was waiting"
@@ -75,11 +71,7 @@ TrainerSwimmermLucas:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Reflecting and re-"
@@ -110,11 +102,7 @@ TrainerSwimmerfAlison:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Before battling"
@@ -140,11 +128,7 @@ TrainerSwimmerfStephanie:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Did you hear that?"
@@ -167,11 +151,7 @@ TrainerBird_keeperPowell:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I can't swim, so"
@@ -199,11 +179,7 @@ TrainerCosplayerChloe:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Like my costume?"
@@ -228,11 +204,7 @@ TrainerFisherKiley:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Heh, I'm on a roll"
@@ -258,11 +230,7 @@ TrainerCamperCraig:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Nothing beats the"
@@ -287,11 +255,7 @@ TrainerLassLayla:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "If you had one"
@@ -316,11 +280,7 @@ TrainerCoupleFoxandrae1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Fox: Come on, Rae,"
@@ -343,11 +303,7 @@ TrainerCoupleFoxandrae2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Rae: Hey Fox, why"

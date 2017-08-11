@@ -83,11 +83,7 @@ Copycat:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	opentext
-	writetext UnknownText_0x18b028
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x18b028
 
 .Part7:
 	opentext
@@ -112,10 +108,7 @@ Copycat:
 	faceplayer
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	opentext
-	writetext UnknownText_0x18b116
-	waitbutton
-	closetext
+	showtext UnknownText_0x18b116
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	end
 
@@ -136,10 +129,7 @@ Copycat:
 	verbosegiveitem PASS
 	iffalse .Part22
 	setevent EVENT_GOT_PASS_FROM_COPYCAT
-	writetext UnknownText_0x18b214
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18b214
 
 .Part15:
 	checkflag ENGINE_PLAYER_IS_FEMALE
@@ -189,10 +179,7 @@ CopycatsDodrio:
 	writetext CopycatsDodrioText1
 	cry DODRIO
 	buttonsound
-	writetext CopycatsDodrioText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CopycatsDodrioText2
 
 CopycatsHouse2FDoll:
 	jumptext CopycatsHouse2FDollText

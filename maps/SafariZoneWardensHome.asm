@@ -31,10 +31,7 @@ WardensGranddaughter:
 	setevent EVENT_TALKED_TO_WARDENS_GRANDDAUGHTER
 	end
 .AlreadyMet:
-	writetext WardensGranddaughterText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext WardensGranddaughterText2
 
 WardensGranddaughterText1:
 	text "My grandpa is the"

@@ -24,11 +24,7 @@ TrainerVeteranmRemy:
 
 VeteranmRemyScript:
 	end_if_just_battled
-	opentext
-	writetext VeteranmRemyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext VeteranmRemyAfterText
 
 VeteranmRemySeenText:
 	text "If you can get"

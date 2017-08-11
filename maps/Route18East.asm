@@ -24,22 +24,14 @@ TrainerBird_keeperBoris:
 
 Bird_keeperBorisScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1acfa5
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1acfa5
 
 TrainerBird_keeperBob:
 	trainer EVENT_BEAT_BIRD_KEEPER_BOB, BIRD_KEEPER, BOB, Bird_keeperBobSeenText, Bird_keeperBobBeatenText, 0, Bird_keeperBobScript
 
 Bird_keeperBobScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad00d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ad00d
 
 Route18Sign:
 	jumptext Route18SignText

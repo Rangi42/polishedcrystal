@@ -63,16 +63,10 @@ ReceptionistScript_0x560ce:
 	end
 
 .SomewhatHappy:
-	writetext UnknownText_0x561a6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x561a6
 
 .EventIsOver:
-	writetext UnknownText_0x56202
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x56202
 
 GoldenrodDeptStore5FTwinScript:
 	faceplayer
@@ -89,16 +83,10 @@ GoldenrodDeptStore5FTwinScript:
 	itemnotify
 	setflag ENGINE_DAILY_MYSTERY_GIFT
 .GotDailyBerry
-	writetext MysteryGiftGirl_ComeBackText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MysteryGiftGirl_ComeBackText
 
 .NoRoom:
-	writetext MysteryGiftGirl_NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MysteryGiftGirl_NoRoomText
 
 .PickRandomMysteryGift:
 	ld a, APICOT_BERRY - ORAN_BERRY + 1

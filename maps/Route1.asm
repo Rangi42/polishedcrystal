@@ -26,44 +26,28 @@ TrainerSchoolboyDanny:
 
 SchoolboyDannyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac5d7
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac5d7
 
 TrainerSchoolboySherman:
 	trainer EVENT_BEAT_SCHOOLBOY_SHERMAN, SCHOOLBOY, SHERMAN, SchoolboyShermanSeenText, SchoolboyShermanBeatenText, 0, SchoolboyShermanScript
 
 SchoolboyShermanScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolboyShermanAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolboyShermanAfterText
 
 TrainerCooltrainermFrench:
 	trainer EVENT_BEAT_COOLTRAINERM_FRENCH, COOLTRAINERM, FRENCH, CooltrainermFrenchSeenText, CooltrainermFrenchBeatenText, 0, CooltrainermFrenchScript
 
 CooltrainermFrenchScript:
 	end_if_just_battled
-	opentext
-	writetext CooltrainermFrenchAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CooltrainermFrenchAfterText
 
 TrainerCooltrainerfQuinn:
 	trainer EVENT_BEAT_COOLTRAINERF_QUINN, COOLTRAINERF, QUINN, CooltrainerfQuinnSeenText, CooltrainerfQuinnBeatenText, 0, CooltrainerfQuinnScript
 
 CooltrainerfQuinnScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac640
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac640
 
 Route1Sign:
 	jumptext Route1SignText

@@ -26,16 +26,10 @@ TeacherScript_0x199982:
 	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue UnknownScript_0x199990
-	writetext UnknownText_0x199a0e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x199a0e
 
 UnknownScript_0x199990:
-	writetext UnknownText_0x199a3d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x199a3d
 
 UnknownText_0x19999c:
 	text "I heard that a red"

@@ -148,36 +148,21 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 
 .TestComplete:
-	writetext .TestOverText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .TestOverText
 
 .NoHyperTest:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .TookHyperTestToday:
-	writetext .AlreadyTookText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AlreadyTookText
 
 .WrongAnswer:
 	waitsfx
 	playsound SFX_WRONG
-	writetext .WrongAnswerText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WrongAnswerText
 
 .PartyFull:
-	writetext .PartyFullText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .PartyFullText
 
 .GreetingText:
 	text "Prof.Westwood?"

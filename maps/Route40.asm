@@ -48,44 +48,28 @@ TrainerSwimmerfElaine:
 
 SwimmerfElaineScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a637b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a637b
 
 TrainerSwimmerfPaula:
 	trainer EVENT_BEAT_SWIMMERF_PAULA, SWIMMERF, PAULA, SwimmerfPaulaSeenText, SwimmerfPaulaBeatenText, 0, SwimmerfPaulaScript
 
 SwimmerfPaulaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a63f5
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a63f5
 
 TrainerSwimmermSimon:
 	trainer EVENT_BEAT_SWIMMERM_SIMON, SWIMMERM, SIMON, SwimmermSimonSeenText, SwimmermSimonBeatenText, 0, SwimmermSimonScript
 
 SwimmermSimonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a6282
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a6282
 
 TrainerSwimmermRandall:
 	trainer EVENT_BEAT_SWIMMERM_RANDALL, SWIMMERM, RANDALL, SwimmermRandallSeenText, SwimmermRandallBeatenText, 0, SwimmermRandallScript
 
 SwimmermRandallScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a62fa
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a62fa
 
 LassScript_0x1a61c4:
 	jumptextfaceplayer UnknownText_0x1a6429

@@ -36,10 +36,7 @@ FishingGuruScript_0x19a6ae:
 	end
 
 UnknownScript_0x19a6d1:
-	writetext UnknownText_0x19a84d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19a84d
 
 UnknownScript_0x19a6d7:
 	writetext UnknownText_0x19a890
@@ -77,22 +74,13 @@ UnknownScript_0x19a711:
 	end
 
 UnknownScript_0x19a716:
-	writetext UnknownText_0x19aa01
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19aa01
 
 UnknownScript_0x19a71c:
-	writetext UnknownText_0x19aa5c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19aa5c
 
 UnknownScript_0x19a722:
-	writetext UnknownText_0x19aa79
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19aa79
 
 UnknownText_0x19a72e:
 	text "Lake of Rage is"

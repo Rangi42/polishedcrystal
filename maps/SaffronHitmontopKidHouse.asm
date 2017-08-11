@@ -22,27 +22,17 @@ const_value set 2
 	const SAFFRONHITMONTOPKIDHOUSE_CHILD
 
 SaffronHitmontopKidHouseChildScript:
-	faceplayer
-	opentext
-	writetext SaffronHitmontopKidHouseChildText1
-	waitbutton
-	closetext
+	showtextfaceplayer SaffronHitmontopKidHouseChildText1
 	applymovement SAFFRONHITMONTOPKIDHOUSE_CHILD, SaffronHitmontopKidHouseChildSpinMovement
 	faceplayer
 	pause 20
 	checkpoke HITMONTOP
 	iffalse .Done
 	showemote EMOTE_SHOCK, SAFFRONHITMONTOPKIDHOUSE_CHILD, 15
-	opentext
-	writetext SaffronHitmontopKidHouseChildText2
-	waitbutton
-	closetext
+	showtext SaffronHitmontopKidHouseChildText2
 	applymovement SAFFRONHITMONTOPKIDHOUSE_CHILD, SaffronHitmontopKidHouseSpin2Movement
 	pause 20
-	opentext
-	writetext SaffronHitmontopKidHouseChildText3
-	waitbutton
-	closetext
+	showtext SaffronHitmontopKidHouseChildText3
 	setevent EVENT_SHOWED_SAFFRON_KID_HITMONTOP
 .Done
 	end
@@ -67,10 +57,7 @@ SaffronHitmontopKidHouseTeacherScript:
 	end
 
 .NoShow:
-	writetext SaffronHitmontopKidHouseTeacherText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SaffronHitmontopKidHouseTeacherText1
 
 SaffronHitmontopKidHouseChildText1:
 	text "Top! Top!"

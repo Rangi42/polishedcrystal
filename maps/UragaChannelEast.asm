@@ -31,11 +31,7 @@ TrainerSwimmerfWoda:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Did you come here"
@@ -59,11 +55,7 @@ TrainerCooltrainermKieran:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "It's on like"
@@ -88,11 +80,7 @@ TrainerBikerTyrone:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Cough! Splutter!"

@@ -31,10 +31,7 @@ SeagallopFerryShamoutiGate_PlayerArrives:
 	setflag ENGINE_SEEN_SHAMOUTI_ISLAND
 	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorArrive1MovementData
 	applymovement PLAYER, SeagallopFerryShamoutiGatePlayerArriveMovementData
-	opentext
-	writetext SeagallopFerryShamoutiIslandRefusedText
-	waitbutton
-	closetext
+	showtext SeagallopFerryShamoutiIslandRefusedText
 	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorArrive2MovementData
 	dotrigger $0
 	end
@@ -68,10 +65,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	end
 
 .RefuseFerry
-	writetext SeagallopFerryShamoutiIslandRefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SeagallopFerryShamoutiIslandRefusedText
 
 SeagallopFerryShamoutiDepartureScript:
 	writetext SeagallopFerryShamoutiDepartureText

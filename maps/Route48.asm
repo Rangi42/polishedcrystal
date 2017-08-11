@@ -39,10 +39,7 @@ Route48JessieJamesScript:
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
 	applymovement ROUTE48_JAMES, JamesEnterMovementData
-	opentext
-	writetext Route48JessieJamesSeenText
-	waitbutton
-	closetext
+	showtext Route48JessieJamesSeenText
 	winlosstext Route48JessieJamesBeatenText, 0
 	setlasttalked ROUTE48_JESSIE
 	loadtrainer JESSIE_JAMES, 1
@@ -51,10 +48,7 @@ Route48JessieJamesScript:
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
-	opentext
-	writetext Route48JessieJamesAfterText
-	waitbutton
-	closetext
+	showtext Route48JessieJamesAfterText
 	applymovement ROUTE48_JESSIE, JessieLeaveMovementData
 	applymovement ROUTE48_JAMES, JamesLeaveMovementData
 	disappear ROUTE48_JESSIE
@@ -99,10 +93,7 @@ TrainerArcher2:
 	trainer EVENT_BEAT_ARCHER_2, ARCHER, ARCHER2, Archer2SeenText, Archer2BeatenText, 0, Archer2Script
 
 Archer2Script:
-	opentext
-	writetext Archer2AfterText
-	waitbutton
-	closetext
+	showtext Archer2AfterText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear ROUTE48_ARCHER

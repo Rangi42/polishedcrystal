@@ -50,36 +50,20 @@ CherrygroveGuideGentTrigger:
 	applymovement PLAYER, GuideGentPlayerMovement
 	setlasttalked CHERRYGROVECITY_GRAMPS
 CherrygroveCityGuideGent:
-	faceplayer
-	opentext
-	writetext GuideGentIntroText
-	waitbutton
-	closetext
+	showtextfaceplayer GuideGentIntroText
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow CHERRYGROVECITY_GRAMPS, PLAYER
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement1
-	opentext
-	writetext GuideGentPokeCenterText
-	waitbutton
-	closetext
+	showtext GuideGentPokeCenterText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement2
 	spriteface PLAYER, UP
-	opentext
-	writetext GuideGentMartText
-	waitbutton
-	closetext
+	showtext GuideGentMartText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement3
 	spriteface PLAYER, UP
-	opentext
-	writetext GuideGentRoute30Text
-	waitbutton
-	closetext
+	showtext GuideGentRoute30Text
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement4
 	spriteface PLAYER, LEFT
-	opentext
-	writetext GuideGentSeaText
-	waitbutton
-	closetext
+	showtext GuideGentSeaText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement5
 	spriteface PLAYER, UP
 	pause 60
@@ -126,10 +110,7 @@ CherrygroveSilverTriggerNorth:
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalWalksToYou
 	spriteface PLAYER, RIGHT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext UnknownText_0x19c4e2
-	waitbutton
-	closetext
+	showtext UnknownText_0x19c4e2
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -170,15 +151,9 @@ CherrygroveSilverTriggerNorth:
 .FinishRival:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext CherrygroveRivalTextAfter1
-	waitbutton
-	closetext
+	showtext CherrygroveRivalTextAfter1
 	showemote EMOTE_SHOCK, CHERRYGROVECITY_SILVER, 15
-	opentext
-	writetext CherrygroveRivalTextAfter2
-	waitbutton
-	closetext
+	showtext CherrygroveRivalTextAfter2
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
 	spriteface PLAYER, LEFT
@@ -196,32 +171,20 @@ CherrygroveTeacherScript:
 	opentext
 	checkflag ENGINE_MAP_CARD
 	iftrue .HaveMapCard
-	writetext CherrygroveTeacherText_NoMapCard
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CherrygroveTeacherText_NoMapCard
 
 .HaveMapCard:
-	writetext CherrygroveTeacherText_HaveMapCard
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CherrygroveTeacherText_HaveMapCard
 
 CherrygroveYoungsterScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_POKEDEX
 	iftrue .HavePokedex
-	writetext CherrygroveYoungsterText_NoPokedex
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CherrygroveYoungsterText_NoPokedex
 
 .HavePokedex:
-	writetext CherrygroveYoungsterText_HavePokedex
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CherrygroveYoungsterText_HavePokedex
 
 MysticWaterGuy:
 	faceplayer

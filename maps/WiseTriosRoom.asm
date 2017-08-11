@@ -67,10 +67,7 @@ UnknownScript_0x985a3:
 	applymovement PLAYER, MovementData_0x98622
 	stopfollow
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext UnknownText_0x98712
-	waitbutton
-	closetext
+	showtext UnknownText_0x98712
 	applymovement WISETRIOSROOM_ELDER3, MovementData_0x98625
 	spriteface WISETRIOSROOM_ELDER3, LEFT
 	end
@@ -79,21 +76,13 @@ TrainerElderGaku:
 	trainer EVENT_BEAT_ELDER_GAKU, ELDER, GAKU, ElderGakuSeenText, ElderGakuBeatenText, 0, ElderGakuScript
 
 ElderGakuScript:
-	opentext
-	writetext UnknownText_0x98938
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x98938
 
 TrainerElderMasa:
 	trainer EVENT_BEAT_ELDER_MASA, ELDER, MASA, ElderMasaSeenText, ElderMasaBeatenText, 0, ElderMasaScript
 
 ElderMasaScript:
-	opentext
-	writetext UnknownText_0x98a35
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x98a35
 
 TrainerElderKoji:
 	trainer EVENT_BEAT_ELDER_KOJI, ELDER, KOJI, ElderKojiSeenText, ElderKojiBeatenText, 0, ElderKojiScript
@@ -116,11 +105,7 @@ ElderKojiScript:
 	end
 
 UnknownScript_0x9861b:
-	opentext
-	writetext UnknownText_0x98db5
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x98db5
 
 MovementData_0x98622:
 	step_left

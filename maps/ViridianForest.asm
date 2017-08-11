@@ -44,55 +44,35 @@ TrainerBug_maniacDane:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacDaneAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacDaneAfterText
 
 TrainerBug_maniacDion:
 	trainer EVENT_BEAT_BUG_MANIAC_DION, BUG_MANIAC, DION, BugManiacDionSeenText, BugManiacDionBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacDionAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacDionAfterText
 
 TrainerBug_maniacStacey:
 	trainer EVENT_BEAT_BUG_MANIAC_STACEY, BUG_MANIAC, STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacStaceyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacStaceyAfterText
 
 TrainerBug_maniacEllis:
 	trainer EVENT_BEAT_BUG_MANIAC_ELLIS, BUG_MANIAC, ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacEllisAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacEllisAfterText
 
 TrainerBug_maniacAbner:
 	trainer EVENT_BEAT_BUG_MANIAC_ABNER, BUG_MANIAC, ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacAbnerAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacAbnerAfterText
 
 ViridianForestWeedleDoll:
 	disappear VIRIDIAN_FOREST_POKE_BALL3
@@ -102,10 +82,7 @@ ViridianForestWeedleDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext ViridianForestWeedleSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ViridianForestWeedleSentText
 
 MapViridianForestSignpost1Script:
 	jumptext ViridianForestSignText1

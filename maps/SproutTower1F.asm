@@ -48,11 +48,7 @@ TrainerSageChow:
 
 SageChowScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x184583
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x184583
 
 MapSproutTower1FSignpost1Script:
 	jumptext UnknownText_0x1846d6

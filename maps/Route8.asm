@@ -47,99 +47,63 @@ TrainerBikerDwayne:
 
 BikerDwayneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c0c8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6c0c8
 
 TrainerBikerHarris:
 	trainer EVENT_BEAT_BIKER_HARRIS, BIKER, HARRIS, BikerHarrisSeenText, BikerHarrisBeatenText, 0, BikerHarrisScript
 
 BikerHarrisScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c143
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6c143
 
 TrainerBikerZeke:
 	trainer EVENT_BEAT_BIKER_ZEKE, BIKER, ZEKE, BikerZekeSeenText, BikerZekeBeatenText, 0, BikerZekeScript
 
 BikerZekeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c1a3
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6c1a3
 
 TrainerSupernerdSam:
 	trainer EVENT_BEAT_SUPER_NERD_SAM, SUPER_NERD, SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, SupernerdSamScript
 
 SupernerdSamScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c219
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6c219
 
 TrainerSupernerdTom:
 	trainer EVENT_BEAT_SUPER_NERD_TOM, SUPER_NERD, TOM, SupernerdTomSeenText, SupernerdTomBeatenText, 0, SupernerdTomScript
 
 SupernerdTomScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c27e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6c27e
 
 TrainerGentlemanMilton:
 	trainer EVENT_BEAT_GENTLEMAN_MILTON, GENTLEMAN, MILTON, GentlemanMiltonSeenText, GentlemanMiltonBeatenText, 0, GentlemanMiltonScript
 
 GentlemanMiltonScript:
 	end_if_just_battled
-	opentext
-	writetext GentlemanMiltonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext GentlemanMiltonAfterText
 
 TrainerCoupleMoeandlulu1:
 	trainer EVENT_BEAT_COUPLE_MOE_AND_LULU, COUPLE, MOEANDLULU1, CoupleMoeandlulu1SeenText, CoupleMoeandlulu1BeatenText, 0, CoupleMoeandlulu1Script
 
 CoupleMoeandlulu1Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleMoeandlulu1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext CoupleMoeandlulu1AfterText
 
 TrainerCoupleMoeandlulu2:
 	trainer EVENT_BEAT_COUPLE_MOE_AND_LULU, COUPLE, MOEANDLULU2, CoupleMoeandlulu2SeenText, CoupleMoeandlulu2BeatenText, 0, CoupleMoeandlulu2Script
 
 CoupleMoeandlulu2Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleMoeandlulu2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext CoupleMoeandlulu2AfterText
 
 TrainerLassMeadow:
 	trainer EVENT_BEAT_LASS_MEADOW, LASS, MEADOW, LassMeadowSeenText, LassMeadowBeatenText, 0, LassMeadowScript
 
 LassMeadowScript:
 	end_if_just_battled
-	opentext
-	writetext LassMeadowAfterText
-	waitbutton
-	closetext
-	end
+	jumptext LassMeadowAfterText
 
 Route8LockedDoor:
 	jumptext Route8LockedDoorText

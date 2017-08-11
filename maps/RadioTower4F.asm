@@ -40,10 +40,7 @@ TeacherScript_0x5eb85:
 	iftrue UnknownScript_0x5ebac
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue UnknownScript_0x5eb99
-	writetext UnknownText_0x5ec68
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5ec68
 
 UnknownScript_0x5eb99:
 	writetext UnknownText_0x5ecab
@@ -76,44 +73,28 @@ TrainerGruntM10:
 
 GruntM10Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5ede2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ede2
 
 TrainerProton1:
 	trainer EVENT_BEAT_PROTON_1, PROTON, PROTON1, Proton1SeenText, Proton1BeatenText, 0, Proton1Script
 
 Proton1Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5ee69
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ee69
 
 TrainerGruntF4:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_4, GRUNTF, 4, GruntF4SeenText, GruntF4BeatenText, 0, GruntF4Script
 
 GruntF4Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5ef31
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ef31
 
 TrainerRocketScientistRich:
 	trainer EVENT_BEAT_ROCKET_SCIENTIST_RICH, ROCKET_SCIENTIST, RICH, RocketScientistRichSeenText, RocketScientistRichBeatenText, 0, RocketScientistRichScript
 
 RocketScientistRichScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5efcb
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5efcb
 
 MapRadioTower4FSignpost0Script:
 	jumptext UnknownText_0x5effe

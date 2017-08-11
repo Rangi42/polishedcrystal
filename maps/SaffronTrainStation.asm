@@ -31,10 +31,7 @@ OfficerScript_0x18a81e:
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .MagnetTrainToGoldenrod
-	writetext UnknownText_0x18a8a9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18a8a9
 
 .MagnetTrainToGoldenrod:
 	writetext UnknownText_0x18a8dd
@@ -60,42 +57,26 @@ OfficerScript_0x18a81e:
 	step_end
 
 .PassNotInBag:
-	writetext UnknownText_0x18a956
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18a956
 
 .DecidedNotToRide:
-	writetext UnknownText_0x18a978
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18a978
 
 Script_ArriveFromGoldenrod:
 	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a88f
 	applymovement PLAYER, MovementData_0x18a8a1
 	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a894
-	opentext
-	writetext UnknownText_0x18a993
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x18a993
 
 GymGuyScript_0x18a875:
 	faceplayer
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x18a883
-	writetext UnknownText_0x18a9ca
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18a9ca
 
 UnknownScript_0x18a883:
-	writetext UnknownText_0x18aa61
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18aa61
 
 TeacherScript_0x18a889:
 	jumptextfaceplayer UnknownText_0x18aaab

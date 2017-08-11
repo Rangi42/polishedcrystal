@@ -32,10 +32,7 @@ UnknownScript_0x5ad20:
 	end
 
 UnknownScript_0x5ad22:
-	writetext UnknownText_0x5adf2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5adf2
 
 UnknownText_0x5ad2a:
 	text "I'm waiting to see"

@@ -29,15 +29,9 @@ HiddenPowerGuy:
 	buttonsound
 	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
-	writetext HiddenPowerGuyText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext HiddenPowerGuyText2
 .AlreadyGotItem:
-	writetext HiddenPowerGuyText3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext HiddenPowerGuyText3
 
 HiddenPowerGuyText1:
 	text "…You have strayed"

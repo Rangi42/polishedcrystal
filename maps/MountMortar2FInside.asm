@@ -29,11 +29,7 @@ TrainerSupernerdHugh:
 
 SupernerdHughScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7e10e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7e10e
 
 MountMortar2FInsideHiddenFullRestore:
 	dwb EVENT_MOUNT_MORTAR_2F_INSIDE_HIDDEN_FULL_RESTORE, FULL_RESTORE

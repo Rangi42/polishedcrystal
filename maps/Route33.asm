@@ -111,10 +111,7 @@ TrainerHikerAnthony:
 	end
 
 .Swarm:
-	writetext HikerAnthonyDunsparceText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext HikerAnthonyDunsparceText
 
 .AskNumber1:
 	jumpstd asknumber1m
@@ -149,11 +146,7 @@ TrainerSchoolgirlImogen:
 
 SchoolgirlImogenScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlImogenAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolgirlImogenAfterText
 
 Route33Sign:
 	jumptext Route33SignText

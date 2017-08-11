@@ -104,29 +104,17 @@ PokefanFScript_0x61024:
 	verbosegiveitem EVIOLITE
 	iffalse .NoRoomForEviolite
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	writetext UnknownText_0x624e9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x624e9
 
 .NoEviolite:
-	writetext UnknownText_0x62509
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x62509
 
 .NoRoomForEviolite:
 	giveitem EON_MAIL
-	writetext UnknownText_0x6252a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6252a
 
 .GotEviolite:
-	writetext GoldenrodPokeComCenter1FPokefanFGotEvioliteText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GoldenrodPokeComCenter1FPokefanFGotEvioliteText
 
 UnknownText_0x623fb:
 	text "Oh my, your bag"
@@ -197,10 +185,7 @@ WonderTradeReceptionistScript:
 	writetext WonderTradeExplanationText
 	buttonsound
 	special WonderTrade
-	writetext WonderTradeGoodbyeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext WonderTradeGoodbyeText
 
 WonderTradeIntroText:
 	text "Hello! Welcome to"

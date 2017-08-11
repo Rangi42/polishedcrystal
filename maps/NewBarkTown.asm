@@ -58,47 +58,29 @@ NewBarkTownSwimmerGuySprite:
 NewBarkTown_TeacherStopsYouTrigger1:
 	playmusic MUSIC_MOM
 	spriteface NEWBARKTOWN_TEACHER, LEFT
-	opentext
-	writetext Text_WaitPlayer
-	waitbutton
-	closetext
+	showtext Text_WaitPlayer
 	spriteface PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou1_NBT
-	opentext
-	writetext Text_WhatDoYouThinkYoureDoing
-	waitbutton
-	closetext
+	showtext Text_WhatDoYouThinkYoureDoing
 	follow NEWBARKTOWN_TEACHER, PLAYER
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack1_NBT
 	stopfollow
-	opentext
-	writetext Text_ItsDangerousToGoAlone
-	waitbutton
-	closetext
+	showtext Text_ItsDangerousToGoAlone
 	special RestartMapMusic
 	end
 
 NewBarkTown_TeacherStopsYouTrigger2:
 	playmusic MUSIC_MOM
 	spriteface NEWBARKTOWN_TEACHER, LEFT
-	opentext
-	writetext Text_WaitPlayer
-	waitbutton
-	closetext
+	showtext Text_WaitPlayer
 	spriteface PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou2_NBT
 	spriteface PLAYER, UP
-	opentext
-	writetext Text_WhatDoYouThinkYoureDoing
-	waitbutton
-	closetext
+	showtext Text_WhatDoYouThinkYoureDoing
 	follow NEWBARKTOWN_TEACHER, PLAYER
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack2_NBT
 	stopfollow
-	opentext
-	writetext Text_ItsDangerousToGoAlone
-	waitbutton
-	closetext
+	showtext Text_ItsDangerousToGoAlone
 	special RestartMapMusic
 	end
 
@@ -110,10 +92,7 @@ NewBarkTown_LyraIntroTrigger:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraApproaches_NBT
 	spriteface PLAYER, LEFT
-	opentext
-	writetext Text_LyraIntro
-	waitbutton
-	closetext
+	showtext Text_LyraIntro
 	follow PLAYER, NEWBARKTOWN_LYRA
 	applymovement PLAYER, Movement_PlayerOrLyraEntersLab_NBT
 	stopfollow
@@ -154,10 +133,7 @@ NewBarkTown_LyraFinalTrigger:
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye2_NBT
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	opentext
-	writetext Text_LyraGoodbye1
-	waitbutton
-	closetext
+	showtext Text_LyraGoodbye1
 	setevent EVENT_LYRA_NEW_BARK_TOWN
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	winlosstext Text_LyraGoodbyeWin, Text_LyraGoodbyeLoss
@@ -182,10 +158,7 @@ NewBarkTown_LyraFinalTrigger:
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	opentext
-	writetext Text_LyraGoodbye2
-	waitbutton
-	closetext
+	showtext Text_LyraGoodbye2
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye3_NBT
 	disappear NEWBARKTOWN_LYRA
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
@@ -203,28 +176,16 @@ NewBarkTownTeacherScript:
 	iftrue .TellMomYoureLeaving
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .MonIsAdorable
-	writetext Text_RefreshingBreeze
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RefreshingBreeze
 
 .MonIsAdorable:
-	writetext Text_YourMonIsAdorable
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_YourMonIsAdorable
 
 .TellMomYoureLeaving:
-	writetext Text_TellMomIfLeaving
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_TellMomIfLeaving
 
 .CallMom:
-	writetext Text_CallMomOnGear
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CallMomOnGear
 
 NewBarkTownYoungsterScript:
 	jumptextfaceplayer Text_GearIsImpressive
@@ -233,15 +194,9 @@ NewBarkTownFisherScript:
 	jumptextfaceplayer Text_ElmDiscoveredNewMon
 
 NewBarkTownSilverScript:
-	opentext
-	writetext NewBarkTownRivalText1
-	waitbutton
-	closetext
+	showtext NewBarkTownRivalText1
 	spriteface NEWBARKTOWN_SILVER, LEFT
-	opentext
-	writetext NewBarkTownRivalText2
-	waitbutton
-	closetext
+	showtext NewBarkTownRivalText2
 	follow PLAYER, NEWBARKTOWN_SILVER
 	applymovement PLAYER, Movement_SilverPushesYouAway_NBT
 	stopfollow

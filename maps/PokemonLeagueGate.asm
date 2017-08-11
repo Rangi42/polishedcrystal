@@ -37,10 +37,7 @@ PokemonLeagueGateXYTriggerScript1:
 OfficerScript_0x9ba03:
 	faceplayer
 UnknownScript_0x9ba04:
-	opentext
-	writetext UnknownText_0x9ba29
-	waitbutton
-	closetext
+	showtext UnknownText_0x9ba29
 	dotrigger $1
 	end
 

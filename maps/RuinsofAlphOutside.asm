@@ -57,19 +57,13 @@ const_value set 2
 RuinsofAlphOutsideTrigger0:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	iffalse .End
-	opentext
-	writetext RuinsofAlphScientistClimax1Text
-	waitbutton
-	closetext
+	showtext RuinsofAlphScientistClimax1Text
 	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
 	stopfollow
 	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
 	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
-	opentext
-	writetext RuinsofAlphScientistClimax2Text
-	waitbutton
-	closetext
+	showtext RuinsofAlphScientistClimax2Text
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
 	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
@@ -119,10 +113,7 @@ UnknownScript_0x5803a:
 ScientistScript_0x58043:
 	faceplayer
 UnknownScript_0x58044:
-	opentext
-	writetext UnknownText_0x580c7
-	waitbutton
-	closetext
+	showtext UnknownText_0x580c7
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, MovementData_0x580ba
@@ -142,25 +133,14 @@ FisherScript_0x58061:
 	writetext UnknownText_0x583a4
 	buttonsound
 .Next:
-	writetext UnknownText_0x58420
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x58420
 
 YoungsterScript_0x58076:
 	faceplayer
-	opentext
-	writetext UnknownText_0x58449
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58449
 
 YoungsterScript_0x5807e:
-	faceplayer
-	opentext
-	writetext UnknownText_0x5848e
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x5848e
 	spriteface RUINSOFALPHOUTSIDE_YOUNGSTER3, UP
 	end
 
@@ -169,22 +149,14 @@ TrainerPsychicNathan:
 
 PsychicNathanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5830e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5830e
 
 TrainerSuperNerdStan:
 	trainer EVENT_BEAT_SUPER_NERD_STAN, SUPER_NERD, STAN, UnknownText_0x581e5, UnknownText_0x58217, 0, UnknownScript_0x580a9
 
 UnknownScript_0x580a9:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x58250
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58250
 
 MapRuinsofAlphOutsideSignpost0Script:
 	jumptext UnknownText_0x58325

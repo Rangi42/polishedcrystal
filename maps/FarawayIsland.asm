@@ -49,10 +49,7 @@ FarawayIslandSetupLawrence:
 FarawayIsland_PlayerArrives:
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive1MovementData
 	applymovement PLAYER, FarawayIslandPlayerArriveMovementData
-	opentext
-	writetext SeagallopFerryFarawayIslandRefusedText
-	waitbutton
-	closetext
+	showtext SeagallopFerryFarawayIslandRefusedText
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive2MovementData
 	dotrigger $0
 	end
@@ -82,10 +79,7 @@ FarawayIslandSailorScript:
 	end
 
 .RefuseFerry
-	writetext SeagallopFerryFarawayIslandRefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SeagallopFerryFarawayIslandRefusedText
 
 FarawayIslandLawrenceScript:
 	special Special_FadeOutMusic
@@ -108,10 +102,7 @@ FarawayIslandLawrenceScript:
 	faceplayer
 	special DeleteSavedMusic
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext FarawayIslandLawrenceText2
-	waitbutton
-	closetext
+	showtext FarawayIslandLawrenceText2
 	pause 15
 	playsound SFX_WARP_TO
 	special Special_FadeBlackQuickly

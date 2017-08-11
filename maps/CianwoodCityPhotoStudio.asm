@@ -49,34 +49,19 @@ FishingGuruScript_0x9e0e0:
 	writetext PhotoStudioPrestoText
 	special PlayCurMonCry
 	waitbutton
-	writetext PhotoStudioComeAgainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PhotoStudioComeAgainText
 
 .AlreadyTookPhoto:
-	writetext PhotoStudioAlreadyDoneText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PhotoStudioAlreadyDoneText
 
 .RefusedPhoto:
-	writetext PhotoStudioRefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PhotoStudioRefusedText
 
 .NoPicture:
-	writetext PhotoStudioNoPictureText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PhotoStudioNoPictureText
 
 .EggPicture:
-	writetext PhotoStudioEggPictureText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PhotoStudioEggPictureText
 
 PhotoStudioGreetingText:
 	text "I am Cameron"

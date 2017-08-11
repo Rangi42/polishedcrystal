@@ -44,22 +44,13 @@ ManiaScript:
 .alreadyhavebuffy
 	checkflag ENGINE_WOBBUFFET_GIVEN
 	iffalse .returnbuffy
-	writetext ManiaText_TakeCareOfWobbuffet
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_TakeCareOfWobbuffet
 
 .partyfull
-	writetext ManiaText_PartyFull
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_PartyFull
 
 .refusetotakebuffy
-	writetext ManiaText_IfHeComesBack
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_IfHeComesBack
 
 .returnbuffy
 	writetext ManiaText_CanIHaveMyMonBack
@@ -77,10 +68,7 @@ ManiaScript:
 	end
 
 .wrong
-	writetext ManiaText_WobbuffetNotThere
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_WobbuffetNotThere
 
 .superhappy
 	writetext ManiaText_WobbuffetLikesYou
@@ -90,22 +78,13 @@ ManiaScript:
 	end
 
 .refused
-	writetext ManiaText_SameAsBeingRobbed
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_SameAsBeingRobbed
 
 .nothingleft
-	writetext ManiaText_WobbuffetIsYourLastMon
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_WobbuffetIsYourLastMon
 
 .default_postevent
-	writetext ManiaText_HappinessSpeech
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ManiaText_HappinessSpeech
 
 ManiaText_AskLookAfterWobbuffet:
 	text "I, I'm in shock!"

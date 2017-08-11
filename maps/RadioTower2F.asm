@@ -45,16 +45,10 @@ TeacherScript_0x5d701:
 	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue .Rockets
-	writetext UnknownText_0x5d956
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d956
 
 .Rockets:
-	writetext UnknownText_0x5d983
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d983
 
 RadioTowerJigglypuff:
 	opentext
@@ -75,44 +69,28 @@ TrainerGruntM4:
 
 GruntM4Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5db07
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5db07
 
 TrainerGruntM5:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_5, GRUNTM, 5, GruntM5SeenText, GruntM5BeatenText, 0, GruntM5Script
 
 GruntM5Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5db99
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5db99
 
 TrainerGruntM6:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_6, GRUNTM, 6, GruntM6SeenText, GruntM6BeatenText, 0, GruntM6Script
 
 GruntM6Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5dc00
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5dc00
 
 TrainerGruntF2:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_2, GRUNTF, 2, GruntF2SeenText, GruntF2BeatenText, 0, GruntF2Script
 
 GruntF2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5dcd0
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5dcd0
 
 Buena:
 	faceplayer
@@ -144,19 +122,13 @@ Buena:
 	applymovement PLAYER, MovementData_0x5d921
 UnknownScript_0x5d7be:
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext UnknownText_0x5dedd
-	waitbutton
-	closetext
+	showtext UnknownText_0x5dedd
 	spriteface RADIOTOWER2F_BUENA, DOWN
 	refreshscreen
 	special SpecialBuenasPassword
 	closetext
 	iffalse UnknownScript_0x5d845
-	opentext
-	writetext UnknownText_0x5dfc1
-	waitbutton
-	closetext
+	showtext UnknownText_0x5dfc1
 	checkcode VAR_BLUECARDBALANCE
 	addvar $1
 	writevarcode VAR_BLUECARDBALANCE
@@ -165,10 +137,7 @@ UnknownScript_0x5d7be:
 	setflag ENGINE_BUENAS_PASSWORD_2
 	pause 20
 	spriteface RADIOTOWER2F_BUENA, RIGHT
-	opentext
-	writetext UnknownText_0x5e054
-	waitbutton
-	closetext
+	showtext UnknownText_0x5e054
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
@@ -218,16 +187,10 @@ UnknownScript_0x5d83f:
 
 UnknownScript_0x5d845:
 	setflag ENGINE_BUENAS_PASSWORD_2
-	opentext
-	writetext UnknownText_0x5e01c
-	waitbutton
-	closetext
+	showtext UnknownText_0x5e01c
 	spriteface RADIOTOWER2F_BUENA, RIGHT
 	pause 20
-	opentext
-	writetext UnknownText_0x5e054
-	waitbutton
-	closetext
+	showtext UnknownText_0x5e054
 	spriteface RADIOTOWER2F_BUENA, RIGHT
 	special Special_FadeOutMusic
 	pause 20
@@ -235,10 +198,7 @@ UnknownScript_0x5d845:
 	end
 
 UnknownScript_0x5d865:
-	writetext UnknownText_0x5e0c2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5e0c2
 
 UnknownScript_0x5d86b:
 	writetext UnknownText_0x5e192

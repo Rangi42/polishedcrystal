@@ -31,15 +31,9 @@ const_value set 2
 
 RuinsofAlphSinjohChamberSignpost:
 	unowntypeface
-	opentext
-	writetext RuinsofAlphSinjohChamberMystriText
-	waitbutton
-	closetext
+	showtext RuinsofAlphSinjohChamberMystriText
 	restoretypeface
-	opentext
-	writetext RuinsofAlphSinjohChamberSurpriseText
-	waitbutton
-	closetext
+	showtext RuinsofAlphSinjohChamberSurpriseText
 	special Special_FadeOutMusic
 	pause 30
 	playsound SFX_INTRO_UNOWN_3

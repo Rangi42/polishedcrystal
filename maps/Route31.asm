@@ -87,16 +87,10 @@ TrainerCooltrainermFinch:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I am a trainer who"
@@ -343,10 +337,7 @@ Route31MailRecipientScript:
 	iftrue .TutorSleepTalk
 	checkevent EVENT_GOT_KENYA
 	iftrue .TryGiveKenya
-	writetext Text_Route31SleepyMan
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31SleepyMan
 
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
@@ -374,47 +365,26 @@ Route31MailRecipientScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route31TutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31TutorRefused
 
 .NoSilverLeaf
-	writetext Text_Route31TutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31TutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route31TutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31TutorTaught
 
 .WrongMail:
-	writetext Text_Route31WrongMail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31WrongMail
 
 .NoMail:
-	writetext Text_Route31MissingMail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31MissingMail
 
 .Refused:
-	writetext Text_Route31DeclinedToHandOverMail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31DeclinedToHandOverMail
 
 .LastMon:
-	writetext Text_Route31CantTakeLastMon
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31CantTakeLastMon
 
 ReceivedFarfetch_dMailText:
 	db   "Dark Cave leads"

@@ -33,11 +33,7 @@ TrainerSightseermGareth:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I just picked up"
@@ -65,11 +61,7 @@ TrainerAromaLadyHolly:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I am at one with"
@@ -145,34 +137,19 @@ WarmBeachLassScript:
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .BoughtShellBell:
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .NoBuy:
-	writetext .Text4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text4
 
 .NotEnoughMoney:
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .NoRoom:
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text6
 
 .Text1:
 	text "I collect shells"

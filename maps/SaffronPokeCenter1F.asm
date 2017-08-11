@@ -17,13 +17,10 @@ SaffronPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalSabrinaScript
 
 .PersonEvents: db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x18a47d, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x18a480, -1
 	person_event SPRITE_FISHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18a48c, -1
 	person_event SPRITE_YOUNGSTER, 4, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x18a4a0, -1
-
-NurseScript_0x18a47d:
-	jumpstd pokecenternurse
 
 TeacherScript_0x18a480:
 	jumptextfaceplayer UnknownText_0x18a4a3
@@ -33,16 +30,10 @@ FisherScript_0x18a48c:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .SolvedKantoPowerCrisis
-	writetext UnknownText_0x18a5d3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18a5d3
 
 .SolvedKantoPowerCrisis:
-	writetext UnknownText_0x18a62e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18a62e
 
 YoungsterScript_0x18a4a0:
 	jumptextfaceplayer UnknownText_0x18a6c5

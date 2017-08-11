@@ -64,32 +64,20 @@ LassScript_0x19932a:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x199338
-	writetext UnknownText_0x19938d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19938d
 
 UnknownScript_0x199338:
-	writetext UnknownText_0x19940d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19940d
 
 PokefanMScript_0x19933e:
 	faceplayer
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x19934c
-	writetext UnknownText_0x199460
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x199460
 
 UnknownScript_0x19934c:
-	writetext UnknownText_0x1994ae
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1994ae
 
 CooltrainerMScript_0x199352:
 	jumptextfaceplayer UnknownText_0x1994fe
@@ -102,16 +90,10 @@ FisherScript_0x199358:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x199366
-	writetext UnknownText_0x1995fc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1995fc
 
 UnknownScript_0x199366:
-	writetext UnknownText_0x19964b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19964b
 
 YoungsterScript_0x19936c:
 	jumptextfaceplayer UnknownText_0x1996a5

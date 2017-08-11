@@ -30,10 +30,7 @@ Celebrity:
 	closetext
 	end
 .AlreadyGotItem:
-	writetext CelebrityText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CelebrityText2
 
 CelebritysSkarmory:
 	opentext

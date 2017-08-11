@@ -64,54 +64,34 @@ BrockScript_0x1a2864:
 	buttonsound
 	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
-	writetext BrockOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BrockOutroText
 
 BrockAfterTMScript:
-	writetext UnknownText_0x1a2ada
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a2ada
 
 TrainerCamperJerry:
 	trainer EVENT_BEAT_CAMPER_JERRY, CAMPER, JERRY, CamperJerrySeenText, CamperJerryBeatenText, 0, CamperJerryScript
 
 CamperJerryScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a2c0f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a2c0f
 
 TrainerHikerEdwin:
 	trainer EVENT_BEAT_HIKER_EDWIN, HIKER, EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText, 0, HikerEdwinScript
 
 HikerEdwinScript:
 	end_if_just_battled
-	opentext
-	writetext HikerEdwinAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HikerEdwinAfterText
 
 PewterGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_BROCK
 	iftrue .PewterGymGuyWinScript
-	writetext PewterGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PewterGymGuyText
 
 .PewterGymGuyWinScript:
-	writetext PewterGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PewterGymGuyWinText
 
 PewterGymStatue:
 	trainertotext BROCK, 1, $1

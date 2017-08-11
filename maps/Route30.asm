@@ -212,38 +212,24 @@ TrainerYoungsterMikey:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext YoungsterMikeyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext YoungsterMikeyAfterText
 
 TrainerBug_catcherDon:
 	trainer EVENT_BEAT_BUG_CATCHER_DON, BUG_CATCHER, DON, Bug_catcherDonSeenText, Bug_catcherDonBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext Bug_catcherDonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Bug_catcherDonAfterText
 
 Route30YoungsterScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .CompletedEggQuest
-	writetext Route30YoungsterText_DirectionsToMrPokemonsHouse
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route30YoungsterText_DirectionsToMrPokemonsHouse
 
 .CompletedEggQuest:
-	writetext Route30YoungsterText_EveryoneIsBattling
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route30YoungsterText_EveryoneIsBattling
 
 Route30CooltrainerFScript:
 	jumptextfaceplayer Route30CooltrainerFText

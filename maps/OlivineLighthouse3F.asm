@@ -83,16 +83,10 @@ OlivineLighthouse3FBattleGirlEmy:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "As a Battle Girl,"
@@ -168,33 +162,21 @@ TrainerBird_keeperTheo:
 
 Bird_keeperTheoScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b2df
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5b2df
 
 TrainerGentlemanPreston:
 	trainer EVENT_BEAT_GENTLEMAN_PRESTON, GENTLEMAN, PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText, 0, GentlemanPrestonScript
 
 GentlemanPrestonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b457
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5b457
 
 TrainerSailorTerrell:
 	trainer EVENT_BEAT_SAILOR_TERRELL, SAILOR, TERRELL, SailorTerrellSeenText, SailorTerrellBeatenText, 0, SailorTerrellScript
 
 SailorTerrellScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b384
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5b384
 
 Bird_keeperTheoSeenText:
 	text "Why are you here?"

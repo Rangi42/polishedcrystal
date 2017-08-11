@@ -34,11 +34,7 @@ TrainerArtistRin:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm painting the"
@@ -69,11 +65,7 @@ TrainerSwimmerfMarina:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "If you were stran-"
@@ -103,11 +95,7 @@ TrainerFisherDallas:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Gah! Not another"
@@ -135,11 +123,7 @@ TrainerSightseerfPilar:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "¡Hola! He venido"
@@ -171,11 +155,7 @@ TrainerSightseersCyandvi1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Cy: TODO"
@@ -194,11 +174,7 @@ TrainerSightseersCyandvi2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Vi: TODO"
@@ -217,11 +193,7 @@ TrainerSwimmermAshe:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Swimming? Me?"

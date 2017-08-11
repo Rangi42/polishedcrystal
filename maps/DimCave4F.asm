@@ -61,11 +61,7 @@ DimCave4FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	jumptext .Text
 
 .Text:
 	text "The boulder fell"
@@ -77,11 +73,7 @@ TrainerScientistJoseph:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm studying the"
@@ -113,11 +105,7 @@ TrainerScientistNigel:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "How do we get pow-"

@@ -66,10 +66,7 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	spriteface PLAYER, DOWN
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext CinnabarVolcanoB2FLawrenceSpeechText
-	waitbutton
-	closetext
+	showtext CinnabarVolcanoB2FLawrenceSpeechText
 	spriteface CINNABARVOLCANOB2F_LAWRENCE, UP
 	opentext
 	writetext CinnabarVolcanoB2FLawrenceEscapeRopeText

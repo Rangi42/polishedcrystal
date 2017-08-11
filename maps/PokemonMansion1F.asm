@@ -36,22 +36,14 @@ TrainerBurglarPete:
 
 BurglarPeteScript:
 	end_if_just_battled
-	opentext
-	writetext BurglarPeteAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BurglarPeteAfterText
 
 TrainerBurglarLouis:
 	trainer EVENT_BEAT_BURGLAR_LOUIS, BURGLAR, LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText, 0, BurglarLouisScript
 
 BurglarLouisScript:
 	end_if_just_battled
-	opentext
-	writetext BurglarLouisAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BurglarLouisAfterText
 
 PokemonMansion1FHiddenFullRestore:
 	dwb EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE
@@ -76,10 +68,7 @@ PokemonMansion1FHiddenPPUp:
 	itemtotext PP_UP, $0
 	writetext PokemonMansion1FFoundPPUpText
 	buttonsound
-	writetext PokemonMansion1FNoRoomForPPUpText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PokemonMansion1FNoRoomForPPUpText
 
 PokemonMansion1FMewtwoStatue:
 	jumptext PokemonMansion1FMewtwoStatueText

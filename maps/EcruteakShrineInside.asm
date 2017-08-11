@@ -83,22 +83,13 @@ EcruteakShrineInsideReiScript:
 	opentext
 
 .ReiDone
-	writetext EcruteakShrineInsideReiComeAgainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EcruteakShrineInsideReiComeAgainText
 
 .ReiCancel
-	writetext EcruteakShrineInsideReiCancelText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EcruteakShrineInsideReiCancelText
 
 .EggBlessing
-	writetext EcruteakShrineInsideReiBlessEggText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EcruteakShrineInsideReiBlessEggText
 
 .ReiMenuDataHeader:
 	db $40 ; flags

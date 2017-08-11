@@ -68,33 +68,21 @@ TrainerBugManiacLou:
 
 BugManiacLouScript:
 	end_if_just_battled
-	opentext
-	writetext BugManiacLouAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BugManiacLouAfterText
 
 TrainerSchoolgirlEliza:
 	trainer EVENT_BEAT_SCHOOLGIRL_ELIZA, SCHOOLGIRL, ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText, 0, SchoolgirlElizaScript
 
 SchoolgirlElizaScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlElizaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolgirlElizaAfterText
 
 TrainerSchoolboyJohnny:
 	trainer EVENT_BEAT_SCHOOLBOY_JOHNNY, SCHOOLBOY, JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, SchoolboyJohnnyScript
 
 SchoolboyJohnnyScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolboyJohnnyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolboyJohnnyAfterText
 
 TeacherScript_0x5c029:
 	jumptextfaceplayer UnknownText_0x5c3bc
@@ -109,11 +97,7 @@ NationalParkPersian:
 	end
 
 GameboyKidScript_0x5c037:
-	faceplayer
-	opentext
-	writetext UnknownText_0x5c42a
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x5c42a
 	spriteface NATIONALPARK_GAMEBOY_KID, DOWN
 	end
 
@@ -239,11 +223,7 @@ TrainerPokefanmWilliam:
 
 PokefanmWilliamScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5c645
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c645
 
 TrainerPokefanfBeverly1:
 	trainer EVENT_BEAT_POKEFANF_BEVERLY, POKEFANF, BEVERLY1, PokefanfBeverly1SeenText, PokefanfBeverly1BeatenText, 0, PokefanfBeverly1Script
@@ -287,10 +267,7 @@ UnknownScript_0x5c186:
 	jump UnknownScript_0x5c1ab
 
 UnknownScript_0x5c189:
-	writetext UnknownText_0x5c68a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5c68a
 
 UnknownScript_0x5c18f:
 	jumpstd asknumber1f
@@ -329,11 +306,7 @@ TrainerLassKrise:
 
 LassKriseScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5c71d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c71d
 
 MapNationalParkSignpost0Script:
 	jumptext UnknownText_0x5c750

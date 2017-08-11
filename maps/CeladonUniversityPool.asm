@@ -71,16 +71,10 @@ CeladonUniversityPoolFergusScript:
 	end
 
 .NoBattle:
-	writetext .NoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoBattleText
 
 .NotFinished:
-	writetext .AfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText1
 
 .IntroText1:
 	text "The name's Fergus!"

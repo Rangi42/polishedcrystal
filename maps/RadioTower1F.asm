@@ -35,16 +35,10 @@ ReceptionistScript_0x5cd29:
 	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue UnknownScript_0x5cd37
-	writetext UnknownText_0x5ce77
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5ce77
 
 UnknownScript_0x5cd37:
-	writetext UnknownText_0x5ce81
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5ce81
 
 ReceptionistScript_0x5cd3d:
 	faceplayer
@@ -89,10 +83,7 @@ ReceptionistScript_0x5cd3d:
 	jump .NoPrize
 
 .GameOver:
-	writetext UnknownText_0x5cf7e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5cf7e
 
 .FirstPlace:
 	writetext WonFirstPlaceText
@@ -139,16 +130,10 @@ ReceptionistScript_0x5cd3d:
 	jump .GameOver
 
 .NoPrize:
-	writetext UnknownText_0x5d0c0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d0c0
 
 .BagFull:
-	writetext UnknownText_0x5d0e6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d0e6
 
 CooltrainerFScript_0x5cdd5:
 	faceplayer
@@ -196,10 +181,7 @@ CooltrainerFScript_0x5cdd5:
 	showemote EMOTE_SHOCK, RADIOTOWER1F_WHITNEY, 15
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyApproachesMovementData
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext RadioTower1FWhitney2Text
-	waitbutton
-	closetext
+	showtext RadioTower1FWhitney2Text
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves1MovementData
 	spriteface PLAYER, LEFT
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
@@ -207,10 +189,7 @@ CooltrainerFScript_0x5cdd5:
 	end
 
 UnknownScript_0x5ce2d:
-	writetext UnknownText_0x5d3e5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d3e5
 
 RadioCardText:
 	db "Radio Card@"
@@ -221,16 +200,10 @@ UnknownScript_0x5ce3e:
 
 UnknownScript_0x5ce42:
 	playsound SFX_WRONG
-	writetext UnknownText_0x5d409
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d409
 
 UnknownScript_0x5ce4b:
-	writetext UnknownText_0x5d443
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d443
 
 LassScript_0x5ce51:
 	jumptextfaceplayer UnknownText_0x5d476
@@ -243,18 +216,10 @@ TrainerGruntM3:
 
 GruntM3Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5d5a2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5d5a2
 
 RadioTower1FWhitneyScript:
-	faceplayer
-	opentext
-	writetext RadioTower1FWhitney1Text
-	waitbutton
-	closetext
+	showtextfaceplayer RadioTower1FWhitney1Text
 	spriteface RADIOTOWER1F_WHITNEY, LEFT
 	end
 

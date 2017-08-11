@@ -71,10 +71,7 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach1
 	spriteface PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext Route10NorthLawrenceGreetingText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceGreetingText
 	follow ROUTE10_LAWRENCE, PLAYER
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceShowZapdos
 	stopfollow
@@ -104,10 +101,7 @@ Route10NorthLawrenceEncounter1Script:
 .Finish
 	spriteface ROUTE10_LAWRENCE, LEFT
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext Route10NorthLawrenceZapdosText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceZapdosText
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
 	spriteface ROUTE10_LAWRENCE, RIGHT
@@ -116,10 +110,7 @@ Route10NorthLawrenceEncounter1Script:
 	cry ZAPDOS
 	waitsfx
 	spriteface ROUTE10_LAWRENCE, DOWN
-	opentext
-	writetext Route10NorthLawrenceFlyText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -175,10 +166,7 @@ Route10NorthLawrenceEncounter2Script:
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext Route10NorthLawrenceSpeechText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceSpeechText
 	pause 15
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
@@ -188,10 +176,7 @@ Route10NorthLawrenceEncounter2Script:
 	cry ZAPDOS
 	waitsfx
 	spriteface ROUTE10_LAWRENCE, DOWN
-	opentext
-	writetext Route10NorthLawrenceFlyText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes

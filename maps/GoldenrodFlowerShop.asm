@@ -46,11 +46,7 @@ FlowerShopTeacherScript:
 
 .Lalala:
 	spriteface GOLDENRODFLOWERSHOP_TEACHER, LEFT
-	opentext
-	writetext UnknownText_0x5552e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5552e
 
 .GotSquirtbottle:
 	jumptextfaceplayer UnknownText_0x5550d
@@ -93,28 +89,16 @@ FlowerShopTeacherScript:
 	waitsfx
 	playsound SFX_TRANSACTION
 	itemnotify
-	writetext BoughtMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BoughtMulchText
 
 .Cancel:
-	writetext DontBuyMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext DontBuyMulchText
 
 .NotEnoughMoney:
-	writetext NotEnoughMulchMoneyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NotEnoughMulchMoneyText
 
 .BagFull:
-	writetext NoRoomForMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoRoomForMulchText
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -146,24 +130,15 @@ FlowerShopFloriaScript:
 	end
 
 .GotSquirtbottle:
-	writetext UnknownText_0x555e6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x555e6
 
 .FoughtSudowoodo:
 	checkitem MULCH
 	iftrue .DescribeMulch
-	writetext UnknownText_0x55604
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x55604
 
 .DescribeMulch:
-	writetext DescribeMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext DescribeMulchText
 
 FlowerShopGentlemanScript:
 	jumptextfaceplayer FlowerShopGentlemanText

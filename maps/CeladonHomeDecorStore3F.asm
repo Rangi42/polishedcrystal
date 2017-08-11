@@ -121,28 +121,16 @@ CeladonHomeDecorStore3FClerk2Script:
 	waitbutton
 	writetext BlueCarpetSentText
 	waitbutton
-	writetext CeladonHomeDecorStore3FClerk2YesText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FClerk2YesText
 
 .Sold:
-	writetext CeladonHomeDecorStore3FClerk2Text
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FClerk2Text
 
 .Refused:
-	writetext CeladonHomeDecorStore3FClerk2NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 
 .NotEnoughMoney:
-	writetext CeladonHomeDecorStore3FNoMoneyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText
 
 CeladonHomeDecorStore3FYoungsterScript:
 	jumptextfaceplayer CeladonHomeDecorStore3FYoungsterText

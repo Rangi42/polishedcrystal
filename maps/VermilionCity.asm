@@ -62,10 +62,7 @@ LawrenceLeftIntroScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	opentext
-	writetext LawrenceOverheardText
-	waitbutton
-	closetext
+	showtext LawrenceOverheardText
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachLeftMovementData
 	playsound SFX_TACKLE
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpLeftMovementData
@@ -74,10 +71,7 @@ LawrenceLeftIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
 	spriteface PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext LawrenceIntroText
-	waitbutton
-	closetext
+	showtext LawrenceIntroText
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
 	playsound SFX_EXIT_BUILDING
@@ -93,10 +87,7 @@ LawrenceRightIntroScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	opentext
-	writetext LawrenceOverheardText
-	waitbutton
-	closetext
+	showtext LawrenceOverheardText
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachRightMovementData
 	playsound SFX_TACKLE
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpRightMovementData
@@ -105,10 +96,7 @@ LawrenceRightIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext LawrenceIntroText
-	waitbutton
-	closetext
+	showtext LawrenceIntroText
 	spriteface PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
 	playsound SFX_EXIT_BUILDING
@@ -176,11 +164,7 @@ VermilionMachop:
 	waitbutton
 	closetext
 	earthquake 30
-	opentext
-	writetext VermilionMachopText2
-	waitbutton
-	closetext
-	end
+	jumptext VermilionMachopText2
 
 RockerScript_0x1aa99b:
 	jumptextfaceplayer UnknownText_0x1aab1a
@@ -195,10 +179,7 @@ VermilionSnorlax:
 	opentext
 	special SpecialSnorlaxAwake
 	iftrue UnknownScript_0x1aa9ab
-	writetext UnknownText_0x1aab64
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1aab64
 
 UnknownScript_0x1aa9ab:
 	writetext UnknownText_0x1aab84
@@ -222,22 +203,13 @@ VermilionGymBadgeGuy:
 	if_equal 16, .AllBadges
 	if_greater_than 13, .MostBadges
 	if_greater_than 9, .SomeBadges
-	writetext UnknownText_0x1aabc8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1aabc8
 
 .SomeBadges:
-	writetext UnknownText_0x1aac2b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1aac2b
 
 .MostBadges:
-	writetext UnknownText_0x1aac88
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1aac88
 
 .AllBadges:
 	writetext UnknownText_0x1aacf3
@@ -271,24 +243,15 @@ VermilionCityTutorVoltSwitchScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_VermilionCityTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_VermilionCityTutorRefused
 
 .NoSilverLeaf
 	waitbutton
-	writetext Text_VermilionCityTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_VermilionCityTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_VermilionCityTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_VermilionCityTutorTaught
 
 VermilionCitySign:
 	jumptext VermilionCitySignText

@@ -34,10 +34,7 @@ VioletGymTrigger0:
 VioletGymFalknerAwayScript:
 	showemote EMOTE_SHOCK, VIOLETGYM_GYM_GUY2, 15
 	applymovement VIOLETGYM_GYM_GUY2, VioletGymMovementData_GymGuyStepDown
-	opentext
-	writetext VioletGymGuyFalknerAwayText
-	waitbutton
-	closetext
+	showtext VioletGymGuyFalknerAwayText
 	spriteface PLAYER, DOWN
 	pause 10
 	special FadeOutPalettes
@@ -75,54 +72,34 @@ FalknerScript_0x683c2:
 	buttonsound
 	verbosegivetmhm TM_ROOST
 	setevent EVENT_GOT_TM31_ROOST
-	writetext UnknownText_0x68648
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x68648
 
 .SpeechAfterTM:
-	writetext UnknownText_0x68735
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x68735
 
 TrainerBird_keeperRod:
 	trainer EVENT_BEAT_BIRD_KEEPER_ROD, BIRD_KEEPER, ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText, 0, Bird_keeperRodScript
 
 Bird_keeperRodScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x68837
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x68837
 
 TrainerBird_keeperAbe:
 	trainer EVENT_BEAT_BIRD_KEEPER_ABE, BIRD_KEEPER, ABE, Bird_keeperAbeSeenText, Bird_keeperAbeBeatenText, 0, Bird_keeperAbeScript
 
 Bird_keeperAbeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x688c7
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x688c7
 
 VioletGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .VioletGymGuyWinScript
-	writetext VioletGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext VioletGymGuyText
 
 .VioletGymGuyWinScript:
-	writetext VioletGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext VioletGymGuyWinText
 
 VioletGymStatue:
 	trainertotext FALKNER, 1, $1

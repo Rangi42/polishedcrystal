@@ -41,11 +41,7 @@ TrainerBreederTheresa:
 
 BreederTheresaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cc87
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19cc87
 
 TrainerJugglerIrwin:
 	trainer EVENT_BEAT_JUGGLER_IRWIN, JUGGLER, IRWIN1, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, JugglerIrwin1Script
@@ -107,44 +103,28 @@ TrainerCamperIvan:
 
 CamperIvanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cac4
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19cac4
 
 TrainerCoupleGailandeli1:
 	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI1, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText, 0, CoupleGailandeli1Script
 
 CoupleGailandeli1Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleGailandeli1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext CoupleGailandeli1AfterText
 
 TrainerCoupleGailandeli2:
 	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI2, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText, 0, CoupleGailandeli2Script
 
 CoupleGailandeli2Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleGailandeli2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext CoupleGailandeli2AfterText
 
 TrainerPicnickerKim:
 	trainer EVENT_BEAT_PICNICKER_KIM, PICNICKER, KIM, PicnickerKimSeenText, PicnickerKimBeatenText, 0, PicnickerKimScript
 
 PicnickerKimScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cc21
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19cc21
 
 TrainerBug_catcherArnie1:
 	trainer EVENT_BEAT_BUG_CATCHER_ARNIE, BUG_CATCHER, ARNIE1, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, Bug_catcherArnie1Script
@@ -238,21 +218,14 @@ UnknownScript_0x19c9bb:
 	end
 
 UnknownScript_0x19ca2f:
-	writetext UnknownText_0x19ce38
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19ce38
 
 TrainerFirebreatherWalt:
 	trainer EVENT_BEAT_FIREBREATHER_WALT, FIREBREATHER, WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText, 0, FirebreatherWaltScript
 
 FirebreatherWaltScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cebc
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19cebc
 
 OfficermScript_0x19ca49:
 	faceplayer
@@ -275,16 +248,10 @@ OfficermScript_0x19ca49:
 	end
 
 UnknownScript_0x19ca6d:
-	writetext UnknownText_0x19cf0f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19cf0f
 
 UnknownScript_0x19ca73:
-	writetext UnknownText_0x19cf56
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19cf56
 
 Route35Sign:
 	jumptext Route35SignText

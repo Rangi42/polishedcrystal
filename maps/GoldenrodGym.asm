@@ -33,10 +33,7 @@ WhitneyScript_0x5400c:
 	faceplayer
 	checkevent EVENT_BEAT_WHITNEY
 	iftrue .FightDone
-	opentext
-	writetext UnknownText_0x54122
-	waitbutton
-	closetext
+	showtext UnknownText_0x54122
 	winlosstext UnknownText_0x541a5, 0
 	loadtrainer WHITNEY, 1
 	startbattle
@@ -52,10 +49,7 @@ WhitneyScript_0x5400c:
 	opentext
 	checkevent EVENT_MADE_WHITNEY_CRY
 	iffalse .StoppedCrying
-	writetext UnknownText_0x541f4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x541f4
 
 .StoppedCrying:
 	checkevent EVENT_GOT_TM45_ATTRACT
@@ -74,36 +68,23 @@ UnknownScript_0x54064:
 	buttonsound
 	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
-	writetext UnknownText_0x54302
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54302
 
 UnknownScript_0x54077:
-	writetext UnknownText_0x54360
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54360
 
 TrainerLassCarrie:
 	trainer EVENT_BEAT_LASS_CARRIE, LASS, CARRIE, LassCarrieSeenText, LassCarrieBeatenText, 0, LassCarrieScript
 
 LassCarrieScript:
 	end_if_just_battled
-	opentext
-	writetext LassCarrieOWText
-	waitbutton
-	closetext
-	end
+	jumptext LassCarrieOWText
 
 WhitneyCriesScript:
 	showemote EMOTE_SHOCK, GOLDENRODGYM_LASS2, 15
 	applymovement GOLDENRODGYM_LASS2, JoWalksUpMovement
 	spriteface PLAYER, DOWN
-	opentext
-	writetext JoWhitneyCriesText
-	waitbutton
-	closetext
+	showtext JoWhitneyCriesText
 	applymovement GOLDENRODGYM_LASS2, JoWalksAwayMovement
 	dotrigger $0
 	clearevent EVENT_MADE_WHITNEY_CRY
@@ -114,61 +95,37 @@ TrainerSrandjrJoandcath1:
 
 SrandjrJoandcath1Script:
 	end_if_just_battled
-	opentext
-	writetext SrandjrJoandcath1OWText
-	waitbutton
-	closetext
-	end
+	jumptext SrandjrJoandcath1OWText
 
 TrainerSrandjrJoandcath2:
 	trainer EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SR_AND_JR, JOANDCATH2, SrandjrJoandcath2SeenText, SrandjrJoandcath2BeatenText, 0, SrandjrJoandcath2Script
 
 SrandjrJoandcath2Script:
 	end_if_just_battled
-	opentext
-	writetext SrandjrJoandcath2OWText
-	waitbutton
-	closetext
-	end
+	jumptext SrandjrJoandcath2OWText
 
 TrainerBeautyVictoria:
 	trainer EVENT_BEAT_BEAUTY_VICTORIA, BEAUTY, VICTORIA, BeautyVictoriaSeenText, BeautyVictoriaBeatenText, 0, BeautyVictoriaScript
 
 BeautyVictoriaScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyVictoriaOWText
-	waitbutton
-	closetext
-	end
+	jumptext BeautyVictoriaOWText
 
 TrainerBeautySamantha:
 	trainer EVENT_BEAT_BEAUTY_SAMANTHA, BEAUTY, SAMANTHA, BeautySamanthaSeenText, BeautySamanthaBeatenText, 0, BeautySamanthaScript
 
 BeautySamanthaScript:
 	end_if_just_battled
-	opentext
-	writetext BeautySamanthaOWText
-	waitbutton
-	closetext
-	end
+	jumptext BeautySamanthaOWText
 
 GoldenrodGymGuyScript:
 	faceplayer
 	checkevent EVENT_BEAT_WHITNEY
 	iftrue .GoldenrodGymGuyWinScript
-	opentext
-	writetext GoldenrodGymGuyText
-	waitbutton
-	closetext
-	end
+	jumptext GoldenrodGymGuyText
 
 .GoldenrodGymGuyWinScript:
-	opentext
-	writetext GoldenrodGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumptext GoldenrodGymGuyWinText
 
 GoldenrodGymStatue:
 	trainertotext WHITNEY, 1, $1

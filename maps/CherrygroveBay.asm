@@ -42,34 +42,21 @@ CherrygroveBayTutorEarthPowerScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_CherrygroveBayTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CherrygroveBayTutorRefused
 
 .NoSilverLeaf
-	writetext Text_CherrygroveBayTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CherrygroveBayTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_CherrygroveBayTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CherrygroveBayTutorTaught
 
 TrainerSwimmermThomas:
 	trainer EVENT_BEAT_SWIMMERM_THOMAS, SWIMMERM, THOMAS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Do you know how to"
@@ -92,11 +79,7 @@ TrainerSwimmerfSally:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I like this bay."
@@ -122,11 +105,7 @@ TrainerSwimmerfTara:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Ah, swimming amid"
@@ -153,11 +132,7 @@ TrainerHikerTony:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I hiked through"

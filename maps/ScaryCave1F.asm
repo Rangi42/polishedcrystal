@@ -77,10 +77,7 @@ ScaryCave1FMiraScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "I'm Mira…"
@@ -166,10 +163,7 @@ ScaryCave1FTutorSuckerPunchScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .QuestionText:
 	text "I'll teach you to"
@@ -189,10 +183,7 @@ ScaryCave1FTutorSuckerPunchScript:
 
 .NoSilverLeaf
 	waitbutton
-	writetext .NoSilverLeafText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoSilverLeafText
 
 .NoSilverLeafText:
 	text "No Silver Leaf?"
@@ -201,10 +192,7 @@ ScaryCave1FTutorSuckerPunchScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext .TaughtText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .TaughtText
 
 .TaughtText:
 	text "Now you can use"
@@ -233,11 +221,7 @@ TrainerRuin_maniacSmilte:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I'm on the edge of"
@@ -267,11 +251,7 @@ TrainerSuper_nerdMako:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "You can't beat me!"
@@ -297,11 +277,7 @@ TrainerCoupleJoeandjo1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Joe: A ghost!"
@@ -328,11 +304,7 @@ TrainerCoupleJoeandjo2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Jo: Eek! Hold me"
@@ -358,11 +330,7 @@ TrainerHex_maniacBethany:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "BOO!"
@@ -384,11 +352,7 @@ TrainerScientistPiotr:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Do you know why"

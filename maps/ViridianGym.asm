@@ -56,98 +56,62 @@ BlueScript_0x9aa26:
 	buttonsound
 	verbosegivetmhm TM_STONE_EDGE
 	setevent EVENT_GOT_TM41_STONE_EDGE
-	writetext BlueOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BlueOutroText
 
 BlueEpilogueScript:
-	writetext LeaderBlueEpilogueText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LeaderBlueEpilogueText
 
 ViridianGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_BLUE
 	iftrue .ViridianGymGuyWinScript
-	writetext ViridianGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ViridianGymGuyText
 
 .ViridianGymGuyWinScript:
-	writetext ViridianGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ViridianGymGuyWinText
 
 TrainerAceDuoAraandbela1:
 	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA1, AceDuoAraandbela1SeenText, AceDuoAraandbela1BeatenText, 0, AceDuoAraandbela1Script
 
 AceDuoAraandbela1Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoAraandbela1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext AceDuoAraandbela1AfterText
 
 TrainerAceDuoAraandbela2:
 	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA2, AceDuoAraandbela2SeenText, AceDuoAraandbela2BeatenText, 0, AceDuoAraandbela2Script
 
 AceDuoAraandbela2Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoAraandbela2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext AceDuoAraandbela2AfterText
 
 TrainerCooltrainerfSalma:
 	trainer EVENT_BEAT_COOLTRAINERF_SALMA, COOLTRAINERF, SALMA, CooltrainerfSalmaSeenText, CooltrainerfSalmaBeatenText, 0, CooltrainerfSalmaScript
 
 CooltrainerfSalmaScript:
 	end_if_just_battled
-	opentext
-	writetext CooltrainerfSalmaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CooltrainerfSalmaAfterText
 
 TrainerCooltrainerfBonita:
 	trainer EVENT_BEAT_COOLTRAINERF_BONITA, COOLTRAINERF, BONITA, CooltrainerfBonitaSeenText, CooltrainerfBonitaBeatenText, 0, CooltrainerfBonitaScript
 
 CooltrainerfBonitaScript:
 	end_if_just_battled
-	opentext
-	writetext CooltrainerfBonitaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CooltrainerfBonitaAfterText
 
 TrainerAceDuoElanandida1:
 	trainer EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, ACE_DUO, ELANANDIDA1, AceDuoElanandida1SeenText, AceDuoElanandida1BeatenText, 0, AceDuoElanandida1Script
 
 AceDuoElanandida1Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoElanandida1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext AceDuoElanandida1AfterText
 
 TrainerAceDuoElanandida2:
 	trainer EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, ACE_DUO, ELANANDIDA2, AceDuoElanandida2SeenText, AceDuoElanandida2BeatenText, 0, AceDuoElanandida2Script
 
 AceDuoElanandida2Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoElanandida2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext AceDuoElanandida2AfterText
 
 ViridianGymStatue:
 	trainertotext BLUE, 1, $1

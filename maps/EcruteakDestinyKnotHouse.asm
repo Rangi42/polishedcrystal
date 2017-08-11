@@ -43,10 +43,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	end
 
 .NotEnough:
-	writetext EcruteakDestinyKnotHouseCooltrainerFText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EcruteakDestinyKnotHouseCooltrainerFText2
 
 EcruteakDestinyKnotHouseRichBoyScript:
 	faceplayer

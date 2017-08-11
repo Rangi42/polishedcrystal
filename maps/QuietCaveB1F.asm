@@ -35,44 +35,28 @@ TrainerBattleGirlKagami:
 
 BattleGirlKagamiScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlKagamiAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BattleGirlKagamiAfterText
 
 TrainerPokemaniacAidan:
 	trainer EVENT_BEAT_POKEMANIAC_AIDAN, POKEMANIAC, AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText, 0, PokemaniacAidanScript
 
 PokemaniacAidanScript:
 	end_if_just_battled
-	opentext
-	writetext PokemaniacAidanAfterText
-	waitbutton
-	closetext
-	end
+	jumptext PokemaniacAidanAfterText
 
 TrainerHikerSteve:
 	trainer EVENT_BEAT_HIKER_STEVE, HIKER, STEVE, HikerSteveSeenText, HikerSteveBeatenText, 0, HikerSteveScript
 
 HikerSteveScript:
 	end_if_just_battled
-	opentext
-	writetext HikerSteveAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HikerSteveAfterText
 
 TrainerPsychicVirgil:
 	trainer EVENT_BEAT_PSYCHIC_VIRGIL, PSYCHIC_T, VIRGIL, PsychicVirgilSeenText, PsychicVirgilBeatenText, 0, PsychicVirgilScript
 
 PsychicVirgilScript:
 	end_if_just_battled
-	opentext
-	writetext PsychicVirgilAfterText
-	waitbutton
-	closetext
-	end
+	jumptext PsychicVirgilAfterText
 
 QuietCaveB1FHiddenHyperPotion:
 	dwb EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION, HYPER_POTION

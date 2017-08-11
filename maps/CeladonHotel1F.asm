@@ -57,16 +57,10 @@ CeladonHotel1FRichBoyGeraldScript:
 	end
 
 RichBoyGeraldAfterScript:
-	writetext RichBoyGeraldAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RichBoyGeraldAfterText
 
 RichBoyGeraldNoBattleScript:
-	writetext RichBoyGeraldNoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RichBoyGeraldNoBattleText
 
 CeladonHotel1FSignpost1Script:
 	jumptext CeladonHotel1FSignpost1Text

@@ -57,10 +57,7 @@ AgathaScript:
 	verbosegivetmhm TM_SHADOW_CLAW
 	setevent EVENT_GOT_TM65_SHADOW_CLAW_FROM_AGATHA
 AgathaAfterScript:
-	writetext AgathaAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext AgathaAfterText
 
 MrFujiText:
 	text "Mr.Fuji: Welcome."

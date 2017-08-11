@@ -18,16 +18,13 @@ VioletPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletPokeCenterNurse, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x69540, -1
 	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x69543, -1
 	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x69546, -1
 
 const_value set 2
 	const VIOLETPOKECENTER1F_SCIENTIST
-
-VioletPokeCenterNurse:
-	jumpstd pokecenternurse
 
 VioletPokeCenter1F_ElmsAideScript:
 	faceplayer
@@ -70,10 +67,7 @@ VioletPokeCenter1F_ElmsAideScript:
 	end
 
 .PartyFull:
-	writetext UnknownText_0x69693
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69693
 
 .RefusedEgg:
 	writetext UnknownText_0x696f2

@@ -74,16 +74,10 @@ CeladonUniversityCafeteriaCoreyScript:
 	end
 
 .NoBattle:
-	writetext .NoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoBattleText
 
 .NotFinished:
-	writetext .AfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText1
 
 .IntroText1:
 	text "I'm Corey! I'm one"
@@ -264,34 +258,19 @@ CeladonUniversityCafeteriaBakerScript:
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .BoughtLeftovers:
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .NoBuy:
-	writetext .Text4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text4
 
 .NotEnoughMoney:
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .NoRoom:
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text6
 
 .Text1:
 	text "What's that, hon?"

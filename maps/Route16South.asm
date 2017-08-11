@@ -44,16 +44,10 @@ OfficerfJamieScript:
 	end
 
 .AfterScript:
-	writetext OfficerfJamieAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficerfJamieAfterText
 
 .NoFight:
-	writetext OfficerfJamieDaytimeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficerfJamieDaytimeText
 
 CyclingRoadSign:
 	jumptext CyclingRoadSignText

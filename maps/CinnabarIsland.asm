@@ -44,10 +44,7 @@ CinnabarIslandBlue:
 	waitbutton
 	checkcode VAR_BADGES
 	if_greater_than 14, .Ready
-	writetext CinnabarIslandBlueNotReadyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CinnabarIslandBlueNotReadyText
 
 .Ready
 	writetext CinnabarIslandBlueReadyText

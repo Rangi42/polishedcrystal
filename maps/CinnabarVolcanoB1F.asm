@@ -77,11 +77,7 @@ CinnabarVolcanoB1FBouldersFall:
 .Fall:
 	pause 30
 	scall .FX
-	opentext
-	writetext CinnabarVolcanoB1FBoulderFellText
-	waitbutton
-	closetext
-	end
+	jumptext CinnabarVolcanoB1FBoulderFellText
 
 .FX:
 	playsound SFX_STRENGTH

@@ -63,10 +63,7 @@ VioletCityEarlScript:
 	writetext Text_EarlAsksIfYouBeatFalkner
 	yesorno
 	iffalse .FollowEarl
-	writetext Text_VeryNiceIndeed
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_VeryNiceIndeed
 
 .FollowEarl:
 	writetext Text_FollowEarl
@@ -79,10 +76,7 @@ VioletCityEarlScript:
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	stopfollow
 	special RestartMapMusic
-	opentext
-	writetext Text_HereTeacherIAm
-	waitbutton
-	closetext
+	showtext Text_HereTeacherIAm
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	applymovement VIOLETCITY_EARL, VioletCityFinishFollowEarl_MovementData
 	playsound SFX_ENTER_DOOR

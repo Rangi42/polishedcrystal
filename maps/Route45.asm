@@ -87,16 +87,10 @@ Route45Dragon_tamerScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I'm training my"
@@ -170,11 +164,7 @@ TrainerBattleGirlNozomi:
 
 BattleGirlNozomiScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlNozomiAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BattleGirlNozomiAfterText
 
 TrainerBlackbeltKenji:
 	trainer EVENT_BEAT_BLACKBELT_KENJI, BLACKBELT_T, KENJI1, BlackbeltKenji1SeenText, BlackbeltKenji1BeatenText, 0, BlackbeltKenji1Script
@@ -221,16 +211,10 @@ UnknownScript_0x19e0e4:
 	jump UnknownScript_0x19e127
 
 UnknownScript_0x19e10c:
-	writetext UnknownText_0x19e634
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19e634
 
 UnknownScript_0x19e112:
-	writetext UnknownText_0x19e66c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19e66c
 
 UnknownScript_0x19e118:
 	jump UnknownScript_0x19e13b
@@ -285,22 +269,14 @@ TrainerHikerErik:
 
 HikerErikScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e301
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19e301
 
 TrainerHikerMichael:
 	trainer EVENT_BEAT_HIKER_MICHAEL, HIKER, MICHAEL, HikerMichaelSeenText, HikerMichaelBeatenText, 0, HikerMichaelScript
 
 HikerMichaelScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e3b1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19e3b1
 
 TrainerHikerParry:
 	trainer EVENT_BEAT_HIKER_PARRY, HIKER, PARRY1, HikerParry1SeenText, HikerParry1BeatenText, 0, HikerParry1Script
@@ -393,44 +369,28 @@ TrainerHikerTimothy:
 
 HikerTimothyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e4f1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19e4f1
 
 TrainerCooltrainermRyan:
 	trainer EVENT_BEAT_COOLTRAINERM_RYAN, COOLTRAINERM, RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText, 0, CooltrainermRyanScript
 
 CooltrainermRyanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e70d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19e70d
 
 TrainerCooltrainerfKelly:
 	trainer EVENT_BEAT_COOLTRAINERF_KELLY, COOLTRAINERF, KELLY, CooltrainerfKellySeenText, CooltrainerfKellyBeatenText, 0, CooltrainerfKellyScript
 
 CooltrainerfKellyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e7d1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19e7d1
 
 TrainerCamperQuentin:
 	trainer EVENT_BEAT_CAMPER_QUENTIN, CAMPER, QUENTIN, UnknownText_0x19e87f, UnknownText_0x19e899, 0, CamperQuentinScript
 
 CamperQuentinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e8bb
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x19e8bb
 
 Route45Sign:
 	jumptext Route45SignText

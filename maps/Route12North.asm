@@ -23,16 +23,9 @@ TrainerFisherKyle:
 
 FisherKyleScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a7238
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a7238
 
-	writetext UnknownText_0x1a70d4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a70d4
 
 FishingSpotSign:
 	jumptext FishingSpotSignText

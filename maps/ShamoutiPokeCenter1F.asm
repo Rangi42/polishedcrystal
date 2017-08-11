@@ -19,7 +19,7 @@ ShamoutiPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_IVY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FNurseScript, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 
 const_value set 2
 	const SHAMOUTIPOKECENTER1F_IVY
@@ -27,9 +27,6 @@ const_value set 2
 ShamoutiPokeCenter1FFixStairScript:
 	changeblock $0, $6, $39
 	return
-
-ShamoutiPokeCenter1FNurseScript:
-	jumpstd pokecenternurse
 
 ShamoutiPokeCenter1FIvyScript:
 	faceplayer
@@ -47,10 +44,7 @@ ShamoutiPokeCenter1FIvyScript:
 	if_equal $1, .Bulbasaur
 	if_equal $2, .Charmander
 	if_equal $3, .Squirtle
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .Bulbasaur:
 	setevent EVENT_GOT_BULBASAUR_FROM_IVY
@@ -116,10 +110,7 @@ ShamoutiPokeCenter1FIvyScript:
 	end
 
 .NoRoom:
-	writetext .NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoRoomText
 
 .GreetingText:
 	text "Ivy: Oh! You're"

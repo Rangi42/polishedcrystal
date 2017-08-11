@@ -72,10 +72,7 @@ LanceGetPasswordScript:
 	spriteface TEAMROCKETBASEB3F_MURKROW, RIGHT
 	pause 20
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12a
-	opentext
-	writetext LanceGetPasswordText
-	waitbutton
-	closetext
+	showtext LanceGetPasswordText
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12c
 	disappear TEAMROCKETBASEB3F_LANCE
 	dotrigger $1
@@ -89,10 +86,7 @@ RocketBaseRival:
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalEnterMovement
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext RocketBaseRivalText
-	waitbutton
-	closetext
+	showtext RocketBaseRivalText
 	playsound SFX_TACKLE
 	applymovement PLAYER, RocketBaseRivalShovesPlayerMovement
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalLeaveMovement
@@ -115,10 +109,7 @@ UnknownScript_0x6e056:
 	showemote EMOTE_SHOCK, TEAMROCKETBASEB3F_PETREL, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface TEAMROCKETBASEB3F_PETREL, DOWN
-	opentext
-	writetext UnknownText_0x6e400
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e400
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e142
 	winlosstext UnknownText_0x6e511, 0
 	setlasttalked TEAMROCKETBASEB3F_PETREL
@@ -126,10 +117,7 @@ UnknownScript_0x6e056:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PETREL_2
-	opentext
-	writetext UnknownText_0x6e548
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e548
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e144
 	playsound SFX_TACKLE
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e147
@@ -138,10 +126,7 @@ UnknownScript_0x6e056:
 	end
 
 RocketBaseMurkrow:
-	opentext
-	writetext RocketBaseMurkrowText
-	waitbutton
-	closetext
+	showtext RocketBaseMurkrowText
 	setevent EVENT_LEARNED_HAIL_GIOVANNI
 	end
 
@@ -150,10 +135,7 @@ SlowpokeTailGrunt:
 
 GruntF5Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e611
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e611
 	setevent EVENT_LEARNED_SLOWPOKETAIL
 	end
 
@@ -162,10 +144,7 @@ RaticateTailGrunt:
 
 GruntM28Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e737
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e737
 	setevent EVENT_LEARNED_RATICATE_TAIL
 	end
 
@@ -174,22 +153,14 @@ TrainerRocketScientistRoss:
 
 RocketScientistRossScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e822
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6e822
 
 TrainerRocketScientistMitch:
 	trainer EVENT_BEAT_ROCKET_SCIENTIST_MITCH, ROCKET_SCIENTIST, MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
 
 RocketScientistMitchScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e90a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6e90a
 
 BossDoor:
 	dw EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
@@ -204,10 +175,7 @@ BossDoor:
 	jump .OpenSesame
 
 .NeedsPassword:
-	writetext UnknownText_0x6e970
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6e970
 
 .OpenSesame:
 	writetext UnknownText_0x6e9a3

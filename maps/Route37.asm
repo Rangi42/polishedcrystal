@@ -46,33 +46,21 @@ TrainerTwinsToriandtil1:
 
 TwinsToriandtil1Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a8e62
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a8e62
 
 TrainerTwinsToriandtil2:
 	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE2, TwinsToriandtil2SeenText, TwinsToriandtil2BeatenText, 0, TwinsToriandtil2Script
 
 TwinsToriandtil2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a8eec
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a8eec
 
 TrainerPsychicGreg:
 	trainer EVENT_BEAT_PSYCHIC_GREG, PSYCHIC_T, GREG, PsychicGregSeenText, PsychicGregBeatenText, 0, PsychicGregScript
 
 PsychicGregScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a8f80
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a8f80
 
 SunnyScript:
 	faceplayer
@@ -99,10 +87,7 @@ SunnyScript:
 	verbosegiveitem MAGNET
 	iffalse SunnyDoneScript
 	setevent EVENT_GOT_MAGNET_FROM_SUNNY
-	writetext SunnyGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SunnyGaveGiftText
 
 SunnySundayScript:
 	writetext SunnySundayText
@@ -112,32 +97,21 @@ SunnyDoneScript:
 	end
 
 SunnyNotSundayScript:
-	writetext SunnyNotSundayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SunnyNotSundayText
 
 TrainerBeautyCallie:
 	trainer EVENT_BEAT_BEAUTY_CALLIE, BEAUTY, CALLIE, BeautyCallieSeenText, BeautyCallieBeatenText, 0, BeautyCallieScript
 
 BeautyCallieScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyCallieAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BeautyCallieAfterText
 
 TrainerBeautyCassandra:
 	trainer EVENT_BEAT_BEAUTY_CASSANDRA, BEAUTY, CASSANDRA, BeautyCassandraSeenText, BeautyCassandraBeatenText, 0, BeautyCassandraScript
 
 BeautyCassandraScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyCassandraAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BeautyCassandraAfterText
 
 Route37CooltrainerfChiaraScript:
 	faceplayer
@@ -187,16 +161,10 @@ Route37CooltrainerfChiaraScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I saw how you woke"

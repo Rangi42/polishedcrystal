@@ -27,20 +27,12 @@ const_value set 2
 	const CELADONDEPTSTORE6F_GAMEBOY_KID2
 
 GameboyKidScript_0x70d34:
-	faceplayer
-	opentext
-	writetext UnknownText_0x70d86
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x70d86
 	spriteface CELADONDEPTSTORE6F_GAMEBOY_KID1, DOWN
 	end
 
 GameboyKidScript_0x70d3f:
-	faceplayer
-	opentext
-	writetext UnknownText_0x70dc7
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x70dc7
 	spriteface CELADONDEPTSTORE6F_GAMEBOY_KID2, DOWN
 	end
 

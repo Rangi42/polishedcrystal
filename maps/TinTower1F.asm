@@ -171,10 +171,7 @@ SuicuneBattle:
 	moveperson TINTOWER1F_SAGE2, $7, $d
 	moveperson TINTOWER1F_SAGE3, $9, $d
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext TinTowerEusineSuicuneText
-	waitbutton
-	closetext
+	showtext TinTowerEusineSuicuneText
 	applymovement TINTOWER1F_EUSINE, MovementData_0x1851f1
 	playsound SFX_EXIT_BUILDING
 	disappear TINTOWER1F_EUSINE
@@ -222,16 +219,10 @@ SageScript_0x185188:
 	closetext
 	opentext
 UnknownScript_0x1851b0:
-	writetext UnknownText_0x18564a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18564a
 
 UnknownScript_0x1851b6:
-	writetext UnknownText_0x185803
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x185803
 
 SageScript_0x1851bc:
 	checkevent EVENT_FOUGHT_HO_OH

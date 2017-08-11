@@ -53,16 +53,10 @@ KukuiScript:
 	setevent EVENT_BEAT_KUKUI
 	opentext
 .Beaten:
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Hey there!"

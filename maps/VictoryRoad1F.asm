@@ -25,11 +25,7 @@ TrainerVeteranmMatt:
 
 VeteranmMattScript:
 	end_if_just_battled
-	opentext
-	writetext VeteranmMattAfterText
-	waitbutton
-	closetext
-	end
+	jumptext VeteranmMattAfterText
 
 VictoryRoad1FHiddenFullHeal:
 	dwb EVENT_VICTORY_ROAD_1F_HIDDEN_FULL_HEAL, FULL_HEAL

@@ -56,10 +56,7 @@ Route29Tutorial1:
 	applymovement ROUTE29_LYRA, LyraMovementData1a
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	opentext
-	writetext CatchingTutorialIntroText
-	waitbutton
-	closetext
+	showtext CatchingTutorialIntroText
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
 	stopfollow
@@ -95,10 +92,7 @@ Route29Tutorial2:
 	applymovement ROUTE29_LYRA, LyraMovementData2a
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	opentext
-	writetext CatchingTutorialIntroText
-	waitbutton
-	closetext
+	showtext CatchingTutorialIntroText
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData2b
 	stopfollow
@@ -143,16 +137,10 @@ CooltrainerMScript_0x1a1031:
 	opentext
 	checknite
 	iftrue .nite
-	writetext Text_WaitingForNight
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WaitingForNight
 
 .nite
-	writetext Text_WaitingForMorning
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WaitingForMorning
 
 TuscanyScript:
 	faceplayer
@@ -172,10 +160,7 @@ TuscanyScript:
 	verbosegiveitem SILK_SCARF
 	iffalse TuscanyDoneScript
 	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
-	writetext TuscanyGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext TuscanyGaveGiftText
 
 TuscanyTuesdayScript:
 	writetext TuscanyTuesdayText
@@ -185,10 +170,7 @@ TuscanyDoneScript:
 	end
 
 TuscanyNotTuesdayScript:
-	writetext TuscanyNotTuesdayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext TuscanyNotTuesdayText
 
 Route29Sign1:
 	jumptext Route29Sign1Text

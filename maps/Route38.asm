@@ -30,22 +30,14 @@ TrainerBird_keeperToby:
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a1f86
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a1f86
 
 TrainerSailorHarry:
 	trainer EVENT_BEAT_SAILOR_HARRY, SAILOR, HARRY, SailorHarrySeenText, SailorHarryBeatenText, 0, .script
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a220c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a220c
 
 TrainerLassDana1:
 	trainer EVENT_BEAT_LASS_DANA, LASS, DANA1, LassDana1SeenText, LassDana1BeatenText, 0, .script
@@ -307,22 +299,14 @@ TrainerBeautyValencia:
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a2185
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a2185
 
 TrainerBeautyOlivia:
 	trainer EVENT_BEAT_BEAUTY_OLIVIA, BEAUTY, OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText, 0, .script
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a229a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a229a
 
 Route38Sign:
 	jumptext Route38SignText

@@ -38,11 +38,7 @@ TrainerFisherMartin:
 
 FisherMartinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a704c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a704c
 
 FisherMartinSeenText:
 	text "Patience is the"
@@ -64,11 +60,7 @@ TrainerFisherStephen:
 
 FisherStephenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a70d4
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a70d4
 
 FisherStephenSeenText:
 	text "I feel so content,"
@@ -95,11 +87,7 @@ TrainerFisherBarney:
 
 FisherBarneyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a716d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a716d
 
 FisherBarneySeenText:
 	text "What's most impor-"
@@ -134,11 +122,7 @@ TrainerFisherKyler:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "#mon battles"
@@ -164,11 +148,7 @@ TrainerBird_keeperJustin:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Huh? The wind has"
@@ -190,11 +170,7 @@ TrainerBird_keeperGail:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "BASABASABASA-"
@@ -215,11 +191,7 @@ TrainerCoupleVicandtara1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Vic: All right!"
@@ -242,11 +214,7 @@ TrainerCoupleVicandtara2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Tara: I love to"

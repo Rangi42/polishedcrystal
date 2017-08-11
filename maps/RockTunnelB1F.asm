@@ -31,22 +31,14 @@ TrainerFirebreatherDick:
 
 FirebreatherDickScript:
 	end_if_just_battled
-	opentext
-	writetext FirebreatherDickAfterText
-	waitbutton
-	closetext
-	end
+	jumptext FirebreatherDickAfterText
 
 TrainerHexManiacVivian:
 	trainer EVENT_BEAT_HEX_MANIAC_VIVIAN, HEX_MANIAC, VIVIAN, HexManiacVivianSeenText, HexManiacVivianBeatenText, 0, HexManiacVivianScript
 
 HexManiacVivianScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacVivianAfterText
-	waitbutton
-	closetext
-	end
+	jumptext HexManiacVivianAfterText
 
 RockTunnelB1FHiddenMaxPotion:
 	dwb EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION, MAX_POTION

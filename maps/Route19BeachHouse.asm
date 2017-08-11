@@ -44,22 +44,13 @@ Route19BeachHouseVictorScript:
 	setevent EVENT_BEAT_VICTOR
 	opentext
 .AfterScript:
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText
 
 .NoPikachu:
-	writetext .NoPikachuText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoPikachuText
 
 .NoBattle:
-	writetext .NoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoBattleText
 
 .GreetingText:
 	text "Hey there, friend!"

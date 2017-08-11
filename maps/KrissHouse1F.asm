@@ -322,22 +322,13 @@ MomScript:
 	iftrue .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .Errand
-	writetext MomHurryUpText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MomHurryUpText
 
 .Errand:
-	writetext MomErrandText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MomErrandText
 
 .DoIt:
-	writetext MomDoItText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MomDoItText
 
 .FirstTimeBanking:
 	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM

@@ -84,32 +84,20 @@ LassScript_0x1a4015:
 	opentext
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue UnknownScript_0x1a4023
-	writetext UnknownText_0x1a421a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a421a
 
 UnknownScript_0x1a4023:
-	writetext UnknownText_0x1a4269
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a4269
 
 FisherScript_0x1a4029:
 	faceplayer
 	opentext
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue UnknownScript_0x1a4037
-	writetext UnknownText_0x1a42ac
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a42ac
 
 UnknownScript_0x1a4037:
-	writetext UnknownText_0x1a4325
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a4325
 
 YoungsterScript_0x1a403d:
 	jumptextfaceplayer UnknownText_0x1a4386

@@ -82,10 +82,7 @@ NoisyForestAnabelScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Greetings… My name"
@@ -140,11 +137,7 @@ TrainerBug_maniacPierre:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "My #mon love"
@@ -170,11 +163,7 @@ TrainerBug_maniacDylan:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I've never seen my"
@@ -199,11 +188,7 @@ TrainerGuitaristfJaclyn:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Let my guitar"
@@ -226,11 +211,7 @@ TrainerGuitaristmEzekiel:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Battle? Yeah, I'm"
@@ -254,11 +235,7 @@ TrainerHikerLester:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Yahoo!"
@@ -284,11 +261,7 @@ TrainerBird_keeperTrent:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "The early bird"
@@ -340,10 +313,7 @@ NoisyForestPikabluScript:
 	appear NOISYFOREST_YOUNGSTER
 	applymovement NOISYFOREST_YOUNGSTER, .WalkToYou
 	spriteface PLAYER, DOWN
-	opentext
-	writetext .OwnerText1
-	waitbutton
-	closetext
+	showtext .OwnerText1
 	disappear NOISYFOREST_MARILL
 	opentext
 	writetext .OwnerText2

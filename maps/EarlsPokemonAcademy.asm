@@ -45,35 +45,21 @@ AcademyEarl:
 	writetext UnknownText_0x68c51
 	yesorno
 	iffalse .Done
-	writetext UnknownText_0x68c7b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x68c7b
 
 .Done:
-	writetext UnknownText_0x68d31
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x68d31
 
 YoungsterScript_0x68a83:
 	jumptextfaceplayer UnknownText_0x68d80
 
 GameboyKidScript_0x68a86:
-	faceplayer
-	opentext
-	writetext UnknownText_0x68dda
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x68dda
 	spriteface EARLSPOKEMONACADEMY_GAMEBOY_KID1, DOWN
 	end
 
 GameboyKidScript_0x68a91:
-	faceplayer
-	opentext
-	writetext UnknownText_0x68e07
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x68e07
 	spriteface EARLSPOKEMONACADEMY_GAMEBOY_KID2, DOWN
 	end
 

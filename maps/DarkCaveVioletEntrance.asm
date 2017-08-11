@@ -63,10 +63,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	pause 20
 	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerHeadBack
 	showemote EMOTE_SHOCK, DARKCAVEVIOLETENTRANCE_FALKNER, 15
-	opentext
-	writetext DarkCaveVioletEntranceFalknerIntroText
-	waitbutton
-	closetext
+	showtext DarkCaveVioletEntranceFalknerIntroText
 	follow PLAYER, DARKCAVEVIOLETENTRANCE_FALKNER
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAside
 	stopfollow
@@ -80,10 +77,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	end
 
 .Darkness:
-	opentext
-	writetext DarkCaveVioletEntranceFalknerDarknessText
-	waitbutton
-	closetext
+	showtext DarkCaveVioletEntranceFalknerDarknessText
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAway
 	end
 

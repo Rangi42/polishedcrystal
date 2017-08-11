@@ -46,16 +46,10 @@ UnknownScript_0x191802:
 	verbosegiveitem RARE_CANDY
 	iffalse UnknownScript_0x19181f
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	writetext UnknownText_0x191a72
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191a72
 
 UnknownScript_0x191815:
-	writetext UnknownText_0x191ae0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191ae0
 
 UnknownScript_0x19181b:
 	writetext UnknownText_0x191b38
@@ -74,10 +68,7 @@ FisherScript_0x191824:
 	iftrue UnknownScript_0x19185f
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x191838
-	writetext UnknownText_0x191ba0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191ba0
 
 UnknownScript_0x191838:
 	writetext UnknownText_0x191bff
@@ -104,16 +95,10 @@ UnknownScript_0x191844:
 	end
 
 UnknownScript_0x19185f:
-	writetext UnknownText_0x191d1e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191d1e
 
 UnknownScript_0x191865:
-	writetext UnknownText_0x191d58
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191d58
 
 TeacherScript_0x19186b:
 	jumptextfaceplayer UnknownText_0x191d73

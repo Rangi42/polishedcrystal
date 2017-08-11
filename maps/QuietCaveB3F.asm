@@ -64,10 +64,7 @@ QuietCaveB3FMarleyScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…I'm Marley."

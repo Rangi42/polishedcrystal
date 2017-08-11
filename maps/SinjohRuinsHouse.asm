@@ -44,10 +44,7 @@ SinjohRuinsHouseGrampsScript:
 	end
 
 .No:
-	writetext SinjohRuinsHouseGrampsNoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SinjohRuinsHouseGrampsNoText
 
 SinjohRuinsHouseAbraScript:
 	opentext
@@ -76,16 +73,10 @@ SinjohRuinsHouseCynthiaScript:
 	setevent EVENT_BEAT_CYNTHIA
 	opentext
 .Beat:
-	writetext SinjohRuinsHouseCynthiaAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SinjohRuinsHouseCynthiaAfterText
 
 .Refused:
-	writetext SinjohRuinsHouseCynthiaNoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SinjohRuinsHouseCynthiaNoText
 
 SinjohRuinsHousePokefanmText:
 	text "A long time ago,"

@@ -301,10 +301,7 @@ NoSecurityCamera:
 	end
 
 TrainerCameraGrunt1:
-	opentext
-	writetext CameraGrunt1SeenText
-	waitbutton
-	closetext
+	showtext CameraGrunt1SeenText
 	winlosstext CameraGrunt1BeatenText, 0
 	setlasttalked TEAMROCKETBASEB1F_ROCKET1
 	loadtrainer GRUNTM, 20
@@ -314,10 +311,7 @@ TrainerCameraGrunt1:
 	end
 
 TrainerCameraGrunt2:
-	opentext
-	writetext CameraGrunt2SeenText
-	waitbutton
-	closetext
+	showtext CameraGrunt2SeenText
 	winlosstext CameraGrunt2BeatenText, 0
 	setlasttalked TEAMROCKETBASEB1F_ROCKET1
 	loadtrainer GRUNTM, 21
@@ -554,22 +548,14 @@ TrainerRocketScientistJed:
 
 RocketScientistJedScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6cc16
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6cc16
 
 TrainerGruntM16:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_16, GRUNTM, 16, GruntM16SeenText, GruntM16BeatenText, 0, GruntM16Script
 
 GruntM16Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6cd1b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6cd1b
 
 MapTeamRocketBaseB1FSignpost5Script:
 	jumptext SecurityCameraText
@@ -591,10 +577,7 @@ MapTeamRocketBaseB1FSignpost0Script:
 	end
 
 UnknownScript_0x6cabe:
-	writetext UnknownText_0x6cdd0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6cdd0
 
 TeamRocketBaseB1FHiddenRevive:
 	dwb EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE, REVIVE

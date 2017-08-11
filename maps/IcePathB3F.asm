@@ -85,10 +85,7 @@ LoreleiAfterRematchIntroScript:
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 LoreleiRematchAfterScript:
-	writetext LoreleiRematchAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext LoreleiRematchAfterText
 
 LoreleiReintroductionScript:
 	writetext LoreleiRematchIntroAgainText

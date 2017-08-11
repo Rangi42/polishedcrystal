@@ -29,11 +29,7 @@ TrainerGruntM22:
 
 GruntM22Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM22AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM22AfterText
 
 CliffCaveRocketScript:
 	jumptextfaceplayer CliffCaveRocketText

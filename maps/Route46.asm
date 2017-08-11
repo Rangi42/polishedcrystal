@@ -46,34 +46,21 @@ Route46TutorRoute46Script:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route46TutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route46TutorRefused
 
 .NoSilverLeaf
-	writetext Text_Route46TutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route46TutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route46TutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route46TutorTaught
 
 TrainerCamperTed:
 	trainer EVENT_BEAT_CAMPER_TED, CAMPER, TED, CamperTedSeenText, CamperTedBeatenText, 0, CamperTedScript
 
 CamperTedScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a9851
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a9851
 
 TrainerPicnickerErin1:
 	trainer EVENT_BEAT_PICNICKER_ERIN, PICNICKER, ERIN1, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
@@ -203,11 +190,7 @@ TrainerHikerBailey:
 
 HikerBaileyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a97e8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a97e8
 
 Route46Sign:
 	jumptext Route46SignText

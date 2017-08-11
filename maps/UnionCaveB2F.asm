@@ -53,33 +53,21 @@ TrainerCooltrainermNick:
 
 CooltrainermNickScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a3f0
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a3f0
 
 TrainerCooltrainerfGwen:
 	trainer EVENT_BEAT_COOLTRAINERF_GWEN, COOLTRAINERF, GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText, 0, CooltrainerfGwenScript
 
 CooltrainerfGwenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a488
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a488
 
 TrainerCooltrainerfEmma:
 	trainer EVENT_BEAT_COOLTRAINERF_EMMA, COOLTRAINERF, EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText, 0, CooltrainerfEmmaScript
 
 CooltrainerfEmmaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a52b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5a52b
 
 CooltrainermNickSeenText:
 	text "There are two"

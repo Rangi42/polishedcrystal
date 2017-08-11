@@ -41,28 +41,15 @@ CaptainScript_0x75ea7:
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue UnknownScript_0x75eb5
-	writetext UnknownText_0x76012
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x76012
 
 UnknownScript_0x75eb5:
-	writetext UnknownText_0x76064
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x76064
 
 TwinScript_0x75ebb:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
-	opentext
-	writetext UnknownText_0x761e0
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext UnknownText_0x7621f
-	waitbutton
-	closetext
+	showtext UnknownText_0x761e0
+	showtextfaceplayer UnknownText_0x7621f
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
@@ -78,17 +65,11 @@ TwinScript_0x75ebb:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue UnknownScript_0x75f03
-	opentext
-	writetext UnknownText_0x76284
-	waitbutton
-	closetext
+	showtext UnknownText_0x76284
 	jump UnknownScript_0x75f09
 
 UnknownScript_0x75f03:
-	opentext
-	writetext UnknownText_0x762c6
-	waitbutton
-	closetext
+	showtext UnknownText_0x762c6
 UnknownScript_0x75f09:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
 	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, MovementData_0x76010
@@ -140,95 +121,60 @@ UnknownScript_0x75f65:
 	end
 
 UnknownScript_0x75f67:
-	writetext UnknownText_0x761be
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x761be
 
 TwinScript_0x75f6d:
 	faceplayer
-	opentext
-	writetext UnknownText_0x7630d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7630d
 
 TrainerPokefanmColin:
 	trainer EVENT_BEAT_POKEFANM_COLIN, POKEFANM, COLIN, PokefanmColinSeenText, PokefanmColinBeatenText, 0, PokefanmColinScript
 
 PokefanmColinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7635b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7635b
 
 TrainerTwinsMegandpeg1:
 	trainer EVENT_BEAT_TWINS_MEG_AND_PEG, TWINS, MEGANDPEG1, TwinsMegandpeg1SeenText, TwinsMegandpeg1BeatenText, 0, TwinsMegandpeg1Script
 
 TwinsMegandpeg1Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x763c2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x763c2
 
 TrainerTwinsMegandpeg2:
 	trainer EVENT_BEAT_TWINS_MEG_AND_PEG, TWINS, MEGANDPEG2, TwinsMegandpeg2SeenText, TwinsMegandpeg2BeatenText, 0, TwinsMegandpeg2Script
 
 TwinsMegandpeg2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76428
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76428
 
 TrainerPsychicRodney:
 	trainer EVENT_BEAT_PSYCHIC_RODNEY, PSYCHIC_T, RODNEY, PsychicRodneySeenText, PsychicRodneyBeatenText, 0, PsychicRodneyScript
 
 PsychicRodneyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76497
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76497
 
 TrainerPokefanmJeremy:
 	trainer EVENT_BEAT_POKEFANM_JEREMY, POKEFANM, JEREMY, PokefanmJeremySeenText, PokefanmJeremyBeatenText, 0, PokefanmJeremyScript
 
 PokefanmJeremyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7651c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7651c
 
 TrainerPokefanfGeorgia:
 	trainer EVENT_BEAT_POKEFANF_GEORGIA, POKEFANF, GEORGIA, PokefanfGeorgiaSeenText, PokefanfGeorgiaBeatenText, 0, PokefanfGeorgiaScript
 
 PokefanfGeorgiaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x76596
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x76596
 
 TrainerSupernerdShawn:
 	trainer EVENT_BEAT_SUPER_NERD_SHAWN, SUPER_NERD, SHAWN, SupernerdShawnSeenText, SupernerdShawnBeatenText, 0, SupernerdShawnScript
 
 SupernerdShawnScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7660f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7660f
 
 MovementData_0x76004:
 	big_step_right

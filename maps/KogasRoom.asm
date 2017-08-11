@@ -55,10 +55,7 @@ KogaScript_0x18075a:
 	if_equal 16, KogaRematchScript
 	checkevent EVENT_BEAT_ELITE_4_KOGA
 	iftrue UnknownScript_0x180788
-	opentext
-	writetext UnknownText_0x180793
-	waitbutton
-	closetext
+	showtext UnknownText_0x180793
 	winlosstext UnknownText_0x1808a9, 0
 	loadtrainer KOGA, 1
 	startbattle
@@ -67,19 +64,12 @@ KogaScript_0x18075a:
 	jump KogaEndBattleScript
 
 UnknownScript_0x180788:
-	opentext
-	writetext UnknownText_0x1808ca
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1808ca
 
 KogaRematchScript:
 	checkevent EVENT_BEAT_ELITE_4_KOGA
 	iftrue .AfterBattle
-	opentext
-	writetext KogeBeforeRematchText
-	waitbutton
-	closetext
+	showtext KogeBeforeRematchText
 	winlosstext UnknownText_0x1808a9, 0
 	loadtrainer KOGA, 2
 	startbattle
@@ -88,11 +78,7 @@ KogaRematchScript:
 	jump KogaEndBattleScript
 
 .AfterBattle:
-	opentext
-	writetext KogaAfterRematchText
-	waitbutton
-	closetext
-	end
+	jumptext KogaAfterRematchText
 
 KogaEndBattleScript:
 	playsound SFX_ENTER_DOOR

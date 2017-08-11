@@ -93,10 +93,7 @@ MapRuinsofAlphAerodactylChamberSignpost1Script:
 
 MapRuinsofAlphAerodactylChamberSignpost3Script:
 	unowntypeface
-	opentext
-	writetext UnknownText_0x58ee7
-	waitbutton
-	closetext
+	showtext UnknownText_0x58ee7
 	restoretypeface
 	end
 
@@ -119,11 +116,7 @@ MapRuinsofAlphAerodactylChamberSignpost5Script:
 	end
 
 UnknownScript_0x58e46:
-	opentext
-	writetext UnknownText_0x58ea2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58ea2
 
 MovementData_0x58e4d:
 	db $59 ; movement

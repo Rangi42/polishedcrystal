@@ -89,10 +89,7 @@ UnknownScript_0x1a001e:
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7
-	opentext
-	writetext UnknownText_0x1a0433
-	waitbutton
-	closetext
+	showtext UnknownText_0x1a0433
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	winlosstext UnknownText_0x1a05a1, 0
 	setlasttalked CIANWOODCITY_EUSINE
@@ -103,10 +100,7 @@ UnknownScript_0x1a001e:
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
-	opentext
-	writetext UnknownText_0x1a05c3
-	waitbutton
-	closetext
+	showtext UnknownText_0x1a05c3
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00ec
 	disappear CIANWOODCITY_EUSINE
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
@@ -123,16 +117,10 @@ PokefanFScript_0x1a0084:
 	opentext
 	checkevent EVENT_BEAT_CHUCK
 	iftrue UnknownScript_0x1a009c
-	writetext UnknownText_0x1a00f1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a00f1
 
 UnknownScript_0x1a009c:
-	writetext UnknownText_0x1a0277
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a0277
 
 YoungsterScript_0x1a00b3:
 	jumptextfaceplayer UnknownText_0x1a02df

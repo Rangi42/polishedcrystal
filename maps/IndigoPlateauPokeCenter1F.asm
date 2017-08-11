@@ -149,10 +149,7 @@ PlateauRivalBattleTrigger2:
 	jump PlateauLyraBattleCommon
 
 PlateauRivalBattleCommon:
-	opentext
-	writetext PlateauRivalText1
-	waitbutton
-	closetext
+	showtext PlateauRivalText1
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -186,10 +183,7 @@ PlateauRivalBattleCommon:
 PlateauRivalPostBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext PlateauRivalText2
-	waitbutton
-	closetext
+	showtext PlateauRivalText2
 	spriteface PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_SILVER
@@ -289,10 +283,7 @@ PlateauLyraBattleCommon:
 PlateauLyraPostBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	opentext
-	writetext PlateauLyraText3
-	waitbutton
-	closetext
+	showtext PlateauLyraText3
 	spriteface PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
@@ -583,10 +574,7 @@ IndigoPlateauTeleportGuyScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .Text:
 	text "Ah! You're chal-"

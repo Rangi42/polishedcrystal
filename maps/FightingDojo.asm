@@ -386,10 +386,7 @@ rematch_script: MACRO
 	setflag \3
 	end
 .RematchDone
-	writetext \1Text_Done
-	waitbutton
-	closetext
-	end
+	jumpopenedtext \1Text_Done
 ENDM
 
 RematchBrockScript:

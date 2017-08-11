@@ -88,10 +88,7 @@ MooMoo:
 	if_equal 3, .ThreeOranBerries
 	if_equal 5, .FiveOranBerries
 	if_equal 7, .SevenOranBerries
-	writetext Text_GaveOranBerry
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GaveOranBerry
 
 .MaybeSitrusBerry:
 	checkitem SITRUS_BERRY
@@ -103,26 +100,17 @@ MooMoo:
 	if_greater_than 6, .SevenSitrusBerries
 	if_greater_than 4, .FiveSitrusBerries
 	if_greater_than 2, .ThreeSitrusBerries
-	writetext Text_GaveSitrusBerry
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GaveSitrusBerry
 
 .ThreeOranBerries:
 	writetext Text_GaveOranBerry
 	buttonsound
-	writetext Text_LittleHealthier
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_LittleHealthier
 
 .FiveOranBerries:
 	writetext Text_GaveOranBerry
 	buttonsound
-	writetext Text_QuiteHealthy
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_QuiteHealthy
 
 .SevenOranBerries:
 	playmusic MUSIC_HEAL
@@ -139,18 +127,12 @@ MooMoo:
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
 	buttonsound
-	writetext Text_LittleHealthier
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_LittleHealthier
 
 .FiveSitrusBerries:
 	writetext Text_GaveSitrusBerry
 	buttonsound
-	writetext Text_QuiteHealthy
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_QuiteHealthy
 
 .SevenSitrusBerries:
 	playmusic MUSIC_HEAL
@@ -165,16 +147,10 @@ MooMoo:
 	end
 
 .NoBerriesInBag:
-	writetext Text_NoBerries
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_NoBerries
 
 .Refused:
-	writetext Text_RefusedToGiveBerry
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RefusedToGiveBerry
 
 .HappyCow:
 	writetext UnknownText_0x9cd92

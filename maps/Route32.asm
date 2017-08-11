@@ -121,28 +121,16 @@ Route32CooltrainerMTrigger:
 	end
 
 .AideIsWaiting
-	writetext Route32CooltrainerMText_AideIsWaiting
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route32CooltrainerMText_AideIsWaiting
 
 .DontHaveZephyrBadge:
-	writetext Route32CooltrainerMText_VioletGym
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route32CooltrainerMText_VioletGym
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "You have some good"
@@ -226,10 +214,7 @@ Route32CooltrainerMTrigger:
 Route32CooltrainerMStopsYou:
 	spriteface ROUTE32_COOLTRAINER_M, LEFT
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext Route32CooltrainerMText_WhatsTheHurry
-	waitbutton
-	closetext
+	showtext Route32CooltrainerMText_WhatsTheHurry
 	follow PLAYER, ROUTE32_COOLTRAINER_M
 	applymovement PLAYER, Movement_Route32CooltrainerMPushesYouBackToViolet
 	stopfollow
@@ -249,10 +234,7 @@ Route32RoarTMGuyScript:
 	verbosegivetmhm TM_ROAR
 	setevent EVENT_GOT_TM05_ROAR
 .AlreadyHaveRoar:
-	writetext Text_RoarOutro
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RoarOutro
 
 Route32WannaBuyASlowpokeTailScript:
 	spriteface ROUTE32_FISHER4, DOWN
@@ -267,38 +249,24 @@ _OfferToSellSlowpokeTail:
 	writetext Text_MillionDollarSlowpokeTail
 	yesorno
 	iffalse .refused
-	writetext Text_ThoughtKidsWereLoaded
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ThoughtKidsWereLoaded
 
 .refused
-	writetext Text_RefusedToBuySlowpokeTail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RefusedToBuySlowpokeTail
 
 TrainerCamperRoland:
 	trainer EVENT_BEAT_CAMPER_ROLAND, CAMPER, ROLAND, CamperRolandSeenText, CamperRolandBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext CamperRolandAfterText
-	waitbutton
-	closetext
-	end
+	jumptext CamperRolandAfterText
 
 TrainerFisherJustin:
 	trainer EVENT_BEAT_FISHER_JUSTIN, FISHER, JUSTIN, FisherJustinSeenText, FisherJustinBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext FisherJustinAfterText
-	waitbutton
-	closetext
-	end
+	jumptext FisherJustinAfterText
 
 TrainerFisherRalph1:
 	trainer EVENT_BEAT_FISHER_RALPH, FISHER, RALPH1, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
@@ -392,10 +360,7 @@ TrainerFisherRalph1:
 	end
 
 .Swarm:
-	writetext FisherRalphSwarmText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FisherRalphSwarmText
 
 .AskNumber1:
 	jumpstd asknumber1m
@@ -430,11 +395,7 @@ TrainerFisherHenry:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext FisherHenryAfterText
-	waitbutton
-	closetext
-	end
+	jumptext FisherHenryAfterText
 
 TrainerPicnickerLiz1:
 	trainer EVENT_BEAT_PICNICKER_LIZ, PICNICKER, LIZ1, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
@@ -558,33 +519,21 @@ TrainerYoungsterAlbert:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext YoungsterAlbertAfterText
-	waitbutton
-	closetext
-	end
+	jumptext YoungsterAlbertAfterText
 
 TrainerYoungsterGordon:
 	trainer EVENT_BEAT_YOUNGSTER_GORDON, YOUNGSTER, GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext YoungsterGordonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext YoungsterGordonAfterText
 
 TrainerBird_keeperPeter:
 	trainer EVENT_BEAT_BIRD_KEEPER_PETER, BIRD_KEEPER, PETER, Bird_keeperPeterSeenText, Bird_keeperPeterBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext Bird_keeperPeterAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Bird_keeperPeterAfterText
 
 FriedaScript:
 	faceplayer
@@ -604,10 +553,7 @@ FriedaScript:
 	verbosegiveitem POISON_BARB
 	iffalse .Done
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
-	writetext FriedaGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FriedaGaveGiftText
 
 .Friday:
 	writetext FriedaFridayText
@@ -617,10 +563,7 @@ FriedaScript:
 	end
 
 .NotFriday:
-	writetext FriedaNotFridayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FriedaNotFridayText
 
 Route32Sign:
 	jumptext Route32SignText

@@ -24,11 +24,7 @@ TrainerCamperClark:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Collect water!"
@@ -60,11 +56,7 @@ TrainerPicnickerGinger:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Why do I always"
@@ -89,11 +81,7 @@ TrainerHikerKenny:
 
 HikerKennyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a26c2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a26c2
 
 HikerKennySeenText:
 	text "I should go to"

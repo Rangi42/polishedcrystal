@@ -34,110 +34,70 @@ TrainerTeacherColette:
 
 TeacherColetteScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aa60d
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1aa60d
 
 TrainerTeacherHillary:
 	trainer EVENT_BEAT_TEACHER_HILLARY, TEACHER, HILLARY, TeacherHillarySeenText, TeacherHillaryBeatenText, 0, TeacherHillaryScript
 
 TeacherHillaryScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aa6ca
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1aa6ca
 
 TrainerSchoolboyKipp:
 	trainer EVENT_BEAT_SCHOOLBOY_KIP, SCHOOLBOY, KIPP, SchoolboyKippSeenText, SchoolboyKippBeatenText, 0, SchoolboyKippScript
 
 SchoolboyKippScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aa740
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1aa740
 
 TrainerSchoolboyTommy:
 	trainer EVENT_BEAT_SCHOOLBOY_TOMMY, SCHOOLBOY, TOMMY, SchoolboyTommySeenText, SchoolboyTommyBeatenText, 0, SchoolboyTommyScript
 
 SchoolboyTommyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aa7bc
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1aa7bc
 
 TrainerSchoolboyBilly:
 	trainer EVENT_BEAT_SCHOOLBOY_BILLY, SCHOOLBOY, BILLY, SchoolboyBillySeenText, SchoolboyBillyBeatenText, 0, SchoolboyBillyScript
 
 SchoolboyBillyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1aa8b0
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1aa8b0
 
 TrainerSchoolgirlFaith:
 	trainer EVENT_BEAT_SCHOOLGIRL_FAITH, SCHOOLGIRL, FAITH, SchoolgirlFaithSeenText, SchoolgirlFaithBeatenText, 0, SchoolgirlFaithScript
 
 SchoolgirlFaithScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlFaithAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SchoolgirlFaithAfterText
 
 TrainerPokefanfBoone:
 	trainer EVENT_BEAT_POKEFANF_BOONE, POKEFANF, BOONE, PokefanfBooneSeenText, PokefanfBooneBeatenText, 0, PokefanfBooneScript
 
 PokefanfBooneScript:
 	end_if_just_battled
-	opentext
-	writetext PokefanfBooneAfterText
-	waitbutton
-	closetext
-	end
+	jumptext PokefanfBooneAfterText
 
 TrainerPokefanfEleanor:
 	trainer EVENT_BEAT_POKEFANF_ELEANOR, POKEFANF, ELEANOR, PokefanfEleanorSeenText, PokefanfEleanorBeatenText, 0, PokefanfEleanorScript
 
 PokefanfEleanorScript:
 	end_if_just_battled
-	opentext
-	writetext PokefanfEleanorAfterText
-	waitbutton
-	closetext
-	end
+	jumptext PokefanfEleanorAfterText
 
 TrainerTwinsKayandtia1:
 	trainer EVENT_BEAT_TWINS_KAY_AND_TIA, TWINS, KAYANDTIA1, TwinsKayandtia1SeenText, TwinsKayandtia1BeatenText, 0, TwinsKayandtia1Script
 
 TwinsKayandtia1Script:
 	end_if_just_battled
-	opentext
-	writetext TwinsKayandtia1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext TwinsKayandtia1AfterText
 
 TrainerTwinsKayandtia2:
 	trainer EVENT_BEAT_TWINS_KAY_AND_TIA, TWINS, KAYANDTIA2, TwinsKayandtia2SeenText, TwinsKayandtia2BeatenText, 0, TwinsKayandtia2Script
 
 TwinsKayandtia2Script:
 	end_if_just_battled
-	opentext
-	writetext TwinsKayandtia2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext TwinsKayandtia2AfterText
 
 Route15Sign:
 	jumptext Route15SignText

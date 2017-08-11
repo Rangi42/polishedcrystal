@@ -45,32 +45,20 @@ GrampsScript_0x1a9a4c:
 	writetext UnknownText_0x1a9aa5
 	yesorno
 	iffalse UnknownScript_0x1a9a5b
-	writetext UnknownText_0x1a9b6f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9b6f
 
 UnknownScript_0x1a9a5b:
-	writetext UnknownText_0x1a9bb7
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9bb7
 
 GrampsScript_0x1a9a61:
 	faceplayer
 	opentext
 	checkevent EVENT_BLUE_IN_CINNABAR
 	iftrue .BlueReturned
-	writetext UnknownText_0x1a9c11
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9c11
 
 .BlueReturned:
-	writetext UnknownText_0x1a9c7e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9c7e
 
 FisherScript_0x1a9a75:
 	faceplayer
@@ -93,23 +81,14 @@ ViridianCityTutorDreamEaterScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_ViridianCityTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ViridianCityTutorRefused
 
 .NoSilverLeaf
-	writetext Text_ViridianCityTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ViridianCityTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_ViridianCityTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ViridianCityTutorTaught
 
 BugCatcherScript_0x1a9a90:
 	jumptextfaceplayer UnknownText_0x1a9daa

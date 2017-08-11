@@ -75,17 +75,11 @@ CinnabarLabCelebiEventScript:
 	warpfacing UP, CINNABAR_LAB, $f, $9
 	special Special_FadeOutMusic
 	pause 30
-	opentext
-	writetext CinnabarLabContinueTestingText
-	waitbutton
-	closetext
+	showtext CinnabarLabContinueTestingText
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 15
 	playmusic MUSIC_ROCKET_OVERTURE
 	spriteface CINNABARLAB_GIOVANNI, DOWN
-	opentext
-	writetext CinnabarLabGiovanniWhoAreYouText
-	waitbutton
-	closetext
+	showtext CinnabarLabGiovanniWhoAreYouText
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniStepAsideMovementData
 	applymovement PLAYER, CinnabarLabPlayerStepsUpMovementData
 	opentext
@@ -103,10 +97,7 @@ CinnabarLabCelebiEventScript:
 	special DeleteSavedMusic
 	playmusic MUSIC_NONE
 	setevent EVENT_TIME_TRAVELING
-	opentext
-	writetext CinnabarLabGiovanniAfterText
-	waitbutton
-	closetext
+	showtext CinnabarLabGiovanniAfterText
 	showemote EMOTE_SHOCK, CINNABARLAB_ARMORED_MEWTWO, 15
 	opentext
 	writetext CinnabarLabMewtwoText

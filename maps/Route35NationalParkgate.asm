@@ -164,40 +164,22 @@ Route35NationalParkgate_LessThanFullParty: ; 6a27d
 	jump Route35NationalParkgate_OkayToProceed
 
 Route35NationalParkgate_DeclinedToParticipate:
-	writetext UnknownText_0x6a5dc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a5dc
 
 Route35NationalParkgate_DeclinedToLeaveMonsBehind:
-	writetext UnknownText_0x6a597
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a597
 
 Route35NationalParkgate_FirstMonIsFainted:
-	writetext UnknownText_0x6a608
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a608
 
 Route35NationalParkgate_NoRoomInBox:
-	writetext UnknownText_0x6a67c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a67c
 
 Route35NationalParkgate_FirstMonIsEgg:
-	writetext UnknownText_0x6a71f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a71f
 
 Route35NationalParkgate_ContestIsOver:
-	writetext UnknownText_0x6a84f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a84f
 
 Route35NationalParkgate_NoContestToday:
 	jumptextfaceplayer UnknownText_0x6a894
@@ -207,10 +189,7 @@ OfficerScript_0x6a2ca:
 	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route35NationalParkgate_ContestIsOver
-	writetext UnknownText_0x6a894
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a894
 
 BugManiacScript_0x6a2d8:
 	jumptextfaceplayer UnknownText_0x6a8d8

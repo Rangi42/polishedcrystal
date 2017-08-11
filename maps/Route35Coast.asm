@@ -27,66 +27,42 @@ TrainerSwimmermWalter:
 
 TrainerSwimmermWalterScript:
 	end_if_just_battled
-	opentext
-	writetext SwimmermWalterAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SwimmermWalterAfterText
 
 TrainerSwimmerfLisa:
 	trainer EVENT_BEAT_SWIMMERF_LISA, SWIMMERF, LISA, SwimmerfLisaSeenText, SwimmerfLisaBeatenText, 0, TrainerSwimmerfLisaScript
 
 TrainerSwimmerfLisaScript:
 	end_if_just_battled
-	opentext
-	writetext SwimmerfLisaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SwimmerfLisaAfterText
 
 TrainerSwimmerfJill:
 	trainer EVENT_BEAT_SWIMMERF_JILL, SWIMMERF, JILL, SwimmerfJillSeenText, SwimmerfJillBeatenText, 0, SwimmerfJillScript
 
 SwimmerfJillScript:
 	end_if_just_battled
-	opentext
-	writetext SwimmerfJillAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SwimmerfJillAfterText
 
 TrainerBird_keeperBryan:
 	trainer EVENT_BEAT_BIRD_KEEPER_BRYAN, BIRD_KEEPER, BRYAN, Bird_keeperBryanSeenText, Bird_keeperBryanBeatenText, 0, Bird_keeperBryanScript
 
 Bird_keeperBryanScript:
 	end_if_just_battled
-	opentext
-	writetext Bird_keeperBryanAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Bird_keeperBryanAfterText
 
 TrainerSrandjrBeaandmay1:
 	trainer EVENT_BEAT_SR_AND_JR_BEA_AND_MAY, SR_AND_JR, BEAANDMAY1, SrandjrBeaandmay1SeenText, SrandjrBeaandmay1BeatenText, 0, TrainerSrandjrBeaandmay1Script
 
 TrainerSrandjrBeaandmay1Script:
 	end_if_just_battled
-	opentext
-	writetext SrandjrBeaandmay1AfterText
-	waitbutton
-	closetext
-	end
+	jumptext SrandjrBeaandmay1AfterText
 
 TrainerSrandjrBeaandmay2:
 	trainer EVENT_BEAT_SR_AND_JR_BEA_AND_MAY, SR_AND_JR, BEAANDMAY2, SrandjrBeaandmay2SeenText, SrandjrBeaandmay2BeatenText, 0, TrainerSrandjrBeaandmay2Script
 
 TrainerSrandjrBeaandmay2Script:
 	end_if_just_battled
-	opentext
-	writetext SrandjrBeaandmay2AfterText
-	waitbutton
-	closetext
-	end
+	jumptext SrandjrBeaandmay2AfterText
 
 Route35CoastHiddenStarPiece:
 	dwb EVENT_ROUTE_35_COAST_HIDDEN_STAR_PIECE, STAR_PIECE

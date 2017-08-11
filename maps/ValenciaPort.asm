@@ -45,10 +45,7 @@ ValenciaPortSailorScript:
 	end
 
 .RefuseFerry
-	writetext .RefuseText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefuseText
 
 .QuestionText:
 	text "Going back to"

@@ -67,11 +67,7 @@ const_value set 2
 	const GOLDENRODGAMECORNER_POKEFAN_M3
 
 GoldenrodGameCornerPokefanM3Script:
-	faceplayer
-	opentext
-	writetext GoldenrodGameCornerPokefanM3Text
-	waitbutton
-	closetext
+	showtextfaceplayer GoldenrodGameCornerPokefanM3Text
 	spriteface GOLDENRODGAMECORNER_POKEFAN_M3, RIGHT
 	end
 
@@ -94,24 +90,15 @@ GoldenrodGameCornerTutorPayDayScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_GoldenrodGameCornerTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GoldenrodGameCornerTutorRefused
 
 .NoSilverLeaf
 	waitbutton
-	writetext Text_GoldenrodGameCornerTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GoldenrodGameCornerTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_GoldenrodGameCornerTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GoldenrodGameCornerTutorTaught
 
 GoldenrodGameCornerTMVendorScript:
 	faceplayer
@@ -185,28 +172,16 @@ GoldenrodGameCornerPrizeVendor_AlreadyHaveTMScript:
 	jump GoldenrodGameCornerTMVendor_LoopScript
 
 GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
-	writetext GoldenrodGameCornerPrizeVendorNeedMoreCoinsText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GoldenrodGameCornerPrizeVendorNeedMoreCoinsText
 
 GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript:
-	writetext GoldenrodGameCornerPrizeVendorNoMoreRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 
 GoldenrodGameCornerPrizeVendor_CancelPurchaseScript:
-	writetext GoldenrodGameCornerPrizeVendorQuitText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
 GoldenrodGameCornerPrizeVendor_NoCoinCaseScript:
-	writetext GoldenrodGameCornerPrizeVendorNoCoinCaseText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GoldenrodGameCornerPrizeVendorNoCoinCaseText
 
 GoldenrodGameCornerTMVendorMenuData:
 	db $40 ; flags
@@ -311,38 +286,22 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	db "Cancel@"
 
 GoldenrodGameCornerPharmacistScript:
-	faceplayer
-	opentext
-	writetext GoldenrodGameCornerPharmacistText
-	waitbutton
-	closetext
+	showtextfaceplayer GoldenrodGameCornerPharmacistText
 	spriteface LAST_TALKED, LEFT
 	end
 
 GoldenrodGameCornerPokefanM1Script:
-	faceplayer
-	opentext
-	writetext GoldenrodGameCornerPokefanM1Text
-	waitbutton
-	closetext
+	showtextfaceplayer GoldenrodGameCornerPokefanM1Text
 	spriteface GOLDENRODGAMECORNER_POKEFAN_M1, RIGHT
 	end
 
 GoldenrodGameCornerCooltrainerMScript:
-	faceplayer
-	opentext
-	writetext GoldenrodGameCornerCooltrainerMText
-	waitbutton
-	closetext
+	showtextfaceplayer GoldenrodGameCornerCooltrainerMText
 	spriteface GOLDENRODGAMECORNER_COOLTRAINER_M, LEFT
 	end
 
 GoldenrodGameCornerPokefanFScript:
-	faceplayer
-	opentext
-	writetext GoldenrodGameCornerPokefanFText
-	waitbutton
-	closetext
+	showtextfaceplayer GoldenrodGameCornerPokefanFText
 	spriteface GOLDENRODGAMECORNER_POKEFAN_F, RIGHT
 	end
 
@@ -350,11 +309,7 @@ GoldenrodGameCornerCooltrainerFScript:
 	jumptextfaceplayer GoldenrodGameCornerCooltrainerFText
 
 GoldenrodGameCornerGentlemanScript:
-	faceplayer
-	opentext
-	writetext GoldenrodGameCornerGentlemanText
-	waitbutton
-	closetext
+	showtextfaceplayer GoldenrodGameCornerGentlemanText
 	spriteface GOLDENRODGAMECORNER_GENTLEMAN, RIGHT
 	end
 

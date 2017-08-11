@@ -70,82 +70,52 @@ ErikaScript_0x72a6a:
 	buttonsound
 	verbosegivetmhm TM_GIGA_DRAIN
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
-	writetext ErikaOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ErikaOutroText
 
 UnknownScript_0x72aae:
-	writetext UnknownText_0x72d8f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x72d8f
 
 TrainerLassMichelle:
 	trainer EVENT_BEAT_LASS_MICHELLE, LASS, MICHELLE, LassMichelleSeenText, LassMichelleBeatenText, 0, LassMichelleScript
 
 LassMichelleScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x72e30
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x72e30
 
 TrainerPicnickerTanya:
 	trainer EVENT_BEAT_PICNICKER_TANYA, PICNICKER, TANYA, PicnickerTanyaSeenText, PicnickerTanyaBeatenText, 0, PicnickerTanyaScript
 
 PicnickerTanyaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x72e8e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x72e8e
 
 TrainerBeautyJulia:
 	trainer EVENT_BEAT_BEAUTY_JULIA, BEAUTY, JULIA, BeautyJuliaSeenText, BeautyJuliaBeatenText, 0, BeautyJuliaScript
 
 BeautyJuliaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x72f01
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x72f01
 
 TrainerAroma_ladyDahlia:
 	trainer EVENT_BEAT_AROMA_LADY_DAHLIA, AROMA_LADY, DAHLIA, Aroma_ladyDahliaSeenText, Aroma_ladyDahliaBeatenText, 0, Aroma_ladyDahliaScript
 
 Aroma_ladyDahliaScript:
 	end_if_just_battled
-	opentext
-	writetext Aroma_ladyDahliaAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Aroma_ladyDahliaAfterText
 
 TrainerTwinsJoandzoe1:
 	trainer EVENT_BEAT_TWINS_JO_AND_ZOE, TWINS, JOANDZOE1, TwinsJoandzoe1SeenText, TwinsJoandzoe1BeatenText, 0, TwinsJoandzoe1Script
 
 TwinsJoandzoe1Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x72f70
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x72f70
 
 TrainerTwinsJoandzoe2:
 	trainer EVENT_BEAT_TWINS_JO_AND_ZOE, TWINS, JOANDZOE2, TwinsJoandzoe2SeenText, TwinsJoandzoe2BeatenText, 0, TwinsJoandzoe2Script
 
 TwinsJoandzoe2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x72fc0
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x72fc0
 
 CeladonGymStatue:
 	trainertotext ERIKA, 1, $1

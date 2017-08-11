@@ -54,16 +54,10 @@ CooltrainerMScript_0x184009:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x184017
-	writetext UnknownText_0x1840bc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1840bc
 
 UnknownScript_0x184017:
-	writetext UnknownText_0x184144
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x184144
 
 SuperNerdScript_0x18401d:
 	jumptextfaceplayer UnknownText_0x1841a8
@@ -77,26 +71,15 @@ CeruleanCitySlowbro:
 	end
 
 CooltrainerFScript_0x18402a:
-	faceplayer
-	opentext
-	writetext UnknownText_0x1841fa
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x1841fa
 	spriteface CERULEANCITY_COOLTRAINER_F, LEFT
-	opentext
-	writetext UnknownText_0x184229
-	waitbutton
-	closetext
+	showtext UnknownText_0x184229
 	opentext
 	writetext CeruleanCitySlowbroText
 	cry SLOWBRO
 	waitbutton
 	closetext
-	opentext
-	writetext UnknownText_0x18424b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:
 	faceplayer
@@ -106,16 +89,10 @@ FisherScript_0x18404a:
 	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
 	iftrue UnknownScript_0x18405e
 UnknownScript_0x184058:
-	writetext UnknownText_0x18424e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18424e
 
 UnknownScript_0x18405e:
-	writetext UnknownText_0x184275
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x184275
 
 YoungsterScript_0x184064:
 	faceplayer
@@ -144,17 +121,10 @@ YoungsterScript_0x184064:
 	waitsfx
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	spriteface CERULEANCITY_YOUNGSTER, LEFT
-	opentext
-	writetext UnknownText_0x1842ee
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1842ee
 
 .FoundBerserkGene:
-	writetext CeruleanCityYoungsterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeruleanCityYoungsterText
 
 CeruleanCaveGuardScript:
 	jumptextfaceplayer CeruleanCaveGuardText

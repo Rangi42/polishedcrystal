@@ -98,10 +98,7 @@ LanceEndBattleScript:
 	spriteface PLAYER, DOWN
 	appear LANCESROOM_MARY
 	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryRushesIn
-	opentext
-	writetext UnknownText_0x1811dd
-	waitbutton
-	closetext
+	showtext UnknownText_0x1811dd
 	appear LANCESROOM_OAK
 	applymovement LANCESROOM_OAK, LancesRoomMovementData_OakWalksIn
 	follow LANCESROOM_MARY, LANCESROOM_OAK
@@ -109,22 +106,13 @@ LanceEndBattleScript:
 	stopfollow
 	spriteface LANCESROOM_OAK, UP
 	spriteface LANCESROOM_LANCE, LEFT
-	opentext
-	writetext UnknownText_0x18121b
-	waitbutton
-	closetext
+	showtext UnknownText_0x18121b
 	applymovement LANCESROOM_MARY, LancesRoomMovementData_MaryInterviewChampion
 	spriteface PLAYER, LEFT
-	opentext
-	writetext UnknownText_0x18134b
-	waitbutton
-	closetext
+	showtext UnknownText_0x18134b
 	applymovement LANCESROOM_LANCE, LancesRoomMovementData_LancePositionsSelfToGuidePlayerAway
 	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x18137b
-	waitbutton
-	closetext
+	showtext UnknownText_0x18137b
 	follow LANCESROOM_LANCE, PLAYER
 	spriteface LANCESROOM_MARY, UP
 	spriteface LANCESROOM_OAK, UP

@@ -34,11 +34,7 @@ TrainerSwimmerfNikki:
 
 SwimmerfNikkiScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac8f1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac8f1
 
 SwimmerfNikkiSeenText:
 	text "If I win, you have"
@@ -62,11 +58,7 @@ TrainerSwimmerfChelan:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I love bikinis!"
@@ -93,11 +85,7 @@ TrainerSwimmerfKendra:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Hey, trainer!"
@@ -122,11 +110,7 @@ TrainerSwimmermEsteban:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "My swimming teach-"
@@ -150,11 +134,7 @@ TrainerSwimmermDuane:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Swimming is full-"
@@ -180,11 +160,7 @@ TrainerSwimmermSeth:
 
 SwimmermSethScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac873
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac873
 
 SwimmermSethSeenText:
 	text "Land ho! Gotta"
@@ -206,11 +182,7 @@ TrainerFisherMurphy:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Huh? I've caught"
@@ -236,11 +208,7 @@ TrainerFisherArnold:
 
 FisherArnoldScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac95c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1ac95c
 
 FisherArnoldSeenText:
 	text "I'm bored by fish-"
@@ -261,11 +229,7 @@ TrainerFisherLiam:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Whoa! A nibble!"
@@ -297,11 +261,7 @@ TrainerFisherGideon:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Did I become a"
@@ -328,11 +288,7 @@ TrainerBird_keeperKinsley:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Someday I might be"
@@ -355,11 +311,7 @@ TrainerBird_keeperEaston:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "Bird Keepers are"

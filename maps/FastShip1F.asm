@@ -68,16 +68,10 @@ SailorScript_0x75160:
 	iftrue .Arrived
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	iftrue .Olivine
-	writetext UnknownText_0x7523b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7523b
 
 .Olivine:
-	writetext UnknownText_0x7529b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7529b
 
 .Arrived:
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
@@ -124,16 +118,10 @@ SailorScript_0x751d0:
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue .Vermilion
-	writetext UnknownText_0x752f9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x752f9
 
 .Vermilion:
-	writetext UnknownText_0x7534f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7534f
 
 SailorScript_0x751e4:
 	jumptextfaceplayer UnknownText_0x753c0
@@ -147,10 +135,7 @@ WorriedGrandpaTriggerLeft:
 	playsound SFX_TACKLE
 	applymovement PLAYER, MovementData_0x7522e
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75220
-	opentext
-	writetext UnknownText_0x75412
-	waitbutton
-	closetext
+	showtext UnknownText_0x75412
 	spriteface PLAYER, RIGHT
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
 	disappear FASTSHIP1F_GENTLEMAN

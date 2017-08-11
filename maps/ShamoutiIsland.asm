@@ -41,17 +41,10 @@ ShamoutiIslandVileplumeScript:
 	special SpecialSnorlaxAwake
 	iftrue .Awake
 	showemote EMOTE_SLEEP, SHAMOUTIISLAND_VILEPLUME, 15
-	opentext
-	writetext .VileplumeText
-	waitbutton
-	closetext
-	end
+	jumptext .VileplumeText
 
 .Awake:
-	opentext
-	writetext .PokeFluteText
-	waitbutton
-	closetext
+	showtext .PokeFluteText
 	applymovement SHAMOUTIISLAND_VILEPLUME, .ShakeMovement
 	opentext
 	writetext .WokeUpText

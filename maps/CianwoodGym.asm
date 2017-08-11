@@ -41,20 +41,13 @@ ChuckScript_0x9d60f:
 	waitbutton
 	closetext
 	spriteface CIANWOODGYM_CHUCK, RIGHT
-	opentext
-	writetext ChuckIntroText2
-	waitbutton
-	closetext
+	showtext ChuckIntroText2
 	applymovement CIANWOODGYM_BOULDER1, CianwoodGymMovement_ChuckChucksBoulder
 	playsound SFX_STRENGTH
 	earthquake 80
 	disappear CIANWOODGYM_BOULDER1
 	pause 30
-	faceplayer
-	opentext
-	writetext ChuckIntroText3
-	waitbutton
-	closetext
+	showtextfaceplayer ChuckIntroText3
 	winlosstext ChuckLossText, 0
 	loadtrainer CHUCK, 1
 	startbattle
@@ -77,60 +70,38 @@ ChuckScript_0x9d60f:
 	buttonsound
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
-	writetext ChuckExplainTMText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ChuckExplainTMText
 
 .AlreadyGotTM:
-	writetext ChuckAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ChuckAfterText
 
 TrainerBlackbeltYoshi:
 	trainer EVENT_BEAT_BLACKBELT_YOSHI, BLACKBELT_T, YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltYoshiAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BlackbeltYoshiAfterText
 
 TrainerBlackbeltLao:
 	trainer EVENT_BEAT_BLACKBELT_LAO, BLACKBELT_T, LAO, BlackbeltLaoSeenText, BlackbeltLaoBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltLaoAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BlackbeltLaoAfterText
 
 TrainerBlackbeltNob:
 	trainer EVENT_BEAT_BLACKBELT_NOB, BLACKBELT_T, NOB, BlackbeltNobSeenText, BlackbeltNobBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltNobAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BlackbeltNobAfterText
 
 TrainerBlackbeltLung:
 	trainer EVENT_BEAT_BLACKBELT_LUNG, BLACKBELT_T, LUNG, BlackbeltLungSeenText, BlackbeltLungBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltLungAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BlackbeltLungAfterText
 
 CianwoodGymBlackBeltScript:
 	jumptextfaceplayer CianwoodGymBlackBeltText

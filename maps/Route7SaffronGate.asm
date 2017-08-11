@@ -25,16 +25,10 @@ OfficerScript_0x73518:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x73526
-	writetext UnknownText_0x7352c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7352c
 
 UnknownScript_0x73526:
-	writetext UnknownText_0x73592
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x73592
 
 Route7SaffronGateSilphEmployeeScript:
 	jumptextfaceplayer Route7SaffronGateSilphEmployeeText

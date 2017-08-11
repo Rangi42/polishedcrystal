@@ -34,10 +34,7 @@ ProfOaksAide3Script:
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 44, .HereYouGo
 .UhOh
-	writetext ProfOaksAide3UhOhText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide3UhOhText
 
 .HereYouGo
 	writetext ProfOaksAide3HereYouGoText
@@ -46,27 +43,17 @@ ProfOaksAide3Script:
 	iffalse .NoRoom
 	setevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 .Explain
-	writetext ProfOaksAide3ExplainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide3ExplainText
 
 .NoRoom
-	writetext ProfOaksAide3NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide3NoRoomText
 
 TrainerGruntM12:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_12, GRUNTM, 12, GruntM12SeenText, GruntM12BeatenText, 0, GruntM12Script
 
 GruntM12Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM12AfterText
-	waitbutton
-	closetext
-	end
+	jumptext GruntM12AfterText
 
 CliffEdgeGateHiddenBigPearl:
 	dwb EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL, BIG_PEARL

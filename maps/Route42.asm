@@ -111,10 +111,7 @@ Route42LyraScript5:
 
 Route42LyraScript:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	opentext
-	writetext Route42LyraGreetingText
-	waitbutton
-	closetext
+	showtext Route42LyraGreetingText
 	setevent EVENT_LYRA_ROUTE_42
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	winlosstext Route42LyraWinText, Route42LyraLossText
@@ -304,22 +301,14 @@ TrainerPokemaniacShane:
 
 PokemaniacShaneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a94d6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a94d6
 
 TrainerHikerBenjamin:
 	trainer EVENT_BEAT_HIKER_BENJAMIN, HIKER, BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText, 0, HikerBenjaminScript
 
 HikerBenjaminScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a943f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1a943f
 
 OfficermKeithScript:
 	faceplayer
@@ -342,16 +331,10 @@ OfficermKeithScript:
 	end
 
 .AfterScript:
-	writetext OfficermKeithAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficermKeithAfterText
 
 .NoFight:
-	writetext OfficermKeithDaytimeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficermKeithDaytimeText
 
 Route42OfficerScript:
 	jumptextfaceplayer Route42OfficerText

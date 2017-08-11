@@ -40,37 +40,19 @@ GiovannisCaveCelebiEventScript:
 	spriteface GIOVANNISCAVE_LYRA, UP
 	showemote EMOTE_SHOCK, GIOVANNISCAVE_GIOVANNI, 15
 	spriteface GIOVANNISCAVE_GIOVANNI, DOWN
-	opentext
-	writetext GiovannisCaveGiovanniIntroText
-	waitbutton
-	closetext
+	showtext GiovannisCaveGiovanniIntroText
 	applymovement GIOVANNISCAVE_GIOVANNI, GiovannisCave_GiovanniStepsDownMovementData
-	opentext
-	writetext GiovannisCaveGiovanniMemoriesText
-	waitbutton
-	closetext
+	showtext GiovannisCaveGiovanniMemoriesText
 	spriteface GIOVANNISCAVE_LYRA, RIGHT
-	opentext
-	writetext GiovannisCaveLyraQuestionsText
-	waitbutton
-	closetext
+	showtext GiovannisCaveLyraQuestionsText
 	showemote EMOTE_SHOCK, GIOVANNISCAVE_LYRA, 15
-	opentext
-	writetext GiovannisCaveLyraRecognizesGiovanniText
-	waitbutton
-	closetext
+	showtext GiovannisCaveLyraRecognizesGiovanniText
 	playmusic MUSIC_ROCKET_OVERTURE
 	spriteface GIOVANNISCAVE_LYRA, UP
 	spriteface GIOVANNISCAVE_GIOVANNI, UP
-	opentext
-	writetext GiovannisCaveBroadcastText
-	waitbutton
-	closetext
+	showtext GiovannisCaveBroadcastText
 	spriteface GIOVANNISCAVE_GIOVANNI, DOWN
-	opentext
-	writetext GiovannisCaveGiovanniIMustGoText
-	waitbutton
-	closetext
+	showtext GiovannisCaveGiovanniIMustGoText
 	domaptrigger GIOVANNIS_CAVE, $0
 	clearevent EVENT_TIME_TRAVELING
 	winlosstext GiovannisCaveGiovanniBeatenText, 0
@@ -80,25 +62,16 @@ GiovannisCaveCelebiEventScript:
 	reloadmapafterbattle
 	setevent EVENT_TIME_TRAVELING
 	applymovement GIOVANNISCAVE_GIOVANNI, GiovannisCave_GiovanniStepsBackMovementData
-	opentext
-	writetext GiovannisCaveGiovanniAfterText
-	waitbutton
-	closetext
+	showtext GiovannisCaveGiovanniAfterText
 	applymovement GIOVANNISCAVE_GIOVANNI, GiovannisCave_GiovanniLeavesMovementData
 	playsound SFX_ENTER_DOOR
 	disappear GIOVANNISCAVE_GIOVANNI
 	waitsfx
 	spriteface PLAYER, DOWN
 	spriteface GIOVANNISCAVE_LYRA, DOWN
-	opentext
-	writetext GiovannisCaveBroadcastAfterText
-	waitbutton
-	closetext
+	showtext GiovannisCaveBroadcastAfterText
 	applymovement GIOVANNISCAVE_LYRA, GiovannisCave_LyraStepsDownMovementData
-	opentext
-	writetext GiovannisCaveLyraFeelsSorryText
-	waitbutton
-	closetext
+	showtext GiovannisCaveLyraFeelsSorryText
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
 	pause 30
@@ -107,10 +80,7 @@ GiovannisCaveCelebiEventScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, GiovannisCave_PlayerStepsAsideMovementData
 	applymovement GIOVANNISCAVE_LYRA, GiovannisCave_LyraLooksAroundMovementData
-	opentext
-	writetext GiovannisCaveLyraWantsToLeaveText
-	waitbutton
-	closetext
+	showtext GiovannisCaveLyraWantsToLeaveText
 	playsound SFX_PROTECT
 	applymovement GIOVANNISCAVE_CELEBI, GiovannisCave_CelebiFloatsMovementData
 	waitsfx

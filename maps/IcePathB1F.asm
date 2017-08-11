@@ -76,11 +76,7 @@ IcePathB1FSetUpStoneTable:
 .FinishBoulder:
 	pause 30
 	scall .BoulderFallsThrough
-	opentext
-	writetext IcePathBoulderFellThroughText
-	waitbutton
-	closetext
-	end
+	jumptext IcePathBoulderFellThroughText
 
 .BoulderFallsThrough:
 	playsound SFX_STRENGTH
@@ -108,45 +104,28 @@ IcePathB1FTutorIcyWindScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_IcePathB1FTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IcePathB1FTutorRefused
 
 .NoSilverLeaf
-	writetext Text_IcePathB1FTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IcePathB1FTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_IcePathB1FTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IcePathB1FTutorTaught
 
 TrainerBoarderMax:
 	trainer EVENT_BEAT_BOARDER_MAX, BOARDER, MAX, BoarderMaxSeenText, BoarderMaxBeatenText, 0, BoarderMaxScript
 
 BoarderMaxScript:
 	end_if_just_battled
-	opentext
-	writetext BoarderMaxAfterText
-	waitbutton
-	closetext
-	end
+	jumptext BoarderMaxAfterText
 
 TrainerSkierBecky:
 	trainer EVENT_BEAT_SKIER_BECKY, SKIER, BECKY, SkierBeckySeenText, SkierBeckyBeatenText, 0, SkierBeckyScript
 
 SkierBeckyScript:
 	end_if_just_battled
-	opentext
-	writetext SkierBeckyAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SkierBeckyAfterText
 
 IcePathB1FHiddenMaxPotion:
 	dwb EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION, MAX_POTION

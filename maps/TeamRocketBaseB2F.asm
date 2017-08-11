@@ -102,10 +102,7 @@ UnknownScript_0x6cf9c:
 UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_ROCKET1
-	opentext
-	writetext UnknownText_0x6d2ad
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d2ad
 	spriteface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, MovementData_0x6d21f
@@ -113,10 +110,7 @@ UnknownScript_0x6cfac:
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d224
 	spriteface PLAYER, UP
 	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d22f
-	opentext
-	writetext UnknownText_0x6d2c3
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d2c3
 	cry DRAGONITE
 	spriteface TEAMROCKETBASEB2F_ARIANA, LEFT
 	spriteface PLAYER, LEFT
@@ -126,16 +120,10 @@ UnknownScript_0x6cfac:
 	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d24c
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d244
-	opentext
-	writetext UnknownText_0x6d38c
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d38c
 	spriteface PLAYER, RIGHT
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
-	opentext
-	writetext UnknownText_0x6d3bd
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d3bd
 	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d24a
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d248
 	winlosstext UnknownText_0x6d45c, 0
@@ -148,10 +136,7 @@ UnknownScript_0x6cfac:
 	setevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ARIANA_2
-	opentext
-	writetext UnknownText_0x6d4c6
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d4c6
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear TEAMROCKETBASEB2F_ROCKET1
@@ -164,24 +149,15 @@ UnknownScript_0x6cfac:
 	dotrigger $2
 	clearevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	spriteface TEAMROCKETBASEB2F_LANCE, DOWN
-	opentext
-	writetext UnknownText_0x6d5d8
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d5d8
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d250
 	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x6d64e
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d64e
 	follow TEAMROCKETBASEB2F_LANCE, PLAYER
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d254
 	stopfollow
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d258
-	opentext
-	writetext UnknownText_0x6d6cf
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d6cf
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d267
 	disappear TEAMROCKETBASEB2F_LANCE
 
@@ -190,10 +166,7 @@ UnknownScript_0x6d075:
 	end
 
 UnknownScript_0x6d07a:
-	opentext
-	writetext UnknownText_0x6d7ea
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d7ea
 	applymovement PLAYER, MovementData_0x6d278
 	end
 
@@ -205,18 +178,12 @@ LanceHealsScript2:
 	spriteface PLAYER, RIGHT
 	spriteface TEAMROCKETBASEB2F_LANCE, LEFT
 LanceHealsCommon:
-	opentext
-	writetext LanceHealsText1
-	waitbutton
-	closetext
+	showtext LanceHealsText1
 	special FadeOutPalettes
 	playsound SFX_FULL_HEAL
 	special HealParty
 	special FadeInPalettes
-	opentext
-	writetext LanceHealsText2
-	waitbutton
-	closetext
+	showtext LanceHealsText2
 	dotrigger $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
 	checkcode VAR_FACING
@@ -235,33 +202,21 @@ TrainerGruntM17:
 
 GruntM17Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6db88
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6db88
 
 TrainerGruntM18:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_18, GRUNTM, 18, GruntM18SeenText, GruntM18BeatenText, 0, GruntM18Script
 
 GruntM18Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6dc1a
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6dc1a
 
 TrainerGruntM19:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_19, GRUNTM, 19, GruntM19SeenText, GruntM19BeatenText, 0, GruntM19Script
 
 GruntM19Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6dcd1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x6dcd1
 
 RocketElectrode1:
 	cry ELECTRODE
@@ -335,10 +290,7 @@ UnknownScript_0x6d184:
 	waitbutton
 	closetext
 	spriteface TEAMROCKETBASEB2F_LANCE, DOWN
-	opentext
-	writetext UnknownText_0x6d994
-	waitbutton
-	closetext
+	showtext UnknownText_0x6d994
 	spriteface PLAYER, DOWN
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d283
 	disappear TEAMROCKETBASEB2F_LANCE
@@ -367,10 +319,7 @@ MapTeamRocketBaseB2FSignpost1Script:
 	opentext
 	checkevent EVENT_LEARNED_HAIL_GIOVANNI
 	iftrue UnknownScript_0x6d1e8
-	writetext UnknownText_0x6dd39
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6dd39
 
 UnknownScript_0x6d1e8:
 	writetext UnknownText_0x6dd6b
@@ -387,16 +336,10 @@ MapTeamRocketBaseB2FSignpost21Script:
 	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x6d207
-	writetext UnknownText_0x6dda7
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6dda7
 
 UnknownScript_0x6d207:
-	writetext UnknownText_0x6de03
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6de03
 
 TeamRocketBaseB2FHiddenFullHeal:
 	dwb EVENT_TEAM_ROCKET_BASE_B2F_HIDDEN_FULL_HEAL, FULL_HEAL

@@ -17,29 +17,20 @@ VermilionPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalLtSurgeScript
 
 .PersonEvents: db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x191603, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_SIGHTSEER_M, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SightseerMScript_0x191606, -1
 	person_event SPRITE_SAILOR, 5, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x19161a, -1
 	person_event SPRITE_BUG_CATCHER, 4, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x19161d, -1
-
-NurseScript_0x191603:
-	jumpstd pokecenternurse
 
 SightseerMScript_0x191606:
 	faceplayer
 	opentext
 	checkevent EVENT_VERMILION_CITY_SNORLAX
 	iftrue UnknownScript_0x191614
-	writetext UnknownText_0x191620
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191620
 
 UnknownScript_0x191614:
-	writetext UnknownText_0x191698
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191698
 
 SailorScript_0x19161a:
 	jumptextfaceplayer UnknownText_0x1916fe

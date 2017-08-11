@@ -17,17 +17,13 @@ SilverCavePokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalLanceScript
 
 .PersonEvents: db 3
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x1ae59a, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_LEFT, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x1ae59d, -1
 	person_event SPRITE_GRAMPS, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCavePokeCenterGrampsScript, -1
 
-NurseScript_0x1ae59a:
-	jumpstd pokecenternurse
-
 GrannyScript_0x1ae59d:
-	jumptextfaceplayer .Text
+	thistextfaceplayer
 
-.Text:
 	text "Trainers who seek"
 	line "power climb Mt."
 
@@ -51,16 +47,10 @@ SilverCavePokeCenterGrampsScript:
 	checkcode VAR_PKMN_JOURNALS
 	if_equal 0, .ReadNone
 	if_equal NUM_POKEMON_JOURNALS, .ReadThemAll
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .ReadNone:
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .ReadThemAll:
 	writetext .Text4
@@ -133,9 +123,8 @@ SilverCavePokeCenterGrampsScript:
 
 PokemonJournalLanceScript:
 	setflag ENGINE_READ_LANCE_JOURNAL
-	jumptext PokemonJournalLanceText
+	thistext
 
-PokemonJournalLanceText:
 	text "#mon Journal"
 
 	para "Special Feature:"

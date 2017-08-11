@@ -50,11 +50,7 @@ DimCave5FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	jumptext .Text
 
 .Text:
 	text "The boulder fell"
@@ -100,10 +96,7 @@ DimCave5FRileyScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…You are?"
@@ -186,11 +179,7 @@ TrainerSuper_nerdFoote:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I have a conundrum"
@@ -225,11 +214,7 @@ TrainerEngineerHoward:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "This waterfall"
@@ -255,11 +240,7 @@ TrainerSuper_nerdDave:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptext .AfterText
 
 .SeenText:
 	text "I've maxed out my"

@@ -46,10 +46,7 @@ TrainerProton2:
 	trainer EVENT_BEAT_PROTON_2, PROTON, PROTON2, Proton2SeenText, Proton2BeatenText, 0, Proton2Script
 
 Proton2Script:
-	opentext
-	writetext TrainerProton2WhenTalkText
-	waitbutton
-	closetext
+	showtext TrainerProton2WhenTalkText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear SLOWPOKEWELLB1F_PROTON
@@ -63,10 +60,7 @@ Proton2Script:
 	appear SLOWPOKEWELLB1F_KURT
 	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext KurtLeaveSlowpokeWellText
-	waitbutton
-	closetext
+	showtext KurtLeaveSlowpokeWellText
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
 	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_SILVER
 	clearevent EVENT_ILEX_FOREST_APPRENTICE
@@ -89,11 +83,7 @@ TrainerGruntM2:
 
 GruntM2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5aaf2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5aaf2
 
 TrainerGruntF1:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_1, GRUNTF, 1, GruntF1SeenText, GruntF1BeatenText, 0, GruntF1Script

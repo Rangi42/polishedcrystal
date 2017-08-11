@@ -75,10 +75,7 @@ PewterCityYoungsterScript:
 	end
 
 UnknownScript_0x18c023:
-	writetext UnknownText_0x18c1aa
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18c1aa
 
 PewterCitySign:
 	jumptext PewterCitySignText

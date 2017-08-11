@@ -28,11 +28,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	special Special_FadeOutMusic
 	pause 15
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	faceplayer
-	opentext
-	writetext .SeenText
-	waitbutton
-	closetext
+	showtextfaceplayer .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked SHAMOUTISHRINERUINS_LAWRENCE
 	loadtrainer LAWRENCE, 1
@@ -65,11 +61,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	spriteface SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue
 	pause 40
-	faceplayer
-	opentext
-	writetext .GoodbyeText
-	waitbutton
-	closetext
+	showtextfaceplayer .GoodbyeText
 	playsound SFX_WARP_TO
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes

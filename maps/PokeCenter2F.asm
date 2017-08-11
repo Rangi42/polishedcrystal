@@ -285,16 +285,10 @@ PokeCenter2F_CheckGender:
 .Female:
 	applymovement2 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
-	opentext
-	writetext Text_OhPleaseWait
-	waitbutton
-	closetext
+	showtext Text_OhPleaseWait
 	applymovement2 PokeCenter2FMovementData_ReceptionistLooksRight
 	spriteface PLAYER, LEFT
-	opentext
-	writetext Text_ChangeTheLook
-	waitbutton
-	closetext
+	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
 	writebyte (1 << 7) | (PAL_OW_RED << 4)
@@ -302,10 +296,7 @@ PokeCenter2F_CheckGender:
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	setflag ENGINE_KRIS_IN_CABLE_CLUB
 	special ReplaceKrisSprite
-	opentext
-	writetext Text_LikeTheLook
-	waitbutton
-	closetext
+	showtext Text_LikeTheLook
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepUp
 	end

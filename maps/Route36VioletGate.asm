@@ -25,16 +25,10 @@ Route36VioletGateOfficerScript:
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
-	writetext Route36VioletGateOfficerText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route36VioletGateOfficerText1
 
 .ClearedSudowoodo
-	writetext Route36VioletGateOfficerText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route36VioletGateOfficerText2
 
 Route36VioletGateYoungsterScript:
 	jumptextfaceplayer Route36VioletGateYoungsterText

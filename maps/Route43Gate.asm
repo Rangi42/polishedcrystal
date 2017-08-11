@@ -130,10 +130,7 @@ OfficerScript_0x19ac85:
 	end
 
 UnknownScript_0x19ac9c:
-	writetext UnknownText_0x19ae2d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19ae2d
 
 MovementData_0x19aca2:
 	step_down

@@ -188,16 +188,10 @@ MoveTutor:
 	db "Cancel@"
 
 .Refused:
-	writetext UnknownText_0x1990b4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1990b4
 
 .Refused2:
-	writetext UnknownText_0x199107
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x199107
 
 .TeachMove:
 	writetext UnknownText_0x19913a
@@ -206,22 +200,13 @@ MoveTutor:
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Special_DisplayCoinCaseBalance
-	writetext UnknownText_0x19918b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19918b
 
 .Incompatible:
-	writetext UnknownText_0x1991a4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1991a4
 
 .NotEnoughMoney:
-	writetext UnknownText_0x1991ac
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1991ac
 
 PokefanMScript_0x1989e3:
 	jumptextfaceplayer UnknownText_0x198a69
@@ -234,48 +219,30 @@ CooltrainerFScript_0x1989e9:
 	opentext
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .ClearedRadioTower
-	writetext UnknownText_0x198ae6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x198ae6
 
 .ClearedRadioTower:
-	writetext UnknownText_0x198b2d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x198b2d
 
 CooltrainerFScript_0x1989fd:
 	faceplayer
 	opentext
 	checkflag ENGINE_RADIO_CARD
 	iftrue .GotRadioCard
-	writetext UnknownText_0x198b73
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x198b73
 
 .GotRadioCard:
-	writetext UnknownText_0x198c14
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x198c14
 
 YoungsterScript_0x198a11:
 	faceplayer
 	opentext
 	checknite
 	iftrue .nite
-	writetext GoldenrodCityYoungsterDayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext GoldenrodCityYoungsterDayText
 
 .nite
-	writetext UnknownText_0x198c36
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x198c36
 
 LassScript_0x198a14:
 	jumptextfaceplayer UnknownText_0x198c83

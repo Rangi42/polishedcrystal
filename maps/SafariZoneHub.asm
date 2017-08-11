@@ -33,11 +33,7 @@ TrainerBug_maniacKai:
 
 Bug_maniacKaiScript:
 	end_if_just_battled
-	opentext
-	writetext Bug_maniacKaiAfterText
-	waitbutton
-	closetext
-	end
+	jumptext Bug_maniacKaiAfterText
 
 SafariZoneHubAreaSign:
 	jumptext SafariZoneHubAreaSignText

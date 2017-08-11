@@ -52,56 +52,35 @@ GoldenrodHarborTutorHyperVoiceScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_GoldenrodHarborTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GoldenrodHarborTutorRefused
 
 .NoSilverLeaf
-	writetext Text_GoldenrodHarborTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GoldenrodHarborTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_GoldenrodHarborTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GoldenrodHarborTutorTaught
 
 TrainerFisherPaton:
 	trainer EVENT_BEAT_FISHER_PATON, FISHER, PATON, FisherPatonSeenText, FisherPatonBeatenText, 0, TrainerFisherPatonScript
 
 TrainerFisherPatonScript:
 	end_if_just_battled
-	opentext
-	writetext FisherPatonAfterText
-	waitbutton
-	closetext
-	end
+	jumptext FisherPatonAfterText
 
 TrainerSwimmerfKatie:
 	trainer EVENT_BEAT_SWIMMERF_KATIE, SWIMMERF, KATIE, SwimmerfKatieSeenText, SwimmerfKatieBeatenText, 0, SwimmerfKatieScript
 
 SwimmerfKatieScript:
 	end_if_just_battled
-	opentext
-	writetext SwimmerfKatieAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SwimmerfKatieAfterText
 
 TrainerSwimmermJames:
 	trainer EVENT_BEAT_SWIMMERM_JAMES, SWIMMERM, JAMES, SwimmermJamesSeenText, SwimmermJamesBeatenText, 0, SwimmermJamesScript
 
 SwimmermJamesScript:
 	end_if_just_battled
-	opentext
-	writetext SwimmermJamesAfterText
-	waitbutton
-	closetext
-	end
+	jumptext SwimmermJamesAfterText
 
 GoldenrodHarborLass1Script:
 	faceplayer

@@ -37,16 +37,10 @@ CooltrainerMScript_0x19681d:
 	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue UnknownScript_0x19682b
-	writetext UnknownText_0x196834
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x196834
 
 UnknownScript_0x19682b:
-	writetext UnknownText_0x196873
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x196873
 
 YoungsterScript_0x196831:
 	jumptextfaceplayer UnknownText_0x1968a0

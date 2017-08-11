@@ -36,22 +36,14 @@ TrainerPokemaniacMiller:
 
 PokemaniacMillerScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7debd
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7debd
 
 TrainerSupernerdMarkus:
 	trainer EVENT_BEAT_SUPER_NERD_MARKUS, SUPER_NERD, MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText, 0, SupernerdMarkusScript
 
 SupernerdMarkusScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7df97
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x7df97
 
 MountMortar1FInsideHiddenMaxRepel:
 	dwb EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL, MAX_REPEL

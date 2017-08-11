@@ -17,13 +17,10 @@ Route32PokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalKurtScript
 
 .PersonEvents: db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x69b52, -1
+	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_FISHING_GURU, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x69b55, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x69b80, -1
 	person_event SPRITE_POKEFAN_M, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1
-
-NurseScript_0x69b52:
-	jumpstd pokecenternurse
 
 FishingGuruScript_0x69b55:
 	faceplayer
@@ -43,16 +40,10 @@ FishingGuruScript_0x69b55:
 	end
 
 UnknownScript_0x69b74:
-	writetext UnknownText_0x69c6c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69c6c
 
 UnknownScript_0x69b7a:
-	writetext UnknownText_0x69c8d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69c8d
 
 CooltrainerFScript_0x69b80:
 	jumptextfaceplayer UnknownText_0x69cac

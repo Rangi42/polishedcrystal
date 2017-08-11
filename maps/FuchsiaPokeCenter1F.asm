@@ -44,19 +44,12 @@ PokemonJournalJanineScript:
 	done
 
 JanineImpersonatorScript:
-	faceplayer
-	opentext
-	writetext .Text1
-	waitbutton
-	closetext
+	showtextfaceplayer .Text1
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_JANINE
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	opentext
-	writetext .Text2
-	waitbutton
-	closetext
+	showtext .Text2
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS

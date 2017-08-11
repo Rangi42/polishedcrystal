@@ -33,10 +33,7 @@ IceIslandRoofBlancheScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BLANCHE
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
+	showtext .AfterText
 	playsound SFX_WARP_TO
 	applymovement ICEISLANDROOF_BLANCHE, IceIslandRoofBlancheTeleport
 	disappear ICEISLANDROOF_BLANCHE
@@ -44,10 +41,7 @@ IceIslandRoofBlancheScript:
 	end
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .GreetingText:
 	text "TODO"

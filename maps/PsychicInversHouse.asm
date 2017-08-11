@@ -84,16 +84,10 @@ PsychicInverScript:
 	jump .Reward
 
 .No
-	writetext PsychicInverNoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PsychicInverNoText
 
 .Tomorrow:
-	writetext PsychicInverTomorrowText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext PsychicInverTomorrowText
 
 .RandomBerry:
 	ld a, APICOT_BERRY - LUM_BERRY + 1

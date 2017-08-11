@@ -38,10 +38,7 @@ ProfOaksAide1Script:
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 14, .HereYouGo
 .UhOh
-	writetext ProfOaksAide1UhOhText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide1UhOhText
 
 .HereYouGo
 	writetext ProfOaksAide1HereYouGoText
@@ -55,16 +52,10 @@ ProfOaksAide1Script:
 	itemnotify
 	setevent EVENT_GOT_NEST_BALLS_FROM_PROF_OAKS_AIDE
 .Explain
-	writetext ProfOaksAide1ExplainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide1ExplainText
 
 .NoRoom
-	writetext ProfOaksAide1NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide1NoRoomText
 
 UnknownText_0x62c80:
 	text "Ilex Forest is"

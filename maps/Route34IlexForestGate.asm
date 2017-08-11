@@ -50,10 +50,7 @@ UnknownScript_0x62d3d:
 	applymovement PLAYER, MovementData_0x62d97
 	stopfollow
 	spriteface PLAYER, DOWN
-	opentext
-	writetext UnknownText_0x62e41
-	waitbutton
-	closetext
+	showtext UnknownText_0x62e41
 	applymovement ROUTE34ILEXFORESTGATE_TEACHER2, MovementData_0x62d9a
 UnknownScript_0x62d62:
 	end
@@ -70,10 +67,7 @@ TeacherScript_0x62d63:
 	verbosegivetmhm TM_FALSE_SWIPE
 	setevent EVENT_GOT_TM54_FALSE_SWIPE
 UnknownScript_0x62d7e:
-	writetext UnknownText_0x62df6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x62df6
 
 UnknownScript_0x62d84:
 	writetext UnknownText_0x62e41
