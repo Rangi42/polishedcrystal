@@ -13,17 +13,15 @@ CeladonUniversityDeansOffice_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityDeansOfficeSignpost1
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityDeansOfficeSignpost2
+	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityDeansOfficeSignpost1Text
+	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityDeansOfficeSignpost2Text
 	signpost 4, 5, SIGNPOST_RIGHT, CeladonUniversityDeansOfficeComputer
-	signpost 1, 1, SIGNPOST_READ, CeladonUniversityDeansOfficeBookshelf
+	signpost 1, 1, SIGNPOST_JUMPTEXT, CeladonUniversityDeansOfficeBookshelfText
 
 .PersonEvents: db 1
-	person_event SPRITE_DEAN, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityDeansOfficeDeanScript, -1
+	person_event SPRITE_DEAN, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityDeansOfficeDeanText, -1
 
-CeladonUniversityDeansOfficeDeanScript:
-	thistextfaceplayer
-
+CeladonUniversityDeansOfficeDeanText:
 	text "How-dean there,"
 	line "young trainer!"
 
@@ -38,17 +36,13 @@ CeladonUniversityDeansOfficeDeanScript:
 	line "deaning machine!"
 	done
 
-CeladonUniversityDeansOfficeSignpost1:
-	thistext
-
+CeladonUniversityDeansOfficeSignpost1Text:
 	text "It's the Dean's"
 	line "graduate degree"
 	cont "in Education."
 	done
 
-CeladonUniversityDeansOfficeSignpost2:
-	thistext
-
+CeladonUniversityDeansOfficeSignpost2Text:
 	text "It's a picture of"
 	line "the Dean in what"
 
@@ -66,9 +60,7 @@ CeladonUniversityDeansOfficeComputer:
 	line "donations."
 	done
 
-CeladonUniversityDeansOfficeBookshelf:
-	thistext
-
+CeladonUniversityDeansOfficeBookshelfText:
 	text "It's a complete set"
 	line "of books of the"
 

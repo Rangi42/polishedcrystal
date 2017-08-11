@@ -12,7 +12,7 @@ Route16West_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 2, 59, SIGNPOST_READ, Route16WestSignpost
+	signpost 2, 59, SIGNPOST_JUMPTEXT, Route16WestSignpostText
 	signpost 5, 24, SIGNPOST_ITEM, Route16WestHiddenRareCandy
 
 .PersonEvents: db 10
@@ -149,9 +149,7 @@ TrainerBeautyNicole:
 	cont "you know!"
 	done
 
-Route16WestSignpost:
-	thistext
-
+Route16WestSignpostText:
 	text "Route 16"
 	done
 

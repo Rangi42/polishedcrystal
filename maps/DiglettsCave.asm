@@ -27,8 +27,8 @@ DiglettsCave_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
 	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
 	person_event SPRITE_ENGINEER, 20, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
-	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x74002, -1
-	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveCooltrainerfScript, -1
+	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, PokefanMScript_0x74002Text, -1
+	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, DiglettsCaveCooltrainerfText, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 28, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
 
 const_value set 2
@@ -217,9 +217,7 @@ TrainerEngineerSmith:
 	cont "engineers."
 	done
 
-DiglettsCaveCooltrainerfScript:
-	thistextfaceplayer
-
+DiglettsCaveCooltrainerfText:
 	text "Look at all these"
 	line "cute Diglett!"
 
@@ -227,9 +225,7 @@ DiglettsCaveCooltrainerfScript:
 	line "with a blue nose!"
 	done
 
-PokefanMScript_0x74002:
-	thistextfaceplayer
-
+PokefanMScript_0x74002Text:
 if DEF(FAITHFUL)
 	text "A bunch of Diglett"
 	line "popped out of the"

@@ -21,33 +21,31 @@ CeladonUniversity1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 13
-	signpost 0, 14, SIGNPOST_READ, CeladonUniversity1FDeansOfficeSign
-	signpost 4, 2, SIGNPOST_READ, CeladonUniversity1FClassroom1Sign
-	signpost 4, 8, SIGNPOST_READ, CeladonUniversity1FClassroom2Sign
-	signpost 4, 20, SIGNPOST_READ, CeladonUniversity1FClassroom3Sign
-	signpost 4, 26, SIGNPOST_READ, CeladonUniversity1FClassroom4Sign
-	signpost 12, 2, SIGNPOST_READ, CeladonUniversity1FStudentLoungeSign
-	signpost 12, 20, SIGNPOST_READ, CeladonUniversity1FLibrarySign
-	signpost 5, 22, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 5, 23, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 6, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 7, SIGNPOST_READ, CeladonUniversity1FTrophyCaseSign
-	signpost 13, 26, SIGNPOST_READ, CeladonUniversity1FBookshelf
-	signpost 13, 27, SIGNPOST_READ, CeladonUniversity1FBookshelf
+	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonUniversity1FDeansOfficeSignText
+	signpost 4, 2, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom1SignText
+	signpost 4, 8, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom2SignText
+	signpost 4, 20, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom3SignText
+	signpost 4, 26, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom4SignText
+	signpost 12, 2, SIGNPOST_JUMPTEXT, CeladonUniversity1FStudentLoungeSignText
+	signpost 12, 20, SIGNPOST_JUMPTEXT, CeladonUniversity1FLibrarySignText
+	signpost 5, 22, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	signpost 5, 23, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	signpost 13, 6, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	signpost 13, 7, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	signpost 13, 26, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
+	signpost 13, 27, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
 
 .PersonEvents: db 8
-	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FSuperNerdScript, -1
-	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FLassScript, -1
-	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainermScript, -1
-	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FYoungsterScript, -1
-	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FChildScript, -1
-	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FPokefanmScript, -1
-	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FReceptionistScript, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity1FCooltrainerfScript, -1
+	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FSuperNerdText, -1
+	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FLassText, -1
+	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FCooltrainermText, -1
+	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FYoungsterText, -1
+	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FChildText, -1
+	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FPokefanmText, -1
+	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FReceptionistText, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FCooltrainerfText, -1
 
-CeladonUniversity1FSuperNerdScript:
-	thistextfaceplayer
-
+CeladonUniversity1FSuperNerdText:
 	text "Some academics be-"
 	line "lieve there are"
 
@@ -65,9 +63,7 @@ CeladonUniversity1FSuperNerdScript:
 	line "tragic!"
 	done
 
-CeladonUniversity1FLassScript:
-	thistextfaceplayer
-
+CeladonUniversity1FLassText:
 	text "This place offers"
 	line "courses of study"
 
@@ -78,9 +74,7 @@ CeladonUniversity1FLassScript:
 	line "psychology!"
 	done
 
-CeladonUniversity1FCooltrainermScript:
-	thistextfaceplayer
-
+CeladonUniversity1FCooltrainermText:
 	text "Everyone at this"
 	line "university is a"
 	cont "#mon trainer."
@@ -93,9 +87,7 @@ CeladonUniversity1FCooltrainermScript:
 	cont "battling tests."
 	done
 
-CeladonUniversity1FYoungsterScript:
-	thistextfaceplayer
-
+CeladonUniversity1FYoungsterText:
 	text "Magikarp is the"
 	line "university's mascot"
 	cont "#mon."
@@ -105,27 +97,21 @@ CeladonUniversity1FYoungsterScript:
 	cont "to greatness!"
 	done
 
-CeladonUniversity1FChildScript:
-	thistextfaceplayer
-
+CeladonUniversity1FChildText:
 	text "Ugh! I can't find"
 	line "my next class…"
 
 	para "I'm gonna be late!"
 	done
 
-CeladonUniversity1FPokefanmScript:
-	thistextfaceplayer
-
+CeladonUniversity1FPokefanmText:
 	text "I'm the janitor!"
 
 	para "Be careful, the"
 	line "floor is wet!"
 	done
 
-CeladonUniversity1FReceptionistScript:
-	thistextfaceplayer
-
+CeladonUniversity1FReceptionistText:
 	text "Welcome to Celadon"
 	line "University!"
 
@@ -146,9 +132,7 @@ CeladonUniversity1FReceptionistScript:
 	line "stairs."
 	done
 
-CeladonUniversity1FCooltrainerfScript:
-	thistextfaceplayer
-
+CeladonUniversity1FCooltrainerfText:
 	text "I'm studying to be"
 	line "a #mon nurse."
 
@@ -159,59 +143,41 @@ CeladonUniversity1FCooltrainerfScript:
 	line "learning curve!"
 	done
 
-CeladonUniversity1FDeansOfficeSign:
-	thistext
-
+CeladonUniversity1FDeansOfficeSignText:
 	text "Dean's Office"
 	done
 
-CeladonUniversity1FClassroom1Sign:
-	thistext
-
+CeladonUniversity1FClassroom1SignText:
 	text "W2 Art"
 	done
 
-CeladonUniversity1FClassroom2Sign:
-	thistext
-
+CeladonUniversity1FClassroom2SignText:
 	text "W1 History"
 	done
 
-CeladonUniversity1FClassroom3Sign:
-	thistext
-
+CeladonUniversity1FClassroom3SignText:
 	text "E1 Science"
 	done
 
-CeladonUniversity1FClassroom4Sign:
-	thistext
-
+CeladonUniversity1FClassroom4SignText:
 	text "E2 Battling"
 	done
 
-CeladonUniversity1FStudentLoungeSign:
-	thistext
-
+CeladonUniversity1FStudentLoungeSignText:
 	text "Student Lounge"
 	done
 
-CeladonUniversity1FLibrarySign:
-	thistext
-
+CeladonUniversity1FLibrarySignText:
 	text "Library"
 	done
 
-CeladonUniversity1FTrophyCaseSign:
-	thistext
-
+CeladonUniversity1FTrophyCaseSignText:
 	text "The case is full"
 	line "of trophies and"
 	cont "medals."
 	done
 
-CeladonUniversity1FBookshelf:
-	thistext
-
+CeladonUniversity1FBookshelfText:
 	text "There are tons of"
 	line "yearbooks here."
 

@@ -17,22 +17,22 @@ CeladonUniversity2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 7
-	signpost 0, 6, SIGNPOST_READ, CeladonUniversity2FCafeteriaSign
-	signpost 0, 12, SIGNPOST_READ, CeladonUniversity2FHyperTestSign
-	signpost 0, 20, SIGNPOST_READ, CeladonUniversity2FPoolSign
-	signpost 8, 4, SIGNPOST_READ, CeladonUniversity2FWillowsOfficeSign
-	signpost 8, 18, SIGNPOST_READ, CeladonUniversity2FWestwoodsOfficeSign
+	signpost 0, 6, SIGNPOST_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
+	signpost 0, 12, SIGNPOST_JUMPTEXT, CeladonUniversity2FHyperTestSignText
+	signpost 0, 20, SIGNPOST_JUMPTEXT, CeladonUniversity2FPoolSignText
+	signpost 8, 4, SIGNPOST_JUMPTEXT, CeladonUniversity2FWillowsOfficeSignText
+	signpost 8, 18, SIGNPOST_JUMPTEXT, CeladonUniversity2FWestwoodsOfficeSignText
 	signpost 1, 16, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
 	signpost 1, 24, SIGNPOST_READ, CeladonUniversity2FCuboneSign
 
 .PersonEvents: db 7
 	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainermScript, -1
-	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster1Script, -1
-	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCowgirlScript, -1
-	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FBug_catcherScript, -1
-	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FLassScript, -1
-	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster2Script, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FCooltrainermText, -1
+	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FYoungster1Text, -1
+	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FCowgirlText, -1
+	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FBug_catcherText, -1
+	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FLassText, -1
+	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity2FYoungster2Text, -1
 
 CeladonUniversity2FCooltrainerfScript:
 	faceplayer
@@ -109,9 +109,7 @@ CeladonUniversity2FCooltrainerfScript:
 	line "Fresh Water then…"
 	done
 
-CeladonUniversity2FCooltrainermScript:
-	thistextfaceplayer
-
+CeladonUniversity2FCooltrainermText:
 	text "The cafeteria gets"
 	line "pretty crowded,"
 
@@ -119,9 +117,7 @@ CeladonUniversity2FCooltrainermScript:
 	line "in the hall."
 	done
 
-CeladonUniversity2FYoungster1Script:
-	thistextfaceplayer
-
+CeladonUniversity2FYoungster1Text:
 	text "I failed the"
 	line "Hyper Test again…"
 
@@ -129,17 +125,13 @@ CeladonUniversity2FYoungster1Script:
 	line "give up!"
 	done
 
-CeladonUniversity2FCowgirlScript:
-	thistextfaceplayer
-
+CeladonUniversity2FCowgirlText:
 	text "My class is going"
 	line "on a field trip to"
 	cont "the Safari Zone!"
 	done
 
-CeladonUniversity2FBug_catcherScript:
-	thistextfaceplayer
-
+CeladonUniversity2FBug_catcherText:
 	text "Prof.Willow sends"
 	line "his assistants to"
 
@@ -150,9 +142,7 @@ CeladonUniversity2FBug_catcherScript:
 	line "live here."
 	done
 
-CeladonUniversity2FLassScript:
-	thistextfaceplayer
-
+CeladonUniversity2FLassText:
 	text "In addition to"
 	line "being the Celadon"
 	cont "Gym Leader,"
@@ -165,9 +155,7 @@ CeladonUniversity2FLassScript:
 	line "cool as her."
 	done
 
-CeladonUniversity2FYoungster2Script:
-	thistextfaceplayer
-
+CeladonUniversity2FYoungster2Text:
 	text "Prof.Westwood is a"
 	line "little eccentric."
 
@@ -178,34 +166,24 @@ CeladonUniversity2FYoungster2Script:
 	line "traits."
 	done
 
-CeladonUniversity2FCafeteriaSign:
-	thistext
-
+CeladonUniversity2FCafeteriaSignText:
 	text "Cafeteria"
 	done
 
-CeladonUniversity2FHyperTestSign:
-	thistext
-
+CeladonUniversity2FHyperTestSignText:
 	text "Hyper Test Room"
 	done
 
-CeladonUniversity2FPoolSign:
-	thistext
-
+CeladonUniversity2FPoolSignText:
 	text "Swimming Pool"
 	done
 
-CeladonUniversity2FWillowsOfficeSign:
-	thistext
-
+CeladonUniversity2FWillowsOfficeSignText:
 	text "Prof.Willow's"
 	line "Office"
 	done
 
-CeladonUniversity2FWestwoodsOfficeSign:
-	thistext
-
+CeladonUniversity2FWestwoodsOfficeSignText:
 	text "Prof.Westwood's"
 	line "Office"
 	done

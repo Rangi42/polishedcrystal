@@ -12,11 +12,11 @@ Route49_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 31, SIGNPOST_READ, Route49Sign
+	signpost 11, 31, SIGNPOST_JUMPTEXT, Route49SignText
 
 .PersonEvents: db 11
-	person_event SPRITE_LADY, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route49LadyScript, -1
-	person_event SPRITE_YOUNGSTER, 17, 31, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route49YoungsterScript, -1
+	person_event SPRITE_LADY, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route49LadyText, -1
+	person_event SPRITE_YOUNGSTER, 17, 31, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Route49YoungsterText, -1
 	person_event SPRITE_SIGHTSEER_M, 8, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerSightseermHari, -1
 	person_event SPRITE_COOLTRAINER_M, 16, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerJordan, -1
 	person_event SPRITE_LADY, 19, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyPeony, -1
@@ -27,9 +27,7 @@ Route49_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 26, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_49_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 15, 20, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_49_CUT_TREE_2
 
-Route49LadyScript:
-	thistextfaceplayer
-
+Route49LadyText:
 	text "Look at the grass"
 	line "and trees here!"
 
@@ -37,9 +35,7 @@ Route49LadyScript:
 	line "of unique flora."
 	done
 
-Route49YoungsterScript:
-	thistextfaceplayer
-
+Route49YoungsterText:
 	text "This landscape"
 	line "makes me feel like"
 
@@ -169,9 +165,7 @@ TrainerGuitaristmGeddy:
 Route49FruitTree:
 	fruittree FRUITTREE_ROUTE_49
 
-Route49Sign:
-	thistext
-
+Route49SignText:
 	text "Route 49"
 	line "Valencia Island"
 	done

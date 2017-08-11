@@ -13,20 +13,20 @@ CeladonUniversityClassroom1_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom1Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom1Bookshelf2
+	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
+	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
+	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf1Text
+	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf2Text
 
 .PersonEvents: db 7
 	person_event SPRITE_IMAKUNI, 7, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
-	person_event SPRITE_ANDY, 2, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1AndyScript, -1
-	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Dragon_tamerScript, -1
-	person_event SPRITE_LADY, 5, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1LadyScript, -1
-	person_event SPRITE_ARTIST, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist1Script, -1
-	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist2Script, -1
-	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1Artist3Script, -1
+	person_event SPRITE_ANDY, 2, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom1AndyText, -1
+	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom1Dragon_tamerText, -1
+	person_event SPRITE_LADY, 5, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom1LadyText, -1
+	person_event SPRITE_ARTIST, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom1Artist1Text, -1
+	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom1Artist2Text, -1
+	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityClassroom1Artist3Text, -1
 
 const_value set 2
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI
@@ -136,9 +136,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	line "a poet!"
 	done
 
-CeladonUniversityClassroom1AndyScript:
-	thistextfaceplayer
-
+CeladonUniversityClassroom1AndyText:
 	text "Hello there!"
 	line "I'm Prof.Andy,"
 
@@ -156,17 +154,13 @@ CeladonUniversityClassroom1AndyScript:
 	cont "how things look."
 	done
 
-CeladonUniversityClassroom1Dragon_tamerScript:
-	thistextfaceplayer
-
+CeladonUniversityClassroom1Dragon_tamerText:
 	text "I've been holding"
 	line "this pose for a"
 	cont "while now."
 	done
 
-CeladonUniversityClassroom1LadyScript:
-	thistextfaceplayer
-
+CeladonUniversityClassroom1LadyText:
 	text "You meet some"
 	line "unique people in"
 	cont "art class, but"
@@ -176,17 +170,13 @@ CeladonUniversityClassroom1LadyScript:
 	cont "really suspicious!"
 	done
 
-CeladonUniversityClassroom1Artist1Script:
-	thistextfaceplayer
-
+CeladonUniversityClassroom1Artist1Text:
 	text "It's tough getting"
 	line "the folds of this"
 	cont "cape just right."
 	done
 
-CeladonUniversityClassroom1Artist2Script:
-	thistextfaceplayer
-
+CeladonUniversityClassroom1Artist2Text:
 	text "Aah-choo!"
 
 	para "Ugh. We just had a"
@@ -200,9 +190,7 @@ CeladonUniversityClassroom1Artist2Script:
 	line "gic…"
 	done
 
-CeladonUniversityClassroom1Artist3Script:
-	thistextfaceplayer
-
+CeladonUniversityClassroom1Artist3Text:
 	text "I work a lot dur-"
 	line "ing the day, so I"
 
@@ -210,9 +198,7 @@ CeladonUniversityClassroom1Artist3Script:
 	line "the evenings."
 	done
 
-CeladonUniversityClassroom1Blackboard:
-	thistext
-
+CeladonUniversityClassroom1BlackboardText:
 	text "There's a descrip-"
 	line "tion of two-point"
 
@@ -220,9 +206,7 @@ CeladonUniversityClassroom1Blackboard:
 	line "perspective."
 	done
 
-CeladonUniversityClassroom1Bookshelf1:
-	thistext
-
+CeladonUniversityClassroom1Bookshelf1Text:
 	text "It's a book about"
 	line "Smeargle, a"
 	cont "#mon artist."
@@ -231,9 +215,7 @@ CeladonUniversityClassroom1Bookshelf1:
 	line "tiful drawings."
 	done
 
-CeladonUniversityClassroom1Bookshelf2:
-	thistext
-
+CeladonUniversityClassroom1Bookshelf2Text:
 	text "It's a brochure"
 	line "showcasing fine"
 	cont "art from a place"

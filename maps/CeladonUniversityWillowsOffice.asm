@@ -13,19 +13,17 @@ CeladonUniversityWillowsOffice_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 0, 0, SIGNPOST_READ, CeladonUniversityWillowsOfficeBlackboard
-	signpost 0, 1, SIGNPOST_READ, CeladonUniversityWillowsOfficeBlackboard
-	signpost 1, 2, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf1
-	signpost 1, 3, SIGNPOST_READ, CeladonUniversityWillowsOfficeBookshelf2
+	signpost 0, 0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	signpost 0, 1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	signpost 1, 2, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
+	signpost 1, 3, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
 	signpost 2, 5, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
 
 .PersonEvents: db 2
-	person_event SPRITE_WILLOW, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityWillowsOfficeWillowScript, -1
-	person_event SPRITE_SCIENTIST, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityWillowsOfficeScientistScript, -1
+	person_event SPRITE_WILLOW, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityWillowsOfficeWillowText, -1
+	person_event SPRITE_SCIENTIST, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityWillowsOfficeScientistText, -1
 
-CeladonUniversityWillowsOfficeWillowScript:
-	thistextfaceplayer
-
+CeladonUniversityWillowsOfficeWillowText:
 	text "Hello there!"
 	line "I am Prof.Willow."
 
@@ -50,9 +48,7 @@ CeladonUniversityWillowsOfficeWillowScript:
 	line "get work done."
 	done
 
-CeladonUniversityWillowsOfficeScientistScript:
-	thistextfaceplayer
-
+CeladonUniversityWillowsOfficeScientistText:
 	text "I get to work as"
 	line "Prof.Willow's"
 	cont "aide!"
@@ -67,9 +63,7 @@ CeladonUniversityWillowsOfficeScientistScript:
 	cont "and one Vulpix!"
 	done
 
-CeladonUniversityWillowsOfficeBlackboard:
-	thistext
-
+CeladonUniversityWillowsOfficeBlackboardText:
 	text "Someone wrote “DO"
 	line "NOT ERASE” with"
 
@@ -78,9 +72,7 @@ CeladonUniversityWillowsOfficeBlackboard:
 	cont "scrawl…"
 	done
 
-CeladonUniversityWillowsOfficeBookshelf1:
-	thistext
-
+CeladonUniversityWillowsOfficeBookshelf1Text:
 	text "It's a book about"
 	line "ecological niches"
 
@@ -89,9 +81,7 @@ CeladonUniversityWillowsOfficeBookshelf1:
 	cont "environments."
 	done
 
-CeladonUniversityWillowsOfficeBookshelf2:
-	thistext
-
+CeladonUniversityWillowsOfficeBookshelf2Text:
 	text "It's a promotional"
 	line "flyer for the"
 	cont "Safari Zone."

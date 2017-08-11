@@ -14,8 +14,8 @@ Route7_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 13, 5, SIGNPOST_READ, Route7UndergroundPathSign
-	signpost 11, 6, SIGNPOST_READ, Route7LockedDoor
+	signpost 13, 5, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
+	signpost 11, 6, SIGNPOST_JUMPTEXT, Route7LockedDoorText
 
 .PersonEvents: db 3
 	person_event SPRITE_BIG_SNORLAX, 0, 1, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
@@ -92,9 +92,7 @@ Route7Snorlax:
 	para "Snorlax woke up!"
 	done
 
-Route7UndergroundPathSign:
-	thistext
-
+Route7UndergroundPathSignText:
 	text "What's this flyer?"
 
 	para "“Uncouth trainers"
@@ -113,8 +111,6 @@ Route7UndergroundPathSign:
 	para "-- Celadon Police"
 	done
 
-Route7LockedDoor:
-	thistext
-
+Route7LockedDoorText:
 	text "It's locked…"
 	done

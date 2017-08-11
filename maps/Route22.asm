@@ -12,11 +12,11 @@ Route22_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 7, 5, SIGNPOST_READ, VictoryRoadEntranceSign
+	signpost 7, 5, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
 
 .PersonEvents: db 2
 	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route22CooltrainerfScript, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, Route22CooltrainerfText, -1
 
 const_value set 2
 	const ROUTE22_KUKUI
@@ -145,9 +145,7 @@ KukuiScript:
 	para "I respect that!"
 	done
 
-Route22CooltrainerfScript:
-	thistextfaceplayer
-
+Route22CooltrainerfText:
 	text "The name “Kanto”"
 	line "means “east of the"
 	cont "barrier.”"
@@ -157,9 +155,7 @@ Route22CooltrainerfScript:
 	cont "Mt.Silver."
 	done
 
-VictoryRoadEntranceSign:
-	thistext
-
+VictoryRoadEntranceSignText:
 	text "Route 22"
 
 	para "#mon League"

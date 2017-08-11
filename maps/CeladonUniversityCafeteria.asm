@@ -13,14 +13,14 @@ CeladonUniversityCafeteria_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 10, SIGNPOST_READ, CeladonUniversityCafeteriaSign
+	signpost 0, 10, SIGNPOST_JUMPTEXT, CeladonUniversityCafeteriaSignText
 
 .PersonEvents: db 7
 	person_event SPRITE_COOLTRAINER_M, 2, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCoreyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCooltrainerfScript, -1
-	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBeautyScript, -1
-	person_event SPRITE_YOUNGSTER, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster1Script, -1
-	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaLadyScript, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityCafeteriaCooltrainerfText, -1
+	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityCafeteriaBeautyText, -1
+	person_event SPRITE_YOUNGSTER, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityCafeteriaYoungster1Text, -1
+	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityCafeteriaLadyText, -1
 	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster2Script, -1
 	person_event SPRITE_BAKER, 3, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBakerScript, -1
 
@@ -158,9 +158,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	line "goals, don't you?"
 	done
 
-CeladonUniversityCafeteriaCooltrainerfScript:
-	thistextfaceplayer
-
+CeladonUniversityCafeteriaCooltrainerfText:
 	text "This place makes"
 	line "the best Cinnabar-"
 	cont "style hamburger"
@@ -172,9 +170,7 @@ CeladonUniversityCafeteriaCooltrainerfScript:
 	line "being home."
 	done
 
-CeladonUniversityCafeteriaBeautyScript:
-	thistextfaceplayer
-
+CeladonUniversityCafeteriaBeautyText:
 	text "The cook finally"
 	line "made another batch"
 	cont "of Old Gateau!"
@@ -183,9 +179,7 @@ CeladonUniversityCafeteriaBeautyScript:
 	line "for seconds."
 	done
 
-CeladonUniversityCafeteriaYoungster1Script:
-	thistextfaceplayer
-
+CeladonUniversityCafeteriaYoungster1Text:
 	text "I asked the cafe-"
 	line "teria to stock"
 	cont "Casteliacones."
@@ -195,9 +189,7 @@ CeladonUniversityCafeteriaYoungster1Script:
 	cont "yummy too!"
 	done
 
-CeladonUniversityCafeteriaLadyScript:
-	thistextfaceplayer
-
+CeladonUniversityCafeteriaLadyText:
 	text "I'm on a diet."
 	line "Today it's a"
 	para "nutritious Slip"
@@ -306,9 +298,7 @@ CeladonUniversityCafeteriaBakerScript:
 	line "it, hon."
 	done
 
-CeladonUniversityCafeteriaSign:
-	thistext
-
+CeladonUniversityCafeteriaSignText:
 	text "Please clean up"
 	line "when you are"
 	cont "finished eating."

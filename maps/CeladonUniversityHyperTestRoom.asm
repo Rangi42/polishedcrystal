@@ -14,16 +14,16 @@ CeladonUniversityHyperTestRoom_MapEventHeader:
 
 .Signposts: db 5
 	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf2
+	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
+	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
 	signpost 4, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 	signpost 6, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 
 .PersonEvents: db 4
 	person_event SPRITE_WESTWOOD, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
-	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomScientistScript, -1
-	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomTwin1Script, -1
-	person_event SPRITE_TWIN, 8, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomTwin2Script, -1
+	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityHyperTestRoomScientistText, -1
+	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityHyperTestRoomTwin1Text, -1
+	person_event SPRITE_TWIN, 8, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityHyperTestRoomTwin2Text, -1
 
 CeladonUniversityHyperTestRoomWestwoodScript:
 	faceplayer
@@ -415,9 +415,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Prof.Willow@"
 	db "Prof.Westwood@"
 
-CeladonUniversityHyperTestRoomScientistScript:
-	thistextfaceplayer
-
+CeladonUniversityHyperTestRoomScientistText:
 	text "The Hyper Test is"
 	line "a rite of passage"
 
@@ -430,16 +428,12 @@ CeladonUniversityHyperTestRoomScientistScript:
 	cont "the utmost!"
 	done
 
-CeladonUniversityHyperTestRoomTwin1Script:
-	thistextfaceplayer
-
+CeladonUniversityHyperTestRoomTwin1Text:
 	text "I'll pass the Hyper"
 	line "Test before you!"
 	done
 
-CeladonUniversityHyperTestRoomTwin2Script:
-	thistextfaceplayer
-
+CeladonUniversityHyperTestRoomTwin2Text:
 	text "No, I'll pass the"
 	line "Hyper Test before"
 	cont "you!"
@@ -457,9 +451,7 @@ CeladonUniversityHyperTestRoomMagikarpSign:
 	line "swimming around."
 	done
 
-CeladonUniversityHyperTestRoomBookshelf1:
-	thistext
-
+CeladonUniversityHyperTestRoomBookshelf1Text:
 	text "This book has a"
 	line "bookmark in it."
 
@@ -467,9 +459,7 @@ CeladonUniversityHyperTestRoomBookshelf1:
 	line "with it yet!"
 	done
 
-CeladonUniversityHyperTestRoomBookshelf2:
-	thistext
-
+CeladonUniversityHyperTestRoomBookshelf2Text:
 	text "It's a copy of"
 	line "Nintendo Power!"
 

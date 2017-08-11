@@ -13,10 +13,10 @@ CeladonUniversityWestwoodsOffice_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeSignpost1
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeSignpost2
-	signpost 1, 4, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeBookshelf
-	signpost 1, 5, SIGNPOST_READ, CeladonUniversityWestwoodsOfficeBookshelf
+	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost1Text
+	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost2Text
+	signpost 1, 4, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
+	signpost 1, 5, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 
 .PersonEvents: db 2
 	person_event SPRITE_CHILD, 3, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
@@ -87,23 +87,17 @@ CeladonUniversityWestwoodsOfficeBookScript:
 	line "just fine."
 	done
 
-CeladonUniversityWestwoodsOfficeSignpost1:
-	thistext
-
+CeladonUniversityWestwoodsOfficeSignpost1Text:
 	text "It's a portrait of"
 	line "Westwood I."
 	done
 
-CeladonUniversityWestwoodsOfficeSignpost2:
-	thistext
-
+CeladonUniversityWestwoodsOfficeSignpost2Text:
 	text "It's a portrait of"
 	line "Westwood III."
 	done
 
-CeladonUniversityWestwoodsOfficeBookshelf:
-	thistext
-
+CeladonUniversityWestwoodsOfficeBookshelfText:
 	text "The Complete Works"
 	line "of Prof.Westwood."
 

@@ -4356,8 +4356,8 @@ RemoraidEvosAttacks:
 	db 18, BUBBLE_BEAM
 	db 22, FOCUS_ENERGY
 	db 26, WATER_PULSE
-	db 30, ICE_BEAM ; Signal Beam → Ice Beam
-	db 34, FLAMETHROWER ; Ice Beam → TM move
+	db 30, FLAMETHROWER ; Signal Beam → TM move
+	db 34, ICE_BEAM
 	db 38, SEED_BOMB ; Bullet Seed → tutor move
 	db 42, GUNK_SHOT ; Hydro Pump → new move
 	db 46, HYDRO_PUMP ; Hyper Beam → Hydro Pump
@@ -4376,11 +4376,14 @@ OctilleryEvosAttacks:
 	db 22, FOCUS_ENERGY
 	db 26, WRAP ; Wring Out → new move
 	db 28, WATER_PULSE
-	db 34, ICE_BEAM ; Signal Beam → Ice Beam
-	db 40, FLAMETHROWER ; Ice Beam → TM move
+	db 34, FLAMETHROWER ; Signal Beam → TM move
+	db 40, ICE_BEAM
 	db 46, SEED_BOMB ; Bullet Seed → tutor move
 	db 52, GUNK_SHOT ; Hydro Pump → new move
 	db 58, HYDRO_PUMP ; Hyper Beam → Hydro Pump
+if !DEF(FAITHFUL)
+	db 58, FIRE_BLAST ; new move
+endc
 	db 64, AURA_SPHERE ; Soak → new move
 	db 70, HYPER_BEAM
 	db 0 ; no more level-up moves

@@ -30,8 +30,8 @@ NoisyForest_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 17, 31, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristfJaclyn, -1
 	person_event SPRITE_ROCKER, 30, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmEzekiel, -1
 	person_event SPRITE_POKEFAN_M, 34, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerLester, -1
-	person_event SPRITE_TEACHER, 6, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NoisyForestTeacherScript, -1
-	person_event SPRITE_CHILD, 15, 40, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, NoisyForestChildScript, -1
+	person_event SPRITE_TEACHER, 6, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, NoisyForestTeacherText, -1
+	person_event SPRITE_CHILD, 15, 40, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, NoisyForestChildText, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 2, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
 	person_event SPRITE_BALL_CUT_FRUIT, 28, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MULCH, 1, EVENT_NOISY_FOREST_MULCH
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_U_TURN, EVENT_NOISY_FOREST_TM_U_TURN
@@ -282,9 +282,7 @@ TrainerBird_keeperTrent:
 	line "our training."
 	done
 
-NoisyForestTeacherScript:
-	thistextfaceplayer
-
+NoisyForestTeacherText:
 	text "I come here for my"
 	line "morning stroll."
 
@@ -293,9 +291,7 @@ NoisyForestTeacherScript:
 	cont "my steps!"
 	done
 
-NoisyForestChildScript:
-	thistextfaceplayer
-
+NoisyForestChildText:
 	text "Gah! This place"
 	line "is deafening!"
 	done

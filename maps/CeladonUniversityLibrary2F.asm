@@ -12,28 +12,28 @@ CeladonUniversityLibrary2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 28
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityLibrary1FSignpost1
-	signpost 0, 10, SIGNPOST_READ, CeladonUniversityLibrary1FSignpost2
-	signpost 3, 0, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf1
-	signpost 3, 1, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf2
-	signpost 3, 2, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf3
-	signpost 3, 3, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf4
-	signpost 3, 4, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf5
-	signpost 3, 5, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf6
-	signpost 3, 8, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf7
-	signpost 3, 9, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf8
-	signpost 3, 10, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf9
-	signpost 3, 11, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf10
-	signpost 3, 12, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf11
-	signpost 3, 13, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf12
-	signpost 7, 6, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf13
-	signpost 7, 7, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf14
-	signpost 7, 8, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf15
-	signpost 7, 9, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf16
-	signpost 7, 10, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf17
-	signpost 7, 11, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf18
-	signpost 7, 12, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf19
-	signpost 7, 13, SIGNPOST_READ, CeladonUniversityLibrary2FBookshelf20
+	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
+	signpost 0, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
+	signpost 3, 0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf1Text
+	signpost 3, 1, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf2Text
+	signpost 3, 2, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf3Text
+	signpost 3, 3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf4Text
+	signpost 3, 4, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf5Text
+	signpost 3, 5, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf6Text
+	signpost 3, 8, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf7Text
+	signpost 3, 9, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf8Text
+	signpost 3, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf9Text
+	signpost 3, 11, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf10Text
+	signpost 3, 12, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf11Text
+	signpost 3, 13, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf12Text
+	signpost 7, 6, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf13Text
+	signpost 7, 7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf14Text
+	signpost 7, 8, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf15Text
+	signpost 7, 9, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf16Text
+	signpost 7, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf17Text
+	signpost 7, 11, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf18Text
+	signpost 7, 12, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf19Text
+	signpost 7, 13, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf20Text
 	signpost 6, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
 	signpost 6, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer2
 	signpost 8, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer3
@@ -43,19 +43,17 @@ CeladonUniversityLibrary2F_MapEventHeader:
 
 .PersonEvents: db 7
 	person_event SPRITE_ARTIST, 9, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FArtistScript, -1
-	person_event SPRITE_COSPLAYER, 4, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FCosplayerScript, -1
-	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FLassScript, -1
-	person_event SPRITE_SUPER_NERD, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FSuper_nerdScript, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FCooltrainerfScript, -1
-	person_event SPRITE_YOUNGSTER, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FYoungsterScript, -1
+	person_event SPRITE_COSPLAYER, 4, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary2FCosplayerText, -1
+	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary2FLassText, -1
+	person_event SPRITE_SUPER_NERD, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary2FSuper_nerdText, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary2FCooltrainerfText, -1
+	person_event SPRITE_YOUNGSTER, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary2FYoungsterText, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TIMER_BALL, 1, EVENT_CELADON_UNIVERSITY_LIBRARY_2F_TIMER_BALL
 
 const_value set 2
 	const CELADONUNIVERSITYLIBRARY2F_ARTIST
 
-CeladonUniversityLibrary2FCosplayerScript:
-	thistextfaceplayer
-
+CeladonUniversityLibrary2FCosplayerText:
 	text "It's great being"
 	line "in the city!"
 
@@ -66,9 +64,7 @@ CeladonUniversityLibrary2FCosplayerScript:
 	line "an eye!"
 	done
 
-CeladonUniversityLibrary2FLassScript:
-	thistextfaceplayer
-
+CeladonUniversityLibrary2FLassText:
 	text "Never judge a book"
 	line "by its cover."
 
@@ -99,9 +95,7 @@ CeladonUniversityLibrary2FArtistScript:
 	cont "shoulder!"
 	done
 
-CeladonUniversityLibrary2FSuper_nerdScript:
-	thistextfaceplayer
-
+CeladonUniversityLibrary2FSuper_nerdText:
 	text "The “net send”"
 	line "command will show"
 
@@ -118,17 +112,13 @@ CeladonUniversityLibrary2FSuper_nerdScript:
 	para "Hehehe."
 	done
 
-CeladonUniversityLibrary2FCooltrainerfScript:
-	thistextfaceplayer
-
+CeladonUniversityLibrary2FCooltrainerfText:
 	text "This is my book."
 	line "And I'm going to"
 	cont "READ IT!"
 	done
 
-CeladonUniversityLibrary2FYoungsterScript:
-	thistextfaceplayer
-
+CeladonUniversityLibrary2FYoungsterText:
 	text "I'm reading about a"
 	line "legendary #mon"
 
@@ -138,9 +128,7 @@ CeladonUniversityLibrary2FYoungsterScript:
 	para "It's pretty scary…"
 	done
 
-CeladonUniversityLibrary2FBookshelf1:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf1Text:
 	text "It's a book con-"
 	line "taining #mon"
 
@@ -152,9 +140,7 @@ CeladonUniversityLibrary2FBookshelf1:
 	cont "grant wishes."
 	done
 
-CeladonUniversityLibrary2FBookshelf2:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf2Text:
 	text "This book is"
 	line "falling apart."
 
@@ -168,9 +154,7 @@ CeladonUniversityLibrary2FBookshelf2:
 	line "armor."
 	done
 
-CeladonUniversityLibrary2FBookshelf3:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf3Text:
 	text "It's a book with a"
 	line "giant padlock on"
 	cont "the cover."
@@ -179,9 +163,7 @@ CeladonUniversityLibrary2FBookshelf3:
 	line "alone."
 	done
 
-CeladonUniversityLibrary2FBookshelf4:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf4Text:
 	text "This book's written"
 	line "in a foreign"
 	cont "language!"
@@ -190,9 +172,7 @@ CeladonUniversityLibrary2FBookshelf4:
 	line "back…"
 	done
 
-CeladonUniversityLibrary2FBookshelf5:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf5Text:
 	text "Behind these"
 	line "books…"
 
@@ -200,9 +180,7 @@ CeladonUniversityLibrary2FBookshelf5:
 	line "nothing here."
 	done
 
-CeladonUniversityLibrary2FBookshelf6:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf6Text:
 	text "It's a book about"
 	line "#mon that have"
 
@@ -215,9 +193,7 @@ CeladonUniversityLibrary2FBookshelf6:
 	cont "strange…"
 	done
 
-CeladonUniversityLibrary2FBookshelf7:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf7Text:
 	text "It's a book about"
 	line "#mon Contests."
 
@@ -228,9 +204,7 @@ CeladonUniversityLibrary2FBookshelf7:
 	line "the cover."
 	done
 
-CeladonUniversityLibrary2FBookshelf8:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf8Text:
 	text "A boy is shown"
 	line "riding a #mon"
 
@@ -242,9 +216,7 @@ CeladonUniversityLibrary2FBookshelf8:
 	cont "written in bold."
 	done
 
-CeladonUniversityLibrary2FBookshelf9:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf9Text:
 	text "It's a book de-"
 	line "picting a world"
 
@@ -258,9 +230,7 @@ CeladonUniversityLibrary2FBookshelf9:
 	line "cover."
 	done
 
-CeladonUniversityLibrary2FBookshelf10:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf10Text:
 	text "It's a book about"
 	line "an island of giant"
 	cont "#mon robots."
@@ -269,9 +239,7 @@ CeladonUniversityLibrary2FBookshelf10:
 	line "by Anne Droid…"
 	done
 
-CeladonUniversityLibrary2FBookshelf11:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf11Text:
 	text "“Forgive and"
 	line "Forget” by Saul"
 	cont "Goode."
@@ -281,17 +249,13 @@ CeladonUniversityLibrary2FBookshelf11:
 	cont "big grin."
 	done
 
-CeladonUniversityLibrary2FBookshelf12:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf12Text:
 	text "“Weightlessness”"
 	line "by Andy Gravity."
 	cont "Sounds flighty!"
 	done
 
-CeladonUniversityLibrary2FBookshelf13:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf13Text:
 	text "It's a book"
 	line "explaining the"
 
@@ -301,9 +265,7 @@ CeladonUniversityLibrary2FBookshelf13:
 	para "It's enormous!"
 	done
 
-CeladonUniversityLibrary2FBookshelf14:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf14Text:
 	text "This book is"
 	line "covered in"
 	cont "cobwebs."
@@ -313,9 +275,7 @@ CeladonUniversityLibrary2FBookshelf14:
 	cont "while."
 	done
 
-CeladonUniversityLibrary2FBookshelf15:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf15Text:
 	text "It's a book de-"
 	line "picting a fearsome"
 	cont "#mon."
@@ -327,9 +287,7 @@ CeladonUniversityLibrary2FBookshelf15:
 	line "letters."
 	done
 
-CeladonUniversityLibrary2FBookshelf16:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf16Text:
 	text "“Ancient #-"
 	line "mopolis: A History"
 
@@ -340,9 +298,7 @@ CeladonUniversityLibrary2FBookshelf16:
 	line "interesting!"
 	done
 
-CeladonUniversityLibrary2FBookshelf17:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf17Text:
 	text "It's a book titled"
 	line "“Typecasting: The"
 
@@ -350,9 +306,7 @@ CeladonUniversityLibrary2FBookshelf17:
 	line "Sudowoodo”."
 	done
 
-CeladonUniversityLibrary2FBookshelf18:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf18Text:
 	text "It's a book about"
 	line "an ancient tree"
 
@@ -363,9 +317,7 @@ CeladonUniversityLibrary2FBookshelf18:
 	line "magical."
 	done
 
-CeladonUniversityLibrary2FBookshelf19:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf19Text:
 	text "It's a copy of the"
 	line "original route for"
 	cont "the Magnet Train!"
@@ -375,9 +327,7 @@ CeladonUniversityLibrary2FBookshelf19:
 	cont "in Ecruteak City."
 	done
 
-CeladonUniversityLibrary2FBookshelf20:
-	thistext
-
+CeladonUniversityLibrary2FBookshelf20Text:
 	text "Red books,"
 	line "blue books,"
 	cont "yellow books,"

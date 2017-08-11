@@ -14,8 +14,8 @@ Route32Coast_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 29, 15, SIGNPOST_READ, Route32CoastTrainerTips
-	signpost 59, 5, SIGNPOST_READ, Route32CoastUnionCaveSign
+	signpost 29, 15, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
+	signpost 59, 5, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
 	signpost 34, 17, SIGNPOST_ITEM, Route32CoastHiddenLevelBall
 	signpost 45, 5, SIGNPOST_ITEM, Route32CoastHiddenHyperPotion
 
@@ -31,7 +31,7 @@ Route32Coast_MapEventHeader:
 	person_event SPRITE_NEW_BARK_LYRA, 45, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerLassLayla, -1
 	person_event SPRITE_YOUNGSTER, 35, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae1, -1
 	person_event SPRITE_NEW_BARK_LYRA, 36, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae2, -1
-	person_event SPRITE_NEW_BARK_LYRA, 61, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route32CoastLassScript, -1
+	person_event SPRITE_NEW_BARK_LYRA, 61, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route32CoastLassText, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 51, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CoastFruitTree, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 18, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
 	person_event SPRITE_BALL_CUT_FRUIT, 63, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
@@ -322,9 +322,7 @@ TrainerCoupleFoxandrae2:
 	cont "happy Couple."
 	done
 
-Route32CoastLassScript:
-	thistextfaceplayer
-
+Route32CoastLassText:
 	text "Pant, pant…"
 
 	para "I finally got"
@@ -343,9 +341,7 @@ Route32CoastLassScript:
 Route32CoastFruitTree:
 	fruittree FRUITTREE_ROUTE_32_COAST
 
-Route32CoastTrainerTips:
-	thistext
-
+Route32CoastTrainerTipsText:
 	text "Trainer Tips"
 
 	para "A #mon with the"
@@ -355,9 +351,7 @@ Route32CoastTrainerTips:
 	line "after a battle!"
 	done
 
-Route32CoastUnionCaveSign:
-	thistext
-
+Route32CoastUnionCaveSignText:
 	text "Union Cave"
 	line "Ahead"
 	done

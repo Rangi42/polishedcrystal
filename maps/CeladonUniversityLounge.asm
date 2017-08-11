@@ -13,17 +13,17 @@ CeladonUniversityLounge_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 5, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf1
+	signpost 5, 7, SIGNPOST_JUMPTEXT, CeladonUniversityLoungeBookshelf1Text
 	signpost 8, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
 	signpost 7, 0, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
 
 .PersonEvents: db 6
 	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
-	person_event SPRITE_LASS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeLassScript, -1
-	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeRichBoyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeCooltrainerfScript, -1
-	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeSuper_nerd1Script, -1
-	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeSuper_nerd2Script, -1
+	person_event SPRITE_LASS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLoungeLassText, -1
+	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLoungeRichBoyText, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLoungeCooltrainerfText, -1
+	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLoungeSuper_nerd1Text, -1
+	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLoungeSuper_nerd2Text, -1
 
 const_value set 2
 	const CELADONUNIVERSITYLOUNGE_NEESHA
@@ -158,9 +158,7 @@ CeladonUniversityLoungeNeeshaScript:
 	line "you, trainer!"
 	done
 
-CeladonUniversityLoungeLassScript:
-	thistextfaceplayer
-
+CeladonUniversityLoungeLassText:
 	text "Next month we're"
 	line "going on a trip"
 	cont "to Mt.Moon."
@@ -169,9 +167,7 @@ CeladonUniversityLoungeLassScript:
 	line "Clefairy!"
 	done
 
-CeladonUniversityLoungeRichBoyScript:
-	thistextfaceplayer
-
+CeladonUniversityLoungeRichBoyText:
 	text "Have you ever"
 	line "wondered why"
 
@@ -184,9 +180,7 @@ CeladonUniversityLoungeRichBoyScript:
 	cont "Hyper Balls!"
 	done
 
-CeladonUniversityLoungeCooltrainerfScript:
-	thistextfaceplayer
-
+CeladonUniversityLoungeCooltrainerfText:
 	text "#mon with"
 	line "reduced physical"
 
@@ -195,9 +189,7 @@ CeladonUniversityLoungeCooltrainerfScript:
 	cont "enter a # Ball."
 	done
 
-CeladonUniversityLoungeSuper_nerd1Script:
-	thistextfaceplayer
-
+CeladonUniversityLoungeSuper_nerd1Text:
 	text "What do you get if"
 	line "you cross a joke"
 
@@ -207,9 +199,7 @@ CeladonUniversityLoungeSuper_nerd1Script:
 	para "………………………………"
 	done
 
-CeladonUniversityLoungeSuper_nerd2Script:
-	thistextfaceplayer
-
+CeladonUniversityLoungeSuper_nerd2Text:
 	text "I'm writing scripts"
 	line "for a game."
 
@@ -217,9 +207,7 @@ CeladonUniversityLoungeSuper_nerd2Script:
 	line "asm!"
 	done
 
-CeladonUniversityLoungeBookshelf1:
-	thistext
-
+CeladonUniversityLoungeBookshelf1Text:
 	text "It's stuffed full"
 	line "of copies of"
 	cont "#mon manga!"
