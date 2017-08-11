@@ -12,7 +12,7 @@ Route45_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 4, 14, SIGNPOST_READ, Route45Sign
+	signpost 4, 14, SIGNPOST_JUMPTEXT, Route45SignText
 	signpost 78, 17, SIGNPOST_ITEM, Route45HiddenPpUp
 
 .PersonEvents: db 15
@@ -391,9 +391,6 @@ TrainerCamperQuentin:
 CamperQuentinScript:
 	end_if_just_battled
 	jumptext UnknownText_0x19e8bb
-
-Route45Sign:
-	jumptext Route45SignText
 
 FruitTreeScript_0x19e294:
 	fruittree FRUITTREE_ROUTE_45

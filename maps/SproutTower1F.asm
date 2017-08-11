@@ -16,22 +16,16 @@ SproutTower1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 15, 5, SIGNPOST_READ, MapSproutTower1FSignpost1Script
-	signpost 15, 10, SIGNPOST_READ, MapSproutTower1FSignpost1Script
+	signpost 15, 5, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
+	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
 
 .PersonEvents: db 6
-	person_event SPRITE_SAGE, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SageScript_0x1844fe, -1
-	person_event SPRITE_SAGE, 7, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SageScript_0x184501, -1
+	person_event SPRITE_SAGE, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1845d8, -1
+	person_event SPRITE_SAGE, 7, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18460a, -1
 	person_event SPRITE_GRANNY, 12, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
-	person_event SPRITE_TEACHER, 9, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x184507, -1
+	person_event SPRITE_TEACHER, 9, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18469d, -1
 	person_event SPRITE_SAGE, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PARLYZ_HEAL, 1, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
-
-SageScript_0x1844fe:
-	jumptextfaceplayer UnknownText_0x1845d8
-
-SageScript_0x184501:
-	jumptextfaceplayer UnknownText_0x18460a
 
 GrannyScript_0x184504:
 	checkunits
@@ -40,18 +34,12 @@ GrannyScript_0x184504:
 .metric
 	jumptextfaceplayer UnknownText_0x184649_Metric
 
-TeacherScript_0x184507:
-	jumptextfaceplayer UnknownText_0x18469d
-
 TrainerSageChow:
 	trainer EVENT_BEAT_SAGE_CHOW, SAGE, CHOW, SageChowSeenText, SageChowBeatenText, 0, SageChowScript
 
 SageChowScript:
 	end_if_just_battled
 	jumptext UnknownText_0x184583
-
-MapSproutTower1FSignpost1Script:
-	jumptext UnknownText_0x1846d6
 
 SageChowSeenText:
 	text "We stand guard in"

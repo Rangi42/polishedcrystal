@@ -13,8 +13,8 @@ Route20_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 11, 61, SIGNPOST_READ, CinnabarGymSign
-	signpost 7, 57, SIGNPOST_READ, SeafoamIslandsSign
+	signpost 11, 61, SIGNPOST_JUMPTEXT, CinnabarGymSignText
+	signpost 7, 57, SIGNPOST_JUMPTEXT, SeafoamIslandsSignText
 	signpost 10, 21, SIGNPOST_ITEM, Route20HiddenStardust
 
 .PersonEvents: db 13
@@ -335,9 +335,6 @@ TrainerBird_keeperErnie:
 	line "special!"
 	done
 
-CinnabarGymSign:
-	jumptext CinnabarGymSignText
-
 CinnabarGymSignText:
 	text "Seafoam Islands"
 
@@ -347,9 +344,6 @@ CinnabarGymSignText:
 	para "Cinnabar Gym"
 	line "Leader: Blaine"
 	done
-
-SeafoamIslandsSign:
-	jumptext SeafoamIslandsSignText
 
 SeafoamIslandsSignText:
 	text "Seafoam Islands"

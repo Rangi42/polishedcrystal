@@ -19,44 +19,20 @@ LavenderTown_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 5, 11, SIGNPOST_READ, LavenderTownSign
-	signpost 9, 15, SIGNPOST_READ, KantoRadioStationSign
-	signpost 11, 3, SIGNPOST_READ, VolunteerPokemonHouseSign
-	signpost 15, 15, SIGNPOST_READ, SoulHouseSign
+	signpost 5, 11, SIGNPOST_JUMPTEXT, LavenderTownSignText
+	signpost 9, 15, SIGNPOST_JUMPTEXT, KantoRadioStationSignText
+	signpost 11, 3, SIGNPOST_JUMPTEXT, VolunteerPokemonHouseSignText
+	signpost 15, 15, SIGNPOST_JUMPTEXT, SoulHouseSignText
 
 .PersonEvents: db 4
-	person_event SPRITE_POKEFAN_M, 9, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1ad6e4, -1
-	person_event SPRITE_TEACHER, 17, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1ad6e7, -1
-	person_event SPRITE_GRAMPS, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1ad6ea, -1
-	person_event SPRITE_YOUNGSTER, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 1, YoungsterScript_0x1ad6ed, -1
+	person_event SPRITE_POKEFAN_M, 9, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1ad702, -1
+	person_event SPRITE_TEACHER, 17, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1ad73a, -1
+	person_event SPRITE_GRAMPS, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1ad75c, -1
+	person_event SPRITE_YOUNGSTER, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 1, UnknownText_0x1ad7ac, -1
 
 LavenderTownFlyPoint:
 	setflag ENGINE_FLYPOINT_LAVENDER
 	return
-
-PokefanMScript_0x1ad6e4:
-	jumptextfaceplayer UnknownText_0x1ad702
-
-TeacherScript_0x1ad6e7:
-	jumptextfaceplayer UnknownText_0x1ad73a
-
-GrampsScript_0x1ad6ea:
-	jumptextfaceplayer UnknownText_0x1ad75c
-
-YoungsterScript_0x1ad6ed:
-	jumptextfaceplayer UnknownText_0x1ad7ac
-
-LavenderTownSign:
-	jumptext LavenderTownSignText
-
-KantoRadioStationSign:
-	jumptext KantoRadioStationSignText
-
-VolunteerPokemonHouseSign:
-	jumptext VolunteerPokemonHouseSignText
-
-SoulHouseSign:
-	jumptext SoulHouseSignText
 
 UnknownText_0x1ad702:
 	text "That's quite some"

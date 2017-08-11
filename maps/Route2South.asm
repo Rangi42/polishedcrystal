@@ -13,7 +13,7 @@ Route2South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 29, 5, SIGNPOST_READ, Route2Sign
+	signpost 29, 5, SIGNPOST_JUMPTEXT, Route2SignText
 
 .PersonEvents: db 7
 	person_event SPRITE_BUG_MANIAC, 23, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacRob, -1
@@ -37,9 +37,6 @@ TrainerBug_maniacDoug:
 Bug_maniacDougScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1ac423
-
-Route2Sign:
-	jumptext Route2SignText
 
 Bug_maniacRobSeenText:
 	text "My bug #mon are"

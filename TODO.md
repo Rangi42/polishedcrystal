@@ -124,11 +124,9 @@ Low priority:
 * Finish and merge the optimizations branch
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
 * Optimize battle command engine, including parameterized commands
-* SIGNPOST_JUMPTEXT
-* PERSONTYPE_JUMPTEXTFP
 * PERSONTYPE_MART
-* PERSONTYPE_FRUITTREE
 * PERSONTYPE_GENERICTRAINER
+* PERSONTYPE_FRUITTREE (implement)
 * PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)
 * PERSONTYPE_TRADE (script pointer → trade ID)
 

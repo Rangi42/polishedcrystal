@@ -17,10 +17,7 @@ ViridianForestViridianGate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianForestViridianGateOfficerScript, -1
-
-ViridianForestViridianGateOfficerScript:
-	jumptextfaceplayer ViridianForestViridianGateOfficerText
+	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, ViridianForestViridianGateOfficerText, -1
 
 ViridianForestViridianGateOfficerText:
 	text "Be careful,"

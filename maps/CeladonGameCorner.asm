@@ -45,12 +45,12 @@ CeladonGameCorner_MapEventHeader:
 	signpost 11, 13, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
 	signpost 6, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
 	signpost 7, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost32Script
+	signpost 8, 18, SIGNPOST_JUMPTEXT, UnknownText_0x7254f
 	signpost 9, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
 	signpost 10, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
 	signpost 11, 18, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
-	signpost 0, 15, SIGNPOST_READ, MapCeladonGameCornerSignpost36Script
-	signpost 0, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost37Script
+	signpost 0, 15, SIGNPOST_JUMPTEXT, UnknownText_0x724f3
+	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x72521
 
 .PersonEvents: db 8
 	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
@@ -58,18 +58,15 @@ CeladonGameCorner_MapEventHeader:
 	person_event SPRITE_FISHING_GURU, 7, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
 	person_event SPRITE_GRAMPS, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
 	person_event SPRITE_CLERK, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPSTD, 0, gamecornercoinvendor, -1
-	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x72120, -1
+	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x721d0, -1
 	person_event SPRITE_FISHER, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
-	person_event SPRITE_GYM_GUY, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonGymGuyScript, -1
+	person_event SPRITE_GYM_GUY, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonGymGuyText, -1
 
 const_value set 2
 	const CELADONGAMECORNER_POKEFAN_M
 	const CELADONGAMECORNER_TEACHER
 	const CELADONGAMECORNER_FISHING_GURU
 	const CELADONGAMECORNER_GRAMPS
-
-ReceptionistScript_0x72120:
-	jumptextfaceplayer UnknownText_0x721d0
 
 PokefanMScript_0x72123:
 	showtextfaceplayer UnknownText_0x72215
@@ -143,19 +140,10 @@ UnknownScript_0x72184:
 	spriteface LAST_TALKED, LEFT
 	end
 
-CeladonGymGuyScript:
-	jumptextfaceplayer CeladonGymGuyText
-
 GrampsScript_0x72190:
 	showtextfaceplayer UnknownText_0x724ad
 	spriteface CELADONGAMECORNER_GRAMPS, LEFT
 	end
-
-MapCeladonGameCornerSignpost36Script:
-	jumptext UnknownText_0x724f3
-
-MapCeladonGameCornerSignpost37Script:
-	jumptext UnknownText_0x72521
 
 MapCeladonGameCornerSignpost35Script:
 	random $6
@@ -178,9 +166,6 @@ MapCeladonGameCornerSignpost11Script:
 	special Special_CardFlip
 	closetext
 	end
-
-MapCeladonGameCornerSignpost32Script:
-	jumptext UnknownText_0x7254f
 
 MapCeladonGameCornerSignpost9Script:
 	opentext

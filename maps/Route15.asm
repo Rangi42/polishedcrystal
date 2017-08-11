@@ -13,7 +13,7 @@ Route15_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 9, 19, SIGNPOST_READ, Route15Sign
+	signpost 9, 19, SIGNPOST_JUMPTEXT, Route15SignText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 10, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyKipp, -1
@@ -98,9 +98,6 @@ TrainerTwinsKayandtia2:
 TwinsKayandtia2Script:
 	end_if_just_battled
 	jumptext TwinsKayandtia2AfterText
-
-Route15Sign:
-	jumptext Route15SignText
 
 TeacherColetteSeenText:
 	text "Have you forgotten"

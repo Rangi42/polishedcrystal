@@ -15,13 +15,13 @@ LavRadioTower1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 11, SIGNPOST_READ, MapLavRadioTower1FSignpost0Script
-	signpost 0, 5, SIGNPOST_READ, MapLavRadioTower1FSignpost1Script
+	signpost 0, 11, SIGNPOST_JUMPTEXT, UnknownText_0x7f2e3
+	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x7f32d
 
 .PersonEvents: db 5
-	person_event SPRITE_RECEPTIONIST, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x7ee63, -1
-	person_event SPRITE_OFFICER, 1, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7ee66, -1
-	person_event SPRITE_SUPER_NERD, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ee69, -1
+	person_event SPRITE_RECEPTIONIST, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7eebf, -1
+	person_event SPRITE_OFFICER, 1, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7eefa, -1
+	person_event SPRITE_SUPER_NERD, 3, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7ef90, -1
 	person_event SPRITE_GENTLEMAN, 1, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7ee6c, -1
 	person_event SPRITE_SUPER_NERD, 6, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7eea2, -1
 
@@ -34,15 +34,6 @@ LavRadioTower1FUpstairsScript:
 .Exorcised:
 	warpmod 1, LAV_RADIO_TOWER_2F
 	return
-
-ReceptionistScript_0x7ee63:
-	jumptextfaceplayer UnknownText_0x7eebf
-
-OfficerScript_0x7ee66:
-	jumptextfaceplayer UnknownText_0x7eefa
-
-SuperNerdScript_0x7ee69:
-	jumptextfaceplayer UnknownText_0x7ef90
 
 GentlemanScript_0x7ee6c:
 	faceplayer
@@ -78,12 +69,6 @@ SuperNerdScript_0x7eea2:
 
 UnknownScript_0x7eeb0:
 	jumpopenedtext UnknownText_0x7f248
-
-MapLavRadioTower1FSignpost0Script:
-	jumptext UnknownText_0x7f2e3
-
-MapLavRadioTower1FSignpost1Script:
-	jumptext UnknownText_0x7f32d
 
 UnknownScript_0x7eebc:
 	jumptext UnknownText_0x7f36b

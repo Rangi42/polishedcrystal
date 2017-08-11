@@ -12,7 +12,7 @@ Route37_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 3, 5, SIGNPOST_READ, Route37Sign
+	signpost 3, 5, SIGNPOST_JUMPTEXT, Route37SignText
 	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
 
 .PersonEvents: db 10
@@ -238,9 +238,6 @@ Route37CooltrainerfChiaraScript:
 	line "who'll want to test"
 	cont "you."
 	done
-
-Route37Sign:
-	jumptext Route37SignText
 
 FruitTreeScript_0x1a8e09:
 	fruittree FRUITTREE_ROUTE_37_1

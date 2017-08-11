@@ -15,14 +15,8 @@ CherrygroveGymSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x196ae1, -1
-	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ChildScript_0x196ae4, -1
-
-PokefanMScript_0x196ae1:
-	jumptextfaceplayer UnknownText_0x196aea
-
-ChildScript_0x196ae4:
-	jumptextfaceplayer UnknownText_0x196b65
+	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x196aea, -1
+	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x196b65, -1
 
 UnknownText_0x196aea:
 	text "You're trying to"

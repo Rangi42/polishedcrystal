@@ -28,10 +28,10 @@ RuinsofAlphOutside_MapEventHeader:
 	xy_trigger 1, $15, $c, UnknownScript_0x5803a
 
 .Signposts: db 5
-	signpost 14, 18, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost0Script
-	signpost 22, 14, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost1Script
-	signpost 18, 20, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
-	signpost 9, 10, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost3Script
+	signpost 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58325
+	signpost 22, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58342
+	signpost 18, 20, SIGNPOST_JUMPTEXT, UnknownText_0x58362
+	signpost 9, 10, SIGNPOST_JUMPTEXT, MapRuinsofAlphOutsideSignpost3Text
 	signpost 13, 4, SIGNPOST_ITEM, RuinsofAlphOutsideHiddenRareCandy
 
 .PersonEvents: db 13
@@ -157,18 +157,6 @@ TrainerSuperNerdStan:
 UnknownScript_0x580a9:
 	end_if_just_battled
 	jumptext UnknownText_0x58250
-
-MapRuinsofAlphOutsideSignpost0Script:
-	jumptext UnknownText_0x58325
-
-MapRuinsofAlphOutsideSignpost1Script:
-	jumptext UnknownText_0x58342
-
-MapRuinsofAlphOutsideSignpost2Script:
-	jumptext UnknownText_0x58362
-
-MapRuinsofAlphOutsideSignpost3Script:
-	jumptext MapRuinsofAlphOutsideSignpost3Text
 
 RuinsofAlphOutsideHiddenRareCandy:
 	dwb EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY, RARE_CANDY

@@ -13,10 +13,10 @@ Route6_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 19, SIGNPOST_READ, Route6UndergroundPathSign
+	signpost 11, 19, SIGNPOST_JUMPTEXT, Route6UndergroundPathSignText
 
 .PersonEvents: db 8
-	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 2, PokefanMScript_0x1ad951, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 2, UnknownText_0x1ad957, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	person_event SPRITE_POKEFAN_M, 24, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
 	person_event SPRITE_POKEFAN_M, 24, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
 	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani1, -1
@@ -229,9 +229,6 @@ OfficerfJennyScript:
 	line "night."
 	done
 
-PokefanMScript_0x1ad951:
-	jumptextfaceplayer UnknownText_0x1ad957
-
 UnknownText_0x1ad957:
 	text "The road is closed"
 	line "until the problem"
@@ -239,9 +236,6 @@ UnknownText_0x1ad957:
 	para "at the Power Plant"
 	line "is solved."
 	done
-
-Route6UndergroundPathSign:
-	jumptext Route6UndergroundPathSignText
 
 Route6UndergroundPathSignText:
 	text "Underground Path"

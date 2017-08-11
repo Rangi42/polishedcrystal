@@ -20,8 +20,8 @@ SafariZoneHub_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 24, 16, SIGNPOST_READ, SafariZoneHubAreaSign
-	signpost 22, 20, SIGNPOST_READ, SafariZoneHubRestHouseSign
+	signpost 24, 16, SIGNPOST_JUMPTEXT, SafariZoneHubAreaSignText
+	signpost 22, 20, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
 
 .PersonEvents: db 3
 	person_event SPRITE_BUG_MANIAC, 6, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
@@ -34,12 +34,6 @@ TrainerBug_maniacKai:
 Bug_maniacKaiScript:
 	end_if_just_battled
 	jumptext Bug_maniacKaiAfterText
-
-SafariZoneHubAreaSign:
-	jumptext SafariZoneHubAreaSignText
-
-SafariZoneHubRestHouseSign:
-	jumptext SafariZoneHubRestHouseSignText
 
 Bug_maniacKaiSeenText:
 	text "My Venonat evolved"

@@ -20,7 +20,7 @@ Route36NationalParkgate_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 6, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
+	signpost 0, 6, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
 .PersonEvents: db 12
 	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY

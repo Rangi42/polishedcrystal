@@ -15,7 +15,7 @@ Route12South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 43, 11, SIGNPOST_READ, Route12Sign
+	signpost 43, 11, SIGNPOST_JUMPTEXT, Route12SignText
 	signpost 15, 14, SIGNPOST_ITEM, Route12HiddenElixer
 
 .PersonEvents: db 13
@@ -234,9 +234,6 @@ TrainerCoupleVicandtara2:
 	cont "he's still wonder-"
 	cont "ful."
 	done
-
-Route12Sign:
-	jumptext Route12SignText
 
 Route12HiddenElixer:
 	dwb EVENT_ROUTE_12_HIDDEN_ELIXER, ELIXER

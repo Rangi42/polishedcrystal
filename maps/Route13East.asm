@@ -11,8 +11,8 @@ Route13East_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 13, 11, SIGNPOST_READ, Route13TrainerTips
-	signpost 11, 27, SIGNPOST_READ, Route13Sign
+	signpost 13, 11, SIGNPOST_JUMPTEXT, Route13TrainerTipsText
+	signpost 11, 27, SIGNPOST_JUMPTEXT, Route13SignText
 	signpost 13, 12, SIGNPOST_ITEM, Route13HiddenCalcium
 
 .PersonEvents: db 10
@@ -248,9 +248,6 @@ Route13EastGrampsText2:
 	cont "What a spectacle!"
 	done
 
-Route13TrainerTips:
-	jumptext Route13TrainerTipsText
-
 Route13TrainerTipsText:
 	text "Trainer Tips"
 
@@ -258,9 +255,6 @@ Route13TrainerTipsText:
 	line "at the left side"
 	cont "of the post."
 	done
-
-Route13Sign:
-	jumptext Route13SignText
 
 Route13SignText:
 	text "Route 13"

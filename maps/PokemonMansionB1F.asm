@@ -15,12 +15,12 @@ PokemonMansionB1F_MapEventHeader:
 	signpost 4, 26, SIGNPOST_ITEM, PokemonMansionB1FHiddenMaxElixir
 	signpost 13, 8, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
 	signpost 27, 20, SIGNPOST_READ, PokemonMansionB1FHiddenBerserkGene
-	signpost 5, 22, SIGNPOST_READ, PokemonMansionB1FMewtwoStatue
-	signpost 13, 9, SIGNPOST_READ, PokemonMansionB1FFlowerPot
-	signpost 17, 4, SIGNPOST_READ, PokemonMansionB1FFlowerPot
-	signpost 17, 5, SIGNPOST_READ, PokemonMansionB1FFlowerPot
-	signpost 17, 8, SIGNPOST_READ, PokemonMansionB1FFlowerPot
-	signpost 17, 9, SIGNPOST_READ, PokemonMansionB1FFlowerPot
+	signpost 5, 22, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
+	signpost 13, 9, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 17, 4, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 17, 5, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 17, 8, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 17, 9, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
 .PersonEvents: db 6
 	person_event SPRITE_SCIENTIST, 5, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistBraydon, -1
@@ -45,12 +45,12 @@ PokemonMansionB1FHiddenMaxElixir:
 
 PokemonMansionB1FHiddenRareCandy:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_RARE_CANDY
-	iftrue PokemonMansionB1FFlowerPot
+	jumptext_iftrue PokemonMansion1FFlowerPotText
 	giveitem RARE_CANDY
 	iffalse .PackFull
 	opentext
 	itemtotext RARE_CANDY, $0
-	writetext PokemonMansionB1FFoundRareCandyText
+	writetext PokemonMansion1FFoundItemText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
@@ -61,18 +61,18 @@ PokemonMansionB1FHiddenRareCandy:
 .PackFull:
 	opentext
 	itemtotext RARE_CANDY, $0
-	writetext PokemonMansionB1FFoundRareCandyText
+	writetext PokemonMansion1FFoundItemText
 	buttonsound
-	jumpopenedtext PokemonMansionB1FNoRoomForRareCandyText
+	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 PokemonMansionB1FHiddenBerserkGene:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_BERSERK_GENE
-	iftrue PokemonMansionB1FMewtwoStatue
+	jumptext_iftrue PokemonMansion1FMewtwoStatueText
 	giveitem BERSERK_GENE
 	iffalse .PackFull
 	opentext
 	itemtotext BERSERK_GENE, $0
-	writetext PokemonMansionB1FFoundBerserkGeneText
+	writetext PokemonMansion1FFoundItemText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
@@ -83,15 +83,9 @@ PokemonMansionB1FHiddenBerserkGene:
 .PackFull:
 	opentext
 	itemtotext BERSERK_GENE, $0
-	writetext PokemonMansionB1FFoundBerserkGeneText
+	writetext PokemonMansion1FFoundItemText
 	buttonsound
-	jumpopenedtext PokemonMansionB1FNoRoomForBerserkGeneText
-
-PokemonMansionB1FMewtwoStatue:
-	jumptext PokemonMansionB1FMewtwoStatueText
-
-PokemonMansionB1FFlowerPot:
-	jumptext PokemonMansionB1FFlowerPotText
+	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 ScientistBraydonSeenText:
 	text "I miss the old"
@@ -138,30 +132,4 @@ PokemonMansionDiaryText:
 	para "We have failed to"
 	line "curb its vicious"
 	cont "tendencies…"
-	done
-
-PokemonMansionB1FFoundRareCandyText:
-PokemonMansionB1FFoundBerserkGeneText:
-	text "<PLAYER> found"
-	line "@"
-	text_from_ram StringBuffer3
-	text "!"
-	done
-
-PokemonMansionB1FNoRoomForRareCandyText:
-PokemonMansionB1FNoRoomForBerserkGeneText:
-	text "But <PLAYER> can't"
-	line "hold another item…"
-	done
-
-PokemonMansionB1FMewtwoStatueText:
-	text "A #mon statue…"
-
-	para "It looks very"
-	line "threatening."
-	done
-
-PokemonMansionB1FFlowerPotText:
-	text "It's filled with"
-	line "soil and ashes…"
 	done

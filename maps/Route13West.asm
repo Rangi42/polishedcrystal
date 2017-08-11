@@ -11,7 +11,7 @@ Route13West_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 13, 17, SIGNPOST_READ, Route13DirectionsSign
+	signpost 13, 17, SIGNPOST_JUMPTEXT, Route13DirectionsSignText
 
 .PersonEvents: db 4
 	person_event SPRITE_YOUNGSTER, 5, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperClark, -1
@@ -102,9 +102,6 @@ UnknownText_0x1a26c2:
 	line "change, little by"
 	cont "little."
 	done
-
-Route13DirectionsSign:
-	jumptext Route13DirectionsSignText
 
 Route13DirectionsSignText:
 	text "North to Lavender"

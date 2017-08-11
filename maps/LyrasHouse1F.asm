@@ -14,9 +14,9 @@ LyrasHouse1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 1, 7, SIGNPOST_READ, LyrasFridgeScript
-	signpost 1, 8, SIGNPOST_READ, LyrasSinkScript
-	signpost 1, 9, SIGNPOST_READ, LyrasStoveScript
+	signpost 1, 7, SIGNPOST_JUMPTEXT, LyrasFridgeText
+	signpost 1, 8, SIGNPOST_JUMPTEXT, LyrasSinkText
+	signpost 1, 9, SIGNPOST_JUMPTEXT, LyrasStoveText
 	signpost 1, 2, SIGNPOST_READ, LyrasTVScript
 
 .PersonEvents: db 1
@@ -36,15 +36,6 @@ LyrasDadScript:
 
 .LyraTraining
 	jumpopenedtext LyrasDadTrainingText
-
-LyrasFridgeScript:
-	jumptext LyrasFridgeText
-
-LyrasSinkScript:
-	jumptext LyrasSinkText
-
-LyrasStoveScript:
-	jumptext LyrasStoveText
 
 LyrasTVScript:
 	checkcode VAR_FACING

@@ -14,7 +14,7 @@ Route16South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 9, 5, SIGNPOST_READ, CyclingRoadSign
+	signpost 9, 5, SIGNPOST_JUMPTEXT, CyclingRoadSignText
 
 .PersonEvents: db 1
 	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1
@@ -48,9 +48,6 @@ OfficerfJamieScript:
 
 .NoFight:
 	jumpopenedtext OfficerfJamieDaytimeText
-
-CyclingRoadSign:
-	jumptext CyclingRoadSignText
 
 OfficerfJamieSeenText:
 	text "Hey you! Are you"

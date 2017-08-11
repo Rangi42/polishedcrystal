@@ -19,8 +19,8 @@ Route43Gate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 3
-	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x19ac82, EVENT_ROUTE_43_GATE_ROCKETS
-	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x19ac82, EVENT_ROUTE_43_GATE_ROCKETS
+	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
+	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
 
 const_value set 2
@@ -113,9 +113,6 @@ UnknownScript_0x19ac72:
 	dotrigger $1
 	special RestartMapMusic
 	end
-
-RocketScript_0x19ac82:
-	jumptextfaceplayer UnknownText_0x19ad41
 
 OfficerScript_0x19ac85:
 	faceplayer

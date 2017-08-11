@@ -22,12 +22,9 @@ LyrasHouse2F_MapEventHeader:
 	signpost 1, 7, SIGNPOST_READ, PokemonJournalProfElmScript
 
 .PersonEvents: db 3
-	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseLyra, EVENT_LYRA_IN_HER_ROOM
+	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
 	person_event SPRITE_AMPHAROS, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LyrasHouseAmpharos, EVENT_LYRA_IN_HER_ROOM
 	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_JUMPTEXT, 0, LyrasHouseN64Text, -1
-
-LyrasHouseLyra:
-	jumptextfaceplayer LyrasHouseLyraText
 
 LyrasHouseAmpharos:
 	opentext

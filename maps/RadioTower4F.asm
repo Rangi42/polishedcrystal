@@ -15,12 +15,12 @@ RadioTower4F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 7, SIGNPOST_READ, MapRadioTower4FSignpost0Script
-	signpost 0, 15, SIGNPOST_READ, MapRadioTower4FSignpost1Script
+	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x5effe
+	signpost 0, 15, SIGNPOST_JUMPTEXT, UnknownText_0x5f00d
 
 .PersonEvents: db 7
 	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_FISHER, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x5eb82, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	person_event SPRITE_FISHER, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x5ec12, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_TEACHER, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5eb85, -1
 	person_event SPRITE_MEOWTH, 7, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTowerMeowth, -1
 	person_event SPRITE_PROTON, 1, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -29,9 +29,6 @@ RadioTower4F_MapEventHeader:
 
 const_value set 2
 	const RADIOTOWER4F_ROCKET
-
-FisherScript_0x5eb82:
-	jumptextfaceplayer UnknownText_0x5ec12
 
 TeacherScript_0x5eb85:
 	faceplayer
@@ -95,12 +92,6 @@ TrainerRocketScientistRich:
 RocketScientistRichScript:
 	end_if_just_battled
 	jumptext UnknownText_0x5efcb
-
-MapRadioTower4FSignpost0Script:
-	jumptext UnknownText_0x5effe
-
-MapRadioTower4FSignpost1Script:
-	jumptext UnknownText_0x5f00d
 
 UnknownText_0x5ec12:
 	text "I listened to the"

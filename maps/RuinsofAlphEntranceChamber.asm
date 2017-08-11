@@ -14,12 +14,9 @@ RuinsofAlphEntranceChamber_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 3, 2, SIGNPOST_READ, RuinsofAlphEntranceChamberStatueScript
+	signpost 3, 2, SIGNPOST_JUMPTEXT, RuinsofAlphEntranceChamberStatueText
 
 .PersonEvents: db 0
-
-RuinsofAlphEntranceChamberStatueScript:
-	jumptext RuinsofAlphEntranceChamberStatueText
 
 RuinsofAlphEntranceChamberStatueText:
 	text "It's a replica of"

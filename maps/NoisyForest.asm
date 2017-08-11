@@ -15,8 +15,8 @@ NoisyForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 9, 15, SIGNPOST_READ, NoisyForestSignpostScript
-	signpost 31, 25, SIGNPOST_READ, NoisyForestSignpostScript
+	signpost 9, 15, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
+	signpost 31, 25, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	signpost 2, 32, SIGNPOST_ITEM, NoisyForestHiddenUltraBall
 	signpost 18, 34, SIGNPOST_ITEM, NoisyForestHiddenTinyMushroom
 	signpost 29, 7, SIGNPOST_ITEM, NoisyForestHiddenFullRestore
@@ -394,10 +394,7 @@ NoisyForestPikabluScript:
 	step_left
 	step_end
 
-NoisyForestSignpostScript:
-	jumptext .Text
-
-.Text:
+NoisyForestSignpostText:
 	text "Noisy Forest"
 	done
 

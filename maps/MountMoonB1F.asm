@@ -25,10 +25,7 @@ MountMoonB1F_MapEventHeader:
 	signpost 26, 24, SIGNPOST_ITEM, MountMoonB1FHiddenMoonStone
 
 .PersonEvents: db 1
-	person_event SPRITE_POKEFAN_M, 20, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MountMoonB1FPokefanmScript, -1
-
-MountMoonB1FPokefanmScript:
-	jumptextfaceplayer MountMoonB1FPokefanmText
+	person_event SPRITE_POKEFAN_M, 20, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, MountMoonB1FPokefanmText, -1
 
 MountMoonB1FHiddenStarPiece:
 	dwb EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE, STAR_PIECE

@@ -13,8 +13,8 @@ Route38_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 33, SIGNPOST_READ, Route38Sign
-	signpost 13, 5, SIGNPOST_READ, Route38TrainerTips
+	signpost 7, 33, SIGNPOST_JUMPTEXT, Route38SignText
+	signpost 13, 5, SIGNPOST_JUMPTEXT, Route38TrainerTipsText
 
 .PersonEvents: db 7
 	person_event SPRITE_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
@@ -307,12 +307,6 @@ TrainerBeautyOlivia:
 .script
 	end_if_just_battled
 	jumptext UnknownText_0x1a229a
-
-Route38Sign:
-	jumptext Route38SignText
-
-Route38TrainerTips:
-	jumptext Route38TrainerTipsText
 
 FruitTreeScript_0x1a1f33:
 	fruittree FRUITTREE_ROUTE_38

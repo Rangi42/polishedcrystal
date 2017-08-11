@@ -16,10 +16,10 @@ RuinsofAlphResearchCenter_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 5, 6, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost0Script
+	signpost 5, 6, SIGNPOST_JUMPTEXT, UnknownText_0x59886
 	signpost 4, 3, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
-	signpost 1, 7, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost2Script
-	signpost 0, 5, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost3Script
+	signpost 1, 7, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
+	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59848
 
 .PersonEvents: db 3
 	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
@@ -210,15 +210,6 @@ MapRuinsofAlphResearchCenterSignpost1Script:
 UnknownScript_0x59241:
 	checkcode VAR_UNOWNCOUNT
 	jumpopenedtext UnknownText_0x597d9
-
-MapRuinsofAlphResearchCenterSignpost2Script:
-	jumptext UnknownText_0x5980e
-
-MapRuinsofAlphResearchCenterSignpost3Script:
-	jumptext UnknownText_0x59848
-
-MapRuinsofAlphResearchCenterSignpost0Script:
-	jumptext UnknownText_0x59886
 
 MovementData_0x5926f:
 	step_up

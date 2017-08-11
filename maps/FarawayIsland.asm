@@ -17,7 +17,7 @@ FarawayIsland_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 34, 4, SIGNPOST_READ, FarawayIslandSign
+	signpost 34, 4, SIGNPOST_JUMPTEXT, FarawayIslandSignText
 
 .PersonEvents: db 2
 	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
@@ -122,9 +122,6 @@ FarawayIslandLawrenceScript:
 	spriteface FARAWAYISLAND_LAWRENCE, DOWN
 	playmapmusic
 	end
-
-FarawayIslandSign:
-	jumptext FarawayIslandSignText
 
 FarawayIslandSailorDepartMovementData:
 	turn_head_down

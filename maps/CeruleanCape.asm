@@ -16,7 +16,7 @@ CeruleanCape_MapEventHeader:
 	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
 
 .Signposts: db 3
-	signpost 5, 9, SIGNPOST_READ, BillsHouseSign
+	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
 	signpost 12, 35, SIGNPOST_ITEM, CeruleanCapeHiddenPearlString
 	signpost 4, 14, SIGNPOST_ITEM, CeruleanCapeHiddenBottleCap
 
@@ -407,9 +407,6 @@ TrainerFisherLeroy:
 	text "All I ever catch"
 	line "catch is Magikarp…"
 	done
-
-BillsHouseSign:
-	jumptext BillsHouseSignText
 
 CeruleanCapeHiddenPearlString:
 	dwb EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING, PEARL_STRING

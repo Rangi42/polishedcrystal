@@ -20,9 +20,9 @@ Route34_MapEventHeader:
 	xy_trigger 1, $11, $a, Route34LyraTrigger3
 
 .Signposts: db 5
-	signpost 6, 12, SIGNPOST_READ, Route34Sign
-	signpost 33, 13, SIGNPOST_READ, Route34TrainerTips
-	signpost 13, 10, SIGNPOST_READ, DayCareSign
+	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText
+	signpost 33, 13, SIGNPOST_JUMPTEXT, Route34TrainerTipsText
+	signpost 13, 10, SIGNPOST_JUMPTEXT, DayCareSignText
 	signpost 32, 8, SIGNPOST_ITEM, Route34HiddenRareCandy
 	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
 
@@ -664,15 +664,6 @@ TrainerCooltrainerfKate:
 .BagFull:
 	closetext
 	end
-
-Route34Sign:
-	jumptext Route34SignText
-
-Route34TrainerTips:
-	jumptext Route34TrainerTipsText
-
-DayCareSign:
-	jumptext DayCareSignText
 
 Route34HiddenRareCandy:
 	dwb EVENT_ROUTE_34_HIDDEN_RARE_CANDY, RARE_CANDY

@@ -21,8 +21,8 @@ CherrygroveCity_MapEventHeader:
 	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
 
 .Signposts: db 2
-	signpost 8, 30, SIGNPOST_READ, CherrygroveCitySign
-	signpost 9, 23, SIGNPOST_READ, GuideGentsHouseSign
+	signpost 8, 30, SIGNPOST_JUMPTEXT, CherrygroveCitySignText
+	signpost 9, 23, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
 
 .PersonEvents: db 5
 	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
@@ -202,12 +202,6 @@ MysticWaterGuy:
 .Exit:
 	closetext
 	end
-
-CherrygroveCitySign:
-	jumptext CherrygroveCitySignText
-
-GuideGentsHouseSign:
-	jumptext GuideGentsHouseSignText
 
 GuideGentPlayerMovement:
 	step_left

@@ -18,7 +18,7 @@ Route36VioletGate_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route36VioletGateOfficerScript, -1
-	person_event SPRITE_YOUNGSTER, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36VioletGateYoungsterScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route36VioletGateYoungsterText, -1
 
 Route36VioletGateOfficerScript:
 	faceplayer
@@ -29,9 +29,6 @@ Route36VioletGateOfficerScript:
 
 .ClearedSudowoodo
 	jumpopenedtext Route36VioletGateOfficerText2
-
-Route36VioletGateYoungsterScript:
-	jumptextfaceplayer Route36VioletGateYoungsterText
 
 Route36VioletGateOfficerText1:
 	text "Lately, I don't"

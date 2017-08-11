@@ -12,7 +12,7 @@ Route1_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 27, 7, SIGNPOST_READ, Route1Sign
+	signpost 27, 7, SIGNPOST_JUMPTEXT, Route1SignText
 
 .PersonEvents: db 5
 	person_event SPRITE_YOUNGSTER, 12, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyDanny, -1
@@ -48,9 +48,6 @@ TrainerCooltrainerfQuinn:
 CooltrainerfQuinnScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1ac640
-
-Route1Sign:
-	jumptext Route1SignText
 
 FruitTreeScript_0x1ac581:
 	fruittree FRUITTREE_ROUTE_1

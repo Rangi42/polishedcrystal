@@ -14,7 +14,7 @@ SilverCaveOutside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 17, SIGNPOST_READ, MtSilverSign
+	signpost 7, 17, SIGNPOST_JUMPTEXT, MtSilverSignText
 	signpost 19, 9, SIGNPOST_ITEM, SilverCaveOutsideHiddenFullRestore
 
 .PersonEvents: db 2
@@ -24,9 +24,6 @@ SilverCaveOutside_MapEventHeader:
 SilverCaveOutsideFlyPoint:
 	setflag ENGINE_FLYPOINT_SILVER_CAVE
 	return
-
-MtSilverSign:
-	jumptext MtSilverSignText
 
 SilverCaveOutsideHiddenFullRestore:
 	dwb EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE, FULL_RESTORE

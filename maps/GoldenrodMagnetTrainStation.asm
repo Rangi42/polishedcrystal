@@ -19,7 +19,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
-	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55143, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
+	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
 const_value set 2
@@ -66,9 +66,6 @@ Script_ArriveFromSaffron:
 	applymovement PLAYER, MovementData_0x55158
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x5514b
 	jumptext UnknownText_0x5526a
-
-GentlemanScript_0x55143:
-	jumptextfaceplayer UnknownText_0x552a3
 
 GoldenrodMagnetTrainStationCooltrainerfScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

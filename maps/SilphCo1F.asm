@@ -18,9 +18,9 @@ SilphCo1F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_OFFICER, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18abe8, -1
-	person_event SPRITE_RECEPTIONIST, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCoReceptionist, -1
-	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo1FGentlemanScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SilphCo1FCooltrainerfScript, -1
+	person_event SPRITE_RECEPTIONIST, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, SilphCoReceptionistText, -1
+	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, SilphCo1FGentlemanText, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, SilphCo1FCooltrainerfText, -1
 
 const_value set 2
 	const SILPHCO1F_OFFICER
@@ -32,9 +32,6 @@ SilphCo1FMoveOfficerCallback:
 .Nothing
 	return
 
-SilphCoReceptionist:
-	jumptextfaceplayer SilphCoReceptionistText
-
 OfficerScript_0x18abe8:
 	faceplayer
 	opentext
@@ -44,12 +41,6 @@ OfficerScript_0x18abe8:
 
 .OfficerScriptAfterPowerRestored
 	jumpopenedtext UnknownText_0x18aca8
-
-SilphCo1FGentlemanScript:
-	jumptextfaceplayer SilphCo1FGentlemanText
-
-SilphCo1FCooltrainerfScript:
-	jumptextfaceplayer SilphCo1FCooltrainerfText
 
 SilphCoReceptionistText:
 	text "Welcome. This is"

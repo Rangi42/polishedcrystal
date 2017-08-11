@@ -19,19 +19,19 @@ PewterMuseumOfScience1F_MapEventHeader:
 	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
 	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
 	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
-	signpost 1, 12, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 13, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 14, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 15, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 17, SIGNPOST_READ, Museum1FBookshelfSignpostScript
-	signpost 1, 18, SIGNPOST_READ, Museum1FBookshelfSignpostScript
+	signpost 1, 12, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	signpost 1, 13, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	signpost 1, 14, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	signpost 1, 15, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	signpost 1, 17, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	signpost 1, 18, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
 
 .PersonEvents: db 5
 	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
 	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
-	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FScientistScript, -1
-	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FGrampsScript, -1
-	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum1FYoungsterScript, -1
+	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Museum1FScientistText, -1
+	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Museum1FGrampsText, -1
+	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Museum1FYoungsterText, -1
 
 const_value set 2
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
@@ -232,15 +232,6 @@ Museum1FReceptionistScript:
 .Sneak:
 	jumpopenedtext Museum1FReceptionistText2
 
-Museum1FScientistScript:
-	jumptextfaceplayer Museum1FScientistText
-
-Museum1FGrampsScript:
-	jumptextfaceplayer Museum1FGrampsText
-
-Museum1FYoungsterScript:
-	jumptextfaceplayer Museum1FYoungsterText
-
 KabutopsFossilSignpostScript:
 	refreshscreen
 	trainerpic KABUTOPS_FOSSIL
@@ -261,9 +252,6 @@ AerodactylFossilSignpostScript:
 	waitbutton
 	closepokepic
 	jumptext AerodactylFossilSignpostText
-
-Museum1FBookshelfSignpostScript:
-	jumptext Museum1FBookshelfSignpostText
 
 Museum1FReceptionistText1:
 	text "Welcome!"

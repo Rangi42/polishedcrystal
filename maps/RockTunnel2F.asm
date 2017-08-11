@@ -13,7 +13,7 @@ RockTunnel2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 19, 15, SIGNPOST_READ, MapRockTunnel2FLodestoneScript
+	signpost 19, 15, SIGNPOST_JUMPTEXT, MapRockTunnel2FLodestoneText
 	signpost 23, 10, SIGNPOST_ITEM, RockTunnel2FHiddenMaxEther
 
 .PersonEvents: db 15
@@ -40,9 +40,6 @@ RockTunnel2FElectrode:
 	disappear LAST_TALKED
 	reloadmapafterbattle
 	end
-
-MapRockTunnel2FLodestoneScript:
-	jumptext MapRockTunnel2FLodestoneText
 
 RockTunnel2FHiddenMaxEther:
 	dwb EVENT_ROCK_TUNNEL_2F_HIDDEN_MAX_ETHER, MAX_ETHER

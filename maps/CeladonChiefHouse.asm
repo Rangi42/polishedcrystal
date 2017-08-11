@@ -16,10 +16,7 @@ CeladonChiefHouse_MapEventHeader:
 	signpost 1, 7, SIGNPOST_ITEM, CeladonChiefHouseHiddenDubiousDisc
 
 .PersonEvents: db 1
-	person_event SPRITE_COOLTRAINER_M, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonChiefHouseCooltrainerMScript, -1
-
-CeladonChiefHouseCooltrainerMScript:
-	jumptextfaceplayer CeladonChiefHouseCooltrainerMText
+	person_event SPRITE_COOLTRAINER_M, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonChiefHouseCooltrainerMText, -1
 
 CeladonChiefHouseHiddenDubiousDisc:
 	dwb EVENT_CELADON_CHIEF_HOUSE_HIDDEN_DUBIOUS_DISC, DUBIOUS_DISC

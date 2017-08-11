@@ -15,13 +15,13 @@ Route31_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 7, SIGNPOST_READ, Route31Sign
-	signpost 5, 31, SIGNPOST_READ, DarkCaveSign
+	signpost 5, 7, SIGNPOST_JUMPTEXT, Route31SignText
+	signpost 5, 31, SIGNPOST_JUMPTEXT, DarkCaveSignText
 
 .PersonEvents: db 9
 	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
 	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31YoungsterScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Route31YoungsterText, -1
 	person_event SPRITE_CHERRYGROVE_RIVAL, 13, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_31_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 10, 25, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_31_CUT_TREE_2
@@ -389,15 +389,6 @@ Route31MailRecipientScript:
 ReceivedFarfetch_dMailText:
 	db   "Dark Cave leads"
 	next "to another road@"
-
-Route31YoungsterScript:
-	jumptextfaceplayer Route31YoungsterText
-
-Route31Sign:
-	jumptext Route31SignText
-
-DarkCaveSign:
-	jumptext DarkCaveSignText
 
 Route31FruitTree:
 	fruittree FRUITTREE_ROUTE_31

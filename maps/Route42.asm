@@ -22,10 +22,10 @@ Route42_MapEventHeader:
 	xy_trigger 2, $e, $18, Route42SuicuneScript
 
 .Signposts: db 5
-	signpost 10, 4, SIGNPOST_READ, Route42Sign1
-	signpost 5, 7, SIGNPOST_READ, MtMortarSign1
-	signpost 9, 45, SIGNPOST_READ, MtMortarSign2
-	signpost 8, 54, SIGNPOST_READ, Route42Sign2
+	signpost 10, 4, SIGNPOST_JUMPTEXT, Route42Sign1Text
+	signpost 5, 7, SIGNPOST_JUMPTEXT, MtMortarSign1Text
+	signpost 9, 45, SIGNPOST_JUMPTEXT, MtMortarSign2Text
+	signpost 8, 54, SIGNPOST_JUMPTEXT, Route42Sign2Text
 	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
 
 .PersonEvents: db 14
@@ -40,8 +40,8 @@ Route42_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	person_event SPRITE_BALL_CUT_FRUIT, 8, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
-	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route42OfficerText, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route42OfficerText, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
 
 const_value set 2
@@ -335,21 +335,6 @@ OfficermKeithScript:
 
 .NoFight:
 	jumpopenedtext OfficermKeithDaytimeText
-
-Route42OfficerScript:
-	jumptextfaceplayer Route42OfficerText
-
-Route42Sign1:
-	jumptext Route42Sign1Text
-
-MtMortarSign1:
-	jumptext MtMortarSign1Text
-
-MtMortarSign2:
-	jumptext MtMortarSign2Text
-
-Route42Sign2:
-	jumptext Route42Sign2Text
 
 FruitTreeScript_0x1a934d:
 	fruittree FRUITTREE_ROUTE_42_1

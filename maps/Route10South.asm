@@ -12,7 +12,7 @@ Route10South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 5, SIGNPOST_READ, Route10Sign
+	signpost 5, 5, SIGNPOST_JUMPTEXT, Route10SignText
 	signpost 3, 16, SIGNPOST_ITEM, Route10HiddenMaxEther
 
 .PersonEvents: db 3
@@ -40,9 +40,6 @@ TrainerHexManiacAmy:
 HexManiacAmyScript:
 	end_if_just_battled
 	jumptext HexManiacAmyAfterText
-
-Route10Sign:
-	jumptext Route10SignText
 
 Route10HiddenMaxEther:
 	dwb EVENT_ROUTE_10_HIDDEN_MAX_ETHER, MAX_ETHER

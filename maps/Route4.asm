@@ -12,7 +12,7 @@ Route4_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 5, SIGNPOST_READ, MtMoonSign
+	signpost 7, 5, SIGNPOST_JUMPTEXT, MtMoonSignText
 	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
 
 .PersonEvents: db 9
@@ -120,9 +120,6 @@ Route4TutorAquaTailScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_Route4Tutor2Taught
-
-MtMoonSign:
-	jumptext MtMoonSignText
 
 Route4HiddenUltraBall:
 	dwb EVENT_ROUTE_4_HIDDEN_ULTRA_BALL, ULTRA_BALL

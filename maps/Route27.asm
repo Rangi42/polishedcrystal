@@ -17,11 +17,11 @@ Route27_MapEventHeader:
 	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
 
 .Signposts: db 1
-	signpost 7, 25, SIGNPOST_READ, TohjoFallsSign
+	signpost 7, 25, SIGNPOST_JUMPTEXT, TohjoFallsSignText
 
 .PersonEvents: db 13
 	person_event SPRITE_VETERAN_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
-	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 3, FisherScript_0x1a089c, -1
+	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 3, UnknownText_0x1a0a71, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 59, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
@@ -62,9 +62,6 @@ UnknownScript_0x1a088c:
 	closetext
 	dotrigger $1
 	end
-
-FisherScript_0x1a089c:
-	jumptextfaceplayer UnknownText_0x1a0a71
 
 FruitTreeScript_Route27LumBerry:
 	fruittree FRUITTREE_ROUTE_27
@@ -441,9 +438,6 @@ TrainerCooltrainerfMegan:
 CooltrainerfMeganScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1a0cce
-
-TohjoFallsSign:
-	jumptext TohjoFallsSignText
 
 MovementData_0x1a0a66:
 	step_left

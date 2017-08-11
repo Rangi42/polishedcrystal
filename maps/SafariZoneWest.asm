@@ -19,10 +19,10 @@ SafariZoneWest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 24, 26, SIGNPOST_READ, SafariZoneWestAreaSign
-	signpost 14, 14, SIGNPOST_READ, SafariZoneWestRestHouseSign
-	signpost 6, 28, SIGNPOST_READ, SafariZoneWestTrainerTips1Sign
-	signpost 5, 19, SIGNPOST_READ, SafariZoneWestTrainerTips2Sign
+	signpost 24, 26, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
+	signpost 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
+	signpost 6, 28, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
+	signpost 5, 19, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
 	signpost 6, 13, SIGNPOST_ITEM, SafariZoneWestHiddenNugget
 
 .PersonEvents: db 4
@@ -51,18 +51,6 @@ TrainerTamerBrett:
 TamerBrettScript:
 	end_if_just_battled
 	jumptext TamerBrettAfterText
-
-SafariZoneWestAreaSign:
-	jumptext SafariZoneWestAreaSignText
-
-SafariZoneWestRestHouseSign:
-	jumptext SafariZoneWestRestHouseSignText
-
-SafariZoneWestTrainerTips1Sign:
-	jumptext SafariZoneWestTrainerTips1SignText
-
-SafariZoneWestTrainerTips2Sign:
-	jumptext SafariZoneWestTrainerTips2SignText
 
 SafariZoneWestHiddenNugget:
 	dwb EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET, NUGGET

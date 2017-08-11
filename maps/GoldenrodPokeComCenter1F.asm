@@ -34,24 +34,21 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 
 .PersonEvents: db 12
 	person_event SPRITE_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
-	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x6101e, -1
-	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass1Script_0x61021, -1
+	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x62105, -1
+	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x62260, -1
 	person_event SPRITE_POKEFAN_F, 14, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
-	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript, -1
-	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript, -1
-	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript, -1
-	person_event SPRITE_ROCKER, 6, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockerScript, -1
-	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript, -1
-	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Lass2Script, -1
+	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x61c89, -1
+	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x61efa, -1
+	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x61e5c, -1
+	person_event SPRITE_ROCKER, 6, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x61fc9, -1
+	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x62222, -1
+	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x61cef, -1
 	person_event SPRITE_SIGN_UNOWN_P, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
 
 NurseScript_0x60f91:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
 	jumpstd pokecenternurse
-
-GameboyKidScript_0x6101e:
-	jumptextfaceplayer UnknownText_0x62105
 
 UnknownText_0x62105:
 	text "The Colosseum"
@@ -64,9 +61,6 @@ UnknownText_0x62105:
 	para "wall, so I can't"
 	line "afford to lose."
 	done
-
-Lass1Script_0x61021:
-	jumptextfaceplayer UnknownText_0x62260
 
 UnknownText_0x62260:
 	text "A higher level"
@@ -252,9 +246,6 @@ UnknownText_0x623c7:
 	line "operation yet…"
 	done
 
-SuperNerdScript:
-	jumptextfaceplayer UnknownText_0x61c89
-
 UnknownText_0x61c89:
 	text "Whoa, this #mon"
 	line "Center is huge."
@@ -265,9 +256,6 @@ UnknownText_0x61c89:
 	para "installed lots of"
 	line "new machines too."
 	done
-
-Lass2Script:
-	jumptextfaceplayer UnknownText_0x61cef
 
 ; unused
 ;UnknownText_0x61dfd:
@@ -309,9 +297,6 @@ UnknownText_0x61cef:
 	line "friends!"
 	done
 
-YoungsterScript:
-	jumptextfaceplayer UnknownText_0x61efa
-
 UnknownText_0x61efa:
 	text "What is the News"
 	line "Machine?"
@@ -336,9 +321,6 @@ UnknownText_0x61efa:
 ;	line "don't check out"
 ;	cont "the latest News!"
 ;	done
-
-TeacherScript:
-	jumptextfaceplayer UnknownText_0x61e5c
 
 ; unused
 ;UnknownText_0x61f48:
@@ -377,9 +359,6 @@ UnknownText_0x61e5c:
 ;	line "name!"
 ;	done
 
-RockerScript:
-	jumptextfaceplayer UnknownText_0x61fc9
-
 UnknownText_0x61fc9:
 	text "The machines here"
 	line "can't all be used"
@@ -404,9 +383,6 @@ UnknownText_0x61fc9:
 ;	line "could get in the"
 ;	cont "News?"
 ;	done
-
-GrampsScript:
-	jumptextfaceplayer UnknownText_0x62222
 
 ; unused
 ;UnknownText_0x62173:

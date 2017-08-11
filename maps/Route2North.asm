@@ -17,7 +17,7 @@ Route2North_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 11, SIGNPOST_READ, MapRoute2Signpost1Script
+	signpost 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
 
 .PersonEvents: db 6
 	person_event SPRITE_BUG_MANIAC, 6, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
@@ -25,7 +25,7 @@ Route2North_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 13, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1ac306, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 10, 5, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_2_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 22, 15, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_2_CUT_TREE_2
-	person_event SPRITE_COOLTRAINER_M, 10, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route2NorthCooltrainermScript, EVENT_VERMILION_CITY_SNORLAX
+	person_event SPRITE_COOLTRAINER_M, 10, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Route2NorthCooltrainermText, EVENT_VERMILION_CITY_SNORLAX
 
 TrainerBug_maniacEd:
 	trainer EVENT_BEAT_BUG_MANIAC_ED, BUG_MANIAC, ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText, 0, Bug_maniacEdScript
@@ -33,12 +33,6 @@ TrainerBug_maniacEd:
 Bug_maniacEdScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1ac3cf
-
-Route2NorthCooltrainermScript:
-	jumptextfaceplayer Route2NorthCooltrainermText
-
-MapRoute2Signpost1Script:
-	jumptext UnknownText_0x1ac49f
 
 FruitTreeScript_0x1ac306:
 	fruittree FRUITTREE_ROUTE_2

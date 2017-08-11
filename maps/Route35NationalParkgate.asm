@@ -20,11 +20,11 @@ Route35NationalParkgate_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 5, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
+	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
 .PersonEvents: db 3
 	person_event SPRITE_OFFICER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	person_event SPRITE_BUG_MANIAC, 5, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6a2d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
+	person_event SPRITE_BUG_MANIAC, 5, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
 	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
 const_value set 2
@@ -190,12 +190,6 @@ OfficerScript_0x6a2ca:
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route35NationalParkgate_ContestIsOver
 	jumpopenedtext UnknownText_0x6a894
-
-BugManiacScript_0x6a2d8:
-	jumptextfaceplayer UnknownText_0x6a8d8
-
-MapRoute36NationalParkgateSignpost0Script:
-	jumptext UnknownText_0x6a90e
 
 Route35NationalParkgate_GetDayOfWeek:
 	jumpstd daytotext

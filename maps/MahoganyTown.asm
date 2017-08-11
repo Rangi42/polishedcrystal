@@ -19,15 +19,15 @@ MahoganyTown_MapEventHeader:
 	xy_trigger 0, $9, $13, UnknownScript_0x190013
 
 .Signposts: db 3
-	signpost 5, 1, SIGNPOST_READ, MahoganyTownSign
+	signpost 5, 1, SIGNPOST_JUMPTEXT, MahoganyTownSignText
 	signpost 7, 9, SIGNPOST_READ, MahoganyTownSouvenirShopSign
-	signpost 13, 3, SIGNPOST_READ, MahoganyGymSign
+	signpost 13, 3, SIGNPOST_JUMPTEXT, MahoganyGymSignText
 
 .PersonEvents: db 4
 	person_event SPRITE_POKEFAN_M, 8, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
-	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x190092, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x190095, EVENT_MAHOGANY_MART_OWNERS
+	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x190276, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
+	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1902f2, EVENT_MAHOGANY_MART_OWNERS
 
 const_value set 2
 	const MAHOGANYTOWN_POKEFAN_M
@@ -93,15 +93,6 @@ GrampsScript_0x19007e:
 UnknownScript_0x19008c:
 	jumpopenedtext UnknownText_0x19021d
 
-FisherScript_0x190092:
-	jumptextfaceplayer UnknownText_0x190276
-
-LassScript_0x190095:
-	jumptextfaceplayer UnknownText_0x1902f2
-
-MahoganyTownSign:
-	jumptext MahoganyTownSignText
-
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS
 	iftrue .rockets
@@ -109,9 +100,6 @@ MahoganyTownSouvenirShopSign:
 
 .rockets
 	jumptext MahoganyTownSouvenirShopSignText1
-
-MahoganyGymSign:
-	jumptext MahoganyGymSignText
 
 MovementData_0x1900a7:
 	step_left

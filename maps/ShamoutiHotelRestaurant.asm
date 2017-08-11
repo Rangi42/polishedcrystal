@@ -18,7 +18,7 @@ ShamoutiHotelRestaurant_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_RECEPTIONIST, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ShamoutiHotelRestaurantReceptionistScript, -1
+	person_event SPRITE_RECEPTIONIST, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiHotelRestaurantReceptionistText, -1
 
 const_value set 2
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
@@ -141,9 +141,6 @@ ShamoutiHotelRestaurantLeaveScript:
 	waitsfx
 	warp SHAMOUTI_HOTEL_1F, $e, $0
 	end
-
-ShamoutiHotelRestaurantReceptionistScript:
-	jumptextfaceplayer ShamoutiHotelRestaurantReceptionistText
 
 ShamoutiHotelRestaurantReceptionistText:
 	text "Please enjoy a"

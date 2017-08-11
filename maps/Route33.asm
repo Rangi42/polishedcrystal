@@ -12,7 +12,7 @@ Route33_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 11, SIGNPOST_READ, Route33Sign
+	signpost 11, 11, SIGNPOST_JUMPTEXT, Route33SignText
 
 .PersonEvents: db 3
 	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
@@ -147,9 +147,6 @@ TrainerSchoolgirlImogen:
 SchoolgirlImogenScript:
 	end_if_just_battled
 	jumptext SchoolgirlImogenAfterText
-
-Route33Sign:
-	jumptext Route33SignText
 
 Route33FruitTreeScript:
 	fruittree FRUITTREE_ROUTE_33

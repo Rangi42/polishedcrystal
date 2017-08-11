@@ -12,8 +12,8 @@ UragaChannelEast_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 5, 45, SIGNPOST_READ, UragaChannelSign
-	signpost 13, 3, SIGNPOST_READ, ScaryCaveEastSign
+	signpost 5, 45, SIGNPOST_JUMPTEXT, UragaChannelSignText
+	signpost 13, 3, SIGNPOST_JUMPTEXT, ScaryCaveEastSignText
 	signpost 4, 33, SIGNPOST_ITEM, UragaChannelEastHiddenNugget
 	signpost 14, 34, SIGNPOST_ITEM, UragaChannelEastHiddenPearl
 	signpost 12, 22, SIGNPOST_ITEM, UragaChannelEastHiddenBottleCap
@@ -101,15 +101,9 @@ TrainerBikerTyrone:
 	cont "me here."
 	done
 
-UragaChannelSign:
-	jumptext UragaChannelSignText
-
 UragaChannelSignText:
 	text "Uraga Channel"
 	done
-
-ScaryCaveEastSign:
-	jumptext ScaryCaveEastSignText
 
 ScaryCaveEastSignText:
 	text "There's graffiti"

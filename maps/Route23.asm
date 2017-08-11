@@ -38,7 +38,7 @@ Route23_MapEventHeader:
 	xy_trigger 7, $2f, $7, Route23RisingBadgeTriggerScript
 
 .Signposts: db 1
-	signpost 32, 3, SIGNPOST_READ, VictoryRoadSign
+	signpost 32, 3, SIGNPOST_JUMPTEXT, VictoryRoadSignText
 
 .PersonEvents: db 8
 	person_event SPRITE_SWIMMING_OFFICER, 83, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route23StormBadgeOfficerScript, -1
@@ -215,9 +215,6 @@ Route23RisingBadgeTriggerScript:
 
 Route23OfficerNoBadgeScript:
 	jumpopenedtext Route23OfficerNoBadgeText
-
-VictoryRoadSign:
-	jumptext VictoryRoadSignText
 
 Route23OfficerNeedBadgeText:
 	text "You can pass here"

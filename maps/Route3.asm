@@ -14,14 +14,14 @@ Route3_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 15, 63, SIGNPOST_READ, MapRoute3Signpost0Script
+	signpost 15, 63, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
 	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
-	signpost 15, 8, SIGNPOST_READ, Route3Meteorite
-	signpost 17, 8, SIGNPOST_READ, Route3Meteorite
-	signpost 17, 9, SIGNPOST_READ, Route3Meteorite
-	signpost 15, 14, SIGNPOST_READ, Route3Meteorite
-	signpost 16, 15, SIGNPOST_READ, Route3Meteorite
-	signpost 17, 15, SIGNPOST_READ, Route3Meteorite
+	signpost 15, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 17, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 17, 9, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 15, 14, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 16, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 17, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterRegis, -1
@@ -319,12 +319,6 @@ TrainerAceDuoZacandjen2:
 	line "trainer you'll"
 	cont "become."
 	done
-
-MapRoute3Signpost0Script:
-	jumptext UnknownText_0x1ae163
-
-Route3Meteorite:
-	jumptext Route3MeteoriteText
 
 Route3HiddenMoonStone:
 	dwb EVENT_ROUTE_3_HIDDEN_MOON_STONE, MOON_STONE

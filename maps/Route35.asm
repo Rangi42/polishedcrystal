@@ -15,8 +15,8 @@ Route35_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 1, SIGNPOST_READ, Route35Sign
-	signpost 31, 11, SIGNPOST_READ, Route35Sign
+	signpost 7, 1, SIGNPOST_JUMPTEXT, Route35SignText
+	signpost 31, 11, SIGNPOST_JUMPTEXT, Route35SignText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 19, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
@@ -252,9 +252,6 @@ UnknownScript_0x19ca6d:
 
 UnknownScript_0x19ca73:
 	jumpopenedtext UnknownText_0x19cf56
-
-Route35Sign:
-	jumptext Route35SignText
 
 FruitTreeScript_0x19ca7e:
 	fruittree FRUITTREE_ROUTE_35

@@ -13,16 +13,10 @@ VermilionHouseFishingSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 3, SIGNPOST_READ, FishingDudesHousePhoto
+	signpost 0, 3, SIGNPOST_JUMPTEXT, FishingDudesHousePhotoText
 
 .PersonEvents: db 1
-	person_event SPRITE_FISHING_GURU, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingDude, -1
-
-FishingDude:
-	jumptextfaceplayer FishingDudeText
-
-FishingDudesHousePhoto:
-	jumptext FishingDudesHousePhotoText
+	person_event SPRITE_FISHING_GURU, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, FishingDudeText, -1
 
 FishingDudeText:
 	text "I am the Fishing"

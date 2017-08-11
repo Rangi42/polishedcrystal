@@ -16,13 +16,13 @@ CinnabarLab_MapEventHeader:
 	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
 
 .Signposts: db 8
-	signpost 14, 8, SIGNPOST_READ, CinnabarLabRoom1Sign
-	signpost 14, 9, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 14, 16, SIGNPOST_READ, CinnabarLabRoom2Sign
-	signpost 14, 17, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 14, 24, SIGNPOST_READ, CinnabarLabRoom3Sign
-	signpost 14, 25, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
+	signpost 14, 8, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
+	signpost 14, 9, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	signpost 14, 16, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
+	signpost 14, 17, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	signpost 14, 24, SIGNPOST_JUMPTEXT, CinnabarLabRoom3SignText
+	signpost 14, 25, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	signpost 6, 3, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
 	signpost 6, 3, SIGNPOST_ITEM, CinnabarLabHiddenBerserkGene
 
 .PersonEvents: db 9
@@ -209,21 +209,6 @@ CinnabarLabCelebiEventScript:
 	domaptrigger ILEX_FOREST, $1
 	warp ILEX_FOREST, $a, $1a
 	end
-
-CinnabarLabRoom1Sign:
-	jumptext CinnabarLabRoom1SignText
-
-CinnabarLabRoom2Sign:
-	jumptext CinnabarLabRoom2SignText
-
-CinnabarLabRoom3Sign:
-	jumptext CinnabarLabRoom3SignText
-
-CinnabarLabRoom4Sign:
-	jumptext CinnabarLabRoom4SignText
-
-CinnabarLabLockedDoorSign:
-	jumptext CinnabarLabLockedDoorText
 
 CinnabarLabHiddenBerserkGene:
 	dwb EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE, BERSERK_GENE

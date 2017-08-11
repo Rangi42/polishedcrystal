@@ -15,7 +15,7 @@ SproutTower2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 15, 10, SIGNPOST_READ, MapSproutTower2FSignpost0Script
+	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1848c8
 
 .PersonEvents: db 3
 	person_event SPRITE_SAGE, 3, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
@@ -35,9 +35,6 @@ TrainerSageEdmond:
 SageEdmondScript:
 	end_if_just_battled
 	jumptext UnknownText_0x18486f
-
-MapSproutTower2FSignpost0Script:
-	jumptext UnknownText_0x1848c8
 
 SageNicoSeenText:
 	text "However hard we"

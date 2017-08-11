@@ -55,8 +55,8 @@ GoldenrodGameCorner_MapEventHeader:
 	person_event SPRITE_RECEPTIONIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerTMVendorScript, -1
 	person_event SPRITE_RECEPTIONIST, 2, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPrizeMonVendorScript, -1
 	person_event SPRITE_PHARMACIST, 7, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPharmacistScript, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 10, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerCooltrainerFScript, -1
-	person_event SPRITE_POKEFAN_M, 9, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPokefanM2Script, EVENT_BEAT_WHITNEY
+	person_event SPRITE_COOLTRAINER_F, 3, 10, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodGameCornerCooltrainerFText, -1
+	person_event SPRITE_POKEFAN_M, 9, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodGameCornerPokefanM2Text, EVENT_BEAT_WHITNEY
 	person_event SPRITE_FISHER, 1, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerFisherScript, -1
 
 const_value set 2
@@ -305,16 +305,10 @@ GoldenrodGameCornerPokefanFScript:
 	spriteface GOLDENRODGAMECORNER_POKEFAN_F, RIGHT
 	end
 
-GoldenrodGameCornerCooltrainerFScript:
-	jumptextfaceplayer GoldenrodGameCornerCooltrainerFText
-
 GoldenrodGameCornerGentlemanScript:
 	showtextfaceplayer GoldenrodGameCornerGentlemanText
 	spriteface GOLDENRODGAMECORNER_GENTLEMAN, RIGHT
 	end
-
-GoldenrodGameCornerPokefanM2Script:
-	jumptextfaceplayer GoldenrodGameCornerPokefanM2Text
 
 GoldenrodGameCornerLeftTheirDrinkScript:
 	jumptext GoldenrodGameCornerLeftTheirDrinkText

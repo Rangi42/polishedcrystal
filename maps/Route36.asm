@@ -20,10 +20,10 @@ Route36_MapEventHeader:
 	xy_trigger 1, $7, $16, Route36SuicuneScript
 
 .Signposts: db 4
-	signpost 1, 29, SIGNPOST_READ, Route36TrainerTips2
-	signpost 11, 45, SIGNPOST_READ, RuinsOfAlphNorthSign
-	signpost 7, 55, SIGNPOST_READ, Route36Sign
-	signpost 7, 21, SIGNPOST_READ, Route36TrainerTips1
+	signpost 1, 29, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
+	signpost 11, 45, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
+	signpost 7, 55, SIGNPOST_JUMPTEXT, Route36SignText
+	signpost 7, 21, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
 
 .PersonEvents: db 11
 	person_event SPRITE_WEIRD_TREE, 9, 35, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
@@ -341,18 +341,6 @@ ArthurScript:
 
 ArthurNotThursdayScript:
 	jumpopenedtext ArthurNotThursdayText
-
-Route36Sign:
-	jumptext Route36SignText
-
-RuinsOfAlphNorthSign:
-	jumptext RuinsOfAlphNorthSignText
-
-Route36TrainerTips1:
-	jumptext Route36TrainerTips1Text
-
-Route36TrainerTips2:
-	jumptext Route36TrainerTips2Text
 
 Route36FruitTree:
 	fruittree FRUITTREE_ROUTE_36

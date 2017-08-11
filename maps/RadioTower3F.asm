@@ -15,12 +15,12 @@ RadioTower3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower3FSignpost0Script
-	signpost 0, 9, SIGNPOST_READ, MapRadioTower3FSignpost1Script
+	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
+	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
 	signpost 2, 14, SIGNPOST_UP, MapRadioTower3FSignpost2Script
 
 .PersonEvents: db 7
-	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x5e553, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
 	person_event SPRITE_COOLTRAINER_F, 3, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
 	person_event SPRITE_ROCKET, 1, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -37,9 +37,6 @@ CardKeyShutterCallback:
 	changeblock $e, $2, $2a
 	changeblock $e, $4, $1
 	return
-
-SuperNerdScript_0x5e553:
-	jumptextfaceplayer UnknownText_0x5e621
 
 GymGuyScript_0x5e556:
 	faceplayer
@@ -129,12 +126,6 @@ UnknownScript_0x5e605:
 	closetext
 	waitsfx
 	end
-
-MapRadioTower3FSignpost0Script:
-	jumptext UnknownText_0x5ead6
-
-MapRadioTower3FSignpost1Script:
-	jumptext UnknownText_0x5eae4
 
 UnknownText_0x5e621:
 	text "We have recordings"

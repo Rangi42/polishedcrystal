@@ -14,12 +14,12 @@ ViridianForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 11
-	signpost 7, 4, SIGNPOST_READ, MapViridianForestSignpost1Script
-	signpost 26, 6, SIGNPOST_READ, MapViridianForestSignpost2Script
-	signpost 19, 28, SIGNPOST_READ, MapViridianForestSignpost3Script
-	signpost 34, 18, SIGNPOST_READ, MapViridianForestSignpost4Script
-	signpost 42, 26, SIGNPOST_READ, MapViridianForestSignpost5Script
-	signpost 44, 20, SIGNPOST_READ, MapViridianForestSignpost6Script
+	signpost 7, 4, SIGNPOST_JUMPTEXT, ViridianForestSignText1
+	signpost 26, 6, SIGNPOST_JUMPTEXT, ViridianForestSignText2
+	signpost 19, 28, SIGNPOST_JUMPTEXT, ViridianForestSignText3
+	signpost 34, 18, SIGNPOST_JUMPTEXT, ViridianForestSignText4
+	signpost 42, 26, SIGNPOST_JUMPTEXT, ViridianForestSignText5
+	signpost 44, 20, SIGNPOST_JUMPTEXT, ViridianForestSignText6
 	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
 	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
 	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenMulch
@@ -83,24 +83,6 @@ ViridianForestWeedleDoll:
 	pause 60
 	waitbutton
 	jumpopenedtext ViridianForestWeedleSentText
-
-MapViridianForestSignpost1Script:
-	jumptext ViridianForestSignText1
-
-MapViridianForestSignpost2Script:
-	jumptext ViridianForestSignText2
-
-MapViridianForestSignpost3Script:
-	jumptext ViridianForestSignText3
-
-MapViridianForestSignpost4Script:
-	jumptext ViridianForestSignText4
-
-MapViridianForestSignpost5Script:
-	jumptext ViridianForestSignText5
-
-MapViridianForestSignpost6Script:
-	jumptext ViridianForestSignText6
 
 ViridianForestHiddenMaxEther:
 	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER, MAX_ETHER

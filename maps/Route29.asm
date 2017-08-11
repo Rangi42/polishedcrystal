@@ -15,18 +15,18 @@ Route29_MapEventHeader:
 	xy_trigger 1, $9, $35, Route29Tutorial2
 
 .Signposts: db 2
-	signpost 7, 51, SIGNPOST_READ, Route29Sign1
-	signpost 5, 3, SIGNPOST_READ, Route29Sign2
+	signpost 7, 51, SIGNPOST_JUMPTEXT, Route29Sign1Text
+	signpost 5, 3, SIGNPOST_JUMPTEXT, Route29Sign2Text
 
 .PersonEvents: db 10
 	person_event SPRITE_NEW_BARK_LYRA, 12, 50, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
 	person_event SPRITE_TEACHER, 12, 29, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
-	person_event SPRITE_YOUNGSTER, 16, 27, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route29YoungsterScript, -1
-	person_event SPRITE_TEACHER, 11, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route29TeacherScript, -1
+	person_event SPRITE_YOUNGSTER, 16, 27, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, Route29YoungsterText, -1
+	person_event SPRITE_TEACHER, 11, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, Route29TeacherText, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 9, 30, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_29_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 11, 21, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_29_CUT_TREE_2
 	person_event SPRITE_BALL_CUT_FRUIT, 2, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route29FruitTree, -1
-	person_event SPRITE_FISHER, 3, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route29FisherScript, -1
+	person_event SPRITE_FISHER, 3, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route29FisherText, -1
 	person_event SPRITE_COOLTRAINER_M, 4, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 2, 48, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, POTION, 1, EVENT_ROUTE_29_POTION
 
@@ -123,15 +123,6 @@ LyraScript_ReceiveTheBalls:
 	jumpstd receiveitem
 	end
 
-Route29YoungsterScript:
-	jumptextfaceplayer Route29YoungsterText
-
-Route29TeacherScript:
-	jumptextfaceplayer Route29TeacherText
-
-Route29FisherScript:
-	jumptextfaceplayer Route29FisherText
-
 CooltrainerMScript_0x1a1031:
 	faceplayer
 	opentext
@@ -171,12 +162,6 @@ TuscanyDoneScript:
 
 TuscanyNotTuesdayScript:
 	jumpopenedtext TuscanyNotTuesdayText
-
-Route29Sign1:
-	jumptext Route29Sign1Text
-
-Route29Sign2:
-	jumptext Route29Sign2Text
 
 Route29FruitTree:
 	fruittree FRUITTREE_ROUTE_29

@@ -24,9 +24,9 @@ SilphCo2F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist2Script, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee1Script, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee2Script, -1
+	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, SilphCo2FScientist2Text, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, SilphCo2FSilphEmployee1Text, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, SilphCo2FSilphEmployee2Text, -1
 
 SilphCo2FScientist1Script:
 	faceplayer
@@ -44,15 +44,6 @@ SilphCo2FScientist1GaveUpGradeScript:
 SilphCo2FScientist1NoRoomForUpGradeScript:
 	closetext
 	end
-
-SilphCo2FScientist2Script:
-	jumptextfaceplayer SilphCo2FScientist2Text
-
-SilphCo2FSilphEmployee1Script:
-	jumptextfaceplayer SilphCo2FSilphEmployee1Text
-
-SilphCo2FSilphEmployee2Script:
-	jumptextfaceplayer SilphCo2FSilphEmployee2Text
 
 SilphCo2FScientist1Text1:
 	text "You traveled here"

@@ -13,8 +13,8 @@ Route8_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 9, 11, SIGNPOST_READ, Route8UndergroundPathSign
-	signpost 7, 10, SIGNPOST_READ, Route8LockedDoor
+	signpost 9, 11, SIGNPOST_JUMPTEXT, Route8UndergroundPathSignText
+	signpost 7, 10, SIGNPOST_JUMPTEXT, Route8LockedDoorText
 
 .PersonEvents: db 15
 	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_SAFFRON_TRAIN_STATION_POPULATION
@@ -29,18 +29,9 @@ Route8_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 14, 21, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_8_CUT_TREE_1
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 32, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_8_CUT_TREE_2
 	person_event SPRITE_BALL_CUT_FRUIT, 7, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x6c06c, -1
-	person_event SPRITE_BIKER, 9, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route8BikerDwayneScript, EVENT_RETURNED_MACHINE_PART
-	person_event SPRITE_BIKER, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route8BikerHarrisScript, EVENT_RETURNED_MACHINE_PART
-	person_event SPRITE_BIKER, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route8BikerZekeScript, EVENT_RETURNED_MACHINE_PART
-
-Route8BikerDwayneScript:
-	jumptextfaceplayer Route8BikerDwayneProtestText
-
-Route8BikerHarrisScript:
-	jumptextfaceplayer Route8BikerHarrisProtestText
-
-Route8BikerZekeScript:
-	jumptextfaceplayer Route8BikerZekeProtestText
+	person_event SPRITE_BIKER, 9, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, Route8BikerDwayneProtestText, EVENT_RETURNED_MACHINE_PART
+	person_event SPRITE_BIKER, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, Route8BikerHarrisProtestText, EVENT_RETURNED_MACHINE_PART
+	person_event SPRITE_BIKER, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route8BikerZekeProtestText, EVENT_RETURNED_MACHINE_PART
 
 TrainerBikerDwayne:
 	trainer EVENT_BEAT_BIKER_DWAYNE, BIKER, DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText, 0, BikerDwayneScript
@@ -104,12 +95,6 @@ TrainerLassMeadow:
 LassMeadowScript:
 	end_if_just_battled
 	jumptext LassMeadowAfterText
-
-Route8LockedDoor:
-	jumptext Route8LockedDoorText
-
-Route8UndergroundPathSign:
-	jumptext Route8UndergroundPathSignText
 
 FruitTreeScript_0x6c06c:
 	fruittree FRUITTREE_ROUTE_8

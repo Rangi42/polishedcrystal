@@ -15,9 +15,9 @@ CinnabarIsland_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 15, 9, SIGNPOST_READ, CinnabarIslandGymSign
-	signpost 11, 9, SIGNPOST_READ, CinnabarIslandSign
-	signpost 11, 21, SIGNPOST_READ, CinnabarIslandVolcanoWarningSign
+	signpost 15, 9, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
+	signpost 11, 9, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
+	signpost 11, 21, SIGNPOST_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
 	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
 
 .PersonEvents: db 2
@@ -55,15 +55,6 @@ CinnabarIslandBlue:
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
-
-CinnabarIslandGymSign:
-	jumptext CinnabarIslandGymSignText
-
-CinnabarIslandSign:
-	jumptext CinnabarIslandSignText
-
-CinnabarIslandVolcanoWarningSign:
-	jumptext CinnabarIslandVolcanoWarningSignText
 
 CinnabarIslandHiddenRareCandy:
 	dwb EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY, RARE_CANDY

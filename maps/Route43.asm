@@ -18,9 +18,9 @@ Route43_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 3, 13, SIGNPOST_READ, Route43Sign1
-	signpost 49, 11, SIGNPOST_READ, Route43Sign2
-	signpost 38, 16, SIGNPOST_READ, Route43TrainerTips
+	signpost 3, 13, SIGNPOST_JUMPTEXT, Route43Sign1Text
+	signpost 49, 11, SIGNPOST_JUMPTEXT, Route43Sign2Text
+	signpost 38, 16, SIGNPOST_JUMPTEXT, Route43TrainerTipsText
 
 .PersonEvents: db 13
 	person_event SPRITE_LADY, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route43SightseerfScript, -1
@@ -422,15 +422,6 @@ UnknownScript_0x19d255:
 UnknownScript_0x19d259:
 	jumpstd packfullf
 	end
-
-Route43Sign1:
-	jumptext Route43Sign1Text
-
-Route43Sign2:
-	jumptext Route43Sign2Text
-
-Route43TrainerTips:
-	jumptext Route43TrainerTipsText
 
 FruitTreeScript_0x19d266:
 	fruittree FRUITTREE_ROUTE_43

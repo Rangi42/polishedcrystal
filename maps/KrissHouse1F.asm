@@ -17,9 +17,9 @@ KrissHouse1F_MapEventHeader:
 	xy_trigger 0, $2, $7, MomTrigger3
 
 .Signposts: db 4
-	signpost 1, 0, SIGNPOST_READ, FridgeScript
-	signpost 1, 1, SIGNPOST_READ, SinkScript
-	signpost 1, 2, SIGNPOST_READ, StoveScript
+	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
+	signpost 1, 1, SIGNPOST_JUMPTEXT, SinkText
+	signpost 1, 2, SIGNPOST_JUMPTEXT, StoveText
 	signpost 1, 7, SIGNPOST_READ, TVScript
 
 .PersonEvents: db 5
@@ -374,15 +374,6 @@ NeighborScript:
 	closetext
 	spriteface KRISSHOUSE1F_POKEFAN_F, RIGHT
 	end
-
-FridgeScript:
-	jumptext FridgeText
-
-SinkScript:
-	jumptext SinkText
-
-StoveScript:
-	jumptext StoveText
 
 TVScript:
 	checkcode VAR_FACING

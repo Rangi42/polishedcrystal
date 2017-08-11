@@ -22,9 +22,9 @@ CeladonMansion3F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_COOLTRAINER_M, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
-	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x71696, -1
-	person_event SPRITE_SUPER_NERD, 7, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x716bc, -1
-	person_event SPRITE_FISHER, 4, 0, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x716bf, -1
+	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x717b4, -1
+	person_event SPRITE_SUPER_NERD, 7, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x71895, -1
+	person_event SPRITE_FISHER, 4, 0, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x718ca, -1
 
 CooltrainerMScript_0x71670:
 	faceplayer
@@ -45,15 +45,6 @@ UnknownScript_0x7167e:
 	buttonsound
 	special Diploma
 	jumpopenedtext UnknownText_0x71763
-
-GymGuyScript_0x71696:
-	jumptextfaceplayer UnknownText_0x717b4
-
-SuperNerdScript_0x716bc:
-	jumptextfaceplayer UnknownText_0x71895
-
-FisherScript_0x716bf:
-	jumptextfaceplayer UnknownText_0x718ca
 
 MapCeladonMansion3FSignpost0Script:
 	jumptext UnknownText_0x7190b

@@ -17,11 +17,11 @@ IlexForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 19, 5, SIGNPOST_READ, MapIlexForestSignpost0Script
+	signpost 19, 5, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
 	signpost 9, 13, SIGNPOST_ITEM, IlexForestHiddenEther
 	signpost 16, 24, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
 	signpost 19, 3, SIGNPOST_ITEM, IlexForestHiddenFullHeal
-	signpost 9, 20, SIGNPOST_READ, MapIlexForestMossRockScript
+	signpost 9, 20, SIGNPOST_JUMPTEXT, Text_IlexForestMossRock
 	signpost 24, 10, SIGNPOST_UP, MapIlexForestSignpost4Script
 	signpost 24, 25, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf1
 	signpost 8, 19, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
@@ -30,7 +30,7 @@ IlexForest_MapEventHeader:
 	person_event SPRITE_FARFETCH_D, 33, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	person_event SPRITE_BLACK_BELT, 30, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	person_event SPRITE_KURT, 31, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_KURT
-	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestLassScript, EVENT_ILEX_FOREST_LASS
+	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, Text_IlexForestLass, EVENT_ILEX_FOREST_LASS
 	person_event SPRITE_CELEBI, 26, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
 	person_event SPRITE_LYRA, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA
 	person_event SPRITE_BALL_CUT_FRUIT, 27, 10, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ILEX_FOREST_CUT_TREE
@@ -482,9 +482,6 @@ Bug_catcherWayneScript:
 	end_if_just_battled
 	jumptext Bug_catcherWayneAfterText
 
-IlexForestLassScript:
-	jumptextfaceplayer Text_IlexForestLass
-
 IlexForestHiddenEther:
 	dwb EVENT_ILEX_FOREST_HIDDEN_ETHER, ETHER
 
@@ -499,12 +496,6 @@ IlexForestHiddenSilverLeaf1:
 
 IlexForestHiddenSilverLeaf2:
 	dwb EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2, SILVER_LEAF
-
-MapIlexForestMossRockScript:
-	jumptext Text_IlexForestMossRock
-
-MapIlexForestSignpost0Script:
-	jumptext Text_IlexForestSignpost0
 
 MapIlexForestSignpost4Script:
 	checkevent EVENT_FOREST_IS_RESTLESS

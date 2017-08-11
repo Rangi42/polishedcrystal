@@ -13,7 +13,7 @@ Route11_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 5, SIGNPOST_READ, Route11Sign
+	signpost 7, 5, SIGNPOST_JUMPTEXT, Route11SignText
 	signpost 5, 44, SIGNPOST_ITEM, Route11HiddenRevive
 
 .PersonEvents: db 11
@@ -277,9 +277,6 @@ TrainerGuitaristfRitsuko:
 	text "♪ Rock'n, rock'n'"
 	line "roll radio… ♪"
 	done
-
-Route11Sign:
-	jumptext Route11SignText
 
 FruitTreeScript_0x68055:
 	fruittree FRUITTREE_ROUTE_11

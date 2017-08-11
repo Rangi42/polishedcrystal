@@ -13,12 +13,12 @@ SproutTower3F_MapEventHeader:
 	xy_trigger 0, $9, $9, UnknownScript_0x184947
 
 .Signposts: db 6
-	signpost 1, 6, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 1, 9, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 0, 7, SIGNPOST_READ, MapSproutTower3FSignpost3Script
-	signpost 0, 8, SIGNPOST_READ, MapSproutTower3FSignpost3Script
-	signpost 15, 3, SIGNPOST_READ, MapSproutTower3FSignpost5Script
-	signpost 15, 12, SIGNPOST_READ, MapSproutTower3FSignpost5Script
+	signpost 1, 6, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	signpost 1, 9, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
+	signpost 0, 8, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
+	signpost 15, 3, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	signpost 15, 12, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 
 .PersonEvents: db 7
 	person_event SPRITE_SILVER, 4, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
@@ -110,12 +110,6 @@ TrainerSageNeal:
 SageNealScript:
 	end_if_just_battled
 	jumptext UnknownText_0x184f12
-
-MapSproutTower3FSignpost3Script:
-	jumptext UnknownText_0x184f37
-
-MapSproutTower3FSignpost5Script:
-	jumptext UnknownText_0x184f61
 
 MovementData_0x184a1d:
 	step_up

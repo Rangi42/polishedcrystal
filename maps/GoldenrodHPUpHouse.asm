@@ -16,7 +16,7 @@ GoldenrodHPUpHouse_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanMScript, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanFScript, -1
+	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodHPUpHousePokefanFText, -1
 	person_event SPRITE_PIKACHU, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePikachuScript, -1
 
 GoldenrodHPUpHousePokefanMScript:
@@ -35,9 +35,6 @@ GoldenrodHPUpHousePokefanMScript:
 .Done:
 	closetext
 	end
-
-GoldenrodHPUpHousePokefanFScript:
-	jumptextfaceplayer GoldenrodHPUpHousePokefanFText
 
 GoldenrodHPUpHousePikachuScript:
 	opentext

@@ -15,40 +15,19 @@ PalletTown_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 9, 7, SIGNPOST_READ, PalletTownSign
-	signpost 5, 3, SIGNPOST_READ, RedsHouseSign
-	signpost 13, 13, SIGNPOST_READ, OaksLabSign
-	signpost 5, 11, SIGNPOST_READ, BluesHouseSign
+	signpost 9, 7, SIGNPOST_JUMPTEXT, PalletTownSignText
+	signpost 5, 3, SIGNPOST_JUMPTEXT, RedsHouseSignText
+	signpost 13, 13, SIGNPOST_JUMPTEXT, OaksLabSignText
+	signpost 5, 11, SIGNPOST_JUMPTEXT, BluesHouseSignText
 
 .PersonEvents: db 3
-	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1ac6d5, -1
-	person_event SPRITE_FISHER, 14, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1ac6d8, -1
-	person_event SPRITE_YOUNGSTER, 7, 17, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PalletTownYoungsterScript, -1
+	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1ac6e7, -1
+	person_event SPRITE_FISHER, 14, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1ac720, -1
+	person_event SPRITE_YOUNGSTER, 7, 17, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, PalletTownYoungsterText, -1
 
 PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET
 	return
-
-TeacherScript_0x1ac6d5:
-	jumptextfaceplayer UnknownText_0x1ac6e7
-
-FisherScript_0x1ac6d8:
-	jumptextfaceplayer UnknownText_0x1ac720
-
-PalletTownYoungsterScript:
-	jumptextfaceplayer PalletTownYoungsterText
-
-PalletTownSign:
-	jumptext PalletTownSignText
-
-RedsHouseSign:
-	jumptext RedsHouseSignText
-
-OaksLabSign:
-	jumptext OaksLabSignText
-
-BluesHouseSign:
-	jumptext BluesHouseSignText
 
 UnknownText_0x1ac6e7:
 	text "I'm raising #-"

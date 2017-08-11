@@ -14,11 +14,11 @@ MrPokemonsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 1, 0, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
-	signpost 1, 1, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
-	signpost 1, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
-	signpost 1, 7, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
-	signpost 4, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost4Script
+	signpost 1, 0, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	signpost 1, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	signpost 1, 7, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	signpost 4, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
 
 .PersonEvents: db 3
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
@@ -153,15 +153,6 @@ MrPokemonsHouse_OakScript:
 .RivalTakesCyndaquil:
 	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	end
-
-MapMrPokemonsHouseSignpost1Script:
-	jumptext MrPokemonsHouse_ForeignMagazinesText
-
-MapMrPokemonsHouseSignpost3Script:
-	jumptext MrPokemonsHouse_BrokenComputerText
-
-MapMrPokemonsHouseSignpost4Script:
-	jumptext MrPokemonsHouse_StrangeCoinsText
 
 MrPokemonsHouse_PlayerWalksToMrPokemon:
 	step_right

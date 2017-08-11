@@ -16,9 +16,9 @@ SafariZoneEast_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 24, 6, SIGNPOST_READ, SafariZoneEastAreaSign
-	signpost 12, 28, SIGNPOST_READ, SafariZoneEastRestHouseSign
-	signpost 6, 8, SIGNPOST_READ, SafariZoneEastTrainerTipsSign
+	signpost 24, 6, SIGNPOST_JUMPTEXT, SafariZoneEastAreaSignText
+	signpost 12, 28, SIGNPOST_JUMPTEXT, SafariZoneEastRestHouseSignText
+	signpost 6, 8, SIGNPOST_JUMPTEXT, SafariZoneEastTrainerTipsSignText
 
 .PersonEvents: db 4
 	person_event SPRITE_COWGIRL, 11, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerCowgirlApril, -1
@@ -32,15 +32,6 @@ TrainerCowgirlApril:
 CowgirlAprilScript:
 	end_if_just_battled
 	jumptext CowgirlAprilAfterText
-
-SafariZoneEastAreaSign:
-	jumptext SafariZoneEastAreaSignText
-
-SafariZoneEastRestHouseSign:
-	jumptext SafariZoneEastRestHouseSignText
-
-SafariZoneEastTrainerTipsSign:
-	jumptext SafariZoneEastTrainerTipsSignText
 
 CowgirlAprilSeenText:
 	text "Yeehaw!"

@@ -15,7 +15,7 @@ LakeofRage_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 27, 21, SIGNPOST_READ, MapLakeofRageSignpost0Script
+	signpost 27, 21, SIGNPOST_JUMPTEXT, UnknownText_0x708d7
 	signpost 31, 25, SIGNPOST_READ, MapLakeofRageSignpost1Script
 	signpost 28, 11, SIGNPOST_ITEM, LakeofRageHiddenFullRestore
 	signpost 4, 4, SIGNPOST_ITEM, LakeofRageHiddenRareCandy
@@ -30,8 +30,8 @@ LakeofRage_MapEventHeader:
 	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 22, 19, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GyaradosScript_0x70063, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_SUPER_NERD, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
 	person_event SPRITE_GRAMPS, 26, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7008e, -1
-	person_event SPRITE_SUPER_NERD, 13, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x700a2, -1
-	person_event SPRITE_COOLTRAINER_F, 29, 25, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x700a5, -1
+	person_event SPRITE_SUPER_NERD, 13, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x70444, -1
+	person_event SPRITE_COOLTRAINER_F, 29, 25, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x704bb, -1
 	person_event SPRITE_FISHER, 23, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerFisherAndre, EVENT_LAKE_OF_RAGE_CIVILIANS
 	person_event SPRITE_FISHER, 26, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerFisherRaymond, EVENT_LAKE_OF_RAGE_CIVILIANS
 	person_event SPRITE_COOLTRAINER_M, 15, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermAaron, EVENT_LAKE_OF_RAGE_CIVILIANS
@@ -140,15 +140,6 @@ GrampsScript_0x7008e:
 
 UnknownScript_0x7009c:
 	jumpopenedtext UnknownText_0x70421
-
-SuperNerdScript_0x700a2:
-	jumptextfaceplayer UnknownText_0x70444
-
-CooltrainerFScript_0x700a5:
-	jumptextfaceplayer UnknownText_0x704bb
-
-MapLakeofRageSignpost0Script:
-	jumptext UnknownText_0x708d7
 
 MapLakeofRageSignpost1Script:
 	opentext

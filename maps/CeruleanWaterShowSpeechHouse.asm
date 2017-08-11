@@ -15,14 +15,8 @@ CeruleanWaterShowSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanWaterShowSpeechHouseCooltrainerMScript, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SUPER_NERD, 3, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanWaterShowSpeechHouseSuperNerdScript, -1
-
-CeruleanWaterShowSpeechHouseCooltrainerMScript:
-	jumptextfaceplayer CeruleanWaterShowSpeechHouseCooltrainerMText
-
-CeruleanWaterShowSpeechHouseSuperNerdScript:
-	jumptextfaceplayer CeruleanWaterShowSpeechHouseSuperNerdText
+	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeruleanWaterShowSpeechHouseCooltrainerMText, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SUPER_NERD, 3, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeruleanWaterShowSpeechHouseSuperNerdText, -1
 
 CeruleanWaterShowSpeechHouseCooltrainerMText:
 	text "Misty sometimes"

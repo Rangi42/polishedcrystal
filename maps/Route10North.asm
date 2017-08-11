@@ -20,8 +20,8 @@ Route10North_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 53, 5, SIGNPOST_READ, PowerPlantSign
-	signpost 35, 7, SIGNPOST_READ, Route10RockTunnelSign
+	signpost 53, 5, SIGNPOST_JUMPTEXT, PowerPlantSignText
+	signpost 35, 7, SIGNPOST_JUMPTEXT, RockTunnelSignText
 
 .PersonEvents: db 10
 	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
@@ -224,12 +224,6 @@ Route10Zapdos:
 	jump Route10NorthLawrenceEncounter2Script
 .end
 	end
-
-Route10RockTunnelSign:
-	jumptext RockTunnelSignText
-
-PowerPlantSign:
-	jumptext PowerPlantSignText
 
 ZapdosText:
 	text "Gyaoo!"

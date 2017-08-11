@@ -15,7 +15,7 @@ Route26_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 8, SIGNPOST_READ, Route26Sign
+	signpost 6, 8, SIGNPOST_JUMPTEXT, Route26SignText
 
 .PersonEvents: db 11
 	person_event SPRITE_GUIDE_GENT, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
@@ -261,9 +261,6 @@ TrainerDragonTamerErick:
 DragonTamerErickScript:
 	end_if_just_battled
 	jumptext DragonTamerErickAfterText
-
-Route26Sign:
-	jumptext Route26SignText
 
 FruitTreeScript_0x1a4ec2:
 	fruittree FRUITTREE_ROUTE_26

@@ -13,26 +13,20 @@ ViridianSchoolHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 0, 3, SIGNPOST_READ, ViridianSchoolHouseBlackboardScript
-	signpost 1, 6, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
-	signpost 1, 7, SIGNPOST_READ, ViridianSchoolHouseBookshelfScript
+	signpost 0, 3, SIGNPOST_JUMPTEXT, ViridianSchoolHouseBlackboardText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, ViridianSchoolHouseBookshelfText
+	signpost 1, 7, SIGNPOST_JUMPTEXT, ViridianSchoolHouseBookshelfText
 
 .PersonEvents: db 6
 	person_event SPRITE_GAMEBOY_KID, 6, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseGameBoyKidScript, -1
-	person_event SPRITE_TEACHER, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseTeacherScript, -1
-	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass1Script, -1
+	person_event SPRITE_TEACHER, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, ViridianSchoolHouseTeacherText, -1
+	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, ViridianSchoolHouseLass1Text, -1
 	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseNotesScript, -1
 	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseYoungsterScript, -1
-	person_event SPRITE_LASS, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianSchoolHouseLass2Script, -1
+	person_event SPRITE_LASS, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, ViridianSchoolHouseLass2Text, -1
 
 const_value set 2
 	const VIRIDIANSCHOOLHOUSE_GAMEBOY_KID
-
-ViridianSchoolHouseTeacherScript:
-	jumptextfaceplayer ViridianSchoolHouseTeacherText
-
-ViridianSchoolHouseLass1Script:
-	jumptextfaceplayer ViridianSchoolHouseLass1Text
 
 ViridianSchoolHouseNotesScript:
 	jumptext ViridianSchoolHouseNotesText
@@ -58,15 +52,6 @@ ViridianSchoolHouseGameBoyKidScript:
 	showtextfaceplayer ViridianSchoolHouseGameBoyKidText
 	spriteface VIRIDIANSCHOOLHOUSE_GAMEBOY_KID, DOWN
 	end
-
-ViridianSchoolHouseLass2Script:
-	jumptextfaceplayer ViridianSchoolHouseLass2Text
-
-ViridianSchoolHouseBlackboardScript:
-	jumptext ViridianSchoolHouseBlackboardText
-
-ViridianSchoolHouseBookshelfScript:
-	jumptext ViridianSchoolHouseBookshelfText
 
 ViridianSchoolHouseTeacherText:
 	text "I know this is a"

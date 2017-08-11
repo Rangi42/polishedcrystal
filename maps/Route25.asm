@@ -23,7 +23,7 @@ Route25_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 7, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdPat, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PROTEIN, 1, EVENT_ROUTE_25_PROTEIN
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_25_CUT_TREE
-	person_event SPRITE_YOUNGSTER, 4, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route25MewYoungsterScript, -1
+	person_event SPRITE_YOUNGSTER, 4, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route25MewYoungsterText, -1
 	person_event SPRITE_SLOWPOKE, 4, 37, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route25SlowpokeScript, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 47, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
@@ -75,9 +75,6 @@ TrainerSupernerdPat:
 SupernerdPatScript:
 	end_if_just_battled
 	jumptext UnknownText_0x19f41a
-
-Route25MewYoungsterScript:
-	jumptextfaceplayer Route25MewYoungsterText
 
 Route25SlowpokeScript:
 	opentext

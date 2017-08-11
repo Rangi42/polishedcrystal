@@ -13,14 +13,14 @@ CeladonHomeDecorStore4F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore4FDirectory
+	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore4FDirectoryText
 	signpost 5, 2, SIGNPOST_READ, BigOnixDollScript
 	signpost 5, 3, SIGNPOST_READ, BigOnixDollScript
 	signpost 6, 2, SIGNPOST_READ, BigOnixDollScript
 	signpost 6, 3, SIGNPOST_READ, BigOnixDollScript
 
 .PersonEvents: db 9
-	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigDollClerkScript, -1
+	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, BigDollClerkText, -1
 	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
 	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
 	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 4, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
@@ -29,9 +29,6 @@ CeladonHomeDecorStore4F_MapEventHeader:
 	person_event SPRITE_GYARADOS_TOP_LEFT, 4, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-
-BigDollClerkScript:
-	jumptextfaceplayer BigDollClerkText
 
 BigDollClerkNoSaleScript:
 	jumpopenedtext BigDollClerkNoSaleText
@@ -98,9 +95,6 @@ BigOnixDollScript:
 
 .OwnBigOnixDoll:
 	jumpopenedtext BigOnixDollText
-
-CeladonHomeDecorStore4FDirectory:
-	jumptext CeladonHomeDecorStore4FDirectoryText
 
 BigDollClerkText:
 	text "Aren't our jumbo"

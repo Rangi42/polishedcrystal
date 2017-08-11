@@ -13,8 +13,8 @@ GoldenrodHarbor_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 19, 29, SIGNPOST_READ, GoldenrodHarborSign
-	signpost 15, 28, SIGNPOST_READ, GoldenrodHarborCrateSign
+	signpost 19, 29, SIGNPOST_JUMPTEXT, GoldenrodHarborSignText
+	signpost 15, 28, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
 	signpost 21, 22, SIGNPOST_ITEM, GoldenrodHarborHiddenRevive
 
 .PersonEvents: db 12
@@ -23,13 +23,13 @@ GoldenrodHarbor_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	person_event SPRITE_LASS, 15, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborLass1Script, -1
 	person_event SPRITE_POKEFAN_M, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
-	person_event SPRITE_MAGIKARP, 15, 21, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborMagikarpScript, -1
+	person_event SPRITE_MAGIKARP, 15, 21, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodHarborMagikarpText, -1
 	person_event SPRITE_YOUNGSTER, 15, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
 	person_event SPRITE_FISHER, 20, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Jacques, -1
 	person_event SPRITE_ROCKET, 16, 40, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	person_event SPRITE_SWIMMER_GIRL, 8, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerSwimmerfKatie, -1
 	person_event SPRITE_SWIMMER_GUY, 28, 18, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJames, -1
-	person_event SPRITE_LASS, 19, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GoldenrodHarborLass2Script, -1
+	person_event SPRITE_LASS, 19, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodHarborLass2Text, -1
 
 GoldenrodHarborFisherScript:
 	faceplayer
@@ -88,9 +88,6 @@ GoldenrodHarborLass1Script:
 	pokemart MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR
 	closetext
 	end
-
-GoldenrodHarborMagikarpScript:
-	jumptextfaceplayer GoldenrodHarborMagikarpText
 
 GoldenrodHarborPokefanmScript:
 	faceplayer
@@ -263,15 +260,6 @@ Jacques:
 	waitbutton
 	closetext
 	end
-
-GoldenrodHarborLass2Script:
-	jumptextfaceplayer GoldenrodHarborLass2Text
-
-GoldenrodHarborSign:
-	jumptext GoldenrodHarborSignText
-
-GoldenrodHarborCrateSign:
-	jumptext GoldenrodHarborCrateSignText
 
 GoldenrodHarborHiddenRevive:
 	dw EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE, REVIVE

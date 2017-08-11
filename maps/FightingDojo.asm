@@ -14,8 +14,8 @@ FightingDojo_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 0, 4, SIGNPOST_READ, MapFightingDojoSignpost0Script
-	signpost 0, 5, SIGNPOST_READ, MapFightingDojoSignpost1Script
+	signpost 0, 4, SIGNPOST_JUMPTEXT, UnknownText_0x189bc0
+	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x189be0
 	signpost 0, 9, SIGNPOST_READ, MapFightingDojoSignpost2Script
 
 .PersonEvents: db 7
@@ -191,12 +191,6 @@ BlackBeltScript_0x189b61:
 	jumptextfaceplayer UnknownText_0x189b6c
 .BlackBeltExplainsRematchesScript
 	jumptextfaceplayer BlackBeltText_ExplainsRematches
-
-MapFightingDojoSignpost0Script:
-	jumptext UnknownText_0x189bc0
-
-MapFightingDojoSignpost1Script:
-	jumptext UnknownText_0x189be0
 
 MapFightingDojoSignpost2Script:
 	opentext

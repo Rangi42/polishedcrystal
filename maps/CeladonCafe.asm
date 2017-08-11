@@ -13,8 +13,8 @@ CeladonCafe_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 5, SIGNPOST_READ, EatathonContestPoster
-	signpost 1, 7, SIGNPOST_READ, EatathonContestTrashCan
+	signpost 0, 5, SIGNPOST_JUMPTEXT, EatathonContestPosterText
+	signpost 1, 7, SIGNPOST_JUMPTEXT, EatathonContestTrashCanText
 
 .PersonEvents: db 7
 	person_event SPRITE_FISHER, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73051, -1
@@ -23,7 +23,7 @@ CeladonCafe_MapEventHeader:
 	person_event SPRITE_TEACHER, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
 	person_event SPRITE_MAYLENE, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MayleneScript, -1
 	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x73049, -1
-	person_event SPRITE_BAKER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonCafeBakerScript, -1
+	person_event SPRITE_BAKER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CeladonCafeBakerText, -1
 
 const_value set 2
 	const CELADONCAFE_FISHER1
@@ -109,15 +109,6 @@ MayleneScript:
 	closetext
 	spriteface CELADONCAFE_MAYLENE, RIGHT
 	end
-
-CeladonCafeBakerScript:
-	jumptextfaceplayer CeladonCafeBakerText
-
-EatathonContestPoster:
-	jumptext EatathonContestPosterText
-
-EatathonContestTrashCan:
-	jumptext EatathonContestTrashCanText
 
 UnknownText_0x730de:
 	text "Hi!"

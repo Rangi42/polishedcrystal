@@ -27,24 +27,24 @@ VermilionCity_MapEventHeader:
 	xy_trigger 0, $20, $13, LawrenceRightIntroScript
 
 .Signposts: db 8
-	signpost 5, 25, SIGNPOST_READ, VermilionCitySign
-	signpost 23, 5, SIGNPOST_READ, VermilionGymSign
-	signpost 17, 5, SIGNPOST_READ, PokemonFanClubSign
-	signpost 17, 33, SIGNPOST_READ, VermilionCityDiglettsCaveSign
-	signpost 19, 27, SIGNPOST_READ, VermilionCityPortSign
-	signpost 13, 28, SIGNPOST_READ, VermilionCityTruckScript
-	signpost 13, 29, SIGNPOST_READ, VermilionCityTruckScript
+	signpost 5, 25, SIGNPOST_JUMPTEXT, VermilionCitySignText
+	signpost 23, 5, SIGNPOST_JUMPTEXT, VermilionGymSignText
+	signpost 17, 5, SIGNPOST_JUMPTEXT, PokemonFanClubSignText
+	signpost 17, 33, SIGNPOST_JUMPTEXT, VermilionCityDiglettsCaveSignText
+	signpost 19, 27, SIGNPOST_JUMPTEXT, VermilionCityPortSignText
+	signpost 13, 28, SIGNPOST_JUMPTEXT, VermilionCityTruckText
+	signpost 13, 29, SIGNPOST_JUMPTEXT, VermilionCityTruckText
 	signpost 23, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
 
 .PersonEvents: db 15
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_VERMILION_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
-	person_event SPRITE_COOLTRAINER_F, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1aa983, -1
-	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionMachopOwner, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1aaa15, -1
+	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, VermilionMachopOwnerText, -1
 	person_event SPRITE_MACHOP, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
-	person_event SPRITE_ROCKER, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RockerScript_0x1aa99b, -1
-	person_event SPRITE_SUPER_NERD, 16, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VermilionCitySuperNerdScript, -1
-	person_event SPRITE_SAILOR, 9, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionCitySailorScript, -1
+	person_event SPRITE_ROCKER, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1aab1a, -1
+	person_event SPRITE_SUPER_NERD, 16, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, VermilionCitySuperNerdText, -1
+	person_event SPRITE_SAILOR, 9, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, VermilionCitySailorText, -1
 	person_event SPRITE_POKEFAN_M, 16, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_VERMILION_CITY_CUT_TREE
 	person_event SPRITE_ENGINEER, 26, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionCityEngineerScript, -1
@@ -151,12 +151,6 @@ LawrenceDepartRightMovementData:
 	step_down
 	step_end
 
-CooltrainerFScript_0x1aa983:
-	jumptextfaceplayer UnknownText_0x1aaa15
-
-VermilionMachopOwner:
-	jumptextfaceplayer VermilionMachopOwnerText
-
 VermilionMachop:
 	opentext
 	writetext VermilionMachopText1
@@ -165,15 +159,6 @@ VermilionMachop:
 	closetext
 	earthquake 30
 	jumptext VermilionMachopText2
-
-RockerScript_0x1aa99b:
-	jumptextfaceplayer UnknownText_0x1aab1a
-
-VermilionCitySuperNerdScript:
-	jumptextfaceplayer VermilionCitySuperNerdText
-
-VermilionCitySailorScript:
-	jumptextfaceplayer VermilionCitySailorText
 
 VermilionSnorlax:
 	opentext
@@ -252,24 +237,6 @@ VermilionCityTutorVoltSwitchScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_VermilionCityTutorTaught
-
-VermilionCitySign:
-	jumptext VermilionCitySignText
-
-VermilionGymSign:
-	jumptext VermilionGymSignText
-
-PokemonFanClubSign:
-	jumptext PokemonFanClubSignText
-
-VermilionCityDiglettsCaveSign:
-	jumptext VermilionCityDiglettsCaveSignText
-
-VermilionCityPortSign:
-	jumptext VermilionCityPortSignText
-
-VermilionCityTruckScript:
-	jumptext VermilionCityTruckText
 
 VermilionCityHiddenFullHeal:
 	dwb EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL, FULL_HEAL

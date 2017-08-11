@@ -25,18 +25,18 @@ NewBarkTown_MapEventHeader:
 	xy_trigger 1, $9, $11, NewBarkTown_LyraFinalTrigger4
 
 .Signposts: db 5
-	signpost 8, 8, SIGNPOST_READ, NewBarkTownSign
-	signpost 5, 13, SIGNPOST_READ, MapNewBarkTownSignpost1Script
-	signpost 3, 3, SIGNPOST_READ, MapNewBarkTownSignpost2Script
-	signpost 13, 9, SIGNPOST_READ, MapNewBarkTownSignpost3Script
+	signpost 8, 8, SIGNPOST_JUMPTEXT, NewBarkTownSignText
+	signpost 5, 13, SIGNPOST_JUMPTEXT, PlayersHouseSignText
+	signpost 3, 3, SIGNPOST_JUMPTEXT, ElmsLabSignText
+	signpost 13, 9, SIGNPOST_JUMPTEXT, LyrasHouseSignText
 	signpost 2, 3, SIGNPOST_ITEM, MapNewBarkTownHiddenPotion
 
 .PersonEvents: db 5
 	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	person_event SPRITE_CHERRYGROVE_RIVAL, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
 	person_event SPRITE_NEW_BARK_LYRA, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
-	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
-	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, NewBarkTownYoungsterScript, -1
+	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, Text_ElmDiscoveredNewMon, -1
+	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_JUMPTEXTFP, 0, Text_GearIsImpressive, -1
 
 const_value set 2
 	const NEWBARKTOWN_TEACHER
@@ -94,11 +94,11 @@ NewBarkTown_LyraIntroTrigger:
 	spriteface PLAYER, LEFT
 	showtext Text_LyraIntro
 	follow PLAYER, NEWBARKTOWN_LYRA
-	applymovement PLAYER, Movement_PlayerOrLyraEntersLab_NBT
+	applyonemovement PLAYER, step_up
 	stopfollow
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
-	applymovement NEWBARKTOWN_LYRA, Movement_PlayerOrLyraEntersLab_NBT
+	applyonemovement NEWBARKTOWN_LYRA, step_up
 	playsound SFX_EXIT_BUILDING
 	disappear NEWBARKTOWN_LYRA
 	dotrigger $2
@@ -168,30 +168,13 @@ NewBarkTown_LyraFinalTrigger:
 	end
 
 NewBarkTownTeacherScript:
-	faceplayer
-	opentext
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	iftrue .CallMom
+	jumptextfaceplayer_iftrue Text_CallMomOnGear
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .TellMomYoureLeaving
+	jumptextfaceplayer_iftrue Text_TellMomIfLeaving
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .MonIsAdorable
-	jumpopenedtext Text_RefreshingBreeze
-
-.MonIsAdorable:
-	jumpopenedtext Text_YourMonIsAdorable
-
-.TellMomYoureLeaving:
-	jumpopenedtext Text_TellMomIfLeaving
-
-.CallMom:
-	jumpopenedtext Text_CallMomOnGear
-
-NewBarkTownYoungsterScript:
-	jumptextfaceplayer Text_GearIsImpressive
-
-NewBarkTownFisherScript:
-	jumptextfaceplayer Text_ElmDiscoveredNewMon
+	jumptextfaceplayer_iftrue Text_YourMonIsAdorable
+	jumptextfaceplayer_iftrue Text_RefreshingBreeze
 
 NewBarkTownSilverScript:
 	showtext NewBarkTownRivalText1
@@ -205,33 +188,15 @@ NewBarkTownSilverScript:
 	pause 5
 	playsound SFX_TACKLE
 	applymovement PLAYER, Movement_SilverShovesYouOut_NBT
-	applymovement NEWBARKTOWN_SILVER, Movement_SilverReturnsToTheShadows_NBT
+	applyonemovement NEWBARKTOWN_SILVER, step_right
 	end
-
-NewBarkTownSign:
-	jumptext NewBarkTownSignText
-
-MapNewBarkTownSignpost1Script:
-	jumptext PlayersHouseSignText
-
-MapNewBarkTownSignpost2Script:
-	jumptext ElmsLabSignText
-
-MapNewBarkTownSignpost3Script:
-	jumptext LyrasHouseSignText
 
 MapNewBarkTownHiddenPotion:
 	dwb EVENT_NEW_BARK_TOWN_HIDDEN_POTION, POTION
 
-Movement_TeacherRunsToYou1_NBT:
-	step_left
-	step_left
-	step_left
-	step_left
-	step_end
-
 Movement_TeacherRunsToYou2_NBT:
 	step_left
+Movement_TeacherRunsToYou1_NBT:
 	step_left
 	step_left
 	step_left
@@ -239,16 +204,9 @@ Movement_TeacherRunsToYou2_NBT:
 	turn_head_down
 	step_end
 
-Movement_TeacherBringsYouBack1_NBT:
-	step_right
-	step_right
-	step_right
-	step_right
-	turn_head_left
-	step_end
-
 Movement_TeacherBringsYouBack2_NBT:
 	step_right
+Movement_TeacherBringsYouBack1_NBT:
 	step_right
 	step_right
 	step_right
@@ -268,10 +226,6 @@ Movement_SilverShovesYouOut_NBT:
 	remove_fixed_facing
 	step_end
 
-Movement_SilverReturnsToTheShadows_NBT:
-	step_right
-	step_end
-
 Movement_LyraEnters_NBT:
 	step_right
 	step_right
@@ -282,10 +236,6 @@ Movement_LyraApproaches_NBT:
 	step_up
 	step_up
 	step_right
-	step_end
-
-Movement_PlayerOrLyraEntersLab_NBT:
-	step_up
 	step_end
 
 Movement_LyraSaysGoodbye1_NBT:

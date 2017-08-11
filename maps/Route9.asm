@@ -11,7 +11,7 @@ Route9_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 7, 21, SIGNPOST_READ, Route9Sign
+	signpost 7, 21, SIGNPOST_JUMPTEXT, Route9SignText
 	signpost 15, 51, SIGNPOST_ITEM, Route9HiddenEther
 	signpost 12, 42, SIGNPOST_ITEM, Route9HiddenSoftSand
 
@@ -67,9 +67,6 @@ TrainerHikerSidney:
 HikerSidneyScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1ab278
-
-Route9Sign:
-	jumptext Route9SignText
 
 Route9HiddenEther:
 	dwb EVENT_ROUTE_9_HIDDEN_ETHER, ETHER

@@ -13,7 +13,7 @@ Route48_MapEventHeader:
 	xy_trigger 0, $c, $14, Route48JessieJamesScript
 
 .Signposts: db 1
-	signpost 11, 27, SIGNPOST_READ, Route48YellowForestSign
+	signpost 11, 27, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
 
 .PersonEvents: db 4
 	person_event SPRITE_ARCHER, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
@@ -102,9 +102,6 @@ Archer2Script:
 	setevent EVENT_CLEARED_YELLOW_FOREST
 	clearevent EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	end
-
-Route48YellowForestSign:
-	jumptext Route48YellowForestSignText
 
 Route48JessieJamesSeenText:
 	text "Stop right there,"

@@ -25,10 +25,10 @@ Route40_MapEventHeader:
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
-	person_event SPRITE_LASS, 13, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a61c4, -1
+	person_event SPRITE_LASS, 13, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a6429, -1
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a61c7, -1
-	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x1a61d3, -1
-	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a61d6, -1
+	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a64e6, -1
+	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a6564, -1
 
 const_value set 2
 	const ROUTE40_MONICA
@@ -71,9 +71,6 @@ SwimmermRandallScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1a62fa
 
-LassScript_0x1a61c4:
-	jumptextfaceplayer UnknownText_0x1a6429
-
 PokefanMScript_0x1a61c7:
 	checkcode VAR_BATTLEPOINTS
 	if_greater_than 0, .BattleTower
@@ -81,12 +78,6 @@ PokefanMScript_0x1a61c7:
 
 .BattleTower:
 	jumptextfaceplayer UnknownText_0x1a649b
-
-LassScript_0x1a61d3:
-	jumptextfaceplayer UnknownText_0x1a64e6
-
-YoungsterScript_0x1a61d6:
-	jumptextfaceplayer UnknownText_0x1a6564
 
 MonicaScript:
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA

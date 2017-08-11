@@ -16,12 +16,12 @@ PokemonMansion1F_MapEventHeader:
 .Signposts: db 8
 	signpost 12, 21, SIGNPOST_ITEM, PokemonMansion1FHiddenFullRestore
 	signpost 23, 14, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
-	signpost 5, 2, SIGNPOST_READ, PokemonMansion1FMewtwoStatue
-	signpost 23, 15, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 23, 18, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 23, 19, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 19, 18, SIGNPOST_READ, PokemonMansion1FFlowerPot
-	signpost 19, 19, SIGNPOST_READ, PokemonMansion1FFlowerPot
+	signpost 5, 2, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
+	signpost 23, 15, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 23, 18, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 23, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 19, 18, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	signpost 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
 .PersonEvents: db 6
 	person_event SPRITE_PHARMACIST, 10, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
@@ -50,12 +50,12 @@ PokemonMansion1FHiddenFullRestore:
 
 PokemonMansion1FHiddenPPUp:
 	checkevent EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP
-	iftrue PokemonMansion1FFlowerPot
+	jumptext_iftrue PokemonMansion1FFlowerPotText
 	giveitem PP_UP
 	iffalse .PackFull
 	opentext
 	itemtotext PP_UP, $0
-	writetext PokemonMansion1FFoundPPUpText
+	writetext PokemonMansion1FFoundItemText
 	playsound SFX_ITEM
 	waitsfx
 	itemnotify
@@ -66,15 +66,9 @@ PokemonMansion1FHiddenPPUp:
 .PackFull:
 	opentext
 	itemtotext PP_UP, $0
-	writetext PokemonMansion1FFoundPPUpText
+	writetext PokemonMansion1FFoundItemText
 	buttonsound
-	jumpopenedtext PokemonMansion1FNoRoomForPPUpText
-
-PokemonMansion1FMewtwoStatue:
-	jumptext PokemonMansion1FMewtwoStatueText
-
-PokemonMansion1FFlowerPot:
-	jumptext PokemonMansion1FFlowerPotText
+	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 BurglarPeteSeenText:
 	text "Who are you? There"
@@ -109,14 +103,14 @@ BurglarLouisAfterText:
 	cont "and get out."
 	done
 
-PokemonMansion1FFoundPPUpText:
+PokemonMansion1FFoundItemText:
 	text "<PLAYER> found"
 	line "@"
 	text_from_ram StringBuffer3
 	text "!"
 	done
 
-PokemonMansion1FNoRoomForPPUpText:
+PokemonMansion1FNoRoomForItemText:
 	text "But <PLAYER> can't"
 	line "hold another item…"
 	done

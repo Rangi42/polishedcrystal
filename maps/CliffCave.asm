@@ -22,7 +22,7 @@ CliffCave_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_ROCKET, 6, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 33, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CliffCaveRocketScript, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 33, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
 
 TrainerGruntM22:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_22, GRUNTM, 22, GruntM22SeenText, GruntM22BeatenText, 0, GruntM22Script
@@ -30,9 +30,6 @@ TrainerGruntM22:
 GruntM22Script:
 	end_if_just_battled
 	jumptext GruntM22AfterText
-
-CliffCaveRocketScript:
-	jumptextfaceplayer CliffCaveRocketText
 
 CliffCaveHiddenUltraBall:
 	dwb EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL, ULTRA_BALL

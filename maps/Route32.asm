@@ -20,9 +20,9 @@ Route32_MapEventHeader:
 	xy_trigger 1, $47, $7, Route32WannaBuyASlowpokeTailScript
 
 .Signposts: db 5
-	signpost  5, 13, SIGNPOST_READ, Route32Sign
-	signpost  1,  9, SIGNPOST_READ, Route32RuinsSign
-	signpost 84, 10, SIGNPOST_READ, Route32UnionCaveSign
+	signpost  5, 13, SIGNPOST_JUMPTEXT, Route32SignText
+	signpost  1,  9, SIGNPOST_JUMPTEXT, Route32RuinsSignText
+	signpost 84, 10, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
 	signpost 67, 12, SIGNPOST_ITEM, Route32HiddenGreatBall
 	signpost 40, 11, SIGNPOST_ITEM, Route32HiddenSuperPotion
 
@@ -564,15 +564,6 @@ FriedaScript:
 
 .NotFriday:
 	jumpopenedtext FriedaNotFridayText
-
-Route32Sign:
-	jumptext Route32SignText
-
-Route32RuinsSign:
-	jumptext Route32RuinsSignText
-
-Route32UnionCaveSign:
-	jumptext Route32UnionCaveSignText
 
 Route32HiddenGreatBall:
 	dwb EVENT_ROUTE_32_HIDDEN_GREAT_BALL, GREAT_BALL

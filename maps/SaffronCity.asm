@@ -32,28 +32,28 @@ SaffronCity_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 7
-	signpost 5, 21, SIGNPOST_READ, SaffronCitySign
-	signpost 5, 33, SIGNPOST_READ, SaffronGymSign
-	signpost 5, 25, SIGNPOST_READ, FightingDojoSign
-	signpost 21, 15, SIGNPOST_READ, SilphCoSign
-	signpost 29, 25, SIGNPOST_READ, MrPsychicsHouseSign
-	signpost 5, 11, SIGNPOST_READ, SaffronCityMagnetTrainStationSign
-	signpost 12, 32, SIGNPOST_READ, PokemonTrainerFanClubSign
+	signpost 5, 21, SIGNPOST_JUMPTEXT, SaffronCitySignText
+	signpost 5, 33, SIGNPOST_JUMPTEXT, SaffronGymSignText
+	signpost 5, 25, SIGNPOST_JUMPTEXT, FightingDojoSignText
+	signpost 21, 15, SIGNPOST_JUMPTEXT, SilphCoSignText
+	signpost 29, 25, SIGNPOST_JUMPTEXT, MrPsychicsHouseSignText
+	signpost 5, 11, SIGNPOST_JUMPTEXT, SaffronCityMagnetTrainStationSignText
+	signpost 12, 32, SIGNPOST_JUMPTEXT, PokemonTrainerFanClubSignText
 
 .PersonEvents: db 13
 	person_event SPRITE_LASS, 14, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
 	person_event SPRITE_POKEFAN_M, 30, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x199352, -1
-	person_event SPRITE_COOLTRAINER_F, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x199355, -1
+	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1994fe, -1
+	person_event SPRITE_COOLTRAINER_F, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19958e, -1
 	person_event SPRITE_FISHER, 12, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
-	person_event SPRITE_YOUNGSTER, 19, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936c, -1
-	person_event SPRITE_YOUNGSTER, 22, 35, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19936f, -1
-	person_event SPRITE_LASS, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x199372, -1
-	person_event SPRITE_BLACK_BELT, 24, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt1Script, -1
-	person_event SPRITE_BLACK_BELT, 25, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCityBlackBelt2Script, -1
-	person_event SPRITE_SUPER_NERD, 8, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCitySuperNerdScript, -1
-	person_event SPRITE_SCIENTIST, 22, 23, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronCityScientistScript, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronCitySilphEmployeeScript, -1
+	person_event SPRITE_YOUNGSTER, 19, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1996a5, -1
+	person_event SPRITE_YOUNGSTER, 22, 35, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1996e5, -1
+	person_event SPRITE_LASS, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x199745, -1
+	person_event SPRITE_BLACK_BELT, 24, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, SaffronCityBlackBelt1Text, -1
+	person_event SPRITE_BLACK_BELT, 25, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, SaffronCityBlackBelt2Text, -1
+	person_event SPRITE_SUPER_NERD, 8, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, SaffronCitySuperNerdText, -1
+	person_event SPRITE_SCIENTIST, 22, 23, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, SaffronCityScientistText, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, SaffronCitySilphEmployeeText, -1
 
 SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON
@@ -79,12 +79,6 @@ PokefanMScript_0x19933e:
 UnknownScript_0x19934c:
 	jumpopenedtext UnknownText_0x1994ae
 
-CooltrainerMScript_0x199352:
-	jumptextfaceplayer UnknownText_0x1994fe
-
-CooltrainerFScript_0x199355:
-	jumptextfaceplayer UnknownText_0x19958e
-
 FisherScript_0x199358:
 	faceplayer
 	opentext
@@ -94,51 +88,6 @@ FisherScript_0x199358:
 
 UnknownScript_0x199366:
 	jumpopenedtext UnknownText_0x19964b
-
-YoungsterScript_0x19936c:
-	jumptextfaceplayer UnknownText_0x1996a5
-
-YoungsterScript_0x19936f:
-	jumptextfaceplayer UnknownText_0x1996e5
-
-LassScript_0x199372:
-	jumptextfaceplayer UnknownText_0x199745
-
-SaffronCityBlackBelt1Script:
-	jumptextfaceplayer SaffronCityBlackBelt1Text
-
-SaffronCityBlackBelt2Script:
-	jumptextfaceplayer SaffronCityBlackBelt2Text
-
-SaffronCitySuperNerdScript:
-	jumptextfaceplayer SaffronCitySuperNerdText
-
-SaffronCityScientistScript:
-	jumptextfaceplayer SaffronCityScientistText
-
-SaffronCitySilphEmployeeScript:
-	jumptextfaceplayer SaffronCitySilphEmployeeText
-
-SaffronCitySign:
-	jumptext SaffronCitySignText
-
-SaffronGymSign:
-	jumptext SaffronGymSignText
-
-FightingDojoSign:
-	jumptext FightingDojoSignText
-
-SilphCoSign:
-	jumptext SilphCoSignText
-
-MrPsychicsHouseSign:
-	jumptext MrPsychicsHouseSignText
-
-SaffronCityMagnetTrainStationSign:
-	jumptext SaffronCityMagnetTrainStationSignText
-
-PokemonTrainerFanClubSign:
-	jumptext PokemonTrainerFanClubSignText
 
 UnknownText_0x19938d:
 	text "A little girl who"

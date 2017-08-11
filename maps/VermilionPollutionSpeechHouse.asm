@@ -15,14 +15,8 @@ VermilionPollutionSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_BREEDER, 4, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VermilionPollutionSpeechHouseBreederScript, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionPollutionSpeechHouseCooltrainerMScript, -1
-
-VermilionPollutionSpeechHouseBreederScript:
-	jumptextfaceplayer VermilionPollutionSpeechHouseBreederText
-
-VermilionPollutionSpeechHouseCooltrainerMScript:
-	jumptextfaceplayer VermilionPollutionSpeechHouseCooltrainerMText
+	person_event SPRITE_BREEDER, 4, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, VermilionPollutionSpeechHouseBreederText, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, VermilionPollutionSpeechHouseCooltrainerMText, -1
 
 VermilionPollutionSpeechHouseBreederText:
 	text "Vermilion is a"

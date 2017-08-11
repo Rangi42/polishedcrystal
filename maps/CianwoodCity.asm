@@ -21,21 +21,21 @@ CianwoodCity_MapEventHeader:
 	xy_trigger 1, $10, $b, UnknownScript_0x1a001e
 
 .Signposts: db 8
-	signpost 34, 20, SIGNPOST_READ, CianwoodCitySign
-	signpost 44, 6, SIGNPOST_READ, CianwoodGymSign
-	signpost 47, 19, SIGNPOST_READ, CianwoodPharmacySign
-	signpost 32, 8, SIGNPOST_READ, CianwoodPhotoStudioSign
-	signpost 26, 6, SIGNPOST_READ, CianwoodCliffEdgeGateSign
-	signpost 22, 8, SIGNPOST_READ, CianwoodStatsJudgeSign
+	signpost 34, 20, SIGNPOST_JUMPTEXT, CianwoodCitySignText
+	signpost 44, 6, SIGNPOST_JUMPTEXT, CianwoodGymSignText
+	signpost 47, 19, SIGNPOST_JUMPTEXT, CianwoodPharmacySignText
+	signpost 32, 8, SIGNPOST_JUMPTEXT, CianwoodPhotoStudioSignText
+	signpost 26, 6, SIGNPOST_JUMPTEXT, CianwoodCliffEdgeGateSignText
+	signpost 22, 8, SIGNPOST_JUMPTEXT, CianwoodStatsJudgeSignText
 	signpost 19, 4, SIGNPOST_ITEM, CianwoodCityHiddenRevive
 	signpost 29, 5, SIGNPOST_ITEM, CianwoodCityHiddenMaxEther
 
 .PersonEvents: db 15
 	person_event SPRITE_OLIVINE_RIVAL, 21, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
 	person_event SPRITE_SUICUNE, 14, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	person_event SPRITE_YOUNGSTER, 37, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a00b3, -1
-	person_event SPRITE_POKEFAN_M, 33, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a00b6, -1
-	person_event SPRITE_LASS, 42, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a00b9, -1
+	person_event SPRITE_YOUNGSTER, 37, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a02df, -1
+	person_event SPRITE_POKEFAN_M, 33, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a0319, -1
+	person_event SPRITE_LASS, 42, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a0394, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 16, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 9, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 24, 6, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
@@ -43,9 +43,9 @@ CianwoodCity_MapEventHeader:
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 27, 10, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 19, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, smashrock, -1
 	person_event SPRITE_POKEFAN_F, 46, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a0084, -1
-	person_event SPRITE_ROCKET, 26, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodCityRocketScript, EVENT_BEAT_CHUCK
-	person_event SPRITE_SAILOR, 25, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CianwoodCitySailorScript, -1
-	person_event SPRITE_FISHER, 32, 22, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CianwoodCityFisherScript, -1
+	person_event SPRITE_ROCKET, 26, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CianwoodCityRocketText, EVENT_BEAT_CHUCK
+	person_event SPRITE_SAILOR, 25, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CianwoodCitySailorText, -1
+	person_event SPRITE_FISHER, 32, 22, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CianwoodCityFisherText, -1
 
 const_value set 2
 	const CIANWOODCITY_EUSINE
@@ -121,42 +121,6 @@ PokefanFScript_0x1a0084:
 
 UnknownScript_0x1a009c:
 	jumpopenedtext UnknownText_0x1a0277
-
-YoungsterScript_0x1a00b3:
-	jumptextfaceplayer UnknownText_0x1a02df
-
-PokefanMScript_0x1a00b6:
-	jumptextfaceplayer UnknownText_0x1a0319
-
-LassScript_0x1a00b9:
-	jumptextfaceplayer UnknownText_0x1a0394
-
-CianwoodCityRocketScript:
-	jumptextfaceplayer CianwoodCityRocketText
-
-CianwoodCitySailorScript:
-	jumptextfaceplayer CianwoodCitySailorText
-
-CianwoodCityFisherScript:
-	jumptextfaceplayer CianwoodCityFisherText
-
-CianwoodCitySign:
-	jumptext CianwoodCitySignText
-
-CianwoodGymSign:
-	jumptext CianwoodGymSignText
-
-CianwoodPharmacySign:
-	jumptext CianwoodPharmacySignText
-
-CianwoodPhotoStudioSign:
-	jumptext CianwoodPhotoStudioSignText
-
-CianwoodCliffEdgeGateSign:
-	jumptext CianwoodCliffEdgeGateSignText
-
-CianwoodStatsJudgeSign:
-	jumptext CianwoodStatsJudgeSignText
 
 CianwoodCityHiddenRevive:
 	dwb EVENT_CIANWOOD_CITY_HIDDEN_REVIVE, REVIVE

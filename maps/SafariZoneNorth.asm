@@ -20,11 +20,11 @@ SafariZoneNorth_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 33, 15, SIGNPOST_READ, SafariZoneNorthAreaSign
-	signpost 6, 38, SIGNPOST_READ, SafariZoneNorthRestHouseSign
-	signpost 30, 28, SIGNPOST_READ, SafariZoneNorthTrainerTips1Sign
-	signpost 34, 20, SIGNPOST_READ, SafariZoneNorthTrainerTips2Sign
-	signpost 27, 5, SIGNPOST_READ, SafariZoneNorthTrainerTips3Sign
+	signpost 33, 15, SIGNPOST_JUMPTEXT, SafariZoneNorthAreaSignText
+	signpost 6, 38, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
+	signpost 30, 28, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
+	signpost 34, 20, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips2SignText
+	signpost 27, 5, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
 	signpost 19, 31, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
 
 .PersonEvents: db 6
@@ -85,21 +85,6 @@ SafariZoneNorthTutorDoubleEdgeScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_SafariZoneNorthTutorTaught
-
-SafariZoneNorthAreaSign:
-	jumptext SafariZoneNorthAreaSignText
-
-SafariZoneNorthRestHouseSign:
-	jumptext SafariZoneNorthRestHouseSignText
-
-SafariZoneNorthTrainerTips1Sign:
-	jumptext SafariZoneNorthTrainerTips1SignText
-
-SafariZoneNorthTrainerTips2Sign:
-	jumptext SafariZoneNorthTrainerTips2SignText
-
-SafariZoneNorthTrainerTips3Sign:
-	jumptext SafariZoneNorthTrainerTips3SignText
 
 SafariZoneNorthHiddenLuckyPunch:
 	dwb EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH, LUCKY_PUNCH

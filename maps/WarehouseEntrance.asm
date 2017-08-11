@@ -21,7 +21,7 @@ WarehouseEntrance_MapEventHeader:
 
 .Signposts: db 5
 	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
-	signpost 6, 17, SIGNPOST_READ, MapWarehouseEntranceSignpost1Script
+	signpost 6, 17, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
 	signpost 13, 4, SIGNPOST_ITEM, WarehouseEntranceHiddenParlyzHeal
 	signpost 18, 2, SIGNPOST_ITEM, WarehouseEntranceHiddenSuperPotion
 	signpost 8, 15, SIGNPOST_ITEM, WarehouseEntranceHiddenAntidote
@@ -390,9 +390,6 @@ BasementDoorScript::
 
 WarehouseEntranceScript_ShopClosed:
 	jumpopenedtext UnknownText_0x7c904
-
-MapWarehouseEntranceSignpost1Script:
-	jumptext UnknownText_0x7c91a
 
 WarehouseEntranceHiddenParlyzHeal:
 	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL

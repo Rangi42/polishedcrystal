@@ -17,13 +17,10 @@ YellowForestGate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 4
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestGateOfficerScript, -1
+	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, YellowForestGateOfficerText, -1
 	person_event SPRITE_NURSE, 4, 9, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestGateNurseScript, -1
 	person_event SPRITE_CHANSEY, 3, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestGateChanseyScript, -1
 	person_event SPRITE_CLERK, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestGateClerkScript, -1
-
-YellowForestGateOfficerScript:
-	jumptextfaceplayer YellowForestGateOfficerText
 
 YellowForestGateNurseScript:
 	showtextfaceplayer YellowForestGateNurseText

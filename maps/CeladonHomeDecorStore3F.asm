@@ -13,13 +13,13 @@ CeladonHomeDecorStore3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore3FDirectory
+	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore3FDirectoryText
 
 .PersonEvents: db 4
 	person_event SPRITE_CLERK, 7, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk1Script, -1
 	person_event SPRITE_CLERK, 7, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk2Script, -1
-	person_event SPRITE_YOUNGSTER, 5, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FYoungsterScript, -1
-	person_event SPRITE_BEAUTY, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FBeautyScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonHomeDecorStore3FYoungsterText, -1
+	person_event SPRITE_BEAUTY, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonHomeDecorStore3FBeautyText, -1
 
 CeladonHomeDecorStore3FClerk1Script:
 	faceplayer
@@ -131,15 +131,6 @@ CeladonHomeDecorStore3FClerk2Script:
 
 .NotEnoughMoney:
 	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText
-
-CeladonHomeDecorStore3FYoungsterScript:
-	jumptextfaceplayer CeladonHomeDecorStore3FYoungsterText
-
-CeladonHomeDecorStore3FBeautyScript:
-	jumptextfaceplayer CeladonHomeDecorStore3FBeautyText
-
-CeladonHomeDecorStore3FDirectory:
-	jumptext CeladonHomeDecorStore3FDirectoryText
 
 CeladonHomeDecorStore3FClerk1Text:
 	text "Welcome! Would"

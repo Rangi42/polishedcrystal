@@ -13,7 +13,7 @@ Route18East_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 5, 11, SIGNPOST_READ, Route18Sign
+	signpost 5, 11, SIGNPOST_JUMPTEXT, Route18SignText
 
 .PersonEvents: db 2
 	person_event SPRITE_YOUNGSTER, 12, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBoris, -1
@@ -32,9 +32,6 @@ TrainerBird_keeperBob:
 Bird_keeperBobScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1ad00d
-
-Route18Sign:
-	jumptext Route18SignText
 
 Bird_keeperBorisSeenText:
 	text "If you're looking"

@@ -20,8 +20,8 @@ SaffronTrainStation_MapEventHeader:
 .PersonEvents: db 4
 	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
 	person_event SPRITE_GYM_GUY, 14, 10, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
-	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x18a889, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-	person_event SPRITE_LASS, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x18a88c, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	person_event SPRITE_LASS, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 
 const_value set 2
 	const SAFFRONTRAINSTATION_OFFICER
@@ -77,12 +77,6 @@ GymGuyScript_0x18a875:
 
 UnknownScript_0x18a883:
 	jumpopenedtext UnknownText_0x18aa61
-
-TeacherScript_0x18a889:
-	jumptextfaceplayer UnknownText_0x18aaab
-
-LassScript_0x18a88c:
-	jumptextfaceplayer UnknownText_0x18ab20
 
 MovementData_0x18a88f:
 	step_up

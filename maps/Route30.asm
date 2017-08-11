@@ -13,12 +13,12 @@ Route30_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 43, 9, SIGNPOST_READ, Route30Sign
-	signpost 29, 13, SIGNPOST_READ, MrPokemonsHouseDirectionsSign
-	signpost 5, 15, SIGNPOST_READ, MrPokemonsHouseSign
-	signpost 21, 3, SIGNPOST_READ, Route30TrainerTips
+	signpost 43, 9, SIGNPOST_JUMPTEXT, Route30SignText
+	signpost 29, 13, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
+	signpost 5, 15, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
+	signpost 21, 3, SIGNPOST_JUMPTEXT, Route30TrainerTipsText
 	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
-	signpost 39, 5, SIGNPOST_READ, BerryMastersHouseSign
+	signpost 39, 5, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 26, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
@@ -31,7 +31,7 @@ Route30_MapEventHeader:
 	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_30_CUT_TREE
 	person_event SPRITE_BALL_CUT_FRUIT, 39, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree2, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CooltrainerFScript, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Route30CooltrainerFText, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 35, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
 const_value set 2
@@ -230,24 +230,6 @@ Route30YoungsterScript:
 
 .CompletedEggQuest:
 	jumpopenedtext Route30YoungsterText_EveryoneIsBattling
-
-Route30CooltrainerFScript:
-	jumptextfaceplayer Route30CooltrainerFText
-
-Route30Sign:
-	jumptext Route30SignText
-
-MrPokemonsHouseDirectionsSign:
-	jumptext MrPokemonsHouseDirectionsSignText
-
-MrPokemonsHouseSign:
-	jumptext MrPokemonsHouseSignText
-
-BerryMastersHouseSign:
-	jumptext BerryMastersHouseSignText
-
-Route30TrainerTips:
-	jumptext Route30TrainerTipsText
 
 Route30FruitTree1:
 	fruittree FRUITTREE_ROUTE_30_1

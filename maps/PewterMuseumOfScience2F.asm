@@ -13,26 +13,14 @@ PewterMuseumOfScience2F_MapEventHeader:
 
 .Signposts: db 2
 	signpost 6, 3, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
-	signpost 2, 11, SIGNPOST_READ, Museum2FSpaceShuttleSignpostScript
+	signpost 2, 11, SIGNPOST_JUMPTEXT, Museum2FSpaceShuttleSignpostText
 
 .PersonEvents: db 5
-	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum2FScientistScript, -1
-	person_event SPRITE_CHILD, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Museum2FChildScript, -1
-	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FTeacherScript, -1
-	person_event SPRITE_LASS, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FLassScript, -1
+	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Museum2FScientistText, -1
+	person_event SPRITE_CHILD, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, Museum2FChildText, -1
+	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Museum2FTeacherText, -1
+	person_event SPRITE_LASS, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Museum2FLassText, -1
 	person_event SPRITE_POKEFAN_M, 5, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FPokefanMScript, -1
-
-Museum2FScientistScript:
-	jumptextfaceplayer Museum2FScientistText
-
-Museum2FChildScript:
-	jumptextfaceplayer Museum2FChildText
-
-Museum2FTeacherScript:
-	jumptextfaceplayer Museum2FTeacherText
-
-Museum2FLassScript:
-	jumptextfaceplayer Museum2FLassText
 
 Museum2FPokefanMScript:
 	faceplayer
@@ -76,9 +64,6 @@ Museum2FMoonStoneSignpostScript:
 	waitbutton
 	closepokepic
 	jumptext Museum2FMoonStoneSignpostText
-
-Museum2FSpaceShuttleSignpostScript:
-	jumptext Museum2FSpaceShuttleSignpostText
 
 Museum2FScientistText:
 	text "Meteorites struck"

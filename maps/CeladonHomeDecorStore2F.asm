@@ -13,11 +13,11 @@ CeladonHomeDecorStore2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore2FDirectory
+	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore2FDirectoryText
 
 .PersonEvents: db 2
 	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore2FClerkScript, -1
-	person_event SPRITE_POKEFAN_F, 1, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore2FPokefanfScript, -1
+	person_event SPRITE_POKEFAN_F, 1, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonHomeDecorStore2FPokefanfText, -1
 
 CeladonHomeDecorStore2FClerkScript:
 	faceplayer
@@ -100,12 +100,6 @@ CeladonHomeDecorStore2FClerkScript:
 	db "PolkaDot  ¥94000@"
 	db "Pikachu  ¥126000@"
 	db "Cancel@"
-
-CeladonHomeDecorStore2FPokefanfScript:
-	jumptextfaceplayer CeladonHomeDecorStore2FPokefanfText
-
-CeladonHomeDecorStore2FDirectory:
-	jumptext CeladonHomeDecorStore2FDirectoryText
 
 CeladonHomeDecorStore2FClerkText:
 	text "Welcome! Are you"

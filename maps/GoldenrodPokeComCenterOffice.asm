@@ -19,18 +19,9 @@ GoldenrodPokeComCenterOffice_MapEventHeader:
 	signpost 2, 3, SIGNPOST_UP, Computer2Script
 
 .PersonEvents: db 3
-	person_event SPRITE_SCIENTIST, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d1, -1
-	person_event SPRITE_SCIENTIST, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d4, -1
-	person_event SPRITE_SCIENTIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x625d7, -1
-
-ScientistScript_0x625d1:
-	jumptextfaceplayer UnknownText_0x62674
-
-ScientistScript_0x625d4:
-	jumptextfaceplayer UnknownText_0x626f9
-
-ScientistScript_0x625d7:
-	jumptextfaceplayer UnknownText_0x62795
+	person_event SPRITE_SCIENTIST, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x62674, -1
+	person_event SPRITE_SCIENTIST, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x626f9, -1
+	person_event SPRITE_SCIENTIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x62795, -1
 
 Computer0Script:
 	jumptext UnknownText_0x627ee

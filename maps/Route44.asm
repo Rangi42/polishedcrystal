@@ -12,8 +12,8 @@ Route44_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 7, 53, SIGNPOST_READ, Route44Sign1
-	signpost 10, 6, SIGNPOST_READ, Route44Sign2
+	signpost 7, 53, SIGNPOST_JUMPTEXT, Route44Sign1Text
+	signpost 10, 6, SIGNPOST_JUMPTEXT, Route44Sign2Text
 	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
 
 .PersonEvents: db 12
@@ -380,12 +380,6 @@ TrainerCooltrainermAllen:
 CooltrainermAllenScript:
 	end_if_just_battled
 	jumptext UnknownText_0x19de66
-
-Route44Sign1:
-	jumptext Route44Sign1Text
-
-Route44Sign2:
-	jumptext Route44Sign2Text
 
 FruitTreeScript_0x19da40:
 	fruittree FRUITTREE_ROUTE_44

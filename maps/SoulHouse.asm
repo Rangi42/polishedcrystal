@@ -17,25 +17,13 @@ SoulHouse_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_AGATHA, 7, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
-	person_event SPRITE_GRAMPS, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MrFuji, -1
-	person_event SPRITE_TEACHER, 3, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7ec4a, -1
-	person_event SPRITE_LASS, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, LassScript_0x7ec4d, -1
-	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7ec50, -1
+	person_event SPRITE_GRAMPS, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, MrFujiText, -1
+	person_event SPRITE_TEACHER, 3, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7ed4d, -1
+	person_event SPRITE_LASS, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7edb1, -1
+	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7eddb, -1
 
 const_value set 2
 	const SOULHOUSE_AGATHA
-
-MrFuji:
-	jumptextfaceplayer MrFujiText
-
-TeacherScript_0x7ec4a:
-	jumptextfaceplayer UnknownText_0x7ed4d
-
-LassScript_0x7ec4d:
-	jumptextfaceplayer UnknownText_0x7edb1
-
-GrannyScript_0x7ec50:
-	jumptextfaceplayer UnknownText_0x7eddb
 
 AgathaScript:
 	faceplayer

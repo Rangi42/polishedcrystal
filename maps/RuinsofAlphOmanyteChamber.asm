@@ -18,8 +18,8 @@ RuinsofAlphOmanyteChamber_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphOmanyteChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphOmanyteChamberSignpost1Script
+	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
+	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
 	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost2Script
 	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost3Script
 	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost4Script
@@ -88,9 +88,6 @@ UnknownScript_0x58c36:
 	pause 20
 	warpcheck
 	end
-
-MapRuinsofAlphOmanyteChamberSignpost1Script:
-	jumptext UnknownText_0x58d01
 
 MapRuinsofAlphOmanyteChamberSignpost3Script:
 	unowntypeface

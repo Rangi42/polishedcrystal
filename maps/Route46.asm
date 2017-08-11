@@ -14,7 +14,7 @@ Route46_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 27, 9, SIGNPOST_READ, Route46Sign
+	signpost 27, 9, SIGNPOST_JUMPTEXT, Route46SignText
 
 .PersonEvents: db 7
 	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
@@ -191,9 +191,6 @@ TrainerHikerBailey:
 HikerBaileyScript:
 	end_if_just_battled
 	jumptext UnknownText_0x1a97e8
-
-Route46Sign:
-	jumptext Route46SignText
 
 FruitTreeScript_0x1a978f:
 	fruittree FRUITTREE_ROUTE_46_1

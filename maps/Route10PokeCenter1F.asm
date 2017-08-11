@@ -18,12 +18,9 @@ Route10PokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_GENTLEMAN, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x188bd7, -1
+	person_event SPRITE_GENTLEMAN, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x188bf1, -1
 	person_event SPRITE_GYM_GUY, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188bda, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x188bee, -1
-
-GentlemanScript_0x188bd7:
-	jumptextfaceplayer UnknownText_0x188bf1
+	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x188d0c, -1
 
 GymGuyScript_0x188bda:
 	faceplayer
@@ -34,9 +31,6 @@ GymGuyScript_0x188bda:
 
 UnknownScript_0x188be8:
 	jumpopenedtext UnknownText_0x188c9e
-
-CooltrainerFScript_0x188bee:
-	jumptextfaceplayer UnknownText_0x188d0c
 
 PokemonJournalAgathaScript:
 	setflag ENGINE_READ_AGATHA_JOURNAL
