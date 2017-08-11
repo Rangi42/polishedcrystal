@@ -46,21 +46,21 @@ TrainerTwinsToriandtil1:
 
 TwinsToriandtil1Script:
 	end_if_just_battled
-	jumptext UnknownText_0x1a8e62
+	jumptextfaceplayer UnknownText_0x1a8e62
 
 TrainerTwinsToriandtil2:
 	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE2, TwinsToriandtil2SeenText, TwinsToriandtil2BeatenText, 0, TwinsToriandtil2Script
 
 TwinsToriandtil2Script:
 	end_if_just_battled
-	jumptext UnknownText_0x1a8eec
+	jumptextfaceplayer UnknownText_0x1a8eec
 
 TrainerPsychicGreg:
 	trainer EVENT_BEAT_PSYCHIC_GREG, PSYCHIC_T, GREG, PsychicGregSeenText, PsychicGregBeatenText, 0, PsychicGregScript
 
 PsychicGregScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a8f80
+	jumptextfaceplayer UnknownText_0x1a8f80
 
 SunnyScript:
 	faceplayer
@@ -104,14 +104,14 @@ TrainerBeautyCallie:
 
 BeautyCallieScript:
 	end_if_just_battled
-	jumptext BeautyCallieAfterText
+	jumptextfaceplayer BeautyCallieAfterText
 
 TrainerBeautyCassandra:
 	trainer EVENT_BEAT_BEAUTY_CASSANDRA, BEAUTY, CASSANDRA, BeautyCassandraSeenText, BeautyCassandraBeatenText, 0, BeautyCassandraScript
 
 BeautyCassandraScript:
 	end_if_just_battled
-	jumptext BeautyCassandraAfterText
+	jumptextfaceplayer BeautyCassandraAfterText
 
 Route37CooltrainerfChiaraScript:
 	faceplayer

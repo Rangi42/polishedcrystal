@@ -201,14 +201,14 @@ TrainerScientistOskar:
 
 ScientistOskarScript:
 	end_if_just_battled
-	jumptext ScientistOskarAfterText
+	jumptextfaceplayer ScientistOskarAfterText
 
 TrainerSuperNerdLuis:
 	trainer EVENT_BEAT_SUPER_NERD_LUIS, SUPER_NERD, LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText, 0, SuperNerdLuisScript
 
 SuperNerdLuisScript:
 	end_if_just_battled
-	jumptext SuperNerdLuisAfterText
+	jumptextfaceplayer SuperNerdLuisAfterText
 
 CinnabarVolcano1FHiddenFullRestore:
 	dwb EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE

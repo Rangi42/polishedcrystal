@@ -60,7 +60,7 @@ TrainerCamperTed:
 
 CamperTedScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a9851
+	jumptextfaceplayer UnknownText_0x1a9851
 
 TrainerPicnickerErin1:
 	trainer EVENT_BEAT_PICNICKER_ERIN, PICNICKER, ERIN1, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
@@ -190,7 +190,7 @@ TrainerHikerBailey:
 
 HikerBaileyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a97e8
+	jumptextfaceplayer UnknownText_0x1a97e8
 
 FruitTreeScript_0x1a978f:
 	fruittree FRUITTREE_ROUTE_46_1

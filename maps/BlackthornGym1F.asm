@@ -58,9 +58,9 @@ BlackthornGymStatue:
 
 BlackthornGymClairScript:
 	checkflag ENGINE_RISINGBADGE
-	jumptextfaceplayer_iftrue ClairPokemonLeagueDirectionsText
+	iftrue_jumptextfaceplayer ClairPokemonLeagueDirectionsText
 	checkevent EVENT_BEAT_CLAIR
-	jumptextfaceplayer_iftrue .TooMuchToExpectText
+	iftrue_jumptextfaceplayer .TooMuchToExpectText
 	showtextfaceplayer .IntroText
 	winlosstext .WinText, 0
 	loadtrainer CLAIR, 1
@@ -185,7 +185,7 @@ ClairPokemonLeagueDirectionsText:
 
 BlackthornGymGuyScript:
 	checkevent EVENT_BEAT_CLAIR
-	jumptextfaceplayer_iftrue .WinText
+	iftrue_jumptextfaceplayer .WinText
 	thistextfaceplayer
 
 	text "Yo! Champ in"

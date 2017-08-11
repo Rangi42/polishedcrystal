@@ -29,7 +29,7 @@ TrainerRuin_maniacLeland:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm on the trail of"
@@ -54,7 +54,7 @@ TrainerRuin_maniacPetry:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'll go anywhere"

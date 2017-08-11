@@ -149,14 +149,14 @@ TrainerPsychicNathan:
 
 PsychicNathanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5830e
+	jumptextfaceplayer UnknownText_0x5830e
 
 TrainerSuperNerdStan:
 	trainer EVENT_BEAT_SUPER_NERD_STAN, SUPER_NERD, STAN, UnknownText_0x581e5, UnknownText_0x58217, 0, UnknownScript_0x580a9
 
 UnknownScript_0x580a9:
 	end_if_just_battled
-	jumptext UnknownText_0x58250
+	jumptextfaceplayer UnknownText_0x58250
 
 RuinsofAlphOutsideHiddenRareCandy:
 	dwb EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY, RARE_CANDY

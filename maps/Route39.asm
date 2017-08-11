@@ -124,7 +124,7 @@ TrainerPokefanfRuth:
 
 PokefanfRuthScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a5db2
+	jumptextfaceplayer UnknownText_0x1a5db2
 
 Route39CowgirlAnnieScript:
 	faceplayer
@@ -259,14 +259,14 @@ TrainerSailorEugene:
 
 SailorEugeneScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a5c4d
+	jumptextfaceplayer UnknownText_0x1a5c4d
 
 TrainerPsychicNorman:
 	trainer EVENT_BEAT_PSYCHIC_NORMAN, PSYCHIC_T, NORMAN, PsychicNormanSeenText, PsychicNormanBeatenText, 0, PsychicNormanScript
 
 PsychicNormanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a5e57
+	jumptextfaceplayer UnknownText_0x1a5e57
 
 PokefanFScript_0x1a5bbe:
 	faceplayer

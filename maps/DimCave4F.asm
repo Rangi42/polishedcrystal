@@ -73,7 +73,7 @@ TrainerScientistJoseph:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm studying the"
@@ -105,7 +105,7 @@ TrainerScientistNigel:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How do we get pow-"

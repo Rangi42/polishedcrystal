@@ -36,21 +36,21 @@ TrainerBurglarPete:
 
 BurglarPeteScript:
 	end_if_just_battled
-	jumptext BurglarPeteAfterText
+	jumptextfaceplayer BurglarPeteAfterText
 
 TrainerBurglarLouis:
 	trainer EVENT_BEAT_BURGLAR_LOUIS, BURGLAR, LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText, 0, BurglarLouisScript
 
 BurglarLouisScript:
 	end_if_just_battled
-	jumptext BurglarLouisAfterText
+	jumptextfaceplayer BurglarLouisAfterText
 
 PokemonMansion1FHiddenFullRestore:
 	dwb EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 PokemonMansion1FHiddenPPUp:
 	checkevent EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP
-	jumptext_iftrue PokemonMansion1FFlowerPotText
+	iftrue_jumptext PokemonMansion1FFlowerPotText
 	giveitem PP_UP
 	iffalse .PackFull
 	opentext

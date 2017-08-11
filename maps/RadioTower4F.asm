@@ -70,28 +70,28 @@ TrainerGruntM10:
 
 GruntM10Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5ede2
+	jumptextfaceplayer UnknownText_0x5ede2
 
 TrainerProton1:
 	trainer EVENT_BEAT_PROTON_1, PROTON, PROTON1, Proton1SeenText, Proton1BeatenText, 0, Proton1Script
 
 Proton1Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5ee69
+	jumptextfaceplayer UnknownText_0x5ee69
 
 TrainerGruntF4:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_4, GRUNTF, 4, GruntF4SeenText, GruntF4BeatenText, 0, GruntF4Script
 
 GruntF4Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5ef31
+	jumptextfaceplayer UnknownText_0x5ef31
 
 TrainerRocketScientistRich:
 	trainer EVENT_BEAT_ROCKET_SCIENTIST_RICH, ROCKET_SCIENTIST, RICH, RocketScientistRichSeenText, RocketScientistRichBeatenText, 0, RocketScientistRichScript
 
 RocketScientistRichScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5efcb
+	jumptextfaceplayer UnknownText_0x5efcb
 
 UnknownText_0x5ec12:
 	text "I listened to the"

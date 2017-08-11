@@ -66,21 +66,21 @@ TrainerFisherPaton:
 
 TrainerFisherPatonScript:
 	end_if_just_battled
-	jumptext FisherPatonAfterText
+	jumptextfaceplayer FisherPatonAfterText
 
 TrainerSwimmerfKatie:
 	trainer EVENT_BEAT_SWIMMERF_KATIE, SWIMMERF, KATIE, SwimmerfKatieSeenText, SwimmerfKatieBeatenText, 0, SwimmerfKatieScript
 
 SwimmerfKatieScript:
 	end_if_just_battled
-	jumptext SwimmerfKatieAfterText
+	jumptextfaceplayer SwimmerfKatieAfterText
 
 TrainerSwimmermJames:
 	trainer EVENT_BEAT_SWIMMERM_JAMES, SWIMMERM, JAMES, SwimmermJamesSeenText, SwimmermJamesBeatenText, 0, SwimmermJamesScript
 
 SwimmermJamesScript:
 	end_if_just_battled
-	jumptext SwimmermJamesAfterText
+	jumptextfaceplayer SwimmermJamesAfterText
 
 GoldenrodHarborLass1Script:
 	faceplayer

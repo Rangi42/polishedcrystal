@@ -210,7 +210,7 @@ TrainerGruntM3:
 
 GruntM3Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5d5a2
+	jumptextfaceplayer UnknownText_0x5d5a2
 
 RadioTower1FWhitneyScript:
 	showtextfaceplayer RadioTower1FWhitney1Text

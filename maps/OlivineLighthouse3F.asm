@@ -162,21 +162,21 @@ TrainerBird_keeperTheo:
 
 Bird_keeperTheoScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5b2df
+	jumptextfaceplayer UnknownText_0x5b2df
 
 TrainerGentlemanPreston:
 	trainer EVENT_BEAT_GENTLEMAN_PRESTON, GENTLEMAN, PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText, 0, GentlemanPrestonScript
 
 GentlemanPrestonScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5b457
+	jumptextfaceplayer UnknownText_0x5b457
 
 TrainerSailorTerrell:
 	trainer EVENT_BEAT_SAILOR_TERRELL, SAILOR, TERRELL, SailorTerrellSeenText, SailorTerrellBeatenText, 0, SailorTerrellScript
 
 SailorTerrellScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5b384
+	jumptextfaceplayer UnknownText_0x5b384
 
 Bird_keeperTheoSeenText:
 	text "Why are you here?"

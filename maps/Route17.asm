@@ -39,7 +39,7 @@ TrainerBikerReilly:
 
 BikerReillyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad13b
+	jumptextfaceplayer UnknownText_0x1ad13b
 
 BikerReillySeenText:
 	text "Hey, you! You're"
@@ -60,7 +60,7 @@ TrainerBikerJoel:
 
 BikerJoelScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad196
+	jumptextfaceplayer UnknownText_0x1ad196
 
 BikerJoelSeenText:
 	text "Wow. That's a cool"
@@ -86,7 +86,7 @@ TrainerBikerGlenn:
 
 BikerGlennScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad225
+	jumptextfaceplayer UnknownText_0x1ad225
 
 BikerGlennSeenText:
 	text "Hey! Want to have"
@@ -109,7 +109,7 @@ TrainerBikerDale:
 
 BikerDaleScript:
 	end_if_just_battled
-	jumptext BikerDaleAfterText
+	jumptextfaceplayer BikerDaleAfterText
 
 BikerDaleSeenText:
 	text "You're gonna lose!"
@@ -132,7 +132,7 @@ TrainerBikerJacob:
 
 BikerJacobScript:
 	end_if_just_battled
-	jumptext BikerJacobAfterText
+	jumptextfaceplayer BikerJacobAfterText
 
 BikerJacobSeenText:
 	text "Modding my"
@@ -157,7 +157,7 @@ TrainerBikerAiden:
 
 BikerAidenScript:
 	end_if_just_battled
-	jumptext BikerAidenAfterText
+	jumptextfaceplayer BikerAidenAfterText
 
 BikerAidenSeenText:
 	text "Vroom vroom!"
@@ -187,7 +187,7 @@ TrainerBikerDan:
 
 BikerDanScript:
 	end_if_just_battled
-	jumptext BikerDanAfterText
+	jumptextfaceplayer BikerDanAfterText
 
 BikerDanSeenText:
 	text "Parara parapara"
@@ -215,7 +215,7 @@ TrainerBikerTeddy:
 
 BikerTeddyScript:
 	end_if_just_battled
-	jumptext BikerTeddyAfterText
+	jumptextfaceplayer BikerTeddyAfterText
 
 BikerTeddySeenText:
 	text "Hey, that's a cool"
@@ -238,7 +238,7 @@ TrainerRoughneckBrian:
 
 RoughneckBrianScript:
 	end_if_just_battled
-	jumptext RoughneckBrianAfterText
+	jumptextfaceplayer RoughneckBrianAfterText
 
 RoughneckBrianSeenText:
 	text "Hey, who told you"
@@ -260,7 +260,7 @@ TrainerRoughneckTheron:
 
 RoughneckTheronScript:
 	end_if_just_battled
-	jumptext RoughneckTheronAfterText
+	jumptextfaceplayer RoughneckTheronAfterText
 
 RoughneckTheronSeenText:
 	text "I'll toughen you"
@@ -285,7 +285,7 @@ TrainerRoughneckMarkey:
 
 RoughneckMarkeyScript:
 	end_if_just_battled
-	jumptext RoughneckMarkeyAfterText
+	jumptextfaceplayer RoughneckMarkeyAfterText
 
 RoughneckMarkeySeenText:
 	text "Hey hey hey!"

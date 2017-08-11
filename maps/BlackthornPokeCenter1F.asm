@@ -45,7 +45,7 @@ ProfOaksAide4Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
-	jumpopenedtext_iftrue .ExplainText
+	iftrue_jumpopenedtext .ExplainText
 	writetext .HiText
 	waitbutton
 	count_seen_caught
@@ -70,7 +70,7 @@ ProfOaksAide4Script:
 	writetext .HereYouGoText
 	waitbutton
 	verbosegiveitem LUCKY_EGG
-	jumpopenedtext_iffalse .NoRoomText
+	iffalse_jumpopenedtext .NoRoomText
 	setevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
 	thisopenedtext
 

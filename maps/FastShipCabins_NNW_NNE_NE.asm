@@ -33,49 +33,49 @@ TrainerPILooker:
 
 PILookerScript:
 	end_if_just_battled
-	jumptext PILookerAfterText
+	jumptextfaceplayer PILookerAfterText
 
 TrainerCooltrainermSean:
 	trainer EVENT_BEAT_COOLTRAINERM_SEAN, COOLTRAINERM, SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText, 0, CooltrainermSeanScript
 
 CooltrainermSeanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7567b
+	jumptextfaceplayer UnknownText_0x7567b
 
 TrainerCooltrainerfCarol:
 	trainer EVENT_BEAT_COOLTRAINERF_CAROL, COOLTRAINERF, CAROL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText, 0, CooltrainerfCarolScript
 
 CooltrainerfCarolScript:
 	end_if_just_battled
-	jumptext UnknownText_0x756f7
+	jumptextfaceplayer UnknownText_0x756f7
 
 TrainerPokemaniacEthan:
 	trainer EVENT_BEAT_POKEMANIAC_ETHAN, POKEMANIAC, ETHAN, PokemaniacEthanSeenText, PokemaniacEthanBeatenText, 0, PokemaniacEthanScript
 
 PokemaniacEthanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7574b
+	jumptextfaceplayer UnknownText_0x7574b
 
 TrainerHikerNoland:
 	trainer EVENT_BEAT_HIKER_NOLAND, HIKER, NOLAND, HikerNolandSeenText, HikerNolandBeatenText, 0, HikerNolandScript
 
 HikerNolandScript:
 	end_if_just_battled
-	jumptext UnknownText_0x757d4
+	jumptextfaceplayer UnknownText_0x757d4
 
 TrainerGentlemanEdward:
 	trainer EVENT_BEAT_GENTLEMAN_EDWARD, GENTLEMAN, EDWARD, GentlemanEdwardSeenText, GentlemanEdwardBeatenText, 0, GentlemanEdwardScript
 
 GentlemanEdwardScript:
 	end_if_just_battled
-	jumptext UnknownText_0x75937
+	jumptextfaceplayer UnknownText_0x75937
 
 TrainerBurglarCorey:
 	trainer EVENT_BEAT_BURGLAR_COREY, BURGLAR, COREY, BurglarCoreySeenText, BurglarCoreyBeatenText, 0, BurglarCoreyScript
 
 BurglarCoreyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x75996
+	jumptextfaceplayer UnknownText_0x75996
 
 SailorScript_0x755f1:
 	special SaveMusic

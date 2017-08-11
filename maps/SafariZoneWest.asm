@@ -36,21 +36,21 @@ TrainerLassDuplica:
 
 LassDuplicaScript:
 	end_if_just_battled
-	jumptext LassDuplicaAfterText
+	jumptextfaceplayer LassDuplicaAfterText
 
 TrainerCamperAmos:
 	trainer EVENT_BEAT_CAMPER_AMOS, CAMPER, AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
 
 CamperAmosScript:
 	end_if_just_battled
-	jumptext CamperAmosAfterText
+	jumptextfaceplayer CamperAmosAfterText
 
 TrainerTamerBrett:
 	trainer EVENT_BEAT_TAMER_BRETT, TAMER, BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
 
 TamerBrettScript:
 	end_if_just_battled
-	jumptext TamerBrettAfterText
+	jumptextfaceplayer TamerBrettAfterText
 
 SafariZoneWestHiddenNugget:
 	dwb EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET, NUGGET

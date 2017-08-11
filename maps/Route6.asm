@@ -30,7 +30,7 @@ TrainerPokefanmRex:
 
 PokefanmRexScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad9ff
+	jumptextfaceplayer UnknownText_0x1ad9ff
 
 PokefanmRexSeenText:
 	text "My Phanpy is the"
@@ -56,7 +56,7 @@ TrainerPokefanmAllan:
 
 PokefanmAllanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ada88
+	jumptextfaceplayer UnknownText_0x1ada88
 
 PokefanmAllanSeenText:
 	text "My Teddiursa is"
@@ -82,7 +82,7 @@ TrainerTwinsDayanddani1:
 
 TrainerTwinsDayanddani1Script:
 	end_if_just_battled
-	jumptext TwinsDayanddani1AfterText
+	jumptextfaceplayer TwinsDayanddani1AfterText
 
 TwinsDayanddani1SeenText:
 	text "Day: Are you going"
@@ -102,7 +102,7 @@ TrainerTwinsDayanddani2:
 
 TrainerTwinsDayanddani2Script:
 	end_if_just_battled
-	jumptext TwinsDayanddani2AfterText
+	jumptextfaceplayer TwinsDayanddani2AfterText
 
 TwinsDayanddani2SeenText:
 	text "Dani: We'll knock"
@@ -123,7 +123,7 @@ TrainerYoungsterChaz:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do I see a strong"
@@ -147,7 +147,7 @@ TrainerGuitaristfWanda:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "You'd better"

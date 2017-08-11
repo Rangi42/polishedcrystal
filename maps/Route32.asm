@@ -259,14 +259,14 @@ TrainerCamperRoland:
 
 .Script:
 	end_if_just_battled
-	jumptext CamperRolandAfterText
+	jumptextfaceplayer CamperRolandAfterText
 
 TrainerFisherJustin:
 	trainer EVENT_BEAT_FISHER_JUSTIN, FISHER, JUSTIN, FisherJustinSeenText, FisherJustinBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext FisherJustinAfterText
+	jumptextfaceplayer FisherJustinAfterText
 
 TrainerFisherRalph1:
 	trainer EVENT_BEAT_FISHER_RALPH, FISHER, RALPH1, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
@@ -395,7 +395,7 @@ TrainerFisherHenry:
 
 .Script:
 	end_if_just_battled
-	jumptext FisherHenryAfterText
+	jumptextfaceplayer FisherHenryAfterText
 
 TrainerPicnickerLiz1:
 	trainer EVENT_BEAT_PICNICKER_LIZ, PICNICKER, LIZ1, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
@@ -519,21 +519,21 @@ TrainerYoungsterAlbert:
 
 .Script:
 	end_if_just_battled
-	jumptext YoungsterAlbertAfterText
+	jumptextfaceplayer YoungsterAlbertAfterText
 
 TrainerYoungsterGordon:
 	trainer EVENT_BEAT_YOUNGSTER_GORDON, YOUNGSTER, GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext YoungsterGordonAfterText
+	jumptextfaceplayer YoungsterGordonAfterText
 
 TrainerBird_keeperPeter:
 	trainer EVENT_BEAT_BIRD_KEEPER_PETER, BIRD_KEEPER, PETER, Bird_keeperPeterSeenText, Bird_keeperPeterBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext Bird_keeperPeterAfterText
+	jumptextfaceplayer Bird_keeperPeterAfterText
 
 FriedaScript:
 	faceplayer

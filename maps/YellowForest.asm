@@ -51,28 +51,28 @@ TrainerSchoolgirlSarah:
 
 SchoolgirlSarahScript:
 	end_if_just_battled
-	jumptext SchoolgirlSarahAfterText
+	jumptextfaceplayer SchoolgirlSarahAfterText
 
 TrainerSchoolgirlIsabel:
 	trainer EVENT_BEAT_SCHOOLGIRL_ISABEL, SCHOOLGIRL, ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
 
 SchoolgirlIsabelScript:
 	end_if_just_battled
-	jumptext SchoolgirlIsabelAfterText
+	jumptextfaceplayer SchoolgirlIsabelAfterText
 
 TrainerTeacherKathryn:
 	trainer EVENT_BEAT_TEACHER_KATHRYN, TEACHER, KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
 
 TeacherKathrynScript:
 	end_if_just_battled
-	jumptext TeacherKathrynAfterText
+	jumptextfaceplayer TeacherKathrynAfterText
 
 TrainerBreederSophie:
 	trainer EVENT_BEAT_BREEDER_SOPHIE, BREEDER, SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
 
 BreederSophieScript:
 	end_if_just_battled
-	jumptext BreederSophieAfterText
+	jumptextfaceplayer BreederSophieAfterText
 
 YellowForestWalkerScript:
 	showtextfaceplayer YellowForestWalkerSeenText

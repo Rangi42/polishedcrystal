@@ -303,14 +303,14 @@ TrainerPsychicMark:
 
 .Script:
 	end_if_just_battled
-	jumptext UnknownText_0x19471e
+	jumptextfaceplayer UnknownText_0x19471e
 
 TrainerSchoolgirlMolly:
 	trainer EVENT_BEAT_SCHOOLGIRL_MOLLY, SCHOOLGIRL, MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext SchoolgirlMollyAfterText
+	jumptextfaceplayer SchoolgirlMollyAfterText
 
 ArthurScript:
 	faceplayer

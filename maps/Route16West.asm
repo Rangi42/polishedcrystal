@@ -32,7 +32,7 @@ TrainerLassGina:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Check out my new"
@@ -56,7 +56,7 @@ TrainerLassAlice:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Our eyes met!"
@@ -83,7 +83,7 @@ TrainerCosplayerKuroko:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "See how lifelike"
@@ -106,7 +106,7 @@ TrainerCooltrainerfSera:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you think you"
@@ -131,7 +131,7 @@ TrainerBeautyNicole:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Aren't my #mon"

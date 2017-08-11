@@ -118,35 +118,35 @@ TrainerSwimmerfDiana:
 
 SwimmerfDianaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x188856
+	jumptextfaceplayer UnknownText_0x188856
 
 TrainerSwimmerfJoy:
 	trainer EVENT_BEAT_SWIMMERF_JOY, SWIMMERF, JOY, SwimmerfJoySeenText, SwimmerfJoyBeatenText, 0, SwimmerfJoyScript
 
 SwimmerfJoyScript:
 	end_if_just_battled
-	jumptext SwimmerfJoyAfterText
+	jumptextfaceplayer SwimmerfJoyAfterText
 
 TrainerSwimmerfBriana:
 	trainer EVENT_BEAT_SWIMMERF_BRIANA, SWIMMERF, BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
 
 SwimmerfBrianaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1888c0
+	jumptextfaceplayer UnknownText_0x1888c0
 
 TrainerSailorParker:
 	trainer EVENT_BEAT_SAILOR_PARKER, SAILOR, PARKER, SailorParkerSeenText, SailorParkerBeatenText, 0, SailorParkerScript
 
 SailorParkerScript:
 	end_if_just_battled
-	jumptext SailorParkerAfterText
+	jumptextfaceplayer SailorParkerAfterText
 
 TrainerSailorEddie:
 	trainer EVENT_BEAT_SAILOR_EDDIE, SAILOR, EDDIE, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
 
 SailorEddieScript:
 	end_if_just_battled
-	jumptext SailorEddieAfterText
+	jumptextfaceplayer SailorEddieAfterText
 
 CeruleanGymGuyScript:
 	faceplayer

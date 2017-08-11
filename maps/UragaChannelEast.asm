@@ -31,7 +31,7 @@ TrainerSwimmerfWoda:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did you come here"
@@ -55,7 +55,7 @@ TrainerCooltrainermKieran:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It's on like"
@@ -80,7 +80,7 @@ TrainerBikerTyrone:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Cough! Splutter!"

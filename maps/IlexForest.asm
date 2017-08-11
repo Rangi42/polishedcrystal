@@ -480,7 +480,7 @@ TrainerBug_catcherWayne:
 
 Bug_catcherWayneScript:
 	end_if_just_battled
-	jumptext Bug_catcherWayneAfterText
+	jumptextfaceplayer Bug_catcherWayneAfterText
 
 IlexForestHiddenEther:
 	dwb EVENT_ILEX_FOREST_HIDDEN_ETHER, ETHER

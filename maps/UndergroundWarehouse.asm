@@ -50,21 +50,21 @@ TrainerGruntM24:
 
 GruntM24Script:
 	end_if_just_battled
-	jumptext UnknownText_0x7da48
+	jumptextfaceplayer UnknownText_0x7da48
 
 TrainerGruntM14:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_14, GRUNTM, 14, GruntM14SeenText, GruntM14BeatenText, 0, GruntM14Script
 
 GruntM14Script:
 	end_if_just_battled
-	jumptext UnknownText_0x7db01
+	jumptextfaceplayer UnknownText_0x7db01
 
 TrainerGruntM15:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_15, GRUNTM, 15, GruntM15SeenText, GruntM15BeatenText, 0, GruntM15Script
 
 GruntM15Script:
 	end_if_just_battled
-	jumptext UnknownText_0x7db8e
+	jumptextfaceplayer UnknownText_0x7db8e
 
 GentlemanScript_0x7d9bf:
 	faceplayer

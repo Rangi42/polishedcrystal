@@ -82,14 +82,14 @@ TrainerBird_keeperRod:
 
 Bird_keeperRodScript:
 	end_if_just_battled
-	jumptext UnknownText_0x68837
+	jumptextfaceplayer UnknownText_0x68837
 
 TrainerBird_keeperAbe:
 	trainer EVENT_BEAT_BIRD_KEEPER_ABE, BIRD_KEEPER, ABE, Bird_keeperAbeSeenText, Bird_keeperAbeBeatenText, 0, Bird_keeperAbeScript
 
 Bird_keeperAbeScript:
 	end_if_just_battled
-	jumptext UnknownText_0x688c7
+	jumptextfaceplayer UnknownText_0x688c7
 
 VioletGymGuyScript:
 	faceplayer

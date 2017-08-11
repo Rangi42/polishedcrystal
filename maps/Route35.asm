@@ -41,7 +41,7 @@ TrainerBreederTheresa:
 
 BreederTheresaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19cc87
+	jumptextfaceplayer UnknownText_0x19cc87
 
 TrainerJugglerIrwin:
 	trainer EVENT_BEAT_JUGGLER_IRWIN, JUGGLER, IRWIN1, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, JugglerIrwin1Script
@@ -103,28 +103,28 @@ TrainerCamperIvan:
 
 CamperIvanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19cac4
+	jumptextfaceplayer UnknownText_0x19cac4
 
 TrainerCoupleGailandeli1:
 	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI1, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText, 0, CoupleGailandeli1Script
 
 CoupleGailandeli1Script:
 	end_if_just_battled
-	jumptext CoupleGailandeli1AfterText
+	jumptextfaceplayer CoupleGailandeli1AfterText
 
 TrainerCoupleGailandeli2:
 	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI2, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText, 0, CoupleGailandeli2Script
 
 CoupleGailandeli2Script:
 	end_if_just_battled
-	jumptext CoupleGailandeli2AfterText
+	jumptextfaceplayer CoupleGailandeli2AfterText
 
 TrainerPicnickerKim:
 	trainer EVENT_BEAT_PICNICKER_KIM, PICNICKER, KIM, PicnickerKimSeenText, PicnickerKimBeatenText, 0, PicnickerKimScript
 
 PicnickerKimScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19cc21
+	jumptextfaceplayer UnknownText_0x19cc21
 
 TrainerBug_catcherArnie1:
 	trainer EVENT_BEAT_BUG_CATCHER_ARNIE, BUG_CATCHER, ARNIE1, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, Bug_catcherArnie1Script
@@ -225,7 +225,7 @@ TrainerFirebreatherWalt:
 
 FirebreatherWaltScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19cebc
+	jumptextfaceplayer UnknownText_0x19cebc
 
 OfficermScript_0x19ca49:
 	faceplayer

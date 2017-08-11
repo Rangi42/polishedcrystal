@@ -85,14 +85,14 @@ TrainerVeteranfJoanne:
 
 VeteranfJoanneScript:
 	end_if_just_battled
-	jumptext VeteranfJoanneAfterText
+	jumptextfaceplayer VeteranfJoanneAfterText
 
 TrainerVeteranfSylvie:
 	trainer EVENT_BEAT_VETERANF_SYLVIE, VETERANF, SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText, 0, VeteranfSylvieScript
 
 VeteranfSylvieScript:
 	end_if_just_battled
-	jumptext VeteranfSylvieAfterText
+	jumptextfaceplayer VeteranfSylvieAfterText
 
 VictoryRoad2FHiddenMaxPotion:
 	dwb EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION, MAX_POTION

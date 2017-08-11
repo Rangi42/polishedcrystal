@@ -78,7 +78,6 @@ Museum2FScientistText:
 	done
 
 
-
 Museum2FLassText:
 	text "#mon revived"
 	line "from fossils are"

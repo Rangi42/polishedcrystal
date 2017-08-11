@@ -301,14 +301,14 @@ TrainerPokemaniacShane:
 
 PokemaniacShaneScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a94d6
+	jumptextfaceplayer UnknownText_0x1a94d6
 
 TrainerHikerBenjamin:
 	trainer EVENT_BEAT_HIKER_BENJAMIN, HIKER, BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText, 0, HikerBenjaminScript
 
 HikerBenjaminScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a943f
+	jumptextfaceplayer UnknownText_0x1a943f
 
 OfficermKeithScript:
 	faceplayer

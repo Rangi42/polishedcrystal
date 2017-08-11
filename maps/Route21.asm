@@ -34,7 +34,7 @@ TrainerSwimmerfNikki:
 
 SwimmerfNikkiScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ac8f1
+	jumptextfaceplayer UnknownText_0x1ac8f1
 
 SwimmerfNikkiSeenText:
 	text "If I win, you have"
@@ -58,7 +58,7 @@ TrainerSwimmerfChelan:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I love bikinis!"
@@ -85,7 +85,7 @@ TrainerSwimmerfKendra:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, trainer!"
@@ -110,7 +110,7 @@ TrainerSwimmermEsteban:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My swimming teach-"
@@ -134,7 +134,7 @@ TrainerSwimmermDuane:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming is full-"
@@ -160,7 +160,7 @@ TrainerSwimmermSeth:
 
 SwimmermSethScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ac873
+	jumptextfaceplayer UnknownText_0x1ac873
 
 SwimmermSethSeenText:
 	text "Land ho! Gotta"
@@ -182,7 +182,7 @@ TrainerFisherMurphy:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Huh? I've caught"
@@ -208,7 +208,7 @@ TrainerFisherArnold:
 
 FisherArnoldScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ac95c
+	jumptextfaceplayer UnknownText_0x1ac95c
 
 FisherArnoldSeenText:
 	text "I'm bored by fish-"
@@ -229,7 +229,7 @@ TrainerFisherLiam:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Whoa! A nibble!"
@@ -261,7 +261,7 @@ TrainerFisherGideon:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did I become a"
@@ -288,7 +288,7 @@ TrainerBird_keeperKinsley:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Someday I might be"
@@ -311,7 +311,7 @@ TrainerBird_keeperEaston:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Bird Keepers are"

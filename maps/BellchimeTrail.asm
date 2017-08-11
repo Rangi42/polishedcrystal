@@ -99,7 +99,7 @@ BellchimeTrailValerieScript:
 .Listened:
 	writetext .BattleText
 	yesorno
-	jumpopenedtext_iffalse .RefusedText
+	iffalse_jumpopenedtext .RefusedText
 	writetext .AcceptedText
 	waitbutton
 	closetext

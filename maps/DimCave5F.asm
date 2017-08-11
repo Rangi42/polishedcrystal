@@ -179,7 +179,7 @@ TrainerSuper_nerdFoote:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I have a conundrum"
@@ -214,7 +214,7 @@ TrainerEngineerHoward:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This waterfall"
@@ -240,7 +240,7 @@ TrainerSuper_nerdDave:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've maxed out my"

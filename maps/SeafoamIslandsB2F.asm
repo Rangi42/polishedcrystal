@@ -33,21 +33,21 @@ TrainerSkierCady:
 
 SkierCadyScript:
 	end_if_just_battled
-	jumptext SkierCadyAfterText
+	jumptextfaceplayer SkierCadyAfterText
 
 TrainerBoarderShaun:
 	trainer EVENT_BEAT_BOARDER_SHAUN, BOARDER, SHAUN, BoarderShaunSeenText, BoarderShaunBeatenText, 0, BoarderShaunScript
 
 BoarderShaunScript:
 	end_if_just_battled
-	jumptext BoarderShaunAfterText
+	jumptextfaceplayer BoarderShaunAfterText
 
 TrainerBoarderBryce:
 	trainer EVENT_BEAT_BOARDER_BRYCE, BOARDER, BRYCE, BoarderBryceSeenText, BoarderBryceBeatenText, 0, BoarderBryceScript
 
 BoarderBryceScript:
 	end_if_just_battled
-	jumptext BoarderBryceAfterText
+	jumptextfaceplayer BoarderBryceAfterText
 
 SeafoamIslandsB2FHiddenPearl1:
 	dwb EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1, PEARL

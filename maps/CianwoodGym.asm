@@ -80,28 +80,28 @@ TrainerBlackbeltYoshi:
 
 .Script:
 	end_if_just_battled
-	jumptext BlackbeltYoshiAfterText
+	jumptextfaceplayer BlackbeltYoshiAfterText
 
 TrainerBlackbeltLao:
 	trainer EVENT_BEAT_BLACKBELT_LAO, BLACKBELT_T, LAO, BlackbeltLaoSeenText, BlackbeltLaoBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext BlackbeltLaoAfterText
+	jumptextfaceplayer BlackbeltLaoAfterText
 
 TrainerBlackbeltNob:
 	trainer EVENT_BEAT_BLACKBELT_NOB, BLACKBELT_T, NOB, BlackbeltNobSeenText, BlackbeltNobBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext BlackbeltNobAfterText
+	jumptextfaceplayer BlackbeltNobAfterText
 
 TrainerBlackbeltLung:
 	trainer EVENT_BEAT_BLACKBELT_LUNG, BLACKBELT_T, LUNG, BlackbeltLungSeenText, BlackbeltLungBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext BlackbeltLungAfterText
+	jumptextfaceplayer BlackbeltLungAfterText
 
 CianwoodGymStatue:
 	trainertotext CHUCK, 1, $1

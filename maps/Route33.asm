@@ -146,7 +146,7 @@ TrainerSchoolgirlImogen:
 
 SchoolgirlImogenScript:
 	end_if_just_battled
-	jumptext SchoolgirlImogenAfterText
+	jumptextfaceplayer SchoolgirlImogenAfterText
 
 Route33FruitTreeScript:
 	fruittree FRUITTREE_ROUTE_33

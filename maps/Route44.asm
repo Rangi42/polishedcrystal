@@ -250,7 +250,7 @@ TrainerPsychicPhil:
 
 PsychicPhilScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19dcfc
+	jumptextfaceplayer UnknownText_0x19dcfc
 
 TrainerFisherWilton1:
 	trainer EVENT_BEAT_FISHER_WILTON, FISHER, WILTON1, FisherWilton1SeenText, FisherWilton1BeatenText, 0, FisherWilton1Script
@@ -358,35 +358,34 @@ TrainerFisherEdgar:
 
 FisherEdgarScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19db6f
+	jumptextfaceplayer UnknownText_0x19db6f
 
 TrainerCooltrainerfCybil:
 	trainer EVENT_BEAT_COOLTRAINERF_CYBIL, COOLTRAINERF, CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText, 0, CooltrainerfCybilScript
 
 CooltrainerfCybilScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19df4d
+	jumptextfaceplayer UnknownText_0x19df4d
 
 TrainerPokemaniacZach:
 	trainer EVENT_BEAT_POKEMANIAC_ZACH, POKEMANIAC, ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText, 0, PokemaniacZachScript
 
 PokemaniacZachScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19dd7e
+	jumptextfaceplayer UnknownText_0x19dd7e
 
 TrainerCooltrainermAllen:
 	trainer EVENT_BEAT_COOLTRAINERM_ALLEN, COOLTRAINERM, ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText, 0, CooltrainermAllenScript
 
 CooltrainermAllenScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19de66
+	jumptextfaceplayer UnknownText_0x19de66
 
 FruitTreeScript_0x19da40:
 	fruittree FRUITTREE_ROUTE_44
 
 Route44HiddenElixer:
 	dwb EVENT_ROUTE_44_HIDDEN_ELIXER, ELIXER
-
 
 FisherWilton1SeenText:
 	text "Aack! You made me"

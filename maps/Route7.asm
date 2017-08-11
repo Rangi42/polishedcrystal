@@ -34,7 +34,7 @@ TrainerBreederCarlene:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My team is bred"

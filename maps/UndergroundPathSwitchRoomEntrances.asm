@@ -218,42 +218,42 @@ TrainerGruntM11:
 
 GruntM11Script:
 	end_if_just_battled
-	jumptext GruntM11AfterText
+	jumptextfaceplayer GruntM11AfterText
 
 TrainerGruntM25:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_25, GRUNTM, 25, GruntM25SeenText, GruntM25BeatenText, 0, GruntM25Script
 
 GruntM25Script:
 	end_if_just_battled
-	jumptext GruntM25AfterText
+	jumptextfaceplayer GruntM25AfterText
 
 TrainerBurglarDuncan:
 	trainer EVENT_BEAT_BURGLAR_DUNCAN, BURGLAR, DUNCAN, BurglarDuncanSeenText, BurglarDuncanBeatenText, 0, BurglarDuncanScript
 
 BurglarDuncanScript:
 	end_if_just_battled
-	jumptext BurglarDuncanAfterText
+	jumptextfaceplayer BurglarDuncanAfterText
 
 TrainerBurglarOrson:
 	trainer EVENT_BEAT_BURGLAR_ORSON, BURGLAR, ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText, 0, BurglarOrsonScript
 
 BurglarOrsonScript:
 	end_if_just_battled
-	jumptext BurglarOrsonAfterText
+	jumptextfaceplayer BurglarOrsonAfterText
 
 TrainerGruntM13:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_13, GRUNTM, 13, GruntM13SeenText, GruntM13BeatenText, 0, GruntM13Script
 
 GruntM13Script:
 	end_if_just_battled
-	jumptext GruntM13AfterText
+	jumptextfaceplayer GruntM13AfterText
 
 TrainerGruntF3:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_3, GRUNTF, 3, GruntF3SeenText, GruntF3BeatenText, 0, GruntF3Script
 
 GruntF3Script:
 	end_if_just_battled
-	jumptext GruntF3AfterText
+	jumptextfaceplayer GruntF3AfterText
 
 Switch1Script:
 	opentext
@@ -610,10 +610,8 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 UndergroundPathSwitchRoomEntrancesHiddenMaxPotion:
 	dwb EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION, MAX_POTION
 
-
 UndergroundPathSwitchRoomEntrancesHiddenRevive:
 	dwb EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE, REVIVE
-
 
 UndergroundSilverApproachMovement1:
 	step_down

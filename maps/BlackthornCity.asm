@@ -98,7 +98,7 @@ BlackthornCityTrainerTipsText:
 
 SantosScript:
 	checkevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
-	jumptextfaceplayer_iftrue .SaturdayText
+	iftrue_jumptextfaceplayer .SaturdayText
 	checkcode VAR_WEEKDAY
 	if_not_equal SATURDAY, .NotSaturday
 	faceplayer
@@ -164,9 +164,9 @@ SantosScript:
 
 BlackthornDragonTamer1Script:
 	checkevent EVENT_BEAT_CLAIR
-	jumptextfaceplayer_iftrue .ClairIsBeatenText
+	iftrue_jumptextfaceplayer .ClairIsBeatenText
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	jumptextfaceplayer_iftrue .ClairIsInText
+	iftrue_jumptextfaceplayer .ClairIsInText
 	thistextfaceplayer
 
 	text "I am sorry."
@@ -209,7 +209,7 @@ BlackthornDragonTamer1Script:
 
 BlackthornBlackbeltScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	jumptextfaceplayer_iftrue .Text2
+	iftrue_jumptextfaceplayer .Text2
 	thistextfaceplayer
 
 	text "My radio's busted?"

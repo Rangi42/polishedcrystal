@@ -109,14 +109,14 @@ TrainerSailorHarvey:
 
 TrainerSailorHarveyScript:
 	end_if_just_battled
-	jumptext SailorHarveyAfterText
+	jumptextfaceplayer SailorHarveyAfterText
 
 TrainerLassRose:
 	trainer EVENT_BEAT_LASS_ROSE, LASS, ROSE, LassRoseSeenText, LassRoseBeatenText, 0, TrainerLassRoseScript
 
 TrainerLassRoseScript:
 	end_if_just_battled
-	jumptext LassRoseAfterText
+	jumptextfaceplayer LassRoseAfterText
 
 OlivineCityYoungster1Script:
 	faceplayer

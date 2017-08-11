@@ -95,42 +95,42 @@ TrainerBugManiacKenta:
 
 BugManiacKentaScript:
 	end_if_just_battled
-	jumptext BugManiacKentaAfterText
+	jumptextfaceplayer BugManiacKentaAfterText
 
 TrainerLassMiriam:
 	trainer EVENT_BEAT_LASS_MIRIAM, LASS, MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
 
 LassMiriamScript:
 	end_if_just_battled
-	jumptext LassMiriamAfterText
+	jumptextfaceplayer LassMiriamAfterText
 
 TrainerSuperNerdJovan:
 	trainer EVENT_BEAT_SUPER_NERD_JOVAN, SUPER_NERD, JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
 
 SuperNerdJovanScript:
 	end_if_just_battled
-	jumptext SuperNerdJovanAfterText
+	jumptextfaceplayer SuperNerdJovanAfterText
 
 TrainerBugManiacRobby:
 	trainer EVENT_BEAT_BUG_MANIAC_ROBBY, BUG_MANIAC, ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
 
 BugManiacRobbyScript:
 	end_if_just_battled
-	jumptext BugManiacRobbyAfterText
+	jumptextfaceplayer BugManiacRobbyAfterText
 
 TrainerLassIris:
 	trainer EVENT_BEAT_LASS_IRIS, LASS, IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
 
 LassIrisScript:
 	end_if_just_battled
-	jumptext LassIrisAfterText
+	jumptextfaceplayer LassIrisAfterText
 
 TrainerHikerMarcos:
 	trainer EVENT_BEAT_HIKER_MARCOS, HIKER, MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
 
 HikerMarcosScript:
 	end_if_just_battled
-	jumptext HikerMarcosAfterText
+	jumptextfaceplayer HikerMarcosAfterText
 
 MountMoon1FHiddenRareCandy:
 	dwb EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY, RARE_CANDY

@@ -62,21 +62,21 @@ TrainerBugManiacLou:
 
 BugManiacLouScript:
 	end_if_just_battled
-	jumptext BugManiacLouAfterText
+	jumptextfaceplayer BugManiacLouAfterText
 
 TrainerSchoolgirlEliza:
 	trainer EVENT_BEAT_SCHOOLGIRL_ELIZA, SCHOOLGIRL, ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText, 0, SchoolgirlElizaScript
 
 SchoolgirlElizaScript:
 	end_if_just_battled
-	jumptext SchoolgirlElizaAfterText
+	jumptextfaceplayer SchoolgirlElizaAfterText
 
 TrainerSchoolboyJohnny:
 	trainer EVENT_BEAT_SCHOOLBOY_JOHNNY, SCHOOLBOY, JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, SchoolboyJohnnyScript
 
 SchoolboyJohnnyScript:
 	end_if_just_battled
-	jumptext SchoolboyJohnnyAfterText
+	jumptextfaceplayer SchoolboyJohnnyAfterText
 
 NationalParkPersian:
 	faceplayer
@@ -214,7 +214,7 @@ TrainerPokefanmWilliam:
 
 PokefanmWilliamScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5c645
+	jumptextfaceplayer UnknownText_0x5c645
 
 TrainerPokefanfBeverly1:
 	trainer EVENT_BEAT_POKEFANF_BEVERLY, POKEFANF, BEVERLY1, PokefanfBeverly1SeenText, PokefanfBeverly1BeatenText, 0, PokefanfBeverly1Script
@@ -297,11 +297,10 @@ TrainerLassKrise:
 
 LassKriseScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5c71d
+	jumptextfaceplayer UnknownText_0x5c71d
 
 NationalParkHiddenFullHeal:
 	dwb EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL, FULL_HEAL
-
 
 UnknownText_0x5c1d3:
 	text "Look! Check out my"

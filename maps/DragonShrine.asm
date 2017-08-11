@@ -225,7 +225,6 @@ ElderScript_0x18d20d:
 	faceplayer
 	jumptext UnknownText_0x18d8b1
 
-
 MenuDataHeader_0x18d215:
 	db $40 ; flags
 	db 04, 08 ; start coords
@@ -239,7 +238,6 @@ MenuData2_0x18d21d:
 	db "Ally@"
 	db "Underling@"
 	db "Friend@"
-
 
 MenuDataHeader_0x18d234:
 	db $40 ; flags
@@ -255,7 +253,6 @@ MenuData2_0x18d23c:
 	db "Training@"
 	db "Cheating@"
 
-
 MenuDataHeader_0x18d258:
 	db $40 ; flags
 	db 04, 05 ; start coords
@@ -269,7 +266,6 @@ MenuData2_0x18d260:
 	db "Weak person@"
 	db "Tough person@"
 	db "Anybody@"
-
 
 MenuDataHeader_0x18d283:
 	db $40 ; flags
@@ -285,7 +281,6 @@ MenuData2_0x18d28b:
 	db "Violence@"
 	db "Knowledge@"
 
-
 MenuDataHeader_0x18d2a5:
 	db $40 ; flags
 	db 04, 11 ; start coords
@@ -299,7 +294,6 @@ MenuData2_0x18d2ad:
 	db "Strong@"
 	db "Weak@"
 	db "Both@"
-
 
 MovementData_0x18d2bf:
 	slow_step_up

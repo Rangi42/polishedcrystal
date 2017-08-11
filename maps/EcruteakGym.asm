@@ -119,28 +119,28 @@ TrainerSageJeffrey:
 
 SageJeffreyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x9a263
+	jumptextfaceplayer UnknownText_0x9a263
 
 TrainerSagePing:
 	trainer EVENT_BEAT_SAGE_PING, SAGE, PING, SagePingSeenText, SagePingBeatenText, 0, SagePingScript
 
 SagePingScript:
 	end_if_just_battled
-	jumptext UnknownText_0x9a2b7
+	jumptextfaceplayer UnknownText_0x9a2b7
 
 TrainerMediumMartha:
 	trainer EVENT_BEAT_MEDIUM_MARTHA, MEDIUM, MARTHA, MediumMarthaSeenText, MediumMarthaBeatenText, 0, MediumMarthaScript
 
 MediumMarthaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x9a318
+	jumptextfaceplayer UnknownText_0x9a318
 
 TrainerMediumGrace:
 	trainer EVENT_BEAT_MEDIUM_GRACE, MEDIUM, GRACE, MediumGraceSeenText, MediumGraceBeatenText, 0, MediumGraceScript
 
 MediumGraceScript:
 	end_if_just_battled
-	jumptext UnknownText_0x9a38a
+	jumptextfaceplayer UnknownText_0x9a38a
 
 EcruteakGymGuyScript:
 	faceplayer

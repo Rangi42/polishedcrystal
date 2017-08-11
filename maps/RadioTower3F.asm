@@ -80,28 +80,28 @@ TrainerGruntM7:
 
 GruntM7Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5e8d0
+	jumptextfaceplayer UnknownText_0x5e8d0
 
 TrainerGruntM8:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_8, GRUNTM, 8, GruntM8SeenText, GruntM8BeatenText, 0, GruntM8Script
 
 GruntM8Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5e944
+	jumptextfaceplayer UnknownText_0x5e944
 
 TrainerGruntM9:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_9, GRUNTM, 9, GruntM9SeenText, GruntM9BeatenText, 0, GruntM9Script
 
 GruntM9Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5e9d0
+	jumptextfaceplayer UnknownText_0x5e9d0
 
 TrainerRocketScientistMarc:
 	trainer EVENT_BEAT_ROCKET_SCIENTIST_MARC, ROCKET_SCIENTIST, MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText, 0, RocketScientistMarcScript
 
 RocketScientistMarcScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5ea61
+	jumptextfaceplayer UnknownText_0x5ea61
 
 MapRadioTower3FSignpost2Script::
 	opentext

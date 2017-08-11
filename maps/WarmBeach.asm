@@ -33,7 +33,7 @@ TrainerSightseermGareth:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I just picked up"
@@ -61,7 +61,7 @@ TrainerAromaLadyHolly:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I am at one with"

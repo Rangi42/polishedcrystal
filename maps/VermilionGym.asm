@@ -116,28 +116,28 @@ TrainerGentlemanGregory:
 
 GentlemanGregoryScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1923b0
+	jumptextfaceplayer UnknownText_0x1923b0
 
 TrainerGuitaristmVincent:
 	trainer EVENT_BEAT_GUITARISTM_VINCENT, GUITARISTM, VINCENT, GuitaristmVincentSeenText, GuitaristmVincentBeatenText, 0, GuitaristmVincentScript
 
 GuitaristmVincentScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19244b
+	jumptextfaceplayer UnknownText_0x19244b
 
 TrainerJugglerHorton:
 	trainer EVENT_BEAT_JUGGLER_HORTON, JUGGLER, HORTON, JugglerHortonSeenText, JugglerHortonBeatenText, 0, JugglerHortonScript
 
 JugglerHortonScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1924d6
+	jumptextfaceplayer UnknownText_0x1924d6
 
 TrainerGuitaristfJanet:
 	trainer EVENT_BEAT_GUITARISTF_JANET, GUITARISTF, JANET, GuitaristfJanetSeenText, GuitaristfJanetBeatenText, 0, GuitaristfJanetScript
 
 GuitaristfJanetScript:
 	end_if_just_battled
-	jumptext GuitaristfJanetAfterText
+	jumptextfaceplayer GuitaristfJanetAfterText
 
 VermilionGymGuyScript:
 	faceplayer

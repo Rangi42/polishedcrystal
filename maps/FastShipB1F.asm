@@ -97,77 +97,77 @@ TrainerSailorJeff:
 
 SailorJeffScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76a38
+	jumptextfaceplayer UnknownText_0x76a38
 
 TrainerPicnickerDebra:
 	trainer EVENT_BEAT_PICNICKER_DEBRA, PICNICKER, DEBRA, PicnickerDebraSeenText, PicnickerDebraBeatenText, 0, PicnickerDebraScript
 
 PicnickerDebraScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76a99
+	jumptextfaceplayer UnknownText_0x76a99
 
 TrainerJugglerFritz:
 	trainer EVENT_BEAT_JUGGLER_FRITZ, JUGGLER, FRITZ, JugglerFritzSeenText, JugglerFritzBeatenText, 0, JugglerFritzScript
 
 JugglerFritzScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76b02
+	jumptextfaceplayer UnknownText_0x76b02
 
 TrainerBakerSharyn:
 	trainer EVENT_BEAT_BAKER_SHARYN, BAKER, SHARYN, BakerSharynSeenText, BakerSharynBeatenText, 0, BakerSharynScript
 
 BakerSharynScript:
 	end_if_just_battled
-	jumptext BakerSharynAfterText
+	jumptextfaceplayer BakerSharynAfterText
 
 TrainerSailorGarrett:
 	trainer EVENT_BEAT_SAILOR_GARRETT, SAILOR, GARRETT, SailorGarrettSeenText, SailorGarrettBeatenText, 0, SailorGarrettScript
 
 SailorGarrettScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76b7a
+	jumptextfaceplayer UnknownText_0x76b7a
 
 TrainerFisherJonah:
 	trainer EVENT_BEAT_FISHER_JONAH, FISHER, JONAH, FisherJonahSeenText, FisherJonahBeatenText, 0, FisherJonahScript
 
 FisherJonahScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76c22
+	jumptextfaceplayer UnknownText_0x76c22
 
 TrainerBlackbeltWai:
 	trainer EVENT_BEAT_BLACKBELT_WAI, BLACKBELT_T, WAI, BlackbeltWaiSeenText, BlackbeltWaiBeatenText, 0, BlackbeltWaiScript
 
 BlackbeltWaiScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76c9e
+	jumptextfaceplayer UnknownText_0x76c9e
 
 TrainerSailorKenneth:
 	trainer EVENT_BEAT_SAILOR_KENNETH, SAILOR, KENNETH, SailorKennethSeenText, SailorKennethBeatenText, 0, SailorKennethScript
 
 SailorKennethScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76d5f
+	jumptextfaceplayer UnknownText_0x76d5f
 
 TrainerTeacherShirley:
 	trainer EVENT_BEAT_TEACHER_SHIRLEY, TEACHER, SHIRLEY, TeacherShirleySeenText, TeacherShirleyBeatenText, 0, TeacherShirleyScript
 
 TeacherShirleyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76de1
+	jumptextfaceplayer UnknownText_0x76de1
 
 TrainerSchoolboyNate:
 	trainer EVENT_BEAT_SCHOOLBOY_NATE, SCHOOLBOY, NATE, SchoolboyNateSeenText, SchoolboyNateBeatenText, 0, SchoolboyNateScript
 
 SchoolboyNateScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76e3d
+	jumptextfaceplayer UnknownText_0x76e3d
 
 TrainerSchoolboyRicky:
 	trainer EVENT_BEAT_SCHOOLBOY_RICKY, SCHOOLBOY, RICKY, SchoolboyRickySeenText, SchoolboyRickyBeatenText, 0, SchoolboyRickyScript
 
 SchoolboyRickyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76eb6
+	jumptextfaceplayer UnknownText_0x76eb6
 
 MovementData_0x76871:
 	fix_facing

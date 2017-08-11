@@ -37,7 +37,7 @@ TrainerGruntM29:
 
 GruntM29Script:
 	end_if_just_battled
-	jumptext TrainerGruntM29SlowpokeProfitText
+	jumptextfaceplayer TrainerGruntM29SlowpokeProfitText
 
 TrainerProton2:
 	trainer EVENT_BEAT_PROTON_2, PROTON, PROTON2, Proton2SeenText, Proton2BeatenText, 0, Proton2Script
@@ -80,14 +80,14 @@ TrainerGruntM2:
 
 GruntM2Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5aaf2
+	jumptextfaceplayer UnknownText_0x5aaf2
 
 TrainerGruntF1:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_1, GRUNTF, 1, GruntF1SeenText, GruntF1BeatenText, 0, GruntF1Script
 
 GruntF1Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5ab8d
+	jumptextfaceplayer UnknownText_0x5ab8d
 
 SlowpokeScript_0x5a681:
 	faceplayer

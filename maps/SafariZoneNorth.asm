@@ -40,21 +40,21 @@ TrainerBattleGirlPadma:
 
 BattleGirlPadmaScript:
 	end_if_just_battled
-	jumptext BattleGirlPadmaAfterText
+	jumptextfaceplayer BattleGirlPadmaAfterText
 
 TrainerYoungsterTyler:
 	trainer EVENT_BEAT_YOUNGSTER_TYLER, YOUNGSTER, TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
 
 YoungsterTylerScript:
 	end_if_just_battled
-	jumptext YoungsterTylerAfterText
+	jumptextfaceplayer YoungsterTylerAfterText
 
 TrainerBeautyRachael:
 	trainer EVENT_BEAT_BEAUTY_RACHAEL, BEAUTY, RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
 
 BeautyRachaelScript:
 	end_if_just_battled
-	jumptext BeautyRachaelAfterText
+	jumptextfaceplayer BeautyRachaelAfterText
 
 SafariZoneNorthCooltrainerFScript:
 	faceplayer

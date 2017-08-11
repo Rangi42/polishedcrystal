@@ -35,7 +35,7 @@ TrainerScientistBraydon:
 
 ScientistBraydonScript:
 	end_if_just_battled
-	jumptext ScientistBraydonAfterText
+	jumptextfaceplayer ScientistBraydonAfterText
 
 PokemonMansionDiaryScript:
 	jumptext PokemonMansionDiaryText
@@ -45,7 +45,7 @@ PokemonMansionB1FHiddenMaxElixir:
 
 PokemonMansionB1FHiddenRareCandy:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_RARE_CANDY
-	jumptext_iftrue PokemonMansion1FFlowerPotText
+	iftrue_jumptext PokemonMansion1FFlowerPotText
 	giveitem RARE_CANDY
 	iffalse .PackFull
 	opentext
@@ -67,7 +67,7 @@ PokemonMansionB1FHiddenRareCandy:
 
 PokemonMansionB1FHiddenBerserkGene:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_BERSERK_GENE
-	jumptext_iftrue PokemonMansion1FMewtwoStatueText
+	iftrue_jumptext PokemonMansion1FMewtwoStatueText
 	giveitem BERSERK_GENE
 	iffalse .PackFull
 	opentext

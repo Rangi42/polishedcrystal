@@ -30,14 +30,14 @@ TrainerBird_keeperToby:
 
 .script
 	end_if_just_battled
-	jumptext UnknownText_0x1a1f86
+	jumptextfaceplayer UnknownText_0x1a1f86
 
 TrainerSailorHarry:
 	trainer EVENT_BEAT_SAILOR_HARRY, SAILOR, HARRY, SailorHarrySeenText, SailorHarryBeatenText, 0, .script
 
 .script
 	end_if_just_battled
-	jumptext UnknownText_0x1a220c
+	jumptextfaceplayer UnknownText_0x1a220c
 
 TrainerLassDana1:
 	trainer EVENT_BEAT_LASS_DANA, LASS, DANA1, LassDana1SeenText, LassDana1BeatenText, 0, .script
@@ -299,14 +299,14 @@ TrainerBeautyValencia:
 
 .script
 	end_if_just_battled
-	jumptext UnknownText_0x1a2185
+	jumptextfaceplayer UnknownText_0x1a2185
 
 TrainerBeautyOlivia:
 	trainer EVENT_BEAT_BEAUTY_OLIVIA, BEAUTY, OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText, 0, .script
 
 .script
 	end_if_just_battled
-	jumptext UnknownText_0x1a229a
+	jumptextfaceplayer UnknownText_0x1a229a
 
 FruitTreeScript_0x1a1f33:
 	fruittree FRUITTREE_ROUTE_38

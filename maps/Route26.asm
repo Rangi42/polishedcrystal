@@ -39,7 +39,7 @@ TrainerDragonTamerKazu:
 
 DragonTamerKazuScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a4f08
+	jumptextfaceplayer UnknownText_0x1a4f08
 
 TrainerCooltrainermGaven1:
 	trainer EVENT_BEAT_COOLTRAINERM_GAVEN, COOLTRAINERM, GAVEN1, CooltrainermGaven1SeenText, CooltrainermGaven1BeatenText, 0, CooltrainermGaven1Script
@@ -139,7 +139,7 @@ TrainerCooltrainerfJoyce:
 
 CooltrainerfJoyceScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a50d7
+	jumptextfaceplayer UnknownText_0x1a50d7
 
 TrainerCooltrainerfBeth1:
 	trainer EVENT_BEAT_COOLTRAINERF_BETH, COOLTRAINERF, BETH1, CooltrainerfBeth1SeenText, CooltrainerfBeth1BeatenText, 0, CooltrainerfBeth1Script
@@ -239,28 +239,28 @@ TrainerPsychicRichard:
 
 PsychicRichardScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a5278
+	jumptextfaceplayer UnknownText_0x1a5278
 
 TrainerBattleGirlRonda:
 	trainer EVENT_BEAT_BATTLE_GIRL_RONDA, BATTLE_GIRL, RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText, 0, BattleGirlRondaScript
 
 BattleGirlRondaScript:
 	end_if_just_battled
-	jumptext BattleGirlRondaAfterText
+	jumptextfaceplayer BattleGirlRondaAfterText
 
 TrainerFisherScott:
 	trainer EVENT_BEAT_FISHER_SCOTT, FISHER, SCOTT, FisherScottSeenText, FisherScottBeatenText, 0, FisherScottScript
 
 FisherScottScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a5326
+	jumptextfaceplayer UnknownText_0x1a5326
 
 TrainerDragonTamerErick:
 	trainer EVENT_BEAT_DRAGON_TAMER_ERICK, DRAGON_TAMER, ERICK, DragonTamerErickSeenText, DragonTamerErickBeatenText, 0, DragonTamerErickScript
 
 DragonTamerErickScript:
 	end_if_just_battled
-	jumptext DragonTamerErickAfterText
+	jumptextfaceplayer DragonTamerErickAfterText
 
 FruitTreeScript_0x1a4ec2:
 	fruittree FRUITTREE_ROUTE_26

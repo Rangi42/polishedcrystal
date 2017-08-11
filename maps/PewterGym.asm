@@ -74,14 +74,14 @@ TrainerCamperJerry:
 
 CamperJerryScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a2c0f
+	jumptextfaceplayer UnknownText_0x1a2c0f
 
 TrainerHikerEdwin:
 	trainer EVENT_BEAT_HIKER_EDWIN, HIKER, EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText, 0, HikerEdwinScript
 
 HikerEdwinScript:
 	end_if_just_battled
-	jumptext HikerEdwinAfterText
+	jumptextfaceplayer HikerEdwinAfterText
 
 PewterGymGuyScript:
 	faceplayer

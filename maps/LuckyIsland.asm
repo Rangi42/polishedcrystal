@@ -49,7 +49,7 @@ TrainerFisherHall:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Dopefish lives!"
@@ -71,7 +71,7 @@ TrainerBakerMargaret:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If an egg tumbles"
@@ -95,7 +95,7 @@ TrainerBakerOlga:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, you!"
@@ -122,7 +122,7 @@ TrainerArtistReina:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This sunny meadow"
@@ -145,7 +145,7 @@ TrainerArtistAlina:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This island hardly"
@@ -170,7 +170,7 @@ TrainerSightseersLiandsu1:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Li: What came"
@@ -196,7 +196,7 @@ TrainerSightseersLiandsu2:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Su: What came"

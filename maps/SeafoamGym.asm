@@ -31,42 +31,42 @@ TrainerScientistLowell:
 
 ScientistLowellScript:
 	end_if_just_battled
-	jumptext ScientistLowellAfterText
+	jumptextfaceplayer ScientistLowellAfterText
 
 TrainerScientistDennett:
 	trainer EVENT_BEAT_SCIENTIST_DENNETT, SCIENTIST, DENNETT, ScientistDennettSeenText, ScientistDennettBeatenText, 0, ScientistDennettScript
 
 ScientistDennettScript:
 	end_if_just_battled
-	jumptext ScientistDennettAfterText
+	jumptextfaceplayer ScientistDennettAfterText
 
 TrainerSupernerdCary:
 	trainer EVENT_BEAT_SUPER_NERD_CARY, SUPER_NERD, CARY, SupernerdCarySeenText, SupernerdCaryBeatenText, 0, SupernerdCaryScript
 
 SupernerdCaryScript:
 	end_if_just_battled
-	jumptext SupernerdCaryAfterText
+	jumptextfaceplayer SupernerdCaryAfterText
 
 TrainerScientistLinden:
 	trainer EVENT_BEAT_SCIENTIST_LINDEN, SCIENTIST, LINDEN, ScientistLindenSeenText, ScientistLindenBeatenText, 0, ScientistLindenScript
 
 ScientistLindenScript:
 	end_if_just_battled
-	jumptext ScientistLindenAfterText
+	jumptextfaceplayer ScientistLindenAfterText
 
 TrainerSupernerdWaldo:
 	trainer EVENT_BEAT_SUPER_NERD_WALDO, SUPER_NERD, WALDO, SupernerdWaldoSeenText, SupernerdWaldoBeatenText, 0, SupernerdWaldoScript
 
 SupernerdWaldoScript:
 	end_if_just_battled
-	jumptext SupernerdWaldoAfterText
+	jumptextfaceplayer SupernerdWaldoAfterText
 
 TrainerSupernerdMerle:
 	trainer EVENT_BEAT_SUPER_NERD_MERLE, SUPER_NERD, MERLE, SupernerdMerleSeenText, SupernerdMerleBeatenText, 0, SupernerdMerleScript
 
 SupernerdMerleScript:
 	end_if_just_battled
-	jumptext SupernerdMerleAfterText
+	jumptextfaceplayer SupernerdMerleAfterText
 
 BlaineScript_0x1ab4fb:
 	faceplayer

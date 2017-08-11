@@ -29,7 +29,7 @@ TrainerGruntM22:
 
 GruntM22Script:
 	end_if_just_battled
-	jumptext GruntM22AfterText
+	jumptextfaceplayer GruntM22AfterText
 
 CliffCaveHiddenUltraBall:
 	dwb EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL, ULTRA_BALL

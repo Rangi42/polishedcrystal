@@ -66,35 +66,35 @@ TrainerSkierRoxanne:
 
 SkierRoxanneScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19a116
+	jumptextfaceplayer UnknownText_0x19a116
 
 TrainerSkierClarissa:
 	trainer EVENT_BEAT_SKIER_CLARISSA, SKIER, CLARISSA, SkierClarissaSeenText, SkierClarissaBeatenText, 0, SkierClarissaScript
 
 SkierClarissaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19a18f
+	jumptextfaceplayer UnknownText_0x19a18f
 
 TrainerBoarderRonald:
 	trainer EVENT_BEAT_BOARDER_RONALD, BOARDER, RONALD, BoarderRonaldSeenText, BoarderRonaldBeatenText, 0, BoarderRonaldScript
 
 BoarderRonaldScript:
 	end_if_just_battled
-	jumptext UnknownText_0x199f2d
+	jumptextfaceplayer UnknownText_0x199f2d
 
 TrainerBoarderBrad:
 	trainer EVENT_BEAT_BOARDER_BRAD, BOARDER, BRAD, BoarderBradSeenText, BoarderBradBeatenText, 0, BoarderBradScript
 
 BoarderBradScript:
 	end_if_just_battled
-	jumptext UnknownText_0x199fdd
+	jumptextfaceplayer UnknownText_0x199fdd
 
 TrainerBoarderDouglas:
 	trainer EVENT_BEAT_BOARDER_DOUGLAS, BOARDER, DOUGLAS, BoarderDouglasSeenText, BoarderDouglasBeatenText, 0, BoarderDouglasScript
 
 BoarderDouglasScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19a047
+	jumptextfaceplayer UnknownText_0x19a047
 
 MahoganyGymGuyScript:
 	faceplayer

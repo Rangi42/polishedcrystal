@@ -57,28 +57,28 @@ TrainerGruntM4:
 
 GruntM4Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5db07
+	jumptextfaceplayer UnknownText_0x5db07
 
 TrainerGruntM5:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_5, GRUNTM, 5, GruntM5SeenText, GruntM5BeatenText, 0, GruntM5Script
 
 GruntM5Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5db99
+	jumptextfaceplayer UnknownText_0x5db99
 
 TrainerGruntM6:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_6, GRUNTM, 6, GruntM6SeenText, GruntM6BeatenText, 0, GruntM6Script
 
 GruntM6Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5dc00
+	jumptextfaceplayer UnknownText_0x5dc00
 
 TrainerGruntF2:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_2, GRUNTF, 2, GruntF2SeenText, GruntF2BeatenText, 0, GruntF2Script
 
 GruntF2Script:
 	end_if_just_battled
-	jumptext UnknownText_0x5dcd0
+	jumptextfaceplayer UnknownText_0x5dcd0
 
 Buena:
 	faceplayer

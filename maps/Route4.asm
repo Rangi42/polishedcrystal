@@ -31,35 +31,35 @@ TrainerYoungsterOliver:
 
 YoungsterOliverScript:
 	end_if_just_battled
-	jumptext YoungsterOliverAfterText
+	jumptextfaceplayer YoungsterOliverAfterText
 
 TrainerLassJennifer:
 	trainer EVENT_BEAT_LASS_JENNIFER, LASS, JENNIFER, LassJenniferSeenText, LassJenniferBeatenText, 0, LassJenniferScript
 
 LassJenniferScript:
 	end_if_just_battled
-	jumptext LassJenniferAfterText
+	jumptextfaceplayer LassJenniferAfterText
 
 TrainerBird_keeperHank:
 	trainer EVENT_BEAT_BIRD_KEEPER_HANK, BIRD_KEEPER, HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText, 0, Bird_keeperHankScript
 
 Bird_keeperHankScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ae258
+	jumptextfaceplayer UnknownText_0x1ae258
 
 TrainerPicnickerHope:
 	trainer EVENT_BEAT_PICNICKER_HOPE, PICNICKER, HOPE, PicnickerHopeSeenText, PicnickerHopeBeatenText, 0, PicnickerHopeScript
 
 PicnickerHopeScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ae320
+	jumptextfaceplayer UnknownText_0x1ae320
 
 TrainerPicnickerSharon:
 	trainer EVENT_BEAT_PICNICKER_SHARON, PICNICKER, SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText, 0, PicnickerSharonScript
 
 PicnickerSharonScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ae369
+	jumptextfaceplayer UnknownText_0x1ae369
 
 Route4SuperNerd1Script:
 	faceplayer

@@ -76,42 +76,42 @@ TrainerAceDuoAraandbela1:
 
 AceDuoAraandbela1Script:
 	end_if_just_battled
-	jumptext AceDuoAraandbela1AfterText
+	jumptextfaceplayer AceDuoAraandbela1AfterText
 
 TrainerAceDuoAraandbela2:
 	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA2, AceDuoAraandbela2SeenText, AceDuoAraandbela2BeatenText, 0, AceDuoAraandbela2Script
 
 AceDuoAraandbela2Script:
 	end_if_just_battled
-	jumptext AceDuoAraandbela2AfterText
+	jumptextfaceplayer AceDuoAraandbela2AfterText
 
 TrainerCooltrainerfSalma:
 	trainer EVENT_BEAT_COOLTRAINERF_SALMA, COOLTRAINERF, SALMA, CooltrainerfSalmaSeenText, CooltrainerfSalmaBeatenText, 0, CooltrainerfSalmaScript
 
 CooltrainerfSalmaScript:
 	end_if_just_battled
-	jumptext CooltrainerfSalmaAfterText
+	jumptextfaceplayer CooltrainerfSalmaAfterText
 
 TrainerCooltrainerfBonita:
 	trainer EVENT_BEAT_COOLTRAINERF_BONITA, COOLTRAINERF, BONITA, CooltrainerfBonitaSeenText, CooltrainerfBonitaBeatenText, 0, CooltrainerfBonitaScript
 
 CooltrainerfBonitaScript:
 	end_if_just_battled
-	jumptext CooltrainerfBonitaAfterText
+	jumptextfaceplayer CooltrainerfBonitaAfterText
 
 TrainerAceDuoElanandida1:
 	trainer EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, ACE_DUO, ELANANDIDA1, AceDuoElanandida1SeenText, AceDuoElanandida1BeatenText, 0, AceDuoElanandida1Script
 
 AceDuoElanandida1Script:
 	end_if_just_battled
-	jumptext AceDuoElanandida1AfterText
+	jumptextfaceplayer AceDuoElanandida1AfterText
 
 TrainerAceDuoElanandida2:
 	trainer EVENT_BEAT_ACE_DUO_ELAN_AND_IDA, ACE_DUO, ELANANDIDA2, AceDuoElanandida2SeenText, AceDuoElanandida2BeatenText, 0, AceDuoElanandida2Script
 
 AceDuoElanandida2Script:
 	end_if_just_battled
-	jumptext AceDuoElanandida2AfterText
+	jumptextfaceplayer AceDuoElanandida2AfterText
 
 ViridianGymStatue:
 	trainertotext BLUE, 1, $1

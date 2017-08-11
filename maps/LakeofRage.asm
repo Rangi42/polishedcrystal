@@ -161,28 +161,28 @@ TrainerFisherAndre:
 
 FisherAndreScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7058f
+	jumptextfaceplayer UnknownText_0x7058f
 
 TrainerFisherRaymond:
 	trainer EVENT_BEAT_FISHER_RAYMOND, FISHER, RAYMOND, FisherRaymondSeenText, FisherRaymondBeatenText, 0, FisherRaymondScript
 
 FisherRaymondScript:
 	end_if_just_battled
-	jumptext UnknownText_0x70611
+	jumptextfaceplayer UnknownText_0x70611
 
 TrainerCooltrainermAaron:
 	trainer EVENT_BEAT_COOLTRAINERM_AARON, COOLTRAINERM, AARON, CooltrainermAaronSeenText, CooltrainermAaronBeatenText, 0, CooltrainermAaronScript
 
 CooltrainermAaronScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7069c
+	jumptextfaceplayer UnknownText_0x7069c
 
 TrainerCooltrainerfLois:
 	trainer EVENT_BEAT_COOLTRAINERF_LOIS, COOLTRAINERF, LOIS, CooltrainerfLoisSeenText, CooltrainerfLoisBeatenText, 0, CooltrainerfLoisScript
 
 CooltrainerfLoisScript:
 	end_if_just_battled
-	jumptext UnknownText_0x70752
+	jumptextfaceplayer UnknownText_0x70752
 
 WesleyScript:
 	faceplayer

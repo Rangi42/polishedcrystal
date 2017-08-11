@@ -302,7 +302,7 @@ AzaleaTownHiddenFullHeal:
 
 AzaleaTownGrampsScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	jumptextfaceplayer_iftrue .Text2
+	iftrue_jumptextfaceplayer .Text2
 	thistextfaceplayer
 
 	text "The Slowpoke have"

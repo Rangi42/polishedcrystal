@@ -150,14 +150,14 @@ TrainerRocketScientistRoss:
 
 RocketScientistRossScript:
 	end_if_just_battled
-	jumptext UnknownText_0x6e822
+	jumptextfaceplayer UnknownText_0x6e822
 
 TrainerRocketScientistMitch:
 	trainer EVENT_BEAT_ROCKET_SCIENTIST_MITCH, ROCKET_SCIENTIST, MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
 
 RocketScientistMitchScript:
 	end_if_just_battled
-	jumptext UnknownText_0x6e90a
+	jumptextfaceplayer UnknownText_0x6e90a
 
 BossDoor:
 	dw EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE

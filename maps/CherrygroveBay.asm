@@ -56,7 +56,7 @@ TrainerSwimmermThomas:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you know how to"
@@ -79,7 +79,7 @@ TrainerSwimmerfSally:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I like this bay."
@@ -105,7 +105,7 @@ TrainerSwimmerfTara:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ah, swimming amid"
@@ -132,7 +132,7 @@ TrainerHikerTony:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I hiked through"

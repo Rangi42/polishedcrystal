@@ -25,21 +25,21 @@ TrainerHikerJim:
 
 HikerJimScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ae43b
+	jumptextfaceplayer UnknownText_0x1ae43b
 
 TrainerPokefanmRobert:
 	trainer EVENT_BEAT_POKEFANM_ROBERT, POKEFANM, ROBERT, PokefanmRobertSeenText, PokefanmRobertBeatenText, 0, PokefanmRobertScript
 
 PokefanmRobertScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ae4a9
+	jumptextfaceplayer UnknownText_0x1ae4a9
 
 TrainerHexManiacAmy:
 	trainer EVENT_BEAT_HEX_MANIAC_AMY, HEX_MANIAC, AMY, HexManiacAmySeenText, HexManiacAmyBeatenText, 0, HexManiacAmyScript
 
 HexManiacAmyScript:
 	end_if_just_battled
-	jumptext HexManiacAmyAfterText
+	jumptextfaceplayer HexManiacAmyAfterText
 
 Route10HiddenMaxEther:
 	dwb EVENT_ROUTE_10_HIDDEN_MAX_ETHER, MAX_ETHER

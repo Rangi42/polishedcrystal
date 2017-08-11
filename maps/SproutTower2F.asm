@@ -27,14 +27,14 @@ TrainerSageNico:
 
 SageNicoScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1847ff
+	jumptextfaceplayer UnknownText_0x1847ff
 
 TrainerSageEdmond:
 	trainer EVENT_BEAT_SAGE_EDMOND, SAGE, EDMOND, SageEdmondSeenText, SageEdmondBeatenText, 0, SageEdmondScript
 
 SageEdmondScript:
 	end_if_just_battled
-	jumptext UnknownText_0x18486f
+	jumptextfaceplayer UnknownText_0x18486f
 
 SageNicoSeenText:
 	text "However hard we"

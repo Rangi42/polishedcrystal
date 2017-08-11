@@ -23,7 +23,7 @@ TrainerFisherKyle:
 
 FisherKyleScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a7238
+	jumptextfaceplayer UnknownText_0x1a7238
 
 	jumpopenedtext UnknownText_0x1a70d4
 

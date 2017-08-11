@@ -221,7 +221,7 @@ TrainerRuin_maniacSmilte:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm on the edge of"
@@ -251,7 +251,7 @@ TrainerSuper_nerdMako:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "You can't beat me!"
@@ -277,7 +277,7 @@ TrainerCoupleJoeandjo1:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Joe: A ghost!"
@@ -304,7 +304,7 @@ TrainerCoupleJoeandjo2:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Jo: Eek! Hold me"
@@ -330,7 +330,7 @@ TrainerHex_maniacBethany:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "BOO!"
@@ -352,7 +352,7 @@ TrainerScientistPiotr:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you know why"

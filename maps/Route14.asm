@@ -39,7 +39,7 @@ TrainerPokefanmTrevor:
 
 PokefanmTrevorScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad660
+	jumptextfaceplayer UnknownText_0x1ad660
 
 PokefanmTrevorSeenText:
 	text "Hi. Did you know…?"
@@ -73,7 +73,7 @@ TrainerPokefanmCarter:
 
 PokefanmCarterScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad508
+	jumptextfaceplayer UnknownText_0x1ad508
 
 PokefanmCarterSeenText:
 	text "Let me tell you,"
@@ -100,7 +100,7 @@ TrainerBird_keeperRoy:
 
 Bird_keeperRoyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad5a4
+	jumptextfaceplayer UnknownText_0x1ad5a4
 
 Bird_keeperRoySeenText:
 	text "My dream is to fly"
@@ -126,7 +126,7 @@ TrainerBird_keeperJosh:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My weight puts me"
@@ -155,7 +155,7 @@ TrainerSchoolboyConnor:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can't wait to go"
@@ -181,7 +181,7 @@ TrainerSchoolboyTorin:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It's good to put"
@@ -204,7 +204,7 @@ TrainerSchoolboyTravis:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you have after-"
@@ -227,7 +227,7 @@ TrainerTeacherClarice:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "All right, let's"

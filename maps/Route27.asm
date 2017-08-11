@@ -203,7 +203,7 @@ TrainerPsychicGilbert:
 
 PsychicGilbertScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a0dd2
+	jumptextfaceplayer UnknownText_0x1a0dd2
 
 TrainerBird_keeperJose1:
 	trainer EVENT_BEAT_BIRD_KEEPER_JOSE, BIRD_KEEPER, JOSE1, Bird_keeperJose1SeenText, Bird_keeperJose1BeatenText, 0, Bird_keeperJose1Script
@@ -323,21 +323,21 @@ TrainerCooltrainermBlake:
 
 CooltrainermBlakeScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a0b0b
+	jumptextfaceplayer UnknownText_0x1a0b0b
 
 TrainerAceDuoJakeandbri1:
 	trainer EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, ACE_DUO, JAKEANDBRI1, AceDuoJakeandbri1SeenText, AceDuoJakeandbri1BeatenText, 0, AceDuoJakeandbri1Script
 
 AceDuoJakeandbri1Script:
 	end_if_just_battled
-	jumptext AceDuoJakeandbri1AfterText
+	jumptextfaceplayer AceDuoJakeandbri1AfterText
 
 TrainerAceDuoJakeandbri2:
 	trainer EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, ACE_DUO, JAKEANDBRI2, AceDuoJakeandbri2SeenText, AceDuoJakeandbri2BeatenText, 0, AceDuoJakeandbri2Script
 
 AceDuoJakeandbri2Script:
 	end_if_just_battled
-	jumptext AceDuoJakeandbri2AfterText
+	jumptextfaceplayer AceDuoJakeandbri2AfterText
 
 TrainerCooltrainerfReena:
 	trainer EVENT_BEAT_COOLTRAINERF_REENA, COOLTRAINERF, REENA1, CooltrainerfReena1SeenText, CooltrainerfReena1BeatenText, 0, CooltrainerfReena1Script
@@ -437,7 +437,7 @@ TrainerCooltrainerfMegan:
 
 CooltrainerfMeganScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a0cce
+	jumptextfaceplayer UnknownText_0x1a0cce
 
 MovementData_0x1a0a66:
 	step_left

@@ -37,7 +37,7 @@ TrainerSwimmerfNicole:
 
 SwimmerfNicoleScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1acd93
+	jumptextfaceplayer UnknownText_0x1acd93
 
 SwimmerfNicoleSeenText:
 	text "I feel so much"
@@ -61,7 +61,7 @@ TrainerSwimmerfLori:
 
 SwimmerfLoriScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ace15
+	jumptextfaceplayer UnknownText_0x1ace15
 
 SwimmerfLoriSeenText:
 	text "What an impressive"
@@ -86,7 +86,7 @@ TrainerSwimmerfMina:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Mmph? Mmmph"
@@ -113,7 +113,7 @@ TrainerSwimmerfLeona:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Look! It's my very"
@@ -140,7 +140,7 @@ TrainerSwimmermCameron:
 
 SwimmermCameronScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ace8b
+	jumptextfaceplayer UnknownText_0x1ace8b
 
 SwimmermCameronSeenText:
 	text "I guess it's im-"
@@ -165,7 +165,7 @@ TrainerSwimmermLuis:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've worn my best"
@@ -189,7 +189,7 @@ TrainerSwimmermElmo:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I used to be a"
@@ -216,7 +216,7 @@ TrainerPicnickerCheyenne:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "When I was a kid,"
@@ -243,7 +243,7 @@ TrainerPicnickerAdrian:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Are you in a"
@@ -267,7 +267,7 @@ TrainerCamperPedro:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Have you ever gone"
@@ -292,7 +292,7 @@ TrainerBird_keeperBert:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Found it! A"
@@ -318,7 +318,7 @@ TrainerBird_keeperErnie:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, hey. Will you"

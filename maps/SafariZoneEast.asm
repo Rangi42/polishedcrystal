@@ -31,7 +31,7 @@ TrainerCowgirlApril:
 
 CowgirlAprilScript:
 	end_if_just_battled
-	jumptext CowgirlAprilAfterText
+	jumptextfaceplayer CowgirlAprilAfterText
 
 CowgirlAprilSeenText:
 	text "Yeehaw!"

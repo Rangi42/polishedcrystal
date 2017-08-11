@@ -33,7 +33,7 @@ TrainerBug_maniacKai:
 
 Bug_maniacKaiScript:
 	end_if_just_battled
-	jumptext Bug_maniacKaiAfterText
+	jumptextfaceplayer Bug_maniacKaiAfterText
 
 Bug_maniacKaiSeenText:
 	text "My Venonat evolved"

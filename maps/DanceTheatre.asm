@@ -33,35 +33,35 @@ TrainerKimono_girlNaoko:
 
 Kimono_girlNaokoScript:
 	end_if_just_battled
-	jumptext UnknownText_0x99579
+	jumptextfaceplayer UnknownText_0x99579
 
 TrainerKimono_girlSayo:
 	trainer EVENT_BEAT_KIMONO_GIRL_SAYO, KIMONO_GIRL, SAYO, Kimono_girlSayoSeenText, Kimono_girlSayoBeatenText, 0, Kimono_girlSayoScript
 
 Kimono_girlSayoScript:
 	end_if_just_battled
-	jumptext UnknownText_0x9960b
+	jumptextfaceplayer UnknownText_0x9960b
 
 TrainerKimono_girlZuki:
 	trainer EVENT_BEAT_KIMONO_GIRL_ZUKI, KIMONO_GIRL, ZUKI, Kimono_girlZukiSeenText, Kimono_girlZukiBeatenText, 0, Kimono_girlZukiScript
 
 Kimono_girlZukiScript:
 	end_if_just_battled
-	jumptext UnknownText_0x99688
+	jumptextfaceplayer UnknownText_0x99688
 
 TrainerKimono_girlKuni:
 	trainer EVENT_BEAT_KIMONO_GIRL_KUNI, KIMONO_GIRL, KUNI, Kimono_girlKuniSeenText, Kimono_girlKuniBeatenText, 0, Kimono_girlKuniScript
 
 Kimono_girlKuniScript:
 	end_if_just_battled
-	jumptext UnknownText_0x99714
+	jumptextfaceplayer UnknownText_0x99714
 
 TrainerKimono_girlMiki:
 	trainer EVENT_BEAT_KIMONO_GIRL_MIKI, KIMONO_GIRL, MIKI, Kimono_girlMikiSeenText, Kimono_girlMikiBeatenText, 0, Kimono_girlMikiScript
 
 Kimono_girlMikiScript:
 	end_if_just_battled
-	jumptext UnknownText_0x997a8
+	jumptextfaceplayer UnknownText_0x997a8
 
 GentlemanScript_0x994c6:
 	faceplayer

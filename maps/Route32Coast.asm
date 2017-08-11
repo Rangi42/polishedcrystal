@@ -45,7 +45,7 @@ TrainerSwimmermMichel:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I was waiting"
@@ -71,7 +71,7 @@ TrainerSwimmermLucas:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Reflecting and re-"
@@ -102,7 +102,7 @@ TrainerSwimmerfAlison:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Before battling"
@@ -128,7 +128,7 @@ TrainerSwimmerfStephanie:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did you hear that?"
@@ -151,7 +151,7 @@ TrainerBird_keeperPowell:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can't swim, so"
@@ -179,7 +179,7 @@ TrainerCosplayerChloe:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Like my costume?"
@@ -204,7 +204,7 @@ TrainerFisherKiley:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Heh, I'm on a roll"
@@ -230,7 +230,7 @@ TrainerCamperCraig:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Nothing beats the"
@@ -255,7 +255,7 @@ TrainerLassLayla:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If you had one"
@@ -280,7 +280,7 @@ TrainerCoupleFoxandrae1:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Fox: Come on, Rae,"
@@ -303,7 +303,7 @@ TrainerCoupleFoxandrae2:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Rae: Hey Fox, why"

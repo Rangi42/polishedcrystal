@@ -39,7 +39,7 @@ AzaleaGymStatue:
 
 AzaleaGymBugsyScript:
 	checkevent EVENT_BEAT_BUGSY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	showtextfaceplayer .SeenText
 	winlosstext .BeatenText, 0
 	loadtrainer BUGSY, 1
@@ -146,7 +146,7 @@ AzaleaGymBugsyScript:
 
 AzaleaGymGuyScript:
 	checkevent EVENT_BEAT_BUGSY
-	jumptextfaceplayer_iftrue .WinText
+	iftrue_jumptextfaceplayer .WinText
 	thistextfaceplayer
 
 	text "Yo, challenger!"

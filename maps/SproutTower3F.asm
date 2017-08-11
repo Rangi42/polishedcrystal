@@ -95,21 +95,21 @@ TrainerSageJin:
 
 SageJinScript:
 	end_if_just_battled
-	jumptext UnknownText_0x184dfa
+	jumptextfaceplayer UnknownText_0x184dfa
 
 TrainerSageTroy:
 	trainer EVENT_BEAT_SAGE_TROY, SAGE, TROY, SageTroySeenText, SageTroyBeatenText, 0, SageTroyScript
 
 SageTroyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x184ea4
+	jumptextfaceplayer UnknownText_0x184ea4
 
 TrainerSageNeal:
 	trainer EVENT_BEAT_SAGE_NEAL, SAGE, NEAL, SageNealSeenText, SageNealBeatenText, 0, SageNealScript
 
 SageNealScript:
 	end_if_just_battled
-	jumptext UnknownText_0x184f12
+	jumptextfaceplayer UnknownText_0x184f12
 
 MovementData_0x184a1d:
 	step_up

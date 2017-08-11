@@ -162,7 +162,6 @@ VioletOnixTradeHouse_BlockData:
 ValeriesHouse_BlockData:
 	INCBIN "maps/TraditionalHouse.blk"
 
-
 SECTION "Map Blockdata 1", ROMX
 
 CeruleanPoliceStation_BlockData:
@@ -311,7 +310,6 @@ GiovannisCave_BlockData:
 
 UnionCaveB1FNorth_BlockData:
 	INCBIN "maps/UnionCaveB1FNorth.blk"
-
 
 SECTION "Map Blockdata 2", ROMX
 
@@ -462,7 +460,6 @@ BellchimeTrail_BlockData:
 
 TinTower1F_BlockData:
 	INCBIN "maps/TinTower1F.blk"
-
 
 SECTION "Map Blockdata 3", ROMX
 
@@ -617,7 +614,6 @@ MountMortar1FInside_BlockData:
 MountMortar2FInside_BlockData:
 	INCBIN "maps/MountMortar2FInside.blk"
 
-
 SECTION "Map Blockdata 4", ROMX
 
 MountMortarB1F_BlockData:
@@ -768,7 +764,6 @@ PewterGym_BlockData:
 
 PewterCity_BlockData:
 	INCBIN "maps/PewterCity.blk"
-
 
 SECTION "Map Blockdata 5", ROMX
 
@@ -923,7 +918,6 @@ CeladonCafe_BlockData:
 CeladonChiefHouse_BlockData:
 	INCBIN "maps/CeladonChiefHouse.blk"
 
-
 SECTION "Map Blockdata 6", ROMX
 
 CeladonDeptStore1F_BlockData:
@@ -1076,7 +1070,6 @@ LuckyIsland_BlockData:
 LuckyIslandHidden_BlockData:
 	INCBIN "maps/LuckyIslandHidden.blk"
 
-
 SECTION "Map Blockdata 7", ROMX
 
 SafariZoneHub_BlockData:
@@ -1227,7 +1220,6 @@ ValenciaIsland_BlockData:
 
 ValenciaPort_BlockData:
 	INCBIN "maps/ValenciaPort.blk"
-
 
 SECTION "Map Blockdata 8", ROMX
 
@@ -1382,7 +1374,6 @@ Route34_BlockData:
 
 Route35_BlockData:
 	INCBIN "maps/Route35.blk"
-
 
 SECTION "Map Blockdata 9", ROMX
 

@@ -44,7 +44,7 @@ PokemonJournalBugsyScript:
 
 AzaleaPokeCenter1FCooltrainermScript:
 	checknite
-	jumptextfaceplayer_iftrue .NiteText
+	iftrue_jumptextfaceplayer .NiteText
 	thistextfaceplayer
 
 	text "For a guy who"

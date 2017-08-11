@@ -29,7 +29,7 @@ TrainerSuper_nerdGregg:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "These carts are"
@@ -52,7 +52,7 @@ TrainerScientistDexter:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm a hydrologist"
@@ -80,7 +80,7 @@ TrainerGuitaristmBiff:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I dig rock and"

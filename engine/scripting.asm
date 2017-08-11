@@ -240,12 +240,12 @@ ScriptCommandTable:
 	dw Script_restoretypeface            ; b1
 	dw Script_jumpstashedtext            ; b2
 	dw Script_jumpopenedtext             ; b3
-	dw Script_jumptext_iftrue            ; b4
-	dw Script_jumptext_iffalse           ; b5
-	dw Script_jumptextfaceplayer_iftrue  ; b6
-	dw Script_jumptextfaceplayer_iffalse ; b7
-	dw Script_jumpopenedtext_iftrue      ; b8
-	dw Script_jumpopenedtext_iffalse     ; b9
+	dw Script_iftrue_jumptext            ; b4
+	dw Script_iffalse_jumptext           ; b5
+	dw Script_iftrue_jumptextfaceplayer  ; b6
+	dw Script_iffalse_jumptextfaceplayer ; b7
+	dw Script_iftrue_jumpopenedtext      ; b8
+	dw Script_iffalse_jumpopenedtext     ; b9
 	dw Script_thistext                   ; ba
 	dw Script_thistextfaceplayer         ; bb
 	dw Script_thisopenedtext             ; bc
@@ -304,7 +304,7 @@ Script_ptcallasm:
 	ld a, b
 	jp FarCall_hl
 
-Script_jumptextfaceplayer_iftrue:
+Script_iftrue_jumptextfaceplayer:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	ld a, [ScriptVar]
@@ -312,7 +312,7 @@ Script_jumptextfaceplayer_iftrue:
 	jr nz, Script_jumptextfaceplayer
 	jp SkipTwoScriptBytes
 
-Script_jumptextfaceplayer_iffalse:
+Script_iffalse_jumptextfaceplayer:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	ld a, [ScriptVar]
@@ -333,7 +333,7 @@ _Do_textfaceplayer:
 	ld hl, JumpTextFacePlayerScript
 	jp ScriptJump
 
-Script_jumptext_iftrue:
+Script_iftrue_jumptext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	ld a, [ScriptVar]
@@ -341,7 +341,7 @@ Script_jumptext_iftrue:
 	jr nz, Script_jumptext
 	jp SkipTwoScriptBytes
 
-Script_jumptext_iffalse:
+Script_iffalse_jumptext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	ld a, [ScriptVar]
@@ -362,7 +362,7 @@ _Do_jumptext:
 	ld hl, JumpTextScript
 	jp ScriptJump
 
-Script_jumpopenedtext_iftrue:
+Script_iftrue_jumpopenedtext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	ld a, [ScriptVar]
@@ -370,7 +370,7 @@ Script_jumpopenedtext_iftrue:
 	jr nz, Script_jumpopenedtext
 	jp SkipTwoScriptBytes
 
-Script_jumpopenedtext_iffalse:
+Script_iffalse_jumpopenedtext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 	ld a, [ScriptVar]

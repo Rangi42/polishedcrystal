@@ -29,14 +29,14 @@ TrainerBug_maniacRob:
 
 Bug_maniacRobScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ac34d
+	jumptextfaceplayer UnknownText_0x1ac34d
 
 TrainerBug_maniacDoug:
 	trainer EVENT_BEAT_BUG_MANIAC_DOUG, BUG_MANIAC, DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText, 0, Bug_maniacDougScript
 
 Bug_maniacDougScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ac423
+	jumptextfaceplayer UnknownText_0x1ac423
 
 Bug_maniacRobSeenText:
 	text "My bug #mon are"

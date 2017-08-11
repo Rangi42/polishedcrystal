@@ -48,28 +48,28 @@ TrainerSwimmerfElaine:
 
 SwimmerfElaineScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a637b
+	jumptextfaceplayer UnknownText_0x1a637b
 
 TrainerSwimmerfPaula:
 	trainer EVENT_BEAT_SWIMMERF_PAULA, SWIMMERF, PAULA, SwimmerfPaulaSeenText, SwimmerfPaulaBeatenText, 0, SwimmerfPaulaScript
 
 SwimmerfPaulaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a63f5
+	jumptextfaceplayer UnknownText_0x1a63f5
 
 TrainerSwimmermSimon:
 	trainer EVENT_BEAT_SWIMMERM_SIMON, SWIMMERM, SIMON, SwimmermSimonSeenText, SwimmermSimonBeatenText, 0, SwimmermSimonScript
 
 SwimmermSimonScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6282
+	jumptextfaceplayer UnknownText_0x1a6282
 
 TrainerSwimmermRandall:
 	trainer EVENT_BEAT_SWIMMERM_RANDALL, SWIMMERM, RANDALL, SwimmermRandallSeenText, SwimmermRandallBeatenText, 0, SwimmermRandallScript
 
 SwimmermRandallScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a62fa
+	jumptextfaceplayer UnknownText_0x1a62fa
 
 PokefanMScript_0x1a61c7:
 	checkcode VAR_BATTLEPOINTS
@@ -81,7 +81,7 @@ PokefanMScript_0x1a61c7:
 
 MonicaScript:
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
-	jumptextfaceplayer_iftrue MonicaMondayText
+	iftrue_jumptextfaceplayer MonicaMondayText
 	checkcode VAR_WEEKDAY
 	if_not_equal MONDAY, MonicaNotMondayScript
 	faceplayer

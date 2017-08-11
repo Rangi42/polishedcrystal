@@ -140,35 +140,35 @@ TrainerSupernerdEric:
 
 SupernerdEricScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7c36c
+	jumptextfaceplayer UnknownText_0x7c36c
 
 TrainerSupernerdTeru:
 	trainer EVENT_BEAT_SUPER_NERD_TERU, SUPER_NERD, TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText, 0, SupernerdTeruScript
 
 SupernerdTeruScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7c410
+	jumptextfaceplayer UnknownText_0x7c410
 
 TrainerPokemaniacIssac:
 	trainer EVENT_BEAT_POKEMANIAC_ISSAC, POKEMANIAC, ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText, 0, PokemaniacIssacScript
 
 PokemaniacIssacScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7c498
+	jumptextfaceplayer UnknownText_0x7c498
 
 TrainerPokemaniacDonald:
 	trainer EVENT_BEAT_POKEMANIAC_DONALD, POKEMANIAC, DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText, 0, PokemaniacDonaldScript
 
 PokemaniacDonaldScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7c52f
+	jumptextfaceplayer UnknownText_0x7c52f
 
 TrainerCosplayerClara:
 	trainer EVENT_BEAT_COSPLAYER_CLARA, COSPLAYER, CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText, 0, CosplayerClaraScript
 
 CosplayerClaraScript:
 	end_if_just_battled
-	jumptext CosplayerClaraAfterText
+	jumptextfaceplayer CosplayerClaraAfterText
 
 GrannyScript_0x7c132:
 	opentext
@@ -394,14 +394,11 @@ WarehouseEntranceScript_ShopClosed:
 WarehouseEntranceHiddenParlyzHeal:
 	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL
 
-
 WarehouseEntranceHiddenSuperPotion:
 	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION, SUPER_POTION
 
-
 WarehouseEntranceHiddenAntidote:
 	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE, ANTIDOTE
-
 
 SupernerdEricSeenText:
 	text "I got booted out"

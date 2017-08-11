@@ -31,28 +31,28 @@ TrainerFirebreatherLyle:
 
 FirebreatherLyleScript:
 	end_if_just_battled
-	jumptext UnknownText_0x75b52
+	jumptextfaceplayer UnknownText_0x75b52
 
 TrainerBug_catcherKen:
 	trainer EVENT_BEAT_BUG_CATCHER_KEN, BUG_CATCHER, KEN, Bug_catcherKenSeenText, Bug_catcherKenBeatenText, 0, Bug_catcherKenScript
 
 Bug_catcherKenScript:
 	end_if_just_battled
-	jumptext UnknownText_0x75bd5
+	jumptextfaceplayer UnknownText_0x75bd5
 
 TrainerRichBoyWinston:
 	trainer EVENT_BEAT_RICH_BOY_WINSTON, RICH_BOY, WINSTON, RichBoyWinstonSeenText, RichBoyWinstonBeatenText, 0, RichBoyWinstonScript
 
 RichBoyWinstonScript:
 	end_if_just_battled
-	jumptext RichBoyWinstonAfterText
+	jumptextfaceplayer RichBoyWinstonAfterText
 
 TrainerBeautyCassie:
 	trainer EVENT_BEAT_BEAUTY_CASSIE, BEAUTY, CASSIE, BeautyCassieSeenText, BeautyCassieBeatenText, 0, BeautyCassieScript
 
 BeautyCassieScript:
 	end_if_just_battled
-	jumptext UnknownText_0x75c43
+	jumptextfaceplayer UnknownText_0x75c43
 
 TrainerGuitaristmClyde:
 	trainer EVENT_BEAT_GUITARISTM_CLYDE, GUITARISTM, CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript

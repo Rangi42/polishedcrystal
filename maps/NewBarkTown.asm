@@ -169,12 +169,12 @@ NewBarkTown_LyraFinalTrigger:
 
 NewBarkTownTeacherScript:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	jumptextfaceplayer_iftrue Text_CallMomOnGear
+	iftrue_jumptextfaceplayer Text_CallMomOnGear
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	jumptextfaceplayer_iftrue Text_TellMomIfLeaving
+	iftrue_jumptextfaceplayer Text_TellMomIfLeaving
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	jumptextfaceplayer_iftrue Text_YourMonIsAdorable
-	jumptextfaceplayer_iftrue Text_RefreshingBreeze
+	iftrue_jumptextfaceplayer Text_YourMonIsAdorable
+	iftrue_jumptextfaceplayer Text_RefreshingBreeze
 
 NewBarkTownSilverScript:
 	showtext NewBarkTownRivalText1

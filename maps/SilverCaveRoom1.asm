@@ -25,6 +25,5 @@ SilverCaveRoom1_MapEventHeader:
 SilverCaveRoom1HiddenDireHit:
 	dwb EVENT_SILVER_CAVE_ROOM_1_HIDDEN_DIRE_HIT, DIRE_HIT
 
-
 SilverCaveRoom1HiddenUltraBall:
 	dwb EVENT_SILVER_CAVE_ROOM_1_HIDDEN_ULTRA_BALL, ULTRA_BALL

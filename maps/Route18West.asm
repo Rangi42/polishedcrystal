@@ -41,7 +41,7 @@ TrainerBikerCharles:
 
 BikerCharlesScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ad293
+	jumptextfaceplayer UnknownText_0x1ad293
 
 Route18WestStepDownMovementData:
 	step_down

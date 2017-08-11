@@ -32,18 +32,17 @@ TrainerBird_keeperDenis:
 
 Bird_keeperDenisScript:
 	end_if_just_battled
-	jumptext UnknownText_0x60ac3
+	jumptextfaceplayer UnknownText_0x60ac3
 
 TrainerSailorErnest:
 	trainer EVENT_BEAT_SAILOR_ERNEST, SAILOR, ERNEST, SailorErnestSeenText, SailorErnestBeatenText, 0, SailorErnestScript
 
 SailorErnestScript:
 	end_if_just_battled
-	jumptext UnknownText_0x60a1f
+	jumptextfaceplayer UnknownText_0x60a1f
 
 OlivineLighthouse5FHiddenHyperPotion:
 	dwb EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION, HYPER_POTION
-
 
 SailorErnestSeenText:
 	text "I wanted to battle"

@@ -36,42 +36,42 @@ TrainerPokemaniacLarry:
 
 PokemaniacLarryScript:
 	end_if_just_battled
-	jumptext UnknownText_0x59d31
+	jumptextfaceplayer UnknownText_0x59d31
 
 TrainerHikerRussell:
 	trainer EVENT_BEAT_HIKER_RUSSELL, HIKER, RUSSELL, HikerRussellSeenText, HikerRussellBeatenText, 0, HikerRussellScript
 
 HikerRussellScript:
 	end_if_just_battled
-	jumptext UnknownText_0x59c6c
+	jumptextfaceplayer UnknownText_0x59c6c
 
 TrainerHikerDaniel:
 	trainer EVENT_BEAT_HIKER_DANIEL, HIKER, DANIEL, HikerDanielSeenText, HikerDanielBeatenText, 0, HikerDanielScript
 
 HikerDanielScript:
 	end_if_just_battled
-	jumptext UnknownText_0x59dc9
+	jumptextfaceplayer UnknownText_0x59dc9
 
 TrainerFirebreatherBill:
 	trainer EVENT_BEAT_FIREBREATHER_BILL, FIREBREATHER, BILL, FirebreatherBillSeenText, FirebreatherBillBeatenText, 0, FirebreatherBillScript
 
 FirebreatherBillScript:
 	end_if_just_battled
-	jumptext UnknownText_0x59e6f
+	jumptextfaceplayer UnknownText_0x59e6f
 
 TrainerFirebreatherRay:
 	trainer EVENT_BEAT_FIREBREATHER_RAY, FIREBREATHER, RAY, FirebreatherRaySeenText, FirebreatherRayBeatenText, 0, FirebreatherRayScript
 
 FirebreatherRayScript:
 	end_if_just_battled
-	jumptext UnknownText_0x59efc
+	jumptextfaceplayer UnknownText_0x59efc
 
 TrainerRuin_maniacJones:
 	trainer EVENT_BEAT_RUIN_MANIAC_JONES, RUIN_MANIAC, JONES, Ruin_maniacJonesSeenText, Ruin_maniacJonesBeatenText, 0, Ruin_maniacJonesScript
 
 Ruin_maniacJonesScript:
 	end_if_just_battled
-	jumptext Ruin_maniacJonesAfterText
+	jumptextfaceplayer Ruin_maniacJonesAfterText
 
 UnionCave1FHiddenGreatBall:
 	dwb EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL, GREAT_BALL

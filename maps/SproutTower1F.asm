@@ -39,7 +39,7 @@ TrainerSageChow:
 
 SageChowScript:
 	end_if_just_battled
-	jumptext UnknownText_0x184583
+	jumptextfaceplayer UnknownText_0x184583
 
 SageChowSeenText:
 	text "We stand guard in"

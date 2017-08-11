@@ -123,7 +123,7 @@ TrainerSwimmermRomeo:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Admire my fitness!"
@@ -148,7 +148,7 @@ TrainerSwimmermMalcolm:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon and I"
@@ -176,7 +176,7 @@ TrainerSwimmermArmand:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ugh. Would that"
@@ -205,7 +205,7 @@ TrainerBeautyBridget:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey! You're block-"
@@ -228,7 +228,7 @@ TrainerBeautyVeronica:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I don't date much,"
@@ -258,7 +258,7 @@ TrainerGentlemanCamus:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Seeing you reminds"
@@ -287,7 +287,7 @@ TrainerGentlemanGeoffrey:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I wanted a change,"
@@ -314,7 +314,7 @@ TrainerGuitaristfMorgan:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Listen to that"
@@ -387,7 +387,7 @@ TrainerFisherLeroy:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I keep catching"

@@ -51,9 +51,9 @@ BillsHousePCText:
 
 BillsHouseBillScript:
 	checkevent EVENT_BEAT_POKEMANIAC_BILL
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	special SpecialBeastsCheck
-	jumptextfaceplayer_iffalse .IntroText
+	iffalse_jumptextfaceplayer .IntroText
 	faceplayer
 	opentext
 	writetext .IntroText

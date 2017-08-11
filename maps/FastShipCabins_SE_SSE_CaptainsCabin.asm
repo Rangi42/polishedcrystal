@@ -132,49 +132,49 @@ TrainerPokefanmColin:
 
 PokefanmColinScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7635b
+	jumptextfaceplayer UnknownText_0x7635b
 
 TrainerTwinsMegandpeg1:
 	trainer EVENT_BEAT_TWINS_MEG_AND_PEG, TWINS, MEGANDPEG1, TwinsMegandpeg1SeenText, TwinsMegandpeg1BeatenText, 0, TwinsMegandpeg1Script
 
 TwinsMegandpeg1Script:
 	end_if_just_battled
-	jumptext UnknownText_0x763c2
+	jumptextfaceplayer UnknownText_0x763c2
 
 TrainerTwinsMegandpeg2:
 	trainer EVENT_BEAT_TWINS_MEG_AND_PEG, TWINS, MEGANDPEG2, TwinsMegandpeg2SeenText, TwinsMegandpeg2BeatenText, 0, TwinsMegandpeg2Script
 
 TwinsMegandpeg2Script:
 	end_if_just_battled
-	jumptext UnknownText_0x76428
+	jumptextfaceplayer UnknownText_0x76428
 
 TrainerPsychicRodney:
 	trainer EVENT_BEAT_PSYCHIC_RODNEY, PSYCHIC_T, RODNEY, PsychicRodneySeenText, PsychicRodneyBeatenText, 0, PsychicRodneyScript
 
 PsychicRodneyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76497
+	jumptextfaceplayer UnknownText_0x76497
 
 TrainerPokefanmJeremy:
 	trainer EVENT_BEAT_POKEFANM_JEREMY, POKEFANM, JEREMY, PokefanmJeremySeenText, PokefanmJeremyBeatenText, 0, PokefanmJeremyScript
 
 PokefanmJeremyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7651c
+	jumptextfaceplayer UnknownText_0x7651c
 
 TrainerPokefanfGeorgia:
 	trainer EVENT_BEAT_POKEFANF_GEORGIA, POKEFANF, GEORGIA, PokefanfGeorgiaSeenText, PokefanfGeorgiaBeatenText, 0, PokefanfGeorgiaScript
 
 PokefanfGeorgiaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x76596
+	jumptextfaceplayer UnknownText_0x76596
 
 TrainerSupernerdShawn:
 	trainer EVENT_BEAT_SUPER_NERD_SHAWN, SUPER_NERD, SHAWN, SupernerdShawnSeenText, SupernerdShawnBeatenText, 0, SupernerdShawnScript
 
 SupernerdShawnScript:
 	end_if_just_battled
-	jumptext UnknownText_0x7660f
+	jumptextfaceplayer UnknownText_0x7660f
 
 MovementData_0x76004:
 	big_step_right

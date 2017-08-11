@@ -74,7 +74,7 @@ TrainerEngineerHugo:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Cave-in!"
@@ -100,7 +100,7 @@ TrainerBlackbeltTakeo:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm training here"
@@ -125,7 +125,7 @@ TrainerHikerFloyd:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This cave makes me"

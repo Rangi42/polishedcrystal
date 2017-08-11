@@ -137,14 +137,14 @@ TrainerHexManiacTamara:
 
 HexManiacTamaraScript:
 	end_if_just_battled
-	jumptext HexManiacTamaraAfterText
+	jumptextfaceplayer HexManiacTamaraAfterText
 
 TrainerFirebreatherNed:
 	trainer EVENT_BEAT_FIREBREATHER_NED, FIREBREATHER, NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
 
 FirebreatherNedScript:
 	end_if_just_battled
-	jumptext FirebreatherNedAfterText
+	jumptextfaceplayer FirebreatherNedAfterText
 
 BurnedTower1FHiddenEther:
 	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ETHER, ETHER

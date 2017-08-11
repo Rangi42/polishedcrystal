@@ -27,7 +27,7 @@ TrainerSwimmermFrank:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm vacationing"
@@ -54,7 +54,7 @@ TrainerSwimmermNadar:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming is my"
@@ -82,7 +82,7 @@ TrainerSwimmermConrad:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Lotion on, goggles"
@@ -110,7 +110,7 @@ TrainerSwimmerfCaroline:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My husband and I"
@@ -136,7 +136,7 @@ TrainerSwimmerfNatalia:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I bought a new"
@@ -163,7 +163,7 @@ TrainerFisherFrancis:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I like fishing for"
@@ -190,7 +190,7 @@ TrainerBird_keeperTony:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Have you heard"

@@ -108,7 +108,6 @@ CeladonPrizeRoom_cancel:
 CeladonPrizeRoom_NoCoinCase:
 	jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 
-
 CeladonPrizeRoom_TMMenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -123,7 +122,6 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db "TM06    5500@"
 	db "TM68    7500@"
 	db "Cancel@"
-
 
 CeladonGameCornerPokemonVendor:
 	faceplayer
@@ -197,7 +195,6 @@ CeladonGameCornerPokemonVendor:
 	takecoins 9999
 	jump .loop
 
-
 .MenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -212,7 +209,6 @@ CeladonGameCornerPokemonVendor:
 	db "Eevee      6666@"
 	db "Porygon    9999@"
 	db "Cancel@"
-
 
 CeladonGameCornerPrizeRoomGentlemanText:
 	text "I wanted Porygon,"

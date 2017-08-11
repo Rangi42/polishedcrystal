@@ -50,7 +50,7 @@ TrainerGruntM12:
 
 GruntM12Script:
 	end_if_just_battled
-	jumptext GruntM12AfterText
+	jumptextfaceplayer GruntM12AfterText
 
 CliffEdgeGateHiddenBigPearl:
 	dwb EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL, BIG_PEARL

@@ -35,77 +35,77 @@ TrainerSwimmerfKaylee:
 
 SwimmerfKayleeScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6c7f
+	jumptextfaceplayer UnknownText_0x1a6c7f
 
 TrainerSwimmerfSusie:
 	trainer EVENT_BEAT_SWIMMERF_SUSIE, SWIMMERF, SUSIE, SwimmerfSusieSeenText, SwimmerfSusieBeatenText, 0, SwimmerfSusieScript
 
 SwimmerfSusieScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6d11
+	jumptextfaceplayer UnknownText_0x1a6d11
 
 TrainerSwimmerfDenise:
 	trainer EVENT_BEAT_SWIMMERF_DENISE, SWIMMERF, DENISE, SwimmerfDeniseSeenText, SwimmerfDeniseBeatenText, 0, SwimmerfDeniseScript
 
 SwimmerfDeniseScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6d79
+	jumptextfaceplayer UnknownText_0x1a6d79
 
 TrainerSwimmerfKara:
 	trainer EVENT_BEAT_SWIMMERF_KARA, SWIMMERF, KARA, SwimmerfKaraSeenText, SwimmerfKaraBeatenText, 0, SwimmerfKaraScript
 
 SwimmerfKaraScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6e58
+	jumptextfaceplayer UnknownText_0x1a6e58
 
 TrainerSwimmerfWendy:
 	trainer EVENT_BEAT_SWIMMERF_WENDY, SWIMMERF, WENDY, SwimmerfWendySeenText, SwimmerfWendyBeatenText, 0, SwimmerfWendyScript
 
 SwimmerfWendyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6ec2
+	jumptextfaceplayer UnknownText_0x1a6ec2
 
 TrainerSwimmermCharlie:
 	trainer EVENT_BEAT_SWIMMERM_CHARLIE, SWIMMERM, CHARLIE, SwimmermCharlieSeenText, SwimmermCharlieBeatenText, 0, SwimmermCharlieScript
 
 SwimmermCharlieScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a696e
+	jumptextfaceplayer UnknownText_0x1a696e
 
 TrainerSwimmermGeorge:
 	trainer EVENT_BEAT_SWIMMERM_GEORGE, SWIMMERM, GEORGE, SwimmermGeorgeSeenText, SwimmermGeorgeBeatenText, 0, SwimmermGeorgeScript
 
 SwimmermGeorgeScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a69d4
+	jumptextfaceplayer UnknownText_0x1a69d4
 
 TrainerSwimmermBerke:
 	trainer EVENT_BEAT_SWIMMERM_BERKE, SWIMMERM, BERKE, SwimmermBerkeSeenText, SwimmermBerkeBeatenText, 0, SwimmermBerkeScript
 
 SwimmermBerkeScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6aa4
+	jumptextfaceplayer UnknownText_0x1a6aa4
 
 TrainerSwimmermKirk:
 	trainer EVENT_BEAT_SWIMMERM_KIRK, SWIMMERM, KIRK, SwimmermKirkSeenText, SwimmermKirkBeatenText, 0, SwimmermKirkScript
 
 SwimmermKirkScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6b6c
+	jumptextfaceplayer UnknownText_0x1a6b6c
 
 TrainerSwimmermMathew:
 	trainer EVENT_BEAT_SWIMMERM_MATHEW, SWIMMERM, MATHEW, SwimmermMathewSeenText, SwimmermMathewBeatenText, 0, SwimmermMathewScript
 
 SwimmermMathewScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a6bed
+	jumptextfaceplayer UnknownText_0x1a6bed
 
 TrainerSwimmermLewis:
 	trainer EVENT_BEAT_SWIMMERM_LEWIS, SWIMMERM, LEWIS, SwimmermLewisSeenText, SwimmermLewisBeatenText, 0, SwimmermLewisScript
 
 SwimmermLewisScript:
 	end_if_just_battled
-	jumptext SwimmermLewisAfterText
+	jumptextfaceplayer SwimmermLewisAfterText
 
 Route41HiddenMaxEther:
 	dwb EVENT_ROUTE_41_HIDDEN_MAX_ETHER, MAX_ETHER

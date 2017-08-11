@@ -52,12 +52,12 @@ BattleTower2FTVScript:
 
 BattleTower2FCherylScript:
 	checkflag ENGINE_CHERYL_DONE_TODAY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	writetext .GreetingText
 	yesorno
-	jumpopenedtext_iffalse .RefuseText
+	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_CHERYL_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -134,12 +134,12 @@ BattleTower2FCherylScript:
 
 BattleTower2FRileyScript:
 	checkflag ENGINE_RILEY_DONE_TODAY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	writetext .GreetingText
 	yesorno
-	jumpopenedtext_iffalse .RefuseText
+	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_RILEY_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -205,12 +205,12 @@ BattleTower2FRileyScript:
 
 BattleTower2FBuckScript:
 	checkflag ENGINE_BUCK_DONE_TODAY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	writetext .GreetingText
 	yesorno
-	jumpopenedtext_iffalse .RefuseText
+	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_BUCK_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -265,12 +265,12 @@ BattleTower2FBuckScript:
 
 BattleTower2FMarleyScript:
 	checkflag ENGINE_MARLEY_DONE_TODAY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	writetext .GreetingText
 	yesorno
-	jumpopenedtext_iffalse .RefuseText
+	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_MARLEY_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -323,12 +323,12 @@ BattleTower2FMarleyScript:
 
 BattleTower2FMiraScript:
 	checkflag ENGINE_MIRA_DONE_TODAY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	writetext .GreetingText
 	yesorno
-	jumpopenedtext_iffalse .RefuseText
+	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_MIRA_DONE_TODAY
 	writetext .SeenText
 	waitbutton
@@ -389,12 +389,12 @@ BattleTower2FMiraScript:
 
 BattleTower2FAnabelScript:
 	checkflag ENGINE_ANABEL_DONE_TODAY
-	jumptextfaceplayer_iftrue .AfterText
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
 	writetext .GreetingText
 	yesorno
-	jumpopenedtext_iffalse .RefuseText
+	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_ANABEL_DONE_TODAY
 	writetext .SeenText
 	waitbutton

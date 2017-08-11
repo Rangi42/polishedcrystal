@@ -40,7 +40,7 @@ TrainerSightseermBlaise:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Allons-y!"
@@ -61,7 +61,7 @@ TrainerBeautyIoana:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I come here every"
@@ -88,7 +88,7 @@ TrainerSightseerfKamila:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Alola!"
@@ -117,7 +117,7 @@ TrainerAromaLadyHeather:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "A deep red flower"
@@ -150,7 +150,7 @@ TrainerBreederBrenda:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "The key to good"
@@ -182,7 +182,7 @@ TrainerSwimmermEzra:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Have you ever won-"
@@ -210,7 +210,7 @@ RockyBeachYoungsterScript:
 
 .Script:
 	end_if_just_battled
-	jumptext .Text1
+	jumptextfaceplayer .Text1
 
 .Text1:
 	text "Oh, no. Oh, no…"

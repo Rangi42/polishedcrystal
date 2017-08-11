@@ -27,7 +27,7 @@ TrainerGentlemanAlfred:
 
 GentlemanAlfredScript:
 	end_if_just_battled
-	jumptext UnknownText_0x5b13e
+	jumptextfaceplayer UnknownText_0x5b13e
 
 TrainerSailorHuey1:
 	trainer EVENT_BEAT_SAILOR_HUEY, SAILOR, HUEY1, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script

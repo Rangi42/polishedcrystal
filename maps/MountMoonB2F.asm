@@ -38,35 +38,35 @@ TrainerYoungsterJosh:
 
 YoungsterJoshScript:
 	end_if_just_battled
-	jumptext YoungsterJoshAfterText
+	jumptextfaceplayer YoungsterJoshAfterText
 
 TrainerBird_keeperMick:
 	trainer EVENT_BEAT_BIRD_KEEPER_MICK, BIRD_KEEPER, MICK, Bird_keeperMickSeenText, Bird_keeperMickBeatenText, 0, Bird_keeperMickScript
 
 Bird_keeperMickScript:
 	end_if_just_battled
-	jumptext Bird_keeperMickAfterText
+	jumptextfaceplayer Bird_keeperMickAfterText
 
 TrainerHexManiacEsther:
 	trainer EVENT_BEAT_HEX_MANIAC_ESTHER, HEX_MANIAC, ESTHER, HexManiacEstherSeenText, HexManiacEstherBeatenText, 0, HexManiacEstherScript
 
 HexManiacEstherScript:
 	end_if_just_battled
-	jumptext HexManiacEstherAfterText
+	jumptextfaceplayer HexManiacEstherAfterText
 
 TrainerCooltrainermConnor:
 	trainer EVENT_BEAT_COOLTRAINERM_CONNOR, COOLTRAINERM, CONNOR, CooltrainermConnorSeenText, CooltrainermConnorBeatenText, 0, CooltrainermConnorScript
 
 CooltrainermConnorScript:
 	end_if_just_battled
-	jumptext CooltrainermConnorAfterText
+	jumptextfaceplayer CooltrainermConnorAfterText
 
 TrainerSuperNerdMiguel:
 	trainer EVENT_BEAT_SUPER_NERD_MIGUEL, SUPER_NERD, MIGUEL, SuperNerdMiguelSeenText, SuperNerdMiguelBeatenText, 0, SuperNerdMiguelScript
 
 SuperNerdMiguelScript:
 	end_if_just_battled
-	jumptext SuperNerdMiguelAfterText
+	jumptextfaceplayer SuperNerdMiguelAfterText
 
 MountMoonB2FHiddenEther:
 	dwb EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER, ETHER

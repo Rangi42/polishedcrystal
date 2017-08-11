@@ -33,14 +33,14 @@ TrainerBattleGirlSubaru:
 
 BattleGirlSubaruScript:
 	end_if_just_battled
-	jumptext BattleGirlSubaruAfterText
+	jumptextfaceplayer BattleGirlSubaruAfterText
 
 TrainerBattleGirlDiane:
 	trainer EVENT_BEAT_BATTLE_GIRL_DIANE, BATTLE_GIRL, DIANE, BattleGirlDianeSeenText, BattleGirlDianeBeatenText, 0, BattleGirlDianeScript
 
 BattleGirlDianeScript:
 	end_if_just_battled
-	jumptext BattleGirlDianeAfterText
+	jumptextfaceplayer BattleGirlDianeAfterText
 
 MountMortar1FOutsideHiddenHyperPotion:
 	dwb EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION, HYPER_POTION

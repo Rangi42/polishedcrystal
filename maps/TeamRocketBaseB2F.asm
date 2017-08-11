@@ -202,21 +202,21 @@ TrainerGruntM17:
 
 GruntM17Script:
 	end_if_just_battled
-	jumptext UnknownText_0x6db88
+	jumptextfaceplayer UnknownText_0x6db88
 
 TrainerGruntM18:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_18, GRUNTM, 18, GruntM18SeenText, GruntM18BeatenText, 0, GruntM18Script
 
 GruntM18Script:
 	end_if_just_battled
-	jumptext UnknownText_0x6dc1a
+	jumptextfaceplayer UnknownText_0x6dc1a
 
 TrainerGruntM19:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_19, GRUNTM, 19, GruntM19SeenText, GruntM19BeatenText, 0, GruntM19Script
 
 GruntM19Script:
 	end_if_just_battled
-	jumptext UnknownText_0x6dcd1
+	jumptextfaceplayer UnknownText_0x6dcd1
 
 RocketElectrode1:
 	cry ELECTRODE
@@ -313,7 +313,6 @@ UnknownScript_0x6d184:
 MapTeamRocketBaseB2FSignpostPtr1:
 	dw EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	dw MapTeamRocketBaseB2FSignpost1Script
-
 
 MapTeamRocketBaseB2FSignpost1Script:
 	opentext

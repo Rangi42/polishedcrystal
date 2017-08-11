@@ -66,7 +66,7 @@ TrainerAriana1:
 
 Ariana1Script:
 	end_if_just_battled
-	jumptext Ariana1AfterText
+	jumptextfaceplayer Ariana1AfterText
 
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125

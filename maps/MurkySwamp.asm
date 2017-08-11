@@ -158,7 +158,7 @@ TrainerBug_catcherOscar:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "G-g-g-ghost!"
@@ -181,7 +181,7 @@ TrainerBug_catcherCallum:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm from Azalea,"
@@ -209,7 +209,7 @@ TrainerBug_catcherDavid:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It feels so cold"
@@ -235,7 +235,7 @@ TrainerPokemaniacClive:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Don't tell me,"
@@ -263,7 +263,7 @@ TrainerHex_maniacMatilda:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Within the dark-"
@@ -289,7 +289,7 @@ TrainerFirebreatherOleg:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I want to light a"
@@ -315,7 +315,7 @@ TrainerFisherDundee:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "All the #mon I"

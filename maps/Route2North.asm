@@ -32,7 +32,7 @@ TrainerBug_maniacEd:
 
 Bug_maniacEdScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1ac3cf
+	jumptextfaceplayer UnknownText_0x1ac3cf
 
 FruitTreeScript_0x1ac306:
 	fruittree FRUITTREE_ROUTE_2

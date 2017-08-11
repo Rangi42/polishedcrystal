@@ -1124,39 +1124,39 @@ jumpopenedtext: macro
 	dw \1 ; text_pointer
 	endm
 
-	enum jumptext_iftrue_command
-jumptext_iftrue: macro
-	db jumptext_iftrue_command
+	enum iftrue_jumptext_command
+iftrue_jumptext: macro
+	db iftrue_jumptext_command
 	dw \1 ; text_pointer
 	endm
 
-	enum jumptext_iffalse_command
-jumptext_iffalse: macro
-	db jumptext_iffalse_command
+	enum iffalse_jumptext_command
+iffalse_jumptext: macro
+	db iffalse_jumptext_command
 	dw \1 ; text_pointer
 	endm
 
-	enum jumptextfaceplayer_iftrue_command
-jumptextfaceplayer_iftrue: macro
-	db jumptextfaceplayer_iftrue_command
+	enum iftrue_jumptextfaceplayer_command
+iftrue_jumptextfaceplayer: macro
+	db iftrue_jumptextfaceplayer_command
 	dw \1 ; text_pointer
 	endm
 
-	enum jumptextfaceplayer_iffalse_command
-jumptextfaceplayer_iffalse: macro
-	db jumptextfaceplayer_iffalse_command
+	enum iffalse_jumptextfaceplayer_command
+iffalse_jumptextfaceplayer: macro
+	db iffalse_jumptextfaceplayer_command
 	dw \1 ; text_pointer
 	endm
 
-	enum jumpopenedtext_iftrue_command
-jumpopenedtext_iftrue: macro
-	db jumpopenedtext_iftrue_command
+	enum iftrue_jumpopenedtext_command
+iftrue_jumpopenedtext: macro
+	db iftrue_jumpopenedtext_command
 	dw \1 ; text_pointer
 	endm
 
-	enum jumpopenedtext_iffalse_command
-jumpopenedtext_iffalse: macro
-	db jumpopenedtext_iffalse_command
+	enum iffalse_jumpopenedtext_command
+iffalse_jumpopenedtext: macro
+	db iffalse_jumpopenedtext_command
 	dw \1 ; text_pointer
 	endm
 

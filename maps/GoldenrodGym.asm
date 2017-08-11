@@ -78,7 +78,7 @@ TrainerLassCarrie:
 
 LassCarrieScript:
 	end_if_just_battled
-	jumptext LassCarrieOWText
+	jumptextfaceplayer LassCarrieOWText
 
 WhitneyCriesScript:
 	showemote EMOTE_SHOCK, GOLDENRODGYM_LASS2, 15
@@ -95,28 +95,28 @@ TrainerSrandjrJoandcath1:
 
 SrandjrJoandcath1Script:
 	end_if_just_battled
-	jumptext SrandjrJoandcath1OWText
+	jumptextfaceplayer SrandjrJoandcath1OWText
 
 TrainerSrandjrJoandcath2:
 	trainer EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SR_AND_JR, JOANDCATH2, SrandjrJoandcath2SeenText, SrandjrJoandcath2BeatenText, 0, SrandjrJoandcath2Script
 
 SrandjrJoandcath2Script:
 	end_if_just_battled
-	jumptext SrandjrJoandcath2OWText
+	jumptextfaceplayer SrandjrJoandcath2OWText
 
 TrainerBeautyVictoria:
 	trainer EVENT_BEAT_BEAUTY_VICTORIA, BEAUTY, VICTORIA, BeautyVictoriaSeenText, BeautyVictoriaBeatenText, 0, BeautyVictoriaScript
 
 BeautyVictoriaScript:
 	end_if_just_battled
-	jumptext BeautyVictoriaOWText
+	jumptextfaceplayer BeautyVictoriaOWText
 
 TrainerBeautySamantha:
 	trainer EVENT_BEAT_BEAUTY_SAMANTHA, BEAUTY, SAMANTHA, BeautySamanthaSeenText, BeautySamanthaBeatenText, 0, BeautySamanthaScript
 
 BeautySamanthaScript:
 	end_if_just_battled
-	jumptext BeautySamanthaOWText
+	jumptextfaceplayer BeautySamanthaOWText
 
 GoldenrodGymGuyScript:
 	faceplayer

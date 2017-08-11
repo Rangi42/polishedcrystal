@@ -34,7 +34,7 @@ TrainerYoungsterOwen:
 
 YoungsterOwenScript:
 	end_if_just_battled
-	jumptext UnknownText_0x680b2
+	jumptextfaceplayer UnknownText_0x680b2
 
 YoungsterOwenSeenText:
 	text "There's no cheat-"
@@ -62,7 +62,7 @@ TrainerYoungsterJason:
 
 YoungsterJasonScript:
 	end_if_just_battled
-	jumptext UnknownText_0x6814a
+	jumptextfaceplayer UnknownText_0x6814a
 
 YoungsterJasonSeenText:
 	text "It itches and"
@@ -88,7 +88,7 @@ TrainerYoungsterAlfie:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Three, two, one,"
@@ -110,7 +110,7 @@ TrainerPsychicHerman:
 
 PsychicHermanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x6817b
+	jumptextfaceplayer UnknownText_0x6817b
 
 PsychicHermanSeenText:
 	text "…"
@@ -132,7 +132,7 @@ TrainerPsychicFidel:
 
 PsychicFidelScript:
 	end_if_just_battled
-	jumptext UnknownText_0x681ec
+	jumptextfaceplayer UnknownText_0x681ec
 
 PsychicFidelSeenText:
 	text "I can see it…"
@@ -160,7 +160,7 @@ TrainerPsychicUri:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It happened one"
@@ -187,7 +187,7 @@ TrainerEngineerBernie:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Careful!"
@@ -210,7 +210,7 @@ TrainerEngineerCamden:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I learned engin-"
@@ -236,7 +236,7 @@ TrainerGuitaristmRoger:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Strangers passing"
@@ -262,7 +262,7 @@ TrainerGuitaristfRitsuko:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey ho, let's go!"

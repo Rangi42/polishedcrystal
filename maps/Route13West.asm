@@ -24,7 +24,7 @@ TrainerCamperClark:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Collect water!"
@@ -56,7 +56,7 @@ TrainerPicnickerGinger:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Why do I always"
@@ -81,7 +81,7 @@ TrainerHikerKenny:
 
 HikerKennyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a26c2
+	jumptextfaceplayer UnknownText_0x1a26c2
 
 HikerKennySeenText:
 	text "I should go to"

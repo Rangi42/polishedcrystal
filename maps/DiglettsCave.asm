@@ -119,7 +119,7 @@ TrainerHikerGerard:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Aah! I think that"
@@ -145,7 +145,7 @@ TrainerHikerDent:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm headed to"
@@ -173,7 +173,7 @@ TrainerBlackbeltInigo:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Prepare for"
@@ -199,7 +199,7 @@ TrainerEngineerSmith:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How did Diglett"

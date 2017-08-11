@@ -137,7 +137,7 @@ TrainerBug_maniacPierre:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon love"
@@ -163,7 +163,7 @@ TrainerBug_maniacDylan:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've never seen my"
@@ -188,7 +188,7 @@ TrainerGuitaristfJaclyn:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Let my guitar"
@@ -211,7 +211,7 @@ TrainerGuitaristmEzekiel:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Battle? Yeah, I'm"
@@ -235,7 +235,7 @@ TrainerHikerLester:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Yahoo!"
@@ -261,7 +261,7 @@ TrainerBird_keeperTrent:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "The early bird"

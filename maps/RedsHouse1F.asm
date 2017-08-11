@@ -21,7 +21,7 @@ RedsHouse1F_MapEventHeader:
 
 RedsMom:
 	checkevent EVENT_MET_REDS_MOM
-	jumptextfaceplayer_iftrue .Text2
+	iftrue_jumptextfaceplayer .Text2
 	setevent EVENT_MET_REDS_MOM
 	thistextfaceplayer
 

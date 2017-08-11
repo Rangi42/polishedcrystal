@@ -164,7 +164,7 @@ TrainerBattleGirlNozomi:
 
 BattleGirlNozomiScript:
 	end_if_just_battled
-	jumptext BattleGirlNozomiAfterText
+	jumptextfaceplayer BattleGirlNozomiAfterText
 
 TrainerBlackbeltKenji:
 	trainer EVENT_BEAT_BLACKBELT_KENJI, BLACKBELT_T, KENJI1, BlackbeltKenji1SeenText, BlackbeltKenji1BeatenText, 0, BlackbeltKenji1Script
@@ -269,14 +269,14 @@ TrainerHikerErik:
 
 HikerErikScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19e301
+	jumptextfaceplayer UnknownText_0x19e301
 
 TrainerHikerMichael:
 	trainer EVENT_BEAT_HIKER_MICHAEL, HIKER, MICHAEL, HikerMichaelSeenText, HikerMichaelBeatenText, 0, HikerMichaelScript
 
 HikerMichaelScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19e3b1
+	jumptextfaceplayer UnknownText_0x19e3b1
 
 TrainerHikerParry:
 	trainer EVENT_BEAT_HIKER_PARRY, HIKER, PARRY1, HikerParry1SeenText, HikerParry1BeatenText, 0, HikerParry1Script
@@ -369,28 +369,28 @@ TrainerHikerTimothy:
 
 HikerTimothyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19e4f1
+	jumptextfaceplayer UnknownText_0x19e4f1
 
 TrainerCooltrainermRyan:
 	trainer EVENT_BEAT_COOLTRAINERM_RYAN, COOLTRAINERM, RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText, 0, CooltrainermRyanScript
 
 CooltrainermRyanScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19e70d
+	jumptextfaceplayer UnknownText_0x19e70d
 
 TrainerCooltrainerfKelly:
 	trainer EVENT_BEAT_COOLTRAINERF_KELLY, COOLTRAINERF, KELLY, CooltrainerfKellySeenText, CooltrainerfKellyBeatenText, 0, CooltrainerfKellyScript
 
 CooltrainerfKellyScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19e7d1
+	jumptextfaceplayer UnknownText_0x19e7d1
 
 TrainerCamperQuentin:
 	trainer EVENT_BEAT_CAMPER_QUENTIN, CAMPER, QUENTIN, UnknownText_0x19e87f, UnknownText_0x19e899, 0, CamperQuentinScript
 
 CamperQuentinScript:
 	end_if_just_battled
-	jumptext UnknownText_0x19e8bb
+	jumptextfaceplayer UnknownText_0x19e8bb
 
 FruitTreeScript_0x19e294:
 	fruittree FRUITTREE_ROUTE_45

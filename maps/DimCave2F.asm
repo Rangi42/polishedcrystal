@@ -112,7 +112,7 @@ TrainerEngineerLang:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "We mined ore from"
@@ -143,7 +143,7 @@ TrainerHikerDerrick:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "♪ A-hiking we"

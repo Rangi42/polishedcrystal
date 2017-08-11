@@ -212,14 +212,14 @@ TrainerYoungsterMikey:
 
 .Script:
 	end_if_just_battled
-	jumptext YoungsterMikeyAfterText
+	jumptextfaceplayer YoungsterMikeyAfterText
 
 TrainerBug_catcherDon:
 	trainer EVENT_BEAT_BUG_CATCHER_DON, BUG_CATCHER, DON, Bug_catcherDonSeenText, Bug_catcherDonBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	jumptext Bug_catcherDonAfterText
+	jumptextfaceplayer Bug_catcherDonAfterText
 
 Route30YoungsterScript:
 	faceplayer

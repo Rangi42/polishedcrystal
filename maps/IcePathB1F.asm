@@ -118,14 +118,14 @@ TrainerBoarderMax:
 
 BoarderMaxScript:
 	end_if_just_battled
-	jumptext BoarderMaxAfterText
+	jumptextfaceplayer BoarderMaxAfterText
 
 TrainerSkierBecky:
 	trainer EVENT_BEAT_SKIER_BECKY, SKIER, BECKY, SkierBeckySeenText, SkierBeckyBeatenText, 0, SkierBeckyScript
 
 SkierBeckyScript:
 	end_if_just_battled
-	jumptext SkierBeckyAfterText
+	jumptextfaceplayer SkierBeckyAfterText
 
 IcePathB1FHiddenMaxPotion:
 	dwb EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION, MAX_POTION
@@ -208,7 +208,6 @@ SkierBeckyAfterText:
 	text "Don't forget to"
 	line "wear a scarf!"
 	done
-
 
 IcePathBoulderFellThroughText:
 	text "The boulder fell"

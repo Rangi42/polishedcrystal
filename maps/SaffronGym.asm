@@ -113,49 +113,49 @@ TrainerMediumDoris:
 
 MediumDorisScript:
 	end_if_just_battled
-	jumptext UnknownText_0x18a136
+	jumptextfaceplayer UnknownText_0x18a136
 
 TrainerPsychicLeon:
 	trainer EVENT_BEAT_PSYCHIC_LEON, PSYCHIC_T, LEON, PsychicLeonSeenText, PsychicLeonBeatenText, 0, PsychicLeonScript
 
 PsychicLeonScript:
 	end_if_just_battled
-	jumptext PsychicLeonAfterText
+	jumptextfaceplayer PsychicLeonAfterText
 
 TrainerPsychicJared:
 	trainer EVENT_BEAT_PSYCHIC_JARED, PSYCHIC_T, JARED, PsychicJaredSeenText, PsychicJaredBeatenText, 0, PsychicJaredScript
 
 PsychicJaredScript:
 	end_if_just_battled
-	jumptext UnknownText_0x18a1b3
+	jumptextfaceplayer UnknownText_0x18a1b3
 
 TrainerHexManiacLuna:
 	trainer EVENT_BEAT_HEX_MANIAC_LUNA, HEX_MANIAC, LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText, 0, HexManiacLunaScript
 
 HexManiacLunaScript:
 	end_if_just_battled
-	jumptext HexManiacLunaAfterText
+	jumptextfaceplayer HexManiacLunaAfterText
 
 TrainerHexManiacNatalie:
 	trainer EVENT_BEAT_HEX_MANIAC_NATALIE, HEX_MANIAC, NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText, 0, HexManiacNatalieScript
 
 HexManiacNatalieScript:
 	end_if_just_battled
-	jumptext HexManiacNatalieAfterText
+	jumptextfaceplayer HexManiacNatalieAfterText
 
 TrainerPsychicFranklin:
 	trainer EVENT_BEAT_PSYCHIC_FRANKLIN, PSYCHIC_T, FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText, 0, PsychicFranklinScript
 
 PsychicFranklinScript:
 	end_if_just_battled
-	jumptext UnknownText_0x18a0a6
+	jumptextfaceplayer UnknownText_0x18a0a6
 
 TrainerMediumRebecca:
 	trainer EVENT_BEAT_MEDIUM_REBECCA, MEDIUM, REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, MediumRebeccaScript
 
 MediumRebeccaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x18a034
+	jumptextfaceplayer UnknownText_0x18a034
 
 SaffronGymGuyScript:
 	faceplayer

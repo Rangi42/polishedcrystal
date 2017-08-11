@@ -24,7 +24,7 @@ TrainerVeteranmRemy:
 
 VeteranmRemyScript:
 	end_if_just_battled
-	jumptext VeteranmRemyAfterText
+	jumptextfaceplayer VeteranmRemyAfterText
 
 VeteranmRemySeenText:
 	text "If you can get"

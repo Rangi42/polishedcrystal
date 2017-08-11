@@ -497,7 +497,7 @@ TrainerBreederJulie:
 .Script:
 	setevent EVENT_BEAT_BREEDER_JULIE_ONCE
 	end_if_just_battled
-	jumptext BreederJulieAfterText
+	jumptextfaceplayer BreederJulieAfterText
 
 Route34RichBoyIrvingScript:
 	faceplayer
@@ -617,7 +617,7 @@ TrainerPokefanmBrandon:
 
 .Script:
 	end_if_just_battled
-	jumptext PokefanmBrandonAfterText
+	jumptextfaceplayer PokefanmBrandonAfterText
 
 TrainerCooltrainerfIrene:
 	trainer EVENT_BEAT_COOLTRAINERF_IRENE, COOLTRAINERF, IRENE, CooltrainerfIreneSeenText, CooltrainerfIreneBeatenText, 0, .Script

@@ -32,7 +32,7 @@ TrainerBird_keeperPerry:
 
 Bird_keeperPerryScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a25db
+	jumptextfaceplayer UnknownText_0x1a25db
 
 Bird_keeperPerrySeenText:
 	text "Agility is the key"
@@ -56,7 +56,7 @@ TrainerBird_keeperBret:
 
 Bird_keeperBretScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a2662
+	jumptextfaceplayer UnknownText_0x1a2662
 
 Bird_keeperBretSeenText:
 	text "Check out my #-"
@@ -81,7 +81,7 @@ TrainerCamperTanner:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can fit in a"
@@ -104,7 +104,7 @@ TrainerPicnickerPiper:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How about we bring"
@@ -130,7 +130,7 @@ TrainerCoupleTimandsue1:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Tim: I'll give you"
@@ -156,7 +156,7 @@ TrainerCoupleTimandsue2:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Sue: Women who"
@@ -183,7 +183,7 @@ TrainerPokefanmAlex:
 
 PokefanmAlexScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a24e3
+	jumptextfaceplayer UnknownText_0x1a24e3
 
 PokefanmAlexSeenText:
 	text "Bow down before my"
@@ -206,7 +206,7 @@ TrainerPokefanmJoshua:
 
 PokefanmJoshuaScript:
 	end_if_just_battled
-	jumptext UnknownText_0x1a254f
+	jumptextfaceplayer UnknownText_0x1a254f
 
 PokefanmJoshuaSeenText:
 	text "Nihihi! Would you"

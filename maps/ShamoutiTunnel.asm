@@ -102,7 +102,7 @@ TrainerTamerOswald:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I was born a"
@@ -133,7 +133,7 @@ TrainerFirebreatherTala:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Roll up, roll up,"
@@ -163,7 +163,7 @@ TrainerSightseerfNoelle:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Oh my gosh!"
@@ -198,7 +198,7 @@ TrainerSightseermChester:
 
 .Script:
 	end_if_just_battled
-	jumptext .AfterText
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm traveling"
