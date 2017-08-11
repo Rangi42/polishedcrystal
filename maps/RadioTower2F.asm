@@ -274,21 +274,9 @@ UnknownScript_0x5d8fe:
 	end
 
 ReceptionistScript_0x5d8ff:
-	faceplayer
-	opentext
 	checkitem BLUE_CARD
-	iffalse UnknownScript_0x5d90f
-	writetext UnknownText_0x5e392
-	buttonsound
+	iffalse_jumptextfaceplayer UnknownText_0x5e3d8
 	pokemart MARTTYPE_BLUECARD, 0
-	closetext
-	end
-
-UnknownScript_0x5d90f:
-	writetext UnknownText_0x5e3d8
-	buttonsound
-	closetext
-	end
 
 MovementData_0x5d921:
 	slow_step_down
@@ -641,14 +629,6 @@ UnknownText_0x5e35e:
 
 	para "has no room left"
 	line "for me…"
-	done
-
-UnknownText_0x5e392:
-	text "You can cash in"
-	line "your saved points"
-
-	para "for a lovely prize"
-	line "of your choice!"
 	done
 
 UnknownText_0x5e3d8:

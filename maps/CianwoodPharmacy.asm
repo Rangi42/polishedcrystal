@@ -24,12 +24,12 @@ const_value set 2
 	const CIANWOODPHARMACY_PHARMACIST
 
 CianwoodPharmacist:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
 	iftrue .Mart
 	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
 	iffalse .Mart
+	faceplayer
+	opentext
 	writetext PharmacistGiveSecretpotionText
 	buttonsound
 	giveitem SECRETPOTION
@@ -45,10 +45,12 @@ CianwoodPharmacist:
 	end
 
 .Mart:
-	pokemart MARTTYPE_PHARMACY, MART_CIANWOOD
-	closetext
+	scall .PokeMart
 	spriteface CIANWOODPHARMACY_PHARMACIST, UP
 	end
+
+.PokeMart:
+	pokemart MARTTYPE_PHARMACY, MART_CIANWOOD
 
 PharmacistGiveSecretpotionText:
 	text "Your #mon ap-"

@@ -203,7 +203,13 @@ UnknownText_0x1c587d::
 	done
 
 UnknownText_0x1c589f::
-	text "Which prize would"
+	text "You can cash in"
+	line "your saved points"
+
+	para "for a lovely prize"
+	line "of your choice!"
+
+	para "Which prize would"
 	line "you like?"
 	done
 

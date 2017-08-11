@@ -709,6 +709,8 @@ INCLUDE "maps/ShamoutiIsland.asm"
 INCLUDE "maps/ShamoutiHouse.asm"
 INCLUDE "maps/ShamoutiMerchant.asm"
 INCLUDE "maps/ShamoutiTouristCenter.asm"
+INCLUDE "maps/RockyBeach.asm" ; shares text with ShamoutiIsland.asm
+INCLUDE "maps/RockyBeachHouse.asm"
 
 SECTION "Shamouti Scripts 2", ROMX
 
@@ -728,21 +730,13 @@ INCLUDE "maps/ShamoutiHotelRoom2B.asm"
 INCLUDE "maps/ShamoutiHotelRoom3B.asm"
 INCLUDE "maps/ShamoutiHotelRoom3C.asm"
 
-SECTION "Beautiful Beach Scripts", ROMX
+SECTION "Shamouti Beach Scripts", ROMX
 
 INCLUDE "maps/BeautifulBeach.asm"
 INCLUDE "maps/BeautifulBeachVilla.asm"
-
-SECTION "Warm Beach Scripts", ROMX
-
 INCLUDE "maps/WarmBeach.asm"
 INCLUDE "maps/WarmBeachHouse.asm"
 INCLUDE "maps/WarmBeachShack.asm"
-
-SECTION "Rocky Beach Scripts", ROMX
-
-INCLUDE "maps/RockyBeach.asm"
-INCLUDE "maps/RockyBeachHouse.asm"
 
 SECTION "Elemental Island Scripts", ROMX
 

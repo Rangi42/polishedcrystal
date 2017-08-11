@@ -15,15 +15,9 @@ SaffronMart_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 3
-	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x18a3bf, -1
+	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_STANDARD, MART_SAFFRON, -1
 	person_event SPRITE_COOLTRAINER_M, 2, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18a3cc, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x18a3f3, -1
-
-ClerkScript_0x18a3bf:
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_SAFFRON
-	closetext
-	end
 
 UnknownText_0x18a3cc:
 	text "There's a big"

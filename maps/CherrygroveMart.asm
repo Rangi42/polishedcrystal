@@ -20,27 +20,20 @@ CherrygroveMart_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1968a0, -1
 
 ClerkScript_0x19680a:
-	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue UnknownScript_0x196817
+	iftrue .AfterDex
 	pokemart MARTTYPE_STANDARD, MART_CHERRYGROVE
-	closetext
-	end
 
-UnknownScript_0x196817:
+.AfterDex:
 	pokemart MARTTYPE_STANDARD, MART_CHERRYGROVE_DEX
-	closetext
-	end
 
 CooltrainerMScript_0x19681d:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue UnknownScript_0x19682b
-	jumpopenedtext UnknownText_0x196834
+	iftrue .AfterDex
+	jumptextfaceplayer UnknownText_0x196834
 
-UnknownScript_0x19682b:
-	jumpopenedtext UnknownText_0x196873
+.AfterDex:
+	jumptextfaceplayer UnknownText_0x196873
 
 UnknownText_0x196834:
 	text "They're fresh out"

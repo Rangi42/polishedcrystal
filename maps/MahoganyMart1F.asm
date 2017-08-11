@@ -23,7 +23,7 @@ MahoganyMart1F_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x6c37b, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_LANCE, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	person_event SPRITE_DRAGONITE, 6, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
-	person_event SPRITE_GRANNY, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x6c3ee, EVENT_MAHOGANY_MART_OWNERS
+	person_event SPRITE_GRANNY, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_STANDARD, MART_MAHOGANY_2, EVENT_MAHOGANY_MART_OWNERS
 
 const_value set 2
 	const MAHOGANYMART1F_PHARMACIST
@@ -46,26 +46,14 @@ UnknownScript_0x6c362:
 	return
 
 PharmacistScript_0x6c367:
-	faceplayer
-	opentext
 	checkevent EVENT_DECIDED_TO_HELP_LANCE
-	iftrue UnknownScript_0x6c375
+	iftrue_jumptextfaceplayer UnknownText_0x6c46b
 	pokemart MARTTYPE_STANDARD, MART_MAHOGANY_1
-	closetext
-	end
-
-UnknownScript_0x6c375:
-	jumpopenedtext UnknownText_0x6c46b
 
 BlackBeltScript_0x6c37b:
-	faceplayer
-	opentext
 	checkevent EVENT_DECIDED_TO_HELP_LANCE
-	iftrue UnknownScript_0x6c389
-	jumpopenedtext UnknownText_0x6c494
-
-UnknownScript_0x6c389:
-	jumpopenedtext UnknownText_0x6c501
+	iftrue_jumptextfaceplayer UnknownText_0x6c501
+	jumptextfaceplayer UnknownText_0x6c494
 
 UnknownScript_0x6c38f:
 	pause 15
@@ -102,13 +90,6 @@ UnknownScript_0x6c38f:
 	disappear MAHOGANYMART1F_LANCE
 	dotrigger $0
 	waitsfx
-	end
-
-GrannyScript_0x6c3ee:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_MAHOGANY_2
-	closetext
 	end
 
 MovementData_0x6c3f6:

@@ -171,7 +171,6 @@ CosplayerClaraScript:
 	jumptextfaceplayer CosplayerClaraAfterText
 
 GrannyScript_0x7c132:
-	opentext
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .Open
 	if_equal SATURDAY, .Open
@@ -179,11 +178,8 @@ GrannyScript_0x7c132:
 
 .Open:
 	pokemart MARTTYPE_BITTER, MART_UNDERGROUND
-	closetext
-	end
 
 GrampsScript_0x7c146:
-	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
 	iftrue WarehouseEntranceScript_ShopClosed
 	checkcode VAR_WEEKDAY
@@ -194,11 +190,8 @@ GrampsScript_0x7c146:
 	checkmorn
 	iffalse WarehouseEntranceScript_ShopClosed
 	pokemart MARTTYPE_BARGAIN, 0
-	closetext
-	end
 
 OlderHaircutBrotherScript:
-	opentext
 	checkcode VAR_WEEKDAY
 	if_equal TUESDAY, .DoHaircut
 	if_equal THURSDAY, .DoHaircut
@@ -206,6 +199,7 @@ OlderHaircutBrotherScript:
 	jump WarehouseEntranceScript_ShopClosed
 
 .DoHaircut:
+	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	iftrue .AlreadyGotHaircut
 	special PlaceMoneyTopRight
@@ -272,7 +266,6 @@ OlderHaircutBrotherScript:
 	jumpopenedtext UnknownText_0x7c72b
 
 YoungerHaircutBrotherScript:
-	opentext
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .DoHaircut
 	if_equal WEDNESDAY, .DoHaircut
@@ -280,6 +273,7 @@ YoungerHaircutBrotherScript:
 	jump WarehouseEntranceScript_ShopClosed
 
 .DoHaircut:
+	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	iftrue .AlreadyGotHaircut
 	special PlaceMoneyTopRight
@@ -367,14 +361,11 @@ UnknownScript_0x7c2cd:
 	end
 
 BasementDoorScript::
-	opentext
 	checkevent EVENT_USED_BASEMENT_KEY
-	iftrue .Open
+	iftrue_jumptext UnknownText_0x7c5c3
 	checkitem BASEMENT_KEY
-	iftrue .Unlock
-	jumpopenedtext UnknownText_0x7c5b0
-
-.Unlock:
+	iffalse_jumptext UnknownText_0x7c5b0
+	opentext
 	playsound SFX_TRANSACTION
 	writetext UnknownText_0x7c5d6
 	waitbutton
@@ -385,11 +376,8 @@ BasementDoorScript::
 	setevent EVENT_USED_BASEMENT_KEY
 	end
 
-.Open:
-	jumpopenedtext UnknownText_0x7c5c3
-
 WarehouseEntranceScript_ShopClosed:
-	jumpopenedtext UnknownText_0x7c904
+	jumptext UnknownText_0x7c904
 
 WarehouseEntranceHiddenParlyzHeal:
 	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL

@@ -21,7 +21,7 @@ GoldenrodHarbor_MapEventHeader:
 	person_event SPRITE_FISHER, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	person_event SPRITE_FISHER, 5, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherPaton, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
-	person_event SPRITE_LASS, 15, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborLass1Script, -1
+	person_event SPRITE_LASS, 15, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_MART, 0, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
 	person_event SPRITE_POKEFAN_M, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
 	person_event SPRITE_MAGIKARP, 15, 21, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodHarborMagikarpText, -1
 	person_event SPRITE_YOUNGSTER, 15, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
@@ -81,13 +81,6 @@ TrainerSwimmermJames:
 SwimmermJamesScript:
 	end_if_just_battled
 	jumptextfaceplayer SwimmermJamesAfterText
-
-GoldenrodHarborLass1Script:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR
-	closetext
-	end
 
 GoldenrodHarborPokefanmScript:
 	faceplayer
