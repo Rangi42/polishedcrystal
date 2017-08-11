@@ -18,14 +18,13 @@ CinnabarPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_COOLTRAINER_F, 5, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, UnknownText_0x1ab335, -1
-	person_event SPRITE_FISHER, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, UnknownText_0x1ab37f, -1
+	person_event SPRITE_COOLTRAINER_F, 5, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CinnabarPokeCenter1FCooltrainerfText, -1
+	person_event SPRITE_FISHER, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CinnabarPokeCenter1FFisherText, -1
 
 PokemonJournalBlaineScript:
 	setflag ENGINE_READ_BLAINE_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -39,7 +38,7 @@ PokemonJournalBlaineScript:
 	cont "riddles."
 	done
 
-UnknownText_0x1ab335:
+CinnabarPokeCenter1FCooltrainerfText:
 	text "Cinnabar Gym's"
 	line "Blaine apparently"
 
@@ -48,7 +47,7 @@ UnknownText_0x1ab335:
 	cont "cave…"
 	done
 
-UnknownText_0x1ab37f:
+CinnabarPokeCenter1FFisherText:
 	text "It's been a year"
 	line "since the volcano"
 	cont "erupted."

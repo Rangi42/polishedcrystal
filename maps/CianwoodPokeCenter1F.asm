@@ -19,15 +19,14 @@ CianwoodPokeCenter1F_MapEventHeader:
 .PersonEvents: db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
 	person_event SPRITE_GYM_GUY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
-	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x9dbed, -1
-	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x9ded7, -1
-	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CianwoodPokeCenterRichBoyText, -1
+	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CianwoodPokeCenter1FLassText, -1
+	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CianwoodPokeCenter1FSuperNerdText, -1
+	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CianwoodPokeCenter1FRichBoyText, -1
 
 PokemonJournalChuckScript:
 	setflag ENGINE_READ_CHUCK_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -46,26 +45,22 @@ PokemonJournalChuckScript:
 	done
 
 CianwoodGymGuyScript:
+	checkevent EVENT_BEAT_CHUCK
+	iftrue_jumptextfaceplayer .WinText
+	checkevent EVENT_GOT_HM04_STRENGTH
+	iftrue_jumptextfaceplayer .Text
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_CHUCK
-	iftrue .Won
 	writetext .Text
 	waitbutton
-	checkevent EVENT_GOT_HM04_STRENGTH
-	iftrue .Done
 	writetext .StrengthText1
 	buttonsound
 	verbosegivetmhm HM_STRENGTH
 	setevent EVENT_GOT_HM04_STRENGTH
 	writetext .StrengthText2
 	waitbutton
-.Done
 	closetext
 	end
-
-.Won:
-	jumpopenedtext .WinText
 
 .Text:
 	text "The #mon Gym"
@@ -125,7 +120,7 @@ CianwoodGymGuyScript:
 	cont "looking at you!"
 	done
 
-UnknownText_0x9dbed:
+CianwoodPokeCenter1FLassText:
 	text "Did you meet the"
 	line "#Maniac?"
 
@@ -134,7 +129,7 @@ UnknownText_0x9dbed:
 	cont "rare #mon."
 	done
 
-UnknownText_0x9ded7:
+CianwoodPokeCenter1FSuperNerdText:
 	text "I love showing off"
 	line "the #mon that"
 
@@ -148,7 +143,7 @@ UnknownText_0x9ded7:
 	line "off my #mon!"
 	done
 
-CianwoodPokeCenterRichBoyText:
+CianwoodPokeCenter1FRichBoyText:
 	text "There's no #"
 	line "Mart in this town,"
 

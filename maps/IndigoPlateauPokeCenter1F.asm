@@ -28,7 +28,7 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	person_event SPRITE_CLERK, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_STANDARD, MART_INDIGO_PLATEAU, -1
 	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
 	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IndigoPlateauAbraScript, EVENT_TELEPORT_GUY
-	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x180178, -1
+	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, IndigoPlateauCooltrainermText, -1
 
 const_value set 2
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
@@ -385,9 +385,8 @@ PlateauRivalLeavesMovement:
 
 PokemonJournalGiovanniScript:
 	setflag ENGINE_READ_GIOVANNI_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -416,7 +415,7 @@ IndigoPlateauYellowScript:
 .HeardIntro
 	writetext .QuestionText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext .RefusedText
 	writetext .GiveStarterText
 	buttonsound
 	waitsfx
@@ -457,7 +456,7 @@ IndigoPlateauYellowScript:
 	checkcode VAR_FACING
 	spriteface PLAYER, DOWN
 	if_not_equal UP, .noleftstep
-	applymovement INDIGOPLATEAUPOKECENTER1F_YELLOW, .LeftMovement
+	applyonemovement INDIGOPLATEAUPOKECENTER1F_YELLOW, step_left
 .noleftstep
 	applymovement INDIGOPLATEAUPOKECENTER1F_YELLOW, .DownMovement
 	playsound SFX_EXIT_BUILDING
@@ -466,11 +465,15 @@ IndigoPlateauYellowScript:
 	waitsfx
 	end
 
-.Refused:
-	jumpopenedtext .RefusedText
-
 .PartyFull:
-	jumpopenedtext .NoRoomText
+	thisopenedtext
+
+	text "Yellow: Oh…"
+	line "You can't carry"
+
+	para "another #mon"
+	line "either…"
+	done
 
 .GreetingText:
 	text "Yellow: Hi,"
@@ -518,14 +521,6 @@ IndigoPlateauYellowScript:
 	cont "#mon?"
 	done
 
-.NoRoomText:
-	text "Yellow: Oh…"
-	line "You can't carry"
-
-	para "another #mon"
-	line "either…"
-	done
-
 .GoodbyeText:
 	text "Yellow: You take"
 	line "good care of that"
@@ -547,10 +542,6 @@ IndigoPlateauYellowScript:
 	text "!"
 	done
 
-.LeftMovement:
-	step_left
-	step_end
-
 .DownMovement:
 	step_down
 	step_down
@@ -563,7 +554,7 @@ IndigoPlateauTeleportGuyScript:
 	opentext
 	writetext .Text
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -572,9 +563,6 @@ IndigoPlateauTeleportGuyScript:
 	waitsfx
 	warp NEW_BARK_TOWN, $f, $6
 	end
-
-.No:
-	jumpopenedtext .NoText
 
 .Text:
 	text "Ah! You're chal-"
@@ -619,7 +607,7 @@ IndigoPlateauAbraScript:
 	text "Abra: Aabra…"
 	done
 
-UnknownText_0x180178:
+IndigoPlateauCooltrainermText:
 	text "At the #mon"
 	line "League, you'll get"
 

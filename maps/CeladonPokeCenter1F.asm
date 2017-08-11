@@ -25,9 +25,8 @@ CeladonPokeCenter1F_MapEventHeader:
 
 PokemonJournalErikaScript:
 	setflag ENGINE_READ_ERIKA_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"

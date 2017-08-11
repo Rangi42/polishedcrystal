@@ -18,16 +18,15 @@ PewterPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_TEACHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a2f01, -1
 	person_event SPRITE_JIGGLYPUFF, 3, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PewterJigglypuff, -1
-	person_event SPRITE_CHILD, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1a2f75, -1
 	person_event SPRITE_POKEFAN_M, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NPCTrade4Script, -1
+	person_event SPRITE_TEACHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, PewterPokeCenter1FTeacherText, -1
+	person_event SPRITE_CHILD, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, PewterPokeCenter1FChildText, -1
 
 PokemonJournalBrockScript:
 	setflag ENGINE_READ_BROCK_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -62,7 +61,7 @@ NPCTrade4Script:
 	closetext
 	end
 
-UnknownText_0x1a2f01:
+PewterPokeCenter1FTeacherText:
 	text "…Yeah, and the"
 	line "Gym in Cinnabar's"
 
@@ -73,7 +72,7 @@ UnknownText_0x1a2f01:
 	line "phone. Go away!"
 	done
 
-UnknownText_0x1a2f75:
+PewterPokeCenter1FChildText:
 	text "Most #mon get"
 	line "drowsy if they"
 

@@ -18,15 +18,14 @@ LavenderPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_YOUNGSTER, 5, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x7e6a9, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7e6bd, -1
-	person_event SPRITE_TEACHER, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7e710, -1
+	person_event SPRITE_YOUNGSTER, 5, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LavenderPokeCenter1FYoungsterScript, -1
+	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, LavenderPokeCenter1FGentlemanText, -1
+	person_event SPRITE_TEACHER, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, LavenderPokeCenter1FTeacherText, -1
 
 PokemonJournalMrFujiScript:
 	setflag ENGINE_READ_MR_FUJI_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Editor: The shy"
@@ -42,15 +41,11 @@ PokemonJournalMrFujiScript:
 	line "ender Town."
 	done
 
-YoungsterScript_0x7e6a9:
+LavenderPokeCenter1FYoungsterScript:
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .ReturnedMachinePart
-	jumptextfaceplayer .Text1
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
 
-.ReturnedMachinePart:
-	jumptextfaceplayer .Text2
-
-.Text1:
 	text "If the Power Plant"
 	line "isn't running, the"
 
@@ -75,7 +70,7 @@ YoungsterScript_0x7e6a9:
 	cont "smoothly again."
 	done
 
-UnknownText_0x7e6bd:
+LavenderPokeCenter1FGentlemanText:
 	text "To the north of"
 	line "Lavender is Rock"
 
@@ -84,7 +79,7 @@ UnknownText_0x7e6bd:
 	cont "Power Plant."
 	done
 
-UnknownText_0x7e710:
+LavenderPokeCenter1FTeacherText:
 	text "There's a radio"
 	line "program that plays"
 	cont "# Flute music."

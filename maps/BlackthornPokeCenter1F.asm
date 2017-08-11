@@ -25,9 +25,8 @@ BlackthornPokeCenter1F_MapEventHeader:
 
 PokemonJournalClairScript:
 	setflag ENGINE_READ_CLAIR_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -42,10 +41,10 @@ PokemonJournalClairScript:
 	done
 
 ProfOaksAide4Script:
+	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
+	iftrue_jumptextfaceplayer .ExplainText
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_LUCKY_EGG_FROM_PROF_OAKS_AIDE
-	iftrue_jumpopenedtext .ExplainText
 	writetext .HiText
 	waitbutton
 	count_seen_caught

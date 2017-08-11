@@ -18,14 +18,13 @@ CeruleanPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_GYM_GUY, 5, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18821e, -1
-	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x188221, -1
+	person_event SPRITE_GYM_GUY, 5, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeruleanPokeCenter1FGymGuyScript, -1
+	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, CeruleanPokeCenter1FSuperNerdText, -1
 
 PokemonJournalMistyScript:
 	setflag ENGINE_READ_MISTY_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -38,15 +37,11 @@ PokemonJournalMistyScript:
 	line "the Elite Four."
 	done
 
-GymGuyScript_0x18821e:
+CeruleanPokeCenter1FGymGuyScript:
 	checkunits
-	iftrue .metric
-	jumptextfaceplayer UnknownText_0x1882ff_Imperial
+	iftrue_jumptextfaceplayer .MetricText
+	thistextfaceplayer
 
-.metric
-	jumptextfaceplayer UnknownText_0x1882ff_Metric
-
-UnknownText_0x1882ff_Imperial:
 	text "The Magnet Train"
 	line "travels at over"
 
@@ -60,7 +55,7 @@ UnknownText_0x1882ff_Imperial:
 	line "Johto accessible."
 	done
 
-UnknownText_0x1882ff_Metric:
+.MetricText:
 	text "The Magnet Train"
 	line "travels at over"
 
@@ -74,7 +69,7 @@ UnknownText_0x1882ff_Metric:
 	line "Johto accessible."
 	done
 
-UnknownText_0x188221:
+CeruleanPokeCenter1FSuperNerdText:
 	text "For battles, I'd"
 	line "much rather use"
 

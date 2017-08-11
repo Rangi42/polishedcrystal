@@ -18,15 +18,14 @@ MahoganyPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19a362, -1
-	person_event SPRITE_YOUNGSTER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19a3b3, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19a418, -1
+	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, MahoganyPokeCenter1FPokefanmText, -1
+	person_event SPRITE_YOUNGSTER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, MahoganyPokeCenter1FYoungsterText, -1
+	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, MahoganyPokeCenter1FCooltrainerfText, -1
 
 PokemonJournalPryceScript:
 	setflag ENGINE_READ_PRYCE_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -47,7 +46,7 @@ PokemonJournalPryceScript:
 	cont "winter trainer”."
 	done
 
-UnknownText_0x19a362:
+MahoganyPokeCenter1FPokefanmText:
 	text "What's this? Team"
 	line "Rocket has come"
 	cont "back?"
@@ -57,7 +56,7 @@ UnknownText_0x19a362:
 	cont "Rage…"
 	done
 
-UnknownText_0x19a3b3:
+MahoganyPokeCenter1FYoungsterText:
 	text "I stop my #mon"
 	line "from evolving too"
 	cont "early."
@@ -68,7 +67,7 @@ UnknownText_0x19a3b3:
 	cont "evolve."
 	done
 
-UnknownText_0x19a418:
+MahoganyPokeCenter1FCooltrainerfText:
 	text "#mon do become"
 	line "stronger when they"
 

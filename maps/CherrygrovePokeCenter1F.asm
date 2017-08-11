@@ -18,16 +18,15 @@ CherrygrovePokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x196976, -1
-	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x19698a, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1969c8, -1
+	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FTeacherScript, -1
+	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CherrygrovePokeCenter1FFisherText, -1
+	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, CherrygrovePokeCenter1FGentlemanText, -1
 	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CherrygrovePokeCenter1FLadyText, -1
 
 PokemonJournalRedScript:
 	setflag ENGINE_READ_RED_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -43,17 +42,11 @@ PokemonJournalRedScript:
 	line "record time."
 	done
 
-TeacherScript_0x196976:
-	faceplayer
-	opentext
+CherrygrovePokeCenter1FTeacherScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .GaveEgg
-	jumpopenedtext .Text1
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
 
-.GaveEgg:
-	jumpopenedtext .Text2
-
-.Text1:
 	text "The Communication"
 	line "Center upstairs"
 	cont "was just built."
@@ -71,7 +64,7 @@ TeacherScript_0x196976:
 	line "there already!"
 	done
 
-UnknownText_0x19698a:
+CherrygrovePokeCenter1FFisherText:
 	text "It's great. I can"
 	line "store any number"
 
@@ -79,7 +72,7 @@ UnknownText_0x19698a:
 	line "it's all free."
 	done
 
-UnknownText_0x1969c8:
+CherrygrovePokeCenter1FGentlemanText:
 	text "That PC is free"
 	line "for any trainer"
 	cont "to use."

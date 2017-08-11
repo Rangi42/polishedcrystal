@@ -19,17 +19,16 @@ FuchsiaPokeCenter1F_MapEventHeader:
 .PersonEvents: db 4
 	person_event SPRITE_JANINE_IMPERSONATOR, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineImpersonatorScript, -1
 	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x196494, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1964dc, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, FuchsiaPokeCenter1FCooltrainerMText, -1
+	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, FuchsiaPokeCenter1FCooltrainerFText, -1
 
 const_value set 2
 	const FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR
 
 PokemonJournalJanineScript:
 	setflag ENGINE_READ_JANINE_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -67,22 +66,16 @@ JanineImpersonatorScript:
 	done
 
 .SpinMovement:
+rept 3
 	turn_head_down
 	turn_head_left
 	turn_head_up
 	turn_head_right
-	turn_head_down
-	turn_head_left
-	turn_head_up
-	turn_head_right
-	turn_head_down
-	turn_head_left
-	turn_head_up
-	turn_head_right
+endr
 	turn_head_down
 	step_end
 
-UnknownText_0x196494:
+FuchsiaPokeCenter1FCooltrainerMText:
 	text "Hey! You have a"
 	line "brand new kind of"
 	cont "#dex."
@@ -91,7 +84,7 @@ UnknownText_0x196494:
 	line "that to you?"
 	done
 
-UnknownText_0x1964dc:
+FuchsiaPokeCenter1FCooltrainerFText:
 	text "I got quite a"
 	line "shock at the Gym."
 

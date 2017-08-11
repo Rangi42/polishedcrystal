@@ -65,9 +65,8 @@ EcruteakPokeCenter1FBillWalksUpTrigger:
 
 PokemonJournalMortyScript:
 	setflag ENGINE_READ_MORTY_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -102,7 +101,7 @@ EcruteakPokeCenter1FBillScript:
 .heardintro
 	writetext .QuestionText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	buttonsound
 	waitsfx
@@ -122,7 +121,7 @@ EcruteakPokeCenter1FBillScript:
 	checkcode VAR_FACING
 	spriteface PLAYER, DOWN
 	if_not_equal UP, .noleftstep
-	applymovement ECRUTEAKPOKECENTER1F_BILL, .StepAroundMovement
+	applyonemovement ECRUTEAKPOKECENTER1F_BILL, step_left
 .noleftstep
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .LeaveMovement
 	playsound SFX_EXIT_BUILDING
@@ -132,10 +131,12 @@ EcruteakPokeCenter1FBillScript:
 	end
 
 .NoRoom:
-	jumpopenedtext .NoRoomText
+	thisopenedtext
 
-.No:
-	jumpopenedtext .NoText
+	text "Whoa, wait. You"
+	line "can't carry any"
+	cont "more #mon."
+	done
 
 .IntroText:
 	text "Hi, I'm Bill. And"
@@ -189,12 +190,6 @@ EcruteakPokeCenter1FBillScript:
 	line "Eevee!"
 	done
 
-.NoRoomText:
-	text "Whoa, wait. You"
-	line "can't carry any"
-	cont "more #mon."
-	done
-
 .GoodbyeText:
 	text "Bill: Prof.Elm"
 	line "claims Eevee may"
@@ -217,10 +212,6 @@ EcruteakPokeCenter1FBillScript:
 	line "do?"
 	done
 
-.StepAroundMovement:
-	step_left
-	step_end
-
 .LeaveMovement:
 	step_down
 	step_down
@@ -236,13 +227,9 @@ EcruteakPokeCenter1FBillScript:
 
 EcruteakPokeCenter1FPokefanMScript:
 	checkevent EVENT_GOT_HM03_SURF
-	iftrue .GotSurf
-	jumptextfaceplayer .Text1
+	iftrue_jumptextfaceplayer .SurfText
+	thistextfaceplayer
 
-.GotSurf:
-	jumptextfaceplayer .Text2
-
-.Text1:
 	text "The way the Kimono"
 	line "Girls dance is"
 
@@ -251,7 +238,7 @@ EcruteakPokeCenter1FPokefanMScript:
 	cont "use their #mon."
 	done
 
-.Text2:
+.SurfText:
 	text "You must be hoping"
 	line "to battle more"
 	cont "people, right?"
@@ -273,23 +260,9 @@ EcruteakPokeCenter1FLassScript:
 	yesorno
 	iffalse .No
 	checkevent EVENT_ECRUTEAK_POKE_CENTER_BILL
-	iffalse .Here
-	jumpopenedtext .YesText
+	iffalse_jumpopenedtext .HereText
+	thisopenedtext
 
-.No:
-	checkevent EVENT_ECRUTEAK_POKE_CENTER_BILL
-	iffalse .Here
-	jumpopenedtext .NoText
-
-.Here:
-	jumpopenedtext .HereText
-
-.QuestionText:
-	text "Do you know who"
-	line "Bill is?"
-	done
-
-.YesText:
 	text "I once heard that"
 	line "Bill's mother used"
 
@@ -300,9 +273,18 @@ EcruteakPokeCenter1FLassScript:
 	line "here so often."
 	done
 
-.NoText:
+.No:
+	checkevent EVENT_ECRUTEAK_POKE_CENTER_BILL
+	iffalse_jumpopenedtext .HereText
+	thisopenedtext
+
 	text "Oh… Never mind"
 	line "then."
+	done
+
+.QuestionText:
+	text "Do you know who"
+	line "Bill is?"
 	done
 
 .HereText:
