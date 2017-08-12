@@ -159,10 +159,9 @@ CeruleanGymGuyScript:
 	jumpopenedtext CeruleanGymGuyWinText
 
 CeruleanGymHiddenMachinePart:
-	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM, .Script
-.Script:
+	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	checkevent EVENT_LEARNED_ABOUT_MACHINE_PART
-	iffalse .SomethingUnderwater
+	iffalse_jumptext CeruleanGymSomethingUnderwaterText
 	giveitem MACHINE_PART
 	opentext
 	itemtotext MACHINE_PART, $0
@@ -173,9 +172,6 @@ CeruleanGymHiddenMachinePart:
 	closetext
 	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	end
-
-.SomethingUnderwater:
-	jumptext CeruleanGymSomethingUnderwaterText
 
 CeruleanGymStatue1:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM

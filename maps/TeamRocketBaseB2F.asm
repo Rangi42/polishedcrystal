@@ -312,9 +312,6 @@ UnknownScript_0x6d184:
 
 MapTeamRocketBaseB2FSignpostPtr1:
 	dw EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
-	dw MapTeamRocketBaseB2FSignpost1Script
-
-MapTeamRocketBaseB2FSignpost1Script:
 	opentext
 	checkevent EVENT_LEARNED_HAIL_GIOVANNI
 	iftrue UnknownScript_0x6d1e8

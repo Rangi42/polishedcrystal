@@ -577,15 +577,15 @@ TryReadSign: ; 96a38
 	ret
 
 .signs
-	dw .read      ; SIGNPOST_READ
-	dw .up        ; SIGNPOST_UP
-	dw .down      ; SIGNPOST_DOWN
-	dw .right     ; SIGNPOST_RIGHT
-	dw .left      ; SIGNPOST_LEFT
-	dw .ifset     ; SIGNPOST_IFSET
-	dw .ifnotset  ; SIGNPOST_IFNOTSET
-	dw .jumptext  ; SIGNPOST_JUMPTEXT
-	dw .jumpstd   ; SIGNPOST_JUMPSTD
+	dw .read     ; SIGNPOST_READ
+	dw .up       ; SIGNPOST_UP
+	dw .down     ; SIGNPOST_DOWN
+	dw .right    ; SIGNPOST_RIGHT
+	dw .left     ; SIGNPOST_LEFT
+	dw .ifset    ; SIGNPOST_IFSET
+	dw .ifnotset ; SIGNPOST_IFNOTSET
+	dw .jumptext ; SIGNPOST_JUMPTEXT
+	dw .jumpstd  ; SIGNPOST_JUMPSTD
 ; 96a59
 
 .up
@@ -658,8 +658,6 @@ TryReadSign: ; 96a38
 	pop hl
 	inc hl
 	inc hl
-	ld a, [MapScriptHeaderBank]
-	call GetFarHalfword
 	jr .callMapScriptAndReturnCarry
 
 .dontread
