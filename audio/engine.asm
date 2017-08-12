@@ -1102,7 +1102,7 @@ ParseMusic: ; e85e1
 
 .readnote
 	ld a, [CurChannel]
-	cp $3
+	cp CHAN4
 	jr nz, .notnoise
 	ld a, [wChannelSelectorSwitches+3]
 	and a
@@ -1128,6 +1128,8 @@ ParseMusic: ; e85e1
 	; get note pitch (top nybble)
 
 	ld a, [CurChannel]
+	cp CHAN5
+	jr nc, .notMuted
 	ld e, a
 	ld d, 0
 	ld hl, wChannelSelectorSwitches
@@ -1288,31 +1290,27 @@ GetNoiseSample: ; e86c5
 	ld a, [CurMusicByte]
 	and $f
 	call SetNoteDuration
+	; check current channel
+	ld a, [CurChannel]
+	bit 2, a ; are we in a sfx channel?
+	ld a, [SFXNoiseSampleSet]
+	jr nz, .next
 	; check wChannelSelectorSwitches
 	ld a, [wChannelSelectorSwitches+3]
 	and a
 	ret nz
-	; check current channel
-	ld a, [CurChannel]
-	bit 2, a ; are we in a sfx channel?
-	jr nz, .sfx
 	ld hl, Channel8Flags
 	bit SOUND_CHANNEL_ON, [hl] ; is ch8 on? (noise)
 	ret nz
 	ld a, [MusicNoiseSampleSet]
-	jr .next
-
-.sfx
-	ld a, [SFXNoiseSampleSet]
 .next
 	; load noise sample set id into de
 	ld e, a
 	ld d, 0
 	; load ptr to noise sample set in hl
 	ld hl, Drumkits
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1325,9 +1323,8 @@ endr
 	; use 'pitch' to seek noise sample set
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	; load sample pointer into NoiseSampleAddress
 	ld a, [hli]
 	ld [NoiseSampleAddressLo], a
@@ -1349,9 +1346,8 @@ ParseMusicCommand: ; e870f
 	ld d, 0
 	; seek command pointer
 	ld hl, MusicCommands
-rept 2
 	add hl, de
-endr
+	add hl, de
 	; jump to the new pointer
 	ld a, [hli]
 	ld h, [hl]
@@ -1606,9 +1602,8 @@ Music_JumpIf: ; e8817
 	inc hl
 	ld d, [hl]
 	; skip pointer
-rept 2
 	inc de
-endr
+	inc de
 	; update address
 	ld [hl], d
 	dec hl
@@ -2713,9 +2708,8 @@ LoadChannel: ; e8d1b
 	ld c, a
 	ld b, 0
 	ld hl, ChannelPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl] ; bc = channel pointer
