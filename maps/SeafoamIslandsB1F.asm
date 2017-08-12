@@ -17,20 +17,14 @@ SeafoamIslandsB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 20, SIGNPOST_ITEM, SeafoamIslandsB1FHiddenIceHeal
+	signpost 11, 20, SIGNPOST_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
 
 .PersonEvents: db 8
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ICE_HEAL, 1, EVENT_SEAFOAM_ISLANDS_B1F_ICE_HEAL
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 30, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 9, 31, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 32, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 12, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 11, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 15, 13, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeafoamIslandsB1FBoulder, -1
-
-SeafoamIslandsB1FHiddenIceHeal:
-	dwb EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL, ICE_HEAL
-
-SeafoamIslandsB1FBoulder:
-	jumpstd strengthboulder
+	itemball_event 3, 20, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
+	itemball_event 5, 24, ICE_HEAL, 1, EVENT_SEAFOAM_ISLANDS_B1F_ICE_HEAL
+	strengthboulder_event 9, 30
+	strengthboulder_event 9, 31
+	strengthboulder_event 10, 32
+	strengthboulder_event 8, 12
+	strengthboulder_event 11, 7
+	strengthboulder_event 15, 13

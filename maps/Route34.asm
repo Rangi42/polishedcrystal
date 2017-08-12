@@ -20,11 +20,11 @@ Route34_MapEventHeader:
 	xy_trigger 1, $11, $a, Route34LyraTrigger3
 
 .Signposts: db 5
-	signpost 6, 12, SIGNPOST_READ, Route34Sign
-	signpost 33, 13, SIGNPOST_READ, Route34TrainerTips
-	signpost 13, 10, SIGNPOST_READ, DayCareSign
-	signpost 32, 8, SIGNPOST_ITEM, Route34HiddenRareCandy
-	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
+	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText
+	signpost 33, 13, SIGNPOST_JUMPTEXT, Route34TrainerTipsText
+	signpost 13, 10, SIGNPOST_JUMPTEXT, DayCareSignText
+	signpost 32, 8, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
+	signpost 19, 17, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
 
 .PersonEvents: db 14
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
@@ -40,7 +40,7 @@ Route34_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 48, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
 	person_event SPRITE_COOLTRAINER_F, 48, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
 	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_ROUTE_34_NUGGET
+	itemball_event 30, 7, NUGGET, 1, EVENT_ROUTE_34_NUGGET
 
 const_value set 2
 	const ROUTE34_RICH_BOY
@@ -90,27 +90,18 @@ Route34LyraTrigger3:
 	applymovement PLAYER, Route34MovementData_AdjustPlayer2
 Route34LyraTrigger2:
 	special Special_FadeOutMusic
-	opentext
-	writetext Route34LyraText_Grandpa
-	waitbutton
-	closetext
+	showtext Route34LyraText_Grandpa
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ROUTE34_LYRA
 	spriteface ROUTE34_GRAMPS, UP
 	pause 10
 	applymovement ROUTE34_LYRA, Route34MovementData_LyraComesDown
 	spriteface ROUTE34_GRAMPS, LEFT
-	opentext
-	writetext Route34LyraGoodWorkText
-	waitbutton
-	closetext
+	showtext Route34LyraGoodWorkText
 	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
 	pause 15
 	spriteface ROUTE34_LYRA, DOWN
-	opentext
-	writetext Route34LyraGreetingText
-	waitbutton
-	closetext
+	showtext Route34LyraGreetingText
 	applymovement PLAYER, Route34MovementData_PlayerApproachesLyra
 	pause 10
 	spriteface ROUTE34_LYRA, RIGHT
@@ -126,10 +117,7 @@ Route34LyraTrigger2:
 	closetext
 	spriteface ROUTE34_LYRA, DOWN
 	pause 10
-	opentext
-	writetext Route34LyraChallengeText
-	waitbutton
-	closetext
+	showtext Route34LyraChallengeText
 	setevent EVENT_LYRA_ROUTE_34
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -164,10 +152,7 @@ Route34LyraTrigger2:
 	reloadmapafterbattle
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 .AfterBattle
-	opentext
-	writetext Route34LyraFollowMeText
-	waitbutton
-	closetext
+	showtext Route34LyraFollowMeText
 	applymovement ROUTE34_GRAMPS, Route34MovementData_GrampsEntersDayCare
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_GRAMPS
@@ -312,10 +297,7 @@ TrainerCamperTodd1:
 	end
 
 .SaleIsOn:
-	writetext CamperToddSaleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CamperToddSaleText
 
 .AskNumber:
 	jumpstd asknumber1m
@@ -504,16 +486,10 @@ OfficerfMaraScript:
 	end
 
 .AfterScript:
-	writetext OfficerfMaraAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficerfMaraAfterText
 
 .NoFight:
-	writetext OfficerfMaraDaytimeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficerfMaraDaytimeText
 
 TrainerBreederJulie:
 	trainer EVENT_BEAT_BREEDER_JULIE, BREEDER, JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
@@ -521,11 +497,7 @@ TrainerBreederJulie:
 .Script:
 	setevent EVENT_BEAT_BREEDER_JULIE_ONCE
 	end_if_just_battled
-	opentext
-	writetext BreederJulieAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BreederJulieAfterText
 
 Route34RichBoyIrvingScript:
 	faceplayer
@@ -571,16 +543,10 @@ Route34RichBoyIrvingScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I don't need to"
@@ -651,11 +617,7 @@ TrainerPokefanmBrandon:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext PokefanmBrandonAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer PokefanmBrandonAfterText
 
 TrainerCooltrainerfIrene:
 	trainer EVENT_BEAT_COOLTRAINERF_IRENE, COOLTRAINERF, IRENE, CooltrainerfIreneSeenText, CooltrainerfIreneBeatenText, 0, .Script
@@ -665,16 +627,10 @@ TrainerCooltrainerfIrene:
 	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
 	iftrue .GotPowerHerb
-	writetext CooltrainerfIreneAfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfIreneAfterText1
 
 .GotPowerHerb:
-	writetext CooltrainerfIreneAfterText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfIreneAfterText2
 
 TrainerCooltrainerfJenn:
 	trainer EVENT_BEAT_COOLTRAINERF_JENN, COOLTRAINERF, JENN, CooltrainerfJennSeenText, CooltrainerfJennBeatenText, 0, .Script
@@ -684,16 +640,10 @@ TrainerCooltrainerfJenn:
 	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
 	iftrue .GotPowerHerb
-	writetext CooltrainerfJennAfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfJennAfterText1
 
 .GotPowerHerb:
-	writetext CooltrainerfJennAfterText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CooltrainerfJennAfterText2
 
 TrainerCooltrainerfKate:
 	trainer EVENT_BEAT_COOLTRAINERF_KATE, COOLTRAINERF, KATE, CooltrainerfKateSeenText, CooltrainerfKateBeatenText, 0, .Script
@@ -714,21 +664,6 @@ TrainerCooltrainerfKate:
 .BagFull:
 	closetext
 	end
-
-Route34Sign:
-	jumptext Route34SignText
-
-Route34TrainerTips:
-	jumptext Route34TrainerTipsText
-
-DayCareSign:
-	jumptext DayCareSignText
-
-Route34HiddenRareCandy:
-	dwb EVENT_ROUTE_34_HIDDEN_RARE_CANDY, RARE_CANDY
-
-Route34HiddenSuperPotion:
-	dwb EVENT_ROUTE_34_HIDDEN_SUPER_POTION, SUPER_POTION
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up

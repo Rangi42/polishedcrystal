@@ -14,15 +14,15 @@ RadioTower1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower1FSignpost0Script
-	signpost 0, 13, SIGNPOST_READ, MapRadioTower1FSignpost1Script
+	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5d5e7
+	signpost 0, 13, SIGNPOST_JUMPTEXT, UnknownText_0x5d631
 
 .PersonEvents: db 7
 	person_event SPRITE_RECEPTIONIST, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_WHITNEY, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
 	person_event SPRITE_RECEPTIONIST, 6, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
-	person_event SPRITE_LASS, 5, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x5ce51, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5ce54, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_LASS, 5, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d476, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d4ac, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_COOLTRAINER_F, 6, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
 
@@ -35,16 +35,10 @@ ReceptionistScript_0x5cd29:
 	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue UnknownScript_0x5cd37
-	writetext UnknownText_0x5ce77
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5ce77
 
 UnknownScript_0x5cd37:
-	writetext UnknownText_0x5ce81
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5ce81
 
 ReceptionistScript_0x5cd3d:
 	faceplayer
@@ -89,10 +83,7 @@ ReceptionistScript_0x5cd3d:
 	jump .NoPrize
 
 .GameOver:
-	writetext UnknownText_0x5cf7e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5cf7e
 
 .FirstPlace:
 	writetext WonFirstPlaceText
@@ -139,16 +130,10 @@ ReceptionistScript_0x5cd3d:
 	jump .GameOver
 
 .NoPrize:
-	writetext UnknownText_0x5d0c0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d0c0
 
 .BagFull:
-	writetext UnknownText_0x5d0e6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d0e6
 
 CooltrainerFScript_0x5cdd5:
 	faceplayer
@@ -196,10 +181,7 @@ CooltrainerFScript_0x5cdd5:
 	showemote EMOTE_SHOCK, RADIOTOWER1F_WHITNEY, 15
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyApproachesMovementData
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext RadioTower1FWhitney2Text
-	waitbutton
-	closetext
+	showtext RadioTower1FWhitney2Text
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves1MovementData
 	spriteface PLAYER, LEFT
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
@@ -207,10 +189,7 @@ CooltrainerFScript_0x5cdd5:
 	end
 
 UnknownScript_0x5ce2d:
-	writetext UnknownText_0x5d3e5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d3e5
 
 RadioCardText:
 	db "Radio Card@"
@@ -221,48 +200,22 @@ UnknownScript_0x5ce3e:
 
 UnknownScript_0x5ce42:
 	playsound SFX_WRONG
-	writetext UnknownText_0x5d409
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d409
 
 UnknownScript_0x5ce4b:
-	writetext UnknownText_0x5d443
-	waitbutton
-	closetext
-	end
-
-LassScript_0x5ce51:
-	jumptextfaceplayer UnknownText_0x5d476
-
-YoungsterScript_0x5ce54:
-	jumptextfaceplayer UnknownText_0x5d4ac
+	jumpopenedtext UnknownText_0x5d443
 
 TrainerGruntM3:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_3, GRUNTM, 3, GruntM3SeenText, GruntM3BeatenText, 0, GruntM3Script
 
 GruntM3Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5d5a2
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5d5a2
 
 RadioTower1FWhitneyScript:
-	faceplayer
-	opentext
-	writetext RadioTower1FWhitney1Text
-	waitbutton
-	closetext
+	showtextfaceplayer RadioTower1FWhitney1Text
 	spriteface RADIOTOWER1F_WHITNEY, LEFT
 	end
-
-MapRadioTower1FSignpost0Script:
-	jumptext UnknownText_0x5d5e7
-
-MapRadioTower1FSignpost1Script:
-	jumptext UnknownText_0x5d631
 
 MovementData_0x5ce71:
 	step_right

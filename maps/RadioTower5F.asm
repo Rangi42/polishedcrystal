@@ -15,17 +15,17 @@ RadioTower5F_MapEventHeader:
 	xy_trigger 1, $5, $10, RadioTower5FRocketBossTrigger
 
 .Signposts: db 3
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower5FSignpost0Script
-	signpost 0, 11, SIGNPOST_READ, MapRadioTower5FSignpost2Script
-	signpost 0, 15, SIGNPOST_READ, MapRadioTower5FSignpost2Script
+	signpost 0, 3, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice
+	signpost 0, 11, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
+	signpost 0, 15, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
 
 .PersonEvents: db 6
-	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Director, EVENT_RADIO_TOWER_DIRECTOR
-	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Petrel1Script, EVENT_RADIO_TOWER_PETREL
+	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
+	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
 	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ARIANA, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Ben, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
+	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	itemball_event 5, 8, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
 
 const_value set 2
 	const RADIOTOWER5F_DIRECTOR
@@ -36,26 +36,17 @@ const_value set 2
 FakeDirectorScript:
 	spriteface RADIOTOWER5F_DIRECTOR, UP
 	showemote EMOTE_SHOCK, RADIOTOWER5F_DIRECTOR, 15
-	opentext
-	writetext FakeDirectorTextBefore1
-	waitbutton
-	closetext
+	showtext FakeDirectorTextBefore1
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorMovement
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	opentext
-	writetext FakeDirectorTextBefore2
-	waitbutton
-	closetext
+	showtext FakeDirectorTextBefore2
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorSpinMovement
 	appear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
 	spriteface RADIOTOWER5F_PETREL, UP
 	pause 10
-	opentext
-	writetext FakeDirectorTextBefore3
-	waitbutton
-	closetext
+	showtext FakeDirectorTextBefore3
 	winlosstext FakeDirectorWinText, 0
 	setlasttalked RADIOTOWER5F_PETREL
 	loadtrainer PETREL, PETREL1
@@ -70,40 +61,24 @@ FakeDirectorScript:
 	setevent EVENT_BEAT_PETREL_1
 	end
 
-Petrel1Script:
-	jumptextfaceplayer FakeDirectorTextAfter
-
-Director:
-	jumptextfaceplayer RadioTower5FDirectorText
-
 TrainerAriana1:
 	trainer EVENT_BEAT_ARIANA_1, ARIANA, ARIANA1, Ariana1SeenText, Ariana1BeatenText, 0, Ariana1Script
 
 Ariana1Script:
 	end_if_just_battled
-	opentext
-	writetext Ariana1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer Ariana1AfterText
 
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface RADIOTOWER5F_ARCHER, RIGHT
-	opentext
-	writetext RadioTower5FRocketBossBeforeText
-	waitbutton
-	closetext
+	showtext RadioTower5FRocketBossBeforeText
 	winlosstext RadioTower5FRocketBossWinText, 0
 	setlasttalked RADIOTOWER5F_ARCHER
 	loadtrainer ARCHER, ARCHER1
 	startbattle
 	reloadmapafterbattle
-	opentext
-	writetext RadioTower5FRocketBossAfterText
-	waitbutton
-	closetext
+	showtext RadioTower5FRocketBossAfterText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear RADIOTOWER5F_ARCHER
@@ -146,15 +121,6 @@ RadioTower5FRocketBossTrigger:
 	moveperson RADIOTOWER5F_DIRECTOR, $3, $6
 	appear RADIOTOWER5F_DIRECTOR
 	end
-
-Ben:
-	jumptextfaceplayer BenText
-
-MapRadioTower5FSignpost0Script:
-	jumptext SignpostRadioTower5FOffice
-
-MapRadioTower5FSignpost2Script:
-	jumptext SignpostRadioTower5FStudio
 
 FakeDirectorMovement:
 	step_left

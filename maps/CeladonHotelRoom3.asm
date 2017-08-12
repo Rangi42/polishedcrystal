@@ -15,10 +15,7 @@ CeladonHotelRoom3_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_GRAMPS, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom3GrampsScript, -1
-
-CeladonHotelRoom3GrampsScript:
-	jumptextfaceplayer CeladonHotelRoom3GrampsText
+	person_event SPRITE_GRAMPS, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
 
 CeladonHotelRoom3GrampsText:
 	text "I've been staying"

@@ -1,9 +1,8 @@
 # To Do
 
-> You know it's sitting back and looking at it that you realize that Gamefreak is actually really good devs.
-> Like you have Pokemon and it's a simple formula "How can you fuck it up?" and then all of these Romhacks basically go "Like this."
+> Of course, it is very difficult to make the game, so I hope people don't get their expectations up too high.
 
-– Anonymous, [/vp/](http://boards.4chan.org/vp/)
+– Shigeru Ohmori, "[Pokémon’s Developers Talk About Their Console RPG Debut On Switch](http://www.gameinformer.com/b/features/archive/2017/08/08/pokemon-s-developers-talk-about-their-console-rpg-debut-on-switch.aspx)"
 
 
 ## Missing content
@@ -28,6 +27,7 @@ The final, non-beta 3.0 release should include all of these.
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
+* Allow trading Eggs
 
 
 ### Aesthetics
@@ -125,17 +125,9 @@ Low priority:
 * Finish and merge the optimizations branch
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
 * Optimize battle command engine, including parameterized commands
-* SIGNPOST_JUMPTEXT
-* SIGNPOST_JUMPSTD (for picturebookshelf, difficultbookshelf, radio1, radio2, elevatorbutton, and teamrocketoath)
-* PERSONTYPE_JUMPTEXTFP
-* PERSONTYPE_JUMPSTD (for cuttree, smashrock, strengthboulder, pokecenternurse, gamecornercoinvendor, and happinesschecknpc)
-* PERSONTYPE_ITEMBALL (no script needed)
-* PERSONTYPE_TMHMBALL (no script needed)
-* PERSONTYPE_MART
-* PERSONTYPE_FRUITTREE
+* Look for `:\n\tclosetext\n\tend` and use `iftrue_endtext` or `iffalse_endtext` instead
 * PERSONTYPE_GENERICTRAINER
 * PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)
-* PERSONTYPE_TRADE (script pointer → trade ID)
 
 
 ## Postponed until 4.0

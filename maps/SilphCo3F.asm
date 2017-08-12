@@ -12,22 +12,22 @@ SilphCo3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 2, 3, SIGNPOST_READ, SilphCo3FDeptSign
-	signpost 2, 9, SIGNPOST_READ, SilphCo3FDeptSign
-	signpost 0, 5, SIGNPOST_READ, SilphCo3FElevator
-	signpost 3, 0, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 6, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 7, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 12, SIGNPOST_READ, SilphCo3FBookshelf
-	signpost 3, 13, SIGNPOST_READ, SilphCo3FBookshelf
+	signpost 2, 3, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
+	signpost 2, 9, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
+	signpost 0, 5, SIGNPOST_JUMPTEXT, SilphCo3FElevatorText
+	signpost 3, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 12, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 13, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 6
 	person_event SPRITE_SILPH_EMPLOYEE, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo3FSilphEmployeeScript, -1
-	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FScientist1Script, -1
-	person_event SPRITE_SCIENTIST, 7, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FScientist2Script, -1
-	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FScientist3Script, -1
-	person_event SPRITE_OFFICER, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo3FOfficerScript, -1
-	person_event SPRITE_GENTLEMAN, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SilphCo3FGentlemanScript, -1
+	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist1Text, -1
+	person_event SPRITE_SCIENTIST, 7, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist2Text, -1
+	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_SILPH, MART_SILPH_CO, -1
+	person_event SPRITE_OFFICER, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FOfficerText, -1
+	person_event SPRITE_GENTLEMAN, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FGentlemanText, -1
 
 SilphCo3FSilphEmployeeScript:
 	faceplayer
@@ -45,34 +45,6 @@ SilphCo3FSilphEmployeeScript:
 .Done:
 	closetext
 	end
-
-SilphCo3FScientist1Script:
-	jumptextfaceplayer SilphCo3FScientist1Text
-
-SilphCo3FScientist2Script:
-	jumptextfaceplayer SilphCo3FScientist2Text
-
-SilphCo3FScientist3Script:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_SILPH, MART_SILPH_CO
-	closetext
-	end
-
-SilphCo3FOfficerScript:
-	jumptextfaceplayer SilphCo3FOfficerText
-
-SilphCo3FGentlemanScript:
-	jumptextfaceplayer SilphCo3FGentlemanText
-
-SilphCo3FDeptSign:
-	jumptext SilphCo3FDeptSignText
-
-SilphCo3FElevator:
-	jumptext SilphCo3FElevatorText
-
-SilphCo3FBookshelf:
-	jumpstd difficultbookshelf
 
 SilphCo3FSilphEmployeeText1:
 	text "Silph and Devon"

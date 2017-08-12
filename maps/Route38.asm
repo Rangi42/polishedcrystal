@@ -13,8 +13,8 @@ Route38_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 33, SIGNPOST_READ, Route38Sign
-	signpost 13, 5, SIGNPOST_READ, Route38TrainerTips
+	signpost 7, 33, SIGNPOST_JUMPTEXT, Route38SignText
+	signpost 13, 5, SIGNPOST_JUMPTEXT, Route38TrainerTipsText
 
 .PersonEvents: db 7
 	person_event SPRITE_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
@@ -22,7 +22,7 @@ Route38_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
 	person_event SPRITE_BEAUTY, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
 	person_event SPRITE_SAILOR, 5, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a1f33, -1
+	fruittree_event 10, 12, FRUITTREE_ROUTE_38, SITRUS_BERRY
 	person_event SPRITE_BEAUTY, 8, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
 
 TrainerBird_keeperToby:
@@ -30,22 +30,14 @@ TrainerBird_keeperToby:
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a1f86
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a1f86
 
 TrainerSailorHarry:
 	trainer EVENT_BEAT_SAILOR_HARRY, SAILOR, HARRY, SailorHarrySeenText, SailorHarryBeatenText, 0, .script
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a220c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a220c
 
 TrainerLassDana1:
 	trainer EVENT_BEAT_LASS_DANA, LASS, DANA1, LassDana1SeenText, LassDana1BeatenText, 0, .script
@@ -307,31 +299,14 @@ TrainerBeautyValencia:
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a2185
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a2185
 
 TrainerBeautyOlivia:
 	trainer EVENT_BEAT_BEAUTY_OLIVIA, BEAUTY, OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText, 0, .script
 
 .script
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a229a
-	waitbutton
-	closetext
-	end
-
-Route38Sign:
-	jumptext Route38SignText
-
-Route38TrainerTips:
-	jumptext Route38TrainerTipsText
-
-FruitTreeScript_0x1a1f33:
-	fruittree FRUITTREE_ROUTE_38
+	jumptextfaceplayer UnknownText_0x1a229a
 
 Bird_keeperTobySeenText:
 	text "Fly high into the"

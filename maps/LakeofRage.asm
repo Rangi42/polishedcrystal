@@ -15,12 +15,12 @@ LakeofRage_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 27, 21, SIGNPOST_READ, MapLakeofRageSignpost0Script
+	signpost 27, 21, SIGNPOST_JUMPTEXT, UnknownText_0x708d7
 	signpost 31, 25, SIGNPOST_READ, MapLakeofRageSignpost1Script
-	signpost 28, 11, SIGNPOST_ITEM, LakeofRageHiddenFullRestore
-	signpost 4, 4, SIGNPOST_ITEM, LakeofRageHiddenRareCandy
-	signpost 5, 35, SIGNPOST_ITEM, LakeofRageHiddenMaxPotion
-	signpost 10, 7, SIGNPOST_ITEM, LakeofRageHiddenMaxRevive
+	signpost 28, 11, SIGNPOST_ITEM + FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
+	signpost 4, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY
+	signpost 5, 35, SIGNPOST_ITEM + MAX_POTION, EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION
+	signpost 10, 7, SIGNPOST_ITEM + MAX_REVIVE, EVENT_LAKE_OF_RAGE_HIDDEN_MAX_REVIVE
 
 .PersonEvents: db 15
 	person_event SPRITE_LAKE_OF_RAGE_LANCE, 28, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript_0x70022, EVENT_LAKE_OF_RAGE_LANCE
@@ -30,14 +30,14 @@ LakeofRage_MapEventHeader:
 	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 22, 19, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GyaradosScript_0x70063, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_SUPER_NERD, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
 	person_event SPRITE_GRAMPS, 26, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7008e, -1
-	person_event SPRITE_SUPER_NERD, 13, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x700a2, -1
-	person_event SPRITE_COOLTRAINER_F, 29, 25, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x700a5, -1
+	person_event SPRITE_SUPER_NERD, 13, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70444, -1
+	person_event SPRITE_COOLTRAINER_F, 29, 25, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x704bb, -1
 	person_event SPRITE_FISHER, 23, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerFisherAndre, EVENT_LAKE_OF_RAGE_CIVILIANS
 	person_event SPRITE_FISHER, 26, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerFisherRaymond, EVENT_LAKE_OF_RAGE_CIVILIANS
 	person_event SPRITE_COOLTRAINER_M, 15, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermAaron, EVENT_LAKE_OF_RAGE_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 7, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerCooltrainerfLois, EVENT_LAKE_OF_RAGE_CIVILIANS
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ELIXER, 1, EVENT_LAKE_OF_RAGE_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 6, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeofRageCutTree, EVENT_LAKE_OF_RAGE_CUT_TREE
+	itemball_event 2, 35, ELIXER, 1, EVENT_LAKE_OF_RAGE_ELIXER
+	cuttree_event 21, 6, EVENT_LAKE_OF_RAGE_CUT_TREE
 
 const_value set 2
 	const LAKEOFRAGE_LANCE
@@ -136,25 +136,10 @@ GrampsScript_0x7008e:
 	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x7009c
-	writetext UnknownText_0x703f8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x703f8
 
 UnknownScript_0x7009c:
-	writetext UnknownText_0x70421
-	waitbutton
-	closetext
-	end
-
-SuperNerdScript_0x700a2:
-	jumptextfaceplayer UnknownText_0x70444
-
-CooltrainerFScript_0x700a5:
-	jumptextfaceplayer UnknownText_0x704bb
-
-MapLakeofRageSignpost0Script:
-	jumptext UnknownText_0x708d7
+	jumpopenedtext UnknownText_0x70421
 
 MapLakeofRageSignpost1Script:
 	opentext
@@ -176,44 +161,28 @@ TrainerFisherAndre:
 
 FisherAndreScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7058f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7058f
 
 TrainerFisherRaymond:
 	trainer EVENT_BEAT_FISHER_RAYMOND, FISHER, RAYMOND, FisherRaymondSeenText, FisherRaymondBeatenText, 0, FisherRaymondScript
 
 FisherRaymondScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x70611
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x70611
 
 TrainerCooltrainermAaron:
 	trainer EVENT_BEAT_COOLTRAINERM_AARON, COOLTRAINERM, AARON, CooltrainermAaronSeenText, CooltrainermAaronBeatenText, 0, CooltrainermAaronScript
 
 CooltrainermAaronScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7069c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7069c
 
 TrainerCooltrainerfLois:
 	trainer EVENT_BEAT_COOLTRAINERF_LOIS, COOLTRAINERF, LOIS, CooltrainerfLoisSeenText, CooltrainerfLoisBeatenText, 0, CooltrainerfLoisScript
 
 CooltrainerfLoisScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x70752
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x70752
 
 WesleyScript:
 	faceplayer
@@ -233,10 +202,7 @@ WesleyScript:
 	verbosegiveitem BLACK_BELT
 	iffalse WesleyDoneScript
 	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
-	writetext WesleyGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext WesleyGaveGiftText
 
 WesleyWednesdayScript:
 	writetext WesleyWednesdayText
@@ -246,25 +212,7 @@ WesleyDoneScript:
 	end
 
 WesleyNotWednesdayScript:
-	writetext WesleyNotWednesdayText
-	waitbutton
-	closetext
-	end
-
-LakeofRageCutTree:
-	jumpstd cuttree
-
-LakeofRageHiddenFullRestore:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE, FULL_RESTORE
-
-LakeofRageHiddenRareCandy:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY, RARE_CANDY
-
-LakeofRageHiddenMaxPotion:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION, MAX_POTION
-
-LakeofRageHiddenMaxRevive:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_REVIVE, MAX_REVIVE
+	jumpopenedtext WesleyNotWednesdayText
 
 MovementData_0x70155:
 	teleport_from

@@ -15,25 +15,21 @@ DimCave1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 2, 28, SIGNPOST_ITEM, DimCave1FHiddenFullHeal
+	signpost 2, 28, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 5
 	person_event SPRITE_SUPER_NERD, 7, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
 	person_event SPRITE_SCIENTIST, 18, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
 	person_event SPRITE_ROCKER, 21, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 31, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
+	itemball_event 20, 3, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
+	itemball_event 31, 28, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
 
 TrainerSuper_nerdGregg:
 	trainer EVENT_BEAT_SUPER_NERD_GREGG, SUPER_NERD, GREGG, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "These carts are"
@@ -56,11 +52,7 @@ TrainerScientistDexter:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm a hydrologist"
@@ -88,11 +80,7 @@ TrainerGuitaristmBiff:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I dig rock and"
@@ -108,6 +96,3 @@ TrainerGuitaristmBiff:
 	text "I love heavy metal"
 	line "and heavy metals!"
 	done
-
-DimCave1FHiddenFullHeal:
-	dwb EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL, FULL_HEAL

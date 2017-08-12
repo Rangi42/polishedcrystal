@@ -24,26 +24,26 @@ VioletCity_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 24, 24, SIGNPOST_READ, VioletCitySign
-	signpost 21, 15, SIGNPOST_READ, VioletGymSign
-	signpost  8, 24, SIGNPOST_READ, SproutTowerSign
-	signpost 21, 27, SIGNPOST_READ, EarlsPokemonAcademySign
-	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
-	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
+	signpost 24, 24, SIGNPOST_JUMPTEXT, VioletCitySignText
+	signpost 21, 15, SIGNPOST_JUMPTEXT, VioletGymSignText
+	signpost  8, 24, SIGNPOST_JUMPTEXT, SproutTowerSignText
+	signpost 21, 27, SIGNPOST_JUMPTEXT, EarlsPokemonAcademySignText
+	signpost 18, 37, SIGNPOST_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION
+	signpost 12, 21, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
 
 .PersonEvents: db 13
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
-	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityLassScript, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM1Script, -1
-	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerFScript, -1
-	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityGrampsScript, -1
-	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityYoungsterScript, -1
-	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityFisherScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 36, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityCutTree, EVENT_VIOLET_CITY_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletCityFruitTreeScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
-	person_event SPRITE_BALL_CUT_FRUIT, 11, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
-	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VioletCityCooltrainerM2Script, -1
+	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityLassText, -1
+	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM1Text, -1
+	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerFText, -1
+	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityGrampsText, -1
+	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityYoungsterText, -1
+	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityFisherText, -1
+	cuttree_event 23, 36, EVENT_VIOLET_CITY_CUT_TREE
+	fruittree_event 33, 14, FRUITTREE_VIOLET_CITY, CHERI_BERRY
+	itemball_event 6, 10, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
+	itemball_event 11, 35, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
+	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM2Text, -1
 
 const_value set 2
 	const VIOLETCITY_EARL
@@ -63,10 +63,7 @@ VioletCityEarlScript:
 	writetext Text_EarlAsksIfYouBeatFalkner
 	yesorno
 	iffalse .FollowEarl
-	writetext Text_VeryNiceIndeed
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_VeryNiceIndeed
 
 .FollowEarl:
 	writetext Text_FollowEarl
@@ -79,10 +76,7 @@ VioletCityEarlScript:
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	stopfollow
 	special RestartMapMusic
-	opentext
-	writetext Text_HereTeacherIAm
-	waitbutton
-	closetext
+	showtext Text_HereTeacherIAm
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	applymovement VIOLETCITY_EARL, VioletCityFinishFollowEarl_MovementData
 	playsound SFX_ENTER_DOOR
@@ -90,51 +84,6 @@ VioletCityEarlScript:
 	clearevent EVENT_EARLS_ACADEMY_EARL
 	waitsfx
 	end
-
-VioletCityLassScript:
-	jumptextfaceplayer VioletCityLassText
-
-VioletCityCooltrainerM1Script:
-	jumptextfaceplayer VioletCityCooltrainerM1Text
-
-VioletCityCooltrainerFScript:
-	jumptextfaceplayer VioletCityCooltrainerFText
-
-VioletCityGrampsScript:
-	jumptextfaceplayer VioletCityGrampsText
-
-VioletCityYoungsterScript:
-	jumptextfaceplayer VioletCityYoungsterText
-
-VioletCityFisherScript:
-	jumptextfaceplayer VioletCityFisherText
-
-VioletCityCooltrainerM2Script:
-	jumptextfaceplayer VioletCityCooltrainerM2Text
-
-VioletCitySign:
-	jumptext VioletCitySignText
-
-VioletGymSign:
-	jumptext VioletGymSignText
-
-SproutTowerSign:
-	jumptext SproutTowerSignText
-
-EarlsPokemonAcademySign:
-	jumptext EarlsPokemonAcademySignText
-
-VioletCityCutTree:
-	jumpstd cuttree
-
-VioletCityFruitTreeScript:
-	fruittree FRUITTREE_VIOLET_CITY
-
-VioletCityHiddenHyperPotion:
-	dwb EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION, HYPER_POTION
-
-VioletCityHiddenPokeBall:
-	dwb EVENT_VIOLET_CITY_HIDDEN_POKE_BALL, POKE_BALL
 
 VioletCityFollowEarl_MovementData:
 	run_step_down

@@ -17,58 +17,15 @@ MahoganyPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalPryceScript
 
 .PersonEvents: db 4
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x19a356, -1
-	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19a359, -1
-	person_event SPRITE_YOUNGSTER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x19a35c, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x19a35f, -1
-
-NurseScript_0x19a356:
-	jumpstd pokecenternurse
-
-PokefanMScript_0x19a359:
-	jumptextfaceplayer UnknownText_0x19a362
-
-YoungsterScript_0x19a35c:
-	jumptextfaceplayer UnknownText_0x19a3b3
-
-CooltrainerFScript_0x19a35f:
-	jumptextfaceplayer UnknownText_0x19a418
+	pc_nurse_event 1, 5
+	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, MahoganyPokeCenter1FPokefanmText, -1
+	person_event SPRITE_YOUNGSTER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, MahoganyPokeCenter1FYoungsterText, -1
+	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, MahoganyPokeCenter1FCooltrainerfText, -1
 
 PokemonJournalPryceScript:
 	setflag ENGINE_READ_PRYCE_JOURNAL
-	jumptext PokemonJournalPryceText
+	thistext
 
-UnknownText_0x19a362:
-	text "What's this? Team"
-	line "Rocket has come"
-	cont "back?"
-
-	para "I saw some men in"
-	line "black at Lake of"
-	cont "Rage…"
-	done
-
-UnknownText_0x19a3b3:
-	text "I stop my #mon"
-	line "from evolving too"
-	cont "early."
-
-	para "I make them learn"
-	line "certain moves be-"
-	cont "fore I let them"
-	cont "evolve."
-	done
-
-UnknownText_0x19a418:
-	text "#mon do become"
-	line "stronger when they"
-
-	para "evolve, but they"
-	line "also learn moves"
-	cont "more slowly."
-	done
-
-PokemonJournalPryceText:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -87,4 +44,34 @@ PokemonJournalPryceText:
 	para "earned him the"
 	line "nickname “the"
 	cont "winter trainer”."
+	done
+
+MahoganyPokeCenter1FPokefanmText:
+	text "What's this? Team"
+	line "Rocket has come"
+	cont "back?"
+
+	para "I saw some men in"
+	line "black at Lake of"
+	cont "Rage…"
+	done
+
+MahoganyPokeCenter1FYoungsterText:
+	text "I stop my #mon"
+	line "from evolving too"
+	cont "early."
+
+	para "I make them learn"
+	line "certain moves be-"
+	cont "fore I let them"
+	cont "evolve."
+	done
+
+MahoganyPokeCenter1FCooltrainerfText:
+	text "#mon do become"
+	line "stronger when they"
+
+	para "evolve, but they"
+	line "also learn moves"
+	cont "more slowly."
 	done

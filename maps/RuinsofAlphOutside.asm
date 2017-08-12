@@ -28,48 +28,41 @@ RuinsofAlphOutside_MapEventHeader:
 	xy_trigger 1, $15, $c, UnknownScript_0x5803a
 
 .Signposts: db 5
-	signpost 14, 18, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost0Script
-	signpost 22, 14, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost1Script
-	signpost 18, 20, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost2Script
-	signpost 9, 10, SIGNPOST_READ, MapRuinsofAlphOutsideSignpost3Script
-	signpost 13, 4, SIGNPOST_ITEM, RuinsofAlphOutsideHiddenRareCandy
+	signpost 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58325
+	signpost 22, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58342
+	signpost 18, 20, SIGNPOST_JUMPTEXT, UnknownText_0x58362
+	signpost 9, 10, SIGNPOST_JUMPTEXT, MapRuinsofAlphOutsideSignpost3Text
+	signpost 13, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 13
 	person_event SPRITE_SCIENTIST, 21, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
-	person_event SPRITE_YOUNGSTER, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	person_event SPRITE_SCIENTIST, 18, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	person_event SPRITE_YOUNGSTER, 26, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
 	person_event SPRITE_SUPER_NERD, 37, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuperNerdStan, -1
 	person_event SPRITE_FISHER, 23, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
+	person_event SPRITE_YOUNGSTER, 14, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	person_event SPRITE_YOUNGSTER, 17, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 12, 4, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 5, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 13, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 15, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RuinsofAlphOutsideRock, -1
+	smashrock_event 10, 7
+	smashrock_event 10, 8
+	smashrock_event 12, 4
+	smashrock_event 13, 5
+	smashrock_event 13, 7
+	smashrock_event 15, 8
 
 const_value set 2
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
-	const RUINSOFALPHOUTSIDE_YOUNGSTER3
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 
 RuinsofAlphOutsideTrigger0:
 	checkevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	iffalse .End
-	opentext
-	writetext RuinsofAlphScientistClimax1Text
-	waitbutton
-	closetext
+	showtext RuinsofAlphScientistClimax1Text
 	follow RUINSOFALPHOUTSIDE_SCIENTIST2, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
 	stopfollow
 	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
 	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
-	opentext
-	writetext RuinsofAlphScientistClimax2Text
-	waitbutton
-	closetext
+	showtext RuinsofAlphScientistClimax2Text
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
 	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
@@ -119,10 +112,7 @@ UnknownScript_0x5803a:
 ScientistScript_0x58043:
 	faceplayer
 UnknownScript_0x58044:
-	opentext
-	writetext UnknownText_0x580c7
-	waitbutton
-	closetext
+	showtext UnknownText_0x580c7
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, MovementData_0x580ba
@@ -142,26 +132,15 @@ FisherScript_0x58061:
 	writetext UnknownText_0x583a4
 	buttonsound
 .Next:
-	writetext UnknownText_0x58420
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x58420
 
 YoungsterScript_0x58076:
 	faceplayer
-	opentext
-	writetext UnknownText_0x58449
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58449
 
 YoungsterScript_0x5807e:
-	faceplayer
-	opentext
-	writetext UnknownText_0x5848e
-	waitbutton
-	closetext
-	spriteface RUINSOFALPHOUTSIDE_YOUNGSTER3, UP
+	showtextfaceplayer UnknownText_0x5848e
+	spriteface LAST_TALKED, UP
 	end
 
 TrainerPsychicNathan:
@@ -169,40 +148,14 @@ TrainerPsychicNathan:
 
 PsychicNathanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5830e
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5830e
 
 TrainerSuperNerdStan:
 	trainer EVENT_BEAT_SUPER_NERD_STAN, SUPER_NERD, STAN, UnknownText_0x581e5, UnknownText_0x58217, 0, UnknownScript_0x580a9
 
 UnknownScript_0x580a9:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x58250
-	waitbutton
-	closetext
-	end
-
-MapRuinsofAlphOutsideSignpost0Script:
-	jumptext UnknownText_0x58325
-
-MapRuinsofAlphOutsideSignpost1Script:
-	jumptext UnknownText_0x58342
-
-MapRuinsofAlphOutsideSignpost2Script:
-	jumptext UnknownText_0x58362
-
-MapRuinsofAlphOutsideSignpost3Script:
-	jumptext MapRuinsofAlphOutsideSignpost3Text
-
-RuinsofAlphOutsideHiddenRareCandy:
-	dwb EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY, RARE_CANDY
-
-RuinsofAlphOutsideRock:
-	jumpstd smashrock
+	jumptextfaceplayer UnknownText_0x58250
 
 MovementData_0x580ba:
 	step_right

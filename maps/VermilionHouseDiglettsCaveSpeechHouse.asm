@@ -15,10 +15,7 @@ VermilionHouseDiglettsCaveSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_GENTLEMAN, 3, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x192031, -1
-
-GentlemanScript_0x192031:
-	jumptextfaceplayer UnknownText_0x192034
+	person_event SPRITE_GENTLEMAN, 3, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x192034, -1
 
 UnknownText_0x192034:
 	text "Over many years,"

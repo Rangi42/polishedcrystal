@@ -172,6 +172,11 @@
 	const MUSIC_CREDITS                        ; aa
 	const MUSIC_POST_CREDITS                   ; ab
 	const MUSIC_TITLE_XY                       ; ac
+	const MUSIC_LEGENDARY_BATTLE_XY            ; ad ; unused
+	const MUSIC_WILD_BATTLE_PRISM              ; ae ; unused
+	const MUSIC_TRAINER_BATTLE_PRISM           ; af ; unused
+	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b0 ; unused
+	const MUSIC_PALETTE_BATTLE_PRISM           ; b1 ; unused
 NUM_SONGS EQU const_value
 
 ; special

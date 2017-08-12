@@ -21,14 +21,6 @@ ROMX $05
 	org $4000
 	"bank5"
 
-ROMX $06
-	org $4000
-	"Substitute and Ghost"
-
-ROMX $07
-	org $4000
-	"Roofs"
-
 ROMX $08
 	org $4000
 	"bank8"
@@ -53,7 +45,6 @@ ROMX $0D
 ROMX $0E
 	org $4000
 	"Enemy Trainer Pointers"
-	"Enemy Trainer Parties 1"
 
 ROMX $0F
 	org $4000
@@ -99,16 +90,17 @@ ROMX $21
 ROMX $22
 	org $4000
 	"bank22"
-	"sprites_4"
+	"Special Map Blockdata"
+	"Pokemon Center Scripts 4"
 
 ROMX $23
 	org $4000
 	"bank23"
-	"sprites_5"
 
 ROMX $24
 	org $4000
 	"bank24"
+	"Special Map Scripts"
 
 ROMX $25
 	org $4000
@@ -121,8 +113,11 @@ ROMX $28
 
 ROMX $29
 	org $4000
-	"Phone Text"
 	"Pic Animations 4"
+
+ROMX $2B
+	org $4000
+	"New Bark Scripts"
 
 ROMX $2E
 	org $4000
@@ -131,14 +126,6 @@ ROMX $2E
 ROMX $2F
 	org $4000
 	"bank2F"
-
-ROMX $30
-	org $4000
-	"sprites_1"
-
-ROMX $31
-	org $4000
-	"sprites_2"
 
 ROMX $32
 	org $4000
@@ -192,7 +179,6 @@ ROMX $40
 ROMX $41
 	org $4000
 	"bank41"
-	"Item Icons 1"
 
 ROMX $42
 	org $4000
@@ -202,11 +188,18 @@ ROMX $42
 ROMX $43
 	org $4000
 	"bank43"
-	"Item Icons 2"
 
 ROMX $48
 	org $4000
 	"Pic Pointers"
+
+ROMX $58
+	org $4000
+	"Battle Tower Scripts"
+
+ROMX $5A
+	org $4000
+	"Pokemon Center Scripts 1"
 
 ROMX $5D
 	org $4000
@@ -217,13 +210,9 @@ ROMX $5E
 	"bank5E"
 	"Crystal Sound Effects"
 
-ROMX $60
+ROMX $5F
 	org $4000
-	"Pokedex Entries 001-064"
-
-ROMX $6C
-	org $4000
-	"Common Text 1"
+	"Pokemon Center Scripts 2"
 
 ROMX $6D
 	org $4000
@@ -231,22 +220,15 @@ ROMX $6D
 
 ROMX $6E
 	org $4000
-	"Pokedex Entries 065-128"
 	"Wild Data"
 
 ROMX $6F
 	org $4000
-	"Text 1"
 	"Second Map Headers"
 
 ROMX $70
 	org $4000
-	"Text 2"
 	"Pokedex"
-
-ROMX $71
-	org $4000
-	"Text 3"
 
 ROMX $72
 	org $4000
@@ -254,27 +236,21 @@ ROMX $72
 
 ROMX $73
 	org $4000
-	"Pokedex Entries 129-192"
 	"Enemy Trainers"
 
-ROMX $74
+ROMX $76
 	org $4000
-	"Pokedex Entries 193-253"
-	"Enemy Trainer Parties 2"
-
-ROMX $75
-	org $4000
-	"sprites_3"
+	"Pokemon Center Scripts 3"
 
 ROMX $77
 	org $4000
 	"bank77"
+	"New Bark Scripts 2"
 
-ROMX $7B
+ROMX $78
 	org $4000
 	"bank7B"
 
-ROMX $7E
+ROMX $79
 	org $4000
 	"bank7E"
-	"Typefaces"

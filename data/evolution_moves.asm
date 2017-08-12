@@ -45,7 +45,7 @@ EvolutionMoves::
 	db NO_MOVE      ; GLOOM
 	db NO_MOVE      ; VILEPLUME
 	db NO_MOVE      ; PARAS
-	db NO_MOVE      ; PARASECT
+	db SHADOW_CLAW  ; PARASECT
 	db NO_MOVE      ; VENONAT
 	db GUST         ; VENOMOTH
 	db NO_MOVE      ; DIGLETT

@@ -23,54 +23,38 @@ QuietCave1F_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 17, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermHenri, -1
 	person_event SPRITE_POKEFAN_M, 25, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerGrady, -1
 	person_event SPRITE_SCIENTIST, 4, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistCarl, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_QUIET_CAVE_1F_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TWISTEDSPOON, 1, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_STONE, 1, EVENT_QUIET_CAVE_1F_DUSK_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_BALL, 1, EVENT_QUIET_CAVE_1F_DUSK_BALL
+	itemball_event 23, 10, NUGGET, 1, EVENT_QUIET_CAVE_1F_NUGGET
+	itemball_event 4, 26, TWISTEDSPOON, 1, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
+	itemball_event 2, 14, DUSK_STONE, 1, EVENT_QUIET_CAVE_1F_DUSK_STONE
+	itemball_event 3, 3, DUSK_BALL, 1, EVENT_QUIET_CAVE_1F_DUSK_BALL
 
 TrainerHexManiacAshley:
 	trainer EVENT_BEAT_HEX_MANIAC_ASHLEY, HEX_MANIAC, ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText, 0, HexManiacAshleyScript
 
 HexManiacAshleyScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacAshleyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HexManiacAshleyAfterText
 
 TrainerCooltrainermHenri:
 	trainer EVENT_BEAT_COOLTRAINERM_HENRI, COOLTRAINERM, HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText, 0, CooltrainermHenriScript
 
 CooltrainermHenriScript:
 	end_if_just_battled
-	opentext
-	writetext CooltrainermHenriAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CooltrainermHenriAfterText
 
 TrainerHikerGrady:
 	trainer EVENT_BEAT_HIKER_GRADY, HIKER, GRADY, HikerGradySeenText, HikerGradyBeatenText, 0, HikerGradyScript
 
 HikerGradyScript:
 	end_if_just_battled
-	opentext
-	writetext HikerGradyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HikerGradyAfterText
 
 TrainerScientistCarl:
 	trainer EVENT_BEAT_SCIENTIST_CARL, SCIENTIST, CARL, ScientistCarlSeenText, ScientistCarlBeatenText, 0, ScientistCarlScript
 
 ScientistCarlScript:
 	end_if_just_battled
-	opentext
-	writetext ScientistCarlAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer ScientistCarlAfterText
 
 HexManiacAshleySeenText:
 	text "The spirits have"

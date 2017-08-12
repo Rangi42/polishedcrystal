@@ -13,20 +13,11 @@ Route16FuchsiaSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, Route16FuchsiaSpeechHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 2
-	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x73373, -1
-	person_event SPRITE_LADY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route16FuchsiaSpeechHouseLadyScript, -1
-
-SuperNerdScript_0x73373:
-	jumptextfaceplayer UnknownText_0x73379
-
-Route16FuchsiaSpeechHouseLadyScript:
-	jumptextfaceplayer Route16FuchsiaSpeechHouseLadyText
-
-Route16FuchsiaSpeechHouseBookshelf:
-	jumpstd picturebookshelf
+	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x73379, -1
+	person_event SPRITE_LADY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route16FuchsiaSpeechHouseLadyText, -1
 
 UnknownText_0x73379:
 	text "If you cruise down"

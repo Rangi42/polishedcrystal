@@ -58,13 +58,8 @@ MapColosseumSignpost1Script:
 	end
 
 ChrisScript_0x193499:
-	opentext
-	writetext .FriendReadyText
-	waitbutton
-	closetext
-	end
+	thistext
 
-.FriendReadyText:
 	text "Your friend is"
 	line "ready."
 	done

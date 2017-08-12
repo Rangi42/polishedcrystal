@@ -15,37 +15,26 @@ SproutTower2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 15, 10, SIGNPOST_READ, MapSproutTower2FSignpost0Script
+	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1848c8
 
 .PersonEvents: db 3
 	person_event SPRITE_SAGE, 3, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
 	person_event SPRITE_SAGE, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_ACCURACY, 1, EVENT_SPROUT_TOWER2F_X_ACCURACY
+	itemball_event 1, 1, X_ACCURACY, 1, EVENT_SPROUT_TOWER2F_X_ACCURACY
 
 TrainerSageNico:
 	trainer EVENT_BEAT_SAGE_NICO, SAGE, NICO, SageNicoSeenText, SageNicoBeatenText, 0, SageNicoScript
 
 SageNicoScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1847ff
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1847ff
 
 TrainerSageEdmond:
 	trainer EVENT_BEAT_SAGE_EDMOND, SAGE, EDMOND, SageEdmondSeenText, SageEdmondBeatenText, 0, SageEdmondScript
 
 SageEdmondScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x18486f
-	waitbutton
-	closetext
-	end
-
-MapSproutTower2FSignpost0Script:
-	jumptext UnknownText_0x1848c8
+	jumptextfaceplayer UnknownText_0x18486f
 
 SageNicoSeenText:
 	text "However hard we"

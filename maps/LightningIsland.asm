@@ -19,7 +19,7 @@ LightningIsland_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 14
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DAMP_ROCK, 1, EVENT_LIGHTNING_ISLAND_DAMP_ROCK
+	itemball_event 15, 22, DAMP_ROCK, 1, EVENT_LIGHTNING_ISLAND_DAMP_ROCK
 	person_event SPRITE_SNES, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
 	person_event SPRITE_SNES, 13, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
 	person_event SPRITE_SNES, 25, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1

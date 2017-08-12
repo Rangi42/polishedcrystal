@@ -17,30 +17,30 @@ IlexForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 19, 5, SIGNPOST_READ, MapIlexForestSignpost0Script
-	signpost 9, 13, SIGNPOST_ITEM, IlexForestHiddenEther
-	signpost 16, 24, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
-	signpost 19, 3, SIGNPOST_ITEM, IlexForestHiddenFullHeal
-	signpost 9, 20, SIGNPOST_READ, MapIlexForestMossRockScript
+	signpost 19, 5, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
+	signpost 9, 13, SIGNPOST_ITEM + ETHER, EVENT_ILEX_FOREST_HIDDEN_ETHER
+	signpost 16, 24, SIGNPOST_ITEM + SUPER_POTION, EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION
+	signpost 19, 3, SIGNPOST_ITEM + FULL_HEAL, EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL
+	signpost 9, 20, SIGNPOST_JUMPTEXT, Text_IlexForestMossRock
 	signpost 24, 10, SIGNPOST_UP, MapIlexForestSignpost4Script
-	signpost 24, 25, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf1
-	signpost 8, 19, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
+	signpost 24, 25, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_1
+	signpost 8, 19, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2
 
 .PersonEvents: db 14
 	person_event SPRITE_FARFETCH_D, 33, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	person_event SPRITE_BLACK_BELT, 30, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	person_event SPRITE_KURT, 31, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_KURT
-	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestLassScript, EVENT_ILEX_FOREST_LASS
+	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_IlexForestLass, EVENT_ILEX_FOREST_LASS
 	person_event SPRITE_CELEBI, 26, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
 	person_event SPRITE_LYRA, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA
-	person_event SPRITE_BALL_CUT_FRUIT, 27, 10, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCutTree, EVENT_ILEX_FOREST_CUT_TREE
+	cuttree_event 27, 10, EVENT_ILEX_FOREST_CUT_TREE
 	person_event SPRITE_YOUNGSTER, 30, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
 	person_event SPRITE_ROCKER, 16, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestHeadbuttGuyScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_ILEX_FOREST_REVIVE
+	itemball_event 34, 22, REVIVE, 1, EVENT_ILEX_FOREST_REVIVE
 	person_event SPRITE_BUG_CATCHER, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 0, TrainerBug_catcherWayne, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_ATTACK, 1, EVENT_ILEX_FOREST_X_ATTACK
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MULCH, 1, EVENT_ILEX_FOREST_MULCH
+	itemball_event 19, 11, X_ATTACK, 1, EVENT_ILEX_FOREST_X_ATTACK
+	itemball_event 17, 25, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
+	itemball_event 3, 29, MULCH, 1, EVENT_ILEX_FOREST_MULCH
 
 const_value set 2
 	const ILEXFOREST_FARFETCHD
@@ -127,16 +127,10 @@ IlexForestCharcoalApprenticeScript:
 	opentext
 	checkevent EVENT_HERDED_FARFETCHD
 	iftrue .DoneFarfetchd
-	writetext UnknownText_0x6ef5c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6ef5c
 
 .DoneFarfetchd:
-	writetext UnknownText_0x6f019
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6f019
 
 IlexForestFarfetchdScript:
 	copybytetovar FarfetchdPosition
@@ -449,10 +443,7 @@ IlexForestCharcoalMasterScript:
 	end
 
 .AlreadyGotCut:
-	writetext Text_CharcoalMasterTalkAfter
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CharcoalMasterTalkAfter
 
 IlexForestHeadbuttGuyScript:
 	faceplayer
@@ -475,58 +466,21 @@ IlexForestTutorHeadbuttScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_IlexForestTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IlexForestTutorRefused
 
 .NoSilverLeaf
-	writetext Text_IlexForestTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IlexForestTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_IlexForestTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_IlexForestTutorTaught
 
 TrainerBug_catcherWayne:
 	trainer EVENT_BEAT_BUG_CATCHER_WAYNE, BUG_CATCHER, WAYNE, Bug_catcherWayneSeenText, Bug_catcherWayneBeatenText, 0, Bug_catcherWayneScript
 
 Bug_catcherWayneScript:
 	end_if_just_battled
-	opentext
-	writetext Bug_catcherWayneAfterText
-	waitbutton
-	closetext
-	end
-
-IlexForestLassScript:
-	jumptextfaceplayer Text_IlexForestLass
-
-IlexForestHiddenEther:
-	dwb EVENT_ILEX_FOREST_HIDDEN_ETHER, ETHER
-
-IlexForestHiddenSuperPotion:
-	dwb EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION, SUPER_POTION
-
-IlexForestHiddenFullHeal:
-	dwb EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
-
-IlexForestHiddenSilverLeaf1:
-	dwb EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_1, SILVER_LEAF
-
-IlexForestHiddenSilverLeaf2:
-	dwb EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2, SILVER_LEAF
-
-MapIlexForestMossRockScript:
-	jumptext Text_IlexForestMossRock
-
-MapIlexForestSignpost0Script:
-	jumptext Text_IlexForestSignpost0
+	jumptextfaceplayer Bug_catcherWayneAfterText
 
 MapIlexForestSignpost4Script:
 	checkevent EVENT_FOREST_IS_RESTLESS
@@ -575,20 +529,14 @@ MapIlexForestSignpost4Script:
 	iffalse .DidntCatchCelebi
 	appear ILEXFOREST_KURT
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef4e
-	opentext
-	writetext Text_KurtCaughtCelebi
-	waitbutton
-	closetext
+	showtext Text_KurtCaughtCelebi
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef53
 	disappear ILEXFOREST_KURT
 .DidntCatchCelebi:
 	end
 
 .StartGiovanniEvent:
-	opentext
-	writetext Text_IlexForestShrine
-	waitbutton
-	closetext
+	showtext Text_IlexForestShrine
 	showemote EMOTE_SHOCK, PLAYER, 15
 	appear ILEXFOREST_CELEBI
 	playsound SFX_BALL_POOF
@@ -600,10 +548,7 @@ MapIlexForestSignpost4Script:
 	pause 15
 	applymovement ILEXFOREST_CELEBI, MovementData_CelebiDance
 	pause 15
-	opentext
-	writetext Text_CelebiDancedBeautifully
-	waitbutton
-	closetext
+	showtext Text_CelebiDancedBeautifully
 	playsound SFX_JUMP_OVER_LEDGE
 	applymovement ILEXFOREST_CELEBI, MovementData_CelebiHop
 	applymovement PLAYER, MovementData_PlayerFollowCelebi
@@ -614,10 +559,7 @@ MapIlexForestSignpost4Script:
 	appear ILEXFOREST_LYRA
 	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraApproaches
 	spriteface PLAYER, LEFT
-	opentext
-	writetext Text_IlexForestLyraHello
-	waitbutton
-	closetext
+	showtext Text_IlexForestLyraHello
 	special RestartMapMusic
 	pause 30
 	playsound SFX_GAME_FREAK_LOGO_GS
@@ -634,10 +576,7 @@ MapIlexForestSignpost4Script:
 	pause 15
 	spriteface ILEXFOREST_LYRA, RIGHT
 	spriteface PLAYER, LEFT
-	opentext
-	writetext Text_IlexForestLyraWhatWasThat
-	waitbutton
-	closetext
+	showtext Text_IlexForestLyraWhatWasThat
 	cry CELEBI
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, MovementData_PlayerStepBack
@@ -653,9 +592,6 @@ MapIlexForestSignpost4Script:
 	setevent EVENT_TIME_TRAVELING
 	warp ROUTE_22_PAST, $6, $7
 	end
-
-IlexForestCutTree:
-	jumpstd cuttree
 
 MovementData_Farfetchd_Pos1_Pos2:
 	run_step_up

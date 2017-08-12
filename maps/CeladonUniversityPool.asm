@@ -16,10 +16,10 @@ CeladonUniversityPool_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_SWIMMER_GUY, 5, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolFergusScript, -1
-	person_event SPRITE_LASS, 1, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolLassScript, -1
-	person_event SPRITE_SWIMMER_GIRL, 4, 4, SPRITEMOVEDATA_SWIM_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolSwimmer_girlScript, -1
-	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolTeacherScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, WATER_STONE, 1, EVENT_CELADON_UNIVERSITY_POOL_WATER_STONE
+	person_event SPRITE_LASS, 1, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityPoolLassText, -1
+	person_event SPRITE_SWIMMER_GIRL, 4, 4, SPRITEMOVEDATA_SWIM_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityPoolSwimmer_girlText, -1
+	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityPoolTeacherText, -1
+	itemball_event 8, 12, WATER_STONE, 1, EVENT_CELADON_UNIVERSITY_POOL_WATER_STONE
 
 const_value set 2
 	const CELADONUNIVERSITYPOOL_FERGUS
@@ -71,16 +71,10 @@ CeladonUniversityPoolFergusScript:
 	end
 
 .NoBattle:
-	writetext .NoBattleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoBattleText
 
 .NotFinished:
-	writetext .AfterText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText1
 
 .IntroText1:
 	text "The name's Fergus!"
@@ -158,20 +152,14 @@ CeladonUniversityPoolFergusScript:
 	para "Keep it up!"
 	done
 
-CeladonUniversityPoolLassScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityPoolLassText:
 	text "Ouch!"
 
 	para "I'm working out a"
 	line "cramp in my leg."
 	done
 
-CeladonUniversityPoolSwimmer_girlScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityPoolSwimmer_girlText:
 	text "I applied for a"
 	line "special program to"
 
@@ -183,10 +171,7 @@ CeladonUniversityPoolSwimmer_girlScript:
 	cont "swimming."
 	done
 
-CeladonUniversityPoolTeacherScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityPoolTeacherText:
 	text "OK, five more"
 	line "laps!"
 	done

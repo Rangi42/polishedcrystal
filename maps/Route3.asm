@@ -14,14 +14,14 @@ Route3_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 15, 63, SIGNPOST_READ, MapRoute3Signpost0Script
-	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
-	signpost 15, 8, SIGNPOST_READ, Route3Meteorite
-	signpost 17, 8, SIGNPOST_READ, Route3Meteorite
-	signpost 17, 9, SIGNPOST_READ, Route3Meteorite
-	signpost 15, 14, SIGNPOST_READ, Route3Meteorite
-	signpost 16, 15, SIGNPOST_READ, Route3Meteorite
-	signpost 17, 15, SIGNPOST_READ, Route3Meteorite
+	signpost 15, 63, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
+	signpost 17, 11, SIGNPOST_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
+	signpost 15, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 17, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 17, 9, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 15, 14, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 16, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	signpost 17, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterRegis, -1
@@ -35,7 +35,7 @@ Route3_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 19, 61, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerHikerDwight, -1
 	person_event SPRITE_COOLTRAINER_M, 12, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
 	person_event SPRITE_COOLTRAINER_F, 12, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_ROOT, 1, EVENT_ROUTE_3_BIG_ROOT
+	itemball_event 14, 36, BIG_ROOT, 1, EVENT_ROUTE_3_BIG_ROOT
 
 Route3FlyPoint:
 	setflag ENGINE_FLYPOINT_MT_MOON
@@ -46,11 +46,7 @@ TrainerYoungsterRegis:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Youngster? Good-"
@@ -75,11 +71,7 @@ TrainerYoungsterJimmy:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can run like the"
@@ -103,11 +95,7 @@ TrainerYoungsterWarren:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hmmm… I don't know"
@@ -130,11 +118,7 @@ TrainerFirebreatherOtis:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ah! The weather's"
@@ -157,11 +141,7 @@ TrainerFirebreatherBurt:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Step right up and"
@@ -186,11 +166,7 @@ TrainerBlackbeltManford:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Slow down and give"
@@ -214,11 +190,7 @@ TrainerBlackbeltAnder:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Wait a moment!"
@@ -242,11 +214,7 @@ TrainerHikerBruce:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My Bag is digging"
@@ -271,11 +239,7 @@ TrainerHikerDwight:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Peace!"
@@ -307,11 +271,7 @@ TrainerAceDuoZacandjen1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Zac: Really, you"
@@ -337,11 +297,7 @@ TrainerAceDuoZacandjen2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Jen: Huh? You'd"
@@ -363,15 +319,6 @@ TrainerAceDuoZacandjen2:
 	line "trainer you'll"
 	cont "become."
 	done
-
-MapRoute3Signpost0Script:
-	jumptext UnknownText_0x1ae163
-
-Route3Meteorite:
-	jumptext Route3MeteoriteText
-
-Route3HiddenMoonStone:
-	dwb EVENT_ROUTE_3_HIDDEN_MOON_STONE, MOON_STONE
 
 Route3MeteoriteText:
 	text "Never seen a stone"

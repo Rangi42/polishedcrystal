@@ -1,5 +1,4 @@
 FruitTreeScript:: ; 44000
-	callasm GetCurTreeFruit
 	opentext
 	copybytetovar CurFruit
 	itemtotext $0, $0
@@ -11,24 +10,20 @@ FruitTreeScript:: ; 44000
 	writetext NothingHereText
 	buttonsound
 	checkitem MULCH
-	iffalse .end
+	iffalse_endtext
 	writetext WantToUseMulchText
 	yesorno
-	iffalse .end
+	iffalse_endtext
 	takeitem MULCH
-	callasm GetCurTreeFruit
 	copybytetovar CurFruit
 	callasm FertilizedFruitTree
-	writetext UsedMulchText
-	waitbutton
-	jump .end
+	jumpopenedtext UsedMulchText
 
 .fruit
 	writetext HeyItsFruitText
 	callasm GetFruitTreeCount
 	if_equal $1, .try_one
 	if_equal $2, .try_two
-	callasm GetCurTreeFruit
 	copybytetovar CurFruit
 	giveitem ITEM_FROM_MEM, 3
 	iffalse .try_two
@@ -36,7 +31,6 @@ FruitTreeScript:: ; 44000
 	writetext ObtainedThreeFruitText
 	jump .continue
 .try_two
-	callasm GetCurTreeFruit
 	copybytetovar CurFruit
 	giveitem ITEM_FROM_MEM, 2
 	iffalse .try_one
@@ -44,7 +38,6 @@ FruitTreeScript:: ; 44000
 	writetext ObtainedTwoFruitText
 	jump .continue
 .try_one
-	callasm GetCurTreeFruit
 	copybytetovar CurFruit
 	giveitem ITEM_FROM_MEM
 	iffalse .packisfull
@@ -54,25 +47,13 @@ FruitTreeScript:: ; 44000
 	callasm PickedFruitTree
 	specialsound
 	itemnotify
-	jump .end
+	closetext
+	end
 
 .packisfull
 	buttonsound
-	writetext FruitPackIsFullText
-	waitbutton
-
-.end
-	closetext
-	end
+	jumpopenedtext FruitPackIsFullText
 ; 44041
-
-GetCurTreeFruit: ; 44041
-	ld a, [CurFruitTree]
-	dec a
-	call GetFruitTreeItem
-	ld [CurFruit], a
-	ret
-; 4404c
 
 TryResetFruitTrees: ; 4404c
 	ld hl, DailyFlags
@@ -123,57 +104,6 @@ GetFruitTreeFlag: ; 44078
 	pop hl
 	ret
 ; 4408a
-
-GetFruitTreeItem: ; 4408a
-	push hl
-	push de
-	ld e, a
-	ld d, 0
-	ld hl, FruitTreeItems
-	add hl, de
-	ld a, [hl]
-	pop de
-	pop hl
-	ret
-; 44097
-
-FruitTreeItems: ; 44097
-	db ORAN_BERRY   ; FRUITTREE_ROUTE_29
-	db ORAN_BERRY   ; FRUITTREE_ROUTE_30_1
-	db PECHA_BERRY  ; FRUITTREE_ROUTE_30_2
-	db PERSIM_BERRY ; FRUITTREE_ROUTE_31
-	db CHERI_BERRY  ; FRUITTREE_VIOLET_CITY
-	db ASPEAR_BERRY ; FRUITTREE_ROUTE_32_COAST
-	db PECHA_BERRY  ; FRUITTREE_ROUTE_33
-	db WHT_APRICORN ; FRUITTREE_AZALEA_TOWN
-	db LEPPA_BERRY  ; FRUITTREE_ROUTE_35
-	db RAWST_BERRY  ; FRUITTREE_ROUTE_36
-	db RED_APRICORN ; FRUITTREE_ROUTE_37_1
-	db BLU_APRICORN ; FRUITTREE_ROUTE_37_2
-	db BLK_APRICORN ; FRUITTREE_ROUTE_37_3
-	db SITRUS_BERRY ; FRUITTREE_ROUTE_38
-	db CHESTO_BERRY ; FRUITTREE_ROUTE_39
-	db PNK_APRICORN ; FRUITTREE_ROUTE_42_1
-	db GRN_APRICORN ; FRUITTREE_ROUTE_42_2
-	db YLW_APRICORN ; FRUITTREE_ROUTE_42_3
-	db PERSIM_BERRY ; FRUITTREE_ROUTE_43
-	db ASPEAR_BERRY ; FRUITTREE_ROUTE_44
-	db LEPPA_BERRY  ; FRUITTREE_ROUTE_45
-	db CHERI_BERRY  ; FRUITTREE_ROUTE_46_1
-	db CHESTO_BERRY ; FRUITTREE_ROUTE_46_2
-	db LUM_BERRY    ; FRUITTREE_ROUTE_27
-	db SITRUS_BERRY ; FRUITTREE_ROUTE_26
-	db SALAC_BERRY  ; FRUITTREE_ROUTE_8
-	db GANLON_BERRY ; FRUITTREE_ROUTE_11
-	db LIECHI_BERRY ; FRUITTREE_FUCHSIA_CITY
-	db PETAYA_BERRY ; FRUITTREE_PEWTER_CITY_1
-	db APICOT_BERRY ; FRUITTREE_PEWTER_CITY_2
-	db LUM_BERRY    ; FRUITTREE_ROUTE_2
-	db FIGY_BERRY   ; FRUITTREE_ROUTE_1
-	db LIECHI_BERRY ; FRUITTREE_LUCKY_ISLAND
-	db FIGY_BERRY   ; FRUITTREE_SHAMOUTI_ISLAND
-	db LUM_BERRY    ; FRUITTREE_ROUTE_49
-; 440b5
 
 GetFruitTreeCount:
 	ld a, 3

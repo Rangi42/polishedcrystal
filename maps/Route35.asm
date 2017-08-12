@@ -15,8 +15,8 @@ Route35_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 1, SIGNPOST_READ, Route35Sign
-	signpost 31, 11, SIGNPOST_READ, Route35Sign
+	signpost 7, 1, SIGNPOST_JUMPTEXT, Route35SignText
+	signpost 31, 11, SIGNPOST_JUMPTEXT, Route35SignText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 19, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
@@ -28,9 +28,9 @@ Route35_MapEventHeader:
 	person_event SPRITE_BUG_CATCHER, 7, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
 	person_event SPRITE_SUPER_NERD, 10, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
 	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 17, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route35CutTree, EVENT_ROUTE_35_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 25, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19ca7e, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
+	cuttree_event 6, 17, EVENT_ROUTE_35_CUT_TREE
+	fruittree_event 25, 2, FRUITTREE_ROUTE_35, LEPPA_BERRY
+	tmhmball_event 16, 13, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
 
 Route35RebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_THERESA
@@ -41,11 +41,7 @@ TrainerBreederTheresa:
 
 BreederTheresaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cc87
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19cc87
 
 TrainerJugglerIrwin:
 	trainer EVENT_BEAT_JUGGLER_IRWIN, JUGGLER, IRWIN1, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, JugglerIrwin1Script
@@ -107,44 +103,28 @@ TrainerCamperIvan:
 
 CamperIvanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cac4
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19cac4
 
 TrainerCoupleGailandeli1:
 	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI1, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText, 0, CoupleGailandeli1Script
 
 CoupleGailandeli1Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleGailandeli1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CoupleGailandeli1AfterText
 
 TrainerCoupleGailandeli2:
 	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI2, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText, 0, CoupleGailandeli2Script
 
 CoupleGailandeli2Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleGailandeli2AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CoupleGailandeli2AfterText
 
 TrainerPicnickerKim:
 	trainer EVENT_BEAT_PICNICKER_KIM, PICNICKER, KIM, PicnickerKimSeenText, PicnickerKimBeatenText, 0, PicnickerKimScript
 
 PicnickerKimScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cc21
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19cc21
 
 TrainerBug_catcherArnie1:
 	trainer EVENT_BEAT_BUG_CATCHER_ARNIE, BUG_CATCHER, ARNIE1, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, Bug_catcherArnie1Script
@@ -238,21 +218,14 @@ UnknownScript_0x19c9bb:
 	end
 
 UnknownScript_0x19ca2f:
-	writetext UnknownText_0x19ce38
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19ce38
 
 TrainerFirebreatherWalt:
 	trainer EVENT_BEAT_FIREBREATHER_WALT, FIREBREATHER, WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText, 0, FirebreatherWaltScript
 
 FirebreatherWaltScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19cebc
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19cebc
 
 OfficermScript_0x19ca49:
 	faceplayer
@@ -275,25 +248,10 @@ OfficermScript_0x19ca49:
 	end
 
 UnknownScript_0x19ca6d:
-	writetext UnknownText_0x19cf0f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19cf0f
 
 UnknownScript_0x19ca73:
-	writetext UnknownText_0x19cf56
-	waitbutton
-	closetext
-	end
-
-Route35Sign:
-	jumptext Route35SignText
-
-Route35CutTree:
-	jumpstd cuttree
-
-FruitTreeScript_0x19ca7e:
-	fruittree FRUITTREE_ROUTE_35
+	jumpopenedtext UnknownText_0x19cf56
 
 CamperIvanSeenText:
 	text "I've been getting"

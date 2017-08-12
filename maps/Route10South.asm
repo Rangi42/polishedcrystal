@@ -12,8 +12,8 @@ Route10South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 5, SIGNPOST_READ, Route10Sign
-	signpost 3, 16, SIGNPOST_ITEM, Route10HiddenMaxEther
+	signpost 5, 5, SIGNPOST_JUMPTEXT, Route10SignText
+	signpost 3, 16, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_10_HIDDEN_MAX_ETHER
 
 .PersonEvents: db 3
 	person_event SPRITE_POKEFAN_M, 5, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerJim, -1
@@ -25,39 +25,21 @@ TrainerHikerJim:
 
 HikerJimScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae43b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ae43b
 
 TrainerPokefanmRobert:
 	trainer EVENT_BEAT_POKEFANM_ROBERT, POKEFANM, ROBERT, PokefanmRobertSeenText, PokefanmRobertBeatenText, 0, PokefanmRobertScript
 
 PokefanmRobertScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae4a9
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ae4a9
 
 TrainerHexManiacAmy:
 	trainer EVENT_BEAT_HEX_MANIAC_AMY, HEX_MANIAC, AMY, HexManiacAmySeenText, HexManiacAmyBeatenText, 0, HexManiacAmyScript
 
 HexManiacAmyScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacAmyAfterText
-	waitbutton
-	closetext
-	end
-
-Route10Sign:
-	jumptext Route10SignText
-
-Route10HiddenMaxEther:
-	dwb EVENT_ROUTE_10_HIDDEN_MAX_ETHER, MAX_ETHER
+	jumptextfaceplayer HexManiacAmyAfterText
 
 HikerJimSeenText:
 	text "Hahahah!"

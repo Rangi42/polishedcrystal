@@ -21,10 +21,10 @@ WarehouseEntrance_MapEventHeader:
 
 .Signposts: db 5
 	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
-	signpost 6, 17, SIGNPOST_READ, MapWarehouseEntranceSignpost1Script
-	signpost 13, 4, SIGNPOST_ITEM, WarehouseEntranceHiddenParlyzHeal
-	signpost 18, 2, SIGNPOST_ITEM, WarehouseEntranceHiddenSuperPotion
-	signpost 8, 15, SIGNPOST_ITEM, WarehouseEntranceHiddenAntidote
+	signpost 6, 17, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
+	signpost 13, 4, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL
+	signpost 18, 2, SIGNPOST_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
+	signpost 8, 15, SIGNPOST_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
 
 .PersonEvents: db 10
 	person_event SPRITE_GRAMPS, 11, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
@@ -35,7 +35,7 @@ WarehouseEntrance_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 9, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
 	person_event SPRITE_SUPER_NERD, 27, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
 	person_event SPRITE_SUPER_NERD, 6, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacDonald, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 25, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+	itemball_event 25, 4, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 	person_event SPRITE_COSPLAYER, 18, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1
 
 const_value set 2
@@ -140,58 +140,37 @@ TrainerSupernerdEric:
 
 SupernerdEricScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c36c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7c36c
 
 TrainerSupernerdTeru:
 	trainer EVENT_BEAT_SUPER_NERD_TERU, SUPER_NERD, TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText, 0, SupernerdTeruScript
 
 SupernerdTeruScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c410
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7c410
 
 TrainerPokemaniacIssac:
 	trainer EVENT_BEAT_POKEMANIAC_ISSAC, POKEMANIAC, ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText, 0, PokemaniacIssacScript
 
 PokemaniacIssacScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c498
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7c498
 
 TrainerPokemaniacDonald:
 	trainer EVENT_BEAT_POKEMANIAC_DONALD, POKEMANIAC, DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText, 0, PokemaniacDonaldScript
 
 PokemaniacDonaldScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7c52f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7c52f
 
 TrainerCosplayerClara:
 	trainer EVENT_BEAT_COSPLAYER_CLARA, COSPLAYER, CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText, 0, CosplayerClaraScript
 
 CosplayerClaraScript:
 	end_if_just_battled
-	opentext
-	writetext CosplayerClaraAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CosplayerClaraAfterText
 
 GrannyScript_0x7c132:
-	opentext
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .Open
 	if_equal SATURDAY, .Open
@@ -199,11 +178,8 @@ GrannyScript_0x7c132:
 
 .Open:
 	pokemart MARTTYPE_BITTER, MART_UNDERGROUND
-	closetext
-	end
 
 GrampsScript_0x7c146:
-	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
 	iftrue WarehouseEntranceScript_ShopClosed
 	checkcode VAR_WEEKDAY
@@ -214,11 +190,8 @@ GrampsScript_0x7c146:
 	checkmorn
 	iffalse WarehouseEntranceScript_ShopClosed
 	pokemart MARTTYPE_BARGAIN, 0
-	closetext
-	end
 
 OlderHaircutBrotherScript:
-	opentext
 	checkcode VAR_WEEKDAY
 	if_equal TUESDAY, .DoHaircut
 	if_equal THURSDAY, .DoHaircut
@@ -226,6 +199,7 @@ OlderHaircutBrotherScript:
 	jump WarehouseEntranceScript_ShopClosed
 
 .DoHaircut:
+	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	iftrue .AlreadyGotHaircut
 	special PlaceMoneyTopRight
@@ -283,25 +257,15 @@ OlderHaircutBrotherScript:
 	jump UnknownScript_0x7c2cd
 
 .Refused:
-	writetext UnknownText_0x7c6ea
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c6ea
 
 .NotEnoughMoney:
-	writetext UnknownText_0x7c709
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c709
 
 .AlreadyGotHaircut:
-	writetext UnknownText_0x7c72b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c72b
 
 YoungerHaircutBrotherScript:
-	opentext
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .DoHaircut
 	if_equal WEDNESDAY, .DoHaircut
@@ -309,6 +273,7 @@ YoungerHaircutBrotherScript:
 	jump WarehouseEntranceScript_ShopClosed
 
 .DoHaircut:
+	opentext
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	iftrue .AlreadyGotHaircut
 	special PlaceMoneyTopRight
@@ -366,22 +331,13 @@ YoungerHaircutBrotherScript:
 	jump UnknownScript_0x7c2cd
 
 .Refused:
-	writetext UnknownText_0x7c842
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c842
 
 .NotEnoughMoney:
-	writetext UnknownText_0x7c85b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c85b
 
 .AlreadyGotHaircut:
-	writetext UnknownText_0x7c87b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7c87b
 
 UnknownScript_0x7c2bb:
 	writetext HaircutBrosText_SlightlyHappier
@@ -405,17 +361,11 @@ UnknownScript_0x7c2cd:
 	end
 
 BasementDoorScript::
-	opentext
 	checkevent EVENT_USED_BASEMENT_KEY
-	iftrue .Open
+	iftrue_jumptext UnknownText_0x7c5c3
 	checkitem BASEMENT_KEY
-	iftrue .Unlock
-	writetext UnknownText_0x7c5b0
-	waitbutton
-	closetext
-	end
-
-.Unlock:
+	iffalse_jumptext UnknownText_0x7c5b0
+	opentext
 	playsound SFX_TRANSACTION
 	writetext UnknownText_0x7c5d6
 	waitbutton
@@ -426,32 +376,8 @@ BasementDoorScript::
 	setevent EVENT_USED_BASEMENT_KEY
 	end
 
-.Open:
-	writetext UnknownText_0x7c5c3
-	waitbutton
-	closetext
-	end
-
 WarehouseEntranceScript_ShopClosed:
-	writetext UnknownText_0x7c904
-	waitbutton
-	closetext
-	end
-
-MapWarehouseEntranceSignpost1Script:
-	jumptext UnknownText_0x7c91a
-
-WarehouseEntranceHiddenParlyzHeal:
-	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL
-
-
-WarehouseEntranceHiddenSuperPotion:
-	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION, SUPER_POTION
-
-
-WarehouseEntranceHiddenAntidote:
-	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE, ANTIDOTE
-
+	jumptext UnknownText_0x7c904
 
 SupernerdEricSeenText:
 	text "I got booted out"

@@ -14,10 +14,10 @@ Route32Coast_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 29, 15, SIGNPOST_READ, Route32CoastTrainerTips
-	signpost 59, 5, SIGNPOST_READ, Route32CoastUnionCaveSign
-	signpost 34, 17, SIGNPOST_ITEM, Route32CoastHiddenLevelBall
-	signpost 45, 5, SIGNPOST_ITEM, Route32CoastHiddenHyperPotion
+	signpost 29, 15, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
+	signpost 59, 5, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
+	signpost 34, 17, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
+	signpost 45, 5, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 15
 	person_event SPRITE_GUIDE_GENT, 5, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMichel, -1
@@ -31,10 +31,10 @@ Route32Coast_MapEventHeader:
 	person_event SPRITE_NEW_BARK_LYRA, 45, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerLassLayla, -1
 	person_event SPRITE_YOUNGSTER, 35, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae1, -1
 	person_event SPRITE_NEW_BARK_LYRA, 36, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae2, -1
-	person_event SPRITE_NEW_BARK_LYRA, 61, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route32CoastLassScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 51, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CoastFruitTree, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
-	person_event SPRITE_BALL_CUT_FRUIT, 63, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
+	person_event SPRITE_NEW_BARK_LYRA, 61, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route32CoastLassText, -1
+	fruittree_event 51, 21, FRUITTREE_ROUTE_32_COAST, ASPEAR_BERRY
+	itemball_event 18, 5, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
+	itemball_event 63, 22, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
 
 Route32CoastSwimmerGuySprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
@@ -45,11 +45,7 @@ TrainerSwimmermMichel:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I was waiting"
@@ -75,11 +71,7 @@ TrainerSwimmermLucas:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Reflecting and re-"
@@ -110,11 +102,7 @@ TrainerSwimmerfAlison:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Before battling"
@@ -140,11 +128,7 @@ TrainerSwimmerfStephanie:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did you hear that?"
@@ -167,11 +151,7 @@ TrainerBird_keeperPowell:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can't swim, so"
@@ -199,11 +179,7 @@ TrainerCosplayerChloe:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Like my costume?"
@@ -228,11 +204,7 @@ TrainerFisherKiley:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Heh, I'm on a roll"
@@ -258,11 +230,7 @@ TrainerCamperCraig:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Nothing beats the"
@@ -287,11 +255,7 @@ TrainerLassLayla:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If you had one"
@@ -316,11 +280,7 @@ TrainerCoupleFoxandrae1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Fox: Come on, Rae,"
@@ -343,11 +303,7 @@ TrainerCoupleFoxandrae2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Rae: Hey Fox, why"
@@ -366,10 +322,7 @@ TrainerCoupleFoxandrae2:
 	cont "happy Couple."
 	done
 
-Route32CoastLassScript:
-	jumptextfaceplayer .Text
-
-.Text:
+Route32CoastLassText:
 	text "Pant, pant…"
 
 	para "I finally got"
@@ -385,13 +338,7 @@ Route32CoastLassScript:
 	line "outside."
 	done
 
-Route32CoastFruitTree:
-	fruittree FRUITTREE_ROUTE_32_COAST
-
-Route32CoastTrainerTips:
-	jumptext .Text
-
-.Text:
+Route32CoastTrainerTipsText:
 	text "Trainer Tips"
 
 	para "A #mon with the"
@@ -401,16 +348,7 @@ Route32CoastTrainerTips:
 	line "after a battle!"
 	done
 
-Route32CoastUnionCaveSign:
-	jumptext .Text
-
-.Text:
+Route32CoastUnionCaveSignText:
 	text "Union Cave"
 	line "Ahead"
 	done
-
-Route32CoastHiddenLevelBall:
-	dwb EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL, LEVEL_BALL
-
-Route32CoastHiddenHyperPotion:
-	dwb EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION, HYPER_POTION

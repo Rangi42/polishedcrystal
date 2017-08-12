@@ -14,10 +14,10 @@ MurkySwamp_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 10, 20, SIGNPOST_ITEM, MurkySwampHiddenMulch
-	signpost 13, 22, SIGNPOST_ITEM, MurkySwampHiddenXSpclDef
-	signpost 23, 5, SIGNPOST_ITEM, MurkySwampHiddenBigMushroom
-	signpost 33, 40, SIGNPOST_ITEM, MurkySwampHiddenTinyMushroom
+	signpost 10, 20, SIGNPOST_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
+	signpost 13, 22, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF
+	signpost 23, 5, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
+	signpost 33, 40, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
 
 .PersonEvents: db 15
 	person_event SPRITE_CHERYL, 26, 40, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
@@ -28,13 +28,13 @@ MurkySwamp_MapEventHeader:
 	person_event SPRITE_HEX_MANIAC, 17, 37, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacMatilda, -1
 	person_event SPRITE_FISHER, 22, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherOleg, -1
 	person_event SPRITE_FISHER, 8, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDundee, -1
-	person_event SPRITE_YOUNGSTER, 33, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MurkySwampYoungsterScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
-	person_event SPRITE_BALL_CUT_FRUIT, 11, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MULCH, 1, EVENT_MURKY_SWAMP_MULCH
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCutTree, EVENT_MURKY_SWAMP_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 6, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCutTree, EVENT_MURKY_SWAMP_CUT_TREE_2
+	person_event SPRITE_YOUNGSTER, 33, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, MurkySwampYoungsterText, -1
+	itemball_event 9, 14, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
+	itemball_event 11, 10, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
+	itemball_event 23, 43, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
+	itemball_event 34, 14, MULCH, 1, EVENT_MURKY_SWAMP_MULCH
+	cuttree_event 14, 2, EVENT_MURKY_SWAMP_CUT_TREE_1
+	cuttree_event 19, 6, EVENT_MURKY_SWAMP_CUT_TREE_2
 
 const_value set 2
 	const MURKYSWAMP_CHERYL
@@ -78,10 +78,7 @@ MurkySwampCherylScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Hello, my name's"
@@ -161,11 +158,7 @@ TrainerBug_catcherOscar:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "G-g-g-ghost!"
@@ -188,11 +181,7 @@ TrainerBug_catcherCallum:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm from Azalea,"
@@ -220,11 +209,7 @@ TrainerBug_catcherDavid:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It feels so cold"
@@ -250,11 +235,7 @@ TrainerPokemaniacClive:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Don't tell me,"
@@ -282,11 +263,7 @@ TrainerHex_maniacMatilda:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Within the dark-"
@@ -312,11 +289,7 @@ TrainerFirebreatherOleg:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I want to light a"
@@ -342,11 +315,7 @@ TrainerFisherDundee:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "All the #mon I"
@@ -365,10 +334,7 @@ TrainerFisherDundee:
 	cont "lost in here…"
 	done
 
-MurkySwampYoungsterScript:
-	jumptextfaceplayer .Text
-
-.Text:
+MurkySwampYoungsterText:
 	text "Man! This place is"
 	line "such a maze."
 
@@ -376,18 +342,3 @@ MurkySwampYoungsterScript:
 	line "ever find my way"
 	cont "to the other side."
 	done
-
-MurkySwampCutTree:
-	jumpstd cuttree
-
-MurkySwampHiddenMulch:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_MULCH, MULCH
-
-MurkySwampHiddenXSpclDef:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF, X_SPCL_DEF
-
-MurkySwampHiddenBigMushroom:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM, BIG_MUSHROOM
-
-MurkySwampHiddenTinyMushroom:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM, TINYMUSHROOM

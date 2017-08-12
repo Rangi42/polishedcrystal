@@ -19,15 +19,15 @@ MahoganyTown_MapEventHeader:
 	xy_trigger 0, $9, $13, UnknownScript_0x190013
 
 .Signposts: db 3
-	signpost 5, 1, SIGNPOST_READ, MahoganyTownSign
+	signpost 5, 1, SIGNPOST_JUMPTEXT, MahoganyTownSignText
 	signpost 7, 9, SIGNPOST_READ, MahoganyTownSouvenirShopSign
-	signpost 13, 3, SIGNPOST_READ, MahoganyGymSign
+	signpost 13, 3, SIGNPOST_JUMPTEXT, MahoganyGymSignText
 
 .PersonEvents: db 4
 	person_event SPRITE_POKEFAN_M, 8, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
-	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x190092, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x190095, EVENT_MAHOGANY_MART_OWNERS
+	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x190276, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
+	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1902f2, EVENT_MAHOGANY_MART_OWNERS
 
 const_value set 2
 	const MAHOGANYTOWN_POKEFAN_M
@@ -56,11 +56,7 @@ UnknownScript_0x19002f:
 	end
 
 UnknownScript_0x190039:
-	opentext
-	writetext UnknownText_0x1901a6
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1901a6
 
 UnknownScript_0x190040:
 	opentext
@@ -76,53 +72,26 @@ UnknownScript_0x190040:
 	playsound SFX_TRANSACTION
 	takemoney $0, 300
 	special PlaceMoneyTopRight
-	writetext UnknownText_0x19014a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19014a
 
 UnknownScript_0x19006c:
-	writetext UnknownText_0x19015b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19015b
 
 UnknownScript_0x190072:
-	writetext UnknownText_0x190178
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x190178
 
 UnknownScript_0x190078:
-	writetext UnknownText_0x190188
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x190188
 
 GrampsScript_0x19007e:
 	faceplayer
 	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19008c
-	writetext UnknownText_0x1901e5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1901e5
 
 UnknownScript_0x19008c:
-	writetext UnknownText_0x19021d
-	waitbutton
-	closetext
-	end
-
-FisherScript_0x190092:
-	jumptextfaceplayer UnknownText_0x190276
-
-LassScript_0x190095:
-	jumptextfaceplayer UnknownText_0x1902f2
-
-MahoganyTownSign:
-	jumptext MahoganyTownSignText
+	jumpopenedtext UnknownText_0x19021d
 
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS
@@ -131,9 +100,6 @@ MahoganyTownSouvenirShopSign:
 
 .rockets
 	jumptext MahoganyTownSouvenirShopSignText1
-
-MahoganyGymSign:
-	jumptext MahoganyGymSignText
 
 MovementData_0x1900a7:
 	step_left

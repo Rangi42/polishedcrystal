@@ -52,8 +52,7 @@ GameConsole:
 	describedecoration 4
 
 KrissHousePoster:
-	dw EVENT_KRISS_ROOM_POSTER, .Script
-.Script:
+	dw EVENT_KRISS_ROOM_POSTER
 	describedecoration 0
 
 KrissHouseRadio:

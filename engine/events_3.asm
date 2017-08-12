@@ -360,14 +360,12 @@ CheckForHiddenItems: ; b8172
 ; Is this signpost a hidden item?  If not, go to the next signpost.
 	call .GetFarByte
 	cp SIGNPOST_ITEM
-	jr nz, .next
+	jr c, .next
 ; Has this item already been found?  If not, set off the Itemfinder.
-	ld a, [Buffer1]
-	call GetFarHalfword
-	ld a, [Buffer1]
-	call GetFarHalfword
-	ld d, h
-	ld e, l
+	call .GetFarByte
+	ld e, a
+	call .GetFarByte
+	ld d, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	ld a, c

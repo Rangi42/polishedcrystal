@@ -26,22 +26,13 @@ CharcoalKilnBoss:
 	iftrue .GotCut
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue .SavedSlowpoke
-	writetext .Text1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text1
 
 .SavedSlowpoke:
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .GotCut:
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .Text1:
 	text "All the Slowpoke"
@@ -88,10 +79,7 @@ CharcoalKilnApprentice:
 	iftrue .YoureTheCoolest
 	checkevent EVENT_GOT_HM01_CUT
 	iftrue .Thanks
-	writetext .Text1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text1
 
 .Thanks:
 	writetext .Text2
@@ -104,10 +92,7 @@ CharcoalKilnApprentice:
 	end
 
 .YoureTheCoolest:
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .Text1:
 	text "Where have all the"

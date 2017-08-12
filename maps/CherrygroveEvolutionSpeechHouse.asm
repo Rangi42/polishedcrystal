@@ -19,18 +19,10 @@ CherrygroveEvolutionSpeechHouse_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x196cb2, -1
 
 YoungsterScript_0x196cb2:
-	opentext
-	writetext UnknownText_0x196cc3
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x196cc3
 
 LassScript_0x196cb9:
-	opentext
-	writetext UnknownText_0x196cfc
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x196cfc
 
 UnknownText_0x196cc3:
 	text "#mon gain expe-"

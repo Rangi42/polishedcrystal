@@ -14,11 +14,11 @@ MrPokemonsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 1, 0, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
-	signpost 1, 1, SIGNPOST_READ, MapMrPokemonsHouseSignpost1Script
-	signpost 1, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
-	signpost 1, 7, SIGNPOST_READ, MapMrPokemonsHouseSignpost3Script
-	signpost 4, 6, SIGNPOST_READ, MapMrPokemonsHouseSignpost4Script
+	signpost 1, 0, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	signpost 1, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	signpost 1, 7, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	signpost 4, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
 
 .PersonEvents: db 3
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
@@ -37,10 +37,7 @@ MrPokemonsHouseTrigger0:
 .MrPokemonEvent:
 	showemote EMOTE_SHOCK, MRPOKEMONSHOUSE_GENTLEMAN, 15
 	spriteface MRPOKEMONSHOUSE_GENTLEMAN, DOWN
-	opentext
-	writetext MrPokemonIntroText1
-	waitbutton
-	closetext
+	showtext MrPokemonIntroText1
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
 	writetext MrPokemonIntroText2
@@ -72,16 +69,10 @@ MrPokemonsHouse_MrPokemonScript:
 	iftrue .RedScale
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .AlwaysNewDiscoveries
-	writetext MrPokemonText_ImDependingOnYou
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MrPokemonText_ImDependingOnYou
 
 .AlwaysNewDiscoveries:
-	writetext MrPokemonText_AlwaysNewDiscoveries
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 
 .RedScale:
 	writetext MrPokemonText_GimmeTheScale
@@ -98,25 +89,16 @@ MrPokemonsHouse_MrPokemonScript:
 	jump .AlwaysNewDiscoveries
 
 .refused
-	writetext MrPokemonText_Disappointed
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MrPokemonText_Disappointed
 
 .party_full
-	writetext MrPokemonText_PartyFull
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MrPokemonText_PartyFull
 
 MrPokemonsHouse_OakScript:
 	playmusic MUSIC_PROF_OAK
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakWalksToPlayer
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext MrPokemonsHouse_OakText1
-	waitbutton
-	closetext
+	showtext MrPokemonsHouse_OakText1
 	spriteface MRPOKEMONSHOUSE_OAK, UP
 	pause 10
 	applymovement MRPOKEMONSHOUSE_POKEDEX, MrPokemonsHouse_OakTakesPokedex
@@ -140,10 +122,7 @@ MrPokemonsHouse_OakScript:
 	special RestartMapMusic
 	pause 15
 	spriteface PLAYER, UP
-	opentext
-	writetext MrPokemonsHouse_MrPokemonHealText
-	waitbutton
-	closetext
+	showtext MrPokemonsHouse_MrPokemonHealText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	playmusic MUSIC_HEAL
@@ -151,10 +130,7 @@ MrPokemonsHouse_OakScript:
 	pause 60
 	special Special_FadeInQuickly
 	special RestartMapMusic
-	opentext
-	writetext MrPokemonText_ImDependingOnYou
-	waitbutton
-	closetext
+	showtext MrPokemonText_ImDependingOnYou
 	setevent EVENT_RIVAL_NEW_BARK_TOWN
 	setevent EVENT_KRISS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
@@ -177,15 +153,6 @@ MrPokemonsHouse_OakScript:
 .RivalTakesCyndaquil:
 	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	end
-
-MapMrPokemonsHouseSignpost1Script:
-	jumptext MrPokemonsHouse_ForeignMagazinesText
-
-MapMrPokemonsHouseSignpost3Script:
-	jumptext MrPokemonsHouse_BrokenComputerText
-
-MapMrPokemonsHouseSignpost4Script:
-	jumptext MrPokemonsHouse_StrangeCoinsText
 
 MrPokemonsHouse_PlayerWalksToMrPokemon:
 	step_right

@@ -15,14 +15,8 @@ SaffronOrreSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_SILPH_EMPLOYEE, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronOrreSpeechHouseSilphEmployeeScript, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronOrreSpeechHouseCooltrainerMScript, -1
-
-SaffronOrreSpeechHouseSilphEmployeeScript:
-	jumptextfaceplayer SaffronOrreSpeechHouseSilphEmployeeText
-
-SaffronOrreSpeechHouseCooltrainerMScript:
-	jumptextfaceplayer SaffronOrreSpeechHouseCooltrainerMText
+	person_event SPRITE_SILPH_EMPLOYEE, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronOrreSpeechHouseSilphEmployeeText, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronOrreSpeechHouseCooltrainerMText, -1
 
 SaffronOrreSpeechHouseSilphEmployeeText:
 	text "I heard about a"

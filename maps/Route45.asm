@@ -12,8 +12,8 @@ Route45_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 4, 14, SIGNPOST_READ, Route45Sign
-	signpost 78, 17, SIGNPOST_ITEM, Route45HiddenPpUp
+	signpost 4, 14, SIGNPOST_JUMPTEXT, Route45SignText
+	signpost 78, 17, SIGNPOST_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
 
 .PersonEvents: db 15
 	person_event SPRITE_DRAGON_TAMER, 75, 19, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
@@ -25,11 +25,11 @@ Route45_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 50, 16, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
 	person_event SPRITE_COOLTRAINER_M, 18, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermRyan, -1
 	person_event SPRITE_COOLTRAINER_F, 33, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKelly, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 80, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19e294, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 51, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_ROUTE_45_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 66, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_ROUTE_45_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ELIXER, 1, EVENT_ROUTE_45_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
+	fruittree_event 80, 20, FRUITTREE_ROUTE_45, LEPPA_BERRY
+	itemball_event 51, 8, NUGGET, 1, EVENT_ROUTE_45_NUGGET
+	itemball_event 66, 5, REVIVE, 1, EVENT_ROUTE_45_REVIVE
+	itemball_event 20, 7, ELIXER, 1, EVENT_ROUTE_45_ELIXER
+	itemball_event 32, 15, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
 	person_event SPRITE_YOUNGSTER, 70, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperQuentin, -1
 
 const_value set 2
@@ -87,16 +87,10 @@ Route45Dragon_tamerScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I'm training my"
@@ -170,11 +164,7 @@ TrainerBattleGirlNozomi:
 
 BattleGirlNozomiScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlNozomiAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BattleGirlNozomiAfterText
 
 TrainerBlackbeltKenji:
 	trainer EVENT_BEAT_BLACKBELT_KENJI, BLACKBELT_T, KENJI1, BlackbeltKenji1SeenText, BlackbeltKenji1BeatenText, 0, BlackbeltKenji1Script
@@ -221,16 +211,10 @@ UnknownScript_0x19e0e4:
 	jump UnknownScript_0x19e127
 
 UnknownScript_0x19e10c:
-	writetext UnknownText_0x19e634
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19e634
 
 UnknownScript_0x19e112:
-	writetext UnknownText_0x19e66c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19e66c
 
 UnknownScript_0x19e118:
 	jump UnknownScript_0x19e13b
@@ -285,22 +269,14 @@ TrainerHikerErik:
 
 HikerErikScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e301
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19e301
 
 TrainerHikerMichael:
 	trainer EVENT_BEAT_HIKER_MICHAEL, HIKER, MICHAEL, HikerMichaelSeenText, HikerMichaelBeatenText, 0, HikerMichaelScript
 
 HikerMichaelScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e3b1
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19e3b1
 
 TrainerHikerParry:
 	trainer EVENT_BEAT_HIKER_PARRY, HIKER, PARRY1, HikerParry1SeenText, HikerParry1BeatenText, 0, HikerParry1Script
@@ -393,53 +369,28 @@ TrainerHikerTimothy:
 
 HikerTimothyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e4f1
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19e4f1
 
 TrainerCooltrainermRyan:
 	trainer EVENT_BEAT_COOLTRAINERM_RYAN, COOLTRAINERM, RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText, 0, CooltrainermRyanScript
 
 CooltrainermRyanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e70d
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19e70d
 
 TrainerCooltrainerfKelly:
 	trainer EVENT_BEAT_COOLTRAINERF_KELLY, COOLTRAINERF, KELLY, CooltrainerfKellySeenText, CooltrainerfKellyBeatenText, 0, CooltrainerfKellyScript
 
 CooltrainerfKellyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e7d1
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19e7d1
 
 TrainerCamperQuentin:
 	trainer EVENT_BEAT_CAMPER_QUENTIN, CAMPER, QUENTIN, UnknownText_0x19e87f, UnknownText_0x19e899, 0, CamperQuentinScript
 
 CamperQuentinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19e8bb
-	waitbutton
-	closetext
-	end
-
-Route45Sign:
-	jumptext Route45SignText
-
-FruitTreeScript_0x19e294:
-	fruittree FRUITTREE_ROUTE_45
-
-Route45HiddenPpUp:
-	dwb EVENT_ROUTE_45_HIDDEN_PP_UP, PP_UP
+	jumptextfaceplayer UnknownText_0x19e8bb
 
 BattleGirlNozomiSeenText:
 	text "This is no place"

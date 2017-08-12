@@ -28,15 +28,15 @@ BurnedTower1F_MapEventHeader:
 	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
 
 .Signposts: db 2
-	signpost  7,  6, SIGNPOST_ITEM, BurnedTower1FHiddenEther
-	signpost 11, 11, SIGNPOST_ITEM, BurnedTower1FHiddenUltraBall
+	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
+	signpost 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 7
-	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BurnedTower1FEusineScript, EVENT_BURNED_TOWER_1F_EUSINE
+	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
 	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 13, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BurnedTower1FRock, -1
-	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BurnedTower1FMortyScript, EVENT_BURNED_TOWER_MORTY
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
+	smashrock_event 4, 13
+	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
+	itemball_event 1, 13, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
 	person_event SPRITE_HEX_MANIAC, 1, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
 	person_event SPRITE_FISHER, 3, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
 
@@ -63,10 +63,7 @@ BurnedTower1FEusineTriggerScript:
 	spriteface BURNEDTOWER1F_EUSINE, DOWN
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_EUSINE, 15
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
-	opentext
-	writetext BurnedTower1FEusineIntroText
-	waitbutton
-	closetext
+	showtext BurnedTower1FEusineIntroText
 	moveperson BURNEDTOWER1F_EUSINE, $7, $e
 	dotrigger $1
 	end
@@ -80,10 +77,7 @@ BurnedTowerRivalBattleScript:
 	applymovement PLAYER, BurnedTowerMovement_PlayerWalksToSilver
 	applymovement BURNEDTOWER1F_SILVER, BurnedTowerMovement_SilverWalksToPlayer
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext BurnedTowerSilver_BeforeText
-	waitbutton
-	closetext
+	showtext BurnedTowerSilver_BeforeText
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -117,10 +111,7 @@ BurnedTowerRivalBattleScript:
 .returnfrombattle
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext BurnedTowerSilver_AfterText1
-	waitbutton
-	closetext
+	showtext BurnedTowerSilver_AfterText1
 	dotrigger $2
 	setevent EVENT_RIVAL_BURNED_TOWER
 	special Special_FadeOutMusic
@@ -135,51 +126,25 @@ BurnedTowerRivalBattleScript:
 	applymovement PLAYER, BurnedTower1FMovement_PlayerStartsToFall
 	playsound SFX_KINESIS
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 20
-	opentext
-	writetext BurnedTowerSilver_AfterText2
-	waitbutton
-	closetext
+	showtext BurnedTowerSilver_AfterText2
 	setevent EVENT_HOLE_IN_BURNED_TOWER
 	pause 15
 	warpcheck
 	end
-
-BurnedTower1FEusineScript:
-	jumptextfaceplayer BurnedTower1FEusineText
-
-BurnedTower1FMortyScript:
-	jumptextfaceplayer BurnedTower1FMortyText
 
 TrainerHexManiacTamara:
 	trainer EVENT_BEAT_HEX_MANIAC_TAMARA, HEX_MANIAC, TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText, 0, HexManiacTamaraScript
 
 HexManiacTamaraScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacTamaraAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HexManiacTamaraAfterText
 
 TrainerFirebreatherNed:
 	trainer EVENT_BEAT_FIREBREATHER_NED, FIREBREATHER, NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
 
 FirebreatherNedScript:
 	end_if_just_battled
-	opentext
-	writetext FirebreatherNedAfterText
-	waitbutton
-	closetext
-	end
-
-BurnedTower1FRock:
-	jumpstd smashrock
-
-BurnedTower1FHiddenEther:
-	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ETHER, ETHER
-
-BurnedTower1FHiddenUltraBall:
-	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
+	jumptextfaceplayer FirebreatherNedAfterText
 
 BurnedTowerMovement_PlayerWalksToSilver:
 	step_left

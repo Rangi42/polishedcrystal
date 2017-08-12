@@ -18,10 +18,10 @@ Route47_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 23, 8, SIGNPOST_READ, Route47SealedCaveSign
-	signpost 32, 36, SIGNPOST_READ, Route47QuietCaveSign
-	signpost 33, 34, SIGNPOST_ITEM, Route47HiddenPearl
-	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust
+	signpost 23, 8, SIGNPOST_JUMPTEXT, Route47SealedCaveSignText
+	signpost 32, 36, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
+	signpost 33, 34, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
+	signpost 28, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
 .PersonEvents: db 15
 	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
@@ -34,11 +34,11 @@ Route47_MapEventHeader:
 	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 9, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET_GIRL, 24, 47, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route47RocketGirlScript, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 39, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_ROUTE_47_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 32, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MYSTIC_WATER, 1, EVENT_ROUTE_47_MYSTIC_WATER
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, QUICK_CLAW, 1, EVENT_ROUTE_47_QUICK_CLAW
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REPEL, 1, EVENT_ROUTE_47_MAX_REPEL
+	person_event SPRITE_ROCKET_GIRL, 24, 47, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketGirlText, EVENT_CLEARED_YELLOW_FOREST
+	itemball_event 28, 39, REVIVE, 1, EVENT_ROUTE_47_REVIVE
+	itemball_event 32, 7, MYSTIC_WATER, 1, EVENT_ROUTE_47_MYSTIC_WATER
+	itemball_event 20, 31, QUICK_CLAW, 1, EVENT_ROUTE_47_QUICK_CLAW
+	itemball_event 6, 7, MAX_REPEL, 1, EVENT_ROUTE_47_MAX_REPEL
 
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
@@ -52,125 +52,70 @@ TrainerHikerDevin:
 
 HikerDevinScript:
 	end_if_just_battled
-	opentext
-	writetext HikerDevinAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HikerDevinAfterText
 
 TrainerCamperGrant:
 	trainer EVENT_BEAT_CAMPER_GRANT, CAMPER, GRANT, CamperGrantSeenText, CamperGrantBeatenText, 0, CamperGrantScript
 
 CamperGrantScript:
 	end_if_just_battled
-	opentext
-	writetext CamperGrantAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CamperGrantAfterText
 
 TrainerAceDuoThomandkae1:
 	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE1, AceDuoThomandkae1SeenText, AceDuoThomandkae1BeatenText, 0, AceDuoThomandkae1Script
 
 AceDuoThomandkae1Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoThomandkae1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer AceDuoThomandkae1AfterText
 
 TrainerAceDuoThomandkae2:
 	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE2, AceDuoThomandkae2SeenText, AceDuoThomandkae2BeatenText, 0, AceDuoThomandkae2Script
 
 AceDuoThomandkae2Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoThomandkae2AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer AceDuoThomandkae2AfterText
 
 TrainerCoupleDuffandeda1:
 	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA1, CoupleDuffandeda1SeenText, CoupleDuffandeda1BeatenText, 0, CoupleDuffandeda1Script
 
 CoupleDuffandeda1Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleDuffandeda1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CoupleDuffandeda1AfterText
 
 TrainerCoupleDuffandeda2:
 	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA2, CoupleDuffandeda2SeenText, CoupleDuffandeda2BeatenText, 0, CoupleDuffandeda2Script
 
 CoupleDuffandeda2Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleDuffandeda2AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CoupleDuffandeda2AfterText
 
 TrainerCowgirlDaniela:
 	trainer EVENT_BEAT_COWGIRL_DANIELA, COWGIRL, DANIELA, CowgirlDanielaSeenText, CowgirlDanielaBeatenText, 0, CowgirlDanielaScript
 
 CowgirlDanielaScript:
 	end_if_just_battled
-	opentext
-	writetext CowgirlDanielaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CowgirlDanielaAfterText
 
 TrainerGruntF6:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_6, GRUNTF, 6, GruntF6SeenText, GruntF6BeatenText, 0, GruntF6Script
 
 GruntF6Script:
 	end_if_just_battled
-	opentext
-	writetext GruntF6AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GruntF6AfterText
 
 TrainerGruntM23:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_23, GRUNTM, 23, GruntM23SeenText, GruntM23BeatenText, 0, GruntM23Script
 
 GruntM23Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM23AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GruntM23AfterText
 
 TrainerGruntM26:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_26, GRUNTM, 26, GruntM26SeenText, GruntM26BeatenText, 0, GruntM26Script
 
 GruntM26Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM26AfterText
-	waitbutton
-	closetext
-	end
-
-Route47RocketGirlScript:
-	jumptextfaceplayer Route47RocketGirlText
-
-Route47SealedCaveSign:
-	jumptext Route47SealedCaveSignText
-
-Route47QuietCaveSign:
-	jumptext Route47QuietCaveSignText
-
-Route47HiddenPearl:
-	dwb EVENT_ROUTE_47_HIDDEN_PEARL, PEARL
-
-Route47HiddenStardust:
-	dwb EVENT_ROUTE_47_HIDDEN_STARDUST, STARDUST
+	jumptextfaceplayer GruntM26AfterText
 
 HikerDevinSeenText:
 	text "Battles are"

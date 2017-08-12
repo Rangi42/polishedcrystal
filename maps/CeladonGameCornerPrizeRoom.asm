@@ -17,14 +17,8 @@ CeladonGameCornerPrizeRoom_MapEventHeader:
 .PersonEvents: db 4
 	person_event SPRITE_CLERK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonGameCornerTMVendor, -1
 	person_event SPRITE_CLERK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonGameCornerPokemonVendor, -1
-	person_event SPRITE_GENTLEMAN, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonGameCornerPrizeRoomGentlemanScript, -1
-	person_event SPRITE_PHARMACIST, 5, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonGameCornerPrizeRoomPharmacistScript, -1
-
-CeladonGameCornerPrizeRoomGentlemanScript:
-	jumptextfaceplayer CeladonGameCornerPrizeRoomGentlemanText
-
-CeladonGameCornerPrizeRoomPharmacistScript:
-	jumptextfaceplayer CeladonGameCornerPrizeRoomPharmacistText
+	person_event SPRITE_GENTLEMAN, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonGameCornerPrizeRoomGentlemanText, -1
+	person_event SPRITE_PHARMACIST, 5, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonGameCornerPrizeRoomPharmacistText, -1
 
 CeladonGameCornerTMVendor:
 	faceplayer
@@ -103,29 +97,16 @@ CeladonPrizeRoom_alreadyhavetm:
 	jump CeladonPrizeRoom_tmcounterloop
 
 CeladonPrizeRoom_notenoughcoins:
-	writetext CeladonPrizeRoom_NotEnoughCoinsText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_NotEnoughCoinsText
 
 CeladonPrizeRoom_notenoughroom:
-	writetext CeladonPrizeRoom_NotEnoughRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
 
 CeladonPrizeRoom_cancel:
-	writetext CeladonPrizeRoom_ComeAgainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 CeladonPrizeRoom_NoCoinCase:
-	writetext CeladonPrizeRoom_NoCoinCaseText
-	waitbutton
-	closetext
-	end
-
+	jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 
 CeladonPrizeRoom_TMMenuDataHeader:
 	db $40 ; flags
@@ -141,7 +122,6 @@ CeladonPrizeRoom_TMMenuDataHeader:
 	db "TM06    5500@"
 	db "TM68    7500@"
 	db "Cancel@"
-
 
 CeladonGameCornerPokemonVendor:
 	faceplayer
@@ -215,7 +195,6 @@ CeladonGameCornerPokemonVendor:
 	takecoins 9999
 	jump .loop
 
-
 .MenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -230,7 +209,6 @@ CeladonGameCornerPokemonVendor:
 	db "Eevee      6666@"
 	db "Porygon    9999@"
 	db "Cancel@"
-
 
 CeladonGameCornerPrizeRoomGentlemanText:
 	text "I wanted Porygon,"

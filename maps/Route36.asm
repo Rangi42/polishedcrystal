@@ -20,10 +20,10 @@ Route36_MapEventHeader:
 	xy_trigger 1, $7, $16, Route36SuicuneScript
 
 .Signposts: db 4
-	signpost 1, 29, SIGNPOST_READ, Route36TrainerTips2
-	signpost 11, 45, SIGNPOST_READ, RuinsOfAlphNorthSign
-	signpost 7, 55, SIGNPOST_READ, Route36Sign
-	signpost 7, 21, SIGNPOST_READ, Route36TrainerTips1
+	signpost 1, 29, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
+	signpost 11, 45, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
+	signpost 7, 55, SIGNPOST_JUMPTEXT, Route36SignText
+	signpost 7, 21, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
 
 .PersonEvents: db 11
 	person_event SPRITE_WEIRD_TREE, 9, 35, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
@@ -34,7 +34,7 @@ Route36_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
 	person_event SPRITE_LASS, 9, 53, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
 	person_event SPRITE_FISHER, 9, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36FruitTree, -1
+	fruittree_event 4, 21, FRUITTREE_ROUTE_36, RAWST_BERRY
 	person_event SPRITE_TWIN, 5, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 	person_event SPRITE_COOLTRAINER_F, -2, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
@@ -71,40 +71,29 @@ Route36SuicuneScript:
 SudowoodoScript:
 	checkitem SQUIRTBOTTLE
 	iftrue .Fight
-
 	waitsfx
 	playsound SFX_SANDSTORM
-	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
+	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	end
 
 .Fight:
 	opentext
 	writetext UseSquirtbottleText
 	yesorno
-	iffalse DidntUseSquirtbottleScript
+	iffalse_endtext
 	closetext
 WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
-	opentext
-	writetext UsedSquirtbottleText
-	waitbutton
-	closetext
+	showtext UsedSquirtbottleText
 	waitsfx
 	playsound SFX_SANDSTORM
-	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
-	opentext
-	writetext SudowoodoAttackedText
-	waitbutton
-	closetext
+	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
+	showtext SudowoodoAttackedText
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO
 	if_equal $2, DidntCatchSudowoodo
 	disappear ROUTE36_WEIRD_TREE
 	reloadmapafterbattle
-	end
-
-DidntUseSquirtbottleScript:
-	closetext
 	end
 
 DidntCatchSudowoodo:
@@ -137,10 +126,7 @@ Route36FloriaScript:
 	end
 
 .SecondTimeTalking:
-	writetext FloriaText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FloriaText2
 
 Route36RockSmashGuyScript:
 	faceplayer
@@ -149,10 +135,7 @@ Route36RockSmashGuyScript:
 	iftrue .AlreadyGotRockSmash
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
-	writetext RockSmashGuyText1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RockSmashGuyText1
 
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
@@ -160,26 +143,17 @@ Route36RockSmashGuyScript:
 	verbosegivetmhm TM_ROCK_SMASH
 	setevent EVENT_GOT_TM50_ROCK_SMASH
 .AlreadyGotRockSmash:
-	writetext RockSmashGuyText3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RockSmashGuyText3
 
 LassScript_0x1940e0:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .ClearedSudowoodo
-	writetext UnknownText_0x1945b8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1945b8
 
 .ClearedSudowoodo:
-	writetext UnknownText_0x19469e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19469e
 
 TrainerSchoolboyAlan1:
 	trainer EVENT_BEAT_SCHOOLBOY_ALAN, SCHOOLBOY, ALAN1, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
@@ -324,22 +298,14 @@ TrainerPsychicMark:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19471e
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19471e
 
 TrainerSchoolgirlMolly:
 	trainer EVENT_BEAT_SCHOOLGIRL_MOLLY, SCHOOLGIRL, MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlMollyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SchoolgirlMollyAfterText
 
 ArthurScript:
 	faceplayer
@@ -359,10 +325,7 @@ ArthurScript:
 	verbosegiveitem HARD_STONE
 	iffalse .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
-	writetext ArthurGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ArthurGaveGiftText
 
 .AlreadyGotStone:
 	writetext ArthurThursdayText
@@ -372,29 +335,7 @@ ArthurScript:
 	end
 
 ArthurNotThursdayScript:
-	writetext ArthurNotThursdayText
-	waitbutton
-	closetext
-	end
-
-Route36Sign:
-	jumptext Route36SignText
-
-RuinsOfAlphNorthSign:
-	jumptext RuinsOfAlphNorthSignText
-
-Route36TrainerTips1:
-	jumptext Route36TrainerTips1Text
-
-Route36TrainerTips2:
-	jumptext Route36TrainerTips2Text
-
-Route36FruitTree:
-	fruittree FRUITTREE_ROUTE_36
-
-SudowoodoShakeMovement:
-	tree_shake ; shake
-	step_end
+	jumpopenedtext ArthurNotThursdayText
 
 WeirdTreeMovement_Flee:
 	fast_jump_step_up

@@ -16,8 +16,8 @@ MountMoon1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 17, 2, SIGNPOST_ITEM, MountMoon1FHiddenRareCandy
-	signpost 16, 12, SIGNPOST_ITEM, MountMoon1FHiddenFullRestore
+	signpost 17, 2, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
+	signpost 16, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 10
 	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
@@ -27,9 +27,9 @@ MountMoon1F_MapEventHeader:
 	person_event SPRITE_BUG_MANIAC, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
 	person_event SPRITE_LASS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
 	person_event SPRITE_POKEFAN_M, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_MOUNT_MOON_1F_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
+	itemball_event 2, 3, REVIVE, 1, EVENT_MOUNT_MOON_1F_REVIVE
+	itemball_event 20, 2, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
+	itemball_event 22, 16, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
 
 const_value set 2
 	const MOUNTMOON1F_SILVER
@@ -45,10 +45,7 @@ MountMoon1FTrigger0:
 	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementBefore
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext MountMoonSilverTextBefore
-	waitbutton
-	closetext
+	showtext MountMoonSilverTextBefore
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -82,10 +79,7 @@ MountMoon1FTrigger0:
 .FinishBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext MountMoonSilverTextAfter
-	waitbutton
-	closetext
+	showtext MountMoonSilverTextAfter
 	applymovement PLAYER, MountMoon1FPlayerMovement
 	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementAfter
 	disappear MOUNTMOON1F_SILVER
@@ -101,72 +95,42 @@ TrainerBugManiacKenta:
 
 BugManiacKentaScript:
 	end_if_just_battled
-	opentext
-	writetext BugManiacKentaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacKentaAfterText
 
 TrainerLassMiriam:
 	trainer EVENT_BEAT_LASS_MIRIAM, LASS, MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
 
 LassMiriamScript:
 	end_if_just_battled
-	opentext
-	writetext LassMiriamAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer LassMiriamAfterText
 
 TrainerSuperNerdJovan:
 	trainer EVENT_BEAT_SUPER_NERD_JOVAN, SUPER_NERD, JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
 
 SuperNerdJovanScript:
 	end_if_just_battled
-	opentext
-	writetext SuperNerdJovanAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SuperNerdJovanAfterText
 
 TrainerBugManiacRobby:
 	trainer EVENT_BEAT_BUG_MANIAC_ROBBY, BUG_MANIAC, ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
 
 BugManiacRobbyScript:
 	end_if_just_battled
-	opentext
-	writetext BugManiacRobbyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacRobbyAfterText
 
 TrainerLassIris:
 	trainer EVENT_BEAT_LASS_IRIS, LASS, IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
 
 LassIrisScript:
 	end_if_just_battled
-	opentext
-	writetext LassIrisAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer LassIrisAfterText
 
 TrainerHikerMarcos:
 	trainer EVENT_BEAT_HIKER_MARCOS, HIKER, MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
 
 HikerMarcosScript:
 	end_if_just_battled
-	opentext
-	writetext HikerMarcosAfterText
-	waitbutton
-	closetext
-	end
-
-MountMoon1FHiddenRareCandy:
-	dwb EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY, RARE_CANDY
-
-MountMoon1FHiddenFullRestore:
-	dwb EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE
+	jumptextfaceplayer HikerMarcosAfterText
 
 MountMoon1FSilverMovementBefore:
 	step_down

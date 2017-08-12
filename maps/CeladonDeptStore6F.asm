@@ -13,48 +13,24 @@ CeladonDeptStore6F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore6FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore6FElevatorButton
+	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore6FDirectoryText
+	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 4
+	person_event SPRITE_SUPER_NERD, 2, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x712c7, -1
+	person_event SPRITE_YOUNGSTER, 5, 12, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71310, -1
 	person_event SPRITE_GAMEBOY_KID, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x70d34, -1
 	person_event SPRITE_GAMEBOY_KID, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x70d3f, -1
-	person_event SPRITE_SUPER_NERD, 2, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7117a, -1
-	person_event SPRITE_YOUNGSTER, 5, 12, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x7117d, -1
-
-const_value set 2
-	const CELADONDEPTSTORE6F_GAMEBOY_KID1
-	const CELADONDEPTSTORE6F_GAMEBOY_KID2
-
-SuperNerdScript_0x7117a:
-	jumptextfaceplayer UnknownText_0x712c7
-
-YoungsterScript_0x7117d:
-	jumptextfaceplayer UnknownText_0x71310
 
 GameboyKidScript_0x70d34:
-	faceplayer
-	opentext
-	writetext UnknownText_0x70d86
-	waitbutton
-	closetext
-	spriteface CELADONDEPTSTORE6F_GAMEBOY_KID1, DOWN
+	showtextfaceplayer UnknownText_0x70d86
+	spriteface LAST_TALKED, DOWN
 	end
 
 GameboyKidScript_0x70d3f:
-	faceplayer
-	opentext
-	writetext UnknownText_0x70dc7
-	waitbutton
-	closetext
-	spriteface CELADONDEPTSTORE6F_GAMEBOY_KID2, DOWN
+	showtextfaceplayer UnknownText_0x70dc7
+	spriteface LAST_TALKED, DOWN
 	end
-
-CeladonDeptStore6FDirectory:
-	jumptext CeladonDeptStore6FDirectoryText
-
-CeladonDeptStore6FElevatorButton:
-	jumpstd elevatorbutton
 
 UnknownText_0x712c7:
 	text "A vending machine"

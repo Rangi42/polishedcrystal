@@ -13,14 +13,14 @@ CeladonUniversityCafeteria_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 10, SIGNPOST_READ, CeladonUniversityCafeteriaSign
+	signpost 0, 10, SIGNPOST_JUMPTEXT, CeladonUniversityCafeteriaSignText
 
 .PersonEvents: db 7
 	person_event SPRITE_COOLTRAINER_M, 2, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCoreyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCooltrainerfScript, -1
-	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBeautyScript, -1
-	person_event SPRITE_YOUNGSTER, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster1Script, -1
-	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaLadyScript, -1
+	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityCafeteriaCooltrainerfText, -1
+	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityCafeteriaBeautyText, -1
+	person_event SPRITE_YOUNGSTER, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityCafeteriaYoungster1Text, -1
+	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityCafeteriaLadyText, -1
 	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster2Script, -1
 	person_event SPRITE_BAKER, 3, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBakerScript, -1
 
@@ -40,7 +40,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	writetext .IntroText2
 .AfterIntro
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoBattleText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -54,36 +54,28 @@ CeladonUniversityCafeteriaCoreyScript:
 .Beaten
 	setevent EVENT_INTRODUCED_CELADON_FOUR
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	iftrue .GotItem
+	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	buttonsound
 	verbosegiveitem CHOICE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-.GotItem:
-	writetext .FinalText
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.NoBattle:
-	writetext .NoBattleText
-	waitbutton
-	closetext
-	end
+.FinalText:
+	text "You'd be a star"
+	line "student if you"
+	cont "enrolled here."
 
-.NotFinished:
-	writetext .AfterText1
-	waitbutton
-	closetext
-	end
+	para "But you have other"
+	line "goals, don't you?"
+	done
 
 .IntroText1:
 	text "I'm Corey! I'm one"
@@ -155,19 +147,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	line "memento!"
 	done
 
-.FinalText:
-	text "You'd be a star"
-	line "student if you"
-	cont "enrolled here."
-
-	para "But you have other"
-	line "goals, don't you?"
-	done
-
-CeladonUniversityCafeteriaCooltrainerfScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityCafeteriaCooltrainerfText:
 	text "This place makes"
 	line "the best Cinnabar-"
 	cont "style hamburger"
@@ -179,10 +159,7 @@ CeladonUniversityCafeteriaCooltrainerfScript:
 	line "being home."
 	done
 
-CeladonUniversityCafeteriaBeautyScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityCafeteriaBeautyText:
 	text "The cook finally"
 	line "made another batch"
 	cont "of Old Gateau!"
@@ -191,10 +168,7 @@ CeladonUniversityCafeteriaBeautyScript:
 	line "for seconds."
 	done
 
-CeladonUniversityCafeteriaYoungster1Script:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityCafeteriaYoungster1Text:
 	text "I asked the cafe-"
 	line "teria to stock"
 	cont "Casteliacones."
@@ -204,10 +178,7 @@ CeladonUniversityCafeteriaYoungster1Script:
 	cont "yummy too!"
 	done
 
-CeladonUniversityCafeteriaLadyScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityCafeteriaLadyText:
 	text "I'm on a diet."
 	line "Today it's a"
 	para "nutritious Slip"
@@ -264,34 +235,19 @@ CeladonUniversityCafeteriaBakerScript:
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .BoughtLeftovers:
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .NoBuy:
-	writetext .Text4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text4
 
 .NotEnoughMoney:
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .NoRoom:
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text6
 
 .Text1:
 	text "What's that, hon?"
@@ -331,10 +287,7 @@ CeladonUniversityCafeteriaBakerScript:
 	line "it, hon."
 	done
 
-CeladonUniversityCafeteriaSign:
-	jumptext .Text
-
-.Text:
+CeladonUniversityCafeteriaSignText:
 	text "Please clean up"
 	line "when you are"
 	cont "finished eating."

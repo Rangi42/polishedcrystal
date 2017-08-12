@@ -13,11 +13,11 @@ Route5CleanseTagSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, Route5CleanseTagSpeechBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 2
 	person_event SPRITE_GRANNY, 5, 2, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x18b634, -1
-	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x18b64f, -1
+	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b6de, -1
 
 GrannyScript_0x18b634:
 	faceplayer
@@ -35,12 +35,6 @@ UnknownScript_0x18b649:
 UnknownScript_0x18b64d:
 	closetext
 	end
-
-TeacherScript_0x18b64f:
-	jumptextfaceplayer UnknownText_0x18b6de
-
-Route5CleanseTagSpeechBookshelf:
-	jumpstd difficultbookshelf
 
 UnknownText_0x18b655:
 	text "Eeyaaaah!"

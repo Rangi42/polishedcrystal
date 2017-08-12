@@ -26,7 +26,7 @@ ShamoutiCoast_MapEventHeader:
 	person_event SPRITE_CANDELA, 11, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_CANDELA
 	person_event SPRITE_BLANCHE, 7, 53, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_BLANCHE
 	person_event SPRITE_SPARK, 9, 83, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_SPARK
-	person_event SPRITE_BALL_CUT_FRUIT, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, STAR_PIECE, 1, EVENT_SHAMOUTI_COAST_STAR_PIECE
+	itemball_event 11, 6, STAR_PIECE, 1, EVENT_SHAMOUTI_COAST_STAR_PIECE
 	person_event SPRITE_LADY, -3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 TrainerArtistRin:
@@ -34,11 +34,7 @@ TrainerArtistRin:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm painting the"
@@ -69,11 +65,7 @@ TrainerSwimmerfMarina:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If you were stran-"
@@ -103,11 +95,7 @@ TrainerFisherDallas:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Gah! Not another"
@@ -135,11 +123,7 @@ TrainerSightseerfPilar:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "¡Hola! He venido"
@@ -171,11 +155,7 @@ TrainerSightseersCyandvi1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Cy: TODO"
@@ -194,11 +174,7 @@ TrainerSightseersCyandvi2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Vi: TODO"
@@ -217,11 +193,7 @@ TrainerSwimmermAshe:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming? Me?"

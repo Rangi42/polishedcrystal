@@ -18,8 +18,8 @@ RuinsofAlphAerodactylChamber_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphAerodactylChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphAerodactylChamberSignpost1Script
+	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
+	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
 	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
 	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
 	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
@@ -88,15 +88,9 @@ UnknownScript_0x58df7:
 	warpcheck
 	end
 
-MapRuinsofAlphAerodactylChamberSignpost1Script:
-	jumptext UnknownText_0x58ec2
-
 MapRuinsofAlphAerodactylChamberSignpost3Script:
 	unowntypeface
-	opentext
-	writetext UnknownText_0x58ee7
-	waitbutton
-	closetext
+	showtext UnknownText_0x58ee7
 	restoretypeface
 	end
 
@@ -119,11 +113,7 @@ MapRuinsofAlphAerodactylChamberSignpost5Script:
 	end
 
 UnknownScript_0x58e46:
-	opentext
-	writetext UnknownText_0x58ea2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58ea2
 
 MovementData_0x58e4d:
 	db $59 ; movement

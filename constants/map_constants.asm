@@ -826,11 +826,13 @@ EMOTE_MEM EQU -1
 	const SIGNPOST_LEFT
 	const SIGNPOST_IFSET
 	const SIGNPOST_IFNOTSET
-	const SIGNPOST_ITEM
 	const SIGNPOST_JUMPTEXT
 	const SIGNPOST_JUMPSTD
-
-; I'm relocating spawn constants here, so that they can be used anywhere in the disassembly.
+; SIGNPOST_ITEM has to be the last signpost type, since hidden item signposts
+; use type SIGNPOST_ITEM + (item id) to save space.
+; Note that this requires SIGNPOST_ITEM + (item id) <= $ff, so currently most
+; of the mail items cannot be hidden.
+SIGNPOST_ITEM EQU const_value
 
 
 ; see engine/spawn_points.asm:SpawnPoints
@@ -884,17 +886,11 @@ EMOTE_OBJECT EQU 7
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
 	const PERSONTYPE_SCRIPT         ; 0
-	const PERSONTYPE_ITEMBALL       ; 1
-	const PERSONTYPE_TMHMBALL       ; 2
-	const PERSONTYPE_JUMPTEXT       ; 3
-	const PERSONTYPE_JUMPTEXTFP     ; 4
-	const PERSONTYPE_JUMPSTD        ; 5
-	const PERSONTYPE_TRAINER        ; 6
-	const PERSONTYPE_GENERICTRAINER ; 7
-	const PERSONTYPE_MART           ; 8
-	const PERSONTYPE_POKEMON        ; 9
-	const PERSONTYPE_NPCTRADE       ; a
-	const PERSONTYPE_FRUITTREE      ; b
+	const PERSONTYPE_POKEBALL       ; 1
+	const PERSONTYPE_TRAINER        ; 2
+	const PERSONTYPE_GENERICTRAINER ; 3
+	const PERSONTYPE_POKEMON        ; 4
+	const PERSONTYPE_COMMAND        ; 5
 NUM_PERSONTYPES EQU const_value
 
 ; fruit trees

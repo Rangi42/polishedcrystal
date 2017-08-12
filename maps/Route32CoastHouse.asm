@@ -36,22 +36,13 @@ GourmetManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	writetext .ThankYouText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .ThankYouText
 
 .NoItem:
-	writetext .NoItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoItemText
 
 .WrongItem:
-	writetext .WrongItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WrongItemText
 
 .GreetingText:
 	text "Hi there! I am"

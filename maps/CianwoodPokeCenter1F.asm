@@ -17,63 +17,52 @@ CianwoodPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalChuckScript
 
 .PersonEvents: db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9dbcf, -1
-	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x9dbd2, -1
+	pc_nurse_event 1, 5
 	person_event SPRITE_GYM_GUY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
-	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x9dbea, -1
-	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CianwoodPokeCenterRichBoyScript, -1
-
-NurseScript_0x9dbcf:
-	jumpstd pokecenternurse
-
-LassScript_0x9dbd2:
-	jumptextfaceplayer UnknownText_0x9dbed
-
-CianwoodGymGuyScript:
-	faceplayer
-	opentext
-	checkevent EVENT_BEAT_CHUCK
-	iftrue .CianwoodGymGuyWinScript
-	writetext CianwoodGymGuyText
-	waitbutton
-	checkevent EVENT_GOT_HM04_STRENGTH
-	iftrue .Done
-	writetext CianwoodGymGuyStrengthText1
-	buttonsound
-	verbosegivetmhm HM_STRENGTH
-	setevent EVENT_GOT_HM04_STRENGTH
-	writetext CianwoodGymGuyStrengthText2
-	waitbutton
-.Done
-	closetext
-	end
-
-.CianwoodGymGuyWinScript:
-	writetext CianwoodGymGuyWinText
-	waitbutton
-	closetext
-	end
-
-SuperNerdScript_0x9dbea:
-	jumptextfaceplayer UnknownText_0x9ded7
-
-CianwoodPokeCenterRichBoyScript:
-	jumptextfaceplayer CianwoodPokeCenterRichBoyText
+	person_event SPRITE_LASS, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FLassText, -1
+	person_event SPRITE_SUPER_NERD, 7, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FSuperNerdText, -1
+	person_event SPRITE_RICH_BOY, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FRichBoyText, -1
 
 PokemonJournalChuckScript:
 	setflag ENGINE_READ_CHUCK_JOURNAL
-	jumptext PokemonJournalChuckText
+	thistext
 
-UnknownText_0x9dbed:
-	text "Did you meet the"
-	line "#Maniac?"
+	text "#mon Journal"
 
-	para "He's always brag-"
-	line "ging about his"
-	cont "rare #mon."
+	para "Special Feature:"
+	line "Leader Chuck!"
+
+	para "Chuck is said to"
+	line "really like sweet"
+	cont "desserts."
+
+	para "However, he has"
+	line "also been seen"
+
+	para "training under a"
+	line "heavy waterfall"
+	cont "to work them off."
 	done
 
-CianwoodGymGuyText:
+CianwoodGymGuyScript:
+	checkevent EVENT_BEAT_CHUCK
+	iftrue_jumptextfaceplayer .WinText
+	checkevent EVENT_GOT_HM04_STRENGTH
+	iftrue_jumptextfaceplayer .Text
+	faceplayer
+	opentext
+	writetext .Text
+	waitbutton
+	writetext .StrengthText1
+	buttonsound
+	verbosegivetmhm HM_STRENGTH
+	setevent EVENT_GOT_HM04_STRENGTH
+	writetext .StrengthText2
+	waitbutton
+	closetext
+	end
+
+.Text:
 	text "The #mon Gym"
 	line "trainers here are"
 	cont "macho bullies."
@@ -112,7 +101,7 @@ CianwoodGymGuyText:
 	line "go outside."
 	done
 
-CianwoodGymGuyStrengthText1:
+.StrengthText1:
 	text "You can't move the"
 	line "boulders aside?"
 
@@ -121,17 +110,26 @@ CianwoodGymGuyStrengthText1:
 	cont "#mon Strength!"
 	done
 
-CianwoodGymGuyStrengthText2:
+.StrengthText2:
 	text "Good luck!"
 	done
 
-CianwoodGymGuyWinText:
+.WinText:
 	text "<PLAYER>! You won!"
 	line "I could tell by"
 	cont "looking at you!"
 	done
 
-UnknownText_0x9ded7:
+CianwoodPokeCenter1FLassText:
+	text "Did you meet the"
+	line "#Maniac?"
+
+	para "He's always brag-"
+	line "ging about his"
+	cont "rare #mon."
+	done
+
+CianwoodPokeCenter1FSuperNerdText:
 	text "I love showing off"
 	line "the #mon that"
 
@@ -145,29 +143,11 @@ UnknownText_0x9ded7:
 	line "off my #mon!"
 	done
 
-CianwoodPokeCenterRichBoyText:
+CianwoodPokeCenter1FRichBoyText:
 	text "There's no #"
 	line "Mart in this town,"
 
 	para "so we have to im-"
 	line "port products from"
 	cont "across the sea."
-	done
-
-PokemonJournalChuckText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "Leader Chuck!"
-
-	para "Chuck is said to"
-	line "really like sweet"
-	cont "desserts."
-
-	para "However, he has"
-	line "also been seen"
-
-	para "training under a"
-	line "heavy waterfall"
-	cont "to work them off."
 	done

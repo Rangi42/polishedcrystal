@@ -18,83 +18,57 @@ OlivinePokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 5
 	person_event SPRITE_BEAUTY, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BeautyCharlotteScript, -1
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x9c002, -1
-	person_event SPRITE_FISHING_GURU, 6, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9c005, -1
-	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x9c008, -1
-	person_event SPRITE_TEACHER, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x9c00b, -1
+	pc_nurse_event 1, 5
+	person_event SPRITE_FISHING_GURU, 6, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, happinesschecknpc, -1
+	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FFisherText, -1
+	person_event SPRITE_TEACHER, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FTeacherText, -1
 
 const_value set 2
 	const OLIVINEPOKECENTER1F_BEAUTY
 
-NurseScript_0x9c002:
-	jumpstd pokecenternurse
+PokemonJournalJasmineScript:
+	setflag ENGINE_READ_JASMINE_JOURNAL
+	thistext
 
-FishingGuruScript_0x9c005:
-	jumpstd happinesschecknpc
+	text "#mon Journal"
 
-FisherScript_0x9c008:
-	jumptextfaceplayer UnknownText_0x9c00e
+	para "Special Feature:"
+	line "Leader Jasmine!"
 
-TeacherScript_0x9c00b:
-	jumptextfaceplayer UnknownText_0x9c086
+	para "Rumor has it that"
+	line "Jasmine and Erika,"
+
+	para "the Celadon Gym"
+	line "Leader, chat about"
+	cont "fashion together."
+	done
 
 BeautyCharlotteScript:
+	checkevent EVENT_BEAT_BEAUTY_CHARLOTTE
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_BEAUTY_CHARLOTTE
-	iftrue BeautyCharlotteAfterScript
-	writetext BeautyCharlotteGreetingText
+	writetext .GreetingText
 	yesorno
-	iffalse BeautyCharlotteNoBattleScript
-	writetext BeautyCharlotteSeenText
+	iffalse_jumpopenedtext .NoBattleText
+	writetext .SeenText
 	waitbutton
 	closetext
-	winlosstext BeautyCharlotteBeatenText, 0
+	winlosstext .BeatenText, 0
 	setlasttalked OLIVINEPOKECENTER1F_BEAUTY
 	loadtrainer BEAUTY, CHARLOTTE
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BEAUTY_CHARLOTTE
-	opentext
-BeautyCharlotteAfterScript:
-	writetext BeautyCharlotteAfterText
-	waitbutton
-	closetext
-	end
+	thistext
 
-BeautyCharlotteNoBattleScript:
-	writetext BeautyCharlotteNoBattleText
-	waitbutton
-	closetext
-	end
-
-PokemonJournalJasmineScript:
-	setflag ENGINE_READ_JASMINE_JOURNAL
-	jumptext PokemonJournalJasmineText
-
-UnknownText_0x9c00e:
-	text "There's this guy in"
-	line "Cianwood City who"
-	cont "looks weak, but he"
-
-	para "taught my #-"
-	line "mon Strength."
-
-	para "Now it can move"
-	line "big boulders."
+.AfterText:
+	text "How cool is it"
+	line "to have such a"
+	cont "special #mon?"
 	done
 
-UnknownText_0x9c086:
-	text "There's a person"
-	line "in Cianwood City"
-	cont "across the sea."
-
-	para "I heard him brag-"
-	line "ging about his"
-	cont "rare #mon."
-	done
-
-BeautyCharlotteGreetingText:
+.GreetingText:
 	text "Oh, are you a"
 	line "trainer?"
 
@@ -112,7 +86,7 @@ BeautyCharlotteGreetingText:
 	line "#mon?"
 	done
 
-BeautyCharlotteNoBattleText:
+.NoBattleText:
 	text "Oh, really? Talk"
 	line "to me if you want"
 
@@ -120,31 +94,33 @@ BeautyCharlotteNoBattleText:
 	line "time!"
 	done
 
-BeautyCharlotteSeenText:
+.SeenText:
 	text "All right!"
 	line "Here I come!"
 	done
 
-BeautyCharlotteBeatenText:
+.BeatenText:
 	text "Amazing battle!"
 	done
 
-BeautyCharlotteAfterText:
-	text "How cool is it"
-	line "to have such a"
-	cont "special #mon?"
+OlivinePokeCenter1FFisherText:
+	text "There's this guy in"
+	line "Cianwood City who"
+	cont "looks weak, but he"
+
+	para "taught my #-"
+	line "mon Strength."
+
+	para "Now it can move"
+	line "big boulders."
 	done
 
-PokemonJournalJasmineText:
-	text "#mon Journal"
+OlivinePokeCenter1FTeacherText:
+	text "There's a person"
+	line "in Cianwood City"
+	cont "across the sea."
 
-	para "Special Feature:"
-	line "Leader Jasmine!"
-
-	para "Rumor has it that"
-	line "Jasmine and Erika,"
-
-	para "the Celadon Gym"
-	line "Leader, chat about"
-	cont "fashion together."
+	para "I heard him brag-"
+	line "ging about his"
+	cont "rare #mon."
 	done

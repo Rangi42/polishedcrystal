@@ -16,23 +16,20 @@ ShamoutiHotel1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 15, SIGNPOST_READ, ShamoutiHotelRestaurantSign
+	signpost 0, 15, SIGNPOST_JUMPTEXT, ShamoutiHotelRestaurantSignText
 
 .PersonEvents: db 5
-	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FReceptionistScript, -1
+	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FReceptionistText, -1
 	person_event SPRITE_ARTIST, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FCooltrainermScript, -1
-	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FLadyScript, -1
-	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FYoungsterScript, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FCooltrainermText, -1
+	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FLadyText, -1
+	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FYoungsterText, -1
 
 ShamoutiHotel1FRestaurantTrigger:
 	domaptrigger SHAMOUTI_HOTEL_RESTAURANT, $0
 	return
 
-ShamoutiHotel1FReceptionistScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ShamoutiHotel1FReceptionistText:
 	text "Welcome to the"
 	line "Shamouti Hotel."
 
@@ -56,22 +53,13 @@ ShamoutiHotel1FArtistScript:
 	buttonsound
 	special SpecialTrendyPhrase
 	setflag ENGINE_CHANGED_TRENDY_PHRASE
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .SetTrendyPhraseToday
-	writetext .Text4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text4
 
 .Yes
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .Text1:
 	text "No matter where"
@@ -114,20 +102,14 @@ ShamoutiHotel1FArtistScript:
 	cont "<TRENDY>!"
 	done
 
-ShamoutiHotel1FCooltrainermScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ShamoutiHotel1FCooltrainermText:
 	text "So <TRENDY> is"
 	line "the hot new thing?"
 
 	cont "That's so cool!"
 	done
 
-ShamoutiHotel1FLadyScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ShamoutiHotel1FLadyText:
 	text "Have you ever"
 	line "found a Bottle Cap"
 	cont "while fishing?"
@@ -144,18 +126,12 @@ ShamoutiHotel1FLadyScript:
 	cont "Bottle Cap."
 	done
 
-ShamoutiHotel1FYoungsterScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ShamoutiHotel1FYoungsterText:
 	text "I heard that"
 	line "<TRENDY> is “in”"
 	cont "right now!"
 	done
 
-ShamoutiHotelRestaurantSign:
-	jumptext .Text
-
-.Text:
+ShamoutiHotelRestaurantSignText:
 	text "Oasis Restaurant"
 	done

@@ -20,20 +20,20 @@ ViridianCity_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 17, 17, SIGNPOST_READ, ViridianCitySign
-	signpost 7, 27, SIGNPOST_READ, ViridianGymSign
-	signpost 1, 19, SIGNPOST_READ, ViridianCityWelcomeSign
-	signpost 15, 21, SIGNPOST_READ, TrainerHouseSign
+	signpost 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
+	signpost 7, 27, SIGNPOST_JUMPTEXT, ViridianGymSignText
+	signpost 1, 19, SIGNPOST_JUMPTEXT, ViridianCityWelcomeSignText
+	signpost 15, 21, SIGNPOST_JUMPTEXT, TrainerHouseSignText
 
 .PersonEvents: db 8
 	person_event SPRITE_GRAMPS, 5, 18, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
 	person_event SPRITE_GRAMPS, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
 	person_event SPRITE_GRAMPS, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
 	person_event SPRITE_FISHER, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
-	person_event SPRITE_BUG_CATCHER, 21, 17, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x1a9a90, -1
-	person_event SPRITE_YOUNGSTER, 23, 31, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ViridianCityYoungsterScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 14, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ViridianCityCutTree, EVENT_VIRIDIAN_CITY_CUT_TREE_2
+	person_event SPRITE_BUG_CATCHER, 21, 17, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9daa, -1
+	person_event SPRITE_YOUNGSTER, 23, 31, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungsterText, -1
+	cuttree_event 4, 14, EVENT_VIRIDIAN_CITY_CUT_TREE_1
+	cuttree_event 22, 8, EVENT_VIRIDIAN_CITY_CUT_TREE_2
 
 ViridianCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIRIDIAN
@@ -45,32 +45,20 @@ GrampsScript_0x1a9a4c:
 	writetext UnknownText_0x1a9aa5
 	yesorno
 	iffalse UnknownScript_0x1a9a5b
-	writetext UnknownText_0x1a9b6f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9b6f
 
 UnknownScript_0x1a9a5b:
-	writetext UnknownText_0x1a9bb7
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9bb7
 
 GrampsScript_0x1a9a61:
 	faceplayer
 	opentext
 	checkevent EVENT_BLUE_IN_CINNABAR
 	iftrue .BlueReturned
-	writetext UnknownText_0x1a9c11
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9c11
 
 .BlueReturned:
-	writetext UnknownText_0x1a9c7e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a9c7e
 
 FisherScript_0x1a9a75:
 	faceplayer
@@ -93,44 +81,14 @@ ViridianCityTutorDreamEaterScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_ViridianCityTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ViridianCityTutorRefused
 
 .NoSilverLeaf
-	writetext Text_ViridianCityTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ViridianCityTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_ViridianCityTutorTaught
-	waitbutton
-	closetext
-	end
-
-BugCatcherScript_0x1a9a90:
-	jumptextfaceplayer UnknownText_0x1a9daa
-
-ViridianCityYoungsterScript:
-	jumptextfaceplayer ViridianCityYoungsterText
-
-ViridianCityCutTree:
-	jumpstd cuttree
-
-ViridianCitySign:
-	jumptext ViridianCitySignText
-
-ViridianGymSign:
-	jumptext ViridianGymSignText
-
-ViridianCityWelcomeSign:
-	jumptext ViridianCityWelcomeSignText
-
-TrainerHouseSign:
-	jumptext TrainerHouseSignText
+	jumpopenedtext Text_ViridianCityTutorTaught
 
 UnknownText_0x1a9aa5:
 	text "Hey, kid! I just"

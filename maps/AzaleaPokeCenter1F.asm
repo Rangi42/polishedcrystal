@@ -17,17 +17,16 @@ AzaleaPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalBugsyScript
 
 .PersonEvents: db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
+	pc_nurse_event 1, 5
 	person_event SPRITE_COOLTRAINER_M, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, AzaleaPokeCenter1FCooltrainermScript, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FGentlemanText, -1
-	person_event SPRITE_SIGHTSEER_M, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FSightseermText, -1
-	person_event SPRITE_POKEFAN_F, 5, 2, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, AzaleaPokeCenter1FPokefanfText, -1
+	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaPokeCenter1FGentlemanText, -1
+	person_event SPRITE_SIGHTSEER_M, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaPokeCenter1FSightseermText, -1
+	person_event SPRITE_POKEFAN_F, 5, 2, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaPokeCenter1FPokefanfText, -1
 
 PokemonJournalBugsyScript:
 	setflag ENGINE_READ_BUGSY_JOURNAL
-	jumptext .Text
+	thistext
 
-.Text:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -45,13 +44,9 @@ PokemonJournalBugsyScript:
 
 AzaleaPokeCenter1FCooltrainermScript:
 	checknite
-	iftrue .Nite
-	jumptextfaceplayer .DayText
+	iftrue_jumptextfaceplayer .NiteText
+	thistextfaceplayer
 
-.Nite
-	jumptextfaceplayer .NiteText
-
-.DayText:
 	text "For a guy who"
 	line "makes # Balls,"
 

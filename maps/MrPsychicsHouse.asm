@@ -13,7 +13,7 @@ MrPsychicsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, MrPsychicsHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_FISHING_GURU, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MrPsychic, -1
@@ -39,26 +39,14 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_MrPsychicsHouseTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MrPsychicsHouseTutorRefused
 
 .NoSilverLeaf
-	writetext Text_MrPsychicsHouseTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MrPsychicsHouseTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_MrPsychicsHouseTutorTaught
-	waitbutton
-	closetext
-	end
-
-MrPsychicsHouseBookshelf:
-	jumpstd difficultbookshelf
+	jumpopenedtext Text_MrPsychicsHouseTutorTaught
 
 MrPsychicText:
 	text "…"

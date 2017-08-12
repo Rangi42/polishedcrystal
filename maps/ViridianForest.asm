@@ -14,22 +14,22 @@ ViridianForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 11
-	signpost 7, 4, SIGNPOST_READ, MapViridianForestSignpost1Script
-	signpost 26, 6, SIGNPOST_READ, MapViridianForestSignpost2Script
-	signpost 19, 28, SIGNPOST_READ, MapViridianForestSignpost3Script
-	signpost 34, 18, SIGNPOST_READ, MapViridianForestSignpost4Script
-	signpost 42, 26, SIGNPOST_READ, MapViridianForestSignpost5Script
-	signpost 44, 20, SIGNPOST_READ, MapViridianForestSignpost6Script
-	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
-	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
-	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenMulch
-	signpost 9, 30, SIGNPOST_ITEM, ViridianForestHiddenRevive
-	signpost 14, 3, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
+	signpost 7, 4, SIGNPOST_JUMPTEXT, ViridianForestSignText1
+	signpost 26, 6, SIGNPOST_JUMPTEXT, ViridianForestSignText2
+	signpost 19, 28, SIGNPOST_JUMPTEXT, ViridianForestSignText3
+	signpost 34, 18, SIGNPOST_JUMPTEXT, ViridianForestSignText4
+	signpost 42, 26, SIGNPOST_JUMPTEXT, ViridianForestSignText5
+	signpost 44, 20, SIGNPOST_JUMPTEXT, ViridianForestSignText6
+	signpost 44, 32, SIGNPOST_ITEM + MAX_ETHER, EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER
+	signpost 43, 18, SIGNPOST_ITEM + FULL_HEAL, EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL
+	signpost 43, 4, SIGNPOST_ITEM + MULCH, EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH
+	signpost 9, 30, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
+	signpost 14, 3, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
 .PersonEvents: db 8
 	person_event SPRITE_BALL_CUT_FRUIT, 18, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
-	person_event SPRITE_BALL_CUT_FRUIT, 31, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
+	itemball_event 31, 14, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
+	itemball_event 33, 3, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
 	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
 	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
 	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
@@ -44,55 +44,35 @@ TrainerBug_maniacDane:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacDaneAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacDaneAfterText
 
 TrainerBug_maniacDion:
 	trainer EVENT_BEAT_BUG_MANIAC_DION, BUG_MANIAC, DION, BugManiacDionSeenText, BugManiacDionBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacDionAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacDionAfterText
 
 TrainerBug_maniacStacey:
 	trainer EVENT_BEAT_BUG_MANIAC_STACEY, BUG_MANIAC, STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacStaceyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacStaceyAfterText
 
 TrainerBug_maniacEllis:
 	trainer EVENT_BEAT_BUG_MANIAC_ELLIS, BUG_MANIAC, ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacEllisAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacEllisAfterText
 
 TrainerBug_maniacAbner:
 	trainer EVENT_BEAT_BUG_MANIAC_ABNER, BUG_MANIAC, ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BugManiacAbnerAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacAbnerAfterText
 
 ViridianForestWeedleDoll:
 	disappear VIRIDIAN_FOREST_POKE_BALL3
@@ -102,43 +82,7 @@ ViridianForestWeedleDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext ViridianForestWeedleSentText
-	waitbutton
-	closetext
-	end
-
-MapViridianForestSignpost1Script:
-	jumptext ViridianForestSignText1
-
-MapViridianForestSignpost2Script:
-	jumptext ViridianForestSignText2
-
-MapViridianForestSignpost3Script:
-	jumptext ViridianForestSignText3
-
-MapViridianForestSignpost4Script:
-	jumptext ViridianForestSignText4
-
-MapViridianForestSignpost5Script:
-	jumptext ViridianForestSignText5
-
-MapViridianForestSignpost6Script:
-	jumptext ViridianForestSignText6
-
-ViridianForestHiddenMaxEther:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER, MAX_ETHER
-
-ViridianForestHiddenFullHeal:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
-
-ViridianForestHiddenMulch:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH, MULCH
-
-ViridianForestHiddenRevive:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE, REVIVE
-
-ViridianForestHiddenLeafStone:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE, LEAF_STONE
+	jumpopenedtext ViridianForestWeedleSentText
 
 BugManiacDaneSeenText:
 	text "Welcome to"

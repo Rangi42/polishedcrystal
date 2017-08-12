@@ -15,20 +15,20 @@ DarkCaveVioletEntrance_MapEventHeader:
 	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger
 
 .Signposts: db 1
-	signpost 3, 26, SIGNPOST_ITEM, DarkCaveVioletEntranceHiddenElixer
+	signpost 3, 26, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
 
 .PersonEvents: db 11
 	person_event SPRITE_URSARING, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
 	person_event SPRITE_PIDGEOTTO, 2, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
 	person_event SPRITE_FALKNER, 2, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 16, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 6, 27, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 14, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 31, 36, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DarkCaveVioletEntranceRock, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_STONE, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DUSK_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
+	itemball_event 8, 6, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
+	smashrock_event 14, 16
+	smashrock_event 6, 27
+	smashrock_event 14, 7
+	smashrock_event 31, 36
+	itemball_event 22, 36, DUSK_STONE, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DUSK_STONE
+	itemball_event 9, 35, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
+	itemball_event 28, 30, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 
 const_value set 2
 	const DARKCAVEVIOLETENTRANCE_URSARING
@@ -63,10 +63,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	pause 20
 	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerHeadBack
 	showemote EMOTE_SHOCK, DARKCAVEVIOLETENTRANCE_FALKNER, 15
-	opentext
-	writetext DarkCaveVioletEntranceFalknerIntroText
-	waitbutton
-	closetext
+	showtext DarkCaveVioletEntranceFalknerIntroText
 	follow PLAYER, DARKCAVEVIOLETENTRANCE_FALKNER
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAside
 	stopfollow
@@ -80,18 +77,9 @@ DarkCaveVioletEntranceFalknerTrigger:
 	end
 
 .Darkness:
-	opentext
-	writetext DarkCaveVioletEntranceFalknerDarknessText
-	waitbutton
-	closetext
+	showtext DarkCaveVioletEntranceFalknerDarknessText
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAway
 	end
-
-DarkCaveVioletEntranceRock:
-	jumpstd smashrock
-
-DarkCaveVioletEntranceHiddenElixer:
-	dwb EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER, ELIXER
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 	fix_facing

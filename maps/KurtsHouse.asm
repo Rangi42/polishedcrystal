@@ -14,13 +14,13 @@ KurtsHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 7
-	signpost 1, 6, SIGNPOST_READ, KurtsHouseRadio
-	signpost 0, 8, SIGNPOST_READ, KurtsHouseOakPhoto
-	signpost 0, 9, SIGNPOST_READ, KurtsHouseOakPhoto
+	signpost 1, 6, SIGNPOST_JUMPSTD, radio2
+	signpost 0, 8, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
+	signpost 0, 9, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
 	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	signpost 1, 2, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	signpost 1, 3, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	signpost 1, 4, SIGNPOST_READ, KurtsHouseCelebiStatue
+	signpost 1, 4, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
 
 .PersonEvents: db 5
 	person_event SPRITE_KURT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
@@ -144,10 +144,7 @@ KurtScript_0x18e178:
 	end
 
 .IMakeBallsFromApricorns:
-	writetext UnknownText_0x18e6c9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e6c9
 
 .AskApricorn:
 	writetext UnknownText_0x18e736
@@ -193,16 +190,10 @@ KurtScript_0x18e178:
 	setevent EVENT_GAVE_KURT_APRICORNS
 	setflag ENGINE_KURT_MAKING_BALLS
 .WaitForApricorns:
-	writetext UnknownText_0x18e779
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e779
 
 .Cancel:
-	writetext UnknownText_0x18e7bc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e7bc
 
 ._ThatTurnedOutGreat:
 	setevent EVENT_RECEIVED_BALLS_FROM_KURT
@@ -301,10 +292,7 @@ KurtScript_0x18e178:
 	iffalse .NotMakingBalls
 	writetext UnknownText_0x18e934
 	waitbutton
-	writetext UnknownText_0x18e949
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18e949
 
 .NotMakingBalls:
 	writetext UnknownText_0x18e95c
@@ -347,25 +335,22 @@ KurtMakingBallsScript:
 	writetext UnknownText_0x18e7d8
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_KURT2, UP
+	spriteface LAST_TALKED, UP
 	end
 
 Script_FirstTimeBuggingKurt:
 	writetext UnknownText_0x18e863
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_KURT2, UP
+	spriteface LAST_TALKED, UP
 	setevent EVENT_BUGGING_KURT_TOO_MUCH
 	end
 
 KurtScript_ImCheckingItNow:
 	writetext UnknownText_0x18e934
 	waitbutton
-	spriteface KURTSHOUSE_KURT2, UP
-	writetext UnknownText_0x18e949
-	waitbutton
-	closetext
-	end
+	spriteface LAST_TALKED, UP
+	jumpopenedtext UnknownText_0x18e949
 
 KurtsGranddaughter1:
 	faceplayer
@@ -381,32 +366,16 @@ KurtsGranddaughter1:
 	iftrue .SlowpokeBack
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	iftrue .Lonely
-	opentext
-	writetext KurtsGranddaughterSlowpokeGoneText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterSlowpokeGoneText
 
 .SlowpokeBack:
-	opentext
-	writetext KurtsGranddaughterSlowpokeBackText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterSlowpokeBackText
 
 .Lonely:
-	opentext
-	writetext KurtsGranddaughterLonelyText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterLonelyText
 
 .Dad:
-	opentext
-	writetext KurtsGranddaughterDadText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterDadText
 
 KurtsGranddaughter2:
 	faceplayer
@@ -417,22 +386,18 @@ KurtsGranddaughter2Subscript:
 	writetext KurtsGranddaughterHelpText
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_TWIN2, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 .GSBall:
 	writetext KurtsGranddaughterGSBallText
 	waitbutton
 	closetext
-	spriteface KURTSHOUSE_TWIN2, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 KurtsGranddaughterFunScript:
-	opentext
-	writetext KurtsGranddaughterFunText
-	waitbutton
-	closetext
-	end
+	jumptext KurtsGranddaughterFunText
 
 KurtsHouseSlowpoke:
 	faceplayer
@@ -443,18 +408,9 @@ KurtsHouseSlowpoke:
 	closetext
 	end
 
-KurtsHouseOakPhoto:
-	jumptext KurtsHouseOakPhotoText
-
-KurtsHouseCelebiStatue:
-	jumptext KurtsHouseCelebiStatueText
-
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumptext PokemonJournalProfWestwoodText
-
-KurtsHouseRadio:
-	jumpstd radio2
 
 MovementData_0x18e466:
 	run_step_down

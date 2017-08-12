@@ -24,8 +24,8 @@ PokemonLeagueGate_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_OFFICER, 10, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x9ba03, -1
-	person_event SPRITE_BLACK_BELT, 5, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x9ba21, EVENT_OPENED_MT_SILVER
-	person_event SPRITE_BLACK_BELT, 5, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x9ba24, EVENT_FOUGHT_SNORLAX
+	person_event SPRITE_BLACK_BELT, 5, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9baf1, EVENT_OPENED_MT_SILVER
+	person_event SPRITE_BLACK_BELT, 5, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9bb37, EVENT_FOUGHT_SNORLAX
 
 PokemonLeagueGateXYTriggerScript2:
 	applymovement PLAYER, PokemonLeagueGateXYTriggerScript2Movement
@@ -37,18 +37,9 @@ PokemonLeagueGateXYTriggerScript1:
 OfficerScript_0x9ba03:
 	faceplayer
 UnknownScript_0x9ba04:
-	opentext
-	writetext UnknownText_0x9ba29
-	waitbutton
-	closetext
+	showtext UnknownText_0x9ba29
 	dotrigger $1
 	end
-
-BlackBeltScript_0x9ba21:
-	jumptextfaceplayer UnknownText_0x9baf1
-
-BlackBeltScript_0x9ba24:
-	jumptextfaceplayer UnknownText_0x9bb37
 
 PokemonLeagueGateXYTriggerScript2Movement:
 	step_left

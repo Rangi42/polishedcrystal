@@ -15,7 +15,7 @@ SlowpokeWellB2F_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_GYM_GUY, 4, 5, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
+	itemball_event 5, 15, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
 
 GymGuyScript_0x5ad0b:
 	faceplayer
@@ -32,10 +32,7 @@ UnknownScript_0x5ad20:
 	end
 
 UnknownScript_0x5ad22:
-	writetext UnknownText_0x5adf2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5adf2
 
 UnknownText_0x5ad2a:
 	text "I'm waiting to see"

@@ -17,10 +17,7 @@ GoldenrodHarborGate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborGateOfficerScript, -1
-
-GoldenrodHarborGateOfficerScript:
-	jumptextfaceplayer GoldenrodHarborGateOfficerText
+	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborGateOfficerText, -1
 
 GoldenrodHarborGateOfficerText:
 	text "If your #mon"

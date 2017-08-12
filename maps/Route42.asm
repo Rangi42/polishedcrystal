@@ -22,11 +22,11 @@ Route42_MapEventHeader:
 	xy_trigger 2, $e, $18, Route42SuicuneScript
 
 .Signposts: db 5
-	signpost 10, 4, SIGNPOST_READ, Route42Sign1
-	signpost 5, 7, SIGNPOST_READ, MtMortarSign1
-	signpost 9, 45, SIGNPOST_READ, MtMortarSign2
-	signpost 8, 54, SIGNPOST_READ, Route42Sign2
-	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
+	signpost 10, 4, SIGNPOST_JUMPTEXT, Route42Sign1Text
+	signpost 5, 7, SIGNPOST_JUMPTEXT, MtMortarSign1Text
+	signpost 9, 45, SIGNPOST_JUMPTEXT, MtMortarSign2Text
+	signpost 8, 54, SIGNPOST_JUMPTEXT, Route42Sign2Text
+	signpost 11, 16, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
 .PersonEvents: db 14
 	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
@@ -34,14 +34,14 @@ Route42_MapEventHeader:
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 24, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route42CutTree, EVENT_ROUTE_42_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934d, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934f, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
-	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route42OfficerScript, EVENT_BEAT_JASMINE
+	cuttree_event 13, 24, EVENT_ROUTE_42_CUT_TREE
+	fruittree_event 16, 27, FRUITTREE_ROUTE_42_1, PNK_APRICORN
+	fruittree_event 16, 28, FRUITTREE_ROUTE_42_2, GRN_APRICORN
+	fruittree_event 16, 29, FRUITTREE_ROUTE_42_3, YLW_APRICORN
+	itemball_event 4, 6, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
+	itemball_event 8, 33, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
+	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
 
 const_value set 2
@@ -107,14 +107,11 @@ Route42LyraScript5:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement PLAYER, MovementData_Route42PlayerStepsBack
-	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach5
+	applyonemovement ROUTE42_LYRA, step_down
 
 Route42LyraScript:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	opentext
-	writetext Route42LyraGreetingText
-	waitbutton
-	closetext
+	showtext Route42LyraGreetingText
 	setevent EVENT_LYRA_ROUTE_42
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	winlosstext Route42LyraWinText, Route42LyraLossText
@@ -304,22 +301,14 @@ TrainerPokemaniacShane:
 
 PokemaniacShaneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a94d6
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a94d6
 
 TrainerHikerBenjamin:
 	trainer EVENT_BEAT_HIKER_BENJAMIN, HIKER, BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText, 0, HikerBenjaminScript
 
 HikerBenjaminScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a943f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a943f
 
 OfficermKeithScript:
 	faceplayer
@@ -342,46 +331,10 @@ OfficermKeithScript:
 	end
 
 .AfterScript:
-	writetext OfficermKeithAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OfficermKeithAfterText
 
 .NoFight:
-	writetext OfficermKeithDaytimeText
-	waitbutton
-	closetext
-	end
-
-Route42OfficerScript:
-	jumptextfaceplayer Route42OfficerText
-
-Route42Sign1:
-	jumptext Route42Sign1Text
-
-MtMortarSign1:
-	jumptext MtMortarSign1Text
-
-MtMortarSign2:
-	jumptext MtMortarSign2Text
-
-Route42Sign2:
-	jumptext Route42Sign2Text
-
-Route42CutTree:
-	jumpstd cuttree
-
-FruitTreeScript_0x1a934d:
-	fruittree FRUITTREE_ROUTE_42_1
-
-FruitTreeScript_0x1a934f:
-	fruittree FRUITTREE_ROUTE_42_2
-
-FruitTreeScript_0x1a9351:
-	fruittree FRUITTREE_ROUTE_42_3
-
-Route42HiddenMaxPotion:
-	dwb EVENT_ROUTE_42_HIDDEN_MAX_POTION, MAX_POTION
+	jumpopenedtext OfficermKeithDaytimeText
 
 MovementData_Route42LyraApproach4:
 	step_down
@@ -392,10 +345,6 @@ MovementData_Route42LyraApproach2:
 MovementData_Route42LyraApproach1:
 	step_down
 	step_right
-	step_end
-
-MovementData_Route42LyraApproach5:
-	step_down
 	step_end
 
 MovementData_Route42PlayerStepsBack:

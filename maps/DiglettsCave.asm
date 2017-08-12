@@ -17,8 +17,8 @@ DiglettsCave_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 15, 8, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
-	signpost 33, 34, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRepel
+	signpost 15, 8, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
+	signpost 33, 34, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
 
 .PersonEvents: db 9
 	person_event SPRITE_BALL_CUT_FRUIT, 8, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DiglettsCaveDiglettDoll, EVENT_DECO_DIGLETT_DOLL
@@ -27,9 +27,9 @@ DiglettsCave_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
 	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
 	person_event SPRITE_ENGINEER, 20, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
-	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x74002, -1
-	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveCooltrainerfScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
+	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
+	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
+	itemball_event 28, 13, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
 
 const_value set 2
 	const DIGLETTSCAVE_POKE_BALL2
@@ -53,22 +53,13 @@ DiglettsCaveFossilManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	writetext .ThankYouText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .ThankYouText
 
 .NoItem:
-	writetext .NoItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoItemText
 
 .WrongItem:
-	writetext .WrongItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WrongItemText
 
 .GreetingText:
 	text "Hey, check it out."
@@ -128,11 +119,7 @@ TrainerHikerGerard:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Aah! I think that"
@@ -158,11 +145,7 @@ TrainerHikerDent:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm headed to"
@@ -190,11 +173,7 @@ TrainerBlackbeltInigo:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Prepare for"
@@ -220,11 +199,7 @@ TrainerEngineerSmith:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How did Diglett"
@@ -242,10 +217,7 @@ TrainerEngineerSmith:
 	cont "engineers."
 	done
 
-DiglettsCaveCooltrainerfScript:
-	jumptextfaceplayer .Text
-
-.Text:
+DiglettsCaveCooltrainerfText:
 	text "Look at all these"
 	line "cute Diglett!"
 
@@ -253,10 +225,7 @@ DiglettsCaveCooltrainerfScript:
 	line "with a blue nose!"
 	done
 
-PokefanMScript_0x74002:
-	jumptextfaceplayer .Text
-
-.Text:
+PokefanMScript_0x74002Text:
 if DEF(FAITHFUL)
 	text "A bunch of Diglett"
 	line "popped out of the"
@@ -295,10 +264,7 @@ DiglettsCaveDiglettDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext .SentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .SentText
 
 .FoundText:
 	text "<PLAYER> found"
@@ -309,9 +275,3 @@ DiglettsCaveDiglettDoll:
 	text "Diglett Doll"
 	line "was sent home."
 	done
-
-DiglettsCaveHiddenMaxRevive:
-	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-DiglettsCaveHiddenMaxRepel:
-	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL, MAX_REPEL

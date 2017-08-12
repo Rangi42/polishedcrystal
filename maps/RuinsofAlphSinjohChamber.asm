@@ -14,8 +14,8 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 
 .Signposts: db 3
 	signpost 2, 5, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
-	signpost 3, 4, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
-	signpost 3, 6, SIGNPOST_READ, RuinsofAlphSinjohChamberStatue
+	signpost 3, 4, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
+	signpost 3, 6, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
 
 .PersonEvents: db 4
 	person_event SPRITE_PAPER_UNOWN_W, 1, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
@@ -31,15 +31,9 @@ const_value set 2
 
 RuinsofAlphSinjohChamberSignpost:
 	unowntypeface
-	opentext
-	writetext RuinsofAlphSinjohChamberMystriText
-	waitbutton
-	closetext
+	showtext RuinsofAlphSinjohChamberMystriText
 	restoretypeface
-	opentext
-	writetext RuinsofAlphSinjohChamberSurpriseText
-	waitbutton
-	closetext
+	showtext RuinsofAlphSinjohChamberSurpriseText
 	special Special_FadeOutMusic
 	pause 30
 	playsound SFX_INTRO_UNOWN_3
@@ -108,9 +102,6 @@ RuinsofAlphSinjohChamberSignpost:
 	call SFXChannelsOff
 	ld de, SFX_INTRO_UNOWN_3
 	jp PlaySFX
-
-RuinsofAlphSinjohChamberStatue:
-	jumptext RuinsofAlphSinjohChamberStatueText
 
 MovementData_WarpToSinjohRuins:
 	step_dig 32

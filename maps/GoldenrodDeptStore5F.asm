@@ -15,15 +15,15 @@ GoldenrodDeptStore5F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 14, SIGNPOST_READ, GoldenrodDeptStore5FDirectory
-	signpost 0, 3, SIGNPOST_READ, GoldenrodDeptStore5FElevatorButton
+	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore5FDirectoryText
+	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 6
 	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
-	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x5609c, -1
-	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x56130, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Mike, -1
-	person_event SPRITE_POKEFAN_M, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x5613a, -1
+	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_TM, MART_GOLDENROD_5F_TM, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, trade, TRADE_WITH_MIKE_FOR_MACHOP, -1
+	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x562ad, -1
+	person_event SPRITE_POKEFAN_M, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x562f3, -1
 	person_event SPRITE_TWIN, 5, 13, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodDeptStore5FTwinScript, -1
 
 const_value set 2
@@ -38,13 +38,6 @@ GoldenrodDeptStore5FCheckIfSunday:
 .yes
 	appear GOLDENRODDEPTSTORE5F_RECEPTIONIST
 	return
-
-ClerkScript_0x5609c:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_TM, MART_GOLDENROD_5F_TM
-	closetext
-	end
 
 ReceptionistScript_0x560ce:
 	faceplayer
@@ -70,16 +63,10 @@ ReceptionistScript_0x560ce:
 	end
 
 .SomewhatHappy:
-	writetext UnknownText_0x561a6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x561a6
 
 .EventIsOver:
-	writetext UnknownText_0x56202
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x56202
 
 GoldenrodDeptStore5FTwinScript:
 	faceplayer
@@ -96,16 +83,10 @@ GoldenrodDeptStore5FTwinScript:
 	itemnotify
 	setflag ENGINE_DAILY_MYSTERY_GIFT
 .GotDailyBerry
-	writetext MysteryGiftGirl_ComeBackText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MysteryGiftGirl_ComeBackText
 
 .NoRoom:
-	writetext MysteryGiftGirl_NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MysteryGiftGirl_NoRoomText
 
 .PickRandomMysteryGift:
 	ld a, APICOT_BERRY - ORAN_BERRY + 1
@@ -113,26 +94,6 @@ GoldenrodDeptStore5FTwinScript:
 	add ORAN_BERRY
 	ld [ScriptVar], a
 	ret
-
-LassScript_0x56130:
-	jumptextfaceplayer UnknownText_0x562ad
-
-Mike:
-	faceplayer
-	opentext
-	trade $0
-	waitbutton
-	closetext
-	end
-
-PokefanMScript_0x5613a:
-	jumptextfaceplayer UnknownText_0x562f3
-
-GoldenrodDeptStore5FDirectory:
-	jumptext GoldenrodDeptStore5FDirectoryText
-
-GoldenrodDeptStore5FElevatorButton:
-	jumpstd elevatorbutton
 
 UnknownText_0x56143:
 	text "Hello. Oh, your"

@@ -13,8 +13,8 @@ ShamoutiTunnel_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 21, SIGNPOST_ITEM, ShamoutiTunnelHiddenNugget
-	signpost 4, 32, SIGNPOST_ITEM, ShamoutiTunnelHiddenLeafStone
+	signpost 5, 21, SIGNPOST_ITEM + NUGGET, EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET
+	signpost 4, 32, SIGNPOST_ITEM + LEAF_STONE, EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE
 
 .PersonEvents: db 7
 	person_event SPRITE_SUPER_NERD, 17, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, OreManiacScript, -1
@@ -22,8 +22,8 @@ ShamoutiTunnel_MapEventHeader:
 	person_event SPRITE_FISHER, 5, 24, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherTala, -1
 	person_event SPRITE_LADY, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSightseerfNoelle, -1
 	person_event SPRITE_SIGHTSEER_M, 16, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermChester, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_SPEED, 1, EVENT_SHAMOUTI_TUNNEL_X_SPEED
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SMOOTH_ROCK, 1, EVENT_SHAMOUTI_TUNNEL_SMOOTH_ROCK
+	itemball_event 4, 3, X_SPEED, 1, EVENT_SHAMOUTI_TUNNEL_X_SPEED
+	itemball_event 17, 12, SMOOTH_ROCK, 1, EVENT_SHAMOUTI_TUNNEL_SMOOTH_ROCK
 
 OreManiacScript:
 	faceplayer
@@ -44,22 +44,13 @@ OreManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	writetext .ThankYouText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .ThankYouText
 
 .NoItem:
-	writetext .NoItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoItemText
 
 .WrongItem:
-	writetext .WrongItemText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WrongItemText
 
 .GreetingText:
 	text "Ore, ore, ore…"
@@ -111,11 +102,7 @@ TrainerTamerOswald:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I was born a"
@@ -146,11 +133,7 @@ TrainerFirebreatherTala:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Roll up, roll up,"
@@ -180,11 +163,7 @@ TrainerSightseerfNoelle:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Oh my gosh!"
@@ -219,11 +198,7 @@ TrainerSightseermChester:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm traveling"
@@ -248,9 +223,3 @@ TrainerSightseermChester:
 	line "you in the Battle"
 	cont "Tower."
 	done
-
-ShamoutiTunnelHiddenNugget:
-	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET, NUGGET
-
-ShamoutiTunnelHiddenLeafStone:
-	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE, LEAF_STONE

@@ -13,10 +13,10 @@ Route6_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 19, SIGNPOST_READ, Route6UndergroundPathSign
+	signpost 11, 19, SIGNPOST_JUMPTEXT, Route6UndergroundPathSignText
 
 .PersonEvents: db 8
-	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 2, PokefanMScript_0x1ad951, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	person_event SPRITE_POKEFAN_M, 10, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ad957, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	person_event SPRITE_POKEFAN_M, 24, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
 	person_event SPRITE_POKEFAN_M, 24, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
 	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani1, -1
@@ -30,11 +30,7 @@ TrainerPokefanmRex:
 
 PokefanmRexScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad9ff
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ad9ff
 
 PokefanmRexSeenText:
 	text "My Phanpy is the"
@@ -60,11 +56,7 @@ TrainerPokefanmAllan:
 
 PokefanmAllanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ada88
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ada88
 
 PokefanmAllanSeenText:
 	text "My Teddiursa is"
@@ -90,11 +82,7 @@ TrainerTwinsDayanddani1:
 
 TrainerTwinsDayanddani1Script:
 	end_if_just_battled
-	opentext
-	writetext TwinsDayanddani1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer TwinsDayanddani1AfterText
 
 TwinsDayanddani1SeenText:
 	text "Day: Are you going"
@@ -114,11 +102,7 @@ TrainerTwinsDayanddani2:
 
 TrainerTwinsDayanddani2Script:
 	end_if_just_battled
-	opentext
-	writetext TwinsDayanddani2AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer TwinsDayanddani2AfterText
 
 TwinsDayanddani2SeenText:
 	text "Dani: We'll knock"
@@ -139,11 +123,7 @@ TrainerYoungsterChaz:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do I see a strong"
@@ -167,11 +147,7 @@ TrainerGuitaristfWanda:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "You'd better"
@@ -210,22 +186,13 @@ OfficerfJennyScript:
 .AfterScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Kris
-	writetext .AfterTextMale
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterTextMale
 
 .Kris:
-	writetext .AfterTextFemale
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterTextFemale
 
 .NoFight:
-	writetext .DaytimeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .DaytimeText
 
 .DaytimeText:
 	text "Us Officers are"
@@ -262,9 +229,6 @@ OfficerfJennyScript:
 	line "night."
 	done
 
-PokefanMScript_0x1ad951:
-	jumptextfaceplayer UnknownText_0x1ad957
-
 UnknownText_0x1ad957:
 	text "The road is closed"
 	line "until the problem"
@@ -272,9 +236,6 @@ UnknownText_0x1ad957:
 	para "at the Power Plant"
 	line "is solved."
 	done
-
-Route6UndergroundPathSign:
-	jumptext Route6UndergroundPathSignText
 
 Route6UndergroundPathSignText:
 	text "Underground Path"

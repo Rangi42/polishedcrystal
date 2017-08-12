@@ -12,9 +12,9 @@ Route44_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 7, 53, SIGNPOST_READ, Route44Sign1
-	signpost 10, 6, SIGNPOST_READ, Route44Sign2
-	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
+	signpost 7, 53, SIGNPOST_JUMPTEXT, Route44Sign1Text
+	signpost 10, 6, SIGNPOST_JUMPTEXT, Route44Sign2Text
+	signpost 9, 32, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
 
 .PersonEvents: db 12
 	person_event SPRITE_VETERAN_M, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
@@ -25,10 +25,10 @@ Route44_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
 	person_event SPRITE_COOLTRAINER_M, 15, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
 	person_event SPRITE_COOLTRAINER_F, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19da40, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 45, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
+	fruittree_event 5, 9, FRUITTREE_ROUTE_44, ASPEAR_BERRY
+	itemball_event 8, 30, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
+	itemball_event 4, 45, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
+	itemball_event 9, 14, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 
 const_value set 2
 	const ROUTE44_VETERAN_M
@@ -81,43 +81,75 @@ Route44VeteranmScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
-	text "TODO"
+	text "My #mon are"
+	line "wearing Rocky"
+	cont "Helmets."
+
+	para "Want to challenge"
+	line "them?"
+
+	para "Okay, then you've"
+	line "got to beat every"
+
+	para "trainer on this"
+	cont "route first."
 	done
 
 .QuestionText:
-	text "TODO"
+	text "I saw your"
+	line "battles."
+
+	para "Your #mon are"
+	line "really tough."
+
+	para "Are you ready?"
 	done
 
 .RefusedText:
-	text "TODO"
+	text "You beat Team"
+	line "Rocket and you're"
+	cont "scared of me?"
+
+	para "Do I look that"
+	line "scary?"
 	done
 
 .SeenText:
-	text "TODO"
+	text "I'll show you the"
+	line "power of my Rocky"
+	cont "Helmets!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "Bah. These Helmets"
+	line "weren't enough."
 	done
 
 .AfterText1:
-	text "TODO"
+	text "You're really"
+	line "strong for someone"
+	cont "so young."
+	cont "Keep it up!"
+
+	para "Take one of these"
+	line "Rocky Helmets."
+
+	para "You can use it as"
+	line "well as me."
 	done
 
 .AfterText2:
-	text "TODO"
+	text "You're a very"
+	line "quiet person."
+
+	para "Has anybody told"
+	line "you that before?"
 	done
 
 TrainerBird_keeperVance1:
@@ -256,11 +288,7 @@ TrainerPsychicPhil:
 
 PsychicPhilScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19dcfc
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19dcfc
 
 TrainerFisherWilton1:
 	trainer EVENT_BEAT_FISHER_WILTON, FISHER, WILTON1, FisherWilton1SeenText, FisherWilton1BeatenText, 0, FisherWilton1Script
@@ -368,57 +396,28 @@ TrainerFisherEdgar:
 
 FisherEdgarScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19db6f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19db6f
 
 TrainerCooltrainerfCybil:
 	trainer EVENT_BEAT_COOLTRAINERF_CYBIL, COOLTRAINERF, CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText, 0, CooltrainerfCybilScript
 
 CooltrainerfCybilScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19df4d
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19df4d
 
 TrainerPokemaniacZach:
 	trainer EVENT_BEAT_POKEMANIAC_ZACH, POKEMANIAC, ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText, 0, PokemaniacZachScript
 
 PokemaniacZachScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19dd7e
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19dd7e
 
 TrainerCooltrainermAllen:
 	trainer EVENT_BEAT_COOLTRAINERM_ALLEN, COOLTRAINERM, ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText, 0, CooltrainermAllenScript
 
 CooltrainermAllenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19de66
-	waitbutton
-	closetext
-	end
-
-Route44Sign1:
-	jumptext Route44Sign1Text
-
-Route44Sign2:
-	jumptext Route44Sign2Text
-
-FruitTreeScript_0x19da40:
-	fruittree FRUITTREE_ROUTE_44
-
-Route44HiddenElixer:
-	dwb EVENT_ROUTE_44_HIDDEN_ELIXER, ELIXER
-
+	jumptextfaceplayer UnknownText_0x19de66
 
 FisherWilton1SeenText:
 	text "Aack! You made me"

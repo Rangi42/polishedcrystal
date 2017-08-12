@@ -20,38 +20,27 @@ MountMortar1FOutside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 22, 25, SIGNPOST_ITEM, MountMortar1FOutsideHiddenHyperPotion
+	signpost 22, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 4
 	person_event SPRITE_COOLTRAINER_F, 15, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBattleGirlSubaru, -1
 	person_event SPRITE_COOLTRAINER_F, 11, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlDiane, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ETHER, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_ETHER
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_REVIVE
+	itemball_event 15, 13, ETHER, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_ETHER
+	itemball_event 18, 31, REVIVE, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_REVIVE
 
 TrainerBattleGirlSubaru:
 	trainer EVENT_BEAT_BATTLE_GIRL_SUBARU, BATTLE_GIRL, SUBARU, BattleGirlSubaruSeenText, BattleGirlSubaruBeatenText, 0, BattleGirlSubaruScript
 
 BattleGirlSubaruScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlSubaruAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BattleGirlSubaruAfterText
 
 TrainerBattleGirlDiane:
 	trainer EVENT_BEAT_BATTLE_GIRL_DIANE, BATTLE_GIRL, DIANE, BattleGirlDianeSeenText, BattleGirlDianeBeatenText, 0, BattleGirlDianeScript
 
 BattleGirlDianeScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlDianeAfterText
-	waitbutton
-	closetext
-	end
-
-MountMortar1FOutsideHiddenHyperPotion:
-	dwb EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION, HYPER_POTION
+	jumptextfaceplayer BattleGirlDianeAfterText
 
 BattleGirlSubaruSeenText:
 	text "Kiyaah!"

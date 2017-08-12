@@ -13,10 +13,10 @@ Route39_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 31, 5, SIGNPOST_READ, Route39TrainerTips
-	signpost 5, 9, SIGNPOST_READ, MoomooFarmSign
-	signpost 7, 15, SIGNPOST_READ, Route39Sign
-	signpost 13, 5, SIGNPOST_ITEM, Route39HiddenNugget
+	signpost 31, 5, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
+	signpost 5, 9, SIGNPOST_JUMPTEXT, MoomooFarmSignText
+	signpost 7, 15, SIGNPOST_JUMPTEXT, Route39SignText
+	signpost 13, 5, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 .PersonEvents: db 12
 	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
@@ -28,9 +28,9 @@ Route39_MapEventHeader:
 	person_event SPRITE_MILTANK, 15, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
 	person_event SPRITE_MILTANK, 13, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a5bf4, -1
+	fruittree_event 3, 9, FRUITTREE_ROUTE_39, CHESTO_BERRY
 	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
-	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route39BeautyScript, -1
+	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 
 const_value set 2
 	const ROUTE39_COWGIRL
@@ -85,10 +85,7 @@ UnknownScript_0x1a5b59:
 	jump UnknownScript_0x1a5b7e
 
 UnknownScript_0x1a5b5c:
-	writetext UnknownText_0x1a5dec
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a5dec
 
 UnknownScript_0x1a5b62:
 	jumpstd asknumber1m
@@ -127,11 +124,7 @@ TrainerPokefanfRuth:
 
 PokefanfRuthScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5db2
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a5db2
 
 Route39CowgirlAnnieScript:
 	faceplayer
@@ -189,16 +182,10 @@ Route39CowgirlAnnieScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Hey! Don't scare"
@@ -272,22 +259,14 @@ TrainerSailorEugene:
 
 SailorEugeneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5c4d
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a5c4d
 
 TrainerPsychicNorman:
 	trainer EVENT_BEAT_PSYCHIC_NORMAN, PSYCHIC_T, NORMAN, PsychicNormanSeenText, PsychicNormanBeatenText, 0, PsychicNormanScript
 
 PsychicNormanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5e57
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a5e57
 
 PokefanFScript_0x1a5bbe:
 	faceplayer
@@ -308,34 +287,10 @@ PokefanFScript_0x1a5bbe:
 	end
 
 UnknownScript_0x1a5bdf:
-	writetext UnknownText_0x1a5f31
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a5f31
 
 UnknownScript_0x1a5be5:
-	writetext UnknownText_0x1a5ec4
-	waitbutton
-	closetext
-	end
-
-Route39BeautyScript:
-	jumptextfaceplayer Route39BeautyText
-
-Route39Sign:
-	jumptext Route39SignText
-
-MoomooFarmSign:
-	jumptext MoomooFarmSignText
-
-Route39TrainerTips:
-	jumptext Route39TrainerTipsText
-
-FruitTreeScript_0x1a5bf4:
-	fruittree FRUITTREE_ROUTE_39
-
-Route39HiddenNugget:
-	dwb EVENT_ROUTE_39_HIDDEN_NUGGET, NUGGET
+	jumpopenedtext UnknownText_0x1a5ec4
 
 Route39MiltankText:
 	text "Miltank: Mooo!"

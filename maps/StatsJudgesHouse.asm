@@ -13,7 +13,7 @@ StatsJudgesHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, StatsJudgesHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, StatsJudgeScript, -1
@@ -25,6 +25,3 @@ StatsJudgeScript:
 	waitbutton
 	closetext
 	end
-
-StatsJudgesHouseBookshelf:
-	jumpstd difficultbookshelf

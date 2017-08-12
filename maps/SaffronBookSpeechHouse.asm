@@ -13,24 +13,12 @@ SaffronBookSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 5, SIGNPOST_READ, SaffronBookSpeechHouseBookshelf1
-	signpost 1, 7, SIGNPOST_READ, SaffronBookSpeechHouseBookshelf2
+	signpost 1, 5, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 2
-	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SaffronBookSpeechHouseLassScript, -1
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronBookSpeechHouseBookScript, -1
-
-SaffronBookSpeechHouseLassScript:
-	jumptextfaceplayer SaffronBookSpeechHouseLassText
-
-SaffronBookSpeechHouseBookScript:
-	jumptext SaffronBookSpeechHouseBookText
-
-SaffronBookSpeechHouseBookshelf1:
-	jumpstd picturebookshelf
-
-SaffronBookSpeechHouseBookshelf2:
-	jumpstd difficultbookshelf
+	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronBookSpeechHouseLassText, -1
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
 
 SaffronBookSpeechHouseLassText:
 	text "I absolutely love"

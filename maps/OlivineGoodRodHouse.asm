@@ -35,16 +35,10 @@ GoodRodGuru:
 	end
 
 .DontWantIt:
-	writetext DontWantGoodRodText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext DontWantGoodRodText
 
 .AlreadyGotItem:
-	writetext HaveGoodRodText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext HaveGoodRodText
 
 OfferGoodRodText:
 	text "Olivine is on the"

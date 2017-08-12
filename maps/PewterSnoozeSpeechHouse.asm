@@ -13,20 +13,11 @@ PewterSnoozeSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, PewterSnoozeSpeechHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 2
-	person_event SPRITE_GRAMPS, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a3059, -1
-	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PewterSnoozeSpeechHouseGrannyScript, -1
-
-GrampsScript_0x1a3059:
-	jumptextfaceplayer UnknownText_0x1a305f
-
-PewterSnoozeSpeechHouseGrannyScript:
-	jumptextfaceplayer PewterSnoozeSpeechHouseGrannyText
-
-PewterSnoozeSpeechHouseBookshelf:
-	jumpstd picturebookshelf
+	person_event SPRITE_GRAMPS, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a305f, -1
+	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterSnoozeSpeechHouseGrannyText, -1
 
 UnknownText_0x1a305f:
 	text "I like snoozing"

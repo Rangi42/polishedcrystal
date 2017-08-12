@@ -28,24 +28,67 @@ PERSON_EVENT_NARG = _NARG
 	shift
 	dn \8, \9 ; color, persontype
 	shift
+if \8 == PERSONTYPE_COMMAND
+	db \9_command ; command id
+else
 	db \9 ; sight_range
-if \8 == PERSONTYPE_JUMPSTD || \8 == PERSONTYPE_TMHMBALL
-	shift 
-	db \9, 0 ; stdscript || tmhmball contents
-else
-if PERSON_EVENT_NARG == 14 ; PERSONTYPE_MART || PERSONTYPE_ITEMBALL
-	shift
-	db \9 ; mart type || itemball contents
-	shift
-	db \9 ; mart id || itemball quantity
-else
-	shift
-	dw \9 ; pointer
 endc
+if PERSON_EVENT_NARG == 14
+	shift
+	db \9 ; itemball contents
+	shift
+	db \9 ; itemball quantity
+else
+	shift
+	dw \9 ; pointer || byte, 0
 endc
 	shift
 	dw \9 ; event flag
 	endm
+
+itemball_event: macro
+	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
+endm
+
+tmhmball_event: macro
+	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEBALL, PLAYEREVENT_TMHMBALL, \3, \4
+endm
+
+cuttree_event: macro
+	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, cuttree, \3
+endm
+
+fruittree_event: macro
+if _NARG == 4
+	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, fruittree, \3, \4, -1
+else
+	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, fruittree, \3, \4, \5
+endc
+endm
+
+strengthboulder_event: macro
+if _NARG == 2
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
+else
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
+endc
+endm
+
+smashrock_event: macro
+if _NARG == 2
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
+else
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
+endc
+endm
+
+pc_nurse_event: macro
+	person_event SPRITE_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
+endm
+
+mart_clerk_event: macro
+	person_event SPRITE_CLERK, \1, \2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, \3, \4, -1
+endm
 
 signpost: macro
 	db \1 ; y

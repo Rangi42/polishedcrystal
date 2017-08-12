@@ -15,12 +15,12 @@ QuietCaveB3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 20, 16, SIGNPOST_ITEM, QuietCaveB3FHiddenPPUp
+	signpost 20, 16, SIGNPOST_ITEM + PP_UP, EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP
 	signpost 22, 12, SIGNPOST_ITEM, QuietCaveB3FHiddenMaxRevive
 
 .PersonEvents: db 2
 	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
+	tmhmball_event 22, 7, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
 
 const_value set 2
 	const QUIETCAVEB3F_MARLEY
@@ -64,10 +64,7 @@ QuietCaveB3FMarleyScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…I'm Marley."
@@ -117,9 +114,6 @@ QuietCaveB3FMarleyScript:
 
 	para "Bye-bye…"
 	done
-
-QuietCaveB3FHiddenPPUp:
-	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP, PP_UP
 
 QuietCaveB3FHiddenMaxRevive
 	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE, MAX_REVIVE

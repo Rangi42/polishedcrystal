@@ -28,8 +28,8 @@ BurnedTowerB1F_MapEventHeader:
 	person_event SPRITE_ENTEI, 3, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
 	person_event SPRITE_SUICUNE, 4, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
 	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BurnedTowerB1FEusine, EVENT_EUSINE_IN_BURNED_TOWER
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 8, 17, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BurnedTowerB1FBoulder, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_ENDURE, EVENT_BURNED_TOWER_B1F_TM_ENDURE
+	strengthboulder_event 8, 17
+	tmhmball_event 4, 16, TM_ENDURE, EVENT_BURNED_TOWER_B1F_TM_ENDURE
 
 const_value set 2
 	const BURNEDTOWERB1F_RAIKOU1
@@ -115,11 +115,7 @@ ReleaseTheBeasts:
 	end
 
 BurnedTowerB1FEusine:
-	faceplayer
-	opentext
-	writetext BurnedTowerB1FEusineText
-	waitbutton
-	closetext
+	showtextfaceplayer BurnedTowerB1FEusineText
 	checkcode VAR_FACING
 	if_equal $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
@@ -132,9 +128,6 @@ UnknownScript_0x18622a:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 	end
-
-BurnedTowerB1FBoulder:
-	jumpstd strengthboulder
 
 BurnedTowerRaikouMovement:
 	fix_facing

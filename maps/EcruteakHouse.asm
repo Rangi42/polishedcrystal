@@ -24,7 +24,7 @@ EcruteakHouse_MapEventHeader:
 	person_event SPRITE_SAGE, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_1
 	person_event SPRITE_SAGE, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_2
 	person_event SPRITE_SAGE, 9, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x980b0, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
-	person_event SPRITE_GRAMPS, 11, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x980c4, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
+	person_event SPRITE_GRAMPS, 11, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x984ab, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 
 const_value set 2
 	const ECRUTEAKHOUSE_SAGE1
@@ -83,16 +83,10 @@ SageScript_0x98062:
 	iftrue .CheckForClearBell
 	checkflag ENGINE_FOGBADGE
 	iftrue .BlockPassage_GotFogBadge
-	writetext UnknownText_0x980d1
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x980d1
 
 .BlockPassage_GotFogBadge:
-	writetext UnknownText_0x98131
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x98131
 
 .CheckForClearBell:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
@@ -101,10 +95,7 @@ SageScript_0x98062:
 	iftrue .Event000
 	checkitem CLEAR_BELL
 	iftrue .RingClearBell
-	writetext UnknownText_0x981a4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x981a4
 
 .RingClearBell:
 	writetext UnknownText_0x98250
@@ -117,35 +108,20 @@ SageScript_0x98062:
 	end
 
 .AllowedThrough:
-	writetext UnknownText_0x9837e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9837e
 
 .Event000:
-	writetext UnknownText_0x98391
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x98391
 
 SageScript_0x980b0:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_CLEAR_BELL
 	iftrue .GotClearBell
-	writetext UnknownText_0x9840b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9840b
 
 .GotClearBell:
-	writetext UnknownText_0x9846f
-	waitbutton
-	closetext
-	end
-
-GrampsScript_0x980c4:
-	jumptextfaceplayer UnknownText_0x984ab
+	jumpopenedtext UnknownText_0x9846f
 
 MovementData_0x980c7:
 	fix_facing

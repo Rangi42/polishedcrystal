@@ -22,38 +22,38 @@ RuinsofAlphInnerChamber_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 26
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 3, 8, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 3, 11, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 3, 14, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 3, 17, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 8, 2, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 8, 5, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 8, 8, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 8, 11, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 8, 14, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 8, 17, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 13, 2, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 13, 17, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 18, 2, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 18, 5, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 18, 8, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 18, 11, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 18, 14, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 18, 17, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 24, 2, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 24, 5, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 24, 8, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 24, 11, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 24, 14, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
-	signpost 24, 17, SIGNPOST_READ, MapRuinsofAlphInnerChamberSignpost25Script
+	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 3, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 3, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 3, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 3, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 8, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 8, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 8, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 8, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 8, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 8, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 13, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 13, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 18, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 18, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 18, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 18, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 18, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 18, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 24, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 24, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 24, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 24, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 24, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 24, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 
 .PersonEvents: db 4
-	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58f7d, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_TEACHER, 13, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x58f80, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_GRAMPS, 19, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x58f83, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_SCIENTIST, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RuinsofAlphInnerChamberScientistScript, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_TEACHER, 13, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_GRAMPS, 19, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_SCIENTIST, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
 RuinsofAlphInnerChamberTrigger1:
 	priorityjump UnknownScript_0x58f6e
@@ -61,29 +61,11 @@ RuinsofAlphInnerChamberTrigger0:
 	end
 
 UnknownScript_0x58f6e:
-	opentext
-	writetext UnknownText_0x58f89
-	waitbutton
-	closetext
+	showtext UnknownText_0x58f89
 	dotrigger $0
 	setevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	end
-
-FisherScript_0x58f7d:
-	jumptextfaceplayer UnknownText_0x58fac
-
-TeacherScript_0x58f80:
-	jumptextfaceplayer UnknownText_0x58fda
-
-GrampsScript_0x58f83:
-	jumptextfaceplayer UnknownText_0x59024
-
-RuinsofAlphInnerChamberScientistScript:
-	jumptextfaceplayer UnknownText_0x58a03
-
-MapRuinsofAlphInnerChamberSignpost25Script:
-	jumptext UnknownText_0x59072
 
 UnknownText_0x58f89:
 	text "There is a strange"

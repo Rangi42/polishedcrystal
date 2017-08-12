@@ -20,14 +20,14 @@ BattleTower1F_MapEventHeader:
 
 .PersonEvents: db 9
 	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
-	person_event SPRITE_NURSE, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, pokecenternurse, -1
-	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_MART, 0, MARTTYPE_BP, MART_BT_1, -1
-	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_MART, 0, MARTTYPE_BP, MART_BT_2, -1
-	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_MART, 0, MARTTYPE_BP, MART_BT_3, -1
+	pc_nurse_event 6, 6
+	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
+	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
+	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
 	person_event SPRITE_DRAGON_TAMER, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, Text_BattleTowerCooltrainerF, -1
-	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Text_BattleTowerBugCatcher, -1
-	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, Text_BattleTowerGranny, -1
+	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
+	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
+	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
 
 const_value set 2
 	const BATTLETOWER1F_RECEPTIONIST
@@ -41,10 +41,7 @@ BattleTower1FTrigger0:
 	jump .Done
 
 .ResumeChallenge
-	opentext
-	writetext Text_WeveBeenWaitingForYou
-	waitbutton
-	closetext
+	showtext Text_WeveBeenWaitingForYou
 	priorityjump Script_ResumeBattleTowerChallenge
 	end
 
@@ -60,12 +57,8 @@ MapBattleTower1FSignpost0Script:
 	opentext
 	writetext Text_ReadBattleTowerRules
 	yesorno
-	iffalse UnknownScript_0x9e3e0
-	writetext Text_BattleTowerRules
-	waitbutton
-UnknownScript_0x9e3e0:
-	closetext
-	end
+	iffalse_endtext
+	jumpopenedtext Text_BattleTowerRules
 
 ReceptionistScript_0x9e3e2:
 ; TODO: let the player fight in Battle Tower once it's finished
@@ -191,10 +184,7 @@ Script_BattleTowerSkipExplanation:
 	jump Script_Menu_ChallengeExplanationCancel
 
 Script_BattleTowerHopeToServeYouAgain:
-	writetext Text_WeHopeToServeYouAgain
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WeHopeToServeYouAgain
 
 Script_WaitButton:
 	waitbutton
@@ -228,23 +218,14 @@ BattleTowerTutorWaterPulseScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_BattleTowerTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_BattleTowerTutorRefused
 
 .NoSilverLeaf
-	writetext Text_BattleTowerTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_BattleTowerTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_BattleTowerTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_BattleTowerTutorTaught
 
 MovementData_BattleTower1FWalkToElevator:
 	step_up

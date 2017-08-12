@@ -11,9 +11,9 @@ Route13East_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 13, 11, SIGNPOST_READ, Route13TrainerTips
-	signpost 11, 27, SIGNPOST_READ, Route13Sign
-	signpost 13, 12, SIGNPOST_ITEM, Route13HiddenCalcium
+	signpost 13, 11, SIGNPOST_JUMPTEXT, Route13TrainerTipsText
+	signpost 11, 27, SIGNPOST_JUMPTEXT, Route13SignText
+	signpost 13, 12, SIGNPOST_ITEM + CALCIUM, EVENT_ROUTE_13_HIDDEN_CALCIUM
 
 .PersonEvents: db 10
 	person_event SPRITE_YOUNGSTER, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPerry, -1
@@ -25,18 +25,14 @@ Route13East_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 8, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
 	person_event SPRITE_POKEFAN_M, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
 	person_event SPRITE_GRAMPS, 13, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route13EastGrampsScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 30, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route13CutTree, EVENT_ROUTE_13_CUT_TREE
+	cuttree_event 4, 30, EVENT_ROUTE_13_CUT_TREE
 
 TrainerBird_keeperPerry:
 	trainer EVENT_BEAT_BIRD_KEEPER_PERRY, BIRD_KEEPER, PERRY, Bird_keeperPerrySeenText, Bird_keeperPerryBeatenText, 0, Bird_keeperPerryScript
 
 Bird_keeperPerryScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a25db
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a25db
 
 Bird_keeperPerrySeenText:
 	text "Agility is the key"
@@ -60,11 +56,7 @@ TrainerBird_keeperBret:
 
 Bird_keeperBretScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a2662
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a2662
 
 Bird_keeperBretSeenText:
 	text "Check out my #-"
@@ -89,11 +81,7 @@ TrainerCamperTanner:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can fit in a"
@@ -116,11 +104,7 @@ TrainerPicnickerPiper:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How about we bring"
@@ -146,11 +130,7 @@ TrainerCoupleTimandsue1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Tim: I'll give you"
@@ -176,11 +156,7 @@ TrainerCoupleTimandsue2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Sue: Women who"
@@ -207,11 +183,7 @@ TrainerPokefanmAlex:
 
 PokefanmAlexScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a24e3
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a24e3
 
 PokefanmAlexSeenText:
 	text "Bow down before my"
@@ -234,11 +206,7 @@ TrainerPokefanmJoshua:
 
 PokefanmJoshuaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a254f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a254f
 
 PokefanmJoshuaSeenText:
 	text "Nihihi! Would you"
@@ -280,12 +248,6 @@ Route13EastGrampsText2:
 	cont "What a spectacle!"
 	done
 
-Route13CutTree:
-	jumpstd cuttree
-
-Route13TrainerTips:
-	jumptext Route13TrainerTipsText
-
 Route13TrainerTipsText:
 	text "Trainer Tips"
 
@@ -294,15 +256,9 @@ Route13TrainerTipsText:
 	cont "of the post."
 	done
 
-Route13Sign:
-	jumptext Route13SignText
-
 Route13SignText:
 	text "Route 13"
 
 	para "North to Silence"
 	line "Bridge"
 	done
-
-Route13HiddenCalcium:
-	dwb EVENT_ROUTE_13_HIDDEN_CALCIUM, CALCIUM

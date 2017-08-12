@@ -16,13 +16,13 @@ MountMoonSquare_MapEventHeader:
 	xy_trigger 0, $b, $7, ClefairyDance
 
 .Signposts: db 2
-	signpost 7, 7, SIGNPOST_ITEM, MountMoonSquareHiddenMoonStone
-	signpost 7, 17, SIGNPOST_READ, DontLitterSign
+	signpost 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
+	signpost 7, 17, SIGNPOST_JUMPTEXT, DontLitterSignText
 
 .PersonEvents: db 3
 	person_event SPRITE_CLEFAIRY_WALK, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	person_event SPRITE_CLEFAIRY_WALK, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MtMoonSquareRock, EVENT_MT_MOON_SQUARE_ROCK
+	smashrock_event 7, 7, EVENT_MT_MOON_SQUARE_ROCK
 
 const_value set 2
 	const MOUNTMOONSQUARE_CLEFAIRY1
@@ -46,7 +46,7 @@ ClefairyDance:
 	iffalse .NoDancing
 	appear MOUNTMOONSQUARE_CLEFAIRY1
 	appear MOUNTMOONSQUARE_CLEFAIRY2
-	applymovement PLAYER, MovementData_0x77121
+	applyonemovement PLAYER, step_up
 	pause 15
 	appear MOUNTMOONSQUARE_ROCK
 	spriteface MOUNTMOONSQUARE_CLEFAIRY1, RIGHT
@@ -57,17 +57,17 @@ ClefairyDance:
 	cry CLEFAIRY
 	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77123
 	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77126
+	applyonemovement MOUNTMOONSQUARE_CLEFAIRY1, slow_jump_step_right
 	cry CLEFAIRY
 	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77128
 	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x7712b
+	applyonemovement MOUNTMOONSQUARE_CLEFAIRY1, slow_jump_step_left
 	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x7712d
+	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77123
 	stopfollow
-	applymovement MOUNTMOONSQUARE_CLEFAIRY2, MovementData_0x77130
+	applyonemovement MOUNTMOONSQUARE_CLEFAIRY2, slow_step_down
 	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77132
+	applyonemovement MOUNTMOONSQUARE_CLEFAIRY1, slow_step_right
 	stopfollow
 	spriteface MOUNTMOONSQUARE_CLEFAIRY1, DOWN
 	pause 10
@@ -82,54 +82,17 @@ ClefairyDance:
 	stopfollow
 	clearevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
 	setflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
-	end
-
 .NoDancing:
 	end
-
-MountMoonSquareHiddenMoonStone:
-	dwb EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE, MOON_STONE
-
-
-DontLitterSign:
-	jumptext DontLitterSignText
-
-MtMoonSquareRock:
-	jumpstd smashrock
-
-MovementData_0x77121:
-	step_up
-	step_end
 
 MovementData_0x77123:
 	slow_step_down
 	slow_jump_step_down
 	step_end
 
-MovementData_0x77126:
-	slow_jump_step_right
-	step_end
-
 MovementData_0x77128:
 	slow_step_up
 	slow_jump_step_up
-	step_end
-
-MovementData_0x7712b:
-	slow_jump_step_left
-	step_end
-
-MovementData_0x7712d:
-	slow_step_down
-	slow_jump_step_down
-	step_end
-
-MovementData_0x77130:
-	slow_step_down
-	step_end
-
-MovementData_0x77132:
-	slow_step_right
 	step_end
 
 MovementData_0x77134:

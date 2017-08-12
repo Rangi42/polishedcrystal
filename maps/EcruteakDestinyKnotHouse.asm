@@ -13,11 +13,11 @@ EcruteakDestinyKnotHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 2, SIGNPOST_READ, DestinyKnotHouseRadio
+	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
 .PersonEvents: db 2
 	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseCooltrainerFScript, -1
-	person_event SPRITE_RICH_BOY, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EcruteakDestinyKnotHouseRichBoyScript, -1
+	person_event SPRITE_RICH_BOY, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, trade, TRADE_WITH_HARI_FOR_DODUO, -1
 
 EcruteakDestinyKnotHouseCooltrainerFScript:
 	faceplayer
@@ -43,21 +43,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	end
 
 .NotEnough:
-	writetext EcruteakDestinyKnotHouseCooltrainerFText2
-	waitbutton
-	closetext
-	end
-
-EcruteakDestinyKnotHouseRichBoyScript:
-	faceplayer
-	opentext
-	trade $7
-	waitbutton
-	closetext
-	end
-
-DestinyKnotHouseRadio:
-	jumpstd radio2
+	jumpopenedtext EcruteakDestinyKnotHouseCooltrainerFText2
 
 EcruteakDestinyKnotHouseCooltrainerFText1:
 	text "Two mighty bird"

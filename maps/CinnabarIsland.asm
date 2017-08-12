@@ -15,14 +15,14 @@ CinnabarIsland_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 15, 9, SIGNPOST_READ, CinnabarIslandGymSign
-	signpost 11, 9, SIGNPOST_READ, CinnabarIslandSign
-	signpost 11, 21, SIGNPOST_READ, CinnabarIslandVolcanoWarningSign
-	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
+	signpost 15, 9, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
+	signpost 11, 9, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
+	signpost 11, 21, SIGNPOST_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
+	signpost 12, 11, SIGNPOST_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 2
 	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
+	itemball_event 2, 22, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 
 const_value set 2
 	const CINNABARISLAND_BLUE
@@ -44,10 +44,7 @@ CinnabarIslandBlue:
 	waitbutton
 	checkcode VAR_BADGES
 	if_greater_than 14, .Ready
-	writetext CinnabarIslandBlueNotReadyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CinnabarIslandBlueNotReadyText
 
 .Ready
 	writetext CinnabarIslandBlueReadyText
@@ -58,18 +55,6 @@ CinnabarIslandBlue:
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
-
-CinnabarIslandGymSign:
-	jumptext CinnabarIslandGymSignText
-
-CinnabarIslandSign:
-	jumptext CinnabarIslandSignText
-
-CinnabarIslandVolcanoWarningSign:
-	jumptext CinnabarIslandVolcanoWarningSignText
-
-CinnabarIslandHiddenRareCandy:
-	dwb EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY, RARE_CANDY
 
 CinnabarIslandBlueTeleport:
 	teleport_from

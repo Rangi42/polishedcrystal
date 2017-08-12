@@ -15,13 +15,9 @@ Route39Barn_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 3
+	person_event SPRITE_MILTANK, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MooMoo, -1
 	person_event SPRITE_TWIN, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
 	person_event SPRITE_TWIN, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
-	person_event SPRITE_MILTANK, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MooMoo, -1
-
-const_value set 2
-	const ROUTE39BARN_TWIN1
-	const ROUTE39BARN_TWIN2
 
 TwinScript_0x9cc76:
 	faceplayer
@@ -31,14 +27,14 @@ TwinScript_0x9cc76:
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
-	spriteface ROUTE39BARN_TWIN1, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 .FeedingMooMoo:
 	writetext Text_WereFeedingMoomoo
 	waitbutton
 	closetext
-	spriteface ROUTE39BARN_TWIN1, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
 
 TwinScript_0x9cc90:
@@ -49,14 +45,14 @@ TwinScript_0x9cc90:
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
-	spriteface ROUTE39BARN_TWIN2, LEFT
+	spriteface LAST_TALKED, LEFT
 	end
 
 .FeedingMooMoo:
 	writetext Text_WereFeedingMoomoo
 	waitbutton
 	closetext
-	spriteface ROUTE39BARN_TWIN2, LEFT
+	spriteface LAST_TALKED, LEFT
 	end
 
 MooMoo:
@@ -88,10 +84,7 @@ MooMoo:
 	if_equal 3, .ThreeOranBerries
 	if_equal 5, .FiveOranBerries
 	if_equal 7, .SevenOranBerries
-	writetext Text_GaveOranBerry
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GaveOranBerry
 
 .MaybeSitrusBerry:
 	checkitem SITRUS_BERRY
@@ -103,26 +96,17 @@ MooMoo:
 	if_greater_than 6, .SevenSitrusBerries
 	if_greater_than 4, .FiveSitrusBerries
 	if_greater_than 2, .ThreeSitrusBerries
-	writetext Text_GaveSitrusBerry
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_GaveSitrusBerry
 
 .ThreeOranBerries:
 	writetext Text_GaveOranBerry
 	buttonsound
-	writetext Text_LittleHealthier
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_LittleHealthier
 
 .FiveOranBerries:
 	writetext Text_GaveOranBerry
 	buttonsound
-	writetext Text_QuiteHealthy
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_QuiteHealthy
 
 .SevenOranBerries:
 	playmusic MUSIC_HEAL
@@ -139,18 +123,12 @@ MooMoo:
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
 	buttonsound
-	writetext Text_LittleHealthier
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_LittleHealthier
 
 .FiveSitrusBerries:
 	writetext Text_GaveSitrusBerry
 	buttonsound
-	writetext Text_QuiteHealthy
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_QuiteHealthy
 
 .SevenSitrusBerries:
 	playmusic MUSIC_HEAL
@@ -165,16 +143,10 @@ MooMoo:
 	end
 
 .NoBerriesInBag:
-	writetext Text_NoBerries
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_NoBerries
 
 .Refused:
-	writetext Text_RefusedToGiveBerry
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RefusedToGiveBerry
 
 .HappyCow:
 	writetext UnknownText_0x9cd92

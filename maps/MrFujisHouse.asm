@@ -15,17 +15,11 @@ MrFujisHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 5
-	person_event SPRITE_SUPER_NERD, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7e8ca, -1
-	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x7e8cd, -1
+	person_event SPRITE_SUPER_NERD, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7e8f1, -1
+	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7e940, -1
 	person_event SPRITE_PSYDUCK, 4, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrFujisPsyduck, -1
 	person_event SPRITE_NIDORINO, 5, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, MrFujisNidorino, -1
 	person_event SPRITE_PIDGEY, 3, 1, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MrFujisPidgey, -1
-
-SuperNerdScript_0x7e8ca:
-	jumptextfaceplayer UnknownText_0x7e8f1
-
-LassScript_0x7e8cd:
-	jumptextfaceplayer UnknownText_0x7e940
 
 MrFujisPsyduck:
 	opentext

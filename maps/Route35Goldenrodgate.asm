@@ -19,7 +19,7 @@ Route35Goldenrodgate_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x69d37, -1
 	person_event SPRITE_BREEDER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BreederScript_0x69dc6, -1
-	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FisherScript_0x69dda, -1
+	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a0cb, -1
 
 OfficerScript_0x69d37:
 	faceplayer
@@ -47,22 +47,13 @@ OfficerScript_0x69d37:
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_KENYA
 .alreadyhavekenya
-	writetext UnknownText_0x69ed6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69ed6
 
 .partyfull
-	writetext UnknownText_0x69f56
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69f56
 
 .refused
-	writetext UnknownText_0x69f74
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x69f74
 
 .questcomplete
 	writetext UnknownText_0x69f8b
@@ -95,19 +86,10 @@ BreederScript_0x69dc6:
 	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .aftersudowoodo
-	writetext UnknownText_0x6a00a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a00a
 
 .aftersudowoodo
-	writetext UnknownText_0x6a09a
-	waitbutton
-	closetext
-	end
-
-FisherScript_0x69dda:
-	jumptextfaceplayer UnknownText_0x6a0cb
+	jumpopenedtext UnknownText_0x6a09a
 
 UnknownText_0x69ddd:
 	text "Excuse me, kid!"

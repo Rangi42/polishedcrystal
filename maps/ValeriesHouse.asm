@@ -14,17 +14,17 @@ ValeriesHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 2, SIGNPOST_READ, ValeriesHouseRadio
+	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
 .PersonEvents: db 8
-	person_event SPRITE_VALERIE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseValerieScript, EVENT_VALERIE_ECRUTEAK_CITY
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHouseRedFairyBookScript, EVENT_RED_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ValeriesHouseBlueFairyBookScript, EVENT_BLUE_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValeriesHouseGreenFairyBookScript, EVENT_GREEN_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseBrownFairyBookScript, EVENT_BROWN_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ValeriesHouseVioletFairyBookScript, EVENT_VIOLET_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValeriesHousePinkFairyBookScript, EVENT_PINK_FAIRY_BOOK
-	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ValeriesHouseYellowFairyBookScript, EVENT_YELLOW_FAIRY_BOOK
+	person_event SPRITE_VALERIE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ValeriesHouseValerieText, EVENT_VALERIE_ECRUTEAK_CITY
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHouseRedFairyBookText, EVENT_RED_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, ValeriesHouseBlueFairyBookText, EVENT_BLUE_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseGreenFairyBookText, EVENT_GREEN_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseBrownFairyBookText, EVENT_BROWN_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptext, ValeriesHouseVioletFairyBookText, EVENT_VIOLET_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
+	person_event SPRITE_BOOK_UNOWN_R, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
 
 const_value set 2
 	const VALERIESHOUSE_VALERIE
@@ -89,33 +89,6 @@ SetupFairyBookScript:
 .Saturday
 	appear VALERIESHOUSE_VIOLET_FAIRY_BOOK
 	return
-
-ValeriesHouseValerieScript:
-	jumptextfaceplayer ValeriesHouseValerieText
-
-ValeriesHouseRedFairyBookScript:
-	jumptext ValeriesHouseRedFairyBookText
-
-ValeriesHouseBlueFairyBookScript:
-	jumptext ValeriesHouseBlueFairyBookText
-
-ValeriesHouseGreenFairyBookScript:
-	jumptext ValeriesHouseGreenFairyBookText
-
-ValeriesHouseBrownFairyBookScript:
-	jumptext ValeriesHouseBrownFairyBookText
-
-ValeriesHouseVioletFairyBookScript:
-	jumptext ValeriesHouseVioletFairyBookText
-
-ValeriesHousePinkFairyBookScript:
-	jumptext ValeriesHousePinkFairyBookText
-
-ValeriesHouseYellowFairyBookScript:
-	jumptext ValeriesHouseYellowFairyBookText
-
-ValeriesHouseRadio:
-	jumpstd radio2
 
 ValeriesHouseValerieText:
 	text "Valerie: My"

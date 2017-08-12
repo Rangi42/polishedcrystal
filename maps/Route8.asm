@@ -13,8 +13,8 @@ Route8_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 9, 11, SIGNPOST_READ, Route8UndergroundPathSign
-	signpost 7, 10, SIGNPOST_READ, Route8LockedDoor
+	signpost 9, 11, SIGNPOST_JUMPTEXT, Route8UndergroundPathSignText
+	signpost 7, 10, SIGNPOST_JUMPTEXT, Route8LockedDoorText
 
 .PersonEvents: db 15
 	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_SAFFRON_TRAIN_STATION_POPULATION
@@ -26,132 +26,75 @@ Route8_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 4, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu1, -1
 	person_event SPRITE_LASS, 4, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu2, -1
 	person_event SPRITE_LASS, 4, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMeadow, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 21, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route8CutTree, EVENT_ROUTE_8_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 32, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route8CutTree, EVENT_ROUTE_8_CUT_TREE_2
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 45, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x6c06c, -1
-	person_event SPRITE_BIKER, 9, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route8BikerDwayneScript, EVENT_RETURNED_MACHINE_PART
-	person_event SPRITE_BIKER, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route8BikerHarrisScript, EVENT_RETURNED_MACHINE_PART
-	person_event SPRITE_BIKER, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route8BikerZekeScript, EVENT_RETURNED_MACHINE_PART
-
-Route8BikerDwayneScript:
-	jumptextfaceplayer Route8BikerDwayneProtestText
-
-Route8BikerHarrisScript:
-	jumptextfaceplayer Route8BikerHarrisProtestText
-
-Route8BikerZekeScript:
-	jumptextfaceplayer Route8BikerZekeProtestText
+	cuttree_event 14, 21, EVENT_ROUTE_8_CUT_TREE_1
+	cuttree_event 12, 32, EVENT_ROUTE_8_CUT_TREE_2
+	fruittree_event 7, 45, FRUITTREE_ROUTE_8, SALAC_BERRY
+	person_event SPRITE_BIKER, 9, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerDwayneProtestText, EVENT_RETURNED_MACHINE_PART
+	person_event SPRITE_BIKER, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerHarrisProtestText, EVENT_RETURNED_MACHINE_PART
+	person_event SPRITE_BIKER, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerZekeProtestText, EVENT_RETURNED_MACHINE_PART
 
 TrainerBikerDwayne:
 	trainer EVENT_BEAT_BIKER_DWAYNE, BIKER, DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText, 0, BikerDwayneScript
 
 BikerDwayneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c0c8
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6c0c8
 
 TrainerBikerHarris:
 	trainer EVENT_BEAT_BIKER_HARRIS, BIKER, HARRIS, BikerHarrisSeenText, BikerHarrisBeatenText, 0, BikerHarrisScript
 
 BikerHarrisScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c143
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6c143
 
 TrainerBikerZeke:
 	trainer EVENT_BEAT_BIKER_ZEKE, BIKER, ZEKE, BikerZekeSeenText, BikerZekeBeatenText, 0, BikerZekeScript
 
 BikerZekeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c1a3
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6c1a3
 
 TrainerSupernerdSam:
 	trainer EVENT_BEAT_SUPER_NERD_SAM, SUPER_NERD, SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, SupernerdSamScript
 
 SupernerdSamScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c219
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6c219
 
 TrainerSupernerdTom:
 	trainer EVENT_BEAT_SUPER_NERD_TOM, SUPER_NERD, TOM, SupernerdTomSeenText, SupernerdTomBeatenText, 0, SupernerdTomScript
 
 SupernerdTomScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6c27e
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6c27e
 
 TrainerGentlemanMilton:
 	trainer EVENT_BEAT_GENTLEMAN_MILTON, GENTLEMAN, MILTON, GentlemanMiltonSeenText, GentlemanMiltonBeatenText, 0, GentlemanMiltonScript
 
 GentlemanMiltonScript:
 	end_if_just_battled
-	opentext
-	writetext GentlemanMiltonAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GentlemanMiltonAfterText
 
 TrainerCoupleMoeandlulu1:
 	trainer EVENT_BEAT_COUPLE_MOE_AND_LULU, COUPLE, MOEANDLULU1, CoupleMoeandlulu1SeenText, CoupleMoeandlulu1BeatenText, 0, CoupleMoeandlulu1Script
 
 CoupleMoeandlulu1Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleMoeandlulu1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CoupleMoeandlulu1AfterText
 
 TrainerCoupleMoeandlulu2:
 	trainer EVENT_BEAT_COUPLE_MOE_AND_LULU, COUPLE, MOEANDLULU2, CoupleMoeandlulu2SeenText, CoupleMoeandlulu2BeatenText, 0, CoupleMoeandlulu2Script
 
 CoupleMoeandlulu2Script:
 	end_if_just_battled
-	opentext
-	writetext CoupleMoeandlulu2AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CoupleMoeandlulu2AfterText
 
 TrainerLassMeadow:
 	trainer EVENT_BEAT_LASS_MEADOW, LASS, MEADOW, LassMeadowSeenText, LassMeadowBeatenText, 0, LassMeadowScript
 
 LassMeadowScript:
 	end_if_just_battled
-	opentext
-	writetext LassMeadowAfterText
-	waitbutton
-	closetext
-	end
-
-Route8LockedDoor:
-	jumptext Route8LockedDoorText
-
-Route8UndergroundPathSign:
-	jumptext Route8UndergroundPathSignText
-
-FruitTreeScript_0x6c06c:
-	fruittree FRUITTREE_ROUTE_8
-
-Route8CutTree:
-	jumpstd cuttree
+	jumptextfaceplayer LassMeadowAfterText
 
 Route8BikerDwayneProtestText:
 	text "We're the Kanto"

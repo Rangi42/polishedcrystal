@@ -11,8 +11,8 @@ Route21_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 37, 12, SIGNPOST_ITEM, Route21HiddenStardust1
-	signpost 66, 5, SIGNPOST_ITEM, Route21HiddenStardust2
+	signpost 37, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_1
+	signpost 66, 5, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_2
 
 .PersonEvents: db 13
 	person_event SPRITE_SWIMMER_GIRL, 13, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
@@ -27,18 +27,14 @@ Route21_MapEventHeader:
 	person_event SPRITE_FISHER, 56, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
 	person_event SPRITE_YOUNGSTER, 62, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
 	person_event SPRITE_YOUNGSTER, 83, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
+	itemball_event 26, 13, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
 
 TrainerSwimmerfNikki:
 	trainer EVENT_BEAT_SWIMMERF_NIKKI, SWIMMERF, NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText, 0, SwimmerfNikkiScript
 
 SwimmerfNikkiScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac8f1
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ac8f1
 
 SwimmerfNikkiSeenText:
 	text "If I win, you have"
@@ -62,11 +58,7 @@ TrainerSwimmerfChelan:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I love bikinis!"
@@ -93,11 +85,7 @@ TrainerSwimmerfKendra:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, trainer!"
@@ -122,11 +110,7 @@ TrainerSwimmermEsteban:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My swimming teach-"
@@ -150,11 +134,7 @@ TrainerSwimmermDuane:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming is full-"
@@ -180,11 +160,7 @@ TrainerSwimmermSeth:
 
 SwimmermSethScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac873
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ac873
 
 SwimmermSethSeenText:
 	text "Land ho! Gotta"
@@ -206,11 +182,7 @@ TrainerFisherMurphy:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Huh? I've caught"
@@ -236,11 +208,7 @@ TrainerFisherArnold:
 
 FisherArnoldScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac95c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ac95c
 
 FisherArnoldSeenText:
 	text "I'm bored by fish-"
@@ -261,11 +229,7 @@ TrainerFisherLiam:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Whoa! A nibble!"
@@ -297,11 +261,7 @@ TrainerFisherGideon:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did I become a"
@@ -328,11 +288,7 @@ TrainerBird_keeperKinsley:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Someday I might be"
@@ -355,11 +311,7 @@ TrainerBird_keeperEaston:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Bird Keepers are"
@@ -381,9 +333,3 @@ TrainerBird_keeperEaston:
 	line "the #mon start-"
 	cont "ed using us…"
 	done
-
-Route21HiddenStardust1:
-	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_1, STARDUST
-
-Route21HiddenStardust2:
-	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_2, STARDUST

@@ -19,65 +19,38 @@ SafariZoneWest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 24, 26, SIGNPOST_READ, SafariZoneWestAreaSign
-	signpost 14, 14, SIGNPOST_READ, SafariZoneWestRestHouseSign
-	signpost 6, 28, SIGNPOST_READ, SafariZoneWestTrainerTips1Sign
-	signpost 5, 19, SIGNPOST_READ, SafariZoneWestTrainerTips2Sign
-	signpost 6, 13, SIGNPOST_ITEM, SafariZoneWestHiddenNugget
+	signpost 24, 26, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
+	signpost 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
+	signpost 6, 28, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
+	signpost 5, 19, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
+	signpost 6, 13, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
 .PersonEvents: db 4
 	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
 	person_event SPRITE_YOUNGSTER, 12, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
 	person_event SPRITE_COOLTRAINER_M, 19, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
+	itemball_event 9, 14, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
 
 TrainerLassDuplica:
 	trainer EVENT_BEAT_LASS_DUPLICA, LASS, DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript
 
 LassDuplicaScript:
 	end_if_just_battled
-	opentext
-	writetext LassDuplicaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer LassDuplicaAfterText
 
 TrainerCamperAmos:
 	trainer EVENT_BEAT_CAMPER_AMOS, CAMPER, AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
 
 CamperAmosScript:
 	end_if_just_battled
-	opentext
-	writetext CamperAmosAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CamperAmosAfterText
 
 TrainerTamerBrett:
 	trainer EVENT_BEAT_TAMER_BRETT, TAMER, BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
 
 TamerBrettScript:
 	end_if_just_battled
-	opentext
-	writetext TamerBrettAfterText
-	waitbutton
-	closetext
-	end
-
-SafariZoneWestAreaSign:
-	jumptext SafariZoneWestAreaSignText
-
-SafariZoneWestRestHouseSign:
-	jumptext SafariZoneWestRestHouseSignText
-
-SafariZoneWestTrainerTips1Sign:
-	jumptext SafariZoneWestTrainerTips1SignText
-
-SafariZoneWestTrainerTips2Sign:
-	jumptext SafariZoneWestTrainerTips2SignText
-
-SafariZoneWestHiddenNugget:
-	dwb EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET, NUGGET
+	jumptextfaceplayer TamerBrettAfterText
 
 LassDuplicaSeenText:
 	text "To truly use"

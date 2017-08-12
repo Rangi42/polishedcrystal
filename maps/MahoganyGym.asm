@@ -56,87 +56,55 @@ PryceScript_0x199a9e:
 	buttonsound
 	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM67_AVALANCHE
-	writetext UnknownText_0x199def
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x199def
 
 UnknownScript_0x199af0:
-	writetext UnknownText_0x199e59
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x199e59
 
 TrainerSkierRoxanne:
 	trainer EVENT_BEAT_SKIER_ROXANNE, SKIER, ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText, 0, SkierRoxanneScript
 
 SkierRoxanneScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19a116
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19a116
 
 TrainerSkierClarissa:
 	trainer EVENT_BEAT_SKIER_CLARISSA, SKIER, CLARISSA, SkierClarissaSeenText, SkierClarissaBeatenText, 0, SkierClarissaScript
 
 SkierClarissaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19a18f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19a18f
 
 TrainerBoarderRonald:
 	trainer EVENT_BEAT_BOARDER_RONALD, BOARDER, RONALD, BoarderRonaldSeenText, BoarderRonaldBeatenText, 0, BoarderRonaldScript
 
 BoarderRonaldScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x199f2d
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x199f2d
 
 TrainerBoarderBrad:
 	trainer EVENT_BEAT_BOARDER_BRAD, BOARDER, BRAD, BoarderBradSeenText, BoarderBradBeatenText, 0, BoarderBradScript
 
 BoarderBradScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x199fdd
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x199fdd
 
 TrainerBoarderDouglas:
 	trainer EVENT_BEAT_BOARDER_DOUGLAS, BOARDER, DOUGLAS, BoarderDouglasSeenText, BoarderDouglasBeatenText, 0, BoarderDouglasScript
 
 BoarderDouglasScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19a047
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19a047
 
 MahoganyGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_PRYCE
 	iftrue .MahoganyGymGuyWinScript
-	writetext MahoganyGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MahoganyGymGuyText
 
 .MahoganyGymGuyWinScript:
-	writetext MahoganyGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MahoganyGymGuyWinText
 
 MahoganyGymStatue:
 	trainertotext PRYCE, 1, $1

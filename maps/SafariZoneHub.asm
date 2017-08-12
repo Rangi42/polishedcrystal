@@ -20,30 +20,20 @@ SafariZoneHub_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 24, 16, SIGNPOST_READ, SafariZoneHubAreaSign
-	signpost 22, 20, SIGNPOST_READ, SafariZoneHubRestHouseSign
+	signpost 24, 16, SIGNPOST_JUMPTEXT, SafariZoneHubAreaSignText
+	signpost 22, 20, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
 
 .PersonEvents: db 3
 	person_event SPRITE_BUG_MANIAC, 6, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
+	itemball_event 12, 15, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
+	itemball_event 21, 8, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
 
 TrainerBug_maniacKai:
 	trainer EVENT_BEAT_BUG_MANIAC_KAI, BUG_MANIAC, KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText, 0, Bug_maniacKaiScript
 
 Bug_maniacKaiScript:
 	end_if_just_battled
-	opentext
-	writetext Bug_maniacKaiAfterText
-	waitbutton
-	closetext
-	end
-
-SafariZoneHubAreaSign:
-	jumptext SafariZoneHubAreaSignText
-
-SafariZoneHubRestHouseSign:
-	jumptext SafariZoneHubRestHouseSignText
+	jumptextfaceplayer Bug_maniacKaiAfterText
 
 Bug_maniacKaiSeenText:
 	text "My Venonat evolved"

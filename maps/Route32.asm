@@ -20,11 +20,11 @@ Route32_MapEventHeader:
 	xy_trigger 1, $47, $7, Route32WannaBuyASlowpokeTailScript
 
 .Signposts: db 5
-	signpost  5, 13, SIGNPOST_READ, Route32Sign
-	signpost  1,  9, SIGNPOST_READ, Route32RuinsSign
-	signpost 84, 10, SIGNPOST_READ, Route32UnionCaveSign
-	signpost 67, 12, SIGNPOST_ITEM, Route32HiddenGreatBall
-	signpost 40, 11, SIGNPOST_ITEM, Route32HiddenSuperPotion
+	signpost  5, 13, SIGNPOST_JUMPTEXT, Route32SignText
+	signpost  1,  9, SIGNPOST_JUMPTEXT, Route32RuinsSignText
+	signpost 84, 10, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
+	signpost 67, 12, SIGNPOST_ITEM + GREAT_BALL, EVENT_ROUTE_32_HIDDEN_GREAT_BALL
+	signpost 40, 11, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION
 
 .PersonEvents: db 15
 	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
@@ -38,10 +38,10 @@ Route32_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 45, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperRoland, -1
 	person_event SPRITE_NEW_BARK_LYRA, 30, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
 	person_event SPRITE_YOUNGSTER, 82, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperPeter, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 53, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, GREAT_BALL, 1, EVENT_ROUTE_32_GREAT_BALL
+	itemball_event 53, 6, GREAT_BALL, 1, EVENT_ROUTE_32_GREAT_BALL
 	person_event SPRITE_FISHER, 13, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32RoarTMGuyScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REPEL, 1, EVENT_ROUTE_32_REPEL
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 10, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CutTree, EVENT_ROUTE_32_CUT_TREE
+	itemball_event 28, 3, REPEL, 1, EVENT_ROUTE_32_REPEL
+	cuttree_event 19, 10, EVENT_ROUTE_32_CUT_TREE
 
 const_value set 2
 	const ROUTE32_COOLTRAINER_M
@@ -121,28 +121,16 @@ Route32CooltrainerMTrigger:
 	end
 
 .AideIsWaiting
-	writetext Route32CooltrainerMText_AideIsWaiting
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route32CooltrainerMText_AideIsWaiting
 
 .DontHaveZephyrBadge:
-	writetext Route32CooltrainerMText_VioletGym
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route32CooltrainerMText_VioletGym
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "You have some good"
@@ -226,10 +214,7 @@ Route32CooltrainerMTrigger:
 Route32CooltrainerMStopsYou:
 	spriteface ROUTE32_COOLTRAINER_M, LEFT
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext Route32CooltrainerMText_WhatsTheHurry
-	waitbutton
-	closetext
+	showtext Route32CooltrainerMText_WhatsTheHurry
 	follow PLAYER, ROUTE32_COOLTRAINER_M
 	applymovement PLAYER, Movement_Route32CooltrainerMPushesYouBackToViolet
 	stopfollow
@@ -249,10 +234,7 @@ Route32RoarTMGuyScript:
 	verbosegivetmhm TM_ROAR
 	setevent EVENT_GOT_TM05_ROAR
 .AlreadyHaveRoar:
-	writetext Text_RoarOutro
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RoarOutro
 
 Route32WannaBuyASlowpokeTailScript:
 	spriteface ROUTE32_FISHER4, DOWN
@@ -267,38 +249,24 @@ _OfferToSellSlowpokeTail:
 	writetext Text_MillionDollarSlowpokeTail
 	yesorno
 	iffalse .refused
-	writetext Text_ThoughtKidsWereLoaded
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_ThoughtKidsWereLoaded
 
 .refused
-	writetext Text_RefusedToBuySlowpokeTail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_RefusedToBuySlowpokeTail
 
 TrainerCamperRoland:
 	trainer EVENT_BEAT_CAMPER_ROLAND, CAMPER, ROLAND, CamperRolandSeenText, CamperRolandBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext CamperRolandAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CamperRolandAfterText
 
 TrainerFisherJustin:
 	trainer EVENT_BEAT_FISHER_JUSTIN, FISHER, JUSTIN, FisherJustinSeenText, FisherJustinBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext FisherJustinAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer FisherJustinAfterText
 
 TrainerFisherRalph1:
 	trainer EVENT_BEAT_FISHER_RALPH, FISHER, RALPH1, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
@@ -392,10 +360,7 @@ TrainerFisherRalph1:
 	end
 
 .Swarm:
-	writetext FisherRalphSwarmText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FisherRalphSwarmText
 
 .AskNumber1:
 	jumpstd asknumber1m
@@ -430,11 +395,7 @@ TrainerFisherHenry:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext FisherHenryAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer FisherHenryAfterText
 
 TrainerPicnickerLiz1:
 	trainer EVENT_BEAT_PICNICKER_LIZ, PICNICKER, LIZ1, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
@@ -558,33 +519,21 @@ TrainerYoungsterAlbert:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext YoungsterAlbertAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer YoungsterAlbertAfterText
 
 TrainerYoungsterGordon:
 	trainer EVENT_BEAT_YOUNGSTER_GORDON, YOUNGSTER, GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext YoungsterGordonAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer YoungsterGordonAfterText
 
 TrainerBird_keeperPeter:
 	trainer EVENT_BEAT_BIRD_KEEPER_PETER, BIRD_KEEPER, PETER, Bird_keeperPeterSeenText, Bird_keeperPeterBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext Bird_keeperPeterAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer Bird_keeperPeterAfterText
 
 FriedaScript:
 	faceplayer
@@ -604,10 +553,7 @@ FriedaScript:
 	verbosegiveitem POISON_BARB
 	iffalse .Done
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
-	writetext FriedaGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FriedaGaveGiftText
 
 .Friday:
 	writetext FriedaFridayText
@@ -617,28 +563,7 @@ FriedaScript:
 	end
 
 .NotFriday:
-	writetext FriedaNotFridayText
-	waitbutton
-	closetext
-	end
-
-Route32CutTree:
-	jumpstd cuttree
-
-Route32Sign:
-	jumptext Route32SignText
-
-Route32RuinsSign:
-	jumptext Route32RuinsSignText
-
-Route32UnionCaveSign:
-	jumptext Route32UnionCaveSignText
-
-Route32HiddenGreatBall:
-	dwb EVENT_ROUTE_32_HIDDEN_GREAT_BALL, GREAT_BALL
-
-Route32HiddenSuperPotion:
-	dwb EVENT_ROUTE_32_HIDDEN_SUPER_POTION, SUPER_POTION
+	jumpopenedtext FriedaNotFridayText
 
 Movement_Route32CooltrainerMPushesYouBackToViolet:
 	step_up

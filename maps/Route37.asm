@@ -12,8 +12,8 @@ Route37_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 3, 5, SIGNPOST_READ, Route37Sign
-	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
+	signpost 3, 5, SIGNPOST_JUMPTEXT, Route37SignText
+	signpost 2, 4, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
 
 .PersonEvents: db 10
 	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
@@ -21,9 +21,9 @@ Route37_MapEventHeader:
 	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
 	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
 	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e09, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0b, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a8e0d, -1
+	fruittree_event 5, 13, FRUITTREE_ROUTE_37_1, RED_APRICORN
+	fruittree_event 5, 16, FRUITTREE_ROUTE_37_2, BLU_APRICORN
+	fruittree_event 7, 15, FRUITTREE_ROUTE_37_3, BLK_APRICORN
 	person_event SPRITE_BEAUTY, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCallie, -1
 	person_event SPRITE_BEAUTY, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassandra, -1
 
@@ -46,33 +46,21 @@ TrainerTwinsToriandtil1:
 
 TwinsToriandtil1Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a8e62
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a8e62
 
 TrainerTwinsToriandtil2:
 	trainer EVENT_BEAT_TWINS_ANN_AND_ANNE, TWINS, ANNANDANNE2, TwinsToriandtil2SeenText, TwinsToriandtil2BeatenText, 0, TwinsToriandtil2Script
 
 TwinsToriandtil2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a8eec
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a8eec
 
 TrainerPsychicGreg:
 	trainer EVENT_BEAT_PSYCHIC_GREG, PSYCHIC_T, GREG, PsychicGregSeenText, PsychicGregBeatenText, 0, PsychicGregScript
 
 PsychicGregScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a8f80
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a8f80
 
 SunnyScript:
 	faceplayer
@@ -99,10 +87,7 @@ SunnyScript:
 	verbosegiveitem MAGNET
 	iffalse SunnyDoneScript
 	setevent EVENT_GOT_MAGNET_FROM_SUNNY
-	writetext SunnyGaveGiftText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SunnyGaveGiftText
 
 SunnySundayScript:
 	writetext SunnySundayText
@@ -112,32 +97,21 @@ SunnyDoneScript:
 	end
 
 SunnyNotSundayScript:
-	writetext SunnyNotSundayText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SunnyNotSundayText
 
 TrainerBeautyCallie:
 	trainer EVENT_BEAT_BEAUTY_CALLIE, BEAUTY, CALLIE, BeautyCallieSeenText, BeautyCallieBeatenText, 0, BeautyCallieScript
 
 BeautyCallieScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyCallieAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BeautyCallieAfterText
 
 TrainerBeautyCassandra:
 	trainer EVENT_BEAT_BEAUTY_CASSANDRA, BEAUTY, CASSANDRA, BeautyCassandraSeenText, BeautyCassandraBeatenText, 0, BeautyCassandraScript
 
 BeautyCassandraScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyCassandraAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BeautyCassandraAfterText
 
 Route37CooltrainerfChiaraScript:
 	faceplayer
@@ -187,16 +161,10 @@ Route37CooltrainerfChiaraScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I saw how you woke"
@@ -270,21 +238,6 @@ Route37CooltrainerfChiaraScript:
 	line "who'll want to test"
 	cont "you."
 	done
-
-Route37Sign:
-	jumptext Route37SignText
-
-FruitTreeScript_0x1a8e09:
-	fruittree FRUITTREE_ROUTE_37_1
-
-FruitTreeScript_0x1a8e0b:
-	fruittree FRUITTREE_ROUTE_37_2
-
-FruitTreeScript_0x1a8e0d:
-	fruittree FRUITTREE_ROUTE_37_3
-
-Route37HiddenEther:
-	dwb EVENT_ROUTE_37_HIDDEN_ETHER, ETHER
 
 TwinsToriandtil1SeenText:
 	text "Til: Tori and I"

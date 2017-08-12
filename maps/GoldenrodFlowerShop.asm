@@ -17,7 +17,7 @@ GoldenrodFlowerShop_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
 	person_event SPRITE_LASS, 6, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
-	person_event SPRITE_GENTLEMAN, 3, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopGentlemanScript, EVENT_FLORIA_AT_SUDOWOODO
+	person_event SPRITE_GENTLEMAN, 3, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
 
 const_value set 2
 	const GOLDENRODFLOWERSHOP_TEACHER
@@ -46,11 +46,7 @@ FlowerShopTeacherScript:
 
 .Lalala:
 	spriteface GOLDENRODFLOWERSHOP_TEACHER, LEFT
-	opentext
-	writetext UnknownText_0x5552e
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5552e
 
 .GotSquirtbottle:
 	jumptextfaceplayer UnknownText_0x5550d
@@ -93,28 +89,16 @@ FlowerShopTeacherScript:
 	waitsfx
 	playsound SFX_TRANSACTION
 	itemnotify
-	writetext BoughtMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BoughtMulchText
 
 .Cancel:
-	writetext DontBuyMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext DontBuyMulchText
 
 .NotEnoughMoney:
-	writetext NotEnoughMulchMoneyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NotEnoughMulchMoneyText
 
 .BagFull:
-	writetext NoRoomForMulchText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoRoomForMulchText
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -146,27 +130,15 @@ FlowerShopFloriaScript:
 	end
 
 .GotSquirtbottle:
-	writetext UnknownText_0x555e6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x555e6
 
 .FoughtSudowoodo:
 	checkitem MULCH
 	iftrue .DescribeMulch
-	writetext UnknownText_0x55604
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x55604
 
 .DescribeMulch:
-	writetext DescribeMulchText
-	waitbutton
-	closetext
-	end
-
-FlowerShopGentlemanScript:
-	jumptextfaceplayer FlowerShopGentlemanText
+	jumpopenedtext DescribeMulchText
 
 UnknownText_0x553d4:
 	text "Have you seen that"

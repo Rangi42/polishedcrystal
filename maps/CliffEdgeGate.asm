@@ -13,15 +13,12 @@ CliffEdgeGate_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 17, SIGNPOST_ITEM, CliffEdgeGateHiddenBigPearl
+	signpost 6, 17, SIGNPOST_ITEM + BIG_PEARL, EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL
 
 .PersonEvents: db 3
-	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CliffEdgeGateReceptionistScript, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffEdgeGateReceptionistText, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_SCIENTIST, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST
-
-CliffEdgeGateReceptionistScript:
-	jumptextfaceplayer CliffEdgeGateReceptionistText
 
 ProfOaksAide3Script:
 	faceplayer
@@ -34,10 +31,7 @@ ProfOaksAide3Script:
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 44, .HereYouGo
 .UhOh
-	writetext ProfOaksAide3UhOhText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide3UhOhText
 
 .HereYouGo
 	writetext ProfOaksAide3HereYouGoText
@@ -46,30 +40,17 @@ ProfOaksAide3Script:
 	iffalse .NoRoom
 	setevent EVENT_GOT_MACHO_BRACE_FROM_PROF_OAKS_AIDE
 .Explain
-	writetext ProfOaksAide3ExplainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide3ExplainText
 
 .NoRoom
-	writetext ProfOaksAide3NoRoomText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOaksAide3NoRoomText
 
 TrainerGruntM12:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_12, GRUNTM, 12, GruntM12SeenText, GruntM12BeatenText, 0, GruntM12Script
 
 GruntM12Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM12AfterText
-	waitbutton
-	closetext
-	end
-
-CliffEdgeGateHiddenBigPearl:
-	dwb EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL, BIG_PEARL
+	jumptextfaceplayer GruntM12AfterText
 
 CliffEdgeGateReceptionistText:
 	text "Yellow Forest is"

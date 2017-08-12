@@ -12,8 +12,8 @@ Route17_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 71, 11, SIGNPOST_ITEM, Route17HiddenMaxEther
-	signpost 123, 10, SIGNPOST_ITEM, Route17HiddenMaxElixer
+	signpost 71, 11, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_17_HIDDEN_MAX_ETHER
+	signpost 123, 10, SIGNPOST_ITEM + MAX_ELIXER, EVENT_ROUTE_17_HIDDEN_MAX_ELIXER
 
 .PersonEvents: db 12
 	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
@@ -39,11 +39,7 @@ TrainerBikerReilly:
 
 BikerReillyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad13b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ad13b
 
 BikerReillySeenText:
 	text "Hey, you! You're"
@@ -64,11 +60,7 @@ TrainerBikerJoel:
 
 BikerJoelScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad196
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ad196
 
 BikerJoelSeenText:
 	text "Wow. That's a cool"
@@ -94,11 +86,7 @@ TrainerBikerGlenn:
 
 BikerGlennScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ad225
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ad225
 
 BikerGlennSeenText:
 	text "Hey! Want to have"
@@ -121,11 +109,7 @@ TrainerBikerDale:
 
 BikerDaleScript:
 	end_if_just_battled
-	opentext
-	writetext BikerDaleAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BikerDaleAfterText
 
 BikerDaleSeenText:
 	text "You're gonna lose!"
@@ -148,11 +132,7 @@ TrainerBikerJacob:
 
 BikerJacobScript:
 	end_if_just_battled
-	opentext
-	writetext BikerJacobAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BikerJacobAfterText
 
 BikerJacobSeenText:
 	text "Modding my"
@@ -177,11 +157,7 @@ TrainerBikerAiden:
 
 BikerAidenScript:
 	end_if_just_battled
-	opentext
-	writetext BikerAidenAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BikerAidenAfterText
 
 BikerAidenSeenText:
 	text "Vroom vroom!"
@@ -211,11 +187,7 @@ TrainerBikerDan:
 
 BikerDanScript:
 	end_if_just_battled
-	opentext
-	writetext BikerDanAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BikerDanAfterText
 
 BikerDanSeenText:
 	text "Parara parapara"
@@ -243,11 +215,7 @@ TrainerBikerTeddy:
 
 BikerTeddyScript:
 	end_if_just_battled
-	opentext
-	writetext BikerTeddyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BikerTeddyAfterText
 
 BikerTeddySeenText:
 	text "Hey, that's a cool"
@@ -270,11 +238,7 @@ TrainerRoughneckBrian:
 
 RoughneckBrianScript:
 	end_if_just_battled
-	opentext
-	writetext RoughneckBrianAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer RoughneckBrianAfterText
 
 RoughneckBrianSeenText:
 	text "Hey, who told you"
@@ -296,11 +260,7 @@ TrainerRoughneckTheron:
 
 RoughneckTheronScript:
 	end_if_just_battled
-	opentext
-	writetext RoughneckTheronAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer RoughneckTheronAfterText
 
 RoughneckTheronSeenText:
 	text "I'll toughen you"
@@ -325,11 +285,7 @@ TrainerRoughneckMarkey:
 
 RoughneckMarkeyScript:
 	end_if_just_battled
-	opentext
-	writetext RoughneckMarkeyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer RoughneckMarkeyAfterText
 
 RoughneckMarkeySeenText:
 	text "Hey hey hey!"
@@ -348,9 +304,3 @@ RoughneckMarkeyAfterText:
 	para "That fighting"
 	line "yell was great!"
 	done
-
-Route17HiddenMaxEther:
-	dwb EVENT_ROUTE_17_HIDDEN_MAX_ETHER, MAX_ETHER
-
-Route17HiddenMaxElixer:
-	dwb EVENT_ROUTE_17_HIDDEN_MAX_ELIXER, MAX_ELIXER

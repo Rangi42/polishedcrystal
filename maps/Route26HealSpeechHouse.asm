@@ -13,17 +13,13 @@ Route26HealSpeechHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, Route26HealHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7b125, -1
 
 TeacherScript_0x7b125:
-	faceplayer
-	opentext
-	writetext UnknownText_0x7b14d
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x7b14d
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	playmusic MUSIC_HEAL
@@ -31,14 +27,7 @@ TeacherScript_0x7b125:
 	pause 60
 	special Special_FadeInQuickly
 	special RestartMapMusic
-	opentext
-	writetext UnknownText_0x7b18b
-	waitbutton
-	closetext
-	end
-
-Route26HealHouseBookshelf:
-	jumpstd picturebookshelf
+	jumptext UnknownText_0x7b18b
 
 UnknownText_0x7b14d:
 	text "Your #mon look"

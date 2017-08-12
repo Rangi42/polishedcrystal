@@ -312,6 +312,7 @@ LoadMovementDataPointer:: ; 19e9
 	ld [wMovementDataPointer + 1], a
 	ld a, h
 	ld [wMovementDataPointer + 2], a
+
 	ld a, [wMovementPerson]
 	call CheckObjectVisibility
 	ret c
@@ -373,7 +374,7 @@ GetSpriteMovementFunction:: ; 1a2f
 	ld e, a
 	ld d, 0
 rept SPRITEMOVEDATA_FIELDS
-	add hl,de
+	add hl, de
 endr
 	ld a, [hl]
 	ret
@@ -386,7 +387,7 @@ GetInitialFacing:: ; 1a47
 	ld d, 0
 	ld hl, SpriteMovementData + 1 ; init facing
 rept SPRITEMOVEDATA_FIELDS
-	add hl,de
+	add hl, de
 endr
 	ld a, BANK(SpriteMovementData)
 	call GetFarByte

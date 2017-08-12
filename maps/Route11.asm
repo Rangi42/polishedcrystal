@@ -13,8 +13,8 @@ Route11_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 5, SIGNPOST_READ, Route11Sign
-	signpost 5, 44, SIGNPOST_ITEM, Route11HiddenRevive
+	signpost 7, 5, SIGNPOST_JUMPTEXT, Route11SignText
+	signpost 5, 44, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_11_HIDDEN_REVIVE
 
 .PersonEvents: db 11
 	person_event SPRITE_YOUNGSTER, 14, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
@@ -27,18 +27,14 @@ Route11_MapEventHeader:
 	person_event SPRITE_ENGINEER, 14, 38, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
 	person_event SPRITE_ROCKER, 3, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
 	person_event SPRITE_COOLTRAINER_F, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x68055, -1
+	fruittree_event 2, 44, FRUITTREE_ROUTE_11, GANLON_BERRY
 
 TrainerYoungsterOwen:
 	trainer EVENT_BEAT_YOUNGSTER_OWEN, YOUNGSTER, OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript
 
 YoungsterOwenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x680b2
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x680b2
 
 YoungsterOwenSeenText:
 	text "There's no cheat-"
@@ -66,11 +62,7 @@ TrainerYoungsterJason:
 
 YoungsterJasonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6814a
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6814a
 
 YoungsterJasonSeenText:
 	text "It itches and"
@@ -96,11 +88,7 @@ TrainerYoungsterAlfie:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Three, two, one,"
@@ -122,11 +110,7 @@ TrainerPsychicHerman:
 
 PsychicHermanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6817b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6817b
 
 PsychicHermanSeenText:
 	text "…"
@@ -148,11 +132,7 @@ TrainerPsychicFidel:
 
 PsychicFidelScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x681ec
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x681ec
 
 PsychicFidelSeenText:
 	text "I can see it…"
@@ -180,11 +160,7 @@ TrainerPsychicUri:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It happened one"
@@ -211,11 +187,7 @@ TrainerEngineerBernie:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Careful!"
@@ -238,11 +210,7 @@ TrainerEngineerCamden:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I learned engin-"
@@ -268,11 +236,7 @@ TrainerGuitaristmRoger:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Strangers passing"
@@ -298,11 +262,7 @@ TrainerGuitaristfRitsuko:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey ho, let's go!"
@@ -317,15 +277,6 @@ TrainerGuitaristfRitsuko:
 	text "♪ Rock'n, rock'n'"
 	line "roll radio… ♪"
 	done
-
-Route11Sign:
-	jumptext Route11SignText
-
-FruitTreeScript_0x68055:
-	fruittree FRUITTREE_ROUTE_11
-
-Route11HiddenRevive:
-	dwb EVENT_ROUTE_11_HIDDEN_REVIVE, REVIVE
 
 Route11SignText:
 	text "Route 11"

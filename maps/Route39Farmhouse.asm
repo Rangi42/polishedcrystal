@@ -13,8 +13,8 @@ Route39Farmhouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 1, 6, SIGNPOST_READ, FarmhouseBookshelf
-	signpost 1, 7, SIGNPOST_READ, FarmhouseBookshelf
+	signpost 1, 6, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 2
 	person_event SPRITE_POKEFAN_M, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
@@ -70,22 +70,13 @@ UnknownScript_0x9cec5:
 	end
 
 .Cancel:
-	writetext UnknownText_0x9d0b7
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9d0b7
 
 .NotEnoughMoney:
-	writetext UnknownText_0x9d07c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9d07c
 
 .BagFull:
-	writetext UnknownText_0x9d09d
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9d09d
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -102,10 +93,7 @@ UnknownScript_0x9cec5:
 	db "Cancel@"
 
 UnknownScript_0x9cf08:
-	writetext UnknownText_0x9d0dc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9d0dc
 
 PokefanFScript_0x9cf0e:
 	faceplayer
@@ -114,10 +102,7 @@ PokefanFScript_0x9cf0e:
 	iftrue UnknownScript_0x9cf2f
 	checkevent EVENT_HEALED_MOOMOO
 	iftrue UnknownScript_0x9cf22
-	writetext UnknownText_0x9d0f6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9d0f6
 
 UnknownScript_0x9cf22:
 	writetext UnknownText_0x9d156
@@ -125,13 +110,7 @@ UnknownScript_0x9cf22:
 	verbosegivetmhm TM_ACROBATICS
 	setevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
 UnknownScript_0x9cf2f:
-	writetext UnknownText_0x9d1c7
-	waitbutton
-	closetext
-	end
-
-FarmhouseBookshelf:
-	jumpstd picturebookshelf
+	jumpopenedtext UnknownText_0x9d1c7
 
 UnknownText_0x9cf38:
 	text "My Miltank ain't"

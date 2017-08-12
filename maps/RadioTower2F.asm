@@ -13,48 +13,36 @@ RadioTower2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 0, 3, SIGNPOST_READ, MapRadioTower2FSignpost0Script
-	signpost 0, 5, SIGNPOST_READ, MapRadioTower2FSignpost1Script
-	signpost 0, 13, SIGNPOST_READ, MapRadioTower2FSignpost5Script
+	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5e426
+	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x5e430
+	signpost 0, 13, SIGNPOST_JUMPTEXT, UnknownText_0x5e463
 
 .PersonEvents: db 12
 	person_event SPRITE_BUENA, 5, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Buena, -1
-	person_event SPRITE_SUPER_NERD, 6, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x5d6fe, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_SUPER_NERD, 6, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d924, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_TEACHER, 2, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5d701, -1
 	person_event SPRITE_ROCKET, 4, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_BLACK_BELT, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x5d71f, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
-	person_event SPRITE_BLACK_BELT, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x5d722, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	person_event SPRITE_BLACK_BELT, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d9cb, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
+	person_event SPRITE_BLACK_BELT, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5da44, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_JIGGLYPUFF, 1, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RadioTowerJigglypuff, -1
 	person_event SPRITE_RECEPTIONIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5d8ff, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_ROCKER, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower2FRockerScript, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_ROCKER, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower2FRockerText, EVENT_GOLDENROD_CITY_CIVILIANS
 
 const_value set 2
 	const RADIOTOWER2F_BUENA
-
-SuperNerdScript_0x5d6fe:
-	jumptextfaceplayer UnknownText_0x5d924
-
-RadioTower2FRockerScript:
-	jumptextfaceplayer RadioTower2FRockerText
 
 TeacherScript_0x5d701:
 	faceplayer
 	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue .Rockets
-	writetext UnknownText_0x5d956
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d956
 
 .Rockets:
-	writetext UnknownText_0x5d983
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5d983
 
 RadioTowerJigglypuff:
 	opentext
@@ -64,55 +52,33 @@ RadioTowerJigglypuff:
 	closetext
 	end
 
-BlackBeltScript_0x5d71f:
-	jumptextfaceplayer UnknownText_0x5d9cb
-
-BlackBeltScript_0x5d722:
-	jumptextfaceplayer UnknownText_0x5da44
-
 TrainerGruntM4:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_4, GRUNTM, 4, GruntM4SeenText, GruntM4BeatenText, 0, GruntM4Script
 
 GruntM4Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5db07
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5db07
 
 TrainerGruntM5:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_5, GRUNTM, 5, GruntM5SeenText, GruntM5BeatenText, 0, GruntM5Script
 
 GruntM5Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5db99
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5db99
 
 TrainerGruntM6:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_6, GRUNTM, 6, GruntM6SeenText, GruntM6BeatenText, 0, GruntM6Script
 
 GruntM6Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5dc00
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5dc00
 
 TrainerGruntF2:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_2, GRUNTF, 2, GruntF2SeenText, GruntF2BeatenText, 0, GruntF2Script
 
 GruntF2Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5dcd0
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5dcd0
 
 Buena:
 	faceplayer
@@ -144,19 +110,13 @@ Buena:
 	applymovement PLAYER, MovementData_0x5d921
 UnknownScript_0x5d7be:
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext UnknownText_0x5dedd
-	waitbutton
-	closetext
+	showtext UnknownText_0x5dedd
 	spriteface RADIOTOWER2F_BUENA, DOWN
 	refreshscreen
 	special SpecialBuenasPassword
 	closetext
 	iffalse UnknownScript_0x5d845
-	opentext
-	writetext UnknownText_0x5dfc1
-	waitbutton
-	closetext
+	showtext UnknownText_0x5dfc1
 	checkcode VAR_BLUECARDBALANCE
 	addvar $1
 	writevarcode VAR_BLUECARDBALANCE
@@ -165,10 +125,7 @@ UnknownScript_0x5d7be:
 	setflag ENGINE_BUENAS_PASSWORD_2
 	pause 20
 	spriteface RADIOTOWER2F_BUENA, RIGHT
-	opentext
-	writetext UnknownText_0x5e054
-	waitbutton
-	closetext
+	showtext UnknownText_0x5e054
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
@@ -218,16 +175,10 @@ UnknownScript_0x5d83f:
 
 UnknownScript_0x5d845:
 	setflag ENGINE_BUENAS_PASSWORD_2
-	opentext
-	writetext UnknownText_0x5e01c
-	waitbutton
-	closetext
+	showtext UnknownText_0x5e01c
 	spriteface RADIOTOWER2F_BUENA, RIGHT
 	pause 20
-	opentext
-	writetext UnknownText_0x5e054
-	waitbutton
-	closetext
+	showtext UnknownText_0x5e054
 	spriteface RADIOTOWER2F_BUENA, RIGHT
 	special Special_FadeOutMusic
 	pause 20
@@ -235,10 +186,7 @@ UnknownScript_0x5d845:
 	end
 
 UnknownScript_0x5d865:
-	writetext UnknownText_0x5e0c2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5e0c2
 
 UnknownScript_0x5d86b:
 	writetext UnknownText_0x5e192
@@ -326,30 +274,9 @@ UnknownScript_0x5d8fe:
 	end
 
 ReceptionistScript_0x5d8ff:
-	faceplayer
-	opentext
 	checkitem BLUE_CARD
-	iffalse UnknownScript_0x5d90f
-	writetext UnknownText_0x5e392
-	buttonsound
+	iffalse_jumptextfaceplayer UnknownText_0x5e3d8
 	pokemart MARTTYPE_BLUECARD, 0
-	closetext
-	end
-
-UnknownScript_0x5d90f:
-	writetext UnknownText_0x5e3d8
-	buttonsound
-	closetext
-	end
-
-MapRadioTower2FSignpost0Script:
-	jumptext UnknownText_0x5e426
-
-MapRadioTower2FSignpost1Script:
-	jumptext UnknownText_0x5e430
-
-MapRadioTower2FSignpost5Script:
-	jumptext UnknownText_0x5e463
 
 MovementData_0x5d921:
 	slow_step_down
@@ -702,14 +629,6 @@ UnknownText_0x5e35e:
 
 	para "has no room left"
 	line "for me…"
-	done
-
-UnknownText_0x5e392:
-	text "You can cash in"
-	line "your saved points"
-
-	para "for a lovely prize"
-	line "of your choice!"
 	done
 
 UnknownText_0x5e3d8:

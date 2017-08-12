@@ -15,15 +15,12 @@ Route5_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 29, 17, SIGNPOST_READ, Route5UndergroundPathSign
+	signpost 29, 17, SIGNPOST_JUMPTEXT, Route5UndergroundPathSignText
 
 .PersonEvents: db 1
-	person_event SPRITE_POKEFAN_M, 28, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1adb19, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	person_event SPRITE_POKEFAN_M, 28, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x1adb19Text, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 
-PokefanMScript_0x1adb19:
-	jumptextfaceplayer .Text
-
-.Text:
+PokefanMScript_0x1adb19Text:
 	text "The road is closed"
 	line "until the problem"
 
@@ -31,10 +28,7 @@ PokefanMScript_0x1adb19:
 	line "is solved."
 	done
 
-Route5UndergroundPathSign:
-	jumptext .Text
-
-.Text:
+Route5UndergroundPathSignText:
 	text "Underground Path"
 
 	para "Cerulean City -"

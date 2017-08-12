@@ -56,17 +56,17 @@ TeamRocketBaseB1F_MapEventHeader:
 	signpost 15, 8, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	signpost 15, 22, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	signpost 5, 24, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 11, 20, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost7Script
-	signpost 11, 21, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost7Script
-	signpost 11, 3, SIGNPOST_ITEM, TeamRocketBaseB1FHiddenRevive
+	signpost 11, 20, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 11, 21, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 11, 3, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
 .PersonEvents: db 6
 	person_event SPRITE_ROCKET, 0, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
 	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_SCIENTIST, 12, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
+	itemball_event 6, 27, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
+	itemball_event 15, 14, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
+	itemball_event 12, 21, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
 
 const_value set 2
 	const TEAMROCKETBASEB1F_ROCKET1
@@ -301,10 +301,7 @@ NoSecurityCamera:
 	end
 
 TrainerCameraGrunt1:
-	opentext
-	writetext CameraGrunt1SeenText
-	waitbutton
-	closetext
+	showtext CameraGrunt1SeenText
 	winlosstext CameraGrunt1BeatenText, 0
 	setlasttalked TEAMROCKETBASEB1F_ROCKET1
 	loadtrainer GRUNTM, 20
@@ -314,10 +311,7 @@ TrainerCameraGrunt1:
 	end
 
 TrainerCameraGrunt2:
-	opentext
-	writetext CameraGrunt2SeenText
-	waitbutton
-	closetext
+	showtext CameraGrunt2SeenText
 	winlosstext CameraGrunt2BeatenText, 0
 	setlasttalked TEAMROCKETBASEB1F_ROCKET1
 	loadtrainer GRUNTM, 21
@@ -554,28 +548,17 @@ TrainerRocketScientistJed:
 
 RocketScientistJedScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6cc16
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6cc16
 
 TrainerGruntM16:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_16, GRUNTM, 16, GruntM16SeenText, GruntM16BeatenText, 0, GruntM16Script
 
 GruntM16Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6cd1b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6cd1b
 
 MapTeamRocketBaseB1FSignpost5Script:
 	jumptext SecurityCameraText
-
-MapTeamRocketBaseB1FSignpost7Script:
-	jumpstd teamrocketoath
 
 MapTeamRocketBaseB1FSignpost0Script:
 	opentext
@@ -594,14 +577,7 @@ MapTeamRocketBaseB1FSignpost0Script:
 	end
 
 UnknownScript_0x6cabe:
-	writetext UnknownText_0x6cdd0
-	waitbutton
-	closetext
-	end
-
-TeamRocketBaseB1FHiddenRevive:
-	dwb EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE, REVIVE
-
+	jumpopenedtext UnknownText_0x6cdd0
 
 SecurityCameraMovement1:
 	run_step_right

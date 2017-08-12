@@ -20,17 +20,17 @@ DimCave2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 4, 6, SIGNPOST_ITEM, DimCave2FHiddenStardust
-	signpost 19, 2, SIGNPOST_ITEM, DimCave2FHiddenMoonStone
+	signpost 4, 6, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
+	signpost 19, 2, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
 .PersonEvents: db 7
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
 	person_event SPRITE_ENGINEER, 12, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
 	person_event SPRITE_POKEFAN_M, 16, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
 	person_event SPRITE_FISHER, 21, 24, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DimCave2FFisherScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IRON, 1, EVENT_DIM_CAVE_2F_IRON
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 31, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
+	itemball_event 12, 28, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
+	itemball_event 15, 2, IRON, 1, EVENT_DIM_CAVE_2F_IRON
+	tmhmball_event 33, 31, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
 
 DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
@@ -59,10 +59,7 @@ DimCave2FTutorSubstituteScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .QuestionText:
 	text "I can teach you my"
@@ -82,10 +79,7 @@ DimCave2FTutorSubstituteScript:
 
 .NoSilverLeaf
 	waitbutton
-	writetext .NoSilverLeafText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoSilverLeafText
 
 .NoSilverLeafText:
 	text "Come find me again"
@@ -95,10 +89,7 @@ DimCave2FTutorSubstituteScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext .TaughtText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .TaughtText
 
 .TaughtText:
 	text "How's that? Your"
@@ -121,11 +112,7 @@ TrainerEngineerLang:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "We mined ore from"
@@ -156,11 +143,7 @@ TrainerHikerDerrick:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "♪ A-hiking we"
@@ -183,15 +166,8 @@ TrainerHikerDerrick:
 	done
 
 DimCave2FFallenBoulderScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's stuck on the"
 	line "button."
 	done
-
-DimCave2FHiddenStardust:
-	dwb EVENT_DIM_CAVE_2F_HIDDEN_STARDUST, STARDUST
-
-DimCave2FHiddenMoonStone:
-	dwb EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE, MOON_STONE

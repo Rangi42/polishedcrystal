@@ -12,8 +12,8 @@ Route4_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 7, 5, SIGNPOST_READ, MtMoonSign
-	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
+	signpost 7, 5, SIGNPOST_JUMPTEXT, MtMoonSignText
+	signpost 3, 18, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 9
 	person_event SPRITE_YOUNGSTER, 3, 49, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
@@ -21,7 +21,7 @@ Route4_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 9, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
 	person_event SPRITE_LASS, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
 	person_event SPRITE_LASS, 6, 33, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HP_UP, 1, EVENT_ROUTE_4_HP_UP
+	itemball_event 3, 40, HP_UP, 1, EVENT_ROUTE_4_HP_UP
 	person_event SPRITE_SUPER_NERD, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
 	person_event SPRITE_SUPER_NERD, 3, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
 	person_event SPRITE_COOLTRAINER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
@@ -31,55 +31,35 @@ TrainerYoungsterOliver:
 
 YoungsterOliverScript:
 	end_if_just_battled
-	opentext
-	writetext YoungsterOliverAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer YoungsterOliverAfterText
 
 TrainerLassJennifer:
 	trainer EVENT_BEAT_LASS_JENNIFER, LASS, JENNIFER, LassJenniferSeenText, LassJenniferBeatenText, 0, LassJenniferScript
 
 LassJenniferScript:
 	end_if_just_battled
-	opentext
-	writetext LassJenniferAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer LassJenniferAfterText
 
 TrainerBird_keeperHank:
 	trainer EVENT_BEAT_BIRD_KEEPER_HANK, BIRD_KEEPER, HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText, 0, Bird_keeperHankScript
 
 Bird_keeperHankScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae258
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ae258
 
 TrainerPicnickerHope:
 	trainer EVENT_BEAT_PICNICKER_HOPE, PICNICKER, HOPE, PicnickerHopeSeenText, PicnickerHopeBeatenText, 0, PicnickerHopeScript
 
 PicnickerHopeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae320
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ae320
 
 TrainerPicnickerSharon:
 	trainer EVENT_BEAT_PICNICKER_SHARON, PICNICKER, SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText, 0, PicnickerSharonScript
 
 PicnickerSharonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ae369
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ae369
 
 Route4SuperNerd1Script:
 	faceplayer
@@ -102,23 +82,14 @@ Route4TutorIronHeadScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route4Tutor1Refused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor1Refused
 
 .NoSilverLeaf
-	writetext Text_Route4TutorsNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4TutorsNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route4Tutor1Taught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor1Taught
 
 Route4SuperNerd2Script:
 	faceplayer
@@ -141,29 +112,14 @@ Route4TutorAquaTailScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route4Tutor2Refused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4Tutor2Refused
 
 .NoSilverLeaf
-	writetext Text_Route4TutorsNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route4TutorsNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route4Tutor2Taught
-	waitbutton
-	closetext
-	end
-
-MtMoonSign:
-	jumptext MtMoonSignText
-
-Route4HiddenUltraBall:
-	dwb EVENT_ROUTE_4_HIDDEN_ULTRA_BALL, ULTRA_BALL
+	jumpopenedtext Text_Route4Tutor2Taught
 
 YoungsterOliverSeenText:
 	text "Hi! What's your"

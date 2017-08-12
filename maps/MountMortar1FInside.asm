@@ -17,48 +17,33 @@ MountMortar1FInside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 30, SIGNPOST_ITEM, MountMortar1FInsideHiddenMaxRepel
+	signpost 11, 30, SIGNPOST_ITEM + MAX_REPEL, EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL
 
 .PersonEvents: db 10
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 43, 21, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MountMortar1FBoulder, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 38, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SMOOTH_ROCK, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_SMOOTH_ROCK
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 27, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_HYPER_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_NUGGET
+	strengthboulder_event 43, 21
+	itemball_event 38, 35, SMOOTH_ROCK, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_SMOOTH_ROCK
+	itemball_event 10, 16, MAX_REVIVE, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_REVIVE
+	itemball_event 27, 10, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_HYPER_POTION
+	itemball_event 20, 22, MAX_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_POTION
+	itemball_event 19, 35, NUGGET, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_NUGGET
 	person_event SPRITE_SUPER_NERD, 43, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMiller, -1
 	person_event SPRITE_SUPER_NERD, 28, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdMarkus, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_ULTRA_BALL
+	itemball_event 16, 8, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
+	itemball_event 17, 17, ULTRA_BALL, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_ULTRA_BALL
 
 TrainerPokemaniacMiller:
 	trainer EVENT_BEAT_POKEMANIAC_MILLER, POKEMANIAC, MILLER, PokemaniacMillerSeenText, PokemaniacMillerBeatenText, 0, PokemaniacMillerScript
 
 PokemaniacMillerScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7debd
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7debd
 
 TrainerSupernerdMarkus:
 	trainer EVENT_BEAT_SUPER_NERD_MARKUS, SUPER_NERD, MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText, 0, SupernerdMarkusScript
 
 SupernerdMarkusScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7df97
-	waitbutton
-	closetext
-	end
-
-MountMortar1FBoulder:
-	jumpstd strengthboulder
-
-MountMortar1FInsideHiddenMaxRepel:
-	dwb EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL, MAX_REPEL
-
+	jumptextfaceplayer UnknownText_0x7df97
 
 PokemaniacMillerSeenText:
 	text "I'm not losing"

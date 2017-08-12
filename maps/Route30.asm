@@ -13,12 +13,12 @@ Route30_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 43, 9, SIGNPOST_READ, Route30Sign
-	signpost 29, 13, SIGNPOST_READ, MrPokemonsHouseDirectionsSign
-	signpost 5, 15, SIGNPOST_READ, MrPokemonsHouseSign
-	signpost 21, 3, SIGNPOST_READ, Route30TrainerTips
-	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
-	signpost 39, 5, SIGNPOST_READ, BerryMastersHouseSign
+	signpost 43, 9, SIGNPOST_JUMPTEXT, Route30SignText
+	signpost 29, 13, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
+	signpost 5, 15, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
+	signpost 21, 3, SIGNPOST_JUMPTEXT, Route30TrainerTipsText
+	signpost 9, 14, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
+	signpost 39, 5, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 26, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
@@ -28,11 +28,11 @@ Route30_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 23, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterMikey, -1
 	person_event SPRITE_CHERRYGROVE_RIVAL, 7, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDon, -1
 	person_event SPRITE_YOUNGSTER, 30, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CutTree, EVENT_ROUTE_30_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 39, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30FruitTree2, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route30CooltrainerFScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 35, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
+	person_event SPRITE_COOLTRAINER_F, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
+	cuttree_event 6, 8, EVENT_ROUTE_30_CUT_TREE
+	fruittree_event 39, 10, FRUITTREE_ROUTE_30_1, ORAN_BERRY
+	fruittree_event 5, 11, FRUITTREE_ROUTE_30_2, PECHA_BERRY
+	itemball_event 35, 8, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
 const_value set 2
 	const ROUTE30_YOUNGSTER1
@@ -212,68 +212,24 @@ TrainerYoungsterMikey:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext YoungsterMikeyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer YoungsterMikeyAfterText
 
 TrainerBug_catcherDon:
 	trainer EVENT_BEAT_BUG_CATCHER_DON, BUG_CATCHER, DON, Bug_catcherDonSeenText, Bug_catcherDonBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext Bug_catcherDonAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer Bug_catcherDonAfterText
 
 Route30YoungsterScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .CompletedEggQuest
-	writetext Route30YoungsterText_DirectionsToMrPokemonsHouse
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Route30YoungsterText_DirectionsToMrPokemonsHouse
 
 .CompletedEggQuest:
-	writetext Route30YoungsterText_EveryoneIsBattling
-	waitbutton
-	closetext
-	end
-
-Route30CooltrainerFScript:
-	jumptextfaceplayer Route30CooltrainerFText
-
-Route30Sign:
-	jumptext Route30SignText
-
-MrPokemonsHouseDirectionsSign:
-	jumptext MrPokemonsHouseDirectionsSignText
-
-MrPokemonsHouseSign:
-	jumptext MrPokemonsHouseSignText
-
-BerryMastersHouseSign:
-	jumptext BerryMastersHouseSignText
-
-Route30TrainerTips:
-	jumptext Route30TrainerTipsText
-
-Route30CutTree:
-	jumpstd cuttree
-
-Route30FruitTree1:
-	fruittree FRUITTREE_ROUTE_30_1
-
-Route30FruitTree2:
-	fruittree FRUITTREE_ROUTE_30_2
-
-Route30HiddenPotion:
-	dwb EVENT_ROUTE_30_HIDDEN_POTION, POTION
+	jumpopenedtext Route30YoungsterText_EveryoneIsBattling
 
 Route30_JoeysRattataAttacksMovement:
 	run_step_up

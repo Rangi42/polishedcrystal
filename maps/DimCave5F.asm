@@ -16,17 +16,17 @@ DimCave5F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 28, 12, SIGNPOST_ITEM, DimCave5FHiddenXSpclAtk
+	signpost 28, 12, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
 .PersonEvents: db 8
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 5, 25, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FBoulder, EVENT_BOULDER_IN_DIM_CAVE_5F
+	strengthboulder_event 5, 25, EVENT_BOULDER_IN_DIM_CAVE_5F
 	person_event SPRITE_RILEY, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
 	person_event SPRITE_SUPER_NERD, 17, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
 	person_event SPRITE_ENGINEER, 25, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
 	person_event SPRITE_SUPER_NERD, 28, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 30, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
+	itemball_event 13, 13, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
+	itemball_event 26, 25, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
+	itemball_event 30, 9, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
 const_value set 2
 	const DIMCAVE5F_BOULDER
@@ -50,13 +50,8 @@ DimCave5FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	thistext
 
-.Text:
 	text "The boulder fell"
 	line "through."
 	done
@@ -100,10 +95,7 @@ DimCave5FRileyScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…You are?"
@@ -186,11 +178,7 @@ TrainerSuper_nerdFoote:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I have a conundrum"
@@ -225,11 +213,7 @@ TrainerEngineerHoward:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This waterfall"
@@ -255,11 +239,7 @@ TrainerSuper_nerdDave:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've maxed out my"
@@ -281,9 +261,3 @@ TrainerSuper_nerdDave:
 	para "But you can't get"
 	line "them around here."
 	done
-
-DimCave5FBoulder:
-	jumpstd strengthboulder
-
-DimCave5FHiddenXSpclAtk:
-	dwb EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK, X_SPCL_ATK

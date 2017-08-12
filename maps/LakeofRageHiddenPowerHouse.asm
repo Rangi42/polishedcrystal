@@ -13,9 +13,9 @@ LakeofRageHiddenPowerHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 1, 5, SIGNPOST_READ, HiddenPowerHouseRadio
-	signpost 1, 6, SIGNPOST_READ, HiddenPowerHouseBookshelf
-	signpost 1, 7, SIGNPOST_READ, HiddenPowerHouseBookshelf
+	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
+	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
 	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
@@ -29,21 +29,9 @@ HiddenPowerGuy:
 	buttonsound
 	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
-	writetext HiddenPowerGuyText2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext HiddenPowerGuyText2
 .AlreadyGotItem:
-	writetext HiddenPowerGuyText3
-	waitbutton
-	closetext
-	end
-
-HiddenPowerHouseRadio:
-	jumpstd radio2
-
-HiddenPowerHouseBookshelf:
-	jumpstd difficultbookshelf
+	jumpopenedtext HiddenPowerGuyText3
 
 HiddenPowerGuyText1:
 	text "…You have strayed"

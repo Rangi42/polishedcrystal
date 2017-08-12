@@ -433,7 +433,7 @@ UseAnotherRepelScript::
 HiddenItemScript:: ; 0x13625
 	opentext
 	copybytetovar EngineBuffer3
-	itemtotext 0, 0
+	itemtotext $0, $0
 	writetext .found_text
 	giveitem ITEM_FROM_MEM
 	iffalse .bag_full
@@ -2469,40 +2469,43 @@ SwapTextboxPalettes:: ; 4c000
 	ret
 
 ScrollBGMapPalettes:: ; 4c03f
+	ld a, [TilesetPalettes + 1]
+	ld [hTilesetPalettesHigh], a
+	ld a, [TilesetPalettes]
+	ld b, a
 	ld hl, BGMapBuffer
 	ld de, BGMapPalBuffer
+	and a
 .loop
+	push de
+	ld a, [hTilesetPalettesHigh]
+	ld d, a
 	ld a, [hl]
-	push hl
-	srl a
+	rra
 	jr c, .UpperNybble
 
-; .LowerNybble
-	ld hl, TilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [TilesetPalettes + 1]
-	adc $0
-	ld h, a
-	ld a, [hl]
-	and $f
+	add b
+	ld e, a
+	jr nc, .noCarry
+	inc d
+.noCarry
+	ld a, [de]
 	jr .next
 
 .UpperNybble:
-	ld hl, TilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [TilesetPalettes + 1]
-	adc $0
-	ld h, a
-	ld a, [hl]
+	add b
+	ld e, a
+	jr nc, .noCarry2
+	inc h
+.noCarry2
+	ld a, [de]
 	swap a
-	and $f
 
 .next
-	pop hl
-	ld [de], a
+	and $f
+	pop de
 	res 7, [hl]
+	ld [de], a
 	inc hl
 	inc de
 	dec c

@@ -13,23 +13,20 @@ CeladonUniversityClassroom3_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom3Blackboard
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom3Blackboard
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom3Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom3Bookshelf2
+	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
+	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
+	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3Bookshelf1Text
+	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3Bookshelf2Text
 
 .PersonEvents: db 5
-	person_event SPRITE_SPARK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3SparkScript, EVENT_CELADON_UNIVERSITY_SPARK
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3TeacherScript, EVENT_SHAMOUTI_COAST_SPARK
-	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3ChildScript, -1
-	person_event SPRITE_LASS, 7, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3LassScript, -1
-	person_event SPRITE_SUPER_NERD, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom3Super_nerdScript, -1
+	person_event SPRITE_SPARK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3SparkText, EVENT_CELADON_UNIVERSITY_SPARK
+	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3TeacherText, EVENT_SHAMOUTI_COAST_SPARK
+	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3ChildText, -1
+	person_event SPRITE_LASS, 7, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3LassText, -1
+	person_event SPRITE_SUPER_NERD, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3Super_nerdText, -1
 
-CeladonUniversityClassroom3SparkScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom3SparkText:
 	text "Hey! I'm Spark."
 	line "I teach Science--"
 
@@ -48,10 +45,7 @@ CeladonUniversityClassroom3SparkScript:
 	cont "his lab?"
 	done
 
-CeladonUniversityClassroom3TeacherScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom3TeacherText:
 	text "Are you looking"
 	line "for Spark?"
 
@@ -63,10 +57,7 @@ CeladonUniversityClassroom3TeacherScript:
 	line "his classes."
 	done
 
-CeladonUniversityClassroom3ChildScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom3ChildText:
 	text "#mon inside"
 	line "# Balls are"
 
@@ -82,10 +73,7 @@ CeladonUniversityClassroom3ChildScript:
 	cont "one bit!"
 	done
 
-CeladonUniversityClassroom3LassScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom3LassText:
 	text "My instructor said"
 	line "that Magneton is a"
 
@@ -100,10 +88,7 @@ CeladonUniversityClassroom3LassScript:
 	line "work?!"
 	done
 
-CeladonUniversityClassroom3Super_nerdScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom3Super_nerdText:
 	text "Have you heard of"
 	line "the Electric-type"
 	cont "#mon Mareep?"
@@ -119,10 +104,7 @@ CeladonUniversityClassroom3Super_nerdScript:
 	cont "you'll see!"
 	done
 
-CeladonUniversityClassroom3Blackboard:
-	jumptext .Text
-
-.Text:
+CeladonUniversityClassroom3BlackboardText:
 	text "'Phylogenetics'"
 	line "is on the board."
 
@@ -139,10 +121,7 @@ CeladonUniversityClassroom3Blackboard:
 	cont "studied.”"
 	done
 
-CeladonUniversityClassroom3Bookshelf1:
-	jumptext .Text
-
-.Text:
+CeladonUniversityClassroom3Bookshelf1Text:
 	text "It's a book of"
 	line "prototype designs"
 
@@ -154,10 +133,7 @@ CeladonUniversityClassroom3Bookshelf1:
 	cont "is in here!"
 	done
 
-CeladonUniversityClassroom3Bookshelf2:
-	jumptext .Text
-
-.Text:
+CeladonUniversityClassroom3Bookshelf2Text:
 	text "It's a paper writ-"
 	line "ten by Prof."
 	cont "Silktree."

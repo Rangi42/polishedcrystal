@@ -76,9 +76,6 @@ StartMap: ; 96724
 	farcall InitCallReceiveDelay
 	call ClearJoypad
 EnterMap: ; 9673e
-	xor a
-	ld [wXYComparePointer], a
-	ld [wXYComparePointer + 1], a
 	call SetUpFiveStepWildEncounterCooldown
 	farcall RunMapSetupScript
 	call DisableEvents
@@ -358,19 +355,23 @@ DoMapTrigger: ; 968ec
 	cp c
 	jr nc, .nope
 
+	add a
 	ld e, a
 	ld d, 0
 	ld hl, wCurrMapTriggerHeaderPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 2
 	add hl, de
-endr
 
 	ld a, [MapScriptHeaderBank]
+	ld b, a
 	call GetFarHalfword
-	ld a, [MapScriptHeaderBank]
+	ld a, b
+	call GetFarByte
+	cp end_command
+	ret z ; boost efficiency of maps with dummy triggers
+	ld a, b
 	call CallScript
 
 	ld hl, ScriptFlags
@@ -507,18 +508,12 @@ TryObjectEvent: ; 969b5
 	ret
 
 .pointers:
-	dw .script     ; PERSONTYPE_SCRIPT
-	dw .itemball   ; PERSONTYPE_ITEMBALL
-	dw .tmhmball   ; PERSONTYPE_TMHMBALL
-	dw .trainer    ; PERSONTYPE_TRAINER
-	dw .trainer    ; PERSONTYPE_GENERICTRAINER
-	dw .jumptext   ; PERSONTYPE_JUMPTEXT
-	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
-	dw .jumpstd    ; PERSONTYPE_JUMPSTD
-	dw .mart       ; PERSONTYPE_MART
-	dw .pokemon    ; PERSONTYPE_POKEMON
-	dw .npctrade   ; PERSONTYPE_NPCTRADE
-	dw .fruittree  ; PERSONTYPE_FRUITTREE
+	dw .script   ; PERSONTYPE_SCRIPT
+	dw .pokeball ; PERSONTYPE_POKEBALL
+	dw .trainer  ; PERSONTYPE_TRAINER
+	dw .trainer  ; PERSONTYPE_GENERICTRAINER
+	dw .pokemon  ; PERSONTYPE_POKEMON
+	dw .command  ; PERSONTYPE_COMMAND
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -530,21 +525,15 @@ TryObjectEvent: ; 969b5
 	jp CallScript
 ; 96a12
 
-.itemball:
-	ld a, PLAYEREVENT_ITEMBALL
-	jr .continue_ball
-
-.tmhmball:
-	ld a, PLAYEREVENT_TMHMBALL
-.continue_ball
-	push af
-	ld hl, MAPOBJECT_SCRIPT_POINTER
+.pokeball:
+	ld hl, MAPOBJECT_RANGE
 	add hl, bc
 	ld a, [hli]
-	ld e, [hl]
-	ld hl, CurItemBallContents
-	ld [hli], a
-	ld [hl], e
+	push af
+	ld a, [hli]
+	ld [CurItemBallContents], a
+	ld a, [hl]
+	ld [CurItemBallQuantity], a
 	pop af
 	scf
 	ret
@@ -555,67 +544,23 @@ TryObjectEvent: ; 969b5
 	scf
 	ret
 
-.jumptext:
-	ld a, jumptext_command
-	jr .continue_text
-
-.jumptextfp:
-	ld a, jumptextfaceplayer_command
-.continue_text
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld de, wTemporaryScriptBuffer
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	jr .call_temporary_script_buffer
-
-.jumpstd:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld a, [hl]
-	ld hl, wTemporaryScriptBuffer + 1
-	ld [hld], a
-	ld [hl], jumpstd_command
-.call_temporary_script_buffer
-	ld hl, wTemporaryScriptBuffer
-.call_script_in_bank
-	ld a, [MapScriptHeaderBank]
-	jp CallScript
-
-.mart:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld de, wTemporaryScriptBuffer
-	ld a, pokemart_command
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	jr .call_temporary_script_buffer
-
-.npctrade:
-	; TODO
-
 .pokemon:
 	; TODO
 
-.fruittree:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
+.command:
+	ld hl, MAPOBJECT_RANGE
 	add hl, bc
+	ld de, wTemporaryScriptBuffer
+rept 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+endr
 	ld a, [hl]
-	ld hl, wTemporaryScriptBuffer + 1
-	ld [hld], a
-	ld [hl], fruittree_command
-	jr .call_script_in_bank
-; 96a34
+	ld [de], a
+	ld hl, wTemporaryScriptBuffer
+	ld a, [MapScriptHeaderBank]
+	jp CallScript
 
 TryReadSign: ; 96a38
 	call CheckFacingSign
@@ -625,21 +570,22 @@ TryReadSign: ; 96a38
 
 .IsSign:
 	ld a, [EngineBuffer3]
+	cp SIGNPOST_ITEM
+	jp nc, .itemifset
 	ld hl, .signs
 	rst JumpTable
 	ret
 
 .signs
-	dw .read      ; SIGNPOST_READ
-	dw .up        ; SIGNPOST_UP
-	dw .down      ; SIGNPOST_DOWN
-	dw .right     ; SIGNPOST_RIGHT
-	dw .left      ; SIGNPOST_LEFT
-	dw .ifset     ; SIGNPOST_IFSET
-	dw .ifnotset  ; SIGNPOST_IFNOTSET
-	dw .itemifset ; SIGNPOST_ITEM
-	dw .jumptext  ; SIGNPOST_JUMPTEXT
-	dw .jumpstd   ; SIGNPOST_JUMPSTD
+	dw .read     ; SIGNPOST_READ
+	dw .up       ; SIGNPOST_UP
+	dw .down     ; SIGNPOST_DOWN
+	dw .right    ; SIGNPOST_RIGHT
+	dw .left     ; SIGNPOST_LEFT
+	dw .ifset    ; SIGNPOST_IFSET
+	dw .ifnotset ; SIGNPOST_IFNOTSET
+	dw .jumptext ; SIGNPOST_JUMPTEXT
+	dw .jumpstd  ; SIGNPOST_JUMPSTD
 ; 96a59
 
 .up
@@ -675,13 +621,24 @@ TryReadSign: ; 96a38
 	ret
 
 .itemifset
-	call CheckSignFlag
+	ld a, [wCurSignpostScriptAddr]
+	ld e, a
+	ld a, [wCurSignpostScriptAddr+1]
+	ld d, a
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
 	jp nz, .dontread
 	call PlayTalkObject
-	ld a, [MapScriptHeaderBank]
-	ld de, EngineBuffer1
-	ld bc, 3
-	call FarCopyBytes
+	ld hl, EngineBuffer1
+	ld a, [wCurSignpostScriptAddr]
+	ld [hli], a
+	ld a, [wCurSignpostScriptAddr+1]
+	ld [hli], a
+	ld a, [wCurSignpostType]
+	sub SIGNPOST_ITEM
+	ld [hl], a
 	ld a, BANK(HiddenItemScript)
 	ld hl, HiddenItemScript
 	jr .callScriptAndReturnCarry
@@ -701,8 +658,6 @@ TryReadSign: ; 96a38
 	pop hl
 	inc hl
 	inc hl
-	ld a, [MapScriptHeaderBank]
-	call GetFarHalfword
 	jr .callMapScriptAndReturnCarry
 
 .dontread

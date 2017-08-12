@@ -11,7 +11,7 @@ Route25_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 5, 4, SIGNPOST_ITEM, Route25HiddenPotion
+	signpost 5, 4, SIGNPOST_ITEM + POTION, EVENT_ROUTE_25_HIDDEN_POTION
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
@@ -21,9 +21,9 @@ Route25_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 9, 34, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperLloyd, -1
 	person_event SPRITE_LASS, 11, 38, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassShannon, -1
 	person_event SPRITE_SUPER_NERD, 7, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdPat, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PROTEIN, 1, EVENT_ROUTE_25_PROTEIN
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route25CutTree, EVENT_ROUTE_25_CUT_TREE
-	person_event SPRITE_YOUNGSTER, 4, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route25MewYoungsterScript, -1
+	itemball_event 4, 41, PROTEIN, 1, EVENT_ROUTE_25_PROTEIN
+	cuttree_event 6, 44, EVENT_ROUTE_25_CUT_TREE
+	person_event SPRITE_YOUNGSTER, 4, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route25MewYoungsterText, -1
 	person_event SPRITE_SLOWPOKE, 4, 37, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route25SlowpokeScript, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 47, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
@@ -32,80 +32,49 @@ TrainerSchoolboyDudley:
 
 SchoolboyDudleyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f1b5
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19f1b5
 
 TrainerLassEllen:
 	trainer EVENT_BEAT_LASS_ELLEN, LASS, ELLEN, LassEllenSeenText, LassEllenBeatenText, 0, LassEllenScript
 
 LassEllenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f208
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19f208
 
 TrainerSchoolboyJoe:
 	trainer EVENT_BEAT_SCHOOLBOY_JOE, SCHOOLBOY, JOE, SchoolboyJoeSeenText, SchoolboyJoeBeatenText, 0, SchoolboyJoeScript
 
 SchoolboyJoeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f25c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19f25c
 
 TrainerLassLaura:
 	trainer EVENT_BEAT_LASS_LAURA, LASS, LAURA, LassLauraSeenText, LassLauraBeatenText, 0, LassLauraScript
 
 LassLauraScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f2a6
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19f2a6
 
 TrainerCamperLloyd:
 	trainer EVENT_BEAT_CAMPER_LLOYD, CAMPER, LLOYD, CamperLloydSeenText, CamperLloydBeatenText, 0, CamperLloydScript
 
 CamperLloydScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f2f8
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19f2f8
 
 TrainerLassShannon:
 	trainer EVENT_BEAT_LASS_SHANNON, LASS, SHANNON, LassShannonSeenText, LassShannonBeatenText, 0, LassShannonScript
 
 LassShannonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f35b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19f35b
 
 TrainerSupernerdPat:
 	trainer EVENT_BEAT_SUPER_NERD_PAT, SUPER_NERD, PAT, SupernerdPatSeenText, SupernerdPatBeatenText, 0, SupernerdPatScript
 
 SupernerdPatScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19f41a
-	waitbutton
-	closetext
-	end
-
-Route25MewYoungsterScript:
-	jumptextfaceplayer Route25MewYoungsterText
+	jumptextfaceplayer UnknownText_0x19f41a
 
 Route25SlowpokeScript:
 	opentext
@@ -116,12 +85,6 @@ Route25SlowpokeScript:
 	waitbutton
 	closetext
 	end
-
-Route25CutTree:
-	jumpstd cuttree
-
-Route25HiddenPotion:
-	dwb EVENT_ROUTE_25_HIDDEN_POTION, POTION
 
 SchoolboyDudleySeenText:
 	text "Beat the six of us"

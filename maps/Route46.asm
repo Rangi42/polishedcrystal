@@ -14,16 +14,16 @@ Route46_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 27, 9, SIGNPOST_READ, Route46Sign
+	signpost 27, 9, SIGNPOST_JUMPTEXT, Route46SignText
 
 .PersonEvents: db 7
 	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
 	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
 	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
 	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a978f, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9791, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
+	fruittree_event 5, 7, FRUITTREE_ROUTE_46_1, CHERI_BERRY
+	fruittree_event 6, 8, FRUITTREE_ROUTE_46_2, CHESTO_BERRY
+	itemball_event 15, 1, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
 
 Route46HikerScript:
 	faceplayer
@@ -46,34 +46,21 @@ Route46TutorRoute46Script:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route46TutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route46TutorRefused
 
 .NoSilverLeaf
-	writetext Text_Route46TutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route46TutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route46TutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route46TutorTaught
 
 TrainerCamperTed:
 	trainer EVENT_BEAT_CAMPER_TED, CAMPER, TED, CamperTedSeenText, CamperTedBeatenText, 0, CamperTedScript
 
 CamperTedScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a9851
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a9851
 
 TrainerPicnickerErin1:
 	trainer EVENT_BEAT_PICNICKER_ERIN, PICNICKER, ERIN1, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
@@ -203,20 +190,7 @@ TrainerHikerBailey:
 
 HikerBaileyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a97e8
-	waitbutton
-	closetext
-	end
-
-Route46Sign:
-	jumptext Route46SignText
-
-FruitTreeScript_0x1a978f:
-	fruittree FRUITTREE_ROUTE_46_1
-
-FruitTreeScript_0x1a9791:
-	fruittree FRUITTREE_ROUTE_46_2
+	jumptextfaceplayer UnknownText_0x1a97e8
 
 Route46HikerText:
 	text "A Donphan charged"

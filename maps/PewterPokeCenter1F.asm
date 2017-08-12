@@ -17,72 +17,16 @@ PewterPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalBrockScript
 
 .PersonEvents: db 5
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x1a2ee7, -1
-	person_event SPRITE_TEACHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x1a2eea, -1
+	pc_nurse_event 1, 5
 	person_event SPRITE_JIGGLYPUFF, 3, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PewterJigglypuff, -1
-	person_event SPRITE_CHILD, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ChildScript_0x1a2ef7, -1
-	person_event SPRITE_POKEFAN_M, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Chris, -1
-
-NurseScript_0x1a2ee7:
-	jumpstd pokecenternurse
-
-TeacherScript_0x1a2eea:
-	jumptextfaceplayer UnknownText_0x1a2f01
-
-PewterJigglypuff:
-	opentext
-	writetext PewterJigglypuffText
-	cry JIGGLYPUFF
-	waitbutton
-	closetext
-	end
-
-ChildScript_0x1a2ef7:
-	jumptextfaceplayer UnknownText_0x1a2f75
-
-Chris:
-	faceplayer
-	opentext
-	trade $4
-	waitbutton
-	closetext
-	end
+	person_event SPRITE_POKEFAN_M, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, trade, TRADE_WITH_CHRIS_FOR_HERACROSS, -1
+	person_event SPRITE_TEACHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FTeacherText, -1
+	person_event SPRITE_CHILD, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FChildText, -1
 
 PokemonJournalBrockScript:
 	setflag ENGINE_READ_BROCK_JOURNAL
-	jumptext PokemonJournalBrockText
+	thistext
 
-UnknownText_0x1a2f01:
-	text "…Yeah, and the"
-	line "Gym in Cinnabar's"
-
-	para "gone. I was really"
-	line "amazed."
-
-	para "…Yes? I'm on the"
-	line "phone. Go away!"
-	done
-
-PewterJigglypuffText:
-	text "Jigglypuff:"
-	line "♪ Puu pupuu. ♪"
-	done
-
-UnknownText_0x1a2f75:
-	text "Most #mon get"
-	line "drowsy if they"
-
-	para "hear a Jigglypuff"
-	line "singing."
-
-	para "There are several"
-	line "moves that can be"
-
-	para "used only while a"
-	line "#mon is asleep."
-	done
-
-PokemonJournalBrockText:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -94,4 +38,42 @@ PokemonJournalBrockText:
 	para "said to be unable"
 	line "to stop if he"
 	cont "starts."
+	done
+
+PewterJigglypuff:
+	opentext
+	writetext .Text
+	cry JIGGLYPUFF
+	waitbutton
+	closetext
+	end
+
+.Text:
+	text "Jigglypuff:"
+	line "♪ Puu pupuu. ♪"
+	done
+
+PewterPokeCenter1FTeacherText:
+	text "…Yeah, and the"
+	line "Gym in Cinnabar's"
+
+	para "gone. I was really"
+	line "amazed."
+
+	para "…Yes? I'm on the"
+	line "phone. Go away!"
+	done
+
+PewterPokeCenter1FChildText:
+	text "Most #mon get"
+	line "drowsy if they"
+
+	para "hear a Jigglypuff"
+	line "singing."
+
+	para "There are several"
+	line "moves that can be"
+
+	para "used only while a"
+	line "#mon is asleep."
 	done

@@ -15,36 +15,27 @@ NationalPark_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 44, 16, SIGNPOST_READ, MapNationalParkSignpost0Script
-	signpost 31, 29, SIGNPOST_READ, MapNationalParkSignpost1Script
-	signpost 47, 8, SIGNPOST_ITEM, NationalParkHiddenFullHeal
-	signpost 4, 14, SIGNPOST_READ, MapNationalParkSignpost3Script
+	signpost 44, 16, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
+	signpost 31, 29, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
+	signpost 4, 14, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
+	signpost 47, 8, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 15
-	person_event SPRITE_GAMEBOY_KID, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x5c037, -1
-	person_event SPRITE_LASS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x5c002, -1
-	person_event SPRITE_POKEFAN_F, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x5c005, -1
+	person_event SPRITE_LASS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c1d3, -1
+	person_event SPRITE_POKEFAN_F, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c22e, -1
 	person_event SPRITE_TEACHER, 40, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1
+	person_event SPRITE_GAMEBOY_KID, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x5c037, -1
 	person_event SPRITE_TWIN, 41, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 0, TrainerSchoolgirlEliza, -1
 	person_event SPRITE_YOUNGSTER, 41, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerSchoolboyJohnny, -1
-	person_event SPRITE_TEACHER, 41, 19, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c029, -1
+	person_event SPRITE_TEACHER, 41, 19, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c3bc, -1
 	person_event SPRITE_PERSIAN, 40, 28, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NationalParkPersian, -1
 	person_event SPRITE_YOUNGSTER, 23, 29, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
 	person_event SPRITE_POKEFAN_F, 29, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
 	person_event SPRITE_POKEFAN_M, 9, 18, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
 	person_event SPRITE_LASS, 14, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassKrise, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 43, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
+	itemball_event 12, 37, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
+	tmhmball_event 43, 3, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
 	person_event SPRITE_BUG_MANIAC, 13, 28, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacLou, -1
-
-const_value set 2
-	const NATIONALPARK_GAMEBOY_KID
-
-LassScript_0x5c002:
-	jumptextfaceplayer UnknownText_0x5c1d3
-
-PokefanFScript_0x5c005:
-	jumptextfaceplayer UnknownText_0x5c22e
 
 TeacherScript_0x5c008:
 	faceplayer
@@ -68,36 +59,21 @@ TrainerBugManiacLou:
 
 BugManiacLouScript:
 	end_if_just_battled
-	opentext
-	writetext BugManiacLouAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BugManiacLouAfterText
 
 TrainerSchoolgirlEliza:
 	trainer EVENT_BEAT_SCHOOLGIRL_ELIZA, SCHOOLGIRL, ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText, 0, SchoolgirlElizaScript
 
 SchoolgirlElizaScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlElizaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SchoolgirlElizaAfterText
 
 TrainerSchoolboyJohnny:
 	trainer EVENT_BEAT_SCHOOLBOY_JOHNNY, SCHOOLBOY, JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, SchoolboyJohnnyScript
 
 SchoolboyJohnnyScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolboyJohnnyAfterText
-	waitbutton
-	closetext
-	end
-
-TeacherScript_0x5c029:
-	jumptextfaceplayer UnknownText_0x5c3bc
+	jumptextfaceplayer SchoolboyJohnnyAfterText
 
 NationalParkPersian:
 	faceplayer
@@ -109,12 +85,8 @@ NationalParkPersian:
 	end
 
 GameboyKidScript_0x5c037:
-	faceplayer
-	opentext
-	writetext UnknownText_0x5c42a
-	waitbutton
-	closetext
-	spriteface NATIONALPARK_GAMEBOY_KID, DOWN
+	showtextfaceplayer UnknownText_0x5c42a
+	spriteface LAST_TALKED, DOWN
 	end
 
 TrainerSchoolboyJack1:
@@ -239,11 +211,7 @@ TrainerPokefanmWilliam:
 
 PokefanmWilliamScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5c645
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5c645
 
 TrainerPokefanfBeverly1:
 	trainer EVENT_BEAT_POKEFANF_BEVERLY, POKEFANF, BEVERLY1, PokefanfBeverly1SeenText, PokefanfBeverly1BeatenText, 0, PokefanfBeverly1Script
@@ -287,10 +255,7 @@ UnknownScript_0x5c186:
 	jump UnknownScript_0x5c1ab
 
 UnknownScript_0x5c189:
-	writetext UnknownText_0x5c68a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5c68a
 
 UnknownScript_0x5c18f:
 	jumpstd asknumber1f
@@ -329,24 +294,7 @@ TrainerLassKrise:
 
 LassKriseScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5c71d
-	waitbutton
-	closetext
-	end
-
-MapNationalParkSignpost0Script:
-	jumptext UnknownText_0x5c750
-
-MapNationalParkSignpost1Script:
-	jumptext UnknownText_0x5c771
-
-MapNationalParkSignpost3Script:
-	jumptext UnknownText_0x5c7c6
-
-NationalParkHiddenFullHeal:
-	dwb EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL, FULL_HEAL
-
+	jumptextfaceplayer UnknownText_0x5c71d
 
 UnknownText_0x5c1d3:
 	text "Look! Check out my"

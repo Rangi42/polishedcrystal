@@ -15,27 +15,12 @@ BlackthornMart_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 4
-	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x195a5d, -1
-	person_event SPRITE_COOLTRAINER_M, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x195a64, -1
-	person_event SPRITE_BLACK_BELT, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x195a67, -1
-	person_event SPRITE_SUPER_NERD, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornMartSuperNerdScript, -1
+	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_BLACKTHORN
+	person_event SPRITE_COOLTRAINER_M, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartCooltrainermText, -1
+	person_event SPRITE_BLACK_BELT, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartBlackbeltText, -1
+	person_event SPRITE_SUPER_NERD, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartSuperNerdText, -1
 
-ClerkScript_0x195a5d:
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_BLACKTHORN
-	closetext
-	end
-
-CooltrainerMScript_0x195a64:
-	jumptextfaceplayer UnknownText_0x195a6a
-
-BlackBeltScript_0x195a67:
-	jumptextfaceplayer UnknownText_0x195ae9
-
-BlackthornMartSuperNerdScript:
-	jumptextfaceplayer BlackthornMartSuperNerdText
-
-UnknownText_0x195a6a:
+BlackthornMartCooltrainermText:
 	text "You can't buy Max"
 	line "Revive, but it"
 
@@ -49,7 +34,7 @@ UnknownText_0x195a6a:
 	line "needed for moves."
 	done
 
-UnknownText_0x195ae9:
+BlackthornMartBlackbeltText:
 	text "Max Repel keeps"
 	line "weak #mon away"
 	cont "from you."

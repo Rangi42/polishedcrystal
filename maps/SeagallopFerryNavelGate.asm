@@ -34,10 +34,7 @@ SeagallopFerryNavelGateVisited:
 SeagallopFerryNavelGate_PlayerArrives:
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive1MovementData
 	applymovement PLAYER, SeagallopFerryNavelGatePlayerArriveMovementData
-	opentext
-	writetext SeagallopFerryNavelRockRefusedText
-	waitbutton
-	closetext
+	showtext SeagallopFerryNavelRockRefusedText
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive2MovementData
 	dotrigger $0
 	end
@@ -67,10 +64,7 @@ SeagallopFerryNavelGateSailorScript:
 	end
 
 .RefuseFerry
-	writetext SeagallopFerryNavelRockRefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SeagallopFerryNavelRockRefusedText
 
 SeagallopFerryNavelGateSailorDepartMovementData:
 	step_down

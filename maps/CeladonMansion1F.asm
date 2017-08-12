@@ -17,17 +17,14 @@ CeladonMansion1F_MapEventHeader:
 
 .Signposts: db 3
 	signpost 8, 5, SIGNPOST_UP, CeladonMansionManagersSuiteSign
-	signpost 3, 0, SIGNPOST_READ, CeladonMansion1fBookshelf
-	signpost 3, 2, SIGNPOST_READ, CeladonMansion1fBookshelf
+	signpost 3, 0, SIGNPOST_JUMPSTD, picturebookshelf
+	signpost 3, 2, SIGNPOST_JUMPSTD, picturebookshelf
 
 .PersonEvents: db 4
-	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonMansionManager, -1
+	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonMansionManagerText, -1
 	person_event SPRITE_MEOWTH, 6, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonMansion1FMeowth, -1
 	person_event SPRITE_CLEFAIRY, 4, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonMansion1FClefairy, -1
 	person_event SPRITE_NIDORAN_F, 4, 4, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonMansion1FNidoranF, -1
-
-CeladonMansionManager:
-	jumptextfaceplayer CeladonMansionManagerText
 
 CeladonMansion1FMeowth:
 	opentext
@@ -55,9 +52,6 @@ CeladonMansion1FNidoranF:
 
 CeladonMansionManagersSuiteSign:
 	jumptext CeladonMansionManagersSuiteSignText
-
-CeladonMansion1fBookshelf:
-	jumpstd picturebookshelf
 
 CeladonMansionManagerText:
 	text "My dear #mon"

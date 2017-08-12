@@ -15,11 +15,11 @@ CherrygroveBay_MapEventHeader:
 .PersonEvents: db 7
 	person_event SPRITE_POKEFAN_M, 20, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
 	person_event SPRITE_POKEFAN_M, 10, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
-	person_event SPRITE_FISHER, 21, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 2, CherrygroveBayFisherScript, -1
+	person_event SPRITE_FISHER, 21, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1
 	person_event SPRITE_GUIDE_GENT, 30, 8, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermThomas, -1
 	person_event SPRITE_SWIMMER_GIRL, 10, 7, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
 	person_event SPRITE_SWIMMER_GIRL, 27, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
+	itemball_event 12, 22, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
 
 CherrygroveBayHikerScript:
 	faceplayer
@@ -42,34 +42,21 @@ CherrygroveBayTutorEarthPowerScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_CherrygroveBayTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CherrygroveBayTutorRefused
 
 .NoSilverLeaf
-	writetext Text_CherrygroveBayTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CherrygroveBayTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_CherrygroveBayTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_CherrygroveBayTutorTaught
 
 TrainerSwimmermThomas:
 	trainer EVENT_BEAT_SWIMMERM_THOMAS, SWIMMERM, THOMAS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you know how to"
@@ -92,11 +79,7 @@ TrainerSwimmerfSally:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I like this bay."
@@ -122,11 +105,7 @@ TrainerSwimmerfTara:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ah, swimming amid"
@@ -153,11 +132,7 @@ TrainerHikerTony:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I hiked through"
@@ -177,10 +152,7 @@ TrainerHikerTony:
 	line "the spot."
 	done
 
-CherrygroveBayFisherScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CherrygroveBayFisherText:
 	text "I can watch"
 	line "Cherrygrove City"
 

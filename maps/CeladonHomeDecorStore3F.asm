@@ -13,13 +13,13 @@ CeladonHomeDecorStore3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore3FDirectory
+	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore3FDirectoryText
 
 .PersonEvents: db 4
 	person_event SPRITE_CLERK, 7, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk1Script, -1
 	person_event SPRITE_CLERK, 7, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk2Script, -1
-	person_event SPRITE_YOUNGSTER, 5, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FYoungsterScript, -1
-	person_event SPRITE_BEAUTY, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FBeautyScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore3FYoungsterText, -1
+	person_event SPRITE_BEAUTY, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore3FBeautyText, -1
 
 CeladonHomeDecorStore3FClerk1Script:
 	faceplayer
@@ -121,37 +121,16 @@ CeladonHomeDecorStore3FClerk2Script:
 	waitbutton
 	writetext BlueCarpetSentText
 	waitbutton
-	writetext CeladonHomeDecorStore3FClerk2YesText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FClerk2YesText
 
 .Sold:
-	writetext CeladonHomeDecorStore3FClerk2Text
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FClerk2Text
 
 .Refused:
-	writetext CeladonHomeDecorStore3FClerk2NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 
 .NotEnoughMoney:
-	writetext CeladonHomeDecorStore3FNoMoneyText
-	waitbutton
-	closetext
-	end
-
-CeladonHomeDecorStore3FYoungsterScript:
-	jumptextfaceplayer CeladonHomeDecorStore3FYoungsterText
-
-CeladonHomeDecorStore3FBeautyScript:
-	jumptextfaceplayer CeladonHomeDecorStore3FBeautyText
-
-CeladonHomeDecorStore3FDirectory:
-	jumptext CeladonHomeDecorStore3FDirectoryText
+	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText
 
 CeladonHomeDecorStore3FClerk1Text:
 	text "Welcome! Would"

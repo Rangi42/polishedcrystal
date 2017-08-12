@@ -53,11 +53,8 @@ Script_BattleRoomLoop:
 	warpsound
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer
-	applymovement PLAYER, MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist
-	opentext
-	writetext Text_YourPokemonWillBeHealedToFullHealth
-	waitbutton
-	closetext
+	applyonemovement PLAYER, turn_head_down
+	showtext Text_YourPokemonWillBeHealedToFullHealth
 	special SaveMusic
 	playmusic MUSIC_HEAL
 	special FadeOutPalettes
@@ -77,7 +74,7 @@ Script_BattleRoomLoop:
 	iffalse Script_DontBattleNextOpponent
 Script_ContinueAndBattleNextOpponent:
 	closetext
-	applymovement PLAYER, MovementData_BattleTowerBattleRoomPlayerTurnsToFaceNextOpponent
+	applyonemovement PLAYER, turn_head_right
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksAway
 	jump Script_BattleRoomLoop
 
@@ -111,10 +108,7 @@ Script_FailedBattleTowerChallenge:
 	warpfacing UP, BATTLE_TOWER_1F, $a, $8
 	writebyte BATTLETOWER_NO_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	opentext
-	writetext Text_ThanksForVisiting
-	waitbutton
-	closetext
+	showtext Text_ThanksForVisiting
 	end
 
 Script_BeatenAllTrainers:
@@ -159,12 +153,7 @@ MovementData_BattleTowerBattleRoomReceptionistWalksAway:
 	slow_step_down
 	slow_step_down
 	slow_step_left
-MovementData_BattleTowerBattleRoomPlayerTurnsToFaceNextOpponent:
 	turn_head_right
-	step_end
-
-MovementData_BattleTowerBattleRoomPlayerTurnsToFaceReceptionist:
-	turn_head_down
 	step_end
 
 Text_YourPokemonWillBeHealedToFullHealth:

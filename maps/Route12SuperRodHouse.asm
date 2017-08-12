@@ -31,10 +31,7 @@ FishingGuruScript_0x7f484:
 	iffalse UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD
 UnknownScript_0x7f4a0:
-	writetext UnknownText_0x7f57c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7f57c
 
 UnknownScript_0x7f4a6:
 	writetext UnknownText_0x7f5ec

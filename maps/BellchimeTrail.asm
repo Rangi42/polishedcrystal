@@ -34,14 +34,10 @@ BellchimeTrailStepDownTrigger:
 	if_not_equal $9, .Done
 	checkcode VAR_XCOORD
 	if_not_equal $15, .Done
-	applymovement PLAYER, .StepDownMovement
+	applyonemovement PLAYER, step_down
 .Done
 	dotrigger $1
 	end
-
-.StepDownMovement:
-	step_down
-	step_end
 
 SetupValerieMorningWalkCallback:
 	checkevent EVENT_FOUGHT_SUICUNE
@@ -62,7 +58,7 @@ SetupValerieMorningWalkCallback:
 
 BellchimeTrailPanUpTrigger:
 	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, .HidePlayerMovement
+	applyonemovement PLAYER, hide_person
 	waitsfx
 	applymovement PLAYER, .PanUpMovement
 	disappear PLAYER
@@ -73,10 +69,6 @@ BellchimeTrailPanUpTrigger:
 	dotrigger $0
 	warpfacing UP, TIN_TOWER_1F, $7, $f
 	end
-
-.HidePlayerMovement:
-	hide_person
-	step_end
 
 .PanUpMovement:
 	step_up
@@ -107,7 +99,7 @@ BellchimeTrailValerieScript:
 .Listened:
 	writetext .BattleText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext .RefusedText
 	writetext .AcceptedText
 	waitbutton
 	closetext
@@ -135,9 +127,6 @@ BellchimeTrailValerieScript:
 	clearevent EVENT_VALERIE_ECRUTEAK_CITY
 	setflag ENGINE_VALERIE_MORNING_WALK
 	end
-
-.Refused:
-	jumpopenedtext .RefusedText
 
 .Rematch:
 	writetext .RematchText

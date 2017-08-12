@@ -13,7 +13,7 @@ MoveDeletersHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_READ, MoveDeletersHouseBookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 2
 	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveDeleterScript, -1
@@ -34,6 +34,3 @@ MoveReminderScript:
 	waitbutton
 	closetext
 	end
-
-MoveDeletersHouseBookshelf:
-	jumpstd difficultbookshelf

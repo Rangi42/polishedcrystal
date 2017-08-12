@@ -16,9 +16,9 @@ CeruleanCape_MapEventHeader:
 	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
 
 .Signposts: db 3
-	signpost 5, 9, SIGNPOST_READ, BillsHouseSign
-	signpost 12, 35, SIGNPOST_ITEM, CeruleanCapeHiddenPearlString
-	signpost 4, 14, SIGNPOST_ITEM, CeruleanCapeHiddenBottleCap
+	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
+	signpost 12, 35, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
+	signpost 4, 14, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
 .PersonEvents: db 15
 	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
@@ -35,7 +35,7 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 32, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerGuitaristfMorgan, -1
 	person_event SPRITE_LADY, 26, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 1, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
+	itemball_event 12, 35, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
 const_value set 2
 	const CERULEANCAPE_MISTY
@@ -53,10 +53,7 @@ UnknownScript_0x19eea0:
 	spriteface CERULEANCAPE_MISTY, UP
 	pause 10
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19efed
-	opentext
-	writetext UnknownText_0x19f006
-	waitbutton
-	closetext
+	showtext UnknownText_0x19f006
 	spriteface PLAYER, DOWN
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
 	spriteface PLAYER, LEFT
@@ -79,10 +76,7 @@ UnknownScript_0x19eee0:
 	spriteface CERULEANCAPE_MISTY, UP
 	pause 10
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19eff4
-	opentext
-	writetext UnknownText_0x19f006
-	waitbutton
-	closetext
+	showtext UnknownText_0x19f006
 	spriteface PLAYER, UP
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
 	spriteface PLAYER, LEFT
@@ -129,11 +123,7 @@ TrainerSwimmermRomeo:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Admire my fitness!"
@@ -158,11 +148,7 @@ TrainerSwimmermMalcolm:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon and I"
@@ -190,11 +176,7 @@ TrainerSwimmermArmand:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ugh. Would that"
@@ -223,11 +205,7 @@ TrainerBeautyBridget:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey! You're block-"
@@ -250,11 +228,7 @@ TrainerBeautyVeronica:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I don't date much,"
@@ -284,11 +258,7 @@ TrainerGentlemanCamus:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Seeing you reminds"
@@ -317,11 +287,7 @@ TrainerGentlemanGeoffrey:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I wanted a change,"
@@ -348,11 +314,7 @@ TrainerGuitaristfMorgan:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Listen to that"
@@ -425,11 +387,7 @@ TrainerFisherLeroy:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I keep catching"
@@ -449,15 +407,6 @@ TrainerFisherLeroy:
 	text "All I ever catch"
 	line "catch is Magikarp…"
 	done
-
-BillsHouseSign:
-	jumptext BillsHouseSignText
-
-CeruleanCapeHiddenPearlString:
-	dwb EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING, PEARL_STRING
-
-CeruleanCapeHiddenBottleCap:
-	dwb EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP, BOTTLE_CAP
 
 MovementData_0x19efe8:
 	run_step_down

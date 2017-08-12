@@ -13,12 +13,9 @@ SinjohRuins_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 8, 7, SIGNPOST_READ, SinjohRuinsSignpost
+	signpost 8, 7, SIGNPOST_JUMPTEXT, SinjohRuinsSignpostText
 
 .PersonEvents: db 0
-
-SinjohRuinsSignpost:
-	jumptext SinjohRuinsSignpostText
 
 SinjohRuinsSignpostText:
 	text "The Sinjoh Ruins"

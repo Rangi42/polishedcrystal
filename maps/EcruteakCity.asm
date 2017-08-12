@@ -29,46 +29,28 @@ EcruteakCity_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 21, 15, SIGNPOST_READ, EcruteakCitySign
-	signpost 28, 8, SIGNPOST_READ, EcruteakGymSign
-	signpost 21, 21, SIGNPOST_READ, EcruteakDanceTheaterSign
-	signpost 10, 2, SIGNPOST_READ, BurnedTowerSign
-	signpost 14, 25, SIGNPOST_ITEM, EcruteakCityHiddenHyperPotion
-	signpost 11, 18, SIGNPOST_READ, EcruteakShrineSign
+	signpost 21, 15, SIGNPOST_JUMPTEXT, EcruteakCitySignText
+	signpost 28, 8, SIGNPOST_JUMPTEXT, EcruteakGymSignText
+	signpost 21, 21, SIGNPOST_JUMPTEXT, EcruteakDanceTheaterSignText
+	signpost 10, 2, SIGNPOST_JUMPTEXT, BurnedTowerSignText
+	signpost 14, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION
+	signpost 11, 18, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
 
 .PersonEvents: db 10
-	person_event SPRITE_GRAMPS, 15, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a4009, -1
-	person_event SPRITE_GRAMPS, 21, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a400c, -1
-	person_event SPRITE_LASS, 26, 19, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, LassScript_0x1a4012, -1
+	person_event SPRITE_GRAMPS, 15, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
+	person_event SPRITE_GRAMPS, 21, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4147, -1
+	person_event SPRITE_LASS, 26, 19, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a41db, -1
 	person_event SPRITE_LASS, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a4015, -1
 	person_event SPRITE_FISHER, 22, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a4029, -1
-	person_event SPRITE_YOUNGSTER, 16, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x1a403d, -1
-	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a400f, EVENT_ECRUTEAK_CITY_GRAMPS
-	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, EcruteakCityHexManiacScript, -1
-	person_event SPRITE_SIGHTSEER_M, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakCitySightseerMScript, -1
+	person_event SPRITE_YOUNGSTER, 16, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4386, -1
+	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a43cb, EVENT_ECRUTEAK_CITY_GRAMPS
+	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCityHexManiacText, -1
+	person_event SPRITE_SIGHTSEER_M, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
 	person_event SPRITE_SMEARGLE, 15, 23, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCitySmeargleScript, -1
 
 EcruteakCityFlyPoint:
 	setflag ENGINE_FLYPOINT_ECRUTEAK
 	return
-
-GrampsScript_0x1a4009:
-	jumptextfaceplayer UnknownText_0x1a4105
-
-GrampsScript_0x1a400c:
-	jumptextfaceplayer UnknownText_0x1a4147
-
-GrampsScript_0x1a400f:
-	jumptextfaceplayer UnknownText_0x1a43cb
-
-LassScript_0x1a4012:
-	jumptextfaceplayer UnknownText_0x1a41db
-
-EcruteakCityHexManiacScript:
-	jumptextfaceplayer EcruteakCityHexManiacText
-
-EcruteakCitySightseerMScript:
-	jumptextfaceplayer EcruteakCitySightseerMText
 
 EcruteakCitySmeargleScript:
 	faceplayer
@@ -84,53 +66,20 @@ LassScript_0x1a4015:
 	opentext
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue UnknownScript_0x1a4023
-	writetext UnknownText_0x1a421a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a421a
 
 UnknownScript_0x1a4023:
-	writetext UnknownText_0x1a4269
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a4269
 
 FisherScript_0x1a4029:
 	faceplayer
 	opentext
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue UnknownScript_0x1a4037
-	writetext UnknownText_0x1a42ac
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1a42ac
 
 UnknownScript_0x1a4037:
-	writetext UnknownText_0x1a4325
-	waitbutton
-	closetext
-	end
-
-YoungsterScript_0x1a403d:
-	jumptextfaceplayer UnknownText_0x1a4386
-
-EcruteakCitySign:
-	jumptext EcruteakCitySignText
-
-EcruteakGymSign:
-	jumptext EcruteakGymSignText
-
-EcruteakDanceTheaterSign:
-	jumptext EcruteakDanceTheaterSignText
-
-BurnedTowerSign:
-	jumptext BurnedTowerSignText
-
-EcruteakShrineSign:
-	jumptext EcruteakShrineSignText
-
-EcruteakCityHiddenHyperPotion:
-	dwb EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION, HYPER_POTION
+	jumpopenedtext UnknownText_0x1a4325
 
 UnknownText_0x1a4105:
 	text "Ecruteak used to"

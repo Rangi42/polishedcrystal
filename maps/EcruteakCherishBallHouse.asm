@@ -13,11 +13,11 @@ EcruteakCherishBallHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 2, SIGNPOST_READ, CherishBallHouseRadio
+	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
 .PersonEvents: db 2
 	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCherishBallHouseGrampsScript, -1
-	person_event SPRITE_GRANNY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCherishBallHouseGrannyScript, -1
+	person_event SPRITE_GRANNY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCherishBallHouseGrannyText, -1
 
 EcruteakCherishBallHouseGrampsScript:
 	faceplayer
@@ -35,12 +35,6 @@ EcruteakCherishBallHouseGrampsScript:
 .Done:
 	closetext
 	end
-
-EcruteakCherishBallHouseGrannyScript:
-	jumptextfaceplayer EcruteakCherishBallHouseGrannyText
-
-CherishBallHouseRadio:
-	jumpstd radio2
 
 EcruteakCherishBallHouseGrampsText1:
 	text "I've lived a long"

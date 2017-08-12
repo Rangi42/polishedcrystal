@@ -277,10 +277,7 @@ GrampsScript_0x189538:
 	end
 
 .SaidNo:
-	writetext BillsGrandpaYouDontHaveItTextText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BillsGrandpaYouDontHaveItTextText
 
 .CorrectPokemon:
 	writetext BillsGrandpaShownPokemonText
@@ -293,22 +290,13 @@ GrampsScript_0x189538:
 	end
 
 .JustShowedSomething:
-	writetext BillsGrandpaComeAgainText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BillsGrandpaComeAgainText
 
 .GotShinyStone:
-	writetext BillsGrandpaShownAllThePokemonText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BillsGrandpaShownAllThePokemonText
 
 .WrongPokemon:
-	writetext BillsGrandpaWrongPokemonText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BillsGrandpaWrongPokemonText
 
 .BagFull:
 	closetext
@@ -319,16 +307,10 @@ BillsMom:
 	opentext
 	checkevent EVENT_NEVER_MET_BILL
 	iffalse UnknownScript_0x54c33
-	writetext UnknownText_0x54ea8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54ea8
 
 UnknownScript_0x54c33:
-	writetext UnknownText_0x54f4e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54f4e
 
 BillsSister:
 	faceplayer
@@ -346,16 +328,10 @@ BillsSister:
 	waitsfx
 	buttonsound
 UnknownScript_0x54c58: ;0x54c58
-	writetext UnknownText_0x55069
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x55069
 
 UnknownScript_0x54c5e:
-	writetext UnknownText_0x54ff3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x54ff3
 
 UnknownScript_0x54c64:
 	writetext UnknownText_0x55046

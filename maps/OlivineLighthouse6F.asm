@@ -19,7 +19,7 @@ OlivineLighthouse6F_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_JASMINE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
+	itemball_event 4, 3, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
 
 const_value set 2
 	const OLIVINELIGHTHOUSE6F_JASMINE
@@ -36,10 +36,7 @@ JasmineScript_0x60b91:
 	buttonsound
 	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
 UnknownScript_0x60ba5:
-	writetext UnknownText_0x60d64
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x60d64
 
 UnknownScript_0x60bab:
 	writetext UnknownText_0x60d99
@@ -64,16 +61,9 @@ UnknownScript_0x60bab:
 	special FadeOutPalettes
 	pause 10
 	special FadeInPalettes
-	opentext
-	writetext UnknownText_0x60f3d
-	waitbutton
-	closetext
+	showtext UnknownText_0x60f3d
 	showemote EMOTE_BOLT, OLIVINELIGHTHOUSE6F_AMPHAROS, 15
-	faceplayer
-	opentext
-	writetext UnknownText_0x60e6c
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x60e6c
 	setevent EVENT_JASMINE_RETURNED_TO_GYM
 	clearevent EVENT_OLIVINE_GYM_JASMINE
 	checkcode VAR_FACING
@@ -99,11 +89,7 @@ UnknownScript_0x60c25:
 	closetext
 	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
-	opentext
-	writetext UnknownText_0x60ef1
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x60ef1
 
 MonsterScript_0x60c3a:
 	faceplayer
@@ -114,10 +100,7 @@ MonsterScript_0x60c3a:
 	writebyte AMPHAROS
 	special PlaySlowCry
 	buttonsound
-	writetext UnknownText_0x60f19
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x60f19
 
 UnknownScript_0x60c51:
 	writetext UnknownText_0x60f3d

@@ -15,5 +15,5 @@ TinTower6F_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_POTION, 1, EVENT_TIN_TOWER_6F_MAX_POTION
+	itemball_event 8, 6, MAX_POTION, 1, EVENT_TIN_TOWER_6F_MAX_POTION
 

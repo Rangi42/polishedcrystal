@@ -35,11 +35,7 @@ JanineScript_0x195db9:
 	checkflag ENGINE_MARSHBADGE
 	iftrue .FightDone
 	applymovement FUCHSIAGYM_JANINE, MovementData_0x195f27
-	faceplayer
-	opentext
-	writetext UnknownText_0x195f35
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x195f35
 	winlosstext UnknownText_0x195fa1, 0
 	loadtrainer JANINE, 1
 	startbattle
@@ -85,16 +81,10 @@ UnknownScript_0x195e02:
 	buttonsound
 	verbosegivetmhm TM_POISON_JAB
 	setevent EVENT_GOT_TM66_POISON_JAB
-	writetext JanineOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext JanineOutroText
 
 UnknownScript_0x195e15:
-	writetext UnknownText_0x196074
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x196074
 
 FuschiaGym1Script_0x195e1b:
 	checkevent EVENT_BEAT_LASS_AMANDA
@@ -125,10 +115,7 @@ UnknownScript_0x195e4a:
 	end
 
 UnknownScript_0x195e4f:
-	writetext UnknownText_0x196139
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x196139
 
 FuschiaGym2Script_0x195e55:
 	checkevent EVENT_BEAT_LASS_LINDA
@@ -159,10 +146,7 @@ UnknownScript_0x195e84:
 	end
 
 UnknownScript_0x195e89:
-	writetext UnknownText_0x196199
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x196199
 
 FuschiaGym3Script_0x195e8f:
 	checkevent EVENT_BEAT_PICNICKER_CINDY
@@ -193,10 +177,7 @@ UnknownScript_0x195ebe:
 	end
 
 UnknownScript_0x195ec3:
-	writetext UnknownText_0x19620c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19620c
 
 FuschiaGym4Script_0x195ec9:
 	checkevent EVENT_BEAT_CAMPER_BARRY
@@ -227,26 +208,17 @@ UnknownScript_0x195ef8:
 	end
 
 UnknownScript_0x195efd:
-	writetext UnknownText_0x19626b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x19626b
 
 FuchsiaGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_JANINE
 	iftrue .FuchsiaGymGuyWinScript
-	writetext FuchsiaGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FuchsiaGymGuyText
 
 .FuchsiaGymGuyWinScript:
-	writetext FuchsiaGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext FuchsiaGymGuyWinText
 
 FuchsiaGymStatue:
 	trainertotext JANINE, 1, $1

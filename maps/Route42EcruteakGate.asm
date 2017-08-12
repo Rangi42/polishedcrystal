@@ -17,10 +17,7 @@ Route42EcruteakGate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19a4b5, -1
-
-OfficerScript_0x19a4b5:
-	jumptextfaceplayer UnknownText_0x19a4b8
+	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19a4b8, -1
 
 UnknownText_0x19a4b8:
 	text "Mt.Mortar is like"

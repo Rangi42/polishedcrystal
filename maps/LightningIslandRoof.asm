@@ -33,10 +33,7 @@ LightningIslandRoofSparkScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SPARK
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
+	showtext .AfterText
 	playsound SFX_WARP_TO
 	applymovement LIGHTNINGISLANDROOF_SPARK, LightningIslandRoofSparkTeleport
 	disappear LIGHTNINGISLANDROOF_SPARK
@@ -44,10 +41,7 @@ LightningIslandRoofSparkScript:
 	end
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .GreetingText:
 	text "TODO"

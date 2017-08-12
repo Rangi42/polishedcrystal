@@ -8,7 +8,11 @@ else
 	;   hp  atk  def  spd  sat  sdf
 endc
 
+if DEF(FAITHFUL)
 	db GRASS, GRASS
+else
+	db GRASS, FAIRY
+endc
 	db 45 ; catch rate
 if DEF(FAITHFUL)
 	db 184 ; base exp

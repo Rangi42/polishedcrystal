@@ -14,16 +14,13 @@ IndigoPlateau_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 7, 11, SIGNPOST_READ, IndigoPlateauSign
+	signpost 7, 11, SIGNPOST_JUMPTEXT, IndigoPlateauSignText
 
 .PersonEvents: db 0
 
 IndigoPlateauFlyPoint:
 	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
 	return
-
-IndigoPlateauSign:
-	jumptext IndigoPlateauSignText
 
 IndigoPlateauSignText:
 	text "Indigo Plateau"

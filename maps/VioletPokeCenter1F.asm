@@ -17,24 +17,41 @@ VioletPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalFalknerScript
 
 .PersonEvents: db 5
-	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VioletPokeCenterNurse, -1
-	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x69540, -1
-	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x69543, -1
-	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x69546, -1
+	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1FElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
+	pc_nurse_event 1, 5
+	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGameboyKidText, -1
+	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
+	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
 
 const_value set 2
 	const VIOLETPOKECENTER1F_SCIENTIST
 
-VioletPokeCenterNurse:
-	jumpstd pokecenternurse
+PokemonJournalFalknerScript:
+	setflag ENGINE_READ_FALKNER_JOURNAL
+	thistext
 
-VioletPokeCenter1F_ElmsAideScript:
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Leader Falkner!"
+
+	para "People say that"
+	line "Falkner reveres"
+	cont "his father, who"
+
+	para "led the Violet Gym"
+	line "before him."
+	done
+
+VioletPokeCenter1FElmsAideScript:
 	faceplayer
 	opentext
 	checkevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
 	iftrue .SecondTimeAsking
-	writetext UnknownText_0x69555
+	writetext .IntroText
+	jump .AskTakeEgg
+.SecondTimeAsking:
+	writetext .QuestionText
 .AskTakeEgg:
 	yesorno
 	iffalse .RefusedEgg
@@ -48,79 +65,45 @@ VioletPokeCenter1F_ElmsAideScript:
 	clearevent EVENT_ELMS_AIDE_IN_LAB
 	clearevent EVENT_TOGEPI_HATCHED
 	domaptrigger ROUTE_32, $1
-	writetext UnknownText_0x695c5
+	writetext .GoodbyeText
 	waitbutton
 	closetext
 	checkcode VAR_FACING
 	if_equal UP, .AideWalksAroundPlayer
 	spriteface PLAYER, DOWN
-	applymovement VIOLETPOKECENTER1F_SCIENTIST, MovementData_AideWalksStraightOutOfPokecenter
-	playsound SFX_EXIT_BUILDING
-	disappear VIOLETPOKECENTER1F_SCIENTIST
-	waitsfx
-	end
-
+	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
+	jump .Finish
 .AideWalksAroundPlayer:
-	applymovement VIOLETPOKECENTER1F_SCIENTIST, MovementData_AideWalksLeftToExitPokecenter
+	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
 	spriteface PLAYER, DOWN
-	applymovement VIOLETPOKECENTER1F_SCIENTIST, MovementData_AideFinishesLeavingPokecenter
+	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkDownMovement
+.Finish:
 	playsound SFX_EXIT_BUILDING
 	disappear VIOLETPOKECENTER1F_SCIENTIST
 	waitsfx
 	end
 
 .PartyFull:
-	writetext UnknownText_0x69693
-	waitbutton
-	closetext
-	end
+	thisopenedtext
+
+	text "Oh, no. You can't"
+	line "carry any more"
+	cont "#mon with you."
+
+	para "I'll wait here"
+	line "while you make"
+	cont "room for the Egg."
+	done
 
 .RefusedEgg:
-	writetext UnknownText_0x696f2
-	waitbutton
-	closetext
 	setevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
-	end
+	thisopenedtext
 
-.SecondTimeAsking:
-	writetext UnknownText_0x69712
-	jump .AskTakeEgg
+	text "B-but… Prof.Elm"
+	line "asked for you…"
+	done
 
-GameboyKidScript_0x69540:
-	jumptextfaceplayer UnknownText_0x69809
-
-GentlemanScript_0x69543:
-	jumptextfaceplayer UnknownText_0x6983c
-
-YoungsterScript_0x69546:
-	jumptextfaceplayer UnknownText_0x698b8
-
-PokemonJournalFalknerScript:
-	setflag ENGINE_READ_FALKNER_JOURNAL
-	jumptext PokemonJournalFalknerText
-
-MovementData_AideWalksStraightOutOfPokecenter:
-	step_down
-	step_left
-	step_left
-	step_left
-	step_left
-MovementData_AideFinishesLeavingPokecenter:
-	step_down
-	step_down
-	step_down
-	step_down
-	step_end
-
-MovementData_AideWalksLeftToExitPokecenter:
-	step_left
-	step_left
-	step_down
-	step_left
-	step_left
-	step_end
-
-UnknownText_0x69555:
+.IntroText:
 	text "<PLAYER>, long"
 	line "time, no see."
 
@@ -139,7 +122,12 @@ UnknownText_0x69555:
 	line "#mon Egg?"
 	done
 
-UnknownText_0x695c5:
+.QuestionText:
+	text "<PLAYER>, will you"
+	line "take the Egg?"
+	done
+
+.GoodbyeText:
 	text "We discovered that"
 	line "a #mon will not"
 
@@ -159,33 +147,34 @@ UnknownText_0x695c5:
 	cont "hatches!"
 	done
 
-UnknownText_0x69693:
-	text "Oh, no. You can't"
-	line "carry any more"
-	cont "#mon with you."
+.WalkAroundMovement:
+	step_left
+	step_left
+	step_down
+	step_left
+	step_left
+	step_end
 
-	para "I'll wait here"
-	line "while you make"
-	cont "room for the Egg."
-	done
+.WalkStraightMovement:
+	step_down
+	step_left
+	step_left
+	step_left
+	step_left
+.WalkDownMovement:
+	step_down
+	step_down
+	step_down
+	step_down
+	step_end
 
-UnknownText_0x696f2:
-	text "B-but… Prof.Elm"
-	line "asked for you…"
-	done
-
-UnknownText_0x69712:
-	text "<PLAYER>, will you"
-	line "take the Egg?"
-	done
-
-UnknownText_0x69809:
+VioletPokeCenter1FGameboyKidText:
 	text "A guy named Bill"
 	line "made the #mon"
 	cont "PC storage system."
 	done
 
-UnknownText_0x6983c:
+VioletPokeCenter1FGentlemanText:
 	text "It was around"
 	line "three years ago."
 
@@ -198,7 +187,7 @@ UnknownText_0x6983c:
 	cont "kid broke 'em up."
 	done
 
-UnknownText_0x698b8:
+VioletPokeCenter1FYoungsterText:
 	text "#mon are smart."
 	line "They won't obey a"
 
@@ -210,18 +199,4 @@ UnknownText_0x698b8:
 
 	para "will just do as"
 	line "they please."
-	done
-
-PokemonJournalFalknerText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "Leader Falkner!"
-
-	para "People say that"
-	line "Falkner reveres"
-	cont "his father, who"
-
-	para "led the Violet Gym"
-	line "before him."
 	done

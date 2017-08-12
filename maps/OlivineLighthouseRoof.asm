@@ -15,7 +15,7 @@ OlivineLighthouseRoof_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_SKYLA, 13, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
+	itemball_event 8, 16, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
 
 const_value set 2
 	const OLIVINELIGHTHOUSEROOF_SKYLA
@@ -77,16 +77,10 @@ OlivineLighthouseRoofSkylaScript:
 	waitbutton
 	setevent EVENT_INTRODUCED_SKYLA
 .Introduced2
-	writetext .WaitingText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WaitingText
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Skyla: Who are"

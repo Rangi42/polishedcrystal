@@ -51,7 +51,7 @@ LoadSpawnPoint: ; 1531f
 	ld l, a
 	ld h, 0
 rept 2 ; multiply hl by 4
-	add hl,hl
+	add hl, hl
 endr
 	ld de, SpawnPoints
 	add hl, de

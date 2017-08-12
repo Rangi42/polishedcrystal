@@ -18,19 +18,16 @@ RuinsofAlphKabutoChamber_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 3, 2, SIGNPOST_READ, MapRuinsofAlphKabutoChamberSignpost1Script
-	signpost 3, 5, SIGNPOST_READ, MapRuinsofAlphKabutoChamberSignpost1Script
+	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
+	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
 	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
 	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
 	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
 	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
 
 .PersonEvents: db 2
+	person_event SPRITE_RECEPTIONIST, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
 	person_event SPRITE_SCIENTIST, 1, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
-	person_event SPRITE_RECEPTIONIST, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x58769, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-
-const_value set 2
-	const RUINSOFALPHKABUTOCHAMBER_SCIENTIST
 
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
@@ -65,9 +62,6 @@ UnknownScript_0x58751:
 	dotrigger $1
 	closetext
 	end
-
-ReceptionistScript_0x58769:
-	jumptextfaceplayer UnknownText_0x58800
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
 	refreshscreen
@@ -112,30 +106,18 @@ UnknownScript_0x587c0:
 	writetext UnknownText_0x588f5
 	waitbutton
 	closetext
-	spriteface RUINSOFALPHKABUTOCHAMBER_SCIENTIST, UP
+	spriteface LAST_TALKED, UP
 	end
 
 UnknownScript_0x587c9:
-	writetext UnknownText_0x5897c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5897c
 
 UnknownScript_0x587cf:
-	writetext UnknownText_0x594cb
-	waitbutton
-	closetext
-	end
-
-MapRuinsofAlphKabutoChamberSignpost1Script:
-	jumptext UnknownText_0x58b1a
+	jumpopenedtext UnknownText_0x594cb
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
-	opentext
-	writetext UnknownText_0x58b3f
-	waitbutton
-	closetext
+	showtext UnknownText_0x58b3f
 	restoretypeface
 	end
 
@@ -158,11 +140,7 @@ MapRuinsofAlphKabutoChamberSignpost5Script:
 	end
 
 UnknownScript_0x587f7:
-	opentext
-	writetext UnknownText_0x58afa
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x58afa
 
 MovementData_0x587fe:
 	db $59 ; movement

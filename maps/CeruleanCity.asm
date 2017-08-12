@@ -23,22 +23,22 @@ CeruleanCity_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 7
-	signpost 23, 23, SIGNPOST_READ, CeruleanCitySign
-	signpost 25, 27, SIGNPOST_READ, CeruleanGymSign
-	signpost 29, 11, SIGNPOST_READ, CeruleanBikeShopSign
-	signpost 17, 25, SIGNPOST_READ, CeruleanPoliceSign
-	signpost 7, 23, SIGNPOST_READ, CeruleanCapeSign
+	signpost 23, 23, SIGNPOST_JUMPTEXT, CeruleanCitySignText
+	signpost 25, 27, SIGNPOST_JUMPTEXT, CeruleanGymSignText
+	signpost 29, 11, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
+	signpost 17, 25, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
+	signpost 7, 23, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
 	signpost 22, 11, SIGNPOST_UP, CeruleanBubblerSign
-	signpost 17, 4, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
+	signpost 17, 4, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 .PersonEvents: db 8
 	person_event SPRITE_COOLTRAINER_F, 24, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
 	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	person_event SPRITE_COOLTRAINER_M, 26, 30, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
-	person_event SPRITE_SUPER_NERD, 15, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x18401d, -1
+	person_event SPRITE_SUPER_NERD, 15, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
 	person_event SPRITE_SLOWBRO, 24, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeruleanCitySlowbro, -1
 	person_event SPRITE_FISHER, 22, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
-	person_event SPRITE_COOLTRAINER_M, 14, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanCaveGuardScript, EVENT_BEAT_BLUE
+	person_event SPRITE_COOLTRAINER_M, 14, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
 
 const_value set 2
@@ -54,19 +54,10 @@ CooltrainerMScript_0x184009:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x184017
-	writetext UnknownText_0x1840bc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1840bc
 
 UnknownScript_0x184017:
-	writetext UnknownText_0x184144
-	waitbutton
-	closetext
-	end
-
-SuperNerdScript_0x18401d:
-	jumptextfaceplayer UnknownText_0x1841a8
+	jumpopenedtext UnknownText_0x184144
 
 CeruleanCitySlowbro:
 	opentext
@@ -77,26 +68,15 @@ CeruleanCitySlowbro:
 	end
 
 CooltrainerFScript_0x18402a:
-	faceplayer
-	opentext
-	writetext UnknownText_0x1841fa
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x1841fa
 	spriteface CERULEANCITY_COOLTRAINER_F, LEFT
-	opentext
-	writetext UnknownText_0x184229
-	waitbutton
-	closetext
+	showtext UnknownText_0x184229
 	opentext
 	writetext CeruleanCitySlowbroText
 	cry SLOWBRO
 	waitbutton
 	closetext
-	opentext
-	writetext UnknownText_0x18424b
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:
 	faceplayer
@@ -106,16 +86,10 @@ FisherScript_0x18404a:
 	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
 	iftrue UnknownScript_0x18405e
 UnknownScript_0x184058:
-	writetext UnknownText_0x18424e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18424e
 
 UnknownScript_0x18405e:
-	writetext UnknownText_0x184275
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x184275
 
 YoungsterScript_0x184064:
 	faceplayer
@@ -144,41 +118,13 @@ YoungsterScript_0x184064:
 	waitsfx
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	spriteface CERULEANCITY_YOUNGSTER, LEFT
-	opentext
-	writetext UnknownText_0x1842ee
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x1842ee
 
 .FoundBerserkGene:
-	writetext CeruleanCityYoungsterText
-	waitbutton
-	closetext
-	end
-
-CeruleanCaveGuardScript:
-	jumptextfaceplayer CeruleanCaveGuardText
-
-CeruleanCitySign:
-	jumptext CeruleanCitySignText
-
-CeruleanGymSign:
-	jumptext CeruleanGymSignText
-
-CeruleanBikeShopSign:
-	jumptext CeruleanBikeShopSignText
-
-CeruleanPoliceSign:
-	jumptext CeruleanPoliceSignText
-
-CeruleanCapeSign:
-	jumptext CeruleanCapeSignText
+	jumpopenedtext CeruleanCityYoungsterText
 
 CeruleanBubblerSign:
 	jumptext CeruleanBubblerText
-
-CeruleanCityHiddenBerserkGene:
-	dwb EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY, BERSERK_GENE
 
 UnknownText_0x1840bc:
 	text "Kanto's Power"

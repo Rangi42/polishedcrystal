@@ -29,10 +29,7 @@ SeagallopFerryVermilionGateTrigger0:
 SeagallopFerryVermilionGate_PlayerArrives:
 	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorArrive1MovementData
 	applymovement PLAYER, SeagallopFerryVermilionGatePlayerArriveMovementData
-	opentext
-	writetext SeagallopFerryVermilionCityRefusedText
-	waitbutton
-	closetext
+	showtext SeagallopFerryVermilionCityRefusedText
 	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorArrive2MovementData
 	dotrigger $0
 	end
@@ -55,10 +52,7 @@ SeagallopFerryVermilionGateSailorScript:
 	iftrue .have_mysticticket_no_orangeticket
 	checkitem OLD_SEA_MAP
 	iftrue .use_old_sea_map
-	writetext SeagallopFerryClosedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SeagallopFerryClosedText
 
 .have_orangeticket
 	checkitem MYSTICTICKET
@@ -133,10 +127,7 @@ SeagallopFerryVermilionGateSailorScript:
 	if_equal $2, .use_mysticticket
 	if_equal $3, .use_old_sea_map
 .no_ferry:
-	writetext SeagallopFerryVermilionCityRefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SeagallopFerryVermilionCityRefusedText
 
 OrangeMysticMenuDataHeader:
 	db $40 ; flags

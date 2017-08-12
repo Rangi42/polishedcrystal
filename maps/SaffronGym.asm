@@ -103,109 +103,69 @@ SabrinaScript_0x189c2e:
 	buttonsound
 	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
-	writetext SabrinaOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SabrinaOutroText
 
 SabrinaAfterTMScript:
-	writetext UnknownText_0x189f6c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x189f6c
 
 TrainerMediumDoris:
 	trainer EVENT_BEAT_MEDIUM_DORIS, MEDIUM, DORIS, MediumDorisSeenText, MediumDorisBeatenText, 0, MediumDorisScript
 
 MediumDorisScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x18a136
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x18a136
 
 TrainerPsychicLeon:
 	trainer EVENT_BEAT_PSYCHIC_LEON, PSYCHIC_T, LEON, PsychicLeonSeenText, PsychicLeonBeatenText, 0, PsychicLeonScript
 
 PsychicLeonScript:
 	end_if_just_battled
-	opentext
-	writetext PsychicLeonAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer PsychicLeonAfterText
 
 TrainerPsychicJared:
 	trainer EVENT_BEAT_PSYCHIC_JARED, PSYCHIC_T, JARED, PsychicJaredSeenText, PsychicJaredBeatenText, 0, PsychicJaredScript
 
 PsychicJaredScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x18a1b3
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x18a1b3
 
 TrainerHexManiacLuna:
 	trainer EVENT_BEAT_HEX_MANIAC_LUNA, HEX_MANIAC, LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText, 0, HexManiacLunaScript
 
 HexManiacLunaScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacLunaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HexManiacLunaAfterText
 
 TrainerHexManiacNatalie:
 	trainer EVENT_BEAT_HEX_MANIAC_NATALIE, HEX_MANIAC, NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText, 0, HexManiacNatalieScript
 
 HexManiacNatalieScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacNatalieAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HexManiacNatalieAfterText
 
 TrainerPsychicFranklin:
 	trainer EVENT_BEAT_PSYCHIC_FRANKLIN, PSYCHIC_T, FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText, 0, PsychicFranklinScript
 
 PsychicFranklinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x18a0a6
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x18a0a6
 
 TrainerMediumRebecca:
 	trainer EVENT_BEAT_MEDIUM_REBECCA, MEDIUM, REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, MediumRebeccaScript
 
 MediumRebeccaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x18a034
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x18a034
 
 SaffronGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_SABRINA
 	iftrue .SaffronGymGuyWinScript
-	writetext SaffronGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SaffronGymGuyText
 
 .SaffronGymGuyWinScript:
-	writetext SaffronGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SaffronGymGuyWinText
 
 SaffronGymStatue:
 	trainertotext SABRINA, 1, $1

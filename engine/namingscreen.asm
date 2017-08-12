@@ -116,6 +116,12 @@ endr
 
 .Player: ; 1178d (4:578d)
 	farcall GetPlayerIcon
+	ld a, [PlayerGender]
+	bit 0, a
+	ld c, SPRITE_ANIM_INDEX_RED_WALK
+	jr z, .got_player_walk
+	ld c, SPRITE_ANIM_INDEX_BLUE_WALK
+.got_player_walk
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .PlayerNameString
@@ -131,7 +137,7 @@ endr
 
 .Rival: ; 117ae (4:57ae)
 	ld de, SilverSpriteGFX
-	ld b, BANK(SilverSpriteGFX)
+	lb bc, BANK(SilverSpriteGFX), SPRITE_ANIM_INDEX_RED_WALK
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .RivalNameString
@@ -147,7 +153,7 @@ endr
 
 .TrendyPhrase:
 	ld de, ArtistSpriteGFX
-	ld b, BANK(ArtistSpriteGFX)
+	lb bc, BANK(ArtistSpriteGFX), SPRITE_ANIM_INDEX_BLUE_WALK
 	call .LoadSprite
 	hlcoord 5, 2
 	ld de, .TrendyPhraseString
@@ -185,6 +191,7 @@ endr
 ; 1182c
 
 .LoadSprite: ; 11847 (4:5847)
+	push bc
 	push de
 	ld hl, VTiles0 tile $00
 	ld c, $4
@@ -202,22 +209,8 @@ endr
 	ld [hli], a
 	ld [hl], a
 	pop de
-	ld b, SPRITE_ANIM_INDEX_RED_WALK
-	ld a, d
-	cp KrisSpriteGFX / $100
-	jr z, .maybe_blue
-	cp ArtistSpriteGFX / $100
-	jr nz, .not_blue
-.maybe_blue
-	ld a, e
-	cp KrisSpriteGFX % $100
-	jr z, .blue
-	cp ArtistSpriteGFX % $100
-	jr nz, .not_blue
-.blue
-	ld b, SPRITE_ANIM_INDEX_BLUE_WALK
-.not_blue
-	ld a, b
+	pop bc
+	ld a, c
 	depixel 4, 4, 4, 0
 	jp _InitSpriteAnimStruct
 

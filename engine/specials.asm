@@ -1,9 +1,8 @@
-
 Special:: ; c01b
 ; Run script special de.
 	ld hl, SpecialsPointers
 rept 3
-	add hl,de
+	add hl, de
 endr
 	ld b, [hl]
 	inc hl
@@ -13,6 +12,11 @@ endr
 	ld a, b
 	jp FarCall_hl
 ; c029
+
+add_special: MACRO
+\1Special::
+	dba \1
+ENDM
 
 SpecialsPointers:: ; c029
 	add_special WarpToSpawnPoint

@@ -14,20 +14,17 @@ ValenciaIsland_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 12, 8, SIGNPOST_READ, ValenciaIslandSign
-	signpost 5, 11, SIGNPOST_READ, ValenciaIslandGoneFishingSign
-	signpost 5, 13, SIGNPOST_READ, ValenciaIslandLockedDoor
-	signpost 19, 15, SIGNPOST_READ, IvysLabSign
-	signpost 3, 13, SIGNPOST_READ, IvysHouseSign
+	signpost 12, 8, SIGNPOST_JUMPTEXT, ValenciaIslandSignText
+	signpost 5, 11, SIGNPOST_JUMPTEXT, ValenciaIslandGoneFishingSignText
+	signpost 5, 13, SIGNPOST_JUMPTEXT, ValenciaIslandLockedDoorText
+	signpost 19, 15, SIGNPOST_JUMPTEXT, IvysLabSignText
+	signpost 3, 13, SIGNPOST_JUMPTEXT, IvysHouseSignText
 
 .PersonEvents: db 2
-	person_event SPRITE_COOLTRAINER_M, 8, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ValenciaIslandCooltrainermScript, -1
+	person_event SPRITE_COOLTRAINER_M, 8, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaIslandCooltrainermText, -1
 	person_event SPRITE_YOUNGSTER, 18, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 
-ValenciaIslandCooltrainermScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ValenciaIslandCooltrainermText:
 	text "A couple of strong"
 	line "trainers live in"
 	cont "that house."
@@ -60,44 +57,29 @@ ValenciaIslandYoungsterScript:
 	line "smokin' hot!"
 	done
 
-ValenciaIslandSign:
-	jumptext .Text
-
-.Text:
+ValenciaIslandSignText:
 	text "Valencia Island"
 
 	para "Bitter Oranges"
 	line "and Sweet Breezes"
 	done
 
-ValenciaIslandGoneFishingSign:
-	jumptext .Text
-
-.Text:
+ValenciaIslandGoneFishingSignText:
 	text "Gone Fishing"
 
 	para "(On vacation"
 	line "in Alola!)"
 	done
 
-ValenciaIslandLockedDoor:
-	jumptext .Text
-
-.Text:
+ValenciaIslandLockedDoorText:
 	text "It's locked…"
 	done
 
-IvysLabSign:
-	jumptext .Text
-
-.Text:
+IvysLabSignText:
 	text "Ivy Research"
 	line "№.2 Bayview"
 	done
 
-IvysHouseSign:
-	jumptext .Text
-
-.Text:
+IvysHouseSignText:
 	text "Ivy's House"
 	done

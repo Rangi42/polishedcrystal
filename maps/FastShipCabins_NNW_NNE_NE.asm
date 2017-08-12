@@ -33,86 +33,54 @@ TrainerPILooker:
 
 PILookerScript:
 	end_if_just_battled
-	opentext
-	writetext PILookerAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer PILookerAfterText
 
 TrainerCooltrainermSean:
 	trainer EVENT_BEAT_COOLTRAINERM_SEAN, COOLTRAINERM, SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText, 0, CooltrainermSeanScript
 
 CooltrainermSeanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7567b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7567b
 
 TrainerCooltrainerfCarol:
 	trainer EVENT_BEAT_COOLTRAINERF_CAROL, COOLTRAINERF, CAROL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText, 0, CooltrainerfCarolScript
 
 CooltrainerfCarolScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x756f7
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x756f7
 
 TrainerPokemaniacEthan:
 	trainer EVENT_BEAT_POKEMANIAC_ETHAN, POKEMANIAC, ETHAN, PokemaniacEthanSeenText, PokemaniacEthanBeatenText, 0, PokemaniacEthanScript
 
 PokemaniacEthanScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x7574b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x7574b
 
 TrainerHikerNoland:
 	trainer EVENT_BEAT_HIKER_NOLAND, HIKER, NOLAND, HikerNolandSeenText, HikerNolandBeatenText, 0, HikerNolandScript
 
 HikerNolandScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x757d4
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x757d4
 
 TrainerGentlemanEdward:
 	trainer EVENT_BEAT_GENTLEMAN_EDWARD, GENTLEMAN, EDWARD, GentlemanEdwardSeenText, GentlemanEdwardBeatenText, 0, GentlemanEdwardScript
 
 GentlemanEdwardScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x75937
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x75937
 
 TrainerBurglarCorey:
 	trainer EVENT_BEAT_BURGLAR_COREY, BURGLAR, COREY, BurglarCoreySeenText, BurglarCoreyBeatenText, 0, BurglarCoreyScript
 
 BurglarCoreyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x75996
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x75996
 
 SailorScript_0x755f1:
 	special SaveMusic
 	playmusic MUSIC_HIKER_ENCOUNTER
-	faceplayer
-	opentext
-	writetext UnknownText_0x75812
-	waitbutton
-	closetext
+	showtextfaceplayer UnknownText_0x75812
 	winlosstext UnknownText_0x75897, UnknownText_0x75897
 	loadtrainer SAILOR, STANLY
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
@@ -120,10 +88,7 @@ SailorScript_0x755f1:
 	reloadmap
 	special HealParty
 	setevent EVENT_BEAT_SAILOR_STANLY
-	opentext
-	writetext UnknownText_0x758b1
-	waitbutton
-	closetext
+	showtext UnknownText_0x758b1
 	setevent EVENT_FAST_SHIP_LAZY_SAILOR
 	domaptrigger FAST_SHIP_B1F, $1
 	checkcode VAR_FACING

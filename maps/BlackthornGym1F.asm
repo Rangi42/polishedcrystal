@@ -57,24 +57,17 @@ BlackthornGymStatue:
 	jumpstd gymstatue3
 
 BlackthornGymClairScript:
-	faceplayer
-	opentext
 	checkflag ENGINE_RISINGBADGE
-	iftrue .AlreadyGotBadge
+	iftrue_jumptextfaceplayer ClairPokemonLeagueDirectionsText
 	checkevent EVENT_BEAT_CLAIR
-	iftrue .FightDone
-	writetext .IntroText
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer .TooMuchToExpectText
+	showtextfaceplayer .IntroText
 	winlosstext .WinText, 0
 	loadtrainer CLAIR, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CLAIR
-	opentext
-	writetext .GoToDragonsDenText
-	waitbutton
-	closetext
+	showtext .GoToDragonsDenText
 	setevent EVENT_BEAT_DRAGON_TAMER_PAUL
 	setevent EVENT_BEAT_COOLTRAINERM_CODY
 	setevent EVENT_BEAT_COOLTRAINERM_MIKE
@@ -84,12 +77,6 @@ BlackthornGymClairScript:
 	setevent EVENT_BLACKTHORN_CITY_GRAMPS_BLOCKS_DRAGONS_DEN
 	clearevent EVENT_BLACKTHORN_CITY_GRAMPS_NOT_BLOCKING_DRAGONS_DEN
 	end
-
-.FightDone:
-	jumpopenedtext .TooMuchToExpectText
-
-.AlreadyGotBadge:
-	jumpopenedtext ClairPokemonLeagueDirectionsText
 
 .IntroText:
 	text "I am Clair."
@@ -198,13 +185,9 @@ ClairPokemonLeagueDirectionsText:
 
 BlackthornGymGuyScript:
 	checkevent EVENT_BEAT_CLAIR
-	iftrue .Won
-	jumptextfaceplayer .Text
+	iftrue_jumptextfaceplayer .WinText
+	thistextfaceplayer
 
-.Won:
-	jumptextfaceplayer .WinText
-
-.Text:
 	text "Yo! Champ in"
 	line "making!"
 

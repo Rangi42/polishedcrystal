@@ -22,10 +22,10 @@ TinTower1F_MapEventHeader:
 	person_event SPRITE_SUICUNE, 9, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
 	person_event SPRITE_RAIKOU, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
 	person_event SPRITE_ENTEI, 9, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
-	person_event SPRITE_SUPER_NERD, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, TinTowerEusine, EVENT_TIN_TOWER_1F_EUSINE
-	person_event SPRITE_ELDER, 9, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SageScript_0x185173, EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	person_event SPRITE_ELDER, 11, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SageScript_0x185176, EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	person_event SPRITE_ELDER, 6, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SageScript_0x185179, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	person_event SPRITE_SUPER_NERD, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, TinTowerEusineHoOhText, EVENT_TIN_TOWER_1F_EUSINE
+	person_event SPRITE_ELDER, 9, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x185386, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	person_event SPRITE_ELDER, 11, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x185433, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	person_event SPRITE_ELDER, 6, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x185544, EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	person_event SPRITE_ELDER, 2, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SageScript_0x18517c, EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	person_event SPRITE_ELDER, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SageScript_0x185188, EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	person_event SPRITE_ELDER, 2, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SageScript_0x1851bc, EVENT_TIN_TOWER_1F_WISE_TRIO_2
@@ -171,10 +171,7 @@ SuicuneBattle:
 	moveperson TINTOWER1F_SAGE2, $7, $d
 	moveperson TINTOWER1F_SAGE3, $9, $d
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext TinTowerEusineSuicuneText
-	waitbutton
-	closetext
+	showtext TinTowerEusineSuicuneText
 	applymovement TINTOWER1F_EUSINE, MovementData_0x1851f1
 	playsound SFX_EXIT_BUILDING
 	disappear TINTOWER1F_EUSINE
@@ -183,15 +180,6 @@ SuicuneBattle:
 	pause 20
 	playmapmusic
 	end
-
-SageScript_0x185173:
-	jumptextfaceplayer UnknownText_0x185386
-
-SageScript_0x185176:
-	jumptextfaceplayer UnknownText_0x185433
-
-SageScript_0x185179:
-	jumptextfaceplayer UnknownText_0x185544
 
 SageScript_0x18517c:
 	checkevent EVENT_FOUGHT_HO_OH
@@ -222,16 +210,10 @@ SageScript_0x185188:
 	closetext
 	opentext
 UnknownScript_0x1851b0:
-	writetext UnknownText_0x18564a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18564a
 
 UnknownScript_0x1851b6:
-	writetext UnknownText_0x185803
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x185803
 
 SageScript_0x1851bc:
 	checkevent EVENT_FOUGHT_HO_OH
@@ -240,9 +222,6 @@ SageScript_0x1851bc:
 
 UnknownScript_0x1851c5:
 	jumptextfaceplayer UnknownText_0x1858d0
-
-TinTowerEusine:
-	jumptextfaceplayer TinTowerEusineHoOhText
 
 TinTowerPlayerMovement1:
 	slow_step_up

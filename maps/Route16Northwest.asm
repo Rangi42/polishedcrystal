@@ -16,4 +16,4 @@ Route16Northwest_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 17, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16NorthCutTree, EVENT_ROUTE_16_CUT_TREE
+	cuttree_event 4, 17, EVENT_ROUTE_16_CUT_TREE

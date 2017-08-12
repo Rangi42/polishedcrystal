@@ -13,16 +13,10 @@ CeladonChiefHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 7, SIGNPOST_ITEM, CeladonChiefHouseHiddenDubiousDisc
+	signpost 1, 7, SIGNPOST_ITEM + DUBIOUS_DISC, EVENT_CELADON_CHIEF_HOUSE_HIDDEN_DUBIOUS_DISC
 
 .PersonEvents: db 1
-	person_event SPRITE_COOLTRAINER_M, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonChiefHouseCooltrainerMScript, -1
-
-CeladonChiefHouseCooltrainerMScript:
-	jumptextfaceplayer CeladonChiefHouseCooltrainerMText
-
-CeladonChiefHouseHiddenDubiousDisc:
-	dwb EVENT_CELADON_CHIEF_HOUSE_HIDDEN_DUBIOUS_DISC, DUBIOUS_DISC
+	person_event SPRITE_COOLTRAINER_M, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonChiefHouseCooltrainerMText, -1
 
 CeladonChiefHouseCooltrainerMText:
 	text "The Game Corner is"

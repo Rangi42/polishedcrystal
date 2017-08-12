@@ -12,30 +12,26 @@ UragaChannelEast_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 5, 45, SIGNPOST_READ, UragaChannelSign
-	signpost 13, 3, SIGNPOST_READ, ScaryCaveEastSign
-	signpost 4, 33, SIGNPOST_ITEM, UragaChannelEastHiddenNugget
-	signpost 14, 34, SIGNPOST_ITEM, UragaChannelEastHiddenPearl
-	signpost 12, 22, SIGNPOST_ITEM, UragaChannelEastHiddenBottleCap
-	signpost 11, 9, SIGNPOST_ITEM, UragaChannelEastHiddenStarPiece
+	signpost 5, 45, SIGNPOST_JUMPTEXT, UragaChannelSignText
+	signpost 13, 3, SIGNPOST_JUMPTEXT, ScaryCaveEastSignText
+	signpost 4, 33, SIGNPOST_ITEM + NUGGET, EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET
+	signpost 14, 34, SIGNPOST_ITEM + PEARL, EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL
+	signpost 12, 22, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP
+	signpost 11, 9, SIGNPOST_ITEM + STAR_PIECE, EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE
 
 .PersonEvents: db 5
 	person_event SPRITE_SWIMMER_GIRL, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 22, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermKieran, -1
 	person_event SPRITE_BIKER, 15, 34, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBikerTyrone, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DIVE_BALL, 1, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, EVIOLITE, 1, EVENT_URAGA_CHANNEL_EAST_EVIOLITE
+	itemball_event 2, 9, DIVE_BALL, 1, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
+	itemball_event 8, 20, EVIOLITE, 1, EVENT_URAGA_CHANNEL_EAST_EVIOLITE
 
 TrainerSwimmerfWoda:
 	trainer EVENT_BEAT_SWIMMERF_WODA, SWIMMERF, WODA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did you come here"
@@ -59,11 +55,7 @@ TrainerCooltrainermKieran:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It's on like"
@@ -88,11 +80,7 @@ TrainerBikerTyrone:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Cough! Splutter!"
@@ -113,15 +101,9 @@ TrainerBikerTyrone:
 	cont "me here."
 	done
 
-UragaChannelSign:
-	jumptext UragaChannelSignText
-
 UragaChannelSignText:
 	text "Uraga Channel"
 	done
-
-ScaryCaveEastSign:
-	jumptext ScaryCaveEastSignText
 
 ScaryCaveEastSignText:
 	text "There's graffiti"
@@ -130,15 +112,3 @@ ScaryCaveEastSignText:
 	para "“This cave is"
 	line "scary!”"
 	done
-
-UragaChannelEastHiddenNugget:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET, NUGGET
-
-UragaChannelEastHiddenPearl:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL, PEARL
-
-UragaChannelEastHiddenBottleCap:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP, BOTTLE_CAP
-
-UragaChannelEastHiddenStarPiece:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE, STAR_PIECE

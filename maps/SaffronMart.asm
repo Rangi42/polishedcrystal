@@ -15,21 +15,9 @@ SaffronMart_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 3
-	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x18a3bf, -1
-	person_event SPRITE_COOLTRAINER_M, 2, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x18a3c6, -1
-	person_event SPRITE_COOLTRAINER_F, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18a3c9, -1
-
-ClerkScript_0x18a3bf:
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_SAFFRON
-	closetext
-	end
-
-CooltrainerMScript_0x18a3c6:
-	jumptextfaceplayer UnknownText_0x18a3cc
-
-CooltrainerFScript_0x18a3c9:
-	jumptextfaceplayer UnknownText_0x18a3f3
+	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_SAFFRON
+	person_event SPRITE_COOLTRAINER_M, 2, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18a3cc, -1
+	person_event SPRITE_COOLTRAINER_F, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18a3f3, -1
 
 UnknownText_0x18a3cc:
 	text "There's a big"

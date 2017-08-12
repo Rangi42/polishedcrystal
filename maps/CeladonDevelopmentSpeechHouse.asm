@@ -15,14 +15,8 @@ CeladonDevelopmentSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonDevelopmentSpeechHouseCooltrainermScript, -1
-	person_event SPRITE_BEAUTY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDevelopmentSpeechHouseBeautyScript, -1
-
-CeladonDevelopmentSpeechHouseCooltrainermScript:
-	jumptextfaceplayer CeladonDevelopmentSpeechHouseCooltrainermText
-
-CeladonDevelopmentSpeechHouseBeautyScript:
-	jumptextfaceplayer CeladonDevelopmentSpeechHouseBeautyText
+	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonDevelopmentSpeechHouseCooltrainermText, -1
+	person_event SPRITE_BEAUTY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonDevelopmentSpeechHouseBeautyText, -1
 
 CeladonDevelopmentSpeechHouseCooltrainermText:
 	text "Celadon has become"

@@ -16,24 +16,20 @@ OlivinePort_MapEventHeader:
 	xy_trigger 0, $f, $7, UnknownScript_0x7491f
 
 .Signposts: db 1
-	signpost 22, 1, SIGNPOST_ITEM, OlivinePortHiddenProtein
+	signpost 22, 1, SIGNPOST_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
 .PersonEvents: db 7
 	person_event SPRITE_SAILOR, 23, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x748c0, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_SAILOR, 15, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x7499c, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	person_event SPRITE_SAILOR, 15, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x74cd7, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	person_event SPRITE_FISHING_GURU, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x74a01, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	person_event SPRITE_FISHING_GURU, 14, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x74a0c, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
+	person_event SPRITE_SAILOR, 15, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x7499c, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	person_event SPRITE_YOUNGSTER, 15, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x74a17, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	person_event SPRITE_COOLTRAINER_F, 15, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x74a22, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
-	person_event SPRITE_SAILOR, 15, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x749fe, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 
 const_value set 2
 	const OLIVINEPORT_SAILOR1
 	const OLIVINEPORT_SAILOR3
-	const OLIVINEPORT_FISHING_GURU1
-	const OLIVINEPORT_FISHING_GURU2
-	const OLIVINEPORT_YOUNGSTER
-	const OLIVINEPORT_COOLTRAINER_F
 
 OlivinePortTrigger1:
 	priorityjump UnknownScript_0x748b1
@@ -87,10 +83,7 @@ UnknownScript_0x7490a:
 	end
 
 UnknownScript_0x74919:
-	writetext UnknownText_0x74a80
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74a80
 
 UnknownScript_0x7491f:
 	spriteface OLIVINEPORT_SAILOR3, RIGHT
@@ -148,10 +141,7 @@ UnknownScript_0x7498b:
 	end
 
 UnknownScript_0x7498c:
-	writetext UnknownText_0x74af6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74af6
 
 UnknownScript_0x74992:
 	writetext UnknownText_0x74af6
@@ -195,65 +185,33 @@ UnknownScript_0x749e5:
 	jump SailorScript_0x748c0
 
 UnknownScript_0x749ec:
-	writetext UnknownText_0x74b41
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74b41
 
 UnknownScript_0x749f2:
-	writetext UnknownText_0x74ba8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x74ba8
 
 UnknownScript_0x749f8:
-	writetext UnknownText_0x74bce
-	waitbutton
-	closetext
-	end
-
-SailorScript_0x749fe:
-	jumptextfaceplayer UnknownText_0x74cd7
+	jumpopenedtext UnknownText_0x74bce
 
 FishingGuruScript_0x74a01:
-	faceplayer
-	opentext
-	writetext UnknownText_0x74bf4
-	waitbutton
-	closetext
-	spriteface OLIVINEPORT_FISHING_GURU1, UP
+	showtextfaceplayer UnknownText_0x74bf4
+	spriteface LAST_TALKED, UP
 	end
 
 FishingGuruScript_0x74a0c:
-	faceplayer
-	opentext
-	writetext UnknownText_0x74c35
-	waitbutton
-	closetext
-	spriteface OLIVINEPORT_FISHING_GURU2, UP
+	showtextfaceplayer UnknownText_0x74c35
+	spriteface LAST_TALKED, UP
 	end
 
 YoungsterScript_0x74a17:
-	faceplayer
-	opentext
-	writetext UnknownText_0x74c76
-	waitbutton
-	closetext
-	spriteface OLIVINEPORT_YOUNGSTER, DOWN
+	showtextfaceplayer UnknownText_0x74c76
+	spriteface LAST_TALKED, DOWN
 	end
 
 CooltrainerFScript_0x74a22:
-	faceplayer
-	opentext
-	writetext UnknownText_0x74ca2
-	waitbutton
-	closetext
-	spriteface OLIVINEPORT_COOLTRAINER_F, DOWN
+	showtextfaceplayer UnknownText_0x74ca2
+	spriteface LAST_TALKED, DOWN
 	end
-
-OlivinePortHiddenProtein:
-	dwb EVENT_OLIVINE_PORT_HIDDEN_PROTEIN, PROTEIN
-
 
 MovementData_0x74a30:
 	step_down

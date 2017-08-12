@@ -13,14 +13,14 @@ CeladonHomeDecorStore4F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 0, 8, SIGNPOST_READ, CeladonHomeDecorStore4FDirectory
+	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore4FDirectoryText
 	signpost 5, 2, SIGNPOST_READ, BigOnixDollScript
 	signpost 5, 3, SIGNPOST_READ, BigOnixDollScript
 	signpost 6, 2, SIGNPOST_READ, BigOnixDollScript
 	signpost 6, 3, SIGNPOST_READ, BigOnixDollScript
 
 .PersonEvents: db 9
-	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigDollClerkScript, -1
+	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BigDollClerkText, -1
 	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
 	person_event SPRITE_GYARADOS_BOTTOM_LEFT, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
 	person_event SPRITE_GYARADOS_BOTTOM_RIGHT, 4, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
@@ -30,20 +30,11 @@ CeladonHomeDecorStore4F_MapEventHeader:
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 
-BigDollClerkScript:
-	jumptextfaceplayer BigDollClerkText
-
 BigDollClerkNoSaleScript:
-	writetext BigDollClerkNoSaleText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigDollClerkNoSaleText
 
 BigDollClerkNoMoneyScript:
-	writetext BigDollClerkNoMoneyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigDollClerkNoMoneyText
 
 BigLaprasDollScript:
 	opentext
@@ -60,16 +51,10 @@ BigLaprasDollScript:
 	writetext BoughtBigLaprasDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BigLaprasDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigLaprasDollSentText
 
 .OwnBigLaprasDoll:
-	writetext BigLaprasDollText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigLaprasDollText
 
 BigSnorlaxDollScript:
 	opentext
@@ -86,16 +71,10 @@ BigSnorlaxDollScript:
 	writetext BoughtBigSnorlaxDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BigSnorlaxDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigSnorlaxDollSentText
 
 .OwnBigSnorlaxDoll:
-	writetext BigSnorlaxDollText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigSnorlaxDollText
 
 BigOnixDollScript:
 	opentext
@@ -112,19 +91,10 @@ BigOnixDollScript:
 	writetext BoughtBigOnixDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext BigOnixDollSentText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext BigOnixDollSentText
 
 .OwnBigOnixDoll:
-	writetext BigOnixDollText
-	waitbutton
-	closetext
-	end
-
-CeladonHomeDecorStore4FDirectory:
-	jumptext CeladonHomeDecorStore4FDirectoryText
+	jumpopenedtext BigOnixDollText
 
 BigDollClerkText:
 	text "Aren't our jumbo"

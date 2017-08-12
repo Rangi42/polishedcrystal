@@ -32,14 +32,14 @@ BlackthornCity_MapEventHeader:
 	person_event SPRITE_DRAGON_TAMER, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_BLOCKS_GYM
 	person_event SPRITE_DRAGON_TAMER, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_DOES_NOT_BLOCK_GYM
 	person_event SPRITE_BLACK_BELT, 31, 24, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlackthornBlackbeltScript, -1
-	person_event SPRITE_GRAMPS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BlackthornGramps1Text, EVENT_BLACKTHORN_CITY_GRAMPS_BLOCKS_DRAGONS_DEN
-	person_event SPRITE_GRAMPS, 2, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BlackthornGramps2Text, EVENT_BLACKTHORN_CITY_GRAMPS_NOT_BLOCKING_DRAGONS_DEN
-	person_event SPRITE_LASS, 25, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, BlackthornLassText, -1
-	person_event SPRITE_YOUNGSTER, 15, 13, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BlackthornYoungsterText, -1
-	person_event SPRITE_COOLTRAINER_F, 19, 35, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, BlackthornCooltrainerF1Text, -1
-	person_event SPRITE_COOLTRAINER_F, 29, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, BlackthornCooltrainerF2Text, -1
-	person_event SPRITE_DRAGON_TAMER, 27, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, BlackthornDragonTamer2Text, -1
-	person_event SPRITE_DRAGON_TAMER, 24, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, BlackthornDragonTamer3Text, -1
+	person_event SPRITE_GRAMPS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornGramps1Text, EVENT_BLACKTHORN_CITY_GRAMPS_BLOCKS_DRAGONS_DEN
+	person_event SPRITE_GRAMPS, 2, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornGramps2Text, EVENT_BLACKTHORN_CITY_GRAMPS_NOT_BLOCKING_DRAGONS_DEN
+	person_event SPRITE_LASS, 25, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornLassText, -1
+	person_event SPRITE_YOUNGSTER, 15, 13, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornYoungsterText, -1
+	person_event SPRITE_COOLTRAINER_F, 19, 35, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornCooltrainerF1Text, -1
+	person_event SPRITE_COOLTRAINER_F, 29, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornCooltrainerF2Text, -1
+	person_event SPRITE_DRAGON_TAMER, 27, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonTamer2Text, -1
+	person_event SPRITE_DRAGON_TAMER, 24, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonTamer3Text, -1
 
 const_value set 2
 	const BLACKTHORNCITY_SANTOS
@@ -98,7 +98,7 @@ BlackthornCityTrainerTipsText:
 
 SantosScript:
 	checkevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
-	iftrue .Saturday
+	iftrue_jumptextfaceplayer .SaturdayText
 	checkcode VAR_WEEKDAY
 	if_not_equal SATURDAY, .NotSaturday
 	faceplayer
@@ -112,19 +112,27 @@ SantosScript:
 	writetext .GivesGiftText
 	buttonsound
 	verbosegiveitem SPELL_TAG
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
-	writetext .GaveGiftText
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.Saturday:
-	jumptextfaceplayer .SaturdayText
+	text "Santos: …"
+
+	para "Spell Tag…"
+
+	para "Ghost-type moves"
+	line "get stronger…"
+
+	para "It will frighten"
+	line "you…"
+	done
 
 .NotSaturday:
-	jumptextfaceplayer .NotSaturdayText
+	thistextfaceplayer
+
+	text "Santos: Today's"
+	line "not Saturday…"
+	done
 
 .MeetText:
 	text "Santos: …"
@@ -139,18 +147,6 @@ SantosScript:
 	text "You can have this…"
 	done
 
-.GaveGiftText:
-	text "Santos: …"
-
-	para "Spell Tag…"
-
-	para "Ghost-type moves"
-	line "get stronger…"
-
-	para "It will frighten"
-	line "you…"
-	done
-
 .SaturdayText:
 	text "Santos: …"
 
@@ -161,25 +157,13 @@ SantosScript:
 	line "more gifts…"
 	done
 
-.NotSaturdayText:
-	text "Santos: Today's"
-	line "not Saturday…"
-	done
-
 BlackthornDragonTamer1Script:
 	checkevent EVENT_BEAT_CLAIR
-	iftrue .BeatClair
+	iftrue_jumptextfaceplayer .ClairIsBeatenText
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRadioTower
-	jumptextfaceplayer .ClairIsOutText
+	iftrue_jumptextfaceplayer .ClairIsInText
+	thistextfaceplayer
 
-.ClearedRadioTower:
-	jumptextfaceplayer .ClairIsInText
-
-.BeatClair:
-	jumptextfaceplayer .ClairIsBeatenText
-
-.ClairIsOutText:
 	text "I am sorry."
 
 	para "Clair, our Gym"
@@ -220,13 +204,9 @@ BlackthornDragonTamer1Script:
 
 BlackthornBlackbeltScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRadioTower
-	jumptextfaceplayer .Text1
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
 
-.ClearedRadioTower:
-	jumptextfaceplayer .Text2
-
-.Text1:
 	text "My radio's busted?"
 	line "Lately, I only get"
 	cont "this weird signal."

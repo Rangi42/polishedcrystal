@@ -22,14 +22,14 @@ TeamRocketBaseB3F_MapEventHeader:
 .Signposts: db 10
 	signpost 9, 10, SIGNPOST_IFNOTSET, BossDoor
 	signpost 9, 11, SIGNPOST_IFNOTSET, BossDoor
-	signpost 1, 10, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 1, 11, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 1, 12, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 1, 13, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 4, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 5, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 6, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
-	signpost 13, 7, SIGNPOST_READ, MapTeamRocketBaseB3FSignpost9Script
+	signpost 1, 10, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 1, 11, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 1, 12, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 1, 13, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 4, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 5, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 6, SIGNPOST_JUMPSTD, teamrocketoath
+	signpost 13, 7, SIGNPOST_JUMPSTD, teamrocketoath
 
 .PersonEvents: db 14
 	person_event SPRITE_LANCE, 14, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceGetPasswordScript, EVENT_TEAM_ROCKET_BASE_B3F_LANCE_PASSWORDS
@@ -40,12 +40,12 @@ TeamRocketBaseB3F_MapEventHeader:
 	person_event SPRITE_ROCKET, 14, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, RaticateTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_SCIENTIST, 11, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_SCIENTIST, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_ROCKET, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x6e048, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PROTEIN, 1, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_SPCL_DEF, 1, EVENT_TEAM_ROCKET_BASE_B3F_X_SPCL_DEF
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_FULL_HEAL
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ICE_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ICE_HEAL
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ULTRA_BALL
+	person_event SPRITE_ROCKET, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6e235, EVENT_TEAM_ROCKET_BASE_POPULATION
+	itemball_event 12, 1, PROTEIN, 1, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN
+	itemball_event 12, 3, X_SPCL_DEF, 1, EVENT_TEAM_ROCKET_BASE_B3F_X_SPCL_DEF
+	itemball_event 9, 28, FULL_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_FULL_HEAL
+	itemball_event 2, 17, ICE_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ICE_HEAL
+	itemball_event 10, 14, ULTRA_BALL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ULTRA_BALL
 
 const_value set 2
 	const TEAMROCKETBASEB3F_LANCE
@@ -72,10 +72,7 @@ LanceGetPasswordScript:
 	spriteface TEAMROCKETBASEB3F_MURKROW, RIGHT
 	pause 20
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12a
-	opentext
-	writetext LanceGetPasswordText
-	waitbutton
-	closetext
+	showtext LanceGetPasswordText
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12c
 	disappear TEAMROCKETBASEB3F_LANCE
 	dotrigger $1
@@ -89,10 +86,7 @@ RocketBaseRival:
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalEnterMovement
 	spriteface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext RocketBaseRivalText
-	waitbutton
-	closetext
+	showtext RocketBaseRivalText
 	playsound SFX_TACKLE
 	applymovement PLAYER, RocketBaseRivalShovesPlayerMovement
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalLeaveMovement
@@ -100,9 +94,6 @@ RocketBaseRival:
 	dotrigger $2
 	special RestartMapMusic
 	end
-
-RocketScript_0x6e048:
-	jumptextfaceplayer UnknownText_0x6e235
 
 UnknownScript_0x6e04b:
 	applymovement PLAYER, MovementData_0x6e133
@@ -115,10 +106,7 @@ UnknownScript_0x6e056:
 	showemote EMOTE_SHOCK, TEAMROCKETBASEB3F_PETREL, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface TEAMROCKETBASEB3F_PETREL, DOWN
-	opentext
-	writetext UnknownText_0x6e400
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e400
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e142
 	winlosstext UnknownText_0x6e511, 0
 	setlasttalked TEAMROCKETBASEB3F_PETREL
@@ -126,10 +114,7 @@ UnknownScript_0x6e056:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PETREL_2
-	opentext
-	writetext UnknownText_0x6e548
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e548
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e144
 	playsound SFX_TACKLE
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e147
@@ -138,10 +123,7 @@ UnknownScript_0x6e056:
 	end
 
 RocketBaseMurkrow:
-	opentext
-	writetext RocketBaseMurkrowText
-	waitbutton
-	closetext
+	showtext RocketBaseMurkrowText
 	setevent EVENT_LEARNED_HAIL_GIOVANNI
 	end
 
@@ -150,10 +132,7 @@ SlowpokeTailGrunt:
 
 GruntF5Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e611
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e611
 	setevent EVENT_LEARNED_SLOWPOKETAIL
 	end
 
@@ -162,10 +141,7 @@ RaticateTailGrunt:
 
 GruntM28Script:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e737
-	waitbutton
-	closetext
+	showtext UnknownText_0x6e737
 	setevent EVENT_LEARNED_RATICATE_TAIL
 	end
 
@@ -174,28 +150,17 @@ TrainerRocketScientistRoss:
 
 RocketScientistRossScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e822
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6e822
 
 TrainerRocketScientistMitch:
 	trainer EVENT_BEAT_ROCKET_SCIENTIST_MITCH, ROCKET_SCIENTIST, MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
 
 RocketScientistMitchScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x6e90a
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x6e90a
 
 BossDoor:
 	dw EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
-	dw .Script
-
-.Script:
 	opentext
 	checkevent EVENT_LEARNED_SLOWPOKETAIL
 	iffalse .NeedsPassword
@@ -204,10 +169,7 @@ BossDoor:
 	jump .OpenSesame
 
 .NeedsPassword:
-	writetext UnknownText_0x6e970
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6e970
 
 .OpenSesame:
 	writetext UnknownText_0x6e9a3
@@ -219,9 +181,6 @@ BossDoor:
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	waitsfx
 	end
-
-MapTeamRocketBaseB3FSignpost9Script:
-	jumpstd teamrocketoath
 
 MovementData_0x6e12a:
 	step_right

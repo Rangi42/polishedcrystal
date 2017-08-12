@@ -19,8 +19,8 @@ UnionCaveB2F_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 19, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermNick, -1
 	person_event SPRITE_COOLTRAINER_F, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfGwen, -1
 	person_event SPRITE_COOLTRAINER_F, 30, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfEmma, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ELIXER, 1, EVENT_UNION_CAVE_B2F_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_UNION_CAVE_B2F_HYPER_POTION
+	itemball_event 2, 16, ELIXER, 1, EVENT_UNION_CAVE_B2F_ELIXER
+	itemball_event 19, 12, HYPER_POTION, 1, EVENT_UNION_CAVE_B2F_HYPER_POTION
 
 const_value set 2
 	const UNIONCAVEB2F_LAPRAS
@@ -53,33 +53,21 @@ TrainerCooltrainermNick:
 
 CooltrainermNickScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a3f0
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a3f0
 
 TrainerCooltrainerfGwen:
 	trainer EVENT_BEAT_COOLTRAINERF_GWEN, COOLTRAINERF, GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText, 0, CooltrainerfGwenScript
 
 CooltrainerfGwenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a488
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a488
 
 TrainerCooltrainerfEmma:
 	trainer EVENT_BEAT_COOLTRAINERF_EMMA, COOLTRAINERF, EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText, 0, CooltrainerfEmmaScript
 
 CooltrainerfEmmaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a52b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a52b
 
 CooltrainermNickSeenText:
 	text "There are two"

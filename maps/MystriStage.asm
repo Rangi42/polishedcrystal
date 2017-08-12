@@ -46,10 +46,7 @@ MystriStageTrigger2Script:
 MystriStageCynthiaSafeguardScript:
 	faceplayer
 MystriStageTriggerScript:
-	opentext
-	writetext MystriStageCynthiaIntroText
-	waitbutton
-	closetext
+	showtext MystriStageCynthiaIntroText
 	follow MYSTRISTAGE_CYNTHIA1, PLAYER
 	applymovement MYSTRISTAGE_CYNTHIA1, MystriStageMovementData_CynthiaStepsUp
 	stopfollow
@@ -97,16 +94,10 @@ MystriStageCynthiaContinueScript:
 	jump MystriStageBeatCynthiaScript
 
 .NotYet:
-	writetext MystriStageCynthiaNotNowText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MystriStageCynthiaNotNowText
 
 .Refused:
-	writetext MystriStageCynthiaNoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MystriStageCynthiaNoText
 
 MystriStageBeatCynthiaScript:
 	checkevent EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
@@ -161,10 +152,7 @@ MystriStageBeatCynthiaScript:
 	end
 
 .GotWiseGlasses:
-	writetext MystriStageCynthiaFinalText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MystriStageCynthiaFinalText
 
 MystriStageEggScript:
 	checkcode VAR_PARTYCOUNT

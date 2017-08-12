@@ -18,11 +18,11 @@ WiseTriosRoom_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 6
-	person_event SPRITE_ELDER, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x985a0, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	person_event SPRITE_ELDER, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x987af, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_ELDER, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	person_event SPRITE_ELDER, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x9859a, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	person_event SPRITE_ELDER, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9862b, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_ELDER, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderGaku, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	person_event SPRITE_ELDER, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderScript_0x9859d, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
+	person_event SPRITE_ELDER, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9868b, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_ELDER, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 
 const_value set 2
@@ -50,15 +50,6 @@ UnknownScript_0x98593:
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 	return
 
-ElderScript_0x9859a:
-	jumptextfaceplayer UnknownText_0x9862b
-
-ElderScript_0x9859d:
-	jumptextfaceplayer UnknownText_0x9868b
-
-ElderScript_0x985a0:
-	jumptextfaceplayer UnknownText_0x987af
-
 UnknownScript_0x985a3:
 	spriteface WISETRIOSROOM_ELDER3, UP
 	spriteface PLAYER, DOWN
@@ -67,10 +58,7 @@ UnknownScript_0x985a3:
 	applymovement PLAYER, MovementData_0x98622
 	stopfollow
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext UnknownText_0x98712
-	waitbutton
-	closetext
+	showtext UnknownText_0x98712
 	applymovement WISETRIOSROOM_ELDER3, MovementData_0x98625
 	spriteface WISETRIOSROOM_ELDER3, LEFT
 	end
@@ -79,21 +67,13 @@ TrainerElderGaku:
 	trainer EVENT_BEAT_ELDER_GAKU, ELDER, GAKU, ElderGakuSeenText, ElderGakuBeatenText, 0, ElderGakuScript
 
 ElderGakuScript:
-	opentext
-	writetext UnknownText_0x98938
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x98938
 
 TrainerElderMasa:
 	trainer EVENT_BEAT_ELDER_MASA, ELDER, MASA, ElderMasaSeenText, ElderMasaBeatenText, 0, ElderMasaScript
 
 ElderMasaScript:
-	opentext
-	writetext UnknownText_0x98a35
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x98a35
 
 TrainerElderKoji:
 	trainer EVENT_BEAT_ELDER_KOJI, ELDER, KOJI, ElderKojiSeenText, ElderKojiBeatenText, 0, ElderKojiScript
@@ -116,11 +96,7 @@ ElderKojiScript:
 	end
 
 UnknownScript_0x9861b:
-	opentext
-	writetext UnknownText_0x98db5
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x98db5
 
 MovementData_0x98622:
 	step_left

@@ -15,8 +15,8 @@ Route12South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 43, 11, SIGNPOST_READ, Route12Sign
-	signpost 15, 14, SIGNPOST_ITEM, Route12HiddenElixer
+	signpost 43, 11, SIGNPOST_JUMPTEXT, Route12SignText
+	signpost 15, 14, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
 
 .PersonEvents: db 13
 	person_event SPRITE_FISHER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
@@ -28,21 +28,17 @@ Route12South_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 39, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleVicandtara1, -1
 	person_event SPRITE_LASS, 38, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleVicandtara2, -1
 	person_event SPRITE_YOUNGSTER, 89, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 68, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CALCIUM, 1, EVENT_ROUTE_12_CALCIUM
-	person_event SPRITE_BALL_CUT_FRUIT, 82, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_ROUTE_12_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 71, 6, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route12CutTree, EVENT_ROUTE_12_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 79, 9, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route12CutTree, EVENT_ROUTE_12_CUT_TREE_2
+	itemball_event 68, 5, CALCIUM, 1, EVENT_ROUTE_12_CALCIUM
+	itemball_event 82, 5, NUGGET, 1, EVENT_ROUTE_12_NUGGET
+	cuttree_event 71, 6, EVENT_ROUTE_12_CUT_TREE_1
+	cuttree_event 79, 9, EVENT_ROUTE_12_CUT_TREE_2
 
 TrainerFisherMartin:
 	trainer EVENT_BEAT_FISHER_MARTIN, FISHER, MARTIN, FisherMartinSeenText, FisherMartinBeatenText, 0, FisherMartinScript
 
 FisherMartinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a704c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a704c
 
 FisherMartinSeenText:
 	text "Patience is the"
@@ -64,11 +60,7 @@ TrainerFisherStephen:
 
 FisherStephenScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a70d4
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a70d4
 
 FisherStephenSeenText:
 	text "I feel so content,"
@@ -95,11 +87,7 @@ TrainerFisherBarney:
 
 FisherBarneyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a716d
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a716d
 
 FisherBarneySeenText:
 	text "What's most impor-"
@@ -134,11 +122,7 @@ TrainerFisherKyler:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "#mon battles"
@@ -164,11 +148,7 @@ TrainerBird_keeperJustin:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Huh? The wind has"
@@ -190,11 +170,7 @@ TrainerBird_keeperGail:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "BASABASABASA-"
@@ -215,11 +191,7 @@ TrainerCoupleVicandtara1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Vic: All right!"
@@ -242,11 +214,7 @@ TrainerCoupleVicandtara2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Tara: I love to"
@@ -266,15 +234,6 @@ TrainerCoupleVicandtara2:
 	cont "he's still wonder-"
 	cont "ful."
 	done
-
-Route12CutTree:
-	jumpstd cuttree
-
-Route12Sign:
-	jumptext Route12SignText
-
-Route12HiddenElixer:
-	dwb EVENT_ROUTE_12_HIDDEN_ELIXER, ELIXER
 
 Route12SignText:
 	text "Route 12"

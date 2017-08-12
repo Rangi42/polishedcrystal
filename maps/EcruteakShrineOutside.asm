@@ -16,16 +16,13 @@ EcruteakShrineOutside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 8, 3, SIGNPOST_READ, EcruteakShrineOutsideStatueScript
-	signpost 8, 8, SIGNPOST_READ, EcruteakShrineOutsideStatueScript
+	signpost 8, 3, SIGNPOST_JUMPTEXT, EcruteakShrineOutsideStatueText
+	signpost 8, 8, SIGNPOST_JUMPTEXT, EcruteakShrineOutsideStatueText
 
 .PersonEvents: db 3
-	person_event SPRITE_TWIN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideTwinScript, -1
+	person_event SPRITE_TWIN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideTwinText, -1
 	person_event SPRITE_HOOTHOOT, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideHoothootScript, -1
-	person_event SPRITE_SAGE, 10, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideSageScript, -1
-
-EcruteakShrineOutsideTwinScript:
-	jumptextfaceplayer EcruteakShrineOutsideTwinText
+	person_event SPRITE_SAGE, 10, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideSageText, -1
 
 EcruteakShrineOutsideHoothootScript:
 	opentext
@@ -34,12 +31,6 @@ EcruteakShrineOutsideHoothootScript:
 	waitbutton
 	closetext
 	end
-
-EcruteakShrineOutsideSageScript:
-	jumptextfaceplayer EcruteakShrineOutsideSageText
-
-EcruteakShrineOutsideStatueScript:
-	jumptext EcruteakShrineOutsideStatueText
 
 EcruteakShrineOutsideTwinText:
 	text "My Hoothoot's"

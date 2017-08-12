@@ -27,5 +27,5 @@ FireIsland_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
+	itemball_event 19, 2, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
 

@@ -14,30 +14,26 @@ WarmBeach_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 14, 17, SIGNPOST_READ, WarmBeachShackSign
-	signpost 20, 18, SIGNPOST_READ, WarmBeachShrine
-	signpost 20, 19, SIGNPOST_READ, WarmBeachShrine
-	signpost 20, 6, SIGNPOST_ITEM, WarmBeachHiddenPearl
+	signpost 14, 17, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
+	signpost 20, 18, SIGNPOST_JUMPTEXT, WarmBeachShrineText
+	signpost 20, 19, SIGNPOST_JUMPTEXT, WarmBeachShrineText
+	signpost 20, 6, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
 .PersonEvents: db 7
 	person_event SPRITE_SIGHTSEER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
 	person_event SPRITE_LADY, 12, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
-	person_event SPRITE_COOLTRAINER_M, 14, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachCooltrainermScript, -1
-	person_event SPRITE_COOLTRAINER_F, 20, 22, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, WarmBeachCooltrainerfScript, -1
+	person_event SPRITE_COOLTRAINER_M, 14, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1
+	person_event SPRITE_COOLTRAINER_F, 20, 22, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainerfText, -1
 	person_event SPRITE_SLOWKING, 21, 17, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
 	person_event SPRITE_LASS, 20, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
-	person_event SPRITE_LADY, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachLadyScript, -1
+	person_event SPRITE_LADY, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachLadyText, -1
 
 TrainerSightseermGareth:
 	trainer EVENT_BEAT_SIGHTSEERM_GARETH, SIGHTSEERM, GARETH, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I just picked up"
@@ -65,11 +61,7 @@ TrainerAromaLadyHolly:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I am at one with"
@@ -88,10 +80,7 @@ TrainerAromaLadyHolly:
 	cont "in nature."
 	done
 
-WarmBeachCooltrainermScript:
-	jumptextfaceplayer .Text
-
-.Text:
+WarmBeachCooltrainermText:
 	text "There's a #mon"
 	line "here that talks!"
 
@@ -102,10 +91,7 @@ WarmBeachCooltrainermScript:
 	line "myself!"
 	done
 
-WarmBeachCooltrainerfScript:
-	jumptextfaceplayer .Text
-
-.Text:
+WarmBeachCooltrainerfText:
 	text "I've been selected"
 	line "as the festival"
 	cont "maiden this year,"
@@ -120,9 +106,8 @@ WarmBeachCooltrainerfScript:
 	done
 
 WarmBeachSlowkingScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "I could use"
 	line "pants…"
 	done
@@ -145,34 +130,19 @@ WarmBeachLassScript:
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	writetext .Text2
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .BoughtShellBell:
-	writetext .Text3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text3
 
 .NoBuy:
-	writetext .Text4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text4
 
 .NotEnoughMoney:
-	writetext .Text5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text5
 
 .NoRoom:
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .Text6
 
 .Text1:
 	text "I collect shells"
@@ -212,10 +182,7 @@ WarmBeachLassScript:
 	line "enough room…"
 	done
 
-WarmBeachLadyScript:
-	jumptextfaceplayer .Text
-
-.Text:
+WarmBeachLadyText:
 	text "Those islands"
 	line "across the water"
 
@@ -232,23 +199,14 @@ WarmBeachLadyScript:
 	line "for?"
 	done
 
-WarmBeachShackSign:
-	jumptext .Text
-
-.Text:
+WarmBeachShackSignText:
 	text "Beach Shack"
 	done
 
-WarmBeachShrine:
-	jumptext .Text
-
-.Text:
+WarmBeachShrineText:
 	text "It's a shrine"
 	line "dedicated to the"
 
 	para "Guardian of the"
 	line "Seas."
 	done
-
-WarmBeachHiddenPearl:
-	dwb EVENT_WARM_BEACH_HIDDEN_PEARL, PEARL

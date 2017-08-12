@@ -17,21 +17,20 @@ KrissHouse1F_MapEventHeader:
 	xy_trigger 0, $2, $7, MomTrigger3
 
 .Signposts: db 4
-	signpost 1, 0, SIGNPOST_READ, FridgeScript
-	signpost 1, 1, SIGNPOST_READ, SinkScript
-	signpost 1, 2, SIGNPOST_READ, StoveScript
+	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
+	signpost 1, 1, SIGNPOST_JUMPTEXT, SinkText
+	signpost 1, 2, SIGNPOST_JUMPTEXT, StoveText
 	signpost 1, 7, SIGNPOST_READ, TVScript
 
 .PersonEvents: db 5
 	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
-	person_event SPRITE_POKEFAN_F, 4, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
 	person_event SPRITE_MOM, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	person_event SPRITE_MOM, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	person_event SPRITE_POKEFAN_F, 4, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
 
 const_value set 2
 	const KRISSHOUSE1F_MOM1
-	const KRISSHOUSE1F_POKEFAN_F
 
 MomTrigger1:
 	playmusic MUSIC_MOM
@@ -322,22 +321,13 @@ MomScript:
 	iftrue .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .Errand
-	writetext MomHurryUpText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MomHurryUpText
 
 .Errand:
-	writetext MomErrandText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MomErrandText
 
 .DoIt:
-	writetext MomDoItText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MomDoItText
 
 .FirstTimeBanking:
 	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM
@@ -381,17 +371,8 @@ NeighborScript:
 	writetext NeighborText
 	waitbutton
 	closetext
-	spriteface KRISSHOUSE1F_POKEFAN_F, RIGHT
+	spriteface LAST_TALKED, RIGHT
 	end
-
-FridgeScript:
-	jumptext FridgeText
-
-SinkScript:
-	jumptext SinkText
-
-StoveScript:
-	jumptext StoveText
 
 TVScript:
 	checkcode VAR_FACING

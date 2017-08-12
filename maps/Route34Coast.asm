@@ -20,18 +20,14 @@ Route34Coast_MapEventHeader:
 	person_event SPRITE_GOLDENROD_LYRA, 6, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNatalia, -1
 	person_event SPRITE_FISHER, 29, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherFrancis, -1
 	person_event SPRITE_YOUNGSTER, 32, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperTony, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PEARL_STRING, 1, EVENT_ROUTE_34_COAST_PEARL_STRING
+	itemball_event 34, 4, PEARL_STRING, 1, EVENT_ROUTE_34_COAST_PEARL_STRING
 
 TrainerSwimmermFrank:
 	trainer EVENT_BEAT_SWIMMERM_FRANK, SWIMMERM, FRANK, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm vacationing"
@@ -58,11 +54,7 @@ TrainerSwimmermNadar:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming is my"
@@ -90,11 +82,7 @@ TrainerSwimmermConrad:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Lotion on, goggles"
@@ -122,11 +110,7 @@ TrainerSwimmerfCaroline:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My husband and I"
@@ -152,11 +136,7 @@ TrainerSwimmerfNatalia:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I bought a new"
@@ -183,11 +163,7 @@ TrainerFisherFrancis:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I like fishing for"
@@ -214,11 +190,7 @@ TrainerBird_keeperTony:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Have you heard"

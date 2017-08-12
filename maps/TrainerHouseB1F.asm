@@ -51,10 +51,7 @@ TrainerHouseReceptionistScript:
 	waitbutton
 	closetext
 	applymovement PLAYER, Movement_EnterTrainerHouseBattleRoom
-	opentext
-	writetext TrainerHouseB1FCalBeforeText
-	waitbutton
-	closetext
+	showtext TrainerHouseB1FCalBeforeText
 	winlosstext TrainerHouseB1FCalBeatenText, 0
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .LoadTrainerCal

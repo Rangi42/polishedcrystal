@@ -22,7 +22,7 @@ LuckyIsland_MapEventHeader:
 	person_event SPRITE_ARTIST, 16, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
 	person_event SPRITE_SIGHTSEER_M, 11, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
 	person_event SPRITE_LADY, 12, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LuckyIslandFruitTree, EVENT_LUCKY_ISLAND_CIVILIANS
+	fruittree_event 16, 25, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, EVENT_LUCKY_ISLAND_CIVILIANS
 
 const_value set 2
 	const LUCKYISLAND_POKE_BALL
@@ -49,11 +49,7 @@ TrainerFisherHall:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Dopefish lives!"
@@ -75,11 +71,7 @@ TrainerBakerMargaret:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If an egg tumbles"
@@ -103,11 +95,7 @@ TrainerBakerOlga:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, you!"
@@ -134,11 +122,7 @@ TrainerArtistReina:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This sunny meadow"
@@ -161,11 +145,7 @@ TrainerArtistAlina:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This island hardly"
@@ -190,11 +170,7 @@ TrainerSightseersLiandsu1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Li: What came"
@@ -220,11 +196,7 @@ TrainerSightseersLiandsu2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Su: What came"
@@ -244,9 +216,6 @@ TrainerSightseersLiandsu2:
 	line "#mon that don't"
 	cont "come from Eggs?"
 	done
-
-LuckyIslandFruitTree:
-	fruittree FRUITTREE_LUCKY_ISLAND
 
 LuckyIslandLuckyEgg:
 	giveitem LUCKY_EGG

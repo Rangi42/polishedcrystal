@@ -13,15 +13,15 @@ Route2South_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 29, 5, SIGNPOST_READ, Route2Sign
+	signpost 29, 5, SIGNPOST_JUMPTEXT, Route2SignText
 
 .PersonEvents: db 7
 	person_event SPRITE_BUG_MANIAC, 23, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacRob, -1
 	person_event SPRITE_BUG_MANIAC, 16, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacDoug, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 30, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ELIXER, 1, EVENT_ROUTE_2_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 11, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route2SouthCutTree, EVENT_ROUTE_2_CUT_TREE_3
-	person_event SPRITE_BALL_CUT_FRUIT, 24, 12, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route2SouthCutTree, EVENT_ROUTE_2_CUT_TREE_4
-	person_event SPRITE_BALL_CUT_FRUIT, 30, 12, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route2SouthCutTree, EVENT_ROUTE_2_CUT_TREE_5
+	itemball_event 30, 14, ELIXER, 1, EVENT_ROUTE_2_ELIXER
+	cuttree_event 16, 11, EVENT_ROUTE_2_CUT_TREE_3
+	cuttree_event 24, 12, EVENT_ROUTE_2_CUT_TREE_4
+	cuttree_event 30, 12, EVENT_ROUTE_2_CUT_TREE_5
 	person_event SPRITE_BALL_CUT_FRUIT, 23, 23, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_16_WEST_CUT_TREE_1
 
 TrainerBug_maniacRob:
@@ -29,28 +29,14 @@ TrainerBug_maniacRob:
 
 Bug_maniacRobScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac34d
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1ac34d
 
 TrainerBug_maniacDoug:
 	trainer EVENT_BEAT_BUG_MANIAC_DOUG, BUG_MANIAC, DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText, 0, Bug_maniacDougScript
 
 Bug_maniacDougScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1ac423
-	waitbutton
-	closetext
-	end
-
-Route2SouthCutTree:
-	jumpstd cuttree
-
-Route2Sign:
-	jumptext Route2SignText
+	jumptextfaceplayer UnknownText_0x1ac423
 
 Bug_maniacRobSeenText:
 	text "My bug #mon are"

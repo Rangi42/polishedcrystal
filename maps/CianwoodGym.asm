@@ -18,15 +18,15 @@ CianwoodGym_MapEventHeader:
 
 .PersonEvents: db 10
 	person_event SPRITE_CHUCK, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ChuckScript_0x9d60f, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 5, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1
+	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 5, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, strengthboulder, -1
 	person_event SPRITE_BLACK_BELT, 12, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBlackbeltYoshi, -1
 	person_event SPRITE_BLACK_BELT, 12, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerBlackbeltLao, -1
 	person_event SPRITE_BLACK_BELT, 9, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltNob, -1
 	person_event SPRITE_BLACK_BELT, 5, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerBlackbeltLung, -1
-	person_event SPRITE_BLACK_BELT, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CianwoodGymBlackBeltScript, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 3, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 4, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 7, 5, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CianwoodGymBoulder, -1
+	person_event SPRITE_BLACK_BELT, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodGymBlackBeltText, -1
+	strengthboulder_event 7, 3
+	strengthboulder_event 7, 4
+	strengthboulder_event 7, 5
 
 const_value set 2
 	const CIANWOODGYM_CHUCK
@@ -41,20 +41,13 @@ ChuckScript_0x9d60f:
 	waitbutton
 	closetext
 	spriteface CIANWOODGYM_CHUCK, RIGHT
-	opentext
-	writetext ChuckIntroText2
-	waitbutton
-	closetext
+	showtext ChuckIntroText2
 	applymovement CIANWOODGYM_BOULDER1, CianwoodGymMovement_ChuckChucksBoulder
 	playsound SFX_STRENGTH
 	earthquake 80
 	disappear CIANWOODGYM_BOULDER1
 	pause 30
-	faceplayer
-	opentext
-	writetext ChuckIntroText3
-	waitbutton
-	closetext
+	showtextfaceplayer ChuckIntroText3
 	winlosstext ChuckLossText, 0
 	loadtrainer CHUCK, 1
 	startbattle
@@ -77,66 +70,38 @@ ChuckScript_0x9d60f:
 	buttonsound
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
-	writetext ChuckExplainTMText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ChuckExplainTMText
 
 .AlreadyGotTM:
-	writetext ChuckAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ChuckAfterText
 
 TrainerBlackbeltYoshi:
 	trainer EVENT_BEAT_BLACKBELT_YOSHI, BLACKBELT_T, YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltYoshiAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BlackbeltYoshiAfterText
 
 TrainerBlackbeltLao:
 	trainer EVENT_BEAT_BLACKBELT_LAO, BLACKBELT_T, LAO, BlackbeltLaoSeenText, BlackbeltLaoBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltLaoAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BlackbeltLaoAfterText
 
 TrainerBlackbeltNob:
 	trainer EVENT_BEAT_BLACKBELT_NOB, BLACKBELT_T, NOB, BlackbeltNobSeenText, BlackbeltNobBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltNobAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BlackbeltNobAfterText
 
 TrainerBlackbeltLung:
 	trainer EVENT_BEAT_BLACKBELT_LUNG, BLACKBELT_T, LUNG, BlackbeltLungSeenText, BlackbeltLungBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext BlackbeltLungAfterText
-	waitbutton
-	closetext
-	end
-
-CianwoodGymBlackBeltScript:
-	jumptextfaceplayer CianwoodGymBlackBeltText
-
-CianwoodGymBoulder:
-	jumpstd strengthboulder
+	jumptextfaceplayer BlackbeltLungAfterText
 
 CianwoodGymStatue:
 	trainertotext CHUCK, 1, $1

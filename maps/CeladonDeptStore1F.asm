@@ -15,28 +15,13 @@ CeladonDeptStore1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore1FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore1FElevatorButton
+	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore1FDirectoryText
+	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 3
-	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x709e0, -1
-	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x709e3, -1
-	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x709e6, -1
-
-ReceptionistScript_0x709e0:
-	jumptextfaceplayer UnknownText_0x709ef
-
-GentlemanScript_0x709e3:
-	jumptextfaceplayer UnknownText_0x70a35
-
-TeacherScript_0x709e6:
-	jumptextfaceplayer UnknownText_0x70aa9
-
-CeladonDeptStore1FDirectory:
-	jumptext CeladonDeptStore1FDirectoryText
-
-CeladonDeptStore1FElevatorButton:
-	jumpstd elevatorbutton
+	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x709ef, -1
+	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70a35, -1
+	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70aa9, -1
 
 UnknownText_0x709ef:
 	text "Hello! Welcome to"

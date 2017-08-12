@@ -96,24 +96,15 @@ MortyScript_0x99d58:
 	buttonsound
 	verbosegivetmhm TM_SHADOW_BALL
 	setevent EVENT_GOT_TM30_SHADOW_BALL
-	writetext UnknownText_0x9a0ec
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9a0ec
 
 UnknownScript_0x99db1:
-	writetext UnknownText_0x9a145
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9a145
 
 UnknownScript_0x99dc6:
 	applymovement PLAYER, MovementData_0x99e5d
 	applymovement ECRUTEAKGYM_GRAMPS, MovementData_0x99e63
-	opentext
-	writetext UnknownText_0x9a49c
-	waitbutton
-	closetext
+	showtext UnknownText_0x9a49c
 	follow PLAYER, ECRUTEAKGYM_GRAMPS
 	applymovement PLAYER, MovementData_0x99e5f
 	stopfollow
@@ -128,60 +119,38 @@ TrainerSageJeffrey:
 
 SageJeffreyScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x9a263
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x9a263
 
 TrainerSagePing:
 	trainer EVENT_BEAT_SAGE_PING, SAGE, PING, SagePingSeenText, SagePingBeatenText, 0, SagePingScript
 
 SagePingScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x9a2b7
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x9a2b7
 
 TrainerMediumMartha:
 	trainer EVENT_BEAT_MEDIUM_MARTHA, MEDIUM, MARTHA, MediumMarthaSeenText, MediumMarthaBeatenText, 0, MediumMarthaScript
 
 MediumMarthaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x9a318
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x9a318
 
 TrainerMediumGrace:
 	trainer EVENT_BEAT_MEDIUM_GRACE, MEDIUM, GRACE, MediumGraceSeenText, MediumGraceBeatenText, 0, MediumGraceScript
 
 MediumGraceScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x9a38a
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x9a38a
 
 EcruteakGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_MORTY
 	iftrue .EcruteakGymGuyWinScript
-	writetext EcruteakGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EcruteakGymGuyText
 
 .EcruteakGymGuyWinScript:
-	writetext EcruteakGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext EcruteakGymGuyWinText
 
 EcruteakGymStatue:
 	trainertotext MORTY, 1, $1

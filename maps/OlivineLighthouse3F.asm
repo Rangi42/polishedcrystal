@@ -26,7 +26,7 @@ OlivineLighthouse3F_MapEventHeader:
 	person_event SPRITE_SAILOR, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSailorTerrell, -1
 	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 	person_event SPRITE_YOUNGSTER, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
+	itemball_event 2, 8, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
 
 const_value set 2
 	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
@@ -83,16 +83,10 @@ OlivineLighthouse3FBattleGirlEmy:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "As a Battle Girl,"
@@ -168,33 +162,21 @@ TrainerBird_keeperTheo:
 
 Bird_keeperTheoScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b2df
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5b2df
 
 TrainerGentlemanPreston:
 	trainer EVENT_BEAT_GENTLEMAN_PRESTON, GENTLEMAN, PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText, 0, GentlemanPrestonScript
 
 GentlemanPrestonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b457
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5b457
 
 TrainerSailorTerrell:
 	trainer EVENT_BEAT_SAILOR_TERRELL, SAILOR, TERRELL, SailorTerrellSeenText, SailorTerrellBeatenText, 0, SailorTerrellScript
 
 SailorTerrellScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b384
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5b384
 
 Bird_keeperTheoSeenText:
 	text "Why are you here?"

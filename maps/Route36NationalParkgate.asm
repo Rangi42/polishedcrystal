@@ -20,7 +20,7 @@ Route36NationalParkgate_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 6, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
+	signpost 0, 6, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
 .PersonEvents: db 12
 	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
@@ -225,34 +225,19 @@ Route36OfficerScriptContest:
 	jump .ResumeStartingContest
 
 .DecidedNotToJoinContest:
-	writetext UnknownText_0x6a5dc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a5dc
 
 .RefusedToLeaveMons:
-	writetext UnknownText_0x6a597
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a597
 
 .FirstMonIsFainted:
-	writetext UnknownText_0x6a608
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a608
 
 .BoxFull:
-	writetext UnknownText_0x6a67c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a67c
 
 .FirstMonIsEgg:
-	writetext UnknownText_0x6a71f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a71f
 
 Route36Officer_ContestHasConcluded:
 	checkevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
@@ -263,10 +248,7 @@ Route36Officer_ContestHasConcluded:
 	iftrue .SitrusBerry
 	checkevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
 	iftrue .OranBerry
-	writetext UnknownText_0x6a84f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a84f
 
 .SunStone:
 	writetext UnknownText_0x6b97f
@@ -305,10 +287,7 @@ Route36Officer_ContestHasConcluded:
 	end
 
 .BagFull:
-	writetext UnknownText_0x6b910
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b910
 
 _ContestNotOn:
 	jumptextfaceplayer UnknownText_0x6b370
@@ -318,10 +297,7 @@ OfficerScript_0x6acf4:
 	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
-	writetext UnknownText_0x6b370
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b370
 
 Route36Parkgate_DayToText:
 	jumpstd daytotext
@@ -332,160 +308,100 @@ BugCatcherScript_0x6ad06:
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad14
-	writetext UnknownText_0x6b399
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b399
 
 UnknownScript_0x6ad14:
-	writetext UnknownText_0x6b3c4
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b3c4
 
 BugManiacScript_0x6ad1a:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad28
-	writetext UnknownText_0x6b40f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b40f
 
 UnknownScript_0x6ad28:
-	writetext UnknownText_0x6b440
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b440
 
 CooltrainerMScript_0x6ad2e:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad3c
-	writetext UnknownText_0x6b462
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b462
 
 UnknownScript_0x6ad3c:
-	writetext UnknownText_0x6b496
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b496
 
 PokefanMScript_0x6ad42:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad50
-	writetext UnknownText_0x6b4da
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b4da
 
 UnknownScript_0x6ad50:
-	writetext UnknownText_0x6b50a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b50a
 
 BugCatcherScript_0x6ad56:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad64
-	writetext UnknownText_0x6b54e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b54e
 
 UnknownScript_0x6ad64:
-	writetext UnknownText_0x6b57c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b57c
 
 YoungsterScript_0x6ad6a:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad78
-	writetext UnknownText_0x6b5b0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b5b0
 
 UnknownScript_0x6ad78:
-	writetext UnknownText_0x6b5dd
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b5dd
 
 LassScript_0x6ad7e:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ad8c
-	writetext UnknownText_0x6b64b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b64b
 
 UnknownScript_0x6ad8c:
-	writetext UnknownText_0x6b698
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b698
 
 BugCatcherScript_0x6ad92:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6ada0
-	writetext UnknownText_0x6b6b8
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b6b8
 
 UnknownScript_0x6ada0:
-	writetext UnknownText_0x6b6e9
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b6e9
 
 YoungsterScript_0x6ada6:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6adb4
-	writetext UnknownText_0x6b71b
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b71b
 
 UnknownScript_0x6adb4:
-	writetext UnknownText_0x6b740
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b740
 
 YoungsterScript_0x6adba:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iffalse UnknownScript_0x6adc8
-	writetext UnknownText_0x6b76f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b76f
 
 UnknownScript_0x6adc8:
-	writetext UnknownText_0x6b7af
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6b7af
 
 MovementData_0x6add1:
 	run_step_down

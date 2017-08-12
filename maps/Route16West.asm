@@ -12,8 +12,8 @@ Route16West_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 2, 59, SIGNPOST_READ, Route16WestSignpost
-	signpost 5, 24, SIGNPOST_ITEM, Route16WestHiddenRareCandy
+	signpost 2, 59, SIGNPOST_JUMPTEXT, Route16WestSignpostText
+	signpost 5, 24, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_16_WEST_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 10
 	person_event SPRITE_LASS, 7, 56, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassGina, -1
@@ -21,22 +21,18 @@ Route16West_MapEventHeader:
 	person_event SPRITE_COSPLAYER, 12, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCosplayerKuroko, -1
 	person_event SPRITE_COOLTRAINER_F, 11, 40, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfSera, -1
 	person_event SPRITE_BEAUTY, 2, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyNicole, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 14, 42, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, METRONOME_I, 1, EVENT_ROUTE_16_WEST_METRONOME
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_ROUTE_16_WEST_PP_UP
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REVIVE, 1, EVENT_ROUTE_16_WEST_MAX_REVIVE
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 3, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16WestCutTree, EVENT_ROUTE_16_WEST_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 57, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route16WestCutTree, EVENT_ROUTE_16_WEST_CUT_TREE_2
+	itemball_event 14, 42, METRONOME_I, 1, EVENT_ROUTE_16_WEST_METRONOME
+	itemball_event 2, 51, PP_UP, 1, EVENT_ROUTE_16_WEST_PP_UP
+	itemball_event 2, 21, MAX_REVIVE, 1, EVENT_ROUTE_16_WEST_MAX_REVIVE
+	cuttree_event 7, 3, EVENT_ROUTE_16_WEST_CUT_TREE_1
+	cuttree_event 2, 57, EVENT_ROUTE_16_WEST_CUT_TREE_2
 
 TrainerLassGina:
 	trainer EVENT_BEAT_LASS_GINA, LASS, GINA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Check out my new"
@@ -60,11 +56,7 @@ TrainerLassAlice:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Our eyes met!"
@@ -91,11 +83,7 @@ TrainerCosplayerKuroko:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "See how lifelike"
@@ -118,11 +106,7 @@ TrainerCooltrainerfSera:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you think you"
@@ -147,11 +131,7 @@ TrainerBeautyNicole:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Aren't my #mon"
@@ -169,15 +149,6 @@ TrainerBeautyNicole:
 	cont "you know!"
 	done
 
-Route16WestCutTree:
-	jumpstd cuttree
-
-Route16WestSignpost:
-	jumptext .Text
-
-.Text:
+Route16WestSignpostText:
 	text "Route 16"
 	done
-
-Route16WestHiddenRareCandy:
-	dwb EVENT_ROUTE_16_WEST_HIDDEN_RARE_CANDY, RARE_CANDY

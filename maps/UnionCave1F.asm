@@ -15,9 +15,9 @@ UnionCave1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 19, 7, SIGNPOST_ITEM, UnionCave1FHiddenGreatBall
-	signpost 33, 2, SIGNPOST_ITEM, UnionCave1FHiddenBigPearl
-	signpost 33, 8, SIGNPOST_ITEM, UnionCave1FHiddenParlyzHeal
+	signpost 19, 7, SIGNPOST_ITEM + GREAT_BALL, EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL
+	signpost 33, 2, SIGNPOST_ITEM + BIG_PEARL, EVENT_UNION_CAVE_1F_HIDDEN_BIG_PEARL
+	signpost 33, 8, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL
 
 .PersonEvents: db 10
 	person_event SPRITE_POKEFAN_M, 18, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerDaniel, -1
@@ -26,85 +26,52 @@ UnionCave1F_MapEventHeader:
 	person_event SPRITE_FISHER, 39, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherRay, -1
 	person_event SPRITE_FISHER, 32, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherBill, -1
 	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerRuin_maniacJones, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 33, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, GREAT_BALL, 1, EVENT_UNION_CAVE_1F_GREAT_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_ATTACK, 1, EVENT_UNION_CAVE_1F_X_ATTACK
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, POTION, 1, EVENT_UNION_CAVE_1F_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 45, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, AWAKENING, 1, EVENT_UNION_CAVE_1F_AWAKENING
+	itemball_event 33, 15, GREAT_BALL, 1, EVENT_UNION_CAVE_1F_GREAT_BALL
+	itemball_event 8, 2, X_ATTACK, 1, EVENT_UNION_CAVE_1F_X_ATTACK
+	itemball_event 28, 3, POTION, 1, EVENT_UNION_CAVE_1F_POTION
+	itemball_event 45, 12, AWAKENING, 1, EVENT_UNION_CAVE_1F_AWAKENING
 
 TrainerPokemaniacLarry:
 	trainer EVENT_BEAT_POKEMANIAC_LARRY, POKEMANIAC, LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText, 0, PokemaniacLarryScript
 
 PokemaniacLarryScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x59d31
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x59d31
 
 TrainerHikerRussell:
 	trainer EVENT_BEAT_HIKER_RUSSELL, HIKER, RUSSELL, HikerRussellSeenText, HikerRussellBeatenText, 0, HikerRussellScript
 
 HikerRussellScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x59c6c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x59c6c
 
 TrainerHikerDaniel:
 	trainer EVENT_BEAT_HIKER_DANIEL, HIKER, DANIEL, HikerDanielSeenText, HikerDanielBeatenText, 0, HikerDanielScript
 
 HikerDanielScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x59dc9
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x59dc9
 
 TrainerFirebreatherBill:
 	trainer EVENT_BEAT_FIREBREATHER_BILL, FIREBREATHER, BILL, FirebreatherBillSeenText, FirebreatherBillBeatenText, 0, FirebreatherBillScript
 
 FirebreatherBillScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x59e6f
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x59e6f
 
 TrainerFirebreatherRay:
 	trainer EVENT_BEAT_FIREBREATHER_RAY, FIREBREATHER, RAY, FirebreatherRaySeenText, FirebreatherRayBeatenText, 0, FirebreatherRayScript
 
 FirebreatherRayScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x59efc
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x59efc
 
 TrainerRuin_maniacJones:
 	trainer EVENT_BEAT_RUIN_MANIAC_JONES, RUIN_MANIAC, JONES, Ruin_maniacJonesSeenText, Ruin_maniacJonesBeatenText, 0, Ruin_maniacJonesScript
 
 Ruin_maniacJonesScript:
 	end_if_just_battled
-	opentext
-	writetext Ruin_maniacJonesAfterText
-	waitbutton
-	closetext
-	end
-
-UnionCave1FHiddenGreatBall:
-	dwb EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL, GREAT_BALL
-
-UnionCave1FHiddenBigPearl:
-	dwb EVENT_UNION_CAVE_1F_HIDDEN_BIG_PEARL, BIG_PEARL
-
-UnionCave1FHiddenParlyzHeal:
-	dwb EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL
+	jumptextfaceplayer Ruin_maniacJonesAfterText
 
 HikerRussellSeenText:
 	text "You're headed to"

@@ -15,10 +15,10 @@ NationalParkBugContest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 44, 16, SIGNPOST_READ, MapNationalParkSignpost0Script
-	signpost 31, 29, SIGNPOST_READ, MapNationalParkSignpost1Script
-	signpost 47, 8, SIGNPOST_ITEM, NationalParkHiddenFullHeal
-	signpost 4, 14, SIGNPOST_READ, MapNationalParkSignpost3Script
+	signpost 44, 16, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
+	signpost 31, 29, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
+	signpost 4, 14, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
+	signpost 47, 8, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 12
 	person_event SPRITE_BUG_CATCHER, 29, 21, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x5c8ec, EVENT_BUG_CATCHING_CONTESTANT_1A
@@ -31,88 +31,48 @@ NationalParkBugContest_MapEventHeader:
 	person_event SPRITE_BUG_CATCHER, 27, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x5c924, EVENT_BUG_CATCHING_CONTESTANT_8A
 	person_event SPRITE_YOUNGSTER, 8, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5c92c, EVENT_BUG_CATCHING_CONTESTANT_9A
 	person_event SPRITE_YOUNGSTER, 34, 19, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5c934, EVENT_BUG_CATCHING_CONTESTANT_10A
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 43, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
+	itemball_event 12, 37, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
+	tmhmball_event 43, 3, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
 
 BugCatcherScript_0x5c8ec:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c94c
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c94c
 
 BugManiacScript_0x5c8f4:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c973
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c973
 
 CooltrainerMScript_0x5c8fc:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c9a3
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c9a3
 
 PokefanMScript_0x5c904:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5c9cc
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5c9cc
 
 BugCatcherScript_0x5c90c:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5ca15
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ca15
 
 YoungsterScript_0x5c914:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5ca52
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ca52
 
 LassScript_0x5c91c:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5ca8f
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5ca8f
 
 BugCatcherScript_0x5c924:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5cac8
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5cac8
 
 YoungsterScript_0x5c92c:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5cb25
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5cb25
 
 YoungsterScript_0x5c934:
 	faceplayer
-	opentext
-	writetext UnknownText_0x5cb64
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x5cb64
 
 UnknownText_0x5c94c:
 	text "Don: I'm going to"

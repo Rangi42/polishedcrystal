@@ -25,16 +25,16 @@ CinnabarVolcanoB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 28, SIGNPOST_ITEM, CinnabarVolcanoB1FHiddenMaxRevive
-	signpost 18, 28, SIGNPOST_ITEM, CinnabarVolcanoB1FHiddenDireHit
+	signpost 5, 28, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE
+	signpost 18, 28, SIGNPOST_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
 
 .PersonEvents: db 6
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 5, 6, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoB1FBoulder, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 28, 8, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoB1FRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 17, 28, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoB1FRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 5, 27, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoB1FRock, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 29, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
+	strengthboulder_event 5, 6, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
+	smashrock_event 28, 8
+	smashrock_event 17, 28
+	smashrock_event 5, 27
+	itemball_event 18, 2, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
+	itemball_event 29, 4, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
 const_value set 2
 	const CINNABARVOLCANOB1F_BOULDER
@@ -77,28 +77,12 @@ CinnabarVolcanoB1FBouldersFall:
 .Fall:
 	pause 30
 	scall .FX
-	opentext
-	writetext CinnabarVolcanoB1FBoulderFellText
-	waitbutton
-	closetext
-	end
+	jumptext CinnabarVolcanoB1FBoulderFellText
 
 .FX:
 	playsound SFX_STRENGTH
 	earthquake 80
 	end
-
-CinnabarVolcanoB1FBoulder:
-	jumpstd strengthboulder
-
-CinnabarVolcanoB1FRock:
-	jumpstd smashrock
-
-CinnabarVolcanoB1FHiddenMaxRevive:
-	dwb EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-CinnabarVolcanoB1FHiddenDireHit:
-	dwb EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT, DIRE_HIT
 
 CinnabarVolcanoB1FBoulderFellText:
 	text "The boulder fell"

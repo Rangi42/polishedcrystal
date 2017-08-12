@@ -21,20 +21,11 @@ MountMoonB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 18, 5, SIGNPOST_ITEM, MountMoonB1FHiddenStarPiece
-	signpost 26, 24, SIGNPOST_ITEM, MountMoonB1FHiddenMoonStone
+	signpost 18, 5, SIGNPOST_ITEM + STAR_PIECE, EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE
+	signpost 26, 24, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE
 
 .PersonEvents: db 1
-	person_event SPRITE_POKEFAN_M, 20, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MountMoonB1FPokefanmScript, -1
-
-MountMoonB1FPokefanmScript:
-	jumptextfaceplayer MountMoonB1FPokefanmText
-
-MountMoonB1FHiddenStarPiece:
-	dwb EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE, STAR_PIECE
-
-MountMoonB1FHiddenMoonStone:
-	dwb EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE, MOON_STONE
+	person_event SPRITE_POKEFAN_M, 20, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, MountMoonB1FPokefanmText, -1
 
 MountMoonB1FPokefanmText:
 	text "I'm excavating for"

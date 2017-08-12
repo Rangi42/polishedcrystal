@@ -15,27 +15,18 @@ CeladonHotel1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 2, 7, SIGNPOST_READ, CeladonHotel1FSignpost1Script
-	signpost 0, 13, SIGNPOST_READ, CeladonHotel1FSignpost2Script
-	signpost 0, 17, SIGNPOST_READ, CeladonHotel1FSignpost3Script
+	signpost 2, 7, SIGNPOST_JUMPTEXT, CeladonHotel1FSignpost1Text
+	signpost 0, 13, SIGNPOST_JUMPTEXT, CeladonHotel1FSignpost2Text
+	signpost 0, 17, SIGNPOST_JUMPTEXT, CeladonHotel1FSignpost3Text
 
 .PersonEvents: db 4
 	person_event SPRITE_RICH_BOY, 6, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FRichBoyGeraldScript, -1
-	person_event SPRITE_GRAMPS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonHotel1FGrampsScript, -1
-	person_event SPRITE_LADY, 4, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FLadyScript, -1
-	person_event SPRITE_COOLTRAINER_F, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonHotel1FCooltrainerFScript, -1
+	person_event SPRITE_GRAMPS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FGrampsText, -1
+	person_event SPRITE_LADY, 4, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FLadyText, -1
+	person_event SPRITE_COOLTRAINER_F, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FCooltrainerFText, -1
 
 const_value set 2
 	const CELADONHOTEL1F_RICH_BOY
-
-CeladonHotel1FGrampsScript:
-	jumptextfaceplayer CeladonHotel1FGrampsText
-
-CeladonHotel1FLadyScript:
-	jumptextfaceplayer CeladonHotel1FLadyText
-
-CeladonHotel1FCooltrainerFScript:
-	jumptextfaceplayer CeladonHotel1FCooltrainerFText
 
 CeladonHotel1FRichBoyGeraldScript:
 	faceplayer
@@ -57,25 +48,10 @@ CeladonHotel1FRichBoyGeraldScript:
 	end
 
 RichBoyGeraldAfterScript:
-	writetext RichBoyGeraldAfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext RichBoyGeraldAfterText
 
 RichBoyGeraldNoBattleScript:
-	writetext RichBoyGeraldNoBattleText
-	waitbutton
-	closetext
-	end
-
-CeladonHotel1FSignpost1Script:
-	jumptext CeladonHotel1FSignpost1Text
-
-CeladonHotel1FSignpost2Script:
-	jumptext CeladonHotel1FSignpost2Text
-
-CeladonHotel1FSignpost3Script:
-	jumptext CeladonHotel1FSignpost3Text
+	jumpopenedtext RichBoyGeraldNoBattleText
 
 CeladonHotel1FGrampsText:
 	text "#mon? No, this"

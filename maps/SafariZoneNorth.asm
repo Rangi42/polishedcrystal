@@ -20,53 +20,41 @@ SafariZoneNorth_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 6
-	signpost 33, 15, SIGNPOST_READ, SafariZoneNorthAreaSign
-	signpost 6, 38, SIGNPOST_READ, SafariZoneNorthRestHouseSign
-	signpost 30, 28, SIGNPOST_READ, SafariZoneNorthTrainerTips1Sign
-	signpost 34, 20, SIGNPOST_READ, SafariZoneNorthTrainerTips2Sign
-	signpost 27, 5, SIGNPOST_READ, SafariZoneNorthTrainerTips3Sign
-	signpost 19, 31, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
+	signpost 33, 15, SIGNPOST_JUMPTEXT, SafariZoneNorthAreaSignText
+	signpost 6, 38, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
+	signpost 30, 28, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
+	signpost 34, 20, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips2SignText
+	signpost 27, 5, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
+	signpost 19, 31, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
 
 .PersonEvents: db 6
 	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
 	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
 	person_event SPRITE_BEAUTY, 9, 36, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
 	person_event SPRITE_COOLTRAINER_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, EVIOLITE, 1, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
+	itemball_event 18, 24, EVIOLITE, 1, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
+	itemball_event 9, 21, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
 
 TrainerBattleGirlPadma:
 	trainer EVENT_BEAT_BATTLE_GIRL_PADMA, BATTLE_GIRL, PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript
 
 BattleGirlPadmaScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlPadmaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BattleGirlPadmaAfterText
 
 TrainerYoungsterTyler:
 	trainer EVENT_BEAT_YOUNGSTER_TYLER, YOUNGSTER, TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
 
 YoungsterTylerScript:
 	end_if_just_battled
-	opentext
-	writetext YoungsterTylerAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer YoungsterTylerAfterText
 
 TrainerBeautyRachael:
 	trainer EVENT_BEAT_BEAUTY_RACHAEL, BEAUTY, RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
 
 BeautyRachaelScript:
 	end_if_just_battled
-	opentext
-	writetext BeautyRachaelAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BeautyRachaelAfterText
 
 SafariZoneNorthCooltrainerFScript:
 	faceplayer
@@ -89,41 +77,14 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_SafariZoneNorthTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_SafariZoneNorthTutorRefused
 
 .NoSilverLeaf
-	writetext Text_SafariZoneNorthTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_SafariZoneNorthTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_SafariZoneNorthTutorTaught
-	waitbutton
-	closetext
-	end
-
-SafariZoneNorthAreaSign:
-	jumptext SafariZoneNorthAreaSignText
-
-SafariZoneNorthRestHouseSign:
-	jumptext SafariZoneNorthRestHouseSignText
-
-SafariZoneNorthTrainerTips1Sign:
-	jumptext SafariZoneNorthTrainerTips1SignText
-
-SafariZoneNorthTrainerTips2Sign:
-	jumptext SafariZoneNorthTrainerTips2SignText
-
-SafariZoneNorthTrainerTips3Sign:
-	jumptext SafariZoneNorthTrainerTips3SignText
-
-SafariZoneNorthHiddenLuckyPunch:
-	dwb EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH, LUCKY_PUNCH
+	jumpopenedtext Text_SafariZoneNorthTutorTaught
 
 BattleGirlPadmaSeenText:
 	text "I spar with my"

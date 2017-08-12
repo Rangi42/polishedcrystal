@@ -17,7 +17,7 @@ DayCare_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 5, SIGNPOST_READ, DayCareBookshelf
+	signpost 1, 5, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 3
 	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
@@ -72,18 +72,12 @@ DayCare_MeetGrandma:
 	waitbutton
 	closetext
 	spriteface DAYCARE_LYRA, DOWN
-	opentext
-	writetext DayCareLyraGoodbyeText
-	waitbutton
-	closetext
+	showtext DayCareLyraGoodbyeText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraStartsToLeave
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
 	spriteface DAYCARE_LYRA, LEFT
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext DayCareLyraForgotText
-	waitbutton
-	closetext
+	showtext DayCareLyraForgotText
 	addcellnum PHONE_LYRA
 	opentext
 	writetext GotLyrasNumberText
@@ -92,10 +86,7 @@ DayCare_MeetGrandma:
 	waitbutton
 	closetext
 	spriteface DAYCARE_LYRA, UP
-	opentext
-	writetext DayCareLyraEmbarassedText
-	waitbutton
-	closetext
+	showtext DayCareLyraEmbarassedText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraLeaves
 	disappear DAYCARE_LYRA
 	dotrigger $1
@@ -121,10 +112,7 @@ DayCareManScript_Inside:
 	end
 
 .PartyFull:
-	writetext DayCareText_PartyFull
-	waitbutton
-	closetext
-	end
+	jumpopenedtext DayCareText_PartyFull
 
 .AlreadyHaveOddEgg:
 	special Special_DayCareMan
@@ -169,10 +157,7 @@ DayCareLadyScript:
 	end
 
 .PartyFull:
-	writetext DayCareText_PartyFull
-	waitbutton
-	closetext
-	end
+	jumpopenedtext DayCareText_PartyFull
 
 .NoLyrasEgg:
 	special Special_DayCareLady
@@ -181,13 +166,7 @@ DayCareLadyScript:
 	end
 
 .HusbandWasLookingForYou:
-	writetext Text_GrampsLookingForYou
-	waitbutton
-	closetext
-	end
-
-DayCareBookshelf:
-	jumpstd difficultbookshelf
+	jumpopenedtext Text_GrampsLookingForYou
 
 DayCareMovementData_LyraApproachesGrandma:
 	step_right

@@ -21,9 +21,9 @@ BattleTowerOutside_MapEventHeader:
 	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
 
 .PersonEvents: db 4
-	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideYoungsterText, -1
-	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideBeautyText, -1
-	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, BattleTowerOutsideSailorText, -1
+	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideYoungsterText, -1
+	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideBeautyText, -1
+	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, -1
 	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BattleTowerOutsideStepDownTrigger:
@@ -35,17 +35,12 @@ BattleTowerOutsideStepDownTrigger:
 	if_not_equal $9, .Done
 	checkcode VAR_XCOORD
 	if_equal $8, .Down
-	if_equal $9, .Down
-	jump .Done
+	if_not_equal $9, .Done
 .Down
-	applymovement PLAYER, .StepDownMovement
+	applyonemovement PLAYER, step_down
 .Done
 	dotrigger $1
 	end
-
-.StepDownMovement:
-	step_down
-	step_end
 
 BattleTowerOutsidePanUpTrigger1:
 	scall BattleTowerOutsidePanUpHelperScript
@@ -59,7 +54,7 @@ BattleTowerOutsidePanUpTrigger2:
 
 BattleTowerOutsidePanUpHelperScript:
 	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, .HidePlayerMovement
+	applyonemovement PLAYER, hide_person
 	waitsfx
 	applymovement PLAYER, .PanUpMovement
 	disappear PLAYER
@@ -69,10 +64,6 @@ BattleTowerOutsidePanUpHelperScript:
 	pause 15
 	dotrigger $0
 	end
-
-.HidePlayerMovement:
-	hide_person
-	step_end
 
 .PanUpMovement:
 	step_up

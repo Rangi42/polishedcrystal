@@ -26,10 +26,7 @@ PharmacistScript_0x71afd:
 	buttonsound
 	checknite
 	iftrue UnknownScript_0x71b14
-	writetext UnknownText_0x71b4a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x71b4a
 
 UnknownScript_0x71b14:
 	writetext UnknownText_0x71ba3
@@ -37,10 +34,7 @@ UnknownScript_0x71b14:
 	verbosegivetmhm TM_CURSE
 	setevent EVENT_GOT_TM03_CURSE
 UnknownScript_0x71b21:
-	writetext UnknownText_0x71db3
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x71db3
 
 UnknownText_0x71b27:
 	text "Let me recount a"

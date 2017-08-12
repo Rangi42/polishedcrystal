@@ -20,62 +20,43 @@ QuietCaveB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 33, 26, SIGNPOST_ITEM, QuietCaveB1FHiddenHyperPotion
+	signpost 33, 26, SIGNPOST_ITEM + HYPER_POTION, EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 6
 	person_event SPRITE_COOLTRAINER_F, 4, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
 	person_event SPRITE_SUPER_NERD, 17, 21, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1
 	person_event SPRITE_POKEFAN_M, 30, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSteve, -1
 	person_event SPRITE_YOUNGSTER, 7, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicVirgil, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ELIXER, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
+	itemball_event 3, 8, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
+	itemball_event 13, 14, ELIXER, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
 
 TrainerBattleGirlKagami:
 	trainer EVENT_BEAT_BATTLE_GIRL_KAGAMI, BATTLE_GIRL, KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText, 0, BattleGirlKagamiScript
 
 BattleGirlKagamiScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlKagamiAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BattleGirlKagamiAfterText
 
 TrainerPokemaniacAidan:
 	trainer EVENT_BEAT_POKEMANIAC_AIDAN, POKEMANIAC, AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText, 0, PokemaniacAidanScript
 
 PokemaniacAidanScript:
 	end_if_just_battled
-	opentext
-	writetext PokemaniacAidanAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer PokemaniacAidanAfterText
 
 TrainerHikerSteve:
 	trainer EVENT_BEAT_HIKER_STEVE, HIKER, STEVE, HikerSteveSeenText, HikerSteveBeatenText, 0, HikerSteveScript
 
 HikerSteveScript:
 	end_if_just_battled
-	opentext
-	writetext HikerSteveAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer HikerSteveAfterText
 
 TrainerPsychicVirgil:
 	trainer EVENT_BEAT_PSYCHIC_VIRGIL, PSYCHIC_T, VIRGIL, PsychicVirgilSeenText, PsychicVirgilBeatenText, 0, PsychicVirgilScript
 
 PsychicVirgilScript:
 	end_if_just_battled
-	opentext
-	writetext PsychicVirgilAfterText
-	waitbutton
-	closetext
-	end
-
-QuietCaveB1FHiddenHyperPotion:
-	dwb EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION, HYPER_POTION
+	jumptextfaceplayer PsychicVirgilAfterText
 
 BattleGirlKagamiSeenText:
 	text "Don't disturb my"

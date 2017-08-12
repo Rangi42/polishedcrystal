@@ -15,24 +15,12 @@ CeladonHotel2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 0, 5, SIGNPOST_READ, CeladonHotel2FRoom1Script
-	signpost 0, 9, SIGNPOST_READ, CeladonHotel2FRoom2Script
-	signpost 0, 13, SIGNPOST_READ, CeladonHotel2FRoom3Script
+	signpost 0, 5, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom1Text
+	signpost 0, 9, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom2Text
+	signpost 0, 13, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom3Text
 
 .PersonEvents: db 1
-	person_event SPRITE_TEACHER, 2, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonHotel2FTeacherScript, -1
-
-CeladonHotel2FTeacherScript:
-	jumptextfaceplayer CeladonHotel2FTeacherText
-
-CeladonHotel2FRoom1Script:
-	jumptext CeladonHotel2FRoom1Text
-
-CeladonHotel2FRoom2Script:
-	jumptext CeladonHotel2FRoom2Text
-
-CeladonHotel2FRoom3Script:
-	jumptext CeladonHotel2FRoom3Text
+	person_event SPRITE_TEACHER, 2, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel2FTeacherText, -1
 
 CeladonHotel2FTeacherText:
 	text "I'm on a surprise"

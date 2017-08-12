@@ -13,7 +13,7 @@ EcruteakItemfinderHouse_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 2, SIGNPOST_READ, ItemFinderHouseRadio
+	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
 .PersonEvents: db 2
 	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9a5fb, -1
@@ -32,16 +32,10 @@ CooltrainerMScript_0x9a5fb:
 	verbosegiveitem ITEMFINDER
 	setevent EVENT_GOT_ITEMFINDER
 UnknownScript_0x9a614:
-	writetext UnknownText_0x9a70e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9a70e
 
 UnknownScript_0x9a61a:
-	writetext UnknownText_0x9a805
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x9a805
 
 BookScript_0x9a620:
 	opentext
@@ -59,13 +53,7 @@ UnknownScript_0x9a62a:
 	end
 
 UnknownScript_0x9a633:
-	writetext UnknownText_0x9a902
-	waitbutton
-	closetext
-	end
-
-ItemFinderHouseRadio:
-	jumpstd radio2
+	jumpopenedtext UnknownText_0x9a902
 
 UnknownText_0x9a63c:
 	text "Ah. You're on an"

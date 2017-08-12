@@ -37,24 +37,15 @@ WarmBeachShackTutorBodySlamScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_WarmBeachShackTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WarmBeachShackTutorRefused
 
 .NoSilverLeaf
 	waitbutton
-	writetext Text_WarmBeachShackTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WarmBeachShackTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_WarmBeachShackTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_WarmBeachShackTutorTaught
 
 WarmBeachShackFisherText:
 	text "Ready?"

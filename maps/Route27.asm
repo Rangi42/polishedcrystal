@@ -17,11 +17,11 @@ Route27_MapEventHeader:
 	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
 
 .Signposts: db 1
-	signpost 7, 25, SIGNPOST_READ, TohjoFallsSign
+	signpost 7, 25, SIGNPOST_JUMPTEXT, TohjoFallsSignText
 
 .PersonEvents: db 13
 	person_event SPRITE_VETERAN_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
-	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 3, FisherScript_0x1a089c, -1
+	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0a71, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 59, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
@@ -29,10 +29,10 @@ Route27_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 6, 37, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
 	person_event SPRITE_YOUNGSTER, 7, 65, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
 	person_event SPRITE_YOUNGSTER, 13, 58, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 58, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_DRAGON_CLAW, EVENT_ROUTE_27_TM_DRAGON_CLAW
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 53, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, RARE_CANDY, 1, EVENT_ROUTE_27_RARE_CANDY
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 71, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 60, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_Route27LumBerry, -1
+	tmhmball_event 12, 58, TM_DRAGON_CLAW, EVENT_ROUTE_27_TM_DRAGON_CLAW
+	itemball_event 12, 53, RARE_CANDY, 1, EVENT_ROUTE_27_RARE_CANDY
+	itemball_event 4, 71, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
+	fruittree_event 12, 60, FRUITTREE_ROUTE_27, LUM_BERRY
 
 const_value set 2
 	const ROUTE27_VETERAN_F
@@ -62,12 +62,6 @@ UnknownScript_0x1a088c:
 	closetext
 	dotrigger $1
 	end
-
-FisherScript_0x1a089c:
-	jumptextfaceplayer UnknownText_0x1a0a71
-
-FruitTreeScript_Route27LumBerry:
-	fruittree FRUITTREE_ROUTE_27
 
 Route27VeteranfScript:
 	faceplayer
@@ -131,16 +125,10 @@ Route27VeteranfScript:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Hm! If you're here,"
@@ -212,11 +200,7 @@ TrainerPsychicGilbert:
 
 PsychicGilbertScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a0dd2
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a0dd2
 
 TrainerBird_keeperJose1:
 	trainer EVENT_BEAT_BIRD_KEEPER_JOSE, BIRD_KEEPER, JOSE1, Bird_keeperJose1SeenText, Bird_keeperJose1BeatenText, 0, Bird_keeperJose1Script
@@ -336,33 +320,21 @@ TrainerCooltrainermBlake:
 
 CooltrainermBlakeScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a0b0b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a0b0b
 
 TrainerAceDuoJakeandbri1:
 	trainer EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, ACE_DUO, JAKEANDBRI1, AceDuoJakeandbri1SeenText, AceDuoJakeandbri1BeatenText, 0, AceDuoJakeandbri1Script
 
 AceDuoJakeandbri1Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoJakeandbri1AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer AceDuoJakeandbri1AfterText
 
 TrainerAceDuoJakeandbri2:
 	trainer EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, ACE_DUO, JAKEANDBRI2, AceDuoJakeandbri2SeenText, AceDuoJakeandbri2BeatenText, 0, AceDuoJakeandbri2Script
 
 AceDuoJakeandbri2Script:
 	end_if_just_battled
-	opentext
-	writetext AceDuoJakeandbri2AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer AceDuoJakeandbri2AfterText
 
 TrainerCooltrainerfReena:
 	trainer EVENT_BEAT_COOLTRAINERF_REENA, COOLTRAINERF, REENA1, CooltrainerfReena1SeenText, CooltrainerfReena1BeatenText, 0, CooltrainerfReena1Script
@@ -462,14 +434,7 @@ TrainerCooltrainerfMegan:
 
 CooltrainerfMeganScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a0cce
-	waitbutton
-	closetext
-	end
-
-TohjoFallsSign:
-	jumptext TohjoFallsSignText
+	jumptextfaceplayer UnknownText_0x1a0cce
 
 MovementData_0x1a0a66:
 	step_left

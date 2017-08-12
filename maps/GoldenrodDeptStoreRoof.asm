@@ -21,17 +21,13 @@ GoldenrodDeptStoreRoof_MapEventHeader:
 
 .PersonEvents: db 8
 	person_event SPRITE_FISHER, 1, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FisherScript_0x56749, -1
+	person_event SPRITE_POKEFAN_F, 3, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5677f, -1
 	person_event SPRITE_SUPER_NERD, 6, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x56757, EVENT_GOLDENROD_SALE_ON
-	person_event SPRITE_CLERK, 4, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x5673f, EVENT_GOLDENROD_SALE_OFF
-	person_event SPRITE_POKEFAN_F, 3, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x56746, -1
-	person_event SPRITE_TWIN, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x56754, EVENT_GOLDENROD_SALE_ON
-	person_event SPRITE_POKEFAN_M, 0, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x5676a, EVENT_GOLDENROD_SALE_OFF
-	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5676d, EVENT_GOLDENROD_SALE_OFF
-	person_event SPRITE_BUG_CATCHER, 6, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x56770, EVENT_GOLDENROD_SALE_OFF
-
-const_value set 2
-	const GOLDENRODDEPTSTOREROOF_FISHER
-	const GOLDENRODDEPTSTOREROOF_SUPER_NERD
+	person_event SPRITE_TWIN, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x56839, EVENT_GOLDENROD_SALE_ON
+	person_event SPRITE_CLERK, 4, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_ROOFTOP, 0, EVENT_GOLDENROD_SALE_OFF
+	person_event SPRITE_POKEFAN_M, 0, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5688e, EVENT_GOLDENROD_SALE_OFF
+	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x56901, EVENT_GOLDENROD_SALE_OFF
+	person_event SPRITE_BUG_CATCHER, 6, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x56942, EVENT_GOLDENROD_SALE_OFF
 
 GoldenrodDeptStoreRoofCheckSaleChangeBlock:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
@@ -55,15 +51,6 @@ GoldenrodDeptStoreRoofCheckSaleChangeClerk:
 	setevent EVENT_GOLDENROD_SALE_ON
 	return
 
-ClerkScript_0x5673f:
-	opentext
-	pokemart MARTTYPE_ROOFTOP, 0
-	closetext
-	end
-
-PokefanFScript_0x56746:
-	jumptextfaceplayer UnknownText_0x5677f
-
 FisherScript_0x56749:
 	faceplayer
 	opentext
@@ -84,33 +71,15 @@ FisherScript_0x56749:
 	waitbutton
 .AlreadyGotVoltorbDoll
 	closetext
-	spriteface GOLDENRODDEPTSTOREROOF_FISHER, UP
+	spriteface LAST_TALKED, UP
 	end
-
-TwinScript_0x56754:
-	jumptextfaceplayer UnknownText_0x56839
 
 SuperNerdScript_0x56757:
-	opentext
-	writetext UnknownText_0x56867
-	waitbutton
-	closetext
-	spriteface GOLDENRODDEPTSTOREROOF_SUPER_NERD, UP
-	opentext
-	writetext UnknownText_0x56871
-	waitbutton
-	closetext
-	spriteface GOLDENRODDEPTSTOREROOF_SUPER_NERD, RIGHT
+	showtext UnknownText_0x56867
+	faceplayer
+	showtext UnknownText_0x56871
+	spriteface LAST_TALKED, RIGHT
 	end
-
-PokefanMScript_0x5676a:
-	jumptextfaceplayer UnknownText_0x5688e
-
-TeacherScript_0x5676d:
-	jumptextfaceplayer UnknownText_0x56901
-
-BugCatcherScript_0x56770:
-	jumptextfaceplayer UnknownText_0x56942
 
 Binoculars1:
 	jumptext Binoculars1Text

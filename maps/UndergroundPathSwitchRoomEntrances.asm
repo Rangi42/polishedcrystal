@@ -27,8 +27,8 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, Switch2Script
 	signpost 1, 2, SIGNPOST_READ, Switch3Script
 	signpost 11, 20, SIGNPOST_READ, EmergencySwitchScript
-	signpost 9, 8, SIGNPOST_ITEM, UndergroundPathSwitchRoomEntrancesHiddenMaxPotion
-	signpost 8, 1, SIGNPOST_ITEM, UndergroundPathSwitchRoomEntrancesHiddenRevive
+	signpost 9, 8, SIGNPOST_ITEM + MAX_POTION, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION
+	signpost 8, 1, SIGNPOST_ITEM + REVIVE, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE
 
 .PersonEvents: db 12
 	person_event SPRITE_SILVER, 3, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
@@ -38,11 +38,11 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	person_event SPRITE_ROCKET, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM11, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_TEACHER, 25, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7ca7d, -1
-	person_event SPRITE_SUPER_NERD, 24, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, UndergroundPathSwitchRoomEntrancesSuperNerd1Script, -1
-	person_event SPRITE_SUPER_NERD, 25, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x7ca7a, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
+	person_event SPRITE_TEACHER, 25, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_TeacherText, -1
+	person_event SPRITE_SUPER_NERD, 24, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd1Text, -1
+	person_event SPRITE_SUPER_NERD, 25, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd2Text, -1
+	itemball_event 12, 1, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
+	itemball_event 9, 14, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
 
 const_value set 2
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
@@ -131,15 +131,6 @@ UndergroundPathSwitchRoomEntrancesUpdateDoorPositions:
 .false14
 	return
 
-TeacherScript_0x7ca7d:
-	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_TeacherText
-
-UndergroundPathSwitchRoomEntrancesSuperNerd1Script:
-	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_SuperNerd1Text
-
-SuperNerdScript_0x7ca7a:
-	jumptextfaceplayer UndergroundPathSwitchRoomEntrances_SuperNerd2Text
-
 UndergroundSilverTrigger1:
 	spriteface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -185,10 +176,7 @@ UndergroundSilverBattleScript:
 	domaptrigger BURNED_TOWER_1F, 1
 .Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	opentext
-	writetext UndergroundSilverBeforeText
-	waitbutton
-	closetext
+	showtext UndergroundSilverBeforeText
 	setevent EVENT_RIVAL_UNDERGROUND_PATH
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
@@ -223,77 +211,49 @@ UndergroundSilverBattleScript:
 .FinishRivalBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	opentext
-	writetext UndergroundSilverAfterText
-	waitbutton
-	closetext
-	end
+	jumptext UndergroundSilverAfterText
 
 TrainerGruntM11:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_11, GRUNTM, 11, GruntM11SeenText, GruntM11BeatenText, 0, GruntM11Script
 
 GruntM11Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM11AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GruntM11AfterText
 
 TrainerGruntM25:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_25, GRUNTM, 25, GruntM25SeenText, GruntM25BeatenText, 0, GruntM25Script
 
 GruntM25Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM25AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GruntM25AfterText
 
 TrainerBurglarDuncan:
 	trainer EVENT_BEAT_BURGLAR_DUNCAN, BURGLAR, DUNCAN, BurglarDuncanSeenText, BurglarDuncanBeatenText, 0, BurglarDuncanScript
 
 BurglarDuncanScript:
 	end_if_just_battled
-	opentext
-	writetext BurglarDuncanAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BurglarDuncanAfterText
 
 TrainerBurglarOrson:
 	trainer EVENT_BEAT_BURGLAR_ORSON, BURGLAR, ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText, 0, BurglarOrsonScript
 
 BurglarOrsonScript:
 	end_if_just_battled
-	opentext
-	writetext BurglarOrsonAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BurglarOrsonAfterText
 
 TrainerGruntM13:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_13, GRUNTM, 13, GruntM13SeenText, GruntM13BeatenText, 0, GruntM13Script
 
 GruntM13Script:
 	end_if_just_battled
-	opentext
-	writetext GruntM13AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GruntM13AfterText
 
 TrainerGruntF3:
 	trainer EVENT_BEAT_ROCKET_GRUNTF_3, GRUNTF, 3, GruntF3SeenText, GruntF3BeatenText, 0, GruntF3Script
 
 GruntF3Script:
 	end_if_just_battled
-	opentext
-	writetext GruntF3AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GruntF3AfterText
 
 Switch1Script:
 	opentext
@@ -646,14 +606,6 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	doorstate 16, OPEN2
 	clearevent EVENT_SWITCH_14
 	end
-
-UndergroundPathSwitchRoomEntrancesHiddenMaxPotion:
-	dwb EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION, MAX_POTION
-
-
-UndergroundPathSwitchRoomEntrancesHiddenRevive:
-	dwb EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE, REVIVE
-
 
 UndergroundSilverApproachMovement1:
 	step_down

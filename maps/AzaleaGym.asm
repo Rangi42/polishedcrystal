@@ -38,13 +38,9 @@ AzaleaGymStatue:
 	jumpstd gymstatue3
 
 AzaleaGymBugsyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_BUGSY
-	iftrue .FightDone
-	writetext .SeenText
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer .AfterText
+	showtextfaceplayer .SeenText
 	winlosstext .BeatenText, 0
 	loadtrainer BUGSY, 1
 	startbattle
@@ -56,9 +52,6 @@ AzaleaGymBugsyScript:
 	waitsfx
 	setflag ENGINE_HIVEBADGE
 	domaptrigger AZALEA_TOWN, $1
-.FightDone:
-	checkevent EVENT_GOT_TM49_FURY_CUTTER
-	iftrue .GotFuryCutter
 	setevent EVENT_BEAT_TWINS_AMY_AND_MAY
 	setevent EVENT_BEAT_BUG_CATCHER_BENNY
 	setevent EVENT_BEAT_BUG_CATCHER_AL
@@ -67,10 +60,22 @@ AzaleaGymBugsyScript:
 	buttonsound
 	verbosegivetmhm TM_FURY_CUTTER
 	setevent EVENT_GOT_TM49_FURY_CUTTER
-	jumpopenedtext .FuryCutterSpeech
+	thisopenedtext
 
-.GotFuryCutter:
-	jumpopenedtext .BugMonsAreDeep
+	text "TM49 contains"
+	line "Fury Cutter."
+
+	para "If you don't miss,"
+	line "it gets stronger"
+	cont "every turn."
+
+	para "The longer your"
+	line "battle goes, the"
+	cont "better it gets."
+
+	para "Isn't that great?"
+	line "I discovered it!"
+	done
 
 .SeenText:
 	text "I'm Bugsy!"
@@ -128,23 +133,7 @@ AzaleaGymBugsyScript:
 	line "you to have this."
 	done
 
-.FuryCutterSpeech:
-	text "TM49 contains"
-	line "Fury Cutter."
-
-	para "If you don't miss,"
-	line "it gets stronger"
-	cont "every turn."
-
-	para "The longer your"
-	line "battle goes, the"
-	cont "better it gets."
-
-	para "Isn't that great?"
-	line "I discovered it!"
-	done
-
-.BugMonsAreDeep:
+.AfterText:
 	text "Bug #mon are"
 	line "deep. There are"
 
@@ -157,13 +146,9 @@ AzaleaGymBugsyScript:
 
 AzaleaGymGuyScript:
 	checkevent EVENT_BEAT_BUGSY
-	iftrue .Won
-	jumptextfaceplayer .Text
+	iftrue_jumptextfaceplayer .WinText
+	thistextfaceplayer
 
-.Won:
-	jumptextfaceplayer .WinText
-
-.Text:
 	text "Yo, challenger!"
 
 	para "Bugsy's young, but"

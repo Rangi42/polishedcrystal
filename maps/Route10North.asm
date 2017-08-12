@@ -20,8 +20,8 @@ Route10North_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 53, 5, SIGNPOST_READ, PowerPlantSign
-	signpost 35, 7, SIGNPOST_READ, Route10RockTunnelSign
+	signpost 53, 5, SIGNPOST_JUMPTEXT, PowerPlantSignText
+	signpost 35, 7, SIGNPOST_JUMPTEXT, RockTunnelSignText
 
 .PersonEvents: db 10
 	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
@@ -29,11 +29,11 @@ Route10North_MapEventHeader:
 	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	person_event SPRITE_CHRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	person_event SPRITE_KRIS, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 7, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 9, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_2
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 11, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_3
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route10CutTree, EVENT_ROUTE_10_CUT_TREE_4
+	itemball_event 3, 11, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
+	cuttree_event 21, 7, EVENT_ROUTE_10_CUT_TREE_1
+	cuttree_event 21, 9, EVENT_ROUTE_10_CUT_TREE_2
+	cuttree_event 21, 11, EVENT_ROUTE_10_CUT_TREE_3
+	cuttree_event 21, 13, EVENT_ROUTE_10_CUT_TREE_4
 
 const_value set 2
 	const ROUTE10_ZAPDOS
@@ -71,10 +71,7 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach1
 	spriteface PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext Route10NorthLawrenceGreetingText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceGreetingText
 	follow ROUTE10_LAWRENCE, PLAYER
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceShowZapdos
 	stopfollow
@@ -104,10 +101,7 @@ Route10NorthLawrenceEncounter1Script:
 .Finish
 	spriteface ROUTE10_LAWRENCE, LEFT
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext Route10NorthLawrenceZapdosText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceZapdosText
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
 	spriteface ROUTE10_LAWRENCE, RIGHT
@@ -116,10 +110,7 @@ Route10NorthLawrenceEncounter1Script:
 	cry ZAPDOS
 	waitsfx
 	spriteface ROUTE10_LAWRENCE, DOWN
-	opentext
-	writetext Route10NorthLawrenceFlyText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -175,10 +166,7 @@ Route10NorthLawrenceEncounter2Script:
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	opentext
-	writetext Route10NorthLawrenceSpeechText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceSpeechText
 	pause 15
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
@@ -188,10 +176,7 @@ Route10NorthLawrenceEncounter2Script:
 	cry ZAPDOS
 	waitsfx
 	spriteface ROUTE10_LAWRENCE, DOWN
-	opentext
-	writetext Route10NorthLawrenceFlyText
-	waitbutton
-	closetext
+	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -239,15 +224,6 @@ Route10Zapdos:
 	jump Route10NorthLawrenceEncounter2Script
 .end
 	end
-
-Route10RockTunnelSign:
-	jumptext RockTunnelSignText
-
-PowerPlantSign:
-	jumptext PowerPlantSignText
-
-Route10CutTree:
-	jumpstd cuttree
 
 ZapdosText:
 	text "Gyaoo!"

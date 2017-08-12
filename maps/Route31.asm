@@ -15,19 +15,19 @@ Route31_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 7, SIGNPOST_READ, Route31Sign
-	signpost 5, 31, SIGNPOST_READ, DarkCaveSign
+	signpost 5, 7, SIGNPOST_JUMPTEXT, Route31SignText
+	signpost 5, 31, SIGNPOST_JUMPTEXT, DarkCaveSignText
 
 .PersonEvents: db 9
 	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
 	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31YoungsterScript, -1
+	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1
 	person_event SPRITE_CHERRYGROVE_RIVAL, 13, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 13, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_1
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 25, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31CutTree, EVENT_ROUTE_31_CUT_TREE_2
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31FruitTree, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 5, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, POTION, 1, EVENT_ROUTE_31_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
+	cuttree_event 5, 13, EVENT_ROUTE_31_CUT_TREE_1
+	cuttree_event 10, 25, EVENT_ROUTE_31_CUT_TREE_2
+	fruittree_event 7, 16, FRUITTREE_ROUTE_31, PERSIM_BERRY
+	itemball_event 5, 29, POTION, 1, EVENT_ROUTE_31_POTION
+	itemball_event 15, 19, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
 
 const_value set 2
 	const ROUTE31_COOLTRAINER_M
@@ -87,16 +87,10 @@ TrainerCooltrainermFinch:
 	end
 
 .RouteNotCleared:
-	writetext .IntroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .IntroText
 
 .NoBattle:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "I am a trainer who"
@@ -343,10 +337,7 @@ Route31MailRecipientScript:
 	iftrue .TutorSleepTalk
 	checkevent EVENT_GOT_KENYA
 	iftrue .TryGiveKenya
-	writetext Text_Route31SleepyMan
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31SleepyMan
 
 .TryGiveKenya:
 	writetext Text_Route31SleepyManGotMail
@@ -374,66 +365,30 @@ Route31MailRecipientScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_Route31TutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31TutorRefused
 
 .NoSilverLeaf
-	writetext Text_Route31TutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31TutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_Route31TutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31TutorTaught
 
 .WrongMail:
-	writetext Text_Route31WrongMail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31WrongMail
 
 .NoMail:
-	writetext Text_Route31MissingMail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31MissingMail
 
 .Refused:
-	writetext Text_Route31DeclinedToHandOverMail
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31DeclinedToHandOverMail
 
 .LastMon:
-	writetext Text_Route31CantTakeLastMon
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_Route31CantTakeLastMon
 
 ReceivedFarfetch_dMailText:
 	db   "Dark Cave leads"
 	next "to another road@"
-
-Route31YoungsterScript:
-	jumptextfaceplayer Route31YoungsterText
-
-Route31Sign:
-	jumptext Route31SignText
-
-DarkCaveSign:
-	jumptext DarkCaveSignText
-
-Route31CutTree:
-	jumpstd cuttree
-
-Route31FruitTree:
-	fruittree FRUITTREE_ROUTE_31
 
 Bug_catcherWade1SeenText:
 	text "I caught a bunch"

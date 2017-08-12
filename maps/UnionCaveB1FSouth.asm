@@ -15,9 +15,9 @@ UnionCaveB1FSouth_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 18, 2, SIGNPOST_ITEM, UnionCaveB1FSouthHiddenXSpclDef
-	signpost 25, 12, SIGNPOST_ITEM, UnionCaveB1FSouthHiddenNugget
-	signpost 30, 4, SIGNPOST_ITEM, UnionCaveB1FSouthHiddenFullRestore
+	signpost 18, 2, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_X_SPCL_DEF
+	signpost 25, 12, SIGNPOST_ITEM + NUGGET, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_NUGGET
+	signpost 30, 4, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 14
 	person_event SPRITE_SUPER_NERD, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacAndrew, -1
@@ -27,24 +27,20 @@ UnionCaveB1FSouth_MapEventHeader:
 	person_event SPRITE_FISHER, 20, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherJay, -1
 	person_event SPRITE_SUPER_NERD, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuper_nerdRory, -1
 	person_event SPRITE_POKEFAN_M, 17, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacGlyn, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 4, 14, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FSouthBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 32, 8, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FSouthBoulder, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 15, 11, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FSouthRock, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 24, 12, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FSouthRock, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 20, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_STONE, 1, EVENT_UNION_CAVE_B1F_SOUTH_DUSK_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_REPEL, 1, EVENT_UNION_CAVE_B1F_SOUTH_SUPER_REPEL
-	person_event SPRITE_BALL_CUT_FRUIT, 28, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, LIGHT_CLAY, 1, EVENT_UNION_CAVE_B1F_SOUTH_LIGHT_CLAY
+	strengthboulder_event 4, 14
+	strengthboulder_event 32, 8
+	smashrock_event 15, 11
+	smashrock_event 24, 12
+	itemball_event 20, 14, DUSK_STONE, 1, EVENT_UNION_CAVE_B1F_SOUTH_DUSK_STONE
+	itemball_event 26, 8, SUPER_REPEL, 1, EVENT_UNION_CAVE_B1F_SOUTH_SUPER_REPEL
+	itemball_event 28, 2, LIGHT_CLAY, 1, EVENT_UNION_CAVE_B1F_SOUTH_LIGHT_CLAY
 
 TrainerPokemaniacAndrew:
 	trainer EVENT_BEAT_POKEMANIAC_ANDREW, POKEMANIAC, ANDREW, PokemaniacAndrewSeenText, PokemaniacAndrewBeatenText, 0, PokemaniacAndrewScript
 
 PokemaniacAndrewScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a181
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a181
 
 PokemaniacAndrewSeenText:
 	text "Who's there?"
@@ -69,11 +65,7 @@ TrainerPokemaniacCalvin:
 
 PokemaniacCalvinScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a230
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a230
 
 PokemaniacCalvinSeenText:
 	text "I came all the way"
@@ -105,11 +97,7 @@ TrainerHikerPhillip:
 
 HikerPhillipScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a073
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a073
 
 HikerPhillipSeenText:
 	text "It's been a while"
@@ -138,11 +126,7 @@ TrainerHikerLeonard:
 
 HikerLeonardScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5a0fb
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5a0fb
 
 HikerLeonardSeenText:
 	text "What do you know!"
@@ -169,11 +153,7 @@ TrainerFirebreatherJay:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I learned how to"
@@ -202,11 +182,7 @@ TrainerSuper_nerdRory:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This'll be over"
@@ -231,11 +207,7 @@ TrainerRuin_maniacGlyn:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon were"
@@ -256,18 +228,3 @@ TrainerRuin_maniacGlyn:
 	line "sorts of interest-"
 	cont "ing items."
 	done
-
-UnionCaveB1FSouthBoulder:
-	jumpstd strengthboulder
-
-UnionCaveB1FSouthRock:
-	jumpstd smashrock
-
-UnionCaveB1FSouthHiddenXSpclDef:
-	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_X_SPCL_DEF, X_SPCL_DEF
-
-UnionCaveB1FSouthHiddenNugget:
-	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_NUGGET, NUGGET
-
-UnionCaveB1FSouthHiddenFullRestore:
-	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE, FULL_RESTORE

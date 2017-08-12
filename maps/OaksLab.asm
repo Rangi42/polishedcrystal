@@ -13,31 +13,31 @@ OaksLab_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 16
-	signpost 1, 6, SIGNPOST_READ, OaksLabBookshelf
-	signpost 1, 7, SIGNPOST_READ, OaksLabBookshelf
-	signpost 1, 8, SIGNPOST_READ, OaksLabBookshelf
-	signpost 1, 9, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 0, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 1, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 2, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 3, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 6, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 7, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 8, SIGNPOST_READ, OaksLabBookshelf
-	signpost 7, 9, SIGNPOST_READ, OaksLabBookshelf
-	signpost 0, 4, SIGNPOST_READ, OaksLabPoster1
-	signpost 0, 5, SIGNPOST_READ, OaksLabPoster2
-	signpost 3, 9, SIGNPOST_READ, OaksLabTrashcan
-	signpost 1, 0, SIGNPOST_READ, OaksLabPC
+	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 1, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 2, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 8, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 0, 4, SIGNPOST_JUMPTEXT, OaksLabPoster1Text
+	signpost 0, 5, SIGNPOST_JUMPTEXT, OaksLabPoster2Text
+	signpost 3, 9, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
+	signpost 1, 0, SIGNPOST_JUMPTEXT, OaksLabPCText
 
 .PersonEvents: db 8
 	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
 	person_event SPRITE_BULBASAUR, 3, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BulbasaurDollScript, EVENT_DECO_BULBASAUR_DOLL
 	person_event SPRITE_CHARMANDER, 3, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CharmanderDollScript, EVENT_DECO_CHARMANDER_DOLL
 	person_event SPRITE_SQUIRTLE, 3, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SquirtleDollScript, EVENT_DECO_SQUIRTLE_DOLL
-	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant1Script, -1
-	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant2Script, -1
-	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OaksAssistant3Script, -1
+	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
+	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
+	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
 	person_event SPRITE_POKEDEX_UNOWN_A, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OaksLabPokedexScript, -1
 
 const_value set 2
@@ -136,10 +136,7 @@ Oak:
 	writetext OakLabShinyCharmText
 	waitbutton
 .NoShinyCharm
-	writetext OakLabGoodbyeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext OakLabGoodbyeText
 
 .BattleOak:
 	checkevent EVENT_LISTENED_TO_OAK_INTRO
@@ -199,10 +196,7 @@ BulbasaurDollScript:
 	waitbutton
 	writetext BulbasaurDollSentText
 	waitbutton
-	writetext ProfOakAfterTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOakAfterTradeText
 
 CharmanderDollScript:
 	opentext
@@ -222,10 +216,7 @@ CharmanderDollScript:
 	waitbutton
 	writetext CharmanderDollSentText
 	waitbutton
-	writetext ProfOakAfterTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOakAfterTradeText
 
 SquirtleDollScript:
 	opentext
@@ -245,49 +236,16 @@ SquirtleDollScript:
 	waitbutton
 	writetext SquirtleDollSentText
 	waitbutton
-	writetext ProfOakAfterTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext ProfOakAfterTradeText
 
 NoStoneScript:
-	writetext NoStoneText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoStoneText
 
 NoTradeScript:
-	writetext NoTradeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext NoTradeText
 
 OaksLabPokedexScript:
 	jumptext OaksLabPokedexText
-
-OaksAssistant1Script:
-	jumptextfaceplayer OaksAssistant1Text
-
-OaksAssistant2Script:
-	jumptextfaceplayer OaksAssistant2Text
-
-OaksAssistant3Script:
-	jumptextfaceplayer OaksAssistant3Text
-
-OaksLabBookshelf:
-	jumpstd difficultbookshelf
-
-OaksLabPoster1:
-	jumptext OaksLabPoster1Text
-
-OaksLabPoster2:
-	jumptext OaksLabPoster2Text
-
-OaksLabTrashcan:
-	jumptext OaksLabTrashcanText
-
-OaksLabPC:
-	jumptext OaksLabPCText
 
 OakWelcomeKantoText:
 	text "Oak: Ah, <PLAYER>!"

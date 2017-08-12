@@ -56,16 +56,10 @@ SafariZoneWestRestHouse2FlanneryScript:
 	setevent EVENT_BEAT_FLANNERY
 	opentext
 .Beaten:
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AfterText
 
 .Refused:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .IntroText:
 	text "Hi there!"

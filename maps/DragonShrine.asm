@@ -103,15 +103,9 @@ DragonShrineTestScript:
 .WrongAnswer:
 	closetext
 	spriteface DRAGONSHRINE_ELDER1, LEFT
-	opentext
-	writetext UnknownText_0x18d7f6
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d7f6
 	spriteface DRAGONSHRINE_ELDER1, DOWN
-	opentext
-	writetext UnknownText_0x18d816
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d816
 	setevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	opentext
 	checkevent EVENT_DRAGON_SHRINE_QUESTION_5
@@ -139,32 +133,17 @@ DragonShrineTestScript:
 	spriteface DRAGONSHRINE_CLAIR, RIGHT
 	spriteface PLAYER, LEFT
 	spriteface DRAGONSHRINE_ELDER1, LEFT
-	opentext
-	writetext UnknownText_0x18d916
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d916
 	special Special_FadeOutMusic
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2da
-	opentext
-	writetext UnknownText_0x18d974
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d974
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2dd
-	opentext
-	writetext UnknownText_0x18d983
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d983
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2c9
 	spriteface DRAGONSHRINE_CLAIR, UP
-	opentext
-	writetext UnknownText_0x18d520
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d520
 	showemote EMOTE_SHOCK, DRAGONSHRINE_CLAIR, 15
-	opentext
-	writetext UnknownText_0x18d9ae
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d9ae
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2e0
 	opentext
 	writetext UnknownText_0x18d9bf
@@ -185,14 +164,8 @@ DragonShrineTestScript:
 	spriteface DRAGONSHRINE_CLAIR, UP
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2d1
 	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x18d5a3
-	waitbutton
-	closetext
-	opentext
-	writetext UnknownText_0x18dab4
-	waitbutton
-	closetext
+	showtext UnknownText_0x18d5a3
+	showtext UnknownText_0x18dab4
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2e3
 	playsound SFX_ENTER_DOOR
 	disappear DRAGONSHRINE_CLAIR
@@ -211,10 +184,7 @@ ElderScript_0x18d1a5:
 	iffalse .GiveDratini
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	iftrue .BeatRivalInMtMoon
-	writetext UnknownText_0x18d724
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18d724
 
 .GiveDratini:
 	writetext UnknownText_0x18d604
@@ -233,51 +203,27 @@ ElderScript_0x18d1a5:
 .NoExtremeSpeed
 	setevent EVENT_GOT_DRATINI
 	setevent EVENT_JUST_RECEIVED_DRATINI
-	writetext UnknownText_0x18d6ca
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18d6ca
 
 .PartyFull:
-	writetext UnknownText_0x18d6ac
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18d6ac
 
 .BeatRivalInMtMoon:
-	writetext UnknownText_0x18d782
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18d782
 
 .DontGiveDratiniYet:
-	writetext UnknownText_0x18d5e5
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18d5e5
 
 .ReceivedDratini:
-	writetext UnknownText_0x18d6ca
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x18d6ca
 
 ElderScript_0x18d205:
 	faceplayer
-	opentext
-	writetext UnknownText_0x18d840
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0x18d840
 
 ElderScript_0x18d20d:
 	faceplayer
-	opentext
-	writetext UnknownText_0x18d8b1
-	waitbutton
-	closetext
-	end
-
+	jumptext UnknownText_0x18d8b1
 
 MenuDataHeader_0x18d215:
 	db $40 ; flags
@@ -293,7 +239,6 @@ MenuData2_0x18d21d:
 	db "Underling@"
 	db "Friend@"
 
-
 MenuDataHeader_0x18d234:
 	db $40 ; flags
 	db 04, 09 ; start coords
@@ -307,7 +252,6 @@ MenuData2_0x18d23c:
 	db "Strategy@"
 	db "Training@"
 	db "Cheating@"
-
 
 MenuDataHeader_0x18d258:
 	db $40 ; flags
@@ -323,7 +267,6 @@ MenuData2_0x18d260:
 	db "Tough person@"
 	db "Anybody@"
 
-
 MenuDataHeader_0x18d283:
 	db $40 ; flags
 	db 04, 08 ; start coords
@@ -338,7 +281,6 @@ MenuData2_0x18d28b:
 	db "Violence@"
 	db "Knowledge@"
 
-
 MenuDataHeader_0x18d2a5:
 	db $40 ; flags
 	db 04, 11 ; start coords
@@ -352,7 +294,6 @@ MenuData2_0x18d2ad:
 	db "Strong@"
 	db "Weak@"
 	db "Both@"
-
 
 MovementData_0x18d2bf:
 	slow_step_up

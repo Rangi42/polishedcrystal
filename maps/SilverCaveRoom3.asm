@@ -30,11 +30,7 @@ SilverCaveRoom3DailyRedRematchCallback:
 
 Red:
 	special Special_FadeOutMusic
-	faceplayer
-	opentext
-	writetext .Text1
-	waitbutton
-	closetext
+	showtextfaceplayer .Text1
 	winlosstext .Text2, .Text2
 	loadtrainer RED, 1
 	startbattle

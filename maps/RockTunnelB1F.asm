@@ -16,43 +16,29 @@ RockTunnelB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 18, 3, SIGNPOST_ITEM, RockTunnelB1FHiddenMaxPotion
+	signpost 18, 3, SIGNPOST_ITEM + MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION
 
 .PersonEvents: db 6
 	person_event SPRITE_FISHER, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherDick, -1
 	person_event SPRITE_HEX_MANIAC, 24, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacVivian, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 17, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_ROCK_TUNNEL_B1F_PP_UP
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_ROCK_TUNNEL_B1F_REVIVE
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 25, 10, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RockTunnelB1FBoulder, -1
+	itemball_event 17, 7, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON
+	itemball_event 4, 8, PP_UP, 1, EVENT_ROCK_TUNNEL_B1F_PP_UP
+	itemball_event 2, 15, REVIVE, 1, EVENT_ROCK_TUNNEL_B1F_REVIVE
+	strengthboulder_event 25, 10
 
 TrainerFirebreatherDick:
 	trainer EVENT_BEAT_FIREBREATHER_DICK, FIREBREATHER, DICK, FirebreatherDickSeenText, FirebreatherDickBeatenText, 0, FirebreatherDickScript
 
 FirebreatherDickScript:
 	end_if_just_battled
-	opentext
-	writetext FirebreatherDickAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer FirebreatherDickAfterText
 
 TrainerHexManiacVivian:
 	trainer EVENT_BEAT_HEX_MANIAC_VIVIAN, HEX_MANIAC, VIVIAN, HexManiacVivianSeenText, HexManiacVivianBeatenText, 0, HexManiacVivianScript
 
 HexManiacVivianScript:
 	end_if_just_battled
-	opentext
-	writetext HexManiacVivianAfterText
-	waitbutton
-	closetext
-	end
-
-RockTunnelB1FHiddenMaxPotion:
-	dwb EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION, MAX_POTION
-
-RockTunnelB1FBoulder:
-	jumpstd strengthboulder
+	jumptextfaceplayer HexManiacVivianAfterText
 
 FirebreatherDickSeenText:
 	text "I'm using fire to"

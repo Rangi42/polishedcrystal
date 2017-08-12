@@ -16,9 +16,9 @@ ScaryCave1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 3, 34, SIGNPOST_ITEM, ScaryCave1FHiddenMaxElixir
-	signpost 28, 18, SIGNPOST_ITEM, ScaryCave1FHiddenPearlString
-	signpost 29, 30, SIGNPOST_ITEM, ScaryCave1FHiddenPearl
+	signpost 3, 34, SIGNPOST_ITEM + MAX_ELIXER, EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR
+	signpost 28, 18, SIGNPOST_ITEM + PEARL_STRING, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING
+	signpost 29, 30, SIGNPOST_ITEM + PEARL, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL
 
 .PersonEvents: db 13
 	person_event SPRITE_MIRA, 5, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
@@ -29,11 +29,11 @@ ScaryCave1F_MapEventHeader:
 	person_event SPRITE_LASS, 20, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo2, -1
 	person_event SPRITE_HEX_MANIAC, 16, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacBethany, -1
 	person_event SPRITE_SCIENTIST, 29, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistPiotr, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_SPCL_DEF, 1, EVENT_SCARY_CAVE_1F_X_SPCL_DEF
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, DUSK_STONE, 1, EVENT_SCARY_CAVE_1F_DUSK_STONE
-	person_event SPRITE_BALL_CUT_FRUIT, 19, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_SCARY_CAVE_1F_HYPER_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
-	person_event SPRITE_BALL_CUT_FRUIT, 29, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
+	itemball_event 7, 27, X_SPCL_DEF, 1, EVENT_SCARY_CAVE_1F_X_SPCL_DEF
+	itemball_event 9, 4, DUSK_STONE, 1, EVENT_SCARY_CAVE_1F_DUSK_STONE
+	itemball_event 19, 33, HYPER_POTION, 1, EVENT_SCARY_CAVE_1F_HYPER_POTION
+	itemball_event 23, 28, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
+	itemball_event 29, 3, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
 
 const_value set 2
 	const SCARYCAVE1F_MIRA
@@ -77,10 +77,7 @@ ScaryCave1FMiraScript:
 	end
 
 .No:
-	writetext .NoText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "I'm Mira…"
@@ -166,10 +163,7 @@ ScaryCave1FTutorSuckerPunchScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .QuestionText:
 	text "I'll teach you to"
@@ -189,10 +183,7 @@ ScaryCave1FTutorSuckerPunchScript:
 
 .NoSilverLeaf
 	waitbutton
-	writetext .NoSilverLeafText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .NoSilverLeafText
 
 .NoSilverLeafText:
 	text "No Silver Leaf?"
@@ -201,10 +192,7 @@ ScaryCave1FTutorSuckerPunchScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext .TaughtText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .TaughtText
 
 .TaughtText:
 	text "Now you can use"
@@ -233,11 +221,7 @@ TrainerRuin_maniacSmilte:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm on the edge of"
@@ -267,11 +251,7 @@ TrainerSuper_nerdMako:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "You can't beat me!"
@@ -297,11 +277,7 @@ TrainerCoupleJoeandjo1:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Joe: A ghost!"
@@ -328,11 +304,7 @@ TrainerCoupleJoeandjo2:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Jo: Eek! Hold me"
@@ -358,11 +330,7 @@ TrainerHex_maniacBethany:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "BOO!"
@@ -384,11 +352,7 @@ TrainerScientistPiotr:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you know why"
@@ -411,12 +375,3 @@ TrainerScientistPiotr:
 	para "It's not blood!"
 	line "…Right?"
 	done
-
-ScaryCave1FHiddenMaxElixir:
-	dwb EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR, MAX_ELIXER
-
-ScaryCave1FHiddenPearlString:
-	dwb EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING, PEARL_STRING
-
-ScaryCave1FHiddenPearl:
-	dwb EVENT_SCARY_CAVE_1F_HIDDEN_PEARL, PEARL

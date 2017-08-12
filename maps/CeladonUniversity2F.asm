@@ -17,35 +17,35 @@ CeladonUniversity2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 7
-	signpost 0, 6, SIGNPOST_READ, CeladonUniversity2FCafeteriaSign
-	signpost 0, 12, SIGNPOST_READ, CeladonUniversity2FHyperTestSign
-	signpost 0, 20, SIGNPOST_READ, CeladonUniversity2FPoolSign
-	signpost 8, 4, SIGNPOST_READ, CeladonUniversity2FWillowsOfficeSign
-	signpost 8, 18, SIGNPOST_READ, CeladonUniversity2FWestwoodsOfficeSign
+	signpost 0, 6, SIGNPOST_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
+	signpost 0, 12, SIGNPOST_JUMPTEXT, CeladonUniversity2FHyperTestSignText
+	signpost 0, 20, SIGNPOST_JUMPTEXT, CeladonUniversity2FPoolSignText
+	signpost 8, 4, SIGNPOST_JUMPTEXT, CeladonUniversity2FWillowsOfficeSignText
+	signpost 8, 18, SIGNPOST_JUMPTEXT, CeladonUniversity2FWestwoodsOfficeSignText
 	signpost 1, 16, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
 	signpost 1, 24, SIGNPOST_READ, CeladonUniversity2FCuboneSign
 
 .PersonEvents: db 7
 	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainermScript, -1
-	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster1Script, -1
-	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCowgirlScript, -1
-	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FBug_catcherScript, -1
-	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FLassScript, -1
-	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FYoungster2Script, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCooltrainermText, -1
+	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster1Text, -1
+	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCowgirlText, -1
+	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FBug_catcherText, -1
+	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FLassText, -1
+	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster2Text, -1
 
 CeladonUniversity2FCooltrainerfScript:
+	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
+	iftrue_jumptextfaceplayer .Text5
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
-	iftrue .GotItem
 	writetext .Text1
 	waitbutton
 	writetext .Text2
 	yesorno
-	iffalse .NoFreshWater
+	iffalse_jumpopenedtext .Text6
 	takeitem FRESH_WATER
-	iffalse .NoFreshWater
+	iffalse_jumpopenedtext .Text6
 	writetext .Text3
 	waitbutton
 	writetext .Text4
@@ -53,25 +53,21 @@ CeladonUniversity2FCooltrainerfScript:
 	verbosegiveitem RARE_CANDY
 	iffalse .NoRoomForRareCandy
 	setevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
-.GotItem:
-	writetext .Text5
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.NoFreshWater:
-	writetext .Text6
-	waitbutton
-	closetext
-	end
+.Text5:
+	text "That Fresh Water"
+	line "really is re-"
+	cont "freshing!"
+	done
 
 .NoRoomForRareCandy:
 	giveitem FRESH_WATER
-	writetext .Text7
-	waitbutton
-	closetext
-	end
+	thisopenedtext
+
+	text "Oh… Keep your"
+	line "Fresh Water then…"
+	done
 
 .Text1:
 	text "Wow, I'm thirsty!"
@@ -99,26 +95,12 @@ CeladonUniversity2FCooltrainerfScript:
 	line "Here, take this!"
 	done
 
-.Text5:
-	text "That Fresh Water"
-	line "really is re-"
-	cont "freshing!"
-	done
-
 .Text6:
 	text "Oh… But I'm so"
 	line "thirsty…"
 	done
 
-.Text7:
-	text "Oh… Keep your"
-	line "Fresh Water then…"
-	done
-
-CeladonUniversity2FCooltrainermScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversity2FCooltrainermText:
 	text "The cafeteria gets"
 	line "pretty crowded,"
 
@@ -126,10 +108,7 @@ CeladonUniversity2FCooltrainermScript:
 	line "in the hall."
 	done
 
-CeladonUniversity2FYoungster1Script:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversity2FYoungster1Text:
 	text "I failed the"
 	line "Hyper Test again…"
 
@@ -137,19 +116,13 @@ CeladonUniversity2FYoungster1Script:
 	line "give up!"
 	done
 
-CeladonUniversity2FCowgirlScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversity2FCowgirlText:
 	text "My class is going"
 	line "on a field trip to"
 	cont "the Safari Zone!"
 	done
 
-CeladonUniversity2FBug_catcherScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversity2FBug_catcherText:
 	text "Prof.Willow sends"
 	line "his assistants to"
 
@@ -160,10 +133,7 @@ CeladonUniversity2FBug_catcherScript:
 	line "live here."
 	done
 
-CeladonUniversity2FLassScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversity2FLassText:
 	text "In addition to"
 	line "being the Celadon"
 	cont "Gym Leader,"
@@ -176,10 +146,7 @@ CeladonUniversity2FLassScript:
 	line "cool as her."
 	done
 
-CeladonUniversity2FYoungster2Script:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversity2FYoungster2Text:
 	text "Prof.Westwood is a"
 	line "little eccentric."
 
@@ -190,39 +157,24 @@ CeladonUniversity2FYoungster2Script:
 	line "traits."
 	done
 
-CeladonUniversity2FCafeteriaSign:
-	jumptext .Text
-
-.Text:
+CeladonUniversity2FCafeteriaSignText:
 	text "Cafeteria"
 	done
 
-CeladonUniversity2FHyperTestSign:
-	jumptext .Text
-
-.Text:
+CeladonUniversity2FHyperTestSignText:
 	text "Hyper Test Room"
 	done
 
-CeladonUniversity2FPoolSign:
-	jumptext .Text
-
-.Text:
+CeladonUniversity2FPoolSignText:
 	text "Swimming Pool"
 	done
 
-CeladonUniversity2FWillowsOfficeSign:
-	jumptext .Text
-
-.Text:
+CeladonUniversity2FWillowsOfficeSignText:
 	text "Prof.Willow's"
 	line "Office"
 	done
 
-CeladonUniversity2FWestwoodsOfficeSign:
-	jumptext .Text
-
-.Text:
+CeladonUniversity2FWestwoodsOfficeSignText:
 	text "Prof.Westwood's"
 	line "Office"
 	done
@@ -233,9 +185,8 @@ CeladonUniversity2FMagikarpSign:
 	cry MAGIKARP
 	waitbutton
 	closepokepic
-	jumptext .Text
+	thistext
 
-.Text:
 	text "A Magikarp is"
 	line "swimming around."
 	done
@@ -245,9 +196,8 @@ CeladonUniversity2FCuboneSign:
 	trainerpic CUBONE_ARMOR
 	waitbutton
 	closepokepic
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's the Thick Club"
 	line "and skull helmet"
 	cont "of a Cubone."

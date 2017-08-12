@@ -15,7 +15,7 @@ Route26_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 8, SIGNPOST_READ, Route26Sign
+	signpost 6, 8, SIGNPOST_JUMPTEXT, Route26SignText
 
 .PersonEvents: db 11
 	person_event SPRITE_GUIDE_GENT, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
@@ -26,9 +26,9 @@ Route26_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 82, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
 	person_event SPRITE_FISHER, 100, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
 	person_event SPRITE_GUIDE_GENT, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 54, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a4ec2, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 15, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_ELIXER, 1, EVENT_ROUTE_26_MAX_ELIXER
-	person_event SPRITE_BALL_CUT_FRUIT, 34, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_DRAGON_PULSE, EVENT_ROUTE_26_TM_DRAGON_PULSE
+	fruittree_event 54, 14, FRUITTREE_ROUTE_26, SITRUS_BERRY
+	itemball_event 15, 9, MAX_ELIXER, 1, EVENT_ROUTE_26_MAX_ELIXER
+	tmhmball_event 34, 13, TM_DRAGON_PULSE, EVENT_ROUTE_26_TM_DRAGON_PULSE
 
 Route26DragonTamerSprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
@@ -39,11 +39,7 @@ TrainerDragonTamerKazu:
 
 DragonTamerKazuScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a4f08
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a4f08
 
 TrainerCooltrainermGaven1:
 	trainer EVENT_BEAT_COOLTRAINERM_GAVEN, COOLTRAINERM, GAVEN1, CooltrainermGaven1SeenText, CooltrainermGaven1BeatenText, 0, CooltrainermGaven1Script
@@ -143,11 +139,7 @@ TrainerCooltrainerfJoyce:
 
 CooltrainerfJoyceScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a50d7
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a50d7
 
 TrainerCooltrainerfBeth1:
 	trainer EVENT_BEAT_COOLTRAINERF_BETH, COOLTRAINERF, BETH1, CooltrainerfBeth1SeenText, CooltrainerfBeth1BeatenText, 0, CooltrainerfBeth1Script
@@ -247,50 +239,28 @@ TrainerPsychicRichard:
 
 PsychicRichardScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5278
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a5278
 
 TrainerBattleGirlRonda:
 	trainer EVENT_BEAT_BATTLE_GIRL_RONDA, BATTLE_GIRL, RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText, 0, BattleGirlRondaScript
 
 BattleGirlRondaScript:
 	end_if_just_battled
-	opentext
-	writetext BattleGirlRondaAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BattleGirlRondaAfterText
 
 TrainerFisherScott:
 	trainer EVENT_BEAT_FISHER_SCOTT, FISHER, SCOTT, FisherScottSeenText, FisherScottBeatenText, 0, FisherScottScript
 
 FisherScottScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1a5326
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1a5326
 
 TrainerDragonTamerErick:
 	trainer EVENT_BEAT_DRAGON_TAMER_ERICK, DRAGON_TAMER, ERICK, DragonTamerErickSeenText, DragonTamerErickBeatenText, 0, DragonTamerErickScript
 
 DragonTamerErickScript:
 	end_if_just_battled
-	opentext
-	writetext DragonTamerErickAfterText
-	waitbutton
-	closetext
-	end
-
-Route26Sign:
-	jumptext Route26SignText
-
-FruitTreeScript_0x1a4ec2:
-	fruittree FRUITTREE_ROUTE_26
+	jumptextfaceplayer DragonTamerErickAfterText
 
 DragonTamerKazuSeenText:
 	text "I'm making my"

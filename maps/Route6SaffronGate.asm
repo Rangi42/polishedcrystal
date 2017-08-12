@@ -24,16 +24,10 @@ OfficerScript_0x1926ea:
 	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x1926f8
-	writetext UnknownText_0x1926fe
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1926fe
 
 UnknownScript_0x1926f8:
-	writetext UnknownText_0x1927cb
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1927cb
 
 UnknownText_0x1926fe:
 	text "Welcome to Saffron"

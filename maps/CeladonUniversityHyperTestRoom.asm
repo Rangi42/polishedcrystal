@@ -14,16 +14,16 @@ CeladonUniversityHyperTestRoom_MapEventHeader:
 
 .Signposts: db 5
 	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityHyperTestRoomBookshelf2
+	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
+	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
 	signpost 4, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 	signpost 6, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 
 .PersonEvents: db 4
 	person_event SPRITE_WESTWOOD, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
-	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomScientistScript, -1
-	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomTwin1Script, -1
-	person_event SPRITE_TWIN, 8, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomTwin2Script, -1
+	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomScientistText, -1
+	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin1Text, -1
+	person_event SPRITE_TWIN, 8, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin2Text, -1
 
 CeladonUniversityHyperTestRoomWestwoodScript:
 	faceplayer
@@ -148,36 +148,21 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
 
 .TestComplete:
-	writetext .TestOverText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .TestOverText
 
 .NoHyperTest:
-	writetext .RefusedText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .RefusedText
 
 .TookHyperTestToday:
-	writetext .AlreadyTookText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .AlreadyTookText
 
 .WrongAnswer:
 	waitsfx
 	playsound SFX_WRONG
-	writetext .WrongAnswerText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .WrongAnswerText
 
 .PartyFull:
-	writetext .PartyFullText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext .PartyFullText
 
 .GreetingText:
 	text "Prof.Westwood?"
@@ -430,10 +415,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	db "Prof.Willow@"
 	db "Prof.Westwood@"
 
-CeladonUniversityHyperTestRoomScientistScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityHyperTestRoomScientistText:
 	text "The Hyper Test is"
 	line "a rite of passage"
 
@@ -446,18 +428,12 @@ CeladonUniversityHyperTestRoomScientistScript:
 	cont "the utmost!"
 	done
 
-CeladonUniversityHyperTestRoomTwin1Script:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityHyperTestRoomTwin1Text:
 	text "I'll pass the Hyper"
 	line "Test before you!"
 	done
 
-CeladonUniversityHyperTestRoomTwin2Script:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityHyperTestRoomTwin2Text:
 	text "No, I'll pass the"
 	line "Hyper Test before"
 	cont "you!"
@@ -469,17 +445,13 @@ CeladonUniversityHyperTestRoomMagikarpSign:
 	cry MAGIKARP
 	waitbutton
 	closepokepic
-	jumptext .Text
+	thistext
 
-.Text:
 	text "A Magikarp is"
 	line "swimming around."
 	done
 
-CeladonUniversityHyperTestRoomBookshelf1:
-	jumptext .Text
-
-.Text:
+CeladonUniversityHyperTestRoomBookshelf1Text:
 	text "This book has a"
 	line "bookmark in it."
 
@@ -487,10 +459,7 @@ CeladonUniversityHyperTestRoomBookshelf1:
 	line "with it yet!"
 	done
 
-CeladonUniversityHyperTestRoomBookshelf2:
-	jumptext .Text
-
-.Text:
+CeladonUniversityHyperTestRoomBookshelf2Text:
 	text "It's a copy of"
 	line "Nintendo Power!"
 
@@ -500,9 +469,8 @@ CeladonUniversityHyperTestRoomBookshelf2:
 	done
 
 CeladonUniversityHyperTestRoomComputer:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "There's a file on"
 	line "the desktop named"
 	cont "questions.txt."

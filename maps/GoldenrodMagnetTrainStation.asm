@@ -19,7 +19,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
-	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x55143, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
+	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
 const_value set 2
@@ -30,10 +30,7 @@ OfficerScript_0x550ec:
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .MagnetTrainToSaffron
-	writetext UnknownText_0x55160
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x55160
 
 .MagnetTrainToSaffron:
 	writetext UnknownText_0x551b7
@@ -59,29 +56,16 @@ OfficerScript_0x550ec:
 	step_end
 
 .PassNotInBag:
-	writetext UnknownText_0x5522c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5522c
 
 .DecidedNotToRide:
-	writetext UnknownText_0x5524f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x5524f
 
 Script_ArriveFromSaffron:
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x55146
 	applymovement PLAYER, MovementData_0x55158
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x5514b
-	opentext
-	writetext UnknownText_0x5526a
-	waitbutton
-	closetext
-	end
-
-GentlemanScript_0x55143:
-	jumptextfaceplayer UnknownText_0x552a3
+	jumptext UnknownText_0x5526a
 
 GoldenrodMagnetTrainStationCooltrainerfScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

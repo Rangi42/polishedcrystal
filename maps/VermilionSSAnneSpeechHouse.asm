@@ -15,14 +15,8 @@ VermilionSSAnneSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionSSAnneSpeechHouseGrampsScript, -1
-	person_event SPRITE_BEAUTY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VermilionSSAnneSpeechHouseBeautyScript, -1
-
-VermilionSSAnneSpeechHouseGrampsScript:
-	jumptextfaceplayer VermilionSSAnneSpeechHouseGrampsText
-
-VermilionSSAnneSpeechHouseBeautyScript:
-	jumptextfaceplayer VermilionSSAnneSpeechHouseBeautyText
+	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionSSAnneSpeechHouseGrampsText, -1
+	person_event SPRITE_BEAUTY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionSSAnneSpeechHouseBeautyText, -1
 
 VermilionSSAnneSpeechHouseGrampsText:
 	text "Once a year, a"

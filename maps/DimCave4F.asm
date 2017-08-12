@@ -19,18 +19,18 @@ DimCave4F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 23, 25, SIGNPOST_ITEM, DimCave4FHiddenCalcium
-	signpost 27, 27, SIGNPOST_ITEM, DimCave4FHiddenXAttack
+	signpost 23, 25, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
+	signpost 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
 
 .PersonEvents: db 8
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 15, 14, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FBoulder, EVENT_BOULDER_IN_DIM_CAVE_4F
+	strengthboulder_event 15, 14, EVENT_BOULDER_IN_DIM_CAVE_4F
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 25, 27, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	person_event SPRITE_SCIENTIST, 14, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
 	person_event SPRITE_SCIENTIST, 2, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
-	person_event SPRITE_SUPER_NERD, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave4FSuper_nerdScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
-	person_event SPRITE_BALL_CUT_FRUIT, 8, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
+	person_event SPRITE_SUPER_NERD, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
+	itemball_event 2, 17, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
+	itemball_event 8, 27, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
+	itemball_event 23, 6, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
 const_value set 2
 	const DIMCAVE4F_BOULDER
@@ -61,13 +61,8 @@ DimCave4FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	opentext
-	writetext .Text
-	waitbutton
-	closetext
-	end
+	thistext
 
-.Text:
 	text "The boulder fell"
 	line "through."
 	done
@@ -77,11 +72,7 @@ TrainerScientistJoseph:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm studying the"
@@ -113,11 +104,7 @@ TrainerScientistNigel:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How do we get pow-"
@@ -148,10 +135,7 @@ TrainerScientistNigel:
 	line "right?"
 	done
 
-DimCave4FSuper_nerdScript:
-	jumptextfaceplayer .Text
-
-.Text:
+DimCave4FSuper_nerdText:
 	text "I'm walking along"
 	line "the tracks, just"
 
@@ -166,18 +150,8 @@ DimCave4FSuper_nerdScript:
 	done
 
 DimCave4FFallenBoulderScript:
-	jumptext .Text
+	thistext
 
-.Text:
 	text "It's stuck on the"
 	line "button."
 	done
-
-DimCave4FBoulder:
-	jumpstd strengthboulder
-
-DimCave4FHiddenCalcium:
-	dwb EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM, CALCIUM
-
-DimCave4FHiddenXAttack:
-	dwb EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK, X_ATTACK

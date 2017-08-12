@@ -106,76 +106,48 @@ SurgeScript_0x1920a5:
 	buttonsound
 	verbosegivetmhm TM_WILD_CHARGE
 	setevent EVENT_GOT_TM43_WILD_CHARGE
-	writetext SurgeOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext SurgeOutroText
 
 SurgeAfterTMScript:
-	writetext UnknownText_0x192303
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x192303
 
 TrainerGentlemanGregory:
 	trainer EVENT_BEAT_GENTLEMAN_GREGORY, GENTLEMAN, GREGORY, GentlemanGregorySeenText, GentlemanGregoryBeatenText, 0, GentlemanGregoryScript
 
 GentlemanGregoryScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1923b0
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1923b0
 
 TrainerGuitaristmVincent:
 	trainer EVENT_BEAT_GUITARISTM_VINCENT, GUITARISTM, VINCENT, GuitaristmVincentSeenText, GuitaristmVincentBeatenText, 0, GuitaristmVincentScript
 
 GuitaristmVincentScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x19244b
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x19244b
 
 TrainerJugglerHorton:
 	trainer EVENT_BEAT_JUGGLER_HORTON, JUGGLER, HORTON, JugglerHortonSeenText, JugglerHortonBeatenText, 0, JugglerHortonScript
 
 JugglerHortonScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1924d6
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1924d6
 
 TrainerGuitaristfJanet:
 	trainer EVENT_BEAT_GUITARISTF_JANET, GUITARISTF, JANET, GuitaristfJanetSeenText, GuitaristfJanetBeatenText, 0, GuitaristfJanetScript
 
 GuitaristfJanetScript:
 	end_if_just_battled
-	opentext
-	writetext GuitaristfJanetAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer GuitaristfJanetAfterText
 
 VermilionGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_LTSURGE
 	iftrue .VermilionGymGuyWinScript
-	writetext VermilionGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext VermilionGymGuyText
 
 .VermilionGymGuyWinScript:
-	writetext VermilionGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext VermilionGymGuyWinText
 
 VermilionGymTrashCanScript:
 	checkevent EVENT_VERMILION_GYM_SWITCH_2

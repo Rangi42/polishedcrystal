@@ -42,21 +42,12 @@ UnknownScript_0x1883de:
 	playsound SFX_TACKLE
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884eb
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	opentext
-	writetext UnknownText_0x1884fb
-	waitbutton
-	closetext
+	showtext UnknownText_0x1884fb
 	showemote EMOTE_SHOCK, CERULEANGYM_ROCKET, 15
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884f7
-	opentext
-	writetext UnknownText_0x188574
-	waitbutton
-	closetext
+	showtext UnknownText_0x188574
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884f5
-	opentext
-	writetext UnknownText_0x1885a5
-	waitbutton
-	closetext
+	showtext UnknownText_0x1885a5
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884e8
 	playsound SFX_EXIT_BUILDING
 	disappear CERULEANGYM_ROCKET
@@ -117,93 +108,60 @@ MistyScript_0x188432:
 	buttonsound
 	verbosegivetmhm TM_SCALD
 	setevent EVENT_GOT_TM55_SCALD
-	writetext MistyOutroText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext MistyOutroText
 
 MistyAfterTMScript:
-	writetext UnknownText_0x188782
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x188782
 
 TrainerSwimmerfDiana:
 	trainer EVENT_BEAT_SWIMMERF_DIANA, SWIMMERF, DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText, 0, SwimmerfDianaScript
 
 SwimmerfDianaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x188856
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x188856
 
 TrainerSwimmerfJoy:
 	trainer EVENT_BEAT_SWIMMERF_JOY, SWIMMERF, JOY, SwimmerfJoySeenText, SwimmerfJoyBeatenText, 0, SwimmerfJoyScript
 
 SwimmerfJoyScript:
 	end_if_just_battled
-	opentext
-	writetext SwimmerfJoyAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SwimmerfJoyAfterText
 
 TrainerSwimmerfBriana:
 	trainer EVENT_BEAT_SWIMMERF_BRIANA, SWIMMERF, BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
 
 SwimmerfBrianaScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x1888c0
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x1888c0
 
 TrainerSailorParker:
 	trainer EVENT_BEAT_SAILOR_PARKER, SAILOR, PARKER, SailorParkerSeenText, SailorParkerBeatenText, 0, SailorParkerScript
 
 SailorParkerScript:
 	end_if_just_battled
-	opentext
-	writetext SailorParkerAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SailorParkerAfterText
 
 TrainerSailorEddie:
 	trainer EVENT_BEAT_SAILOR_EDDIE, SAILOR, EDDIE, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
 
 SailorEddieScript:
 	end_if_just_battled
-	opentext
-	writetext SailorEddieAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SailorEddieAfterText
 
 CeruleanGymGuyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_MISTY
 	iftrue .CeruleanGymGuyWinScript
-	writetext CeruleanGymGuyText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeruleanGymGuyText
 
 .CeruleanGymGuyWinScript:
-	writetext CeruleanGymGuyWinText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext CeruleanGymGuyWinText
 
 CeruleanGymHiddenMachinePart:
-	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM, .Script
-.Script:
+	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	checkevent EVENT_LEARNED_ABOUT_MACHINE_PART
-	iffalse .SomethingUnderwater
+	iffalse_jumptext CeruleanGymSomethingUnderwaterText
 	giveitem MACHINE_PART
 	opentext
 	itemtotext MACHINE_PART, $0
@@ -214,9 +172,6 @@ CeruleanGymHiddenMachinePart:
 	closetext
 	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	end
-
-.SomethingUnderwater:
-	jumptext CeruleanGymSomethingUnderwaterText
 
 CeruleanGymStatue1:
 	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM

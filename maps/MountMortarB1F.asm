@@ -13,17 +13,17 @@ MountMortarB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 4, SIGNPOST_ITEM, MountMortarB1FHiddenMaxRevive
+	signpost 6, 4, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
 
 .PersonEvents: db 8
 	person_event SPRITE_POKEFAN_M, 31, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
 	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 9, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MountMortarB1FBoulder, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 12, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
-	person_event SPRITE_BALL_CUT_FRUIT, 24, 34, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PROTECTOR, 1, EVENT_MOUNT_MORTAR_B1F_PROTECTOR
-	person_event SPRITE_BALL_CUT_FRUIT, 3, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_ETHER, 1, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, PP_UP, 1, EVENT_MOUNT_MORTAR_B1F_PP_UP
+	strengthboulder_event 10, 9
+	itemball_event 12, 29, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
+	itemball_event 16, 4, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
+	itemball_event 24, 34, PROTECTOR, 1, EVENT_MOUNT_MORTAR_B1F_PROTECTOR
+	itemball_event 3, 32, MAX_ETHER, 1, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
+	itemball_event 26, 21, PP_UP, 1, EVENT_MOUNT_MORTAR_B1F_PP_UP
 
 MountMortarB1FHikerScript:
 	faceplayer
@@ -46,23 +46,14 @@ MountMortarB1FTutorDefenseCurlScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_MountMortarB1FTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MountMortarB1FTutorRefused
 
 .NoSilverLeaf
-	writetext Text_MountMortarB1FTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MountMortarB1FTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_MountMortarB1FTutorTaught
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_MountMortarB1FTutorTaught
 
 KiyoScript_0x7e1f6:
 	faceplayer
@@ -94,22 +85,10 @@ UnknownScript_0x7e217:
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 UnknownScript_0x7e231:
-	writetext UnknownText_0x7e36a
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x7e36a
 
 UnknownScript_0x7e237:
-	writetext UnknownText_0x7e3df
-	waitbutton
-	closetext
-	end
-
-MountMortarB1FBoulder:
-	jumpstd strengthboulder
-
-MountMortarB1FHiddenMaxRevive:
-	dwb EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
+	jumpopenedtext UnknownText_0x7e3df
 
 MountMortarB1FHikerText:
 	text "My Pokemon used"

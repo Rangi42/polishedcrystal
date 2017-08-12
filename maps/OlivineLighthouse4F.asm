@@ -31,22 +31,14 @@ TrainerLassConnie:
 
 LassConnieScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b63c
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5b63c
 
 TrainerSailorKent:
 	trainer EVENT_BEAT_SAILOR_KENT, SAILOR, KENT, SailorKentSeenText, SailorKentBeatenText, 0, SailorKentScript
 
 SailorKentScript:
 	end_if_just_battled
-	opentext
-	writetext UnknownText_0x5b584
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer UnknownText_0x5b584
 
 SailorKentSeenText:
 	text "Jasmine must be"

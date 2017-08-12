@@ -14,26 +14,22 @@ UnionCaveB1FNorth_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 23, 11, SIGNPOST_ITEM, UnionCaveB1FNorthHiddenXSpeed
-	signpost 4, 13, SIGNPOST_ITEM, UnionCaveB1FNorthHiddenRevive
+	signpost 23, 11, SIGNPOST_ITEM + X_SPEED, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED
+	signpost 4, 13, SIGNPOST_ITEM + REVIVE, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE
 
 .PersonEvents: db 5
 	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
 	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetry, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 22, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_SWIFT, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, X_DEFEND, 1, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 10, 7, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, UnionCaveB1FNorthBoulder, -1
+	tmhmball_event 22, 5, TM_SWIFT, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
+	itemball_event 21, 17, X_DEFEND, 1, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
+	strengthboulder_event 10, 7
 
 TrainerRuin_maniacLeland:
 	trainer EVENT_BEAT_RUIN_MANIAC_LELAND, RUIN_MANIAC, LELAND, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm on the trail of"
@@ -58,11 +54,7 @@ TrainerRuin_maniacPetry:
 
 .Script:
 	end_if_just_battled
-	opentext
-	writetext .AfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'll go anywhere"
@@ -84,12 +76,3 @@ TrainerRuin_maniacPetry:
 	line "it properly we use"
 	cont "modern technology."
 	done
-
-UnionCaveB1FNorthBoulder:
-	jumpstd strengthboulder
-
-UnionCaveB1FNorthHiddenXSpeed:
-	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED, X_SPEED
-
-UnionCaveB1FNorthHiddenRevive:
-	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE, REVIVE

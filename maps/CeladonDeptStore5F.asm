@@ -14,44 +14,15 @@ CeladonDeptStore5F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 0, 14, SIGNPOST_READ, CeladonDeptStore5FDirectory
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStore5FElevatorButton
+	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore5FDirectoryText
+	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 5
-	person_event SPRITE_CLERK, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x71004, -1
-	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ClerkScript_0x7100c, -1
-	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x71014, -1
-	person_event SPRITE_SAILOR, 3, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x71017, -1
-	person_event SPRITE_TEACHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7101a, -1
-
-ClerkScript_0x71004:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_CELADON_5F_1
-	closetext
-	end
-
-ClerkScript_0x7100c:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_STANDARD, MART_CELADON_5F_2
-	closetext
-	end
-
-GentlemanScript_0x71014:
-	jumptextfaceplayer UnknownText_0x71023
-
-SailorScript_0x71017:
-	jumptextfaceplayer UnknownText_0x71072
-
-TeacherScript_0x7101a:
-	jumptextfaceplayer UnknownText_0x710b6
-
-CeladonDeptStore5FDirectory:
-	jumptext CeladonDeptStore5FDirectoryText
-
-CeladonDeptStore5FElevatorButton:
-	jumpstd elevatorbutton
+	person_event SPRITE_CLERK, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_5F_1, -1
+	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_5F_2, -1
+	person_event SPRITE_GENTLEMAN, 5, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71023, -1
+	person_event SPRITE_SAILOR, 3, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71072, -1
+	person_event SPRITE_TEACHER, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x710b6, -1
 
 UnknownText_0x71023:
 	text "I want to buy some"

@@ -14,27 +14,27 @@ YellowForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 4, 30, SIGNPOST_ITEM, YellowForestHiddenBigMushroom
-	signpost 36, 34, SIGNPOST_ITEM, YellowForestHiddenBalmMushroom
-	signpost 37, 5, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf1
-	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
+	signpost 4, 30, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
+	signpost 36, 34, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
+	signpost 37, 5, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
+	signpost 16, 17, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
 
 .PersonEvents: db 15
 	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
 	person_event SPRITE_SKARMORY, 22, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
 	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 16, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
-	person_event SPRITE_SUPER_NERD, 6, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YellowForestSuperNerdScript, -1
+	person_event SPRITE_SUPER_NERD, 6, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
 	person_event SPRITE_TWIN, 39, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
 	person_event SPRITE_TWIN, 32, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
 	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
 	person_event SPRITE_BREEDER, 40, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
 	person_event SPRITE_COOLTRAINER_M, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 9, 40, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestCutTree, EVENT_YELLOW_FOREST_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TMHMBALL, 0, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
-	person_event SPRITE_BALL_CUT_FRUIT, 24, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
-	person_event SPRITE_BALL_CUT_FRUIT, 21, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
-	person_event SPRITE_BALL_CUT_FRUIT, 24, 49, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
+	cuttree_event 9, 40, EVENT_YELLOW_FOREST_CUT_TREE
+	tmhmball_event 16, 25, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
+	itemball_event 24, 32, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
+	itemball_event 21, 11, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
+	itemball_event 24, 49, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
 
 const_value set 2
 	const YELLOWFOREST_WALKER
@@ -51,51 +51,31 @@ TrainerSchoolgirlSarah:
 
 SchoolgirlSarahScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlSarahAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SchoolgirlSarahAfterText
 
 TrainerSchoolgirlIsabel:
 	trainer EVENT_BEAT_SCHOOLGIRL_ISABEL, SCHOOLGIRL, ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
 
 SchoolgirlIsabelScript:
 	end_if_just_battled
-	opentext
-	writetext SchoolgirlIsabelAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer SchoolgirlIsabelAfterText
 
 TrainerTeacherKathryn:
 	trainer EVENT_BEAT_TEACHER_KATHRYN, TEACHER, KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
 
 TeacherKathrynScript:
 	end_if_just_battled
-	opentext
-	writetext TeacherKathrynAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer TeacherKathrynAfterText
 
 TrainerBreederSophie:
 	trainer EVENT_BEAT_BREEDER_SOPHIE, BREEDER, SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
 
 BreederSophieScript:
 	end_if_just_battled
-	opentext
-	writetext BreederSophieAfterText
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer BreederSophieAfterText
 
 YellowForestWalkerScript:
-	faceplayer
-	opentext
-	writetext YellowForestWalkerSeenText
-	waitbutton
-	closetext
+	showtextfaceplayer YellowForestWalkerSeenText
 	winlosstext YellowForestWalkerBeatenText, 0
 	setlasttalked YELLOWFOREST_WALKER
 	loadtrainer WALKER, 1
@@ -118,10 +98,7 @@ YellowForestWalkerScript:
 	cry SKARMORY
 	waitsfx
 	spriteface YELLOWFOREST_WALKER, DOWN
-	opentext
-	writetext YellowForestWalkerFlyText
-	waitbutton
-	closetext
+	showtext YellowForestWalkerFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -139,10 +116,7 @@ YellowForestYellowScript:
 	iffalse YellowForestYellowBattleScript
 	checkevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
 	iffalse YellowBattleAfterBallScript
-	writetext YellowForestYellowGoodbyeText
-	waitbutton
-	closetext
-	end
+	jumpopenedtext YellowForestYellowGoodbyeText
 
 YellowForestYellowBattleScript:
 	writetext YellowForestYellowGreetingText
@@ -199,29 +173,14 @@ YellowForestTutorSeedBombScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	writetext Text_YellowForestTutorRefused
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_YellowForestTutorRefused
 
 .NoSilverLeaf
-	writetext Text_YellowForestTutorNoSilverLeaf
-	waitbutton
-	closetext
-	end
+	jumpopenedtext Text_YellowForestTutorNoSilverLeaf
 
 .TeachMove
 	takeitem SILVER_LEAF
-	writetext Text_YellowForestTutorTaught
-	waitbutton
-	closetext
-	end
-
-YellowForestSuperNerdScript:
-	jumptextfaceplayer YellowForestSuperNerdText
-
-YellowForestCutTree:
-	jumpstd cuttree
+	jumpopenedtext Text_YellowForestTutorTaught
 
 YellowForestSurfPikachuDoll:
 	disappear YELLOWFOREST_POKE_BALL5
@@ -231,22 +190,7 @@ YellowForestSurfPikachuDoll:
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext YellowForestSurfPikachuDollSentText
-	waitbutton
-	closetext
-	end
-
-YellowForestHiddenBigMushroom:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM, BIG_MUSHROOM
-
-YellowForestHiddenBalmMushroom:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM, BALMMUSHROOM
-
-YellowForestHiddenGoldLeaf1:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1, GOLD_LEAF
-
-YellowForestHiddenGoldLeaf2:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2, GOLD_LEAF
+	jumpopenedtext YellowForestSurfPikachuDollSentText
 
 SchoolgirlSarahSeenText:
 	text "Ooh, a trainer!"

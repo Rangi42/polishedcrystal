@@ -13,16 +13,16 @@ PokemonFanClub_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 0, 7, SIGNPOST_READ, MapPokemonFanClubSignpost0Script
-	signpost 0, 9, SIGNPOST_READ, MapPokemonFanClubSignpost1Script
+	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x191dfc
+	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x191e29
 	signpost 1, 0, SIGNPOST_READ, PokemonJournalGreenScript
 
 .PersonEvents: db 6
 	person_event SPRITE_CLEFAIRY, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClefairyDoll, EVENT_VERMILION_FAN_CLUB_DOLL
 	person_event SPRITE_GENTLEMAN, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
-	person_event SPRITE_RECEPTIONIST, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x191821, -1
+	person_event SPRITE_RECEPTIONIST, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191b6d, -1
 	person_event SPRITE_FISHER, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
-	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x19186b, -1
+	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191d73, -1
 	person_event SPRITE_ODDISH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FanClubOddish, -1
 
 const_value set 2
@@ -46,16 +46,10 @@ UnknownScript_0x191802:
 	verbosegiveitem RARE_CANDY
 	iffalse UnknownScript_0x19181f
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	writetext UnknownText_0x191a72
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191a72
 
 UnknownScript_0x191815:
-	writetext UnknownText_0x191ae0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191ae0
 
 UnknownScript_0x19181b:
 	writetext UnknownText_0x191b38
@@ -64,9 +58,6 @@ UnknownScript_0x19181f:
 	closetext
 	end
 
-ReceptionistScript_0x191821:
-	jumptextfaceplayer UnknownText_0x191b6d
-
 FisherScript_0x191824:
 	faceplayer
 	opentext
@@ -74,10 +65,7 @@ FisherScript_0x191824:
 	iftrue UnknownScript_0x19185f
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue UnknownScript_0x191838
-	writetext UnknownText_0x191ba0
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191ba0
 
 UnknownScript_0x191838:
 	writetext UnknownText_0x191bff
@@ -104,19 +92,10 @@ UnknownScript_0x191844:
 	end
 
 UnknownScript_0x19185f:
-	writetext UnknownText_0x191d1e
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x191d1e
 
 UnknownScript_0x191865:
-	writetext UnknownText_0x191d58
-	waitbutton
-	closetext
-	end
-
-TeacherScript_0x19186b:
-	jumptextfaceplayer UnknownText_0x191d73
+	jumpopenedtext UnknownText_0x191d58
 
 ClefairyDoll:
 	jumptext ClefairyDollText
@@ -128,12 +107,6 @@ FanClubOddish:
 	waitbutton
 	closetext
 	end
-
-MapPokemonFanClubSignpost0Script:
-	jumptext UnknownText_0x191dfc
-
-MapPokemonFanClubSignpost1Script:
-	jumptext UnknownText_0x191e29
 
 PokemonJournalGreenScript:
 	setflag ENGINE_READ_GREEN_JOURNAL

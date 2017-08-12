@@ -17,16 +17,9 @@ CeruleanBikeShop_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_CLERK, 2, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeruleanBikeShopClerkScript, -1
 
-const_value set 2
-	const CERULEANBIKESHOP_CLERK
-
 CeruleanBikeShopClerkScript:
-	faceplayer
-	opentext
-	writetext CeruleanBikeShopClerkText
-	waitbutton
-	closetext
-	spriteface CERULEANBIKESHOP_CLERK, UP
+	showtextfaceplayer CeruleanBikeShopClerkText
+	spriteface LAST_TALKED, UP
 	end
 
 CeruleanBikeShopClerkText:

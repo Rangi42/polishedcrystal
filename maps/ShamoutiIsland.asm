@@ -17,42 +17,37 @@ ShamoutiIsland_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 16, 16, SIGNPOST_READ, ShamoutiIslandSign
-	signpost 6, 26, SIGNPOST_READ, ShamoutiTouristCenterSign
-	signpost 6, 32, SIGNPOST_READ, ShamoutiHotelSign
+	signpost 16, 16, SIGNPOST_JUMPTEXT, ShamoutiIslandSignText
+	signpost 6, 26, SIGNPOST_JUMPTEXT, ShamoutiTouristCenterSignText
+	signpost 6, 32, SIGNPOST_JUMPTEXT, ShamoutiHotelSignText
 
 .PersonEvents: db 8
 	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFruitTree, -1
+	fruittree_event 13, 34, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY
 	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	person_event SPRITE_MARILL, 14, 25, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandPikabluScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
-	person_event SPRITE_FISHER, 2, 20, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFisherScript, -1
-	person_event SPRITE_FISHER, 2, 23, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFisherScript, -1
-	person_event SPRITE_GRAMPS, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandMerchant1Script, -1
-	person_event SPRITE_COOLTRAINER_M, 16, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ShamoutiIslandMerchant2Script, -1
+	person_event SPRITE_FISHER, 2, 20, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
+	person_event SPRITE_FISHER, 2, 23, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
+	person_event SPRITE_GRAMPS, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_1, -1
+	person_event SPRITE_COOLTRAINER_M, 16, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_2, -1
 
 const_value set 2
 	const SHAMOUTIISLAND_VILEPLUME
-
-ShamoutiIslandFruitTree:
-	fruittree FRUITTREE_SHAMOUTI_ISLAND
 
 ShamoutiIslandVileplumeScript:
 	special SpecialSnorlaxAwake
 	iftrue .Awake
 	showemote EMOTE_SLEEP, SHAMOUTIISLAND_VILEPLUME, 15
-	opentext
-	writetext .VileplumeText
-	waitbutton
-	closetext
-	end
+	thistext
+
+.VileplumeText:
+	text "Vileplume is fast"
+	line "asleep…"
+	done
 
 .Awake:
-	opentext
-	writetext .PokeFluteText
-	waitbutton
-	closetext
-	applymovement SHAMOUTIISLAND_VILEPLUME, .ShakeMovement
+	showtext .PokeFluteText
+	applyonemovement SHAMOUTIISLAND_VILEPLUME, tree_shake
 	opentext
 	writetext .WokeUpText
 	pause 15
@@ -65,11 +60,6 @@ ShamoutiIslandVileplumeScript:
 	reloadmapafterbattle
 	end
 
-.VileplumeText:
-	text "Vileplume is fast"
-	line "asleep…"
-	done
-
 .PokeFluteText:
 	text "The #gear was"
 	line "placed near the"
@@ -81,10 +71,6 @@ ShamoutiIslandVileplumeScript:
 .WokeUpText:
 	text "Vileplume woke up!"
 	done
-
-.ShakeMovement:
-	tree_shake
-	step_end
 
 ShamoutiIslandYoungsterScript:
 	faceplayer
@@ -131,10 +117,7 @@ ShamoutiIslandPikabluScript:
 	text "Pikablu: Rill!"
 	done
 
-ShamoutiIslandFisherScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ShamoutiIslandFisherText:
 	text "Today we're dancing"
 	line "for no reason. ♪"
 
@@ -149,38 +132,15 @@ ShamoutiIslandFisherScript:
 	line "rude!"
 	done
 
-ShamoutiIslandMerchant1Script:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_1
-	closetext
-	end
-
-ShamoutiIslandMerchant2Script:
-	faceplayer
-	opentext
-	pokemart MARTTYPE_BAZAAR, MART_SHAMOUTI_2
-	closetext
-	end
-
-ShamoutiIslandSign:
-	jumptext .Text
-
-.Text:
+ShamoutiIslandSignText:
 	text "Shamouti Island"
 	done
 
-ShamoutiHotelSign:
-	jumptext .Text
-
-.Text:
+ShamoutiHotelSignText:
 	text "Shamouti Hotel"
 	done
 
-ShamoutiTouristCenterSign:
-	jumptext .Text
-
-.Text:
+ShamoutiTouristCenterSignText:
 	text "Shamouti Tourist"
 	line "Center"
 	done

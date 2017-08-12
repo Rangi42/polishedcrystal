@@ -23,13 +23,10 @@ Route1617Gate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x733ea, -1
+	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x73408, -1
 
 const_value set 2
 	const ROUTE1617GATE_OFFICER
-
-OfficerScript_0x733ea:
-	jumptextfaceplayer UnknownText_0x73408
 
 StepUpOneTrigger:
 	checkitem BICYCLE
@@ -55,10 +52,7 @@ UnknownScript_0x733ed:
 UnknownScript_0x733f3:
 	showemote EMOTE_SHOCK, ROUTE1617GATE_OFFICER, 15
 	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x73496
-	waitbutton
-	closetext
+	showtext UnknownText_0x73496
 	applymovement PLAYER, MovementData_0x73405
 DoNothingScript:
 	end

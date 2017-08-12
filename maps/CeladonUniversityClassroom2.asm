@@ -13,27 +13,21 @@ CeladonUniversityClassroom2_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 5
-	signpost 0, 2, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 0, 3, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 0, 4, SIGNPOST_READ, CeladonUniversityClassroom2Blackboard
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf1
-	signpost 1, 7, SIGNPOST_READ, CeladonUniversityClassroom2Bookshelf2
+	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2BlackboardText
+	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2BlackboardText
+	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2BlackboardText
+	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2Bookshelf1Text
+	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2Bookshelf2Text
 
 .PersonEvents: db 5
+	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2BlancheText, EVENT_CELADON_UNIVERSITY_BLANCHE
+	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2TeacherText, EVENT_SHAMOUTI_COAST_BLANCHE
+	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2YoungsterText, -1
+	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2ChildText, -1
+	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2LadyText, -1
 	person_event SPRITE_COOLTRAINER_M, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2CooltrainermScript, -1
-	person_event SPRITE_BLANCHE, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2BlancheScript, EVENT_CELADON_UNIVERSITY_BLANCHE
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2TeacherScript, EVENT_SHAMOUTI_COAST_BLANCHE
-	person_event SPRITE_YOUNGSTER, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2YoungsterScript, -1
-	person_event SPRITE_CHILD, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2ChildScript, -1
-	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom2LadyScript, -1
 
-const_value set 2
-	const CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M
-
-CeladonUniversityClassroom2BlancheScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom2BlancheText:
 	text "I am Blanche."
 	line "I teach History"
 	cont "here."
@@ -45,10 +39,7 @@ CeladonUniversityClassroom2BlancheScript:
 	line "repeat it."
 	done
 
-CeladonUniversityClassroom2TeacherScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom2TeacherText:
 	text "I'm afraid Blanche"
 	line "isn't available."
 
@@ -59,20 +50,14 @@ CeladonUniversityClassroom2TeacherScript:
 	line "Shamouti Island."
 	done
 
-CeladonUniversityClassroom2YoungsterScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom2YoungsterText:
 	text "Flipping through"
 	line "my notes at the"
 	cont "speed of--YOW!"
 	cont "Paper cut…"
 	done
 
-CeladonUniversityClassroom2ChildScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom2ChildText:
 	text "We just had a"
 	line "lecture on Prof."
 
@@ -88,10 +73,7 @@ CeladonUniversityClassroom2ChildScript:
 	cont "it up!"
 	done
 
-CeladonUniversityClassroom2LadyScript:
-	jumptextfaceplayer .Text
-
-.Text:
+CeladonUniversityClassroom2LadyText:
 	text "You're from Johto?"
 	line "That region has"
 
@@ -100,16 +82,9 @@ CeladonUniversityClassroom2LadyScript:
 	done
 
 CeladonUniversityClassroom2CooltrainermScript:
-	opentext
-	writetext .Text1
-	waitbutton
-	closetext
-	faceplayer
-	opentext
-	writetext .Text2
-	waitbutton
-	closetext
-	spriteface CELADONUNIVERSITYCLASSROOM2_COOLTRAINER_M, UP
+	showtext .Text1
+	showtextfaceplayer .Text2
+	spriteface LAST_TALKED, UP
 	end
 
 .Text1:
@@ -130,10 +105,7 @@ CeladonUniversityClassroom2CooltrainermScript:
 	line "I'm exhausted."
 	done
 
-CeladonUniversityClassroom2Blackboard:
-	jumptext .Text
-
-.Text:
+CeladonUniversityClassroom2BlackboardText:
 	text "There's a timeline"
 	line "of recent history."
 
@@ -158,10 +130,7 @@ CeladonUniversityClassroom2Blackboard:
 	cont "nentially.”"
 	done
 
-CeladonUniversityClassroom2Bookshelf1:
-	jumptext .Text
-
-.Text:
+CeladonUniversityClassroom2Bookshelf1Text:
 	text "It's a book about"
 	line "how the Gong Tower"
 	cont "in Ecruteak City"
@@ -170,10 +139,7 @@ CeladonUniversityClassroom2Bookshelf1:
 	line "years ago."
 	done
 
-CeladonUniversityClassroom2Bookshelf2:
-	jumptext .Text
-
-.Text:
+CeladonUniversityClassroom2Bookshelf2Text:
 	text "It's a book of"
 	line "slang terms from"
 	cont "the 1980s."

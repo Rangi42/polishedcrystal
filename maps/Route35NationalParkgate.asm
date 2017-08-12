@@ -7,6 +7,7 @@ Route35NationalParkgate_MapScriptHeader:
 
 .MapCallbacks: db 2
 	dbw MAPCALLBACK_NEWMAP, Route35NationalParkgate_CheckIfStillInContest
+	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay
 
 Route35NationalParkgate_MapEventHeader:
 
@@ -19,19 +20,17 @@ Route35NationalParkgate_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 0, 5, SIGNPOST_READ, MapRoute36NationalParkgateSignpost0Script
+	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
 .PersonEvents: db 3
 	person_event SPRITE_OFFICER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	person_event SPRITE_BUG_MANIAC, 5, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6a2d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
+	person_event SPRITE_BUG_MANIAC, 5, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
 	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
 const_value set 2
 	const ROUTE35NATIONALPARKGATE_OFFICER1
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
-
-	dbw MAPCALLBACK_OBJECTS, Route35NationalParkgate_CheckIfContestDay
 
 Route35NationalParkgateTrigger2:
 	priorityjump Route35NationalParkGate_LeavingContestEarly
@@ -165,40 +164,22 @@ Route35NationalParkgate_LessThanFullParty: ; 6a27d
 	jump Route35NationalParkgate_OkayToProceed
 
 Route35NationalParkgate_DeclinedToParticipate:
-	writetext UnknownText_0x6a5dc
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a5dc
 
 Route35NationalParkgate_DeclinedToLeaveMonsBehind:
-	writetext UnknownText_0x6a597
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a597
 
 Route35NationalParkgate_FirstMonIsFainted:
-	writetext UnknownText_0x6a608
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a608
 
 Route35NationalParkgate_NoRoomInBox:
-	writetext UnknownText_0x6a67c
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a67c
 
 Route35NationalParkgate_FirstMonIsEgg:
-	writetext UnknownText_0x6a71f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a71f
 
 Route35NationalParkgate_ContestIsOver:
-	writetext UnknownText_0x6a84f
-	waitbutton
-	closetext
-	end
+	jumpopenedtext UnknownText_0x6a84f
 
 Route35NationalParkgate_NoContestToday:
 	jumptextfaceplayer UnknownText_0x6a894
@@ -208,16 +189,7 @@ OfficerScript_0x6a2ca:
 	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route35NationalParkgate_ContestIsOver
-	writetext UnknownText_0x6a894
-	waitbutton
-	closetext
-	end
-
-BugManiacScript_0x6a2d8:
-	jumptextfaceplayer UnknownText_0x6a8d8
-
-MapRoute36NationalParkgateSignpost0Script:
-	jumptext UnknownText_0x6a90e
+	jumpopenedtext UnknownText_0x6a894
 
 Route35NationalParkgate_GetDayOfWeek:
 	jumpstd daytotext

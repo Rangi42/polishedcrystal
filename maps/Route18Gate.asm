@@ -23,13 +23,10 @@ Route18Gate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x7360e, -1
+	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
 
 const_value set 2
 	const ROUTE18GATE_OFFICER
-
-OfficerScript_0x7360e:
-	jumptextfaceplayer UnknownText_0x7362c
 
 UnknownScript_0x73611:
 	checkitem BICYCLE
@@ -39,10 +36,7 @@ UnknownScript_0x73611:
 UnknownScript_0x73617:
 	showemote EMOTE_SHOCK, ROUTE18GATE_OFFICER, 15
 	spriteface PLAYER, UP
-	opentext
-	writetext UnknownText_0x7364d
-	waitbutton
-	closetext
+	showtext UnknownText_0x7364d
 	applymovement PLAYER, MovementData_0x73629
 	end
 

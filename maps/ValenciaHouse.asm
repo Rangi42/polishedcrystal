@@ -15,12 +15,9 @@ ValenciaHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ValenciaHouseLassScript, -1
+	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaHouseLassText, -1
 
-ValenciaHouseLassScript:
-	jumptextfaceplayer .Text
-
-.Text:
+ValenciaHouseLassText:
 	text "Prof.Ivy is really"
 	line "cool!"
 

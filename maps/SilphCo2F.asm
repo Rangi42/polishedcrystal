@@ -13,20 +13,20 @@ SilphCo2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 2, 3, SIGNPOST_READ, SilphCo2FDeptSign
-	signpost 2, 9, SIGNPOST_READ, SilphCo2FDeptSign
-	signpost 0, 5, SIGNPOST_READ, SilphCo2FElevator
-	signpost 3, 0, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 6, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 7, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 12, SIGNPOST_READ, SilphCo2FBookshelf
-	signpost 3, 13, SIGNPOST_READ, SilphCo2FBookshelf
+	signpost 2, 3, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
+	signpost 2, 9, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
+	signpost 0, 5, SIGNPOST_JUMPTEXT, SilphCo2FElevatorText
+	signpost 3, 0, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 6, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 12, SIGNPOST_JUMPSTD, difficultbookshelf
+	signpost 3, 13, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 4
 	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist2Script, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee1Script, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SilphCo2FSilphEmployee2Script, -1
+	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
 
 SilphCo2FScientist1Script:
 	faceplayer
@@ -44,24 +44,6 @@ SilphCo2FScientist1GaveUpGradeScript:
 SilphCo2FScientist1NoRoomForUpGradeScript:
 	closetext
 	end
-
-SilphCo2FScientist2Script:
-	jumptextfaceplayer SilphCo2FScientist2Text
-
-SilphCo2FSilphEmployee1Script:
-	jumptextfaceplayer SilphCo2FSilphEmployee1Text
-
-SilphCo2FSilphEmployee2Script:
-	jumptextfaceplayer SilphCo2FSilphEmployee2Text
-
-SilphCo2FDeptSign:
-	jumptext SilphCo2FDeptSignText
-
-SilphCo2FElevator:
-	jumptext SilphCo2FElevatorText
-
-SilphCo2FBookshelf:
-	jumpstd difficultbookshelf
 
 SilphCo2FScientist1Text1:
 	text "You traveled here"

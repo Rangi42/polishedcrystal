@@ -16,14 +16,14 @@ CinnabarLab_MapEventHeader:
 	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
 
 .Signposts: db 8
-	signpost 14, 8, SIGNPOST_READ, CinnabarLabRoom1Sign
-	signpost 14, 9, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 14, 16, SIGNPOST_READ, CinnabarLabRoom2Sign
-	signpost 14, 17, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 14, 24, SIGNPOST_READ, CinnabarLabRoom3Sign
-	signpost 14, 25, SIGNPOST_READ, CinnabarLabLockedDoorSign
-	signpost 6, 3, SIGNPOST_READ, CinnabarLabRoom4Sign
-	signpost 6, 3, SIGNPOST_ITEM, CinnabarLabHiddenBerserkGene
+	signpost 14, 8, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
+	signpost 14, 9, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	signpost 14, 16, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
+	signpost 14, 17, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	signpost 14, 24, SIGNPOST_JUMPTEXT, CinnabarLabRoom3SignText
+	signpost 14, 25, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	signpost 6, 3, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
+	signpost 6, 3, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
 .PersonEvents: db 9
 	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
@@ -75,17 +75,11 @@ CinnabarLabCelebiEventScript:
 	warpfacing UP, CINNABAR_LAB, $f, $9
 	special Special_FadeOutMusic
 	pause 30
-	opentext
-	writetext CinnabarLabContinueTestingText
-	waitbutton
-	closetext
+	showtext CinnabarLabContinueTestingText
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 15
 	playmusic MUSIC_ROCKET_OVERTURE
 	spriteface CINNABARLAB_GIOVANNI, DOWN
-	opentext
-	writetext CinnabarLabGiovanniWhoAreYouText
-	waitbutton
-	closetext
+	showtext CinnabarLabGiovanniWhoAreYouText
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniStepAsideMovementData
 	applymovement PLAYER, CinnabarLabPlayerStepsUpMovementData
 	opentext
@@ -103,10 +97,7 @@ CinnabarLabCelebiEventScript:
 	special DeleteSavedMusic
 	playmusic MUSIC_NONE
 	setevent EVENT_TIME_TRAVELING
-	opentext
-	writetext CinnabarLabGiovanniAfterText
-	waitbutton
-	closetext
+	showtext CinnabarLabGiovanniAfterText
 	showemote EMOTE_SHOCK, CINNABARLAB_ARMORED_MEWTWO, 15
 	opentext
 	writetext CinnabarLabMewtwoText
@@ -218,24 +209,6 @@ CinnabarLabCelebiEventScript:
 	domaptrigger ILEX_FOREST, $1
 	warp ILEX_FOREST, $a, $1a
 	end
-
-CinnabarLabRoom1Sign:
-	jumptext CinnabarLabRoom1SignText
-
-CinnabarLabRoom2Sign:
-	jumptext CinnabarLabRoom2SignText
-
-CinnabarLabRoom3Sign:
-	jumptext CinnabarLabRoom3SignText
-
-CinnabarLabRoom4Sign:
-	jumptext CinnabarLabRoom4SignText
-
-CinnabarLabLockedDoorSign:
-	jumptext CinnabarLabLockedDoorText
-
-CinnabarLabHiddenBerserkGene:
-	dwb EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE, BERSERK_GENE
 
 CinnabarLabStepDownMovementData:
 	step_down
