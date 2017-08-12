@@ -1,3 +1,4 @@
+; see engine/map_setup.asm:MapSetupScripts
 const_value SET $f1
 	const MAPSETUP_WARP
 	const MAPSETUP_CONTINUE
@@ -20,8 +21,8 @@ const_value SET 1
 	const MAPCALLBACK_NEWMAP
 
 ; Command descriptions from Condensation water's scripting compendium.
+; see engine/map_setup.asm:MapSetupCommands
 	const_def
-
 	const map_lcd_on              ; 00
 	const map_lcd_off             ; 01
 	const map_sound_off           ; 02
