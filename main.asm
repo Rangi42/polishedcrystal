@@ -2469,43 +2469,40 @@ SwapTextboxPalettes:: ; 4c000
 	ret
 
 ScrollBGMapPalettes:: ; 4c03f
-	ld a, [TilesetPalettes + 1]
-	ld [hTilesetPalettesHigh], a
-	ld a, [TilesetPalettes]
-	ld b, a
 	ld hl, BGMapBuffer
 	ld de, BGMapPalBuffer
-	and a
 .loop
-	push de
-	ld a, [hTilesetPalettesHigh]
-	ld d, a
 	ld a, [hl]
-	rra
+	push hl
+	srl a
 	jr c, .UpperNybble
 
-	add b
-	ld e, a
-	jr nc, .noCarry
-	inc d
-.noCarry
-	ld a, [de]
+; .LowerNybble
+	ld hl, TilesetPalettes
+	add [hl]
+	ld l, a
+	ld a, [TilesetPalettes + 1]
+	adc $0
+	ld h, a
+	ld a, [hl]
+	and $f
 	jr .next
 
 .UpperNybble:
-	add b
-	ld e, a
-	jr nc, .noCarry2
-	inc h
-.noCarry2
-	ld a, [de]
+	ld hl, TilesetPalettes
+	add [hl]
+	ld l, a
+	ld a, [TilesetPalettes + 1]
+	adc $0
+	ld h, a
+	ld a, [hl]
 	swap a
+	and $f
 
 .next
-	and $f
-	pop de
-	res 7, [hl]
+	pop hl
 	ld [de], a
+	res 7, [hl]
 	inc hl
 	inc de
 	dec c

@@ -64,8 +64,6 @@ hMultiplicand      EQU $ffb4 ; 3 bytes long
 hMultiplier        EQU $ffb7 ; 1 byte long
 hProduct           EQU $ffb3 ; result (4 bytes long)
 
-hTilesetPalettesHigh EQU $ffb3
-
 hMathBuffer        EQU $ffb8
 
 hPrintNum1         EQU $ffb3
