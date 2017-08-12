@@ -33,19 +33,14 @@ if \8 == PERSONTYPE_COMMAND
 else
 	db \9 ; sight_range
 endc
-if \8 == PERSONTYPE_ITEMBALL
+if PERSON_EVENT_NARG == 14
 	shift
 	db \9 ; itemball contents
 	shift
 	db \9 ; itemball quantity
 else
-if \8 == PERSONTYPE_TMHMBALL
-	shift 
-	db \9, 0 ; tmhmball contents
-else
 	shift
-	dw \9 ; pointer
-endc
+	dw \9 ; pointer || byte, 0
 endc
 	shift
 	dw \9 ; event flag

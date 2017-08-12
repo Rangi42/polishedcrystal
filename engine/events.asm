@@ -509,8 +509,7 @@ TryObjectEvent: ; 969b5
 
 .pointers:
 	dw .script   ; PERSONTYPE_SCRIPT
-	dw .itemball ; PERSONTYPE_ITEMBALL
-	dw .tmhmball ; PERSONTYPE_TMHMBALL
+	dw .pokeball ; PERSONTYPE_POKEBALL
 	dw .trainer  ; PERSONTYPE_TRAINER
 	dw .trainer  ; PERSONTYPE_GENERICTRAINER
 	dw .pokemon  ; PERSONTYPE_POKEMON
@@ -526,21 +525,15 @@ TryObjectEvent: ; 969b5
 	jp CallScript
 ; 96a12
 
-.itemball:
-	ld a, PLAYEREVENT_ITEMBALL
-	jr .continue_ball
-
-.tmhmball:
-	ld a, PLAYEREVENT_TMHMBALL
-.continue_ball
-	push af
-	ld hl, MAPOBJECT_SCRIPT_POINTER
+.pokeball:
+	ld hl, MAPOBJECT_RANGE
 	add hl, bc
 	ld a, [hli]
-	ld e, [hl]
-	ld hl, CurItemBallContents
-	ld [hli], a
-	ld [hl], e
+	push af
+	ld a, [hli]
+	ld [CurItemBallContents], a
+	ld a, [hl]
+	ld [CurItemBallQuantity], a
 	pop af
 	scf
 	ret

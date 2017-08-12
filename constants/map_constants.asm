@@ -884,12 +884,11 @@ EMOTE_OBJECT EQU 7
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
 	const PERSONTYPE_SCRIPT         ; 0
-	const PERSONTYPE_ITEMBALL       ; 1
-	const PERSONTYPE_TMHMBALL       ; 2
-	const PERSONTYPE_TRAINER        ; 3
-	const PERSONTYPE_GENERICTRAINER ; 4
-	const PERSONTYPE_POKEMON        ; 5
-	const PERSONTYPE_COMMAND        ; 6
+	const PERSONTYPE_POKEBALL       ; 1
+	const PERSONTYPE_TRAINER        ; 2
+	const PERSONTYPE_GENERICTRAINER ; 3
+	const PERSONTYPE_POKEMON        ; 4
+	const PERSONTYPE_COMMAND        ; 5
 NUM_PERSONTYPES EQU const_value
 
 ; fruit trees
