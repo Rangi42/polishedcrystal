@@ -30,10 +30,11 @@ endif
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-PYTHON = python
-RM = rm -f
-
-gfx       := $(PYTHON) gfx.py
+PYTHON     = python
+CC         = gcc
+RM         = rm -f
+GFX        = $(PYTHON) gfx.py
+LZ         = utils/lzcomp
 includes  := $(PYTHON) utils/scan_includes.py
 bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
@@ -88,9 +89,12 @@ clean:
 	rgbfix $(RGBFIX_FLAGS) $@
 
 %.png: ;
-%.2bpp: %.png ; $(gfx) 2bpp $<
-%.1bpp: %.png ; $(gfx) 1bpp $<
-%.lz: % ; $(gfx) lz $<
+%.2bpp: %.png ; $(GFX) 2bpp $<
+%.1bpp: %.png ; $(GFX) 1bpp $<
+%.lz: % ; $(LZ) $<
+
+utils/lzcomp: utils/lzcomp.c
+	$(CC) -O3 -std=c11 -Wall -Wextra -pedantic -o $@ $<
 
 contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
 
