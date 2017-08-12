@@ -1984,8 +1984,7 @@ wPriorityScriptAddr::
 wScriptTextAddr:: ds 2
 	ds 1
 wWildEncounterCooldown:: ds 1
-wXYComparePointer:: ds 2
-	ds 3
+	ds 5
 
 wWildBattlePanic:: ds 1
 wBattleScriptFlags:: ds 2

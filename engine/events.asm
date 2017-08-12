@@ -76,9 +76,6 @@ StartMap: ; 96724
 	farcall InitCallReceiveDelay
 	call ClearJoypad
 EnterMap: ; 9673e
-	xor a
-	ld [wXYComparePointer], a
-	ld [wXYComparePointer + 1], a
 	call SetUpFiveStepWildEncounterCooldown
 	farcall RunMapSetupScript
 	call DisableEvents

@@ -79,13 +79,13 @@ if_less_than: macro
 	enum jumpstd_command
 jumpstd: macro
 	db jumpstd_command
-	dw \1 ; predefined_script
+	db \1 ; predefined_script
 	endm
 
 	enum callstd_command
 callstd: macro
 	db callstd_command
-	dw \1 ; predefined_script
+	db \1 ; predefined_script
 	endm
 
 	enum callasm_command
@@ -376,12 +376,6 @@ wildon: macro
 	enum wildoff_command
 wildoff: macro
 	db wildoff_command
-	endm
-
-	enum xycompare_command
-xycompare: macro
-	db xycompare_command
-	dw \1 ; pointer
 	endm
 
 	enum warpmod_command
@@ -796,7 +790,7 @@ delcmdqueue: macro
 	enum playmusic_command
 playmusic: macro
 	db playmusic_command
-	dw \1 ; music_pointer
+	db \1 ; music_id
 	endm
 
 	enum encountermusic_command
@@ -807,7 +801,7 @@ encountermusic: macro
 	enum musicfadeout_command
 musicfadeout: macro
 	db musicfadeout_command
-	dw \1 ; music
+	db \1 ; music
 	db \2 ; fadetime
 	endm
 
@@ -824,13 +818,13 @@ dontrestartmapmusic: macro
 	enum cry_command
 cry: macro
 	db cry_command
-	dw \1 ; cry_id
+	db \1 ; cry_id
 	endm
 
 	enum playsound_command
 playsound: macro
 	db playsound_command
-	dw \1 ; sound_pointer
+	db \1 ; sound_id
 	endm
 
 	enum waitsfx_command
@@ -962,7 +956,7 @@ fruittree: macro
 	enum specialphonecall_command
 specialphonecall: macro
 	db specialphonecall_command
-	dw \1 ; call_id
+	db \1 ; call_id
 	endm
 
 	enum checkphonecall_command

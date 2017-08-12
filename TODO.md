@@ -27,6 +27,7 @@ The final, non-beta 3.0 release should include all of these.
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
+* Allow trading Eggs
 
 
 ### Aesthetics
