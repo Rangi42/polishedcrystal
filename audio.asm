@@ -294,6 +294,11 @@ INCLUDE "audio/music/xy/rivalbattle.asm"
 INCLUDE "audio/music/xy/titlescreen.asm"
 
 
+SECTION "XY Music 3", ROMX
+
+INCLUDE "audio/music/xy/legendarybattle.asm"
+
+
 SECTION "ORAS Music 1", ROMX
 
 INCLUDE "audio/music/oras/wallybattle.asm"
@@ -316,6 +321,14 @@ SECTION "SM Music 2", ROMX
 
 INCLUDE "audio/music/sm/trainerbattle.asm"
 INCLUDE "audio/music/sm/wildbattle.asm"
+
+
+SECTION "Prism Music", ROMX
+
+INCLUDE "audio/music/prism/wildbattle.asm"
+INCLUDE "audio/music/prism/trainerbattle.asm"
+INCLUDE "audio/music/prism/gymleaderbattle.asm"
+INCLUDE "audio/music/prism/palettebattle.asm"
 
 
 SECTION "Music Custom", ROMX

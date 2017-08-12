@@ -1648,7 +1648,6 @@ SongSelector:
 .a:
 ; select song
 	ld a, [wSongSelection]
-
 	cp NUM_SONGS - MP_LIST_CURSOR_Y + 1
 	jr c, .no_overflow
 	sub NUM_SONGS - MP_LIST_CURSOR_Y
@@ -1656,7 +1655,6 @@ SongSelector:
 .no_overflow
 	add MP_LIST_CURSOR_Y - 1
 .got_song
-
 	ld [wSongSelection], a
 	ld e, a
 	ld d, 0
@@ -1732,10 +1730,9 @@ UpdateSelectorNames:
 	ld bc, SCREEN_WIDTH
 	call AddNTimes
 	call MPLPlaceString
+rept 4
 	inc de
-	inc de
-	inc de
-	inc de
+endr
 	pop bc
 	inc b
 	inc c
@@ -2030,6 +2027,11 @@ SongInfo:
 	db "Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
 	db "Post-Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
 	db "Title@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHANTYTOWN
+	db "Vs.Legendary@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Vs.Naljo Wild@", ORIGIN_PRISM, COMPOSER_LEVUSBEVUS, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Naljo Trainer@", ORIGIN_PRISM, COMPOSER_GACT, COMPOSER_NOTFROGGESTSPIRIT
+	db "Vs.Naljo Leader@", ORIGIN_PRISM, COMPOSER_GRONNOC, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Palette Ranger@", ORIGIN_PRISM, COMPOSER_CAT333POKEMON, COMPOSER_NOTFROGGESTSPIRIT
 	db -1
 
 SongOrigins:
@@ -2047,6 +2049,7 @@ SongOrigins:
 	db "OR/AS@"
 	db "S/M@"
 	db "M02@"
+	db "Prism@"
 
 SongArtists:
 	db "@"
@@ -2063,3 +2066,8 @@ SongArtists:
 	db "Pigu@"
 	db "Pigu, PikalaxALT@"
 	db "GACT, Pigu@"
+	db "LevusBevus@"
+	db "GACT@"
+	db "GRonnoc@"
+	db "Cat333Pokemon@"
+	db "NotFroggestSpirit@"

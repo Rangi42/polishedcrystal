@@ -36,6 +36,7 @@ NUM_MP_EDIT_FIELDS EQU const_value
 	const ORIGIN_ORAS  ; b
 	const ORIGIN_SM    ; c
 	const ORIGIN_M02   ; d
+	const ORIGIN_PRISM ; e
 
 	const_def
 	const COMPOSER_NONE                       ; 0
@@ -52,3 +53,8 @@ NUM_MP_EDIT_FIELDS EQU const_value
 	const COMPOSER_PIGU                       ; b
 	const COMPOSER_PIGU_PIKALAXALT            ; c
 	const COMPOSER_GACT_PIGU                  ; d
+	const COMPOSER_LEVUSBEVUS                 ; e
+	const COMPOSER_GACT                       ; f
+	const COMPOSER_GRONNOC                    ; 10
+	const COMPOSER_CAT333POKEMON              ; 11
+	const COMPOSER_NOTFROGGESTSPIRIT          ; 12
