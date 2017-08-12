@@ -511,14 +511,14 @@ TryObjectEvent: ; 969b5
 	dw .script     ; PERSONTYPE_SCRIPT
 	dw .itemball   ; PERSONTYPE_ITEMBALL
 	dw .tmhmball   ; PERSONTYPE_TMHMBALL
+	dw .trainer    ; PERSONTYPE_TRAINER
+	dw .trainer    ; PERSONTYPE_GENERICTRAINER
+	dw .pokemon    ; PERSONTYPE_POKEMON
 	dw .jumptext   ; PERSONTYPE_JUMPTEXT
 	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
 	dw .jumpstd    ; PERSONTYPE_JUMPSTD
-	dw .trainer    ; PERSONTYPE_TRAINER
-	dw .trainer    ; PERSONTYPE_GENERICTRAINER
 	dw .mart       ; PERSONTYPE_MART
-	dw .pokemon    ; PERSONTYPE_POKEMON
-	dw .npctrade   ; PERSONTYPE_NPCTRADE
+	dw .trade      ; PERSONTYPE_TRADE
 	dw .fruittree  ; PERSONTYPE_FRUITTREE
 
 .script:
@@ -556,67 +556,45 @@ TryObjectEvent: ; 969b5
 	scf
 	ret
 
-.jumptext:
-	ld a, jumptext_command
-	jr .continue_text
-
-.jumptextfp:
-	ld a, jumptextfaceplayer_command
-.continue_text
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld de, wTemporaryScriptBuffer
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	jr .call_temporary_script_buffer
-
-.jumpstd:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld a, [hl]
-	ld hl, wTemporaryScriptBuffer + 1
-	ld [hld], a
-	ld [hl], jumpstd_command
-.call_temporary_script_buffer
-	ld hl, wTemporaryScriptBuffer
-.call_script_in_bank
-	ld a, [MapScriptHeaderBank]
-	jp CallScript
-
-.mart:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
-	add hl, bc
-	ld de, wTemporaryScriptBuffer
-	ld a, pokemart_command
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	jr .call_temporary_script_buffer
-
-.npctrade:
-	; TODO
-
 .pokemon:
 	; TODO
 
+.jumptext:
+	ld a, jumptext_command
+	jr .fill_temporary_script_buffer
+
+.jumptextfp:
+	ld a, jumptextfaceplayer_command
+	jr .fill_temporary_script_buffer
+
+.jumpstd:
+	ld a, jumpstd_command
+	jr .fill_temporary_script_buffer
+
+.mart:
+	ld a, pokemart_command
+	jr .fill_temporary_script_buffer
+
+.trade:
+	ld a, trade_command
+	jr .fill_temporary_script_buffer
+
 .fruittree:
+	ld a, fruittree_command
+.fill_temporary_script_buffer:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
+	ld de, wTemporaryScriptBuffer
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
 	ld a, [hl]
-	ld hl, wTemporaryScriptBuffer + 1
-	ld [hld], a
-	ld [hl], fruittree_command
-	jr .call_script_in_bank
-; 96a34
+	ld [de], a
+	ld hl, wTemporaryScriptBuffer
+	ld a, [MapScriptHeaderBank]
+	jp CallScript
 
 TryReadSign: ; 96a38
 	call CheckFacingSign

@@ -21,7 +21,7 @@ GoldenrodDeptStore5F_MapEventHeader:
 .PersonEvents: db 6
 	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
 	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_MART, 0, MARTTYPE_TM, MART_GOLDENROD_5F_TM, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NPCTrade0Script, -1
+	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRADE, 0, TRADE_WITH_MIKE_FOR_MACHOP, -1
 	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x562ad, -1
 	person_event SPRITE_POKEFAN_M, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x562f3, -1
 	person_event SPRITE_TWIN, 5, 13, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodDeptStore5FTwinScript, -1
@@ -94,14 +94,6 @@ GoldenrodDeptStore5FTwinScript:
 	add ORAN_BERRY
 	ld [ScriptVar], a
 	ret
-
-NPCTrade0Script:
-	faceplayer
-	opentext
-	trade $0
-	waitbutton
-	closetext
-	end
 
 UnknownText_0x56143:
 	text "Hello. Oh, your"

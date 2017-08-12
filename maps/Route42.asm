@@ -35,9 +35,9 @@ Route42_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 13, 24, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, EVENT_ROUTE_42_CUT_TREE
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934d, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a934f, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a9351, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_42_1, PNK_APRICORN, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_42_2, GRN_APRICORN, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_42_3, YLW_APRICORN, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	person_event SPRITE_BALL_CUT_FRUIT, 8, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
 	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, Route42OfficerText, EVENT_BEAT_JASMINE
@@ -107,7 +107,7 @@ Route42LyraScript5:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement PLAYER, MovementData_Route42PlayerStepsBack
-	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach5
+	applyonemovement ROUTE42_LYRA, step_down
 
 Route42LyraScript:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -336,15 +336,6 @@ OfficermKeithScript:
 .NoFight:
 	jumpopenedtext OfficermKeithDaytimeText
 
-FruitTreeScript_0x1a934d:
-	fruittree FRUITTREE_ROUTE_42_1
-
-FruitTreeScript_0x1a934f:
-	fruittree FRUITTREE_ROUTE_42_2
-
-FruitTreeScript_0x1a9351:
-	fruittree FRUITTREE_ROUTE_42_3
-
 Route42HiddenMaxPotion:
 	dwb EVENT_ROUTE_42_HIDDEN_MAX_POTION, MAX_POTION
 
@@ -357,10 +348,6 @@ MovementData_Route42LyraApproach2:
 MovementData_Route42LyraApproach1:
 	step_down
 	step_right
-	step_end
-
-MovementData_Route42LyraApproach5:
-	step_down
 	step_end
 
 MovementData_Route42PlayerStepsBack:

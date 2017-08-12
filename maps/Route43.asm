@@ -34,7 +34,7 @@ Route43_MapEventHeader:
 	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1
 	person_event SPRITE_LASS, 25, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy2, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 28, 2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_JUMPSTD, 0, cuttree, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x19d266, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 26, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_43, PERSIM_BERRY, -1
 	person_event SPRITE_BALL_CUT_FRUIT, 32, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_ITEMBALL, 0, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
 const_value set 2
@@ -472,9 +472,6 @@ UnknownScript_0x19d255:
 UnknownScript_0x19d259:
 	jumpstd packfullf
 	end
-
-FruitTreeScript_0x19d266:
-	fruittree FRUITTREE_ROUTE_43
 
 PokemaniacBenSeenText:
 	text "I love #mon!"

@@ -34,7 +34,7 @@ Route36_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
 	person_event SPRITE_LASS, 9, 53, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
 	person_event SPRITE_FISHER, 9, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36FruitTree, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_36, RAWST_BERRY, -1
 	person_event SPRITE_TWIN, 5, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 	person_event SPRITE_COOLTRAINER_F, -2, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
@@ -71,23 +71,22 @@ Route36SuicuneScript:
 SudowoodoScript:
 	checkitem SQUIRTBOTTLE
 	iftrue .Fight
-
 	waitsfx
 	playsound SFX_SANDSTORM
-	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
+	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	end
 
 .Fight:
 	opentext
 	writetext UseSquirtbottleText
 	yesorno
-	iffalse DidntUseSquirtbottleScript
+	iffalse_endtext
 	closetext
 WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	showtext UsedSquirtbottleText
 	waitsfx
 	playsound SFX_SANDSTORM
-	applymovement ROUTE36_WEIRD_TREE, SudowoodoShakeMovement
+	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	showtext SudowoodoAttackedText
 	loadwildmon SUDOWOODO, 20
 	startbattle
@@ -95,10 +94,6 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	if_equal $2, DidntCatchSudowoodo
 	disappear ROUTE36_WEIRD_TREE
 	reloadmapafterbattle
-	end
-
-DidntUseSquirtbottleScript:
-	closetext
 	end
 
 DidntCatchSudowoodo:
@@ -341,13 +336,6 @@ ArthurScript:
 
 ArthurNotThursdayScript:
 	jumpopenedtext ArthurNotThursdayText
-
-Route36FruitTree:
-	fruittree FRUITTREE_ROUTE_36
-
-SudowoodoShakeMovement:
-	tree_shake ; shake
-	step_end
 
 WeirdTreeMovement_Flee:
 	fast_jump_step_up

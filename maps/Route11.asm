@@ -27,7 +27,7 @@ Route11_MapEventHeader:
 	person_event SPRITE_ENGINEER, 14, 38, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
 	person_event SPRITE_ROCKER, 3, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
 	person_event SPRITE_COOLTRAINER_F, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 2, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x68055, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 2, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_11, GANLON_BERRY, -1
 
 TrainerYoungsterOwen:
 	trainer EVENT_BEAT_YOUNGSTER_OWEN, YOUNGSTER, OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript
@@ -277,9 +277,6 @@ TrainerGuitaristfRitsuko:
 	text "♪ Rock'n, rock'n'"
 	line "roll radio… ♪"
 	done
-
-FruitTreeScript_0x68055:
-	fruittree FRUITTREE_ROUTE_11
 
 Route11HiddenRevive:
 	dwb EVENT_ROUTE_11_HIDDEN_REVIVE, REVIVE

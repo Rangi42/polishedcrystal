@@ -23,7 +23,7 @@ ShamoutiIsland_MapEventHeader:
 
 .PersonEvents: db 8
 	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
-	person_event SPRITE_BALL_CUT_FRUIT, 13, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiIslandFruitTree, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 13, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY, -1
 	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	person_event SPRITE_MARILL, 14, 25, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandPikabluScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	person_event SPRITE_FISHER, 2, 20, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiIslandFisherText, -1
@@ -33,9 +33,6 @@ ShamoutiIsland_MapEventHeader:
 
 const_value set 2
 	const SHAMOUTIISLAND_VILEPLUME
-
-ShamoutiIslandFruitTree:
-	fruittree FRUITTREE_SHAMOUTI_ISLAND
 
 ShamoutiIslandVileplumeScript:
 	special SpecialSnorlaxAwake

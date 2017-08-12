@@ -739,8 +739,7 @@ Script_pokemart:
 	ld a, [ScriptBank]
 	ld b, a
 	farcall OpenMartDialog
-	call Script_closetext
-	jp Script_end
+	jp _Do_closetext_end
 
 Script_elevator:
 ; parameters:
@@ -762,9 +761,13 @@ Script_elevator:
 Script_trade:
 ; parameters:
 ;     trade_id (SingleByteParam)
+	call Script_faceplayer
+	call Script_textbox
 	call GetScriptByte
 	ld e, a
-	farjp NPCTrade
+	farcall NPCTrade
+	call Script_waitbutton
+	jp _Do_closetext_end
 
 Script_phonecall:
 ; parameters:
@@ -814,8 +817,11 @@ Script_describedecoration:
 Script_fruittree:
 ; parameters:
 ;     tree_id (SingleByteParam)
+;     fruit_id (SingleByteParam)
 	call GetScriptByte
 	ld [CurFruitTree], a
+	call GetScriptByte
+	ld [CurFruit], a
 	ld b, BANK(FruitTreeScript)
 	ld hl, FruitTreeScript
 	jp ScriptJump
@@ -2913,12 +2919,12 @@ Script_iftrue_endtext:
 	ld a, [ScriptVar]
 	and a
 	ret z
-	call Script_closetext
-	jp Script_end
+	jr _Do_closetext_end
 
 Script_iffalse_endtext:
 	ld a, [ScriptVar]
 	and a
 	ret nz
+_Do_closetext_end:
 	call Script_closetext
 	jp Script_end

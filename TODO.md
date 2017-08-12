@@ -126,9 +126,7 @@ Low priority:
 * Optimize battle command engine, including parameterized commands
 * Look for `:\n\tclosetext\n\tend` and use `iftrue_endtext` or `iffalse_endtext` instead
 * PERSONTYPE_GENERICTRAINER
-* PERSONTYPE_FRUITTREE (implement)
 * PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)
-* PERSONTYPE_TRADE (script pointer → trade ID)
 
 
 ## Postponed until 4.0

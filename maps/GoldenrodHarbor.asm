@@ -25,7 +25,7 @@ GoldenrodHarbor_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
 	person_event SPRITE_MAGIKARP, 15, 21, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, GoldenrodHarborMagikarpText, -1
 	person_event SPRITE_YOUNGSTER, 15, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
-	person_event SPRITE_FISHER, 20, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Jacques, -1
+	person_event SPRITE_FISHER, 20, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRADE, 0, TRADE_WITH_JACQUES_FOR_GRIMER, -1
 	person_event SPRITE_ROCKET, 16, 40, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	person_event SPRITE_SWIMMER_GIRL, 8, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerSwimmerfKatie, -1
 	person_event SPRITE_SWIMMER_GUY, 28, 18, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJames, -1
@@ -245,14 +245,6 @@ GoldenrodHarborYoungsterScript:
 	db "Tropic P.   ¥8600@"
 	db "Jumbo P.   ¥10800@"
 	db "Cancel@"
-
-Jacques:
-	faceplayer
-	opentext
-	trade $6
-	waitbutton
-	closetext
-	end
 
 GoldenrodHarborHiddenRevive:
 	dw EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE, REVIVE

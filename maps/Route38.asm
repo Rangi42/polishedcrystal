@@ -22,7 +22,7 @@ Route38_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
 	person_event SPRITE_BEAUTY, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
 	person_event SPRITE_SAILOR, 5, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FruitTreeScript_0x1a1f33, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_38, SITRUS_BERRY, -1
 	person_event SPRITE_BEAUTY, 8, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
 
 TrainerBird_keeperToby:
@@ -307,9 +307,6 @@ TrainerBeautyOlivia:
 .script
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1a229a
-
-FruitTreeScript_0x1a1f33:
-	fruittree FRUITTREE_ROUTE_38
 
 Bird_keeperTobySeenText:
 	text "Fly high into the"

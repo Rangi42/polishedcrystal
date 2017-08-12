@@ -956,6 +956,7 @@ describedecoration: macro
 fruittree: macro
 	db fruittree_command
 	db \1 ; tree_id
+	db \2 ; fruit_id
 	endm
 
 	enum specialphonecall_command

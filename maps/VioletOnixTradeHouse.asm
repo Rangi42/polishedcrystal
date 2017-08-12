@@ -16,15 +16,7 @@ VioletOnixTradeHouse_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x69997, -1
-	person_event SPRITE_YOUNGSTER, 5, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Kyle, -1
-
-Kyle:
-	faceplayer
-	opentext
-	trade $1
-	waitbutton
-	closetext
-	end
+	person_event SPRITE_YOUNGSTER, 5, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRADE, 0, TRADE_WITH_KYLE_FOR_VOLTORB, -1
 
 UnknownText_0x69997:
 	text "A #mon you get"

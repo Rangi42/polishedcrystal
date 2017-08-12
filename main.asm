@@ -433,7 +433,7 @@ UseAnotherRepelScript::
 HiddenItemScript:: ; 0x13625
 	opentext
 	copybytetovar EngineBuffer3
-	itemtotext 0, 0
+	itemtotext $0, $0
 	writetext .found_text
 	giveitem ITEM_FROM_MEM
 	iffalse .bag_full

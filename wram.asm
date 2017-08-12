@@ -1352,7 +1352,6 @@ EngineBuffer1::
 wd03f::
 wJumpStdScriptBuffer::
 CurItemBallQuantity::
-CurFruit::
 MartPointerBank::
 wElevatorPointerLo::
 wCurCoordEventMapY::
@@ -1363,6 +1362,7 @@ EngineBuffer2::
 wd040::
 wElevatorPointerHi::
 MartPointer::
+CurFruit::
 wCurCoordEventMapX::
 wCurSignpostType::
 EngineBuffer3::

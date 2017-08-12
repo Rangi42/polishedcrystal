@@ -17,7 +17,7 @@ Route33_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
 	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route33FruitTreeScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 16, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_FRUITTREE, 0, FRUITTREE_ROUTE_33, PECHA_BERRY, -1
 
 TrainerHikerAnthony:
 	trainer EVENT_BEAT_HIKER_ANTHONY, HIKER, ANTHONY1, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
@@ -147,9 +147,6 @@ TrainerSchoolgirlImogen:
 SchoolgirlImogenScript:
 	end_if_just_battled
 	jumptextfaceplayer SchoolgirlImogenAfterText
-
-Route33FruitTreeScript:
-	fruittree FRUITTREE_ROUTE_33
 
 HikerAnthony1SeenText:
 	text "I came through the"
