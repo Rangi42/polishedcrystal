@@ -97,13 +97,8 @@ callasm: macro
 	enum special_command
 special: macro
 	db special_command
-	dw (\1Special - SpecialsPointers) / 3
+	db (\1Special - SpecialsPointers) / 3
 	endm
-
-add_special: MACRO
-\1Special::
-	dba \1
-ENDM
 
 	enum ptcallasm_command
 ptcallasm: macro

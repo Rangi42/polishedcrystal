@@ -283,11 +283,10 @@ Script_callasm:
 
 Script_special:
 ; parameters:
-;     predefined_script (MultiByteParam)
+;     predefined_script (SingleByteParam)
 	call GetScriptByte
 	ld e, a
-	call GetScriptByte
-	ld d, a
+	ld d, 0
 	farjp Special
 
 Script_ptcallasm:
@@ -733,8 +732,8 @@ Script_pokemart:
 	call GetScriptByte
 	ld c, a
 	call GetScriptByte
-	ld d, 0
 	ld e, a
+	ld d, 0
 	ld a, [ScriptBank]
 	ld b, a
 	farcall OpenMartDialog

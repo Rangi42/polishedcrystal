@@ -11,6 +11,8 @@ RGBASM_FLAGS =
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l contents/contents.link -p $(FILLER)
 RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
+CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
+
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 RGBASM_FLAGS += -DFAITHFUL
 endif
@@ -26,15 +28,21 @@ endif
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace
+.PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace compare
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
-PYTHON     = python
-CC         = gcc
-RM         = rm -f
-GFX        = $(PYTHON) gfx.py
-LZ         = utils/lzcomp
+
+roms_md5      = roms.md5
+bank_ends_txt = contents/bank_ends.txt
+
+PYTHON = python
+CC     = gcc
+RM     = rm -f
+GFX    = $(PYTHON) gfx.py
+LZ     = utils/lzcomp
+MD5    = md5sum
+
 includes  := $(PYTHON) utils/scan_includes.py
 bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
@@ -71,10 +79,22 @@ bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-freespace: contents/bank_ends.txt roms.md5
+freespace: $(bank_ends_txt) $(roms_md5)
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+
+compare: crystal
+	$(MD5) -c $(roms_md5)
+
+
+$(LZ): $(LZ).c
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(bank_ends_txt): crystal bankfree ; $(bank_ends) > $@
+
+$(roms_md5): crystal
+	$(MD5) $(NAME)-$(VERSION).gbc > $@
 
 
 %.asm: ;
@@ -92,14 +112,6 @@ clean:
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
 %.lz: % ; $(LZ) $<
-
-utils/lzcomp: utils/lzcomp.c
-	$(CC) -O3 -std=c11 -Wall -Wextra -pedantic -o $@ $<
-
-contents/bank_ends.txt: crystal bankfree ; $(bank_ends) > $@
-
-roms.md5: crystal
-	md5sum $(NAME)-$(VERSION).gbc > roms.md5
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;

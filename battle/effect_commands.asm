@@ -650,11 +650,14 @@ BattleCommand_CheckObedience: ; 343db
 	and a
 	ret nz
 
+	ld a, [InitialOptions]
+	bit TRADED_AS_OT_OPT, a
+	ret nz
+
 	; If the monster's id doesn't match the player's,
 	; some conditions need to be met.
 	ld a, MON_ID
 	call BattlePartyAttr
-
 	ld a, [PlayerID]
 	cp [hl]
 	jr nz, .obeylevel
@@ -662,10 +665,6 @@ BattleCommand_CheckObedience: ; 343db
 	ld a, [PlayerID + 1]
 	cp [hl]
 	ret z
-	ld a, [InitialOptions]
-	bit TRADED_AS_OT_OPT, a
-	ret nz
-
 
 .obeylevel
 	; The maximum obedience level is constrained by owned badges:
