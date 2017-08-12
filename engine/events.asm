@@ -570,6 +570,8 @@ TryReadSign: ; 96a38
 
 .IsSign:
 	ld a, [EngineBuffer3]
+	cp SIGNPOST_ITEM
+	jp nc, .itemifset
 	ld hl, .signs
 	rst JumpTable
 	ret
@@ -582,7 +584,6 @@ TryReadSign: ; 96a38
 	dw .left      ; SIGNPOST_LEFT
 	dw .ifset     ; SIGNPOST_IFSET
 	dw .ifnotset  ; SIGNPOST_IFNOTSET
-	dw .itemifset ; SIGNPOST_ITEM
 	dw .jumptext  ; SIGNPOST_JUMPTEXT
 	dw .jumpstd   ; SIGNPOST_JUMPSTD
 ; 96a59
@@ -620,13 +621,24 @@ TryReadSign: ; 96a38
 	ret
 
 .itemifset
-	call CheckSignFlag
+	ld a, [wCurSignpostScriptAddr]
+	ld e, a
+	ld a, [wCurSignpostScriptAddr+1]
+	ld d, a
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
 	jp nz, .dontread
 	call PlayTalkObject
-	ld a, [MapScriptHeaderBank]
-	ld de, EngineBuffer1
-	ld bc, 3
-	call FarCopyBytes
+	ld hl, EngineBuffer1
+	ld a, [wCurSignpostScriptAddr]
+	ld [hli], a
+	ld a, [wCurSignpostScriptAddr+1]
+	ld [hli], a
+	ld a, [wCurSignpostType]
+	sub SIGNPOST_ITEM
+	ld [hl], a
 	ld a, BANK(HiddenItemScript)
 	ld hl, HiddenItemScript
 	jr .callScriptAndReturnCarry

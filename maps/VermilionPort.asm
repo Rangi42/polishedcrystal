@@ -16,7 +16,7 @@ VermilionPort_MapEventHeader:
 	xy_trigger 0, $b, $7, UnknownScript_0x74e20
 
 .Signposts: db 1
-	signpost 13, 16, SIGNPOST_ITEM, VermilionPortHiddenIron
+	signpost 13, 16, SIGNPOST_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
 .PersonEvents: db 3
 	person_event SPRITE_SAILOR, 17, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74dc4, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
@@ -182,9 +182,6 @@ UnknownScript_0x74ee0:
 SuperNerdScript_0x74ee6:
 	faceplayer
 	jumptext UnknownText_0x750a6
-
-VermilionPortHiddenIron:
-	dwb EVENT_VERMILION_PORT_HIDDEN_IRON, IRON
 
 MovementData_0x74ef1:
 	step_down

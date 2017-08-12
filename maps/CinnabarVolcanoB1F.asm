@@ -25,8 +25,8 @@ CinnabarVolcanoB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 28, SIGNPOST_ITEM, CinnabarVolcanoB1FHiddenMaxRevive
-	signpost 18, 28, SIGNPOST_ITEM, CinnabarVolcanoB1FHiddenDireHit
+	signpost 5, 28, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE
+	signpost 18, 28, SIGNPOST_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
 
 .PersonEvents: db 6
 	strengthboulder_event 5, 6, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
@@ -83,12 +83,6 @@ CinnabarVolcanoB1FBouldersFall:
 	playsound SFX_STRENGTH
 	earthquake 80
 	end
-
-CinnabarVolcanoB1FHiddenMaxRevive:
-	dwb EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-CinnabarVolcanoB1FHiddenDireHit:
-	dwb EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT, DIRE_HIT
 
 CinnabarVolcanoB1FBoulderFellText:
 	text "The boulder fell"

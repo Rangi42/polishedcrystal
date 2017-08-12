@@ -20,7 +20,7 @@ MountMortar1FOutside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 22, 25, SIGNPOST_ITEM, MountMortar1FOutsideHiddenHyperPotion
+	signpost 22, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 4
 	person_event SPRITE_COOLTRAINER_F, 15, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBattleGirlSubaru, -1
@@ -41,9 +41,6 @@ TrainerBattleGirlDiane:
 BattleGirlDianeScript:
 	end_if_just_battled
 	jumptextfaceplayer BattleGirlDianeAfterText
-
-MountMortar1FOutsideHiddenHyperPotion:
-	dwb EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION, HYPER_POTION
 
 BattleGirlSubaruSeenText:
 	text "Kiyaah!"

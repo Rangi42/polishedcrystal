@@ -13,7 +13,7 @@ ValenciaPort_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 9, 10, SIGNPOST_ITEM, ValenciaPortHiddenMaxPotion
+	signpost 9, 10, SIGNPOST_ITEM + MAX_POTION, EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
 
 .PersonEvents: db 2
 	person_event SPRITE_SAILOR, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ValenciaPortSailorScript, -1
@@ -78,6 +78,3 @@ ValenciaPortFisherText:
 	para "those found in"
 	line "Kanto and Johto."
 	done
-
-ValenciaPortHiddenMaxPotion:
-	dwb EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION, MAX_POTION

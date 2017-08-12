@@ -19,8 +19,8 @@ DimCave4F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 23, 25, SIGNPOST_ITEM, DimCave4FHiddenCalcium
-	signpost 27, 27, SIGNPOST_ITEM, DimCave4FHiddenXAttack
+	signpost 23, 25, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
+	signpost 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
 
 .PersonEvents: db 8
 	strengthboulder_event 15, 14, EVENT_BOULDER_IN_DIM_CAVE_4F
@@ -155,9 +155,3 @@ DimCave4FFallenBoulderScript:
 	text "It's stuck on the"
 	line "button."
 	done
-
-DimCave4FHiddenCalcium:
-	dwb EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM, CALCIUM
-
-DimCave4FHiddenXAttack:
-	dwb EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK, X_ATTACK

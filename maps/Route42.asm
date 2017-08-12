@@ -26,7 +26,7 @@ Route42_MapEventHeader:
 	signpost 5, 7, SIGNPOST_JUMPTEXT, MtMortarSign1Text
 	signpost 9, 45, SIGNPOST_JUMPTEXT, MtMortarSign2Text
 	signpost 8, 54, SIGNPOST_JUMPTEXT, Route42Sign2Text
-	signpost 11, 16, SIGNPOST_ITEM, Route42HiddenMaxPotion
+	signpost 11, 16, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
 .PersonEvents: db 14
 	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
@@ -335,9 +335,6 @@ OfficermKeithScript:
 
 .NoFight:
 	jumpopenedtext OfficermKeithDaytimeText
-
-Route42HiddenMaxPotion:
-	dwb EVENT_ROUTE_42_HIDDEN_MAX_POTION, MAX_POTION
 
 MovementData_Route42LyraApproach4:
 	step_down

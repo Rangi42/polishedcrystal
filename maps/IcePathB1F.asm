@@ -20,7 +20,7 @@ IcePathB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 30, 17, SIGNPOST_ITEM, IcePathB1FHiddenMaxPotion
+	signpost 30, 17, SIGNPOST_ITEM + MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
 
 .PersonEvents: db 8
 	strengthboulder_event 7, 11, EVENT_BOULDER_IN_ICE_PATH_1
@@ -126,9 +126,6 @@ TrainerSkierBecky:
 SkierBeckyScript:
 	end_if_just_battled
 	jumptextfaceplayer SkierBeckyAfterText
-
-IcePathB1FHiddenMaxPotion:
-	dwb EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION, MAX_POTION
 
 IcePathB1FSkierText:
 	text "It's really cold"

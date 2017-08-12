@@ -17,7 +17,7 @@ VictoryRoad2F_MapEventHeader:
 	xy_trigger 0, $9, $19, UnknownScript_0x74492
 
 .Signposts: db 1
-	signpost 5, 5, SIGNPOST_ITEM, VictoryRoad2FHiddenMaxPotion
+	signpost 5, 5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
 .PersonEvents: db 6
 	person_event SPRITE_SILVER, 9, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
@@ -93,9 +93,6 @@ TrainerVeteranfSylvie:
 VeteranfSylvieScript:
 	end_if_just_battled
 	jumptextfaceplayer VeteranfSylvieAfterText
-
-VictoryRoad2FHiddenMaxPotion:
-	dwb EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION, MAX_POTION
 
 MovementData_0x74539:
 	step_right

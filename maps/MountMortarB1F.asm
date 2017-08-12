@@ -13,7 +13,7 @@ MountMortarB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 4, SIGNPOST_ITEM, MountMortarB1FHiddenMaxRevive
+	signpost 6, 4, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
 
 .PersonEvents: db 8
 	person_event SPRITE_POKEFAN_M, 31, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
@@ -89,9 +89,6 @@ UnknownScript_0x7e231:
 
 UnknownScript_0x7e237:
 	jumpopenedtext UnknownText_0x7e3df
-
-MountMortarB1FHiddenMaxRevive:
-	dwb EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 MountMortarB1FHikerText:
 	text "My Pokemon used"

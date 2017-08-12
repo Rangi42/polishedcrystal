@@ -14,7 +14,7 @@ Route11_MapEventHeader:
 
 .Signposts: db 2
 	signpost 7, 5, SIGNPOST_JUMPTEXT, Route11SignText
-	signpost 5, 44, SIGNPOST_ITEM, Route11HiddenRevive
+	signpost 5, 44, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_11_HIDDEN_REVIVE
 
 .PersonEvents: db 11
 	person_event SPRITE_YOUNGSTER, 14, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
@@ -277,9 +277,6 @@ TrainerGuitaristfRitsuko:
 	text "♪ Rock'n, rock'n'"
 	line "roll radio… ♪"
 	done
-
-Route11HiddenRevive:
-	dwb EVENT_ROUTE_11_HIDDEN_REVIVE, REVIVE
 
 Route11SignText:
 	text "Route 11"

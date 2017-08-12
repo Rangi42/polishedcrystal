@@ -15,7 +15,7 @@ DarkCaveVioletEntrance_MapEventHeader:
 	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger
 
 .Signposts: db 1
-	signpost 3, 26, SIGNPOST_ITEM, DarkCaveVioletEntranceHiddenElixer
+	signpost 3, 26, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
 
 .PersonEvents: db 11
 	person_event SPRITE_URSARING, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
@@ -80,9 +80,6 @@ DarkCaveVioletEntranceFalknerTrigger:
 	showtext DarkCaveVioletEntranceFalknerDarknessText
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAway
 	end
-
-DarkCaveVioletEntranceHiddenElixer:
-	dwb EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER, ELIXER
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 	fix_facing

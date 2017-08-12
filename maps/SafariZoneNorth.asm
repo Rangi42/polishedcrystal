@@ -25,7 +25,7 @@ SafariZoneNorth_MapEventHeader:
 	signpost 30, 28, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
 	signpost 34, 20, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips2SignText
 	signpost 27, 5, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
-	signpost 19, 31, SIGNPOST_ITEM, SafariZoneNorthHiddenLuckyPunch
+	signpost 19, 31, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
 
 .PersonEvents: db 6
 	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
@@ -85,9 +85,6 @@ SafariZoneNorthTutorDoubleEdgeScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_SafariZoneNorthTutorTaught
-
-SafariZoneNorthHiddenLuckyPunch:
-	dwb EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH, LUCKY_PUNCH
 
 BattleGirlPadmaSeenText:
 	text "I spar with my"

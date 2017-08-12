@@ -17,8 +17,8 @@ CeruleanCape_MapEventHeader:
 
 .Signposts: db 3
 	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
-	signpost 12, 35, SIGNPOST_ITEM, CeruleanCapeHiddenPearlString
-	signpost 4, 14, SIGNPOST_ITEM, CeruleanCapeHiddenBottleCap
+	signpost 12, 35, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
+	signpost 4, 14, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
 .PersonEvents: db 15
 	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
@@ -407,12 +407,6 @@ TrainerFisherLeroy:
 	text "All I ever catch"
 	line "catch is Magikarp…"
 	done
-
-CeruleanCapeHiddenPearlString:
-	dwb EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING, PEARL_STRING
-
-CeruleanCapeHiddenBottleCap:
-	dwb EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP, BOTTLE_CAP
 
 MovementData_0x19efe8:
 	big_step_down

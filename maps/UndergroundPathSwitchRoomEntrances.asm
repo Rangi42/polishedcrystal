@@ -27,8 +27,8 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, Switch2Script
 	signpost 1, 2, SIGNPOST_READ, Switch3Script
 	signpost 11, 20, SIGNPOST_READ, EmergencySwitchScript
-	signpost 9, 8, SIGNPOST_ITEM, UndergroundPathSwitchRoomEntrancesHiddenMaxPotion
-	signpost 8, 1, SIGNPOST_ITEM, UndergroundPathSwitchRoomEntrancesHiddenRevive
+	signpost 9, 8, SIGNPOST_ITEM + MAX_POTION, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION
+	signpost 8, 1, SIGNPOST_ITEM + REVIVE, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE
 
 .PersonEvents: db 12
 	person_event SPRITE_SILVER, 3, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
@@ -606,12 +606,6 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	doorstate 16, OPEN2
 	clearevent EVENT_SWITCH_14
 	end
-
-UndergroundPathSwitchRoomEntrancesHiddenMaxPotion:
-	dwb EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION, MAX_POTION
-
-UndergroundPathSwitchRoomEntrancesHiddenRevive:
-	dwb EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE, REVIVE
 
 UndergroundSilverApproachMovement1:
 	step_down

@@ -18,7 +18,7 @@ OlivineLighthouse5F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 13, 3, SIGNPOST_ITEM, OlivineLighthouse5FHiddenHyperPotion
+	signpost 13, 3, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 5
 	person_event SPRITE_SAILOR, 11, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
@@ -40,9 +40,6 @@ TrainerSailorErnest:
 SailorErnestScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x60a1f
-
-OlivineLighthouse5FHiddenHyperPotion:
-	dwb EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION, HYPER_POTION
 
 SailorErnestSeenText:
 	text "I wanted to battle"

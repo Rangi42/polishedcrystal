@@ -12,8 +12,8 @@ Route17_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 71, 11, SIGNPOST_ITEM, Route17HiddenMaxEther
-	signpost 123, 10, SIGNPOST_ITEM, Route17HiddenMaxElixer
+	signpost 71, 11, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_17_HIDDEN_MAX_ETHER
+	signpost 123, 10, SIGNPOST_ITEM + MAX_ELIXER, EVENT_ROUTE_17_HIDDEN_MAX_ELIXER
 
 .PersonEvents: db 12
 	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
@@ -304,9 +304,3 @@ RoughneckMarkeyAfterText:
 	para "That fighting"
 	line "yell was great!"
 	done
-
-Route17HiddenMaxEther:
-	dwb EVENT_ROUTE_17_HIDDEN_MAX_ETHER, MAX_ETHER
-
-Route17HiddenMaxElixer:
-	dwb EVENT_ROUTE_17_HIDDEN_MAX_ELIXER, MAX_ELIXER

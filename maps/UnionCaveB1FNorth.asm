@@ -14,8 +14,8 @@ UnionCaveB1FNorth_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 23, 11, SIGNPOST_ITEM, UnionCaveB1FNorthHiddenXSpeed
-	signpost 4, 13, SIGNPOST_ITEM, UnionCaveB1FNorthHiddenRevive
+	signpost 23, 11, SIGNPOST_ITEM + X_SPEED, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED
+	signpost 4, 13, SIGNPOST_ITEM + REVIVE, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE
 
 .PersonEvents: db 5
 	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
@@ -76,9 +76,3 @@ TrainerRuin_maniacPetry:
 	line "it properly we use"
 	cont "modern technology."
 	done
-
-UnionCaveB1FNorthHiddenXSpeed:
-	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED, X_SPEED
-
-UnionCaveB1FNorthHiddenRevive:
-	dwb EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE, REVIVE

@@ -16,7 +16,7 @@ Route12South_MapEventHeader:
 
 .Signposts: db 2
 	signpost 43, 11, SIGNPOST_JUMPTEXT, Route12SignText
-	signpost 15, 14, SIGNPOST_ITEM, Route12HiddenElixer
+	signpost 15, 14, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
 
 .PersonEvents: db 13
 	person_event SPRITE_FISHER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
@@ -234,9 +234,6 @@ TrainerCoupleVicandtara2:
 	cont "he's still wonder-"
 	cont "ful."
 	done
-
-Route12HiddenElixer:
-	dwb EVENT_ROUTE_12_HIDDEN_ELIXER, ELIXER
 
 Route12SignText:
 	text "Route 12"

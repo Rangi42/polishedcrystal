@@ -16,8 +16,8 @@ MountMoon1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 17, 2, SIGNPOST_ITEM, MountMoon1FHiddenRareCandy
-	signpost 16, 12, SIGNPOST_ITEM, MountMoon1FHiddenFullRestore
+	signpost 17, 2, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
+	signpost 16, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 10
 	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
@@ -131,12 +131,6 @@ TrainerHikerMarcos:
 HikerMarcosScript:
 	end_if_just_battled
 	jumptextfaceplayer HikerMarcosAfterText
-
-MountMoon1FHiddenRareCandy:
-	dwb EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY, RARE_CANDY
-
-MountMoon1FHiddenFullRestore:
-	dwb EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 MountMoon1FSilverMovementBefore:
 	step_down

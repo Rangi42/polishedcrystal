@@ -15,7 +15,7 @@ Route3_MapEventHeader:
 
 .Signposts: db 8
 	signpost 15, 63, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
-	signpost 17, 11, SIGNPOST_ITEM, Route3HiddenMoonStone
+	signpost 17, 11, SIGNPOST_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
 	signpost 15, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 	signpost 17, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 	signpost 17, 9, SIGNPOST_JUMPTEXT, Route3MeteoriteText
@@ -319,9 +319,6 @@ TrainerAceDuoZacandjen2:
 	line "trainer you'll"
 	cont "become."
 	done
-
-Route3HiddenMoonStone:
-	dwb EVENT_ROUTE_3_HIDDEN_MOON_STONE, MOON_STONE
 
 Route3MeteoriteText:
 	text "Never seen a stone"

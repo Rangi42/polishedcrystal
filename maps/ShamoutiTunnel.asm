@@ -13,8 +13,8 @@ ShamoutiTunnel_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 21, SIGNPOST_ITEM, ShamoutiTunnelHiddenNugget
-	signpost 4, 32, SIGNPOST_ITEM, ShamoutiTunnelHiddenLeafStone
+	signpost 5, 21, SIGNPOST_ITEM + NUGGET, EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET
+	signpost 4, 32, SIGNPOST_ITEM + LEAF_STONE, EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE
 
 .PersonEvents: db 7
 	person_event SPRITE_SUPER_NERD, 17, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, OreManiacScript, -1
@@ -223,9 +223,3 @@ TrainerSightseermChester:
 	line "you in the Battle"
 	cont "Tower."
 	done
-
-ShamoutiTunnelHiddenNugget:
-	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET, NUGGET
-
-ShamoutiTunnelHiddenLeafStone:
-	dwb EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE, LEAF_STONE

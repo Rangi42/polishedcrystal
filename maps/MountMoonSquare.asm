@@ -16,7 +16,7 @@ MountMoonSquare_MapEventHeader:
 	xy_trigger 0, $b, $7, ClefairyDance
 
 .Signposts: db 2
-	signpost 7, 7, SIGNPOST_ITEM, MountMoonSquareHiddenMoonStone
+	signpost 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
 	signpost 7, 17, SIGNPOST_JUMPTEXT, DontLitterSignText
 
 .PersonEvents: db 3
@@ -84,9 +84,6 @@ ClefairyDance:
 	setflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
 .NoDancing:
 	end
-
-MountMoonSquareHiddenMoonStone:
-	dwb EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE, MOON_STONE
 
 MovementData_0x77123:
 	slow_step_down

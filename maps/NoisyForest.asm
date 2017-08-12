@@ -17,9 +17,9 @@ NoisyForest_MapEventHeader:
 .Signposts: db 5
 	signpost 9, 15, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	signpost 31, 25, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
-	signpost 2, 32, SIGNPOST_ITEM, NoisyForestHiddenUltraBall
-	signpost 18, 34, SIGNPOST_ITEM, NoisyForestHiddenTinyMushroom
-	signpost 29, 7, SIGNPOST_ITEM, NoisyForestHiddenFullRestore
+	signpost 2, 32, SIGNPOST_ITEM + ULTRA_BALL, EVENT_NOISY_FOREST_HIDDEN_ULTRA_BALL
+	signpost 18, 34, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_NOISY_FOREST_HIDDEN_TINYMUSHROOM
+	signpost 29, 7, SIGNPOST_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 15
 	person_event SPRITE_ANABEL, 19, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NoisyForestAnabelScript, EVENT_NOISY_FOREST_ANABEL
@@ -391,12 +391,3 @@ NoisyForestPikabluScript:
 NoisyForestSignpostText:
 	text "Noisy Forest"
 	done
-
-NoisyForestHiddenUltraBall:
-	dwb EVENT_NOISY_FOREST_HIDDEN_ULTRA_BALL, ULTRA_BALL
-
-NoisyForestHiddenTinyMushroom:
-	dwb EVENT_NOISY_FOREST_HIDDEN_TINYMUSHROOM, TINYMUSHROOM
-
-NoisyForestHiddenFullRestore:
-	dwb EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE, FULL_RESTORE

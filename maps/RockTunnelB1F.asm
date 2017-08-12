@@ -16,7 +16,7 @@ RockTunnelB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 18, 3, SIGNPOST_ITEM, RockTunnelB1FHiddenMaxPotion
+	signpost 18, 3, SIGNPOST_ITEM + MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION
 
 .PersonEvents: db 6
 	person_event SPRITE_FISHER, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherDick, -1
@@ -39,9 +39,6 @@ TrainerHexManiacVivian:
 HexManiacVivianScript:
 	end_if_just_battled
 	jumptextfaceplayer HexManiacVivianAfterText
-
-RockTunnelB1FHiddenMaxPotion:
-	dwb EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION, MAX_POTION
 
 FirebreatherDickSeenText:
 	text "I'm using fire to"

@@ -13,7 +13,7 @@ VictoryRoad1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 19, 5, SIGNPOST_ITEM, VictoryRoad1FHiddenFullHeal
+	signpost 19, 5, SIGNPOST_ITEM + FULL_HEAL, EVENT_VICTORY_ROAD_1F_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 3
 	person_event SPRITE_VETERAN_M, 6, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmMatt, -1
@@ -26,9 +26,6 @@ TrainerVeteranmMatt:
 VeteranmMattScript:
 	end_if_just_battled
 	jumptextfaceplayer VeteranmMattAfterText
-
-VictoryRoad1FHiddenFullHeal:
-	dwb EVENT_VICTORY_ROAD_1F_HIDDEN_FULL_HEAL, FULL_HEAL
 
 VeteranmMattSeenText:
 	text "I can see you're"

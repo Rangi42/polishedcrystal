@@ -14,7 +14,7 @@ Route40_MapEventHeader:
 
 .Signposts: db 2
 	signpost 10, 14, SIGNPOST_JUMPTEXT, Route40SignText
-	signpost 8, 7, SIGNPOST_ITEM, Route40HiddenHyperPotion
+	signpost 8, 7, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_40_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 12
 	person_event SPRITE_BEAUTY, 10, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
@@ -104,9 +104,6 @@ MonicaNotMondayScript:
 
 MonicaDoneScript:
 	end
-
-Route40HiddenHyperPotion:
-	dwb EVENT_ROUTE_40_HIDDEN_HYPER_POTION, HYPER_POTION
 
 SwimmermSimonSeenText:
 	text "You have to warm"

@@ -15,7 +15,7 @@ Route20_MapEventHeader:
 .Signposts: db 3
 	signpost 11, 61, SIGNPOST_JUMPTEXT, CinnabarGymSignText
 	signpost 7, 57, SIGNPOST_JUMPTEXT, SeafoamIslandsSignText
-	signpost 10, 21, SIGNPOST_ITEM, Route20HiddenStardust
+	signpost 10, 21, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_20_HIDDEN_STARDUST
 
 .PersonEvents: db 13
 	person_event SPRITE_SWIMMER_GIRL, 10, 91, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
@@ -348,6 +348,3 @@ CinnabarGymSignText:
 SeafoamIslandsSignText:
 	text "Seafoam Islands"
 	done
-
-Route20HiddenStardust:
-	dwb EVENT_ROUTE_20_HIDDEN_STARDUST, STARDUST

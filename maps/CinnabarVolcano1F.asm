@@ -22,7 +22,7 @@ CinnabarVolcano1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 13, SIGNPOST_ITEM, CinnabarVolcano1FHiddenFullRestore
+	signpost 1, 13, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 15
 	person_event SPRITE_BUCK, 9, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
@@ -209,9 +209,6 @@ TrainerSuperNerdLuis:
 SuperNerdLuisScript:
 	end_if_just_battled
 	jumptextfaceplayer SuperNerdLuisAfterText
-
-CinnabarVolcano1FHiddenFullRestore:
-	dwb EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 ScientistOskarSeenText:
 	text "I'm studying the"

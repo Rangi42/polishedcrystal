@@ -17,8 +17,8 @@ DiglettsCave_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 15, 8, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRevive
-	signpost 33, 34, SIGNPOST_ITEM, DiglettsCaveHiddenMaxRepel
+	signpost 15, 8, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
+	signpost 33, 34, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
 
 .PersonEvents: db 9
 	person_event SPRITE_BALL_CUT_FRUIT, 8, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, DiglettsCaveDiglettDoll, EVENT_DECO_DIGLETT_DOLL
@@ -275,9 +275,3 @@ DiglettsCaveDiglettDoll:
 	text "Diglett Doll"
 	line "was sent home."
 	done
-
-DiglettsCaveHiddenMaxRevive:
-	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-DiglettsCaveHiddenMaxRepel:
-	dwb EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL, MAX_REPEL

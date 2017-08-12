@@ -17,13 +17,10 @@ SeafoamIslands1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 29, 17, SIGNPOST_ITEM, SeafoamIslands1FHiddenEscapeRope
+	signpost 29, 17, SIGNPOST_ITEM + ESCAPE_ROPE, EVENT_SEAFOAM_ISLANDS_1F_HIDDEN_ESCAPE_ROPE
 
 .PersonEvents: db 0
 
 SeafoamIslands1FClearRocks:
 	setevent EVENT_CINNABAR_ROCKS_CLEARED
 	return
-
-SeafoamIslands1FHiddenEscapeRope:
-	dwb EVENT_SEAFOAM_ISLANDS_1F_HIDDEN_ESCAPE_ROPE, ESCAPE_ROPE

@@ -29,9 +29,9 @@ OlivineCity_MapEventHeader:
 	signpost 7, 7, SIGNPOST_JUMPTEXT, OlivineGymSignText
 	signpost 20, 34, SIGNPOST_JUMPTEXT, OlivineLighthouseSignText
 	signpost 21, 1, SIGNPOST_JUMPTEXT, OlivineCityBattleTowerSignText
-	signpost 14, 36, SIGNPOST_ITEM, OlivineCityHiddenRareCandy
-	signpost 14, 47, SIGNPOST_ITEM, OlivineCityHiddenBigPearl
-	signpost 29, 49, SIGNPOST_ITEM, OlivineCityHiddenSoftSand
+	signpost 14, 36, SIGNPOST_ITEM + RARE_CANDY, EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
+	signpost 14, 47, SIGNPOST_ITEM + BIG_PEARL, EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL
+	signpost 29, 49, SIGNPOST_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
 
 .PersonEvents: db 15
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
@@ -127,15 +127,6 @@ OlivineCityYoungster1Script:
 
 UnknownScript_0x1a88b4:
 	jumpopenedtext UnknownText_0x1a8b41
-
-OlivineCityHiddenRareCandy:
-	dwb EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY, RARE_CANDY
-
-OlivineCityHiddenBigPearl:
-	dwb EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL, BIG_PEARL
-
-OlivineCityHiddenSoftSand:
-	dwb EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND, SOFT_SAND
 
 OlivineCityMovementData_ShovePlayerDown:
 	turn_head_up

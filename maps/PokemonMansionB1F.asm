@@ -12,7 +12,7 @@ PokemonMansionB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 9
-	signpost 4, 26, SIGNPOST_ITEM, PokemonMansionB1FHiddenMaxElixir
+	signpost 4, 26, SIGNPOST_ITEM + MAX_ELIXER, EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR
 	signpost 13, 8, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
 	signpost 27, 20, SIGNPOST_READ, PokemonMansionB1FHiddenBerserkGene
 	signpost 5, 22, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
@@ -39,9 +39,6 @@ ScientistBraydonScript:
 
 PokemonMansionDiaryScript:
 	jumptext PokemonMansionDiaryText
-
-PokemonMansionB1FHiddenMaxElixir:
-	dwb EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR, MAX_ELIXER
 
 PokemonMansionB1FHiddenRareCandy:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_RARE_CANDY

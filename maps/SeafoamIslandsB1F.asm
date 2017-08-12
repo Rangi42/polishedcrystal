@@ -17,7 +17,7 @@ SeafoamIslandsB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 20, SIGNPOST_ITEM, SeafoamIslandsB1FHiddenIceHeal
+	signpost 11, 20, SIGNPOST_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
 
 .PersonEvents: db 8
 	itemball_event 3, 20, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
@@ -28,6 +28,3 @@ SeafoamIslandsB1F_MapEventHeader:
 	strengthboulder_event 8, 12
 	strengthboulder_event 11, 7
 	strengthboulder_event 15, 13
-
-SeafoamIslandsB1FHiddenIceHeal:
-	dwb EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL, ICE_HEAL

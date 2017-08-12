@@ -16,7 +16,7 @@ OlivinePort_MapEventHeader:
 	xy_trigger 0, $f, $7, UnknownScript_0x7491f
 
 .Signposts: db 1
-	signpost 22, 1, SIGNPOST_ITEM, OlivinePortHiddenProtein
+	signpost 22, 1, SIGNPOST_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
 .PersonEvents: db 7
 	person_event SPRITE_SAILOR, 23, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x748c0, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
@@ -212,9 +212,6 @@ CooltrainerFScript_0x74a22:
 	showtextfaceplayer UnknownText_0x74ca2
 	spriteface LAST_TALKED, DOWN
 	end
-
-OlivinePortHiddenProtein:
-	dwb EVENT_OLIVINE_PORT_HIDDEN_PROTEIN, PROTEIN
 
 MovementData_0x74a30:
 	step_down

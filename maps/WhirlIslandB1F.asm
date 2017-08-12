@@ -20,9 +20,9 @@ WhirlIslandB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 4, 30, SIGNPOST_ITEM, WhirlIslandB1FHiddenRareCandy
-	signpost 18, 36, SIGNPOST_ITEM, WhirlIslandB1FHiddenUltraBall
-	signpost 23, 2, SIGNPOST_ITEM, WhirlIslandB1FHiddenFullRestore
+	signpost 4, 30, SIGNPOST_ITEM + RARE_CANDY, EVENT_WHIRL_ISLAND_B1F_HIDDEN_RARE_CANDY
+	signpost 18, 36, SIGNPOST_ITEM + ULTRA_BALL, EVENT_WHIRL_ISLAND_B1F_HIDDEN_ULTRA_BALL
+	signpost 23, 2, SIGNPOST_ITEM + FULL_RESTORE, EVENT_WHIRL_ISLAND_B1F_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 6
 	itemball_event 13, 7, FULL_RESTORE, 1, EVENT_WHIRL_ISLAND_B1F_FULL_RESTORE
@@ -31,12 +31,3 @@ WhirlIslandB1F_MapEventHeader:
 	itemball_event 8, 17, BIG_NUGGET, 1, EVENT_WHIRL_ISLAND_B1F_BIG_NUGGET
 	itemball_event 26, 19, ESCAPE_ROPE, 1, EVENT_WHIRL_ISLAND_B1F_ESCAPE_ROPE
 	strengthboulder_event 26, 23
-
-WhirlIslandB1FHiddenRareCandy:
-	dwb EVENT_WHIRL_ISLAND_B1F_HIDDEN_RARE_CANDY, RARE_CANDY
-
-WhirlIslandB1FHiddenUltraBall:
-	dwb EVENT_WHIRL_ISLAND_B1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
-
-WhirlIslandB1FHiddenFullRestore:
-	dwb EVENT_WHIRL_ISLAND_B1F_HIDDEN_FULL_RESTORE, FULL_RESTORE

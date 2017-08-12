@@ -22,9 +22,9 @@ WarehouseEntrance_MapEventHeader:
 .Signposts: db 5
 	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
 	signpost 6, 17, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
-	signpost 13, 4, SIGNPOST_ITEM, WarehouseEntranceHiddenParlyzHeal
-	signpost 18, 2, SIGNPOST_ITEM, WarehouseEntranceHiddenSuperPotion
-	signpost 8, 15, SIGNPOST_ITEM, WarehouseEntranceHiddenAntidote
+	signpost 13, 4, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL
+	signpost 18, 2, SIGNPOST_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
+	signpost 8, 15, SIGNPOST_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
 
 .PersonEvents: db 10
 	person_event SPRITE_GRAMPS, 11, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
@@ -378,15 +378,6 @@ BasementDoorScript::
 
 WarehouseEntranceScript_ShopClosed:
 	jumptext UnknownText_0x7c904
-
-WarehouseEntranceHiddenParlyzHeal:
-	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL
-
-WarehouseEntranceHiddenSuperPotion:
-	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION, SUPER_POTION
-
-WarehouseEntranceHiddenAntidote:
-	dwb EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE, ANTIDOTE
 
 SupernerdEricSeenText:
 	text "I got booted out"

@@ -17,7 +17,7 @@ WarmBeach_MapEventHeader:
 	signpost 14, 17, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
 	signpost 20, 18, SIGNPOST_JUMPTEXT, WarmBeachShrineText
 	signpost 20, 19, SIGNPOST_JUMPTEXT, WarmBeachShrineText
-	signpost 20, 6, SIGNPOST_ITEM, WarmBeachHiddenPearl
+	signpost 20, 6, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
 .PersonEvents: db 7
 	person_event SPRITE_SIGHTSEER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
@@ -210,6 +210,3 @@ WarmBeachShrineText:
 	para "Guardian of the"
 	line "Seas."
 	done
-
-WarmBeachHiddenPearl:
-	dwb EVENT_WARM_BEACH_HIDDEN_PEARL, PEARL

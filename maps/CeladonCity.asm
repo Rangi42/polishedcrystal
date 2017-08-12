@@ -36,7 +36,7 @@ CeladonCity_MapEventHeader:
 	signpost 9, 17, SIGNPOST_JUMPTEXT, CeladonCityMansionSignText
 	signpost 21, 21, SIGNPOST_JUMPTEXT, CeladonCityGameCornerSignText
 	signpost 21, 33, SIGNPOST_JUMPTEXT, CeladonCityTrainerTipsText
-	signpost 21, 41, SIGNPOST_ITEM, CeladonCityHiddenPpUp
+	signpost 21, 41, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
 .PersonEvents: db 13
 	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
@@ -94,9 +94,6 @@ CeladonCityPoliwrath:
 	waitbutton
 	closetext
 	end
-
-CeladonCityHiddenPpUp:
-	dwb EVENT_CELADON_CITY_HIDDEN_PP_UP, PP_UP
 
 CeladonCityRichBoyText:
 	text "Is my suit not"

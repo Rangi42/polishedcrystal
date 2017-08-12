@@ -19,8 +19,8 @@ SeafoamIslandsB2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 9, 7, SIGNPOST_ITEM, SeafoamIslandsB2FHiddenPearl1
-	signpost 13, 35, SIGNPOST_ITEM, SeafoamIslandsB2FHiddenPearl2
+	signpost 9, 7, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1
+	signpost 13, 35, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_2
 
 .PersonEvents: db 4
 	person_event SPRITE_SKIER, 4, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierCady, -1
@@ -48,12 +48,6 @@ TrainerBoarderBryce:
 BoarderBryceScript:
 	end_if_just_battled
 	jumptextfaceplayer BoarderBryceAfterText
-
-SeafoamIslandsB2FHiddenPearl1:
-	dwb EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1, PEARL
-
-SeafoamIslandsB2FHiddenPearl2:
-	dwb EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_2, PEARL
 
 SkierCadySeenText:
 	text "To beat the cold,"

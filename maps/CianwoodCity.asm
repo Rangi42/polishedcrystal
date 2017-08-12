@@ -27,8 +27,8 @@ CianwoodCity_MapEventHeader:
 	signpost 32, 8, SIGNPOST_JUMPTEXT, CianwoodPhotoStudioSignText
 	signpost 26, 6, SIGNPOST_JUMPTEXT, CianwoodCliffEdgeGateSignText
 	signpost 22, 8, SIGNPOST_JUMPTEXT, CianwoodStatsJudgeSignText
-	signpost 19, 4, SIGNPOST_ITEM, CianwoodCityHiddenRevive
-	signpost 29, 5, SIGNPOST_ITEM, CianwoodCityHiddenMaxEther
+	signpost 19, 4, SIGNPOST_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
+	signpost 29, 5, SIGNPOST_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
 .PersonEvents: db 15
 	person_event SPRITE_OLIVINE_RIVAL, 21, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
@@ -121,12 +121,6 @@ PokefanFScript_0x1a0084:
 
 UnknownScript_0x1a009c:
 	jumpopenedtext UnknownText_0x1a0277
-
-CianwoodCityHiddenRevive:
-	dwb EVENT_CIANWOOD_CITY_HIDDEN_REVIVE, REVIVE
-
-CianwoodCityHiddenMaxEther:
-	dwb EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER, MAX_ETHER
 
 MovementData_0x1a00da:
 	fix_facing

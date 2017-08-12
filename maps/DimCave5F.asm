@@ -16,7 +16,7 @@ DimCave5F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 28, 12, SIGNPOST_ITEM, DimCave5FHiddenXSpclAtk
+	signpost 28, 12, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
 .PersonEvents: db 8
 	strengthboulder_event 5, 25, EVENT_BOULDER_IN_DIM_CAVE_5F
@@ -261,6 +261,3 @@ TrainerSuper_nerdDave:
 	para "But you can't get"
 	line "them around here."
 	done
-
-DimCave5FHiddenXSpclAtk:
-	dwb EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK, X_SPCL_ATK

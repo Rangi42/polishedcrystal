@@ -18,7 +18,7 @@ CinnabarIsland_MapEventHeader:
 	signpost 15, 9, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
 	signpost 11, 9, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
 	signpost 11, 21, SIGNPOST_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
-	signpost 12, 11, SIGNPOST_ITEM, CinnabarIslandHiddenRareCandy
+	signpost 12, 11, SIGNPOST_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 2
 	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
@@ -55,9 +55,6 @@ CinnabarIslandBlue:
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
-
-CinnabarIslandHiddenRareCandy:
-	dwb EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY, RARE_CANDY
 
 CinnabarIslandBlueTeleport:
 	teleport_from

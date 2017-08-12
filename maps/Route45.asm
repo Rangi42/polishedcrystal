@@ -13,7 +13,7 @@ Route45_MapEventHeader:
 
 .Signposts: db 2
 	signpost 4, 14, SIGNPOST_JUMPTEXT, Route45SignText
-	signpost 78, 17, SIGNPOST_ITEM, Route45HiddenPpUp
+	signpost 78, 17, SIGNPOST_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
 
 .PersonEvents: db 15
 	person_event SPRITE_DRAGON_TAMER, 75, 19, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
@@ -391,9 +391,6 @@ TrainerCamperQuentin:
 CamperQuentinScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x19e8bb
-
-Route45HiddenPpUp:
-	dwb EVENT_ROUTE_45_HIDDEN_PP_UP, PP_UP
 
 BattleGirlNozomiSeenText:
 	text "This is no place"

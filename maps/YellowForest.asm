@@ -14,10 +14,10 @@ YellowForest_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 4, 30, SIGNPOST_ITEM, YellowForestHiddenBigMushroom
-	signpost 36, 34, SIGNPOST_ITEM, YellowForestHiddenBalmMushroom
-	signpost 37, 5, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf1
-	signpost 16, 17, SIGNPOST_ITEM, YellowForestHiddenGoldLeaf2
+	signpost 4, 30, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
+	signpost 36, 34, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
+	signpost 37, 5, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
+	signpost 16, 17, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
 
 .PersonEvents: db 15
 	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
@@ -191,18 +191,6 @@ YellowForestSurfPikachuDoll:
 	pause 60
 	waitbutton
 	jumpopenedtext YellowForestSurfPikachuDollSentText
-
-YellowForestHiddenBigMushroom:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM, BIG_MUSHROOM
-
-YellowForestHiddenBalmMushroom:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM, BALMMUSHROOM
-
-YellowForestHiddenGoldLeaf1:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1, GOLD_LEAF
-
-YellowForestHiddenGoldLeaf2:
-	dwb EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2, GOLD_LEAF
 
 SchoolgirlSarahSeenText:
 	text "Ooh, a trainer!"

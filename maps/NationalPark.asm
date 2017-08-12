@@ -17,8 +17,8 @@ NationalPark_MapEventHeader:
 .Signposts: db 4
 	signpost 44, 16, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
 	signpost 31, 29, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
-	signpost 47, 8, SIGNPOST_ITEM, NationalParkHiddenFullHeal
 	signpost 4, 14, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
+	signpost 47, 8, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 15
 	person_event SPRITE_LASS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c1d3, -1
@@ -295,9 +295,6 @@ TrainerLassKrise:
 LassKriseScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x5c71d
-
-NationalParkHiddenFullHeal:
-	dwb EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL, FULL_HEAL
 
 UnknownText_0x5c1d3:
 	text "Look! Check out my"

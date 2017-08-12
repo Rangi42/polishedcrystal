@@ -23,7 +23,7 @@ CinnabarLab_MapEventHeader:
 	signpost 14, 24, SIGNPOST_JUMPTEXT, CinnabarLabRoom3SignText
 	signpost 14, 25, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
 	signpost 6, 3, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
-	signpost 6, 3, SIGNPOST_ITEM, CinnabarLabHiddenBerserkGene
+	signpost 6, 3, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
 .PersonEvents: db 9
 	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
@@ -209,9 +209,6 @@ CinnabarLabCelebiEventScript:
 	domaptrigger ILEX_FOREST, $1
 	warp ILEX_FOREST, $a, $1a
 	end
-
-CinnabarLabHiddenBerserkGene:
-	dwb EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE, BERSERK_GENE
 
 CinnabarLabStepDownMovementData:
 	step_down

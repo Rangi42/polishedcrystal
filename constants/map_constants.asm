@@ -826,11 +826,13 @@ EMOTE_MEM EQU -1
 	const SIGNPOST_LEFT
 	const SIGNPOST_IFSET
 	const SIGNPOST_IFNOTSET
-	const SIGNPOST_ITEM
 	const SIGNPOST_JUMPTEXT
 	const SIGNPOST_JUMPSTD
-
-; I'm relocating spawn constants here, so that they can be used anywhere in the disassembly.
+; SIGNPOST_ITEM has to be the last signpost type, since hidden item signposts
+; use type SIGNPOST_ITEM + (item id) to save space.
+; Note that this requires SIGNPOST_ITEM + (item id) <= $ff, so currently most
+; of the mail items cannot be hidden.
+SIGNPOST_ITEM EQU const_value
 
 
 ; see engine/spawn_points.asm:SpawnPoints

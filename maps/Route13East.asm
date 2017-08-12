@@ -13,7 +13,7 @@ Route13East_MapEventHeader:
 .Signposts: db 3
 	signpost 13, 11, SIGNPOST_JUMPTEXT, Route13TrainerTipsText
 	signpost 11, 27, SIGNPOST_JUMPTEXT, Route13SignText
-	signpost 13, 12, SIGNPOST_ITEM, Route13HiddenCalcium
+	signpost 13, 12, SIGNPOST_ITEM + CALCIUM, EVENT_ROUTE_13_HIDDEN_CALCIUM
 
 .PersonEvents: db 10
 	person_event SPRITE_YOUNGSTER, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPerry, -1
@@ -262,6 +262,3 @@ Route13SignText:
 	para "North to Silence"
 	line "Bridge"
 	done
-
-Route13HiddenCalcium:
-	dwb EVENT_ROUTE_13_HIDDEN_CALCIUM, CALCIUM

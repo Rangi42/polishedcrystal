@@ -28,8 +28,8 @@ BurnedTower1F_MapEventHeader:
 	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
 
 .Signposts: db 2
-	signpost  7,  6, SIGNPOST_ITEM, BurnedTower1FHiddenEther
-	signpost 11, 11, SIGNPOST_ITEM, BurnedTower1FHiddenUltraBall
+	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
+	signpost 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 7
 	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
@@ -145,12 +145,6 @@ TrainerFirebreatherNed:
 FirebreatherNedScript:
 	end_if_just_battled
 	jumptextfaceplayer FirebreatherNedAfterText
-
-BurnedTower1FHiddenEther:
-	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ETHER, ETHER
-
-BurnedTower1FHiddenUltraBall:
-	dwb EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
 
 BurnedTowerMovement_PlayerWalksToSilver:
 	step_left

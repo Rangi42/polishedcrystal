@@ -15,14 +15,8 @@ TinTower5F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 14, 14, SIGNPOST_ITEM, TinTower5FHiddenFullRestore
-	signpost 15, 1, SIGNPOST_ITEM, TinTower5FHiddenCarbos
+	signpost 14, 14, SIGNPOST_ITEM + FULL_RESTORE, EVENT_TIN_TOWER_5F_HIDDEN_FULL_RESTORE
+	signpost 15, 1, SIGNPOST_ITEM + CARBOS, EVENT_TIN_TOWER_5F_HIDDEN_CARBOS
 
 .PersonEvents: db 1
 	itemball_event 9, 7, RARE_CANDY, 1, EVENT_TIN_TOWER_5F_RARE_CANDY
-
-TinTower5FHiddenFullRestore:
-	dwb EVENT_TIN_TOWER_5F_HIDDEN_FULL_RESTORE, FULL_RESTORE
-
-TinTower5FHiddenCarbos:
-	dwb EVENT_TIN_TOWER_5F_HIDDEN_CARBOS, CARBOS

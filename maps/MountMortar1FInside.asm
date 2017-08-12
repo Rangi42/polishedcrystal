@@ -17,7 +17,7 @@ MountMortar1FInside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 30, SIGNPOST_ITEM, MountMortar1FInsideHiddenMaxRepel
+	signpost 11, 30, SIGNPOST_ITEM + MAX_REPEL, EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL
 
 .PersonEvents: db 10
 	strengthboulder_event 43, 21
@@ -44,9 +44,6 @@ TrainerSupernerdMarkus:
 SupernerdMarkusScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x7df97
-
-MountMortar1FInsideHiddenMaxRepel:
-	dwb EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL, MAX_REPEL
 
 PokemaniacMillerSeenText:
 	text "I'm not losing"

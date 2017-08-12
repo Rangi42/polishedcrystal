@@ -13,7 +13,7 @@ CliffEdgeGate_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 17, SIGNPOST_ITEM, CliffEdgeGateHiddenBigPearl
+	signpost 6, 17, SIGNPOST_ITEM + BIG_PEARL, EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL
 
 .PersonEvents: db 3
 	person_event SPRITE_RECEPTIONIST, 16, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffEdgeGateReceptionistText, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
@@ -51,9 +51,6 @@ TrainerGruntM12:
 GruntM12Script:
 	end_if_just_battled
 	jumptextfaceplayer GruntM12AfterText
-
-CliffEdgeGateHiddenBigPearl:
-	dwb EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL, BIG_PEARL
 
 CliffEdgeGateReceptionistText:
 	text "Yellow Forest is"

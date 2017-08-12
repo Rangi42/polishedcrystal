@@ -13,7 +13,7 @@ ShamoutiShrineRuins_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 10, 7, SIGNPOST_ITEM, ShamoutiShrineRuinsHiddenMaxRevive
+	signpost 10, 7, SIGNPOST_ITEM + MAX_REVIVE, EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE
 
 .PersonEvents: db 4
 	person_event SPRITE_LAWRENCE, 11, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLawrenceScript, EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
@@ -190,6 +190,3 @@ ShamoutiShrineRuinsLadyText:
 	line "a talking #mon"
 	cont "here somewhere."
 	done
-
-ShamoutiShrineRuinsHiddenMaxRevive:
-	dwb EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE, MAX_REVIVE

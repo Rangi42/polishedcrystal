@@ -17,10 +17,10 @@ LakeofRage_MapEventHeader:
 .Signposts: db 6
 	signpost 27, 21, SIGNPOST_JUMPTEXT, UnknownText_0x708d7
 	signpost 31, 25, SIGNPOST_READ, MapLakeofRageSignpost1Script
-	signpost 28, 11, SIGNPOST_ITEM, LakeofRageHiddenFullRestore
-	signpost 4, 4, SIGNPOST_ITEM, LakeofRageHiddenRareCandy
-	signpost 5, 35, SIGNPOST_ITEM, LakeofRageHiddenMaxPotion
-	signpost 10, 7, SIGNPOST_ITEM, LakeofRageHiddenMaxRevive
+	signpost 28, 11, SIGNPOST_ITEM + FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
+	signpost 4, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY
+	signpost 5, 35, SIGNPOST_ITEM + MAX_POTION, EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION
+	signpost 10, 7, SIGNPOST_ITEM + MAX_REVIVE, EVENT_LAKE_OF_RAGE_HIDDEN_MAX_REVIVE
 
 .PersonEvents: db 15
 	person_event SPRITE_LAKE_OF_RAGE_LANCE, 28, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript_0x70022, EVENT_LAKE_OF_RAGE_LANCE
@@ -213,18 +213,6 @@ WesleyDoneScript:
 
 WesleyNotWednesdayScript:
 	jumpopenedtext WesleyNotWednesdayText
-
-LakeofRageHiddenFullRestore:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE, FULL_RESTORE
-
-LakeofRageHiddenRareCandy:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY, RARE_CANDY
-
-LakeofRageHiddenMaxPotion:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_POTION, MAX_POTION
-
-LakeofRageHiddenMaxRevive:
-	dwb EVENT_LAKE_OF_RAGE_HIDDEN_MAX_REVIVE, MAX_REVIVE
 
 MovementData_0x70155:
 	teleport_from

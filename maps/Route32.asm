@@ -23,8 +23,8 @@ Route32_MapEventHeader:
 	signpost  5, 13, SIGNPOST_JUMPTEXT, Route32SignText
 	signpost  1,  9, SIGNPOST_JUMPTEXT, Route32RuinsSignText
 	signpost 84, 10, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
-	signpost 67, 12, SIGNPOST_ITEM, Route32HiddenGreatBall
-	signpost 40, 11, SIGNPOST_ITEM, Route32HiddenSuperPotion
+	signpost 67, 12, SIGNPOST_ITEM + GREAT_BALL, EVENT_ROUTE_32_HIDDEN_GREAT_BALL
+	signpost 40, 11, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION
 
 .PersonEvents: db 15
 	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
@@ -564,12 +564,6 @@ FriedaScript:
 
 .NotFriday:
 	jumpopenedtext FriedaNotFridayText
-
-Route32HiddenGreatBall:
-	dwb EVENT_ROUTE_32_HIDDEN_GREAT_BALL, GREAT_BALL
-
-Route32HiddenSuperPotion:
-	dwb EVENT_ROUTE_32_HIDDEN_SUPER_POTION, SUPER_POTION
 
 Movement_Route32CooltrainerMPushesYouBackToViolet:
 	step_up

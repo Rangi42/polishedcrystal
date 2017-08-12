@@ -15,12 +15,9 @@ SilverCaveRoom2_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 31, 14, SIGNPOST_ITEM, SilverCaveRoom2HiddenMaxPotion
+	signpost 31, 14, SIGNPOST_ITEM + MAX_POTION, EVENT_SILVER_CAVE_ROOM_2_HIDDEN_MAX_POTION
 
 .PersonEvents: db 3
 	itemball_event 10, 24, CALCIUM, 1, EVENT_SILVER_CAVE_ROOM_2_CALCIUM
 	itemball_event 24, 22, ULTRA_BALL, 1, EVENT_SILVER_CAVE_ROOM_2_ULTRA_BALL
 	itemball_event 20, 4, PP_UP, 1, EVENT_SILVER_CAVE_ROOM_2_PP_UP
-
-SilverCaveRoom2HiddenMaxPotion:
-	dwb EVENT_SILVER_CAVE_ROOM_2_HIDDEN_MAX_POTION, MAX_POTION

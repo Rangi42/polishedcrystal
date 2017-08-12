@@ -29,7 +29,7 @@ NewBarkTown_MapEventHeader:
 	signpost 5, 13, SIGNPOST_JUMPTEXT, PlayersHouseSignText
 	signpost 3, 3, SIGNPOST_JUMPTEXT, ElmsLabSignText
 	signpost 13, 9, SIGNPOST_JUMPTEXT, LyrasHouseSignText
-	signpost 2, 3, SIGNPOST_ITEM, MapNewBarkTownHiddenPotion
+	signpost 2, 3, SIGNPOST_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
 .PersonEvents: db 5
 	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
@@ -190,9 +190,6 @@ NewBarkTownSilverScript:
 	applymovement PLAYER, Movement_SilverShovesYouOut_NBT
 	applyonemovement NEWBARKTOWN_SILVER, step_right
 	end
-
-MapNewBarkTownHiddenPotion:
-	dwb EVENT_NEW_BARK_TOWN_HIDDEN_POTION, POTION
 
 Movement_TeacherRunsToYou2_NBT:
 	step_left

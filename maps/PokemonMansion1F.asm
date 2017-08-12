@@ -14,7 +14,7 @@ PokemonMansion1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 8
-	signpost 12, 21, SIGNPOST_ITEM, PokemonMansion1FHiddenFullRestore
+	signpost 12, 21, SIGNPOST_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
 	signpost 23, 14, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
 	signpost 5, 2, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
 	signpost 23, 15, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
@@ -44,9 +44,6 @@ TrainerBurglarLouis:
 BurglarLouisScript:
 	end_if_just_battled
 	jumptextfaceplayer BurglarLouisAfterText
-
-PokemonMansion1FHiddenFullRestore:
-	dwb EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 PokemonMansion1FHiddenPPUp:
 	checkevent EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP

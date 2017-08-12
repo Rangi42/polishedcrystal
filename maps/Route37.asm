@@ -13,7 +13,7 @@ Route37_MapEventHeader:
 
 .Signposts: db 2
 	signpost 3, 5, SIGNPOST_JUMPTEXT, Route37SignText
-	signpost 2, 4, SIGNPOST_ITEM, Route37HiddenEther
+	signpost 2, 4, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
 
 .PersonEvents: db 10
 	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
@@ -238,9 +238,6 @@ Route37CooltrainerfChiaraScript:
 	line "who'll want to test"
 	cont "you."
 	done
-
-Route37HiddenEther:
-	dwb EVENT_ROUTE_37_HIDDEN_ETHER, ETHER
 
 TwinsToriandtil1SeenText:
 	text "Til: Tori and I"

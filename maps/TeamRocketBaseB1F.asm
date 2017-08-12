@@ -58,7 +58,7 @@ TeamRocketBaseB1F_MapEventHeader:
 	signpost 5, 24, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	signpost 11, 20, SIGNPOST_JUMPSTD, teamrocketoath
 	signpost 11, 21, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 11, 3, SIGNPOST_ITEM, TeamRocketBaseB1FHiddenRevive
+	signpost 11, 3, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
 .PersonEvents: db 6
 	person_event SPRITE_ROCKET, 0, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
@@ -578,9 +578,6 @@ MapTeamRocketBaseB1FSignpost0Script:
 
 UnknownScript_0x6cabe:
 	jumpopenedtext UnknownText_0x6cdd0
-
-TeamRocketBaseB1FHiddenRevive:
-	dwb EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE, REVIVE
 
 SecurityCameraMovement1:
 	big_step_right

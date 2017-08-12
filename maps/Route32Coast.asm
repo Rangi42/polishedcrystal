@@ -16,8 +16,8 @@ Route32Coast_MapEventHeader:
 .Signposts: db 4
 	signpost 29, 15, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
 	signpost 59, 5, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
-	signpost 34, 17, SIGNPOST_ITEM, Route32CoastHiddenLevelBall
-	signpost 45, 5, SIGNPOST_ITEM, Route32CoastHiddenHyperPotion
+	signpost 34, 17, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
+	signpost 45, 5, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 15
 	person_event SPRITE_GUIDE_GENT, 5, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMichel, -1
@@ -352,9 +352,3 @@ Route32CoastUnionCaveSignText:
 	text "Union Cave"
 	line "Ahead"
 	done
-
-Route32CoastHiddenLevelBall:
-	dwb EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL, LEVEL_BALL
-
-Route32CoastHiddenHyperPotion:
-	dwb EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION, HYPER_POTION

@@ -14,10 +14,10 @@ MurkySwamp_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 10, 20, SIGNPOST_ITEM, MurkySwampHiddenMulch
-	signpost 13, 22, SIGNPOST_ITEM, MurkySwampHiddenXSpclDef
-	signpost 23, 5, SIGNPOST_ITEM, MurkySwampHiddenBigMushroom
-	signpost 33, 40, SIGNPOST_ITEM, MurkySwampHiddenTinyMushroom
+	signpost 10, 20, SIGNPOST_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
+	signpost 13, 22, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF
+	signpost 23, 5, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
+	signpost 33, 40, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
 
 .PersonEvents: db 15
 	person_event SPRITE_CHERYL, 26, 40, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
@@ -342,15 +342,3 @@ MurkySwampYoungsterText:
 	line "ever find my way"
 	cont "to the other side."
 	done
-
-MurkySwampHiddenMulch:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_MULCH, MULCH
-
-MurkySwampHiddenXSpclDef:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF, X_SPCL_DEF
-
-MurkySwampHiddenBigMushroom:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM, BIG_MUSHROOM
-
-MurkySwampHiddenTinyMushroom:
-	dwb EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM, TINYMUSHROOM

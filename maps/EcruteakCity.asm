@@ -33,7 +33,7 @@ EcruteakCity_MapEventHeader:
 	signpost 28, 8, SIGNPOST_JUMPTEXT, EcruteakGymSignText
 	signpost 21, 21, SIGNPOST_JUMPTEXT, EcruteakDanceTheaterSignText
 	signpost 10, 2, SIGNPOST_JUMPTEXT, BurnedTowerSignText
-	signpost 14, 25, SIGNPOST_ITEM, EcruteakCityHiddenHyperPotion
+	signpost 14, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION
 	signpost 11, 18, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
 
 .PersonEvents: db 10
@@ -80,9 +80,6 @@ FisherScript_0x1a4029:
 
 UnknownScript_0x1a4037:
 	jumpopenedtext UnknownText_0x1a4325
-
-EcruteakCityHiddenHyperPotion:
-	dwb EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION, HYPER_POTION
 
 UnknownText_0x1a4105:
 	text "Ecruteak used to"

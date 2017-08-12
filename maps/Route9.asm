@@ -12,8 +12,8 @@ Route9_MapEventHeader:
 
 .Signposts: db 3
 	signpost 7, 21, SIGNPOST_JUMPTEXT, Route9SignText
-	signpost 15, 51, SIGNPOST_ITEM, Route9HiddenEther
-	signpost 12, 42, SIGNPOST_ITEM, Route9HiddenSoftSand
+	signpost 15, 51, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_9_HIDDEN_ETHER
+	signpost 12, 42, SIGNPOST_ITEM + SOFT_SAND, EVENT_ROUTE_9_HIDDEN_SOFT_SAND
 
 .PersonEvents: db 9
 	person_event SPRITE_YOUNGSTER, 11, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
@@ -67,12 +67,6 @@ TrainerHikerSidney:
 HikerSidneyScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1ab278
-
-Route9HiddenEther:
-	dwb EVENT_ROUTE_9_HIDDEN_ETHER, ETHER
-
-Route9HiddenSoftSand:
-	dwb EVENT_ROUTE_9_HIDDEN_SOFT_SAND, SOFT_SAND
 
 CamperDeanSeenText:
 	text "I came to explore"

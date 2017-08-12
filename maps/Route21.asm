@@ -11,8 +11,8 @@ Route21_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 37, 12, SIGNPOST_ITEM, Route21HiddenStardust1
-	signpost 66, 5, SIGNPOST_ITEM, Route21HiddenStardust2
+	signpost 37, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_1
+	signpost 66, 5, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_2
 
 .PersonEvents: db 13
 	person_event SPRITE_SWIMMER_GIRL, 13, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
@@ -333,9 +333,3 @@ TrainerBird_keeperEaston:
 	line "the #mon start-"
 	cont "ed using us…"
 	done
-
-Route21HiddenStardust1:
-	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_1, STARDUST
-
-Route21HiddenStardust2:
-	dwb EVENT_ROUTE_21_HIDDEN_STARDUST_2, STARDUST

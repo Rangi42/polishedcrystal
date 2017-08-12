@@ -13,7 +13,7 @@ MountMortar2FInside_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 8, 24, SIGNPOST_ITEM, MountMortar2FInsideHiddenFullRestore
+	signpost 8, 24, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MORTAR_2F_INSIDE_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 7
 	itemball_event 22, 28, MAX_POTION, 1, EVENT_MOUNT_MORTAR_2F_INSIDE_MAX_POTION
@@ -30,9 +30,6 @@ TrainerSupernerdHugh:
 SupernerdHughScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x7e10e
-
-MountMortar2FInsideHiddenFullRestore:
-	dwb EVENT_MOUNT_MORTAR_2F_INSIDE_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 SupernerdHughSeenText:
 	text "Yo! Markus!"

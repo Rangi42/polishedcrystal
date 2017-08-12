@@ -15,7 +15,7 @@ SilverCaveOutside_MapEventHeader:
 
 .Signposts: db 2
 	signpost 7, 17, SIGNPOST_JUMPTEXT, MtSilverSignText
-	signpost 19, 9, SIGNPOST_ITEM, SilverCaveOutsideHiddenFullRestore
+	signpost 19, 9, SIGNPOST_ITEM + FULL_RESTORE, EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 2
 	cuttree_event 18, 31, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1
@@ -24,9 +24,6 @@ SilverCaveOutside_MapEventHeader:
 SilverCaveOutsideFlyPoint:
 	setflag ENGINE_FLYPOINT_SILVER_CAVE
 	return
-
-SilverCaveOutsideHiddenFullRestore:
-	dwb EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE, FULL_RESTORE
 
 MtSilverSignText:
 	text "Mt.Silver"

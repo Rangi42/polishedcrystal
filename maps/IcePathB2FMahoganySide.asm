@@ -17,7 +17,7 @@ IcePathB2FMahoganySide_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 17, 0, SIGNPOST_ITEM, IcePathB2FMahoganySideHiddenCarbos
+	signpost 17, 0, SIGNPOST_ITEM + CARBOS, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_HIDDEN_CARBOS
 
 .PersonEvents: db 6
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 3, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_1A
@@ -29,9 +29,6 @@ IcePathB2FMahoganySide_MapEventHeader:
 
 BoulderScript_0x7e5a3:
 	jumptext UnknownText_0x7e5ad
-
-IcePathB2FMahoganySideHiddenCarbos:
-	dwb EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_HIDDEN_CARBOS, CARBOS
 
 UnknownText_0x7e5ad:
 	text "It's immovably"

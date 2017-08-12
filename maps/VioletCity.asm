@@ -28,8 +28,8 @@ VioletCity_MapEventHeader:
 	signpost 21, 15, SIGNPOST_JUMPTEXT, VioletGymSignText
 	signpost  8, 24, SIGNPOST_JUMPTEXT, SproutTowerSignText
 	signpost 21, 27, SIGNPOST_JUMPTEXT, EarlsPokemonAcademySignText
-	signpost 18, 37, SIGNPOST_ITEM, VioletCityHiddenHyperPotion
-	signpost 12, 21, SIGNPOST_ITEM, VioletCityHiddenPokeBall
+	signpost 18, 37, SIGNPOST_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION
+	signpost 12, 21, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
 
 .PersonEvents: db 13
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
@@ -84,12 +84,6 @@ VioletCityEarlScript:
 	clearevent EVENT_EARLS_ACADEMY_EARL
 	waitsfx
 	end
-
-VioletCityHiddenHyperPotion:
-	dwb EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION, HYPER_POTION
-
-VioletCityHiddenPokeBall:
-	dwb EVENT_VIOLET_CITY_HIDDEN_POKE_BALL, POKE_BALL
 
 VioletCityFollowEarl_MovementData:
 	big_step_down

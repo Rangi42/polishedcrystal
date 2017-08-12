@@ -13,7 +13,7 @@ UragaChannelWest_MapEventHeader:
 
 .Signposts: db 2
 	signpost 11, 9, SIGNPOST_JUMPTEXT, ScaryCaveWestSignText
-	signpost 11, 7, SIGNPOST_ITEM, UragaChannelWestHiddenBigPearl
+	signpost 11, 7, SIGNPOST_ITEM + BIG_PEARL, EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL
 
 .PersonEvents: db 1
 	person_event SPRITE_ENGINEER, 9, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
@@ -38,6 +38,3 @@ ScaryCaveWestSignText:
 	para "Enter west from"
 	line "Route 18 only!"
 	done
-
-UragaChannelWestHiddenBigPearl:
-	dwb EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL, BIG_PEARL

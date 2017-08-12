@@ -14,7 +14,7 @@ RockTunnel2F_MapEventHeader:
 
 .Signposts: db 2
 	signpost 19, 15, SIGNPOST_JUMPTEXT, MapRockTunnel2FLodestoneText
-	signpost 23, 10, SIGNPOST_ITEM, RockTunnel2FHiddenMaxEther
+	signpost 23, 10, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROCK_TUNNEL_2F_HIDDEN_MAX_ETHER
 
 .PersonEvents: db 15
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RockTunnel2FElectrode, EVENT_ROCK_TUNNEL_2F_ELECTRODE
@@ -40,9 +40,6 @@ RockTunnel2FElectrode:
 	disappear LAST_TALKED
 	reloadmapafterbattle
 	end
-
-RockTunnel2FHiddenMaxEther:
-	dwb EVENT_ROCK_TUNNEL_2F_HIDDEN_MAX_ETHER, MAX_ETHER
 
 MapRockTunnel2FLodestoneText:
 	text "The lodestone is"

@@ -17,12 +17,9 @@ QuietCaveB2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 11, 16, SIGNPOST_ITEM, QuietCaveB2FHiddenCalcium
+	signpost 11, 16, SIGNPOST_ITEM + CALCIUM, EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM
 
 .PersonEvents: db 3
 	itemball_event 3, 10, DUSK_BALL, 1, EVENT_QUIET_CAVE_B2F_DUSK_BALL
 	itemball_event 23, 9, RAZOR_CLAW, 1, EVENT_QUIET_CAVE_B2F_RAZOR_CLAW
 	itemball_event 11, 19, SAFE_GOGGLES, 1, EVENT_QUIET_CAVE_B2F_SAFE_GOGGLES
-
-QuietCaveB2FHiddenCalcium:
-	dwb EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM, CALCIUM

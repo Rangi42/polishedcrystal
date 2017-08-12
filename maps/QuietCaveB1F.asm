@@ -20,7 +20,7 @@ QuietCaveB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 33, 26, SIGNPOST_ITEM, QuietCaveB1FHiddenHyperPotion
+	signpost 33, 26, SIGNPOST_ITEM + HYPER_POTION, EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION
 
 .PersonEvents: db 6
 	person_event SPRITE_COOLTRAINER_F, 4, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
@@ -57,9 +57,6 @@ TrainerPsychicVirgil:
 PsychicVirgilScript:
 	end_if_just_battled
 	jumptextfaceplayer PsychicVirgilAfterText
-
-QuietCaveB1FHiddenHyperPotion:
-	dwb EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION, HYPER_POTION
 
 BattleGirlKagamiSeenText:
 	text "Don't disturb my"

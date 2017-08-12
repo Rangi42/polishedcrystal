@@ -18,7 +18,7 @@ CliffCave_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 9, 11, SIGNPOST_ITEM, CliffCaveHiddenUltraBall
+	signpost 9, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 2
 	person_event SPRITE_ROCKET, 6, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
@@ -30,9 +30,6 @@ TrainerGruntM22:
 GruntM22Script:
 	end_if_just_battled
 	jumptextfaceplayer GruntM22AfterText
-
-CliffCaveHiddenUltraBall:
-	dwb EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL, ULTRA_BALL
 
 GruntM22SeenText:
 	text "Hey! You got past"

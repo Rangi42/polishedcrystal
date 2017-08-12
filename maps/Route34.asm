@@ -23,8 +23,8 @@ Route34_MapEventHeader:
 	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText
 	signpost 33, 13, SIGNPOST_JUMPTEXT, Route34TrainerTipsText
 	signpost 13, 10, SIGNPOST_JUMPTEXT, DayCareSignText
-	signpost 32, 8, SIGNPOST_ITEM, Route34HiddenRareCandy
-	signpost 19, 17, SIGNPOST_ITEM, Route34HiddenSuperPotion
+	signpost 32, 8, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
+	signpost 19, 17, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
 
 .PersonEvents: db 14
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
@@ -664,12 +664,6 @@ TrainerCooltrainerfKate:
 .BagFull:
 	closetext
 	end
-
-Route34HiddenRareCandy:
-	dwb EVENT_ROUTE_34_HIDDEN_RARE_CANDY, RARE_CANDY
-
-Route34HiddenSuperPotion:
-	dwb EVENT_ROUTE_34_HIDDEN_SUPER_POTION, SUPER_POTION
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up

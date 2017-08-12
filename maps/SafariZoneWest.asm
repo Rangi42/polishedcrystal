@@ -23,7 +23,7 @@ SafariZoneWest_MapEventHeader:
 	signpost 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
 	signpost 6, 28, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
 	signpost 5, 19, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
-	signpost 6, 13, SIGNPOST_ITEM, SafariZoneWestHiddenNugget
+	signpost 6, 13, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
 .PersonEvents: db 4
 	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
@@ -51,9 +51,6 @@ TrainerTamerBrett:
 TamerBrettScript:
 	end_if_just_battled
 	jumptextfaceplayer TamerBrettAfterText
-
-SafariZoneWestHiddenNugget:
-	dwb EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET, NUGGET
 
 LassDuplicaSeenText:
 	text "To truly use"

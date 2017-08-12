@@ -32,7 +32,7 @@ RuinsofAlphOutside_MapEventHeader:
 	signpost 22, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58342
 	signpost 18, 20, SIGNPOST_JUMPTEXT, UnknownText_0x58362
 	signpost 9, 10, SIGNPOST_JUMPTEXT, MapRuinsofAlphOutsideSignpost3Text
-	signpost 13, 4, SIGNPOST_ITEM, RuinsofAlphOutsideHiddenRareCandy
+	signpost 13, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 13
 	person_event SPRITE_SCIENTIST, 21, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
@@ -156,9 +156,6 @@ TrainerSuperNerdStan:
 UnknownScript_0x580a9:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x58250
-
-RuinsofAlphOutsideHiddenRareCandy:
-	dwb EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY, RARE_CANDY
 
 MovementData_0x580ba:
 	step_right

@@ -12,8 +12,8 @@ CeruleanCaveB1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 6, 8, SIGNPOST_ITEM, CeruleanCaveB1FHiddenMaxRevive
-	signpost 11, 24, SIGNPOST_ITEM, CeruleanCaveB1FHiddenUltraBall
+	signpost 6, 8, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CERULEAN_CAVE_B1F_HIDDEN_MAX_REVIVE
+	signpost 11, 24, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 3
 	person_event SPRITE_MEWTWO, 13, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO
@@ -37,12 +37,6 @@ CeruleanCaveMewtwo:
 	setevent EVENT_CERULEAN_CAVE_MEWTWO
 	reloadmapafterbattle
 	end
-
-CeruleanCaveB1FHiddenMaxRevive:
-	dwb EVENT_CERULEAN_CAVE_B1F_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-CeruleanCaveB1FHiddenUltraBall:
-	dwb EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL, ULTRA_BALL
 
 MewtwoText:
 	text "Myuu!"

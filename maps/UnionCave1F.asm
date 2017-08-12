@@ -15,9 +15,9 @@ UnionCave1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 19, 7, SIGNPOST_ITEM, UnionCave1FHiddenGreatBall
-	signpost 33, 2, SIGNPOST_ITEM, UnionCave1FHiddenBigPearl
-	signpost 33, 8, SIGNPOST_ITEM, UnionCave1FHiddenParlyzHeal
+	signpost 19, 7, SIGNPOST_ITEM + GREAT_BALL, EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL
+	signpost 33, 2, SIGNPOST_ITEM + BIG_PEARL, EVENT_UNION_CAVE_1F_HIDDEN_BIG_PEARL
+	signpost 33, 8, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL
 
 .PersonEvents: db 10
 	person_event SPRITE_POKEFAN_M, 18, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerDaniel, -1
@@ -72,15 +72,6 @@ TrainerRuin_maniacJones:
 Ruin_maniacJonesScript:
 	end_if_just_battled
 	jumptextfaceplayer Ruin_maniacJonesAfterText
-
-UnionCave1FHiddenGreatBall:
-	dwb EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL, GREAT_BALL
-
-UnionCave1FHiddenBigPearl:
-	dwb EVENT_UNION_CAVE_1F_HIDDEN_BIG_PEARL, BIG_PEARL
-
-UnionCave1FHiddenParlyzHeal:
-	dwb EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL, PARLYZ_HEAL
 
 HikerRussellSeenText:
 	text "You're headed to"

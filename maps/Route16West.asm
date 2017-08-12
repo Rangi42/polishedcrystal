@@ -13,7 +13,7 @@ Route16West_MapEventHeader:
 
 .Signposts: db 2
 	signpost 2, 59, SIGNPOST_JUMPTEXT, Route16WestSignpostText
-	signpost 5, 24, SIGNPOST_ITEM, Route16WestHiddenRareCandy
+	signpost 5, 24, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_16_WEST_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 10
 	person_event SPRITE_LASS, 7, 56, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassGina, -1
@@ -152,6 +152,3 @@ TrainerBeautyNicole:
 Route16WestSignpostText:
 	text "Route 16"
 	done
-
-Route16WestHiddenRareCandy:
-	dwb EVENT_ROUTE_16_WEST_HIDDEN_RARE_CANDY, RARE_CANDY

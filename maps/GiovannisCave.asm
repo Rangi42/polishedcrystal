@@ -15,7 +15,7 @@ GiovannisCave_MapEventHeader:
 
 .Signposts: db 2
 	signpost 2, 15, SIGNPOST_READ, GiovannisCaveRadioScript
-	signpost 6, 12, SIGNPOST_ITEM, GiovannisCaveHiddenBerserkGene
+	signpost 6, 12, SIGNPOST_ITEM + BERSERK_GENE, EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
 
 .PersonEvents: db 5
 	person_event SPRITE_CELEBI, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
@@ -99,9 +99,6 @@ GiovannisCaveRadioScript:
 	jumptext GiovannisCaveRadioText
 .AfterTimeTravel
 	jumptext GiovannisCaveRadioAfterTimeTravelText
-
-GiovannisCaveHiddenBerserkGene:
-	dwb EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE, BERSERK_GENE
 
 GiovannisCaveRadioText:
 	text "There is a radio"

@@ -13,10 +13,7 @@ IcePathB2FBlackthornSide_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 10, 2, SIGNPOST_ITEM, IcePathB2FBlackthornSideHiddenIceHeal
+	signpost 10, 2, SIGNPOST_ITEM + ICE_HEAL, EVENT_ICE_PATH_B2F_BLACKTHORN_SIDE_HIDDEN_ICE_HEAL
 
 .PersonEvents: db 1
 	itemball_event 16, 8, NUGGET, 1, EVENT_ICE_PATH_B2F_BLACKTHORN_SIDE_NUGGET
-
-IcePathB2FBlackthornSideHiddenIceHeal:
-	dwb EVENT_ICE_PATH_B2F_BLACKTHORN_SIDE_HIDDEN_ICE_HEAL, ICE_HEAL

@@ -16,10 +16,10 @@ Route19_MapEventHeader:
 .Signposts: db 6
 	signpost 15, 11, SIGNPOST_JUMPTEXT, Route19SignText
 	signpost -1, 11, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
-	signpost 3, 5, SIGNPOST_ITEM, Route19HiddenRevive
-	signpost 11, 3, SIGNPOST_ITEM, Route19HiddenMaxRevive
-	signpost 15, 5, SIGNPOST_ITEM, Route19HiddenPearl1
-	signpost 13, 13, SIGNPOST_ITEM, Route19HiddenPearl2
+	signpost 3, 5, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
+	signpost 11, 3, SIGNPOST_ITEM + MAX_REVIVE, EVENT_ROUTE_19_HIDDEN_MAX_REVIVE
+	signpost 15, 5, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL_1
+	signpost 13, 13, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL_2
 
 .PersonEvents: db 13
 	smashrock_event 4, 11
@@ -96,18 +96,6 @@ EngineerScript_0x19ea61:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue_jumptextfaceplayer Route19EngineerText2
 	jumptextfaceplayer Route19EngineerText1
-
-Route19HiddenRevive:
-	dwb EVENT_ROUTE_19_HIDDEN_REVIVE, REVIVE
-
-Route19HiddenMaxRevive:
-	dwb EVENT_ROUTE_19_HIDDEN_MAX_REVIVE, MAX_REVIVE
-
-Route19HiddenPearl1:
-	dwb EVENT_ROUTE_19_HIDDEN_PEARL_1, PEARL
-
-Route19HiddenPearl2:
-	dwb EVENT_ROUTE_19_HIDDEN_PEARL_2, PEARL
 
 SwimmerfDawnSeenText:
 	text "I'm disgusted by"

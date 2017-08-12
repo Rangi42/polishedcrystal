@@ -20,11 +20,11 @@ ViridianForest_MapEventHeader:
 	signpost 34, 18, SIGNPOST_JUMPTEXT, ViridianForestSignText4
 	signpost 42, 26, SIGNPOST_JUMPTEXT, ViridianForestSignText5
 	signpost 44, 20, SIGNPOST_JUMPTEXT, ViridianForestSignText6
-	signpost 44, 32, SIGNPOST_ITEM, ViridianForestHiddenMaxEther
-	signpost 43, 18, SIGNPOST_ITEM, ViridianForestHiddenFullHeal
-	signpost 43, 4, SIGNPOST_ITEM, ViridianForestHiddenMulch
-	signpost 9, 30, SIGNPOST_ITEM, ViridianForestHiddenRevive
-	signpost 14, 3, SIGNPOST_ITEM, ViridianForestHiddenLeafStone
+	signpost 44, 32, SIGNPOST_ITEM + MAX_ETHER, EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER
+	signpost 43, 18, SIGNPOST_ITEM + FULL_HEAL, EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL
+	signpost 43, 4, SIGNPOST_ITEM + MULCH, EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH
+	signpost 9, 30, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
+	signpost 14, 3, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
 .PersonEvents: db 8
 	person_event SPRITE_BALL_CUT_FRUIT, 18, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
@@ -83,21 +83,6 @@ ViridianForestWeedleDoll:
 	pause 60
 	waitbutton
 	jumpopenedtext ViridianForestWeedleSentText
-
-ViridianForestHiddenMaxEther:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER, MAX_ETHER
-
-ViridianForestHiddenFullHeal:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
-
-ViridianForestHiddenMulch:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH, MULCH
-
-ViridianForestHiddenRevive:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE, REVIVE
-
-ViridianForestHiddenLeafStone:
-	dwb EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE, LEAF_STONE
 
 BugManiacDaneSeenText:
 	text "Welcome to"

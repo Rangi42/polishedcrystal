@@ -14,10 +14,10 @@ UragaChannelEast_MapEventHeader:
 .Signposts: db 6
 	signpost 5, 45, SIGNPOST_JUMPTEXT, UragaChannelSignText
 	signpost 13, 3, SIGNPOST_JUMPTEXT, ScaryCaveEastSignText
-	signpost 4, 33, SIGNPOST_ITEM, UragaChannelEastHiddenNugget
-	signpost 14, 34, SIGNPOST_ITEM, UragaChannelEastHiddenPearl
-	signpost 12, 22, SIGNPOST_ITEM, UragaChannelEastHiddenBottleCap
-	signpost 11, 9, SIGNPOST_ITEM, UragaChannelEastHiddenStarPiece
+	signpost 4, 33, SIGNPOST_ITEM + NUGGET, EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET
+	signpost 14, 34, SIGNPOST_ITEM + PEARL, EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL
+	signpost 12, 22, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP
+	signpost 11, 9, SIGNPOST_ITEM + STAR_PIECE, EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE
 
 .PersonEvents: db 5
 	person_event SPRITE_SWIMMER_GIRL, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
@@ -112,15 +112,3 @@ ScaryCaveEastSignText:
 	para "“This cave is"
 	line "scary!”"
 	done
-
-UragaChannelEastHiddenNugget:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET, NUGGET
-
-UragaChannelEastHiddenPearl:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL, PEARL
-
-UragaChannelEastHiddenBottleCap:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP, BOTTLE_CAP
-
-UragaChannelEastHiddenStarPiece:
-	dwb EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE, STAR_PIECE

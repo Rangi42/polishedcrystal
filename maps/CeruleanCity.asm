@@ -29,7 +29,7 @@ CeruleanCity_MapEventHeader:
 	signpost 17, 25, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
 	signpost 7, 23, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
 	signpost 22, 11, SIGNPOST_UP, CeruleanBubblerSign
-	signpost 17, 4, SIGNPOST_ITEM, CeruleanCityHiddenBerserkGene
+	signpost 17, 4, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 .PersonEvents: db 8
 	person_event SPRITE_COOLTRAINER_F, 24, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
@@ -125,9 +125,6 @@ YoungsterScript_0x184064:
 
 CeruleanBubblerSign:
 	jumptext CeruleanBubblerText
-
-CeruleanCityHiddenBerserkGene:
-	dwb EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY, BERSERK_GENE
 
 UnknownText_0x1840bc:
 	text "Kanto's Power"

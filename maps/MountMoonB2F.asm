@@ -16,9 +16,9 @@ MountMoonB2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 7, 28, SIGNPOST_ITEM, MountMoonB2FHiddenEther
-	signpost 9, 7, SIGNPOST_ITEM, MountMoonB2FHiddenStardust
-	signpost 30, 10, SIGNPOST_ITEM, MountMoonB2FHiddenPPUp
+	signpost 7, 28, SIGNPOST_ITEM + ETHER, EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER
+	signpost 9, 7, SIGNPOST_ITEM + STARDUST, EVENT_MOUNT_MOON_B2F_HIDDEN_STARDUST
+	signpost 30, 10, SIGNPOST_ITEM + PP_UP, EVENT_MOUNT_MOON_B2F_HIDDEN_PP_UP
 
 .PersonEvents: db 11
 	person_event SPRITE_YOUNGSTER, 9, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerYoungsterJosh, -1
@@ -67,15 +67,6 @@ TrainerSuperNerdMiguel:
 SuperNerdMiguelScript:
 	end_if_just_battled
 	jumptextfaceplayer SuperNerdMiguelAfterText
-
-MountMoonB2FHiddenEther:
-	dwb EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER, ETHER
-
-MountMoonB2FHiddenStardust:
-	dwb EVENT_MOUNT_MOON_B2F_HIDDEN_STARDUST, STARDUST
-
-MountMoonB2FHiddenPPUp:
-	dwb EVENT_MOUNT_MOON_B2F_HIDDEN_PP_UP, PP_UP
 
 YoungsterJoshSeenText:
 	text "You came to ex-"

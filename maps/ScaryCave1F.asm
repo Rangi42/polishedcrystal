@@ -16,9 +16,9 @@ ScaryCave1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 3, 34, SIGNPOST_ITEM, ScaryCave1FHiddenMaxElixir
-	signpost 28, 18, SIGNPOST_ITEM, ScaryCave1FHiddenPearlString
-	signpost 29, 30, SIGNPOST_ITEM, ScaryCave1FHiddenPearl
+	signpost 3, 34, SIGNPOST_ITEM + MAX_ELIXER, EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR
+	signpost 28, 18, SIGNPOST_ITEM + PEARL_STRING, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING
+	signpost 29, 30, SIGNPOST_ITEM + PEARL, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL
 
 .PersonEvents: db 13
 	person_event SPRITE_MIRA, 5, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
@@ -375,12 +375,3 @@ TrainerScientistPiotr:
 	para "It's not blood!"
 	line "…Right?"
 	done
-
-ScaryCave1FHiddenMaxElixir:
-	dwb EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR, MAX_ELIXER
-
-ScaryCave1FHiddenPearlString:
-	dwb EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING, PEARL_STRING
-
-ScaryCave1FHiddenPearl:
-	dwb EVENT_SCARY_CAVE_1F_HIDDEN_PEARL, PEARL

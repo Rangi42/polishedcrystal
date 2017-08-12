@@ -19,8 +19,8 @@ DimCave3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 5, 2, SIGNPOST_ITEM, DimCave3FHiddenStarPiece
-	signpost 6, 26, SIGNPOST_ITEM, DimCave3FHiddenZinc
+	signpost 5, 2, SIGNPOST_ITEM + STAR_PIECE, EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE
+	signpost 6, 26, SIGNPOST_ITEM + ZINC, EVENT_DIM_CAVE_3F_HIDDEN_ZINC
 
 .PersonEvents: db 9
 	strengthboulder_event 17, 3, EVENT_BOULDER_IN_DIM_CAVE_3F
@@ -183,9 +183,3 @@ DimCave3FFallenBoulderScript:
 	text "It's stuck on the"
 	line "button."
 	done
-
-DimCave3FHiddenStarPiece:
-	dwb EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE, STAR_PIECE
-
-DimCave3FHiddenZinc:
-	dwb EVENT_DIM_CAVE_3F_HIDDEN_ZINC, ZINC

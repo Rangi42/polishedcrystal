@@ -20,8 +20,8 @@ DimCave2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 4, 6, SIGNPOST_ITEM, DimCave2FHiddenStardust
-	signpost 19, 2, SIGNPOST_ITEM, DimCave2FHiddenMoonStone
+	signpost 4, 6, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
+	signpost 19, 2, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
 .PersonEvents: db 7
 	person_event SPRITE_ROCK_BOULDER_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
@@ -171,9 +171,3 @@ DimCave2FFallenBoulderScript:
 	text "It's stuck on the"
 	line "button."
 	done
-
-DimCave2FHiddenStardust:
-	dwb EVENT_DIM_CAVE_2F_HIDDEN_STARDUST, STARDUST
-
-DimCave2FHiddenMoonStone:
-	dwb EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE, MOON_STONE

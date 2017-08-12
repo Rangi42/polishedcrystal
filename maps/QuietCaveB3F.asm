@@ -15,7 +15,7 @@ QuietCaveB3F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 20, 16, SIGNPOST_ITEM, QuietCaveB3FHiddenPPUp
+	signpost 20, 16, SIGNPOST_ITEM + PP_UP, EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP
 	signpost 22, 12, SIGNPOST_ITEM, QuietCaveB3FHiddenMaxRevive
 
 .PersonEvents: db 2
@@ -114,9 +114,6 @@ QuietCaveB3FMarleyScript:
 
 	para "Bye-bye…"
 	done
-
-QuietCaveB3FHiddenPPUp:
-	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP, PP_UP
 
 QuietCaveB3FHiddenMaxRevive
 	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE, MAX_REVIVE

@@ -15,9 +15,9 @@ UnionCaveB1FSouth_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 3
-	signpost 18, 2, SIGNPOST_ITEM, UnionCaveB1FSouthHiddenXSpclDef
-	signpost 25, 12, SIGNPOST_ITEM, UnionCaveB1FSouthHiddenNugget
-	signpost 30, 4, SIGNPOST_ITEM, UnionCaveB1FSouthHiddenFullRestore
+	signpost 18, 2, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_X_SPCL_DEF
+	signpost 25, 12, SIGNPOST_ITEM + NUGGET, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_NUGGET
+	signpost 30, 4, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE
 
 .PersonEvents: db 14
 	person_event SPRITE_SUPER_NERD, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacAndrew, -1
@@ -228,12 +228,3 @@ TrainerRuin_maniacGlyn:
 	line "sorts of interest-"
 	cont "ing items."
 	done
-
-UnionCaveB1FSouthHiddenXSpclDef:
-	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_X_SPCL_DEF, X_SPCL_DEF
-
-UnionCaveB1FSouthHiddenNugget:
-	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_NUGGET, NUGGET
-
-UnionCaveB1FSouthHiddenFullRestore:
-	dwb EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE, FULL_RESTORE

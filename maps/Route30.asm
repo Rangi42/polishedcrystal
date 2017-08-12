@@ -17,7 +17,7 @@ Route30_MapEventHeader:
 	signpost 29, 13, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
 	signpost 5, 15, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
 	signpost 21, 3, SIGNPOST_JUMPTEXT, Route30TrainerTipsText
-	signpost 9, 14, SIGNPOST_ITEM, Route30HiddenPotion
+	signpost 9, 14, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
 	signpost 39, 5, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
 
 .PersonEvents: db 12
@@ -230,9 +230,6 @@ Route30YoungsterScript:
 
 .CompletedEggQuest:
 	jumpopenedtext Route30YoungsterText_EveryoneIsBattling
-
-Route30HiddenPotion:
-	dwb EVENT_ROUTE_30_HIDDEN_POTION, POTION
 
 Route30_JoeysRattataAttacksMovement:
 	big_step_up

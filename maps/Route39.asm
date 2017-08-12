@@ -16,7 +16,7 @@ Route39_MapEventHeader:
 	signpost 31, 5, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
 	signpost 5, 9, SIGNPOST_JUMPTEXT, MoomooFarmSignText
 	signpost 7, 15, SIGNPOST_JUMPTEXT, Route39SignText
-	signpost 13, 5, SIGNPOST_ITEM, Route39HiddenNugget
+	signpost 13, 5, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
 .PersonEvents: db 12
 	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
@@ -291,9 +291,6 @@ UnknownScript_0x1a5bdf:
 
 UnknownScript_0x1a5be5:
 	jumpopenedtext UnknownText_0x1a5ec4
-
-Route39HiddenNugget:
-	dwb EVENT_ROUTE_39_HIDDEN_NUGGET, NUGGET
 
 Route39MiltankText:
 	text "Miltank: Mooo!"

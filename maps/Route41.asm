@@ -15,7 +15,7 @@ Route41_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 35, 9, SIGNPOST_ITEM, Route41HiddenMaxEther
+	signpost 35, 9, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_41_HIDDEN_MAX_ETHER
 
 .PersonEvents: db 11
 	person_event SPRITE_SWIMMER_GUY, 6, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermCharlie, -1
@@ -106,9 +106,6 @@ TrainerSwimmermLewis:
 SwimmermLewisScript:
 	end_if_just_battled
 	jumptextfaceplayer SwimmermLewisAfterText
-
-Route41HiddenMaxEther:
-	dwb EVENT_ROUTE_41_HIDDEN_MAX_ETHER, MAX_ETHER
 
 SwimmermCharlieSeenText:
 	text "The water's warm"

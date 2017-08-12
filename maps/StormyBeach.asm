@@ -13,7 +13,7 @@ StormyBeach_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 6, 17, SIGNPOST_ITEM, StormyBeachHiddenStardust
+	signpost 6, 17, SIGNPOST_ITEM + STARDUST, EVENT_STORMY_BEACH_HIDDEN_STARDUST
 
 .PersonEvents: db 11
 	person_event SPRITE_GOLDENROD_LYRA, 13, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfBarbara, -1
@@ -148,6 +148,3 @@ StormyBeachGrampsText:
 	cont "to explore the"
 	cont "swamp."
 	done
-
-StormyBeachHiddenStardust:
-	dwb EVENT_STORMY_BEACH_HIDDEN_STARDUST, STARDUST

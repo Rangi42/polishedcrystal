@@ -18,13 +18,13 @@ IlexForest_MapEventHeader:
 
 .Signposts: db 8
 	signpost 19, 5, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
-	signpost 9, 13, SIGNPOST_ITEM, IlexForestHiddenEther
-	signpost 16, 24, SIGNPOST_ITEM, IlexForestHiddenSuperPotion
-	signpost 19, 3, SIGNPOST_ITEM, IlexForestHiddenFullHeal
+	signpost 9, 13, SIGNPOST_ITEM + ETHER, EVENT_ILEX_FOREST_HIDDEN_ETHER
+	signpost 16, 24, SIGNPOST_ITEM + SUPER_POTION, EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION
+	signpost 19, 3, SIGNPOST_ITEM + FULL_HEAL, EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL
 	signpost 9, 20, SIGNPOST_JUMPTEXT, Text_IlexForestMossRock
 	signpost 24, 10, SIGNPOST_UP, MapIlexForestSignpost4Script
-	signpost 24, 25, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf1
-	signpost 8, 19, SIGNPOST_ITEM, IlexForestHiddenSilverLeaf2
+	signpost 24, 25, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_1
+	signpost 8, 19, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2
 
 .PersonEvents: db 14
 	person_event SPRITE_FARFETCH_D, 33, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
@@ -481,21 +481,6 @@ TrainerBug_catcherWayne:
 Bug_catcherWayneScript:
 	end_if_just_battled
 	jumptextfaceplayer Bug_catcherWayneAfterText
-
-IlexForestHiddenEther:
-	dwb EVENT_ILEX_FOREST_HIDDEN_ETHER, ETHER
-
-IlexForestHiddenSuperPotion:
-	dwb EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION, SUPER_POTION
-
-IlexForestHiddenFullHeal:
-	dwb EVENT_ILEX_FOREST_HIDDEN_FULL_HEAL, FULL_HEAL
-
-IlexForestHiddenSilverLeaf1:
-	dwb EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_1, SILVER_LEAF
-
-IlexForestHiddenSilverLeaf2:
-	dwb EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2, SILVER_LEAF
 
 MapIlexForestSignpost4Script:
 	checkevent EVENT_FOREST_IS_RESTLESS

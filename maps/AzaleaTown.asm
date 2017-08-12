@@ -29,7 +29,7 @@ AzaleaTown_MapEventHeader:
 	signpost 7, 29, SIGNPOST_JUMPTEXT, SlowpokeWellSignText
 	signpost 13, 19, SIGNPOST_JUMPTEXT, CharcoalKilnSignText
 	signpost 9, 3, SIGNPOST_JUMPTEXT, AzaleaTownIlexForestSignText
-	signpost 6, 31, SIGNPOST_ITEM, AzaleaTownHiddenFullHeal
+	signpost 6, 31, SIGNPOST_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 12
 	person_event SPRITE_AZALEA_ROCKET, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
@@ -296,9 +296,6 @@ AzaleaTownIlexForestSignText:
 	para "Enter through the"
 	line "gate."
 	done
-
-AzaleaTownHiddenFullHeal:
-	dwb EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL, FULL_HEAL
 
 AzaleaTownGrampsScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL

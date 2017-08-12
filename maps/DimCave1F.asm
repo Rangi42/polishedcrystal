@@ -15,7 +15,7 @@ DimCave1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 2, 28, SIGNPOST_ITEM, DimCave1FHiddenFullHeal
+	signpost 2, 28, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 5
 	person_event SPRITE_SUPER_NERD, 7, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
@@ -96,6 +96,3 @@ TrainerGuitaristmBiff:
 	text "I love heavy metal"
 	line "and heavy metals!"
 	done
-
-DimCave1FHiddenFullHeal:
-	dwb EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL, FULL_HEAL

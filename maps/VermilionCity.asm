@@ -34,7 +34,7 @@ VermilionCity_MapEventHeader:
 	signpost 19, 27, SIGNPOST_JUMPTEXT, VermilionCityPortSignText
 	signpost 13, 28, SIGNPOST_JUMPTEXT, VermilionCityTruckText
 	signpost 13, 29, SIGNPOST_JUMPTEXT, VermilionCityTruckText
-	signpost 23, 12, SIGNPOST_ITEM, VermilionCityHiddenFullHeal
+	signpost 23, 12, SIGNPOST_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
 .PersonEvents: db 15
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
@@ -237,9 +237,6 @@ VermilionCityTutorVoltSwitchScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_VermilionCityTutorTaught
-
-VermilionCityHiddenFullHeal:
-	dwb EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL, FULL_HEAL
 
 LawrenceOverheardText:
 	text "…So the legendary"

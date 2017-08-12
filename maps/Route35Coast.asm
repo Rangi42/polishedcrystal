@@ -11,7 +11,7 @@ Route35Coast_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 14, 35, SIGNPOST_ITEM, Route35CoastHiddenStarPiece
+	signpost 14, 35, SIGNPOST_ITEM + STAR_PIECE, EVENT_ROUTE_35_COAST_HIDDEN_STAR_PIECE
 
 .PersonEvents: db 6
 	person_event SPRITE_SWIMMER_GUY, 7, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermWalter, -1
@@ -63,9 +63,6 @@ TrainerSrandjrBeaandmay2:
 TrainerSrandjrBeaandmay2Script:
 	end_if_just_battled
 	jumptextfaceplayer SrandjrBeaandmay2AfterText
-
-Route35CoastHiddenStarPiece:
-	dwb EVENT_ROUTE_35_COAST_HIDDEN_STAR_PIECE, STAR_PIECE
 
 SwimmermWalterSeenText:
 	text "I forgot to wear"

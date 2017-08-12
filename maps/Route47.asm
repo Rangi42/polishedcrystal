@@ -20,8 +20,8 @@ Route47_MapEventHeader:
 .Signposts: db 4
 	signpost 23, 8, SIGNPOST_JUMPTEXT, Route47SealedCaveSignText
 	signpost 32, 36, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
-	signpost 33, 34, SIGNPOST_ITEM, Route47HiddenPearl
-	signpost 28, 12, SIGNPOST_ITEM, Route47HiddenStardust
+	signpost 33, 34, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
+	signpost 28, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
 .PersonEvents: db 15
 	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
@@ -116,12 +116,6 @@ TrainerGruntM26:
 GruntM26Script:
 	end_if_just_battled
 	jumptextfaceplayer GruntM26AfterText
-
-Route47HiddenPearl:
-	dwb EVENT_ROUTE_47_HIDDEN_PEARL, PEARL
-
-Route47HiddenStardust:
-	dwb EVENT_ROUTE_47_HIDDEN_STARDUST, STARDUST
 
 HikerDevinSeenText:
 	text "Battles are"

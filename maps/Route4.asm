@@ -13,7 +13,7 @@ Route4_MapEventHeader:
 
 .Signposts: db 2
 	signpost 7, 5, SIGNPOST_JUMPTEXT, MtMoonSignText
-	signpost 3, 18, SIGNPOST_ITEM, Route4HiddenUltraBall
+	signpost 3, 18, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 9
 	person_event SPRITE_YOUNGSTER, 3, 49, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
@@ -120,9 +120,6 @@ Route4TutorAquaTailScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_Route4Tutor2Taught
-
-Route4HiddenUltraBall:
-	dwb EVENT_ROUTE_4_HIDDEN_ULTRA_BALL, ULTRA_BALL
 
 YoungsterOliverSeenText:
 	text "Hi! What's your"

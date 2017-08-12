@@ -14,7 +14,7 @@ Route44_MapEventHeader:
 .Signposts: db 3
 	signpost 7, 53, SIGNPOST_JUMPTEXT, Route44Sign1Text
 	signpost 10, 6, SIGNPOST_JUMPTEXT, Route44Sign2Text
-	signpost 9, 32, SIGNPOST_ITEM, Route44HiddenElixer
+	signpost 9, 32, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
 
 .PersonEvents: db 12
 	person_event SPRITE_VETERAN_M, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
@@ -418,9 +418,6 @@ TrainerCooltrainermAllen:
 CooltrainermAllenScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x19de66
-
-Route44HiddenElixer:
-	dwb EVENT_ROUTE_44_HIDDEN_ELIXER, ELIXER
 
 FisherWilton1SeenText:
 	text "Aack! You made me"

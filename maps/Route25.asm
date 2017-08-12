@@ -11,7 +11,7 @@ Route25_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 5, 4, SIGNPOST_ITEM, Route25HiddenPotion
+	signpost 5, 4, SIGNPOST_ITEM + POTION, EVENT_ROUTE_25_HIDDEN_POTION
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
@@ -85,9 +85,6 @@ Route25SlowpokeScript:
 	waitbutton
 	closetext
 	end
-
-Route25HiddenPotion:
-	dwb EVENT_ROUTE_25_HIDDEN_POTION, POTION
 
 SchoolboyDudleySeenText:
 	text "Beat the six of us"
