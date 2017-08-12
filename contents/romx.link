@@ -21,9 +21,6 @@ ROMX $05
 	org $4000
 	"bank5"
 
-ROMX $06
-	org $4000
-
 ROMX $08
 	org $4000
 	"bank8"
@@ -250,10 +247,10 @@ ROMX $77
 	"bank77"
 	"New Bark Scripts 2"
 
-ROMX $7B
+ROMX $78
 	org $4000
 	"bank7B"
 
-ROMX $7E
+ROMX $79
 	org $4000
 	"bank7E"
