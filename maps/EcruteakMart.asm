@@ -15,7 +15,7 @@ EcruteakMart_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 3
-	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_ECRUTEAK, -1
+	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_ECRUTEAK
 	person_event SPRITE_SUPER_NERD, 2, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99c48, -1
 	person_event SPRITE_RICH_BOY, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99cd5, -1
 

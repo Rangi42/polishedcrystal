@@ -17,7 +17,7 @@ CeladonHotelRoom1_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_COOLTRAINER_M, 3, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1CooltrainerMText, -1
 	person_event SPRITE_LASS, 3, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1LassText, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, POKE_DOLL, 1, EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL
+	itemball_event 1, 3, POKE_DOLL, 1, EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL
 
 CeladonHotelRoom1CooltrainerMText:
 	text "Where I come from,"

@@ -17,7 +17,7 @@ SilverCavePokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalLanceScript
 
 .PersonEvents: db 3
-	person_event SPRITE_NURSE, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
+	pc_nurse_event 1, 5
 	person_event SPRITE_GRAMPS, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCavePokeCenterGrampsScript, -1
 	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_LEFT, 1, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilverCavePokeCenter1FGrannyText, -1
 
