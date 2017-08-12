@@ -356,19 +356,23 @@ DoMapTrigger: ; 968ec
 	cp c
 	jr nc, .nope
 
+	add a
 	ld e, a
 	ld d, 0
 	ld hl, wCurrMapTriggerHeaderPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 2
 	add hl, de
-endr
 
 	ld a, [MapScriptHeaderBank]
+	ld b, a
 	call GetFarHalfword
-	ld a, [MapScriptHeaderBank]
+	ld a, b
+	call GetFarByte
+	cp end_command
+	ret z ; boost efficiency of maps with dummy triggers
+	ld a, b
 	call CallScript
 
 	ld hl, ScriptFlags

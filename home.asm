@@ -1441,19 +1441,10 @@ PrintWinLossText:: ; 3718
 
 IsAPokemon:: ; 3741
 ; Return carry if species a is not a Pokemon.
-	and a
-	jr z, .NotAPokemon
-	cp EGG
-	jr z, .Pokemon
-	cp NUM_POKEMON + 1
-	jr c, .Pokemon
-
-.NotAPokemon:
-	scf
-	ret
-
-.Pokemon:
-	and a
+; Since every ID other than $0 and $ff is valid, we can simplify this function.
+	inc a
+	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
 	ret
 ; 3750
 

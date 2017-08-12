@@ -100,10 +100,6 @@ LoadMapPart:: ; 217a
 	rst Bankswitch
 
 	call LoadMetatiles
-	ld a, $60
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
 
 	ld a, BANK(_LoadMapPart)
 	rst Bankswitch
