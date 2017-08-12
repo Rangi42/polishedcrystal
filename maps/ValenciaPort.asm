@@ -17,7 +17,7 @@ ValenciaPort_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_SAILOR, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ValenciaPortSailorScript, -1
-	person_event SPRITE_FISHER, 10, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, ValenciaPortFisherText, -1
+	person_event SPRITE_FISHER, 10, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaPortFisherText, -1
 
 const_value set 2
 	const VALENCIAPORT_SAILOR

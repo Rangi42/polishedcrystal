@@ -508,18 +508,13 @@ TryObjectEvent: ; 969b5
 	ret
 
 .pointers:
-	dw .script     ; PERSONTYPE_SCRIPT
-	dw .itemball   ; PERSONTYPE_ITEMBALL
-	dw .tmhmball   ; PERSONTYPE_TMHMBALL
-	dw .trainer    ; PERSONTYPE_TRAINER
-	dw .trainer    ; PERSONTYPE_GENERICTRAINER
-	dw .pokemon    ; PERSONTYPE_POKEMON
-	dw .jumptext   ; PERSONTYPE_JUMPTEXT
-	dw .jumptextfp ; PERSONTYPE_JUMPTEXTFP
-	dw .jumpstd    ; PERSONTYPE_JUMPSTD
-	dw .mart       ; PERSONTYPE_MART
-	dw .trade      ; PERSONTYPE_TRADE
-	dw .fruittree  ; PERSONTYPE_FRUITTREE
+	dw .script   ; PERSONTYPE_SCRIPT
+	dw .itemball ; PERSONTYPE_ITEMBALL
+	dw .tmhmball ; PERSONTYPE_TMHMBALL
+	dw .trainer  ; PERSONTYPE_TRAINER
+	dw .trainer  ; PERSONTYPE_GENERICTRAINER
+	dw .pokemon  ; PERSONTYPE_POKEMON
+	dw .command  ; PERSONTYPE_COMMAND
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -559,37 +554,15 @@ TryObjectEvent: ; 969b5
 .pokemon:
 	; TODO
 
-.jumptext:
-	ld a, jumptext_command
-	jr .fill_temporary_script_buffer
-
-.jumptextfp:
-	ld a, jumptextfaceplayer_command
-	jr .fill_temporary_script_buffer
-
-.jumpstd:
-	ld a, jumpstd_command
-	jr .fill_temporary_script_buffer
-
-.mart:
-	ld a, pokemart_command
-	jr .fill_temporary_script_buffer
-
-.trade:
-	ld a, trade_command
-	jr .fill_temporary_script_buffer
-
-.fruittree:
-	ld a, fruittree_command
-.fill_temporary_script_buffer:
-	ld hl, MAPOBJECT_SCRIPT_POINTER
+.command:
+	ld hl, MAPOBJECT_RANGE
 	add hl, bc
 	ld de, wTemporaryScriptBuffer
-	ld [de], a
-	inc de
+rept 2
 	ld a, [hli]
 	ld [de], a
 	inc de
+endr
 	ld a, [hl]
 	ld [de], a
 	ld hl, wTemporaryScriptBuffer

@@ -28,17 +28,21 @@ PERSON_EVENT_NARG = _NARG
 	shift
 	dn \8, \9 ; color, persontype
 	shift
-	db \9 ; sight_range
-if \8 == PERSONTYPE_TMHMBALL || \8 == PERSONTYPE_JUMPSTD || \8 == PERSONTYPE_TRADE
-	shift 
-	db \9, 0 ; tmhmball contents || stdscript || trade id
+if \8 == PERSONTYPE_COMMAND
+	db \9_command ; command id
 else
-if PERSON_EVENT_NARG == 14 ; PERSONTYPE_ITEMBALL || PERSONTYPE_MART || PERSONTYPE_FRUITTREE
+	db \9 ; sight_range
+endc
+if \8 == PERSONTYPE_ITEMBALL
 	shift
-	db \9 ; itemball contents || mart type || tree id
+	db \9 ; itemball contents
 	shift
-	db \9 ; itemball quantity || mart id || fruit id
-else ; PERSONTYPE_SCRIPT || PERSONTYPE_JUMPTEXT || PERSONTYPE_JUMPTEXTFP || PERSONTYPE_TRAINER || PERSONTYPE_GENERICTRAINER
+	db \9 ; itemball quantity
+else
+if \8 == PERSONTYPE_TMHMBALL
+	shift 
+	db \9, 0 ; tmhmball contents
+else
 	shift
 	dw \9 ; pointer
 endc

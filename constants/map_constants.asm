@@ -889,12 +889,7 @@ EMOTE_OBJECT EQU 7
 	const PERSONTYPE_TRAINER        ; 3
 	const PERSONTYPE_GENERICTRAINER ; 4
 	const PERSONTYPE_POKEMON        ; 5
-	const PERSONTYPE_JUMPTEXT       ; 6
-	const PERSONTYPE_JUMPTEXTFP     ; 7
-	const PERSONTYPE_JUMPSTD        ; 8
-	const PERSONTYPE_MART           ; 9
-	const PERSONTYPE_TRADE          ; a
-	const PERSONTYPE_FRUITTREE      ; b
+	const PERSONTYPE_COMMAND        ; 6
 NUM_PERSONTYPES EQU const_value
 
 ; fruit trees

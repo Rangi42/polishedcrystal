@@ -16,7 +16,7 @@ UragaChannelWest_MapEventHeader:
 	signpost 11, 7, SIGNPOST_ITEM, UragaChannelWestHiddenBigPearl
 
 .PersonEvents: db 1
-	person_event SPRITE_ENGINEER, 9, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, UragaChannelWestEngineerText, -1
+	person_event SPRITE_ENGINEER, 9, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
 
 UragaChannelWestEngineerText:
 	text "The currents wash"

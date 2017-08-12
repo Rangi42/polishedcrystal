@@ -18,7 +18,7 @@ VermilionPortPassage_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_TEACHER, 23, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x7701d, -1
+	person_event SPRITE_TEACHER, 23, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7701d, -1
 
 UnknownText_0x7701d:
 	text "The Fast Ship"

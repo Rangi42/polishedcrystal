@@ -36,14 +36,14 @@ CeladonUniversity1F_MapEventHeader:
 	signpost 13, 27, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
 
 .PersonEvents: db 8
-	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FSuperNerdText, -1
-	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FLassText, -1
-	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FCooltrainermText, -1
-	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FYoungsterText, -1
-	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FChildText, -1
-	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FPokefanmText, -1
-	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FReceptionistText, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversity1FCooltrainerfText, -1
+	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FSuperNerdText, -1
+	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FLassText, -1
+	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainermText, -1
+	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FYoungsterText, -1
+	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FChildText, -1
+	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FPokefanmText, -1
+	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FReceptionistText, -1
+	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainerfText, -1
 
 CeladonUniversity1FSuperNerdText:
 	text "Some academics be-"

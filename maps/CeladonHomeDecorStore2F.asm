@@ -17,7 +17,7 @@ CeladonHomeDecorStore2F_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore2FClerkScript, -1
-	person_event SPRITE_POKEFAN_F, 1, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, CeladonHomeDecorStore2FPokefanfText, -1
+	person_event SPRITE_POKEFAN_F, 1, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore2FPokefanfText, -1
 
 CeladonHomeDecorStore2FClerkScript:
 	faceplayer

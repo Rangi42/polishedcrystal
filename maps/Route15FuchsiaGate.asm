@@ -18,7 +18,7 @@ Route15FuchsiaGate_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x1967a1, -1
+	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1967a1, -1
 
 UnknownText_0x1967a1:
 	text "You're working on"

@@ -17,7 +17,7 @@ PsychicInversHouse_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_YOUNGSTER, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
-	person_event SPRITE_HEX_MANIAC, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_JUMPTEXTFP, 0, PsychicInversHouseHexManiacText, -1
+	person_event SPRITE_HEX_MANIAC, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
 
 const_value set 2
 	const PSYCHICINVERSHOUSE_INVER

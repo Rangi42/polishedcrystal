@@ -19,7 +19,7 @@ CeladonUniversityDeansOffice_MapEventHeader:
 	signpost 1, 1, SIGNPOST_JUMPTEXT, CeladonUniversityDeansOfficeBookshelfText
 
 .PersonEvents: db 1
-	person_event SPRITE_DEAN, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityDeansOfficeDeanText, -1
+	person_event SPRITE_DEAN, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityDeansOfficeDeanText, -1
 
 CeladonUniversityDeansOfficeDeanText:
 	text "How-dean there,"

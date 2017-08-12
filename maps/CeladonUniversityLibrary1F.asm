@@ -30,14 +30,14 @@ CeladonUniversityLibrary1F_MapEventHeader:
 	signpost 7, 5, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FBookshelf12Text
 
 .PersonEvents: db 8
-	person_event SPRITE_LADY, 3, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary1FLadyText, -1
-	person_event SPRITE_GENTLEMAN, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary1FGentlemanText, -1
-	person_event SPRITE_COOLTRAINER_F, 5, 0, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary1FCooltrainerfText, -1
+	person_event SPRITE_LADY, 3, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FLadyText, -1
+	person_event SPRITE_GENTLEMAN, 3, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FGentlemanText, -1
+	person_event SPRITE_COOLTRAINER_F, 5, 0, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FCooltrainerfText, -1
 	person_event SPRITE_GAMEBOY_KID, 5, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FGameboyKidScript, -1
-	person_event SPRITE_POKEFAN_F, 8, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary1FPokefan_fText, -1
+	person_event SPRITE_POKEFAN_F, 8, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FPokefan_fText, -1
 	person_event SPRITE_COOLTRAINER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary1FCooltrainermScript, -1
-	person_event SPRITE_TEACHER, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, CeladonUniversityLibrary1FTeacherText, -1
-	person_event SPRITE_BOOK_UNOWN_R, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXT, 0, CeladonUniversityLibrary1FBookText, -1
+	person_event SPRITE_TEACHER, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FTeacherText, -1
+	person_event SPRITE_BOOK_UNOWN_R, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, CeladonUniversityLibrary1FBookText, -1
 
 CeladonUniversityLibrary1FLadyText:
 	text "This library is on"

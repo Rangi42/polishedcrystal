@@ -15,7 +15,7 @@ SaffronRichSpeechHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, SaffronRichSpeechHouseRichBoyText, -1
+	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronRichSpeechHouseRichBoyText, -1
 
 SaffronRichSpeechHouseRichBoyText:
 	text "Houses are expen-"

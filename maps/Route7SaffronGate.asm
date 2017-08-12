@@ -18,7 +18,7 @@ Route7SaffronGate_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x73518, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_JUMPTEXTFP, 0, Route7SaffronGateSilphEmployeeText, -1
+	person_event SPRITE_SILPH_EMPLOYEE, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
 
 OfficerScript_0x73518:
 	faceplayer

@@ -17,7 +17,7 @@ CeladonMansionRoof_MapEventHeader:
 	signpost 1, 6, SIGNPOST_LEFT, MapCeladonMansionRoofSignpost0Script
 
 .PersonEvents: db 1
-	person_event SPRITE_FISHER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x71a3f, -1
+	person_event SPRITE_FISHER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71a3f, -1
 
 MapCeladonMansionRoofSignpost0Script:
 	jumptext UnknownText_0x71aa1

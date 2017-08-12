@@ -19,7 +19,7 @@ OlivineLighthouse1F_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_SAILOR, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
-	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_JUMPTEXTFP, 0, UnknownText_0x5aec2, -1
+	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
 
 SailorScript_0x5ae67:
 	faceplayer

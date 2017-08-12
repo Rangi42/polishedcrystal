@@ -19,11 +19,11 @@ ShamoutiHotel1F_MapEventHeader:
 	signpost 0, 15, SIGNPOST_JUMPTEXT, ShamoutiHotelRestaurantSignText
 
 .PersonEvents: db 5
-	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiHotel1FReceptionistText, -1
+	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FReceptionistText, -1
 	person_event SPRITE_ARTIST, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiHotel1FCooltrainermText, -1
-	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiHotel1FLadyText, -1
-	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_JUMPTEXTFP, 0, ShamoutiHotel1FYoungsterText, -1
+	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FCooltrainermText, -1
+	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FLadyText, -1
+	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FYoungsterText, -1
 
 ShamoutiHotel1FRestaurantTrigger:
 	domaptrigger SHAMOUTI_HOTEL_RESTAURANT, $0
