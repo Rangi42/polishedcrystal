@@ -1,5 +1,13 @@
 # Credits
 
+Pokémon Polished Crystal would never have been finished without the help of many more people than just me. Please let me know if I've failed to credit anyone or if you don't want your work being used.
+
+> **Morimoto:** Actually, at that time we had very few programmers. That wasn't just the case for Gold and Silver but for Red and Green as well. There were only about four programmers.
+>
+> **Iwata:** That's really a tiny number. Making a game on that scale with so few programmers would be unthinkable these days.
+>
+> "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/3-Just-Being-President-Was-A-Waste-/3-Just-Being-President-Was-A-Waste--225951.html)"
+
 
 ## Code
 
@@ -64,6 +72,3 @@
 * Crystal_ for his in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks.
 * Tauwasser, comet, and other members of Skeetendo for help and advice.
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place.
-
-
-Please let me know if I've failed to credit anyone or if you don't want your work being used.

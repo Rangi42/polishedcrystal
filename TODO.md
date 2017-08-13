@@ -1,8 +1,8 @@
 # To Do
 
 > Of course, it is very difficult to make the game, so I hope people don't get their expectations up too high.
-
-– Shigeru Ohmori, "[Pokémon’s Developers Talk About Their Console RPG Debut On Switch](http://www.gameinformer.com/b/features/archive/2017/08/08/pokemon-s-developers-talk-about-their-console-rpg-debut-on-switch.aspx)"
+>
+> – Shigeru Ohmori, "[Pokémon's Developers Talk About Their Console RPG Debut On Switch](http://www.gameinformer.com/b/features/archive/2017/08/08/pokemon-s-developers-talk-about-their-console-rpg-debut-on-switch.aspx)"
 
 
 ## Missing content

@@ -2,6 +2,11 @@
 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
+> What's the point of going through all the trouble of the debug process if you're going to go and fiddle with the game afterwards…?
+>
+> — Satoru Iwata, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html)"
+
+
 * Add: Medicine and Berry pockets in the Bag.
 * Add: Store up to 20 phone numbers in Pokégear.
 * Add: Always keep the option to Teleport away from Indigo Plateau.
@@ -141,6 +146,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Vending machines have a 1/32 chance of giving an extra item.
 * Add: Cross whirlpools, don't remove them (like HGSS).
 * Add: Rename RageCandyBar to Cake of Rage.
+
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Pay Day pays 5 times the user's level, not 2.
