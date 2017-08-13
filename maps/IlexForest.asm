@@ -33,11 +33,11 @@ IlexForest_MapEventHeader:
 	person_event SPRITE_LASS, 26, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_IlexForestLass, EVENT_ILEX_FOREST_LASS
 	person_event SPRITE_CELEBI, 26, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_CELEBI
 	person_event SPRITE_LYRA, 25, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA
-	cuttree_event 27, 10, EVENT_ILEX_FOREST_CUT_TREE
 	person_event SPRITE_YOUNGSTER, 30, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
 	person_event SPRITE_ROCKER, 16, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestHeadbuttGuyScript, -1
-	itemball_event 34, 22, REVIVE, 1, EVENT_ILEX_FOREST_REVIVE
 	person_event SPRITE_BUG_CATCHER, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 0, TrainerBug_catcherWayne, -1
+	cuttree_event 27, 10, EVENT_ILEX_FOREST_CUT_TREE
+	itemball_event 34, 22, REVIVE, 1, EVENT_ILEX_FOREST_REVIVE
 	itemball_event 19, 11, X_ATTACK, 1, EVENT_ILEX_FOREST_X_ATTACK
 	itemball_event 17, 25, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
 	itemball_event 3, 29, MULCH, 1, EVENT_ILEX_FOREST_MULCH
@@ -133,8 +133,11 @@ IlexForestCharcoalApprenticeScript:
 	jumpopenedtext UnknownText_0x6f019
 
 IlexForestFarfetchdScript:
+	faceplayer
 	copybytetovar FarfetchdPosition
-	if_equal  1, .Position1
+	if_equal  0, .Position1
+	showcrytext Text_Kwaaaa, FARFETCH_D
+	copybytetovar FarfetchdPosition
 	if_equal  2, .Position2
 	if_equal  3, .Position3
 	if_equal  4, .Position4
@@ -155,216 +158,147 @@ IlexForestFarfetchdScript:
 	waitbutton
 	closetext
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos1_Pos2
+.NewPosition2:
 	moveperson ILEXFOREST_FARFETCHD, $11, $1b
+	writebyte 2
+.NewPosition:
 	disappear ILEXFOREST_FARFETCHD
 	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 2
+	copyvartobyte FarfetchdPosition
+.Position10:
 	end
 
 .Position2:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal DOWN, .Position2_Down
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos2_Pos3
+.NewPosition3:
 	moveperson ILEXFOREST_FARFETCHD, $16, $1a
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 3
-	end
+	writebyte 3
+	jump .NewPosition
 
 .Position2_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos2_Pos8
+.NewPosition8:
 	moveperson ILEXFOREST_FARFETCHD, $11, $1f
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 8
-	end
+	writebyte 8
+	jump .NewPosition
 
 .Position3:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal LEFT, .Position3_Left
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos3_Pos4
+.NewPosition4:
 	moveperson ILEXFOREST_FARFETCHD, $1f, $18
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 4
-	end
+	writebyte 4
+	jump .NewPosition
 
 .Position3_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos3_Pos2
-	moveperson ILEXFOREST_FARFETCHD, $11, $1b
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 2
-	end
+	jump .NewPosition2
 
 .Position4:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal UP, .Position4_Up
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos4_Pos5
+.NewPosition5:
 	moveperson ILEXFOREST_FARFETCHD, $1e, $21
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 5
-	end
+	writebyte 5
+	jump .NewPosition
 
 .Position4_Up:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos4_Pos3
-	moveperson ILEXFOREST_FARFETCHD, $16, $1a
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 3
-	end
+	jump .NewPosition3
 
 .Position5:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal UP, .Position5_Up
 	if_equal LEFT, .Position5_Left
 	if_equal RIGHT, .Position5_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos5_Pos6
+.NewPosition6:
 	moveperson ILEXFOREST_FARFETCHD, $1a, $25
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 6
-	end
+	writebyte 6
+	jump .NewPosition
 
 .Position5_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos5_Pos7
+.NewPosition7:
 	moveperson ILEXFOREST_FARFETCHD, $18, $21
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 7
-	end
+	writebyte 7
+	jump .NewPosition
 
 .Position5_Up:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos5_Pos4_Up
-	moveperson ILEXFOREST_FARFETCHD, $1f, $18
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 4
-	end
+	jump .NewPosition4
 
 .Position5_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos5_Pos4_Right
-	moveperson ILEXFOREST_FARFETCHD, $1f, $18
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 4
-	end
+	jump .NewPosition4
 
 .Position6:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal RIGHT, .Position6_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos6_Pos7
-	moveperson ILEXFOREST_FARFETCHD, $18, $21
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 7
-	end
+	jump .NewPosition7
 
 .Position6_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos6_Pos5
-	moveperson ILEXFOREST_FARFETCHD, $1e, $21
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 5
-	end
+	jump .NewPosition5
 
 .Position7:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal DOWN, .Position7_Down
 	if_equal LEFT, .Position7_Left
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos7_Pos8
-	moveperson ILEXFOREST_FARFETCHD, $11, $1f
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 8
-	end
+	jump .NewPosition8
 
 .Position7_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos7_Pos6
-	moveperson ILEXFOREST_FARFETCHD, $1a, $25
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 6
-	end
+	jump .NewPosition6
 
 .Position7_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos7_Pos5
-	moveperson ILEXFOREST_FARFETCHD, $1e, $21
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 5
-	end
+	jump .NewPosition5
 
 .Position8:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal UP, .Position8_Up
 	if_equal LEFT, .Position8_Left
 	if_equal RIGHT, .Position8_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos9
 	moveperson ILEXFOREST_FARFETCHD, $c, $25
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 9
-	end
+	writebyte 9
+	jump .NewPosition
 
 .Position8_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos7
-	moveperson ILEXFOREST_FARFETCHD, $18, $21
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 7
-	end
+	jump .NewPosition7
 
 .Position8_Up:
 .Position8_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos2
-	moveperson ILEXFOREST_FARFETCHD, $11, $1b
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 2
-	end
+	jump .NewPosition2
 
 .Position9:
-	scall .CryAndCheckFacing
+	checkcode VAR_FACING
 	if_equal DOWN, .Position9_Down
 	if_equal RIGHT, .Position9_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos9_Pos10
-	moveperson ILEXFOREST_FARFETCHD, $8, $1e
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 10
 	appear ILEXFOREST_BLACK_BELT
 	setevent EVENT_CHARCOAL_KILN_BOSS
 	setevent EVENT_HERDED_FARFETCHD
-	end
+	moveperson ILEXFOREST_FARFETCHD, $8, $1e
+	writebyte 10
+	jump .NewPosition
 
 .Position9_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos9_Pos8_Right
-	moveperson ILEXFOREST_FARFETCHD, $11, $1f
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 8
-	end
+	jump .NewPosition8
 
 .Position9_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos9_Pos8_Down
-	moveperson ILEXFOREST_FARFETCHD, $11, $1f
-	disappear ILEXFOREST_FARFETCHD
-	appear ILEXFOREST_FARFETCHD
-	loadvar FarfetchdPosition, 8
-	end
-
-.Position10:
-	faceplayer
-	showcrytext Text_Kwaaaa, FARFETCH_D
-	end
-
-.CryAndCheckFacing:
-	faceplayer
-	showcrytext Text_Kwaaaa, FARFETCH_D
-	checkcode VAR_FACING
-	end
+	jump .NewPosition8
 
 IlexForestFinishCelebiEventScript:
 	setevent EVENT_TIME_TRAVEL_FINISHED
@@ -372,7 +306,7 @@ IlexForestFinishCelebiEventScript:
 	dotrigger $0
 	pause 30
 	showemote EMOTE_SHOCK, ILEXFOREST_LYRA, 15
-	applymovement ILEXFOREST_LYRA, MovementData_LyraStepDown
+	applyonemovement ILEXFOREST_LYRA, slow_step_down
 	spriteface ILEXFOREST_LYRA, RIGHT
 	spriteface PLAYER, LEFT
 	opentext
@@ -382,7 +316,7 @@ IlexForestFinishCelebiEventScript:
 	waitbutton
 	closetext
 	follow ILEXFOREST_LYRA, PLAYER
-	applymovement ILEXFOREST_LYRA, MovementData_LyraStepUp
+	applyonemovement ILEXFOREST_LYRA, slow_step_up
 	stopfollow
 	spriteface PLAYER, UP
 	spriteface ILEXFOREST_LYRA, DOWN
@@ -543,7 +477,7 @@ MapIlexForestSignpost4Script:
 	showtext Text_CelebiDancedBeautifully
 	playsound SFX_JUMP_OVER_LEDGE
 	applymovement ILEXFOREST_CELEBI, MovementData_CelebiHop
-	applymovement PLAYER, MovementData_PlayerFollowCelebi
+	applyonemovement PLAYER, slow_step_down
 	waitsfx
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -587,6 +521,7 @@ MapIlexForestSignpost4Script:
 
 MovementData_Farfetchd_Pos1_Pos2:
 	big_step_up
+MovementData_Farfetched_Pos8_Pos2:
 	big_step_up
 	big_step_up
 	big_step_up
@@ -604,6 +539,8 @@ MovementData_Farfetchd_Pos2_Pos3:
 	big_step_down
 	step_end
 
+MovementData_Farfetchd_Pos4_Pos5:
+	big_step_down
 MovementData_Farfetchd_Pos2_Pos8:
 	big_step_down
 	big_step_down
@@ -613,7 +550,9 @@ MovementData_Farfetchd_Pos2_Pos8:
 	step_end
 
 MovementData_Farfetchd_Pos3_Pos4:
+MovementData_Farfetched_Pos7_Pos5:
 	big_step_right
+MovementData_Farfetched_Pos8_Pos7:
 	big_step_right
 	big_step_right
 	big_step_right
@@ -629,15 +568,6 @@ MovementData_Farfetchd_Pos3_Pos2:
 	big_step_left
 	step_end
 
-MovementData_Farfetchd_Pos4_Pos5:
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
-	step_end
-
 MovementData_Farfetchd_Pos4_Pos3:
 	big_step_left
 	jump_step_left
@@ -651,12 +581,6 @@ MovementData_Farfetchd_Pos5_Pos6:
 	big_step_down
 	big_step_down
 	big_step_down
-	big_step_left
-	big_step_left
-	big_step_left
-	big_step_left
-	step_end
-
 MovementData_Farfetchd_Pos5_Pos7:
 	big_step_left
 	big_step_left
@@ -737,15 +661,6 @@ MovementData_Farfetched_Pos7_Pos6:
 	big_step_right
 	step_end
 
-MovementData_Farfetched_Pos7_Pos5:
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	step_end
-
 MovementData_Farfetched_Pos8_Pos9:
 	big_step_down
 	big_step_left
@@ -754,21 +669,6 @@ MovementData_Farfetched_Pos8_Pos9:
 	big_step_down
 	big_step_down
 	big_step_down
-	step_end
-
-MovementData_Farfetched_Pos8_Pos7:
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	big_step_right
-	step_end
-
-MovementData_Farfetched_Pos8_Pos2:
-	big_step_up
-	big_step_up
-	big_step_up
-	big_step_up
 	step_end
 
 MovementData_Farfetched_Pos9_Pos10:
@@ -868,7 +768,6 @@ MovementData_CelebiDance:
 
 MovementData_CelebiHop:
 	jump_step_down
-MovementData_LyraStepUp:
 	slow_step_up
 	step_end
 
@@ -879,11 +778,6 @@ MovementData_CelebiFloat:
 	slow_step_up
 	slow_step_up
 	remove_fixed_facing
-	step_end
-
-MovementData_PlayerFollowCelebi:
-MovementData_LyraStepDown:
-	slow_step_down
 	step_end
 
 MovementData_PlayerStepBack:

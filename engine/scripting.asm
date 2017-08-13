@@ -2925,4 +2925,5 @@ Script_showcrytext:
 	call Script_textbox
 	call Script_writetext
 	call Script_cry
-	jr Script_waitendtext
+	call Script_waitbutton
+	jp Script_closetext
