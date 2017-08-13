@@ -125,7 +125,6 @@ SailorScript_0x751d0:
 
 WorriedGrandpaTriggerRight:
 	moveperson FASTSHIP1F_GENTLEMAN, $14, $6
-
 WorriedGrandpaTriggerLeft:
 	appear FASTSHIP1F_GENTLEMAN
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b

@@ -15,8 +15,8 @@ TeamRocketBaseB2F_MapEventHeader:
 	warp_def $e, $1b, 4, TEAM_ROCKET_BASE_B3F
 
 .XYTriggers: db 9
-	xy_trigger 0, $e, $5, LanceHealsScript1
-	xy_trigger 0, $d, $4, LanceHealsScript2
+	xy_trigger 0, $e, $5, LanceHealsScript
+	xy_trigger 0, $d, $4, LanceHealsScript
 	xy_trigger 1, $b, $e, UnknownScript_0x6cf95
 	xy_trigger 1, $b, $f, UnknownScript_0x6cf9c
 	xy_trigger 2, $c, $e, UnknownScript_0x6d075
@@ -170,14 +170,9 @@ UnknownScript_0x6d07a:
 	applymovement PLAYER, MovementData_0x6d278
 	end
 
-LanceHealsScript1:
-	spriteface PLAYER, UP
-	jump LanceHealsCommon
-
-LanceHealsScript2:
-	spriteface PLAYER, RIGHT
-	spriteface TEAMROCKETBASEB2F_LANCE, LEFT
-LanceHealsCommon:
+LanceHealsScript:
+	faceperson PLAYER, TEAMROCKETBASEB2F_LANCE
+	faceperson TEAMROCKETBASEB2F_LANCE, PLAYER
 	showtext LanceHealsText1
 	special FadeOutPalettes
 	playsound SFX_FULL_HEAL
@@ -339,13 +334,6 @@ UnknownScript_0x6d207:
 
 MovementData_0x6d212:
 	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_end
-
 MovementData_0x6d219:
 	step_right
 	step_right
@@ -392,9 +380,9 @@ MovementData_0x6d236:
 
 MovementData_0x6d23b:
 	fix_facing
-	db $39 ; movement
+	set_sliding
 	jump_step_right
-	db $38 ; movement
+	remove_sliding
 	remove_fixed_facing
 	step_end
 

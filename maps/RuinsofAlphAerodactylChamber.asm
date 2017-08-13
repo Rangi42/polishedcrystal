@@ -81,7 +81,7 @@ UnknownScript_0x58df7:
 	reloadmappart
 	playsound SFX_STRENGTH
 	earthquake 80
-	applymovement PLAYER, MovementData_0x58e4d
+	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
 	waitsfx
 	pause 20
@@ -94,6 +94,9 @@ MapRuinsofAlphAerodactylChamberSignpost3Script:
 	restoretypeface
 	end
 
+MapRuinsofAlphAerodactylChamberSignpost5Script:
+	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
+	iftrue_jumptext UnknownText_0x58ea2
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext
 	writetext UnknownText_0x58e4f
@@ -101,23 +104,6 @@ MapRuinsofAlphAerodactylChamberSignpost4Script:
 	special Special_DisplayUnownWords
 	closetext
 	end
-
-MapRuinsofAlphAerodactylChamberSignpost5Script:
-	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue UnknownScript_0x58e46
-	opentext
-	writetext UnknownText_0x58e4f
-	writebyte $1
-	special Special_DisplayUnownWords
-	closetext
-	end
-
-UnknownScript_0x58e46:
-	jumptext UnknownText_0x58ea2
-
-MovementData_0x58e4d:
-	db $59 ; movement
-	step_end
 
 UnknownText_0x58e4f:
 	text "Patterns appeared"

@@ -55,24 +55,15 @@ AzaleaTownFlypointCallback:
 
 AzaleaTownRivalBattleTrigger1:
 	moveperson AZALEATOWN_SILVER, $b, $b
-	spriteface PLAYER, RIGHT
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	appear AZALEATOWN_SILVER
-	applymovement AZALEATOWN_SILVER, AzaleaTownRivalBattleApproachMovement1
-	spriteface PLAYER, DOWN
-	jump AzaleaTownRivalBattleScript
-
 AzaleaTownRivalBattleTrigger2:
 	spriteface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	appear AZALEATOWN_SILVER
-	applymovement AZALEATOWN_SILVER, AzaleaTownRivalBattleApproachMovement2
-	spriteface PLAYER, UP
-AzaleaTownRivalBattleScript:
+	applymovement AZALEATOWN_SILVER, .ApproachMovement
+	faceperson AZALEATOWN_SILVER, PLAYER
+	faceperson PLAYER, AZALEATOWN_SILVER
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext .SeenText
 	setevent EVENT_RIVAL_AZALEA_TOWN
@@ -183,30 +174,19 @@ AzaleaTownRivalBattleScript:
 	line "distraction."
 	done
 
+.ApproachMovement:
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
+
 .ExitMovement:
 	step_left
 	step_left
 	step_left
-	step_end
-
-AzaleaTownRivalBattleApproachMovement1:
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	turn_head_up
-	step_end
-
-AzaleaTownRivalBattleApproachMovement2:
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	step_left
-	turn_head_down
 	step_end
 
 AzaleaTown_CelebiTrigger:

@@ -84,7 +84,7 @@ UnknownScript_0x58778:
 	reloadmappart
 	playsound SFX_STRENGTH
 	earthquake 80
-	applymovement PLAYER, MovementData_0x587fe
+	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
 	waitsfx
 	pause 20
@@ -92,12 +92,12 @@ UnknownScript_0x58778:
 	end
 
 ScientistScript_0x587a8:
-	faceplayer
-	opentext
 	checkcode VAR_UNOWNCOUNT
 	if_equal NUM_UNOWN, UnknownScript_0x587cf
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue UnknownScript_0x587c9
+	iftrue_jumptextfaceplayer UnknownText_0x5897c
+	faceplayer
+	opentext
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse UnknownScript_0x587c0
 	writetext UnknownText_0x589b8
@@ -109,11 +109,8 @@ UnknownScript_0x587c0:
 	spriteface LAST_TALKED, UP
 	end
 
-UnknownScript_0x587c9:
-	jumpopenedtext UnknownText_0x5897c
-
 UnknownScript_0x587cf:
-	jumpopenedtext UnknownText_0x594cb
+	jumptextfaceplayer UnknownText_0x594cb
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
@@ -121,6 +118,9 @@ MapRuinsofAlphKabutoChamberSignpost3Script:
 	restoretypeface
 	end
 
+MapRuinsofAlphKabutoChamberSignpost5Script:
+	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
+	iftrue_jumptext UnknownText_0x58afa
 MapRuinsofAlphKabutoChamberSignpost4Script:
 	opentext
 	writetext UnknownText_0x58aa7
@@ -128,23 +128,6 @@ MapRuinsofAlphKabutoChamberSignpost4Script:
 	special Special_DisplayUnownWords
 	closetext
 	end
-
-MapRuinsofAlphKabutoChamberSignpost5Script:
-	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue UnknownScript_0x587f7
-	opentext
-	writetext UnknownText_0x58aa7
-	writebyte $0
-	special Special_DisplayUnownWords
-	closetext
-	end
-
-UnknownScript_0x587f7:
-	jumptext UnknownText_0x58afa
-
-MovementData_0x587fe:
-	db $59 ; movement
-	step_end
 
 UnknownText_0x58800:
 	text "Welcome to this"

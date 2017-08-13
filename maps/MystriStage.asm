@@ -26,26 +26,15 @@ const_value set 2
 	const MYSTRISTAGE_CYNTHIA2
 	const MYSTRISTAGE_EGG
 
-MystriStageTrigger1Script:
-	spriteface PLAYER, UP
-	pause 10
-	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
-	pause 10
-	spriteface MYSTRISTAGE_CYNTHIA1, DOWN
-	jump MystriStageTriggerScript
-
 MystriStageTrigger2Script:
-	applymovement PLAYER, MystriStageMovementData_PlayerStepsUp
-	spriteface PLAYER, LEFT
+	applyonemovement PLAYER, step_up
+MystriStageTrigger1Script:
+	faceperson PLAYER, MYSTRISTAGE_CYNTHIA1
 	pause 10
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	pause 10
-	spriteface MYSTRISTAGE_CYNTHIA1, RIGHT
-	jump MystriStageTriggerScript
-
+	faceperson MYSTRISTAGE_CYNTHIA1, PLAYER
 MystriStageCynthiaSafeguardScript:
-	faceplayer
-MystriStageTriggerScript:
 	showtext MystriStageCynthiaIntroText
 	follow MYSTRISTAGE_CYNTHIA1, PLAYER
 	applymovement MYSTRISTAGE_CYNTHIA1, MystriStageMovementData_CynthiaStepsUp
@@ -72,10 +61,10 @@ MystriStageCynthiaContinueScript:
 	writetext MystriStageCynthiaIdeaText
 	waitbutton
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalse .NotYet
+	iffalse_jumpopenedtext MystriStageCynthiaNotNowText
 	writetext MystriStageCynthiaChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext MystriStageCynthiaNoText
 	writetext MystriStageCynthiaYesText
 	waitbutton
 	closetext
@@ -86,17 +75,9 @@ MystriStageCynthiaContinueScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CYNTHIA
 	opentext
-	jump MystriStageBeatCynthiaScript
-
-.NotYet:
-	jumpopenedtext MystriStageCynthiaNotNowText
-
-.Refused:
-	jumpopenedtext MystriStageCynthiaNoText
-
 MystriStageBeatCynthiaScript:
 	checkevent EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
-	iftrue .GotWiseGlasses
+	iftrue_jumpopenedtext MystriStageCynthiaFinalText
 	writetext MystriStageCynthiaItemText
 	waitbutton
 	verbosegiveitem WISE_GLASSES
@@ -139,9 +120,6 @@ MystriStageBeatCynthiaScript:
 	spriteface MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
 	jumptextfaceplayer MystriStageCynthiaEggText
-
-.GotWiseGlasses:
-	jumpopenedtext MystriStageCynthiaFinalText
 
 MystriStageEggScript:
 	checkcode VAR_PARTYCOUNT
@@ -344,10 +322,6 @@ MystriStageNoRoomText:
 	text "You don't have"
 	line "room for this!"
 	done
-
-MystriStageMovementData_PlayerStepsUp:
-	step_up
-	step_end
 
 MystriStageMovementData_CynthiaStepsUp:
 	step_up

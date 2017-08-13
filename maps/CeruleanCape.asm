@@ -12,8 +12,8 @@ CeruleanCape_MapEventHeader:
 	warp_def $1d, $2b, 1, DIM_CAVE_2F
 
 .XYTriggers: db 2
-	xy_trigger 1, $6, $6, UnknownScript_0x19eea0
-	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
+	xy_trigger 1, $6, $6, CeruleanCapeDateInterruptedTrigger1
+	xy_trigger 1, $7, $6, CeruleanCapeDateInterruptedTrigger2
 
 .Signposts: db 3
 	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
@@ -41,7 +41,7 @@ const_value set 2
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_MISTY_BOYFRIEND
 
-UnknownScript_0x19eea0:
+CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
@@ -56,15 +56,9 @@ UnknownScript_0x19eea0:
 	showtext UnknownText_0x19f006
 	spriteface PLAYER, DOWN
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
-	spriteface PLAYER, LEFT
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
-	disappear CERULEANCAPE_MISTY
-	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	dotrigger $0
-	special RestartMapMusic
-	end
+	jump CeruleanCapeDateFinishScript
 
-UnknownScript_0x19eee0:
+CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
@@ -79,6 +73,7 @@ UnknownScript_0x19eee0:
 	showtext UnknownText_0x19f006
 	spriteface PLAYER, UP
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
+CeruleanCapeDateFinishScript:
 	spriteface PLAYER, LEFT
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
 	disappear CERULEANCAPE_MISTY
@@ -402,24 +397,14 @@ TrainerFisherLeroy:
 	line "catch is Magikarp…"
 	done
 
-MovementData_0x19efe8:
-	big_step_down
-	step_end
-
 MovementData_0x19efea:
 	big_step_down
+MovementData_0x19efe8:
 	big_step_down
 	step_end
 
 MovementData_0x19efed:
 	step_up
-	step_up
-	step_up
-	step_left
-	step_left
-	step_left
-	step_end
-
 MovementData_0x19eff4:
 	step_up
 	step_up

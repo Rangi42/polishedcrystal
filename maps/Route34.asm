@@ -83,12 +83,13 @@ Route34RebattleBreederAndEggCheckCallback:
 	return
 
 Route34LyraTrigger1:
-	applymovement PLAYER, Route34MovementData_AdjustPlayer1
+	applyonemovement PLAYER, step_right
 	jump Route34LyraTrigger2
 
 Route34LyraTrigger3:
-	applymovement PLAYER, Route34MovementData_AdjustPlayer2
+	applyonemovement PLAYER, step_left
 Route34LyraTrigger2:
+	spriteface PLAYER, UP
 	special Special_FadeOutMusic
 	showtext Route34LyraText_Grandpa
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -102,7 +103,7 @@ Route34LyraTrigger2:
 	pause 15
 	spriteface ROUTE34_LYRA, DOWN
 	showtext Route34LyraGreetingText
-	applymovement PLAYER, Route34MovementData_PlayerApproachesLyra
+	applyonemovement PLAYER, step_up
 	pause 10
 	spriteface ROUTE34_LYRA, RIGHT
 	opentext
@@ -153,7 +154,7 @@ Route34LyraTrigger2:
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 .AfterBattle
 	showtext Route34LyraFollowMeText
-	applymovement ROUTE34_GRAMPS, Route34MovementData_GrampsEntersDayCare
+	applyonemovement ROUTE34_GRAMPS, slow_step_right
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_GRAMPS
 	follow ROUTE34_LYRA, PLAYER
@@ -161,7 +162,7 @@ Route34LyraTrigger2:
 	stopfollow
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_LYRA
-	applymovement PLAYER, Route34MovementData_PlayerEntersDayCare
+	applyonemovement PLAYER, step_right
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
 	dotrigger $0
@@ -181,7 +182,7 @@ DayCareManScript_Outside:
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
 	if_equal LEFT, .walk_around_player
-	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside
+	applyonemovement ROUTE34_GRAMPS, slow_step_right
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS
 .end_fail
@@ -667,18 +668,7 @@ TrainerCooltrainerfKate:
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up
-Route34MovementData_DayCareManWalksBackInside:
 	slow_step_right
-	step_end
-
-Route34MovementData_AdjustPlayer1:
-	step_right
-	turn_head_up
-	step_end
-
-Route34MovementData_AdjustPlayer2:
-	step_left
-	turn_head_up
 	step_end
 
 Route34MovementData_LyraComesDown:
@@ -688,17 +678,8 @@ Route34MovementData_LyraComesDown:
 	step_right
 	step_end
 
-Route34MovementData_PlayerApproachesLyra:
-	step_up
-	step_end
-
-Route34MovementData_GrampsEntersDayCare:
-	slow_step_right
-	step_end
-
 Route34MovementData_LyraEntersDayCare:
 	step_right
-Route34MovementData_PlayerEntersDayCare:
 	step_right
 	step_end
 

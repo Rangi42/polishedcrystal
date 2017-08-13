@@ -121,7 +121,6 @@ NewBarkTown_LyraFinalTrigger3:
 
 NewBarkTown_LyraFinalTrigger4:
 	moveperson NEWBARKTOWN_LYRA, $e, $e
-
 NewBarkTown_LyraFinalTrigger:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -191,9 +190,15 @@ NewBarkTownSilverScript:
 	applyonemovement NEWBARKTOWN_SILVER, step_right
 	end
 
+Movement_TeacherRunsToYou1_NBT:
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
+
 Movement_TeacherRunsToYou2_NBT:
 	step_left
-Movement_TeacherRunsToYou1_NBT:
 	step_left
 	step_left
 	step_left

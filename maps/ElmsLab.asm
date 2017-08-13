@@ -646,8 +646,7 @@ AideScript_AfterTheft:
 	jumpopenedtext AideText_AfterTheft
 
 MeetCopScript2:
-	applymovement PLAYER, MeetCopScript2_StepLeft
-
+	applyonemovement PLAYER, step_left
 MeetCopScript:
 	applymovement PLAYER, MeetCopScript_WalkUp
 CopScript:
@@ -781,10 +780,6 @@ LyraRunsInLessMovement:
 LyraStepsAsideMovement:
 	step_left
 	turn_head_right
-	step_end
-
-MeetCopScript2_StepLeft:
-	step_left
 	step_end
 
 MeetCopScript_WalkUp:

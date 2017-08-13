@@ -53,8 +53,6 @@ UnknownScript_0x76751:
 	appear FASTSHIPB1F_SAILOR2
 	pause 5
 	disappear FASTSHIPB1F_SAILOR1
-	end
-
 UnknownScript_0x76766:
 	end
 

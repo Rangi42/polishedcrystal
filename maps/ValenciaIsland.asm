@@ -39,13 +39,9 @@ ValenciaIslandCooltrainermText:
 
 ValenciaIslandYoungsterScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Female
-	jumptextfaceplayer .Text1
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
 
-.Female
-	jumptextfaceplayer .Text2
-
-.Text1:
 	text "Prof.Ivy is smokin'"
 	line "hot, don't you"
 	cont "think?"
@@ -53,8 +49,8 @@ ValenciaIslandYoungsterScript:
 
 .Text2:
 	text "You may be cute,"
-	text "but Prof.Ivy is"
-	line "smokin' hot!"
+	line "but Prof.Ivy is"
+	cont "smokin' hot!"
 	done
 
 ValenciaIslandSignText:

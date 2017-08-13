@@ -205,9 +205,9 @@ MovementData_0x1884e8:
 
 MovementData_0x1884eb:
 	fix_facing
-	db $39 ; movement
+	set_sliding
 	jump_step_up
-	db $38 ; movement
+	remove_sliding
 	remove_fixed_facing
 	step_sleep_8
 	step_sleep_8

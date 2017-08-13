@@ -51,7 +51,7 @@ UnknownScript_0x1a0873:
 UnknownScript_0x1a0881:
 	spriteface ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a69
+	applyonemovement ROUTE27_FISHER, step_left
 UnknownScript_0x1a088c:
 	spriteface PLAYER, RIGHT
 	opentext
@@ -438,10 +438,6 @@ CooltrainerfMeganScript:
 
 MovementData_0x1a0a66:
 	step_left
-	step_left
-	step_end
-
-MovementData_0x1a0a69:
 	step_left
 	step_end
 

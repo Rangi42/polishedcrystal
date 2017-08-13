@@ -191,16 +191,10 @@ ProfIvyScript:
 	done
 
 IvysLabHopeScript:
-	faceplayer
-	opentext
 	checkevent EVENT_HEALED_NIDORINO
-	iftrue .HealedNidorino
-	jumpopenedtext .Text1
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
 
-.HealedNidorino:
-	jumpopenedtext .Text2
-
-.Text1:
 	text "Hope: Prof.Ivy"
 	line "takes care of the"
 
@@ -226,19 +220,18 @@ IvysLabNidorinoScript:
 	writebyte NIDORINO
 	special PlaySlowCry
 	buttonsound
-	jumpopenedtext .WeakText
+	thisopenedtext
 
-.Healed:
-	showcrytext IvysLabNidorinoText, NIDORINO
-	end
+	text "Its cry is weak…"
+	done
 
 .WeakCry:
 	text "Nidorino: Gyun…"
 	done
 
-.WeakText:
-	text "Its cry is weak…"
-	done
+.Healed:
+	showcrytext IvysLabNidorinoText, NIDORINO
+	end
 
 IvysLabNidorinoText:
 	text "Nidorino: Gyun!"

@@ -25,7 +25,7 @@ RuinsofAlphOutside_MapEventHeader:
 
 .XYTriggers: db 2
 	xy_trigger 1, $14, $d, UnknownScript_0x58031
-	xy_trigger 1, $15, $c, UnknownScript_0x5803a
+	xy_trigger 1, $15, $c, UnknownScript_0x58031
 
 .Signposts: db 5
 	signpost 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58325
@@ -100,18 +100,9 @@ UnknownScript_0x5802c:
 	return
 
 UnknownScript_0x58031:
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST1, UP
-	spriteface PLAYER, DOWN
-	jump UnknownScript_0x58044
-
-UnknownScript_0x5803a:
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST1, LEFT
-	spriteface PLAYER, RIGHT
-	jump UnknownScript_0x58044
-
+	faceperson RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
+	faceperson PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
 ScientistScript_0x58043:
-	faceplayer
-UnknownScript_0x58044:
 	showtext UnknownText_0x580c7
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
