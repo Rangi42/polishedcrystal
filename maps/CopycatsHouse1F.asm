@@ -18,7 +18,7 @@ CopycatsHouse1F_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CopycatsHouse1FPokefanMText, -1
 	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CopycatsHouse1FPokefanFScript, -1
-	person_event SPRITE_BLISSEY, 5, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CopycatsHouse1FBlisseyScript, -1
+	person_event SPRITE_BLISSEY, 5, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, BLISSEY, CopycatsHouse1FBlisseyText, -1
 
 CopycatsHouse1FPokefanMText:
 	text "My daughter likes"
@@ -55,14 +55,6 @@ CopycatsHouse1FPokefanFScript:
 	cont "better at mimicry…"
 	done
 
-CopycatsHouse1FBlisseyScript:
-	opentext
-	writetext .Text
-	cry BLISSEY
-	waitbutton
-	closetext
-	end
-
-.Text:
+CopycatsHouse1FBlisseyText:
 	text "Blissey: Bliisii!"
 	done

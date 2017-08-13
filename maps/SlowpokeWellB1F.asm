@@ -21,7 +21,7 @@ SlowpokeWellB1F_MapEventHeader:
 	person_event SPRITE_ROCKET_GIRL, 4, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_KURT, 14, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5a6b5, EVENT_SLOWPOKE_WELL_KURT
 	person_event SPRITE_SLOWPOKE, 4, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a681, EVENT_SLOWPOKE_WELL_SLOWPOKES
-	person_event SPRITE_SLOWPOKE, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a695, EVENT_SLOWPOKE_WELL_SLOWPOKES
+	person_event SPRITE_SLOWPOKE, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, SLOWPOKE, UnknownText_0x5ac61, EVENT_SLOWPOKE_WELL_SLOWPOKES
 	strengthboulder_event 2, 3
 	itemball_event 3, 10, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
@@ -95,19 +95,7 @@ SlowpokeScript_0x5a681:
 	cry SLOWPOKE
 	writetext UnknownText_0x5abcb
 	yesorno
-	iftrue UnknownScript_0x5a68f
-	closetext
-	end
-
-UnknownScript_0x5a68f:
-	jumpopenedtext UnknownText_0x5ac09
-
-SlowpokeScript_0x5a695:
-	faceplayer
-	opentext
-	writetext UnknownText_0x5ac61
-	cry SLOWPOKE
-	waitbutton
+	iftrue_jumpopenedtext UnknownText_0x5ac09
 	closetext
 	end
 

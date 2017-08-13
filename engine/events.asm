@@ -546,7 +546,25 @@ TryObjectEvent: ; 969b5
 	ret
 
 .pokemon:
-	; TODO
+	ld hl, MAPOBJECT_RANGE
+	add hl, bc
+	ld a, [hli]
+	ld [ScriptVar], a
+	ld de, wTemporaryScriptBuffer
+	ld a, showcrytext_command
+	ld [de], a
+	inc de
+rept 2
+	ld a, [hli]
+	ld [de], a
+	inc de
+endr
+	xor a
+	ld [de], a
+	inc de
+	ld a, end_command
+	ld [de], a
+	jr .callTemporaryScriptBuffer
 
 .command:
 	ld hl, MAPOBJECT_RANGE
@@ -559,6 +577,7 @@ rept 2
 endr
 	ld a, [hl]
 	ld [de], a
+.callTemporaryScriptBuffer:
 	ld hl, wTemporaryScriptBuffer
 	ld a, [MapScriptHeaderBank]
 	jp CallScript

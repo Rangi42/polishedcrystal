@@ -21,7 +21,7 @@ Route34IlexForestGate_MapEventHeader:
 .PersonEvents: db 4
 	person_event SPRITE_TEACHER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
 	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
-	person_event SPRITE_HERACROSS, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, IlexGateHeracross, -1
+	person_event SPRITE_HERACROSS, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, HERACROSS, UnknownText_0x62e83, -1
 	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62e97, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 
 const_value set 2
@@ -72,14 +72,6 @@ UnknownScript_0x62d7e:
 UnknownScript_0x62d84:
 	writetext UnknownText_0x62e41
 	buttonsound
-	closetext
-	end
-
-IlexGateHeracross:
-	opentext
-	writetext UnknownText_0x62e83
-	cry HERACROSS
-	waitbutton
 	closetext
 	end
 

@@ -27,7 +27,7 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	pc_nurse_event 7, 9
 	mart_clerk_event 9, 1, MARTTYPE_STANDARD, MART_INDIGO_PLATEAU
 	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
-	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IndigoPlateauAbraScript, EVENT_TELEPORT_GUY
+	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
 	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
 const_value set 2
@@ -595,15 +595,7 @@ IndigoPlateauTeleportGuyScript:
 	line "of luck to you!"
 	done
 
-IndigoPlateauAbraScript:
-	opentext
-	writetext .Text
-	cry ABRA
-	waitbutton
-	closetext
-	end
-
-.Text:
+IndigoPlateauAbraText:
 	text "Abra: Aabra…"
 	done
 

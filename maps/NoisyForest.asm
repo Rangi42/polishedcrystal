@@ -297,11 +297,7 @@ NoisyForestChildText:
 	done
 
 NoisyForestPikabluScript:
-	opentext
-	writetext .PikabluText
-	cry MARILL
-	waitbutton
-	closetext
+	showcrytext .PikabluText, MARILL
 	disappear NOISYFOREST_YOUNGSTER
 	moveperson NOISYFOREST_YOUNGSTER, 19, 36
 	appear NOISYFOREST_YOUNGSTER

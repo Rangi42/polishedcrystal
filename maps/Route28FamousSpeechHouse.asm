@@ -16,7 +16,7 @@ Route28FamousSpeechHouse_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Celebrity, -1
-	person_event SPRITE_SKARMORY, 5, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CelebritysSkarmory, -1
+	person_event SPRITE_SKARMORY, 5, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SKARMORY, CelebritysSkarmoryText, -1
 
 Celebrity:
 	faceplayer
@@ -31,14 +31,6 @@ Celebrity:
 	end
 .AlreadyGotItem:
 	jumpopenedtext CelebrityText2
-
-CelebritysSkarmory:
-	opentext
-	writetext CelebritysSkarmoryText
-	cry SKARMORY
-	waitbutton
-	closetext
-	end
 
 CelebrityText1:
 	text "Oh, dear."

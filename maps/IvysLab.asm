@@ -219,9 +219,9 @@ IvysLabHopeScript:
 	done
 
 IvysLabNidorinoScript:
-	opentext
 	checkevent EVENT_HEALED_NIDORINO
 	iftrue .Healed
+	opentext
 	writetext .WeakCry
 	writebyte NIDORINO
 	special PlaySlowCry
@@ -229,10 +229,7 @@ IvysLabNidorinoScript:
 	jumpopenedtext .WeakText
 
 .Healed:
-	writetext IvysLabNidorinoText
-	cry NIDORINO
-	waitbutton
-	closetext
+	showcrytext IvysLabNidorinoText, NIDORINO
 	end
 
 .WeakCry:

@@ -41,7 +41,7 @@ CeladonCity_MapEventHeader:
 .PersonEvents: db 13
 	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
 	person_event SPRITE_FISHER, 11, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9f7d, -1
-	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonCityPoliwrath, -1
+	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, POLIWRATH, CeladonCityPoliwrathText, -1
 	person_event SPRITE_TEACHER, 24, 24, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9fde, -1
 	person_event SPRITE_GRAMPS, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa043, -1
 	person_event SPRITE_GRAMPS, 31, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa0dc, -1
@@ -86,14 +86,6 @@ CeladonCityTutorSwaggerScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_CeladonCityTutorTaught
-
-CeladonCityPoliwrath:
-	opentext
-	writetext CeladonCityPoliwrathText
-	cry POLIWRATH
-	waitbutton
-	closetext
-	end
 
 CeladonCityRichBoyText:
 	text "Is my suit not"

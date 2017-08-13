@@ -22,36 +22,16 @@ CeladonMansion1F_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonMansionManagerText, -1
-	person_event SPRITE_MEOWTH, 6, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonMansion1FMeowth, -1
-	person_event SPRITE_CLEFAIRY, 4, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonMansion1FClefairy, -1
-	person_event SPRITE_NIDORAN_F, 4, 4, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonMansion1FNidoranF, -1
-
-CeladonMansion1FMeowth:
-	opentext
-	writetext CeladonMansion1FMeowthText
-	cry MEOWTH
-	waitbutton
-	closetext
-	end
-
-CeladonMansion1FClefairy:
-	opentext
-	writetext CeladonMansion1FClefairyText
-	cry CLEFAIRY
-	waitbutton
-	closetext
-	end
-
-CeladonMansion1FNidoranF:
-	opentext
-	writetext CeladonMansion1FNidoranFText
-	cry NIDORAN_F
-	waitbutton
-	closetext
-	end
+	person_event SPRITE_MEOWTH, 6, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MEOWTH, CeladonMansion1FMeowthText, -1
+	person_event SPRITE_CLEFAIRY, 4, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, CLEFAIRY, CeladonMansion1FClefairyText, -1
+	person_event SPRITE_NIDORAN_F, 4, 4, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, NIDORAN_F, CeladonMansion1FNidoranFText, -1
 
 CeladonMansionManagersSuiteSign:
-	jumptext CeladonMansionManagersSuiteSignText
+	thistext
+
+	text "Celadon Mansion"
+	line "Manager's Suite"
+	done
 
 CeladonMansionManagerText:
 	text "My dear #mon"
@@ -76,9 +56,4 @@ CeladonMansion1FClefairyText:
 CeladonMansion1FNidoranFText:
 	text "Nidoran: Kya"
 	line "kyaoo!"
-	done
-
-CeladonMansionManagersSuiteSignText:
-	text "Celadon Mansion"
-	line "Manager's Suite"
 	done

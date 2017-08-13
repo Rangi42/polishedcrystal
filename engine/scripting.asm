@@ -253,6 +253,7 @@ ScriptCommandTable:
 	dw Script_applyonemovement           ; be
 	dw Script_iftrue_endtext             ; bf
 	dw Script_iffalse_endtext            ; c0
+	dw Script_showcrytext                ; c1
 
 StartScript:
 	ld hl, ScriptFlags
@@ -2598,6 +2599,8 @@ Script_refreshscreen:
 	jp RefreshScreen
 
 Script_showtextfaceplayer:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
 	call Script_faceplayer
 ; fallthrough
 
@@ -2911,3 +2914,13 @@ Script_iffalse_endtext:
 _Do_closetext_end:
 	call Script_closetext
 	jp Script_end
+
+Script_showcrytext:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+;     cry_id (SingleByteParam)
+	call Script_textbox
+	call Script_writetext
+	call Script_cry
+	call Script_waitbutton
+	jp Script_closetext

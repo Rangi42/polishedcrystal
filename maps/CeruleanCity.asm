@@ -36,7 +36,7 @@ CeruleanCity_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	person_event SPRITE_COOLTRAINER_M, 26, 30, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
 	person_event SPRITE_SUPER_NERD, 15, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
-	person_event SPRITE_SLOWBRO, 24, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeruleanCitySlowbro, -1
+	person_event SPRITE_SLOWBRO, 24, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWBRO, CeruleanCitySlowbroText, -1
 	person_event SPRITE_FISHER, 22, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
 	person_event SPRITE_COOLTRAINER_M, 14, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
@@ -59,23 +59,11 @@ CooltrainerMScript_0x184009:
 UnknownScript_0x184017:
 	jumpopenedtext UnknownText_0x184144
 
-CeruleanCitySlowbro:
-	opentext
-	writetext CeruleanCitySlowbroText
-	cry SLOWBRO
-	waitbutton
-	closetext
-	end
-
 CooltrainerFScript_0x18402a:
 	showtextfaceplayer UnknownText_0x1841fa
 	spriteface CERULEANCITY_COOLTRAINER_F, LEFT
 	showtext UnknownText_0x184229
-	opentext
-	writetext CeruleanCitySlowbroText
-	cry SLOWBRO
-	waitbutton
-	closetext
+	showcrytext CeruleanCitySlowbroText, SLOWBRO
 	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:

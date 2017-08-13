@@ -46,20 +46,11 @@ EcruteakCity_MapEventHeader:
 	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a43cb, EVENT_ECRUTEAK_CITY_GRAMPS
 	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCityHexManiacText, -1
 	person_event SPRITE_SIGHTSEER_M, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
-	person_event SPRITE_SMEARGLE, 15, 23, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCitySmeargleScript, -1
+	person_event SPRITE_SMEARGLE, 15, 23, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SMEARGLE, EcruteakCitySmeargleText, -1
 
 EcruteakCityFlyPoint:
 	setflag ENGINE_FLYPOINT_ECRUTEAK
 	return
-
-EcruteakCitySmeargleScript:
-	faceplayer
-	opentext
-	writetext EcruteakCitySmeargleText
-	cry SMEARGLE
-	waitbutton
-	closetext
-	end
 
 LassScript_0x1a4015:
 	faceplayer

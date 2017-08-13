@@ -106,8 +106,8 @@ LakeofRageEngineerScript:
 GyaradosScript_0x70063:
 	opentext
 	writetext UnknownText_0x703cb
-	pause 15
 	cry GYARADOS
+	pause 15
 	closetext
 	loadwildmon GYARADOS, 35
 	writecode VAR_BATTLETYPE, BATTLETYPE_SHINY

@@ -25,7 +25,7 @@ GoldenrodDeptStoreB1F_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 10, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d7cb, -1
 	person_event SPRITE_BLACK_BELT, 8, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d82c, -1
 	person_event SPRITE_BLACK_BELT, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d875, -1
-	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MachokeScript_0x7d7b9, -1
+	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, MACHOKE, UnknownText_0x7d8bb, -1
 
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY
@@ -55,14 +55,6 @@ UnknownScript_0x7d791:
 UnknownScript_0x7d7ac:
 	clearevent EVENT_WAREHOUSE_BLOCKED_OFF
 	return
-
-MachokeScript_0x7d7b9:
-	opentext
-	writetext UnknownText_0x7d8bb
-	cry MACHOKE
-	waitbutton
-	closetext
-	end
 
 UnknownText_0x7d7cb:
 	text "Hey, kid! You're"

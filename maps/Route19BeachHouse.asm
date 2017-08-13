@@ -125,11 +125,7 @@ Route19BeachHouseVictorScript:
 
 Route19BeachHouseSurfingPikachuScript:
 	faceplayer
-	opentext
-	writetext .Text
-	cry PIKACHU
-	waitbutton
-	closetext
+	showcrytext .Text, PIKACHU
 	end
 
 .Text:

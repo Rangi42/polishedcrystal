@@ -28,7 +28,7 @@ NationalPark_MapEventHeader:
 	person_event SPRITE_TWIN, 41, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 0, TrainerSchoolgirlEliza, -1
 	person_event SPRITE_YOUNGSTER, 41, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerSchoolboyJohnny, -1
 	person_event SPRITE_TEACHER, 41, 19, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c3bc, -1
-	person_event SPRITE_PERSIAN, 40, 28, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NationalParkPersian, -1
+	person_event SPRITE_PERSIAN, 40, 28, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, PERSIAN, NationalParkPersianText, -1
 	person_event SPRITE_YOUNGSTER, 23, 29, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
 	person_event SPRITE_POKEFAN_F, 29, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
 	person_event SPRITE_POKEFAN_M, 9, 18, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
@@ -74,15 +74,6 @@ TrainerSchoolboyJohnny:
 SchoolboyJohnnyScript:
 	end_if_just_battled
 	jumptextfaceplayer SchoolboyJohnnyAfterText
-
-NationalParkPersian:
-	faceplayer
-	opentext
-	writetext NationalParkPersianText
-	cry PERSIAN
-	waitbutton
-	closetext
-	end
 
 GameboyKidScript_0x5c037:
 	showtextfaceplayer UnknownText_0x5c42a

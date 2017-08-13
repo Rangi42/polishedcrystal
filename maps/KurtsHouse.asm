@@ -27,7 +27,7 @@ KurtsHouse_MapEventHeader:
 	person_event SPRITE_TWIN, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
 	person_event SPRITE_KURT, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
 	person_event SPRITE_TWIN, 4, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	person_event SPRITE_SLOWPOKE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsHouseSlowpoke, EVENT_KURTS_HOUSE_SLOWPOKE
+	person_event SPRITE_SLOWPOKE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
 const_value set 2
 	const KURTSHOUSE_KURT1
@@ -398,15 +398,6 @@ KurtsGranddaughter2Subscript:
 
 KurtsGranddaughterFunScript:
 	jumptext KurtsGranddaughterFunText
-
-KurtsHouseSlowpoke:
-	faceplayer
-	opentext
-	writetext KurtsHouseSlowpokeText
-	cry SLOWPOKE
-	waitbutton
-	closetext
-	end
 
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL

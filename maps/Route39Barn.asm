@@ -56,9 +56,9 @@ TwinScript_0x9cc90:
 	end
 
 MooMoo:
-	opentext
 	checkevent EVENT_HEALED_MOOMOO
 	iftrue .HappyCow
+	opentext
 	writetext Text_WeakMoo
 	writebyte MILTANK
 	special PlaySlowCry
@@ -149,10 +149,7 @@ MooMoo:
 	jumpopenedtext Text_RefusedToGiveBerry
 
 .HappyCow:
-	writetext UnknownText_0x9cd92
-	cry MILTANK
-	waitbutton
-	closetext
+	showcrytext UnknownText_0x9cd92, MILTANK
 	end
 
 Text_MoomooIsSick:

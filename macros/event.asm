@@ -1194,3 +1194,10 @@ iftrue_endtext: macro
 iffalse_endtext: macro
 	db iffalse_endtext_command
 	endm
+
+	enum showcrytext_command
+showcrytext: macro
+	db showcrytext_command
+	dw \1 ; text_pointer
+	db \2 ; cry_id
+	endm

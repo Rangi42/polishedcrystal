@@ -357,20 +357,12 @@ IlexForestFarfetchdScript:
 
 .Position10:
 	faceplayer
-	opentext
-	writetext Text_Kwaaaa
-	cry FARFETCH_D
-	waitbutton
-	closetext
+	showcrytext Text_Kwaaaa, FARFETCH_D
 	end
 
 .CryAndCheckFacing:
 	faceplayer
-	opentext
-	writetext Text_Kwaaaa
-	cry FARFETCH_D
-	waitbutton
-	closetext
+	showcrytext Text_Kwaaaa, FARFETCH_D
 	checkcode VAR_FACING
 	end
 

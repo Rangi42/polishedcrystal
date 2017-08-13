@@ -92,10 +92,10 @@ UnknownScript_0x60c25:
 	jumptext UnknownText_0x60ef1
 
 MonsterScript_0x60c3a:
-	faceplayer
-	opentext
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue UnknownScript_0x60c51
+	faceplayer
+	opentext
 	writetext UnknownText_0x60f03
 	writebyte AMPHAROS
 	special PlaySlowCry
@@ -103,10 +103,7 @@ MonsterScript_0x60c3a:
 	jumpopenedtext UnknownText_0x60f19
 
 UnknownScript_0x60c51:
-	writetext UnknownText_0x60f3d
-	cry AMPHAROS
-	waitbutton
-	closetext
+	showcrytext UnknownText_0x60f3d, AMPHAROS
 	special FadeOutPalettes
 	special FadeInPalettes
 	special FadeOutPalettes

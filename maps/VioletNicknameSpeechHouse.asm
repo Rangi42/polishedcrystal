@@ -22,11 +22,7 @@ VioletNicknameSpeechHouse_MapEventHeader:
 
 EeveeScript_0x693ef:
 	faceplayer
-	opentext
-	writetext UnknownText_0x6947c
-	cry EEVEE
-	waitbutton
-	closetext
+	showcrytext UnknownText_0x6947c, EEVEE
 	end
 
 UnknownText_0x693fa:

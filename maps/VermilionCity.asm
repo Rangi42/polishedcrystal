@@ -152,11 +152,7 @@ LawrenceDepartRightMovementData:
 	step_end
 
 VermilionMachop:
-	opentext
-	writetext VermilionMachopText1
-	cry MACHOP
-	waitbutton
-	closetext
+	showcrytext VermilionMachopText1, MACHOP
 	earthquake 30
 	jumptext VermilionMachopText2
 

@@ -31,7 +31,7 @@ PERSON_EVENT_NARG = _NARG
 if \8 == PERSONTYPE_COMMAND
 	db \9_command ; command id
 else
-	db \9 ; sight_range
+	db \9 ; sight_range || cry id
 endc
 if PERSON_EVENT_NARG == 14
 	shift

@@ -46,6 +46,8 @@ DarkCaveVioletEntranceFalknerTrigger:
 	writetext DarkCaveVioletEntranceFalknerAttackText
 	pause 30
 	closetext
+	cry PIDGEOTTO
+	waitsfx
 	playsound SFX_TACKLE
 	applymovement DARKCAVEVIOLETENTRANCE_PIDGEOTTO, DarkCaveVioletEntranceMovementData_PidgeottoAttack
 	waitsfx
