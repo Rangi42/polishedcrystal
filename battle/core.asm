@@ -5324,16 +5324,6 @@ CheckRunSpeed:
 	inc a
 	ld [wNumFleeAttempts], a
 
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
-
-	ld a, [de]
-	ld b, a
-	inc de
-	ld a, [de]
-	ld e, a
-	ld d, b
 	; hl = player speed
 	; de = enemy speed
 
