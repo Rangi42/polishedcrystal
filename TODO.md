@@ -123,10 +123,10 @@ Low priority:
 ### Optimizations
 
 * Finish and merge the optimizations branch
-* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
+* Compress text with a Huffman tree (potentially save ~5.6% space)
+* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps (potentially save ~2.7% space)
 * Optimize battle command engine, including parameterized commands
-* Look for `:\n\tclosetext\n\tend` and use `iftrue_endtext` or `iffalse_endtext` instead
-* PERSONTYPE_GENERICTRAINER
+* Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
 
 
 ## Postponed until 4.0
