@@ -68,17 +68,17 @@ endm
 
 strengthboulder_event: macro
 if _NARG == 2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
 else
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
 endc
 endm
 
 smashrock_event: macro
 if _NARG == 2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
 else
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
 endc
 endm
 

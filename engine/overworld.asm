@@ -827,7 +827,7 @@ Group29Sprites:
 	db SPRITE_ROCKET ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_SUICUNE
@@ -946,7 +946,7 @@ Group13Sprites:
 	db SPRITE_COSPLAYER ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	; 13 total sprites
 	db 0
 
@@ -1085,7 +1085,7 @@ Group11Sprites:
 	db SPRITE_ROCKET ; doesn't walk
 	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
 	; 16 total sprites
@@ -1109,7 +1109,7 @@ Group12Sprites:
 	db SPRITE_SUPER_NERD ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_MACHOP
 	; 15 total sprites
@@ -1147,7 +1147,7 @@ Group15Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	; 6 walking sprites
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_N64
 	db SPRITE_HO_OH
 	; 8 total sprites
 	db 0
@@ -1330,7 +1330,7 @@ Group30Sprites:
 	db SPRITE_SILVER
 	db SPRITE_GIOVANNI
 	; 8 walking sprites
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	; 9 total sprites
 	db 0
 

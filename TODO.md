@@ -33,7 +33,6 @@ The final, non-beta 3.0 release should include all of these.
 ### Aesthetics
 
 * Draw Kukui's overworld sprite
-* Meteorite sprite for Clefairy dance
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 

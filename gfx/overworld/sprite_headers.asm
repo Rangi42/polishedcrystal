@@ -556,8 +556,8 @@ GyaradosBottomRightSprite:
 BallCutFruitSprite:
 	sprite_header BallCutFruitSpriteGFX, 3, STANDING_SPRITE, PAL_OW_TREE
 
-RockBoulderFossilSprite:
-	sprite_header RockBoulderFossilSpriteGFX, 3, STANDING_SPRITE, PAL_OW_ROCK
+BoulderRockFossilSprite:
+	sprite_header BoulderRockFossilSpriteGFX, 3, STANDING_SPRITE, PAL_OW_ROCK
 
 PaperUnownWSprite:
 	sprite_header PaperUnownWSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
@@ -582,7 +582,7 @@ SnesSprite: ; 14952
 ; 14958
 
 N64Sprite: ; 14916
-	sprite_header N64SpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
+	sprite_header N64SpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 ; 1491c
 
 GameCubeSprite: ; 1493a

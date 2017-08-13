@@ -1813,6 +1813,16 @@ LoadSpecialMapOBPalette:
 
 .not_lyras_house_2f:
 	ld a, [MapGroup]
+	cp GROUP_MOUNT_MOON_SQUARE
+	jr nz, .not_mount_moon_square
+	ld a, [MapNumber]
+	cp MAP_MOUNT_MOON_SQUARE
+	jr nz, .not_mount_moon_square
+	ld hl, UnknBGPals + 0 palettes
+	jr .load_rock_palette
+
+.not_mount_moon_square:
+	ld a, [MapGroup]
 	ld b, a
 	ld a, [MapNumber]
 	ld c, a

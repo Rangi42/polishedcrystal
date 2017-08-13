@@ -44,4 +44,4 @@ KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
 ChrisSurfSpriteGFX:           INCBIN "gfx/overworld/chris_surf.2bpp"
 KrisSurfSpriteGFX:            INCBIN "gfx/overworld/kris_surf.2bpp"
 BallCutFruitSpriteGFX:        INCBIN "gfx/overworld/ball_cut_fruit.2bpp"
-RockBoulderFossilSpriteGFX:   INCBIN "gfx/overworld/rock_boulder_fossil.2bpp"
+BoulderRockFossilSpriteGFX:   INCBIN "gfx/overworld/boulder_rock_fossil.2bpp"
