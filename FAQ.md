@@ -4,7 +4,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 
 > At the time, I was asking really obvious questions like: "So 'wireless' means you're getting rid of the wires, right?"
 >
-> Tsunekazu Ishihara, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/4-The-Power-of-Science-is-Staggering-/4-The-Power-of-Science-is-Staggering--226003.html)"
+> — Tsunekazu Ishihara, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/4-The-Power-of-Science-is-Staggering-/4-The-Power-of-Science-is-Staggering--226003.html)"
 
 
 ### Is there a Pokédex document I can refer to?

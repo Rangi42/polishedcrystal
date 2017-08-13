@@ -6,7 +6,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 >
 > **Iwata:** That's really a tiny number. Making a game on that scale with so few programmers would be unthinkable these days.
 >
-> "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/3-Just-Being-President-Was-A-Waste-/3-Just-Being-President-Was-A-Waste--225951.html)"
+> — "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/3-Just-Being-President-Was-A-Waste-/3-Just-Being-President-Was-A-Waste--225951.html)"
 
 
 ## Code
