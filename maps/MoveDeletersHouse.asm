@@ -23,14 +23,10 @@ MoveDeleterScript:
 	faceplayer
 	opentext
 	special MoveDeletion
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 MoveReminderScript:
 	faceplayer
 	opentext
 	special MoveReminder
-	waitbutton
-	closetext
-	end
+	waitendtext

@@ -66,9 +66,7 @@ MooMoo:
 	writetext Text_ItsCryIsWeak
 	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
 	iftrue .GiveBerry
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .GiveBerry:
 	buttonsound
@@ -114,11 +112,8 @@ MooMoo:
 	pause 60
 	buttonsound
 	special RestartMapMusic
-	writetext Text_TotallyHealthy
-	waitbutton
-	closetext
 	setevent EVENT_HEALED_MOOMOO
-	end
+	jumpopenedtext Text_TotallyHealthy
 
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
@@ -136,11 +131,8 @@ MooMoo:
 	pause 60
 	buttonsound
 	special RestartMapMusic
-	writetext Text_TotallyHealthy
-	waitbutton
-	closetext
 	setevent EVENT_HEALED_MOOMOO
-	end
+	jumpopenedtext Text_TotallyHealthy
 
 .NoBerriesInBag:
 	jumpopenedtext Text_NoBerries

@@ -32,9 +32,7 @@ CooltrainerMScript_0x71670:
 	writetext UnknownText_0x716ce
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 252, UnknownScript_0x7167e
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x7167e:
 	buttonsound

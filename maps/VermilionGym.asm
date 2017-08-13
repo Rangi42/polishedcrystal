@@ -170,18 +170,14 @@ VermilionGymTrashCanScript:
 	playsound SFX_ENTER_DOOR
 	disappear VERMILIONGYM_FENCE_1_LEFT
 	disappear VERMILIONGYM_FENCE_1_RIGHT
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .second_switch
 	writetext VermilionGymFoundSecondSwitchText
 	playsound SFX_ENTER_DOOR
 	disappear VERMILIONGYM_FENCE_2_LEFT
 	disappear VERMILIONGYM_FENCE_2_RIGHT
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .reset_switches
 	opentext

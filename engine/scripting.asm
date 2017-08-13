@@ -251,9 +251,11 @@ ScriptCommandTable:
 	dw Script_showtext                   ; bc
 	dw Script_showtextfaceplayer         ; bd
 	dw Script_applyonemovement           ; be
-	dw Script_iftrue_endtext             ; bf
-	dw Script_iffalse_endtext            ; c0
-	dw Script_showcrytext                ; c1
+	dw Script_showcrytext                ; bf
+	dw Script_endtext                    ; c0
+	dw Script_waitendtext                ; c1
+	dw Script_iftrue_endtext             ; c2
+	dw Script_iffalse_endtext            ; c3
 
 StartScript:
 	ld hl, ScriptFlags
@@ -398,9 +400,7 @@ JumpTextScript:
 	opentext
 JumpOpenedTextScript:
 	repeattext -1, -1
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 _GetTextPointer:
 	ld a, [ScriptBank]
@@ -738,7 +738,7 @@ Script_pokemart:
 	ld a, [ScriptBank]
 	ld b, a
 	farcall OpenMartDialog
-	jp _Do_closetext_end
+	jp Script_endtext
 
 Script_elevator:
 ; parameters:
@@ -765,8 +765,7 @@ Script_trade:
 	call GetScriptByte
 	ld e, a
 	farcall NPCTrade
-	call Script_waitbutton
-	jp _Do_closetext_end
+	jp Script_waitendtext
 
 Script_phonecall:
 ; parameters:
@@ -2905,13 +2904,17 @@ Script_iftrue_endtext:
 	ld a, [ScriptVar]
 	and a
 	ret z
-	jr _Do_closetext_end
+	jr Script_endtext
 
 Script_iffalse_endtext:
 	ld a, [ScriptVar]
 	and a
 	ret nz
-_Do_closetext_end:
+	jr Script_endtext
+
+Script_waitendtext:
+	call Script_waitbutton
+Script_endtext:
 	call Script_closetext
 	jp Script_end
 
@@ -2922,5 +2925,4 @@ Script_showcrytext:
 	call Script_textbox
 	call Script_writetext
 	call Script_cry
-	call Script_waitbutton
-	jp Script_closetext
+	jr Script_waitendtext

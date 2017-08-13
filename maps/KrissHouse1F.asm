@@ -334,9 +334,7 @@ MomScript:
 .BankOfMom:
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	special Special_BankOfMom
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .MomEvent:
 	playmusic MUSIC_MOM

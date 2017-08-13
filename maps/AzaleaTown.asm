@@ -225,8 +225,7 @@ AzaleaTown_CelebiTrigger:
 	clearevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 	dotrigger $0
-	closetext
-	end
+	endtext
 
 .Text1:
 	text "Ilex Forest is"
@@ -371,9 +370,7 @@ AzaleaTownSlowpokeScript:
 	pause 60
 	writetext .Text2
 	cry SLOWPOKE
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .Text1:
 	text "Slowpoke: …"

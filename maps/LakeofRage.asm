@@ -78,7 +78,7 @@ UnknownScript_0x70035:
 	waitbutton
 	closetext
 	playsound SFX_WARP_TO
-	applymovement LAKEOFRAGE_LANCE, MovementData_0x70155
+	applyonemovement LAKEOFRAGE_LANCE, teleport_from
 	disappear LAKEOFRAGE_LANCE
 	clearevent EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	setevent EVENT_DECIDED_TO_HELP_LANCE
@@ -86,11 +86,8 @@ UnknownScript_0x70035:
 	end
 
 UnknownScript_0x7004e:
-	writetext UnknownText_0x70371
-	waitbutton
-	closetext
 	setevent EVENT_REFUSED_TO_HELP_LANCE_AT_LAKE_OF_RAGE
-	end
+	jumpopenedtext UnknownText_0x70371
 
 UnknownScript_0x70057:
 	faceplayer
@@ -146,15 +143,12 @@ MapLakeofRageSignpost1Script:
 	writetext UnknownText_0x70903
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x700b8
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x700b8:
 	buttonsound
 	special Special_MagikarpHouseSign
-	closetext
-	end
+	endtext
 
 TrainerFisherAndre:
 	trainer EVENT_BEAT_FISHER_ANDRE, FISHER, ANDRE, FisherAndreSeenText, FisherAndreBeatenText, 0, FisherAndreScript
@@ -188,7 +182,7 @@ WesleyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
-	iftrue WesleyWednesdayScript
+	iftrue_jumpopenedtext WesleyWednesdayText
 	checkcode VAR_WEEKDAY
 	if_not_equal WEDNESDAY, WesleyNotWednesdayScript
 	checkevent EVENT_MET_WESLEY_OF_WEDNESDAY
@@ -200,23 +194,12 @@ WesleyScript:
 	writetext WesleyGivesGiftText
 	buttonsound
 	verbosegiveitem BLACK_BELT
-	iffalse WesleyDoneScript
+	iffalse_endtext
 	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	jumpopenedtext WesleyGaveGiftText
 
-WesleyWednesdayScript:
-	writetext WesleyWednesdayText
-	waitbutton
-WesleyDoneScript:
-	closetext
-	end
-
 WesleyNotWednesdayScript:
 	jumpopenedtext WesleyNotWednesdayText
-
-MovementData_0x70155:
-	teleport_from
-	step_end
 
 UnknownText_0x70157:
 	text "This lake is full"

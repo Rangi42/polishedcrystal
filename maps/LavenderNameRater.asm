@@ -21,6 +21,4 @@ LavenderNameRater:
 	faceplayer
 	opentext
 	special SpecialNameRater
-	waitbutton
-	closetext
-	end
+	waitendtext

@@ -75,15 +75,13 @@ ReceptionistScript_0x9e3e2:
 	writetext .NotYetImplementedText
 	waitbutton
 	checkevent EVENT_260
-	iftrue .GotFreeBP
+	iftrue_endtext
 	writetext .FreeBPText
 	checkcode VAR_BATTLEPOINTS
 	addvar 10
 	writevarcode VAR_BATTLEPOINTS
 	setevent EVENT_260
-.GotFreeBP
-	closetext
-	end
+	endtext
 
 .NotYetImplementedText
 	text "I'm sorry, Battle"
@@ -166,8 +164,7 @@ Script_GivePlayerHisPrize:
 	writetext Text_PlayerGotReward
 	writebyte BATTLETOWER_RECEIVED_REWARD
 	special Special_BattleTower_SetChallengeState
-	closetext
-	end
+	endtext
 
 .MaxPoints:
 	loadvar BattlePoints, 255
@@ -187,9 +184,7 @@ Script_BattleTowerHopeToServeYouAgain:
 	jumpopenedtext Text_WeHopeToServeYouAgain
 
 Script_WaitButton:
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 BattleTower_LeftWithoutSaving:
 	opentext

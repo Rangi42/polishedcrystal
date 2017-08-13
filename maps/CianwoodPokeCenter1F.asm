@@ -58,9 +58,7 @@ CianwoodGymGuyScript:
 	verbosegivetmhm HM_STRENGTH
 	setevent EVENT_GOT_HM04_STRENGTH
 	writetext .StrengthText2
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .Text:
 	text "The #mon Gym"

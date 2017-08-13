@@ -405,13 +405,8 @@ BugCatchingContestText_ContestIsOver: ; 0x13614
 	db "@"
 
 RepelWoreOffScript:: ; 0x13619
-	opentext
-	writetext .text
-	waitbutton
-	closetext
-	end
+	thistext
 
-.text ; 0x13620
 	; REPEL's effect wore off.
 	text_jump UnknownText_0x1bd308
 	db "@"
@@ -420,11 +415,9 @@ UseAnotherRepelScript::
 	opentext
 	writetext .text
 	yesorno
-	iffalse .done
+	iffalse_endtext
 	callasm DoItemEffect
-.done
-	closetext
-	end
+	endtext
 
 .text:
 	text_jump UseAnotherRepelText
@@ -440,15 +433,12 @@ HiddenItemScript:: ; 0x13625
 	callasm SetMemEvent
 	specialsound
 	itemnotify
-	jump .finish
+	endtext
 
 .bag_full ; 0x1363e
 	buttonsound
 	pocketisfull
-
-.finish ; 13643
-	closetext
-	end
+	endtext
 
 .found_text ; 0x13645
 	; found @ !

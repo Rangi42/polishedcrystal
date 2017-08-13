@@ -52,12 +52,7 @@ MystriStageTriggerScript:
 	stopfollow
 	spriteface MYSTRISTAGE_CYNTHIA1, LEFT
 	spriteface PLAYER, RIGHT
-	opentext
-	writetext MystriStageCynthiaSpeechText
-	waitbutton
-	writetext MystriStageCynthiaLeadText1
-	waitbutton
-	closetext
+	showtext MystriStageCynthiaSpeechText
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	opentext
 	writetext MystriStageCynthiaLeadText2
@@ -105,7 +100,7 @@ MystriStageBeatCynthiaScript:
 	writetext MystriStageCynthiaItemText
 	waitbutton
 	verbosegiveitem WISE_GLASSES
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
 	writetext MystriStageCynthiaAfterText
 	waitbutton
@@ -143,13 +138,7 @@ MystriStageBeatCynthiaScript:
 	pause 20
 	spriteface MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
-	faceplayer
-	opentext
-	writetext MystriStageCynthiaEggText
-	waitbutton
-.Done:
-	closetext
-	end
+	jumptextfaceplayer MystriStageCynthiaEggText
 
 .GotWiseGlasses:
 	jumpopenedtext MystriStageCynthiaFinalText
@@ -163,9 +152,7 @@ MystriStageEggScript:
 	writetext MystriStageEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .PartyFull:
 	jumptext MystriStageNoRoomText
@@ -206,10 +193,8 @@ MystriStageCynthiaSpeechText:
 	para "People once cele-"
 	line "brated here with"
 	cont "music and dance."
-	done
 
-MystriStageCynthiaLeadText1:
-	text "Cynthia: I study"
+	para "Cynthia: I study"
 	line "myths about"
 
 	para "ancient sites like"

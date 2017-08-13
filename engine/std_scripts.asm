@@ -163,9 +163,7 @@ PokeCenterNurseScript:
 	spriteface LAST_TALKED, DOWN
 	pause 10
 
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .pokerus
 	; already cleared earlier in the script
@@ -218,8 +216,7 @@ TownMapScript:
 	farwritetext TownMapText
 	waitbutton
 	special Special_TownMap
-	closetext
-	end
+	endtext
 
 WindowScript:
 	farjumptext WindowText
@@ -236,15 +233,13 @@ Radio1Script:
 	opentext
 	writebyte MAPRADIO_POKEMON_CHANNEL
 	special MapRadio
-	closetext
-	end
+	endtext
 
 Radio2Script:
 	opentext
 	writebyte MAPRADIO_LUCKY_CHANNEL
 	special MapRadio
-	closetext
-	end
+	endtext
 
 TrashCanScript: ; 0xbc1a5
 	farjumptext TrashCanText
@@ -252,8 +247,7 @@ TrashCanScript: ; 0xbc1a5
 PCScript:
 	opentext
 	special PokemonCenterPC
-	closetext
-	end
+	endtext
 
 ElevatorButtonScript:
 	playsound SFX_READ_TEXT_2
@@ -910,104 +904,83 @@ NumberAcceptedMScript:
 
 .Jack:
 	farwritetext JackNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JoseNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadeNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Irwin:
 	farwritetext IrwinNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArnieNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VanceNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 NumberDeclinedMScript:
 	checkcode VAR_CALLERID
@@ -1034,104 +1007,83 @@ NumberDeclinedMScript:
 
 .Jack:
 	farwritetext JackNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JoseNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadeNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Irwin:
 	farwritetext IrwinNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArnieNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VanceNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 PhoneFullMScript:
 	checkcode VAR_CALLERID
@@ -1158,104 +1110,83 @@ PhoneFullMScript:
 
 .Jack:
 	farwritetext JackPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JosePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Irwin:
 	farwritetext IrwinPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArniePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VancePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchMScript:
 	checkcode VAR_CALLERID
@@ -1279,89 +1210,71 @@ RematchMScript:
 
 .Jack:
 	farwritetext JackRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JoseRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadeRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArnieRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VanceRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GiftMScript:
 	checkcode VAR_CALLERID
@@ -1418,59 +1331,47 @@ PackFullMScript:
 
 .Huey:
 	farwritetext HueyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JosePackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadePackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VancePackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchGiftMScript:
 	opentext
@@ -1589,44 +1490,35 @@ NumberAcceptedFScript: ; 0xbcbd3
 
 .Beverly:
 	farwritetext BeverlyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Beth:
 	farwritetext BethNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 NumberDeclinedFScript:
 	checkcode VAR_CALLERID
@@ -1641,44 +1533,35 @@ NumberDeclinedFScript:
 
 .Beverly:
 	farwritetext BeverlyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Beth:
 	farwritetext BethNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 PhoneFullFScript:
 	checkcode VAR_CALLERID
@@ -1693,44 +1576,35 @@ PhoneFullFScript:
 
 .Beverly:
 	farwritetext BeverlyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Beth:
 	farwritetext BethPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchFScript:
 	checkcode VAR_CALLERID
@@ -1744,39 +1618,31 @@ RematchFScript:
 
 .Beth:
 	farwritetext BethRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GiftFScript:
 	checkcode VAR_CALLERID
@@ -1812,29 +1678,23 @@ PackFullFScript:
 
 .Beverly:
 	farwritetext BeverlyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchGiftFScript:
 	checkcode VAR_CALLERID
@@ -1850,9 +1710,7 @@ GymStatue0Script:
 	mapnametotext $0
 	opentext
 	farwritetext GymStatue_CityGymText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GymStatue1Script:
 	mapnametotext $0
@@ -1860,9 +1718,7 @@ GymStatue1Script:
 	farwritetext GymStatue_CityGymText
 	buttonsound
 	farwritetext GymStatue_WinningTrainersText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GymStatue2Script:
 	mapnametotext $0
@@ -1870,9 +1726,7 @@ GymStatue2Script:
 	farwritetext GymStatue_CityGymText
 	buttonsound
 	farwritetext GymStatue_TwoWinningTrainersText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GymStatue3Script:
 	mapnametotext $0
@@ -1880,9 +1734,7 @@ GymStatue3Script:
 	farwritetext GymStatue_CityGymText
 	buttonsound
 	farwritetext GymStatue_ThreeWinningTrainersText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 ReceiveItemScript: ; 0xbcdb9
 	waitsfx
@@ -1900,9 +1752,7 @@ GameCornerCoinVendorScript: ; 0xbcdcd
 	checkitem COIN_CASE
 	iftrue CoinVendor_IntroScript
 	farwritetext CoinVendor_NoCoinCaseText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbcde0
 
 CoinVendor_IntroScript: ; 0xbcde0
@@ -1948,25 +1798,18 @@ CoinVendor_IntroScript: ; 0xbcde0
 
 .NotEnoughMoney: ; 0xbce3f
 	farwritetext CoinVendor_NotEnoughMoneyText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbce46
 
 .CoinCaseFull: ; 0xbce46
 	farwritetext CoinVendor_CoinCaseFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbce4d
 
 .Cancel: ; 0xbce4d
 	farwritetext CoinVendor_CancelText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbce54
-
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -1991,21 +1834,15 @@ HappinessCheckScript:
 	if_less_than 50, .Unhappy
 	if_less_than 150, .KindaHappy
 	farwritetext HappinessText3
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .KindaHappy:
 	farwritetext HappinessText2
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .Unhappy:
 	farwritetext HappinessText1
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 Movement_ContestResults_WalkAfterWarp: ; bcea1
 	step_right
@@ -2028,8 +1865,7 @@ VendingMachineScript:
 	if_equal $1, .FreshWater
 	if_equal $2, .SodaPop
 	if_equal $3, .Lemonade
-	closetext
-	end
+	endtext
 
 .FreshWater:
 	checkmoney $0, 200

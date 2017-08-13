@@ -67,12 +67,9 @@ SailorScript_0x76767:
 	iftrue UnknownScript_0x7678d
 	checkevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	iftrue UnknownScript_0x76787
-	writetext UnknownText_0x7687b
-	waitbutton
-	closetext
 	setevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	clearevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	end
+	jumpopenedtext UnknownText_0x7687b
 
 UnknownScript_0x76787:
 	jumpopenedtext UnknownText_0x76907
@@ -81,9 +78,7 @@ UnknownScript_0x7678d:
 	writetext UnknownText_0x7692e
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
 	iffalse UnknownScript_0x76799
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x76799:
 	buttonsound

@@ -147,7 +147,7 @@ ElmCheckMasterBall:
 	iftrue ElmGiveMasterBallScript
 ElmCheckEverstone:
 	checkevent EVENT_GOT_EVERSTONE_FROM_ELM
-	iftrue ElmScript_CallYou
+	iftrue_jumpopenedtext ElmText_CallYou
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue ElmGiveEverstoneScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
@@ -368,8 +368,7 @@ ElmsLabHealingMachine:
 	writetext ElmsLabHealingMachineText2
 	yesorno
 	iftrue ElmsLabHealingMachine_HealParty
-	closetext
-	end
+	endtext
 
 ElmsLabHealingMachine_HealParty:
 	special HealParty
@@ -379,13 +378,10 @@ ElmsLabHealingMachine_HealParty:
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic
-	closetext
-	end
+	endtext
 
 ElmAfterTheftDoneScript:
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 ElmAfterTheftScript:
 	writetext ElmAfterTheftText1
@@ -409,11 +405,8 @@ ElmAfterTheftScript:
 	domaptrigger ROUTE_29, $1
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
-	writetext ElmAfterTheftText6
-	waitbutton
-	closetext
 	dotrigger $2
-	end
+	jumpopenedtext ElmAfterTheftText6
 
 ElmStudyingEggScript:
 	jumpopenedtext ElmStudyingEggText
@@ -439,31 +432,17 @@ ElmGiveEverstoneScript:
 	writetext ElmGiveEverstoneText1
 	buttonsound
 	verbosegiveitem EVERSTONE
-	iffalse ElmScript_NoRoomForEverstone
-	writetext ElmGiveEverstoneText2
-	waitbutton
-	closetext
+	iffalse_endtext
 	setevent EVENT_GOT_EVERSTONE_FROM_ELM
-	end
-
-ElmScript_CallYou:
-	writetext ElmText_CallYou
-	waitbutton
-ElmScript_NoRoomForEverstone:
-	closetext
-	end
+	jumpopenedtext ElmGiveEverstoneText2
 
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
 	buttonsound
 	verbosegiveitem MASTER_BALL
-	iffalse .notdone
+	iffalse_endtext
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	writetext ElmGiveMasterBallText2
-	waitbutton
-.notdone
-	closetext
-	end
+	jumpopenedtext ElmGiveMasterBallText2
 
 ElmGiveTicketScript:
 	writetext ElmChallengeText
@@ -643,11 +622,8 @@ AideScript_GivePotions:
 	writetext AideText_GiveYouPotions
 	buttonsound
 	verbosegiveitem POTION
-	writetext AideText_AlwaysBusy
-	waitbutton
-	closetext
 	dotrigger $2
-	end
+	jumpopenedtext AideText_AlwaysBusy
 
 ElmsAideScript:
 	faceplayer

@@ -22,6 +22,4 @@ StatsJudgeScript:
 	faceplayer
 	opentext
 	special SpecialStatsJudge
-	waitbutton
-	closetext
-	end
+	waitendtext

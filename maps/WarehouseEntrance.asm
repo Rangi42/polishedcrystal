@@ -342,23 +342,17 @@ YoungerHaircutBrotherScript:
 UnknownScript_0x7c2bb:
 	writetext HaircutBrosText_SlightlyHappier
 	special PlayCurMonCry
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x7c2c4:
 	writetext HaircutBrosText_Happier
 	special PlayCurMonCry
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x7c2cd:
 	writetext HaircutBrosText_MuchHappier
 	special PlayCurMonCry
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 BasementDoorScript::
 	checkevent EVENT_USED_BASEMENT_KEY
@@ -372,9 +366,8 @@ BasementDoorScript::
 	closetext
 	changeblock $10, $6, $2e
 	reloadmappart
-	closetext
 	setevent EVENT_USED_BASEMENT_KEY
-	end
+	endtext
 
 WarehouseEntranceScript_ShopClosed:
 	jumptext UnknownText_0x7c904

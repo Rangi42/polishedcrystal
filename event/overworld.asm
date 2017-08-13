@@ -257,8 +257,7 @@ Script_CutFromMenu: ; c7fe
 	closetext
 	scall FieldMovePokepicScript
 	callasm CutDownGrass
-	closetext
-	end
+	endtext
 
 GetBuffer6:
 	ld a, [Buffer6]
@@ -428,8 +427,7 @@ Script_CutTree:
 	scall FieldMovePokepicScript
 	disappear -2
 	callasm CutDownTree
-	closetext
-	end
+	endtext
 
 CutDownTree:
 	xor a
@@ -483,8 +481,7 @@ Script_UseFlash: ; 0xc8e6
 	opentext
 	writetext UnknownText_0xc8f3
 	callasm BlindingFlash
-	closetext
-	end
+	endtext
 
 UnknownText_0xc8f3: ; 0xc8f3
 	text_jump UnknownText_0x1c0609
@@ -702,8 +699,7 @@ AskSurfScript: ; ca2c
 	writetext AskSurfText
 	yesorno
 	iftrue UsedSurfScript
-	closetext
-	end
+	endtext
 
 AskSurfText: ; ca36
 	text_jump _AskSurfText ; The water is calm.
@@ -949,8 +945,7 @@ Script_AskWaterfall: ; 0xcb86
 	writetext .AskUseWaterfall
 	yesorno
 	iftrue Script_UsedWaterfall
-	closetext
-	end
+	endtext
 
 .AskUseWaterfall: ; 0xcb90
 	; Do you want to use WATERFALL?
@@ -1221,8 +1216,7 @@ Script_UsedStrength: ; 0xcd2d
 	scall FieldMovePokepicScript
 	opentext
 	writetext .StrengthAllowedItToMoveBoulders
-	closetext
-	end
+	endtext
 
 .UsedStrength: ; 0xcd41
 	text_jump UnknownText_0x1c0774
@@ -1249,8 +1243,7 @@ AskStrengthScript:
 	writetext UnknownText_0xcd69
 	yesorno
 	iftrue Script_UsedStrength
-	closetext
-	end
+	endtext
 
 UnknownText_0xcd69: ; 0xcd69
 	; A #MON may be able to move this. Want to use STRENGTH?
@@ -1455,8 +1448,7 @@ Script_AskWhirlpoolOW: ; 0xce6e
 	writetext UnknownText_0xce78
 	yesorno
 	iftrue Script_UsedWhirlpool
-	closetext
-	end
+	endtext
 
 UnknownText_0xce78: ; 0xce78
 	text_jump UnknownText_0x1c0864
@@ -1517,15 +1509,10 @@ HeadbuttScript: ; 0xceab
 	iffalse .no_item
 	opentext
 	verbosegiveitem ITEM_FROM_MEM
-	closetext
-	end
+	endtext
 
 .no_item
-	opentext
-	writetext UnknownText_0xcea2
-	waitbutton
-	closetext
-	end
+	jumptext UnknownText_0xcea2
 
 TryHeadbuttOW:: ; cec9
 	ld d, HEADBUTT
@@ -1547,8 +1534,7 @@ AskHeadbuttScript: ; 0xcedc
 	writetext UnknownText_0xcee6
 	yesorno
 	iftrue HeadbuttScript
-	closetext
-	end
+	endtext
 
 UnknownText_0xcee6: ; 0xcee6
 	; A #MON could be in this tree. Want to HEADBUTT it?
@@ -1648,8 +1634,7 @@ AskRockSmashScript: ; 0xcf5d
 	writetext UnknownText_0xcf77
 	yesorno
 	iftrue RockSmashScript
-	closetext
-	end
+	endtext
 .no
 	jumptext UnknownText_0xcf72
 
@@ -1814,8 +1799,7 @@ Script_NotEvenANibble: ; 0xd01e
 	writetext UnknownText_0xd0a9
 	loademote EMOTE_SHADOW
 	callasm PutTheRodAway
-	closetext
-	end
+	endtext
 
 Script_GotAnItem:
 	scall Script_FishCastRod
@@ -1830,8 +1814,7 @@ Script_GotAnItem:
 	callasm PutTheRodAway
 	callasm CurItemToScriptVar
 	verbosegiveitem ITEM_FROM_MEM
-	closetext
-	end
+	endtext
 
 Script_GotABite: ; 0xd035
 	scall Script_FishCastRod
@@ -2074,9 +2057,7 @@ Script_GetOffBike_Register: ; 0xd16b
 
 Script_CantGetOffBike: ; 0xd171
 	writetext .CantGetOffBikeText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .CantGetOffBikeText: ; 0xd177
 	; You can't get off here!
@@ -2120,8 +2101,8 @@ AskCutTreeScript: ; 0xd1a9
 	writetext UnknownText_0xd1c8
 	yesorno
 	iftrue Script_CutTree
-	closetext
-	end
+	endtext
+
 .no ; 0xd1cd
 	jumptext UnknownText_0xd1d0
 

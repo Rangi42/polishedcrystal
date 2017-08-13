@@ -29,73 +29,50 @@ const_value set 2
 	const POKEMONFANCLUB_CLEFAIRY_DOLL
 
 GentlemanScript_0x1917e9:
+	checkevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
+	iftrue_jumptextfaceplayer UnknownText_0x191ae0
 	faceplayer
 	opentext
-	checkevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	iftrue UnknownScript_0x191815
 	checkevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT_BUT_BAG_WAS_FULL
 	iftrue UnknownScript_0x191802
 	writetext UnknownText_0x191881
 	yesorno
-	iffalse UnknownScript_0x19181b
+	iffalse_jumpopenedtext UnknownText_0x191b38
 	writetext UnknownText_0x191911
 	buttonsound
 UnknownScript_0x191802:
 	writetext UnknownText_0x191a3d
 	buttonsound
 	verbosegiveitem RARE_CANDY
-	iffalse UnknownScript_0x19181f
+	iffalse_endtext
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
 	jumpopenedtext UnknownText_0x191a72
-
-UnknownScript_0x191815:
-	jumpopenedtext UnknownText_0x191ae0
-
-UnknownScript_0x19181b:
-	writetext UnknownText_0x191b38
-	waitbutton
-UnknownScript_0x19181f:
-	closetext
-	end
 
 FisherScript_0x191824:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
-	iftrue UnknownScript_0x19185f
+	iftrue_jumpopenedtext UnknownText_0x191d1e
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x191838
-	jumpopenedtext UnknownText_0x191ba0
-
-UnknownScript_0x191838:
+	iffalse_jumpopenedtext UnknownText_0x191ba0
 	writetext UnknownText_0x191bff
 	checkevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	iftrue UnknownScript_0x191844
-	waitbutton
-	closetext
-	end
-
+	waitendtext
 UnknownScript_0x191844:
 	buttonsound
 	writetext UnknownText_0x191c5a
 	buttonsound
 	waitsfx
 	giveitem LOST_ITEM
-	iffalse UnknownScript_0x191865
+	iffalse_jumpopenedtext UnknownText_0x191d58
 	disappear POKEMONFANCLUB_CLEFAIRY_DOLL
 	writetext UnknownText_0x191d0a
 	playsound SFX_KEY_ITEM
 	waitsfx
 	itemnotify
 	setevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
-	closetext
-	end
-
-UnknownScript_0x19185f:
-	jumpopenedtext UnknownText_0x191d1e
-
-UnknownScript_0x191865:
-	jumpopenedtext UnknownText_0x191d58
+	endtext
 
 PokemonJournalGreenScript:
 	setflag ENGINE_READ_GREEN_JOURNAL

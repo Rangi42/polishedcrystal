@@ -90,16 +90,16 @@ UnknownScript_0x19eee0:
 	end
 
 CooltrainerMScript_0x19efac:
+	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
+	iftrue_jumptextfaceplayer UnknownText_0x19f520
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	iftrue UnknownScript_0x19efda
 	checkevent EVENT_CLEARED_NUGGET_BRIDGE
 	iftrue UnknownScript_0x19efc7
 	writetext UnknownText_0x19f43b
 	buttonsound
 	verbosegiveitem NUGGET
-	iffalse UnknownScript_0x19efde
+	iffalse_endtext
 	setevent EVENT_CLEARED_NUGGET_BRIDGE
 UnknownScript_0x19efc7:
 	writetext UnknownText_0x19f49d
@@ -110,13 +110,7 @@ UnknownScript_0x19efc7:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	opentext
-UnknownScript_0x19efda:
-	writetext UnknownText_0x19f520
-	waitbutton
-UnknownScript_0x19efde:
-	closetext
-	end
+	jumptext UnknownText_0x19f520
 
 TrainerSwimmermRomeo:
 	trainer EVENT_BEAT_SWIMMERM_ROMEO, SWIMMERM, ROMEO, .SeenText, .BeatenText, 0, .Script
