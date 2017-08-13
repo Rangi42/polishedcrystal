@@ -5,7 +5,7 @@ If you just want to play Polished Crystal, use one of the .ips patches as descri
 > You know it's sitting back and looking at it that you realize that Gamefreak is actually really good devs.  
 > Like you have Pokemon and it's a simple formula "How can you fuck it up?" and then all of these Romhacks basically go "Like this."
 >
-> – Anonymous, [/vp/](http://boards.4chan.org/vp/)
+> — Anonymous, [/vp/](http://boards.4chan.org/vp/)
 
 
 ## Windows
