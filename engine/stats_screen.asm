@@ -1238,7 +1238,7 @@ StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
 	ld hl, VTiles2 tile $7f
-	call Get2bpp
+	call Get1bpp
 	pop af
 	ld [rVBK], a
 	pop af

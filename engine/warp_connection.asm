@@ -295,7 +295,6 @@ LoadGraphics: ; 1047cf
 	call LoadTileset
 	xor a
 	ld [hMapAnims], a
-	xor a
 	ld [hTileAnimFrame], a
 	farcall RefreshSprites
 	call LoadFontsExtra

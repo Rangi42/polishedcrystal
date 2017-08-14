@@ -55,9 +55,6 @@ INCBIN "gfx/pokegear/johto-kanto.2bpp"
 
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"
-; Duplicate graphic (eight 00 bytes) fixes sprite animation bug introduced by
-; 6103314190c1a3b87be8a5b8b9d90789c3006755
-INCBIN "gfx/frames/space.1bpp"
 ; f9214
 
 MapEntryFrameGFX: ; f9344
