@@ -43,6 +43,7 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_MOONLIGHT,    .Moonlight
 	dbw EFFECT_SWAGGER,      .Swagger
 	dbw EFFECT_FUTURE_SIGHT, .FutureSight
+	dbw EFFECT_BATON_PASS,   .BatonPass
 	db -1
 
 .LightScreen: ; 2c487
@@ -179,6 +180,11 @@ AI_Redundant: ; 2c41a
 	ld a, [wEnemyFutureSightCount]
 	and a
 	ret
+
+.BatonPass:
+	farcall CheckAnyOtherAliveMons
+	jr z, .Redundant
+	jr .NotRedundant
 
 .Heal:
 .MorningSun:
