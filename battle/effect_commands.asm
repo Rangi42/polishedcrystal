@@ -6421,8 +6421,6 @@ BattleCommand_ForceSwitch: ; 3680f
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
 	jp z, .fail
-	call CheckAnyOtherAliveOpponentMons
-	ret z
 	ld a, [AttackMissed]
 	and a
 	jr nz, .missed
@@ -6462,6 +6460,8 @@ BattleCommand_ForceSwitch: ; 3680f
 	jp .succeed
 
 .trainer
+	call CheckAnyOtherAliveOpponentMons
+	jp z, .fail
 	ld a, [wEnemyGoesFirst]
 	and a
 	jr z, .switch_fail
@@ -6550,6 +6550,8 @@ BattleCommand_ForceSwitch: ; 3680f
 	jr .succeed
 
 .vs_trainer
+	call CheckAnyOtherAliveOpponentMons
+	jr z, .fail
 	ld a, [wEnemyGoesFirst]
 	cp $1
 	jr z, .switch_fail
