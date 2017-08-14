@@ -2448,12 +2448,10 @@ ContinueSpawnFacing: ; 57db
 ; 57e2
 
 SetPlayerPalette: ; 57e2
-	ld a, d
 	and %10000000
 	ret z
-	ld bc, 0 ; debug?
+	ld a, d
 	ld hl, OBJECT_FACING
-	add hl, bc
 	ld a, [hl]
 	or d
 	ld [hl], a

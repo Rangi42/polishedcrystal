@@ -196,7 +196,6 @@ SpecialNone: ; c224
 
 Special_SetPlayerPalette: ; c225
 	ld a, [ScriptVar]
-	ld d, a
 	farjp SetPlayerPalette
 ; c230
 

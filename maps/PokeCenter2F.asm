@@ -99,7 +99,7 @@ Script_WalkOutOfLinkTradeRoom:
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (1 << 7) | (PAL_OW_BLUE << 4)
+	writebyte ((1 << 3) | PAL_OW_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	special ReplaceKrisSprite
@@ -121,7 +121,7 @@ Script_WalkOutOfLinkBattleRoom:
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (1 << 7) | (PAL_OW_BLUE << 4)
+	writebyte ((1 << 3) | PAL_OW_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	special ReplaceKrisSprite
@@ -289,7 +289,7 @@ PokeCenter2F_CheckGender:
 	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (1 << 7) | (PAL_OW_RED << 4)
+	writebyte ((1 << 3) | PAL_OW_RED) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	setflag ENGINE_KRIS_IN_CABLE_CLUB
