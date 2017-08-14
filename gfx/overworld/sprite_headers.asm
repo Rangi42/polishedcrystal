@@ -247,7 +247,7 @@ ValerieSprite:
 	sprite_header ValerieSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 KukuiSprite:
-	sprite_header KukuiSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
+	sprite_header KukuiSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
 CaitlinSprite:
 	sprite_header CaitlinSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
