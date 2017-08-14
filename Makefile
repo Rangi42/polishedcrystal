@@ -111,7 +111,7 @@ $(roms_md5): crystal
 %.png: ;
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
-%.lz: % ; $(LZ) $<
+%.lz: % ; $(LZ) $< $@
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
