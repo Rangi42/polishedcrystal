@@ -2308,18 +2308,26 @@ endr
 
 
 AI_Smart_BatonPass: ; 39062
-; Discourage this move if the player hasn't shown super-effective moves against the enemy.
-; Consider player's type(s) if its moves are unknown.
-
+; Changes scoring as follows:
+; +1: Don't bother
+; 0 or less: Good idea
 	push hl
-	farcall CheckPlayerMoveTypeMatchups
-	ld a, [wEnemyAISwitchScore]
-	cp 10 ; neutral
+	farcall AIWantsSwitchCheck
 	pop hl
-	ret c
 	inc [hl]
-	ret
-; 39072
+	ld a, [wEnemySwitchMonParam]
+	and $f0
+	push af
+	xor a
+	ld [wEnemySwitchMonParam], a
+	ld [wEnemyAISwitchScore], a
+	pop af
+	ret z
+.loop
+	dec [hl]
+	sub $10
+	ret z
+	jr .loop
 
 
 AI_Smart_Pursuit: ; 39072
