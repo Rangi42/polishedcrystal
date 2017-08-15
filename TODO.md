@@ -22,6 +22,17 @@ The final, non-beta 3.0 release should include all of these.
 ### Mechanics
 
 * Add TM41 Substitute to Lake of Rage
+* Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
+* Variety Channel with daily unique music
+* Separate radio channels for March and Lullaby, available every day
+* Send gift Pokémon to the PC if the party is full
+* Kurt gives Balls right away once per day
+* Add the improved PRNG from Prism
+* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
+* Evolution Guru says how your lead Pokémon can evolve
+* Get better Wonder Trade items at higher levels
+* Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
+* Use RBY's Surf and Bike themes in Kanto
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
@@ -228,15 +239,12 @@ Some of these may never be added; they're just suggestions.
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
-* Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Variety Channel with daily unique music
-* Separate radio channels for March and Lullaby, available every day
 * Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)
    * Ruby [sub_8054164](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L937), Emerald [sub_8085B2C](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2662): picks the random wild Pokémon (called on map initialization and every step), stored in gUnknown_02029814
    * Ruby [sub_8054050](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L893): plays the cry of gUnknown_02029814 if on a non-water encounter tile at volume 50–80 instead of the usual 125
@@ -250,21 +258,13 @@ Some of these may never be added; they're just suggestions.
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
-* Send gift Pokémon to the PC if the party is full
-* Kurt gives Balls right away once per day
 * Replace the Apricorns with an Apricorn Box and add more Berries
-* Add the improved PRNG from Prism
-* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
-* Evolution Guru says how your lead Pokémon can evolve
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-* Get better Wonder Trade items at higher levels
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
 * Use Mart interface for selling decorations, with a red sidebar
 * Add separate throwing animation graphics for more Poké Ball designs
-* Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Make Eggs use their Pokémon's palette
-* Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
 
 There are some features that I do *not* ever plan to add to Polished Crystal:
