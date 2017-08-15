@@ -29,7 +29,7 @@
 	dw ToxicSpikesDescription
 	dw HeadbuttDescription
 	dw HornAttackDescription
-	dw FuryAttackDescription
+	dw TrickDescription
 	dw HexDescription
 	dw TackleDescription
 	dw BodySlamDescription
@@ -52,7 +52,7 @@
 	dw AcidDescription
 	dw EmberDescription
 	dw FlamethrowerDescription
-	dw MistDescription
+	dw CalmMindDescription
 	dw WaterGunDescription
 	dw HydroPumpDescription
 	dw SurfDescription
@@ -131,7 +131,7 @@
 	dw IronHeadDescription
 	dw IcicleSpearDescription
 	dw BulldozeDescription
-	dw CalmMindDescription
+	dw AmnesiaDescription
 	dw RoostDescription
 	dw SoftboiledDescription
 	dw HiJumpKickDescription
@@ -152,7 +152,7 @@
 	dw DragonDanceDescription
 	dw CrabhammerDescription
 	dw ExplosionDescription
-	dw FurySwipesDescription
+	dw FuryStrikesDescription
 	dw BonemerangDescription
 	dw RestDescription
 	dw RockSlideDescription
@@ -232,9 +232,9 @@
 	dw IronTailDescription
 	dw MetalClawDescription
 	dw AuraSphereDescription
-	dw MorningSunDescription
+	dw HealingLightDescription
 	dw HurricaneDescription
-	dw MoonlightDescription
+	dw KnockOffDescription
 	dw HiddenPowerDescription
 	dw CrossChopDescription
 	dw AquaJetDescription
@@ -479,6 +479,10 @@ NastyPlotDescription:
 	db   "Sharply raises the"
 	next "user's Spcl.Atk.@"
 
+AmnesiaDescription:
+	db   "Sharply raises the"
+	next "user's Spcl.Def.@"
+
 MinimizeDescription:
 	db   "Sharply raises the"
 	next "user's evasiveness.@"
@@ -532,9 +536,13 @@ DoubleSlapDescription:
 	db   "Repeatedly slaps"
 	next "2-5 times.@"
 
-FuryAttackDescription:
-	db   "Jabs the foe"
+FuryStrikesDescription:
+	db   "Scratches or jabs"
 	next "2-5 times.@"
+
+TrickDescription:
+	db   "Swaps held items"
+	next "with the foe.@"
 
 RainDanceDescription:
 	db   "Boosts Water-type"
@@ -656,10 +664,6 @@ SonicboomDescription:
 DisableDescription:
 	db   "Disables the foe's"
 	next "most recent move.@"
-
-MistDescription:
-	db   "Prevents stat"
-	next "reduction.@"
 
 WaterGunDescription:
 	db   "Squirts water to"
@@ -800,10 +804,6 @@ SplashDescription:
 ExplosionDescription:
 	db   "Very powerful but"
 	next "makes user faint.@"
-
-FurySwipesDescription:
-	db   "Quickly scratches"
-	next "2-5 times.@"
 
 BonemerangDescription:
 	db   "An attack that"
@@ -1027,13 +1027,13 @@ MetalClawDescription:
 	db   "An attack that may"
 	next "up user's Attack.@"
 
-MorningSunDescription:
-	db   "Restores HP (best"
-	next "at morn or day).@"
+HealingLightDescription:
+	db   "Restores HP based"
+	next "on weather.@"
 
-MoonlightDescription:
-	db   "Restores HP"
-	next "(best at night).@"
+KnockOffDescription:
+	db   "Slaps down the"
+	next "foe's held item.@"
 
 HiddenPowerDescription:
 	db   "The type varies"

@@ -82,12 +82,12 @@ NUM_HMS = const_value - HM01
 
 	add_mt AQUA_TAIL    ; $4c
 	add_mt BODY_SLAM    ; $4d
-	add_mt BULLDOZE     ; $4e
+	add_mt BULLDOZE     ; $4e TODO: TM74
 	add_mt COUNTER      ; $4f
 	add_mt DEFENSE_CURL ; $50
 	add_mt DOUBLE_EDGE  ; $51
 	add_mt DREAM_EATER  ; $52
-	add_mt EARTH_POWER  ; $53
+	add_mt EARTH_POWER  ; $53 
 	add_mt FIRE_PUNCH   ; $54
 	add_mt HEADBUTT     ; $55
 	add_mt HYPER_VOICE  ; $56
@@ -98,12 +98,15 @@ NUM_HMS = const_value - HM01
 	add_mt ROLLOUT      ; $5b
 	add_mt SEED_BOMB    ; $5c
 	add_mt SEISMIC_TOSS ; $5d
-	add_mt SLEEP_TALK   ; $5e
-	add_mt SUBSTITUTE   ; $5f
+	add_mt SLEEP_TALK   ; $5e TODO: TM71
+	add_mt SUBSTITUTE   ; $5f TODO: TM75
 	add_mt SUCKER_PUNCH ; $60
 	add_mt SWAGGER      ; $61
 	add_mt THUNDERPUNCH ; $62
-	add_mt VOLT_SWITCH  ; $63
-	add_mt WATER_PULSE  ; $64
+	add_mt VOLT_SWITCH  ; $63 TODO: TM72
+	add_mt WATER_PULSE  ; $64 TODO: TM73
 	add_mt ZAP_CANNON   ; $65
 	add_mt ZEN_HEADBUTT ; $66
+;	add_mt TRICK        ; TODO
+;	add_mt SKILL_SWAP   ; TODO
+;	add_mt KNOCK_OFF    ; TODO

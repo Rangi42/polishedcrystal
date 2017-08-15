@@ -503,9 +503,8 @@ ContactMoves::
 	db FLAME_WHEEL
 	db FLARE_BLITZ
 	db FLY
-	db FURY_ATTACK
 	db FURY_CUTTER
-	db FURY_SWIPES
+	db FURY_STRIKES
 	db GIGA_IMPACT
 	db HEADBUTT
 	db HI_JUMP_KICK
@@ -515,6 +514,7 @@ ContactMoves::
 	db IRON_HEAD
 	db IRON_TAIL
 	db KARATE_CHOP
+	db KNOCK_OFF
 	db LEECH_LIFE
 	db LICK
 	db LOW_KICK

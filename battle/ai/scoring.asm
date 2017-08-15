@@ -382,8 +382,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_BATON_PASS,        AI_Smart_BatonPass
 	dbw EFFECT_PURSUIT,           AI_Smart_Pursuit
 	dbw EFFECT_RAPID_SPIN,        AI_Smart_RapidSpin
-	dbw EFFECT_MORNING_SUN,       AI_Smart_MorningSun
-	dbw EFFECT_MOONLIGHT,         AI_Smart_Moonlight
+	dbw EFFECT_HEALING_LIGHT,     AI_Smart_HealingLight
 	dbw EFFECT_HIDDEN_POWER,      AI_Smart_HiddenPower
 	dbw EFFECT_RAIN_DANCE,        AI_Smart_RainDance
 	dbw EFFECT_SUNNY_DAY,         AI_Smart_SunnyDay
@@ -979,8 +978,7 @@ AI_Smart_Roar: ; 38a2a
 
 
 AI_Smart_Heal:
-AI_Smart_MorningSun:
-AI_Smart_Moonlight: ; 38a3a
+AI_Smart_HealingLight: ; 38a3a
 ; 90% chance to greatly encourage this move if enemy's HP is below 25%.
 ; Discourage this move if enemy's HP is higher than 50%.
 ; Do nothing otherwise.
@@ -1514,29 +1512,29 @@ endr
 	ret
 
 .EncoreMoves:
-	db SWORDS_DANCE
-	db LEER
-	db ROAR
-	db DISABLE
-	db MIST
-	db LEECH_SEED
-	db GROWTH
-	db POISONPOWDER
-	db STRING_SHOT
-	db HONE_CLAWS
 	db AGILITY
-	db TELEPORT
-	db SCREECH
-	db HAZE
-	db FOCUS_ENERGY
-	db DREAM_EATER
-	db SPLASH
 	db CONVERSION
-	db SUPER_FANG
-	db SUBSTITUTE
-	db TRIPLE_KICK
+	db DISABLE
+	db DREAM_EATER
 	db FLAME_WHEEL
-	db AEROBLAST
+	db FOCUS_ENERGY
+	db GROWTH
+	db HAZE
+	db HONE_CLAWS
+	db LEECH_SEED
+	db LEER
+	db POISONPOWDER
+	db ROAR
+	db SCREECH
+	db SKILL_SWAP
+	db SPLASH
+	db STRING_SHOT
+	db SUBSTITUTE
+	db SUPER_FANG
+	db SWORDS_DANCE
+	db TELEPORT
+	db TRICK
+	db TRIPLE_KICK
 	db $ff
 ; 38ca4
 
@@ -2542,7 +2540,7 @@ SunnyDayMoves: ; 39134
 	db FIRE_BLAST
 	db SACRED_FIRE
 	db FLARE_BLITZ
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db $ff
 ; 3913d
 
@@ -3100,34 +3098,34 @@ AI_Opportunist: ; 39315
 	jr .checkmove
 
 .stallmoves
-	db SWORDS_DANCE
-	db HONE_CLAWS
-	db LEER
-	db GROWL
-	db DISABLE
-	db MIST
-	db COUNTER
-	db LEECH_SEED
-	db GROWTH
-	db STRING_SHOT
 	db AGILITY
-	db RAGE
-	db SCREECH
-	db HARDEN
-	db DEFENSE_CURL
 	db BARRIER
-	db LIGHT_SCREEN
-	db HAZE
-	db REFLECT
-	db FOCUS_ENERGY
-	db CALM_MIND
-	db TRANSFORM
-	db SPLASH
-	db DRAGON_DANCE
 	db BULK_UP
+	db CALM_MIND
 	db CONVERSION
+	db COUNTER
+	db DEFENSE_CURL
+	db DISABLE
+	db DRAGON_DANCE
+	db FOCUS_ENERGY
+	db GROWL
+	db GROWTH
+	db HARDEN
+	db HAZE
+	db HONE_CLAWS
+	db LEECH_SEED
+	db LEER
+	db LIGHT_SCREEN
+	db RAGE
+	db REFLECT
+	db SCREECH
+	db SKILL_SWAP
+	db SPLASH
+	db STRING_SHOT
 	db SUBSTITUTE
-	db FLAME_WHEEL
+	db SWORDS_DANCE
+	db TRANSFORM
+	db TRICK
 	db $ff
 ; 39369
 
@@ -3312,16 +3310,16 @@ AI_Cautious: ; 39418
 	jr .asm_39425
 
 .residualmoves
-	db MIST
+	db CONVERSION
+	db FOCUS_ENERGY
 	db LEECH_SEED
 	db POISONPOWDER
-	db STUN_SPORE
-	db THUNDER_WAVE
-	db FOCUS_ENERGY
-	db TRANSFORM
-	db CONVERSION
-	db SUBSTITUTE
 	db SPIKES
+	db STUN_SPORE
+	db SUBSTITUTE
+	db THUNDER_WAVE
+	db TOXIC_SPIKES
+	db TRANSFORM
 	db $ff
 ; 39453
 

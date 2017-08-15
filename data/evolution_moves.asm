@@ -76,7 +76,7 @@ EvolutionMoves::
 	db NO_MOVE      ; GRAVELER
 	db NO_MOVE      ; GOLEM
 	db NO_MOVE      ; PONYTA
-	db FURY_ATTACK  ; RAPIDASH
+	db PLAY_ROUGH   ; RAPIDASH
 	db NO_MOVE      ; SLOWPOKE
 	db DEFENSE_CURL ; SLOWBRO
 	db NO_MOVE      ; MAGNEMITE
@@ -219,7 +219,7 @@ EvolutionMoves::
 	db NO_MOVE      ; SLUGMA
 	db DRAGON_DANCE ; MAGCARGO
 	db NO_MOVE      ; SWINUB
-	db FURY_ATTACK  ; PILOSWINE
+	db FURY_STRIKES ; PILOSWINE
 	db NO_MOVE      ; MAMOSWINE
 	db NO_MOVE      ; CORSOLA
 	db NO_MOVE      ; REMORAID
@@ -230,7 +230,7 @@ EvolutionMoves::
 	db NO_MOVE      ; HOUNDOOM
 	db DRAGONBREATH ; KINGDRA
 	db NO_MOVE      ; PHANPY
-	db FURY_ATTACK  ; DONPHAN
+	db FURY_STRIKES ; DONPHAN
 	db NO_MOVE      ; PORYGON2
 	db NO_MOVE      ; SMEARGLE
 	db NO_MOVE      ; TYROGUE

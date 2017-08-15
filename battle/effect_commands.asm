@@ -8836,9 +8836,7 @@ BattleCommand_ClearHazards: ; 37b39
 ; 37b74
 
 
-BattleCommand_HealMornOrDay:
-BattleCommand_HealNite:
-BattleCommand_HealTime:
+BattleCommand_HealWeather:
 	farcall CheckFullHP
 	jr z, .full
 	call AnimateCurrentMove

@@ -67,7 +67,7 @@ KayGroup:
 
 	db 60, CLEFABLE, PINK_BOW
 		db SING
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db METRONOME
 		db MOONBLAST
 
@@ -119,7 +119,7 @@ CalGroup:
 
 	db 60, CLEFABLE, PINK_BOW
 		db SING
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db METRONOME
 		db MOONBLAST
 
@@ -229,7 +229,7 @@ BugsyGroup:
 		db POISON_STING
 		db STRING_SHOT
 		db HARDEN
-		db FURY_ATTACK
+		db FURY_STRIKES
 
 	db 14, YANMA, NO_ITEM, 32, ABILITY_1 | QUIRKY, FEMALE
 		db FORESIGHT
@@ -277,7 +277,11 @@ endc
 
 	db 72, PARASECT, LEFTOVERS, ABILITY_1 | QUIRKY, MALE
 		db SPORE
-		db MORNING_SUN
+if DEF(FAITHFUL)
+		db HEALINGLIGHT
+else
+		db HEX
+endc
 		db SEED_BOMB
 		db X_SCISSOR
 
@@ -719,7 +723,7 @@ PryceGroup:
 		db MAGNITUDE
 		db ANCIENTPOWER
 		db AVALANCHE
-		db FURY_ATTACK
+		db FURY_STRIKES
 
 	db $ff ; end
 
@@ -1241,7 +1245,7 @@ KarenGroup:
 
 	db 71, UMBREON, LEFTOVERS
 		db CHARM
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db PURSUIT
 		db TOXIC
 
@@ -1689,7 +1693,7 @@ ErikaGroup:
 
 	db 61, SUNFLORA, NO_ITEM, 192
 		db SUNNY_DAY
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db GIGA_DRAIN
 if DEF(FAITHFUL)
 		db EARTH_POWER
@@ -1699,7 +1703,7 @@ endc
 
 	db 62, TANGELA, EVIOLITE, 192
 		db GROWTH
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db GIGA_DRAIN
 		db SLEEP_POWDER
 
@@ -1719,19 +1723,19 @@ endc
 
 	db 64, VICTREEBEL, NO_ITEM, 192
 		db SUNNY_DAY
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db ACID
 		db RAZOR_LEAF
 
 	db 65, VILEPLUME, NO_ITEM, 192
 		db SUNNY_DAY
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db PETAL_DANCE
 		db SOLAR_BEAM
 
 	db 65, BELLOSSOM, SITRUS_BERRY, 192
 		db SUNNY_DAY
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db PETAL_DANCE
 		db SOLAR_BEAM
 
@@ -1775,7 +1779,7 @@ endc
 
 	db 74, VILEPLUME, QUICK_CLAW, FAKE_PERFECT_DVS
 		db PETAL_DANCE
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db LEECH_SEED
 		db TOXIC
 
@@ -1821,7 +1825,7 @@ JanineGroup:
 
 	db 64, NIDOQUEEN, NO_ITEM, 208
 		db TOXIC
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db SLUDGE_BOMB
 		db ICE_BEAM
 
@@ -1867,7 +1871,7 @@ JanineGroup:
 
 	db 74, NIDOQUEEN, LEFTOVERS
 		db EARTHQUAKE
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db SLUDGE_BOMB
 		db ICE_BEAM
 
@@ -2030,7 +2034,7 @@ BlaineGroup:
 	db 69, RAPIDASH, SITRUS_BERRY, 240
 		db QUICK_ATTACK
 		db FIRE_SPIN
-		db FURY_ATTACK
+		db PLAY_ROUGH
 		db FIRE_BLAST
 
 	db $ff ; end
@@ -2201,7 +2205,7 @@ RedGroup:
 
 	db 84, ESPEON, TWISTEDSPOON, HIDDEN_ABILITY | MODEST, MALE
 		db PSYCHIC_M
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db REFLECT
 		db SHADOW_BALL
 
@@ -3560,16 +3564,16 @@ BugCatcherGroup:
 		db CONFUSION
 		db POISONPOWDER
 		db SUPERSONIC
-		db MORNING_SUN
+		db HEALINGLIGHT
 
 	db 24, BUTTERFREE
 		db CONFUSION
 		db STUN_SPORE
 		db SUPERSONIC
-		db MORNING_SUN
+		db HEALINGLIGHT
 
 	db 25, BEEDRILL
-		db FURY_ATTACK
+		db FURY_STRIKES
 		db FOCUS_ENERGY
 		db PIN_MISSILE
 		db RAGE
@@ -3578,7 +3582,7 @@ BugCatcherGroup:
 		db CONFUSION
 		db SLEEP_POWDER
 		db SUPERSONIC
-		db MORNING_SUN
+		db HEALINGLIGHT
 
 	db $ff ; end
 
@@ -3603,7 +3607,7 @@ BugCatcherGroup:
 		db GUST
 
 	db 32, BEEDRILL
-		db FURY_ATTACK
+		db FURY_STRIKES
 		db PURSUIT
 		db U_TURN
 		db DOUBLE_TEAM
@@ -3612,7 +3616,7 @@ BugCatcherGroup:
 		db PSYBEAM
 		db SLEEP_POWDER
 		db GUST
-		db MORNING_SUN
+		db HEALINGLIGHT
 
 	db $ff ; end
 
@@ -4320,7 +4324,7 @@ endc
 	db 36, VILEPLUME
 		db SLEEP_POWDER
 		db ACID
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db PETAL_DANCE
 
 	db $ff ; end
@@ -4368,7 +4372,7 @@ endc
 	db 44, CLEFABLE
 		db METRONOME
 		db ENCORE
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db MINIMIZE
 
 	db $ff ; end
@@ -4382,7 +4386,7 @@ endc
 	; party
 
 	db 49, CLEFABLE
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db TRI_ATTACK
 		db MINIMIZE
 		db METRONOME
@@ -7897,7 +7901,7 @@ endc
 
 	db 61, ESPEON, SHELL_BELL, ABILITY_1 | MODEST, MALE, "Vee@"
 		db PSYCHIC_M
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db GROWTH
 		db BITE
 
@@ -8661,7 +8665,7 @@ SchoolboyGroup:
 		db SOLAR_BEAM
 		db SLEEP_POWDER
 		db ACID
-		db MOONLIGHT
+		db HEALINGLIGHT
 
 	db $ff ; end
 
@@ -8745,7 +8749,7 @@ SchoolboyGroup:
 	db 35, QUAGSIRE
 		db LEER
 		db HEADBUTT
-		db CALM_MIND
+		db AMNESIA
 		db EARTHQUAKE
 
 	db $ff ; end
@@ -13368,7 +13372,7 @@ CooltrainerMGroup:
 	db 36, QUAGSIRE
 		db WATER_GUN
 		db HEADBUTT
-		db CALM_MIND
+		db AMNESIA
 		db EARTHQUAKE
 
 	db 36, EXEGGCUTE
@@ -13609,7 +13613,7 @@ CooltrainerFGroup:
 	db 40, RAPIDASH
 		db STOMP
 		db FIRE_SPIN
-		db FURY_ATTACK
+		db PLAY_ROUGH
 		db AGILITY
 
 	db 39, FLAAFFY
@@ -13631,7 +13635,7 @@ CooltrainerFGroup:
 	db 45, RAPIDASH
 		db STOMP
 		db FIRE_SPIN
-		db FURY_ATTACK
+		db PLAY_ROUGH
 		db AGILITY
 
 	db 44, AMPHAROS
@@ -13657,7 +13661,7 @@ endc
 	db 49, RAPIDASH, FOCUS_BAND
 		db STOMP
 		db FIRE_SPIN
-		db FURY_ATTACK
+		db PLAY_ROUGH
 		db FIRE_BLAST
 
 	db 48, AMPHAROS, NO_ITEM
@@ -13914,13 +13918,13 @@ endc
 		db SUPERSONIC
 		db PSYBEAM
 		db HYPNOSIS
-		db MORNING_SUN
+		db HEALINGLIGHT
 
 	db 36, BELLOSSOM
 		db ACID
 		db SLEEP_POWDER
 		db GIGA_DRAIN
-		db MOONLIGHT
+		db HEALINGLIGHT
 
 	db $ff ; end
 
@@ -14558,7 +14562,7 @@ PetrelGroup:
 
 	db 35, PERSIAN, HARD_STONE, 108
 		db PLAY_ROUGH
-		db FURY_SWIPES
+		db FURY_STRIKES
 		db SCREECH
 		db FEINT_ATTACK
 
@@ -16182,7 +16186,7 @@ ValerieGroup:
 	db 57, CLEFABLE, LEFTOVERS, 160
 		db MOONBLAST
 		db CALM_MIND
-		db MOONLIGHT
+		db HEALINGLIGHT
 		db METRONOME
 
 	db 57, MR__MIME, QUICK_CLAW, 160
@@ -16360,7 +16364,7 @@ BillGroup:
 	db 63, LEAFEON, MIRACLE_SEED
 		db SEED_BOMB
 		db SWORDS_DANCE
-		db MORNING_SUN
+		db HEALINGLIGHT
 		db X_SCISSOR
 
 	db 63, GLACEON, NEVERMELTICE
@@ -16509,7 +16513,7 @@ WalkerGroup:
 
 	db 32, SKARMORY, SITRUS_BERRY, 92
 		db METAL_CLAW
-		db FURY_ATTACK
+		db FURY_STRIKES
 		db DRILL_PECK
 		db SWIFT
 

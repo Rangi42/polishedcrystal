@@ -31,7 +31,7 @@
 	const TOXIC_SPIKES ; $1c
 	const HEADBUTT     ; $1d
 	const HORN_ATTACK  ; $1e
-	const FURY_ATTACK  ; $1f
+	const TRICK        ; $1f
 	const HEX          ; $20
 	const TACKLE       ; $21
 	const BODY_SLAM    ; $22
@@ -54,7 +54,7 @@
 	const ACID         ; $33
 	const EMBER        ; $34
 	const FLAMETHROWER ; $35
-	const MIST         ; $36
+	const CALM_MIND    ; $36
 	const WATER_GUN    ; $37
 	const HYDRO_PUMP   ; $38
 	const SURF         ; $39
@@ -133,7 +133,7 @@
 	const IRON_HEAD    ; $82
 	const ICICLE_SPEAR ; $83
 	const BULLDOZE     ; $84
-	const CALM_MIND    ; $85
+	const AMNESIA      ; $85
 	const ROOST        ; $86
 	const SOFTBOILED   ; $87
 	const HI_JUMP_KICK ; $88
@@ -154,7 +154,7 @@
 	const DRAGON_DANCE ; $97
 	const CRABHAMMER   ; $98
 	const EXPLOSION    ; $99
-	const FURY_SWIPES  ; $9a
+	const FURY_STRIKES ; $9a
 	const BONEMERANG   ; $9b
 	const REST         ; $9c
 	const ROCK_SLIDE   ; $9d
@@ -234,9 +234,9 @@
 	const IRON_TAIL    ; $e7
 	const METAL_CLAW   ; $e8
 	const AURA_SPHERE  ; $e9
-	const MORNING_SUN  ; $ea
+	const HEALINGLIGHT ; $ea
 	const HURRICANE    ; $eb
-	const MOONLIGHT    ; $ec
+	const KNOCK_OFF    ; $ec
 	const HIDDEN_POWER ; $ed
 	const CROSS_CHOP   ; $ee
 	const AQUA_JET     ; $ef

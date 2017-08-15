@@ -141,8 +141,7 @@ Bonemerang:
 CometPunch:
 DoubleKick:
 DoubleSlap:
-FuryAttack:
-FurySwipes:
+FuryStrikes:
 PinMissile:
 IcicleSpear:
 	checkobedience
@@ -933,6 +932,7 @@ NastyPlot:
 	endmove
 
 SpecialDefenseUp2:
+Amnesia:
 	checkobedience
 	usedmovetext
 	doturn
@@ -2032,18 +2032,11 @@ RapidSpin:
 	pickpocket
 	endmove
 
-MorningSun:
+HealingLight:
 	checkobedience
 	usedmovetext
 	doturn
-	healmornorday
-	endmove
-
-Moonlight:
-	checkobedience
-	usedmovetext
-	doturn
-	healnite
+	healweather
 	endmove
 
 HiddenPower:

@@ -296,7 +296,7 @@ CeladonCityGameCornerSignText:
 CeladonCityTrainerTipsText:
 	text "Trainer Tips"
 
-	para "Guard Spec."
+	para "Guard Stats"
 	line "protects #mon"
 
 	para "against stat"

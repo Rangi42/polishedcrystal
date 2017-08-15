@@ -105,8 +105,7 @@ BattleCommandPointers:
 	dw BattleCommand_BatonPass
 	dw BattleCommand_Pursuit
 	dw BattleCommand_ClearHazards
-	dw BattleCommand_HealMornOrDay
-	dw BattleCommand_HealNite
+	dw BattleCommand_HealWeather
 	dw BattleCommand_HiddenPower
 	dw BattleCommand_StartRain
 	dw BattleCommand_StartSun

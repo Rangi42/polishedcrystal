@@ -64,7 +64,7 @@
 	db "X Spcl.Atk@"
 	db "X Spcl.Def@"
 	db "Dire Hit@"
-	db "Guard Spec.@"
+	db "Guard Stats@"
 	db "X Accuracy@"
 	db "Repel@"
 	db "Super Repel@"

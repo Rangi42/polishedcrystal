@@ -91,6 +91,7 @@ High priority:
 * Skill Swap
 * Stone Edge
 * Sucker Punch
+* Trick
 * U-turn
 * Water Pulse
 
@@ -107,6 +108,7 @@ Low priority:
 * Facade
 * Gunk Shot
 * Hex
+* Knock Off
 * Roost
 * Toxic Spikes
 * Venoshock
