@@ -8252,7 +8252,7 @@ BoostJumptable:
 	dbw FURY_CUTTER, DoFuryCutter
 	dbw HEX, DoHex
 	dbw VENOSHOCK, DoVenoshock
-;	dbw KNOCK_OFF, DoKnockOff
+	dbw KNOCK_OFF, DoKnockOff
 	dbw -1, -1
 
 BattleCommand_ConditionalBoost:
