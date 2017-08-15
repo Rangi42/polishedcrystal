@@ -21,6 +21,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
+* Add TM41 Substitute to Lake of Rage
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
@@ -28,8 +29,6 @@ The final, non-beta 3.0 release should include all of these.
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
 * Allow trading Eggs
-* Finish adding TMs to maps
-* Add move tutor for Knock Off on Route 40 sandbar
 
 
 ### Aesthetics

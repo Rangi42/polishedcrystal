@@ -16,12 +16,12 @@ Route40_MapEventHeader:
 	signpost 10, 14, SIGNPOST_JUMPTEXT, Route40SignText
 	signpost 8, 7, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_40_HIDDEN_HYPER_POTION
 
-.PersonEvents: db 12
+.PersonEvents: db 13
 	person_event SPRITE_BEAUTY, 10, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
 	person_event SPRITE_SWIMMER_GUY, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
 	person_event SPRITE_SWIMMER_GUY, 31, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermRandall, -1
 	person_event SPRITE_SWIMMER_GIRL, 19, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfElaine, -1
-	person_event SPRITE_SWIMMER_GIRL, 25, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
+	person_event SPRITE_SWIMMER_GIRL, 25, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
 	smashrock_event 11, 7
 	smashrock_event 9, 6
 	smashrock_event 8, 7
@@ -29,6 +29,7 @@ Route40_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a61c7, -1
 	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a64e6, -1
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a6564, -1
+	person_event SPRITE_FISHER, 21, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route40FisherScript, -1
 
 const_value set 2
 	const ROUTE40_MONICA
@@ -78,6 +79,83 @@ PokefanMScript_0x1a61c7:
 
 .BattleTower:
 	jumptextfaceplayer UnknownText_0x1a649b
+
+Route40FisherScript:
+	faceplayer
+	opentext
+	checkevent EVENT_LISTENED_TO_KNOCK_OFF_INTRO
+	iftrue .HeardIntro
+	writetext .IntroText
+	waitbutton
+	setevent EVENT_LISTENED_TO_KNOCK_OFF_INTRO
+.HeardIntro:
+	writetext .QuestionText
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	yesorno
+	iffalse .TutorRefused
+	writebyte KNOCK_OFF
+	writetext .ClearText
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	thisopenedtext
+
+	text "I'll find something"
+	line "else to do…"
+	done
+
+.IntroText:
+	text "I was fishing when"
+	line "some #mon leap-"
+	cont "ed up and knocked"
+
+	para "my Rod into the"
+	line "water!"
+
+	para "How will I catch"
+	line "anything now?"
+
+	para "…Well then, if I"
+	line "can't fish, I'll"
+	cont "just teach."
+	done
+
+.QuestionText:
+	text "You give me a"
+	line "Silver Leaf and"
+
+	para "I'll teach your"
+	line "#mon Knock Off."
+
+	para "How about that?"
+	done
+
+.ClearText:
+	text ""
+	done
+
+.NoSilverLeaf
+	waitbutton
+	thisopenedtext
+
+	text "No Leaf, no move."
+	line "My time isn't free."
+	done
+
+.TeachMove
+	takeitem SILVER_LEAF
+	thisopenedtext
+
+	text "Knock Off knocks"
+	line "a held item away"
+
+	para "so it can't be used"
+	line "in battle."
+
+	para "It's so frustra-"
+	line "ting!"
+	done
 
 MonicaScript:
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA

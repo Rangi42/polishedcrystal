@@ -18,7 +18,7 @@ Route39_MapEventHeader:
 	signpost 7, 15, SIGNPOST_JUMPTEXT, Route39SignText
 	signpost 13, 5, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
-.PersonEvents: db 12
+.PersonEvents: db 13
 	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
 	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
 	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
@@ -31,6 +31,7 @@ Route39_MapEventHeader:
 	fruittree_event 3, 9, FRUITTREE_ROUTE_39, CHESTO_BERRY
 	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
 	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
+	tmhmball_event 7, 1, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
 const_value set 2
 	const ROUTE39_COWGIRL
