@@ -16,31 +16,75 @@ Route27RestHouse_MapEventHeader:
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 1
-	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RestHouseWoman, -1
+	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route27RestHouseGranny, -1
 
-RestHouseWoman:
+Route27RestHouseGranny:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM44_REST
-	iftrue .AlreadyGotItem
-	special GetFirstPokemonHappiness
-	writetext RestHouseWomanText1
+	checkevent EVENT_LISTENED_TO_SKILL_SWAP_INTRO
+	iftrue .HeardIntro
+	writetext .IntroText
+	setevent EVENT_LISTENED_TO_SKILL_SWAP_INTRO
+	jump .Continue
+.HeardIntro
+	writetext .HeardIntroText
+.Continue
 	buttonsound
+	special GetFirstPokemonHappiness
 	if_greater_than $95, .Loyal
-	jump .Disloyal
+	thisopenedtext
+
+	text "If it doesn't come"
+	line "to trust you some"
+
+	para "more, it could be"
+	line "tough going."
+
+	para "Trust is the tie"
+	line "that binds #mon"
+	cont "and trainers."
+	done
 
 .Loyal:
-	writetext RestHouseWomanLoyalText
-	buttonsound
-	verbosegivetmhm TM_REST
-	setevent EVENT_GOT_TM44_REST
-.AlreadyGotItem:
-	jumpopenedtext RestHouseRestDescription
+	writetext .QuestionText
+	checkitem SILVER_LEAF
+	iffalse .NoSilverLeaf
+	yesorno
+	iffalse .TutorRefused
+	writebyte SKILL_SWAP
+	writetext .ClearText
+	special Special_MoveTutor
+	if_equal $0, .TeachMove
+.TutorRefused
+	jumpopenedtext .RefusedText
 
-.Disloyal:
-	jumpopenedtext RestHouseWomanDisloyalText
+.NoSilverLeaf
+	waitbutton
+	thisopenedtext
 
-RestHouseWomanText1:
+	text "You've not found"
+	line "any Silver Leaves…"
+	done
+
+.TeachMove
+	takeitem SILVER_LEAF
+	thisopenedtext
+
+	text "Skill Swap is a"
+	line "move that swaps"
+
+	para "your ability with"
+	line "that of your"
+	cont "opponent."
+
+	para "It's for advanced"
+	line "trainers only."
+
+	para "Use it if you"
+	line "dare. Good luck!"
+	done
+
+.IntroText:
 	text "Where are you off"
 	line "to with #mon?"
 
@@ -54,7 +98,12 @@ RestHouseWomanText1:
 	para "Let me see…"
 	done
 
-RestHouseWomanLoyalText:
+.HeardIntroText:
+	text "Let me see your"
+	line "#mon…"
+	done
+
+.QuestionText:
 	text "Ah! Your #mon"
 	line "trusts you very"
 	cont "much."
@@ -62,34 +111,18 @@ RestHouseWomanLoyalText:
 	para "It's nice to see a"
 	line "good trainer."
 
-	para "Here. A gift for"
-	line "your journey."
+	para "I can teach it my"
+	line "secret technique,"
+
+	para "Skill Swap, if"
+	line "you'd like."
 	done
 
-RestHouseRestDescription:
-	text "TM44 happens to be"
-	line "Rest."
-
-	para "It's a move that"
-	line "regains health,"
-	cont "but leaves the"
-	cont "user vulnerable."
-
-	para "It's for advanced"
-	line "trainers only."
-
-	para "Use it if you"
-	line "dare. Good luck!"
+.RefusedText:
+	text "Good luck on your"
+	line "journey."
 	done
 
-RestHouseWomanDisloyalText:
-	text "If it doesn't come"
-	line "to trust you some"
-
-	para "more, it could be"
-	line "tough going."
-
-	para "Trust is the tie"
-	line "that binds #mon"
-	cont "and trainers."
+.ClearText:
+	text ""
 	done

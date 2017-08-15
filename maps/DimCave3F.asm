@@ -30,8 +30,8 @@ DimCave3F_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 27, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
 	person_event SPRITE_POKEFAN_M, 22, 25, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
 	itemball_event 3, 18, METAL_COAT, 1, EVENT_DIM_CAVE_3F_METAL_COAT
-	itemball_event 9, 20, LIGHT_CLAY, 1, EVENT_DIM_CAVE_3F_LIGHT_CLAY
 	itemball_event 29, 10, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
+	tmhmball_event 9, 20, TM_REST, EVENT_DIM_CAVE_3F_TM_REST
 
 const_value set 2
 	const DIMCAVE3F_BOULDER

@@ -24,7 +24,7 @@ BattleTower1F_MapEventHeader:
 	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
 	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
 	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
-	person_event SPRITE_DRAGON_TAMER, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerDragonTamerScript, -1
+	person_event SPRITE_PHARMACIST, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerPharmacistScript, -1
 	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
 	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
 	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
@@ -192,23 +192,23 @@ BattleTower_LeftWithoutSaving:
 	waitbutton
 	jump Script_BattleTowerHopeToServeYouAgain
 
-BattleTowerDragonTamerScript:
+BattleTowerPharmacistScript:
 	faceplayer
 	opentext
-	checkevent EVENT_LISTENED_TO_WATER_PULSE_INTRO
-	iftrue BattleTowerTutorWaterPulseScript
-	writetext BattleTowerDragonTamerText
+	checkevent EVENT_LISTENED_TO_TRICK_INTRO
+	iftrue BattleTowerTutorTrickScript
+	writetext BattleTowerPharmacistText
 	waitbutton
-	setevent EVENT_LISTENED_TO_WATER_PULSE_INTRO
-BattleTowerTutorWaterPulseScript:
-	writetext Text_BattleTowerTutorWaterPulse
+	setevent EVENT_LISTENED_TO_TRICK_INTRO
+BattleTowerTutorTrickScript:
+	writetext Text_BattleTowerTutorTrick
 	waitbutton
 	checkitem SILVER_LEAF
 	iffalse .NoSilverLeaf
 	writetext Text_BattleTowerTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte WATER_PULSE
+	writebyte TRICK
 	writetext Text_BattleTowerTutorClear
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
@@ -378,37 +378,41 @@ Text_ConfirmBattleRoomLevel:
 	text "0. Is that OK?"
 	done
 
-BattleTowerDragonTamerText:
-	text "I'm going to beat"
-	line "the Tower Tycoon"
+BattleTowerPharmacistText:
+	text "The trainers here"
+	line "strategically use"
+	cont "held items."
 
-	para "with my Seadra's"
-	line "awesome Water"
-	cont "Pulse attack!"
+	para "But I've got a"
+	line "trick up my"
+	cont "sleeve--I'll swap"
+
+	para "their items for"
+	line "mine with Trick!"
 	done
 
-Text_BattleTowerTutorWaterPulse:
+Text_BattleTowerTutorTrick:
 	text "I'll teach your"
 	line "#mon how to"
 
-	para "use Water Pulse"
+	para "use Trick…"
 	line "for a Silver Leaf."
 	done
 
 Text_BattleTowerTutorNoSilverLeaf:
-	text "You don't have a"
-	line "Silver Leaf…"
+	text "Tch. You don't have"
+	line "a Silver Leaf…"
 	done
 
 Text_BattleTowerTutorQuestion:
 	text "Should I teach"
 	line "your #mon"
-	cont "Water Pulse?"
+	cont "Trick?"
 	done
 
 Text_BattleTowerTutorRefused:
 	text "Talk to me if you"
-	line "change your mind!"
+	line "change your mind."
 	done
 
 Text_BattleTowerTutorClear:
@@ -417,8 +421,8 @@ Text_BattleTowerTutorClear:
 
 Text_BattleTowerTutorTaught:
 	text "Now your #mon"
-	line "can use Water"
-	cont "Pulse too!"
+	line "can use Trick too!"
+	cont "Isn't it devious?"
 	done
 
 Text_BattleTowerCooltrainerF:

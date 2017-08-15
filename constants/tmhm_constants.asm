@@ -8,7 +8,7 @@
 	add_tm TOXIC        ; $05
 	add_tm HAIL         ; $06
 	add_tm BULK_UP      ; $07
-	add_tm SWORDS_DANCE ; $08
+	add_tm VENOSHOCK    ; $08
 	add_tm HIDDEN_POWER ; $09
 	add_tm SUNNY_DAY    ; $0a
 	add_tm HONE_CLAWS   ; $0b
@@ -40,7 +40,7 @@
 	add_tm FIRE_BLAST   ; $25
 	add_tm SWIFT        ; $26
 	add_tm AERIAL_ACE   ; $27
-	add_tm STONE_EDGE   ; $28
+	add_tm SUBSTITUTE   ; $28
 	add_tm FACADE       ; $29
 	add_tm WILD_CHARGE  ; $2a
 	add_tm REST         ; $2b
@@ -62,7 +62,7 @@
 	add_tm DAZZLINGLEAM ; $3b
 	add_tm WILL_O_WISP  ; $3c
 	add_tm ACROBATICS   ; $3d
-	add_tm THUNDER_WAVE ; $3e
+	add_tm WATER_PULSE  ; $3e
 	add_tm EXPLOSION    ; $3f
 	add_tm SHADOW_CLAW  ; $40
 	add_tm POISON_JAB   ; $41
@@ -70,43 +70,44 @@
 	add_tm GIGA_IMPACT  ; $43
 	add_tm U_TURN       ; $44
 	add_tm FLASH        ; $45
+	add_tm STONE_EDGE   ; $46
+	add_tm VOLT_SWITCH  ; $47
+	add_tm THUNDER_WAVE ; $48
+	add_tm BULLDOZE     ; $49
+	add_tm SWORDS_DANCE ; $4a
 NUM_TMS = const_value - TM01
 
-	add_hm CUT          ; $46
-	add_hm FLY          ; $47
-	add_hm SURF         ; $48
-	add_hm STRENGTH     ; $49
-	add_hm WHIRLPOOL    ; $4a
-	add_hm WATERFALL    ; $4b
+	add_hm CUT          ; $4b
+	add_hm FLY          ; $4c
+	add_hm SURF         ; $4d
+	add_hm STRENGTH     ; $4e
+	add_hm WHIRLPOOL    ; $4f
+	add_hm WATERFALL    ; $50
 NUM_HMS = const_value - HM01
 
-	add_mt AQUA_TAIL    ; $4c
-	add_mt BODY_SLAM    ; $4d
-	add_mt BULLDOZE     ; $4e TODO: TM74
-	add_mt COUNTER      ; $4f
-	add_mt DEFENSE_CURL ; $50
-	add_mt DOUBLE_EDGE  ; $51
-	add_mt DREAM_EATER  ; $52
-	add_mt EARTH_POWER  ; $53 
-	add_mt FIRE_PUNCH   ; $54
-	add_mt HEADBUTT     ; $55
-	add_mt HYPER_VOICE  ; $56
-	add_mt ICE_PUNCH    ; $57
-	add_mt ICY_WIND     ; $58
-	add_mt IRON_HEAD    ; $59
-	add_mt PAY_DAY      ; $5a
-	add_mt ROLLOUT      ; $5b
-	add_mt SEED_BOMB    ; $5c
-	add_mt SEISMIC_TOSS ; $5d
-	add_mt SLEEP_TALK   ; $5e TODO: TM71
-	add_mt SUBSTITUTE   ; $5f TODO: TM75
-	add_mt SUCKER_PUNCH ; $60
-	add_mt SWAGGER      ; $61
-	add_mt THUNDERPUNCH ; $62
-	add_mt VOLT_SWITCH  ; $63 TODO: TM72
-	add_mt WATER_PULSE  ; $64 TODO: TM73
-	add_mt ZAP_CANNON   ; $65
-	add_mt ZEN_HEADBUTT ; $66
-;	add_mt TRICK        ; TODO
-;	add_mt SKILL_SWAP   ; TODO
-;	add_mt KNOCK_OFF    ; TODO
+	add_mt AQUA_TAIL    ; $51
+	add_mt BODY_SLAM    ; $52
+	add_mt COUNTER      ; $53
+	add_mt DEFENSE_CURL ; $54
+	add_mt DOUBLE_EDGE  ; $55
+	add_mt DREAM_EATER  ; $56
+	add_mt EARTH_POWER  ; $57
+	add_mt FIRE_PUNCH   ; $58
+	add_mt HEADBUTT     ; $59
+	add_mt HYPER_VOICE  ; $5a
+	add_mt ICE_PUNCH    ; $5b
+	add_mt ICY_WIND     ; $5c
+	add_mt IRON_HEAD    ; $5d
+	add_mt KNOCK_OFF    ; $5e
+	add_mt PAY_DAY      ; $5f
+	add_mt ROLLOUT      ; $60
+	add_mt SEED_BOMB    ; $61
+	add_mt SEISMIC_TOSS ; $62
+	add_mt SKILL_SWAP   ; $63
+	add_mt SLEEP_TALK   ; $64
+	add_mt SUCKER_PUNCH ; $65
+	add_mt SWAGGER      ; $66
+	add_mt THUNDERPUNCH ; $67
+	add_mt TRICK        ; $68
+	add_mt ZAP_CANNON   ; $69
+	add_mt ZEN_HEADBUTT ; $6a

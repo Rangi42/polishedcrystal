@@ -102,12 +102,12 @@ MistyScript_0x188432:
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
-	checkevent EVENT_GOT_TM55_SCALD
+	checkevent EVENT_GOT_TM63_WATER_PULSE
 	iftrue MistyAfterTMScript
 	writetext MistyGiveTMText
 	buttonsound
-	verbosegivetmhm TM_SCALD
-	setevent EVENT_GOT_TM55_SCALD
+	verbosegivetmhm TM_WATER_PULSE
+	setevent EVENT_GOT_TM63_WATER_PULSE
 	jumpopenedtext MistyOutroText
 
 MistyAfterTMScript:
@@ -310,10 +310,10 @@ MistyGiveTMText:
 
 MistyOutroText:
 	text "It contains the"
-	line "move Scald. It can"
+	line "move Water Pulse."
 
-	para "sometimes burn"
-	line "your foe."
+	para "It can sometimes"
+	line "confuse your foe."
 	done
 
 UnknownText_0x188782:

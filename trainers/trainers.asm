@@ -1496,7 +1496,7 @@ MistyGroup:
 	; party
 
 	db 61, GOLDUCK, NO_ITEM, 176
-		db SCALD
+		db WATER_PULSE
 		db DISABLE
 		db CALM_MIND
 		db PSYCHIC_M
@@ -1520,10 +1520,10 @@ MistyGroup:
 		db CRABHAMMER
 
 	db 62, LANTURN, NO_ITEM, 176
-		db SCALD
+		db WATER_PULSE
 		db THUNDERBOLT
 		db ICE_BEAM
-		db CONFUSE_RAY
+		db RECOVER
 
 	db 64, STARMIE, SITRUS_BERRY, 176
 		db SCALD
@@ -1543,7 +1543,7 @@ MistyGroup:
 
 	db 73, GOLDUCK, TWISTEDSPOON
 		db PSYCHIC_M
-		db SURF
+		db SCALD
 		db ICE_BEAM
 		db CALM_MIND
 
