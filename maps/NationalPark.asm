@@ -410,7 +410,7 @@ UnknownText_0x5c4f3:
 
 	para "For example…"
 
-	para "There are 70 kinds"
+	para "There are 75 kinds"
 	line "of TMs."
 
 	para "Traded #mon"

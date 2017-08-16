@@ -29,7 +29,7 @@ Route40_MapEventHeader:
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a61c7, -1
 	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a64e6, -1
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a6564, -1
-	person_event SPRITE_FISHER, 21, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route40FisherScript, -1
+	person_event SPRITE_FISHER, 27, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route40FisherScript, -1
 
 const_value set 2
 	const ROUTE40_MONICA

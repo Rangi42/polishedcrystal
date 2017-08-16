@@ -33,7 +33,7 @@ Route43_MapEventHeader:
 	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
 	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1
 	person_event SPRITE_LASS, 25, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy2, -1
-	cuttree_event 28, 2, -1
+	cuttree_event 28, 2, EVENT_ROUTE_43_CUT_TREE
 	fruittree_event 26, 1, FRUITTREE_ROUTE_43, PERSIM_BERRY
 	itemball_event 32, 12, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
