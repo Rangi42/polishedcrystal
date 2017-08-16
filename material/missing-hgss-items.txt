@@ -1,27 +1,3 @@
-===== TMs==== ==================================================================
-
------ Kanto -----
-
-route 6:
-TM62 (Silver Wind)	In the southwest part of the route
-
-route 8:
-TM41 (Torment)	South of the Bikers
-
-route 10:
-TM69 (Rock Polish)	On a ledge in the center of the southern portion of the route (requires Strength)
-
-route 11:
-TM86 (Grass Knot)	Northeast corner of route
-
-route 19:
-TM55 (Brine)	Lower-right-hand corner of the route (requires Surf)
-
-celadon city:
-TM67 (Recycle)	At the end of the narrow pathway to the north of the city
-
-
-
 ===== Visible ==================================================================
 
 ----- Johto -----

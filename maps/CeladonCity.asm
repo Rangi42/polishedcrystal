@@ -38,7 +38,7 @@ CeladonCity_MapEventHeader:
 	signpost 21, 33, SIGNPOST_JUMPTEXT, CeladonCityTrainerTipsText
 	signpost 21, 41, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
-.PersonEvents: db 13
+.PersonEvents: db 14
 	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
 	person_event SPRITE_FISHER, 11, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9f7d, -1
 	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, POLIWRATH, CeladonCityPoliwrathText, -1
@@ -51,6 +51,7 @@ CeladonCity_MapEventHeader:
 	person_event SPRITE_LASS, 22, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa25b, -1
 	person_event SPRITE_BIG_SNORLAX, 10, 45, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX
 	person_event SPRITE_LASS, 23, 35, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText, -1
+	itemball_event 7, 39, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
 	cuttree_event 34, 32, EVENT_CELADON_CITY_CUT_TREE
 
 CeladonCityFlyPoint:

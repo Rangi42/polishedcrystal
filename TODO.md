@@ -45,6 +45,7 @@ The final, non-beta 3.0 release should include all of these.
 
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
+* "make hgss" to use HGSS-based palettes
 
 
 ### Events
