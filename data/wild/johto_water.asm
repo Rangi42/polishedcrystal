@@ -246,7 +246,13 @@
 	db 15, PSYDUCK
 	db 20, POLIWHIRL
 
-	map LAKE_OF_RAGE
+	map LAKE_OF_RAGE_NORTH
+	db 6 percent ; encounter rate
+	db 25, MAGIKARP
+	db 20, MAGIKARP
+	db 25, GYARADOS
+
+	map LAKE_OF_RAGE_SOUTH
 	db 6 percent ; encounter rate
 	db 25, MAGIKARP
 	db 20, MAGIKARP

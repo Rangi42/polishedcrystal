@@ -569,7 +569,8 @@ endm
 	treemon_map OLIVINE_CITY, 0
 	treemon_map ECRUTEAK_CITY, 0
 	treemon_map MAHOGANY_TOWN, 0
-	treemon_map LAKE_OF_RAGE, 5
+	treemon_map LAKE_OF_RAGE_NORTH, 5
+	treemon_map LAKE_OF_RAGE_SOUTH, 5
 	treemon_map BLACKTHORN_CITY, 0
 	treemon_map SILVER_CAVE_OUTSIDE, 1
 	treemon_map ILEX_FOREST, 6

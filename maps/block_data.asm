@@ -633,8 +633,11 @@ MahoganyGym_BlockData:
 MahoganyTown_BlockData:
 	INCBIN "maps/MahoganyTown.blk"
 
-LakeofRage_BlockData:
-	INCBIN "maps/LakeofRage.blk"
+LakeofRageNorth_BlockData:
+	INCBIN "maps/LakeofRageNorth.blk"
+
+LakeofRageSouth_BlockData:
+	INCBIN "maps/LakeofRageSouth.blk"
 
 TeamRocketBaseB1F_BlockData:
 	INCBIN "maps/TeamRocketBaseB1F.blk"
