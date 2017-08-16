@@ -28,11 +28,15 @@ UpdateItemIcon::
 GetItemIconBank:
 	lb bc, BANK(ItemIcons1), $9
 	ld a, [CurSpecies]
-	cp SCOPE_LENS
+	cp SCOPE_LENS ; first icon in ItemIcons2
 	ret c
-	cp STARDUST
+	cp METAL_POWDER ; after Scope Lens, but in ItemIcons1
 	ret z
-	cp CHOICE_SCARF
+	cp QUICK_POWDER ; after Scope Lens, but in ItemIcons1
+	ret z
+	cp STARDUST ; after Scope Lens, but in ItemIcons1
+	ret z
+	cp CHOICE_SCARF ; after Scope Lens, but in ItemIcons1
 	ret z
 	cp ITEM_FROM_MEM
 	ret z
