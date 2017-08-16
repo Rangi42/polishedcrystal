@@ -86,7 +86,7 @@ TMHMMoves: ; 1167a
 	db FIRE_BLAST   ; TM38 (Goldenrod Dept. Store)
 	db SWIFT        ; TM39 (Union Cave)
 	db AERIAL_ACE   ; TM40 (Mount Mortar)
-	db SUBSTITUTE   ; TM41 (TODO: Lake of Rage) (split map in halves) (no need for variable sprite)
+	db SUBSTITUTE   ; TM41 (Lake of Rage)
 	db FACADE       ; TM42 (Dim Cave)
 	db WILD_CHARGE  ; TM43 (Lt. Surge)
 	db REST         ; TM44 (Dim Cave)

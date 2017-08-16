@@ -21,7 +21,6 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
-* Add TM41 Substitute to Lake of Rage
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day

@@ -17,7 +17,7 @@ LakeofRageSouth_MapEventHeader:
 	signpost 15, 25, SIGNPOST_READ, LakeOfRageFishingGuruSignText
 	signpost 12, 11, SIGNPOST_ITEM + FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
 
-.PersonEvents: db 13
+.PersonEvents: db 15
 	person_event SPRITE_LANCE, 12, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeOfRageLanceScript, EVENT_LAKE_OF_RAGE_LANCE
 	person_event SPRITE_GYARADOS_TOP_LEFT, 5, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LakeOfRageRedGyaradosScript, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 19, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LakeOfRageRedGyaradosScript, EVENT_LAKE_OF_RAGE_RED_GYARADOS
@@ -30,7 +30,9 @@ LakeofRageSouth_MapEventHeader:
 	person_event SPRITE_ENGINEER, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LakeofRageEngineerText, EVENT_LAKE_OF_RAGE_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 13, 25, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LakeOfRageCooltrainerFText, -1
 	person_event SPRITE_SUPER_NERD, -3, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LakeOfRageSuperNerdText, -1
-	cuttree_event 5, 6, EVENT_LAKE_OF_RAGE_CUT_TREE
+	cuttree_event -4, 11, EVENT_LAKE_OF_RAGE_CUT_TREE_3
+	cuttree_event -2, 5, EVENT_LAKE_OF_RAGE_CUT_TREE_4
+	cuttree_event 5, 6, EVENT_LAKE_OF_RAGE_CUT_TREE_5
 
 const_value set 2
 	const LAKEOFRAGE_LANCE
