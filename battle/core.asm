@@ -6399,6 +6399,26 @@ endc
 	add b
 	ld b, a
 
+	; If the ability is Pickup, 10% chance of holding an item from that instead
+	push hl
+	push bc
+	ld b, a ; still the ability index, 1/2/hidden
+	ld a, [CurPartySpecies]
+	ld c, a
+	call GetAbility
+	ld a, b
+	cp PICKUP
+	jr nz, .not_pickup
+	call Random
+	cp 1 + (10 percent)
+	jr nc, .not_pickup
+	ld a, [EnemyMonLevel]
+	farcall GetRandomPickupItem
+	ld [EnemyMonItem], a
+.not_pickup
+	pop bc
+	pop hl
+
 	; Random shininess
 	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [BattleType]

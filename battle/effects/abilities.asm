@@ -1703,45 +1703,10 @@ RunPostBattleAbilities::
 	cp 1 + (10 percent)
 	ret nc
 
-	lb bc, 0, 0
-; Pickup selects from a table, giving better rewards scaling with level and randomness
-	ld a, 100
-	call RandomRange
-	cp 2
-	jr c, .RarePickup
-	cp 6
-	call c, .IncBC
-	cp 10
-	call c, .IncBC
-	cp 20
-	call c, .IncBC
-	cp 30
-	call c, .IncBC
-	cp 40
-	call c, .IncBC
-	cp 50
-	call c, .IncBC
-	cp 60
-	call c, .IncBC
-	cp 70
-	call c, .IncBC
-	ld hl, BasePickupTable
-.DoneRandomizing:
-; Increase bc based on level
-	push hl
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
 	ld a, [hl]
-	dec a ; 1-10, 11-20, ..., not 0-9, 10-19, ...
-.level_loop
-	sub 10
-	jr c, .level_loop_done
-	inc bc
-	jr .level_loop
-.level_loop_done
-	pop hl
-	add hl, bc
-	ld a, [hl]
+	call GetRandomPickupItem
 	ld b, a
 	ld a, MON_ITEM
 	call GetPartyParamLocation
@@ -1749,20 +1714,59 @@ RunPostBattleAbilities::
 	ld [hl], a
 	ret
 
-.RarePickup:
-; 2% of Pickup results use a different table with generally better items.
+GetRandomPickupItem::
+; a = level
+
+; bc = floor((level - 1) / 10)
+	ld bc, 0
+	dec a ; 1-10 → 0-9, etc
+.loop
+	sub 10
+	jr c, .done
+	inc bc
+	jr .loop
+.done
+
+; Pickup selects from a table, giving better rewards scaling with level and randomness
+	ld a, 100
+	call RandomRange
+	cp 2
+	jr c, .rare
+	cp 6
+	call c, .inc_bc
+	cp 10
+	call c, .inc_bc
+	cp 20
+	call c, .inc_bc
+	cp 30
+	call c, .inc_bc
+	cp 40
+	call c, .inc_bc
+	cp 50
+	call c, .inc_bc
+	cp 60
+	call c, .inc_bc
+	cp 70
+	call c, .inc_bc
+	ld hl, .BasePickupTable
+	jr .ok
+
+.rare:
+; 2% of Pickup results use a different table with generally better items
 	call Random
 	cp 1 + 50 percent
-	call c, .IncBC
-	ld hl, RarePickupTable
-	jr .DoneRandomizing
+	call c, .inc_bc
+	ld hl, .RarePickupTable
+.ok:
+	add hl, bc
+	ld a, [hl]
+	ret
 
-.IncBC:
-; This just exists to avoid a million labels
+.inc_bc:
 	inc bc
 	ret
 
-BasePickupTable:
+.BasePickupTable:
 	db POTION
 	db ANTIDOTE
 	db SUPER_POTION
@@ -1782,7 +1786,7 @@ BasePickupTable:
 	db PP_UP
 	db MAX_ELIXER
 
-RarePickupTable:
+.RarePickupTable:
 	db HYPER_POTION
 	db NUGGET
 	db KINGS_ROCK
