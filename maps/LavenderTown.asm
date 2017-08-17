@@ -34,7 +34,7 @@ LavenderTown_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownYoungsterText, -1
 	person_event SPRITE_SUPER_NERD, 18, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_EXORCISED_LAV_RADIO_TOWER
 	person_event SPRITE_COOLTRAINER_F, 19, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_EXORCISED_LAV_RADIO_TOWER
-	person_event SPRITE_ROCKER, 16, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_EXORCISED_LAV_RADIO_TOWER
+	person_event SPRITE_ROCKER, 17, 11, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_EXORCISED_LAV_RADIO_TOWER
 
 const_value set 2
 	const LAVENDERTOWN_YOUNGSTER1
