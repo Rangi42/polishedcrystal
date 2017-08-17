@@ -7,8 +7,8 @@ CeladonCafe_MapScriptHeader:
 CeladonCafe_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $6, 9, CELADON_CITY
-	warp_def $7, $7, 9, CELADON_CITY
+	warp_def 7, 6, 9, CELADON_CITY
+	warp_def 7, 7, 9, CELADON_CITY
 
 .XYTriggers: db 0
 

@@ -7,7 +7,7 @@ SproutTower3F_MapScriptHeader:
 SproutTower3F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $e, $8, 4, SPROUT_TOWER_2F
+	warp_def 14, 8, 4, SPROUT_TOWER_2F
 
 .XYTriggers: db 1
 	xy_trigger 0, $9, $9, UnknownScript_0x184947

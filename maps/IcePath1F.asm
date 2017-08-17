@@ -7,10 +7,10 @@ IcePath1F_MapScriptHeader:
 IcePath1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $13, $4, 1, ROUTE_44
-	warp_def $1b, $24, 7, BLACKTHORN_CITY
-	warp_def $5, $25, 1, ICE_PATH_B1F
-	warp_def $d, $25, 7, ICE_PATH_B1F
+	warp_def 19, 4, 1, ROUTE_44
+	warp_def 27, 36, 7, BLACKTHORN_CITY
+	warp_def 5, 37, 1, ICE_PATH_B1F
+	warp_def 13, 37, 7, ICE_PATH_B1F
 
 .XYTriggers: db 0
 

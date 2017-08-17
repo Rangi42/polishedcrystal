@@ -7,8 +7,8 @@ PowerPlant_MapScriptHeader:
 PowerPlant_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $2, 2, ROUTE_10_NORTH
-	warp_def $11, $3, 2, ROUTE_10_NORTH
+	warp_def 17, 2, 2, ROUTE_10_NORTH
+	warp_def 17, 3, 2, ROUTE_10_NORTH
 
 .XYTriggers: db 1
 	xy_trigger 1, $c, $5, PowerPlantGuardPhoneScript

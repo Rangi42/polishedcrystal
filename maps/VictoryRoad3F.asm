@@ -7,9 +7,9 @@ VictoryRoad3F_MapScriptHeader:
 VictoryRoad3F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $5, $2, 3, VICTORY_ROAD_2F
-	warp_def $b, $f, 4, VICTORY_ROAD_2F
-	warp_def $d, $13, 5, VICTORY_ROAD_2F
+	warp_def 5, 2, 3, VICTORY_ROAD_2F
+	warp_def 11, 15, 4, VICTORY_ROAD_2F
+	warp_def 13, 19, 5, VICTORY_ROAD_2F
 
 .XYTriggers: db 0
 

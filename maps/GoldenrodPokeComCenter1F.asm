@@ -7,10 +7,10 @@ GoldenrodPokeComCenter1F_MapScriptHeader:
 GoldenrodPokeComCenter1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $f, $6, 15, GOLDENROD_CITY
-	warp_def $f, $7, 15, GOLDENROD_CITY
-	warp_def $6, $1, 2, GOLDENROD_POKECOM_CENTER_OFFICE
-	warp_def $f, $0, 1, POKECENTER_2F
+	warp_def 15, 6, 15, GOLDENROD_CITY
+	warp_def 15, 7, 15, GOLDENROD_CITY
+	warp_def 6, 1, 2, GOLDENROD_POKECOM_CENTER_OFFICE
+	warp_def 15, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 

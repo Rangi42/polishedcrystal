@@ -11,11 +11,11 @@ Route10North_MapScriptHeader:
 Route10North_MapEventHeader:
 
 .Warps: db 5
-	warp_def $23, $b, 1, ROUTE_10_POKECENTER_1F
-	warp_def $33, $3, 1, POWER_PLANT
-	warp_def $2b, $4, 1, ROCK_TUNNEL_2F
-	warp_def $21, $8, 1, ROCK_TUNNEL_1F
-	warp_def $1, $a, 1, DIM_CAVE_5F
+	warp_def 35, 11, 1, ROUTE_10_POKECENTER_1F
+	warp_def 51, 3, 1, POWER_PLANT
+	warp_def 43, 4, 1, ROCK_TUNNEL_2F
+	warp_def 33, 8, 1, ROCK_TUNNEL_1F
+	warp_def 1, 10, 1, DIM_CAVE_5F
 
 .XYTriggers: db 0
 

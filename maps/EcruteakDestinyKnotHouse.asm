@@ -7,8 +7,8 @@ EcruteakDestinyKnotHouse_MapScriptHeader:
 EcruteakDestinyKnotHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 17, ECRUTEAK_CITY
-	warp_def $7, $4, 17, ECRUTEAK_CITY
+	warp_def 7, 3, 17, ECRUTEAK_CITY
+	warp_def 7, 4, 17, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

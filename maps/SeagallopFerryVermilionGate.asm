@@ -9,7 +9,7 @@ SeagallopFerryVermilionGate_MapScriptHeader:
 SeagallopFerryVermilionGate_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $6, 11, VERMILION_CITY
+	warp_def 0, 6, 11, VERMILION_CITY
 
 .XYTriggers: db 0
 
@@ -65,7 +65,7 @@ SeagallopFerryVermilionGateSailorScript:
 	iffalse .no_ferry
 	scall SeagallopFerryDepartureScript
 	domaptrigger SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
-	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, $6, $5
+	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, 6, 5
 	end
 
 .have_mysticticket_no_orangeticket
@@ -77,7 +77,7 @@ SeagallopFerryVermilionGateSailorScript:
 	iffalse .no_ferry
 	scall SeagallopFerryDepartureScript
 	domaptrigger SEAGALLOP_FERRY_NAVEL_GATE, $1
-	warp SEAGALLOP_FERRY_NAVEL_GATE, $6, $5
+	warp SEAGALLOP_FERRY_NAVEL_GATE, 6, 5
 	end
 
 .have_orangeticket_and_mysticticket
@@ -97,7 +97,7 @@ SeagallopFerryVermilionGateSailorScript:
 	iffalse .no_ferry
 	scall SeagallopFerryDepartureScript
 	domaptrigger FARAWAY_ISLAND, $1
-	warp FARAWAY_ISLAND, $c, $2a
+	warp FARAWAY_ISLAND, 12, 42
 	end
 
 .use_mysticticket_or_old_sea_map

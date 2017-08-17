@@ -7,13 +7,13 @@ LavenderTown_MapScriptHeader:
 LavenderTown_MapEventHeader:
 
 .Warps: db 7
-	warp_def $7, $5, 1, LAVENDER_POKECENTER_1F
-	warp_def $b, $5, 1, MR_FUJIS_HOUSE
-	warp_def $f, $3, 1, LAVENDER_TOWN_SPEECH_HOUSE
-	warp_def $f, $7, 1, LAVENDER_NAME_RATER
-	warp_def $7, $1, 2, LAVENDER_MART
-	warp_def $d, $d, 1, SOUL_HOUSE
-	warp_def $7, $e, 1, LAV_RADIO_TOWER_1F
+	warp_def 7, 5, 1, LAVENDER_POKECENTER_1F
+	warp_def 11, 5, 1, MR_FUJIS_HOUSE
+	warp_def 15, 3, 1, LAVENDER_TOWN_SPEECH_HOUSE
+	warp_def 15, 7, 1, LAVENDER_NAME_RATER
+	warp_def 7, 1, 2, LAVENDER_MART
+	warp_def 13, 13, 1, SOUL_HOUSE
+	warp_def 7, 14, 1, LAV_RADIO_TOWER_1F
 
 .XYTriggers: db 3
 	xy_trigger 0, 5, 8, LavenderTownExpositionTrigger1

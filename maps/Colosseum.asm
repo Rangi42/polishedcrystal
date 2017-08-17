@@ -10,8 +10,8 @@ Colosseum_MapScriptHeader:
 Colosseum_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $4, 3, POKECENTER_2F
-	warp_def $7, $5, 3, POKECENTER_2F
+	warp_def 7, 4, 3, POKECENTER_2F
+	warp_def 7, 5, 3, POKECENTER_2F
 
 .XYTriggers: db 0
 

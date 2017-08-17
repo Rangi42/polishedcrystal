@@ -10,27 +10,27 @@ GoldenrodCity_MapScriptHeader:
 GoldenrodCity_MapEventHeader:
 
 .Warps: db 21
-	warp_def $7, $1c, 1, GOLDENROD_GYM
-	warp_def $1d, $21, 1, GOLDENROD_BIKE_SHOP
-	warp_def $f, $1d, 1, GOLDENROD_HAPPINESS_RATER
-	warp_def $19, $9, 1, GOLDENROD_BILLS_HOUSE
-	warp_def $d, $d, 2, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_def $5, $21, 1, GOLDENROD_FLOWER_SHOP
-	warp_def $9, $25, 1, GOLDENROD_PP_SPEECH_HOUSE
-	warp_def $7, $13, 1, GOLDENROD_NAME_RATER
-	warp_def $1b, $1c, 1, GOLDENROD_DEPT_STORE_1F
-	warp_def $15, $12, 1, GOLDENROD_GAME_CORNER
-	warp_def $f, $9, 1, RADIO_TOWER_1F ; hole
-	warp_def $1, $17, 3, ROUTE_35_GOLDENROD_GATE
-	warp_def $5, $d, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1d, $d, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1b, $12, 2, GOLDENROD_POKECOM_CENTER_1F
-	warp_def $10, $4, 3, GOLDENROD_HARBOR_GATE
-	warp_def $11, $4, 4, GOLDENROD_HARBOR_GATE
-	warp_def $f, $23, 1, GOLDENROD_HP_UP_HOUSE
-	warp_def $13, $25, 1, GOLDENROD_NET_BALL_HOUSE
-	warp_def $17, $21, 1, GOLDENROD_BAND_HOUSE
-	warp_def $15, $d, 1, GOLDENROD_SPEECH_HOUSE
+	warp_def 7, 28, 1, GOLDENROD_GYM
+	warp_def 29, 33, 1, GOLDENROD_BIKE_SHOP
+	warp_def 15, 29, 1, GOLDENROD_HAPPINESS_RATER
+	warp_def 25, 9, 1, GOLDENROD_BILLS_HOUSE
+	warp_def 13, 13, 2, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def 5, 33, 1, GOLDENROD_FLOWER_SHOP
+	warp_def 9, 37, 1, GOLDENROD_PP_SPEECH_HOUSE
+	warp_def 7, 19, 1, GOLDENROD_NAME_RATER
+	warp_def 27, 28, 1, GOLDENROD_DEPT_STORE_1F
+	warp_def 21, 18, 1, GOLDENROD_GAME_CORNER
+	warp_def 15, 9, 1, RADIO_TOWER_1F ; hole
+	warp_def 1, 23, 3, ROUTE_35_GOLDENROD_GATE
+	warp_def 5, 13, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 29, 13, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 27, 18, 2, GOLDENROD_POKECOM_CENTER_1F
+	warp_def 16, 4, 3, GOLDENROD_HARBOR_GATE
+	warp_def 17, 4, 4, GOLDENROD_HARBOR_GATE
+	warp_def 15, 35, 1, GOLDENROD_HP_UP_HOUSE
+	warp_def 19, 37, 1, GOLDENROD_NET_BALL_HOUSE
+	warp_def 23, 33, 1, GOLDENROD_BAND_HOUSE
+	warp_def 21, 13, 1, GOLDENROD_SPEECH_HOUSE
 
 .XYTriggers: db 1
 	xy_trigger 1, $f, $9, GoldenrodCityPanUpScript
@@ -127,7 +127,7 @@ GoldenrodCityPanUpScript:
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
-	warpfacing UP, RADIO_TOWER_1F, $2, $7
+	warpfacing UP, RADIO_TOWER_1F, 2, 7
 	end
 
 MoveTutor:

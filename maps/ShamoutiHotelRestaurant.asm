@@ -8,8 +8,8 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 ShamoutiHotelRestaurant_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $10, 4, SHAMOUTI_HOTEL_1F
-	warp_def $7, $11, 4, SHAMOUTI_HOTEL_1F
+	warp_def 7, 16, 4, SHAMOUTI_HOTEL_1F
+	warp_def 7, 17, 4, SHAMOUTI_HOTEL_1F
 
 .XYTriggers: db 2
 	xy_trigger 1, $6, $10, ShamoutiHotelRestaurantLeavingTrigger1
@@ -139,7 +139,7 @@ ShamoutiHotelRestaurantLeaveScript:
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
 	waitsfx
-	warp SHAMOUTI_HOTEL_1F, $e, $0
+	warp SHAMOUTI_HOTEL_1F, 14, 0
 	end
 
 ShamoutiHotelRestaurantReceptionistText:

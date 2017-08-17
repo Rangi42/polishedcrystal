@@ -7,8 +7,8 @@ MystriStage_MapScriptHeader:
 MystriStage_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $6, 1, SINJOH_RUINS
-	warp_def $11, $7, 1, SINJOH_RUINS
+	warp_def 17, 6, 1, SINJOH_RUINS
+	warp_def 17, 7, 1, SINJOH_RUINS
 
 .XYTriggers: db 2
 	xy_trigger 1, $9, $6, MystriStageTrigger1Script

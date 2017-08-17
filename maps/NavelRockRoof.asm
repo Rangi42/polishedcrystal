@@ -8,7 +8,7 @@ NavelRockRoof_MapScriptHeader:
 NavelRockRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $f, $9, 14, NAVEL_ROCK_INSIDE
+	warp_def 15, 9, 14, NAVEL_ROCK_INSIDE
 
 .XYTriggers: db 0
 
@@ -56,10 +56,10 @@ Leaf:
 	refreshscreen
 	checknite
 	iffalse .Sun
-	changeblock $6, $0, $76
-	changeblock $8, $0, $77
-	changeblock $6, $2, $7a
-	changeblock $8, $2, $7b
+	changeblock 6, 0, $76
+	changeblock 8, 0, $77
+	changeblock 6, 2, $7a
+	changeblock 8, 2, $7b
 .Sun
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemaleEndingSequence

@@ -8,26 +8,26 @@ SaffronCity_MapScriptHeader:
 SaffronCity_MapEventHeader:
 
 .Warps: db 20
-	warp_def $3, $1a, 1, FIGHTING_DOJO
-	warp_def $3, $22, 1, SAFFRON_GYM
-	warp_def $b, $19, 2, SAFFRON_MART
-	warp_def $1d, $9, 1, SAFFRON_POKECENTER_1F
-	warp_def $1d, $1b, 1, MR_PSYCHICS_HOUSE
-	warp_def $3, $8, 2, SAFFRON_TRAIN_STATION
-	warp_def $15, $12, 1, SILPH_CO_1F
-	warp_def $b, $9, 1, COPYCATS_HOUSE_1F
-	warp_def $1, $12, 3, ROUTE_5_SAFFRON_CITY_GATE
-	warp_def $12, $0, 3, ROUTE_7_SAFFRON_GATE
-	warp_def $13, $0, 4, ROUTE_7_SAFFRON_GATE
-	warp_def $23, $10, 1, ROUTE_6_SAFFRON_GATE
-	warp_def $23, $11, 2, ROUTE_6_SAFFRON_GATE
-	warp_def $12, $27, 1, ROUTE_8_SAFFRON_GATE
-	warp_def $13, $27, 2, ROUTE_8_SAFFRON_GATE
-	warp_def $b, $22, 1, POKEMON_TRAINER_FAN_CLUB
-	warp_def $1d, $5, 1, SAFFRON_ORRE_SPEECH_HOUSE
-	warp_def $1d, $d, 1, SAFFRON_BOOK_SPEECH_HOUSE
-	warp_def $1d, $15, 1, SAFFRON_HITMONTOP_KID_HOUSE
-	warp_def $b, $d, 1, SAFFRON_RICH_SPEECH_HOUSE
+	warp_def 3, 26, 1, FIGHTING_DOJO
+	warp_def 3, 34, 1, SAFFRON_GYM
+	warp_def 11, 25, 2, SAFFRON_MART
+	warp_def 29, 9, 1, SAFFRON_POKECENTER_1F
+	warp_def 29, 27, 1, MR_PSYCHICS_HOUSE
+	warp_def 3, 8, 2, SAFFRON_TRAIN_STATION
+	warp_def 21, 18, 1, SILPH_CO_1F
+	warp_def 11, 9, 1, COPYCATS_HOUSE_1F
+	warp_def 1, 18, 3, ROUTE_5_SAFFRON_CITY_GATE
+	warp_def 18, 0, 3, ROUTE_7_SAFFRON_GATE
+	warp_def 19, 0, 4, ROUTE_7_SAFFRON_GATE
+	warp_def 35, 16, 1, ROUTE_6_SAFFRON_GATE
+	warp_def 35, 17, 2, ROUTE_6_SAFFRON_GATE
+	warp_def 18, 39, 1, ROUTE_8_SAFFRON_GATE
+	warp_def 19, 39, 2, ROUTE_8_SAFFRON_GATE
+	warp_def 11, 34, 1, POKEMON_TRAINER_FAN_CLUB
+	warp_def 29, 5, 1, SAFFRON_ORRE_SPEECH_HOUSE
+	warp_def 29, 13, 1, SAFFRON_BOOK_SPEECH_HOUSE
+	warp_def 29, 21, 1, SAFFRON_HITMONTOP_KID_HOUSE
+	warp_def 11, 13, 1, SAFFRON_RICH_SPEECH_HOUSE
 
 .XYTriggers: db 0
 

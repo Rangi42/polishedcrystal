@@ -8,8 +8,8 @@ FightingDojo_MapScriptHeader:
 FightingDojo_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 1, SAFFRON_CITY
-	warp_def $b, $5, 1, SAFFRON_CITY
+	warp_def 11, 4, 1, SAFFRON_CITY
+	warp_def 11, 5, 1, SAFFRON_CITY
 
 .XYTriggers: db 0
 

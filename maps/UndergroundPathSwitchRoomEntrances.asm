@@ -8,15 +8,15 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 UndergroundPathSwitchRoomEntrances_MapEventHeader:
 
 .Warps: db 9
-	warp_def $3, $17, 6, WAREHOUSE_ENTRANCE
-	warp_def $a, $16, 1, UNDERGROUND_WAREHOUSE
-	warp_def $a, $17, 2, UNDERGROUND_WAREHOUSE
-	warp_def $17, $5, 2, WAREHOUSE_ENTRANCE
-	warp_def $1b, $4, 14, GOLDENROD_CITY
-	warp_def $1b, $5, 14, GOLDENROD_CITY
-	warp_def $17, $15, 1, WAREHOUSE_ENTRANCE
-	warp_def $1b, $14, 13, GOLDENROD_CITY
-	warp_def $1b, $15, 13, GOLDENROD_CITY
+	warp_def 3, 23, 6, WAREHOUSE_ENTRANCE
+	warp_def 10, 22, 1, UNDERGROUND_WAREHOUSE
+	warp_def 10, 23, 2, UNDERGROUND_WAREHOUSE
+	warp_def 23, 5, 2, WAREHOUSE_ENTRANCE
+	warp_def 27, 4, 14, GOLDENROD_CITY
+	warp_def 27, 5, 14, GOLDENROD_CITY
+	warp_def 23, 21, 1, WAREHOUSE_ENTRANCE
+	warp_def 27, 20, 13, GOLDENROD_CITY
+	warp_def 27, 21, 13, GOLDENROD_CITY
 
 .XYTriggers: db 2
 	xy_trigger 0, $4, $13, UndergroundSilverTrigger1

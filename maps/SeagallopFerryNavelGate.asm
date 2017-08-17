@@ -10,7 +10,7 @@ SeagallopFerryNavelGate_MapScriptHeader:
 SeagallopFerryNavelGate_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $6, 1, NAVEL_ROCK_OUTSIDE
+	warp_def 0, 6, 1, NAVEL_ROCK_OUTSIDE
 
 .XYTriggers: db 0
 
@@ -60,7 +60,7 @@ SeagallopFerryNavelGateSailorScript:
 	waitsfx
 	appear SEAGALLOPFERRYNAVELGATE_SAILOR
 	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
-	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
+	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 
 .RefuseFerry

@@ -7,8 +7,8 @@ CeladonDeptStoreElevator_MapScriptHeader:
 CeladonDeptStoreElevator_MapEventHeader:
 
 .Warps: db 2
-	warp_def $3, $1, 255, CELADON_DEPT_STORE_1F
-	warp_def $3, $2, 255, CELADON_DEPT_STORE_1F
+	warp_def 3, 1, 255, CELADON_DEPT_STORE_1F
+	warp_def 3, 2, 255, CELADON_DEPT_STORE_1F
 
 .XYTriggers: db 0
 

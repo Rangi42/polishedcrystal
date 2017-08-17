@@ -8,9 +8,9 @@ Route35_MapScriptHeader:
 Route35_MapEventHeader:
 
 .Warps: db 3
-	warp_def $21, $9, 1, ROUTE_35_GOLDENROD_GATE
-	warp_def $21, $a, 2, ROUTE_35_GOLDENROD_GATE
-	warp_def $5, $3, 3, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 33, 9, 1, ROUTE_35_GOLDENROD_GATE
+	warp_def 33, 10, 2, ROUTE_35_GOLDENROD_GATE
+	warp_def 5, 3, 3, ROUTE_35_NATIONAL_PARK_GATE
 
 .XYTriggers: db 0
 

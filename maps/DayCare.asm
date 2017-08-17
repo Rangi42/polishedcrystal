@@ -9,10 +9,10 @@ DayCare_MapScriptHeader:
 DayCare_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 3, ROUTE_34
-	warp_def $5, $0, 4, ROUTE_34
-	warp_def $7, $2, 5, ROUTE_34
-	warp_def $7, $3, 5, ROUTE_34
+	warp_def 4, 0, 3, ROUTE_34
+	warp_def 5, 0, 4, ROUTE_34
+	warp_def 7, 2, 5, ROUTE_34
+	warp_def 7, 3, 5, ROUTE_34
 
 .XYTriggers: db 0
 

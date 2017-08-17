@@ -7,8 +7,8 @@ Route20_MapScriptHeader:
 Route20_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $3e, 1, SEAFOAM_ISLANDS_1F
-	warp_def $5, $36, 4, SEAFOAM_ISLANDS_1F
+	warp_def 9, 62, 1, SEAFOAM_ISLANDS_1F
+	warp_def 5, 54, 4, SEAFOAM_ISLANDS_1F
 
 .XYTriggers: db 0
 

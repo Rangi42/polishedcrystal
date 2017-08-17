@@ -7,9 +7,9 @@ RedsHouse1F_MapScriptHeader:
 RedsHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $2, 1, PALLET_TOWN
-	warp_def $7, $3, 1, PALLET_TOWN
-	warp_def $0, $7, 1, REDS_HOUSE_2F
+	warp_def 7, 2, 1, PALLET_TOWN
+	warp_def 7, 3, 1, PALLET_TOWN
+	warp_def 0, 7, 1, REDS_HOUSE_2F
 
 .XYTriggers: db 0
 

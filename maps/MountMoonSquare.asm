@@ -9,8 +9,8 @@ MountMoonSquare_MapScriptHeader:
 MountMoonSquare_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $16, 10, MOUNT_MOON_B1F
-	warp_def $7, $d, 1, MOUNT_MOON_GIFT_SHOP
+	warp_def 11, 22, 10, MOUNT_MOON_B1F
+	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
 
 .XYTriggers: db 1
 	xy_trigger 0, $b, $7, ClefairyDance

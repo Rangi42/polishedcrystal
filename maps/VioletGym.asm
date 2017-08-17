@@ -8,8 +8,8 @@ VioletGym_MapScriptHeader:
 VioletGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $4, 2, VIOLET_CITY
-	warp_def $f, $5, 2, VIOLET_CITY
+	warp_def 15, 4, 2, VIOLET_CITY
+	warp_def 15, 5, 2, VIOLET_CITY
 
 .XYTriggers: db 0
 
@@ -40,7 +40,7 @@ VioletGymFalknerAwayScript:
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
 	waitsfx
-	warp VIOLET_CITY, $12, $16
+	warp VIOLET_CITY, 18, 22
 	end
 
 FalknerScript_0x683c2:

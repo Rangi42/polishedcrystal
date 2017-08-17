@@ -10,9 +10,9 @@ IlexForest_MapScriptHeader:
 IlexForest_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $3, 3, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $2c, $5, 1, ILEX_FOREST_AZALEA_GATE
-	warp_def $2d, $5, 2, ILEX_FOREST_AZALEA_GATE
+	warp_def 7, 3, 3, ROUTE_34_ILEX_FOREST_GATE
+	warp_def 44, 5, 1, ILEX_FOREST_AZALEA_GATE
+	warp_def 45, 5, 2, ILEX_FOREST_AZALEA_GATE
 
 .XYTriggers: db 0
 
@@ -73,52 +73,52 @@ IlexForestFarfetchdCallback:
 	return
 
 .PositionOne:
-	moveperson ILEXFOREST_FARFETCHD, $10, $21
+	moveperson ILEXFOREST_FARFETCHD, 16, 33
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionTwo:
-	moveperson ILEXFOREST_FARFETCHD, $11, $1b
+	moveperson ILEXFOREST_FARFETCHD, 17, 27
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionThree:
-	moveperson ILEXFOREST_FARFETCHD, $16, $1a
+	moveperson ILEXFOREST_FARFETCHD, 22, 26
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionFour:
-	moveperson ILEXFOREST_FARFETCHD, $1f, $18
+	moveperson ILEXFOREST_FARFETCHD, 31, 24
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionFive:
-	moveperson ILEXFOREST_FARFETCHD, $1e, $21
+	moveperson ILEXFOREST_FARFETCHD, 30, 33
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionSix:
-	moveperson ILEXFOREST_FARFETCHD, $1a, $25
+	moveperson ILEXFOREST_FARFETCHD, 26, 37
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionSeven:
-	moveperson ILEXFOREST_FARFETCHD, $18, $21
+	moveperson ILEXFOREST_FARFETCHD, 24, 33
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionEight:
-	moveperson ILEXFOREST_FARFETCHD, $11, $1f
+	moveperson ILEXFOREST_FARFETCHD, 17, 31
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionNine:
-	moveperson ILEXFOREST_FARFETCHD, $c, $25
+	moveperson ILEXFOREST_FARFETCHD, 12, 37
 	appear ILEXFOREST_FARFETCHD
 	return
 
 .PositionTen:
-	moveperson ILEXFOREST_FARFETCHD, $8, $1e
+	moveperson ILEXFOREST_FARFETCHD, 8, 30
 	appear ILEXFOREST_FARFETCHD
 	return
 
@@ -159,7 +159,7 @@ IlexForestFarfetchdScript:
 	closetext
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos1_Pos2
 .NewPosition2:
-	moveperson ILEXFOREST_FARFETCHD, $11, $1b
+	moveperson ILEXFOREST_FARFETCHD, 17, 27
 	writebyte 2
 .NewPosition:
 	disappear ILEXFOREST_FARFETCHD
@@ -173,14 +173,14 @@ IlexForestFarfetchdScript:
 	if_equal DOWN, .Position2_Down
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos2_Pos3
 .NewPosition3:
-	moveperson ILEXFOREST_FARFETCHD, $16, $1a
+	moveperson ILEXFOREST_FARFETCHD, 22, 26
 	writebyte 3
 	jump .NewPosition
 
 .Position2_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos2_Pos8
 .NewPosition8:
-	moveperson ILEXFOREST_FARFETCHD, $11, $1f
+	moveperson ILEXFOREST_FARFETCHD, 17, 31
 	writebyte 8
 	jump .NewPosition
 
@@ -189,7 +189,7 @@ IlexForestFarfetchdScript:
 	if_equal LEFT, .Position3_Left
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos3_Pos4
 .NewPosition4:
-	moveperson ILEXFOREST_FARFETCHD, $1f, $18
+	moveperson ILEXFOREST_FARFETCHD, 31, 24
 	writebyte 4
 	jump .NewPosition
 
@@ -202,7 +202,7 @@ IlexForestFarfetchdScript:
 	if_equal UP, .Position4_Up
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos4_Pos5
 .NewPosition5:
-	moveperson ILEXFOREST_FARFETCHD, $1e, $21
+	moveperson ILEXFOREST_FARFETCHD, 30, 33
 	writebyte 5
 	jump .NewPosition
 
@@ -217,14 +217,14 @@ IlexForestFarfetchdScript:
 	if_equal RIGHT, .Position5_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos5_Pos6
 .NewPosition6:
-	moveperson ILEXFOREST_FARFETCHD, $1a, $25
+	moveperson ILEXFOREST_FARFETCHD, 26, 37
 	writebyte 6
 	jump .NewPosition
 
 .Position5_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos5_Pos7
 .NewPosition7:
-	moveperson ILEXFOREST_FARFETCHD, $18, $21
+	moveperson ILEXFOREST_FARFETCHD, 24, 33
 	writebyte 7
 	jump .NewPosition
 
@@ -267,7 +267,7 @@ IlexForestFarfetchdScript:
 	if_equal LEFT, .Position8_Left
 	if_equal RIGHT, .Position8_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos9
-	moveperson ILEXFOREST_FARFETCHD, $c, $25
+	moveperson ILEXFOREST_FARFETCHD, 12, 37
 	writebyte 9
 	jump .NewPosition
 
@@ -288,7 +288,7 @@ IlexForestFarfetchdScript:
 	appear ILEXFOREST_BLACK_BELT
 	setevent EVENT_CHARCOAL_KILN_BOSS
 	setevent EVENT_HERDED_FARFETCHD
-	moveperson ILEXFOREST_FARFETCHD, $8, $1e
+	moveperson ILEXFOREST_FARFETCHD, 8, 30
 	writebyte 10
 	jump .NewPosition
 
@@ -481,7 +481,7 @@ MapIlexForestSignpost4Script:
 	waitsfx
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	moveperson ILEXFOREST_LYRA, $5, $1a
+	moveperson ILEXFOREST_LYRA, 5, 26
 	appear ILEXFOREST_LYRA
 	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraApproaches
 	spriteface PLAYER, LEFT
@@ -516,7 +516,7 @@ MapIlexForestSignpost4Script:
 	waitsfx
 	disappear ILEXFOREST_CELEBI
 	setevent EVENT_TIME_TRAVELING
-	warp ROUTE_22_PAST, $6, $7
+	warp ROUTE_22_PAST, 6, 7
 	end
 
 MovementData_Farfetchd_Pos1_Pos2:

@@ -7,9 +7,9 @@ KrissHouse1F_MapScriptHeader:
 KrissHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $6, 2, NEW_BARK_TOWN
-	warp_def $7, $7, 2, NEW_BARK_TOWN
-	warp_def $0, $9, 1, KRISS_HOUSE_2F
+	warp_def 7, 6, 2, NEW_BARK_TOWN
+	warp_def 7, 7, 2, NEW_BARK_TOWN
+	warp_def 0, 9, 1, KRISS_HOUSE_2F
 
 .XYTriggers: db 3
 	xy_trigger 0, $4, $8, MomTrigger1

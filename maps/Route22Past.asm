@@ -96,7 +96,7 @@ Route22PastCelebiEventScript:
 	clearevent EVENT_GIOVANNIS_CAVE_LYRA
 	clearevent EVENT_GIOVANNIS_CAVE_GIOVANNI
 	domaptrigger GIOVANNIS_CAVE, $1
-	warp GIOVANNIS_CAVE, $f, $5
+	warp GIOVANNIS_CAVE, 15, 5
 	end
 
 Route22Past_PlayerLooksAroundMovementData:

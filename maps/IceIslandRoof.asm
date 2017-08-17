@@ -7,7 +7,7 @@ IceIslandRoof_MapScriptHeader:
 IceIslandRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $3, 2, ICE_ISLAND
+	warp_def 7, 3, 2, ICE_ISLAND
 
 .XYTriggers: db 0
 

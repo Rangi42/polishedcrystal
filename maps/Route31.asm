@@ -8,9 +8,9 @@ Route31_MapScriptHeader:
 Route31_MapEventHeader:
 
 .Warps: db 3
-	warp_def $6, $4, 3, ROUTE_31_VIOLET_GATE
-	warp_def $7, $4, 4, ROUTE_31_VIOLET_GATE
-	warp_def $5, $22, 1, DARK_CAVE_VIOLET_ENTRANCE
+	warp_def 6, 4, 3, ROUTE_31_VIOLET_GATE
+	warp_def 7, 4, 4, ROUTE_31_VIOLET_GATE
+	warp_def 5, 34, 1, DARK_CAVE_VIOLET_ENTRANCE
 
 .XYTriggers: db 0
 

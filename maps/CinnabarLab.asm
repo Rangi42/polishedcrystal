@@ -72,7 +72,7 @@ CinnabarLabCelebiEventScript:
 	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
 	setevent EVENT_CINNABAR_LAB_SCIENTIST2
 	dotrigger $0
-	warpfacing UP, CINNABAR_LAB, $f, $9
+	warpfacing UP, CINNABAR_LAB, 15, 9
 	special Special_FadeOutMusic
 	pause 30
 	showtext CinnabarLabContinueTestingText
@@ -207,7 +207,7 @@ CinnabarLabCelebiEventScript:
 	pause 30
 	waitsfx
 	domaptrigger ILEX_FOREST, $1
-	warp ILEX_FOREST, $a, $1a
+	warp ILEX_FOREST, 10, 26
 	end
 
 CinnabarLabStepDownMovementData:

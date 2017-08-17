@@ -7,9 +7,9 @@ ShamoutiHotel3F_MapScriptHeader:
 ShamoutiHotel3F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $3, 2, SHAMOUTI_HOTEL_2F
-	warp_def $0, $a, 1, SHAMOUTI_HOTEL_ROOM_3B
-	warp_def $0, $e, 1, SHAMOUTI_HOTEL_ROOM_3C
+	warp_def 0, 3, 2, SHAMOUTI_HOTEL_2F
+	warp_def 0, 10, 1, SHAMOUTI_HOTEL_ROOM_3B
+	warp_def 0, 14, 1, SHAMOUTI_HOTEL_ROOM_3C
 
 .XYTriggers: db 0
 

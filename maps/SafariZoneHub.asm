@@ -7,15 +7,15 @@ SafariZoneHub_MapScriptHeader:
 SafariZoneHub_MapEventHeader:
 
 .Warps: db 9
-	warp_def $1b, $10, 1, SAFARI_ZONE_FUCHSIA_GATE
-	warp_def $1b, $11, 2, SAFARI_ZONE_FUCHSIA_GATE
-	warp_def $c, $1f, 1, SAFARI_ZONE_EAST
-	warp_def $d, $1f, 2, SAFARI_ZONE_EAST
-	warp_def $c, $2, 5, SAFARI_ZONE_WEST
-	warp_def $d, $2, 6, SAFARI_ZONE_WEST
-	warp_def $2, $10, 5, SAFARI_ZONE_NORTH
-	warp_def $2, $11, 6, SAFARI_ZONE_NORTH
-	warp_def $15, $13, 1, SAFARI_ZONE_HUB_REST_HOUSE
+	warp_def 27, 16, 1, SAFARI_ZONE_FUCHSIA_GATE
+	warp_def 27, 17, 2, SAFARI_ZONE_FUCHSIA_GATE
+	warp_def 12, 31, 1, SAFARI_ZONE_EAST
+	warp_def 13, 31, 2, SAFARI_ZONE_EAST
+	warp_def 12, 2, 5, SAFARI_ZONE_WEST
+	warp_def 13, 2, 6, SAFARI_ZONE_WEST
+	warp_def 2, 16, 5, SAFARI_ZONE_NORTH
+	warp_def 2, 17, 6, SAFARI_ZONE_NORTH
+	warp_def 21, 19, 1, SAFARI_ZONE_HUB_REST_HOUSE
 
 .XYTriggers: db 0
 

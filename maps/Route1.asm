@@ -7,7 +7,7 @@ Route1_MapScriptHeader:
 Route1_MapEventHeader:
 
 .Warps: db 1
-	warp_def $1, $8, 3, ROUTE_1_VIRIDIAN_GATE
+	warp_def 1, 8, 3, ROUTE_1_VIRIDIAN_GATE
 
 .XYTriggers: db 0
 

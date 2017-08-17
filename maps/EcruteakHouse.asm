@@ -8,11 +8,11 @@ EcruteakHouse_MapScriptHeader:
 EcruteakHouse_MapEventHeader:
 
 .Warps: db 5
-	warp_def $11, $4, 3, ECRUTEAK_CITY
-	warp_def $11, $5, 3, ECRUTEAK_CITY
-	warp_def $3, $5, 4, ECRUTEAK_HOUSE
-	warp_def $f, $11, 3, ECRUTEAK_HOUSE
-	warp_def $3, $11, 3, WISE_TRIOS_ROOM
+	warp_def 17, 4, 3, ECRUTEAK_CITY
+	warp_def 17, 5, 3, ECRUTEAK_CITY
+	warp_def 3, 5, 4, ECRUTEAK_HOUSE
+	warp_def 15, 17, 3, ECRUTEAK_HOUSE
+	warp_def 3, 17, 3, WISE_TRIOS_ROOM
 
 .XYTriggers: db 2
 	xy_trigger 0, $7, $4, EcruteakHouse_XYTrigger1
@@ -57,7 +57,7 @@ EcruteakHouse_XYTrigger1:
 	checkevent EVENT_RANG_CLEAR_BELL_2
 	iftrue EcruteakHouse_XYTrigger_DontMove
 	applymovement ECRUTEAKHOUSE_SAGE2, MovementData_0x980c7
-	moveperson ECRUTEAKHOUSE_SAGE1, $4, $6
+	moveperson ECRUTEAKHOUSE_SAGE1, 4, 6
 	appear ECRUTEAKHOUSE_SAGE1
 	pause 5
 	disappear ECRUTEAKHOUSE_SAGE2
@@ -67,7 +67,7 @@ EcruteakHouse_XYTrigger2:
 	checkevent EVENT_RANG_CLEAR_BELL_1
 	iftrue EcruteakHouse_XYTrigger_DontMove
 	applymovement ECRUTEAKHOUSE_SAGE1, MovementData_0x980cc
-	moveperson ECRUTEAKHOUSE_SAGE2, $5, $6
+	moveperson ECRUTEAKHOUSE_SAGE2, 5, 6
 	appear ECRUTEAKHOUSE_SAGE2
 	pause 5
 	disappear ECRUTEAKHOUSE_SAGE1

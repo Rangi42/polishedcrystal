@@ -7,8 +7,8 @@ RockTunnel2F_MapScriptHeader:
 RockTunnel2F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $13, $19, 3, ROUTE_10_NORTH
-	warp_def $f, $7, 8, ROCK_TUNNEL_1F
+	warp_def 19, 25, 3, ROUTE_10_NORTH
+	warp_def 15, 7, 8, ROCK_TUNNEL_1F
 
 .XYTriggers: db 0
 

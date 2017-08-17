@@ -8,7 +8,7 @@ LakeofRageSouth_MapScriptHeader:
 LakeofRageSouth_MapEventHeader:
 
 .Warps: db 1
-	warp_def $f, $1b, 1, LAKE_OF_RAGE_MAGIKARP_HOUSE
+	warp_def 15, 27, 1, LAKE_OF_RAGE_MAGIKARP_HOUSE
 
 .XYTriggers: db 0
 

@@ -9,7 +9,7 @@ GoldenrodDeptStoreRoof_MapScriptHeader:
 GoldenrodDeptStoreRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $1, $d, 3, GOLDENROD_DEPT_STORE_6F
+	warp_def 1, 13, 3, GOLDENROD_DEPT_STORE_6F
 
 .XYTriggers: db 0
 
@@ -35,8 +35,8 @@ GoldenrodDeptStoreRoofCheckSaleChangeBlock:
 	return
 
 .ChangeBlock:
-	changeblock $0, $2, $3f
-	changeblock $0, $4, $f
+	changeblock 0, 2, $3f
+	changeblock 0, 4, $f
 	return
 
 GoldenrodDeptStoreRoofCheckSaleChangeClerk:

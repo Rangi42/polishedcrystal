@@ -8,8 +8,8 @@ Route3_MapScriptHeader:
 Route3_MapEventHeader:
 
 .Warps: db 2
-	warp_def $1, $44, 1, MOUNT_MOON_1F
-	warp_def $3, $3d, 1, ROUTE_3_POKECENTER_1F
+	warp_def 1, 68, 1, MOUNT_MOON_1F
+	warp_def 3, 61, 1, ROUTE_3_POKECENTER_1F
 
 .XYTriggers: db 0
 

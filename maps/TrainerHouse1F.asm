@@ -7,9 +7,9 @@ TrainerHouse1F_MapScriptHeader:
 TrainerHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $b, $4, 3, VIRIDIAN_CITY
-	warp_def $b, $5, 3, VIRIDIAN_CITY
-	warp_def $2, $8, 1, TRAINER_HOUSE_B1F
+	warp_def 11, 4, 3, VIRIDIAN_CITY
+	warp_def 11, 5, 3, VIRIDIAN_CITY
+	warp_def 2, 8, 1, TRAINER_HOUSE_B1F
 
 .XYTriggers: db 0
 

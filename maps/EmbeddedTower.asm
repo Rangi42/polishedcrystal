@@ -7,8 +7,8 @@ EmbeddedTower_MapScriptHeader:
 EmbeddedTower_MapEventHeader:
 
 .Warps: db 2
-	warp_def $17, $a, 6, ROUTE_47
-	warp_def $17, $b, 6, ROUTE_47
+	warp_def 23, 10, 6, ROUTE_47
+	warp_def 23, 11, 6, ROUTE_47
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ Route2NuggetSpeechHouse_MapScriptHeader:
 Route2NuggetSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_2_NORTH
-	warp_def $7, $3, 1, ROUTE_2_NORTH
+	warp_def 7, 2, 1, ROUTE_2_NORTH
+	warp_def 7, 3, 1, ROUTE_2_NORTH
 
 .XYTriggers: db 0
 

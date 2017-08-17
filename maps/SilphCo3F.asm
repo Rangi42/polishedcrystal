@@ -7,7 +7,7 @@ SilphCo3F_MapScriptHeader:
 SilphCo3F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $b, 2, SILPH_CO_2F
+	warp_def 0, 11, 2, SILPH_CO_2F
 
 .XYTriggers: db 0
 

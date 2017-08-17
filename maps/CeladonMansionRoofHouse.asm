@@ -7,8 +7,8 @@ CeladonMansionRoofHouse_MapScriptHeader:
 CeladonMansionRoofHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, CELADON_MANSION_ROOF
-	warp_def $7, $3, 3, CELADON_MANSION_ROOF
+	warp_def 7, 2, 3, CELADON_MANSION_ROOF
+	warp_def 7, 3, 3, CELADON_MANSION_ROOF
 
 .XYTriggers: db 0
 

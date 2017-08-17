@@ -7,8 +7,8 @@ CeruleanGymBadgeSpeechHouse_MapScriptHeader:
 CeruleanGymBadgeSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, CERULEAN_CITY
-	warp_def $7, $3, 1, CERULEAN_CITY
+	warp_def 7, 2, 1, CERULEAN_CITY
+	warp_def 7, 3, 1, CERULEAN_CITY
 
 .XYTriggers: db 0
 

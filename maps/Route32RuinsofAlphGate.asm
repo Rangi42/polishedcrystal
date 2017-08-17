@@ -7,10 +7,10 @@ Route32RuinsofAlphGate_MapScriptHeader:
 Route32RuinsofAlphGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 10, RUINS_OF_ALPH_OUTSIDE
-	warp_def $5, $0, 11, RUINS_OF_ALPH_OUTSIDE
-	warp_def $4, $9, 2, ROUTE_32
-	warp_def $5, $9, 3, ROUTE_32
+	warp_def 4, 0, 10, RUINS_OF_ALPH_OUTSIDE
+	warp_def 5, 0, 11, RUINS_OF_ALPH_OUTSIDE
+	warp_def 4, 9, 2, ROUTE_32
+	warp_def 5, 9, 3, ROUTE_32
 
 .XYTriggers: db 0
 

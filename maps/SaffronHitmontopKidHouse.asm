@@ -7,8 +7,8 @@ SaffronHitmontopKidHouse_MapScriptHeader:
 SaffronHitmontopKidHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 19, SAFFRON_CITY
-	warp_def $7, $3, 19, SAFFRON_CITY
+	warp_def 7, 2, 19, SAFFRON_CITY
+	warp_def 7, 3, 19, SAFFRON_CITY
 
 .XYTriggers: db 0
 

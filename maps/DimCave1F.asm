@@ -7,10 +7,10 @@ DimCave1F_MapScriptHeader:
 DimCave1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $2, $1e, 5, DIM_CAVE_2F
-	warp_def $11, $5, 6, DIM_CAVE_2F
-	warp_def $12, $1c, 7, DIM_CAVE_2F
-	warp_def $20, $18, 8, DIM_CAVE_2F
+	warp_def 2, 30, 5, DIM_CAVE_2F
+	warp_def 17, 5, 6, DIM_CAVE_2F
+	warp_def 18, 28, 7, DIM_CAVE_2F
+	warp_def 32, 24, 8, DIM_CAVE_2F
 
 .XYTriggers: db 0
 

@@ -7,9 +7,9 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 CeladonHomeDecorStore1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $3, 12, CELADON_CITY
-	warp_def $7, $4, 12, CELADON_CITY
-	warp_def $0, $9, 1, CELADON_HOME_DECOR_STORE_2F
+	warp_def 7, 3, 12, CELADON_CITY
+	warp_def 7, 4, 12, CELADON_CITY
+	warp_def 0, 9, 1, CELADON_HOME_DECOR_STORE_2F
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ CeruleanMart_MapScriptHeader:
 CeruleanMart_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 6, CERULEAN_CITY
-	warp_def $7, $3, 6, CERULEAN_CITY
+	warp_def 7, 2, 6, CERULEAN_CITY
+	warp_def 7, 3, 6, CERULEAN_CITY
 
 .XYTriggers: db 0
 

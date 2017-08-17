@@ -7,7 +7,7 @@ Route44_MapScriptHeader:
 Route44_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $38, 1, ICE_PATH_1F
+	warp_def 7, 56, 1, ICE_PATH_1F
 
 .XYTriggers: db 0
 

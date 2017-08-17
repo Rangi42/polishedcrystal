@@ -7,7 +7,7 @@ Route45_MapScriptHeader:
 Route45_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $4, 1, DARK_CAVE_BLACKTHORN_ENTRANCE
+	warp_def 5, 4, 1, DARK_CAVE_BLACKTHORN_ENTRANCE
 
 .XYTriggers: db 0
 

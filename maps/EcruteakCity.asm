@@ -8,23 +8,23 @@ EcruteakCity_MapScriptHeader:
 EcruteakCity_MapEventHeader:
 
 .Warps: db 17
-	warp_def $1a, $23, 1, ROUTE_42_ECRUTEAK_GATE
-	warp_def $1b, $23, 2, ROUTE_42_ECRUTEAK_GATE
-	warp_def $b, $15, 1, ECRUTEAK_HOUSE
-	warp_def $b, $f, 3, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def $b, $10, 4, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def $1b, $17, 1, ECRUTEAK_POKECENTER_1F
-	warp_def $15, $5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
-	warp_def $15, $17, 1, DANCE_THEATRE
-	warp_def $15, $1d, 2, ECRUTEAK_MART
-	warp_def $1b, $6, 1, ECRUTEAK_GYM
-	warp_def $1b, $d, 1, ECRUTEAK_ITEMFINDER_HOUSE
-	warp_def $11, $5, 1, VALERIES_HOUSE
-	warp_def $5, $5, 1, BURNED_TOWER_1F
-	warp_def $12, $0, 3, ROUTE_38_ECRUTEAK_GATE
-	warp_def $13, $0, 4, ROUTE_38_ECRUTEAK_GATE
-	warp_def $1b, $1d, 1, ECRUTEAK_CHERISH_BALL_HOUSE
-	warp_def $11, $d, 1, ECRUTEAK_DESTINY_KNOT_HOUSE
+	warp_def 26, 35, 1, ROUTE_42_ECRUTEAK_GATE
+	warp_def 27, 35, 2, ROUTE_42_ECRUTEAK_GATE
+	warp_def 11, 21, 1, ECRUTEAK_HOUSE
+	warp_def 11, 15, 3, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def 11, 16, 4, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def 27, 23, 1, ECRUTEAK_POKECENTER_1F
+	warp_def 21, 5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
+	warp_def 21, 23, 1, DANCE_THEATRE
+	warp_def 21, 29, 2, ECRUTEAK_MART
+	warp_def 27, 6, 1, ECRUTEAK_GYM
+	warp_def 27, 13, 1, ECRUTEAK_ITEMFINDER_HOUSE
+	warp_def 17, 5, 1, VALERIES_HOUSE
+	warp_def 5, 5, 1, BURNED_TOWER_1F
+	warp_def 18, 0, 3, ROUTE_38_ECRUTEAK_GATE
+	warp_def 19, 0, 4, ROUTE_38_ECRUTEAK_GATE
+	warp_def 27, 29, 1, ECRUTEAK_CHERISH_BALL_HOUSE
+	warp_def 17, 13, 1, ECRUTEAK_DESTINY_KNOT_HOUSE
 
 .XYTriggers: db 0
 

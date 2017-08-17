@@ -8,8 +8,8 @@ BattleTowerElevator_MapScriptHeader:
 BattleTowerElevator_MapEventHeader:
 
 .Warps: db 2
-	warp_def $3, $1, 1, BATTLE_TOWER_HALLWAY
-	warp_def $3, $2, 1, BATTLE_TOWER_HALLWAY
+	warp_def 3, 1, 1, BATTLE_TOWER_HALLWAY
+	warp_def 3, 2, 1, BATTLE_TOWER_HALLWAY
 
 .XYTriggers: db 0
 

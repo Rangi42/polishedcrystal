@@ -9,8 +9,8 @@ CeruleanGym_MapScriptHeader:
 CeruleanGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $4, 5, CERULEAN_CITY
-	warp_def $f, $5, 5, CERULEAN_CITY
+	warp_def 15, 4, 5, CERULEAN_CITY
+	warp_def 15, 5, 5, CERULEAN_CITY
 
 .XYTriggers: db 0
 

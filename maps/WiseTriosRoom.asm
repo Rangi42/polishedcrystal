@@ -8,9 +8,9 @@ WiseTriosRoom_MapScriptHeader:
 WiseTriosRoom_MapEventHeader:
 
 .Warps: db 3
-	warp_def $4, $7, 1, BELLCHIME_TRAIL
-	warp_def $5, $7, 2, BELLCHIME_TRAIL
-	warp_def $4, $1, 5, ECRUTEAK_HOUSE
+	warp_def 4, 7, 1, BELLCHIME_TRAIL
+	warp_def 5, 7, 2, BELLCHIME_TRAIL
+	warp_def 4, 1, 5, ECRUTEAK_HOUSE
 
 .XYTriggers: db 1
 	xy_trigger 0, $4, $7, UnknownScript_0x985a3

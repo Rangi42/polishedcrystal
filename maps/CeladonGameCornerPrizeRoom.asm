@@ -7,8 +7,8 @@ CeladonGameCornerPrizeRoom_MapScriptHeader:
 CeladonGameCornerPrizeRoom_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 7, CELADON_CITY
-	warp_def $7, $4, 7, CELADON_CITY
+	warp_def 7, 3, 7, CELADON_CITY
+	warp_def 7, 4, 7, CELADON_CITY
 
 .XYTriggers: db 0
 

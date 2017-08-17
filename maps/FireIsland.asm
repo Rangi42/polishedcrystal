@@ -7,20 +7,20 @@ FireIsland_MapScriptHeader:
 FireIsland_MapEventHeader:
 
 .Warps: db 14
-	warp_def $1d, $5, 1, SHAMOUTI_COAST
-	warp_def $1d, $13, 1, FIRE_ISLAND_ROOF
-	warp_def $5, $7, 4, FIRE_ISLAND
-	warp_def $5, $15, 3, FIRE_ISLAND
-	warp_def $9, $7, 6, FIRE_ISLAND
-	warp_def $9, $15, 5, FIRE_ISLAND
-	warp_def $10, $2, 8, FIRE_ISLAND
-	warp_def $10, $10, 7, FIRE_ISLAND
-	warp_def $13, $9, 10, FIRE_ISLAND
-	warp_def $13, $17, 9, FIRE_ISLAND
-	warp_def $17, $3, 12, FIRE_ISLAND
-	warp_def $17, $11, 11, FIRE_ISLAND
-	warp_def $1b, $14, 14, FIRE_ISLAND
-	warp_def $1b, $6, 13, FIRE_ISLAND ; hole
+	warp_def 29, 5, 1, SHAMOUTI_COAST
+	warp_def 29, 19, 1, FIRE_ISLAND_ROOF
+	warp_def 5, 7, 4, FIRE_ISLAND
+	warp_def 5, 21, 3, FIRE_ISLAND
+	warp_def 9, 7, 6, FIRE_ISLAND
+	warp_def 9, 21, 5, FIRE_ISLAND
+	warp_def 16, 2, 8, FIRE_ISLAND
+	warp_def 16, 16, 7, FIRE_ISLAND
+	warp_def 19, 9, 10, FIRE_ISLAND
+	warp_def 19, 23, 9, FIRE_ISLAND
+	warp_def 23, 3, 12, FIRE_ISLAND
+	warp_def 23, 17, 11, FIRE_ISLAND
+	warp_def 27, 20, 14, FIRE_ISLAND
+	warp_def 27, 6, 13, FIRE_ISLAND ; hole
 
 .XYTriggers: db 0
 

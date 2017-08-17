@@ -7,9 +7,9 @@ ValenciaIsland_MapScriptHeader:
 ValenciaIsland_MapEventHeader:
 
 .Warps: db 3
-	warp_def $13, $12, 1, IVYS_LAB
-	warp_def $13, $5, 1, IVYS_HOUSE
-	warp_def $b, $3, 1, VALENCIA_HOUSE
+	warp_def 19, 18, 1, IVYS_LAB
+	warp_def 19, 5, 1, IVYS_HOUSE
+	warp_def 11, 3, 1, VALENCIA_HOUSE
 
 .XYTriggers: db 0
 

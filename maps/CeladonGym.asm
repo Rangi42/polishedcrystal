@@ -7,8 +7,8 @@ CeladonGym_MapScriptHeader:
 CeladonGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 8, CELADON_CITY
-	warp_def $11, $5, 8, CELADON_CITY
+	warp_def 17, 4, 8, CELADON_CITY
+	warp_def 17, 5, 8, CELADON_CITY
 
 .XYTriggers: db 0
 

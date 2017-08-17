@@ -7,11 +7,11 @@ Route1617Gate_MapScriptHeader:
 Route1617Gate_MapEventHeader:
 
 .Warps: db 5
-	warp_def $5, $0, 1, ROUTE_16_SOUTH
-	warp_def $6, $0, 2, ROUTE_16_SOUTH
-	warp_def $5, $9, 1, ROUTE_16_NORTHEAST
-	warp_def $6, $9, 2, ROUTE_16_NORTHEAST
-	warp_def $8, $8, 1, ROUTE_16_17_GATE_2F
+	warp_def 5, 0, 1, ROUTE_16_SOUTH
+	warp_def 6, 0, 2, ROUTE_16_SOUTH
+	warp_def 5, 9, 1, ROUTE_16_NORTHEAST
+	warp_def 6, 9, 2, ROUTE_16_NORTHEAST
+	warp_def 8, 8, 1, ROUTE_16_17_GATE_2F
 
 .XYTriggers: db 5
 	xy_trigger 0, $3, $5, UnknownScript_0x733ed

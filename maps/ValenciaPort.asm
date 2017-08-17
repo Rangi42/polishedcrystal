@@ -7,8 +7,8 @@ ValenciaPort_MapScriptHeader:
 ValenciaPort_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $a, 1, ROUTE_49
-	warp_def $11, $b, 1, ROUTE_49
+	warp_def 17, 10, 1, ROUTE_49
+	warp_def 17, 11, 1, ROUTE_49
 
 .XYTriggers: db 0
 
@@ -41,7 +41,7 @@ ValenciaPortSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	domaptrigger SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
-	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, $6, $5
+	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, 6, 5
 	end
 
 .RefuseFerry

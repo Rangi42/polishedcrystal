@@ -8,10 +8,10 @@ IndigoPlateauPokeCenter1F_MapScriptHeader:
 IndigoPlateauPokeCenter1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $d, $9, 1, INDIGO_PLATEAU
-	warp_def $d, $a, 2, INDIGO_PLATEAU
-	warp_def $d, $0, 1, POKECENTER_2F
-	warp_def $3, $c, 1, WILLS_ROOM
+	warp_def 13, 9, 1, INDIGO_PLATEAU
+	warp_def 13, 10, 2, INDIGO_PLATEAU
+	warp_def 13, 0, 1, POKECENTER_2F
+	warp_def 3, 12, 1, WILLS_ROOM
 
 .XYTriggers: db 2
 	xy_trigger 0, $4, $e, PlateauRivalBattleTrigger1
@@ -61,8 +61,8 @@ PrepareEliteFourCallback:
 	return
 
 PlateauRivalBattleTrigger1:
-	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, $f, $9
-	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, $f, $9
+	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
+	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, 15, 9
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
 	iftrue .LyraFight
@@ -504,7 +504,7 @@ IndigoPlateauTeleportGuyScript:
 	playsound SFX_WARP_TO
 	special FadeOutPalettes
 	waitsfx
-	warp NEW_BARK_TOWN, $f, $6
+	warp NEW_BARK_TOWN, 15, 6
 	end
 
 .Text:

@@ -7,10 +7,10 @@ Route19FuchsiaGate_MapScriptHeader:
 Route19FuchsiaGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 9, FUCHSIA_CITY
-	warp_def $0, $5, 10, FUCHSIA_CITY
-	warp_def $7, $4, 1, ROUTE_19
-	warp_def $7, $5, 1, ROUTE_19
+	warp_def 0, 4, 9, FUCHSIA_CITY
+	warp_def 0, 5, 10, FUCHSIA_CITY
+	warp_def 7, 4, 1, ROUTE_19
+	warp_def 7, 5, 1, ROUTE_19
 
 .XYTriggers: db 0
 

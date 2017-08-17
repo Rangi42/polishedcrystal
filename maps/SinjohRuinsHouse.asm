@@ -7,8 +7,8 @@ SinjohRuinsHouse_MapScriptHeader:
 SinjohRuinsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, SINJOH_RUINS
-	warp_def $7, $3, 2, SINJOH_RUINS
+	warp_def 7, 2, 2, SINJOH_RUINS
+	warp_def 7, 3, 2, SINJOH_RUINS
 
 .XYTriggers: db 0
 
@@ -37,7 +37,7 @@ SinjohRuinsHouseGrampsScript:
 	playsound SFX_WARP_TO
 	special FadeOutPalettes
 	waitsfx
-	warp NEW_BARK_TOWN, $f, $6
+	warp NEW_BARK_TOWN, 15, 6
 	end
 
 .No:

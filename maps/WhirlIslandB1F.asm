@@ -7,15 +7,15 @@ WhirlIslandB1F_MapScriptHeader:
 WhirlIslandB1F_MapEventHeader:
 
 .Warps: db 9
-	warp_def $5, $5, 2, WHIRL_ISLAND_NW
-	warp_def $3, $23, 2, WHIRL_ISLAND_NE
-	warp_def $9, $1d, 3, WHIRL_ISLAND_NE
-	warp_def $1f, $9, 3, WHIRL_ISLAND_SW
-	warp_def $1f, $17, 2, WHIRL_ISLAND_SW
-	warp_def $1d, $1f, 2, WHIRL_ISLAND_SE
-	warp_def $15, $19, 1, WHIRL_ISLAND_B2F
-	warp_def $1b, $d, 2, WHIRL_ISLAND_B2F
-	warp_def $15, $11, 1, WHIRL_ISLAND_CAVE
+	warp_def 5, 5, 2, WHIRL_ISLAND_NW
+	warp_def 3, 35, 2, WHIRL_ISLAND_NE
+	warp_def 9, 29, 3, WHIRL_ISLAND_NE
+	warp_def 31, 9, 3, WHIRL_ISLAND_SW
+	warp_def 31, 23, 2, WHIRL_ISLAND_SW
+	warp_def 29, 31, 2, WHIRL_ISLAND_SE
+	warp_def 21, 25, 1, WHIRL_ISLAND_B2F
+	warp_def 27, 13, 2, WHIRL_ISLAND_B2F
+	warp_def 21, 17, 1, WHIRL_ISLAND_CAVE
 
 .XYTriggers: db 0
 

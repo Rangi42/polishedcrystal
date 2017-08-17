@@ -7,7 +7,7 @@ Route10South_MapScriptHeader:
 Route10South_MapEventHeader:
 
 .Warps: db 1
-	warp_def $3, $6, 2, ROCK_TUNNEL_1F
+	warp_def 3, 6, 2, ROCK_TUNNEL_1F
 
 .XYTriggers: db 0
 

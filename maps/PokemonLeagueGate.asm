@@ -7,14 +7,14 @@ PokemonLeagueGate_MapScriptHeader:
 PokemonLeagueGate_MapEventHeader:
 
 .Warps: db 8
-	warp_def $7, $13, 1, ROUTE_22
-	warp_def $7, $14, 1, ROUTE_22
-	warp_def $11, $a, 1, ROUTE_26
-	warp_def $11, $b, 1, ROUTE_26
-	warp_def $0, $a, 1, ROUTE_23
-	warp_def $0, $b, 2, ROUTE_23
-	warp_def $7, $1, 2, ROUTE_28
-	warp_def $7, $2, 2, ROUTE_28
+	warp_def 7, 19, 1, ROUTE_22
+	warp_def 7, 20, 1, ROUTE_22
+	warp_def 17, 10, 1, ROUTE_26
+	warp_def 17, 11, 1, ROUTE_26
+	warp_def 0, 10, 1, ROUTE_23
+	warp_def 0, 11, 2, ROUTE_23
+	warp_def 7, 1, 2, ROUTE_28
+	warp_def 7, 2, 2, ROUTE_28
 
 .XYTriggers: db 2
 	xy_trigger 0, $a, $a, PokemonLeagueGateXYTriggerScript1

@@ -7,8 +7,8 @@ EarlsPokemonAcademy_MapScriptHeader:
 EarlsPokemonAcademy_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $3, 3, VIOLET_CITY
-	warp_def $f, $4, 3, VIOLET_CITY
+	warp_def 15, 3, 3, VIOLET_CITY
+	warp_def 15, 4, 3, VIOLET_CITY
 
 .XYTriggers: db 0
 

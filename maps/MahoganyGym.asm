@@ -7,8 +7,8 @@ MahoganyGym_MapScriptHeader:
 MahoganyGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 3, MAHOGANY_TOWN
-	warp_def $11, $5, 3, MAHOGANY_TOWN
+	warp_def 17, 4, 3, MAHOGANY_TOWN
+	warp_def 17, 5, 3, MAHOGANY_TOWN
 
 .XYTriggers: db 0
 

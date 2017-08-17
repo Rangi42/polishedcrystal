@@ -7,8 +7,8 @@ Route26DayofWeekSiblingsHouse_MapScriptHeader:
 Route26DayofWeekSiblingsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, ROUTE_26
-	warp_def $7, $3, 3, ROUTE_26
+	warp_def 7, 2, 3, ROUTE_26
+	warp_def 7, 3, 3, ROUTE_26
 
 .XYTriggers: db 0
 

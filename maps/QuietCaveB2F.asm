@@ -7,12 +7,12 @@ QuietCaveB2F_MapScriptHeader:
 QuietCaveB2F_MapEventHeader:
 
 .Warps: db 6
-	warp_def $3, $15, 6, QUIET_CAVE_B1F
-	warp_def $19, $11, 7, QUIET_CAVE_B1F
-	warp_def $21, $17, 8, QUIET_CAVE_B1F
-	warp_def $3, $1d, 9, QUIET_CAVE_B1F
-	warp_def $1f, $a, 1, QUIET_CAVE_B3F
-	warp_def $5, $21, 2, QUIET_CAVE_B3F
+	warp_def 3, 21, 6, QUIET_CAVE_B1F
+	warp_def 25, 17, 7, QUIET_CAVE_B1F
+	warp_def 33, 23, 8, QUIET_CAVE_B1F
+	warp_def 3, 29, 9, QUIET_CAVE_B1F
+	warp_def 31, 10, 1, QUIET_CAVE_B3F
+	warp_def 5, 33, 2, QUIET_CAVE_B3F
 
 .XYTriggers: db 0
 

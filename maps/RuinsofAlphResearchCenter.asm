@@ -10,8 +10,8 @@ RuinsofAlphResearchCenter_MapScriptHeader:
 RuinsofAlphResearchCenter_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 6, RUINS_OF_ALPH_OUTSIDE
-	warp_def $7, $3, 6, RUINS_OF_ALPH_OUTSIDE
+	warp_def 7, 2, 6, RUINS_OF_ALPH_OUTSIDE
+	warp_def 7, 3, 6, RUINS_OF_ALPH_OUTSIDE
 
 .XYTriggers: db 0
 
@@ -42,7 +42,7 @@ UnknownScript_0x59185:
 	return
 
 UnknownScript_0x5918b:
-	moveperson RUINSOFALPHRESEARCHCENTER_SCIENTIST3, $3, $7
+	moveperson RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 	return
 
@@ -132,7 +132,7 @@ UnknownScript_0x591df:
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	pause 15
-	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, $13, $12
+	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, 19, 18
 	end
 
 RuinsofAlphResearchCenterScientistStepAsideMovementData:

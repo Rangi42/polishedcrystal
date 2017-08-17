@@ -8,11 +8,11 @@ Route34_MapScriptHeader:
 Route34_MapEventHeader:
 
 .Warps: db 5
-	warp_def $25, $d, 1, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $25, $e, 2, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $e, $b, 1, DAYCARE
-	warp_def $f, $b, 2, DAYCARE
-	warp_def $f, $d, 3, DAYCARE
+	warp_def 37, 13, 1, ROUTE_34_ILEX_FOREST_GATE
+	warp_def 37, 14, 2, ROUTE_34_ILEX_FOREST_GATE
+	warp_def 14, 11, 1, DAYCARE
+	warp_def 15, 11, 2, DAYCARE
+	warp_def 15, 13, 3, DAYCARE
 
 .XYTriggers: db 3
 	xy_trigger 1, $11, $8, Route34LyraTrigger1
@@ -169,7 +169,7 @@ Route34LyraTrigger2:
 	special FadeOutPalettes
 	pause 15
 	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_SWIMMER_GIRL
-	warpfacing RIGHT, DAYCARE, $0, $4
+	warpfacing RIGHT, DAYCARE, 0, 4
 	end
 
 DayCareManScript_Outside:

@@ -7,10 +7,10 @@ SaffronTrainStation_MapScriptHeader:
 SaffronTrainStation_MapEventHeader:
 
 .Warps: db 4
-	warp_def $11, $8, 6, SAFFRON_CITY
-	warp_def $11, $9, 6, SAFFRON_CITY
-	warp_def $5, $6, 4, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_def $5, $b, 3, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def 17, 8, 6, SAFFRON_CITY
+	warp_def 17, 9, 6, SAFFRON_CITY
+	warp_def 5, 6, 4, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def 5, 11, 3, GOLDENROD_MAGNET_TRAIN_STATION
 
 .XYTriggers: db 1
 	xy_trigger 0, $6, $b, Script_ArriveFromGoldenrod

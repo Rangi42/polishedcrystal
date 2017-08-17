@@ -8,10 +8,10 @@ TeamRocketBaseB1F_MapScriptHeader:
 TeamRocketBaseB1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $2, $1b, 3, MAHOGANY_MART_1F
-	warp_def $e, $3, 1, TEAM_ROCKET_BASE_B2F
-	warp_def $f, $5, 4, TEAM_ROCKET_BASE_B1F
-	warp_def $2, $19, 3, TEAM_ROCKET_BASE_B1F
+	warp_def 2, 27, 3, MAHOGANY_MART_1F
+	warp_def 14, 3, 1, TEAM_ROCKET_BASE_B2F
+	warp_def 15, 5, 4, TEAM_ROCKET_BASE_B1F
+	warp_def 2, 25, 3, TEAM_ROCKET_BASE_B1F
 
 .XYTriggers: db 30
 	; There are five security cameras in the base.
@@ -84,7 +84,7 @@ SecurityCamera1a:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $2
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 19, 2
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
@@ -94,7 +94,7 @@ SecurityCamera1a:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $2
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 19, 2
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
 	scall TrainerCameraGrunt2
@@ -111,7 +111,7 @@ SecurityCamera1b:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $3
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 19, 3
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
@@ -121,7 +121,7 @@ SecurityCamera1b:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $3
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 19, 3
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
 	scall TrainerCameraGrunt2
@@ -138,7 +138,7 @@ SecurityCamera2a:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $4, $7
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 4, 7
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement2
@@ -149,7 +149,7 @@ SecurityCamera2a:
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $c, $5
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 12, 5
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement3
 	scall TrainerCameraGrunt2
@@ -166,7 +166,7 @@ SecurityCamera2b:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $4, $8
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 4, 8
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement4
@@ -177,7 +177,7 @@ SecurityCamera2b:
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $c, $5
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 12, 5
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement5
 	scall TrainerCameraGrunt2
@@ -194,7 +194,7 @@ SecurityCamera3a:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $6
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 19, 6
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
@@ -205,7 +205,7 @@ SecurityCamera3a:
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $19, $b
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 25, 11
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement6
 	scall TrainerCameraGrunt2
@@ -222,7 +222,7 @@ SecurityCamera3b:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $13, $7
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 19, 7
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
@@ -233,7 +233,7 @@ SecurityCamera3b:
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $19, $c
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 25, 12
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement7
 	scall TrainerCameraGrunt2
@@ -250,7 +250,7 @@ SecurityCamera4:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $11, $10
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 17, 16
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
@@ -261,7 +261,7 @@ SecurityCamera4:
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $19, $b
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 25, 11
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement8
 	scall TrainerCameraGrunt2
@@ -278,7 +278,7 @@ SecurityCamera5:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $3, $10
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 3, 16
 	appear TEAMROCKETBASEB1F_ROCKET1
 	spriteface PLAYER, LEFT
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement1
@@ -289,7 +289,7 @@ SecurityCamera5:
 	special SaveMusic
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface PLAYER, RIGHT
-	moveperson TEAMROCKETBASEB1F_ROCKET1, $e, $10
+	moveperson TEAMROCKETBASEB1F_ROCKET1, 14, 16
 	appear TEAMROCKETBASEB1F_ROCKET1
 	applymovement TEAMROCKETBASEB1F_ROCKET1, SecurityCameraMovement9
 	scall TrainerCameraGrunt2

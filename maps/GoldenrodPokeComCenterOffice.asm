@@ -8,8 +8,8 @@ GoldenrodPokeComCenterOffice_MapScriptHeader:
 GoldenrodPokeComCenterOffice_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $0, 3, GOLDENROD_POKECOM_CENTER_1F
-	warp_def $7, $1, 3, GOLDENROD_POKECOM_CENTER_1F
+	warp_def 7, 0, 3, GOLDENROD_POKECOM_CENTER_1F
+	warp_def 7, 1, 3, GOLDENROD_POKECOM_CENTER_1F
 
 .XYTriggers: db 0
 

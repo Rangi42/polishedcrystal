@@ -7,8 +7,8 @@ GoldenrodGameCorner_MapScriptHeader:
 GoldenrodGameCorner_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $2, 10, GOLDENROD_CITY
-	warp_def $d, $3, 10, GOLDENROD_CITY
+	warp_def 13, 2, 10, GOLDENROD_CITY
+	warp_def 13, 3, 10, GOLDENROD_CITY
 
 .XYTriggers: db 0
 

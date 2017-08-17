@@ -7,9 +7,9 @@ CopycatsHouse1F_MapScriptHeader:
 CopycatsHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $2, 8, SAFFRON_CITY
-	warp_def $7, $3, 8, SAFFRON_CITY
-	warp_def $0, $3, 1, COPYCATS_HOUSE_2F
+	warp_def 7, 2, 8, SAFFRON_CITY
+	warp_def 7, 3, 8, SAFFRON_CITY
+	warp_def 0, 3, 1, COPYCATS_HOUSE_2F
 
 .XYTriggers: db 0
 

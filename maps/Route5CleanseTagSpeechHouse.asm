@@ -7,8 +7,8 @@ Route5CleanseTagSpeechHouse_MapScriptHeader:
 Route5CleanseTagSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 4, ROUTE_5
-	warp_def $7, $3, 4, ROUTE_5
+	warp_def 7, 2, 4, ROUTE_5
+	warp_def 7, 3, 4, ROUTE_5
 
 .XYTriggers: db 0
 

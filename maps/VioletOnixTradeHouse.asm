@@ -7,8 +7,8 @@ VioletOnixTradeHouse_MapScriptHeader:
 VioletOnixTradeHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 6, VIOLET_CITY
-	warp_def $7, $4, 6, VIOLET_CITY
+	warp_def 7, 3, 6, VIOLET_CITY
+	warp_def 7, 4, 6, VIOLET_CITY
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ HauntedRadioTower3F_MapScriptHeader:
 HauntedRadioTower3F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $2, 2, HAUNTED_RADIO_TOWER_2F
-	warp_def $0, $f, 1, HAUNTED_RADIO_TOWER_4F
+	warp_def 0, 2, 2, HAUNTED_RADIO_TOWER_2F
+	warp_def 0, 15, 1, HAUNTED_RADIO_TOWER_4F
 
 .XYTriggers: db 0
 

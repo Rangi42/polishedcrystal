@@ -7,8 +7,8 @@ VioletMart_MapScriptHeader:
 VioletMart_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, VIOLET_CITY
-	warp_def $7, $3, 1, VIOLET_CITY
+	warp_def 7, 2, 1, VIOLET_CITY
+	warp_def 7, 3, 1, VIOLET_CITY
 
 .XYTriggers: db 0
 

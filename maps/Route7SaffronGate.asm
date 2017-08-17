@@ -7,10 +7,10 @@ Route7SaffronGate_MapScriptHeader:
 Route7SaffronGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 1, ROUTE_7
-	warp_def $5, $0, 2, ROUTE_7
-	warp_def $4, $9, 10, SAFFRON_CITY
-	warp_def $5, $9, 11, SAFFRON_CITY
+	warp_def 4, 0, 1, ROUTE_7
+	warp_def 5, 0, 2, ROUTE_7
+	warp_def 4, 9, 10, SAFFRON_CITY
+	warp_def 5, 9, 11, SAFFRON_CITY
 
 .XYTriggers: db 0
 

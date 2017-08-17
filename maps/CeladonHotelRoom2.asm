@@ -7,8 +7,8 @@ CeladonHotelRoom2_MapScriptHeader:
 CeladonHotelRoom2_MapEventHeader:
 
 .Warps: db 2
-	warp_def $5, $3, 3, CELADON_HOTEL_2F
-	warp_def $5, $4, 3, CELADON_HOTEL_2F
+	warp_def 5, 3, 3, CELADON_HOTEL_2F
+	warp_def 5, 4, 3, CELADON_HOTEL_2F
 
 .XYTriggers: db 0
 

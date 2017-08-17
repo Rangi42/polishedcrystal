@@ -8,7 +8,7 @@ UnionCaveB2F_MapScriptHeader:
 UnionCaveB2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $3, $5, 2, UNION_CAVE_B1F_SOUTH
+	warp_def 3, 5, 2, UNION_CAVE_B1F_SOUTH
 
 .XYTriggers: db 0
 

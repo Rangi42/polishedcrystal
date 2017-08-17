@@ -10,12 +10,12 @@ WarehouseEntrance_MapScriptHeader:
 WarehouseEntrance_MapEventHeader:
 
 .Warps: db 6
-	warp_def $2, $1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $22, $1, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $6, $10, 4, WAREHOUSE_ENTRANCE
-	warp_def $23, $d, 3, WAREHOUSE_ENTRANCE
-	warp_def $23, $e, 3, WAREHOUSE_ENTRANCE
-	warp_def $1f, $e, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 2, 1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 34, 1, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 6, 16, 4, WAREHOUSE_ENTRANCE
+	warp_def 35, 13, 3, WAREHOUSE_ENTRANCE
+	warp_def 35, 14, 3, WAREHOUSE_ENTRANCE
+	warp_def 31, 14, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 
 .XYTriggers: db 0
 
@@ -70,7 +70,7 @@ WarehouseEntranceCheckBasementKey:
 	return
 
 .LockBasementDoor:
-	changeblock $10, $6, $3d
+	changeblock 16, 6, $3d
 	return
 
 WarehouseEntranceCheckDayOfWeek:
@@ -364,7 +364,7 @@ BasementDoorScript::
 	writetext UnknownText_0x7c5d6
 	waitbutton
 	closetext
-	changeblock $10, $6, $2e
+	changeblock 16, 6, $2e
 	reloadmappart
 	setevent EVENT_USED_BASEMENT_KEY
 	endtext

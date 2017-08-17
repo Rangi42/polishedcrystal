@@ -9,10 +9,10 @@ LancesRoom_MapScriptHeader:
 LancesRoom_MapEventHeader:
 
 .Warps: db 4
-	warp_def $17, $4, 3, KARENS_ROOM
-	warp_def $17, $5, 4, KARENS_ROOM
-	warp_def $1, $4, 1, HALL_OF_FAME
-	warp_def $1, $5, 2, HALL_OF_FAME
+	warp_def 23, 4, 3, KARENS_ROOM
+	warp_def 23, 5, 4, KARENS_ROOM
+	warp_def 1, 4, 1, HALL_OF_FAME
+	warp_def 1, 5, 2, HALL_OF_FAME
 
 .XYTriggers: db 2
 	xy_trigger 1, $5, $4, ApproachLanceFromLeftTrigger
@@ -39,7 +39,7 @@ LancesRoomEntranceTrigger:
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock $4, $16, $34
+	changeblock 4, 22, $34
 	reloadmappart
 	closetext
 	dotrigger $1
@@ -56,11 +56,11 @@ WalkIntoEliteFourRoomMovement:
 LancesRoomDoorCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	iffalse .LanceEntranceOpen
-	changeblock $4, $16, $34
+	changeblock 4, 22, $34
 .LanceEntranceOpen:
 	checkevent EVENT_LANCES_ROOM_EXIT_OPEN
 	iffalse .LanceExitClosed
-	changeblock $4, $0, $b
+	changeblock 4, 0, $b
 .LanceExitClosed:
 	return
 
@@ -98,7 +98,7 @@ LanceScript:
 .EndBattle:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	playsound SFX_ENTER_DOOR
-	changeblock $4, $0, $b
+	changeblock 4, 0, $b
 	reloadmappart
 	closetext
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
@@ -144,7 +144,7 @@ LanceScript:
 	applymovement LANCESROOM_MARY, .RunBackAndForthMovement
 	special FadeOutPalettes
 	pause 15
-	warpfacing UP, HALL_OF_FAME, $4, $d
+	warpfacing UP, HALL_OF_FAME, 4, 13
 	end
 
 .SeenText:

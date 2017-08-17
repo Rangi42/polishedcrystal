@@ -8,14 +8,14 @@ CianwoodCity_MapScriptHeader:
 CianwoodCity_MapEventHeader:
 
 .Warps: db 8
-	warp_def $29, $11, 1, MANIAS_HOUSE
-	warp_def $2b, $8, 1, CIANWOOD_GYM
-	warp_def $2b, $17, 1, CIANWOOD_POKECENTER_1F
-	warp_def $2f, $f, 1, CIANWOOD_PHARMACY
-	warp_def $1f, $9, 1, CIANWOOD_CITY_PHOTO_STUDIO
-	warp_def $25, $f, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
-	warp_def $11, $5, 1, STATS_JUDGES_HOUSE
-	warp_def $19, $4, 1, CLIFF_EDGE_GATE
+	warp_def 41, 17, 1, MANIAS_HOUSE
+	warp_def 43, 8, 1, CIANWOOD_GYM
+	warp_def 43, 23, 1, CIANWOOD_POKECENTER_1F
+	warp_def 47, 15, 1, CIANWOOD_PHARMACY
+	warp_def 31, 9, 1, CIANWOOD_CITY_PHOTO_STUDIO
+	warp_def 37, 15, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
+	warp_def 17, 5, 1, STATS_JUDGES_HOUSE
+	warp_def 25, 4, 1, CLIFF_EDGE_GATE
 
 .XYTriggers: db 1
 	xy_trigger 1, $10, $b, UnknownScript_0x1a001e

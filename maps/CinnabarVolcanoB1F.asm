@@ -9,18 +9,18 @@ CinnabarVolcanoB1F_MapScriptHeader:
 CinnabarVolcanoB1F_MapEventHeader:
 
 .Warps: db 12
-	warp_def $11, $9, 2, CINNABAR_VOLCANO_1F
-	warp_def $19, $13, 3, CINNABAR_VOLCANO_1F
-	warp_def $19, $1d, 4, CINNABAR_VOLCANO_1F
-	warp_def $d, $1b, 5, CINNABAR_VOLCANO_1F
-	warp_def $3, $13, 1, CINNABAR_VOLCANO_B2F
-	warp_def $15, $21, 2, CINNABAR_VOLCANO_B2F
-	warp_def $9, $8, 3, CINNABAR_VOLCANO_B2F
-	warp_def $18, $c, 6, CINNABAR_VOLCANO_1F ; hole
-	warp_def $18, $18, 7, CINNABAR_VOLCANO_1F ; hole
-	warp_def $d, $17, 8, CINNABAR_VOLCANO_1F ; hole
-	warp_def $b, $f, 9, CINNABAR_VOLCANO_1F ; hole
-	warp_def $8, $14, 10, CINNABAR_VOLCANO_1F
+	warp_def 17, 9, 2, CINNABAR_VOLCANO_1F
+	warp_def 25, 19, 3, CINNABAR_VOLCANO_1F
+	warp_def 25, 29, 4, CINNABAR_VOLCANO_1F
+	warp_def 13, 27, 5, CINNABAR_VOLCANO_1F
+	warp_def 3, 19, 1, CINNABAR_VOLCANO_B2F
+	warp_def 21, 33, 2, CINNABAR_VOLCANO_B2F
+	warp_def 9, 8, 3, CINNABAR_VOLCANO_B2F
+	warp_def 24, 12, 6, CINNABAR_VOLCANO_1F ; hole
+	warp_def 24, 24, 7, CINNABAR_VOLCANO_1F ; hole
+	warp_def 13, 23, 8, CINNABAR_VOLCANO_1F ; hole
+	warp_def 11, 15, 9, CINNABAR_VOLCANO_1F ; hole
+	warp_def 8, 20, 10, CINNABAR_VOLCANO_1F
 
 .XYTriggers: db 0
 
@@ -42,19 +42,19 @@ const_value set 2
 CinnabarVolcanoB1FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
 	iffalse .skip1
-	changeblock $c, $18, $5f
+	changeblock 12, 24, $5f
 .skip1
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
 	iffalse .skip2
-	changeblock $18, $16, $5f
+	changeblock 24, 22, $5f
 .skip2
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
 	iffalse .skip3
-	changeblock $16, $c, $5d
+	changeblock 22, 12, $5d
 .skip3
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	iffalse .skip4
-	changeblock $e, $a, $5d
+	changeblock 14, 10, $5d
 .skip4
 	return
 

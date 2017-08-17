@@ -7,9 +7,9 @@ SoulHouse_MapScriptHeader:
 SoulHouse_MapEventHeader:
 
 .Warps: db 3
-	warp_def $9, $4, 6, LAVENDER_TOWN
-	warp_def $9, $5, 6, LAVENDER_TOWN
-	warp_def $2, $4, 1, SOUL_HOUSE_B1F
+	warp_def 9, 4, 6, LAVENDER_TOWN
+	warp_def 9, 5, 6, LAVENDER_TOWN
+	warp_def 2, 4, 1, SOUL_HOUSE_B1F
 
 .XYTriggers: db 0
 

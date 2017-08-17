@@ -7,9 +7,9 @@ Route32PokeCenter1F_MapScriptHeader:
 Route32PokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 1, ROUTE_32
-	warp_def $7, $6, 1, ROUTE_32
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 1, ROUTE_32
+	warp_def 7, 6, 1, ROUTE_32
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 

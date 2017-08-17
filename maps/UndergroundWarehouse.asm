@@ -8,9 +8,9 @@ UndergroundWarehouse_MapScriptHeader:
 UndergroundWarehouse_MapEventHeader:
 
 .Warps: db 3
-	warp_def $c, $2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $c, $3, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $2, $11, 1, GOLDENROD_DEPT_STORE_B1F
+	warp_def 12, 2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 12, 3, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 2, 17, 1, GOLDENROD_DEPT_STORE_B1F
 
 .XYTriggers: db 0
 

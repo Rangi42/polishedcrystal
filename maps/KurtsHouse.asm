@@ -8,8 +8,8 @@ KurtsHouse_MapScriptHeader:
 KurtsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 4, AZALEA_TOWN
-	warp_def $7, $4, 4, AZALEA_TOWN
+	warp_def 7, 3, 4, AZALEA_TOWN
+	warp_def 7, 4, 4, AZALEA_TOWN
 
 .XYTriggers: db 0
 

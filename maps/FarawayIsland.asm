@@ -11,8 +11,8 @@ FarawayIsland_MapScriptHeader:
 FarawayIsland_MapEventHeader:
 
 .Warps: db 2
-	warp_def $8, $16, 1, FARAWAY_JUNGLE
-	warp_def $8, $17, 2, FARAWAY_JUNGLE
+	warp_def 8, 22, 1, FARAWAY_JUNGLE
+	warp_def 8, 23, 2, FARAWAY_JUNGLE
 
 .XYTriggers: db 0
 
@@ -75,7 +75,7 @@ FarawayIslandSailorScript:
 	waitsfx
 	appear FARAWAYISLAND_SAILOR
 	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
-	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
+	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 
 .RefuseFerry

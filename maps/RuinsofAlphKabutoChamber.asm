@@ -9,11 +9,11 @@ RuinsofAlphKabutoChamber_MapScriptHeader:
 RuinsofAlphKabutoChamber_MapEventHeader:
 
 .Warps: db 5
-	warp_def $9, $3, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 4, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 5, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
+	warp_def 9, 3, 2, RUINS_OF_ALPH_OUTSIDE
+	warp_def 9, 4, 2, RUINS_OF_ALPH_OUTSIDE
+	warp_def 3, 3, 4, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 3, 4, 5, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 0, 4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
 
 .XYTriggers: db 0
 
@@ -39,15 +39,15 @@ RuinsofAlphKabutoChamberTrigger0:
 UnknownScript_0x58737:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue UnknownScript_0x58741
-	changeblock $4, $0, $24
+	changeblock 4, 0, $24
 UnknownScript_0x58741:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse UnknownScript_0x58748
 	return
 
 UnknownScript_0x58748:
-	changeblock $2, $2, $1
-	changeblock $4, $2, $2
+	changeblock 2, 2, $1
+	changeblock 4, 2, $2
 	return
 
 UnknownScript_0x58751:
@@ -56,7 +56,7 @@ UnknownScript_0x58751:
 	showemote EMOTE_SHOCK, PLAYER, 20
 	pause 30
 	playsound SFX_STRENGTH
-	changeblock $4, $0, $25
+	changeblock 4, 0, $25
 	reloadmappart
 	earthquake 50
 	dotrigger $1
@@ -79,8 +79,8 @@ UnknownScript_0x58778:
 	domaptrigger RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
-	changeblock $2, $2, $14
-	changeblock $4, $2, $15
+	changeblock 2, 2, $14
+	changeblock 4, 2, $15
 	reloadmappart
 	playsound SFX_STRENGTH
 	earthquake 80

@@ -7,8 +7,8 @@ GoldenrodNetBallHouse_MapScriptHeader:
 GoldenrodNetBallHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 19, GOLDENROD_CITY
-	warp_def $7, $3, 19, GOLDENROD_CITY
+	warp_def 7, 2, 19, GOLDENROD_CITY
+	warp_def 7, 3, 19, GOLDENROD_CITY
 
 .XYTriggers: db 0
 

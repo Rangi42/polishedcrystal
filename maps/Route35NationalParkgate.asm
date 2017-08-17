@@ -12,10 +12,10 @@ Route35NationalParkgate_MapScriptHeader:
 Route35NationalParkgate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $3, 3, NATIONAL_PARK
-	warp_def $0, $4, 4, NATIONAL_PARK
-	warp_def $7, $3, 3, ROUTE_35
-	warp_def $7, $4, 3, ROUTE_35
+	warp_def 0, 3, 3, NATIONAL_PARK
+	warp_def 0, 4, 4, NATIONAL_PARK
+	warp_def 7, 3, 3, ROUTE_35
+	warp_def 7, 4, 3, ROUTE_35
 
 .XYTriggers: db 0
 
@@ -89,7 +89,7 @@ Route35NationalParkgate_GoBackIn:
 	playsound SFX_ENTER_DOOR
 	special FadeOutPalettes
 	waitsfx
-	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, $c, $2f
+	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
 
 OfficerScript_0x6a204:
@@ -127,7 +127,7 @@ Route35NationalParkgate_OkayToProceed:
 	special FadeOutPalettes
 	waitsfx
 	special Special_SelectRandomBugContestContestants
-	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, $c, $2f
+	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
 
 Route35NationalParkgate_EnterContest:

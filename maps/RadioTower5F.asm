@@ -7,8 +7,8 @@ RadioTower5F_MapScriptHeader:
 RadioTower5F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $0, 1, RADIO_TOWER_4F
-	warp_def $0, $c, 3, RADIO_TOWER_4F
+	warp_def 0, 0, 1, RADIO_TOWER_4F
+	warp_def 0, 12, 3, RADIO_TOWER_4F
 
 .XYTriggers: db 2
 	xy_trigger 0, $3, $0, FakeDirectorScript
@@ -100,7 +100,7 @@ RadioTower5FRocketBossTrigger:
 	special PlayMapMusic
 	disappear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
-	moveperson RADIOTOWER5F_DIRECTOR, $c, $0
+	moveperson RADIOTOWER5F_DIRECTOR, 12, 0
 	appear RADIOTOWER5F_DIRECTOR
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksIn
 	spriteface PLAYER, RIGHT
@@ -118,7 +118,7 @@ RadioTower5FRocketBossTrigger:
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksOut
 	playsound SFX_EXIT_BUILDING
 	disappear RADIOTOWER5F_DIRECTOR
-	moveperson RADIOTOWER5F_DIRECTOR, $3, $6
+	moveperson RADIOTOWER5F_DIRECTOR, 3, 6
 	appear RADIOTOWER5F_DIRECTOR
 	end
 

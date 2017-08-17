@@ -10,9 +10,9 @@ MahoganyMart1F_MapScriptHeader:
 MahoganyMart1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $3, 1, MAHOGANY_TOWN
-	warp_def $7, $4, 1, MAHOGANY_TOWN
-	warp_def $3, $7, 1, TEAM_ROCKET_BASE_B1F
+	warp_def 7, 3, 1, MAHOGANY_TOWN
+	warp_def 7, 4, 1, MAHOGANY_TOWN
+	warp_def 3, 7, 1, TEAM_ROCKET_BASE_B1F
 
 .XYTriggers: db 0
 
@@ -42,7 +42,7 @@ UnknownScript_0x6c35b:
 	return
 
 UnknownScript_0x6c362:
-	changeblock $6, $2, $1e
+	changeblock 6, 2, $1e
 	return
 
 PharmacistScript_0x6c367:
@@ -79,7 +79,7 @@ UnknownScript_0x6c38f:
 	waitbutton
 	showemote EMOTE_SHOCK, MAHOGANYMART1F_PHARMACIST, 10
 	playsound SFX_FAINT
-	changeblock $6, $2, $1e
+	changeblock 6, 2, $1e
 	reloadmappart
 	closetext
 	setevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART

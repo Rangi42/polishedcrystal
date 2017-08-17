@@ -7,10 +7,10 @@ CeladonHotel1F_MapScriptHeader:
 CeladonHotel1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $7, $3, 11, CELADON_CITY
-	warp_def $7, $4, 11, CELADON_CITY
-	warp_def $0, $10, 1, CELADON_HOTEL_2F
-	warp_def $0, $c, 1, CELADON_HOTEL_POOL
+	warp_def 7, 3, 11, CELADON_CITY
+	warp_def 7, 4, 11, CELADON_CITY
+	warp_def 0, 16, 1, CELADON_HOTEL_2F
+	warp_def 0, 12, 1, CELADON_HOTEL_POOL
 
 .XYTriggers: db 0
 

@@ -8,39 +8,39 @@ EcruteakGym_MapScriptHeader:
 EcruteakGym_MapEventHeader:
 
 .Warps: db 33
-	warp_def $11, $4, 10, ECRUTEAK_CITY
-	warp_def $11, $5, 10, ECRUTEAK_CITY
-	warp_def $e, $4, 4, ECRUTEAK_GYM
-	warp_def $4, $2, 3, ECRUTEAK_GYM
-	warp_def $4, $3, 3, ECRUTEAK_GYM
-	warp_def $4, $4, 3, ECRUTEAK_GYM
-	warp_def $5, $4, 3, ECRUTEAK_GYM
-	warp_def $7, $6, 3, ECRUTEAK_GYM
-	warp_def $4, $7, 3, ECRUTEAK_GYM
-	warp_def $6, $2, 3, ECRUTEAK_GYM
-	warp_def $6, $3, 3, ECRUTEAK_GYM
-	warp_def $6, $4, 3, ECRUTEAK_GYM
-	warp_def $6, $5, 3, ECRUTEAK_GYM
-	warp_def $6, $7, 3, ECRUTEAK_GYM
-	warp_def $7, $7, 3, ECRUTEAK_GYM
-	warp_def $8, $4, 3, ECRUTEAK_GYM
-	warp_def $8, $5, 3, ECRUTEAK_GYM
-	warp_def $8, $6, 3, ECRUTEAK_GYM
-	warp_def $8, $7, 3, ECRUTEAK_GYM
-	warp_def $8, $2, 3, ECRUTEAK_GYM
-	warp_def $9, $2, 3, ECRUTEAK_GYM
-	warp_def $a, $2, 3, ECRUTEAK_GYM
-	warp_def $b, $2, 3, ECRUTEAK_GYM
-	warp_def $a, $4, 3, ECRUTEAK_GYM
-	warp_def $a, $5, 3, ECRUTEAK_GYM
-	warp_def $c, $2, 3, ECRUTEAK_GYM
-	warp_def $c, $3, 3, ECRUTEAK_GYM
-	warp_def $c, $4, 3, ECRUTEAK_GYM
-	warp_def $c, $5, 3, ECRUTEAK_GYM
-	warp_def $a, $7, 3, ECRUTEAK_GYM
-	warp_def $b, $7, 3, ECRUTEAK_GYM
-	warp_def $c, $7, 3, ECRUTEAK_GYM
-	warp_def $d, $7, 3, ECRUTEAK_GYM
+	warp_def 17, 4, 10, ECRUTEAK_CITY
+	warp_def 17, 5, 10, ECRUTEAK_CITY
+	warp_def 14, 4, 4, ECRUTEAK_GYM
+	warp_def 4, 2, 3, ECRUTEAK_GYM
+	warp_def 4, 3, 3, ECRUTEAK_GYM
+	warp_def 4, 4, 3, ECRUTEAK_GYM
+	warp_def 5, 4, 3, ECRUTEAK_GYM
+	warp_def 7, 6, 3, ECRUTEAK_GYM
+	warp_def 4, 7, 3, ECRUTEAK_GYM
+	warp_def 6, 2, 3, ECRUTEAK_GYM
+	warp_def 6, 3, 3, ECRUTEAK_GYM
+	warp_def 6, 4, 3, ECRUTEAK_GYM
+	warp_def 6, 5, 3, ECRUTEAK_GYM
+	warp_def 6, 7, 3, ECRUTEAK_GYM
+	warp_def 7, 7, 3, ECRUTEAK_GYM
+	warp_def 8, 4, 3, ECRUTEAK_GYM
+	warp_def 8, 5, 3, ECRUTEAK_GYM
+	warp_def 8, 6, 3, ECRUTEAK_GYM
+	warp_def 8, 7, 3, ECRUTEAK_GYM
+	warp_def 8, 2, 3, ECRUTEAK_GYM
+	warp_def 9, 2, 3, ECRUTEAK_GYM
+	warp_def 10, 2, 3, ECRUTEAK_GYM
+	warp_def 11, 2, 3, ECRUTEAK_GYM
+	warp_def 10, 4, 3, ECRUTEAK_GYM
+	warp_def 10, 5, 3, ECRUTEAK_GYM
+	warp_def 12, 2, 3, ECRUTEAK_GYM
+	warp_def 12, 3, 3, ECRUTEAK_GYM
+	warp_def 12, 4, 3, ECRUTEAK_GYM
+	warp_def 12, 5, 3, ECRUTEAK_GYM
+	warp_def 10, 7, 3, ECRUTEAK_GYM
+	warp_def 11, 7, 3, ECRUTEAK_GYM
+	warp_def 12, 7, 3, ECRUTEAK_GYM
+	warp_def 13, 7, 3, ECRUTEAK_GYM
 
 .XYTriggers: db 0
 
@@ -111,7 +111,7 @@ UnknownScript_0x99dc6:
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
 	waitsfx
-	warp ECRUTEAK_CITY, $6, $1b
+	warp ECRUTEAK_CITY, 6, 27
 	end
 
 TrainerSageJeffrey:

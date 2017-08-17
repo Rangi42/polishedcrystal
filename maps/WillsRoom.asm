@@ -9,9 +9,9 @@ WillsRoom_MapScriptHeader:
 WillsRoom_MapEventHeader:
 
 .Warps: db 3
-	warp_def $11, $5, 4, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def $2, $4, 1, KOGAS_ROOM
-	warp_def $2, $5, 2, KOGAS_ROOM
+	warp_def 17, 5, 4, INDIGO_PLATEAU_POKECENTER_1F
+	warp_def 2, 4, 1, KOGAS_ROOM
+	warp_def 2, 5, 2, KOGAS_ROOM
 
 .XYTriggers: db 0
 
@@ -29,7 +29,7 @@ WillsRoomEntranceTrigger:
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock $4, $e, $2a
+	changeblock 4, 14, $2a
 	reloadmappart
 	closetext
 	dotrigger $1
@@ -40,11 +40,11 @@ WillsRoomEntranceTrigger:
 WillsRoomDoorCallback:
 	checkevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepDoorClosed
-	changeblock $4, $e, $2a
+	changeblock 4, 14, $2a
 .KeepDoorClosed:
 	checkevent EVENT_WILLS_ROOM_EXIT_OPEN
 	iffalse .OpenDoor
-	changeblock $4, $2, $16
+	changeblock 4, 2, $16
 .OpenDoor:
 	return
 
@@ -72,7 +72,7 @@ WillScript:
 	showtext .AfterRematchText
 .EndBattle:
 	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
+	changeblock 4, 2, $16
 	reloadmappart
 	setevent EVENT_WILLS_ROOM_EXIT_OPEN
 	setevent EVENT_BEAT_ELITE_4_WILL

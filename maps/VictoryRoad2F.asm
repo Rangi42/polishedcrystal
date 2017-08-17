@@ -7,11 +7,11 @@ VictoryRoad2F_MapScriptHeader:
 VictoryRoad2F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $9, $19, 4, ROUTE_23
-	warp_def $b, $3, 2, VICTORY_ROAD_1F
-	warp_def $4, $3, 1, VICTORY_ROAD_3F
-	warp_def $7, $f, 2, VICTORY_ROAD_3F
-	warp_def $9, $13, 3, VICTORY_ROAD_3F
+	warp_def 9, 25, 4, ROUTE_23
+	warp_def 11, 3, 2, VICTORY_ROAD_1F
+	warp_def 4, 3, 1, VICTORY_ROAD_3F
+	warp_def 7, 15, 2, VICTORY_ROAD_3F
+	warp_def 9, 19, 3, VICTORY_ROAD_3F
 
 .XYTriggers: db 1
 	xy_trigger 0, $9, $19, UnknownScript_0x74492

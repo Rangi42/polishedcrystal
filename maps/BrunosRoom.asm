@@ -9,10 +9,10 @@ BrunosRoom_MapScriptHeader:
 BrunosRoom_MapEventHeader:
 
 .Warps: db 4
-	warp_def $11, $4, 3, KOGAS_ROOM
-	warp_def $11, $5, 4, KOGAS_ROOM
-	warp_def $2, $4, 1, KARENS_ROOM
-	warp_def $2, $5, 2, KARENS_ROOM
+	warp_def 17, 4, 3, KOGAS_ROOM
+	warp_def 17, 5, 4, KOGAS_ROOM
+	warp_def 2, 4, 1, KARENS_ROOM
+	warp_def 2, 5, 2, KARENS_ROOM
 
 .XYTriggers: db 0
 
@@ -30,7 +30,7 @@ BrunosRoomEntranceTrigger:
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock $4, $e, $2a
+	changeblock 4, 14, $2a
 	reloadmappart
 	closetext
 	dotrigger $1
@@ -41,11 +41,11 @@ BrunosRoomEntranceTrigger:
 BrunosRoomDoorCallback:
 	checkevent EVENT_BRUNOS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepDoorClosed
-	changeblock $4, $e, $2a
+	changeblock 4, 14, $2a
 .KeepDoorClosed:
 	checkevent EVENT_BRUNOS_ROOM_EXIT_OPEN
 	iffalse .OpenDoor
-	changeblock $4, $2, $16
+	changeblock 4, 2, $16
 .OpenDoor:
 	return
 
@@ -73,7 +73,7 @@ BrunoScript:
 	showtext .AfterRematchText
 .EndBattle:
 	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
+	changeblock 4, 2, $16
 	reloadmappart
 	setevent EVENT_BRUNOS_ROOM_EXIT_OPEN
 	setevent EVENT_BEAT_ELITE_4_BRUNO

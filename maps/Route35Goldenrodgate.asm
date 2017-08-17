@@ -7,10 +7,10 @@ Route35Goldenrodgate_MapScriptHeader:
 Route35Goldenrodgate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 1, ROUTE_35
-	warp_def $0, $5, 2, ROUTE_35
-	warp_def $7, $4, 12, GOLDENROD_CITY
-	warp_def $7, $5, 12, GOLDENROD_CITY
+	warp_def 0, 4, 1, ROUTE_35
+	warp_def 0, 5, 2, ROUTE_35
+	warp_def 7, 4, 12, GOLDENROD_CITY
+	warp_def 7, 5, 12, GOLDENROD_CITY
 
 .XYTriggers: db 0
 

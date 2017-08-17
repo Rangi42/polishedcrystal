@@ -7,9 +7,9 @@ GoldenrodDeptStore6F_MapScriptHeader:
 GoldenrodDeptStore6F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $f, 2, GOLDENROD_DEPT_STORE_5F
-	warp_def $0, $2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
-	warp_def $0, $d, 1, GOLDENROD_DEPT_STORE_ROOF
+	warp_def 0, 15, 2, GOLDENROD_DEPT_STORE_5F
+	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_def 0, 13, 1, GOLDENROD_DEPT_STORE_ROOF
 
 .XYTriggers: db 0
 

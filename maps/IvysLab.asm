@@ -7,8 +7,8 @@ IvysLab_MapScriptHeader:
 IvysLab_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 1, VALENCIA_ISLAND
-	warp_def $b, $5, 1, VALENCIA_ISLAND
+	warp_def 11, 4, 1, VALENCIA_ISLAND
+	warp_def 11, 5, 1, VALENCIA_ISLAND
 
 .XYTriggers: db 0
 

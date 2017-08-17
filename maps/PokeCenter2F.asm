@@ -11,9 +11,9 @@ PokeCenter2F_MapScriptHeader:
 PokeCenter2F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $0, -1, POKECENTER_2F
-	warp_def $0, $5, 1, TRADE_CENTER
-	warp_def $0, $9, 1, COLOSSEUM
+	warp_def 7, 0, -1, POKECENTER_2F
+	warp_def 0, 5, 1, TRADE_CENTER
+	warp_def 0, 9, 1, COLOSSEUM
 
 .XYTriggers: db 0
 
@@ -48,8 +48,8 @@ PokeCenter2FTileCallback:
 
 .shamouti2f
 	changemap KantoPokeCenter2F_BlockData
-	changeblock $0, $6, $3c
-	changeblock $2, $0, $4a
+	changeblock 0, 6, $3c
+	changeblock 2, 0, $4a
 	return
 
 .CheckPokeCenter2FRegion:

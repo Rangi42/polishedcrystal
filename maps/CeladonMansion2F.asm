@@ -7,10 +7,10 @@ CeladonMansion2F_MapScriptHeader:
 CeladonMansion2F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $0, 4, CELADON_MANSION_1F
-	warp_def $0, $1, 2, CELADON_MANSION_3F
-	warp_def $0, $6, 3, CELADON_MANSION_3F
-	warp_def $0, $7, 5, CELADON_MANSION_1F
+	warp_def 0, 0, 4, CELADON_MANSION_1F
+	warp_def 0, 1, 2, CELADON_MANSION_3F
+	warp_def 0, 6, 3, CELADON_MANSION_3F
+	warp_def 0, 7, 5, CELADON_MANSION_1F
 
 .XYTriggers: db 0
 

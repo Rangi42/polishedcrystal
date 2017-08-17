@@ -7,14 +7,14 @@ CeruleanCave1F_MapScriptHeader:
 CeruleanCave1F_MapEventHeader:
 
 .Warps: db 8
-	warp_def $13, $1b, 7, CERULEAN_CITY
-	warp_def $3, $9, 1, CERULEAN_CAVE_2F
-	warp_def $3, $1d, 2, CERULEAN_CAVE_2F
-	warp_def $5, $3, 3, CERULEAN_CAVE_2F
-	warp_def $8, $2, 1, CERULEAN_CAVE_B1F
-	warp_def $9, $19, 4, CERULEAN_CAVE_2F
-	warp_def $b, $14, 5, CERULEAN_CAVE_2F
-	warp_def $d, $5, 6, CERULEAN_CAVE_2F
+	warp_def 19, 27, 7, CERULEAN_CITY
+	warp_def 3, 9, 1, CERULEAN_CAVE_2F
+	warp_def 3, 29, 2, CERULEAN_CAVE_2F
+	warp_def 5, 3, 3, CERULEAN_CAVE_2F
+	warp_def 8, 2, 1, CERULEAN_CAVE_B1F
+	warp_def 9, 25, 4, CERULEAN_CAVE_2F
+	warp_def 11, 20, 5, CERULEAN_CAVE_2F
+	warp_def 13, 5, 6, CERULEAN_CAVE_2F
 
 .XYTriggers: db 0
 

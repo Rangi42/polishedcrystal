@@ -9,8 +9,8 @@ OlivinePort_MapScriptHeader:
 OlivinePort_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $b, 5, OLIVINE_PORT_PASSAGE
-	warp_def $17, $7, 1, FAST_SHIP_1F
+	warp_def 7, 11, 5, OLIVINE_PORT_PASSAGE
+	warp_def 23, 7, 1, FAST_SHIP_1F
 
 .XYTriggers: db 1
 	xy_trigger 0, $f, $7, UnknownScript_0x7491f
@@ -79,7 +79,7 @@ UnknownScript_0x7490a:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
 	domaptrigger FAST_SHIP_1F, $1
-	warp FAST_SHIP_1F, $19, $1
+	warp FAST_SHIP_1F, 25, 1
 	end
 
 UnknownScript_0x74919:

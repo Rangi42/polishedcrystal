@@ -9,17 +9,17 @@ VioletCity_MapScriptHeader:
 VioletCity_MapEventHeader:
 
 .Warps: db 11
-	warp_def $15, $9, 2, VIOLET_MART
-	warp_def $15, $12, 1, VIOLET_GYM
-	warp_def $15, $1e, 1, EARLS_POKEMON_ACADEMY
-	warp_def $13, $3, 1, VIOLET_NICKNAME_SPEECH_HOUSE
-	warp_def $1d, $1f, 1, VIOLET_POKECENTER_1F
-	warp_def $21, $15, 1, VIOLET_ONIX_TRADE_HOUSE
-	warp_def $5, $17, 1, SPROUT_TOWER_1F
-	warp_def $1c, $27, 1, ROUTE_31_VIOLET_GATE
-	warp_def $1d, $27, 2, ROUTE_31_VIOLET_GATE
-	warp_def $c, $2, 3, ROUTE_36_VIOLET_GATE
-	warp_def $d, $2, 4, ROUTE_36_VIOLET_GATE
+	warp_def 21, 9, 2, VIOLET_MART
+	warp_def 21, 18, 1, VIOLET_GYM
+	warp_def 21, 30, 1, EARLS_POKEMON_ACADEMY
+	warp_def 19, 3, 1, VIOLET_NICKNAME_SPEECH_HOUSE
+	warp_def 29, 31, 1, VIOLET_POKECENTER_1F
+	warp_def 33, 21, 1, VIOLET_ONIX_TRADE_HOUSE
+	warp_def 5, 23, 1, SPROUT_TOWER_1F
+	warp_def 28, 39, 1, ROUTE_31_VIOLET_GATE
+	warp_def 29, 39, 2, ROUTE_31_VIOLET_GATE
+	warp_def 12, 2, 3, ROUTE_36_VIOLET_GATE
+	warp_def 13, 2, 4, ROUTE_36_VIOLET_GATE
 
 .XYTriggers: db 0
 

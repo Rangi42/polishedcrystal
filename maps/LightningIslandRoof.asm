@@ -7,7 +7,7 @@ LightningIslandRoof_MapScriptHeader:
 LightningIslandRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $3, 2, LIGHTNING_ISLAND
+	warp_def 7, 3, 2, LIGHTNING_ISLAND
 
 .XYTriggers: db 0
 

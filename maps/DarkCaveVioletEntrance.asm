@@ -7,9 +7,9 @@ DarkCaveVioletEntrance_MapScriptHeader:
 DarkCaveVioletEntrance_MapEventHeader:
 
 .Warps: db 3
-	warp_def $f, $3, 3, ROUTE_31
-	warp_def $1, $11, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
-	warp_def $21, $23, 3, ROUTE_46
+	warp_def 15, 3, 3, ROUTE_31
+	warp_def 1, 17, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
+	warp_def 33, 35, 3, ROUTE_46
 
 .XYTriggers: db 1
 	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger

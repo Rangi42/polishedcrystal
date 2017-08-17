@@ -7,7 +7,7 @@ Route16West_MapScriptHeader:
 Route16West_MapEventHeader:
 
 .Warps: db 1
-	warp_def $1, $23, 1, PSYCHIC_INVERS_HOUSE
+	warp_def 1, 35, 1, PSYCHIC_INVERS_HOUSE
 
 .XYTriggers: db 0
 

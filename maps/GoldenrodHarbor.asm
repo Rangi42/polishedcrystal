@@ -7,8 +7,8 @@ GoldenrodHarbor_MapScriptHeader:
 GoldenrodHarbor_MapEventHeader:
 
 .Warps: db 2
-	warp_def $10, $1f, 1, GOLDENROD_HARBOR_GATE
-	warp_def $11, $1f, 2, GOLDENROD_HARBOR_GATE
+	warp_def 16, 31, 1, GOLDENROD_HARBOR_GATE
+	warp_def 17, 31, 2, GOLDENROD_HARBOR_GATE
 
 .XYTriggers: db 0
 

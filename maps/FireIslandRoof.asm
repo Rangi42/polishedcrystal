@@ -7,7 +7,7 @@ FireIslandRoof_MapScriptHeader:
 FireIslandRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $3, 2, FIRE_ISLAND
+	warp_def 7, 3, 2, FIRE_ISLAND
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ ShamoutiTunnel_MapScriptHeader:
 ShamoutiTunnel_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $21, 3, SHAMOUTI_ISLAND
-	warp_def $11, $5, 2, WARM_BEACH
+	warp_def 9, 33, 3, SHAMOUTI_ISLAND
+	warp_def 17, 5, 2, WARM_BEACH
 
 .XYTriggers: db 0
 

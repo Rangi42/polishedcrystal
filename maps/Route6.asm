@@ -7,8 +7,8 @@ Route6_MapScriptHeader:
 Route6_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $11, 1, ROUTE_6_UNDERGROUND_ENTRANCE
-	warp_def $1, $6, 3, ROUTE_6_SAFFRON_GATE
+	warp_def 9, 17, 1, ROUTE_6_UNDERGROUND_ENTRANCE
+	warp_def 1, 6, 3, ROUTE_6_SAFFRON_GATE
 
 .XYTriggers: db 0
 

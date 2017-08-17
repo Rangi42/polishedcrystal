@@ -7,9 +7,9 @@ BlackthornPokeCenter1F_MapScriptHeader:
 BlackthornPokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 5, BLACKTHORN_CITY
-	warp_def $7, $6, 5, BLACKTHORN_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 5, BLACKTHORN_CITY
+	warp_def 7, 6, 5, BLACKTHORN_CITY
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 

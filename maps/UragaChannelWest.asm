@@ -7,7 +7,7 @@ UragaChannelWest_MapScriptHeader:
 UragaChannelWest_MapEventHeader:
 
 .Warps: db 1
-	warp_def $9, $8, 2, SCARY_CAVE_1F
+	warp_def 9, 8, 2, SCARY_CAVE_1F
 
 .XYTriggers: db 0
 

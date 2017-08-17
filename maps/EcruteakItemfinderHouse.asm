@@ -7,8 +7,8 @@ EcruteakItemfinderHouse_MapScriptHeader:
 EcruteakItemfinderHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 11, ECRUTEAK_CITY
-	warp_def $7, $4, 11, ECRUTEAK_CITY
+	warp_def 7, 3, 11, ECRUTEAK_CITY
+	warp_def 7, 4, 11, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

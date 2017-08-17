@@ -9,7 +9,7 @@ GiovannisCave_MapScriptHeader:
 GiovannisCave_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $f, 3, TOHJO_FALLS
+	warp_def 7, 15, 3, TOHJO_FALLS
 
 .XYTriggers: db 0
 
@@ -90,7 +90,7 @@ GiovannisCaveCelebiEventScript:
 	waitsfx
 	disappear GIOVANNISCAVE_CELEBI
 	disappear GIOVANNISCAVE_LYRA
-	warp CINNABAR_LAB, $1e, $10
+	warp CINNABAR_LAB, 30, 16
 	end
 
 GiovannisCaveRadioScript:

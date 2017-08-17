@@ -7,11 +7,11 @@ EcruteakShrineOutside_MapScriptHeader:
 EcruteakShrineOutside_MapEventHeader:
 
 .Warps: db 5
-	warp_def $3, $5, 1, ECRUTEAK_SHRINE_INSIDE
-	warp_def $b, $4, 4, ECRUTEAK_CITY
-	warp_def $b, $5, 4, ECRUTEAK_CITY
-	warp_def $b, $6, 5, ECRUTEAK_CITY
-	warp_def $b, $7, 5, ECRUTEAK_CITY
+	warp_def 3, 5, 1, ECRUTEAK_SHRINE_INSIDE
+	warp_def 11, 4, 4, ECRUTEAK_CITY
+	warp_def 11, 5, 4, ECRUTEAK_CITY
+	warp_def 11, 6, 5, ECRUTEAK_CITY
+	warp_def 11, 7, 5, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

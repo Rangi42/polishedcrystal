@@ -10,10 +10,10 @@ Route32_MapScriptHeader:
 Route32_MapEventHeader:
 
 .Warps: db 4
-	warp_def $49, $b, 1, ROUTE_32_POKECENTER_1F
-	warp_def $2, $4, 3, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $3, $4, 4, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $4f, $6, 4, UNION_CAVE_1F
+	warp_def 73, 11, 1, ROUTE_32_POKECENTER_1F
+	warp_def 2, 4, 3, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def 3, 4, 4, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def 79, 6, 4, UNION_CAVE_1F
 
 .XYTriggers: db 2
 	xy_trigger 0, $8, $12, Route32CooltrainerMStopsYou

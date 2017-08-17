@@ -8,9 +8,9 @@ Route27_MapScriptHeader:
 Route27_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE
-	warp_def $5, $1a, 1, TOHJO_FALLS
-	warp_def $5, $24, 2, TOHJO_FALLS
+	warp_def 7, 33, 1, ROUTE_27_REST_HOUSE
+	warp_def 5, 26, 1, TOHJO_FALLS
+	warp_def 5, 36, 2, TOHJO_FALLS
 
 .XYTriggers: db 2
 	xy_trigger 0, $a, $12, UnknownScript_0x1a0873

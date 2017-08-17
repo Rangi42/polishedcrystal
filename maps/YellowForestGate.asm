@@ -7,10 +7,10 @@ YellowForestGate_MapScriptHeader:
 YellowForestGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 1, YELLOW_FOREST
-	warp_def $0, $5, 2, YELLOW_FOREST
-	warp_def $7, $4, 1, ROUTE_48
-	warp_def $7, $5, 1, ROUTE_48
+	warp_def 0, 4, 1, YELLOW_FOREST
+	warp_def 0, 5, 2, YELLOW_FOREST
+	warp_def 7, 4, 1, ROUTE_48
+	warp_def 7, 5, 1, ROUTE_48
 
 .XYTriggers: db 0
 

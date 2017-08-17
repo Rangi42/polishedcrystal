@@ -7,10 +7,10 @@ WhirlIslandB2F_MapScriptHeader:
 WhirlIslandB2F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $5, $b, 7, WHIRL_ISLAND_B1F
-	warp_def $b, $7, 8, WHIRL_ISLAND_B1F
-	warp_def $19, $7, 1, WHIRL_ISLAND_LUGIA_CHAMBER
-	warp_def $1f, $d, 5, WHIRL_ISLAND_SW
+	warp_def 5, 11, 7, WHIRL_ISLAND_B1F
+	warp_def 11, 7, 8, WHIRL_ISLAND_B1F
+	warp_def 25, 7, 1, WHIRL_ISLAND_LUGIA_CHAMBER
+	warp_def 31, 13, 5, WHIRL_ISLAND_SW
 
 .XYTriggers: db 0
 

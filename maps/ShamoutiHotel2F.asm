@@ -7,10 +7,10 @@ ShamoutiHotel2F_MapScriptHeader:
 ShamoutiHotel2F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $2, 3, SHAMOUTI_HOTEL_1F
-	warp_def $0, $3, 1, SHAMOUTI_HOTEL_3F
-	warp_def $0, $6, 1, SHAMOUTI_HOTEL_ROOM_2A
-	warp_def $0, $a, 1, SHAMOUTI_HOTEL_ROOM_2B
+	warp_def 0, 2, 3, SHAMOUTI_HOTEL_1F
+	warp_def 0, 3, 1, SHAMOUTI_HOTEL_3F
+	warp_def 0, 6, 1, SHAMOUTI_HOTEL_ROOM_2A
+	warp_def 0, 10, 1, SHAMOUTI_HOTEL_ROOM_2B
 
 .XYTriggers: db 0
 

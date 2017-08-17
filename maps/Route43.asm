@@ -9,11 +9,11 @@ Route43_MapScriptHeader:
 Route43_MapEventHeader:
 
 .Warps: db 5
-	warp_def $33, $9, 1, ROUTE_43_MAHOGANY_GATE
-	warp_def $33, $a, 2, ROUTE_43_MAHOGANY_GATE
-	warp_def $23, $11, 3, ROUTE_43_GATE
-	warp_def $1f, $11, 1, ROUTE_43_GATE
-	warp_def $1f, $12, 2, ROUTE_43_GATE
+	warp_def 51, 9, 1, ROUTE_43_MAHOGANY_GATE
+	warp_def 51, 10, 2, ROUTE_43_MAHOGANY_GATE
+	warp_def 35, 17, 3, ROUTE_43_GATE
+	warp_def 31, 17, 1, ROUTE_43_GATE
+	warp_def 31, 18, 2, ROUTE_43_GATE
 
 .XYTriggers: db 0
 

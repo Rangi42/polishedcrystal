@@ -7,8 +7,8 @@ Route30_MapScriptHeader:
 Route30_MapEventHeader:
 
 .Warps: db 2
-	warp_def $27, $7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
-	warp_def $5, $11, 1, MR_POKEMONS_HOUSE
+	warp_def 39, 7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
+	warp_def 5, 17, 1, MR_POKEMONS_HOUSE
 
 .XYTriggers: db 0
 

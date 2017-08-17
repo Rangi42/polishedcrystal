@@ -8,9 +8,9 @@ PalletTown_MapScriptHeader:
 PalletTown_MapEventHeader:
 
 .Warps: db 3
-	warp_def $5, $5, 1, REDS_HOUSE_1F
-	warp_def $5, $d, 1, BLUES_HOUSE_1F
-	warp_def $b, $c, 1, OAKS_LAB
+	warp_def 5, 5, 1, REDS_HOUSE_1F
+	warp_def 5, 13, 1, BLUES_HOUSE_1F
+	warp_def 11, 12, 1, OAKS_LAB
 
 .XYTriggers: db 0
 

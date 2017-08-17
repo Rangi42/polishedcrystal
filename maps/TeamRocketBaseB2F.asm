@@ -8,11 +8,11 @@ TeamRocketBaseB2F_MapScriptHeader:
 TeamRocketBaseB2F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $e, $3, 2, TEAM_ROCKET_BASE_B1F
-	warp_def $2, $3, 1, TEAM_ROCKET_BASE_B3F
-	warp_def $2, $1b, 2, TEAM_ROCKET_BASE_B3F
-	warp_def $6, $3, 3, TEAM_ROCKET_BASE_B3F
-	warp_def $e, $1b, 4, TEAM_ROCKET_BASE_B3F
+	warp_def 14, 3, 2, TEAM_ROCKET_BASE_B1F
+	warp_def 2, 3, 1, TEAM_ROCKET_BASE_B3F
+	warp_def 2, 27, 2, TEAM_ROCKET_BASE_B3F
+	warp_def 6, 3, 3, TEAM_ROCKET_BASE_B3F
+	warp_def 14, 27, 4, TEAM_ROCKET_BASE_B3F
 
 .XYTriggers: db 9
 	xy_trigger 0, $e, $5, LanceHealsScript
@@ -87,18 +87,18 @@ TransmitterDoorCallback:
 	return
 
 .Change:
-	changeblock $e, $c, $7
+	changeblock 14, 12, $7
 	return
 
 UnknownScript_0x6cf95:
-	moveperson TEAMROCKETBASEB2F_LANCE, $9, $d
+	moveperson TEAMROCKETBASEB2F_LANCE, 9, 13
 	jump UnknownScript_0x6cfac
 
 UnknownScript_0x6cf9c:
-	moveperson TEAMROCKETBASEB2F_ARIANA, $15, $10
-	moveperson TEAMROCKETBASEB2F_ROCKET1, $15, $10
-	moveperson TEAMROCKETBASEB2F_DRAGONITE, $a, $d
-	moveperson TEAMROCKETBASEB2F_LANCE, $a, $d
+	moveperson TEAMROCKETBASEB2F_ARIANA, 21, 16
+	moveperson TEAMROCKETBASEB2F_ROCKET1, 21, 16
+	moveperson TEAMROCKETBASEB2F_DRAGONITE, 10, 13
+	moveperson TEAMROCKETBASEB2F_LANCE, 10, 13
 UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_ROCKET1
@@ -272,7 +272,7 @@ UnknownScript_0x6d182:
 	end
 
 UnknownScript_0x6d184:
-	moveperson TEAMROCKETBASEB2F_LANCE, $12, $6
+	moveperson TEAMROCKETBASEB2F_LANCE, 18, 6
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d27a
 	spriteface PLAYER, RIGHT
@@ -314,7 +314,7 @@ UnknownScript_0x6d1e8:
 	writetext UnknownText_0x6dd6b
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock $e, $c, $7
+	changeblock 14, 12, $7
 	reloadmappart
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER

@@ -12,7 +12,7 @@ LyrasHouse2F_MapScriptHeader:
 LyrasHouse2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $0, 3, LYRAS_HOUSE_1F
+	warp_def 0, 0, 3, LYRAS_HOUSE_1F
 
 .XYTriggers: db 0
 

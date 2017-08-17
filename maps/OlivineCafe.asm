@@ -7,8 +7,8 @@ OlivineCafe_MapScriptHeader:
 OlivineCafe_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $4, 6, OLIVINE_CITY
-	warp_def $7, $5, 6, OLIVINE_CITY
+	warp_def 7, 4, 6, OLIVINE_CITY
+	warp_def 7, 5, 6, OLIVINE_CITY
 
 .XYTriggers: db 0
 

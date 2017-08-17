@@ -7,8 +7,8 @@ EusinesHouse_MapScriptHeader:
 EusinesHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 14, CELADON_CITY
-	warp_def $7, $3, 14, CELADON_CITY
+	warp_def 7, 2, 14, CELADON_CITY
+	warp_def 7, 3, 14, CELADON_CITY
 
 .XYTriggers: db 0
 

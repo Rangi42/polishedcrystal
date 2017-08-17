@@ -9,10 +9,10 @@ Route43Gate_MapScriptHeader:
 Route43Gate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 4, ROUTE_43
-	warp_def $0, $5, 5, ROUTE_43
-	warp_def $7, $4, 3, ROUTE_43
-	warp_def $7, $5, 3, ROUTE_43
+	warp_def 0, 4, 4, ROUTE_43
+	warp_def 0, 5, 5, ROUTE_43
+	warp_def 7, 4, 3, ROUTE_43
+	warp_def 7, 5, 3, ROUTE_43
 
 .XYTriggers: db 0
 

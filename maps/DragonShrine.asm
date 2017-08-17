@@ -8,8 +8,8 @@ DragonShrine_MapScriptHeader:
 DragonShrine_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $4, 2, DRAGONS_DEN_B1F
-	warp_def $9, $5, 2, DRAGONS_DEN_B1F
+	warp_def 9, 4, 2, DRAGONS_DEN_B1F
+	warp_def 9, 5, 2, DRAGONS_DEN_B1F
 
 .XYTriggers: db 0
 

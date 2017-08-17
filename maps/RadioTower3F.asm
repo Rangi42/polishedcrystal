@@ -8,9 +8,9 @@ RadioTower3F_MapScriptHeader:
 RadioTower3F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $0, 1, RADIO_TOWER_2F
-	warp_def $0, $7, 2, RADIO_TOWER_4F
-	warp_def $0, $11, 4, RADIO_TOWER_4F
+	warp_def 0, 0, 1, RADIO_TOWER_2F
+	warp_def 0, 7, 2, RADIO_TOWER_4F
+	warp_def 0, 17, 4, RADIO_TOWER_4F
 
 .XYTriggers: db 0
 
@@ -34,8 +34,8 @@ CardKeyShutterCallback:
 	return
 
 .Change:
-	changeblock $e, $2, $2a
-	changeblock $e, $4, $1
+	changeblock 14, 2, $2a
+	changeblock 14, 4, $1
 	return
 
 GymGuyScript_0x5e556:
@@ -120,8 +120,8 @@ UnknownScript_0x5e605:
 	waitbutton
 	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	playsound SFX_ENTER_DOOR
-	changeblock $e, $2, $2a
-	changeblock $e, $4, $1
+	changeblock 14, 2, $2a
+	changeblock 14, 4, $1
 	reloadmappart
 	closetext
 	waitsfx

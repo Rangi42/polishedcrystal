@@ -7,7 +7,7 @@ TrainerHouseB1F_MapScriptHeader:
 TrainerHouseB1F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $4, $9, 3, TRAINER_HOUSE_1F
+	warp_def 4, 9, 3, TRAINER_HOUSE_1F
 
 .XYTriggers: db 1
 	xy_trigger 0, $3, $7, TrainerHouseReceptionistScript

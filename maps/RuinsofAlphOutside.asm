@@ -10,18 +10,18 @@ RuinsofAlphOutside_MapScriptHeader:
 RuinsofAlphOutside_MapEventHeader:
 
 .Warps: db 12
-	warp_def $17, $5, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
-	warp_def $d, $10, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def $23, $4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
-	warp_def $27, $12, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
-	warp_def $13, $c, 1, RUINS_OF_ALPH_ENTRANCE_CHAMBER
-	warp_def $11, $13, 1, RUINS_OF_ALPH_RESEARCH_CENTER
-	warp_def $19, $8, 1, UNION_CAVE_B1F_NORTH
-	warp_def $21, $9, 2, UNION_CAVE_B1F_NORTH
-	warp_def $5, $3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def $1a, $f, 1, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $1b, $f, 2, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $9, $a, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
+	warp_def 23, 5, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
+	warp_def 13, 16, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_def 35, 4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
+	warp_def 39, 18, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
+	warp_def 19, 12, 1, RUINS_OF_ALPH_ENTRANCE_CHAMBER
+	warp_def 17, 19, 1, RUINS_OF_ALPH_RESEARCH_CENTER
+	warp_def 25, 8, 1, UNION_CAVE_B1F_NORTH
+	warp_def 33, 9, 2, UNION_CAVE_B1F_NORTH
+	warp_def 5, 3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def 26, 15, 1, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def 27, 15, 2, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def 9, 10, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
 
 .XYTriggers: db 2
 	xy_trigger 1, $14, $d, UnknownScript_0x58031
@@ -73,7 +73,7 @@ RuinsofAlphOutsideTrigger0:
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock $a, $8, $bb
+	changeblock 10, 8, $bb
 .locked
 	return
 

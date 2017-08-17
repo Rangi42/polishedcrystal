@@ -7,8 +7,8 @@ VioletNicknameSpeechHouse_MapScriptHeader:
 VioletNicknameSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 4, VIOLET_CITY
-	warp_def $7, $4, 4, VIOLET_CITY
+	warp_def 7, 3, 4, VIOLET_CITY
+	warp_def 7, 4, 4, VIOLET_CITY
 
 .XYTriggers: db 0
 

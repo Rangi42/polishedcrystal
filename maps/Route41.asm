@@ -7,10 +7,10 @@ Route41_MapScriptHeader:
 Route41_MapEventHeader:
 
 .Warps: db 4
-	warp_def $11, $d, 1, WHIRL_ISLAND_NW
-	warp_def $13, $25, 1, WHIRL_ISLAND_NE
-	warp_def $25, $d, 1, WHIRL_ISLAND_SW
-	warp_def $2d, $25, 1, WHIRL_ISLAND_SE
+	warp_def 17, 13, 1, WHIRL_ISLAND_NW
+	warp_def 19, 37, 1, WHIRL_ISLAND_NE
+	warp_def 37, 13, 1, WHIRL_ISLAND_SW
+	warp_def 45, 37, 1, WHIRL_ISLAND_SE
 
 .XYTriggers: db 0
 

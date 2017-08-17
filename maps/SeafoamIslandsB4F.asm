@@ -7,12 +7,12 @@ SeafoamIslandsB4F_MapScriptHeader:
 SeafoamIslandsB4F_MapEventHeader:
 
 .Warps: db 6
-	warp_def $3, $3, 5, SEAFOAM_ISLANDS_B3F
-	warp_def $b, $7, 6, SEAFOAM_ISLANDS_B3F
-	warp_def $7, $19, 7, SEAFOAM_ISLANDS_B3F
-	warp_def $2, $1b, 8, SEAFOAM_ISLANDS_B3F
-	warp_def $d, $1f, 9, SEAFOAM_ISLANDS_B3F
-	warp_def $d, $25, 10, SEAFOAM_ISLANDS_B3F
+	warp_def 3, 3, 5, SEAFOAM_ISLANDS_B3F
+	warp_def 11, 7, 6, SEAFOAM_ISLANDS_B3F
+	warp_def 7, 25, 7, SEAFOAM_ISLANDS_B3F
+	warp_def 2, 27, 8, SEAFOAM_ISLANDS_B3F
+	warp_def 13, 31, 9, SEAFOAM_ISLANDS_B3F
+	warp_def 13, 37, 10, SEAFOAM_ISLANDS_B3F
 
 .XYTriggers: db 0
 

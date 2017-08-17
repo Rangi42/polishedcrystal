@@ -8,7 +8,7 @@ Route40_MapScriptHeader:
 Route40_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $9, 1, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def 5, 9, 1, ROUTE_40_BATTLE_TOWER_GATE
 
 .XYTriggers: db 0
 

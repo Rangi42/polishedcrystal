@@ -7,11 +7,11 @@ MountMoonB2F_MapScriptHeader:
 MountMoonB2F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $18, $a, 4, MOUNT_MOON_B1F
-	warp_def $7, $15, 5, MOUNT_MOON_B1F
-	warp_def $f, $11, 6, MOUNT_MOON_B1F
-	warp_def $9, $3, 7, MOUNT_MOON_B1F
-	warp_def $15, $12, 9, MOUNT_MOON_B1F
+	warp_def 24, 10, 4, MOUNT_MOON_B1F
+	warp_def 7, 21, 5, MOUNT_MOON_B1F
+	warp_def 15, 17, 6, MOUNT_MOON_B1F
+	warp_def 9, 3, 7, MOUNT_MOON_B1F
+	warp_def 21, 18, 9, MOUNT_MOON_B1F
 
 .XYTriggers: db 0
 

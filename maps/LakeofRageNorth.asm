@@ -8,7 +8,7 @@ LakeofRageNorth_MapScriptHeader:
 LakeofRageNorth_MapEventHeader:
 
 .Warps: db 1
-	warp_def $3, $7, 1, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE
+	warp_def 3, 7, 1, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE
 
 .XYTriggers: db 0
 

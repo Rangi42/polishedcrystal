@@ -7,8 +7,8 @@ CeladonOldManSpeechHouse_MapScriptHeader:
 CeladonOldManSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 15, CELADON_CITY
-	warp_def $7, $3, 15, CELADON_CITY
+	warp_def 7, 2, 15, CELADON_CITY
+	warp_def 7, 3, 15, CELADON_CITY
 
 .XYTriggers: db 0
 

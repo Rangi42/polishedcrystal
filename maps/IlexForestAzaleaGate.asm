@@ -7,10 +7,10 @@ IlexForestAzaleaGate_MapScriptHeader:
 IlexForestAzaleaGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 2, ILEX_FOREST
-	warp_def $5, $0, 3, ILEX_FOREST
-	warp_def $4, $9, 7, AZALEA_TOWN
-	warp_def $5, $9, 8, AZALEA_TOWN
+	warp_def 4, 0, 2, ILEX_FOREST
+	warp_def 5, 0, 3, ILEX_FOREST
+	warp_def 4, 9, 7, AZALEA_TOWN
+	warp_def 5, 9, 8, AZALEA_TOWN
 
 .XYTriggers: db 0
 

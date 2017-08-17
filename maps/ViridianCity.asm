@@ -8,14 +8,14 @@ ViridianCity_MapScriptHeader:
 ViridianCity_MapEventHeader:
 
 .Warps: db 8
-	warp_def $7, $20, 1, VIRIDIAN_GYM
-	warp_def $5, $15, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE
-	warp_def $f, $17, 1, TRAINER_HOUSE_1F
-	warp_def $13, $1d, 2, VIRIDIAN_MART
-	warp_def $19, $17, 1, VIRIDIAN_POKECENTER_1F
-	warp_def $21, $1c, 1, ROUTE_1_VIRIDIAN_GATE
-	warp_def $21, $1d, 2, ROUTE_1_VIRIDIAN_GATE
-	warp_def $9, $15, 1, VIRIDIAN_SCHOOL_HOUSE
+	warp_def 7, 32, 1, VIRIDIAN_GYM
+	warp_def 5, 21, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE
+	warp_def 15, 23, 1, TRAINER_HOUSE_1F
+	warp_def 19, 29, 2, VIRIDIAN_MART
+	warp_def 25, 23, 1, VIRIDIAN_POKECENTER_1F
+	warp_def 33, 28, 1, ROUTE_1_VIRIDIAN_GATE
+	warp_def 33, 29, 2, ROUTE_1_VIRIDIAN_GATE
+	warp_def 9, 21, 1, VIRIDIAN_SCHOOL_HOUSE
 
 .XYTriggers: db 0
 

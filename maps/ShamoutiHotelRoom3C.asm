@@ -7,8 +7,8 @@ ShamoutiHotelRoom3C_MapScriptHeader:
 ShamoutiHotelRoom3C_MapEventHeader:
 
 .Warps: db 2
-	warp_def $5, $3, 3, SHAMOUTI_HOTEL_3F
-	warp_def $5, $4, 3, SHAMOUTI_HOTEL_3F
+	warp_def 5, 3, 3, SHAMOUTI_HOTEL_3F
+	warp_def 5, 4, 3, SHAMOUTI_HOTEL_3F
 
 .XYTriggers: db 0
 

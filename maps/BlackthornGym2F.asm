@@ -8,11 +8,11 @@ BlackthornGym2F_MapScriptHeader:
 BlackthornGym2F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $7, $1, 3, BLACKTHORN_GYM_1F
-	warp_def $9, $7, 4, BLACKTHORN_GYM_1F
-	warp_def $5, $2, 5, BLACKTHORN_GYM_1F ; hole
-	warp_def $7, $8, 6, BLACKTHORN_GYM_1F ; hole
-	warp_def $3, $8, 7, BLACKTHORN_GYM_1F ; hole
+	warp_def 7, 1, 3, BLACKTHORN_GYM_1F
+	warp_def 9, 7, 4, BLACKTHORN_GYM_1F
+	warp_def 5, 2, 5, BLACKTHORN_GYM_1F ; hole
+	warp_def 7, 8, 6, BLACKTHORN_GYM_1F ; hole
+	warp_def 3, 8, 7, BLACKTHORN_GYM_1F ; hole
 
 .XYTriggers: db 0
 

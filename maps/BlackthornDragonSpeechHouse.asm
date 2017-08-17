@@ -7,8 +7,8 @@ BlackthornDragonSpeechHouse_MapScriptHeader:
 BlackthornDragonSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, BLACKTHORN_CITY
-	warp_def $7, $3, 2, BLACKTHORN_CITY
+	warp_def 7, 2, 2, BLACKTHORN_CITY
+	warp_def 7, 3, 2, BLACKTHORN_CITY
 
 .XYTriggers: db 0
 

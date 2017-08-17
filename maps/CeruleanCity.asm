@@ -8,17 +8,17 @@ CeruleanCity_MapScriptHeader:
 CeruleanCity_MapEventHeader:
 
 .Warps: db 11
-	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
-	warp_def $11, $1c, 1, CERULEAN_POLICE_STATION
-	warp_def $13, $d, 1, CERULEAN_TRADE_SPEECH_HOUSE
-	warp_def $15, $13, 1, CERULEAN_POKECENTER_1F
-	warp_def $17, $1e, 1, CERULEAN_GYM
-	warp_def $1d, $19, 2, CERULEAN_MART
-	warp_def $d, $2, 1, CERULEAN_CAVE_1F
-	warp_def $1d, $e, 1, CERULEAN_BIKE_SHOP
-	warp_def $f, $f, 1, CERULEAN_BERRY_POWDER_HOUSE
-	warp_def $1d, $13, 1, CERULEAN_COUPLE_HOUSE
-	warp_def $9, $1d, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
+	warp_def 15, 7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
+	warp_def 17, 28, 1, CERULEAN_POLICE_STATION
+	warp_def 19, 13, 1, CERULEAN_TRADE_SPEECH_HOUSE
+	warp_def 21, 19, 1, CERULEAN_POKECENTER_1F
+	warp_def 23, 30, 1, CERULEAN_GYM
+	warp_def 29, 25, 2, CERULEAN_MART
+	warp_def 13, 2, 1, CERULEAN_CAVE_1F
+	warp_def 29, 14, 1, CERULEAN_BIKE_SHOP
+	warp_def 15, 15, 1, CERULEAN_BERRY_POWDER_HOUSE
+	warp_def 29, 19, 1, CERULEAN_COUPLE_HOUSE
+	warp_def 9, 29, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
 
 .XYTriggers: db 0
 

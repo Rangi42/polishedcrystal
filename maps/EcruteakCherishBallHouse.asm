@@ -7,8 +7,8 @@ EcruteakCherishBallHouse_MapScriptHeader:
 EcruteakCherishBallHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 16, ECRUTEAK_CITY
-	warp_def $7, $4, 16, ECRUTEAK_CITY
+	warp_def 7, 3, 16, ECRUTEAK_CITY
+	warp_def 7, 4, 16, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

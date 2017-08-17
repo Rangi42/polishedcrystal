@@ -8,22 +8,22 @@ CeladonCity_MapScriptHeader:
 CeladonCity_MapEventHeader:
 
 .Warps: db 16
-	warp_def $9, $8, 1, CELADON_DEPT_STORE_1F
-	warp_def $9, $14, 1, CELADON_MANSION_1F
-	warp_def $3, $14, 3, CELADON_MANSION_1F
-	warp_def $3, $15, 3, CELADON_MANSION_1F
-	warp_def $9, $21, 1, CELADON_POKECENTER_1F
-	warp_def $13, $16, 1, CELADON_GAME_CORNER
-	warp_def $13, $1b, 1, CELADON_GAME_CORNER_PRIZE_ROOM
-	warp_def $1d, $e, 1, CELADON_GYM
-	warp_def $1d, $19, 1, CELADON_CAFE
-	warp_def $1d, $21, 1, CELADON_CHIEF_HOUSE
-	warp_def $1d, $25, 1, CELADON_HOTEL_1F
-	warp_def $9, $d, 1, CELADON_HOME_DECOR_STORE_1F
-	warp_def $1d, $4, 1, CELADON_UNIVERSITY_1F
-	warp_def $9, $1d, 1, EUSINES_HOUSE
-	warp_def $13, $21, 1, CELADON_OLD_MAN_SPEECH_HOUSE
-	warp_def $13, $25, 1, CELADON_DEVELOPMENT_SPEECH_HOUSE
+	warp_def 9, 8, 1, CELADON_DEPT_STORE_1F
+	warp_def 9, 20, 1, CELADON_MANSION_1F
+	warp_def 3, 20, 3, CELADON_MANSION_1F
+	warp_def 3, 21, 3, CELADON_MANSION_1F
+	warp_def 9, 33, 1, CELADON_POKECENTER_1F
+	warp_def 19, 22, 1, CELADON_GAME_CORNER
+	warp_def 19, 27, 1, CELADON_GAME_CORNER_PRIZE_ROOM
+	warp_def 29, 14, 1, CELADON_GYM
+	warp_def 29, 25, 1, CELADON_CAFE
+	warp_def 29, 33, 1, CELADON_CHIEF_HOUSE
+	warp_def 29, 37, 1, CELADON_HOTEL_1F
+	warp_def 9, 13, 1, CELADON_HOME_DECOR_STORE_1F
+	warp_def 29, 4, 1, CELADON_UNIVERSITY_1F
+	warp_def 9, 29, 1, EUSINES_HOUSE
+	warp_def 19, 33, 1, CELADON_OLD_MAN_SPEECH_HOUSE
+	warp_def 19, 37, 1, CELADON_DEVELOPMENT_SPEECH_HOUSE
 
 .XYTriggers: db 0
 

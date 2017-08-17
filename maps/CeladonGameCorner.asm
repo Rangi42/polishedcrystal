@@ -7,8 +7,8 @@ CeladonGameCorner_MapScriptHeader:
 CeladonGameCorner_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $e, 6, CELADON_CITY
-	warp_def $d, $f, 6, CELADON_CITY
+	warp_def 13, 14, 6, CELADON_CITY
+	warp_def 13, 15, 6, CELADON_CITY
 
 .XYTriggers: db 0
 

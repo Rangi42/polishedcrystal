@@ -7,10 +7,10 @@ Route40BattleTowerGate_MapScriptHeader:
 Route40BattleTowerGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $7, $4, 1, ROUTE_40
-	warp_def $7, $5, 1, ROUTE_40
-	warp_def $0, $4, 1, BATTLE_TOWER_OUTSIDE
-	warp_def $0, $5, 2, BATTLE_TOWER_OUTSIDE
+	warp_def 7, 4, 1, ROUTE_40
+	warp_def 7, 5, 1, ROUTE_40
+	warp_def 0, 4, 1, BATTLE_TOWER_OUTSIDE
+	warp_def 0, 5, 2, BATTLE_TOWER_OUTSIDE
 
 .XYTriggers: db 0
 

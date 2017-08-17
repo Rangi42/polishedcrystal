@@ -7,8 +7,8 @@ CharcoalKiln_MapScriptHeader:
 CharcoalKiln_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 2, AZALEA_TOWN
-	warp_def $7, $4, 2, AZALEA_TOWN
+	warp_def 7, 3, 2, AZALEA_TOWN
+	warp_def 7, 4, 2, AZALEA_TOWN
 
 .XYTriggers: db 0
 

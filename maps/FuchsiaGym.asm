@@ -7,8 +7,8 @@ FuchsiaGym_MapScriptHeader:
 FuchsiaGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 2, FUCHSIA_CITY
-	warp_def $11, $5, 2, FUCHSIA_CITY
+	warp_def 17, 4, 2, FUCHSIA_CITY
+	warp_def 17, 5, 2, FUCHSIA_CITY
 
 .XYTriggers: db 0
 

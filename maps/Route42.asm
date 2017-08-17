@@ -7,11 +7,11 @@ Route42_MapScriptHeader:
 Route42_MapEventHeader:
 
 .Warps: db 5
-	warp_def $8, $0, 3, ROUTE_42_ECRUTEAK_GATE
-	warp_def $9, $0, 4, ROUTE_42_ECRUTEAK_GATE
-	warp_def $5, $a, 1, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def $9, $1c, 2, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def $7, $2e, 3, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def 8, 0, 3, ROUTE_42_ECRUTEAK_GATE
+	warp_def 9, 0, 4, ROUTE_42_ECRUTEAK_GATE
+	warp_def 5, 10, 1, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def 9, 28, 2, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def 7, 46, 3, MOUNT_MORTAR_1F_OUTSIDE
 
 .XYTriggers: db 6
 	xy_trigger 1, $6, $c, Route42LyraScript1

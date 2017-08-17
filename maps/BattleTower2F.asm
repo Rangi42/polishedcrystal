@@ -6,7 +6,7 @@ BattleTower2F_MapScriptHeader:
 
 BattleTower2F_MapEventHeader:
 .Warps: db 1
-	warp_def $1, $0, 4, BATTLE_TOWER_1F
+	warp_def 1, 0, 4, BATTLE_TOWER_1F
 
 .XYTriggers: db 0
 

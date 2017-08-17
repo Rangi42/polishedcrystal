@@ -8,12 +8,12 @@ BurnedTowerB1F_MapScriptHeader:
 BurnedTowerB1F_MapEventHeader:
 
 .Warps: db 6
-	warp_def $9, $a, 3, BURNED_TOWER_1F
-	warp_def $7, $11, 7, BURNED_TOWER_1F
-	warp_def $8, $a, 9, BURNED_TOWER_1F
-	warp_def $d, $3, 10, BURNED_TOWER_1F
-	warp_def $e, $11, 12, BURNED_TOWER_1F
-	warp_def $f, $7, 14, BURNED_TOWER_1F
+	warp_def 9, 10, 3, BURNED_TOWER_1F
+	warp_def 7, 17, 7, BURNED_TOWER_1F
+	warp_def 8, 10, 9, BURNED_TOWER_1F
+	warp_def 13, 3, 10, BURNED_TOWER_1F
+	warp_def 14, 17, 12, BURNED_TOWER_1F
+	warp_def 15, 7, 14, BURNED_TOWER_1F
 
 .XYTriggers: db 1
 	xy_trigger 0, $6, $a, ReleaseTheBeasts
@@ -43,7 +43,7 @@ const_value set 2
 BurnedTowerB1FLadderCallback:
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue .NoChange
-	changeblock $6, $e, $2
+	changeblock 6, 14, $2
 .NoChange:
 	return
 
@@ -108,7 +108,7 @@ ReleaseTheBeasts:
 	setevent EVENT_BURNED_TOWER_1F_EUSINE
 	appear BURNEDTOWERB1F_EUSINE
 	refreshscreen
-	changeblock $6, $e, $1b
+	changeblock 6, 14, $1b
 	reloadmappart
 	closetext
 	dotrigger $1

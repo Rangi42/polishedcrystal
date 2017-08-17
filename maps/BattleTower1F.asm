@@ -8,10 +8,10 @@ BattleTower1F_MapScriptHeader:
 BattleTower1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $d, $a, 3, BATTLE_TOWER_OUTSIDE
-	warp_def $d, $b, 4, BATTLE_TOWER_OUTSIDE
-	warp_def $0, $a, 1, BATTLE_TOWER_ELEVATOR
-	warp_def $5, $0, 1, BATTLE_TOWER_2F
+	warp_def 13, 10, 3, BATTLE_TOWER_OUTSIDE
+	warp_def 13, 11, 4, BATTLE_TOWER_OUTSIDE
+	warp_def 0, 10, 1, BATTLE_TOWER_ELEVATOR
+	warp_def 5, 0, 1, BATTLE_TOWER_2F
 
 .XYTriggers: db 0
 

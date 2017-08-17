@@ -8,8 +8,8 @@ Route19_MapScriptHeader:
 Route19_MapEventHeader:
 
 .Warps: db 2
-	warp_def $1, $7, 3, ROUTE_19_FUCHSIA_GATE
-	warp_def $d, $5, 1, ROUTE_19_BEACH_HOUSE
+	warp_def 1, 7, 3, ROUTE_19_FUCHSIA_GATE
+	warp_def 13, 5, 1, ROUTE_19_BEACH_HOUSE
 
 .XYTriggers: db 0
 
@@ -42,12 +42,12 @@ const_value set 2
 Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .Done
-	changeblock $6, $4, $7a
-	changeblock $8, $4, $7a
-	changeblock $a, $4, $7a
-	changeblock $6, $6, $7a
-	changeblock $c, $6, $7a
-	changeblock $8, $8, $7a
+	changeblock 6, 4, $7a
+	changeblock 8, 4, $7a
+	changeblock 10, 4, $7a
+	changeblock 6, 6, $7a
+	changeblock 12, 6, $7a
+	changeblock 8, 8, $7a
 	disappear ROUTE19_ROCK1
 .Done:
 	return

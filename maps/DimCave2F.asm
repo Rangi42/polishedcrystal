@@ -8,14 +8,14 @@ DimCave2F_MapScriptHeader:
 DimCave2F_MapEventHeader:
 
 .Warps: db 8
-	warp_def $1, $f, 2, CERULEAN_CAPE
-	warp_def $5, $1d, 4, DIM_CAVE_3F
-	warp_def $19, $1b, 5, DIM_CAVE_3F
-	warp_def $14, $e, 6, DIM_CAVE_3F ; hole
-	warp_def $2, $1e, 1, DIM_CAVE_1F
-	warp_def $11, $5, 2, DIM_CAVE_1F
-	warp_def $12, $1c, 3, DIM_CAVE_1F
-	warp_def $20, $1a, 4, DIM_CAVE_1F
+	warp_def 1, 15, 2, CERULEAN_CAPE
+	warp_def 5, 29, 4, DIM_CAVE_3F
+	warp_def 25, 27, 5, DIM_CAVE_3F
+	warp_def 20, 14, 6, DIM_CAVE_3F ; hole
+	warp_def 2, 30, 1, DIM_CAVE_1F
+	warp_def 17, 5, 2, DIM_CAVE_1F
+	warp_def 18, 28, 3, DIM_CAVE_1F
+	warp_def 32, 26, 4, DIM_CAVE_1F
 
 .XYTriggers: db 0
 
@@ -35,8 +35,8 @@ DimCave2F_MapEventHeader:
 DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
 	iftrue .skip
-	changeblock $e, $14, $c5
-	changeblock $1a, $14, $ba
+	changeblock 14, 20, $c5
+	changeblock 26, 20, $ba
 .skip
 	return
 

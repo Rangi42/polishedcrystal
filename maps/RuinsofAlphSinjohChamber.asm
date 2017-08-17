@@ -7,8 +7,8 @@ RuinsofAlphSinjohChamber_MapScriptHeader:
 RuinsofAlphSinjohChamber_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $5, 12, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 12, RUINS_OF_ALPH_OUTSIDE
+	warp_def 9, 5, 12, RUINS_OF_ALPH_OUTSIDE
+	warp_def 9, 4, 12, RUINS_OF_ALPH_OUTSIDE
 
 .XYTriggers: db 0
 
@@ -85,7 +85,7 @@ RuinsofAlphSinjohChamberSignpost:
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
 .HeardIntro
-	warp MYSTRI_STAGE, $6, $d
+	warp MYSTRI_STAGE, 6, 13
 	end
 
 .PlayUnownSound1:

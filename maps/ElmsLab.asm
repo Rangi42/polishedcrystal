@@ -16,8 +16,8 @@ ElmsLab_MapScriptHeader:
 ElmsLab_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 1, NEW_BARK_TOWN
-	warp_def $b, $5, 1, NEW_BARK_TOWN
+	warp_def 11, 4, 1, NEW_BARK_TOWN
+	warp_def 11, 5, 1, NEW_BARK_TOWN
 
 .XYTriggers: db 7
 	xy_trigger 1, $6, $4, LabTryToLeaveScript
@@ -81,7 +81,7 @@ ElmsLabTrigger7:
 ElmsLabCallback_MoveElm:
 	checktriggers
 	iftrue .Skip
-	moveperson ELMSLAB_ELM, $3, $4
+	moveperson ELMSLAB_ELM, 3, 4
 .Skip:
 	return
 

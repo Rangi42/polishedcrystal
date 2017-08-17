@@ -7,8 +7,8 @@ CeruleanBikeShop_MapScriptHeader:
 CeruleanBikeShop_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 8, CERULEAN_CITY
-	warp_def $7, $3, 8, CERULEAN_CITY
+	warp_def 7, 2, 8, CERULEAN_CITY
+	warp_def 7, 3, 8, CERULEAN_CITY
 
 .XYTriggers: db 0
 

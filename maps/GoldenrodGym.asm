@@ -7,8 +7,8 @@ GoldenrodGym_MapScriptHeader:
 GoldenrodGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $2, 1, GOLDENROD_CITY
-	warp_def $11, $3, 1, GOLDENROD_CITY
+	warp_def 17, 2, 1, GOLDENROD_CITY
+	warp_def 17, 3, 1, GOLDENROD_CITY
 
 .XYTriggers: db 1
 	xy_trigger 1, $5, $8, WhitneyCriesScript

@@ -9,10 +9,10 @@ TeamRocketBaseB3F_MapScriptHeader:
 TeamRocketBaseB3F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $2, $3, 2, TEAM_ROCKET_BASE_B2F
-	warp_def $2, $1b, 3, TEAM_ROCKET_BASE_B2F
-	warp_def $6, $3, 4, TEAM_ROCKET_BASE_B2F
-	warp_def $e, $1b, 5, TEAM_ROCKET_BASE_B2F
+	warp_def 2, 3, 2, TEAM_ROCKET_BASE_B2F
+	warp_def 2, 27, 3, TEAM_ROCKET_BASE_B2F
+	warp_def 6, 3, 4, TEAM_ROCKET_BASE_B2F
+	warp_def 14, 27, 5, TEAM_ROCKET_BASE_B2F
 
 .XYTriggers: db 3
 	xy_trigger 2, $8, $a, UnknownScript_0x6e04b
@@ -63,7 +63,7 @@ TeamRocketBaseB3FCheckGiovanniDoor:
 	return
 
 .OpenSesame:
-	changeblock $a, $8, $7
+	changeblock 10, 8, $7
 	return
 
 LanceGetPasswordScript:
@@ -175,7 +175,7 @@ BossDoor:
 	writetext UnknownText_0x6e9a3
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock $a, $8, $7
+	changeblock 10, 8, $7
 	reloadmappart
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE

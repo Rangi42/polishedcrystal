@@ -7,8 +7,8 @@ SaffronBookSpeechHouse_MapScriptHeader:
 SaffronBookSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 18, SAFFRON_CITY
-	warp_def $7, $3, 18, SAFFRON_CITY
+	warp_def 7, 2, 18, SAFFRON_CITY
+	warp_def 7, 3, 18, SAFFRON_CITY
 
 .XYTriggers: db 0
 

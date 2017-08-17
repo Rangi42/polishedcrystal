@@ -8,8 +8,8 @@ HallOfFame_MapScriptHeader:
 HallOfFame_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $4, 3, LANCES_ROOM
-	warp_def $d, $5, 4, LANCES_ROOM
+	warp_def 13, 4, 3, LANCES_ROOM
+	warp_def 13, 5, 4, LANCES_ROOM
 
 .XYTriggers: db 0
 

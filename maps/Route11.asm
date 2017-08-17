@@ -7,8 +7,8 @@ Route11_MapScriptHeader:
 Route11_MapEventHeader:
 
 .Warps: db 2
-	warp_def $8, $2f, 1, ROUTE_11_GATE
-	warp_def $9, $2f, 2, ROUTE_11_GATE
+	warp_def 8, 47, 1, ROUTE_11_GATE
+	warp_def 9, 47, 2, ROUTE_11_GATE
 
 .XYTriggers: db 0
 

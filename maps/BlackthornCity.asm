@@ -9,14 +9,14 @@ BlackthornCity_MapScriptHeader:
 BlackthornCity_MapEventHeader:
 
 .Warps: db 8
-	warp_def $b, $12, 1, BLACKTHORN_GYM_1F
-	warp_def $15, $d, 1, BLACKTHORN_DRAGON_SPEECH_HOUSE
-	warp_def $17, $1d, 1, BLACKTHORN_EMYS_HOUSE
-	warp_def $1d, $f, 2, BLACKTHORN_MART
-	warp_def $1d, $15, 1, BLACKTHORN_POKECENTER_1F
-	warp_def $1d, $9, 1, MOVE_DELETERS_HOUSE
-	warp_def $9, $24, 2, ICE_PATH_1F
-	warp_def $1, $14, 1, DRAGONS_DEN_1F
+	warp_def 11, 18, 1, BLACKTHORN_GYM_1F
+	warp_def 21, 13, 1, BLACKTHORN_DRAGON_SPEECH_HOUSE
+	warp_def 23, 29, 1, BLACKTHORN_EMYS_HOUSE
+	warp_def 29, 15, 2, BLACKTHORN_MART
+	warp_def 29, 21, 1, BLACKTHORN_POKECENTER_1F
+	warp_def 29, 9, 1, MOVE_DELETERS_HOUSE
+	warp_def 9, 36, 2, ICE_PATH_1F
+	warp_def 1, 20, 1, DRAGONS_DEN_1F
 
 .XYTriggers: db 0
 

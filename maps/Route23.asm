@@ -7,10 +7,10 @@ Route23_MapScriptHeader:
 Route23_MapEventHeader:
 
 .Warps: db 4
-	warp_def $87, $7, 5, POKEMON_LEAGUE_GATE
-	warp_def $87, $8, 6, POKEMON_LEAGUE_GATE
-	warp_def $1f, $4, 1, VICTORY_ROAD_1F
-	warp_def $1f, $e, 1, VICTORY_ROAD_2F
+	warp_def 135, 7, 5, POKEMON_LEAGUE_GATE
+	warp_def 135, 8, 6, POKEMON_LEAGUE_GATE
+	warp_def 31, 4, 1, VICTORY_ROAD_1F
+	warp_def 31, 14, 1, VICTORY_ROAD_2F
 
 .XYTriggers: db 23
 	xy_trigger 0, $83, $e, Route23ZephyrBadgeTriggerScript

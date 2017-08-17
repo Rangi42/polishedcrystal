@@ -8,16 +8,16 @@ FuchsiaCity_MapScriptHeader:
 FuchsiaCity_MapEventHeader:
 
 .Warps: db 10
-	warp_def $d, $5, 2, FUCHSIA_MART
-	warp_def $1b, $8, 1, FUCHSIA_GYM
-	warp_def $1b, $b, 1, FUCHSIA_BILL_SPEECH_HOUSE
-	warp_def $1b, $13, 1, FUCHSIA_POKECENTER_1F
-	warp_def $1b, $1b, 1, SAFARI_ZONE_WARDENS_HOME
-	warp_def $3, $12, 3, SAFARI_ZONE_FUCHSIA_GATE
-	warp_def $16, $25, 1, ROUTE_15_FUCHSIA_GATE
-	warp_def $17, $25, 2, ROUTE_15_FUCHSIA_GATE
-	warp_def $21, $7, 1, ROUTE_19_FUCHSIA_GATE
-	warp_def $21, $8, 2, ROUTE_19_FUCHSIA_GATE
+	warp_def 13, 5, 2, FUCHSIA_MART
+	warp_def 27, 8, 1, FUCHSIA_GYM
+	warp_def 27, 11, 1, FUCHSIA_BILL_SPEECH_HOUSE
+	warp_def 27, 19, 1, FUCHSIA_POKECENTER_1F
+	warp_def 27, 27, 1, SAFARI_ZONE_WARDENS_HOME
+	warp_def 3, 18, 3, SAFARI_ZONE_FUCHSIA_GATE
+	warp_def 22, 37, 1, ROUTE_15_FUCHSIA_GATE
+	warp_def 23, 37, 2, ROUTE_15_FUCHSIA_GATE
+	warp_def 33, 7, 1, ROUTE_19_FUCHSIA_GATE
+	warp_def 33, 8, 2, ROUTE_19_FUCHSIA_GATE
 
 .XYTriggers: db 0
 

@@ -8,8 +8,8 @@ MrPokemonsHouse_MapScriptHeader:
 MrPokemonsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, ROUTE_30
-	warp_def $7, $3, 2, ROUTE_30
+	warp_def 7, 2, 2, ROUTE_30
+	warp_def 7, 3, 2, ROUTE_30
 
 .XYTriggers: db 0
 

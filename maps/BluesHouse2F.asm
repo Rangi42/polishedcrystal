@@ -7,7 +7,7 @@ BluesHouse2F_MapScriptHeader:
 BluesHouse2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $7, 3, BLUES_HOUSE_1F
+	warp_def 0, 7, 3, BLUES_HOUSE_1F
 
 .XYTriggers: db 0
 

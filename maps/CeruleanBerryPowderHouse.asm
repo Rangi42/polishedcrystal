@@ -7,8 +7,8 @@ CeruleanBerryPowderHouse_MapScriptHeader:
 CeruleanBerryPowderHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 9, CERULEAN_CITY
-	warp_def $7, $3, 9, CERULEAN_CITY
+	warp_def 7, 2, 9, CERULEAN_CITY
+	warp_def 7, 3, 9, CERULEAN_CITY
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ SlowpokeWellB1F_MapScriptHeader:
 SlowpokeWellB1F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $11, 6, AZALEA_TOWN
-	warp_def $b, $7, 1, SLOWPOKE_WELL_B2F
+	warp_def 15, 17, 6, AZALEA_TOWN
+	warp_def 11, 7, 1, SLOWPOKE_WELL_B2F
 
 .XYTriggers: db 0
 
@@ -53,7 +53,7 @@ Proton2Script:
 	pause 15
 	special Special_FadeInQuickly
 	disappear SLOWPOKEWELLB1F_KURT
-	moveperson SLOWPOKEWELLB1F_KURT, $b, $6
+	moveperson SLOWPOKEWELLB1F_KURT, 11, 6
 	appear SLOWPOKEWELLB1F_KURT
 	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData
 	spriteface PLAYER, RIGHT
@@ -72,7 +72,7 @@ Proton2Script:
 	special FadeOutPalettes
 	special HealParty
 	pause 15
-	warp KURTS_HOUSE, $3, $3
+	warp KURTS_HOUSE, 3, 3
 	end
 
 TrainerGruntM2:

@@ -7,10 +7,10 @@ RadioTower4F_MapScriptHeader:
 RadioTower4F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $0, 1, RADIO_TOWER_5F
-	warp_def $0, $9, 2, RADIO_TOWER_3F
-	warp_def $0, $c, 2, RADIO_TOWER_5F
-	warp_def $0, $11, 3, RADIO_TOWER_3F
+	warp_def 0, 0, 1, RADIO_TOWER_5F
+	warp_def 0, 9, 2, RADIO_TOWER_3F
+	warp_def 0, 12, 2, RADIO_TOWER_5F
+	warp_def 0, 17, 3, RADIO_TOWER_3F
 
 .XYTriggers: db 0
 

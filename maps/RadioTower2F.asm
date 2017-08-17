@@ -7,8 +7,8 @@ RadioTower2F_MapScriptHeader:
 RadioTower2F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $0, 1, RADIO_TOWER_3F
-	warp_def $0, $f, 3, RADIO_TOWER_1F
+	warp_def 0, 0, 1, RADIO_TOWER_3F
+	warp_def 0, 15, 3, RADIO_TOWER_1F
 
 .XYTriggers: db 0
 

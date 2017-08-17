@@ -7,15 +7,15 @@ OlivineLighthouse3F_MapScriptHeader:
 OlivineLighthouse3F_MapEventHeader:
 
 .Warps: db 9
-	warp_def $3, $d, 1, OLIVINE_LIGHTHOUSE_4F
-	warp_def $3, $5, 2, OLIVINE_LIGHTHOUSE_2F
-	warp_def $5, $9, 4, OLIVINE_LIGHTHOUSE_4F
-	warp_def $b, $10, 5, OLIVINE_LIGHTHOUSE_2F
-	warp_def $b, $11, 6, OLIVINE_LIGHTHOUSE_2F
-	warp_def $9, $10, 5, OLIVINE_LIGHTHOUSE_4F
-	warp_def $9, $11, 6, OLIVINE_LIGHTHOUSE_4F
-	warp_def $3, $8, 7, OLIVINE_LIGHTHOUSE_4F
-	warp_def $3, $9, 8, OLIVINE_LIGHTHOUSE_4F
+	warp_def 3, 13, 1, OLIVINE_LIGHTHOUSE_4F
+	warp_def 3, 5, 2, OLIVINE_LIGHTHOUSE_2F
+	warp_def 5, 9, 4, OLIVINE_LIGHTHOUSE_4F
+	warp_def 11, 16, 5, OLIVINE_LIGHTHOUSE_2F
+	warp_def 11, 17, 6, OLIVINE_LIGHTHOUSE_2F
+	warp_def 9, 16, 5, OLIVINE_LIGHTHOUSE_4F
+	warp_def 9, 17, 6, OLIVINE_LIGHTHOUSE_4F
+	warp_def 3, 8, 7, OLIVINE_LIGHTHOUSE_4F
+	warp_def 3, 9, 8, OLIVINE_LIGHTHOUSE_4F
 
 .XYTriggers: db 0
 

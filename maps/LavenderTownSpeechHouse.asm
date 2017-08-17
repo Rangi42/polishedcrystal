@@ -7,8 +7,8 @@ LavenderTownSpeechHouse_MapScriptHeader:
 LavenderTownSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, LAVENDER_TOWN
-	warp_def $7, $3, 3, LAVENDER_TOWN
+	warp_def 7, 2, 3, LAVENDER_TOWN
+	warp_def 7, 3, 3, LAVENDER_TOWN
 
 .XYTriggers: db 0
 

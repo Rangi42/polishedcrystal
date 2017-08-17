@@ -9,11 +9,11 @@ NewBarkTown_MapScriptHeader:
 NewBarkTown_MapEventHeader:
 
 .Warps: db 5
-	warp_def $3, $6, 1, ELMS_LAB
-	warp_def $5, $f, 1, KRISS_HOUSE_1F
-	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
-	warp_def $d, $b, 1, LYRAS_HOUSE_1F
-	warp_def $2, $a, 2, ELMS_HOUSE
+	warp_def 3, 6, 1, ELMS_LAB
+	warp_def 5, 15, 1, KRISS_HOUSE_1F
+	warp_def 11, 3, 1, KRISS_NEIGHBORS_HOUSE
+	warp_def 13, 11, 1, LYRAS_HOUSE_1F
+	warp_def 2, 10, 2, ELMS_HOUSE
 
 .XYTriggers: db 7
 	xy_trigger 0, $8, $1, NewBarkTown_TeacherStopsYouTrigger1
@@ -104,23 +104,23 @@ NewBarkTown_LyraIntroTrigger:
 	dotrigger $2
 	special FadeOutPalettes
 	pause 15
-	warpfacing UP, ELMS_LAB, $4, $b
+	warpfacing UP, ELMS_LAB, 4, 11
 	end
 
 NewBarkTown_LyraFinalTrigger1:
-	moveperson NEWBARKTOWN_LYRA, $e, $b
+	moveperson NEWBARKTOWN_LYRA, 14, 11
 	jump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger2:
-	moveperson NEWBARKTOWN_LYRA, $e, $c
+	moveperson NEWBARKTOWN_LYRA, 14, 12
 	jump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger3:
-	moveperson NEWBARKTOWN_LYRA, $e, $d
+	moveperson NEWBARKTOWN_LYRA, 14, 13
 	jump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger4:
-	moveperson NEWBARKTOWN_LYRA, $e, $e
+	moveperson NEWBARKTOWN_LYRA, 14, 14
 NewBarkTown_LyraFinalTrigger:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX

@@ -7,8 +7,8 @@ Route12SuperRodHouse_MapScriptHeader:
 Route12SuperRodHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_12_SOUTH
-	warp_def $7, $3, 1, ROUTE_12_SOUTH
+	warp_def 7, 2, 1, ROUTE_12_SOUTH
+	warp_def 7, 3, 1, ROUTE_12_SOUTH
 
 .XYTriggers: db 0
 

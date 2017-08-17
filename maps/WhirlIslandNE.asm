@@ -7,9 +7,9 @@ WhirlIslandNE_MapScriptHeader:
 WhirlIslandNE_MapEventHeader:
 
 .Warps: db 3
-	warp_def $d, $3, 2, ROUTE_41
-	warp_def $3, $11, 2, WHIRL_ISLAND_B1F
-	warp_def $b, $d, 3, WHIRL_ISLAND_B1F
+	warp_def 13, 3, 2, ROUTE_41
+	warp_def 3, 17, 2, WHIRL_ISLAND_B1F
+	warp_def 11, 13, 3, WHIRL_ISLAND_B1F
 
 .XYTriggers: db 0
 

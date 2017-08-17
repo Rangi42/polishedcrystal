@@ -9,9 +9,9 @@ BellchimeTrail_MapScriptHeader:
 BellchimeTrail_MapEventHeader:
 
 .Warps: db 3
-	warp_def $4, $4, 1, WISE_TRIOS_ROOM
-	warp_def $5, $4, 2, WISE_TRIOS_ROOM
-	warp_def $9, $15, 1, TIN_TOWER_1F ; hole
+	warp_def 4, 4, 1, WISE_TRIOS_ROOM
+	warp_def 5, 4, 2, WISE_TRIOS_ROOM
+	warp_def 9, 21, 1, TIN_TOWER_1F ; hole
 
 .XYTriggers: db 1
 	xy_trigger 1, $9, $15, BellchimeTrailPanUpTrigger
@@ -67,7 +67,7 @@ BellchimeTrailPanUpTrigger:
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
-	warpfacing UP, TIN_TOWER_1F, $7, $f
+	warpfacing UP, TIN_TOWER_1F, 7, 15
 	end
 
 .PanUpMovement:

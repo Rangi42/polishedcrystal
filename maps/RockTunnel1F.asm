@@ -7,14 +7,14 @@ RockTunnel1F_MapScriptHeader:
 RockTunnel1F_MapEventHeader:
 
 .Warps: db 8
-	warp_def $3, $f, 4, ROUTE_10_NORTH
-	warp_def $19, $b, 1, ROUTE_10_SOUTH
-	warp_def $3, $5, 1, ROCK_TUNNEL_B1F
-	warp_def $9, $f, 2, ROCK_TUNNEL_B1F
-	warp_def $3, $19, 3, ROCK_TUNNEL_B1F
-	warp_def $d, $1b, 4, ROCK_TUNNEL_B1F
-	warp_def $d, $4, 5, ROCK_TUNNEL_B1F
-	warp_def $f, $6, 2, ROCK_TUNNEL_2F
+	warp_def 3, 15, 4, ROUTE_10_NORTH
+	warp_def 25, 11, 1, ROUTE_10_SOUTH
+	warp_def 3, 5, 1, ROCK_TUNNEL_B1F
+	warp_def 9, 15, 2, ROCK_TUNNEL_B1F
+	warp_def 3, 25, 3, ROCK_TUNNEL_B1F
+	warp_def 13, 27, 4, ROCK_TUNNEL_B1F
+	warp_def 13, 4, 5, ROCK_TUNNEL_B1F
+	warp_def 15, 6, 2, ROCK_TUNNEL_2F
 
 .XYTriggers: db 0
 

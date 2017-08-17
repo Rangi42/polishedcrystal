@@ -7,8 +7,8 @@ Route39Farmhouse_MapScriptHeader:
 Route39Farmhouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, ROUTE_39
-	warp_def $7, $3, 2, ROUTE_39
+	warp_def 7, 2, 2, ROUTE_39
+	warp_def 7, 3, 2, ROUTE_39
 
 .XYTriggers: db 0
 

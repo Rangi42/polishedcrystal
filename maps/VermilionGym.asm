@@ -8,8 +8,8 @@ VermilionGym_MapScriptHeader:
 VermilionGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 7, VERMILION_CITY
-	warp_def $11, $5, 7, VERMILION_CITY
+	warp_def 17, 4, 7, VERMILION_CITY
+	warp_def 17, 5, 7, VERMILION_CITY
 
 .XYTriggers: db 0
 

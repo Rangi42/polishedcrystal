@@ -7,8 +7,8 @@ FastShipB1F_MapScriptHeader:
 FastShipB1F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $1, 11, FAST_SHIP_1F
-	warp_def $b, $1b, 12, FAST_SHIP_1F
+	warp_def 9, 1, 11, FAST_SHIP_1F
+	warp_def 11, 27, 12, FAST_SHIP_1F
 
 .XYTriggers: db 2
 	xy_trigger 0, $5, $1a, UnknownScript_0x7673c
@@ -39,7 +39,7 @@ UnknownScript_0x7673c:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	iftrue UnknownScript_0x76766
 	applymovement FASTSHIPB1F_SAILOR2, MovementData_0x76876
-	moveperson FASTSHIPB1F_SAILOR1, $1a, $4
+	moveperson FASTSHIPB1F_SAILOR1, 26, 4
 	appear FASTSHIPB1F_SAILOR1
 	pause 5
 	disappear FASTSHIPB1F_SAILOR2
@@ -49,7 +49,7 @@ UnknownScript_0x76751:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_LEFT
 	iftrue UnknownScript_0x76766
 	applymovement FASTSHIPB1F_SAILOR1, MovementData_0x76871
-	moveperson FASTSHIPB1F_SAILOR2, $1b, $4
+	moveperson FASTSHIPB1F_SAILOR2, 27, 4
 	appear FASTSHIPB1F_SAILOR2
 	pause 5
 	disappear FASTSHIPB1F_SAILOR1

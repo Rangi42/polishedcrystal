@@ -8,7 +8,7 @@ Route29_MapScriptHeader:
 Route29_MapEventHeader:
 
 .Warps: db 1
-	warp_def $1, $1b, 3, ROUTE_29_46_GATE
+	warp_def 1, 27, 3, ROUTE_29_46_GATE
 
 .XYTriggers: db 2
 	xy_trigger 1, $8, $35, Route29Tutorial1

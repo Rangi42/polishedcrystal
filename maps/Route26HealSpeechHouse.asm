@@ -7,8 +7,8 @@ Route26HealSpeechHouse_MapScriptHeader:
 Route26HealSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, ROUTE_26
-	warp_def $7, $3, 2, ROUTE_26
+	warp_def 7, 2, 2, ROUTE_26
+	warp_def 7, 3, 2, ROUTE_26
 
 .XYTriggers: db 0
 

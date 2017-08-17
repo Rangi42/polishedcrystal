@@ -7,10 +7,10 @@ NationalParkBugContest_MapScriptHeader:
 NationalParkBugContest_MapEventHeader:
 
 .Warps: db 4
-	warp_def $12, $23, 1, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def $13, $23, 1, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def $2f, $c, 1, ROUTE_35_NATIONAL_PARK_GATE
-	warp_def $2f, $d, 1, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 18, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 19, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 47, 12, 1, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 47, 13, 1, ROUTE_35_NATIONAL_PARK_GATE
 
 .XYTriggers: db 0
 

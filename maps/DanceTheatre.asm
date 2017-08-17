@@ -7,8 +7,8 @@ DanceTheatre_MapScriptHeader:
 DanceTheatre_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $5, 8, ECRUTEAK_CITY
-	warp_def $d, $6, 8, ECRUTEAK_CITY
+	warp_def 13, 5, 8, ECRUTEAK_CITY
+	warp_def 13, 6, 8, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

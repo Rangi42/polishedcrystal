@@ -7,8 +7,8 @@ ViridianSchoolHouse_MapScriptHeader:
 ViridianSchoolHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $2, 8, VIRIDIAN_CITY
-	warp_def $9, $3, 8, VIRIDIAN_CITY
+	warp_def 9, 2, 8, VIRIDIAN_CITY
+	warp_def 9, 3, 8, VIRIDIAN_CITY
 
 .XYTriggers: db 0
 

@@ -9,8 +9,8 @@ VermilionPort_MapScriptHeader:
 VermilionPort_MapEventHeader:
 
 .Warps: db 2
-	warp_def $5, $9, 5, VERMILION_PORT_PASSAGE
-	warp_def $11, $7, 1, FAST_SHIP_1F
+	warp_def 5, 9, 5, VERMILION_PORT_PASSAGE
+	warp_def 17, 7, 1, FAST_SHIP_1F
 
 .XYTriggers: db 1
 	xy_trigger 0, $b, $7, UnknownScript_0x74e20
@@ -77,7 +77,7 @@ SailorScript_0x74dc4:
 	setevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear VERMILIONPORT_SAILOR1
 	domaptrigger FAST_SHIP_1F, $1
-	warp FAST_SHIP_1F, $19, $1
+	warp FAST_SHIP_1F, 25, 1
 	end
 
 UnknownScript_0x74e1a:

@@ -7,8 +7,8 @@ CianwoodGym_MapScriptHeader:
 CianwoodGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 2, CIANWOOD_CITY
-	warp_def $11, $5, 2, CIANWOOD_CITY
+	warp_def 17, 4, 2, CIANWOOD_CITY
+	warp_def 17, 5, 2, CIANWOOD_CITY
 
 .XYTriggers: db 0
 
