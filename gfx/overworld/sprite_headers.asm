@@ -10,130 +10,101 @@ sprite_header: MACRO
 	db \3, \4
 ENDM
 
-ChrisSprite: ; 14736
+ChrisSprite:
 	sprite_header ChrisSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1473c
 
-ChrisBikeSprite: ; 1473c
+ChrisBikeSprite:
 	sprite_header ChrisBikeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14742
 
 ChrisSurfSprite:
 	sprite_header ChrisSurfSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-KrisSprite: ; 14970
+KrisSprite:
 	sprite_header KrisSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14976
 
-KrisBikeSprite: ; 14976
+KrisBikeSprite:
 	sprite_header KrisBikeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 1497c
 
 KrisSurfSprite:
 	sprite_header KrisSurfSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
-MomSprite: ; 14778
+MomSprite:
 	sprite_header MomSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1477e
 
-DadSprite: ; 148aa
+DadSprite:
 	sprite_header DadSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-; 148b0
 
 LyraSprite:
 	sprite_header LyraSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-SilverSprite: ; 14748
+SilverSprite:
 	sprite_header SilverSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1474e
 
-FalknerSprite: ; 1479c
+FalknerSprite:
 	sprite_header FalknerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 147a2
 
-BugsySprite: ; 147a8
+BugsySprite:
 	sprite_header BugsySpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 147ae
 
-WhitneySprite: ; 147a2
+WhitneySprite:
 	sprite_header WhitneySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 147a8
 
-MortySprite: ; 147ae
+MortySprite:
 	sprite_header MortySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 147b4
 
-ChuckSprite: ; 147b4
+ChuckSprite:
 	sprite_header ChuckSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 147ba
 
-JasmineSprite: ; 147ba
+JasmineSprite:
 	sprite_header JasmineSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 147c0
 
-PryceSprite: ; 147c0
+PryceSprite:
 	sprite_header PryceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 147c6
 
-ClairSprite: ; 147c6
+ClairSprite:
 	sprite_header ClairSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 147cc
 
-WillSprite: ; 14796
+WillSprite:
 	sprite_header WillSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
-; 1479c
 
-KogaSprite: ; 147f6
+KogaSprite:
 	sprite_header KogaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
-; 147fc
 
-BrunoSprite: ; 147d8
+BrunoSprite:
 	sprite_header BrunoSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 147de
 
-KarenSprite: ; 147d2
+KarenSprite:
 	sprite_header KarenSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
-; 147d8
 
-LanceSprite: ; 147e4
+LanceSprite:
 	sprite_header LanceSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 147ea
 
-BrockSprite: ; 147cc
+BrockSprite:
 	sprite_header BrockSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 147d2
 
-MistySprite: ; 147de
+MistySprite:
 	sprite_header MistySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 147e4
 
-SurgeSprite: ; 147ea
+SurgeSprite:
 	sprite_header SurgeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 147f0
 
-ErikaSprite: ; 147f0
+ErikaSprite:
 	sprite_header ErikaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 147f6
 
-JanineSprite: ; 1476c
+JanineSprite:
 	sprite_header JanineSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
-; 14772
 
-SabrinaSprite: ; 147fc
+SabrinaSprite:
 	sprite_header SabrinaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14802
 
-BlaineSprite: ; 1477e
+BlaineSprite:
 	sprite_header BlaineSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14784
 
-BlueSprite: ; 1475a
+BlueSprite:
 	sprite_header BlueSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14760
 
-RedSprite: ; 14754
+RedSprite:
 	sprite_header RedSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1475a
 
 LeafSprite:
 	sprite_header LeafSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
@@ -141,13 +112,11 @@ LeafSprite:
 YellowSprite:
 	sprite_header YellowSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-OakSprite: ; 1474e
+OakSprite:
 	sprite_header OakSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14754
 
-ElmSprite: ; 14790
+ElmSprite:
 	sprite_header ElmSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14796
 
 IvySprite:
 	sprite_header IvySpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
@@ -161,21 +130,20 @@ WillowSprite:
 AndySprite:
 	sprite_header AndySpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 
-BillSprite: ; 14760
+BillSprite:
 	sprite_header BillSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14766
 
-KurtSprite: ; 14772
+EusineSprite:
+	sprite_header EusineSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
+
+KurtSprite:
 	sprite_header KurtSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14778
 
-RedsMomSprite: ; 14784
+RedsMomSprite:
 	sprite_header RedsMomSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1478a
 
-DaisySprite: ; 1478a
+DaisySprite:
 	sprite_header DaisySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14790
 
 LoreleiSprite:
 	sprite_header LoreleiSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -270,13 +238,11 @@ BlancheSprite:
 SparkSprite:
 	sprite_header SparkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-BuenaSprite: ; 1482c
+BuenaSprite:
 	sprite_header BuenaSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14832
 
-CaptainSprite: ; 148d4
+CaptainSprite:
 	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-; 148da
 
 DeanSprite:
 	sprite_header DeanSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
@@ -290,13 +256,11 @@ BakerSprite:
 BeautySprite:
 	sprite_header BeautySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
-BikerSprite: ; 148ec
+BikerSprite:
 	sprite_header BikerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 148f2
 
-BlackBeltSprite: ; 148b6
+BlackBeltSprite:
 	sprite_header BlackBeltSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 148bc
 
 BoarderSprite:
 	sprite_header BoarderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
@@ -304,9 +268,8 @@ BoarderSprite:
 BreederSprite:
 	sprite_header BreederSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 
-BugCatcherSprite: ; 1480e
+BugCatcherSprite:
 	sprite_header BugCatcherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14814
 
 BugManiacSprite:
 	sprite_header BugManiacSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
@@ -314,13 +277,11 @@ BugManiacSprite:
 ChildSprite:
 	sprite_header ChildSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
-CooltrainerFSprite: ; 14808
+CooltrainerFSprite:
 	sprite_header CooltrainerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 1480e
 
-CooltrainerMSprite: ; 14802
+CooltrainerMSprite:
 	sprite_header CooltrainerMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14808
 
 CosplayerSprite:
 	sprite_header CosplayerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -331,94 +292,77 @@ CowgirlSprite:
 DragonTamerSprite:
 	sprite_header DragonTamerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
-ElderSprite: ; 14766
+ElderSprite:
 	sprite_header ElderSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 1476c
 
 EngineerSprite:
 	sprite_header EngineerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-FisherSprite: ; 1488c
+FisherSprite:
 	sprite_header FisherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14892
 
-GentlemanSprite: ; 148b0
+GentlemanSprite:
 	sprite_header GentlemanSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 148b6
 
-GrampsSprite: ; 1484a
+GrampsSprite:
 	sprite_header GrampsSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14850
 
-GrannySprite: ; 14850
+GrannySprite:
 	sprite_header GrannySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14856
 
 HexManiacSprite:
 	sprite_header HexManiacSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
-KimonoGirlSprite: ; 1489e
+KimonoGirlSprite:
 	sprite_header KimonoGirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 148a4
 
 LadySprite:
 	sprite_header LadySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-LassSprite: ; 14820
+LassSprite:
 	sprite_header LassSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14826
 
-OfficerSprite: ; 148c2
+OfficerSprite:
 	sprite_header OfficerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 148c8
 
 OfficerFSprite:
 	sprite_header OfficerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
-PharmacistSprite: ; 148f2
+PharmacistSprite:
 	sprite_header PharmacistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 148f8
 
 PISprite:
 	sprite_header PISpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
-PokefanFSprite: ; 14844
+PokefanFSprite:
 	sprite_header PokefanFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 1484a
 
-PokefanMSprite: ; 1483e
+PokefanMSprite:
 	sprite_header PokefanMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14844
 
 RichBoySprite:
 	sprite_header RichBoySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
-RockerSprite: ; 14838
+RockerSprite:
 	sprite_header RockerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 1483e
 
-RocketSprite: ; 1486e
+RocketSprite:
 	sprite_header RocketSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 14874
 
-RocketGirlSprite: ; 14874
+RocketGirlSprite:
 	sprite_header RocketGirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 1487a
 
 RoughneckSprite:
 	sprite_header RoughneckSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
-SageSprite: ; 148a4
+SageSprite:
 	sprite_header SageSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 148aa
 
-SailorSprite: ; 148e6
+SailorSprite:
 	sprite_header SailorSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 148ec
 
-ScientistSprite: ; 14898
+ScientistSprite:
 	sprite_header ScientistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 1489e
 
 SightseerMSprite:
 	sprite_header SightseerMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -426,25 +370,20 @@ SightseerMSprite:
 SkierSprite:
 	sprite_header SkierSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
-SuperNerdSprite: ; 14832
+SuperNerdSprite:
 	sprite_header SuperNerdSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14838
 
-SwimmerGirlSprite: ; 1485c
+SwimmerGirlSprite:
 	sprite_header SwimmerGirlSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14862
 
-SwimmerGuySprite: ; 14856
+SwimmerGuySprite:
 	sprite_header SwimmerGuySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 1485c
 
-TeacherSprite: ; 14826
+TeacherSprite:
 	sprite_header TeacherSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1482c
 
-TwinSprite: ; 14814
+TwinSprite:
 	sprite_header TwinSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1481a
 
 VeteranMSprite:
 	sprite_header VeteranMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
@@ -452,37 +391,29 @@ VeteranMSprite:
 VeteranFSprite:
 	sprite_header VeteranFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
-YoungsterSprite: ; 1481a
+YoungsterSprite:
 	sprite_header YoungsterSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14820
 
-NurseSprite: ; 1487a
+NurseSprite:
 	sprite_header NurseSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
-; 14880
 
-ClerkSprite: ; 14886
+ClerkSprite:
 	sprite_header ClerkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
-; 1488c
 
-ReceptionistSprite: ; 148bc
+ReceptionistSprite:
 	sprite_header ReceptionistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 148c2
 
-LinkReceptionistSprite: ; 14880
+LinkReceptionistSprite:
 	sprite_header LinkReceptionistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14886
 
-GymGuySprite: ; 148e0
+GymGuySprite:
 	sprite_header GymGuySpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 148e6
 
-FishingGuruSprite: ; 14892
+FishingGuruSprite:
 	sprite_header FishingGuruSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14898
 
-GameboyKidSprite: ; 14742
+GameboyKidSprite:
 	sprite_header GameboyKidSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
-; 14748
 
 SilphEmployeeSprite:
 	sprite_header SilphEmployeeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
@@ -493,24 +424,20 @@ SwimmingOfficerSprite:
 SwimmingOfficerFSprite:
 	sprite_header SwimmingOfficerFSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
-ClefairyWalkSprite: ; 148fe
+ClefairyWalkSprite:
 	sprite_header ClefairyWalkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14904
 
-FarfetchDSprite: ; 14904
+FarfetchDSprite:
 	sprite_header FarfetchDSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
-; 1490a
 
-LaprasSprite: ; 14922
+LaprasSprite:
 	sprite_header LaprasSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-; 14928
 
 EeveeSprite:
 	sprite_header EeveeSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BROWN
 
-DragoniteSprite: ; 1490a
+DragoniteSprite:
 	sprite_header DragoniteSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 14910
 
 MewSprite:
 	sprite_header MewSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
@@ -518,28 +445,23 @@ MewSprite:
 CelebiSprite:
 	sprite_header CelebiSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN
 
-SurfingPikachuSprite: ; 14868
+SurfingPikachuSprite:
 	sprite_header SurfingPikachuSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-; 1486e
 
 ArmoredMewtwoSprite:
 	sprite_header ArmoredMewtwoSpriteGFX, 3, WALKING_SPRITE, PAL_OW_PURPLE
 
-BigSnorlaxSprite: ; 14862
+BigSnorlaxSprite:
 	sprite_header BigSnorlaxSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
-; 14868
 
-BigLaprasSprite: ; 148da
+BigLaprasSprite:
 	sprite_header BigLaprasSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
-; 148e0
 
-BigOnixSprite: ; 14910
+BigOnixSprite:
 	sprite_header BigOnixSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-; 14916
 
-WeirdTreeSprite: ; 1491c
+WeirdTreeSprite:
 	sprite_header WeirdTreeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
-; 14922
 
 GyaradosTopLeftSprite:
 	sprite_header GyaradosTopLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
@@ -577,26 +499,20 @@ ElectricFenceLeftSprite:
 ElectricFenceRightSprite:
 	sprite_header ElectricFenceRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
 
-SnesSprite: ; 14952
+SnesSprite:
 	sprite_header SnesSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
-; 14958
 
-N64Sprite: ; 14916
+N64Sprite:
 	sprite_header N64SpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-; 1491c
 
-GameCubeSprite: ; 1493a
+GameCubeSprite:
 	sprite_header GameCubeSpriteGFX, 1, STILL_SPRITE, PAL_OW_PURPLE
-; 14940
 
-WiiSprite: ; 14958
+WiiSprite:
 	sprite_header WiiSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
-; 1495e
 
-SilverTrophySprite: ; 1496a
+SilverTrophySprite:
 	sprite_header SilverTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_SILVER
-; 14970
 
-GoldTrophySprite: ; 14964
+GoldTrophySprite:
 	sprite_header GoldTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
-; 1496a

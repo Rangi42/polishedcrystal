@@ -84,7 +84,7 @@ UnknownScript_0x1a001e:
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_EUSINE
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
@@ -96,7 +96,7 @@ UnknownScript_0x1a001e:
 	loadtrainer MYSTICALMAN, EUSINE
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_EUSINE
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
