@@ -2310,6 +2310,7 @@ wFastShip1FTrigger:: ds 1
 wFastShipB1FTrigger:: ds 1
 wMountMoonSquareTrigger:: ds 1
 wVermilionCityTrigger:: ds 1
+wLavenderTownTrigger:: ds 1
 wSeagallopFerryVermilionGateTrigger:: ds 1
 wSeagallopFerryNavelGateTrigger:: ds 1
 wSeagallopFerryShamoutiGateTrigger:: ds 1

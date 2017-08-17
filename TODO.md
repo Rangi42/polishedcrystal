@@ -22,6 +22,7 @@ The final, non-beta 3.0 release should include all of these.
 ### Mechanics
 
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
+* Notify when Pickup picks up an item
 * Mr. Pokémon gives a traded shiny Ditto for breeding
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day

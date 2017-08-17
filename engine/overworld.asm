@@ -1209,10 +1209,12 @@ Group18Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	db SPRITE_COOLTRAINER_F ; doesn't walk
 	db SPRITE_LASS ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_ROCKER ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
+	; 12 total sprites
 	db 0
 
 
