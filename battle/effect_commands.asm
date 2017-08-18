@@ -8839,6 +8839,38 @@ BattleCommand_ClearHazards: ; 37b39
 BattleCommand_HealWeather:
 	farcall CheckFullHP
 	jr z, .full
+
+	; TODO healinglight
+	ld a, [hBattleTurn]
+	and a
+	ld a, [BattleMonType1]
+	ld b, a
+	ld a, [BattleMonType2]
+	ld c, a
+	jr z, .got_types
+	ld a, [EnemyMonType1]
+	ld b, a
+	ld a, [EnemyMonType2]
+	ld c, a
+.got_types
+	ld a, b
+	cp GRASS
+	jr z, .synthesis_anim
+	ld a, c
+	cp GRASS
+	jr z, .synthesis_anim
+	ld a, [TimeOfDay]
+	cp NITE
+	jr nc, .moonlight_anim
+	xor a ; Morning Sun anim
+	jr .got_anim
+.moonlight_anim
+	ld a, $1
+	jr .got_anim
+.synthesis_anim
+	ld a, $2
+.got_anim
+	ld [wKickCounter], a
 	call AnimateCurrentMove
 
 	call GetWeatherAfterCloudNine

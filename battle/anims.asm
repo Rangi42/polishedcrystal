@@ -4439,6 +4439,8 @@ BattleAnim_ShadowClaw:
 	anim_ret
 
 BattleAnim_HealingLight:
+	anim_jumpif $1, BattleAnim_Moonlight
+	anim_jumpif $2, BattleAnim_Synthesis
 BattleAnim_MorningSun: ; removed
 	anim_1gfx ANIM_GFX_SHINE
 	anim_bgeffect ANIM_BG_07, $0, $0, $0
