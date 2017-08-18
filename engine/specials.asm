@@ -166,7 +166,7 @@ SpecialsPointers:: ; c029
 	add_special SaveOptions
 	add_special WonderTrade
 	add_special RespawnOneOffs
-	add_special GiveShinyDittoEgg
+	add_special SpecialGiveShinyDitto
 	add_special GiveMystriEgg
 	add_special MoveReminder
 	add_special Special_ReiBlessing

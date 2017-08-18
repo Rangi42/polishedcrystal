@@ -80,7 +80,7 @@ MrPokemonsHouse_MrPokemonScript:
 	iffalse .refused
 	checkcode VAR_PARTYCOUNT
 	if_equal PARTY_LENGTH, .party_full
-	special GiveShinyDittoEgg
+	special SpecialGiveShinyDitto
 	opentext
 	writetext MrPokemonText_GotShinyDittoEgg
 	playsound SFX_KEY_ITEM
@@ -345,14 +345,13 @@ MrPokemonText_GimmeTheScale:
 	para "<PLAYER>, would you"
 	line "care to trade it?"
 
-	para "I can offer this"
-	line "#mon Egg I got"
-	cont "from Prof.Oak."
+	para "I can offer you"
+	line "a rare #mon."
 	done
 
 MrPokemonText_GotShinyDittoEgg:
-	text "<PLAYER> received"
-	line "Rare Egg!"
+	text "<PLAYER> received a"
+	line "#mon."
 	done
 
 MrPokemonText_PartyFull:
