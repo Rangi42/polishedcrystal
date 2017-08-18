@@ -141,9 +141,9 @@ Bonemerang:
 CometPunch:
 DoubleKick:
 DoubleSlap:
-FuryStrikes:
 PinMissile:
 IcicleSpear:
+FuryStrikes:
 	checkobedience
 	usedmovetext
 	doturn

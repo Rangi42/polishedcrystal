@@ -1631,6 +1631,7 @@ BattleAnim_Scratch:
 	anim_ret
 
 BattleAnim_FuryStrikes:
+	anim_jumpif $2, BattleAnim_FuryAttack
 BattleAnim_FurySwipes: ; removed
 	anim_1gfx ANIM_GFX_CUT
 	anim_jumpif $1, BattleAnim_FurySwipes_branch_c9dd9
@@ -2926,6 +2927,7 @@ BattleAnim_BulkUp:
 	anim_ret
 
 BattleAnim_DefenseCurl:
+	anim_jumpif $1, BattleAnim_Withdraw
 	anim_1gfx ANIM_GFX_SHAPES
 	anim_obp0 $e4
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -2935,6 +2937,20 @@ BattleAnim_DefenseCurl:
 	anim_wait 96
 	anim_incobj  2
 	anim_incbgeffect ANIM_BG_18
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+BattleAnim_Withdraw: ; removed
+	anim_1gfx ANIM_GFX_REFLECT
+	anim_call BattleAnim_FollowPlayerHead_0
+	anim_bgeffect ANIM_BG_21, $0, $1, $50
+	anim_wait 48
+	anim_sound 0, 0, SFX_SHINE
+	anim_obj ANIM_OBJ_70,   6, 0,  11, 0, $0
+	anim_wait 64
+	anim_incobj  2
+	anim_wait 1
+	anim_incbgeffect ANIM_BG_21
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
@@ -5077,20 +5093,6 @@ BattleAnim_ShowMon_1:
 ;	anim_obj ANIM_OBJ_05, -15, 0,   7, 0, $0
 ;	anim_obj ANIM_OBJ_05,  16, 0,   6, 0, $0
 ;	anim_wait 16
-;	anim_ret
-
-;BattleAnim_Withdraw: ; removed
-;	anim_1gfx ANIM_GFX_REFLECT
-;	anim_call BattleAnim_FollowPlayerHead_0
-;	anim_bgeffect ANIM_BG_21, $0, $1, $50
-;	anim_wait 48
-;	anim_sound 0, 0, SFX_SHINE
-;	anim_obj ANIM_OBJ_70,   6, 0,  11, 0, $0
-;	anim_wait 64
-;	anim_incobj  2
-;	anim_wait 1
-;	anim_incbgeffect ANIM_BG_21
-;	anim_call BattleAnim_ShowMon_0
 ;	anim_ret
 
 ;BattleAnim_BeatUp: ; removed

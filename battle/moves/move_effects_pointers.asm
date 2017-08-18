@@ -163,3 +163,4 @@
 	dw SkillSwap
 	dw Trick
 	dw KnockOff
+	dw FuryStrikes

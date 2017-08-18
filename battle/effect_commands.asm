@@ -1204,7 +1204,16 @@ BattleCommand_Critical: ; 34631
 	ret
 
 .Criticals:
-	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, SHADOW_CLAW, STONE_EDGE, $ff
+	db KARATE_CHOP
+	db RAZOR_LEAF
+	db CRABHAMMER
+	db SLASH
+	db AEROBLAST
+	db CROSS_CHOP
+	db SHADOW_CLAW
+	db STONE_EDGE
+	db $ff
+
 .Chances:
 	; 6.25% 12.5%  50%   100%
 	db $10,  $20,  $80,  $ff
@@ -2182,17 +2191,19 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	call GetBattleVar
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
+	cp EFFECT_FURY_STRIKES
+	jr z, .fury_strikes
 	cp EFFECT_CONVERSION
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
 	cp EFFECT_TRIPLE_KICK
 	jr z, .triplekick
+
+.normal_move
 	xor a
 	ld [wKickCounter], a
-
 .triplekick
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
@@ -2217,6 +2228,7 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	and 1
 	xor 1
 	ld [wKickCounter], a
+.fury_attack
 	ld a, [de]
 	cp $1
 	push af
@@ -2229,6 +2241,45 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	xor a
 	ld [wNumHits], a
 	jp PlayFXAnimID
+
+; Fury Swipes and Fury Attack were merged into Fury Strikes, so use the correct
+; animation for the Pokémon that learned each one
+.fury_strikes
+	push de
+	ld a, [hBattleTurn]
+	and a
+	ld a, [BattleMonSpecies]
+	jr z, .got_user_species
+	ld a, [EnemyMonSpecies]
+.got_user_species
+	ld hl, .fury_attack_users
+	ld de, 1
+	call IsInArray
+	pop de
+	jr nc, .multihit
+	ld a, $2
+	ld [wKickCounter], a
+	jr .fury_attack
+
+.fury_attack_users
+	db BEEDRILL
+	db NIDORAN_M
+	db NIDORINO
+	db NIDOKING
+	db FARFETCH_D
+	db DODUO
+	db DODRIO
+	db RHYHORN
+	db RHYDON
+	db RHYPERIOR
+	db PINSIR
+	db DUNSPARCE
+	db HERACROSS
+	db PILOSWINE
+	db MAMOSWINE
+	db SKARMORY
+	db DONPHAN
+	db -1
 
 ; 34fd1
 
@@ -2261,13 +2312,45 @@ BattleCommand_StatDownAnim: ; 34fdb
 
 BattleCommand_StatUpDownAnim: ; 34feb
 	ld [wNumHits], a
+
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld e, a
+	ld d, 0
+	cp DEFENSE_CURL
+	jr nz, .not_withdraw
+	ld a, [hBattleTurn]
+	and a
+	ld a, [BattleMonSpecies]
+	jr z, .got_user_species
+	ld a, [EnemyMonSpecies]
+.got_user_species
+	ld hl, .withdraw_users
+	ld de, 1
+	call IsInArray
+	jr nc, .not_withdraw
+	ld a, $1
+	jr .withdraw
+.not_withdraw
 	xor a
+.withdraw
 	ld [wKickCounter], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
 	ld d, 0
 	jp PlayFXAnimID
+
+.withdraw_users
+	db SQUIRTLE
+	db WARTORTLE
+	db BLASTOISE
+	db SLOWBRO
+	db SHELLDER
+	db CLOYSTER
+	db OMANYTE
+	db OMASTAR
+	db -1
 
 ; 34ffd
 
@@ -2330,6 +2413,8 @@ BattleCommand_FailureText: ; 35023
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
+	jr z, .multihit
+	cp EFFECT_FURY_STRIKES
 	jr z, .multihit
 	jp EndMoveEffect
 
@@ -2782,6 +2867,8 @@ BattleCommand_PostFaintEffects:
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_TRIPLE_KICK
+	jr z, .multiple_hit_raise_sub
+	cp EFFECT_FURY_STRIKES
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_SWITCH_HIT
 	jr nz, .finish
@@ -3642,7 +3729,8 @@ BattleCommand_DamageCalc: ; 35612
 	; Variable-hit moves and Conversion can have a power of 0.
 	cp EFFECT_MULTI_HIT
 	jr z, .skip_zero_damage_check
-
+	cp EFFECT_FURY_STRIKES
+	jr z, .skip_zero_damage_check
 	cp EFFECT_CONVERSION
 	jr z, .skip_zero_damage_check
 
@@ -4895,6 +4983,8 @@ SelfInflictDamageToSubstitute: ; 35de0
 	cp EFFECT_DOUBLE_HIT
 	jr z, .ok
 	cp EFFECT_TRIPLE_KICK
+	jr z, .ok
+	cp EFFECT_FURY_STRIKES
 	jr z, .ok
 	xor a
 	ld [hl], a
@@ -8840,7 +8930,6 @@ BattleCommand_HealWeather:
 	farcall CheckFullHP
 	jr z, .full
 
-	; TODO healinglight
 	ld a, [hBattleTurn]
 	and a
 	ld a, [BattleMonType1]
