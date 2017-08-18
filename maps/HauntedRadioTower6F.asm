@@ -14,3 +14,7 @@ HauntedRadioTower6F_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 0
+
+; setflag ENGINE_EXORCISED_LAV_RADIO_TOWER
+; setevent EVENT_EXORCISED_LAV_RADIO_TOWER
+; clearevent EVENT_LAV_RADIO_TOWER_POPULATION

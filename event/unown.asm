@@ -1,38 +1,24 @@
 SpecialHoOhChamber: ; 0x8addb
 	ld hl, PartySpecies
 	ld a, [hl]
-	ld hl, .FairyTable
-	ld de, 1
-	call IsInArray
-	ret nc
+	ld [CurPartySpecies], a
+	ld [CurSpecies], a
+	call GetBaseData
+	ld a, [BaseType1]
+	cp FAIRY
+	jr z, .open
+	ld a, [BaseType2]
+	cp FAIRY
+	ret nz
+
+.open
 	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ld b, SET_FLAG
 	jp EventFlagAction
-
-.FairyTable:
-	db AZUMARILL
-	db CLEFABLE
-	db CLEFAIRY
-	db GRANBULL
-	db JIGGLYPUFF
-	db MARILL
-	db MR__MIME
-	db SNUBBULL
-	db SYLVEON
-	db TOGEKISS
-	db TOGEPI
-	db TOGETIC
-	db WIGGLYTUFF
-if !DEF(FAITHFUL)
-	db MEGANIUM
-	db MISMAGIUS
-endc
-	db -1
 ; 0x8adef
 
 SpecialOmanyteChamber: ; 8adef
-	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ld b, CHECK_FLAG
 	call EventFlagAction
@@ -71,9 +57,6 @@ SpecialOmanyteChamber: ; 8adef
 ; 8ae30
 
 SpecialAerodactylChamber: ; 8ae30
-	push de
-	push bc
-
 	call GetSecondaryMapHeaderPointer
 	ld a, h
 	cp RuinsofAlphAerodactylChamber_SecondMapHeader / $100
@@ -85,39 +68,26 @@ SpecialAerodactylChamber: ; 8ae30
 	ld de, EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	ld b, SET_FLAG
 	call EventFlagAction
-
 	scf
-	jr .done
+	ret
 
 .nope
 	and a
-
-.done
-	pop bc
-	pop de
 	ret
 ; 8ae4e
 
 SpecialKabutoChamber: ; 8ae4e
-	push hl
-	push de
-
 	call GetSecondaryMapHeaderPointer
 	ld a, h
 	cp RuinsofAlphKabutoChamber_SecondMapHeader / $100
-	jr nz, .done
+	ret nz
 	ld a, l
 	cp RuinsofAlphKabutoChamber_SecondMapHeader % $100
-	jr nz, .done
+	ret nz
 
 	ld de, EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	ld b, SET_FLAG
-	call EventFlagAction
-
-.done
-	pop de
-	pop hl
-	ret
+	jp EventFlagAction
 ; 8ae68
 
 Special_DisplayUnownWords: ; 8ae68

@@ -105,7 +105,7 @@ ENDM
 	engine_flag StatusFlags2, 3 ; seen shamouti island
 	engine_flag StatusFlags2, 4 ; bike shop call enabled (1024 bike steps reqd)
 	engine_flag StatusFlags2, 5 ; give pokerus
-	engine_flag StatusFlags2, 6 ; unused
+	engine_flag StatusFlags2, 6 ; exorcised lav radio tower
 	engine_flag StatusFlags2, 7 ; rockets in mahogany
 
 	engine_flag BikeFlags, 0 ; strength active ; $18
