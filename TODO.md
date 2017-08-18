@@ -222,9 +222,10 @@ Some of these may never be added; they're just suggestions.
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
 * More music
+   * Pokémon Go Battle! Gym Leader (for Candela, Blanche, and Spark)
+   * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
    * R/S/E Route 120
-   * S/M Malie City (Day) (for Shamouti Shrine)
 * More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/doublespeed) mode
