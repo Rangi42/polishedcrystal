@@ -227,7 +227,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 10
 
 	mapgroup ROUTE_32,                                   45, 10 ;  1
-	mapgroup ROUTE_32_COAST,                             35, 15 ;  2
+	mapgroup ROUTE_32_COAST,                             36, 15 ;  2
 	mapgroup VIOLET_CITY,                                20, 20 ;  3
 	mapgroup VIOLET_MART,                                 4,  6 ;  4
 	mapgroup VIOLET_GYM,                                  8,  5 ;  5
