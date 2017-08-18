@@ -206,6 +206,11 @@ WrongSideText:
 	text "Oops, wrong side."
 	done
 
+RadioOffAirText:
+	text "The radio is just"
+	line "playing static…"
+	done
+
 RefrigeratorText:
 	text "It's a fridge."
 	done
