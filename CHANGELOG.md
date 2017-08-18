@@ -95,6 +95,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: TM prices from OR/AS.
 * Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
 * Add: Update random Wonder Trade OT names.
+* Add: Mr. Pokémon gives you a non-OT Ditto, not an Egg, for the Masuda breeding method.
 * Add: Use original Jynx sprite.
 * Add: Make overworld sprites darker at night.
 * Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
