@@ -20,23 +20,26 @@ EcruteakCherishBallHouse_MapEventHeader:
 	person_event SPRITE_GRANNY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCherishBallHouseGrannyText, -1
 
 EcruteakCherishBallHouseGrampsScript:
+	checkevent EVENT_GOT_CHERISH_BALL_FROM_ECRUTEAK
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_CHERISH_BALL_FROM_ECRUTEAK
-	iftrue .GotItem
-	writetext EcruteakCherishBallHouseGrampsText1
+	writetext .Text1
 	buttonsound
 	verbosegiveitem CHERISH_BALL
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_ECRUTEAK
-.GotItem:
-	writetext EcruteakCherishBallHouseGrampsText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-EcruteakCherishBallHouseGrampsText1:
+.Text2:
+	text "I will always"
+	line "cherish the time"
+
+	para "I spent with"
+	line "#mon."
+	done
+
+.Text1:
 	text "I've lived a long"
 	line "life, and I have"
 
@@ -47,14 +50,6 @@ EcruteakCherishBallHouseGrampsText1:
 	para "Take this and make"
 	line "a new memory to"
 	cont "cherish."
-	done
-
-EcruteakCherishBallHouseGrampsText2:
-	text "I will always"
-	line "cherish the time"
-
-	para "I spent with"
-	line "#mon."
 	done
 
 EcruteakCherishBallHouseGrannyText:

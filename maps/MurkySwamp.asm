@@ -46,7 +46,7 @@ MurkySwampCherylScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -61,7 +61,7 @@ MurkySwampCherylScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_WEIGHT
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -72,13 +72,6 @@ MurkySwampCherylScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_CHERYL
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Hello, my name's"

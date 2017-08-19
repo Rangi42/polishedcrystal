@@ -327,8 +327,7 @@ OfficermKeithScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERM_KEITH
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	jumpopenedtext OfficermKeithAfterText

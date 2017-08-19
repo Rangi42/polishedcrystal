@@ -132,8 +132,7 @@ Script_WalkOutOfLinkBattleRoom:
 PokeCenter2FLinkRecordSign:
 	refreshscreen
 	special Special_DisplayLinkRecord
-	closetext
-	end
+	endtext
 
 LinkReceptionistScript_Trade:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -168,21 +167,18 @@ LinkReceptionistScript_Trade:
 .FriendNotReady:
 	special WaitForOtherPlayerToExit
 	writetext Text_FriendNotReady
-	closetext
-	end
+	endtext
 
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .IncompatibleRooms:
 	writetext Text_IncompatibleRooms
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
@@ -193,8 +189,7 @@ LinkReceptionistScript_Trade:
 .AbortLink:
 	special WaitForOtherPlayerToExit
 .Cancel:
-	closetext
-	end
+	endtext
 
 Script_TradeCenterClosed:
 	thistextfaceplayer
@@ -237,21 +232,18 @@ LinkReceptionistScript_Battle:
 .FriendNotReady:
 	special WaitForOtherPlayerToExit
 	writetext Text_FriendNotReady
-	closetext
-	end
+	endtext
 
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .IncompatibleRooms:
 	writetext Text_IncompatibleRooms
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
@@ -262,8 +254,7 @@ LinkReceptionistScript_Battle:
 .AbortLink:
 	special WaitForOtherPlayerToExit
 .Cancel:
-	closetext
-	end
+	endtext
 
 Script_BattleRoomClosed:
 	thistextfaceplayer

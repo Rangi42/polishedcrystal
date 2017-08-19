@@ -244,8 +244,7 @@ OfficermScript_0x19ca49:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERM_DIRK
-	closetext
-	end
+	endtext
 
 UnknownScript_0x19ca6d:
 	jumpopenedtext UnknownText_0x19cf0f

@@ -46,23 +46,23 @@ TrainerCooltrainermFinch:
 
 .Script:
 	end_if_just_battled
+	checkevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
+	iftrue_jumptextfaceplayer .AfterText2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
-	iftrue .GotAirBalloon
 	checkevent EVENT_BEAT_COOLTRAINERM_FINCH
 	iftrue .Beaten
 	checkevent EVENT_BEAT_YOUNGSTER_JOEY
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_YOUNGSTER_MIKEY
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_BUG_CATCHER_DON
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_BUG_CATCHER_WADE
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -77,20 +77,25 @@ TrainerCooltrainermFinch:
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem AIR_BALLOON
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
-.GotAirBalloon:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "You saw the effect"
+	line "of an Air Balloon"
+	cont "in our battle."
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "You may find other"
+	line "trainers like me"
+	cont "wandering Johto."
+
+	para "Searching for"
+	line "strength."
+
+	para "You would do well"
+	line "to challenge them!"
+	done
 
 .IntroText:
 	text "I am a trainer who"
@@ -154,22 +159,6 @@ TrainerCooltrainermFinch:
 
 	para "Take it, my"
 	line "strong friend!"
-	done
-
-.AfterText2:
-	text "You saw the effect"
-	line "of an Air Balloon"
-	cont "in our battle."
-
-	para "You may find other"
-	line "trainers like me"
-	cont "wandering Johto."
-
-	para "Searching for"
-	line "strength."
-
-	para "You would do well"
-	line "to challenge them!"
 	done
 
 TrainerBug_catcherWade1:

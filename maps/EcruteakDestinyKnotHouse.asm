@@ -20,32 +20,35 @@ EcruteakDestinyKnotHouse_MapEventHeader:
 	person_event SPRITE_RICH_BOY, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, trade, TRADE_WITH_HARI_FOR_DODUO, -1
 
 EcruteakDestinyKnotHouseCooltrainerFScript:
+	checkevent EVENT_GOT_DESTINY_KNOT_FROM_ECRUTEAK
+	iftrue_jumptextfaceplayer .Text4
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_DESTINY_KNOT_FROM_ECRUTEAK
-	iftrue .GotItem
-	writetext EcruteakDestinyKnotHouseCooltrainerFText1
+	writetext .Text1
 	buttonsound
 	special SpecialBeastsCheck
-	iffalse .NotEnough
+	iffalse_jumpopenedtext .Text2
 	special SpecialBirdsCheck
-	iffalse .NotEnough
+	iffalse_jumpopenedtext .Text2
 	special SpecialDuoCheck
-	iffalse .NotEnough
-	writetext EcruteakDestinyKnotHouseCooltrainerFText3
+	iffalse_jumpopenedtext .Text2
+	writetext .Text3
 	verbosegiveitem DESTINY_KNOT
-	iffalse .Done
-.GotItem:
-	writetext EcruteakDestinyKnotHouseCooltrainerFText4
-	waitbutton
-.Done:
-	closetext
-	end
+	iffalse_endtext
+	thisopenedtext
 
-.NotEnough:
-	jumpopenedtext EcruteakDestinyKnotHouseCooltrainerFText2
+.Text4:
+	text "The red string of"
+	line "fate ties you to"
 
-EcruteakDestinyKnotHouseCooltrainerFText1:
+	para "the legendary"
+	line "#mon…"
+
+	para "Are you some kind"
+	line "of Chosen One?"
+	done
+
+.Text1:
 	text "Two mighty bird"
 	line "#mon of Johto,"
 
@@ -57,7 +60,7 @@ EcruteakDestinyKnotHouseCooltrainerFText1:
 	line "legends…"
 	done
 
-EcruteakDestinyKnotHouseCooltrainerFText2:
+.Text2:
 	text "What if a trainer"
 	line "were to catch all"
 	cont "of them?"
@@ -66,7 +69,7 @@ EcruteakDestinyKnotHouseCooltrainerFText2:
 	line "destiny!"
 	done
 
-EcruteakDestinyKnotHouseCooltrainerFText3:
+.Text3:
 	text "What? You've seen"
 	line "them? And you even"
 	cont "caught them?!"
@@ -79,15 +82,4 @@ EcruteakDestinyKnotHouseCooltrainerFText3:
 
 	para "Here, you should"
 	line "have this."
-	done
-
-EcruteakDestinyKnotHouseCooltrainerFText4:
-	text "The red string of"
-	line "fate ties you to"
-
-	para "the legendary"
-	line "#mon…"
-
-	para "Are you some kind"
-	line "of Chosen One?"
 	done

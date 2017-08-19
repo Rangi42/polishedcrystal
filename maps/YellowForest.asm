@@ -149,8 +149,7 @@ YellowTryGiveLightBallScript:
 	writetext YellowForestYellowGoodbyeText
 	waitbutton
 NoRoomForLightBallScript:
-	closetext
-	end
+	endtext
 
 YellowForestCooltrainerMScript:
 	faceplayer

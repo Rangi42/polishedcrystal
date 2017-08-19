@@ -28,8 +28,7 @@ BookScript_0x7b1e4:
 	writetext UnknownText_0x7b2b9
 	waitbutton
 UnknownText_0x7b1f7:
-	closetext
-	end
+	endtext
 
 UnknownText_0x7b1f9:
 	text "There's something"

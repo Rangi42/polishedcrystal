@@ -70,8 +70,7 @@ CeladonUniversityClassroom4RaymondScript:
 	verbosegiveitem CHOICE_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	writetext .FinalText
-	waitendtext
+	jumpopenedtext .FinalText
 
 .IntroText1:
 	text "Hey! I'm Raymond!"
@@ -216,14 +215,11 @@ CeladonUniversityClassroom4Rich_boyScript:
 	writetext .Text1
 	buttonsound
 	verbosegiveitem ABILITY_CAP
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
 .GotItem:
 	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
+	waitendtext
 
 .Text1:
 	text "We're learning"
@@ -270,11 +266,9 @@ CeladonUniversityClassroom4Bookshelf1:
 	writetext .Text1
 	buttonsound
 	verbosegiveitem X_SPCL_ATK
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
-.Done
-	closetext
-	end
+	endtext
 
 .Text1:
 	text "This bookcase is"

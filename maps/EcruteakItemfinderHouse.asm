@@ -42,15 +42,13 @@ BookScript_0x9a620:
 	writetext UnknownText_0x9a826
 	yesorno
 	iftrue UnknownScript_0x9a62a
-	closetext
-	end
+	endtext
 
 UnknownScript_0x9a62a:
 	writetext UnknownText_0x9a84c
 	yesorno
 	iftrue UnknownScript_0x9a633
-	closetext
-	end
+	endtext
 
 UnknownScript_0x9a633:
 	jumpopenedtext UnknownText_0x9a902

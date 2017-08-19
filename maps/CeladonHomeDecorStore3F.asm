@@ -33,8 +33,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	if_equal $1, .RedCarpet
 	if_equal $2, .YellowCarpet
 	if_equal $3, .GreenCarpet
-	closetext
-	end
+	endtext
 
 .RedCarpet:
 	checkmoney $0, 45000

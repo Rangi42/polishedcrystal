@@ -20,23 +20,26 @@ GoldenrodHPUpHouse_MapEventHeader:
 	person_event SPRITE_PIKACHU, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, PIKACHU, GoldenrodHPUpHousePikachuText, -1
 
 GoldenrodHPUpHousePokefanMScript:
+	checkevent EVENT_GOT_HP_UP_FROM_GOLDENROD
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HP_UP_FROM_GOLDENROD
-	iftrue .GotItem
-	writetext GoldenrodHPUpHousePokefanMText1
+	writetext .Text1
 	buttonsound
 	verbosegiveitem HP_UP
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_HP_UP_FROM_GOLDENROD
-.GotItem:
-	writetext GoldenrodHPUpHousePokefanMText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-GoldenrodHPUpHousePokefanMText1:
+.Text2:
+	text "The Haircut Bro-"
+	line "thers sure know"
+
+	para "how to make"
+	line "#mon happy."
+	done
+
+.Text1:
 	text "If your #mon"
 	line "gets a haircut, it"
 
@@ -45,14 +48,6 @@ GoldenrodHPUpHousePokefanMText1:
 
 	para "But this works"
 	line "too!"
-	done
-
-GoldenrodHPUpHousePokefanMText2:
-	text "The Haircut Bro-"
-	line "thers sure know"
-
-	para "how to make"
-	line "#mon happy."
 	done
 
 GoldenrodHPUpHousePokefanFText:

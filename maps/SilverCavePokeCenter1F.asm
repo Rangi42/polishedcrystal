@@ -77,7 +77,7 @@ SilverCavePokeCenterGrampsScript:
 	writetext .ReadAllText
 	buttonsound
 	verbosegiveitem EXPERT_BELT
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_EXPERT_BELT
 	thisopenedtext
 
@@ -89,10 +89,6 @@ SilverCavePokeCenterGrampsScript:
 	line "#mon if they"
 	cont "hold it."
 	done
-
-.Done:
-	closetext
-	end
 
 .GreetingText:
 	text "In my youth I was"

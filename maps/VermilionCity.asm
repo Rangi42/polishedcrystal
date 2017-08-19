@@ -175,34 +175,30 @@ UnknownScript_0x1aa9ab:
 	end
 
 VermilionGymBadgeGuy:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
-	iftrue .AlreadyGotItem
+	iftrue_jumptextfaceplayer UnknownText_0x1aad4a
 	checkcode VAR_BADGES
 	if_equal 16, .AllBadges
 	if_greater_than 13, .MostBadges
 	if_greater_than 9, .SomeBadges
-	jumpopenedtext UnknownText_0x1aabc8
+	jumptextfaceplayer UnknownText_0x1aabc8
 
 .SomeBadges:
-	jumpopenedtext UnknownText_0x1aac2b
+	jumptextfaceplayer UnknownText_0x1aac2b
 
 .MostBadges:
-	jumpopenedtext UnknownText_0x1aac88
+	jumptextfaceplayer UnknownText_0x1aac88
 
 .AllBadges:
+	faceplayer
+	opentext
 	writetext UnknownText_0x1aacf3
 	buttonsound
 	verbosegiveitem BOTTLE_CAP
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 .AlreadyGotItem:
-	writetext UnknownText_0x1aad4a
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext UnknownText_0x1aad4a
 
 LawrenceOverheardText:
 	text "…So the legendary"

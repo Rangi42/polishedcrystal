@@ -51,8 +51,7 @@ UnknownScript_0x5c01d:
 	writetext UnknownText_0x5c30d
 	waitbutton
 UnknownScript_0x5c021:
-	closetext
-	end
+	endtext
 
 TrainerBugManiacLou:
 	trainer EVENT_BEAT_BUG_MANIAC_LOU, BUG_MANIAC, LOU, BugManiacLouSeenText, BugManiacLouBeatenText, 0, BugManiacLouScript

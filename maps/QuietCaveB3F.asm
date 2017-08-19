@@ -32,7 +32,7 @@ QuietCaveB3FMarleyScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -47,7 +47,7 @@ QuietCaveB3FMarleyScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_ANKLET
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -58,13 +58,6 @@ QuietCaveB3FMarleyScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_MARLEY
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…I'm Marley."

@@ -55,31 +55,31 @@ UnknownScript_0x19d05c:
 	return
 
 Route43SightseerfScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
-	iftrue .GotFlameOrb
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_SIGHTSEERF_LENIE
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BREEDER_JODY_ONCE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SR_AND_JR_IVY_AND_AMY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_CAMPER_SPENCER
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_BEN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_BRENT
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_RON
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_MARVIN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PICNICKER_TIFFANY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -89,25 +89,26 @@ Route43SightseerfScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SIGHTSEERF_LENIE
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem FLAME_ORB
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
-.GotFlameOrb:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "I love visiting"
+	line "new places and"
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "challenging every"
+	line "trainer there."
+
+	para "I'll keep looking"
+	line "for strong train-"
+	cont "ers like you."
+	done
 
 .IntroText:
 	text "I'm seeking out"
@@ -173,18 +174,6 @@ Route43SightseerfScript:
 	para "please be careful"
 	line "if you give it to"
 	cont "a #mon."
-	done
-
-.AfterText2:
-	text "I love visiting"
-	line "new places and"
-
-	para "challenging every"
-	line "trainer there."
-
-	para "I'll keep looking"
-	line "for strong train-"
-	cont "ers like you."
 	done
 
 TrainerBreederJody:

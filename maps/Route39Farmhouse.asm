@@ -66,8 +66,7 @@ UnknownScript_0x9cec5:
 	writetext UnknownText_0x9d05d
 	buttonsound
 	itemnotify
-	closetext
-	end
+	endtext
 
 .Cancel:
 	jumpopenedtext UnknownText_0x9d0b7

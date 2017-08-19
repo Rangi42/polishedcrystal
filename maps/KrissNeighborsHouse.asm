@@ -45,8 +45,7 @@ KrissNeighborsHouseRadio:
 	opentext
 	writetext KrisNeighborRadioText4
 	pause 45
-	closetext
-	end
+	endtext
 
 KrissNeighborsDaughterText:
 	text "Pikachu is an"

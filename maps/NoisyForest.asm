@@ -50,7 +50,7 @@ NoisyForestAnabelScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -65,7 +65,7 @@ NoisyForestAnabelScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_BAND
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -76,13 +76,6 @@ NoisyForestAnabelScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_ANABEL
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Greetings… My name"

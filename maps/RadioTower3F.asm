@@ -107,8 +107,7 @@ MapRadioTower3FSignpost2Script::
 	checkitem CARD_KEY
 	iftrue UnknownScript_0x5e605
 UnknownScript_0x5e603:
-	closetext
-	end
+	endtext
 
 UnknownScript_0x5e605:
 	writetext UnknownText_0x5eabc

@@ -31,8 +31,7 @@ CeladonHomeDecorStore2FClerkScript:
 	if_equal $1, .PinkBed
 	if_equal $2, .PolkaDotBed
 	if_equal $3, .PikachuBed
-	closetext
-	end
+	endtext
 
 .PinkBed:
 	checkmoney $0, 62000

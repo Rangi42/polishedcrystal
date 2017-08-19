@@ -82,8 +82,7 @@ KrissHouseRadio:
 	opentext
 	writetext KrisRadioText4
 	pause 45
-	closetext
-	end
+	endtext
 
 PokemonJournalProfElmScript:
 	setflag ENGINE_READ_PROF_ELM_JOURNAL
@@ -93,8 +92,7 @@ KrissHousePC:
 	opentext
 	special Special_KrissHousePC
 	iftrue .Warp
-	closetext
-	end
+	endtext
 .Warp:
 	warp NONE, 0, 0
 	end

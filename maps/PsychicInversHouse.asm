@@ -58,8 +58,7 @@ PsychicInverScript:
 .GiveReward
 	buttonsound
 	verbosegiveitem ITEM_FROM_MEM
-	closetext
-	end
+	endtext
 
 .Score0
 	writetext InverseBattle0PointRewardText

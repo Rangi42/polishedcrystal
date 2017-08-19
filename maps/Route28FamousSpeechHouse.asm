@@ -27,8 +27,7 @@ Celebrity:
 	buttonsound
 	verbosegivetmhm TM_STEEL_WING
 	setevent EVENT_GOT_TM47_STEEL_WING
-	closetext
-	end
+	endtext
 .AlreadyGotItem:
 	jumpopenedtext CelebrityText2
 

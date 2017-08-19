@@ -65,8 +65,7 @@ OfficerScript_0x69d37:
 	writetext UnknownText_0x69fd9
 	waitbutton
 .bagfull
-	closetext
-	end
+	endtext
 
 GiftFarfetch_dMail:
 	db   FLOWER_MAIL

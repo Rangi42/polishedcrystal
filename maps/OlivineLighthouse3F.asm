@@ -32,33 +32,33 @@ const_value set 2
 	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
 
 OlivineLighthouse3FBattleGirlEmy:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_PROTECT_PADS_FROM_LIGHTHOUSE_LEADER
-	iftrue .GotProtectPads
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_BATTLE_GIRL_EMY
 	iftrue .Beaten
+	opentext
 	checkevent EVENT_BEAT_GENTLEMAN_ALFRED
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_SAILOR_HUEY
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_BIRD_KEEPER_THEO
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_GENTLEMAN_PRESTON
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_SAILOR_TERRELL
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_LASS_CONNIE
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_SAILOR_KENT
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_BIRD_KEEPER_DENIS
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	checkevent EVENT_BEAT_SAILOR_ERNEST
-	iffalse .RouteNotCleared
+	iffalse_jumpopenedtext .IntroText
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -68,25 +68,24 @@ OlivineLighthouse3FBattleGirlEmy:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BATTLE_GIRL_EMY
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem PROTECT_PADS
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_PROTECT_PADS_FROM_LIGHTHOUSE_LEADER
-.GotProtectPads:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "One of the Elite"
+	line "Four, Bruno, is a"
+	cont "fighter like me."
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "To become as"
+	line "strong as him--"
+	cont "that's my aim."
+	done
 
 .IntroText:
 	text "As a Battle Girl,"
@@ -145,16 +144,6 @@ OlivineLighthouse3FBattleGirlEmy:
 	para "contact with your"
 	line "opponent without"
 	cont "being harmed."
-	done
-
-.AfterText2:
-	text "One of the Elite"
-	line "Four, Bruno, is a"
-	cont "fighter like me."
-
-	para "To become as"
-	line "strong as him--"
-	cont "that's my aim."
 	done
 
 TrainerBird_keeperTheo:

@@ -360,8 +360,7 @@ EmergencySwitchScript:
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
 UndergroundPathSwitchRoomEntrances_DontToggle:
-	closetext
-	end
+	endtext
 
 UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	copybytetovar UndergroundSwitchPositions
@@ -387,8 +386,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear13
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position1:
 	playsound SFX_ENTER_DOOR
@@ -400,8 +398,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position2:
 	playsound SFX_ENTER_DOOR
@@ -413,8 +410,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear13
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position3:
 	playsound SFX_ENTER_DOOR
@@ -426,8 +422,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position4:
 	playsound SFX_ENTER_DOOR
@@ -439,8 +434,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear13
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position5:
 	playsound SFX_ENTER_DOOR
@@ -452,8 +446,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position6:
 	playsound SFX_ENTER_DOOR
@@ -465,8 +458,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear10
 	scall .Clear13
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .EmergencyPosition:
 	playsound SFX_ENTER_DOOR

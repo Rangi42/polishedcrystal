@@ -79,11 +79,11 @@ ProfIvyScript:
 	writetext .ThanksText
 	buttonsound
 	verbosegiveitem MOON_STONE
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_IVY
 .GotItem:
 	checkevent EVENT_BEAT_PROF_IVY
-	iftrue .Beaten
+	iftrue_jumpopenedtext .AfterText
 	writetext .ChallengeText
 	yesorno
 	iffalse .NoBattle
@@ -96,13 +96,7 @@ ProfIvyScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PROF_IVY
-	opentext
-.Beaten:
-	writetext .AfterText
-	waitbutton
-.Done:
-	closetext
-	end
+	jumptext .AfterText
 
 .Return2:
 	giveitem LIECHI_BERRY
@@ -242,8 +236,7 @@ IvysLabHealingMachine:
 	writetext .Text
 	yesorno
 	iftrue .HealParty
-	closetext
-	end
+	endtext
 
 .HealParty:
 	special HealParty
@@ -253,8 +246,7 @@ IvysLabHealingMachine:
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic
-	closetext
-	end
+	endtext
 
 .Text:
 	text "Would you like to"

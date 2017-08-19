@@ -38,15 +38,12 @@ AcademyEarl:
 	iffalse .Part1
 	writetext UnknownText_0x68bbd
 	yesorno
-	iffalse .Done
+	iffalse_jumpopenedtext UnknownText_0x68d31
 .Part1:
 	writetext UnknownText_0x68c51
 	yesorno
-	iffalse .Done
+	iffalse_jumpopenedtext UnknownText_0x68d31
 	jumpopenedtext UnknownText_0x68c7b
-
-.Done:
-	jumpopenedtext UnknownText_0x68d31
 
 GameboyKidScript_0x68a86:
 	showtextfaceplayer UnknownText_0x68dda
@@ -70,8 +67,7 @@ AcademyBlackboard:
 	if_equal $3, .Sleep
 	if_equal $4, .Burn
 	if_equal $5, .Freeze
-	closetext
-	end
+	endtext
 
 .Poison:
 	writetext AcademyPoisonText
@@ -134,8 +130,7 @@ AcademyNotebook:
 	writetext AcademyNotebookText3
 	waitbutton
 .Done:
-	closetext
-	end
+	endtext
 
 PokemonJournalWillScript:
 	setflag ENGINE_READ_WILL_JOURNAL

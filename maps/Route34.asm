@@ -197,14 +197,12 @@ DayCareManScript_Outside:
 DaycareMon1Script:
 	opentext
 	special Special_DayCareMon1
-	closetext
-	end
+	endtext
 
 DaycareMon2Script:
 	opentext
 	special Special_DayCareMon2
-	closetext
-	end
+	endtext
 
 TrainerCamperTodd1:
 	trainer EVENT_BEAT_CAMPER_TODD, CAMPER, TODD1, CamperTodd1SeenText, CamperTodd1BeatenText, 0, .Script
@@ -483,8 +481,7 @@ OfficerfMaraScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_MARA
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	jumpopenedtext OfficerfMaraAfterText
@@ -501,25 +498,25 @@ TrainerBreederJulie:
 	jumptextfaceplayer BreederJulieAfterText
 
 Route34RichBoyIrvingScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
-	iftrue .GotBigNugget
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_RICH_BOY_IRVING
 	iftrue .Beaten
 	checkevent EVENT_BEAT_CAMPER_TODD
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PICNICKER_GINA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_OFFICERF_MARA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANM_BRANDON
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BREEDER_JULIE_ONCE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -529,25 +526,20 @@ Route34RichBoyIrvingScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_RICH_BOY_IRVING
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem BIG_NUGGET
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
-.GotBigNugget:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
-
-.NoBattle:
-	jumpopenedtext .RefusedText
+.AfterText2:
+	text "There are some"
+	line "things that money"
+	cont "can't buy."
+	done
 
 .IntroText:
 	text "I don't need to"
@@ -607,12 +599,6 @@ Route34RichBoyIrvingScript:
 	cont "battle."
 	done
 
-.AfterText2:
-	text "There are some"
-	line "things that money"
-	cont "can't buy."
-	done
-
 TrainerPokefanmBrandon:
 	trainer EVENT_BEAT_POKEFANM_BRANDON, POKEFANM, BRANDON, PokefanmBrandonSeenText, PokefanmBrandonBeatenText, 0, .Script
 
@@ -663,8 +649,7 @@ TrainerCooltrainerfKate:
 	writetext CooltrainerfKateAfterText
 	waitbutton
 .BagFull:
-	closetext
-	end
+	endtext
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up

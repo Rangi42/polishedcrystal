@@ -123,8 +123,7 @@ OfficerScript_0x19ac85:
 	buttonsound
 	verbosegivetmhm TM_SLUDGE_BOMB
 	setevent EVENT_GOT_TM36_SLUDGE_BOMB
-	closetext
-	end
+	endtext
 
 UnknownScript_0x19ac9c:
 	jumpopenedtext UnknownText_0x19ae2d

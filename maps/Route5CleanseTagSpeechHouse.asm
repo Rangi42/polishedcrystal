@@ -33,8 +33,7 @@ UnknownScript_0x18b649:
 	writetext UnknownText_0x18b6a7
 	waitbutton
 UnknownScript_0x18b64d:
-	closetext
-	end
+	endtext
 
 UnknownText_0x18b655:
 	text "Eeyaaaah!"

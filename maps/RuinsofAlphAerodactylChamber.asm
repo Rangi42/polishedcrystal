@@ -58,8 +58,7 @@ UnknownScript_0x58dd3:
 	reloadmappart
 	earthquake 50
 	dotrigger $1
-	closetext
-	end
+	endtext
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
 	refreshscreen
@@ -102,8 +101,7 @@ MapRuinsofAlphAerodactylChamberSignpost4Script:
 	writetext UnknownText_0x58e4f
 	writebyte $1
 	special Special_DisplayUnownWords
-	closetext
-	end
+	endtext
 
 UnknownText_0x58e4f:
 	text "Patterns appeared"

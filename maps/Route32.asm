@@ -69,34 +69,34 @@ Route32SwimmerGuySprite:
 Route32CooltrainermPetrieScript:
 	faceplayer
 Route32CooltrainerMTrigger:
-	opentext
 	checkflag ENGINE_ZEPHYRBADGE
-	iffalse .DontHaveZephyrBadge
+	iffalse_jumptext Route32CooltrainerMText_VioletGym
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iffalse .AideIsWaiting
+	iffalse_jumptext Route32CooltrainerMText_AideIsWaiting
 	checkevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
-	iftrue .GotMiracleSeed
+	iftrue_jumptext .AfterText2
 	checkevent EVENT_BEAT_COOLTRAINERM_PETRIE
 	iftrue .Beaten
 	checkevent EVENT_BEAT_CAMPER_ROLAND
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_JUSTIN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_RALPH
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_HENRY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PICNICKER_LIZ
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_YOUNGSTER_ALBERT
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_YOUNGSTER_GORDON
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BIRD_KEEPER_PETER
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -106,31 +106,23 @@ Route32CooltrainerMTrigger:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_PETRIE
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem MIRACLE_SEED
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
 .GotMiracleSeed:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.AideIsWaiting
-	jumpopenedtext Route32CooltrainerMText_AideIsWaiting
+.AfterText2:
+	text "Your experiences"
+	line "in Violet City"
 
-.DontHaveZephyrBadge:
-	jumpopenedtext Route32CooltrainerMText_VioletGym
-
-.RouteNotCleared:
-	jumpopenedtext .IntroText
-
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "should be useful"
+	line "for your journey."
+	done
 
 .IntroText:
 	text "You have some good"
@@ -201,14 +193,6 @@ Route32CooltrainerMTrigger:
 	para "It increases the"
 	line "power of Grass-"
 	cont "type moves."
-	done
-
-.AfterText2:
-	text "Your experiences"
-	line "in Violet City"
-
-	para "should be useful"
-	line "for your journey."
 	done
 
 Route32CooltrainerMStopsYou:
@@ -536,12 +520,12 @@ TrainerBird_keeperPeter:
 	jumptextfaceplayer Bird_keeperPeterAfterText
 
 FriedaScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
-	iftrue .Friday
+	iftrue_jumptextfaceplayer FriedaFridayText
 	checkcode VAR_WEEKDAY
 	if_not_equal FRIDAY, .NotFriday
+	faceplayer
+	opentext
 	checkevent EVENT_MET_FRIEDA_OF_FRIDAY
 	iftrue .MetFrieda
 	writetext MeetFriedaText
@@ -551,19 +535,12 @@ FriedaScript:
 	writetext FriedaGivesGiftText
 	buttonsound
 	verbosegiveitem POISON_BARB
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	jumpopenedtext FriedaGaveGiftText
 
-.Friday:
-	writetext FriedaFridayText
-	waitbutton
-.Done:
-	closetext
-	end
-
 .NotFriday:
-	jumpopenedtext FriedaNotFridayText
+	jumptextfaceplayer FriedaNotFridayText
 
 Movement_Route32CooltrainerMPushesYouBackToViolet:
 	step_up

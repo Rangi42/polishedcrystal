@@ -102,8 +102,7 @@ UnknownScript_0x75f37:
 	waitbutton
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	setevent EVENT_FAST_SHIP_FOUND_GIRL
-	closetext
-	end
+	endtext
 
 UnknownScript_0x75f58:
 	writetext UnknownText_0x7619b
@@ -112,8 +111,7 @@ UnknownScript_0x75f58:
 	iffalse UnknownScript_0x75f65
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 UnknownScript_0x75f65:
-	closetext
-	end
+	endtext
 
 UnknownScript_0x75f67:
 	jumpopenedtext UnknownText_0x761be

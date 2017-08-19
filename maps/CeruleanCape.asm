@@ -332,16 +332,12 @@ TrainerLadyJessica:
 	iftrue .SpokeAgain
 	writetext .AfterText1
 	setevent EVENT_SPOKE_TO_LADY_JESSICA
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .SpokeAgain:
 	writetext .AfterText2
 	clearevent EVENT_SPOKE_TO_LADY_JESSICA
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .SeenText:
 	text "Ah! You there!"

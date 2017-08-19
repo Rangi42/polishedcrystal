@@ -326,8 +326,7 @@ ArthurScript:
 	writetext ArthurThursdayText
 	waitbutton
 .BagFull:
-	closetext
-	end
+	endtext
 
 ArthurNotThursdayScript:
 	jumpopenedtext ArthurNotThursdayText

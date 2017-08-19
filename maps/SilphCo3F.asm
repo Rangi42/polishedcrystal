@@ -30,23 +30,26 @@ SilphCo3F_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FGentlemanText, -1
 
 SilphCo3FSilphEmployeeScript:
+	checkevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
-	iftrue .GotItem
-	writetext SilphCo3FSilphEmployeeText1
+	writetext .Text1
 	buttonsound
 	verbosegiveitem CHERISH_BALL
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
-.GotItem:
-	writetext SilphCo3FSilphEmployeeText2
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext .Text2
 
-SilphCo3FSilphEmployeeText1:
+.Text2:
+	text "That's an un-"
+	line "released proto-"
+	cont "type # Ball."
+
+	para "Don't waste it!"
+	done
+
+.Text1:
 	text "Silph and Devon"
 	line "partnered up"
 
@@ -61,14 +64,6 @@ SilphCo3FSilphEmployeeText1:
 	para "But they're not"
 	line "all on the market"
 	cont "yet. Like this!"
-	done
-
-SilphCo3FSilphEmployeeText2:
-	text "That's an un-"
-	line "released proto-"
-	cont "type # Ball."
-
-	para "Don't waste it!"
 	done
 
 SilphCo3FScientist1Text:

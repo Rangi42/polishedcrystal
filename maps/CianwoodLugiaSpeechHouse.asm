@@ -23,21 +23,16 @@ CianwoodLugiaSpeechHouse_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CianwoodHouseBlackBeltScript, -1
 
 CianwoodHouseBlackBeltScript:
+	checkevent EVENT_GOT_ASSAULT_VEST_FROM_CIANWOOD
+	iftrue_jumptextfaceplayer CianwoodHouseBlackBeltText2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_ASSAULT_VEST_FROM_CIANWOOD
-	iftrue .GotItem
 	writetext CianwoodHouseBlackBeltText1
 	buttonsound
 	verbosegiveitem ASSAULT_VEST
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_ASSAULT_VEST_FROM_CIANWOOD
-.GotItem:
-	writetext CianwoodHouseBlackBeltText2
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext CianwoodHouseBlackBeltText2
 
 CianwoodHouseBlackBeltText1:
 	text "I went to the Gym"

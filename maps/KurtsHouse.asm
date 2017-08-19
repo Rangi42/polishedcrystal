@@ -140,8 +140,7 @@ KurtScript_0x18e178:
 	iftrue .ThatTurnedOutGreat
 	checkevent EVENT_DRAGON_SHRINE_QUESTION_2
 	iftrue .IMakeBallsFromApricorns
-	closetext
-	end
+	endtext
 
 .IMakeBallsFromApricorns:
 	jumpopenedtext UnknownText_0x18e6c9
@@ -201,8 +200,7 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e82a
 	waitbutton
 .NoRoomForBall:
-	closetext
-	end
+	endtext
 
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS

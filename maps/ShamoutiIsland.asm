@@ -73,27 +73,16 @@ ShamoutiIslandVileplumeScript:
 	done
 
 ShamoutiIslandYoungsterScript:
+	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
-	iftrue .GotItem
 	writetext .Text1
 	buttonsound
 	verbosegiveitem ODD_SOUVENIR
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
-.GotItem:
-	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
-
-.Text1:
-	text "Hello again! Let"
-	line "me give you that"
-	cont "souvenir."
-	done
+	thisopenedtext
 
 .Text2:
 	text "A shiny Pikachu"
@@ -103,6 +92,12 @@ ShamoutiIslandYoungsterScript:
 	para "I've never found"
 	line "one, but I'm happy"
 	cont "with my Marill."
+	done
+
+.Text1:
+	text "Hello again! Let"
+	line "me give you that"
+	cont "souvenir."
 	done
 
 ShamoutiIslandPikabluText:

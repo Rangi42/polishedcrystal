@@ -53,8 +53,7 @@ LyrasHouseRadio:
 	opentext
 	writetext LyrasRadioText4
 	pause 45
-	closetext
-	end
+	endtext
 
 LyrasHouseLyraText:
 	text "Lyra: Hi, <PLAYER>!"

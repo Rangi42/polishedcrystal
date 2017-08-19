@@ -33,8 +33,7 @@ UnknownScript_0x18c735:
 	writetext UnknownText_0x18c80c
 	waitbutton
 UnknownScript_0x18c739:
-	closetext
-	end
+	endtext
 
 UnknownText_0x18c73f:
 	text "Whoa! You startled"

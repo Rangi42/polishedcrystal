@@ -93,8 +93,7 @@ SunnySundayScript:
 	writetext SunnySundayText
 	waitbutton
 SunnyDoneScript:
-	closetext
-	end
+	endtext
 
 SunnyNotSundayScript:
 	jumpopenedtext SunnyNotSundayText
@@ -114,29 +113,29 @@ BeautyCassandraScript:
 	jumptextfaceplayer BeautyCassandraAfterText
 
 Route37CooltrainerfChiaraScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_37_LEADER
-	iftrue .GotBindingBand
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_COOLTRAINERF_CHIARA
 	iftrue .Beaten
 	checkevent EVENT_BEAT_SCHOOLBOY_ALAN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_MARK
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SCHOOLGIRL_MOLLY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_TWINS_ANN_AND_ANNE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_GREG
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BEAUTY_CALLIE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BEAUTY_CASSANDRA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -146,25 +145,23 @@ Route37CooltrainerfChiaraScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERF_CHIARA
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem BINDING_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_37_LEADER
-.GotBindingBand:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "With skill like"
+	line "yours, I'm not the"
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "only elite trainer"
+	line "who'll want to test"
+	cont "you."
+	done
 
 .IntroText:
 	text "I saw how you woke"
@@ -228,15 +225,6 @@ Route37CooltrainerfChiaraScript:
 
 	para "Here, it's for"
 	line "you!"
-	done
-
-.AfterText2:
-	text "With skill like"
-	line "yours, I'm not the"
-
-	para "only elite trainer"
-	line "who'll want to test"
-	cont "you."
 	done
 
 TwinsToriandtil1SeenText:

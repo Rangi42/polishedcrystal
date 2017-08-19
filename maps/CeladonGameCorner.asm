@@ -145,29 +145,25 @@ MapCeladonGameCornerSignpost35Script:
 	refreshscreen
 	writebyte $0
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 MapCeladonGameCornerSignpost16Script:
 	refreshscreen
 	writebyte $1
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 MapCeladonGameCornerSignpost11Script:
 	refreshscreen
 	special Special_CardFlip
-	closetext
-	end
+	endtext
 
 MapCeladonGameCornerSignpost9Script:
 	opentext
 	writetext UnknownText_0x72567
 	waitbutton
 	special Special_CardFlip
-	closetext
-	end
+	endtext
 
 UnknownText_0x721d0:
 	text "Welcome!"

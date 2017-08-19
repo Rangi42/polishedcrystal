@@ -96,7 +96,7 @@ CinnabarVolcano1FBuckScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -111,7 +111,7 @@ CinnabarVolcano1FBuckScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_BELT
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -122,13 +122,6 @@ CinnabarVolcano1FBuckScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_BUCK
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Howdy! I'm Buck."

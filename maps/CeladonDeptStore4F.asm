@@ -35,8 +35,7 @@ PosterClerkScript:
 	if_equal $1, .MarillPoster
 	if_equal $2, .ClefairyPoster
 	if_equal $3, .PikachuPoster
-	closetext
-	end
+	endtext
 
 .MarillPoster:
 	checkmoney $0, 3200

@@ -186,21 +186,16 @@ CeladonUniversityCafeteriaLadyText:
 	done
 
 CeladonUniversityCafeteriaYoungster2Script:
+	checkevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
-	iftrue .GotItem
 	writetext .Text1
 	buttonsound
 	verbosegiveitem LEMONADE
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
-.GotItem:
-	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .Text1:
 	text "The vending ma-"

@@ -54,8 +54,7 @@ UnknownScript_0x5ebac:
 	writetext UnknownText_0x5ed2c
 	waitbutton
 UnknownScript_0x5ebb0:
-	closetext
-	end
+	endtext
 
 TrainerGruntM10:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_10, GRUNTM, 10, GruntM10SeenText, GruntM10BeatenText, 0, GruntM10Script

@@ -312,21 +312,18 @@ GoldenrodGameCornerSlotsMachineScript:
 	refreshscreen
 	writebyte FALSE
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 GoldenrodGameCornerLuckySlotsMachineScript:
 	refreshscreen
 	writebyte TRUE
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 GoldenrodGameCornerCardFlipMachineScript:
 	refreshscreen
 	special Special_CardFlip
-	closetext
-	end
+	endtext
 
 GoldenrodGameCornerPrizeVendorIntroText:
 	text "Welcome!"

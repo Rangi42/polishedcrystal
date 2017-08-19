@@ -31,8 +31,7 @@ UnknownScript_0x196d79:
 	writetext UnknownText_0x196dec
 	waitbutton
 UnknownScript_0x196d7d:
-	closetext
-	end
+	endtext
 
 UnknownText_0x196d82:
 	text "You know, #mon"

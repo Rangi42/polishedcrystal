@@ -45,7 +45,7 @@ ScaryCave1FMiraScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -60,7 +60,7 @@ ScaryCave1FMiraScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_LENS
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -71,13 +71,6 @@ ScaryCave1FMiraScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_MIRA
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "I'm Mira…"

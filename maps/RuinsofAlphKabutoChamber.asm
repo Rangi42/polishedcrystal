@@ -60,8 +60,7 @@ UnknownScript_0x58751:
 	reloadmappart
 	earthquake 50
 	dotrigger $1
-	closetext
-	end
+	endtext
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
 	refreshscreen
@@ -126,8 +125,7 @@ MapRuinsofAlphKabutoChamberSignpost4Script:
 	writetext UnknownText_0x58aa7
 	writebyte $0
 	special Special_DisplayUnownWords
-	closetext
-	end
+	endtext
 
 UnknownText_0x58800:
 	text "Welcome to this"

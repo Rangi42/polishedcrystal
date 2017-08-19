@@ -101,8 +101,7 @@ PokeDollVendingMachine:
 	if_equal $1, .JigglypuffDoll
 	if_equal $2, .GeodudeDoll
 	if_equal $3, .OddishDoll
-	closetext
-	end
+	endtext
 
 .JigglypuffDoll:
 	checkmoney $0, 2400

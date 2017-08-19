@@ -130,8 +130,7 @@ Route32PokeCenter1FPokefanMScript:
 	done
 
 .NoRoom
-	closetext
-	end
+	endtext
 
 .Text1:
 	text "Bonjour. How are"

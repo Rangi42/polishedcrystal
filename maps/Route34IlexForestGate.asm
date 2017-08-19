@@ -72,8 +72,7 @@ UnknownScript_0x62d7e:
 UnknownScript_0x62d84:
 	writetext UnknownText_0x62e41
 	buttonsound
-	closetext
-	end
+	endtext
 
 MovementData_0x62d97:
 	step_up

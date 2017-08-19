@@ -36,8 +36,7 @@ CeladonHomeDecorStore1FClerkScript:
 	if_equal $1, .GrimerDoll
 	if_equal $2, .MachopDoll
 	if_equal $3, .StaryuDoll
-	closetext
-	end
+	endtext
 
 .GrimerDoll:
 	checkmoney $0, 4800

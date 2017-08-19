@@ -94,8 +94,7 @@ GoldenrodHarborPokefanmScript:
 	if_equal $1, .MagikarpDoll
 	if_equal $2, .TentacoolDoll
 	if_equal $3, .ShellderDoll
-	closetext
-	end
+	endtext
 
 .MagikarpDoll:
 	checkmoney $0, 1200
@@ -176,8 +175,7 @@ GoldenrodHarborYoungsterScript:
 	if_equal $1, .MagnaPlant
 	if_equal $2, .TropicPlant
 	if_equal $3, .JumboPlant
-	closetext
-	end
+	endtext
 
 .MagnaPlant:
 	checkmoney $0, 5400

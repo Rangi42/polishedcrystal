@@ -200,8 +200,7 @@ MysticWaterGuy:
 	writetext MysticWaterGuyTextAfter
 	waitbutton
 .Exit:
-	closetext
-	end
+	endtext
 
 GuideGentPlayerMovement:
 	step_left

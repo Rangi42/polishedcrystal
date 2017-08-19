@@ -83,8 +83,7 @@ CharcoalKilnApprentice:
 	verbosegiveitem CHARCOAL
 	iffalse_endtext
 	setevent EVENT_GOT_CHARCOAL_IN_CHARCOAL_KILN
-	closetext
-	end
+	endtext
 
 .Text2:
 	text "I'm sorry--I for-"

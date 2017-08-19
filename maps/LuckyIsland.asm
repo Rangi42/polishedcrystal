@@ -227,16 +227,14 @@ LuckyIslandLuckyEgg:
 	playsound SFX_ITEM
 	pause 60
 	itemnotify
-	closetext
-	end
+	endtext
 
 .NoRoom:
 	opentext
 	writetext .Text
 	waitbutton
 	pocketisfull
-	closetext
-	end
+	endtext
 
 .Text:
 	text "<PLAYER> found"

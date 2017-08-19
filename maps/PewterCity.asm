@@ -39,18 +39,16 @@ PewterCityFlyPoint:
 	return
 
 GrampsScript_0x18c00f:
+	checkevent EVENT_GOT_OLD_AMBER
+	iftrue_jumptextfaceplayer UnknownText_0x18c1aa
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_OLD_AMBER
-	iftrue UnknownScript_0x18c023
 	writetext UnknownText_0x18c0c6
 	buttonsound
 	verbosegiveitem OLD_AMBER
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_OLD_AMBER
-.Done
-	closetext
-	end
+	endtext
 
 PewterCityYoungsterScript:
 	faceplayer
@@ -58,15 +56,8 @@ PewterCityYoungsterScript:
 	writetext PewterCityYoungsterText1
 	waitbutton
 	checkflag ENGINE_BOULDERBADGE
-	iffalse .Done
-	writetext PewterCityYoungsterText2
-	waitbutton
-.Done
-	closetext
-	end
-
-UnknownScript_0x18c023:
-	jumpopenedtext UnknownText_0x18c1aa
+	iffalse_endtext
+	jumpopenedtext PewterCityYoungsterText2
 
 UnknownText_0x18c042:
 	text "#mon can only"

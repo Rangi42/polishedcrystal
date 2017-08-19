@@ -340,8 +340,7 @@ IlexForestLyraContinueScript:
 	end
 
 .NoRoom:
-	closetext
-	end
+	endtext
 
 IlexForestCharcoalMasterScript:
 	faceplayer
@@ -421,8 +420,7 @@ MapIlexForestSignpost4Script:
 	writetext Text_ShrineCelebiEvent
 	yesorno
 	iftrue .CelebiEvent
-	closetext
-	end
+	endtext
 
 .CelebiEvent:
 	takeitem GS_BALL

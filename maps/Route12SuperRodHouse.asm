@@ -37,8 +37,7 @@ UnknownScript_0x7f4a6:
 	writetext UnknownText_0x7f5ec
 	waitbutton
 UnknownScript_0x7f4aa:
-	closetext
-	end
+	endtext
 
 UnknownText_0x7f4af:
 	text "I'm the Fishing"

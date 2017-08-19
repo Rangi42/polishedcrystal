@@ -120,37 +120,37 @@ PokefanfRuthScript:
 	jumptextfaceplayer UnknownText_0x1a5db2
 
 Route39CowgirlAnnieScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
-	iftrue .GotPPMax
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_COWGIRL_ANNIE
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BIRD_KEEPER_TOBY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SAILOR_HARRY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_LASS_DANA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SCHOOLBOY_CHAD
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BEAUTY_VALENCIA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BEAUTY_OLIVIA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANM_DEREK
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANF_RUTH
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SAILOR_EUGENE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_NORMAN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANF_JAIME
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -160,25 +160,20 @@ Route39CowgirlAnnieScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COWGIRL_ANNIE
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem PP_MAX
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
-.GotPPMax:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
-
-.NoBattle:
-	jumpopenedtext .RefusedText
+.AfterText2:
+	text "We make cheese"
+	line "and yogurt out"
+	cont "of Miltank milk."
+	done
 
 .IntroText:
 	text "Hey! Don't scare"
@@ -241,12 +236,6 @@ Route39CowgirlAnnieScript:
 	line "ya!"
 	done
 
-.AfterText2:
-	text "We make cheese"
-	line "and yogurt out"
-	cont "of Miltank milk."
-	done
-
 TrainerSailorEugene:
 	trainer EVENT_BEAT_SAILOR_EUGENE, SAILOR, EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, SailorEugeneScript
 
@@ -276,8 +265,7 @@ PokefanFScript_0x1a5bbe:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEFANF_JAIME
-	closetext
-	end
+	endtext
 
 UnknownScript_0x1a5bdf:
 	jumpopenedtext UnknownText_0x1a5f31

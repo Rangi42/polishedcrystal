@@ -196,7 +196,7 @@ MapFightingDojoSignpost2Script:
 	opentext
 	writetext FightingDojoScheduleQuestionText
 	yesorno
-	iffalse .done
+	iffalse_endtext
 .sunday
 	writetext FightingDojoScheduleSundayText
 	waitbutton
@@ -242,15 +242,9 @@ MapFightingDojoSignpost2Script:
 .saturday
 	checkevent EVENT_BEAT_AGATHA
 	iftrue .saturday_agatha
-	writetext FightingDojoScheduleSaturdayText
-	waitbutton
-	jump .done
+	jumpopenedtext FightingDojoScheduleSaturdayText
 .saturday_agatha
-	writetext FightingDojoScheduleSaturdayAgathaText
-	waitbutton
-.done
-	closetext
-	end
+	jumpopenedtext FightingDojoScheduleSaturdayAgathaText
 
 RematchRed0Script:
 	checkcode VAR_WEEKDAY

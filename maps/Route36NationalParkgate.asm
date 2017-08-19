@@ -256,8 +256,7 @@ Route36Officer_ContestHasConcluded:
 	verbosegiveitem SUN_STONE
 	iffalse .BagFull
 	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	closetext
-	end
+	endtext
 
 .Everstone:
 	writetext UnknownText_0x6b97f
@@ -265,8 +264,7 @@ Route36Officer_ContestHasConcluded:
 	verbosegiveitem EVERSTONE
 	iffalse .BagFull
 	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	closetext
-	end
+	endtext
 
 .SitrusBerry:
 	writetext UnknownText_0x6b97f
@@ -274,8 +272,7 @@ Route36Officer_ContestHasConcluded:
 	verbosegiveitem SITRUS_BERRY
 	iffalse .BagFull
 	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	closetext
-	end
+	endtext
 
 .OranBerry:
 	writetext UnknownText_0x6b97f
@@ -283,8 +280,7 @@ Route36Officer_ContestHasConcluded:
 	verbosegiveitem ORAN_BERRY
 	iffalse .BagFull
 	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	closetext
-	end
+	endtext
 
 .BagFull:
 	jumpopenedtext UnknownText_0x6b910

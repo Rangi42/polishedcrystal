@@ -40,8 +40,7 @@ OfficerfJamieScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JAMIE
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	jumpopenedtext OfficerfJamieAfterText

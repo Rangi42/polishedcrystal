@@ -96,8 +96,7 @@ SlowpokeScript_0x5a681:
 	writetext UnknownText_0x5abcb
 	yesorno
 	iftrue_jumpopenedtext UnknownText_0x5ac09
-	closetext
-	end
+	endtext
 
 KurtSlowpokeWellVictoryMovementData:
 	step_left

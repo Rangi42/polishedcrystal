@@ -42,8 +42,7 @@ SilphCo2FScientist1GaveUpGradeScript:
 	writetext SilphCo2FScientist1Text2
 	waitbutton
 SilphCo2FScientist1NoRoomForUpGradeScript:
-	closetext
-	end
+	endtext
 
 SilphCo2FScientist1Text1:
 	text "You traveled here"

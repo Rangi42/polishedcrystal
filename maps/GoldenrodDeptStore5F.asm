@@ -59,8 +59,7 @@ ReceptionistScript_0x560ce:
 	buttonsound
 	verbosegivetmhm TM_RETURN
 	setflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
-	closetext
-	end
+	endtext
 
 .SomewhatHappy:
 	jumpopenedtext UnknownText_0x561a6

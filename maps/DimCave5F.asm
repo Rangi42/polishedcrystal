@@ -63,7 +63,7 @@ DimCave5FRileyScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -78,7 +78,7 @@ DimCave5FRileyScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_BRACER
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -89,13 +89,6 @@ DimCave5FRileyScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_RILEY
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…You are?"
