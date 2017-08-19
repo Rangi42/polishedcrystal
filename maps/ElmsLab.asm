@@ -182,15 +182,15 @@ ElmCheckTogepiEgg:
 	iftrue ElmEggHatchedScript
 ElmCheckGotEggAgain:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE ; why are we checking it again?
-	iftrue ElmWaitingEggHatchScript
+	iftrue_jumpopenedtext ElmWaitingEggHatchText
 	checkflag ENGINE_ZEPHYRBADGE
-	iftrue ElmAideHasEggScript
+	iftrue_jumpopenedtext ElmAideHasEggText
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue ElmStudyingEggScript
+	iftrue_jumpopenedtext ElmStudyingEggText
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	iftrue ElmAfterTheftScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue ElmDescribesMrPokemonScript
+	iftrue_jumpopenedtext ElmDescribesMrPokemonText
 	jumpopenedtext ElmText_LetYourMonBattleIt
 
 LabTryToLeaveScript:
@@ -201,7 +201,7 @@ LabTryToLeaveScript:
 
 CyndaquilPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue_jumptext ElmPokeBallText
 	spriteface ELMSLAB_ELM, DOWN
 	refreshscreen
 	pokepic CYNDAQUIL
@@ -211,7 +211,7 @@ CyndaquilPokeBallScript:
 	opentext
 	writetext TakeCyndaquilText
 	yesorno
-	iffalse DidntChooseStarterScript
+	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL1
 	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
 	writetext ChoseStarterText
@@ -246,7 +246,7 @@ CyndaquilPokeBallScript:
 
 TotodilePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue_jumptext ElmPokeBallText
 	spriteface ELMSLAB_ELM, DOWN
 	refreshscreen
 	pokepic TOTODILE
@@ -256,7 +256,7 @@ TotodilePokeBallScript:
 	opentext
 	writetext TakeTotodileText
 	yesorno
-	iffalse DidntChooseStarterScript
+	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL2
 	setevent EVENT_GOT_TOTODILE_FROM_ELM
 	writetext ChoseStarterText
@@ -289,7 +289,7 @@ TotodilePokeBallScript:
 
 ChikoritaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue_jumptext ElmPokeBallText
 	spriteface ELMSLAB_ELM, DOWN
 	refreshscreen
 	pokepic CHIKORITA
@@ -299,7 +299,7 @@ ChikoritaPokeBallScript:
 	opentext
 	writetext TakeChikoritaText
 	yesorno
-	iffalse DidntChooseStarterScript
+	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL3
 	setevent EVENT_GOT_CHIKORITA_FROM_ELM
 	writetext ChoseStarterText
@@ -330,9 +330,6 @@ ChikoritaPokeBallScript:
 	applymovement PLAYER, AfterChikoritaMovement
 	jump ElmDirectionsScript
 
-DidntChooseStarterScript:
-	jumpopenedtext DidntChooseStarterText
-
 ElmDirectionsScript:
 	spriteface PLAYER, UP
 	showtext ElmDirectionsText1
@@ -351,12 +348,6 @@ ElmDirectionsScript:
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	dotrigger $6
 	end
-
-ElmDescribesMrPokemonScript:
-	jumpopenedtext ElmDescribesMrPokemonText
-
-LookAtElmPokeBallScript:
-	jumptext ElmPokeBallText
 
 ElmsLabHealingMachine:
 	opentext
@@ -408,15 +399,6 @@ ElmAfterTheftScript:
 	dotrigger $2
 	jumpopenedtext ElmAfterTheftText6
 
-ElmStudyingEggScript:
-	jumpopenedtext ElmStudyingEggText
-
-ElmAideHasEggScript:
-	jumpopenedtext ElmAideHasEggText
-
-ElmWaitingEggHatchScript:
-	jumpopenedtext ElmWaitingEggHatchText
-
 ShowElmTogepiScript:
 	writetext ShowElmTogepiText1
 	waitbutton
@@ -447,7 +429,7 @@ ElmGiveMasterBallScript:
 ElmGiveTicketScript:
 	writetext ElmChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext ElmRefusedBattleText
 	writetext ElmSeenText
 	waitbutton
 	closetext
@@ -502,9 +484,6 @@ ElmGiveTicketScript:
 	setevent EVENT_LYRA_IN_HER_ROOM
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	end
-
-.Refused:
-	jumpopenedtext ElmRefusedBattleText
 
 ElmJumpBackScript1:
 	closetext
@@ -626,24 +605,15 @@ AideScript_GivePotions:
 	jumpopenedtext AideText_AlwaysBusy
 
 ElmsAideScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_RIVALS_EGG
-	iftrue AideScript_AlwaysBusy
+	iftrue_jumptextfaceplayer AideText_AlwaysBusy
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iftrue AideScript_AfterTheft
+	iftrue_jumptextfaceplayer AideText_AfterTheft
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue AideScript_AlwaysBusy
+	iftrue_jumptextfaceplayer AideText_AlwaysBusy
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
-	iftrue AideScript_TheftTestimony
-AideScript_AlwaysBusy:
-	jumpopenedtext AideText_AlwaysBusy
-
-AideScript_TheftTestimony:
-	jumpopenedtext AideText_TheftTestimony
-
-AideScript_AfterTheft:
-	jumpopenedtext AideText_AfterTheft
+	iftrue_jumptextfaceplayer AideText_TheftTestimony
+	jumptextfaceplayer AideText_AlwaysBusy
 
 MeetCopScript2:
 	applyonemovement PLAYER, step_left
@@ -689,18 +659,11 @@ ElmsLabLyraScript:
 	jumptextfaceplayer ElmsLabLyraGoodChoiceText
 
 ElmsLabWindow:
-	opentext
 	checkflag ENGINE_FLYPOINT_VIOLET
-	iftrue .Normal
+	iftrue_jumptext ElmsLabWindowText1
 	checkevent EVENT_ELM_CALLED_ABOUT_STOLEN_POKEMON
-	iftrue .BreakIn
-	jump .Normal
-
-.BreakIn:
-	jumpopenedtext ElmsLabWindowText2
-
-.Normal:
-	jumpopenedtext ElmsLabWindowText1
+	iftrue_jumptext ElmsLabWindowText2
+	jumptext ElmsLabWindowText1
 
 ElmsLabPC:
 	jumptext ElmsLabPCText

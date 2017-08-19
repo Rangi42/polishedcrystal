@@ -62,20 +62,17 @@ CeladonDeptStore3FTutorCounterScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_CeladonDeptStore3FTutorTaught
 
-VideoGameClerkNoSaleScript:
-	jumpopenedtext VideoGameClerkNoSaleText
-
 VideoGameClerkNoMoneyScript:
 	jumpopenedtext VideoGameClerkNoMoneyText
 
 CeladonDeptStore3FSnesScript:
-	opentext
 	checkevent EVENT_DECO_SNES
-	iftrue .OwnSnes
+	iftrue_jumptext CeladonDeptStore3FSnesText
+	opentext
 	writetext VideoGameClerkSellSnesText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse VideoGameClerkNoSaleScript
+	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 20000
 	if_equal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 20000
@@ -85,17 +82,14 @@ CeladonDeptStore3FSnesScript:
 	waitbutton
 	jumpopenedtext SnesSentText
 
-.OwnSnes:
-	jumpopenedtext CeladonDeptStore3FSnesText
-
 CeladonDeptStore3FN64Script:
-	opentext
 	checkevent EVENT_DECO_N64
-	iftrue .OwnN64
+	iftrue_jumptext CeladonDeptStore3FN64Text
+	opentext
 	writetext VideoGameClerkSellN64Text
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse VideoGameClerkNoSaleScript
+	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 25000
 	if_equal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 25000
@@ -105,17 +99,14 @@ CeladonDeptStore3FN64Script:
 	waitbutton
 	jumpopenedtext N64SentText
 
-.OwnN64:
-	jumpopenedtext CeladonDeptStore3FN64Text
-
 CeladonDeptStore3FGameCubeScript:
-	opentext
 	checkevent EVENT_DECO_GAMECUBE
-	iftrue .OwnGameCube
+	iftrue_jumptext CeladonDeptStore3FGameCubeText
+	opentext
 	writetext VideoGameClerkSellGameCubeText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse VideoGameClerkNoSaleScript
+	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 30000
 	if_equal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 30000
@@ -125,17 +116,14 @@ CeladonDeptStore3FGameCubeScript:
 	waitbutton
 	jumpopenedtext GameCubeSentText
 
-.OwnGameCube:
-	jumpopenedtext CeladonDeptStore3FGameCubeText
-
 CeladonDeptStore3FWiiScript:
-	opentext
 	checkevent EVENT_DECO_WII
-	iftrue .OwnWii
+	iftrue_jumptext CeladonDeptStore3FWiiText
+	opentext
 	writetext VideoGameClerkSellWiiText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse VideoGameClerkNoSaleScript
+	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 40000
 	if_equal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 40000
@@ -144,9 +132,6 @@ CeladonDeptStore3FWiiScript:
 	playsound SFX_TRANSACTION
 	waitbutton
 	jumpopenedtext WiiSentText
-
-.OwnWii:
-	jumpopenedtext CeladonDeptStore3FWiiText
 
 CeladonDeptStore3FClerk2Text:
 	text "There's a neat move"

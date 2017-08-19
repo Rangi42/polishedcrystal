@@ -164,12 +164,12 @@ TrainerGuitaristfWanda:
 	done
 
 OfficerfJennyScript:
-	faceplayer
-	opentext
 	checknite
-	iffalse .NoFight
+	iffalse_jumptextfaceplayer .DaytimeText
 	checkevent EVENT_BEAT_OFFICERF_JENNY
 	iftrue .AfterScript
+	faceplayer
+	opentext
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext .SeenText
@@ -180,19 +180,12 @@ OfficerfJennyScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JENNY
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Kris
-	jumpopenedtext .AfterTextMale
-
-.Kris:
-	jumpopenedtext .AfterTextFemale
-
-.NoFight:
-	jumpopenedtext .DaytimeText
+	iftrue_jumptextfaceplayer .AfterTextFemale
+	jumptextfaceplayer .AfterTextMale
 
 .DaytimeText:
 	text "Us Officers are"

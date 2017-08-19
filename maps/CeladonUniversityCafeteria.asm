@@ -221,33 +221,33 @@ CeladonUniversityCafeteriaBakerScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_BOUGHT_LEFTOVERS
-	iftrue .BoughtLeftovers
+	iftrue_jumpopenedtext .Text3
 	writetext .Text1
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoBuy
+	iffalse_jumpopenedtext .Text4
 	checkmoney $0, 4000
 	if_equal $2, .NotEnoughMoney
 	giveitem LEFTOVERS
-	iffalse .NoRoom
+	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_BOUGHT_LEFTOVERS
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	jumpopenedtext .Text2
+	thisopenedtext
 
-.BoughtLeftovers:
-	jumpopenedtext .Text3
-
-.NoBuy:
-	jumpopenedtext .Text4
+.Text2:
+	text "Here you go, hon!"
+	line "Enjoy it!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext .Text5
+	thisopenedtext
 
-.NoRoom:
-	jumpopenedtext .Text6
+	text "You don't have"
+	line "enough money…"
+	done
 
 .Text1:
 	text "What's that, hon?"
@@ -262,11 +262,6 @@ CeladonUniversityCafeteriaBakerScript:
 	line "Want some?"
 	done
 
-.Text2:
-	text "Here you go, hon!"
-	line "Enjoy it!"
-	done
-
 .Text3:
 	text "There aren't any"
 	line "more Leftovers"
@@ -275,11 +270,6 @@ CeladonUniversityCafeteriaBakerScript:
 
 .Text4:
 	text "Have a nice day!"
-	done
-
-.Text5:
-	text "You don't have"
-	line "enough money…"
 	done
 
 .Text6:

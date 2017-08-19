@@ -107,11 +107,11 @@ CeladonHomeDecorStore3FClerk2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_DECO_CARPET_2
-	iftrue .Sold
+	iftrue_jumpopenedtext CeladonHomeDecorStore3FClerk2Text
 	special PlaceMoneyTopRight
 	writetext CeladonHomeDecorStore3FClerk2SaleText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 	checkmoney $0, 35000
 	if_equal $2, .NotEnoughMoney
 	takemoney $0, 35000
@@ -122,12 +122,6 @@ CeladonHomeDecorStore3FClerk2Script:
 	writetext BlueCarpetSentText
 	waitbutton
 	jumpopenedtext CeladonHomeDecorStore3FClerk2YesText
-
-.Sold:
-	jumpopenedtext CeladonHomeDecorStore3FClerk2Text
-
-.Refused:
-	jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 
 .NotEnoughMoney:
 	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText

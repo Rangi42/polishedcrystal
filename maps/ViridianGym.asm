@@ -51,15 +51,12 @@ BlueScript_0x9aa26:
 	setevent EVENT_FINAL_BATTLE_WITH_LYRA
 .FightDone:
 	checkevent EVENT_GOT_TM71_STONE_EDGE
-	iftrue BlueEpilogueScript
+	iftrue_jumpopenedtext LeaderBlueEpilogueText
 	writetext LeaderBlueAfterText
 	buttonsound
 	verbosegivetmhm TM_STONE_EDGE
 	setevent EVENT_GOT_TM71_STONE_EDGE
 	jumpopenedtext BlueOutroText
-
-BlueEpilogueScript:
-	jumpopenedtext LeaderBlueEpilogueText
 
 ViridianGymGuyScript:
 	checkevent EVENT_BEAT_BLUE

@@ -80,7 +80,7 @@ TrainerElderKoji:
 
 ElderKojiScript:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue UnknownScript_0x9861b
+	iftrue_jumptext UnknownText_0x98db5
 	pause 10
 	showemote EMOTE_SHOCK, WISETRIOSROOM_ELDER6, 20
 	opentext
@@ -94,9 +94,6 @@ ElderKojiScript:
 	setevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
 	dotrigger $1
 	end
-
-UnknownScript_0x9861b:
-	jumptext UnknownText_0x98db5
 
 MovementData_0x98622:
 	step_left

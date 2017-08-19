@@ -44,11 +44,8 @@ GrampsScript_0x1a9a4c:
 	opentext
 	writetext UnknownText_0x1a9aa5
 	yesorno
-	iffalse UnknownScript_0x1a9a5b
+	iffalse_jumpopenedtext UnknownText_0x1a9bb7
 	jumpopenedtext UnknownText_0x1a9b6f
-
-UnknownScript_0x1a9a5b:
-	jumpopenedtext UnknownText_0x1a9bb7
 
 GrampsScript_0x1a9a61:
 	checkevent EVENT_BLUE_IN_CINNABAR

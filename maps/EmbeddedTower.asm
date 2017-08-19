@@ -26,7 +26,7 @@ EmbeddedTowerSteven1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_STEVEN
-	iftrue EmbeddedTowerBeatSteven1Script
+	iftrue .Beaten
 	checkevent EVENT_LISTENED_TO_STEVEN_INTRO
 	iftrue .HeardIntro
 	writetext EmbeddedTowerSteven1IntroText
@@ -36,10 +36,10 @@ EmbeddedTowerSteven1Script:
 	writetext EmbeddedTowerSteven1TowerText
 	waitbutton
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iffalse .NotYet
+	iffalse_jumpopenedtext EmbeddedTowerSteven1NotNowText
 	writetext EmbeddedTowerSteven1ChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext EmbeddedTowerSteven1NoText
 	writetext EmbeddedTowerSteven1YesText
 	waitbutton
 	closetext
@@ -50,37 +50,25 @@ EmbeddedTowerSteven1Script:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_STEVEN
 	opentext
-	jump EmbeddedTowerBeatSteven1Script
-
-.NotYet:
-	jumpopenedtext EmbeddedTowerSteven1NotNowText
-
-.Refused:
-	jumpopenedtext EmbeddedTowerSteven1NoText
-
-EmbeddedTowerBeatSteven1Script:
+.Beaten:
 	checkevent EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
-	iftrue .GotMuscleBand
+	iftrue_jumpopenedtext EmbeddedTowerSteven1AfterText
 	writetext EmbeddedTowerSteven1ItemText
 	waitbutton
 	verbosegiveitem MUSCLE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 .GotMuscleBand
-	writetext EmbeddedTowerSteven1AfterText
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext EmbeddedTowerSteven1AfterText
 
 EmbeddedTowerSteven2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_STEVEN
-	iftrue .Beat
+	iftrue_jumpopenedtext EmbeddedTowerSteven2AfterText
 	writetext EmbeddedTowerSteven2ChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext EmbeddedTowerSteven2NoText
 	writetext EmbeddedTowerSteven2YesText
 	waitbutton
 	closetext
@@ -91,11 +79,7 @@ EmbeddedTowerSteven2Script:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_STEVEN
 	opentext
-.Beat:
 	jumpopenedtext EmbeddedTowerSteven2AfterText
-
-.Refused:
-	jumpopenedtext EmbeddedTowerSteven2NoText
 
 EmbeddedTowerSteven1IntroText:
 	text "Hello! I'm Steven."

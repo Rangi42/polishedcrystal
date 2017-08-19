@@ -111,7 +111,7 @@ Script_Menu_ChallengeExplanationCancel:
 	special Special_BattleTower_MainMenu
 	if_equal $1, Script_ChoseChallenge
 	if_equal $2, Script_BattleTowerExplanation
-	jump Script_BattleTowerHopeToServeYouAgain
+	jumpopenedtext Text_WeHopeToServeYouAgain
 
 Script_ChoseChallenge:
 	special Special_BattleTower_ResetTrainersSRAM
@@ -180,9 +180,6 @@ Script_BattleTowerSkipExplanation:
 	special Special_BattleTower_MarkNewSaveFile
 	jump Script_Menu_ChallengeExplanationCancel
 
-Script_BattleTowerHopeToServeYouAgain:
-	jumpopenedtext Text_WeHopeToServeYouAgain
-
 Script_WaitButton:
 	waitendtext
 
@@ -190,7 +187,7 @@ BattleTower_LeftWithoutSaving:
 	opentext
 	writetext Text_BattleTower_LeftWithoutSaving
 	waitbutton
-	jump Script_BattleTowerHopeToServeYouAgain
+	jumpopenedtext Text_WeHopeToServeYouAgain
 
 BattleTowerPharmacistScript:
 	faceplayer

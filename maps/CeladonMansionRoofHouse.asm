@@ -15,33 +15,39 @@ CeladonMansionRoofHouse_MapEventHeader:
 .Signposts: db 0
 
 .PersonEvents: db 1
-	person_event SPRITE_PHARMACIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x71afd, -1
+	person_event SPRITE_PHARMACIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
 
-PharmacistScript_0x71afd:
+CeladonMansionRoofHousePharmacistScript:
+	checkevent EVENT_GOT_TM03_CURSE
+	iftrue_jumptextfaceplayer .CurseText
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM03_CURSE
-	iftrue UnknownScript_0x71b21
-	writetext UnknownText_0x71b27
+	writetext .IntroText
 	buttonsound
 	checknite
-	iftrue UnknownScript_0x71b14
-	jumpopenedtext UnknownText_0x71b4a
-
-UnknownScript_0x71b14:
-	writetext UnknownText_0x71ba3
+	iffalse_jumpopenedtext .NotNiteText
+	writetext .StoryText
 	buttonsound
 	verbosegivetmhm TM_CURSE
 	setevent EVENT_GOT_TM03_CURSE
-UnknownScript_0x71b21:
-	jumpopenedtext UnknownText_0x71db3
+	thisopenedtext
 
-UnknownText_0x71b27:
+.CurseText:
+	text "TM03 is Curse."
+
+	para "It's a terrifying"
+	line "move that slowly"
+
+	para "whittles down the"
+	line "victim's HP."
+	done
+
+.IntroText:
 	text "Let me recount a"
 	line "terrifying tale…"
 	done
 
-UnknownText_0x71b4a:
+.NotNiteText:
 	text "Then again, it's"
 	line "not as scary while"
 
@@ -52,7 +58,7 @@ UnknownText_0x71b4a:
 	line "sunset, OK?"
 	done
 
-UnknownText_0x71ba3:
+.StoryText:
 	text "Once upon a time,"
 	line "there was a little"
 
@@ -105,14 +111,4 @@ UnknownText_0x71ba3:
 	para "For listening so"
 	line "patiently, you may"
 	cont "take this--TM03!"
-	done
-
-UnknownText_0x71db3:
-	text "TM03 is Curse."
-
-	para "It's a terrifying"
-	line "move that slowly"
-
-	para "whittles down the"
-	line "victim's HP."
 	done

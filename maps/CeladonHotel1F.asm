@@ -29,13 +29,13 @@ const_value set 2
 	const CELADONHOTEL1F_RICH_BOY
 
 CeladonHotel1FRichBoyGeraldScript:
+	checkevent EVENT_BEAT_RICH_BOY_GERALD
+	iftrue_jumptextfaceplayer RichBoyGeraldAfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_RICH_BOY_GERALD
-	iftrue RichBoyGeraldAfterScript
 	writetext RichBoyGeraldGreetingText
 	yesorno
-	iffalse RichBoyGeraldNoBattleScript
+	iffalse_jumpopenedtext RichBoyGeraldNoBattleText
 	writetext RichBoyGeraldSeenText
 	waitbutton
 	closetext
@@ -46,12 +46,6 @@ CeladonHotel1FRichBoyGeraldScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_RICH_BOY_GERALD
 	end
-
-RichBoyGeraldAfterScript:
-	jumpopenedtext RichBoyGeraldAfterText
-
-RichBoyGeraldNoBattleScript:
-	jumpopenedtext RichBoyGeraldNoBattleText
 
 CeladonHotel1FGrampsText:
 	text "#mon? No, this"

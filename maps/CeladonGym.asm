@@ -65,15 +65,12 @@ ErikaScript_0x72a6a:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
-	iftrue UnknownScript_0x72aae
+	iftrue_jumpopenedtext UnknownText_0x72d8f
 	writetext UnknownText_0x72cb0
 	buttonsound
 	verbosegivetmhm TM_GIGA_DRAIN
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
 	jumpopenedtext ErikaOutroText
-
-UnknownScript_0x72aae:
-	jumpopenedtext UnknownText_0x72d8f
 
 TrainerLassMichelle:
 	trainer EVENT_BEAT_LASS_MICHELLE, LASS, MICHELLE, LassMichelleSeenText, LassMichelleBeatenText, 0, LassMichelleScript

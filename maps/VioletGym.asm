@@ -63,7 +63,7 @@ FalknerScript_0x683c2:
 	setflag ENGINE_ZEPHYRBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM31_ROOST
-	iftrue .SpeechAfterTM
+	iftrue_jumpopenedtext UnknownText_0x68735
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
 	domaptrigger ELMS_LAB, $2
@@ -73,9 +73,6 @@ FalknerScript_0x683c2:
 	verbosegivetmhm TM_ROOST
 	setevent EVENT_GOT_TM31_ROOST
 	jumpopenedtext UnknownText_0x68648
-
-.SpeechAfterTM:
-	jumpopenedtext UnknownText_0x68735
 
 TrainerBird_keeperRod:
 	trainer EVENT_BEAT_BIRD_KEEPER_ROD, BIRD_KEEPER, ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText, 0, Bird_keeperRodScript

@@ -61,7 +61,7 @@ ChuckScript_0x9d60f:
 	specialphonecall SPECIALCALL_YELLOWFOREST
 .FightDone:
 	checkevent EVENT_GOT_TM01_DYNAMICPUNCH
-	iftrue .AlreadyGotTM
+	iftrue_jumpopenedtext ChuckAfterText
 	setevent EVENT_BEAT_BLACKBELT_YOSHI
 	setevent EVENT_BEAT_BLACKBELT_LAO
 	setevent EVENT_BEAT_BLACKBELT_NOB
@@ -71,9 +71,6 @@ ChuckScript_0x9d60f:
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
 	jumpopenedtext ChuckExplainTMText
-
-.AlreadyGotTM:
-	jumpopenedtext ChuckAfterText
 
 TrainerBlackbeltYoshi:
 	trainer EVENT_BEAT_BLACKBELT_YOSHI, BLACKBELT_T, YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText, 0, .Script

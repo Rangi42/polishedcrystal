@@ -99,8 +99,7 @@ Script_DontSaveAndEndTheSession:
 	closetext
 	special FadeOutPalettes
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
-	opentext
-	jump Script_BattleTowerHopeToServeYouAgain
+	jumptext Text_WeHopeToServeYouAgain
 
 Script_FailedBattleTowerChallenge:
 	pause 60

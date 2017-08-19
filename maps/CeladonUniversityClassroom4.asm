@@ -33,9 +33,9 @@ const_value set 2
 
 CeladonUniversityClassroom4RaymondScript:
 	faceplayer
-	opentext
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
 	iftrue .Beaten
+	opentext
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
 	iftrue .IntroducedCeladonFour1
 	writetext .IntroText1
@@ -44,7 +44,7 @@ CeladonUniversityClassroom4RaymondScript:
 	writetext .IntroText2
 .AfterIntro
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoBattleText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -54,34 +54,24 @@ CeladonUniversityClassroom4RaymondScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	opentext
 .Beaten
+	opentext
 	setevent EVENT_INTRODUCED_CELADON_FOUR
 	checkevent EVENT_BEAT_COOLTRAINERM_COREY
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	iftrue .GotItem
+	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	buttonsound
 	verbosegiveitem CHOICE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-.GotItem:
 	writetext .FinalText
-	waitbutton
-.Done:
-	closetext
-	end
-
-.NoBattle:
-	jumpopenedtext .NoBattleText
-
-.NotFinished:
-	jumpopenedtext .AfterText1
+	waitendtext
 
 .IntroText1:
 	text "Hey! I'm Raymond!"

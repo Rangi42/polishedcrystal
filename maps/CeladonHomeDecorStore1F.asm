@@ -19,9 +19,9 @@ CeladonHomeDecorStore1F_MapEventHeader:
 .PersonEvents: db 6
 	person_event SPRITE_RECEPTIONIST, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
 	person_event SPRITE_CLERK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
-	person_event SPRITE_GRIMER, 5, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FGrimerDollScript, -1
-	person_event SPRITE_MACHOP, 5, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FMachopDollScript, -1
-	person_event SPRITE_STARYU, 5, 9, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FStaryuDollScript, -1
+	person_event SPRITE_GRIMER, 5, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FGrimerDollText, -1
+	person_event SPRITE_MACHOP, 5, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FMachopDollText, -1
+	person_event SPRITE_STARYU, 5, 9, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FStaryuDollText, -1
 	person_event SPRITE_COOLTRAINER_F, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
 
 CeladonHomeDecorStore1FClerkScript:
@@ -105,15 +105,6 @@ CeladonHomeDecorStore1FClerkScript:
 	db "Machop      ¥6400@"
 	db "Staryu      ¥8000@"
 	db "Cancel@"
-
-CeladonHomeDecorStore1FGrimerDollScript:
-	jumptext CeladonHomeDecorStore1FGrimerDollText
-
-CeladonHomeDecorStore1FMachopDollScript:
-	jumptext CeladonHomeDecorStore1FMachopDollText
-
-CeladonHomeDecorStore1FStaryuDollScript:
-	jumptext CeladonHomeDecorStore1FStaryuDollText
 
 CeladonHomeDecorStore1FReceptionistText:
 	text "Hello! Welcome to"

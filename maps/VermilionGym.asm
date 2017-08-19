@@ -33,10 +33,10 @@ VermilionGym_MapEventHeader:
 	signpost 15, 6, SIGNPOST_READ, VermilionGymStatue
 
 .PersonEvents: db 10
-	person_event SPRITE_ELECTRIC_FENCE_LEFT, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_1
-	person_event SPRITE_ELECTRIC_FENCE_LEFT, 4, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
-	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 4, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, VermilionGymElectricFenceScript, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE_LEFT, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_1
+	person_event SPRITE_ELECTRIC_FENCE_LEFT, 4, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_2
+	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 4, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_2
 	person_event SPRITE_SURGE, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SurgeScript_0x1920a5, -1
 	person_event SPRITE_GENTLEMAN, 8, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGregory, -1
 	person_event SPRITE_ROCKER, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmVincent, -1
@@ -101,15 +101,12 @@ SurgeScript_0x1920a5:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM43_WILD_CHARGE
-	iftrue SurgeAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x192303
 	writetext UnknownText_0x192291
 	buttonsound
 	verbosegivetmhm TM_WILD_CHARGE
 	setevent EVENT_GOT_TM43_WILD_CHARGE
 	jumpopenedtext SurgeOutroText
-
-SurgeAfterTMScript:
-	jumpopenedtext UnknownText_0x192303
 
 TrainerGentlemanGregory:
 	trainer EVENT_BEAT_GENTLEMAN_GREGORY, GENTLEMAN, GREGORY, GentlemanGregorySeenText, GentlemanGregoryBeatenText, 0, GentlemanGregoryScript
@@ -194,9 +191,6 @@ VermilionGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2
-
-VermilionGymElectricFenceScript:
-	jumptext VermilionGymElectricFenceText
 
 UnknownText_0x192142:
 	text "Surge: Hey, you"
