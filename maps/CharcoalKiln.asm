@@ -67,23 +67,23 @@ CharcoalKilnApprentice:
 	checkevent EVENT_GOT_CHARCOAL_IN_CHARCOAL_KILN
 	iftrue_jumptextfaceplayer .Text3
 	checkevent EVENT_GOT_HM01_CUT
-	iftrue .Thanks
-	thistextfaceplayer
-
-	text "Where have all the"
-	line "Slowpoke gone?"
-
-	para "Are they out play-"
-	line "ing somewhere?"
-	done
-
-.Thanks:
+	iffalse_jumptextfaceplayer .Text1
+	faceplayer
+	opentext
 	writetext .Text2
 	buttonsound
 	verbosegiveitem CHARCOAL
 	iffalse_endtext
 	setevent EVENT_GOT_CHARCOAL_IN_CHARCOAL_KILN
 	endtext
+
+.Text1:
+	text "Where have all the"
+	line "Slowpoke gone?"
+
+	para "Are they out play-"
+	line "ing somewhere?"
+	done
 
 .Text2:
 	text "I'm sorry--I for-"
