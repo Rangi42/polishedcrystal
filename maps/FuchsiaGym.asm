@@ -211,14 +211,9 @@ UnknownScript_0x195efd:
 	jumpopenedtext UnknownText_0x19626b
 
 FuchsiaGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_JANINE
-	iftrue .FuchsiaGymGuyWinScript
-	jumpopenedtext FuchsiaGymGuyText
-
-.FuchsiaGymGuyWinScript:
-	jumpopenedtext FuchsiaGymGuyWinText
+	iftrue_jumptextfaceplayer FuchsiaGymGuyWinText
+	jumptextfaceplayer FuchsiaGymGuyText
 
 FuchsiaGymStatue:
 	trainertotext JANINE, 1, $1

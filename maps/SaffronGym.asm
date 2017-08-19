@@ -158,14 +158,9 @@ MediumRebeccaScript:
 	jumptextfaceplayer UnknownText_0x18a034
 
 SaffronGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_SABRINA
-	iftrue .SaffronGymGuyWinScript
-	jumpopenedtext SaffronGymGuyText
-
-.SaffronGymGuyWinScript:
-	jumpopenedtext SaffronGymGuyWinText
+	iftrue_jumptextfaceplayer SaffronGymGuyWinText
+	jumptextfaceplayer SaffronGymGuyText
 
 SaffronGymStatue:
 	trainertotext SABRINA, 1, $1

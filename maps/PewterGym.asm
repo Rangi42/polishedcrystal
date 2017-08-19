@@ -84,14 +84,9 @@ HikerEdwinScript:
 	jumptextfaceplayer HikerEdwinAfterText
 
 PewterGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_BROCK
-	iftrue .PewterGymGuyWinScript
-	jumpopenedtext PewterGymGuyText
-
-.PewterGymGuyWinScript:
-	jumpopenedtext PewterGymGuyWinText
+	iftrue_jumptextfaceplayer PewterGymGuyWinText
+	jumptextfaceplayer PewterGymGuyText
 
 PewterGymStatue:
 	trainertotext BROCK, 1, $1

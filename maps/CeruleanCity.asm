@@ -50,14 +50,9 @@ CeruleanCityFlyPoint:
 	return
 
 CooltrainerMScript_0x184009:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x184017
-	jumpopenedtext UnknownText_0x1840bc
-
-UnknownScript_0x184017:
-	jumpopenedtext UnknownText_0x184144
+	iftrue_jumptextfaceplayer UnknownText_0x184144
+	jumptextfaceplayer UnknownText_0x1840bc
 
 CooltrainerFScript_0x18402a:
 	showtextfaceplayer UnknownText_0x1841fa

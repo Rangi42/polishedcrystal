@@ -84,14 +84,9 @@ UnknownScript_0x190078:
 	jumpopenedtext UnknownText_0x190188
 
 GrampsScript_0x19007e:
-	faceplayer
-	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x19008c
-	jumpopenedtext UnknownText_0x1901e5
-
-UnknownScript_0x19008c:
-	jumpopenedtext UnknownText_0x19021d
+	iftrue_jumptextfaceplayer UnknownText_0x19021d
+	jumptextfaceplayer UnknownText_0x1901e5
 
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS

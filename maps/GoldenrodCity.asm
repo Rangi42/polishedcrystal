@@ -209,14 +209,9 @@ MoveTutor:
 	jumpopenedtext UnknownText_0x1991ac
 
 CooltrainerFScript_0x1989e9:
-	faceplayer
-	opentext
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRadioTower
-	jumpopenedtext UnknownText_0x198ae6
-
-.ClearedRadioTower:
-	jumpopenedtext UnknownText_0x198b2d
+	iftrue_jumptextfaceplayer UnknownText_0x198b2d
+	jumptextfaceplayer UnknownText_0x198ae6
 
 CooltrainerFScript_0x1989fd:
 	faceplayer

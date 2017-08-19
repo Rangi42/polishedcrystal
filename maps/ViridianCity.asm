@@ -51,14 +51,9 @@ UnknownScript_0x1a9a5b:
 	jumpopenedtext UnknownText_0x1a9bb7
 
 GrampsScript_0x1a9a61:
-	faceplayer
-	opentext
 	checkevent EVENT_BLUE_IN_CINNABAR
-	iftrue .BlueReturned
-	jumpopenedtext UnknownText_0x1a9c11
-
-.BlueReturned:
-	jumpopenedtext UnknownText_0x1a9c7e
+	iftrue_jumptextfaceplayer UnknownText_0x1a9c7e
+	jumptextfaceplayer UnknownText_0x1a9c11
 
 FisherScript_0x1a9a75:
 	faceplayer

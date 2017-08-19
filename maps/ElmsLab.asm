@@ -684,14 +684,9 @@ CopScript:
 	jump ElmAfterTheftScript
 
 ElmsLabLyraScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iffalse .LyraWhichPokemon
-	jumpopenedtext ElmsLabLyraGoodChoiceText
-
-.LyraWhichPokemon:
-	jumpopenedtext ElmsLabLyraWhichPokemonText
+	iffalse_jumptextfaceplayer ElmsLabLyraWhichPokemonText
+	jumptextfaceplayer ElmsLabLyraGoodChoiceText
 
 ElmsLabWindow:
 	opentext

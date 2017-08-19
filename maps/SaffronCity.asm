@@ -60,34 +60,19 @@ SaffronCityFlyPoint:
 	return
 
 LassScript_0x19932a:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x199338
-	jumpopenedtext UnknownText_0x19938d
-
-UnknownScript_0x199338:
-	jumpopenedtext UnknownText_0x19940d
+	iftrue_jumptextfaceplayer UnknownText_0x19940d
+	jumptextfaceplayer UnknownText_0x19938d
 
 PokefanMScript_0x19933e:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x19934c
-	jumpopenedtext UnknownText_0x199460
-
-UnknownScript_0x19934c:
-	jumpopenedtext UnknownText_0x1994ae
+	iftrue_jumptextfaceplayer UnknownText_0x1994ae
+	jumptextfaceplayer UnknownText_0x199460
 
 FisherScript_0x199358:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x199366
-	jumpopenedtext UnknownText_0x1995fc
-
-UnknownScript_0x199366:
-	jumpopenedtext UnknownText_0x19964b
+	iftrue_jumptextfaceplayer UnknownText_0x19964b
+	jumptextfaceplayer UnknownText_0x1995fc
 
 UnknownText_0x19938d:
 	text "A little girl who"

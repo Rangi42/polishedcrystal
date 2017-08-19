@@ -62,14 +62,9 @@ BlueEpilogueScript:
 	jumpopenedtext LeaderBlueEpilogueText
 
 ViridianGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_BLUE
-	iftrue .ViridianGymGuyWinScript
-	jumpopenedtext ViridianGymGuyText
-
-.ViridianGymGuyWinScript:
-	jumpopenedtext ViridianGymGuyWinText
+	iftrue_jumptextfaceplayer ViridianGymGuyWinText
+	jumptextfaceplayer ViridianGymGuyText
 
 TrainerAceDuoAraandbela1:
 	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA1, AceDuoAraandbela1SeenText, AceDuoAraandbela1BeatenText, 0, AceDuoAraandbela1Script

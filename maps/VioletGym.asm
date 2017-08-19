@@ -92,14 +92,9 @@ Bird_keeperAbeScript:
 	jumptextfaceplayer UnknownText_0x688c7
 
 VioletGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_FALKNER
-	iftrue .VioletGymGuyWinScript
-	jumpopenedtext VioletGymGuyText
-
-.VioletGymGuyWinScript:
-	jumpopenedtext VioletGymGuyWinText
+	iftrue_jumptextfaceplayer VioletGymGuyWinText
+	jumptextfaceplayer VioletGymGuyText
 
 VioletGymStatue:
 	trainertotext FALKNER, 1, $1

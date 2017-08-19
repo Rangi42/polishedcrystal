@@ -113,14 +113,9 @@ UnknownScript_0x1a001e:
 	end
 
 PokefanFScript_0x1a0084:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_CHUCK
-	iftrue UnknownScript_0x1a009c
-	jumpopenedtext UnknownText_0x1a00f1
-
-UnknownScript_0x1a009c:
-	jumpopenedtext UnknownText_0x1a0277
+	iftrue_jumptextfaceplayer UnknownText_0x1a0277
+	jumptextfaceplayer UnknownText_0x1a00f1
 
 MovementData_0x1a00da:
 	fix_facing

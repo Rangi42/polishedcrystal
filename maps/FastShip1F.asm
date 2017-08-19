@@ -114,14 +114,9 @@ SailorScript_0x75160:
 	end
 
 SailorScript_0x751d0:
-	faceplayer
-	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue .Vermilion
-	jumpopenedtext UnknownText_0x752f9
-
-.Vermilion:
-	jumpopenedtext UnknownText_0x7534f
+	iftrue_jumptextfaceplayer UnknownText_0x7534f
+	jumptextfaceplayer UnknownText_0x752f9
 
 WorriedGrandpaTriggerRight:
 	moveperson FASTSHIP1F_GENTLEMAN, 20, 6

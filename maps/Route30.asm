@@ -222,14 +222,9 @@ TrainerBug_catcherDon:
 	jumptextfaceplayer Bug_catcherDonAfterText
 
 Route30YoungsterScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .CompletedEggQuest
-	jumpopenedtext Route30YoungsterText_DirectionsToMrPokemonsHouse
-
-.CompletedEggQuest:
-	jumpopenedtext Route30YoungsterText_EveryoneIsBattling
+	iftrue_jumptextfaceplayer Route30YoungsterText_EveryoneIsBattling
+	jumptextfaceplayer Route30YoungsterText_DirectionsToMrPokemonsHouse
 
 Route30_JoeysRattataAttacksMovement:
 	big_step_up

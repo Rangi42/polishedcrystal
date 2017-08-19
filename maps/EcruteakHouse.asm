@@ -114,14 +114,9 @@ SageScript_0x98062:
 	jumpopenedtext UnknownText_0x98391
 
 SageScript_0x980b0:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_CLEAR_BELL
-	iftrue .GotClearBell
-	jumpopenedtext UnknownText_0x9840b
-
-.GotClearBell:
-	jumpopenedtext UnknownText_0x9846f
+	iftrue_jumptextfaceplayer UnknownText_0x9846f
+	jumptextfaceplayer UnknownText_0x9840b
 
 MovementData_0x980c7:
 	fix_facing

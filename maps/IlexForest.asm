@@ -123,14 +123,9 @@ IlexForestFarfetchdCallback:
 	return
 
 IlexForestCharcoalApprenticeScript:
-	faceplayer
-	opentext
 	checkevent EVENT_HERDED_FARFETCHD
-	iftrue .DoneFarfetchd
-	jumpopenedtext UnknownText_0x6ef5c
-
-.DoneFarfetchd:
-	jumpopenedtext UnknownText_0x6f019
+	iftrue_jumptextfaceplayer UnknownText_0x6f019
+	jumptextfaceplayer UnknownText_0x6ef5c
 
 IlexForestFarfetchdScript:
 	faceplayer

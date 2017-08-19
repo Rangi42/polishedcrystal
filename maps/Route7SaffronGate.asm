@@ -21,16 +21,10 @@ Route7SaffronGate_MapEventHeader:
 	person_event SPRITE_SILPH_EMPLOYEE, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
 
 OfficerScript_0x73518:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x73526
-	jumpopenedtext UnknownText_0x7352c
+	iftrue_jumptextfaceplayer UnknownText_0x73592
+	thistextfaceplayer
 
-UnknownScript_0x73526:
-	jumpopenedtext UnknownText_0x73592
-
-UnknownText_0x7352c:
 	text "Did you hear about"
 	line "the accident at"
 	cont "the Power Plant?"

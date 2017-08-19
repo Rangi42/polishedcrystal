@@ -303,14 +303,9 @@ GrampsScript_0x189538:
 	end
 
 BillsMom:
-	faceplayer
-	opentext
 	checkevent EVENT_NEVER_MET_BILL
-	iffalse UnknownScript_0x54c33
-	jumpopenedtext UnknownText_0x54ea8
-
-UnknownScript_0x54c33:
-	jumpopenedtext UnknownText_0x54f4e
+	iffalse_jumptextfaceplayer UnknownText_0x54f4e
+	jumptextfaceplayer UnknownText_0x54ea8
 
 BillsSister:
 	faceplayer

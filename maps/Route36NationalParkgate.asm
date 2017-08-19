@@ -304,104 +304,54 @@ Route36Parkgate_DayToText:
 	end
 
 BugCatcherScript_0x6ad06:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad14
-	jumpopenedtext UnknownText_0x6b399
-
-UnknownScript_0x6ad14:
-	jumpopenedtext UnknownText_0x6b3c4
+	iffalse_jumptextfaceplayer UnknownText_0x6b3c4
+	jumptextfaceplayer UnknownText_0x6b399
 
 BugManiacScript_0x6ad1a:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad28
-	jumpopenedtext UnknownText_0x6b40f
-
-UnknownScript_0x6ad28:
-	jumpopenedtext UnknownText_0x6b440
+	iffalse_jumptextfaceplayer UnknownText_0x6b440
+	jumptextfaceplayer UnknownText_0x6b40f
 
 CooltrainerMScript_0x6ad2e:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad3c
-	jumpopenedtext UnknownText_0x6b462
-
-UnknownScript_0x6ad3c:
-	jumpopenedtext UnknownText_0x6b496
+	iffalse_jumptextfaceplayer UnknownText_0x6b496
+	jumptextfaceplayer UnknownText_0x6b462
 
 PokefanMScript_0x6ad42:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad50
-	jumpopenedtext UnknownText_0x6b4da
-
-UnknownScript_0x6ad50:
-	jumpopenedtext UnknownText_0x6b50a
+	iffalse_jumptextfaceplayer UnknownText_0x6b50a
+	jumptextfaceplayer UnknownText_0x6b4da
 
 BugCatcherScript_0x6ad56:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad64
-	jumpopenedtext UnknownText_0x6b54e
-
-UnknownScript_0x6ad64:
-	jumpopenedtext UnknownText_0x6b57c
+	iffalse_jumptextfaceplayer UnknownText_0x6b57c
+	jumptextfaceplayer UnknownText_0x6b54e
 
 YoungsterScript_0x6ad6a:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad78
-	jumpopenedtext UnknownText_0x6b5b0
-
-UnknownScript_0x6ad78:
-	jumpopenedtext UnknownText_0x6b5dd
+	iffalse_jumptextfaceplayer UnknownText_0x6b5dd
+	jumptextfaceplayer UnknownText_0x6b5b0
 
 LassScript_0x6ad7e:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad8c
-	jumpopenedtext UnknownText_0x6b64b
-
-UnknownScript_0x6ad8c:
-	jumpopenedtext UnknownText_0x6b698
+	iffalse_jumptextfaceplayer UnknownText_0x6b698
+	jumptextfaceplayer UnknownText_0x6b64b
 
 BugCatcherScript_0x6ad92:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ada0
-	jumpopenedtext UnknownText_0x6b6b8
-
-UnknownScript_0x6ada0:
-	jumpopenedtext UnknownText_0x6b6e9
+	iffalse_jumptextfaceplayer UnknownText_0x6b6e9
+	jumptextfaceplayer UnknownText_0x6b6b8
 
 YoungsterScript_0x6ada6:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6adb4
-	jumpopenedtext UnknownText_0x6b71b
-
-UnknownScript_0x6adb4:
-	jumpopenedtext UnknownText_0x6b740
+	iffalse_jumptextfaceplayer UnknownText_0x6b740
+	jumptextfaceplayer UnknownText_0x6b71b
 
 YoungsterScript_0x6adba:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6adc8
-	jumpopenedtext UnknownText_0x6b76f
-
-UnknownScript_0x6adc8:
-	jumpopenedtext UnknownText_0x6b7af
+	iffalse_jumptextfaceplayer UnknownText_0x6b7af
+	jumptextfaceplayer UnknownText_0x6b76f
 
 MovementData_0x6add1:
 	big_step_down

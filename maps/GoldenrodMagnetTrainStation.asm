@@ -35,9 +35,9 @@ OfficerScript_0x550ec:
 .MagnetTrainToSaffron:
 	writetext UnknownText_0x551b7
 	yesorno
-	iffalse .DecidedNotToRide
+	iffalse_jumpopenedtext UnknownText_0x5524f
 	checkitem PASS
-	iffalse .PassNotInBag
+	iffalse_jumpopenedtext UnknownText_0x5522c
 	writetext UnknownText_0x551ed
 	waitbutton
 	closetext
@@ -47,19 +47,9 @@ OfficerScript_0x550ec:
 	special Special_MagnetTrain
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
-	applymovement PLAYER, .MovementBoardTheTrain
-	wait $14
+	applyonemovement PLAYER, turn_head_down
+	wait 36
 	end
-
-.MovementBoardTheTrain:
-	turn_head_down
-	step_end
-
-.PassNotInBag:
-	jumpopenedtext UnknownText_0x5522c
-
-.DecidedNotToRide:
-	jumpopenedtext UnknownText_0x5524f
 
 Script_ArriveFromSaffron:
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x55146

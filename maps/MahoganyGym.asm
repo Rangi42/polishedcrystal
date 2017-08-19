@@ -97,14 +97,9 @@ BoarderDouglasScript:
 	jumptextfaceplayer UnknownText_0x19a047
 
 MahoganyGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_PRYCE
-	iftrue .MahoganyGymGuyWinScript
-	jumpopenedtext MahoganyGymGuyText
-
-.MahoganyGymGuyWinScript:
-	jumpopenedtext MahoganyGymGuyWinText
+	iftrue_jumptextfaceplayer MahoganyGymGuyWinText
+	jumptextfaceplayer MahoganyGymGuyText
 
 MahoganyGymStatue:
 	trainertotext PRYCE, 1, $1

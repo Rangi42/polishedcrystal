@@ -53,24 +53,14 @@ EcruteakCityFlyPoint:
 	return
 
 LassScript_0x1a4015:
-	faceplayer
-	opentext
 	checkevent EVENT_RELEASED_THE_BEASTS
-	iftrue UnknownScript_0x1a4023
-	jumpopenedtext UnknownText_0x1a421a
-
-UnknownScript_0x1a4023:
-	jumpopenedtext UnknownText_0x1a4269
+	iftrue_jumptextfaceplayer UnknownText_0x1a4269
+	jumptextfaceplayer UnknownText_0x1a421a
 
 FisherScript_0x1a4029:
-	faceplayer
-	opentext
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftrue UnknownScript_0x1a4037
-	jumpopenedtext UnknownText_0x1a42ac
-
-UnknownScript_0x1a4037:
-	jumpopenedtext UnknownText_0x1a4325
+	iftrue_jumptextfaceplayer UnknownText_0x1a4325
+	jumptextfaceplayer UnknownText_0x1a42ac
 
 UnknownText_0x1a4105:
 	text "Ecruteak used to"

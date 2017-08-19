@@ -140,14 +140,9 @@ GuitaristfJanetScript:
 	jumptextfaceplayer GuitaristfJanetAfterText
 
 VermilionGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_LTSURGE
-	iftrue .VermilionGymGuyWinScript
-	jumpopenedtext VermilionGymGuyText
-
-.VermilionGymGuyWinScript:
-	jumpopenedtext VermilionGymGuyWinText
+	iftrue_jumptextfaceplayer VermilionGymGuyWinText
+	jumptextfaceplayer VermilionGymGuyText
 
 VermilionGymTrashCanScript:
 	checkevent EVENT_VERMILION_GYM_SWITCH_2

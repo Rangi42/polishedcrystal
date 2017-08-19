@@ -149,14 +149,9 @@ SailorEddieScript:
 	jumptextfaceplayer SailorEddieAfterText
 
 CeruleanGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_MISTY
-	iftrue .CeruleanGymGuyWinScript
-	jumpopenedtext CeruleanGymGuyText
-
-.CeruleanGymGuyWinScript:
-	jumpopenedtext CeruleanGymGuyWinText
+	iftrue_jumptextfaceplayer CeruleanGymGuyWinText
+	jumptextfaceplayer CeruleanGymGuyText
 
 CeruleanGymHiddenMachinePart:
 	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM

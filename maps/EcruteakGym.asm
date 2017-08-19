@@ -143,14 +143,9 @@ MediumGraceScript:
 	jumptextfaceplayer UnknownText_0x9a38a
 
 EcruteakGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_MORTY
-	iftrue .EcruteakGymGuyWinScript
-	jumpopenedtext EcruteakGymGuyText
-
-.EcruteakGymGuyWinScript:
-	jumpopenedtext EcruteakGymGuyWinText
+	iftrue_jumptextfaceplayer EcruteakGymGuyWinText
+	jumptextfaceplayer EcruteakGymGuyText
 
 EcruteakGymStatue:
 	trainertotext MORTY, 1, $1

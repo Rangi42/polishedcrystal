@@ -37,14 +37,9 @@ const_value set 2
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
 
 CaptainScript_0x75ea7:
-	faceplayer
-	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue UnknownScript_0x75eb5
-	jumpopenedtext UnknownText_0x76012
-
-UnknownScript_0x75eb5:
-	jumpopenedtext UnknownText_0x76064
+	iftrue_jumptextfaceplayer UnknownText_0x76064
+	jumptextfaceplayer UnknownText_0x76012
 
 TwinScript_0x75ebb:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT

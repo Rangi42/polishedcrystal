@@ -39,14 +39,9 @@ CardKeyShutterCallback:
 	return
 
 GymGuyScript_0x5e556:
-	faceplayer
-	opentext
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue UnknownScript_0x5e564
-	jumpopenedtext UnknownText_0x5e682
-
-UnknownScript_0x5e564:
-	jumpopenedtext UnknownText_0x5e6eb
+	iftrue_jumptextfaceplayer UnknownText_0x5e6eb
+	jumptextfaceplayer UnknownText_0x5e682
 
 CooltrainerFScript_0x5e56a:
 	faceplayer

@@ -36,9 +36,9 @@ OfficerScript_0x18a81e:
 .MagnetTrainToGoldenrod:
 	writetext UnknownText_0x18a8dd
 	yesorno
-	iffalse .DecidedNotToRide
+	iffalse_jumpopenedtext UnknownText_0x18a978
 	checkitem PASS
-	iffalse .PassNotInBag
+	iffalse_jumpopenedtext UnknownText_0x18a956
 	writetext UnknownText_0x18a917
 	waitbutton
 	closetext
@@ -48,19 +48,9 @@ OfficerScript_0x18a81e:
 	special Special_MagnetTrain
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
-	applymovement PLAYER, .MovementBoardTheTrain
-	wait $14
+	applyonemovement PLAYER, turn_head_down
+	wait 36
 	end
-
-.MovementBoardTheTrain:
-	turn_head_down
-	step_end
-
-.PassNotInBag:
-	jumpopenedtext UnknownText_0x18a956
-
-.DecidedNotToRide:
-	jumpopenedtext UnknownText_0x18a978
 
 Script_ArriveFromGoldenrod:
 	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a88f
@@ -69,14 +59,9 @@ Script_ArriveFromGoldenrod:
 	jumptext UnknownText_0x18a993
 
 GymGuyScript_0x18a875:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x18a883
-	jumpopenedtext UnknownText_0x18a9ca
-
-UnknownScript_0x18a883:
-	jumpopenedtext UnknownText_0x18aa61
+	iftrue_jumptextfaceplayer UnknownText_0x18aa61
+	jumptextfaceplayer UnknownText_0x18a9ca
 
 MovementData_0x18a88f:
 	step_up

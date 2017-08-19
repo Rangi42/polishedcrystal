@@ -146,14 +146,9 @@ Route36RockSmashGuyScript:
 	jumpopenedtext RockSmashGuyText3
 
 LassScript_0x1940e0:
-	faceplayer
-	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .ClearedSudowoodo
-	jumpopenedtext UnknownText_0x1945b8
-
-.ClearedSudowoodo:
-	jumpopenedtext UnknownText_0x19469e
+	iftrue_jumptextfaceplayer UnknownText_0x19469e
+	jumptextfaceplayer UnknownText_0x1945b8
 
 TrainerSchoolboyAlan1:
 	trainer EVENT_BEAT_SCHOOLBOY_ALAN, SCHOOLBOY, ALAN1, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script

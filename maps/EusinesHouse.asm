@@ -96,14 +96,9 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
-	faceplayer
-	opentext
 	checkevent EVENT_SET_WHEN_FOUGHT_HO_OH
-	iftrue .EusineLeft
-	jumpopenedtext EusinesHouseGrampsText1
-
-.EusineLeft:
-	jumpopenedtext EusinesHouseGrampsText2
+	iftrue_jumptextfaceplayer EusinesHouseGrampsText2
+	jumptextfaceplayer EusinesHouseGrampsText1
 
 CeladonEusineText1:
 	text "Eusine: Hi!"

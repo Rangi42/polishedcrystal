@@ -64,44 +64,24 @@ UnknownScript_0x188e0f:
 	jumpopenedtext UnknownText_0x188fa2
 
 GymGuyScript_0x188e15:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188e23
-	jumpopenedtext UnknownText_0x188fcf
-
-UnknownScript_0x188e23:
-	jumpopenedtext UnknownText_0x189038
+	iftrue_jumptextfaceplayer UnknownText_0x189038
+	jumptextfaceplayer UnknownText_0x188fcf
 
 GymGuyScript_0x188e29:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188e37
-	jumpopenedtext UnknownText_0x189079
-
-UnknownScript_0x188e37:
-	jumpopenedtext UnknownText_0x1890ef
+	iftrue_jumptextfaceplayer UnknownText_0x1890ef
+	jumptextfaceplayer UnknownText_0x189079
 
 OfficerScript_0x188e3d:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188e4b
-	jumpopenedtext UnknownText_0x18910e
-
-UnknownScript_0x188e4b:
-	jumpopenedtext UnknownText_0x18917f
+	iftrue_jumptextfaceplayer UnknownText_0x18917f
+	jumptextfaceplayer UnknownText_0x18910e
 
 GymGuyScript_0x188e51:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188e5f
-	jumpopenedtext UnknownText_0x1891c2
-
-UnknownScript_0x188e5f:
-	jumpopenedtext UnknownText_0x189225
+	iftrue_jumptextfaceplayer UnknownText_0x189225
+	jumptextfaceplayer UnknownText_0x1891c2
 
 PowerPlantManager:
 	faceplayer
