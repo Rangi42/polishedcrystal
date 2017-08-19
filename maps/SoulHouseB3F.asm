@@ -40,6 +40,7 @@ SoulHouseB3FMrFujiScript:
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement2
 .Finish
 	disappear SOULHOUSEB3F_MRFUJI
+	clearevent EVENT_SOUL_HOUSE_MR_FUJI
 	end
 
 .Text1:
