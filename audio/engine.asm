@@ -666,11 +666,17 @@ LoadNote: ; e83d1
 	ld hl, Channel1NoteDuration - Channel1
 	add hl, bc
 	ld a, [hl]
+	; prevent 0-duration notes causing infinite loops
+	; (possible with tempo adjustment)
+	and a
+	jr nz, .ok1
+	ld a, 1
+.ok1
 	ld hl, wCurNoteDuration
 	sub [hl]
-	jr nc, .ok
+	jr nc, .ok2
 	ld a, 1
-.ok
+.ok2
 	ld [hl], a
 	; get frequency
 	ld hl, Channel1Frequency - Channel1
