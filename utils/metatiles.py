@@ -15,7 +15,7 @@ import array
 
 from itertools import izip_longest
 
-import pokemontools.png as png
+import png
 
 def chunk(L, n, fillvalue=None):
 	return izip_longest(*[iter(L)] * n, fillvalue=fillvalue)
