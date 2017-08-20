@@ -97,24 +97,25 @@ $(roms_md5): crystal
 	$(MD5) $(NAME)-$(VERSION).gbc > $@
 
 
-%.asm: ;
-
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
 	rgbasm $(RGBASM_FLAGS) -o $@ $<
 
-.gbc:
+.gbc: ;
 %.gbc: $(crystal_obj)
 	rgblink $(RGBLINK_FLAGS) -o $@ $^
 	rgbfix $(RGBFIX_FLAGS) $@
 
-%.png: ;
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
-%.lz: % ; $(LZ) $< $@
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
-%.bin: ;
-%.blk: ;
-%.tilemap: ;
+
+%.lz: % ; $(LZ) $< $@
+
+%.png: ; $(error ERROR: No rule to make '$@')
+%.asm: ; $(error ERROR: No rule to make '$@')
+%.bin: ; $(error ERROR: No rule to make '$@')
+%.blk: ; $(error ERROR: No rule to make '$@')
+%.tilemap: ; $(error ERROR: No rule to make '$@')
