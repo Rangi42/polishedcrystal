@@ -598,6 +598,8 @@ CursedBodyAbility:
 	jp EnableAnimations
 
 CuteCharmAbility:
+	call HasUserFainted
+	ret z
 	call DisableAnimations
 	; this runs ShowAbilityActivation when relevant
 	farcall BattleCommand_Attract
