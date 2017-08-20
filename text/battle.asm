@@ -1228,7 +1228,7 @@ StoleText:
 KnockedOffItemText:
 	text "<USER>"
 	line "knocked off"
-	cont ""
+	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt
