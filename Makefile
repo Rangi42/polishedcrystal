@@ -43,7 +43,7 @@ GFX    = $(PYTHON) gfx.py
 LZ     = utils/lzcomp
 MD5    = md5sum
 
-includes  := $(PYTHON) utils/scan_includes.py
+includes  := $(PYTHON) utils/pokemontools/scan_includes.py
 bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
 

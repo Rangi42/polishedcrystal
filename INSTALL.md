@@ -20,7 +20,7 @@ Then download [**rgbds 0.3.1**](https://github.com/bentley/rgbds/releases/). Oth
 In the **Cygwin terminal**:
 
 ```bash
-git clone --recursive https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/roukaour/polishedcrystal.git
 cd polishedcrystal
 ```
 
@@ -56,7 +56,7 @@ git checkout v0.3.1
 sudo make install
 cd ..
 
-git clone --recursive https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/roukaour/polishedcrystal.git
 cd polishedcrystal
 ```
 
@@ -86,7 +86,7 @@ git checkout v0.3.1
 sudo make install
 cd ..
 
-git clone --recursive https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/roukaour/polishedcrystal.git
 cd polishedcrystal
 ```
 
