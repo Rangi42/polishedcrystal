@@ -235,6 +235,7 @@ Some of these may never be added; they're just suggestions.
 * Rock Climb areas
 * Battle Factory
 * Medals for achievements
+* Take photos with your team against backdrops
 * Something like Habitat Lists or DexNav via the Town Map
 * Something like Poké Radar or Pokéwalker
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
