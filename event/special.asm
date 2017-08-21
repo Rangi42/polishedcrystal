@@ -46,6 +46,16 @@ endr
 	ld a, MALE
 	ld [hl], a
 
+; Recalculate stats.
+	ld hl, PartyMon1EVs - 1
+	call _GetLastPartyMonAttribute
+	push hl
+	ld hl, PartyMon1MaxHP
+	call _GetLastPartyMonAttribute
+	pop de
+	ld b, TRUE
+	predef CalcPkmnStats
+
 ; Nickname.
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [PartyCount]
