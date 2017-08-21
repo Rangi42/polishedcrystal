@@ -221,6 +221,12 @@ Some of these may never be added; they're just suggestions.
       * Pawniard → Bisharp
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
+* More moves
+   * Triple Kick is replacable (learned by Hitmontop, Hitmonlee, and Dodrio)
+   * Lock-On is replacable
+   * Harden is replacable (merge with Defense Curl)
+   * Make Double Kick hit 2–5 times with 20 power
+   * Add Rock Blast (for Cloyster's Skill Link)
 * More music
    * Pokémon Go Battle! Gym Leader (for Candela, Blanche, and Spark)
    * S/M Malie City (Day) (for Shamouti Shrine)
