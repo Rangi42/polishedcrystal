@@ -176,7 +176,7 @@ endc
 	move SWIFT,        EFFECT_ALWAYS_HIT,         60, NORMAL,    100, 20,   0, SPECIAL
 	move IRON_HEAD,    EFFECT_FLINCH_HIT,         80, STEEL,     100, 15,  30, PHYSICAL
 	move ICICLE_SPEAR, EFFECT_MULTI_HIT,          25, ICE,       100, 30,   0, PHYSICAL
-	move BULLDOZE,     EFFECT_SPEED_DOWN_HIT,     60, GROUND,    100, 20,   0, PHYSICAL
+	move BULLDOZE,     EFFECT_SPEED_DOWN_HIT,     60, GROUND,    100, 20, 100, PHYSICAL
 	move AMNESIA,      EFFECT_SP_DEF_UP_2,         0, PSYCHIC,   100, 20,   0, STATUS
 	move ROOST,        EFFECT_ROOST,               0, FLYING,    100, 10,   0, STATUS
 	move SOFTBOILED,   EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS

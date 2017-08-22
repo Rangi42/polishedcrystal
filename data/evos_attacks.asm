@@ -408,7 +408,7 @@ EkansEvosAttacks:
 	db 36, LEECH_LIFE ; Gastro Acid → TM move
 	db 38, IRON_TAIL ; Belch → TM move
 	db 41, HAZE
-	db 44, SCARY_FACE ; Coil → egg move
+	db 44, BULK_UP ; Coil → TM move
 	db 49, GUNK_SHOT
 	db 0 ; no more level-up moves
 
@@ -428,7 +428,7 @@ ArbokEvosAttacks:
 	db 44, LEECH_LIFE ; Gastro Acid → TM move
 	db 48, IRON_TAIL ; Belch → TM move
 	db 51, HAZE
-	db 56, SCARY_FACE ; Coil → egg move
+	db 56, BULK_UP ; Coil → TM move
 	db 63, GUNK_SHOT
 	db 0 ; no more level-up moves
 
