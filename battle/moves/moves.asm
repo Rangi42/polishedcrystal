@@ -146,7 +146,7 @@ endc
 	move SCREECH,      EFFECT_DEFENSE_DOWN_2,      0, NORMAL,     85, 40,   0, STATUS
 	move DOUBLE_TEAM,  EFFECT_EVASION_UP,          0, NORMAL,    100, 15,   0, STATUS
 	move RECOVER,      EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
-	move HARDEN,       EFFECT_DEFENSE_UP,          0, NORMAL,    100, 30,   0, STATUS
+	move ROCK_BLAST,   EFFECT_MULTI_HIT,          25, ROCK,       90, 25,   0, PHYSICAL
 	move MINIMIZE,     EFFECT_EVASION_UP_2,        0, NORMAL,    100, 10,   0, STATUS
 	move SMOKESCREEN,  EFFECT_ACCURACY_DOWN,       0, NORMAL,    100, 20,   0, STATUS
 	move CONFUSE_RAY,  EFFECT_CONFUSE,             0, GHOST,     100, 10,   0, STATUS
@@ -219,7 +219,7 @@ endc
 	move SUBSTITUTE,   EFFECT_SUBSTITUTE,          0, NORMAL,    100, 10,   0, STATUS
 	move GIGA_IMPACT,  EFFECT_HYPER_BEAM,        150, NORMAL,     90,  5,   0, PHYSICAL
 	move SKETCH,       EFFECT_SKETCH,              0, NORMAL,    100,  1,   0, STATUS
-	move TRIPLE_KICK,  EFFECT_TRIPLE_KICK,        10, FIGHTING,   90, 10,   0, PHYSICAL
+	move DRAIN_PUNCH,  EFFECT_LEECH_HIT,          75, FIGHTING,  100, 10,   0, PHYSICAL
 	move THIEF,        EFFECT_THIEF,              60, DARK,      100, 25, 100, PHYSICAL
 	move WILL_O_WISP,  EFFECT_BURN,                0, FIRE,       85, 15,   0, STATUS
 	move ZEN_HEADBUTT, EFFECT_FLINCH_HIT,         80, PSYCHIC,    90, 15,  20, PHYSICAL
@@ -255,7 +255,7 @@ endc
 	move ICY_WIND,     EFFECT_SPEED_DOWN_HIT,     55, ICE,        95, 15, 100, SPECIAL
 	move POWER_GEM,    EFFECT_NORMAL_HIT,         80, ROCK,      100, 20,   0, SPECIAL
 	move WILD_CHARGE,  EFFECT_RECOIL_HIT,         90, ELECTRIC,  100, 15,   0, PHYSICAL
-	move LOCK_ON,      EFFECT_LOCK_ON,             0, NORMAL,    100,  5,   0, STATUS
+	move POWER_WHIP,   EFFECT_NORMAL_HIT,        120, GRASS,      85, 10,   0, PHYSICAL
 	move OUTRAGE,      EFFECT_RAMPAGE,           120, DRAGON,    100, 10,   0, PHYSICAL
 	move SANDSTORM,    EFFECT_SANDSTORM,           0, ROCK,      100, 10,   0, STATUS
 	move GIGA_DRAIN,   EFFECT_LEECH_HIT,          75, GRASS,     100, 10,   0, SPECIAL
@@ -266,7 +266,7 @@ endc
 	move SWAGGER,      EFFECT_SWAGGER,             0, NORMAL,     85, 15, 100, STATUS
 	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
 	move SPARK,        EFFECT_PARALYZE_HIT,       65, ELECTRIC,  100, 20,  30, PHYSICAL
-	move FURY_CUTTER,  EFFECT_CONDITIONAL_BOOST,  40, BUG,        95, 20,   0, PHYSICAL
+	move BUG_BITE,     EFFECT_BUG_BITE,           60, BUG,       100, 20,   0, PHYSICAL
 	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     70, STEEL,      90, 25,  10, PHYSICAL
 	move MEAN_LOOK,    EFFECT_MEAN_LOOK,           0, NORMAL,    100,  5,   0, STATUS
 	move ATTRACT,      EFFECT_ATTRACT,             0, NORMAL,    100, 15,   0, STATUS

@@ -438,8 +438,6 @@ CantMove: ; 341f0
 	and $ff ^ (1<<SUBSTATUS_RAMPAGE + 1<<SUBSTATUS_CHARGED)
 	ld [hl], a
 
-	call ResetFuryCutterCount
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp FLY
@@ -2318,7 +2316,7 @@ BattleCommand_StatUpDownAnim: ; 34feb
 	ld e, a
 	ld d, 0
 	cp DEFENSE_CURL
-	jr nz, .not_withdraw
+	jr nz, .not_defense_curl
 	ld a, [hBattleTurn]
 	and a
 	ld a, [BattleMonSpecies]
@@ -2327,13 +2325,24 @@ BattleCommand_StatUpDownAnim: ; 34feb
 .got_user_species
 	ld hl, .withdraw_users
 	ld de, 1
+	push af
 	call IsInArray
 	jr nc, .not_withdraw
+	pop af
 	ld a, $1
-	jr .withdraw
+	jr .got_kick_counter
 .not_withdraw
+	pop af ; restore species to a
+	inc hl ; ld hl, .harden_users
+	; ld de, 1
+	call IsInArray
+	jr nc, .not_harden
+	ld a, $2
+	jr .got_kick_counter
+.not_harden
+.not_defense_curl
 	xor a
-.withdraw
+.got_kick_counter
 	ld [wKickCounter], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2350,6 +2359,29 @@ BattleCommand_StatUpDownAnim: ; 34feb
 	db CLOYSTER
 	db OMANYTE
 	db OMASTAR
+	db -1
+
+.harden_users
+	db METAPOD
+	db KAKUNA
+	db GRIMER
+	db MUK
+	db ONIX
+	db STEELIX
+	db KRABBY
+	db KINGLER
+	db STARYU
+	db STARMIE
+	db KABUTO
+	db KABUTOPS
+	db HERACROSS
+	db GLIGAR
+	db GLISCOR
+	db SLUGMA
+	db MAGCARGO
+	db CORSOLA
+	db PUPITAR
+	db TYRANITAR
 	db -1
 
 ; 34ffd
@@ -7627,6 +7659,10 @@ BattleCommand_KnockOff:
 	ld [hl], a
 	ret
 
+BattleCommand_BugBite:
+; TODO: bugbite
+	ret
+
 BattleCommand_PayDay: ; 3705c
 ; payday
 
@@ -8339,7 +8375,6 @@ BoostJumptable:
 	dbw AVALANCHE, DoAvalanche
 	dbw ACROBATICS, DoAcrobatics
 	dbw FACADE, DoFacade
-	dbw FURY_CUTTER, DoFuryCutter
 	dbw HEX, DoHex
 	dbw VENOSHOCK, DoVenoshock
 	dbw KNOCK_OFF, DoKnockOff
@@ -8410,32 +8445,6 @@ DoubleDamage:
 	ld [hl], a
 	ret
 
-DoFuryCutter:
-	ld a, [hBattleTurn]
-	and a
-	ld hl, PlayerFuryCutterCount
-	jr z, .got_fury_cutter_count
-	ld hl, EnemyFuryCutterCount
-.got_fury_cutter_count
-	ld a, [AttackMissed]
-	and a
-	jr nz, ResetFuryCutterCount
-
-	; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
-	ld a, [hl]
-	cp 3
-	jr nc, .capped
-	inc [hl]
-.capped
-	ld a, [hl]
-	ld b, a
-
-.checkdouble
-	dec b
-	ret z
-	call DoubleDamage
-	jr .checkdouble
-
 DoKnockOff:
 	call CheckSubstituteOpp
 	ret nz
@@ -8458,19 +8467,6 @@ DoKnockOff:
 	ld [CurDamage], a
 	ld a, l
 	ld [CurDamage + 1], a
-	ret
-
-ResetFuryCutterCount:
-	push hl
-	ld a, [hBattleTurn]
-	and a
-	ld hl, PlayerFuryCutterCount
-	jr z, .reset
-	ld hl, EnemyFuryCutterCount
-.reset
-	xor a
-	ld [hl], a
-	pop hl
 	ret
 
 INCLUDE "battle/effects/attract.asm"

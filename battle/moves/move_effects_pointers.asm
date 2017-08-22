@@ -164,3 +164,4 @@
 	dw Trick
 	dw KnockOff
 	dw FuryStrikes
+	dw BugBite

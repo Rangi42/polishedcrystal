@@ -14,6 +14,7 @@ BulbasaurEggMoves:
 	db PETAL_DANCE
 	db LIGHT_SCREEN
 	db SAFEGUARD
+	db POWER_WHIP
 	db $ff
 
 CharmanderEggMoves:
@@ -230,7 +231,6 @@ PoliwagEggMoves:
 	db HAZE
 	db SPLASH
 	db BUBBLE_BEAM
-	db LOCK_ON
 	db WATER_PULSE
 	db $ff
 
@@ -257,6 +257,7 @@ BellsproutEggMoves:
 	db SWORDS_DANCE
 	db REFLECT
 	db HEALINGLIGHT
+	db POWER_WHIP
 	db $ff
 
 TentacoolEggMoves:
@@ -339,6 +340,7 @@ ShellderEggMoves:
 	db TAKE_DOWN
 	db WATER_PULSE
 	db ICICLE_SPEAR
+	db ROCK_BLAST
 	db $ff
 
 GastlyEggMoves:
@@ -356,6 +358,7 @@ OnixEggMoves:
 	db FLAIL
 	db ROCK_SLIDE
 	db EARTHQUAKE
+	db ROCK_BLAST
 	db $ff
 
 DrowzeeEggMoves:
@@ -596,6 +599,7 @@ LedybaEggMoves:
 	db SCREECH
 	db LIGHT_SCREEN
 	db KNOCK_OFF
+	db DRAIN_PUNCH
 	db $ff
 
 SpinarakEggMoves:
@@ -660,7 +664,7 @@ MareepEggMoves:
 	db $ff
 
 SudowoodoEggMoves:
-	db HARDEN
+	db DEFENSE_CURL
 	db SELFDESTRUCT
 	db $ff
 
@@ -767,8 +771,9 @@ QwilfishEggMoves:
 
 HeracrossEggMoves:
 	db FLAIL
-	db HARDEN
+	db DEFENSE_CURL
 	db PURSUIT
+	db ROCK_BLAST
 	db $ff
 
 SneaselEggMoves:
@@ -829,6 +834,7 @@ RemoraidEggMoves:
 	db FLAIL
 	db HAZE
 	db OCTAZOOKA
+	db ROCK_BLAST
 	db SCREECH
 	db SUPERSONIC
 	db AURORA_BEAM
@@ -876,7 +882,6 @@ TyrogueEggMoves:
 	db MACH_PUNCH
 	db PURSUIT
 	db RAPID_SPIN
-	db LOCK_ON
 	db $ff
 
 ElekidEggMoves:

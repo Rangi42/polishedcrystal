@@ -189,6 +189,7 @@ endm
 	command skillswap               ; b6
 	command trick                   ; b7
 	command knockoff                ; b8
+	command bugbite                 ; b9
 
 	enum_start -1, -1
 	command endmove

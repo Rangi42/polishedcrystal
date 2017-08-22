@@ -183,3 +183,4 @@ BattleCommandPointers:
 	dw BattleCommand_SkillSwap
 	dw BattleCommand_Trick
 	dw BattleCommand_KnockOff
+	dw BattleCommand_BugBite

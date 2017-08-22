@@ -1,3 +1,4 @@
+BugBite: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -25,6 +26,7 @@ MegaKick:
 NightSlash:
 Peck:
 PowerGem:
+PowerWhip:
 Psystrike:
 QuickAttack:
 RazorLeaf:
@@ -90,6 +92,7 @@ MegaDrain:
 LeechLife:
 GigaDrain:
 DrainKiss:
+DrainPunch:
 	checkobedience
 	usedmovetext
 	doturn
@@ -143,6 +146,7 @@ DoubleKick:
 DoubleSlap:
 PinMissile:
 IcicleSpear:
+RockBlast:
 FuryStrikes:
 	checkobedience
 	usedmovetext
@@ -797,7 +801,6 @@ AttackUp:
 	endmove
 
 DefenseUp:
-Harden:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1877,7 +1880,6 @@ Swagger:
 Avalanche:
 Acrobatics:
 Facade:
-FuryCutter:
 Hex:
 Venoshock:
 ConditionalBoostHit:

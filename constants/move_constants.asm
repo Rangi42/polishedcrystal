@@ -106,7 +106,7 @@
 	const SCREECH      ; $67
 	const DOUBLE_TEAM  ; $68
 	const RECOVER      ; $69
-	const HARDEN       ; $6a
+	const ROCK_BLAST   ; $6a
 	const MINIMIZE     ; $6b
 	const SMOKESCREEN  ; $6c
 	const CONFUSE_RAY  ; $6d
@@ -167,7 +167,7 @@
 	const SUBSTITUTE   ; $a4
 	const GIGA_IMPACT  ; $a5
 	const SKETCH       ; $a6
-	const TRIPLE_KICK  ; $a7
+	const DRAIN_PUNCH  ; $a7
 	const THIEF        ; $a8
 	const WILL_O_WISP  ; $a9
 	const ZEN_HEADBUTT ; $aa
@@ -199,7 +199,7 @@
 	const ICY_WIND     ; $c4
 	const POWER_GEM    ; $c5
 	const WILD_CHARGE  ; $c6
-	const LOCK_ON      ; $c7
+	const POWER_WHIP   ; $c7
 	const OUTRAGE      ; $c8
 	const SANDSTORM    ; $c9
 	const GIGA_DRAIN   ; $ca
@@ -210,7 +210,7 @@
 	const SWAGGER      ; $cf
 	const MILK_DRINK   ; $d0
 	const SPARK        ; $d1
-	const FURY_CUTTER  ; $d2
+	const BUG_BITE     ; $d2
 	const STEEL_WING   ; $d3
 	const MEAN_LOOK    ; $d4
 	const ATTRACT      ; $d5

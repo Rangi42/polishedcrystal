@@ -34,7 +34,7 @@ NoisyForest_MapEventHeader:
 	person_event SPRITE_CHILD, 15, 40, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestChildText, -1
 	itemball_event 2, 41, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
 	itemball_event 28, 16, MULCH, 1, EVENT_NOISY_FOREST_MULCH
-	tmhmball_event 23, 17, TM_U_TURN, EVENT_NOISY_FOREST_TM_U_TURN
+	tmhmball_event 23, 17, TM_DRAIN_PUNCH, EVENT_NOISY_FOREST_TM_DRAIN_PUNCH
 	cuttree_event 12, 40, EVENT_NOISY_FOREST_CUT_TREE_1
 	cuttree_event 21, 12, EVENT_NOISY_FOREST_CUT_TREE_2
 

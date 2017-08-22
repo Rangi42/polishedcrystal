@@ -104,7 +104,7 @@
 	dw ScreechDescription
 	dw DoubleTeamDescription
 	dw RecoverDescription
-	dw HardenDescription
+	dw RockBlastDescription
 	dw MinimizeDescription
 	dw SmokescreenDescription
 	dw ConfuseRayDescription
@@ -165,7 +165,7 @@
 	dw SubstituteDescription
 	dw GigaImpactDescription
 	dw SketchDescription
-	dw TripleKickDescription
+	dw DrainPunchDescription
 	dw ThiefDescription
 	dw WillOWispDescription
 	dw ZenHeadbuttDescription
@@ -197,7 +197,7 @@
 	dw IcyWindDescription
 	dw PowerGemDescription
 	dw WildChargeDescription
-	dw LockOnDescription
+	dw PowerWhipDescription
 	dw OutrageDescription
 	dw SandstormDescription
 	dw GigaDrainDescription
@@ -208,7 +208,7 @@
 	dw SwaggerDescription
 	dw MilkDrinkDescription
 	dw SparkDescription
-	dw FuryCutterDescription
+	dw BugBiteDescription
 	dw SteelWingDescription
 	dw MeanLookDescription
 	dw AttractDescription
@@ -291,6 +291,7 @@ MegaDrainDescription:
 LeechLifeDescription:
 GigaDrainDescription:
 DrainKissDescription:
+DrainPunchDescription:
 	db   "Steals 1/2 of the"
 	next "damage inflicted.@"
 
@@ -450,7 +451,6 @@ SweetKissDescription:
 	db   "A move that may"
 	next "confuse the foe.@"
 
-HardenDescription:
 DefenseCurlDescription:
 	db   "Raises the user's"
 	next "Defense.@"
@@ -532,14 +532,6 @@ DigDescription:
 	db   "1st turn: Burrow"
 	next "2nd turn: Attack@"
 
-DoubleSlapDescription:
-	db   "Repeatedly slaps"
-	next "2-5 times.@"
-
-FuryStrikesDescription:
-	db   "Scratches or jabs"
-	next "2-5 times.@"
-
 TrickDescription:
 	db   "Swaps held items"
 	next "with the foe.@"
@@ -587,6 +579,26 @@ IcePunchDescription:
 ThunderpunchDescription:
 	db   "An electric punch."
 	next "It may paralyze.@"
+
+DoubleSlapDescription:
+	db   "Repeatedly slaps"
+	next "2-5 times.@"
+
+FuryStrikesDescription:
+	db   "Scratches or jabs"
+	next "2-5 times.@"
+
+PinMissileDescription:
+	db   "Fires pins that"
+	next "strike 2-5 times.@"
+
+IcicleSpearDescription:
+	db   "Fires icicles to"
+	next "hit 2-5 times.@"
+
+RockBlastDescription:
+	db   "Hurls boulders to"
+	next "hit 2-5 times.@"
 
 XScissorDescription:
 	db   "Slashes foe with"
@@ -648,10 +660,6 @@ UTurnDescription:
 VoltSwitchDescription:
 	db   "Switches out after"
 	next "making its attack.@"
-
-PinMissileDescription:
-	db   "Fires pins that"
-	next "strike 2-5 times.@"
 
 RoarDescription:
 	db   "Scares wild foes"
@@ -769,10 +777,6 @@ VenoshockDescription:
 	db   "Damage doubles if"
 	next "foe is poisoned.@"
 
-IcicleSpearDescription:
-	db   "Fires icicles to"
-	next "hit 2-5 times.@"
-
 BulldozeDescription:
 	db   "A Ground attack"
 	next "that lowers Speed.@"
@@ -836,10 +840,6 @@ StruggleDescription:
 SketchDescription:
 	db   "Copies the foe's"
 	next "move permanently.@"
-
-TripleKickDescription:
-	db   "Hits three times"
-	next "with rising power.@"
 
 ThiefDescription:
 	db   "An attack that may"
@@ -922,10 +922,6 @@ PowerGemDescription:
 	db   "Attacks with a ray"
 	next "of gem-like light.@"
 
-LockOnDescription:
-	db   "Ensures the next"
-	next "attack will hit.@"
-
 OutrageDescription:
 	db   "Works 2-3 turns"
 	next "and confuses user.@"
@@ -951,9 +947,9 @@ SwaggerDescription:
 	db   "Causes confusion"
 	next "and raises Attack.@"
 
-FuryCutterDescription:
-	db   "Successive hits"
-	next "raise power.@"
+BugBiteDescription:
+	db   "Bites the foe and"
+	next "eats a held Berry.@"
 
 SteelWingDescription:
 	db   "Stiff wings strike"
@@ -1001,6 +997,10 @@ DynamicpunchDescription:
 
 MegahornDescription:
 	db   "A powerful charge"
+	next "attack.@"
+
+PowerWhipDescription:
+	db   "A violent lash"
 	next "attack.@"
 
 DragonbreathDescription:

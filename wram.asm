@@ -400,6 +400,7 @@ AttackMissed::
 ; nonzero for a miss
 	ds 1
 
+BattleSubStatusWRAM::
 PlayerSubStatus1::
 ; bit
 ; 7 attract
@@ -472,9 +473,8 @@ PlayerEncoreCount::
 	ds 1
 PlayerPerishCount::
 	ds 1
-PlayerFuryCutterCount::
-	ds 1
 PlayerProtectCount::
+	ds 1
 	ds 1
 
 EnemyAbility::
@@ -491,10 +491,10 @@ EnemyEncoreCount::
 	ds 1
 EnemyPerishCount::
 	ds 1
-EnemyFuryCutterCount::
-	ds 1
 EnemyProtectCount::
 	ds 1
+	ds 1
+BattleSubStatusWRAMEnd::
 
 PlayerDamageTaken::
 	ds 2

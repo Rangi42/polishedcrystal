@@ -689,15 +689,10 @@ endr
 	cp b
 	jr c, .asm_38936
 
-; Greatly encourage this move if the player is in the middle of Fury Cutter or Rollout.
-	ld a, [PlayerFuryCutterCount]
-	and a
-	jr nz, .asm_388ef
-
+; Greatly encourage this move if the player is in the middle of Rollout.
 	ld a, [PlayerSubStatus1]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .asm_388ef
-
 
 .asm_38936
 	inc [hl]
@@ -868,11 +863,7 @@ endr
 	cp b
 	jr c, .asm_389e4
 
-; Greatly encourage this move if the player is in the middle of Fury Cutter or Rollout.
-	ld a, [PlayerFuryCutterCount]
-	and a
-	jr nz, .asm_3899d
-
+; Greatly encourage this move if the player is in the middle of Rollout.
 	ld a, [PlayerSubStatus1]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .asm_3899d
@@ -1534,7 +1525,6 @@ endr
 	db SWORDS_DANCE
 	db TELEPORT
 	db TRICK
-	db TRIPLE_KICK
 	db $ff
 ; 38ca4
 
@@ -1987,10 +1977,6 @@ AI_Smart_Protect: ; 38ed2
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .asm_38f14
-
-	ld a, [PlayerFuryCutterCount]
-	cp 3
-	jr nc, .asm_38f0d
 
 	ld a, [PlayerSubStatus3]
 	bit SUBSTATUS_CHARGED, a
@@ -3110,7 +3096,6 @@ AI_Opportunist: ; 39315
 	db FOCUS_ENERGY
 	db GROWL
 	db GROWTH
-	db HARDEN
 	db HAZE
 	db HONE_CLAWS
 	db LEECH_SEED

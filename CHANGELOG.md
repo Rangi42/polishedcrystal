@@ -49,6 +49,13 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Twister with Aqua Jet.
 * Add: Replace Sludge with Venoshock.
 * Add: Replace Egg Bomb with Skill Swap.
+* Add: Replace Mist with Amnesia.
+* Add: Replace Fury Cutter with Bug Bite.
+* Add: Replace Harden with Rock Blast.
+* Add: Replace Triple Kick with Drain Punch.
+* Add: Replace Lock-On with Power Whip.
+* Add: Replace Moonlight and Morning Sun with Knock Off and "HealingLight".
+* Add: Replace Fury Attack and Fury Cutter with Trick and "Fury Strikes".
 * Add: Giga Impact.
 * Add: NPC trainers can have nicknamed Pokémon.
 * Add: NPC trainers can have custom EVs.

@@ -480,6 +480,7 @@ ContactMoves::
 	db ASTONISH
 	db BITE
 	db BODY_SLAM
+	db BUG_BITE
 	db BULLET_PUNCH
 	db CLOSE_COMBAT
 	db COUNTER
@@ -493,6 +494,7 @@ ContactMoves::
 	db DOUBLE_EDGE
 	db DRAGON_CLAW
 	db DRAIN_KISS
+	db DRAIN_PUNCH
 	db DRILL_PECK
 	db DYNAMICPUNCH
 	db EXTREMESPEED
@@ -503,7 +505,6 @@ ContactMoves::
 	db FLAME_WHEEL
 	db FLARE_BLITZ
 	db FLY
-	db FURY_CUTTER
 	db FURY_STRIKES
 	db GIGA_IMPACT
 	db HEADBUTT
@@ -527,6 +528,7 @@ ContactMoves::
 	db PETAL_DANCE
 	db PLAY_ROUGH
 	db POISON_JAB
+	db POWER_WHIP
 	db PURSUIT
 	db QUICK_ATTACK
 	db RAGE
@@ -549,7 +551,6 @@ ContactMoves::
 	db THIEF
 	db THRASH
 	db THUNDERPUNCH
-	db TRIPLE_KICK
 	db U_TURN
 	db VINE_WHIP
 	db WATERFALL
@@ -570,6 +571,7 @@ PowderMoves::
 PunchingMoves::
 	db BULLET_PUNCH
 	db DIZZY_PUNCH
+	db DRAIN_PUNCH
 	db DYNAMICPUNCH
 	db FIRE_PUNCH
 	db MACH_PUNCH

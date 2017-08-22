@@ -996,7 +996,7 @@ BattleTowerMons4:
 
 	db MUK
 	db QUICK_CLAW
-	db SCREECH, TOXIC, SLUDGE_BOMB, HARDEN
+	db SCREECH, TOXIC, SLUDGE_BOMB, DEFENSE_CURL
 	db $67, $56, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 

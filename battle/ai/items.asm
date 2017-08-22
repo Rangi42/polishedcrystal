@@ -238,7 +238,6 @@ endr
 	ld [wEnemyGoesFirst], a
 
 	xor a
-	ld [EnemyFuryCutterCount], a
 	ld [EnemyProtectCount], a
 	ld [wEnemyRageCounter], a
 

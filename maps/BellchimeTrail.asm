@@ -113,7 +113,7 @@ BellchimeTrailValerieScript:
 	writetext .RewardText
 	buttonsound
 	verbosegivetmhm TM_DAZZLINGLEAM
-	setevent EVENT_GOT_TM60_DAZZLINGLEAM_FROM_VALERIE
+	setevent EVENT_GOT_TM49_DAZZLINGLEAM_FROM_VALERIE
 	writetext .FarewellText
 .Depart
 	waitbutton

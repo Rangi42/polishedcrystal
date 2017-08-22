@@ -83,6 +83,7 @@ Shamouti Island:
 
 ### Move effects
 
+* Bug Bite eats and uses the foe's held Berry
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -99,6 +100,7 @@ High priority:
 
 * Aqua Jet
 * Giga Impact
+* Rock Blast
 * Skill Swap
 * Stone Edge
 * Sucker Punch
@@ -110,6 +112,7 @@ Low priority:
 
 * Aerial Ace
 * Aqua Tail
+* Bug Bite
 * Bulldoze
 * Close Combat
 * DazzlinGleam
