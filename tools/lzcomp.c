@@ -261,22 +261,22 @@ struct command *try_compress(const unsigned char *data, const unsigned char *bit
 			*current_command = pick_best_command(2, copy, repetition);
 		*current_command = pick_best_command(2, (struct command) {.command = 0, .count = 1, .value = position}, *current_command);
 		if (flags & 2) {
-			if (previous_data && (previous_data != 32) && (previous_data != 1024) && (command_size(*current_command) == current_command -> count))
+			if (previous_data && (previous_data != 32) && (previous_data != 1024) && (command_size(*current_command) == current_command->count))
 				*current_command = (struct command) {.command = 0, .count = 1, .value = position};
 		}
 		if (lookahead_flag) {
 			if (lookahead >= lookahead_flag)
 				lookahead = 0;
-			else if (current_command -> command) {
+			else if (current_command->command) {
 				lookahead++;
 				*current_command = (struct command) {.command = 0, .count = 1, .value = position};
 			}
 		}
-		if (current_command -> command)
+		if (current_command->command)
 			previous_data = 0;
 		else
-			previous_data += current_command -> count;
-		position += (current_command++) -> count;
+			previous_data += current_command->count;
+		position += (current_command++)->count;
 	}
 	optimize(commands, current_command - commands);
 	repack(&commands, length);
@@ -391,44 +391,44 @@ short command_size (struct command command) {
 }
 
 void optimize (struct command *commands, unsigned short count) {
-	while (count && (commands -> command == 7)) commands++, count--;
+	while (count && (commands->command == 7)) commands++, count--;
 	if (count < 2) return;
 	struct command *end = commands + count;
 	struct command *next = commands + 1;
 	while (next < end) {
-		if (next -> command == 7) goto skip;
+		if (next->command == 7) goto skip;
 		if (
-				!(commands -> command) &&
-				(command_size(*next) == next -> count) &&
-				((commands -> count + next -> count) <= 1024) &&
-				((commands -> count > 32) || ((commands -> count + next -> count) <= 32))
+				!(commands->command) &&
+				(command_size(*next) == next->count) &&
+				((commands->count + next->count) <= 1024) &&
+				((commands->count > 32) || ((commands->count + next->count) <= 32))
 			 ) {
-			commands -> count += next -> count;
-			next -> command = 7;
+			commands->count += next->count;
+			next->command = 7;
 			goto skip;
 		}
-		if (next -> command != commands -> command) goto accept;
-		switch (commands -> command) {
+		if (next->command != commands->command) goto accept;
+		switch (commands->command) {
 			case 0:
-				if ((commands -> value + commands -> count) != next -> value) break;
-				commands -> count += next -> count;
-				next -> command = 7;
-				if (commands -> count <= 1024) goto skip;
-				next -> command = 0;
-				next -> value = commands -> value + 1024;
-				next -> count = commands -> count - 1024;
-				commands -> count = 1024;
+				if ((commands->value + commands->count) != next->value) break;
+				commands->count += next->count;
+				next->command = 7;
+				if (commands->count <= 1024) goto skip;
+				next->command = 0;
+				next->value = commands->value + 1024;
+				next->count = commands->count - 1024;
+				commands->count = 1024;
 				break;
 			case 1:
-				if (commands -> value != next -> value) break;
+				if (commands->value != next->value) break;
 			case 3:
-				if ((commands -> count + next -> count) <= 1024) {
-					commands -> count += next -> count;
-					next -> command = 7;
+				if ((commands->count + next->count) <= 1024) {
+					commands->count += next->count;
+					next->command = 7;
 					goto skip;
 				}
-				next -> count = (commands -> count + next -> count) - 1024;
-				commands -> count = 1024;
+				next->count = (commands->count + next->count) - 1024;
+				commands->count = 1024;
 				break;
 		}
 		accept:
@@ -477,22 +477,22 @@ struct command *merge_command_sequences (const struct command *current, unsigned
 	const struct command *saved_new;
 	unsigned short current_pos, new_pos;
 	while (current_length) {
-		if (current -> count == new -> count) {
+		if (current->count == new->count) {
 			*(current_command++) = pick_best_command(2, *(current++), *(new++));
 			current_length--;
 			continue;
 		}
 		saved_current = current;
 		saved_new = new;
-		current_pos = (current++) -> count;
-		new_pos = (new++) -> count;
+		current_pos = (current++)->count;
+		new_pos = (new++)->count;
 		current_length--;
 		while (current_pos != new_pos)
 			if (current_pos < new_pos) {
-				current_pos += (current++) -> count;
+				current_pos += (current++)->count;
 				current_length--;
 			} else
-				new_pos += (new++) -> count;
+				new_pos += (new++)->count;
 		current_pos = compressed_length(saved_current, current - saved_current);
 		new_pos = compressed_length(saved_new, new - saved_new);
 		if (new_pos < current_pos) {
