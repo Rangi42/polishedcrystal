@@ -75,12 +75,10 @@ void scan_file(char* filename) {
 					buffer = strchr(buffer, '"');
 				}
 				break;
-
 		}
 		if (!buffer) {
 			break;
 		}
-
 	}
 
 	free(orig);
