@@ -46,18 +46,9 @@ endr
 	ld a, MALE
 	ld [hl], a
 
-; Recalculate stats.
-	ld hl, PartyMon1EVs - 1
-	call _GetLastPartyMonAttribute
-	push hl
-	ld hl, PartyMon1MaxHP
-	call _GetLastPartyMonAttribute
-	pop de
-	ld b, TRUE
-	predef CalcPkmnStats
+; BUG: stats are not recalculated after changing DVs and nature.
 
 ; Nickname.
-	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [PartyCount]
 	dec a
 	ld hl, PartyMonNicknames
