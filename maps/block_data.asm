@@ -432,6 +432,15 @@ UndergroundPathSwitchRoomEntrances_BlockData:
 WarehouseEntrance_BlockData:
 	INCBIN "maps/WarehouseEntrance.blk"
 
+MagnetTunnelEast_BlockData:
+	INCBIN "maps/MagnetTunnelEast.blk"
+
+MagnetTunnelWest_BlockData:
+	INCBIN "maps/MagnetTunnelWest.blk"
+
+MagnetTunnelInside_BlockData:
+	INCBIN "maps/MagnetTunnelInside.blk"
+
 NationalPark_BlockData:
 NationalParkBugContest_BlockData:
 	INCBIN "maps/NationalPark.blk"
@@ -457,14 +466,14 @@ EcruteakShrineOutside_BlockData:
 EcruteakShrineInside_BlockData:
 	INCBIN "maps/EcruteakShrineInside.blk"
 
+
+SECTION "Map Blockdata 3", ROMX
+
 BellchimeTrail_BlockData:
 	INCBIN "maps/BellchimeTrail.blk"
 
 TinTower1F_BlockData:
 	INCBIN "maps/TinTower1F.blk"
-
-
-SECTION "Map Blockdata 3", ROMX
 
 TinTower2F_BlockData:
 	INCBIN "maps/TinTower2F.blk"
@@ -608,6 +617,9 @@ QuietCaveB3F_BlockData:
 EmbeddedTower_BlockData:
 	INCBIN "maps/EmbeddedTower.blk"
 
+
+SECTION "Map Blockdata 4", ROMX
+
 MountMortar1FOutside_BlockData:
 	INCBIN "maps/MountMortar1FOutside.blk"
 
@@ -616,9 +628,6 @@ MountMortar1FInside_BlockData:
 
 MountMortar2FInside_BlockData:
 	INCBIN "maps/MountMortar2FInside.blk"
-
-
-SECTION "Map Blockdata 4", ROMX
 
 MountMortarB1F_BlockData:
 	INCBIN "maps/MountMortarB1F.blk"
@@ -766,14 +775,14 @@ TrainerHouseB1F_BlockData:
 ViridianForest_BlockData:
 	INCBIN "maps/ViridianForest.blk"
 
+
+SECTION "Map Blockdata 5", ROMX
+
 PewterGym_BlockData:
 	INCBIN "maps/PewterGym.blk"
 
 PewterCity_BlockData:
 	INCBIN "maps/PewterCity.blk"
-
-
-SECTION "Map Blockdata 5", ROMX
 
 PewterMuseumOfScience1F_BlockData:
 	INCBIN "maps/PewterMuseumOfScience1F.blk"
@@ -920,14 +929,14 @@ CeladonGameCorner_BlockData:
 CeladonGameCornerPrizeRoom_BlockData:
 	INCBIN "maps/CeladonGameCornerPrizeRoom.blk"
 
+
+SECTION "Map Blockdata 6", ROMX
+
 CeladonCafe_BlockData:
 	INCBIN "maps/CeladonCafe.blk"
 
 CeladonChiefHouse_BlockData:
 	INCBIN "maps/CeladonChiefHouse.blk"
-
-
-SECTION "Map Blockdata 6", ROMX
 
 CeladonDeptStore1F_BlockData:
 	INCBIN "maps/CeladonDeptStore1F.blk"
@@ -1073,14 +1082,14 @@ FuchsiaGym_BlockData:
 FuchsiaCity_BlockData:
 	INCBIN "maps/FuchsiaCity.blk"
 
+
+SECTION "Map Blockdata 7", ROMX
+
 LuckyIsland_BlockData:
 	INCBIN "maps/LuckyIsland.blk"
 
 LuckyIslandHidden_BlockData:
 	INCBIN "maps/LuckyIslandHidden.blk"
-
-
-SECTION "Map Blockdata 7", ROMX
 
 SafariZoneHub_BlockData:
 	INCBIN "maps/SafariZoneHub.blk"
@@ -1225,14 +1234,14 @@ IceIslandRoof_BlockData:
 LightningIslandRoof_BlockData:
 	INCBIN "maps/ElementalIsland.blk"
 
+
+SECTION "Map Blockdata 8", ROMX
+
 ValenciaIsland_BlockData:
 	INCBIN "maps/ValenciaIsland.blk"
 
 ValenciaPort_BlockData:
 	INCBIN "maps/ValenciaPort.blk"
-
-
-SECTION "Map Blockdata 8", ROMX
 
 IvysLab_BlockData:
 	INCBIN "maps/IvysLab.blk"
@@ -1383,11 +1392,11 @@ Route33_BlockData:
 Route34_BlockData:
 	INCBIN "maps/Route34.blk"
 
-Route35_BlockData:
-	INCBIN "maps/Route35.blk"
-
 
 SECTION "Map Blockdata 9", ROMX
+
+Route35_BlockData:
+	INCBIN "maps/Route35.blk"
 
 Route35Coast_BlockData:
 	INCBIN "maps/Route35Coast.blk"

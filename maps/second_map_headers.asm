@@ -19,9 +19,10 @@
 	map_header_2 CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, ROUTE_41, Route41, 0, 0, 27
 
-	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH
+	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
 	connection north, ROUTE_35, Route35, 7, 0, 10
 	connection south, ROUTE_34, Route34, 7, 0, 10
+	connection east, MAGNET_TUNNEL_WEST, MagnetTunnelWest, 0, 0, 11
 
 	map_header_2 OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
 	connection north, ROUTE_39, Route39, 5, 0, 10
@@ -74,9 +75,10 @@
 	connection south, ROUTE_30, Route30, 10, 0, 10
 	connection west, VIOLET_CITY, VioletCity, -2, 6, 12
 
-	map_header_2 Route32, ROUTE_32, $5, NORTH | SOUTH | EAST
+	map_header_2 Route32, ROUTE_32, $5, NORTH | SOUTH | WEST | EAST
 	connection north, VIOLET_CITY, VioletCity, 0, 0, 13
 	connection south, ROUTE_33, Route33, 0, 0, 10
+	connection west, MAGNET_TUNNEL_EAST, MagnetTunnelEast, 9, 0, 11
 	connection east, CHERRYGROVE_BAY, CherrygroveBay, 18, 0, 20
 
 	map_header_2 Route33, ROUTE_33, $5, NORTH | WEST
@@ -358,6 +360,12 @@
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24
 	connection west, ROUTE_41, Route41, -3, 0, 20
 
+	map_header_2 MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, EAST
+	connection east, ROUTE_32, Route32, -1, 8, 11
+
+	map_header_2 MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
+	connection west, GOLDENROD_CITY, GoldenrodCity, 0, 0, 11
+
 	map_header_2 Route23, ROUTE_23, $f, NORTH
 	connection north, INDIGO_PLATEAU, IndigoPlateau, 0, 0, 10
 
@@ -445,6 +453,7 @@
 	map_header_2 TeamRocketBaseB3F, TEAM_ROCKET_BASE_B3F, $0, 0
 	map_header_2 IlexForest, ILEX_FOREST, $35, 0
 	map_header_2 MurkySwamp, MURKY_SWAMP, $35, 0
+	map_header_2 MagnetTunnelInside, MAGNET_TUNNEL_INSIDE, $9, 0
 	map_header_2 WarehouseEntrance, WAREHOUSE_ENTRANCE, $0, 0
 	map_header_2 UndergroundPathSwitchRoomEntrances, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, $0, 0
 	map_header_2 GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $0, 0
