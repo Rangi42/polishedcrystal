@@ -142,8 +142,8 @@ void write_command_to_textfile(FILE *fp, struct command command, const unsigned 
 			rv = fprintf(fp, "\tlzrepeat %u, $%02hhx\n", command.count, (unsigned char) command.value);
 			break;
 		case 2:
-// gcc: warning: comparison is always false due to limited range of data type
-//      if ((command.value < 0) || (command.value > 65535)) error_exit(2, "invalid command in output stream");
+			// gcc: warning: comparison is always false due to limited range of data type
+			// if ((command.value < 0) || (command.value > 65535)) error_exit(2, "invalid command in output stream");
 			rv = fprintf(fp, "\tlzrepeat %u, $%02hhx, $%02hhx\n", command.count, (unsigned char) command.value, (unsigned char) (command.value >> 8));
 			break;
 		case 3:
@@ -421,6 +421,8 @@ void optimize (struct command *commands, unsigned short count) {
 				break;
 			case 1:
 				if (commands->value != next->value) break;
+				// gcc 7: warning: this statement may fall through
+				// falls through
 			case 3:
 				if ((commands->count + next->count) <= 1024) {
 					commands->count += next->count;
