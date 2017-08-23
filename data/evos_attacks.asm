@@ -3464,7 +3464,7 @@ FlaaffyEvosAttacks:
 if DEF(FAITHFUL)
 	db EVOLVE_LEVEL, 30, AMPHAROS
 else
-	db EVOLVE_LEVEL, 40, AMPHAROS
+	db EVOLVE_LEVEL, 35, AMPHAROS
 endc
 	db 0 ; no more evolutions
 	db 1, TACKLE
@@ -3498,7 +3498,11 @@ AmpharosEvosAttacks:
 	db 20, HEAL_BELL ; Take Down → HGSS tutor move
 	db 25, TAKE_DOWN ; Electro Ball → Take Down
 	db 29, CONFUSE_RAY
+if DEF(FAITHFUL)
 	db 35, POWER_GEM
+else
+	db 34, POWER_GEM
+endc
 	db 40, THUNDERBOLT ; Discharge → TM move
 	db 46, SAFEGUARD ; Cotton Guard → egg move
 	db 51, DAZZLINGLEAM ; Signal Beam → new move
@@ -3640,13 +3644,11 @@ YanmaEvosAttacks:
 	db 30, PURSUIT
 if DEF(FAITHFUL)
 	db 33, ANCIENTPOWER
-	db 38, HYPNOSIS
-	db 43, WING_ATTACK ; Slash → Wing Attack
 else
-	db 33, WING_ATTACK ; AncientPower → Wing Attack
-	db 38, HYPNOSIS
-	db 43, ANCIENTPOWER ; Wing Attack → AncientPower
+	db 35, ANCIENTPOWER
 endc
+	db 38, HYPNOSIS
+	db 43, WING_ATTACK
 	db 46, SCREECH
 	db 49, U_TURN
 	db 54, AIR_SLASH
@@ -3670,13 +3672,11 @@ YanmegaEvosAttacks:
 	db 30, PURSUIT
 if DEF(FAITHFUL)
 	db 33, ANCIENTPOWER
+else
+	db 35, ANCIENTPOWER
+endc
 	db 38, SLASH ; Feint → Slash
 	db 43, WING_ATTACK ; Slash → Wing Attack
-else
-	db 33, WING_ATTACK ; AncientPower → Wing Attack
-	db 38, SLASH ; Feint → Slash
-	db 43, ANCIENTPOWER ; Slash → AncientPower
-endc
 	db 46, SCREECH
 	db 49, U_TURN
 	db 54, AIR_SLASH

@@ -1,11 +1,21 @@
 	db FLAAFFY ; 180
 
+if DEF(FAITHFUL)
 	db  70,  55,  55,  45,  80,  60
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  70,  60,  60,  45,  85,  65
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 	db ELECTRIC, ELECTRIC
+if DEF(FAITHFUL)
 	db 120 ; catch rate
 	db 117 ; base exp
+else
+	db 110 ; catch rate
+	db 127 ; base exp
+endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	db FEMALE_50 ; gender
