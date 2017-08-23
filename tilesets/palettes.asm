@@ -69,8 +69,6 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .ice_path_or_hall_of_fame
 	cp TILESET_RADIO_TOWER
 	jp z, .radio_towers
-	cp TILESET_FOREST
-	jp z, .maybe_yellow_forest_or_murky_swamp
 	cp TILESET_GYM_1
 	jp z, .maybe_elite_room
 	cp TILESET_GYM_2
@@ -106,6 +104,8 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_sinjoh_ruins
 	cp TILESET_JOHTO_1
 	jp z, .maybe_special_johto_1
+	cp TILESET_FOREST
+	jp z, .maybe_special_forest
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
 
@@ -195,26 +195,6 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_HAUNTED_RADIO_TOWER_6F
 	jp z, .load_eight_bg_palettes
 	ld hl, RadioTowerPalette
-	jp .load_eight_bg_palettes
-
-.maybe_yellow_forest_or_murky_swamp
-	ld a, [MapGroup]
-	cp GROUP_YELLOW_FOREST
-	jr nz, .not_yellow_forest
-	ld a, [MapNumber]
-	cp MAP_YELLOW_FOREST
-	jr nz, .not_yellow_forest
-	ld hl, YellowForestPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.not_yellow_forest
-	ld a, [MapGroup]
-	cp GROUP_MURKY_SWAMP
-	jp nz, .do_nothing
-	ld a, [MapNumber]
-	cp MAP_MURKY_SWAMP
-	jp nz, .do_nothing
-	ld hl, MurkySwampPalette
 	jp .load_eight_bg_palettes
 
 .maybe_elite_room
@@ -463,7 +443,47 @@ LoadSpecialMapPalette: ; 494ac
 .not_bellchime_trail
 	jp .do_nothing
 
+.maybe_special_forest
+	ld a, [MapGroup]
+	cp GROUP_YELLOW_FOREST
+	jr nz, .not_yellow_forest
+	ld a, [MapNumber]
+	cp MAP_YELLOW_FOREST
+	jr nz, .not_yellow_forest
+	ld hl, YellowForestPalette
+	jp .load_eight_time_of_day_bg_palettes
+
+.not_yellow_forest
+	ld a, [MapGroup]
+	cp GROUP_MURKY_SWAMP
+	jr nz, .not_murky_swamp
+	ld a, [MapNumber]
+	cp MAP_MURKY_SWAMP
+	jr nz, .not_murky_swamp
+	ld hl, MurkySwampPalette
+	jp .load_eight_bg_palettes
+
+.not_murky_swamp
+	ld a, [MapGroup]
+	cp GROUP_HIDDEN_TREE_GROTTO
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_HIDDEN_TREE_GROTTO
+	jp nz, .do_nothing
+	ld hl, HiddenTreeGrottoPalette
+	jp .load_eight_bg_palettes
+
 .maybe_special_cave
+	ld a, [MapGroup]
+	cp GROUP_HIDDEN_CAVE_GROTTO
+	jr nz, .not_hidden_cave_grotto
+	ld a, [MapNumber]
+	cp MAP_HIDDEN_CAVE_GROTTO
+	jr nz, .not_hidden_cave_grotto
+	ld hl, HiddenCaveGrottoPalette
+	jp .load_eight_bg_palettes
+
+.not_hidden_cave_grotto
 	ld a, [MapGroup]
 	ld b, a
 	ld a, [MapNumber]
@@ -862,46 +882,6 @@ endc
 HauntedPokemonTowerPalette:
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/haunted_pokemon_tower.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
-YellowForestPalette:
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/yellow_forest.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 7
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
-MurkySwampPalette:
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/murky_swamp.pal"
 else
 rept 7
 	MONOCHROME_RGB_FOUR_NIGHT
@@ -1434,6 +1414,72 @@ endr
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
 rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+YellowForestPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/yellow_forest.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+MurkySwampPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/murky_swamp.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+HiddenTreeGrottoPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/hidden_tree_grotto.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+HiddenCaveGrottoPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/hidden_cave_grotto.pal"
+else
+rept 7
 	MONOCHROME_RGB_FOUR_NIGHT
 endr
 	RGB_MONOCHROME_WHITE

@@ -417,10 +417,12 @@ MAP_NONE   EQU 0
 	mapgroup POKECENTER_2F,                               4,  8 ;  1
 	mapgroup TRADE_CENTER,                                4,  5 ;  2
 	mapgroup COLOSSEUM,                                   4,  5 ;  3
-	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  4
-	mapgroup YELLOW_FOREST,                              25, 29 ;  5
-	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  6
-	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  7
+	mapgroup HIDDEN_TREE_GROTTO,                          9,  5 ;  4
+	mapgroup HIDDEN_CAVE_GROTTO,                          9,  5 ;  5
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  6
+	mapgroup YELLOW_FOREST,                              25, 29 ;  7
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  8
+	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  9
 
 	newgroup                                                    ; 21
 

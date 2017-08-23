@@ -202,6 +202,12 @@ TradeCenter_BlockData:
 Colosseum_BlockData:
 	INCBIN "maps/Colosseum.blk"
 
+HiddenTreeGrotto_BlockData:
+	INCBIN "maps/HiddenTreeGrotto.blk"
+
+HiddenCaveGrotto_BlockData:
+	INCBIN "maps/HiddenCaveGrotto.blk"
+
 KrissHouse1F_BlockData:
 	INCBIN "maps/KrissHouse1F.blk"
 
@@ -309,11 +315,11 @@ UnionCave1F_BlockData:
 GiovannisCave_BlockData:
 	INCBIN "maps/UnionCave1F.blk"
 
-UnionCaveB1FNorth_BlockData:
-	INCBIN "maps/UnionCaveB1FNorth.blk"
-
 
 SECTION "Map Blockdata 2", ROMX
+
+UnionCaveB1FNorth_BlockData:
+	INCBIN "maps/UnionCaveB1FNorth.blk"
 
 UnionCaveB1FSouth_BlockData:
 	INCBIN "maps/UnionCaveB1FSouth.blk"

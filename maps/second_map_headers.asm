@@ -684,6 +684,8 @@
 	map_header_2 PokeCenter2F, POKECENTER_2F, $0, 0
 	map_header_2 TradeCenter, TRADE_CENTER, $0, 0
 	map_header_2 Colosseum, COLOSSEUM, $0, 0
+	map_header_2 HiddenTreeGrotto, HIDDEN_TREE_GROTTO, $35, 0
+	map_header_2 HiddenCaveGrotto, HIDDEN_CAVE_GROTTO, $9, 0
 	map_header_2 CeladonDeptStore1F, CELADON_DEPT_STORE_1F, $0, 0
 	map_header_2 CeladonDeptStore2F, CELADON_DEPT_STORE_2F, $0, 0
 	map_header_2 CeladonDeptStore3F, CELADON_DEPT_STORE_3F, $0, 0

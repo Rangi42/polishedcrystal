@@ -44,6 +44,8 @@ SECTION "Special Map Scripts", ROMX
 INCLUDE "maps/PokeCenter2F.asm"
 INCLUDE "maps/TradeCenter.asm"
 INCLUDE "maps/Colosseum.asm"
+INCLUDE "maps/HiddenTreeGrotto.asm"
+INCLUDE "maps/HiddenCaveGrotto.asm"
 
 
 SECTION "Battle Tower Scripts", ROMX
