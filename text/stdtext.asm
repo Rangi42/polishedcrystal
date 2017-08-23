@@ -459,3 +459,11 @@ VendingMachineNoSpaceText:
 	text "There's no more"
 	line "room for stuff…"
 	done
+
+HiddenGrottoText:
+	text "Look! You've found"
+	line "a narrow path!"
+
+	para "Will you follow"
+	line "it?"
+	done

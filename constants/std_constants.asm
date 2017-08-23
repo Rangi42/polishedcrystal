@@ -56,3 +56,5 @@
 	enum sink
 	enum stove
 	enum vendingmachine
+	enum treegrotto
+	enum cavegrotto

@@ -495,6 +495,8 @@ CheckFacingTileForStd:: ; 1365b
 	dbw COLL_STOVE,           stove
 	dbw COLL_INCENSE,         incenseburner
 	dbw COLL_ELEVATOR_BUTTON, elevatorbutton
+	dbw COLL_TREE_GROTTO,     treegrotto
+	dbw COLL_CAVE_GROTTO,     cavegrotto
 	db -1 ; end
 
 Script_JumpStdFromRAM: ; 0x1369a

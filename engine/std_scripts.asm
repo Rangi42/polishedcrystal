@@ -56,6 +56,8 @@ StdScripts::
 	dba SinkScript
 	dba StoveScript
 	dba VendingMachineScript
+	dba TreeGrottoScript
+	dba CaveGrottoScript
 
 PokeCenterNurseScript:
 	opentext
@@ -1978,3 +1980,12 @@ VendingMachineScript:
 	db "Soda Pop     ¥300@"
 	db "Lemonade     ¥350@"
 	db "Cancel@"
+
+TreeGrottoScript:
+CaveGrottoScript:
+	opentext
+	farwritetext HiddenGrottoText
+	yesorno
+	iffalse_endtext
+	; TODO: warp
+	endtext
