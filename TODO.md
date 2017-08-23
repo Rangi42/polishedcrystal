@@ -22,6 +22,7 @@ The final, non-beta 3.0 release should include all of these.
 ### Mechanics
 
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
+* Add Hidden Grottoes in trees and Hidden Hollows in cliffsides with random items and/or Pokémon
 * Notify when Pickup picks up an item
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
