@@ -96,8 +96,6 @@ KurtScript_0x18e178:
 	iffalse .NoRoomForBall
 	setevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
 .GotLevelBall:
-	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue .WaitForApricorns
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
 	iftrue .GiveLevelBall
 	checkevent EVENT_GAVE_KURT_BLU_APRICORN
@@ -183,13 +181,25 @@ KurtScript_0x18e178:
 
 .Pnk:
 	setevent EVENT_GAVE_KURT_PNK_APRICORN
-	jump .GaveKurtApricorns
-
 .GaveKurtApricorns:
 	setevent EVENT_GAVE_KURT_APRICORNS
-	setflag ENGINE_KURT_MAKING_BALLS
-.WaitForApricorns:
-	jumpopenedtext UnknownText_0x18e779
+	writetext KurtsHouseKurtGetStartedText
+	waitbutton
+	closetext
+	follow KURTSHOUSE_KURT1, PLAYER
+	applymovement KURTSHOUSE_KURT1, KurtsHouseFollowKurt_MovementData
+	stopfollow
+	pause 15
+	spriteface KURTSHOUSE_KURT1, DOWN
+	showtext UnknownText_0x18e779
+	applymovement PLAYER, KurtsHouseStepAwayFromKurt_MovementData
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	pause 35
+	warpfacing UP, KURTS_HOUSE, 3, 3
+	jump KurtScript_0x18e178
 
 .Cancel:
 	jumpopenedtext UnknownText_0x18e7bc
@@ -401,6 +411,8 @@ PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumptext PokemonJournalProfWestwoodText
 
+MovementData_0x18e46c:
+	big_step_right
 MovementData_0x18e466:
 	big_step_down
 	big_step_down
@@ -409,13 +421,29 @@ MovementData_0x18e466:
 	big_step_down
 	step_end
 
-MovementData_0x18e46c:
-	big_step_right
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
-	big_step_down
+KurtsHouseFollowKurt_MovementData:
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_down
+	step_down
+	step_down
+	step_right
+	step_right
+	step_right
+	step_up
+	step_up
+	step_end
+
+KurtsHouseStepAwayFromKurt_MovementData:
+	step_down
+	step_left
+	step_left
 	step_end
 
 UnknownText_0x18e473:
@@ -498,11 +526,16 @@ UnknownText_0x18e736:
 	line "into a Ball."
 	done
 
+KurtsHouseKurtGetStartedText:
+	text "Kurt: I'll get"
+	line "started right now!"
+	done
+
 UnknownText_0x18e779:
 	text "Kurt: It'll take a"
-	line "day to make you a"
+	line "while to make you"
 
-	para "Ball. Come back"
+	para "a Ball. Come back"
 	line "for it later."
 	done
 

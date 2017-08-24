@@ -27,7 +27,6 @@ The final, non-beta 3.0 release should include all of these.
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
-* Kurt gives Balls right away once per day
 * Add the improved PRNG from Prism
 * Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
 * Evolution Guru says how your lead Pokémon can evolve
