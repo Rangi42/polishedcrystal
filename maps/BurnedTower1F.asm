@@ -8,21 +8,11 @@ BurnedTower1F_MapScriptHeader:
 
 BurnedTower1F_MapEventHeader:
 
-.Warps: db 14
+.Warps: db 4
 	warp_def 15, 7, 13, ECRUTEAK_CITY
 	warp_def 15, 8, 13, ECRUTEAK_CITY
-	warp_def 9, 8,  1, BURNED_TOWER_B1F
-	warp_def 5, 3,  1, BURNED_TOWER_B1F
-	warp_def 6, 3,  1, BURNED_TOWER_B1F
-	warp_def 6, 2,  1, BURNED_TOWER_B1F
-	warp_def 4, 13,  2, BURNED_TOWER_B1F
-	warp_def 5, 13,  2, BURNED_TOWER_B1F
-	warp_def 7, 8,  3, BURNED_TOWER_B1F
-	warp_def 14, 3,  4, BURNED_TOWER_B1F
-	warp_def 14, 2,  4, BURNED_TOWER_B1F
-	warp_def 14, 12,  5, BURNED_TOWER_B1F
-	warp_def 14, 13,  5, BURNED_TOWER_B1F
-	warp_def 15, 5,  6, BURNED_TOWER_B1F
+	warp_def 9, 8, 1, BURNED_TOWER_B1F
+	warp_def 15, 5, 2, BURNED_TOWER_B1F
 
 .XYTriggers: db 1
 	xy_trigger 1, 9, 9, BurnedTowerRivalBattleScript
@@ -74,8 +64,8 @@ BurnedTowerRivalBattleScript:
 	pause 15
 	spriteface BURNEDTOWER1F_SILVER, RIGHT
 	pause 15
-	applymovement PLAYER, BurnedTowerMovement_PlayerWalksToSilver
-	applymovement BURNEDTOWER1F_SILVER, BurnedTowerMovement_SilverWalksToPlayer
+	applyonemovement PLAYER, step_left
+	applyonemovement BURNEDTOWER1F_SILVER, step_right
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext BurnedTowerSilver_BeforeText
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -123,7 +113,7 @@ BurnedTowerRivalBattleScript:
 	changeblock 8, 8, $25
 	reloadmappart
 	pause 15
-	applymovement PLAYER, BurnedTower1FMovement_PlayerStartsToFall
+	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 20
 	showtext BurnedTowerSilver_AfterText2
@@ -145,18 +135,6 @@ TrainerFirebreatherNed:
 FirebreatherNedScript:
 	end_if_just_battled
 	jumptextfaceplayer FirebreatherNedAfterText
-
-BurnedTowerMovement_PlayerWalksToSilver:
-	step_left
-	step_end
-
-BurnedTowerMovement_SilverWalksToPlayer:
-	step_right
-	step_end
-
-BurnedTower1FMovement_PlayerStartsToFall:
-	skyfall_top
-	step_end
 
 BurnedTower1FEusineMovement:
 	step_down

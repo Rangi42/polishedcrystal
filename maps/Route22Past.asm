@@ -47,19 +47,19 @@ Route22PastCelebiEventScript:
 	spriteface ROUTE22PAST_LYRA, UP
 	spriteface PLAYER, UP
 	stopfollow
-	applymovement ROUTE22PAST_CELEBI, Route22Past_CelebiStepsUpMovementData
+	applyonemovement ROUTE22PAST_CELEBI, step_up
 	special Special_FadeOutMusic
-	applymovement ROUTE22PAST_SILVER, Route22Past_SilverApproachesGiovanniMovementData
+	applyonemovement ROUTE22PAST_SILVER, slow_step_left
 	showtext Route22PastSilverQuestionsGiovanniText
 	spriteface ROUTE22PAST_GIOVANNI, RIGHT
 	showtext Route22PastGiovanniSilverArgumentText
-	applymovement ROUTE22PAST_SILVER, Route22Past_SilverApproachesGiovanniMovementData
+	applyonemovement ROUTE22PAST_SILVER, slow_step_left
 	showtext Route22PastSilverProtestsText
 	spriteface ROUTE22PAST_GIOVANNI, LEFT
 	showtext Route22PastGiovanniGoodbyeText
 	applymovement ROUTE22PAST_GIOVANNI, Route22Past_GiovanniLeavesMovementData
 	pause 15
-	applymovement ROUTE22PAST_SILVER, Route22Past_SilverApproachesGiovanniMovementData
+	applyonemovement ROUTE22PAST_SILVER, slow_step_left
 	showtext Route22PastSilverRantText
 	special Special_FadeOutMusic
 	playmusic MUSIC_RIVAL_ENCOUNTER
@@ -142,13 +142,8 @@ Route22Past_LyraApproachesSilverMovementData:
 	slow_step_left
 	step_end
 
-Route22Past_CelebiStepsUpMovementData:
-	step_up
-	step_end
-
 Route22Past_GiovanniLeavesMovementData:
 	slow_step_left
-Route22Past_SilverApproachesGiovanniMovementData:
 	slow_step_left
 	step_end
 

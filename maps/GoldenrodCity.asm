@@ -111,14 +111,14 @@ GoldenrodCityStepDownScript:
 	if_not_equal $f, .Done
 	checkcode VAR_XCOORD
 	if_not_equal $9, .Done
-	applymovement PLAYER, GoldenrodCityStepDownMovementData
+	applyonemovement PLAYER, step_down
 .Done
 	dotrigger $1
 	end
 
 GoldenrodCityPanUpScript:
 	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, GoldenrodCityHidePlayerMovementData
+	applyonemovement PLAYER, hide_person
 	waitsfx
 	applymovement PLAYER, GoldenrodCityPanUpMovementData
 	disappear PLAYER
@@ -259,14 +259,6 @@ GoldenrodCityGymLassScript:
 
 GoldenrodCityPokeCenterSign:
 	jumptext PokeComCenterSignText
-
-GoldenrodCityStepDownMovementData:
-	step_down
-	step_end
-
-GoldenrodCityHidePlayerMovementData:
-	hide_person
-	step_end
 
 GoldenrodCityPanUpMovementData:
 	step_up

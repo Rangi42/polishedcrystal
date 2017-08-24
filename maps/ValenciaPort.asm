@@ -36,7 +36,7 @@ ValenciaPortSailorScript:
 	playsound SFX_EXIT_BUILDING
 	disappear VALENCIAPORT_SAILOR
 	waitsfx
-	applymovement PLAYER, .StepUp
+	applyonemovement PLAYER, step_up
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -63,10 +63,6 @@ ValenciaPortSailorScript:
 	text "I'll be waiting"
 	line "right here."
 	done
-
-.StepUp:
-	step_up
-	step_end
 
 ValenciaPortFisherText:
 	text "Have you noticed"

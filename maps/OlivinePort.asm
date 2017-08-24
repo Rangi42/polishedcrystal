@@ -37,7 +37,7 @@ OlivinePortTrigger0:
 	end
 
 UnknownScript_0x748b1:
-	applymovement PLAYER, MovementData_0x74a32
+	applyonemovement PLAYER, step_up
 	appear OLIVINEPORT_SAILOR1
 	dotrigger $0
 	setevent EVENT_GAVE_KURT_APRICORNS
@@ -57,7 +57,7 @@ SailorScript_0x748c0:
 	playsound SFX_EXIT_BUILDING
 	disappear OLIVINEPORT_SAILOR1
 	waitsfx
-	applymovement PLAYER, MovementData_0x74a30
+	applyonemovement PLAYER, step_down
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -212,14 +212,6 @@ CooltrainerFScript_0x74a22:
 	showtextfaceplayer UnknownText_0x74ca2
 	spriteface LAST_TALKED, DOWN
 	end
-
-MovementData_0x74a30:
-	step_down
-	step_end
-
-MovementData_0x74a32:
-	step_up
-	step_end
 
 MovementData_0x74a34:
 	step_right

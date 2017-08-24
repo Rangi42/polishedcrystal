@@ -63,9 +63,9 @@ OlivineCafeLyraScript:
 	closetext
 	checkcode VAR_FACING
 	if_not_equal UP, .GoStraightDown
-	applymovement OLIVINECAFE_LYRA, OlivineCafeMovementData_Lyra1
+	applyonemovement OLIVINECAFE_LYRA, step_right
 .GoStraightDown
-	applymovement OLIVINECAFE_LYRA, OlivineCafeMovementData_Lyra2
+	applymovement OLIVINECAFE_LYRA, OlivineCafeMovementData_LyraLeaves
 	playsound SFX_EXIT_BUILDING
 	disappear OLIVINECAFE_LYRA
 	setevent EVENT_GOT_AMULET_COIN_FROM_LYRA
@@ -73,11 +73,7 @@ OlivineCafeLyraScript:
 .BagFull
 	end
 
-OlivineCafeMovementData_Lyra1:
-	step_right
-	step_end
-
-OlivineCafeMovementData_Lyra2:
+OlivineCafeMovementData_LyraLeaves:
 	step_down
 	step_down
 	step_down

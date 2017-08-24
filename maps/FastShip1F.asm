@@ -125,7 +125,7 @@ WorriedGrandpaTriggerLeft:
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b
 	playsound SFX_TACKLE
 	applymovement PLAYER, MovementData_0x7522e
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75220
+	applyonemovement FASTSHIP1F_GENTLEMAN, step_right
 	showtext UnknownText_0x75412
 	spriteface PLAYER, RIGHT
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
@@ -159,10 +159,6 @@ MovementData_0x7521b:
 	big_step_right
 	big_step_right
 	big_step_right
-	step_end
-
-MovementData_0x75220:
-	step_right
 	step_end
 
 MovementData_0x75222:

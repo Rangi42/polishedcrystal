@@ -80,7 +80,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 
 .Darkness:
 	showtext DarkCaveVioletEntranceFalknerDarknessText
-	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAway
+	applyonemovement PLAYER, step_left
 	end
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
@@ -93,7 +93,6 @@ DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 DarkCaveVioletEntranceMovementData_FalknerHeadBack:
 DarkCaveVioletEntranceMovementData_PlayerStepAside:
 	step_left
-DarkCaveVioletEntranceMovementData_PlayerStepAway:
 	step_left
 	step_end
 

@@ -33,7 +33,7 @@ VermilionPortTrigger0:
 	end
 
 UnknownScript_0x74da6:
-	applymovement PLAYER, MovementData_0x74ef3
+	applyonemovement PLAYER, step_up
 	appear VERMILIONPORT_SAILOR1
 	dotrigger $0
 	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
@@ -58,7 +58,7 @@ SailorScript_0x74dc4:
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONPORT_SAILOR1
 	waitsfx
-	applymovement PLAYER, MovementData_0x74ef1
+	applyonemovement PLAYER, step_down
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -182,14 +182,6 @@ UnknownScript_0x74ee0:
 SuperNerdScript_0x74ee6:
 	faceplayer
 	jumptext UnknownText_0x750a6
-
-MovementData_0x74ef1:
-	step_down
-	step_end
-
-MovementData_0x74ef3:
-	step_up
-	step_end
 
 MovementData_0x74ef5:
 	step_right

@@ -7,13 +7,9 @@ BurnedTowerB1F_MapScriptHeader:
 
 BurnedTowerB1F_MapEventHeader:
 
-.Warps: db 6
-	warp_def 9, 10, 3, BURNED_TOWER_1F
-	warp_def 7, 17, 7, BURNED_TOWER_1F
-	warp_def 8, 10, 9, BURNED_TOWER_1F
-	warp_def 13, 3, 10, BURNED_TOWER_1F
-	warp_def 14, 17, 12, BURNED_TOWER_1F
-	warp_def 15, 7, 14, BURNED_TOWER_1F
+.Warps: db 2
+	warp_def 9, 10, 3, BURNED_TOWER_1F ; hole
+	warp_def 15, 7, 4, BURNED_TOWER_1F
 
 .XYTriggers: db 1
 	xy_trigger 0, 6, 10, ReleaseTheBeasts

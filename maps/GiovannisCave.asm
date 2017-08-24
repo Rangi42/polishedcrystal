@@ -41,7 +41,7 @@ GiovannisCaveCelebiEventScript:
 	showemote EMOTE_SHOCK, GIOVANNISCAVE_GIOVANNI, 15
 	spriteface GIOVANNISCAVE_GIOVANNI, DOWN
 	showtext GiovannisCaveGiovanniIntroText
-	applymovement GIOVANNISCAVE_GIOVANNI, GiovannisCave_GiovanniStepsDownMovementData
+	applyonemovement GIOVANNISCAVE_GIOVANNI, slow_step_down
 	showtext GiovannisCaveGiovanniMemoriesText
 	spriteface GIOVANNISCAVE_LYRA, RIGHT
 	showtext GiovannisCaveLyraQuestionsText
@@ -70,7 +70,7 @@ GiovannisCaveCelebiEventScript:
 	spriteface PLAYER, DOWN
 	spriteface GIOVANNISCAVE_LYRA, DOWN
 	showtext GiovannisCaveBroadcastAfterText
-	applymovement GIOVANNISCAVE_LYRA, GiovannisCave_LyraStepsDownMovementData
+	applyonemovement GIOVANNISCAVE_LYRA, slow_step_down
 	showtext GiovannisCaveLyraFeelsSorryText
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
@@ -113,11 +113,6 @@ GiovannisCaveRadioAfterTimeTravelText:
 	para "Giovanni must have"
 	line "left it here…"
 	done
-
-GiovannisCave_GiovanniStepsDownMovementData:
-GiovannisCave_LyraStepsDownMovementData:
-	slow_step_down
-	step_end
 
 GiovannisCave_GiovanniStepsBackMovementData:
 	turn_head_down

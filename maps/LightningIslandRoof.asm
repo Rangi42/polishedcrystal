@@ -35,7 +35,7 @@ LightningIslandRoofSparkScript:
 	setevent EVENT_BEAT_SPARK
 	showtext .AfterText
 	playsound SFX_WARP_TO
-	applymovement LIGHTNINGISLANDROOF_SPARK, LightningIslandRoofSparkTeleport
+	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
 	disappear LIGHTNINGISLANDROOF_SPARK
 	clearevent EVENT_CELADON_UNIVERSITY_SPARK
 	end
@@ -62,7 +62,3 @@ LightningIslandRoofSparkScript:
 .RefusedText:
 	text "TODO"
 	done
-
-LightningIslandRoofSparkTeleport:
-	teleport_from
-	step_end

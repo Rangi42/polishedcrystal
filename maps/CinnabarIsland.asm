@@ -51,14 +51,10 @@ CinnabarIslandBlue:
 	waitbutton
 	closetext
 	playsound SFX_WARP_TO
-	applymovement CINNABARISLAND_BLUE, CinnabarIslandBlueTeleport
+	applyonemovement CINNABARISLAND_BLUE, teleport_from
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
-
-CinnabarIslandBlueTeleport:
-	teleport_from
-	step_end
 
 CinnabarIslandBlueText:
 	text "Who are you?"

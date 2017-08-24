@@ -149,7 +149,7 @@ Script_WalkToBattleTowerElevator:
 	warpsound
 	disappear BATTLETOWER1F_RECEPTIONIST
 	stopfollow
-	applymovement PLAYER, MovementData_BattleTower1FPlayerEntersElevator
+	applyonemovement PLAYER, step_up
 	warpcheck
 	end
 
@@ -226,7 +226,6 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
 	step_up
-MovementData_BattleTower1FPlayerEntersElevator:
 	step_up
 	step_end
 

@@ -46,7 +46,7 @@ CeruleanCapeDateInterruptedTrigger1:
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
 	spriteface CERULEANCAPE_MISTY, DOWN
-	applymovement CERULEANCAPE_MISTY_BOYFRIEND, MovementData_0x19efe8
+	applyonemovement CERULEANCAPE_MISTY_BOYFRIEND, big_step_down
 	disappear CERULEANCAPE_MISTY_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
@@ -395,7 +395,6 @@ TrainerFisherLeroy:
 
 MovementData_0x19efea:
 	big_step_down
-MovementData_0x19efe8:
 	big_step_down
 	step_end
 

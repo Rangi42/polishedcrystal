@@ -85,7 +85,7 @@ UnknownScript_0x6c38f:
 	setevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART
 	spriteface MAHOGANYMART1F_LANCE, LEFT
 	showtext UnknownText_0x6c5ba
-	applymovement MAHOGANYMART1F_LANCE, MovementData_0x6c412
+	applyonemovement MAHOGANYMART1F_LANCE, slow_step_right
 	playsound SFX_EXIT_BUILDING
 	disappear MAHOGANYMART1F_LANCE
 	dotrigger $0
@@ -129,10 +129,6 @@ MovementData_0x6c40a:
 MovementData_0x6c40e:
 	slow_step_up
 	slow_step_right
-	slow_step_right
-	step_end
-
-MovementData_0x6c412:
 	slow_step_right
 	step_end
 

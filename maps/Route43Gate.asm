@@ -50,7 +50,7 @@ UnknownScript_0x19abda:
 	end
 
 UnknownScript_0x19abea:
-	applymovement PLAYER, MovementData_0x19aca2
+	applyonemovement PLAYER, step_down
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acbb
 	spriteface ROUTE43GATE_ROCKET1, UP
@@ -127,10 +127,6 @@ OfficerScript_0x19ac85:
 
 UnknownScript_0x19ac9c:
 	jumpopenedtext UnknownText_0x19ae2d
-
-MovementData_0x19aca2:
-	step_down
-	step_end
 
 MovementData_0x19aca4:
 	big_step_up

@@ -68,7 +68,7 @@ OlivineCityRivalGymScript:
 	waitsfx
 	playsound SFX_TACKLE
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown
-	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalExitsGym
+	applyonemovement OLIVINECITY_OLIVINE_RIVAL, step_down
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext OlivineCityRivalGymText
 	spriteface PLAYER, RIGHT
@@ -138,7 +138,6 @@ OlivineCityMovementData_ShovePlayerDown:
 OlivineCityMovementData_RivalExitsLighthouse:
 	step_down
 	step_down
-OlivineCityMovementData_RivalExitsGym:
 	step_down
 	step_end
 

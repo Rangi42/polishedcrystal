@@ -73,7 +73,7 @@ SeagallopFerryShamoutiDepartureScript:
 	closetext
 	spriteface SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
 	pause 10
-	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorDepartMovementData
+	applyonemovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 	waitsfx
@@ -97,10 +97,6 @@ VermilionValenciaMenuDataHeader:
 	db "Vermilion City@"
 	db "Valencia Island@"
 	db "Cancel@"
-
-SeagallopFerryShamoutiGateSailorDepartMovementData:
-	step_down
-	step_end
 
 SeagallopFerryShamoutiGatePlayerDepartMovementData:
 	step_down

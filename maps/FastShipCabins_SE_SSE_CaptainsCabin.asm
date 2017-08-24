@@ -67,7 +67,7 @@ UnknownScript_0x75f03:
 	showtext UnknownText_0x762c6
 UnknownScript_0x75f09:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
-	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, MovementData_0x76010
+	applyonemovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, step_down
 	opentext
 	writetext UnknownText_0x76143
 	buttonsound
@@ -183,10 +183,6 @@ MovementData_0x7600c:
 	step_up
 	step_up
 	turn_head_left
-	step_end
-
-MovementData_0x76010:
-	step_down
 	step_end
 
 UnknownText_0x76012:

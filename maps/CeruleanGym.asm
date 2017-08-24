@@ -46,7 +46,7 @@ UnknownScript_0x1883de:
 	showemote EMOTE_SHOCK, CERULEANGYM_ROCKET, 15
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884f7
 	showtext UnknownText_0x188574
-	applymovement CERULEANGYM_ROCKET, MovementData_0x1884f5
+	applyonemovement CERULEANGYM_ROCKET, big_step_down
 	showtext UnknownText_0x1885a5
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884e8
 	playsound SFX_EXIT_BUILDING
@@ -208,10 +208,6 @@ MovementData_0x1884eb:
 	step_sleep_8
 	step_down
 	step_down
-	step_end
-
-MovementData_0x1884f5:
-	big_step_down
 	step_end
 
 MovementData_0x1884f7:

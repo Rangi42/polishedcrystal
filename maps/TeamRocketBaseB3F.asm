@@ -71,7 +71,7 @@ LanceGetPasswordScript:
 	pause 5
 	spriteface TEAMROCKETBASEB3F_MURKROW, RIGHT
 	pause 20
-	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12a
+	applyonemovement TEAMROCKETBASEB3F_LANCE, step_right
 	showtext LanceGetPasswordText
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12c
 	disappear TEAMROCKETBASEB3F_LANCE
@@ -107,7 +107,7 @@ UnknownScript_0x6e056:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface TEAMROCKETBASEB3F_PETREL, DOWN
 	showtext UnknownText_0x6e400
-	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e142
+	applyonemovement TEAMROCKETBASEB3F_PETREL, step_down
 	winlosstext UnknownText_0x6e511, 0
 	setlasttalked TEAMROCKETBASEB3F_PETREL
 	loadtrainer PETREL, PETREL2
@@ -182,10 +182,6 @@ BossDoor:
 	waitsfx
 	end
 
-MovementData_0x6e12a:
-	step_right
-	step_end
-
 MovementData_0x6e12c:
 	step_down
 	step_left
@@ -212,10 +208,6 @@ MovementData_0x6e13a:
 	step_left
 	step_left
 	turn_head_up
-	step_end
-
-MovementData_0x6e142:
-	step_down
 	step_end
 
 MovementData_0x6e144:

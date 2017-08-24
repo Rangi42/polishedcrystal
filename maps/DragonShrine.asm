@@ -31,7 +31,7 @@ DragonShrineTrigger0:
 
 DragonShrineTestScript:
 	applymovement PLAYER, MovementData_0x18d2bf
-	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2c7
+	applyonemovement DRAGONSHRINE_ELDER1, slow_step_down
 	opentext
 	writetext UnknownText_0x18d2ea
 	buttonsound
@@ -303,10 +303,6 @@ MovementData_0x18d2bf:
 	slow_step_up
 	slow_step_up
 	slow_step_up
-	step_end
-
-MovementData_0x18d2c7:
-	slow_step_down
 	step_end
 
 MovementData_0x18d2c9:

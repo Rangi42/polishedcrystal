@@ -95,7 +95,7 @@ Script_WalkOutOfLinkTradeRoom:
 
 .Female:
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepDown
+	applyonemovement PLAYER, step_down
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
@@ -117,7 +117,7 @@ Script_WalkOutOfLinkBattleRoom:
 
 .Female:
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepDown
+	applyonemovement PLAYER, step_down
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
@@ -287,7 +287,7 @@ PokeCenter2F_CheckGender:
 	special ReplaceKrisSprite
 	showtext Text_LikeTheLook
 	showemote EMOTE_SHOCK, PLAYER, 15
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepUp
+	applyonemovement PLAYER, step_up
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
@@ -301,7 +301,6 @@ PokeCenter2FMovementData_PlayerTakesThreeStepsUp:
 	step_up
 PokeCenter2FMovementData_PlayerTakesTwoStepsUp:
 	step_up
-PokeCenter2FMovementData_PlayerTakesOneStepUp:
 	step_up
 	step_end
 
@@ -309,7 +308,6 @@ PokeCenter2FMovementData_PlayerTakesThreeStepsDown:
 	step_down
 PokeCenter2FMovementData_PlayerTakesTwoStepsDown:
 	step_down
-PokeCenter2FMovementData_PlayerTakesOneStepDown:
 	step_down
 	step_end
 

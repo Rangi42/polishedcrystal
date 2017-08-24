@@ -35,7 +35,7 @@ FireIslandRoofCandelaScript:
 	setevent EVENT_BEAT_CANDELA
 	showtext .AfterText
 	playsound SFX_WARP_TO
-	applymovement FIREISLANDROOF_CANDELA, FireIslandRoofCandelaTeleport
+	applyonemovement FIREISLANDROOF_CANDELA, teleport_from
 	disappear FIREISLANDROOF_CANDELA
 	clearevent EVENT_CELADON_UNIVERSITY_CANDELA
 	end
@@ -62,7 +62,3 @@ FireIslandRoofCandelaScript:
 .RefusedText:
 	text "TODO"
 	done
-
-FireIslandRoofCandelaTeleport:
-	teleport_from
-	step_end

@@ -115,9 +115,9 @@ ElmsLab_ElmGetsEmail:
 	writetext ElmText_MissionFromMrPokemon
 	waitbutton
 	closetext
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement1
+	applyonemovement ELMSLAB_ELM, step_up
 	spriteface PLAYER, UP
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement2
+	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement
 	spriteface PLAYER, RIGHT
 	showtext ElmText_ChooseAPokemon
 	dotrigger $1
@@ -196,7 +196,7 @@ ElmCheckGotEggAgain:
 LabTryToLeaveScript:
 	spriteface ELMSLAB_ELM, DOWN
 	showtext LabWhereGoingText
-	applymovement PLAYER, MovementData_0x78f70
+	applyonemovement PLAYER, step_up
 	end
 
 CyndaquilPokeBallScript:
@@ -679,10 +679,6 @@ ElmsLab_WalkUpToElmMovement:
 	turn_head_left
 	step_end
 
-MovementData_0x78f70:
-	step_up
-	step_end
-
 LyraPicksChikoritaMovement:
 	step_right
 LyraPicksTotodileMovement:
@@ -821,11 +817,7 @@ ElmJumpRightMovement:
 	remove_fixed_facing
 	step_end
 
-ElmsLab_ElmToDefaultPositionMovement1:
-	step_up
-	step_end
-
-ElmsLab_ElmToDefaultPositionMovement2:
+ElmsLab_ElmToDefaultPositionMovement:
 	step_right
 	step_right
 	step_up

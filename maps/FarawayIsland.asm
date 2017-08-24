@@ -65,11 +65,11 @@ FarawayIslandSailorScript:
 	closetext
 	spriteface FARAWAYISLAND_SAILOR, DOWN
 	pause 10
-	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorDepartMovementData
+	applyonemovement FARAWAYISLAND_SAILOR, turn_head_down
 	playsound SFX_EXIT_BUILDING
 	disappear FARAWAYISLAND_SAILOR
 	waitsfx
-	applymovement PLAYER, FarawayIslandPlayerDepartMovementData
+	applyonemovement PLAYER, step_down
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -122,14 +122,6 @@ FarawayIslandLawrenceScript:
 	spriteface FARAWAYISLAND_LAWRENCE, DOWN
 	playmapmusic
 	end
-
-FarawayIslandSailorDepartMovementData:
-	turn_head_down
-	step_end
-
-FarawayIslandPlayerDepartMovementData:
-	step_down
-	step_end
 
 FarawayIslandPlayerArriveMovementData:
 	step_up

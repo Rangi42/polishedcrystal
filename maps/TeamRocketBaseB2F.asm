@@ -124,8 +124,8 @@ UnknownScript_0x6cfac:
 	spriteface PLAYER, RIGHT
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
 	showtext UnknownText_0x6d3bd
-	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d24a
-	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d248
+	applyonemovement TEAMROCKETBASEB2F_ROCKET1, big_step_left
+	applyonemovement TEAMROCKETBASEB2F_ARIANA, big_step_left
 	winlosstext UnknownText_0x6d45c, 0
 	setlasttalked TEAMROCKETBASEB2F_ARIANA
 	loadtrainer ARIANA, ARIANA2
@@ -167,7 +167,7 @@ UnknownScript_0x6d075:
 
 UnknownScript_0x6d07a:
 	showtext UnknownText_0x6d7ea
-	applymovement PLAYER, MovementData_0x6d278
+	applyonemovement PLAYER, step_left
 	end
 
 LanceHealsScript:
@@ -395,14 +395,6 @@ MovementData_0x6d244:
 	step_right
 	step_end
 
-MovementData_0x6d248:
-	big_step_left
-	step_end
-
-MovementData_0x6d24a:
-	big_step_left
-	step_end
-
 MovementData_0x6d24c:
 	big_step_left
 	big_step_up
@@ -457,10 +449,6 @@ MovementData_0x6d271:
 	step_left
 	step_left
 	turn_head_up
-	step_end
-
-MovementData_0x6d278:
-	step_left
 	step_end
 
 MovementData_0x6d27a:

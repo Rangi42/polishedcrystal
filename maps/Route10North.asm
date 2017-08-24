@@ -64,7 +64,7 @@ Route10NorthZapdos:
 	return
 
 Route10NorthLawrenceEncounter1Script:
-	applymovement PLAYER, Route10NorthMovementData_PlayerStepDown
+	applyonemovement PLAYER, step_down
 	showemote EMOTE_SHOCK, ROUTE10_LAWRENCE, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -80,23 +80,23 @@ Route10NorthLawrenceEncounter1Script:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemalePan
 	appear ROUTE10_CHRIS
-	applymovement PLAYER, Route10NorthMovementData_HidePlayer
+	applyonemovement PLAYER, hide_person
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
 	applymovement PLAYER, Route10NorthMovementData_PanDown
-	applymovement PLAYER, Route10NorthMovementData_ShowPlayer
+	applyonemovement PLAYER, show_person
 	disappear ROUTE10_CHRIS
 	jump .Finish
 .FemalePan
 	appear ROUTE10_KRIS
-	applymovement PLAYER, Route10NorthMovementData_HidePlayer
+	applyonemovement PLAYER, hide_person
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
 	disappear ROUTE10_LAWRENCE
 	moveperson ROUTE10_LAWRENCE, 13, 52
 	appear ROUTE10_LAWRENCE
 	applymovement PLAYER, Route10NorthMovementData_PanDown
-	applymovement PLAYER, Route10NorthMovementData_ShowPlayer
+	applyonemovement PLAYER, show_person
 	disappear ROUTE10_KRIS
 .Finish
 	spriteface ROUTE10_LAWRENCE, LEFT
@@ -328,10 +328,6 @@ PowerPlantSignText:
 	text "Kanto Power Plant"
 	done
 
-Route10NorthMovementData_PlayerStepDown:
-	step_down
-	step_end
-
 Route10NorthMovementData_LawrenceApproach1:
 	step_left
 	step_left
@@ -349,10 +345,6 @@ Route10NorthMovementData_LawrenceApproach2LeftRight:
 	step_right
 	step_right
 	step_right
-	step_end
-
-Route10NorthMovementData_HidePlayer:
-	hide_person
 	step_end
 
 Route10NorthMovementData_PanUp:
@@ -379,8 +371,4 @@ Route10NorthMovementData_PanDown:
 	step_down
 	step_down
 	remove_fixed_facing
-	step_end
-
-Route10NorthMovementData_ShowPlayer:
-	show_person
 	step_end

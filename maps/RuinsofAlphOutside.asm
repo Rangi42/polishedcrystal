@@ -109,7 +109,7 @@ ScientistScript_0x58043:
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, MovementData_0x580ba
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	stopfollow
-	applymovement PLAYER, MovementData_0x580c5
+	applyonemovement PLAYER, step_up
 	domaptrigger RUINS_OF_ALPH_RESEARCH_CENTER, $1
 	warpcheck
 	end
@@ -158,10 +158,6 @@ MovementData_0x580ba:
 	step_right
 	step_right
 	step_up
-	step_up
-	step_end
-
-MovementData_0x580c5:
 	step_up
 	step_end
 

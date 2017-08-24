@@ -58,7 +58,7 @@ UnknownScript_0x59192:
 	pause 30
 	spriteface RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
 	showtext UnknownText_0x59278
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59274
+	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	opentext
 	writetext UnknownText_0x592fa
 	playsound SFX_ITEM
@@ -67,7 +67,7 @@ UnknownScript_0x59192:
 	writetext UnknownText_0x59311
 	waitbutton
 	closetext
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59276
+	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_up
 	dotrigger $0
 	special RestartMapMusic
 	end
@@ -118,12 +118,12 @@ UnknownScript_0x591df:
 .GoAround:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterScientistStepAsideMovementData
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave1MovementData
+	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	stopfollow
 .Continue:
 	playsound SFX_EXIT_BUILDING
 	disappear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
-	applymovement PLAYER, RuinsofAlphResearchCenterLeave1MovementData
+	applyonemovement PLAYER, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
 	special FadeOutPalettes
@@ -142,7 +142,6 @@ RuinsofAlphResearchCenterScientistStepAsideMovementData:
 
 RuinsofAlphResearchCenterLeave2MovementData:
 	step_down
-RuinsofAlphResearchCenterLeave1MovementData:
 	step_down
 	step_end
 
@@ -216,14 +215,6 @@ MovementData_0x5926f:
 	step_up
 	step_left
 	turn_head_up
-	step_end
-
-MovementData_0x59274:
-	step_down
-	step_end
-
-MovementData_0x59276:
-	step_up
 	step_end
 
 UnknownText_0x59278:

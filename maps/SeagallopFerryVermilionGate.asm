@@ -192,7 +192,7 @@ SeagallopFerryDepartureScript:
 	closetext
 	spriteface SEAGALLOPFERRYVERMILIONGATE_SAILOR, DOWN
 	pause 10
-	applymovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, SeagallopFerryVermilionGateSailorDepartMovementData
+	applyonemovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear SEAGALLOPFERRYVERMILIONGATE_SAILOR
 	waitsfx
@@ -202,10 +202,6 @@ SeagallopFerryDepartureScript:
 	waitsfx
 	appear SEAGALLOPFERRYVERMILIONGATE_SAILOR
 	end
-
-SeagallopFerryVermilionGateSailorDepartMovementData:
-	step_down
-	step_end
 
 SeagallopFerryVermilionGatePlayerDepartMovementData:
 	step_down

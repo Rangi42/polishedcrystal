@@ -35,7 +35,7 @@ IceIslandRoofBlancheScript:
 	setevent EVENT_BEAT_BLANCHE
 	showtext .AfterText
 	playsound SFX_WARP_TO
-	applymovement ICEISLANDROOF_BLANCHE, IceIslandRoofBlancheTeleport
+	applyonemovement ICEISLANDROOF_BLANCHE, teleport_from
 	disappear ICEISLANDROOF_BLANCHE
 	clearevent EVENT_CELADON_UNIVERSITY_BLANCHE
 	end
@@ -62,7 +62,3 @@ IceIslandRoofBlancheScript:
 .RefusedText:
 	text "TODO"
 	done
-
-IceIslandRoofBlancheTeleport:
-	teleport_from
-	step_end

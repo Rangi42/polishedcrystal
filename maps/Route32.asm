@@ -204,8 +204,8 @@ Route32CooltrainerMStopsYou:
 	stopfollow
 	spriteface PLAYER, DOWN
 	scall Route32CooltrainerMTrigger
-	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset1
-	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset2
+	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset
+	spriteface ROUTE32_COOLTRAINER_M, LEFT
 	end
 
 Route32RoarTMGuyScript:
@@ -547,11 +547,8 @@ Movement_Route32CooltrainerMPushesYouBackToViolet:
 	step_up
 	step_end
 
-Movement_Route32CooltrainerMReset1:
+Movement_Route32CooltrainerMReset:
 	step_down
-	step_end
-
-Movement_Route32CooltrainerMReset2:
 	step_right
 	step_end
 

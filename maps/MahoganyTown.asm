@@ -40,7 +40,7 @@ UnknownScript_0x190013:
 	showemote EMOTE_SHOCK, MAHOGANYTOWN_POKEFAN_M, 15
 	applymovement MAHOGANYTOWN_POKEFAN_M, MovementData_0x1900a9
 	follow PLAYER, MAHOGANYTOWN_POKEFAN_M
-	applymovement PLAYER, MovementData_0x1900a7
+	applyonemovement PLAYER, step_left
 	stopfollow
 	spriteface PLAYER, RIGHT
 	scall UnknownScript_0x19002f
@@ -95,10 +95,6 @@ MahoganyTownSouvenirShopSign:
 
 .rockets
 	jumptext MahoganyTownSouvenirShopSignText1
-
-MovementData_0x1900a7:
-	step_left
-	step_end
 
 MovementData_0x1900a9:
 	step_right

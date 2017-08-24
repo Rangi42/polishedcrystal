@@ -71,7 +71,7 @@ Leaf:
 	jump .EndingSequence
 
 .RightMaleEndingSequence:
-	applymovement PLAYER, NavelRockRoofStepUpMovementData
+	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_CHRIS
 	jump .EndingSequence
 
@@ -84,10 +84,10 @@ Leaf:
 	jump .EndingSequence
 
 .RightFemaleEndingSequence:
-	applymovement PLAYER, NavelRockRoofStepUpMovementData
+	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_KRIS
 .EndingSequence:
-	applymovement PLAYER, NavelRockRoofHidePlayerMovementData
+	applyonemovement PLAYER, hide_person
 	pause 30
 	applymovement PLAYER, NavelRockRoofPanUpMovementData
 	pause 40
@@ -111,16 +111,11 @@ LeafAfterText:
 	line "…………"
 	done
 
-NavelRockRoofHidePlayerMovementData:
-	hide_person
-	step_end
-
 NavelRockRoofPanUpMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_up
 	slow_step_up
 	slow_step_up
-NavelRockRoofStepUpMovementData:
 	slow_step_up
 	step_end

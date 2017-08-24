@@ -78,7 +78,7 @@ VioletCityEarlScript:
 	special RestartMapMusic
 	showtext Text_HereTeacherIAm
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
-	applymovement VIOLETCITY_EARL, VioletCityFinishFollowEarl_MovementData
+	applyonemovement VIOLETCITY_EARL, step_up
 	playsound SFX_ENTER_DOOR
 	disappear VIOLETCITY_EARL
 	clearevent EVENT_EARLS_ACADEMY_EARL
@@ -142,10 +142,6 @@ VioletCityFollowEarl_MovementData:
 	turn_head_up
 	big_step_up
 	turn_head_down
-	step_end
-
-VioletCityFinishFollowEarl_MovementData:
-	step_up
 	step_end
 
 VioletCitySpinningEarl_MovementData:

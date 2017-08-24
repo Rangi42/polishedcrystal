@@ -27,7 +27,7 @@ Route18WestBikeCheckScript:
 	callasm .CheckPlayerState
 	if_equal PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
-	applymovement PLAYER, Route18WestStepDownMovementData
+	applyonemovement PLAYER, step_down
 .done
 	end
 
@@ -42,10 +42,6 @@ TrainerBikerCharles:
 BikerCharlesScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1ad293
-
-Route18WestStepDownMovementData:
-	step_down
-	step_end
 
 BikerCharlesSeenText:
 	text "We're fearless"

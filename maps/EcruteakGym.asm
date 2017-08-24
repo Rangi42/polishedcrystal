@@ -102,8 +102,8 @@ UnknownScript_0x99db1:
 	jumpopenedtext UnknownText_0x9a145
 
 UnknownScript_0x99dc6:
-	applymovement PLAYER, MovementData_0x99e5d
-	applymovement ECRUTEAKGYM_GRAMPS, MovementData_0x99e63
+	applyonemovement PLAYER, step_up
+	applyonemovement ECRUTEAKGYM_GRAMPS, slow_step_down
 	showtext UnknownText_0x9a49c
 	follow PLAYER, ECRUTEAKGYM_GRAMPS
 	applymovement PLAYER, MovementData_0x99e5f
@@ -159,18 +159,10 @@ EcruteakGymStatue:
 .LyraToo
 	jumpstd gymstatue3
 
-MovementData_0x99e5d:
-	step_up
-	step_end
-
 MovementData_0x99e5f:
 	fix_facing
 	slow_step_down
 	remove_fixed_facing
-	step_end
-
-MovementData_0x99e63:
-	slow_step_down
 	step_end
 
 UnknownText_0x99e65:

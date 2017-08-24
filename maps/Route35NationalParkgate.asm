@@ -137,7 +137,7 @@ Route35NationalParkgate_EnterContest:
 	end
 
 Route35NationalParkgate_FacingLeft:
-	applymovement PLAYER, MovementData_0x6a2e9
+	applyonemovement PLAYER, step_up
 	end
 
 Route35NationalParkgate_LeaveTheRestBehind:
@@ -203,10 +203,6 @@ MovementData_0x6a2e2:
 MovementData_0x6a2e5:
 	step_right
 	step_up
-	step_up
-	step_end
-
-MovementData_0x6a2e9:
 	step_up
 	step_end
 

@@ -50,7 +50,7 @@ SeagallopFerryNavelGateSailorScript:
 	closetext
 	spriteface SEAGALLOPFERRYNAVELGATE_SAILOR, DOWN
 	pause 10
-	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorDepartMovementData
+	applyonemovement SEAGALLOPFERRYNAVELGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear SEAGALLOPFERRYNAVELGATE_SAILOR
 	waitsfx
@@ -65,10 +65,6 @@ SeagallopFerryNavelGateSailorScript:
 
 .RefuseFerry
 	jumpopenedtext SeagallopFerryNavelRockRefusedText
-
-SeagallopFerryNavelGateSailorDepartMovementData:
-	step_down
-	step_end
 
 SeagallopFerryNavelGatePlayerDepartMovementData:
 	step_down

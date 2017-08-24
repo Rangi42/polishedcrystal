@@ -31,7 +31,7 @@ const_value set 2
 Route18GateStepUpOneTrigger:
 	checkitem BICYCLE
 	iftrue Route18GateDoNothingScript
-	applymovement PLAYER, Route18GateStepUpOneMovementData
+	applyonemovement PLAYER, step_up
 	jump UnknownScript_0x73617
 
 Route18GateStepUpTwoTrigger:
@@ -61,7 +61,6 @@ Route18GateStepUpThreeMovementData:
 	step_up
 Route18GateStepUpTwoMovementData:
 	step_up
-Route18GateStepUpOneMovementData:
 	step_up
 	step_end
 

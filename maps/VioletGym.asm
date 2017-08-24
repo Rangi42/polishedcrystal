@@ -33,7 +33,7 @@ VioletGymTrigger0:
 
 VioletGymFalknerAwayScript:
 	showemote EMOTE_SHOCK, VIOLETGYM_GYM_GUY2, 15
-	applymovement VIOLETGYM_GYM_GUY2, VioletGymMovementData_GymGuyStepDown
+	applyonemovement VIOLETGYM_GYM_GUY2, step_down
 	showtext VioletGymGuyFalknerAwayText
 	spriteface PLAYER, DOWN
 	pause 10
@@ -104,10 +104,6 @@ VioletGymStatue:
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3
-
-VioletGymMovementData_GymGuyStepDown:
-	step_down
-	step_end
 
 UnknownText_0x68473:
 	text "I'm Falkner, the"
