@@ -186,6 +186,8 @@ SpecialsPointers:: ; c029
 	add_special SetLastPartyMonBall
 	add_special CheckForSurfingPikachu
 	add_special InitializeHiddenGrotto
+	add_special GetHiddenGrottoContents
+	add_special EmptiedHiddenGrotto
 
 	add_special SpecialNone
 ; c224

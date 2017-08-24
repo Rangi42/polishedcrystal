@@ -2359,11 +2359,11 @@ wWiltonFightCount::  ds 1
 wKenjiFightCount::   ds 1 ; unused
 wParryFightCount::   ds 1
 wErinFightCount::    ds 1
-	ds 4 ; extra space set aside
+	ds 2 ; extra space set aside
 
 EventFlags::
 	flag_array NUM_EVENTS
-	ds 20 ; extra space set aside
+	ds 10 ; extra space set aside
 
 wCurBox::
 	ds 1
@@ -2437,8 +2437,10 @@ FruitTreeFlags:: flag_array NUM_FRUIT_TREES
 NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 	ds 1 ; extra space set aside
 
-HiddenGrottoFlags:: flag_array NUM_HIDDEN_GROTTOES
-	ds 1 ; extra space set aside
+HiddenGrottoContents::
+; content type, content id
+	ds NUM_HIDDEN_GROTTOES * 2
+	ds 2 ; extra space set aside
 
 wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1

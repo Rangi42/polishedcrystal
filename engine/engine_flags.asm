@@ -203,7 +203,7 @@ ENDM
 	engine_flag DailyFlags4, 2 ; fought psychic inver
 	engine_flag DailyFlags4, 3 ; bought moomoo milk
 	engine_flag DailyFlags4, 4 ; changed trendy phrase
-	engine_flag DailyFlags4, 5 ; daily unused
+	engine_flag DailyFlags4, 5 ; all hidden grottoes
 	engine_flag DailyFlags4, 6 ; daily unused
 	engine_flag DailyFlags4, 7 ; daily unused
 

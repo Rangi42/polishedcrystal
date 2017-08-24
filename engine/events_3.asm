@@ -407,16 +407,15 @@ RockItemEncounter:
 .loop
 	sub [hl]
 	jr c, .ok
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop
 .ok
 	ld a, [hli]
 	cp -1
 	ld a, NO_ITEM
 	jr z, .done
-	ld a, [hli]
+	ld a, [hl]
 .done
 	ld [ScriptVar], a
 	ret

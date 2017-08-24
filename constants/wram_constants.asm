@@ -113,3 +113,11 @@ DAYCARE_DEPOSIT EQU 3
 	const DEXMODE_OLD
 	const DEXMODE_ABC
 	const DEXMODE_UNOWN
+
+; HiddenGrottoContents
+	const_def
+	const GROTTO_UNDEFINED
+	const GROTTO_POKEMON
+	const GROTTO_ITEM
+	const GROTTO_HIDDEN_ITEM
+	const GROTTO_EMPTY
