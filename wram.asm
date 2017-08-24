@@ -2163,11 +2163,6 @@ PokemonJournals::
 PokemonJournalsEnd::
 	ds 2 ; extra space set aside
 
-UnlockedMusic::
-	flag_array NUM_SONGS
-UnlockedMusicEnd::
-	ds 2 ; extra space set aside
-
 TMsHMs::
 	flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
@@ -2439,6 +2434,9 @@ FruitTreeFlags:: flag_array NUM_FRUIT_TREES
 	ds 1 ; extra space set aside
 
 NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
+	ds 1 ; extra space set aside
+
+HiddenGrottoFlags:: flag_array 20
 	ds 1 ; extra space set aside
 
 wLuckyNumberDayBuffer:: ds 2
