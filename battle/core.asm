@@ -6364,6 +6364,9 @@ endc
 
 	; Random ability
 	; 5% hidden ability, otherwise 50% either main ability
+	ld a, [BattleType]
+	cp BATTLETYPE_GROTTO
+	jr z, .hidden_ability
 	call BattleRandom
 	cp 1 + 5 percent
 	jr c, .hidden_ability
@@ -6406,6 +6409,8 @@ endc
 	ld a, [BattleType]
 	cp BATTLETYPE_SHINY
 	jr z, .shiny
+	cp BATTLETYPE_GROTTO
+	jr z, .not_shiny
 	call BattleRandom
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny

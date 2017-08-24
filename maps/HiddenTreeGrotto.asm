@@ -47,9 +47,9 @@ HiddenGrottoCallback:
 	return
 
 HiddenGrottoPokemonScript:
-; TODO: BATTLETYPE_GROTTO that forces hidden ability
-	loadgrottomon
 	special EmptiedHiddenGrotto
+	loadgrottomon
+	writecode VAR_BATTLETYPE, BATTLETYPE_GROTTO
 	startbattle
 	disappear HIDDENTREEGROTTO_POKEMON
 	reloadmapafterbattle
