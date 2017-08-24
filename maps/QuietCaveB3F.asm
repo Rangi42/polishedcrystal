@@ -16,7 +16,7 @@ QuietCaveB3F_MapEventHeader:
 
 .Signposts: db 2
 	signpost 20, 16, SIGNPOST_ITEM + PP_UP, EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP
-	signpost 22, 12, SIGNPOST_ITEM, QuietCaveB3FHiddenMaxRevive
+	signpost 22, 12, SIGNPOST_ITEM + MAX_REVIVE, EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE
 
 .PersonEvents: db 2
 	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
@@ -107,6 +107,3 @@ QuietCaveB3FMarleyScript:
 
 	para "Bye-bye…"
 	done
-
-QuietCaveB3FHiddenMaxRevive
-	dwb EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE, MAX_REVIVE

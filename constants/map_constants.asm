@@ -359,16 +359,17 @@ MAP_NONE   EQU 0
 	mapgroup FUCHSIA_MART,                                4,  6 ;  8
 	mapgroup FUCHSIA_GYM,                                 9,  5 ;  9
 	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ; 10
-	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 11
-	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
-	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 13
-	mapgroup ROUTE_12_GATE,                               5,  5 ; 14
-	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 15
-	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 16
-	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 17
-	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 18
-	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 19
-	mapgroup LUCKY_ISLAND,                               17, 23 ; 20
+	mapgroup FUCHSIA_SAFARI_BALL_HOUSE,                   4,  4 ; 11
+	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 12
+	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 13
+	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 14
+	mapgroup ROUTE_12_GATE,                               5,  5 ; 15
+	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 16
+	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 17
+	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 18
+	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 19
+	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 20
+	mapgroup LUCKY_ISLAND,                               17, 23 ; 21
 
 	newgroup                                                    ; 18
 

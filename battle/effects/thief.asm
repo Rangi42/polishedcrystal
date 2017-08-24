@@ -40,7 +40,7 @@ CanStealItem:
 	and a
 	ret nz
 
-	; Sticky Hold prevents item theft.
+	; Sticky Hold prevents item theft
 	call GetOpponentAbilityAfterMoldBreaker
 	cp STICKY_HOLD
 	jr z, .cant
@@ -69,6 +69,10 @@ CanStealItem:
 	and a
 	jr z, .cant
 
+	; Armor Suit can't be stolen
+	cp ARMOR_SUIT
+	jr z, .cant
+
 	; Mail can't be stolen
 	ld d, a
 	push bc
@@ -81,6 +85,7 @@ CanStealItem:
 	jr c, .cant
 	xor a
 	ret
+
 .cant
 	or 1
 	ret

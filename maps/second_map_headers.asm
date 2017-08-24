@@ -652,6 +652,7 @@
 	map_header_2 FuchsiaMart, FUCHSIA_MART, $0, 0
 	map_header_2 FuchsiaGym, FUCHSIA_GYM, $0, 0
 	map_header_2 FuchsiaBillSpeechHouse, FUCHSIA_BILL_SPEECH_HOUSE, $0, 0
+	map_header_2 FuchsiaSafariBallHouse, FUCHSIA_SAFARI_BALL_HOUSE, $0, 0
 	map_header_2 FuchsiaPokeCenter1F, FUCHSIA_POKECENTER_1F, $0, 0
 	map_header_2 SafariZoneWardensHome, SAFARI_ZONE_WARDENS_HOME, $0, 0
 	map_header_2 Route12Gate, ROUTE_12_GATE, $0, 0

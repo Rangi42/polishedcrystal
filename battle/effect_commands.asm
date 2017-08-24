@@ -7634,17 +7634,31 @@ BattleCommand_KnockOff:
 	and a
 	ret nz
 
+	; Maybe Substitute/Sheer Force prevents the steal
 	call CheckSubstituteOpp
 	ret nz
 
+	; Sticky Hold prevents item loss
 	call GetOpponentAbilityAfterMoldBreaker
 	cp STICKY_HOLD
 	ret z
 
+	; Check if target has an item to knock off
 	call GetOpponentItem
 	ld a, [hl]
 	and a
 	ret z
+
+	; Armor Suit can't be knocked off
+	cp ARMOR_SUIT
+	ret z
+
+	; Mail can't be knocked off
+	ld d, a
+	push hl
+	farcall ItemIsMail
+	pop hl
+	ret c
 
 	ld [wNamedObjectIndexBuffer], a
 	xor a

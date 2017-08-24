@@ -7,7 +7,7 @@ FuchsiaCity_MapScriptHeader:
 
 FuchsiaCity_MapEventHeader:
 
-.Warps: db 10
+.Warps: db 11
 	warp_def 13, 5, 2, FUCHSIA_MART
 	warp_def 27, 8, 1, FUCHSIA_GYM
 	warp_def 27, 11, 1, FUCHSIA_BILL_SPEECH_HOUSE
@@ -18,6 +18,7 @@ FuchsiaCity_MapEventHeader:
 	warp_def 23, 37, 2, ROUTE_15_FUCHSIA_GATE
 	warp_def 33, 7, 1, ROUTE_19_FUCHSIA_GATE
 	warp_def 33, 8, 2, ROUTE_19_FUCHSIA_GATE
+	warp_def 27, 15, 1, FUCHSIA_SAFARI_BALL_HOUSE
 
 .XYTriggers: db 0
 

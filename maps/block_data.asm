@@ -126,6 +126,7 @@ CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
 CeruleanCoupleHouse_BlockData:
 FuchsiaBillSpeechHouse_BlockData:
+FuchsiaSafariBallHouse_BlockData:
 SaffronRichSpeechHouse_BlockData:
 LavenderTownSpeechHouse_BlockData:
 ViridianNicknameSpeechHouse_BlockData:
