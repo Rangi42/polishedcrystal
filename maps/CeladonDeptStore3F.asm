@@ -13,9 +13,8 @@ CeladonDeptStore3F_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 6
+.Signposts: db 5
 	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore3FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 	signpost 3, 2, SIGNPOST_JUMPTEXT, CeladonDeptStore3FRPGText
 	signpost 3, 5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FSportsGameText
 	signpost 5, 2, SIGNPOST_JUMPTEXT, CeladonDeptStore3FPuzzleGameText
