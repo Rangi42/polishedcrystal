@@ -199,6 +199,8 @@ GetMonSprite: ; 14259
 	jr z, .wBreedMon1
 	cp SPRITE_DAYCARE_MON_2
 	jr z, .wBreedMon2
+	cp SPRITE_GROTTO_MON
+	jr z, .GrottoMon
 	cp SPRITE_VARS
 	jr nc, .Variable
 	jr .Icon
@@ -222,6 +224,11 @@ GetMonSprite: ; 14259
 
 .wBreedMon2
 	ld a, [wBreedMon2Species]
+	jr .Mon
+
+.GrottoMon
+	farcall GetHiddenGrottoContents
+	ld a, [hl]
 
 .Mon:
 	ld e, a
@@ -990,7 +997,6 @@ Group28Sprites:
 Group8Sprites:
 ; Route33
 ; AzaleaTown
-	db SPRITE_AZALEA_ROCKET ; SPRITE_ROCKET, SPRITE_SILVER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
@@ -1000,10 +1006,10 @@ Group8Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_KURT ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 9 walking sprites (8 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
-	; 12 total sprites
+	; 11 total sprites
 	db 0
 
 
