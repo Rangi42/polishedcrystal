@@ -1,6 +1,6 @@
 HiddenTreeGrotto_MapScriptHeader:
 
-; TODO: use an actual hidden item, not a blue poke ball
+; TODO: use an actual hidden item, not a purple poke ball
 
 .MapTriggers: db 0
 
@@ -21,7 +21,7 @@ HiddenTreeGrotto_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_RECEIVED_BALLS_FROM_KURT
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, HiddenGrottoHiddenItemScript, EVENT_DRAGON_SHRINE_QUESTION_2
+	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoHiddenItemScript, EVENT_DRAGON_SHRINE_QUESTION_2
 
 const_value set 2
 	const HIDDENTREEGROTTO_POKEMON
@@ -51,14 +51,13 @@ HiddenGrottoCallback:
 	return
 
 HiddenGrottoPokemonScript:
-	disappear HIDDENTREEGROTTO_POKEMON
-	showtext .DummyText
+; TODO: BATTLETYPE_GROTTO that forces hidden ability
+	loadgrottomon
 	special EmptiedHiddenGrotto
+	startbattle
+	disappear HIDDENTREEGROTTO_POKEMON
+	reloadmapafterbattle
 	end
-
-.DummyText:
-	text "Got it!"
-	done
 
 HiddenGrottoHiddenItemScript:
 ;	dw EVENT_DRAGON_SHRINE_QUESTION_2

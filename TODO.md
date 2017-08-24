@@ -22,7 +22,6 @@ The final, non-beta 3.0 release should include all of these.
 ### Mechanics
 
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
-* Add Hidden Grottoes in trees and Hidden Hollows in cliffsides with random items and/or Pokémon
 * Notify when Pickup picks up an item
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
@@ -40,6 +39,14 @@ The final, non-beta 3.0 release should include all of these.
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
 * Allow trading Eggs
+
+Hidden Grottoes:
+
+* Fix bug where item is not cached when you first enter a grotto
+* Add BATTLETYPE_GROTTO that forces hidden abilities
+* Undo the visible purple Poké Ball for debugging hidden items
+* Scatter grottoes throughout Johto
+* Script an event where Lyra introduces hidden grottoes
 
 
 ### Aesthetics

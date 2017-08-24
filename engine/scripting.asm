@@ -256,6 +256,7 @@ ScriptCommandTable:
 	dw Script_waitendtext                ; c1
 	dw Script_iftrue_endtext             ; c2
 	dw Script_iffalse_endtext            ; c3
+	dw Script_loadgrottomon              ; c4
 
 StartScript:
 	ld hl, ScriptFlags
@@ -2927,3 +2928,13 @@ Script_showcrytext:
 	call Script_cry
 	call Script_waitbutton
 	jp Script_closetext
+
+Script_loadgrottomon:
+	farcall GetHiddenGrottoContents
+	ld [TempWildMonSpecies], a
+	call PlayCry
+	ld a, (1 << 7)
+	ld [wBattleScriptFlags], a
+	farcall GetCurHiddenGrottoLevel
+	ld [CurPartyLevel], a
+	ret

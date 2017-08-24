@@ -158,9 +158,15 @@ GetHiddenGrottoContents::
 	ld [ScriptVar], a
 	ret
 
+GetCurHiddenGrottoLevel::
+	ld hl, HiddenGrottoData + 5 ; level
+	call GetHiddenGrottoDataMember
+	ld a, [hl]
+	ret
+
 HiddenGrottoData:
-	; warp number, rare item, common mon, uncommon mon, rare mon
+	; warp number, rare item, common mon, uncommon mon, rare mon, level
 HiddenGrotto1:
-	db 4, SUN_STONE, SNUBBULL, YANMA, YANMA ; HIDDENGROTTO_ROUTE_35
+	db 4, SUN_STONE, SNUBBULL, YANMA, YANMA, 15 ; HIDDENGROTTO_ROUTE_35
 HiddenGrotto2:
-	db 2, WATER_STONE, FLAAFFY, GIRAFARIG, FARFETCH_D ; HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
+	db 2, WATER_STONE, FLAAFFY, GIRAFARIG, FARFETCH_D, 25 ; HIDDENGROTTO_LAKE_OF_RAGE_SOUTH

@@ -1211,3 +1211,8 @@ iftrue_endtext: macro
 iffalse_endtext: macro
 	db iffalse_endtext_command
 	endm
+
+	enum loadgrottomon_command
+loadgrottomon: macro
+	db loadgrottomon_command
+	endm
