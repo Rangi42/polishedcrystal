@@ -70,6 +70,7 @@ InitializeHiddenGrotto::
 	ld [hli], a
 	ld a, e ; content id
 	ld [hl], a
+	ld a, d
 .Done:
 	ld [ScriptVar], a
 	ret

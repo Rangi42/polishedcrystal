@@ -835,6 +835,7 @@ EMOTE_MEM EQU -1
 	const SIGNPOST_IFNOTSET
 	const SIGNPOST_JUMPTEXT
 	const SIGNPOST_JUMPSTD
+	const SIGNPOST_GROTTOITEM
 ; SIGNPOST_ITEM has to be the last signpost type, since hidden item signposts
 ; use type SIGNPOST_ITEM + (item id) to save space.
 ; Note that this requires SIGNPOST_ITEM + (item id) <= $ff, so currently most

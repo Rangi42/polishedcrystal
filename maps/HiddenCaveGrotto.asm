@@ -3,7 +3,7 @@ HiddenCaveGrotto_MapScriptHeader:
 .MapTriggers: db 0
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, HiddenGrottoCallback
+	dbw MAPCALLBACK_OBJECTS, HiddenGrottoCallback
 
 HiddenCaveGrotto_MapEventHeader:
 
@@ -13,7 +13,7 @@ HiddenCaveGrotto_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 4, 4, SIGNPOST_IFNOTSET, HiddenGrottoHiddenItemScript
+	signpost 4, 4, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
 
 .PersonEvents: db 2
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS

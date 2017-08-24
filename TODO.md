@@ -42,9 +42,7 @@ The final, non-beta 3.0 release should include all of these.
 
 Hidden Grottoes:
 
-* Fix bug where item is not cached when you first enter a grotto
 * Add BATTLETYPE_GROTTO that forces hidden abilities
-* Undo the visible purple Poké Ball for debugging hidden items
 * Scatter grottoes throughout Johto
 * Script an event where Lyra introduces hidden grottoes
 

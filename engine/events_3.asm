@@ -344,6 +344,8 @@ CheckForHiddenItems: ; b8172
 	jr nc, .next
 ; Is this signpost a hidden item?  If not, go to the next signpost.
 	call .GetFarByte
+	cp SIGNPOST_GROTTOITEM
+	jr z, .grottoitem
 	cp SIGNPOST_ITEM
 	jr c, .next
 ; Has this item already been found?  If not, set off the Itemfinder.
@@ -351,6 +353,12 @@ CheckForHiddenItems: ; b8172
 	ld e, a
 	call .GetFarByte
 	ld d, a
+	jr .checkitem
+.grottoitem
+	call .GetFarByte
+	call .GetFarByte
+	ld de, EVENT_DRAGON_SHRINE_QUESTION_2
+.checkitem
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	ld a, c

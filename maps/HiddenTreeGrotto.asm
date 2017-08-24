@@ -1,11 +1,9 @@
 HiddenTreeGrotto_MapScriptHeader:
 
-; TODO: use an actual hidden item, not a purple poke ball
-
 .MapTriggers: db 0
 
 .MapCallbacks: db 1
-	dbw MAPCALLBACK_SPRITES, HiddenGrottoCallback
+	dbw MAPCALLBACK_OBJECTS, HiddenGrottoCallback
 
 HiddenTreeGrotto_MapEventHeader:
 
@@ -15,18 +13,16 @@ HiddenTreeGrotto_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 0
-;	signpost 4, 4, SIGNPOST_IFNOTSET, HiddenGrottoHiddenItemScript
+.Signposts: db 1
+	signpost 4, 4, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
 
-.PersonEvents: db 3
+.PersonEvents: db 2
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS
 	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_RECEIVED_BALLS_FROM_KURT
-	person_event SPRITE_BALL_CUT_FRUIT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoHiddenItemScript, EVENT_DRAGON_SHRINE_QUESTION_2
 
 const_value set 2
 	const HIDDENTREEGROTTO_POKEMON
 	const HIDDENTREEGROTTO_ITEM
-	const HIDDENTREEGROTTO_HIDDEN_ITEM ; temporary
 
 HiddenGrottoCallback:
 	setevent EVENT_GAVE_KURT_APRICORNS
@@ -60,14 +56,14 @@ HiddenGrottoPokemonScript:
 	end
 
 HiddenGrottoHiddenItemScript:
-;	dw EVENT_DRAGON_SHRINE_QUESTION_2
+	dw EVENT_DRAGON_SHRINE_QUESTION_2
 HiddenGrottoItemScript:
 	special GetHiddenGrottoContents
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM
 	iffalse .PackFull
 	disappear HIDDENTREEGROTTO_ITEM
-	disappear HIDDENTREEGROTTO_HIDDEN_ITEM ; setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_DRAGON_SHRINE_QUESTION_2
 	opentext
 	writetext .ItemText
 	playsound SFX_ITEM

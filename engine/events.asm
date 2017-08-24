@@ -606,6 +606,7 @@ TryReadSign: ; 96a38
 	dw .ifnotset ; SIGNPOST_IFNOTSET
 	dw .jumptext ; SIGNPOST_JUMPTEXT
 	dw .jumpstd  ; SIGNPOST_JUMPSTD
+	dw .ifnotset ; SIGNPOST_GROTTOITEM
 ; 96a59
 
 .up
