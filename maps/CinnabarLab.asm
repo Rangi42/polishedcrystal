@@ -13,7 +13,7 @@ CinnabarLab_MapEventHeader:
 ;	warp_def $6, $2, 2, CINNABAR_LAB
 
 .XYTriggers: db 1
-	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
+	xy_trigger 1, 6, 2, CinnabarLabCelebiEventScript
 
 .Signposts: db 8
 	signpost 14, 8, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText

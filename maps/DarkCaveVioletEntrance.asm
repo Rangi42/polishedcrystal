@@ -12,7 +12,7 @@ DarkCaveVioletEntrance_MapEventHeader:
 	warp_def 33, 35, 3, ROUTE_46
 
 .XYTriggers: db 1
-	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger
+	xy_trigger 0, 2, 5, DarkCaveVioletEntranceFalknerTrigger
 
 .Signposts: db 1
 	signpost 3, 26, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER

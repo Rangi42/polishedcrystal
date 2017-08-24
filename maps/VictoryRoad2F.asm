@@ -14,7 +14,7 @@ VictoryRoad2F_MapEventHeader:
 	warp_def 9, 19, 3, VICTORY_ROAD_3F
 
 .XYTriggers: db 1
-	xy_trigger 0, $9, $19, UnknownScript_0x74492
+	xy_trigger 0, 9, 25, UnknownScript_0x74492
 
 .Signposts: db 1
 	signpost 5, 5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION

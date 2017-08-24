@@ -18,9 +18,9 @@ AzaleaTown_MapEventHeader:
 	warp_def 11, 2, 4, ILEX_FOREST_AZALEA_GATE
 
 .XYTriggers: db 3
-	xy_trigger 1, $a, $5, AzaleaTownRivalBattleTrigger1
-	xy_trigger 1, $b, $5, AzaleaTownRivalBattleTrigger2
-	xy_trigger 2, $6, $9, AzaleaTown_CelebiTrigger
+	xy_trigger 1, 10, 5, AzaleaTownRivalBattleTrigger1
+	xy_trigger 1, 11, 5, AzaleaTownRivalBattleTrigger2
+	xy_trigger 2, 6, 9, AzaleaTown_CelebiTrigger
 
 .Signposts: db 7
 	signpost 9, 19, SIGNPOST_JUMPTEXT, AzaleaTownSignText

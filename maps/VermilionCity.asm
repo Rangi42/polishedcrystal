@@ -23,8 +23,8 @@ VermilionCity_MapEventHeader:
 	warp_def 5, 19, 1, VERMILION_S_S_ANNE_SPEECH_HOUSE
 
 .XYTriggers: db 2
-	xy_trigger 0, $20, $12, LawrenceLeftIntroScript
-	xy_trigger 0, $20, $13, LawrenceRightIntroScript
+	xy_trigger 0, 32, 18, LawrenceLeftIntroScript
+	xy_trigger 0, 32, 19, LawrenceRightIntroScript
 
 .Signposts: db 8
 	signpost 5, 25, SIGNPOST_JUMPTEXT, VermilionCitySignText

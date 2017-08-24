@@ -15,9 +15,9 @@ TeamRocketBaseB3F_MapEventHeader:
 	warp_def 14, 27, 5, TEAM_ROCKET_BASE_B2F
 
 .XYTriggers: db 3
-	xy_trigger 2, $8, $a, UnknownScript_0x6e04b
-	xy_trigger 2, $8, $b, UnknownScript_0x6e052
-	xy_trigger 1, $a, $8, RocketBaseRival
+	xy_trigger 2, 8, 10, UnknownScript_0x6e04b
+	xy_trigger 2, 8, 11, UnknownScript_0x6e052
+	xy_trigger 1, 10, 8, RocketBaseRival
 
 .Signposts: db 10
 	signpost 9, 10, SIGNPOST_IFNOTSET, BossDoor

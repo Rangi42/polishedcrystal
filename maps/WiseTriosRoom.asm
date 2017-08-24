@@ -13,7 +13,7 @@ WiseTriosRoom_MapEventHeader:
 	warp_def 4, 1, 5, ECRUTEAK_HOUSE
 
 .XYTriggers: db 1
-	xy_trigger 0, $4, $7, UnknownScript_0x985a3
+	xy_trigger 0, 4, 7, UnknownScript_0x985a3
 
 .Signposts: db 0
 

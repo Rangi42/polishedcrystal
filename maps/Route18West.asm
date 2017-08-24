@@ -12,7 +12,7 @@ Route18West_MapEventHeader:
 	warp_def 7, 19, 2, ROUTE_18_GATE
 
 .XYTriggers: db 1
-	xy_trigger 0, $0, $c, Route18WestBikeCheckScript
+	xy_trigger 0, 0, 12, Route18WestBikeCheckScript
 
 .Signposts: db 0
 

@@ -12,9 +12,9 @@ KrissHouse1F_MapEventHeader:
 	warp_def 0, 9, 1, KRISS_HOUSE_2F
 
 .XYTriggers: db 3
-	xy_trigger 0, $4, $8, MomTrigger1
-	xy_trigger 0, $4, $9, MomTrigger2
-	xy_trigger 0, $2, $7, MomTrigger3
+	xy_trigger 0, 4, 8, MomTrigger1
+	xy_trigger 0, 4, 9, MomTrigger2
+	xy_trigger 0, 2, 7, MomTrigger3
 
 .Signposts: db 4
 	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText

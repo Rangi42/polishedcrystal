@@ -20,8 +20,8 @@ OlivineCity_MapEventHeader:
 	warp_def 31, 20, 2, OLIVINE_PORT_PASSAGE
 
 .XYTriggers: db 2
-	xy_trigger 0, $8, $a, OlivineCityRivalGymScript
-	xy_trigger 0, $17, $21, OlivineCityRivalLighthouseScript
+	xy_trigger 0, 8, 10, OlivineCityRivalGymScript
+	xy_trigger 0, 23, 33, OlivineCityRivalLighthouseScript
 
 .Signposts: db 8
 	signpost 7, 17, SIGNPOST_JUMPTEXT, OlivineCitySignText

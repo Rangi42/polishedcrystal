@@ -11,7 +11,7 @@ PowerPlant_MapEventHeader:
 	warp_def 17, 3, 2, ROUTE_10_NORTH
 
 .XYTriggers: db 1
-	xy_trigger 1, $c, $5, PowerPlantGuardPhoneScript
+	xy_trigger 1, 12, 5, PowerPlantGuardPhoneScript
 
 .Signposts: db 2
 	signpost 1, 0, SIGNPOST_JUMPSTD, difficultbookshelf

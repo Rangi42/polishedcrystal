@@ -14,8 +14,8 @@ BattleTowerOutside_MapEventHeader:
 	warp_def 9, 9, 2, BATTLE_TOWER_1F ; hole
 
 .XYTriggers: db 2
-	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpTrigger1
-	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpTrigger2
+	xy_trigger 1, 9, 8, BattleTowerOutsidePanUpTrigger1
+	xy_trigger 1, 9, 9, BattleTowerOutsidePanUpTrigger2
 
 .Signposts: db 1
 	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText

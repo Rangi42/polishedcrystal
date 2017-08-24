@@ -16,8 +16,8 @@ Route32_MapEventHeader:
 	warp_def 79, 6, 4, UNION_CAVE_1F
 
 .XYTriggers: db 2
-	xy_trigger 0, $8, $12, Route32CooltrainerMStopsYou
-	xy_trigger 1, $47, $7, Route32WannaBuyASlowpokeTailScript
+	xy_trigger 0, 8, 18, Route32CooltrainerMStopsYou
+	xy_trigger 1, 71, 7, Route32WannaBuyASlowpokeTailScript
 
 .Signposts: db 5
 	signpost  5, 13, SIGNPOST_JUMPTEXT, Route32SignText

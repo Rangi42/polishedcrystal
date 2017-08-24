@@ -13,8 +13,8 @@ Route27_MapEventHeader:
 	warp_def 5, 36, 2, TOHJO_FALLS
 
 .XYTriggers: db 2
-	xy_trigger 0, $a, $12, UnknownScript_0x1a0873
-	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
+	xy_trigger 0, 10, 18, UnknownScript_0x1a0873
+	xy_trigger 0, 10, 19, UnknownScript_0x1a0881
 
 .Signposts: db 1
 	signpost 7, 25, SIGNPOST_JUMPTEXT, TohjoFallsSignText

@@ -11,8 +11,8 @@ FastShipB1F_MapEventHeader:
 	warp_def 11, 27, 12, FAST_SHIP_1F
 
 .XYTriggers: db 2
-	xy_trigger 0, $5, $1a, UnknownScript_0x7673c
-	xy_trigger 0, $5, $1b, UnknownScript_0x76751
+	xy_trigger 0, 5, 26, UnknownScript_0x7673c
+	xy_trigger 0, 5, 27, UnknownScript_0x76751
 
 .Signposts: db 0
 

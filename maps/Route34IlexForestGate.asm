@@ -14,7 +14,7 @@ Route34IlexForestGate_MapEventHeader:
 	warp_def 7, 5, 1, ILEX_FOREST
 
 .XYTriggers: db 1
-	xy_trigger 0, $7, $4, UnknownScript_0x62d3d
+	xy_trigger 0, 7, 4, UnknownScript_0x62d3d
 
 .Signposts: db 0
 

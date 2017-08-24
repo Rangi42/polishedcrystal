@@ -15,8 +15,8 @@ EcruteakHouse_MapEventHeader:
 	warp_def 3, 17, 3, WISE_TRIOS_ROOM
 
 .XYTriggers: db 2
-	xy_trigger 0, $7, $4, EcruteakHouse_XYTrigger1
-	xy_trigger 0, $7, $5, EcruteakHouse_XYTrigger2
+	xy_trigger 0, 7, 4, EcruteakHouse_XYTrigger1
+	xy_trigger 0, 7, 5, EcruteakHouse_XYTrigger2
 
 .Signposts: db 0
 

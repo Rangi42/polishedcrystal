@@ -20,13 +20,13 @@ ElmsLab_MapEventHeader:
 	warp_def 11, 5, 1, NEW_BARK_TOWN
 
 .XYTriggers: db 7
-	xy_trigger 1, $6, $4, LabTryToLeaveScript
-	xy_trigger 1, $6, $5, LabTryToLeaveScript
-	xy_trigger 3, $5, $4, MeetCopScript
-	xy_trigger 3, $5, $5, MeetCopScript2
-	xy_trigger 5, $8, $4, AideScript_WalkPotions1
-	xy_trigger 5, $8, $5, AideScript_WalkPotions2
-	xy_trigger 6, $6, $4, LyraBattleScript
+	xy_trigger 1, 6, 4, LabTryToLeaveScript
+	xy_trigger 1, 6, 5, LabTryToLeaveScript
+	xy_trigger 3, 5, 4, MeetCopScript
+	xy_trigger 3, 5, 5, MeetCopScript2
+	xy_trigger 5, 8, 4, AideScript_WalkPotions1
+	xy_trigger 5, 8, 5, AideScript_WalkPotions2
+	xy_trigger 6, 6, 4, LyraBattleScript
 
 .Signposts: db 16
 	signpost 1, 2, SIGNPOST_READ, ElmsLabHealingMachine

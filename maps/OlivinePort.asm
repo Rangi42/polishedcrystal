@@ -13,7 +13,7 @@ OlivinePort_MapEventHeader:
 	warp_def 23, 7, 1, FAST_SHIP_1F
 
 .XYTriggers: db 1
-	xy_trigger 0, $f, $7, UnknownScript_0x7491f
+	xy_trigger 0, 15, 7, UnknownScript_0x7491f
 
 .Signposts: db 1
 	signpost 22, 1, SIGNPOST_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN

@@ -16,7 +16,7 @@ BurnedTowerB1F_MapEventHeader:
 	warp_def 15, 7, 14, BURNED_TOWER_1F
 
 .XYTriggers: db 1
-	xy_trigger 0, $6, $a, ReleaseTheBeasts
+	xy_trigger 0, 6, 10, ReleaseTheBeasts
 
 .Signposts: db 0
 

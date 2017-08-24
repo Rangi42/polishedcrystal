@@ -23,8 +23,8 @@ FastShip1F_MapEventHeader:
 	warp_def 14, 30, 2, FAST_SHIP_B1F
 
 .XYTriggers: db 2
-	xy_trigger 2, $6, $18, WorriedGrandpaTriggerLeft
-	xy_trigger 2, $6, $19, WorriedGrandpaTriggerRight
+	xy_trigger 2, 6, 24, WorriedGrandpaTriggerLeft
+	xy_trigger 2, 6, 25, WorriedGrandpaTriggerRight
 
 .Signposts: db 0
 

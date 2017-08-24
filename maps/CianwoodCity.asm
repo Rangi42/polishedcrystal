@@ -18,7 +18,7 @@ CianwoodCity_MapEventHeader:
 	warp_def 25, 4, 1, CLIFF_EDGE_GATE
 
 .XYTriggers: db 1
-	xy_trigger 1, $10, $b, UnknownScript_0x1a001e
+	xy_trigger 1, 16, 11, UnknownScript_0x1a001e
 
 .Signposts: db 8
 	signpost 34, 20, SIGNPOST_JUMPTEXT, CianwoodCitySignText

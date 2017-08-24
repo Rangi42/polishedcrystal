@@ -16,8 +16,8 @@ Route36_MapEventHeader:
 	warp_def 9, 57, 2, ROUTE_36_VIOLET_GATE
 
 .XYTriggers: db 2
-	xy_trigger 1, $7, $14, Route36SuicuneScript
-	xy_trigger 1, $7, $16, Route36SuicuneScript
+	xy_trigger 1, 7, 20, Route36SuicuneScript
+	xy_trigger 1, 7, 22, Route36SuicuneScript
 
 .Signposts: db 4
 	signpost 1, 29, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text

@@ -15,15 +15,15 @@ TeamRocketBaseB2F_MapEventHeader:
 	warp_def 14, 27, 4, TEAM_ROCKET_BASE_B3F
 
 .XYTriggers: db 9
-	xy_trigger 0, $e, $5, LanceHealsScript
-	xy_trigger 0, $d, $4, LanceHealsScript
-	xy_trigger 1, $b, $e, UnknownScript_0x6cf95
-	xy_trigger 1, $b, $f, UnknownScript_0x6cf9c
-	xy_trigger 2, $c, $e, UnknownScript_0x6d075
-	xy_trigger 2, $c, $f, UnknownScript_0x6d075
-	xy_trigger 2, $3, $c, UnknownScript_0x6d07a
-	xy_trigger 2, $a, $c, UnknownScript_0x6d07a
-	xy_trigger 2, $b, $c, UnknownScript_0x6d07a
+	xy_trigger 0, 14, 5, LanceHealsScript
+	xy_trigger 0, 13, 4, LanceHealsScript
+	xy_trigger 1, 11, 14, UnknownScript_0x6cf95
+	xy_trigger 1, 11, 15, UnknownScript_0x6cf9c
+	xy_trigger 2, 12, 14, UnknownScript_0x6d075
+	xy_trigger 2, 12, 15, UnknownScript_0x6d075
+	xy_trigger 2, 3, 12, UnknownScript_0x6d07a
+	xy_trigger 2, 10, 12, UnknownScript_0x6d07a
+	xy_trigger 2, 11, 12, UnknownScript_0x6d07a
 
 .Signposts: db 23
 	signpost 12, 14, SIGNPOST_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1

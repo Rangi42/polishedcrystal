@@ -14,7 +14,7 @@ BellchimeTrail_MapEventHeader:
 	warp_def 9, 21, 1, TIN_TOWER_1F ; hole
 
 .XYTriggers: db 1
-	xy_trigger 1, $9, $15, BellchimeTrailPanUpTrigger
+	xy_trigger 1, 9, 21, BellchimeTrailPanUpTrigger
 
 .Signposts: db 1
 	signpost 12, 22, SIGNPOST_JUMPTEXT, TinTowerSignText

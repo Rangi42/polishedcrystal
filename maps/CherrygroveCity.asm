@@ -16,9 +16,9 @@ CherrygroveCity_MapEventHeader:
 	warp_def 11, 31, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
 
 .XYTriggers: db 3
-	xy_trigger 0, $7, $21, CherrygroveGuideGentTrigger
-	xy_trigger 1, $6, $21, CherrygroveSilverTriggerNorth
-	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
+	xy_trigger 0, 7, 33, CherrygroveGuideGentTrigger
+	xy_trigger 1, 6, 33, CherrygroveSilverTriggerNorth
+	xy_trigger 1, 7, 33, CherrygroveSilverTriggerSouth
 
 .Signposts: db 2
 	signpost 8, 30, SIGNPOST_JUMPTEXT, CherrygroveCitySignText

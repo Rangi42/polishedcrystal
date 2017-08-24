@@ -12,8 +12,8 @@ CeruleanCape_MapEventHeader:
 	warp_def 29, 43, 1, DIM_CAVE_2F
 
 .XYTriggers: db 2
-	xy_trigger 1, $6, $6, CeruleanCapeDateInterruptedTrigger1
-	xy_trigger 1, $7, $6, CeruleanCapeDateInterruptedTrigger2
+	xy_trigger 1, 6, 6, CeruleanCapeDateInterruptedTrigger1
+	xy_trigger 1, 7, 6, CeruleanCapeDateInterruptedTrigger2
 
 .Signposts: db 3
 	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText

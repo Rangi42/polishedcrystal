@@ -17,8 +17,8 @@ PokemonLeagueGate_MapEventHeader:
 	warp_def 7, 2, 2, ROUTE_28
 
 .XYTriggers: db 2
-	xy_trigger 0, $a, $a, PokemonLeagueGateXYTriggerScript1
-	xy_trigger 0, $a, $b, PokemonLeagueGateXYTriggerScript2
+	xy_trigger 0, 10, 10, PokemonLeagueGateXYTriggerScript1
+	xy_trigger 0, 10, 11, PokemonLeagueGateXYTriggerScript2
 
 .Signposts: db 0
 

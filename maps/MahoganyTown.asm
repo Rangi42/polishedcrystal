@@ -15,8 +15,8 @@ MahoganyTown_MapEventHeader:
 	warp_def 1, 9, 3, ROUTE_43_MAHOGANY_GATE
 
 .XYTriggers: db 2
-	xy_trigger 0, $8, $13, UnknownScript_0x190013
-	xy_trigger 0, $9, $13, UnknownScript_0x190013
+	xy_trigger 0, 8, 19, UnknownScript_0x190013
+	xy_trigger 0, 9, 19, UnknownScript_0x190013
 
 .Signposts: db 3
 	signpost 5, 1, SIGNPOST_JUMPTEXT, MahoganyTownSignText

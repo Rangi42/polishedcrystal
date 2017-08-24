@@ -13,7 +13,7 @@ VermilionPort_MapEventHeader:
 	warp_def 17, 7, 1, FAST_SHIP_1F
 
 .XYTriggers: db 1
-	xy_trigger 0, $b, $7, UnknownScript_0x74e20
+	xy_trigger 0, 11, 7, UnknownScript_0x74e20
 
 .Signposts: db 1
 	signpost 13, 16, SIGNPOST_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON

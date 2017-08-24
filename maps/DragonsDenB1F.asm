@@ -12,7 +12,7 @@ DragonsDenB1F_MapEventHeader:
 	warp_def 29, 19, 1, DRAGON_SHRINE
 
 .XYTriggers: db 1
-	xy_trigger 1, $1e, $13, DragonsDenB1FClairTrigger
+	xy_trigger 1, 30, 19, DragonsDenB1FClairTrigger
 
 .Signposts: db 4
 	signpost 24, 18, SIGNPOST_READ, DragonsDenShrineSignText

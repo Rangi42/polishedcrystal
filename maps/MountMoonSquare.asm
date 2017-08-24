@@ -13,7 +13,7 @@ MountMoonSquare_MapEventHeader:
 	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
 
 .XYTriggers: db 1
-	xy_trigger 0, $b, $7, ClefairyDance
+	xy_trigger 0, 11, 7, ClefairyDance
 
 .Signposts: db 2
 	signpost 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE

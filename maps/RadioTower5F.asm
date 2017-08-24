@@ -11,8 +11,8 @@ RadioTower5F_MapEventHeader:
 	warp_def 0, 12, 3, RADIO_TOWER_4F
 
 .XYTriggers: db 2
-	xy_trigger 0, $3, $0, FakeDirectorScript
-	xy_trigger 1, $5, $10, RadioTower5FRocketBossTrigger
+	xy_trigger 0, 3, 0, FakeDirectorScript
+	xy_trigger 1, 5, 16, RadioTower5FRocketBossTrigger
 
 .Signposts: db 3
 	signpost 0, 3, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice

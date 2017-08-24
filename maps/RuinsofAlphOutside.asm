@@ -24,8 +24,8 @@ RuinsofAlphOutside_MapEventHeader:
 	warp_def 9, 10, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
 
 .XYTriggers: db 2
-	xy_trigger 1, $14, $d, UnknownScript_0x58031
-	xy_trigger 1, $15, $c, UnknownScript_0x58031
+	xy_trigger 1, 20, 13, UnknownScript_0x58031
+	xy_trigger 1, 21, 12, UnknownScript_0x58031
 
 .Signposts: db 5
 	signpost 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58325

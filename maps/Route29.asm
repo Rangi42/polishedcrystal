@@ -11,8 +11,8 @@ Route29_MapEventHeader:
 	warp_def 1, 27, 3, ROUTE_29_46_GATE
 
 .XYTriggers: db 2
-	xy_trigger 1, $8, $35, Route29Tutorial1
-	xy_trigger 1, $9, $35, Route29Tutorial2
+	xy_trigger 1, 8, 53, Route29Tutorial1
+	xy_trigger 1, 9, 53, Route29Tutorial2
 
 .Signposts: db 2
 	signpost 7, 51, SIGNPOST_JUMPTEXT, Route29Sign1Text

@@ -15,9 +15,9 @@ Route34_MapEventHeader:
 	warp_def 15, 13, 3, DAYCARE
 
 .XYTriggers: db 3
-	xy_trigger 1, $11, $8, Route34LyraTrigger1
-	xy_trigger 1, $11, $9, Route34LyraTrigger2
-	xy_trigger 1, $11, $a, Route34LyraTrigger3
+	xy_trigger 1, 17, 8, Route34LyraTrigger1
+	xy_trigger 1, 17, 9, Route34LyraTrigger2
+	xy_trigger 1, 17, 10, Route34LyraTrigger3
 
 .Signposts: db 5
 	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText

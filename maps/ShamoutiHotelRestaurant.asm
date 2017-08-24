@@ -12,8 +12,8 @@ ShamoutiHotelRestaurant_MapEventHeader:
 	warp_def 7, 17, 4, SHAMOUTI_HOTEL_1F
 
 .XYTriggers: db 2
-	xy_trigger 1, $6, $10, ShamoutiHotelRestaurantLeavingTrigger1
-	xy_trigger 1, $7, $10, ShamoutiHotelRestaurantLeavingTrigger2
+	xy_trigger 1, 6, 16, ShamoutiHotelRestaurantLeavingTrigger1
+	xy_trigger 1, 7, 16, ShamoutiHotelRestaurantLeavingTrigger2
 
 .Signposts: db 0
 

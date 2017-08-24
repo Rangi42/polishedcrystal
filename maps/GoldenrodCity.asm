@@ -33,7 +33,7 @@ GoldenrodCity_MapEventHeader:
 	warp_def 21, 13, 1, GOLDENROD_SPEECH_HOUSE
 
 .XYTriggers: db 1
-	xy_trigger 1, $f, $9, GoldenrodCityPanUpScript
+	xy_trigger 1, 15, 9, GoldenrodCityPanUpScript
 
 .Signposts: db 12
 	signpost 14, 14, SIGNPOST_JUMPTEXT, GoldenrodCityStationSignText

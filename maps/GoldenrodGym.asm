@@ -11,7 +11,7 @@ GoldenrodGym_MapEventHeader:
 	warp_def 17, 3, 1, GOLDENROD_CITY
 
 .XYTriggers: db 1
-	xy_trigger 1, $5, $8, WhitneyCriesScript
+	xy_trigger 1, 5, 8, WhitneyCriesScript
 
 .Signposts: db 2
 	signpost 15, 1, SIGNPOST_READ, GoldenrodGymStatue

@@ -14,8 +14,8 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	warp_def 3, 12, 1, WILLS_ROOM
 
 .XYTriggers: db 2
-	xy_trigger 0, $4, $e, PlateauRivalBattleTrigger1
-	xy_trigger 0, $4, $f, PlateauRivalBattleTrigger2
+	xy_trigger 0, 4, 14, PlateauRivalBattleTrigger1
+	xy_trigger 0, 4, 15, PlateauRivalBattleTrigger2
 
 .Signposts: db 1
 	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript

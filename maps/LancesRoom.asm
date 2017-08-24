@@ -15,8 +15,8 @@ LancesRoom_MapEventHeader:
 	warp_def 1, 5, 2, HALL_OF_FAME
 
 .XYTriggers: db 2
-	xy_trigger 1, $5, $4, ApproachLanceFromLeftTrigger
-	xy_trigger 1, $5, $5, ApproachLanceFromRightTrigger
+	xy_trigger 1, 5, 4, ApproachLanceFromLeftTrigger
+	xy_trigger 1, 5, 5, ApproachLanceFromRightTrigger
 
 .Signposts: db 0
 

@@ -16,13 +16,13 @@ NewBarkTown_MapEventHeader:
 	warp_def 2, 10, 2, ELMS_HOUSE
 
 .XYTriggers: db 7
-	xy_trigger 0, $8, $1, NewBarkTown_TeacherStopsYouTrigger1
-	xy_trigger 0, $9, $1, NewBarkTown_TeacherStopsYouTrigger2
-	xy_trigger 0, $4, $6, NewBarkTown_LyraIntroTrigger
-	xy_trigger 1, $6, $11, NewBarkTown_LyraFinalTrigger1
-	xy_trigger 1, $7, $11, NewBarkTown_LyraFinalTrigger2
-	xy_trigger 1, $8, $11, NewBarkTown_LyraFinalTrigger3
-	xy_trigger 1, $9, $11, NewBarkTown_LyraFinalTrigger4
+	xy_trigger 0, 8, 1, NewBarkTown_TeacherStopsYouTrigger1
+	xy_trigger 0, 9, 1, NewBarkTown_TeacherStopsYouTrigger2
+	xy_trigger 0, 4, 6, NewBarkTown_LyraIntroTrigger
+	xy_trigger 1, 6, 17, NewBarkTown_LyraFinalTrigger1
+	xy_trigger 1, 7, 17, NewBarkTown_LyraFinalTrigger2
+	xy_trigger 1, 8, 17, NewBarkTown_LyraFinalTrigger3
+	xy_trigger 1, 9, 17, NewBarkTown_LyraFinalTrigger4
 
 .Signposts: db 5
 	signpost 8, 8, SIGNPOST_JUMPTEXT, NewBarkTownSignText

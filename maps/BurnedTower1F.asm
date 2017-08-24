@@ -25,7 +25,7 @@ BurnedTower1F_MapEventHeader:
 	warp_def 15, 5,  6, BURNED_TOWER_B1F
 
 .XYTriggers: db 1
-	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
+	xy_trigger 1, 9, 9, BurnedTowerRivalBattleScript
 
 .Signposts: db 2
 	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER

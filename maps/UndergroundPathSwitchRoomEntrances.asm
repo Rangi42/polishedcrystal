@@ -19,8 +19,8 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	warp_def 27, 21, 13, GOLDENROD_CITY
 
 .XYTriggers: db 2
-	xy_trigger 0, $4, $13, UndergroundSilverTrigger1
-	xy_trigger 0, $5, $13, UndergroundSilverTrigger2
+	xy_trigger 0, 4, 19, UndergroundSilverTrigger1
+	xy_trigger 0, 5, 19, UndergroundSilverTrigger2
 
 .Signposts: db 6
 	signpost 1, 16, SIGNPOST_READ, Switch1Script

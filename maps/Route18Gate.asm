@@ -14,11 +14,11 @@ Route18Gate_MapEventHeader:
 	warp_def 8, 8, 1, ROUTE_18_GATE_2F
 
 .XYTriggers: db 5
-	xy_trigger 0, $3, $5, UnknownScript_0x73611
-	xy_trigger 0, $4, $5, UnknownScript_0x73611
-	xy_trigger 0, $5, $5, Route18GateStepUpOneTrigger
-	xy_trigger 0, $6, $5, Route18GateStepUpTwoTrigger
-	xy_trigger 0, $7, $5, Route18GateStepUpThreeTrigger
+	xy_trigger 0, 3, 5, UnknownScript_0x73611
+	xy_trigger 0, 4, 5, UnknownScript_0x73611
+	xy_trigger 0, 5, 5, Route18GateStepUpOneTrigger
+	xy_trigger 0, 6, 5, Route18GateStepUpTwoTrigger
+	xy_trigger 0, 7, 5, Route18GateStepUpThreeTrigger
 
 .Signposts: db 0
 

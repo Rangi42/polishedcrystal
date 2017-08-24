@@ -13,7 +13,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 	warp_def 5, 11, 3, SAFFRON_TRAIN_STATION
 
 .XYTriggers: db 1
-	xy_trigger 0, $6, $b, Script_ArriveFromSaffron
+	xy_trigger 0, 6, 11, Script_ArriveFromSaffron
 
 .Signposts: db 0
 
