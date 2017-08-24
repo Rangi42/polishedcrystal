@@ -31,8 +31,8 @@ const_value set 2
 	const VICTORYROAD2F_SILVER
 
 UnknownScript_0x74492:
-	spriteface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
+	spriteface PLAYER, LEFT
 	special Special_FadeOutMusic
 	pause 15
 	appear VICTORYROAD2F_SILVER
