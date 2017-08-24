@@ -1414,7 +1414,8 @@ wTempTrainerHeaderEnd::
 
 wPlayerTurningDirection:: ds 1
 wStashedTextPointer:: ds 2
-	ds 21
+CurHiddenGrotto:: ds 1
+	ds 20
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1::
@@ -2436,7 +2437,7 @@ FruitTreeFlags:: flag_array NUM_FRUIT_TREES
 NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 	ds 1 ; extra space set aside
 
-HiddenGrottoFlags:: flag_array 20
+HiddenGrottoFlags:: flag_array NUM_HIDDEN_GROTTOES
 	ds 1 ; extra space set aside
 
 wLuckyNumberDayBuffer:: ds 2

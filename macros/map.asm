@@ -95,7 +95,11 @@ signpost: macro
 	db \2 ; x
 	db \3 ; function
 if \3 == SIGNPOST_JUMPSTD
+if _NARG == 5
+	db \4, \5 ; stdscript
+else
 	db \4, 0 ; stdscript
+endc
 else
 	dw \4 ; pointer
 endc

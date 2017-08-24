@@ -17,4 +17,5 @@ HiddenCaveGrotto_MapEventHeader:
 .PersonEvents: db 0
 
 HiddenCaveGrottoCallback:
+	special InitializeHiddenGrotto
 	return

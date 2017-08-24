@@ -7,16 +7,19 @@ Route35_MapScriptHeader:
 
 Route35_MapEventHeader:
 
-.Warps: db 3
+.Warps: db 4
 	warp_def 33, 9, 1, ROUTE_35_GOLDENROD_GATE
 	warp_def 33, 10, 2, ROUTE_35_GOLDENROD_GATE
 	warp_def 5, 3, 3, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 16, 10, 1, HIDDEN_TREE_GROTTO
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 4
 	signpost 7, 1, SIGNPOST_JUMPTEXT, Route35SignText
 	signpost 31, 11, SIGNPOST_JUMPTEXT, Route35SignText
+	signpost 15, 10, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
+	signpost 15, 11, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 
 .PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 19, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1

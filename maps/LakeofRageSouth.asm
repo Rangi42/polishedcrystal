@@ -7,15 +7,18 @@ LakeofRageSouth_MapScriptHeader:
 
 LakeofRageSouth_MapEventHeader:
 
-.Warps: db 1
+.Warps: db 2
 	warp_def 15, 27, 1, LAKE_OF_RAGE_MAGIKARP_HOUSE
+	warp_def 12, 10, 1, HIDDEN_TREE_GROTTO
 
 .XYTriggers: db 0
 
-.Signposts: db 3
+.Signposts: db 5
 	signpost 11, 21, SIGNPOST_JUMPTEXT, LakeOfRageSignText
 	signpost 15, 25, SIGNPOST_READ, LakeOfRageFishingGuruSignText
 	signpost 12, 11, SIGNPOST_ITEM + FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
+	signpost 11, 10, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
+	signpost 11, 11, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
 
 .PersonEvents: db 15
 	person_event SPRITE_LANCE, 12, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeOfRageLanceScript, EVENT_LAKE_OF_RAGE_LANCE

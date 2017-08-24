@@ -18,4 +18,5 @@ HiddenTreeGrotto_MapEventHeader:
 .PersonEvents: db 0
 
 HiddenTreeGrottoCallback:
+	special InitializeHiddenGrotto
 	return

@@ -940,9 +940,33 @@ const_value SET 1
 	const FRUITTREE_ROUTE_49        ; 23
 NUM_FRUIT_TREES EQU const_value +- 1
 
+; hidden grottoes
+; see engine/hidden_grottoes.asm:HiddenGrottoData
 const_value SET 1
-	const HIDDENGROTTO_CHERRYGROVE_CITY
-NUM_HIDDEN_GROTTOES EQU 20 ; const_value +- 1
+	const HIDDENGROTTO_ROUTE_35           ; 01
+	const HIDDENGROTTO_LAKE_OF_RAGE_SOUTH ; 02
+	const HIDDENGROTTO_03                 ; 03
+	const HIDDENGROTTO_04                 ; 04
+	const HIDDENGROTTO_05                 ; 05
+	const HIDDENGROTTO_06                 ; 06
+	const HIDDENGROTTO_07                 ; 07
+	const HIDDENGROTTO_08                 ; 08
+	const HIDDENGROTTO_09                 ; 09
+	const HIDDENGROTTO_0A                 ; 0a
+	const HIDDENGROTTO_0B                 ; 0b
+	const HIDDENGROTTO_0C                 ; 0c
+	const HIDDENGROTTO_0D                 ; 0d
+	const HIDDENGROTTO_0E                 ; 0e
+	const HIDDENGROTTO_0F                 ; 0f
+	const HIDDENGROTTO_10                 ; 10
+	const HIDDENGROTTO_11                 ; 11
+	const HIDDENGROTTO_12                 ; 12
+	const HIDDENGROTTO_13                 ; 13
+	const HIDDENGROTTO_14                 ; 14
+	const HIDDENGROTTO_15                 ; 15
+	const HIDDENGROTTO_16                 ; 16
+	const HIDDENGROTTO_17                 ; 17
+NUM_HIDDEN_GROTTOES EQU const_value +- 1
 
 CMDQUEUE_TYPE  EQU 0
 CMDQUEUE_ADDR  EQU 1

@@ -1867,6 +1867,8 @@ SECTION "bank11", ROMX
 
 INCLUDE "engine/fruit_trees.asm"
 
+INCLUDE "engine/hidden_grottoes.asm"
+
 INCLUDE "battle/ai/move.asm"
 
 AnimateDexSearchSlowpoke: ; 441cf
