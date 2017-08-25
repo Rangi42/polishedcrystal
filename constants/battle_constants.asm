@@ -531,6 +531,7 @@ SCREENS_TOXIC_SPIKES EQU     %11000000
 	const EFFECT_KNOCK_OFF
 	const EFFECT_FURY_STRIKES
 	const EFFECT_BUG_BITE
+	const EFFECT_GYRO_BALL
 
 ; Battle vars used in home/battle.asm
 	const_def

@@ -838,7 +838,7 @@ BattleTowerMons3:
 
 	db LANTURN
 	db SITRUS_BERRY
-	db RAIN_DANCE, THUNDER, SURF, FLAIL
+	db RAIN_DANCE, THUNDER, SURF, REVERSAL
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 

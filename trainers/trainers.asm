@@ -609,7 +609,7 @@ JasmineGroup:
 
 	db 34, FORRETRESS, NO_ITEM, 96
 		db SPIKES
-		db FLASH_CANNON
+		db GYRO_BALL
 		db DEFENSE_CURL
 		db ROLLOUT
 
@@ -649,7 +649,7 @@ JasmineGroup:
 
 	db 73, FORRETRESS, SOFT_SAND, $EE, $EE, $EE
 		db EARTHQUAKE
-		db RAPID_SPIN
+		db GYRO_BALL
 		db EXPLOSION
 		db SPIKES
 
@@ -2213,7 +2213,7 @@ RedGroup:
 		db CURSE
 		db REST
 		db SLEEP_TALK
-		db DOUBLE_EDGE
+		db GYRO_BALL
 
 	db 87, OMASTAR, WISE_GLASSES, HIDDEN_ABILITY | MODEST, MALE
 		db SURF
@@ -4822,7 +4822,7 @@ FisherGroup:
 		db PIN_MISSILE
 
 	db 39, LANTURN
-		db FLAIL
+		db REVERSAL
 		db WATERFALL
 		db SPARK
 		db CONFUSE_RAY
@@ -5031,25 +5031,25 @@ FisherGroup:
 	db 30, MAGIKARP, ABILITY_1 | QUIRKY, MALE | 4
 		db SPLASH
 		db TACKLE
-		db FLAIL
+		db REVERSAL
 		db DRAGON_RAGE
 
 	db 30, MAGIKARP, ABILITY_1 | QUIRKY, MALE | 5
 		db SPLASH
 		db TACKLE
-		db FLAIL
+		db REVERSAL
 		db DRAGON_RAGE
 
 	db 30, MAGIKARP, ABILITY_1 | QUIRKY, MALE | 6
 		db SPLASH
 		db TACKLE
-		db FLAIL
+		db REVERSAL
 		db DRAGON_RAGE
 
 	db 30, MAGIKARP, ABILITY_1 | QUIRKY, MALE | 7
 		db SPLASH
 		db TACKLE
-		db FLAIL
+		db REVERSAL
 		db DRAGON_RAGE
 
 	db $ff ; end
@@ -15331,7 +15331,7 @@ StevenGroup:
 
 	db 60, FORRETRESS, FOCUS_BAND
 		db EARTHQUAKE
-		db ROLLOUT
+		db GYRO_BALL
 		db EXPLOSION
 		db SPIKES
 
@@ -15391,7 +15391,7 @@ endc
 
 	db 77, FORRETRESS, FOCUS_BAND
 		db EARTHQUAKE
-		db ROLLOUT
+		db GYRO_BALL
 		db EXPLOSION
 		db SPIKES
 

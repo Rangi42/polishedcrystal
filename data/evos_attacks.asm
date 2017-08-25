@@ -478,10 +478,10 @@ SandshrewEvosAttacks:
 	db 14, MAGNITUDE
 	db 17, SWIFT
 	db 20, FURY_STRIKES ; Fury Swipes → similar move
-	db 23, SUPER_FANG ; Sand Tomb → HGSS tutor move
+	db 23, METAL_CLAW ; Sand Tomb → HGSS tutor move
 	db 26, SLASH
 	db 30, DIG
-	db 34, METAL_CLAW ; Gyro Ball → TM move
+	db 34, GYRO_BALL
 	db 38, SWORDS_DANCE
 	db 42, SANDSTORM
 	db 46, EARTHQUAKE
@@ -501,9 +501,9 @@ SandslashEvosAttacks:
 	db 17, SWIFT
 	db 20, FURY_STRIKES ; Fury Swipes → similar move
 	db 24, SUPER_FANG ; Sand Tomb → HGSS tutor move
-	db 28, HONE_CLAWS ; Slash → TM move
+	db 28, METAL_CLAW ; Slash → TM move
 	db 33, DIG
-	db 38, METAL_CLAW ; Gyro Ball → TM move
+	db 38, GYRO_BALL
 	db 43, SWORDS_DANCE
 	db 48, SANDSTORM
 	db 53, EARTHQUAKE
@@ -694,7 +694,7 @@ JigglypuffEvosAttacks:
 	db 27, MEAN_LOOK ; Wake-Up Slap → new move
 	db 30, REST
 	db 32, BODY_SLAM
-	db 35, PERISH_SONG ; Gyro Ball → egg move
+	db 35, GYRO_BALL
 	db 38, HEAL_BELL ; Mimic → HGSS tutor move
 	db 41, HYPER_VOICE
 	db 45, DOUBLE_EDGE
@@ -729,7 +729,6 @@ ZubatEvosAttacks:
 	db 37, VENOSHOCK
 	db 41, AIR_SLASH
 	db 43, PURSUIT ; Quick Guard → egg move
-	db 47, FLAIL ; event move
 	db 0 ; no more level-up moves
 
 GolbatEvosAttacks:
@@ -751,7 +750,6 @@ GolbatEvosAttacks:
 	db 43, VENOSHOCK
 	db 48, AIR_SLASH
 	db 51, PURSUIT ; Quick Guard → egg move
-	db 56, FLAIL ; event move
 	db 0 ; no more level-up moves
 
 OddishEvosAttacks:
@@ -1368,7 +1366,7 @@ GeodudeEvosAttacks:
 	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
 	db 22, BULLDOZE
 	db 24, SELFDESTRUCT
-	db 28, FLAIL ; Stealth Rock → egg move
+	db 28, SANDSTORM ; Stealth Rock → TM move
 	db 30, ROCK_BLAST
 	db 34, EARTHQUAKE
 	db 36, EXPLOSION
@@ -1389,7 +1387,7 @@ GravelerEvosAttacks:
 	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
 	db 22, BULLDOZE
 	db 24, SELFDESTRUCT
-	db 30, FLAIL ; Stealth Rock → egg move
+	db 30, SANDSTORM ; Stealth Rock → TM move
 	db 34, ROCK_BLAST
 	db 40, EARTHQUAKE
 	db 44, EXPLOSION
@@ -1409,12 +1407,13 @@ GolemEvosAttacks:
 	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
 	db 22, BULLDOZE
 	db 24, SELFDESTRUCT
-	db 30, FLAIL ; Stealth Rock → egg move
+	db 30, SANDSTORM ; Stealth Rock → TM move
 	db 34, ROCK_BLAST
 	db 40, EARTHQUAKE
 	db 44, EXPLOSION
 	db 50, DOUBLE_EDGE
 	db 54, STONE_EDGE
+	db 60, GYRO_BALL ; Heavy Slam → similar move
 	db 0 ; no more level-up moves
 
 PonytaEvosAttacks:
@@ -1514,8 +1513,8 @@ MagnemiteEvosAttacks:
 	db 31, FLASH_CANNON
 	db 35, SCREECH
 	db 37, HIDDEN_POWER ; Discharge → TM move
-	db 41, STRUGGLE ; Lock-On → TODO
-	db 43, LIGHT_SCREEN ; Magnet Rise → TM move
+	db 41, LIGHT_SCREEN ; Lock-On → TM move
+	db 43, GYRO_BALL ; Magnet Rise → Gyro Ball
 	db 47, THUNDER ; Gyro Ball → TM move
 	db 49, ZAP_CANNON
 	db 0 ; no more level-up moves
@@ -1537,8 +1536,8 @@ MagnetonEvosAttacks:
 	db 33, FLASH_CANNON
 	db 39, SCREECH
 	db 43, HIDDEN_POWER ; Discharge → TM move
-	db 49, STRUGGLE ; Lock-On → TODO
-	db 53, LIGHT_SCREEN ; Magnet Rise → TM move
+	db 49, LIGHT_SCREEN ; Lock-On → TM move
+	db 53, GYRO_BALL ; Magnet Rise → Gyro Ball
 	db 59, THUNDER ; Gyro Ball → TM move
 	db 63, ZAP_CANNON
 	db 0 ; no more level-up moves
@@ -1582,7 +1581,7 @@ DoduoEvosAttacks:
 	db 36, SWORDS_DANCE
 	db 40, HI_JUMP_KICK ; Jump Kick → similar move
 	db 43, DRILL_PECK
-	db 47, FLAIL ; Endeavor → egg move
+	db 47, REVERSAL ; Endeavor → new move
 	db 50, THRASH
 	db 0 ; no more level-up moves
 
@@ -1603,7 +1602,7 @@ DodrioEvosAttacks:
 	db 38, SWORDS_DANCE
 	db 43, HI_JUMP_KICK ; Jump Kick → similar move
 	db 47, DRILL_PECK
-	db 52, FLAIL ; Endeavor → egg move
+	db 52, REVERSAL ; Endeavor → new move
 	db 56, THRASH
 	db 0 ; no more level-up moves
 
@@ -1622,7 +1621,7 @@ SeelEvosAttacks:
 	db 31, AQUA_JET
 	db 33, BUBBLE_BEAM ; Brine → RBY TM move
 	db 37, TAKE_DOWN
-	db 41, FLAIL ; Dive → event move
+	db 41, STRUGGLE ; Dive → TODO
 	db 43, AQUA_TAIL
 	db 47, ICE_BEAM
 	db 51, SAFEGUARD
@@ -1644,7 +1643,7 @@ DewgongEvosAttacks:
 	db 31, AQUA_JET
 	db 33, BUBBLE_BEAM ; Brine → RBY TM move
 	db 39, TAKE_DOWN
-	db 45, FLAIL ; Dive → event move
+	db 45, STRUGGLE ; Dive → TODO
 	db 49, AQUA_TAIL
 	db 55, ICE_BEAM
 	db 61, SAFEGUARD
@@ -1886,7 +1885,7 @@ KrabbyEvosAttacks:
 	db 35, CLOSE_COMBAT ; Slam → new move
 	db 39, CRABHAMMER ; Brine → Crabhammer
 	db 41, ANCIENTPOWER ; Crabhammer → HGSS tutor move
-	db 45, FLAIL
+	db 45, REVERSAL ; Flail → similar move
 	db 0 ; no more level-up moves
 
 KinglerEvosAttacks:
@@ -1904,7 +1903,7 @@ KinglerEvosAttacks:
 	db 44, CLOSE_COMBAT ; Slam → new move
 	db 51, CRABHAMMER ; Brine → Crabhammer
 	db 56, ANCIENTPOWER ; Crabhammer → HGSS tutor move
-	db 63, FLAIL
+	db 63, REVERSAL ; Flail → new move
 	db 0 ; no more level-up moves
 
 VoltorbEvosAttacks:
@@ -1924,7 +1923,7 @@ VoltorbEvosAttacks:
 	db 34, REFLECT ; Magnet Rise → TM move
 	db 37, THUNDER ; Discharge → TM move
 	db 41, EXPLOSION
-	db 46, FLASH_CANNON ; Gyro Ball → new move
+	db 46, GYRO_BALL
 	db 48, MIRROR_COAT
 	db 0 ; no more level-up moves
 
@@ -1944,7 +1943,7 @@ ElectrodeEvosAttacks:
 	db 36, REFLECT ; Magnet Rise → TM move
 	db 41, THUNDER ; Discharge → TM move
 	db 47, EXPLOSION
-	db 54, FLASH_CANNON ; Gyro Ball → new move
+	db 54, GYRO_BALL
 	db 58, MIRROR_COAT
 	db 0 ; no more level-up moves
 
@@ -2073,11 +2072,11 @@ KoffingEvosAttacks:
 	db 18, VENOSHOCK ; Sludge → tutor move
 	db 23, SELFDESTRUCT
 	db 26, HAZE
-	db 29, PAIN_SPLIT ; Gyro Ball → HGSS tutor move
+	db 29, GYRO_BALL
 	db 34, SLUDGE_BOMB
 	db 37, EXPLOSION
 	db 40, DESTINY_BOND
-	db 42, DARK_PULSE ; Belch → TM move
+	db 42, PAIN_SPLIT ; Belch → HGSS tutor move
 	db 45, FIRE_BLAST ; Memento → TM move
 	db 0 ; no more level-up moves
 
@@ -2091,11 +2090,11 @@ WeezingEvosAttacks:
 	db 18, VENOSHOCK ; Sludge → tutor move
 	db 23, SELFDESTRUCT
 	db 26, HAZE
-	db 29, PAIN_SPLIT ; Gyro Ball → HGSS tutor move
+	db 29, GYRO_BALL
 	db 34, SLUDGE_BOMB
 	db 40, EXPLOSION
 	db 46, DESTINY_BOND
-	db 51, DARK_PULSE ; Belch → TM move
+	db 51, PAIN_SPLIT ; Belch → HGSS tutor move
 	db 57, FIRE_BLAST ; Memento → TM move
 	db 0 ; no more level-up moves
 
@@ -2300,7 +2299,7 @@ StaryuEvosAttacks:
 	db 16, SWIFT
 	db 18, BUBBLE_BEAM
 	db 22, AGILITY ; Camouflage → new move
-	db 24, FLASH_CANNON ; Gyro Ball → TM move
+	db 24, GYRO_BALL
 	db 28, PAIN_SPLIT ; Brine → HGSS tutor move
 	db 31, MINIMIZE
 	db 35, REFLECT ; Reflect Type → new move
@@ -2467,9 +2466,7 @@ MagikarpEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH
 	db 15, TACKLE
-	db 30, FLAIL
-	db 45, REVERSAL ; event move
-	db 60, HYDRO_PUMP ; event move
+	db 30, REVERSAL ; Flail → event move
 	db 0 ; no more level-up moves
 
 GyaradosEvosAttacks:
@@ -2543,7 +2540,7 @@ EeveeEvosAttacks:
 	db 33, BATON_PASS
 	db 37, DOUBLE_EDGE
 	db 41, GROWTH ; Last Resort → event move
-	db 45, FLAIL ; Trump Card → egg move
+	db 45, REVERSAL ; Trump Card → new move
 	db 0 ; no more level-up moves
 
 VaporeonEvosAttacks:
@@ -3031,7 +3028,7 @@ TotodileEvosAttacks:
 	db 13, BITE
 	db 15, SCARY_FACE
 	db 20, METAL_CLAW ; Ice Fang → egg move
-	db 22, FLAIL
+	db 22, REVERSAL ; Flail → similar move
 	db 27, AGILITY ; Feraligatr move
 	db 29, CRUNCH
 	db 34, ANCIENTPOWER ; Chip Away → HGSS tutor move
@@ -3053,7 +3050,7 @@ CroconawEvosAttacks:
 	db 13, BITE
 	db 15, SCARY_FACE
 	db 21, METAL_CLAW ; Ice Fang → egg move
-	db 24, FLAIL
+	db 24, REVERSAL ; Flail → similar move
 	db 30, AGILITY ; Feraligatr move
 	db 33, CRUNCH
 	db 39, ANCIENTPOWER ; Chip Away → HGSS tutor move
@@ -3075,7 +3072,7 @@ FeraligatrEvosAttacks:
 	db 13, BITE
 	db 15, SCARY_FACE
 	db 21, METAL_CLAW ; Ice Fang → egg move
-	db 24, FLAIL
+	db 24, REVERSAL ; Flail → similar move
 	db 32, AGILITY
 	db 37, CRUNCH
 	db 45, ANCIENTPOWER ; Chip Away → HGSS tutor move
@@ -3274,7 +3271,6 @@ CrobatEvosAttacks:
 	db 43, VENOSHOCK
 	db 48, AIR_SLASH
 	db 51, CRUNCH ; Quick Guard → new move
-	db 56, FLAIL ; event move
 	db 0 ; no more level-up moves
 
 ChinchouEvosAttacks:
@@ -3289,7 +3285,7 @@ ChinchouEvosAttacks:
 	db 20, WATER_PULSE ; Bubble Beam → TM move
 	db 23, SPARK
 	db 28, PSYBEAM ; Signal Beam → egg move
-	db 31, FLAIL
+	db 31, REVERSAL ; Flail → similar move
 	db 34, THUNDERBOLT ; Discharge → TM move
 	db 39, TAKE_DOWN
 	db 42, RECOVER ; Aqua Ring → similar move
@@ -3309,7 +3305,7 @@ LanturnEvosAttacks:
 	db 20, WATER_PULSE ; Bubble Beam → TM move
 	db 23, SPARK
 	db 29, PSYBEAM ; Signal Beam → egg move
-	db 33, FLAIL
+	db 33, REVERSAL ; Flail → similar move
 	db 37, THUNDERBOLT ; Discharge → TM move
 	db 43, TAKE_DOWN
 	db 47, RECOVER ; Aqua Ring → similar move
@@ -3372,8 +3368,8 @@ MagnezoneEvosAttacks:
 	db 33, FLASH_CANNON
 	db 39, SCREECH
 	db 43, HIDDEN_POWER ; Discharge → TM move
-	db 49, STRUGGLE ; Lock-On → TODO
-	db 53, LIGHT_SCREEN ; Magnet Rise → TM move
+	db 49, LIGHT_SCREEN ; Lock-On → TM move
+	db 53, GYRO_BALL ; Magnet Rise → Gyro Ball
 	db 59, THUNDER ; Gyro Ball → TM move
 	db 63, ZAP_CANNON
 	db 0 ; no more level-up moves
@@ -3550,7 +3546,7 @@ RhyperiorEvosAttacks:
 SudowoodoEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SUBSTITUTE ; Copycat → event move
-	db 5, FLAIL
+	db 5, REVERSAL ; Flail → similar move
 	db 8, LOW_KICK
 	db 12, LEER ; Rock Throw → new move
 	db 15, ROCK_THROW ; Mimic → Rock Throw
@@ -3928,16 +3924,17 @@ PinecoEvosAttacks:
 	db 20, DEFENSE_CURL ; Bide → TM move
 	db 23, TAKE_DOWN ; Natural Gift → Take Down
 	db 28, SPIKES
-	db 31, FLAIL ; Payback → egg move
+	db 31, REVERSAL ; Payback → new move
 	db 34, EXPLOSION
 	db 39, REFLECT ; Iron Defense → egg move
-	db 42, IRON_HEAD ; Gyro Ball → similar move
+	db 42, GYRO_BALL
 	db 45, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 ForretressEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, FLASH_CANNON ; Mirror Shot → TM move ; evolution move
+	db 1, AGILITY ; Autotomize → similar move
 	db 1, TOXIC_SPIKES
 	db 1, TACKLE
 	db 1, PROTECT
@@ -3948,13 +3945,13 @@ ForretressEvosAttacks:
 	db 20, DEFENSE_CURL ; Bide → TM move
 	db 23, TAKE_DOWN ; Natural Gift → Take Down
 	db 28, SPIKES
-	db 32, AGILITY ; Autotomize → similar move
-	db 36, FEINT_ATTACK ; Payback → new move
-	db 42, EXPLOSION
-	db 46, REFLECT ; Iron Defense → egg move
-	db 50, IRON_HEAD ; Gyro Ball → similar move
-	db 56, DOUBLE_EDGE
-	db 60, ZAP_CANNON
+	db 32, REVERSAL ; Payback → new move
+	db 36, EXPLOSION
+	db 42, REFLECT ; Iron Defense → egg move
+	db 46, GYRO_BALL
+	db 50, DOUBLE_EDGE
+	db 56, ZAP_CANNON
+	db 60, IRON_HEAD ; Heavy Slam → new move
 	db 0 ; no more level-up moves
 
 DunsparceEvosAttacks:
@@ -3979,7 +3976,7 @@ DunsparceEvosAttacks:
 	db 41, AIR_SLASH
 	db 43, HEX ; Dragon Rush → egg move
 	db 46, ENDURE
-	db 48, FLAIL
+	db 48, REVERSAL ; Flail → similar move
 	db 0 ; no more level-up moves
 
 GligarEvosAttacks:
@@ -4092,7 +4089,7 @@ QwilfishEvosAttacks:
 	db 17, ROLLOUT
 	db 21, TOXIC_SPIKES
 	db 25, PAIN_SPLIT ; Stockpile + Spit Up → HGSS move tutor
-	db 29, FLAIL ; Revenge → egg move
+	db 29, REVERSAL ; Revenge → new move
 	db 33, WATER_PULSE ; Brine → TM move
 	db 37, PIN_MISSILE
 	db 41, TAKE_DOWN
@@ -4280,7 +4277,7 @@ SwinubEvosAttacks:
 	db 24, ICICLE_CRASH ; Ice Shard → egg move
 	db 28, TAKE_DOWN
 	db 35, BULLDOZE ; Mist → TM move
-	db 37, FLAIL ; Earthquake → Flail
+	db 37, REVERSAL ; Earthquake → similar move
 	db 40, EARTHQUAKE ; Flail → Earthquake
 	db 44, BLIZZARD
 	db 48, AMNESIA
@@ -4348,7 +4345,7 @@ CorsolaEvosAttacks:
 	db 41, POWER_GEM
 	db 45, MIRROR_COAT
 	db 47, EARTH_POWER
-	db 50, FLAIL
+	db 50, REVERSAL ; Flail → similar move
 	db 0 ; no more level-up moves
 
 RemoraidEvosAttacks:
@@ -4500,7 +4497,7 @@ PhanpyEvosAttacks:
 	db 1, TACKLE
 	db 1, GROWL
 	db 1, DEFENSE_CURL
-	db 6, FLAIL
+	db 6, REVERSAL ; Flail → similar move
 	db 10, ROLLOUT
 	db 15, ENCORE ; Natural Gift → event move
 	db 19, ENDURE
@@ -4586,7 +4583,7 @@ HitmontopEvosAttacks:
 	db 28, COUNTER
 	db 33, DOUBLE_KICK ; Triple Kick → similar move
 	db 37, AGILITY
-	db 42, STRUGGLE ; Gyro Ball → TODO
+	db 42, GYRO_BALL
 	db 46, FORESIGHT ; Wide Guard + Quick Guard → new move
 	db 50, PROTECT ; Detect → similar move
 	db 55, CLOSE_COMBAT
@@ -4685,7 +4682,7 @@ MiltankEvosAttacks:
 	db 24, BODY_SLAM
 	db 29, ZEN_HEADBUTT
 	db 35, SEISMIC_TOSS ; Captivate → egg move
-	db 41, IRON_HEAD ; Gyro Ball → tutor move
+	db 41, GYRO_BALL
 	db 48, HEAL_BELL
 	db 50, REVERSAL ; Wake-Up Slap → egg move
 	db 0 ; no more level-up moves

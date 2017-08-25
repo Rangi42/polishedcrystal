@@ -174,7 +174,7 @@ BattleAnimations::
 	dw BattleAnim_FlameWheel
 	dw BattleAnim_HyperVoice
 	dw BattleAnim_Curse
-	dw BattleAnim_Flail
+	dw BattleAnim_GyroBall
 	dw BattleAnim_EnergyBall
 	dw BattleAnim_Aeroblast
 	dw BattleAnim_SeedBomb
@@ -3327,7 +3327,8 @@ BattleAnim_Curse:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Flail:
+BattleAnim_GyroBall: ; TODO: design new animation for Gyro Ball
+BattleAnim_Flail: ; removed
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_sound 0, 0, SFX_SUBMISSION

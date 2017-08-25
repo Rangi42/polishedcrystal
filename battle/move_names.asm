@@ -172,7 +172,7 @@
 	db "Flame Wheel@"
 	db "Hyper Voice@"
 	db "Curse@"
-	db "Flail@"
+	db "Gyro Ball@"
 	db "Energy Ball@"
 	db "Aeroblast@"
 	db "Seed Bomb@"

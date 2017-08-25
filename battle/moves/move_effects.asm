@@ -1,4 +1,5 @@
 BugBite: ; TODO
+GyroBall: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -1632,7 +1633,6 @@ DestinyBond:
 	endmove
 
 Reversal:
-Flail:
 	checkobedience
 	usedmovetext
 	doturn

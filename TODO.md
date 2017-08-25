@@ -67,6 +67,7 @@ Shamouti Island:
 
 Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
+* Magnet Tunnel (TM74 Gyro Ball)
 * Soul House
 * Lavender Radio Tower
 * Saffron City Trainer Fan Club
@@ -84,6 +85,7 @@ Shamouti Island:
 ### Move effects
 
 * Bug Bite eats and uses the foe's held Berry
+* Gyro Ball's power is based on speed ratio
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -100,6 +102,7 @@ High priority:
 
 * Aqua Jet
 * Giga Impact
+* Gyro Ball
 * Rock Blast
 * Skill Swap
 * Stone Edge

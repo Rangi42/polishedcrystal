@@ -501,11 +501,11 @@ ContactMoves::
 	db FALSE_SWIPE
 	db FEINT_ATTACK
 	db FIRE_PUNCH
-	db FLAIL
 	db FLAME_WHEEL
 	db FLARE_BLITZ
 	db FLY
 	db FURY_STRIKES
+	db GYRO_BALL
 	db GIGA_IMPACT
 	db HEADBUTT
 	db HI_JUMP_KICK
@@ -604,11 +604,11 @@ SubstituteBypassMoves::
 DynamicPowerMoves::
 ; used by Forewarn and for move power listing
 	db COUNTER
-	db MIRROR_COAT
 	db DRAGON_RAGE
-	db FLAIL
+	db GYRO_BALL
 ;   db LOW_KICK
 	db MAGNITUDE
+	db MIRROR_COAT
 	db NIGHT_SHADE
 	db RETURN
 	db REVERSAL

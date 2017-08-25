@@ -54,6 +54,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Harden with Rock Blast.
 * Add: Replace Triple Kick with Drain Punch.
 * Add: Replace Lock-On with Power Whip.
+* Add: Replace Flail with Gyro Ball.
 * Add: Replace Moonlight and Morning Sun with Knock Off and "HealingLight".
 * Add: Replace Fury Attack and Fury Cutter with Trick and "Fury Strikes".
 * Add: Giga Impact.

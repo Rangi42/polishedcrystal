@@ -173,7 +173,7 @@
 	dw FlameWheelDescription
 	dw HyperVoiceDescription
 	dw CurseDescription
-	dw FlailDescription
+	dw GyroBallDescription
 	dw EnergyBallDescription
 	dw AeroblastDescription
 	dw SeedBombDescription
@@ -921,7 +921,6 @@ CurseDescription:
 	db   "Works differently"
 	next "for Ghost-types.@"
 
-FlailDescription:
 ReversalDescription:
 	db   "Stronger if the"
 	next "user's HP is low.@"
@@ -1041,6 +1040,10 @@ HiddenPowerDescription:
 FutureSightDescription:
 	db   "An attack that"
 	next "hits on 3rd turn.@"
+
+GyroBallDescription:
+	db   "Does more damage"
+	next "at lower speed.@"
 
 TrickDescription:
 	db   "Swaps held items"

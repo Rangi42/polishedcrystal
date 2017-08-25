@@ -165,3 +165,4 @@
 	dw KnockOff
 	dw FuryStrikes
 	dw BugBite
+	dw GyroBall

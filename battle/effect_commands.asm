@@ -4133,7 +4133,7 @@ BattleCommand_ConstantDamage: ; 35726
 	call Divide
 	ld a, [hQuotient + 2]
 	ld b, a
-	ld hl, .FlailPower
+	ld hl, .ReversalPower
 
 .reversal_loop
 	ld a, [hli]
@@ -4166,7 +4166,7 @@ BattleCommand_ConstantDamage: ; 35726
 	ld [hl], 1
 	ret
 
-.FlailPower:
+.ReversalPower:
 	;  px,  bp
 	db  1, 200
 	db  4, 150
