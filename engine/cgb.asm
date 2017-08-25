@@ -1005,7 +1005,7 @@ _CGB_PokedexUnownMode: ; 903e
 
 _CGB_BillsPC: ; 8fca
 	ld de, UnknBGPals
-	ld hl, PokedexRedPalette
+	ld hl, .MenuPalette
 	call LoadHLPaletteIntoDE
 
 	ld a, [CurPartySpecies]
@@ -1033,6 +1033,16 @@ _CGB_BillsPC: ; 8fca
 
 	jp _CGB_FinishLayout
 ; 9009
+
+.MenuPalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 20, 10
+	RGB 26, 10, 06
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 .OrangePalette: ; 9036
 if !DEF(MONOCHROME)
