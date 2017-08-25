@@ -1,10 +1,15 @@
-; BUG: first time you enter any grotto it appears empty.
+	const_def
+	const GROTTODATA_WARP
+	const GROTTODATA_ITEM
+	const GROTTODATA_MON1
+	const GROTTODATA_MON2
+	const GROTTODATA_MON3
+	const GROTTODATA_MON4
+	const GROTTODATA_MONLEVEL
 
 InitializeHiddenGrotto::
-; return 0 for nothing, 1 for pokemon, 2 for item, 3 for hidden item, 4 for empty
-
 ; store backup warp number
-	ld hl, HiddenGrottoData
+	ld hl, HiddenGrottoData + GROTTODATA_WARP
 	call GetHiddenGrottoDataMember
 	ld a, [hl]
 	ld [BackupWarpNumber], a
@@ -19,15 +24,14 @@ InitializeHiddenGrotto::
 	jr nz, .Done
 
 ; choose random grotto contents
-	call Random
-	cp 56
-	jr c, .RandomPokemon
-	sub 56
-	cp 100
+; 20% Pokémon, 40% item, 40% hidden item
+	ld a, 5
+	call RandomRange
+	and a
+	jr z, .RandomPokemon
+	srl a
 	jr c, .RandomItem
-	sub 100
 .RandomHiddenItem:
-; a is in [0, 100)
 	ld hl, .HiddenItems
 	call GetHiddenGrottoTableEntry
 	ld d, GROTTO_HIDDEN_ITEM
@@ -35,10 +39,9 @@ InitializeHiddenGrotto::
 	jr .StoreContent
 
 .RandomPokemon:
-; a is in [0, 56)
 	ld hl, .PokemonIndexes
 	call GetHiddenGrottoTableEntry
-	ld hl, HiddenGrottoData + 2 ; mon of pokemon list
+	ld hl, HiddenGrottoData + GROTTODATA_MON1
 .mon_loop
 	and a
 	jr z, .got_mon
@@ -53,12 +56,11 @@ InitializeHiddenGrotto::
 	jr .StoreContent
 
 .RandomItem:
-; a is in [0, 100)
 	ld hl, .Items
 	call GetHiddenGrottoTableEntry
 	cp ITEM_FROM_MEM
 	jr nz, .got_item
-	ld hl, HiddenGrottoData + 1 ; rare item
+	ld hl, HiddenGrottoData + GROTTODATA_ITEM
 	call GetHiddenGrottoDataMember
 	ld a, [hl]
 .got_item
@@ -72,43 +74,48 @@ InitializeHiddenGrotto::
 	ld [hl], a
 	ld a, d
 .Done:
+; return content type
 	ld [ScriptVar], a
 	ret
 
 .PokemonIndexes:
-; probabilities sum to 56
-	db 42, $0
-	db 11, $1
-	db 3, $2
+	db 40 ; total probability
+	db 15, $0
+	db 15, $1
+	db 8, $2
+	db 2, $3
 	db -1
 
 .Items:
-; probabilities sum to 100
-	db 31, POKE_BALL
-	db 12, GREAT_BALL
-	db 5, ULTRA_BALL
-	db 16, POTION
-	db 6, SUPER_POTION
-	db 3, HYPER_POTION
-	db 16, REPEL
-	db 6, SUPER_REPEL
-	db 3, MAX_REPEL
-	db 2, ITEM_FROM_MEM
+	db 160 ; total probability
+	db 50, POKE_BALL
+	db 20, GREAT_BALL
+	db 8, ULTRA_BALL
+	db 25, POTION
+	db 10, SUPER_POTION
+	db 4, HYPER_POTION
+	db 25, REPEL
+	db 10, SUPER_REPEL
+	db 4, MAX_REPEL
+	db 4, ITEM_FROM_MEM
 	db -1
 
 .HiddenItems:
-; probabilities sum to 100
-	db 60, MULCH
-	db 20, TINYMUSHROOM
-	db 6, BIG_MUSHROOM
-	db 5, SILVER_LEAF
-	db 5, GOLD_LEAF
+	db 160 ; total probability
+	db 99, MULCH
+	db 30, TINYMUSHROOM
+	db 10, BIG_MUSHROOM
+	db 1, BALMMUSHROOM
+	db 8, SILVER_LEAF
+	db 8, GOLD_LEAF
 	db 1, RARE_CANDY
 	db 2, PP_UP
 	db 1, PP_MAX
 	db -1
 
 GetHiddenGrottoTableEntry:
+	ld a, [hli]
+	call RandomRange
 .loop
 	sub [hl]
 	jr c, .ok
@@ -160,14 +167,14 @@ GetHiddenGrottoContents::
 	ret
 
 GetCurHiddenGrottoLevel::
-	ld hl, HiddenGrottoData + 5 ; level
+	ld hl, HiddenGrottoData + GROTTODATA_MONLEVEL
 	call GetHiddenGrottoDataMember
 	ld a, [hl]
 	ret
 
 HiddenGrottoData:
-	; warp number, rare item, common mon, uncommon mon, rare mon, level
+	; warp number, rare item, common mon 1, common mon 2, uncommon mon, rare mon, level
 HiddenGrotto1:
-	db 4, SUN_STONE, SNUBBULL, YANMA, YANMA, 15 ; HIDDENGROTTO_ROUTE_35
+	db 4, SUN_STONE, SNUBBULL, SNUBBULL, YANMA, YANMA, 15 ; HIDDENGROTTO_ROUTE_35
 HiddenGrotto2:
-	db 2, WATER_STONE, FLAAFFY, GIRAFARIG, FARFETCH_D, 25 ; HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
+	db 2, WATER_STONE, FLAAFFY, FLAAFFY, GIRAFARIG, FARFETCH_D, 25 ; HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
