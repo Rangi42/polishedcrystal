@@ -13,8 +13,7 @@ endc
 	db 106 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db OWN_TEMPO ; ability 1
 	db TECHNICIAN ; ability 2

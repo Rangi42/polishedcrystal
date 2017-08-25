@@ -6476,6 +6476,8 @@ endc
 	call AddNTimes
 	ld a, BANK(BaseData)
 	call GetFarByte
+	swap a
+	and $f
 	pop bc
 	pop hl
 	ld c, a

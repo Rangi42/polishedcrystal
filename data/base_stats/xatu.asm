@@ -13,8 +13,7 @@ endc
 	db 171 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1
 	db EARLY_BIRD ; ability 2

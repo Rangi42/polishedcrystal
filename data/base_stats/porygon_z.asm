@@ -8,8 +8,7 @@
 	db 185 ; base exp
 	db NO_ITEM ; item 1
 	db DUBIOUS_DISC ; item 2
-	db GENDERLESS ; gender
-	db 20 ; step cycles to hatch
+	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db ADAPTABILITY ; ability 1
 	db DOWNLOAD ; ability 2

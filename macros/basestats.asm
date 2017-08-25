@@ -82,5 +82,8 @@ w = w >> 8
 	db q & $ff
 q = q >> 8
 	endr
+	rept 2
 	db r & $ff
+r = q >> 8
+	endr
 ENDM

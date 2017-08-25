@@ -8,8 +8,7 @@
 	db 160 ; base exp
 	db RAWST_BERRY ; item 1
 	db NEVERMELTICE ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db OBLIVIOUS ; ability 1
 	db SNOW_CLOAK ; ability 2

@@ -8,8 +8,7 @@
 	db 67 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 40 ; step cycles to hatch
+	dn FEMALE_50, 7 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db GUTS ; ability 1
 if DEF(FAITHFUL)

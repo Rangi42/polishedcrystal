@@ -8,8 +8,7 @@
 	db 220 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_12_5 ; gender
-	db 10 ; step cycles to hatch
+	dn FEMALE_12_5, 1 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db HUSTLE ; ability 1
 	db SERENE_GRACE ; ability 2

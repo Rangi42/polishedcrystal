@@ -8,8 +8,7 @@
 	db 220 ; base exp
 	db LEPPA_BERRY ; item 1
 	db LEPPA_BERRY ; item 2
-	db GENDERLESS ; gender
-	db 120 ; step cycles to hatch
+	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1
 	db INSOMNIA ; ability 2

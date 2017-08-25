@@ -8,8 +8,7 @@
 	db 178 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_75 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_75, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db INTIMIDATE ; ability 1
 	db QUICK_FEET ; ability 2

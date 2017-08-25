@@ -8,8 +8,7 @@
 	db 91 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db ALL_MALE ; gender
-	db 25 ; step cycles to hatch
+	dn ALL_MALE, 4 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db GUTS ; ability 1
 	db STEADFAST ; ability 2

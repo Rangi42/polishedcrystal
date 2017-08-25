@@ -17,8 +17,7 @@ else
 endc
 	db NO_ITEM ; item 1
 	db HARD_STONE ; item 2
-	db FEMALE_75 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_75, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db HUSTLE ; ability 1
 	db NATURAL_CURE ; ability 2

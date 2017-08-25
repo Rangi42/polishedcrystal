@@ -13,8 +13,7 @@ endc
 	db 137 ; base exp
 	db RAWST_BERRY ; item 1
 	db RAWST_BERRY ; item 2
-	db ALL_FEMALE ; gender
-	db 25 ; step cycles to hatch
+	dn ALL_FEMALE, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db OBLIVIOUS ; ability 1
 if DEF(FAITHFUL)

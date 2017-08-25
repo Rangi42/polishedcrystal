@@ -8,8 +8,7 @@
 	db 168 ; base exp
 	db NO_ITEM ; item 1
 	db SHARP_BEAK ; item 2
-	db FEMALE_50 ; gender
-	db 25 ; step cycles to hatch
+	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db KEEN_EYE ; ability 1
 	db STURDY ; ability 2

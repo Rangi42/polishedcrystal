@@ -8,8 +8,7 @@
 	db 129 ; base exp
 	db LEPPA_BERRY ; item 1
 	db MOON_STONE ; item 2
-	db FEMALE_75 ; gender
-	db 10 ; step cycles to hatch
+	dn FEMALE_75, 1 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db CUTE_CHARM ; ability 1
 	db MAGIC_GUARD ; ability 2

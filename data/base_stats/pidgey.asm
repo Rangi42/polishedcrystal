@@ -8,8 +8,7 @@
 	db 55 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 15 ; step cycles to hatch
+	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db KEEN_EYE ; ability 1
 	db TANGLED_FEET ; ability 2

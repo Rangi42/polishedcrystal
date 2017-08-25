@@ -8,8 +8,7 @@
 	db 180 ; base exp
 	db NO_ITEM ; item 1
 	db UP_GRADE ; item 2
-	db GENDERLESS ; gender
-	db 20 ; step cycles to hatch
+	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db TRACE ; ability 1
 	db DOWNLOAD ; ability 2

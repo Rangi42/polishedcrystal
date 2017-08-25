@@ -13,8 +13,7 @@ endc
 	db 117 ; base exp
 	db ASPEAR_BERRY ; item 1
 	db MAGMARIZER ; item 2
-	db FEMALE_25 ; gender
-	db 25 ; step cycles to hatch
+	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db FLAME_BODY ; ability 1
 	db FLAME_BODY ; ability 2

@@ -13,8 +13,7 @@ endc
 	db 156 ; base exp
 	db SITRUS_BERRY ; item 1
 	db ELECTIRIZER ; item 2
-	db FEMALE_25 ; gender
-	db 25 ; step cycles to hatch
+	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db STATIC ; ability 1
 	db STATIC ; ability 2

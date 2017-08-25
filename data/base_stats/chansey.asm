@@ -8,8 +8,7 @@
 	db 255 ; base exp
 	db NO_ITEM ; item 1
 	db LUCKY_EGG ; item 2
-	db ALL_FEMALE ; gender
-	db 40 ; step cycles to hatch
+	dn ALL_FEMALE, 7 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db NATURAL_CURE ; ability 1
 	db SERENE_GRACE ; ability 2

@@ -8,8 +8,7 @@
 	db 119 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_12_5 ; gender
-	db 30 ; step cycles to hatch
+	dn FEMALE_12_5, 5 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SWIFT_SWIM ; ability 1
 	db BATTLE_ARMOR ; ability 2

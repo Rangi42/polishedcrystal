@@ -12,8 +12,7 @@ endc
 	db 178 ; base exp
 	db ASPEAR_BERRY ; item 1
 	db ASPEAR_BERRY ; item 2
-	db FEMALE_75 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_75, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db FLASH_FIRE ; ability 1
 if DEF(FAITHFUL)

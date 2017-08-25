@@ -13,8 +13,7 @@ endc
 	db 61 ; base exp
 	db QUICK_POWDER ; item 1
 	db METAL_POWDER ; item 2
-	db GENDERLESS ; gender
-	db 20 ; step cycles to hatch
+	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db LIMBER ; ability 1
 	db LIMBER ; ability 2

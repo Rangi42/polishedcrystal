@@ -8,8 +8,7 @@
 	db 215 ; base exp
 	db LUM_BERRY ; item 1
 	db NO_ITEM ; item 2
-	db GENDERLESS ; gender
-	db 80 ; step cycles to hatch
+	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db PRESSURE ; ability 1
 if DEF(FAITHFUL)

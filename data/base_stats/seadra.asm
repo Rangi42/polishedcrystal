@@ -8,8 +8,7 @@
 	db 155 ; base exp
 	db NO_ITEM ; item 1
 	db DRAGON_SCALE ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db POISON_POINT ; ability 1
 	db SNIPER ; ability 2

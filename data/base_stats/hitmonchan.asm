@@ -8,8 +8,7 @@
 	db 140 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db ALL_MALE ; gender
-	db 25 ; step cycles to hatch
+	dn ALL_MALE, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db KEEN_EYE ; ability 1
 	db IRON_FIST ; ability 2

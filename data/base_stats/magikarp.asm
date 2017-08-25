@@ -8,8 +8,7 @@
 	db 20 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 5 ; step cycles to hatch
+	dn FEMALE_50, 0 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db SWIFT_SWIM ; ability 1
 	db SWIFT_SWIM ; ability 2

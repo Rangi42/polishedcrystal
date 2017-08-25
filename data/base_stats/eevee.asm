@@ -8,8 +8,7 @@
 	db 92 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_12_5 ; gender
-	db 35 ; step cycles to hatch
+	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db RUN_AWAY ; ability 1
 	db ADAPTABILITY ; ability 2

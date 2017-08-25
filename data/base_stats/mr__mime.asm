@@ -13,8 +13,7 @@ endc
 	db 136 ; base exp
 	db NO_ITEM ; item 1
 	db LEPPA_BERRY ; item 2
-	db FEMALE_50 ; gender
-	db 25 ; step cycles to hatch
+	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db SOUNDPROOF ; ability 1
 	db FILTER ; ability 2

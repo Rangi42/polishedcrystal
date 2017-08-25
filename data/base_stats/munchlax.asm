@@ -8,8 +8,7 @@
 	db 94 ; base exp
 	db NO_ITEM ; item 1
 	db LEFTOVERS ; item 2
-	db FEMALE_12_5 ; gender
-	db 40 ; step cycles to hatch
+	dn FEMALE_12_5, 7 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db PICKUP ; ability 1
 	db THICK_FAT ; ability 2

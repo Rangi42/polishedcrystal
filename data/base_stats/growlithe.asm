@@ -8,8 +8,7 @@
 	db 91 ; base exp
 	db ASPEAR_BERRY ; item 1
 	db ASPEAR_BERRY ; item 2
-	db FEMALE_25 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db INTIMIDATE ; ability 1
 	db FLASH_FIRE ; ability 2

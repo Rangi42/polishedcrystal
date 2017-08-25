@@ -8,8 +8,7 @@
 	db 42 ; base exp
 	db NO_ITEM ; item 1
 	db LIGHT_BALL ; item 2
-	db FEMALE_50 ; gender
-	db 10 ; step cycles to hatch
+	dn FEMALE_50, 1 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db STATIC ; ability 1
 	db STATIC ; ability 2

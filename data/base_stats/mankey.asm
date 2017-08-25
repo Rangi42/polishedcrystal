@@ -8,8 +8,7 @@
 	db 74 ; base exp
 	db NO_ITEM ; item 1
 	db ORAN_BERRY ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db VITAL_SPIRIT ; ability 1
 	db ANGER_POINT ; ability 2

@@ -8,8 +8,7 @@
 	db 202 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_12_5 ; gender
-	db 35 ; step cycles to hatch
+	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db ROCK_HEAD ; ability 1
 	db PRESSURE ; ability 2

@@ -12,8 +12,7 @@ endc
 	db 64 ; base exp
 	db LUM_BERRY ; item 1
 	db LUM_BERRY ; item 2
-	db GENDERLESS ; gender
-	db 120 ; step cycles to hatch
+	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 5 , 5 ; frontpic dimensions
 	db NATURAL_CURE ; ability 1
 	db NATURAL_CURE ; ability 2

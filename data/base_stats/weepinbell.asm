@@ -8,8 +8,7 @@
 	db 151 ; base exp
 	db GOLD_LEAF ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db CHLOROPHYLL ; ability 1
 	db CHLOROPHYLL ; ability 2

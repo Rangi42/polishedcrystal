@@ -8,8 +8,7 @@
 	db 175 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db ALL_FEMALE ; gender
-	db 20 ; step cycles to hatch
+	dn ALL_FEMALE, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db EARLY_BIRD ; ability 1
 	db SCRAPPY ; ability 2

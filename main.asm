@@ -4248,6 +4248,8 @@ GetGender: ; 50bdd
 
 	ld a, BANK(BaseData)
 	call GetFarByte
+	swap a
+	and $f
 
 ; Fixed values ignore the Personality gender value.
 	cp GENDERLESS

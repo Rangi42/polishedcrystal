@@ -8,8 +8,7 @@
 	db 59 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db ALL_FEMALE ; gender
-	db 20 ; step cycles to hatch
+	dn ALL_FEMALE, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db POISON_POINT ; ability 1
 	db RIVALRY ; ability 2

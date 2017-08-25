@@ -8,8 +8,7 @@
 	db 146 ; base exp
 	db NO_ITEM ; item 1
 	db FOCUS_BAND ; item 2
-	db FEMALE_25 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db GUTS ; ability 1
 	db NO_GUARD ; ability 2

@@ -1839,7 +1839,6 @@ BaseExp::
 BaseItems::
 	ds 2
 BaseGender::
-	ds 1
 BaseEggSteps::
 	ds 1
 BasePicSize::
@@ -1859,7 +1858,7 @@ BaseEVYield1::
 BaseEVYield2::
 	ds 1
 BaseTMHM::
-	ds 13
+	ds 14
 
 CurDamage::
 	ds 2
