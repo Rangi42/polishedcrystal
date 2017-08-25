@@ -67,20 +67,10 @@ _LoadStandardFont:: ; fb449
 	ld e, l
 	ld hl, VTiles1
 	lb bc, BANK(FontNormal), $80
-	ld a, [rLCDC]
-	bit 7, a
-	jr z, .one
 	call Get1bpp_2
-	jr .ok
-.one
-	call Copy1bpp
-.ok
 	ld de, FontCommon
 	ld hl, VTiles1 tile ("★" - $80) ; first common font character
 	lb bc, BANK(FontCommon), $d
-	ld a, [rLCDC]
-	bit 7, a
-	jp z, Copy1bpp
 	jp Get1bpp_2
 ; fb48a
 

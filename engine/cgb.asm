@@ -30,6 +30,7 @@ Predef_LoadCGBLayout: ; 8d59
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
+	dw _CGB_PokedexAreaPals
 	dw _CGB_StatsScreenHPPals
 	dw _CGB_Pokedex
 	dw _CGB_SlotMachine
@@ -246,6 +247,38 @@ _CGB_PokegearPals: ; 8eb9
 	ld [hCGBPalUpdate], a
 	ret
 ; 8edb
+
+
+_CGB_PokedexAreaPals:
+	ld hl, PokegearPals
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	ld a, $5
+	call FarCopyWRAM
+
+	ld hl, .InvertedGrayPalette
+	ld de, UnknBGPals + 3 palettes
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
+
+	call ApplyPals
+	ld a, $1
+	ld [hCGBPalUpdate], a
+	ret
+
+.InvertedGrayPalette:
+if !DEF(MONOCHROME)
+	RGB 00, 00, 00
+	RGB 21, 00, 21
+	RGB 13, 00, 13
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_WHITE
+endc
 
 
 _CGB_StatsScreenHPPals: ; 8edb

@@ -1831,10 +1831,10 @@ endc
 
 PokedexRedPalette:
 if !DEF(MONOCHROME)
-	RGB 31, 31, 31
+	RGB 00, 00, 00
 	RGB 31, 20, 10
 	RGB 26, 10, 06
-	RGB 00, 00, 00
+	RGB 31, 31, 31
 else
 	MONOCHROME_RGB_FOUR
 endc
