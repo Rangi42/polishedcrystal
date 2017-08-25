@@ -1414,8 +1414,7 @@ wTempTrainerHeaderEnd::
 
 wPlayerTurningDirection:: ds 1
 wStashedTextPointer:: ds 2
-CurHiddenGrotto:: ds 1
-	ds 20
+	ds 21
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1::
@@ -2441,6 +2440,8 @@ HiddenGrottoContents::
 ; content type, content id
 	ds NUM_HIDDEN_GROTTOES * 2
 	ds 2 ; extra space set aside
+
+CurHiddenGrotto:: ds 1
 
 wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
