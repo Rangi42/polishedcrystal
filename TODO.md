@@ -56,6 +56,9 @@ The final, non-beta 3.0 release should include all of these.
 * Rematch Eusine in Celadon City if you have Suicune in your party
 * Rematch Bill in his house somehow
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
+* Add a sprite for DJ Mary
+* Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
+* Rename Kay to Carrie?
 
 Shamouti Island:
 
@@ -69,11 +72,14 @@ Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/
 
 * Magnet Tunnel (TM74 Gyro Ball)
 * Soul House
-* Lavender Radio Tower
+* Lavender Radio Tower (use Reina, DJ Fern, and DJ Lily)
 * Saffron City Trainer Fan Club
 * Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
+* Reference the Pokéathlon Dome inside the Route 35 gate or Route 35 Coast
+* Goldenrod Museum?
+
 
 Shamouti Island:
 
