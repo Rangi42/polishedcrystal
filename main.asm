@@ -5776,7 +5776,7 @@ NewPokedexEntry: ; fb877
 	ld a, [wPokedexStatus]
 	push af
 	ld a, [hSCX]
-	add $5
+	add 5
 	ld [hSCX], a
 	xor a
 	ld [wPokedexStatus], a
@@ -5789,9 +5789,9 @@ NewPokedexEntry: ; fb877
 	pop af
 	ld [wPokedexStatus], a
 	call MaxVolume
-	call RotateThreePalettesRight
+	call ClearBGPalettes
 	ld a, [hSCX]
-	add -5 ; 251 ; NUM_POKEMON
+	add -5
 	ld [hSCX], a
 	call .ReturnFromDexRegistration
 	pop af
