@@ -16,12 +16,12 @@ TrainerHouseB1F_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
-	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_KAY
+	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
 	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 const_value set 2
 	const TRAINERHOUSEB1F_CAL
-	const TRAINERHOUSEB1F_KAY
+	const TRAINERHOUSEB1F_CARRIE
 
 TrainerHouseReceptionistScript:
 	spriteface PLAYER, UP
@@ -33,11 +33,11 @@ TrainerHouseReceptionistScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .GetCalName
 	disappear TRAINERHOUSEB1F_CAL
-	appear TRAINERHOUSEB1F_KAY
-	trainertotext KAY, 1, $0
+	appear TRAINERHOUSEB1F_CARRIE
+	trainertotext CARRIE, 1, $0
 	jump .GotName
 .GetCalName
-	disappear TRAINERHOUSEB1F_KAY
+	disappear TRAINERHOUSEB1F_CARRIE
 	appear TRAINERHOUSEB1F_CAL
 	trainertotext CAL, 1, $0
 .GotName:
@@ -55,8 +55,8 @@ TrainerHouseReceptionistScript:
 	winlosstext TrainerHouseB1FCalBeatenText, 0
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .LoadTrainerCal
-	setlasttalked TRAINERHOUSEB1F_KAY
-	loadtrainer KAY, 1
+	setlasttalked TRAINERHOUSEB1F_CARRIE
+	loadtrainer CARRIE, 1
 	jump .StartBattle
 .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CAL

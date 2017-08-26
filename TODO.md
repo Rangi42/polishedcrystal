@@ -58,7 +58,6 @@ The final, non-beta 3.0 release should include all of these.
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 * Add a sprite for DJ Mary
 * Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
-* Rename Kay to Carrie?
 
 Shamouti Island:
 

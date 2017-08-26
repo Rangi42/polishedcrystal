@@ -10,7 +10,7 @@ CHRIS EQU __enum__
 	const PHONECONTACT_BUENA
 
 KRIS EQU __enum__
-	trainerclass KAY ; 1
+	trainerclass CARRIE ; 1
 
 	trainerclass CAL ; 2
 
@@ -411,7 +411,7 @@ KRIS EQU __enum__
 	const DANA3
 	const DANA4
 	const DANA5
-	const CARRIE
+	const CATHY
 	const AMANDA
 	const KRISE
 	const CONNIE

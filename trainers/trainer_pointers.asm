@@ -1,7 +1,7 @@
 ; Each trainer class has its own group. See trainers.asm.
 
 TrainerGroups: ; 0x39999
-	dba KayGroup
+	dba CarrieGroup
 	dba CalGroup
 	dba FalknerGroup
 	dba BugsyGroup

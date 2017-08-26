@@ -5174,7 +5174,7 @@ endr
 	dw Giovanni2FinalPkmnText
 
 .SinglePhraseFinalTexts:
-	dw KayFinalPkmnText
+	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
 	dw FalknerFinalPkmnText
 	dw BugsyFinalPkmnText

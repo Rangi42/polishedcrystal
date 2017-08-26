@@ -25,12 +25,12 @@
 SECTION "Enemy Trainer Parties 1", ROMX
 
 
-KayGroup:
+CarrieGroup:
 ; ================================
 ; ================
 
-	; KAY
-	db "Kay@"
+	; CARRIE
+	db "Carrie@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_MOVES
 
 	; party
@@ -7670,7 +7670,7 @@ endc
 ; ================
 
 	; LASS
-	db "Carrie@"
+	db "Cathy@"
 	db TRAINERTYPE_MOVES
 
 	; party

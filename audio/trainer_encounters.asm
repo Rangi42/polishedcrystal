@@ -27,7 +27,7 @@ PlayTrainerEncounterMusic:: ; e900a
 
 TrainerEncounterMusic: ; e9027
 	db MUSIC_HIKER_ENCOUNTER
-	db MUSIC_BEAUTY_ENCOUNTER		; kay
+	db MUSIC_BEAUTY_ENCOUNTER		; carrie
 	db MUSIC_HIKER_ENCOUNTER		; cal
 	db MUSIC_YOUNGSTER_ENCOUNTER	; falkner
 	db MUSIC_YOUNGSTER_ENCOUNTER	; bugsy

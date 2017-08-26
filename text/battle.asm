@@ -1523,7 +1523,7 @@ GetOutText:
 	line "Get out…"
 	prompt
 
-KayFinalPkmnText:
+CarrieFinalPkmnText:
 CalFinalPkmnText:
 	text "I still have one"
 	line "#mon!"

@@ -1,4 +1,4 @@
-	db "<PK><MN> Trainer@" ; KAY
+	db "<PK><MN> Trainer@" ; CARRIE
 	db "<PK><MN> Trainer@" ; CAL
 	db "Leader@"           ; FALKNER
 	db "Leader@"           ; BUGSY

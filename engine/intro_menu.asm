@@ -930,7 +930,7 @@ DrawIntroPlayerPic:
 	ld a, [PlayerGender]
 	bit 0, a
 	jr z, .male
-	ld a, KAY
+	ld a, CARRIE
 	jr .ok
 .male
 	ld a, CAL

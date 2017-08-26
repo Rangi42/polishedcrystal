@@ -4,7 +4,7 @@ TrainerPalettes: ; b0ce
 if !DEF(MONOCHROME)
 PlayerPalette:           INCLUDE "gfx/trainers/cal.pal"
 KrisPalette:
-KayPalette:              INCLUDE "gfx/trainers/kay.pal"
+CarriePalette:           INCLUDE "gfx/trainers/carrie.pal"
 CalPalette:              INCLUDE "gfx/trainers/cal.pal"
 FalknerPalette:          INCLUDE "gfx/trainers/falkner.pal"
 BugsyPalette:            INCLUDE "gfx/trainers/bugsy.pal"

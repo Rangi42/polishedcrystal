@@ -30,7 +30,7 @@ endr
 TrainerClassDVsAndPersonality: ; 270d6
 	;  EVs  HP   Def  SAt  Ability  Gender
 	;  *    Atk  Spd  SDf  Nature   Form
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; kay
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; carrie
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; cal
 	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; falkner
 	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; bugsy

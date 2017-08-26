@@ -141,7 +141,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Blake@@@@@", YOUNGSTER
 	db "James@@@@@", BOARDER
 	db "Kubrick@@@", HEX_MANIAC
-	db "Carrie@@@@", LASS
+	db "Alisha@@@@", LASS
 	db "Sunni@@@@@", KIMONO_GIRL
 	db "Andre@@@@@", ROUGHNECK
 	db "Hill@@@@@@", COOLTRAINERM

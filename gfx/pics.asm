@@ -791,7 +791,7 @@ MewtwoArmoredBackpic:     INCBIN "gfx/pics/mewtwo_armored/back.2bpp.lz"
 
 SECTION "Trainer Pics 1", ROMX
 
-KayPic:                   INCBIN "gfx/trainers/kay.2bpp.lz"
+CarriePic:                INCBIN "gfx/trainers/carrie.2bpp.lz"
 CalPic:                   INCBIN "gfx/trainers/cal.2bpp.lz"
 FalknerPic:               INCBIN "gfx/trainers/falkner.2bpp.lz"
 BugsyPic:                 INCBIN "gfx/trainers/bugsy.2bpp.lz"
