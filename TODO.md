@@ -69,6 +69,7 @@ Shamouti Island:
 
 Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
+* Connect the Magnet Train track south to Cherrygrove Bay
 * Magnet Tunnel (TM74 Gyro Ball)
 * Soul House
 * Lavender Radio Tower (use Reina, DJ Fern, and DJ Lily)

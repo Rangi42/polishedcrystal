@@ -56,17 +56,17 @@ SilphCo3FSilphEmployeeScript:
 
 	para "My father Kurt is"
 	line "teaching my daugh-"
-	cont "ter Mazie how to"
+	cont "ter how to make"
 
-	para "make Apricorn"
-	line "Balls while I'm"
-	cont "busy here."
+	para "Apricorn Balls"
+	line "while I'm busy"
+	cont "working here."
 
 	para "You helped them"
 	line "out in Azalea"
 	cont "Town? Great!"
 
-	para "I'm glad my Mazie"
+	para "I'm glad my Maizie"
 	line "is doing well."
 
 	para "Take this as a"
