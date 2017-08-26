@@ -11,7 +11,7 @@ CeladonUniversity1F_MapEventHeader:
 	warp_def 19, 15, 13, CELADON_CITY
 	warp_def 12, 25, 1, CELADON_UNIVERSITY_2F
 	warp_def 12, 21, 1, CELADON_UNIVERSITY_LIBRARY_1F
-	warp_def 0, 15, 1, CELADON_UNIVERSITY_DEANS_OFFICE
+	warp_def 0, 15, 1, CELADON_UNIVERSITY_PRINCIPALS_OFFICE
 	warp_def 4, 3, 1, CELADON_UNIVERSITY_CLASSROOM_1
 	warp_def 4, 9, 1, CELADON_UNIVERSITY_CLASSROOM_2
 	warp_def 4, 21, 1, CELADON_UNIVERSITY_CLASSROOM_3
@@ -21,7 +21,7 @@ CeladonUniversity1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 13
-	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonUniversity1FDeansOfficeSignText
+	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonUniversity1FPrincipalsOfficeSignText
 	signpost 4, 2, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom1SignText
 	signpost 4, 8, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom2SignText
 	signpost 4, 20, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom3SignText
@@ -116,8 +116,8 @@ CeladonUniversity1FReceptionistText:
 	line "University!"
 
 	para "Classrooms and the"
-	line "dean's office are"
-	cont "straight ahead."
+	line "principal's office"
+	cont "are down the hall."
 
 	para "The library is to"
 	line "your right, the"
@@ -143,8 +143,8 @@ CeladonUniversity1FCooltrainerfText:
 	line "learning curve!"
 	done
 
-CeladonUniversity1FDeansOfficeSignText:
-	text "Dean's Office"
+CeladonUniversity1FPrincipalsOfficeSignText:
+	text "Principal's Office"
 	done
 
 CeladonUniversity1FClassroom1SignText:

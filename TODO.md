@@ -44,6 +44,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Aesthetics
 
+* Add a sprite for DJ Mary
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 * "make hgss" to use HGSS-based palettes
@@ -56,7 +57,6 @@ The final, non-beta 3.0 release should include all of these.
 * Rematch Eusine in Celadon City if you have Suicune in your party
 * Rematch Bill in his house somehow
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
-* Add a sprite for DJ Mary
 * Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
 
 Shamouti Island:

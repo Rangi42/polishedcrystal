@@ -669,7 +669,7 @@ SECTION "Celadon University Scripts", ROMX
 INCLUDE "maps/CeladonUniversity1F.asm"
 INCLUDE "maps/CeladonUniversity2F.asm"
 INCLUDE "maps/CeladonUniversityCafeteria.asm"
-INCLUDE "maps/CeladonUniversityDeansOffice.asm"
+INCLUDE "maps/CeladonUniversityPrincipalsOffice.asm"
 INCLUDE "maps/CeladonUniversityLounge.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"

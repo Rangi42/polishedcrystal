@@ -1008,8 +1008,8 @@ CeladonUniversity2F_BlockData:
 CeladonUniversityCafeteria_BlockData:
 	INCBIN "maps/CeladonUniversityCafeteria.blk"
 
-CeladonUniversityDeansOffice_BlockData:
-	INCBIN "maps/CeladonUniversityDeansOffice.blk"
+CeladonUniversityPrincipalsOffice_BlockData:
+	INCBIN "maps/CeladonUniversityPrincipalsOffice.blk"
 
 CeladonUniversityLounge_BlockData:
 	INCBIN "maps/CeladonUniversityLounge.blk"

@@ -241,6 +241,15 @@ CeladonUniversityClassroom4Rich_boyScript:
 
 	para "an Ability Cap"
 	line "can't change."
+
+	para "But! If a #-"
+	line "mon holding an"
+
+	para "Ability Cap has"
+	line "an Egg, its baby"
+
+	para "might have a"
+	line "hidden ability!"
 	done
 
 CeladonUniversityClassroom4BlackboardText:

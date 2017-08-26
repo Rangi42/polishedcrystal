@@ -730,7 +730,7 @@
 	map_header_2 CeladonUniversity2F, CELADON_UNIVERSITY_2F, $0, 0
 	map_header_2 CeladonUniversityLibrary1F, CELADON_UNIVERSITY_LIBRARY_1F, $0, 0
 	map_header_2 CeladonUniversityLibrary2F, CELADON_UNIVERSITY_LIBRARY_2F, $0, 0
-	map_header_2 CeladonUniversityDeansOffice, CELADON_UNIVERSITY_DEANS_OFFICE, $0, 0
+	map_header_2 CeladonUniversityPrincipalsOffice, CELADON_UNIVERSITY_PRINCIPALS_OFFICE, $0, 0
 	map_header_2 CeladonUniversityWestwoodsOffice, CELADON_UNIVERSITY_WESTWOODS_OFFICE, $0, 0
 	map_header_2 CeladonUniversityWillowsOffice, CELADON_UNIVERSITY_WILLOWS_OFFICE, $0, 0
 	map_header_2 CeladonUniversityLounge, CELADON_UNIVERSITY_LOUNGE, $0, 0

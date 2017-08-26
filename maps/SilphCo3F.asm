@@ -42,28 +42,35 @@ SilphCo3FSilphEmployeeScript:
 	jumpopenedtext .Text2
 
 .Text2:
-	text "That's an un-"
-	line "released proto-"
-	cont "type # Ball."
+	text "That's a very"
+	line "rare type of"
+	cont "# Ball."
 
 	para "Don't waste it!"
 	done
 
 .Text1:
-	text "Silph and Devon"
-	line "partnered up"
+	text "I'm from a family"
+	line "of # Ball"
+	cont "creators."
 
-	para "to design some"
-	line "special new #"
-	cont "Balls."
+	para "My father Kurt is"
+	line "teaching my daugh-"
+	cont "ter Mazie how to"
 
-	para "We sell them in"
-	line "Kanto, Johto, and"
-	cont "Hoenn."
+	para "make Apricorn"
+	line "Balls while I'm"
+	cont "busy here."
 
-	para "But they're not"
-	line "all on the market"
-	cont "yet. Like this!"
+	para "You helped them"
+	line "out in Azalea"
+	cont "Town? Great!"
+
+	para "I'm glad my Mazie"
+	line "is doing well."
+
+	para "Take this as a"
+	line "thank-you!"
 	done
 
 SilphCo3FScientist1Text:

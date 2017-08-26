@@ -475,7 +475,7 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 46
 	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 47
 	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 48
-	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 49
+	mapgroup CELADON_UNIVERSITY_PRINCIPALS_OFFICE,        4,  3 ; 49
 	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 50
 	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 51
 	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 52
