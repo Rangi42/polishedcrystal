@@ -1983,6 +1983,7 @@ TreeGrottoScript:
 	scall _HiddenGrottoInitScript
 	iffalse_endtext
 	closetext
+	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	pause 15
 	callasm _HiddenGrottoBackupMap
@@ -1993,6 +1994,7 @@ CaveGrottoScript:
 	scall _HiddenGrottoInitScript
 	iffalse_endtext
 	closetext
+	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	pause 15
 	callasm _HiddenGrottoBackupMap

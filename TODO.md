@@ -21,7 +21,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
-* Add hidden grottoes throughout Johto and have Lyra introduce them
+* Add hidden grottoes throughout Johto
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * Notify when Pickup picks up an item
 * Variety Channel with daily unique music

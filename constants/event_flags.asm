@@ -257,6 +257,7 @@
 	const EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
 
 ; Crystal-exclusive events in Johto
+	const EVENT_SAW_FIRST_HIDDEN_GROTTO
 	const EVENT_MET_FLORIA
 	const EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
 	const EVENT_BUGGING_KURT_TOO_MUCH
@@ -2317,7 +2318,6 @@
 	const EVENT_ROUTE_49_CUT_TREE_2
 
 ; Unused placeholder events
-	const EVENT_86C
 	const EVENT_86D
 	const EVENT_86E
 	const EVENT_86F

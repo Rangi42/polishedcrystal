@@ -95,7 +95,7 @@ Route44VeteranmScript:
 	line "got to beat every"
 
 	para "trainer on this"
-	cont "route first."
+	line "route first."
 	done
 
 .QuestionText:

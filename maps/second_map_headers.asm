@@ -361,7 +361,7 @@
 	connection west, ROUTE_41, Route41, -3, 0, 20
 
 	map_header_2 MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, EAST
-	connection east, ROUTE_32, Route32, -1, 8, 11
+	connection east, ROUTE_32, Route32, -1, 8, 13
 
 	map_header_2 MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GOLDENROD_CITY, GoldenrodCity, 0, 0, 11

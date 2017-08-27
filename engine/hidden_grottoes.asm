@@ -23,6 +23,13 @@ InitializeHiddenGrotto::
 	and a
 	jr nz, .Done
 
+; first grotto always has a Pokémon
+	ld de, EVENT_SAW_FIRST_HIDDEN_GROTTO
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	and a
+	jr z, .RandomPokemon
+
 ; choose random grotto contents
 ; 20% Pokémon, 40% item, 40% hidden item
 	ld a, 5
@@ -39,6 +46,9 @@ InitializeHiddenGrotto::
 	jr .StoreContent
 
 .RandomPokemon:
+	ld de, EVENT_SAW_FIRST_HIDDEN_GROTTO
+	ld b, SET_FLAG
+	call EventFlagAction
 	ld hl, .PokemonIndexes
 	call GetHiddenGrottoTableEntry
 	ld hl, HiddenGrottoData + GROTTODATA_MON1
@@ -175,6 +185,7 @@ GetCurHiddenGrottoLevel::
 HiddenGrottoData:
 	; warp number, rare item, common mon 1, common mon 2, uncommon mon, rare mon, level
 HiddenGrotto1:
-	db 4, SUN_STONE, SNUBBULL, SNUBBULL, YANMA, YANMA, 15 ; HIDDENGROTTO_ROUTE_35
+	db 5, EVERSTONE, MAREEP, WOOPER, EKANS, GASTLY, 5 ; HIDDENGROTTO_ROUTE_32
 HiddenGrotto2:
+	db 4, SUN_STONE, SNUBBULL, SNUBBULL, YANMA, YANMA, 15 ; HIDDENGROTTO_ROUTE_35
 	db 2, WATER_STONE, FLAAFFY, FLAAFFY, GIRAFARIG, FARFETCH_D, 25 ; HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
