@@ -31,7 +31,7 @@ RuinsofAlphOutside_MapEventHeader:
 	signpost 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58325
 	signpost 22, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58342
 	signpost 18, 20, SIGNPOST_JUMPTEXT, UnknownText_0x58362
-	signpost 9, 10, SIGNPOST_JUMPTEXT, MapRuinsofAlphOutsideSignpost3Text
+	signpost 9, 10, SIGNPOST_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
 	signpost 13, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 13
@@ -284,7 +284,10 @@ UnknownText_0x58362:
 	line "The Ruins of Alph"
 	done
 
-MapRuinsofAlphOutsideSignpost3Text:
+MapRuinsofAlphOutsideSealedCaveSign:
+	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	thistext
+
 	text "There's a door-"
 	line "shaped groove in"
 	cont "the rock."

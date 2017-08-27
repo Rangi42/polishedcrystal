@@ -18,7 +18,7 @@ Route47_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 23, 8, SIGNPOST_JUMPTEXT, Route47SealedCaveSignText
+	signpost 23, 8, SIGNPOST_IFNOTSET, Route47SealedCaveSign
 	signpost 32, 36, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
 	signpost 33, 34, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	signpost 28, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
@@ -301,7 +301,10 @@ Route47RocketGirlText:
 	cont "you brat?"
 	done
 
-Route47SealedCaveSignText:
+Route47SealedCaveSign:
+	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	thistext
+
 	text "There's a door-"
 	line "shaped groove in"
 	cont "the rock."

@@ -15,7 +15,7 @@ DragonsDenB1F_MapEventHeader:
 	xy_trigger 1, 30, 19, DragonsDenB1FClairTrigger
 
 .Signposts: db 4
-	signpost 24, 18, SIGNPOST_READ, DragonsDenShrineSignText
+	signpost 24, 18, SIGNPOST_JUMPTEXT, DragonsDenShrineSignText
 	signpost 29, 33, SIGNPOST_ITEM + REVIVE, EVENT_DRAGONS_DEN_B1F_HIDDEN_REVIVE
 	signpost 17, 21, SIGNPOST_ITEM + MAX_POTION, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION
 	signpost 15, 31, SIGNPOST_ITEM + MAX_ELIXER, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER

@@ -15,7 +15,7 @@ LakeofRageSouth_MapEventHeader:
 
 .Signposts: db 5
 	signpost 11, 21, SIGNPOST_JUMPTEXT, LakeOfRageSignText
-	signpost 15, 25, SIGNPOST_READ, LakeOfRageFishingGuruSignText
+	signpost 15, 25, SIGNPOST_READ, LakeOfRageFishingGuruSign
 	signpost 12, 11, SIGNPOST_ITEM + FULL_RESTORE, EVENT_LAKE_OF_RAGE_HIDDEN_FULL_RESTORE
 	signpost 11, 10, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
 	signpost 11, 11, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE_SOUTH
@@ -54,7 +54,7 @@ LakeOfRageSignText:
 	cont "Gyarados Lake."
 	done
 
-LakeOfRageFishingGuruSignText:
+LakeOfRageFishingGuruSign:
 	opentext
 	writetext .Text
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
