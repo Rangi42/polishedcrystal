@@ -42,6 +42,7 @@
 	db "#fan@"             ; POKEFANF
 	db "Officer@"          ; OFFICERM
 	db "Officer@"          ; OFFICERF
+	db "Nurse@"            ; NURSE
 	db "#Maniac@"          ; POKEMANIAC
 	db "Cosplayer@"        ; COSPLAYER
 	db "Super Nerd@"       ; SUPER_NERD
