@@ -24,7 +24,7 @@ CeruleanGym_MapEventHeader:
 	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJoy, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfViola, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SAILOR, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_GYM_GUY, 13, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -77,7 +77,7 @@ MistyScript_0x188432:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MISTY
 	setevent EVENT_BEAT_SWIMMERF_DIANA
-	setevent EVENT_BEAT_SWIMMERF_JOY
+	setevent EVENT_BEAT_SWIMMERF_VIOLA
 	setevent EVENT_BEAT_SWIMMERF_BRIANA
 	setevent EVENT_BEAT_SAILOR_PARKER
 	setevent EVENT_BEAT_SAILOR_EDDIE
@@ -120,12 +120,12 @@ SwimmerfDianaScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x188856
 
-TrainerSwimmerfJoy:
-	trainer EVENT_BEAT_SWIMMERF_JOY, SWIMMERF, JOY, SwimmerfJoySeenText, SwimmerfJoyBeatenText, 0, SwimmerfJoyScript
+TrainerSwimmerfViola:
+	trainer EVENT_BEAT_SWIMMERF_VIOLA, SWIMMERF, VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText, 0, SwimmerfViolaScript
 
-SwimmerfJoyScript:
+SwimmerfViolaScript:
 	end_if_just_battled
-	jumptextfaceplayer SwimmerfJoyAfterText
+	jumptextfaceplayer SwimmerfViolaAfterText
 
 TrainerSwimmerfBriana:
 	trainer EVENT_BEAT_SWIMMERF_BRIANA, SWIMMERF, BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
@@ -336,7 +336,7 @@ UnknownText_0x188856:
 	line "quietly."
 	done
 
-SwimmerfJoySeenText:
+SwimmerfViolaSeenText:
 	text "Swimming isn't"
 	line "just about speed!"
 
@@ -344,12 +344,12 @@ SwimmerfJoySeenText:
 	line "beauty and grace!"
 	done
 
-SwimmerfJoyBeatenText:
+SwimmerfViolaBeatenText:
 	text "I lost"
 	line "beautifully…"
 	done
 
-SwimmerfJoyAfterText:
+SwimmerfViolaAfterText:
 	text "Swimming is good"
 	line "for both beauty"
 	cont "and health!"

@@ -7019,6 +7019,23 @@ OfficerFGroup:
 ; ================================
 
 
+NurseGroup:
+; ================================
+; ================
+
+	; NURSE
+	db "Joy@"
+	db TRAINERTYPE_NORMAL
+
+	; party
+	db 50, CHANSEY
+
+	db $ff ; end
+
+; ================
+; ================================
+
+
 PokemaniacGroup:
 ; ================================
 ; ================
@@ -11154,7 +11171,7 @@ SwimmerFGroup:
 ; ================
 
 	; SWIMMERF
-	db "Joy@"
+	db "Viola@"
 	db TRAINERTYPE_NORMAL
 
 	; party

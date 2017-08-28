@@ -71,6 +71,7 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_BEAUTY_ENCOUNTER		; pokefanf
 	db MUSIC_HIKER_ENCOUNTER		; officerm
 	db MUSIC_HIKER_ENCOUNTER		; officerf
+	db MUSIC_BEAUTY_ENCOUNTER		; nurse
 	db MUSIC_POKEMANIAC_ENCOUNTER	; pokemaniac
 	db MUSIC_LASS_ENCOUNTER			; cosplayer
 	db MUSIC_POKEMANIAC_ENCOUNTER	; super_nerd

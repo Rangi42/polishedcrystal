@@ -331,6 +331,9 @@ OfficerSprite:
 OfficerFSprite:
 	sprite_header OfficerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
+NurseSprite:
+	sprite_header NurseSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 PharmacistSprite:
 	sprite_header PharmacistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
@@ -397,8 +400,8 @@ VeteranFSprite:
 YoungsterSprite:
 	sprite_header YoungsterSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
-NurseSprite:
-	sprite_header NurseSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
+BowingNurseSprite:
+	sprite_header BowingNurseSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 
 ClerkSprite:
 	sprite_header ClerkSpriteGFX, 3, WALKING_SPRITE, PAL_OW_GREEN

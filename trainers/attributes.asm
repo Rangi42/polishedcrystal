@@ -264,6 +264,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 
+; Nurse
+	db FULL_RESTORE, 0 ; items
+	db 16 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
 ; Pokemaniac
 	db X_SPEED, 0 ; items
 	db 13 ; base reward

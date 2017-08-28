@@ -1,3 +1,4 @@
+NurseSpriteGFX:               INCBIN "gfx/overworld/nurse.2bpp"
 PISpriteGFX:                  INCBIN "gfx/overworld/pi.2bpp"
 RoughneckSpriteGFX:           INCBIN "gfx/overworld/roughneck.2bpp"
 SightseerMSpriteGFX:          INCBIN "gfx/overworld/sightseer_m.2bpp"

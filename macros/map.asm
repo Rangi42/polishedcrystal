@@ -83,7 +83,7 @@ endc
 endm
 
 pc_nurse_event: macro
-	person_event SPRITE_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
+	person_event SPRITE_BOWING_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
 endm
 
 mart_clerk_event: macro

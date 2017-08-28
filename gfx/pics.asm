@@ -843,15 +843,16 @@ PokefanmPic:              INCBIN "gfx/trainers/pokefan_m.2bpp.lz"
 PokefanfPic:              INCBIN "gfx/trainers/pokefan_f.2bpp.lz"
 OfficermPic:              INCBIN "gfx/trainers/officer_m.2bpp.lz"
 OfficerfPic:              INCBIN "gfx/trainers/officer_f.2bpp.lz"
+NursePic:                 INCBIN "gfx/trainers/nurse.2bpp.lz"
 PokemaniacPic:            INCBIN "gfx/trainers/pokemaniac.2bpp.lz"
 CosplayerPic:             INCBIN "gfx/trainers/cosplayer.2bpp.lz"
 SuperNerdPic:             INCBIN "gfx/trainers/super_nerd.2bpp.lz"
 LassPic:                  INCBIN "gfx/trainers/lass.2bpp.lz"
-BeautyPic:                INCBIN "gfx/trainers/beauty.2bpp.lz"
 
 
 SECTION "Trainer Pics 4", ROMX
 
+BeautyPic:                INCBIN "gfx/trainers/beauty.2bpp.lz"
 BugManiacPic:             INCBIN "gfx/trainers/bug_maniac.2bpp.lz"
 RuinManiacPic:            INCBIN "gfx/trainers/ruin_maniac.2bpp.lz"
 FirebreatherPic:          INCBIN "gfx/trainers/firebreather.2bpp.lz"
@@ -867,11 +868,11 @@ ElderPic:                 INCBIN "gfx/trainers/elder.2bpp.lz"
 SrAndJrPic:               INCBIN "gfx/trainers/sr_and_jr.2bpp.lz"
 CouplePic:                INCBIN "gfx/trainers/couple.2bpp.lz"
 GentlemanPic:             INCBIN "gfx/trainers/gentleman.2bpp.lz"
-RichBoyPic:               INCBIN "gfx/trainers/rich_boy.2bpp.lz"
 
 
 SECTION "Trainer Pics 5", ROMX
 
+RichBoyPic:               INCBIN "gfx/trainers/rich_boy.2bpp.lz"
 LadyPic:                  INCBIN "gfx/trainers/lady.2bpp.lz"
 BreederPic:               INCBIN "gfx/trainers/breeder.2bpp.lz"
 BakerPic:                 INCBIN "gfx/trainers/baker.2bpp.lz"
@@ -888,11 +889,11 @@ SkierPic:                 INCBIN "gfx/trainers/skier.2bpp.lz"
 BlackbeltTPic:            INCBIN "gfx/trainers/blackbelt_t.2bpp.lz"
 BattleGirlPic:            INCBIN "gfx/trainers/battle_girl.2bpp.lz"
 DragonTamerPic:           INCBIN "gfx/trainers/dragon_tamer.2bpp.lz"
-EngineerPic:              INCBIN "gfx/trainers/engineer.2bpp.lz"
 
 
 SECTION "Trainer Pics 6", ROMX
 
+EngineerPic:              INCBIN "gfx/trainers/engineer.2bpp.lz"
 TeacherPic:               INCBIN "gfx/trainers/teacher.2bpp.lz"
 GuitaristmPic:            INCBIN "gfx/trainers/guitarist_m.2bpp.lz"
 GuitaristfPic:            INCBIN "gfx/trainers/guitarist_f.2bpp.lz"
@@ -908,11 +909,11 @@ SightseersPic:            INCBIN "gfx/trainers/sightseers.2bpp.lz"
 CooltrainermPic:          INCBIN "gfx/trainers/cooltrainer_m.2bpp.lz"
 CooltrainerfPic:          INCBIN "gfx/trainers/cooltrainer_f.2bpp.lz"
 AceDuoPic:                INCBIN "gfx/trainers/ace_duo.2bpp.lz"
-VeteranmPic:              INCBIN "gfx/trainers/veteran_m.2bpp.lz"
 
 
 SECTION "Trainer Pics 7", ROMX
 
+VeteranmPic:              INCBIN "gfx/trainers/veteran_m.2bpp.lz"
 VeteranfPic:              INCBIN "gfx/trainers/veteran_f.2bpp.lz"
 ProtonPic:                INCBIN "gfx/trainers/proton.2bpp.lz"
 PetrelPic:                INCBIN "gfx/trainers/petrel.2bpp.lz"
@@ -928,11 +929,11 @@ TowerTycoonPic:           INCBIN "gfx/trainers/towertycoon.2bpp.lz"
 JessieJamesPic:           INCBIN "gfx/trainers/jessie_james.2bpp.lz"
 LoreleiPic:               INCBIN "gfx/trainers/lorelei.2bpp.lz"
 AgathaPic:                INCBIN "gfx/trainers/agatha.2bpp.lz"
-StevenPic:                INCBIN "gfx/trainers/steven.2bpp.lz"
 
 
 SECTION "Trainer Pics 8", ROMX
 
+StevenPic:                INCBIN "gfx/trainers/steven.2bpp.lz"
 CynthiaPic:               INCBIN "gfx/trainers/cynthia.2bpp.lz"
 InverPic:                 INCBIN "gfx/trainers/inver.2bpp.lz"
 CherylPic:                INCBIN "gfx/trainers/cheryl.2bpp.lz"
@@ -948,11 +949,11 @@ BlanchePic:               INCBIN "gfx/trainers/blanche.2bpp.lz"
 SparkPic:                 INCBIN "gfx/trainers/spark.2bpp.lz"
 FlanneryPic:              INCBIN "gfx/trainers/flannery.2bpp.lz"
 MaylenePic:               INCBIN "gfx/trainers/maylene.2bpp.lz"
-SkylaPic:                 INCBIN "gfx/trainers/skyla.2bpp.lz"
 
 
 SECTION "Trainer Pics 9", ROMX
 
+SkylaPic:                 INCBIN "gfx/trainers/skyla.2bpp.lz"
 ValeriePic:               INCBIN "gfx/trainers/valerie.2bpp.lz"
 KukuiPic:                 INCBIN "gfx/trainers/kukui.2bpp.lz"
 VictorPic:                INCBIN "gfx/trainers/victor.2bpp.lz"

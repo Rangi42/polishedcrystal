@@ -43,6 +43,7 @@
 	dba PokefanfPic
 	dba OfficermPic
 	dba OfficerfPic
+	dba NursePic
 	dba PokemaniacPic
 	dba CosplayerPic
 	dba SuperNerdPic
