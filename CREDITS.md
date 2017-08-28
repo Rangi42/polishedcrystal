@@ -40,7 +40,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* JaceDeane for animations of Magikarp and Red's Pikachu, and sprites of Kukui and Victor.
+* JaceDeane for animations of Magikarp and Red's Pikachu, and sprites of Kukui, Victor, and Nurse.
 * spritershawn for sprites of Red, Blue, and Green.
 * Kuroko Aizawa for sprites of Cheryl, Aroma Lady, and Artist.
 * Mateo for some sprites and tiles.
@@ -50,6 +50,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
+* Constantine for Nurse's sprite.
 * coraldev for rowboat and sakura petal tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
