@@ -12,10 +12,7 @@
 	tilepal 0, RED, RED, GREEN, GREEN, ROOF, ROOF, GRAY, GRAY
 	tilepal 0, BROWN, BROWN, ROOF, GRAY, GRAY, BROWN, BROWN, RED
 	tilepal 0, RED, RED, RED, GRAY, GRAY, GRAY, GRAY, GRAY
-
-rept 8
-	db $ff
-endr
-
+	tilepal 0, TEXT, TEXT, TEXT, TEXT, TEXT, TEXT, TEXT, TEXT
+	tilepal_skip
 	tilepal 1, GRAY, GRAY, GRAY, GRAY, GRAY, GRAY, GRAY, GRAY
-	tilepal 1, RED, GRAY, GRAY, ROOF, ROOF, ROOF, ROOF, ROOF
+	tilepal 1, RED, GRAY, GRAY, TEXT

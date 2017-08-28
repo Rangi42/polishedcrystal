@@ -137,7 +137,7 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 
 LoadMapNameSignGFX: ; b80c6
 	ld de, MapEntryFrameGFX
-	ld hl, VTiles2 tile $70
+	ld hl, VTiles2 tile $77
 	lb bc, BANK(MapEntryFrameGFX), 9
 	jp Get2bpp
 ; b80d3
@@ -175,50 +175,49 @@ InitMapSignAttrMap: ; b8115
 PlaceMapNameFrame: ; b812f
 	hlcoord 0, 0
 	; top left
-	ld a, $70
+	ld a, $77
 	ld [hli], a
 	; top row
-	inc a ; ld a, $71
+	inc a ; ld a, $78
 	call .FillTopBottom
 	; top right
-	dec a ; ld a, $70
+	dec a ; ld a, $77
 	ld [hli], a
 	; left, first line
-	ld a, $73
+	ld a, $7a
 	ld [hli], a
 	; first line
-	inc a ; ld a, $74
 	call .FillMiddle
 	; right, first line
-	dec a ; ld a, $73
 	ld [hli], a
 	; left, second line
-	ld a, $75
+	inc a ; ld a, $7b
 	ld [hli], a
 	; second line
-	dec a ; ld a, $74
 	call .FillMiddle
 	; right, second line
-	inc a ; ld a, $75
 	ld [hli], a
 	; bottom left
-	inc a ; ld a, $76
+	inc a ; ld a, $7c
 	ld [hli], a
 	; bottom
-	inc a ; ld a, $77
+	inc a ; ld a, $7d
 	call .FillTopBottom
 	; bottom right
-	dec a ; ld a, $76
+	dec a ; ld a, $7c
 	ld [hl], a
 	ret
 ; b815b
 
 .FillMiddle: ; b815b
+	push af
+	ld a, $7f
 	ld c, SCREEN_WIDTH - 2
 .loop
 	ld [hli], a
 	dec c
 	jr nz, .loop
+	pop af
 	ret
 ; b8164
 
@@ -287,15 +286,6 @@ GiveFontOpaqueBackground:
 	ld a, b
 	or c
 	jr nz, .loop
-	ld hl, VTiles1 + $ff tiles
-	ld a, 8
-.loop2
-	ld [hl], $ff
-	inc hl
-	ld [hl], $0
-	inc hl
-	dec a
-	jr nz, .loop2
 	;call EnableLCD
 	ret
 

@@ -49,8 +49,8 @@ def transpose_palette(palette, revmap):
 			parts = [p.strip() for p in line.split(',')]
 			data.extend(parts[1:9])
 			if len(data) == 0x70:
-				data.extend(['ROOF'] * 0x10)
-	data.extend(['ROOF'] * (0x100 - len(data)))
+				data.extend(['TEXT'] * 0x10)
+	data.extend(['TEXT'] * (0x100 - len(data)))
 	with open(palette, 'wb') as f:
 		for i in range(32):
 			if i == 14:

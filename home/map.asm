@@ -1336,6 +1336,11 @@ LoadTileset:: ; 2821
 	pop af
 	ld [rVBK], a
 
+	ld hl, wDecompressScratch + $f0 tiles
+	ld de, VTiles2 + $70 tiles
+	ld bc, $7 tiles
+	call CopyBytes
+
 	pop af
 	ld [rSVBK], a
 
