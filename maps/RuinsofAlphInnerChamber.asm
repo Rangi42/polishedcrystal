@@ -21,7 +21,7 @@ RuinsofAlphInnerChamber_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 26
+.Signposts: db 28
 	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 3, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
@@ -35,6 +35,8 @@ RuinsofAlphInnerChamber_MapEventHeader:
 	signpost 8, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 8, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 13, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 13, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	signpost 13, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 13, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 18, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 18, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
@@ -51,9 +53,9 @@ RuinsofAlphInnerChamber_MapEventHeader:
 
 .PersonEvents: db 4
 	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_TEACHER, 13, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_TEACHER, 14, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	person_event SPRITE_GRAMPS, 19, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_SCIENTIST, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	person_event SPRITE_SCIENTIST, 11, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
 RuinsofAlphInnerChamberTrigger1:
 	priorityjump UnknownScript_0x58f6e
