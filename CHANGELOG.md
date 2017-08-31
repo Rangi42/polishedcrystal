@@ -135,6 +135,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Hidden Grottoes.
 * Add: Unown ! and ?.
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
+* Add: More Grass-type Pokémon can learn Earth Power and Earthquake.
 * Add: Status icons in battle.
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
