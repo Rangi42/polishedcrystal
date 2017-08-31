@@ -88,9 +88,8 @@ class Tileset(object):
 			self.data.append(color4[shade])
 
 	def tile(self, i):
-		j = i if i < 0x70 else i - 0x10 if i >= 0x80 else i + 0x80
 		tile = []
-		ty, tx = divmod(j, self.wt)
+		ty, tx = divmod(i, self.wt)
 		for r in range(Tileset.p_per_t):
 			start = ty*Tileset.p_per_t**2*self.wt + tx*Tileset.p_per_t + Tileset.p_per_t*self.wt*r
 			row = self.data[start:start+Tileset.p_per_t]
@@ -232,15 +231,13 @@ class PaletteMap(object):
 		with open(filename, 'r') as file:
 			for line in file:
 				line = line.strip()
-				if line == 'tilepal_skip':
-					indexes = ['TEXT'] * 8
-				elif line.startswith('tilepal '):
+				if line.startswith('tilepal '):
 					indexes = line[8:].split(',')[1:]
-				self.data.extend([colors[c.strip()][::-1] for c in indexes])
+					more_data = [colors[c.strip()][::-1] for c in indexes]
+					self.data.extend(more_data)
 
 	def color4(self, i):
-		j = i if i < 0x70 else i + 0x10 if i < 0xf0 else i - 0x80
-		return self.data[j] if j < len(self.data) else [default_rgb] * 4
+		return self.data[i] if i < len(self.data) else [default_rgb] * 4
 
 class Metatiles(object):
 	t_per_m = 4

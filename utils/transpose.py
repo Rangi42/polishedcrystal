@@ -47,21 +47,21 @@ def transpose_palette(palette, revmap):
 			if not line.startswith('tilepal '):
 				continue
 			parts = [p.strip() for p in line.split(',')]
-			data.extend(parts[1:9])
-			if len(data) == 0x70:
-				data.extend(['TEXT'] * 0x10)
+			data.extend(parts[1:])
 	data.extend(['TEXT'] * (0x100 - len(data)))
+	new_data = [data[revmap.get(i, i)] for i in range(0x100)]
+	while new_data and new_data[-1] == 'TEXT':
+		new_data.pop()
+	if len(new_data) % 2:
+		new_data.append('TEXT')
 	with open(palette, 'wb') as f:
-		for i in range(32):
-			if i == 14:
-				f.write('\nrept 8\n\tdb $ff\nendr\n\n')
-				continue
-			elif i == 15:
-				continue
-			seg = 0 if i < 14 else 1
-			row = [revmap.get(i*8+j, i*8+j) for j in range(8)]
-			line = '\ttilepal %d, %s\n' % (seg, ', '.join(data[b] for b in row))
+		n = 0
+		while new_data:
+			row, new_data = new_data[:8], new_data[8:]
+			seg = 0 if n < 0x80 else 1
+			line = '\ttilepal %d, %s\n' % (seg, ', '.join(row))
 			f.write(line)
+			n += len(row)
 
 def main():
 	if len(sys.argv) < 3:
