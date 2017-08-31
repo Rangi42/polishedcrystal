@@ -325,14 +325,14 @@ LadySprite:
 LassSprite:
 	sprite_header LassSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
+NurseSprite:
+	sprite_header NurseSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
+
 OfficerSprite:
 	sprite_header OfficerSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
 OfficerFSprite:
 	sprite_header OfficerFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
-
-NurseSprite:
-	sprite_header NurseSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
 PharmacistSprite:
 	sprite_header PharmacistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
