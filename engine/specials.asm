@@ -317,6 +317,30 @@ BugContestJudging: ; c34a
 	farcall _BugContestJudging
 	ld a, b
 	ld [ScriptVar], a
+	dec a
+	jr z, .firstplace
+	dec a
+	jr z, .secondplace
+	dec a
+	jr z, .thirdplace
+	ld a, SHED_SHELL
+	jr .finish
+.firstplace
+	ld a, SUN_STONE
+	ld hl, StatusFlags
+	bit 6, [hl] ; hall of fame
+	jr z, .finish
+	ld a, SHINY_STONE - MOON_STONE + 1 ; TODO: include ICE_STONE once it's useful
+	call RandomRange
+	add MOON_STONE
+	jr .finish
+.secondplace
+	ld a, EVERSTONE
+	jr .finish
+.thirdplace
+	ld a, SITRUS_BERRY
+.finish
+	ld [wBugContestOfficerPrize], a
 	ret
 ; c355
 

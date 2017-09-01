@@ -359,51 +359,66 @@ BugContestResultsWarpScript:
 	setevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	warp ROUTE_36_NATIONAL_PARK_GATE, $0, $4
 	applymovement PLAYER, Movement_ContestResults_WalkAfterWarp
+	; fallthrough
 
 BugContestResultsScript:
 	clearflag ENGINE_BUG_CONTEST_TIMER
 	clearevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
+	clearevent EVENT_CONTEST_OFFICER_HAS_PRIZE
 	opentext
 	farwritetext ContestResults_ReadyToJudgeText
 	waitbutton
 	special BugContestJudging
 	RAM2MEM $0
-	if_equal 1, BugContestResults_FirstPlace
-	if_equal 2, BugContestResults_SecondPlace
-	if_equal 3, BugContestResults_ThirdPlace
+	if_equal 1, .FirstPlace
+	if_equal 2, .SecondPlace
+	if_equal 3, .ThirdPlace
+	copybytetovar wBugContestOfficerPrize
+	itemtotext $0, $1
 	farwritetext ContestResults_ConsolationPrizeText
 	buttonsound
 	waitsfx
-	verbosegiveitem ORAN_BERRY
-	iffalse BugContestResults_NoRoomForOranBerry
-
-BugContestResults_DidNotWin
+	copybytetovar wBugContestOfficerPrize
+	verbosegiveitem ITEM_FROM_MEM
+	iftrue .GotConsolationPrize
+	farwritetext BugContestPrizeNoRoomText
+	buttonsound
+	setevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+.GotConsolationPrize
 	farwritetext ContestResults_DidNotWinText
 	buttonsound
-	jump BugContestResults_FinishUp
-; 0xbc2b1
+	jump .FinishUp
 
-BugContestResults_ReturnAfterWinnersPrize ; 0xbc2b1
+.FirstPlace
+	setevent EVENT_GAVE_KURT_APRICORNS
+.SecondPlace
+.ThirdPlace
+	copybytetovar wBugContestOfficerPrize
+	itemtotext $0, $1
+	farwritetext ContestResults_PlayerWonAPrizeText
+	waitbutton
+	copybytetovar wBugContestOfficerPrize
+	verbosegiveitem ITEM_FROM_MEM
+	iftrue .GotWinnersPrize
+	farwritetext BugContestPrizeNoRoomText
+	buttonsound
+	setevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+.GotWinnersPrize
 	farwritetext ContestResults_JoinUsNextTimeText
 	buttonsound
-
-BugContestResults_FinishUp
+.FinishUp
 	checkevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
-	iffalse BugContestResults_DidNotLeaveMons
+	iffalse .DidNotLeaveMons
 	farwritetext ContestResults_ReturnPartyText
 	waitbutton
 	special ContestReturnMons
-BugContestResults_DidNotLeaveMons
+.DidNotLeaveMons
 	special CheckPartyFullAfterContest
-	if_equal $0, BugContestResults_CleanUp
-	if_equal $2, BugContestResults_CleanUp
+	if_equal $0, .CleanUp
+	if_equal $2, .CleanUp
 	farwritetext ContestResults_PartyFullText
 	waitbutton
-BugContestResults_CleanUp
+.CleanUp
 	closetext
 	dotrigger $0
 	domaptrigger ROUTE_35_NATIONAL_PARK_GATE, $0
@@ -431,62 +446,6 @@ BugContestResults_CleanUp
 	special PlayMapMusic
 	end
 ; 0xbc31e
-
-BugContestResults_FirstPlace ; 0xbc31e
-	setevent EVENT_GAVE_KURT_APRICORNS
-	itemtotext SUN_STONE, $1
-	farwritetext ContestResults_PlayerWonAPrizeText
-	waitbutton
-	verbosegiveitem SUN_STONE
-	iffalse BugContestResults_NoRoomForSunStone
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc332
-
-BugContestResults_SecondPlace ; 0xbc332
-	itemtotext EVERSTONE, $1
-	farwritetext ContestResults_PlayerWonAPrizeText
-	waitbutton
-	verbosegiveitem EVERSTONE
-	iffalse BugContestResults_NoRoomForEverstone
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc343
-
-BugContestResults_ThirdPlace ; 0xbc343
-	itemtotext SITRUS_BERRY, $1
-	farwritetext ContestResults_PlayerWonAPrizeText
-	waitbutton
-	verbosegiveitem SITRUS_BERRY
-	iffalse BugContestResults_NoRoomForSitrusBerry
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc354
-
-BugContestResults_NoRoomForSunStone ; 0xbc354
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc35f
-
-BugContestResults_NoRoomForEverstone ; 0xbc35f
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc36a
-
-BugContestResults_NoRoomForSitrusBerry ; 0xbc36a
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc375
-
-BugContestResults_NoRoomForOranBerry ; 0xbc375
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	jump BugContestResults_DidNotWin
-; 0xbc380
 
 BugContestResults_CopyContestantsToResults ; 0xbc380
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_1A

@@ -2448,7 +2448,8 @@ wBugContestStartTime:: ds 4 ; day, hour, min, sec
 wLastPocket:: ds 1
 wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
-	ds 3
+wBugContestOfficerPrize:: ds 1
+	ds 2
 
 wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4

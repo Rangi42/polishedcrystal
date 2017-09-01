@@ -279,8 +279,10 @@ ContestResults_JoinUsNextTimeText:
 
 ContestResults_ConsolationPrizeText:
 	text "Everyone else gets"
-	line "a Berry as a con-"
-	cont "solation prize!"
+	line "a @"
+	text_from_ram StringBuffer4
+	text " as a"
+	cont "consolation prize!"
 	done
 
 ContestResults_DidNotWinText:

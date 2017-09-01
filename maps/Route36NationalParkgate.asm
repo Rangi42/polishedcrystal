@@ -164,18 +164,18 @@ Route36NationalParkgateLeftTheContestEarly:
 
 Route36OfficerScriptContest:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, _ContestNotOn
-	if_equal MONDAY, _ContestNotOn
-	if_equal WEDNESDAY, _ContestNotOn
-	if_equal FRIDAY, _ContestNotOn
-	faceplayer
-	opentext
+	if_equal SUNDAY, .ContestNotOn
+	if_equal MONDAY, .ContestNotOn
+	if_equal WEDNESDAY, .ContestNotOn
+	if_equal FRIDAY, .ContestNotOn
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
-	scall Route36Parkgate_DayToText
+	faceplayer
+	opentext
+	callstd daytotext
 	writetext UnknownText_0x6a2eb
 	yesorno
-	iffalse .DecidedNotToJoinContest
+	iffalse_jumpopenedtext UnknownText_0x6a5dc
 	checkcode VAR_PARTYCOUNT
 	if_greater_than $1, .LeaveMonsWithOfficer
 	special ContestDropOffMons
@@ -202,6 +202,9 @@ Route36OfficerScriptContest:
 	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, 35, 18
 	end
 
+.ContestNotOn:
+	jumptextfaceplayer UnknownText_0x6b370
+
 .LeaveMonsWithOfficer:
 	checkcode VAR_PARTYCOUNT
 	if_less_than $6, .ContinueLeavingMons
@@ -212,9 +215,9 @@ Route36OfficerScriptContest:
 	if_equal $1, .FirstMonIsEgg
 	writetext UnknownText_0x6a4c6
 	yesorno
-	iffalse .RefusedToLeaveMons
+	iffalse_jumpopenedtext UnknownText_0x6a597
 	special ContestDropOffMons
-	iftrue .FirstMonIsFainted
+	iftrue_jumpopenedtext UnknownText_0x6a608
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 	writetext UnknownText_0x6a537
 	buttonsound
@@ -224,15 +227,6 @@ Route36OfficerScriptContest:
 	buttonsound
 	jump .ResumeStartingContest
 
-.DecidedNotToJoinContest:
-	jumpopenedtext UnknownText_0x6a5dc
-
-.RefusedToLeaveMons:
-	jumpopenedtext UnknownText_0x6a597
-
-.FirstMonIsFainted:
-	jumpopenedtext UnknownText_0x6a608
-
 .BoxFull:
 	jumpopenedtext UnknownText_0x6a67c
 
@@ -240,64 +234,22 @@ Route36OfficerScriptContest:
 	jumpopenedtext UnknownText_0x6a71f
 
 Route36Officer_ContestHasConcluded:
-	checkevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	iftrue .SunStone
-	checkevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	iftrue .Everstone
-	checkevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	iftrue .SitrusBerry
-	checkevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	iftrue .OranBerry
-	jumpopenedtext UnknownText_0x6a84f
-
-.SunStone:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem SUN_STONE
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	endtext
-
-.Everstone:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem EVERSTONE
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	endtext
-
-.SitrusBerry:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem SITRUS_BERRY
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	endtext
-
-.OranBerry:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem ORAN_BERRY
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	endtext
-
-.BagFull:
-	jumpopenedtext UnknownText_0x6b910
-
-_ContestNotOn:
-	jumptextfaceplayer UnknownText_0x6b370
-
-OfficerScript_0x6acf4:
+	checkevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+	iffalse_jumptextfaceplayer UnknownText_0x6a84f
 	faceplayer
 	opentext
+	writetext UnknownText_0x6b97f
+	buttonsound
+	copybytetovar wBugContestOfficerPrize
+	verbosegiveitem ITEM_FROM_MEM
+	iffalse_jumpopenedtext UnknownText_0x6b910
+	clearevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+	endtext
+
+OfficerScript_0x6acf4:
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
-	jumpopenedtext UnknownText_0x6b370
-
-Route36Parkgate_DayToText:
-	jumpstd daytotext
-	end
+	jumptextfaceplayer UnknownText_0x6b370
 
 BugCatcherScript_0x6ad06:
 	checkevent EVENT_GAVE_KURT_APRICORNS

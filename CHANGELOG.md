@@ -132,6 +132,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Battle Scene → Battle Effects.
 * Add: Final Lyra battle.
 * Add: Kurt makes Balls right away.
+* Add: Bug-Catching Contest prizes from HGSS.
 * Add: Hidden Grottoes.
 * Add: Unown ! and ?.
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
