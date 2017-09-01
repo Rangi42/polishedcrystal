@@ -27,13 +27,10 @@ const_value set 2
 	const SAFFRONTRAINSTATION_OFFICER
 
 OfficerScript_0x18a81e:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalse_jumptextfaceplayer UnknownText_0x18a8a9
 	faceplayer
 	opentext
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .MagnetTrainToGoldenrod
-	jumpopenedtext UnknownText_0x18a8a9
-
-.MagnetTrainToGoldenrod:
 	writetext UnknownText_0x18a8dd
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x18a978

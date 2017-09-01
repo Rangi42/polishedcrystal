@@ -215,14 +215,11 @@ CooltrainerFScript_0x1989e9:
 	jumptextfaceplayer UnknownText_0x198ae6
 
 CooltrainerFScript_0x1989fd:
-	faceplayer
-	opentext
 	checkflag ENGINE_RADIO_CARD
-	iftrue .GotRadioCard
-	jumpopenedtext UnknownText_0x198b73
-
-.GotRadioCard:
-	jumpopenedtext UnknownText_0x198c14
+	iffalse_jumptextfaceplayer UnknownText_0x198b73
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalse_jumptextfaceplayer GoldenrodCityCooltrainerFOlivineText
+	jumptextfaceplayer UnknownText_0x198c14
 
 YoungsterScript_0x198a11:
 	faceplayer
@@ -283,9 +280,6 @@ UnknownText_0x198a69:
 
 	para "broadcast in"
 	line "Johto."
-
-	para "That's pretty"
-	line "crazy, right?"
 	done
 
 UnknownText_0x198aa9:
@@ -326,6 +320,15 @@ UnknownText_0x198b73:
 
 	para "so it can also"
 	line "serve as a radio."
+	done
+
+GoldenrodCityCooltrainerFOlivineText:
+	text "I came here on"
+	line "the S.S.Aqua."
+
+	para "It's slower than"
+	line "the Magnet Train,"
+	cont "but more scenic."
 	done
 
 UnknownText_0x198c14:
