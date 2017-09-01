@@ -6,7 +6,7 @@ SaffronGym_MapScriptHeader:
 
 SaffronGym_MapEventHeader:
 
-.Warps: db 32
+.Warps: db 33
 	warp_def 17, 8, 2, SAFFRON_CITY
 	warp_def 17, 9, 2, SAFFRON_CITY
 	warp_def 14, 11, 18, SAFFRON_GYM
@@ -39,6 +39,7 @@ SaffronGym_MapEventHeader:
 	warp_def 2, 15, 15, SAFFRON_GYM
 	warp_def 2, 0, 16, SAFFRON_GYM
 	warp_def 10, 11, 17, SAFFRON_GYM
+	warp_def 10, 8, 3, SAFFRON_GYM
 
 .XYTriggers: db 0
 
