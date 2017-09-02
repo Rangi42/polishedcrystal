@@ -94,7 +94,7 @@ def render_map_images(valid_tilesets):
 			block_data_name = map_block_data_exceptions.get(map_name, map_name)
 			if block_data_name in rendered:
 				continue
-			command = 'python utils/map.py %s %d %s' % (block_filename_fmt % block_data_name, map_height, tileset_name)
+			command = 'python utils/map.py %s h%d %s' % (block_filename_fmt % block_data_name, map_height, tileset_name)
 			print()
 			print(command)
 			os.system(command)
