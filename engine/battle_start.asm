@@ -679,11 +679,11 @@ endr
 	ld [rSVBK], a
 	call .copypals
 	push hl
-	ld de, UnknBGPals + 7 palettes
+	ld de, UnknBGPals palette 7
 	ld bc, 1 palettes
 	call CopyBytes
 	pop hl
-	ld de, BGPals + 7 palettes
+	ld de, BGPals palette 7
 	ld bc, 1 palettes
 	call CopyBytes
 	pop af
@@ -697,17 +697,17 @@ endr
 	jp StartTrainerBattle_NextScene
 
 .copypals ; 8c677 (23:4677)
-	ld de, UnknBGPals + 7 palettes
+	ld de, UnknBGPals palette 7
 	call .copy
-	ld de, BGPals + 7 palettes
+	ld de, BGPals palette 7
 	call .copy
-	ld de, UnknOBPals + 6 palettes
+	ld de, UnknOBPals palette 6
 	call .copy
-	ld de, OBPals + 6 palettes
+	ld de, OBPals palette 6
 	call .copy
-	ld de, UnknOBPals + 7 palettes
+	ld de, UnknOBPals palette 7
 	call .copy
-	ld de, OBPals + 7 palettes
+	ld de, OBPals palette 7
 
 .copy ; 8c698 (23:4698)
 	push hl

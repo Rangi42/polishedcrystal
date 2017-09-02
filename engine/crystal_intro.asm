@@ -318,9 +318,9 @@ endr
 	ld a, $5
 	ld [rSVBK], a
 	ld a, [hli]
-	ld [OBPals + 12], a
+	ld [OBPals palette 1 + 4], a
 	ld a, [hli]
-	ld [OBPals + 13], a
+	ld [OBPals palette 1 + 5], a
 	pop af
 	ld [rSVBK], a
 	ld a, $1

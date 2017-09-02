@@ -1207,11 +1207,11 @@ FlickeringCaveEntrancePalette: ; fc71e
 	ld a, [hVBlankCounter]
 	and %00000010
 	jr nz, .bit1set
-	ld hl, UnknBGPals + 4 palettes
+	ld hl, UnknBGPals palette 4
 	jr .okay
 
 .bit1set
-	ld hl, UnknBGPals + 4 palettes + 2
+	ld hl, UnknBGPals palette 4 + 2
 
 .okay
 	ld a, [hli]

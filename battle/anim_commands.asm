@@ -1459,8 +1459,8 @@ BattleAnim_SetOBPals: ; cc94b
 	push af
 	ld a, $5
 	ld [rSVBK], a
-	ld hl, OBPals + $10
-	ld de, UnknOBPals + $10
+	ld hl, OBPals palette 2
+	ld de, UnknOBPals palette 2
 	ld a, [rOBP0]
 	ld b, a
 	ld c, $2

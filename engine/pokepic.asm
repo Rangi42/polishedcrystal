@@ -87,7 +87,7 @@ PokepicMenuDataHeader: ; 0x24547
 
 LoadGrayscalePalette:
 	ld a, $5
-	ld de, UnknBGPals + 7 palettes + 2
+	ld de, UnknBGPals palette 7 + 2
 	ld hl, GrayscalePalette
 	ld bc, 4
 	jp FarCopyWRAM

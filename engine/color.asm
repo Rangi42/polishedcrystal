@@ -35,11 +35,11 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, BGPals + 2 palettes + 2
+	ld de, BGPals palette 2 + 2
 	jr .okay
 
 .Player:
-	ld de, BGPals + 3 palettes + 2
+	ld de, BGPals palette 3 + 2
 
 .okay
 	ld l, c
@@ -83,7 +83,7 @@ LoadPlayerStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 5 palettes + 2
+	ld de, UnknBGPals palette 5 + 2
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -98,7 +98,7 @@ LoadEnemyStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 5 palettes + 4
+	ld de, UnknBGPals palette 5 + 4
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -111,7 +111,7 @@ LoadBattleCategoryAndTypePals:
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6 palettes + 2
+	ld de, UnknBGPals palette 6 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -123,7 +123,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6 palettes + 6
+	ld de, UnknBGPals palette 6 + 6
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -136,7 +136,7 @@ LoadItemIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld de, UnknBGPals + 4 palettes + 2
+	ld de, UnknBGPals palette 4 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -161,7 +161,7 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals + 4 palettes + 2
+	ld de, UnknBGPals palette 4 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -172,7 +172,7 @@ endr
 
 .cancel:
 	ld hl, TMHMCancelPalette
-	ld de, UnknBGPals + 4 palettes + 2
+	ld de, UnknBGPals palette 4 + 2
 	ld bc, 6
 	ld a, $5
 	jp FarCopyWRAM
@@ -187,11 +187,11 @@ LoadStatsScreenPals:
 	ld a, $5
 	ld [rSVBK], a
 	ld a, [hli]
-	ld [UnknBGPals], a
-	ld [UnknBGPals + 2 palettes], a
+	ld [UnknBGPals palette 0], a
+	ld [UnknBGPals palette 2], a
 	ld a, [hl]
-	ld [UnknBGPals + 1], a
-	ld [UnknBGPals + 2 palettes + 1], a
+	ld [UnknBGPals palette 0 + 1], a
+	ld [UnknBGPals palette 2 + 1], a
 	pop af
 	ld [rSVBK], a
 	call ApplyPals
@@ -538,7 +538,7 @@ LoadPokemonPalette:
 	call GetMonPalettePointer
 	; load palette in BG 7
 	ld a, $5
-	ld de, UnknBGPals + 7 palettes + 2
+	ld de, UnknBGPals palette 7 + 2
 	ld bc, 4
 	jp FarCopyWRAM
 
@@ -555,7 +555,7 @@ LoadPartyMonPalette:
 	call GetMonNormalOrShinyPalettePointer
 	; load palette in BG 7
 	ld a, $5
-	ld de, UnknBGPals + 7 palettes + 2
+	ld de, UnknBGPals palette 7 + 2
 	ld bc, 4
 	call FarCopyWRAM
 	; hl = DVs
@@ -567,7 +567,7 @@ LoadPartyMonPalette:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 7 palettes + 2
+	ld hl, UnknBGPals palette 7 + 2
 	jp VaryColorsByDVs
 
 InitCGBPals::
@@ -765,7 +765,7 @@ rept 4
 	inc hl
 endr
 .morn_day
-	ld de, UnknBGPals + 6 palettes + 2
+	ld de, UnknBGPals palette 6 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM

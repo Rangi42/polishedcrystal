@@ -384,7 +384,7 @@ VaryBGPal0ByTempMonDVs:
 	ld a, [TempMonSpecies]
 	ld b, a
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
+	ld hl, UnknBGPals palette 0 + 2
 	jp VaryColorsByDVs
 
 VaryBGPal1ByTempMonDVs:
@@ -392,5 +392,5 @@ VaryBGPal1ByTempMonDVs:
 	ld a, [TempMonSpecies]
 	ld b, a
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 1 palettes + 2
+	ld hl, UnknBGPals palette 1 + 2
 	jp VaryColorsByDVs

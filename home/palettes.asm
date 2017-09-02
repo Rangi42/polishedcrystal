@@ -184,8 +184,8 @@ DmgToCgbObjPal1:: ; d24
 	ld a, 5 ; gfx
 	ld [rSVBK], a
 
-	ld hl, OBPals + 1 palettes
-	ld de, UnknOBPals + 1 palettes
+	ld hl, OBPals palette 1
+	ld de, UnknOBPals palette 1
 	ld a, [rOBP1]
 	ld b, a
 	ld c, 1
