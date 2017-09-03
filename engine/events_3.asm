@@ -136,13 +136,13 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ret
 
 LoadMapNameSignGFX: ; b80c6
-	ld a, BANK(VTiles4)
+	ld a, $1
 	ld [rVBK], a
 	ld de, MapEntryFrameGFX
 	ld hl, VTiles4 tile $78
 	lb bc, BANK(MapEntryFrameGFX), 8
 	call Get2bpp
-	ld a, BANK(VTiles0)
+	xor a
 	ld [rVBK], a
 	ret
 ; b80d3

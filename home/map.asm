@@ -1320,7 +1320,7 @@ LoadTileset:: ; 2821
 
 	ld hl, wDecompressScratch
 	ld de, VTiles2
-	ld bc, $77 tiles ; tiles $77-$7f are used for the textbox frame and map name sign
+	ld bc, $7f tiles
 	call CopyBytes
 
 	ld a, [rVBK]
