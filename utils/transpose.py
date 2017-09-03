@@ -19,16 +19,22 @@ def build_map(mapfile):
 	revmap = {}
 	with open(mapfile, 'r') as f:
 		for line in f:
-			if '<->' in line:
-				a, b = line.split('<->')
+			sym = '<->' in line
+			a, b = line.split('<->' if sym in line else '->')
+			if '-' in a and '-' in b:
+				a1, a2 = a.split('-')
+				b1, b2 = b.split('-')
+				a1, a2 = int(a1, 16), int(a2, 16)
+				b1, b2 = int(b1, 16), int(b2, 16)
+				for ai, bi in zip(range(a1, a2+1), range(b1, b2+1)):
+					mapping[ai], revmap[bi] = bi, ai
+					if sym:
+						mapping[bi], revmap[ai] = ai, bi
+			else:
 				a, b = int(a, 16), int(b, 16)
-				mapping[a], mapping[b] = b, a
-				revmap[b], revmap[a] = a, b
-			elif '->' in line:
-				a, b = line.split('->')
-				a, b = int(a, 16), int(b, 16)
-				mapping[a] = b
-				revmap[b] = a
+				mapping[a], revmap[b] = b, a
+				if sym:
+					mapping[b], revmap[a] = a, b
 	return (mapping, revmap)
 
 def transpose_metatiles(metatiles, mapping):
