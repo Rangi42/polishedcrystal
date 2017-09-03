@@ -678,7 +678,7 @@ LoadEmote:: ; 1442f
 emote_header: MACRO
 	dw \1
 	db \2 tiles, BANK(\1)
-	dw VTiles1 tile \3
+	dw VTiles0 tile \3
 ENDM
 
 EmotesPointers: ; 144d

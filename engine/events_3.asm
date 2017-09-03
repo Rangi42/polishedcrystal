@@ -136,10 +136,15 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ret
 
 LoadMapNameSignGFX: ; b80c6
+	ld a, BANK(VTiles4)
+	ld [rVBK], a
 	ld de, MapEntryFrameGFX
-	ld hl, VTiles2 tile $77
-	lb bc, BANK(MapEntryFrameGFX), 9
-	jp Get2bpp
+	ld hl, VTiles4 tile $78
+	lb bc, BANK(MapEntryFrameGFX), 8
+	call Get2bpp
+	ld a, BANK(VTiles0)
+	ld [rVBK], a
+	ret
 ; b80d3
 
 InitMapNameFrame: ; b80d3
@@ -147,57 +152,61 @@ InitMapNameFrame: ; b80d3
 	hlcoord 0, 0
 	ld de, AttrMap - TileMap
 	add hl, de
-	lb bc, 4, SCREEN_WIDTH - 1
-	ld a, BEHIND_BG | PAL_BG_TEXT
-.outer_loop
-	push bc
-	push hl
-.inner_loop
+	; top row
+	ld a, TILE_BANK | BEHIND_BG | PAL_BG_TEXT
+	ld bc, SCREEN_WIDTH - 1
+	call ByteFill
+	or X_FLIP
 	ld [hli], a
-	dec c
-	jr nz, .inner_loop
-	ld a, X_FLIP | BEHIND_BG | PAL_BG_TEXT
+	; middle rows
+rept 2
+	and $ff - X_FLIP
 	ld [hli], a
-	ld a, BEHIND_BG | PAL_BG_TEXT
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .outer_loop
+	and $ff - TILE_BANK
+	ld bc, SCREEN_WIDTH - 2
+	call ByteFill
+	or X_FLIP | TILE_BANK
+	ld [hli], a
+endr
+	; bottom row
+	and $ff - X_FLIP
+	ld bc, SCREEN_WIDTH - 1
+	call ByteFill
+	or X_FLIP
+	ld [hl], a
 ; PlaceMapNameFrame
 	hlcoord 0, 0
 	; top left
-	ld a, $77
+	ld a, $f8
 	ld [hli], a
 	; top row
-	inc a ; ld a, $78
+	inc a ; $f9
 	call .FillTopBottom
 	; top right
-	dec a ; ld a, $77
+	dec a ; $f8
 	ld [hli], a
 	; left, first line
-	ld a, $7a
+	ld a, $fb
 	ld [hli], a
 	; first line
 	call .FillMiddle
 	; right, first line
 	ld [hli], a
 	; left, second line
-	inc a ; ld a, $7b
+	inc a ; $fc
 	ld [hli], a
 	; second line
 	call .FillMiddle
 	; right, second line
 	ld [hli], a
 	; bottom left
-	inc a ; ld a, $7c
+	inc a ; $fd
 	ld [hli], a
 	; bottom
-	inc a ; ld a, $7d
+	inc a ; $fe
 	call .FillTopBottom
 	; bottom right
-	dec a ; ld a, $7c
+	dec a ; $fd
 	ld [hl], a
 	ret
 ; b815b
@@ -270,15 +279,24 @@ GiveFontOpaqueBackground:
 ; %00 = white, %11 = black, %10 = light, %01 = dark
 	;call DisableLCD
 	ld hl, VTiles1
-	ld bc, ($80 tiles) / 2
-.loop
+	ld bc, (106 tiles) / 2 ; only from "A" to "9"
+.loop1
 	ld a, $ff
 	ld [hli], a
 	inc hl
 	dec bc
 	ld a, b
 	or c
-	jr nz, .loop
+	jr nz, .loop1
+	ld hl, VTiles1 tile $ff
+	ld a, (1 tiles) / 2
+.loop2
+	ld [hl], $ff
+	inc hl
+	ld [hl], $0
+	inc hl
+	dec a
+	jr nz, .loop2
 	;call EnableLCD
 	ret
 
@@ -912,7 +930,7 @@ LoadFishingGFX: ; b84b3
 	call .LoadGFX
 	ld hl, VTiles0 tile $0a
 	call .LoadGFX
-	ld hl, VTiles1 tile $7c
+	ld hl, VTiles0 tile $7c
 	call .LoadGFX
 
 	pop af
