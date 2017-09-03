@@ -143,17 +143,13 @@ LoadMapNameSignGFX: ; b80c6
 ; b80d3
 
 InitMapNameFrame: ; b80d3
-	call InitMapSignAttrMap
-	jr PlaceMapNameFrame
-; b80e1
-
-InitMapSignAttrMap: ; b8115
+; InitMapSignAttrMap
 	hlcoord 0, 0
 	ld de, AttrMap - TileMap
 	add hl, de
 	lb bc, 4, SCREEN_WIDTH - 1
 	ld a, BEHIND_BG | PAL_BG_TEXT
-.loop
+.outer_loop
 	push bc
 	push hl
 .inner_loop
@@ -168,11 +164,8 @@ InitMapSignAttrMap: ; b8115
 	add hl, de
 	pop bc
 	dec b
-	jr nz, .loop
-	ret
-; b812f
-
-PlaceMapNameFrame: ; b812f
+	jr nz, .outer_loop
+; PlaceMapNameFrame
 	hlcoord 0, 0
 	; top left
 	ld a, $77
