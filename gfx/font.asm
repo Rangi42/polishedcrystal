@@ -66,11 +66,11 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(FontNormal), $80
+	lb bc, BANK(FontNormal), 111
 	call Get1bpp_2
 	ld de, FontCommon
-	ld hl, VTiles1 tile ("★" - $80) ; first common font character
-	lb bc, BANK(FontCommon), $d
+	ld hl, VTiles1 tile ("▷" - $80) ; first common font character
+	lb bc, BANK(FontCommon), 11
 	jp Get1bpp_2
 ; fb48a
 
@@ -103,7 +103,7 @@ endr
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleExtrasGFX
 	ld hl, VTiles2 tile $5f
-	lb bc, BANK(BattleExtrasGFX), 26
+	lb bc, BANK(BattleExtrasGFX), 32
 	call Get2bpp_2
 ; fb4cc
 
@@ -114,7 +114,7 @@ LoadFrame:: ; fb4cc
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $79
+	ld hl, VTiles1 tile ("┌" - $80)
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp_2
 	ld hl, VTiles2 tile $7f

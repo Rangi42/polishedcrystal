@@ -1457,14 +1457,14 @@ DrawBattleHPBar:: ; 3750
 	push bc
 
 ; Place 'HP:'
-	ld a, $63
+	ld a, "<HP1>"
 	ld [hli], a
-	ld a, $64
+	inc a ; ld a, "<HP2>"
 	ld [hli], a
 
 ; Draw a template
 	push hl
-	ld a, $65 ; empty bar
+	inc a ; ld a, "<NOHP>" ; empty bar
 .template
 	ld [hli], a
 	dec d
@@ -1489,7 +1489,7 @@ DrawBattleHPBar:: ; 3750
 	jr c, .lastbar
 
 	ld e, a
-	ld a, $6d ; full bar
+	ld a, "<FULLHP>"
 	ld [hli], a
 	ld a, e
 	and a
@@ -1497,8 +1497,8 @@ DrawBattleHPBar:: ; 3750
 	jr .fill
 
 .lastbar
-	ld a, $65  ; empty bar
-	add e      ; + e
+	ld a, "<NOHP>"
+	add e
 	ld [hl], a
 
 .done

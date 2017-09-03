@@ -2361,7 +2361,7 @@ CheckCurSpriteCoveredByTextBox: ; 56cd
 	call Coord2Tile
 	pop bc
 	ld a, [hl]
-	cp $77 ; hide sprites standing on tiles $77-$7f or $f7-$ff
+	cp $7f ; hide sprites standing on tiles $$7f or $ff
 	jr nc, .nope
 .ok8
 	dec d

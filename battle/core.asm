@@ -4626,7 +4626,7 @@ endr
 	ld bc, BattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, $61 ; colored "★"
+	ld a, "<STAR>"
 	hlcoord 19, 8
 	ld [hl], a
 
@@ -4636,9 +4636,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender_char
-	ld a, $5f ; colored "♂"
+	ld a, "<MALE>"
 	jr nz, .got_gender_char
-	ld a, $60 ; colored "♀"
+	ld a, "<FEMALE>"
 
 .got_gender_char
 	hlcoord 18, 8
@@ -4697,7 +4697,7 @@ endr
 	ld bc, EnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, $61 ; colored "★"
+	ld a, "<STAR>"
 	hlcoord 9, 1
 	ld [hl], a
 
@@ -4707,9 +4707,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, $5f ; colored "♂"
+	ld a, "<MALE>"
 	jr nz, .got_gender
-	ld a, $60 ; colored "♀"
+	ld a, "<FEMALE>"
 
 .got_gender
 	hlcoord 8, 1
@@ -8147,7 +8147,7 @@ PlaceExpBar: ; 3f41c
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, $78 ; full thin bar
+	ld a, "<FULLXP>"
 	ld [hli], a
 	dec c
 	ret z
@@ -8156,15 +8156,15 @@ PlaceExpBar: ; 3f41c
 .next
 	add $8
 	jr z, .loop2
-	add $70 ; tile to the left of thin exp bar tile
+	add "<NOXP>" - 1
 	jr .skip
 
 .loop2
-	ld a, $70 ; empty thin bar
+	ld a, "<NOXP>"
 
 .skip
 	ld [hli], a
-	ld a, $70 ; empty thin bar
+	ld a, "<NOXP>"
 	dec c
 	jr nz, .loop2
 	ret
