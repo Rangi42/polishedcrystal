@@ -209,10 +209,10 @@
 
 ; battle extra:
 
-	charmap "<MALE>",   $5f
-	charmap "<FEMALE>", $60
-	charmap "<STAR>",   $61
-	charmap "<BALL>",   $62
+	charmap "<BALL>",   $5f
+	charmap "<MALE>",   $60
+	charmap "<FEMALE>", $61
+	charmap "<STAR>",   $62
 
 	charmap "<HP1>",    $63
 	charmap "<HP2>",    $64
@@ -220,14 +220,13 @@
 	charmap "<FULLHP>", $6d
 	charmap "<HPEND>",  $6e
 
-	charmap "<XP1>",    $6f
-	charmap "<XP2>",    $70
-	charmap "<NOXP>",   $71
-	charmap "<FULLXP>", $79
-	charmap "<XPEND>",  $7a
+	charmap "_",        $6f
+	charmap "◢",        $70
+	charmap "—",        $71
+	charmap "◣",        $72
 
-	charmap "◢",        $7b
-	charmap "—",        $7c
-	charmap "◣",        $7d
-
-	charmap "_",        $7e
+	charmap "<XP1>",    $73
+	charmap "<XP2>",    $74
+	charmap "<NOXP>",   $75
+	charmap "<FULLXP>", $7d
+	charmap "<XPEND>",  $7e
