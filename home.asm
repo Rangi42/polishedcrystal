@@ -258,72 +258,44 @@ PrintLetterDelay:: ; 313d
 ; TextBoxFlags[!0] and A or B override text speed with a one-frame delay.
 ; Options1[4] and TextBoxFlags[!1] disable the delay.
 
-	ld a, [Options1]
-	bit NO_TEXT_SCROLL, a
-	ret nz
-
-; non-scrolling text?
 	ld a, [TextBoxFlags]
 	bit 1, a
 	ret z
+	bit 0, a
+	jr z, .forceFastScroll
 
+	ld a, [Options1]
+	bit NO_TEXT_SCROLL, a
+	ret nz
+	and %111
+	ret z
+	ld a, $1
+	ld [hBGMapHalf], a
+.forceFastScroll
 	push hl
 	push de
 	push bc
-
-	ld hl, hOAMUpdate
-	ld a, [hl]
-	push af
-
-; orginally turned oam update off...
-;	ld a, 1
-	ld [hl], a
-
 ; force fast scroll?
 	ld a, [TextBoxFlags]
 	bit 0, a
-	jr z, .fast
-
+	ld a, 1
+	jr z, .updateDelay
 ; text speed
 	ld a, [Options1]
 	and %111
-	jr .updatedelay
-
-.fast
-	ld a, 1
-
-.updatedelay
+.updateDelay
 	ld [TextDelayFrames], a
-
-.checkjoypad
-	call GetJoypad
-
-; input override
-	ld a, [wDisableTextAcceleration]
-	and a
-	jr nz, .wait
-
-; Wait one frame if holding A or B.
-	ld a, [hJoyDown]
-	bit 0, a ; A_BUTTON
-	jr z, .checkb
-	jr .delay
-.checkb
-	bit 1, a ; B_BUTTON
-	jr z, .wait
-
-.delay
-	call DelayFrame
-	jr .end
-
-.wait
+.textDelayLoop
 	ld a, [TextDelayFrames]
 	and a
-	jr nz, .checkjoypad
-
-.end
-	pop af
-	ld [hOAMUpdate], a
+	jr z, .done
+	call DelayFrame
+	call GetJoypad
+; Finish execution if A or B is pressed
+	ld a, [hJoyDown]
+	and A_BUTTON | B_BUTTON
+	jr z, .textDelayLoop
+.done
 	pop bc
 	pop de
 	pop hl
