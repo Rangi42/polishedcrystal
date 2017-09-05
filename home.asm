@@ -116,8 +116,8 @@ INCLUDE "home/double_speed.asm"
 
 ClearSprites:: ; 300b
 ; Erase OAM data
-	ld hl, Sprites
-	ld b, SpritesEnd - Sprites
+	ld hl, wSprites
+	ld b, SpritesEnd - wSprites
 	xor a
 .loop
 	ld [hli], a
@@ -128,9 +128,9 @@ ClearSprites:: ; 300b
 
 HideSprites:: ; 3016
 ; Set all OAM y-positions to 160 to hide them offscreen
-	ld hl, Sprites
+	ld hl, wSprites
 	ld de, 4 ; length of an OAM struct
-	ld b, (SpritesEnd - Sprites) / 4 ; number of OAM structs
+	ld b, (SpritesEnd - wSprites) / 4 ; number of OAM structs
 	ld a, 160 ; y
 .loop
 	ld [hl], a

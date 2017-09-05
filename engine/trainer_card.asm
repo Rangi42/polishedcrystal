@@ -323,13 +323,13 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 	ld [hGraphicStartTile], a
 	predef PlaceGraphic
 
-	ld a, [Money]
+	ld a, [wMoney]
 	cp $f
 	jr c, .not_seven_digits
-	ld a, [Money + 1]
+	ld a, [wMoney + 1]
 	cp $42
 	jr c, .not_seven_digits
-	ld a, [Money + 2]
+	ld a, [wMoney + 2]
 	cp $40
 	jr c, .not_seven_digits
 	hlcoord 7, 6
@@ -337,7 +337,7 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 .not_seven_digits
 	hlcoord 6, 6
 .print_money
-	ld de, Money
+	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
 	jp PrintNum
 
@@ -500,7 +500,7 @@ TrainerCard_Page2_3_OAMUpdate: ; 25448 (9:5448)
 	ld d, a
 	ld a, [de]
 	ld c, a
-	ld de, Sprites
+	ld de, wSprites
 	ld b, 8
 .loop
 	srl c

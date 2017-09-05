@@ -161,7 +161,7 @@ endr
 	inc hl
 	or [hl]
 	jr z, .CancelDeposit
-	ld de, Money
+	ld de, wMoney
 	ld bc, StringBuffer2
 	farcall CompareMoney
 	jr c, .DontHaveThatMuchToDeposit
@@ -174,7 +174,7 @@ endr
 	farcall GiveMoney
 	jr c, .CantDepositThatMuch
 	ld bc, StringBuffer2 + 3
-	ld de, Money
+	ld de, wMoney
 	farcall TakeMoney
 	ld hl, StringBuffer2
 	ld de, wMomsMoney
@@ -235,7 +235,7 @@ endr
 	ld bc, StringBuffer2
 	farcall CompareMoney
 	jr c, .InsufficientFundsInBank
-	ld bc, Money
+	ld bc, wMoney
 	ld de, StringBuffer2
 	farcall GiveMoney
 	jr c, .NotEnoughRoomInWallet
@@ -243,7 +243,7 @@ endr
 	ld de, wMomsMoney
 	farcall TakeMoney
 	ld hl, StringBuffer2
-	ld de, Money
+	ld de, wMoney
 	ld bc, 3
 	call CopyBytes
 	ld de, SFX_TRANSACTION
@@ -461,7 +461,7 @@ Mom_ContinueMenuSetup: ; 1651a
 	ld de, Mom_HeldString
 	call PlaceString
 	hlcoord 12, 4
-	ld de, Money
+	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 6
 	call PrintNum
 	hlcoord 1, 6

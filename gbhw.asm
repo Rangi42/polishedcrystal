@@ -81,7 +81,7 @@ rNR41       EQU $ff20 ; Channel 4 Sound Length (R/W)
 rNR42       EQU $ff21 ; Channel 4 Volume Envelope (R/W)
 rNR43       EQU $ff22 ; Channel 4 Polynomial Counter (R/W)
 rNR44       EQU $ff23 ; Channel 4 Counter/consecutive; Inital (R/W)
-rNR50       EQU $ff24 ; Channel control / ON-OFF / Volume (R/W)
+rNR50       EQU $ff24 ; Channel control / ON-OFF / wVolume (R/W)
 rNR51       EQU $ff25 ; Selection of Sound output terminal (R/W)
 rNR52       EQU $ff26 ; Sound on/off
 rWave_0     EQU $ff30

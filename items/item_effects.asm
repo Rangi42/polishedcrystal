@@ -1930,7 +1930,7 @@ RevivePokemon: ; f0d6
 
 .skip_to_revive
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	ld a, [CurItem]
 	cp REVIVE
 	jr z, .revive_half_hp
@@ -1964,7 +1964,7 @@ FullRestore: ; f128
 	jp nc, FullyHealStatus
 
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	call ReviveFullHP
 	ld a, MON_STATUS
 	call GetPartyParamLocation
@@ -2061,7 +2061,7 @@ ItemRestoreHP:
 	ret nc
 
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	call GetHealingItemAmount
 	call RestoreHealth
 	call BattlemonRestoreHealth

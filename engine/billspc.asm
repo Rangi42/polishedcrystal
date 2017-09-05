@@ -1468,7 +1468,7 @@ BillsPC_UpdateSelectionCursor: ; e2e01 (38:6e01)
 
 .place_cursor
 	ld hl, .OAM
-	ld de, Sprites
+	ld de, wSprites
 .loop
 	ld a, [hl]
 	cp -1
@@ -1518,7 +1518,7 @@ endr
 
 BillsPC_UpdateInsertCursor: ; e2e8c
 	ld hl, .OAM
-	ld de, Sprites
+	ld de, wSprites
 .loop
 	ld a, [hl]
 	cp -1

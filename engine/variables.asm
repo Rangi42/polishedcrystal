@@ -85,8 +85,8 @@ endr
 
 .CountBadges: ; 806e1
 ; Number of owned badges.
-	ld hl, Badges
-	ld b, BadgesEnd - Badges
+	ld hl, wBadges
+	ld b, BadgesEnd - wBadges
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2

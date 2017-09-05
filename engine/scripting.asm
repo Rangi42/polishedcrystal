@@ -1995,7 +1995,7 @@ Script_readcoins:
 ;     memory (SingleByteParam)
 	call ResetStringBuffer1
 	ld hl, StringBuffer1
-	ld de, Coins
+	ld de, wCoins
 	lb bc, PRINTNUM_RIGHTALIGN | 2, 6
 	call PrintNum
 	ld de, StringBuffer1
@@ -2161,7 +2161,7 @@ CompareMoneyAction:
 GetMoneyAccount:
 	call GetScriptByte
 	and a
-	ld de, Money
+	ld de, wMoney
 	ret z
 	ld de, wMomsMoney
 	ret

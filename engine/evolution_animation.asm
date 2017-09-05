@@ -44,7 +44,7 @@ EvolutionAnimation: ; 4e5e1
 	call Request2bpp
 
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	call WaitBGMap
 	xor a
 	ld [hBGMapMode], a
@@ -340,7 +340,7 @@ EvolutionAnimation: ; 4e5e1
 	inc a
 	and $7
 	ld b, a
-	ld hl, Sprites + 3 ; attributes
+	ld hl, wSprites + 3 ; attributes
 	ld c, 40
 .loop6
 	ld a, [hl]

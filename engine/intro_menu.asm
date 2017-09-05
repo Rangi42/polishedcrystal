@@ -104,8 +104,8 @@ ResetWRAM: ; 5ba7
 
 _ResetWRAM: ; 5bae
 
-	ld hl, Sprites
-	ld bc, Options1 - Sprites
+	ld hl, wSprites
+	ld bc, Options1 - wSprites
 	xor a
 	call ByteFill
 
@@ -198,8 +198,8 @@ endr
 	ld [JohtoBadges], a
 	ld [KantoBadges], a
 
-	ld [Coins], a
-	ld [Coins + 1], a
+	ld [wCoins], a
+	ld [wCoins + 1], a
 
 	ld [BattlePoints], a
 
@@ -210,11 +210,11 @@ START_MONEY EQU 3000
 IF START_MONEY / $10000
 	ld a, START_MONEY / $10000
 ENDC
-	ld [Money], a
+	ld [wMoney], a
 	ld a, START_MONEY / $100 % $100
-	ld [Money + 1], a
+	ld [wMoney + 1], a
 	ld a, START_MONEY % $100
-	ld [Money + 2], a
+	ld [wMoney + 2], a
 
 	xor a
 	ld [wWhichMomItem], a
@@ -961,7 +961,7 @@ Intro_PlacePlayerSprite: ; 61cd
 	ld hl, VTiles0
 	call Request2bpp
 
-	ld hl, Sprites
+	ld hl, wSprites
 	ld de, .sprites
 	ld a, [de]
 	inc de

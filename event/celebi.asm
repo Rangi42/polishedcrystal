@@ -55,7 +55,7 @@ Special_CelebiShrineEvent: ; 4989a
 	pop af
 	ld [VramState], a
 
-	ld hl, Sprites + 2
+	ld hl, wSprites + 2
 	xor a
 	ld c, $4
 .OAMloop:
@@ -66,7 +66,7 @@ endr
 	inc a
 	dec c
 	jr nz, .OAMloop
-	ld hl, Sprites + 4 * 4
+	ld hl, wSprites + 4 * 4
 	ld bc, 36 * 4
 	xor a
 	call ByteFill

@@ -189,7 +189,7 @@ DayCare_AskWithdrawBreedMon: ; 16807
 	jr c, .refused
 
 .check_money
-	ld de, Money
+	ld de, wMoney
 	ld bc, StringBuffer2 + 2
 	farcall CompareMoney
 	jr c, .not_enough_money
@@ -217,7 +217,7 @@ DayCare_AskWithdrawBreedMon: ; 16807
 
 DayCare_TakeMoney_PlayCry: ; 16850
 	ld bc, StringBuffer2 + 2
-	ld de, Money
+	ld de, wMoney
 	farcall TakeMoney
 	ld a, DAYCARETEXT_WITHDRAW
 	call PrintDayCareText

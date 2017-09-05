@@ -93,6 +93,6 @@ FossilManiacItemRewards:
 	db -1
 
 Give_hMoneyTemp:
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	farjp GiveMoney

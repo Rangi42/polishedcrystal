@@ -328,7 +328,7 @@ DrawTitleGraphic: ; 10eeef
 ; 10ef06
 
 InitializeBackground: ; 10ef06
-	ld hl, Sprites
+	ld hl, wSprites
 	lb de, -$22, $0
 	ld c, 5
 .loop
@@ -370,7 +370,7 @@ AnimateTitleCrystal: ; 10ef32
 
 ; Stop at y=6
 ; y is really from the bottom of the sprite, which is two tiles high
-	ld hl, Sprites
+	ld hl, wSprites
 	ld a, [hl]
 	cp 6 + $10
 	ret z

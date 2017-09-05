@@ -1,5 +1,5 @@
-# No monkey business with line endings
-* -text
+# Auto detect text files and perform LF normalization
+* text eol=lf
 
 # hexdump binary files
 *.png  binary diff=hex

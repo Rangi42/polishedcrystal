@@ -48,7 +48,7 @@ _MapSetup_Sound_Off:: ; e8000
 	or d
 	jr nz, .clearchannels
 	ld a, $77 ; max
-	ld [Volume], a
+	ld [wVolume], a
 	call MusicOn
 	pop af
 	pop bc
@@ -209,7 +209,7 @@ _UpdateSound:: ; e805c
 	; fade music in/out
 	call FadeMusic
 	; write volume to hardware register
-	ld a, [Volume]
+	ld a, [wVolume]
 	ld [rNR50], a
 	; write SO on/off to hardware register
 	ld a, [SoundOutput]
@@ -244,7 +244,7 @@ UpdateChannels: ; e8125
 	dw .Channel8
 
 .Channel1:
-	ld a, [Danger]
+	ld a, [wLowHealthAlarm]
 	cp 255
 	jr z, .Channel5
 	bit 7, a
@@ -470,7 +470,7 @@ _CheckSFX: ; e82e7
 ; e8307
 
 PlayDanger: ; e8307
-	ld a, [Danger]
+	ld a, [wLowHealthAlarm]
 	bit 7, a
 	ret z
 	cp 255
@@ -514,7 +514,7 @@ PlayDanger: ; e8307
 	jr nz, .load
 	dec a
 .load
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	; is hw ch1 on?
 	ld a, [SoundOutput]
 	and $11
@@ -571,7 +571,7 @@ FadeMusic: ; e8358
 	and $3f
 	ld [MusicFadeCount], a
 	; get SO1 volume
-	ld a, [Volume]
+	ld a, [wVolume]
 	and $7
 	; which way are we fading?
 	bit 7, d
@@ -586,7 +586,7 @@ FadeMusic: ; e8358
 .novolume
 	; make sure volume is off
 	xor a
-	ld [Volume], a
+	ld [wVolume], a
 	; did we just get on a bike?
 	ld a, [PlayerState]
 	cp $1 ; bicycle
@@ -618,7 +618,7 @@ FadeMusic: ; e8358
 	; this turns the volume up
 	; turn it back down
 	xor a
-	ld [Volume], a
+	ld [wVolume], a
 	; get new song id
 	ld a, [MusicFadeIDLo]
 	ld e, a
@@ -651,7 +651,7 @@ FadeMusic: ; e8358
 	ld d, a
 	swap a
 	or d
-	ld [Volume], a
+	ld [wVolume], a
 	ret
 
 ; e83d1
@@ -1244,7 +1244,7 @@ RestoreVolume: ; e8679
 	ld [hli], a
 	ld [hl], a
 	ld a, [LastVolume]
-	ld [Volume], a
+	ld [wVolume], a
 	xor a
 	ld [LastVolume], a
 	ld [SFXPriority], a
@@ -1969,7 +1969,7 @@ Music_Panning: ; e89c5
 Music_Volume: ; e89d2
 ; set volume
 ; params: 1
-;	see Volume
+;	see wVolume
 	; read param even if it's not used
 	call GetMusicByte
 	; is the song fading?
@@ -1979,7 +1979,7 @@ Music_Volume: ; e89d2
 	; reload param
 	ld a, [CurMusicByte]
 	; set volume
-	ld [Volume], a
+	ld [wVolume], a
 	ret
 
 ; e89e1
@@ -2479,10 +2479,10 @@ endr
 	and a
 	jr nz, .end
 
-	ld a, [Volume]
+	ld a, [wVolume]
 	ld [LastVolume], a
 	ld a, $77
-	ld [Volume], a
+	ld [wVolume], a
 
 .end
 	ld a, 1 ; stop playing music

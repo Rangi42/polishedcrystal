@@ -44,7 +44,7 @@ CurMusicByte::
 	ds 1
 CurChannel::
 	ds 1
-Volume::
+wVolume::
 ; corresponds to rNR50
 ; Channel control / ON-OFF / Volume (R/W)
 ;   bit 7 - Vin->SO2 ON/OFF
@@ -85,7 +85,7 @@ MusicNoiseSampleSet::
 	ds 1
 SFXNoiseSampleSet::
 	ds 1
-Danger::
+wLowHealthAlarm::
 ; bit 7: on/off
 ; bit 4: pitch
 ; bit 0-3: counter
@@ -304,7 +304,7 @@ MusicPlayerWRAMEnd::
 
 SECTION "Sprites", WRAM0
 
-Sprites::
+wSprites::
 ; 4 bytes per sprite
 ; 40 sprites
 ; struct:
@@ -656,7 +656,7 @@ AlreadyFailed::
 	ds 1
 
 wBattleParticipantsIncludingFainted:: ds 1
-wDanger:: ds 1
+wBattleLowHealthAlarm:: ds 1
 wPlayerMinimized:: ds 1
 PlayerScreens::
 ; bit
@@ -2149,7 +2149,7 @@ StatusFlags2::
 	; 7 - rockets in mahogany
 	ds 1
 
-Money::
+wMoney::
 	ds 3
 
 wMomsMoney::
@@ -2157,10 +2157,10 @@ wMomsMoney::
 wMomSavingMoney::
 	ds 1
 
-Coins::
+wCoins::
 	ds 2
 
-Badges::
+wBadges::
 JohtoBadges::
 	flag_array NUM_JOHTO_BADGES
 KantoBadges::
@@ -2179,7 +2179,7 @@ TMsHMsEnd::
 
 NumItems::
 	ds 1
-Items::
+wItems::
 	ds MAX_ITEMS * 2 + 1
 ItemsEnd::
 
@@ -2191,7 +2191,7 @@ MedicineEnd::
 
 NumBalls::
 	ds 1
-Balls::
+wBalls::
 	ds MAX_BALLS * 2 + 1
 BallsEnd::
 

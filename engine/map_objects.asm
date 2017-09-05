@@ -2696,7 +2696,7 @@ _UpdateSprites:: ; 5920
 	cp b
 	ret nc
 	ld l, a
-	ld h, Sprites / $100
+	ld h, wSprites / $100
 	ld de, 4
 	ld a, b
 	ld c, SCREEN_HEIGHT_PX + 16
@@ -2907,7 +2907,7 @@ PRIORITY_HIGH EQU $30
 	ld l, a
 	ld a, [hUsedSpriteIndex]
 	ld c, a
-	ld b, Sprites / $100
+	ld b, wSprites / $100
 	ld a, [hli]
 	ld [hUsedSpriteTile], a
 	add c

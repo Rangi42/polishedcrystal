@@ -2577,8 +2577,8 @@ _Area: ; 91d11
 
 .copy_sprites
 	hlcoord 0, 0
-	ld de, Sprites
-	ld bc, SpritesEnd - Sprites
+	ld de, wSprites
+	ld bc, SpritesEnd - wSprites
 	jp CopyBytes
 
 ; 91de9
@@ -2614,7 +2614,7 @@ _Area: ; 91d11
 	ld e, a
 	farcall FindNest ; load nest landmarks into TileMap[0,0]
 	decoord 0, 0
-	ld hl, Sprites
+	ld hl, wSprites
 .nestloop
 	ld a, [de]
 	and a
@@ -2641,9 +2641,9 @@ _Area: ; 91d11
 	jr .nestloop
 
 .done_nest
-	ld hl, Sprites
+	ld hl, wSprites
 	decoord 0, 0
-	ld bc, SpritesEnd - Sprites
+	ld bc, SpritesEnd - wSprites
 	jp CopyBytes
 
 ; 91e5a
@@ -2657,7 +2657,7 @@ _Area: ; 91d11
 	ld c, e
 	ld b, d
 	ld de, .PlayerOAM
-	ld hl, Sprites
+	ld hl, wSprites
 .ShowPlayerLoop:
 	ld a, [de]
 	cp $80
@@ -2686,8 +2686,8 @@ _Area: ; 91d11
 	jr .ShowPlayerLoop
 
 .clear_oam
-	ld hl, Sprites + 4 * 4
-	ld bc, SpritesEnd - (Sprites + 4 * 4)
+	ld hl, wSprites + 4 * 4
+	ld bc, SpritesEnd - (wSprites + 4 * 4)
 	xor a
 	jp ByteFill
 
@@ -2730,8 +2730,8 @@ _Area: ; 91d11
 	jr .ok
 
 .clear
-	ld hl, Sprites
-	ld bc, SpritesEnd - Sprites
+	ld hl, wSprites
+	ld bc, SpritesEnd - wSprites
 	xor a
 	call ByteFill
 	scf

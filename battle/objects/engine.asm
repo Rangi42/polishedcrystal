@@ -105,7 +105,7 @@ BattleAnimOAMUpdate: ; cca09
 	ld l, a
 	ld a, [wBattleAnimOAMPointerLo]
 	ld e, a
-	ld d, Sprites / $100
+	ld d, wSprites / $100
 .loop
 	ld a, [wBattleAnimTempYCoord]
 	ld b, a

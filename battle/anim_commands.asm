@@ -227,8 +227,8 @@ BattleAnim_ClearCGB_OAMFlags: ; cc23d
 	bit 3, a
 	jr z, .delete
 
-	ld hl, Sprites + 3
-	ld c, (SpritesEnd - Sprites) / 4
+	ld hl, wSprites + 3
+	ld c, (SpritesEnd - wSprites) / 4
 .loop
 	ld a, [hl]
 	and $f0
@@ -241,8 +241,8 @@ endr
 	ret
 
 .delete
-	ld hl, Sprites
-	ld c, SpritesEnd - Sprites
+	ld hl, wSprites
+	ld c, SpritesEnd - wSprites
 	xor a
 .loop2
 	ld [hli], a
@@ -1498,7 +1498,7 @@ BattleAnim_UpdateOAM_All: ; cc96e
 	jr nz, .loop
 	ld a, [wBattleAnimOAMPointerLo]
 	ld l, a
-	ld h, Sprites / $100
+	ld h, wSprites / $100
 .loop2
 	ld a, l
 	cp SpritesEnd % $100

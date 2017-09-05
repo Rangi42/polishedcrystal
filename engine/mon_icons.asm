@@ -24,7 +24,7 @@ SetMenuMonIconColor:
 	ld a, [wd265]
 	ld [CurPartySpecies], a
 	call GetMenuMonIconPalette
-	ld hl, Sprites + 3
+	ld hl, wSprites + 3
 	jr ProcessMenuMonIconColor
 
 SetMenuMonIconColor_NoShiny:
@@ -37,7 +37,7 @@ SetMenuMonIconColor_NoShiny:
 	ld [CurPartySpecies], a
 	and a
 	call GetMenuMonIconPalette_PredeterminedShininess
-	ld hl, Sprites + 3
+	ld hl, wSprites + 3
 	jr ProcessMenuMonIconColor
 
 LoadPartyMenuMonIconColors:
@@ -60,7 +60,7 @@ LoadPartyMenuMonIconColors:
 	call GetMenuMonIconPalette
 	push af
 
-	ld hl, Sprites + 3
+	ld hl, wSprites + 3
 	ld a, [CurPartyMon]
 	swap a
 

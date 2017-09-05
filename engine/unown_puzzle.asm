@@ -547,7 +547,7 @@ RedrawUnownPuzzlePieces: ; e14d9
 	ld hl, .OAM_NotHoldingPiece
 
 .load
-	ld de, Sprites
+	ld de, wSprites
 .loop
 	ld a, [hli]
 	cp -1

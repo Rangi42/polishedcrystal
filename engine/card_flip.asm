@@ -129,9 +129,9 @@ endr
 ; 0xe01d2
 
 .DeductCoins: ; e01d2
-	ld a, [Coins]
+	ld a, [wCoins]
 	ld h, a
-	ld a, [Coins + 1]
+	ld a, [wCoins + 1]
 	ld l, a
 	ld a, h
 	and a
@@ -149,9 +149,9 @@ endr
 	ld de, -3
 	add hl, de
 	ld a, h
-	ld [Coins], a
+	ld [wCoins], a
 	ld a, l
-	ld [Coins + 1], a
+	ld [wCoins + 1], a
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	xor a
@@ -521,7 +521,7 @@ CardFlip_PrintCoinBalance: ; e049c
 	ld de, .CoinStr
 	call PlaceString
 	hlcoord 14, 16
-	ld de, Coins
+	ld de, wCoins
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	jp PrintNum
 ; e04bc
@@ -585,7 +585,7 @@ CardFlip_CopyToBox: ; e04f7 (38:44f7)
 ; e0509 (38:4509)
 
 CardFlip_CopyOAM: ; e0509
-	ld de, Sprites
+	ld de, wSprites
 	ld a, [hli]
 .loop
 	push af
@@ -1171,28 +1171,28 @@ CardFlip_CheckWinCondition: ; e0637
 ; 0xe081b
 
 .AddCoinPlaySFX: ; e081b
-	ld a, [Coins]
+	ld a, [wCoins]
 	ld h, a
-	ld a, [Coins + 1]
+	ld a, [wCoins + 1]
 	ld l, a
 	inc hl
 	ld a, h
-	ld [Coins], a
+	ld [wCoins], a
 	ld a, l
-	ld [Coins + 1], a
+	ld [wCoins + 1], a
 	ld de, SFX_PAY_DAY
 	jp PlaySFX
 ; e0833
 
 .IsCoinCaseFull: ; e0833
-	ld a, [Coins]
+	ld a, [wCoins]
 	cp 50000 / $100
 	jr c, .less
 	jr z, .check_low
 	jr .more
 
 .check_low
-	ld a, [Coins + 1]
+	ld a, [wCoins + 1]
 	cp 50000 % $100
 	jr c, .less
 

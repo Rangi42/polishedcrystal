@@ -74,14 +74,14 @@ endr
 ; 12393
 
 .PC_LoadBallsOntoMachine: ; 12393
-	ld hl, Sprites + $80
+	ld hl, wSprites + $80
 	ld de, .PC_ElmsLab_OAM
 	call .PlaceHealingMachineTile
 	call .PlaceHealingMachineTile
 	jr .LoadBallsOntoMachine
 
 .HOF_LoadBallsOntoMachine: ; 123a1
-	ld hl, Sprites + $80
+	ld hl, wSprites + $80
 	ld de, .HOF_OAM
 
 .LoadBallsOntoMachine: ; 123a7

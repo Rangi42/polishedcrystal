@@ -753,7 +753,7 @@ BuyMenuLoop: ; 15cef
 	jr c, .cancel
 	call MartConfirmPurchase
 	jr c, .cancel
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	call CompareMoney
 	jp c, MartMenuLoop_InsufficientFunds
@@ -767,7 +767,7 @@ BuyMenuLoop: ; 15cef
 	ld hl, wBargainShopFlags
 	call FlagAction
 	call PlayTransactionSound
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	call TakeMoney
 	ld a, MARTTEXT_HERE_YOU_GO
@@ -816,13 +816,13 @@ BuyTMMenuLoop:
 	jr c, .cancel
 	call TMMartConfirmPurchase
 	jr c, .cancel
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	call CompareMoney
 	jp c, MartMenuLoop_InsufficientFunds
 	call ReceiveTMHM
 	call PlayTransactionSound
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	call TakeMoney
 	ld a, MARTTEXT_HERE_YOU_GO
@@ -1569,7 +1569,7 @@ SellMenu: ; 15eb3
 	call PrintTextBoxText
 	call YesNoBox
 	jr c, .declined
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	call GiveMoney
 	ld a, [wMartItemID]

@@ -69,7 +69,7 @@ BattleBGMap: ; 1250a
 LoseMoney: ; 12513
 	xor a
 	ld [wSpinning], a
-	ld hl, Money
+	ld hl, wMoney
 	ld a, [hli]
 	or [hl]
 	inc hl
@@ -77,7 +77,7 @@ LoseMoney: ; 12513
 	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .load
 	; 806e1
-	ld hl, Badges
+	ld hl, wBadges
 	ld b, 2
 	call CountSetBits
 	cp 9
@@ -112,13 +112,13 @@ LoseMoney: ; 12513
 	ld de, hMoneyTemp
 	ld hl, hProduct + 1
 	call .copy
-	ld de, Money
+	ld de, wMoney
 	ld bc, hMoneyTemp
 	push bc
 	push de
 	farcall CompareMoney
 	jr nc, .nonzero
-	ld hl, Money
+	ld hl, wMoney
 	ld de, hMoneyTemp
 	call .copy
 .nonzero

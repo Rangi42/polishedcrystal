@@ -39,7 +39,7 @@ LoadPushOAM:: ; 4031
 	ret
 
 PushOAM: ; 403f
-	ld a, Sprites / $100
+	ld a, wSprites / $100
 	ld [rDMA], a
 	ld a, 40
 .loop
@@ -799,7 +799,7 @@ PlaceMoneyDataHeader: ; 24b01
 	call MenuBoxCoord2Tile
 	ld de, SCREEN_WIDTH + 1
 	add hl, de
-	ld de, Money
+	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
 	jp PrintNum
 
@@ -853,7 +853,7 @@ Special_DisplayCoinCaseBalance: ; 24b25
 	hlcoord 12, 0
 	ld de, CoinString
 	call PlaceString
-	ld de, Coins
+	ld de, wCoins
 	lb bc, 2, 5
 	hlcoord 13, 1
 	jp PrintNum
@@ -866,14 +866,14 @@ Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	ld de, MoneyString
 	call PlaceString
 	hlcoord 11, 1
-	ld de, Money
+	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	hlcoord 6, 3
 	ld de, CoinString
 	call PlaceString
 	hlcoord 14, 3
-	ld de, Coins
+	ld de, wCoins
 	lb bc, 2, 5
 	jp PrintNum
 
@@ -1913,7 +1913,7 @@ AnimateDexSearchSlowpoke: ; 441cf
 DoDexSearchSlowpokeFrame: ; 44207
 	ld a, [wDexSearchSlowpokeFrame]
 	ld hl, .SpriteData
-	ld de, Sprites
+	ld de, wSprites
 .loop
 	ld a, [hli]
 	cp -1
@@ -4781,7 +4781,7 @@ _SwitchPartyMons:
 	ld a, " "
 	call ByteFill
 	pop af
-	ld hl, Sprites
+	ld hl, wSprites
 	ld bc, $10
 	call AddNTimes
 	ld de, $4

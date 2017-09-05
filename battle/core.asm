@@ -2067,7 +2067,7 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 .wild2
 	call StopDangerSound
 	ld a, $1
-	ld [wDanger], a
+	ld [wBattleLowHealthAlarm], a
 
 .trainer
 	ld hl, BattleMonHP
@@ -2167,7 +2167,7 @@ IsAnyMonHoldingExpShare: ; 3ceaa
 
 StopDangerSound: ; 3ceec
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	ret
 ; 3cef1
 
@@ -2284,7 +2284,7 @@ WinTrainerBattle: ; 3cfa4
 ; Player won the battle
 	call StopDangerSound
 	ld a, $1
-	ld [wDanger], a
+	ld [wBattleLowHealthAlarm], a
 	ld [BattleEnded], a
 	ld a, [wLinkMode]
 	and a
@@ -2411,7 +2411,7 @@ WinTrainerBattle: ; 3cfa4
 .AddMoneyToWallet: ; 3d08d
 	push bc
 	ld hl, wBattleReward + 2
-	ld de, Money + 2
+	ld de, wMoney + 2
 	call AddBattleMoneyToAccount
 	pop bc
 	ret
@@ -2635,7 +2635,7 @@ PlayerMonFaintHappinessMod: ; 3d1aa
 	ld hl, EnemySubStatus3
 	res SUBSTATUS_IN_LOOP, [hl]
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	ld hl, PlayerDamageTaken
 	ld [hli], a
 	ld [hl], a
@@ -4566,7 +4566,7 @@ CheckDanger: ; 3df9e
 	ld a, [hli]
 	or [hl]
 	jr z, .no_danger
-	ld a, [wDanger]
+	ld a, [wBattleLowHealthAlarm]
 	and a
 	ret nz
 	ld a, [PlayerHPPal]
@@ -4575,11 +4575,11 @@ CheckDanger: ; 3df9e
 
 .no_danger
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	ret
 
 .danger
-	ld hl, Danger
+	ld hl, wLowHealthAlarm
 	set 7, [hl]
 	ret
 ; 3dfbf
@@ -8513,7 +8513,7 @@ HandleNuzlockeFlags:
 CleanUpBattleRAM: ; 3f6d0
 	call BattleEnd_HandleRoamMons
 	xor a
-	ld [Danger], a
+	ld [wLowHealthAlarm], a
 	ld [wBattleMode], a
 	ld [BattleType], a
 	ld [AttackMissed], a
@@ -8565,7 +8565,7 @@ CheckPayDay: ; 3f71d
 
 .okay
 	ld hl, wPayDayMoney + 2
-	ld de, Money + 2
+	ld de, wMoney + 2
 	call AddBattleMoneyToAccount
 	ld hl, BattleText_PlayerPickedUpPayDayMoney
 	call StdBattleTextBox
@@ -9220,7 +9220,7 @@ CopyBackpic: ; 3fc30
 ; 3fc5b
 
 .LoadTrainerBackpicAsOAM: ; 3fc5b
-	ld hl, Sprites
+	ld hl, wSprites
 	xor a
 	ld [hMapObjectIndexBuffer], a
 	ld b, $6

@@ -1,5 +1,5 @@
 CalculateMaximumQuantity:
-; limit [wItemQuantityBuffer] so that de * [wItemQuantityBuffer] <= Money
+; limit [wItemQuantityBuffer] so that de * [wItemQuantityBuffer] <= wMoney
 ; 1 <= [wItemQuantityBuffer] <= 99
 	xor a
 	ld [hMoneyTemp + 0], a
@@ -24,7 +24,7 @@ CalculateMaximumQuantity:
 	push de
 	push bc
 	ld bc, hMoneyTemp
-	ld de, Money
+	ld de, wMoney
 	farcall CompareMoney
 	pop bc
 	pop de
