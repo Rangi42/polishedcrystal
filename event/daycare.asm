@@ -1014,6 +1014,8 @@ DayCare_InitBreeding: ; 16a3b
 	ld bc, BASEMON_STRUCT_LENGTH
 	ld a, BANK(BaseData)
 	call GetFarByte
+	swap a
+	and $f
 	pop bc
 	ld c, a
 	ld a, b
@@ -1056,6 +1058,12 @@ DayCare_InitBreeding: ; 16a3b
 	ld bc, NAME_LENGTH
 	call CopyBytes
 	ld a, [BaseEggSteps]
+	and $f
+	inc a
+	ld b, a
+	add a
+	add a
+	add b
 	ld hl, wEggMonHappiness
 	ld [hli], a
 	xor a

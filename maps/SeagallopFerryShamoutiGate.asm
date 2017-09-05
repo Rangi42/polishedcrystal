@@ -9,7 +9,7 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 SeagallopFerryShamoutiGate_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $6, 1, BEAUTIFUL_BEACH
+	warp_def 0, 6, 1, BEAUTIFUL_BEACH
 
 .XYTriggers: db 0
 
@@ -56,12 +56,12 @@ SeagallopFerryShamoutiGateSailorScript:
 .ToVermilion
 	scall SeagallopFerryShamoutiDepartureScript
 	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
-	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
+	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 
 .ToValencia:
 	scall SeagallopFerryShamoutiDepartureScript
-	warp VALENCIA_PORT, $b, $5
+	warp VALENCIA_PORT, 11, 5
 	end
 
 .RefuseFerry
@@ -73,7 +73,7 @@ SeagallopFerryShamoutiDepartureScript:
 	closetext
 	spriteface SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
 	pause 10
-	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorDepartMovementData
+	applyonemovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 	waitsfx
@@ -97,10 +97,6 @@ VermilionValenciaMenuDataHeader:
 	db "Vermilion City@"
 	db "Valencia Island@"
 	db "Cancel@"
-
-SeagallopFerryShamoutiGateSailorDepartMovementData:
-	step_down
-	step_end
 
 SeagallopFerryShamoutiGatePlayerDepartMovementData:
 	step_down

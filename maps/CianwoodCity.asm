@@ -8,17 +8,17 @@ CianwoodCity_MapScriptHeader:
 CianwoodCity_MapEventHeader:
 
 .Warps: db 8
-	warp_def $29, $11, 1, MANIAS_HOUSE
-	warp_def $2b, $8, 1, CIANWOOD_GYM
-	warp_def $2b, $17, 1, CIANWOOD_POKECENTER_1F
-	warp_def $2f, $f, 1, CIANWOOD_PHARMACY
-	warp_def $1f, $9, 1, CIANWOOD_CITY_PHOTO_STUDIO
-	warp_def $25, $f, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
-	warp_def $11, $5, 1, STATS_JUDGES_HOUSE
-	warp_def $19, $4, 1, CLIFF_EDGE_GATE
+	warp_def 41, 17, 1, MANIAS_HOUSE
+	warp_def 43, 8, 1, CIANWOOD_GYM
+	warp_def 43, 23, 1, CIANWOOD_POKECENTER_1F
+	warp_def 47, 15, 1, CIANWOOD_PHARMACY
+	warp_def 31, 9, 1, CIANWOOD_CITY_PHOTO_STUDIO
+	warp_def 37, 15, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
+	warp_def 17, 5, 1, STATS_JUDGES_HOUSE
+	warp_def 25, 4, 1, CLIFF_EDGE_GATE
 
 .XYTriggers: db 1
-	xy_trigger 1, $10, $b, UnknownScript_0x1a001e
+	xy_trigger 1, 16, 11, UnknownScript_0x1a001e
 
 .Signposts: db 8
 	signpost 34, 20, SIGNPOST_JUMPTEXT, CianwoodCitySignText
@@ -84,7 +84,7 @@ UnknownScript_0x1a001e:
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_EUSINE
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
@@ -96,7 +96,7 @@ UnknownScript_0x1a001e:
 	loadtrainer MYSTICALMAN, EUSINE
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SUPER_NERD
+	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_EUSINE
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
@@ -113,14 +113,9 @@ UnknownScript_0x1a001e:
 	end
 
 PokefanFScript_0x1a0084:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_CHUCK
-	iftrue UnknownScript_0x1a009c
-	jumpopenedtext UnknownText_0x1a00f1
-
-UnknownScript_0x1a009c:
-	jumpopenedtext UnknownText_0x1a0277
+	iftrue_jumptextfaceplayer UnknownText_0x1a0277
+	jumptextfaceplayer UnknownText_0x1a00f1
 
 MovementData_0x1a00da:
 	fix_facing

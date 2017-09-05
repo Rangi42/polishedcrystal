@@ -7,8 +7,8 @@ CeladonGameCorner_MapScriptHeader:
 CeladonGameCorner_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $e, 6, CELADON_CITY
-	warp_def $d, $f, 6, CELADON_CITY
+	warp_def 13, 14, 6, CELADON_CITY
+	warp_def 13, 15, 6, CELADON_CITY
 
 .XYTriggers: db 0
 
@@ -145,29 +145,25 @@ MapCeladonGameCornerSignpost35Script:
 	refreshscreen
 	writebyte $0
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 MapCeladonGameCornerSignpost16Script:
 	refreshscreen
 	writebyte $1
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 MapCeladonGameCornerSignpost11Script:
 	refreshscreen
 	special Special_CardFlip
-	closetext
-	end
+	endtext
 
 MapCeladonGameCornerSignpost9Script:
 	opentext
 	writetext UnknownText_0x72567
 	waitbutton
 	special Special_CardFlip
-	closetext
-	end
+	endtext
 
 UnknownText_0x721d0:
 	text "Welcome!"

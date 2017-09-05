@@ -7,13 +7,13 @@ SaffronTrainStation_MapScriptHeader:
 SaffronTrainStation_MapEventHeader:
 
 .Warps: db 4
-	warp_def $11, $8, 6, SAFFRON_CITY
-	warp_def $11, $9, 6, SAFFRON_CITY
-	warp_def $5, $6, 4, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_def $5, $b, 3, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def 17, 8, 6, SAFFRON_CITY
+	warp_def 17, 9, 6, SAFFRON_CITY
+	warp_def 5, 6, 4, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def 5, 11, 3, GOLDENROD_MAGNET_TRAIN_STATION
 
 .XYTriggers: db 1
-	xy_trigger 0, $6, $b, Script_ArriveFromGoldenrod
+	xy_trigger 0, 6, 11, Script_ArriveFromGoldenrod
 
 .Signposts: db 0
 
@@ -27,18 +27,15 @@ const_value set 2
 	const SAFFRONTRAINSTATION_OFFICER
 
 OfficerScript_0x18a81e:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalse_jumptextfaceplayer UnknownText_0x18a8a9
 	faceplayer
 	opentext
-	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iftrue .MagnetTrainToGoldenrod
-	jumpopenedtext UnknownText_0x18a8a9
-
-.MagnetTrainToGoldenrod:
 	writetext UnknownText_0x18a8dd
 	yesorno
-	iffalse .DecidedNotToRide
+	iffalse_jumpopenedtext UnknownText_0x18a978
 	checkitem PASS
-	iffalse .PassNotInBag
+	iffalse_jumpopenedtext UnknownText_0x18a956
 	writetext UnknownText_0x18a917
 	waitbutton
 	closetext
@@ -48,19 +45,9 @@ OfficerScript_0x18a81e:
 	special Special_MagnetTrain
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
-	applymovement PLAYER, .MovementBoardTheTrain
-	wait $14
+	applyonemovement PLAYER, turn_head_down
+	wait 36
 	end
-
-.MovementBoardTheTrain:
-	turn_head_down
-	step_end
-
-.PassNotInBag:
-	jumpopenedtext UnknownText_0x18a956
-
-.DecidedNotToRide:
-	jumpopenedtext UnknownText_0x18a978
 
 Script_ArriveFromGoldenrod:
 	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a88f
@@ -69,14 +56,9 @@ Script_ArriveFromGoldenrod:
 	jumptext UnknownText_0x18a993
 
 GymGuyScript_0x18a875:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x18a883
-	jumpopenedtext UnknownText_0x18a9ca
-
-UnknownScript_0x18a883:
-	jumpopenedtext UnknownText_0x18aa61
+	iftrue_jumptextfaceplayer UnknownText_0x18aa61
+	jumptextfaceplayer UnknownText_0x18a9ca
 
 MovementData_0x18a88f:
 	step_up

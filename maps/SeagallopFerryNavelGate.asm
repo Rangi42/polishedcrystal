@@ -10,7 +10,7 @@ SeagallopFerryNavelGate_MapScriptHeader:
 SeagallopFerryNavelGate_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $6, 1, NAVEL_ROCK_OUTSIDE
+	warp_def 0, 6, 1, NAVEL_ROCK_OUTSIDE
 
 .XYTriggers: db 0
 
@@ -50,7 +50,7 @@ SeagallopFerryNavelGateSailorScript:
 	closetext
 	spriteface SEAGALLOPFERRYNAVELGATE_SAILOR, DOWN
 	pause 10
-	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorDepartMovementData
+	applyonemovement SEAGALLOPFERRYNAVELGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear SEAGALLOPFERRYNAVELGATE_SAILOR
 	waitsfx
@@ -60,15 +60,11 @@ SeagallopFerryNavelGateSailorScript:
 	waitsfx
 	appear SEAGALLOPFERRYNAVELGATE_SAILOR
 	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
-	warp SEAGALLOP_FERRY_VERMILION_GATE, $6, $5
+	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 
 .RefuseFerry
 	jumpopenedtext SeagallopFerryNavelRockRefusedText
-
-SeagallopFerryNavelGateSailorDepartMovementData:
-	step_down
-	step_end
 
 SeagallopFerryNavelGatePlayerDepartMovementData:
 	step_down

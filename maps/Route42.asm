@@ -7,19 +7,19 @@ Route42_MapScriptHeader:
 Route42_MapEventHeader:
 
 .Warps: db 5
-	warp_def $8, $0, 3, ROUTE_42_ECRUTEAK_GATE
-	warp_def $9, $0, 4, ROUTE_42_ECRUTEAK_GATE
-	warp_def $5, $a, 1, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def $9, $1c, 2, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def $7, $2e, 3, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def 8, 0, 3, ROUTE_42_ECRUTEAK_GATE
+	warp_def 9, 0, 4, ROUTE_42_ECRUTEAK_GATE
+	warp_def 5, 10, 1, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def 9, 28, 2, MOUNT_MORTAR_1F_OUTSIDE
+	warp_def 7, 46, 3, MOUNT_MORTAR_1F_OUTSIDE
 
 .XYTriggers: db 6
-	xy_trigger 1, $6, $c, Route42LyraScript1
-	xy_trigger 1, $7, $c, Route42LyraScript2
-	xy_trigger 1, $8, $c, Route42LyraScript3
-	xy_trigger 1, $9, $c, Route42LyraScript4
-	xy_trigger 1, $6, $a, Route42LyraScript5
-	xy_trigger 2, $e, $18, Route42SuicuneScript
+	xy_trigger 1, 6, 12, Route42LyraScript1
+	xy_trigger 1, 7, 12, Route42LyraScript2
+	xy_trigger 1, 8, 12, Route42LyraScript3
+	xy_trigger 1, 9, 12, Route42LyraScript4
+	xy_trigger 1, 6, 10, Route42LyraScript5
+	xy_trigger 2, 14, 24, Route42SuicuneScript
 
 .Signposts: db 5
 	signpost 10, 4, SIGNPOST_JUMPTEXT, Route42Sign1Text
@@ -327,8 +327,7 @@ OfficermKeithScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERM_KEITH
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	jumpopenedtext OfficermKeithAfterText

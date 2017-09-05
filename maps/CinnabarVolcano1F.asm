@@ -8,16 +8,16 @@ CinnabarVolcano1F_MapScriptHeader:
 CinnabarVolcano1F_MapEventHeader:
 
 .Warps: db 10
-	warp_def $19, $d, 2, CINNABAR_ISLAND
-	warp_def $d, $5, 1, CINNABAR_VOLCANO_B1F
-	warp_def $14, $e, 2, CINNABAR_VOLCANO_B1F
-	warp_def $13, $19, 3, CINNABAR_VOLCANO_B1F
-	warp_def $8, $16, 4, CINNABAR_VOLCANO_B1F
-	warp_def $15, $8, 8, CINNABAR_VOLCANO_B1F
-	warp_def $13, $14, 9, CINNABAR_VOLCANO_B1F
-	warp_def $9, $12, 10, CINNABAR_VOLCANO_B1F
-	warp_def $7, $a, 11, CINNABAR_VOLCANO_B1F
-	warp_def $3, $f, 12, CINNABAR_VOLCANO_B1F
+	warp_def 25, 13, 2, CINNABAR_ISLAND
+	warp_def 13, 5, 1, CINNABAR_VOLCANO_B1F
+	warp_def 20, 14, 2, CINNABAR_VOLCANO_B1F
+	warp_def 19, 25, 3, CINNABAR_VOLCANO_B1F
+	warp_def 8, 22, 4, CINNABAR_VOLCANO_B1F
+	warp_def 21, 8, 8, CINNABAR_VOLCANO_B1F
+	warp_def 19, 20, 9, CINNABAR_VOLCANO_B1F
+	warp_def 9, 18, 10, CINNABAR_VOLCANO_B1F
+	warp_def 7, 10, 11, CINNABAR_VOLCANO_B1F
+	warp_def 3, 15, 12, CINNABAR_VOLCANO_B1F
 
 .XYTriggers: db 0
 
@@ -96,7 +96,7 @@ CinnabarVolcano1FBuckScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -111,7 +111,7 @@ CinnabarVolcano1FBuckScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_BELT
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -122,13 +122,6 @@ CinnabarVolcano1FBuckScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_BUCK
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Howdy! I'm Buck."

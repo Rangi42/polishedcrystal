@@ -4,7 +4,7 @@ TrainerPalettes: ; b0ce
 if !DEF(MONOCHROME)
 PlayerPalette:           INCLUDE "gfx/trainers/cal.pal"
 KrisPalette:
-KayPalette:              INCLUDE "gfx/trainers/kay.pal"
+CarriePalette:           INCLUDE "gfx/trainers/carrie.pal"
 CalPalette:              INCLUDE "gfx/trainers/cal.pal"
 FalknerPalette:          INCLUDE "gfx/trainers/falkner.pal"
 BugsyPalette:            INCLUDE "gfx/trainers/bugsy.pal"
@@ -48,6 +48,7 @@ PokefanmPalette:         INCLUDE "gfx/trainers/pokefan_m.pal"
 PokefanfPalette:         INCLUDE "gfx/trainers/pokefan_f.pal"
 OfficermPalette:         INCLUDE "gfx/trainers/officer_m.pal"
 OfficerfPalette:         INCLUDE "gfx/trainers/officer_f.pal"
+NursePalette:            INCLUDE "gfx/trainers/nurse.pal"
 PokemaniacPalette:       INCLUDE "gfx/trainers/pokemaniac.pal"
 CosplayerPalette:        INCLUDE "gfx/trainers/cosplayer.pal"
 SuperNerdPalette:        INCLUDE "gfx/trainers/super_nerd.pal"

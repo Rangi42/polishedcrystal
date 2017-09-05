@@ -8,16 +8,16 @@ Route34_MapScriptHeader:
 Route34_MapEventHeader:
 
 .Warps: db 5
-	warp_def $25, $d, 1, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $25, $e, 2, ROUTE_34_ILEX_FOREST_GATE
-	warp_def $e, $b, 1, DAYCARE
-	warp_def $f, $b, 2, DAYCARE
-	warp_def $f, $d, 3, DAYCARE
+	warp_def 37, 13, 1, ROUTE_34_ILEX_FOREST_GATE
+	warp_def 37, 14, 2, ROUTE_34_ILEX_FOREST_GATE
+	warp_def 14, 11, 1, DAYCARE
+	warp_def 15, 11, 2, DAYCARE
+	warp_def 15, 13, 3, DAYCARE
 
 .XYTriggers: db 3
-	xy_trigger 1, $11, $8, Route34LyraTrigger1
-	xy_trigger 1, $11, $9, Route34LyraTrigger2
-	xy_trigger 1, $11, $a, Route34LyraTrigger3
+	xy_trigger 1, 17, 8, Route34LyraTrigger1
+	xy_trigger 1, 17, 9, Route34LyraTrigger2
+	xy_trigger 1, 17, 10, Route34LyraTrigger3
 
 .Signposts: db 5
 	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText
@@ -83,12 +83,13 @@ Route34RebattleBreederAndEggCheckCallback:
 	return
 
 Route34LyraTrigger1:
-	applymovement PLAYER, Route34MovementData_AdjustPlayer1
+	applyonemovement PLAYER, step_right
 	jump Route34LyraTrigger2
 
 Route34LyraTrigger3:
-	applymovement PLAYER, Route34MovementData_AdjustPlayer2
+	applyonemovement PLAYER, step_left
 Route34LyraTrigger2:
+	spriteface PLAYER, UP
 	special Special_FadeOutMusic
 	showtext Route34LyraText_Grandpa
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
@@ -102,7 +103,7 @@ Route34LyraTrigger2:
 	pause 15
 	spriteface ROUTE34_LYRA, DOWN
 	showtext Route34LyraGreetingText
-	applymovement PLAYER, Route34MovementData_PlayerApproachesLyra
+	applyonemovement PLAYER, step_up
 	pause 10
 	spriteface ROUTE34_LYRA, RIGHT
 	opentext
@@ -153,7 +154,7 @@ Route34LyraTrigger2:
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 .AfterBattle
 	showtext Route34LyraFollowMeText
-	applymovement ROUTE34_GRAMPS, Route34MovementData_GrampsEntersDayCare
+	applyonemovement ROUTE34_GRAMPS, slow_step_right
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_GRAMPS
 	follow ROUTE34_LYRA, PLAYER
@@ -161,14 +162,14 @@ Route34LyraTrigger2:
 	stopfollow
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE34_LYRA
-	applymovement PLAYER, Route34MovementData_PlayerEntersDayCare
+	applyonemovement PLAYER, step_right
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
 	dotrigger $0
 	special FadeOutPalettes
 	pause 15
 	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_SWIMMER_GIRL
-	warpfacing RIGHT, DAYCARE, $0, $4
+	warpfacing RIGHT, DAYCARE, 0, 4
 	end
 
 DayCareManScript_Outside:
@@ -181,7 +182,7 @@ DayCareManScript_Outside:
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
 	if_equal LEFT, .walk_around_player
-	applymovement ROUTE34_GRAMPS, Route34MovementData_DayCareManWalksBackInside
+	applyonemovement ROUTE34_GRAMPS, slow_step_right
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS
 .end_fail
@@ -196,14 +197,12 @@ DayCareManScript_Outside:
 DaycareMon1Script:
 	opentext
 	special Special_DayCareMon1
-	closetext
-	end
+	endtext
 
 DaycareMon2Script:
 	opentext
 	special Special_DayCareMon2
-	closetext
-	end
+	endtext
 
 TrainerCamperTodd1:
 	trainer EVENT_BEAT_CAMPER_TODD, CAMPER, TODD1, CamperTodd1SeenText, CamperTodd1BeatenText, 0, .Script
@@ -482,8 +481,7 @@ OfficerfMaraScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_MARA
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	jumpopenedtext OfficerfMaraAfterText
@@ -500,25 +498,25 @@ TrainerBreederJulie:
 	jumptextfaceplayer BreederJulieAfterText
 
 Route34RichBoyIrvingScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
-	iftrue .GotBigNugget
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_RICH_BOY_IRVING
 	iftrue .Beaten
 	checkevent EVENT_BEAT_CAMPER_TODD
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PICNICKER_GINA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_OFFICERF_MARA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANM_BRANDON
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BREEDER_JULIE_ONCE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -528,25 +526,20 @@ Route34RichBoyIrvingScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_RICH_BOY_IRVING
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem BIG_NUGGET
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
-.GotBigNugget:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
-
-.NoBattle:
-	jumpopenedtext .RefusedText
+.AfterText2:
+	text "There are some"
+	line "things that money"
+	cont "can't buy."
+	done
 
 .IntroText:
 	text "I don't need to"
@@ -606,12 +599,6 @@ Route34RichBoyIrvingScript:
 	cont "battle."
 	done
 
-.AfterText2:
-	text "There are some"
-	line "things that money"
-	cont "can't buy."
-	done
-
 TrainerPokefanmBrandon:
 	trainer EVENT_BEAT_POKEFANM_BRANDON, POKEFANM, BRANDON, PokefanmBrandonSeenText, PokefanmBrandonBeatenText, 0, .Script
 
@@ -662,23 +649,11 @@ TrainerCooltrainerfKate:
 	writetext CooltrainerfKateAfterText
 	waitbutton
 .BagFull:
-	closetext
-	end
+	endtext
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up
-Route34MovementData_DayCareManWalksBackInside:
 	slow_step_right
-	step_end
-
-Route34MovementData_AdjustPlayer1:
-	step_right
-	turn_head_up
-	step_end
-
-Route34MovementData_AdjustPlayer2:
-	step_left
-	turn_head_up
 	step_end
 
 Route34MovementData_LyraComesDown:
@@ -688,17 +663,8 @@ Route34MovementData_LyraComesDown:
 	step_right
 	step_end
 
-Route34MovementData_PlayerApproachesLyra:
-	step_up
-	step_end
-
-Route34MovementData_GrampsEntersDayCare:
-	slow_step_right
-	step_end
-
 Route34MovementData_LyraEntersDayCare:
 	step_right
-Route34MovementData_PlayerEntersDayCare:
 	step_right
 	step_end
 

@@ -7,7 +7,7 @@ PewterMuseumOfScience2F_MapScriptHeader:
 PewterMuseumOfScience2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
+	warp_def 7, 7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
 
 .XYTriggers: db 0
 

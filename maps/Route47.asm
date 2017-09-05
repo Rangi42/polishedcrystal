@@ -8,17 +8,17 @@ Route47_MapScriptHeader:
 Route47_MapEventHeader:
 
 .Warps: db 6
-	warp_def $15, $43, 2, CLIFF_EDGE_GATE
-	warp_def $15, $35, 1, CLIFF_CAVE
-	warp_def $11, $34, 2, CLIFF_CAVE
-	warp_def $1d, $35, 3, CLIFF_CAVE
-	warp_def $17, $b, 1, QUIET_CAVE_1F
-	warp_def $17, $8, 1, EMBEDDED_TOWER
+	warp_def 21, 67, 2, CLIFF_EDGE_GATE
+	warp_def 21, 53, 1, CLIFF_CAVE
+	warp_def 17, 52, 2, CLIFF_CAVE
+	warp_def 29, 53, 3, CLIFF_CAVE
+	warp_def 23, 11, 1, QUIET_CAVE_1F
+	warp_def 23, 8, 1, EMBEDDED_TOWER
 
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 23, 8, SIGNPOST_JUMPTEXT, Route47SealedCaveSignText
+	signpost 23, 8, SIGNPOST_IFNOTSET, Route47SealedCaveSign
 	signpost 32, 36, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
 	signpost 33, 34, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	signpost 28, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
@@ -43,7 +43,7 @@ Route47_MapEventHeader:
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock $8, $16, $2b
+	changeblock 8, 22, $2b
 .locked
 	return
 
@@ -301,7 +301,10 @@ Route47RocketGirlText:
 	cont "you brat?"
 	done
 
-Route47SealedCaveSignText:
+Route47SealedCaveSign:
+	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	thistext
+
 	text "There's a door-"
 	line "shaped groove in"
 	cont "the rock."

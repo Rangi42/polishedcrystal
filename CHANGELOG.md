@@ -2,6 +2,11 @@
 
 These changes have been made since the current 2.2.0 release. If you build the project as-is, it will include all of them.
 
+> What's the point of going through all the trouble of the debug process if you're going to go and fiddle with the game afterwards…?
+>
+> — Satoru Iwata, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/1-Just-Making-The-Last-Train/1-Just-Making-The-Last-Train-225842.html)"
+
+
 * Add: Medicine and Berry pockets in the Bag.
 * Add: Store up to 20 phone numbers in Pokégear.
 * Add: Always keep the option to Teleport away from Indigo Plateau.
@@ -44,6 +49,14 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Replace Twister with Aqua Jet.
 * Add: Replace Sludge with Venoshock.
 * Add: Replace Egg Bomb with Skill Swap.
+* Add: Replace Mist with Amnesia.
+* Add: Replace Fury Cutter with Bug Bite.
+* Add: Replace Harden with Rock Blast.
+* Add: Replace Triple Kick with Drain Punch.
+* Add: Replace Lock-On with Power Whip.
+* Add: Replace Flail with Gyro Ball.
+* Add: Replace Moonlight and Morning Sun with Knock Off and "HealingLight".
+* Add: Replace Fury Attack and Fury Cutter with Trick and "Fury Strikes".
 * Add: Giga Impact.
 * Add: NPC trainers can have nicknamed Pokémon.
 * Add: NPC trainers can have custom EVs.
@@ -90,6 +103,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: TM prices from OR/AS.
 * Add: 15 Atk/10 Def DVs result in a Naive nature (+Spe −Sp.Def), not Hardy (neutral).
 * Add: Update random Wonder Trade OT names.
+* Add: Mr. Pokémon gives you a non-OT Ditto, not an Egg, for the Masuda breeding method.
 * Add: Use original Jynx sprite.
 * Add: Make overworld sprites darker at night.
 * Add: Goldenrod Dept. Store and Celadon Mansion roofs have a dark sky at night.
@@ -117,8 +131,12 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Three battle styles: set, switch, and predict.
 * Add: Battle Scene → Battle Effects.
 * Add: Final Lyra battle.
+* Add: Kurt makes Balls right away.
+* Add: Bug-Catching Contest prizes from HGSS.
+* Add: Hidden Grottoes.
 * Add: Unown ! and ?.
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
+* Add: More Grass-type Pokémon can learn Earth Power and Earthquake.
 * Add: Status icons in battle.
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
@@ -141,6 +159,9 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Vending machines have a 1/32 chance of giving an extra item.
 * Add: Cross whirlpools, don't remove them (like HGSS).
 * Add: Rename RageCandyBar to Cake of Rage.
+* Add: Rename Guard Spec. to Guard Stats.
+* Add: Rename Kay to Carrie (from Pokémon Stadium 2).
+
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
 * Fix: Pay Day pays 5 times the user's level, not 2.

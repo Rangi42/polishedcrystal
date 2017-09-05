@@ -1,10 +1,79 @@
+GiveOddEgg:
+	; Compare a random word to
+	; probabilities out of 0xffff.
+	call Random
+	ld hl, .Probabilities
+	ld c, 0
+	ld b, c
+.loop
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+
+	; Break on $ffff.
+	ld a, d
+	cp $ffff / $100
+	jr nz, .not_done
+	ld a, e
+	cp $ffff % $100
+	jr z, .done
+.not_done
+
+	; Break when [hRandom] <= de.
+	ld a, [hRandom + 1]
+	cp d
+	jr c, .done
+	jr z, .ok
+	jr .next
+.ok
+	ld a, [hRandom + 0]
+	cp e
+	jr c, .done
+	jr z, .done
+.next
+	inc bc
+	jr .loop
+.done
+
+	ld hl, OddEggs
+	ld a, OddEgg2 - OddEgg1
+	call AddNTimes
+	jr GiveEggMon
+
+.Probabilities:
+
+prob: MACRO
+prob_total = prob_total + (\1)
+	dw prob_total * $ffff / 100
+ENDM
+
+prob_total = 0
+; Pichu
+	prob 6
+	prob 6
+; Magby
+	prob 12
+	prob 12
+; Elekid
+	prob 12
+	prob 12
+; Tyrogue
+	prob 10
+	prob 10
+; Munchlax
+	prob 10
+	prob 10
+; 1fb56e
+
+GiveMystriEgg:
+	ld hl, MystriEgg
+; fallthrough
 GiveEggMon:
 	ld de, OddEggSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
 	call CopyBytes
-	;jp AddEggMonToParty
-; 1fb546
-
+; fallthrough
 AddEggMonToParty:
 	ld hl, PartyCount
 	ld a, [hl]
@@ -73,87 +142,9 @@ AddEggMonToParty:
 	ld [de], a
 
 	jp CloseSRAM
-; 11ba38
 
 
-GiveOddEgg: ; 1fb4b6
-	; Compare a random word to
-	; probabilities out of 0xffff.
-	call Random
-	ld hl, .Probabilities
-	ld c, 0
-	ld b, c
-.loop
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-
-	; Break on $ffff.
-	ld a, d
-	cp $ffff / $100
-	jr nz, .not_done
-	ld a, e
-	cp $ffff % $100
-	jr z, .done
-.not_done
-
-	; Break when [hRandom] <= de.
-	ld a, [hRandom + 1]
-	cp d
-	jr c, .done
-	jr z, .ok
-	jr .next
-.ok
-	ld a, [hRandom + 0]
-	cp e
-	jr c, .done
-	jr z, .done
-.next
-	inc bc
-	jr .loop
-.done
-
-	ld hl, OddEggs
-	ld a, OddEgg2 - OddEgg1
-	call AddNTimes
-	jp GiveEggMon
-
-.Probabilities:
-
-prob: MACRO
-prob_total = prob_total + (\1)
-	dw prob_total * $ffff / 100
-ENDM
-
-prob_total = 0
-; Pichu
-	prob 6
-	prob 6
-; Magby
-	prob 12
-	prob 12
-; Elekid
-	prob 12
-	prob 12
-; Tyrogue
-	prob 10
-	prob 10
-; Munchlax
-	prob 10
-	prob 10
-; 1fb56e
-
-GiveShinyDittoEgg:
-	ld hl, ShinyDittoEgg
-	jp GiveEggMon
-
-GiveMystriEgg:
-	ld hl, MystriEgg
-	jp GiveEggMon
-
-
-OddEggs: ; 1fb56e
+OddEggs:
 
 OddEgg1:
 	db PICHU
@@ -385,31 +376,6 @@ OddEgg2:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 7 ; SDef
-	db "Egg@@@@@@@@"
-
-
-ShinyDittoEgg:
-	db DITTO
-	db NO_ITEM
-	db TRANSFORM, 0, 0, 0
-	dw 08192 ; OT ID
-	dt 0 ; Exp
-	db 0, 0, 0, 0, 0, 0 ; EVs
-	db $FF, $FF, $FF ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, IS_EGG_MASK ; Personality
-	db 10, 0, 0, 0 ; PP
-	db 20 ; Happiness
-	db 0 ; Pokerus
-	db 0, 0, 0 ; Caught data
-	db EGG_LEVEL ; Level
-	db 0, 0 ; Status
-	bigdw 0 ; HP
-	bigdw 12 ; Max HP
-	bigdw 6 ; Atk
-	bigdw 6 ; Def
-	bigdw 6 ; Spd
-	bigdw 6 ; SAtk
-	bigdw 6 ; SDef
 	db "Egg@@@@@@@@"
 
 

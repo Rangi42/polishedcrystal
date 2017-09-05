@@ -7,8 +7,8 @@ PsychicInversHouse_MapScriptHeader:
 PsychicInversHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_16_WEST
-	warp_def $7, $3, 1, ROUTE_16_WEST
+	warp_def 7, 2, 1, ROUTE_16_WEST
+	warp_def 7, 3, 1, ROUTE_16_WEST
 
 .XYTriggers: db 0
 
@@ -58,8 +58,7 @@ PsychicInverScript:
 .GiveReward
 	buttonsound
 	verbosegiveitem ITEM_FROM_MEM
-	closetext
-	end
+	endtext
 
 .Score0
 	writetext InverseBattle0PointRewardText

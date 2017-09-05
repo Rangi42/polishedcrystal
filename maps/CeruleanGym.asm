@@ -9,8 +9,8 @@ CeruleanGym_MapScriptHeader:
 CeruleanGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $4, 5, CERULEAN_CITY
-	warp_def $f, $5, 5, CERULEAN_CITY
+	warp_def 15, 4, 5, CERULEAN_CITY
+	warp_def 15, 5, 5, CERULEAN_CITY
 
 .XYTriggers: db 0
 
@@ -24,7 +24,7 @@ CeruleanGym_MapEventHeader:
 	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfJoy, EVENT_TRAINERS_IN_CERULEAN_GYM
+	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfViola, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SAILOR, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_GYM_GUY, 13, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -46,7 +46,7 @@ UnknownScript_0x1883de:
 	showemote EMOTE_SHOCK, CERULEANGYM_ROCKET, 15
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884f7
 	showtext UnknownText_0x188574
-	applymovement CERULEANGYM_ROCKET, MovementData_0x1884f5
+	applyonemovement CERULEANGYM_ROCKET, big_step_down
 	showtext UnknownText_0x1885a5
 	applymovement CERULEANGYM_ROCKET, MovementData_0x1884e8
 	playsound SFX_EXIT_BUILDING
@@ -77,7 +77,7 @@ MistyScript_0x188432:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MISTY
 	setevent EVENT_BEAT_SWIMMERF_DIANA
-	setevent EVENT_BEAT_SWIMMERF_JOY
+	setevent EVENT_BEAT_SWIMMERF_VIOLA
 	setevent EVENT_BEAT_SWIMMERF_BRIANA
 	setevent EVENT_BEAT_SAILOR_PARKER
 	setevent EVENT_BEAT_SAILOR_EDDIE
@@ -102,12 +102,12 @@ MistyScript_0x188432:
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
-	checkevent EVENT_GOT_TM55_SCALD
+	checkevent EVENT_GOT_TM63_WATER_PULSE
 	iftrue MistyAfterTMScript
 	writetext MistyGiveTMText
 	buttonsound
-	verbosegivetmhm TM_SCALD
-	setevent EVENT_GOT_TM55_SCALD
+	verbosegivetmhm TM_WATER_PULSE
+	setevent EVENT_GOT_TM63_WATER_PULSE
 	jumpopenedtext MistyOutroText
 
 MistyAfterTMScript:
@@ -120,12 +120,12 @@ SwimmerfDianaScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x188856
 
-TrainerSwimmerfJoy:
-	trainer EVENT_BEAT_SWIMMERF_JOY, SWIMMERF, JOY, SwimmerfJoySeenText, SwimmerfJoyBeatenText, 0, SwimmerfJoyScript
+TrainerSwimmerfViola:
+	trainer EVENT_BEAT_SWIMMERF_VIOLA, SWIMMERF, VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText, 0, SwimmerfViolaScript
 
-SwimmerfJoyScript:
+SwimmerfViolaScript:
 	end_if_just_battled
-	jumptextfaceplayer SwimmerfJoyAfterText
+	jumptextfaceplayer SwimmerfViolaAfterText
 
 TrainerSwimmerfBriana:
 	trainer EVENT_BEAT_SWIMMERF_BRIANA, SWIMMERF, BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
@@ -149,14 +149,9 @@ SailorEddieScript:
 	jumptextfaceplayer SailorEddieAfterText
 
 CeruleanGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_MISTY
-	iftrue .CeruleanGymGuyWinScript
-	jumpopenedtext CeruleanGymGuyText
-
-.CeruleanGymGuyWinScript:
-	jumpopenedtext CeruleanGymGuyWinText
+	iftrue_jumptextfaceplayer CeruleanGymGuyWinText
+	jumptextfaceplayer CeruleanGymGuyText
 
 CeruleanGymHiddenMachinePart:
 	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
@@ -205,18 +200,14 @@ MovementData_0x1884e8:
 
 MovementData_0x1884eb:
 	fix_facing
-	db $39 ; movement
+	set_sliding
 	jump_step_up
-	db $38 ; movement
+	remove_sliding
 	remove_fixed_facing
 	step_sleep_8
 	step_sleep_8
 	step_down
 	step_down
-	step_end
-
-MovementData_0x1884f5:
-	run_step_down
 	step_end
 
 MovementData_0x1884f7:
@@ -310,10 +301,10 @@ MistyGiveTMText:
 
 MistyOutroText:
 	text "It contains the"
-	line "move Scald. It can"
+	line "move Water Pulse."
 
-	para "sometimes burn"
-	line "your foe."
+	para "It can sometimes"
+	line "confuse your foe."
 	done
 
 UnknownText_0x188782:
@@ -345,7 +336,7 @@ UnknownText_0x188856:
 	line "quietly."
 	done
 
-SwimmerfJoySeenText:
+SwimmerfViolaSeenText:
 	text "Swimming isn't"
 	line "just about speed!"
 
@@ -353,12 +344,12 @@ SwimmerfJoySeenText:
 	line "beauty and grace!"
 	done
 
-SwimmerfJoyBeatenText:
+SwimmerfViolaBeatenText:
 	text "I lost"
 	line "beautifully…"
 	done
 
-SwimmerfJoyAfterText:
+SwimmerfViolaAfterText:
 	text "Swimming is good"
 	line "for both beauty"
 	cont "and health!"

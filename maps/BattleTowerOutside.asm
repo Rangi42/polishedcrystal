@@ -8,14 +8,14 @@ BattleTowerOutside_MapScriptHeader:
 BattleTowerOutside_MapEventHeader:
 
 .Warps: db 4
-	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $15, $9, 4, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $9, $8, 1, BATTLE_TOWER_1F ; hole
-	warp_def $9, $9, 2, BATTLE_TOWER_1F ; hole
+	warp_def 21, 8, 3, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def 21, 9, 4, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def 9, 8, 1, BATTLE_TOWER_1F ; hole
+	warp_def 9, 9, 2, BATTLE_TOWER_1F ; hole
 
 .XYTriggers: db 2
-	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpTrigger1
-	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpTrigger2
+	xy_trigger 1, 9, 8, BattleTowerOutsidePanUpTrigger1
+	xy_trigger 1, 9, 9, BattleTowerOutsidePanUpTrigger2
 
 .Signposts: db 1
 	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
@@ -44,12 +44,12 @@ BattleTowerOutsideStepDownTrigger:
 
 BattleTowerOutsidePanUpTrigger1:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, $a, $d
+	warpfacing UP, BATTLE_TOWER_1F, 10, 13
 	end
 
 BattleTowerOutsidePanUpTrigger2:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, $b, $d
+	warpfacing UP, BATTLE_TOWER_1F, 11, 13
 	end
 
 BattleTowerOutsidePanUpHelperScript:

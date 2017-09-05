@@ -7,9 +7,9 @@ CeladonUniversityLibrary1F_MapScriptHeader:
 CeladonUniversityLibrary1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $b, $6, 4, CELADON_UNIVERSITY_1F
-	warp_def $b, $7, 4, CELADON_UNIVERSITY_1F
-	warp_def $0, $7, 1, CELADON_UNIVERSITY_LIBRARY_2F
+	warp_def 11, 6, 4, CELADON_UNIVERSITY_1F
+	warp_def 11, 7, 4, CELADON_UNIVERSITY_1F
+	warp_def 0, 7, 1, CELADON_UNIVERSITY_LIBRARY_2F
 
 .XYTriggers: db 0
 
@@ -88,21 +88,16 @@ CeladonUniversityLibrary1FPokefan_fText:
 	done
 
 CeladonUniversityLibrary1FCooltrainermScript:
+	checkevent EVENT_GOT_FOCUS_BAND_IN_UNIVERSITY
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_FOCUS_BAND_IN_UNIVERSITY
-	iftrue .GotItem
 	writetext .Text1
 	buttonsound
 	verbosegiveitem FOCUS_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_FOCUS_BAND_IN_UNIVERSITY
-.GotItem:
-	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .Text1:
 	text "I have a big test"

@@ -438,8 +438,6 @@ CantMove: ; 341f0
 	and $ff ^ (1<<SUBSTATUS_RAMPAGE + 1<<SUBSTATUS_CHARGED)
 	ld [hl], a
 
-	call ResetFuryCutterCount
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp FLY
@@ -1204,7 +1202,16 @@ BattleCommand_Critical: ; 34631
 	ret
 
 .Criticals:
-	db KARATE_CHOP, RAZOR_LEAF, CRABHAMMER, SLASH, AEROBLAST, CROSS_CHOP, SHADOW_CLAW, STONE_EDGE, $ff
+	db KARATE_CHOP
+	db RAZOR_LEAF
+	db CRABHAMMER
+	db SLASH
+	db AEROBLAST
+	db CROSS_CHOP
+	db SHADOW_CLAW
+	db STONE_EDGE
+	db $ff
+
 .Chances:
 	; 6.25% 12.5%  50%   100%
 	db $10,  $20,  $80,  $ff
@@ -2182,17 +2189,19 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	call GetBattleVar
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
+	cp EFFECT_FURY_STRIKES
+	jr z, .fury_strikes
 	cp EFFECT_CONVERSION
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
 	cp EFFECT_TRIPLE_KICK
 	jr z, .triplekick
+
+.normal_move
 	xor a
 	ld [wKickCounter], a
-
 .triplekick
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
@@ -2217,6 +2226,7 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	and 1
 	xor 1
 	ld [wKickCounter], a
+.fury_attack
 	ld a, [de]
 	cp $1
 	push af
@@ -2229,6 +2239,45 @@ BattleCommand_HitTargetNoSub: ; 34f60
 	xor a
 	ld [wNumHits], a
 	jp PlayFXAnimID
+
+; Fury Swipes and Fury Attack were merged into Fury Strikes, so use the correct
+; animation for the Pokémon that learned each one
+.fury_strikes
+	push de
+	ld a, [hBattleTurn]
+	and a
+	ld a, [BattleMonSpecies]
+	jr z, .got_user_species
+	ld a, [EnemyMonSpecies]
+.got_user_species
+	ld hl, .fury_attack_users
+	ld de, 1
+	call IsInArray
+	pop de
+	jr nc, .multihit
+	ld a, $2
+	ld [wKickCounter], a
+	jr .fury_attack
+
+.fury_attack_users
+	db BEEDRILL
+	db NIDORAN_M
+	db NIDORINO
+	db NIDOKING
+	db FARFETCH_D
+	db DODUO
+	db DODRIO
+	db RHYHORN
+	db RHYDON
+	db RHYPERIOR
+	db PINSIR
+	db DUNSPARCE
+	db HERACROSS
+	db PILOSWINE
+	db MAMOSWINE
+	db SKARMORY
+	db DONPHAN
+	db -1
 
 ; 34fd1
 
@@ -2261,13 +2310,79 @@ BattleCommand_StatDownAnim: ; 34fdb
 
 BattleCommand_StatUpDownAnim: ; 34feb
 	ld [wNumHits], a
+
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld e, a
+	ld d, 0
+	cp DEFENSE_CURL
+	jr nz, .not_defense_curl
+	ld a, [hBattleTurn]
+	and a
+	ld a, [BattleMonSpecies]
+	jr z, .got_user_species
+	ld a, [EnemyMonSpecies]
+.got_user_species
+	ld hl, .withdraw_users
+	ld de, 1
+	push af
+	call IsInArray
+	jr nc, .not_withdraw
+	pop af
+	ld a, $1
+	jr .got_kick_counter
+.not_withdraw
+	pop af ; restore species to a
+	inc hl ; ld hl, .harden_users
+	; ld de, 1
+	call IsInArray
+	jr nc, .not_harden
+	ld a, $2
+	jr .got_kick_counter
+.not_harden
+.not_defense_curl
 	xor a
+.got_kick_counter
 	ld [wKickCounter], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
 	ld d, 0
 	jp PlayFXAnimID
+
+.withdraw_users
+	db SQUIRTLE
+	db WARTORTLE
+	db BLASTOISE
+	db SLOWBRO
+	db SHELLDER
+	db CLOYSTER
+	db OMANYTE
+	db OMASTAR
+	db -1
+
+.harden_users
+	db METAPOD
+	db KAKUNA
+	db GRIMER
+	db MUK
+	db ONIX
+	db STEELIX
+	db KRABBY
+	db KINGLER
+	db STARYU
+	db STARMIE
+	db KABUTO
+	db KABUTOPS
+	db HERACROSS
+	db GLIGAR
+	db GLISCOR
+	db SLUGMA
+	db MAGCARGO
+	db CORSOLA
+	db PUPITAR
+	db TYRANITAR
+	db -1
 
 ; 34ffd
 
@@ -2330,6 +2445,8 @@ BattleCommand_FailureText: ; 35023
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_DOUBLE_HIT
+	jr z, .multihit
+	cp EFFECT_FURY_STRIKES
 	jr z, .multihit
 	jp EndMoveEffect
 
@@ -2782,6 +2899,8 @@ BattleCommand_PostFaintEffects:
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_TRIPLE_KICK
+	jr z, .multiple_hit_raise_sub
+	cp EFFECT_FURY_STRIKES
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_SWITCH_HIT
 	jr nz, .finish
@@ -3642,7 +3761,8 @@ BattleCommand_DamageCalc: ; 35612
 	; Variable-hit moves and Conversion can have a power of 0.
 	cp EFFECT_MULTI_HIT
 	jr z, .skip_zero_damage_check
-
+	cp EFFECT_FURY_STRIKES
+	jr z, .skip_zero_damage_check
 	cp EFFECT_CONVERSION
 	jr z, .skip_zero_damage_check
 
@@ -4013,7 +4133,7 @@ BattleCommand_ConstantDamage: ; 35726
 	call Divide
 	ld a, [hQuotient + 2]
 	ld b, a
-	ld hl, .FlailPower
+	ld hl, .ReversalPower
 
 .reversal_loop
 	ld a, [hli]
@@ -4046,7 +4166,7 @@ BattleCommand_ConstantDamage: ; 35726
 	ld [hl], 1
 	ret
 
-.FlailPower:
+.ReversalPower:
 	;  px,  bp
 	db  1, 200
 	db  4, 150
@@ -4895,6 +5015,8 @@ SelfInflictDamageToSubstitute: ; 35de0
 	cp EFFECT_DOUBLE_HIT
 	jr z, .ok
 	cp EFFECT_TRIPLE_KICK
+	jr z, .ok
+	cp EFFECT_FURY_STRIKES
 	jr z, .ok
 	xor a
 	ld [hl], a
@@ -6421,8 +6543,6 @@ BattleCommand_ForceSwitch: ; 3680f
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
 	jp z, .fail
-	call CheckAnyOtherAliveOpponentMons
-	ret z
 	ld a, [AttackMissed]
 	and a
 	jr nz, .missed
@@ -6462,6 +6582,8 @@ BattleCommand_ForceSwitch: ; 3680f
 	jp .succeed
 
 .trainer
+	call CheckAnyOtherAliveOpponentMons
+	jp z, .fail
 	ld a, [wEnemyGoesFirst]
 	and a
 	jr z, .switch_fail
@@ -6550,6 +6672,8 @@ BattleCommand_ForceSwitch: ; 3680f
 	jr .succeed
 
 .vs_trainer
+	call CheckAnyOtherAliveOpponentMons
+	jr z, .fail
 	ld a, [wEnemyGoesFirst]
 	cp $1
 	jr z, .switch_fail
@@ -7510,17 +7634,31 @@ BattleCommand_KnockOff:
 	and a
 	ret nz
 
+	; Maybe Substitute/Sheer Force prevents the steal
 	call CheckSubstituteOpp
 	ret nz
 
+	; Sticky Hold prevents item loss
 	call GetOpponentAbilityAfterMoldBreaker
 	cp STICKY_HOLD
 	ret z
 
+	; Check if target has an item to knock off
 	call GetOpponentItem
 	ld a, [hl]
 	and a
 	ret z
+
+	; Armor Suit can't be knocked off
+	cp ARMOR_SUIT
+	ret z
+
+	; Mail can't be knocked off
+	ld d, a
+	push hl
+	farcall ItemIsMail
+	pop hl
+	ret c
 
 	ld [wNamedObjectIndexBuffer], a
 	xor a
@@ -7533,6 +7671,10 @@ BattleCommand_KnockOff:
 	ret z
 	xor a
 	ld [hl], a
+	ret
+
+BattleCommand_BugBite:
+; TODO: bugbite
 	ret
 
 BattleCommand_PayDay: ; 3705c
@@ -8247,10 +8389,9 @@ BoostJumptable:
 	dbw AVALANCHE, DoAvalanche
 	dbw ACROBATICS, DoAcrobatics
 	dbw FACADE, DoFacade
-	dbw FURY_CUTTER, DoFuryCutter
 	dbw HEX, DoHex
 	dbw VENOSHOCK, DoVenoshock
-;	dbw KNOCK_OFF, DoKnockOff
+	dbw KNOCK_OFF, DoKnockOff
 	dbw -1, -1
 
 BattleCommand_ConditionalBoost:
@@ -8318,32 +8459,6 @@ DoubleDamage:
 	ld [hl], a
 	ret
 
-DoFuryCutter:
-	ld a, [hBattleTurn]
-	and a
-	ld hl, PlayerFuryCutterCount
-	jr z, .got_fury_cutter_count
-	ld hl, EnemyFuryCutterCount
-.got_fury_cutter_count
-	ld a, [AttackMissed]
-	and a
-	jr nz, ResetFuryCutterCount
-
-	; Damage capped at 3 turns' worth (40 x 2 x 2 = 160).
-	ld a, [hl]
-	cp 3
-	jr nc, .capped
-	inc [hl]
-.capped
-	ld a, [hl]
-	ld b, a
-
-.checkdouble
-	dec b
-	ret z
-	call DoubleDamage
-	jr .checkdouble
-
 DoKnockOff:
 	call CheckSubstituteOpp
 	ret nz
@@ -8366,19 +8481,6 @@ DoKnockOff:
 	ld [CurDamage], a
 	ld a, l
 	ld [CurDamage + 1], a
-	ret
-
-ResetFuryCutterCount:
-	push hl
-	ld a, [hBattleTurn]
-	and a
-	ld hl, PlayerFuryCutterCount
-	jr z, .reset
-	ld hl, EnemyFuryCutterCount
-.reset
-	xor a
-	ld [hl], a
-	pop hl
 	ret
 
 INCLUDE "battle/effects/attract.asm"
@@ -8834,11 +8936,40 @@ BattleCommand_ClearHazards: ; 37b39
 ; 37b74
 
 
-BattleCommand_HealMornOrDay:
-BattleCommand_HealNite:
-BattleCommand_HealTime:
+BattleCommand_HealWeather:
 	farcall CheckFullHP
 	jr z, .full
+
+	ld a, [hBattleTurn]
+	and a
+	ld a, [BattleMonType1]
+	ld b, a
+	ld a, [BattleMonType2]
+	ld c, a
+	jr z, .got_types
+	ld a, [EnemyMonType1]
+	ld b, a
+	ld a, [EnemyMonType2]
+	ld c, a
+.got_types
+	ld a, b
+	cp GRASS
+	jr z, .synthesis_anim
+	ld a, c
+	cp GRASS
+	jr z, .synthesis_anim
+	ld a, [TimeOfDay]
+	cp NITE
+	jr nc, .moonlight_anim
+	xor a ; Morning Sun anim
+	jr .got_anim
+.moonlight_anim
+	ld a, $1
+	jr .got_anim
+.synthesis_anim
+	ld a, $2
+.got_anim
+	ld [wKickCounter], a
 	call AnimateCurrentMove
 
 	call GetWeatherAfterCloudNine

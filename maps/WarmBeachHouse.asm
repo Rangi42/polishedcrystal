@@ -7,8 +7,8 @@ WarmBeachHouse_MapScriptHeader:
 WarmBeachHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, WARM_BEACH
-	warp_def $7, $3, 3, WARM_BEACH
+	warp_def 7, 2, 3, WARM_BEACH
+	warp_def 7, 3, 3, WARM_BEACH
 
 .XYTriggers: db 0
 

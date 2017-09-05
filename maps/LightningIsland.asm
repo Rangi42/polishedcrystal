@@ -7,12 +7,12 @@ LightningIsland_MapScriptHeader:
 LightningIsland_MapEventHeader:
 
 .Warps: db 6
-	warp_def $1d, $5, 3, SHAMOUTI_COAST
-	warp_def $1d, $13, 1, LIGHTNING_ISLAND_ROOF
-	warp_def $3, $6, 4, LIGHTNING_ISLAND
-	warp_def $3, $13, 3, LIGHTNING_ISLAND
-	warp_def $1a, $13, 6, LIGHTNING_ISLAND
-	warp_def $1b, $5, 5, LIGHTNING_ISLAND ; hole
+	warp_def 29, 5, 3, SHAMOUTI_COAST
+	warp_def 29, 19, 1, LIGHTNING_ISLAND_ROOF
+	warp_def 3, 6, 4, LIGHTNING_ISLAND
+	warp_def 3, 19, 3, LIGHTNING_ISLAND
+	warp_def 26, 19, 6, LIGHTNING_ISLAND
+	warp_def 27, 5, 5, LIGHTNING_ISLAND ; hole
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ CeladonHotelRoom2_MapScriptHeader:
 CeladonHotelRoom2_MapEventHeader:
 
 .Warps: db 2
-	warp_def $5, $3, 3, CELADON_HOTEL_2F
-	warp_def $5, $4, 3, CELADON_HOTEL_2F
+	warp_def 5, 3, 3, CELADON_HOTEL_2F
+	warp_def 5, 4, 3, CELADON_HOTEL_2F
 
 .XYTriggers: db 0
 
@@ -24,24 +24,21 @@ CeladonHotelRoom2SuperNerdScript:
 	waitbutton
 	writetext .Text2
 	yesorno
-	iffalse .NoBottleCap
+	iffalse_jumpopenedtext .Text5
 	takeitem BOTTLE_CAP
-	iffalse .NoBottleCap
+	iffalse_jumpopenedtext .Text5
 	writetext .Text3
 	waitbutton
 	writetext .Text4
 	waitbutton
 	verbosegiveitem CHERISH_BALL
-	iffalse .NoRoom
-	closetext
-	end
-
-.NoBottleCap:
-	jumpopenedtext .Text5
-
-.NoRoom:
+	iftrue_endtext
 	giveitem BOTTLE_CAP
-	jumpopenedtext .Text6
+	thisopenedtext
+
+	text "Drat. Maybe"
+	line "later?"
+	done
 
 .Text1:
 	text "I used to collect"
@@ -89,9 +86,4 @@ CeladonHotelRoom2SuperNerdScript:
 	para "I know Fishermen"
 	line "snag them some-"
 	cont "times…"
-	done
-
-.Text6:
-	text "Drat. Maybe"
-	line "later?"
 	done

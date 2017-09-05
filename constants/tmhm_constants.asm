@@ -8,7 +8,7 @@
 	add_tm TOXIC        ; $05
 	add_tm HAIL         ; $06
 	add_tm BULK_UP      ; $07
-	add_tm SWORDS_DANCE ; $08
+	add_tm VENOSHOCK    ; $08
 	add_tm HIDDEN_POWER ; $09
 	add_tm SUNNY_DAY    ; $0a
 	add_tm HONE_CLAWS   ; $0b
@@ -40,7 +40,7 @@
 	add_tm FIRE_BLAST   ; $25
 	add_tm SWIFT        ; $26
 	add_tm AERIAL_ACE   ; $27
-	add_tm STONE_EDGE   ; $28
+	add_tm SUBSTITUTE   ; $28
 	add_tm FACADE       ; $29
 	add_tm WILD_CHARGE  ; $2a
 	add_tm REST         ; $2b
@@ -48,7 +48,7 @@
 	add_tm THIEF        ; $2d
 	add_tm STEEL_WING   ; $2e
 	add_tm ROCK_SLIDE   ; $2f
-	add_tm FURY_CUTTER  ; $30
+	add_tm DAZZLINGLEAM ; $30
 	add_tm ROCK_SMASH   ; $31
 	add_tm LEECH_LIFE   ; $32
 	add_tm FOCUS_BLAST  ; $33
@@ -59,10 +59,10 @@
 	add_tm DARK_PULSE   ; $38
 	add_tm ENDURE       ; $39
 	add_tm DRAGON_PULSE ; $3a
-	add_tm DAZZLINGLEAM ; $3b
+	add_tm DRAIN_PUNCH  ; $3b
 	add_tm WILL_O_WISP  ; $3c
 	add_tm ACROBATICS   ; $3d
-	add_tm THUNDER_WAVE ; $3e
+	add_tm WATER_PULSE  ; $3e
 	add_tm EXPLOSION    ; $3f
 	add_tm SHADOW_CLAW  ; $40
 	add_tm POISON_JAB   ; $41
@@ -70,40 +70,45 @@
 	add_tm GIGA_IMPACT  ; $43
 	add_tm U_TURN       ; $44
 	add_tm FLASH        ; $45
+	add_tm STONE_EDGE   ; $46
+	add_tm VOLT_SWITCH  ; $47
+	add_tm THUNDER_WAVE ; $48
+	add_tm GYRO_BALL    ; $49
+	add_tm SWORDS_DANCE ; $4a
+	add_tm BULLDOZE     ; $4b
 NUM_TMS = const_value - TM01
 
-	add_hm CUT          ; $46
-	add_hm FLY          ; $47
-	add_hm SURF         ; $48
-	add_hm STRENGTH     ; $49
-	add_hm WHIRLPOOL    ; $4a
-	add_hm WATERFALL    ; $4b
+	add_hm CUT          ; $4c
+	add_hm FLY          ; $4d
+	add_hm SURF         ; $4e
+	add_hm STRENGTH     ; $4f
+	add_hm WHIRLPOOL    ; $50
+	add_hm WATERFALL    ; $51
 NUM_HMS = const_value - HM01
 
-	add_mt AQUA_TAIL    ; $4c
-	add_mt BODY_SLAM    ; $4d
-	add_mt BULLDOZE     ; $4e
-	add_mt COUNTER      ; $4f
-	add_mt DEFENSE_CURL ; $50
-	add_mt DOUBLE_EDGE  ; $51
-	add_mt DREAM_EATER  ; $52
-	add_mt EARTH_POWER  ; $53
-	add_mt FIRE_PUNCH   ; $54
-	add_mt HEADBUTT     ; $55
-	add_mt HYPER_VOICE  ; $56
-	add_mt ICE_PUNCH    ; $57
-	add_mt ICY_WIND     ; $58
-	add_mt IRON_HEAD    ; $59
-	add_mt PAY_DAY      ; $5a
-	add_mt ROLLOUT      ; $5b
-	add_mt SEED_BOMB    ; $5c
-	add_mt SEISMIC_TOSS ; $5d
-	add_mt SLEEP_TALK   ; $5e
-	add_mt SUBSTITUTE   ; $5f
-	add_mt SUCKER_PUNCH ; $60
-	add_mt SWAGGER      ; $61
-	add_mt THUNDERPUNCH ; $62
-	add_mt VOLT_SWITCH  ; $63
-	add_mt WATER_PULSE  ; $64
-	add_mt ZAP_CANNON   ; $65
-	add_mt ZEN_HEADBUTT ; $66
+	add_mt AQUA_TAIL    ; $52
+	add_mt BODY_SLAM    ; $53
+	add_mt COUNTER      ; $54
+	add_mt DEFENSE_CURL ; $55
+	add_mt DOUBLE_EDGE  ; $56
+	add_mt DREAM_EATER  ; $57
+	add_mt EARTH_POWER  ; $58
+	add_mt FIRE_PUNCH   ; $59
+	add_mt HEADBUTT     ; $5a
+	add_mt HYPER_VOICE  ; $5b
+	add_mt ICE_PUNCH    ; $5c
+	add_mt ICY_WIND     ; $5d
+	add_mt IRON_HEAD    ; $5e
+	add_mt KNOCK_OFF    ; $5f
+	add_mt PAY_DAY      ; $60
+	add_mt ROLLOUT      ; $61
+	add_mt SEED_BOMB    ; $62
+	add_mt SEISMIC_TOSS ; $63
+	add_mt SKILL_SWAP   ; $64
+	add_mt SLEEP_TALK   ; $65
+	add_mt SUCKER_PUNCH ; $66
+	add_mt SWAGGER      ; $67
+	add_mt THUNDERPUNCH ; $68
+	add_mt TRICK        ; $69
+	add_mt ZAP_CANNON   ; $6a
+	add_mt ZEN_HEADBUTT ; $6b

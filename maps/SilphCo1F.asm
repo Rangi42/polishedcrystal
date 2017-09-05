@@ -8,9 +8,9 @@ SilphCo1F_MapScriptHeader:
 SilphCo1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $2, 7, SAFFRON_CITY
-	warp_def $7, $3, 7, SAFFRON_CITY
-	warp_def $0, $d, 1, SILPH_CO_2F
+	warp_def 7, 2, 7, SAFFRON_CITY
+	warp_def 7, 3, 7, SAFFRON_CITY
+	warp_def 0, 13, 1, SILPH_CO_2F
 
 .XYTriggers: db 0
 

@@ -7,15 +7,15 @@ MountMortar1FOutside_MapScriptHeader:
 MountMortar1FOutside_MapEventHeader:
 
 .Warps: db 9
-	warp_def $21, $3, 3, ROUTE_42
-	warp_def $21, $11, 4, ROUTE_42
-	warp_def $21, $25, 5, ROUTE_42
-	warp_def $5, $11, 1, MOUNT_MORTAR_2F_INSIDE
-	warp_def $15, $b, 1, MOUNT_MORTAR_1F_INSIDE
-	warp_def $15, $1d, 2, MOUNT_MORTAR_1F_INSIDE
-	warp_def $1d, $11, 2, MOUNT_MORTAR_B1F
-	warp_def $d, $7, 3, MOUNT_MORTAR_1F_INSIDE
-	warp_def $d, $21, 4, MOUNT_MORTAR_1F_INSIDE
+	warp_def 33, 3, 3, ROUTE_42
+	warp_def 33, 17, 4, ROUTE_42
+	warp_def 33, 37, 5, ROUTE_42
+	warp_def 5, 17, 1, MOUNT_MORTAR_2F_INSIDE
+	warp_def 21, 11, 1, MOUNT_MORTAR_1F_INSIDE
+	warp_def 21, 29, 2, MOUNT_MORTAR_1F_INSIDE
+	warp_def 29, 17, 2, MOUNT_MORTAR_B1F
+	warp_def 13, 7, 3, MOUNT_MORTAR_1F_INSIDE
+	warp_def 13, 33, 4, MOUNT_MORTAR_1F_INSIDE
 
 .XYTriggers: db 0
 

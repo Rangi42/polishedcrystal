@@ -7,12 +7,12 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
 
 .Warps: db 6
-	warp_def $7, $2, 8, FAST_SHIP_1F
-	warp_def $7, $3, 8, FAST_SHIP_1F
-	warp_def $13, $2, 9, FAST_SHIP_1F
-	warp_def $13, $3, 9, FAST_SHIP_1F
-	warp_def $21, $2, 10, FAST_SHIP_1F
-	warp_def $21, $3, 10, FAST_SHIP_1F
+	warp_def 7, 2, 8, FAST_SHIP_1F
+	warp_def 7, 3, 8, FAST_SHIP_1F
+	warp_def 19, 2, 9, FAST_SHIP_1F
+	warp_def 19, 3, 9, FAST_SHIP_1F
+	warp_def 33, 2, 10, FAST_SHIP_1F
+	warp_def 33, 3, 10, FAST_SHIP_1F
 
 .XYTriggers: db 0
 
@@ -37,14 +37,9 @@ const_value set 2
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
 
 CaptainScript_0x75ea7:
-	faceplayer
-	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue UnknownScript_0x75eb5
-	jumpopenedtext UnknownText_0x76012
-
-UnknownScript_0x75eb5:
-	jumpopenedtext UnknownText_0x76064
+	iftrue_jumptextfaceplayer UnknownText_0x76064
+	jumptextfaceplayer UnknownText_0x76012
 
 TwinScript_0x75ebb:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
@@ -54,7 +49,7 @@ TwinScript_0x75ebb:
 	special Special_ReloadSpritesNoPalettes
 	disappear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
 	applymovement PLAYER, MovementData_0x76004
-	moveperson FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, $3, $13
+	moveperson FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, 3, 19
 	appear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
 	spriteface PLAYER, UP
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, UP
@@ -72,7 +67,7 @@ UnknownScript_0x75f03:
 	showtext UnknownText_0x762c6
 UnknownScript_0x75f09:
 	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
-	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, MovementData_0x76010
+	applyonemovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, step_down
 	opentext
 	writetext UnknownText_0x76143
 	buttonsound
@@ -107,8 +102,7 @@ UnknownScript_0x75f37:
 	waitbutton
 	setevent EVENT_FAST_SHIP_HAS_ARRIVED
 	setevent EVENT_FAST_SHIP_FOUND_GIRL
-	closetext
-	end
+	endtext
 
 UnknownScript_0x75f58:
 	writetext UnknownText_0x7619b
@@ -117,8 +111,7 @@ UnknownScript_0x75f58:
 	iffalse UnknownScript_0x75f65
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 UnknownScript_0x75f65:
-	closetext
-	end
+	endtext
 
 UnknownScript_0x75f67:
 	jumpopenedtext UnknownText_0x761be
@@ -190,10 +183,6 @@ MovementData_0x7600c:
 	step_up
 	step_up
 	turn_head_left
-	step_end
-
-MovementData_0x76010:
-	step_down
 	step_end
 
 UnknownText_0x76012:

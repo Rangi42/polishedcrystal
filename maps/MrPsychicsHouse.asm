@@ -7,8 +7,8 @@ MrPsychicsHouse_MapScriptHeader:
 MrPsychicsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 5, SAFFRON_CITY
-	warp_def $7, $3, 5, SAFFRON_CITY
+	warp_def 7, 2, 5, SAFFRON_CITY
+	warp_def 7, 3, 5, SAFFRON_CITY
 
 .XYTriggers: db 0
 

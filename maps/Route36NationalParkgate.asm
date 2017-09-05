@@ -12,10 +12,10 @@ Route36NationalParkgate_MapScriptHeader:
 Route36NationalParkgate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 1, NATIONAL_PARK
-	warp_def $5, $0, 2, NATIONAL_PARK
-	warp_def $4, $9, 1, ROUTE_36
-	warp_def $5, $9, 2, ROUTE_36
+	warp_def 4, 0, 1, NATIONAL_PARK
+	warp_def 5, 0, 2, NATIONAL_PARK
+	warp_def 4, 9, 1, ROUTE_36
+	warp_def 5, 9, 2, ROUTE_36
 
 .XYTriggers: db 0
 
@@ -115,7 +115,7 @@ Route36NationalParkgateLeftTheContestEarly:
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
-	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, $23, $12
+	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, 35, 18
 	end
 
 .CopyContestants:
@@ -164,18 +164,18 @@ Route36NationalParkgateLeftTheContestEarly:
 
 Route36OfficerScriptContest:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, _ContestNotOn
-	if_equal MONDAY, _ContestNotOn
-	if_equal WEDNESDAY, _ContestNotOn
-	if_equal FRIDAY, _ContestNotOn
-	faceplayer
-	opentext
+	if_equal SUNDAY, .ContestNotOn
+	if_equal MONDAY, .ContestNotOn
+	if_equal WEDNESDAY, .ContestNotOn
+	if_equal FRIDAY, .ContestNotOn
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
-	scall Route36Parkgate_DayToText
+	faceplayer
+	opentext
+	callstd daytotext
 	writetext UnknownText_0x6a2eb
 	yesorno
-	iffalse .DecidedNotToJoinContest
+	iffalse_jumpopenedtext UnknownText_0x6a5dc
 	checkcode VAR_PARTYCOUNT
 	if_greater_than $1, .LeaveMonsWithOfficer
 	special ContestDropOffMons
@@ -199,8 +199,11 @@ Route36OfficerScriptContest:
 	special FadeOutPalettes
 	waitsfx
 	special Special_SelectRandomBugContestContestants
-	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, $23, $12
+	warpfacing LEFT, NATIONAL_PARK_BUG_CONTEST, 35, 18
 	end
+
+.ContestNotOn:
+	jumptextfaceplayer UnknownText_0x6b370
 
 .LeaveMonsWithOfficer:
 	checkcode VAR_PARTYCOUNT
@@ -212,9 +215,9 @@ Route36OfficerScriptContest:
 	if_equal $1, .FirstMonIsEgg
 	writetext UnknownText_0x6a4c6
 	yesorno
-	iffalse .RefusedToLeaveMons
+	iffalse_jumpopenedtext UnknownText_0x6a597
 	special ContestDropOffMons
-	iftrue .FirstMonIsFainted
+	iftrue_jumpopenedtext UnknownText_0x6a608
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 	writetext UnknownText_0x6a537
 	buttonsound
@@ -224,15 +227,6 @@ Route36OfficerScriptContest:
 	buttonsound
 	jump .ResumeStartingContest
 
-.DecidedNotToJoinContest:
-	jumpopenedtext UnknownText_0x6a5dc
-
-.RefusedToLeaveMons:
-	jumpopenedtext UnknownText_0x6a597
-
-.FirstMonIsFainted:
-	jumpopenedtext UnknownText_0x6a608
-
 .BoxFull:
 	jumpopenedtext UnknownText_0x6a67c
 
@@ -240,168 +234,72 @@ Route36OfficerScriptContest:
 	jumpopenedtext UnknownText_0x6a71f
 
 Route36Officer_ContestHasConcluded:
-	checkevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	iftrue .SunStone
-	checkevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	iftrue .Everstone
-	checkevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	iftrue .SitrusBerry
-	checkevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	iftrue .OranBerry
-	jumpopenedtext UnknownText_0x6a84f
-
-.SunStone:
+	checkevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+	iffalse_jumptextfaceplayer UnknownText_0x6a84f
+	faceplayer
+	opentext
 	writetext UnknownText_0x6b97f
 	buttonsound
-	verbosegiveitem SUN_STONE
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	closetext
-	end
-
-.Everstone:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem EVERSTONE
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	closetext
-	end
-
-.SitrusBerry:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem SITRUS_BERRY
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	closetext
-	end
-
-.OranBerry:
-	writetext UnknownText_0x6b97f
-	buttonsound
-	verbosegiveitem ORAN_BERRY
-	iffalse .BagFull
-	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	closetext
-	end
-
-.BagFull:
-	jumpopenedtext UnknownText_0x6b910
-
-_ContestNotOn:
-	jumptextfaceplayer UnknownText_0x6b370
+	copybytetovar wBugContestOfficerPrize
+	verbosegiveitem ITEM_FROM_MEM
+	iffalse_jumpopenedtext UnknownText_0x6b910
+	clearevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+	endtext
 
 OfficerScript_0x6acf4:
-	faceplayer
-	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
-	jumpopenedtext UnknownText_0x6b370
-
-Route36Parkgate_DayToText:
-	jumpstd daytotext
-	end
+	jumptextfaceplayer UnknownText_0x6b370
 
 BugCatcherScript_0x6ad06:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad14
-	jumpopenedtext UnknownText_0x6b399
-
-UnknownScript_0x6ad14:
-	jumpopenedtext UnknownText_0x6b3c4
+	iffalse_jumptextfaceplayer UnknownText_0x6b3c4
+	jumptextfaceplayer UnknownText_0x6b399
 
 BugManiacScript_0x6ad1a:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad28
-	jumpopenedtext UnknownText_0x6b40f
-
-UnknownScript_0x6ad28:
-	jumpopenedtext UnknownText_0x6b440
+	iffalse_jumptextfaceplayer UnknownText_0x6b440
+	jumptextfaceplayer UnknownText_0x6b40f
 
 CooltrainerMScript_0x6ad2e:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad3c
-	jumpopenedtext UnknownText_0x6b462
-
-UnknownScript_0x6ad3c:
-	jumpopenedtext UnknownText_0x6b496
+	iffalse_jumptextfaceplayer UnknownText_0x6b496
+	jumptextfaceplayer UnknownText_0x6b462
 
 PokefanMScript_0x6ad42:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad50
-	jumpopenedtext UnknownText_0x6b4da
-
-UnknownScript_0x6ad50:
-	jumpopenedtext UnknownText_0x6b50a
+	iffalse_jumptextfaceplayer UnknownText_0x6b50a
+	jumptextfaceplayer UnknownText_0x6b4da
 
 BugCatcherScript_0x6ad56:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad64
-	jumpopenedtext UnknownText_0x6b54e
-
-UnknownScript_0x6ad64:
-	jumpopenedtext UnknownText_0x6b57c
+	iffalse_jumptextfaceplayer UnknownText_0x6b57c
+	jumptextfaceplayer UnknownText_0x6b54e
 
 YoungsterScript_0x6ad6a:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad78
-	jumpopenedtext UnknownText_0x6b5b0
-
-UnknownScript_0x6ad78:
-	jumpopenedtext UnknownText_0x6b5dd
+	iffalse_jumptextfaceplayer UnknownText_0x6b5dd
+	jumptextfaceplayer UnknownText_0x6b5b0
 
 LassScript_0x6ad7e:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ad8c
-	jumpopenedtext UnknownText_0x6b64b
-
-UnknownScript_0x6ad8c:
-	jumpopenedtext UnknownText_0x6b698
+	iffalse_jumptextfaceplayer UnknownText_0x6b698
+	jumptextfaceplayer UnknownText_0x6b64b
 
 BugCatcherScript_0x6ad92:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6ada0
-	jumpopenedtext UnknownText_0x6b6b8
-
-UnknownScript_0x6ada0:
-	jumpopenedtext UnknownText_0x6b6e9
+	iffalse_jumptextfaceplayer UnknownText_0x6b6e9
+	jumptextfaceplayer UnknownText_0x6b6b8
 
 YoungsterScript_0x6ada6:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6adb4
-	jumpopenedtext UnknownText_0x6b71b
-
-UnknownScript_0x6adb4:
-	jumpopenedtext UnknownText_0x6b740
+	iffalse_jumptextfaceplayer UnknownText_0x6b740
+	jumptextfaceplayer UnknownText_0x6b71b
 
 YoungsterScript_0x6adba:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iffalse UnknownScript_0x6adc8
-	jumpopenedtext UnknownText_0x6b76f
-
-UnknownScript_0x6adc8:
-	jumpopenedtext UnknownText_0x6b7af
+	iffalse_jumptextfaceplayer UnknownText_0x6b7af
+	jumptextfaceplayer UnknownText_0x6b76f
 
 MovementData_0x6add1:
 	run_step_down

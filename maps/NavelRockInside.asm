@@ -7,20 +7,20 @@ NavelRockInside_MapScriptHeader:
 NavelRockInside_MapEventHeader:
 
 .Warps: db 14
-	warp_def $57, $9, 3, NAVEL_ROCK_OUTSIDE
-	warp_def $43, $9, 3, NAVEL_ROCK_INSIDE
-	warp_def $3, $3, 2, NAVEL_ROCK_INSIDE
-	warp_def $5, $9, 5, NAVEL_ROCK_INSIDE
-	warp_def $55, $17, 4, NAVEL_ROCK_INSIDE
-	warp_def $3, $17, 7, NAVEL_ROCK_INSIDE
-	warp_def $2d, $5, 6, NAVEL_ROCK_INSIDE
-	warp_def $2a, $2, 9, NAVEL_ROCK_INSIDE
-	warp_def $20, $2, 8, NAVEL_ROCK_INSIDE
-	warp_def $23, $5, 11, NAVEL_ROCK_INSIDE
-	warp_def $19, $5, 10, NAVEL_ROCK_INSIDE
-	warp_def $16, $2, 13, NAVEL_ROCK_INSIDE
-	warp_def $c, $2, 12, NAVEL_ROCK_INSIDE
-	warp_def $f, $5, 1, NAVEL_ROCK_ROOF
+	warp_def 87, 9, 3, NAVEL_ROCK_OUTSIDE
+	warp_def 67, 9, 3, NAVEL_ROCK_INSIDE
+	warp_def 3, 3, 2, NAVEL_ROCK_INSIDE
+	warp_def 5, 9, 5, NAVEL_ROCK_INSIDE
+	warp_def 85, 23, 4, NAVEL_ROCK_INSIDE
+	warp_def 3, 23, 7, NAVEL_ROCK_INSIDE
+	warp_def 45, 5, 6, NAVEL_ROCK_INSIDE
+	warp_def 42, 2, 9, NAVEL_ROCK_INSIDE
+	warp_def 32, 2, 8, NAVEL_ROCK_INSIDE
+	warp_def 35, 5, 11, NAVEL_ROCK_INSIDE
+	warp_def 25, 5, 10, NAVEL_ROCK_INSIDE
+	warp_def 22, 2, 13, NAVEL_ROCK_INSIDE
+	warp_def 12, 2, 12, NAVEL_ROCK_INSIDE
+	warp_def 15, 5, 1, NAVEL_ROCK_ROOF
 
 .XYTriggers: db 0
 

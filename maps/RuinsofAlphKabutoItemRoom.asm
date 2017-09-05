@@ -7,10 +7,10 @@ RuinsofAlphKabutoItemRoom_MapScriptHeader:
 RuinsofAlphKabutoItemRoom_MapEventHeader:
 
 .Warps: db 4
-	warp_def $9, $3, 5, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def $9, $4, 5, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def $1, $3, 1, RUINS_OF_ALPH_KABUTO_WORD_ROOM
-	warp_def $1, $4, 2, RUINS_OF_ALPH_KABUTO_WORD_ROOM
+	warp_def 9, 3, 5, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_def 9, 4, 5, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_def 1, 3, 1, RUINS_OF_ALPH_KABUTO_WORD_ROOM
+	warp_def 1, 4, 2, RUINS_OF_ALPH_KABUTO_WORD_ROOM
 
 .XYTriggers: db 0
 

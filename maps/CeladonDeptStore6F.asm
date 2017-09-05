@@ -7,14 +7,13 @@ CeladonDeptStore6F_MapScriptHeader:
 CeladonDeptStore6F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $f, 2, CELADON_DEPT_STORE_5F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+	warp_def 0, 15, 2, CELADON_DEPT_STORE_5F
+	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 1
 	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore6FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 4
 	person_event SPRITE_SUPER_NERD, 2, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x712c7, -1

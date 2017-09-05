@@ -7,11 +7,11 @@ SafariZoneEast_MapScriptHeader:
 SafariZoneEast_MapEventHeader:
 
 .Warps: db 5
-	warp_def $18, $2, 3, SAFARI_ZONE_HUB
-	warp_def $19, $2, 4, SAFARI_ZONE_HUB
-	warp_def $6, $2, 1, SAFARI_ZONE_NORTH
-	warp_def $7, $2, 2, SAFARI_ZONE_NORTH
-	warp_def $b, $1b, 1, SAFARI_ZONE_EAST_REST_HOUSE
+	warp_def 24, 2, 3, SAFARI_ZONE_HUB
+	warp_def 25, 2, 4, SAFARI_ZONE_HUB
+	warp_def 6, 2, 1, SAFARI_ZONE_NORTH
+	warp_def 7, 2, 2, SAFARI_ZONE_NORTH
+	warp_def 11, 27, 1, SAFARI_ZONE_EAST_REST_HOUSE
 
 .XYTriggers: db 0
 

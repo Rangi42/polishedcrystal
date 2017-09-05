@@ -7,12 +7,12 @@ CeladonUniversity2F_MapScriptHeader:
 CeladonUniversity2F_MapEventHeader:
 
 .Warps: db 6
-	warp_def $8, $17, 3, CELADON_UNIVERSITY_1F
-	warp_def $0, $7, 1, CELADON_UNIVERSITY_CAFETERIA
-	warp_def $8, $5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
-	warp_def $0, $d, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
-	warp_def $8, $13, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
-	warp_def $0, $15, 1, CELADON_UNIVERSITY_POOL
+	warp_def 8, 23, 3, CELADON_UNIVERSITY_1F
+	warp_def 0, 7, 1, CELADON_UNIVERSITY_CAFETERIA
+	warp_def 8, 5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
+	warp_def 0, 13, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
+	warp_def 8, 19, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
+	warp_def 0, 21, 1, CELADON_UNIVERSITY_POOL
 
 .XYTriggers: db 0
 
@@ -35,7 +35,7 @@ CeladonUniversity2F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster2Text, -1
 
 CeladonUniversity2FCooltrainerfScript:
-	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
+	checkevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY
 	iftrue_jumptextfaceplayer .Text5
 	faceplayer
 	opentext
@@ -50,18 +50,21 @@ CeladonUniversity2FCooltrainerfScript:
 	waitbutton
 	writetext .Text4
 	waitbutton
-	verbosegiveitem RARE_CANDY
-	iffalse .NoRoomForRareCandy
-	setevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
+	verbosegiveitem ANTIDOTE
+	iffalse .NoRoomForAntidote
+	setevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY
 	thisopenedtext
 
 .Text5:
-	text "That Fresh Water"
-	line "really is re-"
-	cont "freshing!"
+	text "Antidotes cure"
+	line "poison in #-"
+	cont "mon, but a person"
+
+	para "would get sick"
+	line "by drinking one."
 	done
 
-.NoRoomForRareCandy:
+.NoRoomForAntidote:
 	giveitem FRESH_WATER
 	thisopenedtext
 

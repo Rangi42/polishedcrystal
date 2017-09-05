@@ -9,10 +9,10 @@ DayCare_MapScriptHeader:
 DayCare_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 3, ROUTE_34
-	warp_def $5, $0, 4, ROUTE_34
-	warp_def $7, $2, 5, ROUTE_34
-	warp_def $7, $3, 5, ROUTE_34
+	warp_def 4, 0, 3, ROUTE_34
+	warp_def 5, 0, 4, ROUTE_34
+	warp_def 7, 2, 5, ROUTE_34
+	warp_def 7, 3, 5, ROUTE_34
 
 .XYTriggers: db 0
 
@@ -106,19 +106,15 @@ DayCareManScript_Inside:
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	writetext DayCareText_DescribeOddEgg
-	waitbutton
-	closetext
 	setevent EVENT_GOT_ODD_EGG
-	end
+	waitendtext
 
 .PartyFull:
 	jumpopenedtext DayCareText_PartyFull
 
 .AlreadyHaveOddEgg:
 	special Special_DayCareMan
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 DayCareLadyScript:
 	faceplayer
@@ -151,19 +147,15 @@ DayCareLadyScript:
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	writetext DayCareLadyText_DescribeLyrasEgg
-	waitbutton
-	closetext
 	setevent EVENT_GOT_LYRAS_EGG
-	end
+	waitendtext
 
 .PartyFull:
 	jumpopenedtext DayCareText_PartyFull
 
 .NoLyrasEgg:
 	special Special_DayCareLady
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .HusbandWasLookingForYou:
 	jumpopenedtext Text_GrampsLookingForYou

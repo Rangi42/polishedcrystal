@@ -7,16 +7,12 @@ BurnedTowerB1F_MapScriptHeader:
 
 BurnedTowerB1F_MapEventHeader:
 
-.Warps: db 6
-	warp_def $9, $a, 3, BURNED_TOWER_1F
-	warp_def $7, $11, 7, BURNED_TOWER_1F
-	warp_def $8, $a, 9, BURNED_TOWER_1F
-	warp_def $d, $3, 10, BURNED_TOWER_1F
-	warp_def $e, $11, 12, BURNED_TOWER_1F
-	warp_def $f, $7, 14, BURNED_TOWER_1F
+.Warps: db 2
+	warp_def 9, 10, 3, BURNED_TOWER_1F ; hole
+	warp_def 15, 7, 4, BURNED_TOWER_1F
 
 .XYTriggers: db 1
-	xy_trigger 0, $6, $a, ReleaseTheBeasts
+	xy_trigger 0, 6, 10, ReleaseTheBeasts
 
 .Signposts: db 0
 
@@ -27,7 +23,7 @@ BurnedTowerB1F_MapEventHeader:
 	person_event SPRITE_RAIKOU, 3, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
 	person_event SPRITE_ENTEI, 3, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
 	person_event SPRITE_SUICUNE, 4, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_2
-	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BurnedTowerB1FEusine, EVENT_EUSINE_IN_BURNED_TOWER
+	person_event SPRITE_EUSINE, 12, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BurnedTowerB1FEusine, EVENT_EUSINE_IN_BURNED_TOWER
 	strengthboulder_event 8, 17
 	tmhmball_event 4, 16, TM_ENDURE, EVENT_BURNED_TOWER_B1F_TM_ENDURE
 
@@ -43,7 +39,7 @@ const_value set 2
 BurnedTowerB1FLadderCallback:
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue .NoChange
-	changeblock $6, $e, $2
+	changeblock 6, 14, $2
 .NoChange:
 	return
 
@@ -108,7 +104,7 @@ ReleaseTheBeasts:
 	setevent EVENT_BURNED_TOWER_1F_EUSINE
 	appear BURNEDTOWERB1F_EUSINE
 	refreshscreen
-	changeblock $6, $e, $1b
+	changeblock 6, 14, $1b
 	reloadmappart
 	closetext
 	dotrigger $1

@@ -8,14 +8,14 @@ DragonsDenB1F_MapScriptHeader:
 DragonsDenB1F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $3, $14, 3, DRAGONS_DEN_1F
-	warp_def $1d, $13, 1, DRAGON_SHRINE
+	warp_def 3, 20, 3, DRAGONS_DEN_1F
+	warp_def 29, 19, 1, DRAGON_SHRINE
 
 .XYTriggers: db 1
-	xy_trigger 1, $1e, $13, DragonsDenB1FClairTrigger
+	xy_trigger 1, 30, 19, DragonsDenB1FClairTrigger
 
 .Signposts: db 4
-	signpost 24, 18, SIGNPOST_READ, DragonsDenShrineSignText
+	signpost 24, 18, SIGNPOST_JUMPTEXT, DragonsDenShrineSignText
 	signpost 29, 33, SIGNPOST_ITEM + REVIVE, EVENT_DRAGONS_DEN_B1F_HIDDEN_REVIVE
 	signpost 17, 21, SIGNPOST_ITEM + MAX_POTION, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION
 	signpost 15, 31, SIGNPOST_ITEM + MAX_ELIXER, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER

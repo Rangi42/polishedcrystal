@@ -9,11 +9,11 @@ RuinsofAlphKabutoChamber_MapScriptHeader:
 RuinsofAlphKabutoChamber_MapEventHeader:
 
 .Warps: db 5
-	warp_def $9, $3, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 4, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 5, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
+	warp_def 9, 3, 2, RUINS_OF_ALPH_OUTSIDE
+	warp_def 9, 4, 2, RUINS_OF_ALPH_OUTSIDE
+	warp_def 3, 3, 4, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 3, 4, 5, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 0, 4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
 
 .XYTriggers: db 0
 
@@ -39,15 +39,15 @@ RuinsofAlphKabutoChamberTrigger0:
 UnknownScript_0x58737:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue UnknownScript_0x58741
-	changeblock $4, $0, $24
+	changeblock 4, 0, $24
 UnknownScript_0x58741:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse UnknownScript_0x58748
 	return
 
 UnknownScript_0x58748:
-	changeblock $2, $2, $1
-	changeblock $4, $2, $2
+	changeblock 2, 2, $1
+	changeblock 4, 2, $2
 	return
 
 UnknownScript_0x58751:
@@ -56,12 +56,11 @@ UnknownScript_0x58751:
 	showemote EMOTE_SHOCK, PLAYER, 20
 	pause 30
 	playsound SFX_STRENGTH
-	changeblock $4, $0, $25
+	changeblock 4, 0, $25
 	reloadmappart
 	earthquake 50
 	dotrigger $1
-	closetext
-	end
+	endtext
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
 	refreshscreen
@@ -79,12 +78,12 @@ UnknownScript_0x58778:
 	domaptrigger RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
-	changeblock $2, $2, $14
-	changeblock $4, $2, $15
+	changeblock 2, 2, $14
+	changeblock 4, 2, $15
 	reloadmappart
 	playsound SFX_STRENGTH
 	earthquake 80
-	applymovement PLAYER, MovementData_0x587fe
+	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
 	waitsfx
 	pause 20
@@ -92,12 +91,12 @@ UnknownScript_0x58778:
 	end
 
 ScientistScript_0x587a8:
-	faceplayer
-	opentext
 	checkcode VAR_UNOWNCOUNT
 	if_equal NUM_UNOWN, UnknownScript_0x587cf
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue UnknownScript_0x587c9
+	iftrue_jumptextfaceplayer UnknownText_0x5897c
+	faceplayer
+	opentext
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
 	iffalse UnknownScript_0x587c0
 	writetext UnknownText_0x589b8
@@ -109,11 +108,8 @@ UnknownScript_0x587c0:
 	spriteface LAST_TALKED, UP
 	end
 
-UnknownScript_0x587c9:
-	jumpopenedtext UnknownText_0x5897c
-
 UnknownScript_0x587cf:
-	jumpopenedtext UnknownText_0x594cb
+	jumptextfaceplayer UnknownText_0x594cb
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
@@ -121,30 +117,15 @@ MapRuinsofAlphKabutoChamberSignpost3Script:
 	restoretypeface
 	end
 
+MapRuinsofAlphKabutoChamberSignpost5Script:
+	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
+	iftrue_jumptext UnknownText_0x58afa
 MapRuinsofAlphKabutoChamberSignpost4Script:
 	opentext
 	writetext UnknownText_0x58aa7
 	writebyte $0
 	special Special_DisplayUnownWords
-	closetext
-	end
-
-MapRuinsofAlphKabutoChamberSignpost5Script:
-	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue UnknownScript_0x587f7
-	opentext
-	writetext UnknownText_0x58aa7
-	writebyte $0
-	special Special_DisplayUnownWords
-	closetext
-	end
-
-UnknownScript_0x587f7:
-	jumptext UnknownText_0x58afa
-
-MovementData_0x587fe:
-	db $59 ; movement
-	step_end
+	endtext
 
 UnknownText_0x58800:
 	text "Welcome to this"

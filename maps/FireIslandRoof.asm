@@ -7,7 +7,7 @@ FireIslandRoof_MapScriptHeader:
 FireIslandRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $3, 2, FIRE_ISLAND
+	warp_def 7, 3, 2, FIRE_ISLAND
 
 .XYTriggers: db 0
 
@@ -35,7 +35,7 @@ FireIslandRoofCandelaScript:
 	setevent EVENT_BEAT_CANDELA
 	showtext .AfterText
 	playsound SFX_WARP_TO
-	applymovement FIREISLANDROOF_CANDELA, FireIslandRoofCandelaTeleport
+	applyonemovement FIREISLANDROOF_CANDELA, teleport_from
 	disappear FIREISLANDROOF_CANDELA
 	clearevent EVENT_CELADON_UNIVERSITY_CANDELA
 	end
@@ -62,7 +62,3 @@ FireIslandRoofCandelaScript:
 .RefusedText:
 	text "TODO"
 	done
-
-FireIslandRoofCandelaTeleport:
-	teleport_from
-	step_end

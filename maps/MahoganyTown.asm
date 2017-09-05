@@ -8,15 +8,15 @@ MahoganyTown_MapScriptHeader:
 MahoganyTown_MapEventHeader:
 
 .Warps: db 5
-	warp_def $7, $b, 1, MAHOGANY_MART_1F
-	warp_def $7, $11, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
-	warp_def $d, $6, 1, MAHOGANY_GYM
-	warp_def $d, $f, 1, MAHOGANY_POKECENTER_1F
-	warp_def $1, $9, 3, ROUTE_43_MAHOGANY_GATE
+	warp_def 7, 11, 1, MAHOGANY_MART_1F
+	warp_def 7, 17, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
+	warp_def 13, 6, 1, MAHOGANY_GYM
+	warp_def 13, 15, 1, MAHOGANY_POKECENTER_1F
+	warp_def 1, 9, 3, ROUTE_43_MAHOGANY_GATE
 
 .XYTriggers: db 2
-	xy_trigger 0, $8, $13, UnknownScript_0x190013
-	xy_trigger 0, $9, $13, UnknownScript_0x190013
+	xy_trigger 0, 8, 19, UnknownScript_0x190013
+	xy_trigger 0, 9, 19, UnknownScript_0x190013
 
 .Signposts: db 3
 	signpost 5, 1, SIGNPOST_JUMPTEXT, MahoganyTownSignText
@@ -40,7 +40,7 @@ UnknownScript_0x190013:
 	showemote EMOTE_SHOCK, MAHOGANYTOWN_POKEFAN_M, 15
 	applymovement MAHOGANYTOWN_POKEFAN_M, MovementData_0x1900a9
 	follow PLAYER, MAHOGANYTOWN_POKEFAN_M
-	applymovement PLAYER, MovementData_0x1900a7
+	applyonemovement PLAYER, step_left
 	stopfollow
 	spriteface PLAYER, RIGHT
 	scall UnknownScript_0x19002f
@@ -84,14 +84,9 @@ UnknownScript_0x190078:
 	jumpopenedtext UnknownText_0x190188
 
 GrampsScript_0x19007e:
-	faceplayer
-	opentext
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x19008c
-	jumpopenedtext UnknownText_0x1901e5
-
-UnknownScript_0x19008c:
-	jumpopenedtext UnknownText_0x19021d
+	iftrue_jumptextfaceplayer UnknownText_0x19021d
+	jumptextfaceplayer UnknownText_0x1901e5
 
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS
@@ -100,10 +95,6 @@ MahoganyTownSouvenirShopSign:
 
 .rockets
 	jumptext MahoganyTownSouvenirShopSignText1
-
-MovementData_0x1900a7:
-	step_left
-	step_end
 
 MovementData_0x1900a9:
 	step_right

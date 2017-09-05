@@ -7,8 +7,8 @@ Route12SuperRodHouse_MapScriptHeader:
 Route12SuperRodHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_12_SOUTH
-	warp_def $7, $3, 1, ROUTE_12_SOUTH
+	warp_def 7, 2, 1, ROUTE_12_SOUTH
+	warp_def 7, 3, 1, ROUTE_12_SOUTH
 
 .XYTriggers: db 0
 
@@ -37,8 +37,7 @@ UnknownScript_0x7f4a6:
 	writetext UnknownText_0x7f5ec
 	waitbutton
 UnknownScript_0x7f4aa:
-	closetext
-	end
+	endtext
 
 UnknownText_0x7f4af:
 	text "I'm the Fishing"

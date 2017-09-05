@@ -7,8 +7,8 @@ Route39Farmhouse_MapScriptHeader:
 Route39Farmhouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, ROUTE_39
-	warp_def $7, $3, 2, ROUTE_39
+	warp_def 7, 2, 2, ROUTE_39
+	warp_def 7, 3, 2, ROUTE_39
 
 .XYTriggers: db 0
 
@@ -66,8 +66,7 @@ UnknownScript_0x9cec5:
 	writetext UnknownText_0x9d05d
 	buttonsound
 	itemnotify
-	closetext
-	end
+	endtext
 
 .Cancel:
 	jumpopenedtext UnknownText_0x9d0b7

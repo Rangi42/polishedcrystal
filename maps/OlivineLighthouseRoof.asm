@@ -7,7 +7,7 @@ OlivineLighthouseRoof_MapScriptHeader:
 OlivineLighthouseRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $3, $9, 4, OLIVINE_LIGHTHOUSE_6F
+	warp_def 3, 9, 4, OLIVINE_LIGHTHOUSE_6F
 
 .XYTriggers: db 0
 

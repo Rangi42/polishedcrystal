@@ -7,9 +7,9 @@ LavenderPokeCenter1F_MapScriptHeader:
 LavenderPokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 1, LAVENDER_TOWN
-	warp_def $7, $6, 1, LAVENDER_TOWN
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 1, LAVENDER_TOWN
+	warp_def 7, 6, 1, LAVENDER_TOWN
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 
@@ -43,9 +43,21 @@ PokemonJournalMrFujiScript:
 
 LavenderPokeCenter1FYoungsterScript:
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer .Text2
+	iffalse_jumptextfaceplayer .NoMachinePartText
+	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
+	iffalse_jumptextfaceplayer .NoExorcismText
 	thistextfaceplayer
 
+	text "The Director of"
+	line "the Radio Station"
+	cont "sure was happy."
+
+	para "He said they're"
+	line "finally back on"
+	cont "the air!"
+	done
+
+.NoMachinePartText:
 	text "If the Power Plant"
 	line "isn't running, the"
 
@@ -53,21 +65,20 @@ LavenderPokeCenter1FYoungsterScript:
 	line "run either…"
 
 	para "It also means the"
-	line "Radio Station"
-	cont "can't broadcast…"
+	line "Radio Tower can't"
+	cont "broadcast…"
 	done
 
-.Text2:
-	text "The Director of"
-	line "the Radio Station"
-	cont "sure was happy."
+.NoExorcismText:
+	text "The Power Plant is"
+	line "running smoothly"
+	cont "again, but the"
 
-	para "He said they're"
-	line "back on the air"
+	para "Radio Tower still"
+	line "isn't broadcasting."
 
-	para "because the Power"
-	line "Plant is running"
-	cont "smoothly again."
+	para "What's going on"
+	line "over there?"
 	done
 
 LavenderPokeCenter1FGentlemanText:

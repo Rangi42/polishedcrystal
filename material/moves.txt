@@ -1,3 +1,6 @@
+https://bulbapedia.bulbagarden.net/wiki/List_of_Gotta_Catch_%27Em_All_event_Pokémon
+https://www.pokecommunity.com/showthread.php?t=184717
+
 Drowzee/Hypno: Tri Attack (RBY TM), Baton Pass (purified)
 Eevee: Focus Energy (RBY learnset), Charm (purified)
 Girafarig: Mirror Coat (Dream World), Sucker Punch (HGSS tutor)
@@ -7,14 +10,18 @@ Jigglypuff/Wigglytuff: Tri Attack (RBY TM), Pain Split (HGSS tutor)
 Meowth/Persian: Hypnosis (Dream World), Gunk Shot (HGSS tutor)
 Psyduck/Golduck: Charm (purified), Low Kick (HGSS tutor)
 
-Original:
-Scyther: Glare
+Egg:
+Geodude/Graveler/Golem: Rock Slide
+Rhyhorn/Rhydon/Rhyperior: Crunch
 
 RBY TM:
 Mankey/Primeape: Metronome
 Slowpoke/Slowbro: Tri Attack
 
 HGSS tutor:
+Bellsprout/Weepinbell/Victreebel: Bug Bite
+Ledyba/Ledian: Bug Bite
+Pinsir: Bug Bite
 Chinchou/Lanturn: Heal Bell
 Dunsparce: Pain Split
 Jynx: Heal Bell
@@ -25,6 +32,10 @@ NidoranF/Nidorina/Nidoqueen: Super Fang
 NidoranM/Nidorino/Nidoking: Sucker Punch, Super Fang
 Snubbull/Granbull: Heal Bell, Low Kick, Metronome, Super Fang
 Teddiursa/Ursaring: Metronome
+
+Dream World:
+Drowzee/Hypno: Drain Punch
+Kangaskhan: Drain Punch
 
 Purified:
 Ponyta/Rapidash: Baton Pass

@@ -88,7 +88,7 @@ endr
 
 
 BTTrainerClassGenders: ; 11f2f0
-	db FEMALE ; KAY
+	db FEMALE ; CARRIE
 	db MALE   ; CAL
 	db MALE   ; FALKNER
 	db FEMALE ; BUGSY

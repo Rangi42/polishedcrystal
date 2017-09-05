@@ -9,11 +9,11 @@ Route43_MapScriptHeader:
 Route43_MapEventHeader:
 
 .Warps: db 5
-	warp_def $33, $9, 1, ROUTE_43_MAHOGANY_GATE
-	warp_def $33, $a, 2, ROUTE_43_MAHOGANY_GATE
-	warp_def $23, $11, 3, ROUTE_43_GATE
-	warp_def $1f, $11, 1, ROUTE_43_GATE
-	warp_def $1f, $12, 2, ROUTE_43_GATE
+	warp_def 51, 9, 1, ROUTE_43_MAHOGANY_GATE
+	warp_def 51, 10, 2, ROUTE_43_MAHOGANY_GATE
+	warp_def 35, 17, 3, ROUTE_43_GATE
+	warp_def 31, 17, 1, ROUTE_43_GATE
+	warp_def 31, 18, 2, ROUTE_43_GATE
 
 .XYTriggers: db 0
 
@@ -33,7 +33,7 @@ Route43_MapEventHeader:
 	person_event SPRITE_BREEDER, 32, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
 	person_event SPRITE_LASS, 24, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy1, -1
 	person_event SPRITE_LASS, 25, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrIvyandamy2, -1
-	cuttree_event 28, 2, -1
+	cuttree_event 28, 2, EVENT_ROUTE_43_CUT_TREE
 	fruittree_event 26, 1, FRUITTREE_ROUTE_43, PERSIM_BERRY
 	itemball_event 32, 12, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
@@ -55,31 +55,31 @@ UnknownScript_0x19d05c:
 	return
 
 Route43SightseerfScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
-	iftrue .GotFlameOrb
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_SIGHTSEERF_LENIE
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BREEDER_JODY_ONCE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SR_AND_JR_IVY_AND_AMY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_CAMPER_SPENCER
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_BEN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_BRENT
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_RON
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_MARVIN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PICNICKER_TIFFANY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -89,25 +89,26 @@ Route43SightseerfScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SIGHTSEERF_LENIE
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem FLAME_ORB
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
-.GotFlameOrb:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "I love visiting"
+	line "new places and"
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "challenging every"
+	line "trainer there."
+
+	para "I'll keep looking"
+	line "for strong train-"
+	cont "ers like you."
+	done
 
 .IntroText:
 	text "I'm seeking out"
@@ -173,18 +174,6 @@ Route43SightseerfScript:
 	para "please be careful"
 	line "if you give it to"
 	cont "a #mon."
-	done
-
-.AfterText2:
-	text "I love visiting"
-	line "new places and"
-
-	para "challenging every"
-	line "trainer there."
-
-	para "I'll keep looking"
-	line "for strong train-"
-	cont "ers like you."
 	done
 
 TrainerBreederJody:

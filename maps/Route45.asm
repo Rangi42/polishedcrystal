@@ -7,7 +7,7 @@ Route45_MapScriptHeader:
 Route45_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $4, 1, DARK_CAVE_BLACKTHORN_ENTRANCE
+	warp_def 5, 4, 1, DARK_CAVE_BLACKTHORN_ENTRANCE
 
 .XYTriggers: db 0
 
@@ -36,33 +36,33 @@ const_value set 2
 	const ROUTE45_DRAGON_TAMER
 
 Route45Dragon_tamerScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
-	iftrue .GotFocusSash
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_DRAGON_TAMER_AEGON
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BATTLE_GIRL_NOZOMI
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BLACKBELT_KENJI
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_HIKER_ERIK
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_HIKER_MICHAEL
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_HIKER_PARRY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_HIKER_TIMOTHY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERM_RYAN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERF_KELLY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_CAMPER_QUENTIN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -72,25 +72,25 @@ Route45Dragon_tamerScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_DRAGON_TAMER_AEGON
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem FOCUS_SASH
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
-.GotFocusSash:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "The art of train-"
+	line "ing Dragon-type"
+	cont "#mon is just"
+	cont "amazing."
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "You should become"
+	line "a Dragon Tamer"
+	cont "too."
+	done
 
 .IntroText:
 	text "I'm training my"
@@ -146,17 +146,6 @@ Route45Dragon_tamerScript:
 
 	para "Take this. You"
 	line "deserve it."
-	done
-
-.AfterText2:
-	text "The art of train-"
-	line "ing Dragon-type"
-	cont "#mon is just"
-	cont "amazing."
-
-	para "You should become"
-	line "a Dragon Tamer"
-	cont "too."
 	done
 
 TrainerBattleGirlNozomi:

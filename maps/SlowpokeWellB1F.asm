@@ -7,8 +7,8 @@ SlowpokeWellB1F_MapScriptHeader:
 SlowpokeWellB1F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $11, 6, AZALEA_TOWN
-	warp_def $b, $7, 1, SLOWPOKE_WELL_B2F
+	warp_def 15, 17, 6, AZALEA_TOWN
+	warp_def 11, 7, 1, SLOWPOKE_WELL_B2F
 
 .XYTriggers: db 0
 
@@ -21,7 +21,7 @@ SlowpokeWellB1F_MapEventHeader:
 	person_event SPRITE_ROCKET_GIRL, 4, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_KURT, 14, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5a6b5, EVENT_SLOWPOKE_WELL_KURT
 	person_event SPRITE_SLOWPOKE, 4, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a681, EVENT_SLOWPOKE_WELL_SLOWPOKES
-	person_event SPRITE_SLOWPOKE, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a695, EVENT_SLOWPOKE_WELL_SLOWPOKES
+	person_event SPRITE_SLOWPOKE, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, SLOWPOKE, UnknownText_0x5ac61, EVENT_SLOWPOKE_WELL_SLOWPOKES
 	strengthboulder_event 2, 3
 	itemball_event 3, 10, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
@@ -53,13 +53,12 @@ Proton2Script:
 	pause 15
 	special Special_FadeInQuickly
 	disappear SLOWPOKEWELLB1F_KURT
-	moveperson SLOWPOKEWELLB1F_KURT, $b, $6
+	moveperson SLOWPOKEWELLB1F_KURT, 11, 6
 	appear SLOWPOKEWELLB1F_KURT
 	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData
 	spriteface PLAYER, RIGHT
 	showtext KurtLeaveSlowpokeWellText
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_SILVER
 	clearevent EVENT_ILEX_FOREST_APPRENTICE
 	clearevent EVENT_ILEX_FOREST_FARFETCHD
 	setevent EVENT_CHARCOAL_KILN_FARFETCH_D
@@ -72,7 +71,7 @@ Proton2Script:
 	special FadeOutPalettes
 	special HealParty
 	pause 15
-	warp KURTS_HOUSE, $3, $3
+	warp KURTS_HOUSE, 3, 3
 	end
 
 TrainerGruntM2:
@@ -95,21 +94,8 @@ SlowpokeScript_0x5a681:
 	cry SLOWPOKE
 	writetext UnknownText_0x5abcb
 	yesorno
-	iftrue UnknownScript_0x5a68f
-	closetext
-	end
-
-UnknownScript_0x5a68f:
-	jumpopenedtext UnknownText_0x5ac09
-
-SlowpokeScript_0x5a695:
-	faceplayer
-	opentext
-	writetext UnknownText_0x5ac61
-	cry SLOWPOKE
-	waitbutton
-	closetext
-	end
+	iftrue_jumpopenedtext UnknownText_0x5ac09
+	endtext
 
 KurtSlowpokeWellVictoryMovementData:
 	step_left

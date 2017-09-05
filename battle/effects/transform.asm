@@ -8,6 +8,22 @@ BattleCommand_Transform: ; 371cd
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, BattleEffect_ButItFailed
 
+	ld hl, BattleMonSpecies
+	ld de, BattleMonItem
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .got_mon_item
+	ld hl, EnemyMonSpecies
+	ld de, EnemyMonItem
+.got_mon_item
+	ld a, [hl]
+	cp MEWTWO
+	jr nz, .not_armored_mewtwo
+	ld a, [de]
+	cp ARMOR_SUIT
+	jp z, BattleEffect_ButItFailed
+.not_armored_mewtwo
+
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR

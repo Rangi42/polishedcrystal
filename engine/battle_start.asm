@@ -607,9 +607,15 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	dec b
 	jr nz, .loop
 
+	ld a, [OtherTrainerClass]
+	ld de, 1
+	ld hl, .RocketTrainerClasses
+	call IsInArray
+	ld de, RocketTransition
+	jr c, .got_transition
 	ld de, PokeBallTransition
+.got_transition
 	hlcoord 2, 1
-
 	ld b, SCREEN_WIDTH - 4
 .loop2
 	push hl
@@ -673,11 +679,11 @@ endr
 	ld [rSVBK], a
 	call .copypals
 	push hl
-	ld de, UnknBGPals + 7 palettes
+	ld de, UnknBGPals palette 7
 	ld bc, 1 palettes
 	call CopyBytes
 	pop hl
-	ld de, BGPals + 7 palettes
+	ld de, BGPals palette 7
 	ld bc, 1 palettes
 	call CopyBytes
 	pop af
@@ -691,17 +697,17 @@ endr
 	jp StartTrainerBattle_NextScene
 
 .copypals ; 8c677 (23:4677)
-	ld de, UnknBGPals + 7 palettes
+	ld de, UnknBGPals palette 7
 	call .copy
-	ld de, BGPals + 7 palettes
+	ld de, BGPals palette 7
 	call .copy
-	ld de, UnknOBPals + 6 palettes
+	ld de, UnknOBPals palette 6
 	call .copy
-	ld de, OBPals + 6 palettes
+	ld de, OBPals palette 6
 	call .copy
-	ld de, UnknOBPals + 7 palettes
+	ld de, UnknOBPals palette 7
 	call .copy
-	ld de, OBPals + 7 palettes
+	ld de, OBPals palette 7
 
 .copy ; 8c698 (23:4698)
 	push hl
@@ -710,6 +716,18 @@ endr
 	pop hl
 	ret
 ; 8c6a1 (23:46a1)
+
+.RocketTrainerClasses
+	db GRUNTM
+	db GRUNTF
+	db ROCKET_SCIENTIST
+	db JESSIE_JAMES
+	db PROTON
+	db PETREL
+	db ARCHER
+	db ARIANA
+	db GIOVANNI
+	db -1
 
 .timepals
 if !DEF(MONOCHROME)
@@ -767,6 +785,24 @@ PokeBallTransition:
 	db %00111100, %00111100
 	db %00001111, %11110000
 	db %00000011, %11000000
+
+RocketTransition:
+	db %11111111, %11110000
+	db %11111111, %11111100
+	db %11111111, %11111110
+	db %11111111, %11111110
+	db %11111000, %00111111
+	db %11111000, %00011111
+	db %11111000, %00111111
+	db %11111111, %11111110
+	db %11111111, %11111110
+	db %11111111, %11111100
+	db %11111111, %11111100
+	db %11111000, %01111100
+	db %11111000, %01111110
+	db %11111000, %00111110
+	db %11111000, %00111111
+	db %11111000, %00011111
 
 WipeLYOverrides: ; 8c6d8
 	ld a, [rSVBK]

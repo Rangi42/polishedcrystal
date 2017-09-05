@@ -1185,6 +1185,23 @@ applyonemovement: macro
 	db movement_step_end
 	endm
 
+	enum showcrytext_command
+showcrytext: macro
+	db showcrytext_command
+	dw \1 ; text_pointer
+	db \2 ; cry_id
+	endm
+
+	enum endtext_command
+endtext: macro
+	db endtext_command
+	endm
+
+	enum waitendtext_command
+waitendtext: macro
+	db waitendtext_command
+	endm
+
 	enum iftrue_endtext_command
 iftrue_endtext: macro
 	db iftrue_endtext_command
@@ -1193,4 +1210,9 @@ iftrue_endtext: macro
 	enum iffalse_endtext_command
 iffalse_endtext: macro
 	db iffalse_endtext_command
+	endm
+
+	enum loadgrottomon_command
+loadgrottomon: macro
+	db loadgrottomon_command
 	endm

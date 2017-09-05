@@ -1,3 +1,5 @@
+BugBite: ; TODO
+GyroBall: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -25,6 +27,7 @@ MegaKick:
 NightSlash:
 Peck:
 PowerGem:
+PowerWhip:
 Psystrike:
 QuickAttack:
 RazorLeaf:
@@ -90,6 +93,7 @@ MegaDrain:
 LeechLife:
 GigaDrain:
 DrainKiss:
+DrainPunch:
 	checkobedience
 	usedmovetext
 	doturn
@@ -141,10 +145,10 @@ Bonemerang:
 CometPunch:
 DoubleKick:
 DoubleSlap:
-FuryAttack:
-FurySwipes:
 PinMissile:
 IcicleSpear:
+RockBlast:
+FuryStrikes:
 	checkobedience
 	usedmovetext
 	doturn
@@ -798,7 +802,6 @@ AttackUp:
 	endmove
 
 DefenseUp:
-Harden:
 	checkobedience
 	usedmovetext
 	doturn
@@ -933,6 +936,7 @@ NastyPlot:
 	endmove
 
 SpecialDefenseUp2:
+Amnesia:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1629,7 +1633,6 @@ DestinyBond:
 	endmove
 
 Reversal:
-Flail:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1877,7 +1880,6 @@ Swagger:
 Avalanche:
 Acrobatics:
 Facade:
-FuryCutter:
 Hex:
 Venoshock:
 ConditionalBoostHit:
@@ -2032,18 +2034,11 @@ RapidSpin:
 	pickpocket
 	endmove
 
-MorningSun:
+HealingLight:
 	checkobedience
 	usedmovetext
 	doturn
-	healmornorday
-	endmove
-
-Moonlight:
-	checkobedience
-	usedmovetext
-	doturn
-	healnite
+	healweather
 	endmove
 
 HiddenPower:

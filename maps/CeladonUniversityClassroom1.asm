@@ -7,8 +7,8 @@ CeladonUniversityClassroom1_MapScriptHeader:
 CeladonUniversityClassroom1_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $2, 6, CELADON_UNIVERSITY_1F
-	warp_def $b, $3, 6, CELADON_UNIVERSITY_1F
+	warp_def 11, 2, 6, CELADON_UNIVERSITY_1F
+	warp_def 11, 3, 6, CELADON_UNIVERSITY_1F
 
 .XYTriggers: db 0
 
@@ -33,12 +33,12 @@ const_value set 2
 
 CeladonUniversityClassroom1ImakuniScript:
 	faceplayer
-	opentext
 	checkevent EVENT_BEAT_IMAKUNI
 	iftrue .Beaten
+	opentext
 	writetext .Text1
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .Text2
 	writetext .Text3
 	waitbutton
 	closetext
@@ -48,24 +48,29 @@ CeladonUniversityClassroom1ImakuniScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_IMAKUNI
-	opentext
 .Beaten
 	checkevent EVENT_GOT_PERSIM_BERRY_FROM_IMAKUNI
-	iftrue .GotItem
+	iftrue_jumptext .Text6
+	opentext
 	writetext .Text5
 	buttonsound
 	verbosegiveitem PERSIM_BERRY
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_PERSIM_BERRY_FROM_IMAKUNI
-.GotItem:
-	writetext .Text6
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.NoBattle:
-	jumpopenedtext .Text2
+.Text6:
+	text "In both battle and"
+	line "dance, soul and"
+	cont "rhythm are the"
+	cont "secret."
+
+	para "Hey, that sounds"
+	line "pretty cool!"
+
+	para "Maybe I'll become"
+	line "a poet!"
+	done
 
 .Text1:
 	text "Huh? W…Who are"
@@ -121,19 +126,6 @@ CeladonUniversityClassroom1ImakuniScript:
 
 	para "tell anyone I"
 	line "lost, OK?"
-	done
-
-.Text6:
-	text "In both battle and"
-	line "dance, soul and"
-	cont "rhythm are the"
-	cont "secret."
-
-	para "Hey, that sounds"
-	line "pretty cool!"
-
-	para "Maybe I'll become"
-	line "a poet!"
 	done
 
 CeladonUniversityClassroom1AndyText:

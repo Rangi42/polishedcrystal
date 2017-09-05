@@ -197,6 +197,8 @@ GetMonSprite: ; 14259
 	jr z, .wBreedMon1
 	cp SPRITE_DAYCARE_MON_2
 	jr z, .wBreedMon2
+	cp SPRITE_GROTTO_MON
+	jr z, .GrottoMon
 	cp SPRITE_VARS
 	jr nc, .Variable
 	jr .Icon
@@ -220,6 +222,11 @@ GetMonSprite: ; 14259
 
 .wBreedMon2
 	ld a, [wBreedMon2Species]
+	jr .Mon
+
+.GrottoMon
+	farcall GetHiddenGrottoContents
+	ld a, [hl]
 
 .Mon:
 	ld e, a
@@ -669,7 +676,7 @@ LoadEmote:: ; 1442f
 emote_header: MACRO
 	dw \1
 	db \2 tiles, BANK(\1)
-	dw VTiles1 tile \3
+	dw VTiles0 tile \3
 ENDM
 
 EmotesPointers: ; 144d
@@ -820,12 +827,12 @@ Group29Sprites:
 	db SPRITE_SAILOR
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
-	db SPRITE_OLIVINE_RIVAL ; SPRITE_SILVER, SPRITE_SUPER_NERD, SPRITE_COWGIRL
+	db SPRITE_OLIVINE_RIVAL ; SPRITE_SILVER, SPRITE_EUSINE, SPRITE_COWGIRL
 	db SPRITE_YOUNGSTER ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_SUICUNE
@@ -944,7 +951,7 @@ Group13Sprites:
 	db SPRITE_COSPLAYER ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	; 13 total sprites
 	db 0
 
@@ -988,7 +995,6 @@ Group28Sprites:
 Group8Sprites:
 ; Route33
 ; AzaleaTown
-	db SPRITE_AZALEA_ROCKET ; SPRITE_ROCKET, SPRITE_SILVER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
@@ -998,10 +1004,10 @@ Group8Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_KURT ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 9 walking sprites (8 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
-	; 12 total sprites
+	; 11 total sprites
 	db 0
 
 
@@ -1013,18 +1019,19 @@ Group9Sprites:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
-	db SPRITE_LAKE_OF_RAGE_LANCE ; SPRITE_LANCE, SPRITE_ENGINEER
+	db SPRITE_LANCE
 	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_LADY ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_ENGINEER ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_GYARADOS_TOP_LEFT
 	db SPRITE_GYARADOS_TOP_RIGHT
 	db SPRITE_GYARADOS_BOTTOM_LEFT
 	db SPRITE_GYARADOS_BOTTOM_RIGHT
 	db SPRITE_BALL_CUT_FRUIT
-	; 15 total sprites
+	; 16 total sprites
 	db 0
 
 
@@ -1083,7 +1090,7 @@ Group11Sprites:
 	db SPRITE_ROCKET ; doesn't walk
 	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
 	; 16 total sprites
@@ -1096,18 +1103,18 @@ Group12Sprites:
 ; VermilionCity
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_ENGINEER
-	db SPRITE_GRAMPS
-	db SPRITE_VERMILION_LAWRENCE ; SPRITE_LAWRENCE, SPRITE_ROCKER
+	db SPRITE_LAWRENCE
 	db SPRITE_POKEFAN_M
 	db SPRITE_ROCKER
 	db SPRITE_SAILOR
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
+	db SPRITE_GRAMPS ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_SUPER_NERD ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_MACHOP
 	; 15 total sprites
@@ -1145,7 +1152,7 @@ Group15Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	; 6 walking sprites
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_N64
 	db SPRITE_HO_OH
 	; 8 total sprites
 	db 0
@@ -1206,10 +1213,12 @@ Group18Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	db SPRITE_COOLTRAINER_F ; doesn't walk
 	db SPRITE_LASS ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_ROCKER ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
+	; 12 total sprites
 	db 0
 
 
@@ -1288,9 +1297,9 @@ Group23Sprites:
 	db SPRITE_LADY
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	db SPRITE_KUKUI ; doesn't walk
 	db SPRITE_COOLTRAINER_F ; doesn't walk
-	; 11 walking sprites (9 that walk)
+	; 10 walking sprites (9 that walk)
+	db SPRITE_KUKUI
 	db SPRITE_BALL_CUT_FRUIT
 	; 12 total sprites
 	db 0
@@ -1328,7 +1337,7 @@ Group30Sprites:
 	db SPRITE_SILVER
 	db SPRITE_GIOVANNI
 	; 8 walking sprites
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	; 9 total sprites
 	db 0
 

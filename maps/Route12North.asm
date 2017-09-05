@@ -7,8 +7,8 @@ Route12North_MapScriptHeader:
 Route12North_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $a, 1, ROUTE_12_GATE
-	warp_def $f, $b, 2, ROUTE_12_GATE
+	warp_def 15, 10, 1, ROUTE_12_GATE
+	warp_def 15, 11, 2, ROUTE_12_GATE
 
 .XYTriggers: db 0
 

@@ -1,8 +1,8 @@
 # To Do
 
 > Of course, it is very difficult to make the game, so I hope people don't get their expectations up too high.
-
-– Shigeru Ohmori, "[Pokémon’s Developers Talk About Their Console RPG Debut On Switch](http://www.gameinformer.com/b/features/archive/2017/08/08/pokemon-s-developers-talk-about-their-console-rpg-debut-on-switch.aspx)"
+>
+> — Shigeru Ohmori, "[Pokémon's Developers Talk About Their Console RPG Debut On Switch](http://www.gameinformer.com/b/features/archive/2017/08/08/pokemon-s-developers-talk-about-their-console-rpg-debut-on-switch.aspx)"
 
 
 ## Missing content
@@ -21,6 +21,18 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
+* Add hidden grottoes throughout Johto
+* Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
+* Notify when Pickup picks up an item
+* Variety Channel with daily unique music
+* Separate radio channels for March and Lullaby, available every day
+* Send gift Pokémon to the PC if the party is full
+* Add the improved PRNG from Prism
+* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
+* Evolution Guru says how your lead Pokémon can evolve
+* Get better Wonder Trade items at higher levels
+* Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
+* Use RBY's Surf and Bike themes in Kanto
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
@@ -32,20 +44,20 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Aesthetics
 
-* Draw Kukui's overworld sprite
+* Add a sprite for DJ Mary
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
+* "make hgss" to use HGSS-based palettes
 
 
 ### Events
 
-* Bulldoze move tutor in Mt. Mortar (move the Defense Curl tutor elsewhere)
-* Venoshock and Skill Swap tutors
 * Soul House + Radio Tower event to get Expn Card (see [tentative dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view))
 * Saffron Trainer Fan Club, where meeting certain conditions turns NPCs into you fan, whereupon they give you items (see [material/trainer-fan-club.txt](material/trainer-fan-club.txt))
 * Rematch Eusine in Celadon City if you have Suicune in your party
 * Rematch Bill in his house somehow
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
+* Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
 
 Shamouti Island:
 
@@ -57,12 +69,17 @@ Shamouti Island:
 
 Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/d/1_IDuWAP-QBRC5l4grKZKKlfWKQ2BjC2Yo0aynmli1Ac/view) (see also [material/pia-dialogue.txt](material/pia-dialogue.txt) and [material/pokeathlon-dialog.txt](material/pokeathlon-dialog.txt))), visible and hidden items, wild Pokémon, and unique wild moves.
 
+* Connect the Magnet Train track south to Cherrygrove Bay
+* Magnet Tunnel (TM74 Gyro Ball)
 * Soul House
-* Lavender Radio Tower
+* Lavender Radio Tower (use Reina, DJ Fern, and DJ Lily)
 * Saffron City Trainer Fan Club
 * Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
+* Reference the Pokéathlon Dome inside the Route 35 gate or Route 35 Coast
+* Goldenrod Museum?
+
 
 Shamouti Island:
 
@@ -73,6 +90,8 @@ Shamouti Island:
 
 ### Move effects
 
+* Bug Bite eats and uses the foe's held Berry
+* Gyro Ball's power is based on speed ratio
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
@@ -89,9 +108,12 @@ High priority:
 
 * Aqua Jet
 * Giga Impact
+* Gyro Ball
+* Rock Blast
 * Skill Swap
 * Stone Edge
 * Sucker Punch
+* Trick
 * U-turn
 * Water Pulse
 
@@ -99,6 +121,7 @@ Low priority:
 
 * Aerial Ace
 * Aqua Tail
+* Bug Bite
 * Bulldoze
 * Close Combat
 * DazzlinGleam
@@ -108,6 +131,7 @@ Low priority:
 * Facade
 * Gunk Shot
 * Hex
+* Knock Off
 * Roost
 * Toxic Spikes
 * Venoshock
@@ -123,11 +147,10 @@ Low priority:
 ### Optimizations
 
 * Finish and merge the optimizations branch
-* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps
+* Compress text with a Huffman tree (potentially save ~5.6% space)
+* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps (potentially save ~2.7% space)
 * Optimize battle command engine, including parameterized commands
-* Look for `:\n\tclosetext\n\tend` and use `iftrue_endtext` or `iffalse_endtext` instead
-* PERSONTYPE_GENERICTRAINER
-* PERSONTYPE_POKEMON (script pointer → text pointer, sight range → cry species)
+* Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
 
 
 ## Postponed until 4.0
@@ -210,34 +233,42 @@ Some of these may never be added; they're just suggestions.
       * Pawniard → Bisharp
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
+* More moves
+   * Triple Kick is replacable (learned by Hitmontop, Hitmonlee, and Dodrio)
+   * Lock-On is replacable
+   * Harden is replacable (merge with Defense Curl)
+   * Make Double Kick hit 2–5 times with 20 power
+   * Add Rock Blast (for Cloyster's Skill Link)
 * More music
+   * Pokémon Go Battle! Gym Leader (for Candela, Blanche, and Spark)
+   * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
    * R/S/E Route 120
-   * S/M Malie City (Day) (for Shamouti Shrine)
 * More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/doublespeed) mode
+* Port optimizations from Prism that improve overall speed of graphics loading, menu scrolling, etc
+* Move textbox frames into the font, allowing 256 map tiles
+* Load the font graphics only when textboxes are open, and otherwise load sprites' walking frames like G/S (popup location signs would have to be handled specially)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
 * Rock Climb areas
 * Battle Factory
 * Medals for achievements
+* Take photos with your team against backdrops
 * Something like Habitat Lists or DexNav via the Town Map
 * Something like Poké Radar or Pokéwalker
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
-* Add [Sweet Honey trees](http://iimarck.us/i/sweet-honey/) for Munchlax (replace Sweet Scent)
 * Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Variety Channel with daily unique music
-* Separate radio channels for March and Lullaby, available every day
 * Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)
    * Ruby [sub_8054164](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L937), Emerald [sub_8085B2C](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2662): picks the random wild Pokémon (called on map initialization and every step), stored in gUnknown_02029814
    * Ruby [sub_8054050](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L893): plays the cry of gUnknown_02029814 if on a non-water encounter tile at volume 50–80 instead of the usual 125
@@ -251,21 +282,13 @@ Some of these may never be added; they're just suggestions.
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
-* Send gift Pokémon to the PC if the party is full
-* Kurt gives Balls right away once per day
 * Replace the Apricorns with an Apricorn Box and add more Berries
-* Add the improved PRNG from Prism
-* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
-* Evolution Guru says how your lead Pokémon can evolve
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
-* Get better Wonder Trade items at higher levels
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
 * Use Mart interface for selling decorations, with a red sidebar
 * Add separate throwing animation graphics for more Poké Ball designs
-* Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Make Eggs use their Pokémon's palette
-* Use RBY's Surf and Bike themes in Kanto
 * Add umbrellas to Olivine City benches
 
 There are some features that I do *not* ever plan to add to Polished Crystal:

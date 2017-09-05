@@ -7,8 +7,8 @@ Route30_MapScriptHeader:
 Route30_MapEventHeader:
 
 .Warps: db 2
-	warp_def $27, $7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
-	warp_def $5, $11, 1, MR_POKEMONS_HOUSE
+	warp_def 39, 7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
+	warp_def 5, 17, 1, MR_POKEMONS_HOUSE
 
 .XYTriggers: db 0
 
@@ -222,14 +222,9 @@ TrainerBug_catcherDon:
 	jumptextfaceplayer Bug_catcherDonAfterText
 
 Route30YoungsterScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .CompletedEggQuest
-	jumpopenedtext Route30YoungsterText_DirectionsToMrPokemonsHouse
-
-.CompletedEggQuest:
-	jumpopenedtext Route30YoungsterText_EveryoneIsBattling
+	iftrue_jumptextfaceplayer Route30YoungsterText_EveryoneIsBattling
+	jumptextfaceplayer Route30YoungsterText_DirectionsToMrPokemonsHouse
 
 Route30_JoeysRattataAttacksMovement:
 	run_step_up

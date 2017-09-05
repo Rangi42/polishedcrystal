@@ -30,6 +30,7 @@ Predef_LoadCGBLayout: ; 8d59
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
+	dw _CGB_PokedexAreaPals
 	dw _CGB_StatsScreenHPPals
 	dw _CGB_Pokedex
 	dw _CGB_SlotMachine
@@ -86,7 +87,7 @@ _CGB_BattleColors: ; 8ddb
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
+	ld hl, UnknBGPals palette 0 + 2
 	call VaryColorsByDVs
 	pop de
 .player_backsprite
@@ -104,7 +105,7 @@ _CGB_BattleColors: ; 8ddb
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 1 palettes + 2
+	ld hl, UnknBGPals palette 1 + 2
 	call VaryColorsByDVs
 	pop de
 .trainer_sprite
@@ -134,19 +135,19 @@ _CGB_BattleColors: ; 8ddb
 	call LoadEnemyStatusIconPalette
 
 	ld hl, UnknBGPals
-	ld de, UnknBGPals + 6 palettes
+	ld de, UnknBGPals palette 6
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 
-	ld hl, UnknBGPals + 1 palettes
+	ld hl, UnknBGPals palette 1
 	ld de, UnknOBPals
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 
 	ld hl, UnknBGPals
-	ld de, UnknOBPals + 1 palettes
+	ld de, UnknOBPals palette 1
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -215,7 +216,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	call ByteFill
 
 	ld hl, BattleObjectPals
-	ld de, UnknOBPals + 2 palettes
+	ld de, UnknOBPals palette 2
 	ld bc, 6 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -235,7 +236,7 @@ _CGB_PokegearPals: ; 8eb9
 	bit 0, a
 	jr z, .male
 	ld hl, FemalePokegearInterfacePalette
-	ld de, UnknBGPals + 3 palettes
+	ld de, UnknBGPals palette 3
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -246,6 +247,38 @@ _CGB_PokegearPals: ; 8eb9
 	ld [hCGBPalUpdate], a
 	ret
 ; 8edb
+
+
+_CGB_PokedexAreaPals:
+	ld hl, PokegearPals
+	ld de, UnknBGPals
+	ld bc, 8 palettes
+	ld a, $5
+	call FarCopyWRAM
+
+	ld hl, .InvertedGrayPalette
+	ld de, UnknBGPals palette 3
+	ld bc, 1 palettes
+	ld a, $5
+	call FarCopyWRAM
+
+	call ApplyPals
+	ld a, $1
+	ld [hCGBPalUpdate], a
+	ret
+
+.InvertedGrayPalette:
+if !DEF(MONOCHROME)
+	RGB 00, 00, 00
+	RGB 21, 00, 21
+	RGB 13, 00, 13
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_WHITE
+endc
 
 
 _CGB_StatsScreenHPPals: ; 8edb
@@ -280,7 +313,7 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld a, [TempMonCaughtBall]
 	and CAUGHTBALL_MASK
 	call AddNTimes
-	ld de, UnknBGPals + 7 palettes
+	ld de, UnknBGPals palette 7
 	call LoadPalette_White_Col1_Col2_Black
 
 	call WipeAttrMap
@@ -354,7 +387,7 @@ _CGB_Pokedex: ; 8f70
 	call FarCopyWRAM
 
 	ld hl, .CursorPalette
-	ld de, UnknOBPals + 7 palettes
+	ld de, UnknOBPals palette 7
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -493,7 +526,7 @@ endr
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black
 
-	ld de, UnknBGPals + 7 palettes
+	ld de, UnknBGPals palette 7
 	ld hl, .PartyMenuBGPalette
 	call LoadHLPaletteIntoDE
 
@@ -545,11 +578,11 @@ _CGB_Evolution: ; 91e4
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals + 2
+	ld hl, UnknBGPals palette 0 + 2
 	call VaryColorsByDVs
 
 	ld hl, BattleObjectPals
-	ld de, UnknOBPals + 2 palettes
+	ld de, UnknOBPals palette 2
 	ld bc, 6 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -584,7 +617,7 @@ _CGB_MoveList: ; 9373
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals + 2
+	ld de, UnknBGPals palette 0 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -602,7 +635,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals + 6
+	ld de, UnknBGPals palette 0 + 6
 	ld bc, 2
 	ld a, $5
 	call FarCopyWRAM
@@ -972,7 +1005,7 @@ _CGB_PokedexUnownMode: ; 903e
 
 _CGB_BillsPC: ; 8fca
 	ld de, UnknBGPals
-	ld hl, PokedexRedPalette
+	ld hl, .MenuPalette
 	call LoadHLPaletteIntoDE
 
 	ld a, [CurPartySpecies]
@@ -1000,6 +1033,16 @@ _CGB_BillsPC: ; 8fca
 
 	jp _CGB_FinishLayout
 ; 9009
+
+.MenuPalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 20, 10
+	RGB 26, 10, 06
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
 
 .OrangePalette: ; 9036
 if !DEF(MONOCHROME)
@@ -1112,7 +1155,7 @@ _CGB_TradeTube: ; 9555
 	ld a, $5
 	call FarCopyWRAM
 
-	ld de, UnknOBPals + 7 palettes
+	ld de, UnknOBPals palette 7
 	ld hl, .TradeTubeBluePalette
 	call LoadHLPaletteIntoDE
 

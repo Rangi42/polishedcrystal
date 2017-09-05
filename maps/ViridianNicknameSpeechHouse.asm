@@ -7,8 +7,8 @@ ViridianNicknameSpeechHouse_MapScriptHeader:
 ViridianNicknameSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, VIRIDIAN_CITY
-	warp_def $7, $3, 2, VIRIDIAN_CITY
+	warp_def 7, 2, 2, VIRIDIAN_CITY
+	warp_def 7, 3, 2, VIRIDIAN_CITY
 
 .XYTriggers: db 0
 
@@ -17,24 +17,8 @@ ViridianNicknameSpeechHouse_MapEventHeader:
 .PersonEvents: db 4
 	person_event SPRITE_POKEFAN_M, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9ae54, -1
 	person_event SPRITE_TWIN, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9aecb, -1
-	person_event SPRITE_HOOTHOOT, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Hooty, -1
-	person_event SPRITE_RATTATA, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Rattey, -1
-
-Hooty:
-	opentext
-	writetext HootyText
-	cry HOOTHOOT
-	waitbutton
-	closetext
-	end
-
-Rattey:
-	opentext
-	writetext RatteyText
-	cry RATTATA
-	waitbutton
-	closetext
-	end
+	person_event SPRITE_HOOTHOOT, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, HootyText, -1
+	person_event SPRITE_RATTATA, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_POKEMON, RATTATA, RatteyText, -1
 
 UnknownText_0x9ae54:
 	text "Do you put a lot"

@@ -7,14 +7,14 @@ KrissHouse1F_MapScriptHeader:
 KrissHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $6, 2, NEW_BARK_TOWN
-	warp_def $7, $7, 2, NEW_BARK_TOWN
-	warp_def $0, $9, 1, KRISS_HOUSE_2F
+	warp_def 7, 6, 2, NEW_BARK_TOWN
+	warp_def 7, 7, 2, NEW_BARK_TOWN
+	warp_def 0, 9, 1, KRISS_HOUSE_2F
 
 .XYTriggers: db 3
-	xy_trigger 0, $4, $8, MomTrigger1
-	xy_trigger 0, $4, $9, MomTrigger2
-	xy_trigger 0, $2, $7, MomTrigger3
+	xy_trigger 0, 4, 8, MomTrigger1
+	xy_trigger 0, 4, 9, MomTrigger2
+	xy_trigger 0, 2, 7, MomTrigger3
 
 .Signposts: db 4
 	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
@@ -43,14 +43,14 @@ MomTrigger2:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
 	spriteface KRISSHOUSE1F_MOM1, RIGHT
-	applymovement PLAYER, KrissHouse1FSlowStepLeftMovementData
+	applyonemovement PLAYER, slow_step_left
 	jump MomEventScript
 
 MomTrigger3:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
 	spriteface KRISSHOUSE1F_MOM1, UP
-	applymovement PLAYER, KrissHouse1FSlowStepDownMovementData
+	applyonemovement PLAYER, slow_step_down
 MomEventScript:
 	opentext
 	writetext MomIntroText
@@ -308,6 +308,44 @@ GearName:
 
 endc
 
+FridgeText:
+	text "Let's see what's"
+	line "in the fridge…"
+
+	para "Fresh Water and"
+	line "tasty Lemonade!"
+	done
+
+SinkText:
+	text "The sink is spot-"
+	line "less. Mom likes it"
+	cont "clean."
+	done
+
+StoveText:
+	text "Mom's specialty!"
+
+	para "Cinnabar Volcano"
+	line "Burger!"
+	done
+
+TVScript:
+	checkcode VAR_FACING
+	if_equal UP, .rightside
+	jumpstd tv
+.rightside
+	thistext
+
+	text "There's a movie on"
+	line "TV: Stars dot the"
+
+	para "sky as two boys"
+	line "ride on a train…"
+
+	para "I'd better get"
+	line "rolling too!"
+	done
+
 MomScript:
 	faceplayer
 	checktriggers
@@ -334,60 +372,11 @@ MomScript:
 .BankOfMom:
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	special Special_BankOfMom
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .MomEvent:
 	playmusic MUSIC_MOM
 	jump MomEventScript
-
-NeighborScript:
-	faceplayer
-	opentext
-	checkmorn
-	iftrue .MornScript
-	checkday
-	iftrue .DayScript
-	checknite
-	iftrue .NiteScript
-
-.MornScript:
-	writetext NeighborMornIntroText
-	buttonsound
-	jump .Main
-
-.DayScript:
-	writetext NeighborDayIntroText
-	buttonsound
-	jump .Main
-
-.NiteScript:
-	writetext NeighborNiteIntroText
-	buttonsound
-	jump .Main
-
-.Main:
-	writetext NeighborText
-	waitbutton
-	closetext
-	spriteface LAST_TALKED, RIGHT
-	end
-
-TVScript:
-	checkcode VAR_FACING
-	if_not_equal UP, .wrongside
-	jumptext TVText
-.wrongside
-	jumpstd tv
-
-KrissHouse1FSlowStepLeftMovementData:
-	slow_step_left
-	step_end
-
-KrissHouse1FSlowStepDownMovementData:
-	slow_step_down
-	step_end
 
 MomIntroText:
 if DEF(DEBUG)
@@ -498,26 +487,58 @@ MomDoItText:
 	line "the way!"
 	done
 
-NeighborMornIntroText:
+NeighborScript:
+	faceplayer
+	opentext
+	checkmorn
+	iftrue .MornScript
+	checkday
+	iftrue .DayScript
+	checknite
+	iftrue .NiteScript
+
+.MornScript:
+	writetext .MornIntroText
+	buttonsound
+	jump .Main
+
+.DayScript:
+	writetext .DayIntroText
+	buttonsound
+	jump .Main
+
+.NiteScript:
+	writetext .NiteIntroText
+	buttonsound
+	jump .Main
+
+.Main:
+	writetext .NeighborText
+	waitbutton
+	closetext
+	spriteface LAST_TALKED, RIGHT
+	end
+
+.MornIntroText:
 	text "Good morning,"
 	line "<PLAYER>!"
 
 	para "I'm visiting!"
 	done
 
-NeighborDayIntroText:
+.DayIntroText:
 	text "Hello, <PLAYER>!"
 	line "I'm visiting!"
 	done
 
-NeighborNiteIntroText:
+.NiteIntroText:
 	text "Good evening,"
 	line "<PLAYER>!"
 
 	para "I'm visiting!"
 	done
 
-NeighborText:
+.NeighborText:
 	text "<PLAYER>, have you"
 	line "heard?"
 
@@ -529,36 +550,4 @@ NeighborText:
 
 	para "She really loves"
 	line "#mon!"
-	done
-
-FridgeText:
-	text "Let's see what's"
-	line "in the fridge…"
-
-	para "Fresh Water and"
-	line "tasty Lemonade!"
-	done
-
-SinkText:
-	text "The sink is spot-"
-	line "less. Mom likes it"
-	cont "clean."
-	done
-
-StoveText:
-	text "Mom's specialty!"
-
-	para "Cinnabar Volcano"
-	line "Burger!"
-	done
-
-TVText:
-	text "There's a movie on"
-	line "TV: Stars dot the"
-
-	para "sky as two boys"
-	line "ride on a train…"
-
-	para "I'd better get"
-	line "rolling too!"
 	done

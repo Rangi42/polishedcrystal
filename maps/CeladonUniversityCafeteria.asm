@@ -7,8 +7,8 @@ CeladonUniversityCafeteria_MapScriptHeader:
 CeladonUniversityCafeteria_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $d, 2, CELADON_UNIVERSITY_2F
-	warp_def $7, $e, 2, CELADON_UNIVERSITY_2F
+	warp_def 7, 13, 2, CELADON_UNIVERSITY_2F
+	warp_def 7, 14, 2, CELADON_UNIVERSITY_2F
 
 .XYTriggers: db 0
 
@@ -186,21 +186,16 @@ CeladonUniversityCafeteriaLadyText:
 	done
 
 CeladonUniversityCafeteriaYoungster2Script:
+	checkevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
-	iftrue .GotItem
 	writetext .Text1
 	buttonsound
 	verbosegiveitem LEMONADE
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_LEMONADE_IN_UNIVERSITY
-.GotItem:
-	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext .Text2
 
 .Text1:
 	text "The vending ma-"
@@ -221,33 +216,33 @@ CeladonUniversityCafeteriaBakerScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_BOUGHT_LEFTOVERS
-	iftrue .BoughtLeftovers
+	iftrue_jumpopenedtext .Text3
 	writetext .Text1
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoBuy
+	iffalse_jumpopenedtext .Text4
 	checkmoney $0, 4000
 	if_equal $2, .NotEnoughMoney
 	giveitem LEFTOVERS
-	iffalse .NoRoom
+	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_BOUGHT_LEFTOVERS
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	jumpopenedtext .Text2
+	thisopenedtext
 
-.BoughtLeftovers:
-	jumpopenedtext .Text3
-
-.NoBuy:
-	jumpopenedtext .Text4
+.Text2:
+	text "Here you go, hon!"
+	line "Enjoy it!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext .Text5
+	thisopenedtext
 
-.NoRoom:
-	jumpopenedtext .Text6
+	text "You don't have"
+	line "enough money…"
+	done
 
 .Text1:
 	text "What's that, hon?"
@@ -262,11 +257,6 @@ CeladonUniversityCafeteriaBakerScript:
 	line "Want some?"
 	done
 
-.Text2:
-	text "Here you go, hon!"
-	line "Enjoy it!"
-	done
-
 .Text3:
 	text "There aren't any"
 	line "more Leftovers"
@@ -275,11 +265,6 @@ CeladonUniversityCafeteriaBakerScript:
 
 .Text4:
 	text "Have a nice day!"
-	done
-
-.Text5:
-	text "You don't have"
-	line "enough money…"
 	done
 
 .Text6:

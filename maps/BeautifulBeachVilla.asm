@@ -7,8 +7,8 @@ BeautifulBeachVilla_MapScriptHeader:
 BeautifulBeachVilla_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, BEAUTIFUL_BEACH
-	warp_def $7, $3, 3, BEAUTIFUL_BEACH
+	warp_def 7, 2, 3, BEAUTIFUL_BEACH
+	warp_def 7, 3, 3, BEAUTIFUL_BEACH
 
 .XYTriggers: db 0
 

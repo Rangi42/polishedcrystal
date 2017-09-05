@@ -7,9 +7,9 @@ MurkySwamp_MapScriptHeader:
 MurkySwamp_MapEventHeader:
 
 .Warps: db 3
-	warp_def $23, $7, 1, STORMY_BEACH
-	warp_def $23, $8, 2, STORMY_BEACH
-	warp_def $5, $24, 3, UNION_CAVE_B1F_SOUTH
+	warp_def 35, 7, 1, STORMY_BEACH
+	warp_def 35, 8, 2, STORMY_BEACH
+	warp_def 5, 36, 3, UNION_CAVE_B1F_SOUTH
 
 .XYTriggers: db 0
 
@@ -46,7 +46,7 @@ MurkySwampCherylScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -61,7 +61,7 @@ MurkySwampCherylScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_WEIGHT
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -72,13 +72,6 @@ MurkySwampCherylScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_CHERYL
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Hello, my name's"

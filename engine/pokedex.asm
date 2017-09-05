@@ -740,7 +740,7 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 	ld [Options2], a
 	xor a
 	ld [OptionsBuffer], a
-	call Pokedex_LoadInvertedFont
+	call LoadStandardFont
 	ld a, DEXSTATE_OPTION_SCR
 	ld [wJumptableIndex], a
 	call DelayFrame
@@ -2338,9 +2338,7 @@ Pokedex_LoadAnyFootprint: ; 4147b
 	ld d, h
 	ld hl, VTiles2 tile $67
 	lb bc, BANK(Footprints), 2
-	call Request1bpp
-
-	ret
+	jp Request1bpp
 
 
 Pokedex_LoadGFX:
@@ -2350,11 +2348,8 @@ Pokedex_LoadGFX2:
 	ld bc, $31 tiles
 	xor a
 	call ByteFill
-	call Pokedex_LoadInvertedFont
+	call LoadStandardFont
 	call LoadFontsExtra
-	ld hl, VTiles2 tile $60
-	ld bc, $20 tiles
-	call Pokedex_InvertTiles
 	ld hl, PokedexLZ
 	ld de, VTiles2 tile $31
 	call Decompress
@@ -2364,22 +2359,6 @@ Pokedex_LoadGFX2:
 	ld a, 6
 	call SkipMusic
 	jp EnableLCD
-
-Pokedex_LoadInvertedFont: ; 414fb
-	call LoadStandardFont
-	ld hl, VTiles1
-	ld bc, $80 tiles
-
-Pokedex_InvertTiles: ; 41504
-.loop
-	ld a, [hl]
-	cpl
-	ld [hli], a
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
-	ret
 
 PokedexLZ: ; 4150e
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"
@@ -2393,7 +2372,7 @@ Pokedex_LoadUnownFont: ; 41a2c
 	and $ff - FONT_MASK
 	or UNOWN_FONT
 	ld [Options2], a
-	jp Pokedex_LoadInvertedFont
+	jp LoadStandardFont
 
 Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
 	ld a, [MonVariant]

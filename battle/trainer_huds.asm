@@ -106,11 +106,11 @@ endr
 
 DrawPlayerHUDBorder: ; 2c095
 	hlcoord 19, 11
-	ld [hl], "<XPEND>" ; exp bar end cap
+	ld [hl], "<XPEND>"
 	hlcoord 10, 11
-	ld [hl], $6e ; first "EXP" tile
+	ld [hl], "<XP1>"
 	inc hl
-	ld [hl], $6f ; second "EXP" tile
+	ld [hl], "<XP2>"
 	ret
 
 DrawPlayerPartyIconHUDBorder: ; 2c0ad
@@ -156,7 +156,7 @@ DrawEnemyHUDBorder: ; 2c0c5
 	call CheckCaughtMon
 	ret z
 	hlcoord 1, 1
-	ld [hl], $62 ; colored ball
+	ld [hl], "<BALL>"
 	ret
 
 .nuzlocke

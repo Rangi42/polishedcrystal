@@ -225,7 +225,7 @@ endc
 	ld [hBGMapMode], a
 
 	xor a
-	ld [UnknBGPals + 2], a
+	ld [UnknBGPals palette 0 + 2], a
 
 ; Play starting sound effect
 	call SFXChannelsOff
@@ -236,7 +236,7 @@ endc
 ; 10eea7
 
 SuicuneFrameIterator: ; 10eea7
-	ld hl, UnknBGPals + 2
+	ld hl, UnknBGPals palette 0 + 2
 	ld a, [hl]
 	ld c, a
 	inc [hl]

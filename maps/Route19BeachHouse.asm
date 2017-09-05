@@ -7,8 +7,8 @@ Route19BeachHouse_MapScriptHeader:
 Route19BeachHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, ROUTE_19
-	warp_def $7, $3, 2, ROUTE_19
+	warp_def 7, 2, 2, ROUTE_19
+	warp_def 7, 3, 2, ROUTE_19
 
 .XYTriggers: db 0
 
@@ -125,11 +125,7 @@ Route19BeachHouseVictorScript:
 
 Route19BeachHouseSurfingPikachuScript:
 	faceplayer
-	opentext
-	writetext .Text
-	cry PIKACHU
-	waitbutton
-	closetext
+	showcrytext .Text, PIKACHU
 	end
 
 .Text:

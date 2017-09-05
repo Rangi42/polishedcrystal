@@ -105,7 +105,7 @@ ENDM
 	engine_flag StatusFlags2, 3 ; seen shamouti island
 	engine_flag StatusFlags2, 4 ; bike shop call enabled (1024 bike steps reqd)
 	engine_flag StatusFlags2, 5 ; give pokerus
-	engine_flag StatusFlags2, 6 ; unused
+	engine_flag StatusFlags2, 6 ; exorcised lav radio tower
 	engine_flag StatusFlags2, 7 ; rockets in mahogany
 
 	engine_flag BikeFlags, 0 ; strength active ; $18
@@ -203,7 +203,7 @@ ENDM
 	engine_flag DailyFlags4, 2 ; fought psychic inver
 	engine_flag DailyFlags4, 3 ; bought moomoo milk
 	engine_flag DailyFlags4, 4 ; changed trendy phrase
-	engine_flag DailyFlags4, 5 ; daily unused
+	engine_flag DailyFlags4, 5 ; all hidden grottoes
 	engine_flag DailyFlags4, 6 ; daily unused
 	engine_flag DailyFlags4, 7 ; daily unused
 

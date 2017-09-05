@@ -7,18 +7,18 @@ PokemonLeagueGate_MapScriptHeader:
 PokemonLeagueGate_MapEventHeader:
 
 .Warps: db 8
-	warp_def $7, $13, 1, ROUTE_22
-	warp_def $7, $14, 1, ROUTE_22
-	warp_def $11, $a, 1, ROUTE_26
-	warp_def $11, $b, 1, ROUTE_26
-	warp_def $0, $a, 1, ROUTE_23
-	warp_def $0, $b, 2, ROUTE_23
-	warp_def $7, $1, 2, ROUTE_28
-	warp_def $7, $2, 2, ROUTE_28
+	warp_def 7, 19, 1, ROUTE_22
+	warp_def 7, 20, 1, ROUTE_22
+	warp_def 17, 10, 1, ROUTE_26
+	warp_def 17, 11, 1, ROUTE_26
+	warp_def 0, 10, 1, ROUTE_23
+	warp_def 0, 11, 2, ROUTE_23
+	warp_def 7, 1, 2, ROUTE_28
+	warp_def 7, 2, 2, ROUTE_28
 
 .XYTriggers: db 2
-	xy_trigger 0, $a, $a, PokemonLeagueGateXYTriggerScript1
-	xy_trigger 0, $a, $b, PokemonLeagueGateXYTriggerScript2
+	xy_trigger 0, 10, 10, PokemonLeagueGateXYTriggerScript1
+	xy_trigger 0, 10, 11, PokemonLeagueGateXYTriggerScript2
 
 .Signposts: db 0
 
@@ -28,8 +28,7 @@ PokemonLeagueGate_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 5, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9bb37, EVENT_FOUGHT_SNORLAX
 
 PokemonLeagueGateXYTriggerScript2:
-	applymovement PLAYER, PokemonLeagueGateXYTriggerScript2Movement
-
+	applyonemovement PLAYER, step_left
 PokemonLeagueGateXYTriggerScript1:
 	spriteface PLAYER, LEFT
 	jump UnknownScript_0x9ba04
@@ -40,10 +39,6 @@ UnknownScript_0x9ba04:
 	showtext UnknownText_0x9ba29
 	dotrigger $1
 	end
-
-PokemonLeagueGateXYTriggerScript2Movement:
-	step_left
-	step_end
 
 UnknownText_0x9ba29:
 	text "Only trainers who"

@@ -46,6 +46,12 @@ INCLUDE "maps/TradeCenter.asm"
 INCLUDE "maps/Colosseum.asm"
 
 
+SECTION "Hidden Grotto Scripts", ROMX
+
+INCLUDE "maps/HiddenTreeGrotto.asm"
+INCLUDE "maps/HiddenCaveGrotto.asm" ; shares text with HiddenTreeGrotto.asm
+
+
 SECTION "Battle Tower Scripts", ROMX
 
 INCLUDE "maps/BattleTower1F.asm"
@@ -239,6 +245,13 @@ INCLUDE "maps/UndergroundPathSwitchRoomEntrances.asm"
 INCLUDE "maps/WarehouseEntrance.asm"
 
 
+SECTION "Magnet Tunnel Scripts", ROMX
+
+INCLUDE "maps/MagnetTunnelEast.asm"
+INCLUDE "maps/MagnetTunnelWest.asm"
+INCLUDE "maps/MagnetTunnelInside.asm"
+
+
 SECTION "National Park Scripts", ROMX
 
 INCLUDE "maps/NationalPark.asm"
@@ -366,7 +379,8 @@ INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 
 SECTION "Lake of Rage Scripts", ROMX
 
-INCLUDE "maps/LakeofRage.asm"
+INCLUDE "maps/LakeofRageNorth.asm"
+INCLUDE "maps/LakeofRageSouth.asm" ; shares text with LakeofRageNorth.asm
 INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
 INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 
@@ -655,7 +669,7 @@ SECTION "Celadon University Scripts", ROMX
 INCLUDE "maps/CeladonUniversity1F.asm"
 INCLUDE "maps/CeladonUniversity2F.asm"
 INCLUDE "maps/CeladonUniversityCafeteria.asm"
-INCLUDE "maps/CeladonUniversityDeansOffice.asm"
+INCLUDE "maps/CeladonUniversityPrincipalsOffice.asm"
 INCLUDE "maps/CeladonUniversityLounge.asm"
 INCLUDE "maps/CeladonUniversityPool.asm"
 INCLUDE "maps/CeladonUniversityWestwoodsOffice.asm"
@@ -716,6 +730,7 @@ INCLUDE "maps/FuchsiaCity.asm"
 INCLUDE "maps/FuchsiaMart.asm"
 INCLUDE "maps/FuchsiaGym.asm"
 INCLUDE "maps/FuchsiaBillSpeechHouse.asm"
+INCLUDE "maps/FuchsiaSafariBallHouse.asm"
 INCLUDE "maps/SafariZoneWardensHome.asm"
 INCLUDE "maps/LuckyIsland.asm"
 

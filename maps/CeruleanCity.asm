@@ -8,17 +8,17 @@ CeruleanCity_MapScriptHeader:
 CeruleanCity_MapEventHeader:
 
 .Warps: db 11
-	warp_def $f, $7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
-	warp_def $11, $1c, 1, CERULEAN_POLICE_STATION
-	warp_def $13, $d, 1, CERULEAN_TRADE_SPEECH_HOUSE
-	warp_def $15, $13, 1, CERULEAN_POKECENTER_1F
-	warp_def $17, $1e, 1, CERULEAN_GYM
-	warp_def $1d, $19, 2, CERULEAN_MART
-	warp_def $d, $2, 1, CERULEAN_CAVE_1F
-	warp_def $1d, $e, 1, CERULEAN_BIKE_SHOP
-	warp_def $f, $f, 1, CERULEAN_BERRY_POWDER_HOUSE
-	warp_def $1d, $13, 1, CERULEAN_COUPLE_HOUSE
-	warp_def $9, $1d, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
+	warp_def 15, 7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
+	warp_def 17, 28, 1, CERULEAN_POLICE_STATION
+	warp_def 19, 13, 1, CERULEAN_TRADE_SPEECH_HOUSE
+	warp_def 21, 19, 1, CERULEAN_POKECENTER_1F
+	warp_def 23, 30, 1, CERULEAN_GYM
+	warp_def 29, 25, 2, CERULEAN_MART
+	warp_def 13, 2, 1, CERULEAN_CAVE_1F
+	warp_def 29, 14, 1, CERULEAN_BIKE_SHOP
+	warp_def 15, 15, 1, CERULEAN_BERRY_POWDER_HOUSE
+	warp_def 29, 19, 1, CERULEAN_COUPLE_HOUSE
+	warp_def 9, 29, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
 
 .XYTriggers: db 0
 
@@ -36,7 +36,7 @@ CeruleanCity_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	person_event SPRITE_COOLTRAINER_M, 26, 30, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
 	person_event SPRITE_SUPER_NERD, 15, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
-	person_event SPRITE_SLOWBRO, 24, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeruleanCitySlowbro, -1
+	person_event SPRITE_SLOWBRO, 24, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWBRO, CeruleanCitySlowbroText, -1
 	person_event SPRITE_FISHER, 22, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
 	person_event SPRITE_COOLTRAINER_M, 14, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
@@ -50,32 +50,15 @@ CeruleanCityFlyPoint:
 	return
 
 CooltrainerMScript_0x184009:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x184017
-	jumpopenedtext UnknownText_0x1840bc
-
-UnknownScript_0x184017:
-	jumpopenedtext UnknownText_0x184144
-
-CeruleanCitySlowbro:
-	opentext
-	writetext CeruleanCitySlowbroText
-	cry SLOWBRO
-	waitbutton
-	closetext
-	end
+	iftrue_jumptextfaceplayer UnknownText_0x184144
+	jumptextfaceplayer UnknownText_0x1840bc
 
 CooltrainerFScript_0x18402a:
 	showtextfaceplayer UnknownText_0x1841fa
 	spriteface CERULEANCITY_COOLTRAINER_F, LEFT
 	showtext UnknownText_0x184229
-	opentext
-	writetext CeruleanCitySlowbroText
-	cry SLOWBRO
-	waitbutton
-	closetext
+	showcrytext CeruleanCitySlowbroText, SLOWBRO
 	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:

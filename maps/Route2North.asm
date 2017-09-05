@@ -7,12 +7,12 @@ Route2North_MapScriptHeader:
 Route2North_MapEventHeader:
 
 .Warps: db 6
-	warp_def $13, $f, 1, ROUTE_2_NUGGET_SPEECH_HOUSE
-	warp_def $23, $10, 1, ROUTE_2_GATE
-	warp_def $23, $11, 2, ROUTE_2_GATE
-	warp_def $9, $c, 3, DIGLETTS_CAVE
-	warp_def $b, $1, 3, VIRIDIAN_FOREST_PEWTER_GATE
-	warp_def $b, $2, 4, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_def 19, 15, 1, ROUTE_2_NUGGET_SPEECH_HOUSE
+	warp_def 35, 16, 1, ROUTE_2_GATE
+	warp_def 35, 17, 2, ROUTE_2_GATE
+	warp_def 9, 12, 3, DIGLETTS_CAVE
+	warp_def 11, 1, 3, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_def 11, 2, 4, VIRIDIAN_FOREST_PEWTER_GATE
 
 .XYTriggers: db 0
 

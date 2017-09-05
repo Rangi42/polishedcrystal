@@ -7,11 +7,11 @@ PewterMuseumOfScience1F_MapScriptHeader:
 PewterMuseumOfScience1F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $7, $a, 6, PEWTER_CITY
-	warp_def $7, $b, 6, PEWTER_CITY
-	warp_def $7, $10, 7, PEWTER_CITY
-	warp_def $7, $11, 7, PEWTER_CITY
-	warp_def $7, $7, 1, PEWTER_MUSEUM_OF_SCIENCE_2F
+	warp_def 7, 10, 6, PEWTER_CITY
+	warp_def 7, 11, 6, PEWTER_CITY
+	warp_def 7, 16, 7, PEWTER_CITY
+	warp_def 7, 17, 7, PEWTER_CITY
+	warp_def 7, 7, 1, PEWTER_MUSEUM_OF_SCIENCE_2F
 
 .XYTriggers: db 0
 

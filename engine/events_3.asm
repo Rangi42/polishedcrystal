@@ -143,50 +143,111 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ld [hLCDCPointer], a
 	ret
 
-
-GiveFontOpaqueBackground:
-; Two bytes in VRAM define eight pixels (2 bits/pixel)
-; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
-; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
-; %00 = white, %11 = black, %10 = light, %01 = dark
-	;call DisableLCD
-	ld hl, VTiles1
-	ld bc, ($80 tiles) / 2
-.loop
-	ld a, $ff
-	ld [hli], a
-	inc hl
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
-	ld hl, VTiles1 + $ff tiles
-	ld a, 8
-.loop2
-	ld [hl], $ff
-	inc hl
-	ld [hl], $0
-	inc hl
-	dec a
-	jr nz, .loop2
-	;call EnableLCD
-	ret
-
-
 LoadMapNameSignGFX: ; b80c6
+	ld a, $1
+	ld [rVBK], a
 	ld de, MapEntryFrameGFX
-	ld hl, VTiles2 tile $70
-	lb bc, BANK(MapEntryFrameGFX), 13
-	jp Get2bpp
+	ld hl, VTiles4 tile $78
+	lb bc, BANK(MapEntryFrameGFX), 8
+	call Get2bpp
+	xor a
+	ld [rVBK], a
+	ret
 ; b80d3
 
 InitMapNameFrame: ; b80d3
+; InitMapSignAttrMap
 	hlcoord 0, 0
-	lb bc, 2, 18
-	call InitMapSignAttrMap
-	jp PlaceMapNameFrame
-; b80e1
+	ld de, AttrMap - TileMap
+	add hl, de
+	; top row
+	ld a, TILE_BANK | BEHIND_BG | PAL_BG_TEXT
+	ld bc, SCREEN_WIDTH - 1
+	call ByteFill
+	or X_FLIP
+	ld [hli], a
+	; middle rows
+rept 2
+	and $ff - X_FLIP
+	ld [hli], a
+	and $ff - TILE_BANK
+	ld bc, SCREEN_WIDTH - 2
+	call ByteFill
+	or X_FLIP | TILE_BANK
+	ld [hli], a
+endr
+	; bottom row
+	and $ff - X_FLIP
+	ld bc, SCREEN_WIDTH - 1
+	call ByteFill
+	or X_FLIP
+	ld [hl], a
+; PlaceMapNameFrame
+	hlcoord 0, 0
+	; top left
+	ld a, $f8
+	ld [hli], a
+	; top row
+	inc a ; $f9
+	call .FillTopBottom
+	; top right
+	dec a ; $f8
+	ld [hli], a
+	; left, first line
+	ld a, $fb
+	ld [hli], a
+	; first line
+	call .FillMiddle
+	; right, first line
+	ld [hli], a
+	; left, second line
+	inc a ; $fc
+	ld [hli], a
+	; second line
+	call .FillMiddle
+	; right, second line
+	ld [hli], a
+	; bottom left
+	inc a ; $fd
+	ld [hli], a
+	; bottom
+	inc a ; $fe
+	call .FillTopBottom
+	; bottom right
+	dec a ; $fd
+	ld [hl], a
+	ret
+; b815b
 
+.FillMiddle: ; b815b
+	push af
+	ld a, $7f
+	ld c, SCREEN_WIDTH - 2
+.loop
+	ld [hli], a
+	dec c
+	jr nz, .loop
+	pop af
+	ret
+; b8164
+
+.FillTopBottom: ; b8164
+	ld c, 5
+	jr .enterloop
+
+.continueloop
+	ld [hli], a
+	ld [hli], a
+
+.enterloop
+	inc a
+	ld [hli], a
+	ld [hli], a
+	dec a
+	dec c
+	jr nz, .continueloop
+	ret
+; b8172
 
 PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	ld a, [wCurrentLandmark]
@@ -219,101 +280,34 @@ PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	pop hl
 	ret
 
-
-InitMapSignAttrMap: ; b8115
-	ld de, AttrMap - TileMap
-	add hl, de
-rept 2
-	inc b
-endr
-rept 2
-	inc c
-endr
-	ld a, (1 << 7) | PAL_BG_TEXT
-.loop
-	push bc
-	push hl
-.inner_loop
+GiveFontOpaqueBackground:
+; Two bytes in VRAM define eight pixels (2 bits/pixel)
+; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
+; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
+; %00 = white, %11 = black, %10 = light, %01 = dark
+	;call DisableLCD
+	ld hl, VTiles1
+	ld bc, (106 tiles) / 2 ; only from "A" to "9"
+.loop1
+	ld a, $ff
 	ld [hli], a
-	dec c
-	jr nz, .inner_loop
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .loop
-	ret
-; b812f
-
-PlaceMapNameFrame: ; b812f
-	hlcoord 0, 0
-	; top left
-	ld a, $71
-	ld [hli], a
-	; top row
-	ld a, $72
-	call .FillTopBottom
-	; top right
-	ld a, $74
-	ld [hli], a
-	; left, first line
-	ld a, $75
-	ld [hli], a
-	; first line
-	call .FillMiddle
-	; right, first line
-	ld a, $77
-	ld [hli], a
-	; left, second line
-	ld a, $76
-	ld [hli], a
-	; second line
-	call .FillMiddle
-	; right, second line
-	ld a, $78
-	ld [hli], a
-	; bottom left
-	ld a, $79
-	ld [hli], a
-	; bottom
-	ld a, $7a
-	call .FillTopBottom
-	; bottom right
-	ld a, $7c
-	ld [hl], a
-	ret
-; b815b
-
-.FillMiddle: ; b815b
-	ld c, 18
-	ld a, $70
-.loop
-	ld [hli], a
-	dec c
-	jr nz, .loop
-	ret
-; b8164
-
-.FillTopBottom: ; b8164
-	ld c, 5
-	jr .enterloop
-
-.continueloop
-rept 2
-	ld [hli], a
-endr
-
-.enterloop
-	inc a
-rept 2
-	ld [hli], a
-endr
+	inc hl
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop1
+	ld hl, VTiles1 tile $ff
+	ld a, (1 tiles) / 2
+.loop2
+	ld [hl], $ff
+	inc hl
+	ld [hl], $0
+	inc hl
 	dec a
-	dec c
-	jr nz, .continueloop
+	jr nz, .loop2
+	;call EnableLCD
 	ret
-; b8172
+
 
 CheckForHiddenItems: ; b8172
 ; Checks to see if there are hidden items on the screen that have not yet been found.  If it finds one, returns carry.
@@ -359,6 +353,8 @@ CheckForHiddenItems: ; b8172
 	jr nc, .next
 ; Is this signpost a hidden item?  If not, go to the next signpost.
 	call .GetFarByte
+	cp SIGNPOST_GROTTOITEM
+	jr z, .grottoitem
 	cp SIGNPOST_ITEM
 	jr c, .next
 ; Has this item already been found?  If not, set off the Itemfinder.
@@ -366,6 +362,12 @@ CheckForHiddenItems: ; b8172
 	ld e, a
 	call .GetFarByte
 	ld d, a
+	jr .checkitem
+.grottoitem
+	call .GetFarByte
+	call .GetFarByte
+	ld de, EVENT_DRAGON_SHRINE_QUESTION_2
+.checkitem
 	ld b, CHECK_FLAG
 	call EventFlagAction
 	ld a, c
@@ -422,16 +424,15 @@ RockItemEncounter:
 .loop
 	sub [hl]
 	jr c, .ok
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop
 .ok
 	ld a, [hli]
 	cp -1
 	ld a, NO_ITEM
 	jr z, .done
-	ld a, [hli]
+	ld a, [hl]
 .done
 	ld [ScriptVar], a
 	ret
@@ -584,7 +585,8 @@ endm
 	treemon_map OLIVINE_CITY, 0
 	treemon_map ECRUTEAK_CITY, 0
 	treemon_map MAHOGANY_TOWN, 0
-	treemon_map LAKE_OF_RAGE, 5
+	treemon_map LAKE_OF_RAGE_NORTH, 5
+	treemon_map LAKE_OF_RAGE_SOUTH, 5
 	treemon_map BLACKTHORN_CITY, 0
 	treemon_map SILVER_CAVE_OUTSIDE, 1
 	treemon_map ILEX_FOREST, 6
@@ -936,7 +938,7 @@ LoadFishingGFX: ; b84b3
 	call .LoadGFX
 	ld hl, VTiles0 tile $0a
 	call .LoadGFX
-	ld hl, VTiles1 tile $7c
+	ld hl, VTiles0 tile $7c
 	call .LoadGFX
 
 	pop af

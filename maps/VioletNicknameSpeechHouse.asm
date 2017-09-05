@@ -7,8 +7,8 @@ VioletNicknameSpeechHouse_MapScriptHeader:
 VioletNicknameSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 4, VIOLET_CITY
-	warp_def $7, $4, 4, VIOLET_CITY
+	warp_def 7, 3, 4, VIOLET_CITY
+	warp_def 7, 4, 4, VIOLET_CITY
 
 .XYTriggers: db 0
 
@@ -22,11 +22,7 @@ VioletNicknameSpeechHouse_MapEventHeader:
 
 EeveeScript_0x693ef:
 	faceplayer
-	opentext
-	writetext UnknownText_0x6947c
-	cry EEVEE
-	waitbutton
-	closetext
+	showcrytext UnknownText_0x6947c, EEVEE
 	end
 
 UnknownText_0x693fa:

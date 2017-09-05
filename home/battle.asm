@@ -480,6 +480,7 @@ ContactMoves::
 	db ASTONISH
 	db BITE
 	db BODY_SLAM
+	db BUG_BITE
 	db BULLET_PUNCH
 	db CLOSE_COMBAT
 	db COUNTER
@@ -493,19 +494,18 @@ ContactMoves::
 	db DOUBLE_EDGE
 	db DRAGON_CLAW
 	db DRAIN_KISS
+	db DRAIN_PUNCH
 	db DRILL_PECK
 	db DYNAMICPUNCH
 	db EXTREMESPEED
 	db FALSE_SWIPE
 	db FEINT_ATTACK
 	db FIRE_PUNCH
-	db FLAIL
 	db FLAME_WHEEL
 	db FLARE_BLITZ
 	db FLY
-	db FURY_ATTACK
-	db FURY_CUTTER
-	db FURY_SWIPES
+	db FURY_STRIKES
+	db GYRO_BALL
 	db GIGA_IMPACT
 	db HEADBUTT
 	db HI_JUMP_KICK
@@ -515,6 +515,7 @@ ContactMoves::
 	db IRON_HEAD
 	db IRON_TAIL
 	db KARATE_CHOP
+	db KNOCK_OFF
 	db LEECH_LIFE
 	db LICK
 	db LOW_KICK
@@ -527,6 +528,7 @@ ContactMoves::
 	db PETAL_DANCE
 	db PLAY_ROUGH
 	db POISON_JAB
+	db POWER_WHIP
 	db PURSUIT
 	db QUICK_ATTACK
 	db RAGE
@@ -549,7 +551,6 @@ ContactMoves::
 	db THIEF
 	db THRASH
 	db THUNDERPUNCH
-	db TRIPLE_KICK
 	db U_TURN
 	db VINE_WHIP
 	db WATERFALL
@@ -570,6 +571,7 @@ PowderMoves::
 PunchingMoves::
 	db BULLET_PUNCH
 	db DIZZY_PUNCH
+	db DRAIN_PUNCH
 	db DYNAMICPUNCH
 	db FIRE_PUNCH
 	db MACH_PUNCH
@@ -602,11 +604,11 @@ SubstituteBypassMoves::
 DynamicPowerMoves::
 ; used by Forewarn and for move power listing
 	db COUNTER
-	db MIRROR_COAT
 	db DRAGON_RAGE
-	db FLAIL
+	db GYRO_BALL
 ;   db LOW_KICK
 	db MAGNITUDE
+	db MIRROR_COAT
 	db NIGHT_SHADE
 	db RETURN
 	db REVERSAL

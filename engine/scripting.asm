@@ -251,8 +251,12 @@ ScriptCommandTable:
 	dw Script_showtext                   ; bc
 	dw Script_showtextfaceplayer         ; bd
 	dw Script_applyonemovement           ; be
-	dw Script_iftrue_endtext             ; bf
-	dw Script_iffalse_endtext            ; c0
+	dw Script_showcrytext                ; bf
+	dw Script_endtext                    ; c0
+	dw Script_waitendtext                ; c1
+	dw Script_iftrue_endtext             ; c2
+	dw Script_iffalse_endtext            ; c3
+	dw Script_loadgrottomon              ; c4
 
 StartScript:
 	ld hl, ScriptFlags
@@ -397,9 +401,7 @@ JumpTextScript:
 	opentext
 JumpOpenedTextScript:
 	repeattext -1, -1
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 _GetTextPointer:
 	ld a, [ScriptBank]
@@ -737,7 +739,7 @@ Script_pokemart:
 	ld a, [ScriptBank]
 	ld b, a
 	farcall OpenMartDialog
-	jp _Do_closetext_end
+	jp Script_endtext
 
 Script_elevator:
 ; parameters:
@@ -764,8 +766,7 @@ Script_trade:
 	call GetScriptByte
 	ld e, a
 	farcall NPCTrade
-	call Script_waitbutton
-	jp _Do_closetext_end
+	jp Script_waitendtext
 
 Script_phonecall:
 ; parameters:
@@ -2004,8 +2005,8 @@ Script_RAM2MEM:
 ; parameters:
 ;     memory (SingleByteParam)
 	call ResetStringBuffer1
-	ld de, ScriptVar
 	ld hl, StringBuffer1
+	ld de, ScriptVar
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	call PrintNum
 	ld de, StringBuffer1
@@ -2598,6 +2599,8 @@ Script_refreshscreen:
 	jp RefreshScreen
 
 Script_showtextfaceplayer:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
 	call Script_faceplayer
 ; fallthrough
 
@@ -2902,12 +2905,36 @@ Script_iftrue_endtext:
 	ld a, [ScriptVar]
 	and a
 	ret z
-	jr _Do_closetext_end
+	jr Script_endtext
 
 Script_iffalse_endtext:
 	ld a, [ScriptVar]
 	and a
 	ret nz
-_Do_closetext_end:
+	jr Script_endtext
+
+Script_waitendtext:
+	call Script_waitbutton
+Script_endtext:
 	call Script_closetext
 	jp Script_end
+
+Script_showcrytext:
+; parameters:
+;     text_pointer (RawTextPointerLabelParam)
+;     cry_id (SingleByteParam)
+	call Script_textbox
+	call Script_writetext
+	call Script_cry
+	call Script_waitbutton
+	jp Script_closetext
+
+Script_loadgrottomon:
+	farcall GetHiddenGrottoContents
+	ld [TempWildMonSpecies], a
+	call PlayCry
+	ld a, (1 << 7)
+	ld [wBattleScriptFlags], a
+	farcall GetCurHiddenGrottoLevel
+	ld [CurPartyLevel], a
+	ret

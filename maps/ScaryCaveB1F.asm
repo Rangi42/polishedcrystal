@@ -7,8 +7,8 @@ ScaryCaveB1F_MapScriptHeader:
 ScaryCaveB1F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $13, $5, 3, SCARY_CAVE_1F
-	warp_def $3, $13, 4, SCARY_CAVE_1F
+	warp_def 19, 5, 3, SCARY_CAVE_1F
+	warp_def 3, 19, 4, SCARY_CAVE_1F
 
 .XYTriggers: db 0
 

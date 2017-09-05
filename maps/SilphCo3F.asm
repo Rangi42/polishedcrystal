@@ -7,7 +7,7 @@ SilphCo3F_MapScriptHeader:
 SilphCo3F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $b, 2, SILPH_CO_2F
+	warp_def 0, 11, 2, SILPH_CO_2F
 
 .XYTriggers: db 0
 
@@ -30,45 +30,47 @@ SilphCo3F_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FGentlemanText, -1
 
 SilphCo3FSilphEmployeeScript:
+	checkevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
-	iftrue .GotItem
-	writetext SilphCo3FSilphEmployeeText1
+	writetext .Text1
 	buttonsound
 	verbosegiveitem CHERISH_BALL
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
-.GotItem:
-	writetext SilphCo3FSilphEmployeeText2
-	waitbutton
-.Done:
-	closetext
-	end
+	jumpopenedtext .Text2
 
-SilphCo3FSilphEmployeeText1:
-	text "Silph and Devon"
-	line "partnered up"
-
-	para "to design some"
-	line "special new #"
-	cont "Balls."
-
-	para "We sell them in"
-	line "Kanto, Johto, and"
-	cont "Hoenn."
-
-	para "But they're not"
-	line "all on the market"
-	cont "yet. Like this!"
-	done
-
-SilphCo3FSilphEmployeeText2:
-	text "That's an un-"
-	line "released proto-"
-	cont "type # Ball."
+.Text2:
+	text "That's a very"
+	line "rare type of"
+	cont "# Ball."
 
 	para "Don't waste it!"
+	done
+
+.Text1:
+	text "I'm from a family"
+	line "of # Ball"
+	cont "creators."
+
+	para "My father Kurt is"
+	line "teaching my daugh-"
+	cont "ter how to make"
+
+	para "Apricorn Balls"
+	line "while I'm busy"
+	cont "working here."
+
+	para "You helped them"
+	line "out in Azalea"
+	cont "Town? Great!"
+
+	para "I'm glad my Maizie"
+	line "is doing well."
+
+	para "Take this as a"
+	line "thank-you!"
 	done
 
 SilphCo3FScientist1Text:

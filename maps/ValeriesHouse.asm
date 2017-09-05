@@ -8,8 +8,8 @@ ValeriesHouse_MapScriptHeader:
 ValeriesHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 12, ECRUTEAK_CITY
-	warp_def $7, $4, 12, ECRUTEAK_CITY
+	warp_def 7, 3, 12, ECRUTEAK_CITY
+	warp_def 7, 4, 12, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

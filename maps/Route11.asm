@@ -7,8 +7,8 @@ Route11_MapScriptHeader:
 Route11_MapEventHeader:
 
 .Warps: db 2
-	warp_def $8, $2f, 1, ROUTE_11_GATE
-	warp_def $9, $2f, 2, ROUTE_11_GATE
+	warp_def 8, 47, 1, ROUTE_11_GATE
+	warp_def 9, 47, 2, ROUTE_11_GATE
 
 .XYTriggers: db 0
 
@@ -16,7 +16,7 @@ Route11_MapEventHeader:
 	signpost 7, 5, SIGNPOST_JUMPTEXT, Route11SignText
 	signpost 5, 44, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_11_HIDDEN_REVIVE
 
-.PersonEvents: db 11
+.PersonEvents: db 12
 	person_event SPRITE_YOUNGSTER, 14, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
 	person_event SPRITE_YOUNGSTER, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
 	person_event SPRITE_YOUNGSTER, 2, 21, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlfie, -1
@@ -28,6 +28,7 @@ Route11_MapEventHeader:
 	person_event SPRITE_ROCKER, 3, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
 	person_event SPRITE_COOLTRAINER_F, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
 	fruittree_event 2, 44, FRUITTREE_ROUTE_11, GANLON_BERRY
+	tmhmball_event 13, 44, TM_VENOSHOCK, EVENT_ROUTE_11_TM_VENOSHOCK
 
 TrainerYoungsterOwen:
 	trainer EVENT_BEAT_YOUNGSTER_OWEN, YOUNGSTER, OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript

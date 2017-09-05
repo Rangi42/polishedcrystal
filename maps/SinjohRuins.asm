@@ -7,8 +7,8 @@ SinjohRuins_MapScriptHeader:
 SinjohRuins_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $5, 1, MYSTRI_STAGE
-	warp_def $15, $d, 1, SINJOH_RUINS_HOUSE
+	warp_def 7, 5, 1, MYSTRI_STAGE
+	warp_def 21, 13, 1, SINJOH_RUINS_HOUSE
 
 .XYTriggers: db 0
 

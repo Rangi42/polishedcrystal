@@ -9,12 +9,12 @@ DimCave4F_MapScriptHeader:
 DimCave4F_MapEventHeader:
 
 .Warps: db 6
-	warp_def $10, $2, 2, DIM_CAVE_5F
-	warp_def $1d, $1b, 3, DIM_CAVE_5F
-	warp_def $18, $1b, 4, DIM_CAVE_5F ; hole
-	warp_def $5, $5, 1, DIM_CAVE_3F
-	warp_def $16, $1c, 2, DIM_CAVE_3F
-	warp_def $7, $e, 3, DIM_CAVE_3F
+	warp_def 16, 2, 2, DIM_CAVE_5F
+	warp_def 29, 27, 3, DIM_CAVE_5F
+	warp_def 24, 27, 4, DIM_CAVE_5F ; hole
+	warp_def 5, 5, 1, DIM_CAVE_3F
+	warp_def 22, 28, 2, DIM_CAVE_3F
+	warp_def 7, 14, 3, DIM_CAVE_3F
 
 .XYTriggers: db 0
 
@@ -24,7 +24,7 @@ DimCave4F_MapEventHeader:
 
 .PersonEvents: db 8
 	strengthboulder_event 15, 14, EVENT_BOULDER_IN_DIM_CAVE_4F
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 25, 27, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, 25, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	person_event SPRITE_SCIENTIST, 14, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
 	person_event SPRITE_SCIENTIST, 2, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
 	person_event SPRITE_SUPER_NERD, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
@@ -38,8 +38,8 @@ const_value set 2
 DimCave4FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	iftrue .skip
-	changeblock $1a, $18, $c9
-	changeblock $4, $18, $b9
+	changeblock 26, 24, $c9
+	changeblock 4, 24, $b9
 .skip
 	return
 

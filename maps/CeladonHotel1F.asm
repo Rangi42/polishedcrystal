@@ -7,10 +7,10 @@ CeladonHotel1F_MapScriptHeader:
 CeladonHotel1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $7, $3, 11, CELADON_CITY
-	warp_def $7, $4, 11, CELADON_CITY
-	warp_def $0, $10, 1, CELADON_HOTEL_2F
-	warp_def $0, $c, 1, CELADON_HOTEL_POOL
+	warp_def 7, 3, 11, CELADON_CITY
+	warp_def 7, 4, 11, CELADON_CITY
+	warp_def 0, 16, 1, CELADON_HOTEL_2F
+	warp_def 0, 12, 1, CELADON_HOTEL_POOL
 
 .XYTriggers: db 0
 
@@ -29,13 +29,13 @@ const_value set 2
 	const CELADONHOTEL1F_RICH_BOY
 
 CeladonHotel1FRichBoyGeraldScript:
+	checkevent EVENT_BEAT_RICH_BOY_GERALD
+	iftrue_jumptextfaceplayer RichBoyGeraldAfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_RICH_BOY_GERALD
-	iftrue RichBoyGeraldAfterScript
 	writetext RichBoyGeraldGreetingText
 	yesorno
-	iffalse RichBoyGeraldNoBattleScript
+	iffalse_jumpopenedtext RichBoyGeraldNoBattleText
 	writetext RichBoyGeraldSeenText
 	waitbutton
 	closetext
@@ -46,12 +46,6 @@ CeladonHotel1FRichBoyGeraldScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_RICH_BOY_GERALD
 	end
-
-RichBoyGeraldAfterScript:
-	jumpopenedtext RichBoyGeraldAfterText
-
-RichBoyGeraldNoBattleScript:
-	jumpopenedtext RichBoyGeraldNoBattleText
 
 CeladonHotel1FGrampsText:
 	text "#mon? No, this"

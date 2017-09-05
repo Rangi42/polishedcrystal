@@ -2373,7 +2373,7 @@ CheckCurSpriteCoveredByTextBox: ; 56cd
 	call Coord2Tile
 	pop bc
 	ld a, [hl]
-	cp $70 ; hide sprites standing on tiles $70-$7f or $f0-$ff
+	cp $7f ; hide sprites standing on tiles $$7f or $ff
 	jr nc, .nope
 .ok8
 	dec d
@@ -2464,12 +2464,10 @@ ContinueSpawnFacing: ; 57db
 ; 57e2
 
 SetPlayerPalette: ; 57e2
-	ld a, d
 	and %10000000
 	ret z
-	ld bc, 0 ; debug?
+	ld a, d
 	ld hl, OBJECT_FACING
-	add hl, bc
 	ld a, [hl]
 	or d
 	ld [hl], a

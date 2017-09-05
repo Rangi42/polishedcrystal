@@ -7,10 +7,10 @@ SafariZoneFuchsiaGate_MapScriptHeader:
 SafariZoneFuchsiaGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 1, SAFARI_ZONE_HUB
-	warp_def $0, $5, 2, SAFARI_ZONE_HUB
-	warp_def $7, $4, 6, FUCHSIA_CITY
-	warp_def $7, $5, 6, FUCHSIA_CITY
+	warp_def 0, 4, 1, SAFARI_ZONE_HUB
+	warp_def 0, 5, 2, SAFARI_ZONE_HUB
+	warp_def 7, 4, 6, FUCHSIA_CITY
+	warp_def 7, 5, 6, FUCHSIA_CITY
 
 .XYTriggers: db 0
 

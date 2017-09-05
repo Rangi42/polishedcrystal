@@ -7,15 +7,15 @@ EusinesHouse_MapScriptHeader:
 EusinesHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 14, CELADON_CITY
-	warp_def $7, $3, 14, CELADON_CITY
+	warp_def 7, 2, 14, CELADON_CITY
+	warp_def 7, 3, 14, CELADON_CITY
 
 .XYTriggers: db 0
 
 .Signposts: db 0
 
 .PersonEvents: db 2
-	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
+	person_event SPRITE_EUSINE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
 	person_event SPRITE_GRAMPS, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
 
 const_value set 2
@@ -96,14 +96,9 @@ CeladonEusine:
 	step_end
 
 EusinesHouseGrampsScript:
-	faceplayer
-	opentext
 	checkevent EVENT_SET_WHEN_FOUGHT_HO_OH
-	iftrue .EusineLeft
-	jumpopenedtext EusinesHouseGrampsText1
-
-.EusineLeft:
-	jumpopenedtext EusinesHouseGrampsText2
+	iftrue_jumptextfaceplayer EusinesHouseGrampsText2
+	jumptextfaceplayer EusinesHouseGrampsText1
 
 CeladonEusineText1:
 	text "Eusine: Hi!"

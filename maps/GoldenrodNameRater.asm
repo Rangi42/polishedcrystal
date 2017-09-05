@@ -7,8 +7,8 @@ GoldenrodNameRater_MapScriptHeader:
 GoldenrodNameRater_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 8, GOLDENROD_CITY
-	warp_def $7, $3, 8, GOLDENROD_CITY
+	warp_def 7, 2, 8, GOLDENROD_CITY
+	warp_def 7, 3, 8, GOLDENROD_CITY
 
 .XYTriggers: db 0
 
@@ -23,6 +23,4 @@ GoldenrodNameRater:
 	faceplayer
 	opentext
 	special SpecialNameRater
-	waitbutton
-	closetext
-	end
+	waitendtext

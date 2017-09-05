@@ -7,7 +7,7 @@ Route44_MapScriptHeader:
 Route44_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $38, 1, ICE_PATH_1F
+	warp_def 7, 56, 1, ICE_PATH_1F
 
 .XYTriggers: db 0
 
@@ -34,29 +34,29 @@ const_value set 2
 	const ROUTE44_VETERAN_M
 
 Route44VeteranmScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
-	iftrue .GotRockyHelmet
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_VETERANM_BARKHORN
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BIRD_KEEPER_VANCE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_PHIL
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_WILTON
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_EDGAR
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERF_CYBIL
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEMANIAC_ZACH
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERM_ALLEN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -66,25 +66,22 @@ Route44VeteranmScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_VETERANM_BARKHORN
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem ROCKY_HELMET
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
-.GotRockyHelmet:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
+.AfterText2:
+	text "You're a very"
+	line "quiet person."
 
-.NoBattle:
-	jumpopenedtext .RefusedText
+	para "Has anybody told"
+	line "you that before?"
+	done
 
 .IntroText:
 	text "My #mon are"
@@ -98,7 +95,7 @@ Route44VeteranmScript:
 	line "got to beat every"
 
 	para "trainer on this"
-	cont "route first."
+	line "route first."
 	done
 
 .QuestionText:
@@ -142,14 +139,6 @@ Route44VeteranmScript:
 
 	para "You can use it as"
 	line "well as me."
-	done
-
-.AfterText2:
-	text "You're a very"
-	line "quiet person."
-
-	para "Has anybody told"
-	line "you that before?"
 	done
 
 TrainerBird_keeperVance1:

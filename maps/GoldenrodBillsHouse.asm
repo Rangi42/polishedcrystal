@@ -7,8 +7,8 @@ GoldenrodBillsHouse_MapScriptHeader:
 GoldenrodBillsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 4, GOLDENROD_CITY
-	warp_def $7, $3, 4, GOLDENROD_CITY
+	warp_def 7, 2, 4, GOLDENROD_CITY
+	warp_def 7, 3, 4, GOLDENROD_CITY
 
 .XYTriggers: db 0
 
@@ -183,8 +183,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedBellsprout:
 	checkevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
@@ -194,8 +193,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedStaryu:
 	checkevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
@@ -205,8 +203,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedGrowlithe:
 	checkevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
@@ -216,8 +213,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedPichu:
 	checkevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
@@ -227,8 +223,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedJigglypuff:
 	checkevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
@@ -238,8 +233,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedOddish:
 	checkevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
@@ -249,8 +243,7 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedMurkrow:
 	checkevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
@@ -260,16 +253,14 @@ GrampsScript_0x189538:
 	iffalse .BagFull
 	setevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
-	closetext
-	end
+	endtext
 
 .ShowedTogepi:
 	scall .ReceiveItem
 	verbosegiveitem SHINY_STONE
 	iffalse .BagFull
 	setevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
-	closetext
-	end
+	endtext
 
 .ExcitedToSee:
 	writetext BillsGrandpaExcitedToSeeText
@@ -299,18 +290,12 @@ GrampsScript_0x189538:
 	jumpopenedtext BillsGrandpaWrongPokemonText
 
 .BagFull:
-	closetext
-	end
+	endtext
 
 BillsMom:
-	faceplayer
-	opentext
 	checkevent EVENT_NEVER_MET_BILL
-	iffalse UnknownScript_0x54c33
-	jumpopenedtext UnknownText_0x54ea8
-
-UnknownScript_0x54c33:
-	jumpopenedtext UnknownText_0x54f4e
+	iffalse_jumptextfaceplayer UnknownText_0x54f4e
+	jumptextfaceplayer UnknownText_0x54ea8
 
 BillsSister:
 	faceplayer

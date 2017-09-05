@@ -528,7 +528,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 9, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
-	ld a, $31
+	ld a, $31 ; vertical divider
 .vertical_divider
 	ld [hl], a
 	add hl, de
@@ -560,9 +560,9 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld de, TempMonExp + 2
 	predef FillInExpBar
 	hlcoord 10, 16
-	ld [hl], $6e ; first "EXP" tile
+	ld [hl], "<XP1>"
 	inc hl
-	ld [hl], $6f ; second "EXP" tile
+	ld [hl], "<XP2>"
 	hlcoord 19, 16
 	ld [hl], "<XPEND>" ; exp bar end cap
 	ret
@@ -729,7 +729,7 @@ endr
 	hlcoord 10, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
-	ld a, $31
+	ld a, $31 ; vertical divider
 .BluePageVerticalDivider:
 	ld [hl], a
 	add hl, de
@@ -1238,7 +1238,7 @@ StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
 	ld hl, VTiles2 tile $7f
-	call Get2bpp
+	call Get1bpp
 	pop af
 	ld [rVBK], a
 	pop af

@@ -9,10 +9,10 @@ EvolutionMoves::
 	db NO_MOVE      ; WARTORTLE
 	db FLASH_CANNON ; BLASTOISE
 	db NO_MOVE      ; CATERPIE
-	db HARDEN       ; METAPOD
+	db DEFENSE_CURL ; METAPOD
 	db GUST         ; BUTTERFREE
 	db NO_MOVE      ; WEEDLE
-	db HARDEN       ; KAKUNA
+	db DEFENSE_CURL ; KAKUNA
 	db U_TURN       ; BEEDRILL
 	db NO_MOVE      ; PIDGEY
 	db NO_MOVE      ; PIDGEOTTO
@@ -71,12 +71,12 @@ EvolutionMoves::
 	db NO_MOVE      ; WEEPINBELL
 	db NO_MOVE      ; VICTREEBEL
 	db NO_MOVE      ; TENTACOOL
-	db NO_MOVE      ; TENTACRUEL
+	db POWER_WHIP   ; TENTACRUEL
 	db NO_MOVE      ; GEODUDE
 	db NO_MOVE      ; GRAVELER
 	db NO_MOVE      ; GOLEM
 	db NO_MOVE      ; PONYTA
-	db FURY_ATTACK  ; RAPIDASH
+	db PLAY_ROUGH   ; RAPIDASH
 	db NO_MOVE      ; SLOWPOKE
 	db DEFENSE_CURL ; SLOWBRO
 	db NO_MOVE      ; MAGNEMITE
@@ -166,7 +166,7 @@ EvolutionMoves::
 	db NO_MOVE      ; LEDYBA
 	db SWORDS_DANCE ; LEDIAN
 	db NO_MOVE      ; SPINARAK
-	db SWORDS_DANCE ; ARIADOS
+	db BUG_BITE     ; ARIADOS
 	db X_SCISSOR    ; CROBAT
 	db NO_MOVE      ; CHINCHOU
 	db NO_MOVE      ; LANTURN
@@ -219,7 +219,7 @@ EvolutionMoves::
 	db NO_MOVE      ; SLUGMA
 	db DRAGON_DANCE ; MAGCARGO
 	db NO_MOVE      ; SWINUB
-	db FURY_ATTACK  ; PILOSWINE
+	db FURY_STRIKES ; PILOSWINE
 	db NO_MOVE      ; MAMOSWINE
 	db NO_MOVE      ; CORSOLA
 	db NO_MOVE      ; REMORAID
@@ -230,7 +230,7 @@ EvolutionMoves::
 	db NO_MOVE      ; HOUNDOOM
 	db DRAGONBREATH ; KINGDRA
 	db NO_MOVE      ; PHANPY
-	db FURY_ATTACK  ; DONPHAN
+	db FURY_STRIKES ; DONPHAN
 	db NO_MOVE      ; PORYGON2
 	db NO_MOVE      ; SMEARGLE
 	db NO_MOVE      ; TYROGUE
@@ -245,7 +245,7 @@ EvolutionMoves::
 	db NO_MOVE      ; ENTEI
 	db NO_MOVE      ; SUICUNE
 	db NO_MOVE      ; LARVITAR
-	db HARDEN       ; PUPITAR
+	db DEFENSE_CURL ; PUPITAR
 	db STOMP        ; TYRANITAR
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH

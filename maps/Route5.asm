@@ -7,10 +7,10 @@ Route5_MapScriptHeader:
 Route5_MapEventHeader:
 
 .Warps: db 4
-	warp_def $1b, $11, 1, ROUTE_5_UNDERGROUND_ENTRANCE
-	warp_def $1f, $8, 1, ROUTE_5_SAFFRON_CITY_GATE
-	warp_def $1f, $9, 2, ROUTE_5_SAFFRON_CITY_GATE
-	warp_def $15, $a, 1, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE
+	warp_def 27, 17, 1, ROUTE_5_UNDERGROUND_ENTRANCE
+	warp_def 31, 8, 1, ROUTE_5_SAFFRON_CITY_GATE
+	warp_def 31, 9, 2, ROUTE_5_SAFFRON_CITY_GATE
+	warp_def 21, 10, 1, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE
 
 .XYTriggers: db 0
 

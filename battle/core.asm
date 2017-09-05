@@ -574,8 +574,8 @@ ParsePlayerAction: ; 3c434
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 
-	ld hl, UnknBGPals
-	ld de, UnknBGPals + 6 palettes
+	ld hl, UnknBGPals palette 0 ; back sprite
+	ld de, UnknBGPals palette 6 ; move type+category
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -597,13 +597,7 @@ ParsePlayerAction: ; 3c434
 	farcall UpdateMoveData
 	xor a
 	ld [wPlayerCharging], a
-	ld a, [wPlayerMoveStruct]
-	cp FURY_CUTTER
-	jr z, .continue_fury_cutter
-	xor a
-	ld [PlayerFuryCutterCount], a
 
-.continue_fury_cutter
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
 	cp EFFECT_RAGE
 	jr z, .continue_rage
@@ -627,7 +621,6 @@ ParsePlayerAction: ; 3c434
 	; SUBSTATUS_BIDE (it fellthrough to locked_in afterwards)
 .locked_in
 	xor a
-	ld [PlayerFuryCutterCount], a
 	ld [PlayerProtectCount], a
 	ld [wPlayerRageCounter], a
 	ld hl, PlayerSubStatus4
@@ -640,7 +633,6 @@ ParsePlayerAction: ; 3c434
 
 .reset_rage
 	xor a
-	ld [PlayerFuryCutterCount], a
 	ld [PlayerProtectCount], a
 	ld [wPlayerRageCounter], a
 	ld hl, PlayerSubStatus4
@@ -3472,7 +3464,6 @@ rept 3
 endr
 	ld [hl], a
 	ld [EnemyDisableCount], a
-	ld [EnemyFuryCutterCount], a
 	ld [EnemyProtectCount], a
 	ld [EnemyToxicCount], a
 	ld [wEnemyRageCounter], a
@@ -3842,7 +3833,6 @@ rept 3
 endr
 	ld [hl], a
 	ld [PlayerDisableCount], a
-	ld [PlayerFuryCutterCount], a
 	ld [PlayerProtectCount], a
 	ld [PlayerToxicCount], a
 	ld [wPlayerRageCounter], a
@@ -4636,7 +4626,7 @@ endr
 	ld bc, BattleMonShiny
 	farcall CheckShininess
 	jr nc, .not_own_shiny
-	ld a, $61 ; colored "★"
+	ld a, "<STAR>"
 	hlcoord 19, 8
 	ld [hl], a
 
@@ -4646,9 +4636,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender_char
-	ld a, $5f ; colored "♂"
+	ld a, "<MALE>"
 	jr nz, .got_gender_char
-	ld a, $60 ; colored "♀"
+	ld a, "<FEMALE>"
 
 .got_gender_char
 	hlcoord 18, 8
@@ -4707,7 +4697,7 @@ endr
 	ld bc, EnemyMonShiny
 	farcall CheckShininess
 	jr nc, .not_shiny
-	ld a, $61 ; colored "★"
+	ld a, "<STAR>"
 	hlcoord 9, 1
 	ld [hl], a
 
@@ -4717,9 +4707,9 @@ endr
 	farcall GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, $5f ; colored "♂"
+	ld a, "<MALE>"
 	jr nz, .got_gender
-	ld a, $60 ; colored "♀"
+	ld a, "<FEMALE>"
 
 .got_gender
 	hlcoord 8, 1
@@ -5324,16 +5314,6 @@ CheckRunSpeed:
 	inc a
 	ld [wNumFleeAttempts], a
 
-	ld a, [hli]
-	ld l, [hl]
-	ld h, a
-
-	ld a, [de]
-	ld b, a
-	inc de
-	ld a, [de]
-	ld e, a
-	ld d, b
 	; hl = player speed
 	; de = enemy speed
 
@@ -6162,13 +6142,6 @@ ParseEnemyAction: ; 3e7c1
 	ld [wEnemyCharging], a
 
 .raging
-	ld a, [wEnemyMoveStruct]
-	cp FURY_CUTTER
-	jr z, .fury_cutter
-	xor a
-	ld [EnemyFuryCutterCount], a
-
-.fury_cutter
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_RAGE
 	jr z, .no_rage
@@ -6195,7 +6168,6 @@ ParseEnemyAction: ; 3e7c1
 
 ResetVarsForSubstatusRage: ; 3e8c1
 	xor a
-	ld [EnemyFuryCutterCount], a
 	ld [EnemyProtectCount], a
 	ld [wEnemyRageCounter], a
 	ld hl, EnemySubStatus4
@@ -6395,6 +6367,9 @@ endc
 
 	; Random ability
 	; 5% hidden ability, otherwise 50% either main ability
+	ld a, [BattleType]
+	cp BATTLETYPE_GROTTO
+	jr z, .hidden_ability
 	call BattleRandom
 	cp 1 + 5 percent
 	jr c, .hidden_ability
@@ -6412,11 +6387,33 @@ endc
 	add b
 	ld b, a
 
+	; If the ability is Pickup, 10% chance of holding an item from that instead
+	push hl
+	push bc
+	ld b, a ; still the ability index, 1/2/hidden
+	ld a, [CurPartySpecies]
+	ld c, a
+	call GetAbility
+	ld a, b
+	cp PICKUP
+	jr nz, .not_pickup
+	call Random
+	cp 1 + (10 percent)
+	jr nc, .not_pickup
+	ld a, [EnemyMonLevel]
+	farcall GetRandomPickupItem
+	ld [EnemyMonItem], a
+.not_pickup
+	pop bc
+	pop hl
+
 	; Random shininess
 	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [BattleType]
 	cp BATTLETYPE_SHINY
 	jr z, .shiny
+	cp BATTLETYPE_GROTTO
+	jr z, .not_shiny
 	call BattleRandom
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny
@@ -6482,6 +6479,8 @@ endc
 	call AddNTimes
 	ld a, BANK(BaseData)
 	call GetFarByte
+	swap a
+	and $f
 	pop bc
 	pop hl
 	ld c, a
@@ -6601,11 +6600,14 @@ endr
 
 .CheckMagikarpArea:
 	ld a, [MapGroup]
-	cp GROUP_LAKE_OF_RAGE
+	cp GROUP_LAKE_OF_RAGE_NORTH ; GROUP_LAKE_OF_RAGE_SOUTH
 	jr nz, .Happiness
 	ld a, [MapNumber]
-	cp MAP_LAKE_OF_RAGE
+	cp MAP_LAKE_OF_RAGE_NORTH
+	jr z, .LakeOfRageMagikarp
+	cp MAP_LAKE_OF_RAGE_SOUTH
 	jr nz, .Happiness
+.LakeOfRageMagikarp
 	; 40% chance of not flooring
 	call Random
 	cp $64 ; / $100
@@ -8148,7 +8150,7 @@ PlaceExpBar: ; 3f41c
 	sub $8
 	jr c, .next
 	ld b, a
-	ld a, $78 ; full thin bar
+	ld a, "<FULLXP>"
 	ld [hli], a
 	dec c
 	ret z
@@ -8157,15 +8159,15 @@ PlaceExpBar: ; 3f41c
 .next
 	add $8
 	jr z, .loop2
-	add $70 ; tile to the left of thin exp bar tile
+	add "<NOXP>" - 1
 	jr .skip
 
 .loop2
-	ld a, $70 ; empty thin bar
+	ld a, "<NOXP>"
 
 .skip
 	ld [hli], a
-	ld a, $70 ; empty thin bar
+	ld a, "<NOXP>"
 	dec c
 	jr nz, .loop2
 	ret
@@ -8530,8 +8532,8 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wKeyItemsPocketScrollPosition], a
 	ld [wItemsPocketScrollPosition], a
 	ld [wBallsPocketScrollPosition], a
-	ld hl, PlayerSubStatus1
-	ld b, EnemyFuryCutterCount - PlayerSubStatus1
+	ld hl, BattleSubStatusWRAM
+	ld b, BattleSubStatusWRAMEnd - BattleSubStatusWRAM
 .loop
 	ld [hli], a
 	dec b

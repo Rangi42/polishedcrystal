@@ -7,8 +7,8 @@ ValenciaHouse_MapScriptHeader:
 ValenciaHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, VALENCIA_ISLAND
-	warp_def $7, $3, 3, VALENCIA_ISLAND
+	warp_def 7, 2, 3, VALENCIA_ISLAND
+	warp_def 7, 3, 3, VALENCIA_ISLAND
 
 .XYTriggers: db 0
 

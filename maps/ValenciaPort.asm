@@ -7,8 +7,8 @@ ValenciaPort_MapScriptHeader:
 ValenciaPort_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $a, 1, ROUTE_49
-	warp_def $11, $b, 1, ROUTE_49
+	warp_def 17, 10, 1, ROUTE_49
+	warp_def 17, 11, 1, ROUTE_49
 
 .XYTriggers: db 0
 
@@ -36,12 +36,12 @@ ValenciaPortSailorScript:
 	playsound SFX_EXIT_BUILDING
 	disappear VALENCIAPORT_SAILOR
 	waitsfx
-	applymovement PLAYER, .StepUp
+	applyonemovement PLAYER, step_up
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
 	domaptrigger SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
-	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, $6, $5
+	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, 6, 5
 	end
 
 .RefuseFerry
@@ -63,10 +63,6 @@ ValenciaPortSailorScript:
 	text "I'll be waiting"
 	line "right here."
 	done
-
-.StepUp:
-	step_up
-	step_end
 
 ValenciaPortFisherText:
 	text "Have you noticed"

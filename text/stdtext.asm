@@ -206,6 +206,11 @@ WrongSideText:
 	text "Oops, wrong side."
 	done
 
+RadioOffAirText:
+	text "The radio is just"
+	line "playing static…"
+	done
+
 RefrigeratorText:
 	text "It's a fridge."
 	done
@@ -274,8 +279,10 @@ ContestResults_JoinUsNextTimeText:
 
 ContestResults_ConsolationPrizeText:
 	text "Everyone else gets"
-	line "a Berry as a con-"
-	cont "solation prize!"
+	line "a @"
+	text_from_ram StringBuffer4
+	text " as a"
+	cont "consolation prize!"
 	done
 
 ContestResults_DidNotWinText:
@@ -453,4 +460,12 @@ VendingMachineNoMoneyText:
 VendingMachineNoSpaceText:
 	text "There's no more"
 	line "room for stuff…"
+	done
+
+HiddenGrottoText:
+	text "Look! You've found"
+	line "a narrow path!"
+
+	para "Will you follow"
+	line "it?"
 	done

@@ -1162,7 +1162,7 @@
 	db 74, DITTO
 
 	map SOUL_HOUSE_B1F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 47, GASTLY
 	db 48, GASTLY
@@ -1189,7 +1189,7 @@
 	db 50, MISMAGIUS
 
 	map SOUL_HOUSE_B2F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 48, GASTLY
 	db 49, GASTLY
@@ -1216,7 +1216,7 @@
 	db 51, MISMAGIUS
 
 	map SOUL_HOUSE_B3F
-	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 49, GASTLY
 	db 50, HAUNTER

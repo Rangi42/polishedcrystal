@@ -8,8 +8,8 @@ Route19_MapScriptHeader:
 Route19_MapEventHeader:
 
 .Warps: db 2
-	warp_def $1, $7, 3, ROUTE_19_FUCHSIA_GATE
-	warp_def $d, $5, 1, ROUTE_19_BEACH_HOUSE
+	warp_def 1, 7, 3, ROUTE_19_FUCHSIA_GATE
+	warp_def 13, 5, 1, ROUTE_19_BEACH_HOUSE
 
 .XYTriggers: db 0
 
@@ -18,8 +18,8 @@ Route19_MapEventHeader:
 	signpost -1, 11, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
 	signpost 3, 5, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
 	signpost 11, 3, SIGNPOST_ITEM + MAX_REVIVE, EVENT_ROUTE_19_HIDDEN_MAX_REVIVE
-	signpost 15, 5, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL_1
-	signpost 13, 13, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL_2
+	signpost 15, 5, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL
+	signpost 13, 13, SIGNPOST_ITEM + BIG_PEARL, EVENT_ROUTE_19_HIDDEN_BIG_PEARL
 
 .PersonEvents: db 13
 	smashrock_event 4, 11
@@ -34,7 +34,7 @@ Route19_MapEventHeader:
 	person_event SPRITE_COSPLAYER, 51, 13, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerBrooke, -1
 	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
 	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
-	itemball_event 52, 14, BIG_PEARL, 1, EVENT_ROUTE_19_BIG_PEARL
+	tmhmball_event 52, 14, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
 
 const_value set 2
 	const ROUTE19_ROCK1
@@ -42,12 +42,12 @@ const_value set 2
 Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .Done
-	changeblock $6, $4, $7a
-	changeblock $8, $4, $7a
-	changeblock $a, $4, $7a
-	changeblock $6, $6, $7a
-	changeblock $c, $6, $7a
-	changeblock $8, $8, $7a
+	changeblock 6, 4, $7a
+	changeblock 8, 4, $7a
+	changeblock 10, 4, $7a
+	changeblock 6, 6, $7a
+	changeblock 12, 6, $7a
+	changeblock 8, 8, $7a
 	disappear ROUTE19_ROCK1
 .Done:
 	return

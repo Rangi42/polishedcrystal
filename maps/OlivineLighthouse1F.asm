@@ -7,11 +7,11 @@ OlivineLighthouse1F_MapScriptHeader:
 OlivineLighthouse1F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $11, $a, 8, OLIVINE_CITY
-	warp_def $11, $b, 8, OLIVINE_CITY
-	warp_def $b, $3, 1, OLIVINE_LIGHTHOUSE_2F
-	warp_def $d, $10, 3, OLIVINE_LIGHTHOUSE_2F
-	warp_def $d, $11, 4, OLIVINE_LIGHTHOUSE_2F
+	warp_def 17, 10, 8, OLIVINE_CITY
+	warp_def 17, 11, 8, OLIVINE_CITY
+	warp_def 11, 3, 1, OLIVINE_LIGHTHOUSE_2F
+	warp_def 13, 16, 3, OLIVINE_LIGHTHOUSE_2F
+	warp_def 13, 17, 4, OLIVINE_LIGHTHOUSE_2F
 
 .XYTriggers: db 0
 
@@ -22,37 +22,32 @@ OlivineLighthouse1F_MapEventHeader:
 	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
 
 SailorScript_0x5ae67:
+	checkevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
+	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
-	iftrue .GotItem
-	writetext OlivineLighthouse1FSailorText1
+	writetext .Text1
 	buttonsound
 	verbosegiveitem FULL_RESTORE
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
-.GotItem:
-	writetext OlivineLighthouse1FSailorText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-OlivineLighthouse1FSailorText1:
+.Text2:
+	text "The trainers here"
+	line "are all keen to"
+	cont "battle."
+
+	para "Be prepared!"
+	done
+
+.Text1:
 	text "People are train-"
 	line "ing hard at this"
 	cont "Lighthouse."
 
 	para "You should take"
 	line "this."
-	done
-
-OlivineLighthouse1FSailorText2:
-	text "The trainers here"
-	line "are all keen to"
-	cont "battle."
-
-	para "Be prepared!"
 	done
 
 UnknownText_0x5aec2:

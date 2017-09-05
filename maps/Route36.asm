@@ -8,16 +8,16 @@ Route36_MapScriptHeader:
 Route36_MapEventHeader:
 
 .Warps: db 6
-	warp_def $8, $12, 3, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def $9, $12, 4, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def $d, $2f, 1, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def $d, $30, 2, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def $8, $39, 1, ROUTE_36_VIOLET_GATE
-	warp_def $9, $39, 2, ROUTE_36_VIOLET_GATE
+	warp_def 8, 18, 3, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 9, 18, 4, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 13, 47, 1, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def 13, 48, 2, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def 8, 57, 1, ROUTE_36_VIOLET_GATE
+	warp_def 9, 57, 2, ROUTE_36_VIOLET_GATE
 
 .XYTriggers: db 2
-	xy_trigger 1, $7, $14, Route36SuicuneScript
-	xy_trigger 1, $7, $16, Route36SuicuneScript
+	xy_trigger 1, 7, 20, Route36SuicuneScript
+	xy_trigger 1, 7, 22, Route36SuicuneScript
 
 .Signposts: db 4
 	signpost 1, 29, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
@@ -146,14 +146,9 @@ Route36RockSmashGuyScript:
 	jumpopenedtext RockSmashGuyText3
 
 LassScript_0x1940e0:
-	faceplayer
-	opentext
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue .ClearedSudowoodo
-	jumpopenedtext UnknownText_0x1945b8
-
-.ClearedSudowoodo:
-	jumpopenedtext UnknownText_0x19469e
+	iftrue_jumptextfaceplayer UnknownText_0x19469e
+	jumptextfaceplayer UnknownText_0x1945b8
 
 TrainerSchoolboyAlan1:
 	trainer EVENT_BEAT_SCHOOLBOY_ALAN, SCHOOLBOY, ALAN1, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
@@ -331,8 +326,7 @@ ArthurScript:
 	writetext ArthurThursdayText
 	waitbutton
 .BagFull:
-	closetext
-	end
+	endtext
 
 ArthurNotThursdayScript:
 	jumpopenedtext ArthurNotThursdayText

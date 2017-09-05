@@ -166,7 +166,7 @@ SpecialsPointers:: ; c029
 	add_special SaveOptions
 	add_special WonderTrade
 	add_special RespawnOneOffs
-	add_special GiveShinyDittoEgg
+	add_special SpecialGiveShinyDitto
 	add_special GiveMystriEgg
 	add_special MoveReminder
 	add_special Special_ReiBlessing
@@ -185,6 +185,9 @@ SpecialsPointers:: ; c029
 	add_special Give_hMoneyTemp
 	add_special SetLastPartyMonBall
 	add_special CheckForSurfingPikachu
+	add_special InitializeHiddenGrotto
+	add_special GetHiddenGrottoContents
+	add_special EmptiedHiddenGrotto
 
 	add_special SpecialNone
 ; c224
@@ -196,7 +199,6 @@ SpecialNone: ; c224
 
 Special_SetPlayerPalette: ; c225
 	ld a, [ScriptVar]
-	ld d, a
 	farjp SetPlayerPalette
 ; c230
 
@@ -315,6 +317,30 @@ BugContestJudging: ; c34a
 	farcall _BugContestJudging
 	ld a, b
 	ld [ScriptVar], a
+	dec a
+	jr z, .firstplace
+	dec a
+	jr z, .secondplace
+	dec a
+	jr z, .thirdplace
+	ld a, SHED_SHELL
+	jr .finish
+.firstplace
+	ld a, SUN_STONE
+	ld hl, StatusFlags
+	bit 6, [hl] ; hall of fame
+	jr z, .finish
+	ld a, SHINY_STONE - MOON_STONE + 1 ; TODO: include ICE_STONE once it's useful
+	call RandomRange
+	add MOON_STONE
+	jr .finish
+.secondplace
+	ld a, EVERSTONE
+	jr .finish
+.thirdplace
+	ld a, SITRUS_BERRY
+.finish
+	ld [wBugContestOfficerPrize], a
 	ret
 ; c355
 

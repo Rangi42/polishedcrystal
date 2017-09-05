@@ -9,22 +9,22 @@ FastShip1F_MapScriptHeader:
 FastShip1F_MapEventHeader:
 
 .Warps: db 12
-	warp_def $1, $19, -1, FAST_SHIP_1F
-	warp_def $8, $1b, 1, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def $8, $17, 2, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def $8, $13, 3, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def $8, $f, 1, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def $f, $f, 2, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def $f, $13, 4, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def $f, $17, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $f, $1b, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $f, $3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def $e, $6, 1, FAST_SHIP_B1F
-	warp_def $e, $1e, 2, FAST_SHIP_B1F
+	warp_def 1, 25, -1, FAST_SHIP_1F
+	warp_def 8, 27, 1, FAST_SHIP_CABINS_NNW_NNE_NE
+	warp_def 8, 23, 2, FAST_SHIP_CABINS_NNW_NNE_NE
+	warp_def 8, 19, 3, FAST_SHIP_CABINS_NNW_NNE_NE
+	warp_def 8, 15, 1, FAST_SHIP_CABINS_SW_SSW_NW
+	warp_def 15, 15, 2, FAST_SHIP_CABINS_SW_SSW_NW
+	warp_def 15, 19, 4, FAST_SHIP_CABINS_SW_SSW_NW
+	warp_def 15, 23, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def 15, 27, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def 15, 3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
+	warp_def 14, 6, 1, FAST_SHIP_B1F
+	warp_def 14, 30, 2, FAST_SHIP_B1F
 
 .XYTriggers: db 2
-	xy_trigger 2, $6, $18, WorriedGrandpaTriggerLeft
-	xy_trigger 2, $6, $19, WorriedGrandpaTriggerRight
+	xy_trigger 2, 6, 24, WorriedGrandpaTriggerLeft
+	xy_trigger 2, 6, 25, WorriedGrandpaTriggerRight
 
 .Signposts: db 0
 
@@ -85,7 +85,7 @@ SailorScript_0x75160:
 	waitsfx
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	domaptrigger VERMILION_PORT, $1
-	warp VERMILION_PORT, $7, $11
+	warp VERMILION_PORT, 7, 17
 	end
 
 ._Olivine:
@@ -98,7 +98,7 @@ SailorScript_0x75160:
 	waitsfx
 	setevent EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 	domaptrigger OLIVINE_PORT, $1
-	warp OLIVINE_PORT, $7, $17
+	warp OLIVINE_PORT, 7, 23
 	end
 
 .LetThePlayerOut:
@@ -114,24 +114,18 @@ SailorScript_0x75160:
 	end
 
 SailorScript_0x751d0:
-	faceplayer
-	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue .Vermilion
-	jumpopenedtext UnknownText_0x752f9
-
-.Vermilion:
-	jumpopenedtext UnknownText_0x7534f
+	iftrue_jumptextfaceplayer UnknownText_0x7534f
+	jumptextfaceplayer UnknownText_0x752f9
 
 WorriedGrandpaTriggerRight:
-	moveperson FASTSHIP1F_GENTLEMAN, $14, $6
-
+	moveperson FASTSHIP1F_GENTLEMAN, 20, 6
 WorriedGrandpaTriggerLeft:
 	appear FASTSHIP1F_GENTLEMAN
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b
 	playsound SFX_TACKLE
 	applymovement PLAYER, MovementData_0x7522e
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75220
+	applyonemovement FASTSHIP1F_GENTLEMAN, step_right
 	showtext UnknownText_0x75412
 	spriteface PLAYER, RIGHT
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
@@ -165,10 +159,6 @@ MovementData_0x7521b:
 	run_step_right
 	run_step_right
 	run_step_right
-	step_end
-
-MovementData_0x75220:
-	step_right
 	step_end
 
 MovementData_0x75222:

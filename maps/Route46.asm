@@ -7,9 +7,9 @@ Route46_MapScriptHeader:
 Route46_MapEventHeader:
 
 .Warps: db 3
-	warp_def $21, $7, 1, ROUTE_29_46_GATE
-	warp_def $21, $8, 2, ROUTE_29_46_GATE
-	warp_def $5, $e, 3, DARK_CAVE_VIOLET_ENTRANCE
+	warp_def 33, 7, 1, ROUTE_29_46_GATE
+	warp_def 33, 8, 2, ROUTE_29_46_GATE
+	warp_def 5, 14, 3, DARK_CAVE_VIOLET_ENTRANCE
 
 .XYTriggers: db 0
 

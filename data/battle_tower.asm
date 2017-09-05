@@ -141,7 +141,7 @@ BattleTowerTrainers: ; 1f814e
 	db "Blake@@@@@", YOUNGSTER
 	db "James@@@@@", BOARDER
 	db "Kubrick@@@", HEX_MANIAC
-	db "Carrie@@@@", LASS
+	db "Alisha@@@@", LASS
 	db "Sunni@@@@@", KIMONO_GIRL
 	db "Andre@@@@@", ROUGHNECK
 	db "Hill@@@@@@", COOLTRAINERM
@@ -838,7 +838,7 @@ BattleTowerMons3:
 
 	db LANTURN
 	db SITRUS_BERRY
-	db RAIN_DANCE, THUNDER, SURF, FLAIL
+	db RAIN_DANCE, THUNDER, SURF, REVERSAL
 	db $ed, $de, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -996,7 +996,7 @@ BattleTowerMons4:
 
 	db MUK
 	db QUICK_CLAW
-	db SCREECH, TOXIC, SLUDGE_BOMB, HARDEN
+	db SCREECH, TOXIC, SLUDGE_BOMB, DEFENSE_CURL
 	db $67, $56, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1192,7 +1192,7 @@ BattleTowerMons6:
 
 	db UMBREON
 	db SITRUS_BERRY
-	db MUD_SLAP, MOONLIGHT, PSYCHIC_M, FEINT_ATTACK
+	db MUD_SLAP, HEALINGLIGHT, PSYCHIC_M, FEINT_ATTACK
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1278,7 +1278,7 @@ BattleTowerMons7:
 
 	db UMBREON
 	db SITRUS_BERRY
-	db FEINT_ATTACK, MOONLIGHT, CONFUSE_RAY, TOXIC
+	db FEINT_ATTACK, HEALINGLIGHT, CONFUSE_RAY, TOXIC
 	db $dd, $dd, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1320,7 +1320,7 @@ BattleTowerMons7:
 
 	db UMBREON
 	db SITRUS_BERRY
-	db MOONLIGHT, FEINT_ATTACK, PSYCHIC_M, SHADOW_BALL
+	db HEALINGLIGHT, FEINT_ATTACK, PSYCHIC_M, SHADOW_BALL
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1374,7 +1374,7 @@ BattleTowerMons7:
 
 	db VENUSAUR
 	db BRIGHTPOWDER
-	db SUNNY_DAY, SOLAR_BEAM, MORNING_SUN, HYPER_BEAM
+	db SUNNY_DAY, SOLAR_BEAM, HEALINGLIGHT, HYPER_BEAM
 	db $47, $64, $77 ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1522,7 +1522,7 @@ BattleTowerMons8:
 BattleTowerMons9:
 	db UMBREON
 	db KINGS_ROCK
-	db FEINT_ATTACK, MUD_SLAP, MOONLIGHT, CONFUSE_RAY
+	db FEINT_ATTACK, MUD_SLAP, HEALINGLIGHT, CONFUSE_RAY
 	db $ef, $de, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
@@ -1576,7 +1576,7 @@ BattleTowerMons9:
 
 	db ESPEON
 	db SITRUS_BERRY
-	db PSYCHIC_M, SHADOW_BALL, SUNNY_DAY, MORNING_SUN
+	db PSYCHIC_M, SHADOW_BALL, SUNNY_DAY, HEALINGLIGHT
 	db $fd, $df, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 

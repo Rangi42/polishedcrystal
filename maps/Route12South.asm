@@ -7,10 +7,10 @@ Route12South_MapScriptHeader:
 Route12South_MapEventHeader:
 
 .Warps: db 4
-	warp_def $39, $b, 1, ROUTE_12_SUPER_ROD_HOUSE
-	warp_def $2a, $0, 3, ROUTE_11_GATE
-	warp_def $2b, $0, 4, ROUTE_11_GATE
-	warp_def $1, $a, 3, ROUTE_12_GATE
+	warp_def 57, 11, 1, ROUTE_12_SUPER_ROD_HOUSE
+	warp_def 42, 0, 3, ROUTE_11_GATE
+	warp_def 43, 0, 4, ROUTE_11_GATE
+	warp_def 1, 10, 3, ROUTE_12_GATE
 
 .XYTriggers: db 0
 

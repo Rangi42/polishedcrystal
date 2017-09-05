@@ -7,10 +7,10 @@ Route16Northeast_MapScriptHeader:
 Route16Northeast_MapEventHeader:
 
 .Warps: db 4
-	warp_def $a, $e, 3, ROUTE_16_17_GATE
-	warp_def $b, $e, 4, ROUTE_16_17_GATE
-	warp_def $4, $e, 3, ROUTE_16_GATE
-	warp_def $5, $e, 4, ROUTE_16_GATE
+	warp_def 10, 14, 3, ROUTE_16_17_GATE
+	warp_def 11, 14, 4, ROUTE_16_17_GATE
+	warp_def 4, 14, 3, ROUTE_16_GATE
+	warp_def 5, 14, 4, ROUTE_16_GATE
 
 .XYTriggers: db 0
 

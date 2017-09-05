@@ -7,8 +7,8 @@ Route32CoastHouse_MapScriptHeader:
 Route32CoastHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, ROUTE_32_COAST
-	warp_def $7, $3, 2, ROUTE_32_COAST
+	warp_def 7, 2, 2, ROUTE_32_COAST
+	warp_def 7, 3, 2, ROUTE_32_COAST
 
 .XYTriggers: db 0
 

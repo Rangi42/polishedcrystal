@@ -350,7 +350,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 ; 170b90
 
 .Sprites:
-	db SPRITE_KRIS          ; KAY
+	db SPRITE_KRIS          ; CARRIE
 	db SPRITE_CHRIS         ; CAL
 	db SPRITE_FALKNER       ; FALKNER
 	db SPRITE_BUGSY         ; BUGSY

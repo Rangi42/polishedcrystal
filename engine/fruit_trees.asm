@@ -59,8 +59,16 @@ TryResetFruitTrees: ; 4404c
 	ld hl, DailyFlags
 	bit 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret nz
-	jp ResetFruitTrees
-; 44055
+	xor a
+	ld hl, FruitTreeFlags
+rept (NUM_FRUIT_TREES + 7) / 8 - 1
+	ld [hli], a
+endr
+	ld [hl], a
+	ld hl, DailyFlags
+	set 4, [hl] ; ENGINE_ALL_FRUIT_TREES
+	ret
+; 44078
 
 CheckFruitTree: ; 44055
 	ld b, CHECK_FLAG
@@ -72,25 +80,11 @@ CheckFruitTree: ; 44055
 
 PickedFruitTree: ; 4405f
 	ld b, SET_FLAG
-	jp GetFruitTreeFlag
+	jr GetFruitTreeFlag
 ; 4406a
 
 FertilizedFruitTree:
 	ld b, RESET_FLAG
-	jp GetFruitTreeFlag
-
-ResetFruitTrees: ; 4406a
-	xor a
-	ld hl, FruitTreeFlags
-rept 3
-	ld [hli], a
-endr
-	ld [hl], a
-	ld hl, DailyFlags
-	set 4, [hl] ; ENGINE_ALL_FRUIT_TREES
-	ret
-; 44078
-
 GetFruitTreeFlag: ; 44078
 	push hl
 	push de

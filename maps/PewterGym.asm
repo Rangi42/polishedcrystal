@@ -7,8 +7,8 @@ PewterGym_MapScriptHeader:
 PewterGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $4, 2, PEWTER_CITY
-	warp_def $d, $5, 2, PEWTER_CITY
+	warp_def 13, 4, 2, PEWTER_CITY
+	warp_def 13, 5, 2, PEWTER_CITY
 
 .XYTriggers: db 0
 
@@ -84,14 +84,9 @@ HikerEdwinScript:
 	jumptextfaceplayer HikerEdwinAfterText
 
 PewterGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_BROCK
-	iftrue .PewterGymGuyWinScript
-	jumpopenedtext PewterGymGuyText
-
-.PewterGymGuyWinScript:
-	jumpopenedtext PewterGymGuyWinText
+	iftrue_jumptextfaceplayer PewterGymGuyWinText
+	jumptextfaceplayer PewterGymGuyText
 
 PewterGymStatue:
 	trainertotext BROCK, 1, $1

@@ -8,15 +8,14 @@ GoldenrodDeptStore5F_MapScriptHeader:
 GoldenrodDeptStore5F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $c, 1, GOLDENROD_DEPT_STORE_4F
-	warp_def $0, $f, 1, GOLDENROD_DEPT_STORE_6F
-	warp_def $0, $2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_def 0, 12, 1, GOLDENROD_DEPT_STORE_4F
+	warp_def 0, 15, 1, GOLDENROD_DEPT_STORE_6F
+	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 1
 	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore5FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 6
 	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
@@ -59,8 +58,7 @@ ReceptionistScript_0x560ce:
 	buttonsound
 	verbosegivetmhm TM_RETURN
 	setflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
-	closetext
-	end
+	endtext
 
 .SomewhatHappy:
 	jumpopenedtext UnknownText_0x561a6

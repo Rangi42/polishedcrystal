@@ -31,7 +31,7 @@ PERSON_EVENT_NARG = _NARG
 if \8 == PERSONTYPE_COMMAND
 	db \9_command ; command id
 else
-	db \9 ; sight_range
+	db \9 ; sight_range || cry id
 endc
 if PERSON_EVENT_NARG == 14
 	shift
@@ -68,22 +68,22 @@ endm
 
 strengthboulder_event: macro
 if _NARG == 2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
 else
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
 endc
 endm
 
 smashrock_event: macro
 if _NARG == 2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
 else
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
 endc
 endm
 
 pc_nurse_event: macro
-	person_event SPRITE_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
+	person_event SPRITE_BOWING_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
 endm
 
 mart_clerk_event: macro
@@ -95,7 +95,11 @@ signpost: macro
 	db \2 ; x
 	db \3 ; function
 if \3 == SIGNPOST_JUMPSTD
+if _NARG == 5
+	db \4, \5 ; stdscript
+else
 	db \4, 0 ; stdscript
+endc
 else
 	dw \4 ; pointer
 endc

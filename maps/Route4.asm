@@ -7,7 +7,7 @@ Route4_MapScriptHeader:
 Route4_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $2, 8, MOUNT_MOON_B1F
+	warp_def 5, 2, 8, MOUNT_MOON_B1F
 
 .XYTriggers: db 0
 

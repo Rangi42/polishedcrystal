@@ -7,10 +7,10 @@ CeladonMansion3F_MapScriptHeader:
 CeladonMansion3F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $0, 1, CELADON_MANSION_ROOF
-	warp_def $0, $1, 2, CELADON_MANSION_2F
-	warp_def $0, $6, 3, CELADON_MANSION_2F
-	warp_def $0, $7, 2, CELADON_MANSION_ROOF
+	warp_def 0, 0, 1, CELADON_MANSION_ROOF
+	warp_def 0, 1, 2, CELADON_MANSION_2F
+	warp_def 0, 6, 3, CELADON_MANSION_2F
+	warp_def 0, 7, 2, CELADON_MANSION_ROOF
 
 .XYTriggers: db 0
 
@@ -32,9 +32,7 @@ CooltrainerMScript_0x71670:
 	writetext UnknownText_0x716ce
 	checkcode VAR_DEXCAUGHT
 	if_greater_than 252, UnknownScript_0x7167e
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x7167e:
 	buttonsound

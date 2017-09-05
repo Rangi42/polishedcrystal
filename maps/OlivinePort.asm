@@ -9,11 +9,11 @@ OlivinePort_MapScriptHeader:
 OlivinePort_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $b, 5, OLIVINE_PORT_PASSAGE
-	warp_def $17, $7, 1, FAST_SHIP_1F
+	warp_def 7, 11, 5, OLIVINE_PORT_PASSAGE
+	warp_def 23, 7, 1, FAST_SHIP_1F
 
 .XYTriggers: db 1
-	xy_trigger 0, $f, $7, UnknownScript_0x7491f
+	xy_trigger 0, 15, 7, UnknownScript_0x7491f
 
 .Signposts: db 1
 	signpost 22, 1, SIGNPOST_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
@@ -37,7 +37,7 @@ OlivinePortTrigger0:
 	end
 
 UnknownScript_0x748b1:
-	applymovement PLAYER, MovementData_0x74a32
+	applyonemovement PLAYER, step_up
 	appear OLIVINEPORT_SAILOR1
 	dotrigger $0
 	setevent EVENT_GAVE_KURT_APRICORNS
@@ -57,7 +57,7 @@ SailorScript_0x748c0:
 	playsound SFX_EXIT_BUILDING
 	disappear OLIVINEPORT_SAILOR1
 	waitsfx
-	applymovement PLAYER, MovementData_0x74a30
+	applyonemovement PLAYER, step_down
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -79,7 +79,7 @@ UnknownScript_0x7490a:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
 	domaptrigger FAST_SHIP_1F, $1
-	warp FAST_SHIP_1F, $19, $1
+	warp FAST_SHIP_1F, 25, 1
 	end
 
 UnknownScript_0x74919:
@@ -212,14 +212,6 @@ CooltrainerFScript_0x74a22:
 	showtextfaceplayer UnknownText_0x74ca2
 	spriteface LAST_TALKED, DOWN
 	end
-
-MovementData_0x74a30:
-	step_down
-	step_end
-
-MovementData_0x74a32:
-	step_up
-	step_end
 
 MovementData_0x74a34:
 	step_right

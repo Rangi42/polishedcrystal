@@ -7,10 +7,10 @@ Route48_MapScriptHeader:
 Route48_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $b, 3, YELLOW_FOREST_GATE
+	warp_def 5, 11, 3, YELLOW_FOREST_GATE
 
 .XYTriggers: db 1
-	xy_trigger 0, $c, $14, Route48JessieJamesScript
+	xy_trigger 0, 12, 20, Route48JessieJamesScript
 
 .Signposts: db 1
 	signpost 11, 27, SIGNPOST_JUMPTEXT, Route48YellowForestSignText

@@ -30,7 +30,7 @@ endr
 TrainerClassDVsAndPersonality: ; 270d6
 	;  EVs  HP   Def  SAt  Ability  Gender
 	;  *    Atk  Spd  SDf  Nature   Form
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; kay
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; carrie
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; cal
 	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; falkner
 	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; bugsy
@@ -74,6 +74,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db  32, $AA, $AA, $AA, ABILITY_1 | QUIRKY, FEMALE ; pokefanf
 	db  48, $DD, $BB, $DB, ABILITY_1 | QUIRKY, MALE   ; officerm
 	db  48, $7B, $DB, $FF, ABILITY_1 | QUIRKY, FEMALE ; officerf
+	db  48, $E5, $FA, $D6, ABILITY_1 | QUIRKY, FEMALE ; nurse
 	db  40, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; pokemaniac
 	db  40, $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; cosplayer
 	db  40, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; super nerd

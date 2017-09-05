@@ -55,9 +55,6 @@ INCBIN "gfx/pokegear/johto-kanto.2bpp"
 
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"
-; Duplicate graphic (eight 00 bytes) fixes sprite animation bug introduced by
-; 6103314190c1a3b87be8a5b8b9d90789c3006755
-INCBIN "gfx/frames/space.1bpp"
 ; f9214
 
 MapEntryFrameGFX: ; f9344
@@ -69,21 +66,11 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(FontNormal), $80
-	ld a, [rLCDC]
-	bit 7, a
-	jr z, .one
+	lb bc, BANK(FontNormal), 111
 	call Get1bpp
-	jr .ok
-.one
-	call Copy1bpp
-.ok
 	ld de, FontCommon
-	ld hl, VTiles1 tile ("★" - $80) ; first common font character
-	lb bc, BANK(FontCommon), $d
-	ld a, [rLCDC]
-	bit 7, a
-	jp z, Copy1bpp
+	ld hl, VTiles1 tile ("▷" - $80) ; first common font character
+	lb bc, BANK(FontCommon), 11
 	jp Get1bpp
 ; fb48a
 
@@ -127,7 +114,7 @@ LoadFrame:: ; fb4cc
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $79
+	ld hl, VTiles1 tile ("┌" - $80)
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp
 	ld hl, VTiles2 tile $7f
@@ -199,8 +186,8 @@ InstantReloadPaletteHack:
 	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
-	ld hl, BGPals + 5 palettes ; to
-	ld de, UnknBGPals + 5 palettes ; from
+	ld hl, BGPals palette 5 ; to
+	ld de, UnknBGPals palette 5 ; from
 ; order
 	ld a, [rBGP]
 	ld b, a

@@ -9,20 +9,20 @@ NewBarkTown_MapScriptHeader:
 NewBarkTown_MapEventHeader:
 
 .Warps: db 5
-	warp_def $3, $6, 1, ELMS_LAB
-	warp_def $5, $f, 1, KRISS_HOUSE_1F
-	warp_def $b, $3, 1, KRISS_NEIGHBORS_HOUSE
-	warp_def $d, $b, 1, LYRAS_HOUSE_1F
-	warp_def $2, $a, 2, ELMS_HOUSE
+	warp_def 3, 6, 1, ELMS_LAB
+	warp_def 5, 15, 1, KRISS_HOUSE_1F
+	warp_def 11, 3, 1, KRISS_NEIGHBORS_HOUSE
+	warp_def 13, 11, 1, LYRAS_HOUSE_1F
+	warp_def 2, 10, 2, ELMS_HOUSE
 
 .XYTriggers: db 7
-	xy_trigger 0, $8, $1, NewBarkTown_TeacherStopsYouTrigger1
-	xy_trigger 0, $9, $1, NewBarkTown_TeacherStopsYouTrigger2
-	xy_trigger 0, $4, $6, NewBarkTown_LyraIntroTrigger
-	xy_trigger 1, $6, $11, NewBarkTown_LyraFinalTrigger1
-	xy_trigger 1, $7, $11, NewBarkTown_LyraFinalTrigger2
-	xy_trigger 1, $8, $11, NewBarkTown_LyraFinalTrigger3
-	xy_trigger 1, $9, $11, NewBarkTown_LyraFinalTrigger4
+	xy_trigger 0, 8, 1, NewBarkTown_TeacherStopsYouTrigger1
+	xy_trigger 0, 9, 1, NewBarkTown_TeacherStopsYouTrigger2
+	xy_trigger 0, 4, 6, NewBarkTown_LyraIntroTrigger
+	xy_trigger 1, 6, 17, NewBarkTown_LyraFinalTrigger1
+	xy_trigger 1, 7, 17, NewBarkTown_LyraFinalTrigger2
+	xy_trigger 1, 8, 17, NewBarkTown_LyraFinalTrigger3
+	xy_trigger 1, 9, 17, NewBarkTown_LyraFinalTrigger4
 
 .Signposts: db 5
 	signpost 8, 8, SIGNPOST_JUMPTEXT, NewBarkTownSignText
@@ -104,24 +104,23 @@ NewBarkTown_LyraIntroTrigger:
 	dotrigger $2
 	special FadeOutPalettes
 	pause 15
-	warpfacing UP, ELMS_LAB, $4, $b
+	warpfacing UP, ELMS_LAB, 4, 11
 	end
 
 NewBarkTown_LyraFinalTrigger1:
-	moveperson NEWBARKTOWN_LYRA, $e, $b
+	moveperson NEWBARKTOWN_LYRA, 14, 11
 	jump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger2:
-	moveperson NEWBARKTOWN_LYRA, $e, $c
+	moveperson NEWBARKTOWN_LYRA, 14, 12
 	jump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger3:
-	moveperson NEWBARKTOWN_LYRA, $e, $d
+	moveperson NEWBARKTOWN_LYRA, 14, 13
 	jump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger4:
-	moveperson NEWBARKTOWN_LYRA, $e, $e
-
+	moveperson NEWBARKTOWN_LYRA, 14, 14
 NewBarkTown_LyraFinalTrigger:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -191,9 +190,15 @@ NewBarkTownSilverScript:
 	applyonemovement NEWBARKTOWN_SILVER, step_right
 	end
 
+Movement_TeacherRunsToYou1_NBT:
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
+
 Movement_TeacherRunsToYou2_NBT:
 	step_left
-Movement_TeacherRunsToYou1_NBT:
 	step_left
 	step_left
 	step_left

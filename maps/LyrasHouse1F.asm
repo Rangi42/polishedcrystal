@@ -7,9 +7,9 @@ LyrasHouse1F_MapScriptHeader:
 LyrasHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $2, 4, NEW_BARK_TOWN
-	warp_def $7, $3, 4, NEW_BARK_TOWN
-	warp_def $0, $0, 1, LYRAS_HOUSE_2F
+	warp_def 7, 2, 4, NEW_BARK_TOWN
+	warp_def 7, 3, 4, NEW_BARK_TOWN
+	warp_def 0, 0, 1, LYRAS_HOUSE_2F
 
 .XYTriggers: db 0
 

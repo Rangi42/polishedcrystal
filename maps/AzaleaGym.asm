@@ -7,8 +7,8 @@ AzaleaGym_MapScriptHeader:
 AzaleaGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $4, 5, AZALEA_TOWN
-	warp_def $f, $5, 5, AZALEA_TOWN
+	warp_def 15, 4, 5, AZALEA_TOWN
+	warp_def 15, 5, 5, AZALEA_TOWN
 
 .XYTriggers: db 0
 
@@ -58,20 +58,18 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUG_CATCHER_JOSH
 	writetext .HiveBadgeSpeech
 	buttonsound
-	verbosegivetmhm TM_FURY_CUTTER
-	setevent EVENT_GOT_TM49_FURY_CUTTER
+	verbosegivetmhm TM_U_TURN
+	setevent EVENT_GOT_TM69_U_TURN
 	thisopenedtext
 
-	text "TM49 contains"
-	line "Fury Cutter."
+	text "TM69 contains"
+	line "U-turn."
 
-	para "If you don't miss,"
-	line "it gets stronger"
-	cont "every turn."
+	para "It lets your #-"
+	line "mon attack, then"
 
-	para "The longer your"
-	line "battle goes, the"
-	cont "better it gets."
+	para "switch out right"
+	line "away."
 
 	para "Isn't that great?"
 	line "I discovered it!"

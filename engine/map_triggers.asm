@@ -84,6 +84,7 @@ ENDM
 	trigger_def FAST_SHIP_B1F,                          wFastShipB1FTrigger
 	trigger_def MOUNT_MOON_SQUARE,                      wMountMoonSquareTrigger
 	trigger_def VERMILION_CITY,                         wVermilionCityTrigger
+	trigger_def LAVENDER_TOWN,                          wLavenderTownTrigger
 	trigger_def SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateTrigger
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
 	trigger_def SEAGALLOP_FERRY_SHAMOUTI_GATE,          wSeagallopFerryShamoutiGateTrigger

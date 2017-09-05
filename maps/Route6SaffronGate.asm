@@ -7,10 +7,10 @@ Route6SaffronGate_MapScriptHeader:
 Route6SaffronGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 12, SAFFRON_CITY
-	warp_def $0, $5, 13, SAFFRON_CITY
-	warp_def $7, $4, 2, ROUTE_6
-	warp_def $7, $5, 2, ROUTE_6
+	warp_def 0, 4, 12, SAFFRON_CITY
+	warp_def 0, 5, 13, SAFFRON_CITY
+	warp_def 7, 4, 2, ROUTE_6
+	warp_def 7, 5, 2, ROUTE_6
 
 .XYTriggers: db 0
 
@@ -20,16 +20,10 @@ Route6SaffronGate_MapEventHeader:
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x1926ea, -1
 
 OfficerScript_0x1926ea:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x1926f8
-	jumpopenedtext UnknownText_0x1926fe
+	iftrue_jumptextfaceplayer UnknownText_0x1927cb
+	thistextfaceplayer
 
-UnknownScript_0x1926f8:
-	jumpopenedtext UnknownText_0x1927cb
-
-UnknownText_0x1926fe:
 	text "Welcome to Saffron"
 	line "City, home of the"
 	cont "Magnet Train!"

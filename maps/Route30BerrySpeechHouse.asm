@@ -7,8 +7,8 @@ Route30BerrySpeechHouse_MapScriptHeader:
 Route30BerrySpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_30
-	warp_def $7, $3, 1, ROUTE_30
+	warp_def 7, 2, 1, ROUTE_30
+	warp_def 7, 3, 1, ROUTE_30
 
 .XYTriggers: db 0
 
@@ -31,8 +31,7 @@ UnknownScript_0x196d79:
 	writetext UnknownText_0x196dec
 	waitbutton
 UnknownScript_0x196d7d:
-	closetext
-	end
+	endtext
 
 UnknownText_0x196d82:
 	text "You know, #mon"

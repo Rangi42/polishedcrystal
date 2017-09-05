@@ -39,7 +39,7 @@ _TimeOfDayPals:: ; 8c011
 
 
 ; save bg palette 8
-	ld hl, UnknBGPals + 7 palettes
+	ld hl, UnknBGPals palette 7
 
 ; save wram bank
 	ld a, [rSVBK]
@@ -173,7 +173,7 @@ FillWhiteBGColor: ; 8c0c1
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld hl, UnknBGPals + 1 palettes
+	ld hl, UnknBGPals palette 1
 	ld c, 6
 .loop
 	ld a, e

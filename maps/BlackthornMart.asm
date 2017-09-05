@@ -7,8 +7,8 @@ BlackthornMart_MapScriptHeader:
 BlackthornMart_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 4, BLACKTHORN_CITY
-	warp_def $7, $3, 4, BLACKTHORN_CITY
+	warp_def 7, 2, 4, BLACKTHORN_CITY
+	warp_def 7, 3, 4, BLACKTHORN_CITY
 
 .XYTriggers: db 0
 

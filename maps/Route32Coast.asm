@@ -8,8 +8,8 @@ Route32Coast_MapScriptHeader:
 Route32Coast_MapEventHeader:
 
 .Warps: db 2
-	warp_def $39, $4, 4, UNION_CAVE_B1F_SOUTH
-	warp_def $33, $11, 1, ROUTE_32_COAST_HOUSE
+	warp_def 57, 4, 4, UNION_CAVE_B1F_SOUTH
+	warp_def 51, 17, 1, ROUTE_32_COAST_HOUSE
 
 .XYTriggers: db 0
 

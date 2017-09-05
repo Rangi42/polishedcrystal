@@ -7,12 +7,12 @@ FastShipB1F_MapScriptHeader:
 FastShipB1F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $1, 11, FAST_SHIP_1F
-	warp_def $b, $1b, 12, FAST_SHIP_1F
+	warp_def 9, 1, 11, FAST_SHIP_1F
+	warp_def 11, 27, 12, FAST_SHIP_1F
 
 .XYTriggers: db 2
-	xy_trigger 0, $5, $1a, UnknownScript_0x7673c
-	xy_trigger 0, $5, $1b, UnknownScript_0x76751
+	xy_trigger 0, 5, 26, UnknownScript_0x7673c
+	xy_trigger 0, 5, 27, UnknownScript_0x76751
 
 .Signposts: db 0
 
@@ -39,7 +39,7 @@ UnknownScript_0x7673c:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	iftrue UnknownScript_0x76766
 	applymovement FASTSHIPB1F_SAILOR2, MovementData_0x76876
-	moveperson FASTSHIPB1F_SAILOR1, $1a, $4
+	moveperson FASTSHIPB1F_SAILOR1, 26, 4
 	appear FASTSHIPB1F_SAILOR1
 	pause 5
 	disappear FASTSHIPB1F_SAILOR2
@@ -49,12 +49,10 @@ UnknownScript_0x76751:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_LEFT
 	iftrue UnknownScript_0x76766
 	applymovement FASTSHIPB1F_SAILOR1, MovementData_0x76871
-	moveperson FASTSHIPB1F_SAILOR2, $1b, $4
+	moveperson FASTSHIPB1F_SAILOR2, 27, 4
 	appear FASTSHIPB1F_SAILOR2
 	pause 5
 	disappear FASTSHIPB1F_SAILOR1
-	end
-
 UnknownScript_0x76766:
 	end
 
@@ -67,12 +65,9 @@ SailorScript_0x76767:
 	iftrue UnknownScript_0x7678d
 	checkevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	iftrue UnknownScript_0x76787
-	writetext UnknownText_0x7687b
-	waitbutton
-	closetext
 	setevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	clearevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	end
+	jumpopenedtext UnknownText_0x7687b
 
 UnknownScript_0x76787:
 	jumpopenedtext UnknownText_0x76907
@@ -81,9 +76,7 @@ UnknownScript_0x7678d:
 	writetext UnknownText_0x7692e
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
 	iffalse UnknownScript_0x76799
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 UnknownScript_0x76799:
 	buttonsound

@@ -14,6 +14,7 @@ BulbasaurEggMoves:
 	db PETAL_DANCE
 	db LIGHT_SCREEN
 	db SAFEGUARD
+	db POWER_WHIP
 	db $ff
 
 CharmanderEggMoves:
@@ -28,11 +29,9 @@ CharmanderEggMoves:
 
 SquirtleEggMoves:
 	db CONFUSION
-	db FLAIL
 	db FORESIGHT
 	db HAZE
 	db MIRROR_COAT
-	db MIST
 	db AQUA_JET
 	db $ff
 
@@ -50,7 +49,7 @@ PidgeyEggMoves:
 
 RattataEggMoves:
 	db FLAME_WHEEL
-	db FURY_SWIPES
+	db FURY_STRIKES
 	db REVERSAL
 	db SCREECH
 	db BITE
@@ -64,6 +63,7 @@ MarillEggMoves:
 	db PERISH_SONG
 	db SUPERSONIC
 	db LIGHT_SCREEN
+	db AMNESIA
 	db CALM_MIND
 	db AQUA_JET
 	db $ff
@@ -76,7 +76,6 @@ EkansEggMoves:
 	db $ff
 
 SandshrewEggMoves:
-	db FLAIL
 	db METAL_CLAW
 	db RAPID_SPIN
 	db SAFEGUARD
@@ -94,6 +93,7 @@ NidoranFEggMoves:
 	db $ff
 
 NidoranMEggMoves:
+	db AMNESIA
 	db CONFUSION
 	db DISABLE
 	db SUPERSONIC
@@ -106,13 +106,13 @@ ClefairyEggMoves:
 	db CALM_MIND
 	db BELLY_DRUM
 	db METRONOME
+	db AMNESIA
 	db SPLASH
 	db SOFTBOILED
 	db $ff
 
 VulpixEggMoves:
 	db DISABLE
-	db FLAIL
 	db FLARE_BLITZ
 	db HYPNOSIS
 	db FEINT_ATTACK
@@ -143,15 +143,13 @@ ZubatEggMoves:
 
 OddishEggMoves:
 	db CHARM
-	db FLAIL
 	db RAZOR_LEAF
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db SWORDS_DANCE
 	db $ff
 
 ParasEggMoves:
 	db AGILITY
-	db FLAIL
 	db LEECH_SEED
 	db METAL_CLAW
 	db PSYBEAM
@@ -163,7 +161,7 @@ ParasEggMoves:
 VenonatEggMoves:
 	db AGILITY
 	db BATON_PASS
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db SCREECH
 	db TOXIC_SPIKES
 	db $ff
@@ -179,8 +177,8 @@ DiglettEggMoves:
 
 MeowthEggMoves:
 	db CHARM
-	db FLAIL
 	db HYPNOSIS
+	db AMNESIA
 	db LEER
 	db NIGHT_SLASH
 	db $ff
@@ -213,7 +211,7 @@ MankeyEggMoves:
 GrowlitheEggMoves:
 	db DOUBLE_KICK
 	db FIRE_SPIN
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db THRASH
 	db CRUNCH
 	db FLARE_BLITZ
@@ -225,10 +223,8 @@ GrowlitheEggMoves:
 PoliwagEggMoves:
 	db ENCORE
 	db HAZE
-	db MIST
 	db SPLASH
 	db BUBBLE_BEAM
-	db LOCK_ON
 	db WATER_PULSE
 	db $ff
 
@@ -236,6 +232,7 @@ AbraEggMoves:
 	db BARRIER
 	db ENCORE
 	db LIGHT_SCREEN
+	db KNOCK_OFF
 	db $ff
 
 MachopEggMoves:
@@ -245,6 +242,7 @@ MachopEggMoves:
 	db LIGHT_SCREEN
 	db MACH_PUNCH
 	db CLOSE_COMBAT
+	db KNOCK_OFF
 	db $ff
 
 BellsproutEggMoves:
@@ -252,7 +250,8 @@ BellsproutEggMoves:
 	db LEECH_LIFE
 	db SWORDS_DANCE
 	db REFLECT
-	db MORNING_SUN
+	db HEALINGLIGHT
+	db POWER_WHIP
 	db $ff
 
 TentacoolEggMoves:
@@ -262,10 +261,10 @@ TentacoolEggMoves:
 	db MIRROR_COAT
 	db RAPID_SPIN
 	db SAFEGUARD
+	db KNOCK_OFF
 	db $ff
 
 GeodudeEggMoves:
-	db FLAIL
 	db ROCK_SLIDE
 	db $ff
 
@@ -273,7 +272,7 @@ PonytaEggMoves:
 	db CHARM
 	db DOUBLE_KICK
 	db HYPNOSIS
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db THRASH
 	db QUICK_ATTACK
 	db FLAME_WHEEL
@@ -290,7 +289,6 @@ SlowpokeEggMoves:
 	db $ff
 
 FarfetchDEggMoves:
-	db FLAIL
 	db FORESIGHT
 	db GUST
 	db QUICK_ATTACK
@@ -301,7 +299,6 @@ FarfetchDEggMoves:
 
 DoduoEggMoves:
 	db FEINT_ATTACK
-	db FLAIL
 	db HAZE
 	db SUPERSONIC
 	db QUICK_ATTACK
@@ -334,6 +331,7 @@ ShellderEggMoves:
 	db TAKE_DOWN
 	db WATER_PULSE
 	db ICICLE_SPEAR
+	db ROCK_BLAST
 	db $ff
 
 GastlyEggMoves:
@@ -348,9 +346,9 @@ GastlyEggMoves:
 
 OnixEggMoves:
 	db DEFENSE_CURL
-	db FLAIL
 	db ROCK_SLIDE
 	db EARTHQUAKE
+	db ROCK_BLAST
 	db $ff
 
 DrowzeeEggMoves:
@@ -362,15 +360,16 @@ DrowzeeEggMoves:
 KrabbyEggMoves:
 	db AGILITY
 	db HAZE
-	db FLAIL
+	db AMNESIA
 	db DIG
 	db CALM_MIND
+	db KNOCK_OFF
 	db $ff
 
 ExeggcuteEggMoves:
 	db MEGA_DRAIN
-	db MOONLIGHT
-	db MORNING_SUN
+	db HEALINGLIGHT
+	db HEALINGLIGHT
 	db ANCIENTPOWER
 	db REFLECT
 	db $ff
@@ -411,7 +410,7 @@ ChanseyEggMoves:
 
 TangelaEggMoves:
 	db CONFUSION
-	db FLAIL
+	db AMNESIA
 	db LEECH_SEED
 	db $ff
 
@@ -427,7 +426,6 @@ HorseaEggMoves:
 	db AURORA_BEAM
 	db DISABLE
 	db DRAGON_RAGE
-	db FLAIL
 	db OCTAZOOKA
 	db SPLASH
 	db HAZE
@@ -438,7 +436,7 @@ TogepiEggMoves:
 	db EXTRASENSORY
 	db FORESIGHT
 	db FUTURE_SIGHT
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db NASTY_PLOT
 	db PECK
 	db $ff
@@ -448,6 +446,7 @@ MrMimeEggMoves:
 	db FUTURE_SIGHT
 	db HYPNOSIS
 	db NASTY_PLOT
+	db TRICK
 	db $ff
 
 ScytherEggMoves:
@@ -467,8 +466,7 @@ JynxEggMoves:
 
 PinsirEggMoves:
 	db FEINT_ATTACK
-	db FLAIL
-	db FURY_ATTACK
+	db FURY_STRIKES
 	db QUICK_ATTACK
 	db CLOSE_COMBAT
 	db $ff
@@ -482,7 +480,6 @@ LaprasEggMoves:
 	db $ff
 
 EeveeEggMoves:
-	db FLAIL
 	db CHARM
 	db $ff
 
@@ -494,18 +491,19 @@ OmanyteEggMoves:
 	db TOXIC_SPIKES
 	db SUPERSONIC
 	db WATER_PULSE
+	db KNOCK_OFF
 	db $ff
 
 KabutoEggMoves:
 	db AURORA_BEAM
 	db BUBBLE_BEAM
 	db CONFUSE_RAY
-	db FLAIL
 	db FORESIGHT
 	db RAPID_SPIN
 	db SCREECH
 	db TAKE_DOWN
 	db DIG
+	db KNOCK_OFF
 	db $ff
 
 AerodactylEggMoves:
@@ -518,14 +516,12 @@ AerodactylEggMoves:
 DratiniEggMoves:
 	db EXTREMESPEED
 	db HAZE
-	db MIST
 	db SUPERSONIC
 	db WATER_PULSE
 	db AQUA_JET
 	db $ff
 
 ChikoritaEggMoves:
-	db FLAIL
 	db LEECH_SEED
 	db VINE_WHIP
 	db ANCIENTPOWER
@@ -540,7 +536,7 @@ CyndaquilEggMoves:
 	db EXTRASENSORY
 	db FLARE_BLITZ
 	db FORESIGHT
-	db FURY_SWIPES
+	db FURY_STRIKES
 	db REVERSAL
 	db CLOSE_COMBAT
 	db THRASH
@@ -566,6 +562,7 @@ SentretEggMoves:
 	db REVERSAL
 	db SLASH
 	db DOUBLE_EDGE
+	db TRICK
 	db $ff
 
 HoothootEggMoves:
@@ -575,7 +572,7 @@ HoothootEggMoves:
 	db SUPERSONIC
 	db WING_ATTACK
 	db BRAVE_BIRD
-	db MOONLIGHT
+	db HEALINGLIGHT
 	db $ff
 
 LedybaEggMoves:
@@ -584,6 +581,8 @@ LedybaEggMoves:
 	db PSYBEAM
 	db SCREECH
 	db LIGHT_SCREEN
+	db KNOCK_OFF
+	db DRAIN_PUNCH
 	db $ff
 
 SpinarakEggMoves:
@@ -600,10 +599,9 @@ SpinarakEggMoves:
 
 ChinchouEggMoves:
 	db AGILITY
-	db MIST
+	db HAZE
 	db PSYBEAM
 	db SCREECH
-	db FLAIL
 	db SUPERSONIC
 	db WATER_PULSE
 	db $ff
@@ -612,7 +610,6 @@ PichuEggMoves:
 	db DISARM_VOICE
 	db DOUBLE_SLAP
 	db ENCORE
-	db FLAIL
 	db REVERSAL
 	db $ff
 
@@ -648,7 +645,7 @@ MareepEggMoves:
 	db $ff
 
 SudowoodoEggMoves:
-	db HARDEN
+	db DEFENSE_CURL
 	db SELFDESTRUCT
 	db $ff
 
@@ -700,11 +697,11 @@ GirafarigEggMoves:
 	db MEAN_LOOK
 	db MIRROR_COAT
 	db TAKE_DOWN
+	db AMNESIA
 	db CALM_MIND
 	db $ff
 
 PinecoEggMoves:
-	db FLAIL
 	db PIN_MISSILE
 	db SWIFT
 	db REFLECT
@@ -744,7 +741,6 @@ SnubbullEggMoves:
 QwilfishEggMoves:
 	db ASTONISH
 	db BUBBLE_BEAM
-	db FLAIL
 	db HAZE
 	db SUPERSONIC
 	db POISON_JAB
@@ -753,9 +749,9 @@ QwilfishEggMoves:
 	db $ff
 
 HeracrossEggMoves:
-	db FLAIL
-	db HARDEN
+	db DEFENSE_CURL
 	db PURSUIT
+	db ROCK_BLAST
 	db $ff
 
 SneaselEggMoves:
@@ -802,7 +798,8 @@ SwinubEggMoves:
 CorsolaEggMoves:
 	db BARRIER
 	db CONFUSE_RAY
-	db MIST
+	db HAZE
+	db AMNESIA
 	db SCREECH
 	db ROCK_SLIDE
 	db SAFEGUARD
@@ -812,9 +809,9 @@ CorsolaEggMoves:
 	db $ff
 
 RemoraidEggMoves:
-	db FLAIL
 	db HAZE
 	db OCTAZOOKA
+	db ROCK_BLAST
 	db SCREECH
 	db SUPERSONIC
 	db AURORA_BEAM
@@ -862,7 +859,6 @@ TyrogueEggMoves:
 	db MACH_PUNCH
 	db PURSUIT
 	db RAPID_SPIN
-	db LOCK_ON
 	db $ff
 
 ElekidEggMoves:

@@ -8,8 +8,8 @@ VioletGym_MapScriptHeader:
 VioletGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $4, 2, VIOLET_CITY
-	warp_def $f, $5, 2, VIOLET_CITY
+	warp_def 15, 4, 2, VIOLET_CITY
+	warp_def 15, 5, 2, VIOLET_CITY
 
 .XYTriggers: db 0
 
@@ -33,14 +33,14 @@ VioletGymTrigger0:
 
 VioletGymFalknerAwayScript:
 	showemote EMOTE_SHOCK, VIOLETGYM_GYM_GUY2, 15
-	applymovement VIOLETGYM_GYM_GUY2, VioletGymMovementData_GymGuyStepDown
+	applyonemovement VIOLETGYM_GYM_GUY2, step_down
 	showtext VioletGymGuyFalknerAwayText
 	spriteface PLAYER, DOWN
 	pause 10
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
 	waitsfx
-	warp VIOLET_CITY, $12, $16
+	warp VIOLET_CITY, 18, 22
 	end
 
 FalknerScript_0x683c2:
@@ -63,7 +63,7 @@ FalknerScript_0x683c2:
 	setflag ENGINE_ZEPHYRBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM31_ROOST
-	iftrue .SpeechAfterTM
+	iftrue_jumpopenedtext UnknownText_0x68735
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
 	domaptrigger ELMS_LAB, $2
@@ -73,9 +73,6 @@ FalknerScript_0x683c2:
 	verbosegivetmhm TM_ROOST
 	setevent EVENT_GOT_TM31_ROOST
 	jumpopenedtext UnknownText_0x68648
-
-.SpeechAfterTM:
-	jumpopenedtext UnknownText_0x68735
 
 TrainerBird_keeperRod:
 	trainer EVENT_BEAT_BIRD_KEEPER_ROD, BIRD_KEEPER, ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText, 0, Bird_keeperRodScript
@@ -92,14 +89,9 @@ Bird_keeperAbeScript:
 	jumptextfaceplayer UnknownText_0x688c7
 
 VioletGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_FALKNER
-	iftrue .VioletGymGuyWinScript
-	jumpopenedtext VioletGymGuyText
-
-.VioletGymGuyWinScript:
-	jumpopenedtext VioletGymGuyWinText
+	iftrue_jumptextfaceplayer VioletGymGuyWinText
+	jumptextfaceplayer VioletGymGuyText
 
 VioletGymStatue:
 	trainertotext FALKNER, 1, $1
@@ -112,10 +104,6 @@ VioletGymStatue:
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3
-
-VioletGymMovementData_GymGuyStepDown:
-	step_down
-	step_end
 
 UnknownText_0x68473:
 	text "I'm Falkner, the"

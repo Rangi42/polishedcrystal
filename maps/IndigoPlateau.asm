@@ -8,8 +8,8 @@ IndigoPlateau_MapScriptHeader:
 IndigoPlateau_MapEventHeader:
 
 .Warps: db 2
-	warp_def $5, $9, 1, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def $5, $a, 2, INDIGO_PLATEAU_POKECENTER_1F
+	warp_def 5, 9, 1, INDIGO_PLATEAU_POKECENTER_1F
+	warp_def 5, 10, 2, INDIGO_PLATEAU_POKECENTER_1F
 
 .XYTriggers: db 0
 

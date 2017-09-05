@@ -7,8 +7,8 @@ Route39Barn_MapScriptHeader:
 Route39Barn_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 1, ROUTE_39
-	warp_def $7, $4, 1, ROUTE_39
+	warp_def 7, 3, 1, ROUTE_39
+	warp_def 7, 4, 1, ROUTE_39
 
 .XYTriggers: db 0
 
@@ -56,9 +56,9 @@ TwinScript_0x9cc90:
 	end
 
 MooMoo:
-	opentext
 	checkevent EVENT_HEALED_MOOMOO
 	iftrue .HappyCow
+	opentext
 	writetext Text_WeakMoo
 	writebyte MILTANK
 	special PlaySlowCry
@@ -66,9 +66,7 @@ MooMoo:
 	writetext Text_ItsCryIsWeak
 	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
 	iftrue .GiveBerry
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .GiveBerry:
 	buttonsound
@@ -114,11 +112,8 @@ MooMoo:
 	pause 60
 	buttonsound
 	special RestartMapMusic
-	writetext Text_TotallyHealthy
-	waitbutton
-	closetext
 	setevent EVENT_HEALED_MOOMOO
-	end
+	jumpopenedtext Text_TotallyHealthy
 
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
@@ -136,11 +131,8 @@ MooMoo:
 	pause 60
 	buttonsound
 	special RestartMapMusic
-	writetext Text_TotallyHealthy
-	waitbutton
-	closetext
 	setevent EVENT_HEALED_MOOMOO
-	end
+	jumpopenedtext Text_TotallyHealthy
 
 .NoBerriesInBag:
 	jumpopenedtext Text_NoBerries
@@ -149,10 +141,7 @@ MooMoo:
 	jumpopenedtext Text_RefusedToGiveBerry
 
 .HappyCow:
-	writetext UnknownText_0x9cd92
-	cry MILTANK
-	waitbutton
-	closetext
+	showcrytext UnknownText_0x9cd92, MILTANK
 	end
 
 Text_MoomooIsSick:

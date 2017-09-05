@@ -9,9 +9,9 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 GoldenrodDeptStoreB1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $2, $11, 3, UNDERGROUND_WAREHOUSE
-	warp_def $4, $9, 1, GOLDENROD_DEPT_STORE_ELEVATOR
-	warp_def $4, $a, 2, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_def 2, 17, 3, UNDERGROUND_WAREHOUSE
+	warp_def 4, 9, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_def 4, 10, 2, GOLDENROD_DEPT_STORE_ELEVATOR
 
 .XYTriggers: db 0
 
@@ -25,7 +25,7 @@ GoldenrodDeptStoreB1F_MapEventHeader:
 	person_event SPRITE_BLACK_BELT, 10, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d7cb, -1
 	person_event SPRITE_BLACK_BELT, 8, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d82c, -1
 	person_event SPRITE_BLACK_BELT, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d875, -1
-	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, MachokeScript_0x7d7b9, -1
+	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, MACHOKE, UnknownText_0x7d8bb, -1
 
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY
@@ -33,7 +33,7 @@ UnknownScript_0x7d781:
 	jump UnknownScript_0x7d791
 
 UnknownScript_0x7d78a:
-	changeblock $10, $4, $d
+	changeblock 16, 4, $d
 	jump UnknownScript_0x7d791
 
 UnknownScript_0x7d791:
@@ -41,28 +41,20 @@ UnknownScript_0x7d791:
 	iftrue .Layout2
 	checkevent EVENT_WAREHOUSE_LAYOUT_3
 	iftrue .Layout3
-	changeblock $a, $8, $d
+	changeblock 10, 8, $d
 	return
 
 .Layout2:
-	changeblock $4, $a, $d
+	changeblock 4, 10, $d
 	return
 
 .Layout3:
-	changeblock $a, $c, $d
+	changeblock 10, 12, $d
 	return
 
 UnknownScript_0x7d7ac:
 	clearevent EVENT_WAREHOUSE_BLOCKED_OFF
 	return
-
-MachokeScript_0x7d7b9:
-	opentext
-	writetext UnknownText_0x7d8bb
-	cry MACHOKE
-	waitbutton
-	closetext
-	end
 
 UnknownText_0x7d7cb:
 	text "Hey, kid! You're"

@@ -1320,7 +1320,7 @@ LoadTileset:: ; 2821
 
 	ld hl, wDecompressScratch
 	ld de, VTiles2
-	ld bc, $70 tiles
+	ld bc, $7f tiles
 	call CopyBytes
 
 	ld a, [rVBK]
@@ -1328,7 +1328,7 @@ LoadTileset:: ; 2821
 	ld a, $1
 	ld [rVBK], a
 
-	ld hl, wDecompressScratch + $70 tiles
+	ld hl, wDecompressScratch + $80 tiles
 	ld de, VTiles2
 	ld bc, $80 tiles
 	call CopyBytes
@@ -2194,6 +2194,8 @@ GetMapHeaderMusic:: ; 2cbd
 	jr z, .radiotower
 	cp MUSIC_MAHOGANY_MART
 	jr z, .mahoganymart
+	cp MUSIC_LAVENDER
+	jr z, .lavender
 	call Function8b342
 	ld e, c
 	ld d, 0
@@ -2222,6 +2224,17 @@ GetMapHeaderMusic:: ; 2cbd
 
 .clearedmahogany
 	ld de, MUSIC_CHERRYGROVE_CITY
+	jr .done
+
+.lavender
+	ld a, [StatusFlags2]
+	bit 6, a ; ENGINE_EXORCISED_LAV_RADIO_TOWER
+	jr z, .exorcisedlavradiotower
+	ld de, MUSIC_LAVENDER_TOWN_RBY
+	jr .done
+
+.exorcisedlavradiotower
+	ld de, MUSIC_LAVENDER_TOWN
 	jr .done
 ; 2cff
 

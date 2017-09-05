@@ -135,7 +135,7 @@ Facing16: ; fishing down
 	db  0,  8, 0, $01
 	db  8,  0, 2, $02
 	db  8,  8, 2, $03
-	db 16,  0, 4, $fc
+	db 16,  0, 4, $7c
 ; 414a
 
 Facing17: ; fishing up
@@ -144,7 +144,7 @@ Facing17: ; fishing up
 	db  0,  8, 0, $05
 	db  8,  0, 2, $06
 	db  8,  8, 2, $07
-	db -8,  0, 4, $fc
+	db -8,  0, 4, $7c
 ; 415f
 
 Facing18: ; fishing left
@@ -167,16 +167,16 @@ Facing19: ; fishing right
 
 Facing20: ; emote
 	db 4 ; #
-	db  0,  0, 4, $f8
-	db  0,  8, 4, $f9
-	db  8,  0, 4, $fa
-	db  8,  8, 4, $fb
+	db  0,  0, 4, $78
+	db  0,  8, 4, $79
+	db  8,  0, 4, $7a
+	db  8,  8, 4, $7b
 ; 419a
 
 Facing21: ; shadow
 	db 2 ; #
-	db  0,  0, 4, $fc
-	db  0,  8, 4 | X_FLIP, $fc
+	db  0,  0, 4, $7c
+	db  0,  8, 4 | X_FLIP, $7c
 ; 41a3
 
 Facing23: ; big snorlax or lapras doll
@@ -235,28 +235,28 @@ Facing22: ; big doll other than snorlax or lapras
 
 Facing28: ; boulder dust 1
 	db 4 ; #
-	db  0,  0, 4, $fe
-	db  0,  8, 4, $fe
-	db  8,  0, 4, $fe
-	db  8,  8, 4, $fe
+	db  0,  0, 4, $7e
+	db  0,  8, 4, $7e
+	db  8,  0, 4, $7e
+	db  8,  8, 4, $7e
 ; 4250
 
 Facing29: ; boulder dust 2
 	db 4 ; #
-	db  0,  0, 4, $ff
-	db  0,  8, 4, $ff
-	db  8,  0, 4, $ff
-	db  8,  8, 4, $ff
+	db  0,  0, 4, $7f
+	db  0,  8, 4, $7f
+	db  8,  0, 4, $7f
+	db  8,  8, 4, $7f
 ; 4261
 
 Facing30: ; 4261
 	db 2 ; #
-	db  8,  0, 4, $fe
-	db  8,  8, 4 | X_FLIP, $fe
+	db  8,  0, 4, $7e
+	db  8,  8, 4 | X_FLIP, $7e
 ; 426a
 
 Facing31: ; 426a
 	db 2 ; #
-	db  9, -1, 4, $fe
-	db  9,  9, 4 | X_FLIP, $fe
+	db  9, -1, 4, $7e
+	db  9,  9, 4 | X_FLIP, $7e
 ; 4273

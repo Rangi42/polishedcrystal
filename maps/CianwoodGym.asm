@@ -7,8 +7,8 @@ CianwoodGym_MapScriptHeader:
 CianwoodGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 2, CIANWOOD_CITY
-	warp_def $11, $5, 2, CIANWOOD_CITY
+	warp_def 17, 4, 2, CIANWOOD_CITY
+	warp_def 17, 5, 2, CIANWOOD_CITY
 
 .XYTriggers: db 0
 
@@ -18,7 +18,7 @@ CianwoodGym_MapEventHeader:
 
 .PersonEvents: db 10
 	person_event SPRITE_CHUCK, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ChuckScript_0x9d60f, -1
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, 1, 5, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, strengthboulder, -1
+	strengthboulder_event 1, 5
 	person_event SPRITE_BLACK_BELT, 12, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBlackbeltYoshi, -1
 	person_event SPRITE_BLACK_BELT, 12, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerBlackbeltLao, -1
 	person_event SPRITE_BLACK_BELT, 9, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltNob, -1
@@ -61,7 +61,7 @@ ChuckScript_0x9d60f:
 	specialphonecall SPECIALCALL_YELLOWFOREST
 .FightDone:
 	checkevent EVENT_GOT_TM01_DYNAMICPUNCH
-	iftrue .AlreadyGotTM
+	iftrue_jumpopenedtext ChuckAfterText
 	setevent EVENT_BEAT_BLACKBELT_YOSHI
 	setevent EVENT_BEAT_BLACKBELT_LAO
 	setevent EVENT_BEAT_BLACKBELT_NOB
@@ -71,9 +71,6 @@ ChuckScript_0x9d60f:
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
 	jumpopenedtext ChuckExplainTMText
-
-.AlreadyGotTM:
-	jumpopenedtext ChuckAfterText
 
 TrainerBlackbeltYoshi:
 	trainer EVENT_BEAT_BLACKBELT_YOSHI, BLACKBELT_T, YOSHI, BlackbeltYoshiSeenText, BlackbeltYoshiBeatenText, 0, .Script

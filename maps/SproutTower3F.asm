@@ -7,10 +7,10 @@ SproutTower3F_MapScriptHeader:
 SproutTower3F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $e, $8, 4, SPROUT_TOWER_2F
+	warp_def 14, 8, 4, SPROUT_TOWER_2F
 
 .XYTriggers: db 1
-	xy_trigger 0, $9, $9, UnknownScript_0x184947
+	xy_trigger 0, 9, 9, UnknownScript_0x184947
 
 .Signposts: db 6
 	signpost 1, 6, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
@@ -44,7 +44,7 @@ UnknownScript_0x184947:
 	playsound SFX_ELEVATOR
 	earthquake 79
 	applymovement PLAYER, MovementData_0x184a1d
-	applymovement SPROUTTOWER3F_SILVER, MovementData_0x184a22
+	applyonemovement SPROUTTOWER3F_SILVER, step_up
 	showtext UnknownText_0x184a27
 	showemote EMOTE_SHOCK, SPROUTTOWER3F_SILVER, 15
 	spriteface SPROUTTOWER3F_SILVER, DOWN
@@ -115,10 +115,6 @@ MovementData_0x184a1d:
 	step_up
 	step_up
 	step_up
-	step_up
-	step_end
-
-MovementData_0x184a22:
 	step_up
 	step_end
 

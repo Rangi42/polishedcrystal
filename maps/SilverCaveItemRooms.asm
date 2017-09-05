@@ -7,8 +7,8 @@ SilverCaveItemRooms_MapScriptHeader:
 SilverCaveItemRooms_MapEventHeader:
 
 .Warps: db 2
-	warp_def $21, $15, 3, SILVER_CAVE_ROOM_2
-	warp_def $1b, $5, 4, SILVER_CAVE_ROOM_2
+	warp_def 33, 21, 3, SILVER_CAVE_ROOM_2
+	warp_def 27, 5, 4, SILVER_CAVE_ROOM_2
 
 .XYTriggers: db 0
 

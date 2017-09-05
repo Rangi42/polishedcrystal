@@ -472,9 +472,9 @@ PlacePartyMonGender: ; 502b1
 	call GetGender
 	ld a, " "
 	jr c, .got_gender
-	ld a, $5f ; colored "♂"
+	ld a, "<MALE>"
 	jr nz, .got_gender
-	ld a, $60 ; colored "♀"
+	ld a, "<FEMALE>"
 
 .got_gender
 	pop hl

@@ -9,10 +9,10 @@ KogasRoom_MapScriptHeader:
 KogasRoom_MapEventHeader:
 
 .Warps: db 4
-	warp_def $11, $4, 2, WILLS_ROOM
-	warp_def $11, $5, 3, WILLS_ROOM
-	warp_def $2, $4, 1, BRUNOS_ROOM
-	warp_def $2, $5, 2, BRUNOS_ROOM
+	warp_def 17, 4, 2, WILLS_ROOM
+	warp_def 17, 5, 3, WILLS_ROOM
+	warp_def 2, 4, 1, BRUNOS_ROOM
+	warp_def 2, 5, 2, BRUNOS_ROOM
 
 .XYTriggers: db 0
 
@@ -30,7 +30,7 @@ KogasRoomEntranceTrigger:
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock $4, $e, $2a
+	changeblock 4, 14, $2a
 	reloadmappart
 	closetext
 	dotrigger $1
@@ -41,11 +41,11 @@ KogasRoomEntranceTrigger:
 KogasRoomDoorCallback:
 	checkevent EVENT_KOGAS_ROOM_ENTRANCE_CLOSED
 	iffalse .KeepDoorClosed
-	changeblock $4, $e, $2a
+	changeblock 4, 14, $2a
 .KeepDoorClosed:
 	checkevent EVENT_KOGAS_ROOM_EXIT_OPEN
 	iffalse .OpenDoor
-	changeblock $4, $2, $16
+	changeblock 4, 2, $16
 .OpenDoor:
 	return
 
@@ -73,7 +73,7 @@ KogaScript:
 	showtext .AfterRematchText
 .EndBattle:
 	playsound SFX_ENTER_DOOR
-	changeblock $4, $2, $16
+	changeblock 4, 2, $16
 	reloadmappart
 	setevent EVENT_KOGAS_ROOM_EXIT_OPEN
 	setevent EVENT_BEAT_ELITE_4_KOGA

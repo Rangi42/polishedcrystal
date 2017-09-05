@@ -8,8 +8,8 @@ Route16South_MapScriptHeader:
 Route16South_MapEventHeader:
 
 .Warps: db 2
-	warp_def $a, $9, 1, ROUTE_16_17_GATE
-	warp_def $b, $9, 2, ROUTE_16_17_GATE
+	warp_def 10, 9, 1, ROUTE_16_17_GATE
+	warp_def 11, 9, 2, ROUTE_16_17_GATE
 
 .XYTriggers: db 0
 
@@ -40,8 +40,7 @@ OfficerfJamieScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JAMIE
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	jumpopenedtext OfficerfJamieAfterText

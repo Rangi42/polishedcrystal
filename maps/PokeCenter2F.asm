@@ -11,9 +11,9 @@ PokeCenter2F_MapScriptHeader:
 PokeCenter2F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $0, -1, POKECENTER_2F
-	warp_def $0, $5, 1, TRADE_CENTER
-	warp_def $0, $9, 1, COLOSSEUM
+	warp_def 7, 0, -1, POKECENTER_2F
+	warp_def 0, 5, 1, TRADE_CENTER
+	warp_def 0, 9, 1, COLOSSEUM
 
 .XYTriggers: db 0
 
@@ -48,8 +48,8 @@ PokeCenter2FTileCallback:
 
 .shamouti2f
 	changemap KantoPokeCenter2F_BlockData
-	changeblock $0, $6, $3c
-	changeblock $2, $0, $4a
+	changeblock 0, 6, $3c
+	changeblock 2, 0, $4a
 	return
 
 .CheckPokeCenter2FRegion:
@@ -95,11 +95,11 @@ Script_WalkOutOfLinkTradeRoom:
 
 .Female:
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepDown
+	applyonemovement PLAYER, step_down
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (1 << 7) | (PAL_OW_BLUE << 4)
+	writebyte ((1 << 3) | PAL_OW_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	special ReplaceKrisSprite
@@ -117,11 +117,11 @@ Script_WalkOutOfLinkBattleRoom:
 
 .Female:
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepDown
+	applyonemovement PLAYER, step_down
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (1 << 7) | (PAL_OW_BLUE << 4)
+	writebyte ((1 << 3) | PAL_OW_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	special ReplaceKrisSprite
@@ -132,8 +132,7 @@ Script_WalkOutOfLinkBattleRoom:
 PokeCenter2FLinkRecordSign:
 	refreshscreen
 	special Special_DisplayLinkRecord
-	closetext
-	end
+	endtext
 
 LinkReceptionistScript_Trade:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -168,21 +167,18 @@ LinkReceptionistScript_Trade:
 .FriendNotReady:
 	special WaitForOtherPlayerToExit
 	writetext Text_FriendNotReady
-	closetext
-	end
+	endtext
 
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .IncompatibleRooms:
 	writetext Text_IncompatibleRooms
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
@@ -193,8 +189,7 @@ LinkReceptionistScript_Trade:
 .AbortLink:
 	special WaitForOtherPlayerToExit
 .Cancel:
-	closetext
-	end
+	endtext
 
 Script_TradeCenterClosed:
 	thistextfaceplayer
@@ -237,21 +232,18 @@ LinkReceptionistScript_Battle:
 .FriendNotReady:
 	special WaitForOtherPlayerToExit
 	writetext Text_FriendNotReady
-	closetext
-	end
+	endtext
 
 .LinkedToFirstGen:
 	special Special_FailedLinkToPast
 	writetext Text_CantLinkToThePast
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .IncompatibleRooms:
 	writetext Text_IncompatibleRooms
 	special Special_CloseLink
-	closetext
-	end
+	endtext
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
@@ -262,8 +254,7 @@ LinkReceptionistScript_Battle:
 .AbortLink:
 	special WaitForOtherPlayerToExit
 .Cancel:
-	closetext
-	end
+	endtext
 
 Script_BattleRoomClosed:
 	thistextfaceplayer
@@ -289,14 +280,14 @@ PokeCenter2F_CheckGender:
 	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (1 << 7) | (PAL_OW_RED << 4)
+	writebyte ((1 << 3) | PAL_OW_RED) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	setflag ENGINE_KRIS_IN_CABLE_CLUB
 	special ReplaceKrisSprite
 	showtext Text_LikeTheLook
 	showemote EMOTE_SHOCK, PLAYER, 15
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesOneStepUp
+	applyonemovement PLAYER, step_up
 	end
 
 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight:
@@ -310,7 +301,6 @@ PokeCenter2FMovementData_PlayerTakesThreeStepsUp:
 	step_up
 PokeCenter2FMovementData_PlayerTakesTwoStepsUp:
 	step_up
-PokeCenter2FMovementData_PlayerTakesOneStepUp:
 	step_up
 	step_end
 
@@ -318,7 +308,6 @@ PokeCenter2FMovementData_PlayerTakesThreeStepsDown:
 	step_down
 PokeCenter2FMovementData_PlayerTakesTwoStepsDown:
 	step_down
-PokeCenter2FMovementData_PlayerTakesOneStepDown:
 	step_down
 	step_end
 

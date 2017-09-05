@@ -7,8 +7,8 @@ CeladonUniversityHyperTestRoom_MapScriptHeader:
 CeladonUniversityHyperTestRoom_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $2, 4, CELADON_UNIVERSITY_2F
-	warp_def $b, $3, 4, CELADON_UNIVERSITY_2F
+	warp_def 11, 2, 4, CELADON_UNIVERSITY_2F
+	warp_def 11, 3, 4, CELADON_UNIVERSITY_2F
 
 .XYTriggers: db 0
 

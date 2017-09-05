@@ -1228,7 +1228,7 @@ StoleText:
 KnockedOffItemText:
 	text "<USER>"
 	line "knocked off"
-	cont ""
+	cont "@"
 	text_from_ram StringBuffer1
 	text "!"
 	prompt
@@ -1523,7 +1523,7 @@ GetOutText:
 	line "Get out…"
 	prompt
 
-KayFinalPkmnText:
+CarrieFinalPkmnText:
 CalFinalPkmnText:
 	text "I still have one"
 	line "#mon!"

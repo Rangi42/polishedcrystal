@@ -69,14 +69,18 @@ class Metatiles(object):
 		return tile
 
 class Map(object):
-	def __init__(self, blockfile_name, height, metatiles):
+	def __init__(self, blockfile_name, size, metatiles):
 		self.data = []
 		with open(blockfile_name, 'rb') as blockfile:
 			for mti in blockfile.read():
 				mti = ord(mti)
 				self.data.append(metatiles.tile(mti))
-		self.height = height
-		self.width = len(self.data) // self.height
+		if size.startswith('h'):
+			self.height = int(size[1:])
+			self.width = len(self.data) // self.height
+		else:
+			self.width = int(size.rstrip('w'))
+			self.height = len(self.data) // self.width
 
 	def export(self, filename):
 		overall_w = self.width * Metatiles.p_per_mt
@@ -95,27 +99,27 @@ class Map(object):
 			writer = png.Writer(overall_w, overall_h)
 			writer.write(file, chunk(rgb_bytes(data), overall_w * 3))
 
-def process(blockfile_name, height, metatiles_name):
+def process(blockfile_name, size, metatiles_name):
 	metatiles = Metatiles(metatiles_name)
-	map = Map(blockfile_name, height, metatiles)
+	map = Map(blockfile_name, size, metatiles)
 	filename = blockfile_name[:-4] + '.png'
 	map.export(filename)
 	print('Exported', filename)
 
 def main():
 	if len(sys.argv) < 4:
-		usage = '''Usage: %s map.blk height tileset
+		usage = '''Usage: %s map.blk (width | 'h'height) tileset
        Generate a .png of a map for viewing'''
 		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
 
 	blockfile = sys.argv[1]
-	height = int(sys.argv[2])
+	size = sys.argv[2]
 	tileset = sys.argv[3]
 	os.system('python utils/metatiles.py %s %s' % (tileset, blockfile))
 	metatiles = 'tilesets/%s_metatiles_colored.png' % tileset
 
-	process(blockfile, height, metatiles)
+	process(blockfile, size, metatiles)
 
 if __name__ == '__main__':
 	main()

@@ -7,9 +7,9 @@ PokemonMansion1F_MapScriptHeader:
 PokemonMansion1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $1b, $5, 3, CINNABAR_ISLAND
-	warp_def $1b, $6, 3, CINNABAR_ISLAND
-	warp_def $17, $15, 1, POKEMON_MANSION_B1F
+	warp_def 27, 5, 3, CINNABAR_ISLAND
+	warp_def 27, 6, 3, CINNABAR_ISLAND
+	warp_def 23, 21, 1, POKEMON_MANSION_B1F
 
 .XYTriggers: db 0
 

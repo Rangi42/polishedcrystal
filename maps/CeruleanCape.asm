@@ -7,13 +7,13 @@ CeruleanCape_MapScriptHeader:
 CeruleanCape_MapEventHeader:
 
 .Warps: db 3
-	warp_def $5, $b, 1, BILLS_HOUSE
-	warp_def $1d, $2a, 1, DIM_CAVE_2F
-	warp_def $1d, $2b, 1, DIM_CAVE_2F
+	warp_def 5, 11, 1, BILLS_HOUSE
+	warp_def 29, 42, 1, DIM_CAVE_2F
+	warp_def 29, 43, 1, DIM_CAVE_2F
 
 .XYTriggers: db 2
-	xy_trigger 1, $6, $6, UnknownScript_0x19eea0
-	xy_trigger 1, $7, $6, UnknownScript_0x19eee0
+	xy_trigger 1, 6, 6, CeruleanCapeDateInterruptedTrigger1
+	xy_trigger 1, 7, 6, CeruleanCapeDateInterruptedTrigger2
 
 .Signposts: db 3
 	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
@@ -41,12 +41,12 @@ const_value set 2
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_MISTY_BOYFRIEND
 
-UnknownScript_0x19eea0:
+CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
 	spriteface CERULEANCAPE_MISTY, DOWN
-	applymovement CERULEANCAPE_MISTY_BOYFRIEND, MovementData_0x19efe8
+	applyonemovement CERULEANCAPE_MISTY_BOYFRIEND, big_step_down
 	disappear CERULEANCAPE_MISTY_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
@@ -56,15 +56,9 @@ UnknownScript_0x19eea0:
 	showtext UnknownText_0x19f006
 	spriteface PLAYER, DOWN
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
-	spriteface PLAYER, LEFT
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
-	disappear CERULEANCAPE_MISTY
-	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	dotrigger $0
-	special RestartMapMusic
-	end
+	jump CeruleanCapeDateFinishScript
 
-UnknownScript_0x19eee0:
+CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
@@ -79,6 +73,7 @@ UnknownScript_0x19eee0:
 	showtext UnknownText_0x19f006
 	spriteface PLAYER, UP
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
+CeruleanCapeDateFinishScript:
 	spriteface PLAYER, LEFT
 	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
 	disappear CERULEANCAPE_MISTY
@@ -90,16 +85,16 @@ UnknownScript_0x19eee0:
 	end
 
 CooltrainerMScript_0x19efac:
+	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
+	iftrue_jumptextfaceplayer UnknownText_0x19f520
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	iftrue UnknownScript_0x19efda
 	checkevent EVENT_CLEARED_NUGGET_BRIDGE
 	iftrue UnknownScript_0x19efc7
 	writetext UnknownText_0x19f43b
 	buttonsound
 	verbosegiveitem NUGGET
-	iffalse UnknownScript_0x19efde
+	iffalse_endtext
 	setevent EVENT_CLEARED_NUGGET_BRIDGE
 UnknownScript_0x19efc7:
 	writetext UnknownText_0x19f49d
@@ -110,13 +105,7 @@ UnknownScript_0x19efc7:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	opentext
-UnknownScript_0x19efda:
-	writetext UnknownText_0x19f520
-	waitbutton
-UnknownScript_0x19efde:
-	closetext
-	end
+	jumptext UnknownText_0x19f520
 
 TrainerSwimmermRomeo:
 	trainer EVENT_BEAT_SWIMMERM_ROMEO, SWIMMERM, ROMEO, .SeenText, .BeatenText, 0, .Script
@@ -343,16 +332,12 @@ TrainerLadyJessica:
 	iftrue .SpokeAgain
 	writetext .AfterText1
 	setevent EVENT_SPOKE_TO_LADY_JESSICA
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .SpokeAgain:
 	writetext .AfterText2
 	clearevent EVENT_SPOKE_TO_LADY_JESSICA
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .SeenText:
 	text "Ah! You there!"
@@ -408,10 +393,6 @@ TrainerFisherLeroy:
 	line "catch is Magikarp…"
 	done
 
-MovementData_0x19efe8:
-	run_step_down
-	step_end
-
 MovementData_0x19efea:
 	run_step_down
 	run_step_down
@@ -419,13 +400,6 @@ MovementData_0x19efea:
 
 MovementData_0x19efed:
 	step_up
-	step_up
-	step_up
-	step_left
-	step_left
-	step_left
-	step_end
-
 MovementData_0x19eff4:
 	step_up
 	step_up

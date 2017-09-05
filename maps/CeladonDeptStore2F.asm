@@ -7,15 +7,14 @@ CeladonDeptStore2F_MapScriptHeader:
 CeladonDeptStore2F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $c, 1, CELADON_DEPT_STORE_3F
-	warp_def $0, $f, 3, CELADON_DEPT_STORE_1F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+	warp_def 0, 12, 1, CELADON_DEPT_STORE_3F
+	warp_def 0, 15, 3, CELADON_DEPT_STORE_1F
+	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 1
 	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore2FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 4
 	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_1, -1

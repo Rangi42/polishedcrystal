@@ -82,9 +82,7 @@ Route25SlowpokeScript:
 	pause 60
 	writetext Route25SlowpokeText2
 	cry SLOWPOKE
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 SchoolboyDudleySeenText:
 	text "Beat the six of us"

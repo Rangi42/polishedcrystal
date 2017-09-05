@@ -405,13 +405,8 @@ BugCatchingContestText_ContestIsOver: ; 0x13614
 	db "@"
 
 RepelWoreOffScript:: ; 0x13619
-	opentext
-	writetext .text
-	waitbutton
-	closetext
-	end
+	thistext
 
-.text ; 0x13620
 	; REPEL's effect wore off.
 	text_jump UnknownText_0x1bd308
 	db "@"
@@ -420,11 +415,9 @@ UseAnotherRepelScript::
 	opentext
 	writetext .text
 	yesorno
-	iffalse .done
+	iffalse_endtext
 	callasm DoItemEffect
-.done
-	closetext
-	end
+	endtext
 
 .text:
 	text_jump UseAnotherRepelText
@@ -440,15 +433,12 @@ HiddenItemScript:: ; 0x13625
 	callasm SetMemEvent
 	specialsound
 	itemnotify
-	jump .finish
+	endtext
 
 .bag_full ; 0x1363e
 	buttonsound
 	pocketisfull
-
-.finish ; 13643
-	closetext
-	end
+	endtext
 
 .found_text ; 0x13645
 	; found @ !
@@ -1577,7 +1567,7 @@ PlayBattleMusic: ; 2ee6c
 	dbw ROCKET_SCIENTIST, MUSIC_ROCKET_BATTLE
 	dbw PROTON,           MUSIC_ROCKET_BATTLE
 	dbw PETREL,           MUSIC_ROCKET_BATTLE
-	dbw ARIANA,           MUSIC_ROCKET_BATTLE
+	dbw ARCHER,           MUSIC_ROCKET_BATTLE
 	dbw ARIANA,           MUSIC_ROCKET_BATTLE
 	dbw GIOVANNI,         MUSIC_ROCKET_BATTLE
 	dbw TOWERTYCOON,      MUSIC_FRONTIER_BRAIN_BATTLE_RSE
@@ -1877,6 +1867,8 @@ SECTION "bank11", ROMX
 
 INCLUDE "engine/fruit_trees.asm"
 
+INCLUDE "engine/hidden_grottoes.asm"
+
 INCLUDE "battle/ai/move.asm"
 
 AnimateDexSearchSlowpoke: ; 441cf
@@ -1945,15 +1937,15 @@ DoDexSearchSlowpokeFrame: ; 44207
 	jr .loop
 
 .SpriteData: ; 44228
-	dsprite 11, 0,  9, 0, $00, $00
-	dsprite 11, 0, 10, 0, $01, $00
-	dsprite 11, 0, 11, 0, $02, $00
-	dsprite 12, 0,  9, 0, $10, $00
-	dsprite 12, 0, 10, 0, $11, $00
-	dsprite 12, 0, 11, 0, $12, $00
-	dsprite 13, 0,  9, 0, $20, $00
-	dsprite 13, 0, 10, 0, $21, $00
-	dsprite 13, 0, 11, 0, $22, $00
+	dsprite 11, 0,  9, 0, $00, $0
+	dsprite 11, 0, 10, 0, $01, $0
+	dsprite 11, 0, 11, 0, $02, $0
+	dsprite 12, 0,  9, 0, $10, $0
+	dsprite 12, 0, 10, 0, $11, $0
+	dsprite 12, 0, 11, 0, $12, $0
+	dsprite 13, 0,  9, 0, $20, $0
+	dsprite 13, 0, 10, 0, $21, $0
+	dsprite 13, 0, 11, 0, $22, $0
 	db -1
 
 DisplayDexEntry: ; 4424d
@@ -4256,6 +4248,8 @@ GetGender: ; 50bdd
 
 	ld a, BANK(BaseData)
 	call GetFarByte
+	swap a
+	and $f
 
 ; Fixed values ignore the Personality gender value.
 	cp GENDERLESS
@@ -5180,7 +5174,7 @@ endr
 	dw Giovanni2FinalPkmnText
 
 .SinglePhraseFinalTexts:
-	dw KayFinalPkmnText
+	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
 	dw FalknerFinalPkmnText
 	dw BugsyFinalPkmnText
@@ -5782,7 +5776,7 @@ NewPokedexEntry: ; fb877
 	ld a, [wPokedexStatus]
 	push af
 	ld a, [hSCX]
-	add $5
+	add 5
 	ld [hSCX], a
 	xor a
 	ld [wPokedexStatus], a
@@ -5795,9 +5789,9 @@ NewPokedexEntry: ; fb877
 	pop af
 	ld [wPokedexStatus], a
 	call MaxVolume
-	call RotateThreePalettesRight
+	call ClearBGPalettes
 	ld a, [hSCX]
-	add -5 ; 251 ; NUM_POKEMON
+	add -5
 	ld [hSCX], a
 	call .ReturnFromDexRegistration
 	pop af

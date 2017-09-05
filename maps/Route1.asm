@@ -7,7 +7,7 @@ Route1_MapScriptHeader:
 Route1_MapEventHeader:
 
 .Warps: db 1
-	warp_def $1, $8, 3, ROUTE_1_VIRIDIAN_GATE
+	warp_def 1, 8, 3, ROUTE_1_VIRIDIAN_GATE
 
 .XYTriggers: db 0
 
@@ -15,7 +15,7 @@ Route1_MapEventHeader:
 	signpost 27, 7, SIGNPOST_JUMPTEXT, Route1SignText
 
 .PersonEvents: db 5
-	person_event SPRITE_YOUNGSTER, 12, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyDanny, -1
+	person_event SPRITE_YOUNGSTER, 12, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
 	person_event SPRITE_YOUNGSTER, 14, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboySherman, -1
 	person_event SPRITE_COOLTRAINER_M, 21, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFrench, -1
 	person_event SPRITE_COOLTRAINER_F, 25, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1

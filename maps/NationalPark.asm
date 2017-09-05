@@ -7,10 +7,10 @@ NationalPark_MapScriptHeader:
 NationalPark_MapEventHeader:
 
 .Warps: db 4
-	warp_def $12, $23, 1, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def $13, $23, 2, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def $2f, $c, 1, ROUTE_35_NATIONAL_PARK_GATE
-	warp_def $2f, $d, 2, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 18, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 19, 35, 2, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 47, 12, 1, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 47, 13, 2, ROUTE_35_NATIONAL_PARK_GATE
 
 .XYTriggers: db 0
 
@@ -28,7 +28,7 @@ NationalPark_MapEventHeader:
 	person_event SPRITE_TWIN, 41, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 0, TrainerSchoolgirlEliza, -1
 	person_event SPRITE_YOUNGSTER, 41, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerSchoolboyJohnny, -1
 	person_event SPRITE_TEACHER, 41, 19, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c3bc, -1
-	person_event SPRITE_PERSIAN, 40, 28, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NationalParkPersian, -1
+	person_event SPRITE_PERSIAN, 40, 28, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, PERSIAN, NationalParkPersianText, -1
 	person_event SPRITE_YOUNGSTER, 23, 29, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
 	person_event SPRITE_POKEFAN_F, 29, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
 	person_event SPRITE_POKEFAN_M, 9, 18, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
@@ -51,8 +51,7 @@ UnknownScript_0x5c01d:
 	writetext UnknownText_0x5c30d
 	waitbutton
 UnknownScript_0x5c021:
-	closetext
-	end
+	endtext
 
 TrainerBugManiacLou:
 	trainer EVENT_BEAT_BUG_MANIAC_LOU, BUG_MANIAC, LOU, BugManiacLouSeenText, BugManiacLouBeatenText, 0, BugManiacLouScript
@@ -74,15 +73,6 @@ TrainerSchoolboyJohnny:
 SchoolboyJohnnyScript:
 	end_if_just_battled
 	jumptextfaceplayer SchoolboyJohnnyAfterText
-
-NationalParkPersian:
-	faceplayer
-	opentext
-	writetext NationalParkPersianText
-	cry PERSIAN
-	waitbutton
-	closetext
-	end
 
 GameboyKidScript_0x5c037:
 	showtextfaceplayer UnknownText_0x5c42a
@@ -419,7 +409,7 @@ UnknownText_0x5c4f3:
 
 	para "For example…"
 
-	para "There are 70 kinds"
+	para "There are 76 kinds"
 	line "of TMs."
 
 	para "Traded #mon"

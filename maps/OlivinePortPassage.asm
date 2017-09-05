@@ -7,11 +7,11 @@ OlivinePortPassage_MapScriptHeader:
 OlivinePortPassage_MapEventHeader:
 
 .Warps: db 5
-	warp_def $16, $3, 9, OLIVINE_CITY
-	warp_def $16, $4, 10, OLIVINE_CITY
-	warp_def $1a, $3, 4, OLIVINE_PORT_PASSAGE
-	warp_def $2, $3, 3, OLIVINE_PORT_PASSAGE
-	warp_def $e, $3, 1, OLIVINE_PORT
+	warp_def 22, 3, 9, OLIVINE_CITY
+	warp_def 22, 4, 10, OLIVINE_CITY
+	warp_def 26, 3, 4, OLIVINE_PORT_PASSAGE
+	warp_def 2, 3, 3, OLIVINE_PORT_PASSAGE
+	warp_def 14, 3, 1, OLIVINE_PORT
 
 .XYTriggers: db 0
 

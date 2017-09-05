@@ -382,8 +382,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_BATON_PASS,        AI_Smart_BatonPass
 	dbw EFFECT_PURSUIT,           AI_Smart_Pursuit
 	dbw EFFECT_RAPID_SPIN,        AI_Smart_RapidSpin
-	dbw EFFECT_MORNING_SUN,       AI_Smart_MorningSun
-	dbw EFFECT_MOONLIGHT,         AI_Smart_Moonlight
+	dbw EFFECT_HEALING_LIGHT,     AI_Smart_HealingLight
 	dbw EFFECT_HIDDEN_POWER,      AI_Smart_HiddenPower
 	dbw EFFECT_RAIN_DANCE,        AI_Smart_RainDance
 	dbw EFFECT_SUNNY_DAY,         AI_Smart_SunnyDay
@@ -690,15 +689,10 @@ endr
 	cp b
 	jr c, .asm_38936
 
-; Greatly encourage this move if the player is in the middle of Fury Cutter or Rollout.
-	ld a, [PlayerFuryCutterCount]
-	and a
-	jr nz, .asm_388ef
-
+; Greatly encourage this move if the player is in the middle of Rollout.
 	ld a, [PlayerSubStatus1]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .asm_388ef
-
 
 .asm_38936
 	inc [hl]
@@ -869,11 +863,7 @@ endr
 	cp b
 	jr c, .asm_389e4
 
-; Greatly encourage this move if the player is in the middle of Fury Cutter or Rollout.
-	ld a, [PlayerFuryCutterCount]
-	and a
-	jr nz, .asm_3899d
-
+; Greatly encourage this move if the player is in the middle of Rollout.
 	ld a, [PlayerSubStatus1]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .asm_3899d
@@ -979,8 +969,7 @@ AI_Smart_Roar: ; 38a2a
 
 
 AI_Smart_Heal:
-AI_Smart_MorningSun:
-AI_Smart_Moonlight: ; 38a3a
+AI_Smart_HealingLight: ; 38a3a
 ; 90% chance to greatly encourage this move if enemy's HP is below 25%.
 ; Discourage this move if enemy's HP is higher than 50%.
 ; Do nothing otherwise.
@@ -1514,29 +1503,28 @@ endr
 	ret
 
 .EncoreMoves:
-	db SWORDS_DANCE
-	db LEER
-	db ROAR
-	db DISABLE
-	db MIST
-	db LEECH_SEED
-	db GROWTH
-	db POISONPOWDER
-	db STRING_SHOT
-	db HONE_CLAWS
 	db AGILITY
-	db TELEPORT
-	db SCREECH
-	db HAZE
-	db FOCUS_ENERGY
-	db DREAM_EATER
-	db SPLASH
 	db CONVERSION
-	db SUPER_FANG
-	db SUBSTITUTE
-	db TRIPLE_KICK
+	db DISABLE
+	db DREAM_EATER
 	db FLAME_WHEEL
-	db AEROBLAST
+	db FOCUS_ENERGY
+	db GROWTH
+	db HAZE
+	db HONE_CLAWS
+	db LEECH_SEED
+	db LEER
+	db POISONPOWDER
+	db ROAR
+	db SCREECH
+	db SKILL_SWAP
+	db SPLASH
+	db STRING_SHOT
+	db SUBSTITUTE
+	db SUPER_FANG
+	db SWORDS_DANCE
+	db TELEPORT
+	db TRICK
 	db $ff
 ; 38ca4
 
@@ -1990,10 +1978,6 @@ AI_Smart_Protect: ; 38ed2
 	bit SUBSTATUS_LOCK_ON, a
 	jr nz, .asm_38f14
 
-	ld a, [PlayerFuryCutterCount]
-	cp 3
-	jr nc, .asm_38f0d
-
 	ld a, [PlayerSubStatus3]
 	bit SUBSTATUS_CHARGED, a
 	jr nz, .asm_38f0d
@@ -2308,18 +2292,26 @@ endr
 
 
 AI_Smart_BatonPass: ; 39062
-; Discourage this move if the player hasn't shown super-effective moves against the enemy.
-; Consider player's type(s) if its moves are unknown.
-
+; Changes scoring as follows:
+; +1: Don't bother
+; 0 or less: Good idea
 	push hl
-	farcall CheckPlayerMoveTypeMatchups
-	ld a, [wEnemyAISwitchScore]
-	cp 10 ; neutral
+	farcall AIWantsSwitchCheck
 	pop hl
-	ret c
 	inc [hl]
-	ret
-; 39072
+	ld a, [wEnemySwitchMonParam]
+	and $f0
+	push af
+	xor a
+	ld [wEnemySwitchMonParam], a
+	ld [wEnemyAISwitchScore], a
+	pop af
+	ret z
+.loop
+	dec [hl]
+	sub $10
+	ret z
+	jr .loop
 
 
 AI_Smart_Pursuit: ; 39072
@@ -2534,7 +2526,7 @@ SunnyDayMoves: ; 39134
 	db FIRE_BLAST
 	db SACRED_FIRE
 	db FLARE_BLITZ
-	db MORNING_SUN
+	db HEALINGLIGHT
 	db $ff
 ; 3913d
 
@@ -3092,34 +3084,33 @@ AI_Opportunist: ; 39315
 	jr .checkmove
 
 .stallmoves
-	db SWORDS_DANCE
-	db HONE_CLAWS
-	db LEER
-	db GROWL
-	db DISABLE
-	db MIST
-	db COUNTER
-	db LEECH_SEED
-	db GROWTH
-	db STRING_SHOT
 	db AGILITY
-	db RAGE
-	db SCREECH
-	db HARDEN
-	db DEFENSE_CURL
 	db BARRIER
-	db LIGHT_SCREEN
-	db HAZE
-	db REFLECT
-	db FOCUS_ENERGY
-	db CALM_MIND
-	db TRANSFORM
-	db SPLASH
-	db DRAGON_DANCE
 	db BULK_UP
+	db CALM_MIND
 	db CONVERSION
+	db COUNTER
+	db DEFENSE_CURL
+	db DISABLE
+	db DRAGON_DANCE
+	db FOCUS_ENERGY
+	db GROWL
+	db GROWTH
+	db HAZE
+	db HONE_CLAWS
+	db LEECH_SEED
+	db LEER
+	db LIGHT_SCREEN
+	db RAGE
+	db REFLECT
+	db SCREECH
+	db SKILL_SWAP
+	db SPLASH
+	db STRING_SHOT
 	db SUBSTITUTE
-	db FLAME_WHEEL
+	db SWORDS_DANCE
+	db TRANSFORM
+	db TRICK
 	db $ff
 ; 39369
 
@@ -3232,6 +3223,7 @@ AI_Aggressive: ; 39369
 	db EFFECT_RAMPAGE
 	db EFFECT_MULTI_HIT
 	db EFFECT_DOUBLE_HIT
+	db EFFECT_FURY_STRIKES
 	db $ff
 ; 393e7
 
@@ -3304,16 +3296,16 @@ AI_Cautious: ; 39418
 	jr .asm_39425
 
 .residualmoves
-	db MIST
+	db CONVERSION
+	db FOCUS_ENERGY
 	db LEECH_SEED
 	db POISONPOWDER
-	db STUN_SPORE
-	db THUNDER_WAVE
-	db FOCUS_ENERGY
-	db TRANSFORM
-	db CONVERSION
-	db SUBSTITUTE
 	db SPIKES
+	db STUN_SPORE
+	db SUBSTITUTE
+	db THUNDER_WAVE
+	db TOXIC_SPIKES
+	db TRANSFORM
 	db $ff
 ; 39453
 

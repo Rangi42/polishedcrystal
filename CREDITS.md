@@ -1,5 +1,13 @@
 # Credits
 
+Pokémon Polished Crystal would never have been finished without the help of many more people than just me. Please let me know if I've failed to credit anyone or if you don't want your work being used.
+
+> **Morimoto:** Actually, at that time we had very few programmers. That wasn't just the case for Gold and Silver but for Red and Green as well. There were only about four programmers.
+>
+> **Iwata:** That's really a tiny number. Making a game on that scale with so few programmers would be unthinkable these days.
+>
+> — "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/3-Just-Being-President-Was-A-Waste-/3-Just-Being-President-Was-A-Waste--225951.html)"
+
 
 ## Code
 
@@ -32,7 +40,7 @@
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* JaceDeane for animations of Magikarp and Red's Pikachu, and sprites of Kukui and Victor.
+* JaceDeane for animations of Magikarp and Red's Pikachu, and sprites of Kukui, Victor, and Nurse.
 * spritershawn for sprites of Red, Blue, and Green.
 * Kuroko Aizawa for sprites of Cheryl, Aroma Lady, and Artist.
 * Mateo for some sprites and tiles.
@@ -42,6 +50,7 @@
 * isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
+* Constantine for Nurse's sprite.
 * coraldev for rowboat and sakura petal tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
@@ -64,6 +73,3 @@
 * Crystal_ for his in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks.
 * Tauwasser, comet, and other members of Skeetendo for help and advice.
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place.
-
-
-Please let me know if I've failed to credit anyone or if you don't want your work being used.

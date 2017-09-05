@@ -1,3 +1,85 @@
+SpecialGiveShinyDitto:
+
+; Adding to the party.
+	xor a
+	ld [MonType], a
+
+; Level 5 Ditto.
+	ld a, DITTO
+	ld [CurPartySpecies], a
+	ld a, 5
+	ld [CurPartyLevel], a
+
+	predef TryAddMonToParty
+	jr nc, .NotGiven
+
+; Caught data.
+	lb bc, MALE, PREMIER_BALL
+	farcall SetGiftPartyMonCaughtData
+
+; Holding an Everstone for breeding natures.
+	ld hl, PartyMon1Item
+	call _GetLastPartyMonAttribute
+	ld [hl], EVERSTONE
+
+; OT ID. Guaranteed to not be the same as the player's for Masuda method breeding.
+	ld hl, PartyMon1ID + 1
+	call _GetLastPartyMonAttribute
+	ld a, [PlayerID + 1]
+	add %01100101
+	ld [hld], a
+	ld a, [PlayerID]
+	adc %10100110
+	ld [hl], a
+
+; DVs and personality.
+	ld hl, PartyMon1DVs
+	call _GetLastPartyMonAttribute
+; Max IVs.
+rept 3
+	ld a, $ff
+	ld [hli], a
+endr
+; Shiny with hidden ability.
+	ld a, SHINY_MASK | HIDDEN_ABILITY | QUIRKY
+	ld [hli], a
+	ld a, MALE
+	ld [hl], a
+
+; BUG: stats are not recalculated after changing DVs and nature.
+
+; Nickname.
+	ld a, [PartyCount]
+	dec a
+	ld hl, PartyMonNicknames
+	call SkipNames
+	ld de, .Nickname
+	call CopyName2
+
+; OT.
+	ld a, [PartyCount]
+	dec a
+	ld hl, PartyMonOT
+	call SkipNames
+	ld de, .OT
+	call CopyName2
+
+	ld a, TRUE
+	ld [ScriptVar], a
+	ret
+
+.NotGiven:
+	xor a ; ld a, FALSE
+	ld [ScriptVar], a
+	ret
+
+.OT:
+	db "Mr.<PK><MN>@"
+.Nickname:
+	db "Masuda@"
+
+KIRK_BUFFY_ID EQU 00518
+
 SpecialGiveWobbuffet: ; 7305
 
 ; Adding to the party.
@@ -18,23 +100,16 @@ SpecialGiveWobbuffet: ; 7305
 	farcall SetGiftPartyMonCaughtData
 
 ; Holding a Berry.
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [PartyCount]
-	dec a
-	push af
-	push bc
 	ld hl, PartyMon1Item
-	call AddNTimes
+	call _GetLastPartyMonAttribute
 	ld [hl], SITRUS_BERRY
-	pop bc
-	pop af
 
 ; OT ID.
 	ld hl, PartyMon1ID
-	call AddNTimes
-	ld a, $2
+	call _GetLastPartyMonAttribute
+	ld a, KIRK_BUFFY_ID / $100
 	ld [hli], a
-	ld [hl], $6
+	ld [hl], KIRK_BUFFY_ID % $100
 
 ; Nickname.
 	ld a, [PartyCount]
@@ -55,19 +130,20 @@ SpecialGiveWobbuffet: ; 7305
 ; Engine flag for this event.
 	ld hl, DailyFlags
 	set 5, [hl] ; ENGINE_WOBBUFFET_GIVEN
-	ld a, 1
+	ld a, TRUE
 	ld [ScriptVar], a
 	ret
 
 .NotGiven:
-	xor a
+	xor a ; ld a, FALSE
 	ld [ScriptVar], a
 	ret
 
-SpecialWobbuffetOT:
-	db "Kirk@"
-SpecialWobbuffetNick:
-	db "Buffy@"
+_GetLastPartyMonAttribute:
+	ld a, [PartyCount]
+	dec a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	jp AddNTimes
 
 SpecialReturnWobbuffet: ; 737e
 	farcall SelectMonFromParty
@@ -84,10 +160,10 @@ SpecialReturnWobbuffet: ; 737e
 
 ; OT ID
 	ld a, [hli]
-	cp 00518 / $100
+	cp KIRK_BUFFY_ID / $100
 	jr nz, .DontReturn
 	ld a, [hl]
-	cp 00518 % $100
+	cp KIRK_BUFFY_ID % $100
 	jr nz, .DontReturn
 
 ; OT
@@ -138,6 +214,11 @@ SpecialReturnWobbuffet: ; 737e
 	ld a, $4
 	ld [ScriptVar], a
 	ret
+
+SpecialWobbuffetOT:
+	db "Kirk@"
+SpecialWobbuffetNick:
+	db "Buffy@"
 
 Special_BillsGrandfather: ; 73f7
 	farcall SelectMonFromParty

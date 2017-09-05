@@ -7,9 +7,9 @@ UnionCaveB1FNorth_MapScriptHeader:
 UnionCaveB1FNorth_MapEventHeader:
 
 .Warps: db 3
-	warp_def $3, $3, 7, RUINS_OF_ALPH_OUTSIDE
-	warp_def $b, $3, 8, RUINS_OF_ALPH_OUTSIDE
-	warp_def $17, $f, 1, UNION_CAVE_1F
+	warp_def 3, 3, 7, RUINS_OF_ALPH_OUTSIDE
+	warp_def 11, 3, 8, RUINS_OF_ALPH_OUTSIDE
+	warp_def 23, 15, 1, UNION_CAVE_1F
 
 .XYTriggers: db 0
 

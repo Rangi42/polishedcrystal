@@ -7,8 +7,8 @@ Route5CleanseTagSpeechHouse_MapScriptHeader:
 Route5CleanseTagSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 4, ROUTE_5
-	warp_def $7, $3, 4, ROUTE_5
+	warp_def 7, 2, 4, ROUTE_5
+	warp_def 7, 3, 4, ROUTE_5
 
 .XYTriggers: db 0
 
@@ -33,8 +33,7 @@ UnknownScript_0x18b649:
 	writetext UnknownText_0x18b6a7
 	waitbutton
 UnknownScript_0x18b64d:
-	closetext
-	end
+	endtext
 
 UnknownText_0x18b655:
 	text "Eeyaaaah!"

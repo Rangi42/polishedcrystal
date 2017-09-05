@@ -13,7 +13,7 @@ CinnabarLab_MapEventHeader:
 ;	warp_def $6, $2, 2, CINNABAR_LAB
 
 .XYTriggers: db 1
-	xy_trigger 1, $6, $2, CinnabarLabCelebiEventScript
+	xy_trigger 1, 6, 2, CinnabarLabCelebiEventScript
 
 .Signposts: db 8
 	signpost 14, 8, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
@@ -56,7 +56,7 @@ CinnabarLabStepDownScript:
 	if_not_equal $6, .Done
 	checkcode VAR_XCOORD
 	if_not_equal $2, .Done
-	applymovement PLAYER, CinnabarLabStepDownMovementData
+	applyonemovement PLAYER, step_down
 .Done
 	dotrigger $1
 	end
@@ -72,7 +72,7 @@ CinnabarLabCelebiEventScript:
 	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
 	setevent EVENT_CINNABAR_LAB_SCIENTIST2
 	dotrigger $0
-	warpfacing UP, CINNABAR_LAB, $f, $9
+	warpfacing UP, CINNABAR_LAB, 15, 9
 	special Special_FadeOutMusic
 	pause 30
 	showtext CinnabarLabContinueTestingText
@@ -132,7 +132,7 @@ CinnabarLabCelebiEventScript:
 .Female
 	appear CINNABARLAB_KRIS
 .Continue
-	applymovement PLAYER, CinnabarLabHidePlayerMovementData
+	applyonemovement PLAYER, hide_person
 	waitsfx
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 10
 	cry MEWTWO
@@ -166,14 +166,14 @@ CinnabarLabCelebiEventScript:
 	applymovement PLAYER, CinnabarLabPan3MovementData
 	waitsfx
 	playsound SFX_TACKLE
-	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniThrown2MovementData
+	applyonemovement CINNABARLAB_GIOVANNI, jump_step_up
 	waitsfx
 	applymovement PLAYER, CinnabarLabPan4MovementData
 	disappear CINNABARLAB_CHRIS
 	disappear CINNABARLAB_KRIS
 	spriteface CINNABARLAB_ARMORED_MEWTWO, DOWN
 	pause 30
-	applymovement CINNABARLAB_ARMORED_MEWTWO, CinnabarLabMewtwoStepsDownMovementData
+	applyonemovement CINNABARLAB_ARMORED_MEWTWO, slow_step_down
 	playsound SFX_KINESIS
 	special FadeOutPalettes
 	pause 15
@@ -207,12 +207,8 @@ CinnabarLabCelebiEventScript:
 	pause 30
 	waitsfx
 	domaptrigger ILEX_FOREST, $1
-	warp ILEX_FOREST, $a, $1a
+	warp ILEX_FOREST, 10, 26
 	end
-
-CinnabarLabStepDownMovementData:
-	step_down
-	step_end
 
 CinnabarLabGiovanniStepAsideMovementData:
 	slow_step_right
@@ -235,10 +231,6 @@ CinnabarLabPlayerStepsBackMovementData:
 	fix_facing
 	step_down
 	remove_fixed_facing
-	step_end
-
-CinnabarLabHidePlayerMovementData:
-	hide_person
 	step_end
 
 CinnabarLabPan1MovementData:
@@ -299,10 +291,6 @@ CinnabarLabGiovanniThrown1MovementData:
 	remove_fixed_facing
 	step_end
 
-CinnabarLabGiovanniThrown2MovementData:
-	jump_step_up
-	step_end
-
 CinnabarLabPan3MovementData:
 	step_up
 	step_up
@@ -319,10 +307,6 @@ CinnabarLabPan4MovementData:
 	step_down
 	turn_head_up
 	show_person
-	step_end
-
-CinnabarLabMewtwoStepsDownMovementData:
-	slow_step_down
 	step_end
 
 CinnabarLabCelebiFloatsMovementData:

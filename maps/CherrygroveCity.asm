@@ -9,16 +9,16 @@ CherrygroveCity_MapScriptHeader:
 CherrygroveCity_MapEventHeader:
 
 .Warps: db 5
-	warp_def $3, $17, 2, CHERRYGROVE_MART
-	warp_def $3, $1d, 1, CHERRYGROVE_POKECENTER_1F
-	warp_def $7, $11, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
-	warp_def $9, $19, 1, GUIDE_GENTS_HOUSE
-	warp_def $b, $1f, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
+	warp_def 3, 23, 2, CHERRYGROVE_MART
+	warp_def 3, 29, 1, CHERRYGROVE_POKECENTER_1F
+	warp_def 7, 17, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
+	warp_def 9, 25, 1, GUIDE_GENTS_HOUSE
+	warp_def 11, 31, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
 
 .XYTriggers: db 3
-	xy_trigger 0, $7, $21, CherrygroveGuideGentTrigger
-	xy_trigger 1, $6, $21, CherrygroveSilverTriggerNorth
-	xy_trigger 1, $7, $21, CherrygroveSilverTriggerSouth
+	xy_trigger 0, 7, 33, CherrygroveGuideGentTrigger
+	xy_trigger 1, 6, 33, CherrygroveSilverTriggerNorth
+	xy_trigger 1, 7, 33, CherrygroveSilverTriggerSouth
 
 .Signposts: db 2
 	signpost 8, 30, SIGNPOST_JUMPTEXT, CherrygroveCitySignText
@@ -100,7 +100,7 @@ CherrygroveCityGuideGent:
 	db "Map Card@"
 
 CherrygroveSilverTriggerSouth:
-	moveperson CHERRYGROVECITY_SILVER, $27, $7
+	moveperson CHERRYGROVECITY_SILVER, 39, 7
 CherrygroveSilverTriggerNorth:
 	spriteface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -200,8 +200,7 @@ MysticWaterGuy:
 	writetext MysticWaterGuyTextAfter
 	waitbutton
 .Exit:
-	closetext
-	end
+	endtext
 
 GuideGentPlayerMovement:
 	step_left

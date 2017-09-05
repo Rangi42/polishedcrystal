@@ -7,8 +7,8 @@ CeladonUniversityPool_MapScriptHeader:
 CeladonUniversityPool_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $6, 6, CELADON_UNIVERSITY_2F
-	warp_def $9, $7, 6, CELADON_UNIVERSITY_2F
+	warp_def 9, 6, 6, CELADON_UNIVERSITY_2F
+	warp_def 9, 7, 6, CELADON_UNIVERSITY_2F
 
 .XYTriggers: db 0
 
@@ -26,9 +26,9 @@ const_value set 2
 
 CeladonUniversityPoolFergusScript:
 	faceplayer
-	opentext
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
 	iftrue .Beaten
+	opentext
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
 	iftrue .IntroducedCeladonFour1
 	writetext .IntroText1
@@ -37,7 +37,7 @@ CeladonUniversityPoolFergusScript:
 	writetext .IntroText2
 .AfterIntro
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoBattleText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -47,34 +47,23 @@ CeladonUniversityPoolFergusScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	opentext
 .Beaten
+	opentext
 	setevent EVENT_INTRODUCED_CELADON_FOUR
 	checkevent EVENT_BEAT_COOLTRAINERM_COREY
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERF_NEESHA
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	iftrue .GotItem
+	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	buttonsound
 	verbosegiveitem CHOICE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-.GotItem:
-	writetext .FinalText
-	waitbutton
-.Done:
-	closetext
-	end
-
-.NoBattle:
-	jumpopenedtext .NoBattleText
-
-.NotFinished:
-	jumpopenedtext .AfterText1
+	jumpopenedtext .FinalText
 
 .IntroText1:
 	text "The name's Fergus!"

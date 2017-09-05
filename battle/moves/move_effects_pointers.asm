@@ -101,7 +101,7 @@
 	dw TripleKick
 	dw Thief
 	dw MeanLook
-	dw Facade
+	dw NormalHit
 	dw FlameWheel
 	dw Curse
 	dw Protect
@@ -121,8 +121,7 @@
 	dw BatonPass
 	dw Pursuit
 	dw RapidSpin
-	dw MorningSun
-	dw Moonlight
+	dw HealingLight
 	dw HiddenPower
 	dw RainDance
 	dw SunnyDay
@@ -164,3 +163,6 @@
 	dw SkillSwap
 	dw Trick
 	dw KnockOff
+	dw FuryStrikes
+	dw BugBite
+	dw GyroBall

@@ -6,7 +6,7 @@ BattleTower2F_MapScriptHeader:
 
 BattleTower2F_MapEventHeader:
 .Warps: db 1
-	warp_def $1, $0, 4, BATTLE_TOWER_1F
+	warp_def 1, 0, 4, BATTLE_TOWER_1F
 
 .XYTriggers: db 0
 
@@ -27,7 +27,7 @@ BattleTower2F_MapEventHeader:
 	person_event SPRITE_LADY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FLadyText, EVENT_DIM_CAVE_RILEY
 	person_event SPRITE_TWIN, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FTwinText, EVENT_CINNABAR_VOLCANO_BUCK
 	person_event SPRITE_SUPER_NERD, 8, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FSuperNerdText, EVENT_QUIET_CAVE_MARLEY
-	person_event SPRITE_PIKACHU, 8, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTower2FPikachuScript, EVENT_QUIET_CAVE_MARLEY
+	person_event SPRITE_PIKACHU, 8, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, PIKACHU, BattleTower2FPikachuText, EVENT_QUIET_CAVE_MARLEY
 	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
 	person_event SPRITE_BLACK_BELT, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
 
@@ -494,15 +494,7 @@ BattleTower2FSuperNerdText:
 	cont "Pikachu!"
 	done
 
-BattleTower2FPikachuScript:
-	opentext
-	writetext .Text
-	cry PIKACHU
-	waitbutton
-	closetext
-	end
-
-.Text:
+BattleTower2FPikachuText:
 	text "Pikachu: Pichuu!"
 	done
 

@@ -9,15 +9,15 @@ TeamRocketBaseB3F_MapScriptHeader:
 TeamRocketBaseB3F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $2, $3, 2, TEAM_ROCKET_BASE_B2F
-	warp_def $2, $1b, 3, TEAM_ROCKET_BASE_B2F
-	warp_def $6, $3, 4, TEAM_ROCKET_BASE_B2F
-	warp_def $e, $1b, 5, TEAM_ROCKET_BASE_B2F
+	warp_def 2, 3, 2, TEAM_ROCKET_BASE_B2F
+	warp_def 2, 27, 3, TEAM_ROCKET_BASE_B2F
+	warp_def 6, 3, 4, TEAM_ROCKET_BASE_B2F
+	warp_def 14, 27, 5, TEAM_ROCKET_BASE_B2F
 
 .XYTriggers: db 3
-	xy_trigger 2, $8, $a, UnknownScript_0x6e04b
-	xy_trigger 2, $8, $b, UnknownScript_0x6e052
-	xy_trigger 1, $a, $8, RocketBaseRival
+	xy_trigger 2, 8, 10, UnknownScript_0x6e04b
+	xy_trigger 2, 8, 11, UnknownScript_0x6e052
+	xy_trigger 1, 10, 8, RocketBaseRival
 
 .Signposts: db 10
 	signpost 9, 10, SIGNPOST_IFNOTSET, BossDoor
@@ -63,7 +63,7 @@ TeamRocketBaseB3FCheckGiovanniDoor:
 	return
 
 .OpenSesame:
-	changeblock $a, $8, $7
+	changeblock 10, 8, $7
 	return
 
 LanceGetPasswordScript:
@@ -71,7 +71,7 @@ LanceGetPasswordScript:
 	pause 5
 	spriteface TEAMROCKETBASEB3F_MURKROW, RIGHT
 	pause 20
-	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12a
+	applyonemovement TEAMROCKETBASEB3F_LANCE, step_right
 	showtext LanceGetPasswordText
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12c
 	disappear TEAMROCKETBASEB3F_LANCE
@@ -107,7 +107,7 @@ UnknownScript_0x6e056:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	spriteface TEAMROCKETBASEB3F_PETREL, DOWN
 	showtext UnknownText_0x6e400
-	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e142
+	applyonemovement TEAMROCKETBASEB3F_PETREL, step_down
 	winlosstext UnknownText_0x6e511, 0
 	setlasttalked TEAMROCKETBASEB3F_PETREL
 	loadtrainer PETREL, PETREL2
@@ -175,16 +175,12 @@ BossDoor:
 	writetext UnknownText_0x6e9a3
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock $a, $8, $7
+	changeblock 10, 8, $7
 	reloadmappart
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	waitsfx
 	end
-
-MovementData_0x6e12a:
-	step_right
-	step_end
 
 MovementData_0x6e12c:
 	step_down
@@ -212,10 +208,6 @@ MovementData_0x6e13a:
 	step_left
 	step_left
 	turn_head_up
-	step_end
-
-MovementData_0x6e142:
-	step_down
 	step_end
 
 MovementData_0x6e144:

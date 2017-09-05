@@ -8,14 +8,14 @@ IndigoPlateauPokeCenter1F_MapScriptHeader:
 IndigoPlateauPokeCenter1F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $d, $9, 1, INDIGO_PLATEAU
-	warp_def $d, $a, 2, INDIGO_PLATEAU
-	warp_def $d, $0, 1, POKECENTER_2F
-	warp_def $3, $c, 1, WILLS_ROOM
+	warp_def 13, 9, 1, INDIGO_PLATEAU
+	warp_def 13, 10, 2, INDIGO_PLATEAU
+	warp_def 13, 0, 1, POKECENTER_2F
+	warp_def 3, 12, 1, WILLS_ROOM
 
 .XYTriggers: db 2
-	xy_trigger 0, $4, $e, PlateauRivalBattleTrigger1
-	xy_trigger 0, $4, $f, PlateauRivalBattleTrigger2
+	xy_trigger 0, 4, 14, PlateauRivalBattleTrigger1
+	xy_trigger 0, 4, 15, PlateauRivalBattleTrigger2
 
 .Signposts: db 1
 	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript
@@ -27,7 +27,7 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	pc_nurse_event 7, 9
 	mart_clerk_event 9, 1, MARTTYPE_STANDARD, MART_INDIGO_PLATEAU
 	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
-	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IndigoPlateauAbraScript, EVENT_TELEPORT_GUY
+	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
 	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
 const_value set 2
@@ -61,50 +61,8 @@ PrepareEliteFourCallback:
 	return
 
 PlateauRivalBattleTrigger1:
-	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
-	iftrue .LyraFight
-	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .MaybeRivalFight
-	if_equal TUESDAY, .MaybeLyraFight
-	if_equal WEDNESDAY, .MaybeRivalFight
-	if_equal THURSDAY, .MaybeLyraFight
-	if_equal FRIDAY, .MaybeRivalFight
-	if_equal SATURDAY, .MaybeLyraFight
-	jump PlateauRivalScriptDone
-
-.MaybeRivalFight:
-	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iffalse PlateauRivalScriptDone
-	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
-	iftrue PlateauRivalScriptDone
-	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, $f, $9
-	appear INDIGOPLATEAUPOKECENTER1F_SILVER
-	spriteface PLAYER, DOWN
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalMovement1
-	playmusic MUSIC_RIVAL_ENCOUNTER
-	spriteface PLAYER, RIGHT
-	jump PlateauRivalBattleCommon
-
-.MaybeLyraFight:
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iffalse PlateauRivalScriptDone
-	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
-	iftrue PlateauRivalScriptDone
-.LyraFight:
-	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, $f, $9
-	appear INDIGOPLATEAUPOKECENTER1F_LYRA
-	spriteface PLAYER, DOWN
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalMovement1
-	playmusic MUSIC_NONE
-	spriteface PLAYER, RIGHT
-	jump PlateauLyraBattleCommon
-
+	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
+	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, 15, 9
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
 	iftrue .LyraFight
@@ -115,46 +73,28 @@ PlateauRivalBattleTrigger2:
 	if_equal THURSDAY, .MaybeLyraFight
 	if_equal FRIDAY, .MaybeRivalFight
 	if_equal SATURDAY, .MaybeLyraFight
-	jump PlateauRivalScriptDone
+	jump .Done
 
 .MaybeRivalFight:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iffalse PlateauRivalScriptDone
+	iffalse .Done
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
-	iftrue PlateauRivalScriptDone
+	iftrue .Done
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
 	spriteface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalMovement2
+	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalApproachesMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	spriteface PLAYER, LEFT
-	jump PlateauRivalBattleCommon
-
-.MaybeLyraFight:
-	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iffalse PlateauRivalScriptDone
-	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
-	iftrue PlateauRivalScriptDone
-.LyraFight:
-	appear INDIGOPLATEAUPOKECENTER1F_LYRA
-	spriteface PLAYER, DOWN
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalMovement2
-	playmusic MUSIC_NONE
-	spriteface PLAYER, LEFT
-	jump PlateauLyraBattleCommon
-
-PlateauRivalBattleCommon:
+	faceperson INDIGOPLATEAUPOKECENTER1F_SILVER, PLAYER
+	faceperson PLAYER, INDIGOPLATEAUPOKECENTER1F_SILVER
 	showtext PlateauRivalText1
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
+	iftrue .RivalTotodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
+	iftrue .RivalChikorita
 	; Cyndaquil
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
@@ -162,25 +102,25 @@ PlateauRivalBattleCommon:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump PlateauRivalPostBattle
+	jump .RivalPostBattle
 
-.Totodile:
+.RivalTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
 	loadtrainer RIVAL2, 4
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump PlateauRivalPostBattle
+	jump .RivalPostBattle
 
-.Chikorita:
+.RivalChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
 	setlasttalked INDIGOPLATEAUPOKECENTER1F_SILVER
 	loadtrainer RIVAL2, 5
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-PlateauRivalPostBattle:
+.RivalPostBattle:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext PlateauRivalText2
@@ -190,6 +130,71 @@ PlateauRivalPostBattle:
 	dotrigger $0
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
+	end
+
+.MaybeLyraFight:
+	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	iffalse .Done
+	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
+	iftrue .Done
+.LyraFight:
+	appear INDIGOPLATEAUPOKECENTER1F_LYRA
+	spriteface PLAYER, DOWN
+	showemote EMOTE_SHOCK, PLAYER, 15
+	special Special_FadeOutMusic
+	pause 15
+	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalApproachesMovement
+	faceperson INDIGOPLATEAUPOKECENTER1F_LYRA, PLAYER
+	faceperson PLAYER, INDIGOPLATEAUPOKECENTER1F_LYRA
+	opentext
+	writetext PlateauLyraText1
+	waitbutton
+	playmusic MUSIC_WALLY_BATTLE_ORAS
+	writetext PlateauLyraText2
+	waitbutton
+	closetext
+	setevent EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
+	checkevent EVENT_GOT_TOTODILE_FROM_ELM
+	iftrue .LyraTotodile
+	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
+	iftrue .LyraChikorita
+	; Cyndaquil
+	winlosstext PlateauLyraWinText, PlateauLyraLoseText
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
+	loadtrainer LYRA2, 1
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .LyraPostBattle
+
+.LyraTotodile:
+	winlosstext PlateauRivalWinText, PlateauRivalLoseText
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
+	loadtrainer LYRA2, 2
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+	jump .LyraPostBattle
+
+.LyraChikorita:
+	winlosstext PlateauRivalWinText, PlateauRivalLoseText
+	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
+	loadtrainer LYRA2, 3
+	startbattle
+	dontrestartmapmusic
+	reloadmapafterbattle
+.LyraPostBattle:
+	special DeleteSavedMusic
+	playmusic MUSIC_LYRA_DEPARTURE_HGSS
+	showtext PlateauLyraText3
+	spriteface PLAYER, DOWN
+	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
+	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
+	dotrigger $0
+	playmapmusic
+	setflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
+	clearevent EVENT_FINAL_BATTLE_WITH_LYRA
+.Done:
 	end
 
 PlateauRivalText1:
@@ -241,58 +246,6 @@ PlateauRivalLoseText:
 	para "I'm going to be"
 	line "the Champion!"
 	done
-
-PlateauLyraBattleCommon:
-	opentext
-	writetext PlateauLyraText1
-	waitbutton
-	playmusic MUSIC_WALLY_BATTLE_ORAS
-	writetext PlateauLyraText2
-	waitbutton
-	closetext
-	setevent EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .Totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .Chikorita
-	; Cyndaquil
-	winlosstext PlateauLyraWinText, PlateauLyraLoseText
-	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
-	loadtrainer LYRA2, 1
-	startbattle
-	dontrestartmapmusic
-	reloadmapafterbattle
-	jump PlateauLyraPostBattle
-
-.Totodile:
-	winlosstext PlateauRivalWinText, PlateauRivalLoseText
-	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
-	loadtrainer LYRA2, 2
-	startbattle
-	dontrestartmapmusic
-	reloadmapafterbattle
-	jump PlateauLyraPostBattle
-
-.Chikorita:
-	winlosstext PlateauRivalWinText, PlateauRivalLoseText
-	setlasttalked INDIGOPLATEAUPOKECENTER1F_LYRA
-	loadtrainer LYRA2, 3
-	startbattle
-	dontrestartmapmusic
-	reloadmapafterbattle
-PlateauLyraPostBattle:
-	special DeleteSavedMusic
-	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	showtext PlateauLyraText3
-	spriteface PLAYER, DOWN
-	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
-	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
-	dotrigger $0
-	playmapmusic
-	setflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
-	clearevent EVENT_FINAL_BATTLE_WITH_LYRA
-PlateauRivalScriptDone:
-	end
 
 PlateauLyraText1:
 	text "<PLAYER>!"
@@ -357,22 +310,12 @@ PlateauLyraText3:
 	cont "mon League!"
 	done
 
-PlateauRivalMovement1:
+PlateauRivalApproachesMovement:
 	step_up
 	step_up
 	step_up
 	step_up
 	step_up
-	turn_head_left
-	step_end
-
-PlateauRivalMovement2:
-	step_up
-	step_up
-	step_up
-	step_up
-	step_up
-	turn_head_right
 	step_end
 
 PlateauRivalLeavesMovement:
@@ -561,7 +504,7 @@ IndigoPlateauTeleportGuyScript:
 	playsound SFX_WARP_TO
 	special FadeOutPalettes
 	waitsfx
-	warp NEW_BARK_TOWN, $f, $6
+	warp NEW_BARK_TOWN, 15, 6
 	end
 
 .Text:
@@ -595,15 +538,7 @@ IndigoPlateauTeleportGuyScript:
 	line "of luck to you!"
 	done
 
-IndigoPlateauAbraScript:
-	opentext
-	writetext .Text
-	cry ABRA
-	waitbutton
-	closetext
-	end
-
-.Text:
+IndigoPlateauAbraText:
 	text "Abra: Aabra…"
 	done
 

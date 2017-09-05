@@ -8,22 +8,22 @@ TeamRocketBaseB2F_MapScriptHeader:
 TeamRocketBaseB2F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $e, $3, 2, TEAM_ROCKET_BASE_B1F
-	warp_def $2, $3, 1, TEAM_ROCKET_BASE_B3F
-	warp_def $2, $1b, 2, TEAM_ROCKET_BASE_B3F
-	warp_def $6, $3, 3, TEAM_ROCKET_BASE_B3F
-	warp_def $e, $1b, 4, TEAM_ROCKET_BASE_B3F
+	warp_def 14, 3, 2, TEAM_ROCKET_BASE_B1F
+	warp_def 2, 3, 1, TEAM_ROCKET_BASE_B3F
+	warp_def 2, 27, 2, TEAM_ROCKET_BASE_B3F
+	warp_def 6, 3, 3, TEAM_ROCKET_BASE_B3F
+	warp_def 14, 27, 4, TEAM_ROCKET_BASE_B3F
 
 .XYTriggers: db 9
-	xy_trigger 0, $e, $5, LanceHealsScript1
-	xy_trigger 0, $d, $4, LanceHealsScript2
-	xy_trigger 1, $b, $e, UnknownScript_0x6cf95
-	xy_trigger 1, $b, $f, UnknownScript_0x6cf9c
-	xy_trigger 2, $c, $e, UnknownScript_0x6d075
-	xy_trigger 2, $c, $f, UnknownScript_0x6d075
-	xy_trigger 2, $3, $c, UnknownScript_0x6d07a
-	xy_trigger 2, $a, $c, UnknownScript_0x6d07a
-	xy_trigger 2, $b, $c, UnknownScript_0x6d07a
+	xy_trigger 0, 14, 5, LanceHealsScript
+	xy_trigger 0, 13, 4, LanceHealsScript
+	xy_trigger 1, 11, 14, UnknownScript_0x6cf95
+	xy_trigger 1, 11, 15, UnknownScript_0x6cf9c
+	xy_trigger 2, 12, 14, UnknownScript_0x6d075
+	xy_trigger 2, 12, 15, UnknownScript_0x6d075
+	xy_trigger 2, 3, 12, UnknownScript_0x6d07a
+	xy_trigger 2, 10, 12, UnknownScript_0x6d07a
+	xy_trigger 2, 11, 12, UnknownScript_0x6d07a
 
 .Signposts: db 23
 	signpost 12, 14, SIGNPOST_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
@@ -87,18 +87,18 @@ TransmitterDoorCallback:
 	return
 
 .Change:
-	changeblock $e, $c, $7
+	changeblock 14, 12, $7
 	return
 
 UnknownScript_0x6cf95:
-	moveperson TEAMROCKETBASEB2F_LANCE, $9, $d
+	moveperson TEAMROCKETBASEB2F_LANCE, 9, 13
 	jump UnknownScript_0x6cfac
 
 UnknownScript_0x6cf9c:
-	moveperson TEAMROCKETBASEB2F_ARIANA, $15, $10
-	moveperson TEAMROCKETBASEB2F_ROCKET1, $15, $10
-	moveperson TEAMROCKETBASEB2F_DRAGONITE, $a, $d
-	moveperson TEAMROCKETBASEB2F_LANCE, $a, $d
+	moveperson TEAMROCKETBASEB2F_ARIANA, 21, 16
+	moveperson TEAMROCKETBASEB2F_ROCKET1, 21, 16
+	moveperson TEAMROCKETBASEB2F_DRAGONITE, 10, 13
+	moveperson TEAMROCKETBASEB2F_LANCE, 10, 13
 UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_ROCKET1
@@ -124,8 +124,8 @@ UnknownScript_0x6cfac:
 	spriteface PLAYER, RIGHT
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
 	showtext UnknownText_0x6d3bd
-	applymovement TEAMROCKETBASEB2F_ROCKET1, MovementData_0x6d24a
-	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d248
+	applyonemovement TEAMROCKETBASEB2F_ROCKET1, big_step_left
+	applyonemovement TEAMROCKETBASEB2F_ARIANA, big_step_left
 	winlosstext UnknownText_0x6d45c, 0
 	setlasttalked TEAMROCKETBASEB2F_ARIANA
 	loadtrainer ARIANA, ARIANA2
@@ -167,17 +167,12 @@ UnknownScript_0x6d075:
 
 UnknownScript_0x6d07a:
 	showtext UnknownText_0x6d7ea
-	applymovement PLAYER, MovementData_0x6d278
+	applyonemovement PLAYER, step_left
 	end
 
-LanceHealsScript1:
-	spriteface PLAYER, UP
-	jump LanceHealsCommon
-
-LanceHealsScript2:
-	spriteface PLAYER, RIGHT
-	spriteface TEAMROCKETBASEB2F_LANCE, LEFT
-LanceHealsCommon:
+LanceHealsScript:
+	faceperson PLAYER, TEAMROCKETBASEB2F_LANCE
+	faceperson TEAMROCKETBASEB2F_LANCE, PLAYER
 	showtext LanceHealsText1
 	special FadeOutPalettes
 	playsound SFX_FULL_HEAL
@@ -277,7 +272,7 @@ UnknownScript_0x6d182:
 	end
 
 UnknownScript_0x6d184:
-	moveperson TEAMROCKETBASEB2F_LANCE, $12, $6
+	moveperson TEAMROCKETBASEB2F_LANCE, 18, 6
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d27a
 	spriteface PLAYER, RIGHT
@@ -300,8 +295,6 @@ UnknownScript_0x6d184:
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
 	dotrigger $3
 	clearevent EVENT_LAKE_OF_RAGE_CIVILIANS
-	clearevent EVENT_LAKE_OF_RAGE_LANCE
-	variablesprite SPRITE_LAKE_OF_RAGE_LANCE, SPRITE_ENGINEER
 	setevent EVENT_TURNED_OFF_SECURITY_CAMERAS
 	setevent EVENT_SECURITY_CAMERA_1
 	setevent EVENT_SECURITY_CAMERA_2
@@ -321,7 +314,7 @@ UnknownScript_0x6d1e8:
 	writetext UnknownText_0x6dd6b
 	waitbutton
 	playsound SFX_ENTER_DOOR
-	changeblock $e, $c, $7
+	changeblock 14, 12, $7
 	reloadmappart
 	closetext
 	setevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
@@ -339,13 +332,6 @@ UnknownScript_0x6d207:
 
 MovementData_0x6d212:
 	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_right
-	step_end
-
 MovementData_0x6d219:
 	step_right
 	step_right
@@ -392,9 +378,9 @@ MovementData_0x6d236:
 
 MovementData_0x6d23b:
 	fix_facing
-	db $39 ; movement
+	set_sliding
 	jump_step_right
-	db $38 ; movement
+	remove_sliding
 	remove_fixed_facing
 	step_end
 
@@ -407,14 +393,6 @@ MovementData_0x6d244:
 	step_right
 	step_right
 	step_right
-	step_end
-
-MovementData_0x6d248:
-	run_step_left
-	step_end
-
-MovementData_0x6d24a:
-	run_step_left
 	step_end
 
 MovementData_0x6d24c:
@@ -471,10 +449,6 @@ MovementData_0x6d271:
 	step_left
 	step_left
 	turn_head_up
-	step_end
-
-MovementData_0x6d278:
-	step_left
 	step_end
 
 MovementData_0x6d27a:

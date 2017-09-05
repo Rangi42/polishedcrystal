@@ -2537,12 +2537,12 @@ _Area: ; 91d11
 	jr z, .OrangeGFX
 	call FillJohtoMap
 	call .PlaceString_MonsNest
-	call TownMapPals
+	call TownMapAreaPals
 	call TownMapJohtoFlips
 .FinishGFX
 	hlbgcoord 0, 0
 	call TownMapBGUpdate
-	ld b, SCGB_POKEGEAR_PALS
+	ld b, SCGB_POKEDEX_AREA_PALS
 	call GetSGBLayout
 	call SetPalettes
 	xor a
@@ -2552,14 +2552,14 @@ _Area: ; 91d11
 .KantoGFX:
 	call FillKantoMap
 	call .PlaceString_MonsNest
-	call TownMapPals
+	call TownMapAreaPals
 	call TownMapKantoFlips
 	jr .FinishGFX
 
 .OrangeGFX:
 	call FillOrangeMap
 	call .PlaceString_MonsNest
-	call TownMapPals
+	call TownMapAreaPals
 	call TownMapOrangeFlips
 	jr .FinishGFX
 
@@ -2861,15 +2861,51 @@ TownMapPals: ; 91f13
 	decoord 0, 0, AttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop
-; Current tile
 	ld a, [hli]
 	push hl
-; HP/borders use palette 0
 	cp $60
 	jr nc, .pal0
-; The palette data is condensed to nybbles,
+	call GetNextTownMapTilePalette
+	jr .update
+.pal0
+	xor a ; HP/borders use palette 0
+.update
+	pop hl
+	ld [de], a
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
+	ret
+; 91f7b
 
-; least-significant first.
+TownMapAreaPals:
+; Assign palettes based on tile ids
+	hlcoord 0, 0
+	decoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+.loop
+	ld a, [hli]
+	push hl
+	cp $61 ; tile $60 needs to use palette 3
+	jr nc, .pal3
+	call GetNextTownMapTilePalette
+	jr .update
+.pal3
+	ld a, $3 ; heading uses palette 3
+.update
+	pop hl
+	ld [de], a
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, .loop
+	ret
+
+GetNextTownMapTilePalette:
+; The palette data is condensed to nybbles, least-significant first.
 	ld hl, .PalMap
 	srl a
 	jr c, .odd
@@ -2881,7 +2917,7 @@ TownMapPals: ; 91f13
 	ld h, a
 	ld a, [hl]
 	and %111
-	jr .update
+	ret
 
 .odd
 ; ...and odd ids take the top.
@@ -2893,18 +2929,6 @@ TownMapPals: ; 91f13
 	ld a, [hl]
 	swap a
 	and %111
-	jr .update
-
-.pal0
-	xor a
-.update
-	pop hl
-	ld [de], a
-	inc de
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
 	ret
 
 .PalMap:
@@ -2921,7 +2945,7 @@ endm
 	townmappals 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0
 	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0
 	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0
-; 91f7b
+	townmappals 0, 0
 
 TownMapJohtoFlips:
 	decoord 0, 0, JohtoMap

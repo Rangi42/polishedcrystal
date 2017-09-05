@@ -37,7 +37,7 @@ TrainerCard: ; 25105
 	farcall GetCardPic
 
 	ld hl, CardBorderGFX
-	ld de, VTiles1 tile ($de - $80)
+	ld de, VTiles1 tile ("″" - $80) ; top-left corner
 	ld bc, 12 tiles
 	ld a, BANK(CardBorderGFX)
 	call FarCopyBytes
@@ -241,7 +241,7 @@ TrainerCard_LoadHeaderGFX:
 TrainerCard_PrintBorder: ; 253b0 (9:53b0)
 	hlcoord 0, 0
 
-	ld a, $de ; top-left corner
+	ld a, "″" ; top-left corner
 	ld [hli], a
 	ld e, SCREEN_WIDTH - 2
 	inc a ; top border
@@ -344,9 +344,9 @@ TrainerCard_PrintTopHalfOfCard: ; 25299 (9:5299)
 ; 252ec (9:52ec)
 
 .Top_Headings: ; 252ec
-	db $e6, "Name/<LNBRK>"
-	db $e6, "<ID>№.<LNBRK>"
-	db $e7, $e8, $e8, $e8, $e8, $e8, $e8, $e8, $e8, $e8, $e8, $e8, $e9, "<LNBRK>"
+	db "┐Name/<LNBRK>"
+	db "┐<ID>№.<LNBRK>"
+	db "│└└└└└└└└└└└┘<LNBRK>"
 	db "<LNBRK>"
 	db " Money@"
 

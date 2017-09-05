@@ -9,11 +9,11 @@ MountMoonSquare_MapScriptHeader:
 MountMoonSquare_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $16, 10, MOUNT_MOON_B1F
-	warp_def $7, $d, 1, MOUNT_MOON_GIFT_SHOP
+	warp_def 11, 22, 10, MOUNT_MOON_B1F
+	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
 
 .XYTriggers: db 1
-	xy_trigger 0, $b, $7, ClefairyDance
+	xy_trigger 0, 11, 7, ClefairyDance
 
 .Signposts: db 2
 	signpost 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
@@ -22,7 +22,7 @@ MountMoonSquare_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_CLEFAIRY_WALK, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	person_event SPRITE_CLEFAIRY_WALK, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	smashrock_event 7, 7, EVENT_MT_MOON_SQUARE_ROCK
+	person_event SPRITE_N64, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
 
 const_value set 2
 	const MOUNTMOONSQUARE_CLEFAIRY1

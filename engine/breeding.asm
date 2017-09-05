@@ -889,16 +889,16 @@ Hatch_InitShellFragments: ; 173b3 (5:73b3)
 
 .SpriteData: ; 173ef
 ; Probably OAM.
-	dsprite 10, 4,  9, 0, $00, $3c
-	dsprite 11, 4,  9, 0, $01, $04
-	dsprite 10, 4, 10, 0, $00, $30
-	dsprite 11, 4, 10, 0, $01, $10
-	dsprite 10, 4, 11, 0, $02, $24
-	dsprite 11, 4, 11, 0, $03, $1c
-	dsprite 10, 0,  9, 4, $00, $36
-	dsprite 12, 0,  9, 4, $01, $0a
-	dsprite 10, 0, 10, 4, $02, $2a
-	dsprite 12, 0, 10, 4, $03, $16
+	dsprite 10, 4,  9, 0, $00, $4 | X_FLIP
+	dsprite 11, 4,  9, 0, $01, $4
+	dsprite 10, 4, 10, 0, $00, $0 | X_FLIP
+	dsprite 11, 4, 10, 0, $01, $0
+	dsprite 10, 4, 11, 0, $02, $4 | X_FLIP
+	dsprite 11, 4, 11, 0, $03, $4
+	dsprite 10, 0,  9, 4, $00, $6 | X_FLIP
+	dsprite 12, 0,  9, 4, $01, $2
+	dsprite 10, 0, 10, 4, $02, $2 | X_FLIP
+	dsprite 12, 0, 10, 4, $03, $6
 	db -1
 ; 17418
 

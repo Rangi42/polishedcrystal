@@ -7,9 +7,9 @@ TohjoFalls_MapScriptHeader:
 TohjoFalls_MapEventHeader:
 
 .Warps: db 3
-	warp_def $f, $d, 2, ROUTE_27
-	warp_def $f, $19, 3, ROUTE_27
-	warp_def $7, $3, 1, GIOVANNIS_CAVE
+	warp_def 15, 13, 2, ROUTE_27
+	warp_def 15, 25, 3, ROUTE_27
+	warp_def 7, 3, 1, GIOVANNIS_CAVE
 
 .XYTriggers: db 0
 

@@ -305,6 +305,8 @@ endr
 	call AddNTimes
 	ld a, BANK(BaseData)
 	call GetFarByte
+	swap a
+	and $f
 	pop bc
 	pop hl
 	ld c, a
@@ -1356,6 +1358,12 @@ GiveEgg:: ; df8c
 	ld a, 1
 	jr nz, .got_init_happiness
 	ld a, [BaseEggSteps]
+	and $f
+	inc a
+	ld b, a
+	add a
+	add a
+	add b
 
 .got_init_happiness
 	ld [hl], a

@@ -7,10 +7,10 @@ Route42EcruteakGate_MapScriptHeader:
 Route42EcruteakGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 1, ECRUTEAK_CITY
-	warp_def $5, $0, 2, ECRUTEAK_CITY
-	warp_def $4, $9, 1, ROUTE_42
-	warp_def $5, $9, 2, ROUTE_42
+	warp_def 4, 0, 1, ECRUTEAK_CITY
+	warp_def 5, 0, 2, ECRUTEAK_CITY
+	warp_def 4, 9, 1, ROUTE_42
+	warp_def 5, 9, 2, ROUTE_42
 
 .XYTriggers: db 0
 
