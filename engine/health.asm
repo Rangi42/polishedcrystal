@@ -1,35 +1,35 @@
 HealPartyEvenForNuzlocke:
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp z, HealParty
 
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	res NUZLOCKE_MODE, a
-	ld [InitialOptions], a
+	ld [wInitialOptions], a
 	call HealParty
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	set NUZLOCKE_MODE, a
-	ld [InitialOptions], a
+	ld [wInitialOptions], a
 	ret
 
 HealPartyMonEvenForNuzlocke:
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
 	jp z, HealPartyMon
 
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	res NUZLOCKE_MODE, a
-	ld [InitialOptions], a
+	ld [wInitialOptions], a
 	call HealPartyMon
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	set NUZLOCKE_MODE, a
-	ld [InitialOptions], a
+	ld [wInitialOptions], a
 	ret
 
 HealParty: ; c658
 	xor a
-	ld [CurPartyMon], a
-	ld hl, PartySpecies
+	ld [wCurPartyMon], a
+	ld hl, wPartySpecies
 .loop
 	ld a, [hli]
 	cp -1
@@ -42,9 +42,9 @@ HealParty: ; c658
 	pop hl
 
 .next
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	inc a
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	jr .loop
 
 HealPartyMon: ; c677
@@ -68,7 +68,7 @@ HealPartyMon: ; c677
 	dec bc
 	dec bc
 
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr z, .Revive
 	ld a, [bc]

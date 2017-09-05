@@ -258,12 +258,12 @@ if DEF(DEBUG)
 
 SetHallOfFameFlag:
 	; Enable the Pokégear map to cycle through all of Kanto
-	ld hl, StatusFlags
+	ld hl, wStatusFlags
 	set 6, [hl] ; hall of fame
 	ret
 
 TeachHMSlaveMoves:
-	ld hl, PartyMon4Moves
+	ld hl, wPartyMon4Moves
 	ld a, FLY
 	ld [hli], a
 	ld a, SURF
@@ -272,7 +272,7 @@ TeachHMSlaveMoves:
 	ld [hli], a
 	ld a, CUT
 	ld [hl], a
-	ld hl, PartyMon4PP
+	ld hl, wPartyMon4PP
 	ld a, 15
 	ld [hli], a
 ;	ld a, 15
@@ -281,7 +281,7 @@ TeachHMSlaveMoves:
 	ld [hli], a
 	ld a, 30
 	ld [hl], a
-	ld hl, PartyMon5Moves
+	ld hl, wPartyMon5Moves
 	ld a, FLASH
 	ld [hli], a
 	ld a, ROCK_SMASH
@@ -290,7 +290,7 @@ TeachHMSlaveMoves:
 	ld [hli], a
 	ld a, WATERFALL
 	ld [hl], a
-	ld hl, PartyMon5PP
+	ld hl, wPartyMon5PP
 	ld a, 20
 	ld [hli], a
 	ld a, 15

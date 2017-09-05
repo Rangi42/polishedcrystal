@@ -8,11 +8,11 @@ InitClock: ; 90672 (24:4672)
 	xor a
 	ld [wSpriteUpdatesEnabled], a
 	ld a, $10
-	ld [MusicFade], a
+	ld [wMusicFade], a
 	ld a, MUSIC_NONE % $100
-	ld [MusicFadeIDLo], a
+	ld [wMusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
-	ld [MusicFadeIDHi], a
+	ld [wMusicFadeIDHi], a
 	ld c, 8
 	call DelayFrames
 	call RotateFourPalettesLeft
@@ -62,7 +62,7 @@ endc
 	jr nc, .SetHourLoop
 
 	ld a, [wInitHourBuffer]
-	ld [StringBuffer2 + 1], a
+	ld [wStringBuffer2 + 1], a
 	call .ClearScreen
 	ld hl, Text_WhatHrs
 	call PrintText
@@ -91,8 +91,8 @@ endc
 	call SetMinutes
 	jr nc, .SetMinutesLoop
 
-	ld a, [BattleMonNick + 5]
-	ld [StringBuffer2 + 2], a
+	ld a, [wBattleMonNick + 5]
+	ld [wStringBuffer2 + 2], a
 	call .ClearScreen
 	ld hl, Text_WhoaMins
 	call PrintText
@@ -203,7 +203,7 @@ SetMinutes: ; 90810 (24:4810)
 	ret
 
 .d_down
-	ld hl, BattleMonNick + 5
+	ld hl, wBattleMonNick + 5
 	ld a, [hl]
 	and a
 	jr nz, .decrease
@@ -214,7 +214,7 @@ SetMinutes: ; 90810 (24:4810)
 	jr .finish_dpad
 
 .d_up
-	ld hl, BattleMonNick + 5
+	ld hl, wBattleMonNick + 5
 	ld a, [hl]
 	cp 59
 	jr c, .increase
@@ -237,7 +237,7 @@ SetMinutes: ; 90810 (24:4810)
 	ret
 
 DisplayMinutesWithMinString: ; 90859 (24:4859)
-	ld de, BattleMonNick + 5
+	ld de, wBattleMonNick + 5
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
@@ -319,7 +319,7 @@ OakText_ResponseToSetTime: ; 0x908b8
 	call PrintHour
 	ld [hl], ":"
 	inc hl
-	ld de, BattleMonNick + 5
+	ld de, wBattleMonNick + 5
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	ld b, h
@@ -400,7 +400,7 @@ Special_SetDayOfWeek: ; 90913
 	call YesNoBox
 	jr c, .loop
 	ld a, [wTempDayOfWeek]
-	ld [StringBuffer2], a
+	ld [wStringBuffer2], a
 	call SetDayOfWeek
 	call LoadStandardFont
 	pop af
@@ -619,7 +619,7 @@ GetTimeOfDayString: ; 90b58 (24:4b58)
 
 AdjustHourForAMorPM:
 ; Convert the hour stored in c (0-23) to a 1-12 value
-	ld a, [Options2]
+	ld a, [wOptions2]
 	bit CLOCK_FORMAT, a
 	ld a, c
 	ret nz

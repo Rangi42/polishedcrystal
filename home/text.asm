@@ -21,11 +21,11 @@ FillBoxWithByte::
 ; fc8
 
 ClearTileMap:: ; fc8
-; Fill TileMap with blank tiles.
+; Fill wTileMap with blank tiles.
 
 	hlcoord 0, 0
 	ld a, " "
-	ld bc, TileMapEnd - TileMap
+	ld bc, wTileMapEnd - wTileMap
 	call ByteFill
 
 	; Update the BG Map.
@@ -37,7 +37,7 @@ ClearTileMap:: ; fc8
 
 ClearScreen:: ; fdb
 	ld a, PAL_BG_TEXT
-	hlcoord 0, 0, AttrMap
+	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	jr ClearTileMap
@@ -108,7 +108,7 @@ TextBoxBorder:: ; ff1
 
 TextBoxPalette:: ; 1024
 ; Fill text box width c height b at hl with pal 7
-	ld de, AttrMap - TileMap
+	ld de, wAttrMap - wTileMap
 	add hl, de
 rept 2
 	inc b
@@ -234,9 +234,9 @@ print_name: macro
 	jp PlaceCommandCharacter
 endm
 
-PrintPlayerName:   print_name PlayerName   ; 118d
-PrintRivalName:    print_name RivalName    ; 1194
-PrintTrendyPhrase: print_name TrendyPhrase ; 119b
+PrintPlayerName:   print_name wPlayerName   ; 118d
+PrintRivalName:    print_name wRivalName    ; 1194
+PrintTrendyPhrase: print_name wTrendyPhrase ; 119b
 PlacePoke:         print_name .PokeText    ; 11c5
 
 .PokeText:
@@ -255,7 +255,7 @@ PlaceMoveTargetsName_5A: ; 1205
 	and a
 	jr nz, .enemy
 
-	ld de, BattleMonNick
+	ld de, wBattleMonNick
 	jr PlaceCommandCharacter
 
 .enemy:
@@ -263,7 +263,7 @@ PlaceMoveTargetsName_5A: ; 1205
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, EnemyMonNick
+	ld de, wEnemyMonNick
 	jr PlaceCommandCharacter
 
 .EnemyText:
@@ -276,13 +276,13 @@ PlaceEnemysName:: ; 121b
 	and a
 	jr nz, .linkbattle
 
-	ld a, [TrainerClass]
+	ld a, [wTrainerClass]
 	cp RIVAL1
 	jr z, .rival
 	cp RIVAL2
 	jr z, .rival
 
-	ld de, OTClassName
+	ld de, wOTClassName
 	call PlaceString
 	ld h, b
 	ld l, c
@@ -291,11 +291,11 @@ PlaceEnemysName:: ; 121b
 	push bc
 	farcall Battle_GetTrainerName
 	pop hl
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	jr PlaceCommandCharacter
 
 .rival:
-	ld de, OTClassName
+	ld de, wOTClassName
 	call PlaceString
 	ld h, b
 	ld l, c
@@ -303,11 +303,11 @@ PlaceEnemysName:: ; 121b
 	call PlaceString
 	ld h, b
 	ld l, c
-	ld de, RivalName
+	ld de, wRivalName
 	jr PlaceCommandCharacter
 
 .linkbattle:
-	ld de, OTClassName
+	ld de, wOTClassName
 	jr PlaceCommandCharacter
 
 .SpaceText:
@@ -340,7 +340,7 @@ LineBreak:: ; 12b0
 TextFar:: ; 12b9
 	pop hl
 	push de
-	ld bc, -TileMap + $10000
+	ld bc, -wTileMap + $10000
 	add hl, bc
 	ld de, -SCREEN_WIDTH
 	ld c, 1
@@ -553,15 +553,15 @@ FarString:: ; 13d4
 ; 13e0
 
 PlaceWholeStringInBoxAtOnce:: ; 13e5
-	ld a, [TextBoxFlags]
+	ld a, [wTextBoxFlags]
 	push af
 	set 1, a
-	ld [TextBoxFlags], a
+	ld [wTextBoxFlags], a
 
 	call DoTextUntilTerminator
 
 	pop af
-	ld [TextBoxFlags], a
+	ld [wTextBoxFlags], a
 	ret
 ; 13f6
 
@@ -916,13 +916,13 @@ Text_ButtonSound:: ; 1562
 
 Text_StringBuffer:: ; 156a
 ; Print a string from one of the following:
-; 0: StringBuffer3
-; 1: StringBuffer4
-; 2: StringBuffer5
-; 3: StringBuffer2
-; 4: StringBuffer1
-; 5: EnemyMonNick
-; 6: BattleMonNick
+; 0: wStringBuffer3
+; 1: wStringBuffer4
+; 2: wStringBuffer5
+; 3: wStringBuffer2
+; 4: wStringBuffer1
+; 5: wEnemyMonNick
+; 6: wBattleMonNick
 ; [$14][id]
 
 	ld a, [hli]

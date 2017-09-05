@@ -475,7 +475,7 @@ CheckVermilionGymTrashCan:
 .nope_no_pop
 	xor a
 .done
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .CoordTable

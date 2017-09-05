@@ -210,7 +210,7 @@ SetFacingWeirdTree: ; 45ab
 ; 45be
 
 SetFacingBigDoll: ; 45c5
-	ld a, [VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
+	ld a, [wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
 	ld d, FACING_BIG_DOLL_SYM ; symmetric
 	cp SPRITE_BIG_SNORLAX
 	jr z, .ok

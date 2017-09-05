@@ -164,7 +164,7 @@ Text_YourPokemonWillBeHealedToFullHealth:
 Text_NextUpOpponentNo:
 	text "Next up, opponent"
 	line "no.@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ". Ready?"
 	done
 

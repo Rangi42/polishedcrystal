@@ -74,14 +74,14 @@ endr
 ; 4e9e5
 
 .subfunction4 ; 4e9e5
-	ld hl, LYOverrides
+	ld hl, wLYOverrides
 	ld a, $90
 	ld bc, SCREEN_HEIGHT_PX
 	jp ByteFill
 ; 4e9f1
 
 .subfunction5 ; 4e9f1
-	ld hl, LYOverrides
+	ld hl, wLYOverrides
 	ld a, d
 	ld c, $3e ; 62
 .loop4

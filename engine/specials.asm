@@ -198,54 +198,54 @@ SpecialNone: ; c224
 ; c225
 
 Special_SetPlayerPalette: ; c225
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	farjp SetPlayerPalette
 ; c230
 
 Special_GameCornerPrizeMonCheckDex: ; c230
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	dec a
 	call CheckCaughtMon
 	ret nz
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	dec a
 	call SetSeenAndCaughtMon
 	call FadeToMenu
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld [wd265], a
 	farcall NewPokedexEntry
 	jp ExitAllMenus
 ; c252
 
 SpecialSeenMon: ; c252
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	dec a
 	jp SetSeenMon
 ; c25a
 
 Special_FindGreaterThanThatLevel: ; c25a
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld b, a
 	farcall _FindGreaterThanThatLevel
 	jr z, FoundNone
 	jr FoundOne
 
 Special_FindAtLeastThatHappy: ; c268
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld b, a
 	farcall _FindAtLeastThatHappy
 	jr z, FoundNone
 	jr FoundOne
 
 Special_FindThatSpecies: ; c276
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld b, a
 	farcall _FindThatSpecies
 	jr z, FoundNone
 	jr FoundOne
 
 Special_FindThatSpeciesYourTrainerID: ; c284
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld b, a
 	farcall _FindThatSpeciesYourTrainerID
 	jr z, FoundNone
@@ -253,21 +253,21 @@ Special_FindThatSpeciesYourTrainerID: ; c284
 
 FoundOne: ; c292
 	ld a, TRUE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 FoundNone: ; c298
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; c29d
 
 SpecialNameRival: ; 0xc29d
 	ld b, $2 ; rival
-	ld de, RivalName
+	ld de, wRivalName
 	farcall _NamingScreen
 	; default to "Silver"
-	ld hl, RivalName
+	ld hl, wRivalName
 	ld de, .DefaultRivalName
 	jp InitName
 ; 0xc2b2
@@ -277,10 +277,10 @@ SpecialNameRival: ; 0xc29d
 
 SpecialTrendyPhrase:
 	ld b, $3 ; trendy phrase
-	ld de, TrendyPhrase
+	ld de, wTrendyPhrase
 	farcall _NamingScreen
 	; default to "Nothing"
-	ld hl, TrendyPhrase
+	ld hl, wTrendyPhrase
 	ld de, .DefaultTrendyPhrase
 	jp InitName
 ; 0xc2b2
@@ -306,17 +306,17 @@ Special_DisplayLinkRecord: ; c2da
 
 Special_KrissHousePC: ; c2e7
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	farcall _KrissHousePC
 	ld a, c
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; c2f6
 
 BugContestJudging: ; c34a
 	farcall _BugContestJudging
 	ld a, b
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	dec a
 	jr z, .firstplace
 	dec a
@@ -327,7 +327,7 @@ BugContestJudging: ; c34a
 	jr .finish
 .firstplace
 	ld a, SUN_STONE
-	ld hl, StatusFlags
+	ld hl, wStatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .finish
 	ld a, SHINY_STONE - MOON_STONE + 1 ; TODO: include ICE_STONE once it's useful
@@ -345,7 +345,7 @@ BugContestJudging: ; c34a
 ; c355
 
 MapRadio: ; c355
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld e, a
 	farjp PlayRadio
 ; c360
@@ -354,7 +354,7 @@ Special_UnownPuzzle: ; c360
 	call FadeToMenu
 	farcall UnownPuzzle
 	ld a, [wSolvedUnownPuzzle]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	jp ExitAllMenus
 ; c373
 
@@ -403,8 +403,8 @@ Special_CheckCoins: ; c3ae
 	or [hl]
 	jr z, .no_coins
 	ld a, COIN_CASE
-	ld [CurItem], a
-	ld hl, NumItems
+	ld [wCurItem], a
+	ld hl, wNumItems
 	call CheckItem
 	jr nc, .no_coin_case
 	and a
@@ -438,16 +438,16 @@ Special_CheckCoins: ; c3ae
 ScriptReturnCarry: ; c3e2
 	jr c, .carry
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 .carry
 	ld a, 1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; c3ef
 
 Special_ActivateFishingSwarm: ; c3fc
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld [wFishingSwarmFlag], a
 	ret
 ; c403
@@ -493,7 +493,7 @@ SpecialSnorlaxAwake: ; 0xc43d
 ; Check if the Poké Flute channel is playing.
 
 ; outputs:
-; ScriptVar is 1 if the conditions are met, otherwise 0.
+; wScriptVar is 1 if the conditions are met, otherwise 0.
 
 ; check background music
 	ld a, [wMapMusic]
@@ -504,21 +504,21 @@ SpecialSnorlaxAwake: ; 0xc43d
 .nope
 	xor a
 .done
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 PlayCurMonCry: ; c472
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	jp PlayCry
 ; c478
 
 Special_FadeOutMusic: ; c48f
 	ld a, MUSIC_NONE % $100
-	ld [MusicFadeIDLo], a
+	ld [wMusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
-	ld [MusicFadeIDHi], a
+	ld [wMusicFadeIDHi], a
 	ld a, $2
-	ld [MusicFade], a
+	ld [wMusicFade], a
 	ret
 ; c49f
 
@@ -530,8 +530,8 @@ Diploma: ; c49f
 
 CheckIfTrendyPhraseIsLucky:
 	xor a
-	ld [ScriptVar], a
-	ld hl, TrendyPhrase
+	ld [wScriptVar], a
+	ld hl, wTrendyPhrase
 	ld bc, .KeyPhrase
 	ld d, 6
 .loop
@@ -544,7 +544,7 @@ CheckIfTrendyPhraseIsLucky:
 	dec d
 	jr nz, .loop
 	ld a, 1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .KeyPhrase:
@@ -778,14 +778,14 @@ BillBoxSwitchCheck:
 	ld a, c
 	jr nz, .billboxloop
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .foundspace
 	pop af
 	dec a
-	ld [ScriptVar], a
-	ld [EngineBuffer1], a
+	ld [wScriptVar], a
+	ld [wEngineBuffer1], a
 	ret
 
 BillBoxSwitch:
@@ -794,7 +794,7 @@ BillBoxSwitch:
 	ld bc, $1e0
 	ld a, $6
 	call FarCopyWRAM
-	ld a, [EngineBuffer1]
+	ld a, [wEngineBuffer1]
 	ld e, a
 	farcall ChangeBoxSaveGameNoConfirm
 	ld de, wc608

@@ -11,10 +11,10 @@ BattlePartyAttrPre:
 	pop af
 BattlePartyAttr::
 ; Returns nz (not a wildmon)
-	ld hl, PartyMons
+	ld hl, wPartyMons
 	push bc
 	ld c, a
-	ld a, [CurBattleMon]
+	ld a, [wCurBattleMon]
 DoBattlePartyAttr:
 	ld b, 0
 	add hl, bc
@@ -38,16 +38,16 @@ OTPartyAttr::
 	dec a
 	ret z
 
-	ld hl, OTPartyMons
+	ld hl, wOTPartyMons
 	push bc
 	ld c, a
-	ld a, [CurOTMon]
+	ld a, [wCurOTMon]
 	jr DoBattlePartyAttr
 
 ResetDamage:: ; 397d
 	xor a
-	ld [CurDamage], a
-	ld [CurDamage + 1], a
+	ld [wCurDamage], a
+	ld [wCurDamage + 1], a
 	ret
 ; 3985
 
@@ -76,16 +76,16 @@ UpdateUserInParty::
 	; fallthrough
 UpdateBattleMonInParty::
 ; Update level, status, current HP
-	ld a, [CurBattleMon]
+	ld a, [wCurBattleMon]
 	; fallthrough
 UpdateBattleMon::
-	ld hl, PartyMon1Level
+	ld hl, wPartyMon1Level
 	call GetPartyLocation
 
 	ld d, h
 	ld e, l
-	ld hl, BattleMonLevel
-	ld bc, BattleMonMaxHP - BattleMonLevel
+	ld hl, wBattleMonLevel
+	ld bc, wBattleMonMaxHP - wBattleMonLevel
 	jp CopyBytes
 
 UpdateOpponentInParty::
@@ -99,14 +99,14 @@ UpdateEnemyMonInParty::
 	dec a
 	ret z
 
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Level
+	ld a, [wCurOTMon]
+	ld hl, wOTPartyMon1Level
 	call GetPartyLocation
 
 	ld d, h
 	ld e, l
-	ld hl, EnemyMonLevel
-	ld bc, EnemyMonMaxHP - EnemyMonLevel
+	ld hl, wEnemyMonLevel
+	ld bc, wEnemyMonMaxHP - wEnemyMonLevel
 	jp CopyBytes
 
 RefreshBattleHuds:: ; 39c9
@@ -123,10 +123,10 @@ UpdateBattleHuds:: ; 39d4
 GetBackupItemAddr::
 ; Returns address of backup item for current mon in hl
 	push bc
-	ld a, [CurBattleMon]
+	ld a, [wCurBattleMon]
 	ld c, a
 	ld b, 0
-	ld hl, PartyBackupItems
+	ld hl, wPartyBackupItems
 	add hl, bc
 	pop bc
 	ret
@@ -150,13 +150,13 @@ BackupBattleItems::
 	ld c, 0
 	jr ToggleBattleItems
 RestoreBattleItems::
-; Restores items from PartyBackupItems
+; Restores items from wPartyBackupItems
 	ld c, 1
 	; fallthrough
 ToggleBattleItems:
 	ld b, 7
-	ld hl, PartyMon1Item
-	ld de, PartyBackupItems
+	ld hl, wPartyMon1Item
+	ld de, wPartyBackupItems
 .loop
 	dec b
 	ret z
@@ -185,16 +185,16 @@ GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
 	ld a, [hBattleTurn]
 	and a
-	ld hl, PartyUsedItems
-	ld a, [CurBattleMon]
+	ld hl, wPartyUsedItems
+	ld a, [wCurBattleMon]
 	jr z, .got_target
-	ld hl, OTPartyUsedItems
+	ld hl, wOTPartyUsedItems
 
 	; Wildmons use the 1st index
 	ld a, [wBattleMode]
 	dec a
 	ret z
-	ld a, [CurOTMon]
+	ld a, [wCurOTMon]
 .got_target
 	add l
 	ld l, a
@@ -210,13 +210,13 @@ ConsumeEnemyItem::
 ConsumeUserItem::
 	ld a, [hBattleTurn]
 	and a
-	ld a, [CurBattleMon]
-	ld de, BattleMonItem
-	ld hl, PartyMon1Item
+	ld a, [wCurBattleMon]
+	ld de, wBattleMonItem
+	ld hl, wPartyMon1Item
 	jr z, .got_item_pointers
-	ld a, [CurOTMon]
-	ld de, EnemyMonItem
-	ld hl, OTPartyMon1Item
+	ld a, [wCurOTMon]
+	ld de, wEnemyMonItem
+	ld hl, wOTPartyMon1Item
 .got_item_pointers
 	call GetPartyLocation
 
@@ -235,7 +235,7 @@ ConsumeUserItem::
 	xor a
 	ld [de], a
 
-	; Wildmons has no OTPartyMon1Item, but we want to consume our own items still
+	; Wildmons has no wOTPartyMon1Item, but we want to consume our own items still
 	ld a, [hBattleTurn]
 	and a
 	jr z, .has_party_struct
@@ -255,7 +255,7 @@ ConsumeUserItem::
 
 	; For players, maybe remove the backup item too if we're dealing with a berry
 	ld a, d
-	ld [CurItem], a
+	ld [wCurItem], a
 	push de
 	push bc
 	farcall CheckItemPocket
@@ -674,11 +674,11 @@ CheckIfUserIsSomeType::
 	xor 1
 CheckIfSomeoneIsSomeType
 	ld c, a
-	ld de, EnemyMonType1
+	ld de, wEnemyMonType1
 	ld a, c
 	and a
 	jr z, .ok
-	ld de, BattleMonType1
+	ld de, wBattleMonType1
 .ok
 	ld a, [de]
 	inc de
@@ -703,11 +703,11 @@ CheckPinch::
 CompareHP::
 ; return c if HP<bc, z if HP=bc, nc+nz if HP>bc
 	push hl
-	ld hl, BattleMonHP
+	ld hl, wBattleMonHP
 	ld a, [hBattleTurn]
 	and a
 	jr z, .got_hp
-	ld hl, EnemyMonHP
+	ld hl, wEnemyMonHP
 .got_hp
 	ld a, [hli]
 	sub b
@@ -740,7 +740,7 @@ HasUserFainted::
 	and a
 	jr z, HasPlayerFainted
 HasEnemyFainted::
-	ld hl, EnemyMonHP
+	ld hl, wEnemyMonHP
 	jr CheckIfHPIsZero
 
 HasOpponentFainted::
@@ -748,7 +748,7 @@ HasOpponentFainted::
 	and a
 	jr z, HasEnemyFainted
 HasPlayerFainted::
-	ld hl, BattleMonHP
+	ld hl, wBattleMonHP
 CheckIfHPIsZero::
 	ld a, [hli]
 	or [hl]
@@ -756,14 +756,14 @@ CheckIfHPIsZero::
 
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
-; [Weather] otherwise.
-	ld a, [PlayerAbility]
+; [wWeather] otherwise.
+	ld a, [wPlayerAbility]
 	xor CLOUD_NINE
 	ret z
-	ld a, [EnemyAbility]
+	ld a, [wEnemyAbility]
 	xor CLOUD_NINE
 	ret z
-	ld a, [Weather]
+	ld a, [wWeather]
 	ret
 
 CheckSpeedWithQuickClaw::
@@ -945,21 +945,21 @@ endr
 .lastmoveopp    db ENEMY_LAST_MOVE,       PLAYER_LAST_MOVE
 
 .vars
-	dw PlayerSubStatus1,             EnemySubStatus1
-	dw PlayerSubStatus2,             EnemySubStatus2
-	dw PlayerSubStatus3,             EnemySubStatus3
-	dw PlayerSubStatus4,             EnemySubStatus4
-	dw PlayerAbility,                EnemyAbility
-	dw BattleMonStatus,              EnemyMonStatus
+	dw wPlayerSubStatus1,             wEnemySubStatus1
+	dw wPlayerSubStatus2,             wEnemySubStatus2
+	dw wPlayerSubStatus3,             wEnemySubStatus3
+	dw wPlayerSubStatus4,             wEnemySubStatus4
+	dw wPlayerAbility,                wEnemyAbility
+	dw wBattleMonStatus,              wEnemyMonStatus
 	dw wPlayerMoveStructAnimation,   wEnemyMoveStructAnimation
 	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect
 	dw wPlayerMoveStructPower,       wEnemyMoveStructPower
 	dw wPlayerMoveStructAccuracy,    wEnemyMoveStructAccuracy
 	dw wPlayerMoveStructType,        wEnemyMoveStructType
 	dw wPlayerMoveStructCategory,    wEnemyMoveStructCategory
-	dw CurPlayerMove,                CurEnemyMove
-	dw LastEnemyCounterMove,         LastPlayerCounterMove
-	dw LastPlayerMove,               LastEnemyMove
+	dw wCurPlayerMove,                wCurEnemyMove
+	dw wLastEnemyCounterMove,         wLastPlayerCounterMove
+	dw wLastPlayerMove,               wLastEnemyMove
 ; 3a90
 
 
@@ -1026,9 +1026,9 @@ GLOBAL BattleAnimCommands
 	rst Bankswitch
 
 	ld a, [hli]
-	ld [BattleAnimAddress], a
+	ld [wBattleAnimAddress], a
 	ld a, [hl]
-	ld [BattleAnimAddress + 1], a
+	ld [wBattleAnimAddress + 1], a
 
 	ld a, BANK(BattleAnimCommands)
 	rst Bankswitch
@@ -1041,7 +1041,7 @@ GetBattleAnimByte:: ; 3af0
 	push hl
 	push de
 
-	ld hl, BattleAnimAddress
+	ld hl, wBattleAnimAddress
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -1050,7 +1050,7 @@ GetBattleAnimByte:: ; 3af0
 	rst Bankswitch
 
 	ld a, [de]
-	ld [BattleAnimByte], a
+	ld [wBattleAnimByte], a
 	inc de
 
 	ld a, BANK(BattleAnimCommands)
@@ -1063,6 +1063,6 @@ GetBattleAnimByte:: ; 3af0
 	pop de
 	pop hl
 
-	ld a, [BattleAnimByte]
+	ld a, [wBattleAnimByte]
 	ret
 ; 3b0c

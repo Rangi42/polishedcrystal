@@ -264,7 +264,7 @@ CeladonUniversityClassroom4BlackboardText:
 	cont "- Effort values"
 	cont "- Natures"
 	cont "- Abilities"
-	cont "- Weather"
+	cont "- wWeather"
 	cont "- Others?"
 	done
 

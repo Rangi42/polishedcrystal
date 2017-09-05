@@ -257,18 +257,18 @@ ContestResults_ReadyToJudgeText:
 
 ContestResults_PlayerWonAPrizeText:
 	text "<PLAYER>, the No.@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ""
 	line "finisher, wins"
 	cont "@"
-	text_from_ram StringBuffer4
+	text_from_ram wStringBuffer4
 	text "!"
 	done
 
 ReceivedItemText:
 	text "<PLAYER> received"
 	line "@"
-	text_from_ram StringBuffer4
+	text_from_ram wStringBuffer4
 	text "."
 	done
 
@@ -280,7 +280,7 @@ ContestResults_JoinUsNextTimeText:
 ContestResults_ConsolationPrizeText:
 	text "Everyone else gets"
 	line "a @"
-	text_from_ram StringBuffer4
+	text_from_ram wStringBuffer4
 	text " as a"
 	cont "consolation prize!"
 	done
@@ -307,12 +307,12 @@ ContestResults_PartyFullText:
 	done
 
 GymStatue_CityGymText:
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ""
 	line "#mon Gym"
 
 	para "Leader: @"
-	text_from_ram StringBuffer4
+	text_from_ram wStringBuffer4
 	text ""
 	done
 
@@ -418,14 +418,14 @@ HappinessText1:
 RegisteredNumber1Text:
 	text "<PLAYER> registered"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "'s number."
 	done
 
 RegisteredNumber2Text:
 	text "<PLAYER> registered"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "'s number."
 	done
 
@@ -438,7 +438,7 @@ VendingMachineClangText:
 	text "Clang!"
 
 	para "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ""
 	line "popped out."
 	done
@@ -447,7 +447,7 @@ VendingMachineScoreText:
 	text "Score! An extra"
 
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ""
 	cont "popped out."
 	done

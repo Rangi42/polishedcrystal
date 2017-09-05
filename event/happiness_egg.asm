@@ -1,7 +1,7 @@
 GetFirstPokemonHappiness: ; 718d
-	ld hl, PartyMon1Happiness
+	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld de, PartySpecies
+	ld de, wPartySpecies
 .loop
 	ld a, [de]
 	cp EGG
@@ -13,12 +13,12 @@ GetFirstPokemonHappiness: ; 718d
 .done
 	ld [wd265], a
 	ld a, [hl]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
 CheckFirstMonIsEgg: ; 71ac
-	ld a, [PartySpecies]
+	ld a, [wPartySpecies]
 	ld [wd265], a
 	cp EGG
 	ld a, $1
@@ -26,27 +26,27 @@ CheckFirstMonIsEgg: ; 71ac
 	xor a
 
 .egg
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
 ChangeHappiness: ; 71c2
-; Perform happiness action c on CurPartyMon
+; Perform happiness action c on wCurPartyMon
 
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	inc a
 	ld e, a
 	ld d, 0
-	ld hl, PartySpecies - 1
+	ld hl, wPartySpecies - 1
 	add hl, de
 	ld a, [hl]
 	cp EGG
 	ret z
 
 	push bc
-	ld hl, PartyMon1Happiness
+	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	pop bc
 
@@ -97,13 +97,13 @@ endr
 	ld a, [wBattleMode]
 	and a
 	ret z
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	ld b, a
 	ld a, [wPartyMenuCursor]
 	cp b
 	ret nz
 	ld a, [de]
-	ld [BattleMonHappiness], a
+	ld [wBattleMonHappiness], a
 	ret
 
 .Actions:
@@ -138,11 +138,11 @@ GetExtraHappiness:
 	cp 255
 	jr nc, .no_soothe_bell ; already at maximum
 
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	push bc
-	ld hl, PartyMon1Item
+	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	pop bc
 	ld a, [hl]
@@ -157,11 +157,11 @@ GetExtraHappiness:
 	cp 255
 	jr nc, .no_luxury_ball ; already at maximum
 
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	push bc
-	ld hl, PartyMon1CaughtBall
+	ld hl, wPartyMon1CaughtBall
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	pop bc
 	ld a, [hl]
@@ -187,13 +187,13 @@ StepHappiness:: ; 725a
 	ld [hl], a
 	ret nz
 
-	ld de, PartyCount
+	ld de, wPartyCount
 	ld a, [de]
 	and a
 	ret z
 
 	ld c, a
-	ld hl, PartyMon1Happiness
+	ld hl, wPartyMon1Happiness
 .loop
 	inc de
 	ld a, [de]
@@ -255,9 +255,9 @@ DaycareStep:: ; 7282
 	lb bc, 70, 88
 .got_odds
 	ld a, OVAL_CHARM
-	ld [CurItem], a
+	ld [wCurItem], a
 	push bc
-	ld hl, NumKeyItems
+	ld hl, wNumKeyItems
 	call CheckItem
 	pop bc
 	jr nc, .no_oval_charm

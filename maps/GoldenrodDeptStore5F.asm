@@ -90,7 +90,7 @@ GoldenrodDeptStore5FTwinScript:
 	ld a, APICOT_BERRY - ORAN_BERRY + 1
 	call RandomRange
 	add ORAN_BERRY
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 UnknownText_0x56143:
@@ -136,7 +136,7 @@ UnknownText_0x56279:
 MysteryGiftGirl_GiveItemText:
 	text "<PLAYER> received"
 	line "@"
-	text_from_ram StringBuffer4
+	text_from_ram wStringBuffer4
 	text "!@"
 	sound_item
 	text_waitbutton

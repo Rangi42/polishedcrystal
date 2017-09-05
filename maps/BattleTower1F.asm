@@ -167,7 +167,7 @@ Script_GivePlayerHisPrize:
 	endtext
 
 .MaxPoints:
-	loadvar BattlePoints, 255
+	loadvar wBattlePoints, 255
 	jump .Finish
 
 Script_BattleTowerIntroductionYesNo:
@@ -370,7 +370,7 @@ Text_ConfirmBattleRoomLevel:
 
 	para "Battle Room at"
 	line "<LV>@"
-	deciram ScriptVar, 1, 2
+	deciram wScriptVar, 1, 2
 	text "0. Is that OK?"
 	done
 

@@ -11,7 +11,7 @@ UpdateItemIconAndDescriptionAndBagQuantity::
 	farcall UpdateItemDescriptionAndBagQuantity
 UpdateItemIcon::
 	ld hl, ItemIconPointers
-	ld a, [CurSpecies]
+	ld a, [wCurSpecies]
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -27,7 +27,7 @@ UpdateItemIcon::
 
 GetItemIconBank:
 	lb bc, BANK(ItemIcons1), $9
-	ld a, [CurSpecies]
+	ld a, [wCurSpecies]
 	cp SCOPE_LENS ; first icon in ItemIcons2
 	ret c
 	cp METAL_POWDER ; after Scope Lens, but in ItemIcons1

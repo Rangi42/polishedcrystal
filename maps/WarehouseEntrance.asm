@@ -61,7 +61,7 @@ WarehouseEntranceResetSwitches:
 	clearevent EVENT_SWITCH_13
 	clearevent EVENT_SWITCH_14
 	writebyte $0
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	return
 
 WarehouseEntranceCheckBasementKey:
@@ -591,19 +591,19 @@ UnknownText_0x7c87b:
 	done
 
 HaircutBrosText_SlightlyHappier:
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text " looks a"
 	line "little happier."
 	done
 
 HaircutBrosText_Happier:
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text " looks"
 	line "happy."
 	done
 
 HaircutBrosText_MuchHappier:
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text " looks"
 	line "delighted!"
 	done

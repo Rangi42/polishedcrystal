@@ -99,7 +99,7 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	call ClearTileMap
 	farcall HDMATransferTileMapToWRAMBank3
 	call StatsScreen_CopyToTempMon
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .egg
 	call StatsScreen_InitUpperHalf
@@ -165,24 +165,24 @@ StatsScreenWaitCry: ; 4dde6 (13:5de6)
 	ret
 
 StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BREEDMON
 	jr nz, .breedmon
 	ld a, [wBufferMon]
-	ld [CurSpecies], a
+	ld [wCurSpecies], a
 	call GetBaseData
 	ld hl, wBufferMon
-	ld de, TempMon
+	ld de, wTempMon
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyBytes
 	jr .done
 
 .breedmon
 	farcall CopyPkmnToTempMon
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .done
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BOXMON
 	jr c, .done
 	farcall CalcTempmonStats
@@ -192,7 +192,7 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 
 StatsScreen_GetJoypad: ; 4de2c (13:5e2c)
 	call GetJoypad
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BREEDMON
 	jr nz, .notbreedmon
 	push hl
@@ -239,22 +239,22 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	ret
 
 .d_down
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BOXMON
 	ret nc
 	and a
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	jr z, .next_mon
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 .next_mon
 	ld b, a
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	inc a
 	cp b
 	ret z
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	ld b, a
-	ld a, [MonType]
+	ld a, [wMonType]
 	and a
 	jr nz, .load_mon
 	ld a, b
@@ -263,13 +263,13 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	jr .load_mon
 
 .d_up
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	and a
 	ret z
 	dec a
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	ld b, a
-	ld a, [MonType]
+	ld a, [wMonType]
 	and a
 	jr nz, .load_mon
 	ld a, b
@@ -317,9 +317,9 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call .PlaceHPBar
 	xor a
 	ld [hBGMapMode], a
-	ld a, [CurBaseData] ; wd236 (aliases: BaseDexNo)
+	ld a, [wCurBaseData] ; wd236 (aliases: wBaseDexNo)
 	ld [wd265], a
-	ld [CurSpecies], a
+	ld [wCurSpecies], a
 	hlcoord 8, 0
 	ld [hl], "№"
 	inc hl
@@ -341,7 +341,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	hlcoord 9, 4
 	ld a, "/"
 	ld [hli], a
-	ld a, [CurBaseData] ; wd236 (aliases: BaseDexNo)
+	ld a, [wCurBaseData] ; wd236 (aliases: wBaseDexNo)
 	ld [wd265], a
 	call GetPokemonName
 	call PlaceString
@@ -350,11 +350,11 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	jp StatsScreen_PlaceShinyIcon
 
 .PlaceHPBar: ; 4df45 (13:5f45)
-	ld hl, TempMonHP
+	ld hl, wTempMonHP
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
-	ld hl, TempMonMaxHP
+	ld hl, wTempMonMaxHP
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
@@ -379,8 +379,8 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 ; 4df77 (13:5f77)
 
 .NicknamePointers: ; 4df77
-	dw PartyMonNicknames
-	dw OTPartyMonNicknames
+	dw wPartyMonNicknames
+	dw wOTPartyMonNicknames
 	dw sBoxMonNicknames
 	dw wBufferMonNick
 ; 4df7f
@@ -403,7 +403,7 @@ StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
 	ret
 
 StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
-	ld bc, TempMonShiny
+	ld bc, wTempMonShiny
 	farcall CheckShininess
 	ret nc
 	hlcoord 19, 0
@@ -411,9 +411,9 @@ StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	ret
 
 StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
-	ld a, [BaseDexNo] ; wd236 (aliases: BaseDexNo)
+	ld a, [wBaseDexNo] ; wd236 (aliases: BaseDexNo)
 	ld [wd265], a
-	ld [CurSpecies], a
+	ld [wCurSpecies], a
 	xor a
 	ld [hBGMapMode], a
 	call .ClearBox
@@ -448,10 +448,10 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 8, 7
 	ld [hl], $35 ; bottom
 	; get index for center graphics
-	; CaughtBallsGFX + [TempMonCaughtBall] tiles
+	; CaughtBallsGFX + [wTempMonCaughtBall] tiles
 	ld hl, CaughtBallsGFX
 	ld bc, 1 tiles
-	ld a, [TempMonCaughtBall]
+	ld a, [wTempMonCaughtBall]
 	and CAUGHTBALL_MASK
 	call AddNTimes
 	; load center graphics
@@ -493,7 +493,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld de, .Status_Type
 	hlcoord 0, 9
 	call PlaceString
-	ld a, [TempMonPokerusStatus]
+	ld a, [wTempMonPokerusStatus]
 	ld b, a
 	and $f
 	jr nz, .HasPokerus
@@ -503,12 +503,12 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 8, 8
 	ld [hl], "."
 .NotImmuneToPkrs:
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BOXMON
 	jr z, .StatusOK
 	hlcoord 5, 10
 	push hl
-	ld de, TempMonStatus
+	ld de, wTempMonStatus
 	predef PlaceStatusString
 	pop hl
 	jr nz, .done_status
@@ -541,12 +541,12 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call .PrintNextLevel
 	hlcoord 13, 10
 	lb bc, 3, 7
-	ld de, TempMonExp
+	ld de, wTempMonExp
 	call PrintNum
 	call .CalcExpToNextLevel
 	hlcoord 13, 13
 	lb bc, 3, 7
-	ld de, Buffer1 ; wd1ea (aliases: MagikarpLength)
+	ld de, wBuffer1 ; wd1ea (aliases: wMagikarpLength)
 	call PrintNum
 	ld de, .LevelUpStr
 	hlcoord 10, 12
@@ -555,9 +555,9 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 14, 14
 	call PlaceString
 	hlcoord 12, 16
-	ld a, [TempMonLevel]
+	ld a, [wTempMonLevel]
 	ld b, a
-	ld de, TempMonExp + 2
+	ld de, wTempMonExp + 2
 	predef FillInExpBar
 	hlcoord 10, 16
 	ld [hl], "<XP1>"
@@ -568,43 +568,43 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ret
 
 .PrintNextLevel: ; 4e0d3 (13:60d3)
-	ld a, [TempMonLevel]
+	ld a, [wTempMonLevel]
 	push af
 	cp MAX_LEVEL
 	jr z, .AtMaxLevel
 	inc a
-	ld [TempMonLevel], a
+	ld [wTempMonLevel], a
 .AtMaxLevel:
 	call PrintLevel
 	pop af
-	ld [TempMonLevel], a
+	ld [wTempMonLevel], a
 	ret
 
 .CalcExpToNextLevel: ; 4e0e7 (13:60e7)
-	ld a, [TempMonLevel]
+	ld a, [wTempMonLevel]
 	cp MAX_LEVEL
 	jr z, .AlreadyAtMaxLevel
 	inc a
 	ld d, a
 	farcall CalcExpAtLevel
 rept 2
-	ld hl, TempMonExp + 2
+	ld hl, wTempMonExp + 2
 endr
 	ld a, [hQuotient + 2]
 	sub [hl]
 	dec hl
-	ld [Buffer3], a
+	ld [wBuffer3], a
 	ld a, [hQuotient + 1]
 	sbc [hl]
 	dec hl
-	ld [Buffer2], a ; wd1eb (aliases: MovementType)
+	ld [wBuffer2], a ; wd1eb (aliases: wMovementType)
 	ld a, [hQuotient]
 	sbc [hl]
-	ld [Buffer1], a ; wd1ea (aliases: MagikarpLength)
+	ld [wBuffer1], a ; wd1ea (aliases: wMagikarpLength)
 	ret
 
 .AlreadyAtMaxLevel:
-	ld hl, Buffer1 ; wd1ea (aliases: MagikarpLength)
+	ld hl, wBuffer1 ; wd1ea (aliases: wMagikarpLength)
 	xor a
 rept 2
 	ld [hli], a
@@ -619,14 +619,14 @@ endr
 	call PlaceString
 	hlcoord 3, 16
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	ld de, TempMonID
+	ld de, wTempMonID
 	call PrintNum
 	ld hl, .OTNamePointers
 	call GetNicknamePointer
 	call CopyNickname
 	hlcoord 1, 15
 	call PlaceString
-	ld a, [TempMonCaughtGender]
+	ld a, [wTempMonCaughtGender]
 	and FEMALE
 	jr z, .male
 	ld a, "♀"
@@ -640,8 +640,8 @@ endr
 ; 4e216 (13:6216)
 
 .OTNamePointers: ; 4e216
-	dw PartyMonOT
-	dw OTPartyMonOT
+	dw wPartyMonOT
+	dw wOTPartyMonOT
 	dw sBoxMonOT
 	dw wBufferMonOT
 ; 4e21e
@@ -686,23 +686,23 @@ endr
 	ld de, .Move
 	hlcoord 0, 10
 	call PlaceString
-	ld hl, TempMonMoves
+	ld hl, wTempMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
 	call CopyBytes
 	hlcoord 8, 10
 	ld a, SCREEN_WIDTH * 2
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	predef ListMoves
 	hlcoord 12, 11
 	ld a, SCREEN_WIDTH * 2
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	predef ListMovePP
 	ret
 
 .GetItemName: ; 4e189 (13:6189)
 	ld de, .ThreeDashes
-	ld a, [TempMonItem]
+	ld a, [wTempMonItem]
 	and a
 	ret z
 	ld [wd265], a
@@ -744,7 +744,7 @@ endr
 	ld de, .NatureString
 	hlcoord 0, 12
 	call PlaceString
-	ld a, [TempMonNature]
+	ld a, [wTempMonNature]
 	ld b, a
 	farcall GetNature
 	hlcoord 1, 13
@@ -770,9 +770,9 @@ OrangePage_:
 	hlcoord 1, 12
 	ld de, .ability
 	call PlaceString
-	ld a, [TempMonAbility]
+	ld a, [wTempMonAbility]
 	ld b, a
-	ld a, [TempMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld c, a
 	farcall GetAbility
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
@@ -791,7 +791,7 @@ TN_PrintToD
 	ld de, .caughtat
 	hlcoord 1, 8
 	call PlaceString
-	ld a, [TempMonCaughtTime]
+	ld a, [wTempMonCaughtTime]
 	and CAUGHTTIME_MASK
 	ld de, .unknown
 	jr z, .print
@@ -824,7 +824,7 @@ TN_PrintToD
 	db "???@"
 
 TN_PrintLocation:
-	ld a, [TempMonCaughtLocation]
+	ld a, [wTempMonCaughtLocation]
 	and a
 	ret z
 	ld de, .event
@@ -832,7 +832,7 @@ TN_PrintLocation:
 	jr z, .print
 	ld e, a
 	farcall GetLandmarkName
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 .print
 	hlcoord 3, 10
 	jp PlaceString
@@ -841,16 +841,16 @@ TN_PrintLocation:
 	db "Event #mon@"
 
 TN_PrintLV:
-	ld a, [TempMonCaughtLevel]
+	ld a, [wTempMonCaughtLevel]
 	hlcoord 8, 9
 	and a
 	jr z, .unknown
 	cp 1
 	jr z, .hatched
-	ld [Buffer2], a
+	ld [wBuffer2], a
 	ld de, .str_atlv
 	call PlaceString
-	ld de, Buffer2
+	ld de, wBuffer2
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	hlcoord 12, 9
 	jp PrintNum
@@ -872,7 +872,7 @@ TN_PrintLV:
 
 TN_PrintCharacteristics:
 	; b = value of best DV, c = index of best DV
-	ld hl, TempMonDVs
+	ld hl, wTempMonDVs
 	; Atk
 	ld c, 1
 	ld a, [hl]
@@ -1097,7 +1097,7 @@ Chara_SPE4:
 
 
 StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
-	ld hl, TempMonForm
+	ld hl, wTempMonForm
 	predef GetVariant
 	call StatsScreen_GetAnimationParam
 	jr c, .egg
@@ -1116,13 +1116,13 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 .cry
 	call SetPalettes
 	call .AnimateMon
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	jp PlayCry2
 
 .AnimateMon: ; 4e253 (13:6253)
 	ld hl, wcf64
 	set 5, [hl]
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr z, .unown
 	hlcoord 0, 0
@@ -1135,7 +1135,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	jp _PrepMonFrontpic
 
 .AnimateEgg: ; 4e271 (13:6271)
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr z, .unownegg
 	ld a, TRUE
@@ -1148,7 +1148,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	jp .get_animation
 
 .get_animation ; 4e289 (13:6289)
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	call IsAPokemon
 	ret c
 	call StatsScreen_LoadTextBoxSpaceGFX
@@ -1162,7 +1162,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	ret
 
 StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
-	ld a, [MonType]
+	ld a, [wMonType]
 	ld hl, .Jumptable
 	rst JumpTable
 	ret
@@ -1176,8 +1176,8 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 
 
 .PartyMon: ; 4e2bf (13:62bf)
-	ld a, [CurPartyMon]
-	ld hl, PartyMons ; wdcdf (aliases: PartyMon1, PartyMon1Species)
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMons ; wdcdf (aliases: wPartyMon1, wPartyMon1Species)
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld b, h
@@ -1191,7 +1191,7 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 .BoxMon: ; 4e2d1 (13:62d1)
 	ld hl, sBoxMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld b, h
 	ld c, l
@@ -1204,9 +1204,9 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	ret
 
 .Tempmon: ; 4e2ed (13:62ed)
-	ld bc, TempMonSpecies ; wd10e (aliases: TempMon)
+	ld bc, wTempMonSpecies ; wd10e (aliases: wTempMon)
 .CheckEggFaintedFrzSlp: ; 4e2f2 (13:62f2)
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .egg
 	call CheckFaintedFrzSlp
@@ -1259,7 +1259,7 @@ EggStatsScreen: ; 4e33a
 	ld de, EggString
 	hlcoord 8, 1
 	call PlaceString
-	ld a, [TempMonHappiness] ; egg status
+	ld a, [wTempMonHappiness] ; egg status
 	ld de, EggSoonString
 	cp $6
 	jr c, .picked
@@ -1282,7 +1282,7 @@ EggStatsScreen: ; 4e33a
 	farcall HDMATransferTileMapToWRAMBank3
 	call StatsScreen_AnimateEgg
 
-	ld a, [TempMonHappiness]
+	ld a, [wTempMonHappiness]
 	cp 6
 	ret nc
 	ld de, SFX_2_BOOPS
@@ -1320,7 +1320,7 @@ EggALotMoreTimeString: ; 0x4e46e
 StatsScreen_AnimateEgg: ; 4e497 (13:6497)
 	call StatsScreen_GetAnimationParam
 	ret nc
-	ld a, [TempMonHappiness]
+	ld a, [wTempMonHappiness]
 	ld e, $7
 	cp 6
 	jr c, .animate
@@ -1386,9 +1386,9 @@ StatsScreen_LoadPageIndicators: ; 4e4cd (13:64cd)
 	ret
 
 CopyNickname: ; 4e505 (13:6505)
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BOXMON
 	jr nz, .partymon
 	ld a, BANK(sBoxMonNicknames)
@@ -1405,7 +1405,7 @@ CopyNickname: ; 4e505 (13:6505)
 	ret
 
 GetNicknamePointer: ; 4e528 (13:6528)
-	ld a, [MonType]
+	ld a, [wMonType]
 	add a
 	ld c, a
 	ld b, 0
@@ -1413,10 +1413,10 @@ GetNicknamePointer: ; 4e528 (13:6528)
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [MonType]
+	ld a, [wMonType]
 	cp BREEDMON
 	ret z
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	jp SkipNames
 
 

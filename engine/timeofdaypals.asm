@@ -1,9 +1,9 @@
 UpdateTimeOfDayPal:: ; 8c001
 	call UpdateTime
-	ld a, [TimeOfDay]
-	ld [CurTimeOfDay], a
+	ld a, [wTimeOfDay]
+	ld [wCurTimeOfDay], a
 	call GetTimePalette
-	ld [TimeOfDayPal], a
+	ld [wTimeOfDayPal], a
 	ret
 ; 8c011
 
@@ -17,29 +17,29 @@ _TimeOfDayPals:: ; 8c011
 	jr nz, .dontchange
 
 ; do we need to bother updating?
-	ld a, [TimeOfDay]
-	ld hl, CurTimeOfDay
+	ld a, [wTimeOfDay]
+	ld hl, wCurTimeOfDay
 	cp [hl]
 	jr z, .dontchange
 
 ; if so, the time of day has changed
-	ld a, [TimeOfDay]
-	ld [CurTimeOfDay], a
+	ld a, [wTimeOfDay]
+	ld [wCurTimeOfDay], a
 
 ; get palette id
 	call GetTimePalette
 
 ; same palette as before?
-	ld hl, TimeOfDayPal
+	ld hl, wTimeOfDayPal
 	cp [hl]
 	jr z, .dontchange
 
 ; update palette id
-	ld [TimeOfDayPal], a
+	ld [wTimeOfDayPal], a
 
 
 ; save bg palette 8
-	ld hl, UnknBGPals palette 7
+	ld hl, wUnknBGPals palette 7
 
 ; save wram bank
 	ld a, [rSVBK]
@@ -70,7 +70,7 @@ _TimeOfDayPals:: ; 8c011
 
 
 ; restore bg palette 8
-	ld hl, UnknOBPals - 1 ; last byte in UnknBGPals
+	ld hl, wUnknOBPals - 1 ; last byte in wUnknBGPals
 
 ; save wram bank
 	ld a, [rSVBK]
@@ -168,12 +168,12 @@ FillWhiteBGColor: ; 8c0c1
 	ld a, $5
 	ld [rSVBK], a
 
-	ld hl, UnknBGPals
+	ld hl, wUnknBGPals
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld hl, UnknBGPals palette 1
+	ld hl, wUnknBGPals palette 1
 	ld c, 6
 .loop
 	ld a, e
@@ -211,7 +211,7 @@ ReplaceTimeOfDayPals: ; 8c0e5
 	ret
 
 .DarkCave:
-	ld a, [StatusFlags]
+	ld a, [wStatusFlags]
 	bit 2, a ; Flash
 	jr nz, .UsedFlash
 	ld a, %11111111 ; 3, 3, 3, 3
@@ -236,7 +236,7 @@ ReplaceTimeOfDayPals: ; 8c0e5
 ; 8c117
 
 GetTimePalette: ; 8c117
-	ld a, [TimeOfDay]
+	ld a, [wTimeOfDay]
 	ld e, a
 	ld d, 0
 	ld hl, .TimePalettes

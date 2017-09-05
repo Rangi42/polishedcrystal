@@ -20,8 +20,8 @@ DMATransfer:: ; 15d8
 
 
 UpdateBGMapBuffer:: ; 15e3
-; Copy [hBGMapTileCount] 16x8 tiles from BGMapBuffer
-; to bg map addresses in BGMapBufferPtrs.
+; Copy [hBGMapTileCount] 16x8 tiles from wBGMapBuffer
+; to bg map addresses in wBGMapBufferPtrs.
 
 ; [hBGMapTileCount] must be even since this is done in pairs.
 
@@ -35,13 +35,13 @@ UpdateBGMapBuffer:: ; 15e3
 	push af
 	ld [hSPBuffer], sp
 
-	ld hl, BGMapBufferPtrs
+	ld hl, wBGMapBufferPtrs
 	ld sp, hl
 
 ; We can now pop the addresses of affected spots on the BG Map
 
-	ld hl, BGMapPalBuffer
-	ld de, BGMapBuffer
+	ld hl, wBGMapPalBuffer
+	ld de, wBGMapBuffer
 
 
 .next
@@ -122,7 +122,7 @@ WaitTop::
 HALF_HEIGHT EQU SCREEN_HEIGHT / 2
 
 UpdateBGMap:: ; 164c
-; Update the BG Map, in halves, from TileMap and AttrMap.
+; Update the BG Map, in halves, from wTileMap and wAttrMap.
 
 	ld a, [hBGMapMode]
 	and $7f
@@ -148,7 +148,7 @@ UpdateBGMap:: ; 164c
 	jr z, .DoCustomSourceTiles
 	dec a
 	ret nz
-	coord bc, 0, 0, AttrMap
+	coord bc, 0, 0, wAttrMap
 	ld a, 1
 	ld [rVBK], a
 	call .DoCustomSourceTiles
@@ -209,14 +209,14 @@ UpdateBGMap:: ; 164c
 	and a ; 0
 	jr z, .AttributeMapTop
 ; bottom row
-	coord sp, 0, 9, AttrMap
+	coord sp, 0, 9, wAttrMap
 	ld de, HALF_HEIGHT * BG_MAP_WIDTH
 	add hl, de
 ; Next time: top half
 	xor a
 	jr .startCopy
 .AttributeMapTop
-	coord sp, 0, 0, AttrMap
+	coord sp, 0, 0, wAttrMap
 ; Next time: bottom half
 	jr .AttributeMapTopContinue
 
@@ -250,7 +250,7 @@ UpdateBGMap:: ; 164c
 ; Rows of tiles in a half
 	ld a, SCREEN_HEIGHT / 2
 .startCustomCopy
-; Discrepancy between TileMap and BGMap
+; Discrepancy between wTileMap and BGMap
 	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
 ; Copy a row of 20 tiles

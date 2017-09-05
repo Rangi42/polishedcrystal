@@ -54,7 +54,7 @@ PokeCenter2FTileCallback:
 
 .CheckPokeCenter2FRegion:
 	call GetBackupLandmark
-	ld hl, ScriptVar
+	ld hl, wScriptVar
 	cp SHAMOUTI_LANDMARK
 	jr nc, .shamouti
 	cp KANTO_LANDMARK

@@ -2,7 +2,7 @@
 
 
 WarpToSpawnPoint:: ; 97c28
-	ld hl, StatusFlags2
+	ld hl, wStatusFlags2
 	res 1, [hl] ; ENGINE_SAFARI_ZONE?
 	res 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	ret
@@ -52,26 +52,26 @@ LoadScriptBDE:: ; 97c4f
 
 CheckFacingTileEvent:: ; 97c5f
 	call GetFacingTileCoord
-	ld [EngineBuffer1], a
+	ld [wEngineBuffer1], a
 	ld c, a
 	farcall CheckFacingTileForStd
 	jr c, .done
 
-	ld a, [EngineBuffer1]
+	ld a, [wEngineBuffer1]
 	cp COLL_WHIRLPOOL
 	jr nz, .waterfall
 	farcall TryWhirlpoolOW
 	jr .done
 
 .waterfall
-	ld a, [EngineBuffer1]
+	ld a, [wEngineBuffer1]
 	cp COLL_WATERFALL
 	jr nz, .headbutt
 	farcall TryWaterfallOW
 	jr .done
 
 .headbutt
-	ld a, [EngineBuffer1]
+	ld a, [wEngineBuffer1]
 	cp COLL_HEADBUTT_TREE
 	jr nz, .surf
 	farcall TryHeadbuttOW
@@ -102,7 +102,7 @@ RandomEncounter:: ; 97cc0
 	jr c, .nope
 	call CanUseSweetScent
 	jr nc, .nope
-	ld hl, StatusFlags2
+	ld hl, wStatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .bug_contest
 	farcall TryWildEncounter
@@ -143,7 +143,7 @@ WildBattleScript: ; 97cf9
 ; 97cfd
 
 CanUseSweetScent:: ; 97cfd
-	ld hl, StatusFlags
+	ld hl, wStatusFlags
 	bit 5, [hl]
 	jr nz, .no
 	ld a, [wPermission]
@@ -155,7 +155,7 @@ CanUseSweetScent:: ; 97cfd
 	jr nc, .no
 
 .ice_check
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	cp COLL_ICE
 	jr z, .no
 	scf
@@ -195,7 +195,7 @@ ChooseWildEncounter_BugContest:: ; 97d31
 
 ; Species
 	ld a, [hli]
-	ld [TempWildMonSpecies], a
+	ld [wTempWildMonSpecies], a
 
 ; Min level
 	ld a, [hli]
@@ -221,14 +221,14 @@ ChooseWildEncounter_BugContest:: ; 97d31
 	add d
 
 .GotLevel:
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 
 	xor a
 	ret
 ; 97d64
 
 TryWildEncounter_BugContest: ; 97d64
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	cp COLL_LONG_GRASS
 	ld b, 40 percent
 	jr z, .ok
@@ -266,12 +266,12 @@ DoBikeStep:: ; 97db3
 	; If the bike shop owner doesn't have our number, or
 	; if we've already gotten the call, we don't have to
 	; be here.
-	ld hl, StatusFlags2
+	ld hl, wStatusFlags2
 	bit 4, [hl] ; ENGINE_BIKE_SHOP_CALL_ENABLED
 	jr z, .NoCall
 
 	; If we're not on the bike, we don't have to be here.
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr nz, .NoCall
 
@@ -317,7 +317,7 @@ DoBikeStep:: ; 97db3
 	ld [wSpecialPhoneCallID], a
 	xor a
 	ld [wSpecialPhoneCallID + 1], a
-	ld hl, StatusFlags2
+	ld hl, wStatusFlags2
 	res 4, [hl] ; ENGINE_BIKE_SHOP_CALL_ENABLED
 	scf
 	ret
@@ -577,7 +577,7 @@ CmdQueue_Type3: ; 97ef9
 
 .IsPlayerFacingDown: ; 97f38
 	push bc
-	ld bc, PlayerStruct
+	ld bc, wPlayerStruct
 	call GetSpriteDirection
 	and a
 	pop bc
@@ -585,7 +585,7 @@ CmdQueue_Type3: ; 97ef9
 ; 97f42
 
 CmdQueue_StoneTable: ; 97f42
-	ld de, PlayerStruct
+	ld de, wPlayerStruct
 	ld a, NUM_OBJECT_STRUCTS
 .loop
 	push af

@@ -4,7 +4,7 @@ MainMenu: ; 49cdc
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call SetPalettes
-	ld hl, GameTimerPause
+	ld hl, wGameTimerPause
 	res 0, [hl]
 	call MainMenu_GetWhichMenu
 	ld [wWhichIndexSet], a
@@ -15,7 +15,7 @@ MainMenu: ; 49cdc
 	call CloseWindow
 	ret c
 	call ClearTileMap
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	rst JumpTable
 	jr MainMenu
@@ -115,13 +115,13 @@ MainMenu_PrintCurrentTimeAndDay: ; 49e09
 	xor a
 	ld [hBGMapMode], a
 	call .PlaceBox
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call .PlaceTime
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	ld a, $1
 	ld [hBGMapMode], a
 	ret

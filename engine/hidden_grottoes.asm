@@ -12,7 +12,7 @@ InitializeHiddenGrotto::
 	ld hl, HiddenGrottoData + GROTTODATA_WARP
 	call GetHiddenGrottoDataMember
 	ld a, [hl]
-	ld [BackupWarpNumber], a
+	ld [wBackupWarpNumber], a
 
 ; reset all hidden grottoes daily
 	call TryResetHiddenGrottoes
@@ -85,7 +85,7 @@ InitializeHiddenGrotto::
 	ld a, d
 .Done:
 ; return content type
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .PokemonIndexes:
@@ -141,14 +141,14 @@ GetHiddenGrottoTableEntry:
 	ret
 
 TryResetHiddenGrottoes:
-	ld hl, DailyFlags4
+	ld hl, wDailyFlags4
 	bit 5, [hl] ; ENGINE_ALL_HIDDEN_GROTTOES
 	ret nz
 	xor a
-	ld hl, HiddenGrottoContents
+	ld hl, wHiddenGrottoContents
 	ld bc, NUM_HIDDEN_GROTTOES * 2
 	call ByteFill
-	ld hl, DailyFlags4
+	ld hl, wDailyFlags4
 	set 5, [hl] ; ENGINE_ALL_HIDDEN_GROTTOES
 	ret
 
@@ -162,10 +162,10 @@ GetHiddenGrottoDataMember:
 	jr AddCurHiddenGrottoTimes
 
 GetHiddenGrottoContentPointer:
-	ld hl, HiddenGrottoContents
+	ld hl, wHiddenGrottoContents
 	ld bc, 2
 AddCurHiddenGrottoTimes:
-	ld a, [CurHiddenGrotto]
+	ld a, [wCurHiddenGrotto]
 	dec a ; since hidden grotto IDs start at 1
 	jp AddNTimes
 
@@ -173,7 +173,7 @@ GetHiddenGrottoContents::
 	call GetHiddenGrottoContentPointer
 	inc hl
 	ld a, [hl]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 GetCurHiddenGrottoLevel::

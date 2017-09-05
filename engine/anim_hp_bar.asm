@@ -41,10 +41,10 @@ _AnimateHPBar: ; d627
 ; d65f
 
 .IsMaximumMoreThan48Pixels: ; d65f
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	and a
 	jr nz, .player
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	cp 6 * 8
 	jr nc, .player
 	and a
@@ -56,11 +56,11 @@ _AnimateHPBar: ; d627
 ; d670
 
 .ComputePixels: ; d670
-; Buffer1-2: Max HP
-; Buffer3-4: Old HP
-; Buffer5-6: New HP
+; wBuffer1-2: Max HP
+; wBuffer3-4: Old HP
+; wBuffer5-6: New HP
 	push hl
-	ld hl, Buffer1
+	ld hl, wBuffer1
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -74,20 +74,20 @@ _AnimateHPBar: ; d627
 	ld a, e
 	ld [wCurHPBarPixels], a
 
-	ld a, [Buffer5]
+	ld a, [wBuffer5]
 	ld c, a
-	ld a, [Buffer6]
+	ld a, [wBuffer6]
 	ld b, a
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	ld e, a
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	ld d, a
 	call ComputeHPBarPixels
 	ld a, e
 	ld [wNewHPBarPixels], a
 
 	push hl
-	ld hl, Buffer3
+	ld hl, wBuffer3
 	ld a, [hli]
 	ld c, a
 	ld a, [hli]
@@ -104,17 +104,17 @@ _AnimateHPBar: ; d627
 	sbc b
 	ld d, a
 	jr c, .negative
-	ld a, [Buffer3]
+	ld a, [wBuffer3]
 	ld [wd1f5], a
-	ld a, [Buffer5]
+	ld a, [wBuffer5]
 	ld [wd1f6], a
 	ld bc, 1
 	jr .got_direction
 
 .negative
-	ld a, [Buffer3]
+	ld a, [wBuffer3]
 	ld [wd1f6], a
-	ld a, [Buffer5]
+	ld a, [wBuffer5]
 	ld [wd1f5], a
 	ld a, e
 	cpl
@@ -151,7 +151,7 @@ ShortAnim_UpdateVariables: ; d6e2
 
 LongAnim_UpdateVariables: ; d6f5
 .loop
-	ld hl, Buffer3
+	ld hl, wBuffer3
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -171,13 +171,13 @@ LongAnim_UpdateVariables: ; d6f5
 	ld h, d
 	add hl, bc
 	ld a, l
-	ld [Buffer3], a
+	ld [wBuffer3], a
 	ld a, h
-	ld [Buffer4], a
+	ld [wBuffer4], a
 	push hl
 	push de
 	push bc
-	ld hl, Buffer1
+	ld hl, wBuffer1
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -216,13 +216,13 @@ ShortHPBarAnim_UpdateTiles: ; d730
 
 LongHPBarAnim_UpdateTiles: ; d749
 	call HPBarAnim_UpdateHPRemaining
-	ld a, [Buffer3]
+	ld a, [wBuffer3]
 	ld c, a
-	ld a, [Buffer4]
+	ld a, [wBuffer4]
 	ld b, a
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	ld e, a
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	ld d, a
 	call ComputeHPBarPixels
 	ld c, e
@@ -269,11 +269,11 @@ rept 2
 endr
 	ld [hld], a
 	dec hl
-	ld a, [Buffer3]
-	ld [StringBuffer2 + 1], a
-	ld a, [Buffer4]
-	ld [StringBuffer2], a
-	ld de, StringBuffer2
+	ld a, [wBuffer3]
+	ld [wStringBuffer2 + 1], a
+	ld a, [wBuffer4]
+	ld [wStringBuffer2], a
+	ld de, wStringBuffer2
 	lb bc, 2, 3
 	call PrintNum
 	pop hl
@@ -294,7 +294,7 @@ HPBarAnim_BGMapUpdate: ; d7c9
 	jr z, .load_0
 	cp $1
 	jr z, .load_1
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	cp $3
 	jr nc, .bottom_half_of_screen
 	ld c, $0
@@ -353,7 +353,7 @@ HPBarAnim_BGMapUpdate: ; d7c9
 ; d839
 
 ShortHPBar_CalcPixelFrame: ; d839
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	ld c, a
 	ld b, 0
 	ld hl, 0
@@ -397,16 +397,16 @@ ShortHPBar_CalcPixelFrame: ; d839
 	jr c, .finish
 	ld a, b
 .finish
-	ld [Buffer3], a
+	ld [wBuffer3], a
 	ret
 
 .return_zero
 	xor a
-	ld [Buffer3], a
+	ld [wBuffer3], a
 	ret
 
 .return_max
-	ld a, [Buffer1]
-	ld [Buffer3], a
+	ld a, [wBuffer1]
+	ld [wBuffer3], a
 	ret
 ; d88c

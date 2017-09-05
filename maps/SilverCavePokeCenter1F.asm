@@ -50,7 +50,7 @@ SilverCavePokeCenterGrampsScript:
 	thisopenedtext
 
 	text "Oh, you've read @"
-	deciram ScriptVar, 1, 2
+	deciram wScriptVar, 1, 2
 	text ""
 	line "of them?"
 

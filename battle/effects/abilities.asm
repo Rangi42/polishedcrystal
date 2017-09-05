@@ -150,11 +150,11 @@ SnowWarningAbility:
 	jr WeatherAbility
 WeatherAbility:
 	ld b, a
-	ld a, [Weather]
+	ld a, [wWeather]
 	cp b
 	ret z ; don't re-activate it
 	call ShowAbilityActivation
-	; Disable running animations as part of Start(Weather) commands. This will not block
+	; Disable running animations as part of Start(wWeather) commands. This will not block
 	; Call_PlayBattleAnim that plays the animation manually.
 	call DisableAnimations
 	ld a, b
@@ -202,21 +202,21 @@ DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
 	call ShowAbilityActivation
 	call DisableAnimations
-	ld hl, EnemyMonDefense
+	ld hl, wEnemyMonDefense
 	ld a, [hBattleTurn]
 	and a
 	jr z, .ok
-	ld hl, BattleMonDefense
+	ld hl, wBattleMonDefense
 .ok
 	ld a, [hli]
 	ld b, a
 	ld a, [hl]
 	ld c, a
-	ld hl, EnemyMonSpclDef + 1
+	ld hl, wEnemyMonSpclDef + 1
 	ld a, [hBattleTurn]
 	and a
 	jr z, .ok2
-	ld hl, BattleMonSpclDef + 1
+	ld hl, wBattleMonSpclDef + 1
 .ok2
 	ld a, [hld]
 	ld e, a
@@ -253,9 +253,9 @@ AnticipationAbility:
 ; It also ignores Pixilate.
 	ld a, [hBattleTurn]
 	and a
-	ld hl, EnemyMonMoves
+	ld hl, wEnemyMonMoves
 	jr z, .got_move_ptr
-	ld hl, BattleMonMoves
+	ld hl, wBattleMonMoves
 .got_move_ptr
 	; Since Anticipation can run in the middle of a turn and we don't want to ruin the
 	; opponent's move struct, save the current move of it to be reapplied afterwards.
@@ -328,21 +328,21 @@ ForewarnAbility:
 ; 160 to counter moves and 80 to everything else with nonstandard base power.
 	ld a, [hBattleTurn]
 	and a
-	ld hl, EnemyMonMoves
+	ld hl, wEnemyMonMoves
 	jr z, .got_move_ptr
-	ld hl, BattleMonMoves
+	ld hl, wBattleMonMoves
 .got_move_ptr
 	ld a, NUM_MOVES + 1
-	ld [Buffer1], a ; iterator
+	ld [wBuffer1], a ; iterator
 	xor a
-	ld [Buffer2], a ; used when randomizing between equal-power moves
-	ld [Buffer3], a ; highest power move index
-	ld [Buffer4], a	; power of said move for comparing
+	ld [wBuffer2], a ; used when randomizing between equal-power moves
+	ld [wBuffer3], a ; highest power move index
+	ld [wBuffer4], a	; power of said move for comparing
 .loop
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	dec a
 	jr z, .done
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	; a mon can have less than 4 moves
 	ld a, [hli]
 	and a
@@ -379,35 +379,35 @@ ForewarnAbility:
 	jr z, .loop
 .compare_power
 	; b: current move ID, c: current move power
-	ld a, [Buffer4]
+	ld a, [wBuffer4]
 	cp c
 	jr z, .randomize
 	jr nc, .loop
 	; This move has higher BP, reset the random range
 	xor a
-	ld [Buffer2], a
+	ld [wBuffer2], a
 	jr .replace
 .randomize
 	; Move power was equal: randomize. This is done as follows as to give even results:
 	; 2 moves share power: 2nd move replaces 1/2 of the time
 	; 3 moves share power: 3rd move replaces 2/3 of the time
 	; 4 moves share power: 4th move replaces 3/4 of the time
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	inc a
-	ld [Buffer2], a
+	ld [wBuffer2], a
 	inc a
 	call BattleRandomRange
 	and a
 	jr z, .loop
 .replace
 	ld a, b
-	ld [Buffer3], a
+	ld [wBuffer3], a
 	ld a, c
-	ld [Buffer4], a
+	ld [wBuffer4], a
 	jr .loop
 .done
 	; Check if we have an attacking move in first place
-	ld a, [Buffer3]
+	ld a, [wBuffer3]
 	and a
 	ret z
 	push af
@@ -738,10 +738,10 @@ CheckNullificationAbilities:
 	ret nc
 
 .ability_ok
-	; Set AttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
+	; Set wAttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
 	; to 0 (not neccessary for the engine itself, but helps the AI)
 	ld a, 3
-	ld [AttackMissed], a
+	ld [wAttackMissed], a
 	xor a
 	ld [wTypeMatchup], a
 	ret
@@ -853,14 +853,14 @@ SpeedBoostAbility:
 StatUpAbility:
 	call HasUserFainted
 	ret z
-	ld a, [AttackMissed]
+	ld a, [wAttackMissed]
 	push af
 	xor a
-	ld [AttackMissed], a
+	ld [wAttackMissed], a
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_StatUp
-	ld a, [FailedMessage]
+	ld a, [wFailedMessage]
 	and a
 	jr nz, .cant_raise
 	call ShowAbilityActivation
@@ -883,7 +883,7 @@ StatUpAbility:
 	call SwitchTurn
 .done
 	pop af
-	ld [AttackMissed], a
+	ld [wAttackMissed], a
 	jp EnableAnimations
 
 WeakArmorAbility:
@@ -896,7 +896,7 @@ WeakArmorAbility:
 	call DisableAnimations
 	farcall ResetMiss
 	farcall LowerStat ; can't be resisted
-	ld a, [FailedMessage]
+	ld a, [wFailedMessage]
 	and a
 	jr nz, .failed_defensedown
 	call ShowAbilityActivation
@@ -905,7 +905,7 @@ WeakArmorAbility:
 	call SwitchTurn
 	farcall ResetMiss
 	farcall BattleCommand_SpeedUp2
-	ld a, [FailedMessage]
+	ld a, [wFailedMessage]
 	and a
 	jp nz, EnableAnimations
 .speedupmessage
@@ -914,7 +914,7 @@ WeakArmorAbility:
 ; If we can still raise Speed, do that and show ability activation anyway
 	farcall ResetMiss
 	farcall BattleCommand_SpeedUp2
-	ld a, [FailedMessage]
+	ld a, [wFailedMessage]
 	and a
 	jp nz, EnableAnimations
 	call ShowAbilityActivation
@@ -1139,7 +1139,7 @@ HarvestAbility:
 	ld a, [hl]
 	and a
 	ret z
-	ld [CurItem], a
+	ld [wCurItem], a
 	ld b, a
 	push bc
 	push de
@@ -1209,14 +1209,14 @@ RegainItemByAbility:
 	pop bc
 	ld a, [hBattleTurn]
 	and a
-	ld a, [CurPartyMon]
-	ld hl, PartyMon1Item
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Item
 	jr z, .got_item_addr
 	ld a, [wBattleMode]
 	dec a
 	ret z
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Item
+	ld a, [wCurOTMon]
+	ld hl, wOTPartyMon1Item
 .got_item_addr
 	call GetPartyLocation
 	ld [hl], b
@@ -1231,11 +1231,11 @@ MoodyAbility:
 	call DisableAnimations
 
 	; First, check how many stats aren't maxed out
-	ld hl, PlayerStatLevels
+	ld hl, wPlayerStatLevels
 	ld a, [hBattleTurn]
 	and a
 	jr z, .got_stat_levels
-	ld hl, EnemyStatLevels
+	ld hl, wEnemyStatLevels
 .got_stat_levels
 	lb bc, 0, 0 ; bitfield of nonmaxed stats, bitfield of nonminimized stats
 	lb de, 1, 0 ; bit to OR into b/c, loop counter
@@ -1419,7 +1419,7 @@ RivalryAbility:
 
 SheerForceAbility:
 ; 130% damage if a secondary effect is suppressed
-	ld a, [EffectFailed]
+	ld a, [wEffectFailed]
 	and a
 	ret z
 	ld a, $da
@@ -1437,7 +1437,7 @@ AnalyticAbility:
 
 TintedLensAbility:
 ; Doubles damage for not very effective moves (x0.5/x0.25)
-	ld a, [TypeModifier]
+	ld a, [wTypeModifier]
 	cp $10
 	ret nc
 	ld a, $21
@@ -1534,7 +1534,7 @@ EnemyMarvelScaleAbility:
 EnemySolidRockAbility:
 EnemyFilterAbility:
 ; 75% damage for super effective moves
-	ld a, [TypeModifier]
+	ld a, [wTypeModifier]
 	cp $11
 	ret c
 	ld a, $34
@@ -1589,7 +1589,7 @@ AngerPointAbility:
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_AttackUp2
-	ld a, [FailedMessage]
+	ld a, [wFailedMessage]
 	and a
 	jp nz, EnableAnimations
 	call ShowAbilityActivation
@@ -1630,12 +1630,12 @@ AbilityJumptable:
 
 DisableAnimations:
 	ld a, 1
-	ld [AnimationsDisabled], a
+	ld [wAnimationsDisabled], a
 	ret
 
 EnableAnimations:
 	xor a
-	ld [AnimationsDisabled], a
+	ld [wAnimationsDisabled], a
 	ret
 
 ShowEnemyAbilityActivation::
@@ -1659,16 +1659,16 @@ ShowAbilityActivation::
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	jr .first_pass
 .loop
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 .first_pass
 	dec a
 	cp $ff
 	ret z
 
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 
 	push bc
 	ld a, MON_ABILITY

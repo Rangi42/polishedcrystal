@@ -18,8 +18,8 @@ EnemySwitch_TrainerHud: ; 2c012
 
 ShowPlayerMonsRemaining: ; 2c01c
 	call DrawPlayerPartyIconHUDBorder
-	ld hl, PartyMon1HP
-	ld de, PartyCount
+	ld hl, wPartyMon1HP
+	ld de, wPartyCount
 	call StageBallTilesData
 	; ldpixel wPlaceBallsX, 12, 12
 	ld a, 12 * 8
@@ -34,8 +34,8 @@ ShowPlayerMonsRemaining: ; 2c01c
 
 ShowOTTrainerMonsRemaining: ; 2c03a
 	call DrawEnemyPartyIconHUDBorder
-	ld hl, OTPartyMon1HP
-	ld de, OTPartyCount
+	ld hl, wOTPartyMon1HP
+	ld de, wOTPartyCount
 	call StageBallTilesData
 	; ldpixel wPlaceBallsX, 9, 4
 	ld hl, wPlaceBallsX
@@ -51,7 +51,7 @@ ShowOTTrainerMonsRemaining: ; 2c03a
 StageBallTilesData: ; 2c059
 	ld a, [de]
 	push af
-	ld de, Buffer1
+	ld de, wBuffer1
 	ld c, PARTY_LENGTH
 	ld a, $34 ; empty slot
 .loop1
@@ -60,7 +60,7 @@ StageBallTilesData: ; 2c059
 	dec c
 	jr nz, .loop1
 	pop af
-	ld de, Buffer1
+	ld de, wBuffer1
 .loop2
 	push af
 	call .GetHUDTile
@@ -151,7 +151,7 @@ DrawEnemyHUDBorder: ; 2c0c5
 	ret nz
 	call DoesNuzlockeModePreventCapture
 	jr c, .nuzlocke
-	ld a, [TempEnemyMonSpecies]
+	ld a, [wTempEnemyMonSpecies]
 	dec a
 	call CheckCaughtMon
 	ret z
@@ -186,8 +186,8 @@ PlaceHUDBorderTiles: ; 2c0f1
 
 LinkBattle_TrainerHuds: ; 2c10d
 	call LoadBallIconGFX
-	ld hl, PartyMon1HP
-	ld de, PartyCount
+	ld hl, wPartyMon1HP
+	ld de, wPartyCount
 	call StageBallTilesData
 	ld hl, wPlaceBallsX
 	ld a, 10 * 8
@@ -198,8 +198,8 @@ LinkBattle_TrainerHuds: ; 2c10d
 	ld hl, wSprites
 	call LoadTrainerHudOAM
 
-	ld hl, OTPartyMon1HP
-	ld de, OTPartyCount
+	ld hl, wOTPartyMon1HP
+	ld de, wOTPartyCount
 	call StageBallTilesData
 	ld hl, wPlaceBallsX
 	ld a, 10 * 8
@@ -210,7 +210,7 @@ LinkBattle_TrainerHuds: ; 2c10d
 ; 2c143
 
 LoadTrainerHudOAM: ; 2c143
-	ld de, Buffer1
+	ld de, wBuffer1
 	ld c, PARTY_LENGTH
 .loop
 	ld a, [wPlaceBallsY]
@@ -250,10 +250,10 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	lb bc, 9, 14
 	call TextBox
 	hlcoord 4, 5
-	ld de, PlayerName
+	ld de, wPlayerName
 	call PlaceString
 	hlcoord 4, 10
-	ld de, OTPlayerName
+	ld de, wOTPlayerName
 	call PlaceString
 	hlcoord 9, 8
 	ld a, "V"
@@ -270,7 +270,7 @@ _ShowLinkBattleParticipants: ; 2c1b2
 
 DoesNuzlockeModePreventCapture:
 	; Is nuzlocke mode on?
-	ld a, [InitialOptions]
+	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
 	jr z, .no
 
@@ -279,13 +279,13 @@ DoesNuzlockeModePreventCapture:
 	jr c, .no
 
 	; Is location already done?
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	ld b, a
-	ld a, [MapNumber]
+	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
 	ld c, a
-	ld hl, NuzlockeLandmarkFlags
+	ld hl, wNuzlockeLandmarkFlags
 	; Use landmark as index into flag array
 	ld b, CHECK_FLAG
 	ld d, $0

@@ -58,7 +58,7 @@ IlexForestTrigger0:
 IlexForestFarfetchdCallback:
 	checkevent EVENT_GOT_HM01_CUT
 	iftrue .Static
-	copybytetovar FarfetchdPosition
+	copybytetovar wFarfetchdPosition
 	if_equal  1, .PositionOne
 	if_equal  2, .PositionTwo
 	if_equal  3, .PositionThree
@@ -129,10 +129,10 @@ IlexForestCharcoalApprenticeScript:
 
 IlexForestFarfetchdScript:
 	faceplayer
-	copybytetovar FarfetchdPosition
+	copybytetovar wFarfetchdPosition
 	if_equal  0, .Position1
 	showcrytext Text_Kwaaaa, FARFETCH_D
-	copybytetovar FarfetchdPosition
+	copybytetovar wFarfetchdPosition
 	if_equal  2, .Position2
 	if_equal  3, .Position3
 	if_equal  4, .Position4
@@ -159,7 +159,7 @@ IlexForestFarfetchdScript:
 .NewPosition:
 	disappear ILEXFOREST_FARFETCHD
 	appear ILEXFOREST_FARFETCHD
-	copyvartobyte FarfetchdPosition
+	copyvartobyte wFarfetchdPosition
 .Position10:
 	end
 

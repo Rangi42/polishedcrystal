@@ -21,11 +21,11 @@ TeachMagikarpDragonRage:
 	db 0
 
 GetLastPartyMon: ; 0x8b1ce
-	ld bc, PartyCount
+	ld bc, wPartyCount
 	ld a, [bc]
 	ld hl, MON_SPECIES
 
-	ld de, PartyMon1
+	ld de, wPartyMon1
 	add hl, de
 	and a
 	jr z, .EmptyParty
@@ -84,7 +84,7 @@ SetLastPartyMonBall:
 	call GetLastPartyMon
 	ld de, MON_CAUGHTBALL
 	add hl, de
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld c, a
 	ld a, [hl]
 	and $ff - CAUGHTBALL_MASK

@@ -16,7 +16,7 @@ CheckShininess:
 	ret
 
 InitPartyMenuPalettes:
-	ld de, UnknBGPals
+	ld de, wUnknBGPals
 	ld hl, PartyMenuBGPals
 rept 4
 	call LoadHLPaletteIntoDE
@@ -35,11 +35,11 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, BGPals palette 2 + 2
+	ld de, wBGPals palette 2 + 2
 	jr .okay
 
 .Player:
-	ld de, BGPals palette 3 + 2
+	ld de, wBGPals palette 3 + 2
 
 .okay
 	ld l, c
@@ -58,9 +58,9 @@ ApplyHPBarPals:
 .PartyMenu:
 	ld e, c
 	inc e
-	hlcoord 11, 1, AttrMap
+	hlcoord 11, 1, wAttrMap
 	ld bc, 2 * SCREEN_WIDTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 .loop
 	and a
 	jr z, .done
@@ -74,8 +74,8 @@ ApplyHPBarPals:
 	jp FillBoxCGB
 
 LoadPlayerStatusIconPalette:
-	ld a, [PlayerSubStatus2]
-	ld de, BattleMonStatus
+	ld a, [wPlayerSubStatus2]
+	ld de, wBattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPals
 	ld c, a
@@ -83,14 +83,14 @@ LoadPlayerStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 5 + 2
+	ld de, wUnknBGPals palette 5 + 2
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
 
 LoadEnemyStatusIconPalette:
-	ld a, [EnemySubStatus2]
-	ld de, EnemyMonStatus
+	ld a, [wEnemySubStatus2]
+	ld de, wEnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconPals
 	ld c, a
@@ -98,7 +98,7 @@ LoadEnemyStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 5 + 4
+	ld de, wUnknBGPals palette 5 + 4
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -111,7 +111,7 @@ LoadBattleCategoryAndTypePals:
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 6 + 2
+	ld de, wUnknBGPals palette 6 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -123,20 +123,20 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 6 + 6
+	ld de, wUnknBGPals palette 6 + 6
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
 
 LoadItemIconPalette:
-	ld a, [CurSpecies]
+	ld a, [wCurSpecies]
 	ld bc, ItemIconPalettes
 	ld l, a
 	ld h, 0
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld de, UnknBGPals palette 4 + 2
+	ld de, wUnknBGPals palette 4 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -146,7 +146,7 @@ LoadItemIconPalette:
 	jp FarCopyWRAM
 
 LoadTMHMIconPalette:
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .cancel
 	dec a
@@ -161,7 +161,7 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 4 + 2
+	ld de, wUnknBGPals palette 4 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -172,7 +172,7 @@ endr
 
 .cancel:
 	ld hl, TMHMCancelPalette
-	ld de, UnknBGPals palette 4 + 2
+	ld de, wUnknBGPals palette 4 + 2
 	ld bc, 6
 	ld a, $5
 	jp FarCopyWRAM
@@ -187,11 +187,11 @@ LoadStatsScreenPals:
 	ld a, $5
 	ld [rSVBK], a
 	ld a, [hli]
-	ld [UnknBGPals palette 0], a
-	ld [UnknBGPals palette 2], a
+	ld [wUnknBGPals palette 0], a
+	ld [wUnknBGPals palette 2], a
 	ld a, [hl]
-	ld [UnknBGPals palette 0 + 1], a
-	ld [UnknBGPals palette 2 + 1], a
+	ld [wUnknBGPals palette 0 + 1], a
+	ld [wUnknBGPals palette 2 + 1], a
 	pop af
 	ld [rSVBK], a
 	call ApplyPals
@@ -206,7 +206,7 @@ rept 3
 endr
 	ld de, MailPals
 	add hl, de
-	ld de, UnknBGPals
+	ld de, wUnknBGPals
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -306,7 +306,7 @@ ResetBGPals:
 	ld a, $5
 	ld [rSVBK], a
 
-	ld hl, UnknBGPals
+	ld hl, wUnknBGPals
 	ld c, 8
 .loop
 if !DEF(MONOCHROME)
@@ -345,14 +345,14 @@ endc
 	ret
 
 WipeAttrMap:
-	hlcoord 0, 0, AttrMap
+	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	jp ByteFill
 
 ApplyPals:
-	ld hl, UnknBGPals
-	ld de, BGPals
+	ld hl, wUnknBGPals
+	ld de, wBGPals
 	ld bc, 16 palettes
 	ld a, $5
 	jp FarCopyWRAM
@@ -374,7 +374,7 @@ ApplyAttrMap:
 	ret
 
 .UpdateVBank1:
-	hlcoord 0, 0, AttrMap
+	hlcoord 0, 0, wAttrMap
 	debgcoord 0, 0
 	ld b, SCREEN_HEIGHT
 	ld a, $1
@@ -410,7 +410,7 @@ ApplyPartyMenuHPPals: ; 96f3
 	ld a, [de]
 	inc a
 	ld e, a
-	hlcoord 11, 2, AttrMap
+	hlcoord 11, 2, wAttrMap
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wSGBPals]
 .loop
@@ -426,7 +426,7 @@ ApplyPartyMenuHPPals: ; 96f3
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
-	ld de, UnknOBPals
+	ld de, wUnknOBPals
 	ld bc, 8 palettes
 	ld a, $5
 	jp FarCopyWRAM
@@ -434,7 +434,7 @@ InitPartyMenuOBPals:
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
-	ld de, UnknOBPals
+	ld de, wUnknOBPals
 	ld bc, 2 palettes
 	ld a, $5
 	jp FarCopyWRAM
@@ -444,19 +444,19 @@ GetBattlemonBackpicPalettePointer:
 	farcall GetPartyMonPersonality
 	ld c, l
 	ld b, h
-	ld a, [TempBattleMonSpecies]
+	ld a, [wTempBattleMonSpecies]
 	call GetPlayerOrMonPalettePointer
 	pop de
 	ret
 
 GetEnemyFrontpicPalettePointer:
-	ld a, [TempEnemyMonSpecies]
+	ld a, [wTempEnemyMonSpecies]
 	cp MEWTWO
 	jr nz, .not_armored_mewtwo
 	ld a, [wBattleMode]
 	cp 2
 	jr nz, .not_armored_mewtwo
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	cp GIOVANNI
 	jr nz, .not_armored_mewtwo
 	ld hl, MewtwoArmoredPalette
@@ -466,7 +466,7 @@ GetEnemyFrontpicPalettePointer:
 	farcall GetEnemyMonPersonality
 	ld c, l
 	ld b, h
-	ld a, [TempEnemyMonSpecies]
+	ld a, [wTempEnemyMonSpecies]
 	call GetFrontpicPalettePointer
 	pop de
 	ret
@@ -477,17 +477,17 @@ GetPlayerOrMonPalettePointer:
 	ld a, [wPlayerSpriteSetupFlags]
 	bit 2, a ; transformed to male
 	jr nz, .male
-	ld a, [PlayerGender]
+	ld a, [wPlayerGender]
 	and a
 	jr z, .male
-	ld a, [BattleType]
+	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .lyra
 	ld hl, KrisPalette
 	ret
 
 .male
-	ld hl, PlayerPalette
+	ld hl, wPlayerPalette
 	ret
 
 .lyra
@@ -497,7 +497,7 @@ GetPlayerOrMonPalettePointer:
 GetFrontpicPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld a, [TrainerClass]
+	ld a, [wTrainerClass]
 
 GetTrainerPalettePointer:
 	ld l, a
@@ -533,41 +533,41 @@ endr
 
 LoadPokemonPalette:
 	; a = species
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	; hl = palette
 	call GetMonPalettePointer
 	; load palette in BG 7
 	ld a, $5
-	ld de, UnknBGPals palette 7 + 2
+	ld de, wUnknBGPals palette 7 + 2
 	ld bc, 4
 	jp FarCopyWRAM
 
 LoadPartyMonPalette:
 	; bc = personality
-	ld hl, PartyMon1Personality
-	ld a, [CurPartyMon]
+	ld hl, wPartyMon1Personality
+	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	ld c, l
 	ld b, h
 	; a = species
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	; hl = palette
 	call GetMonNormalOrShinyPalettePointer
 	; load palette in BG 7
 	ld a, $5
-	ld de, UnknBGPals palette 7 + 2
+	ld de, wUnknBGPals palette 7 + 2
 	ld bc, 4
 	call FarCopyWRAM
 	; hl = DVs
-	ld hl, PartyMon1DVs
-	ld a, [CurPartyMon]
+	ld hl, wPartyMon1DVs
+	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	; b = species
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals palette 7 + 2
+	ld hl, wUnknBGPals palette 7 + 2
 	jp VaryColorsByDVs
 
 InitCGBPals::
@@ -617,9 +617,9 @@ endc
 	push af
 	ld a, $5
 	ld [rSVBK], a
-	ld hl, UnknBGPals
+	ld hl, wUnknBGPals
 	call .LoadWhitePals
-	ld hl, BGPals
+	ld hl, wBGPals
 	call .LoadWhitePals
 	pop af
 	ld [rSVBK], a
@@ -683,7 +683,7 @@ LoadMapPals:
 	ld h, [hl]
 	ld l, a
 	; Futher refine by time of day
-	ld a, [TimeOfDayPal]
+	ld a, [wTimeOfDayPal]
 	and 3
 	add a
 	add a
@@ -698,7 +698,7 @@ LoadMapPals:
 	push af
 	ld a, $5
 	ld [rSVBK], a
-	ld hl, UnknBGPals
+	ld hl, wUnknBGPals
 	ld b, 8
 .outer_loop
 	ld a, [de] ; lookup index for .TilesetBGPalette
@@ -729,14 +729,14 @@ LoadMapPals:
 	ld [rSVBK], a
 
 .got_pals
-	ld a, [TimeOfDayPal]
+	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
 	ld hl, .MapObjectPals
 	call AddNTimes
-	ld de, UnknOBPals
+	ld de, wUnknOBPals
 	ld bc, 8 palettes
-	ld a, BANK(UnknOBPals)
+	ld a, BANK(wUnknOBPals)
 	call FarCopyWRAM
 
 	farcall LoadSpecialMapOBPalette
@@ -749,7 +749,7 @@ LoadMapPals:
 	cp PERM_5
 	ret nz
 .outside
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	ld l, a
 	ld h, 0
 rept 3
@@ -757,7 +757,7 @@ rept 3
 endr
 	ld de, .RoofPals
 	add hl, de
-	ld a, [TimeOfDayPal]
+	ld a, [wTimeOfDayPal]
 	and 3
 	cp NITE
 	jr c, .morn_day
@@ -765,7 +765,7 @@ rept 4
 	inc hl
 endr
 .morn_day
-	ld de, UnknBGPals palette 6 + 2
+	ld de, wUnknBGPals palette 6 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM

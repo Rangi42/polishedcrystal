@@ -56,13 +56,13 @@ endr
 	ld de, SpawnPoints
 	add hl, de
 	ld a, [hli]
-	ld [MapGroup], a
+	ld [wMapGroup], a
 	ld a, [hli]
-	ld [MapNumber], a
+	ld [wMapNumber], a
 	ld a, [hli]
-	ld [XCoord], a
+	ld [wXCoord], a
 	ld a, [hli]
-	ld [YCoord], a
+	ld [wYCoord], a
 .spawn_n_a
 	pop de
 	pop hl

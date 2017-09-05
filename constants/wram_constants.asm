@@ -1,12 +1,12 @@
 
-; MonType: ; cf5f
+; wMonType: ; cf5f
 PARTYMON   EQU 0
 OTPARTYMON EQU 1
 BOXMON     EQU 2
 BREEDMON   EQU 3
 WILDMON    EQU 4
 
-; Options1: ; cfcc
+; wOptions1: ; cfcc
 FAST_TEXT      EQU $0
 MED_TEXT       EQU $1
 SLOW_TEXT      EQU $2
@@ -16,7 +16,7 @@ NO_TEXT_SCROLL EQU 4
 STEREO         EQU 5
 BATTLE_EFFECTS EQU 6
 
-; Options2:
+; wOptions2:
 FONT_MASK      EQU %00000111
 NORMAL_FONT    EQU %000
 NARROW_FONT    EQU %001
@@ -31,7 +31,7 @@ POKEDEX_UNITS  EQU 5
 BATTLE_SWITCH  EQU 6
 BATTLE_PREDICT EQU 7
 
-; InitialOptions:
+; wInitialOptions:
 NATURES_OPT      EQU 0
 ABILITIES_OPT    EQU 1
 COLOR_VARY_OPT   EQU 2
@@ -40,36 +40,36 @@ TRADED_AS_OT_OPT EQU 4
 NUZLOCKE_MODE    EQU 5
 RESET_INIT_OPTS  EQU 7
 
-; WalkingDirection: ; d043
+; wWalkingDirection: ; d043
 STANDING EQU -1
 DOWN     EQU 0
 UP       EQU 1
 LEFT     EQU 2
 RIGHT    EQU 3
 
-; FacingDirection: ; d044
+; wFacingDirection: ; d044
 FACE_CURRENT EQU 0
 FACE_DOWN  EQU 8
 FACE_UP    EQU 4
 FACE_LEFT  EQU 2
 FACE_RIGHT EQU 1
 
-; TimeOfDay: ; d269
+; wTimeOfDay: ; d269
 MORN     EQU 0
 DAY      EQU 1
 NITE     EQU 2
 DARKNESS EQU 3
 
-; ScriptFlags: ; d434
+; wScriptFlags: ; d434
 SCRIPT_RUNNING EQU 2
 
-; ScriptMode: ; d437
+; wScriptMode: ; d437
 SCRIPT_OFF EQU 0
 SCRIPT_READ EQU 1
 SCRIPT_WAIT_MOVEMENT EQU 2
 SCRIPT_WAIT EQU 3
 
-; CurDay: ; d4cb
+; wCurDay: ; d4cb
 SUNDAY    EQU 0
 MONDAY    EQU 1
 TUESDAY   EQU 2
@@ -78,16 +78,16 @@ THURSDAY  EQU 4
 FRIDAY    EQU 5
 SATURDAY  EQU 6
 
-; MapObjects: ; d71e
+; wMapObjects: ; d71e
 
 PLAYER_OBJECT EQU 0
 
 NUM_OBJECTS   EQU $10
 
-; InputType: ; c2c7
+; wInputType: ; c2c7
 AUTO_INPUT EQU $ff
 
-; PlayerState: ; d95d
+; wPlayerState: ; d95d
 PLAYER_NORMAL    EQU 0
 PLAYER_BIKE      EQU 1
 PLAYER_SLIP      EQU 2
@@ -114,7 +114,7 @@ DAYCARE_DEPOSIT EQU 3
 	const DEXMODE_ABC
 	const DEXMODE_UNOWN
 
-; HiddenGrottoContents
+; wHiddenGrottoContents
 	const_def
 	const GROTTO_UNDEFINED
 	const GROTTO_POKEMON

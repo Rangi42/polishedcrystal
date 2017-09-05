@@ -26,7 +26,7 @@ Predef_StartBattle: ; 8c20f
 	ld a, $5
 	ld [rSVBK], a
 
-	ld hl, UnknBGPals
+	ld hl, wUnknBGPals
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
 	xor a
@@ -198,14 +198,14 @@ StartTrainerBattle_DetermineWhichAnimation: ; 8c365 (23:4365)
 ; Pokemon relative to the opponent's.
 	ld de, 0
 
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	and a
 	jr z, .wild
 	farcall SetTrainerBattleLevel
 .wild
 
 ; Get the first Pokemon in your party that isn't fainted.
-	ld hl, PartyMon1HP
+	ld hl, wPartyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH - 1
 .loop
 	ld a, [hli]
@@ -222,7 +222,7 @@ endr
 	add 3
 
 ; Compare with wild encounter level
-	ld hl, CurPartyLevel
+	ld hl, wCurPartyLevel
 	cp [hl]
 	jr nc, .okay
 	set 0, e
@@ -316,7 +316,7 @@ StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
 
 StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
-	ld a, BANK(LYOverrides)
+	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
 
 	call StartTrainerBattle_NextScene
@@ -351,8 +351,8 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	ld d, [hl]
 	add [hl]
 	ld [hl], a
-	ld a, LYOverridesEnd - LYOverrides
-	ld bc, LYOverrides
+	ld a, wLYOverridesEnd - wLYOverrides
+	ld bc, wLYOverrides
 	ld e, $0
 
 .loop
@@ -373,7 +373,7 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 
 StartTrainerBattle_SetUpForSpinOutro: ; 8c43d (23:443d)
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
-	ld a, BANK(LYOverrides)
+	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
 	call StartTrainerBattle_NextScene
 	xor a
@@ -516,7 +516,7 @@ endr
 
 StartTrainerBattle_SetUpForRandomScatterOutro: ; 8c578 (23:4578)
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
-	ld a, BANK(LYOverrides)
+	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
 	call StartTrainerBattle_NextScene
 	ld a, $10
@@ -584,13 +584,13 @@ StartTrainerBattle_SpeckleToBlack: ; 8c58f (23:458f)
 	ret
 
 StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	and a
 	jp z, .nextscene ; don't need to be here if wild
 
 	xor a
 	ld [hBGMapMode], a
-	hlcoord 0, 0, AttrMap
+	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	inc b
 	inc c
@@ -607,7 +607,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	dec b
 	jr nz, .loop
 
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	ld de, 1
 	ld hl, .RocketTrainerClasses
 	call IsInArray
@@ -653,16 +653,16 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	jr nz, .loop2
 
 	ld hl, .armored_mewtwo_pals
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	cp GIOVANNI
 	jr nz, .not_armored_mewtwo
-	ld a, [OtherTrainerID]
+	ld a, [wOtherTrainerID]
 	cp GIOVANNI1
 	jr z, .got_palette
 
 .not_armored_mewtwo
 	ld hl, .timepals
-	ld a, [TimeOfDayPal]
+	ld a, [wTimeOfDayPal]
 	and %00000011
 rept 3
 	sla a
@@ -679,11 +679,11 @@ endr
 	ld [rSVBK], a
 	call .copypals
 	push hl
-	ld de, UnknBGPals palette 7
+	ld de, wUnknBGPals palette 7
 	ld bc, 1 palettes
 	call CopyBytes
 	pop hl
-	ld de, BGPals palette 7
+	ld de, wBGPals palette 7
 	ld bc, 1 palettes
 	call CopyBytes
 	pop af
@@ -697,17 +697,17 @@ endr
 	jp StartTrainerBattle_NextScene
 
 .copypals ; 8c677 (23:4677)
-	ld de, UnknBGPals palette 7
+	ld de, wUnknBGPals palette 7
 	call .copy
-	ld de, BGPals palette 7
+	ld de, wBGPals palette 7
 	call .copy
-	ld de, UnknOBPals palette 6
+	ld de, wUnknOBPals palette 6
 	call .copy
-	ld de, OBPals palette 6
+	ld de, wOBPals palette 6
 	call .copy
-	ld de, UnknOBPals palette 7
+	ld de, wUnknOBPals palette 7
 	call .copy
-	ld de, OBPals palette 7
+	ld de, wOBPals palette 7
 
 .copy ; 8c698 (23:4698)
 	push hl
@@ -810,9 +810,9 @@ WipeLYOverrides: ; 8c6d8
 	ld a, $5
 	ld [rSVBK], a
 
-	ld hl, LYOverrides
+	ld hl, wLYOverrides
 	call .wipe
-	ld hl, LYOverridesBackup
+	ld hl, wLYOverridesBackup
 	call .wipe
 
 	pop af

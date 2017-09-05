@@ -3,7 +3,7 @@ CARDFLIP_LIGHT_ON  EQU $e5
 CARDFLIP_DECK_SIZE EQU 4 * 6
 
 _CardFlip: ; e00ee (38:40ee)
-	ld hl, Options1
+	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
 	call ClearBGPalettes
 	call ClearTileMap
@@ -50,10 +50,10 @@ _CardFlip: ; e00ee (38:40ee)
 	ld [wCardFlipCursorX], a
 
 ;	ld de, MUSIC_GAME_CORNER
-;	ld a, [MapGroup]
+;	ld a, [wMapGroup]
 ;	cp GROUP_GOLDENROD_GAME_CORNER
 ;	jr nz, .celadon_game_corner
-;	ld a, [MapNumber]
+;	ld a, [wMapNumber]
 ;	cp MAP_GOLDENROD_GAME_CORNER
 ;	jr nz, .celadon_game_corner
 ;	ld de, MUSIC_GAME_CORNER_DPPT
@@ -72,7 +72,7 @@ _CardFlip: ; e00ee (38:40ee)
 	call PlaySFX
 	call WaitSFX
 	call ClearBGPalettes
-	ld hl, Options1
+	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ret
 
@@ -475,7 +475,7 @@ endr
 	pop hl
 
 	; Set the attributes
-	ld de, AttrMap - TileMap
+	ld de, wAttrMap - wTileMap
 	add hl, de
 	ld a, [wCardFlipFaceUpCard]
 	and 3
@@ -1612,32 +1612,32 @@ endm
 ; e0c37
 
 CardFlip_InitAttrPals: ; e0c37 (38:4c37)
-	hlcoord 0, 0, AttrMap
+	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
 
-	hlcoord 12, 1, AttrMap
+	hlcoord 12, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $1
 	call CardFlip_FillBox
 
-	hlcoord 14, 1, AttrMap
+	hlcoord 14, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $2
 	call CardFlip_FillBox
 
-	hlcoord 16, 1, AttrMap
+	hlcoord 16, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $3
 	call CardFlip_FillBox
 
-	hlcoord 18, 1, AttrMap
+	hlcoord 18, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $4
 	call CardFlip_FillBox
 
-	hlcoord 9, 0, AttrMap
+	hlcoord 9, 0, wAttrMap
 	lb bc, 12, 1
 	ld a, $1
 	call CardFlip_FillBox
@@ -1647,7 +1647,7 @@ CardFlip_InitAttrPals: ; e0c37 (38:4c37)
 	ld a, $5
 	ld [rSVBK], a
 	ld hl, .palettes
-	ld de, UnknBGPals
+	ld de, wUnknBGPals
 	ld bc, 9 palettes
 	call CopyBytes
 	pop af

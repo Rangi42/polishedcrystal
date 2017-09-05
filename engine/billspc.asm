@@ -1,12 +1,12 @@
 _DepositPKMN: ; e2391 (38:6391)
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	ld a, [VramState]
+	ld a, [wVramState]
 	push af
 	xor a
-	ld [VramState], a
+	ld [wVramState], a
 	ld a, [hInMenu]
 	push af
 	ld a, $1
@@ -30,9 +30,9 @@ _DepositPKMN: ; e2391 (38:6391)
 	pop af
 	ld [hInMenu], a
 	pop af
-	ld [VramState], a
+	ld [wVramState], a
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	ret
 
 .RunJumptable: ; e23d5 (38:63d5)
@@ -64,7 +64,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
@@ -119,7 +119,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld [hBGMapMode], a
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
@@ -178,7 +178,7 @@ BillsPCDepositFuncStats: ; e24c8 (38:64c8)
 	call ExitMenu
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 
@@ -202,7 +202,7 @@ BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
@@ -245,14 +245,14 @@ BillsPCDepositMenuDataHeader: ; 0xe253d (38:653d)
 ; 0xe2564 (38:6564)
 
 _WithdrawPKMN: ; e2583 (38:6583)
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	ld a, [VramState]
+	ld a, [wVramState]
 	push af
 	xor a
-	ld [VramState], a
+	ld [wVramState], a
 	ld a, [hInMenu]
 	push af
 	ld a, $1
@@ -276,9 +276,9 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	pop af
 	ld [hInMenu], a
 	pop af
-	ld [VramState], a
+	ld [wVramState], a
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	ret
 
 .RunJumptable: ; e25c8 (38:65c8)
@@ -312,7 +312,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
@@ -362,7 +362,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	ld [hBGMapMode], a
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
@@ -419,7 +419,7 @@ endr
 	call ExitMenu
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 
@@ -441,7 +441,7 @@ endr
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
@@ -483,14 +483,14 @@ endr
 ; 0xe2759
 
 _MovePKMNWithoutMail: ; e2759
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	ld a, [VramState]
+	ld a, [wVramState]
 	push af
 	xor a
-	ld [VramState], a
+	ld [wVramState], a
 	ld a, [hInMenu]
 	push af
 	ld a, $1
@@ -517,9 +517,9 @@ _MovePKMNWithoutMail: ; e2759
 	pop af
 	ld [hInMenu], a
 	pop af
-	ld [VramState], a
+	ld [wVramState], a
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	ret
 ; e27a2
 
@@ -555,7 +555,7 @@ _MovePKMNWithoutMail: ; e2759
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
@@ -614,7 +614,7 @@ _MovePKMNWithoutMail: ; e2759
 	ld [hBGMapMode], a
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
@@ -672,7 +672,7 @@ endr
 	call ExitMenu
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, SCGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 ; e28bd
@@ -1062,16 +1062,16 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 
 	call BillsPC_LoadMonStats
 	ld a, [wd265]
-	ld [CurPartySpecies], a
-	ld [CurSpecies], a
-	ld hl, TempMonForm
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	ld hl, wTempMonForm
 	predef GetVariant
 	call GetBaseData
 	ld de, VTiles2 tile $00
 	predef GetFrontpic
 	xor a
 	ld [wBillsPC_MonHasMail], a
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	cp EGG
 	ret z
@@ -1084,7 +1084,7 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	call PrintLevel
 
 	ld a, $3
-	ld [MonType], a
+	ld [wMonType], a
 	farcall GetGender
 	jr c, .skip_gender
 	ld a, "♂"
@@ -1095,7 +1095,7 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	ld [hl], a
 .skip_gender
 
-	ld a, [TempMonItem]
+	ld a, [wTempMonItem]
 	and a
 	ret z
 
@@ -1139,7 +1139,7 @@ endr
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
-	ld [TempMonLevel], a
+	ld [wTempMonLevel], a
 	pop hl
 	push hl
 	ld bc, sBoxMon1Item - sBox
@@ -1148,14 +1148,14 @@ endr
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
-	ld [TempMonItem], a
+	ld [wTempMonItem], a
 	pop hl
 	ld bc, sBoxMon1DVs - sBox
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonDVs
+	ld de, wTempMonDVs
 	; Copy DVs and personality right after them
 rept 4
 	ld a, [hli]
@@ -1167,23 +1167,23 @@ endr
 	jp CloseSRAM
 
 .party
-	ld hl, PartyMon1Level
+	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
-	ld [TempMonLevel], a
-	ld hl, PartyMon1Item
+	ld [wTempMonLevel], a
+	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
-	ld [TempMonItem], a
-	ld hl, PartyMon1DVs
+	ld [wTempMonItem], a
+	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonDVs
+	ld de, wTempMonDVs
 	; Copy DVs and personality right after them
 rept 4
 	ld a, [hli]
@@ -1202,20 +1202,20 @@ endr
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
-	ld [TempMonLevel], a
+	ld [wTempMonLevel], a
 
 	ld hl, sBoxMon1Item
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
-	ld [TempMonItem], a
+	ld [wTempMonItem], a
 
 	ld hl, sBoxMon1DVs
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonDVs
+	ld de, wTempMonDVs
 	; Copy DVs and personality right after them
 rept 4
 	ld a, [hli]
@@ -1309,12 +1309,12 @@ endr
 	ld bc, PKMN_NAME_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	call CloseSRAM
 	pop hl
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	jp PlaceString
 
 .boxfail
@@ -1324,21 +1324,21 @@ endr
 
 .party
 	push hl
-	ld hl, PartySpecies
+	ld hl, wPartySpecies
 	ld d, $0
 	add hl, de
 	ld a, [hl]
 	and a
 	jr z, .partyfail
-	ld hl, PartyMonNicknames
+	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	pop hl
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	jp PlaceString
 
 .partyfail
@@ -1359,12 +1359,12 @@ endr
 	ld bc, PKMN_NAME_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	call CloseSRAM
 	pop hl
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	jp PlaceString
 
 .sBoxFail
@@ -1436,7 +1436,7 @@ CopyBoxmonSpecies: ; e2d30 (38:6d30)
 	ret
 
 .party
-	ld hl, PartySpecies
+	ld hl, wPartySpecies
 	copy_box_data 0
 	ret
 
@@ -1598,7 +1598,7 @@ BillsPC_CheckMail_PreventBlackout: ; e2f18 (38:6f18)
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	farcall CheckCurPartyMonFainted
 	jr c, .AllOthersFainted
 	ld a, [wBillsPC_MonHasMail]
@@ -1629,7 +1629,7 @@ BillsPC_CheckMail_PreventBlackout: ; e2f18 (38:6f18)
 	ret
 
 BillsPC_IsMonAnEgg: ; e2f5f (38:6f5f)
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .egg
 	and a
@@ -1650,7 +1650,7 @@ BillsPC_StatsScreen: ; e2f7e (38:6f7e)
 	call LowVolume
 	call BillsPC_CopyMon
 	ld a, $3
-	ld [MonType], a
+	ld [wMonType], a
 	predef StatsScreenInit
 	call BillsPC_InitGFX
 	jp MaxVolume
@@ -1674,9 +1674,9 @@ StatsScreenDPad: ; e2f95 (38:6f95)
 	ld [wd265], a
 	call BillsPC_LoadMonStats
 	ld a, [wd265]
-	ld [CurPartySpecies], a
-	ld [CurSpecies], a
-	ld hl, TempMonForm
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	ld hl, wTempMonForm
 	predef GetVariant
 	call GetBaseData
 	jp BillsPC_CopyMon
@@ -1690,7 +1690,7 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	ld a, [wBillsPC_LoadedBox]
 	and a
 	jr z, .party
@@ -1706,7 +1706,7 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	call CopyOTNameToTemp
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld de, wBufferMon
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -1715,15 +1715,15 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	farjp CalcwBufferMonStats
 
 .party
-	ld hl, PartySpecies
+	ld hl, wPartySpecies
 	call CopySpeciesToTemp
-	ld hl, PartyMonNicknames
+	ld hl, wPartyMonNicknames
 	call CopyNicknameToTemp
-	ld hl, PartyMonOT
+	ld hl, wPartyMonOT
 	call CopyOTNameToTemp
-	ld hl, PartyMons ; wdcdf (aliases: PartyMon1, PartyMon1Species)
+	ld hl, wPartyMons ; wdcdf (aliases: wPartyMon1, wPartyMon1Species)
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld de, wBufferMon
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -1759,9 +1759,9 @@ DepositPokemon: ; e307c (38:707c)
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
-	ld hl, PartyMonNicknames
-	ld a, [CurPartyMon]
+	ld [wCurPartyMon], a
+	ld hl, wPartyMonNicknames
+	ld a, [wCurPartyMon]
 	call GetNick
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
@@ -1770,7 +1770,7 @@ DepositPokemon: ; e307c (38:707c)
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	call PlayCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1787,7 +1787,7 @@ DepositPokemon: ; e307c (38:707c)
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	call PlaceString
 	ld a, "!"
 	ld [bc], a
@@ -1811,10 +1811,10 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	ld a, BANK(sBoxMonNicknames)
 	call GetSRAMBank
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	ld hl, sBoxMonNicknames
 	call GetNick
 	call CloseSRAM
@@ -1825,7 +1825,7 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	call PlayCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1842,7 +1842,7 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	call PlaceString
 	ld l, c
 	ld h, b
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	call PlaceString
 	ld a, "!"
 	ld [bc], a
@@ -1875,7 +1875,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	call TextBox
 
 	call WaitBGMap
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	call GetCryIndex
 	jr c, .skip_cry
 	ld e, c
@@ -1883,7 +1883,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	call PlayCryHeader
 .skip_cry
 
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
 	hlcoord 1, 16
@@ -1900,7 +1900,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	ld l, c
 	ld h, b
 	inc hl
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	call PlaceString
 	ld l, c
 	ld h, b
@@ -2040,7 +2040,7 @@ endr
 	ld a, [wBillsPC_BackupCursorPosition]
 	ld hl, wBillsPC_BackupScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	ld a, $1
 	call GetSRAMBank
 	ld hl, sBoxSpecies
@@ -2067,7 +2067,7 @@ endr
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	farjp InsertPokemonIntoBox
 ; e3316
 
@@ -2075,14 +2075,14 @@ endr
 	ld a, [wBillsPC_BackupCursorPosition]
 	ld hl, wBillsPC_BackupScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
-	ld hl, PartySpecies
+	ld [wCurPartyMon], a
+	ld hl, wPartySpecies
 	call CopySpeciesToTemp
-	ld hl, PartyMonNicknames
+	ld hl, wPartyMonNicknames
 	call CopyNicknameToTemp
-	ld hl, PartyMonOT
+	ld hl, wPartyMonOT
 	call CopyOTNameToTemp
-	ld hl, PartyMon1Species
+	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyMonToTemp
 	xor a
@@ -2094,22 +2094,22 @@ endr
 	ld a, [wBillsPC_CursorPosition]
 	ld hl, wBillsPC_ScrollPosition
 	add [hl]
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	farjp InsertPokemonIntoParty
 ; e3357
 
 CopySpeciesToTemp: ; e3357 (38:7357)
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ret
 
 CopyNicknameToTemp: ; e3363 (38:7363)
 	ld bc, PKMN_NAME_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld de, wBufferMonNick
 	ld bc, PKMN_NAME_LENGTH
@@ -2117,14 +2117,14 @@ CopyNicknameToTemp: ; e3363 (38:7363)
 
 CopyOTNameToTemp: ; e3376 (38:7376)
 	ld bc, NAME_LENGTH
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
 	jp CopyBytes
 
 CopyMonToTemp: ; e3389 (38:7389)
-	ld a, [CurPartyMon]
+	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld de, wBufferMon
 	jp CopyBytes
@@ -2288,7 +2288,7 @@ endr
 
 .boxnames ; e3619
 	push de
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 	call GetBoxName
 	pop hl
@@ -2308,7 +2308,7 @@ BillsPC_PrintBoxCountAndCapacity: ; e3632
 	hlcoord 11, 7
 	lb bc, 5, 7
 	call TextBox
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	cp -1
 	ret z
 	hlcoord 12, 9
@@ -2354,7 +2354,7 @@ BillsPC_PrintBoxCountAndCapacityInsideBox:
 	jp PlaceString
 
 .party
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	ld [wd265], a
 	hlcoord 1, 1
 	ld de, wd265
@@ -2386,7 +2386,7 @@ GetBoxCountWithC:
 GetBoxCount: ; e366c (38:766c)
 	ld a, [wCurBox]
 	ld c, a
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 BoxSelectionJumpIn:
 	dec a
 	cp c
@@ -2475,7 +2475,7 @@ BillsPC_ChangeBoxSubmenu: ; e36f9 (38:76f9)
 	ret
 
 .Switch:
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 	ld e, a
 	ld a, [wCurBox]
@@ -2490,7 +2490,7 @@ BillsPC_ChangeBoxSubmenu: ; e36f9 (38:76f9)
 	call ClearTileMap
 	call LoadStandardFont
 	call LoadFontsBattleExtra
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 	call GetBoxName
 	ld e, l
@@ -2498,7 +2498,7 @@ BillsPC_ChangeBoxSubmenu: ; e36f9 (38:76f9)
 	ld hl, wd002
 	ld c, BOX_NAME_LENGTH - 1
 	call InitString
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 	call GetBoxName
 	ld de, wd002

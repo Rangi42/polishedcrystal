@@ -17,7 +17,7 @@ endr
 
 
 GetLandmarkName:: ; 0x1ca8a5
-; Copy the name of landmark e to StringBuffer1.
+; Copy the name of landmark e to wStringBuffer1.
 	push hl
 	push de
 	push bc
@@ -33,7 +33,7 @@ endr
 	ld h, [hl]
 	ld l, a
 
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld c, 23
 .copy
 	ld a, [hli]

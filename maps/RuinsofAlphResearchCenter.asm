@@ -428,7 +428,7 @@ UnknownText_0x597d9:
 	line "Name: Unown"
 
 	para "A total of @"
-	deciram ScriptVar, 1, 2
+	deciram wScriptVar, 1, 2
 	text ""
 	line "kinds found."
 	done

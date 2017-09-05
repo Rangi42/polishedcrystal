@@ -8,13 +8,13 @@ BattleCommand_Transform: ; 371cd
 	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, BattleEffect_ButItFailed
 
-	ld hl, BattleMonSpecies
-	ld de, BattleMonItem
+	ld hl, wBattleMonSpecies
+	ld de, wBattleMonItem
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .got_mon_item
-	ld hl, EnemyMonSpecies
-	ld de, EnemyMonItem
+	ld hl, wEnemyMonSpecies
+	ld de, wEnemyMonItem
 .got_mon_item
 	ld a, [hl]
 	cp MEWTWO
@@ -38,7 +38,7 @@ BattleCommand_Transform: ; 371cd
 
 	xor a
 	ld [wNumHits], a
-	ld [FXAnimIDHi], a
+	ld [wFXAnimIDHi], a
 	ld a, $1
 	ld [wKickCounter], a
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -55,15 +55,15 @@ BattleCommand_Transform: ; 371cd
 	call GetBattleVarAddr
 	set SUBSTATUS_TRANSFORMED, [hl]
 	call ResetActorDisable
-	ld hl, BattleMonSpecies
-	ld de, EnemyMonSpecies
+	ld hl, wBattleMonSpecies
+	ld de, wEnemyMonSpecies
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .got_mon_species
-	ld hl, EnemyMonSpecies
-	ld de, BattleMonSpecies
+	ld hl, wEnemyMonSpecies
+	ld de, wBattleMonSpecies
 	xor a
-	ld [CurMoveNum], a
+	ld [wCurMoveNum], a
 .got_mon_species
 	push hl
 	ld a, [hli]
@@ -91,7 +91,7 @@ BattleCommand_Transform: ; 371cd
 	ld [de], a
 	inc de
 ; move pointer to stats
-	ld bc, BattleMonStats - BattleMonPP
+	ld bc, wBattleMonStats - wBattleMonPP
 	add hl, bc
 	push hl
 	ld h, d
@@ -100,16 +100,16 @@ BattleCommand_Transform: ; 371cd
 	ld d, h
 	ld e, l
 	pop hl
-	ld bc, BattleMonStructEnd - BattleMonStats
+	ld bc, wBattleMonStructEnd - wBattleMonStats
 	call CopyBytes
 ; init the power points
-	ld bc, BattleMonMoves - BattleMonStructEnd
+	ld bc, wBattleMonMoves - wBattleMonStructEnd
 	add hl, bc
 	push de
 	ld d, h
 	ld e, l
 	pop hl
-	ld bc, BattleMonPP - BattleMonStructEnd
+	ld bc, wBattleMonPP - wBattleMonStructEnd
 	add hl, bc
 	ld b, NUM_MOVES
 .pp_loop
@@ -129,8 +129,8 @@ BattleCommand_Transform: ; 371cd
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
-	ld hl, EnemyStatLevels
-	ld de, PlayerStatLevels
+	ld hl, wEnemyStatLevels
+	ld de, wPlayerStatLevels
 	ld bc, 8
 	call BattleSideCopy
 	call _CheckBattleEffects
@@ -155,7 +155,7 @@ BattleCommand_Transform: ; 371cd
 .after_anim
 	xor a
 	ld [wNumHits], a
-	ld [FXAnimIDHi], a
+	ld [wFXAnimIDHi], a
 	ld a, $2
 	ld [wKickCounter], a
 	pop af
@@ -168,8 +168,8 @@ BattleCommand_Transform: ; 371cd
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .move_reveal_done
-	ld hl, BattleMonMoves
-	ld de, PlayerUsedMoves
+	ld hl, wBattleMonMoves
+	ld de, wPlayerUsedMoves
 	ld bc, NUM_MOVES
 	call CopyBytes
 
@@ -178,12 +178,12 @@ BattleCommand_Transform: ; 371cd
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .copy_player_ability
-	ld a, [EnemyAbility]
-	ld [PlayerAbility], a
+	ld a, [wEnemyAbility]
+	ld [wPlayerAbility], a
 	jr .done_ability_copy
 .copy_player_ability
-	ld a, [PlayerAbility]
-	ld [EnemyAbility], a
+	ld a, [wPlayerAbility]
+	ld [wEnemyAbility], a
 .done_ability_copy
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar

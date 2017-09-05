@@ -34,28 +34,28 @@ endm
 
 jrheldbutton: macro
 ; assumes hl == hJoyDown
-	ld a, [TextDelayFrames]
+	ld a, [wTextDelayFrames]
 	and a
 	jr nz, \3
 	ld a, [hl]
 	and \1
 	jr z, \3
 	ld a, \4
-	ld [TextDelayFrames], a
+	ld [wTextDelayFrames], a
 	jr \2
 \3:
 endm
 
 jpheldbutton: macro
 ; assumes hl == hJoyDown
-	ld a, [TextDelayFrames]
+	ld a, [wTextDelayFrames]
 	and a
 	jr nz, \3
 	ld a, [hl]
 	and \1
 	jr z, \3
 	ld a, \4
-	ld [TextDelayFrames], a
+	ld [wTextDelayFrames], a
 	jp \2
 \3:
 endm
@@ -96,12 +96,12 @@ MusicPlayer::
 	ld [rSVBK], a
 
 	ld hl, MusicPlayerPals
-	ld de, BGPals
+	ld de, wBGPals
 	ld bc, 1 palettes
 	call CopyBytes
 
 	ld hl, MusicPlayerNotePals
-	ld de, OBPals
+	ld de, wOBPals
 	ld bc, 1 palettes
 	call CopyBytes
 
@@ -159,9 +159,9 @@ MusicPlayer::
 
 	call ClearSprites
 
-; Initialize MusicPlayerWRAM
-	ld hl, MusicPlayerWRAM
-	ld bc, MusicPlayerWRAMEnd - MusicPlayerWRAM
+; Initialize wMusicPlayerWRAM
+	ld hl, wMusicPlayerWRAM
+	ld bc, wMusicPlayerWRAMEnd - wMusicPlayerWRAM
 	xor a
 	call ByteFill
 
@@ -489,7 +489,7 @@ SongEditor:
 
 .up_wave:
 ; next waveform
-	ld a, [Channel3Intensity]
+	ld a, [wChannel3Intensity]
 	and $f
 	inc a
 	cp NUM_WAVEFORMS
@@ -499,7 +499,7 @@ SongEditor:
 
 .down_wave:
 ; previous waveform
-	ld a, [Channel3Intensity]
+	ld a, [wChannel3Intensity]
 	and $f
 	dec a
 	cp -1
@@ -507,17 +507,17 @@ SongEditor:
 	ld a, NUM_WAVEFORMS - 1
 .change_wave:
 	ld b, a
-	ld a, [Channel3Intensity]
+	ld a, [wChannel3Intensity]
 	and $f0
 	or b
-	ld [Channel3Intensity], a
+	ld [wChannel3Intensity], a
 	ld [wCurTrackIntensity], a
 	farcall ReloadWaveform
 	ret
 
 .up_noise:
 ; next noise set
-	ld a, [MusicNoiseSampleSet]
+	ld a, [wMusicNoiseSampleSet]
 	inc a
 	cp NUM_NOISE_SETS
 	jr nz, .change_noise
@@ -526,13 +526,13 @@ SongEditor:
 
 .down_noise:
 ; previous noise set
-	ld a, [MusicNoiseSampleSet]
+	ld a, [wMusicNoiseSampleSet]
 	dec a
 	cp -1
 	jr nz, .change_noise
 	ld a, NUM_NOISE_SETS - 1
 .change_noise:
-	ld [MusicNoiseSampleSet], a
+	ld [wMusicNoiseSampleSet], a
 .return:
 	ret
 
@@ -858,7 +858,7 @@ DrawChData:
 
 	; channel 4
 	hlcoord 18, MP_HUD_TOP + 1
-	ld a, [MusicNoiseSampleSet]
+	ld a, [wMusicNoiseSampleSet]
 	add $f6
 	ld [hl], a
 
@@ -962,7 +962,7 @@ _DrawCh1_2_3:
 
 	hlcoord 12, MP_HUD_TOP + 2
 	; pick the waveform
-	ld a, [Channel3Intensity]
+	ld a, [wChannel3Intensity]
 	and $f
 	sla a
 	add $40
@@ -1114,10 +1114,10 @@ CheckEndedNote:
 
 CheckNoteDuration:
 	ld a, [wTmpCh]
-	ld bc, Channel2 - Channel1
+	ld bc, wChannel2 - wChannel1
 
 ; Note duration
-	ld hl, Channel1NoteDuration
+	ld hl, wChannel1NoteDuration
 	call AddNTimes
 	ld a, [hl]
 	cp 2
@@ -1127,8 +1127,8 @@ CheckNoteDuration:
 CheckChannelOn:
 ; Channel on/off flag
 	ld a, [wTmpCh]
-	ld bc, Channel2 - Channel1
-	ld hl, Channel1Flags
+	ld bc, wChannel2 - wChannel1
+	ld hl, wChannel1Flags
 	call AddNTimes
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, _NoteEnded
@@ -1137,7 +1137,7 @@ CheckChannelOn:
 ; Note flags are wiped after each
 ; note is read, so this is pointless.
 	ld a, [wTmpCh]
-	ld hl, Channel1NoteFlags
+	ld hl, wChannel1NoteFlags
 	call AddNTimes
 	bit SOUND_REST, [hl]
 	jr nz, _NoteEnded
@@ -1226,8 +1226,8 @@ DrawNewNote:
 
 DrawLongerNote:
 	ld a,[wTmpCh]
-	ld hl, Channel1Intensity
-	ld bc, Channel2 - Channel1
+	ld hl, wChannel1Intensity
+	ld bc, wChannel2 - wChannel1
 	call AddNTimes
 	ld a, [hl]
 	and $f
@@ -1287,15 +1287,15 @@ CheckForVolumeBarReset:
 
 SetVisualIntensity:
 	ld a,[wTmpCh]
-	ld hl, Channel1Pitch
-	ld bc, Channel2 - Channel1
+	ld hl, wChannel1Pitch
+	ld bc, wChannel2 - wChannel1
 	call AddNTimes
 	ld a, [hl]
 	and a
 	jr z, .skip
 	ld a,[wTmpCh]
-	ld hl, Channel1Intensity
-	ld bc, Channel2 - Channel1
+	ld hl, wChannel1Intensity
+	ld bc, wChannel2 - wChannel1
 	push af
 	call AddNTimes
 	pop af
@@ -1441,18 +1441,18 @@ endr
 	ret
 
 GetPitchAddr:
-	ld hl, Channel1Pitch
+	ld hl, wChannel1Pitch
 	jr _GetChannelMemberAddr
 
 GetOctaveAddr:
-	ld hl, Channel1Octave
+	ld hl, wChannel1Octave
 	jr _GetChannelMemberAddr
 
 GetDutyCycleAddr:
-	ld hl, Channel1DutyCycle
+	ld hl, wChannel1DutyCycle
 _GetChannelMemberAddr:
 	ld a, [wTmpCh]
-	ld bc, Channel2 - Channel1
+	ld bc, wChannel2 - wChannel1
 	jp AddNTimes
 
 GetIntensityAddr:
@@ -1738,21 +1738,21 @@ MPUpdateUIAndGetJoypad:
 	call DrawChData
 	call DrawNotes
 MPGetJoypad:
-	ld a, [TextDelayFrames]
+	ld a, [wTextDelayFrames]
 	and a
 	jr z, .ok2
 	dec a
-	ld [TextDelayFrames], a
+	ld [wTextDelayFrames], a
 .ok2
 	jp GetJoypad
 
 MPLPlaceString:
 	push hl
 	ld a, " "
-	ld hl, StringBuffer2
+	ld hl, wStringBuffer2
 	ld bc, 3
 	call ByteFill
-	ld hl, StringBuffer2
+	ld hl, wStringBuffer2
 	push de
 	ld de, wSelectorCur
 	lb bc, 1, 3
@@ -1793,7 +1793,7 @@ MPLPlaceString:
 .last:
 	pop hl
 	push de
-	ld de, StringBuffer2
+	ld de, wStringBuffer2
 	call PlaceString
 	pop de
 	ret

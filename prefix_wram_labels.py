@@ -8,5 +8,5 @@ with open("wram_labels.txt", "r") as f:
 		
 		line = line[8:].rstrip()
 		if line[0] != "w":
-			# call(["sh", "replace.sh", line, "s" + line[1:])
-			print line + " -> s" + line[1:]
+			call(["sh", "replace.sh", line, "w" + line[0:]])
+			print line + " -> w" + line[0:]

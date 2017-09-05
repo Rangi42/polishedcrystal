@@ -8,8 +8,8 @@ MoveReminder:
 	call JoyWaitAorB
 
 	ld a, GOLD_LEAF
-	ld [CurItem], a
-	ld hl, NumItems
+	ld [wCurItem], a
+	ld hl, wNumItems
 	call CheckItem
 	jp nc, .no_gold_leaf
 
@@ -26,7 +26,7 @@ MoveReminder:
 	farcall SelectMonFromParty
 	jr c, .cancel
 
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .egg
 
@@ -43,12 +43,12 @@ MoveReminder:
 	call ChooseMoveToLearn
 	jr c, .skip_learn
 
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	ld [wd265], a
 	call GetMoveName
-	ld hl, StringBuffer1
-	ld de, StringBuffer2
-	ld bc, StringBuffer2 - StringBuffer1
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld bc, wStringBuffer2 - wStringBuffer1
 	call CopyBytes
 	ld b, 0
 	predef LearnMove
@@ -57,12 +57,12 @@ MoveReminder:
 	jr z, .skip_learn
 
 	ld a, GOLD_LEAF
-	ld [CurItem], a
+	ld [wCurItem], a
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 	ld a, -1
-	ld [CurItemQuantity], a
-	ld hl, NumItems
+	ld [wCurItemQuantity], a
+	ld hl, wNumItems
 	call TossItem
 
 	ld de, SFX_TRANSACTION
@@ -94,7 +94,7 @@ MoveReminder:
 
 
 GetRemindableMoves:
-; Get moves remindable by CurPartyMon
+; Get moves remindable by wCurPartyMon
 ; Returns z if no moves can be reminded.
 	GLOBAL EvosAttacksPointers, EvosAttacks
 	ld hl, wd002
@@ -105,19 +105,19 @@ GetRemindableMoves:
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld a, [hl]
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 
 	push af
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
 	ld a, [hl]
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 
 	ld b, 0
 	ld de, wd002 + 1
 ; based on GetEggMove in engine/breeding/egg.asm
 .loop
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	dec a
 	push bc
 	ld b, 0
@@ -142,7 +142,7 @@ endr
 	and a
 	jr z, .done
 	ld c, a
-	ld a, [CurPartyLevel]
+	ld a, [wCurPartyLevel]
 	cp c
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -193,7 +193,7 @@ endr
 	pop bc
 	jr c, .loop
 	pop af
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, b
 	ld [wd002], a
 	and a
@@ -257,7 +257,7 @@ ChooseMoveToLearn:
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jr z, .carry
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	ld [wPutativeTMHMMove], a
 	and a
 	ret
@@ -284,18 +284,18 @@ ChooseMoveToLearn:
 
 .PrintMoveName
 	push de
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	ld [wd265], a
 	call GetMoveName
 	pop hl
 	jp PlaceString
 
 .PrintDetails
-	ld hl, StringBuffer1
-	ld bc, StringBuffer2 - StringBuffer1
+	ld hl, wStringBuffer1
+	ld bc, wStringBuffer2 - wStringBuffer1
 	ld a, " "
 	call ByteFill
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	cp $ff
 	ret z
 	push de
@@ -316,13 +316,13 @@ ChooseMoveToLearn:
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, StringBuffer1
+	ld hl, wStringBuffer1
 	ld bc, 3
 	call PlaceString
-	ld hl, StringBuffer1 + 3
+	ld hl, wStringBuffer1 + 3
 	ld [hl], "/"
 
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 
 	ld bc, MOVE_LENGTH
@@ -341,13 +341,13 @@ ChooseMoveToLearn:
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld hl, StringBuffer1 + 4
+	ld hl, wStringBuffer1 + 4
 	ld bc, 3
 	call PlaceString
-	ld hl, StringBuffer1 + 4 + 3
+	ld hl, wStringBuffer1 + 4 + 3
 	ld [hl], "/"
 
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 
 	ld bc, MOVE_LENGTH
@@ -355,11 +355,11 @@ ChooseMoveToLearn:
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	ld hl, StringBuffer1 + 8
+	ld hl, wStringBuffer1 + 8
 	and a
 	jr z, .no_power
-	ld [EngineBuffer1], a
-	ld de, EngineBuffer1
+	ld [wEngineBuffer1], a
+	ld de, wEngineBuffer1
 	lb bc, 1, 3
 	call PrintNum
 	jr .got_power
@@ -368,10 +368,10 @@ ChooseMoveToLearn:
 	ld bc, 3
 	call PlaceString
 .got_power
-	ld hl, StringBuffer1 + 8 + 3
+	ld hl, wStringBuffer1 + 8 + 3
 	ld [hl], "/"
 
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	dec a
 
 	ld bc, MOVE_LENGTH
@@ -379,19 +379,19 @@ ChooseMoveToLearn:
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	ld [EngineBuffer1], a
-	ld hl, StringBuffer1 + 12
-	ld de, EngineBuffer1
+	ld [wEngineBuffer1], a
+	ld hl, wStringBuffer1 + 12
+	ld de, wEngineBuffer1
 	lb bc, 1, 2
 	call PrintNum
-	ld hl, StringBuffer1 + 12 + 2
+	ld hl, wStringBuffer1 + 12 + 2
 	ld [hl], "@"
 
 	ld hl, SCREEN_WIDTH - 6
 	pop de
 	add hl, de
 	push de
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	call PlaceString
 	pop de
 	ret
@@ -433,11 +433,11 @@ ChooseMoveToLearn:
 	call PlaceString
 	pop hl
 	call SpeechTextBox
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	cp $ff
 	pop de
 	ret z
-	ld [CurSpecies], a
+	ld [wCurSpecies], a
 	hlcoord 1, 14
 	predef PrintMoveDesc
 	ret

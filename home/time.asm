@@ -129,11 +129,11 @@ FixDays:: ; 5e8
 FixTime:: ; 61d
 ; add ingame time (set at newgame) to current time
 ;				  day     hr    min    sec
-; store time in CurDay, hHours, hMinutes, hSeconds
+; store time in wCurDay, hHours, hMinutes, hSeconds
 
 	ld a, [hRTCSeconds]
 	ld c, a
-	ld a, [StartSecond]
+	ld a, [wStartSecond]
 	add c
 	sub 60
 	jr nc, .updatesec
@@ -144,7 +144,7 @@ FixTime:: ; 61d
 	ccf ; carry is set, so turn it off
 	ld a, [hRTCMinutes]
 	ld c, a
-	ld a, [StartMinute]
+	ld a, [wStartMinute]
 	adc c
 	sub 60
 	jr nc, .updatemin
@@ -155,7 +155,7 @@ FixTime:: ; 61d
 	ccf ; carry is set, so turn it off
 	ld a, [hRTCHours]
 	ld c, a
-	ld a, [StartHour]
+	ld a, [wStartHour]
 	adc c
 	sub 24
 	jr nc, .updatehr
@@ -166,26 +166,26 @@ FixTime:: ; 61d
 	ccf ; carry is set, so turn it off
 	ld a, [hRTCDayLo]
 	ld c, a
-	ld a, [StartDay]
+	ld a, [wStartDay]
 	adc c
-	ld [CurDay], a
+	ld [wCurDay], a
 	ret
 ; 658
 
 SetTimeOfDay:: ; 658
 	xor a
-	ld [StringBuffer2], a
-	ld [StringBuffer2 + 3], a
+	ld [wStringBuffer2], a
+	ld [wStringBuffer2 + 3], a
 	jr InitTime
 
 SetDayOfWeek:: ; 663
 	call UpdateTime
 	ld a, [hHours]
-	ld [StringBuffer2 + 1], a
+	ld [wStringBuffer2 + 1], a
 	ld a, [hMinutes]
-	ld [StringBuffer2 + 2], a
+	ld [wStringBuffer2 + 2], a
 	ld a, [hSeconds]
-	ld [StringBuffer2 + 3], a
+	ld [wStringBuffer2 + 3], a
 
 InitTime:: ; 677
 	farjp _InitTime

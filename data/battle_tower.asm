@@ -1,13 +1,13 @@
 Function_LoadOpponentTrainer: ; 1f8000
 	ld a, [rSVBK]
 	push af
-	ld a, BANK(BT_OTTrainer)
+	ld a, BANK(wBT_OTTrainer)
 	ld [rSVBK], a
 
-	; Fill BT_OTTrainer with zeros
+	; Fill wBT_OTTrainer with zeros
 	xor a
-	ld hl, BT_OTTrainer
-	ld bc, BT_OTTrainerEnd - BT_OTTrainer
+	ld hl, wBT_OTTrainer
+	ld bc, wBT_OTTrainerEnd - wBT_OTTrainer
 	call ByteFill
 
 	ld a, BANK(sBTTrainers)
@@ -64,7 +64,7 @@ Function_LoadOpponentTrainer: ; 1f8000
 
 ; Copy name (10 bytes) and class (1 byte) of trainer
 	ld hl, BattleTowerTrainers
-	ld de, BT_OTName
+	ld de, wBT_OTName
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld bc, NAME_LENGTH
@@ -205,13 +205,13 @@ PopulateBattleTowerTeam:
 ; Loads 3 pokémon from a set and places it in OTPartyMon
 	; Zerofill the OTPartyMon struct
 	xor a
-	ld hl, OTPartyMons
-	ld bc, OTPartyMonsEnd - OTPartyMons
+	ld hl, wOTPartyMons
+	ld bc, wOTPartyMonsEnd - wOTPartyMons
 	call ByteFill
 
 	; Set party size
 	ld a, BATTLETOWER_NROFPKMNS
-	ld [OTPartyCount], a
+	ld [wOTPartyCount], a
 
 	; Get the set and size
 	ld a, [wNrOfBeatenBattleTowerTrainers]
@@ -244,7 +244,7 @@ PopulateBattleTowerTeam:
 	dec e
 	jr z, .species_ok
 	push hl
-	ld hl, OTPartyMon1Species
+	ld hl, wOTPartyMon1Species
 	ld a, e
 	dec a
 	call GetPartyLocation
@@ -254,18 +254,18 @@ PopulateBattleTowerTeam:
 	jr z, .loop ; Duplicate species -- re-roll
 	jr .species_loop
 .species_ok
-	; Species is OK. Store species data in OTPartyMon and OTPartySpecies
+	; Species is OK. Store species data in OTPartyMon and wOTPartySpecies
 	pop de
 	push de
 	push hl
 	ld a, e
-	ld hl, OTPartySpecies
+	ld hl, wOTPartySpecies
 	ld c, a
 	ld b, 0
 	add hl, bc
 	ld b, h
 	ld c, l
-	ld hl, OTPartyMon1Species
+	ld hl, wOTPartyMon1Species
 	call GetPartyLocation
 	pop de
 
@@ -276,13 +276,13 @@ PopulateBattleTowerTeam:
 	ld [bc], a
 	inc de
 
-	ld bc, OTPartyMon1Item - OTPartyMon1Species
+	ld bc, wOTPartyMon1Item - wOTPartyMon1Species
 	add hl, bc
 	ld a, [de]
 	ld [hl], a
 	inc de
 
-	ld bc, OTPartyMon1Moves - OTPartyMon1Item
+	ld bc, wOTPartyMon1Moves - wOTPartyMon1Item
 	add hl, bc
 	ld b, NUM_MOVES
 	call .Copy
@@ -290,7 +290,7 @@ PopulateBattleTowerTeam:
 	push hl
 	push de
 	push hl
-	ld bc, OTPartyMon1PP - OTPartyMon1Moves
+	ld bc, wOTPartyMon1PP - wOTPartyMon1Moves
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -299,24 +299,24 @@ PopulateBattleTowerTeam:
 	pop de
 	pop hl
 
-	ld bc, OTPartyMon1DVs - OTPartyMon1Moves
+	ld bc, wOTPartyMon1DVs - wOTPartyMon1Moves
 	add hl, bc
 	ld b, 3
 	call .Copy
 
-	ld bc, OTPartyMon1Personality - OTPartyMon1DVs
+	ld bc, wOTPartyMon1Personality - wOTPartyMon1DVs
 	add hl, bc
 	ld b, 2
 	call .Copy
 
 	; We're done copying the struct. Now generate the rest.
 	; Happiness is always 255
-	ld bc, OTPartyMon1Happiness - OTPartyMon1Personality
+	ld bc, wOTPartyMon1Happiness - wOTPartyMon1Personality
 	add hl, bc
 	ld [hl], 255
 
 	; Set EVs to 252
-	ld bc, OTPartyMon1EVs - OTPartyMon1Happiness
+	ld bc, wOTPartyMon1EVs - wOTPartyMon1Happiness
 	add hl, bc
 	push hl
 	ld bc, 6
@@ -334,25 +334,25 @@ PopulateBattleTowerTeam:
 	call BT_SetLevel
 
 	; Initialize trainer nicknames
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	ld d, a
 .nick_loop
 	dec d
 	push de
 	ld a, d
-	ld hl, OTPartyMon1Species
+	ld hl, wOTPartyMon1Species
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
-	ld hl, OTPartyMonNicknames
+	ld hl, wOTPartyMonNicknames
 	pop de
 	push de
 	ld a, d
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, StringBuffer1
+	ld hl, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	pop de
@@ -415,11 +415,11 @@ BT_GetSetSize:
 BT_SetLevel:
 ; Set level of all pokémon in your and opponent's party to a and set HP to max HP
 	ld d, a
-	ld a, [PartyCount]
-	ld hl, PartyMon1
+	ld a, [wPartyCount]
+	ld hl, wPartyMon1
 	call .set_level
-	ld a, [OTPartyCount]
-	ld hl, OTPartyMon1
+	ld a, [wOTPartyCount]
+	ld hl, wOTPartyMon1
 .set_level
 	dec a
 	ld e, a
@@ -430,25 +430,25 @@ BT_SetLevel:
 	call GetPartyLocation
 
 	; Get base stats and experience group
-	ld bc, PartyMon1Species - PartyMon1
+	ld bc, wPartyMon1Species - wPartyMon1
 	add hl, bc
 	ld a, [hl]
-	ld [CurSpecies], a
-	ld [CurPartySpecies], a
+	ld [wCurSpecies], a
+	ld [wCurPartySpecies], a
 	push hl
 	call GetBaseData
 	pop hl
 
-	ld bc, PartyMon1Level - PartyMon1Species
+	ld bc, wPartyMon1Level - wPartyMon1Species
 	add hl, bc
 	pop de
 	push de
 	ld a, d
 	ld [hl], a
-	ld [CurPartyLevel], a ; for stat calculation
+	ld [wCurPartyLevel], a ; for stat calculation
 
 	; Set up Exp properly
-	ld bc, PartyMon1Exp - PartyMon1Level
+	ld bc, wPartyMon1Exp - wPartyMon1Level
 	add hl, bc
 	push hl
 	farcall CalcExpAtLevel
@@ -463,10 +463,10 @@ BT_SetLevel:
 	pop hl
 
 	; Calculate stats
-	ld bc, PartyMon1MaxHP - PartyMon1Exp
+	ld bc, wPartyMon1MaxHP - wPartyMon1Exp
 	add hl, bc
 	push hl
-	ld bc, PartyMon1EVs - PartyMon1MaxHP
+	ld bc, wPartyMon1EVs - wPartyMon1MaxHP
 	add hl, bc
 	pop de
 	ld b, TRUE
@@ -474,7 +474,7 @@ BT_SetLevel:
 	predef CalcPkmnStats
 	pop hl
 	push hl
-	ld bc, OTPartyMon1HP - OTPartyMon1MaxHP
+	ld bc, wOTPartyMon1HP - wOTPartyMon1MaxHP
 	add hl, bc
 	pop de
 	ld a, [de]

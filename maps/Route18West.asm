@@ -32,8 +32,8 @@ Route18WestBikeCheckScript:
 	end
 
 .CheckPlayerState:
-	ld a, [PlayerState]
-	ld [ScriptVar], a
+	ld a, [wPlayerState]
+	ld [wScriptVar], a
 	ret
 
 TrainerBikerCharles:

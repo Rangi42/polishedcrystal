@@ -14,7 +14,7 @@ SpecialBuenasPassword: ; 8af6b
 	call DoNthMenu ; menu
 	farcall Buena_ExitMenu
 	ld b, $0
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	ld c, a
 	ld a, [wBuenasPassword]
 	and $3
@@ -24,7 +24,7 @@ SpecialBuenasPassword: ; 8af6b
 
 .wrong
 	ld a, b
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 8afa9
 
@@ -55,7 +55,7 @@ SpecialBuenasPassword: ; 8af6b
 	ld a, [wBuenasPassword]
 	and $f0
 	ld c, a
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	add c
 	ld c, a
 	farcall GetBuenasPassword

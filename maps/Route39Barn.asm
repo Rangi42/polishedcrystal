@@ -76,9 +76,9 @@ MooMoo:
 	checkitem ORAN_BERRY
 	iffalse .MaybeSitrusBerry
 	takeitem ORAN_BERRY
-	copybytetovar MooMooBerries
+	copybytetovar wMooMooBerries
 	addvar 1
-	copyvartobyte MooMooBerries
+	copyvartobyte wMooMooBerries
 	if_equal 3, .ThreeOranBerries
 	if_equal 5, .FiveOranBerries
 	if_equal 7, .SevenOranBerries
@@ -88,9 +88,9 @@ MooMoo:
 	checkitem SITRUS_BERRY
 	iffalse .NoBerriesInBag
 	takeitem SITRUS_BERRY
-	copybytetovar MooMooBerries
+	copybytetovar wMooMooBerries
 	addvar 2
-	copyvartobyte MooMooBerries
+	copyvartobyte wMooMooBerries
 	if_greater_than 6, .SevenSitrusBerries
 	if_greater_than 4, .FiveSitrusBerries
 	if_greater_than 2, .ThreeSitrusBerries

@@ -8,7 +8,7 @@ SLOTS_STARYU EQU $14
 REEL_SIZE EQU 15
 
 _SlotMachine:
-	ld hl, Options1
+	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
 	call .InitGFX
 	call DelayFrame
@@ -20,7 +20,7 @@ _SlotMachine:
 	call PlaySFX
 	call WaitSFX
 	call ClearBGPalettes
-	ld hl, Options1
+	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC ; $ff40
 	res 2, [hl]
@@ -86,10 +86,10 @@ _SlotMachine:
 	ld [wSlotBias], a
 
 ;	ld de, MUSIC_GAME_CORNER
-;	ld a, [MapGroup]
+;	ld a, [wMapGroup]
 ;	cp GROUP_GOLDENROD_GAME_CORNER
 ;	jr nz, .celadon_game_corner
-;	ld a, [MapNumber]
+;	ld a, [wMapNumber]
 ;	cp MAP_GOLDENROD_GAME_CORNER
 ;	jr nz, .celadon_game_corner
 ;	ld de, MUSIC_GAME_CORNER_DPPT
@@ -1483,7 +1483,7 @@ Slots_InitBias: ; 93002 (24:7002)
 	and a
 	ret z
 	ld hl, .Normal
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	and a
 	jr z, .okay
 	ld hl, .Lucky
@@ -1727,7 +1727,7 @@ SlotPayoutText: ; 93158 (24:7158)
 rept 3
 	add hl, de
 endr
-	ld de, StringBuffer2
+	ld de, wStringBuffer2
 	ld bc, 4
 	call CopyBytes
 	ld a, [hli]

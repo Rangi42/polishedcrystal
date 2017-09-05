@@ -61,7 +61,7 @@ sLuckyIDNumber:: ds 2
 
 SECTION "Backup Save", SRAM
 
-sBackupOptions:: ds OptionsEnd - Options1
+sBackupOptions:: ds wOptionsEnd - wOptions1
 
 s0_b208:: ds 1 ; loaded with 99, used to check save corruption
 
@@ -79,7 +79,7 @@ s0_bf0f:: ds 1 ; loaded with 0x7f, used to check save corruption
 
 SECTION "Save", SRAM
 
-sOptions:: ds OptionsEnd - Options1
+sOptions:: ds wOptionsEnd - wOptions1
 
 s1_a008:: ds 1 ; loaded with 99, used to check save corruption
 

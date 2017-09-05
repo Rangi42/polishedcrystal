@@ -76,7 +76,7 @@ _LoadStandardFont:: ; fb449
 
 LoadStandardFontPointer::
 	ld hl, .FontPointers
-	ld a, [Options2]
+	ld a, [wOptions2]
 	and FONT_MASK
 	ld d, 0
 	ld e, a
@@ -108,7 +108,7 @@ _LoadFontsBattleExtra:: ; fb4be
 ; fb4cc
 
 LoadFrame:: ; fb4cc
-	ld a, [TextBoxFrame]
+	ld a, [wTextBoxFrame]
 	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
 	ld hl, Frames
 	call AddNTimes
@@ -134,8 +134,8 @@ LoadStatusIcons: ; fb50d
 
 LoadPlayerStatusIcon:
 	push de
-	ld a, [PlayerSubStatus2]
-	ld de, BattleMonStatus
+	ld a, [wPlayerSubStatus2]
+	ld de, wBattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconGFX
 	ld de, 2 tiles
@@ -157,8 +157,8 @@ LoadPlayerStatusIcon:
 
 LoadEnemyStatusIcon:
 	push de
-	ld a, [EnemySubStatus2]
-	ld de, EnemyMonStatus
+	ld a, [wEnemySubStatus2]
+	ld de, wEnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, EnemyStatusIconGFX
 	ld de, 2 tiles
@@ -186,8 +186,8 @@ InstantReloadPaletteHack:
 	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
-	ld hl, BGPals palette 5 ; to
-	ld de, UnknBGPals palette 5 ; from
+	ld hl, wBGPals palette 5 ; to
+	ld de, wUnknBGPals palette 5 ; from
 ; order
 	ld a, [rBGP]
 	ld b, a

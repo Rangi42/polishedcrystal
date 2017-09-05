@@ -1,13 +1,13 @@
 BattleTowerText:: ; 11c000
-; Print text c for trainer [BT_OTTrainerClass]
+; Print text c for trainer [wBT_OTTrainerClass]
 ; 1: Intro text
 ; 2: Player lost
 ; 3: Player won
 	ld a, [rSVBK]
 	push af
-	ld a, BANK(BT_OTTrainerClass)
+	ld a, BANK(wBT_OTTrainerClass)
 	ld [rSVBK], a
-	ld hl, BT_OTTrainerClass
+	ld hl, wBT_OTTrainerClass
 	ld a, [hl]
 
 	cp TOWERTYCOON
@@ -53,11 +53,11 @@ BattleTowerText:: ; 11c000
 	ld b, 0
 	dec c
 	jr nz, .restore
-	ld [BT_TrainerTextIndex], a
+	ld [wBT_TrainerTextIndex], a
 	jr .okay2
 
 .restore
-	ld a, [BT_TrainerTextIndex]
+	ld a, [wBT_TrainerTextIndex]
 
 .okay2
 	push af

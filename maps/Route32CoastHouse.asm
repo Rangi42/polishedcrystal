@@ -30,7 +30,7 @@ GourmetManiacScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse .NoItem
-	copybytetovar CurItem
+	copybytetovar wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION

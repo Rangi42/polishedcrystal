@@ -831,7 +831,7 @@ GFXHeaders: ; e1703
 INCBIN "gfx/unown_puzzle/tile_borders.2bpp"
 
 LoadUnownPuzzlePiecesGFX: ; e17a3
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	and 3
 	ld e, a
 	ld d, 0

@@ -25,11 +25,11 @@ _Squirtbottle: ; 50730
 ; 0x50753
 
 .CheckCanUseSquirtbottle: ; 50753
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	cp GROUP_ROUTE_36
 	jr nz, .nope
 
-	ld a, [MapNumber]
+	ld a, [wMapNumber]
 	cp MAP_ROUTE_36
 	jr nz, .nope
 
@@ -41,11 +41,11 @@ _Squirtbottle: ; 50730
 	jr nz, .nope
 
 	ld a, $1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .nope
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 50779

@@ -31,13 +31,13 @@ Special_SelectApricornForKurt: ; 88018
 	call Kurt_PrintTextWhichApricorn
 	pop bc
 	ld a, c
-	ld [MenuSelection], a
+	ld [wMenuSelection], a
 	call Kurt_SelectApricorn
 	ld a, c
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	and a
 	jr z, .done
-	ld [CurItem], a
+	ld [wCurItem], a
 	ld a, [wMenuCursorY]
 	ld c, a
 	push bc
@@ -58,7 +58,7 @@ Kurt_SelectApricorn: ; 88055
 	jr c, .nope
 	ld hl, .MenuDataHeader
 	call CopyMenuDataHeader
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	ld [wMenuCursorBuffer], a
 	xor a
 	ld [hBGMapMode], a
@@ -68,7 +68,7 @@ Kurt_SelectApricorn: ; 88055
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jr z, .nope
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	cp -1
 	jr nz, .done
 
@@ -94,31 +94,31 @@ Kurt_SelectApricorn: ; 88055
 	db $10 ; flags
 	db 4, 7
 	db 1
-	dbw 0, Buffer1
+	dbw 0, wBuffer1
 	dba .Name
 	dba .Quantity
 	dba NULL
 
 .Name: ; 8809f
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	and a
 	ret z
 	farjp PlaceMenuItemName
 ; 880ab
 
 .Quantity: ; 880ab
-	ld a, [MenuSelection]
-	ld [CurItem], a
+	ld a, [wMenuSelection]
+	ld [wCurItem], a
 	call Kurt_GetQuantityOfApricorn
 	ret z
 	ld a, [wItemQuantityChangeBuffer]
-	ld [MenuSelectionQuantity], a
+	ld [wMenuSelectionQuantity], a
 	farjp PlaceMenuItemQuantity
 ; 880c2
 
 Kurt_SelectQuantity: ; 880c2
-	ld a, [CurItem]
-	ld [MenuSelection], a
+	ld a, [wCurItem]
+	ld [wMenuSelection], a
 	call Kurt_GetQuantityOfApricorn
 	jr z, .done
 	ld a, [wItemQuantityChangeBuffer]
@@ -179,8 +179,8 @@ PlaceApricornQuantity: ; 88126
 
 Kurt_GetQuantityOfApricorn: ; 88139
 	push bc
-	ld hl, NumBerries
-	ld a, [CurItem]
+	ld hl, wNumBerries
+	ld a, [wCurItem]
 	ld c, a
 	ld b, $0
 .loop
@@ -211,27 +211,27 @@ Kurt_GetQuantityOfApricorn: ; 88139
 ; 88161
 
 Kurt_GiveUpSelectedQuantityOfSelectedApricorn: ; 88161
-; Get the quantity of Apricorns of type [CurItem]
+; Get the quantity of Apricorns of type [wCurItem]
 ; in the bag. Compatible with multiple stacks.
 
 ; Initialize the search.
 	push de
 	push bc
-	ld hl, NumBerries
-	ld a, [CurItem]
+	ld hl, wNumBerries
+	ld a, [wCurItem]
 	ld c, a
 	ld e, $0
 	xor a
-	ld [CurItemQuantity], a
+	ld [wCurItemQuantity], a
 	ld a, -1
 	ld [wApricorns], a
 
-; Search for [CurItem] in the bag.
+; Search for [wCurItem] in the bag.
 .loop1
 ; Increase the total count.
-	ld a, [CurItemQuantity]
+	ld a, [wCurItemQuantity]
 	inc a
-	ld [CurItemQuantity], a
+	ld [wCurItemQuantity], a
 ; Get the index of the next item.
 	inc hl
 	ld a, [hli]
@@ -247,7 +247,7 @@ Kurt_GiveUpSelectedQuantityOfSelectedApricorn: ; 88161
 	ld hl, wApricorns
 	add hl, de
 	inc e
-	ld a, [CurItemQuantity]
+	ld a, [wCurItemQuantity]
 	dec a
 	ld [hli], a
 	ld a, -1
@@ -313,7 +313,7 @@ Kurt_GiveUpSelectedQuantityOfSelectedApricorn: ; 88161
 	cp -1
 	jr z, .done
 	push hl
-	ld [CurItemQuantity], a
+	ld [wCurItemQuantity], a
 	call Kurt_GetRidOfItem
 	pop hl
 	ld a, [wItemQuantityChangeBuffer]
@@ -349,7 +349,7 @@ Kurt_GiveUpSelectedQuantityOfSelectedApricorn: ; 88161
 Kurt_GetAddressOfApricornQuantity: ; 88201
 	push hl
 	push bc
-	ld hl, NumBerries
+	ld hl, wNumBerries
 	inc hl
 	ld c, a
 	ld b, $0
@@ -365,15 +365,15 @@ endr
 
 Kurt_GetRidOfItem: ; 88211
 	push bc
-	ld hl, NumBerries
-	ld a, [CurItemQuantity]
+	ld hl, wNumBerries
+	ld a, [wCurItemQuantity]
 	ld c, a
 	ld b, $0
 	inc hl
 rept 2
 	add hl, bc
 endr
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld c, a
 	ld a, [hli]
 	cp -1
@@ -391,7 +391,7 @@ endr
 
 .okay
 	push bc
-	ld hl, NumBerries
+	ld hl, wNumBerries
 	ld a, b
 	ld [wItemQuantityChangeBuffer], a
 	call TossItem

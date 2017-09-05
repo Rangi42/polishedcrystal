@@ -42,7 +42,7 @@ UndergroundWarehouseResetSwitches:
 	clearevent EVENT_SWITCH_13
 	clearevent EVENT_SWITCH_14
 	writebyte $0
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	return
 
 TrainerGruntM24:

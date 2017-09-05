@@ -1,6 +1,6 @@
 FruitTreeScript:: ; 44000
 	opentext
-	copybytetovar CurFruit
+	copybytetovar wCurFruit
 	itemtotext $0, $0
 	writetext FruitBearingTreeText
 	buttonsound
@@ -15,7 +15,7 @@ FruitTreeScript:: ; 44000
 	yesorno
 	iffalse_endtext
 	takeitem MULCH
-	copybytetovar CurFruit
+	copybytetovar wCurFruit
 	callasm FertilizedFruitTree
 	jumpopenedtext UsedMulchText
 
@@ -24,21 +24,21 @@ FruitTreeScript:: ; 44000
 	callasm GetFruitTreeCount
 	if_equal $1, .try_one
 	if_equal $2, .try_two
-	copybytetovar CurFruit
+	copybytetovar wCurFruit
 	giveitem ITEM_FROM_MEM, 3
 	iffalse .try_two
 	buttonsound
 	writetext ObtainedThreeFruitText
 	jump .continue
 .try_two
-	copybytetovar CurFruit
+	copybytetovar wCurFruit
 	giveitem ITEM_FROM_MEM, 2
 	iffalse .try_one
 	buttonsound
 	writetext ObtainedTwoFruitText
 	jump .continue
 .try_one
-	copybytetovar CurFruit
+	copybytetovar wCurFruit
 	giveitem ITEM_FROM_MEM
 	iffalse .packisfull
 	buttonsound
@@ -56,16 +56,16 @@ FruitTreeScript:: ; 44000
 ; 44041
 
 TryResetFruitTrees: ; 4404c
-	ld hl, DailyFlags
+	ld hl, wDailyFlags
 	bit 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret nz
 	xor a
-	ld hl, FruitTreeFlags
+	ld hl, wFruitTreeFlags
 rept (NUM_FRUIT_TREES + 7) / 8 - 1
 	ld [hli], a
 endr
 	ld [hl], a
-	ld hl, DailyFlags
+	ld hl, wDailyFlags
 	set 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret
 ; 44078
@@ -74,7 +74,7 @@ CheckFruitTree: ; 44055
 	ld b, CHECK_FLAG
 	call GetFruitTreeFlag
 	ld a, c
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 4405f
 
@@ -88,11 +88,11 @@ FertilizedFruitTree:
 GetFruitTreeFlag: ; 44078
 	push hl
 	push de
-	ld a, [CurFruitTree]
+	ld a, [wCurFruitTree]
 	dec a
 	ld e, a
 	ld d, 0
-	ld hl, FruitTreeFlags
+	ld hl, wFruitTreeFlags
 	call FlagAction
 	pop de
 	pop hl
@@ -103,7 +103,7 @@ GetFruitTreeCount:
 	ld a, 3
 	call RandomRange
 	inc a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 FruitBearingTreeText: ; 440b5

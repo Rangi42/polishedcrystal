@@ -1,13 +1,13 @@
 ResetMapBufferEventFlags:: ; 2e50
 	xor a
-	ld hl, EventFlags
+	ld hl, wEventFlags
 	ld [hli], a
 	ret
 ; 2e56
 
 ResetBikeFlags:: ; 2e56
 	xor a
-	ld hl, BikeFlags
+	ld hl, wBikeFlags
 	ld [hli], a
 	ld [hl], a
 	ret
@@ -22,14 +22,14 @@ ResetFlashIfOutOfCave:: ; 2e5d
 	ret
 
 .asm_2e69
-	ld hl, StatusFlags
+	ld hl, wStatusFlags
 	res 2, [hl]
 	ret
 ; 2e6f
 
 
 EventFlagAction:: ; 0x2e6f
-	ld hl, EventFlags
+	ld hl, wEventFlags
 FlagAction:: ; 0x2e76
 ; Perform action b on bit de in flag array hl.
 

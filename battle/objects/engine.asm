@@ -1,5 +1,5 @@
 QueueBattleAnimation: ; cc9a1 (33:49a1)
-	ld hl, ActiveAnimObjects
+	ld hl, wActiveAnimObjects
 	ld e, 10
 .loop
 	ld a, [hl]
@@ -248,10 +248,10 @@ InitBattleAnimBuffer: ; ccaaa
 .check_kinesis_softboiled_milkdrink
 	sub d
 	push af
-	ld a, [FXAnimIDHi]
+	ld a, [wFXAnimIDHi]
 	or a
 	jr nz, .no_sub
-	ld a, [FXAnimIDLo]
+	ld a, [wFXAnimIDLo]
 ;	cp KINESIS
 ;	jr z, .kinesis
 	cp SOFTBOILED

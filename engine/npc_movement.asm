@@ -227,14 +227,14 @@ CheckFacingObject:: ; 6fd9
 	cp COLL_COUNTER
 	jr nz, .asm_6ff1
 
-	ld a, [PlayerStandingMapX]
+	ld a, [wPlayerStandingMapX]
 	sub d
 	cpl
 	inc a
 	add d
 	ld d, a
 
-	ld a, [PlayerStandingMapY]
+	ld a, [wPlayerStandingMapY]
 	sub e
 	cpl
 	inc a
@@ -268,7 +268,7 @@ WillPersonBumpIntoSomeoneElse: ; 7009
 	add hl, bc
 	ld e, [hl]
 IsNPCAtCoord: ; 7041
-	ld bc, ObjectStructs
+	ld bc, wObjectStructs
 	xor a
 .loop
 	ld [hObjectStructIndexBuffer], a
@@ -405,7 +405,7 @@ HasPersonReachedMovementLimit: ; 70a4
 IsPersonMovingOffEdgeOfScreen: ; 70ed
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
-	ld a, [XCoord]
+	ld a, [wXCoord]
 	cp [hl]
 	jr z, .check_y
 	jr nc, .yes
@@ -416,7 +416,7 @@ IsPersonMovingOffEdgeOfScreen: ; 70ed
 .check_y
 	ld hl, OBJECT_NEXT_MAP_Y
 	add hl, bc
-	ld a, [YCoord]
+	ld a, [wYCoord]
 	cp [hl]
 	jr z, .nope
 	jr nc, .yes

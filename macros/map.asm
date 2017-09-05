@@ -155,12 +155,12 @@ if "\1" == "north"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + \2_WIDTH * (\2_HEIGHT - 3) + \5
-	dw OverworldMap + \4 + 3
+	dw wOverworldMap + \4 + 3
 	db \6
 	db \2_WIDTH
 	db \2_HEIGHT * 2 - 1
 	db (\4 - \5) * -2
-	dw OverworldMap + \2_HEIGHT * (\2_WIDTH + 6) + 1
+	dw wOverworldMap + \2_HEIGHT * (\2_WIDTH + 6) + 1
 endc
 
 if "\1" == "south"
@@ -171,12 +171,12 @@ if "\1" == "south"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + \5
-	dw OverworldMap + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
+	dw wOverworldMap + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
 	db \6
 	db \2_WIDTH
 	db 0
 	db (\4 - \5) * -2
-	dw OverworldMap + \2_WIDTH + 7
+	dw wOverworldMap + \2_WIDTH + 7
 endc
 
 if "\1" == "west"
@@ -187,12 +187,12 @@ if "\1" == "west"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + (\2_WIDTH * \5) + \2_WIDTH - 3
-	dw OverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
+	dw wOverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
 	db \6
 	db \2_WIDTH
 	db (\4 - \5) * -2
 	db \2_WIDTH * 2 - 1
-	dw OverworldMap + \2_WIDTH * 2 + 6
+	dw wOverworldMap + \2_WIDTH * 2 + 6
 endc
 
 if "\1" == "east"
@@ -203,12 +203,12 @@ if "\1" == "east"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + (\2_WIDTH * \5)
-	dw OverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
+	dw wOverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
 	db \6
 	db \2_WIDTH
 	db (\4 - \5) * -2
 	db 0
-	dw OverworldMap + \2_WIDTH + 7
+	dw wOverworldMap + \2_WIDTH + 7
 endc
 
 ENDM

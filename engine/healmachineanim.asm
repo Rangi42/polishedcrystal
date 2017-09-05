@@ -1,26 +1,26 @@
 HealMachineAnim: ; 12324
 	; If you have no Pokemon, don't change the buffer.  This can lead to some glitchy effects if you have no Pokemon.
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	and a
 	ret z
-	; The location of the healing machine relative to the player is stored in ScriptVar.
+	; The location of the healing machine relative to the player is stored in wScriptVar.
 	; 0: Up and left (Pokemon Center)
 	; 1: Left (Elm's Lab)
 	; 2: Up (Hall of Fame)
-	ld a, [ScriptVar]
-	ld [Buffer1], a
+	ld a, [wScriptVar]
+	ld [wBuffer1], a
 	ld a, [rOBP1]
-	ld [Buffer2], a
+	ld [wBuffer2], a
 	call .DoJumptableFunctions
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	jp DmgToCgbObjPal1
 ; 1233e
 
 .DoJumptableFunctions: ; 1233e
 	xor a
-	ld [Buffer3], a
+	ld [wBuffer3], a
 .jumpable_loop
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	ld e, a
 	ld d, 0
 	ld hl, .Pointers
@@ -30,10 +30,10 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [Buffer3]
+	ld a, [wBuffer3]
 	ld e, a
 	inc a
-	ld [Buffer3], a
+	ld [wBuffer3], a
 	add hl, de
 	ld a, [hl]
 	cp 5
@@ -85,7 +85,7 @@ endr
 	ld de, .HOF_OAM
 
 .LoadBallsOntoMachine: ; 123a7
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	ld b, a
 .party_loop
 	call .PlaceHealingMachineTile
@@ -141,7 +141,7 @@ INCBIN "gfx/ow_fx/heal_machine.2bpp"
 
 .LoadPalettes: ; 12434
 	ld hl, .palettes
-	ld de, OBPals palette PAL_OW_TREE
+	ld de, wOBPals palette PAL_OW_TREE
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -180,7 +180,7 @@ endc
 	ld a, $5
 	ld [rSVBK], a
 
-	ld hl, OBPals palette PAL_OW_TREE
+	ld hl, wOBPals palette PAL_OW_TREE
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -218,7 +218,7 @@ endr
 
 .PlaceHealingMachineTile: ; 124a3
 	push bc
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	bcpixel 2, 4
 	cp $1 ; ElmsLab
 	jr z, .okay

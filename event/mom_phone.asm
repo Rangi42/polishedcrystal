@@ -34,13 +34,13 @@ MomTriesToBuySomething:: ; fcfec
 .ok
 	ld a, PHONE_MOM
 	ld [wCurrentCaller], a
-	ld bc, EngineBuffer2
+	ld bc, wEngineBuffer2
 	ld hl, 0
 	add hl, bc
 	ld [hl], 0
 	inc hl
 	ld [hl], 1
-	ld hl, wPhoneScriptPointer - EngineBuffer2
+	ld hl, wPhoneScriptPointer - wEngineBuffer2
 	add hl, bc
 	ld a, BANK(Mom_GetScriptPointer)
 	ld [hli], a
@@ -82,7 +82,7 @@ CheckBalance_MomItem2: ; fd044
 	inc hl
 	ld [hl], (2300 % $100) ; $fc
 .loop
-	ld de, MomItemTriggerBalance
+	ld de, wMomItemTriggerBalance
 	ld bc, wMomsMoney
 	farcall CompareMoney
 	jr z, .exact
@@ -104,7 +104,7 @@ CheckBalance_MomItem2: ; fd044
 	ret
 
 .AddMoney:
-	ld de, MomItemTriggerBalance
+	ld de, wMomItemTriggerBalance
 	ld bc, hMoneyTemp
 	farjp AddMoney
 ; fd0a6
@@ -141,10 +141,10 @@ Mom_GiveItemOrDoll: ; fd0c3
 
 .not_doll
 	ld a, [hl]
-	ld [CurItem], a
+	ld [wCurItem], a
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
-	ld hl, PCItems
+	ld hl, wPCItems
 	jp ReceiveItem
 ; fd0eb
 

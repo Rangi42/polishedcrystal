@@ -2,7 +2,7 @@
 TrainerPalettes: ; b0ce
 
 if !DEF(MONOCHROME)
-PlayerPalette:           INCLUDE "gfx/trainers/cal.pal"
+wPlayerPalette:           INCLUDE "gfx/trainers/cal.pal"
 KrisPalette:
 CarriePalette:           INCLUDE "gfx/trainers/carrie.pal"
 CalPalette:              INCLUDE "gfx/trainers/cal.pal"
@@ -151,7 +151,7 @@ CuboneArmorPalette:      INCLUDE "gfx/trainers/cubone_armor.pal"
 MeteoritePalette:        INCLUDE "gfx/trainers/meteorite.pal"
 SilhouettePalette:       INCLUDE "gfx/trainers/silhouette.pal"
 else
-PlayerPalette:
+wPlayerPalette:
 KrisPalette:
 Lyra1Palette:
 rept 144

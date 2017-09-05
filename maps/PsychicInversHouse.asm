@@ -44,7 +44,7 @@ PsychicInverScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
-	copybytetovar InverseBattleScore
+	copybytetovar wInverseBattleScore
 	if_equal 0, .Score0
 	if_greater_than 127, .Score0 ; negative
 	if_less_than 4, .Score1_3
@@ -92,14 +92,14 @@ PsychicInverScript:
 	ld a, APICOT_BERRY - LUM_BERRY + 1
 	call RandomRange
 	add LUM_BERRY
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .RandomStone:
 	ld a, EVERSTONE - LEAF_STONE + 1
 	call RandomRange
 	add LEAF_STONE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 PsychicInverGreetingText:

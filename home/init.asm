@@ -73,7 +73,7 @@ Init:: ; 17d
 	or c
 	jr nz, .ByteFill
 
-	ld sp, Stack
+	ld sp, wStack
 
 ; Clear HRAM
 	ld a, [hCGB]

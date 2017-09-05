@@ -89,10 +89,10 @@ LoseMoney: ; 12513
 	add hl, bc
 	ld a, [hl]
 	ld [hMultiplier], a
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	ld c, a
 	ld b, 0
-	ld hl, PartyMon1Level
+	ld hl, wPartyMon1Level
 	ld de, PARTYMON_STRUCT_LENGTH
 .loop
 	ld a, [hl]
@@ -127,7 +127,7 @@ LoseMoney: ; 12513
 	farcall TakeMoney
 	ld a, 1
 .load
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .copy
@@ -157,7 +157,7 @@ DetermineWildBattlePanic:
 	ld hl, wWildBattlePanic
 	ld a, [hl]
 	and $1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	xor a
 	ld [hl], a
 	ret

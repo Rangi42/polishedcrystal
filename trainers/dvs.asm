@@ -1,6 +1,6 @@
 GetTrainerEVsDVsAndPersonality: ; 270c4
-; Return the EVs, DVs and Personality of OtherTrainerClass in bc
-	ld a, [OtherTrainerClass]
+; Return the EVs, DVs and Personality of wOtherTrainerClass in bc
+	ld a, [wOtherTrainerClass]
 	dec a
 	ld c, a
 	ld b, 0
@@ -15,15 +15,15 @@ rept 6
 	inc de
 endr
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer], a
+	ld [wDVAndPersonalityBuffer], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 1], a
+	ld [wDVAndPersonalityBuffer + 1], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 2], a
+	ld [wDVAndPersonalityBuffer + 2], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 3], a
+	ld [wDVAndPersonalityBuffer + 3], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 4], a
+	ld [wDVAndPersonalityBuffer + 4], a
 	ret
 ; 270d6
 

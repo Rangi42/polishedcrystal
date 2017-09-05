@@ -481,7 +481,7 @@ ITEMMENU_CLOSE   EQU 6
 	const MART_BT_3
 
 
-; PartyMenuActionText
+; wPartyMenuActionText
 	const_def
 	const PARTYMENUACTION_00
 	const PARTYMENUACTION_HEALING_ITEM

@@ -1,13 +1,13 @@
 ValidateOTTrademon: ; fb57e
 	ld a, [wd003]
-	ld hl, OTPartyMon1Species
+	ld hl, wOTPartyMon1Species
 	call GetPartyLocation
 	push hl
 	ld a, [wd003]
 	inc a
 	ld c, a
 	ld b, 0
-	ld hl, OTPartyCount
+	ld hl, wOTPartyCount
 	add hl, bc
 	ld a, [hl]
 	pop hl
@@ -35,7 +35,7 @@ ValidateOTTrademon: ; fb57e
 Functionfb5dd: ; fb5dd
 	ld a, [wd002]
 	ld d, a
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	ld b, a
 	ld c, $0
 .loop
@@ -43,7 +43,7 @@ Functionfb5dd: ; fb5dd
 	cp d
 	jr z, .next
 	ld a, c
-	ld hl, PartyMon1HP
+	ld hl, wPartyMon1HP
 	call GetPartyLocation
 	ld a, [hli]
 	or [hl]
@@ -54,7 +54,7 @@ Functionfb5dd: ; fb5dd
 	dec b
 	jr nz, .loop
 	ld a, [wd003]
-	ld hl, OTPartyMon1HP
+	ld hl, wOTPartyMon1HP
 	call GetPartyLocation
 	ld a, [hli]
 	or [hl]
@@ -69,20 +69,20 @@ Functionfb5dd: ; fb5dd
 
 PlaceTradePartnerNamesAndParty: ; fb60d
 	hlcoord 4, 0
-	ld de, PlayerName
+	ld de, wPlayerName
 	call PlaceString
 	ld a, $14
 	ld [bc], a
 	hlcoord 4, 8
-	ld de, OTPlayerName
+	ld de, wOTPlayerName
 	call PlaceString
 	ld a, $14
 	ld [bc], a
 	hlcoord 7, 1
-	ld de, PartySpecies
+	ld de, wPartySpecies
 	call .PlaceSpeciesNames
 	hlcoord 7, 9
-	ld de, OTPartySpecies
+	ld de, wOTPartySpecies
 .PlaceSpeciesNames: ; fb634
 	ld c, $0
 .loop

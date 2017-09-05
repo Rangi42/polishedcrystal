@@ -54,11 +54,11 @@ ReceiveItem:: ; 2f66
 ; 2f79
 
 ReceiveTMHM:: ; d3c4
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	ld e, a
 	ld d, 0
 	ld b, SET_FLAG
-	ld hl, TMsHMs
+	ld hl, wTMsHMs
 	call FlagAction
 	scf
 	ret
@@ -84,11 +84,11 @@ CheckItem:: ; 2f79
 ; 2f8c
 
 CheckTMHM:: ; d3fb
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	ld e, a
 	ld d, 0
 	ld b, CHECK_FLAG
-	ld hl, TMsHMs
+	ld hl, wTMsHMs
 	call FlagAction
 	ret z
 	scf
@@ -105,9 +105,9 @@ CountItem::
 
 	call _CountItem
 	ld a, b
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	ld a, c
-	ld [Buffer2], a
+	ld [wBuffer2], a
 
 	pop de
 	pop hl

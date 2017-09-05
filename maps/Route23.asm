@@ -193,7 +193,7 @@ Route23RisingBadgeTriggerScript:
 Route23OfficerNoBadgeText:
 	text "You don't have the"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text " yet!"
 
 	para "You have to have"
@@ -213,7 +213,7 @@ Route23OfficerHaveBadgeScript:
 .SeeBadgeText:
 	text "Oh! That is the"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "!@"
 	sound_dex_fanfare_50_79
 	db "@@"
@@ -222,6 +222,6 @@ Route23OfficerNeedBadgeText:
 	text "You can pass here"
 	line "only if you have"
 	cont "the @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "."
 	done

@@ -9,7 +9,7 @@
 ; BG effects for use in battle animations.
 
 ExecuteBGEffects: ; c8000 (32:4000)
-	ld hl, ActiveBGEffects
+	ld hl, wActiveBGEffects
 	ld e, 5
 .loop
 	ld a, [hl]
@@ -30,7 +30,7 @@ ExecuteBGEffects: ; c8000 (32:4000)
 	ret
 
 QueueBGEffect: ; c801a (32:401a)
-	ld hl, ActiveBGEffects
+	ld hl, wActiveBGEffects
 	ld e, 5
 .loop
 	ld a, [hl]
@@ -917,7 +917,7 @@ BattleBGEffect_Surf: ; c8545 (32:4545)
 	jr nz, .loop
 	pop af
 	ld [hl], a
-	ld de, LYOverridesBackup
+	ld de, wLYOverridesBackup
 	ld hl, wSurfWaveBGEffect
 	ld bc, $0
 .loop2
@@ -1162,7 +1162,7 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	cpl
 	inc a
 	ld d, a
-	ld h, LYOverridesBackup / $100
+	ld h, wLYOverridesBackup / $100
 	ld a, [hLYOverrideStart]
 	ld l, a
 	ld a, [hLYOverrideEnd]
@@ -1471,10 +1471,10 @@ Tackle_BGEffect25_2d_two:
 
 Functionc88a5: ; c88a5 (32:48a5)
 	push af
-	ld a, [FXAnimIDHi] ; FXAnimIDHi
+	ld a, [wFXAnimIDHi] ; FXAnimIDHi
 	or a
 	jr nz, .not_rollout
-	ld a, [FXAnimIDLo] ; FXAnimID
+	ld a, [wFXAnimIDLo] ; wFXAnimID
 	cp ROLLOUT
 	jr z, .rollout
 .not_rollout
@@ -1487,7 +1487,7 @@ Functionc88a5: ; c88a5 (32:48a5)
 	ld a, [hLYOverrideEnd]
 	sub d
 	ld d, a
-	ld h, LYOverridesBackup / $100
+	ld h, wLYOverridesBackup / $100
 	ld a, [hSCY]
 	or a
 	jr nz, .skip1
@@ -1822,7 +1822,7 @@ BattleBGEffect_2a: ; c8a3a (32:4a3a)
 	ld a, [hLYOverrideEnd]
 	sub l
 	srl a
-	ld h, LYOverridesBackup / $100
+	ld h, wLYOverridesBackup / $100
 .loop2
 	ld [hl], e
 	inc hl
@@ -2126,7 +2126,7 @@ BattleBGEffect_2e: ; c8ce1 (32:4ce1)
 	ld [hSCY], a
 	cpl
 	inc a
-	ld [AnimObject01_YOffset], a
+	ld [wAnimObject01_YOffset], a
 	ret
 
 BattleBGEffect_1f: ; c8cf9 (32:4cf9)
@@ -2323,20 +2323,20 @@ BGEffects_LoadBGPal0_OBPal1: ; c8e52 (32:4e52)
 	ld a, h
 	push bc
 	push af
-	ld hl, BGPals palette 0
-	ld de, UnknBGPals palette 0
+	ld hl, wBGPals palette 0
+	ld de, wUnknBGPals palette 0
 	ld b, a
 	ld c, $1
 	call CopyPals
-	ld hl, BGPals palette 6
-	ld de, UnknBGPals palette 6
+	ld hl, wBGPals palette 6
+	ld de, wUnknBGPals palette 6
 	pop af
 	ld b, a
 	push af
 	ld c, $1
 	call CopyPals
-	ld hl, OBPals palette PAL_BATTLE_PLAYER
-	ld de, UnknOBPals palette PAL_BATTLE_PLAYER
+	ld hl, wOBPals palette PAL_BATTLE_PLAYER
+	ld de, wUnknOBPals palette PAL_BATTLE_PLAYER
 	pop af
 	ld b, a
 	ld c, $1
@@ -2357,13 +2357,13 @@ BGEffects_LoadBGPal1_OBPal0: ; c8e7f (32:4e7f)
 	ld a, h
 	push bc
 	push af
-	ld hl, BGPals palette 1
-	ld de, UnknBGPals palette 1
+	ld hl, wBGPals palette 1
+	ld de, wUnknBGPals palette 1
 	ld b, a
 	ld c, $1
 	call CopyPals
-	ld hl, OBPals palette PAL_BATTLE_ENEMY
-	ld de, UnknOBPals palette PAL_BATTLE_ENEMY
+	ld hl, wOBPals palette PAL_BATTLE_ENEMY
+	ld de, wUnknOBPals palette PAL_BATTLE_ENEMY
 	pop af
 	ld b, a
 	ld c, $1
@@ -2404,13 +2404,13 @@ BattleBGEffect_GetNextDMGPal: ; c8eb2 (32:4eb2)
 BattleBGEffects_ClearLYOverrides: ; c8eca (32:4eca)
 	xor a
 BattleBGEffects_SetLYOverrides: ; c8ecb (32:4ecb)
-	ld hl, LYOverrides ; wListPointer
+	ld hl, wLYOverrides ; wListPointer
 	ld e, $99
 .loop1
 	ld [hli], a
 	dec e
 	jr nz, .loop1
-	ld hl, LYOverridesBackup
+	ld hl, wLYOverridesBackup
 	ld e, $91
 .loop2
 	ld [hli], a
@@ -2480,7 +2480,7 @@ Functionc8f2e: ; c8f2e (32:4f2e)
 	ld [wBattleAnimTemp2], a
 	ld a, $80
 	ld [wBattleAnimTemp3], a
-	ld bc, LYOverridesBackup
+	ld bc, wLYOverridesBackup
 .loop
 	ld a, [hLYOverrideStart]
 	cp c
@@ -2541,7 +2541,7 @@ Functionc8f9a: ; c8f9a (32:4f9a)
 	ld a, d
 	ld [wBattleAnimTemp2], a
 	call .GetLYOverrideBackupAddrOffset
-	ld hl, LYOverridesBackup
+	ld hl, wLYOverridesBackup
 	add hl, de
 	ld c, l
 	ld b, h
@@ -2621,7 +2621,7 @@ BattleBGEffect_WavyScreenFX: ; c8fef (32:4fef)
 
 BGEffect_FillLYOverridesBackup: ; c900b (32:500b)
 	push af
-	ld h, LYOverridesBackup / $100
+	ld h, wLYOverridesBackup / $100
 	ld a, [hLYOverrideStart]
 	ld l, a
 	ld a, [hLYOverrideEnd]
@@ -2644,7 +2644,7 @@ BGEffect_DisplaceLYOverridesBackup: ; c901b (32:501b)
 	sub l
 	sub e
 	ld d, a
-	ld h, LYOverridesBackup / $100
+	ld h, wLYOverridesBackup / $100
 	ld a, [hLYOverrideStart]
 	ld l, a
 	ld a, $90
@@ -2675,12 +2675,12 @@ BGEffect_CheckFlyDigStatus: ; c9042 (32:5042)
 	and $1
 	xor [hl]
 	jr nz, .player
-	ld a, [EnemySubStatus3] ; EnemySubStatus3
+	ld a, [wEnemySubStatus3] ; EnemySubStatus3
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret
 
 .player
-	ld a, [PlayerSubStatus3] ; PlayerSubStatus3
+	ld a, [wPlayerSubStatus3] ; PlayerSubStatus3
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret
 

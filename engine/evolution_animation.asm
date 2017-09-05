@@ -2,21 +2,21 @@ EvolutionAnimation: ; 4e5e1
 	push hl
 	push de
 	push bc
-	ld a, [CurSpecies]
+	ld a, [wCurSpecies]
 	push af
 	ld a, [rOBP0]
 	push af
-	ld a, [BaseDexNo]
+	ld a, [wBaseDexNo]
 	push af
 
 	call .EvolutionAnimation
 
 	pop af
-	ld [BaseDexNo], a
+	ld [wBaseDexNo], a
 	pop af
 	ld [rOBP0], a
 	pop af
-	ld [CurSpecies], a
+	ld [wCurSpecies], a
 	pop bc
 	pop de
 	pop hl
@@ -49,13 +49,13 @@ EvolutionAnimation: ; 4e5e1
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wEvolutionOldSpecies]
-	ld [PlayerHPPal], a
+	ld [wPlayerHPPal], a
 
 	ld c, $0
 	call .GetSGBLayout
 	ld a, [wEvolutionOldSpecies]
-	ld [CurPartySpecies], a
-	ld [CurSpecies], a
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
 	call .PlaceFrontpic
 
 	ld de, VTiles2
@@ -67,12 +67,12 @@ EvolutionAnimation: ; 4e5e1
 	ld [wEvolutionPicOffset], a
 	call .ReplaceFrontpic
 	ld a, [wEvolutionNewSpecies]
-	ld [CurPartySpecies], a
-	ld [CurSpecies], a
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
 	call .LoadFrontpic
 	ld a, [wEvolutionOldSpecies]
-	ld [CurPartySpecies], a
-	ld [CurSpecies], a
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
 
 	ld a, $1
 	ld [hBGMapMode], a
@@ -101,7 +101,7 @@ EvolutionAnimation: ; 4e5e1
 	ld [wEvolutionCanceled], a
 
 	ld a, [wEvolutionNewSpecies]
-	ld [PlayerHPPal], a
+	ld [wPlayerHPPal], a
 
 	ld c, $0
 	call .GetSGBLayout
@@ -114,17 +114,17 @@ EvolutionAnimation: ; 4e5e1
 	push af
 	ld a, $1
 	ld [wBoxAlignment], a
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	push af
 
-	ld a, [PlayerHPPal]
-	ld [CurPartySpecies], a
+	ld a, [wPlayerHPPal]
+	ld [wCurPartySpecies], a
 	hlcoord 7, 2
 	lb de, $0, ANIM_MON_EVOLVE
 	predef AnimateFrontpic
 
 	pop af
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	pop af
 	ld [wBoxAlignment], a
 	ret
@@ -134,7 +134,7 @@ EvolutionAnimation: ; 4e5e1
 	ld [wEvolutionCanceled], a
 
 	ld a, [wEvolutionOldSpecies]
-	ld [PlayerHPPal], a
+	ld [wPlayerHPPal], a
 
 	ld c, $0
 	call .GetSGBLayout
@@ -143,7 +143,7 @@ EvolutionAnimation: ; 4e5e1
 	call .check_statused
 	ret c
 
-	ld a, [PlayerHPPal]
+	ld a, [wPlayerHPPal]
 	jp PlayCry
 ; 4e703
 
@@ -253,8 +253,8 @@ EvolutionAnimation: ; 4e5e1
 ; 4e794
 
 .check_statused ; 4e794
-	ld a, [CurPartyMon]
-	ld hl, PartyMon1Species
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Species
 	call GetPartyLocation
 	ld b, h
 	ld c, l

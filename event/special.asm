@@ -2,13 +2,13 @@ SpecialGiveShinyDitto:
 
 ; Adding to the party.
 	xor a
-	ld [MonType], a
+	ld [wMonType], a
 
 ; Level 5 Ditto.
 	ld a, DITTO
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, 5
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 
 	predef TryAddMonToParty
 	jr nc, .NotGiven
@@ -18,22 +18,22 @@ SpecialGiveShinyDitto:
 	farcall SetGiftPartyMonCaughtData
 
 ; Holding an Everstone for breeding natures.
-	ld hl, PartyMon1Item
+	ld hl, wPartyMon1Item
 	call _GetLastPartyMonAttribute
 	ld [hl], EVERSTONE
 
 ; OT ID. Guaranteed to not be the same as the player's for Masuda method breeding.
-	ld hl, PartyMon1ID + 1
+	ld hl, wPartyMon1ID + 1
 	call _GetLastPartyMonAttribute
-	ld a, [PlayerID + 1]
+	ld a, [wPlayerID + 1]
 	add %01100101
 	ld [hld], a
-	ld a, [PlayerID]
+	ld a, [wPlayerID]
 	adc %10100110
 	ld [hl], a
 
 ; DVs and personality.
-	ld hl, PartyMon1DVs
+	ld hl, wPartyMon1DVs
 	call _GetLastPartyMonAttribute
 ; Max IVs.
 rept 3
@@ -49,28 +49,28 @@ endr
 ; BUG: stats are not recalculated after changing DVs and nature.
 
 ; Nickname.
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	dec a
-	ld hl, PartyMonNicknames
+	ld hl, wPartyMonNicknames
 	call SkipNames
 	ld de, .Nickname
 	call CopyName2
 
 ; OT.
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	dec a
-	ld hl, PartyMonOT
+	ld hl, wPartyMonOT
 	call SkipNames
 	ld de, .OT
 	call CopyName2
 
 	ld a, TRUE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .NotGiven:
 	xor a ; ld a, FALSE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .OT:
@@ -84,13 +84,13 @@ SpecialGiveWobbuffet: ; 7305
 
 ; Adding to the party.
 	xor a
-	ld [MonType], a
+	ld [wMonType], a
 
 ; Level 20 Wobbuffet.
 	ld a, WOBBUFFET
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 	ld a, 20
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 
 	predef TryAddMonToParty
 	jr nc, .NotGiven
@@ -100,47 +100,47 @@ SpecialGiveWobbuffet: ; 7305
 	farcall SetGiftPartyMonCaughtData
 
 ; Holding a Berry.
-	ld hl, PartyMon1Item
+	ld hl, wPartyMon1Item
 	call _GetLastPartyMonAttribute
 	ld [hl], SITRUS_BERRY
 
 ; OT ID.
-	ld hl, PartyMon1ID
+	ld hl, wPartyMon1ID
 	call _GetLastPartyMonAttribute
 	ld a, KIRK_BUFFY_ID / $100
 	ld [hli], a
 	ld [hl], KIRK_BUFFY_ID % $100
 
 ; Nickname.
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	dec a
-	ld hl, PartyMonNicknames
+	ld hl, wPartyMonNicknames
 	call SkipNames
 	ld de, SpecialWobbuffetNick
 	call CopyName2
 
 ; OT.
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	dec a
-	ld hl, PartyMonOT
+	ld hl, wPartyMonOT
 	call SkipNames
 	ld de, SpecialWobbuffetOT
 	call CopyName2
 
 ; Engine flag for this event.
-	ld hl, DailyFlags
+	ld hl, wDailyFlags
 	set 5, [hl] ; ENGINE_WOBBUFFET_GIVEN
 	ld a, TRUE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .NotGiven:
 	xor a ; ld a, FALSE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 _GetLastPartyMonAttribute:
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	jp AddNTimes
@@ -149,12 +149,12 @@ SpecialReturnWobbuffet: ; 737e
 	farcall SelectMonFromParty
 	jr c, .refused
 
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp WOBBUFFET
 	jr nz, .DontReturn
 
-	ld a, [CurPartyMon]
-	ld hl, PartyMon1ID
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 
@@ -167,8 +167,8 @@ SpecialReturnWobbuffet: ; 737e
 	jr nz, .DontReturn
 
 ; OT
-	ld a, [CurPartyMon]
-	ld hl, PartyMonOT
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonOT
 	call SkipNames
 	ld de, SpecialWobbuffetOT
 .CheckOT:
@@ -184,8 +184,8 @@ SpecialReturnWobbuffet: ; 737e
 .done
 	farcall CheckCurPartyMonFainted
 	jr c, .fainted
-	ld a, [CurPartyMon]
-	ld hl, PartyMon1Happiness
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld a, [hl]
@@ -197,22 +197,22 @@ SpecialReturnWobbuffet: ; 737e
 	farcall RemoveMonFromPartyOrBox
 	ld a, $2
 .HappyToStayWithYou:
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .refused
 	ld a, $1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .DontReturn:
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .fainted
 	ld a, $4
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 SpecialWobbuffetOT:
@@ -223,15 +223,15 @@ SpecialWobbuffetNick:
 Special_BillsGrandfather: ; 73f7
 	farcall SelectMonFromParty
 	jr c, .cancel
-	ld a, [CurPartySpecies]
-	ld [ScriptVar], a
+	ld a, [wCurPartySpecies]
+	ld [wScriptVar], a
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
 .cancel
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 Special_YoungerHaircutBrother: ; 7413
@@ -258,7 +258,7 @@ MassageOrHaircut: ; 7420
 	farcall SelectMonFromParty
 	pop hl
 	jr c, .nope
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .egg
 	push hl
@@ -277,18 +277,18 @@ endr
 .ok
 	inc hl
 	ld a, [hli]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ld c, [hl]
 	jp ChangeHappiness
 
 .nope
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .egg
 	ld a, 1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 Data_YoungerHaircutBrother: ; 7459
@@ -314,7 +314,7 @@ Data_ReiBlessing:
 	db $ff, 2, HAPPINESS_BLESSING ; 50% chance
 
 CopyPokemonName_Buffer1_Buffer3: ; 746e
-	ld hl, StringBuffer1
-	ld de, StringBuffer3
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer3
 	ld bc, PKMN_NAME_LENGTH
 	jp CopyBytes

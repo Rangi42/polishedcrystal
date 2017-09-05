@@ -61,9 +61,9 @@ DoNextFrameForAllSprites: ; 8cf7a
 	ld l, a
 	ld h, wSprites / $100
 
-.loop2 ; Clear (wSprites + [wCurrSpriteOAMAddr] --> SpritesEnd)
+.loop2 ; Clear (wSprites + [wCurrSpriteOAMAddr] --> wSpritesEnd)
 	ld a, l
-	cp SpritesEnd % $100
+	cp wSpritesEnd % $100
 	ret nc
 	xor a
 	ld [hli], a
@@ -298,7 +298,7 @@ UpdateAnimFrame: ; 8d04c
 	inc de
 	ld a, e
 	ld [wCurrSpriteOAMAddr], a
-	cp SpritesEnd % $100
+	cp wSpritesEnd % $100
 	jr nc, .reached_the_end
 	dec c
 	jr nz, .loop

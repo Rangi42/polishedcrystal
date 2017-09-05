@@ -1,9 +1,9 @@
 BattleCommand_Spikes:
 	ld a, [hBattleTurn]
 	and a
-	ld hl, EnemyScreens
+	ld hl, wEnemyScreens
 	jr z, .got_screens
-	ld hl, PlayerScreens
+	ld hl, wPlayerScreens
 .got_screens
 	and SCREENS_SPIKES
 	cp SCREENS_SPIKES
@@ -20,9 +20,9 @@ BattleCommand_Spikes:
 BattleCommand_ToxicSpikes:
 	ld a, [hBattleTurn]
 	and a
-	ld hl, EnemyScreens
+	ld hl, wEnemyScreens
 	jr z, .got_screens
-	ld hl, PlayerScreens
+	ld hl, wPlayerScreens
 .got_screens
 	and SCREENS_TOXIC_SPIKES
 	cp (SCREENS_TOXIC_SPIKES / 3) * 2

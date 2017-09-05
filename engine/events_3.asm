@@ -2,9 +2,9 @@ ReturnFromMapSetupScript:: ; b8000
 	xor a
 	ld [hBGMapMode], a
 
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	ld b, a
-	ld a, [MapNumber]
+	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
 	ld [wCurrentLandmark], a
@@ -103,10 +103,10 @@ ReturnFromMapSetupScript:: ; b8000
 ; b8089
 
 .CheckNationalParkGate: ; b8089
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	cp GROUP_ROUTE_35_NATIONAL_PARK_GATE
 	ret nz
-	ld a, [MapNumber]
+	ld a, [wMapNumber]
 	cp MAP_ROUTE_35_NATIONAL_PARK_GATE
 	ret z
 	cp MAP_ROUTE_36_NATIONAL_PARK_GATE
@@ -158,7 +158,7 @@ LoadMapNameSignGFX: ; b80c6
 InitMapNameFrame: ; b80d3
 ; InitMapSignAttrMap
 	hlcoord 0, 0
-	ld de, AttrMap - TileMap
+	ld de, wAttrMap - wTileMap
 	add hl, de
 	; top row
 	ld a, TILE_BANK | BEHIND_BG | PAL_BG_TEXT
@@ -261,13 +261,13 @@ PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	ld c, a
 	hlcoord 0, 2
 	add hl, bc
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	jp PlaceString
 
 .GetNameLength: ; b8101 (2e:4101)
 	ld c, 0
 	push hl
-	ld hl, StringBuffer1
+	ld hl, wStringBuffer1
 .loop
 	ld a, [hli]
 	cp "@"
@@ -311,13 +311,13 @@ GiveFontOpaqueBackground:
 
 CheckForHiddenItems: ; b8172
 ; Checks to see if there are hidden items on the screen that have not yet been found.  If it finds one, returns carry.
-	ld a, [MapScriptHeaderBank]
-	ld [Buffer1], a
+	ld a, [wMapScriptHeaderBank]
+	ld [wBuffer1], a
 ; Get the coordinate of the bottom right corner of the screen, and load it in wd1ec/wd1ed.
-	ld a, [XCoord]
+	ld a, [wXCoord]
 	add SCREEN_WIDTH / 4
 	ld [wd1ed], a
-	ld a, [YCoord]
+	ld a, [wYCoord]
 	add SCREEN_HEIGHT / 4
 	ld [wd1ec], a
 ; Get the pointer for the first signpost header in the map...
@@ -331,8 +331,8 @@ CheckForHiddenItems: ; b8172
 	jr z, .nosignpostitems
 ; For i = 1:wCurrentMapSignpostCount...
 .loop
-; Store the counter in Buffer2, and store the signpost header pointer in the stack.
-	ld [Buffer2], a
+; Store the counter in wBuffer2, and store the signpost header pointer in the stack.
+	ld [wBuffer2], a
 	push hl
 ; Get the Y coordinate of the signpost.
 	call .GetFarByte
@@ -380,7 +380,7 @@ CheckForHiddenItems: ; b8172
 	ld bc, 5
 	add hl, bc
 ; Restore the signpost counter and decrement it.  If it hits zero, there are no hidden items in range.
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	dec a
 	jr nz, .loop
 
@@ -395,7 +395,7 @@ CheckForHiddenItems: ; b8172
 ; b81e2
 
 .GetFarByte: ; b81e2
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	call GetFarByte
 	inc hl
 	ret
@@ -415,7 +415,7 @@ TreeItemEncounter:
 .gold_leaf
 	ld a, GOLD_LEAF
 .item
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 RockItemEncounter:
@@ -434,7 +434,7 @@ RockItemEncounter:
 	jr z, .done
 	ld a, [hl]
 .done
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .RockItems:
@@ -456,8 +456,8 @@ RockItemEncounter:
 
 TreeMonEncounter: ; b81ea
 	xor a
-	ld [TempWildMonSpecies], a
-	ld [CurPartyLevel], a
+	ld [wTempWildMonSpecies], a
+	ld [wCurPartyLevel], a
 
 	ld hl, TreeMonMaps
 	call GetTreeMonSet
@@ -470,22 +470,22 @@ TreeMonEncounter: ; b81ea
 	jr nc, .no_battle
 
 	ld a, BATTLETYPE_TREE
-	ld [BattleType], a
+	ld [wBattleType], a
 	ld a, 1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .no_battle
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; b8219
 
 RockMonEncounter: ; b8219
 
 	xor a
-	ld [TempWildMonSpecies], a
-	ld [CurPartyLevel], a
+	ld [wTempWildMonSpecies], a
+	ld [wCurPartyLevel], a
 
 	ld hl, RockMonMaps
 	call GetTreeMonSet
@@ -514,9 +514,9 @@ RockMonEncounter: ; b8219
 GetTreeMonSet: ; b823f
 ; Return carry and treemon set in a
 ; if the current map is in table hl.
-	ld a, [MapNumber]
+	ld a, [wMapNumber]
 	ld e, a
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	ld d, a
 .loop
 	ld a, [hli]
@@ -824,26 +824,26 @@ endr
 	jr z, NoTreeMon
 
 	ld a, [hli]
-	ld [TempWildMonSpecies], a
+	ld [wTempWildMonSpecies], a
 	ld a, [hl]
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 	scf
 	ret
 
 NoTreeMon: ; b843b
 	xor a
-	ld [TempWildMonSpecies], a
-	ld [CurPartyLevel], a
+	ld [wTempWildMonSpecies], a
+	ld [wCurPartyLevel], a
 	ret
 ; b8443
 
 GetTreeScore: ; b8443
 	call .CoordScore
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	call .OTIDScore
-	ld [Buffer2], a
+	ld [wBuffer2], a
 	ld c, a
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	sub c
 	jr z, .rare
 	jr nc, .ok
@@ -907,9 +907,9 @@ GetTreeScore: ; b8443
 ; b849d
 
 .OTIDScore: ; b849d
-	ld a, [PlayerID]
+	ld a, [wPlayerID]
 	ld [hDividend], a
-	ld a, [PlayerID + 1]
+	ld a, [wPlayerID + 1]
 	ld [hDividend + 1], a
 	ld a, 10
 	ld [hDivisor], a
@@ -926,7 +926,7 @@ LoadFishingGFX: ; b84b3
 	ld [rVBK], a
 
 	ld de, FishingGFX
-	ld a, [PlayerGender]
+	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .got_gender
 	ld de, KrisFishingGFX

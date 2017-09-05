@@ -263,7 +263,7 @@ IsKantoRadioOffAir:
 .no
 	xor a ; ld a, FALSE
 .ok
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 TrashCanScript: ; 0xbc1a5
@@ -1967,13 +1967,13 @@ _HiddenGrottoInitScript:
 	end
 
 .StoreCurHiddenGrotto:
-	ld a, [ScriptVar]
-	ld [CurHiddenGrotto], a
+	ld a, [wScriptVar]
+	ld [wCurHiddenGrotto], a
 	ret
 
 _HiddenGrottoBackupMap:
-	ld a, [MapGroup]
-	ld [BackupMapGroup], a
-	ld a, [MapNumber]
-	ld [BackupMapNumber], a
+	ld a, [wMapGroup]
+	ld [wBackupMapGroup], a
+	ld a, [wMapNumber]
+	ld [wBackupMapNumber], a
 	ret

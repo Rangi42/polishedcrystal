@@ -173,10 +173,10 @@ Options_TextSpeed: ; e42f5
 
 .Save:
 	ld b, a
-	ld a, [Options1]
+	ld a, [wOptions1]
 	and $f0
 	or b
-	ld [Options1], a
+	ld [wOptions1], a
 
 .NonePressed:
 	ld b, 0
@@ -216,7 +216,7 @@ MED_RATE  EQU 3
 SLOW_RATE EQU 5
 
 GetTextSpeed: ; e4346
-	ld a, [Options1] ; This converts the number of frames, to 0, 1, 2 representing speed
+	ld a, [wOptions1] ; This converts the number of frames, to 0, 1, 2 representing speed
 	and 7
 	cp SLOW_RATE
 	jr z, .slow
@@ -246,7 +246,7 @@ GetTextSpeed: ; e4346
 
 
 Options_BattleEffects: ; e4365
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -278,7 +278,7 @@ Options_BattleEffects: ; e4365
 
 
 Options_BattleStyle: ; e43a0
-	ld hl, Options2
+	ld hl, wOptions2
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
@@ -333,7 +333,7 @@ Options_BattleStyle: ; e43a0
 
 
 Options_RunningShoes: ; e44c1
-	ld hl, Options2
+	ld hl, wOptions2
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -365,7 +365,7 @@ Options_RunningShoes: ; e44c1
 
 
 Options_Frame: ; e44fa
-	ld hl, TextBoxFrame
+	ld hl, wTextBoxFrame
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
@@ -392,7 +392,7 @@ Options_Frame: ; e44fa
 .Save:
 	ld [hl], a
 UpdateFrame: ; e4512
-	ld a, [TextBoxFrame]
+	ld a, [wTextBoxFrame]
 	hlcoord 16, 11 ; where on the screen the number is drawn
 	add "1"
 	ld [hl], a
@@ -403,7 +403,7 @@ UpdateFrame: ; e4512
 
 
 Options_Sound: ; e43dd
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -440,7 +440,7 @@ Options_Sound: ; e43dd
 
 
 Options_ClockFormat:
-	ld hl, Options2
+	ld hl, wOptions2
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -470,7 +470,7 @@ Options_ClockFormat:
 
 
 Options_PokedexUnits:
-	ld hl, Options2
+	ld hl, wOptions2
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
 	jr nz, .Toggle
@@ -500,7 +500,7 @@ Options_PokedexUnits:
 
 
 Options_Typeface:
-	ld hl, Options2
+	ld hl, wOptions2
 	ld a, [hl]
 	and FONT_MASK
 	ld c, a
