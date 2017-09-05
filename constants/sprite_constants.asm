@@ -423,6 +423,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const PERSON_ACTION_SKYFALL      ; 0f
 	const PERSON_ACTION_RUN
 
+; see engine/facings.asm:Facings
 	const_def
 	const FACING_STEP_DOWN_0    ; 00
 	const FACING_STEP_DOWN_1    ; 01
