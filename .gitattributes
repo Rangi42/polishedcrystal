@@ -1,6 +1,16 @@
 # Auto detect text files and perform LF normalization
 * text eol=lf
 
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.asm text
+*.pal text
+*.py  text
+*.txt text
+*.sh  text
+*.link text
+Makefile text
+
 # hexdump binary files
 *.png  binary diff=hex
 *.lz   binary diff=hex
