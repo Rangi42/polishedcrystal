@@ -64,6 +64,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Mateo for the shared universe of Red++ and Pokémon Christmas, including Shamouti Island and Ecruteak Shrine.
 * Pia Carrot for Valencia Island and Route 49 from Pokémon Orange.
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
+* ShockSlayer for Eusine's losing text.
 
 
 ## Special Thanks
