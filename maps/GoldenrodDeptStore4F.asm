@@ -62,5 +62,5 @@ GoldenrodDeptStore4FDirectoryText:
 	text "Let Us Pump Up"
 	line "Your #mon!"
 
-	para "4F wMedicine Box"
+	para "4F Medicine Box"
 	done

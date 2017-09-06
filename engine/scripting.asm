@@ -678,7 +678,7 @@ GetPocketName:
 
 .Pockets:
 	dw .Item
-	dw .wMedicine
+	dw .Medicine
 	dw .Ball
 	dw .TM ; impossible
 	dw .Berry
@@ -686,7 +686,7 @@ GetPocketName:
 
 .Item:
 	db "Item Pocket@"
-.wMedicine:
+.Medicine:
 	db "Med.Pocket@"
 .Ball:
 	db "Ball Pocket@"

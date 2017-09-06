@@ -12,7 +12,7 @@ _ReceiveItem:: ; d1d5
 
 .Pockets: ; d1e9
 	dw .Item
-	dw .wMedicine
+	dw .Medicine
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
@@ -22,7 +22,7 @@ _ReceiveItem:: ; d1d5
 	ld hl, wNumItems
 	jp PutItemInPocket
 
-.wMedicine:
+.Medicine:
 	ld hl, wNumMedicine
 	jp PutItemInPocket
 
@@ -52,13 +52,13 @@ _TossItem:: ; d20d
 
 .Pockets:
 	dw .Item
-	dw .wMedicine
+	dw .Medicine
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
 	dw .KeyItem
 
-.wMedicine:
+.Medicine:
 	ld hl, wNumMedicine
 	jp RemoveItemFromPocket
 
@@ -95,13 +95,13 @@ _CheckItem:: ; d244
 
 .Pockets:
 	dw .Item
-	dw .wMedicine
+	dw .Medicine
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
 	dw .KeyItem
 
-.wMedicine:
+.Medicine:
 	ld hl, wNumMedicine
 	jp CheckTheItem
 
@@ -521,7 +521,7 @@ _CountItem::
 
 .Pockets:
 	dw .Item
-	dw .wMedicine
+	dw .Medicine
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
@@ -531,7 +531,7 @@ _CountItem::
 	ld hl, wNumItems
 	jp CountItemInPocket
 
-.wMedicine:
+.Medicine:
 	ld hl, wNumMedicine
 	jp CountItemInPocket
 

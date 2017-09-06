@@ -18,4 +18,5 @@ Makefile text
 *.1bpp binary diff=hex
 *.bin  binary diff=hex
 *.blk  binary diff=hex
+*.tilemap binary diff=hex
 

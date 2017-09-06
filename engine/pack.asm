@@ -72,7 +72,7 @@ Pack: ; 10000
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
-	lb bc, $b, $3 ; Key Items, wMedicine
+	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -120,7 +120,7 @@ Pack: ; 10000
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
-	lb bc, $3, $7 ; wMedicine, TM/HM
+	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
 	jp .ItemBallsKey_LoadSubmenu
@@ -691,7 +691,7 @@ BattlePack: ; 10493
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
-	lb bc, $b, $3 ; Key Items, wMedicine
+	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu
@@ -739,7 +739,7 @@ BattlePack: ; 10493
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
-	lb bc, $3, $7 ; wMedicine, TM/HM
+	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
 	jp ItemSubmenu
@@ -1173,7 +1173,7 @@ TutorialPack: ; 107bb
 .dw ; 107e1 (4:47e1)
 
 	dw .Items
-	dw .wMedicine
+	dw .Medicine
 	dw .Balls
 
 .Items: ; 107e9 (4:47e9)
@@ -1200,7 +1200,7 @@ TutorialPack: ; 107bb
 	dba UpdateItemIconAndDescription
 ; 10807
 
-.wMedicine: ; 10807 (4:4807)
+.Medicine: ; 10807 (4:4807)
 	ld a, MEDICINE - 1
 	ld hl, .MedicineMenuDataHeader
 	jr .DisplayPocket
@@ -1335,7 +1335,7 @@ endr
 
 PackGFXPointers: ; 108cc
 	dw PackGFX + (25 tiles) * 0 ; Items
-	dw PackGFX + (25 tiles) * 1 ; wMedicine
+	dw PackGFX + (25 tiles) * 1 ; Medicine
 	dw PackGFX + (25 tiles) * 2 ; Balls
 	dw PackGFX + (25 tiles) * 3 ; TM/HM
 	dw PackGFX + (25 tiles) * 4 ; Berries
@@ -1344,7 +1344,7 @@ PackGFXPointers: ; 108cc
 
 PackFGFXPointers: ; 48e93
 	dw PackFGFX + (25 tiles) * 0 ; Items
-	dw PackFGFX + (25 tiles) * 1 ; wMedicine
+	dw PackFGFX + (25 tiles) * 1 ; Medicine
 	dw PackFGFX + (25 tiles) * 2 ; Balls
 	dw PackFGFX + (25 tiles) * 3 ; TM/HM
 	dw PackFGFX + (25 tiles) * 4 ; Berries
