@@ -7,8 +7,8 @@ SafariZoneWest_MapScriptHeader:
 SafariZoneWest_MapEventHeader:
 
 .Warps: db 8
-	warp_def 2, 22, 7, SAFARI_ZONE_NORTH
-	warp_def 2, 23, 8, SAFARI_ZONE_NORTH
+	warp_def 2, 22, 8, SAFARI_ZONE_NORTH
+	warp_def 2, 23, 9, SAFARI_ZONE_NORTH
 	warp_def 2, 28, 3, SAFARI_ZONE_NORTH
 	warp_def 2, 29, 4, SAFARI_ZONE_NORTH
 	warp_def 24, 31, 5, SAFARI_ZONE_HUB
