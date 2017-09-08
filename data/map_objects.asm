@@ -16,12 +16,6 @@ endm
 	sprite_movement_data SPRITEMOVEFN_STANDING,              RIGHT,  PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_STANDING_RIGHT
 	sprite_movement_data SPRITEMOVEFN_FAST_RANDOM_SPIN,      DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_SPINRANDOM_FAST
 	sprite_movement_data SPRITEMOVEFN_OBEY_DPAD,             DOWN,   PERSON_ACTION_STAND,        $02,    $00,    %0000 ; SPRITEMOVEDATA_PLAYER
-	sprite_movement_data SPRITEMOVEFN_08,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_0C
-	sprite_movement_data SPRITEMOVEFN_09,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_0D
-	sprite_movement_data SPRITEMOVEFN_0A,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_0E
-	sprite_movement_data SPRITEMOVEFN_0B,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_0F
-	sprite_movement_data SPRITEMOVEFN_0C,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_10
-	sprite_movement_data SPRITEMOVEFN_0D,                    DOWN,   PERSON_ACTION_STAND,        $00,    $00,    %0000 ; SPRITEMOVEDATA_11
 	sprite_movement_data SPRITEMOVEFN_STANDING,              UP,     PERSON_ACTION_STAND,        $0c,    $00,    %0000 ; SPRITEMOVEDATA_CUTTABLE_TREE
 	sprite_movement_data SPRITEMOVEFN_FOLLOW,                DOWN,   PERSON_ACTION_STAND,        $02,    $00,    %0000 ; SPRITEMOVEDATA_FOLLOWING
 	sprite_movement_data SPRITEMOVEFN_SCRIPTED,              DOWN,   PERSON_ACTION_STAND,        $02,    $00,    %0000 ; SPRITEMOVEDATA_SCRIPTED
