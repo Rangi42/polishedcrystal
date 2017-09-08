@@ -28,7 +28,7 @@ Route40_MapEventHeader:
 	person_event SPRITE_LASS, 13, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a6429, -1
 	person_event SPRITE_POKEFAN_M, 6, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x1a61c7, -1
 	person_event SPRITE_LASS, 4, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a64e6, -1
-	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a6564, -1
+	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route40YoungsterScript, -1
 	person_event SPRITE_FISHER, 27, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route40FisherScript, -1
 
 const_value set 2
@@ -73,12 +73,14 @@ SwimmermRandallScript:
 	jumptextfaceplayer UnknownText_0x1a62fa
 
 PokefanMScript_0x1a61c7:
-	checkcode VAR_BATTLEPOINTS
-	if_greater_than 0, .BattleTower
+	checkevent EVENT_BATTLE_TOWER_OPEN
+	iftrue_jumptextfaceplayer UnknownText_0x1a649b
 	jumptextfaceplayer UnknownText_0x1a646a
 
-.BattleTower:
-	jumptextfaceplayer UnknownText_0x1a649b
+Route40YoungsterScript:
+	checkevent EVENT_BATTLE_TOWER_OPEN
+	iftrue_jumptextfaceplayer UnknownText_0x1a6564
+	jumptextfaceplayer Route40YoungsterText
 
 Route40FisherScript:
 	faceplayer
@@ -290,6 +292,18 @@ UnknownText_0x1a64e6:
 	para "Being a port, it"
 	line "feels so different"
 	cont "from a big city."
+	done
+
+Route40YoungsterText:
+	text "The Battle Tower"
+	line "is almost ready!"
+
+	para "Trainers are head-"
+	line "ing to Olivine"
+
+	para "from all over the"
+	line "world to test"
+	cont "their strength."
 	done
 
 UnknownText_0x1a6564:

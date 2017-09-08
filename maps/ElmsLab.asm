@@ -1404,6 +1404,17 @@ ElmGiveTicketText2:
 	para "After all, you've"
 	line "traveled all over"
 	cont "with your #mon."
+
+	para "Oh, that reminds"
+	line "me!"
+
+	para "Battle Tower has"
+	line "just opened up"
+	cont "near Olivine."
+
+	para "A champ like you"
+	line "should do well"
+	cont "competing there!"
 	done
 
 LyraAnnouncesGymChallengeText:

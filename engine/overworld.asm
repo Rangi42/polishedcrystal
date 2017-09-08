@@ -838,7 +838,8 @@ Group29Sprites:
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_SUICUNE
-	; 16 total sprites
+	db SPRITE_N64
+	; 17 total sprites
 	db 0
 
 
