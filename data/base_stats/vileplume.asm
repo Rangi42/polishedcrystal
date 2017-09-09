@@ -1,5 +1,3 @@
-	db VILEPLUME ; 045
-
 if DEF(FAITHFUL)
 	db  75,  80,  85,  50, 110,  90
 	;   hp  atk  def  spd  sat  sdf

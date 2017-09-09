@@ -317,7 +317,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call .PlaceHPBar
 	xor a
 	ld [hBGMapMode], a
-	ld a, [BaseDexNo]
+	ld a, [CurPartySpecies]
 	ld [wd265], a
 	ld [CurSpecies], a
 	hlcoord 8, 0
@@ -341,7 +341,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	hlcoord 9, 4
 	ld a, "/"
 	ld [hli], a
-	ld a, [BaseDexNo]
+	ld a, [CurSpecies]
 	ld [wd265], a
 	call GetPokemonName
 	call PlaceString
@@ -411,7 +411,7 @@ StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	ret
 
 StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
-	ld a, [BaseDexNo]
+	ld a, [CurPartySpecies]
 	ld [wd265], a
 	ld [CurSpecies], a
 	xor a

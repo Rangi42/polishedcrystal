@@ -1,5 +1,3 @@
-	db DRAGONAIR ; 148
-
 	db  61,  84,  65,  70,  70,  70
 	;   hp  atk  def  spd  sat  sdf
 

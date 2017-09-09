@@ -84,7 +84,7 @@ GeneratePartyMonStats: ; d906
 	ld a, [CurPartySpecies]
 	ld [CurSpecies], a
 	call GetBaseData
-	ld a, [BaseDexNo]
+	ld a, [CurSpecies]
 	ld [de], a
 	inc de
 	ld a, [wBattleMode]

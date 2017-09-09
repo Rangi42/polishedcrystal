@@ -1,5 +1,3 @@
-	db REMORAID ; 223
-
 	db  35,  65,  35,  65,  65,  35
 	;   hp  atk  def  spd  sat  sdf
 

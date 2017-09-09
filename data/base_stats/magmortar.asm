@@ -1,5 +1,3 @@
-	db MAGMORTAR ; 467
-
 if DEF(FAITHFUL)
 	db  75,  95,  67,  83, 125,  95
 	;   hp  atk  def  spd  sat  sdf

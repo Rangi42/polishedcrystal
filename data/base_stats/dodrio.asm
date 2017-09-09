@@ -1,5 +1,3 @@
-	db DODRIO ; 085
-
 	db  60, 110,  70, 110,  60,  60
 	;   hp  atk  def  spd  sat  sdf
 

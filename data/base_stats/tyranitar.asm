@@ -1,5 +1,3 @@
-	db TYRANITAR ; 248
-
 	db 100, 134, 110,  61,  95, 100
 	;   hp  atk  def  spd  sat  sdf
 

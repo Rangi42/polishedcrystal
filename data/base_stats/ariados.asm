@@ -1,5 +1,3 @@
-	db ARIADOS ; 168
-
 if DEF(FAITHFUL)
 	db  70,  90,  70,  40,  60,  70
 	;   hp  atk  def  spd  sat  sdf

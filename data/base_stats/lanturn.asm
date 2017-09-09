@@ -1,5 +1,3 @@
-	db LANTURN ; 171
-
 if DEF(FAITHFUL)
 	db 125,  58,  58,  67,  76,  76
 	;   hp  atk  def  spd  sat  sdf

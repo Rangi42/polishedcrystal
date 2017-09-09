@@ -1,5 +1,3 @@
-	db SANDSHREW ; 027
-
 	db  50,  75,  85,  40,  20,  30
 	;   hp  atk  def  spd  sat  sdf
 

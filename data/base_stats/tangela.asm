@@ -1,5 +1,3 @@
-	db TANGELA ; 114
-
 	db  65,  55, 115,  60, 100,  40
 	;   hp  atk  def  spd  sat  sdf
 

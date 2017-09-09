@@ -1,5 +1,3 @@
-	db SLUGMA ; 218
-
 	db  40,  40,  40,  20,  70,  40
 	;   hp  atk  def  spd  sat  sdf
 

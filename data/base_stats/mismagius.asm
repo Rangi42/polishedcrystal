@@ -1,5 +1,3 @@
-	db MISMAGIUS ; 429
-
 if DEF(FAITHFUL)
 	db  60,  60,  60, 105, 105, 105
 	;   hp  atk  def  spd  sat  sdf

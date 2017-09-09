@@ -1,5 +1,3 @@
-	db VOLTORB ; 100
-
 	db  40,  30,  50, 100,  55,  55
 	;   hp  atk  def  spd  sat  sdf
 

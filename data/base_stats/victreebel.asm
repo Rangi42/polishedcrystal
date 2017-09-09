@@ -1,5 +1,3 @@
-	db VICTREEBEL ; 071
-
 if DEF(FAITHFUL)
 	db  80, 105,  65,  70, 100,  70
 	;   hp  atk  def  spd  sat  sdf

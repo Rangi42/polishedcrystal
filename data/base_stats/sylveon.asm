@@ -1,5 +1,3 @@
-	db SYLVEON ; 700
-
 	db  95,  65,  65,  60, 110, 130
 	;   hp  atk  def  spd  sat  sdf
 

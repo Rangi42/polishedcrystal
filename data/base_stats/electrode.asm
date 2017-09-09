@@ -1,5 +1,3 @@
-	db ELECTRODE ; 101
-
 	db  60,  50,  70, 150,  80,  80
 	;   hp  atk  def  spd  sat  sdf
 

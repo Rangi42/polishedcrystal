@@ -1,5 +1,3 @@
-	db ELECTIVIRE ; 466
-
 if DEF(FAITHFUL)
 	db  75, 123,  67,  95,  95,  85
 	;   hp  atk  def  spd  sat  sdf

@@ -1,5 +1,3 @@
-	db NATU ; 177
-
 	db  40,  50,  45,  70,  70,  45
 	;   hp  atk  def  spd  sat  sdf
 

@@ -1,5 +1,3 @@
-	db FARFETCH_D ; 083
-
 if DEF(FAITHFUL)
 	db  52,  90,  55,  60,  58,  62
 	;   hp  atk  def  spd  sat  sdf

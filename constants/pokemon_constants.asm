@@ -360,7 +360,6 @@ const_value SET 1
 MONMENU_FIELD_MOVE EQU 0
 MONMENU_MENUOPTION EQU 1
 
-BASEMON_SPECIES       EQUS "(BaseData + BaseDexNo - CurBaseData)"
 BASEMON_BASE_STATS    EQUS "(BaseData + BaseStats - CurBaseData)"
 BASEMON_BASE_HP       EQUS "(BaseData + BaseHP - CurBaseData)"
 BASEMON_BASE_ATK      EQUS "(BaseData + BaseAttack - CurBaseData)"

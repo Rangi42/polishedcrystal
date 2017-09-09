@@ -1,5 +1,3 @@
-	db DUGTRIO ; 051
-
 if DEF(FAITHFUL)
 	db  35, 100,  50, 120,  50,  70
 	;   hp  atk  def  spd  sat  sdf

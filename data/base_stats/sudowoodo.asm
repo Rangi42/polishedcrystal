@@ -1,5 +1,3 @@
-	db SUDOWOODO ; 185
-
 if DEF(FAITHFUL)
 	db  70, 100, 115,  30,  30,  65
 	;   hp  atk  def  spd  sat  sdf

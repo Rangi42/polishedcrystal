@@ -1,5 +1,3 @@
-	db ONIX ; 095
-
 if DEF(FAITHFUL)
 	db  35,  45, 160,  70,  30,  45
 	;   hp  atk  def  spd  sat  sdf

@@ -1,5 +1,3 @@
-	db SLOWKING ; 199
-
 if DEF(FAITHFUL)
 	db  95,  75,  80,  30, 100, 110
 	;   hp  atk  def  spd  sat  sdf
