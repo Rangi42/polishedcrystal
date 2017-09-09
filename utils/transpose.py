@@ -11,16 +11,13 @@ import sys
 
 from itertools import izip_longest
 
-def chunk(L, n, fillvalue=None):
-	return izip_longest(*[iter(L)] * n, fillvalue=fillvalue)
-
 def build_map(mapfile):
 	mapping = {}
 	revmap = {}
 	with open(mapfile, 'r') as f:
 		for line in f:
 			sym = '<->' in line
-			a, b = line.split('<->' if sym in line else '->')
+			a, b = line.split('<->' if sym else '->')
 			if '-' in a and '-' in b:
 				a1, a2 = a.split('-')
 				b1, b2 = b.split('-')
