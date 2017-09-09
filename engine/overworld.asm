@@ -470,9 +470,9 @@ ArrangeUsedSprites: ; 14355
 	ld a, [hl]
 	call GetSpriteLength
 
-; Spill over into the second table after $80 tiles.
+; Spill over into the second table after $78 tiles.
 	add b
-	cp $80
+	cp $78
 	jr z, .loop
 	jr nc, .SecondTable
 
