@@ -546,7 +546,7 @@ SurfFunction: ; c909
 
 .DoSurf: ; c95f (3:495f)
 	call GetSurfType
-	ld [Buffer2], a ; wd1eb (aliases: MovementType)
+	ld [MovementType], a
 	call GetPartyNick
 	ld hl, SurfFromMenuScript
 	call QueueScript
