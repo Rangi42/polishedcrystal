@@ -718,22 +718,10 @@ DrawPitchTransposition:
 	ret z
 .continue
 	ld [hl], "P"
-	bit 7, a
-	jr nz, .negative
-	ld de, wPitchTransposition
-	ld a, "+"
-	jr .printnum
-.negative
-	xor $ff
-	inc a
-	ld de, wTmpValue
-	ld [de], a
-	ld a, "-"
-.printnum
-	hlcoord 16, 1
-	ld [hli], a
+	inc hl
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
-	jp PrintNum
+	ld de, wPitchTransposition
+	jr _PrintSignedNum
 
 DrawTempoAdjustment:
 	hlcoord 15, 2
@@ -747,21 +735,22 @@ DrawTempoAdjustment:
 	ret z
 .continue
 	ld [hl], "T"
+	inc hl
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	ld de, wTempoAdjustment
+_PrintSignedNum:
 	bit 7, a
 	jr nz, .negative
-	ld de, wTempoAdjustment
 	ld a, "+"
 	jr .printnum
 .negative
-	xor $ff
+	cpl
 	inc a
 	ld de, wTmpValue
 	ld [de], a
 	ld a, "-"
 .printnum
-	hlcoord 16, 2
 	ld [hli], a
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	jp PrintNum
 
 _EmptyPitchOrTempo: db "     @"

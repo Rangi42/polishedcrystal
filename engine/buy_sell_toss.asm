@@ -31,6 +31,10 @@ CalculateMaximumQuantity:
 	ld a, b
 	jr nc, .loop
 .done
+	and a
+	jr nz, .ok
+	inc a
+.ok
 	ld [wItemQuantityBuffer], a
 	ret
 
