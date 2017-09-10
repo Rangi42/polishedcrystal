@@ -1,5 +1,3 @@
-	db SHELLDER ; 090
-
 	db  30,  65, 100,  40,  45,  25
 	;   hp  atk  def  spd  sat  sdf
 

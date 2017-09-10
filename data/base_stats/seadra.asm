@@ -1,5 +1,3 @@
-	db SEADRA ; 117
-
 	db  55,  65,  95,  85,  95,  45
 	;   hp  atk  def  spd  sat  sdf
 

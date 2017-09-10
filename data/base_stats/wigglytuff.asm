@@ -1,5 +1,3 @@
-	db WIGGLYTUFF ; 040
-
 if DEF(FAITHFUL)
 	db 140,  70,  45,  45,  85,  50
 	;   hp  atk  def  spd  sat  sdf

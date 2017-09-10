@@ -1,5 +1,3 @@
-	db FLAAFFY ; 180
-
 if DEF(FAITHFUL)
 	db  70,  55,  55,  45,  80,  60
 	;   hp  atk  def  spd  sat  sdf

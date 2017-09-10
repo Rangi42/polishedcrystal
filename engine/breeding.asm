@@ -329,7 +329,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld a, [wPlayerID + 1]
 	ld [hl], a
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT ; wddff (aliases: PartyMonOT)
+	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld d, h

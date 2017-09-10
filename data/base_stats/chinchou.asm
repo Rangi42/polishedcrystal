@@ -1,5 +1,3 @@
-	db CHINCHOU ; 170
-
 	db  75,  38,  38,  67,  56,  56
 	;   hp  atk  def  spd  sat  sdf
 

@@ -1,5 +1,3 @@
-	db LEDYBA ; 165
-
 if DEF(FAITHFUL)
 	db  40,  20,  30,  55,  40,  80
 	;   hp  atk  def  spd  sat  sdf

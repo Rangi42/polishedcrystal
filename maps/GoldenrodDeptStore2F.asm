@@ -33,8 +33,8 @@ ClerkScript_0x55b65:
 
 UnknownText_0x55c25:
 	text "#gear can store"
-	line "up to ten phone"
-	cont "numbers."
+	line "up to twenty"
+	cont "phone numbers."
 
 	para "It's hard to de-"
 	line "cide which numbers"

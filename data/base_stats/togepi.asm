@@ -1,5 +1,3 @@
-	db TOGEPI ; 175
-
 	db  35,  20,  65,  20,  40,  65
 	;   hp  atk  def  spd  sat  sdf
 

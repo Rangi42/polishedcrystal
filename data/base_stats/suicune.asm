@@ -1,5 +1,3 @@
-	db SUICUNE ; 245
-
 	db 100,  75, 115,  85,  90, 115
 	;   hp  atk  def  spd  sat  sdf
 

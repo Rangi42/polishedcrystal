@@ -1,5 +1,3 @@
-	db BUTTERFREE ; 012
-
 
 if DEF(FAITHFUL)
 	db  60,  45,  50,  70,  90,  80

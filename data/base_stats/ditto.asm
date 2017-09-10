@@ -1,5 +1,3 @@
-	db DITTO ; 132
-
 if DEF(FAITHFUL)
 	db  48,  48,  48,  48,  48,  48
 	;   hp  atk  def  spd  sat  sdf

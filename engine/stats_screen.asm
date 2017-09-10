@@ -317,7 +317,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call .PlaceHPBar
 	xor a
 	ld [hBGMapMode], a
-	ld a, [wCurBaseData] ; wd236 (aliases: wBaseDexNo)
+	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wCurSpecies], a
 	hlcoord 8, 0
@@ -341,7 +341,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	hlcoord 9, 4
 	ld a, "/"
 	ld [hli], a
-	ld a, [wCurBaseData] ; wd236 (aliases: wBaseDexNo)
+	ld a, [wCurSpecies]
 	ld [wd265], a
 	call GetPokemonName
 	call PlaceString
@@ -411,7 +411,7 @@ StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	ret
 
 StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
-	ld a, [wBaseDexNo] ; wd236 (aliases: BaseDexNo)
+	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wCurSpecies], a
 	xor a
@@ -546,7 +546,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call .CalcExpToNextLevel
 	hlcoord 13, 13
 	lb bc, 3, 7
-	ld de, wBuffer1 ; wd1ea (aliases: wMagikarpLength)
+	ld de, wBuffer1
 	call PrintNum
 	ld de, .LevelUpStr
 	hlcoord 10, 12
@@ -597,14 +597,14 @@ endr
 	ld a, [hQuotient + 1]
 	sbc [hl]
 	dec hl
-	ld [wBuffer2], a ; wd1eb (aliases: wMovementType)
+	ld [wBuffer2], a
 	ld a, [hQuotient]
 	sbc [hl]
-	ld [wBuffer1], a ; wd1ea (aliases: wMagikarpLength)
+	ld [wBuffer1], a
 	ret
 
 .AlreadyAtMaxLevel:
-	ld hl, wBuffer1 ; wd1ea (aliases: wMagikarpLength)
+	ld hl, wBuffer1
 	xor a
 rept 2
 	ld [hli], a
@@ -1177,7 +1177,7 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 
 .PartyMon: ; 4e2bf (13:62bf)
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMons ; wdcdf (aliases: wPartyMon1, wPartyMon1Species)
+	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld b, h
@@ -1204,7 +1204,7 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	ret
 
 .Tempmon: ; 4e2ed (13:62ed)
-	ld bc, wTempMonSpecies ; wd10e (aliases: wTempMon)
+	ld bc, wTempMon
 .CheckEggFaintedFrzSlp: ; 4e2f2 (13:62f2)
 	ld a, [wCurPartySpecies]
 	cp EGG

@@ -264,18 +264,20 @@ GenericTrainerTwinsAmyandmay1:
 GenericTrainerTwinsAmyandmay2:
 	generictrainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY2, .SeenText, TrainerTwinsAmyandmayBeatenText
 
-	text "May: Our bug #-"
-	line "mon lost! Oh, what"
-	cont "a shame."
+	text "Mimi: Our bug"
+	line "#mon lost!"
+
+	para "Oh, what a"
+	line "shame."
 	done
 
 .SeenText:
-	text "May: You want to"
+	text "Mimi: You want to"
 	line "see the Leader?"
 	cont "We come first!"
 	done
 
 TrainerTwinsAmyandmayBeatenText:
-	text "Amy & May: Oh,"
+	text "Amy & Mimi: Oh,"
 	line "double goodness!"
 	done

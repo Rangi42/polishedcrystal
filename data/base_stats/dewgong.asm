@@ -1,5 +1,3 @@
-	db DEWGONG ; 087
-
 if DEF(FAITHFUL)
 	db  90,  70,  80,  70,  70,  95
 	;   hp  atk  def  spd  sat  sdf

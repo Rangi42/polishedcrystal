@@ -1,5 +1,3 @@
-	db POLITOED ; 186
-
 if DEF(FAITHFUL)
 	db  90,  75,  75,  70,  90, 100
 	;   hp  atk  def  spd  sat  sdf

@@ -44,7 +44,7 @@ TrainerCard: ; 25105
 
 	ld hl, CardDividerGFX
 	ld de, VTiles2 tile $23
-	ld bc, 10 tiles ; 6 for CardDividerGFX + 4 for CardStatusGFX
+	ld bc, (6 + 4) tiles ; CardDividerGFX + CardStatusGFX
 	ld a, BANK(CardDividerGFX) ; BANK(CardStatusGFX)
 	call FarCopyBytes
 
@@ -703,7 +703,7 @@ TrainerCard_KantoBadgesOAM:
 
 CardBorderGFX:  INCBIN "gfx/trainer_card/border.2bpp"
 CardDividerGFX: INCBIN "gfx/trainer_card/divider.2bpp"
-CardStatusGFX:  INCBIN "gfx/trainer_card/status.2bpp"
+CardStatusGFX:  INCBIN "gfx/trainer_card/status.2bpp" ; must come after CardDividerGFX
 CardBadgesGFX:  INCBIN "gfx/trainer_card/badges.2bpp"
 
 LeaderGFX:  INCBIN "gfx/trainer_card/johto_leaders.w40.2bpp"

@@ -91,7 +91,7 @@ UnknownScript_0x1a001e:
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7
 	showtext UnknownText_0x1a0433
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	winlosstext UnknownText_0x1a05a1, 0
+	winlosstext UnknownText_0x1a05a1, EusineLossText
 	setlasttalked CIANWOODCITY_EUSINE
 	loadtrainer MYSTICALMAN, EUSINE
 	startbattle
@@ -274,6 +274,14 @@ UnknownText_0x1a0433:
 UnknownText_0x1a05a1:
 	text "I hate to admit"
 	line "it, but you win."
+	done
+
+EusineLossText:
+	text "Yes!"
+
+	para "Surely Suicune"
+	line "will recognize"
+	cont "my greatness now!"
 	done
 
 UnknownText_0x1a05c3:

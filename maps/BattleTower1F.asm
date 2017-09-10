@@ -61,50 +61,14 @@ MapBattleTower1FSignpost0Script:
 	jumpopenedtext Text_BattleTowerRules
 
 ReceptionistScript_0x9e3e2:
-; TODO: let the player fight in Battle Tower once it's finished
-;	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
-;	if_equal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
-;	opentext
-;	writetext Text_BattleTowerWelcomesYou
-;	buttonsound
-;	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
-;	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
-;	jump Script_BattleTowerIntroductionYesNo
-	faceplayer
+	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
+	if_equal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
 	opentext
-	writetext .NotYetImplementedText
-	waitbutton
-	checkevent EVENT_260
-	iftrue_endtext
-	writetext .FreeBPText
-	checkcode VAR_BATTLEPOINTS
-	addvar 10
-	writevarcode VAR_BATTLEPOINTS
-	setevent EVENT_260
-	endtext
-
-.NotYetImplementedText
-	text "I'm sorry, Battle"
-	line "Tower is not yet"
-	cont "ready."
-	done
-
-.FreeBPText
-	text "Please take these"
-	line "Battle Points as"
-	cont "compensation."
-
-	para "You can trade them"
-	line "for useful items"
-
-	para "at the Exchange"
-	line "Service Corner."
-
-	para "<PLAYER> received"
-	line "10 Battle Points!@"
-	sound_item
-	text_waitbutton
-	db "@"
+	writetext Text_BattleTowerWelcomesYou
+	buttonsound
+	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
+	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
+	jump Script_BattleTowerIntroductionYesNo
 
 Script_Menu_ChallengeExplanationCancel:
 	writetext Text_WantToGoIntoABattleRoom

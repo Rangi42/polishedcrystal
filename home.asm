@@ -1560,10 +1560,6 @@ GetBaseData:: ; 3856
 	ld [wBasePicSize], a
 
 .end
-; Replace Pokedex # with species
-	ld a, [wCurSpecies]
-	ld [wBaseDexNo], a
-
 	pop af
 	rst Bankswitch
 	pop hl

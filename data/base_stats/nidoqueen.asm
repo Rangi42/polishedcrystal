@@ -1,5 +1,3 @@
-	db NIDOQUEEN ; 031
-
 	db  90,  92,  87,  76,  75,  85
 	;   hp  atk  def  spd  sat  sdf
 

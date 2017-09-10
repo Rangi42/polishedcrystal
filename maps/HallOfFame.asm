@@ -89,6 +89,8 @@ HallOfFameEntranceTrigger:
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftrue .SkipPhoneCall
 	specialphonecall SPECIALCALL_SSTICKET
+	setevent EVENT_BATTLE_TOWER_OPEN
+	clearevent EVENT_BATTLE_TOWER_CLOSED
 .SkipPhoneCall:
 	halloffame
 	end

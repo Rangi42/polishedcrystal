@@ -446,7 +446,7 @@ HiddenItemScript:: ; 0x13625
 	db "@"
 
 SetMemEvent: ; 1364f
-	ld hl, wEngineBuffer1 ; wd03e (aliases: wMenuItemsList, wCurFruitTree, wCurInput)
+	ld hl, wEngineBuffer1
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -4763,14 +4763,13 @@ _SwitchPartyMons:
 	ld b, a
 	ld a, [wMenuCursorY]
 	dec a
-	ld [wBuffer2], a ; wd1eb (aliases: wMovementType)
+	ld [wBuffer2], a
 	cp b
 	ret z
 	call .SwapMonAndMail
 	ld a, [wBuffer3]
 	call .ClearSprite
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
-	;jp .ClearSprite
+	ld a, [wBuffer2]
 
 .ClearSprite: ; 50f34 (14:4f34)
 	push af
@@ -4799,7 +4798,7 @@ _SwitchPartyMons:
 	push de
 	push bc
 	ld bc, wPartySpecies
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
+	ld a, [wBuffer2]
 	ld l, a
 	ld h, $0
 	add hl, bc
@@ -4815,8 +4814,8 @@ _SwitchPartyMons:
 	ld [hl], a
 	pop af
 	ld [de], a
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
-	ld hl, wPartyMons ; wdcdf (aliases: wPartyMon1, wPartyMon1Species)
+	ld a, [wBuffer2]
+	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	push hl
@@ -4824,7 +4823,7 @@ _SwitchPartyMons:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyBytes
 	ld a, [wBuffer3]
-	ld hl, wPartyMons ; wdcdf (aliases: wPartyMon1, wPartyMon1Species)
+	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	pop de
@@ -4835,7 +4834,7 @@ _SwitchPartyMons:
 	ld hl, wd002
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyBytes
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
+	ld a, [wBuffer2]
 	ld hl, wPartyMonOT
 	call SkipNames
 	push hl
@@ -4850,7 +4849,7 @@ _SwitchPartyMons:
 	ld hl, wd002
 	call .CopyName
 	ld hl, wPartyMonNicknames
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
+	ld a, [wBuffer2]
 	call SkipNames
 	push hl
 	call .CopyNameTowd002
@@ -4864,7 +4863,7 @@ _SwitchPartyMons:
 	ld hl, wd002
 	call .CopyName
 	ld hl, sPartyMail
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
+	ld a, [wBuffer2]
 	ld bc, MAIL_STRUCT_LENGTH
 	call AddNTimes
 	push hl

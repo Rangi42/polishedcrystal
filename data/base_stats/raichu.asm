@@ -1,5 +1,3 @@
-	db RAICHU ; 026
-
 if DEF(FAITHFUL)
 	db  60,  90,  55, 110,  90,  80
 	;   hp  atk  def  spd  sat  sdf

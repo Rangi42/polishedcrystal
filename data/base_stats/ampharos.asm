@@ -1,5 +1,3 @@
-	db AMPHAROS ; 181
-
 if DEF(FAITHFUL)
 	db  90,  75,  85,  55, 115,  90
 	;   hp  atk  def  spd  sat  sdf

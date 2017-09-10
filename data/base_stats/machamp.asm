@@ -1,5 +1,3 @@
-	db MACHAMP ; 068
-
 	db  90, 130,  80,  55,  65,  85
 	;   hp  atk  def  spd  sat  sdf
 

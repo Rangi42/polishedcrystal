@@ -1,5 +1,3 @@
-	db ELEKID ; 239
-
 if DEF(FAITHFUL)
 	db  45,  63,  37,  95,  65,  55
 	;   hp  atk  def  spd  sat  sdf

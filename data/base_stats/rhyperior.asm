@@ -1,5 +1,3 @@
-	db RHYPERIOR ; 464
-
 if DEF(FAITHFUL)
 	db 115, 140, 130,  40,  55,  55
 	;   hp  atk  def  spd  sat  sdf

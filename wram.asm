@@ -1818,8 +1818,6 @@ wMonVariant::
 wMoveSelectionMenuType:: ds 1
 
 wCurBaseData::
-wBaseDexNo::
-	ds 1
 wBaseStats::
 wBaseHP::
 	ds 1
@@ -1865,6 +1863,8 @@ wBaseEVYield2::
 	ds 1
 wBaseTMHM::
 	ds 14
+
+	ds 1
 
 wCurDamage::
 	ds 2

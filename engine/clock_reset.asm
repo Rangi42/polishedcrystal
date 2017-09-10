@@ -66,7 +66,7 @@ RestartClock: ; 20021 (8:4021)
 .SetClock: ; 20051 (8:4051)
 	ld a, 1
 	ld [wBuffer1], a ; which digit
-	ld [wBuffer2], a ; wd1eb (aliases: wMovementType)
+	ld [wBuffer2], a
 	ld a, 8
 	ld [wBuffer3], a
 	call UpdateTime
@@ -151,7 +151,7 @@ RestartClock: ; 20021 (8:4021)
 	ret
 
 .pressed_up
-	ld a, [wBuffer1] ; wd1ea (aliases: wMagikarpLength)
+	ld a, [wBuffer1]
 	call ResetClock_GetWraparoundTime
 	ld a, [de]
 	inc a
@@ -163,7 +163,7 @@ RestartClock: ; 20021 (8:4021)
 	jr .done_scroll
 
 .pressed_down
-	ld a, [wBuffer1] ; wd1ea (aliases: wMagikarpLength)
+	ld a, [wBuffer1]
 	call ResetClock_GetWraparoundTime
 	ld a, [de]
 	dec a
@@ -176,14 +176,14 @@ RestartClock: ; 20021 (8:4021)
 	jr .done_scroll
 
 .pressed_left
-	ld hl, wBuffer1 ; wd1ea (aliases: wMagikarpLength)
+	ld hl, wBuffer1
 	dec [hl]
 	jr nz, .done_scroll
 	ld [hl], $3
 	jr .done_scroll
 
 .pressed_right
-	ld hl, wBuffer1 ; wd1ea (aliases: wMagikarpLength)
+	ld hl, wBuffer1
 	inc [hl]
 	ld a, [hl]
 	cp $4
@@ -208,14 +208,14 @@ RestartClock: ; 20021 (8:4021)
 	ld c, a
 	decoord 11, 8
 	farcall PrintHoursMins
-	ld a, [wBuffer2] ; wd1eb (aliases: wMovementType)
+	ld a, [wBuffer2]
 	lb de, " ", " "
 	call .PlaceChars
-	ld a, [wBuffer1] ; wd1ea (aliases: wMagikarpLength)
+	ld a, [wBuffer1]
 	lb de, "▲", "▼"
 	call .PlaceChars
-	ld a, [wBuffer1] ; wd1ea (aliases: wMagikarpLength)
-	ld [wBuffer2], a ; wd1eb (aliases: wMovementType)
+	ld a, [wBuffer1]
+	ld [wBuffer2], a
 	ret
 ; 20160 (8:4160)
 

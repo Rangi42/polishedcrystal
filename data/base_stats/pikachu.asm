@@ -1,5 +1,3 @@
-	db PIKACHU ; 025
-
 if DEF(FAITHFUL)
 	db  35,  55,  40,  90,  50,  50
 	;   hp  atk  def  spd  sat  sdf

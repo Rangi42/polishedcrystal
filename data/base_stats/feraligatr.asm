@@ -1,5 +1,3 @@
-	db FERALIGATR ; 160
-
 	db  85, 105, 100,  78,  79,  83
 	;   hp  atk  def  spd  sat  sdf
 

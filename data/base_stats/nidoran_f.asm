@@ -1,5 +1,3 @@
-	db NIDORAN_F ; 029
-
 	db  55,  47,  52,  41,  40,  40
 	;   hp  atk  def  spd  sat  sdf
 

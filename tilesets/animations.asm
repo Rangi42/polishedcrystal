@@ -279,7 +279,7 @@ Tileset35Anim:
 	dw NULL,  WaitTileAnimation
 	dw VTiles2 tile $26, WriteTileFromBuffer
 	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateLCDTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -290,6 +290,7 @@ Tileset35Anim:
 	dw VTiles2 tile $30, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateLCDTile
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $31, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
@@ -892,7 +893,7 @@ AnimateFlowerTile: ; fc56d
 	add hl, de
 	ld sp, hl
 
-	ld hl, VTiles2 + $30 ; tile 4
+	ld hl, VTiles2 tile $03
 
 	jp WriteTile
 ; fc58c
@@ -923,7 +924,7 @@ AnimateKantoFlowerTile:
 	add hl, de
 	ld sp, hl
 
-	ld hl, VTiles2 + $30 ; tile 4
+	ld hl, VTiles2 tile $03
 
 	jp WriteTile
 
@@ -1067,7 +1068,7 @@ AnimateSproutPillarTile: ; fc645
 	ld sp, hl
 	ld l, e
 	ld h, d
-	jr WriteTile
+	jp WriteTile
 
 .frames
 	db $00, $10, $20, $30, $40, $30, $20, $10
@@ -1123,8 +1124,42 @@ AnimateWhirlpoolTile: ; fc678
 	ld l, e
 	ld h, d
 
-	jr WriteTile
+	jp WriteTile
 ; fc696
+
+
+AnimateLCDTile:
+; No parameters.
+
+; Save sp in bc (see WriteTile).
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+
+; Alternate tile graphic every frame
+	ld a, [wTileAnimationTimer]
+	and %111
+
+	swap a ; << 4 (16 bytes)
+	ld e, a
+	ld d, 0
+	ld hl, LCDTileFrames
+	add hl, de
+	ld sp, hl
+
+	ld hl, VTiles2 tile $6d
+
+	jp WriteTile
+
+LCDTileFrames:
+	INCBIN "gfx/tilesets/lcd/1.2bpp"
+	INCBIN "gfx/tilesets/lcd/2.2bpp"
+	INCBIN "gfx/tilesets/lcd/3.2bpp"
+	INCBIN "gfx/tilesets/lcd/4.2bpp"
+	INCBIN "gfx/tilesets/lcd/5.2bpp"
+	INCBIN "gfx/tilesets/lcd/6.2bpp"
+	INCBIN "gfx/tilesets/lcd/7.2bpp"
+	INCBIN "gfx/tilesets/lcd/8.2bpp"
 
 
 WriteTileFromBuffer: ; fc696
@@ -1260,6 +1295,11 @@ WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"
 WhirlpoolTiles3: INCBIN "gfx/tilesets/whirlpool/3.2bpp"
 WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
 ; fcba8
+
+
+LCDFrames: dw VTiles2 tile $6d, LCDTiles
+
+LCDTiles:
 
 
 FarawayWaterFrames1: dw VTiles2 tile $14, FarawayWaterTiles1

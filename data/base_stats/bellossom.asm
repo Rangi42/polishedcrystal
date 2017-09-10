@@ -1,5 +1,3 @@
-	db BELLOSSOM ; 182
-
 if DEF(FAITHFUL)
 	db  75,  80,  95,  50,  90, 100
 	;   hp  atk  def  spd  sat  sdf

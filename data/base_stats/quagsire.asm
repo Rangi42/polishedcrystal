@@ -1,5 +1,3 @@
-	db QUAGSIRE ; 195
-
 if DEF(FAITHFUL)
 	db  95,  85,  85,  35,  65,  65
 	;   hp  atk  def  spd  sat  sdf

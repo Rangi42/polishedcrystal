@@ -1,5 +1,3 @@
-	db TOGEKISS ; 468
-
 	db  85,  50,  95,  80, 120, 115
 	;   hp  atk  def  spd  sat  sdf
 

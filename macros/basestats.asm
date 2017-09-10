@@ -35,26 +35,30 @@ add_mt: MACRO
 ENDM
 
 tmhm: MACRO
-x = 0
-y = 0
-w = 0
-q = 0
-r = 0
+tms1_24 = 0
+tms25_48 = 0
+tms49_72 = 0
+tms73_96 = 0
+tms97_112 = 0
 	rept _NARG
 	if def(\1_TMNUM)
 	if \1_TMNUM < 25
-x = x | (1 << ((\1_TMNUM) - 1))
+tms1_24 = tms1_24 | (1 << ((\1_TMNUM) - 1))
 	else
 	if \1_TMNUM < 49
-y = y | (1 << ((\1_TMNUM) - 1 - 24))
+tms25_48 = tms25_48 | (1 << ((\1_TMNUM) - 1 - 24))
 	else
 	if \1_TMNUM < 73
-w = w | (1 << ((\1_TMNUM) - 1 - 48))
+tms49_72 = tms49_72 | (1 << ((\1_TMNUM) - 1 - 48))
 	else
 	if \1_TMNUM < 97
-q = q | (1 << ((\1_TMNUM) - 1 - 72))
+tms73_96 = tms73_96 | (1 << ((\1_TMNUM) - 1 - 72))
 	else
-r = r | (1 << ((\1_TMNUM) - 1 - 96))
+	if \1_TMNUM < 113
+tms97_112 = tms97_112 | (1 << ((\1_TMNUM) - 1 - 96))
+	else
+		fail "\1 overflows base data"
+	endc
 	endc
 	endc
 	endc
@@ -62,28 +66,27 @@ r = r | (1 << ((\1_TMNUM) - 1 - 96))
 	else
 		fail "\1 is not a TM, HM, or move tutor move"
 	endc
-
 	shift
 	endr
 
 	rept 3
-	db x & $ff
-x = x >> 8
+	db tms1_24 & $ff
+tms1_24 = tms1_24 >> 8
 	endr
 	rept 3
-	db y & $ff
-y = y >> 8
+	db tms25_48 & $ff
+tms25_48 = tms25_48 >> 8
 	endr
 	rept 3
-	db w & $ff
-w = w >> 8
+	db tms49_72 & $ff
+tms49_72 = tms49_72 >> 8
 	endr
 	rept 3
-	db q & $ff
-q = q >> 8
+	db tms73_96 & $ff
+tms73_96 = tms73_96 >> 8
 	endr
 	rept 2
-	db r & $ff
-r = q >> 8
+	db tms97_112 & $ff
+tms97_112 = tms97_112 >> 8
 	endr
 ENDM

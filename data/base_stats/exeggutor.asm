@@ -1,5 +1,3 @@
-	db EXEGGUTOR ; 103
-
 	db  95,  95,  85,  55, 125,  75
 	;   hp  atk  def  spd  sat  sdf
 

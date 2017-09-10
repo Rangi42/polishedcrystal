@@ -1,5 +1,3 @@
-	db MAGCARGO ; 219
-
 if DEF(FAITHFUL)
 	db  60,  50, 120,  30,  90,  80
 	;   hp  atk  def  spd  sat  sdf

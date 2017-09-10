@@ -1,5 +1,3 @@
-	db WEAVILE ; 461
-
 	db  70, 120,  65, 125,  45,  85
 	;   hp  atk  def  spd  sat  sdf
 

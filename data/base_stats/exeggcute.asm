@@ -1,5 +1,3 @@
-	db EXEGGCUTE ; 102
-
 	db  60,  40,  80,  40,  60,  45
 	;   hp  atk  def  spd  sat  sdf
 

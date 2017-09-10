@@ -1,5 +1,3 @@
-	db TANGROWTH ; 465
-
 	db 100, 100, 125,  50, 110,  50
 	;   hp  atk  def  spd  sat  sdf
 

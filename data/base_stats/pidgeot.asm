@@ -1,5 +1,3 @@
-	db PIDGEOT ; 018
-
 if DEF(FAITHFUL)
 	db  83,  80,  75, 101,  70,  70
 	;   hp  atk  def  spd  sat  sdf

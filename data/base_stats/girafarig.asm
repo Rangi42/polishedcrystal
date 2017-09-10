@@ -1,5 +1,3 @@
-	db GIRAFARIG ; 203
-
 if DEF(FAITHFUL)
 	db  70,  80,  65,  85,  90,  65
 	;   hp  atk  def  spd  sat  sdf

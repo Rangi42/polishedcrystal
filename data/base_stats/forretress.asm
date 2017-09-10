@@ -1,5 +1,3 @@
-	db FORRETRESS ; 205
-
 	db  75,  90, 140,  40,  60,  60
 	;   hp  atk  def  spd  sat  sdf
 

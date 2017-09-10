@@ -468,9 +468,9 @@ ArrangeUsedSprites: ; 14355
 	ld a, [hl]
 	call GetSpriteLength
 
-; Spill over into the second table after $80 tiles.
+; Spill over into the second table after $78 tiles.
 	add b
-	cp $80
+	cp $78
 	jr z, .loop
 	jr nc, .SecondTable
 
@@ -836,7 +836,8 @@ Group29Sprites:
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_SUICUNE
-	; 16 total sprites
+	db SPRITE_N64
+	; 17 total sprites
 	db 0
 
 

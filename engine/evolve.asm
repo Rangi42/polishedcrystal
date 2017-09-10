@@ -395,13 +395,9 @@ endr
 ; 42414
 
 UpdateSpeciesNameIfNotNicknamed: ; 42414
-	ld a, [wCurSpecies]
-	push af
-	ld a, [wBaseDexNo]
+	ld a, [wEvolutionOldSpecies]
 	ld [wd265], a
 	call GetPokemonName
-	pop af
-	ld [wCurSpecies], a
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 .loop

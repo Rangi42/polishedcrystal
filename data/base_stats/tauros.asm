@@ -1,5 +1,3 @@
-	db TAUROS ; 128
-
 	db  75, 100,  95, 110,  40,  70
 	;   hp  atk  def  spd  sat  sdf
 

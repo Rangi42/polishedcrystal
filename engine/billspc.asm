@@ -1721,7 +1721,7 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	call CopyNicknameToTemp
 	ld hl, wPartyMonOT
 	call CopyOTNameToTemp
-	ld hl, wPartyMons ; wdcdf (aliases: wPartyMon1, wPartyMon1Species)
+	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
 	call AddNTimes

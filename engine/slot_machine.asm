@@ -70,8 +70,8 @@ _SlotMachine:
 	ld hl, rLCDC ; $ff40
 	set 2, [hl]
 	call EnableLCD
-	ld hl, wSlots ; Alias: wTrademons
-	ld bc, wSlotsEnd - wSlots ; Alias: wTrademonsEnd
+	ld hl, wSlots
+	ld bc, wSlotsEnd - wSlots
 	xor a
 	call ByteFill
 	call InitReelTiles

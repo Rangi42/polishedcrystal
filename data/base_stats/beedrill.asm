@@ -1,5 +1,3 @@
-	db BEEDRILL ; 015
-
 if DEF(FAITHFUL)
 	db  65,  90,  40,  75,  45,  80
 	;   hp  atk  def  spd  sat  sdf

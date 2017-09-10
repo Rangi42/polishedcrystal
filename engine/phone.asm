@@ -201,7 +201,7 @@ ChooseRandomCaller: ; 900bf (24:40bf)
 GetAvailableCallers: ; 900de (24:40de)
 	farcall CheckTime
 	ld a, c
-	ld [wEngineBuffer1], a ; wd03e (aliases: wMenuItemsList, wCurFruitTree, wCurInput)
+	ld [wEngineBuffer1], a
 	ld hl, wEngineBuffer3
 	ld bc, 11
 	xor a
@@ -217,7 +217,7 @@ GetAvailableCallers: ; 900de (24:40de)
 	ld hl, PhoneContacts + PHONE_CONTACT_SCRIPT2_TIME
 	ld bc, PHONE_TABLE_WIDTH
 	call AddNTimes
-	ld a, [wEngineBuffer1] ; wd03e (aliases: wMenuItemsList, wCurFruitTree, wCurInput)
+	ld a, [wEngineBuffer1]
 	and [hl]
 	jr z, .not_good_for_call
 	ld bc, PHONE_CONTACT_MAP_GROUP - PHONE_CONTACT_SCRIPT2_TIME

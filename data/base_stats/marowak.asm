@@ -1,5 +1,3 @@
-	db MAROWAK ; 105
-
 if DEF(FAITHFUL)
 	db  60,  80, 110,  45,  50,  80
 	;   hp  atk  def  spd  sat  sdf

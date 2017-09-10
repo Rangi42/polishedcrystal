@@ -1,5 +1,3 @@
-	db OMANYTE ; 138
-
 	db  35,  40, 100,  35,  90,  55
 	;   hp  atk  def  spd  sat  sdf
 

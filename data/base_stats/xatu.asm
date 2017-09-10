@@ -1,5 +1,3 @@
-	db XATU ; 178
-
 if DEF(FAITHFUL)
 	db  65,  75,  70,  95,  95,  70
 	;   hp  atk  def  spd  sat  sdf

@@ -1,5 +1,3 @@
-	db AZUMARILL ; 184
-
 if DEF(FAITHFUL)
 	db 100,  50,  80,  50,  60,  80
 	;   hp  atk  def  spd  sat  sdf

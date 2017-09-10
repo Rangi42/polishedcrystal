@@ -3,13 +3,17 @@
 
 INCLUDE "includes.asm"
 
+MP_METER0 EQU $20
+MP_METER8 EQU $28
+MP_DUTY0 EQU $29
+
 
 SECTION "Music Player Graphics", ROMX
 
-MusicTestGFX:
-INCBIN "gfx/music_player/music_test.2bpp"
 PianoGFX:
 INCBIN "gfx/music_player/piano.2bpp"
+MusicTestGFX: ; must come after PianoGFX
+INCBIN "gfx/music_player/music_test.2bpp"
 NotesGFX:
 INCBIN "gfx/music_player/note_lines.2bpp"
 WaveformsGFX:
@@ -117,13 +121,8 @@ MusicPlayer::
 	call DelayFrame
 
 ; Load graphics
-	ld de, MusicTestGFX
-	lb bc, BANK(MusicTestGFX), 13
-	ld hl, VTiles0 tile $d9
-	call Request2bpp
-
-	ld de, PianoGFX
-	lb bc, BANK(PianoGFX), 32
+	ld de, PianoGFX ; 
+	lb bc, BANK(PianoGFX), 32 + 13 ; PianoGFX + MusicTestGFX
 	ld hl, VTiles2
 	call Request2bpp
 
@@ -704,22 +703,10 @@ DrawPitchTransposition:
 	ret z
 .continue
 	ld [hl], "P"
-	bit 7, a
-	jr nz, .negative
-	ld de, wPitchTransposition
-	ld a, "+"
-	jr .printnum
-.negative
-	xor $ff
-	inc a
-	ld de, wTmpValue
-	ld [de], a
-	ld a, "-"
-.printnum
-	hlcoord 16, 1
-	ld [hli], a
+	inc hl
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
-	jp PrintNum
+	ld de, wPitchTransposition
+	jr _PrintSignedNum
 
 DrawTempoAdjustment:
 	hlcoord 15, 2
@@ -733,21 +720,22 @@ DrawTempoAdjustment:
 	ret z
 .continue
 	ld [hl], "T"
+	inc hl
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	ld de, wTempoAdjustment
+_PrintSignedNum:
 	bit 7, a
 	jr nz, .negative
-	ld de, wTempoAdjustment
 	ld a, "+"
 	jr .printnum
 .negative
-	xor $ff
+	cpl
 	inc a
 	ld de, wTmpValue
 	ld [de], a
 	ld a, "-"
 .printnum
-	hlcoord 16, 2
 	ld [hli], a
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
 	jp PrintNum
 
 _EmptyPitchOrTempo: db "     @"
@@ -859,7 +847,7 @@ DrawChData:
 	; channel 4
 	hlcoord 18, MP_HUD_TOP + 1
 	ld a, [wMusicNoiseSampleSet]
-	add $f6
+	add "0"
 	ld [hl], a
 
 	hlcoord 17, MP_HUD_TOP + 2
@@ -869,7 +857,7 @@ DrawChData:
 	ld a, [wNoiseHit]
 	and a
 	jr z, .blank_hit
-	ld a, $e1
+	ld a, MP_METER8
 	jr .got_hit
 .blank_hit
 	ld a, " "
@@ -919,7 +907,7 @@ _DrawCh1_2_3:
 	swap a
 	srl a
 	srl a
-	add $e2
+	add MP_DUTY0
 	ld [hl], a
 	pop hl
 
@@ -928,7 +916,7 @@ _DrawCh1_2_3:
 	dec hl
 	dec hl
 	dec hl
-	ld a, $d9
+	ld a, MP_METER0
 	ld de, SCREEN_WIDTH
 	add hl, de
 	ld [hli], a
@@ -953,7 +941,7 @@ _DrawCh1_2_3:
 .blank_volume
 	and $f
 	srl a
-	add $d9
+	add MP_METER0
 	ld [hli], a
 	ld [hld], a
 	ld a, [wTmpCh]

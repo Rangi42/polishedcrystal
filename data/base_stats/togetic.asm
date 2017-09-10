@@ -1,5 +1,3 @@
-	db TOGETIC ; 176
-
 	db  55,  40,  85,  40,  80, 105
 	;   hp  atk  def  spd  sat  sdf
 
