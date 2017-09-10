@@ -17,7 +17,16 @@
 *.sgm
 *.sav
 *.rtc
-*.sn*
+*.sn1
+*.sn2
+*.sn3
+*.sn4
+*.sn5
+*.sn6
+*.sn7
+*.sn8
+*.sn9
+*.sn0
 
 # rgbds extras
 *.map

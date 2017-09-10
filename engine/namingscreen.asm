@@ -196,7 +196,9 @@ endr
 	ld hl, VTiles0 tile $00
 	ld c, $4
 	push bc
+	push de
 	call Request2bpp
+	pop de
 	pop bc
 	ld hl, 12 tiles
 	add hl, de
