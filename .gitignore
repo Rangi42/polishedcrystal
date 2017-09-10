@@ -17,6 +17,7 @@
 *.sgm
 *.sav
 *.rtc
+*.sn*
 
 # rgbds extras
 *.map
@@ -31,4 +32,3 @@
 
 # swap files for gedit
 *~
-
