@@ -103,7 +103,7 @@ endr
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleExtrasGFX
 	ld hl, VTiles2 tile $5f
-	lb bc, BANK(BattleExtrasGFX), 26
+	lb bc, BANK(BattleExtrasGFX), 32
 	call Get2bpp
 ; fb4cc
 
