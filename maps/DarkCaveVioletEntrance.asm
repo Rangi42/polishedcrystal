@@ -7,12 +7,12 @@ DarkCaveVioletEntrance_MapScriptHeader:
 DarkCaveVioletEntrance_MapEventHeader:
 
 .Warps: db 3
-	warp_def $f, $3, 3, ROUTE_31
-	warp_def $1, $11, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
-	warp_def $21, $23, 3, ROUTE_46
+	warp_def 15, 3, 3, ROUTE_31
+	warp_def 1, 17, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
+	warp_def 33, 35, 3, ROUTE_46
 
 .XYTriggers: db 1
-	xy_trigger 0, $2, $5, DarkCaveVioletEntranceFalknerTrigger
+	xy_trigger 0, 2, 5, DarkCaveVioletEntranceFalknerTrigger
 
 .Signposts: db 1
 	signpost 3, 26, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
@@ -46,6 +46,8 @@ DarkCaveVioletEntranceFalknerTrigger:
 	writetext DarkCaveVioletEntranceFalknerAttackText
 	pause 30
 	closetext
+	cry PIDGEOTTO
+	waitsfx
 	playsound SFX_TACKLE
 	applymovement DARKCAVEVIOLETENTRANCE_PIDGEOTTO, DarkCaveVioletEntranceMovementData_PidgeottoAttack
 	waitsfx
@@ -78,7 +80,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 
 .Darkness:
 	showtext DarkCaveVioletEntranceFalknerDarknessText
-	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAway
+	applyonemovement PLAYER, step_left
 	end
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
@@ -91,7 +93,6 @@ DarkCaveVioletEntranceMovementData_PidgeottoAttack:
 DarkCaveVioletEntranceMovementData_FalknerHeadBack:
 DarkCaveVioletEntranceMovementData_PlayerStepAside:
 	step_left
-DarkCaveVioletEntranceMovementData_PlayerStepAway:
 	step_left
 	step_end
 

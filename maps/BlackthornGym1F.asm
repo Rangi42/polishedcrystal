@@ -8,13 +8,13 @@ BlackthornGym1F_MapScriptHeader:
 BlackthornGym1F_MapEventHeader:
 
 .Warps: db 7
-	warp_def $11, $4, 1, BLACKTHORN_CITY
-	warp_def $11, $5, 1, BLACKTHORN_CITY
-	warp_def $7, $1, 1, BLACKTHORN_GYM_2F
-	warp_def $9, $7, 2, BLACKTHORN_GYM_2F
-	warp_def $6, $2, 3, BLACKTHORN_GYM_2F
-	warp_def $7, $7, 4, BLACKTHORN_GYM_2F
-	warp_def $6, $7, 5, BLACKTHORN_GYM_2F
+	warp_def 17, 4, 1, BLACKTHORN_CITY
+	warp_def 17, 5, 1, BLACKTHORN_CITY
+	warp_def 7, 1, 1, BLACKTHORN_GYM_2F
+	warp_def 9, 7, 2, BLACKTHORN_GYM_2F
+	warp_def 6, 2, 3, BLACKTHORN_GYM_2F
+	warp_def 7, 7, 4, BLACKTHORN_GYM_2F
+	warp_def 6, 7, 5, BLACKTHORN_GYM_2F
 
 .XYTriggers: db 0
 
@@ -32,15 +32,15 @@ BlackthornGym1F_MapEventHeader:
 BlackthornGym1FBoulderCallback:
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_1
 	iffalse .skip1
-	changeblock $8, $2, $3b
+	changeblock 8, 2, $3b
 .skip1
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_2
 	iffalse .skip2
-	changeblock $2, $4, $3a
+	changeblock 2, 4, $3a
 .skip2
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_3
 	iffalse .skip3
-	changeblock $8, $6, $3b
+	changeblock 8, 6, $3b
 .skip3
 	return
 

@@ -7,8 +7,8 @@ CeladonGameCornerPrizeRoom_MapScriptHeader:
 CeladonGameCornerPrizeRoom_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 7, CELADON_CITY
-	warp_def $7, $4, 7, CELADON_CITY
+	warp_def 7, 3, 7, CELADON_CITY
+	warp_def 7, 4, 7, CELADON_CITY
 
 .XYTriggers: db 0
 
@@ -26,7 +26,7 @@ CeladonGameCornerTMVendor:
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
 	waitbutton
 	checkitem COIN_CASE
-	iffalse CeladonPrizeRoom_NoCoinCase
+	iffalse_jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 	writetext CeladonPrizeRoom_AskWhichPrizeText
 CeladonPrizeRoom_tmcounterloop:
 	special Special_DisplayCoinCaseBalance
@@ -36,7 +36,7 @@ CeladonPrizeRoom_tmcounterloop:
 	if_equal $1, .doubleteam
 	if_equal $2, .toxic
 	if_equal $3, .gigaimpact
-	jump CeladonPrizeRoom_cancel
+	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 .doubleteam
 	checktmhm TM_DOUBLE_TEAM
@@ -45,7 +45,7 @@ CeladonPrizeRoom_tmcounterloop:
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_DOUBLE_TEAM, $0
 	scall CeladonPrizeRoom_askbuytm
-	iffalse CeladonPrizeRoom_cancel
+	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_DOUBLE_TEAM
 	takecoins 3500
 	jump CeladonPrizeRoom_purchased
@@ -57,7 +57,7 @@ CeladonPrizeRoom_tmcounterloop:
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuytm
-	iffalse CeladonPrizeRoom_cancel
+	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_TOXIC
 	takecoins 5500
 	jump CeladonPrizeRoom_purchased
@@ -69,7 +69,7 @@ CeladonPrizeRoom_tmcounterloop:
 	if_equal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_GIGA_IMPACT, $0
 	scall CeladonPrizeRoom_askbuytm
-	iffalse CeladonPrizeRoom_cancel
+	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_GIGA_IMPACT
 	takecoins 7500
 	jump CeladonPrizeRoom_purchased
@@ -102,12 +102,6 @@ CeladonPrizeRoom_notenoughcoins:
 CeladonPrizeRoom_notenoughroom:
 	jumpopenedtext CeladonPrizeRoom_NotEnoughRoomText
 
-CeladonPrizeRoom_cancel:
-	jumpopenedtext CeladonPrizeRoom_ComeAgainText
-
-CeladonPrizeRoom_NoCoinCase:
-	jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
-
 CeladonPrizeRoom_TMMenuDataHeader:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -129,7 +123,7 @@ CeladonGameCornerPokemonVendor:
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
 	waitbutton
 	checkitem COIN_CASE
-	iffalse CeladonPrizeRoom_NoCoinCase
+	iffalse_jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 .loop
 	writetext CeladonPrizeRoom_AskWhichPrizeText
 	special Special_DisplayCoinCaseBalance
@@ -139,7 +133,7 @@ CeladonGameCornerPokemonVendor:
 	if_equal $1, .mr__mime
 	if_equal $2, .eevee
 	if_equal $3, .porygon
-	jump CeladonPrizeRoom_cancel
+	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 .mr__mime
 	checkcoins 3333
@@ -148,7 +142,7 @@ CeladonGameCornerPokemonVendor:
 	if_equal $6, CeladonPrizeRoom_notenoughroom
 	pokenamemem MR__MIME, $0
 	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_cancel
+	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
@@ -166,7 +160,7 @@ CeladonGameCornerPokemonVendor:
 	if_equal $6, CeladonPrizeRoom_notenoughroom
 	pokenamemem EEVEE, $0
 	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_cancel
+	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
@@ -184,7 +178,7 @@ CeladonGameCornerPokemonVendor:
 	if_equal $6, CeladonPrizeRoom_notenoughroom
 	pokenamemem PORYGON, $0
 	scall CeladonPrizeRoom_askbuy
-	iffalse CeladonPrizeRoom_cancel
+	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
@@ -243,14 +237,14 @@ CeladonPrizeRoom_AskWhichPrizeText:
 CeladonPrizeRoom_ConfirmPurchaseText:
 	text "OK, so you wanted"
 	line "a @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "?"
 	done
 
 CeladonPrizeRoom_ConfirmTMPurchaseText:
 	text "OK, so you wanted"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "?"
 	done
 

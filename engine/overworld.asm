@@ -9,17 +9,17 @@ GetEmote2bpp: ; 1412a
 
 _ReplaceKrisSprite:: ; 14135
 	call GetPlayerSprite
-	ld a, [UsedSprites]
+	ld a, [wUsedSprites]
 	ld [hUsedSpriteIndex], a
-	ld a, [UsedSprites + 1]
+	ld a, [wUsedSprites + 1]
 	ld [hUsedSpriteTile], a
 	jp GetUsedSprite
 ; 14146
 
 RefreshSprites:: ; 14168
 	xor a
-	ld bc, UsedSpritesEnd - UsedSprites
-	ld hl, UsedSprites
+	ld bc, wUsedSpritesEnd - wUsedSprites
+	ld hl, wUsedSprites
 	call ByteFill
 	call GetPlayerSprite
 	call AddMapSprites
@@ -33,13 +33,13 @@ GetPlayerSprite: ; 14183
 	ld a, [wPlayerSpriteSetupFlags]
 	bit 2, a
 	jr nz, .go
-	ld a, [PlayerGender]
+	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .go
 	ld hl, .Kris
 
 .go
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	ld c, a
 .loop
 	ld a, [hli]
@@ -51,7 +51,7 @@ GetPlayerSprite: ; 14183
 
 ; Any player state not in the array defaults to Chris's sprite.
 	xor a ; ld a, PLAYER_NORMAL
-	ld [PlayerState], a
+	ld [wPlayerState], a
 	ld a, SPRITE_CHRIS
 	jr .finish
 
@@ -59,9 +59,9 @@ GetPlayerSprite: ; 14183
 	ld a, [hl]
 
 .finish
-	ld [UsedSprites + 0], a
-	ld [PlayerSprite], a
-	ld [PlayerObjectSprite], a
+	ld [wUsedSprites + 0], a
+	ld [wPlayerSprite], a
+	ld [wPlayerObjectSprite], a
 	ret
 
 .Chris:
@@ -92,7 +92,7 @@ AddMapSprites: ; 141c9
 
 
 AddIndoorSprites: ; 141d9
-	ld hl, Map1ObjectSprite
+	ld hl, wMap1ObjectSprite
 	ld a, 1
 .loop
 	push af
@@ -109,7 +109,7 @@ AddIndoorSprites: ; 141d9
 
 
 AddOutdoorSprites: ; 141ee
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	dec a
 	ld c, a
 	ld b, 0
@@ -197,6 +197,8 @@ GetMonSprite: ; 14259
 	jr z, .wBreedMon1
 	cp SPRITE_DAYCARE_MON_2
 	jr z, .wBreedMon2
+	cp SPRITE_GROTTO_MON
+	jr z, .GrottoMon
 	cp SPRITE_VARS
 	jr nc, .Variable
 	jr .Icon
@@ -220,6 +222,11 @@ GetMonSprite: ; 14259
 
 .wBreedMon2
 	ld a, [wBreedMon2Species]
+	jr .Mon
+
+.GrottoMon
+	farcall GetHiddenGrottoContents
+	ld a, [hl]
 
 .Mon:
 	ld e, a
@@ -236,7 +243,7 @@ GetMonSprite: ; 14259
 	sub SPRITE_VARS
 	ld e, a
 	ld d, 0
-	ld hl, VariableSprites
+	ld hl, wVariableSprites
 	add hl, de
 	ld a, [hl]
 	and a
@@ -313,7 +320,7 @@ AddSpriteGFX: ; 142e5
 	push hl
 	push bc
 	ld b, a
-	ld hl, UsedSprites + 2
+	ld hl, wUsedSprites + 2
 	ld c, SPRITE_GFX_LIST_CAPACITY - 1
 .loop
 	ld a, [hl]
@@ -348,7 +355,7 @@ endr
 
 
 LoadSpriteGFX: ; 14306
-	ld hl, UsedSprites
+	ld hl, wUsedSprites
 	ld b, SPRITE_GFX_LIST_CAPACITY
 .loop
 	ld a, [hli]
@@ -376,10 +383,10 @@ SortUsedSprites: ; 1431e
 ; TODO: verify whether this is necessary; remove it otherwise.
 ; Note that overworld sprite sets are already manually sorted.
 
-; Run backwards through UsedSprites to find the last one.
+; Run backwards through wUsedSprites to find the last one.
 
 	ld c, SPRITE_GFX_LIST_CAPACITY
-	ld de, UsedSprites + (SPRITE_GFX_LIST_CAPACITY - 1) * 2
+	ld de, wUsedSprites + (SPRITE_GFX_LIST_CAPACITY - 1) * 2
 .FindLastSprite:
 	ld a, [de]
 	and a
@@ -397,7 +404,7 @@ endr
 ; higher than a later one, swap them.
 
 	inc de
-	ld hl, UsedSprites + 1
+	ld hl, wUsedSprites + 1
 
 .CheckSprite:
 	push bc
@@ -450,7 +457,7 @@ ArrangeUsedSprites: ; 14355
 ; Get the length of each sprite and space them out in VRAM.
 ; Crystal introduces a second table in VRAM bank 0.
 
-	ld hl, UsedSprites
+	ld hl, wUsedSprites
 	lb bc, 0, SPRITE_GFX_LIST_CAPACITY
 .FirstTableLength:
 ; Keep going until the end of the list.
@@ -461,9 +468,9 @@ ArrangeUsedSprites: ; 14355
 	ld a, [hl]
 	call GetSpriteLength
 
-; Spill over into the second table after $80 tiles.
+; Spill over into the second table after $78 tiles.
 	add b
-	cp $80
+	cp $78
 	jr z, .loop
 	jr nc, .SecondTable
 
@@ -527,7 +534,7 @@ GetSpriteLength: ; 14386
 
 
 GetUsedSprites: ; 1439b
-	ld hl, UsedSprites
+	ld hl, wUsedSprites
 	ld c, SPRITE_GFX_LIST_CAPACITY
 
 .loop
@@ -669,7 +676,7 @@ LoadEmote:: ; 1442f
 emote_header: MACRO
 	dw \1
 	db \2 tiles, BANK(\1)
-	dw VTiles1 tile \3
+	dw VTiles0 tile \3
 ENDM
 
 EmotesPointers: ; 144d
@@ -820,16 +827,17 @@ Group29Sprites:
 	db SPRITE_SAILOR
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SWIMMER_GUY
-	db SPRITE_OLIVINE_RIVAL ; SPRITE_SILVER, SPRITE_SUPER_NERD, SPRITE_COWGIRL
+	db SPRITE_OLIVINE_RIVAL ; SPRITE_SILVER, SPRITE_EUSINE, SPRITE_COWGIRL
 	db SPRITE_YOUNGSTER ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_SUICUNE
-	; 16 total sprites
+	db SPRITE_N64
+	; 17 total sprites
 	db 0
 
 
@@ -944,7 +952,7 @@ Group13Sprites:
 	db SPRITE_COSPLAYER ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	; 13 total sprites
 	db 0
 
@@ -988,7 +996,6 @@ Group28Sprites:
 Group8Sprites:
 ; Route33
 ; AzaleaTown
-	db SPRITE_AZALEA_ROCKET ; SPRITE_ROCKET, SPRITE_SILVER
 	db SPRITE_GRAMPS
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
@@ -998,10 +1005,10 @@ Group8Sprites:
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
 	db SPRITE_KURT ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	; 9 walking sprites (8 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
-	; 12 total sprites
+	; 11 total sprites
 	db 0
 
 
@@ -1013,18 +1020,19 @@ Group9Sprites:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
 	db SPRITE_GRAMPS
-	db SPRITE_LAKE_OF_RAGE_LANCE ; SPRITE_LANCE, SPRITE_ENGINEER
+	db SPRITE_LANCE
 	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_LADY ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_ENGINEER ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_GYARADOS_TOP_LEFT
 	db SPRITE_GYARADOS_TOP_RIGHT
 	db SPRITE_GYARADOS_BOTTOM_LEFT
 	db SPRITE_GYARADOS_BOTTOM_RIGHT
 	db SPRITE_BALL_CUT_FRUIT
-	; 15 total sprites
+	; 16 total sprites
 	db 0
 
 
@@ -1083,7 +1091,7 @@ Group11Sprites:
 	db SPRITE_ROCKET ; doesn't walk
 	; 12 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_DAYCARE_MON_1
 	db SPRITE_DAYCARE_MON_2
 	; 16 total sprites
@@ -1096,18 +1104,18 @@ Group12Sprites:
 ; VermilionCity
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_ENGINEER
-	db SPRITE_GRAMPS
-	db SPRITE_VERMILION_LAWRENCE ; SPRITE_LAWRENCE, SPRITE_ROCKER
+	db SPRITE_LAWRENCE
 	db SPRITE_POKEFAN_M
 	db SPRITE_ROCKER
 	db SPRITE_SAILOR
 	db SPRITE_TWIN
 	db SPRITE_YOUNGSTER
+	db SPRITE_GRAMPS ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_SUPER_NERD ; doesn't walk
 	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_BIG_SNORLAX
 	db SPRITE_MACHOP
 	; 15 total sprites
@@ -1145,7 +1153,7 @@ Group15Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	; 6 walking sprites
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_N64
 	db SPRITE_HO_OH
 	; 8 total sprites
 	db 0
@@ -1206,10 +1214,12 @@ Group18Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_TEACHER
 	db SPRITE_YOUNGSTER
+	db SPRITE_COOLTRAINER_F ; doesn't walk
 	db SPRITE_LASS ; doesn't walk
-	; 10 walking sprites (9 that walk)
+	db SPRITE_ROCKER ; doesn't walk
+	; 11 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
-	; 11 total sprites
+	; 12 total sprites
 	db 0
 
 
@@ -1288,9 +1298,9 @@ Group23Sprites:
 	db SPRITE_LADY
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	db SPRITE_KUKUI ; doesn't walk
 	db SPRITE_COOLTRAINER_F ; doesn't walk
-	; 11 walking sprites (9 that walk)
+	; 10 walking sprites (9 that walk)
+	db SPRITE_KUKUI
 	db SPRITE_BALL_CUT_FRUIT
 	; 12 total sprites
 	db 0
@@ -1328,7 +1338,7 @@ Group30Sprites:
 	db SPRITE_SILVER
 	db SPRITE_GIOVANNI
 	; 8 walking sprites
-	db SPRITE_ROCK_BOULDER_FOSSIL
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	; 9 total sprites
 	db 0
 

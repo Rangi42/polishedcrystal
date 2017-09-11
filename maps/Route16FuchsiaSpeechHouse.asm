@@ -7,8 +7,8 @@ Route16FuchsiaSpeechHouse_MapScriptHeader:
 Route16FuchsiaSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_16_NORTHWEST
-	warp_def $7, $3, 1, ROUTE_16_NORTHWEST
+	warp_def 7, 2, 1, ROUTE_16_NORTHWEST
+	warp_def 7, 3, 1, ROUTE_16_NORTHWEST
 
 .XYTriggers: db 0
 

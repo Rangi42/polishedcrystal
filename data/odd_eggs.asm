@@ -1,82 +1,4 @@
-GiveEggMon:
-	ld de, OddEggSpecies
-	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
-	call CopyBytes
-	;jp AddEggMonToParty
-; 1fb546
-
-AddEggMonToParty:
-	ld hl, PartyCount
-	ld a, [hl]
-	ld e, a
-	inc [hl]
-
-	ld bc, PartySpecies
-	ld d, e
-.loop1
-	inc bc
-	dec d
-	jr nz, .loop1
-	ld a, e
-	ld [CurPartyMon], a
-	ld a, EGG
-	ld [bc], a
-	inc bc
-	ld a, -1
-	ld [bc], a
-
-	ld hl, PartyMon1Species
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, e
-	ld [wd002], a
-.loop2
-	add hl, bc
-	dec a
-	and a
-	jr nz, .loop2
-	ld e, l
-	ld d, h
-	ld hl, OddEggSpecies
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
-
-	ld hl, PartyMonOT
-	ld bc, NAME_LENGTH
-	ld a, [wd002]
-.loop3
-	add hl, bc
-	dec a
-	and a
-	jr nz, .loop3
-	ld e, l
-	ld d, h
-	ld hl, wOddEggName
-	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
-	ld a, "@"
-	ld [de], a
-
-	ld hl, PartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
-	ld a, [wd002]
-.loop4
-	add hl, bc
-	dec a
-	and a
-	jr nz, .loop4
-	ld e, l
-	ld d, h
-	ld hl, wOddEggName
-	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
-	ld a, "@"
-	ld [de], a
-
-	jp CloseSRAM
-; 11ba38
-
-
-GiveOddEgg: ; 1fb4b6
+GiveOddEgg:
 	; Compare a random word to
 	; probabilities out of 0xffff.
 	call Random
@@ -117,7 +39,7 @@ GiveOddEgg: ; 1fb4b6
 	ld hl, OddEggs
 	ld a, OddEgg2 - OddEgg1
 	call AddNTimes
-	jp GiveEggMon
+	jr GiveEggMon
 
 .Probabilities:
 
@@ -144,16 +66,85 @@ prob_total = 0
 	prob 10
 ; 1fb56e
 
-GiveShinyDittoEgg:
-	ld hl, ShinyDittoEgg
-	jp GiveEggMon
-
 GiveMystriEgg:
 	ld hl, MystriEgg
-	jp GiveEggMon
+; fallthrough
+GiveEggMon:
+	ld de, wOddEggSpecies
+	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
+	call CopyBytes
+; fallthrough
+AddEggMonToParty:
+	ld hl, wPartyCount
+	ld a, [hl]
+	ld e, a
+	inc [hl]
+
+	ld bc, wPartySpecies
+	ld d, e
+.loop1
+	inc bc
+	dec d
+	jr nz, .loop1
+	ld a, e
+	ld [wCurPartyMon], a
+	ld a, EGG
+	ld [bc], a
+	inc bc
+	ld a, -1
+	ld [bc], a
+
+	ld hl, wPartyMon1Species
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, e
+	ld [wd002], a
+.loop2
+	add hl, bc
+	dec a
+	and a
+	jr nz, .loop2
+	ld e, l
+	ld d, h
+	ld hl, wOddEggSpecies
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call CopyBytes
+
+	ld hl, wPartyMonOT
+	ld bc, NAME_LENGTH
+	ld a, [wd002]
+.loop3
+	add hl, bc
+	dec a
+	and a
+	jr nz, .loop3
+	ld e, l
+	ld d, h
+	ld hl, wOddEggName
+	ld bc, PKMN_NAME_LENGTH - 1
+	call CopyBytes
+	ld a, "@"
+	ld [de], a
+
+	ld hl, wPartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	ld a, [wd002]
+.loop4
+	add hl, bc
+	dec a
+	and a
+	jr nz, .loop4
+	ld e, l
+	ld d, h
+	ld hl, wOddEggName
+	ld bc, PKMN_NAME_LENGTH - 1
+	call CopyBytes
+	ld a, "@"
+	ld [de], a
+
+	jp CloseSRAM
 
 
-OddEggs: ; 1fb56e
+OddEggs:
 
 OddEgg1:
 	db PICHU
@@ -385,31 +376,6 @@ OddEgg2:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 7 ; SDef
-	db "Egg@@@@@@@@"
-
-
-ShinyDittoEgg:
-	db DITTO
-	db NO_ITEM
-	db TRANSFORM, 0, 0, 0
-	dw 08192 ; OT ID
-	dt 0 ; Exp
-	db 0, 0, 0, 0, 0, 0 ; EVs
-	db $FF, $FF, $FF ; DVs
-	db SHINY_MASK | HIDDEN_ABILITY | QUIRKY, IS_EGG_MASK ; Personality
-	db 10, 0, 0, 0 ; PP
-	db 20 ; Happiness
-	db 0 ; Pokerus
-	db 0, 0, 0 ; Caught data
-	db EGG_LEVEL ; Level
-	db 0, 0 ; Status
-	bigdw 0 ; HP
-	bigdw 12 ; Max HP
-	bigdw 6 ; Atk
-	bigdw 6 ; Def
-	bigdw 6 ; Spd
-	bigdw 6 ; SAtk
-	bigdw 6 ; SDef
 	db "Egg@@@@@@@@"
 
 

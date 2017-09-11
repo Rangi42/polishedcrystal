@@ -12,7 +12,7 @@ NamingScreen: ; 116c1
 	ld [hl], d
 	ld hl, wNamingScreenType
 	ld [hl], b
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -34,7 +34,7 @@ NamingScreen: ; 116c1
 	pop af
 	ld [hMapAnims], a
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	jp ClearJoypad
 
 ; 116f8
@@ -76,14 +76,14 @@ endr
 	dw .Pokemon
 	dw .Player
 	dw .Rival
-	dw .TrendyPhrase
+	dw .wTrendyPhrase
 	dw .Box
 
 .Pokemon: ; 1173e (4:573e)
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	farcall LoadNamingScreenMonIcon
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
 	hlcoord 5, 2
@@ -116,7 +116,7 @@ endr
 
 .Player: ; 1178d (4:578d)
 	farcall GetPlayerIcon
-	ld a, [PlayerGender]
+	ld a, [wPlayerGender]
 	bit 0, a
 	ld c, SPRITE_ANIM_INDEX_RED_WALK
 	jr z, .got_player_walk
@@ -151,7 +151,7 @@ endr
 
 ; 117d1
 
-.TrendyPhrase:
+.wTrendyPhrase:
 	ld de, ArtistSpriteGFX
 	lb bc, BANK(ArtistSpriteGFX), SPRITE_ANIM_INDEX_BLUE_WALK
 	call .LoadSprite
@@ -196,7 +196,9 @@ endr
 	ld hl, VTiles0 tile $00
 	ld c, $4
 	push bc
+	push de
 	call Request2bpp
+	pop de
 	pop bc
 	ld hl, 12 tiles
 	add hl, de

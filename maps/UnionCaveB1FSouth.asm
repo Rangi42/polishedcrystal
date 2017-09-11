@@ -7,10 +7,10 @@ UnionCaveB1FSouth_MapScriptHeader:
 UnionCaveB1FSouth_MapEventHeader:
 
 .Warps: db 4
-	warp_def $5, $3, 2, UNION_CAVE_1F
-	warp_def $3, $11, 1, UNION_CAVE_B2F
-	warp_def $21, $5, 3, MURKY_SWAMP
-	warp_def $17, $11, 1, ROUTE_32_COAST
+	warp_def 5, 3, 2, UNION_CAVE_1F
+	warp_def 3, 17, 1, UNION_CAVE_B2F
+	warp_def 33, 5, 3, MURKY_SWAMP
+	warp_def 23, 17, 1, ROUTE_32_COAST
 
 .XYTriggers: db 0
 

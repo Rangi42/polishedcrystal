@@ -7,8 +7,8 @@ ViridianMart_MapScriptHeader:
 ViridianMart_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 4, VIRIDIAN_CITY
-	warp_def $7, $3, 4, VIRIDIAN_CITY
+	warp_def 7, 2, 4, VIRIDIAN_CITY
+	warp_def 7, 3, 4, VIRIDIAN_CITY
 
 .XYTriggers: db 0
 

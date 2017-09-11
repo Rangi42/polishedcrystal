@@ -22,7 +22,7 @@ PlaySpriteAnimations: ; 8cf69
 	push bc
 	push af
 
-	ld a, Sprites % $100
+	ld a, wSprites % $100
 	ld [wCurrSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
@@ -59,11 +59,11 @@ DoNextFrameForAllSprites: ; 8cf7a
 
 	ld a, [wCurrSpriteOAMAddr]
 	ld l, a
-	ld h, Sprites / $100
+	ld h, wSprites / $100
 
-.loop2 ; Clear (Sprites + [wCurrSpriteOAMAddr] --> SpritesEnd)
+.loop2 ; Clear (wSprites + [wCurrSpriteOAMAddr] --> wSpritesEnd)
 	ld a, l
-	cp SpritesEnd % $100
+	cp wSpritesEnd % $100
 	ret nc
 	xor a
 	ld [hli], a
@@ -96,11 +96,11 @@ DoNextFrameForFirst16Sprites: ; 8cfa8 (23:4fa8)
 
 	ld a, [wCurrSpriteOAMAddr]
 	ld l, a
-	ld h, (Sprites + $40) / $100
+	ld h, (wSprites + $40) / $100
 
-.loop2 ; Clear (Sprites + [wCurrSpriteOAMAddr] --> Sprites + $40)
+.loop2 ; Clear (wSprites + [wCurrSpriteOAMAddr] --> wSprites + $40)
 	ld a, l
-	cp (Sprites + 16 * 4) % $100
+	cp (wSprites + 16 * 4) % $100
 	ret nc
 	xor a
 	ld [hli], a
@@ -245,7 +245,7 @@ UpdateAnimFrame: ; 8d04c
 	push bc
 	ld a, [wCurrSpriteOAMAddr]
 	ld e, a
-	ld d, Sprites / $100
+	ld d, wSprites / $100
 	ld a, [hli]
 	ld c, a ; number of objects
 .loop
@@ -298,7 +298,7 @@ UpdateAnimFrame: ; 8d04c
 	inc de
 	ld a, e
 	ld [wCurrSpriteOAMAddr], a
-	cp SpritesEnd % $100
+	cp wSpritesEnd % $100
 	jr nc, .reached_the_end
 	dec c
 	jr nz, .loop
@@ -667,7 +667,7 @@ AnimateEndOfExpBar: ; 8e79d
 ; 8e7c6
 
 .AnimateFrame: ; 8e7c6
-	ld hl, Sprites
+	ld hl, wSprites
 	ld c, $8
 .anim_loop
 	ld a, c

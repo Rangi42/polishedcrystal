@@ -121,13 +121,13 @@ VBlank0:: ; 2b1
 	; vblank-sensitive operations are done
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 
-	ld a, [TextDelayFrames]
+	ld a, [wTextDelayFrames]
 	and a
 	jr z, .ok2
 	dec a
-	ld [TextDelayFrames], a
+	ld [wTextDelayFrames], a
 .ok2
 
 	call Joypad
@@ -159,7 +159,7 @@ VBlank2:: ; 325
 	rst Bankswitch
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 	ret
 ; 337
 
@@ -190,7 +190,7 @@ VBlank1:: ; 337
 .done
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 
 	; get requested ints
 	ld a, [rIF]
@@ -260,7 +260,7 @@ VBlank3:: ; 396
 .done
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 
 	ld a, [rIF]
 	push af
@@ -317,7 +317,7 @@ VBlank4:: ; 3df
 	call Joypad
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 
 	call AskSerial
 
@@ -353,7 +353,7 @@ VBlank5:: ; 400
 .done
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 
 	call Joypad
 
@@ -403,7 +403,7 @@ VBlank6:: ; 436
 .done
 
 	xor a
-	ld [VBlankOccurred], a
+	ld [wVBlankOccurred], a
 
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch

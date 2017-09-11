@@ -8,8 +8,8 @@ BattleTowerBattleRoom_MapScriptHeader:
 BattleTowerBattleRoom_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 4, BATTLE_TOWER_HALLWAY
-	warp_def $7, $4, 4, BATTLE_TOWER_HALLWAY
+	warp_def 7, 3, 4, BATTLE_TOWER_HALLWAY
+	warp_def 7, 4, 4, BATTLE_TOWER_HALLWAY
 
 .XYTriggers: db 0
 
@@ -98,14 +98,13 @@ Script_DontSaveAndEndTheSession:
 	special Special_BattleTower_SetChallengeState
 	closetext
 	special FadeOutPalettes
-	warpfacing UP, BATTLE_TOWER_1F, $a, $8
-	opentext
-	jump Script_BattleTowerHopeToServeYouAgain
+	warpfacing UP, BATTLE_TOWER_1F, 10, 8
+	jumptext Text_WeHopeToServeYouAgain
 
 Script_FailedBattleTowerChallenge:
 	pause 60
 	special Special_BattleTower_Fade
-	warpfacing UP, BATTLE_TOWER_1F, $a, $8
+	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 	writebyte BATTLETOWER_NO_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	showtext Text_ThanksForVisiting
@@ -115,7 +114,7 @@ Script_BeatenAllTrainers:
 	pause 60
 	setevent EVENT_BEAT_PALMER
 	special Special_BattleTower_Fade
-	warpfacing UP, BATTLE_TOWER_1F, $a, $8
+	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 Script_BeatenAllTrainers2:
 	opentext
 	writetext Text_CongratulationsYouveBeatenAllTheTrainers
@@ -165,7 +164,7 @@ Text_YourPokemonWillBeHealedToFullHealth:
 Text_NextUpOpponentNo:
 	text "Next up, opponent"
 	line "no.@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ". Ready?"
 	done
 

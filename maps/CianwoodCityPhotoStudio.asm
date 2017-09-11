@@ -7,8 +7,8 @@ CianwoodCityPhotoStudio_MapScriptHeader:
 CianwoodCityPhotoStudio_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 5, CIANWOOD_CITY
-	warp_def $7, $3, 5, CIANWOOD_CITY
+	warp_def 7, 2, 5, CIANWOOD_CITY
+	warp_def 7, 3, 5, CIANWOOD_CITY
 
 .XYTriggers: db 0
 
@@ -40,7 +40,7 @@ FishingGuruScript_0x9e0e0:
 	waitsfx
 	pause 10
 	special FadeInPalettes
-	copybytetovar CurPartySpecies
+	copybytetovar wCurPartySpecies
 	pokepic 0, 1
 	cry 0
 	waitsfx

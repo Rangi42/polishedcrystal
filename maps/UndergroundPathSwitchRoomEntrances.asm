@@ -8,19 +8,19 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 UndergroundPathSwitchRoomEntrances_MapEventHeader:
 
 .Warps: db 9
-	warp_def $3, $17, 6, WAREHOUSE_ENTRANCE
-	warp_def $a, $16, 1, UNDERGROUND_WAREHOUSE
-	warp_def $a, $17, 2, UNDERGROUND_WAREHOUSE
-	warp_def $17, $5, 2, WAREHOUSE_ENTRANCE
-	warp_def $1b, $4, 14, GOLDENROD_CITY
-	warp_def $1b, $5, 14, GOLDENROD_CITY
-	warp_def $17, $15, 1, WAREHOUSE_ENTRANCE
-	warp_def $1b, $14, 13, GOLDENROD_CITY
-	warp_def $1b, $15, 13, GOLDENROD_CITY
+	warp_def 3, 23, 6, WAREHOUSE_ENTRANCE
+	warp_def 10, 22, 1, UNDERGROUND_WAREHOUSE
+	warp_def 10, 23, 2, UNDERGROUND_WAREHOUSE
+	warp_def 23, 5, 2, WAREHOUSE_ENTRANCE
+	warp_def 27, 4, 14, GOLDENROD_CITY
+	warp_def 27, 5, 14, GOLDENROD_CITY
+	warp_def 23, 21, 1, WAREHOUSE_ENTRANCE
+	warp_def 27, 20, 13, GOLDENROD_CITY
+	warp_def 27, 21, 13, GOLDENROD_CITY
 
 .XYTriggers: db 2
-	xy_trigger 0, $4, $13, UndergroundSilverTrigger1
-	xy_trigger 0, $5, $13, UndergroundSilverTrigger2
+	xy_trigger 0, 4, 19, UndergroundSilverTrigger1
+	xy_trigger 0, 5, 19, UndergroundSilverTrigger2
 
 .Signposts: db 6
 	signpost 1, 16, SIGNPOST_READ, Switch1Script
@@ -264,9 +264,9 @@ Switch1Script:
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	addvar 1
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	setevent EVENT_SWITCH_1
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
@@ -274,9 +274,9 @@ Switch1Script:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	addvar -1
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	clearevent EVENT_SWITCH_1
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
@@ -289,9 +289,9 @@ Switch2Script:
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	addvar 2
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	setevent EVENT_SWITCH_2
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
@@ -299,9 +299,9 @@ Switch2Script:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	addvar -2
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	clearevent EVENT_SWITCH_2
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
@@ -314,9 +314,9 @@ Switch3Script:
 	writetext SwitchRoomText_OffTurnOn
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	addvar 3
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	setevent EVENT_SWITCH_3
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
@@ -324,9 +324,9 @@ Switch3Script:
 	writetext SwitchRoomText_OnTurnOff
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	addvar -3
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	clearevent EVENT_SWITCH_3
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
@@ -340,7 +340,7 @@ EmergencySwitchScript:
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
 	writebyte 7
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	setevent EVENT_EMERGENCY_SWITCH
 	setevent EVENT_SWITCH_1
 	setevent EVENT_SWITCH_2
@@ -352,7 +352,7 @@ EmergencySwitchScript:
 	yesorno
 	iffalse UndergroundPathSwitchRoomEntrances_DontToggle
 	writebyte 0
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	clearevent EVENT_EMERGENCY_SWITCH
 	clearevent EVENT_SWITCH_1
 	clearevent EVENT_SWITCH_2
@@ -360,11 +360,10 @@ EmergencySwitchScript:
 	jump UndergroundPathSwitchRoomEntrances_UpdateDoors
 
 UndergroundPathSwitchRoomEntrances_DontToggle:
-	closetext
-	end
+	endtext
 
 UndergroundPathSwitchRoomEntrances_UpdateDoors:
-	copybytetovar UndergroundSwitchPositions
+	copybytetovar wUndergroundSwitchPositions
 	if_equal 0, .Position0
 	if_equal 1, .Position1
 	if_equal 2, .Position2
@@ -387,8 +386,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear13
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position1:
 	playsound SFX_ENTER_DOOR
@@ -400,8 +398,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position2:
 	playsound SFX_ENTER_DOOR
@@ -413,8 +410,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear13
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position3:
 	playsound SFX_ENTER_DOOR
@@ -426,8 +422,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position4:
 	playsound SFX_ENTER_DOOR
@@ -439,8 +434,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear13
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position5:
 	playsound SFX_ENTER_DOOR
@@ -452,8 +446,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear12
 	scall .Clear14
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .Position6:
 	playsound SFX_ENTER_DOOR
@@ -465,8 +458,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	scall .Clear10
 	scall .Clear13
 	reloadmappart
-	closetext
-	end
+	endtext
 
 .EmergencyPosition:
 	playsound SFX_ENTER_DOOR
@@ -484,7 +476,7 @@ UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	reloadmappart
 	closetext
 	writebyte 6
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	end
 
 .Set4:

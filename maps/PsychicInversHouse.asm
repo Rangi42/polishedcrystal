@@ -7,8 +7,8 @@ PsychicInversHouse_MapScriptHeader:
 PsychicInversHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 1, ROUTE_16_WEST
-	warp_def $7, $3, 1, ROUTE_16_WEST
+	warp_def 7, 2, 1, ROUTE_16_WEST
+	warp_def 7, 3, 1, ROUTE_16_WEST
 
 .XYTriggers: db 0
 
@@ -44,7 +44,7 @@ PsychicInverScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
-	copybytetovar InverseBattleScore
+	copybytetovar wInverseBattleScore
 	if_equal 0, .Score0
 	if_greater_than 127, .Score0 ; negative
 	if_less_than 4, .Score1_3
@@ -58,8 +58,7 @@ PsychicInverScript:
 .GiveReward
 	buttonsound
 	verbosegiveitem ITEM_FROM_MEM
-	closetext
-	end
+	endtext
 
 .Score0
 	writetext InverseBattle0PointRewardText
@@ -93,14 +92,14 @@ PsychicInverScript:
 	ld a, APICOT_BERRY - LUM_BERRY + 1
 	call RandomRange
 	add LUM_BERRY
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .RandomStone:
 	ld a, EVERSTONE - LEAF_STONE + 1
 	call RandomRange
 	add LEAF_STONE
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 PsychicInverGreetingText:

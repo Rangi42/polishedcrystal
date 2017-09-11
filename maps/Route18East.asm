@@ -7,8 +7,8 @@ Route18East_MapScriptHeader:
 Route18East_MapEventHeader:
 
 .Warps: db 2
-	warp_def $6, $4, 3, ROUTE_18_GATE
-	warp_def $7, $4, 4, ROUTE_18_GATE
+	warp_def 6, 4, 3, ROUTE_18_GATE
+	warp_def 7, 4, 4, ROUTE_18_GATE
 
 .XYTriggers: db 0
 

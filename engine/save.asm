@@ -166,7 +166,7 @@ AddHallOfFameEntry: ; 14b5f
 	ld a, c
 	or b
 	jr nz, .loop
-	ld hl, OverworldMap
+	ld hl, wOverworldMap
 	ld de, sHallOfFame
 	ld bc, HOF_LENGTH
 	call CopyBytes
@@ -206,15 +206,15 @@ AskOverwriteSaveFile: ; 14b89
 CompareLoadedAndSavedPlayerID: ; 14bcb
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
-	ld hl, sPlayerData + (PlayerID - wPlayerData)
+	ld hl, sPlayerData + (wPlayerID - wPlayerData)
 	ld a, [hli]
 	ld c, [hl]
 	ld b, a
 	call CloseSRAM
-	ld a, [PlayerID]
+	ld a, [wPlayerID]
 	cp b
 	ret nz
-	ld a, [PlayerID + 1]
+	ld a, [wPlayerID + 1]
 	cp c
 	ret
 ; 14be3
@@ -227,17 +227,17 @@ SavedTheGame: ; 14be6
 ;	ld c, $20
 ;	call DelayFrames
 ;	; copy the original text speed setting to the stack
-;	ld a, [Options1]
+;	ld a, [wOptions1]
 ;	push af
 ;	; set text speed super slow
 ;	ld a, $3
-;	ld [Options1], a
+;	ld [wOptions1], a
 	; <PLAYER> saved the game!
 	ld hl, UnknownText_0x1528d
 	call PrintText
 ;	; restore the original text speed setting
 ;	pop af
-;	ld [Options1], a
+;	ld [wOptions1], a
 	ld de, SFX_SAVE
 	call WaitPlaySFX
 	call WaitSFX
@@ -291,17 +291,17 @@ SaveGameData:: ; 14c10
 ;	ld [hJoypadSum], a
 ;	ld [hJoypadDown], a
 ;;	; Save the text speed setting to the stack
-;;	ld a, [Options1]
+;;	ld a, [wOptions1]
 ;;	push af
 ;;	; Set the text speed to super slow
 ;;	ld a, $3
-;;	ld [Options1], a
+;;	ld [wOptions1], a
 ;	; SAVING... DON'T TURN OFF THE POWER.
 ;	ld hl, UnknownText_0x15288
 ;	call PrintText
 ;;	; Restore the text speed setting
 ;;	pop af
-;;	ld [Options1], a
+;;	ld [wOptions1], a
 ;;	; Wait for 16 frames
 ;;	ld c, $10
 ;;	call DelayFrames
@@ -367,11 +367,11 @@ ValidateSave: ; 14da9
 SaveOptions: ; 14dbb
 	ld a, BANK(sOptions)
 	call GetSRAMBank
-	ld hl, Options1
+	ld hl, wOptions1
 	ld de, sOptions
-	ld bc, OptionsEnd - Options1
+	ld bc, wOptionsEnd - wOptions1
 	call CopyBytes
-	ld a, [Options1]
+	ld a, [wOptions1]
 	and $ff ^ (1 << NO_TEXT_SCROLL)
 	ld [sOptions], a
 	jp CloseSRAM
@@ -432,9 +432,9 @@ ValidateBackupSave: ; 14e2d
 SaveBackupOptions: ; 14e40
 	ld a, BANK(sBackupOptions)
 	call GetSRAMBank
-	ld hl, Options1
+	ld hl, wOptions1
 	ld de, sBackupOptions
-	ld bc, OptionsEnd - Options1
+	ld bc, wOptionsEnd - wOptions1
 	call CopyBytes
 	jp CloseSRAM
 ; 14e55
@@ -508,14 +508,14 @@ TryLoadSaveFile: ; 14ea5 (5:4ea5)
 	ret
 
 .corrupt
-	ld a, [Options1]
+	ld a, [wOptions1]
 	push af
 	set NO_TEXT_SCROLL, a
-	ld [Options1], a
+	ld [wOptions1], a
 	ld hl, UnknownText_0x1529c
 	call PrintText
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	scf
 	ret
 
@@ -530,12 +530,12 @@ TryLoadSaveData: ; 14f1c
 
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
-	ld hl, sPlayerData + StartDay - wPlayerData
-	ld de, StartDay
+	ld hl, sPlayerData + wStartDay - wPlayerData
+	ld de, wStartDay
 	ld bc, 8
 	call CopyBytes
-	ld hl, sPlayerData + StatusFlags - wPlayerData
-	ld de, StatusFlags
+	ld hl, sPlayerData + wStatusFlags - wPlayerData
+	ld de, wStatusFlags
 	ld a, [hl]
 	ld [de], a
 	jp CloseSRAM
@@ -548,33 +548,33 @@ TryLoadSaveData: ; 14f1c
 
 	ld a, BANK(sBackupPlayerData)
 	call GetSRAMBank
-	ld hl, sBackupPlayerData + StartDay - wPlayerData
-	ld de, StartDay
+	ld hl, sBackupPlayerData + wStartDay - wPlayerData
+	ld de, wStartDay
 	ld bc, 8
 	call CopyBytes
-	ld hl, sBackupPlayerData + StatusFlags - wPlayerData
-	ld de, StatusFlags
+	ld hl, sBackupPlayerData + wStatusFlags - wPlayerData
+	ld de, wStatusFlags
 	ld a, [hl]
 	ld [de], a
 	jp CloseSRAM
 
 .corrupt
 	ld hl, DefaultOptions
-	ld de, Options1
-	ld bc, OptionsEnd - Options1
+	ld de, wOptions1
+	ld bc, wOptionsEnd - wOptions1
 	call CopyBytes
 	jp PanicResetClock
 ; 14f7c
 
 DefaultOptions: ; 14f7c
-	db %01100001 ; Options1: fast text speed, stereo sound, battle scene on
+	db %01100001 ; wOptions1: fast text speed, stereo sound, battle scene on
 	db $00       ; wSaveFileExists: no
-	db $00       ; TextBoxFrame: frame 0
-	db $01       ; TextBoxFlags: ?
+	db $00       ; wTextBoxFrame: frame 0
+	db $01       ; wTextBoxFlags: ?
 	db $0        ; ???
-	db %00000000 ; Options2: default typeface, running shoes off, 12-hour clock,
+	db %00000000 ; wOptions2: default typeface, running shoes off, 12-hour clock,
 	             ;           imperial units, battle style set
-	db %00000111 ; InitialOptions: natures on, abilities on, color variation on,
+	db %00000111 ; wInitialOptions: natures on, abilities on, color variation on,
 	             ;                 perfect IVs off, traded as OT off,
 	             ;                 nuzlocke mode off
 	db $0        ; ???
@@ -590,8 +590,8 @@ CheckPrimarySaveFile: ; 14f84
 	cp " "
 	jr nz, .nope
 	ld hl, sOptions
-	ld de, Options1
-	ld bc, OptionsEnd - Options1
+	ld de, wOptions1
+	ld bc, wOptionsEnd - wOptions1
 	call CopyBytes
 	call CloseSRAM
 	ld a, $1
@@ -611,8 +611,8 @@ CheckBackupSaveFile: ; 14faf
 	cp " "
 	jr nz, .nope
 	ld hl, sBackupOptions
-	ld de, Options1
-	ld bc, OptionsEnd - Options1
+	ld de, wOptions1
+	ld bc, wOptionsEnd - wOptions1
 	call CopyBytes
 	ld a, $2
 	ld [wSaveFileExists], a

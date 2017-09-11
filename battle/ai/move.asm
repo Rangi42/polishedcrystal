@@ -1,5 +1,5 @@
 AIChooseMove: ; 440ce
-; Score each move in EnemyMonMoves starting from Buffer1. Lower is better.
+; Score each move in wEnemyMonMoves starting from wBuffer1. Lower is better.
 ; Pick the move with the lowest score.
 
 	; Linking is handled elsewhere
@@ -12,7 +12,7 @@ AIChooseMove: ; 440ce
 	ret nz
 
 	; Default score is 20, unusable moves are set to 80.
-	ld hl, Buffer1 + 3
+	ld hl, wBuffer1 + 3
 	ld a, 4
 .unusable_loop
 	dec a
@@ -40,13 +40,13 @@ AIChooseMove: ; 440ce
 .ApplyLayers:
 	ld hl, TrainerClassAttributes + TRNATTR_AI_MOVE_WEIGHTS
 
-	; If we have a battle in BattleTower just load the Attributes of the first TrainerClass (Falkner)
+	; If we have a battle in BattleTower just load the Attributes of the first wTrainerClass (Falkner)
 	; so we have always the same AI, regardless of the loaded class of trainer
-	ld a, [InBattleTowerBattle]
+	ld a, [wInBattleTowerBattle]
 	bit 0, a
 	jr nz, .battle_tower_skip
 
-	ld a, [TrainerClass]
+	ld a, [wTrainerClass]
 	dec a
 	ld bc, 7 ; Trainer2AI - Trainer1AI
 	call AddNTimes
@@ -94,8 +94,8 @@ endr
 
 ; Decrement the scores of all moves one by one until one reaches 0.
 .DecrementScores:
-	ld hl, Buffer1
-	ld de, EnemyMonMoves
+	ld hl, wBuffer1
+	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES
 
 .DecrementNextScore:
@@ -129,8 +129,8 @@ endr
 	cp NUM_MOVES + 1
 	jr nz, .move_loop
 
-	ld hl, Buffer1
-	ld de, EnemyMonMoves
+	ld hl, wBuffer1
+	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES
 
 ; Give a score of 0 to a blank move
@@ -159,7 +159,7 @@ endr
 
 ; Randomly choose one of the moves with a score of 1
 .ChooseMove:
-	ld hl, Buffer1
+	ld hl, wBuffer1
 	call Random
 	and 3
 	ld c, a
@@ -169,9 +169,9 @@ endr
 	and a
 	jr z, .ChooseMove
 
-	ld [CurEnemyMove], a
+	ld [wCurEnemyMove], a
 	ld a, c
-	ld [CurEnemyMoveNum], a
+	ld [wCurEnemyMoveNum], a
 	ret
 ; 441af
 

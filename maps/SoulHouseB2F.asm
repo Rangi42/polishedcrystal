@@ -7,9 +7,9 @@ SoulHouseB2F_MapScriptHeader:
 SoulHouseB2F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $f, $11, 2, SOUL_HOUSE_B1F
-	warp_def $f, $3, 3, SOUL_HOUSE_B1F
-	warp_def $4, $9, 1, SOUL_HOUSE_B3F
+	warp_def 15, 17, 2, SOUL_HOUSE_B1F
+	warp_def 15, 3, 3, SOUL_HOUSE_B1F
+	warp_def 4, 9, 1, SOUL_HOUSE_B3F
 
 .XYTriggers: db 0
 

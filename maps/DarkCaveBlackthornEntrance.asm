@@ -7,8 +7,8 @@ DarkCaveBlackthornEntrance_MapScriptHeader:
 DarkCaveBlackthornEntrance_MapEventHeader:
 
 .Warps: db 2
-	warp_def $3, $17, 1, ROUTE_45
-	warp_def $19, $3, 2, DARK_CAVE_VIOLET_ENTRANCE
+	warp_def 3, 23, 1, ROUTE_45
+	warp_def 25, 3, 2, DARK_CAVE_VIOLET_ENTRANCE
 
 .XYTriggers: db 0
 
@@ -33,8 +33,7 @@ UnknownScript_0x18c735:
 	writetext UnknownText_0x18c80c
 	waitbutton
 UnknownScript_0x18c739:
-	closetext
-	end
+	endtext
 
 UnknownText_0x18c73f:
 	text "Whoa! You startled"

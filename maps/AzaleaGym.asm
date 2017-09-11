@@ -7,8 +7,8 @@ AzaleaGym_MapScriptHeader:
 AzaleaGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $f, $4, 5, AZALEA_TOWN
-	warp_def $f, $5, 5, AZALEA_TOWN
+	warp_def 15, 4, 5, AZALEA_TOWN
+	warp_def 15, 5, 5, AZALEA_TOWN
 
 .XYTriggers: db 0
 
@@ -58,20 +58,18 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUG_CATCHER_JOSH
 	writetext .HiveBadgeSpeech
 	buttonsound
-	verbosegivetmhm TM_FURY_CUTTER
-	setevent EVENT_GOT_TM49_FURY_CUTTER
+	verbosegivetmhm TM_U_TURN
+	setevent EVENT_GOT_TM69_U_TURN
 	thisopenedtext
 
-	text "TM49 contains"
-	line "Fury Cutter."
+	text "TM69 contains"
+	line "U-turn."
 
-	para "If you don't miss,"
-	line "it gets stronger"
-	cont "every turn."
+	para "It lets your #-"
+	line "mon attack, then"
 
-	para "The longer your"
-	line "battle goes, the"
-	cont "better it gets."
+	para "switch out right"
+	line "away."
 
 	para "Isn't that great?"
 	line "I discovered it!"
@@ -266,18 +264,20 @@ GenericTrainerTwinsAmyandmay1:
 GenericTrainerTwinsAmyandmay2:
 	generictrainer EVENT_BEAT_TWINS_AMY_AND_MAY, TWINS, AMYANDMAY2, .SeenText, TrainerTwinsAmyandmayBeatenText
 
-	text "May: Our bug #-"
-	line "mon lost! Oh, what"
-	cont "a shame."
+	text "Mimi: Our bug"
+	line "#mon lost!"
+
+	para "Oh, what a"
+	line "shame."
 	done
 
 .SeenText:
-	text "May: You want to"
+	text "Mimi: You want to"
 	line "see the Leader?"
 	cont "We come first!"
 	done
 
 TrainerTwinsAmyandmayBeatenText:
-	text "Amy & May: Oh,"
+	text "Amy & Mimi: Oh,"
 	line "double goodness!"
 	done

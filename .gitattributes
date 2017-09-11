@@ -1,5 +1,15 @@
-# No monkey business with line endings
-* -text
+# Auto detect text files and perform LF normalization
+* text eol=lf
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.asm text
+*.pal text
+*.py  text
+*.txt text
+*.sh  text
+*.link text
+Makefile text
 
 # hexdump binary files
 *.png  binary diff=hex
@@ -8,4 +18,5 @@
 *.1bpp binary diff=hex
 *.bin  binary diff=hex
 *.blk  binary diff=hex
+*.tilemap binary diff=hex
 

@@ -7,10 +7,10 @@ SproutTower2F_MapScriptHeader:
 SproutTower2F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $4, 3, SPROUT_TOWER_1F
-	warp_def $6, $0, 4, SPROUT_TOWER_1F
-	warp_def $3, $f, 5, SPROUT_TOWER_1F
-	warp_def $e, $8, 1, SPROUT_TOWER_3F
+	warp_def 4, 4, 3, SPROUT_TOWER_1F
+	warp_def 6, 0, 4, SPROUT_TOWER_1F
+	warp_def 3, 15, 5, SPROUT_TOWER_1F
+	warp_def 14, 8, 1, SPROUT_TOWER_3F
 
 .XYTriggers: db 0
 

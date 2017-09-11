@@ -9,7 +9,7 @@ KrissHouse2F_MapScriptHeader:
 KrissHouse2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $7, 3, KRISS_HOUSE_1F
+	warp_def 0, 7, 3, KRISS_HOUSE_1F
 
 .XYTriggers: db 0
 
@@ -23,7 +23,7 @@ KrissHouse2F_MapEventHeader:
 	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
 	person_event SPRITE_DOLL_1, 4, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
 	person_event SPRITE_DOLL_2, 4, 5, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
-	person_event SPRITE_BIG_DOLL, 1, 0, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+	person_event SPRITE_BIG_DOLL, 1, 0, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, wBigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 
 KrissHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
@@ -45,7 +45,7 @@ Doll1:
 Doll2:
 	describedecoration 2
 
-BigDoll:
+wBigDoll:
 	describedecoration 3
 
 GameConsole:
@@ -82,8 +82,7 @@ KrissHouseRadio:
 	opentext
 	writetext KrisRadioText4
 	pause 45
-	closetext
-	end
+	endtext
 
 PokemonJournalProfElmScript:
 	setflag ENGINE_READ_PROF_ELM_JOURNAL
@@ -93,10 +92,9 @@ KrissHousePC:
 	opentext
 	special Special_KrissHousePC
 	iftrue .Warp
-	closetext
-	end
+	endtext
 .Warp:
-	warp NONE, $0, $0
+	warp NONE, 0, 0
 	end
 
 KrisRadioText1:

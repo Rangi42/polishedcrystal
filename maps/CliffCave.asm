@@ -7,13 +7,13 @@ CliffCave_MapScriptHeader:
 CliffCave_MapEventHeader:
 
 .Warps: db 7
-	warp_def $13, $7, 2, ROUTE_47
-	warp_def $9, $9, 3, ROUTE_47
-	warp_def $21, $7, 4, ROUTE_47
-	warp_def $11, $5, 6, CLIFF_CAVE
-	warp_def $11, $9, 7, CLIFF_CAVE
-	warp_def $3, $5, 4, CLIFF_CAVE
-	warp_def $1b, $9, 5, CLIFF_CAVE
+	warp_def 19, 7, 2, ROUTE_47
+	warp_def 9, 9, 3, ROUTE_47
+	warp_def 33, 7, 4, ROUTE_47
+	warp_def 17, 5, 6, CLIFF_CAVE
+	warp_def 17, 9, 7, CLIFF_CAVE
+	warp_def 3, 5, 4, CLIFF_CAVE
+	warp_def 27, 9, 5, CLIFF_CAVE
 
 .XYTriggers: db 0
 

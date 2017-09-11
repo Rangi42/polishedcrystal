@@ -7,9 +7,9 @@ ShamoutiCoast_MapScriptHeader:
 ShamoutiCoast_MapEventHeader:
 
 .Warps: db 3
-	warp_def $f, $16, 1, FIRE_ISLAND
-	warp_def $b, $36, 1, ICE_ISLAND
-	warp_def $d, $54, 1, LIGHTNING_ISLAND
+	warp_def 15, 22, 1, FIRE_ISLAND
+	warp_def 11, 54, 1, ICE_ISLAND
+	warp_def 13, 84, 1, LIGHTNING_ISLAND
 
 .XYTriggers: db 0
 

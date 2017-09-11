@@ -67,7 +67,7 @@ HandlePlayerStep: ; d4e5 (3:54e5)
 	dw .fail
 
 UpdatePlayerCoords: ; d511 (3:5511)
-	ld hl, YCoord
+	ld hl, wYCoord
 	ld a, [wPlayerStepDirection]
 	and a
 	jr z, .incrementCoord
@@ -130,7 +130,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	ret nz
 	ld [hl], 0
 	ld hl, wOverworldMapAnchor
-	ld a, [MapWidth]
+	ld a, [wMapWidth]
 	add 6
 	add [hl]
 	ld [hli], a
@@ -156,7 +156,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	ret nz
 	ld [hl], $1
 	ld hl, wOverworldMapAnchor
-	ld a, [MapWidth]
+	ld a, [wMapWidth]
 	add 6
 	ld b, a
 	ld a, [hl]

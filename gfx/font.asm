@@ -55,9 +55,6 @@ INCBIN "gfx/pokegear/johto-kanto.2bpp"
 
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"
-; Duplicate graphic (eight 00 bytes) fixes sprite animation bug introduced by
-; 6103314190c1a3b87be8a5b8b9d90789c3006755
-INCBIN "gfx/frames/space.1bpp"
 ; f9214
 
 MapEntryFrameGFX: ; f9344
@@ -69,27 +66,17 @@ _LoadStandardFont:: ; fb449
 	ld d, h
 	ld e, l
 	ld hl, VTiles1
-	lb bc, BANK(FontNormal), $80
-	ld a, [rLCDC]
-	bit 7, a
-	jr z, .one
+	lb bc, BANK(FontNormal), 111
 	call Get1bpp
-	jr .ok
-.one
-	call Copy1bpp
-.ok
 	ld de, FontCommon
-	ld hl, VTiles1 tile ("★" - $80) ; first common font character
-	lb bc, BANK(FontCommon), $d
-	ld a, [rLCDC]
-	bit 7, a
-	jp z, Copy1bpp
+	ld hl, VTiles1 tile ("▷" - $80) ; first common font character
+	lb bc, BANK(FontCommon), 11
 	jp Get1bpp
 ; fb48a
 
 LoadStandardFontPointer::
 	ld hl, .FontPointers
-	ld a, [Options2]
+	ld a, [wOptions2]
 	and FONT_MASK
 	ld d, 0
 	ld e, a
@@ -116,18 +103,18 @@ endr
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleExtrasGFX
 	ld hl, VTiles2 tile $5f
-	lb bc, BANK(BattleExtrasGFX), 26
+	lb bc, BANK(BattleExtrasGFX), 32
 	call Get2bpp
 ; fb4cc
 
 LoadFrame:: ; fb4cc
-	ld a, [TextBoxFrame]
+	ld a, [wTextBoxFrame]
 	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
 	ld hl, Frames
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $79
+	ld hl, VTiles1 tile ("┌" - $80)
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp
 	ld hl, VTiles2 tile $7f
@@ -147,8 +134,8 @@ LoadStatusIcons: ; fb50d
 
 LoadPlayerStatusIcon:
 	push de
-	ld a, [PlayerSubStatus2]
-	ld de, BattleMonStatus
+	ld a, [wPlayerSubStatus2]
+	ld de, wBattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconGFX
 	ld de, 2 tiles
@@ -170,8 +157,8 @@ LoadPlayerStatusIcon:
 
 LoadEnemyStatusIcon:
 	push de
-	ld a, [EnemySubStatus2]
-	ld de, EnemyMonStatus
+	ld a, [wEnemySubStatus2]
+	ld de, wEnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, EnemyStatusIconGFX
 	ld de, 2 tiles
@@ -199,8 +186,8 @@ InstantReloadPaletteHack:
 	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
-	ld hl, BGPals + 5 palettes ; to
-	ld de, UnknBGPals + 5 palettes ; from
+	ld hl, wBGPals palette 5 ; to
+	ld de, wUnknBGPals palette 5 ; from
 ; order
 	ld a, [rBGP]
 	ld b, a

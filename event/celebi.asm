@@ -1,9 +1,9 @@
 Special_CelebiShrineEvent: ; 4989a
 	call DelayFrame
-	ld a, [VramState]
+	ld a, [wVramState]
 	push af
 	xor a
-	ld [VramState], a
+	ld [wVramState], a
 
 	farcall ClearSpriteAnims
 	ld de, SpecialCelebiLeafGFX
@@ -53,9 +53,9 @@ Special_CelebiShrineEvent: ; 4989a
 
 .done
 	pop af
-	ld [VramState], a
+	ld [wVramState], a
 
-	ld hl, Sprites + 2
+	ld hl, wSprites + 2
 	xor a
 	ld c, $4
 .OAMloop:
@@ -66,13 +66,13 @@ endr
 	inc a
 	dec c
 	jr nz, .OAMloop
-	ld hl, Sprites + 4 * 4
+	ld hl, wSprites + 4 * 4
 	ld bc, 36 * 4
 	xor a
 	call ByteFill
 
 	ld a, BATTLETYPE_LEGENDARY
-	ld [BattleType], a
+	ld [wBattleType], a
 
 	ret
 
@@ -318,12 +318,12 @@ CheckCaughtCelebi: ; 49bf9
 	bit 6, a
 	jr z, .false
 	ld a, $1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .false
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 ; 49c0c

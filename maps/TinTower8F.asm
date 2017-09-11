@@ -7,12 +7,12 @@ TinTower8F_MapScriptHeader:
 TinTower8F_MapEventHeader:
 
 .Warps: db 6
-	warp_def $5, $0, 2, TIN_TOWER_7F
-	warp_def $b, $0, 1, TIN_TOWER_9F
-	warp_def $7, $e, 2, TIN_TOWER_9F
-	warp_def $3, $8, 3, TIN_TOWER_9F
-	warp_def $f, $c, 6, TIN_TOWER_9F
-	warp_def $9, $4, 7, TIN_TOWER_9F
+	warp_def 5, 0, 2, TIN_TOWER_7F
+	warp_def 11, 0, 1, TIN_TOWER_9F
+	warp_def 7, 14, 2, TIN_TOWER_9F
+	warp_def 3, 8, 3, TIN_TOWER_9F
+	warp_def 15, 12, 6, TIN_TOWER_9F
+	warp_def 9, 4, 7, TIN_TOWER_9F
 
 .XYTriggers: db 0
 

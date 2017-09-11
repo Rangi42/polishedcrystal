@@ -11,12 +11,12 @@ BattleTowerHallway_MapScriptHeader:
 BattleTowerHallway_MapEventHeader:
 
 .Warps: db 6
-	warp_def $1, $b, 1, BATTLE_TOWER_ELEVATOR
-	warp_def $0, $5, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $7, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $9, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $d, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def $0, $f, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def 1, 11, 1, BATTLE_TOWER_ELEVATOR
+	warp_def 0, 5, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def 0, 7, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def 0, 9, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def 0, 13, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_def 0, 15, 1, BATTLE_TOWER_BATTLE_ROOM
 
 .XYTriggers: db 0
 
@@ -42,7 +42,7 @@ BattleTowerHallwayTrigger0:
 	ld a, BANK(wBTChoiceOfLvlGroup)
 	ld [rSVBK], a
 	ld a, [wBTChoiceOfLvlGroup]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 
 	pop af
 	ld [rSVBK], a

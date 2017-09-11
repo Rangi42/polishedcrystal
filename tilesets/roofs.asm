@@ -1,6 +1,6 @@
 
 LoadMapGroupRoof:: ; 1c000
-	ld a, [MapGroup]
+	ld a, [wMapGroup]
 	ld e, a
 	ld d, 0
 	ld hl, MapGroupRoofs

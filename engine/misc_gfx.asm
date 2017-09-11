@@ -17,7 +17,7 @@ HDMATransferAttrMapToWRAMBank3: ; 104047
 	jp CallInSafeGFXMode
 
 .Function:
-	decoord 0, 0, AttrMap
+	decoord 0, 0, wAttrMap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	ld a, $1
@@ -31,7 +31,7 @@ ReloadMapPart:: ; 104061
 	jp CallInSafeGFXMode
 
 .Function:
-	decoord 0, 0, AttrMap
+	decoord 0, 0, wAttrMap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	decoord 0, 0
@@ -62,10 +62,10 @@ OpenAndCloseMenu_HDMATransferTileMapAndAttrMap:: ; 104110
 	jp CallInSafeGFXMode
 
 .Function:
-	; Transfer AttrMap and Tilemap to BGMap
+	; Transfer wAttrMap and Tilemap to BGMap
 	; Fill vBGAttrs with $00
 	; Fill vBGTiles with " "
-	decoord 0, 0, AttrMap
+	decoord 0, 0, wAttrMap
 	ld hl, wScratchAttrMap
 	call CutAndPasteAttrMap
 	decoord 0, 0
@@ -394,7 +394,7 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 	decoord 0, 0
 	call .Copy
 	ld hl, wScratchTileMap + $80
-	decoord 0, 0, AttrMap
+	decoord 0, 0, wAttrMap
 	call .Copy
 	ld a, $1
 	ld [rVBK], a

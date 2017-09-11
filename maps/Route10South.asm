@@ -7,7 +7,7 @@ Route10South_MapScriptHeader:
 Route10South_MapEventHeader:
 
 .Warps: db 1
-	warp_def $3, $6, 2, ROCK_TUNNEL_1F
+	warp_def 3, 6, 2, ROCK_TUNNEL_1F
 
 .XYTriggers: db 0
 
@@ -15,10 +15,11 @@ Route10South_MapEventHeader:
 	signpost 5, 5, SIGNPOST_JUMPTEXT, Route10SignText
 	signpost 3, 16, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_10_HIDDEN_MAX_ETHER
 
-.PersonEvents: db 3
+.PersonEvents: db 4
 	person_event SPRITE_POKEFAN_M, 5, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerJim, -1
-	person_event SPRITE_POKEFAN_M, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmRobert, -1
-	person_event SPRITE_HEX_MANIAC, 12, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacAmy, -1
+	person_event SPRITE_POKEFAN_M, 7, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmRobert, -1
+	person_event SPRITE_HEX_MANIAC, 12, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerHexManiacAmy, -1
+	tmhmball_event 7, 9, TM_VOLT_SWITCH, EVENT_ROUTE_10_TM_VOLT_SWITCH
 
 TrainerHikerJim:
 	trainer EVENT_BEAT_HIKER_JIM, HIKER, JIM, HikerJimSeenText, HikerJimBeatenText, 0, HikerJimScript

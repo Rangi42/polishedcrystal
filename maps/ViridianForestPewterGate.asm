@@ -7,10 +7,10 @@ ViridianForestPewterGate_MapScriptHeader:
 ViridianForestPewterGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $7, $4, 1, VIRIDIAN_FOREST
-	warp_def $7, $5, 1, VIRIDIAN_FOREST
-	warp_def $0, $4, 5, ROUTE_2_NORTH
-	warp_def $0, $5, 6, ROUTE_2_NORTH
+	warp_def 7, 4, 1, VIRIDIAN_FOREST
+	warp_def 7, 5, 1, VIRIDIAN_FOREST
+	warp_def 0, 4, 5, ROUTE_2_NORTH
+	warp_def 0, 5, 6, ROUTE_2_NORTH
 
 .XYTriggers: db 0
 

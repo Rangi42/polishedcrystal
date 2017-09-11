@@ -7,15 +7,14 @@ CeladonDeptStore4F_MapScriptHeader:
 CeladonDeptStore4F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $c, 1, CELADON_DEPT_STORE_5F
-	warp_def $0, $f, 2, CELADON_DEPT_STORE_3F
-	warp_def $0, $2, 1, CELADON_DEPT_STORE_ELEVATOR
+	warp_def 0, 12, 1, CELADON_DEPT_STORE_5F
+	warp_def 0, 15, 2, CELADON_DEPT_STORE_3F
+	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 1
 	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore4FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 4
 	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_4F, -1
@@ -35,8 +34,7 @@ PosterClerkScript:
 	if_equal $1, .MarillPoster
 	if_equal $2, .ClefairyPoster
 	if_equal $3, .PikachuPoster
-	closetext
-	end
+	endtext
 
 .MarillPoster:
 	checkmoney $0, 3200

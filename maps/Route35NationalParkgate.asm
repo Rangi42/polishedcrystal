@@ -12,10 +12,10 @@ Route35NationalParkgate_MapScriptHeader:
 Route35NationalParkgate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $3, 3, NATIONAL_PARK
-	warp_def $0, $4, 4, NATIONAL_PARK
-	warp_def $7, $3, 3, ROUTE_35
-	warp_def $7, $4, 3, ROUTE_35
+	warp_def 0, 3, 3, NATIONAL_PARK
+	warp_def 0, 4, 4, NATIONAL_PARK
+	warp_def 7, 3, 3, ROUTE_35
+	warp_def 7, 4, 3, ROUTE_35
 
 .XYTriggers: db 0
 
@@ -89,7 +89,7 @@ Route35NationalParkgate_GoBackIn:
 	playsound SFX_ENTER_DOOR
 	special FadeOutPalettes
 	waitsfx
-	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, $c, $2f
+	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
 
 OfficerScript_0x6a204:
@@ -127,7 +127,7 @@ Route35NationalParkgate_OkayToProceed:
 	special FadeOutPalettes
 	waitsfx
 	special Special_SelectRandomBugContestContestants
-	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, $c, $2f
+	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
 
 Route35NationalParkgate_EnterContest:
@@ -137,7 +137,7 @@ Route35NationalParkgate_EnterContest:
 	end
 
 Route35NationalParkgate_FacingLeft:
-	applymovement PLAYER, MovementData_0x6a2e9
+	applyonemovement PLAYER, step_up
 	end
 
 Route35NationalParkgate_LeaveTheRestBehind:
@@ -206,13 +206,9 @@ MovementData_0x6a2e5:
 	step_up
 	step_end
 
-MovementData_0x6a2e9:
-	step_up
-	step_end
-
 UnknownText_0x6a2eb:
 	text "Today's @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "."
 	line "That means the"
 
@@ -279,7 +275,7 @@ UnknownText_0x6a4c6:
 
 	para "You'll have to use"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ", the"
 
 	para "first #mon in"
@@ -363,7 +359,7 @@ UnknownText_0x6a71f:
 
 UnknownText_0x6a79a:
 	text "You still have @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ""
 	line "minute(s) left."
 

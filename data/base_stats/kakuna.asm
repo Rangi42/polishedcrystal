@@ -1,5 +1,3 @@
-	db KAKUNA ; 014
-
 	db  45,  25,  50,  35,  25,  25
 	;   hp  atk  def  spd  sat  sdf
 
@@ -8,8 +6,7 @@
 	db 71 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 15 ; step cycles to hatch
+	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SHED_SKIN ; ability 1
 	db SHED_SKIN ; ability 2
@@ -22,5 +19,5 @@
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm 
+	tmhm
 	; end

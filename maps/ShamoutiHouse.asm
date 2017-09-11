@@ -7,8 +7,8 @@ ShamoutiHouse_MapScriptHeader:
 ShamoutiHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 5, SHAMOUTI_ISLAND
-	warp_def $7, $3, 5, SHAMOUTI_ISLAND
+	warp_def 7, 2, 5, SHAMOUTI_ISLAND
+	warp_def 7, 3, 5, SHAMOUTI_ISLAND
 
 .XYTriggers: db 0
 

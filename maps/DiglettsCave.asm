@@ -7,12 +7,12 @@ DiglettsCave_MapScriptHeader:
 DiglettsCave_MapEventHeader:
 
 .Warps: db 6
-	warp_def $f, $25, 10, VERMILION_CITY
-	warp_def $d, $27, 5, DIGLETTS_CAVE
-	warp_def $5, $25, 4, ROUTE_2_NORTH
-	warp_def $3, $27, 6, DIGLETTS_CAVE
-	warp_def $1f, $25, 2, DIGLETTS_CAVE
-	warp_def $5, $5, 4, DIGLETTS_CAVE
+	warp_def 15, 37, 10, VERMILION_CITY
+	warp_def 13, 39, 5, DIGLETTS_CAVE
+	warp_def 5, 37, 4, ROUTE_2_NORTH
+	warp_def 3, 39, 6, DIGLETTS_CAVE
+	warp_def 31, 37, 2, DIGLETTS_CAVE
+	warp_def 5, 5, 4, DIGLETTS_CAVE
 
 .XYTriggers: db 0
 
@@ -47,7 +47,7 @@ DiglettsCaveFossilManiacScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse .NoItem
-	copybytetovar CurItem
+	copybytetovar wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION

@@ -7,9 +7,9 @@ CinnabarPokeCenter1F_MapScriptHeader:
 CinnabarPokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 1, CINNABAR_ISLAND
-	warp_def $7, $6, 1, CINNABAR_ISLAND
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 1, CINNABAR_ISLAND
+	warp_def 7, 6, 1, CINNABAR_ISLAND
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 
@@ -18,8 +18,8 @@ CinnabarPokeCenter1F_MapEventHeader:
 
 .PersonEvents: db 3
 	pc_nurse_event 1, 5
-	person_event SPRITE_COOLTRAINER_F, 5, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CinnabarPokeCenter1FCooltrainerfText, -1
-	person_event SPRITE_FISHER, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CinnabarPokeCenter1FFisherText, -1
+	person_event SPRITE_COOLTRAINER_F, 5, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CinnabarPokeCenter1FCooltrainerfText, -1
+	person_event SPRITE_FISHER, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CinnabarPokeCenter1FFisherText, -1
 
 PokemonJournalBlaineScript:
 	setflag ENGINE_READ_BLAINE_JOURNAL

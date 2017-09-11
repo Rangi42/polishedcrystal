@@ -13,7 +13,7 @@ SpecialStatsJudge: ; 4f0bc
 	farcall SelectMonFromParty
 	jr c, .cancel
 
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp EGG
 	jr z, .egg
 
@@ -248,41 +248,41 @@ JudgePokemon:
 	line "say that its best"
 	cont "potential lies in"
 	cont "its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "."
 	prompt
 
 .second_best
 	text "Its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " is"
 	line "equally good."
 	prompt
 
 .third_best
 	text "Its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " is"
 	line "also impressive."
 	prompt
 
 .fourth_best
 	text "Its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " is"
 	line "good as well."
 	prompt
 
 .fifth_best
 	text "Its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " is"
 	line "also good."
 	prompt
 
 .sixth_best
 	text "Well, its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	line "is worth mention-"
 	cont "ing also."
@@ -327,7 +327,7 @@ JudgePokemon:
 
 .first_zero
 	text "But its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "…"
 	line "It's pretty dis-"
 	cont "mal, you know?"
@@ -335,7 +335,7 @@ JudgePokemon:
 
 .second_zero
 	text "And its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	line "is pretty disap-"
 	cont "pointing, too."
@@ -344,7 +344,7 @@ JudgePokemon:
 .third_zero
 	text "I'm afraid its"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " is pretty"
 	cont "bad, too…"
 	prompt
@@ -352,14 +352,14 @@ JudgePokemon:
 .fourth_zero
 	text "I'm not too happy"
 	line "with its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	cont "either."
 	prompt
 
 .fifth_zero
 	text "Its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	line "is pretty disap-"
 	cont "pointing, too."
@@ -367,7 +367,7 @@ JudgePokemon:
 
 .sixth_zero
 	text "Well, its @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	line "is nothing to brag"
 	cont "about, that's for"
@@ -394,8 +394,8 @@ JudgeGetStatName:
 	jr .inner_loop
 
 .got_stat
-	ld de, StringBuffer1
-	ld bc, StringBuffer2 - StringBuffer1
+	ld de, wStringBuffer1
+	ld bc, wStringBuffer2 - wStringBuffer1
 	call CopyBytes
 	pop hl
 	pop de

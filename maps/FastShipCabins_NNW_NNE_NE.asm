@@ -7,9 +7,9 @@ FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 FastShipCabins_NNW_NNE_NE_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $2, 2, FAST_SHIP_1F
-	warp_def $c, $2, 3, FAST_SHIP_1F
-	warp_def $18, $2, 4, FAST_SHIP_1F
+	warp_def 0, 2, 2, FAST_SHIP_1F
+	warp_def 12, 2, 3, FAST_SHIP_1F
+	warp_def 24, 2, 4, FAST_SHIP_1F
 
 .XYTriggers: db 0
 

@@ -1,8 +1,8 @@
 PrintItemDescription: ; 0x1c8955
-; Print the description for item [CurSpecies] at de.
+; Print the description for item [wCurSpecies] at de.
 
 	ld hl, ItemDescriptions
-	ld a, [CurSpecies]
+	ld a, [wCurSpecies]
 	dec a
 	ld c, a
 	ld b, 0
@@ -18,17 +18,17 @@ endr
 ; 0x1c8987
 
 PrintTMHMDescription:
-; Print the description for TM/HM [CurSpecies] at de.
+; Print the description for TM/HM [wCurSpecies] at de.
 
-	ld a, [CurSpecies]
+	ld a, [wCurSpecies]
 	inc a
-	ld [CurTMHM], a
 	ld [wCurTMHM], a
+	ld [wCurTMHMBuffer], a
 	push de
 	predef GetTMHMMove
 	pop hl
-	ld a, [wd265]
-	ld [CurSpecies], a
+	ld a, [wCurTMHMBuffer]
+	ld [wCurSpecies], a
 	predef PrintMoveDesc
 	ret
 

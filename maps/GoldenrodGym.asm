@@ -7,11 +7,11 @@ GoldenrodGym_MapScriptHeader:
 GoldenrodGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $2, 1, GOLDENROD_CITY
-	warp_def $11, $3, 1, GOLDENROD_CITY
+	warp_def 17, 2, 1, GOLDENROD_CITY
+	warp_def 17, 3, 1, GOLDENROD_CITY
 
 .XYTriggers: db 1
-	xy_trigger 1, $5, $8, WhitneyCriesScript
+	xy_trigger 1, 5, 8, WhitneyCriesScript
 
 .Signposts: db 2
 	signpost 15, 1, SIGNPOST_READ, GoldenrodGymStatue
@@ -20,7 +20,7 @@ GoldenrodGym_MapEventHeader:
 .PersonEvents: db 7
 	person_event SPRITE_LASS, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath1, -1
 	person_event SPRITE_WHITNEY, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
-	person_event SPRITE_LASS, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerLassCarrie, -1
+	person_event SPRITE_LASS, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerLassCathy, -1
 	person_event SPRITE_LASS, 7, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath2, -1
 	person_event SPRITE_BEAUTY, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyVictoria, -1
 	person_event SPRITE_BEAUTY, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautySamantha, -1
@@ -43,7 +43,7 @@ WhitneyScript_0x5400c:
 	dotrigger $1
 	setevent EVENT_BEAT_BEAUTY_VICTORIA
 	setevent EVENT_BEAT_BEAUTY_SAMANTHA
-	setevent EVENT_BEAT_LASS_CARRIE
+	setevent EVENT_BEAT_LASS_CATHY
 	setevent EVENT_BEAT_SR_AND_JR_JO_AND_CATH
 .FightDone:
 	opentext
@@ -73,12 +73,12 @@ UnknownScript_0x54064:
 UnknownScript_0x54077:
 	jumpopenedtext UnknownText_0x54360
 
-TrainerLassCarrie:
-	trainer EVENT_BEAT_LASS_CARRIE, LASS, CARRIE, LassCarrieSeenText, LassCarrieBeatenText, 0, LassCarrieScript
+TrainerLassCathy:
+	trainer EVENT_BEAT_LASS_CATHY, LASS, CATHY, LassCathySeenText, LassCathyBeatenText, 0, LassCathyScript
 
-LassCarrieScript:
+LassCathyScript:
 	end_if_just_battled
-	jumptextfaceplayer LassCarrieOWText
+	jumptextfaceplayer LassCathyOWText
 
 WhitneyCriesScript:
 	showemote EMOTE_SHOCK, GOLDENRODGYM_LASS2, 15
@@ -231,7 +231,7 @@ UnknownText_0x54360:
 	line "again! Bye-bye!"
 	done
 
-LassCarrieSeenText:
+LassCathySeenText:
 	text "Don't let my"
 	line "#mon's cute"
 
@@ -239,12 +239,12 @@ LassCarrieSeenText:
 	line "They can whip you!"
 	done
 
-LassCarrieBeatenText:
+LassCathyBeatenText:
 	text "Darn… I thought"
 	line "you were weak…"
 	done
 
-LassCarrieOWText:
+LassCathyOWText:
 	text "Do my #mon"
 	line "think I'm cute?"
 	done

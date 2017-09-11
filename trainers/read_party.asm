@@ -1,5 +1,5 @@
 ReadTrainerParty: ; 39771
-	ld a, [InBattleTowerBattle]
+	ld a, [wInBattleTowerBattle]
 	bit 0, a
 	ret nz
 
@@ -7,21 +7,21 @@ ReadTrainerParty: ; 39771
 	and a
 	ret nz ; populated elsewhere
 
-	ld hl, OTPartyCount
+	ld hl, wOTPartyCount
 	xor a
 	ld [hli], a
 	dec a
 	ld [hl], a
 
-	ld hl, OTPartyMons
-	ld bc, OTPartyMonsEnd - OTPartyMons
+	ld hl, wOTPartyMons
+	ld bc, wOTPartyMonsEnd - wOTPartyMons
 	xor a
 	call ByteFill
 
 	call FindTrainerData
 
 	call GetNextTrainerDataByte
-	ld [OtherTrainerType], a
+	ld [wOtherTrainerType], a
 
 .loop2
 ; level
@@ -29,28 +29,28 @@ ReadTrainerParty: ; 39771
 	cp $ff
 	ret z
 
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 
 ; species
 	call GetNextTrainerDataByte
-	ld [CurPartySpecies], a
+	ld [wCurPartySpecies], a
 
 	ld a, OTPARTYMON
-	ld [MonType], a
+	ld [wMonType], a
 
 	push hl
 	predef TryAddMonToParty
 	pop hl
 
 ; item?
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	bit TRNTYPE_ITEM, a
 	jr z, .not_item
 
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1Item
+	ld hl, wOTPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
@@ -62,13 +62,13 @@ ReadTrainerParty: ; 39771
 
 .not_item
 ; EVs?
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	bit TRNTYPE_EVS, a
 	jr z, .not_evs
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1EVs
+	ld hl, wOTPartyMon1EVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
@@ -86,14 +86,14 @@ endr
 
 .not_evs
 ; DVs?
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	bit TRNTYPE_DVS, a
 	jr z, .not_dvs
 
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1DVs
+	ld hl, wOTPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
@@ -124,14 +124,14 @@ endr
 
 .not_dvs
 ; personality?
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	bit TRNTYPE_PERSONALITY, a
 	jr z, .not_personality
 
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1Personality
+	ld hl, wOTPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
@@ -146,12 +146,12 @@ endr
 
 .not_personality
 ; nickname?
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	bit TRNTYPE_NICKNAME, a
 	jr z, .not_nickname
 
 	push de
-	ld de, StringBuffer2
+	ld de, wStringBuffer2
 .copy
 	call GetNextTrainerDataByte
 	ld [de], a
@@ -159,14 +159,14 @@ endr
 	cp "@"
 	jr nz, .copy
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMonNicknames
+	ld hl, wOTPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, StringBuffer2
+	ld hl, wStringBuffer2
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	pop hl
@@ -174,14 +174,14 @@ endr
 
 .not_nickname
 ; moves?
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	bit TRNTYPE_MOVES, a
 	jr z, .not_moves
 
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1Moves
+	ld hl, wOTPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
@@ -198,9 +198,9 @@ endr
 
 	push hl
 
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1Species
+	ld hl, wOTPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
@@ -239,19 +239,19 @@ endr
 
 .not_moves
 	; custom DVs or nature may alter stats
-	ld a, [OtherTrainerType]
+	ld a, [wOtherTrainerType]
 	and TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
 	jr z, .no_stat_recalc
 	push hl
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	dec a
-	ld hl, OTPartyMon1MaxHP
+	ld hl, wOTPartyMon1MaxHP
 	ld bc, PARTYMON_STRUCT_LENGTH
 	push af
 	call AddNTimes
 	pop af
 	push hl
-	ld hl, OTPartyMon1EVs - 1
+	ld hl, wOTPartyMon1EVs - 1
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	pop de
@@ -272,16 +272,16 @@ endr
 	jp .loop2
 
 Battle_GetTrainerName:: ; 39939
-	ld a, [InBattleTowerBattle]
+	ld a, [wInBattleTowerBattle]
 	bit 0, a
-	ld hl, OTPlayerName
+	ld hl, wOTPlayerName
 	ld a, BANK(Battle_GetTrainerName) ; make FarCopyBytes act like CopyBytes
-	ld [TrainerGroupBank], a
+	ld [wTrainerGroupBank], a
 	jp nz, CopyTrainerName
 
-	ld a, [OtherTrainerID]
+	ld a, [wOtherTrainerID]
 	ld b, a
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	ld c, a
 
 GetTrainerName:: ; 3994c
@@ -293,7 +293,7 @@ rept 3
 	add hl, bc
 endr
 	ld a, [hli]
-	ld [TrainerGroupBank], a
+	ld [wTrainerGroupBank], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -310,10 +310,10 @@ endr
 	jr .loop
 
 CopyTrainerName: ; 39984
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	push de
 	ld bc, NAME_LENGTH
-	ld a, [TrainerGroupBank]
+	ld a, [wTrainerGroupBank]
 	call FarCopyBytes
 	pop de
 	ret
@@ -321,9 +321,9 @@ CopyTrainerName: ; 39984
 
 SetTrainerBattleLevel:
 	ld a, 255
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 
-	ld a, [InBattleTowerBattle]
+	ld a, [wInBattleTowerBattle]
 	bit 0, a
 	ret nz
 
@@ -335,11 +335,11 @@ SetTrainerBattleLevel:
 
 	inc hl
 	call GetNextTrainerDataByte
-	ld [CurPartyLevel], a
+	ld [wCurPartyLevel], a
 	ret
 
 FindTrainerData:
-	ld a, [OtherTrainerClass]
+	ld a, [wOtherTrainerClass]
 	dec a
 	ld c, a
 	ld b, 0
@@ -348,12 +348,12 @@ rept 3
 	add hl, bc
 endr
 	ld a, [hli]
-	ld [TrainerGroupBank], a
+	ld [wTrainerGroupBank], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 
-	ld a, [OtherTrainerID]
+	ld a, [wOtherTrainerID]
 	ld b, a
 .skip_trainer
 	dec b
@@ -372,7 +372,7 @@ endr
 	ret
 
 GetNextTrainerDataByte:
-	ld a, [TrainerGroupBank]
+	ld a, [wTrainerGroupBank]
 	call GetFarByte
 	inc hl
 	ret

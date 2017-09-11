@@ -7,7 +7,7 @@ LightningIslandRoof_MapScriptHeader:
 LightningIslandRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $3, 2, LIGHTNING_ISLAND
+	warp_def 7, 3, 2, LIGHTNING_ISLAND
 
 .XYTriggers: db 0
 
@@ -35,7 +35,7 @@ LightningIslandRoofSparkScript:
 	setevent EVENT_BEAT_SPARK
 	showtext .AfterText
 	playsound SFX_WARP_TO
-	applymovement LIGHTNINGISLANDROOF_SPARK, LightningIslandRoofSparkTeleport
+	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
 	disappear LIGHTNINGISLANDROOF_SPARK
 	clearevent EVENT_CELADON_UNIVERSITY_SPARK
 	end
@@ -62,7 +62,3 @@ LightningIslandRoofSparkScript:
 .RefusedText:
 	text "TODO"
 	done
-
-LightningIslandRoofSparkTeleport:
-	teleport_from
-	step_end

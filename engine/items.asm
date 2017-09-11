@@ -19,23 +19,23 @@ _ReceiveItem:: ; d1d5
 	dw .KeyItem
 
 .Item: ; d1f1
-	ld hl, NumItems
+	ld hl, wNumItems
 	jp PutItemInPocket
 
 .Medicine:
-	ld hl, NumMedicine
+	ld hl, wNumMedicine
 	jp PutItemInPocket
 
 .Ball: ; d1fb
-	ld hl, NumBalls
+	ld hl, wNumBalls
 	jp PutItemInPocket
 
 .Berry:
-	ld hl, NumBerries
+	ld hl, wNumBerries
 	jp PutItemInPocket
 
 .KeyItem: ; d1f6
-	ld hl, NumKeyItems
+	ld hl, wNumKeyItems
 	jp ReceiveKeyItem
 
 _TossItem:: ; d20d
@@ -59,15 +59,15 @@ _TossItem:: ; d20d
 	dw .KeyItem
 
 .Medicine:
-	ld hl, NumMedicine
+	ld hl, wNumMedicine
 	jp RemoveItemFromPocket
 
 .Ball: ; d228
-	ld hl, NumBalls
+	ld hl, wNumBalls
 	jp RemoveItemFromPocket
 
 .Berry:
-	ld hl, NumBerries
+	ld hl, wNumBerries
 	jp RemoveItemFromPocket
 
 .KeyItem: ; d23a
@@ -102,15 +102,15 @@ _CheckItem:: ; d244
 	dw .KeyItem
 
 .Medicine:
-	ld hl, NumMedicine
+	ld hl, wNumMedicine
 	jp CheckTheItem
 
 .Ball: ; d25f
-	ld hl, NumBalls
+	ld hl, wNumBalls
 	jp CheckTheItem
 
 .Berry:
-	ld hl, NumBerries
+	ld hl, wNumBerries
 	jp CheckTheItem
 
 .KeyItem: ; d271
@@ -126,46 +126,46 @@ _CheckItem:: ; d244
 
 DoesHLEqualNumItems: ; d27b
 	ld a, l
-	cp NumItems % $100
+	cp wNumItems % $100
 	ret nz
 	ld a, h
-	cp NumItems / $100
+	cp wNumItems / $100
 	ret
 
 GetPocketCapacity: ; d283
 	ld c, MAX_ITEMS
 	ld a, e
-	cp NumItems % $100
+	cp wNumItems % $100
 	jr nz, .not_items
 	ld a, d
-	cp NumItems / $100
+	cp wNumItems / $100
 	ret z
 
 .not_items:
 	ld c, MAX_MEDICINE
 	ld a, e
-	cp NumMedicine % $100
+	cp wNumMedicine % $100
 	jr nz, .not_medicine
 	ld a, d
-	cp NumMedicine / $100
+	cp wNumMedicine / $100
 	ret z
 
 .not_medicine:
 	ld c, MAX_BALLS
 	ld a, e
-	cp NumBalls % $100
+	cp wNumBalls % $100
 	jr nz, .not_balls
 	ld a, d
-	cp NumBalls / $100
+	cp wNumBalls / $100
 	ret z
 
 .not_balls:
 	ld c, MAX_BERRIES
 	ld a, e
-	cp NumBerries % $100
+	cp wNumBerries % $100
 	jr nz, .not_berries
 	ld a, d
-	cp NumBerries / $100
+	cp wNumBerries / $100
 	ret z
 
 .not_berries:
@@ -178,7 +178,7 @@ PutItemInPocket: ; d29c
 	ld d, h
 	ld e, l
 	inc hl
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld c, a
 	ld b, 0
 .loop
@@ -211,7 +211,7 @@ PutItemInPocket: ; d29c
 .ok
 	ld h, d
 	ld l, e
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld c, a
 	ld a, [wItemQuantityChangeBuffer]
 	ld [wItemQuantityBuffer], a
@@ -237,7 +237,7 @@ PutItemInPocket: ; d29c
 
 .terminator2
 	dec hl
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld [hli], a
 	ld a, [wItemQuantityBuffer]
 	ld [hli], a
@@ -255,14 +255,14 @@ RemoveItemFromPocket: ; d2ff
 	ld e, l
 	ld a, [hli]
 	ld c, a
-	ld a, [CurItemQuantity]
+	ld a, [wCurItemQuantity]
 	cp c
 	jr nc, .ok ; memory
 	ld c, a
 	ld b, $0
 	add hl, bc
 	add hl, bc
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	cp [hl]
 	inc hl
 	jr z, .skip
@@ -271,7 +271,7 @@ RemoveItemFromPocket: ; d2ff
 	inc hl
 
 .ok
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld b, a
 .loop
 	ld a, [hli]
@@ -316,7 +316,7 @@ RemoveItemFromPocket: ; d2ff
 	ret
 
 CheckTheItem: ; d349
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld c, a
 .loop
 	inc hl
@@ -333,17 +333,17 @@ CheckTheItem: ; d349
 	ret
 
 ReceiveKeyItem: ; d35a
-	ld hl, NumKeyItems
+	ld hl, wNumKeyItems
 	ld a, [hli]
 	cp MAX_KEY_ITEMS
 	jr nc, .nope
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld [hli], a
 	ld [hl], -1
-	ld hl, NumKeyItems
+	ld hl, wNumKeyItems
 	inc [hl]
 	scf
 	ret
@@ -356,7 +356,7 @@ TossKeyItem: ; d374
 	ld a, [wd107]
 	ld e, a
 	ld d, 0
-	ld hl, NumKeyItems
+	ld hl, wNumKeyItems
 	ld a, [hl]
 	cp e
 	jr nc, .ok
@@ -383,8 +383,8 @@ TossKeyItem: ; d374
 	ret
 
 .Toss: ; d396
-	ld hl, NumKeyItems
-	ld a, [CurItem]
+	ld hl, wNumKeyItems
+	ld a, [wCurItem]
 	ld c, a
 .loop3
 	inc hl
@@ -397,16 +397,16 @@ TossKeyItem: ; d374
 	ret
 
 .ok3
-	ld a, [NumKeyItems]
+	ld a, [wNumKeyItems]
 	dec a
-	ld [NumKeyItems], a
+	ld [wNumKeyItems], a
 	scf
 	ret
 
 CheckKeyItems: ; d3b1
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld c, a
-	ld hl, KeyItems
+	ld hl, wKeyItems
 .loop
 	ld a, [hli]
 	cp c
@@ -421,7 +421,7 @@ CheckKeyItems: ; d3b1
 	ret
 
 _CheckTossableItem:: ; d427
-; Return 1 in wItemAttributeParamBuffer and carry if CurItem can't be removed from the bag.
+; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be removed from the bag.
 	ld a, ITEMATTR_PERMISSIONS
 	call GetItemAttr
 	bit CANT_TOSS_F, a
@@ -430,7 +430,7 @@ _CheckTossableItem:: ; d427
 	ret
 
 CheckSelectableItem: ; d432
-; Return 1 in wItemAttributeParamBuffer and carry if CurItem can't be selected.
+; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be selected.
 	ld a, ITEMATTR_PERMISSIONS
 	call GetItemAttr
 	bit CANT_SELECT_F, a
@@ -439,7 +439,7 @@ CheckSelectableItem: ; d432
 	ret
 
 CheckItemPocket:: ; d43d
-; Return the pocket for CurItem in wItemAttributeParamBuffer.
+; Return the pocket for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_POCKET
 	call GetItemAttr
 	and $f
@@ -447,7 +447,7 @@ CheckItemPocket:: ; d43d
 	ret
 
 CheckItemContext: ; d448
-; Return the context for CurItem in wItemAttributeParamBuffer.
+; Return the context for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_HELP
 	call GetItemAttr
 	and $f
@@ -455,7 +455,7 @@ CheckItemContext: ; d448
 	ret
 
 CheckItemMenu: ; d453
-; Return the menu for CurItem in wItemAttributeParamBuffer.
+; Return the menu for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_HELP
 	call GetItemAttr
 	swap a
@@ -464,7 +464,7 @@ CheckItemMenu: ; d453
 	ret
 
 GetItemAttr: ; d460
-; Get attribute a of CurItem.
+; Get attribute a of wCurItem.
 
 	push hl
 	push bc
@@ -477,7 +477,7 @@ GetItemAttr: ; d460
 	xor a
 	ld [wItemAttributeParamBuffer], a
 
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	dec a
 	ld c, a
 	ld a, NUM_ITEMATTRS
@@ -496,7 +496,7 @@ ItemAttr_ReturnCarry: ; d47f
 	ret
 
 GetItemPrice: ; d486
-; Return the price of CurItem in de.
+; Return the price of wCurItem in de.
 	push hl
 	push bc
 	ld a, ITEMATTR_PRICE
@@ -528,24 +528,24 @@ _CountItem::
 	dw KeyItem_Dummy
 
 .Item:
-	ld hl, NumItems
+	ld hl, wNumItems
 	jp CountItemInPocket
 
 .Medicine:
-	ld hl, NumMedicine
+	ld hl, wNumMedicine
 	jp CountItemInPocket
 
 .Ball: ; d1fb
-	ld hl, NumBalls
+	ld hl, wNumBalls
 	jp CountItemInPocket
 
 .Berry:
-	ld hl, NumBerries
+	ld hl, wNumBerries
 	jp CountItemInPocket
 
 CountItemInPocket:
 	inc hl
-	ld a, [CurItem]
+	ld a, [wCurItem]
 	ld d, a
 	lb bc, 0, 0
 .loop

@@ -7,8 +7,8 @@ CeladonUniversityClassroom2_MapScriptHeader:
 CeladonUniversityClassroom2_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $2, 7, CELADON_UNIVERSITY_1F
-	warp_def $b, $3, 7, CELADON_UNIVERSITY_1F
+	warp_def 11, 2, 7, CELADON_UNIVERSITY_1F
+	warp_def 11, 3, 7, CELADON_UNIVERSITY_1F
 
 .XYTriggers: db 0
 

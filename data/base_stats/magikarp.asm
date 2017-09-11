@@ -1,5 +1,3 @@
-	db MAGIKARP ; 129
-
 	db  20,  10,  55,  80,  15,  20
 	;   hp  atk  def  spd  sat  sdf
 
@@ -8,8 +6,7 @@
 	db 20 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 5 ; step cycles to hatch
+	dn FEMALE_50, 0 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db SWIFT_SWIM ; ability 1
 	db SWIFT_SWIM ; ability 2
@@ -22,5 +19,5 @@
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm 
+	tmhm
 	; end

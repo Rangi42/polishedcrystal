@@ -2,10 +2,10 @@
 
 If you just want to play Polished Crystal, use one of the .ips patches as described in [README.md](README.md#download-and-play). To build a ROM yourself from the source code, follow these instructions.
 
-> You know it's sitting back and looking at it that you realize that Gamefreak is actually really good devs.
+> You know it's sitting back and looking at it that you realize that Gamefreak is actually really good devs.  
 > Like you have Pokemon and it's a simple formula "How can you fuck it up?" and then all of these Romhacks basically go "Like this."
-
-– Anonymous, [/vp/](http://boards.4chan.org/vp/)
+>
+> — Anonymous, [/vp/](http://boards.4chan.org/vp/)
 
 
 ## Windows
@@ -20,7 +20,7 @@ Then download [**rgbds 0.3.1**](https://github.com/bentley/rgbds/releases/). Oth
 In the **Cygwin terminal**:
 
 ```bash
-git clone --recursive https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/roukaour/polishedcrystal.git
 cd polishedcrystal
 ```
 
@@ -56,7 +56,7 @@ git checkout v0.3.1
 sudo make install
 cd ..
 
-git clone --recursive https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/roukaour/polishedcrystal.git
 cd polishedcrystal
 ```
 
@@ -86,7 +86,7 @@ git checkout v0.3.1
 sudo make install
 cd ..
 
-git clone --recursive https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/roukaour/polishedcrystal.git
 cd polishedcrystal
 ```
 

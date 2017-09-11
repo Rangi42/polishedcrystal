@@ -1,5 +1,3 @@
-	db SMEARGLE ; 235
-
 if DEF(FAITHFUL)
 	db  55,  20,  35,  75,  20,  45
 	;   hp  atk  def  spd  sat  sdf
@@ -13,8 +11,7 @@ endc
 	db 106 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 20 ; step cycles to hatch
+	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db OWN_TEMPO ; ability 1
 	db TECHNICIAN ; ability 2
@@ -27,5 +24,5 @@ endc
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm 
+	tmhm
 	; end

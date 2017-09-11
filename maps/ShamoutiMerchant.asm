@@ -7,8 +7,8 @@ ShamoutiMerchant_MapScriptHeader:
 ShamoutiMerchant_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 6, SHAMOUTI_ISLAND
-	warp_def $7, $3, 6, SHAMOUTI_ISLAND
+	warp_def 7, 2, 6, SHAMOUTI_ISLAND
+	warp_def 7, 3, 6, SHAMOUTI_ISLAND
 
 .XYTriggers: db 0
 

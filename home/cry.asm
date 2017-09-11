@@ -27,7 +27,7 @@ PlayCry2:: ; 37d5
 	push af
 	xor a
 	ld [wStereoPanningMask], a
-	ld [CryTracks], a
+	ld [wCryTracks], a
 	pop af
 	jp _PlayCry
 ; 37e2
@@ -73,13 +73,13 @@ endr
 	inc hl
 
 	ld a, [hli]
-	ld [CryPitch], a
+	ld [wCryPitch], a
 	ld a, [hli]
-	ld [CryPitch + 1], a
+	ld [wCryPitch + 1], a
 	ld a, [hli]
-	ld [CryLength], a
+	ld [wCryLength], a
 	ld a, [hl]
-	ld [CryLength + 1], a
+	ld [wCryLength + 1], a
 
 	pop af
 	rst Bankswitch

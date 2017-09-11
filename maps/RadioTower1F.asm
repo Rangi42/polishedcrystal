@@ -7,9 +7,9 @@ RadioTower1F_MapScriptHeader:
 RadioTower1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $2, 11, GOLDENROD_CITY
-	warp_def $7, $3, 11, GOLDENROD_CITY
-	warp_def $0, $f, 2, RADIO_TOWER_2F
+	warp_def 7, 2, 11, GOLDENROD_CITY
+	warp_def 7, 3, 11, GOLDENROD_CITY
+	warp_def 0, 15, 2, RADIO_TOWER_2F
 
 .XYTriggers: db 0
 
@@ -281,7 +281,7 @@ ExplainLuckyNumberShowText:
 UnknownText_0x5cf3a:
 	text "This week's ID"
 	line "number is @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "."
 	done
 

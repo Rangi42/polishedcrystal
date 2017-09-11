@@ -7,9 +7,9 @@ BluesHouse1F_MapScriptHeader:
 BluesHouse1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $2, 2, PALLET_TOWN
-	warp_def $7, $3, 2, PALLET_TOWN
-	warp_def $0, $7, 1, BLUES_HOUSE_2F
+	warp_def 7, 2, 2, PALLET_TOWN
+	warp_def 7, 3, 2, PALLET_TOWN
+	warp_def 0, 7, 1, BLUES_HOUSE_2F
 
 .XYTriggers: db 0
 
@@ -123,7 +123,7 @@ DaisyScript:
 	done
 
 .LooksContentText:
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text " looks"
 	line "content."
 	done

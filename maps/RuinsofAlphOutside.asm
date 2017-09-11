@@ -10,28 +10,28 @@ RuinsofAlphOutside_MapScriptHeader:
 RuinsofAlphOutside_MapEventHeader:
 
 .Warps: db 12
-	warp_def $17, $5, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
-	warp_def $d, $10, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def $23, $4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
-	warp_def $27, $12, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
-	warp_def $13, $c, 1, RUINS_OF_ALPH_ENTRANCE_CHAMBER
-	warp_def $11, $13, 1, RUINS_OF_ALPH_RESEARCH_CENTER
-	warp_def $19, $8, 1, UNION_CAVE_B1F_NORTH
-	warp_def $21, $9, 2, UNION_CAVE_B1F_NORTH
-	warp_def $5, $3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def $1a, $f, 1, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $1b, $f, 2, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def $9, $a, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
+	warp_def 23, 5, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
+	warp_def 13, 16, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_def 35, 4, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
+	warp_def 39, 18, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
+	warp_def 19, 12, 1, RUINS_OF_ALPH_ENTRANCE_CHAMBER
+	warp_def 17, 19, 1, RUINS_OF_ALPH_RESEARCH_CENTER
+	warp_def 25, 8, 1, UNION_CAVE_B1F_NORTH
+	warp_def 33, 9, 2, UNION_CAVE_B1F_NORTH
+	warp_def 5, 3, 3, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def 26, 15, 1, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def 27, 15, 2, ROUTE_32_RUINS_OF_ALPH_GATE
+	warp_def 9, 10, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
 
 .XYTriggers: db 2
-	xy_trigger 1, $14, $d, UnknownScript_0x58031
-	xy_trigger 1, $15, $c, UnknownScript_0x5803a
+	xy_trigger 1, 20, 13, UnknownScript_0x58031
+	xy_trigger 1, 21, 12, UnknownScript_0x58031
 
 .Signposts: db 5
 	signpost 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58325
 	signpost 22, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58342
 	signpost 18, 20, SIGNPOST_JUMPTEXT, UnknownText_0x58362
-	signpost 9, 10, SIGNPOST_JUMPTEXT, MapRuinsofAlphOutsideSignpost3Text
+	signpost 9, 10, SIGNPOST_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
 	signpost 13, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
 .PersonEvents: db 13
@@ -73,7 +73,7 @@ RuinsofAlphOutsideTrigger0:
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock $a, $8, $bb
+	changeblock 10, 8, $bb
 .locked
 	return
 
@@ -100,25 +100,16 @@ UnknownScript_0x5802c:
 	return
 
 UnknownScript_0x58031:
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST1, UP
-	spriteface PLAYER, DOWN
-	jump UnknownScript_0x58044
-
-UnknownScript_0x5803a:
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST1, LEFT
-	spriteface PLAYER, RIGHT
-	jump UnknownScript_0x58044
-
+	faceperson RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
+	faceperson PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
 ScientistScript_0x58043:
-	faceplayer
-UnknownScript_0x58044:
 	showtext UnknownText_0x580c7
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, MovementData_0x580ba
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	stopfollow
-	applymovement PLAYER, MovementData_0x580c5
+	applyonemovement PLAYER, step_up
 	domaptrigger RUINS_OF_ALPH_RESEARCH_CENTER, $1
 	warpcheck
 	end
@@ -167,10 +158,6 @@ MovementData_0x580ba:
 	step_right
 	step_right
 	step_up
-	step_up
-	step_end
-
-MovementData_0x580c5:
 	step_up
 	step_end
 
@@ -297,7 +284,10 @@ UnknownText_0x58362:
 	line "The Ruins of Alph"
 	done
 
-MapRuinsofAlphOutsideSignpost3Text:
+MapRuinsofAlphOutsideSealedCaveSign:
+	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
+	thistext
+
 	text "There's a door-"
 	line "shaped groove in"
 	cont "the rock."

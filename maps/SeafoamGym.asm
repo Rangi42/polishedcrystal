@@ -7,7 +7,7 @@ SeafoamGym_MapScriptHeader:
 SeafoamGym_MapEventHeader:
 
 .Warps: db 1
-	warp_def $14, $c, 2, SEAFOAM_ISLANDS_1F
+	warp_def 20, 12, 2, SEAFOAM_ISLANDS_1F
 
 .XYTriggers: db 0
 

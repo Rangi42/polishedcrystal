@@ -8,13 +8,13 @@ Route27_MapScriptHeader:
 Route27_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $21, 1, ROUTE_27_REST_HOUSE
-	warp_def $5, $1a, 1, TOHJO_FALLS
-	warp_def $5, $24, 2, TOHJO_FALLS
+	warp_def 7, 33, 1, ROUTE_27_REST_HOUSE
+	warp_def 5, 26, 1, TOHJO_FALLS
+	warp_def 5, 36, 2, TOHJO_FALLS
 
 .XYTriggers: db 2
-	xy_trigger 0, $a, $12, UnknownScript_0x1a0873
-	xy_trigger 0, $a, $13, UnknownScript_0x1a0881
+	xy_trigger 0, 10, 18, UnknownScript_0x1a0873
+	xy_trigger 0, 10, 19, UnknownScript_0x1a0881
 
 .Signposts: db 1
 	signpost 7, 25, SIGNPOST_JUMPTEXT, TohjoFallsSignText
@@ -51,7 +51,7 @@ UnknownScript_0x1a0873:
 UnknownScript_0x1a0881:
 	spriteface ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a69
+	applyonemovement ROUTE27_FISHER, step_left
 UnknownScript_0x1a088c:
 	spriteface PLAYER, RIGHT
 	opentext
@@ -64,43 +64,43 @@ UnknownScript_0x1a088c:
 	end
 
 Route27VeteranfScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
-	iftrue .GotChoiceSpecs
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_VETERANF_LITVYAK
 	iftrue .Beaten
 	checkevent EVENT_BEAT_PSYCHIC_GILBERT
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BIRD_KEEPER_JOSE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERM_BLAKE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_ACE_DUO_JAKE_AND_BRI
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERF_REENA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERF_MEGAN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_DRAGON_TAMER_KAZU
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERM_GAVEN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERF_JOYCE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_COOLTRAINERF_BETH
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_RICHARD
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BATTLE_GIRL_RONDA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_FISHER_SCOTT
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_DRAGON_TAMER_ERICK
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -110,25 +110,20 @@ Route27VeteranfScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_VETERANF_LITVYAK
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem CHOICE_SPECS
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
-.GotChoiceSpecs:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
-
-.NoBattle:
-	jumpopenedtext .RefusedText
+.AfterText2:
+	text "Good luck! Say"
+	line "hello to Lance"
+	cont "for me."
+	done
 
 .IntroText:
 	text "Hm! If you're here,"
@@ -187,12 +182,6 @@ Route27VeteranfScript:
 
 	para "Take a pair"
 	line "yourself."
-	done
-
-.AfterText2:
-	text "Good luck! Say"
-	line "hello to Lance"
-	cont "for me."
 	done
 
 TrainerPsychicGilbert:
@@ -438,10 +427,6 @@ CooltrainerfMeganScript:
 
 MovementData_0x1a0a66:
 	step_left
-	step_left
-	step_end
-
-MovementData_0x1a0a69:
 	step_left
 	step_end
 

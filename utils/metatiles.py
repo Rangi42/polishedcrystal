@@ -153,6 +153,8 @@ class PaletteMap(object):
 		'maps/HauntedRadioTower4F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
 		'maps/HauntedRadioTower5F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
 		'maps/HauntedRadioTower6F.blk': lambda: load_palette('tilesets/haunted_pokemon_tower.pal'),
+		'maps/HiddenCaveGrotto.blk': lambda: load_palette('tilesets/hidden_cave_grotto.pal'),
+		'maps/HiddenTreeGrotto.blk': lambda: load_palette('tilesets/hidden_tree_grotto.pal'),
 		'maps/IvysLab.blk': lambda: load_palette('tilesets/ivys_lab.pal'),
 		'maps/KarensRoom.blk': lambda: load_palette('tilesets/karens_room.pal'),
 		'maps/KogasRoom.blk': lambda: load_palette('tilesets/kogas_room.pal'),
@@ -229,10 +231,10 @@ class PaletteMap(object):
 		with open(filename, 'r') as file:
 			for line in file:
 				line = line.strip()
-				if line.startswith('tilepal'):
-					eight = line[7:].split(',')[-8:]
-					assert len(eight) == 8
-					self.data.extend([colors[c.strip()][::-1] for c in eight])
+				if line.startswith('tilepal '):
+					indexes = line[8:].split(',')[1:]
+					more_data = [colors[c.strip()][::-1] for c in indexes]
+					self.data.extend(more_data)
 
 	def color4(self, i):
 		return self.data[i] if i < len(self.data) else [default_rgb] * 4
@@ -249,7 +251,7 @@ class Metatiles(object):
 				tile_indexes = [ord(c) for c in file.read(Metatiles.t_per_m**2)]
 				if not len(tile_indexes):
 					break
-				metatile = [tileset.tile(ti if ti < 0x70 else ti - 0x10) for ti in tile_indexes]
+				metatile = [tileset.tile(ti) for ti in tile_indexes]
 				self.data.append(metatile)
 				i += 1
 

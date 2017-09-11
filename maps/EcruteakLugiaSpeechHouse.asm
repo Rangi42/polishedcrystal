@@ -7,8 +7,8 @@ EcruteakLugiaSpeechHouse_MapScriptHeader:
 EcruteakLugiaSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 7, ECRUTEAK_CITY
-	warp_def $7, $4, 7, ECRUTEAK_CITY
+	warp_def 7, 3, 7, ECRUTEAK_CITY
+	warp_def 7, 4, 7, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

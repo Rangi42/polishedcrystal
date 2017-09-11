@@ -7,10 +7,10 @@ Route36VioletGate_MapScriptHeader:
 Route36VioletGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $0, 5, ROUTE_36
-	warp_def $5, $0, 6, ROUTE_36
-	warp_def $4, $9, 10, VIOLET_CITY
-	warp_def $5, $9, 11, VIOLET_CITY
+	warp_def 4, 0, 5, ROUTE_36
+	warp_def 5, 0, 6, ROUTE_36
+	warp_def 4, 9, 10, VIOLET_CITY
+	warp_def 5, 9, 11, VIOLET_CITY
 
 .XYTriggers: db 0
 

@@ -1,6 +1,6 @@
 BlindingFlash:: ; 8c7e1
 	farcall FadeOutPalettes
-	ld hl, StatusFlags
+	ld hl, wStatusFlags
 	set 2, [hl] ; Flash
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
@@ -53,8 +53,8 @@ ShakeHeadbuttTree: ; 8c80a
 	xor a
 	ld [hBGMapMode], a
 	farcall ClearSpriteAnims
-	ld hl, Sprites + 36 * 4
-	ld bc, SpritesEnd - (Sprites + 36 * 4)
+	ld hl, wSprites + 36 * 4
+	ld bc, wSpritesEnd - (wSprites + 36 * 4)
 	xor a
 	call ByteFill
 	farcall LoadStandardFontPointer
@@ -73,7 +73,7 @@ INCBIN "gfx/ow_fx/headbutt_tree.2bpp"
 HideHeadbuttTree: ; 8c913
 	xor a
 	ld [hBGMapMode], a
-	ld a, [PlayerDirection]
+	ld a, [wPlayerDirection]
 	and %00001100
 	srl a
 	ld e, a
@@ -252,7 +252,7 @@ Cut_GetLeafSpawnCoords: ; 8ca8e (23:4a8e)
 	jr z, .top_side
 	set 1, e
 .top_side
-	ld a, [PlayerDirection]
+	ld a, [wPlayerDirection]
 	and %00001100
 	add e
 	ld e, a
@@ -289,7 +289,7 @@ endr
 ; 8cad3
 
 Cut_Headbutt_GetPixelFacing: ; 8cad3 (23:4ad3)
-	ld a, [PlayerDirection]
+	ld a, [wPlayerDirection]
 	and %00001100
 	srl a
 	ld e, a
@@ -312,10 +312,10 @@ Cut_Headbutt_GetPixelFacing: ; 8cad3 (23:4ad3)
 
 FlyFromAnim: ; 8caed
 	call DelayFrame
-	ld a, [VramState]
+	ld a, [wVramState]
 	push af
 	xor a
-	ld [VramState], a
+	ld [wVramState], a
 	call FlyFunction_InitGFX
 	depixel 10, 10, 4, 0
 	ld a, SPRITE_ANIM_INDEX_RED_WALK
@@ -341,16 +341,16 @@ FlyFromAnim: ; 8caed
 
 .exit
 	pop af
-	ld [VramState], a
+	ld [wVramState], a
 	ret
 ; 8cb33
 
 FlyToAnim: ; 8cb33
 	call DelayFrame
-	ld a, [VramState]
+	ld a, [wVramState]
 	push af
 	xor a
-	ld [VramState], a
+	ld [wVramState], a
 	call FlyFunction_InitGFX
 	depixel 31, 10, 4, 0
 	ld a, SPRITE_ANIM_INDEX_RED_WALK
@@ -379,11 +379,11 @@ FlyToAnim: ; 8cb33
 
 .exit
 	pop af
-	ld [VramState], a
+	ld [wVramState], a
 	jp .RestorePlayerSprite_DespawnLeaves
 
 .RestorePlayerSprite_DespawnLeaves: ; 8cb82 (23:4b82)
-	ld hl, Sprites + 2 ; Tile ID
+	ld hl, wSprites + 2 ; Tile ID
 	xor a
 	ld c, $4
 .loop2
@@ -394,8 +394,8 @@ endr
 	inc a
 	dec c
 	jr nz, .loop2
-	ld hl, Sprites + 4 * 4
-	ld bc, SpritesEnd - (Sprites + 4 * 4)
+	ld hl, wSprites + 4 * 4
+	ld bc, wSpritesEnd - (wSprites + 4 * 4)
 	xor a
 	jp ByteFill
 
@@ -405,8 +405,8 @@ FlyFunction_InitGFX: ; 8cb9b (23:4b9b)
 	ld hl, VTiles1 tile $00
 	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
-	ld a, [CurPartyMon]
-	ld hl, PartySpecies
+	ld a, [wCurPartyMon]
+	ld hl, wPartySpecies
 	ld e, a
 	ld d, 0
 	add hl, de

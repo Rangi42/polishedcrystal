@@ -35,7 +35,7 @@ GetTimeOfDay::
 .match
 	inc hl
 	ld a, [hl]
-	ld [TimeOfDay], a
+	ld [wTimeOfDay], a
 	ret
 
 ; hours for the time of day
@@ -48,8 +48,8 @@ TimesOfDay:
 
 StageRTCTimeForSave:
 	call UpdateTime
-	ld hl, GameSaveTime
-	ld a, [CurDay]
+	ld hl, wGameSaveTime
+	ld a, [wCurDay]
 	ld [hli], a
 	ld a, [hHours]
 	ld [hli], a
@@ -129,9 +129,9 @@ Function140ae:
 	jr z, .dont_update
 
 	call UpdateTime
-	ld a, [GameSaveTime]
+	ld a, [wGameSaveTime]
 	ld b, a
-	ld a, [CurDay]
+	ld a, [wCurDay]
 	cp b
 	jr c, .dont_update
 
@@ -146,8 +146,8 @@ _InitTime::
 	call GetClock
 	call FixDays
 	ld hl, hRTCSeconds
-	ld de, StartSecond
-	ld bc, StringBuffer2 + 3
+	ld de, wStartSecond
+	ld bc, wStringBuffer2 + 3
 ; seconds
 	ld a, [bc]
 	sub [hl]

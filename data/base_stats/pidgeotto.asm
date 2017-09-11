@@ -1,5 +1,3 @@
-	db PIDGEOTTO ; 017
-
 	db  63,  60,  55,  71,  50,  50
 	;   hp  atk  def  spd  sat  sdf
 
@@ -8,8 +6,7 @@
 	db 113 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	db FEMALE_50 ; gender
-	db 15 ; step cycles to hatch
+	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db KEEN_EYE ; ability 1
 	db TANGLED_FEET ; ability 2
@@ -22,5 +19,5 @@
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, PROTECT, RAIN_DANCE, RETURN, ROOST, DOUBLE_TEAM, SWIFT, AERIAL_ACE, FACADE, REST, ATTRACT, THIEF, STEEL_WING, FOCUS_BLAST, ENDURE, U_TURN, FLY, DOUBLE_EDGE, SLEEP_TALK, SUBSTITUTE, SWAGGER
+	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, PROTECT, RAIN_DANCE, RETURN, ROOST, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, STEEL_WING, FOCUS_BLAST, ENDURE, U_TURN, FLY, DOUBLE_EDGE, SLEEP_TALK, SWAGGER
 	; end

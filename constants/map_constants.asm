@@ -221,12 +221,13 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_43_MAHOGANY_GATE,                      4,  5 ;  3
 	mapgroup ROUTE_43_GATE,                               4,  5 ;  4
 	mapgroup ROUTE_43,                                   27, 10 ;  5
-	mapgroup LAKE_OF_RAGE,                               18, 20 ;  6
+	mapgroup LAKE_OF_RAGE_NORTH,                          8, 20 ;  6
+	mapgroup LAKE_OF_RAGE_SOUTH,                         10, 20 ;  7
 
 	newgroup                                                    ; 10
 
 	mapgroup ROUTE_32,                                   45, 10 ;  1
-	mapgroup ROUTE_32_COAST,                             35, 15 ;  2
+	mapgroup ROUTE_32_COAST,                             36, 15 ;  2
 	mapgroup VIOLET_CITY,                                20, 20 ;  3
 	mapgroup VIOLET_MART,                                 4,  6 ;  4
 	mapgroup VIOLET_GYM,                                  8,  5 ;  5
@@ -237,6 +238,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_32_RUINS_OF_ALPH_GATE,                 4,  5 ; 10
 	mapgroup ROUTE_32_POKECENTER_1F,                      4,  6 ; 11
 	mapgroup ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
+	mapgroup MAGNET_TUNNEL_EAST,                         11, 10 ; 13
 
 	newgroup                                                    ; 11
 
@@ -271,6 +273,8 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 29
 	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 30
 	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 31
+	mapgroup MAGNET_TUNNEL_WEST,                         11,  9 ; 32
+	mapgroup MAGNET_TUNNEL_INSIDE,                       10, 20 ; 33
 
 	newgroup                                                    ; 12
 
@@ -355,16 +359,17 @@ MAP_NONE   EQU 0
 	mapgroup FUCHSIA_MART,                                4,  6 ;  8
 	mapgroup FUCHSIA_GYM,                                 9,  5 ;  9
 	mapgroup FUCHSIA_BILL_SPEECH_HOUSE,                   4,  4 ; 10
-	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 11
-	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 12
-	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 13
-	mapgroup ROUTE_12_GATE,                               5,  5 ; 14
-	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 15
-	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 16
-	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 17
-	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 18
-	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 19
-	mapgroup LUCKY_ISLAND,                               17, 23 ; 20
+	mapgroup FUCHSIA_SAFARI_BALL_HOUSE,                   4,  4 ; 11
+	mapgroup FUCHSIA_POKECENTER_1F,                       4,  6 ; 12
+	mapgroup SAFARI_ZONE_WARDENS_HOME,                    4,  5 ; 13
+	mapgroup SAFARI_ZONE_FUCHSIA_GATE,                    4,  5 ; 14
+	mapgroup ROUTE_12_GATE,                               5,  5 ; 15
+	mapgroup ROUTE_12_GATE_2F,                            4,  4 ; 16
+	mapgroup ROUTE_15_FUCHSIA_GATE,                       5,  5 ; 17
+	mapgroup ROUTE_15_FUCHSIA_GATE_2F,                    4,  4 ; 18
+	mapgroup ROUTE_19_FUCHSIA_GATE,                       4,  5 ; 19
+	mapgroup ROUTE_12_SUPER_ROD_HOUSE,                    4,  4 ; 20
+	mapgroup LUCKY_ISLAND,                               17, 23 ; 21
 
 	newgroup                                                    ; 18
 
@@ -413,10 +418,12 @@ MAP_NONE   EQU 0
 	mapgroup POKECENTER_2F,                               4,  8 ;  1
 	mapgroup TRADE_CENTER,                                4,  5 ;  2
 	mapgroup COLOSSEUM,                                   4,  5 ;  3
-	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  4
-	mapgroup YELLOW_FOREST,                              25, 29 ;  5
-	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  6
-	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  7
+	mapgroup HIDDEN_TREE_GROTTO,                          9,  5 ;  4
+	mapgroup HIDDEN_CAVE_GROTTO,                          9,  5 ;  5
+	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  6
+	mapgroup YELLOW_FOREST,                              25, 29 ;  7
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  8
+	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  9
 
 	newgroup                                                    ; 21
 
@@ -468,7 +475,7 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_UNIVERSITY_2F,                       7, 13 ; 46
 	mapgroup CELADON_UNIVERSITY_LIBRARY_1F,               6,  7 ; 47
 	mapgroup CELADON_UNIVERSITY_LIBRARY_2F,               6,  7 ; 48
-	mapgroup CELADON_UNIVERSITY_DEANS_OFFICE,             4,  3 ; 49
+	mapgroup CELADON_UNIVERSITY_PRINCIPALS_OFFICE,        4,  3 ; 49
 	mapgroup CELADON_UNIVERSITY_WESTWOODS_OFFICE,         3,  3 ; 50
 	mapgroup CELADON_UNIVERSITY_WILLOWS_OFFICE,           3,  3 ; 51
 	mapgroup CELADON_UNIVERSITY_LOUNGE,                   6,  4 ; 52
@@ -828,6 +835,7 @@ EMOTE_MEM EQU -1
 	const SIGNPOST_IFNOTSET
 	const SIGNPOST_JUMPTEXT
 	const SIGNPOST_JUMPSTD
+	const SIGNPOST_GROTTOITEM
 ; SIGNPOST_ITEM has to be the last signpost type, since hidden item signposts
 ; use type SIGNPOST_ITEM + (item id) to save space.
 ; Note that this requires SIGNPOST_ITEM + (item id) <= $ff, so currently most
@@ -932,6 +940,34 @@ const_value SET 1
 	const FRUITTREE_SHAMOUTI_ISLAND ; 22
 	const FRUITTREE_ROUTE_49        ; 23
 NUM_FRUIT_TREES EQU const_value +- 1
+
+; hidden grottoes
+; see engine/hidden_grottoes.asm:HiddenGrottoData
+const_value SET 1
+	const HIDDENGROTTO_ROUTE_32           ; 01
+	const HIDDENGROTTO_ROUTE_35           ; 02
+	const HIDDENGROTTO_LAKE_OF_RAGE_SOUTH ; 03
+	const HIDDENGROTTO_04                 ; 04
+	const HIDDENGROTTO_05                 ; 05
+	const HIDDENGROTTO_06                 ; 06
+	const HIDDENGROTTO_07                 ; 07
+	const HIDDENGROTTO_08                 ; 08
+	const HIDDENGROTTO_09                 ; 09
+	const HIDDENGROTTO_0A                 ; 0a
+	const HIDDENGROTTO_0B                 ; 0b
+	const HIDDENGROTTO_0C                 ; 0c
+	const HIDDENGROTTO_0D                 ; 0d
+	const HIDDENGROTTO_0E                 ; 0e
+	const HIDDENGROTTO_0F                 ; 0f
+	const HIDDENGROTTO_10                 ; 10
+	const HIDDENGROTTO_11                 ; 11
+	const HIDDENGROTTO_12                 ; 12
+	const HIDDENGROTTO_13                 ; 13
+	const HIDDENGROTTO_14                 ; 14
+	const HIDDENGROTTO_15                 ; 15
+	const HIDDENGROTTO_16                 ; 16
+	const HIDDENGROTTO_17                 ; 17
+NUM_HIDDEN_GROTTOES EQU const_value +- 1
 
 CMDQUEUE_TYPE  EQU 0
 CMDQUEUE_ADDR  EQU 1

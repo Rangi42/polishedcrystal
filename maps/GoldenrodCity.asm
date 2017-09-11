@@ -10,32 +10,32 @@ GoldenrodCity_MapScriptHeader:
 GoldenrodCity_MapEventHeader:
 
 .Warps: db 21
-	warp_def $7, $1c, 1, GOLDENROD_GYM
-	warp_def $1d, $21, 1, GOLDENROD_BIKE_SHOP
-	warp_def $f, $1d, 1, GOLDENROD_HAPPINESS_RATER
-	warp_def $19, $9, 1, GOLDENROD_BILLS_HOUSE
-	warp_def $d, $d, 2, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_def $5, $21, 1, GOLDENROD_FLOWER_SHOP
-	warp_def $9, $25, 1, GOLDENROD_PP_SPEECH_HOUSE
-	warp_def $7, $13, 1, GOLDENROD_NAME_RATER
-	warp_def $1b, $1c, 1, GOLDENROD_DEPT_STORE_1F
-	warp_def $15, $12, 1, GOLDENROD_GAME_CORNER
-	warp_def $f, $9, 1, RADIO_TOWER_1F ; hole
-	warp_def $1, $17, 3, ROUTE_35_GOLDENROD_GATE
-	warp_def $5, $d, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1d, $d, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $1b, $12, 2, GOLDENROD_POKECOM_CENTER_1F
-	warp_def $10, $4, 3, GOLDENROD_HARBOR_GATE
-	warp_def $11, $4, 4, GOLDENROD_HARBOR_GATE
-	warp_def $f, $23, 1, GOLDENROD_HP_UP_HOUSE
-	warp_def $13, $25, 1, GOLDENROD_NET_BALL_HOUSE
-	warp_def $17, $21, 1, GOLDENROD_BAND_HOUSE
-	warp_def $15, $d, 1, GOLDENROD_SPEECH_HOUSE
+	warp_def 7, 28, 1, GOLDENROD_GYM
+	warp_def 29, 33, 1, GOLDENROD_BIKE_SHOP
+	warp_def 15, 37, 1, GOLDENROD_HAPPINESS_RATER
+	warp_def 25, 9, 1, GOLDENROD_BILLS_HOUSE
+	warp_def 13, 13, 2, GOLDENROD_MAGNET_TRAIN_STATION
+	warp_def 5, 33, 1, GOLDENROD_FLOWER_SHOP
+	warp_def 9, 37, 1, GOLDENROD_PP_SPEECH_HOUSE
+	warp_def 7, 19, 1, GOLDENROD_NAME_RATER
+	warp_def 27, 28, 1, GOLDENROD_DEPT_STORE_1F
+	warp_def 21, 18, 1, GOLDENROD_GAME_CORNER
+	warp_def 15, 9, 1, RADIO_TOWER_1F ; hole
+	warp_def 1, 23, 3, ROUTE_35_GOLDENROD_GATE
+	warp_def 5, 13, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 29, 13, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 27, 18, 2, GOLDENROD_POKECOM_CENTER_1F
+	warp_def 16, 4, 3, GOLDENROD_HARBOR_GATE
+	warp_def 17, 4, 4, GOLDENROD_HARBOR_GATE
+	warp_def 15, 30, 1, GOLDENROD_SPEECH_HOUSE ; TODO: museum
+	warp_def 19, 37, 1, GOLDENROD_NET_BALL_HOUSE
+	warp_def 23, 33, 1, GOLDENROD_BAND_HOUSE
+	warp_def 21, 13, 1, GOLDENROD_HP_UP_HOUSE
 
 .XYTriggers: db 1
-	xy_trigger 1, $f, $9, GoldenrodCityPanUpScript
+	xy_trigger 1, 15, 9, GoldenrodCityPanUpScript
 
-.Signposts: db 12
+.Signposts: db 13
 	signpost 14, 14, SIGNPOST_JUMPTEXT, GoldenrodCityStationSignText
 	signpost 15, 7, SIGNPOST_JUMPTEXT, GoldenrodCityRadioTowerSignText
 	signpost 27, 30, SIGNPOST_JUMPTEXT, GoldenrodDeptStoreSignText
@@ -48,13 +48,14 @@ GoldenrodCity_MapEventHeader:
 	signpost 30, 14, SIGNPOST_JUMPTEXT, GoldenrodCityUndergroundSignSouthText
 	signpost 27, 20, SIGNPOST_UP, GoldenrodCityPokeCenterSign
 	signpost 6, 34, SIGNPOST_JUMPTEXT, GoldenrodCityFlowerShopSignText
+	signpost 15, 27, SIGNPOST_JUMPTEXT, GoldenrodMuseumSignText
 
 .PersonEvents: db 15
 	person_event SPRITE_ROCKET, 16, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a1a, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	person_event SPRITE_POKEFAN_M, 22, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
 	person_event SPRITE_LASS, 8, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodCityGymLassScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_POKEFAN_M, 18, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x198a69, EVENT_GOLDENROD_CITY_CIVILIANS
-	person_event SPRITE_YOUNGSTER, 16, 33, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x198aa9, EVENT_GOLDENROD_CITY_CIVILIANS
+	person_event SPRITE_YOUNGSTER, 17, 38, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x198aa9, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 16, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1989e9, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_COOLTRAINER_F, 25, 25, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x1989fd, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_YOUNGSTER, 17, 25, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x198a11, EVENT_GOLDENROD_CITY_CIVILIANS
@@ -111,14 +112,14 @@ GoldenrodCityStepDownScript:
 	if_not_equal $f, .Done
 	checkcode VAR_XCOORD
 	if_not_equal $9, .Done
-	applymovement PLAYER, GoldenrodCityStepDownMovementData
+	applyonemovement PLAYER, step_down
 .Done
 	dotrigger $1
 	end
 
 GoldenrodCityPanUpScript:
 	playsound SFX_EXIT_BUILDING
-	applymovement PLAYER, GoldenrodCityHidePlayerMovementData
+	applyonemovement PLAYER, hide_person
 	waitsfx
 	applymovement PLAYER, GoldenrodCityPanUpMovementData
 	disappear PLAYER
@@ -127,7 +128,7 @@ GoldenrodCityPanUpScript:
 	special FadeOutPalettes
 	pause 15
 	dotrigger $0
-	warpfacing UP, RADIO_TOWER_1F, $2, $7
+	warpfacing UP, RADIO_TOWER_1F, 2, 7
 	end
 
 MoveTutor:
@@ -209,24 +210,16 @@ MoveTutor:
 	jumpopenedtext UnknownText_0x1991ac
 
 CooltrainerFScript_0x1989e9:
-	faceplayer
-	opentext
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .ClearedRadioTower
-	jumpopenedtext UnknownText_0x198ae6
-
-.ClearedRadioTower:
-	jumpopenedtext UnknownText_0x198b2d
+	iftrue_jumptextfaceplayer UnknownText_0x198b2d
+	jumptextfaceplayer UnknownText_0x198ae6
 
 CooltrainerFScript_0x1989fd:
-	faceplayer
-	opentext
 	checkflag ENGINE_RADIO_CARD
-	iftrue .GotRadioCard
-	jumpopenedtext UnknownText_0x198b73
-
-.GotRadioCard:
-	jumpopenedtext UnknownText_0x198c14
+	iffalse_jumptextfaceplayer UnknownText_0x198b73
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalse_jumptextfaceplayer GoldenrodCityCooltrainerFOlivineText
+	jumptextfaceplayer UnknownText_0x198c14
 
 YoungsterScript_0x198a11:
 	faceplayer
@@ -265,14 +258,6 @@ GoldenrodCityGymLassScript:
 GoldenrodCityPokeCenterSign:
 	jumptext PokeComCenterSignText
 
-GoldenrodCityStepDownMovementData:
-	step_down
-	step_end
-
-GoldenrodCityHidePlayerMovementData:
-	hide_person
-	step_end
-
 GoldenrodCityPanUpMovementData:
 	step_up
 	step_up
@@ -295,9 +280,6 @@ UnknownText_0x198a69:
 
 	para "broadcast in"
 	line "Johto."
-
-	para "That's pretty"
-	line "crazy, right?"
 	done
 
 UnknownText_0x198aa9:
@@ -340,6 +322,15 @@ UnknownText_0x198b73:
 	line "serve as a radio."
 	done
 
+GoldenrodCityCooltrainerFOlivineText:
+	text "I came here on"
+	line "the S.S.Aqua."
+
+	para "It's slower than"
+	line "the Magnet Train,"
+	cont "but more scenic."
+	done
+
 UnknownText_0x198c14:
 	text "I came here on the"
 	line "Magnet Train."
@@ -349,11 +340,11 @@ UnknownText_0x198c14:
 	done
 
 GoldenrodCityYoungsterDayText:
-	text "So this is Johto's"
-	line "biggest city…"
+	text "Have you been to"
+	line "the Museum?"
 
-	para "How do I find my"
-	line "way around?"
+	para "It's full of cool"
+	line "exhibits!"
 	done
 
 UnknownText_0x198c36:
@@ -531,6 +522,10 @@ PokeComCenterSignText:
 GoldenrodCityFlowerShopSignText:
 	text "Blooming Beautiful"
 	line "Flower Shop"
+	done
+
+GoldenrodMuseumSignText:
+	text "Goldenrod Museum"
 	done
 
 UnknownText_0x199042:

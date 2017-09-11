@@ -8,9 +8,9 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 ShamoutiPokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 1, SHAMOUTI_ISLAND
-	warp_def $7, $6, 1, SHAMOUTI_ISLAND
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 1, SHAMOUTI_ISLAND
+	warp_def 7, 6, 1, SHAMOUTI_ISLAND
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 
@@ -25,7 +25,7 @@ const_value set 2
 	const SHAMOUTIPOKECENTER1F_IVY
 
 ShamoutiPokeCenter1FFixStairScript:
-	changeblock $0, $6, $39
+	changeblock 0, 6, $39
 	return
 
 PokemonJournalLoreleiScript:
@@ -197,7 +197,7 @@ ShamoutiPokeCenter1FIvyScript:
 .ReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "!"
 	done
 
@@ -212,7 +212,7 @@ ShamoutiPokeCenter1FIvyScript:
 	para "know you'll take"
 	line "good care of that"
 	cont "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "."
 
 	para "Well, I need to"

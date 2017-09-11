@@ -67,7 +67,7 @@ UnknownText_0x1c41b1::
 UnknownText_0x1c41e6::
 	text "Your friend's"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " appears"
 	cont "to be abnormal!"
 	prompt
@@ -77,7 +77,7 @@ UnknownText_0x1c4212::
 	text_from_ram wd004
 	text ""
 	line "for @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "?"
 	done
 
@@ -135,23 +135,23 @@ _ObjectEventText::
 UnknownText_0x1c4719::
 	text "<PLAYER> received"
 	line "@"
-	text_from_ram StringBuffer4
+	text_from_ram wStringBuffer4
 	text "."
 	done
 
 UnknownText_0x1c472c::
 	text "<PLAYER> put the"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " in"
 	cont "the @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "."
 	prompt
 
 UnknownText_0x1c474b::
 	text "The @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text ""
 	line "is full…"
 	prompt
@@ -159,27 +159,27 @@ UnknownText_0x1c474b::
 UnknownText_0x1c4b92::
 	text "Congratulations!"
 	line "Your @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	db "@@"
 
 UnknownText_0x1c4baf::
 	text ""
 	para "evolved into"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "!"
 	done
 
 UnknownText_0x1c4bc5::
 	text "Huh? @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text ""
 	line "stopped evolving!"
 	prompt
 
 UnknownText_0x1c4be3::
 	text "What? @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text ""
 	line "is evolving!"
 	done
@@ -191,7 +191,7 @@ UnknownText_0x1c4bfd::
 UnknownText_0x1c4c08::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "(s)"
 	line "will be ¥@"
 	deciram hMoneyTemp, 3, 7
@@ -220,7 +220,7 @@ UnknownText_0x1c4ca3::
 UnknownText_0x1c4cae::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "(s)"
 	line "will be ¥@"
 	deciram hMoneyTemp, 3, 7
@@ -259,7 +259,7 @@ UnknownText_0x1c4d47::
 	done
 
 UnknownText_0x1c4db0::
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text " costs"
 	line "¥@"
 	deciram hMoneyTemp, 3, 7
@@ -303,7 +303,7 @@ UnknownText_0x1c4e7e::
 UnknownText_0x1c4e89::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "(s)"
 	line "will cost ¥@"
 	deciram hMoneyTemp, 3, 7
@@ -381,7 +381,7 @@ UnknownText_0x1c502e::
 	deciram hMoneyTemp, 3, 7
 	text " for"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "(s)."
 	done
 
@@ -392,9 +392,9 @@ UnknownText_0x1c5049::
 
 TMMartCostsThisMuchText::
 	text "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text " @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	line "will be ¥@"
 	deciram hMoneyTemp, 3, 7
@@ -413,7 +413,7 @@ BTMartHowMayIHelpYouText::
 BTMartCostsThisMuchText::
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text " @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "(s)"
 	line "will cost @"
 	deciram hMoneyTemp, 3, 3

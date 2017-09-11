@@ -7,8 +7,8 @@ GoldenrodHappinessRater_MapScriptHeader:
 GoldenrodHappinessRater_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, GOLDENROD_CITY
-	warp_def $7, $3, 3, GOLDENROD_CITY
+	warp_def 7, 2, 3, GOLDENROD_CITY
+	warp_def 7, 3, 3, GOLDENROD_CITY
 
 .XYTriggers: db 0
 
@@ -60,7 +60,7 @@ UnknownText_0x549a3:
 
 	para "Oh? Let me see"
 	line "your @"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "…"
 	done
 

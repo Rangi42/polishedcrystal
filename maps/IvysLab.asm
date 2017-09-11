@@ -7,8 +7,8 @@ IvysLab_MapScriptHeader:
 IvysLab_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 1, VALENCIA_ISLAND
-	warp_def $b, $5, 1, VALENCIA_ISLAND
+	warp_def 11, 4, 1, VALENCIA_ISLAND
+	warp_def 11, 5, 1, VALENCIA_ISLAND
 
 .XYTriggers: db 0
 
@@ -79,11 +79,11 @@ ProfIvyScript:
 	writetext .ThanksText
 	buttonsound
 	verbosegiveitem MOON_STONE
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_IVY
 .GotItem:
 	checkevent EVENT_BEAT_PROF_IVY
-	iftrue .Beaten
+	iftrue_jumpopenedtext .AfterText
 	writetext .ChallengeText
 	yesorno
 	iffalse .NoBattle
@@ -96,13 +96,7 @@ ProfIvyScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PROF_IVY
-	opentext
-.Beaten:
-	writetext .AfterText
-	waitbutton
-.Done:
-	closetext
-	end
+	jumptext .AfterText
 
 .Return2:
 	giveitem LIECHI_BERRY
@@ -191,16 +185,10 @@ ProfIvyScript:
 	done
 
 IvysLabHopeScript:
-	faceplayer
-	opentext
 	checkevent EVENT_HEALED_NIDORINO
-	iftrue .HealedNidorino
-	jumpopenedtext .Text1
+	iftrue_jumptextfaceplayer .Text2
+	thistextfaceplayer
 
-.HealedNidorino:
-	jumpopenedtext .Text2
-
-.Text1:
 	text "Hope: Prof.Ivy"
 	line "takes care of the"
 
@@ -219,29 +207,25 @@ IvysLabHopeScript:
 	done
 
 IvysLabNidorinoScript:
-	opentext
 	checkevent EVENT_HEALED_NIDORINO
 	iftrue .Healed
+	opentext
 	writetext .WeakCry
 	writebyte NIDORINO
 	special PlaySlowCry
 	buttonsound
-	jumpopenedtext .WeakText
+	thisopenedtext
 
-.Healed:
-	writetext IvysLabNidorinoText
-	cry NIDORINO
-	waitbutton
-	closetext
-	end
+	text "Its cry is weak…"
+	done
 
 .WeakCry:
 	text "Nidorino: Gyun…"
 	done
 
-.WeakText:
-	text "Its cry is weak…"
-	done
+.Healed:
+	showcrytext IvysLabNidorinoText, NIDORINO
+	end
 
 IvysLabNidorinoText:
 	text "Nidorino: Gyun!"
@@ -252,8 +236,7 @@ IvysLabHealingMachine:
 	writetext .Text
 	yesorno
 	iftrue .HealParty
-	closetext
-	end
+	endtext
 
 .HealParty:
 	special HealParty
@@ -263,8 +246,7 @@ IvysLabHealingMachine:
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic
-	closetext
-	end
+	endtext
 
 .Text:
 	text "Would you like to"

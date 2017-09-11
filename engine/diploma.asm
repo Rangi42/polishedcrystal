@@ -14,7 +14,7 @@ _Diploma: ; 1dd702
 	ld de, .PlayerString
 	hlcoord 2, 5
 	call PlaceString
-	ld de, PlayerName
+	ld de, wPlayerName
 	hlcoord 9, 5
 	call PlaceString
 	ld de, .DiplomaString

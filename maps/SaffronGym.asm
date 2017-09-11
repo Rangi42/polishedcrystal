@@ -6,39 +6,40 @@ SaffronGym_MapScriptHeader:
 
 SaffronGym_MapEventHeader:
 
-.Warps: db 32
-	warp_def $11, $8, 2, SAFFRON_CITY
-	warp_def $11, $9, 2, SAFFRON_CITY
-	warp_def $e, $b, 18, SAFFRON_GYM
-	warp_def $e, $13, 19, SAFFRON_GYM
-	warp_def $a, $13, 20, SAFFRON_GYM
-	warp_def $a, $0, 21, SAFFRON_GYM
-	warp_def $2, $4, 22, SAFFRON_GYM
-	warp_def $4, $b, 23, SAFFRON_GYM
-	warp_def $e, $0, 24, SAFFRON_GYM
-	warp_def $2, $13, 25, SAFFRON_GYM
-	warp_def $10, $f, 26, SAFFRON_GYM
-	warp_def $10, $4, 27, SAFFRON_GYM
-	warp_def $8, $4, 28, SAFFRON_GYM
-	warp_def $2, $8, 29, SAFFRON_GYM
-	warp_def $8, $f, 30, SAFFRON_GYM
-	warp_def $4, $f, 31, SAFFRON_GYM
-	warp_def $4, $0, 32, SAFFRON_GYM
-	warp_def $10, $13, 3, SAFFRON_GYM
-	warp_def $8, $13, 4, SAFFRON_GYM
-	warp_def $8, $0, 5, SAFFRON_GYM
-	warp_def $4, $4, 6, SAFFRON_GYM
-	warp_def $2, $b, 7, SAFFRON_GYM
-	warp_def $10, $0, 8, SAFFRON_GYM
-	warp_def $4, $13, 9, SAFFRON_GYM
-	warp_def $e, $f, 10, SAFFRON_GYM
-	warp_def $e, $4, 11, SAFFRON_GYM
-	warp_def $a, $4, 12, SAFFRON_GYM
-	warp_def $4, $8, 13, SAFFRON_GYM
-	warp_def $a, $f, 14, SAFFRON_GYM
-	warp_def $2, $f, 15, SAFFRON_GYM
-	warp_def $2, $0, 16, SAFFRON_GYM
-	warp_def $a, $b, 17, SAFFRON_GYM
+.Warps: db 33
+	warp_def 17, 8, 2, SAFFRON_CITY
+	warp_def 17, 9, 2, SAFFRON_CITY
+	warp_def 14, 11, 18, SAFFRON_GYM
+	warp_def 14, 19, 19, SAFFRON_GYM
+	warp_def 10, 19, 20, SAFFRON_GYM
+	warp_def 10, 0, 21, SAFFRON_GYM
+	warp_def 2, 4, 22, SAFFRON_GYM
+	warp_def 4, 11, 23, SAFFRON_GYM
+	warp_def 14, 0, 24, SAFFRON_GYM
+	warp_def 2, 19, 25, SAFFRON_GYM
+	warp_def 16, 15, 26, SAFFRON_GYM
+	warp_def 16, 4, 27, SAFFRON_GYM
+	warp_def 8, 4, 28, SAFFRON_GYM
+	warp_def 2, 8, 29, SAFFRON_GYM
+	warp_def 8, 15, 30, SAFFRON_GYM
+	warp_def 4, 15, 31, SAFFRON_GYM
+	warp_def 4, 0, 32, SAFFRON_GYM
+	warp_def 16, 19, 3, SAFFRON_GYM
+	warp_def 8, 19, 4, SAFFRON_GYM
+	warp_def 8, 0, 5, SAFFRON_GYM
+	warp_def 4, 4, 6, SAFFRON_GYM
+	warp_def 2, 11, 7, SAFFRON_GYM
+	warp_def 16, 0, 8, SAFFRON_GYM
+	warp_def 4, 19, 9, SAFFRON_GYM
+	warp_def 14, 15, 10, SAFFRON_GYM
+	warp_def 14, 4, 11, SAFFRON_GYM
+	warp_def 10, 4, 12, SAFFRON_GYM
+	warp_def 4, 8, 13, SAFFRON_GYM
+	warp_def 10, 15, 14, SAFFRON_GYM
+	warp_def 2, 15, 15, SAFFRON_GYM
+	warp_def 2, 0, 16, SAFFRON_GYM
+	warp_def 10, 11, 17, SAFFRON_GYM
+	warp_def 10, 8, 3, SAFFRON_GYM
 
 .XYTriggers: db 0
 
@@ -158,14 +159,9 @@ MediumRebeccaScript:
 	jumptextfaceplayer UnknownText_0x18a034
 
 SaffronGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_SABRINA
-	iftrue .SaffronGymGuyWinScript
-	jumpopenedtext SaffronGymGuyText
-
-.SaffronGymGuyWinScript:
-	jumpopenedtext SaffronGymGuyWinText
+	iftrue_jumptextfaceplayer SaffronGymGuyWinText
+	jumptextfaceplayer SaffronGymGuyText
 
 SaffronGymStatue:
 	trainertotext SABRINA, 1, $1

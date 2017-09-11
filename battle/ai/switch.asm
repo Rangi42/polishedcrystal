@@ -9,13 +9,13 @@ GetSwitchScores:
 	ld [wEnemyAISwitchScore], a
 
 	; Store active mon's info so we can overwrite it to check stuff
-	ld a, [EnemyAbility]
-	ld [AITempAbility], a
-	ld a, [EnemyMonItem]
-	ld [AITempItem], a
+	ld a, [wEnemyAbility]
+	ld [wAITempAbility], a
+	ld a, [wEnemyMonItem]
+	ld [wAITempItem], a
 
-	ld hl, OTPartyMon1
-	ld a, [OTPartyCount]
+	ld hl, wOTPartyMon1
+	ld a, [wOTPartyCount]
 	ld b, a
 	ld c, 0
 	ld e, 0
@@ -38,29 +38,29 @@ GetSwitchScores:
 	push hl
 	add hl, bc
 	ld a, [hl]
-	ld [EnemyMonItem], a
+	ld [wEnemyMonItem], a
 
 	; Get ability and types (via GetBaseData)
-	ld bc, PartyMon1 - PartyMon1Item
+	ld bc, wPartyMon1 - wPartyMon1Item
 	add hl, bc
 	ld a, [hl]
 
 	; This makes GetAbility "restore" to the current species when done
-	ld [CurSpecies], a
-	ld bc, PartyMon1Ability - PartyMon1
+	ld [wCurSpecies], a
+	ld bc, wPartyMon1Ability - wPartyMon1
 	add hl, bc
 	ld c, a
 	ld b, [hl]
 	farcall GetAbility
 	ld a, b
-	ld [EnemyAbility], a
+	ld [wEnemyAbility], a
 
 	; Give a type matchup score
 	ld bc, MON_MOVES
 	pop hl
 	push hl
 	add hl, bc
-	ld bc, BaseType
+	ld bc, wBaseType
 	call AICheckMatchupForEnemyMon
 
 .next
@@ -72,7 +72,7 @@ GetSwitchScores:
 	ld d, a ; score
 
 	; Is this the mon that's currently out?
-	ld a, [CurOTMon]
+	ld a, [wCurOTMon]
 	cp c
 	jr nz, .not_active_mon
 	ld e, d
@@ -94,32 +94,32 @@ GetSwitchScores:
 	jr z, .reset_vars_and_return
 	inc c
 	push bc
-	ld bc, PartyMon2 - PartyMon1
+	ld bc, wPartyMon2 - wPartyMon1
 	add hl, bc
 	pop bc
 	jr .loop
 .reset_vars_and_return
 	; Reset item and ability
-	ld a, [AITempAbility]
-	ld [EnemyAbility], a
-	ld a, [AITempItem]
-	ld [EnemyMonItem], a
+	ld a, [wAITempAbility]
+	ld [wEnemyAbility], a
+	ld a, [wAITempItem]
+	ld [wEnemyMonItem], a
 	ret
 
 
 CheckPlayerMoveTypeMatchups:
-	ld hl, EnemyMonMoves
-	ld bc, EnemyMonType
+	ld hl, wEnemyMonMoves
+	ld bc, wEnemyMonType
 	; fallthrough
 AICheckMatchupForEnemyMon:
 ; Check type matchups. Returns a number between 7-13 to a, lower is worse for the enemy.
 ; Scoring is +1 for SE, -1 for NVE, -2 for ineffective for enemy vs player, and vice versa.
 ; Lack of offensive moves count as neutral.
-; Input is hl (enemy mon moves), bc (enemy mon types). Assumes EnemyAbility is set
+; Input is hl (enemy mon moves), bc (enemy mon types). Assumes wEnemyAbility is set
 	; Save old move data/turn
-	ld a, [CurPlayerMove]
+	ld a, [wCurPlayerMove]
 	ld d, a
-	ld a, [CurEnemyMove]
+	ld a, [wCurEnemyMove]
 	ld e, a
 	ld a, [hBattleTurn]
 	push af
@@ -129,7 +129,7 @@ AICheckMatchupForEnemyMon:
 	call SetPlayerTurn
 	push hl ; Enemy mon moves
 	push bc ; Enemy mon type, popped to hl for CheckTypeMatchup
-	ld hl, PlayerUsedMoves
+	ld hl, wPlayerUsedMoves
 	call .check_matchups
 	ld a, d
 	and a
@@ -143,20 +143,20 @@ AICheckMatchupForEnemyMon:
 	; modifying its type
 	res 2, e
 	ld a, STRENGTH ; Arbitrary
-	ld [CurPlayerMove], a
+	ld [wCurPlayerMove], a
 	push de
 	call UpdateMoveData
 	pop de
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
-	ld a, [BattleMonType1]
+	ld a, [wBattleMonType1]
 	ld [hl], a
 	pop hl
 	push hl
 	call .set_matchup
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
-	ld a, [BattleMonType2]
+	ld a, [wBattleMonType2]
 	ld [hl], a
 	pop hl
 	call .set_matchup
@@ -169,7 +169,7 @@ AICheckMatchupForEnemyMon:
 	push af
 
 	; Now do enemy moves vs player
-	ld bc, BattleMonType
+	ld bc, wBattleMonType
 	call SetEnemyTurn
 	call .check_matchups
 	call .score_result
@@ -181,9 +181,9 @@ AICheckMatchupForEnemyMon:
 	; Reset move data
 	pop de
 	ld a, d
-	ld [CurPlayerMove], a
+	ld [wCurPlayerMove], a
 	ld a, e
-	ld [CurEnemyMove], a
+	ld [wCurEnemyMove], a
 	push bc
 	call SetPlayerTurn
 	call UpdateMoveData
@@ -271,7 +271,7 @@ AIWantsSwitchCheck:
 	and a
 	ret z ; We can't switch
 
-	ld a, [EnemyPerishCount]
+	ld a, [wEnemyPerishCount]
 	cp 1
 	ld a, [wEnemyAISwitchScore]
 	jr nz, .no_perish

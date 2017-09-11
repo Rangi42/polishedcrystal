@@ -7,7 +7,7 @@ Route22_MapScriptHeader:
 Route22_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $3, 1, POKEMON_LEAGUE_GATE
+	warp_def 5, 3, 1, POKEMON_LEAGUE_GATE
 
 .XYTriggers: db 0
 

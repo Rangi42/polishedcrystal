@@ -7,7 +7,7 @@ Route49_MapScriptHeader:
 Route49_MapEventHeader:
 
 .Warps: db 1
-	warp_def $5, $7, 1, VALENCIA_PORT
+	warp_def 5, 7, 1, VALENCIA_PORT
 
 .XYTriggers: db 0
 

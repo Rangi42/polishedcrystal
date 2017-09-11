@@ -7,8 +7,8 @@ KrissNeighborsHouse_MapScriptHeader:
 KrissNeighborsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, NEW_BARK_TOWN
-	warp_def $7, $3, 3, NEW_BARK_TOWN
+	warp_def 7, 2, 3, NEW_BARK_TOWN
+	warp_def 7, 3, 3, NEW_BARK_TOWN
 
 .XYTriggers: db 0
 
@@ -45,8 +45,7 @@ KrissNeighborsHouseRadio:
 	opentext
 	writetext KrisNeighborRadioText4
 	pause 45
-	closetext
-	end
+	endtext
 
 KrissNeighborsDaughterText:
 	text "Pikachu is an"

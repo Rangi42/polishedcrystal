@@ -8,9 +8,9 @@ UndergroundWarehouse_MapScriptHeader:
 UndergroundWarehouse_MapEventHeader:
 
 .Warps: db 3
-	warp_def $c, $2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $c, $3, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def $2, $11, 1, GOLDENROD_DEPT_STORE_B1F
+	warp_def 12, 2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 12, 3, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_def 2, 17, 1, GOLDENROD_DEPT_STORE_B1F
 
 .XYTriggers: db 0
 
@@ -42,7 +42,7 @@ UndergroundWarehouseResetSwitches:
 	clearevent EVENT_SWITCH_13
 	clearevent EVENT_SWITCH_14
 	writebyte $0
-	copyvartobyte UndergroundSwitchPositions
+	copyvartobyte wUndergroundSwitchPositions
 	return
 
 TrainerGruntM24:
@@ -67,10 +67,10 @@ GruntM15Script:
 	jumptextfaceplayer UnknownText_0x7db8e
 
 GentlemanScript_0x7d9bf:
+	checkevent EVENT_RECEIVED_CARD_KEY
+	iftrue_jumptextfaceplayer UnknownText_0x7dc8d
 	faceplayer
 	opentext
-	checkevent EVENT_RECEIVED_CARD_KEY
-	iftrue UnknownScript_0x7d9de
 	writetext UnknownText_0x7dbc6
 	buttonsound
 	verbosegiveitem CARD_KEY
@@ -80,7 +80,6 @@ GentlemanScript_0x7d9bf:
 	clearevent EVENT_WAREHOUSE_LAYOUT_3
 	writetext UnknownText_0x7dc5b
 	buttonsound
-UnknownScript_0x7d9de:
 	jumpopenedtext UnknownText_0x7dc8d
 
 GruntM24SeenText:

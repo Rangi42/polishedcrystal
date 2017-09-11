@@ -414,7 +414,7 @@ GetBallAnimPal: ; cd249 (33:5249)
 	push af
 	ld a, $1
 	ld [rSVBK], a
-	ld a, [CurItem] ; CurItem
+	ld a, [wCurItem] ; CurItem
 	ld e, a
 	pop af
 	ld [rSVBK], a

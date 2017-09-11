@@ -7,8 +7,8 @@ VermilionPollutionSpeechHouse_MapScriptHeader:
 VermilionPollutionSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 13, VERMILION_CITY
-	warp_def $7, $3, 13, VERMILION_CITY
+	warp_def 7, 2, 13, VERMILION_CITY
+	warp_def 7, 3, 13, VERMILION_CITY
 
 .XYTriggers: db 0
 

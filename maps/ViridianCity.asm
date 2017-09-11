@@ -8,14 +8,14 @@ ViridianCity_MapScriptHeader:
 ViridianCity_MapEventHeader:
 
 .Warps: db 8
-	warp_def $7, $20, 1, VIRIDIAN_GYM
-	warp_def $5, $15, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE
-	warp_def $f, $17, 1, TRAINER_HOUSE_1F
-	warp_def $13, $1d, 2, VIRIDIAN_MART
-	warp_def $19, $17, 1, VIRIDIAN_POKECENTER_1F
-	warp_def $21, $1c, 1, ROUTE_1_VIRIDIAN_GATE
-	warp_def $21, $1d, 2, ROUTE_1_VIRIDIAN_GATE
-	warp_def $9, $15, 1, VIRIDIAN_SCHOOL_HOUSE
+	warp_def 7, 32, 1, VIRIDIAN_GYM
+	warp_def 5, 21, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE
+	warp_def 15, 23, 1, TRAINER_HOUSE_1F
+	warp_def 19, 29, 2, VIRIDIAN_MART
+	warp_def 25, 23, 1, VIRIDIAN_POKECENTER_1F
+	warp_def 33, 28, 1, ROUTE_1_VIRIDIAN_GATE
+	warp_def 33, 29, 2, ROUTE_1_VIRIDIAN_GATE
+	warp_def 9, 21, 1, VIRIDIAN_SCHOOL_HOUSE
 
 .XYTriggers: db 0
 
@@ -44,21 +44,13 @@ GrampsScript_0x1a9a4c:
 	opentext
 	writetext UnknownText_0x1a9aa5
 	yesorno
-	iffalse UnknownScript_0x1a9a5b
+	iffalse_jumpopenedtext UnknownText_0x1a9bb7
 	jumpopenedtext UnknownText_0x1a9b6f
 
-UnknownScript_0x1a9a5b:
-	jumpopenedtext UnknownText_0x1a9bb7
-
 GrampsScript_0x1a9a61:
-	faceplayer
-	opentext
 	checkevent EVENT_BLUE_IN_CINNABAR
-	iftrue .BlueReturned
-	jumpopenedtext UnknownText_0x1a9c11
-
-.BlueReturned:
-	jumpopenedtext UnknownText_0x1a9c7e
+	iftrue_jumptextfaceplayer UnknownText_0x1a9c7e
+	jumptextfaceplayer UnknownText_0x1a9c11
 
 FisherScript_0x1a9a75:
 	faceplayer

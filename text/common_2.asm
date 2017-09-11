@@ -17,7 +17,7 @@ UnknownText_0x1c00a0::
 
 UnknownText_0x1c00cd::
 	text "Hm… @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "…"
 	line "That's a fairly"
 	cont "decent name."
@@ -50,13 +50,13 @@ UnknownText_0x1c019e::
 
 UnknownText_0x1c01be::
 	text "Hm… @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "?"
 	line "What a great name!"
 	cont "It's perfect."
 
 	para "Treat @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text ""
 	line "with loving care."
 	done
@@ -80,26 +80,26 @@ UnknownText_0x1c0272::
 	text "All right. This"
 	line "#mon is now"
 	cont "named @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "."
 	prompt
 
 Text_Gained::
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " gained@@"
 
 Text_ABoostedStringBuffer2ExpPoints::
 	text ""
 	line "a boosted"
 	cont "@"
-	deciram StringBuffer2, 2, 4
+	deciram wStringBuffer2, 2, 4
 	text " Exp. Points!"
 	prompt
 
 Text_StringBuffer2ExpPoints::
 	text ""
 	line "@"
-	deciram StringBuffer2, 2, 4
+	deciram wStringBuffer2, 2, 4
 	text " Exp. Points!"
 	prompt
 
@@ -118,12 +118,12 @@ Text_YourFoesWeakGetmPkmn::
 	line "Get'm, @@"
 
 Text_BattleMonNick01::
-	text_from_ram BattleMonNick
+	text_from_ram wBattleMonNick
 	text "!"
 	done
 
 Text_BattleMonNickComma::
-	text_from_ram BattleMonNick
+	text_from_ram wBattleMonNick
 	text ",@@"
 
 Text_ThatsEnoughComeBack::
@@ -154,26 +154,26 @@ UnknownText_0x1c0384::
 UnknownText_0x1c0396::
 	text "It contained"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "."
 
 	para "Teach @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text ""
 	line "to a #mon?"
 	done
 
 UnknownText_0x1c03c2::
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text " is"
 	line "not compatible"
 	cont "with @"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "."
 
 	para "It can't learn"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -188,7 +188,7 @@ UnknownText_0x1c05c8::
 	prompt
 
 UnknownText_0x1c05dd::
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text " used"
 	line "Cut!"
 	prompt

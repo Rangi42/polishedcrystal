@@ -14,9 +14,9 @@ _SacredAsh: ; 507e6
 
 CheckAnyFaintedMon: ; 507fb
 	ld de, PARTYMON_STRUCT_LENGTH
-	ld bc, PartySpecies
-	ld hl, PartyMon1HP
-	ld a, [PartyCount]
+	ld bc, wPartySpecies
+	ld hl, wPartyMon1HP
+	ld a, [wPartyCount]
 	and a
 	ret z
 
@@ -52,19 +52,15 @@ SacredAshScript: ; 0x50821
 	special HealParty
 	reloadmappart
 	playsound SFX_WARP_TO
+rept 3
 	special FadeOutPalettes
 	special FadeInPalettes
-	special FadeOutPalettes
-	special FadeInPalettes
-	special FadeOutPalettes
-	special FadeInPalettes
+endr
 	waitsfx
 	writetext UnknownText_0x50845
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0x50845
 
 UnknownText_0x50845: ; 0x50845

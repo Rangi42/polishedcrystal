@@ -4,12 +4,12 @@
 ; at 6x speed while the game time remains real-time)
 ResetGameTime:: ; 208a
 	xor a
-	ld [GameTimeCap], a
-	ld [GameTimeHours], a
-	ld [GameTimeHours + 1], a
-	ld [GameTimeMinutes], a
-	ld [GameTimeSeconds], a
-	ld [GameTimeFrames], a
+	ld [wGameTimeCap], a
+	ld [wGameTimeHours], a
+	ld [wGameTimeHours + 1], a
+	ld [wGameTimeMinutes], a
+	ld [wGameTimeSeconds], a
+	ld [wGameTimeFrames], a
 	ret
 ; 209e
 
@@ -41,18 +41,18 @@ UpdateGameTimer:: ; 20ad
 	ret nz
 
 ; Is the timer paused?
-	ld hl, GameTimerPause
+	ld hl, wGameTimerPause
 	bit 0, [hl]
 	ret z
 
 ; Is the timer already capped?
-	ld hl, GameTimeCap
+	ld hl, wGameTimeCap
 	bit 0, [hl]
 	ret nz
 
 
 ; +1 frame
-	ld hl, GameTimeFrames
+	ld hl, wGameTimeFrames
 	ld a, [hl]
 	inc a
 
@@ -77,7 +77,7 @@ endr
 endc
 
 ; +1 second
-	ld hl, GameTimeSeconds
+	ld hl, wGameTimeSeconds
 	ld a, [hl]
 	inc a
 
@@ -92,7 +92,7 @@ endc
 	ld [hl], a
 
 ; +1 minute
-	ld hl, GameTimeMinutes
+	ld hl, wGameTimeMinutes
 	ld a, [hl]
 	inc a
 
@@ -107,9 +107,9 @@ endc
 	ld [hl], a
 
 ; +1 hour
-	ld a, [GameTimeHours]
+	ld a, [wGameTimeHours]
 	ld h, a
-	ld a, [GameTimeHours + 1]
+	ld a, [wGameTimeHours + 1]
 	ld l, a
 	inc hl
 
@@ -122,19 +122,19 @@ endc
 	cp 1000 % $100
 	jr c, .ok
 
-	ld hl, GameTimeCap
+	ld hl, wGameTimeCap
 	set 0, [hl]
 
 	ld a, 59 ; 999:59:59.00
-	ld [GameTimeMinutes], a
-	ld [GameTimeSeconds], a
+	ld [wGameTimeMinutes], a
+	ld [wGameTimeSeconds], a
 	ret
 
 .ok
 	ld a, h
-	ld [GameTimeHours], a
+	ld [wGameTimeHours], a
 	ld a, l
-	ld [GameTimeHours + 1], a
+	ld [wGameTimeHours + 1], a
 	ret
 ; 210f
 

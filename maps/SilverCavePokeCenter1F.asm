@@ -7,9 +7,9 @@ SilverCavePokeCenter1F_MapScriptHeader:
 SilverCavePokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 1, SILVER_CAVE_OUTSIDE
-	warp_def $7, $6, 1, SILVER_CAVE_OUTSIDE
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 1, SILVER_CAVE_OUTSIDE
+	warp_def 7, 6, 1, SILVER_CAVE_OUTSIDE
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 
@@ -50,7 +50,7 @@ SilverCavePokeCenterGrampsScript:
 	thisopenedtext
 
 	text "Oh, you've read @"
-	deciram ScriptVar, 1, 2
+	deciram wScriptVar, 1, 2
 	text ""
 	line "of them?"
 
@@ -77,7 +77,7 @@ SilverCavePokeCenterGrampsScript:
 	writetext .ReadAllText
 	buttonsound
 	verbosegiveitem EXPERT_BELT
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_EXPERT_BELT
 	thisopenedtext
 
@@ -89,10 +89,6 @@ SilverCavePokeCenterGrampsScript:
 	line "#mon if they"
 	cont "hold it."
 	done
-
-.Done:
-	closetext
-	end
 
 .GreetingText:
 	text "In my youth I was"

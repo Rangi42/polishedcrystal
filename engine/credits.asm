@@ -184,7 +184,7 @@ Credits:: ; 109847
 	xor a
 	ld [wCreditsLYOverride], a
 
-	ld hl, LYOverrides
+	ld hl, wLYOverrides
 	ld bc, $100
 	xor a
 	call ByteFill
@@ -202,9 +202,9 @@ Credits:: ; 109847
 	ld [hInMenu], a
 	xor a
 	ld [hBGMapMode], a
-	ld [CreditsPos], a
+	ld [wCreditsPos], a
 	ld [wcd21], a
-	ld [CreditsTimer], a
+	ld [wCreditsTimer], a
 
 .execution_loop
 	call Credits_HandleBButton
@@ -243,7 +243,7 @@ Credits_HandleBButton: ; 109908
 	ld a, [wJumptableIndex]
 	bit 6, a
 	ret z
-	ld hl, CreditsPos
+	ld hl, wCreditsPos
 	ld a, [hli]
 	cp $d
 	jr nc, .okay
@@ -251,7 +251,7 @@ Credits_HandleBButton: ; 109908
 	and a
 	ret z
 .okay
-	ld hl, CreditsTimer
+	ld hl, wCreditsTimer
 	ld a, [hl]
 	and a
 	ret z
@@ -337,9 +337,9 @@ rept 2
 	dec a
 endr
 	ld [wCreditsLYOverride], a
-	ld hl, LYOverrides + $1f
+	ld hl, wLYOverrides + $1f
 	call .Fill
-	ld hl, LYOverrides + $87
+	ld hl, wLYOverrides + $87
 	call .Fill
 	jp Credits_Next
 
@@ -359,7 +359,7 @@ ParseCredits: ; 1099aa
 	jp nz, .done
 
 ; Wait until the timer has run out to parse the next command.
-	ld hl, CreditsTimer
+	ld hl, wCreditsTimer
 	ld a, [hl]
 	and a
 	jr z, .parse
@@ -486,13 +486,13 @@ endr
 .wait2
 ; Wait for some amount of ticks.
 	call .get
-	ld [CreditsTimer], a
+	ld [wCreditsTimer], a
 	jr .done
 
 .wait
 ; Wait for some amount of ticks, and do something else.
 	call .get
-	ld [CreditsTimer], a
+	ld [wCreditsTimer], a
 
 	xor a
 	ld [hBGMapHalf], a
@@ -507,29 +507,29 @@ endr
 	ld hl, wJumptableIndex
 	set 7, [hl]
 	ld a, 32
-	ld [MusicFade], a
+	ld [wMusicFade], a
 	ld a, MUSIC_POST_CREDITS % $100
-	ld [MusicFadeID], a
+	ld [wMusicFadeID], a
 	ld a, MUSIC_POST_CREDITS / $100
-	ld [MusicFadeIDHi], a
+	ld [wMusicFadeIDHi], a
 	ret
 
 .get
-; Get byte CreditsPos from CreditsScript
+; Get byte wCreditsPos from CreditsScript
 	push hl
 	push de
-	ld a, [CreditsPos]
+	ld a, [wCreditsPos]
 	ld e, a
-	ld a, [CreditsPos+1]
+	ld a, [wCreditsPos+1]
 	ld d, a
 	ld hl, CreditsScript
 	add hl, de
 
 	inc de
 	ld a, e
-	ld [CreditsPos], a
+	ld [wCreditsPos], a
 	ld a, d
-	ld [CreditsPos+1], a
+	ld [wCreditsPos+1], a
 	ld a, [hl]
 	pop de
 	pop hl
@@ -561,22 +561,22 @@ ConstructCreditsTilemap: ; 109a95 (42:5a95)
 	ld a, $20
 	call DrawCreditsBorder
 
-	hlcoord 0, 0, AttrMap
+	hlcoord 0, 0, wAttrMap
 	ld bc, 4 * SCREEN_WIDTH
 	xor a
 	call ByteFill
 
-	hlcoord 0, 4, AttrMap
+	hlcoord 0, 4, wAttrMap
 	ld bc, SCREEN_WIDTH
 	ld a, $1
 	call ByteFill
 
-	hlcoord 0, 5, AttrMap
+	hlcoord 0, 5, wAttrMap
 	ld bc, 12 * SCREEN_WIDTH
 	ld a, $2
 	call ByteFill
 
-	hlcoord 0, 17, AttrMap
+	hlcoord 0, 17, wAttrMap
 	ld bc, SCREEN_WIDTH
 	ld a, $1
 	call ByteFill
@@ -657,20 +657,20 @@ endr
 
 	push af
 	push hl
-	add UnknBGPals % $100
+	add wUnknBGPals % $100
 	ld e, a
 	ld a, 0 ; not xor a; preserve carry flag?
-	adc UnknBGPals / $100
+	adc wUnknBGPals / $100
 	ld d, a
 	ld bc, 24
 	call CopyBytes
 
 	pop hl
 	pop af
-	add BGPals % $100
+	add wBGPals % $100
 	ld e, a
 	ld a, 0 ; not xor a; preserve carry flag?
-	adc BGPals / $100
+	adc wBGPals / $100
 	ld d, a
 	ld bc, 24
 	jp CopyBytes

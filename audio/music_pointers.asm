@@ -171,6 +171,7 @@
 	dba Music_Credits
 	dba Music_PostCredits
 	dba Music_TitleScreenXY
+	dba Music_MarineTubeB2W2
 	dba Music_LegendaryBattleXY
 	dba Music_WildBattlePrism
 	dba Music_TrainerBattlePrism

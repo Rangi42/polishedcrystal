@@ -7,11 +7,11 @@ FastShipCabins_SW_SSW_NW_MapScriptHeader:
 FastShipCabins_SW_SSW_NW_MapEventHeader:
 
 .Warps: db 5
-	warp_def $0, $2, 5, FAST_SHIP_1F
-	warp_def $13, $2, 6, FAST_SHIP_1F
-	warp_def $13, $3, 6, FAST_SHIP_1F
-	warp_def $1f, $2, 7, FAST_SHIP_1F
-	warp_def $1f, $3, 7, FAST_SHIP_1F
+	warp_def 0, 2, 5, FAST_SHIP_1F
+	warp_def 19, 2, 6, FAST_SHIP_1F
+	warp_def 19, 3, 6, FAST_SHIP_1F
+	warp_def 31, 2, 7, FAST_SHIP_1F
+	warp_def 31, 3, 7, FAST_SHIP_1F
 
 .XYTriggers: db 0
 

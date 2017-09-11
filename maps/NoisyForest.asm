@@ -7,10 +7,10 @@ NoisyForest_MapScriptHeader:
 NoisyForest_MapEventHeader:
 
 .Warps: db 4
-	warp_def $4, $6, 2, ROCKY_BEACH
-	warp_def $5, $6, 3, ROCKY_BEACH
-	warp_def $1c, $23, 1, SHAMOUTI_SHRINE_RUINS
-	warp_def $1d, $23, 2, SHAMOUTI_SHRINE_RUINS
+	warp_def 4, 6, 2, ROCKY_BEACH
+	warp_def 5, 6, 3, ROCKY_BEACH
+	warp_def 28, 35, 1, SHAMOUTI_SHRINE_RUINS
+	warp_def 29, 35, 2, SHAMOUTI_SHRINE_RUINS
 
 .XYTriggers: db 0
 
@@ -34,7 +34,7 @@ NoisyForest_MapEventHeader:
 	person_event SPRITE_CHILD, 15, 40, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestChildText, -1
 	itemball_event 2, 41, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
 	itemball_event 28, 16, MULCH, 1, EVENT_NOISY_FOREST_MULCH
-	tmhmball_event 23, 17, TM_U_TURN, EVENT_NOISY_FOREST_TM_U_TURN
+	tmhmball_event 23, 17, TM_DRAIN_PUNCH, EVENT_NOISY_FOREST_TM_DRAIN_PUNCH
 	cuttree_event 12, 40, EVENT_NOISY_FOREST_CUT_TREE_1
 	cuttree_event 21, 12, EVENT_NOISY_FOREST_CUT_TREE_2
 
@@ -50,7 +50,7 @@ NoisyForestAnabelScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -65,7 +65,7 @@ NoisyForestAnabelScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_BAND
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -76,13 +76,6 @@ NoisyForestAnabelScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_ANABEL
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "Greetings… My name"
@@ -297,11 +290,7 @@ NoisyForestChildText:
 	done
 
 NoisyForestPikabluScript:
-	opentext
-	writetext .PikabluText
-	cry MARILL
-	waitbutton
-	closetext
+	showcrytext .PikabluText, MARILL
 	disappear NOISYFOREST_YOUNGSTER
 	moveperson NOISYFOREST_YOUNGSTER, 19, 36
 	appear NOISYFOREST_YOUNGSTER

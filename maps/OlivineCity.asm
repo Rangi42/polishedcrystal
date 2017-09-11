@@ -8,20 +8,20 @@ OlivineCity_MapScriptHeader:
 OlivineCity_MapEventHeader:
 
 .Warps: db 10
-	warp_def $11, $d, 1, OLIVINE_POKECENTER_1F
-	warp_def $7, $a, 1, OLIVINE_GYM
-	warp_def $7, $19, 1, OLIVINE_TIMS_HOUSE
-	warp_def $7, $1d, 1, OLIVINE_PUNISHMENT_SPEECH_HOUSE
-	warp_def $b, $d, 1, OLIVINE_GOOD_ROD_HOUSE
-	warp_def $11, $7, 1, OLIVINE_CAFE
-	warp_def $d, $13, 2, OLIVINE_MART
-	warp_def $13, $21, 1, OLIVINE_LIGHTHOUSE_1F
-	warp_def $1f, $13, 1, OLIVINE_PORT_PASSAGE
-	warp_def $1f, $14, 2, OLIVINE_PORT_PASSAGE
+	warp_def 17, 13, 1, OLIVINE_POKECENTER_1F
+	warp_def 7, 10, 1, OLIVINE_GYM
+	warp_def 7, 25, 1, OLIVINE_TIMS_HOUSE
+	warp_def 7, 29, 1, OLIVINE_PUNISHMENT_SPEECH_HOUSE
+	warp_def 11, 13, 1, OLIVINE_GOOD_ROD_HOUSE
+	warp_def 17, 7, 1, OLIVINE_CAFE
+	warp_def 13, 19, 2, OLIVINE_MART
+	warp_def 19, 33, 1, OLIVINE_LIGHTHOUSE_1F
+	warp_def 31, 19, 1, OLIVINE_PORT_PASSAGE
+	warp_def 31, 20, 2, OLIVINE_PORT_PASSAGE
 
 .XYTriggers: db 2
-	xy_trigger 0, $8, $a, OlivineCityRivalGymScript
-	xy_trigger 0, $17, $21, OlivineCityRivalLighthouseScript
+	xy_trigger 0, 8, 10, OlivineCityRivalGymScript
+	xy_trigger 0, 23, 33, OlivineCityRivalLighthouseScript
 
 .Signposts: db 8
 	signpost 7, 17, SIGNPOST_JUMPTEXT, OlivineCitySignText
@@ -68,7 +68,7 @@ OlivineCityRivalGymScript:
 	waitsfx
 	playsound SFX_TACKLE
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown
-	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalExitsGym
+	applyonemovement OLIVINECITY_OLIVINE_RIVAL, step_down
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext OlivineCityRivalGymText
 	spriteface PLAYER, RIGHT
@@ -84,7 +84,7 @@ OlivineCityRivalLighthouseScript:
 	spriteface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	moveperson OLIVINECITY_OLIVINE_RIVAL, $21, $13
+	moveperson OLIVINECITY_OLIVINE_RIVAL, 33, 19
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
@@ -138,7 +138,6 @@ OlivineCityMovementData_ShovePlayerDown:
 OlivineCityMovementData_RivalExitsLighthouse:
 	step_down
 	step_down
-OlivineCityMovementData_RivalExitsGym:
 	step_down
 	step_end
 

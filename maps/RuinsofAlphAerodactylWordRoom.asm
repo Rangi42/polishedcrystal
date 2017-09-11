@@ -7,9 +7,9 @@ RuinsofAlphAerodactylWordRoom_MapScriptHeader:
 RuinsofAlphAerodactylWordRoom_MapEventHeader:
 
 .Warps: db 3
-	warp_def $5, $9, 3, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
-	warp_def $5, $a, 4, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
-	warp_def $b, $11, 8, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 5, 9, 3, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
+	warp_def 5, 10, 4, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
+	warp_def 11, 17, 8, RUINS_OF_ALPH_INNER_CHAMBER
 
 .XYTriggers: db 0
 

@@ -8,12 +8,12 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 ShamoutiHotelRestaurant_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $10, 4, SHAMOUTI_HOTEL_1F
-	warp_def $7, $11, 4, SHAMOUTI_HOTEL_1F
+	warp_def 7, 16, 4, SHAMOUTI_HOTEL_1F
+	warp_def 7, 17, 4, SHAMOUTI_HOTEL_1F
 
 .XYTriggers: db 2
-	xy_trigger 1, $6, $10, ShamoutiHotelRestaurantLeavingTrigger1
-	xy_trigger 1, $7, $10, ShamoutiHotelRestaurantLeavingTrigger2
+	xy_trigger 1, 6, 16, ShamoutiHotelRestaurantLeavingTrigger1
+	xy_trigger 1, 7, 16, ShamoutiHotelRestaurantLeavingTrigger2
 
 .Signposts: db 0
 
@@ -28,7 +28,7 @@ ShamoutiHotelRestaurantTrigger0:
 	end
 
 ShamoutiHotelRestaurantChallengeScript:
-	applymovement PLAYER, ShamoutiHotelRestaurantStepUpMovement
+	applyonemovement PLAYER, step_up
 	opentext
 	checkflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
 	iftrue .AlreadyAte
@@ -46,7 +46,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	writetext ShamoutiHotelRestaurantReceptionistText
 	waitbutton
 	closetext
-	applymovement PLAYER, ShamoutiHotelRestaurantStepLeftMovement
+	applyonemovement PLAYER, step_left
 	dotrigger $1
 	end
 
@@ -101,7 +101,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	done
 
 ShamoutiHotelRestaurantLeavingTrigger2:
-	applymovement PLAYER, ShamoutiHotelRestaurantStepUpMovement
+	applyonemovement PLAYER, step_up
 ShamoutiHotelRestaurantLeavingTrigger1:
 	spriteface PLAYER, UP
 	spriteface SHAMOUTIHOTELRESTAURANT_RECEPTIONIST, DOWN
@@ -116,7 +116,7 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 	writetext ShamoutiHotelRestaurantReceptionistText
 	waitbutton
 	closetext
-	applymovement PLAYER, ShamoutiHotelRestaurantStepLeftMovement
+	applyonemovement PLAYER, step_left
 	end
 
 .LeavingText:
@@ -135,26 +135,14 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 ShamoutiHotelRestaurantLeaveScript:
 	waitbutton
 	closetext
-	applymovement PLAYER, ShamoutiHotelRestaurantStepDownMovement
+	applyonemovement PLAYER, step_down
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
 	waitsfx
-	warp SHAMOUTI_HOTEL_1F, $e, $0
+	warp SHAMOUTI_HOTEL_1F, 14, 0
 	end
 
 ShamoutiHotelRestaurantReceptionistText:
 	text "Please enjoy a"
 	line "meal and a battle."
 	done
-
-ShamoutiHotelRestaurantStepUpMovement:
-	step_up
-	step_end
-
-ShamoutiHotelRestaurantStepLeftMovement:
-	step_left
-	step_end
-
-ShamoutiHotelRestaurantStepDownMovement:
-	step_down
-	step_end

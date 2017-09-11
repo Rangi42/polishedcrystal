@@ -7,8 +7,8 @@ FuchsiaGym_MapScriptHeader:
 FuchsiaGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 2, FUCHSIA_CITY
-	warp_def $11, $5, 2, FUCHSIA_CITY
+	warp_def 17, 4, 2, FUCHSIA_CITY
+	warp_def 17, 5, 2, FUCHSIA_CITY
 
 .XYTriggers: db 0
 
@@ -211,14 +211,9 @@ UnknownScript_0x195efd:
 	jumpopenedtext UnknownText_0x19626b
 
 FuchsiaGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_JANINE
-	iftrue .FuchsiaGymGuyWinScript
-	jumpopenedtext FuchsiaGymGuyText
-
-.FuchsiaGymGuyWinScript:
-	jumpopenedtext FuchsiaGymGuyWinText
+	iftrue_jumptextfaceplayer FuchsiaGymGuyWinText
+	jumptextfaceplayer FuchsiaGymGuyText
 
 FuchsiaGymStatue:
 	trainertotext JANINE, 1, $1

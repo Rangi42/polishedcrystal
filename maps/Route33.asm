@@ -7,7 +7,7 @@ Route33_MapScriptHeader:
 Route33_MapEventHeader:
 
 .Warps: db 1
-	warp_def $9, $b, 3, UNION_CAVE_1F
+	warp_def 9, 11, 3, UNION_CAVE_1F
 
 .XYTriggers: db 0
 

@@ -34,7 +34,7 @@ DisplayUsedMoveText: ; 105db0
 .charging
 	; check obedience
 	ld hl, UsedMoveText
-	ld a, [AlreadyDisobeyed]
+	ld a, [wAlreadyDisobeyed]
 	and a
 	jr z, .ok
 	ld hl, UsedMoveInsteadText
@@ -45,11 +45,11 @@ DisplayUsedMoveText: ; 105db0
 
 
 UpdateUsedMoves: ; 105ed0
-; append move a to PlayerUsedMoves unless it has already been used
+; append move a to wPlayerUsedMoves unless it has already been used
 
 	push bc
 ; start of list
-	ld hl, PlayerUsedMoves
+	ld hl, wPlayerUsedMoves
 ; get move id
 	ld b, a
 ; next count
@@ -71,7 +71,7 @@ UpdateUsedMoves: ; 105ed0
 ; if the list is full and the move hasn't already been used
 ; shift the list back one byte, deleting the first move used
 ; this can occur with struggle or a new learned move
-	ld hl, PlayerUsedMoves + 1
+	ld hl, wPlayerUsedMoves + 1
 ; 1 = 2
 	ld a, [hld]
 	ld [hli], a
@@ -85,7 +85,7 @@ UpdateUsedMoves: ; 105ed0
 	ld [hl], a
 ; 4 = new move
 	ld a, b
-	ld [PlayerUsedMoves + 3], a
+	ld [wPlayerUsedMoves + 3], a
 	jr .quit
 
 .add

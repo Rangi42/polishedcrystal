@@ -29,7 +29,7 @@ AI_SwitchOrTryItem: ; 38000
 	and a
 	jr z, DontSwitch
 
-	ld a, [PlayerSubStatus2]
+	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, DontSwitch
 
@@ -39,11 +39,11 @@ AI_SwitchOrTryItem: ; 38000
 
 .can_switch
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
-	ld a, [InBattleTowerBattle] ; Load always the first TrainerClass for BattleTower-Trainers
+	ld a, [wInBattleTowerBattle] ; Load always the first wTrainerClass for BattleTower-Trainers
 	and a
 	jr nz, .ok
 
-	ld a, [TrainerClass]
+	ld a, [wTrainerClass]
 	dec a
 	ld bc, 7
 	call AddNTimes
@@ -169,7 +169,7 @@ SwitchSometimes: ; 380c1
 
 AI_TryItem: ; 38105
 	; items are not allowed in the BattleTower
-	ld a, [InBattleTowerBattle]
+	ld a, [wInBattleTowerBattle]
 	and a
 	ret nz
 
@@ -182,7 +182,7 @@ AI_TryItem: ; 38105
 	call .IsHighestLevel
 	ret nc
 
-	ld a, [TrainerClass]
+	ld a, [wTrainerClass]
 	dec a
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
 	ld bc, NUM_TRAINER_ATTRIBUTES
@@ -238,25 +238,24 @@ endr
 	ld [wEnemyGoesFirst], a
 
 	xor a
-	ld [EnemyFuryCutterCount], a
-	ld [EnemyProtectCount], a
+	ld [wEnemyProtectCount], a
 	ld [wEnemyRageCounter], a
 
-	ld hl, EnemySubStatus4
+	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 
 	xor a
-	ld [LastPlayerCounterMove], a
+	ld [wLastPlayerCounterMove], a
 
 	scf
 	ret
 
 
 .IsHighestLevel: ; 38170
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	ld d, a
 	ld e, 0
-	ld hl, OTPartyMon1Level
+	ld hl, wOTPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 .next
 	ld a, [hl]
@@ -268,8 +267,8 @@ endr
 	dec d
 	jr nz, .next
 
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Level
+	ld a, [wCurOTMon]
+	ld hl, wOTPartyMon1Level
 	call AddNTimes
 	ld a, [hl]
 	cp e
@@ -311,7 +310,7 @@ AI_Items: ; 39196
 ; 381ca
 
 .Status: ; 381ca (e:41ca)
-	ld a, [EnemyMonStatus]
+	ld a, [wEnemyMonStatus]
 	and a
 	jp z, .DontUse
 
@@ -327,17 +326,17 @@ AI_Items: ; 39196
 	jp .DontUse
 
 .StatusCheckContext:
-	ld a, [EnemyMonStatus]
+	ld a, [wEnemyMonStatus]
 	bit TOX, a
 	jr z, .FailToxicCheck
-	ld a, [EnemyToxicCount]
+	ld a, [wEnemyToxicCount]
 	cp 4
 	jr c, .FailToxicCheck
 	call Random
 	cp 1 + 50 percent
 	jp c, .Use
 .FailToxicCheck:
-	ld a, [EnemyMonStatus]
+	ld a, [wEnemyMonStatus]
 	and 1 << FRZ | SLP
 	jp z, .DontUse
 	jp .Use
@@ -480,7 +479,7 @@ AI_Items: ; 39196
 ; 38305
 
 .XItem: ; 3834d (e:434d)
-	ld a, [EnemyTurnsTaken]
+	ld a, [wEnemyTurnsTaken]
 	and a
 	jr nz, .notfirstturnout
 	ld a, [bc]
@@ -542,37 +541,37 @@ EnemyUsedFullHeal: ; 383a3 (e:43a3)
 
 EnemyUsedMaxPotion: ; 383ae (e:43ae)
 	ld a, MAX_POTION
-	ld [CurEnemyItem], a
+	ld [wCurEnemyItem], a
 	jr FullRestoreContinue
 
 EnemyUsedFullRestore: ; 383b5 (e:43b5)
 	call AI_HealStatus
 	ld a, FULL_RESTORE
-	ld [CurEnemyItem], a
-	ld hl, EnemySubStatus3
+	ld [wCurEnemyItem], a
+	ld hl, wEnemySubStatus3
 	res SUBSTATUS_CONFUSED, [hl]
 	xor a
-	ld [EnemyConfuseCount], a
+	ld [wEnemyConfuseCount], a
 
 FullRestoreContinue: ; 383c6
 	ld de, wCurHPAnimOldHP
-	ld hl, EnemyMonHP + 1
+	ld hl, wEnemyMonHP + 1
 	ld a, [hld]
 	ld [de], a
 	inc de
 	ld a, [hl]
 	ld [de], a
 	inc de
-	ld hl, EnemyMonMaxHP + 1
+	ld hl, wEnemyMonMaxHP + 1
 	ld a, [hld]
 	ld [de], a
 	inc de
 	ld [wCurHPAnimMaxHP], a
-	ld [EnemyMonHP + 1], a
+	ld [wEnemyMonHP + 1], a
 	ld a, [hl]
 	ld [de], a
 	ld [wCurHPAnimMaxHP + 1], a
-	ld [EnemyMonHP], a
+	ld [wEnemyMonHP], a
 	jr EnemyPotionFinish
 ; 383e8 (e:43e8)
 
@@ -591,8 +590,8 @@ EnemyUsedHyperPotion: ; 383f4 (e:43f4)
 	ld b, 200
 
 EnemyPotionContinue: ; 383f8
-	ld [CurEnemyItem], a
-	ld hl, EnemyMonHP + 1
+	ld [wCurEnemyItem], a
+	ld hl, wEnemyMonHP + 1
 	ld a, [hl]
 	ld [wCurHPAnimOldHP], a
 	add b
@@ -609,7 +608,7 @@ EnemyPotionContinue: ; 383f8
 	inc hl
 	ld a, [hld]
 	ld b, a
-	ld de, EnemyMonMaxHP + 1
+	ld de, wEnemyMonMaxHP + 1
 	ld a, [de]
 	dec de
 	ld [wCurHPAnimMaxHP], a
@@ -642,9 +641,9 @@ EnemyPotionFinish: ; 38436
 AI_TrySwitch: ; 3844b
 ; Determine whether the AI can switch based on how many Pokemon are still alive.
 ; If it can switch, it will.
-	ld a, [OTPartyCount]
+	ld a, [wOTPartyCount]
 	ld c, a
-	ld hl, OTPartyMon1HP
+	ld hl, wOTPartyMon1HP
 	ld d, 0
 .SwitchLoop:
 	ld a, [hli]
@@ -672,20 +671,20 @@ AI_Switch: ; 3846c
 	ld a, $1
 	ld [wEnemyIsSwitching], a
 	ld [wEnemyGoesFirst], a
-	ld hl, EnemySubStatus4
+	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	xor a
 	ld [hBattleTurn], a
 	farcall PursuitSwitch
 
 	push af
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Status
+	ld a, [wCurOTMon]
+	ld hl, wOTPartyMon1Status
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, EnemyMonStatus
+	ld hl, wEnemyMonStatus
 	ld bc, MON_MAXHP - MON_STATUS
 	call CopyBytes
 	pop af
@@ -700,7 +699,7 @@ AI_Switch: ; 3846c
 	ld [wBattleHasJustStarted], a
 	farcall NewEnemyMonStatus
 	farcall ResetEnemyStatLevels
-	ld hl, PlayerSubStatus1
+	ld hl, wPlayerSubStatus1
 	res SUBSTATUS_IN_LOVE, [hl]
 	farcall EnemySwitch
 	farcall ResetBattleParticipants
@@ -719,21 +718,21 @@ TextJump_EnemyWithdrew: ; 384d0
 ; 384d5
 
 AI_HealStatus: ; 384e0
-	ld a, [CurOTMon]
-	ld hl, OTPartyMon1Status
+	ld a, [wCurOTMon]
+	ld hl, wOTPartyMon1Status
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	xor a
 	ld [hl], a
-	ld [EnemyMonStatus], a
-	ld hl, EnemySubStatus3
+	ld [wEnemyMonStatus], a
+	ld hl, wEnemySubStatus3
 	res SUBSTATUS_CONFUSED, [hl]
 	ret
 ; 384f7
 
 EnemyUsedGuardSpec: ; 38504
 	call AIUsedItemSound
-	ld hl, EnemySubStatus4
+	ld hl, wEnemySubStatus4
 	set SUBSTATUS_MIST, [hl]
 	ld a, GUARD_SPEC
 	jp PrintText_UsedItemOn_AND_AIUpdateHUD
@@ -741,7 +740,7 @@ EnemyUsedGuardSpec: ; 38504
 
 EnemyUsedDireHit: ; 38511
 	call AIUsedItemSound
-	ld hl, EnemySubStatus4
+	ld hl, wEnemySubStatus4
 	set SUBSTATUS_FOCUS_ENERGY, [hl]
 	ld a, DIRE_HIT
 	jp PrintText_UsedItemOn_AND_AIUpdateHUD
@@ -785,7 +784,7 @@ EnemyUsedXAccuracy: ; 384f7
 ; a = ITEM_CONSTANT
 ; b = BATTLE_CONSTANT (ATTACK, DEFENSE, SPEED, SP_ATTACK, SP_DEFENSE, ACCURACY, EVASION)
 EnemyUsedXItem:
-	ld [CurEnemyItem], a
+	ld [wCurEnemyItem], a
 	push bc
 	call PrintText_UsedItemOn
 	pop bc
@@ -797,16 +796,16 @@ EnemyUsedXItem:
 ; Parameter
 ; a = ITEM_CONSTANT
 PrintText_UsedItemOn_AND_AIUpdateHUD: ; 38568
-	ld [CurEnemyItem], a
+	ld [wCurEnemyItem], a
 	call PrintText_UsedItemOn
 	jp AIUpdateHUD
 ; 38571
 
 PrintText_UsedItemOn: ; 38571
-	ld a, [CurEnemyItem]
+	ld a, [wCurEnemyItem]
 	ld [wd265], a
 	call GetItemName
-	ld hl, StringBuffer1
+	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, ITEM_NAME_LENGTH
 	call CopyBytes

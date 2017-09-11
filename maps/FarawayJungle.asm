@@ -7,8 +7,8 @@ FarawayJungle_MapScriptHeader:
 FarawayJungle_MapEventHeader:
 
 .Warps: db 2
-	warp_def $12, $c, 1, FARAWAY_ISLAND
-	warp_def $12, $d, 2, FARAWAY_ISLAND
+	warp_def 18, 12, 1, FARAWAY_ISLAND
+	warp_def 18, 13, 2, FARAWAY_ISLAND
 
 .XYTriggers: db 0
 

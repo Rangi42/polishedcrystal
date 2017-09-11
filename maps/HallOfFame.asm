@@ -8,8 +8,8 @@ HallOfFame_MapScriptHeader:
 HallOfFame_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $4, 3, LANCES_ROOM
-	warp_def $d, $5, 4, LANCES_ROOM
+	warp_def 13, 4, 3, LANCES_ROOM
+	warp_def 13, 5, 4, LANCES_ROOM
 
 .XYTriggers: db 0
 
@@ -89,6 +89,8 @@ HallOfFameEntranceTrigger:
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftrue .SkipPhoneCall
 	specialphonecall SPECIALCALL_SSTICKET
+	setevent EVENT_BATTLE_TOWER_OPEN
+	clearevent EVENT_BATTLE_TOWER_CLOSED
 .SkipPhoneCall:
 	halloffame
 	end

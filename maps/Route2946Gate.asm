@@ -7,10 +7,10 @@ Route2946Gate_MapScriptHeader:
 Route2946Gate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 1, ROUTE_46
-	warp_def $0, $5, 2, ROUTE_46
-	warp_def $7, $4, 1, ROUTE_29
-	warp_def $7, $5, 1, ROUTE_29
+	warp_def 0, 4, 1, ROUTE_46
+	warp_def 0, 5, 2, ROUTE_46
+	warp_def 7, 4, 1, ROUTE_29
+	warp_def 7, 5, 1, ROUTE_29
 
 .XYTriggers: db 0
 

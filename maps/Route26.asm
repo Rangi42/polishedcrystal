@@ -8,9 +8,9 @@ Route26_MapScriptHeader:
 Route26_MapEventHeader:
 
 .Warps: db 3
-	warp_def $5, $7, 3, POKEMON_LEAGUE_GATE
-	warp_def $39, $f, 1, ROUTE_26_HEAL_SPEECH_HOUSE
-	warp_def $47, $5, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
+	warp_def 5, 7, 3, POKEMON_LEAGUE_GATE
+	warp_def 57, 15, 1, ROUTE_26_HEAL_SPEECH_HOUSE
+	warp_def 71, 5, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
 
 .XYTriggers: db 0
 

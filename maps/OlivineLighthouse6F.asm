@@ -7,10 +7,10 @@ OlivineLighthouse6F_MapScriptHeader:
 OlivineLighthouse6F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $f, $9, 1, OLIVINE_LIGHTHOUSE_5F
-	warp_def $5, $10, 6, OLIVINE_LIGHTHOUSE_5F
-	warp_def $5, $11, 7, OLIVINE_LIGHTHOUSE_5F
-	warp_def $3, $9, 1, OLIVINE_LIGHTHOUSE_ROOF
+	warp_def 15, 9, 1, OLIVINE_LIGHTHOUSE_5F
+	warp_def 5, 16, 6, OLIVINE_LIGHTHOUSE_5F
+	warp_def 5, 17, 7, OLIVINE_LIGHTHOUSE_5F
+	warp_def 3, 9, 1, OLIVINE_LIGHTHOUSE_ROOF
 
 .XYTriggers: db 0
 
@@ -92,10 +92,10 @@ UnknownScript_0x60c25:
 	jumptext UnknownText_0x60ef1
 
 MonsterScript_0x60c3a:
-	faceplayer
-	opentext
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue UnknownScript_0x60c51
+	faceplayer
+	opentext
 	writetext UnknownText_0x60f03
 	writebyte AMPHAROS
 	special PlaySlowCry
@@ -103,10 +103,7 @@ MonsterScript_0x60c3a:
 	jumpopenedtext UnknownText_0x60f19
 
 UnknownScript_0x60c51:
-	writetext UnknownText_0x60f3d
-	cry AMPHAROS
-	waitbutton
-	closetext
+	showcrytext UnknownText_0x60f3d, AMPHAROS
 	special FadeOutPalettes
 	special FadeInPalettes
 	special FadeOutPalettes

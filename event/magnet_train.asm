@@ -1,5 +1,5 @@
 Special_MagnetTrain: ; 8cc04
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	and a
 	jr nz, .ToGoldenrod
 	ld a, 1 ; forwards
@@ -84,7 +84,7 @@ Special_MagnetTrain: ; 8cc04
 ; 8cc99
 
 MagnetTrain_UpdateLYOverrides: ; 8cc99
-	ld hl, LYOverridesBackup
+	ld hl, wLYOverridesBackup
 	ld c, $2f
 	ld a, [wcf64]
 	add a
@@ -243,12 +243,12 @@ MagnetTrainBGTiles: ; 8cd82
 ; 8cda6
 
 MagnetTrain_InitLYOverrides: ; 8cda6
-	ld hl, LYOverrides
-	ld bc, LYOverridesEnd - LYOverrides
+	ld hl, wLYOverrides
+	ld bc, wLYOverridesEnd - wLYOverrides
 	ld a, [wMagnetTrainInitPosition]
 	call ByteFill
-	ld hl, LYOverridesBackup
-	ld bc, LYOverridesBackupEnd - LYOverridesBackup
+	ld hl, wLYOverridesBackup
+	ld bc, wLYOverridesBackupEnd - wLYOverridesBackup
 	ld a, [wMagnetTrainInitPosition]
 	call ByteFill
 	ld a, $43
@@ -329,7 +329,7 @@ endr
 	push af
 	ld a, $1
 	ld [rSVBK], a
-	ld a, [PlayerGender]
+	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .got_gender
 	ld b, SPRITE_ANIM_INDEX_MAGNET_TRAIN_BLUE
@@ -432,13 +432,13 @@ MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
 	push af
 	ld a, $1
 	ld [rSVBK], a
-	ld a, [TimeOfDayPal]
+	ld a, [wTimeOfDayPal]
 	push af
 	ld a, [wPermission]
 	push af
-	ld a, [TimeOfDay]
+	ld a, [wTimeOfDay]
 	and $3
-	ld [TimeOfDayPal], a
+	ld [wTimeOfDayPal], a
 	ld a, $1
 	ld [wPermission], a
 	ld b, SCGB_MAPPALS
@@ -453,7 +453,7 @@ MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
 	pop af
 	ld [wPermission], a
 	pop af
-	ld [TimeOfDayPal], a
+	ld [wTimeOfDayPal], a
 	pop af
 	ld [rSVBK], a
 	ret

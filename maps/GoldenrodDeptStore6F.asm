@@ -7,15 +7,14 @@ GoldenrodDeptStore6F_MapScriptHeader:
 GoldenrodDeptStore6F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $f, 2, GOLDENROD_DEPT_STORE_5F
-	warp_def $0, $2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
-	warp_def $0, $d, 1, GOLDENROD_DEPT_STORE_ROOF
+	warp_def 0, 15, 2, GOLDENROD_DEPT_STORE_5F
+	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_def 0, 13, 1, GOLDENROD_DEPT_STORE_ROOF
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 1
 	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore6FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 2
 	person_event SPRITE_LASS, 2, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5654b, -1

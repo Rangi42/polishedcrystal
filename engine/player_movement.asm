@@ -2,23 +2,23 @@ DoPlayerMovement:: ; 80000
 
 	call .GetDPad
 	ld a, movement_step_sleep_1
-	ld [MovementAnimation], a
+	ld [wMovementAnimation], a
 	xor a
 	ld [wd041], a
 	call .TranslateIntoMovement
 	ld c, a
-	ld a, [MovementAnimation]
+	ld a, [wMovementAnimation]
 	ld [wPlayerNextMovement], a
 	ret
 
 .GetDPad:
 
 	ld a, [hJoyDown]
-	ld [CurInput], a
+	ld [wCurInput], a
 
 ; Standing downhill instead moves down.
 
-	ld hl, BikeFlags
+	ld hl, wBikeFlags
 	bit 2, [hl] ; downhill
 	ret z
 
@@ -28,12 +28,12 @@ DoPlayerMovement:: ; 80000
 
 	ld a, c
 	or D_DOWN
-	ld [CurInput], a
+	ld [wCurInput], a
 	ret
 ; 8002d
 
 .TranslateIntoMovement:
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	and a ; cp PLAYER_NORMAL
 	jr z, .Normal
 	cp PLAYER_SURF
@@ -84,7 +84,7 @@ DoPlayerMovement:: ; 80000
 	ret c
 	call .CheckWarp
 	ret c
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .HitWall
 	call .BumpSound
@@ -94,12 +94,12 @@ DoPlayerMovement:: ; 80000
 	ret
 
 .NotMoving:
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .Standing
 
 ; Walking into an edge warp won't bump.
-	ld a, [EngineBuffer4]
+	ld a, [wEngineBuffer4]
 	and a
 	jr nz, .CantMove
 	call .BumpSound
@@ -118,7 +118,7 @@ DoPlayerMovement:: ; 80000
 ; Tiles such as waterfalls and warps move the player
 ; in a given direction, overriding input.
 
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	ld c, a
 	cp COLL_WHIRLPOOL
 	jr nz, .not_whirlpool
@@ -142,7 +142,7 @@ DoPlayerMovement:: ; 80000
 	ld hl, .water_table
 	add hl, bc
 	ld a, [hl]
-	ld [WalkingDirection], a
+	ld [wWalkingDirection], a
 	ld a, STEP_BIKE
 	jr .finish
 
@@ -163,7 +163,7 @@ DoPlayerMovement:: ; 80000
 
 .down
 	ld a, DOWN
-	ld [WalkingDirection], a
+	ld [wWalkingDirection], a
 	jr .continue_walk
 
 .no_walk
@@ -186,12 +186,12 @@ DoPlayerMovement:: ; 80000
 	ld a, [wPlayerTurningDirection]
 	cp 0
 	jr nz, .not_turning
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .not_turning
 
 	ld e, a
-	ld a, [PlayerDirection]
+	ld a, [wPlayerDirection]
 	rrca
 	rrca
 	and 3
@@ -212,7 +212,7 @@ DoPlayerMovement:: ; 80000
 .TryStep: ; 8016b
 
 ; Surfing actually calls .TrySurf directly instead of passing through here.
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, .TrySurf
 	cp PLAYER_SURF_PIKA
@@ -231,11 +231,11 @@ DoPlayerMovement:: ; 80000
 	and a
 	jr nz, .spin
 
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	cp COLL_ICE
 	jr z, .ice
 
-	ld a, [Options2]
+	ld a, [wOptions2]
 	and 1 << RUNNING_SHOES
 	jr nz, .RunByDefault
 
@@ -252,11 +252,11 @@ DoPlayerMovement:: ; 80000
 	call .BikeCheck
 	jr nz, .walk
 
-	ld hl, BikeFlags
+	ld hl, wBikeFlags
 	bit 2, [hl] ; downhill
 	jr z, .fast
 
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	cp DOWN
 	jr z, .fast
 
@@ -288,7 +288,7 @@ DoPlayerMovement:: ; 80000
 	call .DoStep
 ;   Trainer faces player -- not a current feature
 ;	push af
-;	ld a, [WalkingDirection]
+;	ld a, [wWalkingDirection]
 ;	cp STANDING
 ;	jr z, .skip_trainer
 ;	call CheckTrainerRun
@@ -348,7 +348,7 @@ DoPlayerMovement:: ; 80000
 ; 801f3
 
 .TryJump: ; 801f3
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	ld e, a
 	and $f0
 	cp $a0 ; ledge
@@ -360,7 +360,7 @@ DoPlayerMovement:: ; 80000
 	ld d, 0
 	ld hl, .data_8021e
 	add hl, de
-	ld a, [FacingDirection]
+	ld a, [wFacingDirection]
 	and [hl]
 	jr z, .DontJump
 
@@ -389,25 +389,25 @@ DoPlayerMovement:: ; 80000
 
 .CheckWarp: ; 80226
 
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .not_warp
 	ld e, a
 	ld d, 0
 	ld hl, .EdgeWarps
 	add hl, de
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	cp [hl]
 	jr nz, .not_warp
 
 	ld a, 1
 	ld [wd041], a
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .not_warp
 
 	ld e, a
-	ld a, [PlayerDirection]
+	ld a, [wPlayerDirection]
 	rrca
 	rrca
 	and 3
@@ -442,14 +442,14 @@ DoPlayerMovement:: ; 80000
 	ld h, [hl]
 	ld l, a
 
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	ld e, a
 	cp STANDING
 	jp z, .StandInPlace
 
 	add hl, de
 	ld a, [hl]
-	ld [MovementAnimation], a
+	ld [wMovementAnimation], a
 
 	ld hl, .InPlace
 	add hl, de
@@ -530,7 +530,7 @@ DoPlayerMovement:: ; 80000
 
 .StandInPlace: ; 802b3
 	ld a, movement_step_sleep_1
-	ld [MovementAnimation], a
+	ld [wMovementAnimation], a
 	xor a
 	ld [wPlayerTurningDirection], a
 	ret
@@ -538,7 +538,7 @@ DoPlayerMovement:: ; 80000
 
 ._WalkInPlace: ; 802bf
 	ld a, movement_step_bump
-	ld [MovementAnimation], a
+	ld [wMovementAnimation], a
 	xor a
 	ld [wPlayerTurningDirection], a
 	ret
@@ -566,10 +566,10 @@ DoPlayerMovement:: ; 80000
 	ld d, 0
 	ld hl, .forced_dpad
 	add hl, de
-	ld a, [CurInput]
+	ld a, [wCurInput]
 	and BUTTONS
 	or [hl]
-	ld [CurInput], a
+	ld [wCurInput], a
 	ret
 
 .forced_dpad
@@ -581,7 +581,7 @@ DoPlayerMovement:: ; 80000
 
 	ld hl, .table
 	ld de, .table2 - .table1
-	ld a, [CurInput]
+	ld a, [wCurInput]
 	bit D_DOWN_F, a
 	jr nz, .d_down
 	bit D_UP_F, a
@@ -600,18 +600,18 @@ DoPlayerMovement:: ; 80000
 
 .update
 	ld a, [hli]
-	ld [WalkingDirection], a
+	ld [wWalkingDirection], a
 	ld a, [hli]
-	ld [FacingDirection], a
+	ld [wFacingDirection], a
 	ld a, [hli]
-	ld [WalkingX], a
+	ld [wWalkingX], a
 	ld a, [hli]
-	ld [WalkingY], a
+	ld [wWalkingY], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld a, [hl]
-	ld [WalkingTile], a
+	ld [wWalkingTile], a
 	ret
 
 .table
@@ -623,16 +623,16 @@ DoPlayerMovement:: ; 80000
 ;	tile collision pointer
 .table1
 	db STANDING, FACE_CURRENT, 0, 0
-	dw PlayerStandingTile
+	dw wPlayerStandingTile
 .table2
 	db RIGHT, FACE_RIGHT,  1,  0
-	dw TileRight
+	dw wTileRight
 	db LEFT,  FACE_LEFT,  -1,  0
-	dw TileLeft
+	dw wTileLeft
 	db UP,    FACE_UP,     0, -1
-	dw TileUp
+	dw wTileUp
 	db DOWN,  FACE_DOWN,   0,  1
-	dw TileDown
+	dw wTileDown
 ; 80341
 
 .CheckNPC: ; 80341
@@ -642,15 +642,15 @@ DoPlayerMovement:: ; 80000
 	xor a
 	ld [hMapObjectIndexBuffer], a
 ; Load the next X coordinate into d
-	ld a, [PlayerStandingMapX]
+	ld a, [wPlayerStandingMapX]
 	ld d, a
-	ld a, [WalkingX]
+	ld a, [wWalkingX]
 	add d
 	ld d, a
 ; Load the next Y coordinate into e
-	ld a, [PlayerStandingMapY]
+	ld a, [wPlayerStandingMapY]
 	ld e, a
-	ld a, [WalkingY]
+	ld a, [wWalkingY]
 	add e
 	ld e, a
 ; Find an object struct with coordinates equal to d,e
@@ -673,7 +673,7 @@ DoPlayerMovement:: ; 80000
 
 .CheckStrengthBoulder: ; 8036f
 
-	ld hl, BikeFlags
+	ld hl, wBikeFlags
 	bit 0, [hl] ; using strength
 	jr z, .not_boulder
 
@@ -692,7 +692,7 @@ DoPlayerMovement:: ; 80000
 	add hl, bc
 	set 2, [hl]
 
-	ld a, [WalkingDirection]
+	ld a, [wWalkingDirection]
 	ld d, a
 	ld hl, OBJECT_RANGE
 	add hl, bc
@@ -713,13 +713,13 @@ DoPlayerMovement:: ; 80000
 ; Return 0 if walking onto land and tile permissions allow it.
 ; Otherwise, return carry.
 
-	ld a, [TilePermissions]
+	ld a, [wTilePermissions]
 	ld d, a
-	ld a, [FacingDirection]
+	ld a, [wFacingDirection]
 	and d
 	jr nz, .NotWalkable
 
-	ld a, [WalkingTile]
+	ld a, [wWalkingTile]
 	call .CheckWalkable
 	jr c, .NotWalkable
 
@@ -735,13 +735,13 @@ DoPlayerMovement:: ; 80000
 ; Return 0 if moving in water, or 1 if moving onto land.
 ; Otherwise, return carry.
 
-	ld a, [TilePermissions]
+	ld a, [wTilePermissions]
 	ld d, a
-	ld a, [FacingDirection]
+	ld a, [wFacingDirection]
 	and d
 	jr nz, .NotSurfable
 
-	ld a, [WalkingTile]
+	ld a, [wWalkingTile]
 	call .CheckSurfable
 	jr c, .NotSurfable
 
@@ -755,7 +755,7 @@ DoPlayerMovement:: ; 80000
 
 .BikeCheck: ; 803ca
 
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	ret z
 	cp PLAYER_SLIP
@@ -766,7 +766,7 @@ DoPlayerMovement:: ; 80000
 ; https://github.com/VictoriaLacroix/pokecrystal/commit/ed7f525d642cb02e84e856f2e506d2a6425d95db
 .RunCheck:
 
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	and a ; cp PLAYER_NORMAL
 	ret nz
 	ld a, [hJoypadDown]
@@ -823,7 +823,7 @@ DoPlayerMovement:: ; 80000
 .GetOutOfWater: ; 803f9
 	push bc
 	ld a, PLAYER_NORMAL
-	ld [PlayerState], a
+	ld [wPlayerState], a
 	call ReplaceKrisSprite ; UpdateSprites
 	pop bc
 	ret
@@ -835,10 +835,10 @@ CheckStandingOnIce:: ; 80404
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	cp COLL_ICE
 	jr z, .ice
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_SLIP
 	jr nz, .not_ice
 
@@ -852,7 +852,7 @@ CheckStandingOnIce:: ; 80404
 ; 80422
 
 CheckSpinning::
-	ld a, [PlayerStandingTile]
+	ld a, [wPlayerStandingTile]
 	call CheckSpinTile
 	jr z, .start_spin
 	cp COLL_STOP_SPIN

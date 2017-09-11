@@ -7,8 +7,8 @@ SinjohRuinsHouse_MapScriptHeader:
 SinjohRuinsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 2, SINJOH_RUINS
-	warp_def $7, $3, 2, SINJOH_RUINS
+	warp_def 7, 2, 2, SINJOH_RUINS
+	warp_def 7, 3, 2, SINJOH_RUINS
 
 .XYTriggers: db 0
 
@@ -20,7 +20,7 @@ SinjohRuinsHouse_MapEventHeader:
 	person_event SPRITE_CYNTHIA, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
 	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SinjohRuinsHousePokefanmText, -1
 	person_event SPRITE_GRAMPS, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseGrampsScript, -1
-	person_event SPRITE_ABRA, 3, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseAbraScript, -1
+	person_event SPRITE_ABRA, 3, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, SinjohRuinsHouseAbraText, -1
 
 const_value set 2
 	const SINJOHRUINSHOUSE_CYNTHIA
@@ -37,19 +37,11 @@ SinjohRuinsHouseGrampsScript:
 	playsound SFX_WARP_TO
 	special FadeOutPalettes
 	waitsfx
-	warp NEW_BARK_TOWN, $f, $6
+	warp NEW_BARK_TOWN, 15, 6
 	end
 
 .No:
 	jumpopenedtext SinjohRuinsHouseGrampsNoText
-
-SinjohRuinsHouseAbraScript:
-	opentext
-	writetext SinjohRuinsHouseAbraText
-	cry ABRA
-	waitbutton
-	closetext
-	end
 
 SinjohRuinsHouseCynthiaScript:
 	faceplayer

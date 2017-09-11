@@ -9,20 +9,20 @@ LancesRoom_MapScriptHeader:
 LancesRoom_MapEventHeader:
 
 .Warps: db 4
-	warp_def $17, $4, 3, KARENS_ROOM
-	warp_def $17, $5, 4, KARENS_ROOM
-	warp_def $1, $4, 1, HALL_OF_FAME
-	warp_def $1, $5, 2, HALL_OF_FAME
+	warp_def 23, 4, 3, KARENS_ROOM
+	warp_def 23, 5, 4, KARENS_ROOM
+	warp_def 1, 4, 1, HALL_OF_FAME
+	warp_def 1, 5, 2, HALL_OF_FAME
 
 .XYTriggers: db 2
-	xy_trigger 1, $5, $4, ApproachLanceFromLeftTrigger
-	xy_trigger 1, $5, $5, ApproachLanceFromRightTrigger
+	xy_trigger 1, 5, 4, ApproachLanceFromLeftTrigger
+	xy_trigger 1, 5, 5, ApproachLanceFromRightTrigger
 
 .Signposts: db 0
 
 .PersonEvents: db 3
 	person_event SPRITE_LANCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript, -1
-	person_event SPRITE_TEACHER, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+	person_event SPRITE_MARY, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 	person_event SPRITE_OAK, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 
 const_value set 2
@@ -39,7 +39,7 @@ LancesRoomEntranceTrigger:
 	refreshscreen
 	playsound SFX_STRENGTH
 	earthquake 80
-	changeblock $4, $16, $34
+	changeblock 4, 22, $34
 	reloadmappart
 	closetext
 	dotrigger $1
@@ -56,11 +56,11 @@ WalkIntoEliteFourRoomMovement:
 LancesRoomDoorCallback:
 	checkevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	iffalse .LanceEntranceOpen
-	changeblock $4, $16, $34
+	changeblock 4, 22, $34
 .LanceEntranceOpen:
 	checkevent EVENT_LANCES_ROOM_EXIT_OPEN
 	iffalse .LanceExitClosed
-	changeblock $4, $0, $b
+	changeblock 4, 0, $b
 .LanceExitClosed:
 	return
 
@@ -98,7 +98,7 @@ LanceScript:
 .EndBattle:
 	setevent EVENT_BEAT_CHAMPION_LANCE
 	playsound SFX_ENTER_DOOR
-	changeblock $4, $0, $b
+	changeblock 4, 0, $b
 	reloadmappart
 	closetext
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
@@ -144,7 +144,7 @@ LanceScript:
 	applymovement LANCESROOM_MARY, .RunBackAndForthMovement
 	special FadeOutPalettes
 	pause 15
-	warpfacing UP, HALL_OF_FAME, $4, $d
+	warpfacing UP, HALL_OF_FAME, 4, 13
 	end
 
 .SeenText:

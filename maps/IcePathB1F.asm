@@ -8,14 +8,14 @@ IcePathB1F_MapScriptHeader:
 IcePathB1F_MapEventHeader:
 
 .Warps: db 8
-	warp_def $f, $3, 3, ICE_PATH_1F
-	warp_def $3, $11, 1, ICE_PATH_B2F_MAHOGANY_SIDE
-	warp_def $2, $b, 3, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $7, $4, 4, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $c, $5, 5, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $d, $c, 6, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
-	warp_def $19, $5, 4, ICE_PATH_1F
-	warp_def $1b, $b, 1, ICE_PATH_B2F_BLACKTHORN_SIDE
+	warp_def 15, 3, 3, ICE_PATH_1F
+	warp_def 3, 17, 1, ICE_PATH_B2F_MAHOGANY_SIDE
+	warp_def 2, 11, 3, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def 7, 4, 4, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def 12, 5, 5, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def 13, 12, 6, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
+	warp_def 25, 5, 4, ICE_PATH_1F
+	warp_def 27, 11, 1, ICE_PATH_B2F_BLACKTHORN_SIDE
 
 .XYTriggers: db 0
 

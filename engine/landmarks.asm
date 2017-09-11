@@ -17,7 +17,7 @@ endr
 
 
 GetLandmarkName:: ; 0x1ca8a5
-; Copy the name of landmark e to StringBuffer1.
+; Copy the name of landmark e to wStringBuffer1.
 	push hl
 	push de
 	push bc
@@ -33,7 +33,7 @@ endr
 	ld h, [hl]
 	ld l, a
 
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld c, 23
 .copy
 	ld a, [hli]
@@ -80,6 +80,7 @@ ENDM
 	landmark  60, 108, GoldenrodCityName
 	landmark  58, 108, RadioTowerName
 	landmark  52, 108, GoldenrodHarborName
+	landmark  76, 108, MagnetTunnelName
 	landmark  60,  92, Route35Name
 	landmark  52,  92, Route35CoastName
 	landmark  60,  76, NationalParkName
@@ -313,6 +314,7 @@ YellowForestName:      db "Yellow¯Forest@"
 QuietCaveName:         db "Quiet Cave@"
 CherrygroveBayName:    db "Cherrygrove¯Bay@"
 GoldenrodHarborName:   db "Goldenrod¯Harbor@"
+MagnetTunnelName:      db "Magnet¯Tunnel@"
 Route32CoastName:      db "Route 32¯Coast@"
 Route34CoastName:      db "Route 34¯Coast@"
 Route35CoastName:      db "Route 35¯Coast@"

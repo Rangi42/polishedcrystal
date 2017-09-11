@@ -44,7 +44,7 @@ _ScrollingMenu:: ; 245cb
 ScrollingMenu_InitDisplay: ; 245f1
 	xor a
 	ld [hBGMapMode], a
-	ld hl, Options1
+	ld hl, wOptions1
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
@@ -52,7 +52,7 @@ ScrollingMenu_InitDisplay: ; 245f1
 	call ScrollingMenu_PlaceCursor
 	call ScrollingMenu_CheckCallFunction3
 	pop af
-	ld [Options1], a
+	ld [wOptions1], a
 	ret
 ; 24609
 
@@ -89,15 +89,15 @@ ScrollingMenuJoyAction: ; 24609
 	ld a, [wMenuCursorY]
 	dec a
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
-	ld a, [MenuSelection]
-	ld [CurItem], a
-	ld a, [MenuSelectionQuantity]
+	ld a, [wMenuSelection]
+	ld [wCurItem], a
+	ld a, [wMenuSelectionQuantity]
 	ld [wItemQuantityBuffer], a
 	call ScrollingMenu_GetCursorPosition
 	dec a
 	ld [wScrollingMenuCursorPosition], a
-	ld [CurItemQuantity], a
-	ld a, [MenuSelection]
+	ld [wCurItemQuantity], a
+	ld a, [wMenuSelection]
 	cp -1
 	jr z, .b_button
 	ld a, A_BUTTON
@@ -118,7 +118,7 @@ ScrollingMenuJoyAction: ; 24609
 	ld a, [wMenuCursorY]
 	dec a
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	cp -1
 	jp z, xor_a_dec_a
 	call ScrollingMenu_GetCursorPosition
@@ -379,7 +379,7 @@ ScrollingMenu_UpdateDisplay: ; 247f0
 	ld [wScrollingMenuCursorPosition], a
 	ld a, c
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
-	ld a, [MenuSelection]
+	ld a, [wMenuSelection]
 	cp -1
 	jr z, .cancel
 	push bc
@@ -510,12 +510,12 @@ ScrollingMenu_GetListItemCoordAndFunctionArgs: ; 248d5
 	add hl, de
 	ld a, [wMenuData2_ItemsPointerBank]
 	call GetFarByte
-	ld [MenuSelection], a
-	ld [CurItem], a
+	ld [wMenuSelection], a
+	ld [wCurItem], a
 	inc hl
 	ld a, [wMenuData2_ItemsPointerBank]
 	call GetFarByte
-	ld [MenuSelectionQuantity], a
+	ld [wMenuSelectionQuantity], a
 	pop hl
 	pop de
 	ret

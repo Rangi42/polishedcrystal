@@ -8,12 +8,12 @@ WiseTriosRoom_MapScriptHeader:
 WiseTriosRoom_MapEventHeader:
 
 .Warps: db 3
-	warp_def $4, $7, 1, BELLCHIME_TRAIL
-	warp_def $5, $7, 2, BELLCHIME_TRAIL
-	warp_def $4, $1, 5, ECRUTEAK_HOUSE
+	warp_def 4, 7, 1, BELLCHIME_TRAIL
+	warp_def 5, 7, 2, BELLCHIME_TRAIL
+	warp_def 4, 1, 5, ECRUTEAK_HOUSE
 
 .XYTriggers: db 1
-	xy_trigger 0, $4, $7, UnknownScript_0x985a3
+	xy_trigger 0, 4, 7, UnknownScript_0x985a3
 
 .Signposts: db 0
 
@@ -80,7 +80,7 @@ TrainerElderKoji:
 
 ElderKojiScript:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue UnknownScript_0x9861b
+	iftrue_jumptext UnknownText_0x98db5
 	pause 10
 	showemote EMOTE_SHOCK, WISETRIOSROOM_ELDER6, 20
 	opentext
@@ -94,9 +94,6 @@ ElderKojiScript:
 	setevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
 	dotrigger $1
 	end
-
-UnknownScript_0x9861b:
-	jumptext UnknownText_0x98db5
 
 MovementData_0x98622:
 	step_left

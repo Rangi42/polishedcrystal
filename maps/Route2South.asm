@@ -7,8 +7,8 @@ Route2South_MapScriptHeader:
 Route2South_MapEventHeader:
 
 .Warps: db 2
-	warp_def $3, $f, 3, ROUTE_2_GATE
-	warp_def $7, $5, 3, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	warp_def 3, 15, 3, ROUTE_2_GATE
+	warp_def 7, 5, 3, VIRIDIAN_FOREST_VIRIDIAN_GATE
 
 .XYTriggers: db 0
 

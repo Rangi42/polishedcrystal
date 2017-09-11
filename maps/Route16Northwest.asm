@@ -7,9 +7,9 @@ Route16Northwest_MapScriptHeader:
 Route16Northwest_MapEventHeader:
 
 .Warps: db 3
-	warp_def $1, $1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
-	warp_def $4, $9, 1, ROUTE_16_GATE
-	warp_def $5, $9, 2, ROUTE_16_GATE
+	warp_def 1, 1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
+	warp_def 4, 9, 1, ROUTE_16_GATE
+	warp_def 5, 9, 2, ROUTE_16_GATE
 
 .XYTriggers: db 0
 

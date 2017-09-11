@@ -7,8 +7,8 @@ PokemonTrainerFanClub_MapScriptHeader:
 PokemonTrainerFanClub_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $4, 16, SAFFRON_CITY
-	warp_def $9, $5, 16, SAFFRON_CITY
+	warp_def 9, 4, 16, SAFFRON_CITY
+	warp_def 9, 5, 16, SAFFRON_CITY
 
 .XYTriggers: db 0
 

@@ -56,6 +56,8 @@ StdScripts::
 	dba SinkScript
 	dba StoveScript
 	dba VendingMachineScript
+	dba TreeGrottoScript
+	dba CaveGrottoScript
 
 PokeCenterNurseScript:
 	opentext
@@ -163,9 +165,7 @@ PokeCenterNurseScript:
 	spriteface LAST_TALKED, DOWN
 	pause 10
 
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .pokerus
 	; already cleared earlier in the script
@@ -218,8 +218,7 @@ TownMapScript:
 	farwritetext TownMapText
 	waitbutton
 	special Special_TownMap
-	closetext
-	end
+	endtext
 
 WindowScript:
 	farjumptext WindowText
@@ -233,18 +232,39 @@ WrongSideScript:
 	farjumptext WrongSideText
 
 Radio1Script:
+	callasm IsKantoRadioOffAir
+	iftrue RadioOffAirScript
 	opentext
 	writebyte MAPRADIO_POKEMON_CHANNEL
 	special MapRadio
-	closetext
-	end
+	endtext
 
 Radio2Script:
+	callasm IsKantoRadioOffAir
+	iftrue RadioOffAirScript
 	opentext
 	writebyte MAPRADIO_LUCKY_CHANNEL
 	special MapRadio
-	closetext
-	end
+	endtext
+
+RadioOffAirScript:
+	farjumptext RadioOffAirText
+
+IsKantoRadioOffAir:
+	farcall RegionCheck
+	ld a, e
+	cp KANTO_REGION
+	jr nz, .no
+	ld a, [wPokegearFlags]
+	bit 3, a
+	jr nz, .no
+	ld a, TRUE
+	jr .ok
+.no
+	xor a ; ld a, FALSE
+.ok
+	ld [wScriptVar], a
+	ret
 
 TrashCanScript: ; 0xbc1a5
 	farjumptext TrashCanText
@@ -252,8 +272,7 @@ TrashCanScript: ; 0xbc1a5
 PCScript:
 	opentext
 	special PokemonCenterPC
-	closetext
-	end
+	endtext
 
 ElevatorButtonScript:
 	playsound SFX_READ_TEXT_2
@@ -340,51 +359,66 @@ BugContestResultsWarpScript:
 	setevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	warp ROUTE_36_NATIONAL_PARK_GATE, $0, $4
 	applymovement PLAYER, Movement_ContestResults_WalkAfterWarp
+	; fallthrough
 
 BugContestResultsScript:
 	clearflag ENGINE_BUG_CONTEST_TIMER
 	clearevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
-	clearevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	clearevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	clearevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	clearevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
+	clearevent EVENT_CONTEST_OFFICER_HAS_PRIZE
 	opentext
 	farwritetext ContestResults_ReadyToJudgeText
 	waitbutton
 	special BugContestJudging
 	RAM2MEM $0
-	if_equal 1, BugContestResults_FirstPlace
-	if_equal 2, BugContestResults_SecondPlace
-	if_equal 3, BugContestResults_ThirdPlace
+	if_equal 1, .FirstPlace
+	if_equal 2, .SecondPlace
+	if_equal 3, .ThirdPlace
+	copybytetovar wBugContestOfficerPrize
+	itemtotext $0, $1
 	farwritetext ContestResults_ConsolationPrizeText
 	buttonsound
 	waitsfx
-	verbosegiveitem ORAN_BERRY
-	iffalse BugContestResults_NoRoomForOranBerry
-
-BugContestResults_DidNotWin
+	copybytetovar wBugContestOfficerPrize
+	verbosegiveitem ITEM_FROM_MEM
+	iftrue .GotConsolationPrize
+	farwritetext BugContestPrizeNoRoomText
+	buttonsound
+	setevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+.GotConsolationPrize
 	farwritetext ContestResults_DidNotWinText
 	buttonsound
-	jump BugContestResults_FinishUp
-; 0xbc2b1
+	jump .FinishUp
 
-BugContestResults_ReturnAfterWinnersPrize ; 0xbc2b1
+.FirstPlace
+	setevent EVENT_GAVE_KURT_APRICORNS
+.SecondPlace
+.ThirdPlace
+	copybytetovar wBugContestOfficerPrize
+	itemtotext $0, $1
+	farwritetext ContestResults_PlayerWonAPrizeText
+	waitbutton
+	copybytetovar wBugContestOfficerPrize
+	verbosegiveitem ITEM_FROM_MEM
+	iftrue .GotWinnersPrize
+	farwritetext BugContestPrizeNoRoomText
+	buttonsound
+	setevent EVENT_CONTEST_OFFICER_HAS_PRIZE
+.GotWinnersPrize
 	farwritetext ContestResults_JoinUsNextTimeText
 	buttonsound
-
-BugContestResults_FinishUp
+.FinishUp
 	checkevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
-	iffalse BugContestResults_DidNotLeaveMons
+	iffalse .DidNotLeaveMons
 	farwritetext ContestResults_ReturnPartyText
 	waitbutton
 	special ContestReturnMons
-BugContestResults_DidNotLeaveMons
+.DidNotLeaveMons
 	special CheckPartyFullAfterContest
-	if_equal $0, BugContestResults_CleanUp
-	if_equal $2, BugContestResults_CleanUp
+	if_equal $0, .CleanUp
+	if_equal $2, .CleanUp
 	farwritetext ContestResults_PartyFullText
 	waitbutton
-BugContestResults_CleanUp
+.CleanUp
 	closetext
 	dotrigger $0
 	domaptrigger ROUTE_35_NATIONAL_PARK_GATE, $0
@@ -412,62 +446,6 @@ BugContestResults_CleanUp
 	special PlayMapMusic
 	end
 ; 0xbc31e
-
-BugContestResults_FirstPlace ; 0xbc31e
-	setevent EVENT_GAVE_KURT_APRICORNS
-	itemtotext SUN_STONE, $1
-	farwritetext ContestResults_PlayerWonAPrizeText
-	waitbutton
-	verbosegiveitem SUN_STONE
-	iffalse BugContestResults_NoRoomForSunStone
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc332
-
-BugContestResults_SecondPlace ; 0xbc332
-	itemtotext EVERSTONE, $1
-	farwritetext ContestResults_PlayerWonAPrizeText
-	waitbutton
-	verbosegiveitem EVERSTONE
-	iffalse BugContestResults_NoRoomForEverstone
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc343
-
-BugContestResults_ThirdPlace ; 0xbc343
-	itemtotext SITRUS_BERRY, $1
-	farwritetext ContestResults_PlayerWonAPrizeText
-	waitbutton
-	verbosegiveitem SITRUS_BERRY
-	iffalse BugContestResults_NoRoomForSitrusBerry
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc354
-
-BugContestResults_NoRoomForSunStone ; 0xbc354
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_SUN_STONE
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc35f
-
-BugContestResults_NoRoomForEverstone ; 0xbc35f
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_EVERSTONE
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc36a
-
-BugContestResults_NoRoomForSitrusBerry ; 0xbc36a
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_SITRUS_BERRY
-	jump BugContestResults_ReturnAfterWinnersPrize
-; 0xbc375
-
-BugContestResults_NoRoomForOranBerry ; 0xbc375
-	farwritetext BugContestPrizeNoRoomText
-	buttonsound
-	setevent EVENT_CONTEST_OFFICER_HAS_ORAN_BERRY
-	jump BugContestResults_DidNotWin
-; 0xbc380
 
 BugContestResults_CopyContestantsToResults ; 0xbc380
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_1A
@@ -651,6 +629,10 @@ InitializeEventsScript:
 	setevent EVENT_SEAFOAM_GYM_GYM_GUY
 	setevent EVENT_MT_MOON_SQUARE_CLEFAIRY
 	setevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	setevent EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER
+	setevent EVENT_LAV_RADIO_TOWER_POPULATION
+	setevent EVENT_SOUL_HOUSE_MR_FUJI
+	setevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setevent EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	setevent EVENT_SHAMOUTI_COAST_CANDELA
 	setevent EVENT_SHAMOUTI_COAST_BLANCHE
@@ -660,6 +642,7 @@ InitializeEventsScript:
 	setevent EVENT_LAWRENCE_FINAL_BIRD
 	setevent EVENT_LAWRENCE_FINAL_BIRD_SURF
 	setevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
+	setevent EVENT_BATTLE_TOWER_CLOSED
 	setevent EVENT_BATTLE_TOWER_CHERYL
 	setevent EVENT_BATTLE_TOWER_RILEY
 	setevent EVENT_BATTLE_TOWER_BUCK
@@ -695,16 +678,12 @@ InitializeEventsScript:
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS
 	variablesprite SPRITE_REMATCH_GYM_LEADER_1, SPRITE_BROCK
 	variablesprite SPRITE_REMATCH_GYM_LEADER_2, SPRITE_BROCK
-	variablesprite SPRITE_REMATCH_GYM_LEADER_3, SPRITE_BROCK
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_GRAMPS
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_LYRA
-	variablesprite SPRITE_AZALEA_ROCKET, SPRITE_ROCKET
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_BEAUTY
-	variablesprite SPRITE_LAKE_OF_RAGE_LANCE, SPRITE_LANCE
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_LAWRENCE
 	setevent EVENT_INITIALIZED_EVENTS
 	return
 
@@ -910,104 +889,83 @@ NumberAcceptedMScript:
 
 .Jack:
 	farwritetext JackNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JoseNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadeNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Irwin:
 	farwritetext IrwinNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArnieNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VanceNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 NumberDeclinedMScript:
 	checkcode VAR_CALLERID
@@ -1034,104 +992,83 @@ NumberDeclinedMScript:
 
 .Jack:
 	farwritetext JackNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JoseNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadeNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Irwin:
 	farwritetext IrwinNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArnieNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VanceNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 PhoneFullMScript:
 	checkcode VAR_CALLERID
@@ -1158,104 +1095,83 @@ PhoneFullMScript:
 
 .Jack:
 	farwritetext JackPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JosePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Irwin:
 	farwritetext IrwinPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArniePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VancePhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchMScript:
 	checkcode VAR_CALLERID
@@ -1279,89 +1195,71 @@ RematchMScript:
 
 .Jack:
 	farwritetext JackRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Huey:
 	farwritetext HueyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gaven:
 	farwritetext GavenRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JoseRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadeRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Ralph:
 	farwritetext RalphRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Anthony:
 	farwritetext AnthonyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Todd:
 	farwritetext ToddRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Arnie:
 	farwritetext ArnieRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Chad:
 	farwritetext ChadRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Brent:
 	farwritetext BrentRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VanceRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GiftMScript:
 	checkcode VAR_CALLERID
@@ -1418,59 +1316,47 @@ PackFullMScript:
 
 .Huey:
 	farwritetext HueyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Jose:
 	farwritetext JosePackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Joey:
 	farwritetext JoeyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wade:
 	farwritetext WadePackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Alan:
 	farwritetext AlanPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Derek:
 	farwritetext DerekPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tully:
 	farwritetext TullyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Vance:
 	farwritetext VancePackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Wilton:
 	farwritetext WiltonPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Kenji:
 	farwritetext KenjiPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Parry:
 	farwritetext ParryPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchGiftMScript:
 	opentext
@@ -1589,44 +1475,35 @@ NumberAcceptedFScript: ; 0xbcbd3
 
 .Beverly:
 	farwritetext BeverlyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Beth:
 	farwritetext BethNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinNumberAcceptedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 NumberDeclinedFScript:
 	checkcode VAR_CALLERID
@@ -1641,44 +1518,35 @@ NumberDeclinedFScript:
 
 .Beverly:
 	farwritetext BeverlyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Beth:
 	farwritetext BethNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinNumberDeclinedText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 PhoneFullFScript:
 	checkcode VAR_CALLERID
@@ -1693,44 +1561,35 @@ PhoneFullFScript:
 
 .Beverly:
 	farwritetext BeverlyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Beth:
 	farwritetext BethPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinPhoneFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchFScript:
 	checkcode VAR_CALLERID
@@ -1744,39 +1603,31 @@ RematchFScript:
 
 .Beth:
 	farwritetext BethRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Reena:
 	farwritetext ReenaRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Liz:
 	farwritetext LizRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinRematchText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GiftFScript:
 	checkcode VAR_CALLERID
@@ -1812,29 +1663,23 @@ PackFullFScript:
 
 .Beverly:
 	farwritetext BeverlyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Gina:
 	farwritetext GinaPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Dana:
 	farwritetext DanaPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Tiffany:
 	farwritetext TiffanyPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
+
 .Erin:
 	farwritetext ErinPackFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 RematchGiftFScript:
 	checkcode VAR_CALLERID
@@ -1850,9 +1695,7 @@ GymStatue0Script:
 	mapnametotext $0
 	opentext
 	farwritetext GymStatue_CityGymText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GymStatue1Script:
 	mapnametotext $0
@@ -1860,9 +1703,7 @@ GymStatue1Script:
 	farwritetext GymStatue_CityGymText
 	buttonsound
 	farwritetext GymStatue_WinningTrainersText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GymStatue2Script:
 	mapnametotext $0
@@ -1870,9 +1711,7 @@ GymStatue2Script:
 	farwritetext GymStatue_CityGymText
 	buttonsound
 	farwritetext GymStatue_TwoWinningTrainersText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 GymStatue3Script:
 	mapnametotext $0
@@ -1880,9 +1719,7 @@ GymStatue3Script:
 	farwritetext GymStatue_CityGymText
 	buttonsound
 	farwritetext GymStatue_ThreeWinningTrainersText
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 ReceiveItemScript: ; 0xbcdb9
 	waitsfx
@@ -1900,9 +1737,7 @@ GameCornerCoinVendorScript: ; 0xbcdcd
 	checkitem COIN_CASE
 	iftrue CoinVendor_IntroScript
 	farwritetext CoinVendor_NoCoinCaseText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbcde0
 
 CoinVendor_IntroScript: ; 0xbcde0
@@ -1948,25 +1783,18 @@ CoinVendor_IntroScript: ; 0xbcde0
 
 .NotEnoughMoney: ; 0xbce3f
 	farwritetext CoinVendor_NotEnoughMoneyText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbce46
 
 .CoinCaseFull: ; 0xbce46
 	farwritetext CoinVendor_CoinCaseFullText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbce4d
 
 .Cancel: ; 0xbce4d
 	farwritetext CoinVendor_CancelText
-	waitbutton
-	closetext
-	end
+	waitendtext
 ; 0xbce54
-
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -1991,21 +1819,15 @@ HappinessCheckScript:
 	if_less_than 50, .Unhappy
 	if_less_than 150, .KindaHappy
 	farwritetext HappinessText3
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .KindaHappy:
 	farwritetext HappinessText2
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 .Unhappy:
 	farwritetext HappinessText1
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 Movement_ContestResults_WalkAfterWarp: ; bcea1
 	step_right
@@ -2028,8 +1850,7 @@ VendingMachineScript:
 	if_equal $1, .FreshWater
 	if_equal $2, .SodaPop
 	if_equal $3, .Lemonade
-	closetext
-	end
+	endtext
 
 .FreshWater:
 	checkmoney $0, 200
@@ -2116,3 +1937,44 @@ VendingMachineScript:
 	db "Soda Pop     ¥300@"
 	db "Lemonade     ¥350@"
 	db "Cancel@"
+
+TreeGrottoScript:
+	scall _HiddenGrottoInitScript
+	iffalse_endtext
+	closetext
+	playsound SFX_EXIT_BUILDING
+	special FadeOutPalettes
+	pause 15
+	callasm _HiddenGrottoBackupMap
+	warpfacing UP, HIDDEN_TREE_GROTTO, 4, 15
+	end
+
+CaveGrottoScript:
+	scall _HiddenGrottoInitScript
+	iffalse_endtext
+	closetext
+	playsound SFX_EXIT_BUILDING
+	special FadeOutPalettes
+	pause 15
+	callasm _HiddenGrottoBackupMap
+	warpfacing UP, HIDDEN_CAVE_GROTTO, 5, 15
+	end
+
+_HiddenGrottoInitScript:
+	callasm .StoreCurHiddenGrotto
+	opentext
+	farwritetext HiddenGrottoText
+	yesorno
+	end
+
+.StoreCurHiddenGrotto:
+	ld a, [wScriptVar]
+	ld [wCurHiddenGrotto], a
+	ret
+
+_HiddenGrottoBackupMap:
+	ld a, [wMapGroup]
+	ld [wBackupMapGroup], a
+	ld a, [wMapNumber]
+	ld [wBackupMapNumber], a
+	ret

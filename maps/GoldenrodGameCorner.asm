@@ -7,8 +7,8 @@ GoldenrodGameCorner_MapScriptHeader:
 GoldenrodGameCorner_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $2, 10, GOLDENROD_CITY
-	warp_def $d, $3, 10, GOLDENROD_CITY
+	warp_def 13, 2, 10, GOLDENROD_CITY
+	warp_def 13, 3, 10, GOLDENROD_CITY
 
 .XYTriggers: db 0
 
@@ -312,21 +312,18 @@ GoldenrodGameCornerSlotsMachineScript:
 	refreshscreen
 	writebyte FALSE
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 GoldenrodGameCornerLuckySlotsMachineScript:
 	refreshscreen
 	writebyte TRUE
 	special Special_SlotMachine
-	closetext
-	end
+	endtext
 
 GoldenrodGameCornerCardFlipMachineScript:
 	refreshscreen
 	special Special_CardFlip
-	closetext
-	end
+	endtext
 
 GoldenrodGameCornerPrizeVendorIntroText:
 	text "Welcome!"
@@ -342,7 +339,7 @@ GoldenrodGameCornerPrizeVendorWhichPrizeText:
 	done
 
 GoldenrodGameCornerPrizeVendorConfirmPrizeText:
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "."
 	line "Is that right?"
 	done

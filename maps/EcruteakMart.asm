@@ -7,8 +7,8 @@ EcruteakMart_MapScriptHeader:
 EcruteakMart_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 9, ECRUTEAK_CITY
-	warp_def $7, $3, 9, ECRUTEAK_CITY
+	warp_def 7, 2, 9, ECRUTEAK_CITY
+	warp_def 7, 3, 9, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 

@@ -1,6 +1,6 @@
 GetTrainerEVsDVsAndPersonality: ; 270c4
-; Return the EVs, DVs and Personality of OtherTrainerClass in bc
-	ld a, [OtherTrainerClass]
+; Return the EVs, DVs and Personality of wOtherTrainerClass in bc
+	ld a, [wOtherTrainerClass]
 	dec a
 	ld c, a
 	ld b, 0
@@ -15,22 +15,22 @@ rept 6
 	inc de
 endr
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer], a
+	ld [wDVAndPersonalityBuffer], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 1], a
+	ld [wDVAndPersonalityBuffer + 1], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 2], a
+	ld [wDVAndPersonalityBuffer + 2], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 3], a
+	ld [wDVAndPersonalityBuffer + 3], a
 	ld a, [hli]
-	ld [DVAndPersonalityBuffer + 4], a
+	ld [wDVAndPersonalityBuffer + 4], a
 	ret
 ; 270d6
 
 TrainerClassDVsAndPersonality: ; 270d6
 	;  EVs  HP   Def  SAt  Ability  Gender
 	;  *    Atk  Spd  SDf  Nature   Form
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; kay
+	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; carrie
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; cal
 	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; falkner
 	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; bugsy
@@ -74,6 +74,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db  32, $AA, $AA, $AA, ABILITY_1 | QUIRKY, FEMALE ; pokefanf
 	db  48, $DD, $BB, $DB, ABILITY_1 | QUIRKY, MALE   ; officerm
 	db  48, $7B, $DB, $FF, ABILITY_1 | QUIRKY, FEMALE ; officerf
+	db  48, $E5, $FA, $D6, ABILITY_1 | QUIRKY, FEMALE ; nurse
 	db  40, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; pokemaniac
 	db  40, $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; cosplayer
 	db  40, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; super nerd

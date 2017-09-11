@@ -97,7 +97,7 @@ rept 4
 	add hl, de
 endr
 
-	ld a, [TimeOfDay]
+	ld a, [wTimeOfDay]
 	and 3
 	cp NITE
 	jr c, .time_species
@@ -116,7 +116,7 @@ GetFishGroupIndex: ; 9245b
 ; Return the index of fishgroup d in de.
 
 	push hl
-	ld hl, DailyFlags
+	ld hl, wDailyFlags
 	bit 2, [hl] ; ENGINE_SPECIAL_WILDDATA
 	pop hl
 	jr z, .done

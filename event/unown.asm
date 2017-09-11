@@ -1,38 +1,24 @@
 SpecialHoOhChamber: ; 0x8addb
-	ld hl, PartySpecies
+	ld hl, wPartySpecies
 	ld a, [hl]
-	ld hl, .FairyTable
-	ld de, 1
-	call IsInArray
-	ret nc
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, [wBaseType1]
+	cp FAIRY
+	jr z, .open
+	ld a, [wBaseType2]
+	cp FAIRY
+	ret nz
+
+.open
 	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ld b, SET_FLAG
 	jp EventFlagAction
-
-.FairyTable:
-	db AZUMARILL
-	db CLEFABLE
-	db CLEFAIRY
-	db GRANBULL
-	db JIGGLYPUFF
-	db MARILL
-	db MR__MIME
-	db SNUBBULL
-	db SYLVEON
-	db TOGEKISS
-	db TOGEPI
-	db TOGETIC
-	db WIGGLYTUFF
-if !DEF(FAITHFUL)
-	db MEGANIUM
-	db MISMAGIUS
-endc
-	db -1
 ; 0x8adef
 
 SpecialOmanyteChamber: ; 8adef
-	call GetSecondaryMapHeaderPointer
 	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ld b, CHECK_FLAG
 	call EventFlagAction
@@ -41,12 +27,12 @@ SpecialOmanyteChamber: ; 8adef
 	ret nz
 
 	ld a, WATER_STONE
-	ld [CurItem], a
-	ld hl, NumItems
+	ld [wCurItem], a
+	ld hl, wNumItems
 	call CheckItem
 	jr c, .open
 
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	ld b, a
 	inc b
 .loop
@@ -54,7 +40,7 @@ SpecialOmanyteChamber: ; 8adef
 	ret z
 	ld a, b
 	dec a
-	ld [CurPartyMon], a
+	ld [wCurPartyMon], a
 	push bc
 	ld a, MON_ITEM
 	call GetPartyParamLocation
@@ -71,9 +57,6 @@ SpecialOmanyteChamber: ; 8adef
 ; 8ae30
 
 SpecialAerodactylChamber: ; 8ae30
-	push de
-	push bc
-
 	call GetSecondaryMapHeaderPointer
 	ld a, h
 	cp RuinsofAlphAerodactylChamber_SecondMapHeader / $100
@@ -85,43 +68,30 @@ SpecialAerodactylChamber: ; 8ae30
 	ld de, EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	ld b, SET_FLAG
 	call EventFlagAction
-
 	scf
-	jr .done
+	ret
 
 .nope
 	and a
-
-.done
-	pop bc
-	pop de
 	ret
 ; 8ae4e
 
 SpecialKabutoChamber: ; 8ae4e
-	push hl
-	push de
-
 	call GetSecondaryMapHeaderPointer
 	ld a, h
 	cp RuinsofAlphKabutoChamber_SecondMapHeader / $100
-	jr nz, .done
+	ret nz
 	ld a, l
 	cp RuinsofAlphKabutoChamber_SecondMapHeader % $100
-	jr nz, .done
+	ret nz
 
 	ld de, EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	ld b, SET_FLAG
-	call EventFlagAction
-
-.done
-	pop de
-	pop hl
-	ret
+	jp EventFlagAction
 ; 8ae68
 
 Special_DisplayUnownWords: ; 8ae68
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld hl, .UnownMenuDataHeaders
 	and a
 	jr z, .load
@@ -145,7 +115,7 @@ Special_DisplayUnownWords: ; 8ae68
 rept 2
 	add hl, de
 endr
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld c, a
 	ld de, .UnownText
 	and a
@@ -160,7 +130,7 @@ endr
 
 .copy
 	call .CopyWord
-	ld bc, AttrMap - TileMap
+	ld bc, wAttrMap - wTileMap
 	add hl, bc
 	call .FillAttr
 	call WaitBGMap2

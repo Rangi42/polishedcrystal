@@ -31,7 +31,7 @@
 	const TOXIC_SPIKES ; $1c
 	const HEADBUTT     ; $1d
 	const HORN_ATTACK  ; $1e
-	const FURY_ATTACK  ; $1f
+	const TRICK        ; $1f
 	const HEX          ; $20
 	const TACKLE       ; $21
 	const BODY_SLAM    ; $22
@@ -54,7 +54,7 @@
 	const ACID         ; $33
 	const EMBER        ; $34
 	const FLAMETHROWER ; $35
-	const MIST         ; $36
+	const CALM_MIND    ; $36
 	const WATER_GUN    ; $37
 	const HYDRO_PUMP   ; $38
 	const SURF         ; $39
@@ -106,7 +106,7 @@
 	const SCREECH      ; $67
 	const DOUBLE_TEAM  ; $68
 	const RECOVER      ; $69
-	const HARDEN       ; $6a
+	const ROCK_BLAST   ; $6a
 	const MINIMIZE     ; $6b
 	const SMOKESCREEN  ; $6c
 	const CONFUSE_RAY  ; $6d
@@ -133,7 +133,7 @@
 	const IRON_HEAD    ; $82
 	const ICICLE_SPEAR ; $83
 	const BULLDOZE     ; $84
-	const CALM_MIND    ; $85
+	const AMNESIA      ; $85
 	const ROOST        ; $86
 	const SOFTBOILED   ; $87
 	const HI_JUMP_KICK ; $88
@@ -154,7 +154,7 @@
 	const DRAGON_DANCE ; $97
 	const CRABHAMMER   ; $98
 	const EXPLOSION    ; $99
-	const FURY_SWIPES  ; $9a
+	const FURY_STRIKES ; $9a
 	const BONEMERANG   ; $9b
 	const REST         ; $9c
 	const ROCK_SLIDE   ; $9d
@@ -167,7 +167,7 @@
 	const SUBSTITUTE   ; $a4
 	const GIGA_IMPACT  ; $a5
 	const SKETCH       ; $a6
-	const TRIPLE_KICK  ; $a7
+	const DRAIN_PUNCH  ; $a7
 	const THIEF        ; $a8
 	const WILL_O_WISP  ; $a9
 	const ZEN_HEADBUTT ; $aa
@@ -175,7 +175,7 @@
 	const FLAME_WHEEL  ; $ac
 	const HYPER_VOICE  ; $ad
 	const CURSE        ; $ae
-	const FLAIL        ; $af
+	const GYRO_BALL    ; $af
 	const ENERGY_BALL  ; $b0
 	const AEROBLAST    ; $b1
 	const SEED_BOMB    ; $b2
@@ -199,7 +199,7 @@
 	const ICY_WIND     ; $c4
 	const POWER_GEM    ; $c5
 	const WILD_CHARGE  ; $c6
-	const LOCK_ON      ; $c7
+	const POWER_WHIP   ; $c7
 	const OUTRAGE      ; $c8
 	const SANDSTORM    ; $c9
 	const GIGA_DRAIN   ; $ca
@@ -210,7 +210,7 @@
 	const SWAGGER      ; $cf
 	const MILK_DRINK   ; $d0
 	const SPARK        ; $d1
-	const FURY_CUTTER  ; $d2
+	const BUG_BITE     ; $d2
 	const STEEL_WING   ; $d3
 	const MEAN_LOOK    ; $d4
 	const ATTRACT      ; $d5
@@ -234,9 +234,9 @@
 	const IRON_TAIL    ; $e7
 	const METAL_CLAW   ; $e8
 	const AURA_SPHERE  ; $e9
-	const MORNING_SUN  ; $ea
+	const HEALINGLIGHT ; $ea
 	const HURRICANE    ; $eb
-	const MOONLIGHT    ; $ec
+	const KNOCK_OFF    ; $ec
 	const HIDDEN_POWER ; $ed
 	const CROSS_CHOP   ; $ee
 	const AQUA_JET     ; $ef

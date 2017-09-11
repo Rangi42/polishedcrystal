@@ -8,10 +8,10 @@ DimCave5F_MapScriptHeader:
 DimCave5F_MapEventHeader:
 
 .Warps: db 4
-	warp_def $1f, $d, 5, ROUTE_10_NORTH
-	warp_def $10, $2, 1, DIM_CAVE_4F
-	warp_def $1d, $1b, 2, DIM_CAVE_4F
-	warp_def $19, $1c, 3, DIM_CAVE_4F
+	warp_def 31, 13, 5, ROUTE_10_NORTH
+	warp_def 16, 2, 1, DIM_CAVE_4F
+	warp_def 29, 27, 2, DIM_CAVE_4F
+	warp_def 25, 28, 3, DIM_CAVE_4F
 
 .XYTriggers: db 0
 
@@ -63,7 +63,7 @@ DimCave5FRileyScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -78,7 +78,7 @@ DimCave5FRileyScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_BRACER
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -89,13 +89,6 @@ DimCave5FRileyScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_RILEY
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "…You are?"

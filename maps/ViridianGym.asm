@@ -7,8 +7,8 @@ ViridianGym_MapScriptHeader:
 ViridianGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $2d, $6, 1, VIRIDIAN_CITY
-	warp_def $2d, $7, 1, VIRIDIAN_CITY
+	warp_def 45, 6, 1, VIRIDIAN_CITY
+	warp_def 45, 7, 1, VIRIDIAN_CITY
 
 .XYTriggers: db 0
 
@@ -50,26 +50,18 @@ BlueScript_0x9aa26:
 	setflag ENGINE_EARTHBADGE
 	setevent EVENT_FINAL_BATTLE_WITH_LYRA
 .FightDone:
-	checkevent EVENT_GOT_TM41_STONE_EDGE
-	iftrue BlueEpilogueScript
+	checkevent EVENT_GOT_TM71_STONE_EDGE
+	iftrue_jumpopenedtext LeaderBlueEpilogueText
 	writetext LeaderBlueAfterText
 	buttonsound
 	verbosegivetmhm TM_STONE_EDGE
-	setevent EVENT_GOT_TM41_STONE_EDGE
+	setevent EVENT_GOT_TM71_STONE_EDGE
 	jumpopenedtext BlueOutroText
 
-BlueEpilogueScript:
-	jumpopenedtext LeaderBlueEpilogueText
-
 ViridianGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_BLUE
-	iftrue .ViridianGymGuyWinScript
-	jumpopenedtext ViridianGymGuyText
-
-.ViridianGymGuyWinScript:
-	jumpopenedtext ViridianGymGuyWinText
+	iftrue_jumptextfaceplayer ViridianGymGuyWinText
+	jumptextfaceplayer ViridianGymGuyText
 
 TrainerAceDuoAraandbela1:
 	trainer EVENT_BEAT_ACE_DUO_ARA_AND_BELA, ACE_DUO, ARAANDBELA1, AceDuoAraandbela1SeenText, AceDuoAraandbela1BeatenText, 0, AceDuoAraandbela1Script

@@ -8,9 +8,9 @@ CinnabarVolcanoB2F_MapScriptHeader:
 CinnabarVolcanoB2F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $3, $d, 5, CINNABAR_VOLCANO_B1F
-	warp_def $13, $19, 6, CINNABAR_VOLCANO_B1F
-	warp_def $6, $6, 7, CINNABAR_VOLCANO_B1F ; hole
+	warp_def 3, 13, 5, CINNABAR_VOLCANO_B1F
+	warp_def 19, 25, 6, CINNABAR_VOLCANO_B1F
+	warp_def 6, 6, 7, CINNABAR_VOLCANO_B1F ; hole
 
 .XYTriggers: db 0
 
@@ -29,7 +29,7 @@ const_value set 2
 CinnabarVolcanoB2FBouldersLand:
 	checkevent EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
 	iffalse .skip1
-	changeblock $6, $6, $5f
+	changeblock 6, 6, $5f
 .skip1
 	return
 

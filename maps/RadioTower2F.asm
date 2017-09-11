@@ -7,8 +7,8 @@ RadioTower2F_MapScriptHeader:
 RadioTower2F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $0, 1, RADIO_TOWER_3F
-	warp_def $0, $f, 3, RADIO_TOWER_1F
+	warp_def 0, 0, 1, RADIO_TOWER_3F
+	warp_def 0, 15, 3, RADIO_TOWER_1F
 
 .XYTriggers: db 0
 
@@ -27,7 +27,7 @@ RadioTower2F_MapEventHeader:
 	person_event SPRITE_ROCKET_GIRL, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_BLACK_BELT, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d9cb, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
 	person_event SPRITE_BLACK_BELT, 1, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5da44, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_JIGGLYPUFF, 1, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RadioTowerJigglypuff, -1
+	person_event SPRITE_JIGGLYPUFF, 1, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, JIGGLYPUFF, RadioTowerJigglypuffText, -1
 	person_event SPRITE_RECEPTIONIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5d8ff, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_ROCKER, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower2FRockerText, EVENT_GOLDENROD_CITY_CIVILIANS
 
@@ -43,14 +43,6 @@ TeacherScript_0x5d701:
 
 .Rockets:
 	jumpopenedtext UnknownText_0x5d983
-
-RadioTowerJigglypuff:
-	opentext
-	writetext RadioTowerJigglypuffText
-	cry JIGGLYPUFF
-	waitbutton
-	closetext
-	end
 
 TrainerGruntM4:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_4, GRUNTM, 4, GruntM4SeenText, GruntM4BeatenText, 0, GruntM4Script

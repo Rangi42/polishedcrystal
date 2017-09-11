@@ -7,8 +7,8 @@ CeladonUniversityClassroom4_MapScriptHeader:
 CeladonUniversityClassroom4_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $2, 9, CELADON_UNIVERSITY_1F
-	warp_def $b, $3, 9, CELADON_UNIVERSITY_1F
+	warp_def 11, 2, 9, CELADON_UNIVERSITY_1F
+	warp_def 11, 3, 9, CELADON_UNIVERSITY_1F
 
 .XYTriggers: db 0
 
@@ -33,9 +33,9 @@ const_value set 2
 
 CeladonUniversityClassroom4RaymondScript:
 	faceplayer
-	opentext
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
 	iftrue .Beaten
+	opentext
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
 	iftrue .IntroducedCeladonFour1
 	writetext .IntroText1
@@ -44,7 +44,7 @@ CeladonUniversityClassroom4RaymondScript:
 	writetext .IntroText2
 .AfterIntro
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoBattleText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -54,34 +54,23 @@ CeladonUniversityClassroom4RaymondScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	opentext
 .Beaten
+	opentext
 	setevent EVENT_INTRODUCED_CELADON_FOUR
 	checkevent EVENT_BEAT_COOLTRAINERM_COREY
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	iftrue .GotItem
+	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	buttonsound
 	verbosegiveitem CHOICE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-.GotItem:
-	writetext .FinalText
-	waitbutton
-.Done:
-	closetext
-	end
-
-.NoBattle:
-	jumpopenedtext .NoBattleText
-
-.NotFinished:
-	jumpopenedtext .AfterText1
+	jumpopenedtext .FinalText
 
 .IntroText1:
 	text "Hey! I'm Raymond!"
@@ -226,14 +215,11 @@ CeladonUniversityClassroom4Rich_boyScript:
 	writetext .Text1
 	buttonsound
 	verbosegiveitem ABILITY_CAP
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
 .GotItem:
 	writetext .Text2
-	waitbutton
-.Done:
-	closetext
-	end
+	waitendtext
 
 .Text1:
 	text "We're learning"
@@ -255,6 +241,15 @@ CeladonUniversityClassroom4Rich_boyScript:
 
 	para "an Ability Cap"
 	line "can't change."
+
+	para "But! If a #-"
+	line "mon holding an"
+
+	para "Ability Cap has"
+	line "an Egg, its baby"
+
+	para "might have a"
+	line "hidden ability!"
 	done
 
 CeladonUniversityClassroom4BlackboardText:
@@ -280,11 +275,9 @@ CeladonUniversityClassroom4Bookshelf1:
 	writetext .Text1
 	buttonsound
 	verbosegiveitem X_SPCL_ATK
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY
-.Done
-	closetext
-	end
+	endtext
 
 .Text1:
 	text "This bookcase is"

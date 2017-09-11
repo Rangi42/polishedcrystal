@@ -1,6 +1,6 @@
 TrainerClassAttributes: ; 3959c
 
-; Kay
+; Carrie
 	db MAX_POTION, 0 ; items
 	db 25 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_SMART + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_CAUTIOUS + AI_STATUS + AI_RISKY
@@ -261,6 +261,12 @@ TrainerClassAttributes: ; 3959c
 ; Officerf
 	db FRESH_WATER, 0 ; items
 	db 15 ; base reward
+	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
+	dw CONTEXT_USE + SWITCH_SOMETIMES
+
+; Nurse
+	db FULL_RESTORE, 0 ; items
+	db 16 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_STATUS
 	dw CONTEXT_USE + SWITCH_SOMETIMES
 

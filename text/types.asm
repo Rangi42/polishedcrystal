@@ -1,5 +1,5 @@
 PrintMonTypes: ; 5090d
-; Print one or both types of [CurSpecies]
+; Print one or both types of [wCurSpecies]
 ; on the stats screen at hl.
 
 	push hl
@@ -8,28 +8,28 @@ PrintMonTypes: ; 5090d
 
 if !DEF(FAITHFUL)
 	; PrintMonTypes is only called for the stats screen,
-	; so assume that the full data is in TempMon
+	; so assume that the full data is in wTempMon
 	; Armored Mewtwo is Psychic/Steel
-	ld a, [TempMonSpecies]
+	ld a, [wTempMonSpecies]
 	cp MEWTWO
 	jr nz, .not_armored_mewtwo
-	ld a, [TempMonItem]
+	ld a, [wTempMonItem]
 	cp ARMOR_SUIT
 	jr nz, .not_armored_mewtwo
 	ld a, STEEL
-	ld [BaseType2], a
+	ld [wBaseType2], a
 .not_armored_mewtwo
 endc
 
 	push hl
-	ld a, [BaseType1]
+	ld a, [wBaseType1]
 	call .Print
 
 	; Single-typed monsters really
 	; have two of the same type.
-	ld a, [BaseType1]
+	ld a, [wBaseType1]
 	ld b, a
-	ld a, [BaseType2]
+	ld a, [wBaseType2]
 	cp b
 	pop hl
 	ret z
@@ -56,7 +56,7 @@ endc
 
 
 GetTypeName: ; 50964
-; Copy the name of type [wd265] to StringBuffer1.
+; Copy the name of type [wd265] to wStringBuffer1.
 
 	ld a, [wd265]
 	ld hl, TypeNames
@@ -68,7 +68,7 @@ endr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, StringBuffer1
+	ld de, wStringBuffer1
 	ld bc, 13
 	jp CopyBytes
 ; 5097b

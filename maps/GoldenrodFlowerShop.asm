@@ -7,8 +7,8 @@ GoldenrodFlowerShop_MapScriptHeader:
 GoldenrodFlowerShop_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 6, GOLDENROD_CITY
-	warp_def $7, $3, 6, GOLDENROD_CITY
+	warp_def 7, 2, 6, GOLDENROD_CITY
+	warp_def 7, 3, 6, GOLDENROD_CITY
 
 .XYTriggers: db 0
 

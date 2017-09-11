@@ -22,7 +22,7 @@ AppendToMovementBuffer:: ; 1b3f
 	ld e, [hl]
 	inc [hl]
 	ld d, 0
-	ld hl, MovementBuffer
+	ld hl, wMovementBuffer
 	add hl, de
 	ld [hl], a
 	pop de

@@ -98,7 +98,7 @@ endr
 	push bc
 ; Get the Trainer Class name and copy it into wBugContestWinnerName.
 	farcall GetTrainerClassName
-	ld hl, StringBuffer1
+	ld hl, wStringBuffer1
 	ld de, wBugContestWinnerName
 	ld bc, TRAINER_CLASS_NAME_LENGTH
 	call CopyBytes
@@ -122,13 +122,13 @@ endr
 	ld b, a
 	farcall GetTrainerName
 ; Append the name to wBugContestWinnerName.
-	ld hl, StringBuffer1
+	ld hl, wStringBuffer1
 	pop de
 	ld bc, NAME_LENGTH - 1
 	jp CopyBytes
 
 .player
-	ld hl, PlayerName
+	ld hl, wPlayerName
 	ld de, wBugContestWinnerName
 	ld bc, NAME_LENGTH
 	jp CopyBytes

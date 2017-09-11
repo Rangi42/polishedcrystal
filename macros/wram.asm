@@ -108,7 +108,7 @@ ENDM
 
 
 channel_struct: MACRO
-; Addreses are Channel1 (c101).
+; Addreses are wChannel1 (c101).
 \1MusicID::           dw
 \1MusicBank::         db
 \1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest

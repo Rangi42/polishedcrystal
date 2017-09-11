@@ -8,7 +8,7 @@ BigSnorlaxSpriteGFX:          INCBIN "gfx/overworld/big_snorlax.2bpp" ; c4900
 SurfingPikachuSpriteGFX:      INCBIN "gfx/overworld/surf_pikachu.2bpp" ; c4980
 RocketSpriteGFX:              INCBIN "gfx/overworld/rocket.2bpp" ; c4b00
 RocketGirlSpriteGFX:          INCBIN "gfx/overworld/rocket_girl.2bpp" ; c4c80
-NurseSpriteGFX:               INCBIN "gfx/overworld/nurse.2bpp" ; c4e00
+BowingNurseSpriteGFX:         INCBIN "gfx/overworld/bowing_nurse.2bpp" ; c4e00
 LinkReceptionistSpriteGFX:    INCBIN "gfx/overworld/link_receptionist.2bpp" ; c4ec0
 ClerkSpriteGFX:               INCBIN "gfx/overworld/clerk.2bpp" ; c5040
 FisherSpriteGFX:              INCBIN "gfx/overworld/fisher.2bpp" ; c51c0
@@ -44,4 +44,4 @@ KrisBikeSpriteGFX:            INCBIN "gfx/overworld/kris_bike.2bpp" ; c7bc0
 ChrisSurfSpriteGFX:           INCBIN "gfx/overworld/chris_surf.2bpp"
 KrisSurfSpriteGFX:            INCBIN "gfx/overworld/kris_surf.2bpp"
 BallCutFruitSpriteGFX:        INCBIN "gfx/overworld/ball_cut_fruit.2bpp"
-RockBoulderFossilSpriteGFX:   INCBIN "gfx/overworld/rock_boulder_fossil.2bpp"
+BoulderRockFossilSpriteGFX:   INCBIN "gfx/overworld/boulder_rock_fossil.2bpp"

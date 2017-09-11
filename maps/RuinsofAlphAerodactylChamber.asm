@@ -9,11 +9,11 @@ RuinsofAlphAerodactylChamber_MapScriptHeader:
 RuinsofAlphAerodactylChamber_MapEventHeader:
 
 .Warps: db 5
-	warp_def $9, $3, 4, RUINS_OF_ALPH_OUTSIDE
-	warp_def $9, $4, 4, RUINS_OF_ALPH_OUTSIDE
-	warp_def $3, $3, 8, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $3, $4, 9, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def $0, $4, 1, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
+	warp_def 9, 3, 4, RUINS_OF_ALPH_OUTSIDE
+	warp_def 9, 4, 4, RUINS_OF_ALPH_OUTSIDE
+	warp_def 3, 3, 8, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 3, 4, 9, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_def 0, 4, 1, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
 
 .XYTriggers: db 0
 
@@ -37,15 +37,15 @@ RuinsofAlphAerodactylChamberTrigger0:
 UnknownScript_0x58db9:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iftrue UnknownScript_0x58dc3
-	changeblock $4, $0, $24
+	changeblock 4, 0, $24
 UnknownScript_0x58dc3:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	iffalse UnknownScript_0x58dca
 	return
 
 UnknownScript_0x58dca:
-	changeblock $2, $2, $1
-	changeblock $4, $2, $2
+	changeblock 2, 2, $1
+	changeblock 4, 2, $2
 	return
 
 UnknownScript_0x58dd3:
@@ -54,12 +54,11 @@ UnknownScript_0x58dd3:
 	showemote EMOTE_SHOCK, PLAYER, 20
 	pause 30
 	playsound SFX_STRENGTH
-	changeblock $4, $0, $25
+	changeblock 4, 0, $25
 	reloadmappart
 	earthquake 50
 	dotrigger $1
-	closetext
-	end
+	endtext
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
 	refreshscreen
@@ -76,12 +75,12 @@ UnknownScript_0x58df7:
 	domaptrigger RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
-	changeblock $2, $2, $14
-	changeblock $4, $2, $15
+	changeblock 2, 2, $14
+	changeblock 4, 2, $15
 	reloadmappart
 	playsound SFX_STRENGTH
 	earthquake 80
-	applymovement PLAYER, MovementData_0x58e4d
+	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
 	waitsfx
 	pause 20
@@ -94,30 +93,15 @@ MapRuinsofAlphAerodactylChamberSignpost3Script:
 	restoretypeface
 	end
 
+MapRuinsofAlphAerodactylChamberSignpost5Script:
+	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
+	iftrue_jumptext UnknownText_0x58ea2
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext
 	writetext UnknownText_0x58e4f
 	writebyte $1
 	special Special_DisplayUnownWords
-	closetext
-	end
-
-MapRuinsofAlphAerodactylChamberSignpost5Script:
-	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue UnknownScript_0x58e46
-	opentext
-	writetext UnknownText_0x58e4f
-	writebyte $1
-	special Special_DisplayUnownWords
-	closetext
-	end
-
-UnknownScript_0x58e46:
-	jumptext UnknownText_0x58ea2
-
-MovementData_0x58e4d:
-	db $59 ; movement
-	step_end
+	endtext
 
 UnknownText_0x58e4f:
 	text "Patterns appeared"

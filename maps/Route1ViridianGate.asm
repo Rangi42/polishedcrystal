@@ -7,10 +7,10 @@ Route1ViridianGate_MapScriptHeader:
 Route1ViridianGate_MapEventHeader:
 
 .Warps: db 4
-	warp_def $0, $4, 6, VIRIDIAN_CITY
-	warp_def $0, $5, 7, VIRIDIAN_CITY
-	warp_def $7, $4, 1, ROUTE_1
-	warp_def $7, $5, 1, ROUTE_1
+	warp_def 0, 4, 6, VIRIDIAN_CITY
+	warp_def 0, 5, 7, VIRIDIAN_CITY
+	warp_def 7, 4, 1, ROUTE_1
+	warp_def 7, 5, 1, ROUTE_1
 
 .XYTriggers: db 0
 

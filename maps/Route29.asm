@@ -8,11 +8,11 @@ Route29_MapScriptHeader:
 Route29_MapEventHeader:
 
 .Warps: db 1
-	warp_def $1, $1b, 3, ROUTE_29_46_GATE
+	warp_def 1, 27, 3, ROUTE_29_46_GATE
 
 .XYTriggers: db 2
-	xy_trigger 1, $8, $35, Route29Tutorial1
-	xy_trigger 1, $9, $35, Route29Tutorial2
+	xy_trigger 1, 8, 53, Route29Tutorial1
+	xy_trigger 1, 9, 53, Route29Tutorial2
 
 .Signposts: db 2
 	signpost 7, 51, SIGNPOST_JUMPTEXT, Route29Sign1Text
@@ -59,30 +59,7 @@ Route29Tutorial1:
 	showtext CatchingTutorialIntroText
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
-	stopfollow
-	loadwildmon PIDGEY, 5
-	catchtutorial BATTLETYPE_TUTORIAL
-	special DeleteSavedMusic
-	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	spriteface ROUTE29_LYRA, UP
-	opentext
-	writetext CatchingTutorialDebriefText
-	buttonsound
-	itemtotext POKE_BALL, $1
-	scall LyraScript_ReceiveTheBalls
-	giveitem POKE_BALL, 5
-	itemnotify
-	writetext CatchingTutorialGoodbyeText
-	waitbutton
-	closetext
-	applymovement ROUTE29_LYRA, LyraMovementData3
-	disappear ROUTE29_LYRA
-	dotrigger $0
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
-	setevent EVENT_LEARNED_TO_CATCH_POKEMON
-	playmapmusic
-	end
+	jump Route29TutorialScript
 
 Route29Tutorial2:
 	spriteface ROUTE29_LYRA, UP
@@ -95,16 +72,18 @@ Route29Tutorial2:
 	showtext CatchingTutorialIntroText
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData2b
+Route29TutorialScript:
 	stopfollow
-	loadwildmon SENTRET, 5
+	loadwildmon PIDGEY, 5
 	catchtutorial BATTLETYPE_TUTORIAL
+	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	spriteface ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
 	buttonsound
 	itemtotext POKE_BALL, $1
-	scall LyraScript_ReceiveTheBalls
+	callstd receiveitem
 	giveitem POKE_BALL, 5
 	itemnotify
 	writetext CatchingTutorialGoodbyeText
@@ -119,25 +98,16 @@ Route29Tutorial2:
 	playmapmusic
 	end
 
-LyraScript_ReceiveTheBalls:
-	jumpstd receiveitem
-	end
-
 CooltrainerMScript_0x1a1031:
-	faceplayer
-	opentext
 	checknite
-	iftrue .nite
-	jumpopenedtext Text_WaitingForNight
-
-.nite
-	jumpopenedtext Text_WaitingForMorning
+	iftrue_jumptextfaceplayer Text_WaitingForMorning
+	jumptextfaceplayer Text_WaitingForNight
 
 TuscanyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
-	iftrue TuscanyTuesdayScript
+	iftrue_jumpopenedtext TuscanyTuesdayText
 	checkcode VAR_WEEKDAY
 	if_not_equal TUESDAY, TuscanyNotTuesdayScript
 	checkevent EVENT_MET_TUSCANY_OF_TUESDAY
@@ -149,29 +119,15 @@ TuscanyScript:
 	writetext TuscanyGivesGiftText
 	buttonsound
 	verbosegiveitem SILK_SCARF
-	iffalse TuscanyDoneScript
+	iffalse_endtext
 	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
 	jumpopenedtext TuscanyGaveGiftText
-
-TuscanyTuesdayScript:
-	writetext TuscanyTuesdayText
-	waitbutton
-TuscanyDoneScript:
-	closetext
-	end
 
 TuscanyNotTuesdayScript:
 	jumpopenedtext TuscanyNotTuesdayText
 
 LyraMovementData1a:
 	step_up
-	step_up
-	step_up
-	step_up
-	step_right
-	step_right
-	step_end
-
 LyraMovementData2a:
 	step_up
 	step_up

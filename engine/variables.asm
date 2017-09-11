@@ -23,35 +23,35 @@ endr
 	ret nz
 	ld a, [de]
 .loadstringbuffer2 ; 8066c (20:466c)
-	ld de, StringBuffer2
+	ld de, wStringBuffer2
 	ld [de], a
 	ret
 ; 80671 (20:4671)
 
 .VarActionTable: ; 80671
-; $00: copy [de] to StringBuffer2
+; $00: copy [de] to wStringBuffer2
 ; $40: return address in de
 ; $80: call function
-	dwb StringBuffer2,                  RETVAR_STRBUF2
-	dwb PartyCount,                     RETVAR_STRBUF2
+	dwb wStringBuffer2,                  RETVAR_STRBUF2
+	dwb wPartyCount,                     RETVAR_STRBUF2
 	dwb .BattleResult,                  RETVAR_EXECUTE
-	dwb BattleType,                     RETVAR_ADDR_DE
-	dwb TimeOfDay,                      RETVAR_STRBUF2
+	dwb wBattleType,                     RETVAR_ADDR_DE
+	dwb wTimeOfDay,                      RETVAR_STRBUF2
 	dwb .CountCaughtMons,               RETVAR_EXECUTE
 	dwb .CountSeenMons,                 RETVAR_EXECUTE
 	dwb .CountBadges,                   RETVAR_EXECUTE
-	dwb PlayerState,                    RETVAR_ADDR_DE
-	dwb .PlayerFacing,                  RETVAR_EXECUTE
+	dwb wPlayerState,                    RETVAR_ADDR_DE
+	dwb .wPlayerFacing,                  RETVAR_EXECUTE
 	dwb hHours,                         RETVAR_STRBUF2
 	dwb .DayOfWeek,                     RETVAR_EXECUTE
-	dwb MapGroup,                       RETVAR_STRBUF2
-	dwb MapNumber,                      RETVAR_STRBUF2
+	dwb wMapGroup,                       RETVAR_STRBUF2
+	dwb wMapNumber,                      RETVAR_STRBUF2
 	dwb .UnownCaught,                   RETVAR_EXECUTE
 	dwb wPermission,                    RETVAR_STRBUF2
 	dwb .BoxFreeSpace,                  RETVAR_EXECUTE
 	dwb wBugContestMinsRemaining,       RETVAR_STRBUF2
-	dwb XCoord,                         RETVAR_STRBUF2
-	dwb YCoord,                         RETVAR_STRBUF2
+	dwb wXCoord,                         RETVAR_STRBUF2
+	dwb wYCoord,                         RETVAR_STRBUF2
 	dwb wSpecialPhoneCallID,            RETVAR_STRBUF2
 	dwb wNrOfBeatenBattleTowerTrainers, RETVAR_STRBUF2
 	dwb wKurtApricornQuantity,          RETVAR_STRBUF2
@@ -59,7 +59,7 @@ endr
 	dwb wBlueCardBalance,               RETVAR_ADDR_DE
 	dwb wBuenasPassword,                RETVAR_ADDR_DE
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
-	dwb BattlePoints,                   RETVAR_ADDR_DE
+	dwb wBattlePoints,                   RETVAR_ADDR_DE
 	dwb .CountPokemonJournals,          RETVAR_EXECUTE
 	dwb .CountTrainerStars,             RETVAR_EXECUTE
 	dwb NULL,                           RETVAR_STRBUF2
@@ -67,8 +67,8 @@ endr
 
 .CountCaughtMons: ; 806c5
 ; Caught mons.
-	ld hl, PokedexCaught
-	ld b, EndPokedexCaught - PokedexCaught
+	ld hl, wPokedexCaught
+	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
@@ -76,8 +76,8 @@ endr
 
 .CountSeenMons: ; 806d3
 ; Seen mons.
-	ld hl, PokedexSeen
-	ld b, EndPokedexSeen - PokedexSeen
+	ld hl, wPokedexSeen
+	ld b, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
@@ -85,16 +85,16 @@ endr
 
 .CountBadges: ; 806e1
 ; Number of owned badges.
-	ld hl, Badges
-	ld b, BadgesEnd - Badges
+	ld hl, wBadges
+	ld b, wBadgesEnd - wBadges
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
 ; 806ef
 
-.PlayerFacing: ; 806ef
+.wPlayerFacing: ; 806ef
 ; The direction the player is facing.
-	ld a, [PlayerDirection]
+	ld a, [wPlayerDirection]
 	and $c
 	rrca
 	rrca
@@ -114,7 +114,7 @@ endr
 	jp .loadstringbuffer2
 
 .count
-	ld hl, UnownDex
+	ld hl, wUnownDex
 	ld b, 0
 .loop
 	ld a, [hli]
@@ -147,8 +147,8 @@ endr
 ; 80730
 
 .CountPokemonJournals:
-	ld hl, PokemonJournals
-	ld b, PokemonJournalsEnd - PokemonJournals
+	ld hl, wPokemonJournals
+	ld b, wPokemonJournalsEnd - wPokemonJournals
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
@@ -179,8 +179,8 @@ endr
 .nostar2
 	; star for completing the Pokédex
 	push bc
-	ld hl, PokedexCaught
-	ld b, EndPokedexCaught - PokedexCaught
+	ld hl, wPokedexCaught
+	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
 	pop bc
 	cp NUM_POKEMON
@@ -189,8 +189,8 @@ endr
 .nostar3
 	; star for reading all Pokémon Journals
 	push bc
-	ld hl, PokemonJournals
-	ld b, PokemonJournalsEnd - PokemonJournals
+	ld hl, wPokemonJournals
+	ld b, wPokemonJournalsEnd - wPokemonJournals
 	call CountSetBits
 	pop bc
 	cp NUM_POKEMON_JOURNALS

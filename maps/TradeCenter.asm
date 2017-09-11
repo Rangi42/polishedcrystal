@@ -9,8 +9,8 @@ TradeCenter_MapScriptHeader:
 TradeCenter_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $4, 2, POKECENTER_2F
-	warp_def $7, $5, 2, POKECENTER_2F
+	warp_def 7, 4, 2, POKECENTER_2F
+	warp_def 7, 5, 2, POKECENTER_2F
 
 .XYTriggers: db 0
 

@@ -10,8 +10,8 @@ RuinsofAlphResearchCenter_MapScriptHeader:
 RuinsofAlphResearchCenter_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 6, RUINS_OF_ALPH_OUTSIDE
-	warp_def $7, $3, 6, RUINS_OF_ALPH_OUTSIDE
+	warp_def 7, 2, 6, RUINS_OF_ALPH_OUTSIDE
+	warp_def 7, 3, 6, RUINS_OF_ALPH_OUTSIDE
 
 .XYTriggers: db 0
 
@@ -42,7 +42,7 @@ UnknownScript_0x59185:
 	return
 
 UnknownScript_0x5918b:
-	moveperson RUINSOFALPHRESEARCHCENTER_SCIENTIST3, $3, $7
+	moveperson RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 	return
 
@@ -58,7 +58,7 @@ UnknownScript_0x59192:
 	pause 30
 	spriteface RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
 	showtext UnknownText_0x59278
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59274
+	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	opentext
 	writetext UnknownText_0x592fa
 	playsound SFX_ITEM
@@ -67,7 +67,7 @@ UnknownScript_0x59192:
 	writetext UnknownText_0x59311
 	waitbutton
 	closetext
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x59276
+	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_up
 	dotrigger $0
 	special RestartMapMusic
 	end
@@ -118,12 +118,12 @@ UnknownScript_0x591df:
 .GoAround:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterScientistStepAsideMovementData
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave1MovementData
+	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	stopfollow
 .Continue:
 	playsound SFX_EXIT_BUILDING
 	disappear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
-	applymovement PLAYER, RuinsofAlphResearchCenterLeave1MovementData
+	applyonemovement PLAYER, step_down
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
 	special FadeOutPalettes
@@ -132,7 +132,7 @@ UnknownScript_0x591df:
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	setevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	pause 15
-	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, $13, $12
+	warpfacing DOWN, RUINS_OF_ALPH_OUTSIDE, 19, 18
 	end
 
 RuinsofAlphResearchCenterScientistStepAsideMovementData:
@@ -142,7 +142,6 @@ RuinsofAlphResearchCenterScientistStepAsideMovementData:
 
 RuinsofAlphResearchCenterLeave2MovementData:
 	step_down
-RuinsofAlphResearchCenterLeave1MovementData:
 	step_down
 	step_end
 
@@ -216,14 +215,6 @@ MovementData_0x5926f:
 	step_up
 	step_left
 	turn_head_up
-	step_end
-
-MovementData_0x59274:
-	step_down
-	step_end
-
-MovementData_0x59276:
-	step_up
 	step_end
 
 UnknownText_0x59278:
@@ -437,7 +428,7 @@ UnknownText_0x597d9:
 	line "Name: Unown"
 
 	para "A total of @"
-	deciram ScriptVar, 1, 2
+	deciram wScriptVar, 1, 2
 	text ""
 	line "kinds found."
 	done

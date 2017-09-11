@@ -7,9 +7,9 @@ Route5UndergroundEntrance_MapScriptHeader:
 Route5UndergroundEntrance_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $3, 1, ROUTE_5
-	warp_def $7, $4, 1, ROUTE_5
-	warp_def $4, $4, 1, UNDERGROUND
+	warp_def 7, 3, 1, ROUTE_5
+	warp_def 7, 4, 1, ROUTE_5
+	warp_def 4, 4, 1, UNDERGROUND
 
 .XYTriggers: db 0
 

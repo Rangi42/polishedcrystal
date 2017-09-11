@@ -7,9 +7,9 @@ AzaleaPokeCenter1F_MapScriptHeader:
 AzaleaPokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 1, AZALEA_TOWN
-	warp_def $7, $6, 1, AZALEA_TOWN
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 1, AZALEA_TOWN
+	warp_def 7, 6, 1, AZALEA_TOWN
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 

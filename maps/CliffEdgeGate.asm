@@ -7,8 +7,8 @@ CliffEdgeGate_MapScriptHeader:
 CliffEdgeGate_MapEventHeader:
 
 .Warps: db 2
-	warp_def $13, $11, 8, CIANWOOD_CITY
-	warp_def $13, $3, 1, ROUTE_47
+	warp_def 19, 17, 8, CIANWOOD_CITY
+	warp_def 19, 3, 1, ROUTE_47
 
 .XYTriggers: db 0
 

@@ -7,8 +7,8 @@ Route38_MapScriptHeader:
 Route38_MapEventHeader:
 
 .Warps: db 2
-	warp_def $8, $23, 1, ROUTE_38_ECRUTEAK_GATE
-	warp_def $9, $23, 2, ROUTE_38_ECRUTEAK_GATE
+	warp_def 8, 35, 1, ROUTE_38_ECRUTEAK_GATE
+	warp_def 9, 35, 2, ROUTE_38_ECRUTEAK_GATE
 
 .XYTriggers: db 0
 

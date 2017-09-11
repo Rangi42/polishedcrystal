@@ -8,11 +8,11 @@ Route18West_MapScriptHeader:
 Route18West_MapEventHeader:
 
 .Warps: db 2
-	warp_def $6, $13, 1, ROUTE_18_GATE
-	warp_def $7, $13, 2, ROUTE_18_GATE
+	warp_def 6, 19, 1, ROUTE_18_GATE
+	warp_def 7, 19, 2, ROUTE_18_GATE
 
 .XYTriggers: db 1
-	xy_trigger 0, $0, $c, Route18WestBikeCheckScript
+	xy_trigger 0, 0, 12, Route18WestBikeCheckScript
 
 .Signposts: db 0
 
@@ -27,13 +27,13 @@ Route18WestBikeCheckScript:
 	callasm .CheckPlayerState
 	if_equal PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
-	applymovement PLAYER, Route18WestStepDownMovementData
+	applyonemovement PLAYER, step_down
 .done
 	end
 
 .CheckPlayerState:
-	ld a, [PlayerState]
-	ld [ScriptVar], a
+	ld a, [wPlayerState]
+	ld [wScriptVar], a
 	ret
 
 TrainerBikerCharles:
@@ -42,10 +42,6 @@ TrainerBikerCharles:
 BikerCharlesScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1ad293
-
-Route18WestStepDownMovementData:
-	step_down
-	step_end
 
 BikerCharlesSeenText:
 	text "We're fearless"

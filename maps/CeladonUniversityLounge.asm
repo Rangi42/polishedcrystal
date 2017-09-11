@@ -7,8 +7,8 @@ CeladonUniversityLounge_MapScriptHeader:
 CeladonUniversityLounge_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 10, CELADON_UNIVERSITY_1F
-	warp_def $b, $5, 10, CELADON_UNIVERSITY_1F
+	warp_def 11, 4, 10, CELADON_UNIVERSITY_1F
+	warp_def 11, 5, 10, CELADON_UNIVERSITY_1F
 
 .XYTriggers: db 0
 
@@ -41,7 +41,7 @@ CeladonUniversityLoungeNeeshaScript:
 	writetext .IntroText2
 .AfterIntro
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoBattleText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -55,30 +55,19 @@ CeladonUniversityLoungeNeeshaScript:
 .Beaten
 	setevent EVENT_INTRODUCED_CELADON_FOUR
 	checkevent EVENT_BEAT_COOLTRAINERM_COREY
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_RAYMOND
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_BEAT_COOLTRAINERM_FERGUS
-	iffalse .NotFinished
+	iffalse_jumpopenedtext .AfterText1
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	iftrue .GotItem
+	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
 	buttonsound
 	verbosegiveitem CHOICE_BAND
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-.GotItem:
-	writetext .FinalText
-	waitbutton
-.Done:
-	closetext
-	end
-
-.NoBattle:
-	jumpopenedtext .NoBattleText
-
-.NotFinished:
-	jumpopenedtext .AfterText1
+	jumpopenedtext .FinalText
 
 .IntroText1:
 	text "Hi! I'm Neesha!"
@@ -223,8 +212,7 @@ CeladonUniversityLoungeBookshelf2:
 	iffalse .Done
 	setevent EVENT_GOT_PP_MAX_IN_UNIVERSITY
 .Done
-	closetext
-	end
+	endtext
 
 .GotItem
 	jumpopenedtext .Text2

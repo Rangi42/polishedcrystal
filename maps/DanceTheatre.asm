@@ -7,8 +7,8 @@ DanceTheatre_MapScriptHeader:
 DanceTheatre_MapEventHeader:
 
 .Warps: db 2
-	warp_def $d, $5, 8, ECRUTEAK_CITY
-	warp_def $d, $6, 8, ECRUTEAK_CITY
+	warp_def 13, 5, 8, ECRUTEAK_CITY
+	warp_def 13, 6, 8, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 
@@ -23,7 +23,7 @@ DanceTheatre_MapEventHeader:
 	person_event SPRITE_KIMONO_GIRL, 1, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlKuni, -1
 	person_event SPRITE_KIMONO_GIRL, 2, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlMiki, -1
 	person_event SPRITE_GENTLEMAN, 10, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x994c6, -1
-	person_event SPRITE_RHYDON, 8, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RhydonScript_0x9951b, -1
+	person_event SPRITE_RHYDON, 8, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, RHYDON, UnknownText_0x99a0a, -1
 	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99a24, -1
 	person_event SPRITE_GRANNY, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99aaa, -1
 	person_event SPRITE_LADY, 10, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, DanceTheatreLadyText, -1
@@ -99,14 +99,6 @@ UnknownScript_0x99505:
 
 UnknownScript_0x99515:
 	jumpopenedtext UnknownText_0x999d5
-
-RhydonScript_0x9951b:
-	opentext
-	writetext UnknownText_0x99a0a
-	cry RHYDON
-	waitbutton
-	closetext
-	end
 
 MapDanceTheatreSignpost1Script:
 	jumptext UnknownText_0x99b79

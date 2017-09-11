@@ -7,15 +7,14 @@ GoldenrodDeptStore2F_MapScriptHeader:
 GoldenrodDeptStore2F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $0, $c, 1, GOLDENROD_DEPT_STORE_3F
-	warp_def $0, $f, 3, GOLDENROD_DEPT_STORE_1F
-	warp_def $0, $2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_def 0, 12, 1, GOLDENROD_DEPT_STORE_3F
+	warp_def 0, 15, 3, GOLDENROD_DEPT_STORE_1F
+	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
 
 .XYTriggers: db 0
 
-.Signposts: db 2
+.Signposts: db 1
 	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore2FDirectoryText
-	signpost 0, 3, SIGNPOST_JUMPSTD, elevatorbutton
 
 .PersonEvents: db 5
 	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_GOLDENROD_2F_1, -1
@@ -34,8 +33,8 @@ ClerkScript_0x55b65:
 
 UnknownText_0x55c25:
 	text "#gear can store"
-	line "up to ten phone"
-	cont "numbers."
+	line "up to twenty"
+	cont "phone numbers."
 
 	para "It's hard to de-"
 	line "cide which numbers"

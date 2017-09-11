@@ -11,24 +11,27 @@ import sys
 
 from itertools import izip_longest
 
-def chunk(L, n, fillvalue=None):
-	return izip_longest(*[iter(L)] * n, fillvalue=fillvalue)
-
 def build_map(mapfile):
 	mapping = {}
 	revmap = {}
 	with open(mapfile, 'r') as f:
 		for line in f:
-			if '<->' in line:
-				a, b = line.split('<->')
+			sym = '<->' in line
+			a, b = line.split('<->' if sym else '->')
+			if '-' in a and '-' in b:
+				a1, a2 = a.split('-')
+				b1, b2 = b.split('-')
+				a1, a2 = int(a1, 16), int(a2, 16)
+				b1, b2 = int(b1, 16), int(b2, 16)
+				for ai, bi in zip(range(a1, a2+1), range(b1, b2+1)):
+					mapping[ai], revmap[bi] = bi, ai
+					if sym:
+						mapping[bi], revmap[ai] = ai, bi
+			else:
 				a, b = int(a, 16), int(b, 16)
-				mapping[a], mapping[b] = b, a
-				revmap[b], revmap[a] = a, b
-			elif '->' in line:
-				a, b = line.split('->')
-				a, b = int(a, 16), int(b, 16)
-				mapping[a] = b
-				revmap[b] = a
+				mapping[a], revmap[b] = b, a
+				if sym:
+					mapping[b], revmap[a] = a, b
 	return (mapping, revmap)
 
 def transpose_metatiles(metatiles, mapping):
@@ -47,21 +50,21 @@ def transpose_palette(palette, revmap):
 			if not line.startswith('tilepal '):
 				continue
 			parts = [p.strip() for p in line.split(',')]
-			data.extend(parts[1:9])
-			if len(data) == 0x70:
-				data.extend(['ROOF'] * 0x10)
-	data.extend(['ROOF'] * (0x100 - len(data)))
+			data.extend(parts[1:])
+	data.extend(['TEXT'] * (0x100 - len(data)))
+	new_data = [data[revmap.get(i, i)] for i in range(0x100)]
+	while new_data and new_data[-1] == 'TEXT':
+		new_data.pop()
+	if len(new_data) % 2:
+		new_data.append('TEXT')
 	with open(palette, 'wb') as f:
-		for i in range(32):
-			if i == 14:
-				f.write('\nrept 8\n\tdb $ff\nendr\n\n')
-				continue
-			elif i == 15:
-				continue
-			seg = 0 if i < 14 else 1
-			row = [revmap.get(i*8+j, i*8+j) for j in range(8)]
-			line = '\ttilepal %d, %s\n' % (seg, ', '.join(data[b] for b in row))
+		n = 0
+		while new_data:
+			row, new_data = new_data[:8], new_data[8:]
+			seg = 0 if n < 0x80 else 1
+			line = '\ttilepal %d, %s\n' % (seg, ', '.join(row))
 			f.write(line)
+			n += len(row)
 
 def main():
 	if len(sys.argv) < 3:

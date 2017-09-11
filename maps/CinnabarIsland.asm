@@ -8,9 +8,9 @@ CinnabarIsland_MapScriptHeader:
 CinnabarIsland_MapEventHeader:
 
 .Warps: db 3
-	warp_def $f, $b, 1, CINNABAR_POKECENTER_1F
-	warp_def $9, $12, 1, CINNABAR_VOLCANO_1F
-	warp_def $7, $7, 1, POKEMON_MANSION_1F
+	warp_def 15, 11, 1, CINNABAR_POKECENTER_1F
+	warp_def 9, 18, 1, CINNABAR_VOLCANO_1F
+	warp_def 7, 7, 1, POKEMON_MANSION_1F
 
 .XYTriggers: db 0
 
@@ -51,14 +51,10 @@ CinnabarIslandBlue:
 	waitbutton
 	closetext
 	playsound SFX_WARP_TO
-	applymovement CINNABARISLAND_BLUE, CinnabarIslandBlueTeleport
+	applyonemovement CINNABARISLAND_BLUE, teleport_from
 	disappear CINNABARISLAND_BLUE
 	clearevent EVENT_VIRIDIAN_GYM_BLUE
 	end
-
-CinnabarIslandBlueTeleport:
-	teleport_from
-	step_end
 
 CinnabarIslandBlueText:
 	text "Who are you?"

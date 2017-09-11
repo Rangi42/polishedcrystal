@@ -28,7 +28,7 @@ endif
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace compare
+.PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace compare tools
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 
@@ -40,10 +40,11 @@ PYTHON = python
 CC     = gcc
 RM     = rm -f
 GFX    = $(PYTHON) gfx.py
-LZ     = utils/lzcomp
 MD5    = md5sum
 
-includes  := $(PYTHON) utils/scan_includes.py
+LZ            = tools/lzcomp
+SCAN_INCLUDES = tools/scan_includes
+
 bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
 
@@ -81,6 +82,21 @@ bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
 freespace: $(bank_ends_txt) $(roms_md5)
 
+
+# Build tools when building the rom
+ifeq ($(filter clean tools,$(MAKECMDGOALS)),)
+Makefile: tools ;
+endif
+
+tools: $(LZ) $(SCAN_INCLUDES)
+
+$(LZ): $(LZ).c
+	$(CC) $(CFLAGS) -o $@ $<
+
+$(SCAN_INCLUDES): $(SCAN_INCLUDES).c
+	$(CC) $(CFLAGS) -o $@ $<
+
+
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
 
@@ -88,33 +104,32 @@ compare: crystal
 	$(MD5) -c $(roms_md5)
 
 
-$(LZ): $(LZ).c
-	$(CC) $(CFLAGS) -o $@ $<
-
 $(bank_ends_txt): crystal bankfree ; $(bank_ends) > $@
 
 $(roms_md5): crystal
 	$(MD5) $(NAME)-$(VERSION).gbc > $@
 
 
-%.asm: ;
-
-%.o: dep = $(shell $(includes) $(@D)/$*.asm)
+%.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
 	rgbasm $(RGBASM_FLAGS) -o $@ $<
 
-.gbc:
+.gbc: ;
 %.gbc: $(crystal_obj)
 	rgblink $(RGBLINK_FLAGS) -o $@ $^
 	rgbfix $(RGBFIX_FLAGS) $@
+	sort $(ROM_NAME).sym -o $(ROM_NAME).sym
 
-%.png: ;
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
-%.lz: % ; $(LZ) $<
 
 %.pal: %.2bpp ;
 gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
-%.bin: ;
-%.blk: ;
-%.tilemap: ;
+
+%.lz: % ; $(LZ) $< $@
+
+%.png: ; $(error ERROR: No rule to make '$@')
+%.asm: ; $(error ERROR: No rule to make '$@')
+%.bin: ; $(error ERROR: No rule to make '$@')
+%.blk: ; $(error ERROR: No rule to make '$@')
+%.tilemap: ; $(error ERROR: No rule to make '$@')

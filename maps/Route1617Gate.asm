@@ -7,18 +7,18 @@ Route1617Gate_MapScriptHeader:
 Route1617Gate_MapEventHeader:
 
 .Warps: db 5
-	warp_def $5, $0, 1, ROUTE_16_SOUTH
-	warp_def $6, $0, 2, ROUTE_16_SOUTH
-	warp_def $5, $9, 1, ROUTE_16_NORTHEAST
-	warp_def $6, $9, 2, ROUTE_16_NORTHEAST
-	warp_def $8, $8, 1, ROUTE_16_17_GATE_2F
+	warp_def 5, 0, 1, ROUTE_16_SOUTH
+	warp_def 6, 0, 2, ROUTE_16_SOUTH
+	warp_def 5, 9, 1, ROUTE_16_NORTHEAST
+	warp_def 6, 9, 2, ROUTE_16_NORTHEAST
+	warp_def 8, 8, 1, ROUTE_16_17_GATE_2F
 
 .XYTriggers: db 5
-	xy_trigger 0, $3, $5, UnknownScript_0x733ed
-	xy_trigger 0, $4, $5, UnknownScript_0x733ed
-	xy_trigger 0, $5, $5, StepUpOneTrigger
-	xy_trigger 0, $6, $5, StepUpTwoTrigger
-	xy_trigger 0, $7, $5, StepUpThreeTrigger
+	xy_trigger 0, 3, 5, UnknownScript_0x733ed
+	xy_trigger 0, 4, 5, UnknownScript_0x733ed
+	xy_trigger 0, 5, 5, Route1617GateStepUpOneTrigger
+	xy_trigger 0, 6, 5, Route1617GateStepUpTwoTrigger
+	xy_trigger 0, 7, 5, Route1617GateStepUpThreeTrigger
 
 .Signposts: db 0
 
@@ -28,46 +28,45 @@ Route1617Gate_MapEventHeader:
 const_value set 2
 	const ROUTE1617GATE_OFFICER
 
-StepUpOneTrigger:
+Route1617GateStepUpOneTrigger:
 	checkitem BICYCLE
-	iftrue DoNothingScript
-	applymovement PLAYER, StepUpOneMovementData
+	iftrue Route1617GateDoNothingScript
+	applyonemovement PLAYER, step_up
 	jump UnknownScript_0x733f3
 
-StepUpTwoTrigger:
+Route1617GateStepUpTwoTrigger:
 	checkitem BICYCLE
-	iftrue DoNothingScript
-	applymovement PLAYER, StepUpTwoMovementData
+	iftrue Route1617GateDoNothingScript
+	applymovement PLAYER, Route1617GateStepUpTwoMovementData
 	jump UnknownScript_0x733f3
 
-StepUpThreeTrigger:
+Route1617GateStepUpThreeTrigger:
 	checkitem BICYCLE
-	iftrue DoNothingScript
-	applymovement PLAYER, StepUpThreeMovementData
+	iftrue Route1617GateDoNothingScript
+	applymovement PLAYER, Route1617GateStepUpThreeMovementData
 	jump UnknownScript_0x733f3
 
 UnknownScript_0x733ed:
 	checkitem BICYCLE
-	iftrue DoNothingScript
+	iftrue Route1617GateDoNothingScript
 UnknownScript_0x733f3:
 	showemote EMOTE_SHOCK, ROUTE1617GATE_OFFICER, 15
 	spriteface PLAYER, UP
 	showtext UnknownText_0x73496
 	applymovement PLAYER, MovementData_0x73405
-DoNothingScript:
+Route1617GateDoNothingScript:
 	end
+
+Route1617GateStepUpThreeMovementData:
+	step_up
+Route1617GateStepUpTwoMovementData:
+	step_up
+	step_up
+	step_end
 
 MovementData_0x73405:
 	step_right
 	turn_head_left
-	step_end
-
-StepUpThreeMovementData:
-	step_up
-StepUpTwoMovementData:
-	step_up
-StepUpOneMovementData:
-	step_up
 	step_end
 
 UnknownText_0x73408:

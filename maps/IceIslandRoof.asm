@@ -7,7 +7,7 @@ IceIslandRoof_MapScriptHeader:
 IceIslandRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $7, $3, 2, ICE_ISLAND
+	warp_def 7, 3, 2, ICE_ISLAND
 
 .XYTriggers: db 0
 
@@ -35,7 +35,7 @@ IceIslandRoofBlancheScript:
 	setevent EVENT_BEAT_BLANCHE
 	showtext .AfterText
 	playsound SFX_WARP_TO
-	applymovement ICEISLANDROOF_BLANCHE, IceIslandRoofBlancheTeleport
+	applyonemovement ICEISLANDROOF_BLANCHE, teleport_from
 	disappear ICEISLANDROOF_BLANCHE
 	clearevent EVENT_CELADON_UNIVERSITY_BLANCHE
 	end
@@ -62,7 +62,3 @@ IceIslandRoofBlancheScript:
 .RefusedText:
 	text "TODO"
 	done
-
-IceIslandRoofBlancheTeleport:
-	teleport_from
-	step_end

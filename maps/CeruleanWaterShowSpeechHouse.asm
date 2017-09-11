@@ -7,8 +7,8 @@ CeruleanWaterShowSpeechHouse_MapScriptHeader:
 CeruleanWaterShowSpeechHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 11, CERULEAN_CITY
-	warp_def $7, $3, 11, CERULEAN_CITY
+	warp_def 7, 2, 11, CERULEAN_CITY
+	warp_def 7, 3, 11, CERULEAN_CITY
 
 .XYTriggers: db 0
 

@@ -31,7 +31,7 @@ PERSON_EVENT_NARG = _NARG
 if \8 == PERSONTYPE_COMMAND
 	db \9_command ; command id
 else
-	db \9 ; sight_range
+	db \9 ; sight_range || cry id
 endc
 if PERSON_EVENT_NARG == 14
 	shift
@@ -68,22 +68,22 @@ endm
 
 strengthboulder_event: macro
 if _NARG == 2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
 else
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
 endc
 endm
 
 smashrock_event: macro
 if _NARG == 2
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
 else
-	person_event SPRITE_ROCK_BOULDER_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
+	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
 endc
 endm
 
 pc_nurse_event: macro
-	person_event SPRITE_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
+	person_event SPRITE_BOWING_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
 endm
 
 mart_clerk_event: macro
@@ -95,7 +95,11 @@ signpost: macro
 	db \2 ; x
 	db \3 ; function
 if \3 == SIGNPOST_JUMPSTD
+if _NARG == 5
+	db \4, \5 ; stdscript
+else
 	db \4, 0 ; stdscript
+endc
 else
 	dw \4 ; pointer
 endc
@@ -151,12 +155,12 @@ if "\1" == "north"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + \2_WIDTH * (\2_HEIGHT - 3) + \5
-	dw OverworldMap + \4 + 3
+	dw wOverworldMap + \4 + 3
 	db \6
 	db \2_WIDTH
 	db \2_HEIGHT * 2 - 1
 	db (\4 - \5) * -2
-	dw OverworldMap + \2_HEIGHT * (\2_WIDTH + 6) + 1
+	dw wOverworldMap + \2_HEIGHT * (\2_WIDTH + 6) + 1
 endc
 
 if "\1" == "south"
@@ -167,12 +171,12 @@ if "\1" == "south"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + \5
-	dw OverworldMap + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
+	dw wOverworldMap + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
 	db \6
 	db \2_WIDTH
 	db 0
 	db (\4 - \5) * -2
-	dw OverworldMap + \2_WIDTH + 7
+	dw wOverworldMap + \2_WIDTH + 7
 endc
 
 if "\1" == "west"
@@ -183,12 +187,12 @@ if "\1" == "west"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + (\2_WIDTH * \5) + \2_WIDTH - 3
-	dw OverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
+	dw wOverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
 	db \6
 	db \2_WIDTH
 	db (\4 - \5) * -2
 	db \2_WIDTH * 2 - 1
-	dw OverworldMap + \2_WIDTH * 2 + 6
+	dw wOverworldMap + \2_WIDTH * 2 + 6
 endc
 
 if "\1" == "east"
@@ -199,12 +203,12 @@ if "\1" == "east"
 ;\6: strip length
 	map \2
 	dw \3_BlockData + (\2_WIDTH * \5)
-	dw OverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
+	dw wOverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
 	db \6
 	db \2_WIDTH
 	db (\4 - \5) * -2
 	db 0
-	dw OverworldMap + \2_WIDTH + 7
+	dw wOverworldMap + \2_WIDTH + 7
 endc
 
 ENDM

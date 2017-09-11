@@ -7,8 +7,8 @@ Route6_MapScriptHeader:
 Route6_MapEventHeader:
 
 .Warps: db 2
-	warp_def $9, $11, 1, ROUTE_6_UNDERGROUND_ENTRANCE
-	warp_def $1, $6, 3, ROUTE_6_SAFFRON_GATE
+	warp_def 9, 17, 1, ROUTE_6_UNDERGROUND_ENTRANCE
+	warp_def 1, 6, 3, ROUTE_6_SAFFRON_GATE
 
 .XYTriggers: db 0
 
@@ -164,12 +164,12 @@ TrainerGuitaristfWanda:
 	done
 
 OfficerfJennyScript:
-	faceplayer
-	opentext
 	checknite
-	iffalse .NoFight
+	iffalse_jumptextfaceplayer .DaytimeText
 	checkevent EVENT_BEAT_OFFICERF_JENNY
 	iftrue .AfterScript
+	faceplayer
+	opentext
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext .SeenText
@@ -180,19 +180,12 @@ OfficerfJennyScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JENNY
-	closetext
-	end
+	endtext
 
 .AfterScript:
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .Kris
-	jumpopenedtext .AfterTextMale
-
-.Kris:
-	jumpopenedtext .AfterTextFemale
-
-.NoFight:
-	jumpopenedtext .DaytimeText
+	iftrue_jumptextfaceplayer .AfterTextFemale
+	jumptextfaceplayer .AfterTextMale
 
 .DaytimeText:
 	text "Us Officers are"

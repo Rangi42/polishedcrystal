@@ -7,8 +7,8 @@ Route26DayofWeekSiblingsHouse_MapScriptHeader:
 Route26DayofWeekSiblingsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 3, ROUTE_26
-	warp_def $7, $3, 3, ROUTE_26
+	warp_def 7, 2, 3, ROUTE_26
+	warp_def 7, 3, 3, ROUTE_26
 
 .XYTriggers: db 0
 
@@ -28,8 +28,7 @@ BookScript_0x7b1e4:
 	writetext UnknownText_0x7b2b9
 	waitbutton
 UnknownText_0x7b1f7:
-	closetext
-	end
+	endtext
 
 UnknownText_0x7b1f9:
 	text "There's something"

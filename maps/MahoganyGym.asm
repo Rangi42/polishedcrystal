@@ -7,8 +7,8 @@ MahoganyGym_MapScriptHeader:
 MahoganyGym_MapEventHeader:
 
 .Warps: db 2
-	warp_def $11, $4, 3, MAHOGANY_TOWN
-	warp_def $11, $5, 3, MAHOGANY_TOWN
+	warp_def 17, 4, 3, MAHOGANY_TOWN
+	warp_def 17, 5, 3, MAHOGANY_TOWN
 
 .XYTriggers: db 0
 
@@ -97,14 +97,9 @@ BoarderDouglasScript:
 	jumptextfaceplayer UnknownText_0x19a047
 
 MahoganyGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_PRYCE
-	iftrue .MahoganyGymGuyWinScript
-	jumpopenedtext MahoganyGymGuyText
-
-.MahoganyGymGuyWinScript:
-	jumpopenedtext MahoganyGymGuyWinText
+	iftrue_jumptextfaceplayer MahoganyGymGuyWinText
+	jumptextfaceplayer MahoganyGymGuyText
 
 MahoganyGymStatue:
 	trainertotext PRYCE, 1, $1

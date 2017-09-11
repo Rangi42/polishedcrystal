@@ -8,7 +8,7 @@ NavelRockRoof_MapScriptHeader:
 NavelRockRoof_MapEventHeader:
 
 .Warps: db 1
-	warp_def $f, $9, 14, NAVEL_ROCK_INSIDE
+	warp_def 15, 9, 14, NAVEL_ROCK_INSIDE
 
 .XYTriggers: db 0
 
@@ -56,10 +56,10 @@ Leaf:
 	refreshscreen
 	checknite
 	iffalse .Sun
-	changeblock $6, $0, $76
-	changeblock $8, $0, $77
-	changeblock $6, $2, $7a
-	changeblock $8, $2, $7b
+	changeblock 6, 0, $76
+	changeblock 8, 0, $77
+	changeblock 6, 2, $7a
+	changeblock 8, 2, $7b
 .Sun
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemaleEndingSequence
@@ -71,7 +71,7 @@ Leaf:
 	jump .EndingSequence
 
 .RightMaleEndingSequence:
-	applymovement PLAYER, NavelRockRoofStepUpMovementData
+	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_CHRIS
 	jump .EndingSequence
 
@@ -84,10 +84,10 @@ Leaf:
 	jump .EndingSequence
 
 .RightFemaleEndingSequence:
-	applymovement PLAYER, NavelRockRoofStepUpMovementData
+	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_KRIS
 .EndingSequence:
-	applymovement PLAYER, NavelRockRoofHidePlayerMovementData
+	applyonemovement PLAYER, hide_person
 	pause 30
 	applymovement PLAYER, NavelRockRoofPanUpMovementData
 	pause 40
@@ -111,16 +111,11 @@ LeafAfterText:
 	line "…………"
 	done
 
-NavelRockRoofHidePlayerMovementData:
-	hide_person
-	step_end
-
 NavelRockRoofPanUpMovementData:
 	slow_step_up
 	slow_step_up
 	slow_step_up
 	slow_step_up
 	slow_step_up
-NavelRockRoofStepUpMovementData:
 	slow_step_up
 	step_end

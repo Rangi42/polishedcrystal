@@ -276,6 +276,7 @@ SECTION "B2W2 Music 2", ROMX
 INCLUDE "audio/music/b2w2/reversalmountainwhite.asm"
 INCLUDE "audio/music/b2w2/roadtoreversalmountain.asm"
 INCLUDE "audio/music/b2w2/whitetreehollow.asm"
+INCLUDE "audio/music/b2w2/marinetube.asm"
 
 
 SECTION "XY Music 1", ROMX

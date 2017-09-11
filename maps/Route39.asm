@@ -7,8 +7,8 @@ Route39_MapScriptHeader:
 Route39_MapEventHeader:
 
 .Warps: db 2
-	warp_def $3, $1, 1, ROUTE_39_BARN
-	warp_def $3, $5, 1, ROUTE_39_FARMHOUSE
+	warp_def 3, 1, 1, ROUTE_39_BARN
+	warp_def 3, 5, 1, ROUTE_39_FARMHOUSE
 
 .XYTriggers: db 0
 
@@ -18,30 +18,23 @@ Route39_MapEventHeader:
 	signpost 7, 15, SIGNPOST_JUMPTEXT, Route39SignText
 	signpost 13, 5, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
-.PersonEvents: db 12
+.PersonEvents: db 13
 	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
 	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
 	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
 	person_event SPRITE_POKEFAN_F, 19, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
-	person_event SPRITE_MILTANK, 12, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_MILTANK, 11, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_MILTANK, 15, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
-	person_event SPRITE_MILTANK, 13, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39Miltank, -1
+	person_event SPRITE_MILTANK, 12, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	person_event SPRITE_MILTANK, 11, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	person_event SPRITE_MILTANK, 15, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	person_event SPRITE_MILTANK, 13, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
 	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
 	fruittree_event 3, 9, FRUITTREE_ROUTE_39, CHESTO_BERRY
 	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
 	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
+	tmhmball_event 7, 1, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
 const_value set 2
 	const ROUTE39_COWGIRL
-
-Route39Miltank:
-	opentext
-	writetext Route39MiltankText
-	cry MILTANK
-	waitbutton
-	closetext
-	end
 
 TrainerPokefanmDerek1:
 	trainer EVENT_BEAT_POKEFANM_DEREK, POKEFANM, DEREK1, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, PokefanmDerek1Script
@@ -127,37 +120,37 @@ PokefanfRuthScript:
 	jumptextfaceplayer UnknownText_0x1a5db2
 
 Route39CowgirlAnnieScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
-	iftrue .GotPPMax
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
 	checkevent EVENT_BEAT_COWGIRL_ANNIE
 	iftrue .Beaten
 	checkevent EVENT_BEAT_BIRD_KEEPER_TOBY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SAILOR_HARRY
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_LASS_DANA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SCHOOLBOY_CHAD
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BEAUTY_VALENCIA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_BEAUTY_OLIVIA
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANM_DEREK
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANF_RUTH
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SAILOR_EUGENE
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_PSYCHIC_NORMAN
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANF_JAIME
-	iffalse .RouteNotCleared
+	iffalse_jumptext .IntroText
+	opentext
 	writetext .QuestionText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -167,25 +160,20 @@ Route39CowgirlAnnieScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COWGIRL_ANNIE
-	opentext
 .Beaten:
+	opentext
 	writetext .AfterText1
 	buttonsound
 	verbosegiveitem PP_MAX
-	iffalse .Done
+	iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
-.GotPPMax:
-	writetext .AfterText2
-	waitbutton
-.Done:
-	closetext
-	end
+	thisopenedtext
 
-.RouteNotCleared:
-	jumpopenedtext .IntroText
-
-.NoBattle:
-	jumpopenedtext .RefusedText
+.AfterText2:
+	text "We make cheese"
+	line "and yogurt out"
+	cont "of Miltank milk."
+	done
 
 .IntroText:
 	text "Hey! Don't scare"
@@ -248,12 +236,6 @@ Route39CowgirlAnnieScript:
 	line "ya!"
 	done
 
-.AfterText2:
-	text "We make cheese"
-	line "and yogurt out"
-	cont "of Miltank milk."
-	done
-
 TrainerSailorEugene:
 	trainer EVENT_BEAT_SAILOR_EUGENE, SAILOR, EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, SailorEugeneScript
 
@@ -283,8 +265,7 @@ PokefanFScript_0x1a5bbe:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEFANF_JAIME
-	closetext
-	end
+	endtext
 
 UnknownScript_0x1a5bdf:
 	jumpopenedtext UnknownText_0x1a5f31

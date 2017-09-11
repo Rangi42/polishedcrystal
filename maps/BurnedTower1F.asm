@@ -8,31 +8,21 @@ BurnedTower1F_MapScriptHeader:
 
 BurnedTower1F_MapEventHeader:
 
-.Warps: db 14
-	warp_def $f, $7, 13, ECRUTEAK_CITY
-	warp_def $f, $8, 13, ECRUTEAK_CITY
-	warp_def $9, $8,  1, BURNED_TOWER_B1F
-	warp_def $5, $3,  1, BURNED_TOWER_B1F
-	warp_def $6, $3,  1, BURNED_TOWER_B1F
-	warp_def $6, $2,  1, BURNED_TOWER_B1F
-	warp_def $4, $d,  2, BURNED_TOWER_B1F
-	warp_def $5, $d,  2, BURNED_TOWER_B1F
-	warp_def $7, $8,  3, BURNED_TOWER_B1F
-	warp_def $e, $3,  4, BURNED_TOWER_B1F
-	warp_def $e, $2,  4, BURNED_TOWER_B1F
-	warp_def $e, $c,  5, BURNED_TOWER_B1F
-	warp_def $e, $d,  5, BURNED_TOWER_B1F
-	warp_def $f, $5,  6, BURNED_TOWER_B1F
+.Warps: db 4
+	warp_def 15, 7, 13, ECRUTEAK_CITY
+	warp_def 15, 8, 13, ECRUTEAK_CITY
+	warp_def 9, 8, 1, BURNED_TOWER_B1F
+	warp_def 15, 5, 2, BURNED_TOWER_B1F
 
 .XYTriggers: db 1
-	xy_trigger 1, $9, $9, BurnedTowerRivalBattleScript
+	xy_trigger 1, 9, 9, BurnedTowerRivalBattleScript
 
 .Signposts: db 2
 	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
 	signpost 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
 .PersonEvents: db 7
-	person_event SPRITE_SUPER_NERD, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
+	person_event SPRITE_EUSINE, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
 	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	smashrock_event 4, 13
 	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
@@ -51,11 +41,11 @@ BurnedTower1FTrigger0:
 BurnedTower1FHoleAndLadder:
 	checkevent EVENT_HOLE_IN_BURNED_TOWER
 	iftrue .Next
-	changeblock $8, $8, $32 ; hole
+	changeblock 8, 8, $32 ; hole
 .Next:
 	checkevent EVENT_RELEASED_THE_BEASTS
 	iftrue .Done
-	changeblock $4, $e, $9 ; ladder
+	changeblock 4, 14, $9 ; ladder
 .Done:
 	return
 
@@ -64,7 +54,7 @@ BurnedTower1FEusineTriggerScript:
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_EUSINE, 15
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
 	showtext BurnedTower1FEusineIntroText
-	moveperson BURNEDTOWER1F_EUSINE, $7, $e
+	moveperson BURNEDTOWER1F_EUSINE, 7, 14
 	dotrigger $1
 	end
 
@@ -74,8 +64,8 @@ BurnedTowerRivalBattleScript:
 	pause 15
 	spriteface BURNEDTOWER1F_SILVER, RIGHT
 	pause 15
-	applymovement PLAYER, BurnedTowerMovement_PlayerWalksToSilver
-	applymovement BURNEDTOWER1F_SILVER, BurnedTowerMovement_SilverWalksToPlayer
+	applyonemovement PLAYER, step_left
+	applyonemovement BURNEDTOWER1F_SILVER, step_right
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext BurnedTowerSilver_BeforeText
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -120,10 +110,10 @@ BurnedTowerRivalBattleScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	playsound SFX_ENTER_DOOR
 	waitsfx
-	changeblock $8, $8, $25
+	changeblock 8, 8, $25
 	reloadmappart
 	pause 15
-	applymovement PLAYER, BurnedTower1FMovement_PlayerStartsToFall
+	applyonemovement PLAYER, skyfall_top
 	playsound SFX_KINESIS
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 20
 	showtext BurnedTowerSilver_AfterText2
@@ -145,18 +135,6 @@ TrainerFirebreatherNed:
 FirebreatherNedScript:
 	end_if_just_battled
 	jumptextfaceplayer FirebreatherNedAfterText
-
-BurnedTowerMovement_PlayerWalksToSilver:
-	step_left
-	step_end
-
-BurnedTowerMovement_SilverWalksToPlayer:
-	step_right
-	step_end
-
-BurnedTower1FMovement_PlayerStartsToFall:
-	skyfall_top
-	step_end
 
 BurnedTower1FEusineMovement:
 	step_down

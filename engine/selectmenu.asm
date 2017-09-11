@@ -23,21 +23,21 @@ ItemMayBeRegisteredText: ; 13340
 CheckRegisteredItem: ; 13345
 ; assume that only key items can be registered
 ; (Bicycle, Old/Good/Super Rod, Itemfinder)
-	ld a, [RegisteredItem]
+	ld a, [wRegisteredItem]
 	and a
 	jr z, .NoRegisteredItem
-	ld hl, KeyItems
+	ld hl, wKeyItems
 	ld de, 1
 	call IsInArray
 	jr nc, .NoRegisteredItem
-	ld a, [RegisteredItem]
-	ld [CurItem], a
+	ld a, [wRegisteredItem]
+	ld [wCurItem], a
 	and a
 	ret
 
 .NoRegisteredItem:
 	xor a
-	ld [RegisteredItem], a
+	ld [wRegisteredItem], a
 	scf
 	ret
 ; 133a6

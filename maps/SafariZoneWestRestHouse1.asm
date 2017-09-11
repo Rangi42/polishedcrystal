@@ -7,8 +7,8 @@ SafariZoneWestRestHouse1_MapScriptHeader:
 SafariZoneWestRestHouse1_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 7, SAFARI_ZONE_WEST
-	warp_def $7, $3, 7, SAFARI_ZONE_WEST
+	warp_def 7, 2, 7, SAFARI_ZONE_WEST
+	warp_def 7, 3, 7, SAFARI_ZONE_WEST
 
 .XYTriggers: db 0
 

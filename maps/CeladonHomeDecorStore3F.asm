@@ -7,8 +7,8 @@ CeladonHomeDecorStore3F_MapScriptHeader:
 CeladonHomeDecorStore3F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $6, 2, CELADON_HOME_DECOR_STORE_2F
-	warp_def $0, $9, 1, CELADON_HOME_DECOR_STORE_4F
+	warp_def 0, 6, 2, CELADON_HOME_DECOR_STORE_2F
+	warp_def 0, 9, 1, CELADON_HOME_DECOR_STORE_4F
 
 .XYTriggers: db 0
 
@@ -33,8 +33,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	if_equal $1, .RedCarpet
 	if_equal $2, .YellowCarpet
 	if_equal $3, .GreenCarpet
-	closetext
-	end
+	endtext
 
 .RedCarpet:
 	checkmoney $0, 45000
@@ -107,11 +106,11 @@ CeladonHomeDecorStore3FClerk2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_DECO_CARPET_2
-	iftrue .Sold
+	iftrue_jumpopenedtext CeladonHomeDecorStore3FClerk2Text
 	special PlaceMoneyTopRight
 	writetext CeladonHomeDecorStore3FClerk2SaleText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 	checkmoney $0, 35000
 	if_equal $2, .NotEnoughMoney
 	takemoney $0, 35000
@@ -122,12 +121,6 @@ CeladonHomeDecorStore3FClerk2Script:
 	writetext BlueCarpetSentText
 	waitbutton
 	jumpopenedtext CeladonHomeDecorStore3FClerk2YesText
-
-.Sold:
-	jumpopenedtext CeladonHomeDecorStore3FClerk2Text
-
-.Refused:
-	jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 
 .NotEnoughMoney:
 	jumpopenedtext CeladonHomeDecorStore3FNoMoneyText

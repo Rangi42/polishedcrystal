@@ -7,8 +7,8 @@ ShamoutiShrineRuins_MapScriptHeader:
 ShamoutiShrineRuins_MapEventHeader:
 
 .Warps: db 2
-	warp_def $12, $2, 3, NOISY_FOREST
-	warp_def $13, $2, 4, NOISY_FOREST
+	warp_def 18, 2, 3, NOISY_FOREST
+	warp_def 19, 2, 4, NOISY_FOREST
 
 .XYTriggers: db 0
 

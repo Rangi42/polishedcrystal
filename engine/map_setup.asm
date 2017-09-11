@@ -163,7 +163,6 @@ MapSetupScript_LinkReturn: ; 153f7
 	db map_fade_in_palettes
 	db map_animations_on
 	db map_wildmons
-	db map_text_scroll_off
 	db map_end
 
 MapSetupScript_Continue: ; 15408
@@ -281,16 +280,8 @@ MapSetupCommands: ; 15440
 	dba ActivateMapAnims ; 29
 	dba SuspendMapAnims ; 2a
 	dba RetainOldPalettes ; 2b
-	dba DontScrollText ; 2c
-	dba ReturnFromMapSetupScript ; 2d
+	dba ReturnFromMapSetupScript ; 2c
 ; 154ca
-
-
-DontScrollText: ; 154ca
-	xor a
-	ld [wDisableTextAcceleration], a
-	ret
-; 154cf
 
 ActivateMapAnims: ; 154cf
 	ld a, $1
@@ -336,16 +327,16 @@ CheckReplaceKrisSprite: ; 154f7
 
 .CheckBiking: ; 1550c (5:550c)
 	and a
-	ld hl, BikeFlags
+	ld hl, wBikeFlags
 	bit 1, [hl]
 	ret z
 	ld a, PLAYER_BIKE
-	ld [PlayerState], a
+	ld [wPlayerState], a
 	scf
 	ret
 
 .CheckSurfing2: ; 1551a (5:551a)
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	and a ; cp PLAYER_NORMAL
 	jr z, .nope
 	cp PLAYER_SLIP
@@ -363,12 +354,12 @@ CheckReplaceKrisSprite: ; 154f7
 	jr z, .checkbiking
 	jr .nope
 .checkbiking
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr nz, .nope
 .surfing
 	ld a, PLAYER_NORMAL
-	ld [PlayerState], a
+	ld [wPlayerState], a
 	scf
 	ret
 
@@ -379,13 +370,13 @@ CheckReplaceKrisSprite: ; 154f7
 .CheckSurfing: ; 1554e (5:554e)
 	call CheckOnWater
 	jr nz, .ret_nc
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, ._surfing
 	cp PLAYER_SURF_PIKA
 	jr z, ._surfing
 	ld a, PLAYER_SURF
-	ld [PlayerState], a
+	ld [wPlayerState], a
 ._surfing
 	scf
 	ret
@@ -404,21 +395,21 @@ RetainOldPalettes: ; 1556d
 
 RotatePalettesRightMapAndMusic: ; 15574
 	ld e, 0
-	ld a, [MusicFadeIDLo]
+	ld a, [wMusicFadeIDLo]
 	ld d, 0
-	ld a, [MusicFadeIDHi]
+	ld a, [wMusicFadeIDHi]
 	ld a, $4
-	ld [MusicFade], a
+	ld [wMusicFade], a
 	jp RotateThreePalettesRight
 ; 15587
 
 ForceMapMusic: ; 15587
-	ld a, [PlayerState]
+	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr nz, .notbiking
 	call VolumeOff
 	ld a, $88
-	ld [MusicFade], a
+	ld [wMusicFade], a
 .notbiking
 	jp TryRestartMapMusic
 ; 1559a

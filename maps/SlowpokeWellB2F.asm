@@ -7,7 +7,7 @@ SlowpokeWellB2F_MapScriptHeader:
 SlowpokeWellB2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $b, $9, 2, SLOWPOKE_WELL_B1F
+	warp_def 11, 9, 2, SLOWPOKE_WELL_B1F
 
 .XYTriggers: db 0
 
@@ -18,21 +18,16 @@ SlowpokeWellB2F_MapEventHeader:
 	itemball_event 5, 15, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
 
 GymGuyScript_0x5ad0b:
+	checkevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL
+	iftrue_jumptextfaceplayer UnknownText_0x5adf2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL
-	iftrue UnknownScript_0x5ad22
 	writetext UnknownText_0x5ad2a
 	buttonsound
 	verbosegiveitem KINGS_ROCK
-	iffalse UnknownScript_0x5ad20
+	iffalse_endtext
 	setevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL
-UnknownScript_0x5ad20:
-	closetext
-	end
-
-UnknownScript_0x5ad22:
-	jumpopenedtext UnknownText_0x5adf2
+	endtext
 
 UnknownText_0x5ad2a:
 	text "I'm waiting to see"

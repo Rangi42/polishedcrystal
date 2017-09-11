@@ -33,7 +33,7 @@ WonderTradeCantTradeGSBallText::
 WonderTradeConfirmText::
 	text "Offer to trade"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "? "
 	done
 

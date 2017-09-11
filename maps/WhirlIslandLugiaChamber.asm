@@ -8,7 +8,7 @@ WhirlIslandLugiaChamber_MapScriptHeader:
 WhirlIslandLugiaChamber_MapEventHeader:
 
 .Warps: db 1
-	warp_def $d, $9, 3, WHIRL_ISLAND_B2F
+	warp_def 13, 9, 3, WHIRL_ISLAND_B2F
 
 .XYTriggers: db 0
 

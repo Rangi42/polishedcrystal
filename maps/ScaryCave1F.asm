@@ -7,11 +7,11 @@ ScaryCave1F_MapScriptHeader:
 ScaryCave1F_MapEventHeader:
 
 .Warps: db 5
-	warp_def $1f, $21, 1, URAGA_CHANNEL_EAST
-	warp_def $1f, $b, 1, URAGA_CHANNEL_WEST
-	warp_def $1e, $14, 1, SCARY_CAVE_B1F
-	warp_def $a, $22, 2, SCARY_CAVE_B1F
-	warp_def $1, $9, 1, SCARY_CAVE_SHIPWRECK
+	warp_def 31, 33, 1, URAGA_CHANNEL_EAST
+	warp_def 31, 11, 1, URAGA_CHANNEL_WEST
+	warp_def 30, 20, 1, SCARY_CAVE_B1F
+	warp_def 10, 34, 2, SCARY_CAVE_B1F
+	warp_def 1, 9, 1, SCARY_CAVE_SHIPWRECK
 
 .XYTriggers: db 0
 
@@ -45,7 +45,7 @@ ScaryCave1FMiraScript:
 	opentext
 	writetext .ChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	waitbutton
 	closetext
@@ -60,7 +60,7 @@ ScaryCave1FMiraScript:
 	writetext .ItemText
 	buttonsound
 	verbosegiveitem POWER_LENS
-	iffalse .Done
+	iffalse_endtext
 	writetext .GoodbyeText
 	waitbutton
 	closetext
@@ -71,13 +71,6 @@ ScaryCave1FMiraScript:
 	special Special_FadeInQuickly
 	clearevent EVENT_BATTLE_TOWER_MIRA
 	end
-
-.Done:
-	closetext
-	end
-
-.No:
-	jumpopenedtext .NoText
 
 .ChallengeText:
 	text "I'm Mira…"
@@ -148,11 +141,11 @@ ScaryCave1FPharmacistScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_SUCKER_PUNCH_INTRO
-	iftrue ScaryCave1FTutorSuckerPunchScript
-	writetext ScaryCave1FPharmacistText
+	iftrue .HeardIntro
+	writetext .IntroText
 	waitbutton
 	setevent EVENT_LISTENED_TO_SUCKER_PUNCH_INTRO
-ScaryCave1FTutorSuckerPunchScript:
+.HeardIntro:
 	writetext .QuestionText
 	checkitem SILVER_LEAF
 	iffalse .NoSilverLeaf
@@ -163,47 +156,12 @@ ScaryCave1FTutorSuckerPunchScript:
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
 .TutorRefused
-	jumpopenedtext .RefusedText
+	thisopenedtext
 
-.QuestionText:
-	text "I'll teach you to"
-	line "Sucker Punch, but"
-
-	para "I want a Silver"
-	line "Leaf."
-	done
-
-.RefusedText:
 	text "It's your funeral."
 	done
 
-.ClearText:
-	text ""
-	done
-
-.NoSilverLeaf
-	waitbutton
-	jumpopenedtext .NoSilverLeafText
-
-.NoSilverLeafText:
-	text "No Silver Leaf?"
-	line "Forget it then."
-	done
-
-.TeachMove
-	takeitem SILVER_LEAF
-	jumpopenedtext .TaughtText
-
-.TaughtText:
-	text "Now you can use"
-	line "Sucker Punch!"
-
-	para "If a foe is about"
-	line "to hit you, you"
-	cont "hit them first!"
-	done
-
-ScaryCave1FPharmacistText:
+.IntroText:
 	text "Ghosts are masters"
 	line "of the cheap shot."
 
@@ -214,6 +172,38 @@ ScaryCave1FPharmacistText:
 	para "Give 'em a good"
 	line "surprise Sucker"
 	cont "Punch!"
+	done
+
+.QuestionText:
+	text "I'll teach you to"
+	line "Sucker Punch, but"
+
+	para "I want a Silver"
+	line "Leaf."
+	done
+
+.ClearText:
+	text ""
+	done
+
+.NoSilverLeaf
+	waitbutton
+	thisopenedtext
+
+	text "No Silver Leaf?"
+	line "Forget it then."
+	done
+
+.TeachMove
+	takeitem SILVER_LEAF
+	thisopenedtext
+
+	text "Now you can use"
+	line "Sucker Punch!"
+
+	para "If a foe is about"
+	line "to hit you, you"
+	cont "hit them first!"
 	done
 
 TrainerRuin_maniacSmilte:

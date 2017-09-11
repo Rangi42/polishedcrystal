@@ -8,23 +8,25 @@ BattleTowerOutside_MapScriptHeader:
 BattleTowerOutside_MapEventHeader:
 
 .Warps: db 4
-	warp_def $15, $8, 3, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $15, $9, 4, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def $9, $8, 1, BATTLE_TOWER_1F ; hole
-	warp_def $9, $9, 2, BATTLE_TOWER_1F ; hole
+	warp_def 21, 8, 3, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def 21, 9, 4, ROUTE_40_BATTLE_TOWER_GATE
+	warp_def 9, 8, 1, BATTLE_TOWER_1F ; hole
+	warp_def 9, 9, 2, BATTLE_TOWER_1F ; hole
 
 .XYTriggers: db 2
-	xy_trigger 1, $9, $8, BattleTowerOutsidePanUpTrigger1
-	xy_trigger 1, $9, $9, BattleTowerOutsidePanUpTrigger2
+	xy_trigger 1, 9, 8, BattleTowerOutsidePanUpTrigger1
+	xy_trigger 1, 9, 9, BattleTowerOutsidePanUpTrigger2
 
 .Signposts: db 1
 	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
 
-.PersonEvents: db 4
-	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideYoungsterText, -1
-	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideBeautyText, -1
-	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, -1
+.PersonEvents: db 6
+	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
+	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
+	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED
 	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_N64, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
+	person_event SPRITE_N64, 9, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
 
 BattleTowerOutsideStepDownTrigger:
 	priorityjump .Script
@@ -44,12 +46,12 @@ BattleTowerOutsideStepDownTrigger:
 
 BattleTowerOutsidePanUpTrigger1:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, $a, $d
+	warpfacing UP, BATTLE_TOWER_1F, 10, 13
 	end
 
 BattleTowerOutsidePanUpTrigger2:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, $b, $d
+	warpfacing UP, BATTLE_TOWER_1F, 11, 13
 	end
 
 BattleTowerOutsidePanUpHelperScript:
@@ -80,7 +82,19 @@ BattleTowerOutsideSignText:
 	line "Trainer Challenge!"
 	done
 
-BattleTowerOutsideYoungsterText:
+BattleTowerOutsideYoungsterScript:
+	checkevent EVENT_BATTLE_TOWER_OPEN
+	iftrue_jumptextfaceplayer .OpenText
+	thistextfaceplayer
+
+	text "Wow, the Battle"
+	line "Tower is huge! My"
+
+	para "neck is tired from"
+	line "looking up at it."
+	done
+
+.OpenText:
 	text "Wow, the Battle"
 	line "Tower is huge!"
 
@@ -89,7 +103,22 @@ BattleTowerOutsideYoungsterText:
 	cont "in there!"
 	done
 
-BattleTowerOutsideBeautyText:
+BattleTowerOutsideBeautyScript:
+	checkevent EVENT_BATTLE_TOWER_OPEN
+	iftrue_jumptextfaceplayer .OpenText
+	thistextfaceplayer
+
+	text "What on earth do"
+	line "they do here?"
+
+	para "If the name says"
+	line "anything, I guess"
+
+	para "it must be for"
+	line "#mon battles."
+	done
+
+.OpenText:
 	text "You can use only"
 	line "three #mon."
 
@@ -109,4 +138,9 @@ BattleTowerOutsideSailorText:
 
 	para "I have to win it"
 	line "all. That I must!"
+	done
+
+BattleTowerOutsideDoorsClosedText:
+	text "The Battle Tower's"
+	line "doors are closed…"
 	done

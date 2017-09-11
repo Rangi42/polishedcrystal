@@ -7,13 +7,13 @@ Special_CheckMagikarpLength: ; fbb32
 	; Let's start by selecting a Magikarp.
 	farcall SelectMonFromParty
 	jr c, .declined
-	ld a, [CurPartySpecies]
+	ld a, [wCurPartySpecies]
 	cp MAGIKARP
 	jr nz, .not_magikarp
 
 	; Now let's compute its length based on its DVs and ID.
-	ld a, [CurPartyMon]
-	ld hl, PartyMon1Species
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	push hl
@@ -32,14 +32,14 @@ Special_CheckMagikarpLength: ; fbb32
 	call PrintText
 
 	; Did we beat the record?
-	ld hl, Buffer1
+	ld hl, wBuffer1
 	ld de, wBestMagikarpLengthMmHi
 	ld c, 2
 	call StringCmp
 	jr nc, .not_long_enough
 
 	; NEW RECORD!!! Let's save that.
-	ld hl, Buffer1
+	ld hl, wBuffer1
 	ld de, wBestMagikarpLengthMmHi
 	ld a, [hli]
 	ld [de], a
@@ -47,27 +47,27 @@ Special_CheckMagikarpLength: ; fbb32
 	ld a, [hl]
 	ld [de], a
 	inc de
-	ld a, [CurPartyMon]
-	ld hl, PartyMonOT
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonOT
 	call SkipNames
 	call CopyBytes
 	ld a, 3
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .not_long_enough
 	ld a, 2
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .declined
 	ld a, 1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .not_magikarp
 	xor a
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; fbba9
 
@@ -78,11 +78,11 @@ Special_CheckMagikarpLength: ; fbb32
 ; 0xfbbae
 
 PrintMagikarpLength: ; fbbdb
-	ld a, [Options2]
+	ld a, [wOptions2]
 	bit POKEDEX_UNITS, a
 	jr z, .imperial
-	ld hl, StringBuffer1
-	ld de, Buffer1
+	ld hl, wStringBuffer1
+	ld de, wBuffer1
 	lb bc, PRINTNUM_RIGHTALIGN | 2, 4
 	call PrintNum
 	dec hl
@@ -99,9 +99,9 @@ PrintMagikarpLength: ; fbbdb
 	ret
 
 .imperial
-	ld a, [Buffer1]
+	ld a, [wBuffer1]
 	ld b, a
-	ld a, [Buffer2]
+	ld a, [wBuffer2]
 	ld c, a
 	ld de, 2580 ; (1/25.4) << 16
 	xor a
@@ -153,16 +153,16 @@ PrintMagikarpLength: ; fbbdb
 	jr .inchloop
 .inchdone
 	ld a, e
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	ld a, l
-	ld [Buffer2], a
-	ld hl, StringBuffer1
-	ld de, Buffer1
+	ld [wBuffer2], a
+	ld hl, wStringBuffer1
+	ld de, wBuffer1
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	call PrintNum
 	ld [hl], "′"
 	inc hl
-	ld de, Buffer2
+	ld de, wBuffer2
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	call PrintNum
 	ld [hl], "″"
@@ -172,11 +172,11 @@ PrintMagikarpLength: ; fbbdb
 ; fbbfc
 
 CalcMagikarpLength: ; fbbfc
-; Return Magikarp's length (in mm) at MagikarpLength (big endian).
+; Return Magikarp's length (in mm) at wMagikarpLength (big endian).
 ;
 ; input:
-;   de: EnemyMonDVs
-;   bc: PlayerID
+;   de: wEnemyMonDVs
+;   bc: wPlayerID
 
 ; This function is poorly commented.
 
@@ -189,9 +189,9 @@ CalcMagikarpLength: ; fbbfc
 
 ; bc = rrc(dv[0]) ++ rrc(dv[1]) ^ rrc(id)
 
-; if bc < 10:    [MagikarpLength] = c + 190
-; if bc ≥ $ff00: [MagikarpLength] = c + 1370
-; else:          [MagikarpLength] = z × 100 + (bc − x) / y
+; if bc < 10:    [wMagikarpLength] = c + 190
+; if bc ≥ $ff00: [wMagikarpLength] = c + 1370
+; else:          [wMagikarpLength] = z × 100 + (bc − x) / y
 
 ; X, Y, and Z depend on the value of b as follows:
 
@@ -340,7 +340,7 @@ CalcMagikarpLength: ; fbbfc
 ;.ok
 ;	ld e, a
 
-	ld hl, MagikarpLength
+	ld hl, wMagikarpLength
 	ld [hl], d
 	inc hl
 	ld [hl], e
@@ -390,9 +390,9 @@ CalcMagikarpLength: ; fbbfc
 
 Special_MagikarpHouseSign: ; fbcd2
 	ld a, [wBestMagikarpLengthMmHi]
-	ld [Buffer1], a
+	ld [wBuffer1], a
 	ld a, [wBestMagikarpLengthMmLo]
-	ld [Buffer2], a
+	ld [wBuffer2], a
 	call PrintMagikarpLength
 	ld hl, .CurrentRecordtext
 	jp PrintText

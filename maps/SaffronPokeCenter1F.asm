@@ -7,9 +7,9 @@ SaffronPokeCenter1F_MapScriptHeader:
 SaffronPokeCenter1F_MapEventHeader:
 
 .Warps: db 3
-	warp_def $7, $5, 4, SAFFRON_CITY
-	warp_def $7, $6, 4, SAFFRON_CITY
-	warp_def $7, $0, 1, POKECENTER_2F
+	warp_def 7, 5, 4, SAFFRON_CITY
+	warp_def 7, 6, 4, SAFFRON_CITY
+	warp_def 7, 0, 1, POKECENTER_2F
 
 .XYTriggers: db 0
 

@@ -7,9 +7,9 @@ BeautifulBeach_MapScriptHeader:
 BeautifulBeach_MapEventHeader:
 
 .Warps: db 3
-	warp_def $17, $b, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
-	warp_def $17, $c, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
-	warp_def $12, $1b, 1, BEAUTIFUL_BEACH_VILLA
+	warp_def 23, 11, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
+	warp_def 23, 12, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
+	warp_def 18, 27, 1, BEAUTIFUL_BEACH_VILLA
 
 .XYTriggers: db 0
 

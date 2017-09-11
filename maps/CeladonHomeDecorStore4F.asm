@@ -8,7 +8,7 @@ CeladonHomeDecorStore4F_MapScriptHeader:
 CeladonHomeDecorStore4F_MapEventHeader:
 
 .Warps: db 1
-	warp_def $0, $9, 2, CELADON_HOME_DECOR_STORE_3F
+	warp_def 0, 9, 2, CELADON_HOME_DECOR_STORE_3F
 
 .XYTriggers: db 0
 
@@ -30,20 +30,17 @@ CeladonHomeDecorStore4F_MapEventHeader:
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 	person_event SPRITE_GYARADOS_TOP_RIGHT, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 
-BigDollClerkNoSaleScript:
-	jumpopenedtext BigDollClerkNoSaleText
-
 BigDollClerkNoMoneyScript:
 	jumpopenedtext BigDollClerkNoMoneyText
 
 BigLaprasDollScript:
-	opentext
 	checkevent EVENT_DECO_BIG_LAPRAS_DOLL
-	iftrue .OwnBigLaprasDoll
+	iftrue_jumptext BigLaprasDollText
+	opentext
 	writetext BigDollClerkSellLaprasText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse BigDollClerkNoSaleScript
+	iffalse_jumpopenedtext BigDollClerkNoSaleText
 	checkmoney $0, 300000
 	if_equal $2, BigDollClerkNoMoneyScript
 	takemoney $0, 300000
@@ -53,17 +50,14 @@ BigLaprasDollScript:
 	waitbutton
 	jumpopenedtext BigLaprasDollSentText
 
-.OwnBigLaprasDoll:
-	jumpopenedtext BigLaprasDollText
-
 BigSnorlaxDollScript:
-	opentext
 	checkevent EVENT_DECO_BIG_SNORLAX_DOLL
-	iftrue .OwnBigSnorlaxDoll
+	iftrue_jumptext BigSnorlaxDollText
+	opentext
 	writetext BigDollClerkSellSnorlaxText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse BigDollClerkNoSaleScript
+	iffalse_jumpopenedtext BigDollClerkNoSaleText
 	checkmoney $0, 200000
 	if_equal $2, BigDollClerkNoMoneyScript
 	takemoney $0, 200000
@@ -73,17 +67,14 @@ BigSnorlaxDollScript:
 	waitbutton
 	jumpopenedtext BigSnorlaxDollSentText
 
-.OwnBigSnorlaxDoll:
-	jumpopenedtext BigSnorlaxDollText
-
 BigOnixDollScript:
-	opentext
 	checkevent EVENT_DECO_BIG_ONIX_DOLL
-	iftrue .OwnBigOnixDoll
+	iftrue_jumptext BigOnixDollText
+	opentext
 	writetext BigDollClerkSellOnixText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse BigDollClerkNoSaleScript
+	iffalse_jumpopenedtext BigDollClerkNoSaleText
 	checkmoney $0, 250000
 	if_equal $2, BigDollClerkNoMoneyScript
 	takemoney $0, 250000
@@ -92,9 +83,6 @@ BigOnixDollScript:
 	playsound SFX_TRANSACTION
 	waitbutton
 	jumpopenedtext BigOnixDollSentText
-
-.OwnBigOnixDoll:
-	jumpopenedtext BigOnixDollText
 
 BigDollClerkText:
 	text "Aren't our jumbo"

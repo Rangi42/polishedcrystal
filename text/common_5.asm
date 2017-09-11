@@ -19,7 +19,7 @@ UnknownText_0x1c5092::
 UnknownText_0x1c509f::
 	text "lined up!"
 	line "Won @"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text " coins!"
 	done
 
@@ -73,7 +73,7 @@ UnknownText_0x1c5660::
 	text_from_ram wMonOrItemNameBuffer
 	text " learned"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "!@"
 	sound_dex_fanfare_50_79
 	text_waitbutton
@@ -87,7 +87,7 @@ UnknownText_0x1c5678::
 UnknownText_0x1c5699::
 	text "Stop learning"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "?"
 	done
 
@@ -96,7 +96,7 @@ UnknownText_0x1c56af::
 	text ""
 	line "did not learn"
 	cont "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -105,13 +105,13 @@ UnknownText_0x1c56c9::
 	text ""
 	line "wants to learn"
 	cont "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "!"
 
 	para "Should it forget"
 	line "an old move for"
 	cont "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "?"
 	done
 
@@ -128,7 +128,7 @@ UnknownText_0x1c574e::
 	text_from_ram wMonOrItemNameBuffer
 	text " forgot"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "."
 
 	para "And…"
@@ -214,7 +214,7 @@ UnknownText_0x1c589f::
 	done
 
 UnknownText_0x1c58bc::
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "?"
 	line "Is that right?"
 	done
@@ -276,7 +276,7 @@ Text_YouCantTakeAnEgg::
 	done
 
 Text_UberRestriction::
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " must be"
 	line "<LV>70 or higher."
 	para ""
@@ -304,7 +304,7 @@ UnknownText_0x1c5afa::
 
 UnknownText_0x1c5b17::
 	text "Gotcha! @"
-	text_from_ram EnemyMonNick
+	text_from_ram wEnemyMonNick
 	text ""
 	line "was caught!@"
 	sound_caught_mon
@@ -321,7 +321,7 @@ UnknownText_0x1c5b38::
 	prompt
 
 UnknownText_0x1c5b53::
-	text_from_ram EnemyMonNick
+	text_from_ram wEnemyMonNick
 	text "'s data"
 	line "was newly added to"
 	cont "the #dex.@"
@@ -332,15 +332,15 @@ UnknownText_0x1c5b53::
 UnknownText_0x1c5b7f::
 	text "Give a nickname to"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "?"
 	done
 
 UnknownText_0x1c5b9a::
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "'s"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text " rose."
 	prompt
 
@@ -365,7 +365,7 @@ UnknownText_0x1c5c5e::
 UnknownText_0x1c5c7b::
 	text "Coins:"
 	line "@"
-	deciram Coins, 2, 5
+	deciram wCoins, 2, 5
 	db "@@"
 
 Text_RaiseThePPOfWhichMove::
@@ -379,19 +379,19 @@ Text_RestoreThePPOfWhichMove::
 	done
 
 Text_PPIsMaxedOut::
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "'s PP"
 	line "is maxed out."
 	prompt
 
 Text_PPsIncreased::
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "'s PP"
 	line "increased."
 	prompt
 
 Text_PPsMaximized::
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "'s PP"
 	line "maximized."
 	prompt
@@ -455,15 +455,15 @@ Text_NuzlockeReviveFailure::
 UnknownText_0x1c5e68::
 	text "<PLAYER> used the@"
 	text_low
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "."
 	done
 
 UnknownText_0x1c5ea8::
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text " knows"
 	line "@"
-	text_from_ram StringBuffer2
+	text_from_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -475,7 +475,7 @@ UnknownText_0x1c5eba::
 UnknownText_0x1c5eda::
 	text "Oh, make it forget"
 	line "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "?"
 	done
 

@@ -8,8 +8,8 @@ KurtsHouse_MapScriptHeader:
 KurtsHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $3, 4, AZALEA_TOWN
-	warp_def $7, $4, 4, AZALEA_TOWN
+	warp_def 7, 3, 4, AZALEA_TOWN
+	warp_def 7, 4, 4, AZALEA_TOWN
 
 .XYTriggers: db 0
 
@@ -27,7 +27,7 @@ KurtsHouse_MapEventHeader:
 	person_event SPRITE_TWIN, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
 	person_event SPRITE_KURT, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
 	person_event SPRITE_TWIN, 4, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	person_event SPRITE_SLOWPOKE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsHouseSlowpoke, EVENT_KURTS_HOUSE_SLOWPOKE
+	person_event SPRITE_SLOWPOKE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
 const_value set 2
 	const KURTSHOUSE_KURT1
@@ -96,8 +96,6 @@ KurtScript_0x18e178:
 	iffalse .NoRoomForBall
 	setevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
 .GotLevelBall:
-	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue .WaitForApricorns
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
 	iftrue .GiveLevelBall
 	checkevent EVENT_GAVE_KURT_BLU_APRICORN
@@ -140,8 +138,7 @@ KurtScript_0x18e178:
 	iftrue .ThatTurnedOutGreat
 	checkevent EVENT_DRAGON_SHRINE_QUESTION_2
 	iftrue .IMakeBallsFromApricorns
-	closetext
-	end
+	endtext
 
 .IMakeBallsFromApricorns:
 	jumpopenedtext UnknownText_0x18e6c9
@@ -184,13 +181,25 @@ KurtScript_0x18e178:
 
 .Pnk:
 	setevent EVENT_GAVE_KURT_PNK_APRICORN
-	jump .GaveKurtApricorns
-
 .GaveKurtApricorns:
 	setevent EVENT_GAVE_KURT_APRICORNS
-	setflag ENGINE_KURT_MAKING_BALLS
-.WaitForApricorns:
-	jumpopenedtext UnknownText_0x18e779
+	writetext KurtsHouseKurtGetStartedText
+	waitbutton
+	closetext
+	follow KURTSHOUSE_KURT1, PLAYER
+	applymovement KURTSHOUSE_KURT1, KurtsHouseFollowKurt_MovementData
+	stopfollow
+	pause 15
+	spriteface KURTSHOUSE_KURT1, DOWN
+	showtext UnknownText_0x18e779
+	applymovement PLAYER, KurtsHouseStepAwayFromKurt_MovementData
+	special Special_FadeBlackQuickly
+	special Special_ReloadSpritesNoPalettes
+	playsound SFX_ENTER_DOOR
+	waitsfx
+	pause 35
+	warpfacing UP, KURTS_HOUSE, 3, 3
+	jump KurtScript_0x18e178
 
 .Cancel:
 	jumpopenedtext UnknownText_0x18e7bc
@@ -201,8 +210,7 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e82a
 	waitbutton
 .NoRoomForBall:
-	closetext
-	end
+	endtext
 
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -399,19 +407,12 @@ KurtsGranddaughter2Subscript:
 KurtsGranddaughterFunScript:
 	jumptext KurtsGranddaughterFunText
 
-KurtsHouseSlowpoke:
-	faceplayer
-	opentext
-	writetext KurtsHouseSlowpokeText
-	cry SLOWPOKE
-	waitbutton
-	closetext
-	end
-
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
 	jumptext PokemonJournalProfWestwoodText
 
+MovementData_0x18e46c:
+	big_step_right
 MovementData_0x18e466:
 	run_step_down
 	run_step_down
@@ -420,13 +421,29 @@ MovementData_0x18e466:
 	run_step_down
 	step_end
 
-MovementData_0x18e46c:
-	run_step_right
-	run_step_down
-	run_step_down
-	run_step_down
-	run_step_down
-	run_step_down
+KurtsHouseFollowKurt_MovementData:
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_right
+	step_down
+	step_down
+	step_down
+	step_right
+	step_right
+	step_right
+	step_up
+	step_up
+	step_end
+
+KurtsHouseStepAwayFromKurt_MovementData:
+	step_down
+	step_left
+	step_left
 	step_end
 
 UnknownText_0x18e473:
@@ -509,11 +526,16 @@ UnknownText_0x18e736:
 	line "into a Ball."
 	done
 
+KurtsHouseKurtGetStartedText:
+	text "Kurt: I'll get"
+	line "started right now!"
+	done
+
 UnknownText_0x18e779:
 	text "Kurt: It'll take a"
-	line "day to make you a"
+	line "while to make you"
 
-	para "Ball. Come back"
+	para "a Ball. Come back"
 	line "for it later."
 	done
 

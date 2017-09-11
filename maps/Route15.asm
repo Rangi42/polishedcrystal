@@ -7,8 +7,8 @@ Route15_MapScriptHeader:
 Route15_MapEventHeader:
 
 .Warps: db 2
-	warp_def $4, $2, 3, ROUTE_15_FUCHSIA_GATE
-	warp_def $5, $2, 4, ROUTE_15_FUCHSIA_GATE
+	warp_def 4, 2, 3, ROUTE_15_FUCHSIA_GATE
+	warp_def 5, 2, 4, ROUTE_15_FUCHSIA_GATE
 
 .XYTriggers: db 0
 

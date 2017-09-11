@@ -7,8 +7,8 @@ OaksLab_MapScriptHeader:
 OaksLab_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 3, PALLET_TOWN
-	warp_def $b, $5, 3, PALLET_TOWN
+	warp_def 11, 4, 3, PALLET_TOWN
+	warp_def 11, 5, 3, PALLET_TOWN
 
 .XYTriggers: db 0
 
@@ -38,7 +38,7 @@ OaksLab_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
 	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
 	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
-	person_event SPRITE_POKEDEX_UNOWN_A, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OaksLabPokedexScript, -1
+	person_event SPRITE_POKEDEX_UNOWN_A, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
 
 const_value set 2
 	const OAKSLAB_OAK
@@ -179,14 +179,15 @@ Oak:
 	jump .CheckPokedex
 
 BulbasaurDollScript:
+	spriteface OAKSLAB_OAK, RIGHT
 	opentext
 	writetext ProfOakBulbasaurDollTradeText
 	waitbutton
 	checkitem LEAF_STONE
-	iffalse NoStoneScript
+	iffalse_jumpopenedtext NoStoneText
 	writetext WantToTradeText
 	yesorno
-	iffalse NoTradeScript
+	iffalse_jumpopenedtext NoTradeText
 	takeitem LEAF_STONE
 	disappear OAKSLAB_BULBASAUR_DOLL
 	setevent EVENT_DECO_BULBASAUR_DOLL
@@ -199,14 +200,15 @@ BulbasaurDollScript:
 	jumpopenedtext ProfOakAfterTradeText
 
 CharmanderDollScript:
+	spriteface OAKSLAB_OAK, RIGHT
 	opentext
 	writetext ProfOakCharmanderDollTradeText
 	waitbutton
 	checkitem FIRE_STONE
-	iffalse NoStoneScript
+	iffalse_jumpopenedtext NoStoneText
 	writetext WantToTradeText
 	yesorno
-	iffalse NoTradeScript
+	iffalse_jumpopenedtext NoTradeText
 	takeitem FIRE_STONE
 	disappear OAKSLAB_CHARMANDER_DOLL
 	setevent EVENT_DECO_CHARMANDER_DOLL
@@ -219,14 +221,15 @@ CharmanderDollScript:
 	jumpopenedtext ProfOakAfterTradeText
 
 SquirtleDollScript:
+	spriteface OAKSLAB_OAK, RIGHT
 	opentext
 	writetext ProfOakSquirtleDollTradeText
 	waitbutton
 	checkitem WATER_STONE
-	iffalse NoStoneScript
+	iffalse_jumpopenedtext NoStoneText
 	writetext WantToTradeText
 	yesorno
-	iffalse NoTradeScript
+	iffalse_jumpopenedtext NoTradeText
 	takeitem WATER_STONE
 	disappear OAKSLAB_SQUIRTLE_DOLL
 	setevent EVENT_DECO_SQUIRTLE_DOLL
@@ -237,15 +240,6 @@ SquirtleDollScript:
 	writetext SquirtleDollSentText
 	waitbutton
 	jumpopenedtext ProfOakAfterTradeText
-
-NoStoneScript:
-	jumpopenedtext NoStoneText
-
-NoTradeScript:
-	jumpopenedtext NoTradeText
-
-OaksLabPokedexScript:
-	jumptext OaksLabPokedexText
 
 OakWelcomeKantoText:
 	text "Oak: Ah, <PLAYER>!"
@@ -289,7 +283,7 @@ OakLabPartyFullText:
 OakLabReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "!"
 	done
 

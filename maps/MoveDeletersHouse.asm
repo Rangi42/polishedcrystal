@@ -7,8 +7,8 @@ MoveDeletersHouse_MapScriptHeader:
 MoveDeletersHouse_MapEventHeader:
 
 .Warps: db 2
-	warp_def $7, $2, 6, BLACKTHORN_CITY
-	warp_def $7, $3, 6, BLACKTHORN_CITY
+	warp_def 7, 2, 6, BLACKTHORN_CITY
+	warp_def 7, 3, 6, BLACKTHORN_CITY
 
 .XYTriggers: db 0
 
@@ -23,14 +23,10 @@ MoveDeleterScript:
 	faceplayer
 	opentext
 	special MoveDeletion
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 MoveReminderScript:
 	faceplayer
 	opentext
 	special MoveReminder
-	waitbutton
-	closetext
-	end
+	waitendtext

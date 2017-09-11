@@ -4,9 +4,9 @@ Special_BattleTower_FindChallengeLevel: ; 1700b0
 	push af
 	ld a, $1
 	ld [rSVBK], a
-	ld hl, PartyMon1Level
+	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	ld d, a
 	ld e, 1
 .loop
@@ -34,12 +34,12 @@ Special_BattleTower_FindChallengeLevel: ; 1700b0
 	ld [rSVBK], a
 	ld a, b
 	ld [wBTChoiceOfLvlGroup], a
-	ld [wBTChoiceOfLvlGroupBackup], a ; save here to store in ScriptVar later
+	ld [wBTChoiceOfLvlGroupBackup], a ; save here to store in wScriptVar later
 	pop af
 	ld [rSVBK], a
 
 	ld a, [wBTChoiceOfLvlGroupBackup] ; saved value of wBTChoiceOfLvlGroup
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 1700ba
 
@@ -75,17 +75,17 @@ endr
 ; 17024d
 
 RunBattleTowerTrainer: ; 17024d
-	ld a, [Options2]
+	ld a, [wOptions2]
 	push af
 	; force Set mode
-	ld hl, Options2
+	ld hl, wOptions2
 	res BATTLE_SWITCH, [hl]
 	res BATTLE_PREDICT, [hl]
 
-	ld a, [InBattleTowerBattle]
+	ld a, [wInBattleTowerBattle]
 	push af
 	or $1
-	ld [InBattleTowerBattle], a
+	ld [wInBattleTowerBattle], a
 
 	xor a
 	ld [wLinkMode], a
@@ -98,7 +98,7 @@ RunBattleTowerTrainer: ; 17024d
 	farcall LoadPokemonData
 	farcall HealPartyEvenForNuzlocke
 	ld a, [wBattleResult]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	and a
 	jr nz, .lost
 	ld a, BANK(sNrOfBeatenBattleTowerTrainers)
@@ -106,7 +106,7 @@ RunBattleTowerTrainer: ; 17024d
 	ld a, [sNrOfBeatenBattleTowerTrainers]
 	ld [wNrOfBeatenBattleTowerTrainers], a
 	call CloseSRAM
-	ld hl, StringBuffer3
+	ld hl, wStringBuffer3
 	ld a, [wNrOfBeatenBattleTowerTrainers]
 	add "1"
 	ld [hli], a
@@ -115,9 +115,9 @@ RunBattleTowerTrainer: ; 17024d
 
 .lost
 	pop af
-	ld [InBattleTowerBattle], a
+	ld [wInBattleTowerBattle], a
 	pop af
-	ld [Options2], a
+	ld [wOptions2], a
 	ld a, $1
 	ld [wBattleTowerBattleEnded], a
 SkipBattleTowerTrainer: ; 1704c9
@@ -128,7 +128,7 @@ ReadBTTrainerParty: ; 1702b7
 	call CopyBTTrainerToTemp
 
 	ld hl, wBT_OTTempName ; 0xc608
-	ld de, OTPlayerName
+	ld de, wOTPlayerName
 	ld bc, NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
@@ -136,15 +136,15 @@ ReadBTTrainerParty: ; 1702b7
 
 	ld hl, wBT_OTTempTrainerClass
 	ld a, [hli]
-	ld [OtherTrainerClass], a
-	ld a, OTPartyMonNicknames % $100
-	ld [BGMapBuffer], a
-	ld a, OTPartyMonNicknames / $100
-	ld [BGMapBuffer + 1], a
+	ld [wOtherTrainerClass], a
+	ld a, wOTPartyMonNicknames % $100
+	ld [wBGMapBuffer], a
+	ld a, wOTPartyMonNicknames / $100
+	ld [wBGMapBuffer + 1], a
 
 	; Copy Pkmn into Memory from the address in hl
-	ld de, OTPartyMon1Species
-	ld bc, OTPartyCount
+	ld de, wOTPartyMon1Species
+	ld bc, wOTPartyCount
 	ld a, BATTLETOWER_NROFPKMNS ; Number of Pkmn the BattleTower-Trainer has
 	ld [bc], a
 	inc bc
@@ -157,16 +157,16 @@ ReadBTTrainerParty: ; 1702b7
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call CopyBytes
 	push de
-	ld a, [BGMapBuffer]
+	ld a, [wBGMapBuffer]
 	ld e, a
-	ld a, [BGMapBuffer + 1]
+	ld a, [wBGMapBuffer + 1]
 	ld d, a
 	ld bc, PKMN_NAME_LENGTH
 	call CopyBytes
 	ld a, e
-	ld [BGMapBuffer], a
+	ld [wBGMapBuffer], a
 	ld a, d
-	ld [BGMapBuffer + 1], a
+	ld [wBGMapBuffer + 1], a
 	pop de
 	pop bc
 	pop af
@@ -179,13 +179,13 @@ ReadBTTrainerParty: ; 1702b7
 ; 170394
 
 CopyBTTrainerToTemp: ; 1704a2
-; copy the BattleTower-Trainer data that lies at 'BT_OTTrainer' to 'wBT_OTTemp'
+; copy the BattleTower-Trainer data that lies at 'wBT_OTTrainer' to 'wBT_OTTemp'
 	ld a, [rSVBK]
 	push af
-	ld a, BANK(BT_OTTrainer)
+	ld a, BANK(wBT_OTTrainer)
 	ld [rSVBK], a
 
-	ld hl, BT_OTTrainer ; $d100
+	ld hl, wBT_OTTrainer ; $d100
 	ld de, wBT_OTTemp ; wMisc
 	ld bc, BATTLE_TOWER_STRUCT_LENGTH
 	call CopyBytes
@@ -215,7 +215,7 @@ Special_BattleTower_ResetTrainersSRAM: ; 1706d6 (5c:46d6)
 
 Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	call Special_BattleTower_CheckSaveFileExistsAndIsYours
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	and a
 	ret z
 
@@ -223,7 +223,7 @@ Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	call GetSRAMBank
 	ld a, [sBattleTowerNewSaveFile]
 	and $2
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	jp CloseSRAM
 
 Special_BattleTower_GetChallengeState: ; 170778 (5c:4778)
@@ -231,11 +231,11 @@ Special_BattleTower_GetChallengeState: ; 170778 (5c:4778)
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
 	ld a, [hl]
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	jp CloseSRAM
 
 Special_BattleTower_SetChallengeState:
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	ld c, a
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
@@ -288,13 +288,13 @@ Special_BattleTower_CheckSaveFileExistsAndIsYours: ; 17089a
 .yes
 	ld a, $1
 .nope
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 1708b1
 
 Special_BattleTower_MaxVolume: ; 1708b1 (5c:48b1)
 	xor a
-	ld [MusicFade], a
+	ld [wMusicFade], a
 	jp MaxVolume
 
 Special_BattleTower_BeginChallenge: ; 170a9c (5c:4a9c)
@@ -311,7 +311,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	push af
 	ld a, $3
 	ld [rSVBK], a
-	ld hl, BT_OTTrainerClass
+	ld hl, wBT_OTTrainerClass
 	ld a, [hl]
 	dec a
 	ld c, a
@@ -325,7 +325,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 
 ; Load sprite of the opponent trainer
 ; because s/he is chosen randomly and appears out of nowhere
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	dec a
 	sla a
 	ld e, a
@@ -335,12 +335,12 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	ld c, a
 	ld b, 0
 	ld d, 0
-	ld hl, MapObjects
+	ld hl, wMapObjects
 	add hl, bc
 	inc hl
 	ld a, [wBTTempOTSprite]
 	ld [hl], a
-	ld hl, UsedSprites
+	ld hl, wUsedSprites
 	add hl, de
 	ld [hli], a
 	ld [hUsedSpriteIndex], a
@@ -350,7 +350,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 ; 170b90
 
 .Sprites:
-	db SPRITE_KRIS          ; KAY
+	db SPRITE_KRIS          ; CARRIE
 	db SPRITE_CHRIS         ; CAL
 	db SPRITE_FALKNER       ; FALKNER
 	db SPRITE_BUGSY         ; BUGSY
@@ -468,13 +468,13 @@ Special_BattleTower_CheckForRules: ; 170bd3
 .yes
 	ld a, 1
 .done
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 170c06
 
 Special_BattleTower_MainMenu: ; 17d224
 	ld a, $4
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ld hl, MenuDataHeader_ChallengeExplanationCancel
 	call LoadMenuDataHeader
 	call ChallengeExplanationCancelMenu
@@ -484,7 +484,7 @@ Special_BattleTower_MainMenu: ; 17d224
 ChallengeExplanationCancelMenu: ; 17d246
 	call VerticalMenu
 	jr c, .Exit
-	ld a, [ScriptVar]
+	ld a, [wScriptVar]
 	cp $5
 	jr nz, .UsewMenuCursorY
 	ld a, [wMenuCursorY]
@@ -498,12 +498,12 @@ ChallengeExplanationCancelMenu: ; 17d246
 	ld a, [wMenuCursorY]
 
 .LoadToScriptVar:
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 
 .Exit:
 	ld a, $4
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 17d26a
 
@@ -697,7 +697,7 @@ endr
 ; 8b2bb
 
 Function_PartyCountEq3: ; 8b2da
-	ld a, [PartyCount]
+	ld a, [wPartyCount]
 	cp 3
 	ret z
 	scf
@@ -705,12 +705,12 @@ Function_PartyCountEq3: ; 8b2da
 ; 8b2e2
 
 Function_PartySpeciesAreUnique: ; 8b2e2
-	ld hl, PartyMon1Species
+	ld hl, wPartyMon1Species
 	jp VerifyUniqueness
 ; 8b2e9
 
 VerifyUniqueness: ; 8b2e9
-	ld de, PartyCount
+	ld de, wPartyCount
 	ld a, [de]
 	inc de
 	dec a
@@ -774,12 +774,12 @@ VerifyUniqueness: ; 8b2e9
 ; 8b32a
 
 Function_PartyItemsAreUnique: ; 8b32a
-	ld hl, PartyMon1Item
+	ld hl, wPartyMon1Item
 	jp VerifyUniqueness
 ; 8b331
 
 Function_HasPartyAnEgg: ; 8b331
-	ld hl, PartyCount
+	ld hl, wPartyCount
 	ld a, [hli]
 	ld c, a
 .loop
@@ -797,10 +797,10 @@ Function_HasPartyAnEgg: ; 8b331
 ; 8b342
 
 Function_UberRestriction:
-	ld hl, PartyMon1Level
+	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld de, PartySpecies
-	ld a, [PartyCount]
+	ld de, wPartySpecies
+	ld a, [wPartyCount]
 .loop
 	push af
 	ld a, [de]

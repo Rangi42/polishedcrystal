@@ -7,8 +7,8 @@ EcruteakShrineInside_MapScriptHeader:
 EcruteakShrineInside_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $5, 1, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def $b, $6, 1, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def 11, 5, 1, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def 11, 6, 1, ECRUTEAK_SHRINE_OUTSIDE
 
 .XYTriggers: db 0
 

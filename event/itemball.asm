@@ -28,21 +28,21 @@ FindItemInBallScript:: ; 0x122ce
 
 .TryReceiveItem: ; 122f8
 	xor a
-	ld [ScriptVar], a
-	ld a, [CurItemBallContents]
+	ld [wScriptVar], a
+	ld a, [wCurItemBallContents]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
-	ld hl, StringBuffer3
+	ld hl, wStringBuffer3
 	call CopyName2
-	ld a, [CurItemBallContents]
-	ld [CurItem], a
-	ld a, [CurItemBallQuantity]
+	ld a, [wCurItemBallContents]
+	ld [wCurItem], a
+	ld a, [wCurItemBallQuantity]
 	ld [wItemQuantityChangeBuffer], a
-	ld hl, NumItems
+	ld hl, wNumItems
 	call ReceiveItem
 	ret nc
 	ld a, $1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret
 ; 12324
 
@@ -64,11 +64,11 @@ FindTMHMInBallScript::
 
 .ReceiveTMHM:
 	xor a
-	ld [ScriptVar], a
-	ld a, [CurItemBallContents]
+	ld [wScriptVar], a
+	ld a, [wCurItemBallContents]
 	ld [wNamedObjectIndexBuffer], a
 	call GetTMHMName
-	ld hl, StringBuffer3
+	ld hl, wStringBuffer3
 	call CopyName2
 
 	; off by one error?
@@ -81,14 +81,14 @@ FindTMHMInBallScript::
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 
-	ld hl, StringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
+	ld hl, wStringBuffer3 + 4 ; assume all TM names are 4 characters, "TM##"
 	ld a, " "
 	ld [hli], a
 	call CopyName2
 
-	ld a, [CurItemBallContents]
-	ld [CurTMHM], a
+	ld a, [wCurItemBallContents]
+	ld [wCurTMHM], a
 	call ReceiveTMHM
 	ld a, $1
-	ld [ScriptVar], a
+	ld [wScriptVar], a
 	ret

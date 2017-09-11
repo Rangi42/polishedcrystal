@@ -7,11 +7,11 @@ EcruteakShrineOutside_MapScriptHeader:
 EcruteakShrineOutside_MapEventHeader:
 
 .Warps: db 5
-	warp_def $3, $5, 1, ECRUTEAK_SHRINE_INSIDE
-	warp_def $b, $4, 4, ECRUTEAK_CITY
-	warp_def $b, $5, 4, ECRUTEAK_CITY
-	warp_def $b, $6, 5, ECRUTEAK_CITY
-	warp_def $b, $7, 5, ECRUTEAK_CITY
+	warp_def 3, 5, 1, ECRUTEAK_SHRINE_INSIDE
+	warp_def 11, 4, 4, ECRUTEAK_CITY
+	warp_def 11, 5, 4, ECRUTEAK_CITY
+	warp_def 11, 6, 5, ECRUTEAK_CITY
+	warp_def 11, 7, 5, ECRUTEAK_CITY
 
 .XYTriggers: db 0
 
@@ -21,16 +21,8 @@ EcruteakShrineOutside_MapEventHeader:
 
 .PersonEvents: db 3
 	person_event SPRITE_TWIN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideTwinText, -1
-	person_event SPRITE_HOOTHOOT, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakShrineOutsideHoothootScript, -1
+	person_event SPRITE_HOOTHOOT, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, EcruteakShrineOutsideHoothootText, -1
 	person_event SPRITE_SAGE, 10, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideSageText, -1
-
-EcruteakShrineOutsideHoothootScript:
-	opentext
-	writetext EcruteakShrineOutsideHoothootText
-	cry HOOTHOOT
-	waitbutton
-	closetext
-	end
 
 EcruteakShrineOutsideTwinText:
 	text "My Hoothoot's"

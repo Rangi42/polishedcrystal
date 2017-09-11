@@ -7,11 +7,11 @@ Route12Gate_MapScriptHeader:
 Route12Gate_MapEventHeader:
 
 .Warps: db 5
-	warp_def $0, $4, 1, ROUTE_12_NORTH
-	warp_def $0, $5, 2, ROUTE_12_NORTH
-	warp_def $9, $4, 4, ROUTE_12_SOUTH
-	warp_def $9, $5, 4, ROUTE_12_SOUTH
-	warp_def $8, $8, 1, ROUTE_12_GATE_2F
+	warp_def 0, 4, 1, ROUTE_12_NORTH
+	warp_def 0, 5, 2, ROUTE_12_NORTH
+	warp_def 9, 4, 4, ROUTE_12_SOUTH
+	warp_def 9, 5, 4, ROUTE_12_SOUTH
+	warp_def 8, 8, 1, ROUTE_12_GATE_2F
 
 .XYTriggers: db 0
 

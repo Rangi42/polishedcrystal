@@ -7,8 +7,8 @@ LavRadioTower2F_MapScriptHeader:
 LavRadioTower2F_MapEventHeader:
 
 .Warps: db 2
-	warp_def $0, $d, 3, LAV_RADIO_TOWER_1F
-	warp_def $0, $2, 1, LAV_RADIO_TOWER_3F
+	warp_def 0, 13, 3, LAV_RADIO_TOWER_1F
+	warp_def 0, 2, 1, LAV_RADIO_TOWER_3F
 
 .XYTriggers: db 0
 

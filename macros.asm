@@ -105,7 +105,7 @@ hlcoord equs "coord hl,"
 coord: MACRO
 ; register, x, y[, origin]
 	if _NARG < 4
-	ld \1, TileMap + SCREEN_WIDTH * (\3) + (\2)
+	ld \1, wTileMap + SCREEN_WIDTH * (\3) + (\2)
 	else
 	ld \1, \4 + SCREEN_WIDTH * (\3) + (\2)
 	endc
@@ -113,7 +113,7 @@ coord: MACRO
 
 dwcoord: MACRO
 	rept _NARG / 2
-	dw TileMap + SCREEN_WIDTH * (\2) + (\1)
+	dw wTileMap + SCREEN_WIDTH * (\2) + (\1)
 	shift
 	shift
 	endr
@@ -121,7 +121,7 @@ dwcoord: MACRO
 
 ldcoord_a: MACRO
 	if _NARG < 3
-	ld [TileMap + SCREEN_WIDTH * (\2) + (\1)], a
+	ld [wTileMap + SCREEN_WIDTH * (\2) + (\1)], a
 	else
 	ld [\3 + SCREEN_WIDTH * (\2) + (\1)], a
 	endc
@@ -129,7 +129,7 @@ ldcoord_a: MACRO
 
 lda_coord: MACRO
 	if _NARG < 3
-	ld a, [TileMap + SCREEN_WIDTH * (\2) + (\1)]
+	ld a, [wTileMap + SCREEN_WIDTH * (\2) + (\1)]
 	else
 	ld a, [\3 + SCREEN_WIDTH * (\2) + (\1)]
 	endc
@@ -190,6 +190,7 @@ tiles EQUS "* $10"
 tile EQUS "+ $10 *"
 
 palettes EQUS "* 8"
+palette EQUS "+ $8 *"
 
 ldpixel: MACRO
 if _NARG >= 5
@@ -228,13 +229,7 @@ palgreen EQUS "$0020 *"
 palblue EQUS "$0400 *"
 
 dsprite: MACRO
-; conditional segment is there because not every instance of
-; this macro is directly OAM
-if _NARG >= 7 ; y tile, y pxl, x tile, x pxl, vtile offset, flags, palette
-	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, (\6 << 3) + (\7 & 7)
-else
 	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
-endc
 endm
 
 jumptable: MACRO

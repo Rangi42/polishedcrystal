@@ -16,17 +16,17 @@ ElmsLab_MapScriptHeader:
 ElmsLab_MapEventHeader:
 
 .Warps: db 2
-	warp_def $b, $4, 1, NEW_BARK_TOWN
-	warp_def $b, $5, 1, NEW_BARK_TOWN
+	warp_def 11, 4, 1, NEW_BARK_TOWN
+	warp_def 11, 5, 1, NEW_BARK_TOWN
 
 .XYTriggers: db 7
-	xy_trigger 1, $6, $4, LabTryToLeaveScript
-	xy_trigger 1, $6, $5, LabTryToLeaveScript
-	xy_trigger 3, $5, $4, MeetCopScript
-	xy_trigger 3, $5, $5, MeetCopScript2
-	xy_trigger 5, $8, $4, AideScript_WalkPotions1
-	xy_trigger 5, $8, $5, AideScript_WalkPotions2
-	xy_trigger 6, $6, $4, LyraBattleScript
+	xy_trigger 1, 6, 4, LabTryToLeaveScript
+	xy_trigger 1, 6, 5, LabTryToLeaveScript
+	xy_trigger 3, 5, 4, MeetCopScript
+	xy_trigger 3, 5, 5, MeetCopScript2
+	xy_trigger 5, 8, 4, AideScript_WalkPotions1
+	xy_trigger 5, 8, 5, AideScript_WalkPotions2
+	xy_trigger 6, 6, 4, LyraBattleScript
 
 .Signposts: db 16
 	signpost 1, 2, SIGNPOST_READ, ElmsLabHealingMachine
@@ -81,7 +81,7 @@ ElmsLabTrigger7:
 ElmsLabCallback_MoveElm:
 	checktriggers
 	iftrue .Skip
-	moveperson ELMSLAB_ELM, $3, $4
+	moveperson ELMSLAB_ELM, 3, 4
 .Skip:
 	return
 
@@ -115,9 +115,9 @@ ElmsLab_ElmGetsEmail:
 	writetext ElmText_MissionFromMrPokemon
 	waitbutton
 	closetext
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement1
+	applyonemovement ELMSLAB_ELM, step_up
 	spriteface PLAYER, UP
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement2
+	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement
 	spriteface PLAYER, RIGHT
 	showtext ElmText_ChooseAPokemon
 	dotrigger $1
@@ -147,7 +147,7 @@ ElmCheckMasterBall:
 	iftrue ElmGiveMasterBallScript
 ElmCheckEverstone:
 	checkevent EVENT_GOT_EVERSTONE_FROM_ELM
-	iftrue ElmScript_CallYou
+	iftrue_jumpopenedtext ElmText_CallYou
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue ElmGiveEverstoneScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
@@ -182,26 +182,26 @@ ElmCheckTogepiEgg:
 	iftrue ElmEggHatchedScript
 ElmCheckGotEggAgain:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE ; why are we checking it again?
-	iftrue ElmWaitingEggHatchScript
+	iftrue_jumpopenedtext ElmWaitingEggHatchText
 	checkflag ENGINE_ZEPHYRBADGE
-	iftrue ElmAideHasEggScript
+	iftrue_jumpopenedtext ElmAideHasEggText
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue ElmStudyingEggScript
+	iftrue_jumpopenedtext ElmStudyingEggText
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	iftrue ElmAfterTheftScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue ElmDescribesMrPokemonScript
+	iftrue_jumpopenedtext ElmDescribesMrPokemonText
 	jumpopenedtext ElmText_LetYourMonBattleIt
 
 LabTryToLeaveScript:
 	spriteface ELMSLAB_ELM, DOWN
 	showtext LabWhereGoingText
-	applymovement PLAYER, MovementData_0x78f70
+	applyonemovement PLAYER, step_up
 	end
 
 CyndaquilPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue_jumptext ElmPokeBallText
 	spriteface ELMSLAB_ELM, DOWN
 	refreshscreen
 	pokepic CYNDAQUIL
@@ -211,7 +211,7 @@ CyndaquilPokeBallScript:
 	opentext
 	writetext TakeCyndaquilText
 	yesorno
-	iffalse DidntChooseStarterScript
+	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL1
 	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
 	writetext ChoseStarterText
@@ -246,7 +246,7 @@ CyndaquilPokeBallScript:
 
 TotodilePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue_jumptext ElmPokeBallText
 	spriteface ELMSLAB_ELM, DOWN
 	refreshscreen
 	pokepic TOTODILE
@@ -256,7 +256,7 @@ TotodilePokeBallScript:
 	opentext
 	writetext TakeTotodileText
 	yesorno
-	iffalse DidntChooseStarterScript
+	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL2
 	setevent EVENT_GOT_TOTODILE_FROM_ELM
 	writetext ChoseStarterText
@@ -289,7 +289,7 @@ TotodilePokeBallScript:
 
 ChikoritaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue_jumptext ElmPokeBallText
 	spriteface ELMSLAB_ELM, DOWN
 	refreshscreen
 	pokepic CHIKORITA
@@ -299,7 +299,7 @@ ChikoritaPokeBallScript:
 	opentext
 	writetext TakeChikoritaText
 	yesorno
-	iffalse DidntChooseStarterScript
+	iffalse_jumpopenedtext DidntChooseStarterText
 	disappear ELMSLAB_POKE_BALL3
 	setevent EVENT_GOT_CHIKORITA_FROM_ELM
 	writetext ChoseStarterText
@@ -330,9 +330,6 @@ ChikoritaPokeBallScript:
 	applymovement PLAYER, AfterChikoritaMovement
 	jump ElmDirectionsScript
 
-DidntChooseStarterScript:
-	jumpopenedtext DidntChooseStarterText
-
 ElmDirectionsScript:
 	spriteface PLAYER, UP
 	showtext ElmDirectionsText1
@@ -352,12 +349,6 @@ ElmDirectionsScript:
 	dotrigger $6
 	end
 
-ElmDescribesMrPokemonScript:
-	jumpopenedtext ElmDescribesMrPokemonText
-
-LookAtElmPokeBallScript:
-	jumptext ElmPokeBallText
-
 ElmsLabHealingMachine:
 	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -368,8 +359,7 @@ ElmsLabHealingMachine:
 	writetext ElmsLabHealingMachineText2
 	yesorno
 	iftrue ElmsLabHealingMachine_HealParty
-	closetext
-	end
+	endtext
 
 ElmsLabHealingMachine_HealParty:
 	special HealParty
@@ -379,13 +369,10 @@ ElmsLabHealingMachine_HealParty:
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic
-	closetext
-	end
+	endtext
 
 ElmAfterTheftDoneScript:
-	waitbutton
-	closetext
-	end
+	waitendtext
 
 ElmAfterTheftScript:
 	writetext ElmAfterTheftText1
@@ -409,20 +396,8 @@ ElmAfterTheftScript:
 	domaptrigger ROUTE_29, $1
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
-	writetext ElmAfterTheftText6
-	waitbutton
-	closetext
 	dotrigger $2
-	end
-
-ElmStudyingEggScript:
-	jumpopenedtext ElmStudyingEggText
-
-ElmAideHasEggScript:
-	jumpopenedtext ElmAideHasEggText
-
-ElmWaitingEggHatchScript:
-	jumpopenedtext ElmWaitingEggHatchText
+	jumpopenedtext ElmAfterTheftText6
 
 ShowElmTogepiScript:
 	writetext ShowElmTogepiText1
@@ -439,36 +414,22 @@ ElmGiveEverstoneScript:
 	writetext ElmGiveEverstoneText1
 	buttonsound
 	verbosegiveitem EVERSTONE
-	iffalse ElmScript_NoRoomForEverstone
-	writetext ElmGiveEverstoneText2
-	waitbutton
-	closetext
+	iffalse_endtext
 	setevent EVENT_GOT_EVERSTONE_FROM_ELM
-	end
-
-ElmScript_CallYou:
-	writetext ElmText_CallYou
-	waitbutton
-ElmScript_NoRoomForEverstone:
-	closetext
-	end
+	jumpopenedtext ElmGiveEverstoneText2
 
 ElmGiveMasterBallScript:
 	writetext ElmGiveMasterBallText1
 	buttonsound
 	verbosegiveitem MASTER_BALL
-	iffalse .notdone
+	iffalse_endtext
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	writetext ElmGiveMasterBallText2
-	waitbutton
-.notdone
-	closetext
-	end
+	jumpopenedtext ElmGiveMasterBallText2
 
 ElmGiveTicketScript:
 	writetext ElmChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext ElmRefusedBattleText
 	writetext ElmSeenText
 	waitbutton
 	closetext
@@ -523,9 +484,6 @@ ElmGiveTicketScript:
 	setevent EVENT_LYRA_IN_HER_ROOM
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
 	end
-
-.Refused:
-	jumpopenedtext ElmRefusedBattleText
 
 ElmJumpBackScript1:
 	closetext
@@ -643,35 +601,22 @@ AideScript_GivePotions:
 	writetext AideText_GiveYouPotions
 	buttonsound
 	verbosegiveitem POTION
-	writetext AideText_AlwaysBusy
-	waitbutton
-	closetext
 	dotrigger $2
-	end
-
-ElmsAideScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GOT_RIVALS_EGG
-	iftrue AideScript_AlwaysBusy
-	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iftrue AideScript_AfterTheft
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue AideScript_AlwaysBusy
-	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
-	iftrue AideScript_TheftTestimony
-AideScript_AlwaysBusy:
 	jumpopenedtext AideText_AlwaysBusy
 
-AideScript_TheftTestimony:
-	jumpopenedtext AideText_TheftTestimony
-
-AideScript_AfterTheft:
-	jumpopenedtext AideText_AfterTheft
+ElmsAideScript:
+	checkevent EVENT_GOT_RIVALS_EGG
+	iftrue_jumptextfaceplayer AideText_AlwaysBusy
+	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
+	iftrue_jumptextfaceplayer AideText_AfterTheft
+	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	iftrue_jumptextfaceplayer AideText_AlwaysBusy
+	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
+	iftrue_jumptextfaceplayer AideText_TheftTestimony
+	jumptextfaceplayer AideText_AlwaysBusy
 
 MeetCopScript2:
-	applymovement PLAYER, MeetCopScript2_StepLeft
-
+	applyonemovement PLAYER, step_left
 MeetCopScript:
 	applymovement PLAYER, MeetCopScript_WalkUp
 CopScript:
@@ -709,28 +654,16 @@ CopScript:
 	jump ElmAfterTheftScript
 
 ElmsLabLyraScript:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iffalse .LyraWhichPokemon
-	jumpopenedtext ElmsLabLyraGoodChoiceText
-
-.LyraWhichPokemon:
-	jumpopenedtext ElmsLabLyraWhichPokemonText
+	iffalse_jumptextfaceplayer ElmsLabLyraWhichPokemonText
+	jumptextfaceplayer ElmsLabLyraGoodChoiceText
 
 ElmsLabWindow:
-	opentext
 	checkflag ENGINE_FLYPOINT_VIOLET
-	iftrue .Normal
+	iftrue_jumptext ElmsLabWindowText1
 	checkevent EVENT_ELM_CALLED_ABOUT_STOLEN_POKEMON
-	iftrue .BreakIn
-	jump .Normal
-
-.BreakIn:
-	jumpopenedtext ElmsLabWindowText2
-
-.Normal:
-	jumpopenedtext ElmsLabWindowText1
+	iftrue_jumptext ElmsLabWindowText2
+	jumptext ElmsLabWindowText1
 
 ElmsLabPC:
 	jumptext ElmsLabPCText
@@ -744,10 +677,6 @@ ElmsLab_WalkUpToElmMovement:
 	step_up
 	step_up
 	turn_head_left
-	step_end
-
-MovementData_0x78f70:
-	step_up
 	step_end
 
 LyraPicksChikoritaMovement:
@@ -805,10 +734,6 @@ LyraRunsInLessMovement:
 LyraStepsAsideMovement:
 	step_left
 	turn_head_right
-	step_end
-
-MeetCopScript2_StepLeft:
-	step_left
 	step_end
 
 MeetCopScript_WalkUp:
@@ -892,11 +817,7 @@ ElmJumpRightMovement:
 	remove_fixed_facing
 	step_end
 
-ElmsLab_ElmToDefaultPositionMovement1:
-	step_up
-	step_end
-
-ElmsLab_ElmToDefaultPositionMovement2:
+ElmsLab_ElmToDefaultPositionMovement:
 	step_right
 	step_right
 	step_up
@@ -1086,7 +1007,7 @@ ChoseStarterText:
 ReceivedStarterText:
 	text "<PLAYER> received"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "!"
 	done
 
@@ -1483,6 +1404,17 @@ ElmGiveTicketText2:
 	para "After all, you've"
 	line "traveled all over"
 	cont "with your #mon."
+
+	para "Oh, that reminds"
+	line "me!"
+
+	para "Battle Tower has"
+	line "just opened up"
+	cont "near Olivine."
+
+	para "A champ like you"
+	line "should do well"
+	cont "competing there!"
 	done
 
 LyraAnnouncesGymChallengeText:
@@ -1620,7 +1552,7 @@ LyraChoosesStarterText:
 LyraReceivedStarterText:
 	text "Lyra received"
 	line "@"
-	text_from_ram StringBuffer3
+	text_from_ram wStringBuffer3
 	text "!"
 	done
 

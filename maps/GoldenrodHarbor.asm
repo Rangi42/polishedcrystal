@@ -7,8 +7,8 @@ GoldenrodHarbor_MapScriptHeader:
 GoldenrodHarbor_MapEventHeader:
 
 .Warps: db 2
-	warp_def $10, $1f, 1, GOLDENROD_HARBOR_GATE
-	warp_def $11, $1f, 2, GOLDENROD_HARBOR_GATE
+	warp_def 16, 31, 1, GOLDENROD_HARBOR_GATE
+	warp_def 17, 31, 2, GOLDENROD_HARBOR_GATE
 
 .XYTriggers: db 0
 
@@ -94,8 +94,7 @@ GoldenrodHarborPokefanmScript:
 	if_equal $1, .MagikarpDoll
 	if_equal $2, .TentacoolDoll
 	if_equal $3, .ShellderDoll
-	closetext
-	end
+	endtext
 
 .MagikarpDoll:
 	checkmoney $0, 1200
@@ -176,8 +175,7 @@ GoldenrodHarborYoungsterScript:
 	if_equal $1, .MagnaPlant
 	if_equal $2, .TropicPlant
 	if_equal $3, .JumboPlant
-	closetext
-	end
+	endtext
 
 .MagnaPlant:
 	checkmoney $0, 5400
