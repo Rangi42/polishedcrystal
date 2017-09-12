@@ -869,6 +869,7 @@ StatUpAbility:
 .cant_raise
 ; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
 	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp LIGHTNING_ROD
 	jr z, .print_immunity
 	cp MOTOR_DRIVE
