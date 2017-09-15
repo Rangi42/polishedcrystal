@@ -551,119 +551,64 @@ CheckIfTrendyPhraseIsLucky:
 	db "Lucky@"
 
 RespawnOneOffs:
-	ld de, EVENT_BEAT_LAWRENCE
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagreset EVENT_BEAT_LAWRENCE
+	eventflagreset EVENT_BEAT_FLANNERY
+	eventflagreset EVENT_BEAT_MAYLENE
+	eventflagreset EVENT_BEAT_SKYLA_AGAIN
+	eventflagreset EVENT_BEAT_KUKUI
 
-	ld de, EVENT_BEAT_FLANNERY
-	ld b, RESET_FLAG
-	call EventFlagAction
-
-	ld de, EVENT_BEAT_MAYLENE
-	ld b, RESET_FLAG
-	call EventFlagAction
-
-	ld de, EVENT_BEAT_SKYLA_AGAIN
-	ld b, RESET_FLAG
-	call EventFlagAction
-
-	ld de, EVENT_BEAT_KUKUI
-	ld b, RESET_FLAG
-	call EventFlagAction
-
-	ld de, EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_GOT_MUSCLE_BAND_FROM_STEVEN
 	jr z, .SkipSteven
-	ld de, EVENT_EMBEDDED_TOWER_STEVEN_1
-	ld b, SET_FLAG
-	call EventFlagAction
-	ld de, EVENT_EMBEDDED_TOWER_STEVEN_2
-	ld b, RESET_FLAG
-	call EventFlagAction
-	ld de, EVENT_BEAT_STEVEN
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagset EVENT_EMBEDDED_TOWER_STEVEN_1
+	eventflagreset EVENT_EMBEDDED_TOWER_STEVEN_2
+	eventflagreset EVENT_BEAT_STEVEN
+.SkipSteven
 
-.SkipSteven:
-	ld de, EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_GOT_WISE_GLASSES_FROM_CYNTHIA
 	jr z, .SkipCynthia
-	ld de, EVENT_MYSTRI_STAGE_CYNTHIA
-	ld b, SET_FLAG
-	call EventFlagAction
-	ld de, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
-	ld b, RESET_FLAG
-	call EventFlagAction
-	ld de, EVENT_BEAT_CYNTHIA
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagset EVENT_MYSTRI_STAGE_CYNTHIA
+	eventflagreset EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
+	eventflagreset EVENT_BEAT_CYNTHIA
+.SkipCynthia
 
-.SkipCynthia:
-	ld a, SUDOWOODO
-	dec a
+	ld a, SUDOWOODO - 1
 	call CheckCaughtMon
 	jr nz, .CaughtSudowoodo
-	ld de, EVENT_ROUTE_36_SUDOWOODO
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagreset EVENT_ROUTE_36_SUDOWOODO
+.CaughtSudowoodo
 
-.CaughtSudowoodo:
-	ld a, ARTICUNO
-	dec a
+	ld a, ARTICUNO - 1
 	call CheckCaughtMon
 	jr nz, .CaughtArticuno
-	ld de, EVENT_SEAFOAM_ISLANDS_ARTICUNO
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagreset EVENT_SEAFOAM_ISLANDS_ARTICUNO
+.CaughtArticuno
 
-.CaughtArticuno:
-	ld a, ZAPDOS
-	dec a
+	ld a, ZAPDOS - 1
 	call CheckCaughtMon
 	jr nz, .CaughtZapdos
-	ld de, EVENT_ROUTE_10_ZAPDOS
-	ld b, RESET_FLAG
-	call EventFlagAction
-	ld de, EVENT_ZAPDOS_GONE
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagreset EVENT_ROUTE_10_ZAPDOS
+	eventflagreset EVENT_ZAPDOS_GONE
+.CaughtZapdos
 
-.CaughtZapdos:
-	ld a, MOLTRES
-	dec a
+	ld a, MOLTRES - 1
 	call CheckCaughtMon
 	jr nz, .CaughtMoltres
-	ld de, EVENT_CINNABAR_VOLCANO_MOLTRES
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagreset EVENT_CINNABAR_VOLCANO_MOLTRES
+.CaughtMoltres
 
-.CaughtMoltres:
-	ld a, MEWTWO
-	dec a
+	ld a, MEWTWO - 1
 	call CheckCaughtMon
 	jr nz, .CaughtMewtwo
-	ld de, EVENT_CERULEAN_CAVE_MEWTWO
-	ld b, RESET_FLAG
-	call EventFlagAction
-
+	eventflagreset EVENT_CERULEAN_CAVE_MEWTWO
 .CaughtMewtwo
-	ld a, MEW
-	dec a
+
+	ld a, MEW - 1
 	call CheckCaughtMon
 	jr nz, .CaughtMew
-	ld de, EVENT_FARAWAY_JUNGLE_MEW
-	ld b, RESET_FLAG
-	call EventFlagAction
-
+	eventflagreset EVENT_FARAWAY_JUNGLE_MEW
 .CaughtMew
-	ld a, RAIKOU
-	dec a
+
+	ld a, RAIKOU - 1
 	call CheckCaughtMon
 	jr nz, .CaughtRaikou
 	ld hl, wRoamMon1Species
@@ -680,10 +625,9 @@ RespawnOneOffs:
 	ld [wRoamMon1MapNumber], a
 	xor a ; generate new stats
 	ld [wRoamMon1HP], a
+.CaughtRaikou
 
-.CaughtRaikou:
-	ld a, ENTEI
-	dec a
+	ld a, ENTEI - 1
 	call CheckCaughtMon
 	jr nz, .CaughtEntei
 	ld hl, wRoamMon2Species
@@ -700,16 +644,11 @@ RespawnOneOffs:
 	ld [wRoamMon2MapNumber], a
 	xor a ; generate new stats
 	ld [wRoamMon2HP], a
+.CaughtEntei
 
-.CaughtEntei:
-	ld de, EVENT_FOUGHT_SUICUNE
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_FOUGHT_SUICUNE
 	jr z, .CaughtSuicune
-	ld a, SUICUNE
-	dec a
+	ld a, SUICUNE - 1
 	call CheckCaughtMon
 	jr nz, .CaughtSuicune
 	ld hl, wRoamMon3Species
@@ -726,30 +665,21 @@ RespawnOneOffs:
 	ld [wRoamMon3MapNumber], a
 	xor a ; generate new stats
 	ld [wRoamMon3HP], a
+.CaughtSuicune
 
-.CaughtSuicune:
-	ld a, LUGIA
-	dec a
+	ld a, LUGIA - 1
 	call CheckCaughtMon
 	jr nz, .CaughtLugia
-	ld de, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
-	ld b, RESET_FLAG
-	call EventFlagAction
-	ld de, EVENT_FOUGHT_LUGIA
-	ld b, RESET_FLAG
-	call EventFlagAction
+	eventflagreset EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
+	eventflagreset EVENT_FOUGHT_LUGIA
+.CaughtLugia
 
-.CaughtLugia:
-	ld a, HO_OH
-	dec a
+	ld a, HO_OH - 1
 	call CheckCaughtMon
 	ret nz
-	ld de, EVENT_TIN_TOWER_ROOF_HO_OH
-	ld b, RESET_FLAG
-	call EventFlagAction
-	ld de, EVENT_FOUGHT_HO_OH
-	ld b, RESET_FLAG
-	jp EventFlagAction
+	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
+	eventflagreset EVENT_FOUGHT_HO_OH
+	ret
 
 BillBoxSwitchCheck:
 	ld a, [wCurBox]

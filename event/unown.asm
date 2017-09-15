@@ -13,17 +13,12 @@ SpecialHoOhChamber: ; 0x8addb
 
 .open
 	call GetSecondaryMapHeaderPointer
-	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	ld b, SET_FLAG
-	jp EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
+	ret
 ; 0x8adef
 
 SpecialOmanyteChamber: ; 8adef
-	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret nz
 
 	ld a, WATER_STONE
@@ -51,9 +46,8 @@ SpecialOmanyteChamber: ; 8adef
 
 .open
 	call GetSecondaryMapHeaderPointer
-	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	ld b, SET_FLAG
-	jp EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
+	ret
 ; 8ae30
 
 SpecialAerodactylChamber: ; 8ae30
@@ -65,9 +59,7 @@ SpecialAerodactylChamber: ; 8ae30
 	cp RuinsofAlphAerodactylChamber_SecondMapHeader % $100
 	jr nz, .nope
 
-	ld de, EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	ld b, SET_FLAG
-	call EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	scf
 	ret
 
@@ -85,9 +77,8 @@ SpecialKabutoChamber: ; 8ae4e
 	cp RuinsofAlphKabutoChamber_SecondMapHeader % $100
 	ret nz
 
-	ld de, EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	ld b, SET_FLAG
-	jp EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
+	ret
 ; 8ae68
 
 Special_DisplayUnownWords: ; 8ae68

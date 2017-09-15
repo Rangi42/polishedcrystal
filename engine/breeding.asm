@@ -265,10 +265,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld a, [CurPartySpecies]
 	cp TOGEPI
 	jr nz, .nottogepi
-	; set the event flag for hatching togepi
-	ld de, EVENT_TOGEPI_HATCHED
-	ld b, SET_FLAG
-	call EventFlagAction
+	eventflagset EVENT_TOGEPI_HATCHED
 .nottogepi
 
 	pop de

@@ -646,21 +646,18 @@ CheckSkipNavelRock:
 	ld a, [hl]
 	cp NAVEL_ROCK
 	ret nz
-	ld de, EVENT_VISITED_NAVEL_ROCK
-	jr CheckSkipLocation
+	push hl
+	eventflagcheck EVENT_VISITED_NAVEL_ROCK
+	pop hl
+	ret
 
 CheckSkipFarawayIsland:
 	ld a, [hl]
 	cp FARAWAY_ISLAND
 	ret nz
-	ld de, EVENT_VISITED_FARAWAY_ISLAND
-CheckSkipLocation:
-	ld b, CHECK_FLAG
 	push hl
-	call EventFlagAction
+	eventflagcheck EVENT_VISITED_FARAWAY_ISLAND
 	pop hl
-	ld a, c
-	and a
 	ret
 
 PokegearMap_InitPlayerIcon: ; 9106a
@@ -2810,11 +2807,7 @@ FillKantoMap: ; 91f04
 FillOrangeMap:
 	ld de, OrangeMap
 	call FillTownMap
-	ld de, EVENT_VISITED_FARAWAY_ISLAND
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_VISITED_FARAWAY_ISLAND
 	ret nz
 	ld a, $a
 	hlcoord 1, 12
