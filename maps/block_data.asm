@@ -206,9 +206,6 @@ Colosseum_BlockData:
 HiddenTreeGrotto_BlockData:
 	INCBIN "maps/HiddenTreeGrotto.blk"
 
-HiddenCaveGrotto_BlockData:
-	INCBIN "maps/HiddenCaveGrotto.blk"
-
 KrissHouse1F_BlockData:
 	INCBIN "maps/KrissHouse1F.blk"
 
@@ -1259,6 +1256,7 @@ NavelRockOutside_BlockData:
 NavelRockInside_BlockData:
 DragonsDen1F_BlockData:
 WhirlIslandCave_BlockData:
+HiddenCaveGrotto_BlockData:
 	INCBIN "maps/NavelRockInside.blk"
 
 NavelRockRoof_BlockData:

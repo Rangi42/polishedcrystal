@@ -419,7 +419,7 @@ MAP_NONE   EQU 0
 	mapgroup TRADE_CENTER,                                4,  5 ;  2
 	mapgroup COLOSSEUM,                                   4,  5 ;  3
 	mapgroup HIDDEN_TREE_GROTTO,                          9,  5 ;  4
-	mapgroup HIDDEN_CAVE_GROTTO,                          9,  5 ;  5
+	mapgroup HIDDEN_CAVE_GROTTO,                         45, 20 ;  5
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  6
 	mapgroup YELLOW_FOREST,                              25, 29 ;  7
 	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  8
