@@ -1375,7 +1375,7 @@ CheckValidLevel:
 	db  47, 100 ; Electivire
 	db   1,  19 ; Magby
 	db  47, 100 ; Magmortar
-	db   1,  19 ; Miltank
+	db  20, 100 ; Miltank
 	db  20, 100 ; Blissey
 	db 255, 255 ; Raikou
 	db 255, 255 ; Entei
