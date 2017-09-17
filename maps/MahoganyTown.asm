@@ -116,8 +116,13 @@ UnknownText_0x1900b0:
 	para "Since you're new,"
 	line "you should try a"
 
+if DEF(FAITHFUL)
+	para "yummy RageCandy-"
+	line "Bar!"
+else
 	para "yummy Cake of"
 	line "Rage!"
+endc
 
 	para "Right now, it can"
 	line "be yours for just"
@@ -143,7 +148,11 @@ UnknownText_0x190188:
 	done
 
 UnknownText_0x1901a6:
+if DEF(FAITHFUL)
+	text "RageCandyBars are"
+else
 	text "Cakes of Rage are"
+endc
 	line "sold out."
 
 	para "I'm packing up."

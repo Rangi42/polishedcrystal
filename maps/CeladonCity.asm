@@ -297,7 +297,11 @@ CeladonCityGameCornerSignText:
 CeladonCityTrainerTipsText:
 	text "Trainer Tips"
 
+if DEF(FAITHFUL)
+	para "Guard Spec."
+else
 	para "Guard Stats"
+endc
 	line "protects #mon"
 
 	para "against stat"

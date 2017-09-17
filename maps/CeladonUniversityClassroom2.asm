@@ -132,11 +132,19 @@ CeladonUniversityClassroom2BlackboardText:
 
 CeladonUniversityClassroom2Bookshelf1Text:
 	text "It's a book about"
+if DEF(FAITHFUL)
+	line "how the Brass"
+	cont "Tower in Ecruteak"
+
+	para "City burned down"
+	line "150 years ago."
+else
 	line "how the Gong Tower"
 	cont "in Ecruteak City"
 
 	para "burned down 150"
 	line "years ago."
+endc
 	done
 
 CeladonUniversityClassroom2Bookshelf2Text:

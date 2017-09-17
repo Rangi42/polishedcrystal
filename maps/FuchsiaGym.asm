@@ -258,13 +258,21 @@ UnknownText_0x195fa1:
 	line "tough one. You"
 	cont "definitely won…"
 
+if DEF(FAITHFUL)
+	para "Here's the Soul"
+else
 	para "Here's the Marsh"
+endc
 	line "Badge. Take it."
 	done
 
 UnknownText_0x195feb:
 	text "<PLAYER> received"
+if DEF(FAITHFUL)
+	line "the Soul Badge."
+else
 	line "the Marsh Badge."
+endc
 	done
 
 UnknownText_0x196002:

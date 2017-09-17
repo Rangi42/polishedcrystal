@@ -212,12 +212,20 @@ UnknownText_0x189df4:
 
 	para "OK, you win. You"
 	line "earned yourself"
+if DEF(FAITHFUL)
+	cont "the Marsh Badge."
+else
 	cont "the Soul Badge."
+endc
 	done
 
 UnknownText_0x189e95:
 	text "<PLAYER> received"
-	line "the Soul Badge."
+if DEF(FAITHFUL)
+	cont "the Marsh Badge."
+else
+	cont "the Soul Badge."
+endc
 	done
 
 UnknownText_0x189ead:

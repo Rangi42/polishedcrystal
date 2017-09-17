@@ -228,7 +228,11 @@ UnknownText_0x98a35:
 	line "were two nine-tier"
 	cont "towers here."
 
+if DEF(FAITHFUL)
+	para "The Brass Tower,"
+else
 	para "The Gong Tower,"
+endc
 	line "which was said to"
 
 	para "waken #mon, and"
@@ -250,7 +254,11 @@ UnknownText_0x98a35:
 	line "was said to make"
 
 	para "its roost atop the"
+if DEF(FAITHFUL)
+	line "Brass Tower."
+else
 	line "Gong Tower."
+endc
 
 	para "However…"
 
