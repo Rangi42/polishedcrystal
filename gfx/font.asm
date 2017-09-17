@@ -117,7 +117,7 @@ LoadFrame:: ; fb4cc
 	ld hl, VTiles1 tile ("┌" - $80)
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp_2
-	ld hl, VTiles2 tile $7f
+	ld hl, VTiles2 tile " "
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
 	jp Get1bpp_2
