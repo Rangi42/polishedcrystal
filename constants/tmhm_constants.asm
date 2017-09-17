@@ -20,7 +20,7 @@
 	add_tm RAIN_DANCE   ; $11
 	add_tm GIGA_DRAIN   ; $12
 	add_tm SAFEGUARD    ; $13
-	add_tm DRAGONBREATH ; $14
+	add_tm BULLDOZE     ; $14
 	add_tm SOLAR_BEAM   ; $15
 	add_tm IRON_TAIL    ; $16
 	add_tm THUNDERBOLT  ; $17
@@ -75,40 +75,39 @@
 	add_tm THUNDER_WAVE ; $48
 	add_tm GYRO_BALL    ; $49
 	add_tm SWORDS_DANCE ; $4a
-	add_tm BULLDOZE     ; $4b
 NUM_TMS = const_value - TM01
 
-	add_hm CUT          ; $4c
-	add_hm FLY          ; $4d
-	add_hm SURF         ; $4e
-	add_hm STRENGTH     ; $4f
-	add_hm WHIRLPOOL    ; $50
-	add_hm WATERFALL    ; $51
+	add_hm CUT          ; $4b
+	add_hm FLY          ; $4c
+	add_hm SURF         ; $4d
+	add_hm STRENGTH     ; $4e
+	add_hm WHIRLPOOL    ; $4f
+	add_hm WATERFALL    ; $50
 NUM_HMS = const_value - HM01
 
-	add_mt AQUA_TAIL    ; $52
-	add_mt BODY_SLAM    ; $53
-	add_mt COUNTER      ; $54
-	add_mt DEFENSE_CURL ; $55
-	add_mt DOUBLE_EDGE  ; $56
-	add_mt DREAM_EATER  ; $57
-	add_mt EARTH_POWER  ; $58
-	add_mt FIRE_PUNCH   ; $59
-	add_mt HEADBUTT     ; $5a
-	add_mt HYPER_VOICE  ; $5b
-	add_mt ICE_PUNCH    ; $5c
-	add_mt ICY_WIND     ; $5d
-	add_mt IRON_HEAD    ; $5e
-	add_mt KNOCK_OFF    ; $5f
-	add_mt PAY_DAY      ; $60
-	add_mt ROLLOUT      ; $61
-	add_mt SEED_BOMB    ; $62
-	add_mt SEISMIC_TOSS ; $63
-	add_mt SKILL_SWAP   ; $64
-	add_mt SLEEP_TALK   ; $65
-	add_mt SUCKER_PUNCH ; $66
-	add_mt SWAGGER      ; $67
-	add_mt THUNDERPUNCH ; $68
-	add_mt TRICK        ; $69
-	add_mt ZAP_CANNON   ; $6a
-	add_mt ZEN_HEADBUTT ; $6b
+	add_mt AQUA_TAIL    ; $51
+	add_mt BODY_SLAM    ; $52
+	add_mt COUNTER      ; $53
+	add_mt DEFENSE_CURL ; $54
+	add_mt DOUBLE_EDGE  ; $55
+	add_mt DREAM_EATER  ; $56
+	add_mt EARTH_POWER  ; $57
+	add_mt FIRE_PUNCH   ; $58
+	add_mt HEADBUTT     ; $59
+	add_mt HYPER_VOICE  ; $5a
+	add_mt ICE_PUNCH    ; $5b
+	add_mt ICY_WIND     ; $5c
+	add_mt IRON_HEAD    ; $5d
+	add_mt KNOCK_OFF    ; $5e
+	add_mt PAY_DAY      ; $5f
+	add_mt ROLLOUT      ; $60
+	add_mt SEED_BOMB    ; $61
+	add_mt SEISMIC_TOSS ; $62
+	add_mt SKILL_SWAP   ; $63
+	add_mt SLEEP_TALK   ; $64
+	add_mt SUCKER_PUNCH ; $65
+	add_mt SWAGGER      ; $66
+	add_mt THUNDERPUNCH ; $67
+	add_mt TRICK        ; $68
+	add_mt ZAP_CANNON   ; $69
+	add_mt ZEN_HEADBUTT ; $6a

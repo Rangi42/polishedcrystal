@@ -18,6 +18,10 @@ RBY TM:
 Mankey/Primeape: Metronome
 Slowpoke/Slowbro: Tri Attack
 
+GSC TM:
+Growlithe/Arcanine: Dragonbreath
+Mareep/Flaafy/Ampharos: Dragonbreath
+
 HGSS tutor:
 Bellsprout/Weepinbell/Victreebel: Bug Bite
 Ledyba/Ledian: Bug Bite
