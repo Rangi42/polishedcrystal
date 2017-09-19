@@ -273,7 +273,7 @@ MAP_NONE   EQU 0
 	mapgroup GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 29
 	mapgroup GOLDENROD_BAND_HOUSE,                        4,  4 ; 30
 	mapgroup GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 31
-	mapgroup MAGNET_TUNNEL_WEST,                         11,  9 ; 32
+	mapgroup MAGNET_TUNNEL_WEST,                         11, 10 ; 32
 	mapgroup MAGNET_TUNNEL_INSIDE,                       10, 20 ; 33
 
 	newgroup                                                    ; 12
