@@ -170,7 +170,7 @@ def find_unused_block_ids():
 
 def find_unused_tile_ids():
 	for tileset_id, used_tile_ids in tileset_used_tile_ids.items():
-		domain = set(range(0x100)) - set(range(0x77, 0x80))
+		domain = set(range(0x100)) - {0x7F}
 		unused_tile_ids = build_unused_ids(used_tile_ids, domain)
 		tileset_unused_tile_ids[tileset_id].update(unused_tile_ids)
 
