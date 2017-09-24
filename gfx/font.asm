@@ -50,9 +50,6 @@ TownMapGFX: ; f8ba0
 INCBIN "gfx/pokegear/town_map.2bpp.lz"
 ; f8ea4
 
-JohtoKantoGFX:
-INCBIN "gfx/pokegear/johto-kanto.2bpp"
-
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"
 ; f9214
