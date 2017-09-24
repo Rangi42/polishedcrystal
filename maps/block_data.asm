@@ -50,8 +50,8 @@ GenericMart_BlockData:: ; used by tilesets/palettes.asm:LoadSpecialMapPalette
 
 Route2946Gate_BlockData:
 Route34IlexForestGate_BlockData:
-Route35Goldenrodgate_BlockData:
-Route36RuinsofAlphgate_BlockData:
+Route35GoldenrodGate_BlockData:
+Route36RuinsofAlphGate_BlockData:
 Route40BattleTowerGate_BlockData:
 YellowForestGate_BlockData:
 Route43Gate_BlockData:
@@ -1406,14 +1406,14 @@ Route35_BlockData:
 Route35Coast_BlockData:
 	INCBIN "maps/Route35Coast.blk"
 
-Route35NationalParkgate_BlockData:
-	INCBIN "maps/Route35NationalParkgate.blk"
+Route35NationalParkGate_BlockData:
+	INCBIN "maps/Route35NationalParkGate.blk"
 
 Route36_BlockData:
 	INCBIN "maps/Route36.blk"
 
-Route36NationalParkgate_BlockData:
-	INCBIN "maps/Route36NationalParkgate.blk"
+Route36NationalParkGate_BlockData:
+	INCBIN "maps/Route36NationalParkGate.blk"
 
 Route37_BlockData:
 	INCBIN "maps/Route37.blk"

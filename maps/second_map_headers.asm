@@ -575,10 +575,10 @@
 	map_header_2 Route32RuinsofAlphGate, ROUTE_32_RUINS_OF_ALPH_GATE, $0, 0
 	map_header_2 Route32PokeCenter1F, ROUTE_32_POKECENTER_1F, $0, 0
 	map_header_2 Route32CoastHouse, ROUTE_32_COAST_HOUSE, $0, 0
-	map_header_2 Route35Goldenrodgate, ROUTE_35_GOLDENROD_GATE, $0, 0
-	map_header_2 Route35NationalParkgate, ROUTE_35_NATIONAL_PARK_GATE, $0, 0
-	map_header_2 Route36RuinsofAlphgate, ROUTE_36_RUINS_OF_ALPH_GATE, $0, 0
-	map_header_2 Route36NationalParkgate, ROUTE_36_NATIONAL_PARK_GATE, $0, 0
+	map_header_2 Route35GoldenrodGate, ROUTE_35_GOLDENROD_GATE, $0, 0
+	map_header_2 Route35NationalParkGate, ROUTE_35_NATIONAL_PARK_GATE, $0, 0
+	map_header_2 Route36RuinsofAlphGate, ROUTE_36_RUINS_OF_ALPH_GATE, $0, 0
+	map_header_2 Route36NationalParkGate, ROUTE_36_NATIONAL_PARK_GATE, $0, 0
 	map_header_2 Route36VioletGate, ROUTE_36_VIOLET_GATE, $0, 0
 	map_header_2 GoldenrodGym, GOLDENROD_GYM, $0, 0
 	map_header_2 GoldenrodBikeShop, GOLDENROD_BIKE_SHOP, $0, 0

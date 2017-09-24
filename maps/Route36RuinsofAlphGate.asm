@@ -1,10 +1,10 @@
-Route36RuinsofAlphgate_MapScriptHeader:
+Route36RuinsofAlphGate_MapScriptHeader:
 
 .MapTriggers: db 0
 
 .MapCallbacks: db 0
 
-Route36RuinsofAlphgate_MapEventHeader:
+Route36RuinsofAlphGate_MapEventHeader:
 
 .Warps: db 4
 	warp_def 0, 4, 3, ROUTE_36
