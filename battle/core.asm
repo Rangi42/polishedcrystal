@@ -3540,15 +3540,15 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 	ld a, [wBattleHasJustStarted]
 	and a
 	jr nz, .finish_fail
-	ld hl, PartySpecies
+
 	ld a, [CurPartyMon]
-	ld c, a
-	ld b, 0
-	add hl, bc
+	ld hl, PartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
 	ld a, [hl]
-	cp EGG
+	or IS_EGG_MASK
 	ld hl, BattleText_AnEGGCantBattle
-	jr z, .print_textbox
+	jr nz, .print_textbox
 
 	ld hl, BattleText_TheresNoWillToBattle
 

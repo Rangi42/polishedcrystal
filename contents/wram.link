@@ -7,6 +7,7 @@ WRAM0
 	org $c300
 	"wSpriteAnims"
 	org $c400
+	align 8
 	"Sprites"
 	org $c4a0
 	"Tilemap"
