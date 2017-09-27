@@ -117,7 +117,7 @@ def main():
 	size = sys.argv[2]
 	tileset = sys.argv[3]
 	os.system('python utils/metatiles.py %s %s' % (tileset, blockfile))
-	metatiles = 'tilesets/%s_metatiles_colored.png' % tileset
+	metatiles = 'tilesets/%s_metatiles.png' % tileset
 
 	process(blockfile, size, metatiles)
 

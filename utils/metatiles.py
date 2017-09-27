@@ -292,11 +292,11 @@ def process(key, tileset_name, palette_map_name, metatiles_name, map_blk):
 	tileset = Tileset(tileset_name, palette_map)
 	metatiles = Metatiles(metatiles_name, tileset)
 
-	tileset_colored_name = tileset_name[:-4] + '_colored.png'
+	tileset_colored_name = tileset_name[:-4] + '.colored.png'
 	tileset.export_colored(tileset_colored_name)
 	print('Exported', tileset_colored_name)
 
-	metatiles_colored_name = metatiles_name[:-4] + '_colored.png'
+	metatiles_colored_name = metatiles_name[:-4] + '.png'
 	metatiles.export_colored(metatiles_colored_name)
 	print('Exported', metatiles_colored_name)
 
