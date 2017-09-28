@@ -655,7 +655,7 @@ endr
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $5a
+	ld hl, VTiles2 tile $50
 	jp WriteTile
 ; fc484
 
@@ -683,7 +683,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $5b
+	ld hl, VTiles2 tile $53
 	jp WriteTile
 ; fc4f2
 
@@ -709,7 +709,7 @@ endr
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $5a
+	ld hl, VTiles2 tile $50
 	jp WriteTile
 ; fc51c
 
@@ -739,7 +739,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $5b
+	ld hl, VTiles2 tile $53
 	jp WriteTile
 ; fc54c
 
@@ -773,7 +773,7 @@ endr
 	adc ForestTree2LeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $60
+	ld hl, VTiles2 tile $5c
 	jp WriteTile
 
 ForestTree2RightAnimation:
@@ -800,7 +800,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $63
+	ld hl, VTiles2 tile $5f
 	jp WriteTile
 
 
@@ -825,7 +825,7 @@ endr
 	adc ForestTree2LeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $60
+	ld hl, VTiles2 tile $5c
 	jp WriteTile
 
 
@@ -854,7 +854,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $63
+	ld hl, VTiles2 tile $5f
 	jp WriteTile
 
 ForestTree2LeftFrames:
