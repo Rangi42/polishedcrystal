@@ -1308,19 +1308,19 @@ CheckValidLevel:
 	db  36, 100 ; Politoed
 	db   1,  31 ; Sunkern
 	db  32, 100 ; Sunflora
-	db   1,  37 ; Yanma
-	db  38, 100 ; Yanmega
+	db   1,  39 ; Yanma
+	db  40, 100 ; Yanmega
 	db   1,  19 ; Wooper
 	db  20, 100 ; Quagsire
 	db  20, 100 ; Espeon
 	db  20, 100 ; Umbreon
 	db  20, 100 ; Leafeon
 	db  20, 100 ; Glaceon
-	db   1,  19 ; Murkrow
-	db  20, 100 ; Honchkrow
+	db   1,  39 ; Murkrow
+	db  40, 100 ; Honchkrow
 	db  37, 100 ; Slowking
-	db   1,  19 ; Misdreavus
-	db  20, 100 ; Mismagius
+	db   1,  39 ; Misdreavus
+	db  40, 100 ; Mismagius
 	db   1, 100 ; Unown
 	db   1, 100 ; Wobbuffet
 	db   1, 100 ; Girafarig
@@ -1334,16 +1334,16 @@ CheckValidLevel:
 	db  23, 100 ; Granbull
 	db   1, 100 ; Qwilfish
 	db  20, 100 ; Scizor
-	db   1, 100 ; Heracross
-	db   1,  19 ; Sneasel
-	db  20, 100 ; Weavile
+	db  10, 100 ; Heracross
+	db   1,  39 ; Sneasel
+	db  40, 100 ; Weavile
 	db   1,  29 ; Teddiursa
 	db  30, 100 ; Ursaring
 	db   1,  37 ; Slugma
 	db  38, 100 ; Magcargo
 	db   1,  32 ; Swinub
-	db  33,  40 ; Piloswine
-	db  41, 100 ; Mamoswine
+	db  33,  44 ; Piloswine
+	db  45, 100 ; Mamoswine
 	db   1, 100 ; Corsola
 	db   1,  24 ; Remoraid
 	db  25, 100 ; Octillery
