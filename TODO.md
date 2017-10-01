@@ -23,6 +23,7 @@ The final, non-beta 3.0 release should include all of these.
 
 * Add hidden grottoes throughout Johto
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
+* Lyra's capture tutorial is skippable
 * Notify when Pickup picks up an item
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
@@ -284,6 +285,7 @@ Some of these may never be added; they're just suggestions.
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
 * Replace the Apricorns with an Apricorn Box and add more Berries
+* Restore Berry Juice, and make it heal full HP but cause confusion (in non-Faithful)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu

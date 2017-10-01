@@ -1,0 +1,199 @@
+; Morn
+
+	; red
+	RGB 31, 29, 22
+	RGB 29, 22, 14
+	RGB 24, 06, 06
+	RGB 00, 00, 00
+
+	; blue
+	RGB 31, 29, 22
+	RGB 29, 22, 14
+	RGB 10, 09, 23
+	RGB 00, 00, 00
+
+	; green
+	RGB 31, 29, 22
+	RGB 29, 22, 14
+	RGB 08, 19, 06
+	RGB 00, 00, 00
+
+	; brown
+	RGB 31, 29, 22
+	RGB 29, 22, 14
+	RGB 12, 09, 05
+	RGB 00, 00, 00
+
+	; purple
+	RGB 31, 29, 22
+	RGB 29, 22, 14
+	RGB 13, 05, 13
+	RGB 00, 00, 00
+
+	; silver
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 11, 11, 11
+	RGB 00, 00, 00
+
+	; tree
+	RGB 16, 26, 13
+	RGB 07, 19, 11
+	RGB 01, 12, 08
+	RGB 05, 05, 05
+
+	; rock
+	RGB 31, 29, 22
+	RGB 23, 17, 13
+	RGB 17, 12, 09
+	RGB 05, 05, 05
+
+; Day
+
+	; red
+	RGB 28, 29, 28
+	RGB 28, 21, 16
+	RGB 24, 06, 06
+	RGB 00, 00, 00
+
+	; blue
+	RGB 28, 29, 28
+	RGB 28, 21, 16
+	RGB 10, 09, 23
+	RGB 00, 00, 00
+
+	; green
+	RGB 28, 29, 28
+	RGB 28, 21, 16
+	RGB 08, 19, 06
+	RGB 00, 00, 00
+
+	; brown
+	RGB 28, 29, 28
+	RGB 28, 21, 16
+	RGB 12, 09, 05
+	RGB 00, 00, 00
+
+	; purple
+	RGB 28, 29, 28
+	RGB 28, 21, 16
+	RGB 13, 05, 13
+	RGB 00, 00, 00
+
+	; silver
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 11, 11, 11
+	RGB 00, 00, 00
+
+	; tree
+	RGB 13, 26, 19
+	RGB 07, 19, 11
+	RGB 01, 12, 08
+	RGB 05, 05, 05
+
+	; rock
+	RGB 28, 29, 28
+	RGB 23, 17, 13
+	RGB 17, 12, 09
+	RGB 05, 05, 05
+
+; Nite
+
+	; red
+	RGB 14, 15, 21
+	RGB 16, 13, 14
+	RGB 12, 03, 05
+	RGB 00, 00, 00
+
+	; blue
+	RGB 14, 15, 21
+	RGB 16, 13, 14
+	RGB 05, 04, 12
+	RGB 00, 00, 00
+
+	; green
+	RGB 14, 15, 21
+	RGB 16, 13, 14
+	RGB 04, 10, 05
+	RGB 00, 00, 00
+
+	; brown
+	RGB 14, 15, 21
+	RGB 16, 13, 14
+	RGB 08, 04, 02
+	RGB 00, 00, 00
+
+	; purple
+	RGB 14, 15, 21
+	RGB 16, 13, 14
+	RGB 09, 03, 10
+	RGB 00, 00, 00
+
+	; silver
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 11, 11, 11
+	RGB 00, 00, 00
+
+	; tree
+	RGB 07, 13, 15
+	RGB 03, 09, 09
+	RGB 01, 06, 06
+	RGB 00, 00, 00
+
+	; rock
+	RGB 14, 15, 21
+	RGB 11, 08, 10
+	RGB 08, 06, 07
+	RGB 00, 00, 00
+
+; Dark
+
+	; red
+	RGB 01, 01, 02
+	RGB 04, 04, 04
+	RGB 02, 02, 02
+	RGB 00, 00, 00
+
+	; blue
+	RGB 01, 01, 02
+	RGB 04, 04, 04
+	RGB 02, 02, 02
+	RGB 00, 00, 00
+
+	; green
+	RGB 01, 01, 02
+	RGB 04, 04, 04
+	RGB 02, 02, 02
+	RGB 00, 00, 00
+
+	; brown
+	RGB 01, 01, 02
+	RGB 04, 04, 04
+	RGB 02, 02, 02
+	RGB 00, 00, 00
+
+	; purple
+	RGB 01, 01, 02
+	RGB 04, 04, 04
+	RGB 02, 02, 02
+	RGB 00, 00, 00
+
+	; silver
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 11, 11, 11
+	RGB 00, 00, 00
+
+	; tree
+	RGB 01, 01, 02
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+
+	; rock
+	RGB 01, 01, 02
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 00, 00, 00

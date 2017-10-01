@@ -1,0 +1,215 @@
+; N/A
+	RGB 21, 21, 21
+	RGB 11, 11, 11
+	RGB 21, 21, 21
+	RGB 11, 11, 11
+
+; Olivine City
+	RGB 14, 17, 31
+	RGB 07, 11, 15
+	RGB 09, 09, 17
+	RGB 05, 07, 13
+
+; Mahogany Town
+	RGB 12, 19, 00
+	RGB 06, 10, 00
+	RGB 06, 09, 07
+	RGB 04, 05, 06
+
+; N/A
+	RGB 21, 21, 21
+	RGB 11, 11, 11
+	RGB 21, 21, 21
+	RGB 17, 08, 07
+
+; Ecruteak City
+	RGB 31, 19, 00
+	RGB 27, 10, 05
+	RGB 15, 07, 02
+	RGB 11, 04, 02
+
+; Blackthorn City
+	RGB 11, 10, 16
+	RGB 05, 06, 07
+	RGB 03, 04, 08
+	RGB 00, 00, 00
+
+; Cinnabar Island
+	RGB 31, 10, 00
+	RGB 18, 06, 00
+	RGB 18, 06, 00
+	RGB 11, 04, 00
+
+; Cerulean City
+	RGB 17, 27, 31
+	RGB 05, 15, 31
+	RGB 07, 08, 22
+	RGB 07, 07, 16
+
+; Azalea Town
+	RGB 22, 20, 10
+	RGB 17, 14, 03
+	RGB 11, 11, 05
+	RGB 10, 09, 07
+
+; Lake of Rage
+	RGB 31, 08, 04
+	RGB 09, 09, 08
+	RGB 18, 05, 09
+	RGB 09, 09, 08
+
+; Violet City
+	RGB 24, 14, 31
+	RGB 13, 07, 21
+	RGB 12, 03, 18
+	RGB 09, 03, 15
+
+; Goldenrod City
+	RGB 25, 25, 00
+	RGB 20, 17, 08
+	RGB 12, 12, 00
+	RGB 10, 09, 05
+
+; Vermilion City
+	RGB 27, 23, 01
+	RGB 23, 11, 00
+	RGB 15, 11, 01
+	RGB 11, 10, 01
+
+; Pallet Town
+	RGB 31, 16, 14
+	RGB 25, 10, 08
+	RGB 16, 08, 09
+	RGB 10, 06, 08
+
+; Pewter City
+	RGB 19, 19, 16
+	RGB 10, 12, 15
+	RGB 09, 09, 11
+	RGB 04, 05, 07
+
+; Mount Moon Square
+	RGB 14, 17, 31
+	RGB 07, 11, 15
+	RGB 09, 13, 19
+	RGB 07, 07, 16
+
+; Route 23
+	RGB 27, 11, 00
+	RGB 24, 07, 00
+	RGB 14, 06, 00
+	RGB 12, 04, 00
+
+; Fuchsia City
+	RGB 31, 18, 29
+	RGB 17, 13, 20
+	RGB 14, 06, 12
+	RGB 11, 03, 10
+
+; Lavender Town
+	RGB 23, 15, 31
+	RGB 16, 05, 31
+	RGB 12, 07, 17
+	RGB 08, 06, 10
+
+; Route 28
+	RGB 09, 23, 30
+	RGB 09, 13, 25
+	RGB 05, 10, 27
+	RGB 05, 06, 22
+
+; Ecruteak Shrine Outside
+	RGB 22, 24, 20
+	RGB 17, 19, 16
+	RGB 12, 11, 18
+	RGB 09, 08, 14
+
+; Celadon City
+	RGB 13, 25, 04
+	RGB 05, 19, 06
+	RGB 06, 10, 04
+	RGB 04, 08, 05
+
+; Cianwood City
+	RGB 15, 10, 31
+	RGB 07, 05, 15
+	RGB 06, 05, 17
+	RGB 02, 02, 08
+
+; Viridian City
+	RGB 21, 31, 07
+	RGB 13, 25, 04
+	RGB 09, 14, 08
+	RGB 06, 10, 04
+
+; New Bark Town
+	RGB 20, 31, 14
+	RGB 11, 23, 05
+	RGB 09, 13, 08
+	RGB 06, 09, 04
+
+; Route 5
+	RGB 31, 26, 00
+	RGB 31, 15, 00
+	RGB 13, 13, 01
+	RGB 08, 08, 01
+
+; Cherrygrove City
+	RGB 31, 14, 28
+	RGB 31, 05, 21
+	RGB 14, 07, 17
+	RGB 13, 00, 08
+
+; Route 48
+	RGB 15, 10, 31
+	RGB 07, 05, 15
+	RGB 06, 05, 17
+	RGB 02, 02, 08
+
+; Route 10 North
+	RGB 31, 10, 00
+	RGB 18, 06, 00
+	RGB 18, 06, 00
+	RGB 11, 04, 00
+
+; Goldenrod Harbor
+	RGB 25, 25, 00
+	RGB 20, 17, 08
+	RGB 12, 12, 00
+	RGB 10, 09, 05
+
+; Ruins of Alph Outside
+	RGB 17, 17, 12
+	RGB 12, 12, 08
+	RGB 09, 09, 10
+	RGB 06, 05, 06
+
+; Shamouti Island
+	RGB 01, 27, 27
+	RGB 05, 17, 31
+	RGB 00, 10, 22
+	RGB 00, 07, 15
+
+; Safari Zone
+	RGB 31, 18, 29
+	RGB 17, 13, 20
+	RGB 14, 06, 12
+	RGB 11, 03, 10
+
+; Valencia Island
+	RGB 18, 04, 12
+	RGB 12, 00, 09
+	RGB 09, 02, 09
+	RGB 06, 00, 06
+
+; Sinjoh Ruins
+	RGB 21, 08, 05
+	RGB 13, 07, 06
+	RGB 10, 04, 03
+	RGB 06, 04, 04
+
+; Saffron City
+	RGB 31, 26, 00
+	RGB 31, 15, 00
+	RGB 13, 13, 01
+	RGB 08, 08, 01

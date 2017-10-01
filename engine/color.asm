@@ -803,8 +803,11 @@ endr
 	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
 
 .TilesetBGPalette:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/bg.pal"
+else
 if !DEF(MONOCHROME)
-INCLUDE "tilesets/bg.pal"
+INCLUDE "tilesets/palettes/bg.pal"
 else
 rept 7
 	MONOCHROME_RGB_FOUR
@@ -865,10 +868,14 @@ endr
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR_NIGHT
 endc
+endc
 
 .MapObjectPals:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/ob.pal"
+else
 if !DEF(MONOCHROME)
-INCLUDE "tilesets/ob.pal"
+INCLUDE "tilesets/palettes/ob.pal"
 else
 rept 5
 	MONOCHROME_RGB_FOUR_OW
@@ -911,15 +918,20 @@ rept 2
 	RGB_MONOCHROME_BLACK
 endr
 endc
+endc
 
 .RoofPals:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/roof.pal"
+else
 if !DEF(MONOCHROME)
-INCLUDE "tilesets/roof.pal"
+INCLUDE "tilesets/palettes/roof.pal"
 else
 rept 35
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO_NIGHT
 endr
+endc
 endc
 
 

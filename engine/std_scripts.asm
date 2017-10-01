@@ -270,6 +270,8 @@ TrashCanScript: ; 0xbc1a5
 	farjumptext TrashCanText
 
 PCScript:
+	checkcode VAR_FACING
+	if_not_equal UP, WrongSideScript
 	opentext
 	special PokemonCenterPC
 	endtext
