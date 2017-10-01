@@ -1147,7 +1147,7 @@ AnimateLCDTile:
 	add hl, de
 	ld sp, hl
 
-	ld hl, VTiles2 tile $6d
+	ld hl, VTiles2 tile $6f
 
 	jp WriteTile
 

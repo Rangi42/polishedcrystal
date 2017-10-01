@@ -7,8 +7,8 @@ MagnetTunnelInside_MapScriptHeader:
 MagnetTunnelInside_MapEventHeader:
 
 .Warps: db 2
-	warp_def 3, 3, 1, MAGNET_TUNNEL_WEST
-	warp_def 15, 35, 1, MAGNET_TUNNEL_EAST
+	warp_def 19, 5, 1, MAGNET_TUNNEL_WEST
+	warp_def 3, 43, 1, MAGNET_TUNNEL_EAST
 
 .XYTriggers: db 0
 
