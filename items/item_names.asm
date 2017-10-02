@@ -69,7 +69,7 @@ endc
 	db "X Spcl.Def@"
 	db "Dire Hit@"
 if DEF(FAITHFUL)
-	db "Guard Spec."
+	db "Guard Spec.@"
 else
 	db "Guard Stats@"
 endc
