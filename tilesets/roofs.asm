@@ -6,13 +6,22 @@ LoadMapGroupRoof:: ; 1c000
 	ld hl, MapGroupRoofs
 	add hl, de
 	ld a, [hl]
-	cp $ff
+	cp -1
 	ret z
 	ld hl, Roofs
-	ld bc, $90
+	ld bc, 9 tiles
 	call AddNTimes
 	ld de, VTiles2 tile $0a
-	ld bc, $90
+	ld bc, 9 tiles
+	call CopyBytes
+; Terrible hack to load the red gatehouse roof tiles visible in Olivine City
+; instead of the flowerpot and brick tiles in Goldenrod City
+	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_CITY ; GROUP_ROUTE_34
+	ret z
+	ld hl, NationalParkGateRoof
+	ld de, VTiles2 tile $64
+	ld bc, 4 tiles
 	jp CopyBytes
 ; 1c021
 
@@ -66,3 +75,6 @@ INCBIN "gfx/tilesets/roofs/5.2bpp"
 INCBIN "gfx/tilesets/roofs/6.2bpp"
 INCBIN "gfx/tilesets/roofs/7.2bpp"
 ; 1c30c
+
+NationalParkGateRoof:
+INCBIN "gfx/tilesets/roofs/park_gate.2bpp"
