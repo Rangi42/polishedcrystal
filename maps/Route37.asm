@@ -15,9 +15,8 @@ Route37_MapEventHeader:
 	signpost 3, 5, SIGNPOST_JUMPTEXT, Route37SignText
 	signpost 2, 4, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
 
-.PersonEvents: db 10
+.PersonEvents: db 9
 	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
-	person_event SPRITE_COOLTRAINER_F, 18, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route37CooltrainerfChiaraScript, -1
 	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
 	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
 	person_event SPRITE_YOUNGSTER, 11, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
@@ -29,7 +28,6 @@ Route37_MapEventHeader:
 
 const_value set 2
 	const ROUTE37_SUNNY
-	const ROUTE37_COOLTRAINERF
 
 SunnyCallback:
 	checkcode VAR_WEEKDAY
@@ -111,121 +109,6 @@ TrainerBeautyCassandra:
 BeautyCassandraScript:
 	end_if_just_battled
 	jumptextfaceplayer BeautyCassandraAfterText
-
-Route37CooltrainerfChiaraScript:
-	checkevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_37_LEADER
-	iftrue_jumptextfaceplayer .AfterText2
-	faceplayer
-	checkevent EVENT_BEAT_COOLTRAINERF_CHIARA
-	iftrue .Beaten
-	checkevent EVENT_BEAT_SCHOOLBOY_ALAN
-	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_PSYCHIC_MARK
-	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_SCHOOLGIRL_MOLLY
-	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_TWINS_ANN_AND_ANNE
-	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_PSYCHIC_GREG
-	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_BEAUTY_CALLIE
-	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_BEAUTY_CASSANDRA
-	iffalse_jumptext .IntroText
-	opentext
-	writetext .QuestionText
-	yesorno
-	iffalse_jumpopenedtext .RefusedText
-	writetext .SeenText
-	waitbutton
-	closetext
-	winlosstext .BeatenText, 0
-	setlasttalked ROUTE37_COOLTRAINERF
-	loadtrainer COOLTRAINERF, CHIARA
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_COOLTRAINERF_CHIARA
-.Beaten:
-	opentext
-	writetext .AfterText1
-	buttonsound
-	verbosegiveitem BINDING_BAND
-	iffalse_endtext
-	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_37_LEADER
-	thisopenedtext
-
-.AfterText2:
-	text "With skill like"
-	line "yours, I'm not the"
-
-	para "only elite trainer"
-	line "who'll want to test"
-	cont "you."
-	done
-
-.IntroText:
-	text "I saw how you woke"
-	line "up that Sudowoodo."
-
-	para "You did great!"
-
-	para "And you have a"
-	line "Plain Badge."
-	cont "So do I!"
-
-	para "How about this?"
-	line "Take out all the"
-
-	para "trainers on Routes"
-	line "36 and 37."
-
-	para "Then I'll fight"
-	line "you myself!"
-	done
-
-.QuestionText:
-	text "So you beat every-"
-	line "one else in the"
-	cont "area."
-
-	para "Then it's time for"
-	line "our showdown!"
-
-	para "I use a Binding"
-	line "Band to press my"
-	cont "advantage."
-
-	para "Think you're ready"
-	line "for me?"
-	done
-
-.RefusedText:
-	text "Well, I'm ready"
-	line "when you are!"
-	done
-
-.SeenText:
-	text "You won't last"
-	line "long against my"
-	cont "technique!"
-	done
-
-.BeatenText:
-	text "I'm the one who"
-	line "didn't last?!"
-	done
-
-.AfterText1:
-	text "You observed my"
-	line "technique and"
-	cont "countered it."
-
-	para "Why not try it"
-	line "yourself?"
-
-	para "Here, it's for"
-	line "you!"
-	done
 
 TwinsToriandtil1SeenText:
 	text "Til: Tori and I"

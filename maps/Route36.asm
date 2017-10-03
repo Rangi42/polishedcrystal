@@ -8,41 +8,42 @@ Route36_MapScriptHeader:
 Route36_MapEventHeader:
 
 .Warps: db 6
-	warp_def 8, 18, 3, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def 9, 18, 4, ROUTE_36_NATIONAL_PARK_GATE
-	warp_def 13, 47, 1, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def 13, 48, 2, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_def 8, 57, 1, ROUTE_36_VIOLET_GATE
-	warp_def 9, 57, 2, ROUTE_36_VIOLET_GATE
+	warp_def 8, 22, 3, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 9, 22, 4, ROUTE_36_NATIONAL_PARK_GATE
+	warp_def 13, 51, 1, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def 13, 52, 2, ROUTE_36_RUINS_OF_ALPH_GATE
+	warp_def 8, 61, 1, ROUTE_36_VIOLET_GATE
+	warp_def 9, 61, 2, ROUTE_36_VIOLET_GATE
 
 .XYTriggers: db 2
-	xy_trigger 1, 7, 20, Route36SuicuneScript
-	xy_trigger 1, 7, 22, Route36SuicuneScript
+	xy_trigger 1, 7, 24, Route36SuicuneScript
+	xy_trigger 1, 7, 26, Route36SuicuneScript
 
 .Signposts: db 4
-	signpost 1, 29, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
-	signpost 11, 45, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
-	signpost 7, 55, SIGNPOST_JUMPTEXT, Route36SignText
-	signpost 7, 21, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
+	signpost 1, 33, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
+	signpost 11, 49, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
+	signpost 7, 59, SIGNPOST_JUMPTEXT, Route36SignText
+	signpost 7, 25, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
 
 .PersonEvents: db 11
-	person_event SPRITE_WEIRD_TREE, 9, 35, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
-	person_event SPRITE_YOUNGSTER, 6, 49, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
-	person_event SPRITE_LASS, 12, 33, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
-	person_event SPRITE_SUICUNE, 6, 21, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
-	person_event SPRITE_YOUNGSTER, 13, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicMark, -1
-	person_event SPRITE_YOUNGSTER, 14, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
-	person_event SPRITE_LASS, 9, 53, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
-	person_event SPRITE_FISHER, 9, 44, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
-	fruittree_event 4, 21, FRUITTREE_ROUTE_36, RAWST_BERRY
-	person_event SPRITE_TWIN, 5, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
-	person_event SPRITE_COOLTRAINER_F, -2, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	person_event SPRITE_WEIRD_TREE, 9, 39, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
+	person_event SPRITE_YOUNGSTER, 6, 53, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
+	person_event SPRITE_LASS, 12, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
+	person_event SPRITE_SUICUNE, 6, 25, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
+	person_event SPRITE_COOLTRAINER_F, 6, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route36CooltrainerfChiaraScript, -1
+	person_event SPRITE_YOUNGSTER, 13, 24, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicMark, -1
+	person_event SPRITE_YOUNGSTER, 14, 35, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
+	person_event SPRITE_LASS, 9, 57, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
+	person_event SPRITE_FISHER, 9, 48, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
+	fruittree_event 4, 25, FRUITTREE_ROUTE_36, RAWST_BERRY
+	person_event SPRITE_TWIN, 5, 50, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 
 const_value set 2
 	const ROUTE36_WEIRD_TREE
 	const ROUTE36_ARTHUR
 	const ROUTE36_FLORIA
 	const ROUTE36_SUICUNE
+	const ROUTE36_COOLTRAINERF
 
 Route36ArthurCallback:
 	checkcode VAR_WEEKDAY
@@ -287,6 +288,121 @@ TrainerSchoolboyAlan1:
 .PackFull:
 	jumpstd packfullm
 	end
+
+Route36CooltrainerfChiaraScript:
+	checkevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER
+	iftrue_jumptextfaceplayer .AfterText2
+	faceplayer
+	checkevent EVENT_BEAT_COOLTRAINERF_CHIARA
+	iftrue .Beaten
+	checkevent EVENT_BEAT_SCHOOLBOY_ALAN
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_PSYCHIC_MARK
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_SCHOOLGIRL_MOLLY
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_TWINS_ANN_AND_ANNE
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_PSYCHIC_GREG
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_BEAUTY_CALLIE
+	iffalse_jumptext .IntroText
+	checkevent EVENT_BEAT_BEAUTY_CASSANDRA
+	iffalse_jumptext .IntroText
+	opentext
+	writetext .QuestionText
+	yesorno
+	iffalse_jumpopenedtext .RefusedText
+	writetext .SeenText
+	waitbutton
+	closetext
+	winlosstext .BeatenText, 0
+	setlasttalked ROUTE36_COOLTRAINERF
+	loadtrainer COOLTRAINERF, CHIARA
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_COOLTRAINERF_CHIARA
+.Beaten:
+	opentext
+	writetext .AfterText1
+	buttonsound
+	verbosegiveitem BINDING_BAND
+	iffalse_endtext
+	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER
+	thisopenedtext
+
+.AfterText2:
+	text "With skill like"
+	line "yours, I'm not the"
+
+	para "only elite trainer"
+	line "who'll want to test"
+	cont "you."
+	done
+
+.IntroText:
+	text "I saw how you woke"
+	line "up that Sudowoodo."
+
+	para "You did great!"
+
+	para "And you have a"
+	line "Plain Badge."
+	cont "So do I!"
+
+	para "How about this?"
+	line "Take out all the"
+
+	para "trainers on Routes"
+	line "36 and 37."
+
+	para "Then I'll fight"
+	line "you myself!"
+	done
+
+.QuestionText:
+	text "So you beat every-"
+	line "one else in the"
+	cont "area."
+
+	para "Then it's time for"
+	line "our showdown!"
+
+	para "I use a Binding"
+	line "Band to press my"
+	cont "advantage."
+
+	para "Think you're ready"
+	line "for me?"
+	done
+
+.RefusedText:
+	text "Well, I'm ready"
+	line "when you are!"
+	done
+
+.SeenText:
+	text "You won't last"
+	line "long against my"
+	cont "technique!"
+	done
+
+.BeatenText:
+	text "I'm the one who"
+	line "didn't last?!"
+	done
+
+.AfterText1:
+	text "You observed my"
+	line "technique and"
+	cont "countered it."
+
+	para "Why not try it"
+	line "yourself?"
+
+	para "Here, it's for"
+	line "you!"
+	done
 
 TrainerPsychicMark:
 	trainer EVENT_BEAT_PSYCHIC_MARK, PSYCHIC_T, MARK, PsychicMarkSeenText, PsychicMarkBeatenText, 0, .Script

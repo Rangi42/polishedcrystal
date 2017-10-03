@@ -220,3 +220,11 @@
 	tilecoll WALL, WALL, FLOOR, WALL
 	tilecoll FLOOR, WALL, FLOOR, WALL
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, DOOR
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll FLOOR, FLOOR, FLOOR, WALL
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL

@@ -20,13 +20,13 @@
 	connection east, ROUTE_41, Route41, 0, 0, 27
 
 	map_header_2 GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
-	connection north, ROUTE_35, Route35, 7, 0, 10
+	connection north, ROUTE_35, Route35, 5, 0, 12
 	connection south, ROUTE_34, Route34, 7, 0, 10
 	connection east, MAGNET_TUNNEL_WEST, MagnetTunnelWest, 0, 0, 11
 
 	map_header_2 OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
 	connection north, ROUTE_39, Route39, 5, 0, 10
-	connection south, ROUTE_35_COAST, Route35Coast, 0, -7, 30
+	connection south, ROUTE_35_COAST, Route35Coast, 0, -7, 32
 	connection west, ROUTE_40, Route40, 7, 0, 12
 
 	map_header_2 EcruteakCity, ECRUTEAK_CITY, $5, SOUTH | WEST | EAST
@@ -98,21 +98,21 @@
 	connection north, ROUTE_34_COAST, Route34Coast, 0, 0, 9
 
 	map_header_2 Route35, ROUTE_35, $5, NORTH | SOUTH
-	connection north, ROUTE_36, Route36, 0, 0, 13
-	connection south, GOLDENROD_CITY, GoldenrodCity, -3, 4, 16
+	connection north, ROUTE_36, Route36, 0, 0, 14
+	connection south, GOLDENROD_CITY, GoldenrodCity, -2, 3, 16
 
 	map_header_2 Route35Coast, ROUTE_35_COAST, $35, NORTH | SOUTH
-	connection north, OLIVINE_CITY, OlivineCity, 0, 7, 30
+	connection north, OLIVINE_CITY, OlivineCity, 0, 7, 32
 	connection south, GOLDENROD_HARBOR, GoldenrodHarbor, 0, 0, 24
 
 	map_header_2 Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
-	connection north, ROUTE_37, Route37, 10, 0, 10
-	connection south, ROUTE_35, Route35, 0, 0, 10
+	connection north, ROUTE_37, Route37, 12, 0, 10
+	connection south, ROUTE_35, Route35, 0, 0, 12
 	connection east, VIOLET_CITY, VioletCity, -2, 0, 12
 
 	map_header_2 Route37, ROUTE_37, $5, NORTH | SOUTH
 	connection north, ECRUTEAK_CITY, EcruteakCity, -3, 2, 16
-	connection south, ROUTE_36, Route36, -3, 7, 16
+	connection south, ROUTE_36, Route36, -3, 9, 16
 
 	map_header_2 Route38, ROUTE_38, $5, WEST | EAST
 	connection west, ROUTE_39, Route39, 0, 0, 12

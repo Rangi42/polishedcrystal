@@ -20,8 +20,8 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_39_FARMHOUSE,                          4,  4 ; 11
 	mapgroup ROUTE_38,                                    9, 20 ; 12
 	mapgroup ROUTE_39,                                   20, 10 ; 13
-	mapgroup OLIVINE_CITY,                               16, 31 ; 14
-	mapgroup ROUTE_35_COAST,                             14, 24 ; 15
+	mapgroup OLIVINE_CITY,                               16, 33 ; 14
+	mapgroup ROUTE_35_COAST,                             14, 26 ; 15
 
 	newgroup                                                    ;  2
 
@@ -130,17 +130,10 @@ MAP_NONE   EQU 0
 	mapgroup ECRUTEAK_GYM,                                9,  5 ;  7
 	mapgroup ECRUTEAK_ITEMFINDER_HOUSE,                   4,  4 ;  8
 	mapgroup ECRUTEAK_CITY,                              18, 20 ;  9
-	mapgroup ROUTE_35,                                   18, 10 ; 10
-	mapgroup ROUTE_36,                                    9, 30 ; 11
-	mapgroup ROUTE_37,                                   10, 10 ; 12
-	mapgroup ROUTE_35_GOLDENROD_GATE,                     4,  5 ; 13
-	mapgroup ROUTE_35_NATIONAL_PARK_GATE,                 4,  4 ; 14
-	mapgroup ROUTE_36_RUINS_OF_ALPH_GATE,                 4,  5 ; 15
-	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ; 16
-	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ; 17
-	mapgroup VALERIES_HOUSE,                              4,  4 ; 18
-	mapgroup ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 19
-	mapgroup ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 20
+	mapgroup ROUTE_37,                                   10, 10 ; 10
+	mapgroup VALERIES_HOUSE,                              4,  4 ; 11
+	mapgroup ECRUTEAK_CHERISH_BALL_HOUSE,                 4,  4 ; 12
+	mapgroup ECRUTEAK_DESTINY_KNOT_HOUSE,                 4,  4 ; 13
 
 	newgroup                                                    ;  5
 
@@ -698,6 +691,17 @@ MAP_NONE   EQU 0
 
 	mapgroup SAFFRON_CITY,                               19, 20 ;  1
 	mapgroup SHAMOUTI_SHRINE_RUINS,                      17, 12 ;  2
+
+	newgroup                                                    ; 36
+
+	mapgroup ROUTE_35,                                   18, 12 ;  1
+	mapgroup ROUTE_36,                                    9, 32 ;  2
+	mapgroup ROUTE_35_GOLDENROD_GATE,                     4,  5 ;  3
+	mapgroup ROUTE_35_NATIONAL_PARK_GATE,                 4, 10 ;  4
+	mapgroup ROUTE_36_RUINS_OF_ALPH_GATE,                 4,  5 ;  5
+	mapgroup ROUTE_36_NATIONAL_PARK_GATE,                 4,  5 ;  6
+	mapgroup ROUTE_36_VIOLET_GATE,                        4,  5 ;  7
+
 
 
 ; elevator floors
