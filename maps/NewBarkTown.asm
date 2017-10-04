@@ -88,8 +88,8 @@ NewBarkTown_LyraIntroTrigger:
 	appear NEWBARKTOWN_LYRA
 	special Special_FadeOutMusic
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraEnters_NBT
-	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
+	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraApproaches_NBT
 	spriteface PLAYER, LEFT
 	showtext Text_LyraIntro

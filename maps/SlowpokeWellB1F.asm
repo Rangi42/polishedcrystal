@@ -59,6 +59,7 @@ Proton2Script:
 	spriteface PLAYER, RIGHT
 	showtext KurtLeaveSlowpokeWellText
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
+	domaptrigger ILEX_FOREST, $2
 	clearevent EVENT_ILEX_FOREST_APPRENTICE
 	clearevent EVENT_ILEX_FOREST_FARFETCHD
 	setevent EVENT_CHARCOAL_KILN_FARFETCH_D
