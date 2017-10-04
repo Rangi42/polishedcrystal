@@ -741,6 +741,9 @@ LoadMapPals:
 
 	farcall LoadSpecialMapOBPalette
 
+	ld a, [wTileset]
+	cp TILESET_FOREST ; for Yellow Forest
+	ret z
 	ld a, [wPermission]
 	cp TOWN
 	jr z, .outside
