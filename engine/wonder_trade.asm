@@ -325,8 +325,6 @@ endr
 	ld b, a
 	; Form
 	ld a, [wOTTrademonSpecies]
-	cp UNOWN
-	jr z, .unown
 	cp EKANS
 	jr z, .ekans_arbok
 	cp ARBOK
@@ -334,9 +332,6 @@ endr
 	cp MAGIKARP
 	jr z, .magikarp
 	ld a, 1
-	jr .got_form_count
-.unown
-	ld a, NUM_UNOWN
 	jr .got_form_count
 .ekans_arbok
 	ld a, 2
@@ -346,8 +341,19 @@ endr
 .got_form_count
 	push bc
 	call RandomRange
-	pop bc
 	inc a
+	ld b, a
+	ld a, [wOTTrademonSpecies]
+	cp MAGIKARP
+	jr nz, .not_first_magikarp
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .not_first_magikarp
+	ld a, b
+	ld [wFirstMagikarpSeen], a
+.not_first_magikarp
+	ld a, b
+	pop bc
 	add b
 	ld [Buffer1 + 1], a
 	ld hl, Buffer1
@@ -1321,7 +1327,7 @@ CheckValidLevel:
 	db  37, 100 ; Slowking
 	db   1,  39 ; Misdreavus
 	db  40, 100 ; Mismagius
-	db   1, 100 ; Unown
+	db 255, 255 ; Unown
 	db   1, 100 ; Wobbuffet
 	db   1, 100 ; Girafarig
 	db   1,  30 ; Pineco
