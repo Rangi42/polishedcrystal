@@ -29,9 +29,9 @@ OlivineCity_MapEventHeader:
 	signpost 7, 17, SIGNPOST_JUMPTEXT, OlivineCitySignText
 	signpost 22, 20, SIGNPOST_JUMPTEXT, OlivineCityPortSignText
 	signpost 7, 7, SIGNPOST_JUMPTEXT, OlivineGymSignText
-	signpost 18, 33, SIGNPOST_JUMPTEXT, OlivineLighthouseSignText
+	signpost 20, 34, SIGNPOST_JUMPTEXT, OlivineLighthouseSignText
 	signpost 21, 1, SIGNPOST_JUMPTEXT, OlivineCityBattleTowerSignText
-	signpost 28, 51, SIGNPOST_JUMPTEXT, OlivineCityPokeathlonDomeSignText
+	signpost 26, 50, SIGNPOST_JUMPTEXT, OlivineCityPokeathlonDomeSignText
 	signpost 14, 36, SIGNPOST_ITEM + RARE_CANDY, EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
 	signpost 14, 47, SIGNPOST_ITEM + BIG_PEARL, EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL
 	signpost 29, 49, SIGNPOST_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
