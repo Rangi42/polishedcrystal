@@ -29,7 +29,7 @@ Bank $1b: $7ffe ($0002)
 Bank $1c: $7fe2 ($001e)
 Bank $1d: $7fe7 ($0019)
 Bank $1e: $7ee6 ($011a)
-Bank $1f: $7fb5 ($004b)
+Bank $1f: $7fe0 ($0020)
 Bank $20: $7fab ($0055)
 Bank $21: $7f0b ($00f5)
 Bank $22: $7f96 ($006a)
@@ -119,7 +119,7 @@ Bank $75: $7f50 ($00b0)
 Bank $76: $7fc4 ($003c)
 Bank $77: $7e94 ($016c)
 Bank $78: $7f7a ($0086)
-Bank $79: $7f3e ($00c2)
+Bank $79: $7fc6 ($003a)
 Bank $7a: $484f ($37b1)
 Bank $7b: $4000 ($4000)
 Bank $7c: $4000 ($4000)
@@ -158,7 +158,6 @@ Bank $32 has $00db bytes of free space
 Bank $0a has $00d5 bytes of free space
 Bank $5d has $00c7 bytes of free space
 Bank $74 has $00c3 bytes of free space
-Bank $79 has $00c2 bytes of free space
 Bank $5c has $00c0 bytes of free space
 Bank $46 has $00bd bytes of free space
 Bank $75 has $00b0 bytes of free space
@@ -188,7 +187,6 @@ Bank $62 has $0058 bytes of free space
 Bank $20 has $0055 bytes of free space
 Bank $2b has $0054 bytes of free space
 Bank $33 has $0051 bytes of free space
-Bank $1f has $004b bytes of free space
 Bank $43 has $004b bytes of free space
 Bank $17 has $0047 bytes of free space
 Bank $13 has $0043 bytes of free space
@@ -197,6 +195,7 @@ Bank $06 has $0040 bytes of free space
 Bank $34 has $003d bytes of free space
 Bank $37 has $003d bytes of free space
 Bank $76 has $003c bytes of free space
+Bank $79 has $003a bytes of free space
 Bank $55 has $0039 bytes of free space
 Bank $3d has $0037 bytes of free space
 Bank $0b has $0033 bytes of free space
@@ -207,6 +206,7 @@ Bank $14 has $002b bytes of free space
 Bank $31 has $0027 bytes of free space
 Bank $4b has $0026 bytes of free space
 Bank $03 has $0021 bytes of free space
+Bank $1f has $0020 bytes of free space
 Bank $26 has $0020 bytes of free space
 Bank $2d has $0020 bytes of free space
 Bank $10 has $001f bytes of free space
@@ -256,4 +256,4 @@ Bank $40 has $0000 bytes of free space
 Bank $4d has $0000 bytes of free space
 Bank $67 has $0000 bytes of free space
 
-Free space: 110980/2097152 (5.29%)
+Free space: 110801/2097152 (5.28%)
