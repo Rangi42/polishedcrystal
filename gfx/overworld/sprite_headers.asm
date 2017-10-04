@@ -244,9 +244,6 @@ BuenaSprite:
 CaptainSprite:
 	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
-MarySprite:
-	sprite_header MarySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-
 MatsumotoSprite:
 	sprite_header MatsumotoSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
