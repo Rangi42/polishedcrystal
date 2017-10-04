@@ -46,7 +46,6 @@ The final, non-beta 3.0 release should include all of these.
 ### Aesthetics
 
 * Add a sprite for DJ Mary
-* Add a sprite for tail-less Slowpoke
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 * "make hgss" to use HGSS-based palettes
