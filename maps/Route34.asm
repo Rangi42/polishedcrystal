@@ -209,7 +209,6 @@ TrainerCamperTodd1:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_CAMPER_TODD
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_TODD
 	iftrue .Rematch

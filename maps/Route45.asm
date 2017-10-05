@@ -160,7 +160,6 @@ TrainerBlackbeltKenji:
 
 BlackbeltKenji1Script:
 	writecode VAR_CALLERID, PHONE_BLACKBELT_KENJI
-	end_if_just_battled
 	opentext
 	checkcellnum PHONE_BLACKBELT_KENJI
 	iftrue UnknownScript_0x19e0e4
@@ -272,7 +271,6 @@ TrainerHikerParry:
 
 HikerParry1Script:
 	writecode VAR_CALLERID, PHONE_HIKER_PARRY
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_PARRY
 	iftrue UnknownScript_0x19e1b8

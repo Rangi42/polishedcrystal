@@ -175,7 +175,6 @@ TrainerFisherTully1:
 
 FisherTully1Script:
 	writecode VAR_CALLERID, PHONE_FISHER_TULLY
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_TULLY
 	iftrue UnknownScript_0x1a927f

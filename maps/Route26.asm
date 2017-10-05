@@ -46,7 +46,6 @@ TrainerCooltrainermGaven1:
 
 CooltrainermGaven1Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_GAVEN
 	iftrue UnknownScript_0x1a4d79
@@ -146,7 +145,6 @@ TrainerCooltrainerfBeth1:
 
 CooltrainerfBeth1Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERF_BETH
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_BETH
 	iftrue UnknownScript_0x1a4e35

@@ -1067,7 +1067,7 @@ PokegearPhone_UpdateDisplayList: ; 912d8 (24:52d8)
 	ld a, [wPokegearPhoneLoadNameBuffer]
 	inc a
 	ld [wPokegearPhoneLoadNameBuffer], a
-	cp $4
+	cp $4 ; 4 entries fit on the screen
 	jr c, .loop
 	jp PokegearPhone_UpdateCursor
 

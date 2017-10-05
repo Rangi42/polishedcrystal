@@ -41,7 +41,6 @@ TrainerPokefanmDerek1:
 
 PokefanmDerek1Script:
 	writecode VAR_CALLERID, PHONE_POKEFANM_DEREK
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_DEREK_HAS_NUGGET
 	iftrue UnknownScript_0x1a5b4a

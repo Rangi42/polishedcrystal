@@ -21,6 +21,7 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Mechanics
 
+* Phone call trainers ask automatically for your number
 * Add hidden grottoes throughout Johto
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * Lyra's capture tutorial is skippable

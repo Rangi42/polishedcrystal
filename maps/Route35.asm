@@ -51,7 +51,6 @@ TrainerJugglerIrwin:
 
 JugglerIrwin1Script:
 	writecode VAR_CALLERID, PHONE_JUGGLER_IRWIN
-	end_if_just_battled
 	opentext
 	checkcellnum PHONE_JUGGLER_IRWIN
 	iftrue UnknownScript_0x19c90f

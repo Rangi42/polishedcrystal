@@ -44,7 +44,6 @@ TrainerLassDana1:
 
 .script
 	writecode VAR_CALLERID, PHONE_LASS_DANA
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_DANA
 	iftrue .DanaRematch
@@ -182,7 +181,6 @@ TrainerSchoolboyChad1:
 
 .script
 	writecode VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_CHAD
 	iftrue .ChadRematch

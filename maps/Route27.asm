@@ -195,7 +195,6 @@ TrainerBird_keeperJose1:
 
 Bird_keeperJose1Script:
 	writecode VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_JOSE
 	iftrue UnknownScript_0x1a08ff
@@ -329,7 +328,6 @@ TrainerCooltrainerfReena:
 
 CooltrainerfReena1Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERF_REENA
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_REENA
 	iftrue UnknownScript_0x1a09e9

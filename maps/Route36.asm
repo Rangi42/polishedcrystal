@@ -156,7 +156,6 @@ TrainerSchoolboyAlan1:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_SCHOOLBOY_ALAN
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_ALAN
 	iftrue .ChooseRematch

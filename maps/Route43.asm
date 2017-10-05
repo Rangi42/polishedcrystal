@@ -217,7 +217,6 @@ TrainerPokemaniacBrent1:
 
 PokemaniacBrent1Script:
 	writecode VAR_CALLERID, PHONE_POKEMANIAC_BRENT
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_BRENT
 	iftrue UnknownScript_0x19d0cf
@@ -336,7 +335,6 @@ TrainerPicnickerTiffany1:
 
 PicnickerTiffany1Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_TIFFANY
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_TIFFANY
 	iftrue UnknownScript_0x19d1c1

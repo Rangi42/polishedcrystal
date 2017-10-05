@@ -789,6 +789,7 @@ wPokegearMapPlayerIconLandmark:: ds 1
 wPokegearRadioChannelBank:: ds 1
 wPokegearRadioChannelAddr:: ds 2
 wPokegearRadioMusicPlaying:: ds 1
+wPokegearNumberBuffer:: ds 1
 	ds wc6d0 - @
 
 wSlots::

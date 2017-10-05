@@ -67,7 +67,6 @@ TrainerPicnickerErin1:
 
 PicnickerErin1Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_ERIN
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_ERIN
 	iftrue UnknownScript_0x1a96da

@@ -65,7 +65,6 @@ TrainerYoungsterJoey:
 
 .Script:
 	writecode VAR_CALLERID, PHONE_YOUNGSTER_JOEY
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_JOEY
 	iftrue .Rematch

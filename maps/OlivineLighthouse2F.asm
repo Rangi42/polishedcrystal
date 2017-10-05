@@ -34,7 +34,6 @@ TrainerSailorHuey1:
 
 SailorHuey1Script:
 	writecode VAR_CALLERID, PHONE_SAILOR_HUEY
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_HUEY
 	iftrue UnknownScript_0x5afc7

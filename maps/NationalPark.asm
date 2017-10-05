@@ -84,7 +84,6 @@ TrainerSchoolboyJack1:
 
 SchoolboyJack1Script:
 	writecode VAR_CALLERID, PHONE_SCHOOLBOY_JACK
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_JACK
 	iftrue UnknownScript_0x5c088
@@ -208,7 +207,6 @@ TrainerPokefanfBeverly1:
 
 PokefanfBeverly1Script:
 	writecode VAR_CALLERID, PHONE_POKEFAN_BEVERLY
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
 	iftrue UnknownScript_0x5c177
