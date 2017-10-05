@@ -220,12 +220,9 @@ DoWonderTrade:
 	ld hl, wOTTrademonNickname
 	call CopyTradeName
 
-	; a = random byte
-	; OT ID = (a ^ %10101010) << 8 | a
 	call Random
 	ld [Buffer1], a
-	ld b, %10101010
-	xor b
+	call Random
 	ld [Buffer1 + 1], a
 	ld hl, Buffer1
 	ld de, wOTTrademonID
@@ -237,7 +234,6 @@ DoWonderTrade:
 	ld hl, wOTTrademonID
 	call Trade_CopyTwoBytes
 
-	ld a, [wOTTrademonID]
 	call GetWonderTradeOTName
 	push hl
 	ld de, wOTTrademonOTName
@@ -252,7 +248,6 @@ DoWonderTrade:
 	ld hl, wOTTrademonOTName
 	call CopyTradeName
 
-	ld a, [wOTTrademonID]
 	call GetWonderTradeOTGender
 	ld b, a
 
@@ -533,535 +528,689 @@ GetGSBallPichu:
 	ret
 
 GetWonderTradeOTName:
-; hl = .WonderTradeOTNameTable + a * PLAYER_NAME_LENGTH
-	ld hl, .WonderTradeOTNameTable
+; pick from .Table1 if [wOTTrademonID] is even, .Table2 if odd,
+; using [wOTTrademonID+1] as the index
+	ld hl, wOTTrademonID
+	ld a, [hli]
+	and 1
+	ld a, [hl]
+	ld hl, .Table1
+	jr z, .ok
+	ld hl, .Table2
+.ok
 	lb bc, 0, PLAYER_NAME_LENGTH
 	jp AddNTimes
 
-.WonderTradeOTNameTable:
-	db "Nemo@@@@" ; $00
-	db "Rangi@@@" ; $01
-	db "Matthew@" ; $02
-	db "Mateo@@@" ; $03
-	db "Drayano@" ; $04
-	db "Hlin@@@@" ; $05
-	db "Marckus@" ; $06
-	db "Pum@@@@@" ; $07
-	db "Bryan@@@" ; $08
-	db "Don@@@@@" ; $09
-	db "Miguel@@" ; $0a
-	db "Satoru@@" ; $0b
-	db "Iwata@@@" ; $0c
-	db "Junichi@" ; $0d
-	db "Masuda@@" ; $0e
-	db "Imakuni@" ; $0f
-	db "Red@@@@@" ; $10
-	db "Blue@@@@" ; $11
-	db "Green@@@" ; $12
-	db "Yellow@@" ; $13
-	db "Orange@@" ; $14
-	db "Gold@@@@" ; $15
-	db "Silver@@" ; $16
-	db "Crystal@" ; $17
-	db "Ruby@@@@" ; $18
-	db "Safire@@" ; $19
-	db "Emerald@" ; $1a
-	db "Diamond@" ; $1b
-	db "Pearl@@@" ; $1c
-	db "Black@@@" ; $1d
-	db "White@@@" ; $1e
-	db "Ash@@@@@" ; $1f
-	db "Gary@@@@" ; $20
-	db "Leaf@@@@" ; $21
-	db "Ethan@@@" ; $22
-	db "Lyra@@@@" ; $23
-	db "Kris@@@@" ; $24
-	db "Brendan@" ; $25
-	db "May@@@@@" ; $26
-	db "Wally@@@" ; $27
-	db "Lucas@@@" ; $28
-	db "Dawn@@@@" ; $29
-	db "Barry@@@" ; $2a
-	db "Hilbert@" ; $2b
-	db "Hilda@@@" ; $2c
-	db "Cheren@@" ; $2d
-	db "Bianca@@" ; $2e
-	db "Nate@@@@" ; $2f
-	db "Rosa@@@@" ; $30
-	db "Hugh@@@@" ; $31
-	db "Calem@@@" ; $32
-	db "Serena@@" ; $33
-	db "Shauna@@" ; $34
-	db "Trevor@@" ; $35
-	db "Tierno@@" ; $36
-	db "Lillie@@" ; $37
-	db "Hau@@@@@" ; $38
-	db "Oak@@@@@" ; $39
-	db "Elm@@@@@" ; $3a
-	db "Ivy@@@@@" ; $3b
-	db "Birch@@@" ; $3c
-	db "Rowan@@@" ; $3d
-	db "Juniper@" ; $3e
-	db "Sycamor@" ; $3f
-	db "Kukui@@@" ; $40
-	db "Samuel@@" ; $41
-	db "Samson@@" ; $42
-	db "Willow@@" ; $43
-	db "Bill@@@@" ; $44
-	db "Lanette@" ; $45
-	db "Celio@@@" ; $46
-	db "Bebe@@@@" ; $47
-	db "Amanita@" ; $48
-	db "Cassius@" ; $49
-	db "Brock@@@" ; $4a
-	db "Misty@@@" ; $4b
-	db "Surge@@@" ; $4c
-	db "Erika@@@" ; $4d
-	db "Janine@@" ; $4e
-	db "Sabrina@" ; $4f
-	db "Blaine@@" ; $50
-	db "Giovani@" ; $51
-	db "Lorelei@" ; $52
-	db "Bruno@@@" ; $53
-	db "Agatha@@" ; $54
-	db "Lance@@@" ; $55
-	db "Cissy@@@" ; $56
-	db "Danny@@@" ; $57
-	db "Rudy@@@@" ; $58
-	db "Luana@@@" ; $59
-	db "Prima@@@" ; $5a
-	db "Falkner@" ; $5b
-	db "Bugsy@@@" ; $5c
-	db "Whitney@" ; $5d
-	db "Morty@@@" ; $5e
-	db "Chuck@@@" ; $5f
-	db "Jasmine@" ; $60
-	db "Pryce@@@" ; $61
-	db "Clair@@@" ; $62
-	db "Will@@@@" ; $63
-	db "Koga@@@@" ; $64
-	db "Karen@@@" ; $65
-	db "Roxanne@" ; $66
-	db "Brawly@@" ; $67
-	db "Wattson@" ; $68
-	db "Flanery@" ; $69
-	db "Norman@@" ; $6a
-	db "Winona@@" ; $6b
-	db "Liza@@@@" ; $6c
-	db "Tate@@@@" ; $6d
-	db "Wallace@" ; $6e
-	db "Juan@@@@" ; $6f
-	db "Sidney@@" ; $70
-	db "Phoebe@@" ; $71
-	db "Glacia@@" ; $72
-	db "Drake@@@" ; $73
-	db "Steven@@" ; $74
-	db "Roark@@@" ; $75
-	db "Garden@@" ; $76
-	db "Maylene@" ; $77
-	db "Wake@@@@" ; $78
-	db "Fantina@" ; $79
-	db "Byron@@@" ; $7a
-	db "Candice@" ; $7b
-	db "Volkner@" ; $7c
-	db "Aaron@@@" ; $7d
-	db "Bertha@@" ; $7e
-	db "Flint@@@" ; $7f
-	db "Lucian@@" ; $80
-	db "Cynthia@" ; $81
-	db "Alder@@@" ; $82
-	db "Iris@@@@" ; $83
-	db "Diantha@" ; $84
-	db "Lana@@@@" ; $85
-	db "Mallow@@" ; $86
-	db "Sophcls@" ; $87
-	db "Kiawe@@@" ; $88
-	db "Hala@@@@" ; $89
-	db "Valerie@" ; $8a
-	db "Candela@" ; $8b
-	db "Blanche@" ; $8c
-	db "Spark@@@" ; $8d
-	db "Satoshi@" ; $8e
-	db "Tajiri@@" ; $8f
-	db "Shigeru@" ; $90
-	db "Hibiki@@" ; $91
-	db "Kotone@@" ; $92
-	db "Yuuki@@@" ; $93
-	db "Haruka@@" ; $94
-	db "Mitsuru@" ; $95
-	db "Kouki@@@" ; $96
-	db "Hikari@@" ; $97
-	db "Jun@@@@@" ; $98
-	db "Touya@@@" ; $99
-	db "Touko@@@" ; $9a
-	db "Bel@@@@@" ; $9b
-	db "Kyouhei@" ; $9c
-	db "Mei@@@@@" ; $9d
-	db "Joy@@@@@" ; $9e
-	db "Jenny@@@" ; $9f
-	db "Looker@@" ; $a0
-	db "Jessie@@" ; $a1
-	db "James@@@" ; $a2
-	db "Cassidy@" ; $a3
-	db "Butch@@@" ; $a4
-	db "Bonnie@@" ; $a5
-	db "Clyde@@@" ; $a6
-	db "Attila@@" ; $a7
-	db "Hun@@@@@" ; $a8
-	db "Domino@@" ; $a9
-	db "Miror B@" ; $aa
-	db "Archie@@" ; $ab
-	db "Maxie@@@" ; $ac
-	db "Cyrus@@@" ; $ad
-	db "N@@@@@@@" ; $ae
-	db "Ghetsis@" ; $af
-	db "Colress@" ; $b0
-	db "Lysandr@" ; $b1
-	db "Guzma@@@" ; $b2
-	db "Lusamin@" ; $b3
-	db "Wicke@@@" ; $b4
-	db "Naoko@@@" ; $b5
-	db "Sayo@@@@" ; $b6
-	db "Zuki@@@@" ; $b7
-	db "Kuni@@@@" ; $b8
-	db "Miki@@@@" ; $b9
-	db "Kiyo@@@@" ; $ba
-	db "Curtis@@" ; $bb
-	db "Yancy@@@" ; $bc
-	db "Zinnia@@" ; $bd
-	db "Aarune@@" ; $be
-	db "Lisia@@@" ; $bf
-	db "Chaz@@@@" ; $c0
-	db "Kiri@@@@" ; $c1
-	db "Richie@@" ; $c2
-	db "Assunta@" ; $c3
-	db "Tracey@@" ; $c4
-	db "Duplica@" ; $c5
-	db "Casey@@@" ; $c6
-	db "Giselle@" ; $c7
-	db "Melanie@" ; $c8
-	db "Damian@@" ; $c9
-	db "Alain@@@" ; $ca
-	db "Reiko@@@" ; $cb
-	db "Joey@@@@" ; $cc
-	db "A.J.@@@@" ; $cd
-	db "Camila@@" ; $ce
-	db "Alice@@@" ; $cf
-	db "Leo@@@@@" ; $d0
-	db "Aoooo@@@" ; $d1
-	db "Jimmy@@@" ; $d2
-	db "Cly@@@@@" ; $d3
-	db "Revo@@@@" ; $d4
-	db "Everyle@" ; $d5
-	db "Zetsu@@@" ; $d6
-	db "Kamon@@@" ; $d7
-	db "Karuta@@" ; $d8
-	db "Nozomi@@" ; $d9
-	db "Amos@@@@" ; $da
-	db "Kaito@@@" ; $db
-	db "Miku@@@@" ; $dc
-	db "Rin@@@@@" ; $dd
-	db "Len@@@@@" ; $de
-	db "Luka@@@@" ; $df
-	db "Teto@@@@" ; $e0
-	db "Ami@@@@@" ; $e1
-	db "Minako@@" ; $e2
-	db "Usagi@@@" ; $e3
-	db "Rei@@@@@" ; $e4
-	db "Makoto@@" ; $e5
-	db "Mamoru@@" ; $e6
-	db "Luna@@@@" ; $e7
-	db "Artemis@" ; $e8
-	db "Diana@@@" ; $e9
-	db "Sakura@@" ; $ea
-	db "Tomoyo@@" ; $eb
-	db "Syaoran@" ; $ec
-	db "Shinji@@" ; $ed
-	db "Asuka@@@" ; $ee
-	db "Mari@@@@" ; $ef
-	db "Yui@@@@@" ; $f0
-	db "Luke@@@@" ; $f1
-	db "Lun@@@@@" ; $f2
-	db "Rhue@@@@" ; $f3
-	db "Traziun@" ; $f4
-	db "Gaius@@@" ; $f5
-	db "Lyrra@@@" ; $f6
-	db "Kloe@@@@" ; $f7
-	db "Cetsa@@@" ; $f8
-	db "Lexus@@@" ; $f9
-	db "Sorya@@@" ; $fa
-	db "Strata@@" ; $fb
-	db "Slade@@@" ; $fc
-	db "Dirk@@@@" ; $fd
-	db "Talan@@@" ; $fe
-	db "Kersh@@@" ; $ff
+.Table1:
+	db "Red@@@@@" ; $00
+	db "Blue@@@@" ; $01
+	db "Green@@@" ; $02
+	db "Yellow@@" ; $03
+	db "Orange@@" ; $04
+	db "Gold@@@@" ; $05
+	db "Silver@@" ; $06
+	db "Crystal@" ; $07
+	db "Ruby@@@@" ; $08
+	db "Safire@@" ; $09
+	db "Emerald@" ; $0a
+	db "Jade@@@@" ; $0b
+	db "Diamond@" ; $0c
+	db "Pearl@@@" ; $0d
+	db "Platina@" ; $0e
+	db "Heart@@@" ; $0f
+	db "Soul@@@@" ; $10
+	db "Mind@@@@" ; $11
+	db "Black@@@" ; $12
+	db "White@@@" ; $13
+	db "Gray@@@@" ; $14
+	db "X@@@@@@@" ; $15
+	db "Y@@@@@@@" ; $16
+	db "Z@@@@@@@" ; $17
+	db "Alpha@@@" ; $18
+	db "Omega@@@" ; $19
+	db "Delta@@@" ; $1a
+	db "Lambda@@" ; $1b
+	db "Theta@@@" ; $1c
+	db "Zeta@@@@" ; $1d
+	db "Sun@@@@@" ; $1e
+	db "Moon@@@@" ; $1f
+	db "Star@@@@" ; $20
+	db "Ash@@@@@" ; $21
+	db "Gary@@@@" ; $22
+	db "Leaf@@@@" ; $23
+	db "Ethan@@@" ; $24
+	db "Lyra@@@@" ; $25
+	db "Hiro@@@@" ; $26
+	db "Kris@@@@" ; $27
+	db "Brendan@" ; $28
+	db "May@@@@@" ; $29
+	db "Wally@@@" ; $2a
+	db "Lucas@@@" ; $2b
+	db "Dawn@@@@" ; $2c
+	db "Barry@@@" ; $2d
+	db "Hilbert@" ; $2e
+	db "Hilda@@@" ; $2f
+	db "Cheren@@" ; $30
+	db "Bianca@@" ; $31
+	db "Nate@@@@" ; $32
+	db "Rosa@@@@" ; $33
+	db "Hugh@@@@" ; $34
+	db "Calem@@@" ; $35
+	db "Serena@@" ; $36
+	db "Shauna@@" ; $37
+	db "Trevor@@" ; $38
+	db "Tierno@@" ; $39
+	db "Hau@@@@@" ; $3a
+	db "Lillie@@" ; $3b
+	db "Gladion@" ; $3c
+	db "Wes@@@@@" ; $3d
+	db "Michael@" ; $3e
+	db "Todd@@@@" ; $3f
+	db "Oak@@@@@" ; $40
+	db "Elm@@@@@" ; $41
+	db "Ivy@@@@@" ; $42
+	db "Birch@@@" ; $43
+	db "Rowan@@@" ; $44
+	db "Juniper@" ; $45
+	db "Sycamor@" ; $46
+	db "Kukui@@@" ; $47
+	db "Willow@@" ; $48
+	db "Samuel@@" ; $49
+	db "Samson@@" ; $4a
+	db "Cozmo@@@" ; $4b
+	db "Fennel@@" ; $4c
+	db "Cedric@@" ; $4d
+	db "Silktre@" ; $4e
+	db "Burnet@@" ; $4f
+	db "Mohn@@@@" ; $50
+	db "Krane@@@" ; $51
+	db "Bill@@@@" ; $52
+	db "Lanette@" ; $53
+	db "Brigett@" ; $54
+	db "Celio@@@" ; $55
+	db "Bebe@@@@" ; $56
+	db "Amanita@" ; $57
+	db "Cassius@" ; $58
+	db "Molayne@" ; $59
+	db "Brock@@@" ; $5a
+	db "Misty@@@" ; $5b
+	db "Surge@@@" ; $5c
+	db "Erika@@@" ; $5d
+	db "Janine@@" ; $5e
+	db "Sabrina@" ; $5f
+	db "Blaine@@" ; $60
+	db "Giovani@" ; $61
+	db "Lorelei@" ; $62
+	db "Bruno@@@" ; $63
+	db "Agatha@@" ; $64
+	db "Lance@@@" ; $65
+	db "Cissy@@@" ; $66
+	db "Danny@@@" ; $67
+	db "Rudy@@@@" ; $68
+	db "Luana@@@" ; $69
+	db "Prima@@@" ; $6a
+	db "Falkner@" ; $6b
+	db "Bugsy@@@" ; $6c
+	db "Whitney@" ; $6d
+	db "Morty@@@" ; $6e
+	db "Chuck@@@" ; $6f
+	db "Jasmine@" ; $70
+	db "Pryce@@@" ; $71
+	db "Clair@@@" ; $72
+	db "Will@@@@" ; $73
+	db "Koga@@@@" ; $74
+	db "Karen@@@" ; $75
+	db "Roxanne@" ; $76
+	db "Brawly@@" ; $77
+	db "Wattson@" ; $78
+	db "Flanery@" ; $79
+	db "Norman@@" ; $7a
+	db "Winona@@" ; $7b
+	db "Liza@@@@" ; $7c
+	db "Tate@@@@" ; $7d
+	db "Wallace@" ; $7e
+	db "Juan@@@@" ; $7f
+	db "Sidney@@" ; $80
+	db "Phoebe@@" ; $81
+	db "Glacia@@" ; $82
+	db "Drake@@@" ; $83
+	db "Steven@@" ; $84
+	db "Roark@@@" ; $85
+	db "Garden@@" ; $86
+	db "Maylene@" ; $87
+	db "Wake@@@@" ; $88
+	db "Fantina@" ; $89
+	db "Byron@@@" ; $8a
+	db "Candice@" ; $8b
+	db "Volkner@" ; $8c
+	db "Aaron@@@" ; $8d
+	db "Bertha@@" ; $8e
+	db "Flint@@@" ; $8f
+	db "Lucian@@" ; $90
+	db "Cynthia@" ; $91
+	db "Cilan@@@" ; $92
+	db "Chili@@@" ; $93
+	db "Cress@@@" ; $94
+	db "Roxie@@@" ; $95
+	db "Lenora@@" ; $96
+	db "Burgh@@@" ; $97
+	db "Elesa@@@" ; $98
+	db "Clay@@@@" ; $99
+	db "Skyla@@@" ; $9a
+	db "Brycen@@" ; $9b
+	db "Drayden@" ; $9c
+	db "Iris@@@@" ; $9d
+	db "Marlon@@" ; $9e
+	db "Shantal@" ; $9f
+	db "Marshal@" ; $a0
+	db "Grimsly@" ; $a1
+	db "Caitlin@" ; $a2
+	db "Alder@@@" ; $a3
+	db "Viola@@@" ; $a4
+	db "Grant@@@" ; $a5
+	db "Korrina@" ; $a6
+	db "Ramos@@@" ; $a7
+	db "Clemont@" ; $a8
+	db "Valerie@" ; $a9
+	db "Olympia@" ; $aa
+	db "Wulfric@" ; $ab
+	db "Malva@@@" ; $ac
+	db "Siebold@" ; $ad
+	db "Wiktrom@" ; $ae
+	db "Drasna@@" ; $af
+	db "Diantha@" ; $b0
+	db "Ilima@@@" ; $b1
+	db "Lana@@@@" ; $b2
+	db "Kiawe@@@" ; $b3
+	db "Mallow@@" ; $b4
+	db "Sophcls@" ; $b5
+	db "Acerola@" ; $b6
+	db "Mina@@@@" ; $b7
+	db "Hala@@@@" ; $b8
+	db "Olivia@@" ; $b9
+	db "Nanu@@@@" ; $ba
+	db "Hapu@@@@" ; $bb
+	db "Kahili@@" ; $bc
+	db "Noland@@" ; $bd
+	db "Greta@@@" ; $be
+	db "Tucker@@" ; $bf
+	db "Lucy@@@@" ; $c0
+	db "Spenser@" ; $c1
+	db "Brandon@" ; $c2
+	db "Anabel@@" ; $c3
+	db "Palmer@@" ; $c4
+	db "Thorton@" ; $c5
+	db "Dahlia@@" ; $c6
+	db "Darach@@" ; $c7
+	db "Argenta@" ; $c8
+	db "Proton@@" ; $c9
+	db "Petrel@@" ; $ca
+	db "Archer@@" ; $cb
+	db "Ariana@@" ; $cc
+	db "Jessie@@" ; $cd
+	db "James@@@" ; $ce
+	db "Cassidy@" ; $cf
+	db "Butch@@@" ; $d0
+	db "Bonnie@@" ; $d1
+	db "Clyde@@@" ; $d2
+	db "Attila@@" ; $d3
+	db "Hun@@@@@" ; $d4
+	db "Domino@@" ; $d5
+	db "Miror B@" ; $d6
+	db "Matt@@@@" ; $d7
+	db "Shelly@@" ; $d8
+	db "Archie@@" ; $d9
+	db "Tabitha@" ; $da
+	db "Courtny@" ; $db
+	db "Maxie@@@" ; $dc
+	db "Mars@@@@" ; $dd
+	db "Jupiter@" ; $de
+	db "Saturn@@" ; $df
+	db "Charon@@" ; $e0
+	db "Cyrus@@@" ; $e1
+	db "N@@@@@@@" ; $e2
+	db "Colress@" ; $e3
+	db "Gorm@@@@" ; $e4
+	db "Bronius@" ; $e5
+	db "Rood@@@@" ; $e6
+	db "Zinzoln@" ; $e7
+	db "Giallo@@" ; $e8
+	db "Ryoku@@@" ; $e9
+	db "Ghetsis@" ; $ea
+	db "Anthea@@" ; $eb
+	db "Concord@" ; $ec
+	db "Aliana@@" ; $ed
+	db "Bryony@@" ; $ee
+	db "Celosia@" ; $ef
+	db "Mable@@@" ; $f0
+	db "Xerosic@" ; $f1
+	db "Lysandr@" ; $f2
+	db "Tupp@@@@" ; $f3
+	db "Zipp@@@@" ; $f4
+	db "Rapp@@@@" ; $f5
+	db "Plumera@" ; $f6
+	db "Guzma@@@" ; $f7
+	db "Faba@@@@" ; $f8
+	db "Wicke@@@" ; $f9
+	db "Lusamin@" ; $fa
+	db "Candela@" ; $fb
+	db "Blanche@" ; $fc
+	db "Spark@@@" ; $fd
+	db "Satoshi@" ; $fe
+	db "Tajiri@@" ; $ff
+
+.Table2:
+	db "Shigeru@" ; $00
+	db "Hibiki@@" ; $01
+	db "Kotone@@" ; $02
+	db "Kamon@@@" ; $03
+	db "Yuuki@@@" ; $04
+	db "Haruka@@" ; $05
+	db "Mitsuru@" ; $06
+	db "Kouki@@@" ; $07
+	db "Hikari@@" ; $08
+	db "Jun@@@@@" ; $09
+	db "Touya@@@" ; $0a
+	db "Touko@@@" ; $0b
+	db "Bel@@@@@" ; $0c
+	db "Kyouhei@" ; $0d
+	db "Mei@@@@@" ; $0e
+	db "Helios@@" ; $0f
+	db "Selene@@" ; $10
+	db "Mike@@@@" ; $11
+	db "Kyle@@@@" ; $12
+	db "Tim@@@@@" ; $13
+	db "Emy@@@@@" ; $14
+	db "Chris@@@" ; $15
+	db "Kim@@@@@" ; $16
+	db "Jacques@" ; $17
+	db "Hari@@@@" ; $18
+	db "Joy@@@@@" ; $19
+	db "Jenny@@@" ; $1a
+	db "Delia@@@" ; $1b
+	db "Daisy@@@" ; $1c
+	db "Fuji@@@@" ; $1d
+	db "Baoba@@@" ; $1e
+	db "Copycat@" ; $1f
+	db "Primo@@@" ; $20
+	db "Lostele@" ; $21
+	db "Teala@@@" ; $22
+	db "Selphy@@" ; $23
+	db "Joey@@@@" ; $24
+	db "Cal@@@@@" ; $25
+	db "Carrie@@" ; $26
+	db "Mr.<PK><MN>@@@" ; $27
+	db "Eusine@@" ; $28
+	db "Cameron@" ; $29
+	db "Earl@@@@" ; $2a
+	db "Kurt@@@@" ; $2b
+	db "Ben@@@@@" ; $2c
+	db "Mary@@@@" ; $2d
+	db "Reed@@@@" ; $2e
+	db "Fern@@@@" ; $2f
+	db "Lily@@@@" ; $30
+	db "Buena@@@" ; $31
+	db "Randy@@@" ; $32
+	db "Maximo@@" ; $33
+	db "Felicty@" ; $34
+	db "Monica@@" ; $35
+	db "Tuscany@" ; $36
+	db "Wesley@@" ; $37
+	db "Arthur@@" ; $38
+	db "Frieda@@" ; $39
+	db "Santos@@" ; $3a
+	db "Sunny@@@" ; $3b
+	db "Naoko@@@" ; $3c
+	db "Sayo@@@@" ; $3d
+	db "Zuki@@@@" ; $3e
+	db "Kuni@@@@" ; $3f
+	db "Miki@@@@" ; $40
+	db "Li@@@@@@" ; $41
+	db "Kiyo@@@@" ; $42
+	db "Scott@@@" ; $43
+	db "Briney@@" ; $44
+	db "Stone@@@" ; $45
+	db "Wanda@@@" ; $46
+	db "Gabby@@@" ; $47
+	db "Ty@@@@@@" ; $48
+	db "Rydel@@@" ; $49
+	db "Stern@@@" ; $4a
+	db "Aarune@@" ; $4b
+	db "Lisia@@@" ; $4c
+	db "Zinnia@@" ; $4d
+	db "Inver@@@" ; $4e
+	db "Chaz@@@@" ; $4f
+	db "Kiri@@@@" ; $50
+	db "Johanna@" ; $51
+	db "Looker@@" ; $52
+	db "Cheryl@@" ; $53
+	db "Riley@@@" ; $54
+	db "Buck@@@@" ; $55
+	db "Marley@@" ; $56
+	db "Mira@@@@" ; $57
+	db "Rosanne@" ; $58
+	db "Julia@@@" ; $59
+	db "Jordan@@" ; $5a
+	db "Dexter@@" ; $5b
+	db "Keira@@@" ; $5c
+	db "Fuego@@@" ; $5d
+	db "Helena@@" ; $5e
+	db "Hawes@@@" ; $5f
+	db "Charles@" ; $60
+	db "Curtis@@" ; $61
+	db "Yancy@@@" ; $62
+	db "Ingo@@@@" ; $63
+	db "Emmet@@@" ; $64
+	db "Grace@@@" ; $65
+	db "Alexa@@@" ; $66
+	db "Dexio@@@" ; $67
+	db "Sina@@@@" ; $68
+	db "Gurkinn@" ; $69
+	db "AZ@@@@@@" ; $6a
+	db "Emma@@@@" ; $6b
+	db "Phil@@@@" ; $6c
+	db "Nita@@@@" ; $6d
+	db "Evelyn@@" ; $6e
+	db "Dana@@@@" ; $6f
+	db "Morgan@@" ; $70
+	db "Ryuki@@@" ; $71
+	db "Gester@@" ; $72
+	db "Imakuni@" ; $73
+	db "Richie@@" ; $74
+	db "Assunta@" ; $75
+	db "Tracey@@" ; $76
+	db "Duplica@" ; $77
+	db "Casey@@@" ; $78
+	db "Giselle@" ; $79
+	db "Melanie@" ; $7a
+	db "Damian@@" ; $7b
+	db "Alain@@@" ; $7c
+	db "Reiko@@@" ; $7d
+	db "Aya@@@@@" ; $7e
+	db "Rainer@@" ; $7f
+	db "Sparky@@" ; $80
+	db "Pyro@@@@" ; $81
+	db "Mikey@@@" ; $82
+	db "Orville@" ; $83
+	db "A.J.@@@@" ; $84
+	db "Camila@@" ; $85
+	db "A@@@@@@@" ; $86
+	db "Slash@@@" ; $87
+	db "Alice@@@" ; $88
+	db "Leo@@@@@" ; $89
+	db "Aoooo@@@" ; $8a
+	db "Jimmy@@@" ; $8b
+	db "Cly@@@@@" ; $8c
+	db "Li'l D@@@" ; $8d
+	db "Arty@@@@" ; $8e
+	db "Abe@@@@@" ; $8f
+	db "Baba@@@@" ; $90
+	db "Evan@@@@" ; $91
+	db "Paul@@@@" ; $92
+	db "Cyan@@@@" ; $93
+	db "Revo@@@@" ; $94
+	db "Everyle@" ; $95
+	db "Zetsu@@@" ; $96
+	db "Karuta@@" ; $97
+	db "Nozomi@@" ; $98
+	db "Amos@@@@" ; $99
+	db "Kaito@@@" ; $9a
+	db "Meiko@@@" ; $9b
+	db "Miku@@@@" ; $9c
+	db "Rin@@@@@" ; $9d
+	db "Len@@@@@" ; $9e
+	db "Luka@@@@" ; $9f
+	db "Teto@@@@" ; $a0
+	db "Ami@@@@@" ; $a1
+	db "Minako@@" ; $a2
+	db "Usagi@@@" ; $a3
+	db "Rei@@@@@" ; $a4
+	db "Makoto@@" ; $a5
+	db "Mamoru@@" ; $a6
+	db "Luna@@@@" ; $a7
+	db "Artemis@" ; $a8
+	db "Diana@@@" ; $a9
+	db "Sakura@@" ; $aa
+	db "Tomoyo@@" ; $ab
+	db "Syaoran@" ; $ac
+	db "Shinji@@" ; $ad
+	db "Asuka@@@" ; $ae
+	db "Mari@@@@" ; $af
+	db "Gendo@@@" ; $b0
+	db "Yui@@@@@" ; $b1
+	db "Kaworu@@" ; $b2
+	db "Okabe@@@" ; $b3
+	db "Daru@@@@" ; $b4
+	db "Kurisu@@" ; $b5
+	db "Suzuha@@" ; $b6
+	db "Mayuri@@" ; $b7
+	db "Ruka@@@@" ; $b8
+	db "Kyon@@@@" ; $b9
+	db "Haruhi@@" ; $ba
+	db "Yuki@@@@" ; $bb
+	db "Mikuru@@" ; $bc
+	db "Tsuruya@" ; $bd
+	db "Ryoko@@@" ; $be
+	db "Itsuki@@" ; $bf
+	db "Jojo@@@@" ; $c0
+	db "Jotaro@@" ; $c1
+	db "Josuke@@" ; $c2
+	db "Dio@@@@@" ; $c3
+	db "Kei@@@@@" ; $c4
+	db "Saika@@@" ; $c5
+	db "Hayate@@" ; $c6
+	db "Daruku@@" ; $c7
+	db "Nagisa@@" ; $c8
+	db "Bridget@" ; $c9
+	db "Ryo@@@@@" ; $ca
+	db "Clara@@@" ; $cb
+	db "Hana@@@@" ; $cc
+	db "Miyuki@@" ; $cd
+	db "Luke@@@@" ; $ce
+	db "Lun@@@@@" ; $cf
+	db "Rhue@@@@" ; $d0
+	db "Traziun@" ; $d1
+	db "Gaius@@@" ; $d2
+	db "Lyrra@@@" ; $d3
+	db "Kloe@@@@" ; $d4
+	db "Cetsa@@@" ; $d5
+	db "Lexus@@@" ; $d6
+	db "Sorya@@@" ; $d7
+	db "Strata@@" ; $d8
+	db "Slade@@@" ; $d9
+	db "Dirk@@@@" ; $da
+	db "Talan@@@" ; $db
+	db "Kersh@@@" ; $dc
+	db "Rangi@@@" ; $dd
+	db "Remy@@@@" ; $de
+	db "Sylvie@@" ; $df
+	db "Matthew@" ; $e0
+	db "Mateo@@@" ; $e1
+	db "Babs@@@@" ; $e2
+	db "Pia@@@@@" ; $e3
+	db "Aizawa@@" ; $e4
+	db "Suki@@@@" ; $e5
+	db "Fredrik@" ; $e6
+	db "Drayano@" ; $e7
+	db "Hlin@@@@" ; $e8
+	db "Marckus@" ; $e9
+	db "Pum@@@@@" ; $ea
+	db "Bryan@@@" ; $eb
+	db "Don@@@@@" ; $ec
+	db "Miguel@@" ; $ed
+	db "Satoru@@" ; $ee
+	db "Iwata@@@" ; $ef
+	db "Junichi@" ; $f0
+	db "Masuda@@" ; $f1
+	db "Koji@@@@" ; $f2
+	db "Nishino@" ; $f3
+	db "Sosuke@@" ; $f4
+	db "Tamada@@" ; $f5
+	db "Hisashi@" ; $f6
+	db "Sogabe@@" ; $f7
+	db "Keita@@@" ; $f8
+	db "Kagaya@@" ; $f9
+	db "Yoshi@@@" ; $fa
+	db "Matsuda@" ; $fb
+	db "Shigeki@" ; $fc
+	db "Tetsuya@" ; $fd
+	db "Oota@@@@" ; $fe
+	db "Turner@@" ; $ff
 
 GetWonderTradeOTGender:
-; a = [.WonderTradeOTGenderTable + a]
-	ld hl, .WonderTradeOTGenderTable
-	lb bc, 0, 1
-	call AddNTimes
+; pick from .Table1 if [wOTTrademonID] is even, .Table2 if odd,
+; using [wOTTrademonID+1] as the index
+	ld hl, wOTTrademonID
+	ld a, [hli]
+	and 1
+	ld a, [hl]
+	ld hl, .Table1
+	jr z, .ok
+	ld hl, .Table2
+.ok
+	ld c, a
+;	ld b, CHECK_FLAG
+;	predef FlagPredef
+;	ld a, c
+;	and a
+;	ret z ; MALE
+;	ld a, FEMALE
+	ld b, 0
+	add hl, bc
 	ld a, [hl]
 	ret
 
-.WonderTradeOTGenderTable:
-	db MALE   ; Nemo
-	db FEMALE ; Rangi
-	db MALE   ; Matthew
-	db MALE   ; Mateo
-	db MALE   ; Drayano
-	db FEMALE ; Hlin
-	db MALE   ; Marckus
-	db MALE   ; Pum
-	db MALE   ; Bryan
-	db MALE   ; Don
-	db MALE   ; Miguel
-	db MALE   ; Satoru
-	db MALE   ; Iwata
-	db MALE   ; Junichi
-	db MALE   ; Masuda
-	db MALE   ; Imakuni
-	db MALE   ; Red
-	db MALE   ; Blue
-	db FEMALE ; Green
-	db FEMALE ; Yellow
-	db FEMALE ; Orange
-	db MALE   ; Gold
-	db MALE   ; Silver
-	db FEMALE ; Crystal
-	db MALE   ; Ruby
-	db FEMALE ; Safire
-	db FEMALE ; Emerald
-	db MALE   ; Diamond
-	db FEMALE ; Pearl
-	db MALE   ; Black
-	db FEMALE ; White
-	db MALE   ; Ash
-	db MALE   ; Gary
-	db FEMALE ; Leaf
-	db MALE   ; Ethan
-	db FEMALE ; Lyra
-	db FEMALE ; Kris
-	db MALE   ; Brendan
-	db FEMALE ; May
-	db MALE   ; Wally
-	db MALE   ; Lucas
-	db FEMALE ; Dawn
-	db MALE   ; Barry
-	db MALE   ; Hilbert
-	db FEMALE ; Hilda
-	db MALE   ; Cheren
-	db FEMALE ; Bianca
-	db MALE   ; Nate
-	db FEMALE ; Rosa
-	db MALE   ; Hugh
-	db MALE   ; Calem
-	db FEMALE ; Serena
-	db FEMALE ; Shauna
-	db MALE   ; Trevor
-	db MALE   ; Tierno
-	db FEMALE ; Lillie
-	db MALE   ; Hau
-	db MALE   ; Oak
-	db MALE   ; Elm
-	db FEMALE ; Ivy
-	db MALE   ; Birch
-	db MALE   ; Rowan
-	db FEMALE ; Juniper
-	db MALE   ; Sycamor
-	db MALE   ; Kukui
-	db MALE   ; Samuel
-	db MALE   ; Samson
-	db FEMALE ; Willow
-	db MALE   ; Bill
-	db FEMALE ; Lanette
-	db MALE   ; Celio
-	db FEMALE ; Bebe
-	db FEMALE ; Amanita
-	db MALE   ; Cassius
-	db MALE   ; Brock
-	db FEMALE ; Misty
-	db MALE   ; Surge
-	db FEMALE ; Erika
-	db FEMALE ; Janine
-	db FEMALE ; Sabrina
-	db MALE   ; Blaine
-	db MALE   ; Giovani
-	db FEMALE ; Lorelei
-	db MALE   ; Bruno
-	db FEMALE ; Agatha
-	db MALE   ; Lance
-	db FEMALE ; Cissy
-	db MALE   ; Danny
-	db MALE   ; Rudy
-	db FEMALE ; Luana
-	db FEMALE ; Prima
-	db MALE   ; Falkner
-	db MALE   ; Bugsy
-	db FEMALE ; Whitney
-	db MALE   ; Morty
-	db MALE   ; Chuck
-	db FEMALE ; Jasmine
-	db MALE   ; Pryce
-	db FEMALE ; Clair
-	db MALE   ; Will
-	db MALE   ; Koga
-	db FEMALE ; Karen
-	db FEMALE ; Roxanne
-	db MALE   ; Brawly
-	db MALE   ; Wattson
-	db FEMALE ; Flanery
-	db MALE   ; Norman
-	db FEMALE ; Winona
-	db FEMALE ; Liza
-	db MALE   ; Tate
-	db MALE   ; Wallace
-	db MALE   ; Juan
-	db MALE   ; Sidney
-	db FEMALE ; Phoebe
-	db FEMALE ; Glacia
-	db MALE   ; Drake
-	db MALE   ; Steven
-	db MALE   ; Roark
-	db FEMALE ; Garden
-	db FEMALE ; Maylene
-	db MALE   ; Wake
-	db FEMALE ; Fantina
-	db MALE   ; Byron
-	db FEMALE ; Candice
-	db MALE   ; Volkner
-	db MALE   ; Aaron
-	db FEMALE ; Bertha
-	db MALE   ; Flint
-	db MALE   ; Lucian
-	db FEMALE ; Cynthia
-	db MALE   ; Alder
-	db FEMALE ; Iris
-	db FEMALE ; Diantha
-	db FEMALE ; Lana
-	db FEMALE ; Mallow
-	db MALE   ; Sophcls
-	db MALE   ; Kiawe
-	db MALE   ; Hala
-	db FEMALE ; Valerie
-	db FEMALE ; Candela
-	db FEMALE ; Blanche
-	db MALE   ; Spark
-	db MALE   ; Satoshi
-	db MALE   ; Tajiri
-	db MALE   ; Shigeru
-	db MALE   ; Hibiki
-	db FEMALE ; Kotone
-	db MALE   ; Yuuki
-	db FEMALE ; Haruka
-	db MALE   ; Mitsuru
-	db MALE   ; Kouki
-	db FEMALE ; Hikari
-	db MALE   ; Jun
-	db MALE   ; Touya
-	db FEMALE ; Touko
-	db FEMALE ; Bel
-	db MALE   ; Kyouhei
-	db FEMALE ; Mei
-	db FEMALE ; Joy
-	db FEMALE ; Jenny
-	db MALE   ; Looker
-	db FEMALE ; Jessie
-	db MALE   ; James
-	db FEMALE ; Cassidy
-	db MALE   ; Butch
-	db FEMALE ; Bonnie
-	db MALE   ; Clyde
-	db MALE   ; Attila
-	db FEMALE ; Hun
-	db FEMALE ; Domino
-	db MALE   ; Miror B
-	db MALE   ; Archie
-	db MALE   ; Maxie
-	db MALE   ; Cyrus
-	db MALE   ; N
-	db MALE   ; Ghetsis
-	db MALE   ; Colress
-	db MALE   ; Lysandr
-	db MALE   ; Guzma
-	db FEMALE ; Lusamin
-	db FEMALE ; Wicke
-	db FEMALE ; Naoko
-	db FEMALE ; Sayo
-	db FEMALE ; Zuki
-	db FEMALE ; Kuni
-	db FEMALE ; Miki
-	db MALE   ; Kiyo
-	db MALE   ; Curtis
-	db FEMALE ; Yancy
-	db FEMALE ; Zinnia
-	db MALE   ; Aarune
-	db FEMALE ; Lisia
-	db MALE   ; Chaz
-	db FEMALE ; Kiri
-	db MALE   ; Richie
-	db FEMALE ; Assunta
-	db MALE   ; Tracey
-	db FEMALE ; Duplica
-	db FEMALE ; Casey
-	db FEMALE ; Giselle
-	db FEMALE ; Melanie
-	db MALE   ; Damian
-	db MALE   ; Alain
-	db FEMALE ; Reiko
-	db MALE   ; Joey
-	db MALE   ; A.J.
-	db FEMALE ; Camila
-	db FEMALE ; Alice
-	db MALE   ; Leo
-	db FEMALE ; Aoooo
-	db MALE   ; Jimmy
-	db FEMALE ; Cly
-	db MALE   ; Revo
-	db MALE   ; Everyle
-	db MALE   ; Zetsu
-	db MALE   ; Kamon
-	db MALE   ; Karuta
-	db FEMALE ; Nozomi
-	db MALE   ; Amos
-	db MALE   ; Kaito
-	db FEMALE ; Miku
-	db FEMALE ; Rin
-	db MALE   ; Len
-	db FEMALE ; Luka
-	db FEMALE ; Teto
-	db FEMALE ; Ami
-	db FEMALE ; Minako
-	db FEMALE ; Usagi
-	db FEMALE ; Rei
-	db FEMALE ; Makoto
-	db MALE   ; Mamoru
-	db FEMALE ; Luna
-	db MALE   ; Artemis
-	db FEMALE ; Diana
-	db FEMALE ; Sakura
-	db FEMALE ; Tomoyo
-	db MALE   ; Syaoran
-	db MALE   ; Shinji
-	db FEMALE ; Asuka
-	db FEMALE ; Mari
-	db FEMALE ; Yui
-	db MALE   ; Luke
-	db MALE   ; Lun
-	db MALE   ; Rhue
-	db MALE   ; Traziun
-	db MALE   ; Gaius
-	db FEMALE ; Lyrra
-	db FEMALE ; Kloe
-	db FEMALE ; Cetsa
-	db FEMALE ; Lexus
-	db FEMALE ; Sorya
-	db MALE   ; Strata
-	db MALE   ; Slade
-	db MALE   ; Dirk
-	db MALE   ; Talan
-	db MALE   ; Kersh
+.Table1:
+	;       Red,     Blue,    Green,   Yellow,  Orange,  Gold,    Silver,  Crystal
+	genders MALE,    MALE,    FEMALE,  FEMALE,  MALE,    MALE,    MALE,    FEMALE
+	;       Ruby,    Safire,  Emerald, Jade,    Diamond, Pearl,   Platina, Heart
+	genders MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  MALE
+	;       Soul,    Mind,    Black,   White,   Gray,    X,       Y,       Z
+	genders FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE
+	;       Alpha,   Omega,   Delta,   Lambda,  Theta,   Zeta,    Sun,     Moon
+	genders MALE,    FEMALE,  MALE,    FEMALE,  MALE,    MALE,    MALE,    FEMALE
+	;       Star,    Ash,     Gary,    Leaf,    Ethan,   Lyra,    Hiro,    Kris
+	genders FEMALE,  MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE
+	;       Brendan, May,     Wally,   Lucas,   Dawn,    Barry,   Hilbert, Hilda
+	genders MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE
+	;       Cheren,  Bianca,  Nate,    Rosa,    Hugh,    Calem,   Serena,  Shauna
+	genders MALE,    FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE
+	;       Trevor,  Tierno,  Hau,     Lillie,  Gladion, Wes,     Michael, Todd
+	genders MALE,    MALE,    MALE,    FEMALE,  MALE,    MALE,    MALE,    MALE
+	;       Oak,     Elm,     Ivy,     Birch,   Rowan,   Juniper, Sycamor, Kukui
+	genders MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE
+	;       Willow,  Samuel,  Samson,  Cozmo,   Fennel,  Cedric,  Silktre, Burnet
+	genders MALE,    MALE,    MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE
+	;       Mohn,    Krane,   Bill,    Lanette, Brigett, Celio,   Bebe,    Amanita
+	genders MALE,    MALE,    MALE,    FEMALE,  FEMALE,  MALE,    FEMALE,  FEMALE
+	;       Cassius, Molayne, Brock,   Misty,   Surge,   Erika,   Janine,  Sabrina
+	genders MALE,    MALE,    MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  FEMALE
+	;       Blaine,  Giovani, Lorelei, Bruno,   Agatha,  Lance,   Cissy,   Danny
+	genders MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  MALE,
+	;       Rudy,    Luana,   Prima,   Falkner, Bugsy,   Whitney, Morty,   Chuck
+	genders MALE,    FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE,
+	;       Jasmine, Pryce,   Clair,   Will,    Koga,    Karen,   Roxanne, Brawly
+	genders FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,
+	;       Wattson, Flanery, Norman,  Winona,  Liza,    Tate,    Wallace, Juan
+	genders MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  MALE,    MALE,    MALE,
+	;       Sidney,  Phoebe,  Glacia,  Drake,   Steven,  Roark,   Garden,  Maylene
+	genders MALE,    FEMALE,  FEMALE,  MALE,    MALE,    MALE,    FEMALE,  FEMALE
+	;       Wake,    Fantina, Byron,   Candice, Volkner, Aaron,   Bertha,  Flint
+	genders MALE,    FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE
+	;       Lucian,  Cynthia, Cilan,   Chili,   Cress,   Roxie,   Lenora,  Burgh
+	genders MALE,    FEMALE,  MALE,    MALE,    MALE,    FEMALE,  FEMALE,  MALE
+	;       Elesa,   Clay,    Skyla,   Brycen,  Drayden, Iris,    Marlon,  Shantal
+	genders FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE,    FEMALE
+	;       Marshal, Grimsly, Caitlin, Alder,   Viola,   Grant,   Korrina, Ramos
+	genders MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  MALE
+	;       Clemont, Valerie, Olympia, Wulfric, Malva,   Siebold, Wiktrom, Drasna
+	genders MALE,    FEMALE,  FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE
+	;       Diantha, Ilima,   Lana,    Kiawe,   Mallow,  Sophcls, Acerola, Mina
+	genders FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  FEMALE
+	;       Hala,    Olivia,  Nanu,    Hapu,    Kahili,  Noland,  Greta,   Tucker
+	genders MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  MALE,    FEMALE,  MALE
+	;       Lucy,    Spenser, Brandon, Anabel,  Palmer,  Thorton, Dahlia,  Darach
+	genders FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE
+	;       Argenta, Proton,  Petrel,  Archer,  Ariana,  Jessie,  James,   Cassidy
+	genders FEMALE,  MALE,    MALE,    MALE,    FEMALE,  FEMALE,  MALE,    FEMALE
+	;       Butch,   Bonnie,  Clyde,   Attila,  Hun,     Domino,  Miror B, Matt
+	genders MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,    MALE
+	;       Shelly,  Archie,  Tabitha, Courtny, Maxie,   Mars,    Jupiter, Saturn
+	genders FEMALE,  MALE,    MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  MALE
+	;       Charon,  Cyrus,   N,       Colress, Gorm,    Bronius, Rood,    Zinzoln
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
+	;       Giallo,  Ryoku,   Ghetsis, Anthea,  Concord, Aliana,  Bryony,  Celosia
+	genders MALE,    MALE,    MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE
+	;       Mable,   Xerosic, Lysandr, Tupp,    Zipp,    Rapp,    Plumera, Guzma
+	genders FEMALE,  MALE,    MALE,    MALE,    MALE,    MALE,    FEMALE,  MALE
+	;       Faba,    Wicke,   Lusamin, Candela, Blanche, Spark,   Satoshi, Tajiri
+	genders MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  MALE,    MALE,    MALE
 
+.Table2:
+	;       Shigeru, Hibiki,  Kotone,  Kamon,   Yuuki,   Haruka,  Mitsuru, Kouki
+	genders MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE
+	;       Hikari,  Jun,     Touya,   Touko,   Bel,     Kyouhei, Mei,     Helios
+	genders FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,    FEMALE,  MALE
+	;       Selene,  Mike,    Kyle,    Tim,     Emy,     Chris,   Kim,     Jacques
+	genders FEMALE,  MALE,    MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE
+	;       Hari,    Joy,     Jenny,   Delia,   Daisy,   Fuji,    Baoba,   Copycat
+	genders MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  MALE,    MALE,    FEMALE
+	;       Primo,   Lostele, Teala,   Selphy,  Joey,    Cal,     Carrie,  Mr.<PK><MN>
+	genders MALE,    FEMALE,  FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  MALE
+	;       Eusine,  Cameron, Earl,    Kurt,    Ben,     Mary,    Reed,    Fern
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    FEMALE,  MALE,    MALE
+	;       Lily,    Buena,   Randy,   Maximo,  Felicty, Monica,  Tuscany, Wesley
+	genders FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,    MALE,
+	;       Arthur,  Frieda,  Santos,  Sunny,   Naoko,   Sayo,    Zuki,    Kuni
+	genders MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE
+	;       Miki,    Li,      Kiyo,    Scott,   Briney,  Stone,   Wanda,   Gabby
+	genders FEMALE,  MALE,    MALE,    MALE,    FEMALE,  MALE,    FEMALE,  FEMALE
+	;       Ty,      Rydel,   Stern,   Aarune,  Lisia,   Zinnia,  Inver,   Chaz
+	genders MALE,    MALE,    MALE,    MALE,    FEMALE,  FEMALE,  MALE,    MALE
+	;       Kiri,    Johanna, Looker,  Cheryl,  Riley,   Buck,    Marley,  Mira
+	genders FEMALE,  FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE
+	;       Rosanne, Julia,   Jordan,  Dexter,  Keira,   Fuego,   Helena,  Hawes
+	genders FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE
+	;       Charles, Curtis,  Yancy,   Ingo,    Emmet,   Grace,   Alexa,   Dexio
+	genders MALE,    MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE
+	;       Sina,    Gurkinn, AZ,      Emma,    Phil,    Nita,    Evelyn,  Dana
+	genders FEMALE,  MALE,    MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  FEMALE
+	;       Morgan,  Ryuki,   Gester,  Imakuni, Richie,  Assunta, Tracey,  Duplica
+	genders FEMALE,  MALE,    MALE,    MALE,    MALE,    FEMALE,  MALE,    FEMALE
+	;       Casey,   Giselle, Melanie, Damian,  Alain,   Reiko,   Aya,     Rainer
+	genders FEMALE,  FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE
+	;       Sparky,  Pyro,    Mikey,   Orville, A.J.,    Camila,  A,       Slash
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    FEMALE,  FEMALE,  FEMALE
+	;       Alice,   Leo,     Aoooo,   Jimmy,   Cly,     Li'l D,  Arty,    Abe
+	genders FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  MALE,    MALE,    MALE
+	;       Baba,    Evan,    Paul,    Cyan,    Revo,    Everyle, Zetsu,   Karuta
+	genders FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE,    MALE,    MALE
+	;       Nozomi,  Amos,    Kaito,   Meiko,   Miku,    Rin,     Len,     Luka
+	genders FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  FEMALE,  MALE,    FEMALE
+	;       Teto,    Ami,     Minako,  Usagi,   Rei,     Makoto,  Mamoru,  Luna
+	genders FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE,  MALE,    FEMALE
+	;       Artemis, Diana,   Sakura,  Tomoyo,  Syaoran, Shinji,  Asuka,   Mari
+	genders MALE,    FEMALE,  FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  FEMALE
+	;       Gendo,   Yui,     Kaworu,  Okabe,   Daru,    Kurisu,  Suzuha,  Mayuri
+	genders MALE,    FEMALE,  MALE,    MALE,    MALE,    FEMALE,  FEMALE,  FEMALE
+	;       Ruka,    Kyon,    Haruhi,  Yuki,    Mikuru,  Tsuruya, Ryoko,   Itsuki
+	genders MALE,    MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE,  MALE
+	;       Jojo,    Jotaro,  Josuke,  Dio,     Kei,     Saika,   Hayate,  Daruku
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
+	;       Nagisa,  Bridget, Ryo,     Clara,   Hana,    Miyuki,  Luke,    Lun
+	genders MALE,    MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  MALE,    MALE
+	;       Rhue,    Traziun, Gaius,   Lyrra,   Kloe,    Cetsa,   Lexus,   Sorya
+	genders MALE,    MALE,    MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE
+	;       Strata,  Slade,   Dirk,    Talan,   Kersh,   Rangi,   Remy,    Sylvie
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    FEMALE,  MALE,    FEMALE
+	;       Matthew, Mateo,   Babs,    Pia,     Aizawa,  Suki,    Fredrik, Drayano
+	genders MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE,  MALE,    MALE
+	;       Hlin,    Marckus, Pum,     Bryan,   Don,     Miguel,  Satoru,  Iwata
+	genders FEMALE,  MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
+	;       Junichi, Masuda,  Koji,    Nishino, Sosuke,  Tamada,  Hisashi, Sogabe
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE, 
+	;       Keita,   Kagaya,  Yoshi,   Matsuda, Shigeki, Tetsuya, Oota,    Turner
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
 
 GetWonderTradeHeldItem:
 	ld hl, .HeldItems
@@ -1069,9 +1218,8 @@ GetWonderTradeHeldItem:
 .loop
 	sub [hl]
 	jr c, .ok
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop
 .ok
 	ld a, [hli]

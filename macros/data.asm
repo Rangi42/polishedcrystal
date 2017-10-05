@@ -148,3 +148,20 @@ endm
 dsprite: MACRO
 	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
 endm
+
+
+genders: MACRO
+; eight arguments, all MALE ($00) or FEMALE ($80)
+; TODO: get bitfield genders to work
+;x = 0
+;rept 8
+;x = x << 1
+;x = x + (\1 >> 7)
+;	shift
+;endr
+;	db x
+rept 8
+	db \1
+	shift
+endr
+ENDM
