@@ -52,11 +52,15 @@ Route29Tutorial1:
 	spriteface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData1a
 	spriteface PLAYER, LEFT
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	showtext CatchingTutorialIntroText
+	opentext
+	writetext CatchingTutorialIntroText
+	yesorno
+	iffalse Route29RefusedTutorial
+	closetext
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
 	jump Route29TutorialScript
@@ -65,11 +69,15 @@ Route29Tutorial2:
 	spriteface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData2a
 	spriteface PLAYER, LEFT
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
-	showtext CatchingTutorialIntroText
+	opentext
+	writetext CatchingTutorialIntroText
+	yesorno
+	iffalse Route29RefusedTutorial
+	closetext
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData2b
 Route29TutorialScript:
@@ -81,6 +89,7 @@ Route29TutorialScript:
 	spriteface ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
+Route29FinishTutorial:
 	buttonsound
 	itemtotext POKE_BALL, $1
 	callstd receiveitem
@@ -97,6 +106,11 @@ Route29TutorialScript:
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	playmapmusic
 	end
+
+Route29RefusedTutorial:
+	setevent EVENT_NEVER_LEARNED_TO_CATCH_POKEMON
+	writetext CatchingTutorialRefusedText
+	jump Route29FinishTutorial
 
 CooltrainerMScript_0x1a1031:
 	checknite
@@ -172,8 +186,8 @@ CatchingTutorialIntroText:
 	done
 
 CatchingTutorialDebriefText:
-	text "See? Just like"
-	line "that!"
+	text "Lyra: See? Just"
+	line "like that!"
 
 	para "If you weaken them"
 	line "first, #mon are"
@@ -181,6 +195,17 @@ CatchingTutorialDebriefText:
 
 	para "I'll give you"
 	line "these. Good luck!"
+	done
+
+CatchingTutorialRefusedText:
+	text "Aww… I wanted to"
+	line "show off my cap-"
+	cont "turing skills a"
+	cont "little…"
+
+	para "Anyway, I'll give"
+	line "you these."
+	cont "Good luck!"
 	done
 
 CatchingTutorialGoodbyeText:

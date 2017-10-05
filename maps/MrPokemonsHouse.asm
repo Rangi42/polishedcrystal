@@ -50,6 +50,7 @@ MrPokemonsHouseTrigger0:
 	itemnotify
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
+if !DEF(DEBUG)
 	writetext MrPokemonIntroText3
 	buttonsound
 	spriteface MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
@@ -59,6 +60,7 @@ MrPokemonsHouseTrigger0:
 	spriteface MRPOKEMONSHOUSE_OAK, LEFT
 	writetext MrPokemonIntroText5
 	waitbutton
+endc
 	closetext
 	jump MrPokemonsHouse_OakScript
 
@@ -251,6 +253,7 @@ MrPokemonsHouse_OakText1:
 	text "Oak: Aha! So"
 	line "you're <PLAYER>!"
 
+if !DEF(DEBUG)
 	para "I'm Oak! A #mon"
 	line "researcher."
 
@@ -309,6 +312,7 @@ MrPokemonsHouse_OakText1:
 
 	para "It's a hi-tech"
 	line "encyclopedia!"
+endc
 	done
 
 MrPokemonsHouse_GetDexText:
@@ -323,6 +327,7 @@ MrPokemonsHouse_OakText2:
 	para "complete that"
 	line "#dex!"
 
+if !DEF(DEBUG)
 	para "But I've stayed"
 	line "too long."
 
@@ -332,6 +337,7 @@ MrPokemonsHouse_OakText2:
 
 	para "<PLAYER>, I'm"
 	line "counting on you!"
+endc
 	done
 
 MrPokemonText_GimmeTheScale:

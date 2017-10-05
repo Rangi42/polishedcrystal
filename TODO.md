@@ -23,7 +23,6 @@ The final, non-beta 3.0 release should include all of these.
 
 * Add hidden grottoes throughout Johto
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
-* Lyra's capture tutorial is skippable
 * Notify when Pickup picks up an item
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
