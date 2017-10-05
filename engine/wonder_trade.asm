@@ -12,10 +12,10 @@ WonderTrade::
 	ret c
 
 	ld a, [CurPartySpecies]
-	cp EGG
-	jr nz, .check_gs_ball
-	ld hl, .Text_WonderTradeCantTradeEgg
-	jp PrintText
+;	cp EGG
+;	jr nz, .check_gs_ball
+;	ld hl, .Text_WonderTradeCantTradeEgg
+;	jp PrintText
 
 .check_gs_ball
 	ld hl, PartyMon1Item
@@ -81,9 +81,9 @@ WonderTrade::
 	text_jump WonderTradePromptText
 	db "@"
 
-.Text_WonderTradeCantTradeEgg:
-	text_jump WonderTradeCantTradeEggText
-	db "@"
+;.Text_WonderTradeCantTradeEgg:
+;	text_jump WonderTradeCantTradeEggText
+;	db "@"
 
 .Text_WonderTradeCantTradeGSBall
 	text_jump WonderTradeCantTradeGSBallText
