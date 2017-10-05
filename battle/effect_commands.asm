@@ -9005,7 +9005,7 @@ BattleCommand_HiddenPower: ; 37be8
 	ld a, [AttackMissed]
 	and a
 	ret nz
-	farjp HiddenPowerDamage
+	farjp HiddenPowerDamageStats
 
 ; 37bf4
 

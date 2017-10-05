@@ -16,6 +16,9 @@ LoadMapGroupRoof:: ; 1c000
 	call CopyBytes
 ; Terrible hack to load some tiles only visible in Olivine City instead of
 ; some only visible in Goldenrod City
+	ld a, [wTileset]
+	cp TILESET_JOHTO_2
+	ret nz
 	ld a, [MapGroup]
 	cp GROUP_GOLDENROD_CITY ; GROUP_ROUTE_34
 	ret z

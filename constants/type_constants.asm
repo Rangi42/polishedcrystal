@@ -1,5 +1,4 @@
 	const_def
-
 MOVE_TYPES EQU const_value
 	; Type order matters for Hidden Power
 	const NORMAL    ; 0
@@ -24,9 +23,7 @@ MOVE_TYPES EQU const_value
 
 TYPES_END EQU const_value
 
-
 	const_def
-
 MOVE_CATEGORIES EQU const_value
 	const PHYSICAL
 	const SPECIAL

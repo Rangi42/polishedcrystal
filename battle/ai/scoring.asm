@@ -2369,7 +2369,7 @@ AI_Smart_HiddenPower: ; 3909e
 	ld [hBattleTurn], a
 
 ; Calculate Hidden Power's type and base power based on enemy's DVs.
-	farcall HiddenPowerDamage
+	farcall HiddenPowerDamageStats
 	farcall BattleCheckTypeMatchup
 	pop hl
 

@@ -234,6 +234,34 @@ Special_BillsGrandfather: ; 73f7
 	ld [ScriptVar], a
 	ret
 
+Special_HiddenPowerGuru:
+	farcall SelectMonFromParty
+	jr c, .cancel
+	ld a, [CurPartySpecies]
+	cp EGG
+	jr z, .egg
+	ld [wNamedObjectIndexBuffer], a
+	call GetPokemonName
+	call CopyPokemonName_Buffer1_Buffer3
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1DVs
+	call GetPartyLocation
+	call GetHiddenPowerType
+	ld [wNamedObjectIndexBuffer], a
+	farcall GetTypeName
+	ld a, $2
+.done
+	ld [ScriptVar], a
+	ret
+
+.cancel
+	ld a, $0
+	jr .done
+
+.egg
+	ld a, $1
+	jr .done
+
 Special_YoungerHaircutBrother: ; 7413
 	ld hl, Data_YoungerHaircutBrother
 	jr MassageOrHaircut

@@ -56,15 +56,14 @@ endc
 
 
 GetTypeName: ; 50964
-; Copy the name of type [wd265] to StringBuffer1.
+; Copy the name of type [wNamedObjectIndexBuffer] to StringBuffer1.
 
-	ld a, [wd265]
+	ld a, [wNamedObjectIndexBuffer]
 	ld hl, TypeNames
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

@@ -28,8 +28,6 @@ The final, non-beta 3.0 release should include all of these.
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
 * Add the improved PRNG from Prism
-* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
-* Evolution Guru says how your lead Pokémon can evolve
 * Get better Wonder Trade items at higher levels
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Use RBY's Surf and Bike themes in Kanto

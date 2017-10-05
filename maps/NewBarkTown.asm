@@ -87,8 +87,8 @@ NewBarkTown_TeacherStopsYouTrigger2:
 NewBarkTown_LyraIntroTrigger:
 	appear NEWBARKTOWN_LYRA
 	special Special_FadeOutMusic
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraEnters_NBT
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraApproaches_NBT
 	spriteface PLAYER, LEFT
@@ -126,12 +126,12 @@ NewBarkTown_LyraFinalTrigger:
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
+	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	special Special_FadeOutMusic
 	pause 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye2_NBT
 	spriteface PLAYER, LEFT
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showtext Text_LyraGoodbye1
 	setevent EVENT_LYRA_NEW_BARK_TOWN
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS

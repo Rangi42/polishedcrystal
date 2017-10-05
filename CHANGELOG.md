@@ -138,6 +138,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
 * Add: More Grass-type Pokémon can learn Earth Power and Earthquake.
 * Add: Status icons in battle.
+* Add: Hidden Power guru finds your Pokémon's Hidden Power.
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
