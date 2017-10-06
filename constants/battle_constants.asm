@@ -55,22 +55,27 @@ PERFECT_DVS      EQUS "$ff, $ff, $ff"
 FAKE_PERFECT_DVS EQUS "$00, $00, $00"
 
 ; hidden power dvs
-DVS_HP_FIGHTING EQUS "$fc, $cf, $00"
-DVS_HP_FLYING   EQUS "$fc, $df, $00"
-DVS_HP_POISON   EQUS "$fc, $ef, $00"
-DVS_HP_GROUND   EQUS "$fc, $00, $00"
-DVS_HP_ROCK     EQUS "$fd, $cf, $00"
-DVS_HP_BUG      EQUS "$fd, $df, $00"
-DVS_HP_GHOST    EQUS "$fd, $ef, $00"
-DVS_HP_STEEL    EQUS "$fd, $00, $00"
-DVS_HP_FIRE     EQUS "$fe, $cf, $00"
-DVS_HP_WATER    EQUS "$fe, $df, $00"
-DVS_HP_GRASS    EQUS "$fe, $ef, $00"
-DVS_HP_ELECTRIC EQUS "$fe, $00, $00"
-DVS_HP_PSYCHIC  EQUS "$00, $cf, $00"
-DVS_HP_ICE      EQUS "$00, $df, $00"
+DVS_HP_FIGHTING EQUS "$00, $ee, $ee"
+DVS_HP_FLYING   EQUS "$00, $fe, $ee"
+DVS_HP_POISON   EQUS "$00, $ef, $ee"
+DVS_HP_GROUND   EQUS "$00, $00, $ee"
+DVS_HP_ROCK     EQUS "$00, $ee, $fe"
+DVS_HP_BUG      EQUS "$00, $fe, $fe"
+DVS_HP_GHOST    EQUS "$00, $ef, $fe"
+DVS_HP_STEEL    EQUS "$00, $00, $fe"
+DVS_HP_FIRE     EQUS "$00, $ee, $ef"
+DVS_HP_WATER    EQUS "$00, $fe, $ef"
+DVS_HP_GRASS    EQUS "$00, $ef, $ef"
+DVS_HP_ELECTRIC EQUS "$00, $00, $ef"
+DVS_HP_PSYCHIC  EQUS "$00, $ee, $00"
+DVS_HP_ICE      EQUS "$00, $fe, $00"
 DVS_HP_DRAGON   EQUS "$00, $ef, $00"
+if DEF(FAITHFUL)
 DVS_HP_DARK     EQUS "$00, $00, $00"
+else
+DVS_HP_DARK     EQUS "$fe, $00, $00"
+endc
+DVS_HP_FAIRY    EQUS "$00, $00, $00" ; no Fairy-type Hidden Power in Faithful
 
 ; nature constants
 	const_def
