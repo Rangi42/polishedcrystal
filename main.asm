@@ -3870,7 +3870,7 @@ CheckBattleEffects: ; 4ea44
 	scf
 	ret
 
-INCLUDE "engine/gbc_only.asm"
+INCLUDE "engine/bsod.asm"
 
 INCLUDE "event/stats_judge.asm"
 

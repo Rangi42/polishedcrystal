@@ -3269,7 +3269,7 @@ endc
 
 	call SandstormSpDefBoost
 
-	jp .lightscreen
+	jr .lightscreen
 
 .psystrike
 	ld hl, EnemyMonDefense
@@ -3468,7 +3468,6 @@ ThickClubOrLightBallBoost: ; 353b5
 ; it's holding a Light Ball, double it.
 	push bc
 	push de
-
 	push hl
 	ld a, MON_SPECIES
 	call BattlePartyAttr
@@ -3480,19 +3479,13 @@ ThickClubOrLightBallBoost: ; 353b5
 .checkpikachu:
 	pop hl
 	cp PIKACHU
-	jr z, .lightball
-
-	lb bc, CUBONE, MAROWAK
-	ld d, THICK_CLUB
-	call SpeciesItemBoost
-	jp .done
-
-.lightball
 	lb bc, PIKACHU, PIKACHU
 	ld d, LIGHT_BALL
+	jr z, .ok
+	lb bc, CUBONE, MAROWAK
+	ld d, THICK_CLUB
+.ok
 	call SpeciesItemBoost
-
-.done
 	pop de
 	pop bc
 	ret

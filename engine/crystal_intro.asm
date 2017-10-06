@@ -23,7 +23,7 @@ Copyright_GFPresents: ; e4579
 	ld c, 100
 	call DelayFrames
 	call ClearTileMap
-	farcall GBCOnlyScreen
+	farcall BSOD
 	call .GetGFLogoGFX
 .joy_loop
 	call JoyTextDelay
