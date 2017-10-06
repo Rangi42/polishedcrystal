@@ -423,7 +423,7 @@ Script_CutTree:
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
 	closetext
-	special WaitSFX
+	waitsfx
 	scall FieldMovePokepicScript
 	disappear -2
 	callasm CutDownTree
@@ -1594,7 +1594,7 @@ RockSmashScript: ; cf32
 	callasm PrepareOverworldMove
 	writetext UnknownText_0xcf58
 	closetext
-	special WaitSFX
+	waitsfx
 	scall FieldMovePokepicScript
 	playsound SFX_STRENGTH
 	earthquake 84
@@ -1986,7 +1986,7 @@ BikeFunction: ; d0b3
 
 .ok
 	call GetPlayerStandingTile
-	and $f ; can't use our bike in a wall or on water
+	and $f ; cp LANDTILE ; can't use our bike in a wall or on water
 	jr nz, .nope
 	xor a
 	ret

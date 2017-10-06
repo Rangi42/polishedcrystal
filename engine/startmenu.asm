@@ -1116,33 +1116,28 @@ OpenPartyStats: ; 12e00
 
 MonMenu_Cut: ; 12e1b
 	farcall CutFunction
+_MonMenu_StandardCheck:
 	ld a, [wFieldMoveSucceeded]
 	cp $1
-	jr nz, .Fail
+	jr nz, _MonMenu_StandardFail
+_MonMenu_StandardSuccess:
 	ld b, $4
 	ld a, $2
 	ret
 
-.Fail:
+_MonMenu_StandardFail:
 	ld a, $3
 	ret
 ; 12e30
 
-
 MonMenu_Fly: ; 12e30
 	farcall FlyFunction
 	ld a, [wFieldMoveSucceeded]
-	cp $2
-	jr z, .Fail
 	cp $0
 	jr z, .Error
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	cp $2
+	jr z, _MonMenu_StandardFail
+	jr _MonMenu_StandardSuccess
 
 .Error:
 	xor a
@@ -1150,101 +1145,52 @@ MonMenu_Fly: ; 12e30
 
 MonMenu_Flash: ; 12e55
 	farcall OWFlash
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr _MonMenu_StandardCheck
 ; 12e6a
 
 MonMenu_Strength: ; 12e6a
 	farcall StrengthFunction
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr _MonMenu_StandardCheck
 ; 12e7f
 
 MonMenu_Whirlpool: ; 12e7f
 	farcall WhirlpoolFunction
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr _MonMenu_StandardCheck
 ; 12e94
 
 MonMenu_Waterfall: ; 12e94
 	farcall WaterfallFunction
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr _MonMenu_StandardCheck
 ; 12ea9
 
 MonMenu_Teleport: ; 12ea9
 	farcall TeleportFunction
+_MonMenu_AlternateCheck:
 	ld a, [wFieldMoveSucceeded]
 	and a
-	jr z, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr z, _MonMenu_StandardFail
+	jr _MonMenu_StandardSuccess
 ; 12ebd
 
 MonMenu_Surf: ; 12ebd
 	farcall SurfFunction
-	ld a, [wFieldMoveSucceeded]
-	and a
-	jr z, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr _MonMenu_AlternateCheck
 ; 12ed1
 
 MonMenu_Dig: ; 12ed1
 	farcall DigFunction
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
+	jr _MonMenu_StandardCheck
 ; 12ee6
+
+MonMenu_Headbutt: ; 12f26
+	farcall HeadbuttFunction
+	jr _MonMenu_StandardCheck
+; 12f3b
+
+MonMenu_RockSmash: ; 12f3b
+	farcall RockSmashFunction
+	jr _MonMenu_StandardCheck
+; 12f50
 
 MonMenu_Softboiled_MilkDrink: ; 12ee6
 	call .CheckMonHasEnoughHP
@@ -1290,34 +1236,6 @@ MonMenu_Softboiled_MilkDrink: ; 12ee6
 	sbc [hl]
 	ret
 ; 12f26
-
-MonMenu_Headbutt: ; 12f26
-	farcall HeadbuttFunction
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
-; 12f3b
-
-MonMenu_RockSmash: ; 12f3b
-	farcall RockSmashFunction
-	ld a, [wFieldMoveSucceeded]
-	cp $1
-	jr nz, .Fail
-	ld b, $4
-	ld a, $2
-	ret
-
-.Fail:
-	ld a, $3
-	ret
-; 12f50
 
 ChooseMoveToDelete: ; 12f5b
 	ld hl, Options1

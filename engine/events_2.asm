@@ -59,38 +59,32 @@ CheckFacingTileEvent:: ; 97c5f
 
 	ld a, [EngineBuffer1]
 	cp COLL_WHIRLPOOL
-	jr nz, .waterfall
-	farcall TryWhirlpoolOW
-	jr .done
-
-.waterfall
-	ld a, [EngineBuffer1]
+	jr z, .whirlpool
 	cp COLL_WATERFALL
-	jr nz, .headbutt
-	farcall TryWaterfallOW
-	jr .done
-
-.headbutt
-	ld a, [EngineBuffer1]
+	jr z, .waterfall
 	cp COLL_HEADBUTT_TREE
-	jr nz, .surf
-	farcall TryHeadbuttOW
-	jr c, .done
-	jr .noevent
-
-.surf
+	jr z, .headbutt
 	farcall TrySurfOW
 	jr nc, .noevent
-	jr .done
-
-.noevent
-	xor a
-	ret
-
 .done
 	call PlayClickSFX
 	ld a, $ff
 	scf
+	ret
+
+.whirlpool
+	farcall TryWhirlpoolOW
+	jr .done
+
+.waterfall
+	farcall TryWaterfallOW
+	jr .done
+
+.headbutt
+	farcall TryHeadbuttOW
+	jr c, .done
+.noevent
+	xor a
 	ret
 ; 97cc0
 
