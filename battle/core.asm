@@ -6881,13 +6881,13 @@ CheckUnownLetter: ; 3eb75
 FinalPkmnSlideInEnemyMonFrontpic:
 	call FinishBattleAnim
 	call GetMonFrontpic
-	hlcoord 18, 0
+	hlcoord 19, 0
 	ld c, 0
 
 .outer_loop
 	inc c
 	ld a, c
-	cp 8
+	cp 9
 	ret z
 	xor a
 	ld [hBGMapMode], a
@@ -6921,7 +6921,12 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	ld e, 7
 
 .loop
-	ld [hl], d
+	ld a, d
+	cp 7 * 7
+	jr c, .ok
+	ld a, " "
+.ok
+	ld [hl], a
 	ld bc, SCREEN_WIDTH
 	add hl, bc
 	inc d

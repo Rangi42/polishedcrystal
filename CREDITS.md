@@ -17,6 +17,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
+* ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
