@@ -85,7 +85,7 @@ GetPlayerStandingTile:: ; 184a
 CheckOnWater:: ; 1852
 	ld a, [PlayerStandingTile]
 	call GetTileCollision
-	sub 1
+	sub WATRTILE
 	ret z
 	and a
 	ret

@@ -1,3 +1,9 @@
+LANDTILE EQU $0
+WATRTILE EQU $1
+WALLTILE EQU $f
+
+TALK     EQU $1 << 4
+
 COLL_FLOOR             EQU $00
 COLL_WALL              EQU $07
 COLL_LONG_GRASS        EQU $14
