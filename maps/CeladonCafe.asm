@@ -25,7 +25,7 @@ CeladonCafe_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x730de, -1
 	person_event SPRITE_BAKER, 4, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonCafeBakerText, -1
 
-const_value set 2
+const_value set 1
 	const CELADONCAFE_MAYLENE
 	const CELADONCAFE_TEACHER
 

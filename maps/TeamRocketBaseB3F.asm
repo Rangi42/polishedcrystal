@@ -47,7 +47,7 @@ TeamRocketBaseB3F_MapEventHeader:
 	itemball_event 2, 17, ICE_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ICE_HEAL
 	itemball_event 10, 14, ULTRA_BALL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ULTRA_BALL
 
-const_value set 2
+const_value set 1
 	const TEAMROCKETBASEB3F_LANCE
 	const TEAMROCKETBASEB3F_PETREL
 	const TEAMROCKETBASEB3F_MURKROW

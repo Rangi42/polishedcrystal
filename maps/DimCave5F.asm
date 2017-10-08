@@ -28,7 +28,7 @@ DimCave5F_MapEventHeader:
 	itemball_event 26, 25, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
 	itemball_event 30, 9, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
-const_value set 2
+const_value set 1
 	const DIMCAVE5F_BOULDER
 	const DIMCAVE5F_RILEY
 

@@ -40,7 +40,7 @@ OaksLab_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
 	person_event SPRITE_POKEDEX, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
 
-const_value set 2
+const_value set 1
 	const OAKSLAB_OAK
 	const OAKSLAB_BULBASAUR_DOLL
 	const OAKSLAB_CHARMANDER_DOLL

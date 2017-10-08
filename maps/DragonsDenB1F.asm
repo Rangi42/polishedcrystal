@@ -33,7 +33,7 @@ DragonsDenB1F_MapEventHeader:
 	itemball_event 4, 30, CALCIUM, 1, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	itemball_event 20, 5, MAX_ELIXER, 1, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
 
-const_value set 2
+const_value set 1
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
 

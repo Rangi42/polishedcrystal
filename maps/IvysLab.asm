@@ -32,7 +32,7 @@ IvysLab_MapEventHeader:
 	person_event SPRITE_NIDORINO, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
 	person_event SPRITE_COOLTRAINER_F, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
-const_value set 2
+const_value set 1
 	const IVYSLAB_IVY
 	const IVYSLAB_NIDORINO
 

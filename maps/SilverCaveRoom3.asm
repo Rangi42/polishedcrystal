@@ -17,7 +17,7 @@ SilverCaveRoom3_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_RED, 6, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
 
-const_value set 2
+const_value set 1
 	const SILVERCAVEROOM3_RED
 
 SilverCaveRoom3DailyRedRematchCallback:

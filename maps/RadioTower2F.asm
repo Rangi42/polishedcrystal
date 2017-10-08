@@ -31,7 +31,7 @@ RadioTower2F_MapEventHeader:
 	person_event SPRITE_RECEPTIONIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5d8ff, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_ROCKER, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower2FRockerText, EVENT_GOLDENROD_CITY_CIVILIANS
 
-const_value set 2
+const_value set 1
 	const RADIOTOWER2F_BUENA
 
 TeacherScript_0x5d701:

@@ -32,7 +32,7 @@ IcePathB1F_MapEventHeader:
 	person_event SPRITE_SKIER, 24, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
 	itemball_event 35, 5, IRON, 1, EVENT_ICE_PATH_B1F_IRON
 
-const_value set 2
+const_value set 1
 	const ICEPATHB1F_BOULDER1
 	const ICEPATHB1F_BOULDER2
 	const ICEPATHB1F_BOULDER3

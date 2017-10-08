@@ -28,7 +28,7 @@ CianwoodGym_MapEventHeader:
 	strengthboulder_event 7, 4
 	strengthboulder_event 7, 5
 
-const_value set 2
+const_value set 1
 	const CIANWOODGYM_CHUCK
 	const CIANWOODGYM_BOULDER1
 

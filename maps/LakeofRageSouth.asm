@@ -37,7 +37,7 @@ LakeofRageSouth_MapEventHeader:
 	cuttree_event -2, 5, EVENT_LAKE_OF_RAGE_CUT_TREE_4
 	cuttree_event 5, 6, EVENT_LAKE_OF_RAGE_CUT_TREE_5
 
-const_value set 2
+const_value set 1
 	const LAKEOFRAGE_LANCE
 	const LAKEOFRAGE_GYARADOS_TOP_LEFT
 	const LAKEOFRAGE_GYARADOS_TOP_RIGHT

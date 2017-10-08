@@ -23,7 +23,7 @@ VioletPokeCenter1F_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
 	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
 
-const_value set 2
+const_value set 1
 	const VIOLETPOKECENTER1F_SCIENTIST
 
 PokemonJournalFalknerScript:

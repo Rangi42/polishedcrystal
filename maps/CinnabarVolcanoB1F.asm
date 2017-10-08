@@ -36,7 +36,7 @@ CinnabarVolcanoB1F_MapEventHeader:
 	itemball_event 18, 2, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
 	itemball_event 29, 4, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
-const_value set 2
+const_value set 1
 	const CINNABARVOLCANOB1F_BOULDER
 
 CinnabarVolcanoB1FBouldersLand:

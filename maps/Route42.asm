@@ -44,7 +44,7 @@ Route42_MapEventHeader:
 	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
 
-const_value set 2
+const_value set 1
 	const ROUTE42_SUICUNE
 	const ROUTE42_LYRA
 

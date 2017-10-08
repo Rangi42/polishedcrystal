@@ -23,7 +23,7 @@ OlivinePokeCenter1F_MapEventHeader:
 	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FFisherText, -1
 	person_event SPRITE_TEACHER, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FTeacherText, -1
 
-const_value set 2
+const_value set 1
 	const OLIVINEPOKECENTER1F_BEAUTY
 
 PokemonJournalJasmineScript:

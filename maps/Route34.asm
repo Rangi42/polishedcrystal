@@ -42,7 +42,7 @@ Route34_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
 	itemball_event 30, 7, NUGGET, 1, EVENT_ROUTE_34_NUGGET
 
-const_value set 2
+const_value set 1
 	const ROUTE34_RICH_BOY
 	const ROUTE34_GRAMPS
 	const ROUTE34_LYRA

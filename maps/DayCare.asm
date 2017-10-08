@@ -24,7 +24,7 @@ DayCare_MapEventHeader:
 	person_event SPRITE_LYRA, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_DAYCARE
 	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAYCARE_MAN_IN_DAYCARE
 
-const_value set 2
+const_value set 1
 	const DAYCARE_GRANNY
 	const DAYCARE_LYRA
 

@@ -16,7 +16,7 @@ FireIslandRoof_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_CANDELA, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
 
-const_value set 2
+const_value set 1
 	const FIREISLANDROOF_CANDELA
 
 FireIslandRoofCandelaScript:

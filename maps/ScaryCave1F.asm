@@ -35,7 +35,7 @@ ScaryCave1F_MapEventHeader:
 	itemball_event 23, 28, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
 	itemball_event 29, 3, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
 
-const_value set 2
+const_value set 1
 	const SCARYCAVE1F_MIRA
 
 ScaryCave1FMiraScript:

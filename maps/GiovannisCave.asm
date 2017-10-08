@@ -24,7 +24,7 @@ GiovannisCave_MapEventHeader:
 	smashrock_event 6, 13
 	smashrock_event 2, 16
 
-const_value set 2
+const_value set 1
 	const GIOVANNISCAVE_CELEBI
 	const GIOVANNISCAVE_LYRA
 	const GIOVANNISCAVE_GIOVANNI

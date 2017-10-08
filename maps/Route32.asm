@@ -51,7 +51,7 @@ Route32_MapEventHeader:
 	cuttree_event 19, 10, EVENT_ROUTE_32_CUT_TREE
 	cuttree_event 29, -1, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
 
-const_value set 2
+const_value set 1
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA

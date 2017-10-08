@@ -49,7 +49,7 @@ RuinsofAlphOutside_MapEventHeader:
 	smashrock_event 13, 7
 	smashrock_event 15, 8
 
-const_value set 2
+const_value set 1
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 

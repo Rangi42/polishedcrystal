@@ -37,7 +37,7 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_FISHER, 11, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
 	itemball_event 12, 35, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
-const_value set 2
+const_value set 1
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_MISTY_BOYFRIEND
 

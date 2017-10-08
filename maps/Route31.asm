@@ -29,7 +29,7 @@ Route31_MapEventHeader:
 	itemball_event 5, 29, POTION, 1, EVENT_ROUTE_31_POTION
 	itemball_event 15, 19, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
 
-const_value set 2
+const_value set 1
 	const ROUTE31_COOLTRAINER_M
 
 Route31CheckMomCall:

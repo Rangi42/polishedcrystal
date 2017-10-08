@@ -34,7 +34,7 @@ FastShip1F_MapEventHeader:
 	person_event SPRITE_SAILOR, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
 	person_event SPRITE_SAILOR, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x753c0, -1
 
-const_value set 2
+const_value set 1
 	const FASTSHIP1F_SAILOR1
 	const FASTSHIP1F_GENTLEMAN
 

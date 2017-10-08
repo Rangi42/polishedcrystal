@@ -36,7 +36,7 @@ MurkySwamp_MapEventHeader:
 	cuttree_event 14, 2, EVENT_MURKY_SWAMP_CUT_TREE_1
 	cuttree_event 19, 6, EVENT_MURKY_SWAMP_CUT_TREE_2
 
-const_value set 2
+const_value set 1
 	const MURKYSWAMP_CHERYL
 
 MurkySwampCherylScript:

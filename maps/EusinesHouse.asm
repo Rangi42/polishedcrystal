@@ -18,7 +18,7 @@ EusinesHouse_MapEventHeader:
 	person_event SPRITE_EUSINE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
 	person_event SPRITE_GRAMPS, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
 
-const_value set 2
+const_value set 1
 	const EUSINESHOUSE_EUSINE
 
 CeladonEusine:

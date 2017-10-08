@@ -31,7 +31,7 @@ BattleTower2F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
 	person_event SPRITE_BLACK_BELT, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
 
-const_value set 2
+const_value set 1
 	const BATTLETOWER2F_CHERYL
 	const BATTLETOWER2F_RILEY
 	const BATTLETOWER2F_BUCK

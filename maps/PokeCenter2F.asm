@@ -25,7 +25,7 @@ PokeCenter2F_MapEventHeader:
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1
 
-const_value set 2
+const_value set 1
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 

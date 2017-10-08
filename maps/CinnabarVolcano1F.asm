@@ -41,7 +41,7 @@ CinnabarVolcano1F_MapEventHeader:
 	smashrock_event 2, 13
 	smashrock_event 4, 8
 
-const_value set 2
+const_value set 1
 	const CINNABARVOLCANO1F_BUCK
 	const CINNABARVOLCANO1F_BOULDER1
 	const CINNABARVOLCANO1F_BOULDER2

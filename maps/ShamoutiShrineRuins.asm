@@ -21,7 +21,7 @@ ShamoutiShrineRuins_MapEventHeader:
 	person_event SPRITE_LADY, 13, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsLadyText, -1
 	itemball_event 27, 4, RARE_CANDY, 1, EVENT_SHAMOUTI_SHRINE_RUINS_RARE_CANDY
 
-const_value set 2
+const_value set 1
 	const SHAMOUTISHRINERUINS_LAWRENCE
 
 ShamoutiShrineRuinsLawrenceScript:

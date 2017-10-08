@@ -19,7 +19,7 @@ GoldenrodFlowerShop_MapEventHeader:
 	person_event SPRITE_LASS, 6, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
 	person_event SPRITE_GENTLEMAN, 3, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
 
-const_value set 2
+const_value set 1
 	const GOLDENRODFLOWERSHOP_TEACHER
 
 FlowerShopTeacherScript:

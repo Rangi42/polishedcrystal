@@ -22,7 +22,7 @@ BellchimeTrail_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
 
-const_value set 2
+const_value set 1
 	const BELLCHIMETRAIL_VALERIE
 
 BellchimeTrailStepDownTrigger:

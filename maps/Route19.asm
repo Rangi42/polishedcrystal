@@ -36,7 +36,7 @@ Route19_MapEventHeader:
 	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
 	tmhmball_event 52, 14, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
 
-const_value set 2
+const_value set 1
 	const ROUTE19_ROCK1
 
 Route19ClearRocks:

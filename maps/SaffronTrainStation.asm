@@ -23,7 +23,7 @@ SaffronTrainStation_MapEventHeader:
 	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	person_event SPRITE_LASS, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 
-const_value set 2
+const_value set 1
 	const SAFFRONTRAINSTATION_OFFICER
 
 OfficerScript_0x18a81e:

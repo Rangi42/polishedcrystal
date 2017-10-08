@@ -21,7 +21,7 @@ Route48_MapEventHeader:
 	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
 	itemball_event 13, 4, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
-const_value set 2
+const_value set 1
 	const ROUTE48_ARCHER
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES

@@ -31,7 +31,7 @@ MountMoon1F_MapEventHeader:
 	itemball_event 20, 2, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
 	itemball_event 22, 16, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
 
-const_value set 2
+const_value set 1
 	const MOUNTMOON1F_SILVER
 
 MountMoon1FTrigger0:

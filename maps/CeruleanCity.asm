@@ -41,7 +41,7 @@ CeruleanCity_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 14, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	person_event SPRITE_BALL_CUT_FRUIT, 20, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
 
-const_value set 2
+const_value set 1
 	const CERULEANCITY_COOLTRAINER_F
 	const CERULEANCITY_YOUNGSTER
 

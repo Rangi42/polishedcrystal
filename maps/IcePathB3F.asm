@@ -20,7 +20,7 @@ IcePathB3F_MapEventHeader:
 	itemball_event 7, 5, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
 	smashrock_event 6, 6
 
-const_value set 2
+const_value set 1
 	const ICEPATHB3F_LORELEI
 
 LoreleiScript:

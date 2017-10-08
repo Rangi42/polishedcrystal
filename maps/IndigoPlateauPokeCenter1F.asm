@@ -30,7 +30,7 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
 	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
-const_value set 2
+const_value set 1
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW

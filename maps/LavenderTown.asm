@@ -36,7 +36,7 @@ LavenderTown_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 19, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_EXORCISED_LAV_RADIO_TOWER
 	person_event SPRITE_ROCKER, 17, 11, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_EXORCISED_LAV_RADIO_TOWER
 
-const_value set 2
+const_value set 1
 	const LAVENDERTOWN_YOUNGSTER1
 
 LavenderTownExpositionTrigger1:

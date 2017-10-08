@@ -36,7 +36,7 @@ ViridianForest_MapEventHeader:
 	person_event SPRITE_BUG_MANIAC, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
 	person_event SPRITE_BUG_MANIAC, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
 
-const_value set 2
+const_value set 1
 	const VIRIDIAN_FOREST_POKE_BALL3
 
 TrainerBug_maniacDane:

@@ -27,7 +27,7 @@ BurnedTowerB1F_MapEventHeader:
 	strengthboulder_event 8, 17
 	tmhmball_event 4, 16, TM_ENDURE, EVENT_BURNED_TOWER_B1F_TM_ENDURE
 
-const_value set 2
+const_value set 1
 	const BURNEDTOWERB1F_RAIKOU1
 	const BURNEDTOWERB1F_ENTEI1
 	const BURNEDTOWERB1F_SUICUNE1

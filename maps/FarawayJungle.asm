@@ -17,7 +17,7 @@ FarawayJungle_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_MEW, 10, 12, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
 
-const_value set 2
+const_value set 1
 	const FARAWAYJUNGLE_MEW
 
 FarawayJungleMew:

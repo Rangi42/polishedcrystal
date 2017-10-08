@@ -29,7 +29,7 @@ LakeofRageNorth_MapEventHeader:
 	cuttree_event 12, 11, EVENT_LAKE_OF_RAGE_CUT_TREE_3
 	cuttree_event 14, 5, EVENT_LAKE_OF_RAGE_CUT_TREE_4
 
-const_value set 2
+const_value set 1
 	const LAKEOFRAGE_WESLEY
 
 LakeofRageWesley:

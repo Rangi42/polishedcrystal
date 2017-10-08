@@ -18,7 +18,7 @@ HallOfFame_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_LANCE, 12, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 2
+const_value set 1
 	const HALLOFFAME_LANCE
 
 HallOfFameEntranceTrigger:

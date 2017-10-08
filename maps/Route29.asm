@@ -30,7 +30,7 @@ Route29_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 4, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
 	itemball_event 2, 48, POTION, 1, EVENT_ROUTE_29_POTION
 
-const_value set 2
+const_value set 1
 	const ROUTE29_LYRA
 	const ROUTE29_TUSCANY
 

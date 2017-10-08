@@ -37,7 +37,7 @@ Route43_MapEventHeader:
 	fruittree_event 26, 1, FRUITTREE_ROUTE_43, PERSIM_BERRY
 	itemball_event 32, 12, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
-const_value set 2
+const_value set 1
 	const ROUTE43_SIGHTSEER_F
 
 Route43RebattleBreederScript:

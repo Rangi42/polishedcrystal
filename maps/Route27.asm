@@ -33,7 +33,7 @@ Route27_MapEventHeader:
 	itemball_event 4, 71, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
 	fruittree_event 12, 60, FRUITTREE_ROUTE_27, LUM_BERRY
 
-const_value set 2
+const_value set 1
 	const ROUTE27_VETERAN_F
 	const ROUTE27_FISHER
 

@@ -22,7 +22,7 @@ QuietCaveB3F_MapEventHeader:
 	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
 	tmhmball_event 22, 7, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
 
-const_value set 2
+const_value set 1
 	const QUIETCAVEB3F_MARLEY
 
 QuietCaveB3FMarleyScript:

@@ -24,7 +24,7 @@ CeladonUniversityCafeteria_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster2Script, -1
 	person_event SPRITE_BAKER, 3, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBakerScript, -1
 
-const_value set 2
+const_value set 1
 	const CELADONUNIVERSITYCAFETERIA_COREY
 
 CeladonUniversityCafeteriaCoreyScript:

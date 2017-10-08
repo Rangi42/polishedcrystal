@@ -25,7 +25,7 @@ CeladonUniversityLounge_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd1Text, -1
 	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd2Text, -1
 
-const_value set 2
+const_value set 1
 	const CELADONUNIVERSITYLOUNGE_NEESHA
 
 CeladonUniversityLoungeNeeshaScript:

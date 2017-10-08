@@ -26,7 +26,7 @@ PowerPlant_MapEventHeader:
 	person_event SPRITE_FISHER, 10, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
 	person_event SPRITE_GYM_GUY, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PowerPlantForestText, -1
 
-const_value set 2
+const_value set 1
 	const POWERPLANT_OFFICER1
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2

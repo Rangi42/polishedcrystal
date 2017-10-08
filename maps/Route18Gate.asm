@@ -25,7 +25,7 @@ Route18Gate_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
 
-const_value set 2
+const_value set 1
 	const ROUTE18GATE_OFFICER
 
 Route18GateStepUpOneTrigger:

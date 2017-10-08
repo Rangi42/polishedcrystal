@@ -33,7 +33,7 @@ PewterMuseumOfScience1F_MapEventHeader:
 	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FGrampsText, -1
 	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FYoungsterText, -1
 
-const_value set 2
+const_value set 1
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
 
 Museum1FFossilScientistScript:

@@ -25,7 +25,7 @@ WiseTriosRoom_MapEventHeader:
 	person_event SPRITE_ELDER, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9868b, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_ELDER, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 
-const_value set 2
+const_value set 1
 	const WISETRIOSROOM_ELDER3
 	const WISETRIOSROOM_ELDER6
 

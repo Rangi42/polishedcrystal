@@ -45,7 +45,7 @@ AzaleaTown_MapEventHeader:
 	person_event SPRITE_SLOWPOKE, 15, 15, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	fruittree_event 2, 8, FRUITTREE_AZALEA_TOWN, WHT_APRICORN
 
-const_value set 2
+const_value set 1
 	const AZALEATOWN_SILVER
 	const AZALEATOWN_KURT
 

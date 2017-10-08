@@ -30,7 +30,7 @@ BurnedTower1F_MapEventHeader:
 	person_event SPRITE_HEX_MANIAC, 1, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
 	person_event SPRITE_FISHER, 3, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
 
-const_value set 2
+const_value set 1
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_SILVER
 

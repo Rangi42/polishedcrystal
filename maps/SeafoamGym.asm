@@ -23,7 +23,7 @@ SeafoamGym_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 14, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMerle, -1
 	person_event SPRITE_BLAINE, 11, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
 
-const_value set 2
+const_value set 1
 	const SEAFOAMGYM_GYM_GUY
 
 TrainerScientistLowell:

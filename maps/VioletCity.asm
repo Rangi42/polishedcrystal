@@ -45,7 +45,7 @@ VioletCity_MapEventHeader:
 	itemball_event 11, 35, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
 	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM2Text, -1
 
-const_value set 2
+const_value set 1
 	const VIOLETCITY_EARL
 
 VioletCityFlyPoint:

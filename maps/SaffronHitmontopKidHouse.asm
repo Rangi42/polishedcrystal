@@ -18,7 +18,7 @@ SaffronHitmontopKidHouse_MapEventHeader:
 	person_event SPRITE_CHILD, 4, 5, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
 
-const_value set 2
+const_value set 1
 	const SAFFRONHITMONTOPKIDHOUSE_CHILD
 
 SaffronHitmontopKidHouseChildScript:
