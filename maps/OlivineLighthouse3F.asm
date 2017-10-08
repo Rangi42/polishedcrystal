@@ -151,6 +151,8 @@ TrainerBird_keeperTheo:
 
 Bird_keeperTheoScript:
 	end_if_just_battled
+	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
 	jumptextfaceplayer UnknownText_0x5b2df
 
 TrainerGentlemanPreston:
@@ -189,6 +191,16 @@ UnknownText_0x5b2df:
 
 	para "but I can't get up"
 	line "there…"
+	done
+
+Bird_keeperTheoFinalText:
+	text "How the heck do"
+	line "you go up?"
+
+	para "I heard the sick"
+	line "#mon is better"
+	cont "now, but I can't"
+	cont "get up there…"
 	done
 
 SailorTerrellSeenText:

@@ -38,6 +38,8 @@ TrainerSailorKent:
 
 SailorKentScript:
 	end_if_just_battled
+	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	iftrue_jumptextfaceplayer SailorKentFinalText
 	jumptextfaceplayer UnknownText_0x5b584
 
 SailorKentSeenText:
@@ -60,6 +62,15 @@ UnknownText_0x5b584:
 
 	para "a good Pharmacy in"
 	line "Cianwood."
+	done
+
+SailorKentFinalText:
+	text "The #mon here"
+	line "is well again."
+
+	para "Cianwood Pharmacy"
+	line "lived up to its"
+	cont "reputation!"
 	done
 
 LassConnieSeenText:
