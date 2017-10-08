@@ -1046,6 +1046,7 @@ Group9Sprites:
 Group10Sprites:
 ; Route32
 ; VioletCity
+; MagnetTunnelEast
 Group24Sprites:
 ; Route26
 ; Route27
@@ -1071,9 +1072,10 @@ Group26Sprites:
 	db SPRITE_VETERAN_F ; doesn't walk
 	; 13 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_PIDGEY
 	db SPRITE_RATTATA
-	; 16 total sprites
+	; 17 total sprites
 	db 0
 
 
@@ -1082,6 +1084,7 @@ Group11Sprites:
 ; Route34Coast
 ; StormyBeach
 ; GoldenrodCity
+; MagnetTunnelWest
 	db SPRITE_BREEDER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_GOLDENROD_LYRA ; SPRITE_LYRA, SPRITE_SWIMMER_GIRL
