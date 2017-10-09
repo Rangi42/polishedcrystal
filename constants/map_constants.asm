@@ -800,8 +800,6 @@ const_value SET 1
 	const MAPOBJECT_POINTER_HI ; b
 	const MAPOBJECT_EVENT_FLAG ; c
 	const MAPOBJECT_FLAG_HI ; d
-	const MAPOBJECT_E ; unused
-	const MAPOBJECT_F ; unused
 OBJECT_LENGTH EQU const_value
 
 MAPOBJECT_SCREEN_HEIGHT EQU 11
