@@ -782,7 +782,6 @@ const_value SET 1
 	const OBJECT_30
 	const OBJECT_31
 	const OBJECT_RANGE
-; 33-39 are not used
 
 ; map object struct
 	const_def

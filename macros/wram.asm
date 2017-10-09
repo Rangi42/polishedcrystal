@@ -304,7 +304,6 @@ object_struct: MACRO
 \1Object30:: ds 1
 \1Object31:: ds 1
 \1Range:: ds 1
-	ds 7
 \1StructEnd::
 ENDM
 
