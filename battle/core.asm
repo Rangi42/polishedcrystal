@@ -6414,6 +6414,8 @@ endc
 	call BattleRandom
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny
+	ld a, [CurItem]
+	push af
 	ld a, SHINY_CHARM
 	ld [CurItem], a
 	push hl
@@ -6425,7 +6427,8 @@ endc
 	pop bc
 	pop hl
 	jr c, .shiny_charm
-.no_shiny_charm
+	pop af
+	ld [CurItem], a
 	call BattleRandom
 	cp $10
 	jr nc, .not_shiny ; 240/256 still not shiny
@@ -6433,6 +6436,8 @@ endc
 	ld a, SHINY_MASK
 	jr .got_shininess
 .shiny_charm
+	pop af
+	ld [CurItem], a
 	call BattleRandom
 	cp $30
 	jr c, .shiny ; 208/256 still not shiny
