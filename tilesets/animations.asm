@@ -37,7 +37,7 @@ endr
 
 
 Tileset00Anim:
-Tileset01Anim:
+TilesetJohto1Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -61,7 +61,7 @@ Tileset01Anim:
 	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
-Tileset02Anim:
+TilesetJohto2Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -80,7 +80,7 @@ Tileset02Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
-Tileset03Anim:
+TilesetKanto1Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw VTiles2 tile $40, WriteTileToBuffer
@@ -98,7 +98,7 @@ Tileset03Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset09Anim:
+TilesetPortAnim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -112,7 +112,7 @@ Tileset09Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset15Anim:
+TilesetGym1Anim:
 	dw NULL,  SafariFountainAnim2
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -122,7 +122,7 @@ Tileset15Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset20Anim:
+TilesetKanto2Anim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -141,7 +141,7 @@ Tileset20Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset23Anim:
+TilesetTowerAnim:
 	dw SproutPillarTilePointer9,  AnimateSproutPillarTile
 	dw SproutPillarTilePointer10, AnimateSproutPillarTile
 	dw SproutPillarTilePointer7,  AnimateSproutPillarTile
@@ -159,8 +159,8 @@ Tileset23Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
-Tileset24Anim:
-Tileset40Anim:
+TilesetCaveAnim:
+TilesetQuietCaveAnim:
 	dw NULL,  SafariFountainAnim4
 	dw NULL,  WaitTileAnimation
 	dw NULL,  SafariFountainAnim3
@@ -194,7 +194,7 @@ Tileset40Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-Tileset25Anim:
+TilesetParkAnim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw VTiles2 tile $15, AnimateFountain
@@ -207,7 +207,7 @@ Tileset25Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset29Anim:
+TilesetIcePathAnim:
 	dw VTiles2 tile $10, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
@@ -218,7 +218,7 @@ Tileset29Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-Tileset30Anim:
+TilesetForestAnim:
 	dw NULL,  ForestTreeLeftAnimation
 	dw NULL,  ForestTreeRightAnimation
 	dw NULL,  ForestTree2LeftAnimation
@@ -245,7 +245,7 @@ Tileset30Anim:
 	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
-Tileset31Anim:
+TilesetSafariAnim:
 	dw VTiles2 tile $14, AnimateKantoWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
@@ -258,7 +258,7 @@ Tileset31Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset34Anim:
+TilesetFarawayAnim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -272,7 +272,7 @@ Tileset34Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset35Anim:
+TilesetTunnelAnim:
 	dw VTiles2 tile $26, WriteTileToBuffer
 	dw NULL,  WaitTileAnimation
 	dw wTileAnimBuffer, ScrollTileRightLeft
@@ -301,8 +301,8 @@ Tileset35Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  DoneTileAnimation
 
-Tileset37Anim:
-Tileset41Anim:
+TilesetShamoutiAnim:
+TilesetValenciaAnim:
 	dw FarawayWaterFrames1, AnimateFarawayWaterTile
 	dw FarawayWaterFrames2, AnimateFarawayWaterTile
 	dw NULL,  WaitTileAnimation
@@ -317,30 +317,30 @@ Tileset41Anim:
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
-Tileset04Anim:
-Tileset05Anim:
-Tileset06Anim:
-Tileset07Anim:
-Tileset08Anim:
-Tileset10Anim:
-Tileset11Anim:
-Tileset12Anim:
-Tileset13Anim:
-Tileset14Anim:
-Tileset16Anim:
-Tileset17Anim:
-Tileset18Anim:
-Tileset19Anim:
-Tileset21Anim:
-Tileset22Anim:
-Tileset26Anim:
-Tileset27Anim:
-Tileset28Anim:
-Tileset32Anim:
-Tileset33Anim:
-Tileset36Anim:
-Tileset38Anim:
-Tileset39Anim:
+TilesetJohto3Anim:
+TilesetHouse1Anim:
+TilesetHouse2Anim:
+TilesetPokeCenterAnim:
+TilesetGateAnim:
+TilesetLabAnim:
+TilesetFacilityAnim:
+TilesetMartAnim:
+TilesetMansionAnim:
+TilesetGameCornerAnim:
+TilesetHouse3Anim:
+TilesetGym2Anim:
+TilesetGym3Anim:
+TilesetLighthouseAnim:
+TilesetPokeComAnim:
+TilesetBattleTowerAnim:
+TilesetRuinsAnim:
+TilesetRadioTowerAnim:
+TilesetWarehouseAnim:
+TilesetAlphAnim:
+TilesetPokemonMansionAnim:
+TilesetDecorAnim:
+TilesetMuseumAnim:
+TilesetHotelAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

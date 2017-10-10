@@ -9,409 +9,409 @@ INCLUDE "tilesets/roofs.asm"
 SECTION "Tileset Data 1", ROMX
 
 Tileset00GFX::
-Tileset01GFX::
+TilesetJohto1GFX::
 INCBIN "gfx/tilesets/johto1.2bpp.lz"
 
 Tileset00Meta::
-Tileset01Meta::
+TilesetJohto1Meta::
 INCBIN "tilesets/johto1_metatiles.bin"
 
 Tileset00Coll::
-Tileset01Coll::
+TilesetJohto1Coll::
 INCLUDE "tilesets/johto1_collision.asm"
 
-Tileset03GFX::
+TilesetKanto1GFX::
 INCBIN "gfx/tilesets/kanto1.2bpp.lz"
 
-Tileset03Meta::
+TilesetKanto1Meta::
 INCBIN "tilesets/kanto1_metatiles.bin"
 
 
 SECTION "Tileset Data 2", ROMX
 
-Tileset05GFX::
+TilesetHouse1GFX::
 INCBIN "gfx/tilesets/house1.2bpp.lz"
 
-Tileset05Meta::
+TilesetHouse1Meta::
 INCBIN "tilesets/house1_metatiles.bin"
 
-Tileset05Coll::
+TilesetHouse1Coll::
 INCLUDE "tilesets/house1_collision.asm"
 
-Tileset38Meta::
+TilesetMuseumMeta::
 INCBIN "tilesets/museum_metatiles.bin"
 
-Tileset38Coll::
+TilesetMuseumColl::
 INCLUDE "tilesets/museum_collision.asm"
 
-Tileset41Coll::
+TilesetValenciaColl::
 INCLUDE "tilesets/valencia_collision.asm"
 
 
 SECTION "Tileset Data 3", ROMX
 
-Tileset09GFX::
+TilesetPortGFX::
 INCBIN "gfx/tilesets/port.2bpp.lz"
 
-Tileset09Meta::
+TilesetPortMeta::
 INCBIN "tilesets/port_metatiles.bin"
 
-Tileset09Coll::
+TilesetPortColl::
 INCLUDE "tilesets/port_collision.asm"
 
-Tileset13GFX::
+TilesetMansionGFX::
 INCBIN "gfx/tilesets/mansion.2bpp.lz"
 
-Tileset13Meta::
+TilesetMansionMeta::
 INCBIN "tilesets/mansion_metatiles.bin"
 
-Tileset13Coll::
+TilesetMansionColl::
 INCLUDE "tilesets/mansion_collision.asm"
 
-Tileset14GFX::
+TilesetGameCornerGFX::
 INCBIN "gfx/tilesets/game_corner.2bpp.lz"
 
-Tileset14Meta::
+TilesetGameCornerMeta::
 INCBIN "tilesets/game_corner_metatiles.bin"
 
-Tileset14Coll::
+TilesetGameCornerColl::
 INCLUDE "tilesets/game_corner_collision.asm"
 
-Tileset15GFX::
+TilesetGym1GFX::
 INCBIN "gfx/tilesets/gym1.2bpp.lz"
 
-Tileset15Meta::
+TilesetGym1Meta::
 INCBIN "tilesets/gym1_metatiles.bin"
 
-Tileset15Coll::
+TilesetGym1Coll::
 INCLUDE "tilesets/gym1_collision.asm"
 
 
 SECTION "Tileset Data 4", ROMX
 
-Tileset08GFX::
+TilesetGateGFX::
 INCBIN "gfx/tilesets/gate.2bpp.lz"
 
-Tileset08Meta::
+TilesetGateMeta::
 INCBIN "tilesets/gate_metatiles.bin"
 
-Tileset08Coll::
+TilesetGateColl::
 INCLUDE "tilesets/gate_collision.asm"
 
-Tileset16GFX::
+TilesetHouse3GFX::
 INCBIN "gfx/tilesets/house3.2bpp.lz"
 
-Tileset16Meta::
+TilesetHouse3Meta::
 INCBIN "tilesets/house3_metatiles.bin"
 
-Tileset16Coll::
+TilesetHouse3Coll::
 INCLUDE "tilesets/house3_collision.asm"
 
-Tileset17GFX::
+TilesetGym2GFX::
 INCBIN "gfx/tilesets/gym2.2bpp.lz"
 
-Tileset17Meta::
+TilesetGym2Meta::
 INCBIN "tilesets/gym2_metatiles.bin"
 
-Tileset17Coll::
+TilesetGym2Coll::
 INCLUDE "tilesets/gym2_collision.asm"
 
-Tileset25GFX::
+TilesetParkGFX::
 INCBIN "gfx/tilesets/park.2bpp.lz"
 
-Tileset25Meta::
+TilesetParkMeta::
 INCBIN "tilesets/park_metatiles.bin"
 
-Tileset25Coll::
+TilesetParkColl::
 INCLUDE "tilesets/park_collision.asm"
 
 
 SECTION "Tileset Data 5", ROMX
 
-Tileset11GFX::
+TilesetFacilityGFX::
 INCBIN "gfx/tilesets/facility.2bpp.lz"
 
-Tileset11Meta::
+TilesetFacilityMeta::
 INCBIN "tilesets/facility_metatiles.bin"
 
-Tileset11Coll::
+TilesetFacilityColl::
 INCLUDE "tilesets/facility_collision.asm"
 
-Tileset19GFX::
+TilesetLighthouseGFX::
 INCBIN "gfx/tilesets/lighthouse.2bpp.lz"
 
-Tileset19Meta::
+TilesetLighthouseMeta::
 INCBIN "tilesets/lighthouse_metatiles.bin"
 
-Tileset19Coll::
+TilesetLighthouseColl::
 INCLUDE "tilesets/lighthouse_collision.asm"
 
-Tileset21GFX::
+TilesetPokeComGFX::
 INCBIN "gfx/tilesets/pokecom.2bpp.lz"
 
-Tileset21Meta::
+TilesetPokeComMeta::
 INCBIN "tilesets/pokecom_metatiles.bin"
 
-Tileset21Coll::
+TilesetPokeComColl::
 INCLUDE "tilesets/pokecom_collision.asm"
 
-Tileset29GFX::
+TilesetIcePathGFX::
 INCBIN "gfx/tilesets/ice_path.2bpp.lz"
 
-Tileset29Meta::
+TilesetIcePathMeta::
 INCBIN "tilesets/ice_path_metatiles.bin"
 
-Tileset29Coll::
+TilesetIcePathColl::
 INCLUDE "tilesets/ice_path_collision.asm"
 
 
 SECTION "Tileset Data 6", ROMX
 
-Tileset12GFX::
+TilesetMartGFX::
 INCBIN "gfx/tilesets/mart.2bpp.lz"
 
-Tileset12Meta::
+TilesetMartMeta::
 INCBIN "tilesets/mart_metatiles.bin"
 
-Tileset12Coll::
+TilesetMartColl::
 INCLUDE "tilesets/mart_collision.asm"
 
-Tileset23GFX::
+TilesetTowerGFX::
 INCBIN "gfx/tilesets/tower.2bpp.lz"
 
-Tileset23Meta::
+TilesetTowerMeta::
 INCBIN "tilesets/tower_metatiles.bin"
 
-Tileset23Coll::
+TilesetTowerColl::
 INCLUDE "tilesets/tower_collision.asm"
 
-Tileset27GFX::
+TilesetRadioTowerGFX::
 INCBIN "gfx/tilesets/radio_tower.2bpp.lz"
 
-Tileset27Meta::
+TilesetRadioTowerMeta::
 INCBIN "tilesets/radio_tower_metatiles.bin"
 
-Tileset27Coll::
+TilesetRadioTowerColl::
 INCLUDE "tilesets/radio_tower_collision.asm"
 
-Tileset28Meta::
+TilesetWarehouseMeta::
 INCBIN "tilesets/warehouse_metatiles.bin"
 
-Tileset28Coll::
+TilesetWarehouseColl::
 INCLUDE "tilesets/warehouse_collision.asm"
 
 
 SECTION "Tileset Data 7", ROMX
 
-Tileset07GFX::
+TilesetPokeCenterGFX::
 INCBIN "gfx/tilesets/pokecenter.2bpp.lz"
 
-Tileset07Meta::
+TilesetPokeCenterMeta::
 INCBIN "tilesets/pokecenter_metatiles.bin"
 
-Tileset07Coll::
+TilesetPokeCenterColl::
 INCLUDE "tilesets/pokecenter_collision.asm"
 
-Tileset26Meta::
+TilesetRuinsMeta::
 INCBIN "tilesets/ruins_metatiles.bin"
 
-Tileset26Coll::
+TilesetRuinsColl::
 INCLUDE "tilesets/ruins_collision.asm"
 
-Tileset32Meta::
+TilesetAlphMeta::
 INCBIN "tilesets/alph_metatiles.bin"
 
-Tileset32Coll::
+TilesetAlphColl::
 INCLUDE "tilesets/alph_collision.asm"
 
 
 SECTION "Tileset Data 8", ROMX
 
-Tileset24GFX::
+TilesetCaveGFX::
 INCBIN "gfx/tilesets/cave.2bpp.lz"
 
-Tileset40GFX::
+TilesetQuietCaveGFX::
 INCBIN "gfx/tilesets/quiet_cave.2bpp.lz"
 
-Tileset24Meta::
-Tileset40Meta::
+TilesetCaveMeta::
+TilesetQuietCaveMeta::
 INCBIN "tilesets/cave_metatiles.bin"
 
-Tileset24Coll::
-Tileset40Coll::
+TilesetCaveColl::
+TilesetQuietCaveColl::
 INCLUDE "tilesets/cave_collision.asm"
 
-Tileset30GFX::
+TilesetForestGFX::
 INCBIN "gfx/tilesets/forest.2bpp.lz"
 
-Tileset30Meta::
+TilesetForestMeta::
 INCBIN "tilesets/forest_metatiles.bin"
 
-Tileset30Coll::
+TilesetForestColl::
 INCLUDE "tilesets/forest_collision.asm"
 
-Tileset41GFX::
+TilesetValenciaGFX::
 INCBIN "gfx/tilesets/valencia.2bpp.lz"
 
 
 SECTION "Tileset Data 9", ROMX
 
-Tileset02GFX::
+TilesetJohto2GFX::
 INCBIN "gfx/tilesets/johto2.2bpp.lz"
 
-Tileset02Meta::
+TilesetJohto2Meta::
 INCBIN "tilesets/johto2_metatiles.bin"
 
-Tileset02Coll::
+TilesetJohto2Coll::
 INCLUDE "tilesets/johto2_collision.asm"
 
-Tileset04GFX::
+TilesetJohto3GFX::
 INCBIN "gfx/tilesets/johto3.2bpp.lz"
 
-Tileset04Meta::
+TilesetJohto3Meta::
 INCBIN "tilesets/johto3_metatiles.bin"
 
-Tileset04Coll::
+TilesetJohto3Coll::
 INCLUDE "tilesets/johto3_collision.asm"
 
-Tileset31GFX::
+TilesetSafariGFX::
 INCBIN "gfx/tilesets/safari.2bpp.lz"
 
-Tileset31Meta::
+TilesetSafariMeta::
 INCBIN "tilesets/safari_metatiles.bin"
 
-Tileset31Coll::
+TilesetSafariColl::
 INCLUDE "tilesets/safari_collision.asm"
 
 
 SECTION "Tileset Data 10", ROMX
 
-Tileset06GFX::
+TilesetHouse2GFX::
 INCBIN "gfx/tilesets/house2.2bpp.lz"
 
-Tileset06Meta::
+TilesetHouse2Meta::
 INCBIN "tilesets/house2_metatiles.bin"
 
-Tileset06Coll::
+TilesetHouse2Coll::
 INCLUDE "tilesets/house2_collision.asm"
 
 
 SECTION "Tileset Data 11", ROMX
 
-Tileset18GFX::
+TilesetGym3GFX::
 INCBIN "gfx/tilesets/gym3.2bpp.lz"
 
-Tileset18Meta::
+TilesetGym3Meta::
 INCBIN "tilesets/gym3_metatiles.bin"
 
-Tileset18Coll::
+TilesetGym3Coll::
 INCLUDE "tilesets/gym3_collision.asm"
 
-Tileset20GFX::
+TilesetKanto2GFX::
 INCBIN "gfx/tilesets/kanto2.2bpp.lz"
 
-Tileset20Meta::
+TilesetKanto2Meta::
 INCBIN "tilesets/kanto2_metatiles.bin"
 
-Tileset20Coll::
+TilesetKanto2Coll::
 INCLUDE "tilesets/kanto2_collision.asm"
 
-Tileset28GFX::
+TilesetWarehouseGFX::
 INCBIN "gfx/tilesets/warehouse.2bpp.lz"
 
-Tileset33GFX::
+TilesetPokemonMansionGFX::
 INCBIN "gfx/tilesets/pokemon_mansion.2bpp.lz"
 
-Tileset33Meta::
+TilesetPokemonMansionMeta::
 INCBIN "tilesets/pokemon_mansion_metatiles.bin"
 
-Tileset33Coll::
+TilesetPokemonMansionColl::
 INCLUDE "tilesets/pokemon_mansion_collision.asm"
 
-Tileset03Coll::
+TilesetKanto1Coll::
 INCLUDE "tilesets/kanto1_collision.asm"
 
 
 SECTION "Tileset Data 12", ROMX
 
-Tileset22GFX::
+TilesetBattleTowerGFX::
 INCBIN "gfx/tilesets/battle_tower.2bpp.lz"
 
-Tileset22Meta::
+TilesetBattleTowerMeta::
 INCBIN "tilesets/battle_tower_metatiles.bin"
 
-Tileset22Coll::
+TilesetBattleTowerColl::
 INCLUDE "tilesets/battle_tower_collision.asm"
 
-Tileset35GFX::
+TilesetTunnelGFX::
 INCBIN "gfx/tilesets/tunnel.2bpp.lz"
 
-Tileset35Meta::
+TilesetTunnelMeta::
 INCBIN "tilesets/tunnel_metatiles.bin"
 
-Tileset35Coll::
+TilesetTunnelColl::
 INCLUDE "tilesets/tunnel_collision.asm"
 
-Tileset36GFX::
+TilesetDecorGFX::
 INCBIN "gfx/tilesets/decor.2bpp.lz"
 
-Tileset36Meta::
+TilesetDecorMeta::
 INCBIN "tilesets/decor_metatiles.bin"
 
-Tileset36Coll::
+TilesetDecorColl::
 INCLUDE "tilesets/decor_collision.asm"
 
-Tileset37GFX::
+TilesetShamoutiGFX::
 INCBIN "gfx/tilesets/shamouti.2bpp.lz"
 
-Tileset37Meta::
+TilesetShamoutiMeta::
 INCBIN "tilesets/shamouti_metatiles.bin"
 
-Tileset37Coll::
+TilesetShamoutiColl::
 INCLUDE "tilesets/shamouti_collision.asm"
 
 
 SECTION "Tileset Data 13", ROMX
 
-Tileset38GFX::
+TilesetMuseumGFX::
 INCBIN "gfx/tilesets/museum.2bpp.lz"
 
-Tileset39GFX::
+TilesetHotelGFX::
 INCBIN "gfx/tilesets/hotel.2bpp.lz"
 
-Tileset39Meta::
+TilesetHotelMeta::
 INCBIN "tilesets/hotel_metatiles.bin"
 
-Tileset39Coll::
+TilesetHotelColl::
 INCLUDE "tilesets/hotel_collision.asm"
 
 
 SECTION "Tileset Data 14", ROMX
 
-Tileset10GFX::
+TilesetLabGFX::
 INCBIN "gfx/tilesets/lab.2bpp.lz"
 
-Tileset10Meta::
+TilesetLabMeta::
 INCBIN "tilesets/lab_metatiles.bin"
 
-Tileset10Coll::
+TilesetLabColl::
 INCLUDE "tilesets/lab_collision.asm"
 
-Tileset34GFX::
+TilesetFarawayGFX::
 INCBIN "gfx/tilesets/faraway.2bpp.lz"
 
-Tileset34Meta::
+TilesetFarawayMeta::
 INCBIN "tilesets/faraway_metatiles.bin"
 
-Tileset34Coll::
+TilesetFarawayColl::
 INCLUDE "tilesets/faraway_collision.asm"
 
-Tileset41Meta::
+TilesetValenciaMeta::
 INCBIN "tilesets/valencia_metatiles.bin"
 
 
 SECTION "Tileset Data 15", ROMX
 
-Tileset26GFX::
-Tileset32GFX::
+TilesetRuinsGFX::
+TilesetAlphGFX::
 INCBIN "gfx/tilesets/ruins.2bpp.lz"
