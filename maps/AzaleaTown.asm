@@ -2,8 +2,9 @@ AzaleaTown_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
+.MapCallbacks: db 2
 	dbw MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
+	dbw MAPCALLBACK_TILES, AzaleaTownRainScript
 
 AzaleaTown_MapEventHeader:
 
@@ -51,6 +52,16 @@ const_value set 1
 
 AzaleaTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_AZALEA
+	return
+
+AzaleaTownRainScript:
+	checknite
+	iftrue .rain
+	changemap AzaleaTown_BlockData
+	return
+
+.rain
+	changemap AzaleaTownRaining_BlockData
 	return
 
 AzaleaTownRivalBattleTrigger1:

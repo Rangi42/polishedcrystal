@@ -2,8 +2,9 @@ LakeofRageNorth_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
+.MapCallbacks: db 2
 	dbw MAPCALLBACK_OBJECTS, LakeofRageWesley
+	dbw MAPCALLBACK_TILES, LakeofRageNorthFloodScript
 
 LakeofRageNorth_MapEventHeader:
 
@@ -40,6 +41,16 @@ LakeofRageWesley:
 
 .WesleyAppears:
 	appear LAKEOFRAGE_WESLEY
+	return
+
+LakeofRageNorthFloodScript:
+	checknite
+	iftrue .flood
+	changemap LakeofRageNorth_BlockData
+	return
+
+.flood
+	changemap LakeofRageFloodedNorth_BlockData
 	return
 
 WesleyScript:

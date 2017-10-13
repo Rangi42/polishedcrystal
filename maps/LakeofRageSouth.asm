@@ -2,8 +2,9 @@ LakeofRageSouth_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
+.MapCallbacks: db 2
 	dbw MAPCALLBACK_NEWMAP, LakeofRageFlyPoint
+	dbw MAPCALLBACK_TILES, LakeofRageSouthFloodScript
 
 LakeofRageSouth_MapEventHeader:
 
@@ -46,6 +47,16 @@ const_value set 1
 
 LakeofRageFlyPoint:
 	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
+	return
+
+LakeofRageSouthFloodScript:
+	checknite
+	iftrue .flood
+	changemap LakeofRageSouth_BlockData
+	return
+
+.flood
+	changemap LakeofRageFloodedSouth_BlockData
 	return
 
 LakeOfRageSignText:

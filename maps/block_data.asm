@@ -331,6 +331,9 @@ AzaleaGym_BlockData:
 AzaleaTown_BlockData:
 	INCBIN "maps/AzaleaTown.blk"
 
+AzaleaTownRaining_BlockData:
+	INCBIN "maps/AzaleaTownRaining.blk"
+
 CharcoalKiln_BlockData:
 	INCBIN "maps/CharcoalKiln.blk"
 
@@ -649,8 +652,14 @@ MahoganyTown_BlockData:
 LakeofRageNorth_BlockData:
 	INCBIN "maps/LakeofRageNorth.blk"
 
+LakeofRageFloodedNorth_BlockData:
+	INCBIN "maps/LakeofRageFloodedNorth.blk"
+
 LakeofRageSouth_BlockData:
 	INCBIN "maps/LakeofRageSouth.blk"
+
+LakeofRageFloodedSouth_BlockData:
+	INCBIN "maps/LakeofRageFloodedSouth.blk"
 
 TeamRocketBaseB1F_BlockData:
 	INCBIN "maps/TeamRocketBaseB1F.blk"
@@ -1393,6 +1402,9 @@ Route32_BlockData:
 
 Route33_BlockData:
 	INCBIN "maps/Route33.blk"
+
+Route33Raining_BlockData:
+	INCBIN "maps/Route33Raining.blk"
 
 Route34_BlockData:
 	INCBIN "maps/Route34.blk"
