@@ -222,9 +222,9 @@ endc
 UnknownText_0x189e95:
 	text "<PLAYER> received"
 if DEF(FAITHFUL)
-	cont "the Marsh Badge."
+	line "the Marsh Badge."
 else
-	cont "the Soul Badge."
+	line "the Soul Badge."
 endc
 	done
 
