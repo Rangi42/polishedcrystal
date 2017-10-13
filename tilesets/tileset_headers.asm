@@ -9,42 +9,43 @@ Tileset00::
 Tileset00End::
 	tileset TilesetJohto1
 	tileset TilesetJohto2
-	tileset TilesetKanto1
 	tileset TilesetJohto3
+	tileset TilesetJohto4
+	tileset TilesetKanto1
+	tileset TilesetKanto2
+	tileset TilesetShamouti
+	tileset TilesetValencia
+	tileset TilesetFaraway
 	tileset TilesetHouse1
 	tileset TilesetHouse2
+	tileset TilesetHouse3
 	tileset TilesetPokeCenter
+	tileset TilesetPokeCom
+	tileset TilesetMart
 	tileset TilesetGate
+	tileset TilesetGym1
+	tileset TilesetGym2
+	tileset TilesetGym3
 	tileset TilesetPort
 	tileset TilesetLab
 	tileset TilesetFacility
-	tileset TilesetMart
 	tileset TilesetMansion
 	tileset TilesetGameCorner
-	tileset TilesetGym1
-	tileset TilesetHouse3
-	tileset TilesetGym2
-	tileset TilesetGym3
-	tileset TilesetLighthouse
-	tileset TilesetKanto2
-	tileset TilesetPokeCom
-	tileset TilesetBattleTower
-	tileset TilesetTower
-	tileset TilesetCave
-	tileset TilesetPark
-	tileset TilesetRuins
-	tileset TilesetRadioTower
-	tileset TilesetWarehouse
-	tileset TilesetIcePath
-	tileset TilesetForest
-	tileset TilesetSafari
-	tileset TilesetAlph
-	tileset TilesetPokemonMansion
-	tileset TilesetFaraway
-	tileset TilesetTunnel
 	tileset TilesetDecor
-	tileset TilesetShamouti
 	tileset TilesetMuseum
 	tileset TilesetHotel
+	tileset TilesetTower
+	tileset TilesetBattleTower
+	tileset TilesetRadioTower
+	tileset TilesetLighthouse
+	tileset TilesetWarehouse
+	tileset TilesetCave
 	tileset TilesetQuietCave
-	tileset TilesetValencia
+	tileset TilesetIcePath
+	tileset TilesetTunnel
+	tileset TilesetForest
+	tileset TilesetPark
+	tileset TilesetSafari
+	tileset TilesetRuins
+	tileset TilesetAlph
+	tileset TilesetPokemonMansion

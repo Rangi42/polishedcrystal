@@ -117,3 +117,6 @@ INCLUDE "tilesets/hotel_palette_map.asm"
 
 TilesetValenciaPalMap:
 INCLUDE "tilesets/valencia_palette_map.asm"
+
+TilesetJohto4PalMap:
+INCLUDE "tilesets/johto4_palette_map.asm"

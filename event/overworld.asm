@@ -325,6 +325,7 @@ CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
+	dbw TILESET_JOHTO_4, .johto4
 	dbw TILESET_KANTO_1, .kanto1
 	dbw TILESET_KANTO_2, .kanto2
 	dbw TILESET_PARK, .park
@@ -341,6 +342,7 @@ CutGrassBlockPointers: ; c862
 	db $95, $4c, $01
 .johto1 ; Johto OW
 .johto2 ; Goldenrod area
+.johto4 ; Lake of Rage
 .valencia_island ; Valencia Island
 	db $03, $02, $01
 	db -1
@@ -408,6 +410,7 @@ CutGrassBlockPointers: ; c862
 WhirlpoolBlockPointers: ; c8a4
 	dbw TILESET_JOHTO_1, .johto1
 	dbw TILESET_JOHTO_2, .johto2
+	dbw TILESET_JOHTO_4, .johto4
 	db -1
 
 .johto1
@@ -416,6 +419,7 @@ WhirlpoolBlockPointers: ; c8a4
 	db -1
 
 .johto2
+.johto4
 	db $83, $36, $00
 	db -1
 

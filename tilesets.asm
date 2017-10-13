@@ -415,3 +415,12 @@ SECTION "Tileset Data 15", ROMX
 TilesetRuinsGFX::
 TilesetAlphGFX::
 INCBIN "gfx/tilesets/ruins.2bpp.lz"
+
+TilesetJohto4GFX::
+INCBIN "gfx/tilesets/johto4.2bpp.lz"
+
+TilesetJohto4Meta::
+INCBIN "tilesets/johto4_metatiles.bin"
+
+TilesetJohto4Coll::
+INCLUDE "tilesets/johto4_collision.asm"

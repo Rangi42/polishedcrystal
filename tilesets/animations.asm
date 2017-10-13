@@ -62,6 +62,7 @@ TilesetJohto1Anim:
 	dw NULL,  DoneTileAnimation
 
 TilesetJohto2Anim:
+TilesetJohto4Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
