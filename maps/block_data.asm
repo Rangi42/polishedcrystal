@@ -1451,6 +1451,9 @@ Route42_BlockData:
 Route43_BlockData:
 	INCBIN "maps/Route43.blk"
 
+Route43Raining_BlockData:
+	INCBIN "maps/Route43Raining.blk"
+
 Route44_BlockData:
 	INCBIN "maps/Route44.blk"
 

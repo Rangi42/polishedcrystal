@@ -171,7 +171,7 @@
 	const SPRITE_WII ; $a8
 	const SPRITE_SILVER_TROPHY ; $a9
 	const SPRITE_GOLD_TROPHY ; $aa
-	const SPRITE_UNUSED ; $ab
+	const SPRITE_BIG_GYARADOS ; $ab
 
 SPRITE_POKEMON EQU const_value
 	const SPRITE_BULBASAUR ; $ac
@@ -269,6 +269,7 @@ const_value SET 1
 	const STANDING_SPRITE
 	const STILL_SPRITE
 	const MON_SPRITE
+	const BIG_GYARADOS_SPRITE
 
 ; sprite header fields
 	const_def
@@ -332,6 +333,7 @@ const_value SET PAL_OW_SILVER
 	const SPRITEMOVEDATA_SWIM_AROUND          ; 1d
 	const SPRITEMOVEDATA_SWIM_UP_DOWN         ; 1e
 	const SPRITEMOVEDATA_SWIM_LEFT_RIGHT      ; 1f
+	const SPRITEMOVEDATA_BIG_GYARADOS         ; 20
 NUM_SPRITEMOVEDATA EQU const_value
 SPRITEMOVEDATA_FIELDS EQU 6
 
@@ -359,6 +361,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE ; 12
 	const SPRITEMOVEFN_BOULDERDUST           ; 13
 	const SPRITEMOVEFN_GRASS                 ; 14
+	const SPRITEMOVEFN_BIG_GYARADOS          ; 15
 
 ; sprite step types
 ; see engine/map_objects.asm:StepTypesJumptable
@@ -404,6 +407,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const PERSON_ACTION_BOULDER_DUST ; 0d
 	const PERSON_ACTION_GRASS_SHAKE  ; 0e
 	const PERSON_ACTION_SKYFALL      ; 0f
+	const PERSON_ACTION_BIG_GYARADOS ; 10
 
 ; see engine/facings.asm:Facings
 	const_def
@@ -439,6 +443,8 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_BOULDER_DUST_2 ; 1d
 	const FACING_GRASS_1        ; 1e
 	const FACING_GRASS_2        ; 1f
+	const FACING_BIG_GYARADOS_1 ; 20
+	const FACING_BIG_GYARADOS_2 ; 21
 
 	const_def
 	const SPRITEANIMSTRUCT_INDEX           ; 0

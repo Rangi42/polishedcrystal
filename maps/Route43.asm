@@ -2,8 +2,9 @@ Route43_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 2
+.MapCallbacks: db 3
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
+	dbw MAPCALLBACK_TILES, Route43RainScript
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 
 Route43_MapEventHeader:
@@ -48,6 +49,16 @@ UnknownScript_0x19d051:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19d05c
 	domaptrigger ROUTE_43_GATE, $0
+	return
+
+Route43RainScript:
+	checknite
+	iftrue .flood
+	changemap Route43_BlockData
+	return
+
+.flood
+	changemap Route43Raining_BlockData
 	return
 
 UnknownScript_0x19d05c:

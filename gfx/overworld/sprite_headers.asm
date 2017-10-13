@@ -519,3 +519,9 @@ SilverTrophySprite:
 
 GoldTrophySprite:
 	sprite_header GoldTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
+
+BigGyaradosSprite:
+; sprite_header BigGyaradosSpriteGFX, 4, BIG_GYARADOS_SPRITE, PAL_OW_RED
+	dw BigGyaradosSpriteGFX
+	db 15 tiles, BANK(BigGyaradosSpriteGFX)
+	db BIG_GYARADOS_SPRITE, PAL_OW_RED

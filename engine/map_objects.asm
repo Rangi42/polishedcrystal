@@ -520,6 +520,7 @@ MapObjectMovementPattern: ; 47dd
 	dw .MovementSpinCounterclockwise ; SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE
 	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
+	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 
 .RandomWalkY:
 	call Random
@@ -904,6 +905,19 @@ MapObjectMovementPattern: ; 47dd
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_TRACKING_OBJECT
+	ret
+
+.MovementBigGyarados:
+	call EndSpriteMovement
+	ld hl, OBJECT_DIRECTION_WALKING
+	add hl, bc
+	ld [hl], STANDING
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], PERSON_ACTION_BIG_GYARADOS
+	ld hl, OBJECT_STEP_TYPE
+	add hl, bc
+	ld [hl], STEP_TYPE_04
 	ret
 
 ._MovementShadow_Grass_Emote_BoulderDust:

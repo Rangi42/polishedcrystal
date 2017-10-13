@@ -23,7 +23,8 @@ RefreshSprites:: ; 14168
 	call ByteFill
 	call GetPlayerSprite
 	call AddMapSprites
-	call LoadAndSortSprites
+	call LoadSpriteGFX
+	call ArrangeUsedSprites
 	jp MapCallbackSprites_LoadUsedSpritesGFX
 ; 1416f
 
@@ -308,13 +309,6 @@ _GetSpritePalette:: ; 142c4
 ; 142db
 
 
-LoadAndSortSprites: ; 142db
-	call LoadSpriteGFX
-	call SortUsedSprites
-	jp ArrangeUsedSprites
-; 142e5
-
-
 AddSpriteGFX: ; 142e5
 ; Add any new sprite ids to a list of graphics to be loaded.
 ; Return carry if the list is full.
@@ -378,81 +372,6 @@ LoadSpriteGFX: ; 14306
 	ld a, l
 	ret
 ; 1431e
-
-
-SortUsedSprites: ; 1431e
-; Bubble-sort sprites by type.
-; TODO: verify whether this is necessary; remove it otherwise.
-; Note that overworld sprite sets are already manually sorted.
-
-; Run backwards through UsedSprites to find the last one.
-
-	ld c, SPRITE_GFX_LIST_CAPACITY
-	ld de, UsedSprites + (SPRITE_GFX_LIST_CAPACITY - 1) * 2
-.FindLastSprite:
-	ld a, [de]
-	and a
-	jr nz, .FoundLastSprite
-rept 2
-	dec de
-endr
-	dec c
-	jr nz, .FindLastSprite
-.FoundLastSprite:
-	dec c
-	ret z
-
-; If the length of the current sprite is
-; higher than a later one, swap them.
-
-	inc de
-	ld hl, UsedSprites + 1
-
-.CheckSprite:
-	push bc
-	push de
-	push hl
-
-.CheckFollowing:
-	ld a, [de]
-	cp [hl]
-	jr nc, .loop
-
-; Swap the two sprites.
-
-	ld b, a
-	ld a, [hl]
-	ld [hl], b
-	ld [de], a
-	dec de
-	dec hl
-	ld a, [de]
-	ld b, a
-	ld a, [hl]
-	ld [hl], b
-	ld [de], a
-	inc de
-	inc hl
-
-; Keep doing this until everything's in order.
-
-.loop
-rept 2
-	dec de
-endr
-	dec c
-	jr nz, .CheckFollowing
-
-	pop hl
-rept 2
-	inc hl
-endr
-	pop de
-	pop bc
-	dec c
-	jr nz, .CheckSprite
-	ret
-; 14355
 
 
 ArrangeUsedSprites: ; 14355
@@ -521,6 +440,8 @@ GetSpriteLength: ; 14386
 	jr z, .AnyDirection
 	cp STILL_SPRITE
 	jr z, .OneDirection
+	cp BIG_GYARADOS_SPRITE
+	jr z, .BigGyarados
 ; MON_SPRITE
 	ld a, 8
 	ret
@@ -531,6 +452,10 @@ GetSpriteLength: ; 14386
 
 .OneDirection:
 	ld a, 4
+	ret
+
+.BigGyarados:
+	ld a, 16
 	ret
 ; 1439b
 
@@ -1020,24 +945,21 @@ Group8Sprites:
 Group9Sprites:
 ; Route43
 ; LakeofRage
+	db SPRITE_BIG_GYARADOS
 	db SPRITE_BREEDER
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GRAMPS
-	db SPRITE_LANCE
-	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
+	db SPRITE_LASS
+	db SPRITE_LANCE ; doesn't walk
+	db SPRITE_GRAMPS ; doesn't walk
+	db SPRITE_COOLTRAINER_M ; doesn't walk
 	db SPRITE_LADY ; doesn't walk
 	db SPRITE_ENGINEER ; doesn't walk
-	; 11 walking sprites (9 that walk)
-	db SPRITE_GYARADOS_TOP_LEFT
-	db SPRITE_GYARADOS_TOP_RIGHT
-	db SPRITE_GYARADOS_BOTTOM_LEFT
-	db SPRITE_GYARADOS_BOTTOM_RIGHT
+	; 12/15 walking sprites (7/10 that walk) (SPRITE_BIG_GYARADOS counts as 4)
 	db SPRITE_BALL_CUT_FRUIT
-	; 16 total sprites
+	; 13/16 total sprites
 	db 0
 
 
