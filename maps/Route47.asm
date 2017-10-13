@@ -43,7 +43,7 @@ Route47_MapEventHeader:
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock 6, 22, $73
+	changeblock 8, 22, $b7
 .locked
 	return
 

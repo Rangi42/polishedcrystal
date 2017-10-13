@@ -197,6 +197,7 @@ class PaletteMap(object):
 		'johto1': lambda: PaletteMap.day_palette(),
 		'johto2': lambda: PaletteMap.day_palette(),
 		'johto3': lambda: PaletteMap.day_palette(),
+		'johto4': lambda: PaletteMap.day_palette(),
 		'kanto1': lambda: PaletteMap.day_palette(),
 		'kanto2': lambda: PaletteMap.day_palette(),
 		'park': lambda: PaletteMap.day_palette(),
