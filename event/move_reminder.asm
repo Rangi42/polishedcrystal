@@ -115,7 +115,7 @@ GetRemindableMoves:
 
 	ld b, 0
 	ld de, wd002 + 1
-; based on GetEggMove in engine/breeding/egg.asm
+; based on GetEggMove in engine/breeding.asm
 .loop
 	ld a, [CurPartySpecies]
 	dec a
@@ -123,9 +123,8 @@ GetRemindableMoves:
 	ld b, 0
 	ld c, a
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
 .skip_evos
@@ -165,6 +164,7 @@ endr
 	jr .loop_moves
 
 .done
+	ld a, [CurPartySpecies]
 	dec a
 	push bc
 	ld b, 0
@@ -223,7 +223,7 @@ CheckPokemonAlreadyKnowsMove:
 	push bc
 	ld a, MON_MOVES
 	call GetPartyParamLocation
-	ld b, 4
+	ld b, NUM_MOVES
 .loop
 	ld a, [hli]
 	cp c

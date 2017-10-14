@@ -5,12 +5,12 @@ InitIntroGradient::
 	ld a, $70
 	call ByteFill
 	; middle stripe
-	hlcoord 0, 1
+	; hlcoord 0, 1
 	ld bc, SCREEN_WIDTH
 	ld a, $71
 	call ByteFill
 	; bottom stripe
-	hlcoord 0, 2
+	; hlcoord 0, 2
 	ld bc, SCREEN_WIDTH
 	ld a, $72
 	call ByteFill
