@@ -701,26 +701,22 @@ MapObjectMovementPattern: ; 47dd
 	ret
 
 .MovementBigStanding:
-	call EndSpriteMovement
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], PERSON_ACTION_BIG_SNORLAX
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_04
-	ret
+	ld a, PERSON_ACTION_BIG_SNORLAX
+	jr ._ActionA_StepType04
 
 .MovementBouncing:
+	ld a, PERSON_ACTION_BOUNCE
+	jr ._ActionA_StepType04
+
+.MovementBigGyarados:
+	ld a, PERSON_ACTION_BIG_GYARADOS
+._ActionA_StepType04
+	push af
 	call EndSpriteMovement
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
+	pop af
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_BOUNCE
+	ld [hl], a
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_04
@@ -905,19 +901,6 @@ MapObjectMovementPattern: ; 47dd
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_TRACKING_OBJECT
-	ret
-
-.MovementBigGyarados:
-	call EndSpriteMovement
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], PERSON_ACTION_BIG_GYARADOS
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_04
 	ret
 
 ._MovementShadow_Grass_Emote_BoulderDust:
@@ -2419,17 +2402,6 @@ SetLeaderIfVisible: ; 5815
 	ret
 ; 581f
 
-StopFollow:: ; 581f
-	call ResetLeader
-	jp ResetFollower
-; 5826
-
-ResetLeader: ; 5826
-	ld a, -1
-	ld [wObjectFollow_Leader], a
-	ret
-; 582c
-
 SetFollowerIfVisible: ; 582c
 	push af
 	call ResetFollower
@@ -2447,12 +2419,16 @@ SetFollowerIfVisible: ; 582c
 	ret
 ; 5847
 
+StopFollow:: ; 581f
+	ld a, -1
+	ld [wObjectFollow_Leader], a
+	; fallthrough
 ResetFollower: ; 5847
 	ld a, [wObjectFollow_Follower]
 	cp -1
 	ret z
 	call GetObjectStruct
-	farcall Function58e3 ; no need to bankswitch
+	call Function58e3
 	ld a, -1
 	ld [wObjectFollow_Follower], a
 	ret
@@ -2545,7 +2521,7 @@ Function58e3: ; 58e3
 	add hl, bc
 	ld a, [hl]
 	cp -1
-	jp z, Function5903 ; a jr would have been appropriate here
+	jr z, Function5903
 	push bc
 	call GetMapObject
 	ld hl, MAPOBJECT_MOVEMENT

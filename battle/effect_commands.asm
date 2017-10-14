@@ -3573,23 +3573,6 @@ WeatherDefenseBoost:
 	pop hl
 	ret
 
-; Unused, but kept for now to avoid random bugs
-BattleCommand_StoreEnergy:
-BattleCommand_UnleashEnergy:
-	jp EndMoveEffect
-BattleCommand_PsychUp:
-BattleCommand_FrustrationPower:
-BattleCommand_Present:
-BattleCommand_Spite:
-BattleCommand_DefrostOpponent:
-BattleCommand_Conversion2:
-BattleCommand_Snore:
-BattleCommand_OHKO:
-BattleCommand_MirrorMove:
-BattleCommand_Mimic:
-BattleCommand_Nightmare:
-	ret
-
 
 BattleCommand_ClearMissDamage: ; 355d5
 ; clearmissdamage
@@ -4401,30 +4384,6 @@ BattleCommand_PainSplit:
 .failed
 	call AnimateFailedMove
 	jp PrintButItFailed
-
-BattleCommand_LockOn: ; 35a53
-; lockon
-
-	call CheckSubstituteOpp
-	jr nz, .fail
-
-	ld a, [AttackMissed]
-	and a
-	jr nz, .fail
-
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVarAddr
-	set SUBSTATUS_LOCK_ON, [hl]
-	call AnimateCurrentMove
-
-	ld hl, TookAimText
-	jp StdBattleTextBox
-
-.fail
-	call AnimateFailedMove
-	jp PrintDidntAffect
-
-; 35a74
 
 
 BattleCommand_Sketch: ; 35a74
@@ -7048,25 +7007,6 @@ BattleCommand_TrapTarget: ; 36c2d
 	dbw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
 	dbw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
 ; 36c7e
-
-
-BattleCommand_Mist: ; 36c7e
-; mist
-
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVarAddr
-	bit SUBSTATUS_MIST, [hl]
-	jr nz, .already_mist
-	set SUBSTATUS_MIST, [hl]
-	call AnimateCurrentMove
-	ld hl, MistText
-	jp StdBattleTextBox
-
-.already_mist
-	call AnimateFailedMove
-	jp PrintButItFailed
-
-; 36c98
 
 
 BattleCommand_FocusEnergy: ; 36c98
