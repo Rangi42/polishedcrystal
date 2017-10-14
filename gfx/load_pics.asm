@@ -314,7 +314,7 @@ endc
 	ld b, a
 	ld c, $80 - 7 * 7 - 1
 	call Get2bpp
-	ld de, w6_d800 + $7f tiles
+	ld de, w6_d800 + $7f tiles ; $DFF0 -- overflows into echo RAM $E000 after 1 tile
 	ld hl, wDecompressScratch
 	ld bc, ($80 - 7 * 7 - 1) * $10
 	call LoadFrontpic

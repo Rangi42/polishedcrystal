@@ -139,12 +139,12 @@ HDMATransfer_FillBGMap0WithTile60: ; 64db
 	ld [rSVBK], a
 
 	ld a, $60
-	ld hl, wDecompressScratch
-	ld bc, wScratchAttrMap - wDecompressScratch
+	ld hl, wScratchTileMap
+	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	call ByteFill
-	ld a, wDecompressScratch / $100
+	ld a, wScratchTileMap / $100
 	ld [rHDMA1], a
-	ld a, wDecompressScratch % $100
+	ld a, wScratchTileMap % $100
 	ld [rHDMA2], a
 	ld a, (VBGMap0 % $8000) / $100
 	ld [rHDMA3], a
@@ -3845,12 +3845,12 @@ ResetDisplayBetweenHallOfFameMons: ; 4e906
 	push af
 	ld a, $6
 	ld [rSVBK], a
-	ld hl, wDecompressScratch
-	ld bc, wScratchAttrMap - wDecompressScratch
+	ld hl, wScratchTileMap
+	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
 	call ByteFill
 	hlbgcoord 0, 0
-	ld de, wDecompressScratch
+	ld de, wScratchTileMap
 	lb bc, $0, $40
 	call Request2bpp
 	pop af

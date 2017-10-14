@@ -9150,12 +9150,12 @@ InitBattleDisplay: ; 3fb6c
 	ld a, $6
 	ld [rSVBK], a
 
-	ld hl, wDecompressScratch
-	ld bc, wScratchAttrMap - wDecompressScratch
+	ld hl, wScratchTileMap
+	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
 	call ByteFill
 
-	ld de, wDecompressScratch
+	ld de, wScratchTileMap
 	hlbgcoord 0, 0
 	lb bc, BANK(.BlankBGMap), $40
 	call Request2bpp

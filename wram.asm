@@ -2800,7 +2800,7 @@ wDecompressScratch::
 wScratchTileMap::
 	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap::
-	ds $400
+	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 w6_d800::
 
 
