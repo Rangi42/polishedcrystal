@@ -521,6 +521,8 @@ MapObjectMovementPattern: ; 47dd
 	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
+	dw .StandingDownFlip             ; SPRITEMOVEFN_STAND_DOWN_FLIP
+	dw .StandingUpFlip               ; SPRITEMOVEFN_STAND_UP_FLIP
 
 .RandomWalkY:
 	call Random
@@ -710,6 +712,14 @@ MapObjectMovementPattern: ; 47dd
 
 .MovementBigGyarados:
 	ld a, PERSON_ACTION_BIG_GYARADOS
+	jr ._ActionA_StepType04
+
+.StandingDownFlip:
+	ld a, PERSON_ACTION_DOWN_FLIP
+	jr ._ActionA_StepType04
+
+.StandingUpFlip:
+	ld a, PERSON_ACTION_UP_FLIP
 ._ActionA_StepType04
 	push af
 	call EndSpriteMovement

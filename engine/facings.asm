@@ -33,6 +33,8 @@ Facings: ; 4049
 	dw FacingGrass2       ; FACING_GRASS_2
 	dw FacingBigGyarados1 ; FACING_BIG_GYARADOS_1
 	dw FacingBigGyarados2 ; FACING_BIG_GYARADOS_2
+	dw FacingStepDownFlip ; FACING_STEP_DOWN_FLIP
+	dw FacingStepUpFlip   ; FACING_STEP_UP_FLIP
 FacingsEnd: dw 0
 
 NUM_FACINGS EQU (FacingsEnd - Facings) / 2
@@ -300,3 +302,17 @@ FacingBigGyarados2:
 	db 16, 24, 0, $8c
 	db 24, 16, 0, $8d
 	db 24, 24, 0, $8e
+
+FacingStepDownFlip:
+	db 4 ; #
+	db  0,  0, 0 | X_FLIP, $01
+	db  0,  8, 0 | X_FLIP, $00
+	db  8,  0, 2 | X_FLIP, $03
+	db  8,  8, 2 | X_FLIP, $02
+
+FacingStepUpFlip:
+	db 4 ; #
+	db  0,  0, 0 | X_FLIP, $05
+	db  0,  8, 0 | X_FLIP, $04
+	db  8,  0, 2 | X_FLIP, $07
+	db  8,  8, 2 | X_FLIP, $06

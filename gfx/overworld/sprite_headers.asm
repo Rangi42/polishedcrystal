@@ -463,23 +463,17 @@ BigLaprasSprite:
 BigOnixSprite:
 	sprite_header BigOnixSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
+BigGyaradosSprite:
+; sprite_header BigGyaradosSpriteGFX, 4, BIG_GYARADOS_SPRITE, PAL_OW_RED
+	dw BigGyaradosSpriteGFX
+	db 15 tiles, BANK(BigGyaradosSpriteGFX)
+	db BIG_GYARADOS_SPRITE, PAL_OW_RED
+
 SlowpoketailSprite:
 	sprite_header SlowpoketailSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
 WeirdTreeSprite:
 	sprite_header WeirdTreeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
-
-GyaradosTopLeftSprite:
-	sprite_header GyaradosTopLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
-
-GyaradosTopRightSprite:
-	sprite_header GyaradosTopRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
-
-GyaradosBottomLeftSprite:
-	sprite_header GyaradosBottomLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
-
-GyaradosBottomRightSprite:
-	sprite_header GyaradosBottomRightSpriteGFX, 3, STANDING_SPRITE, PAL_OW_RED
 
 BallCutFruitSprite:
 	sprite_header BallCutFruitSpriteGFX, 3, STANDING_SPRITE, PAL_OW_TREE
@@ -519,9 +513,3 @@ SilverTrophySprite:
 
 GoldTrophySprite:
 	sprite_header GoldTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
-
-BigGyaradosSprite:
-; sprite_header BigGyaradosSpriteGFX, 4, BIG_GYARADOS_SPRITE, PAL_OW_RED
-	dw BigGyaradosSpriteGFX
-	db 15 tiles, BANK(BigGyaradosSpriteGFX)
-	db BIG_GYARADOS_SPRITE, PAL_OW_RED
