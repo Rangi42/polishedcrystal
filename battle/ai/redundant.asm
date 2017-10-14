@@ -17,7 +17,6 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_DREAM_EATER,   .DreamEater
 	dbw EFFECT_HEAL,          .Heal
 	dbw EFFECT_LIGHT_SCREEN,  .LightScreen
-	dbw EFFECT_MIST,          .Mist
 	dbw EFFECT_FOCUS_ENERGY,  .FocusEnergy
 	dbw EFFECT_CONFUSE,       .Confuse
 	dbw EFFECT_TRANSFORM,     .Transform
@@ -26,7 +25,6 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_LEECH_SEED,    .LeechSeed
 	dbw EFFECT_DISABLE,       .Disable
 	dbw EFFECT_ENCORE,        .Encore
-	dbw EFFECT_SNORE,         .Snore
 	dbw EFFECT_SLEEP_TALK,    .SleepTalk
 	dbw EFFECT_MEAN_LOOK,     .MeanLook
 	dbw EFFECT_SPIKES,        .Spikes
@@ -48,11 +46,6 @@ AI_Redundant: ; 2c41a
 .LightScreen: ; 2c487
 	ld a, [EnemyScreens]
 	bit SCREENS_LIGHT_SCREEN, a
-	ret
-
-.Mist: ; 2c48d
-	ld a, [EnemySubStatus4]
-	bit SUBSTATUS_MIST, a
 	ret
 
 .FocusEnergy: ; 2c493
@@ -98,7 +91,6 @@ AI_Redundant: ; 2c41a
 	bit SUBSTATUS_ENCORED, a
 	ret
 
-.Snore:
 .SleepTalk: ; 2c4c8
 	ld a, [EnemyMonStatus]
 	and SLP

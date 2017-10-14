@@ -1012,12 +1012,9 @@ BattleCommand_DoTurn:
 	jp EndMoveEffect
 
 .continuousmoves ; 34602
-	db EFFECT_RAZOR_WIND
-	db EFFECT_SKULL_BASH
 	db EFFECT_SOLAR_BEAM
 	db EFFECT_FLY
 	db EFFECT_ROLLOUT
-	db EFFECT_BIDE
 	db EFFECT_RAMPAGE
 	db $ff
 ; 3460b
@@ -2107,10 +2104,6 @@ BattleCommand_LowerSub: ; 34eee
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_RAZOR_WIND
-	jr z, .charge_turn
-	cp EFFECT_SKULL_BASH
-	jr z, .charge_turn
 	cp EFFECT_SOLAR_BEAM
 	jr z, .charge_turn
 	cp EFFECT_FLY
@@ -3004,8 +2997,7 @@ BattleCommand_PostHitEffects:
 	call z, .flinch_up
 	jp .checkfaint
 .flinch_up
-	; Ensure that the move doesn't already have a flinch
-	; rate. TODO: consolidate these effects maybe
+	; Ensure that the move doesn't already have a flinch rate.
 	call HasEnemyFainted
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -3013,8 +3005,6 @@ BattleCommand_PostHitEffects:
 	cp EFFECT_FLINCH_HIT
 	ret z
 	cp EFFECT_STOMP
-	ret z
-	cp EFFECT_SNORE
 	ret z
 
 	; Flinch items procs even after Rocky Helmet fainting
@@ -4020,9 +4010,6 @@ BattleCommand_ConstantDamage: ; 35726
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_PSYWAVE
-	jr z, .psywave
-
 	cp EFFECT_SUPER_FANG
 	jr z, .super_fang
 
@@ -4031,21 +4018,6 @@ BattleCommand_ConstantDamage: ; 35726
 
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVar
-	ld b, a
-	xor a
-	jr .got_power
-
-.psywave
-	ld a, b
-	srl a
-	add b
-	ld b, a
-.psywave_loop
-	call BattleRandom
-	and a
-	jr z, .psywave_loop
-	cp b
-	jr nc, .psywave_loop
 	ld b, a
 	xor a
 	jr .got_power
@@ -4712,15 +4684,9 @@ BattleCommand_SleepTalk: ; 35b33
 	pop de
 	pop hl
 
-	cp EFFECT_SKULL_BASH
-	ret z
-	cp EFFECT_RAZOR_WIND
-	ret z
 	cp EFFECT_SOLAR_BEAM
 	ret z
 	cp EFFECT_FLY
-	ret z
-	cp EFFECT_BIDE
 	ret
 
 ; 35bff
@@ -7296,10 +7262,10 @@ BattleCommand_Confuse: ; 36d3b
 
 .not_already_confused
 	call CheckSubstituteOpp
-	jr nz, BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit
+	jr nz, BattleCommand_Confuse_CheckSwagger_ConfuseHit
 	ld a, [AttackMissed]
 	and a
-	jr nz, BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit
+	jr nz, BattleCommand_Confuse_CheckSwagger_ConfuseHit
 BattleCommand_FinishConfusingTarget: ; 36d70
 	ld bc, EnemyConfuseCount
 	ld a, [hBattleTurn]
@@ -7319,8 +7285,6 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	call GetBattleVar
 	cp EFFECT_CONFUSE_HIT
 	jr z, .got_effect
-	cp EFFECT_SNORE
-	jr z, .got_effect
 	cp EFFECT_SWAGGER
 	jr z, .got_effect
 	call AnimateCurrentMove
@@ -7337,12 +7301,10 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 
 ; 36db6
 
-BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit: ; 36db6
+BattleCommand_Confuse_CheckSwagger_ConfuseHit: ; 36db6
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_CONFUSE_HIT
-	ret z
-	cp EFFECT_SNORE
 	ret z
 	cp EFFECT_SWAGGER
 	ret z
