@@ -716,7 +716,7 @@ PokegearMap_UpdateLandmarkName: ; 910b4
 	pop de
 	farcall TownMap_ConvertLineBreakCharacters
 	hlcoord 8, 0
-	ld [hl], $34
+	ld [hl], $3a ; up/down arrow
 	ret
 
 ; 910d4
@@ -2160,14 +2160,14 @@ TownMapBubble: ; 91bb5
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $30
+	ld a, $36
 	ld [hli], a
 ; Top row
 	ld bc, 16
 	ld a, " "
 	call ByteFill
 ; Top-right corner
-	ld a, $31
+	ld a, $37
 	ld [hl], a
 	hlcoord 1, 1
 
@@ -2178,14 +2178,14 @@ TownMapBubble: ; 91bb5
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $32
+	ld a, $38
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
 	ld a, " "
 	call ByteFill
 ; Bottom-right corner
-	ld a, $33
+	ld a, $39
 	ld [hl], a
 
 ; Print "Where?"
@@ -2196,7 +2196,7 @@ TownMapBubble: ; 91bb5
 	call .Name
 ; Up/down arrows
 	hlcoord 18, 1
-	ld [hl], $34
+	ld [hl], $3a
 	ret
 
 .Where:
@@ -2778,22 +2778,22 @@ FillJohtoMap: ; 91eff
 	ld de, JohtoMap
 	call FillTownMap
 	hlcoord 16, 16
-	ld [hl], $35 ; Jo...
+	ld [hl], $3b ; Jo...
 	inc hl
-	ld [hl], $36 ; ...oh...
+	ld [hl], $3c ; ...oh...
 	inc hl
-	ld [hl], $37 ; ...to
+	ld [hl], $3d ; ...to
 	ret
 
 FillKantoMap: ; 91f04
 	ld de, KantoMap
 	call FillTownMap
 	hlcoord 16, 16
-	ld [hl], $38 ; Ka...
+	ld [hl], $3e ; Ka...
 	inc hl
-	ld [hl], $39 ; ...nt...
+	ld [hl], $3f ; ...nt...
 	inc hl
-	ld [hl], $37 ; ...to
+	ld [hl], $3d ; ...to
 	ret
 
 FillOrangeMap:
@@ -2903,10 +2903,7 @@ endm
 	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 5, 6, 7, 7, 6
 	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 6, 4, 4, 0, 0
 	townmappals 1, 1, 1, 6, 6, 6, 0, 0, 4, 4, 4, 7, 1, 4, 0, 0
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3
+	townmappals 1, 1, 1, 1, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
 
 TownMapJohtoFlips:
 	decoord 0, 0, JohtoMap
@@ -3011,7 +3008,7 @@ TownMapPlayerIcon: ; 91fa6
 LoadTownMapGFX: ; 91ff2
 	ld hl, TownMapGFX
 	ld de, VTiles2
-	lb bc, BANK(TownMapGFX), $3a
+	lb bc, BANK(TownMapGFX), $40
 	jp DecompressRequest2bpp
 
 ; 91fff
