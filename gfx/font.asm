@@ -183,8 +183,8 @@ InstantReloadPaletteHack:
 	ld a, $5 ; gfx
 	ld [rSVBK], a
 ; copy & reorder bg pal buffer
-	ld hl, BGPals palette 5 ; to
-	ld de, UnknBGPals palette 5 ; from
+	ld hl, BGPals palette PAL_BATTLE_BG_STATUS ; to
+	ld de, UnknBGPals palette PAL_BATTLE_BG_STATUS ; from
 ; order
 	ld a, [rBGP]
 	ld b, a

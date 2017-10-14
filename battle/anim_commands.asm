@@ -1459,8 +1459,8 @@ BattleAnim_SetOBPals: ; cc94b
 	push af
 	ld a, $5
 	ld [rSVBK], a
-	ld hl, OBPals palette PAL_BATTLE_GRAY
-	ld de, UnknOBPals palette PAL_BATTLE_GRAY
+	ld hl, OBPals palette PAL_BATTLE_OB_GRAY
+	ld de, UnknOBPals palette PAL_BATTLE_OB_GRAY
 	ld a, [rOBP0]
 	ld b, a
 	ld c, $2

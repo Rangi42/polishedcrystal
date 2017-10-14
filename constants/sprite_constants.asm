@@ -281,20 +281,20 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 
 ; sprite palettes
 	const_def
-	const PAL_OW_RED    ; 00
-	const PAL_OW_BLUE   ; 01
-	const PAL_OW_GREEN  ; 02
-	const PAL_OW_BROWN  ; 03
-	const PAL_OW_PURPLE ; 04
-	const PAL_OW_SILVER ; 05
-	const PAL_OW_TREE   ; 06
-	const PAL_OW_ROCK   ; 07
+	const PAL_OW_RED    ; 0
+	const PAL_OW_BLUE   ; 1
+	const PAL_OW_GREEN  ; 2
+	const PAL_OW_BROWN  ; 3
+	const PAL_OW_PURPLE ; 4
+	const PAL_OW_SILVER ; 5
+	const PAL_OW_TREE   ; 6
+	const PAL_OW_ROCK   ; 7
 
 ; for party menu icons
 const_value SET PAL_OW_SILVER
-	const PAL_OW_GRAY   ; $05
-	const PAL_OW_YELLOW ; $06
-	const PAL_OW_TEAL   ; $07
+	const PAL_OW_GRAY   ; 5
+	const PAL_OW_YELLOW ; 6
+	const PAL_OW_TEAL   ; 7
 
 ; sprite movement data table indices
 ; see data/map_objects.asm

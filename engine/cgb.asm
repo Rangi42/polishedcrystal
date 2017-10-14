@@ -87,7 +87,7 @@ _CGB_BattleColors: ; 8ddb
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals palette 0 + 2
+	ld hl, UnknBGPals palette PAL_BATTLE_BG_PLAYER + 2
 	call VaryColorsByDVs
 	pop de
 .player_backsprite
@@ -105,7 +105,7 @@ _CGB_BattleColors: ; 8ddb
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals palette 1 + 2
+	ld hl, UnknBGPals palette PAL_BATTLE_BG_ENEMY + 2
 	call VaryColorsByDVs
 	pop de
 .trainer_sprite
@@ -134,20 +134,20 @@ _CGB_BattleColors: ; 8ddb
 	call LoadPlayerStatusIconPalette
 	call LoadEnemyStatusIconPalette
 
-	ld hl, UnknBGPals
-	ld de, UnknBGPals palette 6
+	ld hl, UnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 
-	ld hl, UnknBGPals palette 1
-	ld de, UnknOBPals
+	ld hl, UnknBGPals palette PAL_BATTLE_BG_ENEMY
+	ld de, UnknOBPals palette PAL_BATTLE_OB_ENEMY
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 
-	ld hl, UnknBGPals
-	ld de, UnknOBPals palette 1
+	ld hl, UnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, UnknOBPals palette PAL_BATTLE_OB_PLAYER
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -216,7 +216,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	call ByteFill
 
 	ld hl, BattleObjectPals
-	ld de, UnknOBPals palette 2
+	ld de, UnknOBPals palette PAL_BATTLE_OB_GRAY
 	ld bc, 6 palettes
 	ld a, $5
 	call FarCopyWRAM

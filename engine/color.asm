@@ -35,11 +35,11 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, BGPals palette 2 + 2
+	ld de, BGPals palette PAL_BATTLE_BG_PLAYER_HP + 2
 	jr .okay
 
 .Player:
-	ld de, BGPals palette 3 + 2
+	ld de, BGPals palette PAL_BATTLE_BG_ENEMY_HP + 2
 
 .okay
 	ld l, c
@@ -83,7 +83,7 @@ LoadPlayerStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 5 + 2
+	ld de, UnknBGPals palette PAL_BATTLE_BG_STATUS + 2
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -98,7 +98,7 @@ LoadEnemyStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 5 + 4
+	ld de, UnknBGPals palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -111,7 +111,7 @@ LoadBattleCategoryAndTypePals:
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 6 + 2
+	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -123,7 +123,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 6 + 6
+	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 6
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM

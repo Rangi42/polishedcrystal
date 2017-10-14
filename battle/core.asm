@@ -574,8 +574,8 @@ ParsePlayerAction: ; 3c434
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 
-	ld hl, UnknBGPals palette 0 ; back sprite
-	ld de, UnknBGPals palette 6 ; move type+category
+	ld hl, UnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM

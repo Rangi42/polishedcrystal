@@ -1,6 +1,6 @@
 LoadBlindingFlashPalette:: ; 49409
 	ld a, $5
-	ld de, UnknBGPals palette 7
+	ld de, UnknBGPals palette PAL_BG_TEXT
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
 	jp FarCopyWRAM
@@ -159,7 +159,7 @@ LoadSpecialMapPalette: ; 494ac
 	jr nz, .not_mart
 	ld hl, MartBluePalette
 	ld a, $5
-	ld de, UnknBGPals palette 2
+	ld de, UnknBGPals palette PAL_BG_GREEN
 	ld bc, 1 palettes
 	call FarCopyWRAM
 .not_mart
@@ -1790,9 +1790,9 @@ LoadSpecialMapOBPalette:
 	cp TILESET_SAFARI_ZONE
 	jr nz, .not_shamouti_or_safari
 .load_bg_tree_palette
-	ld hl, UnknBGPals palette 2
+	ld hl, UnknBGPals palette PAL_BG_GREEN
 .load_tree_palette:
-	ld de, UnknOBPals palette 6
+	ld de, UnknOBPals palette PAL_OW_TREE
 .load_single_palette:
 	ld a, $5
 	ld bc, 1 palettes
@@ -1859,7 +1859,7 @@ LoadSpecialMapOBPalette:
 	ld a, [MapNumber]
 	cp MAP_MOUNT_MOON_SQUARE
 	jr nz, .not_mount_moon_square
-	ld hl, UnknBGPals palette 0
+	ld hl, UnknBGPals palette PAL_BG_GRAY
 	jr .load_rock_palette
 
 .not_mount_moon_square:
@@ -1879,9 +1879,9 @@ LoadSpecialMapOBPalette:
 	cp WHIRL_ISLANDS
 	ret nz
 .load_bg_rock_palette
-	ld hl, UnknBGPals palette 5
+	ld hl, UnknBGPals palette PAL_BG_BROWN
 .load_rock_palette
-	ld de, UnknOBPals palette 7
+	ld de, UnknOBPals palette PAL_OW_ROCK
 	jp .load_single_palette
 
 VermilionGymOBPalette_Tree:
