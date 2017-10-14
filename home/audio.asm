@@ -415,7 +415,7 @@ EnterMapMusic:: ; 3d03
 TryRestartMapMusic:: ; 3d2f
 	ld a, [wDontPlayMapMusicOnReload]
 	and a
-	jr z, .restore
+	jp z, RestoreMusic
 	xor a
 	ld [wMapMusic], a
 	ld de, MUSIC_NONE
@@ -424,9 +424,6 @@ TryRestartMapMusic:: ; 3d2f
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
 	ret
-
-.restore
-	farjp RestoreMusic
 ; 3d47
 
 RestartMapMusic:: ; 3d47

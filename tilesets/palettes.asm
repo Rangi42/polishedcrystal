@@ -1801,12 +1801,7 @@ LoadSpecialMapOBPalette:
 .not_shamouti_or_safari:
 	cp TILESET_FARAWAY_ISLAND
 	jr nz, .not_faraway
-	ld a, [MapNumber]
-	cp MAP_FARAWAY_JUNGLE
 	ld hl, UnknBGPals palette 1 ; grass
-	jr z, .load_tree_palette
-	; MAP_FARAWAY_ISLAND
-	ld hl, UnknBGPals palette 6 ; puddle
 	jr .load_tree_palette
 
 .not_faraway:

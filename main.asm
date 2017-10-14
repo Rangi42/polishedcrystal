@@ -48,8 +48,6 @@ PushOAM: ; 403f
 	ret
 PushOAMEnd
 
-INCLUDE "home/restore_music.asm"
-
 INCLUDE "engine/map_objects.asm"
 
 INCLUDE "engine/intro_menu.asm"
@@ -1444,7 +1442,7 @@ PlayBattleMusic: ; 2ee6c
 	push de
 	push bc
 
-	farcall SaveMusic
+	call SaveMusic
 	xor a
 	ld [MusicFade], a
 	ld de, MUSIC_NONE

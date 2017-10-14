@@ -14,6 +14,7 @@ Pointers445f: ; 445f
 	dw SetFacingBigDoll,               SetFacingBigDoll           ; PERSON_ACTION_BIG_DOLL
 	dw SetFacingBoulderDust,           SetFacingStanding          ; PERSON_ACTION_BOULDER_DUST
 	dw SetFacingGrassShake,            SetFacingStanding          ; PERSON_ACTION_GRASS_SHAKE
+	dw SetFacingPuddleSplash,          SetFacingStanding          ; PERSON_ACTION_PUDDLE_SPLASH
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
@@ -39,6 +40,11 @@ SetFacingEmote: ; 4582 emote
 	jr SetFixedFacing
 ; 4589
 
+SetFacingBigDoll: ; 45c5
+	ld a, [VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
+	cp SPRITE_BIG_ONIX
+	ld a, FACING_BIG_DOLL_ASYM
+	jr z, SetFixedFacing
 SetFacingBigDollSym: ; 4589
 	ld a, FACING_BIG_DOLL_SYM
 	jr SetFixedFacing
@@ -57,10 +63,6 @@ SetFacingStandFlip:
 	rrca
 	rrca
 	add FACING_STEP_DOWN_FLIP
-	jr SetFixedFacing
-
-SetFacingStandUpFlip:
-	ld a, FACING_STEP_UP_FLIP
 SetFixedFacing:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -232,15 +234,6 @@ SetFacingWeirdTree: ; 45ab
 	jp SetFixedFacing
 ; 45be
 
-SetFacingBigDoll: ; 45c5
-	ld a, [VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
-	cp SPRITE_BIG_ONIX
-	ld a, FACING_BIG_DOLL_ASYM
-	jp z, SetFixedFacing
-	ld a, FACING_BIG_DOLL_SYM
-	jp SetFixedFacing
-; 45da
-
 SetFacingBoulderDust: ; 45da
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
@@ -266,3 +259,15 @@ SetFacingGrassShake: ; 45ed
 .ok
 	jp SetFixedFacing
 ; 4600
+
+SetFacingPuddleSplash:
+	ld hl, OBJECT_STEP_FRAME
+	add hl, bc
+	inc [hl]
+	ld a, [hl]
+	and 4
+	ld a, FACING_SPLASH_1
+	jr z, .ok
+	inc a ; FACING_SPLASH_2
+.ok
+	jp SetFixedFacing

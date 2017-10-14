@@ -2,7 +2,7 @@
 
 PlayTrainerEncounterMusic:: ; e900a
 ; input: e = trainer type
-	farcall SaveMusic
+	call SaveMusic
 	; no encounter music for null trainers
 	ld a, [OtherTrainerClass]
 	and a

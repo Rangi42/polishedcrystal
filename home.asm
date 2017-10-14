@@ -44,6 +44,7 @@ INCLUDE "home/farcall.asm"
 INCLUDE "home/predef.asm"
 INCLUDE "home/window.asm"
 INCLUDE "home/flag.asm"
+INCLUDE "home/restore_music.asm"
 
 xor_a:: ; 2ec6
 	xor a

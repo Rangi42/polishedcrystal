@@ -520,6 +520,7 @@ MapObjectMovementPattern: ; 47dd
 	dw .MovementSpinCounterclockwise ; SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE
 	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
+	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 
@@ -791,7 +792,7 @@ MapObjectMovementPattern: ; 47dd
 	jp DecrementObjectMovementByteIndex
 
 .MovementShadow:
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_SHADOW
@@ -828,7 +829,7 @@ MapObjectMovementPattern: ; 47dd
 
 .MovementEmote:
 	call EndSpriteMovement
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_EMOTE
@@ -848,7 +849,7 @@ MapObjectMovementPattern: ; 47dd
 
 .MovementBoulderDust:
 	call EndSpriteMovement
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_BOULDER_DUST
@@ -892,10 +893,19 @@ MapObjectMovementPattern: ; 47dd
 
 .MovementShakingGrass:
 	call EndSpriteMovement
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_GRASS_SHAKE
+	jr ._MovementGrass_Puddle_End
+
+.MovementSplashingPuddle:
+	call EndSpriteMovement
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], PERSON_ACTION_PUDDLE_SPLASH
+._MovementGrass_Puddle_End:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, de
 	ld a, [hl]
@@ -908,7 +918,7 @@ MapObjectMovementPattern: ; 47dd
 	ld [hl], STEP_TYPE_TRACKING_OBJECT
 	ret
 
-._MovementShadow_Grass_Emote_BoulderDust:
+._MovementShadow_Grass_Puddle_Dust_Emote:
 	ld hl, OBJECT_RANGE
 	add hl, bc
 	ld a, [hl]
@@ -1919,6 +1929,7 @@ SpawnStrengthBoulderDust: ; 5538
 .BoulderDustObject:
 	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_BOULDERDUST
 ; 5547
+
 SpawnEmote: ; 5547
 	push bc
 	ld de, .EmoteObject
@@ -1930,6 +1941,7 @@ SpawnEmote: ; 5547
 .EmoteObject:
 	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
 ; 5556
+
 ShakeGrass: ; 5556
 	push bc
 	ld de, .data_5562
@@ -1941,6 +1953,19 @@ ShakeGrass: ; 5556
 .data_5562
 	db $00, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
 ; 5565
+
+SplashPuddle:
+	push bc
+	ld de, .puddle_data
+	call CopyTempObjectData
+	call InitTempObject
+	pop bc
+	ret
+
+.puddle_data
+	db $00, PAL_OW_BLUE, SPRITEMOVEDATA_PUDDLE
+; 5565
+
 ShakeScreen: ; 5565
 	push bc
 	push af
@@ -1955,6 +1980,7 @@ ShakeScreen: ; 5565
 .ScreenShakeObject:
 	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_SCREENSHAKE
 ; 5579
+
 DespawnEmote: ; 5579
 	push bc
 	ld a, [hMapObjectIndexBuffer]

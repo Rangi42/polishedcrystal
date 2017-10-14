@@ -31,6 +31,8 @@ Facings: ; 4049
 	dw FacingBoulderDust2 ; FACING_BOULDER_DUST_2
 	dw FacingGrass1       ; FACING_GRASS_1
 	dw FacingGrass2       ; FACING_GRASS_2
+	dw FacingSplash1      ; FACING_SPLASH_1
+	dw FacingSplash2      ; FACING_SPLASH_2
 	dw FacingBigGyarados1 ; FACING_BIG_GYARADOS_1
 	dw FacingBigGyarados2 ; FACING_BIG_GYARADOS_2
 	dw FacingStepDownFlip ; FACING_STEP_DOWN_FLIP
@@ -264,6 +266,16 @@ FacingGrass2:
 	db  9, -1, 4, $7e
 	db  9,  9, 4 | X_FLIP, $7e
 ; 4273
+
+FacingSplash1:
+	db 2 ; #
+	db  8,  0, 4, $7f
+	db  8,  8, 4 | X_FLIP, $7f
+
+FacingSplash2:
+	db 2 ; #
+	db  9, -1, 4, $7f
+	db  9,  9, 4 | X_FLIP, $7f
 
 FacingBigGyarados1:
 	db 16 ; #

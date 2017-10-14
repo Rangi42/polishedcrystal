@@ -440,6 +440,7 @@ SleepEmote:      INCBIN "gfx/emotes/sleep.2bpp"
 FishEmote:       INCBIN "gfx/emotes/fish.2bpp"
 
 JumpShadowGFX:   INCBIN "gfx/ow_fx/shadow.2bpp"
-FishingRodGFX2:  INCBIN "gfx/ow_fx/fishing2.2bpp"
+FishingRodGFX:   INCBIN "gfx/ow_fx/fishing2.2bpp"
 BoulderDustGFX:  INCBIN "gfx/ow_fx/boulderdust.2bpp"
 ShakingGrassGFX: INCBIN "gfx/ow_fx/shaking_grass.2bpp"
+PuddleSplashGFX: INCBIN "gfx/ow_fx/puddle_splash.2bpp"

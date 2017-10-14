@@ -145,11 +145,15 @@ MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld c, EMOTE_SHADOW
 	farcall LoadEmote
 	call GetMapPermission
-	call CheckOutdoorMap
-	ld c, EMOTE_SHAKING_GRASS
+	call CheckOutdoorMapOrPerm5
 	jr z, .outdoor
 	ld c, EMOTE_BOULDER_DUST
+	farjp LoadEmote
+
 .outdoor
+	ld c, EMOTE_SHAKING_GRASS
+	farcall LoadEmote
+	ld c, EMOTE_PUDDLE_SPLASH
 	farjp LoadEmote
 ; 14236
 
@@ -610,18 +614,19 @@ EmotesPointers: ; 144d
 ; dw source address
 ; db length, bank
 ; dw dest address
-	emote_header ShockEmote,      4, $78
-	emote_header QuestionEmote,   4, $78
-	emote_header HappyEmote,      4, $78
-	emote_header SadEmote,        4, $78
-	emote_header HeartEmote,      4, $78
-	emote_header BoltEmote,       4, $78
-	emote_header SleepEmote,      4, $78
-	emote_header FishEmote,       4, $78
-	emote_header JumpShadowGFX,   1, $7c
-	emote_header FishingRodGFX2,  2, $7c
-	emote_header BoulderDustGFX,  2, $7e
-	emote_header ShakingGrassGFX, 1, $7e
+	emote_header ShockEmote,      4, $78 ; EMOTE_SHOCK
+	emote_header QuestionEmote,   4, $78 ; EMOTE_QUESTION
+	emote_header HappyEmote,      4, $78 ; EMOTE_HAPPY
+	emote_header SadEmote,        4, $78 ; EMOTE_SAD
+	emote_header HeartEmote,      4, $78 ; EMOTE_HEART
+	emote_header BoltEmote,       4, $78 ; EMOTE_HEART
+	emote_header SleepEmote,      4, $78 ; EMOTE_SLEEP
+	emote_header FishEmote,       4, $78 ; EMOTE_FISH
+	emote_header JumpShadowGFX,   1, $7c ; EMOTE_SHADOW
+	emote_header FishingRodGFX,   2, $7c ; EMOTE_ROD
+	emote_header BoulderDustGFX,  2, $7e ; EMOTE_BOULDER_DUST
+	emote_header ShakingGrassGFX, 1, $7e ; EMOTE_SHAKING_GRASS
+	emote_header PuddleSplashGFX, 1, $7f ; EMOTE_PUDDLE_SPLASH
 ; 14495
 
 

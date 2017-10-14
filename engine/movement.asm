@@ -750,7 +750,7 @@ NormalStep: ; 5412
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE, [hl]
-	jr nz, .skip_grass
+	jr nz, .skip_effect
 
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
@@ -759,13 +759,16 @@ NormalStep: ; 5412
 	jr z, .shake_grass
 	cp COLL_TALL_GRASS
 	jr z, .shake_grass
+
 	cp COLL_PUDDLE
-	jr nz, .skip_grass
+	jr nz, .skip_effect
+	call SplashPuddle
+	jr .skip_effect
 
 .shake_grass
 	call ShakeGrass
 
-.skip_grass
+.skip_effect
 	ld hl, wCenteredObject
 	ld a, [hMapObjectIndexBuffer]
 	cp [hl]

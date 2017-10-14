@@ -822,6 +822,7 @@ OW_RIGHT EQU RIGHT << 2
 	const EMOTE_ROD ; 9
 	const EMOTE_BOULDER_DUST ; 10
 	const EMOTE_SHAKING_GRASS ; 11
+	const EMOTE_PUDDLE_SPLASH ; 12
 EMOTE_MEM EQU -1
 
 ; see engine/events.asm:TryReadSign.signs
