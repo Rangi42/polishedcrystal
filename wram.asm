@@ -879,11 +879,11 @@ wDexCurrentLocation:: ds 1
 wPokedexStatus::
 	ds 1
 wPokedexDataEnd::
-	ds 2
+	ds 4
 
 wMiscEnd::
 
-	ds 15
+	ds 13
 
 
 SECTION "Overworld Map", WRAM0

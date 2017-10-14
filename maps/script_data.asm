@@ -379,8 +379,7 @@ INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 
 SECTION "Lake of Rage Scripts", ROMX
 
-INCLUDE "maps/LakeofRageNorth.asm"
-INCLUDE "maps/LakeofRageSouth.asm" ; shares text with LakeofRageNorth.asm
+INCLUDE "maps/LakeofRage.asm"
 INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
 INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 

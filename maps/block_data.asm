@@ -649,17 +649,11 @@ MahoganyGym_BlockData:
 MahoganyTown_BlockData:
 	INCBIN "maps/MahoganyTown.blk"
 
-LakeofRageNorth_BlockData:
-	INCBIN "maps/LakeofRageNorth.blk"
+LakeofRage_BlockData:
+	INCBIN "maps/LakeofRage.blk"
 
-LakeofRageFloodedNorth_BlockData:
-	INCBIN "maps/LakeofRageFloodedNorth.blk"
-
-LakeofRageSouth_BlockData:
-	INCBIN "maps/LakeofRageSouth.blk"
-
-LakeofRageFloodedSouth_BlockData:
-	INCBIN "maps/LakeofRageFloodedSouth.blk"
+LakeofRageFlooded_BlockData:
+	INCBIN "maps/LakeofRageFlooded.blk"
 
 TeamRocketBaseB1F_BlockData:
 	INCBIN "maps/TeamRocketBaseB1F.blk"

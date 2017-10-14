@@ -6602,12 +6602,10 @@ endr
 
 .CheckMagikarpArea:
 	ld a, [MapGroup]
-	cp GROUP_LAKE_OF_RAGE_NORTH ; GROUP_LAKE_OF_RAGE_SOUTH
+	cp GROUP_LAKE_OF_RAGE
 	jr nz, .Happiness
 	ld a, [MapNumber]
-	cp MAP_LAKE_OF_RAGE_NORTH
-	jr z, .LakeOfRageMagikarp
-	cp MAP_LAKE_OF_RAGE_SOUTH
+	cp MAP_LAKE_OF_RAGE
 	jr nz, .Happiness
 .LakeOfRageMagikarp
 	; 40% chance of not flooring

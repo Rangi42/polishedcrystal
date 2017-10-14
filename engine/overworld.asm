@@ -952,14 +952,13 @@ Group9Sprites:
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_LASS
-	db SPRITE_LANCE ; doesn't walk
+	db SPRITE_LAKE_OF_RAGE_LANCE ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
 	db SPRITE_COOLTRAINER_M ; doesn't walk
 	db SPRITE_LADY ; doesn't walk
-	db SPRITE_ENGINEER ; doesn't walk
-	; 12/15 walking sprites (7/10 that walk) (SPRITE_BIG_GYARADOS counts as 4)
+	; 11/14 walking sprites (7/10 that walk) (SPRITE_BIG_GYARADOS counts as 4)
 	db SPRITE_BALL_CUT_FRUIT
-	; 13/16 total sprites
+	; 12/15 total sprites
 	db 0
 
 

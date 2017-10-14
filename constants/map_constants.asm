@@ -214,8 +214,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_43_MAHOGANY_GATE,                      4,  5 ;  3
 	mapgroup ROUTE_43_GATE,                               4,  5 ;  4
 	mapgroup ROUTE_43,                                   27, 10 ;  5
-	mapgroup LAKE_OF_RAGE_NORTH,                          8, 20 ;  6
-	mapgroup LAKE_OF_RAGE_SOUTH,                         10, 20 ;  7
+	mapgroup LAKE_OF_RAGE,                               18, 20 ;  6
 
 	newgroup                                                    ; 10
 
@@ -947,7 +946,7 @@ NUM_FRUIT_TREES EQU const_value +- 1
 const_value SET 1
 	const HIDDENGROTTO_ROUTE_32           ; 01
 	const HIDDENGROTTO_ROUTE_35           ; 02
-	const HIDDENGROTTO_LAKE_OF_RAGE_SOUTH ; 03
+	const HIDDENGROTTO_LAKE_OF_RAGE       ; 03
 	const HIDDENGROTTO_04                 ; 04
 	const HIDDENGROTTO_05                 ; 05
 	const HIDDENGROTTO_06                 ; 06
