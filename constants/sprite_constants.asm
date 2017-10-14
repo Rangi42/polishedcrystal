@@ -361,8 +361,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_BOULDERDUST           ; 13
 	const SPRITEMOVEFN_GRASS                 ; 14
 	const SPRITEMOVEFN_BIG_GYARADOS          ; 15
-	const SPRITEMOVEFN_STAND_DOWN_FLIP       ; 16
-	const SPRITEMOVEFN_STAND_UP_FLIP         ; 17
+	const SPRITEMOVEFN_STANDING_FLIP         ; 16
 
 ; sprite step types
 ; see engine/map_objects.asm:StepTypesJumptable
@@ -409,8 +408,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const PERSON_ACTION_GRASS_SHAKE  ; 0e
 	const PERSON_ACTION_SKYFALL      ; 0f
 	const PERSON_ACTION_BIG_GYARADOS ; 10
-	const PERSON_ACTION_DOWN_FLIP    ; 11
-	const PERSON_ACTION_UP_FLIP      ; 12
+	const PERSON_ACTION_STAND_FLIP   ; 11
 
 ; see engine/facings.asm:Facings
 	const_def

@@ -16,8 +16,7 @@ Pointers445f: ; 445f
 	dw SetFacingGrassShake,            SetFacingStanding          ; PERSON_ACTION_GRASS_SHAKE
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
-	dw SetFacingStandDownFlip,         SetFacingStandDownFlip     ; PERSON_ACTION_DOWN_FLIP
-	dw SetFacingStandUpFlip,           SetFacingStandUpFlip       ; PERSON_ACTION_UP_FLIP
+	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -29,14 +28,6 @@ SetFacingCurrent: ; 44aa
 	call GetSpriteDirection
 	jr SetFixedFacing
 ; 44b5
-
-SetFacingFish: ; 456e
-	call GetSpriteDirection
-	rrca
-	rrca
-	add $10
-	jr SetFixedFacing
-; 457b
 
 SetFacingShadow: ; 457b
 	ld a, FACING_SHADOW
@@ -53,8 +44,19 @@ SetFacingBigDollSym: ; 4589
 	jr SetFixedFacing
 ; 4590
 
-SetFacingStandDownFlip:
-	ld a, FACING_STEP_DOWN_FLIP
+SetFacingFish: ; 456e
+	call GetSpriteDirection
+	rrca
+	rrca
+	add FACING_FISH_DOWN
+	jr SetFixedFacing
+; 457b
+
+SetFacingStandFlip:
+	call GetSpriteDirection
+	rrca
+	rrca
+	add FACING_STEP_DOWN_FLIP
 	jr SetFixedFacing
 
 SetFacingStandUpFlip:
