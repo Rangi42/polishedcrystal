@@ -68,8 +68,8 @@ LakeofRageWesleyAndEngineer:
 	return
 
 LakeofRageFloodScript:
-	checknite
-	iftrue .flood
+	special Special_GetOvercastIndex
+	if_equal LAKE_OF_RAGE_OVERCAST, .flood
 	changemap LakeofRage_BlockData
 	return
 

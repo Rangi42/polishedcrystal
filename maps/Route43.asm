@@ -52,8 +52,8 @@ UnknownScript_0x19d051:
 	return
 
 Route43RainScript:
-	checknite
-	iftrue .flood
+	special Special_GetOvercastIndex
+	if_equal LAKE_OF_RAGE_OVERCAST, .flood
 	changemap Route43_BlockData
 	return
 

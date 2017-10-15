@@ -285,6 +285,12 @@ FISHSWARM_REMORAID EQU 2
 	const FISHGROUP_REMORAID
 	const FISHGROUP_QWILFISH_NO_SWARM
 
+; Overcast indexes
+	const_def
+	const NOT_OVERCAST
+	const AZALEA_OVERCAST
+	const LAKE_OF_RAGE_OVERCAST
+
 ; see engine/npctrade.asm:NPCTrades
 	const_def
 	const TRADE_WITH_MIKE_FOR_MACHOP     ; 0

@@ -112,11 +112,13 @@ DoBattle: ; 3c000
 	call EnemySwitch
 	call SetEnemyTurn
 	call HandleFirstAirBalloon
+	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
 
 .not_linked_2
 	call HandleFirstAirBalloon
+	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
 
@@ -9354,6 +9356,20 @@ CheckPluralTrainer:
 	ld a, 1
 	and a
 	ret
+
+AutomaticRainWhenOvercast:
+	farcall Special_GetOvercastIndex
+	and a
+	ret z
+	ld a, WEATHER_RAIN
+	ld [Weather], a
+	ld a, 255
+	ld [WeatherCount], a
+	ld de, RAIN_DANCE
+	call Call_PlayBattleAnim
+	ld hl, DownpourText
+	call StdBattleTextBox
+	jp EmptyBattleTextBox
 
 CheckUniqueWildMove:
 	ld a, [MapGroup]

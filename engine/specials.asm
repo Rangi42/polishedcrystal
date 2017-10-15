@@ -189,6 +189,7 @@ SpecialsPointers:: ; c029
 	add_special GetHiddenGrottoContents
 	add_special EmptiedHiddenGrotto
 	add_special Special_HiddenPowerGuru
+	add_special Special_GetOvercastIndex
 
 	add_special SpecialNone
 ; c224
@@ -528,6 +529,65 @@ Diploma: ; c49f
 	farcall _Diploma
 	jp ExitAllMenus
 ; c4ac
+
+Special_GetOvercastIndex::
+; Some maps are overcast, depending on certain conditions
+	ld a, [MapGroup]
+	cp GROUP_AZALEA_TOWN ; GROUP_ROUTE_33
+	jr z, .azalea_route_33
+	cp GROUP_LAKE_OF_RAGE ; GROUP_ROUTE_43
+	jr z, .lake_of_rage_route_43
+.not_overcast:
+	xor a ; NOT_OVERCAST
+	ld [ScriptVar], a
+	ret
+
+.azalea_route_33:
+; Azalea Town or Route 33
+	ld a, [MapNumber]
+	cp MAP_AZALEA_TOWN
+	jr z, .azalea_town
+	cp MAP_ROUTE_33
+	jr nz, .not_overcast
+.azalea_town
+; Not overcast until Slowpokes appear (Team ROcket beaten)
+	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
+	jr nz, .not_overcast
+; Overcast on Sunday, Tuesday, Thursday, and Saturday
+	call GetWeekday
+	cp MONDAY
+	jr z, .not_overcast
+	cp WEDNESDAY
+	jr z, .not_overcast
+	cp FRIDAY
+	jr z, .not_overcast
+	ld a, AZALEA_OVERCAST
+	ld [ScriptVar], a
+	ret
+
+.lake_of_rage_route_43:
+; Lake of Rage or Route 43
+	ld a, [MapNumber]
+	cp MAP_LAKE_OF_RAGE
+	jr z, .lake_of_rage
+	cp MAP_ROUTE_43
+	jr nz, .not_overcast
+.lake_of_rage
+; Always overcast until civilians appear (Team ROcket beaten)
+	eventflagcheck EVENT_LAKE_OF_RAGE_CIVILIANS
+	jr nz, .overcast
+; Overcast on Monday, Wednesday, and Friday
+	call GetWeekday
+	cp MONDAY
+	jr z, .overcast
+	cp WEDNESDAY
+	jr z, .overcast
+	cp FRIDAY
+	jr nz, .not_overcast
+.overcast
+	ld a, LAKE_OF_RAGE_OVERCAST
+	ld [ScriptVar], a
+	ret
 
 CheckIfTrendyPhraseIsLucky:
 	xor a

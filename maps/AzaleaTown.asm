@@ -55,8 +55,8 @@ AzaleaTownFlypointCallback:
 	return
 
 AzaleaTownRainScript:
-	checknite
-	iftrue .rain
+	special Special_GetOvercastIndex
+	if_equal AZALEA_OVERCAST, .rain
 	changemap AzaleaTown_BlockData
 	return
 

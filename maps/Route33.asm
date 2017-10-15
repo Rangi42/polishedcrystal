@@ -21,8 +21,8 @@ Route33_MapEventHeader:
 	fruittree_event 16, 14, FRUITTREE_ROUTE_33, PECHA_BERRY
 
 Route33RainScript:
-	checknite
-	iftrue .rain
+	special Special_GetOvercastIndex
+	if_equal AZALEA_OVERCAST, .rain
 	changemap Route33_BlockData
 	return
 

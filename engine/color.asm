@@ -744,6 +744,21 @@ LoadMapPals:
 	ld a, [wTileset]
 	cp TILESET_FOREST ; for Yellow Forest
 	ret z
+
+	; overcast maps have their own roof color table
+	farcall Special_GetOvercastIndex
+	and a
+	jr z, .not_overcast
+	dec a
+	ld l, a
+	ld h, 0
+rept 3
+	add hl, hl
+endr
+	ld de, .OvercastRoofPals
+	jr .get_roof_color
+
+.not_overcast
 	ld a, [wPermission]
 	cp TOWN
 	jr z, .outside
@@ -759,6 +774,7 @@ rept 3
 	add hl, hl
 endr
 	ld de, .RoofPals
+.get_roof_color
 	add hl, de
 	ld a, [TimeOfDayPal]
 	and 3
@@ -771,9 +787,7 @@ endr
 	ld de, UnknBGPals palette 6 + 2
 	ld bc, 4
 	ld a, $5
-	call FarCopyWRAM
-
-	ret
+	jp FarCopyWRAM
 
 .TilesetColorsPointers:
 	dw .OutdoorColors ; unused
@@ -930,7 +944,21 @@ else
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/roof.pal"
 else
-rept 35
+rept 36
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO_NIGHT
+endr
+endc
+endc
+
+.OvercastRoofPals:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/roof_overcast.pal"
+else
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/roof_overcast.pal"
+else
+rept 2
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO_NIGHT
 endr
