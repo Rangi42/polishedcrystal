@@ -112,7 +112,7 @@ LoadSpecialMapPalette: ; 494ac
 	farcall Special_GetOvercastIndex
 	and a
 	jr z, .do_nothing
-	ld hl, OvercastPalette
+	ld hl, OvercastBGPalette
 	jp .load_eight_time_of_day_bg_palettes
 
 .do_nothing
@@ -1686,9 +1686,12 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
-OvercastPalette:
+OvercastBGPalette:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/ob.pal"
+else
 if !DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/overcast.pal"
+INCLUDE "tilesets/palettes/bg_overcast.pal"
 else
 rept 7
 	MONOCHROME_RGB_FOUR
@@ -1718,6 +1721,57 @@ endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
+endc
+endc
+
+OvercastOBPalette:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/ob_overcast.pal"
+else
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/ob_overcast.pal"
+else
+rept 5
+	MONOCHROME_RGB_FOUR_OW
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+rept 5
+	MONOCHROME_RGB_FOUR_OW
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+rept 5
+	MONOCHROME_RGB_FOUR_OW_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+rept 5
+	MONOCHROME_RGB_FOUR_OW_DARKNESS
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+endr
+endc
 endc
 
 MartBluePalette:
@@ -1824,6 +1878,20 @@ InitLinkTradePalMap: ; 49856
 ; 4985a
 
 LoadSpecialMapOBPalette:
+	farcall Special_GetOvercastIndex
+	and a
+	jr z, .not_overcast
+	ld hl, OvercastOBPalette
+	ld a, [TimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	call AddNTimes
+	ld a, $5
+	ld de, UnknOBPals
+	ld bc, 8 palettes
+	jp FarCopyWRAM
+
+.not_overcast
 	ld a, [wTileset]
 	cp TILESET_SHAMOUTI_ISLAND
 	jr z, .load_bg_tree_palette
@@ -1917,7 +1985,7 @@ LoadSpecialMapOBPalette:
 	cp SEAFOAM_ISLANDS
 	jr z, .load_bg_rock_palette
 	cp WHIRL_ISLANDS
-	ret nz
+	ret z
 .load_bg_rock_palette
 	ld hl, UnknBGPals palette PAL_BG_BROWN
 .load_rock_palette

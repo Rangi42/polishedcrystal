@@ -64,9 +64,8 @@ TilesetJohto1Anim:
 TilesetJohto2Anim:
 TilesetJohto4Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $06, AnimateRainPuddleTile ; TODO: $1c
+	dw VTiles2 tile $1c, AnimateRainWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
 	dw WhirlpoolFrames1, AnimateWhirlpoolTile
@@ -75,9 +74,6 @@ TilesetJohto4Anim:
 	dw WhirlpoolFrames4, AnimateWhirlpoolTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
-	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
@@ -527,7 +523,7 @@ AnimateWaterTile: ; fc402
 	ld a, [TileAnimationTimer]
 
 ; 4 tile graphics, updated every other frame.
-	and 3 << 1
+	and %110
 
 ; 2 x 8 = 16 bytes per tile
 rept 3
@@ -552,6 +548,70 @@ endr
 WaterTileFrames: ; fc41c
 	INCBIN "gfx/tilesets/water/johto_water.2bpp"
 ; fc45c
+
+
+AnimateRainPuddleTile:
+; Draw a rain puddle tile for the current frame in VRAM tile at de.
+
+; Save sp in bc (see WriteTile).
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+
+	ld a, [TileAnimationTimer]
+
+; 8 tile graphics, updated every frame.
+	and %111
+	swap a
+
+	add RainPuddleTileFrames % $100
+	ld l, a
+	ld a, 0 ; not xor a; preserve carry flag
+	adc RainPuddleTileFrames / $100
+	ld h, a
+
+; Stack now points to the start of the tile for this frame.
+	ld sp, hl
+
+	ld l, e
+	ld h, d
+
+	jp WriteTile
+
+RainPuddleTileFrames:
+	INCBIN "gfx/tilesets/rain/rain_puddle.2bpp"
+
+
+AnimateRainWaterTile:
+; Draw a rain water tile for the current frame in VRAM tile at de.
+
+; Save sp in bc (see WriteTile).
+	ld hl, sp+$0
+	ld b, h
+	ld c, l
+
+	ld a, [TileAnimationTimer]
+
+; 8 tile graphics, updated every frame.
+	and %111
+	swap a
+
+	add RainWaterTileFrames % $100
+	ld l, a
+	ld a, 0 ; not xor a; preserve carry flag
+	adc RainWaterTileFrames / $100
+	ld h, a
+
+; Stack now points to the start of the tile for this frame.
+	ld sp, hl
+
+	ld l, e
+	ld h, d
+
+	jp WriteTile
+
+RainWaterTileFrames:
+	INCBIN "gfx/tilesets/rain/rain_water.2bpp"
 
 
 AnimateKantoWaterTile:

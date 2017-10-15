@@ -37,7 +37,7 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, DOOR, WALL
+	tilecoll FLOOR, BOTTOM_WALL, WALL, CAVE
 	tilecoll WALL, WALL, WALL, FLOOR
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll HEADBUTT_TREE, HEADBUTT_TREE, WALL, WALL
