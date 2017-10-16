@@ -26,6 +26,7 @@ SoulHouseB3FMrFujiScript:
 	writetext .Text1
 	buttonsound
 	verbosegiveitem SILPHSCOPE2
+	setflag ENGINE_HAVE_SILPHSCOPE2
 	setevent EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
 	writetext .Text2
 	waitbutton

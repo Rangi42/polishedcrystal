@@ -95,8 +95,10 @@ ENDM
 
 	engine_flag StatusFlags, 0 ; pokedex
 	engine_flag StatusFlags, 1 ; unown dex
+	                           ; flash
 	engine_flag StatusFlags, 3 ; pokerus
 	engine_flag StatusFlags, 4 ; rocket signal on ch20
+	                           ; wild encounters on/off
 	engine_flag StatusFlags, 6 ; credits skip
 	engine_flag StatusFlags, 7 ; bug contest on
 	engine_flag StatusFlags2, 0 ; rockets in radio tower ; $10
@@ -224,6 +226,8 @@ ENDM
 	engine_flag PlayerGender, 0 ; player is female
 
 	engine_flag wCelebiEvent, 2 ; have gs ball after kurt examined it
+	engine_flag wCelebiEvent, 3 ; have silphscope2
+	engine_flag wCelebiEvent, 4 ; have shiny charm
 
 	; rematches
 	engine_flag wDailyRematchFlags, 0 ; jack

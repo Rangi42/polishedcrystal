@@ -189,7 +189,9 @@ if DEF(DEBUG)
 	giveitem CALCIUM, 99
 	giveitem ZINC, 99
 	giveitem MASTER_BALL, 99
-	callasm SetHallOfFameFlag
+	setflag ENGINE_CREDITS_SKIP
+	giveitem SHINY_CHARM
+	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
 	givepoke MEWTWO, 100, LEFTOVERS
 	givepoke LUGIA, 100, WISE_GLASSES
@@ -255,12 +257,6 @@ endc
 	end
 
 if DEF(DEBUG)
-
-SetHallOfFameFlag:
-	; Enable the Pokégear map to cycle through all of Kanto
-	ld hl, StatusFlags
-	set 6, [hl] ; hall of fame
-	ret
 
 TeachHMSlaveMoves:
 	ld hl, PartyMon4Moves

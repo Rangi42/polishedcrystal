@@ -876,10 +876,10 @@ wDexListingCursorBackup:: ds 1
 wBackupDexListingCursor:: ds 1
 wBackupDexListingPage:: ds 1
 wDexCurrentLocation:: ds 1
-wPokedexStatus::
-	ds 1
+wPokedexStatus:: ds 1
+wDexMonShiny:: ds 1
 wPokedexDataEnd::
-	ds 4
+	ds 3
 
 wMiscEnd::
 
@@ -2137,7 +2137,7 @@ StatusFlags2::
 	; 3 - seen shamouti island
 	; 4 - bike shop call
 	; 5 - pokerus
-	; 6 - unused
+	; 6 - exorcised lav radio tower
 	; 7 - rockets in mahogany
 	ds 1
 

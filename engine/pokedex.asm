@@ -220,6 +220,8 @@ Pokedex_InitMainScreen: ; 4013c (10:413c)
 	call Pokedex_ResetBGMapMode
 	ld a, -1
 	ld [CurPartySpecies], a
+	xor a
+	ld [wDexMonShiny], a
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	call Pokedex_UpdateCursorOAM
@@ -309,6 +311,8 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	ld [hWX], a
 	call Pokedex_GetSelectedMon
 	ld [CurPartySpecies], a
+	xor a
+	ld [wDexMonShiny], a
 	ld a, SCGB_POKEDEX
 	call Pokedex_GetSGBLayout
 	ld a, [CurPartySpecies]
@@ -316,7 +320,12 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateDexEntryScreen: ; 40258 (10:4258)
+	ld a, [wCelebiEvent]
+	bit 4, a ; ENGINE_HAVE_SHINY_CHARM
+	ld de, DexEntryScreen_ArrowCursorData_ShinyCharm
+	jr nz, .ok
 	ld de, DexEntryScreen_ArrowCursorData
+.ok
 	call Pokedex_MoveArrowCursor
 	ld hl, hJoyPressed
 	ld a, [hl]
@@ -389,11 +398,18 @@ DexEntryScreen_ArrowCursorData: ; 402e8
 	dwcoord 6, 17
 	dwcoord 11, 17
 
+DexEntryScreen_ArrowCursorData_ShinyCharm:
+	db D_RIGHT | D_LEFT, 4
+	dwcoord 1, 17
+	dwcoord 6, 17
+	dwcoord 11, 17
+	dwcoord 15, 17
 
 DexEntryScreen_MenuActionJumptable: ; 402f2
 	dw Pokedex_Page
 	dw .Area
 	dw .Cry
+	dw .Shiny
 
 .Area: ; 402fa
 	call Pokedex_BlackOutBG
@@ -428,6 +444,15 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 .Cry: ; 40340
 	ld a, [CurPartySpecies]
 	jp PlayCry
+
+.Shiny:
+	ld hl, wDexMonShiny
+	ld a, [hl]
+	xor SHINY_MASK ; alternate 0 and SHINY_MASK
+	ld [hl], a
+	ld a, [CurPartySpecies]
+	ld a, SCGB_POKEDEX
+	jp Pokedex_GetSGBLayout
 
 Pokedex_RedisplayDexEntry: ; 4038d
 	call Pokedex_LoadGFX
@@ -1086,7 +1111,13 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	call Pokedex_PlaceString
 .done
 	hlcoord 0, 17
+
+	ld a, [wCelebiEvent]
+	bit 4, a ; ENGINE_HAVE_SHINY_CHARM
+	ld de, .MenuItemsShinyCharm
+	jr nz, .ok
 	ld de, .MenuItems
+.ok
 	call Pokedex_PlaceString
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
@@ -1100,6 +1131,8 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	db "Wt   ???kg", $ff ; WT   ???kg
 .MenuItems: ; 40867
 	db $3b, " Page Area Cry     ", $ff
+.MenuItemsShinyCharm:
+	db $3b, " Page Area Cry Shny", $ff
 
 Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	call Pokedex_FillBackgroundColor2

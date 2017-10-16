@@ -369,7 +369,8 @@ _CGB_Pokedex: ; 8f70
 	call LoadHLPaletteIntoDE
 	jr .got_palette
 .is_pokemon
-	call GetMonPalettePointer
+	ld bc, wDexMonShiny
+	call GetMonNormalOrShinyPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 .got_palette
 

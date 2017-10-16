@@ -149,6 +149,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
 * Add: Item icons in the Bag.
+* Add: Pokédex shows shiny palettes after getting the Shiny Charm.
 * Add: Phone call trainers ask automatically for your number.
 * Add: Replace Jigglypuff Poster with Marill Poster.
 * Add: Briefly beep to warn of low HP.
