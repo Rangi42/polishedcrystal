@@ -958,7 +958,7 @@ else
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/roof_overcast.pal"
 else
-rept 2
+rept 3
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO_NIGHT
 endr

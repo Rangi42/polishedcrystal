@@ -117,7 +117,6 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	call GiveFontOpaqueBackground
 	farcall HDMATransfer_OnlyTopFourRows
 .skip2
-	ld a, $80
 	ld a, $70
 	ld [rWY], a
 	ld [hWY], a

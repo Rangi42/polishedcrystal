@@ -537,13 +537,15 @@ Special_GetOvercastIndex::
 	jr z, .azalea_route_33
 	cp GROUP_LAKE_OF_RAGE ; GROUP_ROUTE_43
 	jr z, .lake_of_rage_route_43
+	cp GROUP_STORMY_BEACH ; GROUP_GOLDENROD_CITY, GROUP_ROUTE_34, GROUP_ROUTE_34_COAST
+	jr z, .stormy_beach
 .not_overcast:
 	xor a ; NOT_OVERCAST
 	ld [ScriptVar], a
 	ret
 
 .azalea_route_33:
-; Azalea Town or Route 33
+; Azalea Town and Route 33
 	ld a, [MapNumber]
 	cp MAP_AZALEA_TOWN
 	jr z, .azalea_town
@@ -566,26 +568,47 @@ Special_GetOvercastIndex::
 	ret
 
 .lake_of_rage_route_43:
-; Lake of Rage or Route 43
+; Lake of Rage and Route 43
 	ld a, [MapNumber]
 	cp MAP_LAKE_OF_RAGE
 	jr z, .lake_of_rage
 	cp MAP_ROUTE_43
 	jr nz, .not_overcast
 .lake_of_rage
-; Always overcast until civilians appear (Team ROcket beaten)
+; Always overcast until civilians appear (Team Rocket beaten)
 	eventflagcheck EVENT_LAKE_OF_RAGE_CIVILIANS
-	jr nz, .overcast
+	jr nz, .overcast_lake_of_rage
 ; Overcast on Monday, Wednesday, and Friday
 	call GetWeekday
 	cp MONDAY
-	jr z, .overcast
+	jr z, .overcast_lake_of_rage
 	cp WEDNESDAY
-	jr z, .overcast
+	jr z, .overcast_lake_of_rage
 	cp FRIDAY
 	jr nz, .not_overcast
-.overcast
+.overcast_lake_of_rage
 	ld a, LAKE_OF_RAGE_OVERCAST
+	ld [ScriptVar], a
+	ret
+
+.stormy_beach:
+; Stormy Beach or Goldenrod City, Route 34, and ROute 34 Coast
+	ld a, [MapNumber]
+; Stormy Beach is always overcast
+	cp MAP_STORMY_BEACH
+	jr z, .overcast_stormy_beach
+	cp MAP_ROUTE_34_COAST
+	jr z, .maybe_stormy_beach
+	cp MAP_ROUTE_34
+	jr z, .maybe_stormy_beach
+	cp MAP_GOLDENROD_CITY
+	jr nz, .not_overcast
+; Only overcast while Team Rocket is present
+	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
+	jr nz, .not_overcast
+.maybe_stormy_beach
+.overcast_stormy_beach
+	ld a, STORMY_BEACH_OVERCAST
 	ld [ScriptVar], a
 	ret
 

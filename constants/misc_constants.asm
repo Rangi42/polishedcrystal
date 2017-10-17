@@ -290,6 +290,7 @@ FISHSWARM_REMORAID EQU 2
 	const NOT_OVERCAST
 	const AZALEA_OVERCAST
 	const LAKE_OF_RAGE_OVERCAST
+	const STORMY_BEACH_OVERCAST
 
 ; see engine/npctrade.asm:NPCTrades
 	const_def
