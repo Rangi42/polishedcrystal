@@ -2776,25 +2776,7 @@ TownMapBGUpdate: ; 91ee4
 
 FillJohtoMap: ; 91eff
 	ld de, JohtoMap
-	call FillTownMap
-	hlcoord 16, 16
-	ld [hl], $3b ; Jo...
-	inc hl
-	ld [hl], $3c ; ...oh...
-	inc hl
-	ld [hl], $3d ; ...to
-	ret
-
-FillKantoMap: ; 91f04
-	ld de, KantoMap
-	call FillTownMap
-	hlcoord 16, 16
-	ld [hl], $3e ; Ka...
-	inc hl
-	ld [hl], $3f ; ...nt...
-	inc hl
-	ld [hl], $3d ; ...to
-	ret
+	jr FillTownMap
 
 FillOrangeMap:
 	ld de, OrangeMap
@@ -2824,6 +2806,8 @@ FillOrangeMap:
 	ld [hl], a
 	ret
 
+FillKantoMap: ; 91f04
+	ld de, KantoMap
 FillTownMap: ; 91f07
 	hlcoord 0, 0
 .loop
