@@ -66,21 +66,39 @@ endm
 
 MusicPlayerPals:
 if !DEF(MONOCHROME)
+; bg
 	RGB 02, 03, 04
 	RGB 02, 03, 04
 	RGB 10, 12, 14
 	RGB 26, 28, 30
+; green
+	RGB 02, 03, 04
+	RGB 02, 03, 04
+	RGB 06, 26, 06
+	RGB 26, 28, 30
+; blue
+	RGB 02, 03, 04
+	RGB 02, 03, 04
+	RGB 07, 07, 31
+	RGB 26, 28, 30
+; red
+	RGB 02, 03, 04
+	RGB 02, 03, 04
+	RGB 31, 07, 07
+	RGB 26, 28, 30
 else
+rept 4
 	RGB_MONOCHROME_BLACK
 	RGB_MONOCHROME_BLACK
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
+endr
 endc
 
 MusicPlayerNotePals:
 if !DEF(MONOCHROME)
 	RGB 02, 03, 04 ; bg
-	RGB 07, 31, 07 ; green
+	RGB 06, 26, 06 ; green
 	RGB 07, 07, 31 ; blue
 	RGB 31, 07, 07 ; red
 else
@@ -109,7 +127,7 @@ MusicPlayer::
 
 	ld hl, MusicPlayerPals
 	ld de, BGPals
-	ld bc, 1 palettes
+	ld bc, 4 palettes
 	call CopyBytes
 
 	ld hl, MusicPlayerNotePals
@@ -120,7 +138,22 @@ MusicPlayer::
 	pop af
 	ld [rSVBK], a
 
-	ld a, 1
+; Apply palettes
+	xor a
+	hlcoord 0, 0, AttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	call ByteFill
+	hlcoord 3, 17, AttrMap
+	ld [hl], $3
+	hlcoord 8, 17, AttrMap
+	ld [hl], $2
+	hlcoord 12, 17, AttrMap
+	ld [hl], $1
+	inc hl
+	ld [hl], $1
+
+	call ApplyAttrMap
+	ld a, $1
 	ld [hCGBPalUpdate], a
 
 	; refresh top two portions
@@ -2060,3 +2093,46 @@ SongArtists:
 	db "GRonnoc@"
 	db "Cat333Pokemon@"
 	db "NotFroggestSpirit@"
+
+ApplyAttrMap:
+; from engine/color.asm
+	ld a, [rLCDC]
+	bit 7, a
+	jr z, .UpdateVBank1
+	ld a, [hBGMapMode]
+	push af
+	ld a, $2
+	ld [hBGMapMode], a
+	call DelayFrame
+	call DelayFrame
+	call DelayFrame
+	call DelayFrame
+	pop af
+	ld [hBGMapMode], a
+	ret
+
+.UpdateVBank1:
+	hlcoord 0, 0, AttrMap
+	debgcoord 0, 0
+	ld b, SCREEN_HEIGHT
+	ld a, $1
+	ld [rVBK], a
+.row
+	ld c, SCREEN_WIDTH
+.col
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .col
+	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	add e
+	jr nc, .okay
+	inc d
+.okay
+	ld e, a
+	dec b
+	jr nz, .row
+	xor a
+	ld [rVBK], a
+	ret
