@@ -89,6 +89,7 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	playsound SFX_SANDSTORM
 	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	showtext SudowoodoAttackedText
+	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO

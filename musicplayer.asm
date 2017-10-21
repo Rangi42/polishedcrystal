@@ -40,28 +40,28 @@ jrheldbutton: macro
 ; assumes hl == hJoyDown
 	ld a, [TextDelayFrames]
 	and a
-	jr nz, \3
+	jr nz, .no\@
 	ld a, [hl]
 	and \1
-	jr z, \3
-	ld a, \4
+	jr z, .no\@
+	ld a, \3
 	ld [TextDelayFrames], a
 	jr \2
-\3:
+.no\@:
 endm
 
 jpheldbutton: macro
 ; assumes hl == hJoyDown
 	ld a, [TextDelayFrames]
 	and a
-	jr nz, \3
+	jr nz, .no\@
 	ld a, [hl]
 	and \1
-	jr z, \3
-	ld a, \4
+	jr z, .no\@
+	ld a, \3
 	ld [TextDelayFrames], a
 	jp \2
-\3:
+.no\@:
 endm
 
 MusicPlayerPals:
@@ -242,10 +242,10 @@ MusicPlayerLoop:
 
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
-	jrheldbutton D_UP, .up, .no_up, 12
-	jrheldbutton D_DOWN, .down, .no_down, 12
-	jrheldbutton D_LEFT, .left, .no_left, 12
-	jrheldbutton D_RIGHT, .right, .no_right, 12
+	jrheldbutton D_UP, .up, 12
+	jrheldbutton D_DOWN, .down, 12
+	jrheldbutton D_LEFT, .left, 12
+	jrheldbutton D_RIGHT, .right, 12
 	ld hl, hJoyPressed
 	jrbutton A_BUTTON, .a
 	jrbutton B_BUTTON, .b
@@ -351,8 +351,8 @@ MusicPlayerLoop:
 SongEditor:
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
-	jrheldbutton D_UP, .up, .no_up, 10
-	jpheldbutton D_DOWN, .down, .no_down, 10
+	jrheldbutton D_UP, .up, 10
+	jpheldbutton D_DOWN, .down, 10
 	ld hl, hJoyPressed
 	jrbutton D_LEFT, .left
 	jrbutton D_RIGHT, .right
@@ -589,10 +589,10 @@ AdjustTempo:
 .loop:
 	call MPUpdateUIAndGetJoypad
 	ld hl, hJoyDown
-	jrheldbutton D_UP, .up, .no_up, 6
-	jrheldbutton D_DOWN, .down, .no_down, 6
-	jrheldbutton D_RIGHT, .right, .no_right, 18
-	jrheldbutton D_LEFT, .left, .no_left, 18
+	jrheldbutton D_UP, .up, 6
+	jrheldbutton D_DOWN, .down, 6
+	jrheldbutton D_RIGHT, .right, 18
+	jrheldbutton D_LEFT, .left, 18
 	ld hl, hJoyPressed
 	jrbutton A_BUTTON, .a
 	jrbutton B_BUTTON, .b
@@ -1624,10 +1624,10 @@ SongSelector:
 	call DelayFrame
 	call MPGetJoypad
 	ld hl, hJoyDown
-	jrheldbutton D_UP, .up, .no_up, 6
-	jrheldbutton D_DOWN, .down, .no_down, 6
-	jrheldbutton D_LEFT, .left, .no_left, 18
-	jrheldbutton D_RIGHT, .right, .no_right, 18
+	jrheldbutton D_UP, .up, 6
+	jrheldbutton D_DOWN, .down, 6
+	jrheldbutton D_LEFT, .left, 18
+	jrheldbutton D_RIGHT, .right, 18
 	ld hl, hJoyPressed
 	jrbutton A_BUTTON, .a
 	jrbutton START | B_BUTTON, .start_b

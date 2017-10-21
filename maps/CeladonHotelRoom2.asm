@@ -25,8 +25,9 @@ CeladonHotelRoom2SuperNerdScript:
 	writetext .Text2
 	yesorno
 	iffalse_jumpopenedtext .Text5
-	takeitem BOTTLE_CAP
+	checkitem BOTTLE_CAP
 	iffalse_jumpopenedtext .Text5
+	takeitem BOTTLE_CAP
 	writetext .Text3
 	waitbutton
 	writetext .Text4

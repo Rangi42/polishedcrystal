@@ -24,6 +24,7 @@ RefreshSprites:: ; 14168
 	call GetPlayerSprite
 	call AddMapSprites
 	call LoadSpriteGFX
+	call SortUsedSprites
 	call ArrangeUsedSprites
 	jp MapCallbackSprites_LoadUsedSpritesGFX
 ; 1416f
@@ -376,6 +377,82 @@ LoadSpriteGFX: ; 14306
 	ld a, l
 	ret
 ; 1431e
+
+
+SortUsedSprites: ; 1431e
+; Bubble-sort sprites by type.
+
+; Overworld map sprite sets are assumed to be manually sorted.
+
+	call GetMapPermission
+	call CheckOutdoorMap
+	ret z
+
+; Run backwards through UsedSprites to find the last one.
+
+	ld c, SPRITE_GFX_LIST_CAPACITY
+	ld de, UsedSprites + (SPRITE_GFX_LIST_CAPACITY - 1) * 2
+.FindLastSprite:
+	ld a, [de]
+	and a
+	jr nz, .FoundLastSprite
+	dec de
+	dec de
+	dec c
+	jr nz, .FindLastSprite
+.FoundLastSprite:
+	dec c
+	ret z
+
+; If the length of the current sprite is
+; higher than a later one, swap them.
+
+	inc de
+	ld hl, UsedSprites + 1
+
+.CheckSprite:
+	push bc
+	push de
+	push hl
+
+.CheckFollowing:
+	ld a, [de]
+	cp [hl]
+	jr nc, .loop
+
+; Swap the two sprites.
+
+	ld b, a
+	ld a, [hl]
+	ld [hl], b
+	ld [de], a
+	dec de
+	dec hl
+	ld a, [de]
+	ld b, a
+	ld a, [hl]
+	ld [hl], b
+	ld [de], a
+	inc de
+	inc hl
+
+; Keep doing this until everything's in order.
+
+.loop
+	dec de
+	dec de
+	dec c
+	jr nz, .CheckFollowing
+
+	pop hl
+	inc hl
+	inc hl
+	pop de
+	pop bc
+	dec c
+	jr nz, .CheckSprite
+	ret
+; 14355
 
 
 ArrangeUsedSprites: ; 14355
