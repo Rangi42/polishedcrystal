@@ -73,7 +73,7 @@ RuinsofAlphOutsideTrigger0:
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock 10, 8, $bb
+	changeblock 10, 8, $9f
 .locked
 	return
 

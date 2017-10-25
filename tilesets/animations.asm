@@ -64,7 +64,7 @@ TilesetJohto1Anim:
 TilesetJohto2Anim:
 TilesetJohto4Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
-	dw VTiles2 tile $06, AnimateRainPuddleTile ; TODO: $1c
+	dw VTiles2 tile $1b, AnimateRainPuddleTile
 	dw VTiles2 tile $1c, AnimateRainWaterTile
 	dw NULL,  WaitTileAnimation
 	dw NULL,  AnimateFlowerTile
