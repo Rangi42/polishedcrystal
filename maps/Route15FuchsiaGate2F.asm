@@ -7,7 +7,7 @@ Route15FuchsiaGate2F_MapScriptHeader:
 Route15FuchsiaGate2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def 7, 7, 5, ROUTE_15_FUCHSIA_GATE
+	warp_def 7, 7, -1, ROUTE_15_FUCHSIA_GATE_2F
 
 .XYTriggers: db 0
 

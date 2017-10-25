@@ -653,7 +653,7 @@ RestoreFacingAfterWarp:: ; 248a
 	ld [XCoord], a
 	; destination warp number
 	ld a, [hli]
-	cp $ff
+	cp -1
 	jr nz, .skip
 	call .backup
 
