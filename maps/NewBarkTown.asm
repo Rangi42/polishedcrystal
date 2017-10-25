@@ -126,7 +126,6 @@ NewBarkTown_LyraFinalTrigger:
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	special Special_FadeOutMusic
 	pause 15

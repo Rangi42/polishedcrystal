@@ -104,7 +104,7 @@ Route29FinishTutorial:
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
-	playmapmusic
+	playmusic MUSIC_ROUTE_29
 	end
 
 Route29RefusedTutorial:

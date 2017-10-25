@@ -7,8 +7,8 @@ NavelRockInside_MapScriptHeader:
 NavelRockInside_MapEventHeader:
 
 .Warps: db 14
-	warp_def 87, 9, 3, NAVEL_ROCK_OUTSIDE
-	warp_def 67, 9, 3, NAVEL_ROCK_INSIDE
+	warp_def 81, 7, 3, NAVEL_ROCK_OUTSIDE
+	warp_def 64, 8, 3, NAVEL_ROCK_INSIDE
 	warp_def 3, 3, 2, NAVEL_ROCK_INSIDE
 	warp_def 5, 9, 5, NAVEL_ROCK_INSIDE
 	warp_def 85, 23, 4, NAVEL_ROCK_INSIDE
