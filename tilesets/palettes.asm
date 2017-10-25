@@ -100,8 +100,6 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_olivine_lighthouse_roof
 	cp TILESET_HOME_DECOR_STORE
 	jp z, .maybe_celadon_home_decor_store_4f
-	cp TILESET_JOHTO_3
-	jp z, .maybe_sinjoh_ruins
 	cp TILESET_JOHTO_1
 	jp z, .maybe_special_johto_1
 	cp TILESET_FOREST
@@ -111,7 +109,7 @@ LoadSpecialMapPalette: ; 494ac
 
 	farcall Special_GetOvercastIndex
 	and a
-	jr z, .do_nothing
+	jp z, .maybe_sinjoh_ruins
 	ld hl, OvercastBGPalette
 	jp .load_eight_time_of_day_bg_palettes
 

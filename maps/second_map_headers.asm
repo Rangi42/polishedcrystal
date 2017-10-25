@@ -558,7 +558,7 @@
 	map_header_2 LakeofRageMagikarpHouse, LAKE_OF_RAGE_MAGIKARP_HOUSE, $0, 0
 	map_header_2 Route43MahoganyGate, ROUTE_43_MAHOGANY_GATE, $0, 0
 	map_header_2 Route43Gate, ROUTE_43_GATE, $0, 0
-	map_header_2 SinjohRuins, SINJOH_RUINS, $2d, 0
+	map_header_2 SinjohRuins, SINJOH_RUINS, $d9, 0
 	map_header_2 SinjohRuinsHouse, SINJOH_RUINS_HOUSE, $0, 0
 	map_header_2 MystriStage, MYSTRI_STAGE, $0, 0
 	map_header_2 EmbeddedTower, EMBEDDED_TOWER, $0, 0
