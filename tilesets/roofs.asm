@@ -14,26 +14,28 @@ LoadMapGroupRoof:: ; 1c000
 	ld de, VTiles2 tile $0a
 	ld bc, 9 tiles
 	call CopyBytes
-; Terrible hack to load some tiles only visible in Olivine City instead of
-; some only visible in Goldenrod City
+; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
 	ld a, [wTileset]
 	cp TILESET_JOHTO_2
 	ret nz
 	ld a, [MapGroup]
-	cp GROUP_GOLDENROD_CITY ; GROUP_ROUTE_34
-	ret z
-	ld hl, NationalParkGateRoofGFX
-	ld de, VTiles2 tile $64
+	cp GROUP_STORMY_BEACH
+	ret nz
+	ld a, [rVBK]
+	push af
+	ld a, $1
+	ld [rVBK], a
+	ld hl, StormyBeachPuddleGFX
+	ld de, VTiles4 tile $c6
 	ld bc, 6 tiles
 	call CopyBytes
-	ld hl, FlowerBoxGFX
-	ld de, VTiles2 tile $74
-	ld bc, 4 tiles
+	ld hl, StormyBeachPuddleGFX + 6 tiles
+	ld de, VTiles4 tile $d6
+	ld bc, 6 tiles
 	call CopyBytes
-	ld hl, LedgeUpGFX
-	ld de, VTiles2 tile $06
-	ld bc, 1 tiles
-	jp CopyBytes
+	pop af
+	ld [rVBK], a
+	ret
 ; 1c021
 
 MapGroupRoofs: ; 1c021i
@@ -85,11 +87,5 @@ INCBIN "gfx/tilesets/roofs/4.2bpp"
 INCBIN "gfx/tilesets/roofs/5.2bpp"
 ; 1c30c
 
-NationalParkGateRoofGFX:
-INCBIN "gfx/tilesets/roofs/park_gate.2bpp"
-
-LedgeUpGFX:
-INCBIN "gfx/tilesets/roofs/ledge_up.2bpp"
-
-FlowerBoxGFX:
-INCBIN "gfx/tilesets/roofs/flower_box.2bpp"
+StormyBeachPuddleGFX:
+INCBIN "gfx/tilesets/roofs/puddle.2bpp"

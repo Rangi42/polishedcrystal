@@ -604,9 +604,9 @@ Special_GetOvercastIndex::
 	cp MAP_GOLDENROD_CITY
 	jr nz, .not_overcast
 ; Only overcast while Team Rocket is present
+.maybe_stormy_beach
 	eventflagcheck EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	jr nz, .not_overcast
-.maybe_stormy_beach
 .overcast_stormy_beach
 	ld a, STORMY_BEACH_OVERCAST
 	ld [ScriptVar], a
