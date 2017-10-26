@@ -49,7 +49,7 @@
 	tilecoll BUOY, BUOY, BUOY, WATER
 	tilecoll BUOY, BUOY, WATER, WATER
 	tilecoll BUOY, BUOY, WATER, BUOY
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, FLOOR, WALL, FLOOR
 	tilecoll BUOY, WATER, BUOY, WATER
 	tilecoll WATER, WATER, WATER, WATER
 	tilecoll WATER, BUOY, WATER, BUOY

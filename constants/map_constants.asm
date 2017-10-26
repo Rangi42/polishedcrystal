@@ -568,7 +568,7 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_30,                                   27, 10 ;  1
 	mapgroup ROUTE_31,                                    9, 20 ;  2
-	mapgroup CHERRYGROVE_BAY,                            19, 15 ;  3
+	mapgroup CHERRYGROVE_BAY,                            25, 15 ;  3
 	mapgroup CHERRYGROVE_CITY,                           10, 20 ;  4
 	mapgroup CHERRYGROVE_MART,                            4,  6 ;  5
 	mapgroup CHERRYGROVE_POKECENTER_1F,                   4,  6 ;  6

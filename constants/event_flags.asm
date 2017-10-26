@@ -2315,9 +2315,9 @@
 	const EVENT_ROUTE_49_CUT_TREE_1
 	const EVENT_ROUTE_49_CUT_TREE_2
 	const EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
+	const EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 ; Unused placeholder events
-	const EVENT_86C
 	const EVENT_86D
 	const EVENT_86E
 	const EVENT_86F

@@ -4,7 +4,7 @@
 
 	map_header_2 CherrygroveCity, CHERRYGROVE_CITY, $35, NORTH | WEST | EAST
 	connection north, ROUTE_30, Route30, 5, 0, 10
-	connection west, CHERRYGROVE_BAY, CherrygroveBay, -1, 8, 10
+	connection west, CHERRYGROVE_BAY, CherrygroveBay, -1, 14, 10
 	connection east, ROUTE_29, Route29, 0, 0, 9
 
 	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
@@ -75,7 +75,7 @@
 	connection north, VIOLET_CITY, VioletCity, 0, 0, 13
 	connection south, ROUTE_33, Route33, 0, 0, 10
 	connection west, MAGNET_TUNNEL_EAST, MagnetTunnelEast, 9, 0, 11
-	connection east, CHERRYGROVE_BAY, CherrygroveBay, 18, 0, 20
+	connection east, CHERRYGROVE_BAY, CherrygroveBay, 12, 0, 26
 
 	map_header_2 Route33, ROUTE_33, $5, NORTH | WEST
 	connection north, ROUTE_32, Route32, 0, 0, 10
@@ -346,8 +346,8 @@
 
 	map_header_2 CherrygroveBay, CHERRYGROVE_BAY, $35, SOUTH | WEST | EAST
 	connection south, ROUTE_32_COAST, Route32Coast, 0, 0, 15
-	connection west, ROUTE_32, Route32, -2, 16, 20
-	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10
+	connection west, ROUTE_32, Route32, -2, 10, 26
+	connection east, CHERRYGROVE_CITY, CherrygroveCity, 15, 0, 10
 
 	map_header_2 Route32Coast, ROUTE_32_COAST, $35, NORTH
 	connection north, CHERRYGROVE_BAY, CherrygroveBay, 0, 0, 15
