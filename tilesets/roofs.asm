@@ -16,7 +16,7 @@ LoadMapGroupRoof:: ; 1c000
 	call CopyBytes
 ; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
 	ld a, [wTileset]
-	cp TILESET_JOHTO_2
+	cp TILESET_JOHTO_MODERN
 	ret nz
 	ld a, [MapGroup]
 	cp GROUP_STORMY_BEACH

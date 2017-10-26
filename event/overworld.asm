@@ -323,11 +323,11 @@ CheckOverworldTileArrays: ; c840
 
 CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
-	dbw TILESET_JOHTO_1, .johto1
-	dbw TILESET_JOHTO_2, .johto2
-	dbw TILESET_JOHTO_4, .johto4
-	dbw TILESET_KANTO_1, .kanto1
-	dbw TILESET_KANTO_2, .kanto2
+	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
+	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_OVERCAST, .johto_overcast
+	dbw TILESET_KANTO, .kanto
+	dbw TILESET_INDIGO_PLATEAU, .indigo_plateau
 	dbw TILESET_PARK, .park
 	dbw TILESET_FOREST, .forest
 	dbw TILESET_SAFARI_ZONE, .safari_zone
@@ -338,16 +338,16 @@ CutGrassBlockPointers: ; c862
 
 ; Which meta tile are we facing, which should we replace it with, and which animation?
 
-.shamouti_island ; Shamouti Island
+.shamouti_island
 	db $95, $4c, $01
-.johto1 ; Johto OW
-.johto2 ; Goldenrod area
-.johto4 ; Lake of Rage
-.valencia_island ; Valencia Island
+.johto_traditional
+.johto_modern
+.johto_overcast
+.valencia_island
 	db $03, $02, $01
 	db -1
 
-.kanto1 ; Kanto OW
+.kanto
 	db $94, $0a, $01
 	db $95, $0a, $01
 	db $96, $0a, $01
@@ -358,16 +358,16 @@ CutGrassBlockPointers: ; c862
 	db $9d, $0a, $01
 	db $a0, $0a, $01
 	db $a1, $0a, $01
-.kanto2 ; Route 23
+.indigo_plateau
 	db $0b, $0a, $01
 	db -1
 
-.park ; National Park
+.park
 	db $03, $04, $01
 	db $13, $03, $01
 	db -1
 
-.forest ; Ilex Forest + Yellow Forest
+.forest
 	db $03, $01, $01
 	db $07, $05, $01
 	db $13, $11, $01
@@ -377,7 +377,7 @@ CutGrassBlockPointers: ; c862
 	db $57, $0b, $01
 	db -1
 
-.safari_zone ; Safari Zone
+.safari_zone
 	db $03, $01, $01
 	db $07, $03, $01
 	db $24, $20, $01
@@ -395,7 +395,7 @@ CutGrassBlockPointers: ; c862
 	db $4b, $27, $01
 	db -1
 
-.faraway_island ; Faraway Island
+.faraway_island
 	db $03, $02, $01
 	db $08, $74, $01
 	db $09, $75, $01
@@ -408,18 +408,18 @@ CutGrassBlockPointers: ; c862
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4
-	dbw TILESET_JOHTO_1, .johto1
-	dbw TILESET_JOHTO_2, .johto2
-	dbw TILESET_JOHTO_4, .johto4
+	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
+	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_OVERCAST, .johto_overcast
 	db -1
 
-.johto1
+.johto_traditional
 	db $07, $36, $00
 	db $9f, $31, $00
 	db -1
 
-.johto2
-.johto4
+.johto_modern
+.johto_overcast
 	db $83, $36, $00
 	db -1
 

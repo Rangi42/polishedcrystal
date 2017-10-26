@@ -33,7 +33,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_POKECOM_CENTER
 	jp z, .load_eight_bg_palettes
 	ld hl, BattleTowerPalette
-	cp TILESET_BATTLE_TOWER_IN
+	cp TILESET_BATTLE_TOWER_INSIDE
 	jp z, .load_eight_bg_palettes
 	ld hl, GatePalette
 	cp TILESET_GATE
@@ -69,11 +69,11 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .ice_path_or_hall_of_fame
 	cp TILESET_RADIO_TOWER
 	jp z, .radio_towers
-	cp TILESET_GYM_1
+	cp TILESET_GYM
 	jp z, .maybe_elite_room
-	cp TILESET_GYM_2
+	cp TILESET_MAGNET_TRAIN
 	jp z, .maybe_viridian_gym
-	cp TILESET_OLIVINE_GYM
+	cp TILESET_CHAMPIONS_ROOM
 	jp z, .maybe_lances_room
 	cp TILESET_PORT
 	jp z, .maybe_cerulean_gym
@@ -81,7 +81,7 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_saffron_gym
 	cp TILESET_UNDERGROUND
 	jp z, .maybe_fuchsia_gym
-	cp TILESET_TRADITIONAL
+	cp TILESET_TRADITIONAL_HOUSE
 	jp z, .maybe_charcoal_kiln
 	cp TILESET_LAB
 	jp z, .maybe_lab_or_dragon_shrine
@@ -100,7 +100,7 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_olivine_lighthouse_roof
 	cp TILESET_HOME_DECOR_STORE
 	jp z, .maybe_celadon_home_decor_store_4f
-	cp TILESET_JOHTO_1
+	cp TILESET_JOHTO_TRADITIONAL
 	jp z, .maybe_special_johto_1
 	cp TILESET_FOREST
 	jp z, .maybe_special_forest
