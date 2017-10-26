@@ -9358,7 +9358,7 @@ CheckPluralTrainer:
 	ret
 
 AutomaticRainWhenOvercast:
-	farcall Special_GetOvercastIndex
+	call GetOvercastIndex
 	and a
 	ret z
 	ld a, WEATHER_RAIN

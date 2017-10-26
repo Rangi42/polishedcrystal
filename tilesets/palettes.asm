@@ -107,7 +107,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
 
-	farcall Special_GetOvercastIndex
+	call GetOvercastIndex
 	and a
 	jp z, .maybe_sinjoh_ruins
 	ld hl, OvercastBGPalette
@@ -1876,7 +1876,7 @@ InitLinkTradePalMap: ; 49856
 ; 4985a
 
 LoadSpecialMapOBPalette:
-	farcall Special_GetOvercastIndex
+	call GetOvercastIndex
 	and a
 	jr z, .not_overcast
 	ld hl, OvercastOBPalette
