@@ -1106,7 +1106,13 @@ HandleStoneQueue:: ; 3567
 	ld a, [hld]
 	cp d
 	jr nz, .not_on_warp
-	jr .found_warp
+	pop af
+	ld d, a
+	ld a, [wCurrMapWarpCount]
+	sub d
+	inc a
+	scf
+	ret
 
 .not_on_warp
 	ld a, 5
@@ -1123,19 +1129,9 @@ HandleStoneQueue:: ; 3567
 .nope2
 	and a
 	ret
-
-.found_warp
-	pop af
-	ld d, a
-	ld a, [wCurrMapWarpCount]
-	sub d
-	inc a
-	scf
-	ret
 ; 35de
 
 .IsObjectInStoneTable: ; 35de
-	inc e
 	ld hl, CMDQUEUE_ADDR
 	add hl, bc
 	ld a, [hli]
