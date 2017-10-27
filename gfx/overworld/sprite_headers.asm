@@ -506,7 +506,7 @@ GameCubeSprite:
 	sprite_header GameCubeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
 WiiSprite:
-	sprite_header WiiSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE
+	sprite_header WiiSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 SilverTrophySprite:
 	sprite_header SilverTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_SILVER

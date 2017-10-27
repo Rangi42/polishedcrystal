@@ -86,7 +86,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_LAB
 	jp z, .maybe_lab_or_dragon_shrine
 	cp TILESET_TUNNEL
-	jp z, .maybe_lightning_island
+	jp z, .maybe_lightning_island_or_magnet_tunnel
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
 	ld hl, CinnabarLabPalette
@@ -301,14 +301,24 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, DragonShrinePalette
 	jp .load_eight_bg_palettes
 
-.maybe_lightning_island
+.maybe_lightning_island_or_magnet_tunnel
 	ld a, [MapGroup]
 	cp GROUP_LIGHTNING_ISLAND
-	jp nz, .do_nothing
+	jr nz, .not_lightning_island
 	ld a, [MapNumber]
 	cp MAP_LIGHTNING_ISLAND
-	jp nz, .do_nothing
+	jr nz, .not_lightning_island
 	ld hl, LightningIslandPalette
+	jp .load_eight_bg_palettes
+
+.not_lightning_island
+	ld a, [MapGroup]
+	cp GROUP_MAGNET_TUNNEL_INSIDE
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_MAGNET_TUNNEL_INSIDE
+	jp nz, .do_nothing
+	ld hl, MagnetTunnelPalette
 	jp .load_eight_bg_palettes
 
 .maybe_viridian_gym
@@ -1108,6 +1118,31 @@ endr
 	RGB_MONOCHROME_BLACK
 rept 4
 	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+MagnetTunnelPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/magnet_tunnel.pal"
+else
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
 endr
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
@@ -1969,6 +2004,16 @@ LoadSpecialMapOBPalette:
 	jr .load_rock_palette
 
 .not_mount_moon_square:
+	ld a, [MapGroup]
+	cp GROUP_MAGNET_TUNNEL_INSIDE
+	jr nz, .not_magnet_tunnel
+	ld a, [MapNumber]
+	cp MAP_MAGNET_TUNNEL_INSIDE
+	jr nz, .not_magnet_tunnel
+	ld hl, UnknBGPals palette PAL_BG_GRAY
+	jr .load_rock_palette
+
+.not_magnet_tunnel
 	ld a, [MapGroup]
 	ld b, a
 	ld a, [MapNumber]
