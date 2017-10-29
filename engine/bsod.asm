@@ -43,10 +43,17 @@ BSOD: ; 4ea82
 ; 4eac5
 
 .Palette:
-	RGB 31, 31, 31
-	RGB 31, 31, 31
+if !DEF(MONOCHROME)
 	RGB 00, 00, 31
 	RGB 00, 00, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+endc
 
 .Message: ; 4eb38
 	db   "      Pokémon"
