@@ -724,9 +724,7 @@ LastEnemyMove::
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
 wGivingExperienceToExpShareHolders:: ds 1
-wBackupEnemyMonBaseStats:: ds 5
-wBackupEnemyMonCatchRate:: db
-wBackupEnemyMonBaseExp:: db
+	ds 7
 wPlayerFutureSightDamage:: ds 2
 wEnemyFutureSightDamage:: ds 2
 ; rage counters unused, Rage is now attack stage boosts again

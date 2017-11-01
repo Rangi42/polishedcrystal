@@ -189,6 +189,7 @@ if DEF(DEBUG)
 	giveitem CALCIUM, 99
 	giveitem ZINC, 99
 	giveitem MASTER_BALL, 99
+	giveitem EXP_SHARE, 2
 	setflag ENGINE_CREDITS_SKIP
 	giveitem SHINY_CHARM
 	setflag ENGINE_HAVE_SHINY_CHARM

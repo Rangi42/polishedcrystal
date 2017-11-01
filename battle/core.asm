@@ -2094,14 +2094,21 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 	ld a, [wBattleResult]
 	and $c0
 	ld [wBattleResult], a
+; fallthrough
 
 GiveExperiencePointsAfterCatch:
+; give experience to participants
+	xor a
+	ld [wGivingExperienceToExpShareHolders], a
+	call GiveExperiencePoints
 	call IsAnyMonHoldingExpShare
+	ret z
+; give experience to Exp.Share holders
 	ld a, [wBattleParticipantsNotFainted]
 	push af
-	or d
+	ld a, d
 	ld [wBattleParticipantsNotFainted], a
-	xor a
+	ld a, $1
 	ld [wGivingExperienceToExpShareHolders], a
 	call GiveExperiencePoints
 	pop af
