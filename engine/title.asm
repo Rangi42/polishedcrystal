@@ -32,7 +32,7 @@ _TitleScreen: ; 10ed67
 
 ; Clear screen palettes
 	hlbgcoord 0, 0
-	ld bc, 20 bgrows
+	ld bc, SCREEN_WIDTH bgrows
 	xor a
 	call ByteFill
 
@@ -116,20 +116,20 @@ _TitleScreen: ; 10ed67
 
 ; Draw Pokemon logo
 	hlcoord 0, 3
-	lb bc, 7, 20
-	lb de, $80, $14
+	lb bc, 7, SCREEN_WIDTH
+	lb de, $80, SCREEN_WIDTH
 	call DrawTitleGraphic
 
 ; Draw copyright text
 	hlbgcoord 4, 0, VBGMap1
 	lb bc, 1, 13
-	lb de, $c, $10
+	lb de, $0c, 0
 	call DrawTitleGraphic
 
 IF DEF(FAITHFUL)
 	hlbgcoord 17, 0, VBGMap1
 	lb bc, 1, 1
-	lb de, $19, $10
+	lb de, $19, 0
 	call DrawTitleGraphic
 endc
 
@@ -170,26 +170,10 @@ endc
 	ld a, BANK(LYOverrides)
 	ld [rSVBK], a
 
-; Make alternating lines come in from opposite sides
-
-; ( This part is actually totally pointless, you can't
-;   see anything until these values are overwritten!  )
-
-	ld b, 80 / 2 ; alternate for 80 lines
+; Make sure the LYOverrides buffer is empty
 	ld hl, LYOverrides
-.loop
-; $00 is the middle position
-	ld [hl], +112 ; coming from the left
-	inc hl
-	ld [hl], -112 ; coming from the right
-	inc hl
-	dec b
-	jr nz, .loop
-
-; Make sure the rest of the buffer is empty
-	ld hl, LYOverrides + 80
 	xor a
-	ld bc, LYOverridesEnd - (LYOverrides + 80)
+	ld bc, LYOverridesEnd - LYOverrides
 	call ByteFill
 
 ; Let LCD Stat know we're messing around with SCX
