@@ -1012,7 +1012,7 @@ StartTitleScreen: ; 6219
 	ld a, $5
 	ld [rSVBK], a
 
-	call .TitleScreen
+	farcall _TitleScreen
 	call DelayFrame
 .loop
 	call RunTitleScreen
@@ -1039,7 +1039,7 @@ StartTitleScreen: ; 6219
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call UpdateTimePals
-	ld a, [wcf64]
+	ld a, [wIntroSceneFrameCounter]
 	cp $6
 	jr c, .ok
 	xor a
@@ -1064,10 +1064,6 @@ StartTitleScreen: ; 6219
 	dw ResetInitialOptions
 ; 6274
 
-
-.TitleScreen: ; 6274
-	farjp _TitleScreen
-; 627b
 
 RunTitleScreen: ; 627b
 	ld a, [wJumptableIndex]
@@ -1246,7 +1242,7 @@ TitleScreenMain: ; 6304
 	ret
 
 .done
-	ld [wcf64], a
+	ld [wIntroSceneFrameCounter], a
 ; Return to the intro sequence.
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -1298,7 +1294,7 @@ TitleScreenEnd: ; 6375
 	ret nz
 
 	ld a, 2
-	ld [wcf64], a
+	ld [wIntroSceneFrameCounter], a
 
 ; Back to the intro.
 	ld hl, wJumptableIndex

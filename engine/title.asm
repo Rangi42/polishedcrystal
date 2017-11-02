@@ -10,10 +10,10 @@ _TitleScreen: ; 10ed67
 
 ; Reset timing variables
 	ld hl, wJumptableIndex
-	ld [hli], a ; cf63 ; Scene?
-	ld [hli], a ; cf64
-	ld [hli], a ; cf65 ; Timer lo
-	ld [hl], a  ; cf66 ; Timer hi
+	ld [hli], a ; wJumptableIndex
+	ld [hli], a ; wIntroSceneFrameCounter
+	ld [hli], a ; wTitleScreenTimerLo
+	ld [hl], a  ; wTitleScreenTimerHi
 
 ; Turn LCD off
 	call DisableLCD
@@ -150,12 +150,12 @@ endc
 ; Update palette colors
 	ld hl, TitleScreenPalettes
 	ld de, UnknBGPals
-	ld bc, 4 * 32
+	ld bc, 16 palettes
 	call CopyBytes
 
 	ld hl, TitleScreenPalettes
 	ld de, BGPals
-	ld bc, 4 * 32
+	ld bc, 16 palettes
 	call CopyBytes
 
 ; Restore WRAM bank
@@ -270,7 +270,7 @@ LoadSuicuneFrame: ; 10eed2
 	ld a, SCREEN_WIDTH - 8
 	add l
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 	ld a, 8
