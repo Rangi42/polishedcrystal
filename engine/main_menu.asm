@@ -42,21 +42,23 @@ MainMenu: ; 49cdc
 .Strings: ; 49d24
 	db "Continue@"
 	db "New Game@"
+	db "New Game+@"
 	db "Options@"
 	db "Music Player@"
 
 .Jumptable: ; 0x49d60
-
 	dw MainMenu_Continue
 	dw MainMenu_NewGame
+	dw MainMenu_NewGamePlus
 	dw MainMenu_Options
 	dw MainMenu_MusicPlayer
 ; 0x49d6c
 
 CONTINUE       EQU 0
 NEW_GAME       EQU 1
-OPTION         EQU 2
-MUSIC_PLAYER   EQU 3
+NEW_GAME_PLUS  EQU 2
+OPTION         EQU 3
+MUSIC_PLAYER   EQU 4
 
 MainMenuItems:
 ; .NewGameMenu: ; 0x49d6c
@@ -72,6 +74,14 @@ MainMenuItems:
 	db OPTION
 	db MUSIC_PLAYER
 	db -1
+; .NewGamePlusMenu:
+	db 5
+	db CONTINUE
+	db NEW_GAME
+	db NEW_GAME_PLUS
+	db OPTION
+	db MUSIC_PLAYER
+	db -1
 
 MainMenu_GetWhichMenu: ; 49da4
 	ld a, [wSaveFileExists]
@@ -81,7 +91,20 @@ MainMenu_GetWhichMenu: ; 49da4
 	ret
 
 .next
+	ld a, BANK(sPlayerData)
+	call GetSRAMBank
+	ld hl, sPlayerData + (EventFlags + (EVENT_BEAT_LEAF >> 3)) - wPlayerData
+	ld de, EventFlags + (EVENT_BEAT_LEAF >> 3)
+	ld a, [hl]
+	ld [de], a
+	call CloseSRAM
+	eventflagcheck EVENT_BEAT_LEAF
+	jr nz, .next2
 	ld a, $1 ; Continue
+	ret
+
+.next2
+	ld a, $2 ; New Game+
 	ret
 ; 49de4
 
@@ -156,7 +179,7 @@ MainMenu_PrintCurrentTimeAndDay: ; 49e09
 if DEF(NO_RTC)
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
-	ld hl, sPlayerData + (wNoRTC - wPlayerData)
+	ld hl, sPlayerData + wNoRTC - wPlayerData
 	ld de, wNoRTC
 	ld bc, 5
 	call CopyBytes
@@ -229,6 +252,9 @@ Function49ed0: ; 49ed0
 MainMenu_NewGame: ; 49ee0
 	farjp NewGame
 ; 49ee7
+
+MainMenu_NewGamePlus:
+	farjp NewGamePlus
 
 MainMenu_Options: ; 49ee7
 	farjp OptionsMenu

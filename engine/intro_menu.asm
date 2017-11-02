@@ -77,9 +77,18 @@ OptionsMenu: ; 5b64
 	farjp _OptionsMenu
 ; 5b6b
 
+NewGamePlus:
+	xor a
+	ld [hBGMapMode], a
+	farcall TryLoadSaveFile
+	ret c
+	jr _NewGame_FinishSetup
+
 NewGame: ; 5b6b
 	xor a
-	ld [wMonStatusFlags], a
+	ld [hBGMapMode], a
+	call ResetWRAM_NotPlus
+_NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
 	call SetInitialOptions
@@ -96,14 +105,33 @@ NewGame: ; 5b6b
 	jp FinishContinueFunction
 ; 5b8f
 
-ResetWRAM: ; 5ba7
+ResetWRAM_NotPlus:
 	xor a
-	ld [hBGMapMode], a
-	jp _ResetWRAM
-; 5bae
+	ld [wSaveFileExists], a
+	ld [wSavedAtLeastOnce], a
 
-_ResetWRAM: ; 5bae
+	ld [BattlePoints], a
 
+	ld [wCurBox], a
+
+	call SetDefaultBoxNames
+
+	ld a, BANK(sBoxCount)
+	call GetSRAMBank
+	ld hl, sBoxCount
+	call _ResetWRAM_InitList
+	call CloseSRAM
+
+START_MONEY EQU 3000
+	ld hl, Money
+	ld [hl], START_MONEY / $10000
+	inc hl
+	ld [hl], START_MONEY / $100 % $100
+	inc hl
+	ld [hl], START_MONEY % $100
+	ret
+
+ResetWRAM: ; 5ba7
 	ld hl, Sprites
 	ld bc, Options1 - Sprites
 	xor a
@@ -114,8 +142,21 @@ _ResetWRAM: ; 5bae
 	xor a
 	call ByteFill
 
+	; erase wGameData, but keep Money, wCurBox, wBoxNames, and BattlePoints
 	ld hl, wGameData
-	ld bc, wGameDataEnd - wGameData
+	ld bc, Money - wGameData
+	xor a
+	call ByteFill
+	ld hl, MoneyEnd
+	ld bc, wCurBox - MoneyEnd
+	xor a
+	call ByteFill
+	ld hl, wBoxNamesEnd
+	ld bc, BattlePoints - wBoxNamesEnd
+	xor a
+	call ByteFill
+	ld hl, BattlePoints + 1
+	ld bc, wGameDataEnd - (BattlePoints + 1)
 	xor a
 	call ByteFill
 
@@ -138,38 +179,30 @@ _ResetWRAM: ; 5bae
 	ld [wSecretID + 1], a
 
 	ld hl, PartyCount
-	call .InitList
+	call _ResetWRAM_InitList
 
 	xor a
-	ld [wCurBox], a
-	ld [wSavedAtLeastOnce], a
+	ld [wMonStatusFlags], a
+
 	ld [PlayerGender], a
 
-	call SetDefaultBoxNames
-
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld hl, sBoxCount
-	call .InitList
-	call CloseSRAM
-
 	ld hl, NumItems
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, NumMedicine
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, NumBalls
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, NumBerries
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, NumKeyItems
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, PCItems
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, TMsHMs
 	xor a
@@ -201,30 +234,17 @@ endr
 	ld [Coins], a
 	ld [Coins + 1], a
 
-	ld [BattlePoints], a
-
 	ld [RegisteredItem], a
 
-START_MONEY EQU 3000
-
-IF START_MONEY / $10000
-	ld a, START_MONEY / $10000
-ENDC
-	ld [Money], a
-	ld a, START_MONEY / $100 % $100
-	ld [Money + 1], a
-	ld a, START_MONEY % $100
-	ld [Money + 2], a
-
-	xor a
 	ld [wWhichMomItem], a
 
+START_ITEM_TRIGGER_BALANCE EQU 2300
 	ld hl, MomItemTriggerBalance
-	ld [hl], 2300 / $10000
+	ld [hl], START_ITEM_TRIGGER_BALANCE / $10000
 	inc hl
-	ld [hl], 2300 / $100 % $100
+	ld [hl], START_ITEM_TRIGGER_BALANCE / $100 % $100
 	inc hl
-	ld [hl], 2300 % $100
+	ld [hl], START_ITEM_TRIGGER_BALANCE % $100
 
 	call InitializeNPCNames
 
@@ -235,7 +255,7 @@ ENDC
 	jp ResetGameTime
 ; 5ca1
 
-.InitList: ; 5ca1
+_ResetWRAM_InitList: ; 5ca1
 ; Loads 0 in the count and -1 in the first item or mon slot.
 	xor a
 	ld [hli], a

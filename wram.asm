@@ -2141,9 +2141,9 @@ StatusFlags2::
 
 Money::
 	ds 3
-
 wMomsMoney::
 	ds 3
+MoneyEnd::
 wMomSavingMoney::
 	ds 1
 
@@ -2365,9 +2365,8 @@ EventFlags::
 
 wCurBox::
 	ds 1
-
-; 8 chars + $50
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
+wBoxNamesEnd::
 
 wCelebiEvent:: ds 1
 	ds 1
