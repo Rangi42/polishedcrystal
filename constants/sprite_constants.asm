@@ -293,7 +293,7 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 ; for party menu icons
 const_value SET PAL_OW_SILVER
 	const PAL_OW_GRAY   ; 5
-	const PAL_OW_YELLOW ; 6
+	const PAL_OW_PINK   ; 6
 	const PAL_OW_TEAL   ; 7
 
 ; sprite movement data table indices

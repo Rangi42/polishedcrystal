@@ -1610,10 +1610,10 @@ if !DEF(MONOCHROME)
 	RGB 31, 19, 10
 	RGB 13, 13, 13
 	RGB 00, 00, 00
-; yellow
+; pink
 	RGB 27, 31, 27
 	RGB 31, 19, 10
-	RGB 31, 29, 00
+	RGB 31, 10, 11
 	RGB 00, 00, 00
 ; teal
 	RGB 27, 31, 27
