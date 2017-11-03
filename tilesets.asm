@@ -307,15 +307,6 @@ INCBIN "tilesets/gym3_metatiles.bin"
 TilesetGym3Coll::
 INCLUDE "tilesets/gym3_collision.asm"
 
-TilesetKanto2GFX::
-INCBIN "gfx/tilesets/kanto2.2bpp.lz"
-
-TilesetKanto2Meta::
-INCBIN "tilesets/kanto2_metatiles.bin"
-
-TilesetKanto2Coll::
-INCLUDE "tilesets/kanto2_collision.asm"
-
 TilesetWarehouseGFX::
 INCBIN "gfx/tilesets/warehouse.2bpp.lz"
 
@@ -424,3 +415,15 @@ INCBIN "tilesets/johto4_metatiles.bin"
 
 TilesetJohto4Coll::
 INCLUDE "tilesets/johto4_collision.asm"
+
+
+SECTION "Tileset Data 16", ROMX
+
+TilesetKanto2GFX::
+INCBIN "gfx/tilesets/kanto2.2bpp.lz"
+
+TilesetKanto2Meta::
+INCBIN "tilesets/kanto2_metatiles.bin"
+
+TilesetKanto2Coll::
+INCLUDE "tilesets/kanto2_collision.asm"
