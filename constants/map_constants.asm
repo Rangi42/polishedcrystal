@@ -540,7 +540,6 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE,         4,  4 ; 13
 	mapgroup ROUTE_27_REST_HOUSE,                         4,  4 ; 14
 	mapgroup ROUTE_29_46_GATE,                            4,  5 ; 15
-	mapgroup RPP, 28, 21
 
 	newgroup                                                    ; 25
 

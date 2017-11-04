@@ -120,6 +120,3 @@ INCLUDE "tilesets/valencia_palette_map.asm"
 
 TilesetJohto4PalMap:
 INCLUDE "tilesets/johto4_palette_map.asm"
-
-TilesetRPPPalMap:
-INCLUDE "tilesets/rpp_palette_map.asm"
