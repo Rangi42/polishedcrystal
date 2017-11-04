@@ -230,7 +230,7 @@ CopyCurCoordsToNextCoords: ; 462a
 UpdateTallGrassFlags: ; 463f
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 3, [hl] ; is current tile grass?
+	bit OVERHEAD, [hl]
 	jr z, .ok
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
@@ -244,20 +244,19 @@ UpdateTallGrassFlags: ; 463f
 ; 4661
 
 SetTallGrassFlags: ; 4661
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	cp COLL_OVERHEAD
+	jr z, .set
 	cp COLL_LONG_GRASS
 	jr z, .set
 	cp COLL_TALL_GRASS
-	jr nz, .reset
-.set
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	set 3, [hl]
+	jr z, .set
+	res OVERHEAD, [hl]
 	ret
 
-.reset
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	res 3, [hl]
+.set
+	set OVERHEAD, [hl]
 	ret
 ; 4679
 
@@ -1078,7 +1077,7 @@ NPCJump: ; 4b86
 	call GetNextTile
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 3, [hl]
+	res OVERHEAD, [hl]
 	jp IncrementObjectStructField28
 
 .Land:
@@ -1117,7 +1116,7 @@ PlayerJump: ; 4bbf
 	call CopyNextCoordsTileToStandingCoordsTile
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 3, [hl]
+	res OVERHEAD, [hl]
 	ld hl, wPlayerStepFlags
 	set 6, [hl]
 	set 4, [hl]
@@ -1183,7 +1182,7 @@ TeleportFrom: ; 4c18
 	ld [hl], 16
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 3, [hl]
+	res OVERHEAD, [hl]
 	call IncrementObjectStructField28
 .DoSpinRise:
 	ld hl, OBJECT_ACTION
@@ -2785,7 +2784,7 @@ PRIORITY_HIGH EQU $30
 	or d
 	ld d, a
 	xor a
-	bit 3, e
+	bit OVERHEAD, e
 	jr z, .skip4
 	or %10000000
 .skip4

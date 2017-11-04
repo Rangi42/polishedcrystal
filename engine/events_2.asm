@@ -91,7 +91,6 @@ CheckFacingTileEvent:: ; 97c5f
 
 RandomEncounter:: ; 97cc0
 ; Random encounter
-
 	call CheckWildEncounterCooldown
 	jr c, .nope
 	call CanUseSweetScent
@@ -101,31 +100,24 @@ RandomEncounter:: ; 97cc0
 	jr nz, .bug_contest
 	farcall TryWildEncounter
 	jr nz, .nope
-	jr .ok
+.ok
+	ld a, BANK(WildBattleScript)
+	ld hl, WildBattleScript
+.done
+	call CallScript
+	scf
+	ret
 
 .bug_contest
 	call _TryWildEncounter_BugContest
 	jr nc, .nope
-	jr .ok_bug_contest
-
-.nope
-	ld a, 1
-	and a
-	ret
-
-.ok
-	ld a, BANK(WildBattleScript)
-	ld hl, WildBattleScript
-	jr .done
-
-.ok_bug_contest
 	ld a, BANK(BugCatchingContestBattleScript)
 	ld hl, BugCatchingContestBattleScript
 	jr .done
 
-.done
-	call CallScript
-	scf
+.nope
+	ld a, 1
+	and a
 	ret
 ; 97cf9
 

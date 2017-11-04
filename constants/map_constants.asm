@@ -887,10 +887,13 @@ NUM_SPAWNS EQU const_value
 	const PALETTE_MORN
 	const PALETTE_DARK
 
-INVISIBLE    EQU 0
+; ObjectFlags1
 FIXED_FACING EQU 2
 SLIDING      EQU 3
 EMOTE_OBJECT EQU 7
+; ObjectFlags2
+INVISIBLE    EQU 0
+OVERHEAD     EQU 3
 
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
