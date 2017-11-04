@@ -29,6 +29,9 @@ LoadSpecialMapPalette: ; 494ac
 
 	ld a, [wTileset]
 
+	ld hl, RppPalette
+	cp TILESET_RPP
+	jp z, .load_eight_bg_palettes
 	ld hl, PokeComPalette
 	cp TILESET_POKECOM_CENTER
 	jp z, .load_eight_bg_palettes
@@ -546,6 +549,9 @@ LoadSpecialMapPalette: ; 494ac
 	call FarCopyWRAM
 	scf
 	ret
+
+RppPalette:
+INCLUDE "tilesets/palettes/rpp.pal"
 
 PokeComPalette:
 if !DEF(MONOCHROME)
@@ -1926,6 +1932,8 @@ LoadSpecialMapOBPalette:
 
 .not_overcast
 	ld a, [wTileset]
+	cp TILESET_RPP
+	jr z, .load_bg_tree_palette
 	cp TILESET_SHAMOUTI_ISLAND
 	jr z, .load_bg_tree_palette
 	cp TILESET_SAFARI_ZONE

@@ -805,6 +805,7 @@
 	map_header_2 PewterMuseumOfScience1F, PEWTER_MUSEUM_OF_SCIENCE_1F, $0, 0
 	map_header_2 PewterMuseumOfScience2F, PEWTER_MUSEUM_OF_SCIENCE_2F, $0, 0
 	map_header_2 ViridianForest, VIRIDIAN_FOREST, $45, 0
+	map_header_2 Rpp, RPP, $0, 0
 	map_header_2 ViridianForestViridianGate, VIRIDIAN_FOREST_VIRIDIAN_GATE, $0, 0
 	map_header_2 ViridianForestPewterGate, VIRIDIAN_FOREST_PEWTER_GATE, $0, 0
 	map_header_2 Route1ViridianGate, ROUTE_1_VIRIDIAN_GATE, $0, 0

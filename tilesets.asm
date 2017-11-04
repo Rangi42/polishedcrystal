@@ -427,3 +427,15 @@ INCBIN "tilesets/kanto2_metatiles.bin"
 
 TilesetKanto2Coll::
 INCLUDE "tilesets/kanto2_collision.asm"
+
+
+SECTION "Tileset Data 17", ROMX
+
+TilesetRPPGFX::
+INCBIN "gfx/tilesets/rpp.2bpp.lz"
+
+TilesetRPPMeta::
+INCBIN "tilesets/rpp_metatiles.bin"
+
+TilesetRPPColl::
+INCLUDE "tilesets/rpp_collision.asm"

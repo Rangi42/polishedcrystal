@@ -1465,3 +1465,6 @@ Route48_BlockData:
 
 Route49_BlockData:
 	INCBIN "maps/Route49.blk"
+
+Rpp_BlockData:
+	INCBIN "maps/Rpp.blk"

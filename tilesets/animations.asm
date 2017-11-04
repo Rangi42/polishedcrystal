@@ -338,6 +338,7 @@ TilesetPokemonMansionAnim:
 TilesetDecorAnim:
 TilesetMuseumAnim:
 TilesetHotelAnim:
+TilesetRPPAnim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation
 	dw NULL,  WaitTileAnimation

@@ -49,3 +49,4 @@ Tileset00End::
 	tileset TilesetRuins
 	tileset TilesetAlph
 	tileset TilesetPokemonMansion
+	tileset TilesetRPP
