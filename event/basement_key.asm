@@ -9,11 +9,11 @@ _BasementKey: ; 507b4
 	jr nz, .nope
 ; Are we on the tile in front of the door?
 	call GetFacingTileCoord
-	ld a, d
-	cp 22
+	ld a, d ; x
+	cp 16 + 4
 	jr nz, .nope
-	ld a, e
-	cp 10
+	ld a, e ; y
+	cp 6 + 4
 	jr nz, .nope
 ; Let's use the Basement Key
 	ld hl, .BasementKeyScript
