@@ -166,7 +166,7 @@ Route47Bridge4UnderfootTrigger:
 	changebridgeblock 22, 16, $ea
 	changebridgeblock 24, 16, $ea
 	changebridgeblock 26, 16, $b7
-	jp Route47_FinishOverheadBridge
+	jp Route47_FinishUnderfootBridge
 
 TrainerHikerDevin:
 	trainer EVENT_BEAT_HIKER_DEVIN, HIKER, DEVIN, HikerDevinSeenText, HikerDevinBeatenText, 0, HikerDevinScript
