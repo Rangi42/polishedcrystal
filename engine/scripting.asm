@@ -257,7 +257,6 @@ ScriptCommandTable:
 	dw Script_iftrue_endtext             ; c2
 	dw Script_iffalse_endtext            ; c3
 	dw Script_loadgrottomon              ; c4
-	dw Script_quickchangeblock           ; c5
 
 StartScript:
 	ld hl, ScriptFlags
@@ -2537,20 +2536,6 @@ Script_changemap:
 	ld [MapBlockDataPointer + 1], a
 	call ChangeMap
 	jp BufferScreen
-
-Script_quickchangeblock:
-; parameters:
-;     x (SingleByteParam)
-;     y (SingleByteParam)
-;     block (SingleByteParam)
-	call GetScriptByte
-	ld d, a
-	call GetScriptByte
-	ld e, a
-	call GetBlockLocation
-	call GetScriptByte
-	ld [hl], a
-	ret
 
 Script_changeblock:
 ; parameters:

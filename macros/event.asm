@@ -1216,11 +1216,3 @@ iffalse_endtext: macro
 loadgrottomon: macro
 	db loadgrottomon_command
 	endm
-
-	enum quickchangeblock_command
-quickchangeblock: macro
-	db quickchangeblock_command
-	db \1 + 4 ; x
-	db \2 + 4 ; y
-	db \3 ; block
-	endm

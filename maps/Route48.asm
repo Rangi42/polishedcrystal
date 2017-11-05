@@ -9,8 +9,9 @@ Route48_MapEventHeader:
 .Warps: db 1
 	warp_def 5, 11, 3, YELLOW_FOREST_GATE
 
-.XYTriggers: db 1
-	xy_trigger 0, 12, 20, Route48JessieJamesScript
+.XYTriggers: db 2
+	xy_trigger 0, 12, 20, Route48JessieJamesScript1
+	xy_trigger 0, 13, 20, Route48JessieJamesScript2
 
 .Signposts: db 1
 	signpost 11, 27, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
@@ -26,11 +27,21 @@ const_value set 1
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES
 
-Route48JessieJamesScript:
+Route48JessieJamesScript1:
 	checkevent EVENT_BEAT_JESSIE_AND_JAMES
-	iftrue .End
+	iftrue Route48JessieJamesScript_End
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
+	jump Route48JessieJamesScript
+
+Route48JessieJamesScript2:
+	checkevent EVENT_BEAT_JESSIE_AND_JAMES
+	iftrue Route48JessieJamesScript_End
+	disappear ROUTE48_JESSIE
+	disappear ROUTE48_JAMES
+	moveperson ROUTE48_JESSIE, 15, 13
+	moveperson ROUTE48_JAMES, 26, 13
+Route48JessieJamesScript:
 	appear ROUTE48_JESSIE
 	appear ROUTE48_JAMES
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -60,7 +71,7 @@ Route48JessieJamesScript:
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
 	playmapmusic
-.End
+Route48JessieJamesScript_End:
 	end
 
 JessieEnterMovementData:

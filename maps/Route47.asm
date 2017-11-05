@@ -88,73 +88,85 @@ Route47_FinishUnderfootBridge:
 	ld a, $1
 	ld [wRoute47Trigger], a ; dotrigger $1
 Route47_FinishBridge:
-	call BufferScreen ; finish quickchangeblocks
+	call BufferScreen ; finish changebridgeblocks
 	call GetMovementPermissions
 	jp RefreshScreen ; refreshscreen
 
-Route47Bridge1OverheadTrigger:
-	quickchangeblock 42, 24, $f1
-	quickchangeblock 44, 24, $ef
-	quickchangeblock 46, 24, $ef
-	quickchangeblock 48, 24, $ef
-	quickchangeblock 50, 24, $f2
-	callasm Route47_FinishOverheadBridge
+thisasm: macro
+	callasm .asm
 	end
+.asm
+endm
+
+changebridgeblock: macro
+	lb de, \1 + 4, \2 + 4
+	call GetBlockLocation
+	ld [hl], \3
+endm
+
+Route47Bridge1OverheadTrigger:
+	thisasm
+	changebridgeblock 42, 24, $f1
+	changebridgeblock 44, 24, $ef
+	changebridgeblock 46, 24, $ef
+	changebridgeblock 48, 24, $ef
+	changebridgeblock 50, 24, $f2
+	jp Route47_FinishOverheadBridge
 
 Route47Bridge1UnderfootTrigger:
-	quickchangeblock 42, 24, $aa
-	quickchangeblock 44, 24, $ea
-	quickchangeblock 46, 24, $ea
-	quickchangeblock 48, 24, $ea
-	quickchangeblock 50, 24, $ab
-	callasm Route47_FinishUnderfootBridge
-	end
+	thisasm
+	changebridgeblock 42, 24, $aa
+	changebridgeblock 44, 24, $ea
+	changebridgeblock 46, 24, $ea
+	changebridgeblock 48, 24, $ea
+	changebridgeblock 50, 24, $ab
+	jp Route47_FinishUnderfootBridge
 
 Route47Bridge2OverheadTrigger:
-	quickchangeblock 44, 18, $f0
-	quickchangeblock 46, 18, $f0
-	quickchangeblock 48, 18, $f0
-	callasm Route47_FinishOverheadBridge
-	end
+	thisasm
+	changebridgeblock 44, 18, $f0
+	changebridgeblock 46, 18, $f0
+	changebridgeblock 48, 18, $f0
+	jp Route47_FinishOverheadBridge
 
 Route47Bridge2UnderfootTrigger:
-	quickchangeblock 44, 18, $ea
-	quickchangeblock 46, 18, $ea
-	quickchangeblock 48, 18, $ea
-	callasm Route47_FinishUnderfootBridge
-	end
+	thisasm
+	changebridgeblock 44, 18, $ea
+	changebridgeblock 46, 18, $ea
+	changebridgeblock 48, 18, $ea
+	jp Route47_FinishUnderfootBridge
 
 Route47Bridge3OverheadTrigger:
-	quickchangeblock 20, 24, $f0
-	quickchangeblock 22, 24, $f0
-	quickchangeblock 24, 24, $f0
-	callasm Route47_FinishOverheadBridge
-	end
+	thisasm
+	changebridgeblock 20, 24, $f0
+	changebridgeblock 22, 24, $f0
+	changebridgeblock 24, 24, $f0
+	jp Route47_FinishOverheadBridge
 
 Route47Bridge3UnderfootTrigger:
-	quickchangeblock 20, 24, $ea
-	quickchangeblock 22, 24, $ea
-	quickchangeblock 24, 24, $ea
-	callasm Route47_FinishUnderfootBridge
-	end
+	thisasm
+	changebridgeblock 20, 24, $ea
+	changebridgeblock 22, 24, $ea
+	changebridgeblock 24, 24, $ea
+	jp Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
-	quickchangeblock 18, 16, $f1
-	quickchangeblock 20, 16, $ef
-	quickchangeblock 22, 16, $ef
-	quickchangeblock 24, 16, $ef
-	quickchangeblock 26, 16, $f3
-	callasm Route47_FinishOverheadBridge
-	end
+	thisasm
+	changebridgeblock 18, 16, $f1
+	changebridgeblock 20, 16, $ef
+	changebridgeblock 22, 16, $ef
+	changebridgeblock 24, 16, $ef
+	changebridgeblock 26, 16, $f3
+	jp Route47_FinishOverheadBridge
 
 Route47Bridge4UnderfootTrigger:
-	quickchangeblock 18, 16, $aa
-	quickchangeblock 20, 16, $ea
-	quickchangeblock 22, 16, $ea
-	quickchangeblock 24, 16, $ea
-	quickchangeblock 26, 16, $b7
-	callasm Route47_FinishOverheadBridge
-	end
+	thisasm
+	changebridgeblock 18, 16, $aa
+	changebridgeblock 20, 16, $ea
+	changebridgeblock 22, 16, $ea
+	changebridgeblock 24, 16, $ea
+	changebridgeblock 26, 16, $b7
+	jp Route47_FinishOverheadBridge
 
 TrainerHikerDevin:
 	trainer EVENT_BEAT_HIKER_DEVIN, HIKER, DEVIN, HikerDevinSeenText, HikerDevinBeatenText, 0, HikerDevinScript
