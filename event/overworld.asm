@@ -664,7 +664,7 @@ TrySurfOW:: ; c9e7
 ; Must be facing water.
 	ld a, [EngineBuffer1]
 	call GetTileCollision
-	cp 1 ; surfable
+	cp WATERTILE ; surfable
 	jr nz, .quit
 
 ; Check tile permissions.
@@ -865,8 +865,11 @@ WaterfallFunction: ; cade
 
 CheckMapCanWaterfall: ; cb07
 	ld a, [PlayerDirection]
-	and $c
+	and FACE_UP | FACE_DOWN
 	cp FACE_UP
+	jr nz, .failed
+	ld a, [TilePermissions]
+	and FACE_UP
 	jr nz, .failed
 	ld a, [TileUp]
 	cp COLL_WATERFALL
