@@ -257,6 +257,7 @@ ScriptCommandTable:
 	dw Script_iftrue_endtext             ; c2
 	dw Script_iffalse_endtext            ; c3
 	dw Script_loadgrottomon              ; c4
+	dw Script_quickchangeblock           ; c5
 
 StartScript:
 	ld hl, ScriptFlags
@@ -281,6 +282,16 @@ Script_callasm:
 	call GetScriptByte
 	ld l, a
 	call GetScriptByte
+	ld h, a
+	ld a, b
+	jp FarCall_hl
+
+Script_thisasm:
+	ld a, [ScriptPos]
+	ld b, a
+	ld a, [ScriptPos + 1]
+	ld l, a
+	ld a, [ScriptPos + 2]
 	ld h, a
 	ld a, b
 	jp FarCall_hl
@@ -2526,6 +2537,20 @@ Script_changemap:
 	ld [MapBlockDataPointer + 1], a
 	call ChangeMap
 	jp BufferScreen
+
+Script_quickchangeblock:
+; parameters:
+;     x (SingleByteParam)
+;     y (SingleByteParam)
+;     block (SingleByteParam)
+	call GetScriptByte
+	ld d, a
+	call GetScriptByte
+	ld e, a
+	call GetBlockLocation
+	call GetScriptByte
+	ld [hl], a
+	ret
 
 Script_changeblock:
 ; parameters:

@@ -80,78 +80,79 @@ Route47TileScript:
 	return
 
 Route47_FinishOverheadBridge:
-	ld [wRoute47Trigger], $0 ; dotrigger $0
-	call GetMovementPermissions
-	call RefreshScreen ; refreshscreen
-	ret
+	xor a
+	ld [wRoute47Trigger], a ; dotrigger $0
+	jr Route47_FinishBridge
 
 Route47_FinishUnderfootBridge:
-	ld [wRoute47Trigger], $1 ; dotrigger $1
+	ld a, $1
+	ld [wRoute47Trigger], a ; dotrigger $1
+Route47_FinishBridge:
+	call BufferScreen ; finish quickchangeblocks
 	call GetMovementPermissions
-	call RefreshScreen ; refreshscreen
-	ret
+	jp RefreshScreen ; refreshscreen
 
 Route47Bridge1OverheadTrigger:
-	changeblock 42, 24, $f1
-	changeblock 44, 24, $ef
-	changeblock 46, 24, $ef
-	changeblock 48, 24, $ef
-	changeblock 50, 24, $f2
+	quickchangeblock 42, 24, $f1
+	quickchangeblock 44, 24, $ef
+	quickchangeblock 46, 24, $ef
+	quickchangeblock 48, 24, $ef
+	quickchangeblock 50, 24, $f2
 	callasm Route47_FinishOverheadBridge
 	end
 
 Route47Bridge1UnderfootTrigger:
-	changeblock 42, 24, $aa
-	changeblock 44, 24, $ea
-	changeblock 46, 24, $ea
-	changeblock 48, 24, $ea
-	changeblock 50, 24, $ab
+	quickchangeblock 42, 24, $aa
+	quickchangeblock 44, 24, $ea
+	quickchangeblock 46, 24, $ea
+	quickchangeblock 48, 24, $ea
+	quickchangeblock 50, 24, $ab
 	callasm Route47_FinishUnderfootBridge
 	end
 
 Route47Bridge2OverheadTrigger:
-	changeblock 44, 18, $f0
-	changeblock 46, 18, $f0
-	changeblock 48, 18, $f0
+	quickchangeblock 44, 18, $f0
+	quickchangeblock 46, 18, $f0
+	quickchangeblock 48, 18, $f0
 	callasm Route47_FinishOverheadBridge
 	end
 
 Route47Bridge2UnderfootTrigger:
-	changeblock 44, 18, $ea
-	changeblock 46, 18, $ea
-	changeblock 48, 18, $ea
+	quickchangeblock 44, 18, $ea
+	quickchangeblock 46, 18, $ea
+	quickchangeblock 48, 18, $ea
 	callasm Route47_FinishUnderfootBridge
 	end
 
 Route47Bridge3OverheadTrigger:
-	changeblock 20, 24, $f0
-	changeblock 22, 24, $f0
-	changeblock 24, 24, $f0
+	quickchangeblock 20, 24, $f0
+	quickchangeblock 22, 24, $f0
+	quickchangeblock 24, 24, $f0
 	callasm Route47_FinishOverheadBridge
 	end
 
 Route47Bridge3UnderfootTrigger:
-	changeblock 20, 24, $ea
-	changeblock 22, 24, $ea
-	changeblock 24, 24, $ea
+	quickchangeblock 20, 24, $ea
+	quickchangeblock 22, 24, $ea
+	quickchangeblock 24, 24, $ea
 	callasm Route47_FinishUnderfootBridge
 	end
 
 Route47Bridge4OverheadTrigger:
-	changeblock 18, 16, $f1
-	changeblock 20, 16, $ef
-	changeblock 22, 16, $ef
-	changeblock 24, 16, $ef
-	changeblock 26, 16, $f3
+	quickchangeblock 18, 16, $f1
+	quickchangeblock 20, 16, $ef
+	quickchangeblock 22, 16, $ef
+	quickchangeblock 24, 16, $ef
+	quickchangeblock 26, 16, $f3
 	callasm Route47_FinishOverheadBridge
 	end
 
 Route47Bridge4UnderfootTrigger:
-	changeblock 18, 16, $aa
-	changeblock 20, 16, $ea
-	changeblock 22, 16, $ea
-	changeblock 24, 16, $ea
-	changeblock 26, 16, $b7
+	quickchangeblock 18, 16, $aa
+	quickchangeblock 20, 16, $ea
+	quickchangeblock 22, 16, $ea
+	quickchangeblock 24, 16, $ea
+	quickchangeblock 26, 16, $b7
 	callasm Route47_FinishOverheadBridge
 	end
 
