@@ -62,7 +62,6 @@ TilesetJohto1Anim:
 	dw NULL,  DoneTileAnimation
 
 TilesetJohto2Anim:
-TilesetJohto4Anim:
 	dw VTiles2 tile $14, AnimateWaterTile
 	dw VTiles2 tile $1b, AnimateRainPuddleTile
 	dw VTiles2 tile $1c, AnimateRainWaterTile
@@ -75,6 +74,31 @@ TilesetJohto4Anim:
 	dw NULL,  WaitTileAnimation
 	dw NULL,  StandingTileFrame8
 	dw NULL,  WaitTileAnimation
+	dw NULL,  DoneTileAnimation
+
+TilesetJohto4Anim:
+	dw VTiles2 tile $14, AnimateWaterTile
+	dw VTiles2 tile $1b, AnimateRainPuddleTile
+	dw VTiles2 tile $1c, AnimateRainWaterTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  WaitTileAnimation
+	dw NULL,  AnimateFlowerTile
+	dw WhirlpoolFrames1, AnimateWhirlpoolTile
+	dw WhirlpoolFrames2, AnimateWhirlpoolTile
+	dw WhirlpoolFrames3, AnimateWhirlpoolTile
+	dw WhirlpoolFrames4, AnimateWhirlpoolTile
+	dw NULL,  WaitTileAnimation
+	dw NULL,  StandingTileFrame8
+	dw VTiles2 tile $40, WriteTileToBuffer
+	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  WaitTileAnimation
+	dw wTileAnimBuffer, ScrollTileDown
+	dw NULL,  WaitTileAnimation
+	dw VTiles2 tile $40, WriteTileFromBuffer
 	dw NULL,  DoneTileAnimation
 
 TilesetKanto1Anim:

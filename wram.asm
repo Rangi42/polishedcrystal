@@ -2309,6 +2309,7 @@ wSeagallopFerryVermilionGateTrigger:: ds 1
 wSeagallopFerryNavelGateTrigger:: ds 1
 wSeagallopFerryShamoutiGateTrigger:: ds 1
 wFarawayIslandTrigger:: ds 1
+wRoute47Trigger:: ds 1
 wRoute48Trigger:: ds 1
 wDayCareTrigger:: ds 1
 wDarkCaveVioletEntranceTrigger:: ds 1

@@ -15,7 +15,39 @@ Route47_MapEventHeader:
 	warp_def 23, 11, 1, QUIET_CAVE_1F
 	warp_def 23, 7, 1, EMBEDDED_TOWER
 
-.XYTriggers: db 0
+.XYTriggers: db 32
+	xy_trigger 1, 24, 42, Route47Bridge1OverheadTrigger
+	xy_trigger 1, 25, 42, Route47Bridge1OverheadTrigger
+	xy_trigger 1, 24, 51, Route47Bridge1OverheadTrigger
+	xy_trigger 1, 25, 51, Route47Bridge1OverheadTrigger
+	xy_trigger 0, 24, 43, Route47Bridge1UnderfootTrigger
+	xy_trigger 0, 25, 43, Route47Bridge1UnderfootTrigger
+	xy_trigger 0, 24, 50, Route47Bridge1UnderfootTrigger
+	xy_trigger 0, 25, 50, Route47Bridge1UnderfootTrigger
+	xy_trigger 1, 18, 42, Route47Bridge2OverheadTrigger
+	xy_trigger 1, 19, 42, Route47Bridge2OverheadTrigger
+	xy_trigger 1, 18, 51, Route47Bridge2OverheadTrigger
+	xy_trigger 1, 19, 51, Route47Bridge2OverheadTrigger
+	xy_trigger 0, 18, 43, Route47Bridge2UnderfootTrigger
+	xy_trigger 0, 19, 43, Route47Bridge2UnderfootTrigger
+	xy_trigger 0, 18, 50, Route47Bridge2UnderfootTrigger
+	xy_trigger 0, 19, 50, Route47Bridge2UnderfootTrigger
+	xy_trigger 1, 24, 18, Route47Bridge3OverheadTrigger
+	xy_trigger 1, 25, 18, Route47Bridge3OverheadTrigger
+	xy_trigger 1, 24, 27, Route47Bridge3OverheadTrigger
+	xy_trigger 1, 25, 27, Route47Bridge3OverheadTrigger
+	xy_trigger 0, 24, 19, Route47Bridge3UnderfootTrigger
+	xy_trigger 0, 25, 19, Route47Bridge3UnderfootTrigger
+	xy_trigger 0, 24, 26, Route47Bridge3UnderfootTrigger
+	xy_trigger 0, 25, 26, Route47Bridge3UnderfootTrigger
+	xy_trigger 1, 16, 18, Route47Bridge4OverheadTrigger
+	xy_trigger 1, 17, 18, Route47Bridge4OverheadTrigger
+	xy_trigger 1, 16, 27, Route47Bridge4OverheadTrigger
+	xy_trigger 1, 17, 27, Route47Bridge4OverheadTrigger
+	xy_trigger 0, 16, 19, Route47Bridge4UnderfootTrigger
+	xy_trigger 0, 17, 19, Route47Bridge4UnderfootTrigger
+	xy_trigger 0, 16, 26, Route47Bridge4UnderfootTrigger
+	xy_trigger 0, 17, 26, Route47Bridge4UnderfootTrigger
 
 .Signposts: db 4
 	signpost 23, 8, SIGNPOST_IFNOTSET, Route47SealedCaveSign
@@ -46,6 +78,82 @@ Route47TileScript:
 	changeblock 8, 22, $9b
 .locked
 	return
+
+Route47_FinishOverheadBridge:
+	ld [wRoute47Trigger], $0 ; dotrigger $0
+	call GetMovementPermissions
+	call RefreshScreen ; refreshscreen
+	ret
+
+Route47_FinishUnderfootBridge:
+	ld [wRoute47Trigger], $1 ; dotrigger $1
+	call GetMovementPermissions
+	call RefreshScreen ; refreshscreen
+	ret
+
+Route47Bridge1OverheadTrigger:
+	changeblock 42, 24, $f1
+	changeblock 44, 24, $ef
+	changeblock 46, 24, $ef
+	changeblock 48, 24, $ef
+	changeblock 50, 24, $f2
+	callasm Route47_FinishOverheadBridge
+	end
+
+Route47Bridge1UnderfootTrigger:
+	changeblock 42, 24, $aa
+	changeblock 44, 24, $ea
+	changeblock 46, 24, $ea
+	changeblock 48, 24, $ea
+	changeblock 50, 24, $ab
+	callasm Route47_FinishUnderfootBridge
+	end
+
+Route47Bridge2OverheadTrigger:
+	changeblock 44, 18, $f0
+	changeblock 46, 18, $f0
+	changeblock 48, 18, $f0
+	callasm Route47_FinishOverheadBridge
+	end
+
+Route47Bridge2UnderfootTrigger:
+	changeblock 44, 18, $ea
+	changeblock 46, 18, $ea
+	changeblock 48, 18, $ea
+	callasm Route47_FinishUnderfootBridge
+	end
+
+Route47Bridge3OverheadTrigger:
+	changeblock 20, 24, $f0
+	changeblock 22, 24, $f0
+	changeblock 24, 24, $f0
+	callasm Route47_FinishOverheadBridge
+	end
+
+Route47Bridge3UnderfootTrigger:
+	changeblock 20, 24, $ea
+	changeblock 22, 24, $ea
+	changeblock 24, 24, $ea
+	callasm Route47_FinishUnderfootBridge
+	end
+
+Route47Bridge4OverheadTrigger:
+	changeblock 18, 16, $f1
+	changeblock 20, 16, $ef
+	changeblock 22, 16, $ef
+	changeblock 24, 16, $ef
+	changeblock 26, 16, $f3
+	callasm Route47_FinishOverheadBridge
+	end
+
+Route47Bridge4UnderfootTrigger:
+	changeblock 18, 16, $aa
+	changeblock 20, 16, $ea
+	changeblock 22, 16, $ea
+	changeblock 24, 16, $ea
+	changeblock 26, 16, $b7
+	callasm Route47_FinishOverheadBridge
+	end
 
 TrainerHikerDevin:
 	trainer EVENT_BEAT_HIKER_DEVIN, HIKER, DEVIN, HikerDevinSeenText, HikerDevinBeatenText, 0, HikerDevinScript
