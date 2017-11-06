@@ -98,8 +98,11 @@ thisasm: macro
 endm
 
 changebridgeblock: macro
-	lb de, \1 + 4, \2 + 4
-	call GetBlockLocation
+	; lb de, \1 + 4, \2 + 4
+	; call GetBlockLocation
+	; hard-coding the above calculation for efficiency
+	; note: [MapWidth] == 39
+	ld hl, OverworldMap + ((39 + 6) * 3) + (\2 / 2) * (39 + 6) + (\1 / 2) + 3
 	ld [hl], \3
 endm
 
