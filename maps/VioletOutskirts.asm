@@ -12,7 +12,8 @@ VioletOutskirts_MapEventHeader:
 
 .Signposts: db 0
 
-.PersonEvents: db 3
+.PersonEvents: db 4
+	person_event SPRITE_SUICUNE, -2, 16, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	fruittree_event -2, 17, FRUITTREE_ROUTE_42_1, PNK_APRICORN
 	fruittree_event -2, 18, FRUITTREE_ROUTE_42_2, GRN_APRICORN
 	fruittree_event -2, 19, FRUITTREE_ROUTE_42_3, YLW_APRICORN
