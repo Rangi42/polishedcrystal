@@ -67,6 +67,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pia Carrot for Valencia Island and Route 49 from Pokémon Orange.
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 * ShockSlayer for Eusine's losing text.
+* Hello for correcting composers in the music player.
 
 
 ## Special Thanks

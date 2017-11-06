@@ -192,6 +192,7 @@ SECTION "RSE Music 1", ROMX
 
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/championbattle.asm"
+INCLUDE "audio/music/rse/evergrandecity.asm"
 INCLUDE "audio/music/rse/dewfordtown.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
