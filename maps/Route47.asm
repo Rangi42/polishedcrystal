@@ -102,7 +102,7 @@ changebridgeblock: macro
 	; call GetBlockLocation
 	; hard-coding the above calculation for efficiency
 	; note: [MapWidth] == 39
-	ld hl, OverworldMap + ((39 + 6) * 3) + (\2 / 2) * (39 + 6) + (\1 / 2) + 3
+	ld hl, OverworldMap + (\2 / 2 + 3) * (39 + 6) + \1 / 2 + 3
 	ld [hl], \3
 endm
 
