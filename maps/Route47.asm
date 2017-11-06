@@ -89,12 +89,12 @@ Route47_FinishBridge:
 	ld [wRoute47Trigger], a ; dotrigger a
 	; call BufferScreen ; finish changebridgeblocks
 	call GetMovementPermissions
-	jp RefreshScreen ; refreshscreen (TODO: optimize speed)
+	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 thisasm: macro
-	callasm .asm
+	callasm .asm\@
 	end
-.asm
+.asm\@
 endm
 
 changebridgeblock: macro

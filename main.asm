@@ -56,6 +56,7 @@ INCLUDE "engine/init_options.asm"
 
 ReanchorBGMap_NoOAMUpdate:: ; 6454
 	call DelayFrame
+ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld a, [hOAMUpdate]
 	push af
 
@@ -63,10 +64,39 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hOAMUpdate], a
 	ld a, [hBGMapMode]
 	push af
+
 	xor a
 	ld [hBGMapMode], a
+	ld [hLCDCPointer], a
+	ld a, $90
+	ld [hWY], a
+	call OverworldTextModeSwitch
 
-	call .ReanchorBGMap
+	ld a, VBGMap1 / $100
+	ld [hBGMapAddress + 1], a
+	xor a
+	ld [hBGMapAddress], a
+	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
+
+	farcall LoadBlindingFlashPalette
+	farcall ApplyPals
+
+	xor a
+	ld [hBGMapMode], a
+	ld [hWY], a
+	inc a
+	ld [hCGBPalUpdate], a
+	call HDMATransfer_FillBGMap0WithTile60
+
+	ld a, VBGMap0 / $100
+	ld [hBGMapAddress + 1], a
+	ld [wBGMapAnchor + 1], a
+	xor a
+	ld [hBGMapAddress], a
+	ld [wBGMapAnchor], a
+	ld [hSCX], a
+	ld [hSCY], a
+	call ApplyBGMapAnchorToObjects
 
 	pop af
 	ld [hBGMapMode], a
@@ -76,59 +106,21 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	set 6, [hl]
 	ret
 
-.ReanchorBGMap:
-	xor a
-	ld [hLCDCPointer], a
-	ld [hBGMapMode], a
-	ld a, $90
-	ld [hWY], a
-	call OverworldTextModeSwitch
-	ld a, VBGMap1 / $100
-	call .LoadBGMapAddrIntoHRAM
-	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
-	farcall LoadBlindingFlashPalette
-	farcall ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	xor a
-	ld [hBGMapMode], a
-	ld [hWY], a
-	call HDMATransfer_FillBGMap0WithTile60
-	ld a, VBGMap0 / $100
-	call .LoadBGMapAddrIntoHRAM
-	xor a
-	ld [wBGMapAnchor], a
-	ld a, VBGMap0 / $100
-	ld [wBGMapAnchor + 1], a
-	xor a
-	ld [hSCX], a
-	ld [hSCY], a
-	jp ApplyBGMapAnchorToObjects
-
-.LoadBGMapAddrIntoHRAM: ; 64b9
-	ld [hBGMapAddress + 1], a
-	xor a
-	ld [hBGMapAddress], a
-	ret
-
 LoadFonts_NoOAMUpdate:: ; 64bf
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1
 	ld [hOAMUpdate], a
 
-	call .LoadGFX
-
-	pop af
-	ld [hOAMUpdate], a
-	ret
-
-.LoadGFX:
 	call LoadFontsExtra
 	ld a, $90
 	ld [hWY], a
 	call SafeUpdateSprites
-	jp LoadStandardFont
+	call LoadStandardFont
+
+	pop af
+	ld [hOAMUpdate], a
+	ret
 
 HDMATransfer_FillBGMap0WithTile60: ; 64db
 	ld a, [rSVBK]

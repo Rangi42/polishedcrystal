@@ -285,16 +285,6 @@ Script_callasm:
 	ld a, b
 	jp FarCall_hl
 
-Script_thisasm:
-	ld a, [ScriptPos]
-	ld b, a
-	ld a, [ScriptPos + 1]
-	ld l, a
-	ld a, [ScriptPos + 2]
-	ld h, a
-	ld a, b
-	jp FarCall_hl
-
 Script_special:
 ; parameters:
 ;     predefined_script (SingleByteParam)
