@@ -204,16 +204,18 @@ ResurrectAFossilScript:
 	waitbutton
 	closetext
 	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
-	pause 30
+	pause 15
 	playsound SFX_BOOT_PC
 	waitsfx
 	pause 30
-	playsound SFX_PROTECT
+	playsound SFX_4_NOTE_DITTY
+	waitsfx
+	pause 5
 	waitsfx
 	pause 30
 	playsound SFX_SHUT_DOWN_PC
 	waitsfx
-	pause 30
+	pause 15
 	faceplayer
 	opentext
 	end

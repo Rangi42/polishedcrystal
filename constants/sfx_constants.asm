@@ -208,3 +208,5 @@
 	const SFX_TWO_PC_BEEPS                ; cc
 	const SFX_4_NOTE_DITTY                ; cd
 	const SFX_TWINKLE                     ; ce
+
+	const SFX_PUDDLE                      ; cf
