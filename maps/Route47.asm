@@ -65,8 +65,8 @@ Route47_MapEventHeader:
 	person_event SPRITE_COWGIRL, 8, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerCowgirlDaniela, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 9, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET_GIRL, 24, 47, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketGirlText, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET, 12, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
+	person_event SPRITE_ROCKET_GIRL, 25, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketGirlText, EVENT_CLEARED_YELLOW_FOREST
 	itemball_event 28, 39, REVIVE, 1, EVENT_ROUTE_47_REVIVE
 	itemball_event 32, 7, MYSTIC_WATER, 1, EVENT_ROUTE_47_MYSTIC_WATER
 	itemball_event 20, 31, QUICK_CLAW, 1, EVENT_ROUTE_47_QUICK_CLAW
@@ -81,16 +81,15 @@ Route47TileScript:
 
 Route47_FinishOverheadBridge:
 	xor a
-	ld [wRoute47Trigger], a ; dotrigger $0
 	jr Route47_FinishBridge
 
 Route47_FinishUnderfootBridge:
 	ld a, $1
-	ld [wRoute47Trigger], a ; dotrigger $1
 Route47_FinishBridge:
-	call BufferScreen ; finish changebridgeblocks
+	ld [wRoute47Trigger], a ; dotrigger a
+	; call BufferScreen ; finish changebridgeblocks
 	call GetMovementPermissions
-	jp RefreshScreen ; refreshscreen
+	jp RefreshScreen ; refreshscreen (TODO: optimize speed)
 
 thisasm: macro
 	callasm .asm
@@ -106,65 +105,65 @@ endm
 
 Route47Bridge1OverheadTrigger:
 	thisasm
-	changebridgeblock 42, 24, $f1
-	changebridgeblock 44, 24, $ef
-	changebridgeblock 46, 24, $ef
-	changebridgeblock 48, 24, $ef
-	changebridgeblock 50, 24, $f2
+	changebridgeblock 42, 24, $e9
+	changebridgeblock 44, 24, $e7
+	changebridgeblock 46, 24, $e7
+	changebridgeblock 48, 24, $e7
+	changebridgeblock 50, 24, $ea
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge1UnderfootTrigger:
 	thisasm
 	changebridgeblock 42, 24, $aa
-	changebridgeblock 44, 24, $ea
-	changebridgeblock 46, 24, $ea
-	changebridgeblock 48, 24, $ea
+	changebridgeblock 44, 24, $e6
+	changebridgeblock 46, 24, $e6
+	changebridgeblock 48, 24, $e6
 	changebridgeblock 50, 24, $ab
 	jp Route47_FinishUnderfootBridge
 
 Route47Bridge2OverheadTrigger:
 	thisasm
-	changebridgeblock 44, 18, $f0
-	changebridgeblock 46, 18, $f0
-	changebridgeblock 48, 18, $f0
+	changebridgeblock 44, 18, $e8
+	changebridgeblock 46, 18, $e8
+	changebridgeblock 48, 18, $e8
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge2UnderfootTrigger:
 	thisasm
-	changebridgeblock 44, 18, $ea
-	changebridgeblock 46, 18, $ea
-	changebridgeblock 48, 18, $ea
+	changebridgeblock 44, 18, $e6
+	changebridgeblock 46, 18, $e6
+	changebridgeblock 48, 18, $e6
 	jp Route47_FinishUnderfootBridge
 
 Route47Bridge3OverheadTrigger:
 	thisasm
-	changebridgeblock 20, 24, $f0
-	changebridgeblock 22, 24, $f0
-	changebridgeblock 24, 24, $f0
+	changebridgeblock 20, 24, $e8
+	changebridgeblock 22, 24, $e8
+	changebridgeblock 24, 24, $e8
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge3UnderfootTrigger:
 	thisasm
-	changebridgeblock 20, 24, $ea
-	changebridgeblock 22, 24, $ea
-	changebridgeblock 24, 24, $ea
+	changebridgeblock 20, 24, $e6
+	changebridgeblock 22, 24, $e6
+	changebridgeblock 24, 24, $e6
 	jp Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
 	thisasm
-	changebridgeblock 18, 16, $f1
-	changebridgeblock 20, 16, $ef
-	changebridgeblock 22, 16, $ef
-	changebridgeblock 24, 16, $ef
-	changebridgeblock 26, 16, $f3
+	changebridgeblock 18, 16, $e9
+	changebridgeblock 20, 16, $e7
+	changebridgeblock 22, 16, $e7
+	changebridgeblock 24, 16, $e7
+	changebridgeblock 26, 16, $eb
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge4UnderfootTrigger:
 	thisasm
 	changebridgeblock 18, 16, $aa
-	changebridgeblock 20, 16, $ea
-	changebridgeblock 22, 16, $ea
-	changebridgeblock 24, 16, $ea
+	changebridgeblock 20, 16, $e6
+	changebridgeblock 22, 16, $e6
+	changebridgeblock 24, 16, $e6
 	changebridgeblock 26, 16, $b7
 	jp Route47_FinishUnderfootBridge
 

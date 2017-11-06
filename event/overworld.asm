@@ -413,9 +413,8 @@ WhirlpoolBlockPointers: ; c8a4
 	dbw TILESET_JOHTO_OVERCAST, .johto_overcast
 	db -1
 
-.johto_overcast
-	db $37, $37, $00
 .johto_traditional
+.johto_overcast
 	db $07, $07, $00
 	db -1
 
