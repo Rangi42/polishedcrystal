@@ -118,6 +118,11 @@ INCLUDE "maps/SproutTower2F.asm"
 INCLUDE "maps/SproutTower3F.asm"
 
 
+SECTION "Violet Outskirts Scripts", ROMX
+
+INCLUDE "maps/VioletOutskirts.asm"
+
+
 SECTION "Ruins of Alph Scripts", ROMX
 
 INCLUDE "maps/RuinsofAlphOutside.asm"

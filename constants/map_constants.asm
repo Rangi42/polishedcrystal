@@ -231,6 +231,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_32_POKECENTER_1F,                      4,  6 ; 11
 	mapgroup ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
 	mapgroup MAGNET_TUNNEL_EAST,                         11, 10 ; 13
+	mapgroup VIOLET_OUTSKIRTS,                            8, 20 ; 14
 
 	newgroup                                                    ; 11
 

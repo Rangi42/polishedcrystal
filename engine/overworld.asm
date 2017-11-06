@@ -851,25 +851,52 @@ Group29Sprites:
 	db 0
 
 
+; Route42 connects to VioletOutskirts
+; Route32 connects to CherrygroveBay
+; Route29 connects to CherrygroveCity
 Group2Sprites:
 ; Route42
 ; Route44
 ; MahoganyTown
+Group10Sprites:
+; Route32
+; VioletCity
+; MagnetTunnelEast
+; VioletOutskirts
+Group24Sprites:
+; Route26
+; Route27
+; Route29
+; NewBarkTown
+Group26Sprites:
+; Route30
+; Route31
+; CherrygroveBay
+; CherrygroveCity
+	db SPRITE_CHERRYGROVE_RIVAL ; SPRITE_SILVER, SPRITE_BUG_CATCHER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GRAMPS
+	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
 	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
-	db SPRITE_POKEFAN_M
+	db SPRITE_SWIMMER_GIRL
+	db SPRITE_TEACHER
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_VETERAN_M ; doesn't walk
-	; 11 walking sprites (9 that walk)
+	db SPRITE_VETERAN_F ; doesn't walk
+	db SPRITE_GRAMPS ; doesn't walk
+	db SPRITE_COSPLAYER ; doesn't walk
+	db SPRITE_POKEFAN_M ; doesn't walk (TODO: walks in Route 42)
+	; 17 walking sprites (10 that walk) (TODO: only 9 can walk)
 	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_SUICUNE
-	; 13 total sprites
+	db SPRITE_PIDGEY
+	db SPRITE_RATTATA
+	; 22 total sprites (TODO: too many)
 	db 0
 
 
@@ -1041,44 +1068,6 @@ Group9Sprites:
 	; 11/14 walking sprites (7/10 that walk) (SPRITE_BIG_GYARADOS counts as 4)
 	db SPRITE_BALL_CUT_FRUIT
 	; 12/15 total sprites
-	db 0
-
-
-; Route32 connects to CherrygroveBay
-; CherrygroveCity connects to Route29
-Group10Sprites:
-; Route32
-; VioletCity
-; MagnetTunnelEast
-Group24Sprites:
-; Route26
-; Route27
-; Route29
-; NewBarkTown
-Group26Sprites:
-; Route30
-; Route31
-; CherrygroveBay
-; CherrygroveCity
-	db SPRITE_CHERRYGROVE_RIVAL ; SPRITE_SILVER, SPRITE_BUG_CATCHER
-	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
-	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
-	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
-	db SPRITE_SWIMMER_GIRL
-	db SPRITE_TEACHER
-	db SPRITE_YOUNGSTER
-	db SPRITE_COSPLAYER ; doesn't walk
-	db SPRITE_GRAMPS ; doesn't walk
-	db SPRITE_POKEFAN_M ; doesn't walk
-	db SPRITE_VETERAN_F ; doesn't walk
-	; 13 walking sprites (9 that walk)
-	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_BOULDER_ROCK_FOSSIL
-	db SPRITE_PIDGEY
-	db SPRITE_RATTATA
-	; 17 total sprites
 	db 0
 
 

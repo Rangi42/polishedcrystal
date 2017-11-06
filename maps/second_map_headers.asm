@@ -7,7 +7,8 @@
 	connection west, CHERRYGROVE_BAY, CherrygroveBay, -1, 14, 10
 	connection east, ROUTE_29, Route29, 0, 0, 9
 
-	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
+	map_header_2 VioletCity, VIOLET_CITY, $5, NORTH | SOUTH | WEST | EAST
+	connection north, VIOLET_OUTSKIRTS, VioletOutskirts, 0, 0, 20
 	connection south, ROUTE_32, Route32, 0, 0, 10
 	connection west, ROUTE_36, Route36, 0, -2, 9
 	connection east, ROUTE_31, Route31, 11, 0, 9
@@ -127,7 +128,8 @@
 	connection west, CIANWOOD_CITY, CianwoodCity, 0, 0, 27
 	connection east, GOLDENROD_HARBOR, GoldenrodHarbor, 3, 0, 20
 
-	map_header_2 Route42, ROUTE_42, $5, WEST | EAST
+	map_header_2 Route42, ROUTE_42, $5, SOUTH | WEST | EAST
+	connection south, VIOLET_OUTSKIRTS, VioletOutskirts, 5, 0, 14
 	connection west, ECRUTEAK_CITY, EcruteakCity, -3, 6, 12
 	connection east, MAHOGANY_TOWN, MahoganyTown, 0, 0, 9
 
@@ -351,6 +353,10 @@
 
 	map_header_2 Route32Coast, ROUTE_32_COAST, $35, NORTH
 	connection north, CHERRYGROVE_BAY, CherrygroveBay, 0, 0, 15
+
+	map_header_2 VioletOutskirts, VIOLET_OUTSKIRTS, $5, NORTH | SOUTH
+	connection north, ROUTE_42, Route42, -3, 2, 20
+	connection south, VIOLET_CITY, VioletCity, 0, 0, 20
 
 	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24

@@ -264,6 +264,9 @@ SproutTower2F_BlockData:
 SproutTower3F_BlockData:
 	INCBIN "maps/SproutTower3F.blk"
 
+VioletOutskirts_BlockData:
+	INCBIN "maps/VioletOutskirts.blk"
+
 RuinsofAlphOutside_BlockData:
 	INCBIN "maps/RuinsofAlphOutside.blk"
 
