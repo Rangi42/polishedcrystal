@@ -19,7 +19,7 @@
 ; * "9" cannot be used in nicknames
 
 ; TODO: boss trainers need better movesets, held items, natures, and abilities
-; TODO: swap ABILITY_1 and ABILITy_2 in base data as need so that ABILITY_1 is the better one for default NPCs (e.g. NPCs should have Sturdy when possible)
+; TODO: swap ABILITY_1 and ABILITY_2 in base data as need so that ABILITY_1 is the better one for default NPCs (e.g. NPCs should have Sturdy when possible)
 
 
 SECTION "Enemy Trainer Parties 1", ROMX
@@ -9800,13 +9800,13 @@ CoupleGroup:
 
 	; COUPLE
 	db "Gail & Eli@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 13, SANDSHREW
-	db 15, MARILL
-	db 15, PIKACHU
-	db 13, POLIWAG
+	db 13, SANDSHREW, ABILITY_1 | QUIRKY, MALE
+	db 15, MARILL, ABILITY_1 | QUIRKY, MALE
+	db 15, PIKACHU, ABILITY_1 | QUIRKY, FEMALE
+	db 13, POLIWAG, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9814,13 +9814,13 @@ CoupleGroup:
 
 	; COUPLE
 	db "Gail & Eli@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 15, PIKACHU
-	db 13, POLIWAG
-	db 13, SANDSHREW
-	db 15, MARILL
+	db 15, PIKACHU, ABILITY_1 | QUIRKY, FEMALE
+	db 13, POLIWAG, ABILITY_1 | QUIRKY, FEMALE
+	db 13, SANDSHREW, ABILITY_1 | QUIRKY, MALE
+	db 15, MARILL, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -9828,11 +9828,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Duff & Eda@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 25, CLOYSTER
-	db 25, ONIX
+	db 25, CLOYSTER, ABILITY_1 | QUIRKY, FEMALE
+	db 25, ONIX, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -9840,11 +9840,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Duff & Eda@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 25, ONIX
-	db 25, CLOYSTER
+	db 25, ONIX, ABILITY_1 | QUIRKY, MALE
+	db 25, CLOYSTER, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9852,11 +9852,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Fox & Rae@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 26, FLAREON
-	db 26, GLACEON
+	db 26, FLAREON, ABILITY_1 | QUIRKY, MALE
+	db 26, GLACEON, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9864,11 +9864,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Fox & Rae@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 26, GLACEON
-	db 26, FLAREON
+	db 26, GLACEON, ABILITY_1 | QUIRKY, FEMALE
+	db 26, FLAREON, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -9876,11 +9876,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Moe & Lulu@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 53, GLOOM
-	db 53, WEEPINBELL
+	db 53, GLOOM, ABILITY_1 | QUIRKY, MALE
+	db 53, WEEPINBELL, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9888,11 +9888,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Moe & Lulu@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 53, WEEPINBELL
-	db 53, GLOOM
+	db 53, WEEPINBELL, ABILITY_1 | QUIRKY, FEMALE
+	db 53, GLOOM, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -9900,11 +9900,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Vic & Tara@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 54, MAGMAR
-	db 53, SUNKERN
+	db 54, MAGMAR, ABILITY_1 | QUIRKY, MALE
+	db 53, SUNKERN, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9912,11 +9912,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Vic & Tara@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 53, SUNKERN
-	db 54, MAGMAR
+	db 53, SUNKERN, ABILITY_1 | QUIRKY, FEMALE
+	db 54, MAGMAR, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -9924,11 +9924,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Tim & Sue@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 53, KADABRA
-	db 57, GOLDUCK
+	db 53, KADABRA, ABILITY_1 | QUIRKY, MALE
+	db 57, GOLDUCK, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9936,11 +9936,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Tim & Sue@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 57, GOLDUCK
-	db 53, KADABRA
+	db 57, GOLDUCK, ABILITY_1 | QUIRKY, FEMALE
+	db 53, KADABRA, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -9948,11 +9948,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Joe & Jo@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 56, ALAKAZAM
-	db 52, BUTTERFREE
+	db 56, ALAKAZAM, ABILITY_1 | QUIRKY, MALE
+	db 52, BUTTERFREE, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -9960,11 +9960,11 @@ CoupleGroup:
 
 	; COUPLE
 	db "Joe & Jo@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 52, BUTTERFREE
-	db 56, ALAKAZAM
+	db 52, BUTTERFREE, ABILITY_1 | QUIRKY, FEMALE
+	db 56, ALAKAZAM, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -13151,11 +13151,11 @@ SightseersGroup:
 
 	; SIGHTSEERS
 	db "Li & Su@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 54, MAGMORTAR
-	db 54, ELECTIVIRE
+	db 54, MAGMORTAR, ABILITY_1 | QUIRKY, MALE
+	db 54, ELECTIVIRE, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -13163,11 +13163,11 @@ SightseersGroup:
 
 	; SIGHTSEERS
 	db "Li & Su@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 54, ELECTIVIRE
-	db 54, MAGMORTAR
+	db 54, ELECTIVIRE, ABILITY_1 | QUIRKY, FEMALE
+	db 54, MAGMORTAR, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -13175,11 +13175,11 @@ SightseersGroup:
 
 	; SIGHTSEERS
 	db "Cy & Vi@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 64, MR__MIME
-	db 64, JYNX
+	db 64, MR__MIME, ABILITY_1 | QUIRKY, MALE
+	db 64, JYNX, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -13187,11 +13187,11 @@ SightseersGroup:
 
 	; SIGHTSEERS
 	db "Cy & Vi@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 64, JYNX
-	db 64, MR__MIME
+	db 64, JYNX, ABILITY_1 | QUIRKY, FEMALE
+	db 64, MR__MIME, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -14048,11 +14048,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Elan & Ida@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 65, PORYGON2
-	db 65, AZUMARILL
+	db 65, PORYGON2, ABILITY_1 | QUIRKY, MALE
+	db 65, AZUMARILL, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -14060,11 +14060,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Elan & Ida@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 65, AZUMARILL
-	db 65, PORYGON2
+	db 65, AZUMARILL, ABILITY_1 | QUIRKY, FEMALE
+	db 65, PORYGON2, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -14072,11 +14072,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Ara & Bela@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 64, GIRAFARIG
-	db 64, TAUROS
+	db 64, TAUROS, ABILITY_1 | QUIRKY, MALE
+	db 64, GIRAFARIG, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -14084,11 +14084,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Ara & Bela@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 64, TAUROS
-	db 64, GIRAFARIG
+	db 64, GIRAFARIG, ABILITY_1 | QUIRKY, FEMALE
+	db 64, TAUROS, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -14096,11 +14096,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Thom & Kae@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 25, MAGMAR
-	db 25, ELECTABUZZ
+	db 25, MAGMAR, ABILITY_1 | QUIRKY, MALE
+	db 25, ELECTABUZZ, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -14108,11 +14108,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Thom & Kae@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 25, ELECTABUZZ
-	db 25, MAGMAR
+	db 25, ELECTABUZZ, ABILITY_1 | QUIRKY, FEMALE
+	db 25, MAGMAR, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -14120,11 +14120,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Zac & Jen@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 62, DUGTRIO
-	db 62, ELECTABUZZ
+	db 62, DUGTRIO, ABILITY_1 | QUIRKY, MALE
+	db 62, ELECTABUZZ, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -14132,11 +14132,11 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Zac & Jen@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 62, ELECTABUZZ
-	db 62, DUGTRIO
+	db 62, ELECTABUZZ, ABILITY_1 | QUIRKY, FEMALE
+	db 62, DUGTRIO, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -14144,13 +14144,13 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Jake & Bri@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 37, SANDSLASH
-	db 39, GOLDUCK
-	db 37, PARASECT
-	db 39, VAPOREON
+	db 37, SANDSLASH, ABILITY_1 | QUIRKY, MALE
+	db 39, GOLDUCK, ABILITY_1 | QUIRKY, MALE
+	db 37, PARASECT, ABILITY_1 | QUIRKY, FEMALE
+	db 39, VAPOREON, ABILITY_1 | QUIRKY, FEMALE
 
 	db $ff ; end
 
@@ -14158,13 +14158,13 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Jake & Bri@"
-	db TRAINERTYPE_NORMAL
+	db TRAINERTYPE_PERSONALITY
 
 	; party
-	db 37, PARASECT
-	db 39, VAPOREON
-	db 37, SANDSLASH
-	db 39, GOLDUCK
+	db 37, PARASECT, ABILITY_1 | QUIRKY, FEMALE
+	db 39, VAPOREON, ABILITY_1 | QUIRKY, FEMALE
+	db 37, SANDSLASH, ABILITY_1 | QUIRKY, MALE
+	db 39, GOLDUCK, ABILITY_1 | QUIRKY, MALE
 
 	db $ff ; end
 
@@ -14172,17 +14172,17 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Dan & Cara@"
-	db TRAINERTYPE_MOVES
+	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 
 	; party
 
-	db 38, SEADRA
+	db 38, SEADRA, ABILITY_1 | QUIRKY, MALE
 		db SMOKESCREEN
 		db WATER_PULSE
 		db OUTRAGE
 		db WATERFALL
 
-	db 38, SEADRA
+	db 38, SEADRA, ABILITY_1 | QUIRKY, FEMALE
 		db SMOKESCREEN
 		db WATER_PULSE
 		db OUTRAGE
@@ -14194,17 +14194,17 @@ AceDuoGroup:
 
 	; ACE_DUO
 	db "Dan & Cara@"
-	db TRAINERTYPE_MOVES
+	db TRAINERTYPE_PERSONALITY | TRAINERTYPE_MOVES
 
 	; party
 
-	db 38, SEADRA
+	db 38, SEADRA, ABILITY_1 | QUIRKY, FEMALE
 		db SMOKESCREEN
 		db WATER_PULSE
 		db OUTRAGE
 		db WHIRLPOOL
 
-	db 38, SEADRA
+	db 38, SEADRA, ABILITY_1 | QUIRKY, MALE
 		db SMOKESCREEN
 		db WATER_PULSE
 		db OUTRAGE
