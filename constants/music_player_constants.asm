@@ -35,26 +35,28 @@ NUM_MP_EDIT_FIELDS EQU const_value
 	const ORIGIN_XY    ; a
 	const ORIGIN_ORAS  ; b
 	const ORIGIN_SM    ; c
-	const ORIGIN_M02   ; d
-	const ORIGIN_PRISM ; e
+	const ORIGIN_GO    ; d
+	const ORIGIN_M02   ; e
+	const ORIGIN_PRISM ; f
 
 	const_def
-	const COMPOSER_NONE                       ; 0
-	const COMPOSER_JUNICHI_MASUDA             ; 1
-	const COMPOSER_GO_ICHINOSE                ; 2
-	const COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE ; 3
-	const COMPOSER_MORIKAZU_AOKI              ; 4
-	const COMPOSER_ICHIRO_SHIMAKURA           ; 5
-	const COMPOSER_SHOTA_KAGEYAMA             ; 6
-	const COMPOSER_FROGGESTSPIRIT             ; 7
-	const COMPOSER_MMMMMM                     ; 8
-	const COMPOSER_PUM                        ; 9
-	const COMPOSER_SHANTYTOWN                 ; a
-	const COMPOSER_PIGU                       ; b
-	const COMPOSER_PIGU_PIKALAXALT            ; c
-	const COMPOSER_GACT_PIGU                  ; d
-	const COMPOSER_LEVUSBEVUS                 ; e
-	const COMPOSER_GACT                       ; f
-	const COMPOSER_GRONNOC                    ; 10
-	const COMPOSER_CAT333POKEMON              ; 11
-	const COMPOSER_NOTFROGGESTSPIRIT          ; 12
+	const COMPOSER_NONE                       ;  0
+	const COMPOSER_JUNICHI_MASUDA             ;  1
+	const COMPOSER_GO_ICHINOSE                ;  2
+	const COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE ;  3
+	const COMPOSER_MORIKAZU_AOKI              ;  4
+	const COMPOSER_ICHIRO_SHIMAKURA           ;  5
+	const COMPOSER_SHOTA_KAGEYAMA             ;  6
+	const COMPOSER_FROGGESTSPIRIT             ;  7
+	const COMPOSER_MMMMMM                     ;  8
+	const COMPOSER_PUM                        ;  9
+	const COMPOSER_SHANTYTOWN                 ;  a
+	const COMPOSER_PIGU                       ;  b
+	const COMPOSER_SHOCKSLAYER                ;  c
+	const COMPOSER_PIGU_PIKALAXALT            ;  d
+	const COMPOSER_GACT_PIGU                  ;  e
+	const COMPOSER_LEVUSBEVUS                 ;  f
+	const COMPOSER_GACT                       ; 10
+	const COMPOSER_GRONNOC                    ; 11
+	const COMPOSER_CAT333POKEMON              ; 12
+	const COMPOSER_NOTFROGGESTSPIRIT          ; 13

@@ -2038,6 +2038,7 @@ SongInfo:
 	db "Vs.Gym Leader@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
 	db "Vs.Gym Leader@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
 	db "Vs.Gym Leader@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
+	db "Vs.Gym Leader@", ORIGIN_GO, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
 	db "Vs.Elite Four@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Celestial Tower@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Vs.Champion@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
@@ -2070,6 +2071,7 @@ SongOrigins:
 	db "X/Y@"
 	db "OR/AS@"
 	db "S/M@"
+	db "Go@"
 	db "M02@"
 	db "Prism@"
 
@@ -2086,6 +2088,7 @@ SongArtists:
 	db "Pum@"
 	db "ShantyTown@"
 	db "Pigu@"
+	db "ShockSlayer@"
 	db "Pigu, PikalaxALT@"
 	db "GACT, Pigu@"
 	db "LevusBevus@"

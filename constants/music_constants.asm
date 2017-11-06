@@ -162,22 +162,23 @@
 	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a0
 	const MUSIC_GYM_LEADER_BATTLE_BW           ; a1
 	const MUSIC_GYM_LEADER_BATTLE_XY           ; a2
-	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a3
-	const MUSIC_CELESTIAL_TOWER_BW             ; a4
-	const MUSIC_CHAMPION_BATTLE_RSE            ; a5
-	const MUSIC_MOUNT_CORONET_DPPT             ; a6
-	const MUSIC_CHAMPION_BATTLE_DPPT           ; a7
-	const MUSIC_WCS_BATTLE_BW                  ; a8
-	const MUSIC_CHAMPION_BATTLE_B2W2           ; a9
-	const MUSIC_CREDITS                        ; aa
-	const MUSIC_POST_CREDITS                   ; ab
-	const MUSIC_TITLE_XY                       ; ac
-	const MUSIC_MARINE_TUBE_B2W2               ; ad ; unused
-	const MUSIC_LEGENDARY_BATTLE_XY            ; ae ; unused
-	const MUSIC_WILD_BATTLE_PRISM              ; af ; unused
-	const MUSIC_TRAINER_BATTLE_PRISM           ; b0 ; unused
-	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b1 ; unused
-	const MUSIC_PALETTE_BATTLE_PRISM           ; b2 ; unused
+	const MUSIC_GYM_LEADER_BATTLE_GO           ; a3
+	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a4
+	const MUSIC_CELESTIAL_TOWER_BW             ; a5
+	const MUSIC_CHAMPION_BATTLE_RSE            ; a6
+	const MUSIC_MOUNT_CORONET_DPPT             ; a7
+	const MUSIC_CHAMPION_BATTLE_DPPT           ; a8
+	const MUSIC_WCS_BATTLE_BW                  ; a9
+	const MUSIC_CHAMPION_BATTLE_B2W2           ; aa
+	const MUSIC_CREDITS                        ; ab
+	const MUSIC_POST_CREDITS                   ; ac
+	const MUSIC_TITLE_XY                       ; ad
+	const MUSIC_MARINE_TUBE_B2W2               ; ae ; unused
+	const MUSIC_LEGENDARY_BATTLE_XY            ; af ; unused
+	const MUSIC_WILD_BATTLE_PRISM              ; b0 ; unused
+	const MUSIC_TRAINER_BATTLE_PRISM           ; b1 ; unused
+	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b2 ; unused
+	const MUSIC_PALETTE_BATTLE_PRISM           ; b3 ; unused
 NUM_SONGS EQU const_value
 
 ; special
