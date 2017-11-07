@@ -239,7 +239,8 @@
 	connection west, ROUTE_16_NORTHEAST, Route16Northeast, 10, 0, 8
 	connection east, ROUTE_7, Route7, 5, 0, 9
 
-	map_header_2 Route7, ROUTE_7, $f, WEST | EAST
+	map_header_2 Route7, ROUTE_7, $f, NORTH | WEST | EAST
+	connection north, CELADON_OUTSKIRTS, CeladonOutskirts, 0, 0, 10
 	connection west, CELADON_CITY, CeladonCity, -3, 2, 15
 	connection east, SAFFRON_CITY, SaffronCity, -3, 3, 12
 
@@ -367,6 +368,9 @@
 
 	map_header_2 MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
 	connection west, GOLDENROD_CITY, GoldenrodCity, 0, 0, 11
+
+	map_header_2 CeladonOutskirts, CELADON_OUTSKIRTS, $f, SOUTH
+	connection south, ROUTE_7, Route7, 0, 0, 10
 
 	map_header_2 Route23, ROUTE_23, $f, NORTH
 	connection north, INDIGO_PLATEAU, IndigoPlateau, 0, 0, 10

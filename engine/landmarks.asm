@@ -66,9 +66,9 @@ ENDM
 	landmark  92,  76, VioletCityName
 	landmark  94,  74, SproutTowerName
 	landmark  92,  68, VioletOutskirtsName
+	landmark  84,  92, RuinsOfAlphName
 	landmark  92, 108, Route32Name
 	landmark 100, 128, Route32CoastName
-	landmark  84,  92, RuinsOfAlphName
 	landmark  92, 140, UnionCaveName
 	landmark  84, 140, Route33Name
 	landmark  76, 140, AzaleaTownName
@@ -153,6 +153,7 @@ ENDM
 	landmark 150,  78, SoulHouseName
 	landmark  92,  76, CeladonCityName
 	landmark  90,  78, CeladonUniversityName
+	landmark 104,  72, CeladonOutskirtsName
 	landmark 116,  76, SaffronCityName
 	landmark 132,  92, Route11Name
 	landmark 148,  92, Route12Name
@@ -246,6 +247,7 @@ RockTunnelName:        db "Rock Tunnel@"
 LavRadioTowerName:     db "Lav.Radio¯Tower@"
 SoulHouseName:         db "House of¯Memories@"
 CeladonUniversityName: db "Celadon¯University@"
+CeladonOutskirtsName:  db "Celadon¯Outskirts@"
 SafariZoneName:        db "Safari Zone@"
 SeafoamIslandsName:    db "Seafoam¯Islands@"
 PokemonMansionName:    db "Pokémon¯Mansion@"

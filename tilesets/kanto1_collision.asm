@@ -204,4 +204,7 @@
 	tilecoll WALL, WALL, WATER, WATER
 	tilecoll WALL, WATER, WATER, WATER
 	tilecoll WATER, WALL, WATER, WATER
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, LEDGE_DOWN, WALL, WALL
+	tilecoll WALL, FLOOR, FLOOR, FLOOR
