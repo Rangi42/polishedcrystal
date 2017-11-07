@@ -13,6 +13,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	push af
 	ld a, $1
 	ld [hInMenu], a
+	ld [wInPokegear], a
 	ld a, [VramState]
 	push af
 	xor a
@@ -43,6 +44,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	call ClearBGPalettes
 	xor a
 	ld [hBGMapAddress], a
+	ld [wInPokegear], a
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	ld a, $90
@@ -815,6 +817,11 @@ PokegearPhone_Init: ; 91156 (24:5156)
 	ld [wPokegearPhoneScrollPosition], a
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
+
+	ld b, SCGB_POKEGEAR_PALS
+	call GetSGBLayout
+	call SetPalettes
+
 	call InitPokegearTilemap
 	call ExitPokegearRadio_HandleMusic
 	ld hl, PokegearText_WhomToCall
