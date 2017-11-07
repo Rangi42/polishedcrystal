@@ -7,15 +7,41 @@ LoadMapGroupRoof:: ; 1c000
 	add hl, de
 	ld a, [hl]
 	cp -1
-	ret z
+	jr z, .extra_tiles
 	ld hl, Roofs
 	ld bc, 9 tiles
 	call AddNTimes
 	ld de, VTiles2 tile $0a
 	ld bc, 9 tiles
 	call CopyBytes
-; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
+
+.extra_tiles
+; Load statue tiles for Ecruteak Shrine on top of the unused gravestone tiles
 	ld a, [wTileset]
+	cp TILESET_JOHTO_TRADITIONAL
+	jr nz, .no_growlithe_statue
+	ld a, [MapGroup]
+	cp GROUP_ECRUTEAK_SHRINE_OUTSIDE
+	ret nz
+	ld a, [rVBK]
+	push af
+	ld a, $1
+	ld [rVBK], a
+	ld hl, EcruteakShrineStatueGFX
+	ld de, VTiles4 tile $e6
+	ld bc, 2 tiles
+	call CopyBytes
+	ld hl, EcruteakShrineStatueGFX + 2 tiles
+	ld de, VTiles4 tile $f6
+	ld bc, 2 tiles
+	call CopyBytes
+	pop af
+	ld [rVBK], a
+	ret
+
+.no_growlithe_statue
+; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
+	;ld a, [wTileset]
 	cp TILESET_JOHTO_MODERN
 	ret nz
 	ld a, [MapGroup]
@@ -89,3 +115,6 @@ INCBIN "gfx/tilesets/roofs/5.2bpp"
 
 StormyBeachPuddleGFX:
 INCBIN "gfx/tilesets/roofs/puddle.2bpp"
+
+EcruteakShrineStatueGFX:
+INCBIN "gfx/tilesets/roofs/statue.2bpp"
