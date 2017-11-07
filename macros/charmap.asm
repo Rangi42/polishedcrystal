@@ -198,7 +198,6 @@ COMMON_FONT_START EQU $6f
 	charmap "↑",        $f7
 	charmap "↓",        $f8
 	charmap "<UPDN>",   $f9
-	charmap "<NONO>",   $f9 ; overwrites <UPDN> in battle
 
 ; frame:
 FRAME_START EQU $fa
@@ -234,3 +233,5 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "<NOXP>",   $75
 	charmap "<FULLXP>", $7d
 	charmap "<XPEND>",  $7e
+
+	charmap "<NONO>",   $f2 ; overwrites <PHONE> in battle
