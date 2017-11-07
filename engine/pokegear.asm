@@ -144,7 +144,7 @@ Pokegear_LoadGFX: ; 90c4e
 ; 90cb2
 
 FastShipGFX: ; 90cb2
-INCBIN "gfx/pokegear/fast_ship.2bpp"
+INCBIN "gfx/town_map/fast_ship.2bpp"
 ; 90d32
 
 SinjohRuinsArrowGFX:
@@ -716,7 +716,7 @@ PokegearMap_UpdateLandmarkName: ; 910b4
 	pop de
 	farcall TownMap_ConvertLineBreakCharacters
 	hlcoord 8, 0
-	ld [hl], $3a ; up/down arrow
+	ld [hl], "<UPDN>"
 	ret
 
 ; 910d4
@@ -2160,14 +2160,14 @@ TownMapBubble: ; 91bb5
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $36
+	ld a, $37
 	ld [hli], a
 ; Top row
 	ld bc, 16
 	ld a, " "
 	call ByteFill
 ; Top-right corner
-	ld a, $37
+	ld a, $38
 	ld [hl], a
 	hlcoord 1, 1
 
@@ -2178,14 +2178,14 @@ TownMapBubble: ; 91bb5
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $38
+	ld a, $39
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
 	ld a, " "
 	call ByteFill
 ; Bottom-right corner
-	ld a, $39
+	ld a, $3a
 	ld [hl], a
 
 ; Print "Where?"
@@ -2196,7 +2196,7 @@ TownMapBubble: ; 91bb5
 	call .Name
 ; Up/down arrows
 	hlcoord 18, 1
-	ld [hl], $3a
+	ld [hl], "<UPDN>"
 	ret
 
 .Where:
@@ -2887,7 +2887,7 @@ endm
 	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 5, 6, 7, 7, 6
 	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 6, 4, 4, 0, 0
 	townmappals 1, 1, 1, 6, 6, 6, 0, 0, 4, 4, 4, 7, 1, 4, 0, 0
-	townmappals 1, 1, 1, 1, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+	townmappals 1, 1, 1, 1, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3
 
 TownMapJohtoFlips:
 	decoord 0, 0, JohtoMap
@@ -2998,15 +2998,15 @@ LoadTownMapGFX: ; 91ff2
 ; 91fff
 
 JohtoMap: ; 91fff
-INCBIN "gfx/pokegear/johto.bin"
+INCBIN "gfx/town_map/johto.bin"
 ; 92168
 
 KantoMap: ; 92168
-INCBIN "gfx/pokegear/kanto.bin"
+INCBIN "gfx/town_map/kanto.bin"
 ; 922d1
 
 OrangeMap:
-INCBIN "gfx/pokegear/orange.bin"
+INCBIN "gfx/town_map/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
-INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"
+INCBIN "gfx/town_map/dexmap_nest_icon.2bpp"

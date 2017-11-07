@@ -30,6 +30,9 @@ INCBIN "gfx/frames/9.1bpp"
 BattleExtrasGFX:
 INCBIN "gfx/battle/extras.2bpp"
 
+BattleNoCaptureGFX:
+INCBIN "gfx/battle/nocapture.2bpp"
+
 GFX_Stats: ; f89b0
 INCBIN "gfx/stats/stats.2bpp"
 ; f8ac0
@@ -47,7 +50,7 @@ CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
 
 TownMapGFX: ; f8ba0
-INCBIN "gfx/pokegear/town_map.2bpp.lz"
+INCBIN "gfx/town_map/town_map.2bpp.lz"
 ; f8ea4
 
 TextBoxSpaceGFX: ; f9204
@@ -66,7 +69,7 @@ _LoadStandardFont:: ; fb449
 	lb bc, BANK(FontNormal), 111
 	call Get1bpp_2
 	ld de, FontCommon
-	ld hl, VTiles1 tile ("▷" - $80) ; first common font character
+	ld hl, VTiles1 tile COMMON_FONT_START
 	lb bc, BANK(FontCommon), 11
 	jp Get1bpp_2
 ; fb48a
@@ -99,8 +102,12 @@ endr
 
 _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleExtrasGFX
-	ld hl, VTiles2 tile $5f
+	ld hl, VTiles2 tile BATTLEEXTRA_GFX_START
 	lb bc, BANK(BattleExtrasGFX), 32
+	call Get2bpp_2
+	ld de, BattleNoCaptureGFX
+	ld hl, VTiles0 tile "<NONO>"
+	lb bc, BANK(BattleNoCaptureGFX), 1
 	call Get2bpp_2
 ; fb4cc
 
@@ -111,7 +118,7 @@ LoadFrame:: ; fb4cc
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles1 tile ("┌" - $80)
+	ld hl, VTiles1 tile (FRAME_START - $80)
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp_2
 	ld hl, VTiles2 tile " "
