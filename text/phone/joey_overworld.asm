@@ -5,7 +5,7 @@ JoeyAskNumber1Text:
 	para "I'll ring you for"
 	line "some battles."
 
-	para "I'm a rookie too, "
+	para "I'm a rookie too,"
 	line "so I think it'd be"
 	cont "a good motivator."
 	done
@@ -88,7 +88,7 @@ JoeyRematchGiftText:
 	line "often actually"
 	cont "feels good now!"
 
-	para "Here, take this. "
+	para "Here, take this."
 	line "Use it to get even"
 
 	para "tougher. That will"

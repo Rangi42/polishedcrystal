@@ -153,7 +153,7 @@ ElmPhoneEggAssistantText: ; 0x1b4b87
 	para "My assistant is at"
 	line "the #mon Center"
 
-	para "in Violet City. "
+	para "in Violet City."
 	line "Could you talk to"
 	cont "him?"
 	done

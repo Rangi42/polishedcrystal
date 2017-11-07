@@ -768,7 +768,7 @@ UnknownText_0x17549b: ; 0x17549b
 	line "just because you"
 
 	para "happened to beat"
-	line "me… "
+	line "me…"
 
 	para "It was a fluke!"
 	done

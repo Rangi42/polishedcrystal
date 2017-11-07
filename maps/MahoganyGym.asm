@@ -117,8 +117,8 @@ UnknownText_0x199b8d:
 	text "#mon have many"
 	line "experiences in"
 
-	para "their lives, just "
-	line "like we do. "
+	para "their lives, just"
+	line "like we do."
 
 	para "I, too, have seen"
 	line "and suffered much"

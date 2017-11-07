@@ -1,5 +1,5 @@
 TiffanyAskNumber1Text:
-	text "Hi! You like"
+	text "Hey! You like"
 	line "Clefairy too?"
 
 	para "They're so very"

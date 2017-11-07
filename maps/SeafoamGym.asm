@@ -283,7 +283,7 @@ UnknownText_0x1ab683:
 
 UnknownText_0x1ab69d:
 	text "Here, I'll give you"
-	line "this, too. "
+	line "this, too."
 	done
 
 BlaineOutroText:

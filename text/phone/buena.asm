@@ -41,7 +41,7 @@ UnknownText_0xa0d42: ; 0xa0d42
 	line "Oh! Hi, <PLAYER>!"
 
 	para "I just got off"
-	line "work. "
+	line "work."
 
 	para "Let me tell you,"
 	line "I'm exhausted!"

@@ -33,7 +33,7 @@ WonderTradeConfirmText::
 	text "Offer to trade"
 	line "@"
 	text_from_ram StringBuffer1
-	text "? "
+	text "?"
 	done
 
 WonderTradeSetupText::

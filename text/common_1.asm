@@ -1073,7 +1073,7 @@ UnknownText_0x1bd4aa::
 	text "Huh? That's not"
 	line "@"
 	text_from_ram StringBuffer1
-	text ". "
+	text "."
 	cont "What a letdown…"
 	done
 

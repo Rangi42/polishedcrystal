@@ -312,7 +312,7 @@ UnknownText_0x198b73:
 	cont "a landmark."
 
 	para "They're running a"
-	line "promotional cam- "
+	line "promotional cam-"
 	cont "paign right now."
 
 	para "They'll modify"

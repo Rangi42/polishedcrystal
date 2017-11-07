@@ -345,7 +345,7 @@ MrPokemonText_GimmeTheScale:
 	line "What's that?"
 	cont "A red Gyarados?"
 
-	para "That's rare! "
+	para "That's rare!"
 	line "I, I want it…"
 
 	para "<PLAYER>, would you"
