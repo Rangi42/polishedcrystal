@@ -7133,8 +7133,8 @@ PokemaniacGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 27, NIDORINA
-	db 27, NIDORINO
+	db 20, NIDORINA
+	db 20, NIDORINO
 
 	db $ff ; end
 

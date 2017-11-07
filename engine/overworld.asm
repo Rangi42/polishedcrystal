@@ -873,30 +873,28 @@ Group26Sprites:
 ; Route31
 ; CherrygroveBay
 ; CherrygroveCity
+	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
 	db SPRITE_CHERRYGROVE_RIVAL ; SPRITE_SILVER, SPRITE_BUG_CATCHER
+	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
-	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_TEACHER
-	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	db SPRITE_OFFICER ; doesn't walk
-	db SPRITE_OFFICER_F ; doesn't walk
-	db SPRITE_VETERAN_M ; doesn't walk
-	db SPRITE_VETERAN_F ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
+	db SPRITE_OFFICER ; doesn't walk
+	db SPRITE_POKEFAN_M ; doesn't walk
+	db SPRITE_SUPER_NERD ; doesn't walk
+	db SPRITE_VETERAN_F ; doesn't walk
+	db SPRITE_VETERAN_M ; doesn't walk
 	db SPRITE_COSPLAYER ; doesn't walk
-	db SPRITE_POKEFAN_M ; doesn't walk (TODO: walks in Route 42)
-	; 17 walking sprites (10 that walk) (TODO: only 9 can walk)
+	; 16 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BOULDER_ROCK_FOSSIL
-	db SPRITE_SUICUNE
+	db SPRITE_ROUTE_30_RATTATA ; SPRITE_RATTATA, SPRITE_SUICUNE
 	db SPRITE_PIDGEY
-	db SPRITE_RATTATA
-	; 22 total sprites (TODO: too many)
+	; 21 total sprites
 	db 0
 
 
