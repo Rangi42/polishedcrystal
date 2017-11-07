@@ -2832,12 +2832,12 @@ TownMapPals: ; 91f13
 .loop
 	ld a, [hli]
 	push hl
-	cp $40 ; tiles after TownMapGFX use palette 3
-	jr nc, .pal3
+	cp $40 ; tiles after TownMapGFX use palette 0
+	jr nc, .pal0
 	call GetNextTownMapTilePalette
 	jr .update
-.pal3
-	ld a, $3
+.pal0
+	xor a
 .update
 	pop hl
 	ld [de], a
@@ -2884,10 +2884,10 @@ rept _NARG / 2
 	shift
 endr
 endm
-	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 5, 6, 7, 7, 6
-	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 6, 4, 4, 0, 0
-	townmappals 1, 1, 1, 6, 6, 6, 0, 0, 4, 4, 4, 7, 1, 4, 0, 0
-	townmappals 1, 1, 1, 1, 4, 4, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3
+	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 5, 6, 7, 7, 6
+	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 6, 4, 4, 1, 1
+	townmappals 2, 2, 2, 6, 6, 6, 1, 1, 4, 4, 4, 7, 2, 4, 1, 1
+	townmappals 2, 2, 2, 2, 4, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 TownMapJohtoFlips:
 	decoord 0, 0, JohtoMap
