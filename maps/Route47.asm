@@ -86,6 +86,7 @@ Route47_FinishOverheadBridge:
 Route47_FinishUnderfootBridge:
 	ld a, $1
 Route47_FinishBridge:
+	ld [wWalkingOnBridge], a
 	ld [wRoute47Trigger], a ; dotrigger a
 	; call BufferScreen ; finish changebridgeblocks
 	call GetMovementPermissions

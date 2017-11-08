@@ -2450,7 +2450,7 @@ wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
 wBugContestOfficerPrize:: ds 1
 wInPokegear:: ds 1
-	ds 1
+wWalkingOnBridge:: ds 1
 
 wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4
