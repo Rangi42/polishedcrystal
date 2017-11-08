@@ -348,6 +348,7 @@ endc
 	db SYLVEON,    $71 - 7 * 7 + 1
 	db MISMAGIUS,  $71 - 7 * 7 + 1
 	db ELECTIVIRE, $76 - 7 * 7 + 1
+	db HONCHKROW,  $7a - 7 * 7 + 1
 	db WEAVILE,    $80 - 7 * 7 + 1
 	db LEAFEON,    $81 - 7 * 7 + 1
 	db GLISCOR,    $83 - 7 * 7 + 1
