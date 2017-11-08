@@ -239,7 +239,7 @@ class PaletteMap(object):
 			for line in file:
 				line = line.strip()
 				if line.startswith('tilepal '):
-					indexes = line[8:].split(',')[1:]
+					indexes = line[len('tilepal '):].split(',')[1:]
 					more_data = [colors[c.strip()][::-1] for c in indexes]
 					self.data.extend(more_data)
 
