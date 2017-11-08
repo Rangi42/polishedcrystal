@@ -508,21 +508,31 @@ BattleText_StringBuffer1GrewToLevel: ; 0x80c9c
 	db "@@"
 ; 0x80cb9
 
-;BattleText_WildPkmnIsEating: ; 0x80cba
-;	text "Wild @"
-;	text_from_ram EnemyMonNick
-;	text ""
-;	line "is eating!"
-;	prompt
+BattleText_WildPkmnIsEating: ; 0x80cba
+	text "Wild @"
+	text_from_ram EnemyMonNick
+	text ""
+	line "is eating!"
+	prompt
 ;; 0x80cd1
 
-;BattleText_WildPkmnIsAngry: ; 0x80cd1
-;	text "Wild @"
-;	text_from_ram EnemyMonNick
-;	text ""
-;	line "is angry!"
-;	prompt
+BattleText_WildPkmnIsAngry: ; 0x80cd1
+	text "Wild @"
+	text_from_ram EnemyMonNick
+	text ""
+	line "is angry!"
+	prompt
 ;; 0x80ce7
+
+BattleText_ThrewRock:
+	text "<PLAYER> threw a"
+	line "rock."
+	prompt
+
+BattleText_ThrewBait:
+	text "<PLAYER> threw"
+	line "some bait."
+	prompt
 
 FastAsleepText: ; 0x80ce7
 	text "<USER>"

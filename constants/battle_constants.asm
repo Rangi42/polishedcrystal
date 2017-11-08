@@ -268,6 +268,7 @@ const_value SET 1
 	const BATTLETYPE_FORCEITEM
 	const BATTLETYPE_TRAP
 	const BATTLETYPE_LEGENDARY
+	const BATTLETYPE_SAFARI
 
 ; battle variables
 	const_def
