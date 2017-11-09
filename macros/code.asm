@@ -104,3 +104,11 @@ flagcheck: MACRO
 	ld hl, \1 + (\2 >> 3)
 	bit (\2 & $7), [hl]
 endm
+
+changebridgeblock: macro
+	; lb de, \1 + 4, \2 + 4
+	; call GetBlockLocation
+	ld hl, OverworldMap + (\2 / 2 + 3) * (\4_WIDTH + 6) + \1 / 2 + 3
+	; hard-coding the above calculation for efficiency
+	ld [hl], \3
+endm

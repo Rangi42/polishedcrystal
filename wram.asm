@@ -2304,7 +2304,6 @@ wFastShipB1FTrigger:: ds 1
 wVermilionCityTrigger:: ds 1
 wVermilionPortTrigger:: ds 1
 wSaffronTrainStationTrigger:: ds 1
-wCeruleanCityTrigger:: ds 1
 wCeruleanGymTrigger:: ds 1
 wRoute24Trigger:: ds 1
 wCeruleanCapeTrigger:: ds 1

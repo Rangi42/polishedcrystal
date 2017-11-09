@@ -1,4 +1,5 @@
 RefreshScreen_BridgeUpdate::
+	call GetMovementPermissions
 	call ClearWindowData
 	ld a, [hROMBank]
 	push af

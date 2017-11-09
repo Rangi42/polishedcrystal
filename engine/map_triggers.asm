@@ -84,7 +84,6 @@ ENDM
 	trigger_def VERMILION_CITY,                         wVermilionCityTrigger
 	trigger_def VERMILION_PORT,                         wVermilionPortTrigger
 	trigger_def SAFFRON_TRAIN_STATION,                  wSaffronTrainStationTrigger
-	trigger_def CERULEAN_CITY,                          wCeruleanCityTrigger
 	trigger_def CERULEAN_GYM,                           wCeruleanGymTrigger
 	trigger_def ROUTE_24,                               wRoute24Trigger
 	trigger_def CERULEAN_CAPE,                          wCeruleanCapeTrigger
