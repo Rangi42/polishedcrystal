@@ -13,7 +13,7 @@ Route25_MapEventHeader:
 .Signposts: db 1
 	signpost 5, 4, SIGNPOST_ITEM + POTION, EVENT_ROUTE_25_HIDDEN_POTION
 
-.PersonEvents: db 12
+.PersonEvents: db 0
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
 	person_event SPRITE_LASS, 11, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassEllen, -1
 	person_event SPRITE_YOUNGSTER, 8, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyJoe, -1

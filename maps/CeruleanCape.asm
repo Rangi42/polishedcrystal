@@ -7,9 +7,9 @@ CeruleanCape_MapScriptHeader:
 CeruleanCape_MapEventHeader:
 
 .Warps: db 3
-	warp_def 5, 11, 1, BILLS_HOUSE
-	warp_def 29, 42, 1, DIM_CAVE_2F
-	warp_def 29, 43, 1, DIM_CAVE_2F
+	warp_def 5, 9, 1, BILLS_HOUSE
+	warp_def 29, 38, 1, DIM_CAVE_2F
+	warp_def 29, 39, 1, DIM_CAVE_2F
 
 .XYTriggers: db 2
 	xy_trigger 1, 6, 6, CeruleanCapeDateInterruptedTrigger1
@@ -17,10 +17,10 @@ CeruleanCape_MapEventHeader:
 
 .Signposts: db 3
 	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
-	signpost 12, 35, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
-	signpost 4, 14, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
+	signpost 12, 31, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
+	signpost 3, 18, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-.PersonEvents: db 15
+.PersonEvents: db 0
 	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	person_event SPRITE_COOLTRAINER_M, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, -1
