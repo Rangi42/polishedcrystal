@@ -271,7 +271,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 12
 
-	mapgroup ROUTE_6,                                    16, 10 ;  1
+	mapgroup ROUTE_6,                                    16, 15 ;  1
 	mapgroup ROUTE_11,                                    9, 26 ;  2
 	mapgroup VERMILION_CITY,                             20, 20 ;  3
 	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
@@ -290,7 +290,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 13
 
-	mapgroup ROUTE_1,                                    18, 10 ;  1
+	mapgroup ROUTE_1,                                    18, 12 ;  1
 	mapgroup PALLET_TOWN,                                 9, 10 ;  2
 	mapgroup REDS_HOUSE_1F,                               4,  4 ;  3
 	mapgroup REDS_HOUSE_2F,                               4,  4 ;  4
