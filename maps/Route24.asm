@@ -10,10 +10,11 @@ Route24_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 0
+.Signposts: db 1
+	signpost 5, 16, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
 .PersonEvents: db 1
-	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	person_event SPRITE_ROCKET, 25, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
 const_value set 1
 	const ROUTE24_ROCKET
@@ -122,4 +123,29 @@ UnknownText_0x1adee1:
 	para "Oh, no! Should I"
 	line "do what now on"
 	cont "from, me?"
+	done
+
+TrainerSchoolboyDudley:
+	trainer EVENT_BEAT_SCHOOLBOY_DUDLEY, SCHOOLBOY, DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText, 0, SchoolboyDudleyScript
+
+SchoolboyDudleyScript:
+	end_if_just_battled
+	jumptextfaceplayer UnknownText_0x19f1b5
+
+SchoolboyDudleySeenText:
+	text "Beat the six of us"
+	line "trainers to win a"
+	cont "fabulous prize!"
+
+	para "Think you've got"
+	line "what it takes?"
+	done
+
+SchoolboyDudleyBeatenText:
+	text "Whoo! Good stuff."
+	done
+
+UnknownText_0x19f1b5:
+	text "I did my best."
+	line "I have no regrets."
 	done

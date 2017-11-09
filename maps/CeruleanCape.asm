@@ -12,20 +12,18 @@ CeruleanCape_MapEventHeader:
 	warp_def 29, 39, 1, DIM_CAVE_2F
 
 .XYTriggers: db 2
-	xy_trigger 1, 6, 6, CeruleanCapeDateInterruptedTrigger1
-	xy_trigger 1, 7, 6, CeruleanCapeDateInterruptedTrigger2
+	xy_trigger 1, 6, 4, CeruleanCapeDateInterruptedTrigger1
+	xy_trigger 1, 7, 4, CeruleanCapeDateInterruptedTrigger2
 
 .Signposts: db 3
-	signpost 5, 9, SIGNPOST_JUMPTEXT, BillsHouseSignText
+	signpost 5, 7, SIGNPOST_JUMPTEXT, BillsHouseSignText
 	signpost 12, 31, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
 	signpost 3, 18, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-.PersonEvents: db 0
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	person_event SPRITE_COOLTRAINER_M, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	person_event SPRITE_COOLTRAINER_M, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 6, -2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_CUT_TREE
-	person_event SPRITE_SWIMMER_GUY, 7, 27, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
+.PersonEvents: db 13
+	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
+	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
+	person_event SPRITE_SWIMMER_GUY, 7, 25, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
 	person_event SPRITE_SWIMMER_GUY, 16, 45, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
 	person_event SPRITE_SWIMMER_GUY, 23, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
 	person_event SPRITE_CERULEAN_CAPE_MISTY, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
@@ -83,29 +81,6 @@ CeruleanCapeDateFinishScript:
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	special RestartMapMusic
 	end
-
-CooltrainerMScript_0x19efac:
-	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	iftrue_jumptextfaceplayer UnknownText_0x19f520
-	faceplayer
-	opentext
-	checkevent EVENT_CLEARED_NUGGET_BRIDGE
-	iftrue UnknownScript_0x19efc7
-	writetext UnknownText_0x19f43b
-	buttonsound
-	verbosegiveitem NUGGET
-	iffalse_endtext
-	setevent EVENT_CLEARED_NUGGET_BRIDGE
-UnknownScript_0x19efc7:
-	writetext UnknownText_0x19f49d
-	waitbutton
-	closetext
-	winlosstext UnknownText_0x19f4fd, 0
-	loadtrainer COOLTRAINERM, KEVIN
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	jumptext UnknownText_0x19f520
 
 TrainerSwimmermRomeo:
 	trainer EVENT_BEAT_SWIMMERM_ROMEO, SWIMMERM, ROMEO, .SeenText, .BeatenText, 0, .Script
@@ -458,42 +433,6 @@ UnknownText_0x19f006:
 	para "I'm Misty, the"
 	line "Gym Leader in"
 	cont "Cerulean."
-	done
-
-UnknownText_0x19f43b:
-	text "You took on one"
-	line "more battle than"
-
-	para "you expected, but"
-	line "you won anyway."
-
-	para "As promised, you"
-	line "win a prize."
-	done
-
-UnknownText_0x19f49d:
-	text "But after seeing"
-	line "how you battle, I"
-
-	para "want to see how"
-	line "I'll fare."
-
-	para "How about it? Let"
-	line "me take you on."
-	done
-
-UnknownText_0x19f4fd:
-	text "I've never had a"
-	line "battle this good!"
-	done
-
-UnknownText_0x19f520:
-	text "That was a great"
-	line "battle!"
-
-	para "You and your #-"
-	line "mon are truly out-"
-	cont "standing!"
 	done
 
 BillsHouseSignText:
