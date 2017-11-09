@@ -1007,26 +1007,27 @@ Group25Sprites:
 Group28Sprites:
 ; Route9
 ; Route10North
-	db SPRITE_CERULEAN_CAPE_MISTY ; SPRITE_MISTY, SPRITE_LAWRENCE, SPRITE_BEAUTY
-	db SPRITE_COOLTRAINER_F
+	db SPRITE_CERULEAN_CAPE_MISTY ; SPRITE_MISTY, SPRITE_LAWRENCE
 	db SPRITE_COOLTRAINER_M
+	db SPRITE_BEAUTY
 	db SPRITE_GENTLEMAN
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_SWIMMER_GUY
+	db SPRITE_COOLTRAINER_F ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
 	db SPRITE_LADY ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
 	db SPRITE_CHRIS ; doesn't walk
 	db SPRITE_KRIS ; doesn't walk
-	; 14 walking sprites (9 that walk)
+	; 15 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
 	db SPRITE_SLOWBRO
 	db SPRITE_ZAPDOS
-	; 18 total sprites
+	; 19 total sprites
 	db 0
 
 

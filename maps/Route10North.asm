@@ -120,10 +120,7 @@ Route10NorthLawrenceEncounter1Script:
 	pause 15
 	special Special_FadeInQuickly
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
-	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	iftrue .Misty
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_BEAUTY
-.Misty
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic
 	end
@@ -186,10 +183,7 @@ Route10NorthLawrenceEncounter2Script:
 	pause 15
 	special Special_FadeInQuickly
 	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
-	checkevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	iftrue .Misty
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_BEAUTY
-.Misty
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
 	clearevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
 	special RestartMapMusic
