@@ -11,28 +11,31 @@ CeruleanCape_MapEventHeader:
 	warp_def 29, 38, 1, DIM_CAVE_2F
 	warp_def 29, 39, 1, DIM_CAVE_2F
 
-.XYTriggers: db 2
+.XYTriggers: db 3
 	xy_trigger 1, 6, 4, CeruleanCapeDateInterruptedTrigger1
 	xy_trigger 1, 7, 4, CeruleanCapeDateInterruptedTrigger2
+	xy_trigger 1, 12, 9, CeruleanCapeDateInterruptedTrigger3
 
 .Signposts: db 3
 	signpost 5, 7, SIGNPOST_JUMPTEXT, BillsHouseSignText
 	signpost 12, 31, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
 	signpost 3, 18, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-.PersonEvents: db 13
+.PersonEvents: db 15
 	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
 	person_event SPRITE_SWIMMER_GUY, 7, 25, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
 	person_event SPRITE_SWIMMER_GUY, 16, 41, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
 	person_event SPRITE_SWIMMER_GUY, 23, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
-	person_event SPRITE_BEAUTY, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
+	person_event SPRITE_BEAUTY, 13, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
 	person_event SPRITE_BEAUTY, 21, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
 	person_event SPRITE_GENTLEMAN, 27, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
 	person_event SPRITE_GENTLEMAN, 26, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
 	person_event SPRITE_COOLTRAINER_F, 33, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristfMorgan, -1
 	person_event SPRITE_LADY, 26, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	person_event SPRITE_FISHER, 11, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
+	person_event SPRITE_COOLTRAINER_M, 8, -4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
+	person_event SPRITE_COOLTRAINER_M, 8, -2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	itemball_event 12, 31, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
 const_value set 1
@@ -79,6 +82,52 @@ CeruleanCapeDateFinishScript:
 	dotrigger $0
 	special RestartMapMusic
 	end
+
+CeruleanCapeDateInterruptedTrigger3:
+	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
+	pause 30
+	spriteface CERULEANCAPE_MISTY_BOYFRIEND, DOWN
+	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
+	spriteface CERULEANCAPE_MISTY, DOWN
+	applymovement CERULEANCAPE_MISTY_BOYFRIEND, .RunAwayMovement1
+	spriteface CERULEANCAPE_MISTY, UP
+	applymovement CERULEANCAPE_MISTY_BOYFRIEND, .RunAwayMovement2
+	disappear CERULEANCAPE_MISTY_BOYFRIEND
+	pause 15
+	playmusic MUSIC_BEAUTY_ENCOUNTER
+	spriteface CERULEANCAPE_MISTY, DOWN
+	pause 10
+	applymovement CERULEANCAPE_MISTY, .ApproachMovement
+	showtext UnknownText_0x19f006
+	applymovement CERULEANCAPE_MISTY, .LeaveMovement
+	disappear CERULEANCAPE_MISTY
+	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
+	dotrigger $0
+	special RestartMapMusic
+	end
+
+.RunAwayMovement1:
+	big_step_right
+	big_step_up
+	step_end
+
+.RunAwayMovement2:
+	big_step_up
+	big_step_up
+	step_end
+
+.ApproachMovement:
+	step_right
+	step_down
+	step_down
+	step_end
+
+.LeaveMovement:
+	step_up
+	step_up
+	step_up
+	step_up
+	step_end
 
 TrainerSwimmermRomeo:
 	trainer EVENT_BEAT_SWIMMERM_ROMEO, SWIMMERM, ROMEO, .SeenText, .BeatenText, 0, .Script

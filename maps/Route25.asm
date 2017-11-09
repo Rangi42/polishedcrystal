@@ -12,7 +12,9 @@ Route25_MapEventHeader:
 
 .Signposts: db 0
 
-.PersonEvents: db 12
+.PersonEvents: db 13
+	person_event SPRITE_COOLTRAINER_M, 8, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
+	person_event SPRITE_COOLTRAINER_M, 8, 32, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	person_event SPRITE_YOUNGSTER, 11, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
 	person_event SPRITE_LASS, 8, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassEllen, -1
 	person_event SPRITE_YOUNGSTER, 10, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyJoe, -1
@@ -24,7 +26,17 @@ Route25_MapEventHeader:
 	cuttree_event 6, 28, EVENT_ROUTE_25_CUT_TREE
 	person_event SPRITE_YOUNGSTER, 4, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route25MewYoungsterText, -1
 	person_event SPRITE_SLOWPOKE, 4, 21, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route25SlowpokeScript, -1
-	person_event SPRITE_COOLTRAINER_M, 8, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, -1
+
+const_value set 1
+	const ROUTE25_COOLTRAINERM_BEFORE
+	const ROUTE25_COOLTRAINERM_AFTER
+
+TrainerSchoolboyDudley:
+	trainer EVENT_BEAT_SCHOOLBOY_DUDLEY, SCHOOLBOY, DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText, 0, SchoolboyDudleyScript
+
+SchoolboyDudleyScript:
+	end_if_just_battled
+	jumptextfaceplayer UnknownText_0x19f1b5
 
 TrainerLassEllen:
 	trainer EVENT_BEAT_LASS_ELLEN, LASS, ELLEN, LassEllenSeenText, LassEllenBeatenText, 0, LassEllenScript
@@ -77,8 +89,8 @@ Route25SlowpokeScript:
 	waitendtext
 
 CooltrainerMScript_0x19efac:
-	checkevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	iftrue_jumptextfaceplayer UnknownText_0x19f520
+	checkevent EVENT_BEAT_SUPER_NERD_PAT
+	iffalse_jumptextfaceplayer NuggetBridgeNotClearedText
 	faceplayer
 	opentext
 	checkevent EVENT_CLEARED_NUGGET_BRIDGE
@@ -92,12 +104,41 @@ UnknownScript_0x19efc7:
 	writetext UnknownText_0x19f49d
 	waitbutton
 	closetext
+	follow ROUTE25_COOLTRAINERM_BEFORE, PLAYER
+	applymovement ROUTE25_COOLTRAINERM_BEFORE, Route25CooltrainerMovementData
+	stopfollow
+	spriteface ROUTE25_COOLTRAINERM_BEFORE, LEFT
 	winlosstext UnknownText_0x19f4fd, 0
 	loadtrainer COOLTRAINERM, KEVIN
 	startbattle
+	disappear ROUTE25_COOLTRAINERM_BEFORE
+	appear ROUTE25_COOLTRAINERM_AFTER
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_KEVIN
 	jumptext UnknownText_0x19f520
+
+Route25CooltrainerMovementData:
+	step_right
+	step_right
+	step_end
+
+SchoolboyDudleySeenText:
+	text "Beat the six of us"
+	line "trainers to win a"
+	cont "fabulous prize!"
+
+	para "Think you've got"
+	line "what it takes?"
+	done
+
+SchoolboyDudleyBeatenText:
+	text "Whoo! Good stuff."
+	done
+
+UnknownText_0x19f1b5:
+	text "I did my best."
+	line "I have no regrets."
+	done
 
 LassEllenSeenText:
 	text "I'm second."
@@ -247,4 +288,21 @@ UnknownText_0x19f520:
 	para "You and your #-"
 	line "mon are truly out-"
 	cont "standing!"
+	done
+
+NuggetBridgeNotClearedText:
+	text "Hey there!"
+
+	para "Six trainers and"
+	line "I are hosting a"
+
+	para "battle challenge"
+	line "on this route."
+
+	para "You can't skip"
+	line "ahead of them!"
+
+	para "There's a shortcut"
+	line "just below us back"
+	cont "to Route 24."
 	done

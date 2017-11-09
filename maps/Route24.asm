@@ -123,28 +123,3 @@ UnknownText_0x1adee1:
 	line "do what now on"
 	cont "from, me?"
 	done
-
-TrainerSchoolboyDudley:
-	trainer EVENT_BEAT_SCHOOLBOY_DUDLEY, SCHOOLBOY, DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText, 0, SchoolboyDudleyScript
-
-SchoolboyDudleyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f1b5
-
-SchoolboyDudleySeenText:
-	text "Beat the six of us"
-	line "trainers to win a"
-	cont "fabulous prize!"
-
-	para "Think you've got"
-	line "what it takes?"
-	done
-
-SchoolboyDudleyBeatenText:
-	text "Whoo! Good stuff."
-	done
-
-UnknownText_0x19f1b5:
-	text "I did my best."
-	line "I have no regrets."
-	done
