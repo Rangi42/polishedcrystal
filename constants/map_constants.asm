@@ -415,7 +415,7 @@ MAP_NONE   EQU 0
 	mapgroup HIDDEN_CAVE_GROTTO,                         45, 20 ;  5
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  6
 	mapgroup YELLOW_FOREST,                              25, 29 ;  7
-	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  8
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     9,  6 ;  8
 	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  9
 
 	newgroup                                                    ; 21
