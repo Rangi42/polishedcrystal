@@ -77,7 +77,60 @@ Route47TileScript:
 	iffalse .locked
 	changeblock 8, 22, $9b
 .locked
+	checktriggers
+	iftrue .underfoot
+	callasm .overhead_asm
 	return
+
+.underfoot:
+	callasm .underfoot_asm
+	return
+
+.overhead_asm:
+	; bridge 1
+	changebridgeblock 42, 24, $e9, ROUTE_47
+	changebridgeblock 44, 24, $e7, ROUTE_47
+	changebridgeblock 46, 24, $e7, ROUTE_47
+	changebridgeblock 48, 24, $e7, ROUTE_47
+	changebridgeblock 50, 24, $ea, ROUTE_47
+	; bridge 2
+	changebridgeblock 44, 18, $e8, ROUTE_47
+	changebridgeblock 46, 18, $e8, ROUTE_47
+	changebridgeblock 48, 18, $e8, ROUTE_47
+	; bridge 3
+	changebridgeblock 20, 24, $e8, ROUTE_47
+	changebridgeblock 22, 24, $e8, ROUTE_47
+	changebridgeblock 24, 24, $e8, ROUTE_47
+	; bridge 4
+	changebridgeblock 18, 16, $e9, ROUTE_47
+	changebridgeblock 20, 16, $e7, ROUTE_47
+	changebridgeblock 22, 16, $e7, ROUTE_47
+	changebridgeblock 24, 16, $e7, ROUTE_47
+	changebridgeblock 26, 16, $eb, ROUTE_47
+	jp BufferScreen
+
+.underfoot_asm:
+	; bridge 1
+	changebridgeblock 42, 24, $aa, ROUTE_47
+	changebridgeblock 44, 24, $e6, ROUTE_47
+	changebridgeblock 46, 24, $e6, ROUTE_47
+	changebridgeblock 48, 24, $e6, ROUTE_47
+	changebridgeblock 50, 24, $ab, ROUTE_47
+	; bridge 2
+	changebridgeblock 44, 18, $e6, ROUTE_47
+	changebridgeblock 46, 18, $e6, ROUTE_47
+	changebridgeblock 48, 18, $e6, ROUTE_47
+	; bridge 3
+	changebridgeblock 20, 24, $e6, ROUTE_47
+	changebridgeblock 22, 24, $e6, ROUTE_47
+	changebridgeblock 24, 24, $e6, ROUTE_47
+	; bridge 4
+	changebridgeblock 18, 16, $aa, ROUTE_47
+	changebridgeblock 20, 16, $e6, ROUTE_47
+	changebridgeblock 22, 16, $e6, ROUTE_47
+	changebridgeblock 24, 16, $e6, ROUTE_47
+	changebridgeblock 26, 16, $b7, ROUTE_47
+	jp BufferScreen
 
 Route47_FinishOverheadBridge:
 	xor a
