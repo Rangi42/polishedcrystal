@@ -309,3 +309,4 @@ There are some features that I do *not* ever plan to add to Polished Crystal:
 * Ash-Greninja
 * Ash Ketchum
 * Gen VI Exp. Share
+* Levels above 100
