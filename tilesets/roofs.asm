@@ -29,11 +29,11 @@ LoadMapGroupRoof:: ; 1c000
 	ld [rVBK], a
 	ld hl, EcruteakShrineStatueGFX
 	ld de, VTiles4 tile $e6
-	ld bc, 2 tiles
+	ld bc, 4 tiles
 	call CopyBytes
-	ld hl, EcruteakShrineStatueGFX + 2 tiles
+	ld hl, EcruteakShrineStatueGFX + 4 tiles
 	ld de, VTiles4 tile $f6
-	ld bc, 2 tiles
+	ld bc, 4 tiles
 	call CopyBytes
 	pop af
 	ld [rVBK], a
