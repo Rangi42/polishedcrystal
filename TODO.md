@@ -257,6 +257,7 @@ Some of these may never be added; they're just suggestions.
 * Something like Habitat Lists or DexNav via the Town Map
 * Something like Poké Radar or Pokéwalker
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
+* Use the [Japanese GS Ball event quiz](https://www.pokecommunity.com/showthread.php?p=9739072#post9739072) ([original](http://www.geocities.co.jp/Playtown-Darts/9915/serebi.htm))
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
