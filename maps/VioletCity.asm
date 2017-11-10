@@ -26,10 +26,10 @@ VioletCity_MapEventHeader:
 .Signposts: db 6
 	signpost 24, 24, SIGNPOST_JUMPTEXT, VioletCitySignText
 	signpost 21, 15, SIGNPOST_JUMPTEXT, VioletGymSignText
-	signpost  8, 24, SIGNPOST_JUMPTEXT, SproutTowerSignText
+	signpost  7, 25, SIGNPOST_JUMPTEXT, SproutTowerSignText
 	signpost 21, 27, SIGNPOST_JUMPTEXT, EarlsPokemonAcademySignText
 	signpost 18, 37, SIGNPOST_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION
-	signpost 12, 21, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
+	signpost 13, 21, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
 
 .PersonEvents: db 13
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
@@ -38,7 +38,7 @@ VioletCity_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerFText, -1
 	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityGrampsText, -1
 	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityYoungsterText, -1
-	person_event SPRITE_FISHER, 12, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityFisherText, -1
+	person_event SPRITE_FISHER, 13, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityFisherText, -1
 	cuttree_event 23, 36, EVENT_VIOLET_CITY_CUT_TREE
 	fruittree_event 33, 14, FRUITTREE_VIOLET_CITY, CHERI_BERRY
 	itemball_event 6, 10, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP

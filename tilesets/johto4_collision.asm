@@ -65,7 +65,7 @@
 	tilecoll WALL, WALL, WALL, FLOOR
 	tilecoll WALL, WALL, FLOOR, FLOOR
 	tilecoll WALL, WALL, FLOOR, WALL
-	tilecoll WATER, WATER, WATER, WATER
+	tilecoll FLOOR, WALL, FLOOR, FLOOR
 	tilecoll WALL, FLOOR, WALL, FLOOR
 	tilecoll WALL, FLOOR, FLOOR, FLOOR
 	tilecoll FLOOR, WALL, FLOOR, WALL

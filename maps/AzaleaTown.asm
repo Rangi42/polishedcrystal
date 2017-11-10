@@ -27,7 +27,7 @@ AzaleaTown_MapEventHeader:
 	signpost 9, 19, SIGNPOST_JUMPTEXT, AzaleaTownSignText
 	signpost 9, 10, SIGNPOST_JUMPTEXT, KurtsHouseSignText
 	signpost 15, 14, SIGNPOST_JUMPTEXT, AzaleaGymSignText
-	signpost 7, 29, SIGNPOST_JUMPTEXT, SlowpokeWellSignText
+	signpost 8, 29, SIGNPOST_JUMPTEXT, SlowpokeWellSignText
 	signpost 13, 19, SIGNPOST_JUMPTEXT, CharcoalKilnSignText
 	signpost 9, 3, SIGNPOST_JUMPTEXT, AzaleaTownIlexForestSignText
 	signpost 6, 31, SIGNPOST_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
