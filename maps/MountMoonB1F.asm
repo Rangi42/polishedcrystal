@@ -15,7 +15,7 @@ MountMoonB1F_MapEventHeader:
 	warp_def 22, 16, 3, MOUNT_MOON_B2F
 	warp_def 13, 15, 4, MOUNT_MOON_B2F
 	warp_def 15, 15, 1, ROUTE_4
-	warp_def 3, 23, 5, MOUNT_MOON_B2F
+	warp_def 3, 23, 5, MOUNT_MOON_1F
 	warp_def 5, 23, 1, MOUNT_MOON_SQUARE
 
 .XYTriggers: db 0
