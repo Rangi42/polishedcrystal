@@ -28,7 +28,7 @@ CeruleanCity_MapEventHeader:
 	signpost 25, 11, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
 	signpost 13, 25, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
 	signpost 4, 23, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
-	signpost 18, 11, SIGNPOST_UP, CeruleanBubblerSign
+	signpost 19, 11, SIGNPOST_JUMPTEXT, CeruleanBubblerSign
 	signpost 13, 4, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 .PersonEvents: db 8

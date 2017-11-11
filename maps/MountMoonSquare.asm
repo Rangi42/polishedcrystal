@@ -9,7 +9,7 @@ MountMoonSquare_MapScriptHeader:
 MountMoonSquare_MapEventHeader:
 
 .Warps: db 2
-	warp_def 11, 22, 10, MOUNT_MOON_B1F
+	warp_def 11, 21, 2, ROUTE_4
 	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
 
 .XYTriggers: db 1

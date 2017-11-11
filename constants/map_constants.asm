@@ -184,7 +184,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_10_POKECENTER_1F,                      4,  6 ;  8
 	mapgroup POWER_PLANT,                                 9, 10 ; 10
 	mapgroup BILLS_HOUSE,                                 4,  4 ; 11
-	mapgroup ROUTE_4,                                     9, 32 ; 12
+	mapgroup ROUTE_4,                                    10, 33 ; 12
 	mapgroup ROUTE_24,                                   20, 14 ; 13
 	mapgroup ROUTE_25,                                   21, 17 ; 14
 	mapgroup CERULEAN_CAPE,                              19, 25 ; 15

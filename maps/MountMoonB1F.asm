@@ -6,7 +6,7 @@ MountMoonB1F_MapScriptHeader:
 
 MountMoonB1F_MapEventHeader:
 
-.Warps: db 10
+.Warps: db 8
 	warp_def 20, 26, 2, MOUNT_MOON_1F
 	warp_def 3, 5, 3, MOUNT_MOON_1F
 	warp_def 11, 3, 4, MOUNT_MOON_1F
@@ -15,8 +15,6 @@ MountMoonB1F_MapEventHeader:
 	warp_def 22, 16, 3, MOUNT_MOON_B2F
 	warp_def 13, 15, 4, MOUNT_MOON_B2F
 	warp_def 15, 15, 1, ROUTE_4
-	warp_def 3, 23, 5, MOUNT_MOON_1F
-	warp_def 5, 23, 1, MOUNT_MOON_SQUARE
 
 .XYTriggers: db 0
 

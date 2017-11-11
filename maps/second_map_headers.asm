@@ -305,7 +305,7 @@
 	map_header_2 CeruleanCity, CERULEAN_CITY, $f, NORTH | SOUTH | WEST | EAST
 	connection north, ROUTE_24, Route24, 0, 0, 14
 	connection south, ROUTE_5, Route5, 5, 0, 10
-	connection west, ROUTE_4, Route4, 3, 0, 9
+	connection west, ROUTE_4, Route4, 2, 0, 10
 	connection east, ROUTE_9, Route9, 4, 0, 9
 
 	map_header_2 Route24, ROUTE_24, $2c, SOUTH | EAST
@@ -323,7 +323,7 @@
 	connection west, PEWTER_CITY, PewterCity, -3, 2, 15
 
 	map_header_2 Route4, ROUTE_4, $2c, EAST
-	connection east, CERULEAN_CITY, CeruleanCity, -3, 0, 15
+	connection east, CERULEAN_CITY, CeruleanCity, -2, 0, 16
 
 	map_header_2 Route8, ROUTE_8, $2c, WEST | EAST
 	connection west, SAFFRON_CITY, SaffronCity, -2, 2, 14
