@@ -333,8 +333,12 @@ CherishBall: ; e8a2
 	ld [wWildMon], a
 	ld a, [CurItem]
 	cp PARK_BALL
-	call nz, ReturnToBattle_UseBall
+	jr z, .skipReturnToBattle
+	cp SAFARI_BALL
+	jr z, .skipReturnToBattle
+	call ReturnToBattle_UseBall
 
+.skipReturnToBattle
 	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, UsedItemText
@@ -3216,6 +3220,8 @@ Ball_NuzlockeFailureMessage:
 
 	ld a, [CurItem]
 	cp PARK_BALL
+	ret z
+	cp SAFARI_BALL
 	ret z
 
 	; Item wasn't used.

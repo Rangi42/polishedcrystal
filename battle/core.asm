@@ -4956,6 +4956,13 @@ BaitRockCommon:
 	ret
 
 CheckSafariMonRan:
+; Wildmon always runs when you are out of Safari Balls
+	ld a, [wSafariBallsRemaining]
+	and a
+	jp z, WildFled_EnemyFled_LinkBattleCanceled
+; otherwise, check its speed, bait, and rock factors
+; this probably could stand to be cleaned up or rewritten later
+; it is basically taken directly from Gen 1
 	ld a, [EnemyMonSpeed + 1]
 	add a
 	ld b, a ; init b (which is later compared with random value) to (enemy speed % 256) * 2
@@ -5081,10 +5088,10 @@ BattleMenu_Pack: ; 3e1c7
 	call GetMonFrontpic
 	ld a, $1
 	ld [wMenuCursorY], a
+	call ExitMenu
 	ld a, [BattleType]
 	cp BATTLETYPE_SAFARI
 	jr z, .skipThis
-	call ExitMenu
 	call UpdateBattleHUDs
 .skipThis
 	call WaitBGMap
