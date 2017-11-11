@@ -544,16 +544,12 @@ CheckContestBattleOver: ; 3c3f5
 CheckSafariBattleOver:
 	ld a, [wSafariBallsRemaining]
 	and a
-	jr nz, .safari_not_over
+	ret nz
 	ld a, [wBattleResult]
 	and $c0
 	add $2
 	ld [wBattleResult], a
 	scf
-	ret
-
-.safari_not_over
-	and a
 	ret
 
 CheckPlayerLockedIn: ; 3c410
@@ -4894,26 +4890,37 @@ BattleMenu: ; 3e139
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, [wd0d2]
-	cp $1
-	jp z, BattleMenu_Fight
-	cp $3
-	jp z, BattleMenu_Pack
-	cp $2
-	jp z, BattleMenu_PKMN
-	cp $4
-	jp z, BattleMenu_Run
+	dec a
+	jp z, BattleMenu_Fight ; $1
+	dec a
+	jp z, BattleMenu_PKMN ; $2
+	dec a
+	jp z, BattleMenu_Pack ; $3
+	dec a
+	jp z, BattleMenu_Run ; $4
 	jr .loop
 ; 3e192
 
 BattleMenu_Fight: ; 3e192
 	ld a, [BattleType]
 	cp BATTLETYPE_SAFARI
-	jr z, BattleMenu_Rock ; "Fight" is replaced with "Rock" in that mode
+	jp z, BattleMenu_SafariBall
+
 	xor a
 	ld [wNumFleeAttempts], a
 	call Call_LoadTempTileMapToTileMap
 	and a
 	ret
+
+BattleMenu_Bait:
+	ld hl, BattleText_ThrewBait
+	call StdBattleTextBox
+	ld hl, EnemyMonCatchRate
+	srl [hl] ; halve catch rate
+	; TODO: Play bait animation
+	ld hl, wSafariMonEating
+	ld de, wSafariMonAngerCount
+	jr BattleMenu_BaitRock_Common
 
 BattleMenu_Rock:
 	ld hl, BattleText_ThrewRock
@@ -4922,20 +4929,20 @@ BattleMenu_Rock:
 	ld a, [hl]
 	add a ; double catch rate
 	jr nc, .noCarry
-	ld a, $FF
+	ld a, $ff
 .noCarry
 	ld [hl], a
 	; TODO: Play the rock animation
 	ld hl, wSafariMonAngerCount
 	ld de, wSafariMonEating
-	; fallthrough to BaitRockCommon
+	; fallthrough
 
-BaitRockCommon:
+BattleMenu_BaitRock_Common:
 	xor a
 	ld [de], a ; zero the Eating counter (rock) or the Anger counter (bait)
 .randomLoop ; loop until a number less than 5 is generated
 	call BattleRandom
-	and a, 7
+	and 7
 	cp 5
 	jr nc, .randomLoop
 	inc a ; increment the random number, giving a range from 1 to 5 inclusive
@@ -4943,7 +4950,7 @@ BaitRockCommon:
 	ld a, [hl]
 	add b ; increase Eating or Anger counter appropriately
 	jr nc, .noCarry
-	ld a, $FF
+	ld a, $ff
 .noCarry
 	ld [hl], a
 	and a
@@ -4991,6 +4998,12 @@ LoadBattleMenu2: ; 3e19b
 ; 3e1c7
 
 BattleMenu_Pack: ; 3e1c7
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jp z, BattleMenu_Rock
+	; fallthrough
+
+BattleMenu_SafariBall:
 	ld a, [wLinkMode]
 	and a
 	jp nz, .ItemsCantBeUsed
@@ -5084,9 +5097,7 @@ BattleMenu_Pack: ; 3e1c7
 	call ExitMenu
 	ld a, [BattleType]
 	cp BATTLETYPE_SAFARI
-	jr z, .skipThis
-	call UpdateBattleHUDs
-.skipThis
+	call nz, UpdateBattleHUDs
 	call WaitBGMap
 	call LoadTileMapToTempTileMap
 	call ClearWindowData
@@ -5109,7 +5120,8 @@ BattleMenu_Pack: ; 3e1c7
 BattleMenu_PKMN: ; 3e28d
 	ld a, [BattleType]
 	cp BATTLETYPE_SAFARI
-	jr z, BattleMenu_Bait ; "PKMN" is replaced with "Bait" in that mode
+	jp z, BattleMenu_Bait ; "PKMN" is replaced with "Bait" in that mode
+
 	call LoadStandardMenuDataHeader
 BattleMenuPKMN_ReturnFromStats:
 	call ExitMenu
@@ -5158,16 +5170,6 @@ BattleMenuPKMN_Loop:
 .GetMenu: ; 3e2f5
 	farjp BattleMonMenu
 ; 3e308
-
-BattleMenu_Bait:
-	ld hl, BattleText_ThrewBait
-	call StdBattleTextBox
-	ld hl, EnemyMonCatchRate
-	srl [hl] ; halve catch rate
-	; TODO: Play bait animation
-	ld hl, wSafariMonEating
-	ld de, wSafariMonAngerCount
-	jp BaitRockCommon
 
 Battle_StatsScreen: ; 3e308
 	call DisableLCD

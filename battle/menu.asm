@@ -11,17 +11,12 @@ LoadBattleMenu: ; 24ef2
 
 ContestBattleMenu: ; 24f13
 	ld hl, ContestBattleMenuDataHeader
-	call LoadMenuDataHeader
-	ld a, [wd0d2]
-	ld [wMenuCursorBuffer], a
-	call _2DMenu
-	ld a, [wMenuCursorBuffer]
-	ld [wd0d2], a
-	jp ExitMenu
+	jr ContestSafariBattleMenuCommon
 ; 24f19
 
 SafariBattleMenu:
 	ld hl, SafariBattleMenuDataHeader
+ContestSafariBattleMenuCommon:
 	call LoadMenuDataHeader
 	ld a, [wd0d2]
 	ld [wMenuCursorBuffer], a
@@ -71,7 +66,7 @@ ContestBattleMenuDataHeader: ; 24f89
 
 .Strings: ; 24f9a
 	db "Fight@"
-	db "<PK><MN>", "@"
+	db "<PK><MN>@"
 	db "ParkBall×  @"
 	db "Run@"
 ; 24fb2
@@ -98,13 +93,13 @@ SafariBattleMenuDataHeader:
 	dba ShowSafariBallsRemaining
 
 .Strings:
-	db "Rock@"
-	db "Bait", "@"
 	db "Ball×  @"
+	db "Bait@"
+	db "Throw Rock@"
 	db "Run@"
 
 ShowSafariBallsRemaining:
-	hlcoord 8, 16
+	hlcoord 7, 14
 	ld de, wSafariBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum

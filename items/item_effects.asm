@@ -830,6 +830,7 @@ BallMultiplierFunctionTable:
 	db $ff
 
 UltraBallMultiplier:
+SafariBallMultiplier:
 ; multiply catch rate by 2
 	sla b
 	ret nc
@@ -837,7 +838,6 @@ UltraBallMultiplier:
 	ret
 
 GreatBallMultiplier:
-SafariBallMultiplier:
 ParkBallMultiplier:
 ; multiply catch rate by 1.5
 	ld a, b

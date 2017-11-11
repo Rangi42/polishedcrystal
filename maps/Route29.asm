@@ -83,13 +83,7 @@ Route29Tutorial2:
 Route29TutorialScript:
 	stopfollow
 	loadwildmon PIDGEY, 5
-	; code for replacing tutorial with a test Safari Battle goes here, replacing commented line. remove when done
-	writebyte 5
-	copyvartobyte wSafariBallsRemaining
-	writecode VAR_BATTLETYPE, BATTLETYPE_SAFARI
-	startbattle
-	reloadmapafterbattle
-	;catchtutorial BATTLETYPE_TUTORIAL
+	catchtutorial BATTLETYPE_TUTORIAL
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	spriteface ROUTE29_LYRA, UP
