@@ -237,3 +237,4 @@
 	tilecoll WATER, WATER, WATER, WATER
 	tilecoll TOP_WALL, TOP_WALL, FLOOR, FLOOR
 	tilecoll WALL, WALL, WATER, WATER
+	tilecoll WALL, WALL, WALL, WALL

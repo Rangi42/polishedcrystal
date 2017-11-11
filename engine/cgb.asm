@@ -257,7 +257,7 @@ _CGB_PokedexAreaPals:
 	call FarCopyWRAM
 
 	ld hl, .InvertedGrayPalette
-	ld de, UnknBGPals palette 3
+	ld de, UnknBGPals palette 0
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
