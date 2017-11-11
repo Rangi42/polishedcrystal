@@ -63,7 +63,9 @@ DoBattle: ; 3c000
 	call Call_LoadTempTileMapToTileMap
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
-	jp z, .tutorial_debug
+	jp z, BattleMenu ; No real turns in a tutorial
+	cp BATTLETYPE_SAFARI
+	jp z, SafariBattleTurn ; do not send out a player mon in a Safari Battle
 	xor a
 	ld [CurPartyMon], a
 .loop2
@@ -121,9 +123,6 @@ DoBattle: ; 3c000
 	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
-
-.tutorial_debug
-	jp BattleMenu
 ; 3c0e5
 
 WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
@@ -221,6 +220,28 @@ BattleTurn: ; 3c12f
 	jp .loop
 ; 3c1bf
 
+SafariBattleTurn:
+.loop
+	call CheckSafariBattleOver
+	ret c
+
+	call BattleMenu
+	ret c
+
+	ld a, [BattleEnded]
+	and a
+	ret nz
+
+	call HandleSafariAngerEatingStatus
+
+	call CheckSafariMonRan
+	ret c
+
+	ld a, [BattleEnded]
+	and a
+	ret nz
+
+	jr .loop
 
 HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
@@ -519,6 +540,21 @@ CheckContestBattleOver: ; 3c3f5
 	and a
 	ret
 ; 3c410
+
+CheckSafariBattleOver:
+	ld a, [wSafariBallsRemaining]
+	and a
+	jr nz, .safari_not_over
+	ld a, [wBattleResult]
+	and $c0
+	add $2
+	ld [wBattleResult], a
+	scf
+	ret
+
+.safari_not_over
+	and a
+	ret
 
 CheckPlayerLockedIn: ; 3c410
 	ld a, [PlayerSubStatus4]
@@ -4823,6 +4859,8 @@ BattleMenu: ; 3e139
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .ok
+	cp BATTLETYPE_SAFARI
+	jr z, .ok
 	call EmptyBattleTextBox
 	call UpdateBattleHuds
 	call EmptyBattleTextBox
@@ -4831,9 +4869,14 @@ BattleMenu: ; 3e139
 
 .loop
 	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, .safari_game
 	cp BATTLETYPE_CONTEST
 	jr nz, .not_contest
 	farcall ContestBattleMenu
+	jr .next
+.safari_game
+	farcall SafariBattleMenu
 	jr .next
 .not_contest
 
@@ -4863,12 +4906,83 @@ BattleMenu: ; 3e139
 ; 3e192
 
 BattleMenu_Fight: ; 3e192
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, BattleMenu_Rock ; "Fight" is replaced with "Rock" in that mode
 	xor a
 	ld [wNumFleeAttempts], a
 	call Call_LoadTempTileMapToTileMap
 	and a
 	ret
-; 3e19b
+
+BattleMenu_Rock:
+	ld hl, BattleText_ThrewRock
+	call StdBattleTextBox
+	ld hl, EnemyMonCatchRate
+	ld a, [hl]
+	add a ; double catch rate
+	jr nc, .noCarry
+	ld a, $FF
+.noCarry
+	ld [hl], a
+	; TODO: Play the rock animation
+	ld hl, wSafariMonAngerCount
+	ld de, wSafariMonEating
+	; fallthrough to BaitRockCommon
+
+BaitRockCommon:
+	xor a
+	ld [de], a ; zero the Eating counter (rock) or the Anger counter (bait)
+.randomLoop ; loop until a number less than 5 is generated
+	call BattleRandom
+	and a, 7
+	cp 5
+	jr nc, .randomLoop
+	inc a ; increment the random number, giving a range from 1 to 5 inclusive
+	ld b, a
+	ld a, [hl]
+	add b ; increase Eating or Anger counter appropriately
+	jr nc, .noCarry
+	ld a, $FF
+.noCarry
+	ld [hl], a
+	and a
+	ret
+
+CheckSafariMonRan:
+; Wildmon always runs when you are out of Safari Balls
+	ld a, [wSafariBallsRemaining]
+	and a
+	jp z, WildFled_EnemyFled_LinkBattleCanceled
+; otherwise, check its speed, bait, and rock factors
+; this probably could stand to be cleaned up or rewritten later
+; it is basically taken directly from Gen 1
+	ld a, [EnemyMonSpeed + 1]
+	add a
+	ld b, a ; init b (which is later compared with random value) to (enemy speed % 256) * 2
+	jp c, WildFled_EnemyFled_LinkBattleCanceled ; if (enemy speed % 256) > 127, the enemy runs
+	ld a, [wSafariMonEating]
+	and a ; is bait factor 0?
+	jr z, .checkEscapeFactor
+; bait factor is not 0
+; divide b by 4 (making the mon less likely to run)
+	srl b
+	srl b
+.checkEscapeFactor
+	ld a, [wSafariMonAngerCount]
+	and a ; is escape factor 0?
+	jr z, .compareWithRandomValue
+; escape factor is not 0
+; multiply b by 2 (making the mon more likely to run)
+	sla b
+	jr nc, .compareWithRandomValue
+; cap b at 255
+	ld b, $ff
+.compareWithRandomValue
+	call BattleRandom
+	cp b
+	ret nc
+	jp WildFled_EnemyFled_LinkBattleCanceled ; if b was greater than the random value, the enemy runs
 
 LoadBattleMenu2: ; 3e19b
 	farcall LoadBattleMenu
@@ -4892,6 +5006,8 @@ BattleMenu_Pack: ; 3e1c7
 	jr z, .tutorial
 	cp BATTLETYPE_CONTEST
 	jr z, .contest
+	cp BATTLETYPE_SAFARI
+	jr z, .safari
 
 	farcall BattlePack
 	ld a, [wPlayerAction]
@@ -4902,6 +5018,12 @@ BattleMenu_Pack: ; 3e1c7
 .tutorial
 	farcall TutorialPack
 	ld a, POKE_BALL
+	ld [CurItem], a
+	call DoItemEffect
+	jr .got_item
+
+.safari
+	ld a, SAFARI_BALL
 	ld [CurItem], a
 	call DoItemEffect
 	jr .got_item
@@ -4951,6 +5073,8 @@ BattleMenu_Pack: ; 3e1c7
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .tutorial2
+	cp BATTLETYPE_SAFARI
+	jr z, .tutorial2
 	call GetMonBackpic
 
 .tutorial2
@@ -4958,7 +5082,11 @@ BattleMenu_Pack: ; 3e1c7
 	ld a, $1
 	ld [wMenuCursorY], a
 	call ExitMenu
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, .skipThis
 	call UpdateBattleHUDs
+.skipThis
 	call WaitBGMap
 	call LoadTileMapToTempTileMap
 	call ClearWindowData
@@ -4979,6 +5107,9 @@ BattleMenu_Pack: ; 3e1c7
 ; 3e28d
 
 BattleMenu_PKMN: ; 3e28d
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, BattleMenu_Bait ; "PKMN" is replaced with "Bait" in that mode
 	call LoadStandardMenuDataHeader
 BattleMenuPKMN_ReturnFromStats:
 	call ExitMenu
@@ -5027,6 +5158,16 @@ BattleMenuPKMN_Loop:
 .GetMenu: ; 3e2f5
 	farjp BattleMonMenu
 ; 3e308
+
+BattleMenu_Bait:
+	ld hl, BattleText_ThrewBait
+	call StdBattleTextBox
+	ld hl, EnemyMonCatchRate
+	srl [hl] ; halve catch rate
+	; TODO: Play bait animation
+	ld hl, wSafariMonEating
+	ld de, wSafariMonAngerCount
+	jp BaitRockCommon
 
 Battle_StatsScreen: ; 3e308
 	call DisableLCD
@@ -5243,6 +5384,11 @@ BattleMenu_Run: ; 3e489
 ; 3e4a8
 
 CheckRunSpeed:
+; In a safari battle, most of the battle engine is ignored, you have no active Pokemon, and can always run
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jp z, .can_escape
+
 ; Sets up speed stats properly and attempts to flee.
 	ld a, [hBattleTurn]
 	push af
@@ -8016,36 +8162,37 @@ TextJump_ComeBack: ; 3f35b
 ; 3f360
 
 
-;HandleSafariAngerEatingStatus: ; unreferenced
-;	ld hl, wSafariMonEating
-;	ld a, [hl]
-;	and a
-;	jr z, .angry
-;	dec [hl]
-;	ld hl, BattleText_WildPkmnIsEating
-;	jr .finish
-;
-;.angry
-;	dec hl ; wSafariMonAngerCount
-;	ld a, [hl]
-;	and a
-;	ret z
-;	dec [hl]
-;	ld hl, BattleText_WildPkmnIsAngry
-;	jr nz, .finish
-;	push hl
-;	ld a, [EnemyMonSpecies]
-;	ld [CurSpecies], a
-;	call GetBaseData
-;	ld a, [BaseCatchRate]
-;	ld [EnemyMonCatchRate], a
-;	pop hl
-;
-;.finish
-;	push hl
-;	call Call_LoadTempTileMapToTileMap
-;	pop hl
-;	jp StdBattleTextBox
+HandleSafariAngerEatingStatus:
+	ld hl, wSafariMonEating
+	ld a, [hl]
+	and a
+	jr z, .angry
+	dec [hl]
+	ld hl, BattleText_WildPkmnIsEating
+	jr .finish
+
+.angry
+	dec hl ; wSafariMonAngerCount
+	ld a, [hl]
+	and a
+	ret z
+	dec [hl]
+	ld hl, BattleText_WildPkmnIsAngry
+	jr nz, .finish
+	push hl
+	; reset the catch rate to normal if bait/rock effects have worn off
+	ld a, [EnemyMonSpecies]
+	ld [CurSpecies], a
+	call GetBaseData
+	ld a, [BaseCatchRate]
+	ld [EnemyMonCatchRate], a
+	pop hl
+
+.finish
+	push hl
+	call Call_LoadTempTileMapToTileMap
+	pop hl
+	jp StdBattleTextBox
 ;; 3f390
 
 
