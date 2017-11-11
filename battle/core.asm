@@ -63,9 +63,9 @@ DoBattle: ; 3c000
 	call Call_LoadTempTileMapToTileMap
 	ld a, [BattleType]
 	cp BATTLETYPE_TUTORIAL
-	jp z, .tutorial_debug
+	jp z, BattleMenu ; No real turns in a tutorial
 	cp BATTLETYPE_SAFARI
-	jp z, .safari_game ; do not send out a player mon in a Safari Battle
+	jp z, SafariBattleTurn ; do not send out a player mon in a Safari Battle
 	xor a
 	ld [CurPartyMon], a
 .loop2
@@ -123,12 +123,6 @@ DoBattle: ; 3c000
 	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
-
-.tutorial_debug
-	jp BattleMenu
-
-.safari_game
-	jp SafariBattleTurn
 ; 3c0e5
 
 WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
@@ -4989,7 +4983,6 @@ CheckSafariMonRan:
 	cp b
 	ret nc
 	jp WildFled_EnemyFled_LinkBattleCanceled ; if b was greater than the random value, the enemy runs
-	ret
 
 LoadBattleMenu2: ; 3e19b
 	farcall LoadBattleMenu
