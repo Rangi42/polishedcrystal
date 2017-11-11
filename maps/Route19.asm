@@ -2,7 +2,8 @@ Route19_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
+.MapCallbacks: db 2
+	dbw MAPCALLBACK_NEWMAP, Route19ClearSmashRocks
 	dbw MAPCALLBACK_TILES, Route19ClearRocks
 
 Route19_MapEventHeader:
@@ -22,7 +23,7 @@ Route19_MapEventHeader:
 	signpost 13, 13, SIGNPOST_ITEM + BIG_PEARL, EVENT_ROUTE_19_HIDDEN_BIG_PEARL
 
 .PersonEvents: db 13
-	smashrock_event 4, 11
+	smashrock_event 4, 11, EVENT_ROUTE_19_ROCK
 	smashrock_event 3, 6
 	smashrock_event 11, 4
 	smashrock_event 13, 12
@@ -39,6 +40,14 @@ Route19_MapEventHeader:
 const_value set 1
 	const ROUTE19_ROCK1
 
+Route19ClearSmashRocks:
+	disappear ROUTE19_ROCK1
+	checkevent EVENT_CINNABAR_ROCKS_CLEARED
+	iffalse .Done
+	appear ROUTE19_ROCK1
+.Done:
+	return
+
 Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iftrue .Done
@@ -48,7 +57,6 @@ Route19ClearRocks:
 	changeblock 6, 6, $7a
 	changeblock 12, 6, $7a
 	changeblock 8, 8, $7a
-	disappear ROUTE19_ROCK1
 .Done:
 	return
 

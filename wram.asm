@@ -619,7 +619,8 @@ wEnemyHPAtTimeOfPlayerSwitch:: ds 2
 wPayDayMoney:: ds 3
 
 wSafariMonAngerCount:: ds 1
-wSafariMonEating:: ds 2
+wSafariMonEating:: ds 1
+	ds 1
 wEnemyBackupDVs:: ; used when enemy is transformed
 	ds 3
 wEnemyBackupPersonality:: ; Assumed to be below DVs
