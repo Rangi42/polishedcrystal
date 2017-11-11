@@ -65,7 +65,7 @@ DoBattle: ; 3c000
 	cp BATTLETYPE_TUTORIAL
 	jp z, .tutorial_debug
 	cp BATTLETYPE_SAFARI
-	jp z, .tutorial_debug ; do not send out a player mon in a Safari Battle
+	jp z, .safari_game ; do not send out a player mon in a Safari Battle
 	xor a
 	ld [CurPartyMon], a
 .loop2
@@ -126,6 +126,9 @@ DoBattle: ; 3c000
 
 .tutorial_debug
 	jp BattleMenu
+
+.safari_game
+	jp SafariBattleTurn
 ; 3c0e5
 
 WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
@@ -223,6 +226,28 @@ BattleTurn: ; 3c12f
 	jp .loop
 ; 3c1bf
 
+SafariBattleTurn:
+.loop
+    call CheckSafariBattleOver
+    ret c
+
+    call BattleMenu
+	ret c
+
+    ld a, [BattleEnded]
+    and a
+    ret nz
+
+	call HandleSafariAngerEatingStatus
+
+    call CheckSafariMonRan
+	ret c
+
+    ld a, [BattleEnded]
+    and a
+    ret nz
+
+    jr .loop
 
 HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
@@ -521,6 +546,21 @@ CheckContestBattleOver: ; 3c3f5
 	and a
 	ret
 ; 3c410
+
+CheckSafariBattleOver:
+	ld a, [wSafariBallsRemaining]
+	and a
+	jr nz, .safari_not_over
+	ld a, [wBattleResult]
+	and $c0
+	add $2
+	ld [wBattleResult], a
+	scf
+	ret
+
+.safari_not_over
+	and a
+	ret
 
 CheckPlayerLockedIn: ; 3c410
 	ld a, [PlayerSubStatus4]
@@ -4912,8 +4952,7 @@ BaitRockCommon:
 	ld a, $FF
 .noCarry
 	ld [hl], a
-	call HandleSafariAngerEatingStatus
-	; fallthrough to CheckSafariMonRan
+	ret
 
 CheckSafariMonRan:
 	ld a, [EnemyMonSpeed + 1]

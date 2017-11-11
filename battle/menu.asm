@@ -85,7 +85,7 @@ ShowParkBallsRemaining: ; 24fb2
 
 SafariBattleMenuDataHeader:
 	db $40 ; flags
-	db 12, 02 ; start coords
+	db 12, 00 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
@@ -104,7 +104,7 @@ SafariBattleMenuDataHeader:
 	db "Run@"
 
 ShowSafariBallsRemaining:
-	hlcoord 13, 16
+	hlcoord 8, 16
 	ld de, wSafariBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
