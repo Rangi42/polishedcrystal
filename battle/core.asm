@@ -4952,6 +4952,7 @@ BaitRockCommon:
 	ld a, $FF
 .noCarry
 	ld [hl], a
+	and a
 	ret
 
 CheckSafariMonRan:
@@ -5080,8 +5081,12 @@ BattleMenu_Pack: ; 3e1c7
 	call GetMonFrontpic
 	ld a, $1
 	ld [wMenuCursorY], a
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, .skipThis
 	call ExitMenu
 	call UpdateBattleHUDs
+.skipThis
 	call WaitBGMap
 	call LoadTileMapToTempTileMap
 	call ClearWindowData
