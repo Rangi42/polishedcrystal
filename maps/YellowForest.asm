@@ -2,39 +2,47 @@ YellowForest_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
+.MapCallbacks: db 2
 	dbw MAPCALLBACK_OBJECTS, YellowForestRebattleBreeder
+	dbw MAPCALLBACK_TILES, YellowForestTileScript
 
 YellowForest_MapEventHeader:
 
 .Warps: db 2
-	warp_def 45, 28, 1, YELLOW_FOREST_GATE
-	warp_def 45, 29, 2, YELLOW_FOREST_GATE
+	warp_def 47, 28, 1, YELLOW_FOREST_GATE
+	warp_def 47, 29, 2, YELLOW_FOREST_GATE
 
-.XYTriggers: db 0
+.XYTriggers: db 8
+	xy_trigger 1, 16, 32, YellowForestBridgeOverheadTrigger
+	xy_trigger 1, 17, 32, YellowForestBridgeOverheadTrigger
+	xy_trigger 1, 16, 39, YellowForestBridgeOverheadTrigger
+	xy_trigger 1, 17, 39, YellowForestBridgeOverheadTrigger
+	xy_trigger 0, 16, 33, YellowForestBridgeUnderfootTrigger
+	xy_trigger 0, 17, 33, YellowForestBridgeUnderfootTrigger
+	xy_trigger 0, 16, 38, YellowForestBridgeUnderfootTrigger
+	xy_trigger 0, 17, 38, YellowForestBridgeUnderfootTrigger
 
 .Signposts: db 4
-	signpost 4, 30, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
-	signpost 36, 34, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
-	signpost 37, 5, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
-	signpost 16, 17, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
+	signpost 14, 39, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
+	signpost 36, 43, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
+	signpost 11, 32, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
+	signpost 40, 9, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
 
-.PersonEvents: db 15
-	person_event SPRITE_WALKER, 22, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
-	person_event SPRITE_SKARMORY, 22, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
-	person_event SPRITE_YELLOW, 5, 48, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 41, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
-	person_event SPRITE_SUPER_NERD, 6, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
-	person_event SPRITE_TWIN, 39, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
-	person_event SPRITE_TWIN, 32, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
-	person_event SPRITE_TEACHER, 36, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
-	person_event SPRITE_BREEDER, 40, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
-	person_event SPRITE_COOLTRAINER_M, 16, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
-	cuttree_event 9, 40, EVENT_YELLOW_FOREST_CUT_TREE
-	tmhmball_event 16, 25, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
-	itemball_event 24, 32, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
-	itemball_event 21, 11, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
-	itemball_event 24, 49, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
+.PersonEvents: db 14
+	person_event SPRITE_WALKER, 24, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
+	person_event SPRITE_SKARMORY, 24, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
+	person_event SPRITE_YELLOW, 6, 47, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
+	person_event SPRITE_BALL_CUT_FRUIT, 26, 49, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
+	person_event SPRITE_SUPER_NERD, 8, 31, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
+	person_event SPRITE_TWIN, 41, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
+	person_event SPRITE_TWIN, 34, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
+	person_event SPRITE_TEACHER, 38, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
+	person_event SPRITE_BREEDER, 42, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
+	person_event SPRITE_COOLTRAINER_M, 18, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
+	tmhmball_event 18, 25, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
+	itemball_event 26, 32, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
+	itemball_event 23, 11, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
+	itemball_event 13, 50, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
 
 const_value set 1
 	const YELLOWFOREST_WALKER
@@ -45,6 +53,45 @@ const_value set 1
 YellowForestRebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_SOPHIE
 	return
+
+YellowForestTileScript:
+	checktriggers
+	iftrue .underfoot
+	callasm YellowForest_OverheadBridgeAsm
+	return
+
+.underfoot:
+	callasm YellowForest_UnderfootBridgeAsm
+	return
+
+YellowForest_OverheadBridgeAsm:
+	changebridgeblock 32, 16, $9d, YELLOW_FOREST
+	changebridgeblock 34, 16, $9e, YELLOW_FOREST
+	changebridgeblock 36, 16, $9e, YELLOW_FOREST
+	changebridgeblock 38, 16, $9f, YELLOW_FOREST
+	jp BufferScreen
+
+YellowForest_UnderfootBridgeAsm:
+	changebridgeblock 32, 16, $86, YELLOW_FOREST
+	changebridgeblock 34, 16, $97, YELLOW_FOREST
+	changebridgeblock 36, 16, $97, YELLOW_FOREST
+	changebridgeblock 38, 16, $87, YELLOW_FOREST
+	jp BufferScreen
+
+YellowForestBridgeOverheadTrigger:
+	callasm YellowForest_OverheadBridgeAsm
+	thisasm
+	xor a
+	jr YellowForest_FinishBridge
+
+YellowForestBridgeUnderfootTrigger:
+	callasm YellowForest_UnderfootBridgeAsm
+	thisasm
+	ld a, $1
+YellowForest_FinishBridge:
+	ld [wWalkingOnBridge], a
+	ld [wYellowForestTrigger], a ; dotrigger a
+	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 TrainerSchoolgirlSarah:
 	trainer EVENT_BEAT_SCHOOLGIRL_SARAH, SCHOOLGIRL, SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText, 0, SchoolgirlSarahScript

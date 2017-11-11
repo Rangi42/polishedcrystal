@@ -163,11 +163,11 @@ DoPlayerMovement:: ; 80000
 	cp COLL_CAVE
 	jr nz, .no_walk
 
-.up
-	ld a, UP
-	jr .set_direction
 .down
 	xor a ; DOWN
+	jr .set_direction
+.up
+	ld a, UP
 .set_direction
 	ld [WalkingDirection], a
 	jr .continue_walk

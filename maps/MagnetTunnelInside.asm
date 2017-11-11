@@ -38,26 +38,26 @@ const_value set 1
 MagnetTunnelInsideTileCallback:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_1
 	iffalse .NoMachine1
-	changeblock 6, 10, $6f
-	changeblock 6, 8, $71
+	changeblock 6, 10, $6b
+	changeblock 6, 8, $6d
 .NoMachine1
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_2
 	iffalse .NoMachine2
-	changeblock 22, 20, $6a
+	changeblock 22, 20, $66
 .NoMachine2
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_3
 	iffalse .NoMachine3
-	changeblock 20, 8, $6f
-	changeblock 20, 6, $73
+	changeblock 20, 8, $6b
+	changeblock 20, 6, $6f
 .NoMachine3
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
 	iffalse .NoPit
-	changeblock 34, 4, $6c
+	changeblock 34, 4, $68
 	return
 .NoPit
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_4
 	iffalse .NoMachine4
-	changeblock 34, 8, $6a
+	changeblock 34, 8, $66
 .NoMachine4
 	return
 
@@ -69,7 +69,7 @@ MagnetTunnelInsideMachine1:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 6, 10, $6f
+	changeblock 6, 10, $6b
 	reloadmappart
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
@@ -80,7 +80,7 @@ MagnetTunnelInsideMachine1:
 	playsound SFX_THUNDERSHOCK
 	earthquake 15
 	playsound SFX_STRENGTH
-	changeblock 6, 8, $71
+	changeblock 6, 8, $6d
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_1
 	end
@@ -102,7 +102,7 @@ MagnetTunnelInsideMachine2:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 22, 20, $6b
+	changeblock 22, 20, $67
 	reloadmappart
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
@@ -113,7 +113,7 @@ MagnetTunnelInsideMachine2:
 	playsound SFX_THUNDERSHOCK
 	earthquake 15
 	playsound SFX_STRENGTH
-	changeblock 22, 20, $6a
+	changeblock 22, 20, $66
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_2
 	end
@@ -136,7 +136,7 @@ MagnetTunnelInsideMachine3:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 20, 8, $6f
+	changeblock 20, 8, $6b
 	reloadmappart
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
@@ -147,7 +147,7 @@ MagnetTunnelInsideMachine3:
 	playsound SFX_THUNDERSHOCK
 	earthquake 15
 	playsound SFX_STRENGTH
-	changeblock 20, 6, $73
+	changeblock 20, 6, $6f
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_3
 	end
@@ -167,7 +167,7 @@ MagnetTunnelInsideMachine4:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 34, 8, $6b
+	changeblock 34, 8, $67
 	reloadmappart
 	writetext MagnetTunnelInsideMachineText2
 	waitbutton
@@ -178,7 +178,7 @@ MagnetTunnelInsideMachine4:
 	playsound SFX_THUNDERSHOCK
 	earthquake 15
 	playsound SFX_STRENGTH
-	changeblock 34, 8, $6a
+	changeblock 34, 8, $66
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	end
@@ -199,7 +199,7 @@ MagnetTunnelInsideMachine4:
 	yesorno
 	iffalse_endtext
 	playsound SFX_GLASS_TING
-	changeblock 34, 8, $69
+	changeblock 34, 8, $65
 	reloadmappart
 	moveperson MAGNETTUNNELINSIDE_STONE_4, 34, 8
 	appear MAGNETTUNNELINSIDE_STONE_4
@@ -211,7 +211,7 @@ MagnetTunnelInsideMachine4:
 	applymovement MAGNETTUNNELINSIDE_STONE_4, .StoneMovement2
 	playsound SFX_STRENGTH
 	earthquake 15
-	changeblock 34, 4, $6c
+	changeblock 34, 4, $68
 	reloadmappart
 	disappear MAGNETTUNNELINSIDE_STONE_4
 	setevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT

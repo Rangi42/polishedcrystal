@@ -59,6 +59,7 @@ ENDM
 	trigger_def CIANWOOD_CITY,                          wCianwoodCityTrigger
 	trigger_def ROUTE_47,                               wRoute47Trigger
 	trigger_def ROUTE_48,                               wRoute48Trigger
+	trigger_def YELLOW_FOREST,                          wYellowForestTrigger
 	trigger_def ROUTE_42,                               wRoute42Trigger
 	trigger_def ROUTE_43_GATE,                          wRoute43GateTrigger
 	trigger_def MAHOGANY_TOWN,                          wMahoganyTownTrigger
@@ -97,6 +98,7 @@ ENDM
 	trigger_def MOUNT_MOON_SQUARE,                      wMountMoonSquareTrigger
 	trigger_def TRAINER_HOUSE_B1F,                      wTrainerHouseB1FTrigger
 	trigger_def SILVER_CAVE_ROOM_3,                     wSilverCaveRoom3Trigger
+	trigger_def CERULEAN_CAVE_1F,                       wCeruleanCave1FTrigger
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
 	trigger_def SEAGALLOP_FERRY_SHAMOUTI_GATE,          wSeagallopFerryShamoutiGateTrigger
 	trigger_def SEAGALLOP_FERRY_VERMILION_GATE,         wSeagallopFerryVermilionGateTrigger

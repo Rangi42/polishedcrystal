@@ -189,7 +189,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_25,                                   21, 17 ; 14
 	mapgroup CERULEAN_CAPE,                              19, 25 ; 15
 	mapgroup CERULEAN_CITY,                              16, 20 ; 16
-	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 17
+	mapgroup CERULEAN_CAVE_1F,                           12, 17 ; 17
 	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 18
 	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 19
 	mapgroup CERULEAN_BIKE_SHOP,                          4,  4 ; 20
@@ -414,7 +414,7 @@ MAP_NONE   EQU 0
 	mapgroup HIDDEN_TREE_GROTTO,                          9,  5 ;  4
 	mapgroup HIDDEN_CAVE_GROTTO,                         45, 20 ;  5
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  6
-	mapgroup YELLOW_FOREST,                              25, 29 ;  7
+	mapgroup YELLOW_FOREST,                              26, 29 ;  7
 	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     9,  6 ;  8
 	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  9
 

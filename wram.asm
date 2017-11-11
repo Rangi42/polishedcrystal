@@ -2279,6 +2279,7 @@ wBattleTowerBattleRoomTrigger:: ds 1
 wCianwoodCityTrigger:: ds 1
 wRoute47Trigger:: ds 1
 wRoute48Trigger:: ds 1
+wYellowForestTrigger:: ds 1
 wRoute42Trigger:: ds 1
 wRoute43GateTrigger:: ds 1
 wMahoganyTownTrigger:: ds 1
@@ -2317,6 +2318,7 @@ wMountMoon1FTrigger:: ds 1
 wMountMoonSquareTrigger:: ds 1
 wTrainerHouseB1FTrigger:: ds 1
 wSilverCaveRoom3Trigger:: ds 1
+wCeruleanCave1FTrigger:: ds 1
 wSeagallopFerryNavelGateTrigger:: ds 1
 wSeagallopFerryShamoutiGateTrigger:: ds 1
 wSeagallopFerryVermilionGateTrigger:: ds 1
