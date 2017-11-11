@@ -222,26 +222,26 @@ BattleTurn: ; 3c12f
 
 SafariBattleTurn:
 .loop
-    call CheckSafariBattleOver
-    ret c
-
-    call BattleMenu
+	call CheckSafariBattleOver
 	ret c
 
-    ld a, [BattleEnded]
-    and a
-    ret nz
+	call BattleMenu
+	ret c
+
+	ld a, [BattleEnded]
+	and a
+	ret nz
 
 	call HandleSafariAngerEatingStatus
 
-    call CheckSafariMonRan
+	call CheckSafariMonRan
 	ret c
 
-    ld a, [BattleEnded]
-    and a
-    ret nz
+	ld a, [BattleEnded]
+	and a
+	ret nz
 
-    jr .loop
+	jr .loop
 
 HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
