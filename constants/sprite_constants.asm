@@ -169,8 +169,11 @@
 	const SPRITE_SILVER_TROPHY ; $a6
 	const SPRITE_GOLD_TROPHY ; $a7
 
-	const SPRITE_UNUSED_1 ; $a8
-	const SPRITE_UNUSED_2 ; $a9
+	const SPRITE_UNUSED ; $a8
+
+	; Only use this on outdoor maps--it will default to the player's
+	; sprite if it is not in the map group's overworld sprite set
+	const SPRITE_PLAYER ; $a9
 
 SPRITE_POKEMON EQU const_value
 	const SPRITE_BULBASAUR ; $aa

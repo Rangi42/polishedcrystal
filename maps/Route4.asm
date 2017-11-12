@@ -17,15 +17,17 @@ Route4_MapEventHeader:
 	signpost 9, 17, SIGNPOST_JUMPTEXT, CableCarSignText
 	signpost 4, 15, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
-.PersonEvents: db 9
+.PersonEvents: db 11
 	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
 	person_event SPRITE_LASS, 13, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
 	person_event SPRITE_YOUNGSTER, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
 	person_event SPRITE_LASS, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
 	person_event SPRITE_LASS, 8, 35, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
-	itemball_event 5, 42, HP_UP, 1, EVENT_ROUTE_4_HP_UP
 	person_event SPRITE_SUPER_NERD, 13, 26, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
 	person_event SPRITE_SUPER_NERD, 13, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
+	person_event SPRITE_ENGINEER, 7, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route4EngineerScript, EVENT_MT_MOON_RIVAL
+	person_event SPRITE_ENGINEER, 5, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	itemball_event 5, 42, HP_UP, 1, EVENT_ROUTE_4_HP_UP
 	person_event SPRITE_COOLTRAINER_M, 6, 68, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
 
 TrainerYoungsterOliver:
@@ -122,6 +124,12 @@ Route4TutorAquaTailScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_Route4Tutor2Taught
+
+Route4EngineerScript:
+	showtext Route4EngineerText1
+	showtextfaceplayer Route4EngineerText2
+	spriteface LAST_TALKED, UP
+	end
 
 YoungsterOliverSeenText:
 	text "Hi! What's your"
@@ -298,6 +306,22 @@ Text_Route4Tutor2Taught:
 	text "Now your #mon"
 	line "knows how to use"
 	cont "Aqua Tail!"
+	done
+
+Route4EngineerText1:
+	text "Get those bolts"
+	line "tighter!"
+	done
+
+Route4EngineerText2:
+	text "The cable car's"
+	line "out right now."
+
+	para "Until we're done"
+	line "fixing it,"
+
+	para "Mt.Moon Square"
+	line "is closed."
 	done
 
 MtMoonSignText:

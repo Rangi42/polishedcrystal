@@ -3474,8 +3474,8 @@ YoungsterGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 62, GOLBAT
-	db 62, RATICATE
+	db 54, GOLBAT
+	db 54, RATICATE
 
 	db $ff ; end
 
@@ -4433,8 +4433,8 @@ endc
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 57, FURRET
-	db 59, RAPIDASH
+	db 50, FURRET
+	db 52, RAPIDASH
 
 	db $ff ; end
 
@@ -5444,7 +5444,7 @@ BirdKeeperGroup:
 
 	; party
 	db 13, PIDGEY
-	db 64, PIDGEOT
+	db 56, PIDGEOT
 
 	db $ff ; end
 
@@ -7873,10 +7873,10 @@ endc
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 60, CLEFAIRY
-	db 60, MARILL
-	db 62, CLEFABLE
-	db 62, AZUMARILL
+	db 52, CLEFAIRY
+	db 52, MARILL
+	db 54, CLEFABLE
+	db 54, AZUMARILL
 
 	db $ff ; end
 

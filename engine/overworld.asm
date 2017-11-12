@@ -85,13 +85,8 @@ GetPlayerSprite: ; 14183
 AddMapSprites: ; 141c9
 	call GetMapPermission
 	call CheckOutdoorMap
-	jr z, .outdoor
-	jp AddIndoorSprites
-
-.outdoor
-	jp AddOutdoorSprites
-; 141d9
-
+	jr z, AddOutdoorSprites
+	; fallthrough
 
 AddIndoorSprites: ; 141d9
 	ld hl, Map1ObjectSprite
@@ -108,7 +103,6 @@ AddIndoorSprites: ; 141d9
 	jr nz, .loop
 	ret
 ; 141ee
-
 
 AddOutdoorSprites: ; 141ee
 	ld a, [MapGroup]
@@ -329,9 +323,8 @@ AddSpriteGFX: ; 142e5
 	jr z, .exists
 	and a
 	jr z, .new
-rept 2
 	inc hl
-endr
+	inc hl
 	dec c
 	jr nz, .loop
 
@@ -1017,17 +1010,16 @@ Group28Sprites:
 	db SPRITE_YOUNGSTER
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_COOLTRAINER_F ; doesn't walk
+	db SPRITE_ENGINEER ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
 	db SPRITE_LADY ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	db SPRITE_CHRIS ; doesn't walk
-	db SPRITE_KRIS ; doesn't walk
-	; 15 walking sprites (9 that walk)
+	; 14 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
 	db SPRITE_SLOWBRO
 	db SPRITE_ZAPDOS
-	; 19 total sprites
+	; 18 total sprites
 	db 0
 
 
