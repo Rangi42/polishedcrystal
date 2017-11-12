@@ -335,6 +335,7 @@ INCLUDE "audio/music/prism/palettebattle.asm"
 
 SECTION "Go Music", ROMX
 
+INCLUDE "audio/music/go/wildbattle.asm"
 INCLUDE "audio/music/go/gymbattle.asm"
 
 

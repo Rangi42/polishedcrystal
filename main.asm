@@ -1494,6 +1494,12 @@ PlayBattleMusic: ; 2ee6c
 	call .loadfromarray
 	jr c, .done
 
+	; Are we in the Safari Game?
+	ld a, [BattleType]
+	cp BATTLETYPE_SAFARI
+	ld de, MUSIC_WILD_BATTLE_GO
+	jr c, .done
+
 	ld hl, .regional_wilds
 	call .getregionmusicfromarray
 	jr .done

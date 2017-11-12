@@ -8,7 +8,7 @@ Music_GymLeaderBattleGo:
 	musicheader 1, 3, Music_GymLeaderBattleGo_Ch3
 
 Music_GymLeaderBattleGo_Ch1:
-	tempo $A0
+	tempo $B4
 	volume $77
 	stereopanning $77
 	dutycycle 3

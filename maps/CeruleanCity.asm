@@ -28,7 +28,7 @@ CeruleanCity_MapEventHeader:
 	signpost 25, 11, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
 	signpost 13, 25, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
 	signpost 4, 23, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
-	signpost 19, 11, SIGNPOST_JUMPTEXT, CeruleanBubblerSign
+	signpost 19, 11, SIGNPOST_JUMPTEXT, CeruleanBubblerText
 	signpost 13, 4, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 .PersonEvents: db 8
@@ -105,9 +105,6 @@ YoungsterScript_0x184064:
 
 .FoundBerserkGene:
 	jumpopenedtext CeruleanCityYoungsterText
-
-CeruleanBubblerSign:
-	jumptext CeruleanBubblerText
 
 UnknownText_0x1840bc:
 	text "Kanto's Power"

@@ -105,6 +105,7 @@
 	dba Music_Route209DPPt
 	dba Music_Route210DPPt
 	dba Music_Route225DPPt
+	dba Music_WildBattleGo
 	dba Music_DiglettsCaveRBY
 	dba Music_ViridianForest
 	dba Music_LookHiker
