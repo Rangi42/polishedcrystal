@@ -20,7 +20,7 @@ KrissHouse1F_MapEventHeader:
 	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
 	signpost 1, 1, SIGNPOST_JUMPTEXT, SinkText
 	signpost 1, 2, SIGNPOST_JUMPTEXT, StoveText
-	signpost 1, 7, SIGNPOST_READ, TVScript
+	signpost 1, 7, SIGNPOST_UP, TVScript
 
 .PersonEvents: db 5
 	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
@@ -329,10 +329,6 @@ StoveText:
 	done
 
 TVScript:
-	checkcode VAR_FACING
-	if_equal UP, .rightside
-	jumpstd tv
-.rightside
 	thistext
 
 	text "There's a movie on"

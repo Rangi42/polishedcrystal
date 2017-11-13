@@ -14,10 +14,10 @@ LyrasHouse1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 1, 7, SIGNPOST_READ, LyrasFridgeScript
+	signpost 1, 7, SIGNPOST_UP, LyrasFridgeScript
 	signpost 1, 8, SIGNPOST_JUMPTEXT, LyrasSinkText
 	signpost 1, 9, SIGNPOST_JUMPTEXT, LyrasStoveText
-	signpost 1, 2, SIGNPOST_READ, LyrasTVScript
+	signpost 1, 2, SIGNPOST_UP, LyrasTVScript
 
 .PersonEvents: db 1
 	person_event SPRITE_DAD, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LyrasDadScript, -1
@@ -36,13 +36,6 @@ LyrasDadScript:
 
 .LyraTraining
 	jumpopenedtext LyrasDadTrainingText
-
-LyrasTVScript:
-	checkcode VAR_FACING
-	if_not_equal UP, .wrongside
-	jumptext LyrasTVText
-.wrongside
-	jumpstd tv
 
 LyrasDadInsideText:
 	text "Hi, <PLAYER>!"
@@ -72,10 +65,6 @@ LyrasDadTrainingText:
 	done
 
 LyrasFridgeScript:
-	checkcode VAR_FACING
-	if_equal UP, .rightside
-	jumpstd tv ; prints "Oops, wrong side."
-.rightside
 	thistext
 
 	text "Let's see what's"
@@ -95,7 +84,9 @@ LyrasStoveText:
 	line "on the stove."
 	done
 
-LyrasTVText:
+LyrasTVScript:
+	thistext
+
 	text "There's a movie on"
 	line "TV: A girl with"
 
