@@ -14,7 +14,7 @@ LyrasHouse1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 1, 7, SIGNPOST_JUMPTEXT, LyrasFridgeText
+	signpost 1, 7, SIGNPOST_READ, LyrasFridgeScript
 	signpost 1, 8, SIGNPOST_JUMPTEXT, LyrasSinkText
 	signpost 1, 9, SIGNPOST_JUMPTEXT, LyrasStoveText
 	signpost 1, 2, SIGNPOST_READ, LyrasTVScript
@@ -71,7 +71,13 @@ LyrasDadTrainingText:
 	cont "Johto!"
 	done
 
-LyrasFridgeText:
+LyrasFridgeScript:
+	checkcode VAR_FACING
+	if_equal UP, .rightside
+	jumpstd tv ; prints "Oops, wrong side."
+.rightside
+	thistext
+
 	text "Let's see what's"
 	line "in the fridge…"
 
