@@ -39,7 +39,7 @@ endif
 .SUFFIXES:
 .PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace compare tools
 .SECONDEXPANSION:
-.PRECIOUS: %.2bpp %.1bpp
+.PRECIOUS: %.2bpp %.1bpp %.lz %.o
 
 
 roms_md5      = roms.md5
@@ -128,6 +128,7 @@ $(roms_md5): crystal
 %.gbc: $(crystal_obj)
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
+	(head -n 2 $(ROM_NAME).sym && tail -n +3 $(ROM_NAME).sym | sort) > $(ROM_NAME).sym
 
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
