@@ -59,15 +59,9 @@ Divide:: ; 3124
 	push hl
 	push de
 	push bc
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_Divide)
-	rst Bankswitch
 
-	call _Divide
+	homecall _Divide
 
-	pop af
-	rst Bankswitch
 	pop bc
 	pop de
 	pop hl
