@@ -329,26 +329,27 @@ TileMapEnd::
 
 SECTION "Battle", WRAM0
 
+UNION
 wc608::
 wOddEgg:: party_struct OddEgg
 wOddEggName:: ds PKMN_NAME_LENGTH
 wOddEggOTName:: ds PKMN_NAME_LENGTH
-	ds wc608 - @
 
+NEXTU
 wBT_OTTemp:: battle_tower_struct wBT_OTTemp
-	ds wc608 - @
 
+NEXTU
 	hall_of_fame wHallOfFameTemp
-	ds wc608 - @
 
+NEXTU
 wMisc:: ; ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 	ds 10
 wc612::
 	ds 10
 wInitHourBuffer::
 	ds 10
-	ds wc608 - @
 
+NEXTU
 	ds 1
 
 wBattle::
@@ -559,6 +560,7 @@ PlayerSpdLevel::
 PlayerSAtkLevel::
 	ds 1
 
+UNION
 wc6d0::
 PlayerSDefLevel::
 	ds 1
@@ -750,7 +752,7 @@ DVAndPersonalityBuffer::
 wBattleEnd::
 ; Battle RAM
 
-	ds wc6d0 - @
+NEXTU
 wTrademons::
 wPlayerTrademon:: trademon wPlayerTrademon
 wOTTrademon::     trademon wOTTrademon
@@ -762,8 +764,8 @@ wLinkPlayer2Name:: ds NAME_LENGTH
 wLinkTradeSendmonSpecies:: ds 1
 wLinkTradeGetmonSpecies:: ds 1
 	ds 111
-	ds wc6d0 - @
 
+NEXTU
 ; naming screen
 wNamingScreenDestinationPointer:: ds 2
 wNamingScreenCurrNameLength:: ds 1
@@ -772,8 +774,8 @@ wNamingScreenType:: ds 1
 wNamingScreenCursorObjectPointer:: ds 2
 wNamingScreenLastCharacter:: ds 1
 wNamingScreenStringEntryCoord:: ds 2
-	ds wc6d0 - @
 
+NEXTU
 ; pokegear
 wPokegearPhoneLoadNameBuffer:: ds 1
 wPokegearPhoneCursorPosition:: ds 1
@@ -787,8 +789,8 @@ wPokegearRadioChannelBank:: ds 1
 wPokegearRadioChannelAddr:: ds 2
 wPokegearRadioMusicPlaying:: ds 1
 wPokegearNumberBuffer:: ds 1
-	ds wc6d0 - @
 
+NEXTU
 wSlots::
 ; Slot Machine
 wReel1:: slot_reel wReel1
@@ -811,8 +813,8 @@ wSlotBuildingMatch:: ds 1
 wSlotsDataEnd::
 	ds 28
 wSlotsEnd::
-	ds wSlots - @
 
+NEXTU
 ; Card Flip
 wCardFlip::
 wDeck:: ds 24
@@ -822,8 +824,8 @@ wCardFlipFaceUpCard:: ds 1
 wDiscardPile:: ds 24
 wDiscardPileEnd::
 wCardFlipEnd::
-	ds wCardFlip - @
 
+NEXTU
 ; Dummy Game
 wDummyGame::
 wDummyGameCards:: ds 9 * 5
@@ -838,16 +840,15 @@ wDummyGameLastMatches:: ds 5
 wDummyGameCounter:: ds 1
 wDummyGameNumCardsMatched:: ds 1
 wDummyGameEnd::
-	ds wDummyGame - @
 
+NEXTU
 ; Unown Puzzle
 wUnownPuzzle::
 wPuzzlePieces::
 	ds 6 * 6
 wUnownPuzzleEnd::
 
-	ds wc6d0 - @
-
+NEXTU
 wPokedexDataStart::
 wPokedexOrder:: ds NUM_POKEMON +- 1
 wPokedexOrderEnd:: ds 6
@@ -879,17 +880,20 @@ wPokedexDataEnd::
 	ds 3
 
 wMiscEnd::
+ENDU
+ENDU
 
 	ds 13
 
 
 SECTION "Overworld Map", WRAM0
 
+UNION
 OverworldMap::
 	ds 1300
 OverworldMapEnd::
-	ds OverworldMap - @
 
+NEXTU
 wBillsPCPokemonList::
 ; Pokemon, box number, list index
 
@@ -912,29 +916,21 @@ wLinkPlayerDataEnd::
 	ds $35d
 
 wLinkDataEnd::
-	ds wLinkData - @
 
-	ds $100
+NEXTU
+	ds $10f
 
-	ds $f
-wc90f:: ds $11
-	ds $d4
+wc90f:: ds $e5
 wc9f4:: ds 5
 wc9f9:: ds 7
 
-wCreditsFaux2bpp::
-	ds 138
+wCreditsFaux2bpp:: ds 138
 
-wca8a:: ds 1
-	ds 6
-
-; tilemap backup?
-	ds 47
-wcabf:: ds 1
-	ds 78
+wca8a:: ds 54
+wcabf:: ds 79
 wcb0e:: ds 5
-wcb13:: ds 9
-	ds 14
+wcb13:: ds 23
+
 wBillsPC_ScrollPosition:: ds 1
 wBillsPC_CursorPosition:: ds 1
 wBillsPC_NumMonsInBox:: ds 1
@@ -944,31 +940,33 @@ wBillsPC_BackupScrollPosition:: ds 1
 wBillsPC_BackupCursorPosition:: ds 1
 wBillsPC_BackupLoadedBox:: ds 1
 wBillsPC_MonHasMail:: ds 1
+
 	ds 81
+
 wcb84:: ds 102
-wLinkOTPartyMonTypes::
-	ds 2 * PARTY_LENGTH
+
+wLinkOTPartyMonTypes:: ds 2 * PARTY_LENGTH
+
 	ds 84
 
-wcc4a:: ds 22
-	ds 62
-wcc9e:: ds 22
-	ds 108
+wcc4a:: ds 84
+wcc9e:: ds 130
+ENDU
 
 
 SECTION "Video", WRAM0
 
+UNION
 CreditsPos::
 BGMapBuffer::
 	ds 10
-	ds CreditsPos - @
+NEXTU
 	ds 1
-
 wcd21:: ds 1
-CreditsTimer::
-	ds 1
+CreditsTimer:: ds 1
+ENDU
 
-	ds 37
+	ds 30
 
 BGMapPalBuffer::
 	ds 1 ; 40
@@ -1004,6 +1002,7 @@ AttrMap::
 ; bit 2-0: pal # (cgb only)
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
 AttrMapEnd::
+
 wTileAnimBuffer::
 	ds $10
 ; addresses dealing with serial comms
@@ -1249,16 +1248,17 @@ wd000:: ds 1
 DefaultSpawnpoint::
 wd001:: ds 1
 
+UNION
 wTempMail:: mailmsg wTempMail
-	ds wTempMail - @
 
+NEXTU
 wBufferMonNick:: ds PKMN_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
 wBufferMon:: party_struct wBufferMon
 	ds 8
 wMonOrItemNameBuffer::
-	ds wBufferMonNick - @
 
+NEXTU
 wBugContestResults::
 	bugcontestwinner wBugContestFirstPlace
 	bugcontestwinner wBugContestSecondPlace
@@ -1268,8 +1268,7 @@ wBugContestWinnersEnd::
 	ds 4
 wBugContestWinnerName:: ds NAME_LENGTH
 
-	ds wBugContestResults - @
-
+NEXTU
 wd002::
 wTempDayOfWeek::
 wApricorns::
@@ -1308,10 +1307,11 @@ wMartItem3BCD::
 wMartItem4BCD::
 	ds 1
 
+UNION
 wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
-	ds wRadioText - @
 
+NEXTU
 	ds 1
 wd00d:: ds 1
 wMartItem5BCD::
@@ -1335,6 +1335,7 @@ wMartItem12BCD::
 	ds 3
 wMartItemBCDEnd::
 	ds 24
+ENDU
 
 MenuItemsList::
 CurItemBallContents::
@@ -1412,7 +1413,10 @@ wTempTrainerHeaderEnd::
 
 wPlayerTurningDirection:: ds 1
 wStashedTextPointer:: ds 2
+ENDU
+
 	ds 21
+
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1::
@@ -1482,9 +1486,11 @@ VramState::
 
 wBattleResult:: ds 1
 wUsingItemWithSelect:: ds 1
+
+UNION
 CurMart:: ds 16
 CurMartEnd::
-	ds CurMart - @
+NEXTU
 InverseBattleScore::
 CurElevator:: ds 1
 CurElevatorFloors::
@@ -1492,7 +1498,7 @@ wCurMessageIndex:: ds 1
 wMailboxCount:: ds 1
 wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: ds 1
-	ds 2
+ENDU
 
 wListPointer:: dw
 	ds 2
@@ -1572,14 +1578,14 @@ wPlayerStepDirection:: ds 1
 
 wBGMapAnchor:: ds 2
 
+UNION
 UsedSprites:: ds 64
 UsedSpritesEnd::
-	ds UsedSprites - @
-
+NEXTU
 	ds 31
-
 wd173:: ds 1 ; related to command queue type 3
-	ds 32
+ENDU
+
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: ds 1
 wMetatileStandingX:: ds 1
@@ -1715,6 +1721,7 @@ EvolvableFlags::
 
 wForceEvolution:: db
 
+UNION
 ; HP bar animations
 wCurHPAnimMaxHP::   dw
 wCurHPAnimOldHP::   dw
@@ -1725,8 +1732,8 @@ wNewHPBarPixels::   db
 wCurHPAnimDeltaHP:: dw
 wCurHPAnimLowHP::   db
 wCurHPAnimHighHP::  db
-	ds wCurHPAnimMaxHP - @
 
+NEXTU
 MagikarpLength::
 wEvolutionOldSpecies::
 Buffer1::
@@ -1751,7 +1758,10 @@ wd1f1:: ds 1
 wd1f3:: ds 1
 wd1f4:: ds 1
 wd1f5:: ds 1
-wd1f6:: ds 4
+wd1f6:: ds 1
+ENDU
+
+	ds 3
 
 LinkBattleRNs::
 	ds 10
@@ -1890,6 +1900,7 @@ TrainerGroupBank::
 
 SECTION "Enemy Party", WRAMX
 
+UNION
 wPokedexShowPointerAddr::
 wd26b:: ds 1
 	ds 1
@@ -1897,15 +1908,17 @@ wPokedexShowPointerBank::
 	ds 1
 	ds 3
 wd271:: ds 5
-	ds wd26b - @
 
+NEXTU
 OTPlayerName:: ds NAME_LENGTH
+ENDU
 OTPlayerID:: ds 2
 	ds 8
 OTPartyCount::   ds 1
 OTPartySpecies:: ds PARTY_LENGTH
 OTPartyEnd::     ds 1
 
+UNION
 wDudeBag::
 wDudeNumItems:: ds 1
 wDudeItems: ds 2 * 2
@@ -1919,8 +1932,8 @@ wDudeNumBalls:: ds 1
 wDudeBalls:: ds 2 * 2
 wDudeBallsEnd:: ds 1
 wDudeBagEnd::
-	ds wDudeBag - @
 
+NEXTU
 OTPartyMons::
 OTPartyMon1:: party_struct OTPartyMon1
 OTPartyMon2:: party_struct OTPartyMon2
@@ -1933,6 +1946,8 @@ OTPartyMonsEnd::
 OTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 OTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 OTPartyDataEnd::
+ENDU
+
 	ds 4
 
 wBattleAction:: ds 1
@@ -2680,15 +2695,12 @@ BT_OTTrainer4:: battle_tower_struct BT_OTTrainer4
 BT_OTTrainer5:: battle_tower_struct BT_OTTrainer5
 BT_OTTrainer6:: battle_tower_struct BT_OTTrainer6
 BT_OTTrainer7:: battle_tower_struct BT_OTTrainer7
-	ds -$22
 
-wBTChoiceOfLvlGroup::
-wVermilionGymTrashCan1:: ; ds BG_MAP_WIDTH * SCREEN_HEIGHT ($240)
-	ds 1
-wVermilionGymTrashCan2::
-	ds 1
+wBTChoiceOfLvlGroup:: ds 1
+wVermilionGymTrashCan1:: ds 1
+wVermilionGymTrashCan2:: ds 1
 
-	ds $7fe
+	ds $7db
 
 
 SECTION "WRAM 4 RM", WRAMX
@@ -2789,10 +2801,10 @@ wBattleAnimTemp7:: ds 1
 wBattleAnimTempPalette::
 wBattleAnimTemp8:: ds 1
 
-wSurfWaveBGEffect:: ds $40
-wSurfWaveBGEffectEnd::
-	ds -$e
+wSurfWaveBGEffect:: ds $32
 wBattleAnimEnd::
+	ds $e
+wSurfWaveBGEffectEnd::
 
 
 SECTION "WRAM 6", WRAMX
