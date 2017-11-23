@@ -539,7 +539,7 @@ endr
 	ld a, $60
 	call ByteFill
 	hlcoord 3, 2
-	jp TradeAnim_CopyTradeGameBoyTilemap
+	jr TradeAnim_CopyTradeGameBoyTilemap
 ; 292af
 
 .One: ; 292af
@@ -575,8 +575,7 @@ endr
 	ld a, $5b
 	ld [hl], a
 	hlcoord 10, 6
-	jp TradeAnim_CopyTradeGameBoyTilemap
-; 292ec
+	; fallthrough
 
 TradeAnim_CopyTradeGameBoyTilemap: ; 292ec
 	ld de, TradeGameBoyTilemap

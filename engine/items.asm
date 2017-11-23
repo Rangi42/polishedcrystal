@@ -529,19 +529,19 @@ _CountItem::
 
 .Item:
 	ld hl, NumItems
-	jp CountItemInPocket
+	jr CountItemInPocket
 
 .Medicine:
 	ld hl, NumMedicine
-	jp CountItemInPocket
+	jr CountItemInPocket
 
 .Ball: ; d1fb
 	ld hl, NumBalls
-	jp CountItemInPocket
+	jr CountItemInPocket
 
 .Berry:
 	ld hl, NumBerries
-	jp CountItemInPocket
+	; fallthrough
 
 CountItemInPocket:
 	inc hl

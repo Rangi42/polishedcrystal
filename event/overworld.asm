@@ -1288,7 +1288,7 @@ TryStrengthOW: ; cd78
 
 .already_using
 	xor a
-	jr .done
+	; fallthrough
 
 .done
 	ld [ScriptVar], a
@@ -1657,13 +1657,9 @@ UnknownText_0xcf77: ; 0xcf77
 HasRockSmash: ; cf7c
 	ld d, ROCK_SMASH
 	call CheckPartyMove
-	jr nc, .yes
-.no
 	ld a, 1
-	jr .done
-.yes
+	jr c, .done
 	xor a
-	jr .done
 .done
 	ld [ScriptVar], a
 	ret

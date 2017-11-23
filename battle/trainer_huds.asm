@@ -206,8 +206,7 @@ LinkBattle_TrainerHuds: ; 2c10d
 	ld [hli], a
 	ld [hl], 13 * 8
 	ld hl, Sprites + PARTY_LENGTH * 4
-	jp LoadTrainerHudOAM
-; 2c143
+	; fallthrough
 
 LoadTrainerHudOAM: ; 2c143
 	ld de, Buffer1

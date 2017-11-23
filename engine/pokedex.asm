@@ -1592,7 +1592,7 @@ Pokedex_OrderMonsByMode: ; 40bdc
 	ld [hli], a
 	dec c
 	jr nz, .loopnew
-	jp .FindLastSeen
+	jr .FindLastSeen
 
 .OldMode: ; 40c08 (10:4c08)
 	ld hl, wPokedexDataStart
@@ -1603,7 +1603,7 @@ Pokedex_OrderMonsByMode: ; 40bdc
 	inc a
 	dec c
 	jr nz, .loopold
-	jp .FindLastSeen
+	; fallthrough
 
 .FindLastSeen: ; 40c18 (10:4c18)
 	ld hl, wPokedexDataStart + NUM_POKEMON - 1

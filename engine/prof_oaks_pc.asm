@@ -59,7 +59,7 @@ Rate: ; 0x26616
 	call .UpdateRatingBuffer
 	ld hl, StringBuffer4
 	ld de, wd003
-	jp .UpdateRatingBuffer
+	; fallthrough
 
 .UpdateRatingBuffer: ; 0x2665a
 	push hl

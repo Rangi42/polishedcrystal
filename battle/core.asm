@@ -1015,15 +1015,13 @@ PlayerTurn_EndOpponentProtectEndureDestinyBond: ; 3c6cf
 	call SetPlayerTurn
 	call EndUserDestinyBond
 	farcall DoPlayerTurn
-	jp EndOpponentProtectEndureDestinyBond
-; 3c6de
+	jr EndOpponentProtectEndureDestinyBond
 
 EnemyTurn_EndOpponentProtectEndureDestinyBond: ; 3c6de
 	call SetEnemyTurn
 	call EndUserDestinyBond
 	farcall DoEnemyTurn
-	jp EndOpponentProtectEndureDestinyBond
-; 3c6ed
+	; fallthrough
 
 EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
@@ -1778,9 +1776,8 @@ HandleWeatherEffects:
 
 	ld hl, SandstormHitsText
 	call StdBattleTextBox
-
 	call GetSixteenthMaxHP
-	jp SubtractHPFromUser
+	jr SubtractHPFromUser
 
 .HandleHail
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1800,11 +1797,11 @@ HandleWeatherEffects:
 
 	call CheckIfUserIsIceType
 	ret z
-	ld hl, HailHitsText
-	jp StdBattleTextBox
 
+	ld hl, HailHitsText
+	call StdBattleTextBox
 	call GetSixteenthMaxHP
-	jp SubtractHPFromUser
+	; fallthrough
 
 SubtractHPFromUser:
 	call SubtractHP
@@ -2990,14 +2987,13 @@ LostBattle: ; 3d38e
 EnemyMonFaintedAnimation: ; 3d432
 	hlcoord 12, 5
 	decoord 12, 6
-	jp MonFaintedAnimation
+	jr MonFaintedAnimation
 ; 3d43b
 
 PlayerMonFaintedAnimation: ; 3d43b
 	hlcoord 1, 10
 	decoord 1, 11
-	jp MonFaintedAnimation
-; 3d444
+	; fallthrough
 
 MonFaintedAnimation: ; 3d444
 	ld a, [wcfbe]
@@ -4597,11 +4593,6 @@ DrawPlayerHUD: ; 3df58
 	farjp InstantReloadPaletteHack
 ; 3df98
 
-UpdatePlayerHPPal: ; 3df98
-	ld hl, PlayerHPPal
-	jp UpdateHPPal
-; 3df9e
-
 CheckDanger: ; 3df9e
 	ld hl, BattleMonHP
 	ld a, [hli]
@@ -4833,11 +4824,13 @@ endr
 	farjp InstantReloadPaletteHack
 ; 3e127
 
+UpdatePlayerHPPal: ; 3df98
+	ld hl, PlayerHPPal
+	jr UpdateHPPal
+
 UpdateEnemyHPPal: ; 3e127
 	ld hl, EnemyHPPal
-	jp UpdateHPPal
-; 3e12e
-
+	; fallthrough
 UpdateHPPal: ; 3e12e
 	ld b, [hl]
 	call SetHPPal
@@ -8762,7 +8755,7 @@ ShowLinkBattleResult: ; 3f77c
 
 .loss
 	ld de, .Lose
-	jr .store_result
+	; fallthrough
 
 .store_result
 	hlcoord 6, 8

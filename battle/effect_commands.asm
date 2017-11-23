@@ -1137,7 +1137,7 @@ BattleCommand_Critical: ; 34631
 
 ; +2 critical level
 	ld c, 2
-	jr .FocusEnergy
+	; fallthrough
 
 .FocusEnergy:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -4026,7 +4026,7 @@ BattleCommand_ConstantDamage: ; 35726
 	ld a, 0 ; not xor a; preserve carry flag?
 	jr nz, .got_power
 	ld b, $1
-	jr .got_power
+	; fallthrough
 
 .got_power
 	ld hl, CurDamage
@@ -8682,8 +8682,7 @@ DoEnemyBatonPass:
 
 	ld hl, RunActivationAbilities
 	call CallBattleCore
-
-	jr ResetBatonPassStatus
+	; fallthrough
 
 ResetBatonPassStatus:
 ; Reset status changes that aren't passed by Baton Pass.

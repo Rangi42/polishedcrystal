@@ -60,7 +60,7 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 16
 	db -1 ; group 17
 	db -1 ; group 18
-	db -1 ; group 19
+	db  4 ; group 19 (Route 28)
 	db  6 ; group 20 (Ecruteak Shrine)
 	db -1 ; group 21
 	db  3 ; group 22 (Cianwood City)

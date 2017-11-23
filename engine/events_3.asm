@@ -652,7 +652,7 @@ TreeMons1: ; b82fa
 	db  5, MEOWTH,     10
 	db  5, MEOWTH,     10
 	db -1
-
+	; rare
 	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
@@ -669,7 +669,7 @@ TreeMons2: ; b8320
 	db  5, MEOWTH,     10
 	db  5, MEOWTH,     10
 	db -1
-
+	; rare
 	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
@@ -686,7 +686,7 @@ TreeMons3: ; b8346
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db -1
-
+	; rare
 	db 40, MURKROW,    10
 	db 20, PINECO,     10
 	db 20, PINECO,     10
@@ -703,7 +703,7 @@ TreeMons4: ; b836c
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db -1
-
+	; rare
 	db 40, MURKROW,    10
 	db 20, PINECO,     10
 	db 20, PINECO,     10
@@ -720,7 +720,7 @@ TreeMons5: ; b8392
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db -1
-
+	; rare
 	db 50, HOOTHOOT,   10
 	db 15, PINECO,     10
 	db 15, PINECO,     10
@@ -737,7 +737,7 @@ TreeMons6: ; b83b8
 	db  5, BUTTERFREE, 10
 	db  5, BEEDRILL,   10
 	db -1
-
+	; rare
 	db 50, HOOTHOOT,   10
 	db 15, CATERPIE,   10
 	db 15, WEEDLE,     10
@@ -783,17 +783,14 @@ GetTreeMon: ; b83e5
 	call RandomRange
 	cp 8
 	jr nc, NoTreeMon
-	jr .skip
 .skip
 	ld a, [hli]
 	cp -1
 	jr nz, .skip
-	jp SelectTreeMon
-; b841f
+	; fallthrough
 
 SelectTreeMon: ; b841f
 ; Read a TreeMons table and pick one monster at random.
-
 	ld a, 100
 	call RandomRange
 .loop

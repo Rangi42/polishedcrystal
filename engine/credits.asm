@@ -319,7 +319,7 @@ Credits_UpdateGFXRequestPath: ; 109964 (42:5964)
 	ld [Requested2bppDest], a
 	ld a, VTiles2 / $100
 	ld [Requested2bppDest + 1], a
-	jr Credits_RequestGFX
+	; fallthrough
 
 Credits_RequestGFX: ; 10997b (42:597b)
 	xor a

@@ -706,8 +706,11 @@ Function_PartyCountEq3: ; 8b2da
 
 Function_PartySpeciesAreUnique: ; 8b2e2
 	ld hl, PartyMon1Species
-	jp VerifyUniqueness
-; 8b2e9
+	jr VerifyUniqueness
+
+Function_PartyItemsAreUnique: ; 8b32a
+	ld hl, PartyMon1Item
+	; fallthrough
 
 VerifyUniqueness: ; 8b2e9
 	ld de, PartyCount
@@ -772,11 +775,6 @@ VerifyUniqueness: ; 8b2e9
 	pop bc
 	ret
 ; 8b32a
-
-Function_PartyItemsAreUnique: ; 8b32a
-	ld hl, PartyMon1Item
-	jp VerifyUniqueness
-; 8b331
 
 Function_HasPartyAnEgg: ; 8b331
 	ld hl, PartyCount

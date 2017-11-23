@@ -494,16 +494,16 @@ DisplaySaveInfoOnContinue: ; 5e85
 	and %10000000
 	jr z, .clock_ok
 	lb de, 4, 8
-	jp DisplayContinueDataWithRTCError
+	jr DisplayContinueDataWithRTCError
 
 .clock_ok
 	lb de, 4, 8
-	jp DisplayNormalContinueData
+	jr DisplayNormalContinueData
 ; 5e9a
 
 DisplaySaveInfoOnSave: ; 5e9a
 	lb de, 0, 0
-	jr DisplayNormalContinueData
+	; fallthrough
 ; 5e9f
 
 DisplayNormalContinueData: ; 5e9f

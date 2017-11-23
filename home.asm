@@ -1535,8 +1535,7 @@ PrintLevel:: ; 382d
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
-	jr Print8BitNumRightAlign
-; 383d
+	; fallthrough
 
 Print8BitNumRightAlign:: ; 3842
 	ld [wd265], a

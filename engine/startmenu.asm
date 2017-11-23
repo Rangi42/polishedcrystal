@@ -1037,7 +1037,7 @@ MonMailAction: ; 12d45
 .BagIsFull:
 	ld hl, .bagfulltext
 	call MenuTextBoxBackup
-	jr .done
+	; fallthrough
 
 .done
 	ld a, $3

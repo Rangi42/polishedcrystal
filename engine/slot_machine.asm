@@ -556,7 +556,7 @@ InitReelTiles: ; 92a98 (24:6a98)
 	ld hl, wReel1XCoord - wReel1
 	add hl, bc
 	ld [hl], 14 * 8
-	jp .OAM
+	; fallthrough
 
 .OAM: ; 92af9 (24:6af9)
 	ld hl, wReel1ReelAction - wReel1
@@ -576,7 +576,7 @@ Slots_SpinReels: ; 92b0f (24:6b0f)
 	ld bc, wReel2
 	call .SpinReel
 	ld bc, wReel3
-	jp .SpinReel
+	; fallthrough
 
 .SpinReel: ; 92b22 (24:6b22)
 	ld hl, wReel1SpinDistance - wReel1

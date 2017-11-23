@@ -2668,8 +2668,7 @@ GoodRod: ; f5a9
 
 SuperRod: ; f5ad
 	ld e, $2
-	jr UseRod
-; f5b1
+	; fallthrough
 
 UseRod: ; f5b1
 	farjp FishFunction

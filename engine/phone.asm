@@ -1,5 +1,5 @@
 AddPhoneNumber:: ; 90000
-	call _CheckCellNum
+	call CheckCellNum
 	jr c, .cant_add
 	call Phone_FindOpenSlot
 	jr nc, .cant_add
@@ -14,7 +14,7 @@ AddPhoneNumber:: ; 90000
 
 
 DelCellNum:: ; 9000f
-	call _CheckCellNum
+	call CheckCellNum
 	jr nc, .not_in_list
 	xor a
 	ld [hl], a
@@ -26,10 +26,6 @@ DelCellNum:: ; 9000f
 ; 90019
 
 CheckCellNum:: ; 90019
-	jp _CheckCellNum ; wtf
-; 9001c
-
-_CheckCellNum: ; 9001c
 	ld hl, wPhoneList
 	ld b, CONTACT_LIST_SIZE
 .loop
@@ -79,7 +75,7 @@ GetRemainingSpaceInPhoneList: ; 90040
 	push bc
 	push hl
 	ld c, a
-	call _CheckCellNum
+	call CheckCellNum
 	jr c, .elm_or_mom_in_list
 	ld hl, Buffer1
 	inc [hl]

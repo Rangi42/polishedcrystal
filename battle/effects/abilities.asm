@@ -71,7 +71,7 @@ LimberAbility:
 InsomniaAbility:
 VitalSpiritAbility:
 	ld a, SLP
-	jr HealStatusAbility
+	; fallthrough
 HealStatusAbility:
 	ld b, a
 	ld a, BATTLE_VARS_STATUS
@@ -147,7 +147,7 @@ SandStreamAbility:
 	jr WeatherAbility
 SnowWarningAbility:
 	ld a, WEATHER_HAIL
-	jr WeatherAbility
+	; fallthrough
 WeatherAbility:
 	ld b, a
 	ld a, [Weather]

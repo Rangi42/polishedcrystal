@@ -216,7 +216,7 @@ Pack: ; 10000
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	jr .ItemBallsKey_LoadSubmenu
 
 .InitKeyItemsPocket: ; 10094 (4:4094)
 	ld a, KEY_ITEM - 1
@@ -240,7 +240,7 @@ Pack: ; 10000
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	; fallthrough
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
 	farcall _CheckTossableItem
@@ -785,7 +785,7 @@ BattlePack: ; 10493
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	jr ItemSubmenu
 
 .InitKeyItemsPocket: ; 10527 (4:4527)
 	ld a, KEY_ITEM - 1
@@ -809,7 +809,7 @@ BattlePack: ; 10493
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	; fallthrough
 
 ItemSubmenu: ; 105d3 (4:45d3)
 	farcall CheckItemContext

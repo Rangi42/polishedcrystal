@@ -141,8 +141,7 @@ endr
 
 .found
 	pop af
-	jp .AppendNest
-; 2a09c
+	; fallthrough
 
 .AppendNest: ; 2a09c
 	push de

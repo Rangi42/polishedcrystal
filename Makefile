@@ -117,7 +117,7 @@ compare: crystal
 
 $(bank_ends_txt): crystal bankfree ; $(bank_ends) > $@
 $(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
-$(sorted_sym): crystal ; tail -n +3 $(ROM_NAME).sym | sort -o $@
+$(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 
 
 %.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)

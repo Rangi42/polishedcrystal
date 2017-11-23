@@ -295,7 +295,7 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	and a
 	jr nz, .set_page
 	ld c, $3
-	jr .set_page
+	; fallthrough
 
 .set_page
 	ld a, [wcf64]
@@ -1140,12 +1140,12 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	jr z, .unownegg
 	ld a, TRUE
 	ld [wBoxAlignment], a
-	jp .get_animation
+	jr .get_animation
 
 .unownegg
 	xor a
 	ld [wBoxAlignment], a
-	jp .get_animation
+	; fallthrough
 
 .get_animation ; 4e289 (13:6289)
 	ld a, [CurPartySpecies]

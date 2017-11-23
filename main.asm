@@ -2511,7 +2511,7 @@ EmptyAllSRAMBanks: ; 4cf1f
 	ld a, $2
 	call .EmptyBank
 	ld a, $3
-	jp .EmptyBank
+	; fallthrough
 
 .EmptyBank: ; 4cf34
 	call GetSRAMBank
@@ -6174,7 +6174,7 @@ _DudeAutoInput_RightRightA: ; 1de28f
 
 _DudeAutoInput_DownA: ; 1de294
 	ld hl, DudeAutoInput_DownA
-	jr _DudeAutoInput
+	; fallthrough
 
 _DudeAutoInput: ; 1de299
 	ld a, BANK(DudeAutoInputs)

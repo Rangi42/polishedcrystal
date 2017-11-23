@@ -676,7 +676,7 @@ GetDecoName: ; 26c72
 	call .getdeconame
 	pop de
 	ld a, e
-	jr .getpokename
+	; fallthrough
 
 .getpokename ; 26cc0
 	push bc
@@ -1255,7 +1255,7 @@ DecorationDesc_RightOrnament: ; 26fbe
 
 DecorationDesc_Console: ; 26fc3
 	ld a, [Console]
-	jr DecorationDesc_OrnamentOrConsole
+	; fallthrough
 
 DecorationDesc_OrnamentOrConsole: ; 26fc8
 	ld c, a
@@ -1362,8 +1362,7 @@ ToggleDecorationsVisibility: ; 27043
 	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 	ld hl, VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
 	ld a, [BigDoll]
-	jp ToggleDecorationVisibility
-; 27074
+	; fallthrough
 
 ToggleDecorationVisibility: ; 27074
 	and a

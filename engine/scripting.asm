@@ -1070,7 +1070,7 @@ Script_faceplayer:
 	ld e, a
 	ld a, [hLastTalked]
 	ld d, a
-	jp ApplyPersonFacing
+	jr ApplyPersonFacing
 
 Script_faceperson:
 ; parameters:
@@ -1097,7 +1097,7 @@ Script_faceperson:
 	add a
 	ld e, a
 	ld d, c
-	jp ApplyPersonFacing
+	jr ApplyPersonFacing
 
 Script_spriteface:
 ; parameters:
@@ -1113,7 +1113,7 @@ Script_spriteface:
 	add a
 	add a
 	ld e, a
-	jp ApplyPersonFacing
+	; fallthrough
 
 ApplyPersonFacing:
 	ld a, d
@@ -2640,10 +2640,7 @@ Script_ptpriorityjump:
 
 Script_end:
 	call ExitScriptSubroutine
-	jr c, .resume
-	ret
-
-.resume
+	ret nc
 	xor a
 	ld [ScriptRunning], a
 	ld a, SCRIPT_OFF
@@ -2654,8 +2651,6 @@ Script_end:
 
 Script_return:
 	call ExitScriptSubroutine
-	jr c, .dummy
-.dummy
 	ld hl, ScriptFlags
 	res 0, [hl]
 	jp StopScript
