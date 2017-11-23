@@ -12,7 +12,7 @@ Route45_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 2
-	signpost 4, 14, SIGNPOST_JUMPTEXT, Route45SignText
+	signpost 5, 17, SIGNPOST_JUMPTEXT, Route45SignText
 	signpost 78, 17, SIGNPOST_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
 
 .PersonEvents: db 15
