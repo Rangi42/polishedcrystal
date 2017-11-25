@@ -2124,7 +2124,7 @@ UseItem_SelectMon: ; f1f9 (3:71f9)
 	pop bc
 	pop de
 	pop hl
-	;jr UseItem_DoSelectMon
+	; fallthrough
 
 UseItem_DoSelectMon:
 	ret c

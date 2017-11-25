@@ -34,7 +34,7 @@ if !DEF(DEBUG)
 	ld hl, Text_WokeUpOak
 	call PrintText
 endc
-	ld hl, wc608
+	ld hl, wTimesetBuffer
 	ld bc, 50
 	xor a
 	call ByteFill
@@ -91,7 +91,7 @@ endc
 	call SetMinutes
 	jr nc, .SetMinutesLoop
 
-	ld a, [BattleMonNick + 5]
+	ld a, [wInitMinuteBuffer]
 	ld [StringBuffer2 + 2], a
 	call .ClearScreen
 	ld hl, Text_WhoaMins
@@ -203,7 +203,7 @@ SetMinutes: ; 90810 (24:4810)
 	ret
 
 .d_down
-	ld hl, BattleMonNick + 5
+	ld hl, wInitMinuteBuffer
 	ld a, [hl]
 	and a
 	jr nz, .decrease
@@ -214,7 +214,7 @@ SetMinutes: ; 90810 (24:4810)
 	jr .finish_dpad
 
 .d_up
-	ld hl, BattleMonNick + 5
+	ld hl, wInitMinuteBuffer
 	ld a, [hl]
 	cp 59
 	jr c, .increase
@@ -237,7 +237,7 @@ SetMinutes: ; 90810 (24:4810)
 	ret
 
 DisplayMinutesWithMinString: ; 90859 (24:4859)
-	ld de, BattleMonNick + 5
+	ld de, wInitMinuteBuffer
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
@@ -319,7 +319,7 @@ OakText_ResponseToSetTime: ; 0x908b8
 	call PrintHour
 	ld [hl], ":"
 	inc hl
-	ld de, BattleMonNick + 5
+	ld de, wInitMinuteBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	ld b, h

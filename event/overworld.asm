@@ -785,7 +785,7 @@ FlyFunction: ; ca3b
 	cp NUM_SPAWNS
 	jr nc, .illegal
 
-	ld [wd001], a
+	ld [DefaultSpawnpoint], a
 	call CloseWindow
 	ld a, $1
 	ret
@@ -1118,7 +1118,7 @@ TeleportFunction: ; cc61
 	farcall IsSpawnPoint
 	jr nc, .nope
 	ld a, c
-	ld [wd001], a
+	ld [DefaultSpawnpoint], a
 	ld a, $1
 	ret
 

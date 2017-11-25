@@ -203,7 +203,7 @@ Credits:: ; 109847
 	xor a
 	ld [hBGMapMode], a
 	ld [CreditsPos], a
-	ld [wcd21], a
+	ld [CreditsPos+1], a
 	ld [CreditsTimer], a
 
 .execution_loop

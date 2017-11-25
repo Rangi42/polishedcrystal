@@ -41,7 +41,7 @@ CalculateMaximumQuantity:
 SelectQuantityToToss: ; 24fbf
 	ld hl, TossItem_MenuDataHeader
 	call LoadMenuDataHeader
-	jp Toss_Sell_Loop
+	jr Toss_Sell_Loop
 ; 24fc9
 
 SelectQuantityToBuy: ; 24fc9
@@ -54,13 +54,13 @@ RooftopSale_SelectQuantityToBuy: ; 24fcf
 	call CalculateMaximumQuantity
 	ld hl, BuyItem_MenuDataHeader
 	call LoadMenuDataHeader
-	jp Toss_Sell_Loop
+	jr Toss_Sell_Loop
 ; 24fe1
 
 BT_SelectQuantityToBuy:
 	ld hl, BTBuyItem_MenuDataHeader
 	call LoadMenuDataHeader
-	jp Toss_Sell_Loop
+	jr Toss_Sell_Loop
 
 SelectQuantityToSell: ; 24fe1
 	farcall GetItemPrice
@@ -70,8 +70,7 @@ SelectQuantityToSell: ; 24fe1
 	ld [Buffer2], a
 	ld hl, SellItem_MenuDataHeader
 	call LoadMenuDataHeader
-	;jp Toss_Sell_Loop
-; 24ff9
+	; fallthrough
 
 Toss_Sell_Loop: ; 24ff9
 	ld a, 1

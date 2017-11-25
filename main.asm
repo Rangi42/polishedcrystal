@@ -3842,7 +3842,7 @@ InitDisplayForLeafCredits: ; 4e8c2
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
 	call ByteFill
-	ld hl, wd000 ; UnknBGPals
+	ld hl, UnknBGPals
 	ld c, 4 tiles
 .load_white_palettes
 if !DEF(MONOCHROME)
@@ -4560,7 +4560,7 @@ InitList: ; 50db9
 	ld a, c
 	ld [wd104], a
 	ld a, b
-	ld [wd105], a
+	ld [wd104+1], a
 	ret
 
 CalcLevel: ; 50e1b
@@ -4767,7 +4767,7 @@ _SwitchPartyMons:
 	ld a, [Buffer3]
 	call .ClearSprite
 	ld a, [Buffer2]
-	;jp .ClearSprite
+	; fallthrough
 
 .ClearSprite: ; 50f34 (14:4f34)
 	push af

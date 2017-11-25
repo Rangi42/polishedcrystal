@@ -2996,10 +2996,10 @@ PlayerMonFaintedAnimation: ; 3d43b
 	; fallthrough
 
 MonFaintedAnimation: ; 3d444
-	ld a, [wcfbe]
+	ld a, [InputFlags]
 	push af
 	set 6, a
-	ld [wcfbe], a
+	ld [InputFlags], a
 	ld b, 7
 
 .OuterLoop:
@@ -3042,7 +3042,7 @@ MonFaintedAnimation: ; 3d444
 	jr nz, .OuterLoop
 
 	pop af
-	ld [wcfbe], a
+	ld [InputFlags], a
 	ret
 ; 3d488
 
@@ -3809,7 +3809,7 @@ SendOutPlayerMon: ; 3db5f
 	call GetMonBackpic
 	xor a
 	ld [hGraphicStartTile], a
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	ld [CurMoveNum], a
 	ld [TypeModifier], a
 	ld [wPlayerMoveStruct + MOVE_ANIM], a
@@ -4882,7 +4882,7 @@ BattleMenu: ; 3e139
 .next
 	ld a, $1
 	ld [hBGMapMode], a
-	ld a, [wd0d2]
+	ld a, [wBattleMenuCursorBuffer]
 	dec a
 	jp z, BattleMenu_Fight ; $1
 	dec a
@@ -8428,7 +8428,7 @@ BattleIntro: ; 3f4dd
 	call LoadTrainerOrWildMonPic
 	xor a
 	ld [TempBattleMonSpecies], a
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	xor a
 	ld [hMapAnims], a
 	ld a, [OtherTrainerClass]
@@ -8677,7 +8677,7 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wPartyMenuCursor], a
 	ld [wKeyItemsPocketCursor], a
 	ld [wItemsPocketCursor], a
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	ld [CurMoveNum], a
 	ld [wBallsPocketCursor], a
 	ld [wMenuScrollPosition], a

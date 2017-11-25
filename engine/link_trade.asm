@@ -159,10 +159,13 @@ Function16d6e1: ; 16d6e1
 ; 16d70c
 
 LinkTradeMenu: ; 16d70c
-	call .MenuAction
-	;jp .GetJoypad
-; 16d713
-
+	ld hl, w2DMenuFlags2
+	res 7, [hl]
+	ld a, [hBGMapMode]
+	push af
+	call .loop
+	pop af
+	ld [hBGMapMode], a
 .GetJoypad: ; 16d713
 	push bc
 	push af
@@ -179,16 +182,6 @@ LinkTradeMenu: ; 16d70c
 	ld d, a
 	ret
 ; 16d725
-
-.MenuAction: ; 16d725
-	ld hl, w2DMenuFlags2
-	res 7, [hl]
-	ld a, [hBGMapMode]
-	push af
-	call .loop
-	pop af
-	ld [hBGMapMode], a
-	ret
 
 .loop
 	call .UpdateCursor

@@ -137,8 +137,8 @@ ResetWRAM: ; 5ba7
 	xor a
 	call ByteFill
 
-	ld hl, wd000
-	ld bc, wGameData - wd000
+	ld hl, wRAM1Start
+	ld bc, wGameData - wRAM1Start
 	xor a
 	call ByteFill
 

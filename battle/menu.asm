@@ -1,11 +1,11 @@
 LoadBattleMenu: ; 24ef2
 	ld hl, BattleMenuDataHeader
 	call LoadMenuDataHeader
-	ld a, [wd0d2]
+	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
 	call InterpretBattleMenu
 	ld a, [wMenuCursorBuffer]
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	jp ExitMenu
 ; 24f0b
 
@@ -18,11 +18,11 @@ SafariBattleMenu:
 	ld hl, SafariBattleMenuDataHeader
 ContestSafariBattleMenuCommon:
 	call LoadMenuDataHeader
-	ld a, [wd0d2]
+	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
 	call _2DMenu
 	ld a, [wMenuCursorBuffer]
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	jp ExitMenu
 
 BattleMenuDataHeader: ; 24f2c

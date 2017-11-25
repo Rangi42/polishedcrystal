@@ -5632,7 +5632,7 @@ BattleCommand_AccuracyUp2: ; 361dc
 BattleCommand_EvasionUp2: ; 361e0
 ; evasionup2
 	ld b, $10 | EVASION
-	;jr BattleCommand_StatUp
+	; fallthrough
 
 BattleCommand_StatUp: ; 361e4
 ; statup

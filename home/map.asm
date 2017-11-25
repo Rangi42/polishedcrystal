@@ -462,8 +462,7 @@ GetMapConnections:: ; 2368
 	bit EAST_F, b
 	ret z
 	ld de, EastMapConnection
-	;jp GetMapConnection
-; 23a3
+	; fallthrough
 
 GetMapConnection:: ; 23a3
 ; Load map connection struct at hl into de.

@@ -449,9 +449,6 @@ Script_SpecialBillCall:: ; 0x90255
 
 RingTwice_StartCall: ; 9026f
 	call .Ring
-	;jp .Ring
-; 9027c
-
 .Ring: ; 9027c (24:427c)
 	call Phone_StartRinging
 	call Phone_Wait20Frames
@@ -459,8 +456,6 @@ RingTwice_StartCall: ; 9026f
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	;jp Phone_CallerTextboxWithName
-
 Phone_CallerTextboxWithName: ; 90292 (24:4292)
 	ld a, [wCurrentCaller]
 	ld b, a
@@ -474,9 +469,6 @@ PhoneCall:: ; 9029a
 	ld a, d
 	ld [PhoneCallerHi], a
 	call Phone_FirstOfTwoRings
-	;jp Phone_FirstOfTwoRings
-; 902b3
-
 Phone_FirstOfTwoRings: ; 902b3
 	call Phone_StartRinging
 	call Phone_Wait20Frames
@@ -484,9 +476,6 @@ Phone_FirstOfTwoRings: ; 902b3
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	;jp Phone_CallerTextboxWithName2
-; 902c9
-
 Phone_CallerTextboxWithName2: ; 902c9
 	call Phone_CallerTextbox
 	hlcoord 1, 2

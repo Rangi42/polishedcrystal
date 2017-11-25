@@ -2,10 +2,11 @@ WRAM0
 	org $c000
 	"Stack"
 	align 8
-	"WRAM Audio"
-	"WRAM"
+	"Audio WRAM"
+	"WRAM 0"
 	org $c300
-	"wSpriteAnims"
+	"Sprite Animations"
+	"Music Player WRAM"
 	org $c400
 	align 8
 	"Sprites"

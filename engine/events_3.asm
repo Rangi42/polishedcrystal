@@ -300,13 +300,13 @@ CheckForHiddenItems: ; b8172
 ; Checks to see if there are hidden items on the screen that have not yet been found.  If it finds one, returns carry.
 	ld a, [MapScriptHeaderBank]
 	ld [Buffer1], a
-; Get the coordinate of the bottom right corner of the screen, and load it in wd1ec/wd1ed.
+; Get the coordinate of the bottom right corner of the screen.
 	ld a, [XCoord]
 	add SCREEN_WIDTH / 4
-	ld [wd1ed], a
+	ld [wBottomRightXCoord], a
 	ld a, [YCoord]
 	add SCREEN_HEIGHT / 4
-	ld [wd1ec], a
+	ld [wBottomRightYCoord], a
 ; Get the pointer for the first signpost header in the map...
 	ld hl, wCurrentMapSignpostHeaderPointer
 	ld a, [hli]
@@ -325,7 +325,7 @@ CheckForHiddenItems: ; b8172
 	call .GetFarByte
 	ld e, a
 ; Is the Y coordinate of the signpost on the screen?  If not, go to the next signpost.
-	ld a, [wd1ec]
+	ld a, [wBottomRightYCoord]
 	sub e
 	jr c, .next
 	cp SCREEN_HEIGHT / 2
@@ -333,7 +333,7 @@ CheckForHiddenItems: ; b8172
 ; Is the X coordinate of the signpost on the screen?  If not, go to the next signpost.
 	call .GetFarByte
 	ld d, a
-	ld a, [wd1ed]
+	ld a, [wBottomRightXCoord]
 	sub d
 	jr c, .next
 	cp SCREEN_WIDTH / 2

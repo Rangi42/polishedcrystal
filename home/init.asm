@@ -10,7 +10,7 @@ SoftReset:: ; 150
 	ld [rIE], a
 	ei
 
-	ld hl, wcfbe
+	ld hl, InputFlags
 	set 7, [hl]
 
 	ld c, 32
@@ -52,7 +52,7 @@ Init:: ; 17d
 	ld [rOBP1], a
 	ld [rTMA], a
 	ld [rTAC], a
-	ld [wd000], a
+	ld [wRAM1Start], a
 
 	ld a, %100 ; Start timer at 4096Hz
 	ld [rTAC], a
@@ -66,8 +66,8 @@ Init:: ; 17d
 	ld [rLCDC], a
 
 ; Clear WRAM bank 0
-	ld hl, wc000
-	ld bc, wd000 - wc000
+	ld hl, wRAM0Start
+	ld bc, wRAM0End - wRAM0Start
 .ByteFill:
 	ld [hl], 0
 	inc hl

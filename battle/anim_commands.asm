@@ -788,7 +788,7 @@ BattleAnimCmd_EnemyFeetObj: ; cc52c (33:452c)
 	ld a, $60
 	ld [wBattleAnimTemp0], a
 	ld a, $6
-	;jp .LoadFootprint
+	; fallthrough
 
 .LoadFootprint: ; cc561 (33:4561)
 	push af
@@ -841,7 +841,7 @@ BattleAnimCmd_PlayerHeadObj: ; cc57e (33:457e)
 	ld a, $60
 	ld [wBattleAnimTemp0], a
 	ld a, $6
-	;jp .LoadHead
+	; fallthrough
 
 .LoadHead: ; cc5b3 (33:45b3)
 	push af

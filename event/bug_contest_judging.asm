@@ -264,7 +264,7 @@ DetermineContestWinners: ; 1383e
 	ld bc, 4
 	call CopyBytes
 	ld hl, wBugContestFirstPlacePersonID
-	jp CopyTempContestant
+	jr CopyTempContestant
 
 .not_first_place
 	ld de, wBugContestTempScore
@@ -277,7 +277,7 @@ DetermineContestWinners: ; 1383e
 	ld bc, 4
 	call CopyBytes
 	ld hl, wBugContestSecondPlacePersonID
-	jp CopyTempContestant
+	jr CopyTempContestant
 
 .not_second_place
 	ld de, wBugContestTempScore
@@ -286,21 +286,12 @@ DetermineContestWinners: ; 1383e
 	call StringCmp
 	ret c
 	ld hl, wBugContestThirdPlacePersonID
-	;jp CopyTempContestant
-; 138a0
+	; fallthrough
 
 CopyTempContestant: ; 138a0
-; Could've just called CopyBytes.
 	ld de, wBugContestTempPersonID
-rept 3
-	ld a, [de]
-	inc de
-	ld [hli], a
-endr
-	ld a, [de]
-	inc de
-	ld [hl], a
-	ret
+	ld bc, 4
+	jp CopyBytes
 ; 138b0
 
 ComputeAIContestantScores: ; 138b0
@@ -475,8 +466,7 @@ ContestScore: ; 13900
 	ret z
 
 	ld a, 1
-	;jp .AddContestStat
-; 1397f
+	; fallthrough
 
 .AddContestStat: ; 1397f
 	ld hl, hMultiplicand
