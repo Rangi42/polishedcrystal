@@ -888,16 +888,16 @@ DecoAction_putawayornament: ; 26dc9
 
 DecoAction_FinishUp_Ornament: ; 26dd6
 	call QueryWhichSide
-	ld a, [wChosenDecoration]
+	ld a, [Buffer3]
 	ld [hl], a
-	ld a, [wOppositeDecoration]
+	ld a, [Buffer4]
 	ld [de], a
 	xor a
 	ret
 ; 26de3
 
 DecoAction_SetItUp_Ornament: ; 26de3
-	ld a, [wChosenDecoration]
+	ld a, [Buffer3]
 	and a
 	jr z, .nothingthere
 	ld b, a
@@ -911,7 +911,7 @@ DecoAction_SetItUp_Ornament: ; 26de3
 	ld hl, StringBuffer4
 	call GetDecorationName
 	ld a, [MenuSelection]
-	ld [wChosenDecoration], a
+	ld [Buffer3], a
 	call .getwhichside
 	ld hl, DecoText_PutAwayAndSetUp
 	call MenuTextBoxBackup
@@ -920,7 +920,7 @@ DecoAction_SetItUp_Ornament: ; 26de3
 
 .nothingthere
 	ld a, [MenuSelection]
-	ld [wChosenDecoration], a
+	ld [Buffer3], a
 	call .getwhichside
 	ld a, [MenuSelection]
 	ld hl, StringBuffer3
@@ -940,11 +940,11 @@ DecoAction_SetItUp_Ornament: ; 26de3
 .getwhichside ; 26e33
 	ld a, [MenuSelection]
 	ld b, a
-	ld a, [wOppositeDecoration]
+	ld a, [Buffer4]
 	cp b
 	ret nz
 	xor a
-	ld [wOppositeDecoration], a
+	ld [Buffer4], a
 	ret
 ; 26e41
 
@@ -955,7 +955,7 @@ UnknownText_0x26e41: ; 0x26e41
 ; 0x26e46
 
 DecoAction_PutItAway_Ornament: ; 26e46
-	ld a, [wChosenDecoration]
+	ld a, [Buffer3]
 	and a
 	jr z, .nothingthere
 	ld hl, StringBuffer3
@@ -963,7 +963,7 @@ DecoAction_PutItAway_Ornament: ; 26e46
 	ld a, $1
 	ld [Buffer5], a
 	xor a
-	ld [wChosenDecoration], a
+	ld [Buffer3], a
 	ld hl, DecoText_PutAwayTheDeco
 	call MenuTextBoxBackup
 	xor a
@@ -995,9 +995,9 @@ DecoAction_AskWhichSide: ; 26e70
 	ld [Buffer2], a
 	call QueryWhichSide
 	ld a, [hl]
-	ld [wChosenDecoration], a
+	ld [Buffer3], a
 	ld a, [de]
-	ld [wOppositeDecoration], a
+	ld [Buffer4], a
 	xor a
 	ret
 

@@ -6719,8 +6719,8 @@ endr
 	farcall CalcMagikarpLength
 
 	; We're clear if the length is < 1536
-	ld a, [MagikarpLength]
-	cp $06 ; $600 = 1536
+	ld a, [wMagikarpLengthMmHi]
+	cp $6 ; $600 = 1536
 	jr nz, .CheckMagikarpArea
 
 	; 5% chance of skipping size checks
@@ -6728,7 +6728,7 @@ endr
 	cp $0c ; / $100
 	jr c, .CheckMagikarpArea
 	; Try again if > 1614
-	ld a, [MagikarpLength + 1]
+	ld a, [wMagikarpLengthMmLo]
 	cp $50
 	jp nc, .GenerateDVs
 
@@ -6737,7 +6737,7 @@ endr
 	cp $32 ; / $100
 	jr c, .CheckMagikarpArea
 	; Try again if > 1598
-	ld a, [MagikarpLength + 1]
+	ld a, [wMagikarpLengthMmLo]
 	cp $40
 	jp nc, .GenerateDVs
 
@@ -6754,7 +6754,7 @@ endr
 	cp $64 ; / $100
 	jr c, .Happiness
 	; Floor at length 1024
-	ld a, [MagikarpLength]
+	ld a, [wMagikarpLengthMmHi]
 	cp 1024 >> 8
 	jp c, .GenerateDVs ; try again
 
@@ -6850,7 +6850,7 @@ rept 3
 endr
 	ld [hl], a
 	; Make sure the predef knows this isn't a partymon
-	ld [MagikarpLength], a
+	ld [wEvolutionOldSpecies], a
 	; Fill moves based on level
 	predef FillMoves
 

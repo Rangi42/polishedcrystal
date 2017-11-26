@@ -32,15 +32,15 @@ Special_CheckMagikarpLength: ; fbb32
 	call PrintText
 
 	; Did we beat the record?
-	ld hl, Buffer1
-	ld de, wBestMagikarpLengthMmHi
+	ld hl, wMagikarpLengthMm
+	ld de, wBestMagikarpLengthMm
 	ld c, 2
 	call StringCmp
 	jr nc, .not_long_enough
 
 	; NEW RECORD!!! Let's save that.
-	ld hl, Buffer1
-	ld de, wBestMagikarpLengthMmHi
+	ld hl, wMagikarpLengthMm
+	ld de, wBestMagikarpLengthMm
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -82,7 +82,7 @@ PrintMagikarpLength: ; fbbdb
 	bit POKEDEX_UNITS, a
 	jr z, .imperial
 	ld hl, StringBuffer1
-	ld de, Buffer1
+	ld de, wMagikarpLengthMm
 	lb bc, PRINTNUM_RIGHTALIGN | 2, 4
 	call PrintNum
 	dec hl
@@ -99,9 +99,9 @@ PrintMagikarpLength: ; fbbdb
 	ret
 
 .imperial
-	ld a, [Buffer1]
+	ld a, [wMagikarpLengthMmHi]
 	ld b, a
-	ld a, [Buffer2]
+	ld a, [wMagikarpLengthMmLo]
 	ld c, a
 	ld de, 2580 ; (1/25.4) << 16
 	xor a
@@ -153,16 +153,16 @@ PrintMagikarpLength: ; fbbdb
 	jr .inchloop
 .inchdone
 	ld a, e
-	ld [Buffer1], a
+	ld [wMagikarpLengthMmHi], a
 	ld a, l
-	ld [Buffer2], a
+	ld [wMagikarpLengthMmLo], a
 	ld hl, StringBuffer1
-	ld de, Buffer1
+	ld de, wMagikarpLengthMmHi
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	call PrintNum
 	ld [hl], "′"
 	inc hl
-	ld de, Buffer2
+	ld de, wMagikarpLengthMmLo
 	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
 	call PrintNum
 	ld [hl], "″"
@@ -172,7 +172,7 @@ PrintMagikarpLength: ; fbbdb
 ; fbbfc
 
 CalcMagikarpLength: ; fbbfc
-; Return Magikarp's length (in mm) at MagikarpLength (big endian).
+; Return Magikarp's length (in mm) at wMagikarpLengthMm (big endian).
 ;
 ; input:
 ;   de: EnemyMonDVs
@@ -189,9 +189,9 @@ CalcMagikarpLength: ; fbbfc
 
 ; bc = rrc(dv[0]) ++ rrc(dv[1]) ^ rrc(id)
 
-; if bc < 10:    [MagikarpLength] = c + 190
-; if bc ≥ $ff00: [MagikarpLength] = c + 1370
-; else:          [MagikarpLength] = z × 100 + (bc − x) / y
+; if bc < 10:    [wMagikarpLengthMm] = c + 190
+; if bc ≥ $ff00: [wMagikarpLengthMm] = c + 1370
+; else:          [wMagikarpLengthMm] = z × 100 + (bc − x) / y
 
 ; X, Y, and Z depend on the value of b as follows:
 
@@ -340,7 +340,7 @@ CalcMagikarpLength: ; fbbfc
 ;.ok
 ;	ld e, a
 
-	ld hl, MagikarpLength
+	ld hl, wMagikarpLengthMm
 	ld [hl], d
 	inc hl
 	ld [hl], e
@@ -390,9 +390,9 @@ CalcMagikarpLength: ; fbbfc
 
 Special_MagikarpHouseSign: ; fbcd2
 	ld a, [wBestMagikarpLengthMmHi]
-	ld [Buffer1], a
+	ld [wMagikarpLengthMmHi], a
 	ld a, [wBestMagikarpLengthMmLo]
-	ld [Buffer2], a
+	ld [wMagikarpLengthMmLo], a
 	call PrintMagikarpLength
 	ld hl, .CurrentRecordtext
 	jp PrintText

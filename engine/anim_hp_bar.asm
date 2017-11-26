@@ -281,9 +281,9 @@ endr
 ; d7b4
 
 HPBarAnim_PaletteUpdate: ; d7b4
-	ld hl, HPBarPalBuffer
+	ld hl, wCurHPAnimPal
 	call SetHPPal
-	ld a, [HPBarPalBuffer]
+	ld a, [wCurHPAnimPal]
 	ld c, a
 	farjp ApplyHPBarPals
 ; d7c9
