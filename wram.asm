@@ -16,9 +16,7 @@ StackTop::
 SECTION "Audio WRAM", WRAM0
 
 wMusic::
-MusicPlaying::
-; nonzero if playing
-	ds 1
+MusicPlaying:: ds 1 ; nonzero if playing
 
 Channels::
 Channel1:: channel_struct Channel1
@@ -32,18 +30,16 @@ Channel6:: channel_struct Channel6
 Channel7:: channel_struct Channel7
 Channel8:: channel_struct Channel8
 
-	ds 1
+	ds 1 ; unused
 
 wCurTrackDuty:: ds 1
 wCurTrackIntensity:: ds 1
-wCurTrackFrequency:: dw
+wCurTrackFrequency:: ds 2
 	ds 1 ; BCD value, dummied out
 wCurNoteDuration:: ds 1 ; used in MusicE0 and LoadNote
 
-CurMusicByte::
-	ds 1
-CurChannel::
-	ds 1
+CurMusicByte:: ds 1
+CurChannel:: ds 1
 Volume::
 ; corresponds to rNR50
 ; Channel control / ON-OFF / Volume (R/W)
@@ -67,24 +63,16 @@ SoundInput::
 	ds 1
 
 MusicID::
-MusicIDLo::
-	ds 1
-MusicIDHi::
-	ds 1
-MusicBank::
-	ds 1
+MusicIDLo:: ds 1
+MusicIDHi:: ds 1
+MusicBank:: ds 1
 NoiseSampleAddress::
-NoiseSampleAddressLo::
+NoiseSampleAddressLo:: ds 1
+NoiseSampleAddressHi:: ds 1
+wNoiseSampleDelay:: ds 1 ; noise delay?
 	ds 1
-NoiseSampleAddressHi::
-	ds 1
-wNoiseSampleDelay:: ; noise delay?
-	ds 1
-	ds 1
-MusicNoiseSampleSet::
-	ds 1
-SFXNoiseSampleSet::
-	ds 1
+MusicNoiseSampleSet:: ds 1
+SFXNoiseSampleSet:: ds 1
 Danger::
 ; bit 7: on/off
 ; bit 4: pitch
@@ -96,24 +84,16 @@ MusicFade::
 ; bit 0-5: number of frames for each volume level
 ; $00 = none (default)
 	ds 1
-MusicFadeCount::
-	ds 1
+MusicFadeCount:: ds 1
 MusicFadeID::
-MusicFadeIDLo::
-	ds 1
-MusicFadeIDHi::
-	ds 1
+MusicFadeIDLo:: ds 1
+MusicFadeIDHi:: ds 1
 	ds 5
-CryPitch::
-	ds 2
-CryLength::
-	ds 2
-LastVolume::
+CryPitch:: ds 2
+CryLength:: ds 2
+LastVolume:: ds 1
 	ds 1
-	ds 1
-SFXPriority::
-; if nonzero, turn off music when playing sfx
-	ds 1
+SFXPriority:: ds 1 ; if nonzero, turn off music when playing sfx
 	ds 1
 Channel1JumpCondition:: ds 1
 Channel2JumpCondition:: ds 1
@@ -125,9 +105,7 @@ CryTracks::
 ; both tracks active outside of battle
 	ds 1
 wSFXDuration:: ds 1
-CurSFX::
-; id of sfx currently playing
-	ds 1
+CurSFX:: ds 1 ; id of sfx currently playing
 ChannelsEnd::
 
 wMapMusic:: ds 1
@@ -137,20 +115,16 @@ wMusicEnd::
 
 SECTION "WRAM 0", WRAM0
 
-wLZAddress:: dw
-wLZBank::    db
+wLZAddress:: ds 2
+wLZBank:: ds 1
 
 	ds 1
 
 wBoxAlignment:: ds 1
-InputType::
-	ds 1
-AutoInputAddress::
-	ds 2
-AutoInputBank::
-	ds 1
-AutoInputLength::
-	ds 1
+InputType:: ds 1
+AutoInputAddress:: ds 2
+AutoInputBank:: ds 1
+AutoInputLength:: ds 1
 
 wMonStatusFlags:: ds 1
 wGameLogicPaused:: ds 1
@@ -171,8 +145,7 @@ wLinkMode::
 ; 4 mobile battle
 	ds 1
 
-ScriptVar::
-	ds 1
+ScriptVar:: ds 1
 
 wPlayerNextMovement:: ds 1
 wPlayerMovement:: ds 1
@@ -196,14 +169,10 @@ wTempObjectCopyRadius:: ds 1
 
 	ds 1
 
-TileDown::
-	ds 1
-TileUp::
-	ds 1
-TileLeft::
-	ds 1
-TileRight::
-	ds 1
+TileDown:: ds 1
+TileUp:: ds 1
+TileLeft:: ds 1
+TileRight:: ds 1
 
 TilePermissions::
 ; set if tile behavior prevents
@@ -242,8 +211,7 @@ wSpriteAnimationStructsEnd::
 wSpriteAnimCount:: ds 1
 wCurrSpriteOAMAddr:: ds 1
 
-CurIcon::
-	ds 1
+CurIcon:: ds 1
 
 
 wCurIconTile:: ds 1
@@ -320,9 +288,7 @@ SpritesEnd::
 
 SECTION "Tilemap", WRAM0
 
-TileMap::
-; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT
+TileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT ; 20x18 grid of 8x8 tiles
 TileMapEnd::
 
 
@@ -330,8 +296,7 @@ SECTION "Battle", WRAM0
 
 UNION
 ; miscellaneous
-wMisc::
-	ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
+wMisc:: ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 wMiscEnd::
 
 NEXTU
@@ -350,18 +315,14 @@ NEXTU
 
 NEXTU
 ; timeset temp storage
-wTimesetBuffer::
-	ds 20
-wInitHourBuffer::
-	ds 13
-wInitMinuteBuffer::
-	ds 17
+wTimesetBuffer:: ds 20
+wInitHourBuffer:: ds 13
+wInitMinuteBuffer:: ds 17
 
 NEXTU
 ; link engine
 	ds 10
-wc612::
-	ds 40
+wc612:: ds 40 ; TODO: replace with meaningful label
 
 NEXTU
 ; battle
@@ -371,7 +332,7 @@ wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
 
-EnemyMonNick::  ds PKMN_NAME_LENGTH
+EnemyMonNick:: ds PKMN_NAME_LENGTH
 BattleMonNick:: ds PKMN_NAME_LENGTH
 
 BattleMon:: battle_struct BattleMon
@@ -386,8 +347,7 @@ wEnemyTrainerBaseReward:: ds 1
 wEnemyTrainerAIFlags:: ds 3
 OTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 
-CurOTMon::
-	ds 1
+CurOTMon:: ds 1
 
 wBattleParticipantsNotFainted::
 ; Bit array.  Bits 0 - 5 correspond to party members 1 - 6.
@@ -473,172 +433,125 @@ EnemySubStatus4::
 ; see PlayerSubStatus4
 	ds 1
 
-PlayerAbility::
-	ds 1
-PlayerRolloutCount::
-	ds 1
-PlayerConfuseCount::
-	ds 1
-PlayerToxicCount::
-	ds 1
-PlayerDisableCount::
-	ds 1
-PlayerEncoreCount::
-	ds 1
-PlayerPerishCount::
-	ds 1
-PlayerProtectCount::
-	ds 1
+PlayerAbility:: ds 1
+PlayerRolloutCount:: ds 1
+PlayerConfuseCount:: ds 1
+PlayerToxicCount:: ds 1
+PlayerDisableCount:: ds 1
+PlayerEncoreCount:: ds 1
+PlayerPerishCount:: ds 1
+PlayerProtectCount:: ds 1
 	ds 1
 
-EnemyAbility::
-	ds 1
-EnemyRolloutCount::
-	ds 1
-EnemyConfuseCount::
-	ds 1
-EnemyToxicCount::
-	ds 1
-EnemyDisableCount::
-	ds 1
-EnemyEncoreCount::
-	ds 1
-EnemyPerishCount::
-	ds 1
-EnemyProtectCount::
-	ds 1
+EnemyAbility:: ds 1
+EnemyRolloutCount:: ds 1
+EnemyConfuseCount:: ds 1
+EnemyToxicCount:: ds 1
+EnemyDisableCount:: ds 1
+EnemyEncoreCount:: ds 1
+EnemyPerishCount:: ds 1
+EnemyProtectCount:: ds 1
 	ds 1
 BattleSubStatusWRAMEnd::
 
-PlayerDamageTaken::
-	ds 2
-EnemyDamageTaken::
-	ds 2
+PlayerDamageTaken:: ds 2
+EnemyDamageTaken:: ds 2
 
 wBattleReward:: ds 3
 wBattleAnimParam::
 wKickCounter:: ds 1
 
 PartyBackupItems::
-; Back up of party items before a battle. Modified in-battle for consumed/harvested
-; Berries and items stolen from wild Pokémon since those changes are retained
-	ds 6
+; Back up of party items before a battle. Modified in-battle for consumed/harvested.
+; Berries and items stolen from wild Pokémon since those changes are retained.
+	ds PARTY_LENGTH
 
 PartyUsedItems::
 ; For the benefit of Pickup/Harvest
-	ds 6
+	ds PARTY_LENGTH
 
 OTPartyUsedItems::
-; Opponent equavilent
-	ds 6
+; See PartyUsedItems
+	ds PARTY_LENGTH
 
-PlayerSelectedMove::
-; what move you *selected* last, used for Choice locking and the
-; Metronome item
-	ds 1
-EnemySelectedMove::
-	ds 1
+; What move was selected last.
+; Used for Choice locking and the Metronome item
+PlayerSelectedMove:: ds 1
+EnemySelectedMove:: ds 1
 
-PlayerMetronomeCount::
-; how much it is boosted (counts even if you don't have the item)
-	ds 1
-EnemyMetronomeCount::
-	ds 1
+; How much the Metronome item is boosted. (Counts even if you don't have the item.)
+PlayerMetronomeCount:: ds 1
+EnemyMetronomeCount:: ds 1
 
 ; Stores enemy struct data temporarily when checking non-current mons
-AITempAbility::
-	ds 1
-AITempItem::
-	ds 1
+AITempAbility:: ds 1
+AITempItem:: ds 1
 
-wEnemyBackupSpecies::
-	ds 1
+wEnemyBackupSpecies:: ds 1
 
 	ds 15
 
-BattleScriptBufferLoc::
-	ds 2
+BattleScriptBufferLoc:: ds 2
 
 wTurnEnded:: ds 1
-	ds 1
 
-	ds 12
+	ds 13
 
 PlayerStatLevels::
 ; 07 neutral
-PlayerAtkLevel::
-	ds 1
-PlayerDefLevel::
-	ds 1
-PlayerSpdLevel::
-	ds 1
-PlayerSAtkLevel::
-	ds 1
+PlayerAtkLevel:: ds 1
+PlayerDefLevel:: ds 1
+PlayerSpdLevel:: ds 1
+PlayerSAtkLevel:: ds 1
 
 UNION
 ; battle subsection
-PlayerSDefLevel::
+PlayerSDefLevel:: ds 1
+PlayerAccLevel:: ds 1
+PlayerEvaLevel:: ds 1
 	ds 1
-PlayerAccLevel::
-	ds 1
-PlayerEvaLevel::
-	ds 1
-	ds 1
-PlayerStatLevelsEnd::
 
 EnemyStatLevels::
 ; 07 neutral
-EnemyAtkLevel::
-	ds 1
-EnemyDefLevel::
-	ds 1
-EnemySpdLevel::
-	ds 1
-EnemySAtkLevel::
-	ds 1
-EnemySDefLevel::
-	ds 1
-EnemyAccLevel::
-	ds 1
-EnemyEvaLevel::
+EnemyAtkLevel:: ds 1
+EnemyDefLevel:: ds 1
+EnemySpdLevel:: ds 1
+EnemySAtkLevel:: ds 1
+EnemySDefLevel:: ds 1
+EnemyAccLevel:: ds 1
+EnemyEvaLevel:: ds 1
 	ds 1
 
-	ds 1
-EnemyTurnsTaken::
-	ds 1
-PlayerTurnsTaken::
-	ds 1
+EnemyTurnsTaken:: ds 1
+PlayerTurnsTaken:: ds 1
 
-PlayerSubstituteHP::
-	ds 2
-EnemySubstituteHP::
-	ds 2
+PlayerSubstituteHP:: ds 2
+EnemySubstituteHP:: ds 2
 
 	ds 1
 
-CurPlayerMove::
-	ds 1
-CurEnemyMove::
-	ds 1
+CurPlayerMove:: ds 1
+CurEnemyMove:: ds 1
 
-LinkBattleRNCount::
-; how far through the prng stream
-	ds 1
+LinkBattleRNCount:: ds 1 ; how far through the prng stream
 
 wEnemyItemState:: ds 1
+
 	ds 2
-CurEnemyMoveNum::
-	ds 1
+
+CurEnemyMoveNum:: ds 1
 
 wEnemyHPAtTimeOfPlayerSwitch:: ds 2
 wPayDayMoney:: ds 3
 
 wSafariMonAngerCount:: ds 1
 wSafariMonEating:: ds 1
+
 	ds 1
-wEnemyBackupDVs:: ; used when enemy is transformed
-	ds 3
-wEnemyBackupPersonality:: ; Assumed to be below DVs
+
+; used when enemy is transformed
+wEnemyBackupDVs:: ds 3
+wEnemyBackupPersonality:: ; assumed to be after DVs
 wEnemyBackupShiny::
 wEnemyBackupAbility::
 wEnemyBackupNature::
@@ -647,29 +560,28 @@ wEnemyBackupGender::
 wEnemyBackupFainted::
 wEnemyBackupForm::
 	ds 1
-AlreadyDisobeyed::
-	ds 1
 
-DisabledMove::
-	ds 1
-EnemyDisabledMove::
-	ds 1
+AlreadyDisobeyed:: ds 1
+
+DisabledMove:: ds 1
+EnemyDisabledMove:: ds 1
+
 wWhichMonFaintedFirst:: ds 1
 
 ; exists so you can't counter on switch
-LastEnemyCounterMove::
-	ds 1
-LastPlayerCounterMove::
-	ds 1
+LastEnemyCounterMove:: ds 1
+LastPlayerCounterMove:: ds 1
 
 wEnemyMinimized:: ds 1
 
-AlreadyFailed::
-	ds 1
+AlreadyFailed:: ds 1
 
 wBattleParticipantsIncludingFainted:: ds 1
+
 wDanger:: ds 1
+
 wPlayerMinimized:: ds 1
+
 PlayerScreens::
 ; bit
 ; 4 reflect
@@ -682,21 +594,18 @@ EnemyScreens::
 ; see PlayerScreens
 	ds 1
 
-PlayerSafeguardCount::
+PlayerSafeguardCount:: ds 1
+PlayerLightScreenCount:: ds 1
+PlayerReflectCount:: ds 1
 	ds 1
-PlayerLightScreenCount::
-	ds 1
-PlayerReflectCount::
+
+EnemySafeguardCount:: ds 1
+EnemyLightScreenCount:: ds 1
+EnemyReflectCount:: ds 1
 	ds 1
 
 	ds 1
-EnemySafeguardCount::
-	ds 1
-EnemyLightScreenCount::
-	ds 1
-EnemyReflectCount::
-	ds 1
-	ds 2
+
 Weather::
 ; 00 normal
 ; 01 rain
@@ -707,18 +616,14 @@ Weather::
 ; 06 sandstorm subsided
 	ds 1
 
-WeatherCount::
-; # turns remaining
-	ds 1
+WeatherCount:: ds 1 ; # turns remaining
 
-LoweredStat::
-	ds 1
-EffectFailed::
-	ds 1
-FailedMessage::
-	ds 1
-wEnemyGoesFirst::
-	ds 1
+LoweredStat:: ds 1
+EffectFailed:: ds 1
+FailedMessage:: ds 1
+
+wEnemyGoesFirst:: ds 1
+
 wPlayerIsSwitching:: ds 1
 wEnemyIsSwitching::  ds 1
 
@@ -730,14 +635,15 @@ PlayerUsedMoves::
 wEnemyAISwitchScore:: ds 1
 wEnemySwitchMonParam:: ds 1
 wEnemySwitchMonIndex:: ds 1
-wTempLevel:: ds 1
-LastPlayerMon:: ds 1
-LastPlayerMove::
-	ds 1
-LastEnemyMove::
-	ds 1
 
-	ds 9 ; unused
+wTempLevel:: ds 1
+
+LastPlayerMon:: ds 1
+
+LastPlayerMove:: ds 1
+LastEnemyMove:: ds 1
+
+	ds 9
 
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
@@ -758,10 +664,14 @@ BattleEnded:: ds 1
 
 wWildMonMoves:: ds NUM_MOVES
 wWildMonPP:: ds NUM_MOVES
+
 wAmuletCoin:: ds 1
+
 wSomeoneIsRampaging:: ds 1
+
 wPlayerJustGotFrozen:: ds 1
 wEnemyJustGotFrozen:: ds 1
+
 DVAndPersonalityBuffer:: ds 5
 wBattleEnd::
 
@@ -769,9 +679,9 @@ NEXTU
 ; trade
 wTrademons::
 wPlayerTrademon:: trademon wPlayerTrademon
-wOTTrademon::     trademon wOTTrademon
+wOTTrademon:: trademon wOTTrademon
 wTrademonsEnd::
-wTradeAnimPointer:: dw
+wTradeAnimPointer:: ds 2
 wLinkPlayer1Name:: ds NAME_LENGTH
 wLinkPlayer2Name:: ds NAME_LENGTH
 wLinkTradeSendmonSpecies:: ds 1
@@ -798,7 +708,7 @@ wPokegearMapCursorObjectPointer:: ds 2
 wPokegearMapCursorLandmark:: ds 1
 wPokegearMapPlayerIconLandmark:: ds 1
 wPokegearRadioChannelBank:: ds 1
-wPokegearRadioChannelAddr:: dw
+wPokegearRadioChannelAddr:: ds 2
 wPokegearRadioMusicPlaying:: ds 1
 wPokegearNumberBuffer:: ds 1
 
@@ -856,8 +766,7 @@ wCardFlipEnd::
 NEXTU
 ; Unown puzzle
 wUnownPuzzle::
-wPuzzlePieces::
-	ds 6 * 6
+wPuzzlePieces:: ds 6 * 6
 wUnownPuzzleEnd::
 
 NEXTU
@@ -892,6 +801,7 @@ wDexMonShiny:: ds 1
 wPokedexDataEnd::
 
 ENDU
+
 ENDU
 
 
@@ -899,14 +809,12 @@ SECTION "Overworld Map", WRAM0
 
 UNION
 ; overworld map
-OverworldMap::
-	ds 1300
+OverworldMap:: ds 1300
 OverworldMapEnd::
 
 NEXTU
 ; credits image
-wCreditsFaux2bpp::
-	ds 128
+wCreditsFaux2bpp:: ds 8 * 8 * 2
 
 NEXTU
 ; Bill's PC
@@ -966,25 +874,18 @@ SECTION "Video", WRAM0
 
 UNION
 ; video
-BGMapBuffer::
-	ds 40
-BGMapPalBuffer::
-	ds 40
-BGMapBufferPtrs::
-; 20 bg map addresses (16x8 tiles)
-	ds 40
+BGMapBuffer:: ds 40
+BGMapPalBuffer:: ds 40
+BGMapBufferPtrs:: ds 40 ; 20 bg map addresses (16x8 tiles)
 NEXTU
 ; credits
 CreditsPos:: ds 2
 CreditsTimer:: ds 1
 ENDU
 
-SGBPredef::
-	ds 1
-PlayerHPPal::
-	ds 1
-EnemyHPPal::
-	ds 1
+SGBPredef:: ds 1
+PlayerHPPal:: ds 1
+EnemyHPPal:: ds 1
 
 wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: ds 1
@@ -1003,32 +904,30 @@ AttrMap::
 	ds SCREEN_WIDTH * SCREEN_HEIGHT
 AttrMapEnd::
 
-wTileAnimBuffer::
-	ds $10
+wTileAnimBuffer:: ds 16
 
 ; addresses dealing with serial comms
 wOtherPlayerLinkMode:: ds 1
 wOtherPlayerLinkAction:: ds 4
 wPlayerLinkAction:: ds 1
 wcf57:: ds 4
-wLinkTimeoutFrames:: dw
+wLinkTimeoutFrames:: ds 2
 wcf5d:: ds 2
 
-MonType::
-	ds 1
+MonType:: ds 1
 
 CurSpecies::
 CurMove::
 wCreditsSpawn::
 	ds 1
 
-wNamedObjectTypeBuffer::
-	ds 1
-wCurrentOptionsPage::
-	ds 1
+wNamedObjectTypeBuffer:: ds 1
+wCurrentOptionsPage:: ds 1
+
 wJumptableIndex::
 wBattleTowerBattleEnded::
 	ds 1
+
 wcf64:: ; TODO: replace with meaningful labels
 wNrOfBeatenBattleTowerTrainers::
 wMomBankDigitCursorPosition::
@@ -1038,6 +937,7 @@ wCardFlipCursorY::
 wCreditsBorderFrame::
 wDexEntryPrevJumptableIndex::
 	ds 1
+
 wcf65:: ; TODO: replace with meaningful labels
 wCurrPocket::
 wCreditsBorderMon::
@@ -1045,6 +945,7 @@ wTitleScreenTimerLo::
 wUnownPuzzleCursorPosition::
 wCardFlipCursorX::
 	ds 1
+
 wcf66:: ; TODO: replace with meaningful labels
 wCreditsLYOverride::
 wTitleScreenTimerHi::
@@ -1053,22 +954,16 @@ wCardFlipWhichCard::
 	ds 1
 
 Requested2bpp::
-Requested2bppSize::
-	ds 1
-Requested2bppSource::
-	ds 2
-Requested2bppDest::
-	ds 2
+Requested2bppSize:: ds 1
+Requested2bppSource:: ds 2
+Requested2bppDest:: ds 2
 
 Requested1bpp::
-Requested1bppSize::
-	ds 1
-Requested1bppSource::
-	ds 2
-Requested1bppDest::
-	ds 2
+Requested1bppSize:: ds 1
+Requested1bppSource:: ds 2
+Requested1bppDest:: ds 2
 
-wWindowStackPointer:: dw
+wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1
 MenuSelection:: ds 1
 MenuSelectionQuantity:: ds 1
@@ -1147,16 +1042,13 @@ wMenuCursorX:: ds 1
 wCursorOffCharacter:: ds 1
 wCursorCurrentTile:: ds 2
 
-wTrainerCardBadgePaletteAddr:: dw
+wTrainerCardBadgePaletteAddr:: ds 2
 
 wBTTempOTSprite:: ds 1
 
-OverworldDelay::
-	ds 1
-TextDelayFrames::
-	ds 1
-VBlankOccurred::
-	ds 1
+OverworldDelay:: ds 1
+TextDelayFrames:: ds 1
+VBlankOccurred:: ds 1
 
 	ds 8 ; unused
 
@@ -1168,24 +1060,18 @@ InputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
 	ds 2
 
-InBattleTowerBattle::
-; 0 not in BattleTower-Battle
-; 1 BattleTower-Battle
-	ds 1
+InBattleTowerBattle:: ds 1
 
 	ds 1
 
 FXAnimID::
-FXAnimIDLo::
-	ds 1
-FXAnimIDHi::
-	ds 1
-wPlaceBallsX::
-	ds 1
-wPlaceBallsY::
-	ds 1
-TileAnimationTimer::
-	ds 1
+FXAnimIDLo:: ds 1
+FXAnimIDHi:: ds 1
+
+wPlaceBallsX:: ds 1
+wPlaceBallsY:: ds 1
+
+TileAnimationTimer:: ds 1
 
 ; palette backups?
 wBGP:: ds 1
@@ -1209,8 +1095,8 @@ wSaveFileExists:: ds 1
 TextBoxFrame::
 ; bits 0-3: textbox frame 0-8
 	ds 1
-TextBoxFlags::
-	ds 1
+
+TextBoxFlags:: ds 1
 
 	ds 1
 
@@ -1235,8 +1121,7 @@ InitialOptions::
 ; bit 7: ask to reset at start
 	ds 1
 
-OptionsBuffer::
-	ds 1
+OptionsBuffer:: ds 1
 OptionsEnd::
 
 ; Time buffer, for counting the amount of time since an event began
@@ -1249,8 +1134,7 @@ wDaysSince:: ds 1
 SECTION "WRAM 1", WRAMX
 
 wRAM0End::
-wRAM1Start::
-	ds 1
+wRAM1Start:: ds 1
 
 DefaultSpawnpoint:: ds 1
 
@@ -1451,25 +1335,19 @@ wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
 StringBuffer1::
 	ds 24
-
 StringBuffer2::
 	ds 19
-
 StringBuffer3::
 	ds 19
-
 StringBuffer4::
 	ds 19
-
 StringBuffer5::
 	ds 19
 
 wBattleMenuCursorBuffer:: ds 2
 
-CurBattleMon::
-	ds 1
-CurMoveNum::
-	ds 1
+CurBattleMon:: ds 1
+CurMoveNum:: ds 1
 
 	ds 1 ; unused
 
@@ -1500,12 +1378,12 @@ wQueuedScriptBank:: ds 1
 wQueuedScriptAddr:: ds 2
 wNumMoves:: ds 1
 
-wFieldMoveSucceeded::
-wItemEffectSucceeded::
 wPlayerAction::
 ; 0 - use move
 ; 1 - use item
 ; 2 - switch
+wFieldMoveSucceeded::
+wItemEffectSucceeded::
 wSolvedUnownPuzzle::
 	ds 1
 
@@ -1520,9 +1398,11 @@ wBattleResult:: ds 1
 wUsingItemWithSelect:: ds 1
 
 UNION
+; mart data
 CurMart:: ds 16
 CurMartEnd::
 NEXTU
+; miscellaneous
 InverseBattleScore::
 CurElevator:: ds 1
 CurElevatorFloors::
@@ -1572,14 +1452,11 @@ wSpriteFlags:: ds 1
 
 wHandlePlayerStep:: ds 2
 
-PartyMenuActionText::
-	ds 1
+PartyMenuActionText:: ds 1
 
-wItemAttributeParamBuffer::
-	ds 1
+wItemAttributeParamBuffer:: ds 1
 
-CurPartyLevel::
-	ds 1
+CurPartyLevel:: ds 1
 
 wScrollingMenuListSize:: ds 2
 
@@ -1609,156 +1486,98 @@ wSpinning:: ds 1
 
 wBGMapAnchor:: ds 2
 
-UsedSprites::
-; sprite ID, start tile
-	ds 32 * 2
+UsedSprites:: ds 32 * 2 ; sprite ID, start tile
 UsedSpritesEnd::
 
-wOverworldMapAnchor:: dw
+wOverworldMapAnchor:: ds 2
 wMetatileStandingY:: ds 1
 wMetatileStandingX:: ds 1
 wSecondMapHeaderBank:: ds 1
 wTileset:: ds 1
 wPermission:: ds 1
-wSecondMapHeaderAddr:: dw
+wSecondMapHeaderAddr:: ds 2
 
 ; width/height are in blocks (2x2 walkable tiles, 4x4 graphics tiles)
 MapHeader::
-MapBorderBlock::
-	ds 1
-MapHeight::
-	ds 1
-MapWidth::
-	ds 1
-MapBlockDataBank::
-	ds 1
-MapBlockDataPointer::
-	ds 2
-MapScriptHeaderBank::
-	ds 1
-MapScriptHeaderPointer::
-	ds 2
-MapEventHeaderPointer::
-	ds 2
-; bit set
-MapConnections::
-	ds 1
+MapBorderBlock:: ds 1
+MapHeight:: ds 1
+MapWidth:: ds 1
+MapBlockDataBank:: ds 1
+MapBlockDataPointer:: ds 2
+MapScriptHeaderBank:: ds 1
+MapScriptHeaderPointer:: ds 2
+MapEventHeaderPointer:: ds 2
+MapConnections:: ds 1 ; bit set
+
 NorthMapConnection::
-NorthConnectedMapGroup::
-	ds 1
-NorthConnectedMapNumber::
-	ds 1
-NorthConnectionStripPointer::
-	ds 2
-NorthConnectionStripLocation::
-	ds 2
-NorthConnectionStripLength::
-	ds 1
-NorthConnectedMapWidth::
-	ds 1
-NorthConnectionStripYOffset::
-	ds 1
-NorthConnectionStripXOffset::
-	ds 1
-NorthConnectionWindow::
-	ds 2
+NorthConnectedMapGroup:: ds 1
+NorthConnectedMapNumber:: ds 1
+NorthConnectionStripPointer:: ds 2
+NorthConnectionStripLocation:: ds 2
+NorthConnectionStripLength:: ds 1
+NorthConnectedMapWidth:: ds 1
+NorthConnectionStripYOffset:: ds 1
+NorthConnectionStripXOffset:: ds 1
+NorthConnectionWindow:: ds 2
 
 SouthMapConnection::
-SouthConnectedMapGroup::
-	ds 1
-SouthConnectedMapNumber::
-	ds 1
-SouthConnectionStripPointer::
-	ds 2
-SouthConnectionStripLocation::
-	ds 2
-SouthConnectionStripLength::
-	ds 1
-SouthConnectedMapWidth::
-	ds 1
-SouthConnectionStripYOffset::
-	ds 1
-SouthConnectionStripXOffset::
-	ds 1
-SouthConnectionWindow::
-	ds 2
+SouthConnectedMapGroup:: ds 1
+SouthConnectedMapNumber:: ds 1
+SouthConnectionStripPointer:: ds 2
+SouthConnectionStripLocation:: ds 2
+SouthConnectionStripLength:: ds 1
+SouthConnectedMapWidth:: ds 1
+SouthConnectionStripYOffset:: ds 1
+SouthConnectionStripXOffset:: ds 1
+SouthConnectionWindow:: ds 2
 
 WestMapConnection::
-WestConnectedMapGroup::
-	ds 1
-WestConnectedMapNumber::
-	ds 1
-WestConnectionStripPointer::
-	ds 2
-WestConnectionStripLocation::
-	ds 2
-WestConnectionStripLength::
-	ds 1
-WestConnectedMapWidth::
-	ds 1
-WestConnectionStripYOffset::
-	ds 1
-WestConnectionStripXOffset::
-	ds 1
-WestConnectionWindow::
-	ds 2
+WestConnectedMapGroup:: ds 1
+WestConnectedMapNumber:: ds 1
+WestConnectionStripPointer:: ds 2
+WestConnectionStripLocation:: ds 2
+WestConnectionStripLength:: ds 1
+WestConnectedMapWidth:: ds 1
+WestConnectionStripYOffset:: ds 1
+WestConnectionStripXOffset:: ds 1
+WestConnectionWindow:: ds 2
 
 EastMapConnection::
-EastConnectedMapGroup::
-	ds 1
-EastConnectedMapNumber::
-	ds 1
-EastConnectionStripPointer::
-	ds 2
-EastConnectionStripLocation::
-	ds 2
-EastConnectionStripLength::
-	ds 1
-EastConnectedMapWidth::
-	ds 1
-EastConnectionStripYOffset::
-	ds 1
-EastConnectionStripXOffset::
-	ds 1
-EastConnectionWindow::
-	ds 2
+EastConnectedMapGroup:: ds 1
+EastConnectedMapNumber:: ds 1
+EastConnectionStripPointer:: ds 2
+EastConnectionStripLocation:: ds 2
+EastConnectionStripLength:: ds 1
+EastConnectedMapWidth:: ds 1
+EastConnectionStripYOffset:: ds 1
+EastConnectionStripXOffset:: ds 1
+EastConnectionWindow:: ds 2
 
 TilesetHeader::
-TilesetBank::
-	ds 1
-TilesetAddress::
-	ds 2
-TilesetBlocksBank::
-	ds 1
-TilesetBlocksAddress::
-	ds 2
-TilesetCollisionBank::
-	ds 1
-TilesetCollisionAddress::
-	ds 2
-TilesetAnim::
-; bank 3f
-	ds 2
-TilesetPalettes::
-; bank 3f
-	ds 2
+TilesetBank:: ds 1
+TilesetAddress:: ds 2
+TilesetBlocksBank:: ds 1
+TilesetBlocksAddress:: ds 2
+TilesetCollisionBank:: ds 1
+TilesetCollisionAddress:: ds 2
+TilesetAnim:: ds 2 ; bank 3f
+TilesetPalettes:: ds 2 ; bank 3f
 
-EvolvableFlags::
-	flag_array PARTY_LENGTH
+EvolvableFlags:: flag_array PARTY_LENGTH
 
-wForceEvolution:: db
+wForceEvolution:: ds 1
 
 UNION
 ; HP bar animations
-wCurHPAnimMaxHP::   dw
-wCurHPAnimOldHP::   dw
-wCurHPAnimNewHP::   dw
-wCurHPAnimPal::     db
-wCurHPBarPixels::   db
-wNewHPBarPixels::   db
-wCurHPAnimDeltaHP:: dw
-wCurHPAnimLowHP::   db
-wCurHPAnimHighHP::  db
+wCurHPAnimMaxHP:: ds 2
+wCurHPAnimOldHP:: ds 2
+wCurHPAnimNewHP:: ds 2
+wCurHPAnimPal:: ds 1
+wCurHPBarPixels:: ds 1
+wNewHPBarPixels:: ds 1
+wCurHPAnimDeltaHP:: ds 2
+wCurHPAnimLowHP:: ds 1
+wCurHPAnimHighHP:: ds 1
 
 NEXTU
 ; miscellaneous
@@ -1788,16 +1607,15 @@ CurEnemyItem:: ds 1
 wd1f3:: ds 1
 ENDU
 
-LinkBattleRNs::
-	ds 10
+LinkBattleRNs:: ds 10
 
-TempEnemyMonSpecies::  ds 1
+TempEnemyMonSpecies:: ds 1
 TempBattleMonSpecies:: ds 1
 
 EnemyMon:: battle_struct EnemyMon
 EnemyMonBaseStats:: ds 5
-EnemyMonCatchRate:: db
-EnemyMonBaseExp::   db
+EnemyMonCatchRate:: ds 1
+EnemyMonBaseExp:: ds 1
 EnemyMonEnd::
 
 wBattleMode::
@@ -1807,6 +1625,7 @@ wBattleMode::
 	ds 1
 
 TempWildMonSpecies:: ds 1
+
 OtherTrainerClass::
 ; class (Youngster, Bug Catcher, etc.) of opposing trainer
 ; 0 if opponent is a wild Pokémon, not a trainer
@@ -1828,78 +1647,55 @@ BattleType::
 ; $0c legendary
 	ds 1
 
-OtherTrainerID::
-; which trainer of the class that you're fighting
-; (Joey, Mikey, Albert, etc.)
-	ds 1
+OtherTrainerID:: ds 1
 
 wForcedSwitch:: ds 1
 
-TrainerClass::
-	ds 1
+TrainerClass:: ds 1
 
-MonVariant::
-	ds 1
+MonVariant:: ds 1
 
 wMoveSelectionMenuType:: ds 1
 
 CurBaseData::
 BaseStats::
-BaseHP::
-	ds 1
-BaseAttack::
-	ds 1
-BaseDefense::
-	ds 1
-BaseSpeed::
-	ds 1
-BaseSpecialAttack::
-	ds 1
-BaseSpecialDefense::
-	ds 1
+BaseHP:: ds 1
+BaseAttack:: ds 1
+BaseDefense:: ds 1
+BaseSpeed:: ds 1
+BaseSpecialAttack:: ds 1
+BaseSpecialDefense:: ds 1
 BaseType::
-BaseType1::
-	ds 1
-BaseType2::
-	ds 1
-BaseCatchRate::
-	ds 1
-BaseExp::
-	ds 1
-BaseItems::
-	ds 2
+BaseType1:: ds 1
+BaseType2:: ds 1
+BaseCatchRate:: ds 1
+BaseExp:: ds 1
+BaseItems:: ds 2
 BaseGender::
-BaseEggSteps::
-	ds 1
-BasePicSize::
-	ds 1
-BaseAbility1::
-	ds 1
-BaseAbility2::
-	ds 1
-BaseHiddenAbility::
-	ds 1
-BaseGrowthRate::
-	ds 1
-BaseEggGroups::
-	ds 1
-BaseEVYield1::
-	ds 1
-BaseEVYield2::
-	ds 1
-BaseTMHM::
-	flag_array NUM_TMHMS
+BaseEggSteps:: ds 1
+BasePicSize:: ds 1
+BaseAbility1:: ds 1
+BaseAbility2:: ds 1
+BaseHiddenAbility:: ds 1
+BaseGrowthRate:: ds 1
+BaseEggGroups:: ds 1
+BaseEVYield1:: ds 1
+BaseEVYield2:: ds 1
+BaseTMHM:: flag_array NUM_TMHMS
 
-CurDamage::
-	ds 2
+CurDamage:: ds 2
 
-wMornEncounterRate::  ds 1
-wDayEncounterRate::   ds 1
-wNiteEncounterRate::  ds 1
+wMornEncounterRate:: ds 1
+wDayEncounterRate:: ds 1
+wNiteEncounterRate:: ds 1
 wWaterEncounterRate:: ds 1
+
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
+
 wPutativeTMHMMove:: ds 1
+
 	ds 1
+
 wBattleHasJustStarted:: ds 1
 
 wd265:: ; TODO: replace with meaningful labels
@@ -1913,20 +1709,18 @@ wFailedToFlee:: ds 1
 wNumFleeAttempts:: ds 1
 wMonTriedToEvolve:: ds 1
 
-TimeOfDay::
-	ds 1
+TimeOfDay:: ds 1
 
-OtherTrainerType::
-	ds 1
+OtherTrainerType:: ds 1
 
-TrainerGroupBank::
-	ds 1
+TrainerGroupBank:: ds 1
 
 
 SECTION "Enemy Party", WRAMX
 
-wPokedexShowPointerAddr:: dw
-wPokedexShowPointerBank:: db
+wPokedexShowPointerAddr:: ds 2
+wPokedexShowPointerBank:: ds 1
+
 	ds 5
 
 OTPlayerName:: ds NAME_LENGTH
@@ -1968,8 +1762,7 @@ ENDU
 wBattleAction:: ds 1
 wLinkBattleSentAction:: ds 1
 
-MapStatus::
-	ds 1
+MapStatus:: ds 1
 MapEventStatus::
 ; 0: do map events
 ; 1: do background events
@@ -1989,48 +1782,53 @@ ScriptFlags3::
 ; bit 5: unknown
 	ds 1
 
-ScriptMode::
-	ds 1
-ScriptRunning::
-	ds 1
-ScriptBank::
-	ds 1
-ScriptPos::
-	ds 2
+ScriptMode:: ds 1
+ScriptRunning:: ds 1
+ScriptBank:: ds 1
+ScriptPos:: ds 2
 
 wScriptStackSize:: ds 1
 wScriptStack:: ds 3 * 5
 	ds 1
-ScriptDelay::
-	ds 1
+ScriptDelay:: ds 1
 
 wPriorityScriptBank::
-wScriptTextBank:: db
+wScriptTextBank:: ds 1
 wPriorityScriptAddr::
-wScriptTextAddr:: dw
+wScriptTextAddr:: ds 2
+
 	ds 1
+
 wWildEncounterCooldown:: ds 1
 
 	ds 5 ; unused
 
 wWildBattlePanic:: ds 1
+
 wBattleScriptFlags:: ds 2
 wPlayerSpriteSetupFlags::
 ; bit 7: if set, cancel PlayerAction
 ; bit 5: if set, set facing according to bits 0-1
 ; bits 0-1: direction facing
 	ds 1
+	
 wMapReentryScriptQueueFlag:: ds 1 ; MemScriptFlag
 wMapReentryScriptBank:: ds 1 ; MemScriptBank
 wMapReentryScriptAddress:: ds 2 ; MemScriptAddr
+
 	ds 4
+
 wTimeCyclesSinceLastCall:: ds 1
 wReceiveCallDelay_MinsRemaining:: ds 1
 wReceiveCallDelay_StartTime:: ds 3
+
 	ds 3
+
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
+
 	ds 2
+
 wMapStatusEnd::
 
 	ds 2
@@ -2040,8 +1838,7 @@ SECTION "Game Data", WRAMX
 
 wGameData::
 wPlayerData::
-PlayerID::
-	ds 2
+PlayerID:: ds 2
 
 PlayerGender::
 ; bit 0:
@@ -2049,12 +1846,14 @@ PlayerGender::
 ;	1 female
 	ds 1
 
-PlayerName::   ds NAME_LENGTH
-RivalName::    ds NAME_LENGTH
-BackupName::   ds NAME_LENGTH
+PlayerName:: ds NAME_LENGTH
+RivalName:: ds NAME_LENGTH
+BackupName:: ds NAME_LENGTH
+
 TrendyPhrase:: ds NAME_LENGTH
 
 wSavedAtLeastOnce:: ds 1
+
 wSpawnAfterChampion:: ds 1
 
 ; init time set at newgame
@@ -2136,11 +1935,12 @@ MapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS
 
-VariableSprites::
-	ds $100 - SPRITE_VARS
+VariableSprites:: ds $100 - SPRITE_VARS
 
 wEnteredMapFromContinue:: ds 1
+
 	ds 2
+
 TimeOfDayPal:: ds 1
 	ds 4
 wTimeOfDayPalFlags:: ds 1
@@ -2148,6 +1948,7 @@ wTimeOfDayPalset:: ds 1
 CurTimeOfDay:: ds 1
 
 wSecretID:: ds 2
+
 StatusFlags::
 	; 0 - pokedex
 	; 1 - unown dex
@@ -2158,7 +1959,6 @@ StatusFlags::
 	; 6 - hall of fame
 	; 7 - bug contest on
 	ds 1
-
 StatusFlags2::
 	; 0 - rockets
 	; 1 - safari zone?
@@ -2178,52 +1978,33 @@ wMomSavingMoney:: ds 1
 Coins:: ds 2
 
 Badges::
-JohtoBadges::
-	flag_array NUM_JOHTO_BADGES
-KantoBadges::
-	flag_array NUM_KANTO_BADGES
+JohtoBadges:: flag_array NUM_JOHTO_BADGES
+KantoBadges:: flag_array NUM_KANTO_BADGES
 BadgesEnd::
 
-PokemonJournals::
-	flag_array NUM_POKEMON_JOURNALS
+PokemonJournals:: flag_array NUM_POKEMON_JOURNALS
 PokemonJournalsEnd::
 
-TMsHMs::
-	flag_array NUM_TMS + NUM_HMS
+TMsHMs:: flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
 
-NumItems::
-	ds 1
-Items::
-	ds MAX_ITEMS * 2 + 1
+NumItems:: ds 1
+Items:: ds MAX_ITEMS * 2 + 1
 ItemsEnd::
-
-NumMedicine::
-	ds 1
-Medicine::
-	ds MAX_MEDICINE * 2 + 1
+NumMedicine:: ds 1
+Medicine:: ds MAX_MEDICINE * 2 + 1
 MedicineEnd::
-
-NumBalls::
-	ds 1
-Balls::
-	ds MAX_BALLS * 2 + 1
+NumBalls:: ds 1
+Balls:: ds MAX_BALLS * 2 + 1
 BallsEnd::
-
-NumBerries::
-	ds 1
-Berries::
-	ds MAX_BERRIES * 2 + 1
+NumBerries:: ds 1
+Berries:: ds MAX_BERRIES * 2 + 1
 BerriesEnd::
-
-NumKeyItems::
-	ds 1
-KeyItems::
-	ds MAX_KEY_ITEMS + 1
+NumKeyItems:: ds 1
+KeyItems:: ds MAX_KEY_ITEMS + 1
 KeyItemsEnd::
 
-PCItems::
-	ds MAX_PC_ITEMS * 2 + 1
+PCItems:: ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
 
 wPokegearFlags::
@@ -2235,6 +2016,7 @@ wPokegearFlags::
 	ds 1
 wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 2
+
 RegisteredItem:: ds 1
 
 PlayerState:: ds 1
@@ -2380,8 +2162,7 @@ wKenjiFightCount::   ds 1 ; unused
 wParryFightCount::   ds 1
 wErinFightCount::    ds 1
 
-EventFlags::
-	flag_array NUM_EVENTS
+EventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: ds 1
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
@@ -2441,11 +2222,9 @@ WeeklyFlags2:: ds 1
 SwarmFlags:: ds 1
 wStartDay:: ds 1
 
-FruitTreeFlags::
-	flag_array NUM_FRUIT_TREES
+FruitTreeFlags:: flag_array NUM_FRUIT_TREES
 
-NuzlockeLandmarkFlags::
-	flag_array NUM_LANDMARKS
+NuzlockeLandmarkFlags:: flag_array NUM_LANDMARKS
 
 HiddenGrottoContents::
 ; content type, content id
@@ -2456,10 +2235,14 @@ CurHiddenGrotto:: ds 1
 wLuckyNumberDayBuffer:: ds 2
 wSpecialPhoneCallID:: ds 1
 wBugContestStartTime:: ds 4 ; day, hour, min, sec
+
 wLastPocket:: ds 1
+
 wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
+
 wBugContestOfficerPrize:: ds 1
+
 wInPokegear:: ds 1
 wWalkingOnBridge:: ds 1
 
@@ -2467,6 +2250,7 @@ wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4
 wDailyPhoneTimeOfDayFlags:: ds 4
 wKenjiBreakTimer:: ds 2 ; Kenji
+
 wYanmaMapGroup:: ds 1
 wYanmaMapNumber:: ds 1
 
@@ -2477,8 +2261,7 @@ BattlePoints:: ds 1
 StepCount:: ds 1
 PoisonStepCount:: ds 1
 
-wPhoneList::
-	ds CONTACT_LIST_SIZE
+wPhoneList:: ds CONTACT_LIST_SIZE
 
 wHappinessStepCount:: ds 1
 
@@ -2488,9 +2271,12 @@ wSafariTimeRemaining:: ds 2
 
 wLuckyNumberShowFlag:: ds 2
 wLuckyIDNumber:: ds 2
+
 wRepelEffect:: ds 1 ; If a Repel is in use, it contains the nr of steps it's still active
 wRepelType:: ds 1
+
 wBikeStep:: ds 2
+
 wKurtApricornQuantity:: ds 1
 
 wPlayerDataEnd::
@@ -2498,20 +2284,17 @@ wPlayerDataEnd::
 
 wMapData::
 
-VisitedSpawns::
-	flag_array NUM_SPAWNS
+VisitedSpawns:: flag_array NUM_SPAWNS
 
 wDigWarp:: ds 1
 wDigMapGroup:: ds 1
 wDigMapNumber:: ds 1
+
 ; used on maps like second floor pokécenter, which are reused, so we know which
 ; map to return to
-BackupWarpNumber::
-	ds 1
-BackupMapGroup::
-	ds 1
-BackupMapNumber::
-	ds 1
+BackupWarpNumber:: ds 1
+BackupMapGroup:: ds 1
+BackupMapNumber:: ds 1
 
 wLastSpawnMapGroup:: ds 1
 wLastSpawnMapNumber:: ds 1
@@ -2548,16 +2331,13 @@ PartyMonNicknamesEnd::
 
 	ds 13 ; unused
 
-PokedexCaught::
-	flag_array NUM_POKEMON
+PokedexCaught:: flag_array NUM_POKEMON
 EndPokedexCaught::
 
-PokedexSeen::
-	flag_array NUM_POKEMON
+PokedexSeen:: flag_array NUM_POKEMON
 EndPokedexSeen::
 
-UnownDex::
-	ds NUM_UNOWN
+UnownDex:: ds NUM_UNOWN
 UnlockedUnowns::
 
 wFirstUnownSeen:: ds 1
@@ -2572,7 +2352,7 @@ wDaycareMan::
 
 wBreedMon1::
 wBreedMon1Nick::  ds PKMN_NAME_LENGTH
-wBreedMon1OT::    ds NAME_LENGTH
+wBreedMon1OT:: ds NAME_LENGTH
 wBreedMon1Stats:: box_struct wBreedMon1
 
 wDaycareLady::
@@ -2580,21 +2360,17 @@ wDaycareLady::
 ; bit 0: monster 2 in daycare
 	ds 1
 
-wStepsToEgg::
-	ds 1
-wBreedMotherOrNonDitto::
-;  z: yes
-; nz: no
-	ds 1
+wStepsToEgg:: ds 1
+wBreedMotherOrNonDitto:: ds 1
 
 wBreedMon2::
-wBreedMon2Nick::  ds PKMN_NAME_LENGTH
-wBreedMon2OT::    ds NAME_LENGTH
+wBreedMon2Nick:: ds PKMN_NAME_LENGTH
+wBreedMon2OT:: ds NAME_LENGTH
 wBreedMon2Stats:: box_struct wBreedMon2
 
 wEggNick:: ds PKMN_NAME_LENGTH
-wEggOT::   ds NAME_LENGTH
-wEggMon::  box_struct wEggMon
+wEggOT:: ds NAME_LENGTH
+wEggMon:: box_struct wEggMon
 
 wBugContestSecondPartySpecies:: ds 1
 wContestMon:: party_struct wContestMon
@@ -2611,6 +2387,7 @@ wRoamMons_CurrentMapNumber:: ds 1
 wRoamMons_CurrentMapGroup:: ds 1
 wRoamMons_LastMapNumber:: ds 1
 wRoamMons_LastMapGroup:: ds 1
+
 wBestMagikarpLengthMmHi:: ds 1
 wBestMagikarpLengthMmLo:: ds 1
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
@@ -2621,9 +2398,8 @@ wGameDataEnd::
 
 SECTION "Pic Animations", WRAMX
 
-TempTileMap::
-; 20x18 grid of 8x8 tiles
-	ds SCREEN_WIDTH * SCREEN_HEIGHT ; $168 = 360
+TempTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT ; 20x18 grid of 8x8 tiles
+
 ; PokeAnim Header
 wPokeAnimSceneIndex:: ds 1
 wPokeAnimPointer:: ds 2
@@ -2662,8 +2438,11 @@ SECTION "Battle Tower", WRAMX
 
 ; BattleTower OpponentTrainer-Data (length = 0xe0 = $a + $1 + 3*$3b + $24)
 BT_OTTrainer:: battle_tower_struct BT_OT
+
 	ds $20
+
 BT_TrainerTextIndex:: ds 2
+
 BT_OTTrainer1:: battle_tower_struct BT_OTTrainer1
 BT_OTTrainer2:: battle_tower_struct BT_OTTrainer2
 BT_OTTrainer3:: battle_tower_struct BT_OTTrainer3
@@ -2677,8 +2456,7 @@ wBTChoiceOfLvlGroup:: ds 1
 
 SECTION "Sound Stack", WRAMX
 
-SoundEngineBackup::
-	ds ChannelsEnd - wMusic
+SoundEngineBackup:: ds ChannelsEnd - wMusic
 
 
 SECTION "Music Player Notes", WRAMX
@@ -2694,8 +2472,7 @@ UnknOBPals:: ds 8 palettes
 BGPals::     ds 8 palettes
 OBPals::     ds 8 palettes
 
-LYOverrides::
-	ds SCREEN_HEIGHT_PX
+LYOverrides:: ds SCREEN_HEIGHT_PX
 LYOverridesEnd::
 
 wMagnetTrainDirection:: ds 1
@@ -2710,8 +2487,7 @@ ColorVaryShiny:: ds 1
 
 	ds 102 ; unused
 
-LYOverridesBackup::
-	ds SCREEN_HEIGHT_PX
+LYOverridesBackup:: ds SCREEN_HEIGHT_PX
 LYOverridesBackupEnd::
 
 
@@ -2742,20 +2518,13 @@ ActiveBGEffectsEnd::
 
 wNumActiveBattleAnims:: ds 1
 
-BattleAnimFlags::
-	ds 1
-BattleAnimAddress::
-	ds 2
-BattleAnimDuration::
-	ds 1
-BattleAnimParent::
-	ds 2
-BattleAnimLoops::
-	ds 1
-BattleAnimVar::
-	ds 1
-BattleAnimByte::
-	ds 1
+BattleAnimFlags:: ds 1
+BattleAnimAddress:: ds 2
+BattleAnimDuration:: ds 1
+BattleAnimParent:: ds 2
+BattleAnimLoops:: ds 1
+BattleAnimVar:: ds 1
+BattleAnimByte:: ds 1
 wBattleAnimOAMPointerLo:: ds 1
 wBattleAnimTempOAMFlags::
 wBattleAnimTemp0:: ds 1
@@ -2786,10 +2555,8 @@ UNION
 wDecompressScratch:: ds $80 tiles
 wDecompressScratchEnd::
 NEXTU
-wScratchTileMap::
-	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
-wScratchAttrMap::
-	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
+wScratchTileMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
+wScratchAttrMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 ENDU
 
 

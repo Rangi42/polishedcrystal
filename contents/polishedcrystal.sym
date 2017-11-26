@@ -2061,7 +2061,6 @@
 00:C6CF wReel1Position
 00:C6D0 EnemyAtkLevel
 00:C6D0 EnemyStatLevels
-00:C6D0 PlayerStatLevelsEnd
 00:C6D0 wNamingScreenType
 00:C6D0 wPokegearPhoneSubmenuCursor
 00:C6D0 wReel1SpinDistance
