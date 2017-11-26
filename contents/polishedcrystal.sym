@@ -4931,8 +4931,6 @@
 01:D04E wTempTrainerHeaderEnd
 01:D04F wStashedTextPointer
 01:D050 wMonOrItemNameBuffer
-01:D051 wVermilionGymTrashCan1
-01:D052 wVermilionGymTrashCan2
 01:D067 wTMHMMoveNameBackup
 01:D074 StringBuffer1
 01:D08C StringBuffer2
@@ -6527,6 +6525,8 @@
 01:DBC8 wKenjiBreakTimer
 01:DBCA wYanmaMapGroup
 01:DBCB wYanmaMapNumber
+01:DBCC wVermilionGymTrashCan1
+01:DBCD wVermilionGymTrashCan2
 01:DBD0 BattlePoints
 01:DBD1 StepCount
 01:DBD2 PoisonStepCount

@@ -1349,10 +1349,6 @@ wPhoneScriptPointer:: ds 2
 
 ENDU
 
-; TODO: move to nonvolatile map data?
-wVermilionGymTrashCan1:: ds 1
-wVermilionGymTrashCan2:: ds 1
-
 ENDU
 
 	ds 12 ; unused
@@ -2282,7 +2278,10 @@ wKenjiBreakTimer:: ds 2 ; Kenji
 wYanmaMapGroup:: ds 1
 wYanmaMapNumber:: ds 1
 
-	ds 4 ; unused
+wVermilionGymTrashCan1:: ds 1
+wVermilionGymTrashCan2:: ds 1
+
+	ds 2 ; unused
 
 BattlePoints:: ds 1
 
