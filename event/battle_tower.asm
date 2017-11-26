@@ -34,12 +34,9 @@ Special_BattleTower_FindChallengeLevel: ; 1700b0
 	ld [rSVBK], a
 	ld a, b
 	ld [wBTChoiceOfLvlGroup], a
-	ld [wBTChoiceOfLvlGroupBackup], a ; save here to store in ScriptVar later
+	ld [ScriptVar], a
 	pop af
 	ld [rSVBK], a
-
-	ld a, [wBTChoiceOfLvlGroupBackup] ; saved value of wBTChoiceOfLvlGroup
-	ld [ScriptVar], a
 	ret
 ; 1700ba
 

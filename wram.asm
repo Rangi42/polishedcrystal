@@ -129,9 +129,8 @@ CurSFX::
 ; id of sfx currently playing
 	ds 1
 ChannelsEnd::
-wMapMusic::
-	ds 1
 
+wMapMusic:: ds 1
 wDontPlayMapMusicOnReload:: ds 1
 wMusicEnd::
 
@@ -223,7 +222,6 @@ SECTION "Sprite Animations", WRAM0
 ; wSpriteAnimDict is a 10x2 dictionary.
 ; keys: taken from third column of SpriteAnimSeqData
 ; values: VTiles
-wBTChoiceOfLvlGroupBackup::
 wSpriteAnimDict:: ds 10 * 2
 
 wSpriteAnimationStructs::
@@ -739,22 +737,23 @@ LastPlayerMove::
 LastEnemyMove::
 	ds 1
 
+	ds 9 ; unused
+
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
-wGivingExperienceToExpShareHolders:: ds 1
-	ds 7
 wPlayerFutureSightDamage:: ds 2
 wEnemyFutureSightDamage:: ds 2
-; rage counters unused, Rage is now attack stage boosts again
-wPlayerRageCounter:: ds 1
-wEnemyRageCounter:: ds 1
-AnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilities
 wPlayerTrappingMove:: ds 1
 wEnemyTrappingMove:: ds 1
 wPlayerWrapCount:: ds 1
 wEnemyWrapCount:: ds 1
 wPlayerCharging:: ds 1
 wEnemyCharging:: ds 1
+
+wGivingExperienceToExpShareHolders:: ds 1
+
+AnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilities
+
 BattleEnded:: ds 1
 
 wWildMonMoves:: ds NUM_MOVES
@@ -799,7 +798,7 @@ wPokegearMapCursorObjectPointer:: ds 2
 wPokegearMapCursorLandmark:: ds 1
 wPokegearMapPlayerIconLandmark:: ds 1
 wPokegearRadioChannelBank:: ds 1
-wPokegearRadioChannelAddr:: ds 2
+wPokegearRadioChannelAddr:: dw
 wPokegearRadioMusicPlaying:: ds 1
 wPokegearNumberBuffer:: ds 1
 
@@ -905,6 +904,11 @@ OverworldMap::
 OverworldMapEnd::
 
 NEXTU
+; credits image
+wCreditsFaux2bpp::
+	ds 128
+
+NEXTU
 ; Bill's PC
 wBillsPCPokemonList::
 ; Pokemon, box number, list index
@@ -955,38 +959,24 @@ wLinkOTPartyMonTypes:: ds 2 * PARTY_LENGTH
 wcc4a:: ds 84
 wcc9e:: ds 130
 
-NEXTU
-; credits data
-	ds 512
-wCreditsFaux2bpp:: ds 138
-
 ENDU
 
 
 SECTION "Video", WRAM0
 
 UNION
-; credits
-CreditsPos:: ds 2
-CreditsTimer:: ds 1
-
-NEXTU
 ; video
 BGMapBuffer::
 	ds 40
-
-UNION
 BGMapPalBuffer::
 	ds 40
-NEXTU
-	ds 1
-wBTTempOTSprite:: ds 1
-ENDU
-
 BGMapBufferPtrs::
 ; 20 bg map addresses (16x8 tiles)
 	ds 40
-
+NEXTU
+; credits
+CreditsPos:: ds 2
+CreditsTimer:: ds 1
 ENDU
 
 SGBPredef::
@@ -1020,7 +1010,6 @@ wTileAnimBuffer::
 wOtherPlayerLinkMode:: ds 1
 wOtherPlayerLinkAction:: ds 4
 wPlayerLinkAction:: ds 1
-wTrainerCardBadgePaletteAddr::
 wcf57:: ds 4
 wLinkTimeoutFrames:: dw
 wcf5d:: ds 2
@@ -1158,7 +1147,9 @@ wMenuCursorX:: ds 1
 wCursorOffCharacter:: ds 1
 wCursorCurrentTile:: ds 2
 
-	ds 3
+wTrainerCardBadgePaletteAddr:: dw
+
+wBTTempOTSprite:: ds 1
 
 OverworldDelay::
 	ds 1
@@ -1434,7 +1425,10 @@ wPlayerTurningDirection:: ds 1
 wStashedTextPointer:: ds 2
 ENDU
 
-	ds 21
+wVermilionGymTrashCan1:: ds 1
+wVermilionGymTrashCan2:: ds 1
+
+	ds 20 ; unused
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
@@ -1594,6 +1588,8 @@ wPlayerStepFlags:: ds 1
 ; bits 0-3: unused
 wPlayerStepDirection:: ds 1
 
+wSpinning:: ds 1
+
 wBGMapAnchor:: ds 2
 
 UsedSprites::
@@ -1710,7 +1706,6 @@ EastConnectionStripXOffset::
 EastConnectionWindow::
 	ds 2
 
-
 TilesetHeader::
 TilesetBank::
 	ds 1
@@ -1776,8 +1771,6 @@ CurEnemyItem:: ds 1
 wd1f3:: ds 1
 ENDU
 
-	ds 3
-
 LinkBattleRNs::
 	ds 10
 
@@ -1789,7 +1782,6 @@ EnemyMonBaseStats:: ds 5
 EnemyMonCatchRate:: db
 EnemyMonBaseExp::   db
 EnemyMonEnd::
-
 
 wBattleMode::
 ; 0: overworld
@@ -1880,7 +1872,6 @@ BaseEVYield2::
 	ds 1
 BaseTMHM::
 	flag_array NUM_TMHMS
-	ds 1 ; extra space set aside
 
 CurDamage::
 	ds 2
@@ -2179,12 +2170,10 @@ BadgesEnd::
 PokemonJournals::
 	flag_array NUM_POKEMON_JOURNALS
 PokemonJournalsEnd::
-	ds 2 ; extra space set aside
 
 TMsHMs::
 	flag_array NUM_TMS + NUM_HMS
 TMsHMsEnd::
-	ds 2 ; extra space set aside
 
 NumItems::
 	ds 1
@@ -2343,7 +2332,6 @@ wMystriStageTrigger:: ds 1
 wRoute22PastTrigger:: ds 1
 wGiovannisCaveTrigger:: ds 1
 wCinnabarLabTrigger:: ds 1
-	ds 10 ; extra space set aside
 
 ; fight counts
 wJackFightCount::    ds 1
@@ -2374,11 +2362,9 @@ wWiltonFightCount::  ds 1
 wKenjiFightCount::   ds 1 ; unused
 wParryFightCount::   ds 1
 wErinFightCount::    ds 1
-	ds 2 ; extra space set aside
 
 EventFlags::
 	flag_array NUM_EVENTS
-	ds 10 ; extra space set aside
 
 wCurBox:: ds 1
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
@@ -2440,16 +2426,13 @@ wStartDay:: ds 1
 
 FruitTreeFlags::
 	flag_array NUM_FRUIT_TREES
-	ds 1 ; extra space set aside
 
 NuzlockeLandmarkFlags::
 	flag_array NUM_LANDMARKS
-	ds 1 ; extra space set aside
 
 HiddenGrottoContents::
 ; content type, content id
 	ds NUM_HIDDEN_GROTTOES * 2
-	ds 2 ; extra space set aside
 
 CurHiddenGrotto:: ds 1
 
@@ -2479,7 +2462,6 @@ PoisonStepCount:: ds 1
 
 wPhoneList::
 	ds CONTACT_LIST_SIZE
-	ds 4 ; extra space set aside
 
 wHappinessStepCount:: ds 1
 
@@ -2501,7 +2483,6 @@ wMapData::
 
 VisitedSpawns::
 	flag_array NUM_SPAWNS
-	ds 1 ; extra space set aside
 
 wDigWarp:: ds 1
 wDigMapGroup:: ds 1
@@ -2526,8 +2507,6 @@ XCoord:: ds 1 ; current x coordinate relative to top-left corner of current map
 wScreenSave:: ds 6 * 5
 
 wMapDataEnd::
-
-wSpinning:: ds 1
 
 
 SECTION "Party", WRAMX
@@ -2664,8 +2643,6 @@ wPokeAnimStructEnd::
 
 SECTION "Battle Tower", WRAMX
 
-	ds $100 ; unused
-
 ; BattleTower OpponentTrainer-Data (length = 0xe0 = $a + $1 + 3*$3b + $24)
 BT_OTTrainer:: battle_tower_struct BT_OT
 	ds $20
@@ -2679,15 +2656,12 @@ BT_OTTrainer6:: battle_tower_struct BT_OTTrainer6
 BT_OTTrainer7:: battle_tower_struct BT_OTTrainer7
 
 wBTChoiceOfLvlGroup:: ds 1
-wVermilionGymTrashCan1:: ds 1
-wVermilionGymTrashCan2:: ds 1
-
-	ds $7db ; unused
 
 
-SECTION "WRAM 4 RM", WRAMX
+SECTION "Sound Stack", WRAMX
 
 SoundEngineBackup::
+	ds ChannelsEnd - wMusic
 
 
 SECTION "Music Player Notes", WRAMX

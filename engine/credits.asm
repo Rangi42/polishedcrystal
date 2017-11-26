@@ -143,7 +143,7 @@ Credits:: ; 109847
 
 	ld hl, wCreditsFaux2bpp
 	ld c, $80
-	ld de, $ff00
+	lb de, %11111111, %00000000 ; solid light gray hue
 
 .load_loop
 	ld a, e
@@ -1421,7 +1421,7 @@ CreditsStrings:
 .GakuziNomoto:        db "   Gakuzi Nomoto@"
 .AiMashima:           db "     Ai Mashima@"
 .MikihiroIshikawa:    db " Mikihiro Ishikawa@"
-.HideyukiHashimoto:   db " Hideyuki hHashimoto@"
+.HideyukiHashimoto:   db " Hideyuki Hashimoto@"
 .SatoshiYamato:       db "   Satoshi Yamato@"
 .ShigeruMiyamoto:     db "  Shigeru Miyamoto@"
 .End:                 db "        End@"

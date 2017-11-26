@@ -1583,136 +1583,77 @@ RadioChannels:
 
 LoadStation_OaksPokemonTalk: ; 91753 (24:5753)
 	xor a ; OAKS_POKEMON_TALK
-	ld [wd002], a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, OaksPkmnTalkName
+LoadRadioStation:
+	ld [wd002], a
+	xor a
+	ld [wNumRadioLinesPrinted], a
+	ld hl, wPokegearRadioChannelBank
+	ld a, BANK(PlayRadioShow)
+	ld [hli], a
+	ld a, PlayRadioShow % $100
+	ld [hli], a
+	ld a, PlayRadioShow / $100
+	ld [hli], a
 	ret
 
 LoadStation_PokedexShow: ; 91766 (24:5766)
 	ld a, POKEDEX_SHOW
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PokedexShowName
-	ret
+	jr LoadRadioStation
 
 LoadStation_PokemonMusic: ; 9177b (24:577b)
 	ld a, POKEMON_MUSIC
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PokemonMusicName
-	ret
+	jr LoadRadioStation
 
 LoadStation_LuckyChannel: ; 91790 (24:5790)
 	ld a, LUCKY_CHANNEL
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, LuckyChannelName
-	ret
+	jr LoadRadioStation
 
 LoadStation_BuenasPassword: ; 917a5 (24:57a5)
-	ld a, BUENAS_PASSWORD
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, NotBuenasPasswordName
 	ld a, [StatusFlags2]
 	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
-	ret z
+	jr z, .ok
 	ld de, BuenasPasswordName
-	ret
-
-; 917c3 (24:57c3)
+.ok
+	ld a, BUENAS_PASSWORD
+	jr LoadRadioStation
 
 BuenasPasswordName:    db "Buena's Password@"
 NotBuenasPasswordName: db "@"
 
 LoadStation_UnownRadio: ; 917d5 (24:57d5)
 	ld a, UNOWN_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, UnknownStationName
-	ret
+	jr LoadRadioStation
 
 LoadStation_PlacesAndPeople: ; 917ea (24:57ea)
 	ld a, PLACES_AND_PEOPLE
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PlacesAndPeopleName
-	ret
+	jr LoadRadioStation
 
 LoadStation_LetsAllSing: ; 917ff (24:57ff)
 	ld a, LETS_ALL_SING
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, LetsAllSingName
-	ret
-
-; 91814 (24:5814)
+	jr LoadRadioStation
 
 LoadStation_RocketRadio: ; 91814
 	ld a, ROCKET_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, LetsAllSingName
-	ret
-
-; 91829
+	jr LoadRadioStation
 
 LoadStation_PokeFluteRadio: ; 91829 (24:5829)
 	ld a, POKE_FLUTE_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PokeFluteStationName
-	ret
+	jr LoadRadioStation
 
 LoadStation_EvolutionRadio: ; 9183e (24:583e)
 	ld a, EVOLUTION_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, UnknownStationName
-	ret
+	jr LoadRadioStation
 
 ; 91853 (24:5853)
 
@@ -1736,14 +1677,6 @@ RadioMusicRestartPokemonChannel: ; 91868 (24:5868)
 	pop de
 	ld de, MUSIC_POKEMON_CHANNEL
 	jp PlayMusic
-
-Radio_BackUpFarCallParams: ; 9187c (24:587c)
-	ld [wPokegearRadioChannelBank], a
-	ld a, l
-	ld [wPokegearRadioChannelAddr], a
-	ld a, h
-	ld [wPokegearRadioChannelAddr + 1], a
-	ret
 
 NoRadioStation: ; 91888 (24:5888)
 	call NoRadioMusic

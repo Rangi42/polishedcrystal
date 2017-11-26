@@ -637,8 +637,6 @@ ParsePlayerAction: ; 3c434
 	jr z, .continue_rage
 	ld hl, PlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
-	xor a
-	ld [wPlayerRageCounter], a
 
 .continue_rage
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
@@ -656,7 +654,6 @@ ParsePlayerAction: ; 3c434
 .locked_in
 	xor a
 	ld [PlayerProtectCount], a
-	ld [wPlayerRageCounter], a
 	ld hl, PlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 
@@ -668,7 +665,6 @@ ParsePlayerAction: ; 3c434
 .reset_rage
 	xor a
 	ld [PlayerProtectCount], a
-	ld [wPlayerRageCounter], a
 	ld hl, PlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 .lavender_ghost
@@ -3503,7 +3499,6 @@ endr
 	ld [EnemyDisableCount], a
 	ld [EnemyProtectCount], a
 	ld [EnemyToxicCount], a
-	ld [wEnemyRageCounter], a
 	ld [EnemyDisabledMove], a
 	ld [wEnemyMinimized], a
 	ld [wPlayerWrapCount], a
@@ -3872,7 +3867,6 @@ endr
 	ld [PlayerDisableCount], a
 	ld [PlayerProtectCount], a
 	ld [PlayerToxicCount], a
-	ld [wPlayerRageCounter], a
 	ld [DisabledMove], a
 	ld [wPlayerMinimized], a
 	ld [wEnemyWrapCount], a
@@ -6294,8 +6288,6 @@ ParseEnemyAction: ; 3e7c1
 	jr z, .no_rage
 	ld hl, EnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
-	xor a
-	ld [wEnemyRageCounter], a
 
 .no_rage
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
@@ -6316,7 +6308,6 @@ ParseEnemyAction: ; 3e7c1
 ResetVarsForSubstatusRage: ; 3e8c1
 	xor a
 	ld [EnemyProtectCount], a
-	ld [wEnemyRageCounter], a
 	ld hl, EnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	ret

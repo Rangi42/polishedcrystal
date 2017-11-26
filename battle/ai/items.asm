@@ -239,7 +239,6 @@ endr
 
 	xor a
 	ld [EnemyProtectCount], a
-	ld [wEnemyRageCounter], a
 
 	ld hl, EnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]

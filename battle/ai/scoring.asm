@@ -1058,19 +1058,8 @@ AI_Smart_Rage: ; 38b7f
 
 ; If enemy's Rage is building, 50% chance to encourage this move.
 	call AI_50_50
-	jr c, .asm_38b8c
-
-	dec [hl]
-
-; Encourage this move based on Rage's counter.
-.asm_38b8c
-	ld a, [wEnemyRageCounter]
-	cp $2
 	ret c
-	dec [hl]
-	ld a, [wEnemyRageCounter]
-	cp $3
-	ret c
+
 	dec [hl]
 	ret
 

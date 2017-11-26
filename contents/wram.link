@@ -28,15 +28,13 @@ WRAMX $1
 WRAMX $2
 	org $d000
 	"Pic Animations"
-
-WRAMX $3
-	org $d000
+	align 8
 	"Battle Tower"
 
 WRAMX $4
-	org $d200
-	"WRAM 4 RM"
-	org $d800
+	org $d000
+	"Sound Stack"
+	align 8
 	"Music Player Notes"
 
 WRAMX $5
