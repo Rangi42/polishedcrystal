@@ -158,11 +158,11 @@ _GetFrontpic: ; 510a5
 	ld a, $6
 	ld [rSVBK], a
 	ld a, b
-	ld de, wDecompressScratch + $800
+	ld de, wDecompressScratch + $80 tiles
 	call FarDecompress
 	pop bc
 	ld hl, wDecompressScratch
-	ld de, wDecompressScratch + $800
+	ld de, wDecompressScratch + $80 tiles
 	call PadFrontpic
 	pop hl
 	push hl
@@ -261,7 +261,7 @@ GetAnimatedFrontpic: ; 51103
 	call GetFarWRAMByte
 	pop hl
 	and $f
-	ld de, w6_d800 + 5 * 5 tiles
+	ld de, wDecompressScratchEnd + 5 * 5 tiles
 	ld c, 5 * 5
 if !DEF(FAITHFUL)
 	push af
@@ -274,11 +274,11 @@ if !DEF(FAITHFUL)
 endc
 	cp 5
 	jr z, .got_dims
-	ld de, w6_d800 + 6 * 6 tiles
+	ld de, wDecompressScratchEnd + 6 * 6 tiles
 	ld c, 6 * 6
 	cp 6
 	jr z, .got_dims
-	ld de, w6_d800 + 7 * 7 tiles
+	ld de, wDecompressScratchEnd + 7 * 7 tiles
 
 	push hl
 	ld a, [CurSpecies]
@@ -314,7 +314,7 @@ endc
 	ld b, a
 	ld c, $80 - 7 * 7 - 1
 	call Get2bpp
-	ld de, w6_d800 + $7f tiles ; $DFF0 -- overflows into echo RAM $E000 after 1 tile
+	ld de, wDecompressScratchEnd + $7f tiles ; $DFF0 -- overflows into echo RAM $E000 after 1 tile
 	ld hl, wDecompressScratch
 	ld bc, ($80 - 7 * 7 - 1) * $10
 	call LoadFrontpic

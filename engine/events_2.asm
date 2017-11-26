@@ -313,6 +313,8 @@ DoBikeStep:: ; 97db3
 	ret
 ; 97df9
 
+; TODO: simplify command queue engine to just handle stone tables
+
 ClearCmdQueue:: ; 97df9
 	ld hl, wCmdQueue
 	ld de, CMDQUEUE_ENTRY_SIZE

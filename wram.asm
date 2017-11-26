@@ -1029,7 +1029,7 @@ wCurrentOptionsPage::
 wJumptableIndex::
 wBattleTowerBattleEnded::
 	ds 1
-wcf64::
+wcf64:: ; TODO: replace with meaningful labels
 wNrOfBeatenBattleTowerTrainers::
 wMomBankDigitCursorPosition::
 wIntroSceneFrameCounter::
@@ -1038,14 +1038,14 @@ wCardFlipCursorY::
 wCreditsBorderFrame::
 wDexEntryPrevJumptableIndex::
 	ds 1
-wcf65::
+wcf65:: ; TODO: replace with meaningful labels
 wCurrPocket::
 wCreditsBorderMon::
 wTitleScreenTimerLo::
 wUnownPuzzleCursorPosition::
 wCardFlipCursorX::
 	ds 1
-wcf66::
+wcf66:: ; TODO: replace with meaningful labels
 wCreditsLYOverride::
 wTitleScreenTimerHi::
 wUnownPuzzleHeldPiece::
@@ -1278,155 +1278,172 @@ wBugContestWinnersEnd::
 wBugContestWinnerName:: ds NAME_LENGTH
 
 NEXTU
+; mart items
+wMartItem1BCD:: ds 3
+wMartItem2BCD:: ds 3
+wMartItem3BCD:: ds 3
+wMartItem4BCD:: ds 3
+wMartItem5BCD:: ds 3
+wMartItem6BCD:: ds 3
+wMartItem7BCD:: ds 3
+wMartItem8BCD:: ds 3
+wMartItem9BCD:: ds 3
+wMartItem10BCD:: ds 3
+wMartItem11BCD:: ds 3
+wMartItem12BCD:: ds 3
+wMartItemBCDEnd::
+
+NEXTU
 ; miscellaneous
-wd002::
+wd002:: ; TODO: replace with meaningful labels
 wTempDayOfWeek::
 wApricorns::
 PhoneScriptBank::
 LuckyNumberDigitsBuffer::
 wCurrentRadioLine::
 wMovementBufferCount::
-wMartItem1BCD::
+wEarthquakeMovementDataBuffer::
 	ds 1
-wd003::
+
+wd003:: ; TODO: replace with meaningful labels
 PhoneCallerLo::
 wNextRadioLine::
 wMovementBufferPerson::
 wPlaceBallsDirection::
 	ds 1
-wd004::
+
+wd004:: ; TODO: replace with meaningful labels
 PhoneCallerHi::
 wRadioTextDelay::
 wTrainerHUDTiles::
 	ds 1
-wd005::
+
 StartFlypoint::
 wNumRadioLinesPrinted::
-wMartItem2BCD::
 	ds 1
+
 LuckyNumberDigit5Buffer::
 EndFlypoint::
 wOaksPkmnTalkSegmentCounter::
 	ds 1
 
-MovementBuffer::
-	ds 1
-
-wMartItem3BCD::
-	ds 3
-wMartItem4BCD::
-	ds 1
-
 UNION
+MovementBuffer:: ds 55
+NEXTU
+	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
-
-NEXTU
-	ds 1
-wd00d:: ds 1
-wMartItem5BCD::
-	ds 1
-wd00f:: ds 1
-	ds 1
-wMartItem6BCD::
-wd011:: ds 1
-	ds 2
-wMartItem7BCD::
-	ds 3
-wMartItem8BCD::
-	ds 3
-wMartItem9BCD::
-	ds 3
-wMartItem10BCD::
-	ds 3
-wMartItem11BCD::
-	ds 3
-wMartItem12BCD::
-	ds 3
-wMartItemBCDEnd::
-	ds 24
 ENDU
 
-MenuItemsList::
-CurItemBallContents::
-CurFruitTree::
-CurInput::
-wElevatorPointerBank::
-wCurCoordEventTriggerID::
-wCurSignpostYCoord::
-wTemporaryScriptBuffer::
-EngineBuffer1::
-	ds 1
+UNION
+; engine buffers
+EngineBuffer1:: ds 1
+EngineBuffer2:: ds 1
+EngineBuffer3:: ds 1
+EngineBuffer4:: ds 1
+EngineBuffer5:: ds 1
 
-wd03f::
-wJumpStdScriptBuffer::
-CurItemBallQuantity::
-MartPointerBank::
-wElevatorPointerLo::
-wCurCoordEventMapY::
-wCurSignpostXCoord::
-EngineBuffer2::
-	ds 1
+NEXTU
+; menu items list
+MenuItemsList:: ds 16
+MenuItemsListEnd::
 
-wd040::
-wElevatorPointerHi::
-MartPointer::
-CurFruit::
-wCurCoordEventMapX::
-wCurSignpostType::
-EngineBuffer3::
-	ds 1
+NEXTU
+; temporary script buffers
+wTemporaryScriptBuffer:: ds 1
+wJumpStdScriptBuffer:: ds 15
 
-wd041::
-wElevatorOriginFloor::
+NEXTU
+; item ball data
+CurItemBallContents:: ds 1
+CurItemBallQuantity:: ds 1
+
+NEXTU
+; fruit tree data
+CurFruitTree:: ds 1
+	ds 1
+CurFruit:: ds 1
+
+NEXTU
+; elevator data
+wElevatorPointerBank:: ds 1
+wElevatorPointerLo:: ds 1
+wElevatorPointerHi:: ds 1
+wElevatorOriginFloor:: ds 1
+
+NEXTU
+; coord event data
+wCurCoordEventTriggerID:: ds 1
+wCurCoordEventMapY:: ds 1
+wCurCoordEventMapX:: ds 1
+wCurCoordEventScriptAddr:: ds 2
+
+NEXTU
+; signpost data
+wCurSignpostYCoord:: ds 1
+wCurSignpostXCoord:: ds 1
+wCurSignpostType:: ds 1
+wCurSignpostScriptAddr:: ds 1
+
+NEXTU
+; trainer data
+	ds 3
 wTempTrainerHeader::
-wTempTrainerEventFlagLo::
-wCurCoordEventScriptAddr::
-wCurSignpostScriptAddr::
-EngineBuffer4::
-	ds 1
-
-wTempTrainerEventFlagHi::
-MovementAnimation::
-EngineBuffer5::
-	ds 1
-
-wTempTrainerClass::
-WalkingDirection::
-wBargainShopFlags::
-	ds 1
-
-wTempTrainerID::
-FacingDirection::
-	ds 1
-
-wSeenTextPointer::
-WalkingX::
-wMenuCursorBufferBackup::
-	ds 1
-WalkingY::
-wMenuScrollPositionBackup::
-	ds 1
-
-WalkingTile::
-wWinTextPointer::
-	ds 1
-
-wPhoneScriptPointer:: ds 1
+wTempTrainerEventFlagLo:: ds 1
+wTempTrainerEventFlagHi:: ds 1
+wTempTrainerClass:: ds 1
+wTempTrainerID:: ds 1
+wSeenTextPointer:: ds 2
+wWinTextPointer:: ds 2
 wGenericTempTrainerHeaderEnd::
-
 wLossTextPointer:: ds 2
 wScriptAfterPointer:: ds 2
 wRunningTrainerBattleScript:: ds 1
-MenuItemsListEnd::
 wTempTrainerHeaderEnd::
-
-wPlayerTurningDirection:: ds 1
+	ds 1
 wStashedTextPointer:: ds 2
+
+NEXTU
+; mart data
+	ds 1
+MartPointerBank:: ds 1
+MartPointer:: ds 2
+	ds 1
+wBargainShopFlags:: ds 1
+
+NEXTU
+; player movement data
+CurInput:: ds 1
+wd03f:: ds 1 ; TODO: replace with meaningful label
+wd040:: ds 1 ; TODO: replace with meaningful label
+wd041:: ds 1 ; TODO: replace with meaningful label
+MovementAnimation:: ds 1
+WalkingDirection:: ds 1
+FacingDirection:: ds 1
+WalkingX:: ds 1
+WalkingY:: ds 1
+WalkingTile:: ds 1
+	ds 6
+wPlayerTurningDirection:: ds 1
+
+NEXTU
+; backup menu data
+	ds 7
+wMenuCursorBufferBackup:: ds 1
+wMenuScrollPositionBackup:: ds 1
+
+NEXTU
+; phone script pointer
+	ds 10
+wPhoneScriptPointer:: ds 2
+
 ENDU
 
+; TODO: move to nonvolatile map data?
 wVermilionGymTrashCan1:: ds 1
 wVermilionGymTrashCan2:: ds 1
+
+ENDU
 
 	ds 20 ; unused
 
@@ -1885,7 +1902,7 @@ wPutativeTMHMMove:: ds 1
 	ds 1
 wBattleHasJustStarted:: ds 1
 
-wd265::
+wd265:: ; TODO: replace with meaningful labels
 wNamedObjectIndexBuffer::
 wCurTMHM::
 wTypeMatchup::
@@ -2765,12 +2782,15 @@ wSurfWaveBGEffectEnd::
 
 SECTION "WRAM 6", WRAMX
 
-wDecompressScratch::
+UNION
+wDecompressScratch:: ds $80 tiles
+wDecompressScratchEnd::
+NEXTU
 wScratchTileMap::
 	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap::
 	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
-w6_d800::
+ENDU
 
 
 SECTION "WRAM 7", WRAMX

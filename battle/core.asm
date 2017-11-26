@@ -8818,7 +8818,7 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	ld h, d
 	ld l, e
 	ld de, wd002
-	ld bc, 10
+	ld bc, NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
@@ -8832,20 +8832,20 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	ld de, 26
 	add hl, de
 	push hl
-	ld de, wd00d
+	ld de, wd002 + 11 ; win
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
 	push hl
-	ld de, wd00f
+	ld de, wd002 + 13 ; lose
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
-	ld de, wd011
+	ld de, wd002 + 15 ; draw
 	lb bc, 2, 4
 	call PrintNum
 	jr .next
