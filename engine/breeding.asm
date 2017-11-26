@@ -276,8 +276,6 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld [wd265], a
 	ld [CurSpecies], a
 	call GetPokemonName
-	xor a
-	ld [wd26b], a
 	call GetBaseData
 	ld a, [CurPartyMon]
 	ld hl, PartyMons
@@ -356,8 +354,6 @@ HatchEggs: ; 16f70 (5:6f70)
 .alwaysnickname
 	pop de
 .yesnickname
-	ld a, $1
-	ld [wd26b], a
 	xor a
 	ld [MonType], a
 	push de

@@ -2404,7 +2404,7 @@ BattleBGEffect_GetNextDMGPal: ; c8eb2 (32:4eb2)
 BattleBGEffects_ClearLYOverrides: ; c8eca (32:4eca)
 	xor a
 BattleBGEffects_SetLYOverrides: ; c8ecb (32:4ecb)
-	ld hl, LYOverrides ; wListPointer
+	ld hl, LYOverrides
 	ld e, $99
 .loop1
 	ld [hli], a

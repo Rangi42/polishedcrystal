@@ -695,9 +695,10 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 	jp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
-	ld a, $1
-	ld [wInitListType], a
-	farcall InitList
+	ld hl, OTPartyCount
+	ld de, OTPartyMonOT
+	ld a, ENEMY_OT_NAME
+	ld [wNamedObjectTypeBuffer], a
 	ld hl, OTPartyMon1Species
 	farcall LinkMonStatsScreen
 	jp LinkTradePartiesMenuMasterLoop
@@ -887,9 +888,10 @@ Function28926: ; 28926
 .show_stats
 	pop af
 	ld [wMenuCursorY], a
-	ld a, $4
-	ld [wInitListType], a
-	farcall InitList
+	ld hl, PartyCount
+	ld de, PartyMonOT
+	ld a, PARTY_OT_NAME
+	ld [wNamedObjectTypeBuffer], a
 	farcall LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
 	hlcoord 6, 1
@@ -1039,7 +1041,6 @@ Function28b22: ; 28b22
 	call GetSGBLayout
 	call WaitBGMap2
 	xor a
-	ld [wcfbb], a
 	ld [rSB], a
 	ld [hSerialSend], a
 	ld a, $1

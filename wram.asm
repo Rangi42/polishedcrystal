@@ -924,8 +924,7 @@ NEXTU
 wLinkData::
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: ds 1
-wLinkPartySpecies:: ds PARTY_LENGTH
-wLinkPartySpeciesEnd:: ds 1
+wLinkPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
 wLinkPlayerData::
 wLinkPlayerPartyMon1:: party_struct wLinkPlayerPartyMon1
@@ -1168,9 +1167,8 @@ TextDelayFrames::
 VBlankOccurred::
 	ds 1
 
-	ds 7 ; unused
+	ds 8 ; unused
 
-wcfbb:: ds 1
 GameTimerPause::
 ; bit 0
 	ds 1
@@ -1523,10 +1521,7 @@ wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: ds 1
 ENDU
 
-wListPointer:: dw
-	ds 2
-
-wd104:: dw ; unused?
+	ds 6 ; unused
 
 CurTMHM::
 CurItem::
@@ -1601,15 +1596,10 @@ wPlayerStepDirection:: ds 1
 
 wBGMapAnchor:: ds 2
 
-UNION
 UsedSprites::
 ; sprite ID, start tile
 	ds 32 * 2
 UsedSpritesEnd::
-NEXTU
-	ds 31
-wd173:: ds 1 ; related to command queue type 3
-ENDU
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: ds 1
@@ -1901,7 +1891,7 @@ wNiteEncounterRate::  ds 1
 wWaterEncounterRate:: ds 1
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: ds 1
-wInitListType:: ds 1
+	ds 1
 wBattleHasJustStarted:: ds 1
 
 wd265::
@@ -1927,22 +1917,14 @@ TrainerGroupBank::
 
 SECTION "Enemy Party", WRAMX
 
-UNION
-wd26b::
 wPokedexShowPointerAddr:: dw
 wPokedexShowPointerBank:: db
-NEXTU
+	ds 5
+
 OTPlayerName:: ds NAME_LENGTH
-ENDU
-
 OTPlayerID:: ds 2
-
-	ds 8 ; unused
-
-OTPartyCount::   ds 1
-OTPartySpecies:: ds PARTY_LENGTH
-
-	ds 1 ; unused
+OTPartyCount:: ds 1
+OTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
 UNION
 ; catch tutorial dude bag
@@ -2553,9 +2535,7 @@ SECTION "Party", WRAMX
 wPokemonData::
 
 PartyCount:: ds 1 ; number of Pokémon in party
-PartySpecies:: ds PARTY_LENGTH ; species of each Pokémon in party
-PartyEnd::
-	ds 1 ; legacy scripts don't check PartyCount
+PartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
 PartyMons::
 PartyMon1:: party_struct PartyMon1

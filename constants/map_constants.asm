@@ -975,19 +975,7 @@ const_value SET 1
 	const HIDDENGROTTO_17                 ; 17
 NUM_HIDDEN_GROTTOES EQU const_value +- 1
 
-CMDQUEUE_TYPE  EQU 0
-CMDQUEUE_ADDR  EQU 1
-CMDQUEUE_03    EQU 3
-CMDQUEUE_04    EQU 4
-CMDQUEUE_05    EQU 5
 CMDQUEUE_ENTRY_SIZE EQU 6
-
 CMDQUEUE_CAPACITY EQU 4
-
-	const_def
-	const CMDQUEUE_NONE       ; 0
-	const CMDQUEUE_TYPE_1     ; 1
-	const CMDQUEUE_STONETABLE ; 2
-	const CMDQUEUE_TYPE_3     ; 3
-	const CMDQUEUE_TYPE_4     ; 4
-NUM_CMDQUEUE_TYPES EQU const_value
+CMDQUEUE_ADDR EQU 1 ; offsets 0, 3, 4, and 5 are unused
+CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
