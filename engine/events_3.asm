@@ -303,10 +303,10 @@ CheckForHiddenItems: ; b8172
 ; Get the coordinate of the bottom right corner of the screen.
 	ld a, [XCoord]
 	add SCREEN_WIDTH / 4
-	ld [wBottomRightXCoord], a
+	ld [Buffer4], a
 	ld a, [YCoord]
 	add SCREEN_HEIGHT / 4
-	ld [wBottomRightYCoord], a
+	ld [Buffer3], a
 ; Get the pointer for the first signpost header in the map...
 	ld hl, wCurrentMapSignpostHeaderPointer
 	ld a, [hli]
@@ -325,7 +325,7 @@ CheckForHiddenItems: ; b8172
 	call .GetFarByte
 	ld e, a
 ; Is the Y coordinate of the signpost on the screen?  If not, go to the next signpost.
-	ld a, [wBottomRightYCoord]
+	ld a, [Buffer3]
 	sub e
 	jr c, .next
 	cp SCREEN_HEIGHT / 2
@@ -333,7 +333,7 @@ CheckForHiddenItems: ; b8172
 ; Is the X coordinate of the signpost on the screen?  If not, go to the next signpost.
 	call .GetFarByte
 	ld d, a
-	ld a, [wBottomRightXCoord]
+	ld a, [Buffer4]
 	sub d
 	jr c, .next
 	cp SCREEN_WIDTH / 2

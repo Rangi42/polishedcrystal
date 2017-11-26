@@ -549,7 +549,7 @@ SurfFunction: ; c909
 
 .DoSurf: ; c95f (3:495f)
 	call GetSurfType
-	ld [MovementType], a
+	ld [Buffer2], a
 	call GetPartyNick
 	ld hl, SurfFromMenuScript
 	call QueueScript
@@ -683,7 +683,7 @@ TrySurfOW:: ; c9e7
 	jr nz, .quit
 
 	call GetSurfType
-	ld [MovementType], a
+	ld [Buffer2], a
 	call GetPartyNick
 
 	ld a, BANK(AskSurfScript)

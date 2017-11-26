@@ -3217,8 +3217,8 @@ endr
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	call PrintNum
 	lb bc, 5, 0
-	ld hl, LuckyNumberDigit5Buffer
-	ld de, Buffer5
+	ld hl, LuckyNumberDigitsBuffer + 4
+	ld de, Buffer1 + 4
 .loop
 	ld a, [de]
 	cp [hl]

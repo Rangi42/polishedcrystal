@@ -853,6 +853,7 @@ wLinkDataEnd::
 
 NEXTU
 ; more link data
+; TODO: replace with meaningful labels
 	ds 271
 wc90f:: ds 229
 wc9f4:: ds 5
@@ -910,9 +911,9 @@ wTileAnimBuffer:: ds 16
 wOtherPlayerLinkMode:: ds 1
 wOtherPlayerLinkAction:: ds 4
 wPlayerLinkAction:: ds 1
-wcf57:: ds 4
+wcf57:: ds 4 ; TODO: replace with meaningful label
 wLinkTimeoutFrames:: ds 2
-wcf5d:: ds 2
+wcf5d:: ds 2 ; TODO: replace with meaningful label
 
 MonType:: ds 1
 
@@ -928,30 +929,45 @@ wJumptableIndex::
 wBattleTowerBattleEnded::
 	ds 1
 
-wcf64:: ; TODO: replace with meaningful labels
-wNrOfBeatenBattleTowerTrainers::
-wMomBankDigitCursorPosition::
-wIntroSceneFrameCounter::
-wHoldingUnownPuzzlePiece::
-wCardFlipCursorY::
-wCreditsBorderFrame::
+UNION
+; intro and title data
+wIntroSceneFrameCounter:: ds 1
+wTitleScreenTimerLo:: ds 1
+wTitleScreenTimerHi:: ds 1
+
+NEXTU
+; credits data
+wCreditsBorderFrame:: ds 1
+wCreditsBorderMon:: ds 1
+wCreditsLYOverride:: ds 1
+
+NEXTU
+; unown puzzle data
+wHoldingUnownPuzzlePiece:: ds 1
+wUnownPuzzleCursorPosition:: ds 1
+wUnownPuzzleHeldPiece:: ds 1
+
+NEXTU
+; card flip data
+wCardFlipCursorY:: ds 1
+wCardFlipCursorX:: ds 1
+wCardFlipWhichCard:: ds 1
+
+NEXTU
+; miscellaneous
 wDexEntryPrevJumptableIndex::
+wMomBankDigitCursorPosition::
+wNrOfBeatenBattleTowerTrainers::
 	ds 1
+wCurrPocket:: ds 1
 
-wcf65:: ; TODO: replace with meaningful labels
-wCurrPocket::
-wCreditsBorderMon::
-wTitleScreenTimerLo::
-wUnownPuzzleCursorPosition::
-wCardFlipCursorX::
-	ds 1
+NEXTU
+; unidentified
+wcf64:: ds 1 ; TODO: replace with meaningful labels
+wcf65:: ds 1 ; TODO: replace with meaningful labels
+wcf66:: ds 1 ; TODO: replace with meaningful labels
 
-wcf66:: ; TODO: replace with meaningful labels
-wCreditsLYOverride::
-wTitleScreenTimerHi::
-wUnownPuzzleHeldPiece::
-wCardFlipWhichCard::
-	ds 1
+ENDU
 
 Requested2bpp::
 Requested2bppSize:: ds 1
@@ -1139,16 +1155,16 @@ wRAM1Start:: ds 1
 DefaultSpawnpoint:: ds 1
 
 UNION
-; mail temp storage
-wTempMail:: mailmsg wTempMail
-
-NEXTU
 ; mon buffer
 wBufferMonNick:: ds PKMN_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
 wBufferMon:: party_struct wBufferMon
 	ds 8
-wMonOrItemNameBuffer::
+wMonOrItemNameBuffer:: ds NAME_LENGTH
+
+NEXTU
+; mail temp storage
+wTempMail:: mailmsg wTempMail
 
 NEXTU
 ; bug-catching contest
@@ -1178,46 +1194,56 @@ wMartItem12BCD:: ds 3
 wMartItemBCDEnd::
 
 NEXTU
-; miscellaneous
-wd002:: ; TODO: replace with meaningful labels
-wTempDayOfWeek::
-wApricorns::
-PhoneScriptBank::
-LuckyNumberDigitsBuffer::
-wCurrentRadioLine::
-wMovementBufferCount::
-wEarthquakeMovementDataBuffer::
-	ds 1
+; phone call data
+PhoneScriptBank:: ds 1
+PhoneCallerLo:: ds 1
+PhoneCallerHi:: ds 1
 
-wd003:: ; TODO: replace with meaningful labels
-PhoneCallerLo::
-wNextRadioLine::
-wMovementBufferPerson::
-wPlaceBallsDirection::
-	ds 1
-
-wd004:: ; TODO: replace with meaningful labels
-PhoneCallerHi::
-wRadioTextDelay::
-wTrainerHUDTiles::
-	ds 1
-
-StartFlypoint::
-wNumRadioLinesPrinted::
-	ds 1
-
-LuckyNumberDigit5Buffer::
-EndFlypoint::
-wOaksPkmnTalkSegmentCounter::
-	ds 1
-
-UNION
-MovementBuffer:: ds 55
 NEXTU
+; radio data
+wCurrentRadioLine:: ds 1
+wNextRadioLine:: ds 1
+wRadioTextDelay:: ds 1
+wNumRadioLinesPrinted:: ds 1
+wOaksPkmnTalkSegmentCounter:: ds 1
 	ds 5
 wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
-ENDU
+
+NEXTU
+; trainer HUD data
+	ds 1
+wPlaceBallsDirection:: ds 1
+wTrainerHUDTiles:: ds 1
+
+NEXTU
+; movement buffer data
+wMovementBufferCount:: ds 1
+wMovementBufferPerson:: ds 1
+	ds 3
+MovementBuffer:: ds 55
+
+NEXTU
+; other buffers
+wEarthquakeMovementDataBuffer::
+LuckyNumberDigitsBuffer:: ds 5
+
+NEXTU
+; unidentified
+wd002:: ds 1 ; TODO: replace with meaningful labels
+wd003:: ds 1 ; TODO: replace with meaningful labels
+wd004:: ds 1 ; TODO: replace with meaningful labels
+
+NEXTU
+; miscellaneous
+wTempDayOfWeek::
+wApricorns:: ds 1
+	ds 2
+
+StartFlypoint:: ds 1
+EndFlypoint:: ds 1
+
+	ds 55
 
 UNION
 ; engine buffers
@@ -1329,7 +1355,7 @@ wVermilionGymTrashCan2:: ds 1
 
 ENDU
 
-	ds 20 ; unused
+	ds 12 ; unused
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
@@ -1568,6 +1594,15 @@ EvolvableFlags:: flag_array PARTY_LENGTH
 wForceEvolution:: ds 1
 
 UNION
+; general-purpose buffers
+Buffer1:: ds 1
+Buffer2:: ds 1
+Buffer3:: ds 1
+Buffer4:: ds 1
+Buffer5:: ds 1
+Buffer6:: ds 1
+
+NEXTU
 ; HP bar animations
 wCurHPAnimMaxHP:: ds 2
 wCurHPAnimOldHP:: ds 2
@@ -1580,31 +1615,24 @@ wCurHPAnimLowHP:: ds 1
 wCurHPAnimHighHP:: ds 1
 
 NEXTU
+; evolution data
+wEvolutionOldSpecies:: ds 1
+wEvolutionNewSpecies:: ds 1
+wEvolutionPicOffset:: ds 1
+wEvolutionCanceled:: ds 1
+
+NEXTU
+; Magikarp length
+wMagikarpLengthMm::
+wMagikarpLengthMmHi:: ds 1
+wMagikarpLengthMmLo:: ds 1
+
+NEXTU
 ; miscellaneous
-Buffer1::
-MagikarpLength::
-wEvolutionOldSpecies::
-	ds 1
-Buffer2::
-MovementType::
-wEvolutionNewSpecies::
-	ds 1
-Buffer3::
-wEvolutionPicOffset::
-wChosenDecoration::
-wBottomRightYCoord::
-	ds 1
-Buffer4::
-wEvolutionCanceled::
-wOppositeDecoration::
-wBottomRightXCoord::
-	ds 1
-Buffer5:: ds 1
-Buffer6:: ds 1
-HPBarPalBuffer:: ds 1
+	ds 7
 CurEnemyItem:: ds 1
 	ds 1
-wd1f3:: ds 1
+wd1f3:: ds 1 ; TODO: replace with meaningful label
 ENDU
 
 LinkBattleRNs:: ds 10
@@ -2388,6 +2416,7 @@ wRoamMons_CurrentMapGroup:: ds 1
 wRoamMons_LastMapNumber:: ds 1
 wRoamMons_LastMapGroup:: ds 1
 
+wBestMagikarpLengthMm::
 wBestMagikarpLengthMmHi:: ds 1
 wBestMagikarpLengthMmLo:: ds 1
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
