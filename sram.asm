@@ -5,7 +5,7 @@ GLOBAL SRAM_Begin, SRAM_End
 
 SECTION "Scratch", SRAM
 
-sScratch:: ds $20
+sScratch:: ds $600
 
 
 SECTION "SRAM Bank 0", SRAM
