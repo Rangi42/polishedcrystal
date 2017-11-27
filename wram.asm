@@ -322,7 +322,8 @@ wInitMinuteBuffer:: ds 17
 NEXTU
 ; link engine
 	ds 10
-wc612:: ds 40 ; TODO: replace with meaningful label
+wLinkPlayerFixedPartyMon1ID:: ds 3
+	ds 37
 
 NEXTU
 ; battle
@@ -858,13 +859,12 @@ NEXTU
 wc90f:: ds 229
 wc9f4:: ds 5
 wc9f9:: ds 145
-wca8a:: ds 54
+wHandshakeFrameDelay:: ds 54
 wcabf:: ds 79
 wcb0e:: ds 5
 wcb13:: ds 113
 wcb84:: ds 102
-wLinkOTPartyMonTypes:: ds 2 * PARTY_LENGTH
-	ds 84
+	ds 96
 wcc4a:: ds 84
 wcc9e:: ds 130
 

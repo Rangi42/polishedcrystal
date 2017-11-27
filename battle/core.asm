@@ -28,8 +28,8 @@ DoBattle: ; 3c000
 	and a
 	jr z, .not_linked
 
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	jr z, .player_2
 
 .not_linked
@@ -103,8 +103,8 @@ DoBattle: ; 3c000
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked_2
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	jr nz, .not_linked_2
 	xor a
 	ld [wEnemySwitchMonIndex], a
@@ -277,8 +277,8 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jp HandleEncore
 
 CheckFaint:
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .enemy_first
 	call .check_player
 	call nc, .check_enemy
@@ -315,8 +315,8 @@ CheckFaint:
 	ret
 
 HandleBerserkGene: ; 3c27c
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .reverse
 
 	call .player
@@ -674,8 +674,8 @@ ParsePlayerAction: ; 3c434
 ; 3c4df
 
 HandleEncore: ; 3c4df
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call .do_player
 	jr .do_enemy
@@ -2036,8 +2036,8 @@ HandleEnemyMonFaint: ; 3cd55
 ; 3cdca
 
 DoubleSwitch: ; 3cdca
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call ClearSprites
 	hlcoord 0, 0
@@ -5275,8 +5275,8 @@ PlayerSwitch: ; 3e3ad
 	jp WildFled_EnemyFled_LinkBattleCanceled
 
 .dont_run
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call BattleMonEntrance
 	call EnemyMonEntrance

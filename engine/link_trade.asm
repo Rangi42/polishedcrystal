@@ -136,7 +136,7 @@ LinkTextbox: ; 16d6ca
 Function16d6ce: ; 16d6ce
 	call LoadStandardMenuDataHeader
 	call Function16d6e1
-	farcall WaitLinkTransfer
+	farcall Serial_SyncAndExchangeNybble
 	call Call_ExitMenu
 	jp WaitBGMap2
 ; 16d6e1
