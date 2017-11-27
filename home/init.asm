@@ -129,8 +129,8 @@ Init:: ; 17d
 	; BG on
 	ld [rLCDC], a
 
-	ld a, -1
-	ld [hLinkPlayerNumber], a
+	ld a, CONNECTION_NOT_ESTABLISHED
+	ld [hSerialConnectionStatus], a
 
 	farcall InitCGBPals
 

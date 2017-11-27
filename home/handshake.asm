@@ -10,7 +10,7 @@ AskSerial:: ; 2063
 	ret nz
 
 ; once every 6 frames
-	ld hl, wca8a
+	ld hl, wHandshakeFrameDelay
 	inc [hl]
 	ld a, [hl]
 	cp 6
@@ -27,11 +27,11 @@ AskSerial:: ; 2063
 	ld [rSB], a
 
 ; switch to internal clock
-	ld a, %00000001
+	ld a, $1
 	ld [rSC], a
 
 ; start transfer
-	ld a, %10000001
+	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ld [rSC], a
 
 	ret

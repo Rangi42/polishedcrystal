@@ -8,7 +8,7 @@ Serial:: ; 6ef
 
 	ld a, [wPrinterConnectionOpen]
 
-	ld a, [hLinkPlayerNumber]
+	ld a, [hSerialConnectionStatus]
 	inc a ; is it equal to -1?
 	jr z, .init_player_number
 
@@ -18,27 +18,27 @@ Serial:: ; 6ef
 	ld a, [hSerialSend]
 	ld [rSB], a
 
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	jr z, .player2
 
 	xor a
 	ld [rSC], a
-	ld a, 1 << rSC_ON
+	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	ld [rSC], a
 	jr .player2
 
 .init_player_number
 	ld a, [rSB]
-	cp $1
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player1
-	cp $2
+	cp USING_INTERNAL_CLOCK
 	jr nz, .player2
 
 .player1
 	ld [hSerialReceive], a
-	ld [hLinkPlayerNumber], a
-	cp $2
+	ld [hSerialConnectionStatus], a
+	cp USING_INTERNAL_CLOCK
 	jr z, ._player2
 
 	xor a
@@ -53,7 +53,7 @@ Serial:: ; 6ef
 
 	xor a
 	ld [rSC], a
-	ld a, 1 << rSC_ON
+	ld a, START_TRANSFER_EXTERNAL_CLOCK
 	ld [rSC], a
 	jr .player2
 
@@ -63,8 +63,8 @@ Serial:: ; 6ef
 
 .player2
 	ld a, $1
-	ld [hFFCA], a
-	ld a, -2
+	ld [hSerialReceivedNewData], a
+	ld a, SERIAL_NO_DATA_BYTE
 	ld [hSerialSend], a
 
 	pop hl
@@ -78,30 +78,33 @@ Timer:: ; 3e93
 	reti
 ; 3ed7
 
-Function75f:: ; 75f
+; hl = send data
+; de = receive data
+; bc = length of data
+Serial_ExchangeBytes:: ; 75f
 	ld a, $1
-	ld [hFFCC], a
+	ld [hSerialIgnoringInitialData], a
 .loop
 	ld a, [hl]
 	ld [hSerialSend], a
-	call Function78a
+	call Serial_ExchangeByte
 	push bc
 	ld b, a
 	inc hl
-	ld a, $30
-.wait
+	ld a, 48
+.wait48
 	dec a
-	jr nz, .wait
-	ld a, [hFFCC]
+	jr nz, .wait48
+	ld a, [hSerialIgnoringInitialData]
 	and a
 	ld a, b
 	pop bc
 	jr z, .load
 	dec hl
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr nz, .loop
 	xor a
-	ld [hFFCC], a
+	ld [hSerialIgnoringInitialData], a
 	jr .loop
 
 .load
@@ -114,27 +117,26 @@ Function75f:: ; 75f
 	ret
 ; 78a
 
-Function78a:: ; 78a
-.loop
+Serial_ExchangeByte:: ; 78a
 	xor a
-	ld [hFFCA], a
-	ld a, [hLinkPlayerNumber]
-	cp $2
-	jr nz, .not_player_2
+	ld [hSerialReceivedNewData], a
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	jr nz, .loop
 	ld a, $1
 	ld [rSC], a
-	ld a, $81
+	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ld [rSC], a
-.not_player_2
-.loop2
-	ld a, [hFFCA]
+
+.loop
+	ld a, [hSerialReceivedNewData]
 	and a
-	jr nz, .reset_ffca
-	ld a, [hLinkPlayerNumber]
+	jr nz, .ok
+	ld a, [hSerialConnectionStatus]
 	cp $1
-	jr nz, .not_player_1_or_wLinkTimeoutFrames_zero
+	jr nz, .doNotIncrementTimeoutCounter
 	call CheckwLinkTimeoutFramesNonzero
-	jr z, .not_player_1_or_wLinkTimeoutFrames_zero
+	jr z, .doNotIncrementTimeoutCounter
 	call .delay_15_cycles
 	push hl
 	ld hl, wLinkTimeoutFrames + 1
@@ -146,49 +148,50 @@ Function78a:: ; 78a
 .no_rollover_up
 	pop hl
 	call CheckwLinkTimeoutFramesNonzero
-	jr nz, .loop2
+	jr nz, .loop
 	jp SerialDisconnected
 
-.not_player_1_or_wLinkTimeoutFrames_zero
+.doNotIncrementTimeoutCounter
 	ld a, [rIE]
-	and $f
-	cp $8
-	jr nz, .loop2
+	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
+	cp (1 << SERIAL)
+	jr nz, .loop
 	ld a, [wcf5d]
 	dec a
 	ld [wcf5d], a
-	jr nz, .loop2
+	jr nz, .loop
 	ld a, [wcf5d + 1]
 	dec a
 	ld [wcf5d + 1], a
-	jr nz, .loop2
-	ld a, [hLinkPlayerNumber]
-	cp $1
-	jr z, .reset_ffca
+	jr nz, .loop
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
+	jr z, .ok
 
 	ld a, 255
 .delay_255_cycles
 	dec a
 	jr nz, .delay_255_cycles
 
-.reset_ffca
+.ok
 	xor a
-	ld [hFFCA], a
+	ld [hSerialReceivedNewData], a
 	ld a, [rIE]
-	and $f
-	sub $8
-	jr nz, .rIE_not_equal_8
+	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
+	sub (1 << SERIAL)
+	jr nz, .skipReloadingTimeoutCounter2
 
+	;xor a
 	ld [wcf5d], a
 	ld a, $50
 	ld [wcf5d + 1], a
 
-.rIE_not_equal_8
+.skipReloadingTimeoutCounter2
 	ld a, [hSerialReceive]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	ret nz
 	call CheckwLinkTimeoutFramesNonzero
-	jr z, .wLinkTimeoutFrames_zero
+	jr z, .done
 	push hl
 	ld hl, wLinkTimeoutFrames + 1
 	ld a, [hl]
@@ -203,22 +206,22 @@ Function78a:: ; 78a
 	call CheckwLinkTimeoutFramesNonzero
 	jr z, SerialDisconnected
 
-.wLinkTimeoutFrames_zero
+.done
 	ld a, [rIE]
-	and $f
-	cp $8
-	ld a, $fe
+	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
+	cp (1 << SERIAL)
+	ld a, SERIAL_NO_DATA_BYTE
 	ret z
 	ld a, [hl]
 	ld [hSerialSend], a
 	call DelayFrame
-	jp .loop
+	jp Serial_ExchangeByte
 
 .delay_15_cycles
 	ld a, 15
-.delay_cycles
+.delay_15_cycles_loop
 	dec a
-	jr nz, .delay_cycles
+	jr nz, .delay_15_cycles_loop
 	ret
 ; 82b
 
@@ -232,49 +235,49 @@ CheckwLinkTimeoutFramesNonzero:: ; 82b
 ; 833
 
 SerialDisconnected:: ; 833
+; a is always 0 when this is called
 	dec a
 	ld [wLinkTimeoutFrames], a
 	ld [wLinkTimeoutFrames + 1], a
 	ret
 ; 83b
 
-Function83b:: ; 83b
+; This is used to exchange the button press and selected menu item on the link menu.
+; The data is sent thrice and read twice to increase reliability.
+Serial_ExchangeLinkMenuSelection:: ; 83b
 	ld hl, wPlayerLinkAction
 	ld de, wOtherPlayerLinkMode
 	ld c, $2
 	ld a, $1
-	ld [hFFCC], a
-.asm_847
+	ld [hSerialIgnoringInitialData], a
+.loop
 	call DelayFrame
 	ld a, [hl]
 	ld [hSerialSend], a
-	call Function78a
+	call Serial_ExchangeByte
 	ld b, a
 	inc hl
-	ld a, [hFFCC]
+	ld a, [hSerialIgnoringInitialData]
 	and a
 	ld a, 0 ; not xor a; preserve carry flag
-	ld [hFFCC], a
-	jr nz, .asm_847
+	ld [hSerialIgnoringInitialData], a
+	jr nz, .loop
 	ld a, b
 	ld [de], a
 	inc de
 	dec c
-	jr nz, .asm_847
+	jr nz, .loop
 	ret
 ; 862
 
-Function862:: ; 862
+Serial_PlaceWaitingTextAndSyncAndExchangeNybble:: ; 862
 	call LoadTileMapToTempTileMap
 	farcall PlaceWaitingText
-	call WaitLinkTransfer
+	call Serial_SyncAndExchangeNybble
 	jp Call_LoadTempTileMapToTileMap
 ; 871
 
-
-; One "giant" leap for machinekind
-
-WaitLinkTransfer:: ; 87d
+Serial_SyncAndExchangeNybble:: ; 87d
 	ld a, $ff
 	ld [wOtherPlayerLinkAction], a
 .loop
@@ -333,12 +336,12 @@ LinkTransfer:: ; 8c1
 	ld a, [wPlayerLinkAction]
 	add b
 	ld [hSerialSend], a
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	jr nz, .player_1
 	ld a, $1
 	ld [rSC], a
-	ld a, $81
+	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ld [rSC], a
 
 .player_1
@@ -365,12 +368,12 @@ LinkDataReceived:: ; 908
 ; Let the other system know that the data has been received.
 	xor a
 	ld [hSerialSend], a
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	ret nz
 	ld a, $1
 	ld [rSC], a
-	ld a, $81
+	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ld [rSC], a
 	ret
 ; 919

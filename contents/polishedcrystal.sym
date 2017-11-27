@@ -60,15 +60,14 @@
 00:065A CheckRTCStatus
 00:0665 Serial
 00:06C0 Timer
-00:06C1 Function75f
-00:06EC Function78a
-00:06EC Function78a.loop
-00:0787 Function78a.delay_15_cycles
+00:06C1 Serial_ExchangeBytes
+00:06EC Serial_ExchangeByte
+00:0787 Serial_ExchangeByte.delay_15_cycles
 00:078D CheckwLinkTimeoutFramesNonzero
 00:0795 SerialDisconnected
-00:079D Function83b
-00:07C4 Function862
-00:07D1 WaitLinkTransfer
+00:079D Serial_ExchangeLinkMenuSelection
+00:07C4 Serial_PlaceWaitingTextAndSyncAndExchangeNybble
+00:07D1 Serial_SyncAndExchangeNybble
 00:0815 LinkTransfer
 00:083D LinkTransfer.Receive
 00:0852 LinkDataReceived
@@ -1702,7 +1701,7 @@
 00:C611 wPlayerMoveStruct
 00:C611 wPlayerMoveStructAnimation
 00:C612 wBT_OTTempTrainerClass
-00:C612 wc612
+00:C612 wLinkPlayerFixedPartyMon1ID
 00:C612 wPlayerMoveStructEffect
 00:C613 OddEggEVs
 00:C613 OddEggHPEV
@@ -2588,7 +2587,7 @@
 00:C9B7 wLinkPlayerDataEnd
 00:C9F4 wc9f4
 00:C9F9 wc9f9
-00:CA8A wca8a
+00:CA8A wHandshakeFrameDelay
 00:CAC0 wcabf
 00:CB0F wcb0e
 00:CB14 wcb13
@@ -2602,7 +2601,6 @@
 00:CB32 wBillsPC_BackupLoadedBox
 00:CB33 wBillsPC_MonHasMail
 00:CB85 wcb84
-00:CBEB wLinkOTPartyMonTypes
 00:CC4B wcc4a
 00:CC9F wcc9e
 00:CD14 OverworldMapEnd
