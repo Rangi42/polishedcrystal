@@ -3155,16 +3155,14 @@ UnevolvedEviolite:
 	dec a
 	push hl
 	push bc
-	ld b, 0
 	ld c, a
+	ld b, 0
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [hli]
+	add hl, bc
+	call GetFarHalfword
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
 	and a
 	pop bc
 	pop hl
