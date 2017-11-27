@@ -291,7 +291,7 @@ GetAnimatedFrontpic: ; 51103
 	ld c, a
 	push hl
 	push bc
-	call LoadOrientedFrontpicTiles
+	call LoadFrontpicTiles
 	pop bc
 	pop hl
 	ld de, wDecompressScratch
@@ -318,7 +318,7 @@ GetAnimatedFrontpic: ; 51103
 .no_overflow
 	jp Get2bpp
 
-LoadOrientedFrontpicTiles: ; 5114f
+LoadFrontpicTiles: ; 5114f
 	ld hl, wDecompressScratch
 ; bc = c * $10
 	swap c
@@ -332,12 +332,19 @@ LoadOrientedFrontpicTiles: ; 5114f
 	push bc
 	call LoadFrontpic
 	pop bc
+; don't access echo ram
+	ld a, c
+	and a
+	jr z, .handle_loop
+	inc b
+	jr .handle_loop
 ; load the remaining bytes in batches of $100
 .loop
 	push bc
 	ld c, $0
 	call LoadFrontpic
 	pop bc
+.handle_loop
 	dec b
 	jr nz, .loop
 	ret
