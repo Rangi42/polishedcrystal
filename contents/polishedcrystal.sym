@@ -1034,14 +1034,14 @@
 00:AC8E sLuckyNumberDay
 00:AC8F sLuckyIDNumber
 00:B200 sBackupOptions
-00:B208 s0_b208
+00:B208 sBackupCheckValue99
 00:B209 sBackupGameData
 00:B209 sBackupPlayerData
 00:B98A sBackupMapData
 00:B9B9 sBackupPokemonData
 00:BCD9 sBackupGameDataEnd
 00:BE63 sBackupChecksum
-00:BE65 s0_bf0f
+00:BE65 sBackupCheckValue127
 00:C000 StackBottom
 00:C000 wRAM0Start
 00:C0FF Stack

@@ -186,7 +186,7 @@ ClearWRAM:: ; 25a
 	push af
 	ld [rSVBK], a
 	xor a
-	ld hl, $d000
+	ld hl, wRAM1Start
 	ld bc, $1000
 	call ByteFill
 	pop af
@@ -199,8 +199,8 @@ ClearWRAM:: ; 25a
 ClearsScratch:: ; 270
 	xor a
 	call GetSRAMBank
-	ld hl, $a000
-	ld bc, $0020
+	ld hl, sScratch
+	ld bc, $20
 	xor a
 	call ByteFill
 	jp CloseSRAM

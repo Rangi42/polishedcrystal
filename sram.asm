@@ -5,18 +5,18 @@ GLOBAL SRAM_Begin, SRAM_End
 
 SECTION "Scratch", SRAM
 
-sScratch::
+sScratch:: ds $20
 
 
 SECTION "SRAM Bank 0", SRAM
 
 sPartyMail::
-sPartyMon1Mail::       mailmsg sPartyMon1Mail
-sPartyMon2Mail::       mailmsg sPartyMon2Mail
-sPartyMon3Mail::       mailmsg sPartyMon3Mail
-sPartyMon4Mail::       mailmsg sPartyMon4Mail
-sPartyMon5Mail::       mailmsg sPartyMon5Mail
-sPartyMon6Mail::       mailmsg sPartyMon6Mail
+sPartyMon1Mail:: mailmsg sPartyMon1Mail
+sPartyMon2Mail:: mailmsg sPartyMon2Mail
+sPartyMon3Mail:: mailmsg sPartyMon3Mail
+sPartyMon4Mail:: mailmsg sPartyMon4Mail
+sPartyMon5Mail:: mailmsg sPartyMon5Mail
+sPartyMon6Mail:: mailmsg sPartyMon6Mail
 
 sPartyMailBackup::
 sPartyMon1MailBackup:: mailmsg sPartyMon1MailBackup
@@ -28,29 +28,29 @@ sPartyMon6MailBackup:: mailmsg sPartyMon6MailBackup
 
 sMailboxCount:: ds 1
 sMailbox::
-sMailbox1::            mailmsg sMailbox1
-sMailbox2::            mailmsg sMailbox2
-sMailbox3::            mailmsg sMailbox3
-sMailbox4::            mailmsg sMailbox4
-sMailbox5::            mailmsg sMailbox5
-sMailbox6::            mailmsg sMailbox6
-sMailbox7::            mailmsg sMailbox7
-sMailbox8::            mailmsg sMailbox8
-sMailbox9::            mailmsg sMailbox9
-sMailbox10::           mailmsg sMailbox10
+sMailbox1::  mailmsg sMailbox1
+sMailbox2::  mailmsg sMailbox2
+sMailbox3::  mailmsg sMailbox3
+sMailbox4::  mailmsg sMailbox4
+sMailbox5::  mailmsg sMailbox5
+sMailbox6::  mailmsg sMailbox6
+sMailbox7::  mailmsg sMailbox7
+sMailbox8::  mailmsg sMailbox8
+sMailbox9::  mailmsg sMailbox9
+sMailbox10:: mailmsg sMailbox10
 
 sMailboxCountBackup:: ds 1
 sMailboxBackup::
-sMailbox1Backup::      mailmsg sMailbox1Backup
-sMailbox2Backup::      mailmsg sMailbox2Backup
-sMailbox3Backup::      mailmsg sMailbox3Backup
-sMailbox4Backup::      mailmsg sMailbox4Backup
-sMailbox5Backup::      mailmsg sMailbox5Backup
-sMailbox6Backup::      mailmsg sMailbox6Backup
-sMailbox7Backup::      mailmsg sMailbox7Backup
-sMailbox8Backup::      mailmsg sMailbox8Backup
-sMailbox9Backup::      mailmsg sMailbox9Backup
-sMailbox10Backup::     mailmsg sMailbox10Backup
+sMailbox1Backup::  mailmsg sMailbox1Backup
+sMailbox2Backup::  mailmsg sMailbox2Backup
+sMailbox3Backup::  mailmsg sMailbox3Backup
+sMailbox4Backup::  mailmsg sMailbox4Backup
+sMailbox5Backup::  mailmsg sMailbox5Backup
+sMailbox6Backup::  mailmsg sMailbox6Backup
+sMailbox7Backup::  mailmsg sMailbox7Backup
+sMailbox8Backup::  mailmsg sMailbox8Backup
+sMailbox9Backup::  mailmsg sMailbox9Backup
+sMailbox10Backup:: mailmsg sMailbox10Backup
 
 	ds 164
 
@@ -63,7 +63,7 @@ SECTION "Backup Save", SRAM
 
 sBackupOptions:: ds OptionsEnd - Options1
 
-s0_b208:: ds 1 ; loaded with 99, used to check save corruption
+sBackupCheckValue1:: ds 1 ; loaded with 99, used to check save corruption
 
 sBackupGameData::
 sBackupPlayerData::  ds wPlayerDataEnd - wPlayerData
@@ -71,17 +71,18 @@ sBackupMapData::     ds wMapDataEnd - wMapData
 sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
 sBackupGameDataEnd::
 
-	ds $18a
+	ds 394
 
 sBackupChecksum:: ds 2
-s0_bf0f:: ds 1 ; loaded with 0x7f, used to check save corruption
+
+sBackupCheckValue2:: ds 1 ; loaded with 127, used to check save corruption
 
 
 SECTION "Save", SRAM
 
 sOptions:: ds OptionsEnd - Options1
 
-s1_a008:: ds 1 ; loaded with 99, used to check save corruption
+sCheckValue1:: ds 1 ; loaded with 99, used to check save corruption
 
 sGameData::
 sPlayerData::  ds wPlayerDataEnd - wPlayerData
@@ -89,10 +90,11 @@ sMapData::     ds wMapDataEnd - wMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 
-	ds $18a
+	ds 394
 
-sChecksum::   ds 2
-s1_ad0f::     ds 1 ; loaded with 0x7f, used to check save corruption
+sChecksum:: ds 2
+
+sCheckValue2:: ds 1 ; loaded with 127, used to check save corruption
 
 
 SECTION "Active Box", SRAM
@@ -191,8 +193,7 @@ sNrOfBeatenBattleTowerTrainers:: ds 1
 sBTChoiceOfLevelGroup:: ds 1
 
 ; The 7 trainers of the BattleTower are saved here, so nobody appears more than once
-sBTTrainers:: ; sbe48
-	ds BATTLETOWER_NROFTRAINERS
+sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
 
 sBattleTowerNewSaveFile:: ds 1
 

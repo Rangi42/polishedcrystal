@@ -922,7 +922,6 @@ BattleAnimCmd_UpdateActorPic: ; cc622 (33:4622)
 	jp Request2bpp
 
 BattleAnimCmd_RaiseSub: ; cc640 (33:4640)
-
 	ld a, [rSVBK]
 	push af
 	ld a, 6
@@ -931,9 +930,8 @@ BattleAnimCmd_RaiseSub: ; cc640 (33:4640)
 	call GetSRAMBank
 
 GetSubstitutePic: ; cc64c
-
-	ld hl, $a000
-	ld bc, (7 * 7) tiles
+	ld hl, sScratch
+	ld bc, 7 * 7 tiles
 .loop
 	xor a
 	ld [hli], a
@@ -948,7 +946,7 @@ GetSubstitutePic: ; cc64c
 
 	ld hl, SubstituteFrontpic
 	ld a, BANK(SubstituteFrontpic)
-	ld de, $d000
+	ld de, TempTileMap
 	call FarDecompress
 	call .CopyPic
 	ld hl, VTiles2 tile $00
@@ -960,7 +958,7 @@ GetSubstitutePic: ; cc64c
 .player
 	ld hl, SubstituteBackpic
 	ld a, BANK(SubstituteBackpic)
-	ld de, $d000
+	ld de, TempTileMap
 	call FarDecompress
 	call .CopyPic
 	ld hl, VTiles2 tile $31
@@ -992,9 +990,9 @@ GetSubstitutePic: ; cc64c
 	ret
 
 .GetTile:
-	; hl = $d000 + $40 * (4-b) + $10 * (4-c)
-	; de = $a000 + $70 * (1 + 4-c) + $10 * (2 + 4-b) if enemy
-	; de = $a000 + $60 * (1 + 4-c) + $10 * (1 + 4-b) if player
+	; hl = TempTileMap + (4 - b) * 4 tiles + (4 - c) tiles
+	; de = sScratch + (1 + 4 - c) * 7 tiles + (2 + 4 - b) tiles if enemy
+	; de = sScratch + (1 + 4 - c) * 6 tiles + (1 + 4-b) tiles if player
 	ld a, 4
 	sub b
 	ld b, a
@@ -1007,11 +1005,11 @@ GetSubstitutePic: ; cc64c
 	ld a, [hBattleTurn]
 	and a
 	ld a, c
-	ld bc, $60
+	ld bc, 6 tiles
 	ld hl, sScratch
 	jr z, .okay1
-	ld bc, $70
-	ld hl, sScratch + $10
+	ld bc, 7 tiles
+	ld hl, sScratch + 1 tiles
 .okay1
 	call AddNTimes
 	pop bc
@@ -1022,15 +1020,15 @@ GetSubstitutePic: ; cc64c
 	inc b
 .okay2
 	ld a, b
-	ld bc, $10
+	ld bc, 1 tiles
 	call AddNTimes
 	ld d, h
 	ld e, l
 	pop bc
 	push bc
 	ld a, b
-	ld bc, $40
-	ld hl, $d000
+	ld hl, TempTileMap
+	ld bc, 4 tiles
 	call AddNTimes
 	pop bc
 	swap c
@@ -1059,7 +1057,7 @@ BattleAnimCmd_MinimizeOpp: ; cc6cf (33:46cf)
 
 GetMinimizePic: ; cc6e7 (33:46e7)
 	ld hl, sScratch
-	ld bc, $31 tiles
+	ld bc, 7 * 7 tiles
 .loop
 	xor a
 	ld [hli], a
@@ -1080,7 +1078,7 @@ GetMinimizePic: ; cc6e7 (33:46e7)
 	ret
 
 .player
-	ld de, sScratch + $160
+	ld de, sScratch + $16 tiles
 	call CopyMinimizePic
 	ld hl, VTiles2 tile $31
 	ld de, sScratch
@@ -1089,7 +1087,7 @@ GetMinimizePic: ; cc6e7 (33:46e7)
 
 CopyMinimizePic: ; cc719 (33:4719)
 	ld hl, MinimizePic
-	ld bc, $10
+	ld bc, 1 tiles
 	ld a, BANK(MinimizePic)
 	jp FarCopyBytes
 ; cc725 (33:4725)

@@ -12,3 +12,10 @@ SERIAL_NO_DATA_BYTE EQU $fe
 ; signals the end of one part of a patch list (there are two parts)
 ; for player/enemy party data
 SERIAL_PATCH_LIST_PART_TERMINATOR EQU $ff
+
+const_value = 2
+	const LINK_TRADECENTER
+	const LINK_COLOSSEUM
+
+SERIAL_TRADECENTER EQU $70
+SERIAL_BATTLE      EQU $80
