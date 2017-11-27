@@ -67,21 +67,21 @@ Gen2ToGen2LinkComms: ; 28177
 	ld [rIF], a
 	ld a, $8
 	ld [rIE], a
-	ld hl, wd1f3
-	ld de, EnemyMonSpecies
-	ld bc, $11
+	ld hl, wLinkBuffer
+	ld de, wLinkBufferEnd
+	ld bc, 17
 	call Serial_ExchangeBytes
-	ld a, $fe
+	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
 	ld hl, wLinkData
 	ld de, OTPlayerName
 	ld bc, $1c2
 	call Serial_ExchangeBytes
-	ld a, $fe
+	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
-	ld hl, wMisc
+	ld hl, wLinkMisc
 	ld de, wPlayerTrademonSpecies
-	ld bc, $c8
+	ld bc, wPlayerTrademonSpecies - wLinkMisc
 	call Serial_ExchangeBytes
 	ld a, [wLinkMode]
 	cp LINK_TRADECENTER
@@ -112,11 +112,11 @@ Gen2ToGen2LinkComms: ; 28177
 	inc de
 	and a
 	jr z, .loop1
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr z, .loop1
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr z, .loop1
-	cp $ff
+	cp SERIAL_PATCH_LIST_PART_TERMINATOR
 	jr z, .next1
 	push hl
 	push bc
@@ -124,7 +124,7 @@ Gen2ToGen2LinkComms: ; 28177
 	dec a
 	ld c, a
 	add hl, bc
-	ld a, $fe
+	ld a, SERIAL_NO_DATA_BYTE
 	ld [hl], a
 	pop bc
 	pop hl
@@ -144,7 +144,7 @@ Gen2ToGen2LinkComms: ; 28177
 	jr nz, .loop2
 .loop3
 	ld a, [hli]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr z, .loop3
 	cp $20
 	jr z, .loop3
@@ -158,7 +158,7 @@ Gen2ToGen2LinkComms: ; 28177
 	ld a, [hl]
 	cp $21
 	jr nz, .okay1
-	ld [hl], $fe
+	ld [hl], SERIAL_NO_DATA_BYTE
 .okay1
 	inc hl
 	dec bc
@@ -169,14 +169,14 @@ Gen2ToGen2LinkComms: ; 28177
 .loop5
 	ld a, [de]
 	inc de
-	cp $ff
+	cp SERIAL_PATCH_LIST_PART_TERMINATOR
 	jr z, .start_copying_mail
 	ld hl, wcc4a
 	dec a
 	ld b, $0
 	ld c, a
 	add hl, bc
-	ld [hl], $fe
+	ld [hl], SERIAL_NO_DATA_BYTE
 	jr .loop5
 
 .start_copying_mail
@@ -388,23 +388,23 @@ ClearLinkData: ; 28426
 ; 28434
 
 FixDataForLinkTransfer: ; 28434
-	ld hl, wd1f3
-	ld a, $fd
-	ld b, LinkBattleRNs - wd1f3
+	ld hl, wLinkBuffer
+	ld a, SERIAL_PREAMBLE_BYTE
+	ld b, LinkBattleRNs - wLinkBuffer
 .loop1
 	ld [hli], a
 	dec b
 	jr nz, .loop1
-	ld b, TempEnemyMonSpecies - LinkBattleRNs
+	ld b, LinkBattleEarlyEnd - LinkBattleRNs
 .loop2
 	call Random
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr nc, .loop2
 	ld [hli], a
 	dec b
 	jr nz, .loop2
-	ld hl, wMisc
-	ld a, $fd
+	ld hl, wLinkMisc
+	ld a, SERIAL_PREAMBLE_BYTE
 rept 3
 	ld [hli], a
 endr
@@ -420,7 +420,7 @@ endr
 .loop4
 	inc c
 	ld a, c
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr z, .next1
 	ld a, b
 	dec a
@@ -434,30 +434,30 @@ endr
 .next2
 	inc hl
 	ld a, [hl]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr nz, .loop4
 	ld a, c
 	ld [de], a
 	inc de
-	ld [hl], $ff
+	ld [hl], SERIAL_PATCH_LIST_PART_TERMINATOR
 	jr .loop4
 
 .next1
-	ld a, $ff
+	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
 	inc de
 	lb bc, 1, 0
 	jr .loop4
 
 .done
-	ld a, $ff
+	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
 	ret
 ; 28499
 
 Link_PrepPartyData_Gen2: ; 28595
 	ld de, wLinkData
-	ld a, $fd
+	ld a, SERIAL_PREAMBLE_BYTE
 	ld b, 6
 .loop1
 	ld [de], a
@@ -548,7 +548,7 @@ Link_PrepPartyData_Gen2: ; 28595
 	ld bc, PARTY_LENGTH * (sPartyMon1MailAuthor - sPartyMon1Mail)
 .loop5
 	ld a, [hl]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr nz, .skip2
 	ld [hl], sPartyMon1MailAuthor - sPartyMon1Mail
 
@@ -564,9 +564,9 @@ Link_PrepPartyData_Gen2: ; 28595
 .loop6
 	inc c
 	ld a, [hl]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr nz, .skip3
-	ld [hl], $ff
+	ld [hl], SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld a, c
 	ld [de], a
 	inc de
@@ -575,7 +575,7 @@ Link_PrepPartyData_Gen2: ; 28595
 	inc hl
 	dec b
 	jr nz, .loop6
-	ld a, $ff
+	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
 	ret
 ; 28682
@@ -593,7 +593,7 @@ Function28682: ; 28682
 Link_CopyOTData: ; 2879e
 .loop
 	ld a, [hli]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr z, .loop
 	ld [de], a
 	inc de
@@ -608,15 +608,15 @@ Link_CopyRandomNumbers: ; 287ab
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	ret z
-	ld hl, EnemyMonSpecies
+	ld hl, wLinkBufferEnd
 	call Link_FindFirstNonControlCharacter_AllowZero
 	ld de, LinkBattleRNs
 	ld c, 10
 .loop
 	ld a, [hli]
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr z, .loop
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr z, .loop
 	ld [de], a
 	inc de
@@ -630,9 +630,9 @@ Link_FindFirstNonControlCharacter_SkipZero: ; 287ca
 	ld a, [hli]
 	and a
 	jr z, .loop
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr z, .loop
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr z, .loop
 	dec hl
 	ret
@@ -641,9 +641,9 @@ Link_FindFirstNonControlCharacter_SkipZero: ; 287ca
 Link_FindFirstNonControlCharacter_AllowZero: ; 287d8
 .loop
 	ld a, [hli]
-	cp $fd
+	cp SERIAL_PREAMBLE_BYTE
 	jr z, .loop
-	cp $fe
+	cp SERIAL_NO_DATA_BYTE
 	jr z, .loop
 	dec hl
 	ret
@@ -1525,7 +1525,7 @@ Special_WaitForLinkedFriend: ; 29d11
 .no_link_action
 	ld a, $2
 	ld [wLinkTimeoutFrames + 1], a
-	ld a, $ff
+	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [wLinkTimeoutFrames], a
 .loop
 	ld a, [hSerialConnectionStatus]

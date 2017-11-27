@@ -321,7 +321,7 @@ wInitMinuteBuffer:: ds 17
 
 NEXTU
 ; link engine
-	ds 10
+wLinkMisc:: ds 10
 wLinkPlayerFixedPartyMon1ID:: ds 3
 	ds 37
 
@@ -1324,9 +1324,7 @@ wBargainShopFlags:: ds 1
 NEXTU
 ; player movement data
 CurInput:: ds 1
-wd03f:: ds 1 ; TODO: replace with meaningful label
-wd040:: ds 1 ; TODO: replace with meaningful label
-wd041:: ds 1 ; TODO: replace with meaningful label
+	ds 3
 MovementAnimation:: ds 1
 WalkingDirection:: ds 1
 FacingDirection:: ds 1
@@ -1624,17 +1622,22 @@ wMagikarpLengthMmHi:: ds 1
 wMagikarpLengthMmLo:: ds 1
 
 NEXTU
-; miscellaneous
+; link data
+	ds 9
+wLinkBuffer:: ds 4
+LinkBattleRNs:: ds 10
+LinkBattleEarlyEnd:: ds 2
+wLinkBufferEnd::
+
+NEXTU
+; battle data
 	ds 7
 CurEnemyItem:: ds 1
-	ds 1
-wd1f3:: ds 1 ; TODO: replace with meaningful label
-ENDU
-
-LinkBattleRNs:: ds 10
-
+	ds 15
 TempEnemyMonSpecies:: ds 1
 TempBattleMonSpecies:: ds 1
+
+ENDU
 
 EnemyMon:: battle_struct EnemyMon
 EnemyMonBaseStats:: ds 5

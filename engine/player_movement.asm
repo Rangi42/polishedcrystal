@@ -3,8 +3,6 @@ DoPlayerMovement:: ; 80000
 	call .GetDPad
 	ld a, movement_step_sleep_1
 	ld [MovementAnimation], a
-	xor a
-	ld [wd041], a
 	call .TranslateIntoMovement
 	ld c, a
 	ld a, [MovementAnimation]
@@ -305,18 +303,15 @@ DoPlayerMovement:: ; 80000
 
 .TrySurf: ; 801c0
 
-	call .CheckSurfPerms
-	ld [wd040], a
-	jr c, .surf_bump
-
 	call .CheckNPC
-	ld [wd03f], a
 	and a
 	jr z, .surf_bump
 	cp 2
 	jr z, .surf_bump
 
-	ld a, [wd040]
+	call .CheckSurfPerms
+	jr c, .surf_bump
+
 	and a
 	jr nz, .ExitWater
 
@@ -392,8 +387,6 @@ DoPlayerMovement:: ; 80000
 	cp [hl]
 	jr nz, .not_warp
 
-	ld a, 1
-	ld [wd041], a
 	ld a, [WalkingDirection]
 	cp STANDING
 	jr z, .not_warp

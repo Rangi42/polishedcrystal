@@ -868,7 +868,7 @@ Script_trainerflagaction:
 ;     action (SingleByteParam)
 	xor a
 	ld [ScriptVar], a
-	ld hl, wd041
+	ld hl, wTempTrainerEventFlagLo
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
