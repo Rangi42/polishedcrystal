@@ -130,7 +130,7 @@ GetFrontpic: ; 51077
 	call _GetFrontpic
 	pop af
 	ld [rSVBK], a
-	ret
+	jp CloseSRAM
 
 FrontpicPredef: ; 5108b
 	ld a, [CurPartySpecies]
@@ -142,12 +142,18 @@ FrontpicPredef: ; 5108b
 	xor a
 	ld [hBGMapMode], a
 	call _GetFrontpic
+	ld a, BANK(VTiles3)
+	ld [rVBK], a
 	call GetAnimatedFrontpic
+	xor a
+	ld [rVBK], a
 	pop af
 	ld [rSVBK], a
-	ret
+	jp CloseSRAM
 
 _GetFrontpic: ; 510a5
+	ld a, BANK(sScratch)
+	call GetSRAMBank
 	push de
 	call GetBaseData
 	ld a, [BasePicSize]
@@ -155,18 +161,25 @@ _GetFrontpic: ; 510a5
 	ld b, a
 	push bc
 	call GetFrontpicPointer
-	ld a, $6
+	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 	ld a, b
-	ld de, wDecompressScratch + $80 tiles
+	ld de, wDecompressScratch
 	call FarDecompress
+	; Save decompressed size
+	swap e
+	swap d
+	ld a, d
+	and $f0
+	or e
+	ld [sScratch], a
 	pop bc
-	ld hl, wDecompressScratch
-	ld de, wDecompressScratch + $80 tiles
+	ld hl, sScratch + 1 tiles
+	ld de, wDecompressScratch
 	call PadFrontpic
 	pop hl
 	push hl
-	ld de, wDecompressScratch
+	ld de, sScratch + 1 tiles
 	ld c, 7 * 7
 	ld a, [hROMBank]
 	ld b, a
@@ -247,7 +260,7 @@ GetAnimatedFrontpic: ; 51103
 	ld a, $1
 	ld [rVBK], a
 	push hl
-	ld de, wDecompressScratch
+	ld de, sScratch + 1 tiles
 	ld c, 7 * 7
 	ld a, [hROMBank]
 	ld b, a
@@ -256,106 +269,54 @@ GetAnimatedFrontpic: ; 51103
 	ld de, 7 * 7 tiles
 	add hl, de
 	push hl
-	ld a, $1
+	ld a, BANK(BasePicSize)
 	ld hl, BasePicSize
 	call GetFarWRAMByte
 	pop hl
 	and $f
-	ld de, wDecompressScratchEnd + 5 * 5 tiles
+	ld de, wDecompressScratch + 5 * 5 tiles
 	ld c, 5 * 5
-if !DEF(FAITHFUL)
-	push af
-	ld a, [CurSpecies]
-	cp DIGLETT
-	jr nz, .not_alolan_diglett
-	ld c, 5 * 5 + 10
-.not_alolan_diglett
-	pop af
-endc
 	cp 5
 	jr z, .got_dims
-	ld de, wDecompressScratchEnd + 6 * 6 tiles
+	ld de, wDecompressScratch + 6 * 6 tiles
 	ld c, 6 * 6
 	cp 6
 	jr z, .got_dims
-	ld de, wDecompressScratchEnd + 7 * 7 tiles
-
-	push hl
-	ld a, [CurSpecies]
-	ld c, a
-	ld hl, .LargeSpriteSizes
-.loop
-	ld a, [hli]
-	cp c
-	jr z, .found
-	cp -1
-	jr z, .found
-	inc hl
-	jr .loop
-.found
-	ld a, [hl]
-	ld c, a
-	pop hl
-
+	ld de, wDecompressScratch + 7 * 7 tiles
 .got_dims
+	; Get animation size (total - base sprite size)
+	ld a, [sScratch]
+	sub c
+	ret z ; Return if there's no animation
+	ld c, a
 	push hl
 	push bc
 	call LoadOrientedFrontpicTiles
 	pop bc
 	pop hl
-
+	ld de, wDecompressScratch
+	ld a, [hROMBank]
+	ld b, a
+; Improved routine by pfero
+; https://gitgud.io/pfero/axyllagame/commit/486f4ed432ca49e5d1305b6402cc5540fe9d3aaa
+	; If we can load it in a single pass, just do it
 	ld a, c
-	cp $80 - 7 * 7 + 1
+	sub (128 - 7 * 7)
 	jr c, .no_overflow
-
-	push bc
-	ld de, wDecompressScratch
-	ld a, [hROMBank]
-	ld b, a
-	ld c, $80 - 7 * 7 - 1
+	; Otherwise, we load the first part...
+	inc a
+	ld [sScratch], a
+	ld c, (127 - 7 * 7)
 	call Get2bpp
-	ld de, wDecompressScratchEnd + $7f tiles ; $DFF0 -- overflows into echo RAM $E000 after 1 tile
-	ld hl, wDecompressScratch
-	ld bc, ($80 - 7 * 7 - 1) * $10
-	call LoadFrontpic
-	pop bc
-
-	ld a, BANK(VTiles4)
-	ld [rVBK], a
-	ld a, c
-	sub $80 - 7 * 7 - 1 - 1
-	ld c, a
+	; Then move up a bit and load the rest
+	ld de, wDecompressScratch + (127 - 7 * 7) tiles
 	ld hl, VTiles4
-
-.no_overflow
-	ld de, wDecompressScratch
 	ld a, [hROMBank]
 	ld b, a
-	call Get2bpp
-	xor a
-	ld [rVBK], a
-	ret
-
-.LargeSpriteSizes:
-; species, max tile - size + 1
-	db PIKACHU,    $63 - 7 * 7 + 1 ; Flying Pikachu
-	db GLACEON,    $64 - 7 * 7 + 1
-if !DEF(FAITHFUL)
-	db DUGTRIO,    $6e - 7 * 7 + 1
-endc
-	db MAMOSWINE,  $6f - 7 * 7 + 1
-	db PORYGON_Z,  $6f - 7 * 7 + 1
-	db SYLVEON,    $71 - 7 * 7 + 1
-	db MISMAGIUS,  $71 - 7 * 7 + 1
-	db ELECTIVIRE, $76 - 7 * 7 + 1
-	db HONCHKROW,  $7a - 7 * 7 + 1
-	db WEAVILE,    $80 - 7 * 7 + 1
-	db LEAFEON,    $81 - 7 * 7 + 1
-	db GLISCOR,    $83 - 7 * 7 + 1
-	db RHYPERIOR,  $85 - 7 * 7 + 1
-	db TOGEKISS,   $88 - 7 * 7 + 1
-	db MAGMORTAR,  $8b - 7 * 7 + 1
-	db -1,         7 * 7
+	ld a, [sScratch]
+	ld c, a
+.no_overflow
+	jp Get2bpp
 
 LoadOrientedFrontpicTiles: ; 5114f
 	ld hl, wDecompressScratch

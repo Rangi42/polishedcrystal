@@ -18,9 +18,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
+* pfero for the improved GetAnimatedFrontpic routine.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
-* jpmac26 for editing the Pokémon Center signs and fixing a typo.
 
 
 ## Music
@@ -60,6 +60,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
+* jpmac26 for editing the Pokémon Center signs and fixing a typo.
 
 
 ## Content

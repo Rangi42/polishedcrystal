@@ -2584,7 +2584,6 @@ SECTION "WRAM 6", WRAMX
 
 UNION
 wDecompressScratch:: ds $80 tiles
-wDecompressScratchEnd::
 NEXTU
 wScratchTileMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
