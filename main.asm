@@ -2595,18 +2595,18 @@ endr
 	ret
 
 CheckSave:: ; 4cffe
-	ld a, BANK(s1_a008)
+	ld a, BANK(sCheckValue1)
 	call GetSRAMBank
-	ld a, [s1_a008]
+	ld a, [sCheckValue1]
 	ld b, a
-	ld a, [s1_ad0f]
+	ld a, [sCheckValue2]
 	ld c, a
 	call CloseSRAM
 	ld a, b
-	cp 99
+	cp SAVE_CHECK_VALUE_1
 	jr nz, .ok
 	ld a, c
-	cp " "
+	cp SAVE_CHECK_VALUE_2
 	jr nz, .ok
 	ld c, $1
 	ret
