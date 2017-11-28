@@ -2326,9 +2326,6 @@
 	const EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 ; Unused placeholder events
-	const EVENT_872
-	const EVENT_873
-	const EVENT_874
 	const EVENT_875
 	const EVENT_876
 	const EVENT_877
