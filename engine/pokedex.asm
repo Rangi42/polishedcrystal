@@ -1192,7 +1192,7 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	db $3b, " Search ", $3c, $ff
 
 .TypeLeftRightArrows: ; 40935
-	db $3d, "        ", $f0, $ff
+	db $3d, "        ", "▷", $ff
 
 .Types: ; 40940
 	db   "Type1"
@@ -1758,7 +1758,7 @@ Pokedex_PrevSearchMonType: ; 40f65
 	jr .done
 
 .wrap_around
-	ld [hl], $12
+	ld [hl], UNKNOWN_T
 
 .done
 	scf
@@ -1771,18 +1771,18 @@ Pokedex_NextSearchMonType: ; 40f84
 
 	ld hl, wDexSearchMonType1
 	ld a, [hl]
-	cp $12
+	cp UNKNOWN_T
 	jr nc, .type1_wrap_around
 	inc [hl]
 	jr .done
 .type1_wrap_around
-	ld [hl], $1
+	ld [hl], 1
 	jr .done
 
 .type2
 	ld hl, wDexSearchMonType2
 	ld a, [hl]
-	cp $11
+	cp UNKNOWN_T
 	jr nc, .type2_wrap_around
 	inc [hl]
 	jr .done

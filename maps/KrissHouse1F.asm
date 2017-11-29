@@ -203,8 +203,11 @@ if DEF(DEBUG)
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS
 	callasm TeachHMSlaveMoves
+	; pokedex
+	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
+;	; prof.elm events
 ;	addcellnum PHONE_ELM
 ;	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
 ;	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
@@ -298,6 +301,21 @@ TeachHMSlaveMoves:
 	ld [hli], a
 ;	ld a, 15
 	ld [hl], a
+	ret
+
+FillPokedex:
+	ld a, 1
+	ld [wFirstUnownSeen], a
+	ld [wFirstMagikarpSeen], a
+	ld hl, PokedexSeen
+	call .Fill
+	ld hl, PokedexCaught
+.Fill:
+	ld a, %11111111
+	ld bc, 31 ; 001-248
+	call ByteFill
+	ld a, %00011111
+	ld [hl], a ; 249-253
 	ret
 
 else

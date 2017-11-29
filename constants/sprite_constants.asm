@@ -224,7 +224,7 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_AMPHAROS ; $d7
 	const SPRITE_MARILL ; $d8
 	const SPRITE_MURKROW ; $d9
-	const SPRITE_SLOWKING ; da$da
+	const SPRITE_SLOWKING ; $da
 	const SPRITE_UNOWN ; $db
 	const SPRITE_HERACROSS ; $dc
 	const SPRITE_WEAVILE ; $dd
