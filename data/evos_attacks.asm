@@ -837,11 +837,7 @@ ParasectEvosAttacks:
 	db 37, GROWTH
 	db 44, GIGA_DRAIN
 	db 51, LEECH_LIFE ; Aromatherapy → TM move
-if DEF(FAITHFUL)
 	db 59, HEALINGLIGHT ; Rage Powder → new move
-else
-	db 59, HEX ; Rage Powder → new move
-endc
 	db 66, X_SCISSOR
 	db 0 ; no more level-up moves
 

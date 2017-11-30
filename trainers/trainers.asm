@@ -277,11 +277,7 @@ endc
 
 	db 72, PARASECT, LEFTOVERS, ABILITY_1 | QUIRKY, MALE
 		db SPORE
-if DEF(FAITHFUL)
 		db HEALINGLIGHT
-else
-		db HEX
-endc
 		db SEED_BOMB
 		db X_SCISSOR
 
