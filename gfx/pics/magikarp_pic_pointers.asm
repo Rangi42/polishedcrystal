@@ -21,3 +21,9 @@
 	dba MagikarpZebraBackpic
 	dba MagikarpStripeFrontpic
 	dba MagikarpStripeBackpic
+	dba MagikarpBubblesFrontpic
+	dba MagikarpBubblesBackpic
+	dba MagikarpForeheadFrontpic
+	dba MagikarpForeheadBackpic
+	dba MagikarpMaskFrontpic
+	dba MagikarpMaskBackpic

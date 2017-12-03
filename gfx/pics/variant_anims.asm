@@ -57,7 +57,10 @@ MagikarpOrcaAnimation:
 MagikarpDapplesAnimation:
 MagikarpTigerAnimation:
 MagikarpZebraAnimation:
-MagikarpStripeAnimation:  INCLUDE "gfx/pics/magikarp/anim0.asm"
+MagikarpStripeAnimation:
+MagikarpBubblesAnimation:
+MagikarpForeheadAnimation:
+MagikarpMaskAnimation:     INCLUDE "gfx/pics/magikarp/anim0.asm"
 
 MewtwoAnimations:
 MewtwoPlainAnimation:   INCLUDE "gfx/pics/mewtwo_plain/anim0.asm"

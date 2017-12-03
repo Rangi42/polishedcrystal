@@ -6687,10 +6687,10 @@ endr
 .yes_ekans
 	farcall RegionCheck
 	ld a, e
-	ld d, 1
+	ld d, ARBOK_JOHTO_FORM
 	and a
 	jr z, .johto_form
-	ld d, 2
+	ld d, ARBOK_KANTO_FORM
 .johto_form
 	ld a, [EnemyMonForm]
 	and $ff - FORM_MASK

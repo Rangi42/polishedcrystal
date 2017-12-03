@@ -58,6 +58,9 @@ MagikarpFramesPointers:
 	dw MagikarpTigerFrames
 	dw MagikarpZebraFrames
 	dw MagikarpStripeFrames
+	dw MagikarpBubblesFrames
+	dw MagikarpForeheadFrames
+	dw MagikarpMaskFrames
 
 MewtwoFramesPointers:
 	dw MewtwoPlainFrames

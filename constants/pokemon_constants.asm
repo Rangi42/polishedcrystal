@@ -320,8 +320,88 @@ CAUGHTGENDER_MASK EQU %10000000
 CAUGHTTIME_MASK   EQU %01100000
 CAUGHTBALL_MASK   EQU %00011111
 
+; gender values
 MALE   EQU %00000000
 FEMALE EQU %10000000
+
+; form values
+
+; unown
+const_value set 1
+	const UNOWN_A_FORM
+	const UNOWN_B_FORM
+	const UNOWN_C_FORM
+	const UNOWN_D_FORM
+	const UNOWN_E_FORM
+	const UNOWN_F_FORM
+	const UNOWN_G_FORM
+	const UNOWN_H_FORM
+	const UNOWN_I_FORM
+	const UNOWN_J_FORM
+	const UNOWN_K_FORM
+	const UNOWN_L_FORM
+	const UNOWN_M_FORM
+	const UNOWN_N_FORM
+	const UNOWN_O_FORM
+	const UNOWN_P_FORM
+	const UNOWN_Q_FORM
+	const UNOWN_R_FORM
+	const UNOWN_S_FORM
+	const UNOWN_T_FORM
+	const UNOWN_U_FORM
+	const UNOWN_V_FORM
+	const UNOWN_W_FORM
+	const UNOWN_X_FORM
+	const UNOWN_Y_FORM
+	const UNOWN_Z_FORM
+	const UNOWN_EXCLAMATION_FORM
+	const UNOWN_QUESTION_FORM
+NUM_UNOWN EQU const_value +- 1
+
+; pikachu
+const_value set 1
+	const PIKACHU_PLAIN_FORM
+	const PIKACHU_FLY_FORM
+	const PIKACHU_SURF_FORM
+	const PIKACHU_RED_FORM
+	const PIKACHU_YELLOW_FORM
+	const PIKACHU_SPARK_FORM
+
+; pichu
+const_value set 1
+	const PICHU_PLAIN_FORM
+	const PICHU_SPIKY_EARED_FORM
+
+; arbok
+const_value set 1
+	const ARBOK_JOHTO_FORM
+	const ARBOK_KANTO_FORM
+	const ARBOK_KOGA_FORM
+	const ARBOK_AGATHA_FORM
+	const ARBOK_ARIANA_FORM
+
+; magikarp
+const_value set 1
+	const MAGIKARP_PLAIN_FORM
+	const MAGIKARP_SKELLY_FORM
+	const MAGIKARP_CALICO1_FORM
+	const MAGIKARP_CALICO2_FORM
+	const MAGIKARP_CALICO3_FORM
+	const MAGIKARP_TWO_TONE_FORM
+	const MAGIKARP_ORCA_FORM
+	const MAGIKARP_DAPPLES_FORM
+	const MAGIKARP_TIGER_FORM
+	const MAGIKARP_ZEBRA_FORM
+	const MAGIKARP_STRIPE_FORM
+	const MAGIKARP_BUBBLES_FORM
+	const MAGIKARP_FOREHEAD_FORM
+	const MAGIKARP_MASK_FORM
+NUM_MAGIKARP EQU const_value +- 1
+
+; mewtwo
+const_value set 1
+	const MEWTWO_PLAIN_FOPRM
+	const MEWTWO_ARMORED_FOPRM
 
 ; indexes into WritePartyMenuTilemap.Jumptable
 	const_def

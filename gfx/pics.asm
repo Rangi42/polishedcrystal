@@ -777,8 +777,14 @@ MagikarpTigerFrontpic:    INCBIN "gfx/pics/magikarp_tiger/front.2bpp.lz"
 MagikarpTigerBackpic:     INCBIN "gfx/pics/magikarp_tiger/back.2bpp.lz"
 MagikarpZebraFrontpic:    INCBIN "gfx/pics/magikarp_zebra/front.2bpp.lz"
 MagikarpZebraBackpic:     INCBIN "gfx/pics/magikarp_zebra/back.2bpp.lz"
-MagikarpStripeBackpic:    INCBIN "gfx/pics/magikarp_stripe/back.2bpp.lz"
 MagikarpStripeFrontpic:   INCBIN "gfx/pics/magikarp_stripe/front.2bpp.lz"
+MagikarpStripeBackpic:    INCBIN "gfx/pics/magikarp_stripe/back.2bpp.lz"
+MagikarpBubblesFrontpic:  INCBIN "gfx/pics/magikarp_bubbles/front.2bpp.lz"
+MagikarpBubblesBackpic:   INCBIN "gfx/pics/magikarp_bubbles/back.2bpp.lz"
+MagikarpForeheadFrontpic: INCBIN "gfx/pics/magikarp_forehead/front.2bpp.lz"
+MagikarpForeheadBackpic:  INCBIN "gfx/pics/magikarp_forehead/back.2bpp.lz"
+MagikarpMaskFrontpic:     INCBIN "gfx/pics/magikarp_mask/front.2bpp.lz"
+MagikarpMaskBackpic:      INCBIN "gfx/pics/magikarp_mask/back.2bpp.lz"
 
 
 SECTION "Mewtwo Pics", ROMX
