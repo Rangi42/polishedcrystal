@@ -65,6 +65,11 @@ dab: MACRO ; dwb address, bank
 	endr
 	ENDM
 
+dbba: MACRO
+	db \1
+	dba \2
+	ENDM
+
 
 percent EQUS "* $ff / 100"
 

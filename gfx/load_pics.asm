@@ -188,62 +188,12 @@ _GetFrontpic: ; 510a5
 	ret
 
 GetFrontpicPointer: ; 510d7
-GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, MagikarpPicPointers, UnownPicPointers, MewtwoPicPointers
-
 	ld a, [CurPartySpecies]
-	cp PIKACHU
-	jr z, .pikachu
-	cp PICHU
-	jr z, .pichu
-	cp ARBOK
-	jr z, .arbok
-	cp MAGIKARP
-	jr z, .magikarp
-	cp UNOWN
-	jr z, .unown
-	cp MEWTWO
-	jr z, .mewtwo
+	call GetRelevantPicPointers
 	ld a, [CurPartySpecies]
-	ld d, BANK(PicPointers)
-	ld hl, PicPointers
-	jr .ok
-
-.pikachu
+	jr nc, .notvariant
 	ld a, [MonVariant]
-	ld d, BANK(PikachuPicPointers)
-	ld hl, PikachuPicPointers
-	jr .ok
-
-.pichu
-	ld a, [MonVariant]
-	ld d, BANK(PichuPicPointers)
-	ld hl, PichuPicPointers
-	jr .ok
-
-.arbok
-	ld a, [MonVariant]
-	ld d, BANK(ArbokPicPointers)
-	ld hl, ArbokPicPointers
-	jr .ok
-
-.magikarp
-	ld a, [MonVariant]
-	ld d, BANK(MagikarpPicPointers)
-	ld hl, MagikarpPicPointers
-	jr .ok
-
-.unown
-	ld a, [MonVariant]
-	ld d, BANK(UnownPicPointers)
-	ld hl, UnownPicPointers
-	jr .ok
-
-.mewtwo
-	ld a, [MonVariant]
-	ld d, BANK(MewtwoPicPointers)
-	ld hl, MewtwoPicPointers
-
-.ok
+.notvariant
 	dec a
 	ld bc, 6
 	call AddNTimes
@@ -363,51 +313,14 @@ GetBackpic: ; 5116c
 	ld a, $6
 	ld [rSVBK], a
 	push de
-
-GLOBAL PicPointers, PikachuPicPointers, PichuPicPointers, ArbokPicPointers, MagikarpPicPointers, UnownPicPointers, MewtwoPicPointers
-	ld hl, PicPointers
 	ld a, b
-	ld d, BANK(PicPointers)
-	cp PIKACHU
-	jr nz, .not_pikachu
-	ld hl, PikachuPicPointers
+	push bc
+	call GetRelevantPicPointers
+	pop bc
+	ld a, b
+	jr nc, .notvariant
 	ld a, c
-	ld d, BANK(PikachuPicPointers)
-	jr .ok
-.not_pikachu
-	cp PICHU
-	jr nz, .not_pichu
-	ld hl, PichuPicPointers
-	ld a, c
-	ld d, BANK(PichuPicPointers)
-	jr .ok
-.not_pichu
-	cp ARBOK
-	jr nz, .not_arbok
-	ld hl, ArbokPicPointers
-	ld a, c
-	ld d, BANK(ArbokPicPointers)
-	jr .ok
-.not_arbok
-	cp MAGIKARP
-	jr nz, .not_magikarp
-	ld hl, MagikarpPicPointers
-	ld a, c
-	ld d, BANK(MagikarpPicPointers)
-	jr .ok
-.not_magikarp
-	cp UNOWN
-	jr nz, .not_unown
-	ld hl, UnownPicPointers
-	ld a, c
-	ld d, BANK(UnownPicPointers)
-.not_unown
-	cp MEWTWO
-	jr nz, .ok
-	ld hl, MewtwoPicPointers
-	ld a, c
-	ld d, BANK(MewtwoPicPointers)
-.ok
+.notvariant
 	dec a
 	ld bc, 6
 	call AddNTimes
@@ -612,3 +525,20 @@ LoadFrontpic: ; 512f2
 	jr nz, .right_loop
 	pop bc
 	ret
+
+GetRelevantPicPointers:
+; given species in a, return *PicPointers in hl and BANK(*PicPointers) in d
+; returns c for variants, nc for normal species
+	ld hl, .VariantPicPointerTable
+	ld de, 4
+	call IsInArray
+	inc hl
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+.VariantPicPointerTable:
+INCLUDE "gfx/pics/variant_pic_pointers.asm"
