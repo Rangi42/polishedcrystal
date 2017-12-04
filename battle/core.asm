@@ -9472,6 +9472,8 @@ BattleStartMessage: ; 3fc8b
 	jr z, .PlaceBattleStartText
 	cp BATTLETYPE_LEGENDARY
 	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_RED_GYARADOS
+	jr z, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 
 .PlaceBattleStartText:

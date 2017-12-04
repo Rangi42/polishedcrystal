@@ -473,7 +473,7 @@ GetEnemyFrontpicPalettePointer:
 
 GetPlayerOrMonPalettePointer:
 	and a
-	jp nz, GetMonNormalOrShinyPalettePointer
+	jr nz, GetMonNormalOrShinyPalettePointer
 	ld a, [wPlayerSpriteSetupFlags]
 	bit 2, a ; transformed to male
 	jr nz, .male
@@ -496,7 +496,7 @@ GetPlayerOrMonPalettePointer:
 
 GetFrontpicPalettePointer:
 	and a
-	jp nz, GetMonNormalOrShinyPalettePointer
+	jr nz, GetMonNormalOrShinyPalettePointer
 	ld a, [TrainerClass]
 
 GetTrainerPalettePointer:
