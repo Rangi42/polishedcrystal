@@ -5,6 +5,7 @@ Hoothoot: Healing Light
 Qwilfish: Aqua Jet
 Qwilfish: Astonish
 Heracross: Rock Blast
+Munchlax: Pursuit
 
 Misdreavus: Screech
 Whirlpool: Sandshrew/Sandslash, Geodude/Graveler/Golem, Pineco/Forretress, Donphan, Hitmontop (Whirlpool users)

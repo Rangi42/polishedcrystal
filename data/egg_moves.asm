@@ -89,7 +89,7 @@ NidoranFEggMoves:
 	db DISABLE
 	db FOCUS_ENERGY
 	db PURSUIT
-	db SUPERSONIC
+	db SUPERSONIC ; requires Lickitung
 	db TAKE_DOWN
 	db $ff
 
@@ -97,7 +97,7 @@ NidoranMEggMoves:
 	db AMNESIA
 	db CONFUSION
 	db DISABLE
-	db SUPERSONIC
+	db SUPERSONIC ; requires Lickitung
 	db TAKE_DOWN
 	db CALM_MIND
 	db COUNTER
@@ -615,7 +615,6 @@ MunchlaxEggMoves:
 	db COUNTER
 	db CURSE
 	db DOUBLE_EDGE
-	db PURSUIT
 	db LICK
 	db GUNK_SHOT
 	db $ff
@@ -803,6 +802,7 @@ CorsolaEggMoves:
 	db $ff
 
 RemoraidEggMoves:
+	db SPLASH
 	db HAZE
 	db OCTAZOOKA
 	db ROCK_BLAST
