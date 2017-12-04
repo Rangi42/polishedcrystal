@@ -22,8 +22,8 @@ FramesPointers:
 	dw MarillFrames
 	dw AzumarillFrames
 	dw EkansFrames
-	dw ArbokFrames
-	dw PikachuFrames
+	dw -1 ; see ArbokFramesPointers
+	dw -1 ; see PikachuFramesPointers
 	dw RaichuFrames
 	dw SandshrewFrames
 	dw SandslashFrames
@@ -127,8 +127,8 @@ FramesPointers:
 	dw MagmarFrames
 	dw PinsirFrames
 	dw TaurosFrames
-	dw MagikarpFrames
-	dw GyaradosFrames
+	dw -1 ; see MagikarpFramesPointers
+	dw -1 ; see GyaradosFramesPointers
 	dw LaprasFrames
 	dw DittoFrames
 	dw EeveeFrames
@@ -148,7 +148,7 @@ FramesPointers:
 	dw DratiniFrames
 	dw DragonairFrames
 	dw DragoniteFrames
-	dw MewtwoFrames
+	dw -1 ; see MewtwoFramesPointers
 	dw MewFrames
 	dw ChikoritaFrames
 	dw BayleefFrames
@@ -170,7 +170,7 @@ FramesPointers:
 	dw CrobatFrames
 	dw ChinchouFrames
 	dw LanturnFrames
-	dw PichuFrames
+	dw -1 ; see PichuFramesPointers
 	dw MunchlaxFrames
 	dw MagnezoneFrames
 	dw TangrowthFrames
@@ -198,7 +198,7 @@ FramesPointers:
 	dw SlowkingFrames
 	dw MisdreavusFrames
 	dw MismagiusFrames
-	dw UnownFrames
+	dw -1 ; see UnownFramesPointers
 	dw WobbuffetFrames
 	dw GirafarigFrames
 	dw PinecoFrames
@@ -252,3 +252,5 @@ FramesPointers:
 	dw CelebiFrames
 	dw SylveonFrames
 	dw PorygonZFrames
+	dw EggFrames
+	dw -1 ; unused

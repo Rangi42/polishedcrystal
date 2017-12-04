@@ -13,9 +13,19 @@ dbbw: MACRO
 	dw \3
 	ENDM
 
+dbbbw: MACRO
+	db \1, \2, \3
+	dw \4
+	ENDM
+
 dbww: MACRO
 	db \1
 	dw \2, \3
+	ENDM
+
+dbbww: MACRO
+	db \1, \2
+	dw \3, \4
 	ENDM
 
 dbbwww: MACRO
@@ -68,6 +78,11 @@ dab: MACRO ; dwb address, bank
 dbba: MACRO
 	db \1
 	dba \2
+	ENDM
+
+dbbba: MACRO
+	db \1, \2
+	dba \3
 	ENDM
 
 

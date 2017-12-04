@@ -46,11 +46,11 @@
 	dba EkansFrontpic
 	dba EkansBackpic
 
-	; Arbok pics have their own table. See ArbokPicPointers
+	; see ArbokPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
-	; Pikachu pics have their own table. See PikachuPicPointers
+	; see PikachuPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
@@ -261,11 +261,11 @@
 	dba TaurosFrontpic
 	dba TaurosBackpic
 
-	; Magikarp pics have their own table. See MagikarpPicPointers
+	; see MagikarpPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
-	; Gyarados pics have their own table. See GyaradosPicPointers
+	; see GyaradosPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
@@ -308,7 +308,7 @@
 	dba DragoniteFrontpic
 	dba DragoniteBackpic
 
-	; Mewtwo pics have their own table. See MewtwoPicPointers
+	; see MewtwoPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
@@ -355,7 +355,7 @@
 	dba LanturnFrontpic
 	dba LanturnBackpic
 
-	; Pichu pics have their own table. See PichuPicPointers
+	; see PichuPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
@@ -414,7 +414,7 @@
 	dba MismagiusFrontpic
 	dba MismagiusBackpic
 
-	; Unown pics have their own table. See UnownPicPointers
+	; see UnownPicPointers
 	dbw -1, -1
 	dbw -1, -1
 
@@ -525,4 +525,3 @@
 	dba PorygonZFrontpic
 	dba PorygonZBackpic
 	dba EggPic
-	dbw -1, -1 ; unused

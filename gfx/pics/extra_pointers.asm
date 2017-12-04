@@ -22,8 +22,8 @@ AnimationExtraPointers:
 	dw MarillAnimationExtra
 	dw AzumarillAnimationExtra
 	dw EkansAnimationExtra
-	dw ArbokAnimationExtra
-	dw PikachuAnimationExtra
+	dw -1 ; see ArbokAnimationExtraPointers
+	dw -1 ; see PikachuAnimationExtraPointers
 	dw RaichuAnimationExtra
 	dw SandshrewAnimationExtra
 	dw SandslashAnimationExtra
@@ -127,8 +127,8 @@ AnimationExtraPointers:
 	dw MagmarAnimationExtra
 	dw PinsirAnimationExtra
 	dw TaurosAnimationExtra
-	dw MagikarpAnimationExtra
-	dw GyaradosAnimationExtra
+	dw -1 ; see MagikarpAnimationExtraPointers
+	dw -1 ; see GyaradosAnimationExtraPointers
 	dw LaprasAnimationExtra
 	dw DittoAnimationExtra
 	dw EeveeAnimationExtra
@@ -148,7 +148,7 @@ AnimationExtraPointers:
 	dw DratiniAnimationExtra
 	dw DragonairAnimationExtra
 	dw DragoniteAnimationExtra
-	dw MewtwoAnimationExtra
+	dw -1 ; see MewtwoAnimationExtraPointers
 	dw MewAnimationExtra
 	dw ChikoritaAnimationExtra
 	dw BayleefAnimationExtra
@@ -170,7 +170,7 @@ AnimationExtraPointers:
 	dw CrobatAnimationExtra
 	dw ChinchouAnimationExtra
 	dw LanturnAnimationExtra
-	dw PichuAnimationExtra
+	dw -1 ; see PichuAnimationExtraPointers
 	dw MunchlaxAnimationExtra
 	dw MagnezoneAnimationExtra
 	dw TangrowthAnimationExtra
@@ -198,7 +198,7 @@ AnimationExtraPointers:
 	dw SlowkingAnimationExtra
 	dw MisdreavusAnimationExtra
 	dw MismagiusAnimationExtra
-	dw UnownAnimationExtra
+	dw -1 ; see UnownAnimationExtraPointers
 	dw WobbuffetAnimationExtra
 	dw GirafarigAnimationExtra
 	dw PinecoAnimationExtra
@@ -252,3 +252,5 @@ AnimationExtraPointers:
 	dw CelebiAnimationExtra
 	dw SylveonAnimationExtra
 	dw PorygonZAnimationExtra
+	dw EggAnimationExtra
+	dw -1 ; unused

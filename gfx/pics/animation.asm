@@ -55,15 +55,66 @@ LoadMonAnimation: ; d00a3
 	ld c, e
 	ld b, 0
 	ld hl, PokeAnims
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld b, [hl]
 	ld c, a
 	pop hl
-	jp PokeAnim_InitPicAttributes
-; d00b4
+
+	ld a, [rSVBK]
+	push af
+	ld a, $2
+	ld [rSVBK], a
+
+	push bc
+	push de
+	push hl
+	ld hl, wPokeAnimSceneIndex
+	ld bc, wPokeAnimStructEnd - wPokeAnimSceneIndex
+	xor a
+	call ByteFill
+	pop hl
+	pop de
+	pop bc
+
+; bc contains anim pointer
+	ld a, c
+	ld [wPokeAnimPointer], a
+	ld a, b
+	ld [wPokeAnimPointer + 1], a
+; hl contains TileMap coords
+	ld a, l
+	ld [wPokeAnimCoord], a
+	ld a, h
+	ld [wPokeAnimCoord + 1], a
+; d = start tile
+	ld a, d
+	ld [wPokeAnimGraphicStartTile], a
+
+	ld a, $1
+	ld hl, CurPartySpecies
+	call GetFarWRAMByte
+	ld [wPokeAnimSpecies], a
+
+	ld a, $1
+	ld hl, MonVariant
+	call GetFarWRAMByte
+	ld [wPokeAnimVariant], a
+
+	push de
+	call PokeAnim_GetSpeciesOrVariant
+	ld [wPokeAnimSpeciesOrVariant], a
+	pop de
+
+	call PokeAnim_GetFrontpicDims
+	ld a, c
+	ld [wPokeAnimFrontpicHeight], a
+
+	pop af
+	ld [rSVBK], a
+	ret
+; d0228
 
 SetUpPokeAnim: ; d00b4
 	ld a, [rSVBK]
@@ -252,59 +303,6 @@ AnimateMon_CheckIfPokemon: ; d01c6
 	ret
 ; d01d6
 
-PokeAnim_InitPicAttributes: ; d01d6
-	ld a, [rSVBK]
-	push af
-	ld a, $2
-	ld [rSVBK], a
-
-	push bc
-	push de
-	push hl
-	ld hl, wPokeAnimSceneIndex
-	ld bc, wPokeAnimStructEnd - wPokeAnimSceneIndex
-	xor a
-	call ByteFill
-	pop hl
-	pop de
-	pop bc
-
-; bc contains anim pointer
-	ld a, c
-	ld [wPokeAnimPointer], a
-	ld a, b
-	ld [wPokeAnimPointer + 1], a
-; hl contains TileMap coords
-	ld a, l
-	ld [wPokeAnimCoord], a
-	ld a, h
-	ld [wPokeAnimCoord + 1], a
-; d = start tile
-	ld a, d
-	ld [wPokeAnimGraphicStartTile], a
-
-	ld a, $1
-	ld hl, CurPartySpecies
-	call GetFarWRAMByte
-	ld [wPokeAnimSpecies], a
-
-	ld a, $1
-	ld hl, MonVariant
-	call GetFarWRAMByte
-	ld [wPokeAnimVariant], a
-
-	call PokeAnim_GetSpeciesOrVariant
-	ld [wPokeAnimSpeciesOrVariant], a
-
-	call PokeAnim_GetFrontpicDims
-	ld a, c
-	ld [wPokeAnimFrontpicHeight], a
-
-	pop af
-	ld [rSVBK], a
-	ret
-; d0228
-
 PokeAnim_InitAnim: ; d0228
 	ld a, [rSVBK]
 	push af
@@ -435,48 +433,6 @@ PokeAnim_StopWaitAnim: ; d02e4
 	ld [wPokeAnimJumptableIndex], a
 	ret
 ; d02ec
-
-PokeAnim_IsPikachu:
-	ld a, [wPokeAnimSpecies]
-	cp PIKACHU
-	ret
-
-PokeAnim_IsPichu:
-	ld a, [wPokeAnimSpecies]
-	cp PICHU
-	ret
-
-PokeAnim_IsArbok:
-	ld a, [wPokeAnimSpecies]
-	cp ARBOK
-	ret
-
-PokeAnim_IsMagikarp:
-	ld a, [wPokeAnimSpecies]
-	cp MAGIKARP
-	ret
-
-PokeAnim_IsGyarados:
-	ld a, [wPokeAnimSpecies]
-	cp GYARADOS
-	ret
-
-PokeAnim_IsUnown: ; d02ec
-	ld a, [wPokeAnimSpecies]
-	cp UNOWN
-	ret
-; d02f2
-
-PokeAnim_IsMewtwo:
-	ld a, [wPokeAnimSpecies]
-	cp MEWTWO
-	ret
-
-PokeAnim_IsEgg: ; d02f2
-	ld a, [wPokeAnimSpecies]
-	cp EGG
-	ret
-; d02f8
 
 PokeAnim_GetPointer: ; d02f8
 	push hl
@@ -912,84 +868,34 @@ PokeAnim_GetAttrMapCoord: ; d0551
 ; d055c
 
 GetMonAnimPointer: ; d055c
-	call PokeAnim_IsEgg
-	jp z, .egg
-
-	ld c, BANK(PikachuAnimations)
-	ld hl, PikachuAnimationPointers
-	ld de, PikachuAnimationExtraPointers
-	call PokeAnim_IsPikachu
-	jr z, .variant
-	ld c, BANK(PichuAnimations)
-	ld hl, PichuAnimationPointers
-	ld de, PichuAnimationExtraPointers
-	call PokeAnim_IsPichu
-	jr z, .variant
-	ld c, BANK(ArbokAnimations)
-	ld hl, ArbokAnimationPointers
-	ld de, ArbokAnimationExtraPointers
-	call PokeAnim_IsArbok
-	jr z, .variant
-	ld c, BANK(MagikarpAnimations)
-	ld hl, MagikarpAnimationPointers
-	ld de, MagikarpAnimationExtraPointers
-	call PokeAnim_IsMagikarp
-	jr z, .variant
-	ld c, BANK(GyaradosAnimations)
-	ld hl, GyaradosAnimationPointers
-	ld de, GyaradosAnimationExtraPointers
-	call PokeAnim_IsGyarados
-	jr z, .variant
-	ld c, BANK(UnownAnimations)
-	ld hl, UnownAnimationPointers
-	ld de, UnownAnimationExtraPointers
-	call PokeAnim_IsUnown
-	jr z, .variant
-	ld c, BANK(MewtwoAnimations)
-	ld hl, MewtwoAnimationPointers
-	ld de, MewtwoAnimationExtraPointers
-	call PokeAnim_IsMewtwo
-	jr z, .variant
-	ld c, BANK(PicAnimations)
-	ld hl, AnimationPointers
-	ld de, AnimationExtraPointers
-.variant
+	ld a, [wPokeAnimSpecies]
+	ld hl, VariantAnimPointerTable
+	ld de, 6
+	call IsInArray
+	inc hl
+	ld a, [hli]
+	ld c, a
 
 	ld a, [wPokeAnimExtraFlag]
 	and a
 	jr z, .extras
-	ld h, d
-	ld l, e
+	inc hl
+	inc hl
 .extras
+
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 
 	ld a, [wPokeAnimSpeciesOrVariant]
 	dec a
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, c
 	ld [wPokeAnimPointerBank], a
 	call GetFarHalfword
-	ld a, l
-	ld [wPokeAnimPointerAddr], a
-	ld a, h
-	ld [wPokeAnimPointerAddr + 1], a
-	ret
-
-.egg
-	ld hl, EggAnimation
-	ld c, BANK(EggAnimation)
-	ld a, [wPokeAnimExtraFlag]
-	and a
-	jr z, .extras_egg
-	ld hl, EggAnimationExtra
-	ld c, BANK(EggAnimationExtra)
-.extras_egg
-
-	ld a, c
-	ld [wPokeAnimPointerBank], a
 	ld a, l
 	ld [wPokeAnimPointerAddr], a
 	ld a, h
@@ -1014,41 +920,21 @@ PokeAnim_GetFrontpicDims: ; d05b4
 ; d05ce
 
 GetMonFramesPointer: ; d05ce
-	call PokeAnim_IsEgg
-	jr z, .egg
-
-	call PokeAnim_IsPikachu
-	lb bc, BANK(PikachuFramesPointers), BANK(PikachusFrames)
-	ld hl, PikachuFramesPointers
-	jr z, .got_frames
-	call PokeAnim_IsPichu
-	lb bc, BANK(PichuFramesPointers), BANK(PichusFrames)
-	ld hl, PichuFramesPointers
-	jr z, .got_frames
-	call PokeAnim_IsArbok
-	lb bc, BANK(ArbokFramesPointers), BANK(ArboksFrames)
-	ld hl, ArbokFramesPointers
-	jr z, .got_frames
-	call PokeAnim_IsMagikarp
-	lb bc, BANK(MagikarpFramesPointers), BANK(MagikarpsFrames)
-	ld hl, MagikarpFramesPointers
-	jr z, .got_frames
-	call PokeAnim_IsGyarados
-	lb bc, BANK(GyaradosFramesPointers), BANK(GyaradossFrames)
-	ld hl, GyaradosFramesPointers
-	jr z, .got_frames
-	call PokeAnim_IsUnown
-	lb bc, BANK(UnownFramesPointers), BANK(UnownsFrames)
-	ld hl, UnownFramesPointers
-	jr z, .got_frames
-	call PokeAnim_IsMewtwo
-	lb bc, BANK(MewtwoFramesPointers), BANK(MewtwosFrames)
-	ld hl, MewtwoFramesPointers
-	jr z, .got_frames
+	ld a, [wPokeAnimSpecies]
+	ld hl, VariantFramesPointerTable
+	ld de, 5
+	call IsInArray
+	inc hl
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jr c, .got_frames
 	ld a, [wPokeAnimSpecies]
 	cp CHIKORITA
-	lb bc, BANK(FramesPointers), BANK(KantoFrames)
-	ld hl, FramesPointers
 	jr c, .got_frames
 	ld c, BANK(JohtoFrames)
 .got_frames
@@ -1059,22 +945,10 @@ GetMonFramesPointer: ; d05ce
 	dec a
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, b
 	call GetFarHalfword
-	ld a, l
-	ld [wPokeAnimFramesAddr], a
-	ld a, h
-	ld [wPokeAnimFramesAddr + 1], a
-	ret
-
-.egg
-	ld hl, EggFrames
-	ld c, BANK(EggFrames)
-	ld a, c
-	ld [wPokeAnimFramesBank], a
 	ld a, l
 	ld [wPokeAnimFramesAddr], a
 	ld a, h
@@ -1083,62 +957,25 @@ endr
 ; d061b
 
 GetMonBitmaskPointer: ; d061b
-	call PokeAnim_IsEgg
-	jr z, .egg
-
-	call PokeAnim_IsPikachu
-	ld a, BANK(PikachuBitmasksPointers)
-	ld hl, PikachuBitmasksPointers
-	jr z, .variant
-	call PokeAnim_IsPichu
-	ld a, BANK(PichuBitmasksPointers)
-	ld hl, PichuBitmasksPointers
-	jr z, .variant
-	call PokeAnim_IsArbok
-	ld a, BANK(ArbokBitmasksPointers)
-	ld hl, ArbokBitmasksPointers
-	jr z, .variant
-	call PokeAnim_IsMagikarp
-	ld a, BANK(MagikarpBitmasksPointers)
-	ld hl, MagikarpBitmasksPointers
-	jr z, .variant
-	call PokeAnim_IsGyarados
-	ld a, BANK(GyaradosBitmasksPointers)
-	ld hl, GyaradosBitmasksPointers
-	jr z, .variant
-	call PokeAnim_IsUnown
-	ld a, BANK(UnownBitmasksPointers)
-	ld hl, UnownBitmasksPointers
-	jr z, .variant
-	call PokeAnim_IsMewtwo
-	ld a, BANK(MewtwoBitmasksPointers)
-	ld hl, MewtwoBitmasksPointers
-	jr z, .variant
-	ld a, BANK(BitmasksPointers)
-	ld hl, BitmasksPointers
-.variant
+	ld a, [wPokeAnimSpecies]
+	ld hl, VariantBitmasksPointerTable
+	ld de, 4
+	call IsInArray
+	inc hl
+	ld a, [hli]
 	ld [wPokeAnimBitmaskBank], a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 
 	ld a, [wPokeAnimSpeciesOrVariant]
 	dec a
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [wPokeAnimBitmaskBank]
 	call GetFarHalfword
-	ld a, l
-	ld [wPokeAnimBitmaskAddr], a
-	ld a, h
-	ld [wPokeAnimBitmaskAddr + 1], a
-	ret
-
-.egg
-	ld c, BANK(EggBitmasks)
-	ld hl, EggBitmasks
-	ld a, c
-	ld [wPokeAnimBitmaskBank], a
 	ld a, l
 	ld [wPokeAnimBitmaskAddr], a
 	ld a, h
@@ -1147,24 +984,12 @@ endr
 ; d065c
 
 PokeAnim_GetSpeciesOrVariant: ; d065c
-	call PokeAnim_IsPikachu
-	jr z, .variant
-	call PokeAnim_IsPichu
-	jr z, .variant
-	call PokeAnim_IsArbok
-	jr z, .variant
-	call PokeAnim_IsMagikarp
-	jr z, .variant
-	call PokeAnim_IsGyarados
-	jr z, .variant
-	call PokeAnim_IsUnown
-	jr z, .variant
-	call PokeAnim_IsMewtwo
-	jr z, .variant
 	ld a, [wPokeAnimSpecies]
-	ret
-
-.variant
+	ld hl, VariantSpeciesTable
+	ld de, 1
+	call IsInArray
+	ld a, [wPokeAnimSpecies]
+	ret nc
 	ld a, [wPokeAnimVariant]
 	ret
 ; d0669
@@ -1194,3 +1019,5 @@ HOF_AnimateFrontpic: ; d066e
 	ld [CurPartySpecies], a
 	ret
 ; d0695
+
+INCLUDE "gfx/pics/variant_anim_data_tables.asm"
