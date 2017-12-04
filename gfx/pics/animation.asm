@@ -346,11 +346,11 @@ PokeAnim_DoAnimScript: ; d0250
 .RunAnim: ; d0261
 	call PokeAnim_GetPointer
 	ld a, [wPokeAnimCommand]
-	cp -1
+	cp $ff ; endanim
 	jr z, PokeAnim_End
-	cp -2
+	cp $fe ; setrepeat
 	jr z, .SetRepeat
-	cp -3
+	cp $fd ; dorepeat
 	jr z, .DoRepeat
 	call PokeAnim_GetFrame
 	ld a, [wPokeAnimParameter]
@@ -443,9 +443,8 @@ PokeAnim_GetPointer: ; d02f8
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [wPokeAnimPointerBank]
 	call GetFarHalfword
 	ld a, l
@@ -467,9 +466,8 @@ PokeAnim_GetBitmaskIndex: ; d031b
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [wPokeAnimFramesBank]
 	call GetFarHalfword
 	ld a, [wPokeAnimFramesBank]

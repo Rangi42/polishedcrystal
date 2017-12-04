@@ -405,8 +405,8 @@ const_value set 1
 
 ; mewtwo
 const_value set 1
-	const MEWTWO_PLAIN_FOPRM
-	const MEWTWO_ARMORED_FOPRM
+	const MEWTWO_PLAIN_FORM
+	const MEWTWO_ARMORED_FORM
 
 ; indexes into WritePartyMenuTilemap.Jumptable
 	const_def

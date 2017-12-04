@@ -6,7 +6,6 @@ GetVariant: ; 51040
 	jp z, .GetMewtwoVariant
 
 ; Return MonVariant based on Form at hl
-; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Magikarp: 1-14, Gyarados: 1-2
 	ld a, [hl]
 	and FORM_MASK
 	jr nz, .ok
@@ -22,7 +21,7 @@ GetVariant: ; 51040
 	and a
 	jr z, .not_kanto_arbok
 .kanto_arbok
-	ld a, 2 ; arbok with form 0 in kanto becomes variant 2
+	ld a, ARBOK_KANTO_FORM
 	jr .ok
 .not_kanto_arbok
 	ld a, 1 ; safeguard: form 0 becomes variant 1
@@ -40,7 +39,7 @@ GetVariant: ; 51040
 
 	ld a, [hl]
 	and FORM_MASK
-	cp 4 ; Pika or ChuChu
+	cp PIKACHU_RED_FORM
 	jr nc, .use_form
 
 	push bc
@@ -59,30 +58,27 @@ GetVariant: ; 51040
 	add hl, bc
 	pop bc
 
-	ld a, 3 ; Surf
+	ld a, PIKACHU_SURF_FORM
 	ld [MonVariant], a
-rept 4
+rept NUM_MOVES
 	ld a, [hli]
 	cp SURF
 	ret z
 endr
 
-rept 4
+rept NUM_MOVES
 	dec hl
 endr
-	ld a, 2 ; Fly
+	ld a, PIKACHU_FLY_FORM
 	ld [MonVariant], a
-rept 4
+rept NUM_MOVES
 	ld a, [hli]
 	cp FLY
 	ret z
 endr
 
 .plain
-	ld a, 1 ; plain
-	ld [MonVariant], a
-	ret
-
+	ld a, PIKACHU_PLAIN_FORM
 .use_form
 	ld [MonVariant], a
 	ret
@@ -110,13 +106,10 @@ endr
 
 	ld a, [hl]
 	cp ARMOR_SUIT
+	ld a, MEWTWO_ARMORED_FORM
 	jr z, .armored_mewtwo
-	ld a, 1 ; plain
-	ld [MonVariant], a
-	ret
-
+	dec a ; MEWTWO_PLAIN_FORM
 .armored_mewtwo
-	ld a, 2 ; armored
 	ld [MonVariant], a
 	ret
 
