@@ -6548,7 +6548,7 @@ endc
 	; Random shininess
 	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [BattleType]
-	cp BATTLETYPE_SHINY
+	cp BATTLETYPE_RED_GYARADOS
 	jr z, .shiny
 	cp BATTLETYPE_GROTTO
 	jr z, .not_shiny
@@ -6636,8 +6636,13 @@ endc
 .Female
 	ld b, a
 
-	; Form 1
-	ld a, 1
+	; Form
+	ld a, [BattleType]
+	cp BATTLETYPE_RED_GYARADOS
+	ld a, GYARADOS_RED_FORM
+	jr z, .red_form
+	ld a, 1 ; default form 1
+.red_form
 	add b
 	ld [hl], a
 

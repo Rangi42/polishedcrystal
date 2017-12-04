@@ -6341,7 +6341,7 @@ BattleCommand_Teleport: ; 36778
 ; teleport
 
 	ld a, [BattleType]
-	cp BATTLETYPE_SHINY
+	cp BATTLETYPE_RED_GYARADOS
 	jr z, .failed
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
 	jr nc, .failed
@@ -6452,7 +6452,7 @@ BattleCommand_ForceSwitch: ; 3680f
 ; forceswitch
 
 	ld a, [BattleType]
-	cp BATTLETYPE_SHINY
+	cp BATTLETYPE_RED_GYARADOS
 	jp z, .fail
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
 	jp nc, .fail

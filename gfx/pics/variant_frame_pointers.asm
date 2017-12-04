@@ -62,6 +62,10 @@ MagikarpFramesPointers:
 	dw MagikarpForeheadFrames
 	dw MagikarpMaskFrames
 
+GyaradosFramesPointers:
+	dw GyaradosPlainFrames
+	dw GyaradosRedFrames
+
 MewtwoFramesPointers:
 	dw MewtwoPlainFrames
 	dw MewtwoArmoredFrames

@@ -398,6 +398,11 @@ const_value set 1
 	const MAGIKARP_MASK_FORM
 NUM_MAGIKARP EQU const_value +- 1
 
+; gyarados
+const_value set 1
+	const GYARADOS_PLAIN_FORM
+	const GYARADOS_RED_FORM
+
 ; mewtwo
 const_value set 1
 	const MEWTWO_PLAIN_FOPRM

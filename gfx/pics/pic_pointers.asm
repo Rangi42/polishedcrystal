@@ -265,8 +265,10 @@
 	dbw -1, -1
 	dbw -1, -1
 
-	dba GyaradosFrontpic
-	dba GyaradosBackpic
+	; Gyarados pics have their own table. See GyaradosPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba LaprasFrontpic
 	dba LaprasBackpic
 	dba DittoFrontpic

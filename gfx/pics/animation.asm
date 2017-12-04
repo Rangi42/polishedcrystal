@@ -456,6 +456,11 @@ PokeAnim_IsMagikarp:
 	cp MAGIKARP
 	ret
 
+PokeAnim_IsGyarados:
+	ld a, [wPokeAnimSpecies]
+	cp GYARADOS
+	ret
+
 PokeAnim_IsUnown: ; d02ec
 	ld a, [wPokeAnimSpecies]
 	cp UNOWN
@@ -908,7 +913,7 @@ PokeAnim_GetAttrMapCoord: ; d0551
 
 GetMonAnimPointer: ; d055c
 	call PokeAnim_IsEgg
-	jr z, .egg
+	jp z, .egg
 
 	ld c, BANK(PikachuAnimations)
 	ld hl, PikachuAnimationPointers
@@ -929,6 +934,11 @@ GetMonAnimPointer: ; d055c
 	ld hl, MagikarpAnimationPointers
 	ld de, MagikarpAnimationExtraPointers
 	call PokeAnim_IsMagikarp
+	jr z, .variant
+	ld c, BANK(GyaradosAnimations)
+	ld hl, GyaradosAnimationPointers
+	ld de, GyaradosAnimationExtraPointers
+	call PokeAnim_IsGyarados
 	jr z, .variant
 	ld c, BANK(UnownAnimations)
 	ld hl, UnownAnimationPointers
@@ -1023,6 +1033,10 @@ GetMonFramesPointer: ; d05ce
 	lb bc, BANK(MagikarpFramesPointers), BANK(MagikarpsFrames)
 	ld hl, MagikarpFramesPointers
 	jr z, .got_frames
+	call PokeAnim_IsGyarados
+	lb bc, BANK(GyaradosFramesPointers), BANK(GyaradossFrames)
+	ld hl, GyaradosFramesPointers
+	jr z, .got_frames
 	call PokeAnim_IsUnown
 	lb bc, BANK(UnownFramesPointers), BANK(UnownsFrames)
 	ld hl, UnownFramesPointers
@@ -1088,6 +1102,10 @@ GetMonBitmaskPointer: ; d061b
 	ld a, BANK(MagikarpBitmasksPointers)
 	ld hl, MagikarpBitmasksPointers
 	jr z, .variant
+	call PokeAnim_IsGyarados
+	ld a, BANK(GyaradosBitmasksPointers)
+	ld hl, GyaradosBitmasksPointers
+	jr z, .variant
 	call PokeAnim_IsUnown
 	ld a, BANK(UnownBitmasksPointers)
 	ld hl, UnownBitmasksPointers
@@ -1136,6 +1154,8 @@ PokeAnim_GetSpeciesOrVariant: ; d065c
 	call PokeAnim_IsArbok
 	jr z, .variant
 	call PokeAnim_IsMagikarp
+	jr z, .variant
+	call PokeAnim_IsGyarados
 	jr z, .variant
 	call PokeAnim_IsUnown
 	jr z, .variant

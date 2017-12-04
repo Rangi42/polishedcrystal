@@ -6,7 +6,7 @@ GetVariant: ; 51040
 	jp z, .GetMewtwoVariant
 
 ; Return MonVariant based on Form at hl
-; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Magikarp: 1-11
+; Unown: 1-26, Pichu: 1-2, Arbok: 1-2, Magikarp: 1-14, Gyarados: 1-2
 	ld a, [hl]
 	and FORM_MASK
 	jr nz, .ok

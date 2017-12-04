@@ -57,5 +57,8 @@ MagikarpBubblesBitmasks:  INCLUDE "gfx/pics/magikarp_bubbles/bitmask.asm"
 MagikarpForeheadBitmasks: INCLUDE "gfx/pics/magikarp_forehead/bitmask.asm"
 MagikarpMaskBitmasks:     INCLUDE "gfx/pics/magikarp_mask/bitmask.asm"
 
+GyaradosPlainBitmasks: INCLUDE "gfx/pics/gyarados_plain/bitmask.asm"
+GyaradosRedBitmasks:   INCLUDE "gfx/pics/gyarados_red/bitmask.asm"
+
 MewtwoPlainBitmasks:   INCLUDE "gfx/pics/mewtwo_plain/bitmask.asm"
 MewtwoArmoredBitmasks: INCLUDE "gfx/pics/mewtwo_armored/bitmask.asm"

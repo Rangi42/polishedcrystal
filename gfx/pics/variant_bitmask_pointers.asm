@@ -62,6 +62,10 @@ MagikarpBitmasksPointers:
 	dw MagikarpForeheadBitmasks
 	dw MagikarpMaskBitmasks
 
+GyaradosBitmasksPointers:
+	dw GyaradosPlainBitmasks
+	dw GyaradosRedBitmasks
+
 MewtwoBitmasksPointers:
 	dw MewtwoPlainBitmasks
 	dw MewtwoArmoredBitmasks

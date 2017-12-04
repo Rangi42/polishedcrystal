@@ -62,6 +62,10 @@ MagikarpBubblesAnimation:
 MagikarpForeheadAnimation:
 MagikarpMaskAnimation:     INCLUDE "gfx/pics/magikarp/anim0.asm"
 
+GyaradosAnimations:
+GyaradosPlainAnimation: INCLUDE "gfx/pics/gyarados_plain/anim0.asm"
+GyaradosRedAnimation:   INCLUDE "gfx/pics/gyarados_red/anim0.asm"
+
 MewtwoAnimations:
 MewtwoPlainAnimation:   INCLUDE "gfx/pics/mewtwo_plain/anim0.asm"
 MewtwoArmoredAnimation: INCLUDE "gfx/pics/mewtwo_armored/anim0.asm"

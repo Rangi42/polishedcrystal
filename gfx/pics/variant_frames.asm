@@ -62,6 +62,10 @@ MagikarpBubblesFrames:  INCLUDE "gfx/pics/magikarp_bubbles/frames.asm"
 MagikarpForeheadFrames: INCLUDE "gfx/pics/magikarp_forehead/frames.asm"
 MagikarpMaskFrames:     INCLUDE "gfx/pics/magikarp_mask/frames.asm"
 
+GyaradossFrames:
+GyaradosPlainFrames: INCLUDE "gfx/pics/gyarados_plain/frames.asm"
+GyaradosRedFrames:   INCLUDE "gfx/pics/gyarados_red/frames.asm"
+
 MewtwosFrames:
 MewtwoPlainFrames:   INCLUDE "gfx/pics/mewtwo_plain/frames.asm"
 MewtwoArmoredFrames: INCLUDE "gfx/pics/mewtwo_armored/frames.asm"

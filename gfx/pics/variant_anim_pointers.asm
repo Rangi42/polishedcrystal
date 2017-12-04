@@ -62,6 +62,10 @@ MagikarpAnimationPointers:
 	dw MagikarpForeheadAnimation
 	dw MagikarpMaskAnimation
 
+GyaradosAnimationPointers:
+	dw GyaradosPlainAnimation
+	dw GyaradosRedAnimation
+
 MewtwoAnimationPointers:
 	dw MewtwoPlainAnimation
 	dw MewtwoArmoredAnimation
