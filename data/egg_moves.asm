@@ -15,6 +15,7 @@ BulbasaurEggMoves:
 	db LIGHT_SCREEN
 	db SAFEGUARD
 	db POWER_WHIP
+	db SACRED_FIRE
 	db $ff
 
 CharmanderEggMoves:
