@@ -66,11 +66,10 @@ def get_egg_groups(mon):
 				for group in groups:
 					group_mons[group].add(mon)
 					mon_groups[mon].add(group)
-				break
-		else:
-			raise RuntimeError('no egg group data for %s' % mon)
+				return
+	raise RuntimeError('no egg group data for %s' % mon)
 
-def get_learnset_moves():
+def get_level_up_moves():
 	# Read data/evos_attacks.asm
 	with open('data/evos_attacks.asm', 'r') as file:
 		current_mon = None
@@ -100,6 +99,21 @@ def get_learnset_moves():
 			move = line.split(';')[0].split(',')[-1].strip()
 			learnset_moves[current_mon].add(move)
 
+def get_tm_moves(mon):
+	# Read data/base_stats/<mon>.asm
+	filename = 'data/base_stats/%s.asm' % mon
+	with open(filename, 'r') as file:
+		for line in file:
+			line = line.rstrip()
+			# Assume that TM/HM moves are correctly commented
+			if line.startswith('\ttmhm'):
+				# '\ttmhm HEADBUTT, CURSE' => ['HEADBUTT', 'CURSE']
+				moves = [m.strip() for m in line[5:].split(',')]
+				for move in moves:
+					learnset_moves[mon].add(move)
+				return
+	raise RuntimeError('no tmhm data for %s' % mon)
+
 def get_egg_moves():
 	# Read data/egg_moves.asm
 	with open('data/egg_moves.asm', 'r') as file:
@@ -127,7 +141,7 @@ def get_egg_moves():
 			if not line.startswith('\tdb '):
 				continue
 			# '\tdb LIGHT_SCREEN' => 'LIGHT_SCREEN'
-			move = line.split()[-1]
+			move = line.split(';')[0].strip().split()[-1]
 			egg_moves[current_mon].add(move)
 
 def get_sketchable_groups():
@@ -140,20 +154,22 @@ def get_sketchable_groups():
 def find_bad_egg_moves(mon, allow_chain=False, allow_sketch=False):
 	sketchable = any(group in sketchable_groups for group in mon_groups[mon])
 	# Build movepools
-	mon_movepool = set()
-	mon_chain_movepool = set()
+	others_movepool = set()
+	others_chain_movepool = set()
+	for move in learnset_moves[mon]:
+		others_movepool.add(move)
 	for group in mon_groups[mon]:
 		for other_mon in group_mons[group]:
 			if other_mon == mon:
 				continue
 			for move in learnset_moves[other_mon]:
-				mon_movepool.add(move)
+				others_movepool.add(move)
 			for move in egg_moves[other_mon]:
-				mon_chain_movepool.add(move)
+				others_chain_movepool.add(move)
 	# Print bad egg moves
 	for move in egg_moves[mon]:
-		if move not in mon_movepool:
-			chainable = move in mon_chain_movepool
+		if move not in others_movepool:
+			chainable = move in others_chain_movepool
 			if allow_chain:
 				if chainable:
 					print(' * %s: %s' % (mon, move))
@@ -168,7 +184,9 @@ def main():
 	get_ordered_mons()
 	for mon in ordered_mons:
 		get_egg_groups(mon)
-	get_learnset_moves()
+	get_level_up_moves()
+	for mon in ordered_mons:
+		get_tm_moves(mon)
 	get_egg_moves()
 	get_sketchable_groups()
 	print('These egg moves must be chain-bred:')
