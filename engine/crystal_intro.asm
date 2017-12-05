@@ -63,7 +63,7 @@ Copyright_GFPresents: ; e4579
 	ld hl, IntroLogoGFX
 	ld de, wDecompressScratch
 	ld a, BANK(IntroLogoGFX)
-	call FarDecompress
+	call Decompress
 
 	ld hl, VTiles0
 	ld de, wDecompressScratch
@@ -2813,3 +2813,6 @@ IntroGrass3GFX: ; e7a1d
 INCBIN "gfx/intro/grass3.2bpp"
 IntroGrass4GFX: ; e7a5d
 INCBIN "gfx/intro/grass4.2bpp"
+
+IntroLogoGFX: ; 109407
+INCBIN "gfx/intro/logo.2bpp.lz"

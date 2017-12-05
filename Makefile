@@ -72,7 +72,8 @@ data/egg_moves.o \
 data/evos_attacks.o \
 data/pokedex/entries.o \
 text/common_text.o \
-gfx/pics.o
+gfx/pics.o \
+gfx/sprites.o
 
 
 all: crystal

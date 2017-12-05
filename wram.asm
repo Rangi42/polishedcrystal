@@ -13,7 +13,7 @@ StackTop::
 	ds 1
 
 
-SECTION "Audio WRAM", WRAM0
+SECTION "Audio RAM", WRAM0
 
 wMusic::
 MusicPlaying:: ds 1 ; nonzero if playing
@@ -229,7 +229,7 @@ wGlobalAnimXOffset:: ds 1
 wSpriteAnimsEnd::
 
 
-SECTION "Music Player WRAM", WRAM0
+SECTION "Music Player RAM", WRAM0
 
 MusicPlayerWRAM::
 wSongSelection:: ds 2
@@ -2427,7 +2427,7 @@ wPokemonDataEnd::
 wGameDataEnd::
 
 
-SECTION "Pic Animations", WRAMX
+SECTION "Pic Animations RAM", WRAMX
 
 TempTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT ; 20x18 grid of 8x8 tiles
 
@@ -2522,7 +2522,7 @@ LYOverridesBackup:: ds SCREEN_HEIGHT_PX
 LYOverridesBackupEnd::
 
 
-SECTION "Battle Animations", WRAMX
+SECTION "Battle Animations RAM", WRAMX
 
 wBattleAnimTileDict:: ds 10
 

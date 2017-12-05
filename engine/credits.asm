@@ -968,6 +968,8 @@ CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
 CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
 CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 
+TheEndGFX::          INCBIN "gfx/credits/theend.2bpp"
+
 
 CreditsScript: ; 10acb4
 

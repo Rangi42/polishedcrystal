@@ -97,7 +97,7 @@ Pokegear_LoadGFX: ; 90c4e
 	ld hl, PokegearGFX
 	ld de, VTiles2 tile $40
 	ld a, BANK(PokegearGFX)
-	call FarDecompress
+	call Decompress
 	ld hl, PokegearSpritesGFX
 	ld de, VTiles0
 	ld a, BANK(PokegearSpritesGFX)
@@ -481,7 +481,7 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	jr z, .h12
 	decoord 8, 8
 .h12
-	farcall PrintHoursMins
+	call PrintHoursMins
 	ld hl, .DayText
 	bccoord 6, 6
 	jp PlaceWholeStringInBoxAtOnce
@@ -716,7 +716,7 @@ PokegearMap_UpdateLandmarkName: ; 910b4
 	push de
 	farcall GetLandmarkName
 	pop de
-	farcall TownMap_ConvertLineBreakCharacters
+	call TownMap_ConvertLineBreakCharacters
 	hlcoord 8, 0
 	ld [hl], "<UPDN>"
 	ret
@@ -735,8 +735,28 @@ PokegearMap_UpdateCursorPosition: ; 910d4
 	add hl, bc
 	ld [hl], d
 	ret
-
 ; 910e8
+
+TownMap_ConvertLineBreakCharacters: ; 1de2c5
+	ld hl, StringBuffer1
+.loop
+	ld a, [hl]
+	cp "@"
+	jr z, .end
+	cp "<NEXT>"
+	jr z, .line_break
+	cp "¯"
+	jr z, .line_break
+	inc hl
+	jr .loop
+
+.line_break
+	ld [hl], "<LNBRK>"
+
+.end
+	ld de, StringBuffer1
+	hlcoord 9, 0
+	jp PlaceString
 
 TownMap_GetJohtoLandmarkLimits:
 	lb de, SILVER_CAVE, NEW_BARK_TOWN
@@ -2942,3 +2962,6 @@ INCBIN "gfx/town_map/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
 INCBIN "gfx/town_map/dexmap_nest_icon.2bpp"
+
+PokegearGFX: ; 1de2e4
+INCBIN "gfx/pokegear/pokegear.2bpp.lz"

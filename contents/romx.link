@@ -1,42 +1,42 @@
 ROMX $01
 	org $4000
-	"bank1"
+	"Code 1"
 	"Effect Command Pointers"
 
 ROMX $02
 	org $4000
-	"bank2"
+	"Code 2"
 	"Trainer Pic Pointers"
 
 ROMX $03
 	org $4000
-	"bank3"
+	"Code 3"
 
 ROMX $04
 	org $4000
-	"bank4"
+	"Code 4"
 	"Variant Pic Pointers"
 
 ROMX $05
 	org $4000
-	"bank5"
+	"Code 5"
 
 ROMX $08
 	org $4000
-	"bank8"
+	"Code 6"
 	"Egg Moves"
 
 ROMX $09
 	org $4000
-	"bank9"
+	"Code 7"
 
 ROMX $0A
 	org $4000
-	"bankA"
+	"Code 8"
 
 ROMX $0B
 	org $4000
-	"bankB"
+	"Code 9"
 
 ROMX $0D
 	org $4000
@@ -52,28 +52,24 @@ ROMX $0F
 
 ROMX $10
 	org $4000
-	"bank10"
+	"Evolution Engine"
 	"Evolutions and Attacks"
 
 ROMX $11
 	org $4000
-	"bank11"
+	"Code 10"
 
 ROMX $12
 	org $4000
-	"Crystal Unique"
+	"Code 11"
 
 ROMX $13
 	org $4000
-	"bank13"
+	"Code 12"
 
 ROMX $14
 	org $4000
-	"bank14"
-
-ROMX $19
-	org $4000
-	"bank19"
+	"Code 13"
 
 ROMX $1C
 	org $4000
@@ -81,25 +77,25 @@ ROMX $1C
 
 ROMX $20
 	org $4000
-	"bank20"
+	"Code 14"
 
 ROMX $21
 	org $4000
-	"bank21"
+	"Code 15"
 
 ROMX $22
 	org $4000
-	"bank22"
+	"Code 16"
 	"Special Map Blockdata"
 	"Pokemon Center Scripts 4"
 
 ROMX $23
 	org $4000
-	"bank23"
+	"Code 17"
 
 ROMX $24
 	org $4000
-	"bank24"
+	"Code 18"
 	"Special Map Scripts"
 
 ROMX $25
@@ -109,11 +105,11 @@ ROMX $25
 
 ROMX $28
 	org $4000
-	"Phone Engine"
+	"Phone Scripts"
 
 ROMX $29
 	org $4000
-	"Pic Animations 4"
+	"Pic Animations Bitmasks"
 
 ROMX $2B
 	org $4000
@@ -121,39 +117,39 @@ ROMX $2B
 
 ROMX $2E
 	org $4000
-	"bank2E"
+	"Code 19"
 
 ROMX $2F
 	org $4000
-	"bank2F"
+	"Code 20"
 
 ROMX $32
 	org $4000
-	"bg_effects"
+	"Code 21"
 
 ROMX $33
 	org $4000
-	"bank33"
+	"Battle Animations"
 
 ROMX $34
 	org $4000
-	"Pic Animations 1"
+	"Pic Animations"
 
 ROMX $35
 	org $4000
-	"Pic Animations 2"
+	"Pic Animations Frames 1"
 
 ROMX $36
 	org $4000
-	"Pic Animations 3"
+	"Pic Animations Frames 2"
 
 ROMX $38
 	org $4000
-	"bank38"
+	"Code 22"
 
 ROMX $39
 	org $4000
-	"bank39"
+	"Introduction"
 
 ROMX $3A
 	org $4000
@@ -166,28 +162,23 @@ ROMX $3C
 
 ROMX $3E
 	org $4000
-	"bank3E"
+	"Code 23"
 
 ROMX $3F
 	org $4000
-	"bank3F"
-
-ROMX $40
-	org $4000
-	"bank40"
+	"Code 24"
 
 ROMX $41
 	org $4000
-	"bank41"
+	"Code 25"
 
 ROMX $42
 	org $4000
-	"Intro Logo"
 	"Credits"
 
 ROMX $43
 	org $4000
-	"bank43"
+	"Title Screen"
 
 ROMX $48
 	org $4000
@@ -201,22 +192,13 @@ ROMX $5A
 	org $4000
 	"Pokemon Center Scripts 1"
 
-ROMX $5D
-	org $4000
-	"bank5D"
-
 ROMX $5E
 	org $4000
-	"bank5E"
 	"Crystal Sound Effects"
 
 ROMX $5F
 	org $4000
 	"Pokemon Center Scripts 2"
-
-ROMX $6D
-	org $4000
-	"bank6D"
 
 ROMX $6E
 	org $4000
@@ -230,10 +212,6 @@ ROMX $70
 	org $4000
 	"Pokedex"
 
-ROMX $72
-	org $4000
-	"bank72"
-
 ROMX $73
 	org $4000
 	"Enemy Trainers"
@@ -244,13 +222,13 @@ ROMX $76
 
 ROMX $77
 	org $4000
-	"bank77"
+	"Diploma"
 	"New Bark Scripts 2"
 
 ROMX $78
 	org $4000
-	"bank7B"
+	"Battle Tower Text"
 
 ROMX $79
 	org $4000
-	"bank7E"
+	"Crystal Data"

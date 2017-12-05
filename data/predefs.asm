@@ -35,22 +35,21 @@ PredefPointers::
 	add_predef PrintTempMonStats
 	add_predef PrintMonTypes ; $20
 	add_predef GetVariant
-	add_predef LoadPoisonBGPals
 	add_predef Predef_LoadCGBLayout
 	add_predef _Area
 	add_predef Predef_StartBattle
 	add_predef PlayBattleAnim
 	add_predef PartyMonItemName
-	add_predef GetFrontpic ; $28
-	add_predef GetBackpic
+	add_predef GetFrontpic
+	add_predef GetBackpic ; $28
 	add_predef FrontpicPredef
 	add_predef DecompressPredef
 	add_predef NewPokedexEntry
 	add_predef PlaceStatusString
 	add_predef LoadMonAnimation
 	add_predef AnimateFrontpic
-	add_predef HOF_AnimateFrontpic ; $30
-	add_predef PrintNature
+	add_predef HOF_AnimateFrontpic
+	add_predef PrintNature ; $30
 	add_predef PrintNatureIndicators
 	add_predef PrintAbility
-	add_predef PrintAbilityDescription ; $34
+	add_predef PrintAbilityDescription ; $33

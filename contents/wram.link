@@ -2,11 +2,11 @@ WRAM0
 	org $c000
 	"Stack"
 	align 8
-	"Audio WRAM"
+	"Audio RAM"
 	"WRAM 0"
 	org $c300
 	"Sprite Animations"
-	"Music Player WRAM"
+	"Music Player RAM"
 	org $c400
 	align 8
 	"Sprites"
@@ -27,7 +27,7 @@ WRAMX $1
 
 WRAMX $2
 	org $d000
-	"Pic Animations"
+	"Pic Animations RAM"
 	align 8
 	"Battle Tower"
 
@@ -41,7 +41,7 @@ WRAMX $5
 	org $d000
 	"GBC Video"
 	org $d300
-	"Battle Animations"
+	"Battle Animations RAM"
 
 WRAMX $6
 	org $d000

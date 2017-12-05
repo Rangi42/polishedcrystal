@@ -4867,7 +4867,9 @@ BattleMenu: ; 3e139
 	ld a, [InputType]
 	or a
 	jr z, .skip_lyra_pack_select
-	farcall _DudeAutoInput_DownA
+	ld hl, .autoinput_down_a
+	ld a, BANK(.autoinput_down_a)
+	call StartAutoInput
 .skip_lyra_pack_select
 
 	call LoadBattleMenu2
@@ -4886,6 +4888,19 @@ BattleMenu: ; 3e139
 	dec a
 	jp z, BattleMenu_Run ; $4
 	jr .loop
+
+.autoinput_down_a
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db D_DOWN,   $00
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db A_BUTTON, $00
+	db NO_INPUT, $ff ; end
 ; 3e192
 
 BattleMenu_Fight: ; 3e192
@@ -6329,9 +6344,64 @@ CheckEnemyLockedIn: ; 3e8d1
 ; 3e8e4
 
 LinkBattleSendReceiveAction: ; 3e8e4
-	farjp _LinkBattleSendReceiveAction
-; 3e8eb
+; Note that only the lower 4 bits is usable. The higher 4 determines what kind of
+; linking we are performing.
+	call .StageForSend
+	ld [wLinkBattleSentAction], a
+	farcall PlaceWaitingText
+	ld a, [wLinkBattleSentAction]
+	ld [wPlayerLinkAction], a
+	ld a, $ff
+	ld [wOtherPlayerLinkAction], a
 
+.waiting
+	call LinkTransfer
+	call DelayFrame
+	ld a, [wOtherPlayerLinkAction]
+	inc a
+	jr z, .waiting
+
+	ld b, 10
+.receive
+	call DelayFrame
+	call LinkTransfer
+	dec b
+	jr nz, .receive
+
+	ld b, 10
+.acknowledge
+	call DelayFrame
+	call LinkDataReceived
+	dec b
+	jr nz, .acknowledge
+
+	ld a, [wOtherPlayerLinkAction]
+	ld [wBattleAction], a
+	ret
+; 100a2e
+
+.StageForSend: ; 100a2e
+	ld a, [wPlayerAction]
+	and a
+	jr nz, .switch
+	ld a, [CurPlayerMove]
+	ld b, BATTLEACTION_STRUGGLE
+	cp STRUGGLE
+	jr z, .struggle
+	ld a, [CurMoveNum]
+	jr .use_move
+
+.switch
+	ld a, [CurPartyMon]
+	add BATTLEACTION_SWITCH1
+	jr .use_move
+
+.struggle
+	ld a, b
+.use_move
+	and $0f
+	ret
+; 3e8eb
 
 LoadEnemyMon: ; 3e8eb
 ; Initialize enemy monster parameters

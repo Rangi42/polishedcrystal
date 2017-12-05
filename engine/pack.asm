@@ -1152,7 +1152,9 @@ TutorialPack: ; 107bb
 	ld a, [InputType]
 	or a
 	jr z, .loop
-	farcall _DudeAutoInput_RightRightA
+	ld hl, .autoinput_right_right_a
+	ld a, BANK(.autoinput_right_right_a)
+	call StartAutoInput
 .loop
 	call .RunJumptable
 	call DepositSellTutorial_InterpretJoypad
@@ -1160,6 +1162,15 @@ TutorialPack: ; 107bb
 	xor a
 	ld [wcf66], a
 	ret
+
+.autoinput_right_right_a
+	db NO_INPUT, $08
+	db D_RIGHT,  $00
+	db NO_INPUT, $08
+	db D_RIGHT,  $00
+	db NO_INPUT, $08
+	db A_BUTTON, $00
+	db NO_INPUT, $ff ; end
 ; 107d7
 
 .RunJumptable: ; 107d7
