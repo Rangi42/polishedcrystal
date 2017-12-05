@@ -30,11 +30,9 @@ OaksLab_MapEventHeader:
 	signpost 3, 9, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
 	signpost 1, 0, SIGNPOST_JUMPTEXT, OaksLabPCText
 
-.PersonEvents: db 8
+.PersonEvents: db 6
 	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
-	person_event SPRITE_BULBASAUR, 3, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BulbasaurDollScript, EVENT_DECO_BULBASAUR_DOLL
-	person_event SPRITE_CHARMANDER, 3, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CharmanderDollScript, EVENT_DECO_CHARMANDER_DOLL
-	person_event SPRITE_SQUIRTLE, 3, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SquirtleDollScript, EVENT_DECO_SQUIRTLE_DOLL
+	person_event SPRITE_EEVEE, 3, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
 	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
 	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
 	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
@@ -42,9 +40,7 @@ OaksLab_MapEventHeader:
 
 const_value set 1
 	const OAKSLAB_OAK
-	const OAKSLAB_BULBASAUR_DOLL
-	const OAKSLAB_CHARMANDER_DOLL
-	const OAKSLAB_SQUIRTLE_DOLL
+	const OAKSLAB_EEVEE_DOLL
 
 Oak:
 	faceplayer
@@ -67,7 +63,7 @@ Oak:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftrue .Charmander
+	iftrue .Eevee
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
 	pokenamemem BULBASAUR, $0
@@ -79,7 +75,7 @@ Oak:
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
-.Charmander:
+.Eevee:
 	pokenamemem CHARMANDER, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
@@ -179,66 +175,24 @@ Oak:
 	buttonsound
 	jump .CheckPokedex
 
-BulbasaurDollScript:
+EeveeDollScript:
 	spriteface OAKSLAB_OAK, RIGHT
 	opentext
-	writetext ProfOakBulbasaurDollTradeText
+	writetext ProfOakEeveeDollTradeText
 	waitbutton
-	checkitem LEAF_STONE
-	iffalse_jumpopenedtext NoStoneText
+	checkitem EVERSTONE
+	iffalse_jumpopenedtext NoEverstoneText
 	writetext WantToTradeText
 	yesorno
 	iffalse_jumpopenedtext NoTradeText
-	takeitem LEAF_STONE
-	disappear OAKSLAB_BULBASAUR_DOLL
-	setevent EVENT_DECO_BULBASAUR_DOLL
-	writetext BulbasaurDollText
+	takeitem EVERSTONE
+	disappear OAKSLAB_EEVEE_DOLL
+	setevent EVENT_DECO_EEVEE_DOLL
+	writetext EeveeDollText
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
-	writetext BulbasaurDollSentText
-	waitbutton
-	jumpopenedtext ProfOakAfterTradeText
-
-CharmanderDollScript:
-	spriteface OAKSLAB_OAK, RIGHT
-	opentext
-	writetext ProfOakCharmanderDollTradeText
-	waitbutton
-	checkitem FIRE_STONE
-	iffalse_jumpopenedtext NoStoneText
-	writetext WantToTradeText
-	yesorno
-	iffalse_jumpopenedtext NoTradeText
-	takeitem FIRE_STONE
-	disappear OAKSLAB_CHARMANDER_DOLL
-	setevent EVENT_DECO_CHARMANDER_DOLL
-	writetext CharmanderDollText
-	playsound SFX_ITEM
-	pause 60
-	waitbutton
-	writetext CharmanderDollSentText
-	waitbutton
-	jumpopenedtext ProfOakAfterTradeText
-
-SquirtleDollScript:
-	spriteface OAKSLAB_OAK, RIGHT
-	opentext
-	writetext ProfOakSquirtleDollTradeText
-	waitbutton
-	checkitem WATER_STONE
-	iffalse_jumpopenedtext NoStoneText
-	writetext WantToTradeText
-	yesorno
-	iffalse_jumpopenedtext NoTradeText
-	takeitem WATER_STONE
-	disappear OAKSLAB_SQUIRTLE_DOLL
-	setevent EVENT_DECO_SQUIRTLE_DOLL
-	writetext SquirtleDollText
-	playsound SFX_ITEM
-	pause 60
-	waitbutton
-	writetext SquirtleDollSentText
+	writetext EeveeDollSentText
 	waitbutton
 	jumpopenedtext ProfOakAfterTradeText
 
@@ -566,37 +520,17 @@ OaksLabPCText:
 	line "Town 8-)"
 	done
 
-ProfOakBulbasaurDollTradeText:
+ProfOakEeveeDollTradeText:
 	text "Oak: Oh, are you"
 	line "admiring my"
-	cont "Bulbasaur doll?"
+	cont "Eevee Doll?"
 
 	para "I'll trade it"
-	line "to you for a"
-	cont "Leaf Stone."
+	line "to you for an"
+	cont "Everstone."
 	done
 
-ProfOakCharmanderDollTradeText:
-	text "Oak: Oh, are you"
-	line "admiring my"
-	cont "Charmander doll?"
-
-	para "I'll trade it"
-	line "to you for a"
-	cont "Fire Stone."
-	done
-
-ProfOakSquirtleDollTradeText:
-	text "Oak: Oh, are you"
-	line "admiring my"
-	cont "Squirtle doll?"
-
-	para "I'll trade it"
-	line "to you for a"
-	cont "Water Stone."
-	done
-
-NoStoneText:
+NoEverstoneText:
 	text "But you don't have"
 	line "one of those…"
 	done
@@ -612,33 +546,13 @@ NoTradeText:
 	cont "your mind."
 	done
 
-BulbasaurDollText:
+EeveeDollText:
 	text "<PLAYER> received"
-	line "Bulbasaur Doll."
+	line "Eevee Doll."
 	done
 
-BulbasaurDollSentText:
-	text "Bulbasaur Doll"
-	line "was sent home."
-	done
-
-CharmanderDollText:
-	text "<PLAYER> received"
-	line "Charmander Doll."
-	done
-
-CharmanderDollSentText:
-	text "Charmander Doll"
-	line "was sent home."
-	done
-
-SquirtleDollText:
-	text "<PLAYER> received"
-	line "Squirtle Doll."
-	done
-
-SquirtleDollSentText:
-	text "Squirtle Doll"
+EeveeDollSentText:
+	text "Eevee Doll"
 	line "was sent home."
 	done
 

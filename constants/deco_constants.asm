@@ -59,64 +59,69 @@ endm
 const_value = 1
 __enum__ = 0
 	const BEDS
-	deco  FEATHERY_BED ; 2 (0)
-	deco  PINK_BED ; 3 (1)
-	deco  POLKADOT_BED ; 4 (2)
-	deco  PIKACHU_BED ; 5 (3)
+	deco  FEATHERY_BED
+	deco  PINK_BED
+	deco  POLKADOT_BED
+	deco  PIKACHU_BED
 
 	const CARPETS
-	deco  RED_CARPET ; 7 (4)
-	deco  BLUE_CARPET ; 8 (5)
-	deco  YELLOW_CARPET ; 9 (6)
-	deco  GREEN_CARPET ; a (7)
+	deco  RED_CARPET
+	deco  BLUE_CARPET
+	deco  YELLOW_CARPET
+	deco  GREEN_CARPET
 
 	const PLANTS
-	deco  MAGNAPLANT ; c (8)
-	deco  TROPICPLANT ; d (9)
-	deco  JUMBOPLANT ; e (a)
+	deco  MAGNAPLANT
+	deco  TROPICPLANT
+	deco  JUMBOPLANT
 
 	const POSTERS
-	deco  TOWN_MAP ; 10 (b)
-	deco  PIKACHU_POSTER ; 11 (c)
-	deco  CLEFAIRY_POSTER ; 12 (d)
-	deco  MARILL_POSTER ; 13(e)
+	deco  TOWN_MAP
+	deco  PIKACHU_POSTER
+	deco  CLEFAIRY_POSTER
+	deco  MARILL_POSTER
 
 	const CONSOLES
-	deco  SNES ; 15 (f)
-	deco  N64 ; 16 (10)
-	deco  GAMECUBE ; 17 (11)
-	deco  WII ; 18 (12)
+	deco  SNES
+	deco  N64
+	deco  GAMECUBE
+	deco  WII
 
 	const BIG_DOLLS
-	deco  BIG_SNORLAX_DOLL ; 1a (13)
-	deco  BIG_ONIX_DOLL ; 1b (14)
-	deco  BIG_LAPRAS_DOLL ; 1c (15)
+	deco  BIG_SNORLAX_DOLL
+	deco  BIG_ONIX_DOLL
+	deco  BIG_LAPRAS_DOLL
 
 	const DOLLS
-	deco  PIKACHU_DOLL ; 1e (16)
-	deco  SURF_PIKACHU_DOLL ; 1f (17)
-	deco  CLEFAIRY_DOLL ; 20 (18)
-	deco  JIGGLYPUFF_DOLL ; 21 (19)
-	deco  BULBASAUR_DOLL ; 22 (1a)
-	deco  CHARMANDER_DOLL ; 23 (1b)
-	deco  SQUIRTLE_DOLL ; 24 (1c)
-	deco  POLIWAG_DOLL ; 25 (1d)
-	deco  DIGLETT_DOLL ; 26 (1e)
-	deco  STARYU_DOLL ; 27 (1f)
-	deco  MAGIKARP_DOLL ; 28 (20)
-	deco  ODDISH_DOLL ; 29 (21)
-	deco  GENGAR_DOLL ; 2a (22)
-	deco  SHELLDER_DOLL ; 2b (23)
-	deco  GRIMER_DOLL ; 2c (24)
-	deco  VOLTORB_DOLL ; 2d (25)
-	deco  WEEDLE_DOLL ; 2e (26)
-	deco  UNOWN_DOLL ; 2f (27)
-	deco  GEODUDE_DOLL ; 30 (28)
-	deco  MACHOP_DOLL ; 31 (29)
-	deco  TENTACOOL_DOLL ; 32 (2a)
-	deco  EEVEE_DOLL ; 33 (2b)
-	deco  GOLD_TROPHY_DOLL ; 34 (2c)
-	deco  SILVER_TROPHY_DOLL ; 35 (2d)
-
-NUM_NON_TROPHY_DECOS EQU $2c
-NUM_DECOS EQU $2e
+	deco  PIKACHU_DOLL
+	deco  RAICHU_DOLL
+	deco  SURF_PIKACHU_DOLL
+	deco  CLEFAIRY_DOLL
+	deco  JIGGLYPUFF_DOLL
+	deco  BULBASAUR_DOLL
+	deco  CHARMANDER_DOLL
+	deco  SQUIRTLE_DOLL
+	deco  CHIKORITA_DOLL
+	deco  CYNDAQUIL_DOLL
+	deco  TOTODILE_DOLL
+	deco  POLIWAG_DOLL
+	deco  MAREEP_DOLL
+	deco  TOGEPI_DOLL
+	deco  MAGIKARP_DOLL
+	deco  ODDISH_DOLL
+	deco  GENGAR_DOLL
+	deco  OCTILLERY_DOLL
+	deco  DITTO_DOLL
+	deco  VOLTORB_DOLL
+	deco  ABRA_DOLL
+	deco  UNOWN_DOLL
+	deco  GEODUDE_DOLL
+	deco  PINECO_DOLL
+	deco  MARILL_DOLL
+	deco  TEDDIURSA_DOLL
+	deco  MEOWTH_DOLL
+	deco  VULPIX_DOLL
+	deco  GROWLITHE_DOLL
+	deco  EEVEE_DOLL
+	deco  GOLD_TROPHY_DOLL
+	deco  SILVER_TROPHY_DOLL

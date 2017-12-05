@@ -99,8 +99,8 @@ PokeDollVendingMachine:
 	verticalmenu
 	closewindow
 	if_equal $1, .JigglypuffDoll
-	if_equal $2, .GeodudeDoll
-	if_equal $3, .OddishDoll
+	if_equal $2, .DittoDoll
+	if_equal $3, .MeowthDoll
 	endtext
 
 .JigglypuffDoll:
@@ -117,31 +117,31 @@ PokeDollVendingMachine:
 	waitbutton
 	jump .Start
 
-.GeodudeDoll:
+.DittoDoll:
 	checkmoney $0, 2400
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_GEODUDE_DOLL
+	checkevent EVENT_DECO_DITTO_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 2400
-	setevent EVENT_DECO_GEODUDE_DOLL
-	writetext BoughtGeodudeDollText
+	setevent EVENT_DECO_DITTO_DOLL
+	writetext BoughtDittoDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext GeodudeDollSentText
+	writetext DittoDollSentText
 	waitbutton
 	jump .Start
 
-.OddishDoll:
+.MeowthDoll:
 	checkmoney $0, 2400
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_ODDISH_DOLL
+	checkevent EVENT_DECO_MEOWTH_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 2400
-	setevent EVENT_DECO_ODDISH_DOLL
-	writetext BoughtOddishDollText
+	setevent EVENT_DECO_MEOWTH_DOLL
+	writetext BoughtMeowthDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext OddishDollSentText
+	writetext MeowthDollSentText
 	waitbutton
 	jump .Start
 
@@ -166,8 +166,8 @@ PokeDollVendingMachine:
 	db $80 ; flags
 	db 4 ; items
 	db "Jigglypuff  ¥2400@"
-	db "Geodude     ¥2400@"
-	db "Oddish      ¥2400@"
+	db "Ditto       ¥2400@"
+	db "Meowth      ¥2400@"
 	db "Cancel@"
 
 UnknownText_0x5677f:
@@ -320,22 +320,22 @@ JigglypuffDollSentText:
 	line "was sent home."
 	done
 
-BoughtGeodudeDollText:
+BoughtDittoDollText:
 	text "<PLAYER> bought"
-	line "Geodude Doll."
+	line "Ditto Doll."
 	done
 
-GeodudeDollSentText:
-	text "Geodude Doll"
+DittoDollSentText:
+	text "Ditto Doll"
 	line "was sent home."
 	done
 
-BoughtOddishDollText:
+BoughtMeowthDollText:
 	text "<PLAYER> bought"
-	line "Oddish Doll."
+	line "Meowth Doll."
 	done
 
-OddishDollSentText:
-	text "Oddish Doll"
+MeowthDollSentText:
+	text "Meowth Doll"
 	line "was sent home."
 	done

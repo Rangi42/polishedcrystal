@@ -40,8 +40,8 @@ VermilionCity_MapEventHeader:
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	person_event SPRITE_COOLTRAINER_F, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1
-	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionMachopOwnerText, -1
-	person_event SPRITE_MACHOP, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachop, -1
+	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
+	person_event SPRITE_MACHOKE, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachoke, -1
 	person_event SPRITE_ROCKER, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aab1a, -1
 	person_event SPRITE_SUPER_NERD, 16, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
 	person_event SPRITE_SAILOR, 9, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
@@ -148,10 +148,10 @@ LawrenceDepartRightMovementData:
 	step_down
 	step_end
 
-VermilionMachop:
-	showcrytext VermilionMachopText1, MACHOP
+VermilionMachoke:
+	showcrytext VermilionMachokeText1, MACHOKE
 	earthquake 30
-	jumptext VermilionMachopText2
+	jumptext VermilionMachokeText2
 
 VermilionSnorlax:
 	opentext
@@ -259,25 +259,30 @@ UnknownText_0x1aaa15:
 	cont "dock here."
 	done
 
-VermilionMachopOwnerText:
-	text "My #mon is"
-	line "preparing the land"
-	cont "for construction."
+VermilionMachokeOwnerText:
+	text "My #mon has"
+	line "been preparing the"
+
+	para "land for construc-"
+	line "tion for so long,"
+	cont "it evolved!"
 
 	para "But I have no"
 	line "money to start the"
 	cont "project…"
 	done
 
-VermilionMachopText1:
-	text "Machop: Guooh"
+VermilionMachokeText1:
+	text "Machoke: Guooh"
 	line "gogogoh!"
 	done
 
-VermilionMachopText2:
-	text "A Machop is growl-"
-	line "ing while stomping"
-	cont "the ground flat."
+VermilionMachokeText2:
+	text "A Machoke is"
+	line "growling while"
+
+	para "stomping the"
+	line "ground flat."
 	done
 
 UnknownText_0x1aab1a:

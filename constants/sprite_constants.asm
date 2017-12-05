@@ -140,7 +140,7 @@
 	const SPRITE_SILPH_EMPLOYEE ; $89
 	const SPRITE_SWIMMING_OFFICER ; $8a
 	const SPRITE_SWIMMING_OFFICER_F ; $8b
-	const SPRITE_CLEFAIRY_WALK ; $8c
+	const SPRITE_CLEFAIRY ; $8c
 	const SPRITE_FARFETCH_D ; $8d
 	const SPRITE_LAPRAS ; $8e
 	const SPRITE_EEVEE ; $8f
@@ -169,66 +169,62 @@
 	const SPRITE_SILVER_TROPHY ; $a6
 	const SPRITE_GOLD_TROPHY ; $a7
 
-	const SPRITE_UNUSED ; $a8
-
-	; Only use this on outdoor maps--it will default to the player's
-	; sprite if it is not in the map group's overworld sprite set
-	const SPRITE_PLAYER ; $a9
-
 SPRITE_POKEMON EQU const_value
-	const SPRITE_BULBASAUR ; $aa
-	const SPRITE_CHARMANDER ; $ab
-	const SPRITE_SQUIRTLE ; $ac
-	const SPRITE_WEEDLE ; $ad
-	const SPRITE_PIDGEY ; $ae
-	const SPRITE_PIDGEOTTO ; $af
-	const SPRITE_RATTATA ; $b0
-	const SPRITE_PIKACHU ; $b1
-	const SPRITE_NIDORAN_F ; $b2
-	const SPRITE_NIDORAN_M ; $b3
-	const SPRITE_NIDORINO ; $b4
-	const SPRITE_CLEFAIRY ; $b5
-	const SPRITE_JIGGLYPUFF ; $b6
-	const SPRITE_ODDISH ; $b7
-	const SPRITE_VILEPLUME ; $b8
-	const SPRITE_DIGLETT ; $b9
-	const SPRITE_MEOWTH ; $ba
-	const SPRITE_PERSIAN ; $bb
-	const SPRITE_PSYDUCK ; $bc
-	const SPRITE_POLIWAG ; $bd
-	const SPRITE_POLIWRATH ; $be
-	const SPRITE_ABRA ; $bf
-	const SPRITE_MACHOP ; $c0
-	const SPRITE_MACHOKE ; $c1
-	const SPRITE_TENTACOOL ; $c2
-	const SPRITE_GEODUDE ; $c3
-	const SPRITE_SLOWPOKE ; $c4
-	const SPRITE_SLOWBRO ; $c5
-	const SPRITE_DODRIO ; $c6
-	const SPRITE_GRIMER ; $c7
-	const SPRITE_SHELLDER ; $c8
-	const SPRITE_GENGAR ; $c9
-	const SPRITE_VOLTORB ; $ca
-	const SPRITE_ELECTRODE ; $cb
-	const SPRITE_RHYDON ; $cc
-	const SPRITE_CHANSEY ; $cd
-	const SPRITE_STARYU ; $ce
-	const SPRITE_MAGIKARP ; $cf
-	const SPRITE_ARTICUNO ; $d0
-	const SPRITE_ZAPDOS ; $d1
-	const SPRITE_MOLTRES ; $d2
-	const SPRITE_DRATINI ; $d3
-	const SPRITE_MEWTWO ; $d4
-	const SPRITE_FURRET ; $d5
-	const SPRITE_HOOTHOOT ; $d6
-	const SPRITE_AMPHAROS ; $d7
-	const SPRITE_MARILL ; $d8
-	const SPRITE_MURKROW ; $d9
-	const SPRITE_SLOWKING ; $da
-	const SPRITE_UNOWN ; $db
-	const SPRITE_HERACROSS ; $dc
-	const SPRITE_WEAVILE ; $dd
-	const SPRITE_URSARING ; $de
+	const SPRITE_BULBASAUR ; $a8
+	const SPRITE_CHARMANDER ; $a9
+	const SPRITE_SQUIRTLE ; $aa
+	const SPRITE_PIDGEY ; $ab
+	const SPRITE_PIDGEOTTO ; $ac
+	const SPRITE_RATTATA ; $ad
+	const SPRITE_PIKACHU ; $ae
+	const SPRITE_RAICHU ; $af
+	const SPRITE_NIDORAN_F ; $b0
+	const SPRITE_NIDORAN_M ; $b1
+	const SPRITE_NIDORINO ; $b2
+	const SPRITE_JIGGLYPUFF ; $b3
+	const SPRITE_ODDISH ; $b4
+	const SPRITE_VILEPLUME ; $b5
+	const SPRITE_DIGLETT ; $b6
+	const SPRITE_MEOWTH ; $b7
+	const SPRITE_PERSIAN ; $b8
+	const SPRITE_PSYDUCK ; $b9
+	const SPRITE_POLIWAG ; $ba
+	const SPRITE_POLIWRATH ; $bb
+	const SPRITE_ABRA ; $bc
+	const SPRITE_MACHOKE ; $bd
+	const SPRITE_GEODUDE ; $be
+	const SPRITE_SLOWPOKE ; $bf
+	const SPRITE_SLOWBRO ; $c0
+	const SPRITE_DODRIO ; $c1
+	const SPRITE_GENGAR ; $c2
+	const SPRITE_VOLTORB ; $c3
+	const SPRITE_ELECTRODE ; $c4
+	const SPRITE_RHYDON ; $c5
+	const SPRITE_CHANSEY ; $c6
+	const SPRITE_TOGEPI ; $c7
+	const SPRITE_MAGIKARP ; $c8
+	const SPRITE_DITTO ; $c9
+	const SPRITE_ARTICUNO ; $ca
+	const SPRITE_ZAPDOS ; $cb
+	const SPRITE_MOLTRES ; $cc
+	const SPRITE_DRATINI ; $cd
+	const SPRITE_MEWTWO ; $ce
+	const SPRITE_CHIKORITA ; $cf
+	const SPRITE_CYNDAQUIL ; $d0
+	const SPRITE_TOTODILE ; $d1
+	const SPRITE_FURRET ; $d2
+	const SPRITE_HOOTHOOT ; $d3
+	const SPRITE_MAREEP ; $d4
+	const SPRITE_AMPHAROS ; $d5
+	const SPRITE_MARILL ; $d6
+	const SPRITE_MURKROW ; $d7
+	const SPRITE_SLOWKING ; $d8
+	const SPRITE_PINECO ; $d9
+	const SPRITE_HERACROSS ; $da
+	const SPRITE_WEAVILE ; $db
+	const SPRITE_TEDDIURSA ; $dc
+	const SPRITE_URSARING ; $dd
+	const SPRITE_OCTILLERY ; $de
 	const SPRITE_SKARMORY ; $df
 	const SPRITE_SMEARGLE ; $e0
 	const SPRITE_MILTANK ; $e1
@@ -242,7 +238,7 @@ SPRITE_POKEMON EQU const_value
 
 	const SPRITE_DAYCARE_MON_1 ; $e9
 	const SPRITE_DAYCARE_MON_2 ; $ea
-	const SPRITE_GROTTO_MON    ; $eb
+	const SPRITE_GROTTO_MON ; $eb
 
 SPRITE_VARS EQU const_value
 	const SPRITE_CONSOLE ; $ec
