@@ -21,214 +21,214 @@ ROMX $05
 	org $4000
 	"Code 5"
 
-ROMX $08
+ROMX $06
 	org $4000
 	"Code 6"
 	"Egg Moves"
 
-ROMX $09
+ROMX $07
 	org $4000
 	"Code 7"
 
-ROMX $0A
+ROMX $08
 	org $4000
 	"Code 8"
 
-ROMX $0B
+ROMX $09
 	org $4000
 	"Code 9"
 
-ROMX $0D
-	org $4000
-	"Effect Commands"
-
-ROMX $0E
-	org $4000
-	"Enemy Trainer Pointers"
-
-ROMX $0F
-	org $4000
-	"Battle Core"
-
-ROMX $10
-	org $4000
-	"Evolution Engine"
-	"Evolutions and Attacks"
-
-ROMX $11
+ROMX $0A
 	org $4000
 	"Code 10"
 
-ROMX $12
+ROMX $0B
 	org $4000
 	"Code 11"
 
-ROMX $13
+ROMX $0C
 	org $4000
 	"Code 12"
 
-ROMX $14
+ROMX $0D
 	org $4000
 	"Code 13"
 
-ROMX $1C
-	org $4000
-	"Moves"
-
-ROMX $20
+ROMX $0E
 	org $4000
 	"Code 14"
 
-ROMX $21
+ROMX $0F
 	org $4000
 	"Code 15"
 
-ROMX $22
+ROMX $10
 	org $4000
 	"Code 16"
 	"Special Map Blockdata"
 	"Pokemon Center Scripts 4"
 
-ROMX $23
+ROMX $11
 	org $4000
 	"Code 17"
 
-ROMX $24
+ROMX $12
 	org $4000
 	"Code 18"
 	"Special Map Scripts"
 
-ROMX $25
-	org $4000
-	"Map Headers"
-	"Events"
-
-ROMX $28
-	org $4000
-	"Phone Scripts"
-
-ROMX $29
-	org $4000
-	"Pic Animations Bitmasks"
-
-ROMX $2B
-	org $4000
-	"New Bark Scripts"
-
-ROMX $2E
+ROMX $13
 	org $4000
 	"Code 19"
 
-ROMX $2F
+ROMX $14
 	org $4000
 	"Code 20"
 
-ROMX $32
+ROMX $15
 	org $4000
 	"Code 21"
 
-ROMX $33
-	org $4000
-	"Battle Animations"
-
-ROMX $34
-	org $4000
-	"Pic Animations"
-
-ROMX $35
-	org $4000
-	"Pic Animations Frames 1"
-
-ROMX $36
-	org $4000
-	"Pic Animations Frames 2"
-
-ROMX $38
+ROMX $16
 	org $4000
 	"Code 22"
 
-ROMX $39
+ROMX $17
+	org $4000
+	"Code 23"
+
+ROMX $18
+	org $4000
+	"Code 24"
+
+ROMX $19
+	org $4000
+	"Code 25"
+
+ROMX $1A
 	org $4000
 	"Introduction"
 
-ROMX $3A
+ROMX $1B
+	org $4000
+	"Title Screen"
+
+ROMX $1C
+	org $4000
+	"Credits"
+
+ROMX $1D
 	org $4000
 	"Audio"
 
-ROMX $3C
+ROMX $1E
 	org $4000
 	"Sound Effects"
 	"Cries"
 
-ROMX $3E
-	org $4000
-	"Code 23"
-
-ROMX $3F
-	org $4000
-	"Code 24"
-
-ROMX $41
-	org $4000
-	"Code 25"
-
-ROMX $42
-	org $4000
-	"Credits"
-
-ROMX $43
-	org $4000
-	"Title Screen"
-
-ROMX $48
-	org $4000
-	"Pic Pointers"
-
-ROMX $58
-	org $4000
-	"Battle Tower Scripts"
-
-ROMX $5A
-	org $4000
-	"Pokemon Center Scripts 1"
-
-ROMX $5E
+ROMX $1F
 	org $4000
 	"Crystal Sound Effects"
 
-ROMX $5F
+ROMX $20
 	org $4000
-	"Pokemon Center Scripts 2"
+	"Pic Animations"
 
-ROMX $6E
+ROMX $21
 	org $4000
-	"Wild Data"
+	"Pic Animations Frames 1"
 
-ROMX $6F
+ROMX $22
 	org $4000
-	"Second Map Headers"
+	"Pic Animations Frames 2"
 
-ROMX $70
+ROMX $23
 	org $4000
-	"Pokedex"
+	"Pic Animations Bitmasks"
 
-ROMX $73
+ROMX $24
+	org $4000
+	"Pic Pointers"
+
+ROMX $25
+	org $4000
+	"Battle Core"
+
+ROMX $26
+	org $4000
+	"Battle Animations"
+
+ROMX $27
+	org $4000
+	"Moves"
+
+ROMX $28
+	org $4000
+	"Effect Commands"
+
+ROMX $29
 	org $4000
 	"Enemy Trainers"
 
-ROMX $76
+ROMX $2A
+	org $4000
+	"Enemy Trainer Pointers"
+
+ROMX $2B
+	org $4000
+	"Evolution"
+	"Evolutions and Attacks"
+
+ROMX $2C
+	org $4000
+	"Wild Data"
+
+ROMX $2D
+	org $4000
+	"Pokedex"
+
+ROMX $2E
+	org $4000
+	"Map Headers"
+	"Events"
+
+ROMX $2F
+	org $4000
+	"Second Map Headers"
+
+ROMX $30
+	org $4000
+	"Phone Scripts"
+
+ROMX $31
+	org $4000
+	"Battle Tower Scripts"
+
+ROMX $32
+	org $4000
+	"New Bark Scripts"
+
+ROMX $33
+	org $4000
+	"Pokemon Center Scripts 1"
+
+ROMX $34
+	org $4000
+	"Pokemon Center Scripts 2"
+
+ROMX $35
 	org $4000
 	"Pokemon Center Scripts 3"
 
-ROMX $77
+ROMX $36
 	org $4000
 	"Diploma"
 	"New Bark Scripts 2"
 
-ROMX $78
+ROMX $37
 	org $4000
 	"Battle Tower Text"
 
-ROMX $79
+ROMX $38
 	org $4000
 	"Crystal Data"

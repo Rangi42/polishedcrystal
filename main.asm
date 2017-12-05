@@ -1638,129 +1638,6 @@ PlaceGraphic: ; 2ef6e
 	ret
 
 
-SECTION "Wild Data", ROMX
-
-INCLUDE "engine/wildmons.asm"
-
-
-SECTION "Effect Commands", ROMX
-
-INCLUDE "battle/effect_commands.asm"
-
-
-SECTION "Enemy Trainers", ROMX
-
-INCLUDE "battle/ai/items.asm"
-
-AIScoring: ; 38591
-INCLUDE "battle/ai/scoring.asm"
-
-GetTrainerClassName: ; 3952d
-	ld a, c
-	ld [CurSpecies], a
-	ld a, TRAINER_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, StringBuffer1
-	ret
-
-GetOTName: ; 39550
-	ld hl, OTPlayerName
-	ld a, [wLinkMode]
-	and a
-	jr nz, .ok
-
-	ld a, c
-	ld [CurSpecies], a
-	ld a, TRAINER_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld hl, StringBuffer1
-
-.ok
-	ld bc, TRAINER_CLASS_NAME_LENGTH
-	ld de, OTClassName
-	push de
-	call CopyBytes
-	pop de
-	ret
-
-GetTrainerAttributes: ; 3957b
-	ld a, [TrainerClass]
-	ld c, a
-	call GetOTName
-	ld a, [TrainerClass]
-	dec a
-	ld hl, TrainerClassAttributes + TRNATTR_ITEM1
-	ld bc, NUM_TRAINER_ATTRIBUTES
-	call AddNTimes
-	ld de, wEnemyTrainerItem1
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	ld a, [hl]
-	ld [wEnemyTrainerBaseReward], a
-	ret
-
-ComputeTrainerReward: ; 3991b (e:591b)
-	ld hl, hProduct
-	xor a
-rept 3
-	ld [hli], a
-endr
-	ld a, [wEnemyTrainerBaseReward]
-	ld [hli], a
-	ld a, [CurPartyLevel]
-	ld [hl], a
-	call Multiply
-	ld hl, wBattleReward
-	xor a
-	ld [hli], a
-	ld a, [hProduct + 2]
-	ld [hli], a
-	ld a, [hProduct + 3]
-	ld [hl], a
-	ret
-
-INCLUDE "trainers/attributes.asm"
-
-
-SECTION "Enemy Trainer Pointers", ROMX
-
-INCLUDE "trainers/read_party.asm"
-
-INCLUDE "trainers/trainer_pointers.asm"
-
-INCLUDE "trainers/trainers.asm"
-
-
-SECTION "Battle Core", ROMX
-
-INCLUDE "battle/core.asm"
-
-
-SECTION "Effect Command Pointers", ROMX
-
-INCLUDE "battle/effect_command_pointers.asm"
-
-
-SECTION "Pokedex", ROMX
-
-INCLUDE "engine/pokedex.asm"
-
-
-SECTION "Moves", ROMX
-
-INCLUDE "battle/moves/moves.asm"
-
-
-SECTION "Evolution Engine", ROMX
-
-INCLUDE "engine/evolve.asm"
-
-
 SECTION "Code 10", ROMX
 
 INCLUDE "engine/mail.asm"
@@ -2304,54 +2181,6 @@ PackGFX:
 INCBIN "gfx/pack/pack.w40.2bpp"
 PackFGFX: ; 48e9b
 INCBIN "gfx/pack/pack_f.w40.2bpp"
-
-
-SECTION "Palette Maps", ROMX
-
-SwapTextboxPalettes:: ; 4c000
-	hlcoord 0, 0
-	decoord 0, 0, AttrMap
-	ld b, SCREEN_HEIGHT
-.loop
-	push bc
-	ld c, SCREEN_WIDTH
-	call GetBGMapTilePalettes
-	pop bc
-	dec b
-	jr nz, .loop
-	ret
-
-ScrollBGMapPalettes:: ; 4c03f
-	ld hl, BGMapBuffer
-	ld de, BGMapPalBuffer
-	; fallthrough
-GetBGMapTilePalettes::
-; hl = tile buffer
-; de = palette buffer
-; c = tile count
-.loop
-	ld a, [hl]
-	push hl
-	ld hl, TilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [TilesetPalettes + 1]
-	adc $0
-	ld h, a
-	ld a, [hl]
-	pop hl
-	ld [de], a
-	res 7, [hl]
-	inc hl
-	inc de
-	dec c
-	jr nz, .loop
-	ret
-
-INCLUDE "tilesets/palette_maps.asm"
-
-TileCollisionTable:: ; 4ce1f
-INCLUDE "tilesets/collision.asm"
 
 
 SECTION "Code 12", ROMX
@@ -5148,6 +4977,369 @@ INCLUDE "engine/fish.asm"
 INCLUDE "engine/slot_machine.asm"
 
 
+SECTION "Code 19", ROMX
+
+INCLUDE "engine/events_3.asm"
+INCLUDE "engine/radio.asm"
+INCLUDE "gfx/mail.asm"
+
+
+SECTION "Code 20", ROMX
+
+INCLUDE "engine/std_scripts.asm"
+INCLUDE "engine/phone_scripts.asm"
+
+TalkToTrainerScript:: ; 0xbe66a
+	faceplayer
+	trainerflagaction CHECK_FLAG
+	iftrue AlreadyBeatenTrainerScript
+	loadmemtrainer
+	encountermusic
+	jump StartBattleWithMapTrainerScript
+
+SeenByTrainerScript:: ; 0xbe675
+	loadmemtrainer
+	encountermusic
+	showemote EMOTE_SHOCK, LAST_TALKED, 30
+	callasm TrainerWalkToPlayer
+	applymovement2 MovementBuffer
+	writepersonxy LAST_TALKED
+	faceperson PLAYER, LAST_TALKED
+	jump StartBattleWithMapTrainerScript
+
+StartBattleWithMapTrainerScript: ; 0xbe68a
+	opentext
+	trainertext $0
+	waitbutton
+	closetext
+	loadmemtrainer
+	callasm CheckTrainerClass
+	iffalse .nobattle
+	startbattle
+	reloadmapafterbattle
+.nobattle
+	trainerflagaction SET_FLAG
+	loadvar wRunningTrainerBattleScript, -1
+
+AlreadyBeatenTrainerScript:
+	scripttalkafter
+
+CheckTrainerClass:
+	ld a, [wTempTrainerClass]
+	ld [ScriptVar], a
+	ret
+
+
+SECTION "Code 21", ROMX
+
+INCLUDE "battle/bg_effects.asm"
+INCLUDE "battle/anims.asm"
+
+
+SECTION "Code 22", ROMX
+
+INCLUDE "engine/card_flip.asm"
+INCLUDE "engine/unown_puzzle.asm"
+;INCLUDE "engine/dummy_game.asm"
+INCLUDE "engine/billspc.asm"
+
+
+SECTION "Code 23", ROMX
+
+INCLUDE "battle/hidden_power.asm"
+INCLUDE "battle/misc.asm"
+INCLUDE "engine/unowndex.asm"
+INCLUDE "event/magikarp.asm"
+INCLUDE "event/name_rater.asm"
+INCLUDE "engine/link_trade2.asm"
+INCLUDE "audio/distorted_cries.asm"
+
+
+SECTION "Code 24", ROMX
+
+INCLUDE "tilesets/animations.asm"
+INCLUDE "engine/npctrade.asm"
+INCLUDE "engine/wonder_trade.asm"
+INCLUDE "event/mom_phone.asm"
+
+
+SECTION "Code 25", ROMX
+
+INCLUDE "engine/misc_gfx.asm"
+INCLUDE "engine/warp_connection.asm"
+INCLUDE "battle/used_move_text.asm"
+INCLUDE "gfx/items.asm"
+
+
+SECTION "Introduction", ROMX
+
+INCLUDE "engine/options_menu.asm"
+INCLUDE "engine/crystal_intro.asm"
+
+CopyrightGFX:: ; e4000
+INCBIN "gfx/misc/copyright.2bpp"
+
+
+SECTION "Title Screen", ROMX
+
+INCLUDE "engine/title.asm"
+
+
+SECTION "Diploma", ROMX
+
+INCLUDE "engine/diploma.asm"
+
+
+SECTION "Palette Maps", ROMX
+
+SwapTextboxPalettes:: ; 4c000
+	hlcoord 0, 0
+	decoord 0, 0, AttrMap
+	ld b, SCREEN_HEIGHT
+.loop
+	push bc
+	ld c, SCREEN_WIDTH
+	call GetBGMapTilePalettes
+	pop bc
+	dec b
+	jr nz, .loop
+	ret
+
+ScrollBGMapPalettes:: ; 4c03f
+	ld hl, BGMapBuffer
+	ld de, BGMapPalBuffer
+	; fallthrough
+GetBGMapTilePalettes::
+; hl = tile buffer
+; de = palette buffer
+; c = tile count
+.loop
+	ld a, [hl]
+	push hl
+	ld hl, TilesetPalettes
+	add [hl]
+	ld l, a
+	ld a, [TilesetPalettes + 1]
+	adc $0
+	ld h, a
+	ld a, [hl]
+	pop hl
+	ld [de], a
+	res 7, [hl]
+	inc hl
+	inc de
+	dec c
+	jr nz, .loop
+	ret
+
+INCLUDE "tilesets/palette_maps.asm"
+
+TileCollisionTable:: ; 4ce1f
+INCLUDE "tilesets/collision.asm"
+
+
+SECTION "Typefaces", ROMX
+
+INCLUDE "gfx/font.asm"
+
+
+SECTION "Battle Core", ROMX
+
+INCLUDE "battle/core.asm"
+
+
+SECTION "Effect Commands", ROMX
+
+INCLUDE "battle/effect_commands.asm"
+
+
+SECTION "Effect Command Pointers", ROMX
+
+INCLUDE "battle/effect_command_pointers.asm"
+
+
+SECTION "Battle Animations", ROMX
+
+INCLUDE "battle/anim_commands.asm"
+INCLUDE "battle/anim_objects.asm"
+
+
+SECTION "Battle Graphics", ROMX
+
+SubstituteFrontpic: INCBIN "gfx/battle/substitute-front.2bpp.lz"
+SubstituteBackpic:  INCBIN "gfx/battle/substitute-back.2bpp.lz"
+
+GhostFrontpic:      INCBIN "gfx/battle/ghost.2bpp.lz"
+
+
+SECTION "Moves", ROMX
+
+INCLUDE "battle/moves/moves.asm"
+
+
+SECTION "Enemy Trainers", ROMX
+
+INCLUDE "battle/ai/items.asm"
+
+AIScoring: ; 38591
+INCLUDE "battle/ai/scoring.asm"
+
+GetTrainerClassName: ; 3952d
+	ld a, c
+	ld [CurSpecies], a
+	ld a, TRAINER_NAME
+	ld [wNamedObjectTypeBuffer], a
+	call GetName
+	ld de, StringBuffer1
+	ret
+
+GetOTName: ; 39550
+	ld hl, OTPlayerName
+	ld a, [wLinkMode]
+	and a
+	jr nz, .ok
+
+	ld a, c
+	ld [CurSpecies], a
+	ld a, TRAINER_NAME
+	ld [wNamedObjectTypeBuffer], a
+	call GetName
+	ld hl, StringBuffer1
+
+.ok
+	ld bc, TRAINER_CLASS_NAME_LENGTH
+	ld de, OTClassName
+	push de
+	call CopyBytes
+	pop de
+	ret
+
+GetTrainerAttributes: ; 3957b
+	ld a, [TrainerClass]
+	ld c, a
+	call GetOTName
+	ld a, [TrainerClass]
+	dec a
+	ld hl, TrainerClassAttributes + TRNATTR_ITEM1
+	ld bc, NUM_TRAINER_ATTRIBUTES
+	call AddNTimes
+	ld de, wEnemyTrainerItem1
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	ld a, [hl]
+	ld [wEnemyTrainerBaseReward], a
+	ret
+
+ComputeTrainerReward: ; 3991b (e:591b)
+	ld hl, hProduct
+	xor a
+rept 3
+	ld [hli], a
+endr
+	ld a, [wEnemyTrainerBaseReward]
+	ld [hli], a
+	ld a, [CurPartyLevel]
+	ld [hl], a
+	call Multiply
+	ld hl, wBattleReward
+	xor a
+	ld [hli], a
+	ld a, [hProduct + 2]
+	ld [hli], a
+	ld a, [hProduct + 3]
+	ld [hl], a
+	ret
+
+INCLUDE "trainers/attributes.asm"
+
+
+SECTION "Enemy Trainer Pointers", ROMX
+
+INCLUDE "trainers/read_party.asm"
+INCLUDE "trainers/trainer_pointers.asm"
+INCLUDE "trainers/trainers.asm"
+
+
+SECTION "Wild Data", ROMX
+
+INCLUDE "engine/wildmons.asm"
+
+
+SECTION "Pokedex", ROMX
+
+INCLUDE "engine/pokedex.asm"
+
+
+SECTION "Evolution", ROMX
+
+INCLUDE "engine/evolve.asm"
+
+
+SECTION "Pic Animations", ROMX
+
+INCLUDE "gfx/pics/animation.asm"
+
+; Pic animations are assembled in 3 parts:
+
+; Top-level animations:
+; 	frame #, duration: Frame 0 is the original pic (no change)
+;	setrepeat #:       Sets the number of times to repeat
+; 	dorepeat #:        Repeats from command # (starting from 0)
+; 	end
+
+; Bitmasks:
+;	Layered over the pic to designate affected tiles
+
+; Frame definitions:
+;	first byte is the bitmask used for this frame
+;	following bytes are tile ids mapped to each bit in the mask
+
+; Main animations (played everywhere)
+INCLUDE "gfx/pics/anim_pointers.asm"
+INCLUDE "gfx/pics/anims.asm"
+
+; Extra animations, appended to the main animation
+; Used in the status screen (blinking, tail wags etc.)
+INCLUDE "gfx/pics/extra_pointers.asm"
+INCLUDE "gfx/pics/extras.asm"
+
+; Variants have their own animation data despite having entries in the main tables
+INCLUDE "gfx/pics/variant_anim_pointers.asm"
+INCLUDE "gfx/pics/variant_anims.asm"
+INCLUDE "gfx/pics/variant_extra_pointers.asm"
+INCLUDE "gfx/pics/variant_extras.asm"
+
+
+SECTION "Pic Animations Frames 1", ROMX
+
+INCLUDE "gfx/pics/frame_pointers.asm"
+INCLUDE "gfx/pics/kanto_frames.asm"
+
+
+SECTION "Pic Animations Frames 2", ROMX
+
+INCLUDE "gfx/pics/johto_frames.asm"
+INCLUDE "gfx/pics/variant_frame_pointers.asm"
+INCLUDE "gfx/pics/variant_frames.asm"
+
+
+SECTION "Pic Animations Bitmasks", ROMX
+
+; Bitmasks
+INCLUDE "gfx/pics/bitmask_pointers.asm"
+INCLUDE "gfx/pics/bitmasks.asm"
+INCLUDE "gfx/pics/variant_bitmask_pointers.asm"
+INCLUDE "gfx/pics/variant_bitmasks.asm"
+
+
+SECTION "Common Text", ROMX
+
+INCLUDE "text/stdtext.asm"
+
+
 SECTION "Phone Scripts", ROMX
 
 INCLUDE "engine/more_phone_scripts.asm"
@@ -5209,195 +5401,6 @@ SECTION "Phone Text 5", ROMX
 INCLUDE "text/phone/extra2.asm"
 
 
-SECTION "Code 19", ROMX
-
-INCLUDE "engine/events_3.asm"
-INCLUDE "engine/radio.asm"
-INCLUDE "gfx/mail.asm"
-
-
-SECTION "Code 20", ROMX
-
-INCLUDE "engine/std_scripts.asm"
-INCLUDE "engine/phone_scripts.asm"
-
-TalkToTrainerScript:: ; 0xbe66a
-	faceplayer
-	trainerflagaction CHECK_FLAG
-	iftrue AlreadyBeatenTrainerScript
-	loadmemtrainer
-	encountermusic
-	jump StartBattleWithMapTrainerScript
-
-SeenByTrainerScript:: ; 0xbe675
-	loadmemtrainer
-	encountermusic
-	showemote EMOTE_SHOCK, LAST_TALKED, 30
-	callasm TrainerWalkToPlayer
-	applymovement2 MovementBuffer
-	writepersonxy LAST_TALKED
-	faceperson PLAYER, LAST_TALKED
-	jump StartBattleWithMapTrainerScript
-
-StartBattleWithMapTrainerScript: ; 0xbe68a
-	opentext
-	trainertext $0
-	waitbutton
-	closetext
-	loadmemtrainer
-	callasm CheckTrainerClass
-	iffalse .nobattle
-	startbattle
-	reloadmapafterbattle
-.nobattle
-	trainerflagaction SET_FLAG
-	loadvar wRunningTrainerBattleScript, -1
-
-AlreadyBeatenTrainerScript:
-	scripttalkafter
-
-CheckTrainerClass:
-	ld a, [wTempTrainerClass]
-	ld [ScriptVar], a
-	ret
-
-
-SECTION "Code 21", ROMX
-
-INCLUDE "battle/bg_effects.asm"
-INCLUDE "battle/anims.asm"
-
-
-SECTION "Substitute and Ghost", ROMX
-
-SubstituteFrontpic: INCBIN "gfx/battle/substitute-front.2bpp.lz"
-SubstituteBackpic:  INCBIN "gfx/battle/substitute-back.2bpp.lz"
-
-GhostFrontpic:      INCBIN "gfx/battle/ghost.2bpp.lz"
-
-
-SECTION "Battle Animations", ROMX
-
-INCLUDE "battle/anim_commands.asm"
-INCLUDE "battle/anim_objects.asm"
-
-
-SECTION "Pic Animations", ROMX
-
-INCLUDE "gfx/pics/animation.asm"
-
-; Pic animations are assembled in 3 parts:
-
-; Top-level animations:
-; 	frame #, duration: Frame 0 is the original pic (no change)
-;	setrepeat #:       Sets the number of times to repeat
-; 	dorepeat #:        Repeats from command # (starting from 0)
-; 	end
-
-; Bitmasks:
-;	Layered over the pic to designate affected tiles
-
-; Frame definitions:
-;	first byte is the bitmask used for this frame
-;	following bytes are tile ids mapped to each bit in the mask
-
-; Main animations (played everywhere)
-INCLUDE "gfx/pics/anim_pointers.asm"
-INCLUDE "gfx/pics/anims.asm"
-
-; Extra animations, appended to the main animation
-; Used in the status screen (blinking, tail wags etc.)
-INCLUDE "gfx/pics/extra_pointers.asm"
-INCLUDE "gfx/pics/extras.asm"
-
-; Variants have their own animation data despite having entries in the main tables
-INCLUDE "gfx/pics/variant_anim_pointers.asm"
-INCLUDE "gfx/pics/variant_anims.asm"
-INCLUDE "gfx/pics/variant_extra_pointers.asm"
-INCLUDE "gfx/pics/variant_extras.asm"
-
-
-SECTION "Pic Animations Frames 1", ROMX
-
-INCLUDE "gfx/pics/frame_pointers.asm"
-INCLUDE "gfx/pics/kanto_frames.asm"
-
-
-SECTION "Pic Animations Frames 2", ROMX
-
-INCLUDE "gfx/pics/johto_frames.asm"
-INCLUDE "gfx/pics/variant_frame_pointers.asm"
-INCLUDE "gfx/pics/variant_frames.asm"
-
-
-SECTION "Pic Animations Bitmasks", ROMX
-
-; Bitmasks
-INCLUDE "gfx/pics/bitmask_pointers.asm"
-INCLUDE "gfx/pics/bitmasks.asm"
-INCLUDE "gfx/pics/variant_bitmask_pointers.asm"
-INCLUDE "gfx/pics/variant_bitmasks.asm"
-
-
-SECTION "Code 22", ROMX
-
-INCLUDE "engine/card_flip.asm"
-INCLUDE "engine/unown_puzzle.asm"
-;INCLUDE "engine/dummy_game.asm"
-INCLUDE "engine/billspc.asm"
-
-
-SECTION "Introduction", ROMX
-
-INCLUDE "engine/options_menu.asm"
-INCLUDE "engine/crystal_intro.asm"
-
-CopyrightGFX:: ; e4000
-INCBIN "gfx/misc/copyright.2bpp"
-
-
-SECTION "Code 23", ROMX
-
-INCLUDE "battle/hidden_power.asm"
-INCLUDE "battle/misc.asm"
-INCLUDE "engine/unowndex.asm"
-INCLUDE "event/magikarp.asm"
-INCLUDE "event/name_rater.asm"
-INCLUDE "engine/link_trade2.asm"
-INCLUDE "audio/distorted_cries.asm"
-
-
-SECTION "Typefaces", ROMX
-
-INCLUDE "gfx/font.asm"
-
-
-SECTION "Code 24", ROMX
-
-INCLUDE "tilesets/animations.asm"
-INCLUDE "engine/npctrade.asm"
-INCLUDE "engine/wonder_trade.asm"
-INCLUDE "event/mom_phone.asm"
-
-
-SECTION "Code 25", ROMX
-
-INCLUDE "engine/misc_gfx.asm"
-INCLUDE "engine/warp_connection.asm"
-INCLUDE "battle/used_move_text.asm"
-INCLUDE "gfx/items.asm"
-
-
-SECTION "Title Screen", ROMX
-
-INCLUDE "engine/title.asm"
-
-
-SECTION "Common Text", ROMX
-
-INCLUDE "text/stdtext.asm"
-
-
 SECTION "Item Text", ROMX
 
 ItemNames::
@@ -5412,11 +5415,6 @@ MoveNames::
 INCLUDE "battle/move_names.asm"
 
 INCLUDE "engine/landmarks.asm"
-
-
-SECTION "Diploma", ROMX
-
-INCLUDE "engine/diploma.asm"
 
 
 SECTION "Battle Tower Text", ROMX
