@@ -31,17 +31,23 @@ with open(rom_name + '.gbc', 'rb') as f1, open(rom_name + '-0xff.gbc', 'rb') as 
 			bank_space.append(bank_diff)
 			bank_ends.append(bank_diff)
 
-for bank, end, space in zip(range(num_banks), bank_ends, bank_space):
-	print('Bank ${:02x}: ${:04x} (${:04x})'.format(bank, end, space))
-print()
+print('''
+> Back in the day, the programming used up all the space on a cartridge, so if
+> we wanted to add something new, we had to clean it up first... First we'd
+> find enough space, then we could make what we wanted... It was a pain!
+> 
+> -- Morimoto, Pokémon Ultra Sun/Ultra Moon
+> <https://www.serebii.net/ultrasunultramoon/virtualconsole.shtml>'''[1:])
 
-free_banks = sorted(range(num_banks), key = bank_space.__getitem__, reverse = True)
-for bank in free_banks:
-	space = bank_space[bank]
-	print('Bank ${:02x} has ${:04x} bytes of free space'.format(bank, space))
 print()
 
 total_size = bank_diff * num_banks
 free_space = sum(bank_space)
 pct_free = free_space * 100.0 / total_size
 print('Free space: {:.0f}/{:.0f} ({:.2f}%)'.format(free_space, total_size, pct_free))
+
+print()
+
+print('bank\tend\tfree')
+for bank, end, space in zip(range(num_banks), bank_ends, bank_space):
+	print('${:02x}\t${:04x}\t${:04x}'.format(bank, end, space))
