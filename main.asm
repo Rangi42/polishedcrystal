@@ -396,6 +396,7 @@ INCLUDE "engine/startmenu.asm"
 INCLUDE "engine/selectmenu.asm"
 INCLUDE "event/elevator.asm"
 INCLUDE "event/bug_contest.asm"
+INCLUDE "event/safari_game.asm"
 INCLUDE "event/std_tiles.asm"
 
 

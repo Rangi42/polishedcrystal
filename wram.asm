@@ -1990,7 +1990,7 @@ StatusFlags::
 	ds 1
 StatusFlags2::
 	; 0 - rockets
-	; 1 - safari zone?
+	; 1 - safari game
 	; 2 - bug contest timer
 	; 3 - seen shamouti island
 	; 4 - bike shop call

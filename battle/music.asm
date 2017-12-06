@@ -25,7 +25,7 @@ PlayBattleMusic: ; 2ee6c
 	ld a, [BattleType]
 	cp BATTLETYPE_SAFARI
 	ld de, MUSIC_WILD_BATTLE_GO
-	jr c, .done
+	jr z, .done
 
 	ld hl, .regional_wilds
 	call .getregionmusicfromarray

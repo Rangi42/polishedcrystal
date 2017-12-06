@@ -102,7 +102,7 @@ ENDM
 	engine_flag StatusFlags, 6 ; credits skip
 	engine_flag StatusFlags, 7 ; bug contest on
 	engine_flag StatusFlags2, 0 ; rockets in radio tower ; $10
-	engine_flag StatusFlags2, 1 ; safari zone?
+	engine_flag StatusFlags2, 1 ; safari game
 	engine_flag StatusFlags2, 2 ; bug contest timer
 	engine_flag StatusFlags2, 3 ; seen shamouti island
 	engine_flag StatusFlags2, 4 ; bike shop call enabled (1024 bike steps reqd)

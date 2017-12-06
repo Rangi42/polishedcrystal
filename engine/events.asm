@@ -1169,6 +1169,8 @@ RandomEncounter:: ; 97cc0
 	call CanUseSweetScent
 	jr nc, .nope
 	ld hl, StatusFlags2
+	bit 1, [hl] ; ENGINE_SAFARI_GAME
+	jr nz, .safari_game
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .bug_contest
 	farcall TryWildEncounter
@@ -1180,6 +1182,13 @@ RandomEncounter:: ; 97cc0
 	call CallScript
 	scf
 	ret
+
+.safari_game
+	farcall TryWildEncounter
+	jr nz, .nope
+	ld a, BANK(SafariGameBattleScript)
+	ld hl, SafariGameBattleScript
+	jr .done
 
 .bug_contest
 	call _TryWildEncounter_BugContest
