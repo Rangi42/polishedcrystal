@@ -73,19 +73,19 @@ PokeCenter2FTileCallback:
 
 Script_LeftCableTradeCenter:
 	special WaitForOtherPlayerToExit
-	scall Script_WalkOutOfLinkTradeRoom
+	scall Script_WalkOutOfLinkRoom
 	dotrigger $0
 	domaptrigger TRADE_CENTER, $0
 	end
 
 Script_LeftCableColosseum:
 	special WaitForOtherPlayerToExit
-	scall Script_WalkOutOfLinkBattleRoom
+	scall Script_WalkOutOfLinkRoom
 	dotrigger $0
 	domaptrigger COLOSSEUM, $0
 	end
 
-Script_WalkOutOfLinkTradeRoom:
+Script_WalkOutOfLinkRoom:
 	checkflag ENGINE_KRIS_IN_CABLE_CLUB
 	iftrue .Female
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
@@ -105,28 +105,6 @@ Script_WalkOutOfLinkTradeRoom:
 	special ReplaceKrisSprite
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
-	end
-
-Script_WalkOutOfLinkBattleRoom:
-	checkflag ENGINE_KRIS_IN_CABLE_CLUB
-	iftrue .Female
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsDown
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
-	end
-
-.Female:
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
-	applyonemovement PLAYER, step_down
-	clearflag ENGINE_KRIS_IN_CABLE_CLUB
-	playsound SFX_TINGLE
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte ((1 << 3) | PAL_OW_BLUE) << 4
-	special Special_SetPlayerPalette
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	special ReplaceKrisSprite
-	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsDown
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
 PokeCenter2FLinkRecordSign:

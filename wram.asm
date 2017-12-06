@@ -859,7 +859,7 @@ NEXTU
 wc90f:: ds 229
 wc9f4:: ds 5
 wc9f9:: ds 145
-wHandshakeFrameDelay:: ds 54
+wHandshakeFrameDelay:: ds 53
 wcabf:: ds 79
 wcb0e:: ds 5
 wcb13:: ds 113

@@ -11,7 +11,6 @@ DoPlayerTurn: ; 34000
 
 	ld hl, ScaredText
 	jp StdBattleTextBox
-
 ; 3400a
 
 

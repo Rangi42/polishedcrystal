@@ -3,30 +3,6 @@ INCLUDE "includes.asm"
 
 SECTION "Code 1", ROMX
 
-PlaceWaitingText:: ; 4000
-	hlcoord 4, 10
-	lb bc, 1, 10
-
-	ld a, [wBattleMode]
-	and a
-	jr z, .notinbattle
-
-	call TextBox
-	jr .proceed
-
-.notinbattle
-	predef Predef_LinkTextbox
-
-.proceed
-	hlcoord 5, 11
-	ld de, .Waiting
-	call PlaceString
-	ld c, 50
-	jp DelayFrames
-
-.Waiting: ; 4025
-	db "Waiting…!@"
-
 LoadPushOAM:: ; 4031
 	lb bc, (PushOAMEnd - PushOAM), (hPushOAM - $ff00)
 	ld hl, PushOAM
@@ -189,7 +165,6 @@ INCLUDE "engine/intro_menu.asm"
 INCLUDE "engine/init_options.asm"
 INCLUDE "engine/learn.asm"
 INCLUDE "engine/math.asm"
-INCLUDE "engine/link_trade.asm"
 INCLUDE "engine/npc_movement.asm"
 INCLUDE "event/happiness_egg.asm"
 INCLUDE "event/special.asm"
@@ -1098,168 +1073,6 @@ Kurt_SelectQuantity_InterpretJoypad: ; 27a28
 SECTION "Code 8", ROMX
 
 INCLUDE "engine/link.asm"
-
-DetermineLinkBattleResult: ; 2b930
-	farcall UpdateEnemyMonInParty
-	ld hl, PartyMon1HP
-	call .CountMonsRemaining
-	push bc
-	ld hl, OTPartyMon1HP
-	call .CountMonsRemaining
-	ld a, c
-	pop bc
-	cp c
-	jr z, .even_number_of_mons_remaining
-	jr c, .defeat
-	jr .victory
-
-.even_number_of_mons_remaining
-	call .BothSides_CheckNumberMonsAtFullHealth
-	jr z, .drawn
-	ld a, e
-	cp $1
-	jr z, .victory
-	cp $2
-	jr z, .defeat
-	ld hl, PartyMon1HP
-	call .CalcPercentHPRemaining
-	push de
-	ld hl, OTPartyMon1HP
-	call .CalcPercentHPRemaining
-	pop hl
-	ld a, d
-	cp h
-	jr c, .victory
-	jr z, .compare_lo
-	jr .defeat
-
-.compare_lo
-	ld a, e
-	cp l
-	jr z, .drawn
-	jr nc, .defeat
-
-.victory
-	ld a, [wBattleResult]
-	and $f0
-	ld [wBattleResult], a
-	ret
-
-.defeat
-	ld a, [wBattleResult]
-	and $f0
-	add $1
-	ld [wBattleResult], a
-	ret
-
-.drawn
-	ld a, [wBattleResult]
-	and $f0
-	add $2
-	ld [wBattleResult], a
-	ret
-
-.CountMonsRemaining: ; 2b995
-	lb bc, 3, 0
-	ld de, PARTYMON_STRUCT_LENGTH - 1
-.loop
-	ld a, [hli]
-	or [hl]
-	jr nz, .not_fainted
-	inc c
-
-.not_fainted
-	add hl, de
-	dec b
-	jr nz, .loop
-	ret
-
-.CalcPercentHPRemaining: ; 2b9a6
-	ld de, 0
-	ld c, $3
-.loop2
-	ld a, [hli]
-	or [hl]
-	jr z, .next
-	dec hl
-	xor a
-	ld [hDividend + 0], a
-	ld a, [hli]
-	ld [hDividend + 1], a
-	ld a, [hli]
-	ld [hDividend + 2], a
-	xor a
-	ld [hDividend + 3], a
-	ld a, [hli]
-	ld b, a
-	ld a, [hld]
-	srl b
-	rr a
-	srl b
-	rr a
-	ld [hDivisor], a
-	ld b, $4
-	call Divide
-	ld a, [hQuotient + 2]
-	add e
-	ld e, a
-	ld a, [hQuotient + 1]
-	adc d
-	ld d, a
-	dec hl
-
-.next
-	push de
-	ld de, $2f
-	add hl, de
-	pop de
-	dec c
-	jr nz, .loop2
-	ret
-
-.BothSides_CheckNumberMonsAtFullHealth: ; 2b9e1
-	ld hl, PartyMon1HP
-	call .CheckFaintedOrFullHealth
-	jr nz, .finish ; we have a pokemon that's neither fainted nor at full health
-	ld hl, OTPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	ld e, $1
-	ret
-
-.finish
-	ld hl, OTPartyMon1HP
-	call .CheckFaintedOrFullHealth
-	ld e, $0
-	ret nz ; we both have pokemon that are neither fainted nor at full health
-	ld e, $2
-	ld a, $1
-	and a
-	ret
-
-.CheckFaintedOrFullHealth: ; 2ba01
-	ld d, 3
-.loop3
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	or b
-	jr z, .fainted_or_full_health
-	ld a, [hli]
-	cp b
-	ret nz
-	ld a, [hld]
-	cp c
-	ret nz
-
-.fainted_or_full_health
-	push de
-	ld de, PARTYMON_STRUCT_LENGTH - 2
-	add hl, de
-	pop de
-	dec d
-	jr nz, .loop3
-	ret
 
 
 SECTION "Code 9", ROMX
@@ -2421,96 +2234,6 @@ INCBIN "gfx/shrink/shrink1.2bpp.lz"
 
 Shrink2Pic: ; 4d2d9
 INCBIN "gfx/shrink/shrink2.2bpp.lz"
-
-LinkMonStatsScreen: ; 4d319
-	ld a, [wMenuCursorY]
-	dec a
-	ld [CurPartyMon], a
-	call LowVolume
-	predef StatsScreenInit
-	ld a, [CurPartyMon]
-	inc a
-	ld [wMenuCursorY], a
-	call ClearScreen
-	call ClearBGPalettes
-	call MaxVolume
-	farcall LoadTradeScreenBorder
-	farcall Link_WaitBGMap
-	farcall InitTradeSpeciesList
-	farcall SetTradeRoomBGPals
-	jp WaitBGMap2
-
-Link_WaitBGMap: ; 4d354
-	call WaitBGMap
-	jp WaitBGMap2
-
-LinkTextbox2: ; 4d35b
-	ld h, d
-	ld l, e
-	push bc
-	push hl
-	call .PlaceBorder
-	pop hl
-	pop bc
-	ld de, AttrMap - TileMap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	ld a, $7
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .row
-	ret
-
-.PlaceBorder: ; 4d37e
-	push hl
-	ld a, $76
-	ld [hli], a
-	inc a
-	call .PlaceRow
-	inc a
-	ld [hl], a
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-.loop
-	push hl
-	ld a, "┌"
-	ld [hli], a
-	ld a, " "
-	call .PlaceRow
-	ld [hl], "─"
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	dec b
-	jr nz, .loop
-	ld a, "┐"
-	ld [hli], a
-	ld a, "│"
-	call .PlaceRow
-	ld [hl], "└"
-	ret
-
-.PlaceRow: ; 4d3ab
-	ld d, c
-.row_loop
-	ld [hli], a
-	dec d
-	jr nz, .row_loop
-	ret
 
 _ResetClock: ; 4d3b1
 	farcall BlankScreen
@@ -5051,7 +4774,6 @@ INCLUDE "battle/misc.asm"
 INCLUDE "engine/unowndex.asm"
 INCLUDE "event/magikarp.asm"
 INCLUDE "event/name_rater.asm"
-INCLUDE "engine/link_trade2.asm"
 INCLUDE "audio/distorted_cries.asm"
 
 

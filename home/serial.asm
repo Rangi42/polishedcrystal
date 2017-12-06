@@ -272,10 +272,34 @@ Serial_ExchangeLinkMenuSelection:: ; 83b
 
 Serial_PlaceWaitingTextAndSyncAndExchangeNybble:: ; 862
 	call LoadTileMapToTempTileMap
-	farcall PlaceWaitingText
+	call PlaceWaitingText
 	call Serial_SyncAndExchangeNybble
 	jp Call_LoadTempTileMapToTileMap
 ; 871
+
+PlaceWaitingText:: ; 4000
+	hlcoord 4, 10
+	lb bc, 1, 10
+
+	ld a, [wBattleMode]
+	and a
+	jr z, .notinbattle
+
+	call TextBox
+	jr .proceed
+
+.notinbattle
+	farcall LinkTextbox
+
+.proceed
+	hlcoord 5, 11
+	ld de, .Waiting
+	call PlaceString
+	ld c, 50
+	jp DelayFrames
+
+.Waiting: ; 4025
+	db "Waiting…!@"
 
 Serial_SyncAndExchangeNybble:: ; 87d
 	ld a, $ff

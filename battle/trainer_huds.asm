@@ -88,7 +88,7 @@ endr
 	and a
 	ld b, $32 ; statused
 	jr nz, .load
-	dec b ; normal
+	dec b ; $31 ; normal
 	jr .load
 
 .fainted
@@ -218,7 +218,7 @@ LoadTrainerHudOAM: ; 2c143
 	ld [hli], a
 	ld a, [de]
 	ld [hli], a
-	ld a, $3
+	xor a ; PAL_OW_RED
 	ld [hli], a
 	ld a, [wPlaceBallsX]
 	ld b, a
