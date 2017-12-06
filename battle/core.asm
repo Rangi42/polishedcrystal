@@ -136,8 +136,8 @@ WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 	ld a, [BattleType]
 	cp BATTLETYPE_ROAMING
 	jr z, .print_text
-	cp BATTLETYPE_LEGENDARY
-	jr z, .print_text
+	cp BATTLETYPE_RED_GYARADOS
+	jr nc, .print_text ; also BATTLETYPE_LEGENDARY
 
 	ld hl, BattleText_WildFled
 	ld a, [wLinkMode]
@@ -5414,9 +5414,11 @@ CheckRunSpeed:
 	ld a, [BattleType]
 	cp BATTLETYPE_CONTEST
 	jp z, .can_escape
+	cp BATTLETYPE_SAFARI
+	jp z, .can_escape
 	cp BATTLETYPE_GHOST
 	jp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jp nc, .cant_escape
 
 	ld a, [wLinkMode]
@@ -9529,7 +9531,6 @@ BattleStartMessage: ; 3fc8b
 	ld a, [BattleType]
 	cp BATTLETYPE_FISH
 	jr nz, .NotFishing
-
 	ld hl, HookedPokemonAttackedText
 	jr .PlaceBattleStartText
 
@@ -9540,10 +9541,8 @@ BattleStartMessage: ; 3fc8b
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
 	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_LEGENDARY
-	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_RED_GYARADOS
-	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_RED_GYARADOS ; or BATTLETYPE_LEGENDARY
+	jr nc, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 
 .PlaceBattleStartText:

@@ -2671,7 +2671,7 @@ BattleCommand_SuckerPunch:
 
 	; TODO: Is there a better way to check "player didn't fight"?
 	; Because of how the battle core is designed, a player switch
-	; or item use wont neccessarily imply going first from the
+	; or item use won't neccessarily imply going first from the
 	; battle move scripts' point of view...
 	ld a, [wPlayerAction]
 	and a
@@ -6340,9 +6340,7 @@ BattleCommand_Teleport: ; 36778
 ; teleport
 
 	ld a, [BattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	jr z, .failed
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jr nc, .failed
 
 ; Can't teleport from a trainer battle
@@ -6451,9 +6449,7 @@ BattleCommand_ForceSwitch: ; 3680f
 ; forceswitch
 
 	ld a, [BattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	jp z, .fail
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jp nc, .fail
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
