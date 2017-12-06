@@ -122,7 +122,7 @@ Route10NorthLawrenceEncounter1Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
+	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic
@@ -185,7 +185,7 @@ Route10NorthLawrenceEncounter2Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
+	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
 	clearevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS

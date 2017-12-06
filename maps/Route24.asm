@@ -101,7 +101,7 @@ RocketScript_0x1adbfa:
 	special Special_ReloadSpritesNoPalettes
 	disappear ROUTE24_ROCKET
 	setevent EVENT_LEARNED_ABOUT_MACHINE_PART
-	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
+	clearevent EVENT_CERULEAN_CAPE_BOYFRIEND
 	domaptrigger CERULEAN_CAPE, $1
 	pause 25
 	special Special_FadeInQuickly
