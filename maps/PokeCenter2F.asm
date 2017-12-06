@@ -113,8 +113,10 @@ PokeCenter2FLinkRecordSign:
 	endtext
 
 LinkReceptionistScript_Trade:
+if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalse Script_TradeCenterClosed
+endc
 	opentext
 	writetext Text_TradeReceptionistIntro
 	yesorno
@@ -178,8 +180,10 @@ Script_TradeCenterClosed:
 	done
 
 LinkReceptionistScript_Battle:
+if !DEF(DEBUG)
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iffalse Script_BattleRoomClosed
+endc
 	opentext
 	writetext Text_BattleReceptionistIntro
 	yesorno
