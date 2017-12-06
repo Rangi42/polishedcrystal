@@ -63,7 +63,9 @@ MagikarpAnimationPointers:
 	dw MagikarpMaskAnimation
 
 GyaradosAnimationPointers:
+rept NUM_MAGIKARP
 	dw GyaradosPlainAnimation
+endr
 	dw GyaradosRedAnimation
 
 MewtwoAnimationPointers:

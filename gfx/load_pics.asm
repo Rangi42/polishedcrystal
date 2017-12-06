@@ -1,7 +1,7 @@
 GetVariant: ; 51040
 	ld a, [CurPartySpecies]
 	cp PIKACHU
-	jp z, .GetPikachuVariant
+	jr z, .GetPikachuVariant
 	cp MEWTWO
 	jp z, .GetMewtwoVariant
 
