@@ -873,16 +873,12 @@ ENDU
 
 SECTION "Video", WRAM0
 
-UNION
-; video
 BGMapBuffer:: ds 40
 BGMapPalBuffer:: ds 40
 BGMapBufferPtrs:: ds 40 ; 20 bg map addresses (16x8 tiles)
-NEXTU
-; credits
+
 CreditsPos:: ds 2
 CreditsTimer:: ds 1
-ENDU
 
 SGBPredef:: ds 1
 PlayerHPPal:: ds 1
@@ -890,7 +886,7 @@ EnemyHPPal:: ds 1
 
 wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: ds 1
-	ds 7
+	ds 4
 wSGBPals:: ds 48
 
 AttrMap::
@@ -1363,16 +1359,11 @@ ENDU
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
-StringBuffer1::
-	ds 24
-StringBuffer2::
-	ds 19
-StringBuffer3::
-	ds 19
-StringBuffer4::
-	ds 19
-StringBuffer5::
-	ds 19
+StringBuffer1:: ds 24
+StringBuffer2:: ds 19
+StringBuffer3:: ds 19
+StringBuffer4:: ds 19
+StringBuffer5:: ds 19
 
 wBattleMenuCursorBuffer:: ds 2
 
