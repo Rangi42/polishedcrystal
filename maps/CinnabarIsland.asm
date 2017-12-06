@@ -59,6 +59,7 @@ CinnabarIslandBlue:
 CinnabarIslandBlueText:
 	text "Who are you?"
 
+if !DEF(DEBUG)
 	para "Well, it's plain"
 	line "to see that you're"
 	cont "a trainer…"
@@ -111,6 +112,7 @@ CinnabarIslandBlueText:
 
 	para "But, anyway, I'm"
 	line "still a trainer."
+endc
 	done
 
 CinnabarIslandBlueBattleText:

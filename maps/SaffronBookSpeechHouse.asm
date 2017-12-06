@@ -18,7 +18,7 @@ SaffronBookSpeechHouse_MapEventHeader:
 
 .PersonEvents: db 2
 	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronBookSpeechHouseLassText, -1
-	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
+	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
 
 SaffronBookSpeechHouseLassText:
 	text "I absolutely love"
