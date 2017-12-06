@@ -1194,6 +1194,16 @@ wMartItem12BCD:: ds 3
 wMartItemBCDEnd::
 
 NEXTU
+; town map data
+wTownMapPlayerIconLandmark:: ds 1
+UNION
+wTownMapCursorLandmark:: ds 1
+wTownMapCursorObjectPointer:: ds 2
+NEXTU
+wTownMapCursorCoordinates:: ds 2
+ENDU
+
+NEXTU
 ; phone call data
 PhoneScriptBank:: ds 1
 PhoneCallerLo:: ds 1

@@ -1605,7 +1605,7 @@ LoadStation_OaksPokemonTalk: ; 91753 (24:5753)
 	xor a ; OAKS_POKEMON_TALK
 	ld de, OaksPkmnTalkName
 LoadRadioStation:
-	ld [wd002], a
+	ld [wCurrentRadioLine], a
 	xor a
 	ld [wNumRadioLinesPrinted], a
 	ld hl, wPokegearRadioChannelBank
@@ -1766,20 +1766,20 @@ _TownMap: ; 9191c
 	ld a, $e3
 	ld [rLCDC], a
 	call TownMap_InitCursorAndPlayerIconPositions
-	ld [wd002], a
-	ld [wd003], a
+	ld [wTownMapPlayerIconLandmark], a
+	ld [wTownMapCursorLandmark], a
 	xor a
 	ld [hBGMapMode], a
 	call .InitTilemap
 	call WaitBGMap2
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	call PokegearMap_InitPlayerIcon
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	call PokegearMap_InitCursor
 	ld a, c
-	ld [wd004], a
+	ld [wTownMapCursorObjectPointer], a
 	ld a, b
-	ld [wd004 + 1], a
+	ld [wTownMapCursorObjectPointer + 1], a
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes
@@ -1787,7 +1787,7 @@ _TownMap: ; 9191c
 	call DmgToCgbObjPal0
 	call DelayFrame
 
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	cp SHAMOUTI_LANDMARK
 	jr nc, .orange
 	cp KANTO_LANDMARK
@@ -1833,7 +1833,7 @@ _TownMap: ; 9191c
 	jr .loop
 
 .pressed_up
-	ld hl, wd003
+	ld hl, wTownMapCursorLandmark
 	ld a, [hl]
 	cp d
 	jr c, .okay
@@ -1848,7 +1848,7 @@ _TownMap: ; 9191c
 	jr .next
 
 .pressed_down
-	ld hl, wd003
+	ld hl, wTownMapCursorLandmark
 	ld a, [hl]
 	cp e
 	jr nz, .okay2
@@ -1862,13 +1862,13 @@ _TownMap: ; 9191c
 	call SkipHiddenOrangeIslandsDown
 
 .next
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
-	ld a, [wd004]
+	ld a, [wTownMapCursorObjectPointer]
 	ld c, a
-	ld a, [wd004 + 1]
+	ld a, [wTownMapCursorObjectPointer + 1]
 	ld b, a
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	call PokegearMap_UpdateCursorPosition
 	pop de
 	jr .loop2
@@ -1894,11 +1894,11 @@ _TownMap: ; 9191c
 	call ByteFill
 	hlcoord 19, 2
 	ld [hl], $17
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	call PokegearMap_UpdateLandmarkName
 	call TownMapPals
 
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	cp SHAMOUTI_LANDMARK
 	jp nc, TownMapOrangeFlips
 	cp KANTO_LANDMARK
@@ -2042,7 +2042,7 @@ _FlyMap: ; 91af3
 	jr .exit
 
 .pressedA
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -2050,7 +2050,7 @@ _FlyMap: ; 91af3
 	add hl, de
 	ld a, [hl]
 .exit
-	ld [wd002], a
+	ld [wTownMapPlayerIconLandmark], a
 	pop af
 	ld [hInMenu], a
 	call ClearBGPalettes
@@ -2060,7 +2060,7 @@ _FlyMap: ; 91af3
 	ld [hBGMapAddress], a
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	ld e, a
 	ret
 
@@ -2081,7 +2081,7 @@ FlyMapScroll: ; 91b73
 	ret
 
 .ScrollNext:
-	ld hl, wd002
+	ld hl, wTownMapPlayerIconLandmark
 	ld a, [hl]
 	cp d
 	jr nz, .NotAtEndYet
@@ -2095,7 +2095,7 @@ FlyMapScroll: ; 91b73
 	jr .Finally
 
 .ScrollPrev:
-	ld hl, wd002
+	ld hl, wTownMapPlayerIconLandmark
 	ld a, [hl]
 	cp e
 	jr nz, .NotAtStartYet
@@ -2164,7 +2164,7 @@ TownMapBubble: ; 91bb5
 
 .Name:
 ; We need the map location of the default flypoint
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	ld l, a
 	ld h, 0
 	add hl, hl ; two bytes per flypoint
@@ -2179,7 +2179,7 @@ TownMapBubble: ; 91bb5
 ; 91c17
 
 GetMapCursorCoordinates: ; 91c17
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -2187,9 +2187,9 @@ GetMapCursorCoordinates: ; 91c17
 	add hl, de
 	ld e, [hl]
 	farcall GetLandmarkCoords
-	ld a, [wd003]
+	ld a, [wTownMapCursorCoordinates]
 	ld c, a
-	ld a, [wd004]
+	ld a, [wTownMapCursorCoordinates + 1]
 	ld b, a
 	ld hl, $4
 	add hl, bc
@@ -2283,7 +2283,7 @@ FlyMap: ; 91c90
 	push af
 ; Start from New Bark Town
 	ld a, FLY_NEW_BARK
-	ld [wd002], a
+	ld [wTownMapPlayerIconLandmark], a
 ; Flypoints begin at New Bark Town...
 	ld [StartFlypoint], a
 ; ..and end at Silver Cave
@@ -2327,7 +2327,7 @@ FlyMap: ; 91c90
 ; Because Indigo Plateau is the first flypoint the player
 
 ; visits, it's made the default flypoint
-	ld [wd002], a
+	ld [wTownMapPlayerIconLandmark], a
 ; Fill out the map
 	call FillKantoMap
 	call TownMapBubble
@@ -2342,7 +2342,7 @@ FlyMap: ; 91c90
 
 ; Start from New Bark Town
 	ld a, FLY_NEW_BARK
-	ld [wd002], a
+	ld [wTownMapPlayerIconLandmark], a
 ; Flypoints begin at New Bark Town...
 	ld [StartFlypoint], a
 ; ..and end at Silver Cave
@@ -2358,21 +2358,21 @@ FlyMap: ; 91c90
 	call TownMapBGUpdate
 	call TownMapMon
 	ld a, c
-	ld [wd003], a
+	ld [wTownMapCursorCoordinates], a
 	ld a, b
-	ld [wd004], a
+	ld [wTownMapCursorCoordinates + 1], a
 	ret
 
 ; 91d11
 
 _Area: ; 91d11
 ; e: Current landmark
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	push af
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	push af
 	ld a, e
-	ld [wd002], a
+	ld [wTownMapPlayerIconLandmark], a
 	call ClearSprites
 	xor a
 	ld [hBGMapMode], a
@@ -2388,7 +2388,7 @@ _Area: ; 91d11
 	call Request2bpp
 	call LoadTownMapGFX
 
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	cp SHAMOUTI_LANDMARK
 	jr nc, .shamouti
 	cp KANTO_LANDMARK
@@ -2402,7 +2402,7 @@ _Area: ; 91d11
 .kanto
 	ld a, KANTO_REGION
 .set_region
-	ld [wd003], a
+	ld [wTownMapCursorLandmark], a
 	call .UpdateGFX
 	call .GetAndPlaceNest
 .loop
@@ -2427,9 +2427,9 @@ _Area: ; 91d11
 .a_b
 	call ClearSprites
 	pop af
-	ld [wd003], a
+	ld [wTownMapCursorLandmark], a
 	pop af
-	ld [wd002], a
+	ld [wTownMapPlayerIconLandmark], a
 	ret
 
 ; 91d9b
@@ -2444,16 +2444,16 @@ _Area: ; 91d11
 	ret
 
 .left
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	and a ; cp JOHTO_REGION ; min
 	ret z
 
 	dec a
-	ld [wd003], a
+	ld [wTownMapCursorLandmark], a
 	jr .update
 
 .right
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	cp ORANGE_REGION ; max
 	ret z
 	cp KANTO_REGION
@@ -2468,9 +2468,9 @@ _Area: ; 91d11
 	ret z
 .go_right
 
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	inc a
-	ld [wd003], a
+	ld [wTownMapCursorLandmark], a
 
 .update
 	call .UpdateGFX
@@ -2479,7 +2479,7 @@ _Area: ; 91d11
 .UpdateGFX:
 	call ClearSprites
 	farcall _Pokedex_JustBlackOutBG
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	cp KANTO_REGION
 	jr z, .KantoGFX
 	cp ORANGE_REGION
@@ -2559,7 +2559,7 @@ _Area: ; 91d11
 ; 91e1e
 
 .GetAndPlaceNest: ; 91e1e
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	ld e, a
 	farcall FindNest ; load nest landmarks into TileMap[0,0]
 	decoord 0, 0
@@ -2600,7 +2600,7 @@ _Area: ; 91d11
 .HideNestsShowPlayer: ; 91e5a
 	call .CheckPlayerLocation
 	ret c
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	ld e, a
 	farcall GetLandmarkCoords
 	ld c, e
@@ -2654,12 +2654,12 @@ _Area: ; 91d11
 ; Don't show the player's sprite if you're
 ; not in the same region as what's currently
 ; on the screen.
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	cp SHAMOUTI_LANDMARK
 	jr nc, .player_in_orange
 	cp KANTO_LANDMARK
 	jr nc, .player_in_kanto
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	and a ; cp JOHTO_REGION
 	jr nz, .clear
 .ok
@@ -2667,13 +2667,13 @@ _Area: ; 91d11
 	ret
 
 .player_in_kanto
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	cp KANTO_REGION
 	jr nz, .clear
 	jr .ok
 
 .player_in_orange
-	ld a, [wd003]
+	ld a, [wTownMapCursorLandmark]
 	cp ORANGE_REGION
 	jr nz, .clear
 	jr .ok
@@ -2689,7 +2689,7 @@ _Area: ; 91d11
 ; 91ed0
 
 .GetPlayerOrFastShipIcon: ; 91ed0
-	ld a, [wd002]
+	ld a, [wTownMapPlayerIconLandmark]
 	cp FAST_SHIP
 	jr z, .FastShip
 	cp SINJOH_RUINS
