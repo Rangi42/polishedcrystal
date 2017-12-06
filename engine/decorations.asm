@@ -537,6 +537,17 @@ GetDecorationSprite: ; 26a44
 	ret
 ; 26a4f
 
+_GetDecorationSprite: ; 27085
+	ld c, a
+	push de
+	push hl
+	call GetDecorationSprite
+	pop hl
+	pop de
+	ld a, c
+	ret
+; 27092
+
 decoration: MACRO
 	; type, name, command, event flag, tile/sprite
 	db \1, \2, \3
@@ -596,14 +607,14 @@ DecorationAttributes: ; 26a4f
 	decoration DECO_DOLL,     DITTO,             SET_UP_DOLL,        EVENT_DECO_DITTO_DOLL,             SPRITE_DITTO
 	decoration DECO_DOLL,     VOLTORB,           SET_UP_DOLL,        EVENT_DECO_VOLTORB_DOLL,           SPRITE_VOLTORB
 	decoration DECO_DOLL,     ABRA,              SET_UP_DOLL,        EVENT_DECO_ABRA_DOLL,              SPRITE_ABRA
-	decoration DECO_DOLL,     UNOWN,             SET_UP_DOLL,        EVENT_DECO_UNOWN_DOLL,             SPRITE_PAPER ; TODO: fix sprite
+	decoration DECO_DOLL,     UNOWN,             SET_UP_DOLL,        EVENT_DECO_UNOWN_DOLL,             SPRITE_UNOWN
 	decoration DECO_DOLL,     GEODUDE,           SET_UP_DOLL,        EVENT_DECO_GEODUDE_DOLL,           SPRITE_GEODUDE
 	decoration DECO_DOLL,     PINECO,            SET_UP_DOLL,        EVENT_DECO_PINECO_DOLL,            SPRITE_PINECO
 	decoration DECO_DOLL,     MARILL,            SET_UP_DOLL,        EVENT_DECO_MARILL_DOLL,            SPRITE_MARILL
 	decoration DECO_DOLL,     TEDDIURSA,         SET_UP_DOLL,        EVENT_DECO_TEDDIURSA_DOLL,         SPRITE_TEDDIURSA
 	decoration DECO_DOLL,     MEOWTH,            SET_UP_DOLL,        EVENT_DECO_MEOWTH_DOLL,            SPRITE_MEOWTH
-	decoration DECO_DOLL,     VULPIX,            SET_UP_DOLL,        EVENT_DECO_VULPIX_DOLL,            SPRITE_EGG ; TODO: SPRITE_VULPIX
-	decoration DECO_DOLL,     GROWLITHE,         SET_UP_DOLL,        EVENT_DECO_GROWLITHE_DOLL,         SPRITE_EGG ; TODO: SPRITE_GROWLITHE
+	decoration DECO_DOLL,     VULPIX,            SET_UP_DOLL,        EVENT_DECO_VULPIX_DOLL,            SPRITE_VULPIX
+	decoration DECO_DOLL,     GROWLITHE,         SET_UP_DOLL,        EVENT_DECO_GROWLITHE_DOLL,         SPRITE_GROWLITHE
 	decoration DECO_DOLL,     EEVEE,             SET_UP_DOLL,        EVENT_DECO_EEVEE_DOLL,             SPRITE_EEVEE
 	decoration DECO_PLANT,    GOLD_TROPHY,       SET_UP_DOLL,        EVENT_DECO_GOLD_TROPHY,            SPRITE_GOLD_TROPHY
 	decoration DECO_PLANT,    SILVER_TROPHY,     SET_UP_DOLL,        EVENT_DECO_SILVER_TROPHY,          SPRITE_SILVER_TROPHY
@@ -1377,21 +1388,19 @@ ToggleDecorationsVisibility: ; 27043
 	ld de, EVENT_KRISS_HOUSE_2F_CONSOLE
 	ld hl, VariableSprites + SPRITE_CONSOLE - SPRITE_VARS
 	ld a, [Console]
-	call ToggleDecorationVisibility
+	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_DOLL_1
 	ld hl, VariableSprites + SPRITE_DOLL_1 - SPRITE_VARS
 	ld a, [LeftOrnament]
-	call ToggleDecorationVisibility
+	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_DOLL_2
 	ld hl, VariableSprites + SPRITE_DOLL_2 - SPRITE_VARS
 	ld a, [RightOrnament]
-	call ToggleDecorationVisibility
+	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 	ld hl, VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
 	ld a, [BigDoll]
-	; fallthrough
-
-ToggleDecorationVisibility: ; 27074
+.ToggleDecorationVisibility: ; 27074
 	and a
 	jr z, .hide
 	call _GetDecorationSprite
@@ -1403,14 +1412,3 @@ ToggleDecorationVisibility: ; 27074
 	ld b, SET_FLAG
 	jp EventFlagAction
 ; 27085
-
-_GetDecorationSprite: ; 27085
-	ld c, a
-	push de
-	push hl
-	farcall GetDecorationSprite
-	pop hl
-	pop de
-	ld a, c
-	ret
-; 27092

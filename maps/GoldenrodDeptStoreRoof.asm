@@ -54,10 +54,10 @@ GoldenrodDeptStoreRoofCheckSaleChangeClerk:
 FisherScript_0x56749:
 	faceplayer
 	opentext
-	writetext UnknownText_0x567d2
-	waitbutton
 	checkevent EVENT_DECO_VOLTORB_DOLL
 	iftrue .AlreadyGotVoltorbDoll
+	writetext UnknownText_0x567d2
+	waitbutton
 	writetext GoldenrodDeptStoreRoofFisherDuplicateText
 	waitbutton
 	setevent EVENT_DECO_VOLTORB_DOLL
@@ -67,9 +67,9 @@ FisherScript_0x56749:
 	buttonsound
 	writetext VoltorbDollSentText
 	waitbutton
+.AlreadyGotVoltorbDoll
 	writetext GoldenrodDeptStoreRoofFisherCatchEmAllText
 	waitbutton
-.AlreadyGotVoltorbDoll
 	closetext
 	spriteface LAST_TALKED, UP
 	end
@@ -210,7 +210,7 @@ VoltorbDollSentText:
 
 GoldenrodDeptStoreRoofFisherCatchEmAllText:
 	text "I heard there are"
-	line "22 kinds of dolls."
+	line "30 kinds of dolls."
 	done
 
 UnknownText_0x56839:

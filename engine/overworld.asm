@@ -709,6 +709,7 @@ SpriteMons: ; 14495
 	db NIDORAN_F
 	db NIDORAN_M
 	db NIDORINO
+	db VULPIX
 	db JIGGLYPUFF
 	db ODDISH
 	db VILEPLUME
@@ -716,6 +717,7 @@ SpriteMons: ; 14495
 	db MEOWTH
 	db PERSIAN
 	db PSYDUCK
+	db GROWLITHE
 	db POLIWAG
 	db POLIWRATH
 	db ABRA
@@ -747,6 +749,7 @@ SpriteMons: ; 14495
 	db MARILL
 	db MURKROW
 	db SLOWKING
+	db UNOWN
 	db PINECO
 	db HERACROSS
 	db WEAVILE
