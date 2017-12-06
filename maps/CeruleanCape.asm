@@ -23,7 +23,7 @@ CeruleanCape_MapEventHeader:
 
 .PersonEvents: db 16
 	person_event SPRITE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
+	person_event SPRITE_VERMILION_LAWRENCE, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
 	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
 	person_event SPRITE_SWIMMER_GUY, 7, 25, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
 	person_event SPRITE_SWIMMER_GUY, 16, 41, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
@@ -32,7 +32,7 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_BEAUTY, 21, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
 	person_event SPRITE_GENTLEMAN, 27, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
 	person_event SPRITE_GENTLEMAN, 26, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 32, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfMorgan, -1
+	person_event SPRITE_VERMILION_LAWRENCE, 32, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfMorgan, -1
 	person_event SPRITE_LADY, 26, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	person_event SPRITE_FISHER, 11, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
 	person_event SPRITE_COOLTRAINER_M, 8, -4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
@@ -54,7 +54,7 @@ CeruleanCapeDateInterruptedTrigger1:
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	spriteface CERULEANCAPE_MISTY, UP
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear CERULEANCAPE_MISTY_WALK
 	spriteface CERULEANCAPE_MISTY_WALK, UP
@@ -75,7 +75,7 @@ CeruleanCapeDateInterruptedTrigger2:
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	spriteface CERULEANCAPE_MISTY, UP
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear CERULEANCAPE_MISTY_WALK
 	spriteface CERULEANCAPE_MISTY_WALK, UP
@@ -89,7 +89,7 @@ CeruleanCapeDateFinishScript:
 	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19f000
 	disappear CERULEANCAPE_MISTY_WALK
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_COOLTRAINER_F
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic
@@ -108,7 +108,7 @@ CeruleanCapeDateInterruptedTrigger3:
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	spriteface CERULEANCAPE_MISTY, DOWN
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear CERULEANCAPE_MISTY_WALK
 	spriteface CERULEANCAPE_MISTY_WALK, DOWN
@@ -119,7 +119,7 @@ CeruleanCapeDateInterruptedTrigger3:
 	applymovement CERULEANCAPE_MISTY_WALK, .LeaveMovement
 	disappear CERULEANCAPE_MISTY_WALK
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_COOLTRAINER_F
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic

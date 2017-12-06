@@ -260,7 +260,7 @@ SPRITE_VARS EQU const_value
 	const SPRITE_CHERRYGROVE_RIVAL ; $fc ; permanent SPRITE_BUG_CATCHER
 	const SPRITE_OLIVINE_RIVAL ; $fd ; permanent SPRITE_COWGIRL
 	const SPRITE_LAKE_OF_RAGE_LANCE ; $fe ; permanent SPRITE_ENGINEER
-	const SPRITE_CERULEAN_CAPE_MISTY ; $ff ; permanent SPRITE_COOLTRAINER_F
+	const SPRITE_VERMILION_LAWRENCE ; $ff ; permanent SPRITE_COOLTRAINER_F
 
 
 ; sprite types

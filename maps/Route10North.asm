@@ -25,7 +25,7 @@ Route10North_MapEventHeader:
 
 .PersonEvents: db 10
 	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	person_event SPRITE_VERMILION_LAWRENCE, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
 	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	person_event SPRITE_MOM, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	person_event SPRITE_MOM, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
@@ -122,7 +122,7 @@ Route10NorthLawrenceEncounter1Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_COOLTRAINER_F
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic
@@ -132,7 +132,7 @@ Route10NorthLawrenceEncounter2Script:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_LAWRENCE
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_LAWRENCE
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkcode VAR_FACING
 	if_equal UP, .up
@@ -185,7 +185,7 @@ Route10NorthLawrenceEncounter2Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_COOLTRAINER_F
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
 	clearevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
