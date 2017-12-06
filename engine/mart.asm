@@ -567,8 +567,8 @@ BuyMenu_InitGFX:
 ;	call TextBox
 	call EnableLCD
 	call WaitBGMap
-	ld b, SCGB_BUYMENU_PALS
-	call GetSGBLayout
+	ld b, CGB_BUYMENU_PALS
+	call GetCGBLayout
 	call SetPalettes
 ; Not graphics-related, but common to all BuyMenu_InitGFX callers
 	xor a

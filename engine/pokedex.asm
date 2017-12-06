@@ -222,8 +222,8 @@ Pokedex_InitMainScreen: ; 4013c (10:413c)
 	ld [CurPartySpecies], a
 	xor a
 	ld [wDexMonShiny], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	call Pokedex_UpdateCursorOAM
 	call Pokedex_DrawListWindow
 	hlcoord 0, 17
@@ -313,8 +313,8 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	ld [CurPartySpecies], a
 	xor a
 	ld [wDexMonShiny], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	ld a, [CurPartySpecies]
 	call PlayCry
 	jp Pokedex_IncrementDexPointer
@@ -384,8 +384,8 @@ Pokedex_ReinitDexEntryScreen: ; 402aa (10:42aa)
 	call WaitBGMap
 	call Pokedex_GetSelectedMon
 	ld [CurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	ld a, [CurPartySpecies]
 	call PlayCry
 	ld hl, wJumptableIndex
@@ -438,8 +438,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	call WaitBGMap
 	call Pokedex_GetSelectedMon
 	ld [CurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	jp Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	jp Pokedex_GetCGBLayout
 
 .Cry: ; 40340
 	ld a, [CurPartySpecies]
@@ -451,8 +451,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	xor SHINY_MASK ; alternate 0 and SHINY_MASK
 	ld [hl], a
 	ld a, [CurPartySpecies]
-	ld a, SCGB_POKEDEX
-	jp Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	jp Pokedex_GetCGBLayout
 
 Pokedex_RedisplayDexEntry: ; 4038d
 	call Pokedex_LoadGFX
@@ -472,8 +472,8 @@ Pokedex_InitOptionScreen: ; 4039d (10:439d)
 	ld [wDexArrowCursorPosIndex], a
 	call Pokedex_DisplayModeDescription
 	call WaitBGMap
-	ld a, SCGB_POKEDEX_SEARCH_OPTION
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX_SEARCH_OPTION
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateOptionScreen: ; 403be (10:43be)
@@ -579,8 +579,8 @@ Pokedex_InitSearchScreen: ; 40443 (10:4443)
 	ld [wDexSearchSlowpokeFrame], a
 	farcall DoDexSearchSlowpokeFrame
 	call WaitBGMap
-	ld a, SCGB_POKEDEX_SEARCH_OPTION
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX_SEARCH_OPTION
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
@@ -693,8 +693,8 @@ Pokedex_InitSearchResultsScreen: ; 4050a (10:450a)
 	call Pokedex_UpdateSearchResultsCursorOAM
 	ld a, $ff
 	ld [CurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateSearchResultsScreen: ; 40562 (10:4562)
@@ -751,8 +751,8 @@ Pokedex_InitUnownMode: ; 405bd (10:45bd)
 	call Pokedex_UnownModePlaceCursor
 	farcall PrintUnownWord
 	call WaitBGMap
-	ld a, SCGB_POKEDEX_UNOWN_MODE
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX_UNOWN_MODE
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateUnownMode: ; 405df (10:45df)
@@ -2378,9 +2378,9 @@ endc
 	ld a, $ff
 	jp DmgToCgbObjPal0
 
-Pokedex_GetSGBLayout: ; 41423
+Pokedex_GetCGBLayout: ; 41423
 	ld b, a
-	call GetSGBLayout
+	call GetCGBLayout
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld a, $e0
@@ -2585,8 +2585,8 @@ NewPokedexEntry: ; fb877
 	call GetBaseData
 	ld de, VTiles2
 	predef GetFrontpic
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	ld a, [CurPartySpecies]
 	jp PlayCry
 
@@ -2601,8 +2601,8 @@ NewPokedexEntry: ; fb877
 	ld [TempMonPersonality], a
 	ld a, [hl]
 	ld [TempMonPersonality + 1], a
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	jp SetPalettes
 ; fb8f1
 

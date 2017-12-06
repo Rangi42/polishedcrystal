@@ -3,8 +3,8 @@ MainMenu: ; 49cdc
 	xor a
 	ld [wDisableTextAcceleration], a
 	call Function49ed0
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	ld hl, GameTimerPause
 	res 0, [hl]

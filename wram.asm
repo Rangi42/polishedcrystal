@@ -880,14 +880,15 @@ BGMapBufferPtrs:: ds 40 ; 20 bg map addresses (16x8 tiles)
 CreditsPos:: ds 2
 CreditsTimer:: ds 1
 
-SGBPredef:: ds 1
+MemCGBLayout:: ds 1
+
 PlayerHPPal:: ds 1
 EnemyHPPal:: ds 1
-
 wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: ds 1
-	ds 4
-wSGBPals:: ds 48
+wHPPalIndex:: ds 1
+
+	ds 51
 
 AttrMap::
 ; 20x18 grid of palettes for 8x8 tiles

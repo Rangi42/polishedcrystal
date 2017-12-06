@@ -364,8 +364,8 @@ DisplayCaughtContestMonStats: ; cc000
 	ld [Options1], a
 
 	call WaitBGMap
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	jp SetPalettes
 
 .Health:
@@ -800,7 +800,7 @@ _ReturnToBattle_UseBall: ; 2715c
 .continue
 	farcall GetMonFrontpic
 	farcall _LoadBattleFontsHPBar
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call CloseWindow
 	call LoadStandardMenuDataHeader
 	call WaitBGMap
@@ -1406,8 +1406,8 @@ Special_MoveTutor: ; 4925b
 	call ClearBGPalettes
 	call ClearScreen
 	call DelayFrame
-	ld b, SCGB_PACKPALS
-	call GetSGBLayout
+	ld b, CGB_PACKPALS
+	call GetCGBLayout
 	xor a
 	ld [wItemAttributeParamBuffer], a
 	call .GetMoveTutorMove
@@ -1797,8 +1797,8 @@ INCBIN "gfx/shrink/shrink2.2bpp.lz"
 
 _ResetClock: ; 4d3b1
 	farcall BlankScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
@@ -1845,8 +1845,8 @@ _ResetClock: ; 4d3b1
 
 _DeleteSaveData: ; 4d54c
 	farcall BlankScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
@@ -1869,8 +1869,8 @@ _DeleteSaveData: ; 4d54c
 
 _ResetInitialOptions:
 	farcall BlankScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
@@ -2011,8 +2011,8 @@ AnimateTrademonFrontpic: ; 4d81e
 	ld [TempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [TempMonPersonality + 1], a
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	farcall TradeAnim_ShowGetmonFrontpic
@@ -4002,7 +4002,7 @@ INCLUDE "engine/slot_machine.asm"
 
 SECTION "Code 19", ROMX
 
-INCLUDE "engine/events_3.asm"
+INCLUDE "engine/events_2.asm"
 INCLUDE "engine/radio.asm"
 INCLUDE "gfx/mail.asm"
 

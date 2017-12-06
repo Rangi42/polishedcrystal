@@ -16,8 +16,8 @@ _OptionsMenu: ; e41d0
 
 	xor a
 	ld [wJumptableIndex], a
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 
 .joypad_loop

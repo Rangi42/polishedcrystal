@@ -301,8 +301,8 @@ LoadGraphics: ; 1047cf
 	jp LoadStandardFont
 
 LoadMapPalettes: ; 1047eb
-	ld b, SCGB_MAPPALS
-	jp GetSGBLayout
+	ld b, CGB_MAPPALS
+	jp GetCGBLayout
 ; 1047f0
 
 RefreshMapSprites: ; 1047f0

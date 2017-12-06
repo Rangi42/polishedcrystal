@@ -38,8 +38,8 @@ _SlotMachine:
 	ld bc, VBGMap1 - VBGMap0
 	ld a, " "
 	call ByteFill
-	ld b, SCGB_SLOT_MACHINE
-	call GetSGBLayout
+	ld b, CGB_SLOT_MACHINE
+	call GetCGBLayout
 	farcall ClearSpriteAnims
 	ld hl, wSlots
 	ld bc, wSlotsDataEnd - wSlots

@@ -1628,8 +1628,8 @@ PlaceMoveData: ; 13256
 	xor a
 	ld [hBGMapMode], a
 
-	ld b, SCGB_MOVE_LIST
-	call GetSGBLayout
+	ld b, CGB_MOVE_LIST
+	call GetCGBLayout
 
 	hlcoord 7, 12
 	ld de, String_PowAcc

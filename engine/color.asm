@@ -401,7 +401,7 @@ ApplyAttrMap:
 
 ApplyPartyMenuHPPals: ; 96f3
 	ld hl, wHPPals
-	ld a, [wSGBPals]
+	ld a, [wHPPalIndex]
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -412,7 +412,7 @@ ApplyPartyMenuHPPals: ; 96f3
 	ld e, a
 	hlcoord 11, 2, AttrMap
 	ld bc, 2 * SCREEN_WIDTH
-	ld a, [wSGBPals]
+	ld a, [wHPPalIndex]
 .loop
 	and a
 	jr z, .done

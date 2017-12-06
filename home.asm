@@ -596,10 +596,9 @@ endc
 	ret
 ; 333e
 
-GetMemSGBLayout:: ; 333e
-	ld b, SCGB_RAM
-GetSGBLayout:: ; 3340
-; load sgb packets unless dmg
+GetMemCGBLayout:: ; 333e
+	ld b, CGB_RAM
+GetCGBLayout:: ; 3340
 	predef_jump Predef_LoadCGBLayout
 ; 334e
 
@@ -612,15 +611,14 @@ SetHPPal:: ; 334e
 
 GetHPPal:: ; 3353
 ; Get palette for hp bar pixel length e in d.
-
 	ld d, HP_GREEN
 	ld a, e
 	cp (50 * 48 / 100)
 	ret nc
-	inc d ; yellow
+	inc d ; HP_YELLOW
 	cp (21 * 48 / 100)
 	ret nc
-	inc d ; red
+	inc d ; HP_RED
 	ret
 ; 335f
 

@@ -2749,7 +2749,7 @@ ForcePlayerMonChoice: ; 3d227
 	call ExitMenu
 	call LoadTileMapToTempTileMap
 	call WaitBGMap
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	xor a
 	ld c, a
@@ -2768,7 +2768,7 @@ ForcePlayerMonChoice: ; 3d227
 	call DelayFrame
 	call _LoadStatusIcons
 	call CloseWindow
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	call SendOutPkmnText
 	call NewBattleMonStatus
@@ -2952,8 +2952,8 @@ LostBattle: ; 3d38e
 	jr nz, .LostLinkBattle
 
 ; Greyscale
-	ld b, SCGB_BATTLE_GRAYSCALE
-	call GetSGBLayout
+	ld b, CGB_BATTLE_GRAYSCALE
+	call GetCGBLayout
 	call SetPalettes
 	jr .end
 
@@ -5164,7 +5164,7 @@ BattleMenuPKMN_Loop:
 	call _LoadStatusIcons
 	call CloseWindow
 	call LoadTileMapToTempTileMap
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	jp BattleMenu
 ; 3e2f5
@@ -5254,7 +5254,7 @@ TryPlayerSwitch: ; 3e358
 	call ClearSprites
 	call _LoadStatusIcons
 	call CloseWindow
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	ld a, [CurPartyMon]
 	ld [CurBattleMon], a
@@ -7329,8 +7329,8 @@ FinishBattleAnim: ; 3ee27
 	push bc
 	push de
 	push hl
-	ld b, SCGB_BATTLE_COLORS
-	call GetSGBLayout
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
 	pop hl
@@ -8508,8 +8508,8 @@ BattleIntro: ; 3f4dd
 	farcall ClearBattleRAM
 	call InitEnemy
 	call BackUpVBGMap2
-	ld b, SCGB_BATTLE_GRAYSCALE
-	call GetSGBLayout
+	ld b, CGB_BATTLE_GRAYSCALE
+	call GetCGBLayout
 	ld hl, rLCDC
 	res 6, [hl]
 	call InitBattleDisplay
@@ -8862,8 +8862,8 @@ DisplayLinkRecord: ; 3f836
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	call WaitBGMap2
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	ld c, 8
 	call DelayFrames
@@ -9349,8 +9349,8 @@ InitBattleDisplay: ; 3fb6c
 	ld [rWY], a
 	call WaitBGMap
 	call HideSprites
-	ld b, SCGB_BATTLE_COLORS
-	call GetSGBLayout
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
 	call SetPalettes
 	ld a, $90
 	ld [hWY], a

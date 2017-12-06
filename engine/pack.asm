@@ -1518,8 +1518,8 @@ ClearPocketList: ; 10a36 (4:4a36)
 
 Pack_InitColors: ; 10a40
 	call WaitBGMap
-	ld b, SCGB_PACKPALS
-	call GetSGBLayout
+	ld b, CGB_PACKPALS
+	call GetCGBLayout
 	call SetPalettes
 	jp DelayFrame
 ; 10a4f

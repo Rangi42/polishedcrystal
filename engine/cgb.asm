@@ -1,12 +1,10 @@
-; Replaces the functionality of sgb.asm to work with CGB hardware.
-
 Predef_LoadCGBLayout: ; 8d59
 	ld a, b
-	cp SCGB_RAM
+	cp CGB_RAM
 	jr nz, .not_ram
-	ld a, [SGBPredef]
+	ld a, [MemCGBLayout]
 .not_ram
-	cp SCGB_PARTY_MENU_HP_PALS
+	cp CGB_PARTY_MENU_HP_PALS
 	jp z, ApplyPartyMenuHPPals
 	call ResetBGPals
 	ld l, a
@@ -152,8 +150,8 @@ _CGB_BattleColors: ; 8ddb
 	ld a, $5
 	call FarCopyWRAM
 
-	ld a, SCGB_BATTLE_COLORS
-	ld [SGBPredef], a
+	ld a, CGB_BATTLE_COLORS
+	ld [MemCGBLayout], a
 	call ApplyPals
 
 _CGB_FinishBattleScreenLayout: ; 8e23
@@ -508,8 +506,8 @@ endc
 
 _CGB_MapPals: ; 91c8
 	call LoadMapPals
-	ld a, SCGB_MAPPALS
-	ld [SGBPredef], a
+	ld a, CGB_MAPPALS
+	ld [MemCGBLayout], a
 	ret
 ; 91d1
 

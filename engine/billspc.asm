@@ -65,7 +65,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
@@ -120,7 +120,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
@@ -179,7 +179,7 @@ BillsPCDepositFuncStats: ; e24c8 (38:64c8)
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 
 BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
@@ -313,7 +313,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
@@ -363,7 +363,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
@@ -420,7 +420,7 @@ endr
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 
 .release ; e26d8 (38:66d8)
@@ -556,7 +556,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
@@ -615,7 +615,7 @@ _MovePKMNWithoutMail: ; e2759
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
@@ -673,7 +673,7 @@ endr
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [CurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 ; e28bd
 
@@ -2165,7 +2165,7 @@ endr
 
 BillsPC_ApplyPalettes: ; e33d0 (38:73d0)
 	ld b, a
-	call GetSGBLayout
+	call GetCGBLayout
 	ld a, %11100100
 	call DmgToCgbBGPals
 	ld a, %11111100

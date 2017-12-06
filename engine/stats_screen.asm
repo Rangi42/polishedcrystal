@@ -361,8 +361,8 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	farcall ComputeHPBarPixels
 	ld hl, wCurHPPal
 	call SetHPPal
-	ld b, SCGB_STATS_SCREEN_HP_PALS
-	call GetSGBLayout
+	ld b, CGB_STATS_SCREEN_HP_PALS
+	call GetCGBLayout
 	jp DelayFrame
 
 .PlaceGenderChar: ; 4df66 (13:5f66)
@@ -1253,8 +1253,8 @@ EggStatsScreen: ; 4e33a
 	ld [hBGMapMode], a
 	ld hl, wCurHPPal
 	call SetHPPal
-	ld b, SCGB_STATS_SCREEN_HP_PALS
-	call GetSGBLayout
+	ld b, CGB_STATS_SCREEN_HP_PALS
+	call GetCGBLayout
 	call StatsScreen_PlaceHorizontalDivider
 	ld de, EggString
 	hlcoord 8, 1

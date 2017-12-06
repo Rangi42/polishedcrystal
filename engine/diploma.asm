@@ -22,8 +22,8 @@ _Diploma: ; 1dd702
 	call PlaceString
 	call EnableLCD
 	call WaitBGMap
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
 	jp WaitPressAorB_BlinkCursor

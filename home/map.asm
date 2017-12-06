@@ -1905,8 +1905,8 @@ ExitAllMenus:: ; 2b4d
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
 FinishExitMenu:: ; 2b5c
-	ld b, SCGB_MAPPALS
-	call GetSGBLayout
+	ld b, CGB_MAPPALS
+	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call WaitBGMap2
 	farcall FadeInPalettes
@@ -1927,8 +1927,8 @@ ReturnToMapWithSpeechTextbox:: ; 0x2b74
 	set 0, [hl]
 	call UpdateSprites
 	call WaitBGMap2
-	ld b, SCGB_MAPPALS
-	call GetSGBLayout
+	ld b, CGB_MAPPALS
+	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call UpdateTimePals
 	call DelayFrame

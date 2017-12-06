@@ -259,8 +259,8 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	ld [hli], a
 	ld [hl], "S"
 	call LinkBattle_TrainerHuds
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	ld a, $e4
 	ld [rOBP0], a

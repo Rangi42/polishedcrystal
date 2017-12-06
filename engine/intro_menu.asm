@@ -669,8 +669,8 @@ ProfElmSpeech: ; 0x5f99
 	ld [TrainerClass], a
 	call Intro_PrepTrainerPic
 
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
+	ld b, CGB_INTRO_PALS
+	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
@@ -693,8 +693,8 @@ if !DEF(DEBUG)
 	ld [TempMonDVs + 1], a
 	ld [TempMonDVs + 2], a
 
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
+	ld b, CGB_INTRO_PALS
+	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
@@ -711,8 +711,8 @@ if !DEF(DEBUG)
 	ld [TrainerClass], a
 	call Intro_PrepTrainerPic
 
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
+	ld b, CGB_INTRO_PALS
+	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
@@ -735,8 +735,8 @@ endc
 	call WaitBGMap
 	call DrawIntroPlayerPic
 
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
+	ld b, CGB_INTRO_PALS
+	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
@@ -782,8 +782,8 @@ InitGender: ; 48dcb (12:4dcb)
 	call WaitBGMap2
 	call SetPalettes
 
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
+	ld b, CGB_INTRO_PALS
+	call GetCGBLayout
 	call InitIntroGradient
 
 	ld hl, AreYouABoyOrAreYouAGirlText
@@ -801,8 +801,8 @@ InitGender: ; 48dcb (12:4dcb)
 	call ClearTileMap
 	call DrawIntroPlayerPic
 
-	ld b, SCGB_INTRO_PALS
-	call GetSGBLayout
+	ld b, CGB_INTRO_PALS
+	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
 
@@ -1056,8 +1056,8 @@ StartTitleScreen: ; 6219
 	ld [hWX], a
 	ld a, $90
 	ld [hWY], a
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call UpdateTimePals
 	ld a, [wIntroSceneFrameCounter]
 	cp $6

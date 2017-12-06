@@ -322,8 +322,8 @@ LinkTimeout: ; 283b2
 	call PlaceWholeStringInBoxAtOnce
 	call RotateThreePalettesRight
 	call ClearScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	jp WaitBGMap2
 ; 283ed
 
@@ -1340,8 +1340,8 @@ Function28ade: ; 28ade
 Function28b22: ; 28b22
 	call RotateThreePalettesRight
 	call ClearScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call WaitBGMap2
 	xor a
 	ld [rSB], a
@@ -1619,8 +1619,8 @@ LinkTrade: ; 28b87
 	call DelayFrames
 	call ClearTileMap
 	call LoadFontsBattleExtra
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	ld a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_2
