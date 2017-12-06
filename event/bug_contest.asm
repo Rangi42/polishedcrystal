@@ -1,3 +1,103 @@
+
+ContestDropOffMons: ; 13a12
+	ld hl, PartyMon1HP
+	ld a, [hli]
+	or [hl]
+	jr z, .fainted
+; Mask the rest of your party by setting the count to 1...
+	ld hl, PartyCount
+	ld a, 1
+	ld [hli], a
+	inc hl
+; ... backing up the second mon index somewhere...
+	ld a, [hl]
+	ld [wBugContestSecondPartySpecies], a
+; ... and replacing it with the terminator byte
+	ld [hl], $ff
+	xor a
+	ld [ScriptVar], a
+	ret
+
+.fainted
+	ld a, $1
+	ld [ScriptVar], a
+	ret
+; 13a31
+
+ContestReturnMons: ; 13a31
+; Restore the species of the second mon.
+	ld hl, PartySpecies + 1
+	ld a, [wBugContestSecondPartySpecies]
+	ld [hl], a
+; Restore the party count, which must be recomputed.
+	ld b, $1
+.loop
+	ld a, [hli]
+	cp -1
+	jr z, .done
+	inc b
+	jr .loop
+
+.done
+	ld a, b
+	ld [PartyCount], a
+	ret
+; 13a47
+
+Special_GiveParkBalls: ; 135db
+	xor a
+	ld [wContestMon], a
+	ld a, 20
+	ld [wParkBallsRemaining], a
+	farjp StartBugContestTimer
+
+
+BugCatchingContestBattleScript:: ; 0x135eb
+	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST
+	randomwildmon
+	startbattle
+	reloadmapafterbattle
+	copybytetovar wParkBallsRemaining
+	iffalse .OutOfBalls
+	end
+
+.OutOfBalls: ; 0x13603
+	playsound SFX_ELEVATOR_END
+	opentext
+	writetext .ContestIsOver
+	waitbutton
+	jump BugCatchingContestReturnToGateScript
+
+.ContestIsOver: ; 0x13614
+	; ANNOUNCER: The Contest is over!
+	text_jump UnknownText_0x1bd2e7
+	db "@"
+
+BugCatchingContestOverScript:: ; 0x135f8
+	playsound SFX_ELEVATOR_END
+	opentext
+	writetext .BeeepTimesUp
+	waitbutton
+	jump BugCatchingContestReturnToGateScript
+
+.BeeepTimesUp: ; 0x1360f
+	; ANNOUNCER: BEEEP! Time's up!
+	text_jump UnknownText_0x1bd2ca
+	db "@"
+
+BugCatchingContestReturnToGateScript: ; 0x1360b
+	closetext
+	jumpstd bugcontestresultswarp
+
+Script_AbortBugContest: ; 0x122c1
+	checkflag ENGINE_BUG_CONTEST_TIMER
+	iffalse .finish
+	setflag ENGINE_DAILY_BUG_CONTEST
+	special ContestReturnMons
+.finish
+	end
+
+
 _BugContestJudging: ; 1369d
 	call ContestScore
 	call BugContest_JudgeContestants
@@ -76,7 +176,6 @@ BugContest_ThirdPlaceScoreText: ; 0x1372b
 ; 0x13730
 
 LoadContestantName: ; 13730
-
 ; If a = 0, get your name.
 	dec a
 	jr z, .player
@@ -84,9 +183,8 @@ LoadContestantName: ; 13730
 	ld c, a
 	ld b, 0
 	ld hl, BugContestantPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -263,7 +361,7 @@ DetermineContestWinners: ; 1383e
 	ld de, wBugContestSecondPlacePersonID
 	ld bc, 4
 	call CopyBytes
-	ld hl, wBugContestFirstPlacePersonID
+	ld de, wBugContestFirstPlacePersonID
 	jr CopyTempContestant
 
 .not_first_place
@@ -276,7 +374,7 @@ DetermineContestWinners: ; 1383e
 	ld de, wBugContestThirdPlacePersonID
 	ld bc, 4
 	call CopyBytes
-	ld hl, wBugContestSecondPlacePersonID
+	ld de, wBugContestSecondPlacePersonID
 	jr CopyTempContestant
 
 .not_second_place
@@ -285,11 +383,11 @@ DetermineContestWinners: ; 1383e
 	ld c, 2
 	call StringCmp
 	ret c
-	ld hl, wBugContestThirdPlacePersonID
+	ld de, wBugContestThirdPlacePersonID
 	; fallthrough
 
 CopyTempContestant: ; 138a0
-	ld de, wBugContestTempPersonID
+	ld hl, wBugContestTempPersonID
 	ld bc, 4
 	jp CopyBytes
 ; 138b0
@@ -302,23 +400,20 @@ ComputeAIContestantScores: ; 138b0
 	pop de
 	jr nz, .done
 	ld a, e
-rept 2
 	inc a
-endr
+	inc a
 	ld [wBugContestTempPersonID], a
 	dec a
 	ld c, a
 	ld b, 0
 	ld hl, BugContestantPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-rept 2
 	inc hl
-endr
+	inc hl
 .loop2
 	call Random
 	and 3
@@ -477,3 +572,89 @@ ContestScore: ; 13900
 	inc [hl]
 	ret
 ; 13988
+
+Special_SelectRandomBugContestContestants: ; 139a8
+; Select five random people to participate in the current contest.
+
+; First we have to make sure that any old data is cleared away.
+	ld c, 10 ; Number of people to choose from.
+	ld hl, BugCatchingContestantEventFlagTable
+.loop1
+	push bc
+	push hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld b, RESET_FLAG
+	call EventFlagAction
+	pop hl
+	inc hl
+	inc hl
+	pop bc
+	dec c
+	jr nz, .loop1
+
+; Now that that's out of the way, we can get on to the good stuff.
+	ld c, 5
+.loop2
+	push bc
+.next
+; Choose a flag at uniform random to be set.
+	call Random
+	cp 250
+	jr nc, .next
+	ld c, 25
+	call SimpleDivide
+	ld e, b
+	ld d, 0
+	ld hl, BugCatchingContestantEventFlagTable
+	add hl, de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+; If we've already set it, it doesn't count.
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	pop de
+	ld a, c
+	and a
+	jr nz, .next
+; Set the flag.  This will cause that sprite to not be visible in the contest.
+	ld b, SET_FLAG
+	call EventFlagAction
+	pop bc
+; Check if we're done.  If so, return.  Otherwise, choose the next victim.
+	dec c
+	jr nz, .loop2
+	ret
+; 139ed
+
+Special_CheckBugContestContestantFlag: ; 139ed
+; Checks the flag of the Bug Catching Contestant whose index is loaded in a.
+; Bug: If a >= 10 when this is called, it will read beyond the table.
+	ld hl, BugCatchingContestantEventFlagTable
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld b, CHECK_FLAG
+	jp EventFlagAction
+; 139fe
+
+BugCatchingContestantEventFlagTable: ; 139fe
+	dw EVENT_BUG_CATCHING_CONTESTANT_1A
+	dw EVENT_BUG_CATCHING_CONTESTANT_2A
+	dw EVENT_BUG_CATCHING_CONTESTANT_3A
+	dw EVENT_BUG_CATCHING_CONTESTANT_4A
+	dw EVENT_BUG_CATCHING_CONTESTANT_5A
+	dw EVENT_BUG_CATCHING_CONTESTANT_6A
+	dw EVENT_BUG_CATCHING_CONTESTANT_7A
+	dw EVENT_BUG_CATCHING_CONTESTANT_8A
+	dw EVENT_BUG_CATCHING_CONTESTANT_9A
+	dw EVENT_BUG_CATCHING_CONTESTANT_10A
+; 13a12

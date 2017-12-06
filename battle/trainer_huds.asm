@@ -218,7 +218,7 @@ LoadTrainerHudOAM: ; 2c143
 	ld [hli], a
 	ld a, [de]
 	ld [hli], a
-	xor a ; PAL_OW_RED
+	ld a, PAL_BATTLE_OB_YELLOW
 	ld [hli], a
 	ld a, [wPlaceBallsX]
 	ld b, a

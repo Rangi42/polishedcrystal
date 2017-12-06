@@ -135,7 +135,8 @@ Kurt_SelectQuantity: ; 880c2
 	call .PlaceApricornName
 	call PlaceApricornQuantity
 	call ApplyTilemap
-	farcall Kurt_SelectQuantity_InterpretJoypad
+	farcall BuySellToss_InterpretJoypad
+	ld b, a
 	jr nc, .loop
 
 	push bc

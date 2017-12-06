@@ -179,6 +179,7 @@ INCLUDE "engine/player_object.asm"
 INCLUDE "engine/sine.asm"
 INCLUDE "data/predefs.asm"
 INCLUDE "engine/color.asm"
+INCLUDE "engine/trainer_scripts.asm"
 
 
 SECTION "Code 3", ROMX
@@ -394,184 +395,8 @@ INCLUDE "event/itemfinder.asm"
 INCLUDE "engine/startmenu.asm"
 INCLUDE "engine/selectmenu.asm"
 INCLUDE "event/elevator.asm"
-
-Script_AbortBugContest: ; 0x122c1
-	checkflag ENGINE_BUG_CONTEST_TIMER
-	iffalse .finish
-	setflag ENGINE_DAILY_BUG_CONTEST
-	special ContestReturnMons
-.finish
-	end
-
-Special_GiveParkBalls: ; 135db
-	xor a
-	ld [wContestMon], a
-	ld a, 20
-	ld [wParkBallsRemaining], a
-	farjp StartBugContestTimer
-
-BugCatchingContestBattleScript:: ; 0x135eb
-	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST
-	randomwildmon
-	startbattle
-	reloadmapafterbattle
-	copybytetovar wParkBallsRemaining
-	iffalse BugCatchingContestOutOfBallsScript
-	end
-
-BugCatchingContestOverScript:: ; 0x135f8
-	playsound SFX_ELEVATOR_END
-	opentext
-	writetext BugCatchingContestText_BeeepTimesUp
-	waitbutton
-	jump BugCatchingContestReturnToGateScript
-
-BugCatchingContestOutOfBallsScript: ; 0x13603
-	playsound SFX_ELEVATOR_END
-	opentext
-	writetext BugCatchingContestText_ContestIsOver
-	waitbutton
-
-BugCatchingContestReturnToGateScript: ; 0x1360b
-	closetext
-	jumpstd bugcontestresultswarp
-
-BugCatchingContestText_BeeepTimesUp: ; 0x1360f
-	; ANNOUNCER: BEEEP! Time's up!
-	text_jump UnknownText_0x1bd2ca
-	db "@"
-
-BugCatchingContestText_ContestIsOver: ; 0x13614
-	; ANNOUNCER: The Contest is over!
-	text_jump UnknownText_0x1bd2e7
-	db "@"
-
-RepelWoreOffScript:: ; 0x13619
-	thistext
-
-	; REPEL's effect wore off.
-	text_jump UnknownText_0x1bd308
-	db "@"
-
-UseAnotherRepelScript::
-	opentext
-	writetext .text
-	yesorno
-	iffalse_endtext
-	callasm DoItemEffect
-	endtext
-
-.text:
-	text_jump UseAnotherRepelText
-	db "@"
-
-HiddenItemScript:: ; 0x13625
-	opentext
-	copybytetovar EngineBuffer3
-	itemtotext $0, $0
-	writetext .found_text
-	giveitem ITEM_FROM_MEM
-	iffalse .bag_full
-	callasm SetMemEvent
-	specialsound
-	itemnotify
-	endtext
-
-.bag_full ; 0x1363e
-	buttonsound
-	pocketisfull
-	endtext
-
-.found_text ; 0x13645
-	; found @ !
-	text_jump UnknownText_0x1c0a1c
-	db "@"
-
-SetMemEvent: ; 1364f
-	ld hl, EngineBuffer1
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ld b, SET_FLAG
-	jp EventFlagAction
-
-CheckFacingTileForStd:: ; 1365b
-; Checks to see if the tile you're facing has a std script associated with it.  If so, executes the script and returns carry.
-	ld a, c
-	ld de, 3
-	ld hl, .table1
-	call IsInArray
-	jr nc, .notintable
-
-	ld a, jumpstd_command
-	ld [wJumpStdScriptBuffer], a
-	inc hl
-	ld a, [hli]
-	ld [wJumpStdScriptBuffer + 1], a
-	ld a, [hli]
-	ld [wJumpStdScriptBuffer + 2], a
-	ld a, BANK(Script_JumpStdFromRAM)
-	ld hl, Script_JumpStdFromRAM
-	call CallScript
-	scf
-	ret
-
-.notintable
-	xor a
-	ret
-
-.table1
-	dbw COLL_BOOKSHELF,       magazinebookshelf
-	dbw COLL_TRASH_CAN,       trashcan
-	dbw COLL_PC,              pcscript
-	dbw COLL_RADIO,           radio1
-	dbw COLL_TOWN_MAP,        townmap
-	dbw COLL_MART_SHELF,      merchandiseshelf
-	dbw COLL_TV,              tv
-	dbw COLL_POKECENTER_SIGN, pokecentersign
-	dbw COLL_MART_SIGN,       martsign
-	dbw COLL_VENDING_MACHINE, vendingmachine
-	dbw COLL_FRIDGE,          refrigerator
-	dbw COLL_SINK,            sink
-	dbw COLL_WINDOW,          window
-	dbw COLL_STOVE,           stove
-	dbw COLL_INCENSE,         incenseburner
-	dbw COLL_ELEVATOR_BUTTON, elevatorbutton
-	db -1 ; end
-
-Script_JumpStdFromRAM: ; 0x1369a
-	jump wJumpStdScriptBuffer
-
-INCLUDE "event/bug_contest_judging.asm"
-
-ApplyPokerusTick: ; 13988
-; decreases all pokemon's pokerus counter by b. if the lower nybble reaches zero, the pokerus is cured.
-	ld hl, PartyMon1PokerusStatus ; PartyMon1 + MON_PKRS
-	ld a, [PartyCount]
-	and a
-	ret z ; make sure it's not wasting time on an empty party
-	ld c, a
-.loop
-	ld a, [hl]
-	and $f ; lower nybble is the number of days remaining
-	jr z, .next ; if already 0, skip
-	sub b ; subtract the number of days
-	jr nc, .ok ; max(result, 0)
-	xor a
-.ok
-	ld d, a ; back up this value because we need to preserve the strain (upper nybble)
-	ld a, [hl]
-	and $f0
-	add d
-	ld [hl], a ; this prevents a cured pokemon from recontracting pokerus
-.next
-	ld de, PARTYMON_STRUCT_LENGTH
-	add hl, de
-	dec c
-	jr nz, .loop
-	ret
-
-INCLUDE "event/bug_contest_2.asm"
+INCLUDE "event/bug_contest.asm"
+INCLUDE "event/std_tiles.asm"
 
 
 SECTION "Code 5", ROMX
@@ -599,7 +424,17 @@ INCLUDE "event/move_reminder.asm"
 
 SECTION "Code 7", ROMX
 
+INCLUDE "engine/pokepic.asm"
+INCLUDE "engine/scrolling_menu.asm"
+INCLUDE "engine/switch_items.asm"
 INCLUDE "engine/menu.asm"
+INCLUDE "engine/mon_menu.asm"
+INCLUDE "battle/menu.asm"
+INCLUDE "engine/buy_sell_toss.asm"
+INCLUDE "engine/trainer_card.asm"
+INCLUDE "engine/prof_oaks_pc.asm"
+INCLUDE "engine/decorations.asm"
+INCLUDE "trainers/dvs.asm"
 
 UpdateItemDescriptionAndBagQuantity:
 	hlcoord 1, 1
@@ -672,81 +507,6 @@ GetQuantityInBag:
 	call CountItem
 	pop af
 	ret
-
-INCLUDE "engine/pokepic.asm"
-
-LoadObjectMasks: ; 2454f
-	ld hl, wObjectMasks
-	xor a
-	ld bc, NUM_OBJECTS
-	call ByteFill
-	ld bc, MapObjects
-	ld de, wObjectMasks
-	xor a
-.loop
-	push af
-	push bc
-	push de
-	call GetObjectTimeMask
-	jr c, .next
-	call CheckObjectFlag
-.next
-	pop de
-	ld [de], a
-	inc de
-	pop bc
-	ld hl, OBJECT_LENGTH
-	add hl, bc
-	ld b, h
-	ld c, l
-	pop af
-	inc a
-	cp NUM_OBJECTS
-	jr nz, .loop
-	ret
-
-CheckObjectFlag: ; 2457d (9:457d)
-	ld hl, MAPOBJECT_SPRITE
-	add hl, bc
-	ld a, [hl]
-	and a
-	jr z, .masked
-	ld hl, MAPOBJECT_EVENT_FLAG
-	add hl, bc
-	ld a, [hli]
-	ld e, a
-	ld a, [hl]
-	ld d, a
-	cp -1
-	jr nz, .check
-	ld a, e
-	cp -1
-	jr z, .unmasked
-	jr .masked
-.check
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
-	jr nz, .masked
-.unmasked
-	xor a
-	ret
-
-.masked
-	ld a, -1
-	scf
-	ret
-
-GetObjectTimeMask: ; 245a7 (9:45a7)
-	call CheckObjectTime
-	ld a, -1
-	ret c
-	xor a
-	ret
-
-INCLUDE "engine/scrolling_menu.asm"
-INCLUDE "engine/switch_items.asm"
 
 PlaceMenuItemName: ; 0x24ab4
 	push de
@@ -997,13 +757,6 @@ FindApricornsInBag: ; 24c64
 	db PNK_APRICORN, LOVE_BALL
 	db -1
 
-INCLUDE "engine/mon_menu.asm"
-INCLUDE "battle/menu.asm"
-INCLUDE "engine/buy_sell_toss.asm"
-INCLUDE "engine/trainer_card.asm"
-INCLUDE "engine/prof_oaks_pc.asm"
-INCLUDE "engine/decorations.asm"
-
 PadCoords_de: ; 27092
 	ld a, d
 	add 4
@@ -1032,8 +785,6 @@ LevelUpHappinessMod: ; 2709e
 
 .ok
 	farjp ChangeHappiness
-
-INCLUDE "trainers/dvs.asm"
 
 _ReturnToBattle_UseBall: ; 2715c
 	call ClearBGPalettes
@@ -1064,11 +815,6 @@ INCLUDE "battle/moves/move_effects_pointers.asm"
 MoveEffects: ; 2732e
 INCLUDE "battle/moves/move_effects.asm"
 
-Kurt_SelectQuantity_InterpretJoypad: ; 27a28
-	call BuySellToss_InterpretJoypad
-	ld b, a
-	ret
-
 
 SECTION "Code 8", ROMX
 
@@ -1077,6 +823,7 @@ INCLUDE "engine/link.asm"
 
 SECTION "Code 9", ROMX
 
+INCLUDE "battle/music.asm"
 INCLUDE "battle/trainer_huds.asm"
 INCLUDE "battle/ai/redundant.asm"
 INCLUDE "event/move_deleter.asm"
@@ -1135,193 +882,6 @@ FindFirstAliveMonAndStartBattle: ; 2ee2f
 	ld [rWY], a
 	ld [hMapAnims], a
 	ret
-
-PlayBattleMusic: ; 2ee6c
-	push hl
-	push de
-	push bc
-
-	call SaveMusic
-	xor a
-	ld [MusicFade], a
-	ld de, MUSIC_NONE
-	call PlayMusic
-	call DelayFrame
-	call MaxVolume
-
-	; Are we fighting a trainer?
-	ld a, [OtherTrainerClass]
-	and a
-	jr nz, .trainermusic
-
-	ld a, [TempEnemyMonSpecies]
-	ld hl, .legendaries
-	call .loadfromarray
-	jr c, .done
-
-	; Are we in the Safari Game?
-	ld a, [BattleType]
-	cp BATTLETYPE_SAFARI
-	ld de, MUSIC_WILD_BATTLE_GO
-	jr c, .done
-
-	ld hl, .regional_wilds
-	call .getregionmusicfromarray
-	jr .done
-
-.trainermusic
-	ld a, [OtherTrainerClass]
-	cp RIVAL2
-	jr nz, .not_rival2_4
-	ld a, [OtherTrainerID]
-	cp 4 ; Rival in Indigo Plateau
-	jr c, .not_rival2_4
-	ld de, MUSIC_CHAMPION_BATTLE
-	jr .done
-
-.not_rival2_4
-	ld a, [OtherTrainerClass]
-	cp GIOVANNI
-	jr nz, .othertrainer
-	ld a, [OtherTrainerID]
-	cp 1 ; Armored Mewtwo
-	jr nz, .othertrainer
-	ld de, MUSIC_MOTHER_BEAST_BATTLE_SM
-	jr .done
-
-.othertrainer
-	ld a, [OtherTrainerClass]
-	ld hl, .trainers
-	call .loadfromarray
-	jr c, .done
-
-	ld de, MUSIC_TRAINER_BATTLE_BW
-	ld a, [InBattleTowerBattle]
-	bit 0, a
-	jr nz, .done
-
-	ld de, MUSIC_KANTO_GYM_LEADER_BATTLE
-	farcall IsKantoGymLeader
-	jr c, .done
-
-	ld de, MUSIC_JOHTO_GYM_LEADER_BATTLE
-	farcall IsJohtoGymLeader
-	jr c, .done
-
-	ld a, [wLinkMode]
-	and a
-	ld de, MUSIC_JOHTO_TRAINER_BATTLE
-	jr nz, .done
-
-	ld hl, .regional_trainers
-	call .getregionmusicfromarray
-
-.done
-	call PlayMusic
-
-	pop bc
-	pop de
-	pop hl
-	ret
-
-.loadfromarray
-	ld e, 3
-	call IsInArray
-	ret nc
-	inc hl
-	jr .found
-
-.getregionmusicfromarray
-	push hl
-	farcall RegionCheck
-	pop hl
-	ld a, e
-	and a ; Johto
-	jr nz, .ok
-	ld a, [TimeOfDay]
-	cp NITE
-	jr nz, .ok
-	ld e, 3 ; Johto at night
-.ok
-	ld d, 0
-	add hl, de
-	add hl, de
-.found
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ret
-
-.trainers
-	dbw WILL,             MUSIC_ELITE_FOUR_BATTLE_SM
-	dbw KOGA,             MUSIC_ELITE_FOUR_BATTLE_SM
-	dbw BRUNO,            MUSIC_ELITE_FOUR_BATTLE_SM
-	dbw KAREN,            MUSIC_ELITE_FOUR_BATTLE_SM
-	dbw CHAMPION,         MUSIC_CHAMPION_BATTLE
-	dbw RED,              MUSIC_WCS_BATTLE_BW
-	dbw LEAF,             MUSIC_CHAMPION_BATTLE_B2W2
-	dbw RIVAL0,           MUSIC_RIVAL_BATTLE
-	dbw RIVAL1,           MUSIC_RIVAL_BATTLE
-	dbw RIVAL2,           MUSIC_RIVAL_BATTLE
-	dbw LYRA1,            MUSIC_RIVAL_BATTLE_XY
-	dbw LYRA2,            MUSIC_WALLY_BATTLE_ORAS
-	dbw GRUNTM,           MUSIC_ROCKET_BATTLE
-	dbw GRUNTF,           MUSIC_ROCKET_BATTLE
-	dbw ROCKET_SCIENTIST, MUSIC_ROCKET_BATTLE
-	dbw PROTON,           MUSIC_ROCKET_BATTLE
-	dbw PETREL,           MUSIC_ROCKET_BATTLE
-	dbw ARCHER,           MUSIC_ROCKET_BATTLE
-	dbw ARIANA,           MUSIC_ROCKET_BATTLE
-	dbw GIOVANNI,         MUSIC_ROCKET_BATTLE
-	dbw TOWERTYCOON,      MUSIC_FRONTIER_BRAIN_BATTLE_RSE
-	dbw JESSIE_JAMES,     MUSIC_ROCKET_BATTLE
-	dbw LORELEI,          MUSIC_KANTO_GYM_LEADER_BATTLE
-	dbw AGATHA,           MUSIC_KANTO_GYM_LEADER_BATTLE
-	dbw STEVEN,           MUSIC_CHAMPION_BATTLE_RSE
-	dbw CYNTHIA,          MUSIC_CHAMPION_BATTLE_DPPT
-	dbw CHERYL,           MUSIC_TRAINER_BATTLE_DPPT
-	dbw RILEY,            MUSIC_TRAINER_BATTLE_DPPT
-	dbw BUCK,             MUSIC_TRAINER_BATTLE_DPPT
-	dbw MARLEY,           MUSIC_TRAINER_BATTLE_DPPT
-	dbw MIRA,             MUSIC_TRAINER_BATTLE_DPPT
-	dbw ANABEL,           MUSIC_TRAINER_BATTLE_DPPT
-	dbw DARACH,           MUSIC_FRONTIER_BRAIN_BATTLE_RSE
-	dbw CAITLIN,          MUSIC_ELITE_FOUR_BATTLE_BW
-	dbw FLANNERY,         MUSIC_GYM_LEADER_BATTLE_RSE
-	dbw MAYLENE,          MUSIC_GYM_LEADER_BATTLE_DPPT
-	dbw SKYLA,            MUSIC_GYM_LEADER_BATTLE_BW
-	dbw VALERIE,          MUSIC_GYM_LEADER_BATTLE_XY
-	dbw CANDELA,          MUSIC_GYM_LEADER_BATTLE_GO
-	dbw BLANCHE,          MUSIC_GYM_LEADER_BATTLE_GO
-	dbw SPARK_T,          MUSIC_GYM_LEADER_BATTLE_GO
-	dbw LAWRENCE,         MUSIC_ZINNIA_BATTLE_ORAS
-	db -1
-
-.legendaries
-	dbw ARTICUNO, MUSIC_KANTO_LEGEND_BATTLE_XY
-	dbw ZAPDOS,   MUSIC_KANTO_LEGEND_BATTLE_XY
-	dbw MOLTRES,  MUSIC_KANTO_LEGEND_BATTLE_XY
-	dbw MEWTWO,   MUSIC_KANTO_LEGEND_BATTLE_XY
-	dbw MEW,      MUSIC_KANTO_LEGEND_BATTLE_XY
-	dbw RAIKOU,   MUSIC_SUICUNE_BATTLE
-	dbw ENTEI,    MUSIC_SUICUNE_BATTLE
-	dbw SUICUNE,  MUSIC_SUICUNE_BATTLE
-	dbw HO_OH,    MUSIC_HO_OH_BATTLE_HGSS
-	dbw LUGIA,    MUSIC_LUGIA_BATTLE_HGSS
-	dbw CELEBI,   MUSIC_SUICUNE_BATTLE
-	db -1
-
-.regional_trainers
-	dw MUSIC_JOHTO_TRAINER_BATTLE
-	dw MUSIC_KANTO_TRAINER_BATTLE
-	dw MUSIC_TRAINER_BATTLE_SM
-	dw MUSIC_JOHTO_TRAINER_BATTLE
-
-.regional_wilds
-	dw MUSIC_JOHTO_WILD_BATTLE
-	dw MUSIC_KANTO_WILD_BATTLE
-	dw MUSIC_WILD_BATTLE_SM
-	dw MUSIC_JOHTO_WILD_BATTLE_NIGHT
 
 ClearBattleRAM: ; 2ef18
 	xor a
@@ -4391,190 +3951,13 @@ INCLUDE "data/pokemon_names.asm"
 SECTION "Code 14", ROMX
 
 INCLUDE "battle/effects/abilities.asm"
+INCLUDE "battle/final_text.asm"
 INCLUDE "engine/player_movement.asm"
 INCLUDE "engine/engine_flags.asm"
 INCLUDE "engine/variables.asm"
 
 BattleText::
 INCLUDE "text/battle.asm"
-
-GetFinalPkmnTextPointer::
-	; Silver and Lyra have a phrase for each set of three IDs
-	ld a, [OtherTrainerClass]
-	ld hl, .triple_phrases
-	call .findinarray
-	jr c, .rival_or_lyra
-	; Proton to Giovanni have a phrase for each ID
-	ld a, [OtherTrainerClass]
-	cp PROTON
-	jr c, .not_rocket
-	cp GIOVANNI + 1
-	jr c, .rocket
-.not_rocket
-	; Leaf and below, and Prof. Oak and above, have one unique phrase
-	dec a
-	cp LEAF
-	jr c, .single_phrase
-	cp PROF_OAK - 1
-	jr c, .nothing
-	sub PROF_OAK - LEAF - 1
-	jr .single_phrase
-
-.nothing:
-	xor a
-	and a
-	ret
-
-.rival_or_lyra:
-	ld a, [OtherTrainerID]
-	dec a
-	ld c, 3
-	call SimpleDivide
-	ld a, b
-	jr .get_text
-
-.rocket:
-	; a = ([OtherTrainerClass] - PROTON) * 2 + [OtherTrainerID] - 1
-	sub PROTON
-	add a
-	ld b, a
-	ld a, [OtherTrainerID]
-	dec a
-	add b
-	ld hl, .TeamRocketFinalTexts
-	jr .get_text
-
-.single_phrase:
-	ld hl, .SinglePhraseFinalTexts
-.get_text:
-	ld b, 0
-	ld c, a
-rept 2
-	add hl, bc
-endr
-	jr .finish
-
-.findinarray:
-	push de
-	ld de, 3
-	call IsInArray
-	pop de
-	ret nc
-	inc hl
-.finish:
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	or h
-	jr z, .nothing
-.done:
-	scf
-	ret
-
-.triple_phrases:
-	dbw RIVAL0, .Rival0FinalTexts
-	dbw RIVAL1, .Rival1FinalTexts
-	dbw RIVAL2, .Rival2FinalTexts
-	dbw LYRA1, .Lyra1FinalTexts
-	dbw LYRA2, .Lyra2FinalTexts
-	db -1
-
-.Rival0FinalTexts:
-	dw Rival1_1FinalPkmnText
-
-.Rival1FinalTexts:
-	dw Rival1_2FinalPkmnText
-	dw Rival1_3FinalPkmnText
-	dw Rival1_4FinalPkmnText
-	dw Rival1_5FinalPkmnText
-
-.Rival2FinalTexts:
-	dw Rival2_1FinalPkmnText
-	dw Rival2_2FinalPkmnText
-
-.Lyra1FinalTexts:
-	dw Lyra1_1FinalPkmnText
-	dw Lyra1_2FinalPkmnText
-	dw Lyra1_3FinalPkmnText
-	dw Lyra1_4FinalPkmnText
-
-.Lyra2FinalTexts:
-	dw Lyra2_1FinalPkmnText
-
-.TeamRocketFinalTexts:
-	dw Proton1FinalPkmnText
-	dw Proton2FinalPkmnText
-	dw Petrel1FinalPkmnText
-	dw Petrel2FinalPkmnText
-	dw Archer1FinalPkmnText
-	dw Archer2FinalPkmnText
-	dw Ariana1FinalPkmnText
-	dw Ariana2FinalPkmnText
-	dw Giovanni1FinalPkmnText
-	dw Giovanni2FinalPkmnText
-
-.SinglePhraseFinalTexts:
-	dw CarrieFinalPkmnText
-	dw CalFinalPkmnText
-	dw FalknerFinalPkmnText
-	dw BugsyFinalPkmnText
-	dw WhitneyFinalPkmnText
-	dw MortyFinalPkmnText
-	dw ChuckFinalPkmnText
-	dw JasmineFinalPkmnText
-	dw PryceFinalPkmnText
-	dw ClairFinalPkmnText
-	dw WillFinalPkmnText
-	dw KogaFinalPkmnText
-	dw BrunoFinalPkmnText
-	dw KarenFinalPkmnText
-	dw ChampionFinalPkmnText
-	dw BrockFinalPkmnText
-	dw MistyFinalPkmnText
-	dw LtSurgeFinalPkmnText
-	dw ErikaFinalPkmnText
-	dw JanineFinalPkmnText
-	dw SabrinaFinalPkmnText
-	dw BlaineFinalPkmnText
-	dw BlueFinalPkmnText
-	dw RedFinalPkmnText
-	dw LeafFinalPkmnText
-	; ...
-	dw ProfOakFinalPkmnText
-	dw ProfElmFinalPkmnText
-	dw ProfIvyFinalPkmnText
-	dw MysticalManFinalPkmnText
-	dw KarateKingFinalPkmnText
-	dw PalmerFinalPkmnText
-	dw JessieJamesFinalPkmnText
-	dw LoreleiFinalPkmnText
-	dw AgathaFinalPkmnText
-	dw StevenFinalPkmnText
-	dw CynthiaFinalPkmnText
-	dw InverFinalPkmnText
-	dw CherylFinalPkmnText
-	dw RileyFinalPkmnText
-	dw BuckFinalPkmnText
-	dw MarleyFinalPkmnText
-	dw MiraFinalPkmnText
-	dw AnabelFinalPkmnText
-	dw DarachFinalPkmnText
-	dw CaitlinFinalPkmnText
-	dw CandelaFinalPkmnText
-	dw BlancheFinalPkmnText
-	dw SparkFinalPkmnText
-	dw FlanneryFinalPkmnText
-	dw MayleneFinalPkmnText
-	dw SkylaFinalPkmnText
-	dw ValerieFinalPkmnText
-	dw KukuiFinalPkmnText ; Kukui
-	dw NULL ; Victor
-	dw BillFinalPkmnText
-	dw YellowFinalPkmnText
-	dw WalkerFinalPkmnText
-	dw ImakuniFinalPkmnText
-	dw LawrenceFinalPkmnText
-	dw ReiFinalPkmnText
 
 
 SECTION "Code 15", ROMX
@@ -4586,91 +3969,8 @@ INCLUDE "text/abilities.asm"
 
 SECTION "Code 16", ROMX
 
+INCLUDE "engine/player_gfx.asm"
 INCLUDE "event/kurt.asm"
-
-GetPlayerIcon: ; 8832c
-; Get the player icon corresponding to gender
-
-; Male
-	ld de, ChrisSpriteGFX
-	ld b, BANK(ChrisSpriteGFX)
-
-	ld a, [PlayerGender]
-	bit 0, a
-	ret z
-
-; Female
-	ld de, KrisSpriteGFX
-	ld b, BANK(KrisSpriteGFX)
-	ret
-
-GetCardPic: ; 8833e
-	ld hl, ChrisCardPic
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .GotClass
-	ld hl, KrisCardPic
-.GotClass:
-	ld de, VTiles2 tile $00
-	ld bc, $23 tiles
-	ld a, BANK(ChrisCardPic) ; BANK(KrisCardPic)
-	jp FarCopyBytes
-
-ChrisCardPic: ; 88365
-INCBIN "gfx/trainer_card/chris_card.5x7.2bpp"
-
-KrisCardPic: ; 88595
-INCBIN "gfx/trainer_card/kris_card.5x7.2bpp"
-
-GetPlayerBackpic: ; 88825
-	ld hl, ChrisBackpic
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .ok
-	ld hl, KrisBackpic
-.ok
-	ld de, VTiles2 tile $31
-	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
-	predef DecompressPredef
-	ret
-
-ChrisBackpic: ; 2ba1a
-INCBIN "gfx/backs/chris_back.6x6.2bpp.lz"
-
-KrisBackpic: ; 88ed6
-INCBIN "gfx/backs/kris_back.6x6.2bpp.lz"
-
-LyraBackpic: ; 2bbaa
-INCBIN "gfx/backs/lyra_back.6x6.2bpp.lz"
-
-HOF_LoadTrainerFrontpic: ; 88840
-	call WaitBGMap
-	xor a
-	ld [hBGMapMode], a
-	ld e, 0
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .GotClass
-	ld e, 1
-
-.GotClass:
-	ld a, e
-	ld [TrainerClass], a
-	ld de, ChrisCardPic
-	ld a, [PlayerGender]
-	bit 0, a
-	jr z, .GotPic
-	ld de, KrisCardPic
-
-.GotPic:
-	ld hl, VTiles2
-	lb bc, BANK(ChrisCardPic), 5 * 7 ; BANK(KrisCardPic)
-	call Get2bpp
-	call WaitBGMap
-	ld a, $1
-	ld [hBGMapMode], a
-	ret
-
 INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
 INCLUDE "event/movesets.asm"
@@ -4711,46 +4011,6 @@ SECTION "Code 20", ROMX
 
 INCLUDE "engine/std_scripts.asm"
 INCLUDE "engine/phone_scripts.asm"
-
-TalkToTrainerScript:: ; 0xbe66a
-	faceplayer
-	trainerflagaction CHECK_FLAG
-	iftrue AlreadyBeatenTrainerScript
-	loadmemtrainer
-	encountermusic
-	jump StartBattleWithMapTrainerScript
-
-SeenByTrainerScript:: ; 0xbe675
-	loadmemtrainer
-	encountermusic
-	showemote EMOTE_SHOCK, LAST_TALKED, 30
-	callasm TrainerWalkToPlayer
-	applymovement2 MovementBuffer
-	writepersonxy LAST_TALKED
-	faceperson PLAYER, LAST_TALKED
-	jump StartBattleWithMapTrainerScript
-
-StartBattleWithMapTrainerScript: ; 0xbe68a
-	opentext
-	trainertext $0
-	waitbutton
-	closetext
-	loadmemtrainer
-	callasm CheckTrainerClass
-	iffalse .nobattle
-	startbattle
-	reloadmapafterbattle
-.nobattle
-	trainerflagaction SET_FLAG
-	loadvar wRunningTrainerBattleScript, -1
-
-AlreadyBeatenTrainerScript:
-	scripttalkafter
-
-CheckTrainerClass:
-	ld a, [wTempTrainerClass]
-	ld [ScriptVar], a
-	ret
 
 
 SECTION "Code 21", ROMX
@@ -4814,50 +4074,7 @@ INCLUDE "engine/diploma.asm"
 
 SECTION "Palette Maps", ROMX
 
-SwapTextboxPalettes:: ; 4c000
-	hlcoord 0, 0
-	decoord 0, 0, AttrMap
-	ld b, SCREEN_HEIGHT
-.loop
-	push bc
-	ld c, SCREEN_WIDTH
-	call GetBGMapTilePalettes
-	pop bc
-	dec b
-	jr nz, .loop
-	ret
-
-ScrollBGMapPalettes:: ; 4c03f
-	ld hl, BGMapBuffer
-	ld de, BGMapPalBuffer
-	; fallthrough
-GetBGMapTilePalettes::
-; hl = tile buffer
-; de = palette buffer
-; c = tile count
-.loop
-	ld a, [hl]
-	push hl
-	ld hl, TilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [TilesetPalettes + 1]
-	adc $0
-	ld h, a
-	ld a, [hl]
-	pop hl
-	ld [de], a
-	res 7, [hl]
-	inc hl
-	inc de
-	dec c
-	jr nz, .loop
-	ret
-
-INCLUDE "tilesets/palette_maps.asm"
-
-TileCollisionTable:: ; 4ce1f
-INCLUDE "tilesets/collision.asm"
+INCLUDE "engine/map_palettes.asm"
 
 
 SECTION "Typefaces", ROMX
