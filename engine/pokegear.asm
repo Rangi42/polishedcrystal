@@ -1776,6 +1776,10 @@ _TownMap: ; 9191c
 	call PokegearMap_InitPlayerIcon
 	ld a, [wd003]
 	call PokegearMap_InitCursor
+	ld a, c
+	ld [wd004], a
+	ld a, b
+	ld [wd004 + 1], a
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes
@@ -1860,6 +1864,10 @@ _TownMap: ; 9191c
 .next
 	ld a, [wd003]
 	call PokegearMap_UpdateLandmarkName
+	ld a, [wd004]
+	ld c, a
+	ld a, [wd004 + 1]
+	ld b, a
 	ld a, [wd003]
 	call PokegearMap_UpdateCursorPosition
 	pop de
