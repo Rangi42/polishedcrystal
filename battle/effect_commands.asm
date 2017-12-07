@@ -3108,10 +3108,10 @@ DittoMetalPowder: ; 352b1
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
-	jr nz, .Ditto
+	jr nz, .continue
 	ld a, [TempEnemyMonSpecies]
 
-.Ditto:
+.continue:
 	cp DITTO
 	ret nz
 
@@ -3147,10 +3147,10 @@ UnevolvedEviolite:
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
-	jr nz, .Unevolved
+	jr nz, .continue
 	ld a, [TempEnemyMonSpecies]
 
-.Unevolved:
+.continue:
 	dec a
 	push hl
 	push bc
@@ -3159,6 +3159,7 @@ UnevolvedEviolite:
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
+	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
 	ld a, BANK(EvosAttacks)
 	call GetFarByte

@@ -381,9 +381,8 @@ PlacePartyMonEvoStoneCompatibility: ; 5022f
 	ld e, a
 	ld d, 0
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	call .DetermineCompatibility
 	pop hl
 	call PlaceString
