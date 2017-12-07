@@ -152,7 +152,7 @@ MusicPlayer::
 	inc hl
 	ld [hl], $1
 
-	call ApplyAttrMap
+	farcall ApplyAttrMapVBank0
 	ld a, $1
 	ld [hCGBPalUpdate], a
 
@@ -1677,13 +1677,10 @@ SongSelector:
 .no_overflow
 	add MP_LIST_CURSOR_Y - 1
 .got_song
-	ld hl, rLCDC
-	set 1, [hl] ; show sprites
-	ld [wSongSelection], a
 	ld e, a
 	ld d, 0
 	farcall PlayMusic2
-	ret
+	jr .finish
 
 .up
 ; previous song
@@ -1734,10 +1731,11 @@ SongSelector:
 
 .start_b:
 ; exit song selector
+	ld a, [wSelectorTop]
+.finish:
+	ld [wSongSelection], a
 	ld hl, rLCDC
 	set 1, [hl] ; show sprites
-	ld a, [wSelectorTop]
-	ld [wSongSelection], a
 	ret
 
 UpdateSelectorNames:
@@ -2107,17 +2105,3 @@ SongArtists:
 	db "GRonnoc@"
 	db "Cat333Pokemon@"
 	db "NotFroggestSpirit@"
-
-ApplyAttrMap:
-; from engine/color.asm
-	ld a, [hBGMapMode]
-	push af
-	ld a, $2
-	ld [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	pop af
-	ld [hBGMapMode], a
-	ret

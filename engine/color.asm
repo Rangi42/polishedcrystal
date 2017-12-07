@@ -360,7 +360,9 @@ ApplyPals:
 ApplyAttrMap:
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
-	jr z, .UpdateVBank1
+	jr z, ApplyAttrMapVBank1
+	; fallthrough
+ApplyAttrMapVBank0::
 	ld a, [hBGMapMode]
 	push af
 	ld a, $2
@@ -373,7 +375,7 @@ ApplyAttrMap:
 	ld [hBGMapMode], a
 	ret
 
-.UpdateVBank1:
+ApplyAttrMapVBank1:
 	hlcoord 0, 0, AttrMap
 	debgcoord 0, 0
 	ld b, SCREEN_HEIGHT
