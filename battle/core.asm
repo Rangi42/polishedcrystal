@@ -3860,9 +3860,9 @@ NewBattleMonStatus: ; 3dbde
 	ld [hli], a
 	ld [hl], a
 	ld hl, PlayerUsedMoves
+rept NUM_MOVES + -1
 	ld [hli], a
-	ld [hli], a
-	ld [hli], a
+endr
 	ld [hl], a
 	ld [PlayerDisableCount], a
 	ld [PlayerProtectCount], a
@@ -6922,9 +6922,9 @@ endc
 	xor a
 	ld h, d
 	ld l, e
+rept NUM_MOVES + -1
 	ld [hli], a
-	ld [hli], a
-	ld [hli], a
+endr
 	ld [hl], a
 	; Make sure the predef knows this isn't a partymon
 	ld [wEvolutionOldSpecies], a

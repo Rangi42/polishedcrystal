@@ -385,9 +385,9 @@ _Get1bpp:: ; 1042b2
 	ld a, b
 	ld l, c
 	ld h, $0
-	add hl, hl ; multiply by 8
-	add hl, hl ; multiply by 8
-	add hl, hl ; multiply by 8
+	add hl, hl
+	add hl, hl
+	add hl, hl
 	ld c, l
 	ld b, h
 	ld h, d
