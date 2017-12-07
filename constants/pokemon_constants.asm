@@ -445,6 +445,8 @@ const_value SET 1
 MONMENU_FIELD_MOVE EQU 0
 MONMENU_MENUOPTION EQU 1
 
+NUM_MON_SUBMENU_ITEMS EQU 8
+
 BASEMON_BASE_STATS    EQUS "(BaseData + BaseStats - CurBaseData)"
 BASEMON_BASE_HP       EQUS "(BaseData + BaseHP - CurBaseData)"
 BASEMON_BASE_ATK      EQUS "(BaseData + BaseAttack - CurBaseData)"

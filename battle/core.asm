@@ -6643,7 +6643,7 @@ endc
 	pop af
 	ld [CurItem], a
 	call BattleRandom
-	cp $10
+	cp SHINY_NUMERATOR
 	jr nc, .not_shiny ; 240/256 still not shiny
 .shiny
 	ld a, SHINY_MASK
@@ -6652,7 +6652,7 @@ endc
 	pop af
 	ld [CurItem], a
 	call BattleRandom
-	cp $30
+	cp CHARMED_SHINY_NUMERATOR
 	jr c, .shiny ; 208/256 still not shiny
 .not_shiny
 	xor a
