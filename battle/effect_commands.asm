@@ -3607,9 +3607,9 @@ HitSelfInConfusion: ; 355dd
 	sla c
 	rl b
 .mimic_screen
-rept 3
 	dec hl
-endr
+	dec hl
+	dec hl
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
@@ -4231,9 +4231,9 @@ BattleCommand_Encore: ; 35864
 	set SUBSTATUS_ENCORED, [hl]
 	call BattleRandom
 	and $3
-rept 3
 	inc a
-endr
+	inc a
+	inc a
 	ld [de], a
 	call CheckOpponentWentFirst
 	jr nz, .finish_move

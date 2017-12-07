@@ -289,9 +289,9 @@ GetTrainerName:: ; 3994c
 	push bc
 	ld b, 0
 	ld hl, TrainerGroups
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [TrainerGroupBank], a
 	ld a, [hli]
@@ -344,9 +344,9 @@ FindTrainerData:
 	ld c, a
 	ld b, 0
 	ld hl, TrainerGroups
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [TrainerGroupBank], a
 	ld a, [hli]

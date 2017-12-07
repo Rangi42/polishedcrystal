@@ -518,9 +518,9 @@ _CGB_PartyMenu: ; 91d1
 	call LoadHLPaletteIntoDE
 
 	ld hl, HPBarPals
-rept 3
 	call LoadHLPaletteIntoDE
-endr
+	call LoadHLPaletteIntoDE
+	call LoadHLPaletteIntoDE
 
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black

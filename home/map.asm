@@ -692,9 +692,9 @@ ChangeMap:: ; 24e4
 	ld [hConnectionStripLength], a
 	ld c, a
 	ld b, 0
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld c, 3
 	add hl, bc
 	ld a, [MapBlockDataBank]

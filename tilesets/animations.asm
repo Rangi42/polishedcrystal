@@ -549,9 +549,9 @@ AnimateWaterTile: ; fc402
 	and %110
 
 ; 2 x 8 = 16 bytes per tile
-rept 3
 	add a
-endr
+	add a
+	add a
 
 	add WaterTileFrames % $100
 	ld l, a
@@ -651,9 +651,9 @@ AnimateKantoWaterTile:
 	and 3 << 1
 
 ; 2 x 8 = 16 bytes per tile
-rept 3
 	add a
-endr
+	add a
+	add a
 
 	add KantoWaterTileFrames % $100
 	ld l, a
@@ -730,9 +730,9 @@ ForestTreeLeftAnimation: ; fc45c
 	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTreeLeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -754,9 +754,9 @@ ForestTreeRightAnimation: ; fc4c4
 	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTreeLeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -784,9 +784,9 @@ ForestTreeLeftAnimation2: ; fc4f2
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 	xor 2
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTreeLeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -810,9 +810,9 @@ ForestTreeRightAnimation2: ; fc51c
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 	xor 2
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTreeLeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -848,9 +848,9 @@ ForestTree2LeftAnimation:
 	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTree2LeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -871,9 +871,9 @@ ForestTree2RightAnimation:
 	ld c, l
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTree2LeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -900,9 +900,9 @@ ForestTree2LeftAnimation2:
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 	xor 2
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTree2LeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -925,9 +925,9 @@ ForestTree2RightAnimation2:
 	ld a, [TileAnimationTimer]
 	call GetForestTreeFrame
 	xor 2
-rept 3
 	add a
-endr
+	add a
+	add a
 	add ForestTree2LeftFrames % $100
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
@@ -1048,9 +1048,9 @@ SafariFountainAnim2: ; fc5eb
 	ld c, l
 	ld a, [TileAnimationTimer]
 	and 6
-rept 3
 	add a
-endr
+	add a
+	add a
 	ld e, a
 	ld d, 0
 	ld hl, SafariFountainFrames
@@ -1089,9 +1089,9 @@ SafariFountainAnim4:
 	ld c, l
 	ld a, [TileAnimationTimer]
 	and 6
-rept 3
 	add a
-endr
+	add a
+	add a
 	ld e, a
 	ld d, 0
 	ld hl, SafariFountainFrames

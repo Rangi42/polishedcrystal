@@ -3492,9 +3492,9 @@ NewEnemyMonStatus: ; 3d834
 	ld [LastPlayerCounterMove], a
 	ld [LastEnemyMove], a
 	ld hl, EnemySubStatus1
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld [EnemyDisableCount], a
 	ld [EnemyProtectCount], a
@@ -3855,14 +3855,14 @@ NewBattleMonStatus: ; 3dbde
 	ld [LastPlayerCounterMove], a
 	ld [LastPlayerMove], a
 	ld hl, PlayerSubStatus1
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld hl, PlayerUsedMoves
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld [PlayerDisableCount], a
 	ld [PlayerProtectCount], a
@@ -6922,9 +6922,9 @@ endc
 	xor a
 	ld h, d
 	ld l, e
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	; Make sure the predef knows this isn't a partymon
 	ld [wEvolutionOldSpecies], a

@@ -84,9 +84,9 @@ FindNest: ; 2a01f
 	ld a, [hli]
 .not_navel_rock_map
 	ld c, a
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld a, NUM_WILDMONS_PER_AREA_TIME_OF_DAY * 3
 	call .SearchMapForMon
 	jr nc, .next_grass
@@ -331,9 +331,9 @@ _ChooseWildEncounter:
 	pop bc
 	jp c, .startwildbattle
 
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	push bc
 	call CheckOnWater
 	pop bc
@@ -807,9 +807,9 @@ CheckEncounterRoamMon: ; 2a2ce
 	cp [hl]
 	jr nz, .DontEncounterRoamMon
 ; We've decided to take on a beast, so stage its information for battle.
-rept 3
 	dec hl
-endr
+	dec hl
+	dec hl
 	ld a, [hli]
 	ld [TempWildMonSpecies], a
 	ld a, [hl]
@@ -1167,9 +1167,9 @@ RandomPhoneMon: ; 2a567
 	dec a
 	ld c, a
 	ld b, 0
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, BANK(TrainerGroups)
 	call GetFarByte
 	inc hl

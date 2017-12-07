@@ -1492,9 +1492,9 @@ ScriptCall:
 	inc [hl]
 	ld d, $0
 	ld hl, wScriptStack
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	pop de
 	ld a, [ScriptBank]
 	ld [hli], a
@@ -1629,9 +1629,9 @@ StdScript:
 	ld e, a
 	ld d, 0
 	ld hl, StdScripts
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, BANK(StdScripts)
 	call GetFarByte
 	ld b, a
@@ -2666,9 +2666,9 @@ ExitScriptSubroutine:
 	ld e, [hl]
 	ld d, $0
 	ld hl, wScriptStack
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hli]
 	ld b, a
 	and " "

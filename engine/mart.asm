@@ -625,9 +625,9 @@ GetMartDialogGroup: ; 15ca3
 	ld e, a
 	ld d, 0
 	ld hl, .MartTextFunctionPointers
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ret
 ; 15cb0
 
@@ -975,9 +975,9 @@ BargainShopAskPurchaseQuantity:
 	ld h, [hl]
 	ld l, a
 	inc hl
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	inc hl
 	ld a, [hli]
 	ld [hMoneyTemp + 2], a
@@ -1013,9 +1013,9 @@ RooftopSaleAskPurchaseQuantity:
 	ld h, [hl]
 	ld l, a
 	inc hl
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -1038,9 +1038,9 @@ TMMartAskPurchaseQuantity:
 	ld h, [hl]
 	ld l, a
 	inc hl
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	inc hl
 	ld a, [hli]
 	ld [hMoneyTemp + 2], a
@@ -1181,9 +1181,9 @@ MartMenu_PrintBCDPrices: ; 15e30
 	ld c, a
 	ld b, 0
 	ld hl, wMartItem1BCD
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	push de
 	ld d, h
 	ld e, l

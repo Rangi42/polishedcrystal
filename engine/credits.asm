@@ -638,15 +638,15 @@ GetCreditsPalette: ; 109b2c
 ; Each set of palette data is 24 bytes long.
 	ld a, [wCreditsBorderMon] ; scene
 	and 7
-rept 3
 	add a ; * 8
-endr
+	add a ; * 8
+	add a ; * 8
 	ld e, a
 	ld d, 0
 	ld hl, CreditsPalettes
-rept 3
 	add hl, de ; * 3
-endr
+	add hl, de ; * 3
+	add hl, de ; * 3
 	ret
 
 .UpdatePals:
@@ -851,9 +851,9 @@ Credits_LoadBorderGFX: ; 109bca (42:5bca)
 	ld [hl], a
 	ld a, [wCreditsBorderMon]
 	and 7
-rept 3
 	add a ; * 8
-endr
+	add a ; * 8
+	add a ; * 8
 	add e
 	add a
 	ld e, a

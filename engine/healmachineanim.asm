@@ -196,9 +196,9 @@ endc
 	ld [hld], a
 	ld a, e
 	ld [hli], a
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	dec c
 	jr nz, .palette_loop_2
 	pop de

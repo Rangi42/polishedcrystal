@@ -198,9 +198,9 @@ LoadStatsScreenPals:
 LoadMailPalettes:
 	ld l, e
 	ld h, 0
-rept 3
 	add hl, hl
-endr
+	add hl, hl
+	add hl, hl
 	ld de, MailPals
 	add hl, de
 	ld de, UnknBGPals
@@ -510,9 +510,9 @@ GetTrainerPalettePointer:
 GetMonPalettePointer:
 	ld l, a
 	ld h, $0
-rept 3
 	add hl, hl
-endr
+	add hl, hl
+	add hl, hl
 	ld bc, PokemonPalettes
 	add hl, bc
 	ret
@@ -751,9 +751,9 @@ LoadMapPals:
 	dec a
 	ld l, a
 	ld h, 0
-rept 3
 	add hl, hl
-endr
+	add hl, hl
+	add hl, hl
 	ld de, .OvercastRoofPals
 	jr .get_roof_color
 
@@ -769,9 +769,9 @@ endr
 	ld a, [MapGroup]
 	ld l, a
 	ld h, 0
-rept 3
 	add hl, hl
-endr
+	add hl, hl
+	add hl, hl
 	ld de, .RoofPals
 .get_roof_color
 	add hl, de

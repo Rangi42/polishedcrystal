@@ -382,9 +382,9 @@ FlyToAnim: ; 8cb33
 	ld c, $4
 .loop2
 	ld [hli], a
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	inc a
 	dec c
 	jr nz, .loop2

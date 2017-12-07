@@ -149,9 +149,9 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	xor a
 	ld [hli], a
 	ld a, [wMagnetTrainInitPosition]
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld de, MUSIC_MAGNET_TRAIN
 	jp PlayMusic2
 ; 8cd27

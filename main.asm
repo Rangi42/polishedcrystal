@@ -890,9 +890,9 @@ ClearBattleRAM: ; 2ef18
 	ld [wBattleResult], a
 
 	ld hl, wPartyMenuCursor
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 
 	ld [wMenuScrollPosition], a
@@ -2107,9 +2107,9 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	jr z, .SkipBox
 	ld hl, .BoxBankAddresses
 	ld b, 0
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	call GetSRAMBank
 	ld a, [hli]
@@ -3261,9 +3261,9 @@ ListMovePP: ; 50c50
 
 .skip
 	pop hl
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld d, h
 	ld e, l
 	ld hl, TempMonMoves
@@ -4175,9 +4175,9 @@ GetTrainerAttributes: ; 3957b
 ComputeTrainerReward: ; 3991b (e:591b)
 	ld hl, hProduct
 	xor a
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld a, [wEnemyTrainerBaseReward]
 	ld [hli], a
 	ld a, [CurPartyLevel]

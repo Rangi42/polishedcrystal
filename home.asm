@@ -696,9 +696,9 @@ GetName:: ; 33c3
 	ld e, a
 	ld d, 0
 	ld hl, NamesPointers
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hli]
 	rst Bankswitch
 	ld a, [hli]

@@ -308,9 +308,9 @@ CalcMinsHoursDaysSince: ; 115d6
 ; 115db
 
 CalcSecsMinsHoursDaysSince: ; 115db
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld a, [hSeconds]
 	ld c, a
 	sub [hl]

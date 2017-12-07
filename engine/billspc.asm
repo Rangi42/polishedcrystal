@@ -1117,9 +1117,9 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld e, a
 	ld d, $0
 	ld hl, wBillsPCPokemonList + 1
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hl]
 	and a
 	jr z, .party
@@ -1237,9 +1237,9 @@ BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
 	ld e, a
 	ld d, 0
 	ld hl, wBillsPCPokemonList
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld e, l
 	ld d, h
 	hlcoord 9, 4
@@ -1253,9 +1253,9 @@ endr
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
 	pop de
-rept 3
 	inc de
-endr
+	inc de
+	inc de
 	pop af
 	dec a
 	jr nz, .loop
@@ -1451,9 +1451,9 @@ BillsPC_GetSelectedPokemonSpecies: ; e2def (38:6def)
 	ld e, a
 	ld d, $0
 	ld hl, wBillsPCPokemonList
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hl]
 	ret
 
@@ -2130,9 +2130,9 @@ GetBoxPointer: ; e3396 (38:7396)
 	ld c, b
 	ld b, 0
 	ld hl, .boxes
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld b, a
 	ld a, [hli]
@@ -2398,9 +2398,9 @@ BoxSelectionJumpIn:
 	ld c, a
 	ld b, 0
 	ld hl, .boxbanks
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld b, a
 	call GetSRAMBank

@@ -576,9 +576,9 @@ Mom_WithdrawDepositMenuJoypad: ; 16571
 	push de
 	ld e, a
 	ld d, 0
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	pop de
 	ret
 ; 16613

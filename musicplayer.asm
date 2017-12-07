@@ -1518,9 +1518,9 @@ GetSongInfo:
 	xor a
 	ret
 .nextline
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	jr .loop
 
 .no_name:
