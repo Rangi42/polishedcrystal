@@ -18,7 +18,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
-* pfero for the improved GetAnimatedFrontpic routine.
+* pfero for the improved GetAnimatedFrontpic routine and the BGMap0 fill-tile bug.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 

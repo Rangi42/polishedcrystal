@@ -56,7 +56,7 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hWY], a
 	inc a
 	ld [hCGBPalUpdate], a
-	call HDMATransfer_FillBGMap0WithTile60
+	call HDMATransfer_FillBGMap0WithBlackTile
 
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
@@ -92,13 +92,13 @@ LoadFonts_NoOAMUpdate:: ; 64bf
 	ld [hOAMUpdate], a
 	ret
 
-HDMATransfer_FillBGMap0WithTile60: ; 64db
+HDMATransfer_FillBGMap0WithBlackTile: ; 64db
 	ld a, [rSVBK]
 	push af
 	ld a, $6
 	ld [rSVBK], a
 
-	ld a, $60
+	ld a, "<BLACK>"
 	ld hl, wScratchTileMap
 	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	call ByteFill

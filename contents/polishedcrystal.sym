@@ -2751,7 +2751,7 @@
 01:4017 PushOAMEnd
 01:4017 ReanchorBGMap_NoOAMUpdate
 01:406E LoadFonts_NoOAMUpdate
-01:4086 HDMATransfer_FillBGMap0WithTile60
+01:4086 HDMATransfer_FillBGMap0WithBlackTile
 01:40B3 ReanchorBGMap_NoOAMUpdate_NoDelay
 01:40F5 Facings
 01:4143 FacingStepDown0
