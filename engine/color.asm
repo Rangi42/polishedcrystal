@@ -359,7 +359,7 @@ ApplyPals:
 
 ApplyAttrMap:
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jr z, .UpdateVBank1
 	ld a, [hBGMapMode]
 	push af

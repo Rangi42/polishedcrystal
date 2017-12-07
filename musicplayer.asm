@@ -192,9 +192,8 @@ MusicPlayer::
 
 	call DelayFrame
 
-; Clear sprites
 	ld hl, rLCDC
-	set 7, [hl]
+	set 7, [hl] ; lcd on
 	ei
 
 	call ClearSprites
@@ -1635,6 +1634,8 @@ SongSelector:
 	ld a, " "
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
+	ld hl, rLCDC
+	res 1, [hl] ; hide sprites
 	call ClearSprites
 
 	hlcoord 0, 0
@@ -1676,6 +1677,8 @@ SongSelector:
 .no_overflow
 	add MP_LIST_CURSOR_Y - 1
 .got_song
+	ld hl, rLCDC
+	set 1, [hl] ; show sprites
 	ld [wSongSelection], a
 	ld e, a
 	ld d, 0
@@ -1731,6 +1734,8 @@ SongSelector:
 
 .start_b:
 ; exit song selector
+	ld hl, rLCDC
+	set 1, [hl] ; show sprites
 	ld a, [wSelectorTop]
 	ld [wSongSelection], a
 	ret
@@ -2105,9 +2110,6 @@ SongArtists:
 
 ApplyAttrMap:
 ; from engine/color.asm
-	ld a, [rLCDC]
-	bit 7, a
-	jr z, .UpdateVBank1
 	ld a, [hBGMapMode]
 	push af
 	ld a, $2
@@ -2118,30 +2120,4 @@ ApplyAttrMap:
 	call DelayFrame
 	pop af
 	ld [hBGMapMode], a
-	ret
-
-.UpdateVBank1:
-	hlcoord 0, 0, AttrMap
-	debgcoord 0, 0
-	ld b, SCREEN_HEIGHT
-	ld a, $1
-	ld [rVBK], a
-.row
-	ld c, SCREEN_WIDTH
-.col
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .col
-	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
-	add e
-	jr nc, .okay
-	inc d
-.okay
-	ld e, a
-	dec b
-	jr nz, .row
-	xor a
-	ld [rVBK], a
 	ret

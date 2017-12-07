@@ -188,9 +188,8 @@ endc
 	call ChannelsOff
 	call EnableLCD
 
-; Set sprite size to 8x16
 	ld a, [rLCDC]
-	set 2, a
+	set 2, a ; 8x16 sprites
 	ld [rLCDC], a
 
 	ld a, +112

@@ -3,7 +3,7 @@
 
 Get2bpp_2:: ; dc9
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jp z, Copy2bpp
 	homecall _Get2bpp
 	ret
@@ -11,7 +11,7 @@ Get2bpp_2:: ; dc9
 
 Get1bpp_2:: ; ddc
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jp z, Copy1bpp
 	homecall _Get1bpp
 	ret
@@ -241,7 +241,7 @@ Request1bpp:: ; f1e
 
 Get2bpp:: ; f82
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jp nz, Request2bpp
 
 Copy2bpp:: ; f89
@@ -272,7 +272,7 @@ Copy2bpp:: ; f89
 
 Get1bpp:: ; f9d
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jp nz, Request1bpp
 
 Copy1bpp:: ; fa4

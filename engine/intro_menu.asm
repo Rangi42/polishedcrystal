@@ -1045,7 +1045,7 @@ StartTitleScreen: ; 6219
 	ld [rSVBK], a
 
 	ld hl, rLCDC
-	res 2, [hl]
+	res 2, [hl] ; 8x8 sprites
 	call ClearScreen
 	call WaitBGMap2
 	xor a

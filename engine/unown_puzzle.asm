@@ -44,7 +44,7 @@ UnownPuzzle: ; e1190
 	ld [wHoldingUnownPuzzlePiece], a
 	ld [wUnownPuzzleCursorPosition], a
 	ld [wUnownPuzzleHeldPiece], a
-	ld a, $93
+	ld a, %10010011
 	ld [rLCDC], a
 	call WaitBGMap
 	ld b, CGB_UNOWN_PUZZLE
@@ -84,7 +84,7 @@ UnownPuzzle: ; e1190
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
-	ld a, $e3
+	ld a, %11100011
 	ld [rLCDC], a
 	ret
 ; e124e

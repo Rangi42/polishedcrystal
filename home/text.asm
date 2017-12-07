@@ -30,7 +30,7 @@ ClearTileMap:: ; fc8
 
 	; Update the BG Map.
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	ret z
 	jp WaitBGMap
 ; fdb

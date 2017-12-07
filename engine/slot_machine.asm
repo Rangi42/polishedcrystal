@@ -23,7 +23,7 @@ _SlotMachine:
 	ld hl, Options1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC ; $ff40
-	res 2, [hl]
+	res 2, [hl] ; 8x8 sprites
 	ret
 
 .InitGFX: ; 926f7 (24:66f7)
@@ -68,7 +68,7 @@ _SlotMachine:
 	call CopyBytes
 
 	ld hl, rLCDC ; $ff40
-	set 2, [hl]
+	set 2, [hl] ; 8x16 sprites
 	call EnableLCD
 	ld hl, wSlots
 	ld bc, wSlotsEnd - wSlots

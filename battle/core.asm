@@ -8513,11 +8513,11 @@ BattleIntro: ; 3f4dd
 	ld b, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
-	res 6, [hl]
+	res 6, [hl] ; win tilemap 0
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld hl, rLCDC
-	set 6, [hl]
+	set 6, [hl] ; win tilemap 1
 	xor a
 	ld [hBGMapMode], a
 	call EmptyBattleTextBox
