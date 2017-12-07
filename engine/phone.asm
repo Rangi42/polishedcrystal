@@ -260,9 +260,8 @@ CheckSpecialPhoneCall:: ; 90136 (24:4136)
 	jr nc, .NoPhoneCall
 
 	call .DoSpecialPhoneCall
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [hli]
 	ld e, a
 	push hl
@@ -480,9 +479,8 @@ Phone_CallerTextboxWithName2: ; 902c9
 	call Phone_CallerTextbox
 	hlcoord 1, 2
 	ld [hl], "<PHONE>"
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [PhoneScriptBank]
 	ld b, a
 	ld a, [PhoneCallerLo]
@@ -562,9 +560,8 @@ Function90363: ; 90363 (24:4363)
 	call Phone_CallerTextbox
 	hlcoord 1, 1
 	ld [hl], "<PHONE>"
-rept 2
 	inc hl
-endr
+	inc hl
 	ld d, h
 	ld e, l
 	pop bc

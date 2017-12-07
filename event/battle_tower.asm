@@ -57,9 +57,8 @@ Special_BattleTower_Battle: ; 170215
 	ld e, a
 	ld d, 0
 	ld hl, .dw
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -680,13 +679,11 @@ endr
 .PrintNthText: ; 8b2a9
 	push bc
 	call .GetTextPointers
-rept 2
 	inc hl
-endr
+	inc hl
 	ld b, $0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	call .LoadTextPointer
 	call PrintText
 	pop bc

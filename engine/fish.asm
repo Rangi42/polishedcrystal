@@ -55,9 +55,8 @@ endr
 	inc hl
 	ld e, b
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -101,9 +100,8 @@ endr
 	and 3
 	cp NITE
 	jr c, .time_species
-rept 2
 	inc hl
-endr
+	inc hl
 
 .time_species
 	ld d, [hl]

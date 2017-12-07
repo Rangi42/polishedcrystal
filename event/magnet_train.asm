@@ -101,9 +101,8 @@ MagnetTrain_UpdateLYOverrides: ; 8cc99
 	ld d, a
 	ld hl, wcf64
 	ld a, [hl]
-rept 2
 	add d
-endr
+	add d
 	ld [hl], a
 	ret
 
@@ -209,9 +208,8 @@ GetMagnetTrainBGTiles: ; 8cd74
 	ld e, a
 	ld d, 0
 	ld hl, MagnetTrainBGTiles
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -294,9 +292,8 @@ MagnetTrain_Jumptable: ; 8cdf7
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

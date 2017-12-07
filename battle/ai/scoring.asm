@@ -135,18 +135,16 @@ AI_Setup: ; 385e0
 	call AI_50_50
 	jr c, .checkmove
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	jr .checkmove
 
 .discourage
 	call Random
 	cp 30
 	jr c, .checkmove
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 	jr .checkmove
 ; 38635
 
@@ -265,9 +263,8 @@ AI_Offensive: ; 386a2
 	and a
 	jr nz, .checkmove
 
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 	jr .checkmove
 ; 386be
 
@@ -400,9 +397,8 @@ AI_Smart_Sleep: ; 387e3
 
 	call AI_50_50
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 387f7
 
@@ -514,9 +510,8 @@ AI_Smart_EvasionUp: ; 388d4
 	jr nc, .asm_38911
 
 .asm_388ef
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_388f2
@@ -545,9 +540,8 @@ endr
 	jr c, .asm_38911
 
 .asm_3890f
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 
 ; 30% chance to end up here if enemy's HP is full and player is not badly poisoned.
 ; 77% chance to end up here if enemy's HP is above 50% but not full.
@@ -586,9 +580,8 @@ endr
 	call Random
 	cp $50
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 ; Player is seeded.
@@ -620,9 +613,8 @@ AI_Smart_AlwaysHit: ; 38947
 	call AI_80_20
 	ret c
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 3895b
 
@@ -648,9 +640,8 @@ AI_Smart_AccuracyDown: ; 38985
 	jr nc, .asm_389bf
 
 .asm_3899d
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_389a0
@@ -679,9 +670,8 @@ endr
 	jr c, .asm_389bf
 
 .asm_389bd
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 
 ; We only end up here if the move has not been already encouraged.
 .asm_389bf
@@ -716,9 +706,8 @@ endr
 	call Random
 	cp $50
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 ; Player is seeded.
@@ -809,9 +798,8 @@ AI_Smart_HealingLight: ; 38a3a
 	call Random
 	cp $19
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 38a4e
 
@@ -876,9 +864,8 @@ AI_Smart_Bind: ; 38a71
 	ret nc
 	call AI_50_50
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 38a9c
 
@@ -921,9 +908,8 @@ AI_Smart_SpDefenseUp2: ; 38aed
 .asm_38b09
 	call AI_80_20
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_38b10
@@ -976,9 +962,8 @@ AI_Smart_Paralyze: ; 38b26
 	ret nc
 	call AI_80_20
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_38b3a
@@ -1010,9 +995,8 @@ AI_Smart_SpeedDownHit: ; 38b40
 	call Random
 	cp 30
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 38b5c
 
@@ -1183,9 +1167,8 @@ AI_Smart_Encore: ; 38c3b
 	call Random
 	cp $46
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_38c81
@@ -1322,9 +1305,8 @@ endr
 	ret z
 	call AI_50_50
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .no_status
@@ -1516,15 +1498,13 @@ AI_Smart_Curse: ; 38e5c
 	jr z, .asm_38e92
 	call AI_80_20
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_38e90
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 .asm_38e92
 	inc [hl]
 .asm_38e93
@@ -1574,9 +1554,8 @@ endr
 	call AI_50_50
 	ret c
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 38ed2
 
@@ -1624,9 +1603,8 @@ AI_Smart_Protect: ; 38ed2
 	call Random
 	cp 20
 	ret c
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 	ret
 ; 38f1d
 
@@ -1656,9 +1634,8 @@ AI_Smart_Foresight: ; 38f1d
 	call Random
 	cp 100
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 38f4a
 
@@ -1777,9 +1754,8 @@ endr
 	call AI_50_50
 	ret c
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_38fd8
@@ -1821,9 +1797,8 @@ AI_Smart_Rollout:
 	call Random
 	cp 200
 	ret nc
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .asm_39020
@@ -1883,9 +1858,8 @@ AI_Smart_Earthquake: ; 39044
 
 	call AICompareSpeed
 	ret nc
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 .could_dig
@@ -1940,9 +1914,8 @@ AI_Smart_Pursuit: ; 39072
 .asm_3907d
 	call AI_50_50
 	ret c
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 39084
 
@@ -1968,9 +1941,8 @@ AI_Smart_RapidSpin: ; 39084
 	call AI_80_20
 	ret c
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 3909e
 
@@ -2123,9 +2095,8 @@ AIGoodWeatherType: ; 39122
 	ret nz
 
 .good
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 39134
 
@@ -2243,9 +2214,8 @@ AI_Smart_Gust: ; 391d5
 	call AICompareSpeed
 	ret nc
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 
 ; Try to predict if the player will use Fly this turn.
@@ -2312,18 +2282,16 @@ AI_Smart_SolarBeam: ; 3920b
 	cp 25 ; 1/10
 	ret c
 
-rept 2
 	inc [hl]
-endr
+	inc [hl]
 	ret
 
 .asm_3921e
 	call AI_80_20
 	ret c
 
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	ret
 ; 39225
 
@@ -2411,9 +2379,8 @@ AICheckPlayerHalfHP: ; 3926e
 	ld c, [hl]
 	sla c
 	rl b
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [hld]
 	cp c
 	ld a, [hl]
@@ -2433,9 +2400,8 @@ AICheckEnemyHalfHP: ; 39281
 	ld c, [hl]
 	sla c
 	rl b
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [hld]
 	cp c
 	ld a, [hl]
@@ -2459,9 +2425,8 @@ AICheckEnemyQuarterHP: ; 39298
 	rl b
 	sla c
 	rl b
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [hld]
 	cp c
 	ld a, [hl]
@@ -2483,9 +2448,8 @@ AICheckPlayerQuarterHP: ; 392b3
 	rl b
 	sla c
 	rl b
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [hld]
 	cp c
 	ld a, [hl]

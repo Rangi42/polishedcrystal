@@ -15,9 +15,8 @@ _AnimateTileset:: ; fc000
 	ld [hTileAnimFrame], a
 
 	ld h, 0
-rept 2
 	add hl, hl
-endr
+	add hl, hl
 	add hl, de
 
 ; 2-byte parameter
@@ -1028,9 +1027,8 @@ SafariFountainAnim1: ; fc5cc
 	ld a, [TileAnimationTimer]
 	and 6
 	srl a
-rept 2
 	inc a
-endr
+	inc a
 	and 3
 	swap a
 	ld e, a
@@ -1071,9 +1069,8 @@ SafariFountainAnim3:
 	ld a, [TileAnimationTimer]
 	and 6
 	srl a
-rept 2
 	inc a
-endr
+	inc a
 	and 3
 	swap a
 	ld e, a

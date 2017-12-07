@@ -240,9 +240,8 @@ GetTimePalette: ; 8c117
 	ld e, a
 	ld d, 0
 	ld hl, .TimePalettes
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

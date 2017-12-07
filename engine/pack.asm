@@ -1274,9 +1274,8 @@ Pack_JumptableNext: ; 10866 (4:4866)
 Pack_GetJumptablePointer: ; 1086b
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1321,9 +1320,8 @@ DrawPackGFX: ; 1089d
 	bit 0, a
 	jr nz, .female
 	ld hl, PackGFXPointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
@@ -1333,9 +1331,8 @@ endr
 
 .female
 	ld hl, PackFGFXPointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]

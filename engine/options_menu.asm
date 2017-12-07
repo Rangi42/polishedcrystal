@@ -114,9 +114,8 @@ GetOptionPointer: ; e42d6
 .page1
 	ld d, 0
 	ld hl, .Pointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -181,9 +180,8 @@ Options_TextSpeed: ; e42f5
 .NonePressed:
 	ld b, 0
 	ld hl, .Strings
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -540,9 +538,8 @@ Options_Typeface:
 .NonePressed:
 	ld b, 0
 	ld hl, .Strings
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld e, [hl]
 	inc hl
 	ld d, [hl]

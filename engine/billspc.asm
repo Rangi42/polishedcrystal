@@ -141,9 +141,8 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld e, a
 	ld d, 0
 	ld hl, BillsPCDepositJumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -384,9 +383,8 @@ BillsPC_Withdraw: ; e2675 (38:6675)
 	ld e, a
 	ld d, 0
 	ld hl, .dw
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -637,9 +635,8 @@ _MovePKMNWithoutMail: ; e2759
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable2
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1942,9 +1939,8 @@ MovePKMNWitoutMail_InsertMon: ; e31e7
 
 .moving_to_box
 	ld hl, .Jumptable
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2174,9 +2170,8 @@ BillsPC_ApplyPalettes: ; e33d0 (38:73d0)
 BillsPC_Jumptable: ; e33df (38:73df)
 	ld e, a
 	ld d, $0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

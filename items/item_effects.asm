@@ -377,9 +377,8 @@ CherishBall: ; e8a2
 
 	ld h, d
 	ld l, e
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld d, h
 	ld e, l
 	ld a, d
@@ -887,9 +886,8 @@ HeavyBallMultiplier:
 	dec a
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, BANK(PokedexDataPointerTable)
 	call GetFarHalfword
 
@@ -902,9 +900,8 @@ endr
 
 	call GetPokedexEntryBank
 	push bc
-rept 2
 	inc hl
-endr
+	inc hl
 	call GetFarHalfword
 
 	srl h
@@ -950,9 +947,8 @@ endr
 	ld a, c
 	cp [hl]
 	jr c, .heavymon
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .lookup
 
 .heavymon
@@ -1008,9 +1004,8 @@ GLOBAL EvosAttacksPointers
 	ld c, a
 	ld b, 0
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
 	pop bc
@@ -2375,9 +2370,8 @@ GetHealingItemAmount: ; f395 (3:7395)
 	jr z, .NotFound
 	cp d
 	jr z, .done
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .next
 
 .NotFound:
@@ -2602,9 +2596,8 @@ XAccuracy: ; f4c5
 .loop
 	cp [hl]
 	jr z, .got_it
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop
 
 .got_it

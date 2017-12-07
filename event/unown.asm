@@ -103,9 +103,8 @@ Special_DisplayUnownWords: ; 8ae68
 	call MenuBoxCoord2Tile
 	inc hl
 	ld de, $14
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [ScriptVar]
 	ld c, a
 	ld de, .UnownText

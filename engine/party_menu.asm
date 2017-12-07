@@ -105,9 +105,8 @@ PlacePartyNicknames: ; 5009b
 	jr nz, .loop
 
 .end
-rept 2
 	dec hl
-endr
+	dec hl
 	ld de, .CANCEL
 	jp PlaceString
 ; 500c8
@@ -210,9 +209,8 @@ PlacePartyMenuHPDigits: ; 50138
 	pop de
 	ld a, "/"
 	ld [hli], a
-rept 2
 	inc de
-endr
+	inc de
 	lb bc, 2, 3
 	call PrintNum
 
@@ -418,19 +416,16 @@ PlacePartyMonEvoStoneCompatibility: ; 5022f
 	ld a, [hli]
 	and a
 	jr z, .nope
-rept 2
 	inc hl
-endr
+	inc hl
 	cp EVOLVE_ITEM
 	jr nz, .loop2
-rept 2
 	dec hl
-endr
+	dec hl
 	ld a, [CurItem]
 	cp [hl]
-rept 2
 	inc hl
-endr
+	inc hl
 	jr nz, .loop2
 	ld de, .string_able
 	ret
@@ -516,9 +511,8 @@ GetPartyMenuTilemapPointers: ; 50396
 	ld e, a
 	ld d, 0
 	ld hl, .Pointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -700,9 +694,8 @@ PrintPartyMenuText: ; 5049a
 	ld hl, PartyMenuStrings
 	ld e, a
 	ld d, $0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -833,9 +826,8 @@ PrintPartyMenuActionText: ; 50566
 .PrintText: ; 505c1
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

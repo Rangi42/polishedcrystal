@@ -631,9 +631,8 @@ endr
 	ld hl, TypeIconPals
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, UnknBGPals palette 0 + 6
 	ld bc, 2
 	ld a, $5

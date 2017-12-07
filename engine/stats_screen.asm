@@ -587,9 +587,8 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	inc a
 	ld d, a
 	farcall CalcExpAtLevel
-rept 2
 	ld hl, TempMonExp + 2
-endr
+	ld hl, TempMonExp + 2
 	ld a, [hQuotient + 2]
 	sub [hl]
 	dec hl
@@ -606,9 +605,8 @@ endr
 .AlreadyAtMaxLevel:
 	ld hl, Buffer1
 	xor a
-rept 2
 	ld [hli], a
-endr
+	ld [hli], a
 	ld [hl], a
 	ret
 ; 4e119 (13:6119)

@@ -49,9 +49,8 @@ GetFinalPkmnTextPointer::
 .get_text:
 	ld b, 0
 	ld c, a
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	jr .finish
 
 .findinarray:

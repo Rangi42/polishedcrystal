@@ -62,9 +62,8 @@ NamingScreen: ; 116c1
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -366,9 +365,8 @@ NamingScreenJoypadLoop: ; 11915
 	ld e, a
 	ld d, $0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -631,9 +629,8 @@ NamingScreen_AnimateCursor: ; 11a3b (4:5a3b)
 	jr nz, .asm_11ade
 	ld a, $4
 .asm_11ade
-rept 2
 	dec a
-endr
+	dec a
 	ld e, a
 	add a
 	add e
@@ -1077,9 +1074,8 @@ INCBIN "gfx/icon/mail2.2bpp"
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1302,9 +1298,8 @@ ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
 	jr nz, .wrap_around_command_left
 	ld a, $4
 .wrap_around_command_left
-rept 2
 	dec a
-endr
+	dec a
 	ld e, a
 	add a
 	add e

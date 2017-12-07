@@ -613,9 +613,8 @@ GetTreeMons: ; b82d2
 	ld e, a
 	ld d, 0
 	ld hl, TreeMons
-rept 2
 	add hl, de
-endr
+	add hl, de
 
 	ld a, [hli]
 	ld h, [hl]

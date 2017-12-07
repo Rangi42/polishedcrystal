@@ -221,9 +221,8 @@ DoTradeAnimation: ; 29082
 	ld e, a
 	ld d, 0
 	ld hl, .JumpTable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -513,9 +512,8 @@ TradeAnim_TubeAnimJumptable: ; 29281
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1065,9 +1063,8 @@ TradeAnim_AnimateTrademonInTube: ; 29676 (a:5676)
 	ld e, [hl]
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

@@ -37,12 +37,10 @@ BattleIntroSlidingPics: ; 4e980
 	ld a, d
 	ld [hSCX], a
 	call .subfunction5
-rept 2
 	inc e
-endr
-rept 2
+	inc e
 	dec d
-endr
+	dec d
 	pop af
 	push af
 	cp $1
@@ -64,9 +62,8 @@ endr
 	ld c, $12 ; 18
 	ld de, $4
 .loop3
-rept 2
 	dec [hl]
-endr
+	dec [hl]
 	add hl, de
 	dec c
 	jr nz, .loop3

@@ -3384,9 +3384,8 @@ PlaceStatusString: ; 50d0a
 	ld e, a
 	push hl
 	ld hl, StatusStringPointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld e, a
 	ld a, [hl]

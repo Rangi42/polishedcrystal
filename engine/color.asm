@@ -80,9 +80,8 @@ LoadPlayerStatusIconPalette:
 	ld hl, StatusIconPals
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, UnknBGPals palette PAL_BATTLE_BG_STATUS + 2
 	ld bc, 2
 	ld a, $5
@@ -95,9 +94,8 @@ LoadEnemyStatusIconPalette:
 	ld hl, StatusIconPals
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, UnknBGPals palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	ld a, $5
@@ -120,9 +118,8 @@ endr
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 6
 	ld bc, 2
 	ld a, $5
@@ -849,9 +846,8 @@ endr
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
-rept 2
 	MONOCHROME_RGB_FOUR_NIGHT
-endr
+	MONOCHROME_RGB_FOUR_NIGHT
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_DARK
