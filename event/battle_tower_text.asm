@@ -14,15 +14,11 @@ BattleTowerText:: ; 11c000
 	jr z, .tycoon
 
 	dec a
+	ld e, a
+	ld d, 0
 	ld hl, BTTrainerClassGenders
-	ld c, a
-;	ld b, CHECK_FLAG
-;	predef FlagPredef
-;	ld a, c
-	ld b, 0
-	add hl, bc
+	add hl, de
 	ld a, [hl]
-
 	and a
 	jr nz, .female
 

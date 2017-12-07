@@ -305,7 +305,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	farcall Function_LoadOpponentTrainer
 	ld a, [rSVBK]
 	push af
-	ld a, $3
+	ld a, BANK(BT_OTTrainerClass)
 	ld [rSVBK], a
 	ld hl, BT_OTTrainerClass
 	ld a, [hl]
@@ -321,26 +321,11 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 
 ; Load sprite of the opponent trainer
 ; because s/he is chosen randomly and appears out of nowhere
-	ld a, [ScriptVar]
-	dec a
-	sla a
-	ld e, a
-	sla a
-	sla a
-	sla a
-	ld c, a
-	ld b, 0
-	ld d, 0
-	ld hl, MapObjects
-	add hl, bc
-	inc hl
 	ld a, [wBTTempOTSprite]
-	ld [hl], a
-	ld hl, UsedSprites
-	add hl, de
-	ld [hli], a
+	ld [Map1ObjectSprite], a
+	ld [UsedSprites + 2], a
 	ld [hUsedSpriteIndex], a
-	ld a, [hl]
+	ld a, [UsedSprites + 3]
 	ld [hUsedSpriteTile], a
 	farjp GetUsedSprite
 ; 170b90
@@ -390,6 +375,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_POKEFAN_F     ; POKEFANF
 	db SPRITE_OFFICER       ; OFFICERM
 	db SPRITE_OFFICER_F     ; OFFICERF
+	db SPRITE_NURSE         ; NURSE
 	db SPRITE_SUPER_NERD    ; POKEMANIAC
 	db SPRITE_COSPLAYER     ; COSPLAYER
 	db SPRITE_SUPER_NERD    ; SUPER_NERD
@@ -436,6 +422,7 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 	db SPRITE_COOLTRAINER_M ; TAMER
 	db SPRITE_ARTIST        ; ARTIST
 	db SPRITE_LADY          ; AROMA_LADY
+	db SPRITE_BREEDER       ; WAITRESS
 	db SPRITE_SIGHTSEER_M   ; SIGHTSEERM
 	db SPRITE_LADY          ; SIGHTSEERF
 	db SPRITE_SIGHTSEER_M   ; SIGHTSEERS
