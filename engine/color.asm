@@ -583,9 +583,9 @@ InitCGBPals::
 	ld c, 4 * 8
 .bgpals_loop
 if !DEF(MONOCHROME)
-	ld a, $7fff % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [rBGPD], a
-	ld a, $7fff / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [rBGPD], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
@@ -600,9 +600,9 @@ endc
 	ld c, 4 * 8
 .obpals_loop
 if !DEF(MONOCHROME)
-	ld a, $7fff % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [rOBPD], a
-	ld a, $7fff / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [rOBPD], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
@@ -628,9 +628,9 @@ endc
 	ld c, 4 * 16
 .loop
 if !DEF(MONOCHROME)
-	ld a, $7fff % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [hli], a
-	ld a, $7fff / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [hli], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
@@ -821,146 +821,37 @@ endr
 .TilesetBGPalette:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/bg.pal"
+elif DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/monochrome/bg.pal"
 else
-if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/bg.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 4
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR_NIGHT
-	MONOCHROME_RGB_FOUR_NIGHT
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 4
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-rept 2
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_NIGHT
-endc
 endc
 
 .MapObjectPals:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/ob.pal"
+elif DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/monochrome/ob.pal"
 else
-if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/ob.pal"
-else
-rept 5
-	MONOCHROME_RGB_FOUR_OW
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-rept 5
-	MONOCHROME_RGB_FOUR_OW
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-rept 5
-	MONOCHROME_RGB_FOUR_OW_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-rept 5
-	MONOCHROME_RGB_FOUR_OW_DARKNESS
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 2
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-endc
 endc
 
 .RoofPals:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/roof.pal"
+elif DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/monochrome/roof.pal"
 else
-if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/roof.pal"
-else
-rept 36
-	MONOCHROME_RGB_TWO
-	MONOCHROME_RGB_TWO_NIGHT
-endr
-endc
 endc
 
 .OvercastRoofPals:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/roof_overcast.pal"
+elif DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/monochrome/roof_overcast.pal"
 else
-if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/roof_overcast.pal"
-else
-rept 3
-	MONOCHROME_RGB_TWO
-	MONOCHROME_RGB_TWO_NIGHT
-endr
-endc
 endc
 
 
