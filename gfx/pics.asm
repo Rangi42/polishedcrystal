@@ -721,15 +721,15 @@ UnownQuestionBackpic:     INCBIN "gfx/pics/unown_question/back.2bpp.lz"
 SECTION "Pikachu Pics", ROMX
 
 PikachuPlainFrontpic:     INCBIN "gfx/pics/pikachu_plain/front.2bpp.lz"
+PikachuPlainBackpic:
+PikachuSurfBackpic:
+PikachuPikaBackpic:       INCBIN "gfx/pics/pikachu_plain/back.2bpp.lz"
 PikachuFlyFrontpic:       INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:        INCBIN "gfx/pics/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:      INCBIN "gfx/pics/pikachu_surf/front.2bpp.lz"
 PikachuPikaFrontpic:      INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
 PikachuChuchuFrontpic:    INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
-PikachuPlainBackpic:
-PikachuSurfBackpic:
-PikachuPikaBackpic:
-PikachuChuchuBackpic:     INCBIN "gfx/pics/pikachu/back.2bpp.lz"
+PikachuChuchuBackpic:     INCBIN "gfx/pics/pikachu_chuchu/back.2bpp.lz"
 
 
 SECTION "Pichu Pics", ROMX
