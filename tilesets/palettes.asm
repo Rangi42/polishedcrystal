@@ -81,8 +81,6 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_saffron_gym
 	cp TILESET_UNDERGROUND
 	jp z, .maybe_fuchsia_gym
-	cp TILESET_TRADITIONAL_HOUSE
-	jp z, .maybe_charcoal_kiln
 	cp TILESET_LAB
 	jp z, .maybe_lab_or_dragon_shrine
 	cp TILESET_TUNNEL
@@ -259,16 +257,6 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_FUCHSIA_GYM
 	jp nz, .do_nothing
 	ld hl, FuchsiaGymPalette
-	jp .load_eight_bg_palettes
-
-.maybe_charcoal_kiln
-	ld a, [MapGroup]
-	cp GROUP_CHARCOAL_KILN
-	jp nz, .do_nothing
-	ld a, [MapNumber]
-	cp MAP_CHARCOAL_KILN
-	jp nz, .do_nothing
-	ld hl, CharcoalKilnPalette
 	jp .load_eight_bg_palettes
 
 .maybe_lab_or_dragon_shrine
@@ -1036,19 +1024,6 @@ endc
 GameCornerPalette:
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/game_corner.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-endc
-
-CharcoalKilnPalette:
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/charcoal_kiln.pal"
 else
 rept 7
 	MONOCHROME_RGB_FOUR
