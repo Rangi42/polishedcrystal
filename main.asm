@@ -170,7 +170,7 @@ INCLUDE "event/happiness_egg.asm"
 INCLUDE "event/special.asm"
 
 ItemAttributes: ; 67c1
-INCLUDE "items/item_attributes.asm"
+INCLUDE "data/items/item_attributes.asm"
 
 
 SECTION "Code 2", ROMX
@@ -193,7 +193,7 @@ INCLUDE "engine/player_step.asm"
 INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
-INCLUDE "items/item_effects.asm"
+INCLUDE "engine/item_effects.asm"
 
 CheckTime:: ; c000
 	ld a, [TimeOfDay]
@@ -411,7 +411,7 @@ INCLUDE "engine/map_setup.asm"
 INCLUDE "engine/pokecenter_pc.asm"
 INCLUDE "engine/mart.asm"
 INCLUDE "engine/money.asm"
-INCLUDE "items/marts.asm"
+INCLUDE "data/items/marts.asm"
 INCLUDE "event/mom.asm"
 INCLUDE "event/daycare.asm"
 INCLUDE "engine/breeding.asm"
@@ -435,7 +435,7 @@ INCLUDE "engine/buy_sell_toss.asm"
 INCLUDE "engine/trainer_card.asm"
 INCLUDE "engine/prof_oaks_pc.asm"
 INCLUDE "engine/decorations.asm"
-INCLUDE "trainers/dvs.asm"
+INCLUDE "data/trainers/dvs.asm"
 
 UpdateItemDescriptionAndBagQuantity:
 	hlcoord 1, 1
@@ -4192,14 +4192,14 @@ ComputeTrainerReward: ; 3991b (e:591b)
 	ld [hl], a
 	ret
 
-INCLUDE "trainers/attributes.asm"
+INCLUDE "data/trainers/attributes.asm"
 
 
 SECTION "Enemy Trainer Pointers", ROMX
 
-INCLUDE "trainers/read_party.asm"
-INCLUDE "trainers/trainer_pointers.asm"
-INCLUDE "trainers/trainers.asm"
+INCLUDE "engine/read_party.asm"
+INCLUDE "data/trainers/trainer_pointers.asm"
+INCLUDE "data/trainers/trainers.asm"
 
 
 SECTION "Wild Data", ROMX
@@ -4343,9 +4343,9 @@ INCLUDE "text/phone/extra2.asm"
 SECTION "Item Text", ROMX
 
 ItemNames::
-INCLUDE "items/item_names.asm"
+INCLUDE "data/items/item_names.asm"
 
-INCLUDE "items/item_descriptions.asm"
+INCLUDE "data/items/item_descriptions.asm"
 
 
 SECTION "Move and Landmark Text", ROMX

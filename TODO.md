@@ -135,7 +135,6 @@ Low priority:
 
 ### Music player
 
-* Fix the piano roll graphics "leaking" into the song list
 * Use the UnlockedMusic flag_array to hide unheard song titles
 
 
@@ -253,7 +252,7 @@ Some of these may never be added; they're just suggestions.
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
 * Use the [Japanese GS Ball event quiz](https://www.pokecommunity.com/showthread.php?p=9739072#post9739072) ([original](http://www.geocities.co.jp/Playtown-Darts/9915/serebi.htm))
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
-* Restore the Pikachu's beach minigame
+* Restore the Pikachu's Beach minigame
 * Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)
