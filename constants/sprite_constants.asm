@@ -166,7 +166,8 @@
 	const SPRITE_WII ; $a3
 	const SPRITE_SILVER_TROPHY ; $a4
 	const SPRITE_GOLD_TROPHY ; $a5
-	const SPRITE_BLANK ; $a6
+
+	const SPRITE_UNUSED ; $a6
 
 SPRITE_POKEMON EQU const_value
 	const SPRITE_BULBASAUR ; $a7
@@ -252,8 +253,8 @@ SPRITE_VARS EQU const_value
 	const SPRITE_FUCHSIA_GYM_3 ; $f4
 	const SPRITE_FUCHSIA_GYM_4 ; $f5
 	const SPRITE_COPYCAT ; $f6 ; permanent SPRITE_LASS
-	const SPRITE_GUIDE_GENT ; $f7 ; permanent SPRITE_SWIMMER_GUY/SPRITE_DRAGON_TAMER
-	const SPRITE_NEW_BARK_TEACHER ; $f8 ; TODO: avoid SPRITE_GUIDE_GENT overloading
+	const SPRITE_GUIDE_GENT ; $f7 ; permanent SPRITE_SWIMMER_GUY
+	const SPRITE_NEW_BARK_TEACHER ; $f8 ; permanent SPRITE_DRAGON_TAMER
 	const SPRITE_NEW_BARK_LYRA ; $f9 ; permanent SPRITE_LASS
 	const SPRITE_GOLDENROD_LYRA ; $fa ; permanent SPRITE_SWIMMER_GIRL
 	const SPRITE_ROUTE_30_RATTATA ; $fb ; permanent SPRITE_SUICUNE

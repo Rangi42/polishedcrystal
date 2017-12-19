@@ -6950,8 +6950,8 @@ OfficerMGroup:
 	db TRAINERTYPE_NORMAL
 
 	; party
-	db 28, GROWLITHE
-	db 28, GROWLITHE
+	db 15, GROWLITHE
+	db 15, GROWLITHE
 
 	db $ff ; end
 
@@ -9490,7 +9490,7 @@ SageGroup:
 
 	; party
 	db 22, HAUNTER
-	db 20, VULPIX
+	db 21, VULPIX
 
 	db $ff ; end
 
@@ -9503,8 +9503,7 @@ SageGroup:
 	; party
 	db 17, GASTLY
 	db 17, HOOTHOOT
-	db 18, VULPIX
-	db 17, GASTLY
+	db 18, GASTLY
 	db 18, NOCTOWL
 
 	db $ff ; end

@@ -507,6 +507,3 @@ SilverTrophySprite:
 
 GoldTrophySprite:
 	sprite_header GoldTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-
-BlankSprite:
-	sprite_header BlankSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED

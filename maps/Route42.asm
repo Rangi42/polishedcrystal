@@ -28,7 +28,7 @@ Route42_MapEventHeader:
 	signpost 8, 54, SIGNPOST_JUMPTEXT, Route42Sign2Text
 	signpost 11, 16, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
-.PersonEvents: db 14
+.PersonEvents: db 13
 	person_event SPRITE_ROUTE_30_RATTATA, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
@@ -39,9 +39,8 @@ Route42_MapEventHeader:
 	fruittree_event 16, 29, FRUITTREE_ROUTE_42_3, YLW_APRICORN
 	itemball_event 4, 6, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	itemball_event 8, 33, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
-	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
+	person_event SPRITE_NEW_BARK_TEACHER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	person_event SPRITE_NEW_BARK_TEACHER, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	person_event SPRITE_SUPER_NERD, 20, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 const_value set 1
@@ -302,31 +301,6 @@ HikerBenjaminScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1a943f
 
-OfficermKeithScript:
-	faceplayer
-	opentext
-	checknite
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERM_KEITH
-	iftrue .AfterScript
-	special SaveMusic
-	playmusic MUSIC_OFFICER_ENCOUNTER
-	writetext OfficermKeithSeenText
-	waitbutton
-	closetext
-	winlosstext OfficermKeithWinText, 0
-	loadtrainer OFFICERM, KEITH
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_OFFICERM_KEITH
-	endtext
-
-.AfterScript:
-	jumpopenedtext OfficermKeithAfterText
-
-.NoFight:
-	jumpopenedtext OfficermKeithDaytimeText
-
 MovementData_Route42LyraApproach4:
 	step_down
 MovementData_Route42LyraApproach3:
@@ -425,32 +399,6 @@ Route42LyraWhirlpoolText:
 	line "<PLAYER>!"
 
 	para "Bye now!"
-	done
-
-OfficermKeithSeenText:
-	text "Halt! What are"
-	line "you doing?"
-	done
-
-OfficermKeithWinText:
-	text "You know how to"
-	line "defend yourself."
-	done
-
-OfficermKeithAfterText:
-	text "Explore the mount-"
-	line "ain if you want."
-
-	para "I'm not worried"
-	line "about you."
-	done
-
-OfficermKeithDaytimeText:
-	text "The avalanche is"
-	line "cleared, but you"
-
-	para "can still get lost"
-	line "or hurt in caves."
 	done
 
 FisherTully1SeenText:

@@ -2,9 +2,8 @@ VioletCity_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 2
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_NEWMAP, VioletCityFlyPoint
-	dbw MAPCALLBACK_SPRITES, VioletCitySwimmerGuySprite
 
 VioletCity_MapEventHeader:
 
@@ -50,10 +49,6 @@ const_value set 1
 
 VioletCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIOLET
-	return
-
-VioletCitySwimmerGuySprite:
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	return
 
 VioletCityEarlScript:

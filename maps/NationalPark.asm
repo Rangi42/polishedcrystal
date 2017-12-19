@@ -20,7 +20,7 @@ NationalPark_MapEventHeader:
 	signpost 4, 14, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
 	signpost 47, 8, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 15
+.PersonEvents: db 16
 	person_event SPRITE_LASS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c1d3, -1
 	person_event SPRITE_POKEFAN_F, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c22e, -1
 	person_event SPRITE_TEACHER, 40, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1
@@ -33,9 +33,10 @@ NationalPark_MapEventHeader:
 	person_event SPRITE_POKEFAN_F, 29, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
 	person_event SPRITE_POKEFAN_M, 9, 18, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
 	person_event SPRITE_LASS, 14, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassKrise, -1
+	person_event SPRITE_BUG_MANIAC, 13, 28, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacLou, -1
+	person_event SPRITE_OFFICER, 19, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, -1
 	itemball_event 12, 37, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
 	tmhmball_event 43, 3, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
-	person_event SPRITE_BUG_MANIAC, 13, 28, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacLou, -1
 
 TeacherScript_0x5c008:
 	faceplayer
@@ -52,6 +53,31 @@ UnknownScript_0x5c01d:
 	waitbutton
 UnknownScript_0x5c021:
 	endtext
+
+OfficermKeithScript:
+	faceplayer
+	opentext
+	checknite
+	iffalse .NoFight
+	checkevent EVENT_BEAT_OFFICERM_KEITH
+	iftrue .AfterScript
+	special SaveMusic
+	playmusic MUSIC_OFFICER_ENCOUNTER
+	writetext OfficermKeithSeenText
+	waitbutton
+	closetext
+	winlosstext OfficermKeithWinText, 0
+	loadtrainer OFFICERM, KEITH
+	startbattle
+	reloadmapafterbattle
+	setevent EVENT_BEAT_OFFICERM_KEITH
+	endtext
+
+.AfterScript:
+	jumpopenedtext OfficermKeithAfterText
+
+.NoFight:
+	jumpopenedtext OfficermKeithDaytimeText
 
 TrainerBugManiacLou:
 	trainer EVENT_BEAT_BUG_MANIAC_LOU, BUG_MANIAC, LOU, BugManiacLouSeenText, BugManiacLouBeatenText, 0, BugManiacLouScript
@@ -499,6 +525,37 @@ BugManiacLouAfterText:
 
 	para "but I evolved into"
 	line "a Bug Maniac!"
+	done
+
+OfficermKeithSeenText:
+	text "Halt! What are"
+	line "you doing out"
+	cont "this late?"
+	done
+
+OfficermKeithWinText:
+	text "You know how to"
+	line "defend yourself!"
+	done
+
+OfficermKeithAfterText:
+	text "The park stays"
+	line "open at night,"
+
+	para "because Officers"
+	line "like me keep it"
+	cont "safe!"
+	done
+
+OfficermKeithDaytimeText:
+	text "Enjoying the"
+	line "park, are you?"
+
+	para "Always take a"
+	line "#mon with you"
+
+	para "if you go in the"
+	line "tall grass!"
 	done
 
 UnknownText_0x5c750:

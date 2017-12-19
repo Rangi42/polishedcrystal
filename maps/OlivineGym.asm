@@ -35,8 +35,8 @@ JasmineScript_0x9c12f:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
-	clearevent EVENT_ROUTE_42_OFFICER
 	domaptrigger ROUTE_42, $1
+	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_DRAGON_TAMER
 	opentext
 	writetext UnknownText_0x9c33a
 	playsound SFX_GET_BADGE

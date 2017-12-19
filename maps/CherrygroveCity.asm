@@ -2,9 +2,8 @@ CherrygroveCity_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 2
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
-	dbw MAPCALLBACK_SPRITES, CherrygroveCitySwimmerGuySprite
 
 CherrygroveCity_MapEventHeader:
 
@@ -25,7 +24,7 @@ CherrygroveCity_MapEventHeader:
 	signpost 9, 23, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
 
 .PersonEvents: db 6
-	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
+	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	person_event SPRITE_CHERRYGROVE_RIVAL, 6, 39, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
 	person_event SPRITE_TEACHER, 13, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
 	person_event SPRITE_YOUNGSTER, 7, 23, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
@@ -38,13 +37,6 @@ const_value set 1
 
 CherrygroveCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
-	return
-
-CherrygroveCitySwimmerGuySprite:
-	checkevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	iftrue .done
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
-.done
 	return
 
 CherrygroveGuideGentTrigger:
