@@ -16,7 +16,7 @@ GoldenrodPokeComCenterOffice_MapEventHeader:
 .Signposts: db 3
 	signpost 2, 3, SIGNPOST_JUMPTEXT, RangiComputerText
 	signpost 2, 6, SIGNPOST_JUMPTEXT, LunaComputerText
-	signpost 5, 6, SIGNPOST_JUMPTEXT, AizawaComputerText
+	signpost 5, 6, SIGNPOST_UP, AizawaComputerScript
 
 .PersonEvents: db 3
 	person_event SPRITE_SCIENTIST_F, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
@@ -84,7 +84,9 @@ LunaComputerText:
 	line "on the screen."
 	done
 
-AizawaComputerText:
+AizawaComputerScript:
+	thistext
+
 	text "A program called"
 	line "Polished Map is"
 	cont "displaying a"
