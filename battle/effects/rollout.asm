@@ -16,7 +16,7 @@ BattleCommand_CheckCurl: ; 37718
 	jr z, .reset
 
 	ld b, doturn_command
-	jp SkipToBattleCommand
+	jp SkipToBattleCommandAfter
 
 .reset
 	xor a

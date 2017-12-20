@@ -19,7 +19,12 @@ AIChooseMove: ; 440ce
 	push af
 	push hl
 	ld b, a
+	ld a, [hBattleTurn]
+	push af
+	call SetEnemyTurn
 	farcall FarCheckUsableMove
+	pop af
+	ld [hBattleTurn], a
 	ld a, 20
 	jr z, .unusable_next
 	ld a, 80

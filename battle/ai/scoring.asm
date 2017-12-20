@@ -383,6 +383,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_SOLAR_BEAM,        AI_Smart_SolarBeam
 	dbw EFFECT_THUNDER,           AI_Smart_Thunder
 	dbw EFFECT_FLY,               AI_Smart_Fly
+	dbw EFFECT_ROOST,             AI_Smart_Roost
 	db $ff
 ; 387e3
 
@@ -782,7 +783,8 @@ AI_Smart_Roar: ; 38a2a
 
 
 AI_Smart_Heal:
-AI_Smart_HealingLight: ; 38a3a
+AI_Smart_HealingLight:
+AI_Smart_Roost:
 ; 90% chance to greatly encourage this move if enemy's HP is below 25%.
 ; Discourage this move if enemy's HP is higher than 50%.
 ; Do nothing otherwise.
