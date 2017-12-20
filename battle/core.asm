@@ -6279,6 +6279,7 @@ ParseEnemyAction: ; 3e7c1
 	jp .finish
 
 .not_linked
+	call SetEnemyTurn
 	call CheckUsableMoves
 	jp nz, .struggle
 	ld hl, EnemySubStatus2
