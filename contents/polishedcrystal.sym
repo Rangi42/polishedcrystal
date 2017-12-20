@@ -26107,7 +26107,6 @@
 28:7D5B BattleCommand_ClearText
 28:7D61 BattleCommand_ClearText.text
 28:7D62 EndMoveEffect
-28:7D64 SkipToBattleCommand
 28:7D68 SkipToBattleCommandAfter
 28:7D6C SkipToBattleCommandBackwards
 28:7D96 AppearUserLowerSub
