@@ -6759,12 +6759,15 @@ BattleCommand_EndLoop: ; 369b6
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
 
-	ld hl, PlayerHitTimesText
 	ld a, [hBattleTurn]
 	and a
+	ld hl, PlayerHitTimesText
 	jr z, .got_hit_n_times_text
 	ld hl, EnemyHitTimesText
 .got_hit_n_times_text
+	push bc
+	call StdBattleTextBox
+	pop bc
 	xor a
 	ld [bc], a
 	ret
