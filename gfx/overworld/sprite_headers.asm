@@ -367,6 +367,9 @@ SailorSprite:
 ScientistSprite:
 	sprite_header ScientistSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
 
+ScientistFSprite:
+	sprite_header ScientistFSpriteGFX, 3, WALKING_SPRITE, PAL_OW_BLUE
+
 SightseerMSprite:
 	sprite_header SightseerMSpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
 
