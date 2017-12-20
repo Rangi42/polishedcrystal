@@ -35,14 +35,14 @@ JasmineScript_0x9c12f:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
-	domaptrigger ROUTE_42, $1
-	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_DRAGON_TAMER
 	opentext
 	writetext UnknownText_0x9c33a
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MINERALBADGE
 	callstd goldenrodrockets
+	domaptrigger ROUTE_42, $1
+	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_POKEFAN_M
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
 	iftrue UnknownScript_0x9c172
