@@ -1750,7 +1750,7 @@ SECTION "Enemy Party", WRAMX
 wPokedexShowPointerAddr:: ds 2
 wPokedexShowPointerBank:: ds 1
 
-	ds 5
+	ds 2
 
 OTPlayerName:: ds NAME_LENGTH
 OTPlayerID:: ds 2
@@ -1786,8 +1786,6 @@ OTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 OTPartyDataEnd::
 ENDU
 
-	ds 4 ; unused
-
 wBattleAction:: ds 1
 wLinkBattleSentAction:: ds 1
 
@@ -1817,8 +1815,7 @@ ScriptBank:: ds 1
 ScriptPos:: ds 2
 
 wScriptStackSize:: ds 1
-wScriptStack:: ds 3 * 5
-	ds 1
+wScriptStack:: ds 3 * 12
 ScriptDelay:: ds 1
 
 wPriorityScriptBank::
@@ -1826,11 +1823,7 @@ wScriptTextBank:: ds 1
 wPriorityScriptAddr::
 wScriptTextAddr:: ds 2
 
-	ds 1
-
 wWildEncounterCooldown:: ds 1
-
-	ds 5 ; unused
 
 wWildBattlePanic:: ds 1
 
@@ -1840,18 +1833,14 @@ wPlayerSpriteSetupFlags::
 ; bit 5: if set, set facing according to bits 0-1
 ; bits 0-1: direction facing
 	ds 1
-	
+
 wMapReentryScriptQueueFlag:: ds 1 ; MemScriptFlag
 wMapReentryScriptBank:: ds 1 ; MemScriptBank
 wMapReentryScriptAddress:: ds 2 ; MemScriptAddr
 
-	ds 4
-
 wTimeCyclesSinceLastCall:: ds 1
 wReceiveCallDelay_MinsRemaining:: ds 1
 wReceiveCallDelay_StartTime:: ds 3
-
-	ds 3
 
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
@@ -2361,7 +2350,7 @@ PartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 PartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 PartyMonNicknamesEnd::
 
-	ds 13 ; unused
+	ds 12 ; unused
 
 PokedexCaught:: flag_array NUM_POKEMON
 EndPokedexCaught::
@@ -2370,7 +2359,7 @@ PokedexSeen:: flag_array NUM_POKEMON
 EndPokedexSeen::
 
 UnownDex:: ds NUM_UNOWN
-UnlockedUnowns::
+UnlockedUnowns:: ds 1
 
 wFirstUnownSeen:: ds 1
 wFirstMagikarpSeen:: ds 1
