@@ -1149,17 +1149,21 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld a, [hl]
 	ld [TempMonItem], a
 	pop hl
-	; personality
+	; DVs and personality (DVs for color variation)
 	push hl
-	ld bc, sBoxMon1Personality - sBox
+	ld bc, sBoxMon1DVs - sBox
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
+	ld bc, TempMonDVs
+rept 4
 	ld a, [hli]
-	ld [TempMonPersonality], a
+	ld [bc], a
+	inc bc
+endr
 	ld a, [hl]
-	ld [TempMonPersonality + 1], a
+	ld [bc], a
 	pop hl
 	; moves (for Pikachu forms)
 	ld bc, sBoxMon1Moves - sBox
@@ -1167,14 +1171,14 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonMoves
+	ld bc, TempMonMoves
 rept NUM_MOVES +- 1
 	ld a, [hli]
-	ld [de], a
-	inc de
+	ld [bc], a
+	inc bc
 endr
 	ld a, [hl]
-	ld [de], a
+	ld [bc], a
 	jp CloseSRAM
 
 .party
@@ -1192,28 +1196,32 @@ endr
 	call AddNTimes
 	ld a, [hl]
 	ld [TempMonItem], a
-	; personality
-	ld hl, PartyMon1Personality
+	; DVs and personality (DVs for color variation)
+	ld hl, PartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
+	ld bc, TempMonDVs
+rept 4
 	ld a, [hli]
-	ld [TempMonPersonality], a
+	ld [bc], a
+	inc bc
+endr
 	ld a, [hl]
-	ld [TempMonPersonality + 1], a
+	ld [bc], a
 	; moves (for Pikachu forms)
 	ld hl, PartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonMoves
+	ld bc, TempMonMoves
 rept NUM_MOVES +- 1
 	ld a, [hli]
-	ld [de], a
-	inc de
+	ld [bc], a
+	inc bc
 endr
 	ld a, [hl]
-	ld [de], a
+	ld [bc], a
 	ret
 
 .sBox
@@ -1233,28 +1241,32 @@ endr
 	call AddNTimes
 	ld a, [hl]
 	ld [TempMonItem], a
-	; personality
-	ld hl, sBoxMon1Personality
+	; DVs and personality (DVs for color variation)
+	ld hl, sBoxMon1DVs
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
+	ld bc, TempMonDVs
+rept 4
 	ld a, [hli]
-	ld [TempMonPersonality], a
+	ld [bc], a
+	inc bc
+endr
 	ld a, [hl]
-	ld [TempMonPersonality + 1], a
+	ld [bc], a
 	; moves (for Pikachu forms)
 	ld hl, sBoxMon1Moves
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonMoves
+	ld bc, TempMonMoves
 rept NUM_MOVES +- 1
 	ld a, [hli]
-	ld [de], a
-	inc de
+	ld [bc], a
+	inc bc
 endr
 	ld a, [hl]
-	ld [de], a
+	ld [bc], a
 	jp CloseSRAM
 
 BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
