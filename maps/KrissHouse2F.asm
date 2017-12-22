@@ -201,7 +201,7 @@ if DEF(DEBUG)
 	giveitem SHINY_CHARM
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
-	givepoke MEWTWO, 100, LEFTOVERS
+	givepoke MEWTWO, 100, ARMOR_SUIT
 	; hm slaves
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS

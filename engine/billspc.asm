@@ -1129,6 +1129,7 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	call GetBoxPointer
 	ld a, b
 	call GetSRAMBank
+	; level
 	push hl
 	ld bc, sBoxMon1Level - sBox
 	add hl, bc
@@ -1138,6 +1139,7 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld a, [hl]
 	ld [TempMonLevel], a
 	pop hl
+	; item
 	push hl
 	ld bc, sBoxMon1Item - sBox
 	add hl, bc
@@ -1147,14 +1149,26 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld a, [hl]
 	ld [TempMonItem], a
 	pop hl
-	ld bc, sBoxMon1DVs - sBox
+	; personality
+	push hl
+	ld bc, sBoxMon1Personality - sBox
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonDVs
-	; Copy DVs and personality right after them
-rept 4
+	ld a, [hli]
+	ld [TempMonPersonality], a
+	ld a, [hl]
+	ld [TempMonPersonality + 1], a
+	pop hl
+	; moves (for Pikachu forms)
+	ld bc, sBoxMon1Moves - sBox
+	add hl, bc
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld de, TempMonMoves
+rept NUM_MOVES +- 1
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1164,25 +1178,36 @@ endr
 	jp CloseSRAM
 
 .party
+	; level
 	ld hl, PartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [TempMonLevel], a
+	; item
 	ld hl, PartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [TempMonItem], a
-	ld hl, PartyMon1DVs
+	; personality
+	ld hl, PartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonDVs
-	; Copy DVs and personality right after them
-rept 4
+	ld a, [hli]
+	ld [TempMonPersonality], a
+	ld a, [hl]
+	ld [TempMonPersonality + 1], a
+	; moves (for Pikachu forms)
+	ld hl, PartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld de, TempMonMoves
+rept NUM_MOVES +- 1
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1194,27 +1219,36 @@ endr
 .sBox
 	ld a, BANK(sBox)
 	call GetSRAMBank
+	; level
 	ld hl, sBoxMon1Level
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [TempMonLevel], a
-
+	; item
 	ld hl, sBoxMon1Item
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [TempMonItem], a
-
-	ld hl, sBoxMon1DVs
+	; personality
+	ld hl, sBoxMon1Personality
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, TempMonDVs
-	; Copy DVs and personality right after them
-rept 4
+	ld a, [hli]
+	ld [TempMonPersonality], a
+	ld a, [hl]
+	ld [TempMonPersonality + 1], a
+	; moves (for Pikachu forms)
+	ld hl, sBoxMon1Moves
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld de, TempMonMoves
+rept NUM_MOVES +- 1
 	ld a, [hli]
 	ld [de], a
 	inc de
