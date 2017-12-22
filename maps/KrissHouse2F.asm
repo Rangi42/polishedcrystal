@@ -205,12 +205,8 @@ if DEF(DEBUG)
 	; hm slaves
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS
-	; more
-	givepoke PIKACHU, 100, LIGHT_BALL
-	givepoke PIKACHU, 100, MYSTIC_WATER
 	callasm TeachHMSlaveMoves
 	callasm MaxMewtwoStats
-	callasm SpecialFormPikachus
 	; pokedex
 	callasm FillPokedex
 	; intro events
@@ -290,15 +286,6 @@ rept 5
 	ld a, 999 % $100
 	ld [hli], a
 endr
-	ret
-
-SpecialFormPikachus:
-	ld hl, PartyMon4Form
-	ld [hl], FEMALE | PIKACHU_YELLOW_FORM
-	ld hl, PartyMon5Form
-	ld [hl], MALE
-	ld hl, PartyMon5Moves
-	ld [hl], SURF
 	ret
 
 FillPokedex:
