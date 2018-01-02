@@ -152,10 +152,12 @@ wPlayerMovement:: ds 1
 	ds 2
 wMovementPerson:: ds 1
 wMovementDataPointer:: ds 3 ; dba
-	ds 4
 wMovementByteWasControlSwitch:: ds 1
 wMovementPointer:: ds 2
-	ds 3
+
+wRNGState:: ds 4
+wRNGCumulativeDividerPlus:: ds 2
+wRNGCumulativeDividerMinus:: ds 1
 
 wTempObjectCopyMapObjectIndex:: ds 1
 wTempObjectCopySprite:: ds 1
