@@ -68,7 +68,7 @@ VBlank0:: ; 2b1
 
 	; advance random variables
 	call UpdateDividerCounters
-	call AdvanceRNGState
+;	call AdvanceRNGState
 
 	ld a, [hROMBank]
 	ld [hROMBankBackup], a

@@ -118,11 +118,11 @@ SECTION "WRAM 0", WRAM0
 wLZAddress:: ds 2
 wLZBank:: ds 1
 
+	ds 1
+
 wRNGState:: ds 4
 wRNGCumulativeDividerPlus:: ds 2
 wRNGCumulativeDividerMinus:: ds 1
-
-	ds 1
 
 wBoxAlignment:: ds 1
 InputType:: ds 1
@@ -156,8 +156,10 @@ wPlayerMovement:: ds 1
 	ds 2
 wMovementPerson:: ds 1
 wMovementDataPointer:: ds 3 ; dba
+	ds 4
 wMovementByteWasControlSwitch:: ds 1
 wMovementPointer:: ds 2
+	ds 3
 
 wTempObjectCopyMapObjectIndex:: ds 1
 wTempObjectCopySprite:: ds 1
@@ -168,8 +170,6 @@ wTempObjectCopyRange:: ds 1
 wTempObjectCopyX:: ds 1
 wTempObjectCopyY:: ds 1
 wTempObjectCopyRadius:: ds 1
-
-	ds 1
 
 TileDown:: ds 1
 TileUp:: ds 1
@@ -183,8 +183,6 @@ TilePermissions::
 ; bit 2: up
 ; bit 1: left
 ; bit 0: right
-	ds 1
-
 	ds 1
 
 
