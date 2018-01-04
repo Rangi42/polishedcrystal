@@ -109,7 +109,6 @@ NewBarkTown_LyraIntroTrigger:
 	disappear NEWBARKTOWN_LYRA
 	dotrigger $2
 	special FadeOutPalettes
-	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_OFFICER
 	pause 15
 	warpfacing UP, ELMS_LAB, 4, 11
 	end

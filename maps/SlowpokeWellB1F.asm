@@ -69,6 +69,7 @@ Proton2Script:
 	clearevent EVENT_AZALEA_TOWN_SLOWPOKES
 	clearevent EVENT_KURTS_HOUSE_SLOWPOKE
 	clearevent EVENT_KURTS_HOUSE_KURT_1
+	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_OFFICER
 	special FadeOutPalettes
 	special HealParty
 	pause 15
