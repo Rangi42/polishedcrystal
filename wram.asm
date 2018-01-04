@@ -118,6 +118,10 @@ SECTION "WRAM 0", WRAM0
 wLZAddress:: ds 2
 wLZBank:: ds 1
 
+wRNGState:: ds 4
+wRNGCumulativeDividerPlus:: ds 2
+wRNGCumulativeDividerMinus:: ds 1
+
 	ds 1
 
 wBoxAlignment:: ds 1
@@ -154,10 +158,6 @@ wMovementPerson:: ds 1
 wMovementDataPointer:: ds 3 ; dba
 wMovementByteWasControlSwitch:: ds 1
 wMovementPointer:: ds 2
-
-wRNGState:: ds 4
-wRNGCumulativeDividerPlus:: ds 2
-wRNGCumulativeDividerMinus:: ds 1
 
 wTempObjectCopyMapObjectIndex:: ds 1
 wTempObjectCopySprite:: ds 1

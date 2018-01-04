@@ -1411,7 +1411,7 @@ Special_MoveTutor: ; 4925b
 	call GetCGBLayout
 	xor a
 	ld [wItemAttributeParamBuffer], a
-	call .GetMoveTutorMove
+	ld a, [ScriptVar]
 	ld [wd265], a
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
@@ -1427,18 +1427,13 @@ Special_MoveTutor: ; 4925b
 	call CheckCanLearnMoveTutorMove
 	jr nc, .loop
 	xor a
-	ld [ScriptVar], a
 	jr .quit
 
 .cancel
 	ld a, -1
-	ld [ScriptVar], a
 .quit
+	ld [ScriptVar], a
 	jp CloseSubmenu
-
-.GetMoveTutorMove: ; 492a5
-	ld a, [ScriptVar]
-	ret
 
 CheckCanLearnMoveTutorMove: ; 492b9
 	ld hl, .MenuDataHeader

@@ -38,12 +38,12 @@ Random::
 	push hl
 	ld h, d
 	ld a, e
-	rept 2
-		sla e
-		rl d
-		rl c
-		rl b
-	endr
+rept 2
+	sla e
+	rl d
+	rl c
+	rl b
+endr
 	xor e
 	ld e, a
 	ld a, h
@@ -90,16 +90,16 @@ UpdateDividerCounters::
 AdvanceRNGState::
 	ld hl, wRNGState
 	ld a, [hli]
-	ld b, a
+	ld b, a ; wRNGState[0]
 	ld a, [hli]
-	ld c, a
+	ld c, a ; wRNGState[1]
 	ld a, [hli]
-	ld d, a
+	ld d, a ; wRNGState[2]
 	ld a, [hli]
-	ld e, a
+	ld e, a ; wRNGState[3]
 	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+	ld l, [hl] ; wRNGCumulativeDividerPlus[1]
+	ld h, a ; wRNGCumulativeDividerPlus[0]
 	ld a, [rDIV]
 	rra
 	jr nc, .try_upper
@@ -132,12 +132,12 @@ AdvanceRNGState::
 	ld a, b
 .done
 	ld hl, wRNGState
-	ld [hli], a
+	ld [hli], a ; wRNGState[0]
 	ld a, c
-	ld [hli], a
+	ld [hli], a ; wRNGState[1]
 	ld a, d
-	ld [hli], a
-	ld [hl], e
+	ld [hli], a ; wRNGState[2]
+	ld [hl], e ; wRNGState[3]
 	ret
 
 
