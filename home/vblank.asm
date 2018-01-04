@@ -66,10 +66,6 @@ VBlank0:: ; 2b1
 	ld hl, hVBlankCounter
 	inc [hl]
 
-	; advance random variables
-	call UpdateDividerCounters
-;	call AdvanceRNGState
-
 	ld a, [hROMBank]
 	ld [hROMBankBackup], a
 
@@ -107,6 +103,9 @@ VBlank0:: ; 2b1
 	call hPushOAM
 .done_oam
 
+	; advance random variables
+	call UpdateDividerCounters
+	call AdvanceRNGState
 
 	; vblank-sensitive operations are done
 
