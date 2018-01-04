@@ -67,17 +67,8 @@ VBlank0:: ; 2b1
 	inc [hl]
 
 	; advance random variables
-	ld a, [rDIV]
-	ld b, a
-	ld a, [hRandomAdd]
-	adc b
-	ld [hRandomAdd], a
-
-	ld a, [rDIV]
-	ld b, a
-	ld a, [hRandomSub]
-	sbc b
-	ld [hRandomSub], a
+	call UpdateDividerCounters
+	call AdvanceRNGState
 
 	ld a, [hROMBank]
 	ld [hROMBankBackup], a

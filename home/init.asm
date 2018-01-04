@@ -95,6 +95,15 @@ Init:: ; 17d
 	call ClearSprites
 	call ClearsScratch
 
+; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
+	ld hl, wRNGState
+	ld a, "R"
+	ld [hli], a
+	ld a, "N"
+	ld [hli], a
+	ld a, "G"
+	ld [hli], a
+	ld [hl], "!"
 
 	ld a, BANK(LoadPushOAM)
 	rst Bankswitch
