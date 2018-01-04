@@ -6136,13 +6136,6 @@ CheckUsableMoves:
 	xor a
 	ret
 
-FarCheckUsableMove:
-; Reads/writes to b instead of a for below
-	ld a, b
-	call CheckUsableMove
-	ld b, a
-	ret
-
 CheckUsableMove:
 ; Check if move a in the move list is usable. Returns z if usable
 ; Note that the first move in the list is move 0, not move 1.

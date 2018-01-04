@@ -12,19 +12,14 @@ AIChooseMove: ; 440ce
 	ret nz
 
 	; Default score is 20, unusable moves are set to 80.
+	call SetEnemyTurn
 	ld hl, Buffer1 + 3
 	ld a, 4
 .unusable_loop
 	dec a
 	push af
 	push hl
-	ld b, a
-	ld a, [hBattleTurn]
-	push af
-	call SetEnemyTurn
-	farcall FarCheckUsableMove
-	pop af
-	ld [hBattleTurn], a
+	farcall CheckUsableMove
 	ld a, 20
 	jr z, .unusable_next
 	ld a, 80
