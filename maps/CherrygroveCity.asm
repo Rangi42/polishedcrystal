@@ -80,7 +80,6 @@ CherrygroveCityGuideGent:
 	playsound SFX_ENTER_DOOR
 	disappear CHERRYGROVECITY_GRAMPS
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	dotrigger $2
 	waitsfx
 	end
