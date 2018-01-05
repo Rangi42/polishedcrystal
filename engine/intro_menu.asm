@@ -160,12 +160,12 @@ ResetWRAM: ; 5ba7
 	xor a
 	call ByteFill
 
+	call Random
 	ld a, [rLY]
 	ld [hSecondsBackup], a
 	call DelayFrame
 	ld a, [hRandomSub]
 	ld [PlayerID], a
-
 	ld a, [rLY]
 	ld [hSecondsBackup], a
 	call DelayFrame
