@@ -339,6 +339,11 @@ INCLUDE "audio/music/go/wildbattle.asm"
 INCLUDE "audio/music/go/gymbattle.asm"
 
 
+SECTION "Stadium Music", ROMX
+
+INCLUDE "audio/music/stadium/mewtwobattle.asm"
+
+
 SECTION "Movie 2000 Music", ROMX
 
 INCLUDE "audio/music/m02/lugiassong.asm"

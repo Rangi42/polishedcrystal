@@ -1311,13 +1311,14 @@ DiveBallMultiplier:
 .water
 	ld a, b
 	srl a
+rept 3
 	add b
-	add b
-	add b
-	ld b, a
-	ret nc
-	ld b, $ff
+	jr c, .max
+endr
 	ret
+
+.max
+	ld b, $ff
 	ret
 
 QuickBallMultiplier:
@@ -1356,11 +1357,13 @@ DuskBallMultiplier:
 .dusk
 	ld a, b
 	srl a
+rept 3
 	add b
-	add b
-	add b
-	ld b, a
-	ret nc
+	jr c, .max
+endr
+	ret
+
+.max
 	ld b, $ff
 	ret
 

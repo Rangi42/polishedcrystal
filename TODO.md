@@ -161,7 +161,6 @@ Some of these may never be added; they're just suggestions.
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
 * More Pokémon
    * Rewrite Eggs to use the IsEgg bitflag instead of $fe
-   * Rewrite Bill's PC to not use $ff as a terminator
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
@@ -226,11 +225,8 @@ Some of these may never be added; they're just suggestions.
       * Pawniard → Bisharp
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
-* More moves
-   * Triple Kick is replacable (learned by Hitmontop, Hitmonlee, and Dodrio)
-   * Make Double Kick hit 2–5 times with 20 power
 * More music
-   * PGo Battle! Legendary Raid (for Mewtwo)
+   * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
    * R/S/E Route 120
