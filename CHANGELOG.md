@@ -174,6 +174,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Fix: Explosion and Self-Destruct do not halve Defense.
 * Fix: Quick Ball catch rate multiplier is 5 on the first turn.
 * Fix: Minimize raises evasion by two stages.
+* Fix: Gen 7 critical hit chances (1/24, 1/8, 1/2, 1/1)
 * Fix: Munchlax, Magnezone, and Tangrowth have their relatives' cries.
 * Fix: Game console names in room.
 * Fix: Yellow Forest gate clerk does not face you.
