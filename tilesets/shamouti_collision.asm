@@ -214,3 +214,5 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll LEDGE_DOWN, FLOOR, WALL, FLOOR
 	tilecoll FLOOR, LEDGE_DOWN, FLOOR, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
