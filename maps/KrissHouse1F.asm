@@ -163,9 +163,8 @@ MomScript:
 
 MomIntroText:
 if DEF(DEBUG)
-	text "Oh, <PLAYER>!"
-	line "Take this debug"
-	cont "cheat stuff!"
+	text "Don't forget to use"
+	line "your debug radio!"
 	done
 else
 	text "Oh, <PLAYER>!"
