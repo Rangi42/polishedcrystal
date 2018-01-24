@@ -167,8 +167,7 @@
 	const SPRITE_WII ; a4
 	const SPRITE_SILVER_TROPHY ; a5
 	const SPRITE_GOLD_TROPHY ; a6
-
-	const SPRITE_UNUSED ; a7
+	const SPRITE_POKECOM_NEWS ; a7
 
 SPRITE_POKEMON EQU const_value
 	const SPRITE_BULBASAUR ; a8
@@ -271,6 +270,7 @@ const_value SET 1
 	const STILL_SPRITE
 	const MON_SPRITE
 	const BIG_GYARADOS_SPRITE
+	const POKECOM_NEWS_SPRITE
 
 ; sprite header fields
 	const_def
@@ -338,6 +338,7 @@ const_value SET PAL_OW_SILVER
 	const SPRITEMOVEDATA_BIG_GYARADOS         ; 21
 	const SPRITEMOVEDATA_STANDING_DOWN_FLIP   ; 22
 	const SPRITEMOVEDATA_STANDING_UP_FLIP     ; 23
+	const SPRITEMOVEDATA_POKECOM_NEWS         ; 24
 NUM_SPRITEMOVEDATA EQU const_value
 SPRITEMOVEDATA_FIELDS EQU 6
 
@@ -368,6 +369,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_PUDDLE                ; 15
 	const SPRITEMOVEFN_BIG_GYARADOS          ; 16
 	const SPRITEMOVEFN_STANDING_FLIP         ; 17
+	const SPRITEMOVEFN_POKECOM_NEWS          ; 18
 
 ; sprite step types
 ; see engine/map_objects.asm:StepTypesJumptable
@@ -416,6 +418,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const PERSON_ACTION_SKYFALL       ; 10
 	const PERSON_ACTION_BIG_GYARADOS  ; 11
 	const PERSON_ACTION_STAND_FLIP    ; 12
+	const PERSON_ACTION_POKECOM_NEWS  ; 13
 
 ; see engine/facings.asm:Facings
 	const_def
@@ -457,6 +460,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_BIG_GYARADOS_2 ; 23
 	const FACING_STEP_DOWN_FLIP ; 24
 	const FACING_STEP_UP_FLIP   ; 25
+	const FACING_POKECOM_NEWS   ; 26
 
 	const_def
 	const SPRITEANIMSTRUCT_INDEX           ; 0

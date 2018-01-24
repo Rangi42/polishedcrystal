@@ -467,7 +467,7 @@ BigOnixSprite:
 	sprite_header BigOnixSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
 BigGyaradosSprite:
-; sprite_header BigGyaradosSpriteGFX, 4, BIG_GYARADOS_SPRITE, PAL_OW_RED
+; sprite_header BigGyaradosSpriteGFX, !, BIG_GYARADOS_SPRITE, PAL_OW_RED
 	dw BigGyaradosSpriteGFX
 	db 15 tiles, BANK(BigGyaradosSpriteGFX)
 	db BIG_GYARADOS_SPRITE, PAL_OW_RED
@@ -510,3 +510,9 @@ SilverTrophySprite:
 
 GoldTrophySprite:
 	sprite_header GoldTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
+
+PokecomNewsSprite:
+; sprite_header PokecomNewsSpriteGFX, !, POKECOM_NEWS_SPRITE, PAL_OW_ROCK
+	dw PokecomNewsSpriteGFX
+	db 6 tiles, BANK(PokecomNewsSpriteGFX)
+	db POKECOM_NEWS_SPRITE, PAL_OW_ROCK

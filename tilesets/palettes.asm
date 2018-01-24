@@ -1873,6 +1873,16 @@ LoadSpecialMapOBPalette:
 
 .not_lyras_house_2f:
 	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_POKECOM_CENTER_1F
+	jr nz, .not_pokecom_center_1f
+	ld a, [MapNumber]
+	cp MAP_GOLDENROD_POKECOM_CENTER_1F
+	jr nz, .not_pokecom_center_1f
+	ld hl, PokecomCenter1FOBPalette_Rock
+	jr .load_rock_palette
+
+.not_pokecom_center_1f
+	ld a, [MapGroup]
 	cp GROUP_MOUNT_MOON_SQUARE
 	jr nz, .not_mount_moon_square
 	ld a, [MapNumber]
@@ -1948,6 +1958,16 @@ if !DEF(MONOCHROME)
 	RGB 30, 28, 26
 	RGB 30, 28, 02
 	RGB 08, 14, 24
+	RGB 07, 07, 07
+else
+	MONOCHROME_RGB_FOUR
+endc
+
+PokecomCenter1FOBPalette_Rock:
+if !DEF(MONOCHROME)
+	RGB 30, 28, 26
+	RGB 30, 28, 26
+	RGB 11, 13, 31
 	RGB 07, 07, 07
 else
 	MONOCHROME_RGB_FOUR

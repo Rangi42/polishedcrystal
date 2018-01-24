@@ -14,7 +14,7 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 16
+.Signposts: db 17
 	signpost 7, 11, SIGNPOST_READ, PokemonJournalWhitneyScript
 	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
 	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
@@ -31,8 +31,9 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	signpost 8, 29, SIGNPOST_LEFT, NewsMachineScript
 	signpost 9, 29, SIGNPOST_LEFT, NewsMachineScript
 	signpost 10, 29, SIGNPOST_LEFT, NewsMachineScript
+	signpost 3, 24, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
 
-.PersonEvents: db 12
+.PersonEvents: db 13
 	person_event SPRITE_BOWING_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
 	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
 	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
@@ -45,6 +46,7 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
 	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
 	person_event SPRITE_SLOWPOKETAIL, 9, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
+	person_event SPRITE_POKECOM_NEWS, 3, 24, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokecomNewsSignScript, -1
 
 NurseScript_0x60f91:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
@@ -204,9 +206,8 @@ WonderTradeGoodbyeText:
 	done
 
 InfoSignScript:
-	jumptext UnknownText_0x62370
+	thistext
 
-UnknownText_0x62370:
 	text "#Com Center"
 	line "1F Information"
 
@@ -220,11 +221,13 @@ UnknownText_0x62370:
 	line "#mon News"
 	done
 
+PokecomNewsSignScript:
+	end
+
 PokemonJournalWhitneyScript:
 	setflag ENGINE_READ_WHITNEY_JOURNAL
-	jumptext PokemonJournalWhitneyText
+	thistext
 
-PokemonJournalWhitneyText:
 	text "#mon Journal"
 
 	para "Special Feature:"
@@ -236,9 +239,8 @@ PokemonJournalWhitneyText:
 	done
 
 NewsMachineScript:
-	jumptext UnknownText_0x623c7
+	thistext
 
-UnknownText_0x623c7:
 	text "It's a #mon"
 	line "News Machine!"
 

@@ -1,4 +1,3 @@
-
 GoldenrodPokeComCenterOffice_MapScriptHeader:
 
 .MapTriggers: db 0
@@ -13,15 +12,19 @@ GoldenrodPokeComCenterOffice_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 3
+.Signposts: db 4
 	signpost 2, 3, SIGNPOST_JUMPTEXT, RangiComputerText
 	signpost 2, 6, SIGNPOST_JUMPTEXT, LunaComputerText
 	signpost 5, 6, SIGNPOST_UP, AizawaComputerScript
+	signpost 2, 4, SIGNPOST_READ, RangiKeyboardScript
 
 .PersonEvents: db 3
 	person_event SPRITE_SCIENTIST_F, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
 	person_event SPRITE_COOLTRAINER_F, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
 	person_event SPRITE_PHARMACIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
+
+const_value set 1
+	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
 AdminRangiText:
 	text "Rangi: I hope"
@@ -93,4 +96,15 @@ AizawaComputerScript:
 
 	para "half-drawn trop-"
 	line "ical island."
+	done
+
+RangiKeyboardScript:
+	spriteface GOLDENRODPOKECOMCENTEROFFICE_RANGI, UP
+	showemote EMOTE_SHOCK, GOLDENRODPOKECOMCENTEROFFICE_RANGI, 10
+	thistext
+
+	text "Rangi: Hey! If you"
+	line "want to hack the"
+	cont "game, use your"
+	cont "own computer!"
 	done

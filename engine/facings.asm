@@ -37,6 +37,7 @@ Facings: ; 4049
 	dw FacingBigGyarados2 ; FACING_BIG_GYARADOS_2
 	dw FacingStepDownFlip ; FACING_STEP_DOWN_FLIP
 	dw FacingStepUpFlip   ; FACING_STEP_UP_FLIP
+	dw FacingPokecomNews  ; FACING_POKECOM_NEWS
 FacingsEnd: dw 0
 
 NUM_FACINGS EQU (FacingsEnd - Facings) / 2
@@ -328,3 +329,12 @@ FacingStepUpFlip:
 	db  0,  8, 0 | X_FLIP, $04
 	db  8,  0, 2 | X_FLIP, $07
 	db  8,  8, 2 | X_FLIP, $06
+
+FacingPokecomNews:
+	db 6 ; #
+	db  4, -16, 0, $00
+	db  4,  -8, 0, $01
+	db  4,   0, 0, $02
+	db 12, -16, 0, $03
+	db 12,  -8, 0, $04
+	db 12,   0, 0, $05

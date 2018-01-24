@@ -512,6 +512,8 @@ GetSpriteLength: ; 14386
 	jr z, .OneDirection
 	cp BIG_GYARADOS_SPRITE
 	jr z, .BigGyarados
+	cp POKECOM_NEWS_SPRITE
+	jr z, .PokecomNews
 ; MON_SPRITE
 	ld a, 8
 	ret
@@ -526,6 +528,10 @@ GetSpriteLength: ; 14386
 
 .BigGyarados:
 	ld a, 16
+	ret
+
+.PokecomNews:
+	ld a, 6
 	ret
 ; 1439b
 
