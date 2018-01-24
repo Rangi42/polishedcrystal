@@ -41,6 +41,10 @@ SetFacingEmote: ; 4582 emote
 	jr SetFixedFacing
 ; 4589
 
+SetFacingPokecomNews:
+	ld a, FACING_POKECOM_NEWS
+	jr SetFixedFacing
+
 SetFacingBigDoll: ; 45c5
 	ld a, [VariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]
 	cp SPRITE_BIG_ONIX
@@ -58,13 +62,6 @@ SetFacingFish: ; 456e
 	add FACING_FISH_DOWN
 	jr SetFixedFacing
 ; 457b
-
-SetFacingPokecomNews:
-	call GetSpriteDirection
-	rrca
-	rrca
-	add FACING_POKECOM_NEWS_DOWN
-	jr SetFixedFacing
 
 SetFacingStandFlip:
 	call GetSpriteDirection

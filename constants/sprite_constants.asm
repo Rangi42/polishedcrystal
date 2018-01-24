@@ -337,8 +337,7 @@ const_value SET PAL_OW_SILVER
 	const SPRITEMOVEDATA_BIG_GYARADOS         ; 21
 	const SPRITEMOVEDATA_STANDING_DOWN_FLIP   ; 22
 	const SPRITEMOVEDATA_STANDING_UP_FLIP     ; 23
-	const SPRITEMOVEDATA_POKECOM_NEWS_DOWN    ; 24
-	const SPRITEMOVEDATA_POKECOM_NEWS_UP      ; 25
+	const SPRITEMOVEDATA_POKECOM_NEWS         ; 24
 NUM_SPRITEMOVEDATA EQU const_value
 SPRITEMOVEDATA_FIELDS EQU 6
 
@@ -422,46 +421,45 @@ SPRITEMOVEDATA_FIELDS EQU 6
 
 ; see engine/facings.asm:Facings
 	const_def
-	const FACING_STEP_DOWN_0       ; 00
-	const FACING_STEP_DOWN_1       ; 01
-	const FACING_STEP_DOWN_2       ; 02
-	const FACING_STEP_DOWN_3       ; 03
-	const FACING_STEP_UP_0         ; 04
-	const FACING_STEP_UP_1         ; 05
-	const FACING_STEP_UP_2         ; 06
-	const FACING_STEP_UP_3         ; 07
-	const FACING_STEP_LEFT_0       ; 08
-	const FACING_STEP_LEFT_1       ; 09
-	const FACING_STEP_LEFT_2       ; 0a
-	const FACING_STEP_LEFT_3       ; 0b
-	const FACING_STEP_RIGHT_0      ; 0c
-	const FACING_STEP_RIGHT_1      ; 0d
-	const FACING_STEP_RIGHT_2      ; 0e
-	const FACING_STEP_RIGHT_3      ; 0f
-	const FACING_FISH_DOWN         ; 10
-	const FACING_FISH_UP           ; 11
-	const FACING_FISH_LEFT         ; 12
-	const FACING_FISH_RIGHT        ; 13
-	const FACING_EMOTE             ; 14
-	const FACING_SHADOW            ; 15
-	const FACING_BIG_DOLL_ASYM     ; 16
-	const FACING_BIG_DOLL_SYM      ; 17
-	const FACING_WEIRD_TREE_0      ; 18
-	const FACING_WEIRD_TREE_1      ; 19
-	const FACING_WEIRD_TREE_2      ; 1a
-	const FACING_WEIRD_TREE_3      ; 1b
-	const FACING_BOULDER_DUST_1    ; 1c
-	const FACING_BOULDER_DUST_2    ; 1d
-	const FACING_GRASS_1           ; 1e
-	const FACING_GRASS_2           ; 1f
-	const FACING_SPLASH_1          ; 20
-	const FACING_SPLASH_2          ; 21
-	const FACING_BIG_GYARADOS_1    ; 22
-	const FACING_BIG_GYARADOS_2    ; 23
-	const FACING_STEP_DOWN_FLIP    ; 24
-	const FACING_STEP_UP_FLIP      ; 25
-	const FACING_POKECOM_NEWS_DOWN ; 26
-	const FACING_POKECOM_NEWS_UP   ; 26
+	const FACING_STEP_DOWN_0    ; 00
+	const FACING_STEP_DOWN_1    ; 01
+	const FACING_STEP_DOWN_2    ; 02
+	const FACING_STEP_DOWN_3    ; 03
+	const FACING_STEP_UP_0      ; 04
+	const FACING_STEP_UP_1      ; 05
+	const FACING_STEP_UP_2      ; 06
+	const FACING_STEP_UP_3      ; 07
+	const FACING_STEP_LEFT_0    ; 08
+	const FACING_STEP_LEFT_1    ; 09
+	const FACING_STEP_LEFT_2    ; 0a
+	const FACING_STEP_LEFT_3    ; 0b
+	const FACING_STEP_RIGHT_0   ; 0c
+	const FACING_STEP_RIGHT_1   ; 0d
+	const FACING_STEP_RIGHT_2   ; 0e
+	const FACING_STEP_RIGHT_3   ; 0f
+	const FACING_FISH_DOWN      ; 10
+	const FACING_FISH_UP        ; 11
+	const FACING_FISH_LEFT      ; 12
+	const FACING_FISH_RIGHT     ; 13
+	const FACING_EMOTE          ; 14
+	const FACING_SHADOW         ; 15
+	const FACING_BIG_DOLL_ASYM  ; 16
+	const FACING_BIG_DOLL_SYM   ; 17
+	const FACING_WEIRD_TREE_0   ; 18
+	const FACING_WEIRD_TREE_1   ; 19
+	const FACING_WEIRD_TREE_2   ; 1a
+	const FACING_WEIRD_TREE_3   ; 1b
+	const FACING_BOULDER_DUST_1 ; 1c
+	const FACING_BOULDER_DUST_2 ; 1d
+	const FACING_GRASS_1        ; 1e
+	const FACING_GRASS_2        ; 1f
+	const FACING_SPLASH_1       ; 20
+	const FACING_SPLASH_2       ; 21
+	const FACING_BIG_GYARADOS_1 ; 22
+	const FACING_BIG_GYARADOS_2 ; 23
+	const FACING_STEP_DOWN_FLIP ; 24
+	const FACING_STEP_UP_FLIP   ; 25
+	const FACING_POKECOM_NEWS   ; 26
 
 	const_def
 	const SPRITEANIMSTRUCT_INDEX           ; 0
