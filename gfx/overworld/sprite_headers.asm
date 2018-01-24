@@ -512,7 +512,4 @@ GoldTrophySprite:
 	sprite_header GoldTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
 PokecomNewsSprite:
-; sprite_header PokecomNewsSpriteGFX, !, POKECOM_NEWS_SPRITE, PAL_OW_ROCK
-	dw PokecomNewsSpriteGFX
-	db 6 tiles, BANK(PokecomNewsSpriteGFX)
-	db POKECOM_NEWS_SPRITE, PAL_OW_ROCK
+	sprite_header PokecomNewsSpriteGFX, 2, MON_SPRITE, PAL_OW_ROCK
