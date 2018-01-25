@@ -803,6 +803,9 @@ MapObjects::
 	map_object Map15
 	map_object Map16
 	map_object Map17
+	map_object Map18
+	map_object Map19
+	map_object Map20
 MapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS
