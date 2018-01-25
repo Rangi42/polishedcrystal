@@ -792,38 +792,38 @@ INCLUDE "data/maps/environment_colors.asm"
 
 TilesetBGPalette:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/bg.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
 elif DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/monochrome/bg.pal"
+INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
 else
-INCLUDE "tilesets/palettes/bg.pal"
+INCLUDE "gfx/tilesets/palettes/bg.pal"
 endc
 
 MapObjectPals:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/ob.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
 elif DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/monochrome/ob.pal"
+INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
 else
-INCLUDE "tilesets/palettes/ob.pal"
+INCLUDE "gfx/tilesets/palettes/ob.pal"
 endc
 
 RoofPals:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/roof.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
 elif DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/monochrome/roof.pal"
+INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
 else
-INCLUDE "tilesets/palettes/roof.pal"
+INCLUDE "gfx/tilesets/palettes/roof.pal"
 endc
 
 OvercastRoofPals:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/roof_overcast.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
 elif DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/monochrome/roof_overcast.pal"
+INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
 else
-INCLUDE "tilesets/palettes/roof_overcast.pal"
+INCLUDE "gfx/tilesets/palettes/roof_overcast.pal"
 endc
 
 

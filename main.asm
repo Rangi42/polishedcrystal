@@ -398,6 +398,11 @@ INCLUDE "event/safari_game.asm"
 INCLUDE "event/std_tiles.asm"
 
 
+SECTION "Roofs", ROMX
+
+INCLUDE "engine/mapgroup_roofs.asm"
+
+
 SECTION "Code 5", ROMX
 
 INCLUDE "engine/rtc.asm"
@@ -1384,7 +1389,7 @@ SECTION "Code 11", ROMX
 INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
 INCLUDE "event/celebi.asm"
-INCLUDE "tilesets/palettes.asm"
+INCLUDE "engine/tileset_palettes.asm"
 
 Special_MoveTutor: ; 4925b
 	call FadeToMenu
@@ -3997,7 +4002,7 @@ INCLUDE "audio/distorted_cries.asm"
 
 SECTION "Code 24", ROMX
 
-INCLUDE "tilesets/animations.asm"
+INCLUDE "engine/tileset_anims.asm"
 INCLUDE "engine/npctrade.asm"
 INCLUDE "engine/wonder_trade.asm"
 INCLUDE "event/mom_phone.asm"

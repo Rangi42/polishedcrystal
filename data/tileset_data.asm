@@ -1,11 +1,6 @@
 INCLUDE "includes.asm"
 
 
-SECTION "Roofs", ROMX
-
-INCLUDE "tilesets/roofs.asm"
-
-
 SECTION "Tileset Data 1", ROMX
 
 Tileset00GFX::
