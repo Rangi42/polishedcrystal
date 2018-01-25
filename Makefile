@@ -59,9 +59,9 @@ bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
 
 crystal_obj := \
-wram.o \
 main.o \
 home.o \
+ram.o \
 audio.o \
 audio/musicplayer.o \
 data/pokemon/dex_entries.o \
