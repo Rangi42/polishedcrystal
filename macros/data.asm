@@ -1,37 +1,39 @@
+; Constant data (db, dw, dl) macros
+
 dwb: MACRO
 	dw \1
 	db \2
-	ENDM
+ENDM
 
 dbw: MACRO
 	db \1
 	dw \2
-	ENDM
+ENDM
 
 dbbw: MACRO
 	db \1, \2
 	dw \3
-	ENDM
+ENDM
 
 dbbbw: MACRO
 	db \1, \2, \3
 	dw \4
-	ENDM
+ENDM
 
 dbww: MACRO
 	db \1
 	dw \2, \3
-	ENDM
+ENDM
 
 dbbww: MACRO
 	db \1, \2
 	dw \3, \4
-	ENDM
+ENDM
 
 dbbwww: MACRO
 	db \1, \2
 	dw \3, \4, \5
-	ENDM
+ENDM
 
 dn: MACRO
 	rept _NARG / 2
@@ -39,7 +41,7 @@ dn: MACRO
 	shift
 	shift
 	endr
-	ENDM
+ENDM
 
 dx: MACRO
 x = 8 * ((\1) - 1)
@@ -47,93 +49,63 @@ x = 8 * ((\1) - 1)
 	db ((\2) >> x) & $ff
 x = x + -8
 	endr
-	ENDM
+ENDM
 
 dt: MACRO ; three-byte (big-endian)
 	dx 3, \1
-	ENDM
+ENDM
 
 dd: MACRO ; four-byte (big-endian)
 	dx 4, \1
-	ENDM
+ENDM
 
 bigdw: MACRO ; big-endian word
 	dx 2, \1
-	ENDM
+ENDM
 
 dba: MACRO ; dbw bank, address
 	rept _NARG
 	dbw BANK(\1), \1
 	shift
 	endr
-	ENDM
+ENDM
 
 dab: MACRO ; dwb address, bank
 	rept _NARG
 	dwb \1, BANK(\1)
 	shift
 	endr
-	ENDM
+ENDM
 
 dbba: MACRO
 	db \1
 	dba \2
-	ENDM
+ENDM
 
 dbbba: MACRO
 	db \1, \2
 	dba \3
-	ENDM
+ENDM
 
-
-percent EQUS "* $ff / 100"
-
-tiles EQUS "* $10"
-tile EQUS "+ $10 *"
-
-palettes EQUS "* 8"
-palette EQUS "+ $8 *"
-
-
-RGB: MACRO
-	dw ((\3) << 10) + ((\2) << 5) + (\1)
-	ENDM
-
-palred EQUS "$0001 *"
-palgreen EQUS "$0020 *"
-palblue EQUS "$0400 *"
-
-
-; pic animations
-frame: MACRO
-	db \1
-x = \2
-IF _NARG > 2
-rept _NARG +- 2
-x = x | (1 << (\3 + 1))
-	shift
-endr
+dbpixel: MACRO
+if _NARG >= 4
+	db \1 * 8 + \3, \2 * 8 + \4
+else
+	db \1 * 8, \2 * 8
 endc
-	db x
-	ENDM
-setrepeat: MACRO
-	db $fe
-	db \1
-	ENDM
-dorepeat: MACRO
-	db $fd
-	db \1
-	ENDM
-endanim: MACRO
-	db $ff
-	ENDM
+endm
 
-delanim: MACRO
-	db $fc
-	ENDM
-dorestart: MACRO
-	db $fe
-	ENDM
+dsprite: MACRO
+	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
+endm
+
+
+bcd: MACRO
+	rept _NARG
+	dn ((\1) % 100) / 10, (\1) % 10
+	shift
+	endr
+ENDM
 
 
 sine_wave: MACRO
@@ -146,28 +118,6 @@ x = 0
 x = x + (\1) * $40000
 	endr
 ENDM
-
-
-bcd: MACRO
-	rept _NARG
-	dn ((\1) % 100) / 10, (\1) % 10
-	shift
-	endr
-ENDM
-
-
-dbpixel: MACRO
-if _NARG >= 4
-	db \1 * 8 + \3, \2 * 8 + \4
-else
-	db \1 * 8, \2 * 8
-endc
-endm
-
-
-dsprite: MACRO
-	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
-endm
 
 
 genders: MACRO

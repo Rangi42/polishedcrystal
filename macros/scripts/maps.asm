@@ -3,6 +3,35 @@ map: MACRO
 ENDM
 
 
+warp_def: macro
+	db \1 ; y
+	db \2 ; x
+	db \3 ; warp_to
+	map \4 ; map
+	endm
+
+signpost: macro
+	db \1 ; y
+	db \2 ; x
+	db \3 ; function
+if \3 == SIGNPOST_JUMPSTD
+if _NARG == 5
+	db \4, \5 ; stdscript
+else
+	db \4, 0 ; stdscript
+endc
+else
+	dw \4 ; pointer
+endc
+	endm
+
+xy_trigger: macro
+	db \1 ; number
+	db \2 ; y
+	db \3 ; x
+	dw \4 ; script
+	endm
+
 person_event: macro
 PERSON_EVENT_NARG = _NARG
 	db \1 ; sprite
@@ -77,51 +106,19 @@ mart_clerk_event: macro
 	person_event SPRITE_CLERK, \1, \2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, \3, \4, -1
 endm
 
-signpost: macro
-	db \1 ; y
-	db \2 ; x
-	db \3 ; function
-if \3 == SIGNPOST_JUMPSTD
-if _NARG == 5
-	db \4, \5 ; stdscript
-else
-	db \4, 0 ; stdscript
-endc
-else
-	dw \4 ; pointer
-endc
-	endm
 
-xy_trigger: macro
-	db \1 ; number
-	db \2 ; y
-	db \3 ; x
-	dw \4 ; script
-	endm
-
-warp_def: macro
-	db \1 ; y
-	db \2 ; x
-	db \3 ; warp_to
-	map \4 ; map
-	endm
-
-
-mapgroup: MACRO
-GROUP_\1 EQU const_value
-	enum MAP_\1
-\1_HEIGHT EQU \2
-\1_WIDTH EQU \3
+trainer: MACRO
+	; flag, group, id, seen text, win text, lost text, talk-again text
+	dw \1
+	db \2, \3
+	dw \4, \5, \6, \7
 ENDM
 
-newgroup: MACRO
-const_value = const_value + 1
-	enum_start 1
-ENDM
-
-elevfloor: MACRO
-	db \1, \2
-	map \3
+generictrainer: MACRO
+	; flag, group, id, seen text, win text
+	dw \1
+	db \2, \3
+	dw \4, \5
 ENDM
 
 itemball: MACRO
@@ -135,6 +132,11 @@ endm
 tmhmball: MACRO
 	db \1
 endm
+
+elevfloor: MACRO
+	db \1, \2
+	map \3
+ENDM
 
 stonetable: MACRO
 	db \1, \2

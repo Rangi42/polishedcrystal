@@ -1,5 +1,9 @@
 INCLUDE "constants.asm"
 
+tilecoll: MACRO
+	db COLL_\1, COLL_\2, COLL_\3, COLL_\4
+ENDM
+
 
 SECTION "Tileset Data 1", ROMX
 

@@ -1,23 +1,23 @@
 INCLUDE "macros/enum.asm"
-INCLUDE "macros/basestats.asm"
-
-INCLUDE "macros/event.asm"
-INCLUDE "macros/sound.asm"
-INCLUDE "macros/text.asm"
-INCLUDE "macros/charmap.asm"
-INCLUDE "macros/move_effect.asm"
-INCLUDE "macros/move_anim.asm"
-INCLUDE "macros/movement.asm"
-INCLUDE "macros/map.asm"
 INCLUDE "macros/predef.asm"
 INCLUDE "macros/rst.asm"
-INCLUDE "macros/trainer.asm"
-INCLUDE "macros/trade_anim.asm"
-INCLUDE "macros/tilesets.asm"
-
 INCLUDE "macros/data.asm"
 INCLUDE "macros/code.asm"
+INCLUDE "macros/gfx.asm"
+INCLUDE "macros/coords.asm"
+
+INCLUDE "macros/scripts/audio.asm"
+INCLUDE "macros/scripts/maps.asm"
+INCLUDE "macros/scripts/events.asm"
+INCLUDE "macros/scripts/text.asm"
+INCLUDE "macros/scripts/movement.asm"
+INCLUDE "macros/scripts/battle_commands.asm"
+INCLUDE "macros/scripts/battle_anims.asm"
+INCLUDE "macros/scripts/trade_anims.asm"
+INCLUDE "macros/scripts/gfx_anims.asm"
 
 if DEF(MONOCHROME)
 INCLUDE "macros/monochrome.asm"
 endc
+
+percent EQUS "* $ff / 100"

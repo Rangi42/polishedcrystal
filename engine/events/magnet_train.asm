@@ -260,19 +260,19 @@ SetMagnetTrainPals: ; 8cdc3
 
 	; trees
 	hlbgcoord 0, 0
-	ld bc, 4 bgrows
+	ld bc, 4 * BG_MAP_WIDTH
 	ld a, PAL_BG_GREEN
 	call ByteFill
 
 	; train
 	hlbgcoord 0, 4
-	ld bc, 10 bgrows
+	ld bc, 10 * BG_MAP_WIDTH
 	xor a ; PAL_BG_GRAY
 	call ByteFill
 
 	; more trees
 	hlbgcoord 0, 14
-	ld bc, 4 bgrows
+	ld bc, 4 * BG_MAP_WIDTH
 	ld a, PAL_BG_GREEN
 	call ByteFill
 
