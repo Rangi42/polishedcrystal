@@ -166,8 +166,8 @@ INCLUDE "engine/init_options.asm"
 INCLUDE "engine/learn.asm"
 INCLUDE "engine/math.asm"
 INCLUDE "engine/npc_movement.asm"
-INCLUDE "event/happiness_egg.asm"
-INCLUDE "event/special.asm"
+INCLUDE "engine/events/happiness_egg.asm"
+INCLUDE "engine/events/special.asm"
 INCLUDE "data/items/attributes.asm"
 
 
@@ -185,7 +185,7 @@ SECTION "Code 3", ROMX
 INCLUDE "engine/specials.asm"
 INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
-INCLUDE "event/overworld.asm"
+INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
 INCLUDE "engine/player_step.asm"
 INCLUDE "engine/anim_hp_bar.asm"
@@ -385,17 +385,17 @@ INCLUDE "engine/pack.asm"
 INCLUDE "engine/time.asm"
 INCLUDE "engine/tmhm.asm"
 INCLUDE "engine/naming_screen.asm"
-INCLUDE "event/itemball.asm"
+INCLUDE "engine/events/itemball.asm"
 INCLUDE "engine/healmachineanim.asm"
-INCLUDE "event/whiteout.asm"
-INCLUDE "event/forced_movement.asm"
-INCLUDE "event/itemfinder.asm"
+INCLUDE "engine/events/whiteout.asm"
+INCLUDE "engine/events/forced_movement.asm"
+INCLUDE "engine/events/itemfinder.asm"
 INCLUDE "engine/startmenu.asm"
 INCLUDE "engine/selectmenu.asm"
-INCLUDE "event/elevator.asm"
-INCLUDE "event/bug_contest.asm"
-INCLUDE "event/safari_game.asm"
-INCLUDE "event/std_tiles.asm"
+INCLUDE "engine/events/elevator.asm"
+INCLUDE "engine/events/bug_contest.asm"
+INCLUDE "engine/events/safari_game.asm"
+INCLUDE "engine/events/std_tiles.asm"
 
 
 SECTION "Roofs", ROMX
@@ -415,15 +415,15 @@ INCLUDE "engine/pokecenter_pc.asm"
 INCLUDE "engine/mart.asm"
 INCLUDE "engine/money.asm"
 INCLUDE "data/items/marts.asm"
-INCLUDE "event/mom.asm"
-INCLUDE "event/daycare.asm"
+INCLUDE "engine/events/mom.asm"
+INCLUDE "engine/events/daycare.asm"
 INCLUDE "engine/breeding.asm"
 
 
 SECTION "Code 6", ROMX
 
 INCLUDE "engine/clock_reset.asm"
-INCLUDE "event/move_reminder.asm"
+INCLUDE "engine/events/move_reminder.asm"
 
 
 SECTION "Code 7", ROMX
@@ -433,7 +433,7 @@ INCLUDE "engine/scrolling_menu.asm"
 INCLUDE "engine/switch_items.asm"
 INCLUDE "engine/menu.asm"
 INCLUDE "engine/mon_menu.asm"
-INCLUDE "battle/menu.asm"
+INCLUDE "engine/battle/menu.asm"
 INCLUDE "engine/buy_sell_toss.asm"
 INCLUDE "engine/trainer_card.asm"
 INCLUDE "engine/prof_oaks_pc.asm"
@@ -818,11 +818,11 @@ INCLUDE "engine/link.asm"
 SECTION "Code 9", ROMX
 
 INCLUDE "data/battle/music.asm"
-INCLUDE "battle/trainer_huds.asm"
-INCLUDE "battle/ai/redundant.asm"
-INCLUDE "event/move_deleter.asm"
+INCLUDE "engine/battle/trainer_huds.asm"
+INCLUDE "engine/battle/ai/redundant.asm"
+INCLUDE "engine/events/move_deleter.asm"
 INCLUDE "engine/tmhm2.asm"
-INCLUDE "event/pokerus.asm"
+INCLUDE "engine/events/pokerus.asm"
 INCLUDE "data/trainers/class_names.asm"
 INCLUDE "data/moves/descriptions.asm"
 
@@ -1006,7 +1006,7 @@ SECTION "Code 10", ROMX
 INCLUDE "engine/mail.asm"
 INCLUDE "engine/fruit_trees.asm"
 INCLUDE "engine/hidden_grottoes.asm"
-INCLUDE "battle/ai/move.asm"
+INCLUDE "engine/battle/ai/move.asm"
 
 AnimateDexSearchSlowpoke: ; 441cf
 	ld hl, .FrameIDs
@@ -1388,7 +1388,7 @@ SECTION "Code 11", ROMX
 
 INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
-INCLUDE "event/celebi.asm"
+INCLUDE "engine/events/celebi.asm"
 INCLUDE "engine/tileset_palettes.asm"
 
 Special_MoveTutor: ; 4925b
@@ -2831,7 +2831,7 @@ ResetDisplayBetweenHallOfFameMons: ; 4e906
 	ld [rSVBK], a
 	ret
 
-INCLUDE "battle/sliding_intro.asm"
+INCLUDE "engine/battle/sliding_intro.asm"
 
 CheckBattleEffects: ; 4ea44
 ; Return carry if battle scene is turned off.
@@ -2846,13 +2846,13 @@ CheckBattleEffects: ; 4ea44
 
 INCLUDE "engine/bsod.asm"
 
-INCLUDE "event/stats_judge.asm"
+INCLUDE "engine/events/stats_judge.asm"
 
-INCLUDE "event/poisonstep.asm"
-INCLUDE "event/squirtbottle.asm"
-INCLUDE "event/card_key.asm"
-INCLUDE "event/basement_key.asm"
-INCLUDE "event/sacred_ash.asm"
+INCLUDE "engine/events/poisonstep.asm"
+INCLUDE "engine/events/squirtbottle.asm"
+INCLUDE "engine/events/card_key.asm"
+INCLUDE "engine/events/basement_key.asm"
+INCLUDE "engine/events/sacred_ash.asm"
 
 
 SECTION "Code 13", ROMX
@@ -3915,7 +3915,7 @@ INCLUDE "data/pokemon/names.asm"
 
 SECTION "Code 14", ROMX
 
-INCLUDE "battle/abilities.asm"
+INCLUDE "engine/battle/abilities.asm"
 INCLUDE "data/trainers/final_text.asm"
 INCLUDE "engine/player_movement.asm"
 INCLUDE "engine/engine_flags.asm"
@@ -3925,21 +3925,21 @@ INCLUDE "data/text/battle.asm"
 
 SECTION "Code 15", ROMX
 
-INCLUDE "battle/anim_gfx.asm"
-INCLUDE "event/halloffame.asm"
+INCLUDE "engine/battle/anim_gfx.asm"
+INCLUDE "engine/events/halloffame.asm"
 INCLUDE "data/battle/abilities.asm"
 
 
 SECTION "Code 16", ROMX
 
 INCLUDE "engine/player_gfx.asm"
-INCLUDE "event/kurt.asm"
-INCLUDE "event/unown.asm"
-INCLUDE "event/buena.asm"
-INCLUDE "event/movesets.asm"
-INCLUDE "event/battle_tower/battle_tower.asm"
-INCLUDE "event/battle_tower/trainer_text.asm"
-INCLUDE "event/item_maniacs.asm"
+INCLUDE "engine/events/kurt.asm"
+INCLUDE "engine/events/unown.asm"
+INCLUDE "engine/events/buena.asm"
+INCLUDE "engine/events/movesets.asm"
+INCLUDE "engine/events/battle_tower/battle_tower.asm"
+INCLUDE "engine/events/battle_tower/trainer_text.asm"
+INCLUDE "engine/events/item_maniacs.asm"
 
 
 SECTION "Code 17", ROMX
@@ -3948,8 +3948,8 @@ INCLUDE "engine/timeofdaypals.asm"
 INCLUDE "engine/battle_start.asm"
 INCLUDE "engine/sprites.asm"
 INCLUDE "engine/mon_icons.asm"
-INCLUDE "event/field_moves.asm"
-INCLUDE "event/magnet_train.asm"
+INCLUDE "engine/events/field_moves.asm"
+INCLUDE "engine/events/magnet_train.asm"
 INCLUDE "data/pokemon/menu_icon_pointers.asm"
 INCLUDE "data/pokemon/menu_icons.asm"
 
@@ -3992,11 +3992,11 @@ INCLUDE "engine/billspc.asm"
 
 SECTION "Code 23", ROMX
 
-INCLUDE "battle/hidden_power.asm"
-INCLUDE "battle/misc.asm"
+INCLUDE "engine/battle/hidden_power.asm"
+INCLUDE "engine/battle/misc.asm"
 INCLUDE "engine/unowndex.asm"
-INCLUDE "event/magikarp.asm"
-INCLUDE "event/name_rater.asm"
+INCLUDE "engine/events/magikarp.asm"
+INCLUDE "engine/events/name_rater.asm"
 INCLUDE "audio/distorted_cries.asm"
 
 
@@ -4005,14 +4005,14 @@ SECTION "Code 24", ROMX
 INCLUDE "engine/tileset_anims.asm"
 INCLUDE "engine/npctrade.asm"
 INCLUDE "engine/wonder_trade.asm"
-INCLUDE "event/mom_phone.asm"
+INCLUDE "engine/events/mom_phone.asm"
 
 
 SECTION "Code 25", ROMX
 
 INCLUDE "engine/misc_gfx.asm"
 INCLUDE "engine/warp_connection.asm"
-INCLUDE "battle/used_move_text.asm"
+INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
 
 
@@ -4047,12 +4047,12 @@ INCLUDE "gfx/font.asm"
 
 SECTION "Battle Core", ROMX
 
-INCLUDE "battle/core.asm"
+INCLUDE "engine/battle/core.asm"
 
 
 SECTION "Effect Commands", ROMX
 
-INCLUDE "battle/effect_commands.asm"
+INCLUDE "engine/battle/effect_commands.asm"
 
 
 SECTION "Effect Command Pointers", ROMX
@@ -4087,10 +4087,10 @@ INCLUDE "data/moves/moves.asm"
 
 SECTION "Enemy Trainers", ROMX
 
-INCLUDE "battle/ai/items.asm"
+INCLUDE "engine/battle/ai/items.asm"
 
 AIScoring: ; 38591
-INCLUDE "battle/ai/scoring.asm"
+INCLUDE "engine/battle/ai/scoring.asm"
 
 GetTrainerClassName: ; 3952d
 	ld a, c
@@ -4363,5 +4363,5 @@ INCLUDE "data/battle_tower/trainer_text.asm"
 
 SECTION "Crystal Data", ROMX
 
-INCLUDE "event/battle_tower/load_trainer.asm"
+INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "data/odd_eggs.asm"

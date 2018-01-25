@@ -1561,7 +1561,7 @@ BattleCommand_ResetTypeMatchup: ; 34833
 
 ; 3484e
 
-INCLUDE "battle/ai/switch.asm"
+INCLUDE "engine/battle/ai/switch.asm"
 
 INCLUDE "data/types/type_matchups.asm"
 INCLUDE "data/types/inverse_type_matchups.asm"
@@ -7886,7 +7886,7 @@ BattleCommand_Roost:
 	set SUBSTATUS_ROOST, [hl]
 	ret
 
-INCLUDE "battle/effect_commands/transform.asm"
+INCLUDE "engine/battle/effect_commands/transform.asm"
 
 BattleSideCopy: ; 372c6
 ; Copy bc bytes from hl to de if it's the player's turn.
@@ -8146,7 +8146,7 @@ BattleCommand_SelfDestruct: ; 37380
 ; 373c9
 
 
-INCLUDE "battle/effect_commands/metronome.asm"
+INCLUDE "engine/battle/effect_commands/metronome.asm"
 
 
 CheckUserMove: ; 37462
@@ -8193,7 +8193,7 @@ ResetTurn: ; 3747b
 ; 37492
 
 
-INCLUDE "battle/effect_commands/thief.asm"
+INCLUDE "engine/battle/effect_commands/thief.asm"
 
 
 BattleCommand_ArenaTrap: ; 37517
@@ -8259,19 +8259,19 @@ BattleCommand_Defrost: ; 37563
 ; 37588
 
 
-INCLUDE "battle/effect_commands/curse.asm"
+INCLUDE "engine/battle/effect_commands/curse.asm"
 
-INCLUDE "battle/effect_commands/protect.asm"
+INCLUDE "engine/battle/effect_commands/protect.asm"
 
-INCLUDE "battle/effect_commands/endure.asm"
+INCLUDE "engine/battle/effect_commands/endure.asm"
 
-INCLUDE "battle/effect_commands/spikes.asm"
+INCLUDE "engine/battle/effect_commands/spikes.asm"
 
-INCLUDE "battle/effect_commands/foresight.asm"
+INCLUDE "engine/battle/effect_commands/foresight.asm"
 
-INCLUDE "battle/effect_commands/perish_song.asm"
+INCLUDE "engine/battle/effect_commands/perish_song.asm"
 
-INCLUDE "battle/effect_commands/rollout.asm"
+INCLUDE "engine/battle/effect_commands/rollout.asm"
 
 BoostJumptable:
 	dbw AVALANCHE, DoAvalanche
@@ -8371,7 +8371,7 @@ DoKnockOff:
 	ld [CurDamage + 1], a
 	ret
 
-INCLUDE "battle/effect_commands/attract.asm"
+INCLUDE "engine/battle/effect_commands/attract.asm"
 
 BattleCommand_HappinessPower: ; 3784b
 ; happinesspower
