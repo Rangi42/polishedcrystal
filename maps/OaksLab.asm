@@ -63,7 +63,7 @@ Oak:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftrue .Eevee
+	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
 	pokenamemem BULBASAUR, $0
@@ -75,7 +75,7 @@ Oak:
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
-.Eevee:
+.Charmander:
 	pokenamemem CHARMANDER, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
@@ -99,6 +99,8 @@ Oak:
 	writetext OakLabPartyFullText
 	waitbutton
 .CheckBadges:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .CheckPokedex
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .BattleOak
 	checkcode VAR_BADGES
