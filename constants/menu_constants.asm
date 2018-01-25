@@ -1,0 +1,38 @@
+; indexes into WritePartyMenuTilemap.Jumptable
+	const_def
+	const PLACE_PARTYMON_NICKNAMES
+	const PLACE_PARTYMON_HP_BAR
+	const PLACE_PARTYMON_HP_DIGITS
+	const PLACE_PARTYMON_LEVEL
+	const PLACE_PARTYMON_STATUS
+	const PLACE_PARTYMON_TMHM
+	const PLACE_PARTYMON_EVO
+	const PLACE_PARTYMON_GENDER
+
+const_value SET 1
+	const MONMENU_CUT        ; 1
+	const MONMENU_FLY        ; 2
+	const MONMENU_SURF       ; 3
+	const MONMENU_STRENGTH   ; 4
+	const MONMENU_WATERFALL  ; 5
+	const MONMENU_FLASH      ; 6
+	const MONMENU_WHIRLPOOL  ; 7
+	const MONMENU_DIG        ; 8
+	const MONMENU_TELEPORT   ; 9
+	const MONMENU_SOFTBOILED ; 10
+	const MONMENU_HEADBUTT   ; 11
+	const MONMENU_ROCKSMASH  ; 12
+	const MONMENU_MILKDRINK  ; 13
+
+	const MONMENU_STATS      ; 14
+	const MONMENU_SWITCH     ; 15
+	const MONMENU_ITEM       ; 16
+	const MONMENU_CANCEL     ; 17
+	const MONMENU_MOVE       ; 18
+	const MONMENU_MAIL       ; 19
+	const MONMENU_ERROR      ; 20
+
+MONMENU_FIELD_MOVE EQU 0
+MONMENU_MENUOPTION EQU 1
+
+NUM_MON_SUBMENU_ITEMS EQU 8

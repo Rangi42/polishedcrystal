@@ -1,4 +1,3 @@
-
 	const_def
 	const NO_MOVE      ; $00
 	const ACROBATICS   ; $01
