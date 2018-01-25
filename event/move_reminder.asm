@@ -312,7 +312,7 @@ ChooseMoveToLearn:
 	add a
 	ld b, 0
 	ld c, a
-	ld hl, .Classes
+	ld hl, AbbreviatedClasses
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -337,7 +337,7 @@ ChooseMoveToLearn:
 	add a
 	ld b, 0
 	ld c, a
-	ld hl, .Types
+	ld hl, AbbreviatedTypes
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -396,32 +396,6 @@ ChooseMoveToLearn:
 	pop de
 	ret
 
-.Types
-	db "Nrm@"
-	db "Fgt@"
-	db "Fly@"
-	db "Psn@"
-	db "Grn@"
-	db "Roc@"
-	db "Bug@"
-	db "Gho@"
-	db "Stl@"
-	db "Fir@"
-	db "Wtr@"
-	db "Grs@"
-	db "Ele@"
-	db "Psy@"
-	db "Ice@"
-	db "Drg@"
-	db "Drk@"
-	db "Fai@"
-	db "???@"
-
-.Classes
-	db "Phy@"
-	db "Spc@"
-	db "Sta@"
-
 .ThreeDashes
 	db "---@"
 
@@ -444,6 +418,9 @@ ChooseMoveToLearn:
 
 .Heading
 	db "Cat/Typ/Pow/<BOLDP><BOLDP>@"
+
+
+INCLUDE "data/types/abbreviations.asm"
 
 
 Text_MoveReminderIntro:

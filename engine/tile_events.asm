@@ -3,8 +3,6 @@ CheckWarpCollision:: ; 1499a
 	ld a, [PlayerStandingTile]
 	cp COLL_HOLE
 	jr z, .warp
-	cp $68
-	jr z, .warp
 	and $f0
 	cp $70
 	jr z, .warp

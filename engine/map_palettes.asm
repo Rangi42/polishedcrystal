@@ -40,5 +40,4 @@ GetBGMapTilePalettes::
 
 INCLUDE "tilesets/palette_maps.asm"
 
-TileCollisionTable:: ; 4ce1f
-INCLUDE "tilesets/collision.asm"
+INCLUDE "data/collision_permissions.asm"

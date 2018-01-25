@@ -1,10 +1,6 @@
+INCLUDE "data/sprites/facings.asm"
+INCLUDE "data/sprites/map_objects.asm"
 
-INCLUDE "engine/facings.asm"
-
-SpriteMovementData:: ; 4273
-INCLUDE "data/map_objects.asm"
-
-; 4357
 DeleteMapObject:: ; 4357
 	push bc
 	ld hl, OBJECT_MAP_OBJECT_INDEX

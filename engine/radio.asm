@@ -186,10 +186,10 @@ OaksPkmnTalk4:
 ; Choose a random route, and a random Pokemon from that route.
 	call Random
 	and $1f
-	cp $f
+	cp (OaksPkmnTalkRoutes.End - OaksPkmnTalkRoutes) / 2
 	jr nc, OaksPkmnTalk4
 	; We now have a number between 0 and 14.
-	ld hl, .routes
+	ld hl, OaksPkmnTalkRoutes
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -271,22 +271,7 @@ endr
 	ld a, OAKS_POKEMON_TALK
 	jp PrintRadioLine
 
-.routes
-	map ROUTE_29
-	map ROUTE_46
-	map ROUTE_30
-	map ROUTE_32
-	map ROUTE_34
-	map ROUTE_35
-	map ROUTE_37
-	map ROUTE_38
-	map ROUTE_39
-	map ROUTE_42
-	map ROUTE_43
-	map ROUTE_44
-	map ROUTE_45
-	map ROUTE_36
-	map ROUTE_31
+INCLUDE "data/radio/oaks_pkmn_talk_routes.asm"
 
 OaksPkmnTalk5:
 	ld hl, OPT_OakText2
@@ -1160,20 +1145,19 @@ PnP_Text3:
 
 PeoplePlaces4: ; People
 	call Random
-	and $7f
-	inc a
 	cp NUM_TRAINER_CLASSES - 1
 	jr nc, PeoplePlaces4
+	inc a
 	push af
-	ld hl, .E4Names
+	ld hl, PnP_HiddenPeople
 	ld a, [StatusFlags]
 	bit 6, a ; ENGINE_CREDITS_SKIP
 	jr z, .ok
-	ld hl, .KantoLeaderNames
+	ld hl, PnP_HiddenPeople_BeatE4
 	ld a, [KantoBadges]
 	cp %11111111
 	jr nz, .ok
-	ld hl, .MiscNames
+	ld hl, PnP_HiddenPeople_BeatKanto
 .ok
 	pop af
 	ld c, a
@@ -1193,10 +1177,7 @@ PeoplePlaces4: ; People
 	ld a, PLACES_AND_PEOPLE_5
 	jp NextRadioLine
 
-.E4Names:          db WILL, KOGA, BRUNO, KAREN, CHAMPION
-.KantoLeaderNames: db BROCK, MISTY, LT_SURGE, ERIKA, JANINE, SABRINA, BLAINE, BLUE
-.MiscNames:        db RIVAL1, LYRA1, PROF_OAK, PROF_ELM, CAL, CARRIE, RED
-                   db -1
+INCLUDE "data/radio/pnp_hidden_people.asm"
 
 PnP_Text4:
 	; @  @ @
@@ -1326,9 +1307,9 @@ PnP_odd:
 
 PeoplePlaces6: ; Places
 	call Random
-	cp 9
+	cp (PnP_HiddenPlaces.End - PnP_HiddenPlaces) / 2
 	jr nc, PeoplePlaces6
-	ld hl, .Maps
+	ld hl, PnP_HiddenPlaces
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -1343,15 +1324,7 @@ PeoplePlaces6: ; Places
 	ld a, PLACES_AND_PEOPLE_7
 	jp NextRadioLine
 
-.Maps:
-	map PALLET_TOWN
-	map ROUTE_22
-	map PEWTER_CITY
-	map CERULEAN_CITY
-	map ROUTE_12_NORTH
-	map ROUTE_11
-	map ROUTE_16_WEST
-	map ROUTE_14
+INCLUDE "data/radio/pnp_hidden_places.asm"
 
 PnP_Text5:
 	; @ @
@@ -1597,7 +1570,7 @@ GetBuenasPassword:
 	ld a, c
 	swap a
 	and $f
-	ld hl, PasswordTable
+	ld hl, BuenasPasswordTable
 	ld d, 0
 	ld e, a
 	add hl, de
@@ -1679,30 +1652,7 @@ GetBuenasPassword:
 	ld de, StringBuffer1
 	ret
 
-PasswordTable:
-	dw .JohtoStarters
-	dw .Beverages
-	dw .HealingItems
-	dw .Balls
-	dw .Pokemon1
-	dw .Pokemon2
-	dw .JohtoTowns
-	dw .Types
-	dw .Moves
-	dw .XItems
-	dw .RadioStations
-                    ; string type, points, option 1, option 2, option 3
-.JohtoStarters:      db BUENA_MON,    10, CYNDAQUIL, TOTODILE, CHIKORITA
-.Beverages:          db BUENA_ITEM,   12, FRESH_WATER, SODA_POP, LEMONADE
-.HealingItems:       db BUENA_ITEM,   12, POTION, ANTIDOTE, PARLYZ_HEAL
-.Balls:              db BUENA_ITEM,   12, POKE_BALL, GREAT_BALL, ULTRA_BALL
-.Pokemon1:           db BUENA_MON,    10, PIKACHU, RATTATA, GEODUDE
-.Pokemon2:           db BUENA_MON,    10, HOOTHOOT, SPINARAK, DROWZEE
-.JohtoTowns:         db BUENA_STRING, 16, "New Bark Town@", "Cherrygrove City@", "Azalea Town@"
-.Types:              db BUENA_STRING,  6, "Flying@", "Bug@", "Grass@"
-.Moves:              db BUENA_MOVE,   12, TACKLE, GROWL, MUD_SLAP
-.XItems:             db BUENA_ITEM,   12, X_ATTACK, X_DEFEND, X_SPEED
-.RadioStations:      db BUENA_STRING, 13, "#mon Talk@", "#mon Music@", "Lucky Channel@"
+INCLUDE "data/radio/buenas_passwords.asm"
 
 BuenasPassword5:
 	ld hl, BuenaRadioText5
@@ -1943,18 +1893,7 @@ StartRadioStation:
 	ld d, [hl]
 	farjp RadioMusicRestartDE
 
-RadioChannelSongs:
-	dw MUSIC_POKEMON_TALK
-	dw MUSIC_POKEMON_CENTER
-	dw MUSIC_TITLE
-	dw MUSIC_GAME_CORNER
-	dw MUSIC_BUENAS_PASSWORD
-	dw MUSIC_VIRIDIAN_CITY
-	dw MUSIC_BICYCLE
-	dw MUSIC_ROCKET_OVERTURE
-	dw MUSIC_POKE_FLUTE_CHANNEL
-	dw MUSIC_RUINS_OF_ALPH_RADIO
-	dw MUSIC_LAKE_OF_RAGE_ROCKET_RADIO
+INCLUDE "data/radio/channel_music.asm"
 
 NextRadioLine:
 	push af

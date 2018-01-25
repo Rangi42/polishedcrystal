@@ -1826,7 +1826,7 @@ HealStatus: ; f030 (3:7030)
 GetItemHealingAction: ; f058 (3:7058)
 	push hl
 	ld a, [CurItem]
-	ld hl, .healingactions
+	ld hl, StatusHealingActions
 	ld bc, 3
 .next
 	cp [hl]
@@ -1845,24 +1845,7 @@ GetItemHealingAction: ; f058 (3:7058)
 	ret
 ; f071 (3:7071)
 
-.healingactions ; f071
-; item, party menu action text, status
-	db ANTIDOTE,     PARTYMENUTEXT_HEAL_PSN, 1 << PSN
-	db BURN_HEAL,    PARTYMENUTEXT_HEAL_BRN, 1 << BRN
-	db ICE_HEAL,     PARTYMENUTEXT_HEAL_FRZ, 1 << FRZ
-	db AWAKENING,    PARTYMENUTEXT_HEAL_SLP, SLP
-	db PARLYZ_HEAL,  PARTYMENUTEXT_HEAL_PAR, 1 << PAR
-	db FULL_HEAL,    PARTYMENUTEXT_HEAL_ALL, %11111111
-	db FULL_RESTORE, PARTYMENUTEXT_HEAL_ALL, %11111111
-	db HEAL_POWDER,  PARTYMENUTEXT_HEAL_ALL, %11111111
-	db PECHA_BERRY,  PARTYMENUTEXT_HEAL_PSN, 1 << PSN
-	db CHERI_BERRY,  PARTYMENUTEXT_HEAL_PAR, 1 << PAR
-	db ASPEAR_BERRY, PARTYMENUTEXT_HEAL_FRZ, 1 << FRZ
-	db RAWST_BERRY,  PARTYMENUTEXT_HEAL_BRN, 1 << BRN
-	db CHESTO_BERRY, PARTYMENUTEXT_HEAL_SLP, SLP
-	db LUM_BERRY,    PARTYMENUTEXT_HEAL_ALL, %11111111
-	db -1, 0, 0
-; f09e
+INCLUDE "data/items/heal_status.asm"
 
 StatusHealer_Jumptable: ; f09e (3:709e)
 	ld hl, .dw
@@ -2365,7 +2348,7 @@ GetHealingItemAmount: ; f395 (3:7395)
 	cp FIGY_BERRY
 	jr z, .figy_berry
 	push hl
-	ld hl, .Healing
+	ld hl, HealingHPAmounts
 	ld d, a
 .next
 	ld a, [hli]
@@ -2411,22 +2394,7 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ld e, [hl]
 	ret
 
-.Healing: ; f3af
-	dbw POTION,        20
-	dbw SUPER_POTION,  60
-	dbw HYPER_POTION, 120
-	dbw MAX_POTION,   999
-	dbw FULL_RESTORE, 999
-	dbw FRESH_WATER,   30
-	dbw SODA_POP,      50
-	dbw LEMONADE,      70
-	dbw MOOMOO_MILK,  100
-	dbw RAGECANDYBAR,  20
-	dbw ENERGYPOWDER,  60
-	dbw ENERGY_ROOT,  120
-	dbw ORAN_BERRY,    10
-	dbw -1,             0
-; f3df
+INCLUDE "data/items/heal_hp.asm"
 
 Softboiled_MilkDrinkFunction: ; f3df (3:73df)
 ; Softboiled/Milk Drink in the field
@@ -2594,7 +2562,7 @@ XAccuracy: ; f4c5
 	call UseItemText
 
 	ld a, [CurItem]
-	ld hl, .x_item_table
+	ld hl, XItemStats
 
 .loop
 	cp [hl]
@@ -2622,14 +2590,7 @@ XAccuracy: ; f4c5
 	farjp ChangeHappiness
 ; f504
 
-.x_item_table ; f504
-	db X_ATTACK,   $10 | ATTACK
-	db X_DEFEND,   $10 | DEFENSE
-	db X_SPEED,    $10 | SPEED
-	db X_SPCL_ATK, $10 | SP_ATTACK
-	db X_SPCL_DEF, $10 | SP_DEFENSE
-	db X_ACCURACY, $10 | ACCURACY
-; f50c
+INCLUDE "data/items/x_stats.asm"
 
 
 BlueCard: ; f58f
@@ -3623,4 +3584,4 @@ PetayaBerry:
 ApicotBerry:
 	jp IsntTheTimeMessage
 
-INCLUDE "engine/pokeball_wobble.asm"
+INCLUDE "engine/battle_anims/pokeball_wobble.asm"

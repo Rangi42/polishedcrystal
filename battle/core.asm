@@ -796,45 +796,7 @@ TryEnemyFlee: ; 3c543
 	ret
 ; 3c59a
 
-FleeMons:
-
-SometimesFleeMons: ; 3c59a
-	db MAGNEMITE
-	db GRIMER
-	db TANGELA
-	db TOGEPI
-	db TOGETIC
-	db MR__MIME
-	db EEVEE
-	db PORYGON
-	db DRATINI
-	db DRAGONAIR
-	db ESPEON
-	db UMBREON
-	db UNOWN
-	db SNUBBULL
-	db HERACROSS
-	db PICHU
-	db MUNCHLAX
-	db TYROGUE
-	db ELEKID
-	db MAGBY
-	db LARVITAR
-	db -1
-
-OftenFleeMons: ; 3c5a8
-	db TOGEKISS
-	db CUBONE
-	db QUAGSIRE
-	db PHANPY
-	db TEDDIURSA
-	db -1
-
-AlwaysFleeMons: ; 3c5b1
-	db RAIKOU
-	db ENTEI
-	db -1
-; 3c5b4
+INCLUDE "data/wild/flee_mons.asm"
 
 
 CompareMovePriority: ; 3c5b4
@@ -855,7 +817,7 @@ GetMovePriority: ; 3c5c5
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld b, a
-	ld hl, MoveEffectPriorities
+	ld hl, MovePriorities
 .loop
 	ld a, [hli]
 	cp b
@@ -885,23 +847,7 @@ GetMovePriority: ; 3c5c5
 	pop bc
 	ret
 
-
-MoveEffectPriorities: ; 3c5df
-	db PROTECT,       4
-	db ENDURE,        4
-	db EXTREMESPEED,  2
-	db AQUA_JET,      1
-	db SUCKER_PUNCH,  1
-	db BULLET_PUNCH,  1
-	db ICE_SHARD,     1
-	db MACH_PUNCH,    1
-	db QUICK_ATTACK,  1
-	; everything else 0
-	db AVALANCHE,    -4
-	db COUNTER,      -5
-	db MIRROR_COAT,  -5
-	db ROAR,         -6
-	db -1
+INCLUDE "data/moves/priorities.asm"
 
 
 GetMoveEffect: ; 3c5ec
@@ -2575,41 +2521,7 @@ IsBossTrainerCommon:
 	ret
 ; 0x3d137
 
-BossTrainers:
-	db CHAMPION
-	db RED
-	db LEAF
-	db STEVEN
-	db CYNTHIA
-	db TOWERTYCOON
-	db VALERIE
-	db GIOVANNI
-	db LORELEI
-	db AGATHA
-	; elite 4
-	db WILL
-	db KOGA
-	db BRUNO
-	db KAREN
-JohtoGymLeaders:
-	db FALKNER
-	db WHITNEY
-	db BUGSY
-	db MORTY
-	db CHUCK
-	db JASMINE
-	db PRYCE
-	db CLAIR
-KantoGymLeaders:
-	db BROCK
-	db MISTY
-	db LT_SURGE
-	db ERIKA
-	db JANINE
-	db SABRINA
-	db BLAINE
-	db BLUE
-	db -1
+INCLUDE "data/trainers/leaders.asm"
 
 
 HandlePlayerMonFaint: ; 3d14e
@@ -6974,13 +6886,13 @@ CheckSleepingTreeMon: ; 3eb38
 	jr z, .NotSleeping
 
 ; Get list for the time of day
-	ld hl, .Morn
+	ld hl, AsleepTreeMonsMorn
 	ld a, [TimeOfDay]
 	cp DAY
 	jr c, .Check
-	ld hl, .Day
+	ld hl, AsleepTreeMonsDay
 	jr z, .Check
-	ld hl, .Nite
+	ld hl, AsleepTreeMonsNite
 
 .Check:
 	ld a, [TempEnemyMonSpecies]
@@ -6993,35 +6905,7 @@ CheckSleepingTreeMon: ; 3eb38
 	and a
 	ret
 
-.Nite:
-	db CATERPIE
-	db METAPOD
-	db BUTTERFREE
-	db WEEDLE
-	db KAKUNA
-	db BEEDRILL
-	db PIDGEY
-	db EKANS
-	db EXEGGCUTE
-	db LEDYBA
-	db -1 ; end
-
-.Day:
-	db VENONAT
-	db HOOTHOOT
-	db NOCTOWL
-	db SPINARAK
-	db HERACROSS
-	db -1 ; end
-
-.Morn:
-	db VENONAT
-	db HOOTHOOT
-	db NOCTOWL
-	db SPINARAK
-	db HERACROSS
-	db -1 ; end
-; 3eb75
+INCLUDE "data/wild/treemons_asleep.asm"
 
 
 CheckUnownLetter: ; 3eb75
@@ -7038,7 +6922,7 @@ CheckUnownLetter: ; 3eb75
 	jr nc, .next
 
 ; Is our letter in the set?
-	ld hl, .LetterSets
+	ld hl, UnlockedUnownLetterSets
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -7059,7 +6943,7 @@ CheckUnownLetter: ; 3eb75
 	inc e
 	inc e
 	ld a, e
-	cp .Set1 - .LetterSets
+	cp UnlockedUnownLetterSets.End - UnlockedUnownLetterSets
 	jr c, .loop
 
 ; Hasn't been unlocked, or the letter is invalid
@@ -7071,26 +6955,7 @@ CheckUnownLetter: ; 3eb75
 	and a
 	ret
 
-.LetterSets:
-	dw .Set1
-	dw .Set2
-	dw .Set3
-	dw .Set4
-
-.Set1:
-	;  A   B   C   D   E   F   G   H   I   J
-	db 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, $ff
-.Set2:
-	;  K   L   M   N   O   P   Q
-	db 11, 12, 13, 14, 15, 16, 17, $ff
-.Set3:
-	;  R   S   T   U   V   W
-	db 18, 19, 20, 21, 22, 23, $ff
-.Set4:
-	;  X   Y   Z   !   ?
-	db 24, 25, 26, 27, 28, $ff
-
-; 3ebc7
+INCLUDE "data/wild/unlocked_unowns.asm"
 
 
 FinalPkmnSlideInEnemyMonFrontpic:
@@ -9629,4 +9494,4 @@ CheckUniqueWildMove:
 	inc hl
 	jr .loop
 
-INCLUDE "data/unique_wild_moves.asm"
+INCLUDE "data/pokemon/unique_wild_moves.asm"

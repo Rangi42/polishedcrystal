@@ -50,8 +50,8 @@ HerbShop: ; 15a6e
 ; 15a84
 
 BargainShop: ; 15a84
-	ld b, BANK(.BargainShopData)
-	ld de, .BargainShopData
+	ld b, BANK(BargainShopData)
+	ld de, BargainShopData
 	call LoadMartPointer
 	call ReadMart
 	call LoadStandardMenuDataHeader
@@ -70,17 +70,7 @@ BargainShop: ; 15a84
 	jp MartTextBox
 ; 15aae
 
-.BargainShopData: ; 15c51
-	db 7
-	dbw NUGGET,       4500
-	dbw BIG_NUGGET,   8500
-	dbw PEARL,         650
-	dbw BIG_PEARL,    3500
-	dbw PEARL_STRING, 6500
-	dbw STARDUST,     1000
-	dbw STAR_PIECE,   4600
-	db -1
-; 15c62
+INCLUDE "data/items/bargain_shop.asm"
 
 Pharmacist: ; 15aae
 	call FarReadMart
@@ -93,12 +83,12 @@ Pharmacist: ; 15aae
 ; 15ac4
 
 RooftopSale: ; 15ac4
-	ld b, BANK(.RooftopSaleData1) ; BANK(.RooftopSaleData2)
-	ld de, .RooftopSaleData1
+	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
+	ld de, RooftopSaleData1
 	ld hl, StatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .ok
-	ld de, .RooftopSaleData2
+	ld de, RooftopSaleData2
 .ok
 	call LoadMartPointer
 	call ReadMart
@@ -110,24 +100,7 @@ RooftopSale: ; 15ac4
 	jp MartTextBox
 ; 15aee
 
-.RooftopSaleData1: ; 15aee
-	db 5
-	dbw POKE_BALL,     150
-	dbw GREAT_BALL,    500
-	dbw SUPER_POTION,  500
-	dbw FULL_HEAL,     300
-	dbw REVIVE,       1200
-	db -1
-
-.RooftopSaleData2: ; 15aff
-	db 5
-	dbw HYPER_POTION, 1000
-	dbw FULL_RESTORE, 2000
-	dbw FULL_HEAL,     300
-	dbw ULTRA_BALL,    600
-	dbw PROTEIN,      8000
-	db -1
-; 15b10
+INCLUDE "data/items/rooftop_sale.asm"
 
 SilphMart:
 	call FarReadMart
@@ -175,8 +148,8 @@ TMMart:
 	jp MartTextBox
 
 BlueCardMart:
-	ld b, BANK(.BlueCardMartData)
-	ld de, .BlueCardMartData
+	ld b, BANK(BlueCardMartData)
+	ld de, BlueCardMartData
 	call LoadMartPointer
 	call ReadBlueCardMart
 	call LoadStandardMenuDataHeader
@@ -186,18 +159,7 @@ BlueCardMart:
 	ld hl, Text_BlueCardMart_ComeAgain
 	jp MartTextBox
 
-.BlueCardMartData: ; 15aee
-	db 9
-	db ULTRA_BALL,   2
-	db FULL_RESTORE, 2
-	db ELIXER,       2
-	db MAX_ELIXER,   3
-	db NUGGET,       3
-	db RARE_CANDY,   4
-	db EVIOLITE,     5
-	db PP_UP,        6
-	db AMULET_COIN,  7
-	db -1
+INCLUDE "data/items/buena_prizes.asm"
 
 BTMart:
 	call FarReadBTMart

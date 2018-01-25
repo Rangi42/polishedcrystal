@@ -15,7 +15,6 @@
 	const DEXSTATE_EXIT
 
 Pokedex: ; 40000
-
 	ld a, [hWX]
 	ld l, a
 	ld a, [hWY]
@@ -1764,11 +1763,8 @@ Pokedex_ABCMode: ; 40c30
 	inc a
 	jr .loop2abc
 
-AlphabeticalPokedexOrder: ; 0x40c65
-INCLUDE "data/pokedex/order_alpha.asm"
-
-NewPokedexOrder: ; 0x40d60
-INCLUDE "data/pokedex/order_new.asm"
+INCLUDE "data/pokemon/dex_order_alpha.asm"
+INCLUDE "data/pokemon/dex_order_new.asm"
 
 Pokedex_DisplayModeDescription: ; 40e5b
 	xor a
@@ -1923,7 +1919,7 @@ Pokedex_PlaceTypeString: ; 40fcd (10:4fcd)
 	push hl
 	ld e, a
 	ld d, 0
-	ld hl, .TypeStrings
+	ld hl, PokedexTypeSearchStrings
 rept 9
 	add hl, de
 endr
@@ -1932,26 +1928,7 @@ endr
 	pop hl
 	jp PlaceString
 
-.TypeStrings: ; 40fe4
-	db "  ----  @"
-	db " Normal @"
-	db "  Fire  @"
-	db " Water  @"
-	db " Grass  @"
-	db "Electric@"
-	db "  Ice   @"
-	db "Fighting@"
-	db " Poison @"
-	db " Ground @"
-	db " Flying @"
-	db "Psychic @"
-	db "  Bug   @"
-	db "  Rock  @"
-	db " Ghost  @"
-	db " Dragon @"
-	db "  Dark  @"
-	db " Steel  @"
-	db " Fairy  @"
+INCLUDE "data/types/search_strings.asm"
 
 Pokedex_SearchForMons: ; 41086
 	ld a, [wDexSearchMonType2]
@@ -1966,7 +1943,7 @@ Pokedex_SearchForMons: ; 41086
 	dec a
 	ld e, a
 	ld d, 0
-	ld hl, .TypeConversionTable
+	ld hl, PokedexTypeSearchConversionTable
 	add hl, de
 	ld a, [hl]
 	ld [wDexConvertedMonType], a
@@ -2025,25 +2002,7 @@ Pokedex_SearchForMons: ; 41086
 	inc a
 	jr .zero_remaining_mons
 
-.TypeConversionTable: ; 410f6
-	db NORMAL
-	db FIRE
-	db WATER
-	db GRASS
-	db ELECTRIC
-	db ICE
-	db FIGHTING
-	db POISON
-	db GROUND
-	db FLYING
-	db PSYCHIC
-	db BUG
-	db ROCK
-	db GHOST
-	db DRAGON
-	db DARK
-	db STEEL
-	db FAIRY
+INCLUDE "data/types/search_types.asm"
 
 Pokedex_DisplayTypeNotFoundMessage: ; 41107
 	xor a

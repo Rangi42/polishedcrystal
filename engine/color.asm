@@ -675,7 +675,7 @@ LoadMapPals:
 	and 7
 	ld e, a
 	ld d, 0
-	ld hl, .TilesetColorsPointers
+	ld hl, EnvironmentColorsPointers
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -700,7 +700,7 @@ LoadMapPals:
 	ld hl, UnknBGPals
 	ld b, 8
 .outer_loop
-	ld a, [de] ; lookup index for .TilesetBGPalette
+	ld a, [de] ; lookup index for TilesetBGPalette
 	push de
 	push hl
 	ld l, a
@@ -708,7 +708,7 @@ LoadMapPals:
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, .TilesetBGPalette
+	ld de, TilesetBGPalette
 	add hl, de
 	ld e, l
 	ld d, h
@@ -731,7 +731,7 @@ LoadMapPals:
 	ld a, [TimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
-	ld hl, .MapObjectPals
+	ld hl, MapObjectPals
 	call AddNTimes
 	ld de, UnknOBPals
 	ld bc, 8 palettes
@@ -754,7 +754,7 @@ LoadMapPals:
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, .OvercastRoofPals
+	ld de, OvercastRoofPals
 	jr .get_roof_color
 
 .not_overcast
@@ -772,7 +772,7 @@ LoadMapPals:
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, .RoofPals
+	ld de, RoofPals
 .get_roof_color
 	add hl, de
 	ld a, [TimeOfDayPal]
@@ -788,37 +788,9 @@ endr
 	ld a, $5
 	jp FarCopyWRAM
 
-.TilesetColorsPointers:
-	dw .OutdoorColors ; unused
-	dw .OutdoorColors ; TOWN
-	dw .OutdoorColors ; ROUTE
-	dw .IndoorColors ; INDOOR
-	dw .DungeonColors ; CAVE
-	dw .Perm5Colors ; PERM_5
-	dw .IndoorColors ; GATE
-	dw .DungeonColors ; DUNGEON
+INCLUDE "data/maps/environment_colors.asm"
 
-; Valid indices: $00 - $29
-.OutdoorColors:
-.Perm5Colors:
-	db $00, $01, $02, $28, $04, $05, $06, $07 ; morn
-	db $08, $09, $0a, $29, $0c, $0d, $0e, $0f ; day
-	db $10, $11, $12, $2a, $14, $15, $16, $17 ; nite
-	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
-
-.IndoorColors:
-	db $20, $21, $22, $23, $24, $25, $26, $27 ; morn
-	db $20, $21, $22, $23, $24, $25, $26, $27 ; day
-	db $10, $11, $12, $13, $14, $15, $16, $17 ; nite
-	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
-
-.DungeonColors:
-	db $00, $01, $02, $03, $04, $05, $06, $07 ; morn
-	db $08, $09, $0a, $0b, $0c, $0d, $0e, $0f ; day
-	db $10, $11, $12, $13, $14, $15, $16, $17 ; nite
-	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
-
-.TilesetBGPalette:
+TilesetBGPalette:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/bg.pal"
 elif DEF(MONOCHROME)
@@ -827,7 +799,7 @@ else
 INCLUDE "tilesets/palettes/bg.pal"
 endc
 
-.MapObjectPals:
+MapObjectPals:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/ob.pal"
 elif DEF(MONOCHROME)
@@ -836,7 +808,7 @@ else
 INCLUDE "tilesets/palettes/ob.pal"
 endc
 
-.RoofPals:
+RoofPals:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/roof.pal"
 elif DEF(MONOCHROME)
@@ -845,7 +817,7 @@ else
 INCLUDE "tilesets/palettes/roof.pal"
 endc
 
-.OvercastRoofPals:
+OvercastRoofPals:
 if DEF(HGSS)
 INCLUDE "tilesets/palettes/hgss/roof_overcast.pal"
 elif DEF(MONOCHROME)
@@ -855,8 +827,8 @@ INCLUDE "tilesets/palettes/roof_overcast.pal"
 endc
 
 
-INCLUDE "gfx/pics/palette_pointers.asm"
+INCLUDE "data/pokemon/palettes.asm"
 
-INCLUDE "gfx/trainers/palette_pointers.asm"
+INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "engine/palettes.asm"

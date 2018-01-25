@@ -522,7 +522,7 @@ LoadFrontpic: ; 512f2
 GetRelevantPicPointers:
 ; given species in a, return *PicPointers in hl and BANK(*PicPointers) in d
 ; returns c for variants, nc for normal species
-	ld hl, .VariantPicPointerTable
+	ld hl, VariantPicPointerTable
 	ld de, 4
 	call IsInArray
 	inc hl
@@ -533,5 +533,4 @@ GetRelevantPicPointers:
 	ld l, a
 	ret
 
-.VariantPicPointerTable:
-INCLUDE "gfx/pics/variant_pic_pointers.asm"
+INCLUDE "data/pokemon/variant_pic_pointer_table.asm"

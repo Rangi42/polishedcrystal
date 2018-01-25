@@ -1,5 +1,4 @@
-MenuMonIconColors::
-INCLUDE "data/mon_icon_pals.asm"
+INCLUDE "data/pokemon/menu_icon_pals.asm"
 
 LoadOverworldMonIcon: ; 8e82b
 	ld a, e
@@ -317,8 +316,8 @@ GetIconGFX: ; 8e9de
 	ret
 
 HeldItemIcons:
-INCBIN "gfx/icon/mail.2bpp"
-INCBIN "gfx/icon/item.2bpp"
+INCBIN "gfx/icons/mail.2bpp"
+INCBIN "gfx/icons/item.2bpp"
 ; 8ea17
 
 GetIcon_a: ; 8ea1b

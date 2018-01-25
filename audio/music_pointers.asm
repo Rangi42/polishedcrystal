@@ -1,3 +1,4 @@
+Music:
 	dba Music_Nothing
 	dba Music_CrystalOpening
 	dba Music_TitleScreen
