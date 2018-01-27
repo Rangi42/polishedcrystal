@@ -16,7 +16,7 @@ EcruteakShrineInside_MapEventHeader:
 	signpost 6, 5, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
 	signpost 6, 6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
 
-.PersonEvents: db 6
+.PersonEvents: db 5
 	person_event SPRITE_SABRINA, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
 	person_event SPRITE_GRAMPS, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
 	person_event SPRITE_SAGE, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1

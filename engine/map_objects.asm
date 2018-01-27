@@ -519,6 +519,7 @@ MapObjectMovementPattern: ; 47dd
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
+	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
 
 .RandomWalkY:
 	call Random
@@ -712,6 +713,10 @@ MapObjectMovementPattern: ; 47dd
 
 .MovementPokecomNews:
 	ld a, PERSON_ACTION_POKECOM_NEWS
+	jr ._ActionA_StepType04
+
+.MovementArchTree:
+	ld a, PERSON_ACTION_ARCH_TREE
 	jr ._ActionA_StepType04
 
 .StandingFlip:

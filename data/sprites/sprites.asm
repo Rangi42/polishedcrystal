@@ -177,4 +177,4 @@ SpriteHeaders:
 	overworld_sprite WiiSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SilverTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
 	overworld_sprite GoldTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
-	overworld_sprite PokecomNewsSpriteGFX, 1, STILL_SPRITE, PAL_OW_ROCK
+	overworld_sprite MiscOverheadSpriteGFX, 3, STANDING_SPRITE, PAL_OW_ROCK

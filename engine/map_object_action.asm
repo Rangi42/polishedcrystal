@@ -19,6 +19,7 @@ Pointers445f: ; 445f
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
 	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; PERSON_ACTION_POKECOM_NEWS
+	dw SetFacingArchTree,              SetFacingArchTree          ; PERSON_ACTION_ARCH_TREE
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -62,6 +63,13 @@ SetFacingFish: ; 456e
 	add FACING_FISH_DOWN
 	jr SetFixedFacing
 ; 457b
+
+SetFacingArchTree:
+	call GetSpriteDirection
+	rrca
+	rrca
+	add FACING_ARCH_TREE_DOWN
+	jr SetFixedFacing
 
 SetFacingStandFlip:
 	call GetSpriteDirection
