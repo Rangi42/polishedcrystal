@@ -15,6 +15,7 @@ Pointers445f: ; 445f
 	dw SetFacingBoulderDust,           SetFacingStanding          ; PERSON_ACTION_BOULDER_DUST
 	dw SetFacingGrassShake,            SetFacingStanding          ; PERSON_ACTION_GRASS_SHAKE
 	dw SetFacingPuddleSplash,          SetFacingStanding          ; PERSON_ACTION_PUDDLE_SPLASH
+	dw SetFacingCutTree,               SetFacingCutTree           ; PERSON_ACTION_CUT_TREE
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
@@ -41,6 +42,10 @@ SetFacingEmote: ; 4582 emote
 	ld a, FACING_EMOTE
 	jr SetFixedFacing
 ; 4589
+
+SetFacingCutTree:
+	ld a, FACING_CUT_TREE
+	jr SetFixedFacing
 
 SetFacingPokecomNews:
 	ld a, FACING_POKECOM_NEWS

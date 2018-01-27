@@ -33,6 +33,7 @@ Facings:
 	dw FacingGrass2        ; FACING_GRASS_2
 	dw FacingSplash1       ; FACING_SPLASH_1
 	dw FacingSplash2       ; FACING_SPLASH_2
+	dw FacingCutTree       ; FACING_CUT_TREE
 	dw FacingBigGyarados1  ; FACING_BIG_GYARADOS_1
 	dw FacingBigGyarados2  ; FACING_BIG_GYARADOS_2
 	dw FacingStepDownFlip  ; FACING_STEP_DOWN_FLIP
@@ -281,6 +282,13 @@ FacingSplash2:
 	db 2 ; #
 	db  9, -1, 4, $7f
 	db  9,  9, 4 | X_FLIP, $7f
+
+FacingCutTree:
+	db 4 ; #
+	db  4,  0, 0, $04
+	db  4,  8, 0, $05
+	db 12,  0, 2, $06
+	db 12,  8, 2, $07
 
 FacingBigGyarados1:
 	db 16 ; #
