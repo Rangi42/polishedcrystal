@@ -185,14 +185,12 @@ LoadWarpData: ; 1046c6
 	call CheckIndoorMap
 	ret nz
 	ld a, [wPrevMapGroup]
-	cp GROUP_MOUNT_MOON_SQUARE
-	jr nz, .not_mt_moon_or_tin_tower
+	cp GROUP_TIN_TOWER_ROOF
+	jr nz, .not_tin_tower_roof
 	ld a, [wPrevMapNumber]
-	cp MAP_MOUNT_MOON_SQUARE
-	ret z
 	cp MAP_TIN_TOWER_ROOF
 	ret z
-.not_mt_moon_or_tin_tower
+.not_tin_tower_roof
 	ld a, [wPrevWarp]
 	ld [wDigWarp], a
 	ld a, [wPrevMapGroup]

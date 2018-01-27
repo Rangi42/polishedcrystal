@@ -121,7 +121,7 @@ MAP_NONE   EQU 0
 	mapconst GIOVANNIS_CAVE,                             24, 10 ; 72
 	mapconst DIGLETTS_CAVE,                              19, 21 ; 73
 	mapconst MOUNT_MOON_1F,                              13, 15 ; 74
-	mapconst MOUNT_MOON_B1F,                             17, 15 ; 75
+	mapconst MOUNT_MOON_B1F,                             14, 16 ; 75
 	mapconst MOUNT_MOON_B2F,                             17, 16 ; 76
 	mapconst UNDERGROUND,                                18,  3 ; 77
 	mapconst ROCK_TUNNEL_1F,                             14, 15 ; 78

@@ -426,15 +426,6 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_ECRUTEAK_CITY
 	jp z, .load_eight_time_of_day_bg_palettes
 .not_ecruteak_city
-	ld a, [MapGroup]
-	cp GROUP_SILVER_CAVE_OUTSIDE
-	jr nz, .not_silver_cave_outside
-	ld a, [MapNumber]
-	cp MAP_SILVER_CAVE_OUTSIDE
-	jp z, .load_eight_time_of_day_bg_palettes
-	cp MAP_ROUTE_28
-	jp z, .load_eight_time_of_day_bg_palettes
-.not_silver_cave_outside
 	ld hl, BellchimeTrailPalette
 	ld a, [MapGroup]
 	cp GROUP_BELLCHIME_TRAIL
