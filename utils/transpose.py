@@ -75,8 +75,8 @@ def main():
 
 	mapfile = sys.argv[1]
 	tilesetID = sys.argv[2]
-	metatiles = 'tilesets/%s_metatiles.bin' % tilesetID
-	palette = 'tilesets/%s_palette_map.asm' % tilesetID
+	metatiles = 'data/tilesets/%s_metatiles.bin' % tilesetID
+	palette = 'gfx/tilesets/%s_palette_map.asm' % tilesetID
 
 	mapping, revmap = build_map(mapfile)
 	transpose_metatiles(metatiles, mapping)

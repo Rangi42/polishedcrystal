@@ -12,10 +12,10 @@ import os
 from collections import OrderedDict
 
 code_directory       = './'
-tileset_filename     = 'constants/tilemap_constants.asm'
+tileset_filename     = 'constants/tileset_constants.asm'
 maps_filename        = 'constants/map_constants.asm'
-map_headers_filename = 'maps/map_headers.asm'
-block_data_filename  = 'maps/block_data.asm'
+map_headers_filename = 'data/maps/definitions.asm'
+block_data_filename  = 'data/maps/blocks.asm'
 block_filename_fmt   = 'maps/%s.blk'
 
 tileset_names = ['johto1', 'johto2', 'johto3', 'johto4', 'kanto1', 'kanto2',
@@ -56,7 +56,7 @@ def read_map_heights():
 	with open(code_directory + maps_filename, 'r') as f:
 		for line in f:
 			line = line.strip()
-			if line.startswith('mapgroup '):
+			if line.startswith('mapconst '):
 				parts = line[9:].split(',')
 				map_const = parts[0].strip()
 				map_height = int(parts[1])

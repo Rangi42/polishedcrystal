@@ -12,12 +12,12 @@ import sys
 from collections import defaultdict
 
 code_directory         = './'
-tileset_filename       = 'constants/tilemap_constants.asm'
-map_headers_filename   = 'maps/map_headers.asm'
-map_headers_2_filename = 'maps/second_map_headers.asm'
-block_data_filename    = 'maps/block_data.asm'
+tileset_filename       = 'constants/tileset_constants.asm'
+map_headers_filename   = 'data/maps/definitions.asm'
+map_headers_2_filename = 'data/maps/data.asm'
+block_data_filename    = 'data/maps/blocks.asm'
 block_filename_fmt     = 'maps/%s.blk'
-metatile_filename_fmt  = 'tilesets/%s_metatiles.bin'
+metatile_filename_fmt  = 'data/tilesets/%s_metatiles.bin'
 
 tileset_names = ['johto1', 'johto2', 'johto3', 'johto4', 'kanto1', 'kanto2',
                  'shamouti', 'valencia', 'faraway', 'house1', 'house2', 'house3',
