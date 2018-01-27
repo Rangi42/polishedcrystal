@@ -28,13 +28,14 @@ EcruteakCity_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 6
+.Signposts: db 7
 	signpost 21, 15, SIGNPOST_JUMPTEXT, EcruteakCitySignText
 	signpost 28, 8, SIGNPOST_JUMPTEXT, EcruteakGymSignText
 	signpost 21, 21, SIGNPOST_JUMPTEXT, EcruteakDanceTheaterSignText
 	signpost 10, 2, SIGNPOST_JUMPTEXT, BurnedTowerSignText
 	signpost 14, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION
-	signpost 11, 20, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
+	signpost 11, 15, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
+	signpost 11, 21, SIGNPOST_JUMPTEXT, EcruteakBarrierStationSignText
 
 .PersonEvents: db 14
 	person_event SPRITE_GRAMPS, 15, 20, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
@@ -45,8 +46,8 @@ EcruteakCity_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 16, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4386, -1
 	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a43cb, EVENT_ECRUTEAK_CITY_GRAMPS
 	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCityHexManiacText, -1
-	person_event SPRITE_SIGHTSEER_M, 15, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
-	person_event SPRITE_SMEARGLE, 15, 24, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SMEARGLE, EcruteakCitySmeargleText, -1
+	person_event SPRITE_SIGHTSEER_M, 11, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
+	person_event SPRITE_SMEARGLE, 11, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SMEARGLE, EcruteakCitySmeargleText, -1
 	person_event SPRITE_MISC_OVERHEAD, 9, 15, SPRITEMOVEDATA_ARCH_TREE_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, end, NULL, -1
 	person_event SPRITE_MISC_OVERHEAD, 9, 16, SPRITEMOVEDATA_ARCH_TREE_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, end, NULL, -1
 	person_event SPRITE_MISC_OVERHEAD, 9, 19, SPRITEMOVEDATA_ARCH_TREE_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, end, NULL, -1
@@ -227,4 +228,16 @@ BurnedTowerSignText:
 
 EcruteakShrineSignText:
 	text "Ecruteak Shrine"
+
+	para "“Life is a lamp-"
+	line "flame before a"
+	cont "wind.”"
+	done
+
+EcruteakBarrierStationSignText:
+	text "Barrier Station"
+	line "to Bell Tower"
+
+	para "No Trespassing by"
+	line "the Unworthy"
 	done
