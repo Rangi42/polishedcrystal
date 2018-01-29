@@ -1,21 +1,19 @@
 SafariZoneEastRestHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SafariZoneEastRestHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 5, SAFARI_ZONE_EAST
 	warp_def 7, 3, 5, SAFARI_ZONE_EAST
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
 	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
 	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
 	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
 
-.PersonEvents: db 0
+	db 0 ; person events

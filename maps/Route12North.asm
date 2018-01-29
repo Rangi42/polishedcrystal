@@ -1,21 +1,19 @@
 Route12North_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route12North_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 15, 10, 1, ROUTE_12_GATE
 	warp_def 15, 11, 2, ROUTE_12_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_FISHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherKyle, -1
 
 TrainerFisherKyle:

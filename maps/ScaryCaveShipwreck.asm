@@ -1,18 +1,16 @@
 ScaryCaveShipwreck_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ScaryCaveShipwreck_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 9, 5, 5, SCARY_CAVE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 8, 7, RARE_BONE, 1, EVENT_SCARY_CAVE_SHIPWRECK_RARE_BONE
 

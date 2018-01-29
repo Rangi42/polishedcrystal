@@ -1,12 +1,10 @@
 SafariZoneWest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SafariZoneWest_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 2, 22, 8, SAFARI_ZONE_NORTH
 	warp_def 2, 23, 9, SAFARI_ZONE_NORTH
 	warp_def 2, 28, 3, SAFARI_ZONE_NORTH
@@ -16,16 +14,16 @@ SafariZoneWest_MapEventHeader:
 	warp_def 13, 13, 1, SAFARI_ZONE_WEST_REST_HOUSE_1
 	warp_def 5, 5, 1, SAFARI_ZONE_WEST_REST_HOUSE_2
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 24, 26, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
 	signpost 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
 	signpost 6, 28, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
 	signpost 5, 19, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
 	signpost 6, 13, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
 	person_event SPRITE_YOUNGSTER, 12, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
 	person_event SPRITE_COOLTRAINER_M, 19, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1

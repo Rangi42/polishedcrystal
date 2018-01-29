@@ -1,20 +1,18 @@
 CeladonHotelRoom3_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonHotelRoom3_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 3, 4, CELADON_HOTEL_2F
 	warp_def 5, 4, 4, CELADON_HOTEL_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_GRAMPS, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
 
 CeladonHotelRoom3GrampsText:

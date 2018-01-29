@@ -1,23 +1,21 @@
 RuinsofAlphAerodactylChamber_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw RuinsofAlphAerodactylChamberTrigger0
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58db9
 
 RuinsofAlphAerodactylChamber_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 9, 3, 4, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 4, RUINS_OF_ALPH_OUTSIDE
 	warp_def 3, 3, 8, RUINS_OF_ALPH_INNER_CHAMBER
 	warp_def 3, 4, 9, RUINS_OF_ALPH_INNER_CHAMBER
 	warp_def 0, 4, 1, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
 	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
 	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
@@ -25,7 +23,7 @@ RuinsofAlphAerodactylChamber_MapEventHeader:
 	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
 	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER

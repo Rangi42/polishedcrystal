@@ -1,29 +1,27 @@
 Route10North_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw Route10NorthTrigger0
 	dw Route10NorthTrigger1
 
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
 	dbw MAPCALLBACK_OBJECTS, Route10NorthZapdos
 
 Route10North_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 35, 11, 1, ROUTE_10_POKECENTER_1F
 	warp_def 51, 3, 1, POWER_PLANT
 	warp_def 43, 4, 1, ROCK_TUNNEL_2F
 	warp_def 33, 8, 1, ROCK_TUNNEL_1F
 	warp_def 1, 10, 1, DIM_CAVE_5F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 53, 5, SIGNPOST_JUMPTEXT, PowerPlantSignText
 	signpost 35, 7, SIGNPOST_JUMPTEXT, RockTunnelSignText
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
 	person_event SPRITE_VERMILION_LAWRENCE, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
 	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10

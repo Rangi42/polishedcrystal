@@ -1,6 +1,5 @@
 ElmsLab_MapScriptHeader:
-
-.MapTriggers: db 8
+	db 8 ; map triggers
 	dw ElmsLabTrigger0
 	dw ElmsLabTrigger1
 	dw ElmsLabTrigger2
@@ -10,16 +9,15 @@ ElmsLab_MapScriptHeader:
 	dw ElmsLabTrigger6
 	dw ElmsLabTrigger7
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, ElmsLabCallback_MoveElm
 
 ElmsLab_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 4, 1, NEW_BARK_TOWN
 	warp_def 11, 5, 1, NEW_BARK_TOWN
 
-.XYTriggers: db 7
+	db 7 ; xy triggers
 	xy_trigger 1, 6, 4, LabTryToLeaveScript
 	xy_trigger 1, 6, 5, LabTryToLeaveScript
 	xy_trigger 3, 5, 4, MeetCopScript
@@ -28,7 +26,7 @@ ElmsLab_MapEventHeader:
 	xy_trigger 5, 8, 5, AideScript_WalkPotions2
 	xy_trigger 6, 6, 4, LyraBattleScript
 
-.Signposts: db 16
+	db 16 ; signposts
 	signpost 1, 2, SIGNPOST_READ, ElmsLabHealingMachine
 	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -46,7 +44,7 @@ ElmsLab_MapEventHeader:
 	signpost 0, 5, SIGNPOST_READ, ElmsLabWindow
 	signpost 5, 3, SIGNPOST_DOWN, ElmsLabPC
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_ELM, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
 	person_event SPRITE_SCIENTIST, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
 	person_event SPRITE_BALL_CUT_FRUIT, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB

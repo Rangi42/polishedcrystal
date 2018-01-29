@@ -1,29 +1,27 @@
 Route43_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 3
+	db 3 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
 	dbw MAPCALLBACK_TILES, Route43RainScript
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 
 Route43_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 51, 9, 1, ROUTE_43_MAHOGANY_GATE
 	warp_def 51, 10, 2, ROUTE_43_MAHOGANY_GATE
 	warp_def 35, 17, 3, ROUTE_43_GATE
 	warp_def 31, 17, 1, ROUTE_43_GATE
 	warp_def 31, 18, 2, ROUTE_43_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 3, 13, SIGNPOST_JUMPTEXT, Route43Sign1Text
 	signpost 49, 11, SIGNPOST_JUMPTEXT, Route43Sign2Text
 	signpost 38, 16, SIGNPOST_JUMPTEXT, Route43TrainerTipsText
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_LADY, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route43SightseerfScript, -1
 	person_event SPRITE_SUPER_NERD, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
 	person_event SPRITE_SUPER_NERD, 20, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacBrent1, -1

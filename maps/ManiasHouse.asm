@@ -1,22 +1,20 @@
 ManiasHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ManiasHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 1, CIANWOOD_CITY
 	warp_def 7, 3, 1, CIANWOOD_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
 	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_ROCKER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
 
 ManiaScript:

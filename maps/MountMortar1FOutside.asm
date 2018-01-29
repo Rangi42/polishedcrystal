@@ -1,12 +1,10 @@
 MountMortar1FOutside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MountMortar1FOutside_MapEventHeader:
-
-.Warps: db 9
+	db 9 ; warps
 	warp_def 33, 3, 3, ROUTE_42
 	warp_def 33, 17, 4, ROUTE_42
 	warp_def 33, 37, 5, ROUTE_42
@@ -17,12 +15,12 @@ MountMortar1FOutside_MapEventHeader:
 	warp_def 13, 7, 3, MOUNT_MORTAR_1F_INSIDE
 	warp_def 13, 33, 4, MOUNT_MORTAR_1F_INSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 22, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_COOLTRAINER_F, 15, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBattleGirlSubaru, -1
 	person_event SPRITE_COOLTRAINER_F, 11, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlDiane, -1
 	itemball_event 15, 13, ETHER, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_ETHER

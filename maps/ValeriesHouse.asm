@@ -1,22 +1,20 @@
 ValeriesHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
 ValeriesHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 12, ECRUTEAK_CITY
 	warp_def 7, 4, 12, ECRUTEAK_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_VALERIE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ValeriesHouseValerieText, EVENT_VALERIE_ECRUTEAK_CITY
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHouseRedFairyBookText, EVENT_RED_FAIRY_BOOK
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, ValeriesHouseBlueFairyBookText, EVENT_BLUE_FAIRY_BOOK

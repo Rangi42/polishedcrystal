@@ -1,18 +1,16 @@
 YellowForest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, YellowForestRebattleBreeder
 	dbw MAPCALLBACK_TILES, YellowForestTileScript
 
 YellowForest_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 47, 28, 1, YELLOW_FOREST_GATE
 	warp_def 47, 29, 2, YELLOW_FOREST_GATE
 
-.XYTriggers: db 8
+	db 8 ; xy triggers
 	xy_trigger 1, 16, 32, YellowForestBridgeOverheadTrigger
 	xy_trigger 1, 17, 32, YellowForestBridgeOverheadTrigger
 	xy_trigger 1, 16, 39, YellowForestBridgeOverheadTrigger
@@ -22,13 +20,13 @@ YellowForest_MapEventHeader:
 	xy_trigger 0, 16, 38, YellowForestBridgeUnderfootTrigger
 	xy_trigger 0, 17, 38, YellowForestBridgeUnderfootTrigger
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 14, 39, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
 	signpost 36, 43, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
 	signpost 11, 32, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
 	signpost 40, 9, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_WALKER, 24, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
 	person_event SPRITE_SKARMORY, 24, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
 	person_event SPRITE_YELLOW, 6, 47, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1

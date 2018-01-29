@@ -1,25 +1,23 @@
 MountMoonB2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MountMoonB2F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 24, 10, 4, MOUNT_MOON_B1F
 	warp_def 7, 21, 5, MOUNT_MOON_B1F
 	warp_def 15, 17, 6, MOUNT_MOON_B1F
 	warp_def 9, 3, 7, MOUNT_MOON_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 7, 28, SIGNPOST_ITEM + ETHER, EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER
 	signpost 9, 7, SIGNPOST_ITEM + STARDUST, EVENT_MOUNT_MOON_B2F_HIDDEN_STARDUST
 	signpost 30, 10, SIGNPOST_ITEM + PP_UP, EVENT_MOUNT_MOON_B2F_HIDDEN_PP_UP
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_YOUNGSTER, 9, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerYoungsterJosh, -1
 	person_event SPRITE_YOUNGSTER, 21, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBird_keeperMick, -1
 	person_event SPRITE_HEX_MANIAC, 18, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHexManiacEsther, -1

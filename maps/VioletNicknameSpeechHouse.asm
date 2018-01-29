@@ -1,20 +1,18 @@
 VioletNicknameSpeechHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VioletNicknameSpeechHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 4, VIOLET_CITY
 	warp_def 7, 4, 4, VIOLET_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x693fa, -1
 	person_event SPRITE_TWIN, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6945e, -1
 	person_event SPRITE_EEVEE, 2, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EeveeScript_0x693ef, -1

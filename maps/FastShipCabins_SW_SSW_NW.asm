@@ -1,25 +1,23 @@
 FastShipCabins_SW_SSW_NW_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FastShipCabins_SW_SSW_NW_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 0, 2, 5, FAST_SHIP_1F
 	warp_def 19, 2, 6, FAST_SHIP_1F
 	warp_def 19, 3, 6, FAST_SHIP_1F
 	warp_def 31, 2, 7, FAST_SHIP_1F
 	warp_def 31, 3, 7, FAST_SHIP_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 1, 7, SIGNPOST_READ, FastShipBed
 	signpost 2, 7, SIGNPOST_READ, FastShipBed
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_FISHER, 15, 1, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_BUG_CATCHER, 15, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	person_event SPRITE_RICH_BOY, 27, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP

@@ -1,22 +1,20 @@
 Route1ViridianGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route1ViridianGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 0, 4, 6, VIRIDIAN_CITY
 	warp_def 0, 5, 7, VIRIDIAN_CITY
 	warp_def 7, 4, 1, ROUTE_1
 	warp_def 7, 5, 1, ROUTE_1
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route1ViridianGateOfficerText, -1
 	person_event SPRITE_ROCKER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route1ViridianGateRockerText, -1
 

@@ -1,20 +1,18 @@
 ViridianMart_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ViridianMart_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 4, VIRIDIAN_CITY
 	warp_def 7, 3, 4, VIRIDIAN_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_VIRIDIAN
 	person_event SPRITE_LASS, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b5f4, -1
 	person_event SPRITE_COOLTRAINER_M, 6, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b61a, -1

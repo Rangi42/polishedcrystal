@@ -1,26 +1,24 @@
 ValenciaIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ValenciaIsland_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 19, 18, 1, IVYS_LAB
 	warp_def 19, 5, 1, IVYS_HOUSE
 	warp_def 11, 3, 1, VALENCIA_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 12, 8, SIGNPOST_JUMPTEXT, ValenciaIslandSignText
 	signpost 5, 11, SIGNPOST_JUMPTEXT, ValenciaIslandGoneFishingSignText
 	signpost 5, 13, SIGNPOST_JUMPTEXT, ValenciaIslandLockedDoorText
 	signpost 19, 15, SIGNPOST_JUMPTEXT, IvysLabSignText
 	signpost 3, 13, SIGNPOST_JUMPTEXT, IvysHouseSignText
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_COOLTRAINER_M, 8, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaIslandCooltrainermText, -1
 	person_event SPRITE_YOUNGSTER, 18, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 

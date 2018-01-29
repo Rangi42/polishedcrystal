@@ -1,21 +1,19 @@
 PewterMuseumOfScience2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 PewterMuseumOfScience2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 7, 7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 6, 3, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
 	signpost 2, 11, SIGNPOST_JUMPTEXT, Museum2FSpaceShuttleSignpostText
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FScientistText, -1
 	person_event SPRITE_CHILD, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FChildText, -1
 	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FTeacherText, -1

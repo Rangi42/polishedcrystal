@@ -1,21 +1,19 @@
 ShamoutiShrineRuins_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ShamoutiShrineRuins_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 18, 2, 3, NOISY_FOREST
 	warp_def 19, 2, 4, NOISY_FOREST
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 10, 7, SIGNPOST_ITEM + MAX_REVIVE, EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_LAWRENCE, 11, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLawrenceScript, EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
 	person_event SPRITE_GRAMPS, 17, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsGrampsText, -1
 	person_event SPRITE_LADY, 13, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsLadyText, -1

@@ -1,23 +1,21 @@
 Route41_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route41_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 17, 13, 1, WHIRL_ISLAND_NW
 	warp_def 19, 37, 1, WHIRL_ISLAND_NE
 	warp_def 37, 13, 1, WHIRL_ISLAND_SW
 	warp_def 45, 37, 1, WHIRL_ISLAND_SE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 35, 9, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_41_HIDDEN_MAX_ETHER
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_SWIMMER_GUY, 6, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermCharlie, -1
 	person_event SPRITE_SWIMMER_GUY, 8, 46, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermGeorge, -1
 	person_event SPRITE_SWIMMER_GUY, 26, 20, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermBerke, -1

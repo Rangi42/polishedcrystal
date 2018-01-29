@@ -1,12 +1,10 @@
 SafariZoneHub_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SafariZoneHub_MapEventHeader:
-
-.Warps: db 9
+	db 9 ; warps
 	warp_def 27, 16, 1, SAFARI_ZONE_FUCHSIA_GATE
 	warp_def 27, 17, 2, SAFARI_ZONE_FUCHSIA_GATE
 	warp_def 12, 31, 1, SAFARI_ZONE_EAST
@@ -17,13 +15,13 @@ SafariZoneHub_MapEventHeader:
 	warp_def 2, 17, 6, SAFARI_ZONE_NORTH
 	warp_def 21, 19, 1, SAFARI_ZONE_HUB_REST_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 24, 16, SIGNPOST_JUMPTEXT, SafariZoneHubAreaSignText
 	signpost 22, 20, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_BUG_MANIAC, 6, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
 	itemball_event 12, 15, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
 	itemball_event 21, 8, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL

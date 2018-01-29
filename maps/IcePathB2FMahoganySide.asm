@@ -1,12 +1,10 @@
 IcePathB2FMahoganySide_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 IcePathB2FMahoganySide_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 1, 17, 2, ICE_PATH_B1F
 	warp_def 11, 9, 1, ICE_PATH_B3F
 	warp_def 4, 11, 3, ICE_PATH_B1F
@@ -14,12 +12,12 @@ IcePathB2FMahoganySide_MapEventHeader:
 	warp_def 12, 4, 5, ICE_PATH_B1F
 	warp_def 12, 12, 6, ICE_PATH_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 17, 0, SIGNPOST_ITEM + CARBOS, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_HIDDEN_CARBOS
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_1A
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_2A
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 12, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_3A

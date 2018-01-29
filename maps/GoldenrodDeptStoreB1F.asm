@@ -1,23 +1,21 @@
 GoldenrodDeptStoreB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x7d781
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
 
 GoldenrodDeptStoreB1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 2, 17, 3, UNDERGROUND_WAREHOUSE
 	warp_def 4, 9, 1, GOLDENROD_DEPT_STORE_ELEVATOR
 	warp_def 4, 10, 2, GOLDENROD_DEPT_STORE_ELEVATOR
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 8
+	db 8 ; person events
 	itemball_event 15, 10, ETHER, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_ETHER
 	itemball_event 2, 14, METAL_COAT, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_METAL_COAT
 	itemball_event 3, 6, BURN_HEAL, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_BURN_HEAL

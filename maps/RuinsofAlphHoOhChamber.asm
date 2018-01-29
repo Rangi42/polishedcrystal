@@ -1,23 +1,21 @@
 RuinsofAlphHoOhChamber_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw RuinsofAlphHoOhChamberTrigger0
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x5857c
 
 RuinsofAlphHoOhChamber_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 9, 3, 1, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 1, RUINS_OF_ALPH_OUTSIDE
 	warp_def 3, 3, 2, RUINS_OF_ALPH_INNER_CHAMBER
 	warp_def 3, 4, 3, RUINS_OF_ALPH_INNER_CHAMBER
 	warp_def 0, 4, 1, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58685
 	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58685
 	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
@@ -25,7 +23,7 @@ RuinsofAlphHoOhChamber_MapEventHeader:
 	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
 	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost5Script
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 RuinsofAlphHoOhChamberTrigger0:
 	special SpecialHoOhChamber

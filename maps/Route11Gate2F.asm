@@ -1,21 +1,19 @@
 Route11Gate2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route11Gate2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 7, 7, -1, ROUTE_11_GATE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 2, 1, SIGNPOST_UP, Route11Gate2FBinoculars1
 	signpost 2, 6, SIGNPOST_UP, Route11Gate2FBinoculars2
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 Route11Gate2FBinoculars1:
 	jumptext Route11Gate2FBinoculars1Text

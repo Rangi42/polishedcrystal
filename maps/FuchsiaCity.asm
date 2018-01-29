@@ -1,13 +1,11 @@
 FuchsiaCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, FuchsiaCityFlyPoint
 
 FuchsiaCity_MapEventHeader:
-
-.Warps: db 11
+	db 11 ; warps
 	warp_def 13, 5, 2, FUCHSIA_MART
 	warp_def 27, 8, 1, FUCHSIA_GYM
 	warp_def 27, 11, 1, FUCHSIA_BILL_SPEECH_HOUSE
@@ -20,9 +18,9 @@ FuchsiaCity_MapEventHeader:
 	warp_def 33, 8, 2, ROUTE_19_FUCHSIA_GATE
 	warp_def 27, 15, 1, FUCHSIA_SAFARI_BALL_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 14
+	db 14 ; signposts
 	signpost 15, 21, SIGNPOST_JUMPTEXT, FuchsiaCitySignText
 	signpost 29, 5, SIGNPOST_JUMPTEXT, FuchsiaGymSignText
 	signpost 15, 25, SIGNPOST_JUMPTEXT, SafariZoneOfficeSignText
@@ -38,7 +36,7 @@ FuchsiaCity_MapEventHeader:
 	signpost 27, 31, SIGNPOST_JUMPTEXT, HouseForSaleSignText
 	signpost 35, 11, SIGNPOST_JUMPTEXT, FuchsiaCityCarefulSwimmingSignText
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_YOUNGSTER, 18, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b45, -1
 	person_event SPRITE_POKEFAN_M, 8, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b83, -1
 	person_event SPRITE_TEACHER, 13, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194bd3, -1

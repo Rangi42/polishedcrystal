@@ -1,18 +1,16 @@
 NavelRockOutside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 NavelRockOutside_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 25, 12, 1, SEAGALLOP_FERRY_NAVEL_GATE
 	warp_def 25, 13, 1, SEAGALLOP_FERRY_NAVEL_GATE
 	warp_def 15, 12, 1, NAVEL_ROCK_INSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 0
+	db 0 ; person events

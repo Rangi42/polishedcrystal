@@ -1,22 +1,20 @@
 CeladonCafe_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonCafe_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 6, 9, CELADON_CITY
 	warp_def 7, 7, 9, CELADON_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 0, 5, SIGNPOST_JUMPTEXT, EatathonContestPosterText
 	signpost 1, 7, SIGNPOST_JUMPTEXT, EatathonContestTrashCanText
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_MAYLENE, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MayleneScript, -1
 	person_event SPRITE_TEACHER, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
 	person_event SPRITE_FISHER, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x73051, -1

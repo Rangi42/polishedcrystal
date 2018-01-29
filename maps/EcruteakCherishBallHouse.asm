@@ -1,21 +1,19 @@
 EcruteakCherishBallHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 EcruteakCherishBallHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 16, ECRUTEAK_CITY
 	warp_def 7, 4, 16, ECRUTEAK_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCherishBallHouseGrampsScript, -1
 	person_event SPRITE_GRANNY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCherishBallHouseGrannyText, -1
 

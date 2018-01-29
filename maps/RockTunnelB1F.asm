@@ -1,24 +1,22 @@
 RockTunnelB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RockTunnelB1F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 3, 3, 3, ROCK_TUNNEL_1F
 	warp_def 9, 17, 4, ROCK_TUNNEL_1F
 	warp_def 3, 23, 5, ROCK_TUNNEL_1F
 	warp_def 19, 27, 6, ROCK_TUNNEL_1F
 	warp_def 13, 3, 7, ROCK_TUNNEL_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 18, 3, SIGNPOST_ITEM + MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_FISHER, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherDick, -1
 	person_event SPRITE_HEX_MANIAC, 24, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacVivian, -1
 	itemball_event 17, 7, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON

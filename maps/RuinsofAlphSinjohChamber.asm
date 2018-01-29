@@ -1,23 +1,21 @@
 RuinsofAlphSinjohChamber_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RuinsofAlphSinjohChamber_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 5, 12, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 12, RUINS_OF_ALPH_OUTSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 2, 5, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
 	signpost 3, 4, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
 	signpost 3, 6, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_WII, 1, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
 	person_event SPRITE_GAMECUBE, 1, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
 	person_event SPRITE_GOLD_TROPHY, 5, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R

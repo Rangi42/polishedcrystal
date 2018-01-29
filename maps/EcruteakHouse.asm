@@ -1,26 +1,24 @@
 EcruteakHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
 
 EcruteakHouse_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 17, 4, 3, ECRUTEAK_CITY
 	warp_def 17, 5, 3, ECRUTEAK_CITY
 	warp_def 3, 5, 4, ECRUTEAK_HOUSE
 	warp_def 15, 17, 3, ECRUTEAK_HOUSE
 	warp_def 3, 17, 3, WISE_TRIOS_ROOM
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 7, 4, EcruteakHouse_XYTrigger1
 	xy_trigger 0, 7, 5, EcruteakHouse_XYTrigger2
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_SAGE, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_1
 	person_event SPRITE_SAGE, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_2
 	person_event SPRITE_SAGE, 9, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x980b0, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE

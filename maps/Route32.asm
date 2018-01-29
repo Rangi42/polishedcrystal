@@ -1,21 +1,19 @@
 Route32_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route32FlyPoint
 	dbw MAPCALLBACK_OBJECTS, Route32Frieda
 
 Route32_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 73, 11, 1, ROUTE_32_POKECENTER_1F
 	warp_def 2, 4, 3, ROUTE_32_RUINS_OF_ALPH_GATE
 	warp_def 3, 4, 4, ROUTE_32_RUINS_OF_ALPH_GATE
 	warp_def 79, 6, 4, UNION_CAVE_1F
 	warp_def 24, 4, 1, HIDDEN_TREE_GROTTO
 
-.XYTriggers: db 6
+	db 6 ; xy triggers
 	xy_trigger 0, 8, 18, Route32CooltrainerMStopsYou
 	xy_trigger 1, 24, 10, Route32LyraIntroducesHiddenGrottoes1
 	xy_trigger 1, 24, 11, Route32LyraIntroducesHiddenGrottoes2
@@ -23,7 +21,7 @@ Route32_MapEventHeader:
 	xy_trigger 1, 24, 13, Route32LyraIntroducesHiddenGrottoes4
 	xy_trigger 2, 71, 7, Route32WannaBuyASlowpokeTailScript
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost  5, 13, SIGNPOST_JUMPTEXT, Route32SignText
 	signpost  1,  9, SIGNPOST_JUMPTEXT, Route32RuinsSignText
 	signpost 84, 10, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
@@ -32,7 +30,7 @@ Route32_MapEventHeader:
 	signpost 23, 4, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 	signpost 23, 5, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 
-.PersonEvents: db 17
+	db 17 ; person events
 	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
 	person_event SPRITE_FISHER, 70, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_NEW_BARK_LYRA, 67, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY

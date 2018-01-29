@@ -1,20 +1,18 @@
 GoldenrodPokeComCenter1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GoldenrodPokeComCenter1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 15, 6, 15, GOLDENROD_CITY
 	warp_def 15, 7, 15, GOLDENROD_CITY
 	warp_def 6, 1, 2, GOLDENROD_POKECOM_CENTER_OFFICE
 	warp_def 15, 0, 1, POKECENTER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 17
+	db 17 ; signposts
 	signpost 7, 11, SIGNPOST_READ, PokemonJournalWhitneyScript
 	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
 	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
@@ -33,7 +31,7 @@ GoldenrodPokeComCenter1F_MapEventHeader:
 	signpost 10, 29, SIGNPOST_LEFT, NewsMachineScript
 	signpost 3, 24, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_BOWING_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
 	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
 	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1

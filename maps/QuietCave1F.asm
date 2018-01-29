@@ -1,12 +1,10 @@
 QuietCave1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 QuietCave1F_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 33, 19, 5, ROUTE_47
 	warp_def 25, 5, 1, QUIET_CAVE_B1F
 	warp_def 23, 27, 2, QUIET_CAVE_B1F
@@ -14,11 +12,11 @@ QuietCave1F_MapEventHeader:
 	warp_def 17, 3, 4, QUIET_CAVE_B1F
 	warp_def 13, 31, 5, QUIET_CAVE_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_HEX_MANIAC, 8, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacAshley, -1
 	person_event SPRITE_COOLTRAINER_M, 17, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermHenri, -1
 	person_event SPRITE_POKEFAN_M, 25, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerGrady, -1

@@ -1,21 +1,19 @@
 SeagallopFerryVermilionGate_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw SeagallopFerryVermilionGateTrigger0
 	dw SeagallopFerryVermilionGateTrigger1
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SeagallopFerryVermilionGate_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 0, 6, 11, VERMILION_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryVermilionGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 
 const_value set 1

@@ -1,22 +1,20 @@
 RedsHouse1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RedsHouse1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 2, 1, PALLET_TOWN
 	warp_def 7, 3, 1, PALLET_TOWN
 	warp_def 0, 7, 1, REDS_HOUSE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 5, SIGNPOST_UP, RedsHouse1FTVScript
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_REDS_MOM, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RedsMom, -1
 
 RedsMom:

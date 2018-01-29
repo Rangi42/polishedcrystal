@@ -1,20 +1,18 @@
 CharcoalKiln_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CharcoalKiln_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 2, AZALEA_TOWN
 	warp_def 7, 4, 2, AZALEA_TOWN
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_BLACK_BELT, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CharcoalKilnBoss, EVENT_CHARCOAL_KILN_BOSS
 	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CharcoalKilnApprentice, EVENT_CHARCOAL_KILN_APPRENTICE
 	person_event SPRITE_FARFETCH_D, 6, 8, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CharcoalKilnFarfetchdScript, EVENT_CHARCOAL_KILN_FARFETCH_D

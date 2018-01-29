@@ -1,20 +1,18 @@
 Route16Northeast_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route16Northeast_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 10, 14, 3, ROUTE_16_17_GATE
 	warp_def 11, 14, 4, ROUTE_16_17_GATE
 	warp_def 4, 14, 3, ROUTE_16_GATE
 	warp_def 5, 14, 4, ROUTE_16_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	cuttree_event 4, 17, EVENT_ROUTE_16_CUT_TREE

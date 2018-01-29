@@ -1,23 +1,21 @@
 GoldenrodDeptStore5F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, GoldenrodDeptStore5FCheckIfSunday
 
 GoldenrodDeptStore5F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 0, 12, 1, GOLDENROD_DEPT_STORE_4F
 	warp_def 0, 15, 1, GOLDENROD_DEPT_STORE_6F
 	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore5FDirectoryText
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_RECEPTIONIST, 5, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x560ce, EVENT_GOLDENROD_DEPT_STORE_5F_HAPPINESS_EVENT_LADY
 	person_event SPRITE_CLERK, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_TM, MART_GOLDENROD_5F_TM, -1
 	person_event SPRITE_COOLTRAINER_M, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, trade, TRADE_WITH_MIKE_FOR_MACHOP, -1

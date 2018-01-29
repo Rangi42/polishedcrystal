@@ -1,14 +1,12 @@
 AzaleaTown_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
 	dbw MAPCALLBACK_TILES, AzaleaTownRainScript
 
 AzaleaTown_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 9, 15, 1, AZALEA_POKECENTER_1F
 	warp_def 13, 21, 1, CHARCOAL_KILN
 	warp_def 5, 21, 2, AZALEA_MART
@@ -18,12 +16,12 @@ AzaleaTown_MapEventHeader:
 	warp_def 10, 2, 3, ILEX_FOREST_AZALEA_GATE
 	warp_def 11, 2, 4, ILEX_FOREST_AZALEA_GATE
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 1, 10, 5, AzaleaTownRivalBattleTrigger1
 	xy_trigger 1, 11, 5, AzaleaTownRivalBattleTrigger2
 	xy_trigger 2, 6, 9, AzaleaTown_CelebiTrigger
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 9, 19, SIGNPOST_JUMPTEXT, AzaleaTownSignText
 	signpost 9, 10, SIGNPOST_JUMPTEXT, KurtsHouseSignText
 	signpost 15, 14, SIGNPOST_JUMPTEXT, AzaleaGymSignText
@@ -32,7 +30,7 @@ AzaleaTown_MapEventHeader:
 	signpost 9, 3, SIGNPOST_JUMPTEXT, AzaleaTownIlexForestSignText
 	signpost 6, 31, SIGNPOST_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_SILVER, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
 	person_event SPRITE_KURT, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
 	person_event SPRITE_GRAMPS, 9, 21, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownGrampsScript, -1

@@ -1,23 +1,21 @@
 GoldenrodDeptStore1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GoldenrodDeptStore1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 7, 7, 9, GOLDENROD_CITY
 	warp_def 7, 8, 9, GOLDENROD_CITY
 	warp_def 0, 15, 2, GOLDENROD_DEPT_STORE_2F
 	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore1FDirectoryText
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55993, -1
 	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55a1a, -1
 	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55a3a, -1

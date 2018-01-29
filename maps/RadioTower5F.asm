@@ -1,25 +1,23 @@
 RadioTower5F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RadioTower5F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 0, 0, 1, RADIO_TOWER_4F
 	warp_def 0, 12, 3, RADIO_TOWER_4F
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 3, 0, FakeDirectorScript
 	xy_trigger 1, 5, 16, RadioTower5FRocketBossTrigger
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 3, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice
 	signpost 0, 11, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
 	signpost 0, 15, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
 	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
 	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

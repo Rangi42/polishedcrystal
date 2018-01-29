@@ -1,25 +1,23 @@
 FarawayIsland_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw FarawayIslandTrigger0
 	dw FarawayIslandTrigger1
 
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, FarawayIslandVisited
 	dbw MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
 
 FarawayIsland_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 8, 22, 1, FARAWAY_JUNGLE
 	warp_def 8, 23, 2, FARAWAY_JUNGLE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 34, 4, SIGNPOST_JUMPTEXT, FarawayIslandSignText
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND
 

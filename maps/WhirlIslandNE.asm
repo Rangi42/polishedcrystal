@@ -1,20 +1,18 @@
 WhirlIslandNE_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 WhirlIslandNE_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 13, 3, 2, ROUTE_41
 	warp_def 3, 17, 2, WHIRL_ISLAND_B1F
 	warp_def 11, 13, 3, WHIRL_ISLAND_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 11, 11, ULTRA_BALL, 1, EVENT_WHIRL_ISLAND_NE_ULTRA_BALL
 

@@ -1,19 +1,17 @@
 TinTower3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 TinTower3F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 14, 8, 1, TIN_TOWER_2F
 	warp_def 2, 14, 2, TIN_TOWER_4F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 14, 1, FULL_HEAL, 1, EVENT_TIN_TOWER_3F_FULL_HEAL
 

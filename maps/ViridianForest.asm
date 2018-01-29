@@ -1,19 +1,17 @@
 ViridianForest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ViridianForest_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 5, 3, 1, VIRIDIAN_FOREST_PEWTER_GATE
 	warp_def 47, 18, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
 	warp_def 47, 19, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 11
+	db 11 ; signposts
 	signpost 7, 4, SIGNPOST_JUMPTEXT, ViridianForestSignText1
 	signpost 26, 6, SIGNPOST_JUMPTEXT, ViridianForestSignText2
 	signpost 19, 28, SIGNPOST_JUMPTEXT, ViridianForestSignText3
@@ -26,7 +24,7 @@ ViridianForest_MapEventHeader:
 	signpost 9, 30, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
 	signpost 14, 3, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
 	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
 	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1

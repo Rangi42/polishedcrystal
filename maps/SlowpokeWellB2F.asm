@@ -1,19 +1,17 @@
 SlowpokeWellB2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SlowpokeWellB2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 11, 9, 2, SLOWPOKE_WELL_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_GYM_GUY, 4, 5, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
 	itemball_event 5, 15, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
 

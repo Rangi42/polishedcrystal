@@ -1,21 +1,19 @@
 IcePathB3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 IcePathB3F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 3, 2, ICE_PATH_B2F_MAHOGANY_SIDE
 	warp_def 5, 15, 2, ICE_PATH_B2F_BLACKTHORN_SIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 3, 16, SIGNPOST_JUMPTEXT, Text_IcePathB3FIceRock
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_LORELEI, 2, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1
 	itemball_event 7, 5, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
 	smashrock_event 6, 6

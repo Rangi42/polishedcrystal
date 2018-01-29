@@ -1,22 +1,20 @@
 SaffronBookSpeechHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SaffronBookSpeechHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 18, SAFFRON_CITY
 	warp_def 7, 3, 18, SAFFRON_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 1, 5, SIGNPOST_JUMPSTD, picturebookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronBookSpeechHouseLassText, -1
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
 

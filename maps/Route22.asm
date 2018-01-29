@@ -1,20 +1,18 @@
 Route22_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route22_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 5, 3, 1, POKEMON_LEAGUE_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 6, 6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 

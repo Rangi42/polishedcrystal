@@ -1,19 +1,17 @@
 LuckyIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
 LuckyIsland_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
+	db 0 ; signposts
 
-.Signposts: db 0
-
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_BALL_CUT_FRUIT, 18, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
 	person_event SPRITE_FISHER, 6, 29, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
 	person_event SPRITE_BAKER, 16, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS

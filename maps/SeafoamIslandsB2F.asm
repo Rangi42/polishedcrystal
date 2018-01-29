@@ -1,12 +1,10 @@
 SeafoamIslandsB2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SeafoamIslandsB2F_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 15, 25, 3, SEAFOAM_ISLANDS_B1F
 	warp_def 7, 15, 4, SEAFOAM_ISLANDS_B1F
 	warp_def 13, 13, 5, SEAFOAM_ISLANDS_B1F
@@ -16,13 +14,13 @@ SeafoamIslandsB2F_MapEventHeader:
 	warp_def 15, 35, 3, SEAFOAM_ISLANDS_B3F
 	warp_def 13, 4, 4, SEAFOAM_ISLANDS_B3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 9, 7, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1
 	signpost 13, 35, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_2
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_SKIER, 4, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierCady, -1
 	person_event SPRITE_BOARDER, 5, 16, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderShaun, -1
 	person_event SPRITE_BOARDER, 8, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderBryce, -1

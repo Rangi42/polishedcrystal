@@ -1,13 +1,11 @@
 Route47_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Route47TileScript
 
 Route47_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 21, 67, 2, CLIFF_EDGE_GATE
 	warp_def 21, 53, 1, CLIFF_CAVE
 	warp_def 17, 52, 2, CLIFF_CAVE
@@ -15,7 +13,7 @@ Route47_MapEventHeader:
 	warp_def 23, 11, 1, QUIET_CAVE_1F
 	warp_def 23, 7, 1, EMBEDDED_TOWER
 
-.XYTriggers: db 32
+	db 32 ; xy triggers
 	xy_trigger 1, 24, 42, Route47Bridge1OverheadTrigger
 	xy_trigger 1, 25, 42, Route47Bridge1OverheadTrigger
 	xy_trigger 1, 24, 51, Route47Bridge1OverheadTrigger
@@ -49,13 +47,13 @@ Route47_MapEventHeader:
 	xy_trigger 0, 16, 26, Route47Bridge4UnderfootTrigger
 	xy_trigger 0, 17, 26, Route47Bridge4UnderfootTrigger
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 23, 8, SIGNPOST_IFNOTSET, Route47SealedCaveSign
 	signpost 32, 36, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
 	signpost 33, 34, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	signpost 32, 5, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoThomandkae1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER

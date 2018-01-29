@@ -1,22 +1,20 @@
 FuchsiaPokeCenter1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FuchsiaPokeCenter1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 5, 4, FUCHSIA_CITY
 	warp_def 7, 6, 4, FUCHSIA_CITY
 	warp_def 7, 0, 1, POKECENTER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalJanineScript
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_NEW_BARK_LYRA, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineImpersonatorScript, -1
 	pc_nurse_event 1, 5
 	person_event SPRITE_COOLTRAINER_M, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerMText, -1

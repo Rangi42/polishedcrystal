@@ -1,23 +1,21 @@
 CeladonDeptStore1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonDeptStore1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 7, 7, 1, CELADON_CITY
 	warp_def 7, 8, 1, CELADON_CITY
 	warp_def 0, 15, 2, CELADON_DEPT_STORE_2F
 	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore1FDirectoryText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x709ef, -1
 	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70a35, -1
 	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70aa9, -1

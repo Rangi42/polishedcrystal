@@ -1,18 +1,16 @@
 Route23_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route23_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 135, 7, 5, POKEMON_LEAGUE_GATE
 	warp_def 135, 8, 6, POKEMON_LEAGUE_GATE
 	warp_def 31, 4, 1, VICTORY_ROAD_1F
 	warp_def 31, 14, 1, VICTORY_ROAD_2F
 
-.XYTriggers: db 23
+	db 23 ; xy triggers
 	xy_trigger 0, 131, 14, Route23ZephyrBadgeTriggerScript
 	xy_trigger 1, 123, 9, Route23HiveBadgeTriggerScript
 	xy_trigger 2, 107, 10, Route23PlainBadgeTriggerScript
@@ -37,10 +35,10 @@ Route23_MapEventHeader:
 	xy_trigger 7, 47, 6, Route23RisingBadgeTriggerScript
 	xy_trigger 7, 47, 7, Route23RisingBadgeTriggerScript
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 32, 3, SIGNPOST_JUMPTEXT, VictoryRoadSignText
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_OFFICER, 131, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route23ZephyrBadgeOfficerScript, -1
 	person_event SPRITE_OFFICER_F, 123, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route23HiveBadgeOfficerScript, -1
 	person_event SPRITE_OFFICER, 107, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route23PlainBadgeOfficerScript, -1

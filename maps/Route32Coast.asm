@@ -1,24 +1,22 @@
 Route32Coast_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route32Coast_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 57, 4, 4, UNION_CAVE_B1F_SOUTH
 	warp_def 51, 17, 1, ROUTE_32_COAST_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 29, 15, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
 	signpost 59, 5, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
 	signpost 34, 17, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
 	signpost 45, 5, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_GUIDE_GENT, 5, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMichel, -1
 	person_event SPRITE_GUIDE_GENT, 67, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermLucas, -1
 	person_event SPRITE_SWIMMER_GIRL, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfAlison, -1

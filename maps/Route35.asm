@@ -1,27 +1,25 @@
 Route35_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route35RebattleBreeder
 
 Route35_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 33, 13, 1, ROUTE_35_GOLDENROD_GATE
 	warp_def 33, 14, 2, ROUTE_35_GOLDENROD_GATE
 	warp_def 5, 7, 3, ROUTE_35_NATIONAL_PARK_GATE
 	warp_def 16, 14, 1, HIDDEN_TREE_GROTTO
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 7, 5, SIGNPOST_JUMPTEXT, Route35SignText
 	signpost 31, 15, SIGNPOST_JUMPTEXT, Route35SignText
 	signpost 15, 14, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 	signpost 15, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_YOUNGSTER, 19, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
 	person_event SPRITE_YOUNGSTER, 20, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli1, -1
 	person_event SPRITE_LASS, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli2, -1

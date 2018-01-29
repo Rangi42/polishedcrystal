@@ -1,25 +1,23 @@
 SproutTower1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SproutTower1F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 15, 7, 7, VIOLET_CITY
 	warp_def 15, 8, 7, VIOLET_CITY
 	warp_def 4, 4, 1, SPROUT_TOWER_2F
 	warp_def 6, 0, 2, SPROUT_TOWER_2F
 	warp_def 3, 15, 3, SPROUT_TOWER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 15, 5, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
 	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_SAGE, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1845d8, -1
 	person_event SPRITE_SAGE, 7, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18460a, -1
 	person_event SPRITE_GRANNY, 12, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1

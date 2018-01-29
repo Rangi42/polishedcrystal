@@ -1,21 +1,19 @@
 Route15FuchsiaGate2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route15FuchsiaGate2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 7, 7, -1, ROUTE_15_FUCHSIA_GATE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 2, 1, SIGNPOST_UP, Route15FuchsiaGate2FBinoculars1
 	signpost 2, 6, SIGNPOST_UP, Route15FuchsiaGate2FBinoculars2
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 Route15FuchsiaGate2FBinoculars1:
 	jumptext Route15FuchsiaGate2FBinoculars1Text

@@ -1,24 +1,22 @@
 ShamoutiHotel1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, ShamoutiHotel1FRestaurantTrigger
 
 ShamoutiHotel1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 7, 8, 2, SHAMOUTI_ISLAND
 	warp_def 7, 9, 2, SHAMOUTI_ISLAND
 	warp_def 0, 2, 1, SHAMOUTI_HOTEL_2F
 	warp_def 0, 14, 1, SHAMOUTI_HOTEL_RESTAURANT
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 15, SIGNPOST_JUMPTEXT, ShamoutiHotelRestaurantSignText
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FReceptionistText, -1
 	person_event SPRITE_ARTIST, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
 	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FCooltrainermText, -1

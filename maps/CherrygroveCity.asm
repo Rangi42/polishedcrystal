@@ -1,29 +1,27 @@
 CherrygroveCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
 
 CherrygroveCity_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 3, 23, 2, CHERRYGROVE_MART
 	warp_def 3, 29, 1, CHERRYGROVE_POKECENTER_1F
 	warp_def 7, 17, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
 	warp_def 9, 25, 1, GUIDE_GENTS_HOUSE
 	warp_def 11, 31, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 0, 7, 33, CherrygroveGuideGentTrigger
 	xy_trigger 1, 6, 33, CherrygroveSilverTriggerNorth
 	xy_trigger 1, 7, 33, CherrygroveSilverTriggerSouth
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 8, 30, SIGNPOST_JUMPTEXT, CherrygroveCitySignText
 	signpost 9, 23, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	person_event SPRITE_CHERRYGROVE_RIVAL, 6, 39, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
 	person_event SPRITE_TEACHER, 13, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1

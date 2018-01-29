@@ -1,18 +1,16 @@
 VioletOutskirts_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VioletOutskirts_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
+	db 0 ; signposts
 
-.Signposts: db 0
-
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SUPER_NERD, 2, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPokemaniacShane, -1
 	person_event SPRITE_ROUTE_30_RATTATA, -2, 16, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	fruittree_event -2, 17, FRUITTREE_ROUTE_42_1, PNK_APRICORN

@@ -1,13 +1,11 @@
 IcePathB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
 
 IcePathB1F_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 15, 3, 3, ICE_PATH_1F
 	warp_def 3, 17, 1, ICE_PATH_B2F_MAHOGANY_SIDE
 	warp_def 2, 11, 3, ICE_PATH_B2F_MAHOGANY_SIDE ; hole
@@ -17,12 +15,12 @@ IcePathB1F_MapEventHeader:
 	warp_def 25, 5, 4, ICE_PATH_1F
 	warp_def 27, 11, 1, ICE_PATH_B2F_BLACKTHORN_SIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 30, 17, SIGNPOST_ITEM + MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
 
-.PersonEvents: db 8
+	db 8 ; person events
 	strengthboulder_event 7, 11, EVENT_BOULDER_IN_ICE_PATH_1
 	strengthboulder_event 8, 7, EVENT_BOULDER_IN_ICE_PATH_2
 	strengthboulder_event 9, 8, EVENT_BOULDER_IN_ICE_PATH_3

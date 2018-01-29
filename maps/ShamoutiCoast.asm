@@ -1,21 +1,19 @@
 ShamoutiCoast_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ShamoutiCoast_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 15, 22, 1, FIRE_ISLAND
 	warp_def 11, 54, 1, ICE_ISLAND
 	warp_def 13, 84, 1, LIGHTNING_ISLAND
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_ARTIST, 9, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerArtistRin, -1
 	person_event SPRITE_SWIMMER_GIRL, 5, 12, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfMarina, -1
 	person_event SPRITE_FISHER, 9, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDallas, -1

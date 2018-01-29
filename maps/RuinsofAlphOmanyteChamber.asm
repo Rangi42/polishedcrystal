@@ -1,23 +1,21 @@
 RuinsofAlphOmanyteChamber_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw RuinsofAlphOmanyteChamberTrigger0
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58bf8
 
 RuinsofAlphOmanyteChamber_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 9, 3, 3, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 3, RUINS_OF_ALPH_OUTSIDE
 	warp_def 3, 3, 6, RUINS_OF_ALPH_INNER_CHAMBER
 	warp_def 3, 4, 7, RUINS_OF_ALPH_INNER_CHAMBER
 	warp_def 0, 4, 1, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
 	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
 	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost2Script
@@ -25,7 +23,7 @@ RuinsofAlphOmanyteChamber_MapEventHeader:
 	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost4Script
 	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost5Script
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber

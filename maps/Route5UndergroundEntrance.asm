@@ -1,21 +1,19 @@
 Route5UndergroundEntrance_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route5UndergroundEntrance_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 3, 1, ROUTE_5
 	warp_def 7, 4, 1, ROUTE_5
 	warp_def 4, 4, 1, UNDERGROUND
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b558, -1
 
 UnknownText_0x18b558:

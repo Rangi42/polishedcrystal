@@ -1,22 +1,20 @@
 PewterGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 PewterGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 13, 4, 2, PEWTER_CITY
 	warp_def 13, 5, 2, PEWTER_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 11, 2, SIGNPOST_READ, PewterGymStatue
 	signpost 11, 7, SIGNPOST_READ, PewterGymStatue
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_BROCK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrockScript_0x1a2864, -1
 	person_event SPRITE_YOUNGSTER, 7, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperJerry, -1
 	person_event SPRITE_POKEFAN_M, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerEdwin, -1

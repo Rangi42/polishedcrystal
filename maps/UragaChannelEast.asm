@@ -1,17 +1,15 @@
 UragaChannelEast_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 UragaChannelEast_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 11, 2, 1, SCARY_CAVE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 5, 45, SIGNPOST_JUMPTEXT, UragaChannelSignText
 	signpost 13, 3, SIGNPOST_JUMPTEXT, ScaryCaveEastSignText
 	signpost 4, 33, SIGNPOST_ITEM + NUGGET, EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET
@@ -19,7 +17,7 @@ UragaChannelEast_MapEventHeader:
 	signpost 12, 22, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP
 	signpost 11, 9, SIGNPOST_ITEM + STAR_PIECE, EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SWIMMER_GIRL, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 22, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermKieran, -1
 	person_event SPRITE_BIKER, 15, 34, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBikerTyrone, -1

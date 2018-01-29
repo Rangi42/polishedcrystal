@@ -1,17 +1,15 @@
 TinTower2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 TinTower2F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 14, 8, 1, TIN_TOWER_3F
 	warp_def 2, 8, 3, TIN_TOWER_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 0
+	db 0 ; person events

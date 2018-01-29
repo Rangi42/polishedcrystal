@@ -1,25 +1,23 @@
 DayCare_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw DayCareTrigger0
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, DayCareEggCheckCallback
 
 DayCare_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 4, 0, 3, ROUTE_34
 	warp_def 5, 0, 4, ROUTE_34
 	warp_def 7, 2, 5, ROUTE_34
 	warp_def 7, 3, 5, ROUTE_34
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 5, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
 	person_event SPRITE_LYRA, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_DAYCARE
 	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAYCARE_MAN_IN_DAYCARE

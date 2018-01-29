@@ -1,20 +1,18 @@
 TrainerHouseB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 TrainerHouseB1F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 4, 9, 3, TRAINER_HOUSE_1F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 3, 7, TrainerHouseReceptionistScript
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
 	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
 	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

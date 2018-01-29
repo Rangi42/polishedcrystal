@@ -1,18 +1,16 @@
 SilphCo2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SilphCo2F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 0, 13, 3, SILPH_CO_1F
 	warp_def 0, 11, 1, SILPH_CO_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 2, 3, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
 	signpost 2, 9, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
 	signpost 0, 5, SIGNPOST_JUMPTEXT, SilphCo2FElevatorText
@@ -22,7 +20,7 @@ SilphCo2F_MapEventHeader:
 	signpost 3, 12, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 3, 13, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
 	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
 	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1

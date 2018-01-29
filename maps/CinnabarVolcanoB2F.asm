@@ -1,22 +1,20 @@
 CinnabarVolcanoB2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, CinnabarVolcanoB2FBouldersLand
 
 CinnabarVolcanoB2F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 3, 13, 5, CINNABAR_VOLCANO_B1F
 	warp_def 19, 25, 6, CINNABAR_VOLCANO_B1F
 	warp_def 6, 6, 7, CINNABAR_VOLCANO_B1F ; hole
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_MOLTRES, 22, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
 	person_event SPRITE_LAWRENCE, 24, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
 	smashrock_event 19, 21

@@ -1,22 +1,20 @@
 CeladonDeptStore2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonDeptStore2F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 0, 12, 1, CELADON_DEPT_STORE_3F
 	warp_def 0, 15, 3, CELADON_DEPT_STORE_1F
 	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore2FDirectoryText
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_1, -1
 	person_event SPRITE_CLERK, 5, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_2, -1
 	person_event SPRITE_POKEFAN_M, 2, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70bc9, -1

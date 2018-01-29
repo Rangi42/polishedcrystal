@@ -1,13 +1,11 @@
 UndergroundPathSwitchRoomEntrances_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UndergroundPathSwitchRoomEntrancesUpdateDoorPositions
 
 UndergroundPathSwitchRoomEntrances_MapEventHeader:
-
-.Warps: db 9
+	db 9 ; warps
 	warp_def 3, 23, 6, WAREHOUSE_ENTRANCE
 	warp_def 10, 22, 1, UNDERGROUND_WAREHOUSE
 	warp_def 10, 23, 2, UNDERGROUND_WAREHOUSE
@@ -18,11 +16,11 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	warp_def 27, 20, 13, GOLDENROD_CITY
 	warp_def 27, 21, 13, GOLDENROD_CITY
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 4, 19, UndergroundSilverTrigger1
 	xy_trigger 0, 5, 19, UndergroundSilverTrigger2
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 1, 16, SIGNPOST_READ, Switch1Script
 	signpost 1, 10, SIGNPOST_READ, Switch2Script
 	signpost 1, 2, SIGNPOST_READ, Switch3Script
@@ -30,7 +28,7 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	signpost 9, 8, SIGNPOST_ITEM + MAX_POTION, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION
 	signpost 8, 1, SIGNPOST_ITEM + REVIVE, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_SILVER, 3, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
 	person_event SPRITE_PHARMACIST, 12, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_PHARMACIST, 8, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER

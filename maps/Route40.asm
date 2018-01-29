@@ -1,22 +1,20 @@
 Route40_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, MonicaCallback
 
 Route40_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 5, 9, 1, ROUTE_40_BATTLE_TOWER_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 10, 14, SIGNPOST_JUMPTEXT, Route40SignText
 	signpost 8, 7, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_40_HIDDEN_HYPER_POTION
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_BEAUTY, 10, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
 	person_event SPRITE_SWIMMER_GUY, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
 	person_event SPRITE_SWIMMER_GUY, 33, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermRandall, -1

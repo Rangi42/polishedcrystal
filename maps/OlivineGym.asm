@@ -1,22 +1,20 @@
 OlivineGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OlivineGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 15, 4, 2, OLIVINE_CITY
 	warp_def 15, 5, 2, OLIVINE_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 13, 3, SIGNPOST_READ, OlivineGymStatue
 	signpost 13, 6, SIGNPOST_READ, OlivineGymStatue
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_JASMINE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x9c12f, EVENT_OLIVINE_GYM_JASMINE
 	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
 	person_event SPRITE_GENTLEMAN, 10, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE

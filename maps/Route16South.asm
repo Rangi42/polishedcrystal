@@ -1,22 +1,20 @@
 Route16South_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
 Route16South_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 10, 9, 1, ROUTE_16_17_GATE
 	warp_def 11, 9, 2, ROUTE_16_17_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 9, 5, SIGNPOST_JUMPTEXT, CyclingRoadSignText
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_OFFICER_F, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 UnknownScript_0x1ad318:

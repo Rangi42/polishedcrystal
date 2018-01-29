@@ -1,24 +1,22 @@
 CeladonUniversityWestwoodsOffice_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityWestwoodsOffice_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 3, 5, CELADON_UNIVERSITY_2F
 	warp_def 5, 4, 5, CELADON_UNIVERSITY_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost1Text
 	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost2Text
 	signpost 1, 4, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 	signpost 1, 5, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_CHILD, 3, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 4, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, CeladonUniversityWestwoodsOfficeBookText, -1
 

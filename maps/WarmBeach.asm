@@ -1,25 +1,23 @@
 WarmBeach_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 WarmBeach_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 13, 15, 1, WARM_BEACH_SHACK
 	warp_def 5, 8, 2, SHAMOUTI_TUNNEL
 	warp_def 8, 3, 1, WARM_BEACH_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 14, 17, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
 	signpost 20, 18, SIGNPOST_JUMPTEXT, WarmBeachShrineText
 	signpost 20, 19, SIGNPOST_JUMPTEXT, WarmBeachShrineText
 	signpost 20, 6, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_SIGHTSEER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
 	person_event SPRITE_LADY, 12, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
 	person_event SPRITE_COOLTRAINER_M, 14, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1

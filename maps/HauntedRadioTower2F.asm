@@ -1,17 +1,15 @@
 HauntedRadioTower2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 HauntedRadioTower2F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 0, 13, 3, LAV_RADIO_TOWER_1F
 	warp_def 0, 2, 1, HAUNTED_RADIO_TOWER_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 0
+	db 0 ; person events

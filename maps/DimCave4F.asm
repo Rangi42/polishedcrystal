@@ -1,14 +1,12 @@
 DimCave4F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_TILES, DimCave4FBouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
 DimCave4F_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 16, 2, 2, DIM_CAVE_5F
 	warp_def 29, 27, 3, DIM_CAVE_5F
 	warp_def 24, 27, 4, DIM_CAVE_5F ; hole
@@ -16,13 +14,13 @@ DimCave4F_MapEventHeader:
 	warp_def 22, 28, 2, DIM_CAVE_3F
 	warp_def 7, 14, 3, DIM_CAVE_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 23, 25, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
 	signpost 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
 
-.PersonEvents: db 8
+	db 8 ; person events
 	strengthboulder_event 15, 14, EVENT_BOULDER_IN_DIM_CAVE_4F
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 25, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	person_event SPRITE_SCIENTIST, 14, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1

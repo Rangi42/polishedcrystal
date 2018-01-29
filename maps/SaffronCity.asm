@@ -1,13 +1,11 @@
 SaffronCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
 
 SaffronCity_MapEventHeader:
-
-.Warps: db 20
+	db 20 ; warps
 	warp_def 3, 26, 1, FIGHTING_DOJO
 	warp_def 3, 34, 1, SAFFRON_GYM
 	warp_def 11, 25, 2, SAFFRON_MART
@@ -29,9 +27,9 @@ SaffronCity_MapEventHeader:
 	warp_def 29, 21, 1, SAFFRON_HITMONTOP_KID_HOUSE
 	warp_def 11, 13, 1, SAFFRON_RICH_SPEECH_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 5, 21, SIGNPOST_JUMPTEXT, SaffronCitySignText
 	signpost 5, 33, SIGNPOST_JUMPTEXT, SaffronGymSignText
 	signpost 5, 25, SIGNPOST_JUMPTEXT, FightingDojoSignText
@@ -40,7 +38,7 @@ SaffronCity_MapEventHeader:
 	signpost 5, 11, SIGNPOST_JUMPTEXT, SaffronCityMagnetTrainStationSignText
 	signpost 12, 32, SIGNPOST_JUMPTEXT, PokemonTrainerFanClubSignText
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_LASS, 14, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
 	person_event SPRITE_POKEFAN_M, 30, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1994fe, -1

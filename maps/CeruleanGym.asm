@@ -1,25 +1,23 @@
 CeruleanGym_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw CeruleanGymTrigger0
 	dw CeruleanGymTrigger1
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeruleanGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 15, 4, 5, CERULEAN_CITY
 	warp_def 15, 5, 5, CERULEAN_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 8, 3, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
 	signpost 13, 2, SIGNPOST_READ, CeruleanGymStatue1
 	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_ROCKET, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
 	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM

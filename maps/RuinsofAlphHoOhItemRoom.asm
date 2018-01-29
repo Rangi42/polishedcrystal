@@ -1,24 +1,22 @@
 RuinsofAlphHoOhItemRoom_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RuinsofAlphHoOhItemRoom_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 9, 3, 5, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def 9, 4, 5, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def 1, 3, 1, RUINS_OF_ALPH_HO_OH_WORD_ROOM
 	warp_def 1, 4, 2, RUINS_OF_ALPH_HO_OH_WORD_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 1, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59923
 	signpost 1, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59923
 
-.PersonEvents: db 4
+	db 4 ; person events
 	itemball_event 6, 2, SUN_STONE, 1, EVENT_PICKED_UP_SUN_STONE_FROM_HO_OH_ITEM_ROOM
 	itemball_event 6, 5, MOON_STONE, 1, EVENT_PICKED_UP_MOON_STONE_FROM_HO_OH_ITEM_ROOM
 	itemball_event 4, 2, LIFE_ORB, 1, EVENT_PICKED_UP_LIFE_ORB_FROM_HO_OH_ITEM_ROOM

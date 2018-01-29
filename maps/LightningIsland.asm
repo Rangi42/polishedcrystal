@@ -1,12 +1,10 @@
 LightningIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 LightningIsland_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 29, 5, 3, SHAMOUTI_COAST
 	warp_def 29, 19, 1, LIGHTNING_ISLAND_ROOF
 	warp_def 3, 6, 4, LIGHTNING_ISLAND
@@ -14,11 +12,11 @@ LightningIsland_MapEventHeader:
 	warp_def 26, 19, 6, LIGHTNING_ISLAND
 	warp_def 27, 5, 5, LIGHTNING_ISLAND ; hole
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 14
+	db 14 ; person events
 	itemball_event 15, 22, DAMP_ROCK, 1, EVENT_LIGHTNING_ISLAND_DAMP_ROCK
 	person_event SPRITE_SNES, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
 	person_event SPRITE_SNES, 13, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1

@@ -1,12 +1,10 @@
 LavenderTown_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 LavenderTown_MapEventHeader:
-
-.Warps: db 7
+	db 7 ; warps
 	warp_def 7, 5, 1, LAVENDER_POKECENTER_1F
 	warp_def 11, 5, 1, MR_FUJIS_HOUSE
 	warp_def 15, 3, 1, LAVENDER_TOWN_SPEECH_HOUSE
@@ -15,18 +13,18 @@ LavenderTown_MapEventHeader:
 	warp_def 13, 13, 1, SOUL_HOUSE
 	warp_def 7, 14, 1, LAV_RADIO_TOWER_1F
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 0, 5, 8, LavenderTownExpositionTrigger1
 	xy_trigger 0, 5, 9, LavenderTownExpositionTrigger2
 	xy_trigger 0, 5, 10, LavenderTownExpositionTrigger3
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 5, 11, SIGNPOST_JUMPTEXT, LavenderTownSignText
 	signpost 9, 15, SIGNPOST_JUMPTEXT, KantoRadioStationSignText
 	signpost 11, 3, SIGNPOST_JUMPTEXT, VolunteerPokemonHouseSignText
 	signpost 15, 15, SIGNPOST_JUMPTEXT, SoulHouseSignText
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER
 	person_event SPRITE_POKEFAN_M, 9, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownPokefanMText, -1
 	person_event SPRITE_TEACHER, 17, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownTeacherText, -1

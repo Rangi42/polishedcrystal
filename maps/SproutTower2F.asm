@@ -1,23 +1,21 @@
 SproutTower2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SproutTower2F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 4, 4, 3, SPROUT_TOWER_1F
 	warp_def 6, 0, 4, SPROUT_TOWER_1F
 	warp_def 3, 15, 5, SPROUT_TOWER_1F
 	warp_def 14, 8, 1, SPROUT_TOWER_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1848c8
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_SAGE, 3, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
 	person_event SPRITE_SAGE, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
 	itemball_event 1, 1, X_ACCURACY, 1, EVENT_SPROUT_TOWER2F_X_ACCURACY

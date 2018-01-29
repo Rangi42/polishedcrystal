@@ -1,28 +1,26 @@
 Route36NationalParkGate_MapScriptHeader:
-
-.MapTriggers: db 3
+	db 3 ; map triggers
 	dw Route36NationalParkGateTrigger0
 	dw Route36NationalParkGateTrigger1
 	dw Route36NationalParkGateTrigger2
 
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route36NationalParkGateCheckIfContestRunning
 	dbw MAPCALLBACK_OBJECTS, Route36NationalParkGateCheckIfContestAvailable
 
 Route36NationalParkGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 4, 0, 1, NATIONAL_PARK
 	warp_def 5, 0, 2, NATIONAL_PARK
 	warp_def 4, 9, 1, ROUTE_36
 	warp_def 5, 9, 2, ROUTE_36
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 6, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
 	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad06, EVENT_BUG_CATCHING_CONTESTANT_1B
 	person_event SPRITE_BUG_MANIAC, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6ad1a, EVENT_BUG_CATCHING_CONTESTANT_2B

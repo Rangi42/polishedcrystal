@@ -1,21 +1,19 @@
 Route6_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route6_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 21, 1, ROUTE_6_UNDERGROUND_ENTRANCE
 	warp_def 1, 10, 3, ROUTE_6_SAFFRON_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 11, 23, SIGNPOST_JUMPTEXT, Route6UndergroundPathSignText
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_POKEFAN_M, 10, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ad957, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	person_event SPRITE_POKEFAN_M, 24, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
 	person_event SPRITE_POKEFAN_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1

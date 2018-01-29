@@ -1,21 +1,19 @@
 HallOfFame_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw HallOfFameEntranceTrigger
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 HallOfFame_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 13, 4, 3, LANCES_ROOM
 	warp_def 13, 5, 4, LANCES_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_LANCE, 12, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 const_value set 1

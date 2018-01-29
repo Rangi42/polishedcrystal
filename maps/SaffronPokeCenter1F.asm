@@ -1,22 +1,20 @@
 SaffronPokeCenter1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SaffronPokeCenter1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 5, 4, SAFFRON_CITY
 	warp_def 7, 6, 4, SAFFRON_CITY
 	warp_def 7, 0, 1, POKECENTER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalSabrinaScript
 
-.PersonEvents: db 4
+	db 4 ; person events
 	pc_nurse_event 1, 5
 	person_event SPRITE_FISHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SaffronPokeCenter1FFisherScript, -1
 	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FTeacherText, -1

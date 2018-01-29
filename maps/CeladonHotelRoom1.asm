@@ -1,20 +1,18 @@
 CeladonHotelRoom1_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonHotelRoom1_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 3, 2, CELADON_HOTEL_2F
 	warp_def 5, 4, 2, CELADON_HOTEL_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_COOLTRAINER_M, 3, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1CooltrainerMText, -1
 	person_event SPRITE_LASS, 3, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1LassText, -1
 	itemball_event 1, 3, POKE_DOLL, 1, EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL

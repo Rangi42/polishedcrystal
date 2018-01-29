@@ -1,23 +1,21 @@
 PokemonFanClub_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 PokemonFanClub_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 3, VERMILION_CITY
 	warp_def 7, 3, 3, VERMILION_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x191dfc
 	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x191e29
 	signpost 1, 0, SIGNPOST_READ, PokemonJournalGreenScript
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_CLEFAIRY, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, ClefairyDollText, EVENT_VERMILION_FAN_CLUB_DOLL
 	person_event SPRITE_GENTLEMAN, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
 	person_event SPRITE_RECEPTIONIST, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191b6d, -1

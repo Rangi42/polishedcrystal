@@ -1,23 +1,21 @@
 OlivineLighthouse1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OlivineLighthouse1F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 17, 10, 8, OLIVINE_CITY
 	warp_def 17, 11, 8, OLIVINE_CITY
 	warp_def 11, 3, 1, OLIVINE_LIGHTHOUSE_2F
 	warp_def 13, 16, 3, OLIVINE_LIGHTHOUSE_2F
 	warp_def 13, 17, 4, OLIVINE_LIGHTHOUSE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_SAILOR, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
 	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
 

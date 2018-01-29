@@ -1,24 +1,22 @@
 RadioTower4F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RadioTower4F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 0, 0, 1, RADIO_TOWER_5F
 	warp_def 0, 9, 2, RADIO_TOWER_3F
 	warp_def 0, 12, 2, RADIO_TOWER_5F
 	warp_def 0, 17, 3, RADIO_TOWER_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x5effe
 	signpost 0, 15, SIGNPOST_JUMPTEXT, UnknownText_0x5f00d
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_ROCKET, 6, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_FISHER, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5ec12, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_BUENA, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MaryScript_0x5eb85, -1

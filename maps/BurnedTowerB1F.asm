@@ -1,22 +1,20 @@
 BurnedTowerB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, BurnedTowerB1FLadderCallback
 
 BurnedTowerB1F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 10, 3, BURNED_TOWER_1F ; hole
 	warp_def 15, 7, 4, BURNED_TOWER_1F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 6, 10, ReleaseTheBeasts
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_RAIKOU, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1
 	person_event SPRITE_ENTEI, 3, 12, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1
 	person_event SPRITE_SUICUNE, 4, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1

@@ -1,32 +1,30 @@
 Route34_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
 
 Route34_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 37, 13, 1, ROUTE_34_ILEX_FOREST_GATE
 	warp_def 37, 14, 2, ROUTE_34_ILEX_FOREST_GATE
 	warp_def 14, 11, 1, DAYCARE
 	warp_def 15, 11, 2, DAYCARE
 	warp_def 15, 13, 3, DAYCARE
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 1, 17, 8, Route34LyraTrigger1
 	xy_trigger 1, 17, 9, Route34LyraTrigger2
 	xy_trigger 1, 17, 10, Route34LyraTrigger3
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText
 	signpost 33, 13, SIGNPOST_JUMPTEXT, Route34TrainerTipsText
 	signpost 13, 10, SIGNPOST_JUMPTEXT, DayCareSignText
 	signpost 32, 8, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
 	signpost 19, 17, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
 	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
 	person_event SPRITE_GOLDENROD_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34

@@ -1,21 +1,19 @@
 RockTunnel2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RockTunnel2F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 19, 25, 3, ROUTE_10_NORTH
 	warp_def 15, 7, 8, ROCK_TUNNEL_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 19, 15, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROCK_TUNNEL_2F_HIDDEN_MAX_ETHER
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_BALL_CUT_FRUIT, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RockTunnel2FElectrode, EVENT_ROCK_TUNNEL_2F_ELECTRODE
 	itemball_event 23, 2, THUNDERSTONE, 1, EVENT_ROCK_TUNNEL_2F_THUNDERSTONE
 	tmhmball_event 9, 25, TM_THUNDER_WAVE, EVENT_ROCK_TUNNEL_2F_TM_THUNDER_WAVE

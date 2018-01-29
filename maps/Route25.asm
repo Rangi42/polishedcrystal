@@ -1,18 +1,16 @@
 Route25_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route25_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
+	db 0 ; signposts
 
-.Signposts: db 0
-
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_COOLTRAINER_M, 8, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
 	person_event SPRITE_COOLTRAINER_M, 8, 32, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	person_event SPRITE_YOUNGSTER, 11, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1

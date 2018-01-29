@@ -1,25 +1,23 @@
 MountMoon1F_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw MountMoon1FTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MountMoon1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 23, 11, 1, ROUTE_3
 	warp_def 12, 22, 1, MOUNT_MOON_B1F
 	warp_def 9, 11, 2, MOUNT_MOON_B1F
 	warp_def 4, 4, 3, MOUNT_MOON_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 17, 2, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
 	signpost 16, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
 	person_event SPRITE_BUG_MANIAC, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
 	person_event SPRITE_LASS, 14, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1

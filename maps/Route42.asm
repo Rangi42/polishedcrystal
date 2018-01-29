@@ -1,19 +1,17 @@
 Route42_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route42_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 8, 0, 3, ROUTE_42_ECRUTEAK_GATE
 	warp_def 9, 0, 4, ROUTE_42_ECRUTEAK_GATE
 	warp_def 5, 10, 1, MOUNT_MORTAR_1F_OUTSIDE
 	warp_def 9, 28, 2, MOUNT_MORTAR_1F_OUTSIDE
 	warp_def 7, 46, 3, MOUNT_MORTAR_1F_OUTSIDE
 
-.XYTriggers: db 6
+	db 6 ; xy triggers
 	xy_trigger 1, 6, 12, Route42LyraScript1
 	xy_trigger 1, 7, 12, Route42LyraScript2
 	xy_trigger 1, 8, 12, Route42LyraScript3
@@ -21,14 +19,14 @@ Route42_MapEventHeader:
 	xy_trigger 1, 6, 10, Route42LyraScript5
 	xy_trigger 2, 14, 24, Route42SuicuneScript
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 10, 4, SIGNPOST_JUMPTEXT, Route42Sign1Text
 	signpost 5, 7, SIGNPOST_JUMPTEXT, MtMortarSign1Text
 	signpost 9, 45, SIGNPOST_JUMPTEXT, MtMortarSign2Text
 	signpost 8, 54, SIGNPOST_JUMPTEXT, Route42Sign2Text
 	signpost 11, 16, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_ROUTE_30_RATTATA, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1

@@ -1,12 +1,10 @@
 FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 7, 2, 8, FAST_SHIP_1F
 	warp_def 7, 3, 8, FAST_SHIP_1F
 	warp_def 19, 2, 9, FAST_SHIP_1F
@@ -14,11 +12,11 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
 	warp_def 33, 2, 10, FAST_SHIP_1F
 	warp_def 33, 3, 10, FAST_SHIP_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_GENTLEMAN, 17, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x75f1f, EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	person_event SPRITE_TWIN, 17, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x75f6d, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
 	person_event SPRITE_TWIN, 25, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x75ebb, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2

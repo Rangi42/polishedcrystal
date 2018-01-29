@@ -1,21 +1,19 @@
 Route33_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Route33RainScript
 
 Route33_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 9, 11, 3, UNION_CAVE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 11, 11, SIGNPOST_JUMPTEXT, Route33SignText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
 	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
 	fruittree_event 16, 14, FRUITTREE_ROUTE_33, PECHA_BERRY

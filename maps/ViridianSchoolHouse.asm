@@ -1,23 +1,21 @@
 ViridianSchoolHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ViridianSchoolHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 2, 8, VIRIDIAN_CITY
 	warp_def 9, 3, 8, VIRIDIAN_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 3, SIGNPOST_JUMPTEXT, ViridianSchoolHouseBlackboardText
 	signpost 1, 6, SIGNPOST_JUMPTEXT, ViridianSchoolHouseBookshelfText
 	signpost 1, 7, SIGNPOST_JUMPTEXT, ViridianSchoolHouseBookshelfText
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_TEACHER, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianSchoolHouseTeacherText, -1
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, ViridianSchoolHouseNotesText, -1
 	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianSchoolHouseLass1Text, -1

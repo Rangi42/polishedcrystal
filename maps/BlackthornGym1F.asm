@@ -1,13 +1,11 @@
 BlackthornGym1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, BlackthornGym1FBoulderCallback
 
 BlackthornGym1F_MapEventHeader:
-
-.Warps: db 7
+	db 7 ; warps
 	warp_def 17, 4, 1, BLACKTHORN_CITY
 	warp_def 17, 5, 1, BLACKTHORN_CITY
 	warp_def 7, 1, 1, BLACKTHORN_GYM_2F
@@ -16,13 +14,13 @@ BlackthornGym1F_MapEventHeader:
 	warp_def 7, 7, 4, BLACKTHORN_GYM_2F
 	warp_def 6, 7, 5, BLACKTHORN_GYM_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 15, 3, SIGNPOST_READ, BlackthornGymStatue
 	signpost 15, 6, SIGNPOST_READ, BlackthornGymStatue
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_CLAIR, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
 	person_event SPRITE_DRAGON_TAMER, 14, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerPaul, -1

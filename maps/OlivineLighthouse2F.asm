@@ -1,12 +1,10 @@
 OlivineLighthouse2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OlivineLighthouse2F_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 11, 3, 3, OLIVINE_LIGHTHOUSE_1F
 	warp_def 3, 5, 2, OLIVINE_LIGHTHOUSE_3F
 	warp_def 13, 16, 4, OLIVINE_LIGHTHOUSE_1F
@@ -14,11 +12,11 @@ OlivineLighthouse2F_MapEventHeader:
 	warp_def 11, 16, 4, OLIVINE_LIGHTHOUSE_3F
 	warp_def 11, 17, 5, OLIVINE_LIGHTHOUSE_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_SAILOR, 3, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
 	person_event SPRITE_GENTLEMAN, 8, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1
 

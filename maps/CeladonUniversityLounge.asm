@@ -1,23 +1,21 @@
 CeladonUniversityLounge_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityLounge_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 4, 10, CELADON_UNIVERSITY_1F
 	warp_def 11, 5, 10, CELADON_UNIVERSITY_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 5, 7, SIGNPOST_JUMPTEXT, CeladonUniversityLoungeBookshelf1Text
 	signpost 8, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
 	signpost 7, 0, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
 	person_event SPRITE_LASS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeLassText, -1
 	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeRichBoyText, -1

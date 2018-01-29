@@ -1,27 +1,25 @@
 BurnedTower1F_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw BurnedTower1FTrigger0
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
 
 BurnedTower1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 15, 7, 13, ECRUTEAK_CITY
 	warp_def 15, 8, 13, ECRUTEAK_CITY
 	warp_def 9, 8, 1, BURNED_TOWER_B1F
 	warp_def 15, 5, 2, BURNED_TOWER_B1F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 1, 9, 9, BurnedTowerRivalBattleScript
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
 	signpost 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_EUSINE, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
 	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	smashrock_event 4, 13

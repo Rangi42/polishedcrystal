@@ -1,24 +1,22 @@
 CeladonUniversityPrincipalsOffice_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityPrincipalsOffice_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 5, CELADON_UNIVERSITY_1F
 	warp_def 7, 3, 5, CELADON_UNIVERSITY_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
 	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
 	signpost 4, 5, SIGNPOST_RIGHT, CeladonUniversityPrincipalsOfficeComputer
 	signpost 1, 1, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_MATSUMOTO, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
 
 CeladonUniversityPrincipalsOfficeMatsumotoScript:

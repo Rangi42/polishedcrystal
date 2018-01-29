@@ -1,21 +1,19 @@
 Route37_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, SunnyCallback
 
 Route37_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
-
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 3, 5, SIGNPOST_JUMPTEXT, Route37SignText
 	signpost 2, 4, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_BUG_CATCHER, 8, 16, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
 	person_event SPRITE_TWIN, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
 	person_event SPRITE_TWIN, 12, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1

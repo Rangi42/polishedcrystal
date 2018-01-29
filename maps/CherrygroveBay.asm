@@ -1,18 +1,16 @@
 CherrygroveBay_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CherrygroveBay_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
+	db 0 ; signposts
 
-.Signposts: db 0
-
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_POKEFAN_M, 32, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
 	person_event SPRITE_POKEFAN_M, 22, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
 	person_event SPRITE_FISHER, 33, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1

@@ -1,22 +1,20 @@
 Route8_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route8_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 10, 4, 3, ROUTE_8_SAFFRON_GATE
 	warp_def 11, 4, 4, ROUTE_8_SAFFRON_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 9, 11, SIGNPOST_JUMPTEXT, Route8UndergroundPathSignText
 	signpost 7, 10, SIGNPOST_JUMPTEXT, Route8LockedDoorText
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	person_event SPRITE_BIKER, 11, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBikerHarris, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	person_event SPRITE_BIKER, 12, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBikerZeke, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION

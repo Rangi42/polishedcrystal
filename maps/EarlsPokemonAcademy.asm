@@ -1,24 +1,22 @@
 EarlsPokemonAcademy_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 EarlsPokemonAcademy_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 15, 3, 3, VIOLET_CITY
 	warp_def 15, 4, 3, VIOLET_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 1, 0, SIGNPOST_READ, PokemonJournalWillScript
 	signpost 1, 1, SIGNPOST_READ, PokemonJournalWillScript
 	signpost 0, 3, SIGNPOST_READ, AcademyBlackboard
 	signpost 0, 4, SIGNPOST_READ, AcademyBlackboard
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_FISHER, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, AcademyEarl, EVENT_EARLS_ACADEMY_EARL
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AcademyNotebook, -1
 	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x68d80, -1

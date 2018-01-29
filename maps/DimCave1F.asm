@@ -1,23 +1,21 @@
 DimCave1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 DimCave1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 2, 30, 5, DIM_CAVE_2F
 	warp_def 17, 5, 6, DIM_CAVE_2F
 	warp_def 18, 28, 7, DIM_CAVE_2F
 	warp_def 32, 24, 8, DIM_CAVE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 2, 28, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SUPER_NERD, 7, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
 	person_event SPRITE_SCIENTIST, 18, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
 	person_event SPRITE_ROCKER, 21, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1

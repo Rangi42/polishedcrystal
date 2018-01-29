@@ -1,20 +1,18 @@
 Route19_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route19ClearSmashRocks
 	dbw MAPCALLBACK_TILES, Route19ClearRocks
 
 Route19_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 1, 7, 3, ROUTE_19_FUCHSIA_GATE
 	warp_def 13, 5, 1, ROUTE_19_BEACH_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 15, 11, SIGNPOST_JUMPTEXT, Route19SignText
 	signpost -1, 11, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
 	signpost 3, 5, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
@@ -22,7 +20,7 @@ Route19_MapEventHeader:
 	signpost 15, 5, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL
 	signpost 13, 13, SIGNPOST_ITEM + BIG_PEARL, EVENT_ROUTE_19_HIDDEN_BIG_PEARL
 
-.PersonEvents: db 13
+	db 13 ; person events
 	smashrock_event 4, 11, EVENT_ROUTE_19_ROCK
 	smashrock_event 3, 6
 	smashrock_event 11, 4

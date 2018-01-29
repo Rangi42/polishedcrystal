@@ -1,13 +1,11 @@
 ViridianCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, ViridianCityFlyPoint
 
 ViridianCity_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 7, 32, 1, VIRIDIAN_GYM
 	warp_def 5, 21, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE
 	warp_def 15, 23, 1, TRAINER_HOUSE_1F
@@ -17,15 +15,15 @@ ViridianCity_MapEventHeader:
 	warp_def 33, 29, 2, ROUTE_1_VIRIDIAN_GATE
 	warp_def 9, 21, 1, VIRIDIAN_SCHOOL_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
 	signpost 7, 27, SIGNPOST_JUMPTEXT, ViridianGymSignText
 	signpost 1, 19, SIGNPOST_JUMPTEXT, ViridianCityWelcomeSignText
 	signpost 15, 21, SIGNPOST_JUMPTEXT, TrainerHouseSignText
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_GRAMPS, 5, 18, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
 	person_event SPRITE_GRAMPS, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
 	person_event SPRITE_GRAMPS, 8, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE

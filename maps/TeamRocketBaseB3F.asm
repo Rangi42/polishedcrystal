@@ -1,25 +1,23 @@
 TeamRocketBaseB3F_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw TeamRocketBaseB3FTrigger0
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, TeamRocketBaseB3FCheckGiovanniDoor
 
 TeamRocketBaseB3F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 2, 3, 2, TEAM_ROCKET_BASE_B2F
 	warp_def 2, 27, 3, TEAM_ROCKET_BASE_B2F
 	warp_def 6, 3, 4, TEAM_ROCKET_BASE_B2F
 	warp_def 14, 27, 5, TEAM_ROCKET_BASE_B2F
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 2, 8, 10, UnknownScript_0x6e04b
 	xy_trigger 2, 8, 11, UnknownScript_0x6e052
 	xy_trigger 1, 10, 8, RocketBaseRival
 
-.Signposts: db 10
+	db 10 ; signposts
 	signpost 9, 10, SIGNPOST_IFNOTSET, BossDoor
 	signpost 9, 11, SIGNPOST_IFNOTSET, BossDoor
 	signpost 1, 10, SIGNPOST_JUMPSTD, teamrocketoath
@@ -31,7 +29,7 @@ TeamRocketBaseB3F_MapEventHeader:
 	signpost 13, 6, SIGNPOST_JUMPSTD, teamrocketoath
 	signpost 13, 7, SIGNPOST_JUMPSTD, teamrocketoath
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_LANCE, 14, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceGetPasswordScript, EVENT_TEAM_ROCKET_BASE_B3F_LANCE_PASSWORDS
 	person_event SPRITE_PETREL, 3, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B3F_PETREL
 	person_event SPRITE_MURKROW, 2, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RocketBaseMurkrow, EVENT_TEAM_ROCKET_BASE_POPULATION

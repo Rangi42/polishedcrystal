@@ -1,23 +1,21 @@
 IlexForest_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw IlexForestTrigger0
 	dw IlexForestTrigger1
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
 
 IlexForest_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 3, 3, ROUTE_34_ILEX_FOREST_GATE
 	warp_def 44, 5, 1, ILEX_FOREST_AZALEA_GATE
 	warp_def 45, 5, 2, ILEX_FOREST_AZALEA_GATE
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 2, 31, 9, IlexForestApprenticeTrigger
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 19, 5, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
 	signpost 9, 13, SIGNPOST_ITEM + ETHER, EVENT_ILEX_FOREST_HIDDEN_ETHER
 	signpost 16, 24, SIGNPOST_ITEM + SUPER_POTION, EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION
@@ -27,7 +25,7 @@ IlexForest_MapEventHeader:
 	signpost 24, 25, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_1
 	signpost 8, 19, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_FARFETCH_D, 33, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	person_event SPRITE_BLACK_BELT, 30, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	person_event SPRITE_KURT, 31, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_KURT

@@ -1,25 +1,23 @@
 EcruteakShrineOutside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 EcruteakShrineOutside_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 3, 5, 1, ECRUTEAK_SHRINE_INSIDE
 	warp_def 12, 4, 4, ECRUTEAK_CITY
 	warp_def 12, 5, 4, ECRUTEAK_CITY
 	warp_def 12, 6, 5, ECRUTEAK_CITY
 	warp_def 12, 7, 5, ECRUTEAK_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 8, 3, SIGNPOST_JUMPTEXT, EcruteakShrineOutsideStatueText
 	signpost 8, 8, SIGNPOST_JUMPTEXT, EcruteakShrineOutsideStatueText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_TWIN, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideTwinText, -1
 	person_event SPRITE_HOOTHOOT, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, EcruteakShrineOutsideHoothootText, -1
 	person_event SPRITE_SAGE, 10, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideSageText, -1

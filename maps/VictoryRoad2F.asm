@@ -1,25 +1,23 @@
 VictoryRoad2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VictoryRoad2F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 9, 25, 4, ROUTE_23
 	warp_def 11, 3, 2, VICTORY_ROAD_1F
 	warp_def 4, 3, 1, VICTORY_ROAD_3F
 	warp_def 7, 15, 2, VICTORY_ROAD_3F
 	warp_def 9, 19, 3, VICTORY_ROAD_3F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 9, 25, UnknownScript_0x74492
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 5, 5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_SILVER, 9, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	person_event SPRITE_VETERAN_F, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
 	person_event SPRITE_VETERAN_F, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1

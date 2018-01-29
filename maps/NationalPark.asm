@@ -1,26 +1,24 @@
 NationalPark_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 NationalPark_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 18, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 19, 35, 2, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 47, 12, 1, ROUTE_35_NATIONAL_PARK_GATE
 	warp_def 47, 13, 2, ROUTE_35_NATIONAL_PARK_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 44, 16, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
 	signpost 31, 29, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
 	signpost 4, 14, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
 	signpost 47, 8, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 16
+	db 16 ; person events
 	person_event SPRITE_LASS, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c1d3, -1
 	person_event SPRITE_POKEFAN_F, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c22e, -1
 	person_event SPRITE_TEACHER, 40, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1

@@ -1,21 +1,19 @@
 CeladonDeptStoreElevator_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonDeptStoreElevator_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 3, 1, -1, CELADON_DEPT_STORE_1F
 	warp_def 3, 2, -1, CELADON_DEPT_STORE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 3, SIGNPOST_READ, CeladonDeptStoreElevatorButton
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 CeladonDeptStoreElevatorButton:
 	opentext

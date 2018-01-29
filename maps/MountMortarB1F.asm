@@ -1,21 +1,19 @@
 MountMortarB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MountMortarB1F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 3, 3, 5, MOUNT_MORTAR_1F_INSIDE
 	warp_def 29, 19, 7, MOUNT_MORTAR_1F_OUTSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 6, 4, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_POKEFAN_M, 31, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
 	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
 	strengthboulder_event 10, 9

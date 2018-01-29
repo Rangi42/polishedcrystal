@@ -1,12 +1,10 @@
 SaffronGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SaffronGym_MapEventHeader:
-
-.Warps: db 33
+	db 33 ; warps
 	warp_def 17, 8, 2, SAFFRON_CITY
 	warp_def 17, 9, 2, SAFFRON_CITY
 	warp_def 14, 11, 18, SAFFRON_GYM
@@ -41,12 +39,12 @@ SaffronGym_MapEventHeader:
 	warp_def 10, 11, 17, SAFFRON_GYM
 	warp_def 10, 8, 3, SAFFRON_GYM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 15, 8, SIGNPOST_READ, SaffronGymStatue
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_SABRINA, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
 	person_event SPRITE_GRANNY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumDoris, -1
 	person_event SPRITE_YOUNGSTER, 3, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicLeon, -1

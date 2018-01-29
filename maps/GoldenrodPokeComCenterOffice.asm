@@ -1,24 +1,22 @@
 GoldenrodPokeComCenterOffice_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GoldenrodPokeComCenterOffice_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 0, 3, GOLDENROD_POKECOM_CENTER_1F
 	warp_def 7, 1, 3, GOLDENROD_POKECOM_CENTER_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 2, 3, SIGNPOST_JUMPTEXT, RangiComputerText
 	signpost 2, 6, SIGNPOST_JUMPTEXT, LunaComputerText
 	signpost 5, 6, SIGNPOST_UP, AizawaComputerScript
 	signpost 2, 4, SIGNPOST_READ, RangiKeyboardScript
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_SCIENTIST_F, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
 	person_event SPRITE_COOLTRAINER_F, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
 	person_event SPRITE_PHARMACIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1

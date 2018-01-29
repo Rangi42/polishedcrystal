@@ -1,15 +1,13 @@
 WarehouseEntrance_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 3
+	db 3 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, WarehouseEntranceResetSwitches
 	dbw MAPCALLBACK_TILES, WarehouseEntranceCheckBasementKey
 	dbw MAPCALLBACK_OBJECTS, WarehouseEntranceCheckDayOfWeek
 
 WarehouseEntrance_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 2, 1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 	warp_def 34, 1, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 	warp_def 6, 16, 4, WAREHOUSE_ENTRANCE
@@ -17,16 +15,16 @@ WarehouseEntrance_MapEventHeader:
 	warp_def 35, 14, 3, WAREHOUSE_ENTRANCE
 	warp_def 31, 14, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
 	signpost 6, 17, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
 	signpost 13, 4, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL
 	signpost 18, 2, SIGNPOST_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
 	signpost 8, 15, SIGNPOST_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_GRAMPS, 11, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
 	person_event SPRITE_SUPER_NERD, 14, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
 	person_event SPRITE_SUPER_NERD, 15, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER

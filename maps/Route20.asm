@@ -1,23 +1,21 @@
 Route20_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route20_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 62, 1, SEAFOAM_ISLANDS_1F
 	warp_def 5, 54, 4, SEAFOAM_ISLANDS_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 11, 61, SIGNPOST_JUMPTEXT, CinnabarGymSignText
 	signpost 7, 57, SIGNPOST_JUMPTEXT, SeafoamIslandsSignText
 	signpost 10, 21, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_20_HIDDEN_STARDUST
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_SWIMMER_GIRL, 10, 91, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNicole, -1
 	person_event SPRITE_SWIMMER_GIRL, 13, 70, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfLori, -1
 	person_event SPRITE_SWIMMER_GIRL, 4, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfMina, -1

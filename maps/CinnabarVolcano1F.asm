@@ -1,13 +1,11 @@
 CinnabarVolcano1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
 
 CinnabarVolcano1F_MapEventHeader:
-
-.Warps: db 10
+	db 10 ; warps
 	warp_def 25, 13, 2, CINNABAR_ISLAND
 	warp_def 13, 5, 1, CINNABAR_VOLCANO_B1F
 	warp_def 20, 14, 2, CINNABAR_VOLCANO_B1F
@@ -19,12 +17,12 @@ CinnabarVolcano1F_MapEventHeader:
 	warp_def 7, 10, 11, CINNABAR_VOLCANO_B1F
 	warp_def 3, 15, 12, CINNABAR_VOLCANO_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 13, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_BUCK, 9, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
 	strengthboulder_event 16, 6, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
 	strengthboulder_event 22, 15, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2

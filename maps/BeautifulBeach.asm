@@ -1,23 +1,21 @@
 BeautifulBeach_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 BeautifulBeach_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 23, 11, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
 	warp_def 23, 12, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
 	warp_def 18, 27, 1, BEAUTIFUL_BEACH_VILLA
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 21, 14, SIGNPOST_JUMPTEXT, BeautifulBeachWelcomeSignText
 	signpost 19, 29, SIGNPOST_JUMPTEXT, BeautifulBeachVillaSignText
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_LADY, 18, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyBryony, -1
 	person_event SPRITE_SIGHTSEER_M, 26, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermJaska, -1
 	person_event SPRITE_COOLTRAINER_M, 23, 33, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerVince, -1

@@ -1,21 +1,19 @@
 Route13East_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route13East_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
-
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 13, 11, SIGNPOST_JUMPTEXT, Route13TrainerTipsText
 	signpost 11, 27, SIGNPOST_JUMPTEXT, Route13SignText
 	signpost 13, 12, SIGNPOST_ITEM + CALCIUM, EVENT_ROUTE_13_HIDDEN_CALCIUM
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_YOUNGSTER, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPerry, -1
 	person_event SPRITE_YOUNGSTER, 1, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBret, -1
 	person_event SPRITE_YOUNGSTER, 5, 10, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperTanner, -1

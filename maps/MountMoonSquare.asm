@@ -1,25 +1,23 @@
 MountMoonSquare_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x77093
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x77097
 
 MountMoonSquare_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 21, 2, ROUTE_4
 	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 11, 7, ClefairyDance
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
 	signpost 7, 17, SIGNPOST_JUMPTEXT, DontLitterSignText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_CLEFAIRY, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	person_event SPRITE_CLEFAIRY, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	person_event SPRITE_N64, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK

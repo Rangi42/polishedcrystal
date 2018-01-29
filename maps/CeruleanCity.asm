@@ -1,13 +1,11 @@
 CeruleanCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
 
 CeruleanCity_MapEventHeader:
-
-.Warps: db 11
+	db 11 ; warps
 	warp_def 11, 7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
 	warp_def 13, 28, 1, CERULEAN_POLICE_STATION
 	warp_def 15, 13, 1, CERULEAN_TRADE_SPEECH_HOUSE
@@ -20,9 +18,9 @@ CeruleanCity_MapEventHeader:
 	warp_def 25, 19, 1, CERULEAN_COUPLE_HOUSE
 	warp_def 5, 29, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 19, 23, SIGNPOST_JUMPTEXT, CeruleanCitySignText
 	signpost 21, 27, SIGNPOST_JUMPTEXT, CeruleanGymSignText
 	signpost 25, 11, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
@@ -31,7 +29,7 @@ CeruleanCity_MapEventHeader:
 	signpost 19, 11, SIGNPOST_JUMPTEXT, CeruleanBubblerText
 	signpost 13, 4, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_VERMILION_LAWRENCE, 20, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
 	person_event SPRITE_YOUNGSTER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	person_event SPRITE_COOLTRAINER_M, 22, 30, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1

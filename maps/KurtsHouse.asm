@@ -1,19 +1,17 @@
 KurtsHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
 KurtsHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 4, AZALEA_TOWN
 	warp_def 7, 4, 4, AZALEA_TOWN
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 1, 6, SIGNPOST_JUMPSTD, radio2
 	signpost 0, 8, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
 	signpost 0, 9, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
@@ -22,7 +20,7 @@ KurtsHouse_MapEventHeader:
 	signpost 1, 3, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	signpost 1, 4, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_KURT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
 	person_event SPRITE_TWIN, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
 	person_event SPRITE_KURT, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2

@@ -1,12 +1,10 @@
 NavelRockInside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 NavelRockInside_MapEventHeader:
-
-.Warps: db 14
+	db 14 ; warps
 	warp_def 81, 7, 3, NAVEL_ROCK_OUTSIDE
 	warp_def 64, 8, 3, NAVEL_ROCK_INSIDE
 	warp_def 3, 3, 2, NAVEL_ROCK_INSIDE
@@ -22,11 +20,11 @@ NavelRockInside_MapEventHeader:
 	warp_def 12, 2, 12, NAVEL_ROCK_INSIDE
 	warp_def 15, 5, 1, NAVEL_ROCK_ROOF
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	itemball_event 12, 12, SACRED_ASH, 1, EVENT_NAVEL_ROCK_SACRED_ASH
 	itemball_event 12, 37, MASTER_BALL, 1, EVENT_NAVEL_ROCK_MASTER_BALL
 

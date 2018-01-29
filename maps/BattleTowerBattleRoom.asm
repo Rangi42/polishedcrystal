@@ -1,21 +1,19 @@
 BattleTowerBattleRoom_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw BattleTowerBattleRoomEnterBattleRoom
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 BattleTowerBattleRoom_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 4, BATTLE_TOWER_HALLWAY
 	warp_def 7, 4, 4, BATTLE_TOWER_HALLWAY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_YOUNGSTER, 0, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
 	person_event SPRITE_RECEPTIONIST, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 

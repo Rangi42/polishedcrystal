@@ -1,20 +1,18 @@
 TeamRocketBaseB2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, TransmitterDoorCallback
 
 TeamRocketBaseB2F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 14, 3, 2, TEAM_ROCKET_BASE_B1F
 	warp_def 2, 3, 1, TEAM_ROCKET_BASE_B3F
 	warp_def 2, 27, 2, TEAM_ROCKET_BASE_B3F
 	warp_def 6, 3, 3, TEAM_ROCKET_BASE_B3F
 	warp_def 14, 27, 4, TEAM_ROCKET_BASE_B3F
 
-.XYTriggers: db 9
+	db 9 ; xy triggers
 	xy_trigger 0, 14, 5, LanceHealsScript
 	xy_trigger 0, 13, 4, LanceHealsScript
 	xy_trigger 1, 11, 14, UnknownScript_0x6cf95
@@ -25,7 +23,7 @@ TeamRocketBaseB2F_MapEventHeader:
 	xy_trigger 2, 10, 12, UnknownScript_0x6d07a
 	xy_trigger 2, 11, 12, UnknownScript_0x6d07a
 
-.Signposts: db 23
+	db 23 ; signposts
 	signpost 12, 14, SIGNPOST_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
 	signpost 12, 15, SIGNPOST_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
 	signpost 9, 17, SIGNPOST_READ, MapTeamRocketBaseB2FSignpost21Script
@@ -50,7 +48,7 @@ TeamRocketBaseB2F_MapEventHeader:
 	signpost 8, 17, SIGNPOST_READ, MapTeamRocketBaseB2FSignpost21Script
 	signpost 7, 26, SIGNPOST_ITEM + FULL_HEAL, EVENT_TEAM_ROCKET_BASE_B2F_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_PETREL, 16, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_PETREL
 	person_event SPRITE_ARIANA, 16, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ARIANA
 	person_event SPRITE_LANCE, 13, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_LANCE

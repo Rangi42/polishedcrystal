@@ -1,14 +1,12 @@
 RuinsofAlphInnerChamber_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw RuinsofAlphInnerChamberTrigger0
 	dw RuinsofAlphInnerChamberTrigger1
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RuinsofAlphInnerChamber_MapEventHeader:
-
-.Warps: db 9
+	db 9 ; warps
 	warp_def 13, 10, 3, RUINS_OF_ALPH_ENTRANCE_CHAMBER
 	warp_def 15, 3, 3, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def 15, 4, 4, RUINS_OF_ALPH_HO_OH_CHAMBER
@@ -19,9 +17,9 @@ RuinsofAlphInnerChamber_MapEventHeader:
 	warp_def 24, 15, 3, RUINS_OF_ALPH_AERODACTYL_CHAMBER
 	warp_def 24, 16, 4, RUINS_OF_ALPH_AERODACTYL_CHAMBER
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 28
+	db 28 ; signposts
 	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 3, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
@@ -51,7 +49,7 @@ RuinsofAlphInnerChamber_MapEventHeader:
 	signpost 24, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 	signpost 24, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	person_event SPRITE_TEACHER, 14, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	person_event SPRITE_GRAMPS, 19, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS

@@ -1,12 +1,10 @@
 Route2North_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route2North_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 19, 15, 1, ROUTE_2_NUGGET_SPEECH_HOUSE
 	warp_def 35, 16, 1, ROUTE_2_GATE
 	warp_def 35, 17, 2, ROUTE_2_GATE
@@ -14,12 +12,12 @@ Route2North_MapEventHeader:
 	warp_def 11, 1, 3, VIRIDIAN_FOREST_PEWTER_GATE
 	warp_def 11, 2, 4, VIRIDIAN_FOREST_PEWTER_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_BUG_MANIAC, 6, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
 	itemball_event 4, 19, CARBOS, 1, EVENT_ROUTE_2_CARBOS
 	fruittree_event 13, 7, FRUITTREE_ROUTE_2, LUM_BERRY

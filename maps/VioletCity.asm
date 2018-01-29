@@ -1,13 +1,11 @@
 VioletCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, VioletCityFlyPoint
 
 VioletCity_MapEventHeader:
-
-.Warps: db 11
+	db 11 ; warps
 	warp_def 21, 9, 2, VIOLET_MART
 	warp_def 21, 18, 1, VIOLET_GYM
 	warp_def 21, 30, 1, EARLS_POKEMON_ACADEMY
@@ -20,9 +18,9 @@ VioletCity_MapEventHeader:
 	warp_def 12, 2, 3, ROUTE_36_VIOLET_GATE
 	warp_def 13, 2, 4, ROUTE_36_VIOLET_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 24, 24, SIGNPOST_JUMPTEXT, VioletCitySignText
 	signpost 21, 15, SIGNPOST_JUMPTEXT, VioletGymSignText
 	signpost  7, 25, SIGNPOST_JUMPTEXT, SproutTowerSignText
@@ -30,7 +28,7 @@ VioletCity_MapEventHeader:
 	signpost 18, 37, SIGNPOST_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION
 	signpost 13, 21, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
 	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityLassText, -1
 	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM1Text, -1

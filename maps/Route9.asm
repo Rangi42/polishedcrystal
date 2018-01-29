@@ -1,21 +1,19 @@
 Route9_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route9_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
-
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 7, 21, SIGNPOST_JUMPTEXT, Route9SignText
 	signpost 15, 51, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_9_HIDDEN_ETHER
 	signpost 12, 42, SIGNPOST_ITEM + SOFT_SAND, EVENT_ROUTE_9_HIDDEN_SOFT_SAND
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_YOUNGSTER, 11, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
 	person_event SPRITE_LASS, 8, 43, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerHeidi, -1
 	person_event SPRITE_YOUNGSTER, 4, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1

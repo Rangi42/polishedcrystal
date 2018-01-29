@@ -1,24 +1,22 @@
 TinTower1F_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw TinTower1FTrigger0
 
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18502f
 	dbw MAPCALLBACK_TILES, TinTowerStairsCallback
 
 TinTower1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 15, 7, 3, BELLCHIME_TRAIL
 	warp_def 15, 8, 3, BELLCHIME_TRAIL
 	warp_def 2, 8, 2, TIN_TOWER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_SUICUNE, 9, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
 	person_event SPRITE_RAIKOU, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
 	person_event SPRITE_ENTEI, 9, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI

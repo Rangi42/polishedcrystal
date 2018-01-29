@@ -1,24 +1,22 @@
 Route29_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route29Tuscany
 
 Route29_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 1, 27, 3, ROUTE_29_46_GATE
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 1, 8, 53, Route29Tutorial1
 	xy_trigger 1, 9, 53, Route29Tutorial2
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 7, 51, SIGNPOST_JUMPTEXT, Route29Sign1Text
 	signpost 5, 3, SIGNPOST_JUMPTEXT, Route29Sign2Text
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_NEW_BARK_LYRA, 12, 50, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
 	person_event SPRITE_TEACHER, 12, 29, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
 	person_event SPRITE_YOUNGSTER, 16, 27, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29YoungsterText, -1

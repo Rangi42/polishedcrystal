@@ -1,24 +1,22 @@
 Route12South_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route12South_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 57, 11, 1, ROUTE_12_SUPER_ROD_HOUSE
 	warp_def 42, 0, 3, ROUTE_11_GATE
 	warp_def 43, 0, 4, ROUTE_11_GATE
 	warp_def 1, 10, 3, ROUTE_12_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 43, 11, SIGNPOST_JUMPTEXT, Route12SignText
 	signpost 15, 14, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_FISHER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
 	person_event SPRITE_FISHER, 33, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherStephen, -1
 	person_event SPRITE_FISHER, 63, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerFisherBarney, -1

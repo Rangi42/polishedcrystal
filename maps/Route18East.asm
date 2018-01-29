@@ -1,21 +1,19 @@
 Route18East_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route18East_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 6, 4, 3, ROUTE_18_GATE
 	warp_def 7, 4, 4, ROUTE_18_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 5, 11, SIGNPOST_JUMPTEXT, Route18SignText
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_YOUNGSTER, 12, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBoris, -1
 	person_event SPRITE_YOUNGSTER, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBob, -1
 

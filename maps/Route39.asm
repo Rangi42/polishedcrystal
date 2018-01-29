@@ -1,24 +1,22 @@
 Route39_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route39_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 3, 1, 1, ROUTE_39_BARN
 	warp_def 3, 5, 1, ROUTE_39_FARMHOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 31, 5, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
 	signpost 5, 9, SIGNPOST_JUMPTEXT, MoomooFarmSignText
 	signpost 7, 15, SIGNPOST_JUMPTEXT, Route39SignText
 	signpost 13, 5, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
 	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
 	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1

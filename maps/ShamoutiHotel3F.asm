@@ -1,18 +1,16 @@
 ShamoutiHotel3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ShamoutiHotel3F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 0, 3, 2, SHAMOUTI_HOTEL_2F
 	warp_def 0, 10, 1, SHAMOUTI_HOTEL_ROOM_3B
 	warp_def 0, 14, 1, SHAMOUTI_HOTEL_ROOM_3C
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 0
+	db 0 ; person events

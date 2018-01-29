@@ -1,25 +1,23 @@
 UnionCave1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 UnionCave1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 3, 3, 3, UNION_CAVE_B1F_NORTH
 	warp_def 45, 3, 1, UNION_CAVE_B1F_SOUTH
 	warp_def 43, 17, 1, ROUTE_33
 	warp_def 15, 17, 4, ROUTE_32
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 19, 7, SIGNPOST_ITEM + GREAT_BALL, EVENT_UNION_CAVE_1F_HIDDEN_GREAT_BALL
 	signpost 33, 2, SIGNPOST_ITEM + BIG_PEARL, EVENT_UNION_CAVE_1F_HIDDEN_BIG_PEARL
 	signpost 33, 8, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_POKEFAN_M, 18, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerDaniel, -1
 	person_event SPRITE_SUPER_NERD, 37, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacLarry, -1
 	person_event SPRITE_POKEFAN_M, 20, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerRussell, -1

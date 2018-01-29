@@ -1,20 +1,18 @@
 CeladonHotelRoom2_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonHotelRoom2_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 3, 3, CELADON_HOTEL_2F
 	warp_def 5, 4, 3, CELADON_HOTEL_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_SUPER_NERD, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
 
 CeladonHotelRoom2SuperNerdScript:

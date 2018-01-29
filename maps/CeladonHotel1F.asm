@@ -1,25 +1,23 @@
 CeladonHotel1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonHotel1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 7, 3, 11, CELADON_CITY
 	warp_def 7, 4, 11, CELADON_CITY
 	warp_def 0, 16, 1, CELADON_HOTEL_2F
 	warp_def 0, 12, 1, CELADON_HOTEL_POOL
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 2, 7, SIGNPOST_JUMPTEXT, CeladonHotel1FSignpost1Text
 	signpost 0, 13, SIGNPOST_JUMPTEXT, CeladonHotel1FSignpost2Text
 	signpost 0, 17, SIGNPOST_JUMPTEXT, CeladonHotel1FSignpost3Text
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_RICH_BOY, 6, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHotel1FRichBoyGeraldScript, -1
 	person_event SPRITE_GRAMPS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FGrampsText, -1
 	person_event SPRITE_LADY, 4, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FLadyText, -1

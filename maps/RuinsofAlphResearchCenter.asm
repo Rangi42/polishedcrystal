@@ -1,27 +1,25 @@
 RuinsofAlphResearchCenter_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw RuinsofAlphResearchCenterTrigger0
 	dw RuinsofAlphResearchCenterTrigger1
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
 RuinsofAlphResearchCenter_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 6, RUINS_OF_ALPH_OUTSIDE
 	warp_def 7, 3, 6, RUINS_OF_ALPH_OUTSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 5, 6, SIGNPOST_JUMPTEXT, UnknownText_0x59886
 	signpost 4, 3, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
 	signpost 1, 7, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
 	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59848
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
 	person_event SPRITE_SCIENTIST, 2, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
 	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST

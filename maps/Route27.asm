@@ -1,24 +1,22 @@
 Route27_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route27_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 33, 1, ROUTE_27_REST_HOUSE
 	warp_def 5, 26, 1, TOHJO_FALLS
 	warp_def 5, 36, 2, TOHJO_FALLS
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 10, 18, UnknownScript_0x1a0873
 	xy_trigger 0, 10, 19, UnknownScript_0x1a0881
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 7, 25, SIGNPOST_JUMPTEXT, TohjoFallsSignText
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_VETERAN_F, 12, 48, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
 	person_event SPRITE_FISHER, 10, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0a71, -1
 	person_event SPRITE_COOLTRAINER_M, 7, 48, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1

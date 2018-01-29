@@ -1,24 +1,22 @@
 KogasRoom_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw KogasRoomEntranceTrigger
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, KogasRoomDoorCallback
 
 KogasRoom_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 17, 4, 2, WILLS_ROOM
 	warp_def 17, 5, 3, WILLS_ROOM
 	warp_def 2, 4, 1, BRUNOS_ROOM
 	warp_def 2, 5, 2, BRUNOS_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_KOGA, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript, -1
 
 KogasRoomEntranceTrigger:

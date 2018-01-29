@@ -1,12 +1,10 @@
 SeafoamIslandsB4F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SeafoamIslandsB4F_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 3, 3, 5, SEAFOAM_ISLANDS_B3F
 	warp_def 11, 7, 6, SEAFOAM_ISLANDS_B3F
 	warp_def 7, 25, 7, SEAFOAM_ISLANDS_B3F
@@ -14,11 +12,11 @@ SeafoamIslandsB4F_MapEventHeader:
 	warp_def 13, 31, 9, SEAFOAM_ISLANDS_B3F
 	warp_def 13, 37, 10, SEAFOAM_ISLANDS_B3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_ARTICUNO, 13, 22, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	person_event SPRITE_LAPRAS, 16, 16, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD_SURF
 	person_event SPRITE_LAWRENCE, 16, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD

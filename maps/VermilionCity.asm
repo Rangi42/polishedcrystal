@@ -1,12 +1,10 @@
 VermilionCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VermilionCity_MapEventHeader:
-
-.Warps: db 14
+	db 14 ; warps
 	warp_def 5, 5, 1, VERMILION_HOUSE_FISHING_SPEECH_HOUSE
 	warp_def 5, 9, 1, VERMILION_POKECENTER_1F
 	warp_def 17, 7, 1, POKEMON_FAN_CLUB
@@ -22,11 +20,11 @@ VermilionCity_MapEventHeader:
 	warp_def 5, 13, 1, VERMILION_POLLUTION_SPEECH_HOUSE
 	warp_def 5, 19, 1, VERMILION_S_S_ANNE_SPEECH_HOUSE
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 32, 18, LawrenceLeftIntroScript
 	xy_trigger 0, 32, 19, LawrenceRightIntroScript
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 5, 25, SIGNPOST_JUMPTEXT, VermilionCitySignText
 	signpost 23, 5, SIGNPOST_JUMPTEXT, VermilionGymSignText
 	signpost 17, 5, SIGNPOST_JUMPTEXT, PokemonFanClubSignText
@@ -36,7 +34,7 @@ VermilionCity_MapEventHeader:
 	signpost 13, 29, SIGNPOST_JUMPTEXT, VermilionCityTruckText
 	signpost 23, 12, SIGNPOST_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	person_event SPRITE_VERMILION_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	person_event SPRITE_VERMILION_LAWRENCE, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1

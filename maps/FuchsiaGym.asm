@@ -1,22 +1,20 @@
 FuchsiaGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FuchsiaGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 17, 4, 2, FUCHSIA_CITY
 	warp_def 17, 5, 2, FUCHSIA_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 15, 3, SIGNPOST_READ, FuchsiaGymStatue
 	signpost 15, 6, SIGNPOST_READ, FuchsiaGymStatue
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_JANINE, 7, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineScript_0x195db9, -1
 	person_event SPRITE_FUCHSIA_GYM_1, 10, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym1Script_0x195e1b, -1
 	person_event SPRITE_FUCHSIA_GYM_2, 11, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym2Script_0x195e55, -1

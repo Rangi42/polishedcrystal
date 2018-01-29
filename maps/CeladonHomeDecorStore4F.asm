@@ -1,25 +1,23 @@
 
 CeladonHomeDecorStore4F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonHomeDecorStore4F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 0, 9, 2, CELADON_HOME_DECOR_STORE_3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore4FDirectoryText
 	signpost 5, 2, SIGNPOST_READ, BigOnixDollScript
 	signpost 5, 3, SIGNPOST_READ, BigOnixDollScript
 	signpost 6, 2, SIGNPOST_READ, BigOnixDollScript
 	signpost 6, 3, SIGNPOST_READ, BigOnixDollScript
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BigDollClerkText, -1
 	person_event SPRITE_BIG_SNORLAX, 3, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
 	person_event SPRITE_BIG_SNORLAX, 3, 2, SPRITEMOVEDATA_STANDING_DOWN_FLIP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1

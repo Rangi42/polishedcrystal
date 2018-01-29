@@ -1,14 +1,12 @@
 BlackthornCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, BlackthornCityFlypointCallback
 	dbw MAPCALLBACK_OBJECTS, BlackthornCitySantosCallback
 
 BlackthornCity_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 11, 18, 1, BLACKTHORN_GYM_1F
 	warp_def 21, 13, 1, BLACKTHORN_DRAGON_SPEECH_HOUSE
 	warp_def 23, 29, 1, BLACKTHORN_EMYS_HOUSE
@@ -18,16 +16,16 @@ BlackthornCity_MapEventHeader:
 	warp_def 9, 36, 2, ICE_PATH_1F
 	warp_def 1, 20, 1, DRAGONS_DEN_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 24, 34, SIGNPOST_JUMPTEXT, BlackthornCitySignText
 	signpost 13, 17, SIGNPOST_JUMPTEXT, BlackthornGymSignText
 	signpost 29, 7, SIGNPOST_JUMPTEXT, MoveDeletersHouseSignText
 	signpost 3, 21, SIGNPOST_JUMPTEXT, DragonDensSignText
 	signpost 19, 9, SIGNPOST_JUMPTEXT, BlackthornCityTrainerTipsText
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_YOUNGSTER, 20, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SantosScript, EVENT_BLACKTHORN_CITY_SANTOS_OF_SATURDAY
 	person_event SPRITE_DRAGON_TAMER, 12, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_BLOCKS_GYM
 	person_event SPRITE_DRAGON_TAMER, 12, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_DOES_NOT_BLOCK_GYM

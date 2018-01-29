@@ -1,23 +1,21 @@
 Route48_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
 Route48_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 5, 11, 3, YELLOW_FOREST_GATE
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 12, 20, Route48JessieJamesScript1
 	xy_trigger 0, 13, 20, Route48JessieJamesScript2
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 11, 27, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_ARCHER, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_JESSIE, 12, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
 	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES

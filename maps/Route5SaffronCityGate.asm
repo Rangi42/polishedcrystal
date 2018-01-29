@@ -1,22 +1,20 @@
 Route5SaffronCityGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route5SaffronCityGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 0, 4, 2, ROUTE_5
 	warp_def 0, 5, 3, ROUTE_5
 	warp_def 7, 4, 9, SAFFRON_CITY
 	warp_def 7, 5, 9, SAFFRON_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route5SaffronCityGateOfficerText, -1
 	person_event SPRITE_BLACK_BELT, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route5SaffronCityGateBlackBeltScript, -1
 

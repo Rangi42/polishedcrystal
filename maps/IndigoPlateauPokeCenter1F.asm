@@ -1,26 +1,24 @@
 IndigoPlateauPokeCenter1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
 
 IndigoPlateauPokeCenter1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 13, 9, 1, INDIGO_PLATEAU
 	warp_def 13, 10, 2, INDIGO_PLATEAU
 	warp_def 13, 0, 1, POKECENTER_2F
 	warp_def 3, 12, 1, WILLS_ROOM
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 4, 14, PlateauRivalBattleTrigger1
 	xy_trigger 0, 4, 15, PlateauRivalBattleTrigger2
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_SILVER, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	person_event SPRITE_LYRA, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
 	person_event SPRITE_YELLOW, 9, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW

@@ -1,13 +1,11 @@
 PewterCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, PewterCityFlyPoint
 
 PewterCity_MapEventHeader:
-
-.Warps: db 7
+	db 7 ; warps
 	warp_def 13, 29, 1, PEWTER_NIDORAN_SPEECH_HOUSE
 	warp_def 17, 16, 1, PEWTER_GYM
 	warp_def 17, 23, 2, PEWTER_MART
@@ -16,16 +14,16 @@ PewterCity_MapEventHeader:
 	warp_def 7, 14, 1, PEWTER_MUSEUM_OF_SCIENCE_1F
 	warp_def 5, 19, 3, PEWTER_MUSEUM_OF_SCIENCE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 23, 25, SIGNPOST_JUMPTEXT, PewterCitySignText
 	signpost 17, 11, SIGNPOST_JUMPTEXT, PewterGymSignText
 	signpost 9, 15, SIGNPOST_JUMPTEXT, PewterMuseumOfScienceSignText
 	signpost 19, 33, SIGNPOST_JUMPTEXT, PewterCityMtMoonGiftShopSignText
 	signpost 29, 19, SIGNPOST_JUMPTEXT, PewterCityWelcomeSignText
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_COOLTRAINER_F, 11, 22, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c042, -1
 	person_event SPRITE_COOLTRAINER_M, 10, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterCityCooltrainermText, -1
 	person_event SPRITE_CHILD, 29, 14, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c080, -1

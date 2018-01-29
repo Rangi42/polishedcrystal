@@ -1,12 +1,10 @@
 CeladonUniversity2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversity2F_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 8, 23, 3, CELADON_UNIVERSITY_1F
 	warp_def 0, 7, 1, CELADON_UNIVERSITY_CAFETERIA
 	warp_def 8, 5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
@@ -14,9 +12,9 @@ CeladonUniversity2F_MapEventHeader:
 	warp_def 8, 19, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
 	warp_def 0, 21, 1, CELADON_UNIVERSITY_POOL
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 0, 6, SIGNPOST_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
 	signpost 0, 12, SIGNPOST_JUMPTEXT, CeladonUniversity2FHyperTestSignText
 	signpost 0, 20, SIGNPOST_JUMPTEXT, CeladonUniversity2FPoolSignText
@@ -25,7 +23,7 @@ CeladonUniversity2F_MapEventHeader:
 	signpost 1, 16, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
 	signpost 1, 24, SIGNPOST_READ, CeladonUniversity2FCuboneSign
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
 	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCooltrainermText, -1
 	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster1Text, -1

@@ -1,19 +1,17 @@
 VermilionGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, VermilionGymDoorsScript
 
 VermilionGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 17, 4, 7, VERMILION_CITY
 	warp_def 17, 5, 7, VERMILION_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 17
+	db 17 ; signposts
 	signpost 7, 1, SIGNPOST_READ, VermilionGymTrashCanScript
 	signpost 7, 3, SIGNPOST_READ, VermilionGymTrashCanScript
 	signpost 7, 5, SIGNPOST_READ, VermilionGymTrashCanScript
@@ -32,7 +30,7 @@ VermilionGym_MapEventHeader:
 	signpost 15, 3, SIGNPOST_READ, VermilionGymStatue
 	signpost 15, 6, SIGNPOST_READ, VermilionGymStatue
 
-.PersonEvents: db 10
+	db 10 ; person events
 	person_event SPRITE_ELECTRIC_FENCE_LEFT, 5, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_1
 	person_event SPRITE_ELECTRIC_FENCE_RIGHT, 5, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_1
 	person_event SPRITE_ELECTRIC_FENCE_LEFT, 4, 4, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_2

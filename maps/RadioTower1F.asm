@@ -1,23 +1,21 @@
 RadioTower1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RadioTower1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 2, 11, GOLDENROD_CITY
 	warp_def 7, 3, 11, GOLDENROD_CITY
 	warp_def 0, 15, 2, RADIO_TOWER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5d5e7
 	signpost 0, 13, SIGNPOST_JUMPTEXT, UnknownText_0x5d631
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_RECEPTIONIST, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_WHITNEY, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
 	person_event SPRITE_RECEPTIONIST, 6, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1

@@ -1,24 +1,22 @@
 VermilionPort_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw VermilionPortTrigger0
 	dw VermilionPortTrigger1
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VermilionPort_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 9, 5, VERMILION_PORT_PASSAGE
 	warp_def 17, 7, 1, FAST_SHIP_1F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 11, 7, UnknownScript_0x74e20
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 13, 16, SIGNPOST_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_SAILOR, 17, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74dc4, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	person_event SPRITE_SAILOR, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
 	person_event SPRITE_SUPER_NERD, 11, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x74ee6, -1

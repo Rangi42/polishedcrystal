@@ -1,23 +1,21 @@
 RadioTower2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 RadioTower2F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 0, 0, 1, RADIO_TOWER_3F
 	warp_def 0, 15, 3, RADIO_TOWER_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5e426
 	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x5e430
 	signpost 0, 13, SIGNPOST_JUMPTEXT, UnknownText_0x5e463
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_BUENA, 5, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Buena, -1
 	person_event SPRITE_SUPER_NERD, 6, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d924, EVENT_GOLDENROD_CITY_CIVILIANS
 	person_event SPRITE_TEACHER, 2, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5d701, -1

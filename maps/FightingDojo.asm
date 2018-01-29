@@ -1,24 +1,22 @@
 FightingDojo_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_SPRITES, FightingDojoSetupRematchesCallback
 
 FightingDojo_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 4, 1, SAFFRON_CITY
 	warp_def 11, 5, 1, SAFFRON_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 4, SIGNPOST_JUMPTEXT, UnknownText_0x189bc0
 	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x189be0
 	signpost 0, 9, SIGNPOST_READ, MapFightingDojoSignpost2Script
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_DOLL_1, 1, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, RematchRed0Script, EVENT_REMATCH_GYM_LEADER_1
 	person_event SPRITE_DOLL_2, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RematchGreen1Script, EVENT_REMATCH_GYM_LEADER_2
 	person_event SPRITE_DOLL_2, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RematchBlue1Script, EVENT_REMATCH_GYM_LEADER_3

@@ -4,24 +4,22 @@ const_value set 3
 	const LYRASHOUSE2F_N64
 
 LyrasHouse2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 LyrasHouse2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 0, 0, 3, LYRAS_HOUSE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 1, 4, SIGNPOST_JUMPTEXT, LyrasHousePCText
 	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
 	signpost 1, 7, SIGNPOST_READ, PokemonJournalProfElmScript
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
 	person_event SPRITE_AMPHAROS, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, AMPHAROS, LyrasHouseAmpharosText, EVENT_LYRA_IN_HER_ROOM
 	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1

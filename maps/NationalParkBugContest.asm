@@ -1,26 +1,24 @@
 NationalParkBugContest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 NationalParkBugContest_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 18, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 19, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 47, 12, 1, ROUTE_35_NATIONAL_PARK_GATE
 	warp_def 47, 13, 1, ROUTE_35_NATIONAL_PARK_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 44, 16, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
 	signpost 31, 29, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
 	signpost 4, 14, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
 	signpost 47, 8, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_BUG_CATCHER, 29, 21, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x5c8ec, EVENT_BUG_CATCHING_CONTESTANT_1A
 	person_event SPRITE_BUG_MANIAC, 22, 30, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x5c8f4, EVENT_BUG_CATCHING_CONTESTANT_2A
 	person_event SPRITE_COOLTRAINER_M, 18, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x5c8fc, EVENT_BUG_CATCHING_CONTESTANT_3A

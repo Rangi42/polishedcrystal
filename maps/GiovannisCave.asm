@@ -1,23 +1,21 @@
 GiovannisCave_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw GiovannisCaveTrigger0
 	dw GiovannisCaveTrigger1
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GiovannisCave_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 7, 15, 3, TOHJO_FALLS
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 2, 15, SIGNPOST_READ, GiovannisCaveRadioScript
 	signpost 6, 12, SIGNPOST_ITEM + BERSERK_GENE, EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_CELEBI, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
 	person_event SPRITE_LYRA, 5, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
 	person_event SPRITE_GIOVANNI, 3, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI

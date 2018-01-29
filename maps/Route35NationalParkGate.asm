@@ -1,17 +1,15 @@
 Route35NationalParkGate_MapScriptHeader:
-
-.MapTriggers: db 3
+	db 3 ; map triggers
 	dw Route35NationalParkGateTrigger0
 	dw Route35NationalParkGateTrigger1
 	dw Route35NationalParkGateTrigger2
 
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route35NationalParkGate_CheckIfStillInContest
 	dbw MAPCALLBACK_OBJECTS, Route35NationalParkGate_CheckIfContestDay
 
 Route35NationalParkGate_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 0, 15, 3, NATIONAL_PARK
 	warp_def 0, 16, 4, NATIONAL_PARK
 	warp_def 7, 15, 3, ROUTE_35
@@ -19,12 +17,12 @@ Route35NationalParkGate_MapEventHeader:
 	warp_def 4, 0, 11, OLIVINE_CITY
 	warp_def 5, 0, 12, OLIVINE_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 17, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_OFFICER, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
 	person_event SPRITE_BUG_MANIAC, 5, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
 	person_event SPRITE_OFFICER, 3, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY

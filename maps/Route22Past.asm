@@ -1,19 +1,17 @@
 Route22Past_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw Route22PastTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route22Past_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
+	db 0 ; signposts
 
-.Signposts: db 0
-
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_CELEBI, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_LYRA, 7, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_SILVER, 2, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

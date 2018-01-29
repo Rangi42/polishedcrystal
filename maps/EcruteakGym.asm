@@ -1,13 +1,11 @@
 EcruteakGym_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw EcruteakGymTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 EcruteakGym_MapEventHeader:
-
-.Warps: db 33
+	db 33 ; warps
 	warp_def 17, 4, 10, ECRUTEAK_CITY
 	warp_def 17, 5, 10, ECRUTEAK_CITY
 	warp_def 14, 4, 4, ECRUTEAK_GYM
@@ -42,13 +40,13 @@ EcruteakGym_MapEventHeader:
 	warp_def 12, 7, 3, ECRUTEAK_GYM
 	warp_def 13, 7, 3, ECRUTEAK_GYM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 15, 3, SIGNPOST_READ, EcruteakGymStatue
 	signpost 15, 6, SIGNPOST_READ, EcruteakGymStatue
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_GRAMPS, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS
 	person_event SPRITE_MORTY, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MortyScript_0x99d58, -1
 	person_event SPRITE_SAGE, 7, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSageJeffrey, -1

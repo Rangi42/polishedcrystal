@@ -1,12 +1,10 @@
 IceIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 IceIsland_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 29, 6, 2, SHAMOUTI_COAST
 	warp_def 29, 20, 1, ICE_ISLAND_ROOF
 	warp_def 5, 7, 4, ICE_ISLAND
@@ -14,10 +12,10 @@ IceIsland_MapEventHeader:
 	warp_def 26, 21, 6, ICE_ISLAND
 	warp_def 26, 7, 5, ICE_ISLAND ; hole
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 6, 19, ICY_ROCK, 1, EVENT_ICE_ISLAND_ICY_ROCK
 

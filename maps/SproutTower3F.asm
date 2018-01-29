@@ -1,18 +1,16 @@
 SproutTower3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SproutTower3F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 14, 8, 4, SPROUT_TOWER_2F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 9, 9, UnknownScript_0x184947
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 1, 6, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	signpost 1, 9, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
@@ -20,7 +18,7 @@ SproutTower3F_MapEventHeader:
 	signpost 15, 3, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	signpost 15, 12, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_SILVER, 4, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
 	person_event SPRITE_SAGE, 13, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
 	person_event SPRITE_SAGE, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1

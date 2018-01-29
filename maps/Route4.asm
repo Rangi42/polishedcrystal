@@ -1,23 +1,21 @@
 Route4_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route4_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 4, 8, MOUNT_MOON_B1F
 	warp_def 5, 19, 1, MOUNT_MOON_SQUARE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 9, 7, SIGNPOST_JUMPTEXT, MtMoonSignText
 	signpost 9, 17, SIGNPOST_JUMPTEXT, CableCarSignText
 	signpost 4, 15, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
 	person_event SPRITE_LASS, 13, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
 	person_event SPRITE_YOUNGSTER, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1

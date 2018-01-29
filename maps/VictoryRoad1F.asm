@@ -1,21 +1,19 @@
 VictoryRoad1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VictoryRoad1F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 21, 11, 3, ROUTE_23
 	warp_def 3, 3, 2, VICTORY_ROAD_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 19, 5, SIGNPOST_ITEM + FULL_HEAL, EVENT_VICTORY_ROAD_1F_HIDDEN_FULL_HEAL
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_VETERAN_M, 6, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmMatt, -1
 	itemball_event 2, 14, MAX_REVIVE, 1, EVENT_VICTORY_ROAD_1F_MAX_REVIVE
 	itemball_event 2, 17, FULL_HEAL, 1, EVENT_VICTORY_ROAD_1F_FULL_HEAL

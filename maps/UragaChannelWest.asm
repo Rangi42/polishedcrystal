@@ -1,21 +1,19 @@
 UragaChannelWest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 UragaChannelWest_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 9, 8, 2, SCARY_CAVE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 11, 9, SIGNPOST_JUMPTEXT, ScaryCaveWestSignText
 	signpost 11, 7, SIGNPOST_ITEM + BIG_PEARL, EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_ENGINEER, 9, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
 
 UragaChannelWestEngineerText:

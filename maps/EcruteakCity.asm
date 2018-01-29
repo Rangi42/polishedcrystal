@@ -1,13 +1,11 @@
 EcruteakCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, EcruteakCityFlyPoint
 
 EcruteakCity_MapEventHeader:
-
-.Warps: db 17
+	db 17 ; warps
 	warp_def 26, 35, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def 27, 35, 2, ROUTE_42_ECRUTEAK_GATE
 	warp_def 11, 23, 1, ECRUTEAK_HOUSE
@@ -26,9 +24,9 @@ EcruteakCity_MapEventHeader:
 	warp_def 27, 29, 1, ECRUTEAK_CHERISH_BALL_HOUSE
 	warp_def 17, 13, 1, ECRUTEAK_DESTINY_KNOT_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 21, 15, SIGNPOST_JUMPTEXT, EcruteakCitySignText
 	signpost 28, 8, SIGNPOST_JUMPTEXT, EcruteakGymSignText
 	signpost 21, 21, SIGNPOST_JUMPTEXT, EcruteakDanceTheaterSignText
@@ -37,7 +35,7 @@ EcruteakCity_MapEventHeader:
 	signpost 11, 15, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
 	signpost 11, 21, SIGNPOST_JUMPTEXT, EcruteakBarrierStationSignText
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_GRAMPS, 15, 20, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
 	person_event SPRITE_GRAMPS, 21, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4147, -1
 	person_event SPRITE_LASS, 26, 19, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a41db, -1

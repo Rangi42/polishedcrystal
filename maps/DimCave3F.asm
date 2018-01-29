@@ -1,14 +1,12 @@
 DimCave3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_TILES, DimCave3FBouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, DimCave3FSetUpStoneTable
 
 DimCave3F_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 5, 5, 4, DIM_CAVE_4F
 	warp_def 22, 28, 5, DIM_CAVE_4F
 	warp_def 10, 15, 6, DIM_CAVE_4F ; hole
@@ -16,13 +14,13 @@ DimCave3F_MapEventHeader:
 	warp_def 25, 27, 3, DIM_CAVE_2F
 	warp_def 21, 14, 4, DIM_CAVE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 5, 2, SIGNPOST_ITEM + STAR_PIECE, EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE
 	signpost 6, 26, SIGNPOST_ITEM + ZINC, EVENT_DIM_CAVE_3F_HIDDEN_ZINC
 
-.PersonEvents: db 9
+	db 9 ; person events
 	strengthboulder_event 17, 3, EVENT_BOULDER_IN_DIM_CAVE_3F
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 8, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
 	person_event SPRITE_ENGINEER, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1

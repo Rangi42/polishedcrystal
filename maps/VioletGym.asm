@@ -1,23 +1,21 @@
 VioletGym_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw VioletGymTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VioletGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 15, 4, 2, VIOLET_CITY
 	warp_def 15, 5, 2, VIOLET_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 13, 3, SIGNPOST_READ, VioletGymStatue
 	signpost 13, 6, SIGNPOST_READ, VioletGymStatue
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_GYM_GUY, 13, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
 	person_event SPRITE_FALKNER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FalknerScript_0x683c2, EVENT_VIOLET_GYM_FALKNER
 	person_event SPRITE_YOUNGSTER, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperRod, EVENT_VIOLET_GYM_FALKNER

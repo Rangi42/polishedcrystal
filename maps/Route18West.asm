@@ -1,22 +1,20 @@
 Route18West_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
 Route18West_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 6, 19, 1, ROUTE_18_GATE
 	warp_def 7, 19, 2, ROUTE_18_GATE
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 0, 12, Route18WestBikeCheckScript
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_BIKER, 2, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:

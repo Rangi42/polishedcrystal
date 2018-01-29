@@ -1,22 +1,20 @@
 IndigoPlateau_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, IndigoPlateauFlyPoint
 
 IndigoPlateau_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 5, 9, 1, INDIGO_PLATEAU_POKECENTER_1F
 	warp_def 5, 10, 2, INDIGO_PLATEAU_POKECENTER_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 7, 11, SIGNPOST_JUMPTEXT, IndigoPlateauSignText
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 IndigoPlateauFlyPoint:
 	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU

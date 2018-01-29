@@ -1,22 +1,20 @@
 ViridianForestViridianGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ViridianForestViridianGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 0, 4, 2, VIRIDIAN_FOREST
 	warp_def 0, 5, 3, VIRIDIAN_FOREST
 	warp_def 7, 4, 2, ROUTE_2_SOUTH
 	warp_def 7, 5, 2, ROUTE_2_SOUTH
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianForestViridianGateOfficerText, -1
 
 ViridianForestViridianGateOfficerText:

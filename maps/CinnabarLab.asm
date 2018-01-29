@@ -1,21 +1,19 @@
 CinnabarLab_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw CinnabarLabTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CinnabarLab_MapEventHeader:
-
-.Warps: db 0
+	db 0 ; warps
 ;	warp_def $9, $e, 3, CINNABAR_LAB
 ;	warp_def $9, $f, 3, CINNABAR_LAB
 ;	warp_def $6, $2, 2, CINNABAR_LAB
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 1, 6, 2, CinnabarLabCelebiEventScript
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 14, 8, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
 	signpost 14, 9, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
 	signpost 14, 16, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
@@ -25,7 +23,7 @@ CinnabarLab_MapEventHeader:
 	signpost 6, 3, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
 	signpost 6, 3, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_ARMORED_MEWTWO, 4, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1

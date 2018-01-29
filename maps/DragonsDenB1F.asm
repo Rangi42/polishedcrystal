@@ -1,26 +1,24 @@
 DragonsDenB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, DragonsDenB1FSilverCallback
 
 DragonsDenB1F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 3, 20, 3, DRAGONS_DEN_1F
 	warp_def 29, 19, 1, DRAGON_SHRINE
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 1, 30, 19, DragonsDenB1FClairTrigger
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 24, 18, SIGNPOST_JUMPTEXT, DragonsDenShrineSignText
 	signpost 29, 33, SIGNPOST_ITEM + REVIVE, EVENT_DRAGONS_DEN_B1F_HIDDEN_REVIVE
 	signpost 17, 21, SIGNPOST_ITEM + MAX_POTION, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION
 	signpost 15, 31, SIGNPOST_ITEM + MAX_ELIXER, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_CLAIR, 30, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
 	person_event SPRITE_SILVER, 23, 20, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DragonsDenB1FSilverScript, EVENT_RIVAL_DRAGONS_DEN
 	person_event SPRITE_DRAGON_TAMER, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerDragonTamerDarin, -1

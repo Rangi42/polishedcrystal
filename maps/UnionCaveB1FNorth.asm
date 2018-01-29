@@ -1,23 +1,21 @@
 UnionCaveB1FNorth_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 UnionCaveB1FNorth_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 3, 3, 7, RUINS_OF_ALPH_OUTSIDE
 	warp_def 11, 3, 8, RUINS_OF_ALPH_OUTSIDE
 	warp_def 23, 15, 1, UNION_CAVE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 23, 11, SIGNPOST_ITEM + X_SPEED, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED
 	signpost 4, 13, SIGNPOST_ITEM + REVIVE, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
 	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetry, -1
 	tmhmball_event 22, 5, TM_SWIFT, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT

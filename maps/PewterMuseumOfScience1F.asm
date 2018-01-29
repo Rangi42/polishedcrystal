@@ -1,21 +1,19 @@
 PewterMuseumOfScience1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 PewterMuseumOfScience1F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 7, 10, 6, PEWTER_CITY
 	warp_def 7, 11, 6, PEWTER_CITY
 	warp_def 7, 16, 7, PEWTER_CITY
 	warp_def 7, 17, 7, PEWTER_CITY
 	warp_def 7, 7, 1, PEWTER_MUSEUM_OF_SCIENCE_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 9
+	db 9 ; signposts
 	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
 	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
 	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
@@ -26,7 +24,7 @@ PewterMuseumOfScience1F_MapEventHeader:
 	signpost 1, 17, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
 	signpost 1, 18, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
 	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
 	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FScientistText, -1

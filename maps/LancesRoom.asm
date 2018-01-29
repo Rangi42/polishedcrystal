@@ -1,26 +1,24 @@
 LancesRoom_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw LancesRoomEntranceTrigger
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, LancesRoomDoorCallback
 
 LancesRoom_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 23, 4, 3, KARENS_ROOM
 	warp_def 23, 5, 4, KARENS_ROOM
 	warp_def 1, 4, 1, HALL_OF_FAME
 	warp_def 1, 5, 2, HALL_OF_FAME
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 1, 5, 4, ApproachLanceFromLeftTrigger
 	xy_trigger 1, 5, 5, ApproachLanceFromRightTrigger
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_LANCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript, -1
 	person_event SPRITE_BUENA, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 	person_event SPRITE_OAK, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY

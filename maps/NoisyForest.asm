@@ -1,27 +1,25 @@
 NoisyForest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 NoisyForest_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 4, 6, 2, ROCKY_BEACH
 	warp_def 5, 6, 3, ROCKY_BEACH
 	warp_def 28, 35, 1, SHAMOUTI_SHRINE_RUINS
 	warp_def 29, 35, 2, SHAMOUTI_SHRINE_RUINS
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 9, 15, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	signpost 31, 25, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	signpost 2, 32, SIGNPOST_ITEM + ULTRA_BALL, EVENT_NOISY_FOREST_HIDDEN_ULTRA_BALL
 	signpost 18, 34, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_NOISY_FOREST_HIDDEN_TINYMUSHROOM
 	signpost 29, 7, SIGNPOST_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_ANABEL, 19, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NoisyForestAnabelScript, EVENT_NOISY_FOREST_ANABEL
 	person_event SPRITE_YOUNGSTER, 15, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperTrent, -1
 	person_event SPRITE_MARILL, 31, 24, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, NoisyForestPikabluScript, EVENT_NOISY_FOREST_PIKABLU

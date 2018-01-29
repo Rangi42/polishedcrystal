@@ -1,22 +1,20 @@
 LakeofRage_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 3
+	db 3 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, LakeofRageFlyPoint
 	dbw MAPCALLBACK_OBJECTS, LakeofRageWesleyAndEngineer
 	dbw MAPCALLBACK_TILES, LakeofRageFloodScript
 
 LakeofRage_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 3, 7, 1, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE
 	warp_def 31, 27, 1, LAKE_OF_RAGE_MAGIKARP_HOUSE
 	warp_def 28, 10, 1, HIDDEN_TREE_GROTTO
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 7
+	db 7 ; signposts
 	signpost 27, 21, SIGNPOST_JUMPTEXT, LakeOfRageSignText
 	signpost 31, 25, SIGNPOST_READ, LakeOfRageFishingGuruSign
 	signpost 4, 4, SIGNPOST_ITEM + RARE_CANDY, EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY
@@ -25,7 +23,7 @@ LakeofRage_MapEventHeader:
 	signpost 27, 10, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE
 	signpost 27, 11, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE
 
-.PersonEvents: db 17
+	db 17 ; person events
 	person_event SPRITE_LAKE_OF_RAGE_LANCE, 28, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeOfRageLanceScript, EVENT_LAKE_OF_RAGE_LANCE
 	person_event SPRITE_BIG_GYARADOS, 22, 18, SPRITEMOVEDATA_BIG_GYARADOS, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LakeOfRageRedGyaradosScript, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	person_event SPRITE_SUPER_NERD, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY

@@ -1,24 +1,22 @@
 BattleTower1F_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw BattleTower1FTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 BattleTower1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 13, 10, 3, BATTLE_TOWER_OUTSIDE
 	warp_def 13, 11, 4, BATTLE_TOWER_OUTSIDE
 	warp_def 0, 10, 1, BATTLE_TOWER_ELEVATOR
 	warp_def 5, 0, 1, BATTLE_TOWER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 7, 11, SIGNPOST_READ, MapBattleTower1FSignpost0Script
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
 	pc_nurse_event 6, 6
 	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1

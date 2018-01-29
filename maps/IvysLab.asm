@@ -1,18 +1,16 @@
 IvysLab_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 IvysLab_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 4, 1, VALENCIA_ISLAND
 	warp_def 11, 5, 1, VALENCIA_ISLAND
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 13
+	db 13 ; signposts
 	signpost 1, 2, SIGNPOST_READ, IvysLabHealingMachine
 	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -27,7 +25,7 @@ IvysLab_MapEventHeader:
 	signpost 7, 8, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_IVY, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
 	person_event SPRITE_NIDORINO, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
 	person_event SPRITE_COOLTRAINER_F, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1

@@ -1,26 +1,24 @@
 MrPokemonsHouse_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw MrPokemonsHouseTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MrPokemonsHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 2, ROUTE_30
 	warp_def 7, 3, 2, ROUTE_30
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 1, 0, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
 	signpost 1, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
 	signpost 1, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
 	signpost 1, 7, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
 	signpost 4, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
 	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK

@@ -1,21 +1,19 @@
 FastShipCabins_NNW_NNE_NE_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FastShipCabins_NNW_NNE_NE_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 0, 2, 2, FAST_SHIP_1F
 	warp_def 12, 2, 3, FAST_SHIP_1F
 	warp_def 24, 2, 4, FAST_SHIP_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_SAILOR, 26, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x755f1, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
 	person_event SPRITE_PI, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	person_event SPRITE_COOLTRAINER_M, 3, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND

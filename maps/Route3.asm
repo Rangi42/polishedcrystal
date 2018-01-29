@@ -1,19 +1,17 @@
 Route3_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route3FlyPoint
 
 Route3_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 1, 68, 1, MOUNT_MOON_1F
 	warp_def 3, 61, 1, ROUTE_3_POKECENTER_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 15, 63, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
 	signpost 17, 11, SIGNPOST_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
 	signpost 15, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
@@ -23,7 +21,7 @@ Route3_MapEventHeader:
 	signpost 16, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 	signpost 17, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterRegis, -1
 	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
 	person_event SPRITE_YOUNGSTER, 3, 25, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterWarren, -1

@@ -1,23 +1,21 @@
 GoldenrodGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GoldenrodGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 17, 2, 1, GOLDENROD_CITY
 	warp_def 17, 3, 1, GOLDENROD_CITY
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 1, 5, 8, WhitneyCriesScript
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 15, 1, SIGNPOST_READ, GoldenrodGymStatue
 	signpost 15, 4, SIGNPOST_READ, GoldenrodGymStatue
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_LASS, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath1, -1
 	person_event SPRITE_WHITNEY, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
 	person_event SPRITE_LASS, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerLassCathy, -1

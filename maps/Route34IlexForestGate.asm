@@ -1,24 +1,22 @@
 Route34IlexForestGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
 
 Route34IlexForestGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 0, 4, 1, ROUTE_34
 	warp_def 0, 5, 2, ROUTE_34
 	warp_def 7, 4, 1, ILEX_FOREST
 	warp_def 7, 5, 1, ILEX_FOREST
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 7, 4, UnknownScript_0x62d3d
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_TEACHER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
 	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
 	person_event SPRITE_HERACROSS, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, HERACROSS, UnknownText_0x62e83, -1

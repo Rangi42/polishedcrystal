@@ -1,22 +1,20 @@
 FastShipB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FastShipB1F_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 1, 11, FAST_SHIP_1F
 	warp_def 11, 27, 12, FAST_SHIP_1F
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 5, 26, UnknownScript_0x7673c
 	xy_trigger 0, 5, 27, UnknownScript_0x76751
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_SAILOR, 4, 26, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x76767, EVENT_FAST_SHIP_B1F_SAILOR_LEFT
 	person_event SPRITE_SAILOR, 4, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x76767, EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	person_event SPRITE_SAILOR, 9, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorJeff, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP

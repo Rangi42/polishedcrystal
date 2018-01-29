@@ -1,26 +1,24 @@
 ScaryCave1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ScaryCave1F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 31, 33, 1, URAGA_CHANNEL_EAST
 	warp_def 31, 11, 1, URAGA_CHANNEL_WEST
 	warp_def 30, 20, 1, SCARY_CAVE_B1F
 	warp_def 10, 34, 2, SCARY_CAVE_B1F
 	warp_def 1, 9, 1, SCARY_CAVE_SHIPWRECK
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 3, 34, SIGNPOST_ITEM + MAX_ELIXER, EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR
 	signpost 28, 18, SIGNPOST_ITEM + PEARL_STRING, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING
 	signpost 29, 30, SIGNPOST_ITEM + PEARL, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_MIRA, 5, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
 	person_event SPRITE_PHARMACIST, 24, 8, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
 	person_event SPRITE_POKEFAN_M, 2, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacSmilte, -1

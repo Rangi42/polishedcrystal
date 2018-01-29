@@ -1,22 +1,20 @@
 Route19FuchsiaGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route19FuchsiaGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 0, 4, 9, FUCHSIA_CITY
 	warp_def 0, 5, 10, FUCHSIA_CITY
 	warp_def 7, 4, 1, ROUTE_19
 	warp_def 7, 5, 1, ROUTE_19
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x1ab3f6, -1
 
 OfficerScript_0x1ab3f6:

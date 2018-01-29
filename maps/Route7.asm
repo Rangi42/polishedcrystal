@@ -1,23 +1,21 @@
 Route7_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route7RebattleBreeder
 
 Route7_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 6, 15, 1, ROUTE_7_SAFFRON_GATE
 	warp_def 7, 15, 2, ROUTE_7_SAFFRON_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 13, 5, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
 	signpost 11, 6, SIGNPOST_JUMPTEXT, Route7LockedDoorText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_BIG_SNORLAX, 0, 1, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
 	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
 	itemball_event 1, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB

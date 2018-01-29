@@ -1,23 +1,21 @@
 CianwoodPharmacy_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CianwoodPharmacy_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 3, 4, CIANWOOD_CITY
 	warp_def 7, 4, 4, CIANWOOD_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
 	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_PHARMACIST, 3, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
 
 CianwoodPharmacist:

@@ -1,18 +1,16 @@
 GoldenrodGameCorner_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GoldenrodGameCorner_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 13, 2, 10, GOLDENROD_CITY
 	warp_def 13, 3, 10, GOLDENROD_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 31
+	db 31 ; signposts
 	signpost 6, 6, SIGNPOST_READ, GoldenrodGameCornerSlotsMachineScript
 	signpost 7, 6, SIGNPOST_READ, GoldenrodGameCornerSlotsMachineScript
 	signpost 8, 6, SIGNPOST_READ, GoldenrodGameCornerSlotsMachineScript
@@ -45,7 +43,7 @@ GoldenrodGameCorner_MapEventHeader:
 	signpost 11, 18, SIGNPOST_RIGHT, GoldenrodGameCornerCardFlipMachineScript
 	signpost 1, 12, SIGNPOST_LEFT, GoldenrodGameCornerLeftTheirDrinkScript
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_CLERK, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
 	person_event SPRITE_RECEPTIONIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerTMVendorScript, -1
 	person_event SPRITE_RECEPTIONIST, 2, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGameCornerPrizeMonVendorScript, -1

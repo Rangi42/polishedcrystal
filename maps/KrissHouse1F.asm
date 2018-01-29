@@ -1,28 +1,26 @@
 KrissHouse1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 KrissHouse1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 6, 2, NEW_BARK_TOWN
 	warp_def 7, 7, 2, NEW_BARK_TOWN
 	warp_def 0, 9, 1, KRISS_HOUSE_2F
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 0, 4, 8, MomTrigger1
 	xy_trigger 0, 4, 9, MomTrigger2
 	xy_trigger 0, 2, 7, MomTrigger3
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
 	signpost 1, 1, SIGNPOST_JUMPTEXT, SinkText
 	signpost 1, 2, SIGNPOST_JUMPTEXT, StoveText
 	signpost 1, 7, SIGNPOST_UP, TVScript
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
 	person_event SPRITE_MOM, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2

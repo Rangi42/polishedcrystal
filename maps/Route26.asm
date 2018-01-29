@@ -1,22 +1,20 @@
 Route26_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route26_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 5, 7, 3, POKEMON_LEAGUE_GATE
 	warp_def 57, 15, 1, ROUTE_26_HEAL_SPEECH_HOUSE
 	warp_def 71, 5, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 6, 8, SIGNPOST_JUMPTEXT, Route26SignText
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_NEW_BARK_TEACHER, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
 	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
 	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1

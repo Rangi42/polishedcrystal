@@ -1,27 +1,25 @@
 CeruleanCape_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeruleanCape_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 5, 9, 1, BILLS_HOUSE
 	warp_def 29, 38, 1, DIM_CAVE_2F
 	warp_def 29, 39, 1, DIM_CAVE_2F
 
-.XYTriggers: db 3
+	db 3 ; xy triggers
 	xy_trigger 1, 6, 4, CeruleanCapeDateInterruptedTrigger1
 	xy_trigger 1, 7, 4, CeruleanCapeDateInterruptedTrigger2
 	xy_trigger 1, 12, 9, CeruleanCapeDateInterruptedTrigger3
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 5, 7, SIGNPOST_JUMPTEXT, BillsHouseSignText
 	signpost 12, 31, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
 	signpost 3, 18, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-.PersonEvents: db 16
+	db 16 ; person events
 	person_event SPRITE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
 	person_event SPRITE_VERMILION_LAWRENCE, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
 	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND

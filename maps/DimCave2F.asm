@@ -1,13 +1,11 @@
 DimCave2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, DimCave2FBouldersLand
 
 DimCave2F_MapEventHeader:
-
-.Warps: db 8
+	db 8 ; warps
 	warp_def 1, 15, 2, CERULEAN_CAPE
 	warp_def 5, 29, 4, DIM_CAVE_3F
 	warp_def 25, 27, 5, DIM_CAVE_3F
@@ -17,13 +15,13 @@ DimCave2F_MapEventHeader:
 	warp_def 18, 28, 3, DIM_CAVE_1F
 	warp_def 32, 26, 4, DIM_CAVE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 4, 6, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
 	signpost 19, 2, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
 	person_event SPRITE_ENGINEER, 12, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
 	person_event SPRITE_POKEFAN_M, 16, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1

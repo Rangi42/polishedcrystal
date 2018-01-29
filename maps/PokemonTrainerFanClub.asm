@@ -1,22 +1,20 @@
 PokemonTrainerFanClub_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 PokemonTrainerFanClub_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 4, 16, SAFFRON_CITY
 	warp_def 9, 5, 16, SAFFRON_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 1, 0, SIGNPOST_READ, PokemonJournalBrunoScript
 	signpost 1, 1, SIGNPOST_READ, PokemonJournalBrunoScript
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 PokemonJournalBrunoScript:
 	setflag ENGINE_READ_BROCK_JOURNAL

@@ -1,19 +1,17 @@
 Route16Northwest_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route16Northwest_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 1, 1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
 	warp_def 4, 9, 1, ROUTE_16_GATE
 	warp_def 5, 9, 2, ROUTE_16_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	cuttree_event 4, 17, EVENT_ROUTE_16_CUT_TREE

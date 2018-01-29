@@ -1,24 +1,22 @@
 BlackthornGym2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
 
 BlackthornGym2F_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 7, 1, 3, BLACKTHORN_GYM_1F
 	warp_def 9, 7, 4, BLACKTHORN_GYM_1F
 	warp_def 5, 2, 5, BLACKTHORN_GYM_1F ; hole
 	warp_def 7, 8, 6, BLACKTHORN_GYM_1F ; hole
 	warp_def 3, 8, 7, BLACKTHORN_GYM_1F ; hole
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 8
+	db 8 ; person events
 	strengthboulder_event 2, 8, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
 	strengthboulder_event 3, 2, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
 	strengthboulder_event 16, 6, EVENT_BOULDER_IN_BLACKTHORN_GYM_3

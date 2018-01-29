@@ -1,16 +1,14 @@
 CeladonOutskirts_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonOutskirts_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
+	db 0 ; signposts
 
-.Signposts: db 0
-
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 13, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB

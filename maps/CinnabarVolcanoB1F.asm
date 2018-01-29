@@ -1,14 +1,12 @@
 CinnabarVolcanoB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_TILES, CinnabarVolcanoB1FBouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, CinnabarVolcanoB1FBouldersFall
 
 CinnabarVolcanoB1F_MapEventHeader:
-
-.Warps: db 12
+	db 12 ; warps
 	warp_def 17, 9, 2, CINNABAR_VOLCANO_1F
 	warp_def 25, 19, 3, CINNABAR_VOLCANO_1F
 	warp_def 25, 29, 4, CINNABAR_VOLCANO_1F
@@ -22,13 +20,13 @@ CinnabarVolcanoB1F_MapEventHeader:
 	warp_def 11, 15, 9, CINNABAR_VOLCANO_1F ; hole
 	warp_def 8, 20, 10, CINNABAR_VOLCANO_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 5, 28, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE
 	signpost 18, 28, SIGNPOST_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
 
-.PersonEvents: db 6
+	db 6 ; person events
 	strengthboulder_event 5, 6, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
 	smashrock_event 28, 8
 	smashrock_event 17, 28

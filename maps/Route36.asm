@@ -1,13 +1,11 @@
 Route36_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route36ArthurCallback
 
 Route36_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 8, 22, 3, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 9, 22, 4, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 13, 51, 1, ROUTE_36_RUINS_OF_ALPH_GATE
@@ -15,17 +13,17 @@ Route36_MapEventHeader:
 	warp_def 8, 61, 1, ROUTE_36_VIOLET_GATE
 	warp_def 9, 61, 2, ROUTE_36_VIOLET_GATE
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 1, 7, 24, Route36SuicuneScript
 	xy_trigger 1, 7, 26, Route36SuicuneScript
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 1, 33, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
 	signpost 11, 49, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
 	signpost 7, 59, SIGNPOST_JUMPTEXT, Route36SignText
 	signpost 7, 25, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_WEIRD_TREE, 9, 39, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
 	person_event SPRITE_YOUNGSTER, 6, 53, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
 	person_event SPRITE_LASS, 12, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO

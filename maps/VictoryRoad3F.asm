@@ -1,21 +1,19 @@
 VictoryRoad3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 VictoryRoad3F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 5, 2, 3, VICTORY_ROAD_2F
 	warp_def 11, 15, 4, VICTORY_ROAD_2F
 	warp_def 13, 19, 5, VICTORY_ROAD_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_VETERAN_M, 8, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmRemy, -1
 	itemball_event 13, 16, RAZOR_FANG, 1, EVENT_VICTORY_ROAD_3F_RAZOR_FANG
 

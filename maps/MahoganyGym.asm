@@ -1,22 +1,20 @@
 MahoganyGym_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MahoganyGym_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 17, 4, 3, MAHOGANY_TOWN
 	warp_def 17, 5, 3, MAHOGANY_TOWN
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 15, 3, SIGNPOST_READ, MahoganyGymStatue
 	signpost 15, 6, SIGNPOST_READ, MahoganyGymStatue
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_PRYCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PryceScript_0x199a9e, -1
 	person_event SPRITE_SKIER, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
 	person_event SPRITE_BOARDER, 17, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderRonald, -1

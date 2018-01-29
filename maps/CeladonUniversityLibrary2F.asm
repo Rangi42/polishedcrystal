@@ -1,17 +1,15 @@
 CeladonUniversityLibrary2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityLibrary2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 0, 7, 3, CELADON_UNIVERSITY_LIBRARY_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 28
+	db 28 ; signposts
 	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
 	signpost 0, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
 	signpost 3, 0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf1Text
@@ -41,7 +39,7 @@ CeladonUniversityLibrary2F_MapEventHeader:
 	signpost 10, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
 	signpost 10, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer4
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_COSPLAYER, 4, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FCosplayerText, -1
 	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FLassText, -1
 	person_event SPRITE_ARTIST, 9, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FArtistScript, -1

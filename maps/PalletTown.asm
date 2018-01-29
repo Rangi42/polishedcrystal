@@ -1,26 +1,24 @@
 PalletTown_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, PalletTownFlyPoint
 
 PalletTown_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 5, 5, 1, REDS_HOUSE_1F
 	warp_def 5, 13, 1, BLUES_HOUSE_1F
 	warp_def 11, 12, 1, OAKS_LAB
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 9, 7, SIGNPOST_JUMPTEXT, PalletTownSignText
 	signpost 5, 3, SIGNPOST_JUMPTEXT, RedsHouseSignText
 	signpost 13, 13, SIGNPOST_JUMPTEXT, OaksLabSignText
 	signpost 5, 11, SIGNPOST_JUMPTEXT, BluesHouseSignText
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
 	person_event SPRITE_FISHER, 14, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
 	person_event SPRITE_YOUNGSTER, 7, 17, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1

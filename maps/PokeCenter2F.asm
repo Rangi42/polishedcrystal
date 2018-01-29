@@ -1,26 +1,24 @@
 PokeCenter2F_MapScriptHeader:
-
-.MapTriggers: db 3
+	db 3 ; map triggers
 	dw PokeCenter2FDummyTrigger
 	dw PokeCenter2FLeftTradeCenterTrigger
 	dw PokeCenter2FLeftColosseumTrigger
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, PokeCenter2FTileCallback
 
 PokeCenter2F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 0, -1, POKECENTER_2F
 	warp_def 0, 5, 1, TRADE_CENTER
 	warp_def 0, 9, 1, COLOSSEUM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 3, 7, SIGNPOST_READ, PokeCenter2FLinkRecordSign
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
 	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1

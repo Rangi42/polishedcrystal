@@ -1,20 +1,18 @@
 TohjoFalls_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 TohjoFalls_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 15, 13, 2, ROUTE_27
 	warp_def 15, 25, 3, ROUTE_27
 	warp_def 7, 3, 1, GIOVANNIS_CAVE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 8, 2, MOON_STONE, 1, EVENT_TOHJO_FALLS_MOON_STONE
 

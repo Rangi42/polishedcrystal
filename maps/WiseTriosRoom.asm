@@ -1,23 +1,21 @@
 WiseTriosRoom_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x98574
 
 WiseTriosRoom_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 4, 7, 1, BELLCHIME_TRAIL
 	warp_def 5, 7, 2, BELLCHIME_TRAIL
 	warp_def 4, 1, 5, ECRUTEAK_HOUSE
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 4, 7, UnknownScript_0x985a3
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_ELDER, 2, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9862b, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_ELDER, 7, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9868b, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	person_event SPRITE_ELDER, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x987af, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1

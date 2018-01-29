@@ -1,22 +1,21 @@
 BattleTower2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 BattleTower2F_MapEventHeader:
-.Warps: db 1
+	db 1 ; warps
 	warp_def 1, 0, 4, BATTLE_TOWER_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 3, 4, SIGNPOST_UP, BattleTower2FTVScript
 	signpost 3, 5, SIGNPOST_UP, BattleTower2FTVScript
 	signpost 3, 16, SIGNPOST_UP, BattleTower2FTVScript
 	signpost 3, 17, SIGNPOST_UP, BattleTower2FTVScript
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_RILEY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
 	person_event SPRITE_BUCK, 4, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FBuckScript, EVENT_BATTLE_TOWER_BUCK
 	person_event SPRITE_MIRA, 7, 12, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMiraScript, EVENT_BATTLE_TOWER_MIRA

@@ -1,12 +1,10 @@
 CliffCave_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CliffCave_MapEventHeader:
-
-.Warps: db 7
+	db 7 ; warps
 	warp_def 19, 5, 2, ROUTE_47
 	warp_def 9, 7, 3, ROUTE_47
 	warp_def 33, 5, 4, ROUTE_47
@@ -15,12 +13,12 @@ CliffCave_MapEventHeader:
 	warp_def 3, 3, 4, CLIFF_CAVE
 	warp_def 27, 7, 5, CLIFF_CAVE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 9, 9, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_ROCKET, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
 	person_event SPRITE_ROCKET, 33, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
 

@@ -1,19 +1,17 @@
 MagnetTunnelInside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, MagnetTunnelInsideTileCallback
 
 MagnetTunnelInside_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 19, 5, 1, MAGNET_TUNNEL_WEST
 	warp_def 3, 43, 1, MAGNET_TUNNEL_EAST
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 10, 6, SIGNPOST_UP, MagnetTunnelInsideMachine1
 	signpost 10, 7, SIGNPOST_UP, MagnetTunnelInsideMachine1
 	signpost 21, 22, SIGNPOST_UP, MagnetTunnelInsideMachine2
@@ -23,7 +21,7 @@ MagnetTunnelInside_MapEventHeader:
 	signpost 9, 34, SIGNPOST_UP, MagnetTunnelInsideMachine4
 	signpost 9, 35, SIGNPOST_UP, MagnetTunnelInsideMachine4
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_N64, 10, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_1
 	person_event SPRITE_N64, 23, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_2
 	person_event SPRITE_N64, 5, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3

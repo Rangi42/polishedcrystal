@@ -1,12 +1,10 @@
 FireIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 FireIsland_MapEventHeader:
-
-.Warps: db 14
+	db 14 ; warps
 	warp_def 29, 5, 1, SHAMOUTI_COAST
 	warp_def 29, 19, 1, FIRE_ISLAND_ROOF
 	warp_def 5, 7, 4, FIRE_ISLAND
@@ -22,10 +20,10 @@ FireIsland_MapEventHeader:
 	warp_def 27, 20, 14, FIRE_ISLAND
 	warp_def 27, 6, 13, FIRE_ISLAND ; hole
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	itemball_event 19, 2, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
 

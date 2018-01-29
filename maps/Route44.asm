@@ -1,22 +1,20 @@
 Route44_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route44_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 7, 56, 1, ICE_PATH_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 7, 53, SIGNPOST_JUMPTEXT, Route44Sign1Text
 	signpost 10, 6, SIGNPOST_JUMPTEXT, Route44Sign2Text
 	signpost 9, 32, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_VETERAN_M, 8, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
 	person_event SPRITE_FISHER, 3, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	person_event SPRITE_FISHER, 13, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherEdgar, -1

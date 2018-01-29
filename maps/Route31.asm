@@ -1,24 +1,22 @@
 Route31_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route31CheckMomCall
 
 Route31_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 6, 4, 3, ROUTE_31_VIOLET_GATE
 	warp_def 7, 4, 4, ROUTE_31_VIOLET_GATE
 	warp_def 5, 34, 1, DARK_CAVE_VIOLET_ENTRANCE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 5, 7, SIGNPOST_JUMPTEXT, Route31SignText
 	signpost 5, 31, SIGNPOST_JUMPTEXT, DarkCaveSignText
 
-.PersonEvents: db 9
+	db 9 ; person events
 	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
 	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
 	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1

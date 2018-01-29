@@ -1,12 +1,10 @@
 SafariZoneNorth_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SafariZoneNorth_MapEventHeader:
-
-.Warps: db 9
+	db 9 ; warps
 	warp_def 32, 41, 3, SAFARI_ZONE_EAST
 	warp_def 33, 41, 4, SAFARI_ZONE_EAST
 	warp_def 37, 10, 3, SAFARI_ZONE_WEST
@@ -17,9 +15,9 @@ SafariZoneNorth_MapEventHeader:
 	warp_def 37, 4, 1, SAFARI_ZONE_WEST
 	warp_def 37, 5, 2, SAFARI_ZONE_WEST
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 33, 15, SIGNPOST_JUMPTEXT, SafariZoneNorthAreaSignText
 	signpost 6, 38, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
 	signpost 30, 28, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
@@ -27,7 +25,7 @@ SafariZoneNorth_MapEventHeader:
 	signpost 27, 5, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
 	signpost 19, 31, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
 	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
 	person_event SPRITE_BEAUTY, 9, 36, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1

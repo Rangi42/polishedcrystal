@@ -1,15 +1,13 @@
 Route24_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Route24TileScript
 
 Route24_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
-
-.XYTriggers: db 10
+	db 10 ; xy triggers
 	xy_trigger 1, 15, 19, Route24BridgeOverheadTrigger
 	xy_trigger 1, 14, 20, Route24BridgeOverheadTrigger
 	xy_trigger 1, 14, 21, Route24BridgeOverheadTrigger
@@ -21,10 +19,10 @@ Route24_MapEventHeader:
 	xy_trigger 0, 38, 20, Route24BridgeUnderfootTrigger
 	xy_trigger 0, 38, 21, Route24BridgeUnderfootTrigger
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 5, 16, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_ROCKET, 25, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
 const_value set 1

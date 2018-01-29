@@ -1,24 +1,22 @@
 DimCave5F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
 DimCave5F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 31, 13, 5, ROUTE_10_NORTH
 	warp_def 16, 2, 1, DIM_CAVE_4F
 	warp_def 29, 27, 2, DIM_CAVE_4F
 	warp_def 25, 28, 3, DIM_CAVE_4F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 28, 12, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
-.PersonEvents: db 8
+	db 8 ; person events
 	strengthboulder_event 5, 25, EVENT_BOULDER_IN_DIM_CAVE_5F
 	person_event SPRITE_RILEY, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
 	person_event SPRITE_SUPER_NERD, 17, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1

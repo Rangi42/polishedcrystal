@@ -1,22 +1,20 @@
 Route46_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route46_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 33, 7, 1, ROUTE_29_46_GATE
 	warp_def 33, 8, 2, ROUTE_29_46_GATE
 	warp_def 5, 14, 3, DARK_CAVE_VIOLET_ENTRANCE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 27, 9, SIGNPOST_JUMPTEXT, Route46SignText
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
 	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
 	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1

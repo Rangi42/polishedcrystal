@@ -1,22 +1,20 @@
 EcruteakShrineInside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 EcruteakShrineInside_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 5, 1, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def 11, 6, 1, ECRUTEAK_SHRINE_OUTSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 6, 5, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
 	signpost 6, 6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SABRINA, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
 	person_event SPRITE_GRAMPS, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
 	person_event SPRITE_SAGE, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1

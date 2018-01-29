@@ -1,23 +1,21 @@
 GoldenrodHarbor_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 GoldenrodHarbor_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 16, 31, 1, GOLDENROD_HARBOR_GATE
 	warp_def 17, 31, 2, GOLDENROD_HARBOR_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 19, 29, SIGNPOST_JUMPTEXT, GoldenrodHarborSignText
 	signpost 15, 28, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
 	signpost 21, 22, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_FISHER, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	person_event SPRITE_FISHER, 5, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherPaton, -1
 	itemball_event 3, 13, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE

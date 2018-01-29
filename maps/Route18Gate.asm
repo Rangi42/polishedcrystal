@@ -1,28 +1,26 @@
 Route18Gate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route18Gate_MapEventHeader:
-
-.Warps: db 5
+	db 5 ; warps
 	warp_def 5, 0, 1, ROUTE_18_WEST
 	warp_def 6, 0, 2, ROUTE_18_WEST
 	warp_def 5, 9, 1, ROUTE_18_EAST
 	warp_def 6, 9, 2, ROUTE_18_EAST
 	warp_def 8, 8, 1, ROUTE_18_GATE_2F
 
-.XYTriggers: db 5
+	db 5 ; xy triggers
 	xy_trigger 0, 3, 5, UnknownScript_0x73611
 	xy_trigger 0, 4, 5, UnknownScript_0x73611
 	xy_trigger 0, 5, 5, Route18GateStepUpOneTrigger
 	xy_trigger 0, 6, 5, Route18GateStepUpTwoTrigger
 	xy_trigger 0, 7, 5, Route18GateStepUpThreeTrigger
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
 
 const_value set 1

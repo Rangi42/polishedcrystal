@@ -1,12 +1,10 @@
 ShamoutiIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 ShamoutiIsland_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 13, 21, 1, SHAMOUTI_POKECENTER_1F
 	warp_def 5, 33, 1, SHAMOUTI_HOTEL_1F
 	warp_def 7, 16, 1, SHAMOUTI_TUNNEL
@@ -14,14 +12,14 @@ ShamoutiIsland_MapEventHeader:
 	warp_def 12, 31, 1, SHAMOUTI_HOUSE
 	warp_def 13, 9, 1, SHAMOUTI_MERCHANT
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 16, 16, SIGNPOST_JUMPTEXT, ShamoutiIslandSignText
 	signpost 6, 26, SIGNPOST_JUMPTEXT, ShamoutiTouristCenterSignText
 	signpost 6, 32, SIGNPOST_JUMPTEXT, ShamoutiHotelSignText
 
-.PersonEvents: db 8
+	db 8 ; person events
 	person_event SPRITE_VILEPLUME, 8, 16, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
 	fruittree_event 13, 34, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY
 	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY

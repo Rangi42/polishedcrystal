@@ -1,22 +1,20 @@
 Route40BattleTowerGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route40BattleTowerGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 7, 4, 1, ROUTE_40
 	warp_def 7, 5, 1, ROUTE_40
 	warp_def 0, 4, 1, BATTLE_TOWER_OUTSIDE
 	warp_def 0, 5, 2, BATTLE_TOWER_OUTSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OfficerText_0x19ab0b, EVENT_BATTLE_TOWER_CLOSED
 	person_event SPRITE_ROCKER, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RockerScript_0x9f669, -1
 	person_event SPRITE_TWIN, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TwinScript_0x9f66c, -1

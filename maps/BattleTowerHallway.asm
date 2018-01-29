@@ -2,15 +2,13 @@ const_value set 1
 	const BATTLETOWERHALLWAY_RECEPTIONIST
 
 BattleTowerHallway_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw BattleTowerHallwayTrigger0
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 BattleTowerHallway_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 1, 11, 1, BATTLE_TOWER_ELEVATOR
 	warp_def 0, 5, 1, BATTLE_TOWER_BATTLE_ROOM
 	warp_def 0, 7, 1, BATTLE_TOWER_BATTLE_ROOM
@@ -18,11 +16,11 @@ BattleTowerHallway_MapEventHeader:
 	warp_def 0, 13, 1, BATTLE_TOWER_BATTLE_ROOM
 	warp_def 0, 15, 1, BATTLE_TOWER_BATTLE_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_RECEPTIONIST, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BattleTowerHallwayTrigger0:

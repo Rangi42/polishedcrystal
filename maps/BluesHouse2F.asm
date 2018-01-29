@@ -1,23 +1,21 @@
 BluesHouse2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 BluesHouse2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 0, 7, 3, BLUES_HOUSE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 1, 0, SIGNPOST_JUMPTEXT, BluesHouse2FPCText
 	signpost 5, 3, SIGNPOST_JUMPTEXT, BluesHouse2FSNESText
 	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
 	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
 
-.PersonEvents: db 0
+	db 0 ; person events
 
 BluesHouse2FPCText:
 	text "There's a program"

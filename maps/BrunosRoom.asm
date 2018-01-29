@@ -1,24 +1,22 @@
 BrunosRoom_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw BrunosRoomEntranceTrigger
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, BrunosRoomDoorCallback
 
 BrunosRoom_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 17, 4, 3, KOGAS_ROOM
 	warp_def 17, 5, 4, KOGAS_ROOM
 	warp_def 2, 4, 1, KARENS_ROOM
 	warp_def 2, 5, 2, KARENS_ROOM
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_BRUNO, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrunoScript, -1
 
 BrunosRoomEntranceTrigger:

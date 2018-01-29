@@ -1,22 +1,20 @@
 Route38_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route38_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 8, 35, 1, ROUTE_38_ECRUTEAK_GATE
 	warp_def 9, 35, 2, ROUTE_38_ECRUTEAK_GATE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 7, 33, SIGNPOST_JUMPTEXT, Route38SignText
 	signpost 13, 5, SIGNPOST_JUMPTEXT, Route38TrainerTipsText
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
 	person_event SPRITE_LASS, 3, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
 	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1

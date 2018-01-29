@@ -1,21 +1,19 @@
 CeladonUniversityCafeteria_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityCafeteria_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 13, 2, CELADON_UNIVERSITY_2F
 	warp_def 7, 14, 2, CELADON_UNIVERSITY_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 0, 10, SIGNPOST_JUMPTEXT, CeladonUniversityCafeteriaSignText
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_COOLTRAINER_M, 2, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaCoreyScript, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityCafeteriaCooltrainerfText, -1
 	person_event SPRITE_BEAUTY, 3, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityCafeteriaBeautyText, -1

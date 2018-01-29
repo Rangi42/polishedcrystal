@@ -1,20 +1,18 @@
 CeladonUniversityPool_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityPool_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 9, 6, 6, CELADON_UNIVERSITY_2F
 	warp_def 9, 7, 6, CELADON_UNIVERSITY_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SWIMMER_GUY, 5, 11, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityPoolFergusScript, -1
 	person_event SPRITE_LASS, 1, 9, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityPoolLassText, -1
 	person_event SPRITE_SWIMMER_GIRL, 4, 4, SPRITEMOVEDATA_SWIM_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityPoolSwimmer_girlText, -1

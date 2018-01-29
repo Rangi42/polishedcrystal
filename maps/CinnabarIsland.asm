@@ -1,26 +1,24 @@
 CinnabarIsland_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CinnabarIslandFlyPoint
 
 CinnabarIsland_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 15, 11, 1, CINNABAR_POKECENTER_1F
 	warp_def 9, 18, 1, CINNABAR_VOLCANO_1F
 	warp_def 7, 7, 1, POKEMON_MANSION_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 15, 9, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
 	signpost 11, 9, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
 	signpost 11, 21, SIGNPOST_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
 	signpost 12, 11, SIGNPOST_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
 	itemball_event 2, 22, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 

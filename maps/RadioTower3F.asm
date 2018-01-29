@@ -1,25 +1,23 @@
 RadioTower3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, CardKeyShutterCallback
 
 RadioTower3F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 0, 0, 1, RADIO_TOWER_2F
 	warp_def 0, 7, 2, RADIO_TOWER_4F
 	warp_def 0, 17, 4, RADIO_TOWER_4F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
 	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
 	signpost 2, 14, SIGNPOST_UP, MapRadioTower3FSignpost2Script
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
 	person_event SPRITE_COOLTRAINER_F, 3, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1

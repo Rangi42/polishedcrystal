@@ -1,25 +1,23 @@
 KrissHouse2F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
 	dbw MAPCALLBACK_TILES, KrissHouse2FSetSpawn
 
 KrissHouse2F_MapEventHeader:
-
-.Warps: db 1
+	db 1 ; warps
 	warp_def 0, 7, 3, KRISS_HOUSE_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 4
+	db 4 ; signposts
 	signpost 1, 2, SIGNPOST_READ, KrissHousePC
 	signpost 1, 3, SIGNPOST_READ, KrissHouseRadio
 	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfElmScript
 	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
 	person_event SPRITE_DOLL_1, 4, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
 	person_event SPRITE_DOLL_2, 4, 5, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2

@@ -1,15 +1,13 @@
 GoldenrodCity_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw GoldenrodCityTrigger0
 
-.MapCallbacks: db 2
+	db 2 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, GoldenrodCityFlyPointAndFloria
 	dbw MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutorAndRocketScoutAndGymLass
 
 GoldenrodCity_MapEventHeader:
-
-.Warps: db 21
+	db 21 ; warps
 	warp_def 7, 28, 1, GOLDENROD_GYM
 	warp_def 29, 33, 1, GOLDENROD_BIKE_SHOP
 	warp_def 15, 37, 1, GOLDENROD_HAPPINESS_RATER
@@ -32,10 +30,10 @@ GoldenrodCity_MapEventHeader:
 	warp_def 23, 33, 1, GOLDENROD_BAND_HOUSE
 	warp_def 21, 13, 1, GOLDENROD_HP_UP_HOUSE
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 1, 15, 9, GoldenrodCityPanUpScript
 
-.Signposts: db 13
+	db 13 ; signposts
 	signpost 14, 14, SIGNPOST_JUMPTEXT, GoldenrodCityStationSignText
 	signpost 15, 7, SIGNPOST_JUMPTEXT, GoldenrodCityRadioTowerSignText
 	signpost 27, 30, SIGNPOST_JUMPTEXT, GoldenrodDeptStoreSignText
@@ -50,7 +48,7 @@ GoldenrodCity_MapEventHeader:
 	signpost 6, 34, SIGNPOST_JUMPTEXT, GoldenrodCityFlowerShopSignText
 	signpost 15, 27, SIGNPOST_JUMPTEXT, GoldenrodMuseumSignText
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_ROCKET, 16, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RocketScript_0x198a1a, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	person_event SPRITE_POKEFAN_M, 22, 16, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
 	person_event SPRITE_LASS, 8, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodCityGymLassScript, EVENT_GOLDENROD_CITY_CIVILIANS

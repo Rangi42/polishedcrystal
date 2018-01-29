@@ -1,23 +1,21 @@
 LakeofRageHiddenPowerHouse_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 LakeofRageHiddenPowerHouse_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 2, 1, LAKE_OF_RAGE
 	warp_def 7, 3, 1, LAKE_OF_RAGE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
 	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.PersonEvents: db 1
+	db 1 ; person events
 	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
 
 HiddenPowerGuy:

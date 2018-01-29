@@ -1,24 +1,22 @@
 TrainerHouse1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 TrainerHouse1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 11, 4, 3, VIRIDIAN_CITY
 	warp_def 11, 5, 3, VIRIDIAN_CITY
 	warp_def 2, 8, 1, TRAINER_HOUSE_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 3
+	db 3 ; signposts
 	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x9b1f4
 	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x9b25d
 	signpost 6, 4, SIGNPOST_JUMPTEXT, UnknownText_0x9b2c1
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_RECEPTIONIST, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9af7f, -1
 	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b025, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b0b5, -1

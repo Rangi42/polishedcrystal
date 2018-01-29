@@ -1,24 +1,22 @@
 OlivinePort_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw OlivinePortTrigger0
 	dw OlivinePortTrigger1
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OlivinePort_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 7, 11, 5, OLIVINE_PORT_PASSAGE
 	warp_def 23, 7, 1, FAST_SHIP_1F
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 15, 7, UnknownScript_0x7491f
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 22, 1, SIGNPOST_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_SAILOR, 23, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x748c0, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 	person_event SPRITE_SAILOR, 15, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x74cd7, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	person_event SPRITE_FISHING_GURU, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x74a01, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME

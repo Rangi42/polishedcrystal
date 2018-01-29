@@ -1,12 +1,10 @@
 OlivineLighthouse5F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OlivineLighthouse5F_MapEventHeader:
-
-.Warps: db 7
+	db 7 ; warps
 	warp_def 15, 9, 1, OLIVINE_LIGHTHOUSE_6F
 	warp_def 5, 3, 2, OLIVINE_LIGHTHOUSE_4F
 	warp_def 7, 9, 3, OLIVINE_LIGHTHOUSE_4F
@@ -15,12 +13,12 @@ OlivineLighthouse5F_MapEventHeader:
 	warp_def 5, 16, 2, OLIVINE_LIGHTHOUSE_6F
 	warp_def 5, 17, 3, OLIVINE_LIGHTHOUSE_6F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 13, 3, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_SAILOR, 11, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
 	person_event SPRITE_YOUNGSTER, 3, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperDenis, -1
 	itemball_event 12, 15, RARE_CANDY, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY

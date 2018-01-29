@@ -1,24 +1,22 @@
 QuietCaveB3F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 QuietCaveB3F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 31, 8, 5, QUIET_CAVE_B2F ; hole
 	warp_def 7, 33, 6, QUIET_CAVE_B2F
 	warp_def 9, 15, 4, QUIET_CAVE_B3F
 	warp_def 11, 5, 3, QUIET_CAVE_B3F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 20, 16, SIGNPOST_ITEM + PP_UP, EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP
 	signpost 22, 12, SIGNPOST_ITEM + MAX_REVIVE, EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
 	tmhmball_event 22, 7, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
 

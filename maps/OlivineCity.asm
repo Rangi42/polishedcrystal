@@ -1,13 +1,11 @@
 OlivineCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, OlivineCityFlyPoint
 
 OlivineCity_MapEventHeader:
-
-.Warps: db 12
+	db 12 ; warps
 	warp_def 17, 13, 1, OLIVINE_POKECENTER_1F
 	warp_def 7, 10, 1, OLIVINE_GYM
 	warp_def 7, 25, 1, OLIVINE_TIMS_HOUSE
@@ -21,11 +19,11 @@ OlivineCity_MapEventHeader:
 	warp_def 30, 57, 5, ROUTE_35_NATIONAL_PARK_GATE
 	warp_def 31, 57, 6, ROUTE_35_NATIONAL_PARK_GATE
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 0, 8, 10, OlivineCityRivalGymScript
 	xy_trigger 0, 23, 33, OlivineCityRivalLighthouseScript
 
-.Signposts: db 9
+	db 9 ; signposts
 	signpost 7, 17, SIGNPOST_JUMPTEXT, OlivineCitySignText
 	signpost 22, 20, SIGNPOST_JUMPTEXT, OlivineCityPortSignText
 	signpost 7, 7, SIGNPOST_JUMPTEXT, OlivineGymSignText
@@ -36,7 +34,7 @@ OlivineCity_MapEventHeader:
 	signpost 14, 47, SIGNPOST_ITEM + BIG_PEARL, EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL
 	signpost 29, 49, SIGNPOST_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
 
-.PersonEvents: db 15
+	db 15 ; person events
 	person_event SPRITE_OLIVINE_RIVAL, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
 	person_event SPRITE_YOUNGSTER, 8, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster1Script, -1
 	person_event SPRITE_SAILOR, 22, 26, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor1Text, -1

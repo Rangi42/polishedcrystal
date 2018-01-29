@@ -1,22 +1,20 @@
 OlivineLighthouse6F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OlivineLighthouse6F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 15, 9, 1, OLIVINE_LIGHTHOUSE_5F
 	warp_def 5, 16, 6, OLIVINE_LIGHTHOUSE_5F
 	warp_def 5, 17, 7, OLIVINE_LIGHTHOUSE_5F
 	warp_def 3, 9, 1, OLIVINE_LIGHTHOUSE_ROOF
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_JASMINE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
 	itemball_event 4, 3, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION

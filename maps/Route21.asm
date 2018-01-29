@@ -1,20 +1,18 @@
 Route21_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route21_MapEventHeader:
+	db 0 ; warps
 
-.Warps: db 0
+	db 0 ; xy triggers
 
-.XYTriggers: db 0
-
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 37, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_1
 	signpost 66, 5, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_2
 
-.PersonEvents: db 13
+	db 13 ; person events
 	person_event SPRITE_SWIMMER_GIRL, 13, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
 	person_event SPRITE_SWIMMER_GIRL, 29, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfChelan, -1
 	person_event SPRITE_SWIMMER_GIRL, 45, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKendra, -1

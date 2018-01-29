@@ -1,25 +1,23 @@
 CeladonUniversityHyperTestRoom_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityHyperTestRoom_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 2, 4, CELADON_UNIVERSITY_2F
 	warp_def 11, 3, 4, CELADON_UNIVERSITY_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
 	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
 	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
 	signpost 4, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 	signpost 6, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_WESTWOOD, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
 	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomScientistText, -1
 	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin1Text, -1

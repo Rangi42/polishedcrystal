@@ -1,19 +1,17 @@
 PokemonMansion1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 PokemonMansion1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 27, 5, 3, CINNABAR_ISLAND
 	warp_def 27, 6, 3, CINNABAR_ISLAND
 	warp_def 23, 21, 1, POKEMON_MANSION_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 8
+	db 8 ; signposts
 	signpost 12, 21, SIGNPOST_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
 	signpost 23, 14, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
 	signpost 5, 2, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
@@ -23,7 +21,7 @@ PokemonMansion1F_MapEventHeader:
 	signpost 19, 18, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 	signpost 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_PHARMACIST, 10, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
 	person_event SPRITE_PHARMACIST, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
 	itemball_event 4, 6, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE

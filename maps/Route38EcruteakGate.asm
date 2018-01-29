@@ -1,22 +1,20 @@
 Route38EcruteakGate_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route38EcruteakGate_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 4, 0, 1, ROUTE_38
 	warp_def 5, 0, 2, ROUTE_38
 	warp_def 4, 9, 14, ECRUTEAK_CITY
 	warp_def 5, 9, 15, ECRUTEAK_CITY
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 2
+	db 2 ; person events
 	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9cbda, -1
 	person_event SPRITE_SCIENTIST, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide2Script, -1
 

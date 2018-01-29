@@ -1,23 +1,21 @@
 EcruteakPokeCenter1F_MapScriptHeader:
-
-.MapTriggers: db 1
+	db 1 ; map triggers
 	dw EcruteakPokeCenter1FBillWalksUpTrigger
 
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 EcruteakPokeCenter1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 5, 6, ECRUTEAK_CITY
 	warp_def 7, 6, 6, ECRUTEAK_CITY
 	warp_def 7, 0, 1, POKECENTER_2F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalMortyScript
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_BILL, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FBillScript, EVENT_ECRUTEAK_POKE_CENTER_BILL
 	pc_nurse_event 1, 5
 	person_event SPRITE_POKEFAN_M, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1

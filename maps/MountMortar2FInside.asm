@@ -1,21 +1,19 @@
 MountMortar2FInside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MountMortar2FInside_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 33, 17, 4, MOUNT_MORTAR_1F_OUTSIDE
 	warp_def 5, 3, 6, MOUNT_MORTAR_1F_INSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 8, 24, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MORTAR_2F_INSIDE_HIDDEN_FULL_RESTORE
 
-.PersonEvents: db 7
+	db 7 ; person events
 	itemball_event 22, 28, MAX_POTION, 1, EVENT_MOUNT_MORTAR_2F_INSIDE_MAX_POTION
 	itemball_event 33, 2, RARE_CANDY, 1, EVENT_MOUNT_MORTAR_2F_INSIDE_RARE_CANDY
 	tmhmball_event 17, 19, TM_AERIAL_ACE, EVENT_MOUNT_MORTAR_2F_INSIDE_TM_AERIAL_ACE

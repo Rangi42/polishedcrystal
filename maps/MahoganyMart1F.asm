@@ -1,24 +1,22 @@
 MahoganyMart1F_MapScriptHeader:
-
-.MapTriggers: db 2
+	db 2 ; map triggers
 	dw MahoganyMart1FTrigger0
 	dw MahoganyMart1FTrigger1
 
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x6c35b
 
 MahoganyMart1F_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 7, 3, 1, MAHOGANY_TOWN
 	warp_def 7, 4, 1, MAHOGANY_TOWN
 	warp_def 3, 7, 1, TEAM_ROCKET_BASE_B1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 5
+	db 5 ; person events
 	person_event SPRITE_PHARMACIST, 3, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x6c367, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_BLACK_BELT, 6, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x6c37b, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_LANCE, 6, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE

@@ -1,23 +1,21 @@
 SaffronTrainStation_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 SaffronTrainStation_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 17, 8, 6, SAFFRON_CITY
 	warp_def 17, 9, 6, SAFFRON_CITY
 	warp_def 5, 6, 4, GOLDENROD_MAGNET_TRAIN_STATION
 	warp_def 5, 11, 3, GOLDENROD_MAGNET_TRAIN_STATION
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 6, 11, Script_ArriveFromGoldenrod
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 4
+	db 4 ; person events
 	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
 	person_event SPRITE_GYM_GUY, 14, 10, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
 	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION

@@ -1,18 +1,16 @@
 OaksLab_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 OaksLab_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 4, 3, PALLET_TOWN
 	warp_def 11, 5, 3, PALLET_TOWN
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 16
+	db 16 ; signposts
 	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -30,7 +28,7 @@ OaksLab_MapEventHeader:
 	signpost 3, 9, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
 	signpost 1, 0, SIGNPOST_JUMPTEXT, OaksLabPCText
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
 	person_event SPRITE_EEVEE, 3, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
 	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1

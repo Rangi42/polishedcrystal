@@ -1,20 +1,18 @@
 DarkCaveBlackthornEntrance_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 DarkCaveBlackthornEntrance_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 3, 23, 1, ROUTE_45
 	warp_def 25, 3, 2, DARK_CAVE_VIOLET_ENTRANCE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_PHARMACIST, 3, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
 	itemball_event 24, 21, REVIVE, 1, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
 	tmhmball_event 22, 7, TM_DARK_PULSE, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE

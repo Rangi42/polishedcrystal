@@ -1,19 +1,17 @@
 TeamRocketBaseB1F_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
 
 TeamRocketBaseB1F_MapEventHeader:
-
-.Warps: db 4
+	db 4 ; warps
 	warp_def 2, 27, 3, MAHOGANY_MART_1F
 	warp_def 14, 3, 1, TEAM_ROCKET_BASE_B2F
 	warp_def 15, 5, 4, TEAM_ROCKET_BASE_B1F
 	warp_def 2, 25, 3, TEAM_ROCKET_BASE_B1F
 
-.XYTriggers: db 30
+	db 30 ; xy triggers
 	; There are five security cameras in the base.
 	; Walking in front of one triggers two Rocket Grunts.
 	xy_trigger 0, 2, 24, SecurityCamera1a
@@ -49,7 +47,7 @@ TeamRocketBaseB1F_MapEventHeader:
 	xy_trigger 0, 13, 4, ExplodingTrap21
 	xy_trigger 0, 13, 5, ExplodingTrap22
 
-.Signposts: db 9
+	db 9 ; signposts
 	signpost 11, 19, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost0Script
 	signpost 1, 24, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	signpost 1, 6, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
@@ -60,7 +58,7 @@ TeamRocketBaseB1F_MapEventHeader:
 	signpost 11, 21, SIGNPOST_JUMPSTD, teamrocketoath
 	signpost 11, 3, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
-.PersonEvents: db 6
+	db 6 ; person events
 	person_event SPRITE_ROCKET, 0, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
 	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
 	person_event SPRITE_SCIENTIST, 12, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION

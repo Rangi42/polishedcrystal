@@ -1,12 +1,10 @@
 MountMortar1FInside_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MountMortar1FInside_MapEventHeader:
-
-.Warps: db 6
+	db 6 ; warps
 	warp_def 47, 11, 5, MOUNT_MORTAR_1F_OUTSIDE
 	warp_def 47, 29, 6, MOUNT_MORTAR_1F_OUTSIDE
 	warp_def 39, 5, 8, MOUNT_MORTAR_1F_OUTSIDE
@@ -14,12 +12,12 @@ MountMortar1FInside_MapEventHeader:
 	warp_def 19, 3, 1, MOUNT_MORTAR_B1F
 	warp_def 9, 9, 2, MOUNT_MORTAR_2F_INSIDE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 11, 30, SIGNPOST_ITEM + MAX_REPEL, EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL
 
-.PersonEvents: db 10
+	db 10 ; person events
 	strengthboulder_event 43, 21
 	itemball_event 38, 35, SMOOTH_ROCK, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_SMOOTH_ROCK
 	itemball_event 10, 16, MAX_REVIVE, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_REVIVE

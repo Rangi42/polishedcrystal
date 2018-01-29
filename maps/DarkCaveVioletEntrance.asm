@@ -1,23 +1,21 @@
 DarkCaveVioletEntrance_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 DarkCaveVioletEntrance_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 15, 3, 3, ROUTE_31
 	warp_def 1, 17, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
 	warp_def 33, 35, 3, ROUTE_46
 
-.XYTriggers: db 1
+	db 1 ; xy triggers
 	xy_trigger 0, 2, 5, DarkCaveVioletEntranceFalknerTrigger
 
-.Signposts: db 1
+	db 1 ; signposts
 	signpost 3, 26, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_URSARING, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
 	person_event SPRITE_PIDGEOTTO, 2, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
 	person_event SPRITE_FALKNER, 2, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER

@@ -1,24 +1,22 @@
 RockyBeach_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, RockyBeachRebattleBreeder
 
 RockyBeach_MapEventHeader:
-
-.Warps: db 3
+	db 3 ; warps
 	warp_def 20, 25, 1, ROCKY_BEACH_HOUSE
 	warp_def 10, 29, 1, NOISY_FOREST
 	warp_def 11, 29, 2, NOISY_FOREST
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 2
+	db 2 ; signposts
 	signpost 24, 22, SIGNPOST_JUMPTEXT, RockyBeachSign1Text
 	signpost 10, 24, SIGNPOST_JUMPTEXT, RockyBeachSign2Text
 
-.PersonEvents: db 11
+	db 11 ; person events
 	person_event SPRITE_SIGHTSEER_M, 21, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermBlaise, -1
 	person_event SPRITE_BEAUTY, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyIoana, -1
 	person_event SPRITE_LADY, 21, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSightseerfKamila, -1

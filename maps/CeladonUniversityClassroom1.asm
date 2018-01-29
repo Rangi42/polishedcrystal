@@ -1,25 +1,23 @@
 CeladonUniversityClassroom1_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 CeladonUniversityClassroom1_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 11, 2, 6, CELADON_UNIVERSITY_1F
 	warp_def 11, 3, 6, CELADON_UNIVERSITY_1F
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 5
+	db 5 ; signposts
 	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
 	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
 	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
 	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf1Text
 	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf2Text
 
-.PersonEvents: db 7
+	db 7 ; person events
 	person_event SPRITE_IMAKUNI, 7, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
 	person_event SPRITE_ANDY, 2, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1AndyText, -1
 	person_event SPRITE_DRAGON_TAMER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Dragon_tamerText, -1

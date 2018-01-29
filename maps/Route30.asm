@@ -1,18 +1,16 @@
 Route30_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 Route30_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 39, 7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
 	warp_def 5, 17, 1, MR_POKEMONS_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 6
+	db 6 ; signposts
 	signpost 43, 9, SIGNPOST_JUMPTEXT, Route30SignText
 	signpost 29, 13, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
 	signpost 5, 15, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
@@ -20,7 +18,7 @@ Route30_MapEventHeader:
 	signpost 9, 14, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
 	signpost 39, 5, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
 
-.PersonEvents: db 12
+	db 12 ; person events
 	person_event SPRITE_YOUNGSTER, 26, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
 	person_event SPRITE_PIDGEY, 24, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	person_event SPRITE_ROUTE_30_RATTATA, 25, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE

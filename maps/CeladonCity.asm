@@ -1,13 +1,11 @@
 CeladonCity_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 1
+	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CeladonCityFlyPoint
 
 CeladonCity_MapEventHeader:
-
-.Warps: db 16
+	db 16 ; warps
 	warp_def 9, 8, 1, CELADON_DEPT_STORE_1F
 	warp_def 9, 20, 1, CELADON_MANSION_1F
 	warp_def 3, 20, 3, CELADON_MANSION_1F
@@ -25,9 +23,9 @@ CeladonCity_MapEventHeader:
 	warp_def 19, 33, 1, CELADON_OLD_MAN_SPEECH_HOUSE
 	warp_def 19, 37, 1, CELADON_DEVELOPMENT_SPEECH_HOUSE
 
-.XYTriggers: db 0
+	db 0 ; xy triggers
 
-.Signposts: db 9
+	db 9 ; signposts
 	signpost 18, 9, SIGNPOST_JUMPTEXT, CeladonCitySignText
 	signpost 31, 15, SIGNPOST_JUMPTEXT, CeladonGymSignText
 	signpost 31, 3, SIGNPOST_JUMPTEXT, CeladonUniversitySignText
@@ -38,7 +36,7 @@ CeladonCity_MapEventHeader:
 	signpost 21, 33, SIGNPOST_JUMPTEXT, CeladonCityTrainerTipsText
 	signpost 21, 41, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
-.PersonEvents: db 14
+	db 14 ; person events
 	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
 	person_event SPRITE_FISHER, 11, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9f7d, -1
 	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, POLIWRATH, CeladonCityPoliwrathText, -1

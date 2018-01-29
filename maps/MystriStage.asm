@@ -1,22 +1,20 @@
 MystriStage_MapScriptHeader:
+	db 0 ; map triggers
 
-.MapTriggers: db 0
-
-.MapCallbacks: db 0
+	db 0 ; map callbacks
 
 MystriStage_MapEventHeader:
-
-.Warps: db 2
+	db 2 ; warps
 	warp_def 17, 6, 1, SINJOH_RUINS
 	warp_def 17, 7, 1, SINJOH_RUINS
 
-.XYTriggers: db 2
+	db 2 ; xy triggers
 	xy_trigger 1, 9, 6, MystriStageTrigger1Script
 	xy_trigger 1, 9, 7, MystriStageTrigger2Script
 
-.Signposts: db 0
+	db 0 ; signposts
 
-.PersonEvents: db 3
+	db 3 ; person events
 	person_event SPRITE_CYNTHIA, 8, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
 	person_event SPRITE_CYNTHIA, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
 	person_event SPRITE_EGG, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
