@@ -3,7 +3,6 @@ OlivineLighthouseRoof_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivineLighthouseRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 3, 9, 4, OLIVINE_LIGHTHOUSE_6F
 
@@ -15,7 +14,7 @@ OlivineLighthouseRoof_MapEventHeader:
 	person_event SPRITE_SKYLA, 13, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
 	itemball_event 8, 16, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
 
-const_value set 1
+	const_def 1 ; person constants
 	const OLIVINELIGHTHOUSEROOF_SKYLA
 
 OlivineLighthouseRoofSkylaScript:

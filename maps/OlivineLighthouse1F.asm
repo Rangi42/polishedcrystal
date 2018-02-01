@@ -3,7 +3,6 @@ OlivineLighthouse1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivineLighthouse1F_MapEventHeader:
 	db 5 ; warps
 	warp_def 17, 10, 8, OLIVINE_CITY
 	warp_def 17, 11, 8, OLIVINE_CITY

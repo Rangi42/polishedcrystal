@@ -3,7 +3,6 @@ Route45_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route45_MapEventHeader:
 	db 1 ; warps
 	warp_def 5, 4, 1, DARK_CAVE_BLACKTHORN_ENTRANCE
 
@@ -30,7 +29,7 @@ Route45_MapEventHeader:
 	itemball_event 32, 15, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
 	person_event SPRITE_YOUNGSTER, 70, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperQuentin, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE45_DRAGON_TAMER
 
 Route45Dragon_tamerScript:

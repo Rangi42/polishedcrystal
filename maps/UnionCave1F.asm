@@ -3,7 +3,6 @@ UnionCave1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-UnionCave1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 3, 3, 3, UNION_CAVE_B1F_NORTH
 	warp_def 45, 3, 1, UNION_CAVE_B1F_SOUTH

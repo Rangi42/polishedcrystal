@@ -3,7 +3,6 @@ CeladonOutskirts_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonOutskirts_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers

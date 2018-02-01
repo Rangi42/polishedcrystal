@@ -712,7 +712,7 @@ BATTLEANIMSTRUCT_LENGTH EQU const_value
 	const BATTLEANIMOAMSET_D6
 	const BATTLEANIMOAMSET_D7
 
-const_value SET 1
+	const_def 1
 	const ANIM_BG_FLASH_INVERTED
 	const ANIM_BG_FLASH_WHITE
 	const ANIM_BG_WHITE_HUES
@@ -767,7 +767,7 @@ const_value SET 1
 	const ANIM_BG_WOBBLE_MON
 	const ANIM_BG_35
 
-const_value SET 1
+	const_def 1
 	const ANIM_GFX_HIT
 	const ANIM_GFX_CUT
 	const ANIM_GFX_FIRE

@@ -4,7 +4,6 @@ UndergroundWarehouse_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UndergroundWarehouseResetSwitches
 
-UndergroundWarehouse_MapEventHeader:
 	db 3 ; warps
 	warp_def 12, 2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
 	warp_def 12, 3, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES

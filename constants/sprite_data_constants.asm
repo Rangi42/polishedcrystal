@@ -1,5 +1,5 @@
 ; sprite types
-const_value SET 1
+	const_def 1
 	const WALKING_SPRITE
 	const STANDING_SPRITE
 	const STILL_SPRITE
@@ -28,7 +28,7 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 	const PAL_OW_ROCK   ; 7
 
 ; for party menu icons
-const_value SET PAL_OW_SILVER
+	const_def PAL_OW_SILVER
 	const PAL_OW_GRAY   ; 5
 	const PAL_OW_PINK   ; 6
 	const PAL_OW_TEAL   ; 7

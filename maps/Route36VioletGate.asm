@@ -3,7 +3,6 @@ Route36VioletGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route36VioletGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 5, ROUTE_36
 	warp_def 5, 0, 6, ROUTE_36

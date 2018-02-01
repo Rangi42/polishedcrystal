@@ -4,7 +4,6 @@ DimCave2F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, DimCave2FBouldersLand
 
-DimCave2F_MapEventHeader:
 	db 8 ; warps
 	warp_def 1, 15, 2, CERULEAN_CAPE
 	warp_def 5, 29, 4, DIM_CAVE_3F

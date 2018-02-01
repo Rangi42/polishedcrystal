@@ -3,7 +3,6 @@ Route34Coast_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route34Coast_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers

@@ -3,7 +3,6 @@ SlowpokeWellB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SlowpokeWellB1F_MapEventHeader:
 	db 2 ; warps
 	warp_def 15, 17, 6, AZALEA_TOWN
 	warp_def 11, 7, 1, SLOWPOKE_WELL_B2F
@@ -23,7 +22,7 @@ SlowpokeWellB1F_MapEventHeader:
 	strengthboulder_event 2, 3
 	itemball_event 3, 10, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
-const_value set 1
+	const_def 1 ; person constants
 	const SLOWPOKEWELLB1F_PROTON
 	const SLOWPOKEWELLB1F_ROCKET1
 	const SLOWPOKEWELLB1F_ROCKET2

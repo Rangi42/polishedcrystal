@@ -3,7 +3,6 @@ Route10South_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route10South_MapEventHeader:
 	db 1 ; warps
 	warp_def 3, 6, 2, ROCK_TUNNEL_1F
 

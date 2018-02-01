@@ -3,7 +3,6 @@ Route26HealSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route26HealSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, ROUTE_26
 	warp_def 7, 3, 2, ROUTE_26

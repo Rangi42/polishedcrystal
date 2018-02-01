@@ -3,7 +3,6 @@ Route41_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route41_MapEventHeader:
 	db 4 ; warps
 	warp_def 17, 13, 1, WHIRL_ISLAND_NW
 	warp_def 19, 37, 1, WHIRL_ISLAND_NE

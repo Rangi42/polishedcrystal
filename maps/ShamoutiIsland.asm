@@ -3,7 +3,6 @@ ShamoutiIsland_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiIsland_MapEventHeader:
 	db 6 ; warps
 	warp_def 13, 21, 1, SHAMOUTI_POKECENTER_1F
 	warp_def 5, 33, 1, SHAMOUTI_HOTEL_1F
@@ -29,7 +28,7 @@ ShamoutiIsland_MapEventHeader:
 	person_event SPRITE_GRAMPS, 15, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_1, -1
 	person_event SPRITE_COOLTRAINER_M, 16, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_2, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const SHAMOUTIISLAND_VILEPLUME
 
 ShamoutiIslandVileplumeScript:

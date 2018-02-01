@@ -8,7 +8,6 @@ Route36NationalParkGate_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, Route36NationalParkGateCheckIfContestRunning
 	dbw MAPCALLBACK_OBJECTS, Route36NationalParkGateCheckIfContestAvailable
 
-Route36NationalParkGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 1, NATIONAL_PARK
 	warp_def 5, 0, 2, NATIONAL_PARK
@@ -34,7 +33,7 @@ Route36NationalParkGate_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6adba, EVENT_BUG_CATCHING_CONTESTANT_10B
 	person_event SPRITE_OFFICER, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6acf4, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE36NATIONALPARKGATE_OFFICER1
 	const ROUTE36NATIONALPARKGATE_BUG_CATCHER1
 	const ROUTE36NATIONALPARKGATE_BUG_MANIAC

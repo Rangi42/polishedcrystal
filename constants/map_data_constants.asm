@@ -1,5 +1,5 @@
 ; permissions
-const_value SET 1
+	const_def 1
 	const TOWN
 	const ROUTE
 	const INDOOR

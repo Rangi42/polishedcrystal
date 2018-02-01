@@ -3,7 +3,6 @@ CeruleanCaveB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeruleanCaveB1F_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 5, 5, CERULEAN_CAVE_1F
 
@@ -18,7 +17,7 @@ CeruleanCaveB1F_MapEventHeader:
 	itemball_event 9, 26, MAX_ELIXER, 1, EVENT_CERULEAN_CAVE_B1F_MAX_ELIXER
 	itemball_event 3, 26, ULTRA_BALL, 1, EVENT_CERULEAN_CAVE_B1F_ULTRA_BALL
 
-const_value set 1
+	const_def 1 ; person constants
 	const CERULEANCAVEB1F_MEWTWO
 
 CeruleanCaveMewtwo:

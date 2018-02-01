@@ -3,7 +3,6 @@ DimCave1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-DimCave1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 2, 30, 5, DIM_CAVE_2F
 	warp_def 17, 5, 6, DIM_CAVE_2F

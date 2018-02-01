@@ -3,7 +3,6 @@ PokemonLeagueGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PokemonLeagueGate_MapEventHeader:
 	db 8 ; warps
 	warp_def 7, 19, 1, ROUTE_22
 	warp_def 7, 20, 1, ROUTE_22

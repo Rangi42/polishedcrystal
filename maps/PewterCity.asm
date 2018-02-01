@@ -4,7 +4,6 @@ PewterCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, PewterCityFlyPoint
 
-PewterCity_MapEventHeader:
 	db 7 ; warps
 	warp_def 13, 29, 1, PEWTER_NIDORAN_SPEECH_HOUSE
 	warp_def 17, 16, 1, PEWTER_GYM

@@ -3,7 +3,6 @@ CianwoodGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CianwoodGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 17, 4, 2, CIANWOOD_CITY
 	warp_def 17, 5, 2, CIANWOOD_CITY
@@ -26,7 +25,7 @@ CianwoodGym_MapEventHeader:
 	strengthboulder_event 7, 4
 	strengthboulder_event 7, 5
 
-const_value set 1
+	const_def 1 ; person constants
 	const CIANWOODGYM_CHUCK
 	const CIANWOODGYM_BOULDER1
 

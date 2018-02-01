@@ -3,7 +3,6 @@ SilverCaveRoom1_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SilverCaveRoom1_MapEventHeader:
 	db 2 ; warps
 	warp_def 33, 9, 2, SILVER_CAVE_OUTSIDE
 	warp_def 1, 15, 1, SILVER_CAVE_ROOM_2

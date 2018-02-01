@@ -3,7 +3,6 @@ NavelRockInside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-NavelRockInside_MapEventHeader:
 	db 14 ; warps
 	warp_def 81, 7, 3, NAVEL_ROCK_OUTSIDE
 	warp_def 64, 8, 3, NAVEL_ROCK_INSIDE

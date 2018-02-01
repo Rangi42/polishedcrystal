@@ -5,7 +5,6 @@ AzaleaTown_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
 	dbw MAPCALLBACK_TILES, AzaleaTownRainScript
 
-AzaleaTown_MapEventHeader:
 	db 8 ; warps
 	warp_def 9, 15, 1, AZALEA_POKECENTER_1F
 	warp_def 13, 21, 1, CHARCOAL_KILN
@@ -44,7 +43,7 @@ AzaleaTown_MapEventHeader:
 	person_event SPRITE_SLOWPOKE, 15, 15, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	fruittree_event 2, 8, FRUITTREE_AZALEA_TOWN, WHT_APRICORN
 
-const_value set 1
+	const_def 1 ; person constants
 	const AZALEATOWN_SILVER
 	const AZALEATOWN_KURT
 

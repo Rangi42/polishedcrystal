@@ -3,7 +3,6 @@ CliffCave_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CliffCave_MapEventHeader:
 	db 7 ; warps
 	warp_def 19, 5, 2, ROUTE_47
 	warp_def 9, 7, 3, ROUTE_47

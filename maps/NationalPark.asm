@@ -3,7 +3,6 @@ NationalPark_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-NationalPark_MapEventHeader:
 	db 4 ; warps
 	warp_def 18, 35, 1, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 19, 35, 2, ROUTE_36_NATIONAL_PARK_GATE

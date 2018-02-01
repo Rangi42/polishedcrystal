@@ -3,7 +3,6 @@ GoldenrodFlowerShop_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodFlowerShop_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 6, GOLDENROD_CITY
 	warp_def 7, 3, 6, GOLDENROD_CITY
@@ -17,7 +16,7 @@ GoldenrodFlowerShop_MapEventHeader:
 	person_event SPRITE_LASS, 6, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
 	person_event SPRITE_GENTLEMAN, 3, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
 
-const_value set 1
+	const_def 1 ; person constants
 	const GOLDENRODFLOWERSHOP_TEACHER
 
 FlowerShopTeacherScript:

@@ -3,7 +3,6 @@ LakeofRageHiddenPowerHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LakeofRageHiddenPowerHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, LAKE_OF_RAGE
 	warp_def 7, 3, 1, LAKE_OF_RAGE

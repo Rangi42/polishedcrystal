@@ -4,7 +4,6 @@ Route24_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Route24TileScript
 
-Route24_MapEventHeader:
 	db 0 ; warps
 
 	db 10 ; xy triggers
@@ -25,7 +24,7 @@ Route24_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_ROCKET, 25, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE24_ROCKET
 
 Route24TileScript:

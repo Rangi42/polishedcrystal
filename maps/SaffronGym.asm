@@ -3,7 +3,6 @@ SaffronGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SaffronGym_MapEventHeader:
 	db 33 ; warps
 	warp_def 17, 8, 2, SAFFRON_CITY
 	warp_def 17, 9, 2, SAFFRON_CITY

@@ -4,7 +4,6 @@ EcruteakPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-EcruteakPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 6, ECRUTEAK_CITY
 	warp_def 7, 6, 6, ECRUTEAK_CITY
@@ -23,7 +22,7 @@ EcruteakPokeCenter1F_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakPokeCenter1FCooltrainerFText, -1
 	person_event SPRITE_GYM_GUY, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakPokeCenter1FGymGuyText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ECRUTEAKPOKECENTER1F_BILL
 
 EcruteakPokeCenter1FBillWalksUpTrigger:

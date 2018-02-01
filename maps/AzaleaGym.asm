@@ -3,7 +3,6 @@ AzaleaGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-AzaleaGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 15, 4, 5, AZALEA_TOWN
 	warp_def 15, 5, 5, AZALEA_TOWN

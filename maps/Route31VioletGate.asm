@@ -3,7 +3,6 @@ Route31VioletGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route31VioletGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 8, VIOLET_CITY
 	warp_def 5, 0, 9, VIOLET_CITY

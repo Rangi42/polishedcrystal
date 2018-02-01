@@ -8,7 +8,6 @@ Route35NationalParkGate_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, Route35NationalParkGate_CheckIfStillInContest
 	dbw MAPCALLBACK_OBJECTS, Route35NationalParkGate_CheckIfContestDay
 
-Route35NationalParkGate_MapEventHeader:
 	db 6 ; warps
 	warp_def 0, 15, 3, NATIONAL_PARK
 	warp_def 0, 16, 4, NATIONAL_PARK
@@ -27,7 +26,7 @@ Route35NationalParkGate_MapEventHeader:
 	person_event SPRITE_BUG_MANIAC, 5, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
 	person_event SPRITE_OFFICER, 3, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE35NATIONALPARKGATE_OFFICER1
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2

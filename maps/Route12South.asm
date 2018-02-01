@@ -3,7 +3,6 @@ Route12South_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route12South_MapEventHeader:
 	db 4 ; warps
 	warp_def 57, 11, 1, ROUTE_12_SUPER_ROD_HOUSE
 	warp_def 42, 0, 3, ROUTE_11_GATE

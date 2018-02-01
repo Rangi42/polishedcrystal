@@ -3,7 +3,6 @@ EcruteakShrineOutside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-EcruteakShrineOutside_MapEventHeader:
 	db 5 ; warps
 	warp_def 3, 5, 1, ECRUTEAK_SHRINE_INSIDE
 	warp_def 12, 4, 4, ECRUTEAK_CITY

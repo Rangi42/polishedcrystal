@@ -4,7 +4,6 @@ Route22Past_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route22Past_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers
@@ -17,7 +16,7 @@ Route22Past_MapEventHeader:
 	person_event SPRITE_SILVER, 2, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	person_event SPRITE_GIOVANNI, 2, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE22PAST_CELEBI
 	const ROUTE22PAST_LYRA
 	const ROUTE22PAST_SILVER

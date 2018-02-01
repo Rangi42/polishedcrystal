@@ -4,7 +4,6 @@ FuchsiaCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, FuchsiaCityFlyPoint
 
-FuchsiaCity_MapEventHeader:
 	db 11 ; warps
 	warp_def 13, 5, 2, FUCHSIA_MART
 	warp_def 27, 8, 1, FUCHSIA_GYM

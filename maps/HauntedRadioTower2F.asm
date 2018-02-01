@@ -3,7 +3,6 @@ HauntedRadioTower2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-HauntedRadioTower2F_MapEventHeader:
 	db 2 ; warps
 	warp_def 0, 13, 3, LAV_RADIO_TOWER_1F
 	warp_def 0, 2, 1, HAUNTED_RADIO_TOWER_3F

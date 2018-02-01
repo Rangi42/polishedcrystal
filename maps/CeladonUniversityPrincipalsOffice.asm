@@ -3,7 +3,6 @@ CeladonUniversityPrincipalsOffice_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityPrincipalsOffice_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 5, CELADON_UNIVERSITY_1F
 	warp_def 7, 3, 5, CELADON_UNIVERSITY_1F

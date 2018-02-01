@@ -3,7 +3,6 @@ ViridianGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ViridianGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 45, 6, 1, VIRIDIAN_CITY
 	warp_def 45, 7, 1, VIRIDIAN_CITY

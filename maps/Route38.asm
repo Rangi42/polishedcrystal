@@ -3,7 +3,6 @@ Route38_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route38_MapEventHeader:
 	db 2 ; warps
 	warp_def 8, 35, 1, ROUTE_38_ECRUTEAK_GATE
 	warp_def 9, 35, 2, ROUTE_38_ECRUTEAK_GATE

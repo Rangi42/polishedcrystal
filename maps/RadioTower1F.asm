@@ -3,7 +3,6 @@ RadioTower1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RadioTower1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 11, GOLDENROD_CITY
 	warp_def 7, 3, 11, GOLDENROD_CITY
@@ -24,7 +23,7 @@ RadioTower1F_MapEventHeader:
 	person_event SPRITE_ROCKET, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_COOLTRAINER_F, 6, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
 
-const_value set 1
+	const_def 1 ; person constants
 	const RADIOTOWER1F_FELICITY
 	const RADIOTOWER1F_WHITNEY
 

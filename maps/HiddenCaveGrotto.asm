@@ -4,7 +4,6 @@ HiddenCaveGrotto_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, HiddenGrottoCallback
 
-HiddenCaveGrotto_MapEventHeader:
 	db 1 ; warps
 	warp_def 85, 35, -1, HIDDEN_CAVE_GROTTO
 

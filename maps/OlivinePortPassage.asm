@@ -3,7 +3,6 @@ OlivinePortPassage_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivinePortPassage_MapEventHeader:
 	db 5 ; warps
 	warp_def 22, 3, 9, OLIVINE_CITY
 	warp_def 22, 4, 10, OLIVINE_CITY

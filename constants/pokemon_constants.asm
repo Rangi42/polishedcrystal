@@ -1,5 +1,5 @@
 ; pokemon
-const_value set 1
+	const_def 1
 	const BULBASAUR  ; $01
 	const IVYSAUR    ; $02
 	const VENUSAUR   ; $03
@@ -261,7 +261,7 @@ NUM_POKEMON EQU const_value +- 1
 ; form values
 
 ; unown
-const_value set 1
+	const_def 1
 	const UNOWN_A_FORM
 	const UNOWN_B_FORM
 	const UNOWN_C_FORM
@@ -293,7 +293,7 @@ const_value set 1
 NUM_UNOWN EQU const_value +- 1
 
 ; pikachu
-const_value set 1
+	const_def 1
 	const PIKACHU_PLAIN_FORM
 	const PIKACHU_FLY_FORM
 	const PIKACHU_SURF_FORM
@@ -302,12 +302,12 @@ const_value set 1
 	const PIKACHU_SPARK_FORM
 
 ; pichu
-const_value set 1
+	const_def 1
 	const PICHU_PLAIN_FORM
 	const PICHU_SPIKY_EARED_FORM
 
 ; arbok
-const_value set 1
+	const_def 1
 	const ARBOK_JOHTO_FORM
 	const ARBOK_KANTO_FORM
 	const ARBOK_KOGA_FORM
@@ -315,7 +315,7 @@ const_value set 1
 	const ARBOK_ARIANA_FORM
 
 ; magikarp
-const_value set 1
+	const_def 1
 	const MAGIKARP_PLAIN_FORM
 	const MAGIKARP_SKELLY_FORM
 	const MAGIKARP_CALICO1_FORM
@@ -333,11 +333,11 @@ const_value set 1
 NUM_MAGIKARP EQU const_value +- 1
 
 ; gyarados
-const_value set 1
+	const_def 1
 	const GYARADOS_PLAIN_FORM
 GYARADOS_RED_FORM EQU NUM_MAGIKARP + 1
 
 ; mewtwo
-const_value set 1
+	const_def 1
 	const MEWTWO_PLAIN_FORM
 	const MEWTWO_ARMORED_FORM

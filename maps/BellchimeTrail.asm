@@ -5,7 +5,6 @@ BellchimeTrail_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
 
-BellchimeTrail_MapEventHeader:
 	db 3 ; warps
 	warp_def 4, 4, 1, WISE_TRIOS_ROOM
 	warp_def 5, 4, 2, WISE_TRIOS_ROOM
@@ -20,7 +19,7 @@ BellchimeTrail_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
 
-const_value set 1
+	const_def 1 ; person constants
 	const BELLCHIMETRAIL_VALERIE
 
 BellchimeTrailStepDownTrigger:

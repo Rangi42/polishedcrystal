@@ -5,7 +5,6 @@ YellowForest_MapScriptHeader:
 	dbw MAPCALLBACK_OBJECTS, YellowForestRebattleBreeder
 	dbw MAPCALLBACK_TILES, YellowForestTileScript
 
-YellowForest_MapEventHeader:
 	db 2 ; warps
 	warp_def 47, 28, 1, YELLOW_FOREST_GATE
 	warp_def 47, 29, 2, YELLOW_FOREST_GATE
@@ -42,7 +41,7 @@ YellowForest_MapEventHeader:
 	itemball_event 23, 11, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
 	itemball_event 13, 50, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
 
-const_value set 1
+	const_def 1 ; person constants
 	const YELLOWFOREST_WALKER
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW

@@ -5,7 +5,6 @@ GiovannisCave_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GiovannisCave_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 15, 3, TOHJO_FALLS
 
@@ -22,7 +21,7 @@ GiovannisCave_MapEventHeader:
 	smashrock_event 6, 13
 	smashrock_event 2, 16
 
-const_value set 1
+	const_def 1 ; person constants
 	const GIOVANNISCAVE_CELEBI
 	const GIOVANNISCAVE_LYRA
 	const GIOVANNISCAVE_GIOVANNI

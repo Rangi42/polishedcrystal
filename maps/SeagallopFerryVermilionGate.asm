@@ -5,7 +5,6 @@ SeagallopFerryVermilionGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SeagallopFerryVermilionGate_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 6, 11, VERMILION_CITY
 
@@ -16,7 +15,7 @@ SeagallopFerryVermilionGate_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryVermilionGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 
-const_value set 1
+	const_def 1 ; person constants
 	const SEAGALLOPFERRYVERMILIONGATE_SAILOR
 
 SeagallopFerryVermilionGateTrigger1:

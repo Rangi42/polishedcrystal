@@ -3,7 +3,6 @@ RockTunnelB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RockTunnelB1F_MapEventHeader:
 	db 5 ; warps
 	warp_def 3, 3, 3, ROCK_TUNNEL_1F
 	warp_def 9, 17, 4, ROCK_TUNNEL_1F

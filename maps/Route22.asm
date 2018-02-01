@@ -3,7 +3,6 @@ Route22_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route22_MapEventHeader:
 	db 1 ; warps
 	warp_def 5, 3, 1, POKEMON_LEAGUE_GATE
 
@@ -16,7 +15,7 @@ Route22_MapEventHeader:
 	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE22_KUKUI
 
 KukuiScript:

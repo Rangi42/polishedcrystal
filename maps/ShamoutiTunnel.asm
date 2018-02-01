@@ -3,7 +3,6 @@ ShamoutiTunnel_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiTunnel_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 33, 3, SHAMOUTI_ISLAND
 	warp_def 17, 5, 2, WARM_BEACH

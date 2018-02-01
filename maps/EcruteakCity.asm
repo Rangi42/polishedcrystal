@@ -4,7 +4,6 @@ EcruteakCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, EcruteakCityFlyPoint
 
-EcruteakCity_MapEventHeader:
 	db 17 ; warps
 	warp_def 26, 35, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def 27, 35, 2, ROUTE_42_ECRUTEAK_GATE

@@ -3,7 +3,6 @@ ElmsHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ElmsHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 4, 7, 5, NEW_BARK_TOWN
 	warp_def 5, 7, 5, NEW_BARK_TOWN

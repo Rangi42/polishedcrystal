@@ -3,7 +3,6 @@ FastShipB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FastShipB1F_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 1, 11, FAST_SHIP_1F
 	warp_def 11, 27, 12, FAST_SHIP_1F
@@ -29,7 +28,7 @@ FastShipB1F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 7, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyNate, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	person_event SPRITE_YOUNGSTER, 9, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyRicky, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 
-const_value set 1
+	const_def 1 ; person constants
 	const FASTSHIPB1F_SAILOR1
 	const FASTSHIPB1F_SAILOR2
 

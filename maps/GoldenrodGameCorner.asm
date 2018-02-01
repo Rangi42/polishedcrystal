@@ -3,7 +3,6 @@ GoldenrodGameCorner_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodGameCorner_MapEventHeader:
 	db 2 ; warps
 	warp_def 13, 2, 10, GOLDENROD_CITY
 	warp_def 13, 3, 10, GOLDENROD_CITY

@@ -3,7 +3,6 @@ LightningIsland_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LightningIsland_MapEventHeader:
 	db 6 ; warps
 	warp_def 29, 5, 3, SHAMOUTI_COAST
 	warp_def 29, 19, 1, LIGHTNING_ISLAND_ROOF

@@ -3,7 +3,6 @@ Route2South_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route2South_MapEventHeader:
 	db 2 ; warps
 	warp_def 3, 15, 3, ROUTE_2_GATE
 	warp_def 7, 5, 3, VIRIDIAN_FOREST_VIRIDIAN_GATE

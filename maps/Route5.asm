@@ -3,7 +3,6 @@ Route5_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route5_MapEventHeader:
 	db 4 ; warps
 	warp_def 27, 17, 1, ROUTE_5_UNDERGROUND_ENTRANCE
 	warp_def 31, 8, 1, ROUTE_5_SAFFRON_CITY_GATE

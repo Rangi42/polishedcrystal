@@ -4,7 +4,6 @@ Route48_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
-Route48_MapEventHeader:
 	db 1 ; warps
 	warp_def 5, 11, 3, YELLOW_FOREST_GATE
 
@@ -21,7 +20,7 @@ Route48_MapEventHeader:
 	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
 	itemball_event 13, 4, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE48_ARCHER
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES

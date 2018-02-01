@@ -4,7 +4,6 @@ Route33_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Route33RainScript
 
-Route33_MapEventHeader:
 	db 1 ; warps
 	warp_def 9, 11, 3, UNION_CAVE_1F
 

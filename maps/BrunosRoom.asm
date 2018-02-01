@@ -5,7 +5,6 @@ BrunosRoom_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, BrunosRoomDoorCallback
 
-BrunosRoom_MapEventHeader:
 	db 4 ; warps
 	warp_def 17, 4, 3, KOGAS_ROOM
 	warp_def 17, 5, 4, KOGAS_ROOM

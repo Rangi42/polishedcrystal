@@ -3,7 +3,6 @@ Route40BattleTowerGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route40BattleTowerGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 7, 4, 1, ROUTE_40
 	warp_def 7, 5, 1, ROUTE_40

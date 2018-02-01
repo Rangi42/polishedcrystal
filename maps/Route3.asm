@@ -4,7 +4,6 @@ Route3_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route3FlyPoint
 
-Route3_MapEventHeader:
 	db 2 ; warps
 	warp_def 1, 68, 1, MOUNT_MOON_1F
 	warp_def 3, 61, 1, ROUTE_3_POKECENTER_1F

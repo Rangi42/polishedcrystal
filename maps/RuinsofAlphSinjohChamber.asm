@@ -3,7 +3,6 @@ RuinsofAlphSinjohChamber_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RuinsofAlphSinjohChamber_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 5, 12, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 12, RUINS_OF_ALPH_OUTSIDE
@@ -21,7 +20,7 @@ RuinsofAlphSinjohChamber_MapEventHeader:
 	person_event SPRITE_GOLD_TROPHY, 5, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
 	person_event SPRITE_SILVER_TROPHY, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
 
-const_value set 1
+	const_def 1 ; person constants
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_W
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_A
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_R

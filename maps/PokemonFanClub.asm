@@ -3,7 +3,6 @@ PokemonFanClub_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PokemonFanClub_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 3, VERMILION_CITY
 	warp_def 7, 3, 3, VERMILION_CITY
@@ -23,7 +22,7 @@ PokemonFanClub_MapEventHeader:
 	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191d73, -1
 	person_event SPRITE_ODDISH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_POKEMON, ODDISH, FanClubOddishText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const POKEMONFANCLUB_CLEFAIRY_DOLL
 
 GentlemanScript_0x1917e9:

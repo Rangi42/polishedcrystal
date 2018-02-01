@@ -3,7 +3,6 @@ IceIsland_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IceIsland_MapEventHeader:
 	db 6 ; warps
 	warp_def 29, 6, 2, SHAMOUTI_COAST
 	warp_def 29, 20, 1, ICE_ISLAND_ROOF

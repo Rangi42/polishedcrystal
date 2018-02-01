@@ -3,7 +3,6 @@ LavenderPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LavenderPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 1, LAVENDER_TOWN
 	warp_def 7, 6, 1, LAVENDER_TOWN

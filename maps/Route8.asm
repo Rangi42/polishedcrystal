@@ -3,7 +3,6 @@ Route8_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route8_MapEventHeader:
 	db 2 ; warps
 	warp_def 10, 4, 3, ROUTE_8_SAFFRON_GATE
 	warp_def 11, 4, 4, ROUTE_8_SAFFRON_GATE

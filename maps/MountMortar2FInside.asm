@@ -3,7 +3,6 @@ MountMortar2FInside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MountMortar2FInside_MapEventHeader:
 	db 2 ; warps
 	warp_def 33, 17, 4, MOUNT_MORTAR_1F_OUTSIDE
 	warp_def 5, 3, 6, MOUNT_MORTAR_1F_INSIDE

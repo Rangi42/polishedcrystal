@@ -3,7 +3,6 @@ CeladonDeptStore1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonDeptStore1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 7, 7, 1, CELADON_CITY
 	warp_def 7, 8, 1, CELADON_CITY

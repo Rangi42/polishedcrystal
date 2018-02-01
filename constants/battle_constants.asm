@@ -36,7 +36,7 @@ NUM_LEVEL_STATS EQU const_value
 	const MOVE_LENGTH
 
 ; stat constants
-const_value SET 1
+	const_def 1
 	const STAT_HP
 	const STAT_ATK
 	const STAT_DEF
@@ -78,7 +78,7 @@ endc
 DVS_HP_FAIRY    EQUS "$00, $00, $00" ; no Fairy-type Hidden Power in Faithful
 
 ; battle classes
-const_value SET 1
+	const_def 1
 	const WILD_BATTLE
 	const TRAINER_BATTLE
 
@@ -127,15 +127,15 @@ const_value SET 1
 	const BATTLE_VARS_LAST_MOVE_OPP
 
 ; status
-SLP EQU 7 ; 7 turns
-const_value SET 3
-	const PSN
-	const BRN
-	const FRZ
-	const PAR
-	const TOX
+SLP EQU %111 ; max 7 turns
+	const_def 3
+	const PSN ; 3
+	const BRN ; 4
+	const FRZ ; 5
+	const PAR ; 6
+	const TOX ; 7
 
-ALL_STATUS EQU (1 << PSN) + (1 << BRN) + (1 << FRZ) + (1 << PAR) + (1 << TOX) + SLP
+ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | SLP
 
 ; substatus
 	enum_start 7, -1

@@ -3,7 +3,6 @@ CianwoodPharmacy_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CianwoodPharmacy_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 4, CIANWOOD_CITY
 	warp_def 7, 4, 4, CIANWOOD_CITY

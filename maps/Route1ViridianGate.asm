@@ -3,7 +3,6 @@ Route1ViridianGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route1ViridianGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 6, VIRIDIAN_CITY
 	warp_def 0, 5, 7, VIRIDIAN_CITY

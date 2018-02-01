@@ -3,7 +3,6 @@ RuinsofAlphOmanyteItemRoom_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RuinsofAlphOmanyteItemRoom_MapEventHeader:
 	db 4 ; warps
 	warp_def 9, 3, 5, RUINS_OF_ALPH_OMANYTE_CHAMBER
 	warp_def 9, 4, 5, RUINS_OF_ALPH_OMANYTE_CHAMBER

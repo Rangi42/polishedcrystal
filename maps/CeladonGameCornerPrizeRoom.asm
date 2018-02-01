@@ -3,7 +3,6 @@ CeladonGameCornerPrizeRoom_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonGameCornerPrizeRoom_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 7, CELADON_CITY
 	warp_def 7, 4, 7, CELADON_CITY

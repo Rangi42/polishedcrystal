@@ -3,7 +3,6 @@ ShamoutiHotel2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiHotel2F_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 2, 3, SHAMOUTI_HOTEL_1F
 	warp_def 0, 3, 1, SHAMOUTI_HOTEL_3F

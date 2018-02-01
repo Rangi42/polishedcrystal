@@ -3,7 +3,6 @@ GoldenrodGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 17, 2, 1, GOLDENROD_CITY
 	warp_def 17, 3, 1, GOLDENROD_CITY
@@ -24,7 +23,7 @@ GoldenrodGym_MapEventHeader:
 	person_event SPRITE_BEAUTY, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautySamantha, -1
 	person_event SPRITE_GYM_GUY, 15, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const GOLDENRODGYM_LASS2
 
 WhitneyScript_0x5400c:

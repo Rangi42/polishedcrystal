@@ -3,7 +3,6 @@ Route18East_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route18East_MapEventHeader:
 	db 2 ; warps
 	warp_def 6, 4, 3, ROUTE_18_GATE
 	warp_def 7, 4, 4, ROUTE_18_GATE

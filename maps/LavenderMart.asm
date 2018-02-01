@@ -3,7 +3,6 @@ LavenderMart_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LavenderMart_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 5, LAVENDER_TOWN
 	warp_def 7, 3, 5, LAVENDER_TOWN

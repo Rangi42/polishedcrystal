@@ -3,7 +3,6 @@ IcePathB3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IcePathB3F_MapEventHeader:
 	db 2 ; warps
 	warp_def 5, 3, 2, ICE_PATH_B2F_MAHOGANY_SIDE
 	warp_def 5, 15, 2, ICE_PATH_B2F_BLACKTHORN_SIDE
@@ -18,7 +17,7 @@ IcePathB3F_MapEventHeader:
 	itemball_event 7, 5, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
 	smashrock_event 6, 6
 
-const_value set 1
+	const_def 1 ; person constants
 	const ICEPATHB3F_LORELEI
 
 LoreleiScript:

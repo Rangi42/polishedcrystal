@@ -6,7 +6,6 @@ LakeofRage_MapScriptHeader:
 	dbw MAPCALLBACK_OBJECTS, LakeofRageWesleyAndEngineer
 	dbw MAPCALLBACK_TILES, LakeofRageFloodScript
 
-LakeofRage_MapEventHeader:
 	db 3 ; warps
 	warp_def 3, 7, 1, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE
 	warp_def 31, 27, 1, LAKE_OF_RAGE_MAGIKARP_HOUSE
@@ -42,7 +41,7 @@ LakeofRage_MapEventHeader:
 	cuttree_event 14, 5, EVENT_LAKE_OF_RAGE_CUT_TREE_3
 	cuttree_event 21, 6, EVENT_LAKE_OF_RAGE_CUT_TREE_4
 
-const_value set 1
+	const_def 1 ; person constants
 	const LAKEOFRAGE_LANCE
 	const LAKEOFRAGE_RED_GYARADOS
 	const LAKEOFRAGE_WESLEY

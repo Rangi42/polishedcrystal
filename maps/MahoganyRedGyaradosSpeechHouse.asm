@@ -3,7 +3,6 @@ MahoganyRedGyaradosSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MahoganyRedGyaradosSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, MAHOGANY_TOWN
 	warp_def 7, 3, 2, MAHOGANY_TOWN

@@ -3,7 +3,6 @@ ShamoutiShrineRuins_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiShrineRuins_MapEventHeader:
 	db 2 ; warps
 	warp_def 18, 2, 3, NOISY_FOREST
 	warp_def 19, 2, 4, NOISY_FOREST
@@ -19,7 +18,7 @@ ShamoutiShrineRuins_MapEventHeader:
 	person_event SPRITE_LADY, 13, 14, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsLadyText, -1
 	itemball_event 27, 4, RARE_CANDY, 1, EVENT_SHAMOUTI_SHRINE_RUINS_RARE_CANDY
 
-const_value set 1
+	const_def 1 ; person constants
 	const SHAMOUTISHRINERUINS_LAWRENCE
 
 ShamoutiShrineRuinsLawrenceScript:

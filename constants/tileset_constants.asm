@@ -1,4 +1,4 @@
-const_value SET 1
+	const_def 1
 	const TILESET_JOHTO_TRADITIONAL    ; 01
 	const TILESET_JOHTO_MODERN         ; 02
 	const TILESET_BATTLE_TOWER_OUTSIDE ; 03
@@ -52,7 +52,7 @@ const_value SET 1
 	const PAL_BG_ROOF   ; 6
 	const PAL_BG_TEXT   ; 7
 
-const_value SET $80
+	const_def $80
 	const PAL_BG_PRIORITY_GRAY   ; 80
 	const PAL_BG_PRIORITY_RED    ; 81
 	const PAL_BG_PRIORITY_GREEN  ; 82

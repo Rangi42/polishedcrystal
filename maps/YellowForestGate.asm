@@ -3,7 +3,6 @@ YellowForestGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-YellowForestGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 1, YELLOW_FOREST
 	warp_def 0, 5, 2, YELLOW_FOREST

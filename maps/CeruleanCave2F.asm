@@ -3,7 +3,6 @@ CeruleanCave2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeruleanCave2F_MapEventHeader:
 	db 6 ; warps
 	warp_def 3, 11, 2, CERULEAN_CAVE_1F
 	warp_def 3, 31, 3, CERULEAN_CAVE_1F

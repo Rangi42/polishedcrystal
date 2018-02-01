@@ -1,5 +1,5 @@
 ; see engine/map_setup.asm:MapSetupScripts
-const_value SET $f1
+	const_def $f1
 	const MAPSETUP_WARP
 	const MAPSETUP_CONTINUE
 	const MAPSETUP_RELOADMAP
@@ -13,7 +13,7 @@ const_value SET $f1
 	const MAPSETUP_BADWARP
 	const MAPSETUP_FLY
 
-const_value SET 1
+	const_def 1
 	const MAPCALLBACK_TILES
 	const MAPCALLBACK_OBJECTS
 	const MAPCALLBACK_CMDQUEUE

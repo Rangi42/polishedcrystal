@@ -3,7 +3,6 @@ UragaChannelWest_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-UragaChannelWest_MapEventHeader:
 	db 1 ; warps
 	warp_def 9, 8, 2, SCARY_CAVE_1F
 

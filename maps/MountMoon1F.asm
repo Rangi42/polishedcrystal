@@ -4,7 +4,6 @@ MountMoon1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MountMoon1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 23, 11, 1, ROUTE_3
 	warp_def 12, 22, 1, MOUNT_MOON_B1F
@@ -29,7 +28,7 @@ MountMoon1F_MapEventHeader:
 	itemball_event 20, 2, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
 	itemball_event 22, 16, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
 
-const_value set 1
+	const_def 1 ; person constants
 	const MOUNTMOON1F_SILVER
 
 MountMoon1FTrigger0:

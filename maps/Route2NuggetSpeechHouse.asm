@@ -3,7 +3,6 @@ Route2NuggetSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route2NuggetSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, ROUTE_2_NORTH
 	warp_def 7, 3, 1, ROUTE_2_NORTH

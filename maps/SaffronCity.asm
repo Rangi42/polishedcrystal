@@ -4,7 +4,6 @@ SaffronCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
 
-SaffronCity_MapEventHeader:
 	db 20 ; warps
 	warp_def 3, 26, 1, FIGHTING_DOJO
 	warp_def 3, 34, 1, SAFFRON_GYM

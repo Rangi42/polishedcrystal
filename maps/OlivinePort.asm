@@ -5,7 +5,6 @@ OlivinePort_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivinePort_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 11, 5, OLIVINE_PORT_PASSAGE
 	warp_def 23, 7, 1, FAST_SHIP_1F
@@ -25,7 +24,7 @@ OlivinePort_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 15, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x74a17, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	person_event SPRITE_COOLTRAINER_F, 15, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x74a22, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 
-const_value set 1
+	const_def 1 ; person constants
 	const OLIVINEPORT_SAILOR1
 	const OLIVINEPORT_SAILOR3
 

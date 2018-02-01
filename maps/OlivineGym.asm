@@ -3,7 +3,6 @@ OlivineGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivineGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 15, 4, 2, OLIVINE_CITY
 	warp_def 15, 5, 2, OLIVINE_CITY

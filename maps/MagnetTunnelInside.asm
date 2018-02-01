@@ -4,7 +4,6 @@ MagnetTunnelInside_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, MagnetTunnelInsideTileCallback
 
-MagnetTunnelInside_MapEventHeader:
 	db 2 ; warps
 	warp_def 19, 5, 1, MAGNET_TUNNEL_WEST
 	warp_def 3, 43, 1, MAGNET_TUNNEL_EAST
@@ -27,7 +26,7 @@ MagnetTunnelInside_MapEventHeader:
 	person_event SPRITE_N64, 5, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
 	person_event SPRITE_N64, 8, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
 
-const_value set 1
+	const_def 1 ; person constants
 	const MAGNETTUNNELINSIDE_STONE_1
 	const MAGNETTUNNELINSIDE_STONE_2
 	const MAGNETTUNNELINSIDE_STONE_3

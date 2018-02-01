@@ -3,7 +3,6 @@ ViridianSchoolHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ViridianSchoolHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 2, 8, VIRIDIAN_CITY
 	warp_def 9, 3, 8, VIRIDIAN_CITY

@@ -3,7 +3,6 @@ SafariZoneFuchsiaGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SafariZoneFuchsiaGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 1, SAFARI_ZONE_HUB
 	warp_def 0, 5, 2, SAFARI_ZONE_HUB

@@ -3,7 +3,6 @@ CeladonUniversityClassroom1_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityClassroom1_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 2, 6, CELADON_UNIVERSITY_1F
 	warp_def 11, 3, 6, CELADON_UNIVERSITY_1F
@@ -26,7 +25,7 @@ CeladonUniversityClassroom1_MapEventHeader:
 	person_event SPRITE_ARTIST, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist2Text, -1
 	person_event SPRITE_ARTIST, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist3Text, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI
 
 CeladonUniversityClassroom1ImakuniScript:

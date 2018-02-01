@@ -3,7 +3,6 @@ IvysHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IvysHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, VALENCIA_ISLAND
 	warp_def 7, 3, 2, VALENCIA_ISLAND

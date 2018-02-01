@@ -3,7 +3,6 @@ PewterGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PewterGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 13, 4, 2, PEWTER_CITY
 	warp_def 13, 5, 2, PEWTER_CITY

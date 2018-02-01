@@ -3,7 +3,6 @@ WhirlIslandB2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-WhirlIslandB2F_MapEventHeader:
 	db 4 ; warps
 	warp_def 5, 11, 7, WHIRL_ISLAND_B1F
 	warp_def 11, 7, 8, WHIRL_ISLAND_B1F

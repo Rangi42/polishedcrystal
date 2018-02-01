@@ -3,7 +3,6 @@ FireIsland_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FireIsland_MapEventHeader:
 	db 14 ; warps
 	warp_def 29, 5, 1, SHAMOUTI_COAST
 	warp_def 29, 19, 1, FIRE_ISLAND_ROOF

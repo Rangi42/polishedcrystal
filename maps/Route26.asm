@@ -3,7 +3,6 @@ Route26_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route26_MapEventHeader:
 	db 3 ; warps
 	warp_def 5, 7, 3, POKEMON_LEAGUE_GATE
 	warp_def 57, 15, 1, ROUTE_26_HEAL_SPEECH_HOUSE

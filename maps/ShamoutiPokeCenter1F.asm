@@ -4,7 +4,6 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
-ShamoutiPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 1, SHAMOUTI_ISLAND
 	warp_def 7, 6, 1, SHAMOUTI_ISLAND
@@ -19,7 +18,7 @@ ShamoutiPokeCenter1F_MapEventHeader:
 	person_event SPRITE_IVY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
 	pc_nurse_event 1, 5
 
-const_value set 1
+	const_def 1 ; person constants
 	const SHAMOUTIPOKECENTER1F_IVY
 
 ShamoutiPokeCenter1FFixStairScript:

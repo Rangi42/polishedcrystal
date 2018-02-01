@@ -3,7 +3,6 @@ Route2North_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route2North_MapEventHeader:
 	db 6 ; warps
 	warp_def 19, 15, 1, ROUTE_2_NUGGET_SPEECH_HOUSE
 	warp_def 35, 16, 1, ROUTE_2_GATE

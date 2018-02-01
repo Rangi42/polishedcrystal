@@ -3,7 +3,6 @@ NoisyForest_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-NoisyForest_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 6, 2, ROCKY_BEACH
 	warp_def 5, 6, 3, ROCKY_BEACH
@@ -36,7 +35,7 @@ NoisyForest_MapEventHeader:
 	cuttree_event 12, 40, EVENT_NOISY_FOREST_CUT_TREE_1
 	cuttree_event 21, 12, EVENT_NOISY_FOREST_CUT_TREE_2
 
-const_value set 1
+	const_def 1 ; person constants
 	const NOISYFOREST_ANABEL
 	const NOISYFOREST_YOUNGSTER
 	const NOISYFOREST_MARILL

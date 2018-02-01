@@ -3,7 +3,6 @@ Route19BeachHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route19BeachHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, ROUTE_19
 	warp_def 7, 3, 2, ROUTE_19
@@ -16,7 +15,7 @@ Route19BeachHouse_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
 	person_event SPRITE_SURFING_PIKACHU, 4, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE19BEACHHOUSE_VICTOR
 
 Route19BeachHouseVictorScript:

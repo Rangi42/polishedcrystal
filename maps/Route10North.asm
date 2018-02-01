@@ -7,7 +7,6 @@ Route10North_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
 	dbw MAPCALLBACK_OBJECTS, Route10NorthZapdos
 
-Route10North_MapEventHeader:
 	db 5 ; warps
 	warp_def 35, 11, 1, ROUTE_10_POKECENTER_1F
 	warp_def 51, 3, 1, POWER_PLANT
@@ -36,7 +35,7 @@ Route10North_MapEventHeader:
 ; SPRITE_MOM is not in this map's overworld sprite set, so it default to the
 ; player sprite, whatever gender they are.
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE10_ZAPDOS
 	const ROUTE10_LAWRENCE
 	const ROUTE10_LAWRENCES_ZAPDOS

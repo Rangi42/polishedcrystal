@@ -4,7 +4,6 @@ BattleTowerOutside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BattleTowerOutside_MapEventHeader:
 	db 4 ; warps
 	warp_def 21, 8, 3, ROUTE_40_BATTLE_TOWER_GATE
 	warp_def 21, 9, 4, ROUTE_40_BATTLE_TOWER_GATE

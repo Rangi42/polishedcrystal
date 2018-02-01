@@ -4,7 +4,6 @@ BlackthornGym2F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
 
-BlackthornGym2F_MapEventHeader:
 	db 5 ; warps
 	warp_def 7, 1, 3, BLACKTHORN_GYM_1F
 	warp_def 9, 7, 4, BLACKTHORN_GYM_1F
@@ -26,7 +25,7 @@ BlackthornGym2F_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermCody, -1
 	person_event SPRITE_COOLTRAINER_F, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfFran, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const BLACKTHORNGYM2F_BOULDER1
 	const BLACKTHORNGYM2F_BOULDER2
 	const BLACKTHORNGYM2F_BOULDER3

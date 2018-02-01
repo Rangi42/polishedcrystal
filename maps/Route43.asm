@@ -6,7 +6,6 @@ Route43_MapScriptHeader:
 	dbw MAPCALLBACK_TILES, Route43RainScript
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 
-Route43_MapEventHeader:
 	db 5 ; warps
 	warp_def 51, 9, 1, ROUTE_43_MAHOGANY_GATE
 	warp_def 51, 10, 2, ROUTE_43_MAHOGANY_GATE
@@ -36,7 +35,7 @@ Route43_MapEventHeader:
 	fruittree_event 26, 1, FRUITTREE_ROUTE_43, PERSIM_BERRY
 	itemball_event 32, 12, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE43_SIGHTSEER_F
 
 Route43RebattleBreederScript:

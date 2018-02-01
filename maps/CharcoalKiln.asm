@@ -3,7 +3,6 @@ CharcoalKiln_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CharcoalKiln_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 2, AZALEA_TOWN
 	warp_def 7, 4, 2, AZALEA_TOWN

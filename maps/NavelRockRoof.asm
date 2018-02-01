@@ -4,7 +4,6 @@ NavelRockRoof_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
 
-NavelRockRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 15, 9, 14, NAVEL_ROCK_INSIDE
 
@@ -17,7 +16,7 @@ NavelRockRoof_MapEventHeader:
 	person_event SPRITE_CHRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	person_event SPRITE_KRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 
-const_value set 1
+	const_def 1 ; person constants
 	const NAVELROCKROOF_GREEN
 	const NAVELROCKROOF_CHRIS
 	const NAVELROCKROOF_KRIS

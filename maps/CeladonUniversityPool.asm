@@ -3,7 +3,6 @@ CeladonUniversityPool_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityPool_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 6, 6, CELADON_UNIVERSITY_2F
 	warp_def 9, 7, 6, CELADON_UNIVERSITY_2F
@@ -19,7 +18,7 @@ CeladonUniversityPool_MapEventHeader:
 	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityPoolTeacherText, -1
 	itemball_event 8, 12, WATER_STONE, 1, EVENT_CELADON_UNIVERSITY_POOL_WATER_STONE
 
-const_value set 1
+	const_def 1 ; person constants
 	const CELADONUNIVERSITYPOOL_FERGUS
 
 CeladonUniversityPoolFergusScript:

@@ -4,7 +4,6 @@ SeafoamIslands1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, SeafoamIslands1FClearRocks
 
-SeafoamIslands1F_MapEventHeader:
 	db 5 ; warps
 	warp_def 33, 15, 1, ROUTE_20
 	warp_def 31, 15, 1, SEAFOAM_GYM

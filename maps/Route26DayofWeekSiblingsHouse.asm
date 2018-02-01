@@ -3,7 +3,6 @@ Route26DayofWeekSiblingsHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route26DayofWeekSiblingsHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 3, ROUTE_26
 	warp_def 7, 3, 3, ROUTE_26

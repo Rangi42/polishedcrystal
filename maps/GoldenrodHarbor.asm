@@ -3,7 +3,6 @@ GoldenrodHarbor_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodHarbor_MapEventHeader:
 	db 2 ; warps
 	warp_def 16, 31, 1, GOLDENROD_HARBOR_GATE
 	warp_def 17, 31, 2, GOLDENROD_HARBOR_GATE

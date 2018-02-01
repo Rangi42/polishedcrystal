@@ -3,7 +3,6 @@ Route42_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route42_MapEventHeader:
 	db 5 ; warps
 	warp_def 8, 0, 3, ROUTE_42_ECRUTEAK_GATE
 	warp_def 9, 0, 4, ROUTE_42_ECRUTEAK_GATE
@@ -41,7 +40,7 @@ Route42_MapEventHeader:
 	person_event SPRITE_NEW_BARK_TEACHER, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	person_event SPRITE_SUPER_NERD, 20, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE42_SUICUNE
 	const ROUTE42_LYRA
 

@@ -4,7 +4,6 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UndergroundPathSwitchRoomEntrancesUpdateDoorPositions
 
-UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	db 9 ; warps
 	warp_def 3, 23, 6, WAREHOUSE_ENTRANCE
 	warp_def 10, 22, 1, UNDERGROUND_WAREHOUSE
@@ -42,7 +41,7 @@ UndergroundPathSwitchRoomEntrances_MapEventHeader:
 	itemball_event 12, 1, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
 	itemball_event 9, 14, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
 
-const_value set 1
+	const_def 1 ; person constants
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 
 UNDERGROUND_DOOR_CLOSED1 EQU $2a

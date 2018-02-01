@@ -3,7 +3,6 @@ SafariZoneWardensHome_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SafariZoneWardensHome_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 5, FUCHSIA_CITY
 	warp_def 7, 3, 5, FUCHSIA_CITY

@@ -3,7 +3,6 @@ Route16Gate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route16Gate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 2, ROUTE_16_NORTHWEST
 	warp_def 5, 0, 3, ROUTE_16_NORTHWEST

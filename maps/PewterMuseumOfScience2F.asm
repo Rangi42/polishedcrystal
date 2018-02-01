@@ -3,7 +3,6 @@ PewterMuseumOfScience2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PewterMuseumOfScience2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
 

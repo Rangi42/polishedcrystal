@@ -3,7 +3,6 @@ Route6UndergroundEntrance_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route6UndergroundEntrance_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 3, 1, ROUTE_6
 	warp_def 7, 4, 1, ROUTE_6

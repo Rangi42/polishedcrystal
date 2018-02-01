@@ -3,7 +3,6 @@ IlexForestAzaleaGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IlexForestAzaleaGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 2, ILEX_FOREST
 	warp_def 5, 0, 3, ILEX_FOREST

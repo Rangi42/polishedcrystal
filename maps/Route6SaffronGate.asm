@@ -3,7 +3,6 @@ Route6SaffronGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route6SaffronGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 12, SAFFRON_CITY
 	warp_def 0, 5, 13, SAFFRON_CITY

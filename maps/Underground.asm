@@ -3,7 +3,6 @@ Underground_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Underground_MapEventHeader:
 	db 2 ; warps
 	warp_def 2, 3, 3, ROUTE_5_UNDERGROUND_ENTRANCE
 	warp_def 32, 3, 3, ROUTE_6_UNDERGROUND_ENTRANCE

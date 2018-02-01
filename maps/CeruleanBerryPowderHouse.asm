@@ -3,7 +3,6 @@ CeruleanBerryPowderHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeruleanBerryPowderHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 9, CERULEAN_CITY
 	warp_def 7, 3, 9, CERULEAN_CITY

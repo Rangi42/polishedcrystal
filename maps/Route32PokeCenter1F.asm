@@ -3,7 +3,6 @@ Route32PokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route32PokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 1, ROUTE_32
 	warp_def 7, 6, 1, ROUTE_32

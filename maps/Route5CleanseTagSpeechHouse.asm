@@ -3,7 +3,6 @@ Route5CleanseTagSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route5CleanseTagSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 4, ROUTE_5
 	warp_def 7, 3, 4, ROUTE_5

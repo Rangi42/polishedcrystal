@@ -3,7 +3,6 @@ Route27_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route27_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 33, 1, ROUTE_27_REST_HOUSE
 	warp_def 5, 26, 1, TOHJO_FALLS
@@ -30,7 +29,7 @@ Route27_MapEventHeader:
 	itemball_event 4, 71, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
 	fruittree_event 12, 60, FRUITTREE_ROUTE_27, LUM_BERRY
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE27_VETERAN_F
 	const ROUTE27_FISHER
 

@@ -4,7 +4,6 @@ Route35_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route35RebattleBreeder
 
-Route35_MapEventHeader:
 	db 4 ; warps
 	warp_def 33, 13, 1, ROUTE_35_GOLDENROD_GATE
 	warp_def 33, 14, 2, ROUTE_35_GOLDENROD_GATE

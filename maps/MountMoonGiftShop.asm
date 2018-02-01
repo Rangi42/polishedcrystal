@@ -3,7 +3,6 @@ MountMoonGiftShop_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MountMoonGiftShop_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 2, MOUNT_MOON_SQUARE
 	warp_def 7, 4, 2, MOUNT_MOON_SQUARE

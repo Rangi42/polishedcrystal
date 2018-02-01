@@ -3,7 +3,6 @@ Route5SaffronCityGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route5SaffronCityGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 2, ROUTE_5
 	warp_def 0, 5, 3, ROUTE_5

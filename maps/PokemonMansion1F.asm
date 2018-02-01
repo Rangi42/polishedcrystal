@@ -3,7 +3,6 @@ PokemonMansion1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PokemonMansion1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 27, 5, 3, CINNABAR_ISLAND
 	warp_def 27, 6, 3, CINNABAR_ISLAND

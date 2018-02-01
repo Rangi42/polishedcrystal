@@ -3,7 +3,6 @@ VermilionPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VermilionPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 2, VERMILION_CITY
 	warp_def 7, 6, 2, VERMILION_CITY

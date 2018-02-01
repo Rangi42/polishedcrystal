@@ -4,7 +4,6 @@ CherrygroveCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
 
-CherrygroveCity_MapEventHeader:
 	db 5 ; warps
 	warp_def 3, 23, 2, CHERRYGROVE_MART
 	warp_def 3, 29, 1, CHERRYGROVE_POKECENTER_1F
@@ -29,7 +28,7 @@ CherrygroveCity_MapEventHeader:
 	person_event SPRITE_FISHER, 12, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
 	person_event SPRITE_PIDGEY, 13, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, PIDGEY, CherrygrovePidgeyText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const CHERRYGROVECITY_GRAMPS
 	const CHERRYGROVECITY_SILVER
 

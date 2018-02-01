@@ -3,7 +3,6 @@ FireIslandRoof_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FireIslandRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 3, 2, FIRE_ISLAND
 
@@ -14,7 +13,7 @@ FireIslandRoof_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_CANDELA, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
 
-const_value set 1
+	const_def 1 ; person constants
 	const FIREISLANDROOF_CANDELA
 
 FireIslandRoofCandelaScript:

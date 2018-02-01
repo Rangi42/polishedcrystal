@@ -3,7 +3,6 @@ TrainerHouseB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-TrainerHouseB1F_MapEventHeader:
 	db 1 ; warps
 	warp_def 4, 9, 3, TRAINER_HOUSE_1F
 
@@ -17,7 +16,7 @@ TrainerHouseB1F_MapEventHeader:
 	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
 	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const TRAINERHOUSEB1F_CAL
 	const TRAINERHOUSEB1F_CARRIE
 

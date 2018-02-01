@@ -3,7 +3,6 @@ CinnabarPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CinnabarPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 1, CINNABAR_ISLAND
 	warp_def 7, 6, 1, CINNABAR_ISLAND

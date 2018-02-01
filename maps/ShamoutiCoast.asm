@@ -3,7 +3,6 @@ ShamoutiCoast_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiCoast_MapEventHeader:
 	db 3 ; warps
 	warp_def 15, 22, 1, FIRE_ISLAND
 	warp_def 11, 54, 1, ICE_ISLAND

@@ -3,7 +3,6 @@ IcePath1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IcePath1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 19, 4, 1, ROUTE_44
 	warp_def 27, 36, 7, BLACKTHORN_CITY

@@ -3,7 +3,6 @@ IcePathB2FMahoganySide_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IcePathB2FMahoganySide_MapEventHeader:
 	db 6 ; warps
 	warp_def 1, 17, 2, ICE_PATH_B1F
 	warp_def 11, 9, 1, ICE_PATH_B3F

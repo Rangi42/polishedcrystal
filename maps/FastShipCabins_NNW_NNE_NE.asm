@@ -3,7 +3,6 @@ FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	db 3 ; warps
 	warp_def 0, 2, 2, FAST_SHIP_1F
 	warp_def 12, 2, 3, FAST_SHIP_1F
@@ -23,7 +22,7 @@ FastShipCabins_NNW_NNE_NE_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 30, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerGentlemanEdward, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	person_event SPRITE_PHARMACIST, 30, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerBurglarCorey, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 
-const_value set 1
+	const_def 1 ; person constants
 	const FASTSHIPCABINS_NNW_NNE_NE_SAILOR
 
 TrainerPILooker:

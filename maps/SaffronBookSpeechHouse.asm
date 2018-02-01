@@ -3,7 +3,6 @@ SaffronBookSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SaffronBookSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 18, SAFFRON_CITY
 	warp_def 7, 3, 18, SAFFRON_CITY

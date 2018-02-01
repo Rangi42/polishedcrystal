@@ -3,7 +3,6 @@ OaksLab_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OaksLab_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 4, 3, PALLET_TOWN
 	warp_def 11, 5, 3, PALLET_TOWN
@@ -36,7 +35,7 @@ OaksLab_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 1, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const OAKSLAB_OAK
 	const OAKSLAB_EEVEE_DOLL
 

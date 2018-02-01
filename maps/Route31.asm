@@ -4,7 +4,6 @@ Route31_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route31CheckMomCall
 
-Route31_MapEventHeader:
 	db 3 ; warps
 	warp_def 6, 4, 3, ROUTE_31_VIOLET_GATE
 	warp_def 7, 4, 4, ROUTE_31_VIOLET_GATE
@@ -27,7 +26,7 @@ Route31_MapEventHeader:
 	itemball_event 5, 29, POTION, 1, EVENT_ROUTE_31_POTION
 	itemball_event 15, 19, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE31_COOLTRAINER_M
 
 Route31CheckMomCall:

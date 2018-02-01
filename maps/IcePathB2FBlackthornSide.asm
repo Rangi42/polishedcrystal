@@ -3,7 +3,6 @@ IcePathB2FBlackthornSide_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IcePathB2FBlackthornSide_MapEventHeader:
 	db 2 ; warps
 	warp_def 15, 3, 8, ICE_PATH_B1F
 	warp_def 3, 3, 2, ICE_PATH_B3F

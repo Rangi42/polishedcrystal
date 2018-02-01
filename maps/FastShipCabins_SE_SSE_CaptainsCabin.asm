@@ -3,7 +3,6 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
 	db 6 ; warps
 	warp_def 7, 2, 8, FAST_SHIP_1F
 	warp_def 7, 3, 8, FAST_SHIP_1F
@@ -29,7 +28,7 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapEventHeader:
 	person_event SPRITE_POKEFAN_F, 5, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerPokefanfGeorgia, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	person_event SPRITE_SUPER_NERD, 15, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdShawn, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 
-const_value set 1
+	const_def 1 ; person constants
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2

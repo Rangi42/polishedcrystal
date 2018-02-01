@@ -3,7 +3,6 @@ VermilionCity_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VermilionCity_MapEventHeader:
 	db 14 ; warps
 	warp_def 5, 5, 1, VERMILION_HOUSE_FISHING_SPEECH_HOUSE
 	warp_def 5, 9, 1, VERMILION_POKECENTER_1F
@@ -50,7 +49,7 @@ VermilionCity_MapEventHeader:
 	smashrock_event 7, 28
 	smashrock_event 9, 29
 
-const_value set 1
+	const_def 1 ; person constants
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_LAWRENCE
 

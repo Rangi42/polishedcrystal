@@ -4,7 +4,6 @@ NewBarkTown_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
 
-NewBarkTown_MapEventHeader:
 	db 5 ; warps
 	warp_def 3, 6, 1, ELMS_LAB
 	warp_def 5, 15, 1, KRISS_HOUSE_1F
@@ -36,7 +35,7 @@ NewBarkTown_MapEventHeader:
 	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
 	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
 	const NEWBARKTOWN_TEACHER

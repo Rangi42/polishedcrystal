@@ -5,7 +5,6 @@ GoldenrodDeptStoreRoof_MapScriptHeader:
 	dbw MAPCALLBACK_TILES, GoldenrodDeptStoreRoofCheckSaleChangeBlock
 	dbw MAPCALLBACK_OBJECTS, GoldenrodDeptStoreRoofCheckSaleChangeClerk
 
-GoldenrodDeptStoreRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 1, 13, 3, GOLDENROD_DEPT_STORE_6F
 

@@ -3,7 +3,6 @@ SeafoamIslandsB3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SeafoamIslandsB3F_MapEventHeader:
 	db 10 ; warps
 	warp_def 7, 37, 5, SEAFOAM_ISLANDS_B2F
 	warp_def 9, 25, 6, SEAFOAM_ISLANDS_B2F

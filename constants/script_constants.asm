@@ -40,7 +40,7 @@ RETVAR_ADDR_DE EQU (1 << 6)
 RETVAR_EXECUTE EQU (2 << 6)
 
 ; see engine/events.asm:PlayerEventScriptPointers
-const_value SET -1
+	const_def -1
 	const PLAYEREVENT_MAPSCRIPT
 	const PLAYEREVENT_NONE
 	const PLAYEREVENT_SEENBYTRAINER
@@ -121,7 +121,7 @@ EMOTE_MEM EQU -1
 
 ; fruit trees
 ; see engine/fruit_trees.asm:FruitTreeItems
-const_value SET 1
+	const_def 1
 	const FRUITTREE_ROUTE_29        ; 01
 	const FRUITTREE_ROUTE_30_1      ; 02
 	const FRUITTREE_ROUTE_30_2      ; 03
@@ -161,7 +161,7 @@ NUM_FRUIT_TREES EQU const_value +- 1
 
 ; hidden grottoes
 ; see engine/hidden_grottoes.asm:HiddenGrottoData
-const_value SET 1
+	const_def 1
 	const HIDDENGROTTO_ROUTE_32           ; 01
 	const HIDDENGROTTO_ROUTE_35           ; 02
 	const HIDDENGROTTO_LAKE_OF_RAGE       ; 03

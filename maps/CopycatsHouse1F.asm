@@ -3,7 +3,6 @@ CopycatsHouse1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CopycatsHouse1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 8, SAFFRON_CITY
 	warp_def 7, 3, 8, SAFFRON_CITY

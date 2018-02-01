@@ -4,7 +4,6 @@ Route7_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route7RebattleBreeder
 
-Route7_MapEventHeader:
 	db 2 ; warps
 	warp_def 6, 15, 1, ROUTE_7_SAFFRON_GATE
 	warp_def 7, 15, 2, ROUTE_7_SAFFRON_GATE
@@ -20,7 +19,7 @@ Route7_MapEventHeader:
 	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
 	itemball_event 1, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE7_BIG_SNORLAX
 
 Route7RebattleBreeder:

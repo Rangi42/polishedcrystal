@@ -3,7 +3,6 @@ CeladonHotelRoom1_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonHotelRoom1_MapEventHeader:
 	db 2 ; warps
 	warp_def 5, 3, 2, CELADON_HOTEL_2F
 	warp_def 5, 4, 2, CELADON_HOTEL_2F

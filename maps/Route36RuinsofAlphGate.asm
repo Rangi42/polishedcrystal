@@ -3,7 +3,6 @@ Route36RuinsofAlphGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route36RuinsofAlphGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 3, ROUTE_36
 	warp_def 0, 5, 4, ROUTE_36

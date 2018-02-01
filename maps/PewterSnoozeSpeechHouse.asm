@@ -3,7 +3,6 @@ PewterSnoozeSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PewterSnoozeSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 5, PEWTER_CITY
 	warp_def 7, 3, 5, PEWTER_CITY

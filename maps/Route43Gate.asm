@@ -5,7 +5,6 @@ Route43Gate_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
 
-Route43Gate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 4, ROUTE_43
 	warp_def 0, 5, 5, ROUTE_43
@@ -21,7 +20,7 @@ Route43Gate_MapEventHeader:
 	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
 	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE43GATE_ROCKET1
 	const ROUTE43GATE_ROCKET2
 

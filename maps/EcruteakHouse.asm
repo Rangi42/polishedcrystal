@@ -4,7 +4,6 @@ EcruteakHouse_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
 
-EcruteakHouse_MapEventHeader:
 	db 5 ; warps
 	warp_def 17, 4, 3, ECRUTEAK_CITY
 	warp_def 17, 5, 3, ECRUTEAK_CITY
@@ -24,7 +23,7 @@ EcruteakHouse_MapEventHeader:
 	person_event SPRITE_SAGE, 9, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x980b0, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 	person_event SPRITE_GRAMPS, 11, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x984ab, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 
-const_value set 1
+	const_def 1 ; person constants
 	const ECRUTEAKHOUSE_SAGE1
 	const ECRUTEAKHOUSE_SAGE2
 

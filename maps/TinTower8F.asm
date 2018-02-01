@@ -3,7 +3,6 @@ TinTower8F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-TinTower8F_MapEventHeader:
 	db 6 ; warps
 	warp_def 5, 0, 2, TIN_TOWER_7F
 	warp_def 11, 0, 1, TIN_TOWER_9F

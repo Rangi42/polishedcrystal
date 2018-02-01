@@ -3,7 +3,6 @@ CeladonMansion2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonMansion2F_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 0, 4, CELADON_MANSION_1F
 	warp_def 0, 1, 2, CELADON_MANSION_3F

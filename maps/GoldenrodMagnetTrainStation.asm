@@ -3,7 +3,6 @@ GoldenrodMagnetTrainStation_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodMagnetTrainStation_MapEventHeader:
 	db 4 ; warps
 	warp_def 17, 8, 5, GOLDENROD_CITY
 	warp_def 17, 9, 5, GOLDENROD_CITY
@@ -20,7 +19,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
 
 OfficerScript_0x550ec:

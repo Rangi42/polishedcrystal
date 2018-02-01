@@ -9,7 +9,7 @@
 	const PLACE_PARTYMON_EVO
 	const PLACE_PARTYMON_GENDER
 
-const_value SET 1
+	const_def 1
 	const MONMENU_CUT        ; 1
 	const MONMENU_FLY        ; 2
 	const MONMENU_SURF       ; 3

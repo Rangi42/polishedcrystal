@@ -3,7 +3,6 @@ BluesHouse2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BluesHouse2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 7, 3, BLUES_HOUSE_1F
 

@@ -5,7 +5,6 @@ RuinsofAlphOmanyteChamber_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58bf8
 
-RuinsofAlphOmanyteChamber_MapEventHeader:
 	db 5 ; warps
 	warp_def 9, 3, 3, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 3, RUINS_OF_ALPH_OUTSIDE

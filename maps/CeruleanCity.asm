@@ -4,7 +4,6 @@ CeruleanCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
 
-CeruleanCity_MapEventHeader:
 	db 11 ; warps
 	warp_def 11, 7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
 	warp_def 13, 28, 1, CERULEAN_POLICE_STATION
@@ -39,7 +38,7 @@ CeruleanCity_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 10, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	person_event SPRITE_BALL_CUT_FRUIT, 16, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
 
-const_value set 1
+	const_def 1 ; person constants
 	const CERULEANCITY_COOLTRAINER_F
 	const CERULEANCITY_YOUNGSTER
 

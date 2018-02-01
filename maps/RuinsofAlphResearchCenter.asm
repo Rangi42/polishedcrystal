@@ -6,7 +6,6 @@ RuinsofAlphResearchCenter_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
-RuinsofAlphResearchCenter_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 6, RUINS_OF_ALPH_OUTSIDE
 	warp_def 7, 3, 6, RUINS_OF_ALPH_OUTSIDE
@@ -24,7 +23,7 @@ RuinsofAlphResearchCenter_MapEventHeader:
 	person_event SPRITE_SCIENTIST, 2, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
 	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 
-const_value set 1
+	const_def 1 ; person constants
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST1
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3

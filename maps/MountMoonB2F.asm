@@ -3,7 +3,6 @@ MountMoonB2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MountMoonB2F_MapEventHeader:
 	db 4 ; warps
 	warp_def 24, 10, 4, MOUNT_MOON_B1F
 	warp_def 7, 21, 5, MOUNT_MOON_B1F

@@ -5,7 +5,6 @@ Route19_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, Route19ClearSmashRocks
 	dbw MAPCALLBACK_TILES, Route19ClearRocks
 
-Route19_MapEventHeader:
 	db 2 ; warps
 	warp_def 1, 7, 3, ROUTE_19_FUCHSIA_GATE
 	warp_def 13, 5, 1, ROUTE_19_BEACH_HOUSE
@@ -35,7 +34,7 @@ Route19_MapEventHeader:
 	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
 	tmhmball_event 52, 14, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE19_ROCK1
 
 Route19ClearSmashRocks:

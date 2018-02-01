@@ -4,7 +4,6 @@ ViridianCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, ViridianCityFlyPoint
 
-ViridianCity_MapEventHeader:
 	db 8 ; warps
 	warp_def 7, 32, 1, VIRIDIAN_GYM
 	warp_def 5, 21, 1, VIRIDIAN_NICKNAME_SPEECH_HOUSE

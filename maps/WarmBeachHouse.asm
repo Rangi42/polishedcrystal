@@ -3,7 +3,6 @@ WarmBeachHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-WarmBeachHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 3, WARM_BEACH
 	warp_def 7, 3, 3, WARM_BEACH

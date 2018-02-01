@@ -4,7 +4,6 @@ RockyBeach_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, RockyBeachRebattleBreeder
 
-RockyBeach_MapEventHeader:
 	db 3 ; warps
 	warp_def 20, 25, 1, ROCKY_BEACH_HOUSE
 	warp_def 10, 29, 1, NOISY_FOREST

@@ -3,7 +3,6 @@ UnionCaveB1FNorth_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-UnionCaveB1FNorth_MapEventHeader:
 	db 3 ; warps
 	warp_def 3, 3, 7, RUINS_OF_ALPH_OUTSIDE
 	warp_def 11, 3, 8, RUINS_OF_ALPH_OUTSIDE

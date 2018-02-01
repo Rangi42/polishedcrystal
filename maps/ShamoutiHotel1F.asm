@@ -4,7 +4,6 @@ ShamoutiHotel1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, ShamoutiHotel1FRestaurantTrigger
 
-ShamoutiHotel1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 7, 8, 2, SHAMOUTI_ISLAND
 	warp_def 7, 9, 2, SHAMOUTI_ISLAND

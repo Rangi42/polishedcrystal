@@ -4,7 +4,6 @@ SilverCaveOutside_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, SilverCaveOutsideFlyPoint
 
-SilverCaveOutside_MapEventHeader:
 	db 2 ; warps
 	warp_def 13, 23, 1, SILVER_CAVE_POKECENTER_1F
 	warp_def 5, 18, 1, SILVER_CAVE_ROOM_1

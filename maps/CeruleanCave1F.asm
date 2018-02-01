@@ -4,7 +4,6 @@ CeruleanCave1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, CeruleanCave1FTileScript
 
-CeruleanCave1F_MapEventHeader:
 	db 8 ; warps
 	warp_def 21, 27, 7, CERULEAN_CITY
 	warp_def 5, 9, 1, CERULEAN_CAVE_2F

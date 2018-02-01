@@ -5,7 +5,6 @@ DimCave4F_MapScriptHeader:
 	dbw MAPCALLBACK_TILES, DimCave4FBouldersLand
 	dbw MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
-DimCave4F_MapEventHeader:
 	db 6 ; warps
 	warp_def 16, 2, 2, DIM_CAVE_5F
 	warp_def 29, 27, 3, DIM_CAVE_5F
@@ -30,7 +29,7 @@ DimCave4F_MapEventHeader:
 	itemball_event 8, 27, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
 	itemball_event 23, 6, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
-const_value set 1
+	const_def 1 ; person constants
 	const DIMCAVE4F_BOULDER
 
 DimCave4FBouldersLand:

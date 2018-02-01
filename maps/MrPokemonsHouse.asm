@@ -4,7 +4,6 @@ MrPokemonsHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MrPokemonsHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, ROUTE_30
 	warp_def 7, 3, 2, ROUTE_30
@@ -23,7 +22,7 @@ MrPokemonsHouse_MapEventHeader:
 	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
 
-const_value set 1
+	const_def 1 ; person constants
 	const MRPOKEMONSHOUSE_GENTLEMAN
 	const MRPOKEMONSHOUSE_OAK
 	const MRPOKEMONSHOUSE_POKEDEX

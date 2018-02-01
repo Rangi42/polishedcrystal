@@ -3,7 +3,6 @@ DanceTheatre_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-DanceTheatre_MapEventHeader:
 	db 2 ; warps
 	warp_def 13, 5, 8, ECRUTEAK_CITY
 	warp_def 13, 6, 8, ECRUTEAK_CITY

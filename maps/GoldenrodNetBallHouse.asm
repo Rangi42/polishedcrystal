@@ -3,7 +3,6 @@ GoldenrodNetBallHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodNetBallHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 19, GOLDENROD_CITY
 	warp_def 7, 3, 19, GOLDENROD_CITY

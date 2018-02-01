@@ -5,7 +5,6 @@ RuinsofAlphInnerChamber_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RuinsofAlphInnerChamber_MapEventHeader:
 	db 9 ; warps
 	warp_def 13, 10, 3, RUINS_OF_ALPH_ENTRANCE_CHAMBER
 	warp_def 15, 3, 3, RUINS_OF_ALPH_HO_OH_CHAMBER

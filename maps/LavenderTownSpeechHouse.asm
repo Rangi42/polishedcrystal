@@ -3,7 +3,6 @@ LavenderTownSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LavenderTownSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 3, LAVENDER_TOWN
 	warp_def 7, 3, 3, LAVENDER_TOWN

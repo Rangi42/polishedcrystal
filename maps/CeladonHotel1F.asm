@@ -3,7 +3,6 @@ CeladonHotel1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonHotel1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 7, 3, 11, CELADON_CITY
 	warp_def 7, 4, 11, CELADON_CITY
@@ -23,7 +22,7 @@ CeladonHotel1F_MapEventHeader:
 	person_event SPRITE_LADY, 4, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FLadyText, -1
 	person_event SPRITE_COOLTRAINER_F, 6, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel1FCooltrainerFText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const CELADONHOTEL1F_RICH_BOY
 
 CeladonHotel1FRichBoyGeraldScript:

@@ -5,7 +5,6 @@ LancesRoom_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, LancesRoomDoorCallback
 
-LancesRoom_MapEventHeader:
 	db 4 ; warps
 	warp_def 23, 4, 3, KARENS_ROOM
 	warp_def 23, 5, 4, KARENS_ROOM
@@ -23,7 +22,7 @@ LancesRoom_MapEventHeader:
 	person_event SPRITE_BUENA, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 	person_event SPRITE_OAK, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 
-const_value set 1
+	const_def 1 ; person constants
 	const LANCESROOM_LANCE
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK

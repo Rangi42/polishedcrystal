@@ -3,7 +3,6 @@ LavenderNameRater_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LavenderNameRater_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 4, LAVENDER_TOWN
 	warp_def 7, 3, 4, LAVENDER_TOWN

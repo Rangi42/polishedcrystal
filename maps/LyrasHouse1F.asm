@@ -3,7 +3,6 @@ LyrasHouse1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LyrasHouse1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 4, NEW_BARK_TOWN
 	warp_def 7, 3, 4, NEW_BARK_TOWN

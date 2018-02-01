@@ -3,7 +3,6 @@ BeautifulBeach_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BeautifulBeach_MapEventHeader:
 	db 3 ; warps
 	warp_def 23, 11, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
 	warp_def 23, 12, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE

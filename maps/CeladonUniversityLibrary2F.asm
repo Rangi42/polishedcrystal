@@ -3,7 +3,6 @@ CeladonUniversityLibrary2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityLibrary2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 7, 3, CELADON_UNIVERSITY_LIBRARY_1F
 

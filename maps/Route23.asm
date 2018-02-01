@@ -3,7 +3,6 @@ Route23_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route23_MapEventHeader:
 	db 4 ; warps
 	warp_def 135, 7, 5, POKEMON_LEAGUE_GATE
 	warp_def 135, 8, 6, POKEMON_LEAGUE_GATE

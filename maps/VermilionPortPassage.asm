@@ -3,7 +3,6 @@ VermilionPortPassage_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VermilionPortPassage_MapEventHeader:
 	db 5 ; warps
 	warp_def 22, 3, 8, VERMILION_CITY
 	warp_def 22, 4, 9, VERMILION_CITY

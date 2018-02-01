@@ -4,7 +4,6 @@ Route29_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route29Tuscany
 
-Route29_MapEventHeader:
 	db 1 ; warps
 	warp_def 1, 27, 3, ROUTE_29_46_GATE
 
@@ -29,7 +28,7 @@ Route29_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 4, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
 	itemball_event 2, 48, POTION, 1, EVENT_ROUTE_29_POTION
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE29_LYRA
 	const ROUTE29_TUSCANY
 

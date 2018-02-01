@@ -4,7 +4,6 @@ BlackthornGym1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, BlackthornGym1FBoulderCallback
 
-BlackthornGym1F_MapEventHeader:
 	db 7 ; warps
 	warp_def 17, 4, 1, BLACKTHORN_CITY
 	warp_def 17, 5, 1, BLACKTHORN_CITY

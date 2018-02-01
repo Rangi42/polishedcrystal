@@ -3,7 +3,6 @@ Route6_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route6_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 21, 1, ROUTE_6_UNDERGROUND_ENTRANCE
 	warp_def 1, 10, 3, ROUTE_6_SAFFRON_GATE

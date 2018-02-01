@@ -4,7 +4,6 @@ Route36_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route36ArthurCallback
 
-Route36_MapEventHeader:
 	db 6 ; warps
 	warp_def 8, 22, 3, ROUTE_36_NATIONAL_PARK_GATE
 	warp_def 9, 22, 4, ROUTE_36_NATIONAL_PARK_GATE
@@ -36,7 +35,7 @@ Route36_MapEventHeader:
 	fruittree_event 4, 25, FRUITTREE_ROUTE_36, RAWST_BERRY
 	person_event SPRITE_TWIN, 5, 50, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE36_WEIRD_TREE
 	const ROUTE36_ARTHUR
 	const ROUTE36_FLORIA

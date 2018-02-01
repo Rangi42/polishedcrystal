@@ -4,7 +4,6 @@ VermilionGym_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, VermilionGymDoorsScript
 
-VermilionGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 17, 4, 7, VERMILION_CITY
 	warp_def 17, 5, 7, VERMILION_CITY
@@ -42,7 +41,7 @@ VermilionGym_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristfJanet, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, VermilionGymGuyScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const VERMILIONGYM_FENCE_1_LEFT
 	const VERMILIONGYM_FENCE_1_RIGHT
 	const VERMILIONGYM_FENCE_2_LEFT

@@ -3,7 +3,6 @@ SoulHouseB2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SoulHouseB2F_MapEventHeader:
 	db 3 ; warps
 	warp_def 15, 17, 2, SOUL_HOUSE_B1F
 	warp_def 15, 3, 3, SOUL_HOUSE_B1F

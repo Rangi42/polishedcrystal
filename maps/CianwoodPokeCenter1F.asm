@@ -3,7 +3,6 @@ CianwoodPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CianwoodPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 3, CIANWOOD_CITY
 	warp_def 7, 6, 3, CIANWOOD_CITY

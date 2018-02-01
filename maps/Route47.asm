@@ -4,7 +4,6 @@ Route47_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Route47TileScript
 
-Route47_MapEventHeader:
 	db 6 ; warps
 	warp_def 21, 67, 2, CLIFF_EDGE_GATE
 	warp_def 21, 53, 1, CLIFF_CAVE

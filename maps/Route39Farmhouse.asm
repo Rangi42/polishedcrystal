@@ -3,7 +3,6 @@ Route39Farmhouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route39Farmhouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, ROUTE_39
 	warp_def 7, 3, 2, ROUTE_39

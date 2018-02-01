@@ -3,7 +3,6 @@ Route27RestHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route27RestHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, ROUTE_27
 	warp_def 7, 3, 1, ROUTE_27

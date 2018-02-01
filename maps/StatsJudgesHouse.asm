@@ -3,7 +3,6 @@ StatsJudgesHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-StatsJudgesHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 7, CIANWOOD_CITY
 	warp_def 7, 3, 7, CIANWOOD_CITY

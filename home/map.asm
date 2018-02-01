@@ -372,56 +372,35 @@ CheckIndoorMap:: ; 22f4
 LoadMapAttributes:: ; 2309
 	call CopyMapHeaders
 	call SwitchToMapScriptHeaderBank
-	call ReadMapScripts
-	xor a
-	jp ReadMapEventHeader
+	xor a ; FALSE
+	jr ReadMapScripts
 ; 2317
 
 LoadMapAttributes_SkipPeople:: ; 2317
 	call CopyMapHeaders
 	call SwitchToMapScriptHeaderBank
-	call ReadMapScripts
-	ld a, $1
-	jp ReadMapEventHeader
-; 2326
-
-CopyMapHeaders:: ; 2326
-	call PartiallyCopyMapHeader
-	call SwitchToMapBank
-	call GetSecondaryMapHeaderPointer
-	call CopySecondMapHeader
-	jp GetMapConnections
-; 2336
-
-ReadMapEventHeader:: ; 2336
-	push af
-	ld hl, MapEventHeaderPointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	call ReadWarps
-	call ReadCoordEvents
-	call ReadSignposts
-
-	pop af
-	and a
-	ret nz
-
-	jp ReadObjectEvents
-; 234f
-
+	ld a, TRUE
+	; fallthrough
 ReadMapScripts:: ; 234f
+	push af
 	ld hl, MapScriptHeaderPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	call ReadMapTriggers
-	jp ReadMapCallbacks
+	call ReadMapCallbacks
+	call ReadWarps
+	call ReadCoordEvents
+	call ReadSignposts
+	pop af
+	and a
+	ret nz
+	jp ReadObjectEvents
 ; 235c
 
 CopySecondMapHeader:: ; 235c
 	ld de, MapHeader
-	ld c, 12 ; size of the second map header
+	ld c, 10 ; size of the second map header
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -431,6 +410,12 @@ CopySecondMapHeader:: ; 235c
 	ret
 ; 2368
 
+CopyMapHeaders:: ; 2326
+	call PartiallyCopyMapHeader
+	call SwitchToMapBank
+	call GetSecondaryMapHeaderPointer
+	call CopySecondMapHeader
+	; fallthrough
 GetMapConnections:: ; 2368
 	ld a, $ff
 	ld [NorthConnectedMapGroup], a
@@ -635,40 +620,42 @@ ClearObjectStructs:: ; 2471
 RestoreFacingAfterWarp:: ; 248a
 	call SwitchToMapScriptHeaderBank
 
-	ld hl, MapEventHeaderPointer
+	ld hl, MapScriptHeaderPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	inc hl ; get to the warp coords
+
+	; get to the warp coords
+	ld a, [hli] ; get map trigger count
+	ld bc, 2 ; size of an entry in the map trigger table
+	call AddNTimes
+	ld a, [hli] ; get callback count
+	ld bc, 3 ; size of an entry in the callback table
+	call AddNTimes
+	inc hl ; skip warp count
 	ld a, [WarpNumber]
 	dec a
-	ld c, a
-	ld b, 0
-	ld a, 5
+	ld bc, 5 ; size of an entry in the warps table
 	call AddNTimes
+
 	ld a, [hli]
 	ld [YCoord], a
 	ld a, [hli]
 	ld [XCoord], a
-	; destination warp number
 	ld a, [hli]
 	cp -1
 	jr nz, .skip
-	call .backup
 
-.skip
-	farjp GetCoordOfUpperLeftCorner
-; 24ba
-
-.backup
 	ld a, [wPrevWarp]
 	ld [BackupWarpNumber], a
 	ld a, [wPrevMapGroup]
 	ld [BackupMapGroup], a
 	ld a, [wPrevMapNumber]
 	ld [BackupMapNumber], a
-	ret
-; 24cd
+
+.skip
+	farjp GetCoordOfUpperLeftCorner
+; 24ba
 
 LoadBlockData:: ; 24cd
 	ld hl, OverworldMap

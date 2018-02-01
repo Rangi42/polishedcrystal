@@ -3,7 +3,6 @@ OlivineCafe_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivineCafe_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 4, 6, OLIVINE_CITY
 	warp_def 7, 5, 6, OLIVINE_CITY
@@ -21,7 +20,7 @@ OlivineCafe_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCafeYoungsterText, -1
 	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCafeFisherText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const OLIVINECAFE_BAKER
 	const OLIVINECAFE_LYRA
 

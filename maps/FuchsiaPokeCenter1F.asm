@@ -3,7 +3,6 @@ FuchsiaPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FuchsiaPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 4, FUCHSIA_CITY
 	warp_def 7, 6, 4, FUCHSIA_CITY
@@ -20,7 +19,7 @@ FuchsiaPokeCenter1F_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerMText, -1
 	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerFText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR
 
 PokemonJournalJanineScript:

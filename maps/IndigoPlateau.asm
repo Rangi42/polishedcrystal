@@ -4,7 +4,6 @@ IndigoPlateau_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, IndigoPlateauFlyPoint
 
-IndigoPlateau_MapEventHeader:
 	db 2 ; warps
 	warp_def 5, 9, 1, INDIGO_PLATEAU_POKECENTER_1F
 	warp_def 5, 10, 2, INDIGO_PLATEAU_POKECENTER_1F

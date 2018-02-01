@@ -3,7 +3,6 @@ ScaryCave1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ScaryCave1F_MapEventHeader:
 	db 5 ; warps
 	warp_def 31, 33, 1, URAGA_CHANNEL_EAST
 	warp_def 31, 11, 1, URAGA_CHANNEL_WEST
@@ -33,7 +32,7 @@ ScaryCave1F_MapEventHeader:
 	itemball_event 23, 28, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
 	itemball_event 29, 3, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
 
-const_value set 1
+	const_def 1 ; person constants
 	const SCARYCAVE1F_MIRA
 
 ScaryCave1FMiraScript:

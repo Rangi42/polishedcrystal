@@ -4,7 +4,6 @@ BattleTowerBattleRoom_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BattleTowerBattleRoom_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 4, BATTLE_TOWER_HALLWAY
 	warp_def 7, 4, 4, BATTLE_TOWER_HALLWAY
@@ -17,7 +16,7 @@ BattleTowerBattleRoom_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 0, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
 	person_event SPRITE_RECEPTIONIST, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const BATTLETOWERBATTLEROOM_OPPONENT
 	const BATTLETOWERBATTLEROOM_RECEPTIONIST
 

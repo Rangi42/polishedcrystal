@@ -3,7 +3,6 @@ Route12SuperRodHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route12SuperRodHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, ROUTE_12_SOUTH
 	warp_def 7, 3, 1, ROUTE_12_SOUTH

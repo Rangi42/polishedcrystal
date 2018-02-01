@@ -3,7 +3,6 @@ Route49_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route49_MapEventHeader:
 	db 1 ; warps
 	warp_def 5, 7, 1, VALENCIA_PORT
 

@@ -4,7 +4,6 @@ LavRadioTower1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, LavRadioTower1FUpstairsScript
 
-LavRadioTower1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 7, LAVENDER_TOWN
 	warp_def 7, 3, 7, LAVENDER_TOWN

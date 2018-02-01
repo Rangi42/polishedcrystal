@@ -4,7 +4,6 @@ Route18West_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
-Route18West_MapEventHeader:
 	db 2 ; warps
 	warp_def 6, 19, 1, ROUTE_18_GATE
 	warp_def 7, 19, 2, ROUTE_18_GATE

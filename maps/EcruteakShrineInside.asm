@@ -3,7 +3,6 @@ EcruteakShrineInside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-EcruteakShrineInside_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 5, 1, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def 11, 6, 1, ECRUTEAK_SHRINE_OUTSIDE
@@ -21,7 +20,7 @@ EcruteakShrineInside_MapEventHeader:
 	person_event SPRITE_GRANNY, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
 	person_event SPRITE_FURRET, 3, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ECRUTEAKSHRINEINSIDE_REI
 
 EcruteakShrineInsideReiScript:

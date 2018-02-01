@@ -3,7 +3,6 @@ Route32Coast_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route32Coast_MapEventHeader:
 	db 2 ; warps
 	warp_def 57, 4, 4, UNION_CAVE_B1F_SOUTH
 	warp_def 51, 17, 1, ROUTE_32_COAST_HOUSE

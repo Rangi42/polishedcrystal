@@ -3,7 +3,6 @@ GoldenrodPokeComCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodPokeComCenter1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 15, 6, 15, GOLDENROD_CITY
 	warp_def 15, 7, 15, GOLDENROD_CITY

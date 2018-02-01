@@ -4,7 +4,6 @@ DragonsDenB1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, DragonsDenB1FSilverCallback
 
-DragonsDenB1F_MapEventHeader:
 	db 2 ; warps
 	warp_def 3, 20, 3, DRAGONS_DEN_1F
 	warp_def 29, 19, 1, DRAGON_SHRINE
@@ -31,7 +30,7 @@ DragonsDenB1F_MapEventHeader:
 	itemball_event 4, 30, CALCIUM, 1, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	itemball_event 20, 5, MAX_ELIXER, 1, EVENT_DRAGONS_DEN_B1F_MAX_ELIXER
 
-const_value set 1
+	const_def 1 ; person constants
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
 

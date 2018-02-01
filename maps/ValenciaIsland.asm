@@ -3,7 +3,6 @@ ValenciaIsland_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ValenciaIsland_MapEventHeader:
 	db 3 ; warps
 	warp_def 19, 18, 1, IVYS_LAB
 	warp_def 19, 5, 1, IVYS_HOUSE

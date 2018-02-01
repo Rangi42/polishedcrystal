@@ -3,7 +3,6 @@ SproutTower1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SproutTower1F_MapEventHeader:
 	db 5 ; warps
 	warp_def 15, 7, 7, VIOLET_CITY
 	warp_def 15, 8, 7, VIOLET_CITY

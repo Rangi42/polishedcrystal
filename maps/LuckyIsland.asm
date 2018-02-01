@@ -4,7 +4,6 @@ LuckyIsland_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
-LuckyIsland_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers
@@ -22,7 +21,7 @@ LuckyIsland_MapEventHeader:
 	person_event SPRITE_LADY, 12, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
 	fruittree_event 16, 25, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, EVENT_LUCKY_ISLAND_CIVILIANS
 
-const_value set 1
+	const_def 1 ; person constants
 	const LUCKYISLAND_POKE_BALL
 
 Script_ChangeLuckyIslandMap:

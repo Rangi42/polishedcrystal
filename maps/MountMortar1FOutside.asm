@@ -3,7 +3,6 @@ MountMortar1FOutside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MountMortar1FOutside_MapEventHeader:
 	db 9 ; warps
 	warp_def 33, 3, 3, ROUTE_42
 	warp_def 33, 17, 4, ROUTE_42

@@ -3,7 +3,6 @@ AzaleaPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-AzaleaPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 1, AZALEA_TOWN
 	warp_def 7, 6, 1, AZALEA_TOWN

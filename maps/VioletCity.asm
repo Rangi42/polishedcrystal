@@ -4,7 +4,6 @@ VioletCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, VioletCityFlyPoint
 
-VioletCity_MapEventHeader:
 	db 11 ; warps
 	warp_def 21, 9, 2, VIOLET_MART
 	warp_def 21, 18, 1, VIOLET_GYM
@@ -43,7 +42,7 @@ VioletCity_MapEventHeader:
 	itemball_event 6, 10, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
 	itemball_event 12, 35, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
 
-const_value set 1
+	const_def 1 ; person constants
 	const VIOLETCITY_EARL
 
 VioletCityFlyPoint:

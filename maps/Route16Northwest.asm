@@ -3,7 +3,6 @@ Route16Northwest_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route16Northwest_MapEventHeader:
 	db 3 ; warps
 	warp_def 1, 1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
 	warp_def 4, 9, 1, ROUTE_16_GATE

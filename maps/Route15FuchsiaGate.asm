@@ -3,7 +3,6 @@ Route15FuchsiaGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route15FuchsiaGate_MapEventHeader:
 	db 5 ; warps
 	warp_def 5, 0, 7, FUCHSIA_CITY
 	warp_def 6, 0, 8, FUCHSIA_CITY

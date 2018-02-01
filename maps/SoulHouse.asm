@@ -3,7 +3,6 @@ SoulHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SoulHouse_MapEventHeader:
 	db 3 ; warps
 	warp_def 9, 4, 6, LAVENDER_TOWN
 	warp_def 9, 5, 6, LAVENDER_TOWN
@@ -20,7 +19,7 @@ SoulHouse_MapEventHeader:
 	person_event SPRITE_LASS, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7edb1, -1
 	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eddb, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const SOULHOUSE_AGATHA
 
 AgathaScript:

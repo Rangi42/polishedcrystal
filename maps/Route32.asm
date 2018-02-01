@@ -5,7 +5,6 @@ Route32_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, Route32FlyPoint
 	dbw MAPCALLBACK_OBJECTS, Route32Frieda
 
-Route32_MapEventHeader:
 	db 5 ; warps
 	warp_def 73, 11, 1, ROUTE_32_POKECENTER_1F
 	warp_def 2, 4, 3, ROUTE_32_RUINS_OF_ALPH_GATE
@@ -49,7 +48,7 @@ Route32_MapEventHeader:
 	cuttree_event 29, -1, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
 	cuttree_event 32, 23, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA

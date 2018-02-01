@@ -3,7 +3,6 @@ Route13East_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route13East_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers

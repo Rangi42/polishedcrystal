@@ -4,7 +4,6 @@ ValeriesHouse_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
-ValeriesHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 12, ECRUTEAK_CITY
 	warp_def 7, 4, 12, ECRUTEAK_CITY
@@ -24,7 +23,7 @@ ValeriesHouse_MapEventHeader:
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
 	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
 
-const_value set 1
+	const_def 1 ; person constants
 	const VALERIESHOUSE_VALERIE
 	const VALERIESHOUSE_RED_FAIRY_BOOK
 	const VALERIESHOUSE_BLUE_FAIRY_BOOK

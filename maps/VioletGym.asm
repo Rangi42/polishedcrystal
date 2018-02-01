@@ -4,7 +4,6 @@ VioletGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VioletGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 15, 4, 2, VIOLET_CITY
 	warp_def 15, 5, 2, VIOLET_CITY
@@ -22,7 +21,7 @@ VioletGym_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 10, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperAbe, EVENT_VIOLET_GYM_FALKNER
 	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletGymGuyScript, EVENT_VIOLET_GYM_FALKNER
 
-const_value set 1
+	const_def 1 ; person constants
 	const VIOLETGYM_GYM_GUY2
 
 VioletGymTrigger0:

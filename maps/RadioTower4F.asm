@@ -3,7 +3,6 @@ RadioTower4F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RadioTower4F_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 0, 1, RADIO_TOWER_5F
 	warp_def 0, 9, 2, RADIO_TOWER_3F
@@ -25,7 +24,7 @@ RadioTower4F_MapEventHeader:
 	person_event SPRITE_ROCKET_GIRL, 4, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	person_event SPRITE_SCIENTIST, 2, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
-const_value set 1
+	const_def 1 ; person constants
 	const RADIOTOWER4F_ROCKET
 
 MaryScript_0x5eb85:

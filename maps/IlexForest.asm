@@ -6,7 +6,6 @@ IlexForest_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
 
-IlexForest_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 3, 3, ROUTE_34_ILEX_FOREST_GATE
 	warp_def 44, 5, 1, ILEX_FOREST_AZALEA_GATE
@@ -41,7 +40,7 @@ IlexForest_MapEventHeader:
 	itemball_event 17, 25, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
 	itemball_event 3, 29, MULCH, 1, EVENT_ILEX_FOREST_MULCH
 
-const_value set 1
+	const_def 1 ; person constants
 	const ILEXFOREST_FARFETCHD
 	const ILEXFOREST_BLACK_BELT
 	const ILEXFOREST_KURT

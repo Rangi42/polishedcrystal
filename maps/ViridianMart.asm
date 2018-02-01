@@ -3,7 +3,6 @@ ViridianMart_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ViridianMart_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 4, VIRIDIAN_CITY
 	warp_def 7, 3, 4, VIRIDIAN_CITY

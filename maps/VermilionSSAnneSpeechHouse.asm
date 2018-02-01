@@ -3,7 +3,6 @@ VermilionSSAnneSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VermilionSSAnneSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 14, VERMILION_CITY
 	warp_def 7, 3, 14, VERMILION_CITY

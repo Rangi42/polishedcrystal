@@ -4,7 +4,6 @@ CopycatsHouse2F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
 
-CopycatsHouse2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 3, 3, COPYCATS_HOUSE_1F
 
@@ -20,7 +19,7 @@ CopycatsHouse2F_MapEventHeader:
 	person_event SPRITE_GENGAR, 1, 2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
 	person_event SPRITE_MURKROW, 1, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const COPYCATSHOUSE2F_COPYCAT1
 	const COPYCATSHOUSE2F_COPYCAT2
 

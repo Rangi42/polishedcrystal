@@ -3,7 +3,6 @@ Route20_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route20_MapEventHeader:
 	db 2 ; warps
 	warp_def 9, 62, 1, SEAFOAM_ISLANDS_1F
 	warp_def 5, 54, 4, SEAFOAM_ISLANDS_1F

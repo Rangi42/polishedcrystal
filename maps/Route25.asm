@@ -3,7 +3,6 @@ Route25_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route25_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers
@@ -25,7 +24,7 @@ Route25_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 4, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route25MewYoungsterText, -1
 	person_event SPRITE_SLOWPOKE, 4, 21, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route25SlowpokeScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE25_COOLTRAINERM_BEFORE
 	const ROUTE25_COOLTRAINERM_AFTER
 

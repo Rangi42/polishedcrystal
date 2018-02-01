@@ -3,7 +3,6 @@ RockyBeachHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RockyBeachHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, ROCKY_BEACH
 	warp_def 7, 3, 1, ROCKY_BEACH

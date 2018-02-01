@@ -3,7 +3,6 @@ IceIslandRoof_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-IceIslandRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 3, 2, ICE_ISLAND
 
@@ -14,7 +13,7 @@ IceIslandRoof_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_BLANCHE, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
 
-const_value set 1
+	const_def 1 ; person constants
 	const ICEISLANDROOF_BLANCHE
 
 IceIslandRoofBlancheScript:

@@ -9,7 +9,6 @@ CURRENT_MAP_HEIGHT = \2_HEIGHT
 	dw \1_BlockData
 	db BANK(\1_MapScriptHeader)
 	dw \1_MapScriptHeader
-	dw \1_MapEventHeader
 	db \4
 ENDM
 

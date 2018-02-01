@@ -3,7 +3,6 @@ TohjoFalls_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-TohjoFalls_MapEventHeader:
 	db 3 ; warps
 	warp_def 15, 13, 2, ROUTE_27
 	warp_def 15, 25, 3, ROUTE_27

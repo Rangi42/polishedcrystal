@@ -3,7 +3,6 @@ SproutTower3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SproutTower3F_MapEventHeader:
 	db 1 ; warps
 	warp_def 14, 8, 4, SPROUT_TOWER_2F
 
@@ -27,7 +26,7 @@ SproutTower3F_MapEventHeader:
 	itemball_event 14, 4, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
 	itemball_event 1, 12, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 
-const_value set 1
+	const_def 1 ; person constants
 	const SPROUTTOWER3F_SILVER
 
 UnknownScript_0x184947:

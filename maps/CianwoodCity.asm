@@ -4,7 +4,6 @@ CianwoodCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CianwoodCityFlyPointAndSuicune
 
-CianwoodCity_MapEventHeader:
 	db 8 ; warps
 	warp_def 41, 17, 1, MANIAS_HOUSE
 	warp_def 43, 8, 1, CIANWOOD_GYM
@@ -45,7 +44,7 @@ CianwoodCity_MapEventHeader:
 	person_event SPRITE_SAILOR, 25, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCitySailorText, -1
 	person_event SPRITE_FISHER, 32, 22, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCityFisherText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const CIANWOODCITY_EUSINE
 	const CIANWOODCITY_SUICUNE
 

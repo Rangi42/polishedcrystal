@@ -3,7 +3,6 @@ OlivineLighthouse3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivineLighthouse3F_MapEventHeader:
 	db 9 ; warps
 	warp_def 3, 13, 1, OLIVINE_LIGHTHOUSE_4F
 	warp_def 3, 5, 2, OLIVINE_LIGHTHOUSE_2F
@@ -26,7 +25,7 @@ OlivineLighthouse3F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
 	itemball_event 2, 8, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
 
-const_value set 1
+	const_def 1 ; person constants
 	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
 
 OlivineLighthouse3FBattleGirlEmy:

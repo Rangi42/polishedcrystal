@@ -5,7 +5,6 @@ WillsRoom_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, WillsRoomDoorCallback
 
-WillsRoom_MapEventHeader:
 	db 3 ; warps
 	warp_def 17, 5, 4, INDIGO_PLATEAU_POKECENTER_1F
 	warp_def 2, 4, 1, KOGAS_ROOM

@@ -4,7 +4,6 @@ SilphCo1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_SPRITES, SilphCo1FMoveOfficerCallback
 
-SilphCo1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 7, SAFFRON_CITY
 	warp_def 7, 3, 7, SAFFRON_CITY
@@ -20,7 +19,7 @@ SilphCo1F_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const SILPHCO1F_OFFICER
 
 SilphCo1FMoveOfficerCallback:

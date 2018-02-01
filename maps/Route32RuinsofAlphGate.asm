@@ -3,7 +3,6 @@ Route32RuinsofAlphGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route32RuinsofAlphGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 10, RUINS_OF_ALPH_OUTSIDE
 	warp_def 5, 0, 11, RUINS_OF_ALPH_OUTSIDE

@@ -4,7 +4,6 @@ BattleTower1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BattleTower1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 13, 10, 3, BATTLE_TOWER_OUTSIDE
 	warp_def 13, 11, 4, BATTLE_TOWER_OUTSIDE
@@ -27,7 +26,7 @@ BattleTower1F_MapEventHeader:
 	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
 	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const BATTLETOWER1F_RECEPTIONIST
 
 BattleTower1FTrigger0:

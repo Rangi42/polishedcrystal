@@ -3,7 +3,6 @@ GoldenrodPokeComCenterOffice_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodPokeComCenterOffice_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 0, 3, GOLDENROD_POKECOM_CENTER_1F
 	warp_def 7, 1, 3, GOLDENROD_POKECOM_CENTER_1F
@@ -21,7 +20,7 @@ GoldenrodPokeComCenterOffice_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
 	person_event SPRITE_PHARMACIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
 AdminRangiText:

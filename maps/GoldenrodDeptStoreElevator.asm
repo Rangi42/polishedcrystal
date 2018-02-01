@@ -3,7 +3,6 @@ GoldenrodDeptStoreElevator_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-GoldenrodDeptStoreElevator_MapEventHeader:
 	db 2 ; warps
 	warp_def 3, 1, -1, GOLDENROD_DEPT_STORE_1F
 	warp_def 3, 2, -1, GOLDENROD_DEPT_STORE_1F

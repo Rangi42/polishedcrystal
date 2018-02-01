@@ -6,7 +6,6 @@ RuinsofAlphOutside_MapScriptHeader:
 	dbw MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
-RuinsofAlphOutside_MapEventHeader:
 	db 12 ; warps
 	warp_def 23, 4, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
 	warp_def 13, 16, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
@@ -47,7 +46,7 @@ RuinsofAlphOutside_MapEventHeader:
 	smashrock_event 13, 7
 	smashrock_event 15, 8
 
-const_value set 1
+	const_def 1 ; person constants
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 

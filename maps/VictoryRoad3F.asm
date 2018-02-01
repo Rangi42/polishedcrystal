@@ -3,7 +3,6 @@ VictoryRoad3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VictoryRoad3F_MapEventHeader:
 	db 3 ; warps
 	warp_def 5, 2, 3, VICTORY_ROAD_2F
 	warp_def 11, 15, 4, VICTORY_ROAD_2F

@@ -3,7 +3,6 @@ CeladonUniversityLounge_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityLounge_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 4, 10, CELADON_UNIVERSITY_1F
 	warp_def 11, 5, 10, CELADON_UNIVERSITY_1F
@@ -23,7 +22,7 @@ CeladonUniversityLounge_MapEventHeader:
 	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd1Text, -1
 	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd2Text, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const CELADONUNIVERSITYLOUNGE_NEESHA
 
 CeladonUniversityLoungeNeeshaScript:

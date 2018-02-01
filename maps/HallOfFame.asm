@@ -4,7 +4,6 @@ HallOfFame_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-HallOfFame_MapEventHeader:
 	db 2 ; warps
 	warp_def 13, 4, 3, LANCES_ROOM
 	warp_def 13, 5, 4, LANCES_ROOM
@@ -16,7 +15,7 @@ HallOfFame_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_LANCE, 12, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const HALLOFFAME_LANCE
 
 HallOfFameEntranceTrigger:

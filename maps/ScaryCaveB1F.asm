@@ -3,7 +3,6 @@ ScaryCaveB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ScaryCaveB1F_MapEventHeader:
 	db 2 ; warps
 	warp_def 19, 5, 3, SCARY_CAVE_1F
 	warp_def 3, 19, 4, SCARY_CAVE_1F

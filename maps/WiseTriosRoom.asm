@@ -4,7 +4,6 @@ WiseTriosRoom_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x98574
 
-WiseTriosRoom_MapEventHeader:
 	db 3 ; warps
 	warp_def 4, 7, 1, BELLCHIME_TRAIL
 	warp_def 5, 7, 2, BELLCHIME_TRAIL
@@ -23,7 +22,7 @@ WiseTriosRoom_MapEventHeader:
 	person_event SPRITE_ELDER, 6, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderMasa, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 	person_event SPRITE_ELDER, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerElderKoji, EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 
-const_value set 1
+	const_def 1 ; person constants
 	const WISETRIOSROOM_ELDER1
 	const WISETRIOSROOM_ELDER2
 	const WISETRIOSROOM_ELDER3

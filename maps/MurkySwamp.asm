@@ -3,7 +3,6 @@ MurkySwamp_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MurkySwamp_MapEventHeader:
 	db 3 ; warps
 	warp_def 35, 7, 1, STORMY_BEACH
 	warp_def 35, 8, 2, STORMY_BEACH
@@ -34,7 +33,7 @@ MurkySwamp_MapEventHeader:
 	cuttree_event 14, 2, EVENT_MURKY_SWAMP_CUT_TREE_1
 	cuttree_event 19, 6, EVENT_MURKY_SWAMP_CUT_TREE_2
 
-const_value set 1
+	const_def 1 ; person constants
 	const MURKYSWAMP_CHERYL
 
 MurkySwampCherylScript:

@@ -3,7 +3,6 @@ SeafoamIslandsB4F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SeafoamIslandsB4F_MapEventHeader:
 	db 6 ; warps
 	warp_def 3, 3, 5, SEAFOAM_ISLANDS_B3F
 	warp_def 11, 7, 6, SEAFOAM_ISLANDS_B3F
@@ -23,7 +22,7 @@ SeafoamIslandsB4F_MapEventHeader:
 	itemball_event 7, 33, NEVERMELTICE, 1, EVENT_SEAFOAM_ISLANDS_B4F_NEVERMELTICE
 	itemball_event 2, 23, ULTRA_BALL, 1, EVENT_SEAFOAM_ISLANDS_B4F_ULTRA_BALL
 
-const_value set 1
+	const_def 1 ; person constants
 	const SEAFOAMISLANDSB4F_ARTICUNO
 	const SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	const SEAFOAMISLANDSB4F_LAWRENCE

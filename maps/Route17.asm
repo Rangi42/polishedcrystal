@@ -4,7 +4,6 @@ Route17_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
 
-Route17_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers

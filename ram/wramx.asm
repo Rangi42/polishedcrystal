@@ -382,7 +382,6 @@ MapBlockDataBank:: ds 1
 MapBlockDataPointer:: ds 2
 MapScriptHeaderBank:: ds 1
 MapScriptHeaderPointer:: ds 2
-MapEventHeaderPointer:: ds 2
 MapConnections:: ds 1 ; bit set
 
 NorthMapConnection::

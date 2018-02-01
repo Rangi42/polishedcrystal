@@ -4,7 +4,6 @@ CinnabarVolcano1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
 
-CinnabarVolcano1F_MapEventHeader:
 	db 10 ; warps
 	warp_def 25, 13, 2, CINNABAR_ISLAND
 	warp_def 13, 5, 1, CINNABAR_VOLCANO_B1F
@@ -39,7 +38,7 @@ CinnabarVolcano1F_MapEventHeader:
 	smashrock_event 2, 13
 	smashrock_event 4, 8
 
-const_value set 1
+	const_def 1 ; person constants
 	const CINNABARVOLCANO1F_BUCK
 	const CINNABARVOLCANO1F_BOULDER1
 	const CINNABARVOLCANO1F_BOULDER2

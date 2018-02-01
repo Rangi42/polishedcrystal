@@ -3,7 +3,6 @@ VictoryRoad2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VictoryRoad2F_MapEventHeader:
 	db 5 ; warps
 	warp_def 9, 25, 4, ROUTE_23
 	warp_def 11, 3, 2, VICTORY_ROAD_1F
@@ -25,7 +24,7 @@ VictoryRoad2F_MapEventHeader:
 	itemball_event 5, 20, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
 	itemball_event 14, 9, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
-const_value set 1
+	const_def 1 ; person constants
 	const VICTORYROAD2F_SILVER
 
 UnknownScript_0x74492:

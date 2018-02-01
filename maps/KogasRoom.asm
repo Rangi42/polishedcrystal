@@ -5,7 +5,6 @@ KogasRoom_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, KogasRoomDoorCallback
 
-KogasRoom_MapEventHeader:
 	db 4 ; warps
 	warp_def 17, 4, 2, WILLS_ROOM
 	warp_def 17, 5, 3, WILLS_ROOM

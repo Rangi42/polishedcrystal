@@ -12,7 +12,6 @@ ElmsLab_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, ElmsLabCallback_MoveElm
 
-ElmsLab_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 4, 1, NEW_BARK_TOWN
 	warp_def 11, 5, 1, NEW_BARK_TOWN
@@ -53,7 +52,7 @@ ElmsLab_MapEventHeader:
 	person_event SPRITE_OFFICER, 3, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
 	person_event SPRITE_LYRA, 11, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
 
-const_value set 1
+	const_def 1 ; person constants
 	const ELMSLAB_ELM
 	const ELMSLAB_ELMS_AIDE
 	const ELMSLAB_POKE_BALL1

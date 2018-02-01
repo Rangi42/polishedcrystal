@@ -3,7 +3,6 @@ PewterMuseumOfScience1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PewterMuseumOfScience1F_MapEventHeader:
 	db 5 ; warps
 	warp_def 7, 10, 6, PEWTER_CITY
 	warp_def 7, 11, 6, PEWTER_CITY
@@ -31,7 +30,7 @@ PewterMuseumOfScience1F_MapEventHeader:
 	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FGrampsText, -1
 	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FYoungsterText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
 
 Museum1FFossilScientistScript:

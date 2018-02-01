@@ -3,7 +3,6 @@ CeladonHomeDecorStore2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonHomeDecorStore2F_MapEventHeader:
 	db 2 ; warps
 	warp_def 0, 9, 3, CELADON_HOME_DECOR_STORE_1F
 	warp_def 0, 6, 1, CELADON_HOME_DECOR_STORE_3F

@@ -3,7 +3,6 @@ EmbeddedTower_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-EmbeddedTower_MapEventHeader:
 	db 2 ; warps
 	warp_def 23, 10, 6, ROUTE_47
 	warp_def 23, 11, 6, ROUTE_47
@@ -16,7 +15,7 @@ EmbeddedTower_MapEventHeader:
 	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven1Script, EVENT_EMBEDDED_TOWER_STEVEN_1
 	person_event SPRITE_STEVEN, 11, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven2Script, EVENT_EMBEDDED_TOWER_STEVEN_2
 
-const_value set 1
+	const_def 1 ; person constants
 	const EMBEDDEDTOWER_STEVEN1
 	const EMBEDDEDTOWER_STEVEN2
 

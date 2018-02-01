@@ -3,7 +3,6 @@ WarmBeach_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-WarmBeach_MapEventHeader:
 	db 3 ; warps
 	warp_def 13, 15, 1, WARM_BEACH_SHACK
 	warp_def 5, 8, 2, SHAMOUTI_TUNNEL

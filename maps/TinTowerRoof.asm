@@ -4,7 +4,6 @@ TinTowerRoof_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, TinTowerRoofHoOh
 
-TinTowerRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 13, 7, 2, TIN_TOWER_10F
 
@@ -15,7 +14,7 @@ TinTowerRoof_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_HO_OH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
 
-const_value set 1
+	const_def 1 ; person constants
 	const TINTOWERROOF_HO_OH
 
 TinTowerRoofHoOh:

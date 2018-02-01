@@ -49,7 +49,7 @@ BASEMON_STRUCT_LENGTH EQUS "(BaseData1 - BaseData0)"
 GENDERLESS EQU %1111
 
 ; egg group constants
-const_value SET 1
+	const_def 1
 	const MONSTER      ; 1
 	const AMPHIBIAN    ; 2
 	const INSECT       ; 3
@@ -133,7 +133,7 @@ BATTLEMON_STRUCT_LENGTH EQUS "(BattleMonStructEnd - BattleMonSpecies)"
 
 
 ; evolution types
-const_value SET 1
+	const_def 1
 	const EVOLVE_LEVEL
 	const EVOLVE_ITEM
 	const EVOLVE_HOLDING
@@ -145,7 +145,7 @@ const_value SET 1
 
 ; happiness evolution triggers
 HAPPINESS_TO_EVOLVE EQU 220
-const_value SET 1
+	const_def 1
 	const TR_ANYTIME
 	const TR_MORNDAY
 	const TR_NITE
@@ -153,7 +153,7 @@ const_value SET 1
 EVS_TO_EVOLVE EQU 50
 
 ; stat evolution triggers
-const_value SET 1
+	const_def 1
 	const ATK_GT_DEF
 	const ATK_LT_DEF
 	const ATK_EQ_DEF

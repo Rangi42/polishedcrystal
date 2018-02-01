@@ -3,7 +3,6 @@ CeruleanWaterShowSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeruleanWaterShowSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 11, CERULEAN_CITY
 	warp_def 7, 3, 11, CERULEAN_CITY

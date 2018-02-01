@@ -5,7 +5,6 @@ VermilionPort_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VermilionPort_MapEventHeader:
 	db 2 ; warps
 	warp_def 5, 9, 5, VERMILION_PORT_PASSAGE
 	warp_def 17, 7, 1, FAST_SHIP_1F
@@ -21,7 +20,7 @@ VermilionPort_MapEventHeader:
 	person_event SPRITE_SAILOR, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
 	person_event SPRITE_SUPER_NERD, 11, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x74ee6, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const VERMILIONPORT_SAILOR1
 	const VERMILIONPORT_SAILOR2
 

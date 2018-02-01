@@ -3,7 +3,6 @@ MystriStage_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MystriStage_MapEventHeader:
 	db 2 ; warps
 	warp_def 17, 6, 1, SINJOH_RUINS
 	warp_def 17, 7, 1, SINJOH_RUINS
@@ -19,7 +18,7 @@ MystriStage_MapEventHeader:
 	person_event SPRITE_CYNTHIA, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
 	person_event SPRITE_EGG, 6, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
 
-const_value set 1
+	const_def 1 ; person constants
 	const MYSTRISTAGE_CYNTHIA1
 	const MYSTRISTAGE_CYNTHIA2
 	const MYSTRISTAGE_EGG

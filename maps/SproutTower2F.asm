@@ -3,7 +3,6 @@ SproutTower2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SproutTower2F_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 4, 3, SPROUT_TOWER_1F
 	warp_def 6, 0, 4, SPROUT_TOWER_1F

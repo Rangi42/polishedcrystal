@@ -3,7 +3,6 @@ SafariZoneNorthRestHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SafariZoneNorthRestHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 7, SAFARI_ZONE_NORTH
 	warp_def 7, 3, 7, SAFARI_ZONE_NORTH

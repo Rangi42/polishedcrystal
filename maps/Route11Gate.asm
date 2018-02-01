@@ -3,7 +3,6 @@ Route11Gate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route11Gate_MapEventHeader:
 	db 5 ; warps
 	warp_def 5, 0, 1, ROUTE_11
 	warp_def 6, 0, 2, ROUTE_11

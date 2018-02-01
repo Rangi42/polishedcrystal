@@ -3,7 +3,6 @@ ViridianNicknameSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ViridianNicknameSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 2, VIRIDIAN_CITY
 	warp_def 7, 3, 2, VIRIDIAN_CITY

@@ -3,7 +3,6 @@ QuietCaveB3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-QuietCaveB3F_MapEventHeader:
 	db 4 ; warps
 	warp_def 31, 8, 5, QUIET_CAVE_B2F ; hole
 	warp_def 7, 33, 6, QUIET_CAVE_B2F
@@ -20,7 +19,7 @@ QuietCaveB3F_MapEventHeader:
 	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
 	tmhmball_event 22, 7, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
 
-const_value set 1
+	const_def 1 ; person constants
 	const QUIETCAVEB3F_MARLEY
 
 QuietCaveB3FMarleyScript:

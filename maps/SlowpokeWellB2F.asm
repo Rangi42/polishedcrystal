@@ -3,7 +3,6 @@ SlowpokeWellB2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SlowpokeWellB2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 11, 9, 2, SLOWPOKE_WELL_B1F
 

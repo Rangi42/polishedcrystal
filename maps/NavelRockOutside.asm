@@ -3,7 +3,6 @@ NavelRockOutside_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-NavelRockOutside_MapEventHeader:
 	db 3 ; warps
 	warp_def 25, 12, 1, SEAGALLOP_FERRY_NAVEL_GATE
 	warp_def 25, 13, 1, SEAGALLOP_FERRY_NAVEL_GATE

@@ -3,7 +3,6 @@ QuietCaveB2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-QuietCaveB2F_MapEventHeader:
 	db 6 ; warps
 	warp_def 3, 21, 6, QUIET_CAVE_B1F
 	warp_def 25, 17, 7, QUIET_CAVE_B1F

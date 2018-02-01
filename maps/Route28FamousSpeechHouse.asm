@@ -3,7 +3,6 @@ Route28FamousSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route28FamousSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, ROUTE_28
 	warp_def 7, 3, 1, ROUTE_28

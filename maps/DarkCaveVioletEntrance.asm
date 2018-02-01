@@ -3,7 +3,6 @@ DarkCaveVioletEntrance_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-DarkCaveVioletEntrance_MapEventHeader:
 	db 3 ; warps
 	warp_def 15, 3, 3, ROUTE_31
 	warp_def 1, 17, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
@@ -28,7 +27,7 @@ DarkCaveVioletEntrance_MapEventHeader:
 	itemball_event 9, 35, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
 	itemball_event 28, 30, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 
-const_value set 1
+	const_def 1 ; person constants
 	const DARKCAVEVIOLETENTRANCE_URSARING
 	const DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	const DARKCAVEVIOLETENTRANCE_FALKNER

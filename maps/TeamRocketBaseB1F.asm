@@ -4,7 +4,6 @@ TeamRocketBaseB1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
 
-TeamRocketBaseB1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 2, 27, 3, MAHOGANY_MART_1F
 	warp_def 14, 3, 1, TEAM_ROCKET_BASE_B2F
@@ -66,7 +65,7 @@ TeamRocketBaseB1F_MapEventHeader:
 	itemball_event 15, 14, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	itemball_event 12, 21, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
 
-const_value set 1
+	const_def 1 ; person constants
 	const TEAMROCKETBASEB1F_ROCKET1
 
 TeamRocketBaseB1FCallback1:

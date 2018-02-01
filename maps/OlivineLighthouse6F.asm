@@ -3,7 +3,6 @@ OlivineLighthouse6F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-OlivineLighthouse6F_MapEventHeader:
 	db 4 ; warps
 	warp_def 15, 9, 1, OLIVINE_LIGHTHOUSE_5F
 	warp_def 5, 16, 6, OLIVINE_LIGHTHOUSE_5F
@@ -19,7 +18,7 @@ OlivineLighthouse6F_MapEventHeader:
 	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
 	itemball_event 4, 3, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
 
-const_value set 1
+	const_def 1 ; person constants
 	const OLIVINELIGHTHOUSE6F_JASMINE
 	const OLIVINELIGHTHOUSE6F_AMPHAROS
 

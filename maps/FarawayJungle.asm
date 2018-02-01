@@ -3,7 +3,6 @@ FarawayJungle_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FarawayJungle_MapEventHeader:
 	db 2 ; warps
 	warp_def 18, 12, 1, FARAWAY_ISLAND
 	warp_def 18, 13, 2, FARAWAY_ISLAND
@@ -15,7 +14,7 @@ FarawayJungle_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_MEW, 10, 12, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
 
-const_value set 1
+	const_def 1 ; person constants
 	const FARAWAYJUNGLE_MEW
 
 FarawayJungleMew:

@@ -3,7 +3,6 @@ CeruleanCape_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeruleanCape_MapEventHeader:
 	db 3 ; warps
 	warp_def 5, 9, 1, BILLS_HOUSE
 	warp_def 29, 38, 1, DIM_CAVE_2F
@@ -37,7 +36,7 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_M, 8, -2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	itemball_event 12, 31, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
-const_value set 1
+	const_def 1 ; person constants
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_MISTY_WALK
 	const CERULEANCAPE_BOYFRIEND

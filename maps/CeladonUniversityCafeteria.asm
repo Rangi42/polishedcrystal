@@ -3,7 +3,6 @@ CeladonUniversityCafeteria_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityCafeteria_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 13, 2, CELADON_UNIVERSITY_2F
 	warp_def 7, 14, 2, CELADON_UNIVERSITY_2F
@@ -22,7 +21,7 @@ CeladonUniversityCafeteria_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaYoungster2Script, -1
 	person_event SPRITE_BAKER, 3, 0, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityCafeteriaBakerScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const CELADONUNIVERSITYCAFETERIA_COREY
 
 CeladonUniversityCafeteriaCoreyScript:

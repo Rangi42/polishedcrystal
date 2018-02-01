@@ -1,4 +1,4 @@
-const_value set 1
+	const_def 1 ; person constants
 	const BATTLETOWERHALLWAY_RECEPTIONIST
 
 BattleTowerHallway_MapScriptHeader:
@@ -7,7 +7,6 @@ BattleTowerHallway_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BattleTowerHallway_MapEventHeader:
 	db 6 ; warps
 	warp_def 1, 11, 1, BATTLE_TOWER_ELEVATOR
 	warp_def 0, 5, 1, BATTLE_TOWER_BATTLE_ROOM

@@ -5,7 +5,6 @@ BlackthornCity_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, BlackthornCityFlypointCallback
 	dbw MAPCALLBACK_OBJECTS, BlackthornCitySantosCallback
 
-BlackthornCity_MapEventHeader:
 	db 8 ; warps
 	warp_def 11, 18, 1, BLACKTHORN_GYM_1F
 	warp_def 21, 13, 1, BLACKTHORN_DRAGON_SPEECH_HOUSE
@@ -39,7 +38,7 @@ BlackthornCity_MapEventHeader:
 	person_event SPRITE_DRAGON_TAMER, 27, 32, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonTamer2Text, -1
 	person_event SPRITE_DRAGON_TAMER, 24, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonTamer3Text, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const BLACKTHORNCITY_SANTOS
 
 BlackthornCityFlypointCallback:

@@ -3,7 +3,6 @@ MagnetTunnelEast_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MagnetTunnelEast_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 8, 2, MAGNET_TUNNEL_INSIDE
 

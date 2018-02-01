@@ -3,7 +3,6 @@ RedsHouse1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RedsHouse1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 1, PALLET_TOWN
 	warp_def 7, 3, 1, PALLET_TOWN

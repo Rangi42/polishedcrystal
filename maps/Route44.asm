@@ -3,7 +3,6 @@ Route44_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route44_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 56, 1, ICE_PATH_1F
 
@@ -28,7 +27,7 @@ Route44_MapEventHeader:
 	itemball_event 4, 45, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
 	itemball_event 9, 14, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE44_VETERAN_M
 
 Route44VeteranmScript:

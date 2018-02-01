@@ -3,7 +3,6 @@ SilphCo3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SilphCo3F_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 11, 2, SILPH_CO_2F
 

@@ -3,7 +3,6 @@ MahoganyGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MahoganyGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 17, 4, 3, MAHOGANY_TOWN
 	warp_def 17, 5, 3, MAHOGANY_TOWN

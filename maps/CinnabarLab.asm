@@ -4,7 +4,6 @@ CinnabarLab_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CinnabarLab_MapEventHeader:
 	db 0 ; warps
 ;	warp_def $9, $e, 3, CINNABAR_LAB
 ;	warp_def $9, $f, 3, CINNABAR_LAB
@@ -34,7 +33,7 @@ CinnabarLab_MapEventHeader:
 	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
 	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
 
-const_value set 1
+	const_def 1 ; person constants
 	const CINNABARLAB_GIOVANNI
 	const CINNABARLAB_ARMORED_MEWTWO
 	const CINNABARLAB_SCIENTIST1

@@ -3,7 +3,6 @@ VioletNicknameSpeechHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-VioletNicknameSpeechHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 4, VIOLET_CITY
 	warp_def 7, 4, 4, VIOLET_CITY

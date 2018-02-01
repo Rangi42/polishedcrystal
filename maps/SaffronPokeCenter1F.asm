@@ -3,7 +3,6 @@ SaffronPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SaffronPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 4, SAFFRON_CITY
 	warp_def 7, 6, 4, SAFFRON_CITY

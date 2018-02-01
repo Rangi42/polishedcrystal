@@ -3,7 +3,6 @@ MahoganyPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-MahoganyPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 4, MAHOGANY_TOWN
 	warp_def 7, 6, 4, MAHOGANY_TOWN

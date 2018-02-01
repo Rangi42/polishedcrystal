@@ -3,7 +3,6 @@ DiglettsCave_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-DiglettsCave_MapEventHeader:
 	db 6 ; warps
 	warp_def 15, 37, 10, VERMILION_CITY
 	warp_def 13, 39, 5, DIGLETTS_CAVE

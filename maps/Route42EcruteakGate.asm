@@ -3,7 +3,6 @@ Route42EcruteakGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route42EcruteakGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 4, 0, 1, ECRUTEAK_CITY
 	warp_def 5, 0, 2, ECRUTEAK_CITY

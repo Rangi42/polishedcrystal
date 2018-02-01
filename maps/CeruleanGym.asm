@@ -5,7 +5,6 @@ CeruleanGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeruleanGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 15, 4, 5, CERULEAN_CITY
 	warp_def 15, 5, 5, CERULEAN_CITY
@@ -27,7 +26,7 @@ CeruleanGym_MapEventHeader:
 	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
 	person_event SPRITE_GYM_GUY, 13, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
 
-const_value set 1
+	const_def 1 ; person constants
 	const CERULEANGYM_ROCKET
 
 CeruleanGymTrigger1:

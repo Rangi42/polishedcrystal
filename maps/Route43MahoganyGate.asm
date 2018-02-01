@@ -3,7 +3,6 @@ Route43MahoganyGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route43MahoganyGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 1, ROUTE_43
 	warp_def 0, 5, 2, ROUTE_43

@@ -4,7 +4,6 @@ Route34IlexForestGate_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
 
-Route34IlexForestGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 1, ROUTE_34
 	warp_def 0, 5, 2, ROUTE_34
@@ -22,7 +21,7 @@ Route34IlexForestGate_MapEventHeader:
 	person_event SPRITE_HERACROSS, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, HERACROSS, UnknownText_0x62e83, -1
 	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62e97, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE34ILEXFORESTGATE_TEACHER1
 	const ROUTE34ILEXFORESTGATE_TEACHER2
 

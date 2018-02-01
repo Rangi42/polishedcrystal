@@ -4,7 +4,6 @@ CinnabarVolcanoB2F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, CinnabarVolcanoB2FBouldersLand
 
-CinnabarVolcanoB2F_MapEventHeader:
 	db 3 ; warps
 	warp_def 3, 13, 5, CINNABAR_VOLCANO_B1F
 	warp_def 19, 25, 6, CINNABAR_VOLCANO_B1F
@@ -20,7 +19,7 @@ CinnabarVolcanoB2F_MapEventHeader:
 	smashrock_event 19, 21
 	itemball_event 3, 18, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
 
-const_value set 1
+	const_def 1 ; person constants
 	const CINNABARVOLCANOB2F_MOLTRES
 	const CINNABARVOLCANOB2F_LAWRENCE
 

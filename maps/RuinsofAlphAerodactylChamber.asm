@@ -5,7 +5,6 @@ RuinsofAlphAerodactylChamber_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x58db9
 
-RuinsofAlphAerodactylChamber_MapEventHeader:
 	db 5 ; warps
 	warp_def 9, 3, 4, RUINS_OF_ALPH_OUTSIDE
 	warp_def 9, 4, 4, RUINS_OF_ALPH_OUTSIDE

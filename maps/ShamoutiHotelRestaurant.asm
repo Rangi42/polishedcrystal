@@ -4,7 +4,6 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiHotelRestaurant_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 16, 4, SHAMOUTI_HOTEL_1F
 	warp_def 7, 17, 4, SHAMOUTI_HOTEL_1F
@@ -18,7 +17,7 @@ ShamoutiHotelRestaurant_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_RECEPTIONIST, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
 
 ShamoutiHotelRestaurantTrigger0:

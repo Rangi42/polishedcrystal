@@ -3,7 +3,6 @@ Route16West_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route16West_MapEventHeader:
 	db 1 ; warps
 	warp_def 1, 35, 1, PSYCHIC_INVERS_HOUSE
 

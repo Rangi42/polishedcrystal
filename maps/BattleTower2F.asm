@@ -3,7 +3,6 @@ BattleTower2F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BattleTower2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 1, 0, 4, BATTLE_TOWER_1F
 
@@ -30,7 +29,7 @@ BattleTower2F_MapEventHeader:
 	person_event SPRITE_PIKACHU, 8, 18, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, PIKACHU, BattleTower2FPikachuText, EVENT_QUIET_CAVE_MARLEY
 	person_event SPRITE_BLACK_BELT, 6, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
 
-const_value set 1
+	const_def 1 ; person constants
 	const BATTLETOWER2F_RILEY
 	const BATTLETOWER2F_BUCK
 	const BATTLETOWER2F_MIRA

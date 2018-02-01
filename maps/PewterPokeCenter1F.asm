@@ -3,7 +3,6 @@ PewterPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PewterPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 4, PEWTER_CITY
 	warp_def 7, 6, 4, PEWTER_CITY

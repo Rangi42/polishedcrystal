@@ -4,7 +4,6 @@ IndigoPlateauPokeCenter1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
 
-IndigoPlateauPokeCenter1F_MapEventHeader:
 	db 4 ; warps
 	warp_def 13, 9, 1, INDIGO_PLATEAU
 	warp_def 13, 10, 2, INDIGO_PLATEAU
@@ -28,7 +27,7 @@ IndigoPlateauPokeCenter1F_MapEventHeader:
 	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
 	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW

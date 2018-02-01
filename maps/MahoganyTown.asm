@@ -4,7 +4,6 @@ MahoganyTown_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, MahoganyTownFlyPoint
 
-MahoganyTown_MapEventHeader:
 	db 5 ; warps
 	warp_def 7, 11, 1, MAHOGANY_MART_1F
 	warp_def 7, 17, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
@@ -27,7 +26,7 @@ MahoganyTown_MapEventHeader:
 	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x190276, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
 	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1902f2, EVENT_MAHOGANY_MART_OWNERS
 
-const_value set 1
+	const_def 1 ; person constants
 	const MAHOGANYTOWN_POKEFAN_M
 
 MahoganyTownFlyPoint:

@@ -4,7 +4,6 @@ Route34_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
 
-Route34_MapEventHeader:
 	db 5 ; warps
 	warp_def 37, 13, 1, ROUTE_34_ILEX_FOREST_GATE
 	warp_def 37, 14, 2, ROUTE_34_ILEX_FOREST_GATE
@@ -40,7 +39,7 @@ Route34_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
 	itemball_event 30, 7, NUGGET, 1, EVENT_ROUTE_34_NUGGET
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE34_RICH_BOY
 	const ROUTE34_GRAMPS
 	const ROUTE34_LYRA

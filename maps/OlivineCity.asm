@@ -4,7 +4,6 @@ OlivineCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, OlivineCityFlyPoint
 
-OlivineCity_MapEventHeader:
 	db 12 ; warps
 	warp_def 17, 13, 1, OLIVINE_POKECENTER_1F
 	warp_def 7, 10, 1, OLIVINE_GYM
@@ -51,7 +50,7 @@ OlivineCity_MapEventHeader:
 	smashrock_event 23, 52
 	smashrock_event 26, 55
 
-const_value set 1
+	const_def 1 ; person constants
 	const OLIVINECITY_OLIVINE_RIVAL
 
 OlivineCityFlyPoint:

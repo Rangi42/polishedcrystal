@@ -3,7 +3,6 @@ CeladonUniversityHyperTestRoom_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonUniversityHyperTestRoom_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 2, 4, CELADON_UNIVERSITY_2F
 	warp_def 11, 3, 4, CELADON_UNIVERSITY_2F

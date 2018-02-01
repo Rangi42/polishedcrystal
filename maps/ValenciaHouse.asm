@@ -3,7 +3,6 @@ ValenciaHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ValenciaHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 3, VALENCIA_ISLAND
 	warp_def 7, 3, 3, VALENCIA_ISLAND

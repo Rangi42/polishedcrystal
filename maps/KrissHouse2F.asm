@@ -5,7 +5,6 @@ KrissHouse2F_MapScriptHeader:
 	dbw MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
 	dbw MAPCALLBACK_TILES, KrissHouse2FSetSpawn
 
-KrissHouse2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 7, 3, KRISS_HOUSE_1F
 

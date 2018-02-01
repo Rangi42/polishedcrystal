@@ -3,7 +3,6 @@ SilverCavePokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SilverCavePokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 1, SILVER_CAVE_OUTSIDE
 	warp_def 7, 6, 1, SILVER_CAVE_OUTSIDE

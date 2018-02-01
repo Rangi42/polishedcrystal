@@ -4,7 +4,6 @@ TeamRocketBaseB2F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, TransmitterDoorCallback
 
-TeamRocketBaseB2F_MapEventHeader:
 	db 5 ; warps
 	warp_def 14, 3, 2, TEAM_ROCKET_BASE_B1F
 	warp_def 2, 3, 1, TEAM_ROCKET_BASE_B3F
@@ -64,7 +63,7 @@ TeamRocketBaseB2F_MapEventHeader:
 	person_event SPRITE_ROCKET, 14, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM19, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event 10, 3, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B2F_HYPER_POTION
 
-const_value set 1
+	const_def 1 ; person constants
 	const TEAMROCKETBASEB2F_PETREL
 	const TEAMROCKETBASEB2F_ARIANA
 	const TEAMROCKETBASEB2F_LANCE

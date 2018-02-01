@@ -6,7 +6,6 @@ MahoganyMart1F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, UnknownScript_0x6c35b
 
-MahoganyMart1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 3, 1, MAHOGANY_TOWN
 	warp_def 7, 4, 1, MAHOGANY_TOWN
@@ -23,7 +22,7 @@ MahoganyMart1F_MapEventHeader:
 	person_event SPRITE_DRAGONITE, 6, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	person_event SPRITE_GRANNY, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_MAHOGANY_2, EVENT_MAHOGANY_MART_OWNERS
 
-const_value set 1
+	const_def 1 ; person constants
 	const MAHOGANYMART1F_PHARMACIST
 	const MAHOGANYMART1F_BLACK_BELT
 	const MAHOGANYMART1F_LANCE

@@ -3,7 +3,6 @@ DarkCaveBlackthornEntrance_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-DarkCaveBlackthornEntrance_MapEventHeader:
 	db 2 ; warps
 	warp_def 3, 23, 1, ROUTE_45
 	warp_def 25, 3, 2, DARK_CAVE_VIOLET_ENTRANCE

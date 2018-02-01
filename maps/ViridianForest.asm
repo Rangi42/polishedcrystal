@@ -3,7 +3,6 @@ ViridianForest_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ViridianForest_MapEventHeader:
 	db 3 ; warps
 	warp_def 5, 3, 1, VIRIDIAN_FOREST_PEWTER_GATE
 	warp_def 47, 18, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE

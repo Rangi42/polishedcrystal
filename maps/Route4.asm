@@ -3,7 +3,6 @@ Route4_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route4_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 4, 8, MOUNT_MOON_B1F
 	warp_def 5, 19, 1, MOUNT_MOON_SQUARE

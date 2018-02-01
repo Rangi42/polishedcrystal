@@ -3,7 +3,6 @@ StormyBeach_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-StormyBeach_MapEventHeader:
 	db 2 ; warps
 	warp_def 4, 30, 1, MURKY_SWAMP
 	warp_def 4, 31, 2, MURKY_SWAMP

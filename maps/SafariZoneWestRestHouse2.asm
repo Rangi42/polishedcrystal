@@ -3,7 +3,6 @@ SafariZoneWestRestHouse2_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SafariZoneWestRestHouse2_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 8, SAFARI_ZONE_WEST
 	warp_def 7, 3, 8, SAFARI_ZONE_WEST
@@ -19,7 +18,7 @@ SafariZoneWestRestHouse2_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_FLANNERY, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY
 
 SafariZoneWestRestHouse2FlanneryScript:

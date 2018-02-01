@@ -3,7 +3,6 @@ SafariZoneHubRestHouse_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SafariZoneHubRestHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 9, SAFARI_ZONE_HUB
 	warp_def 7, 3, 9, SAFARI_ZONE_HUB

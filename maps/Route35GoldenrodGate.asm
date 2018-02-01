@@ -3,7 +3,6 @@ Route35GoldenrodGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route35GoldenrodGate_MapEventHeader:
 	db 4 ; warps
 	warp_def 0, 4, 1, ROUTE_35
 	warp_def 0, 5, 2, ROUTE_35

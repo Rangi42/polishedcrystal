@@ -3,7 +3,6 @@ CliffEdgeGate_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CliffEdgeGate_MapEventHeader:
 	db 2 ; warps
 	warp_def 19, 17, 8, CIANWOOD_CITY
 	warp_def 19, 3, 1, ROUTE_47

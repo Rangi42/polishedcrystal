@@ -1,14 +1,8 @@
-const_value set 3
-	const LYRASHOUSE2F_LYRA
-	const LYRASHOUSE2F_AMPHAROS
-	const LYRASHOUSE2F_N64
-
 LyrasHouse2F_MapScriptHeader:
 	db 0 ; map triggers
 
 	db 0 ; map callbacks
 
-LyrasHouse2F_MapEventHeader:
 	db 1 ; warps
 	warp_def 0, 0, 3, LYRAS_HOUSE_1F
 

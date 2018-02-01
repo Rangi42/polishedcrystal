@@ -3,7 +3,6 @@ PokemonMansionB1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-PokemonMansionB1F_MapEventHeader:
 	db 1 ; warps
 	warp_def 24, 25, 3, POKEMON_MANSION_1F
 

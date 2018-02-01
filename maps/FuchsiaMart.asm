@@ -3,7 +3,6 @@ FuchsiaMart_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FuchsiaMart_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 1, FUCHSIA_CITY
 	warp_def 7, 3, 1, FUCHSIA_CITY

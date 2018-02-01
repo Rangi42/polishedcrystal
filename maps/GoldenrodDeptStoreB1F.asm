@@ -5,7 +5,6 @@ GoldenrodDeptStoreB1F_MapScriptHeader:
 	dbw MAPCALLBACK_TILES, UnknownScript_0x7d781
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
 
-GoldenrodDeptStoreB1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 2, 17, 3, UNDERGROUND_WAREHOUSE
 	warp_def 4, 9, 1, GOLDENROD_DEPT_STORE_ELEVATOR

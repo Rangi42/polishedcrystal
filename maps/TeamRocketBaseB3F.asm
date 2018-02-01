@@ -5,7 +5,6 @@ TeamRocketBaseB3F_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_TILES, TeamRocketBaseB3FCheckGiovanniDoor
 
-TeamRocketBaseB3F_MapEventHeader:
 	db 4 ; warps
 	warp_def 2, 3, 2, TEAM_ROCKET_BASE_B2F
 	warp_def 2, 27, 3, TEAM_ROCKET_BASE_B2F
@@ -45,7 +44,7 @@ TeamRocketBaseB3F_MapEventHeader:
 	itemball_event 2, 17, ICE_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ICE_HEAL
 	itemball_event 10, 14, ULTRA_BALL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ULTRA_BALL
 
-const_value set 1
+	const_def 1 ; person constants
 	const TEAMROCKETBASEB3F_LANCE
 	const TEAMROCKETBASEB3F_PETREL
 	const TEAMROCKETBASEB3F_MURKROW

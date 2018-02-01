@@ -3,7 +3,6 @@ LightningIslandRoof_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LightningIslandRoof_MapEventHeader:
 	db 1 ; warps
 	warp_def 7, 3, 2, LIGHTNING_ISLAND
 
@@ -14,7 +13,7 @@ LightningIslandRoof_MapEventHeader:
 	db 1 ; person events
 	person_event SPRITE_SPARK, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LightningIslandRoofSparkScript, EVENT_SHAMOUTI_COAST_SPARK
 
-const_value set 1
+	const_def 1 ; person constants
 	const LIGHTNINGISLANDROOF_SPARK
 
 LightningIslandRoofSparkScript:

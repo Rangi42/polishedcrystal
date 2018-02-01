@@ -3,7 +3,6 @@ SinjohRuins_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-SinjohRuins_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 5, 1, MYSTRI_STAGE
 	warp_def 21, 13, 1, SINJOH_RUINS_HOUSE

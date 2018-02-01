@@ -3,7 +3,6 @@ FastShipCabins_SW_SSW_NW_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-FastShipCabins_SW_SSW_NW_MapEventHeader:
 	db 5 ; warps
 	warp_def 0, 2, 5, FAST_SHIP_1F
 	warp_def 19, 2, 6, FAST_SHIP_1F

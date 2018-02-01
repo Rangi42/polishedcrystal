@@ -3,7 +3,6 @@ Route46_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route46_MapEventHeader:
 	db 3 ; warps
 	warp_def 33, 7, 1, ROUTE_29_46_GATE
 	warp_def 33, 8, 2, ROUTE_29_46_GATE

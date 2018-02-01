@@ -4,7 +4,6 @@ CinnabarIsland_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CinnabarIslandFlyPoint
 
-CinnabarIsland_MapEventHeader:
 	db 3 ; warps
 	warp_def 15, 11, 1, CINNABAR_POKECENTER_1F
 	warp_def 9, 18, 1, CINNABAR_VOLCANO_1F
@@ -22,7 +21,7 @@ CinnabarIsland_MapEventHeader:
 	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
 	itemball_event 2, 22, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 
-const_value set 1
+	const_def 1 ; person constants
 	const CINNABARISLAND_BLUE
 
 CinnabarIslandFlyPoint:

@@ -3,7 +3,6 @@ RuinsofAlphAerodactylWordRoom_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-RuinsofAlphAerodactylWordRoom_MapEventHeader:
 	db 3 ; warps
 	warp_def 5, 9, 3, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
 	warp_def 5, 10, 4, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM

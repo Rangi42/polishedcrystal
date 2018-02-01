@@ -4,7 +4,6 @@ CeladonCity_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, CeladonCityFlyPoint
 
-CeladonCity_MapEventHeader:
 	db 16 ; warps
 	warp_def 9, 8, 1, CELADON_DEPT_STORE_1F
 	warp_def 9, 20, 1, CELADON_MANSION_1F

@@ -3,7 +3,6 @@ Route3PokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route3PokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 2, ROUTE_3
 	warp_def 7, 6, 2, ROUTE_3

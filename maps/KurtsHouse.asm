@@ -4,7 +4,6 @@ KurtsHouse_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
-KurtsHouse_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 3, 4, AZALEA_TOWN
 	warp_def 7, 4, 4, AZALEA_TOWN
@@ -27,7 +26,7 @@ KurtsHouse_MapEventHeader:
 	person_event SPRITE_TWIN, 4, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
 	person_event SPRITE_SLOWPOKE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
-const_value set 1
+	const_def 1 ; person constants
 	const KURTSHOUSE_KURT1
 	const KURTSHOUSE_TWIN1
 	const KURTSHOUSE_KURT2

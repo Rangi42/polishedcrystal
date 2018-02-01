@@ -4,7 +4,6 @@ FightingDojo_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_SPRITES, FightingDojoSetupRematchesCallback
 
-FightingDojo_MapEventHeader:
 	db 2 ; warps
 	warp_def 11, 4, 1, SAFFRON_CITY
 	warp_def 11, 5, 1, SAFFRON_CITY
@@ -25,7 +24,7 @@ FightingDojo_MapEventHeader:
 	person_event SPRITE_CONSOLE, 6, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, RematchBrown2Script, EVENT_REMATCH_GYM_LEADER_6
 	person_event SPRITE_BLACK_BELT, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x189b61, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const REMATCH_RED_1
 	const REMATCH_GREEN_2
 	const REMATCH_BLUE_2

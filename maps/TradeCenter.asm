@@ -5,7 +5,6 @@ TradeCenter_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, TradeCenter_SetWhichChris
 
-TradeCenter_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 4, 2, POKECENTER_2F
 	warp_def 7, 5, 2, POKECENTER_2F
@@ -20,7 +19,7 @@ TradeCenter_MapEventHeader:
 	person_event SPRITE_CHRIS, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_GAVE_KURT_APRICORNS
 	person_event SPRITE_CHRIS, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_RECEIVED_BALLS_FROM_KURT
 
-const_value set 1
+	const_def 1 ; person constants
 	const TRADECENTER_CHRIS1
 	const TRADECENTER_CHRIS2
 

@@ -3,7 +3,6 @@ ViridianPokeCenter1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ViridianPokeCenter1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 5, 5, VIRIDIAN_CITY
 	warp_def 7, 6, 5, VIRIDIAN_CITY

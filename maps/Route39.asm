@@ -3,7 +3,6 @@ Route39_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route39_MapEventHeader:
 	db 2 ; warps
 	warp_def 3, 1, 1, ROUTE_39_BARN
 	warp_def 3, 5, 1, ROUTE_39_FARMHOUSE
@@ -31,7 +30,7 @@ Route39_MapEventHeader:
 	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	tmhmball_event 7, 1, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE39_COWGIRL
 
 TrainerPokefanmDerek1:

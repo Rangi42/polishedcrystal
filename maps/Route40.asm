@@ -4,7 +4,6 @@ Route40_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_OBJECTS, MonicaCallback
 
-Route40_MapEventHeader:
 	db 1 ; warps
 	warp_def 5, 9, 1, ROUTE_40_BATTLE_TOWER_GATE
 
@@ -29,7 +28,7 @@ Route40_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 8, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route40YoungsterScript, -1
 	person_event SPRITE_FISHER, 27, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route40FisherScript, -1
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE40_MONICA
 
 MonicaCallback:

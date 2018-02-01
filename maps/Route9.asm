@@ -3,7 +3,6 @@ Route9_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route9_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers

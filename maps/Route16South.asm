@@ -4,7 +4,6 @@ Route16South_MapScriptHeader:
 	db 1 ; map callbacks
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
-Route16South_MapEventHeader:
 	db 2 ; warps
 	warp_def 10, 9, 1, ROUTE_16_17_GATE
 	warp_def 11, 9, 2, ROUTE_16_17_GATE

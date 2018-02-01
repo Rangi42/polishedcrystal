@@ -3,7 +3,6 @@ ShamoutiTouristCenter_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-ShamoutiTouristCenter_MapEventHeader:
 	db 2 ; warps
 	warp_def 7, 2, 4, SHAMOUTI_ISLAND
 	warp_def 7, 3, 4, SHAMOUTI_ISLAND

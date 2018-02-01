@@ -3,7 +3,6 @@ LavRadioTower3F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-LavRadioTower3F_MapEventHeader:
 	db 2 ; warps
 	warp_def 0, 3, 2, LAV_RADIO_TOWER_2F
 	warp_def 0, 15, 1, LAV_RADIO_TOWER_4F

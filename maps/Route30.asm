@@ -3,7 +3,6 @@ Route30_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route30_MapEventHeader:
 	db 2 ; warps
 	warp_def 39, 7, 1, ROUTE_30_BERRY_SPEECH_HOUSE
 	warp_def 5, 17, 1, MR_POKEMONS_HOUSE
@@ -32,7 +31,7 @@ Route30_MapEventHeader:
 	fruittree_event 5, 11, FRUITTREE_ROUTE_30_2, PECHA_BERRY
 	itemball_event 35, 8, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
-const_value set 1
+	const_def 1 ; person constants
 	const ROUTE30_YOUNGSTER1
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA

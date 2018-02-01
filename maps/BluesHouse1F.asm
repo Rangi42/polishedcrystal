@@ -3,7 +3,6 @@ BluesHouse1F_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-BluesHouse1F_MapEventHeader:
 	db 3 ; warps
 	warp_def 7, 2, 2, PALLET_TOWN
 	warp_def 7, 3, 2, PALLET_TOWN

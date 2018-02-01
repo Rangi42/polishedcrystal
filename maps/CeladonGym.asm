@@ -3,7 +3,6 @@ CeladonGym_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-CeladonGym_MapEventHeader:
 	db 2 ; warps
 	warp_def 17, 4, 8, CELADON_CITY
 	warp_def 17, 5, 8, CELADON_CITY

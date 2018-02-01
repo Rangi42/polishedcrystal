@@ -3,7 +3,6 @@ Route21_MapScriptHeader:
 
 	db 0 ; map callbacks
 
-Route21_MapEventHeader:
 	db 0 ; warps
 
 	db 0 ; xy triggers

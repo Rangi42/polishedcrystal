@@ -1,5 +1,5 @@
 ; menu sprites
-const_value SET 1
+	const_def 1
 	const ICON_BULBASAUR
 	const ICON_IVYSAUR
 	const ICON_VENUSAUR
