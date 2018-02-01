@@ -1,19 +1,19 @@
 TinTower5F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 15, 9, 2, TIN_TOWER_6F
-	warp_def 4, 0, 1, TIN_TOWER_4F
-	warp_def 14, 0, 3, TIN_TOWER_4F
-	warp_def 15, 15, 4, TIN_TOWER_4F
+	db 4 ; warp events
+	warp_event 9, 15, 2, TIN_TOWER_6F
+	warp_event 0, 4, 1, TIN_TOWER_4F
+	warp_event 0, 14, 3, TIN_TOWER_4F
+	warp_event 15, 15, 4, TIN_TOWER_4F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 14, 14, SIGNPOST_ITEM + FULL_RESTORE, EVENT_TIN_TOWER_5F_HIDDEN_FULL_RESTORE
-	signpost 15, 1, SIGNPOST_ITEM + CARBOS, EVENT_TIN_TOWER_5F_HIDDEN_CARBOS
+	db 2 ; bg events
+	bg_event 14, 14, SIGNPOST_ITEM + FULL_RESTORE, EVENT_TIN_TOWER_5F_HIDDEN_FULL_RESTORE
+	bg_event 1, 15, SIGNPOST_ITEM + CARBOS, EVENT_TIN_TOWER_5F_HIDDEN_CARBOS
 
-	db 1 ; person events
-	itemball_event 9, 7, RARE_CANDY, 1, EVENT_TIN_TOWER_5F_RARE_CANDY
+	db 1 ; object events
+	itemball_event 7, 9, RARE_CANDY, 1, EVENT_TIN_TOWER_5F_RARE_CANDY

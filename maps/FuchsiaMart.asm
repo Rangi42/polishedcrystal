@@ -1,20 +1,20 @@
 FuchsiaMart_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 1, FUCHSIA_CITY
-	warp_def 7, 3, 1, FUCHSIA_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 1, FUCHSIA_CITY
+	warp_event 3, 7, 1, FUCHSIA_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_FUCHSIA
-	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x195cf5, -1
-	person_event SPRITE_COOLTRAINER_F, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x195d36, -1
+	db 3 ; object events
+	mart_clerk_event 1, 3, MARTTYPE_STANDARD, MART_FUCHSIA
+	object_event 3, 2, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x195cf5, -1
+	object_event 7, 6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x195d36, -1
 
 UnknownText_0x195cf5:
 	text "I was hoping to"

@@ -1,16 +1,16 @@
 WhirlIslandNW_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 33, 5, 1, ROUTE_41
-	warp_def 29, 5, 1, WHIRL_ISLAND_B1F
-	warp_def 31, 15, 4, WHIRL_ISLAND_SW
-	warp_def 31, 19, 2, WHIRL_ISLAND_CAVE
+	db 4 ; warp events
+	warp_event 5, 33, 1, ROUTE_41
+	warp_event 5, 29, 1, WHIRL_ISLAND_B1F
+	warp_event 15, 31, 4, WHIRL_ISLAND_SW
+	warp_event 19, 31, 2, WHIRL_ISLAND_CAVE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 0 ; person events
+	db 0 ; object events

@@ -1,31 +1,31 @@
 BlackthornGym2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
+	db 1 ; callbacks
+	callback MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
 
-	db 5 ; warps
-	warp_def 7, 1, 3, BLACKTHORN_GYM_1F
-	warp_def 9, 7, 4, BLACKTHORN_GYM_1F
-	warp_def 5, 2, 5, BLACKTHORN_GYM_1F ; hole
-	warp_def 7, 8, 6, BLACKTHORN_GYM_1F ; hole
-	warp_def 3, 8, 7, BLACKTHORN_GYM_1F ; hole
+	db 5 ; warp events
+	warp_event 1, 7, 3, BLACKTHORN_GYM_1F
+	warp_event 7, 9, 4, BLACKTHORN_GYM_1F
+	warp_event 2, 5, 5, BLACKTHORN_GYM_1F ; hole
+	warp_event 8, 7, 6, BLACKTHORN_GYM_1F ; hole
+	warp_event 8, 3, 7, BLACKTHORN_GYM_1F ; hole
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 8 ; person events
-	strengthboulder_event 2, 8, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
-	strengthboulder_event 3, 2, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
-	strengthboulder_event 16, 6, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
+	db 8 ; object events
+	strengthboulder_event 8, 2, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
+	strengthboulder_event 2, 3, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
+	strengthboulder_event 6, 16, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
 	strengthboulder_event 3, 3
-	strengthboulder_event 1, 6
-	strengthboulder_event 14, 8
-	person_event SPRITE_COOLTRAINER_M, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermCody, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfFran, -1
+	strengthboulder_event 6, 1
+	strengthboulder_event 8, 14
+	object_event 4, 1, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermCody, -1
+	object_event 4, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfFran, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const BLACKTHORNGYM2F_BOULDER1
 	const BLACKTHORNGYM2F_BOULDER2
 	const BLACKTHORNGYM2F_BOULDER3
@@ -65,7 +65,7 @@ BlackthornGym2FBoulders:
 	done
 
 GenericTrainerCooltrainermCody:
-	generictrainer EVENT_BEAT_COOLTRAINERM_CODY, COOLTRAINERM, CODY, .SeenText, .BeatenText
+	generictrainer COOLTRAINERM, CODY, EVENT_BEAT_COOLTRAINERM_CODY, .SeenText, .BeatenText
 
 	text "Members of our"
 	line "dragon-user clan"
@@ -89,7 +89,7 @@ GenericTrainerCooltrainermCody:
 	done
 
 GenericTrainerCooltrainerfFran:
-	generictrainer EVENT_BEAT_COOLTRAINERF_FRAN, COOLTRAINERF, FRAN, .SeenText, .BeatenText
+	generictrainer COOLTRAINERF, FRAN, EVENT_BEAT_COOLTRAINERF_FRAN, .SeenText, .BeatenText
 
 	text "Uh-oh… Clair is"
 	line "going to be mad…"

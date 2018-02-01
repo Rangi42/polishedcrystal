@@ -1,15 +1,15 @@
 RuinsofAlphKabutoWordRoom_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 5, 9, 3, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
-	warp_def 5, 10, 4, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
-	warp_def 11, 17, 4, RUINS_OF_ALPH_INNER_CHAMBER
+	db 3 ; warp events
+	warp_event 9, 5, 3, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
+	warp_event 10, 5, 4, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
+	warp_event 17, 11, 4, RUINS_OF_ALPH_INNER_CHAMBER
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 0 ; person events
+	db 0 ; object events

@@ -1,20 +1,20 @@
 WhirlIslandB2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 5, 11, 7, WHIRL_ISLAND_B1F
-	warp_def 11, 7, 8, WHIRL_ISLAND_B1F
-	warp_def 25, 7, 1, WHIRL_ISLAND_LUGIA_CHAMBER
-	warp_def 31, 13, 5, WHIRL_ISLAND_SW
+	db 4 ; warp events
+	warp_event 11, 5, 7, WHIRL_ISLAND_B1F
+	warp_event 7, 11, 8, WHIRL_ISLAND_B1F
+	warp_event 7, 25, 1, WHIRL_ISLAND_LUGIA_CHAMBER
+	warp_event 13, 31, 5, WHIRL_ISLAND_SW
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	itemball_event 11, 10, FULL_RESTORE, 1, EVENT_WHIRL_ISLAND_B2F_FULL_RESTORE
-	itemball_event 4, 6, MAX_REVIVE, 1, EVENT_WHIRL_ISLAND_B2F_MAX_REVIVE
-	itemball_event 12, 5, MAX_ELIXER, 1, EVENT_WHIRL_ISLAND_B2F_MAX_ELIXER
+	db 3 ; object events
+	itemball_event 10, 11, FULL_RESTORE, 1, EVENT_WHIRL_ISLAND_B2F_FULL_RESTORE
+	itemball_event 6, 4, MAX_REVIVE, 1, EVENT_WHIRL_ISLAND_B2F_MAX_REVIVE
+	itemball_event 5, 12, MAX_ELIXER, 1, EVENT_WHIRL_ISLAND_B2F_MAX_ELIXER
 

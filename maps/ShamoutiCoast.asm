@@ -1,33 +1,33 @@
 ShamoutiCoast_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 15, 22, 1, FIRE_ISLAND
-	warp_def 11, 54, 1, ICE_ISLAND
-	warp_def 13, 84, 1, LIGHTNING_ISLAND
+	db 3 ; warp events
+	warp_event 22, 15, 1, FIRE_ISLAND
+	warp_event 54, 11, 1, ICE_ISLAND
+	warp_event 84, 13, 1, LIGHTNING_ISLAND
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 12 ; person events
-	person_event SPRITE_ARTIST, 9, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerArtistRin, -1
-	person_event SPRITE_SWIMMER_GIRL, 5, 12, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfMarina, -1
-	person_event SPRITE_FISHER, 9, 34, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDallas, -1
-	person_event SPRITE_LADY, 13, 39, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSightseerfPilar, -1
-	person_event SPRITE_SIGHTSEER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersCyandvi1, -1
-	person_event SPRITE_LADY, 4, 67, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersCyandvi2, -1
-	person_event SPRITE_SWIMMER_GUY, 16, 71, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermAshe, -1
-	person_event SPRITE_CANDELA, 11, 21, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_CANDELA
-	person_event SPRITE_BLANCHE, 7, 53, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_BLANCHE
-	person_event SPRITE_SPARK, 9, 83, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_SPARK
-	itemball_event 11, 6, STAR_PIECE, 1, EVENT_SHAMOUTI_COAST_STAR_PIECE
-	person_event SPRITE_LADY, -3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	db 12 ; object events
+	object_event 4, 9, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerArtistRin, -1
+	object_event 12, 5, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfMarina, -1
+	object_event 34, 9, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDallas, -1
+	object_event 39, 13, SPRITE_LADY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSightseerfPilar, -1
+	object_event 66, 4, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersCyandvi1, -1
+	object_event 67, 4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersCyandvi2, -1
+	object_event 71, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermAshe, -1
+	object_event 21, 11, SPRITE_CANDELA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_CANDELA
+	object_event 53, 7, SPRITE_BLANCHE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_BLANCHE
+	object_event 83, 9, SPRITE_SPARK, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SHAMOUTI_COAST_SPARK
+	itemball_event 6, 11, STAR_PIECE, 1, EVENT_SHAMOUTI_COAST_STAR_PIECE
+	object_event 6, -3, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 TrainerArtistRin:
-	trainer EVENT_BEAT_ARTIST_RIN, ARTIST, RIN, .SeenText, .BeatenText, 0, .Script
+	trainer ARTIST, RIN, EVENT_BEAT_ARTIST_RIN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -58,7 +58,7 @@ TrainerArtistRin:
 	done
 
 TrainerSwimmerfMarina:
-	trainer EVENT_BEAT_SWIMMERF_MARINA, SWIMMERF, MARINA, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, MARINA, EVENT_BEAT_SWIMMERF_MARINA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -88,7 +88,7 @@ TrainerSwimmerfMarina:
 	done
 
 TrainerFisherDallas:
-	trainer EVENT_BEAT_FISHER_DALLAS, FISHER, DALLAS, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, DALLAS, EVENT_BEAT_FISHER_DALLAS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -116,7 +116,7 @@ TrainerFisherDallas:
 	done
 
 TrainerSightseerfPilar:
-	trainer EVENT_BEAT_SIGHTSEERF_PILAR, SIGHTSEERF, PILAR, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERF, PILAR, EVENT_BEAT_SIGHTSEERF_PILAR, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -148,7 +148,7 @@ TrainerSightseerfPilar:
 	done
 
 TrainerSightseersCyandvi1:
-	trainer EVENT_BEAT_SIGHTSEERS_CY_AND_VI, SIGHTSEERS, CYANDVI1, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERS, CYANDVI1, EVENT_BEAT_SIGHTSEERS_CY_AND_VI, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -167,7 +167,7 @@ TrainerSightseersCyandvi1:
 	done
 
 TrainerSightseersCyandvi2:
-	trainer EVENT_BEAT_SIGHTSEERS_CY_AND_VI, SIGHTSEERS, CYANDVI2, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERS, CYANDVI2, EVENT_BEAT_SIGHTSEERS_CY_AND_VI, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -186,7 +186,7 @@ TrainerSightseersCyandvi2:
 	done
 
 TrainerSwimmermAshe:
-	trainer EVENT_BEAT_SWIMMERM_ASHE, SWIMMERM, ASHE, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, ASHE, EVENT_BEAT_SWIMMERM_ASHE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

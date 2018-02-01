@@ -1,42 +1,42 @@
 PokemonMansion1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 27, 5, 3, CINNABAR_ISLAND
-	warp_def 27, 6, 3, CINNABAR_ISLAND
-	warp_def 23, 21, 1, POKEMON_MANSION_B1F
+	db 3 ; warp events
+	warp_event 5, 27, 3, CINNABAR_ISLAND
+	warp_event 6, 27, 3, CINNABAR_ISLAND
+	warp_event 21, 23, 1, POKEMON_MANSION_B1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 8 ; signposts
-	signpost 12, 21, SIGNPOST_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
-	signpost 23, 14, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
-	signpost 5, 2, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
-	signpost 23, 15, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	signpost 23, 18, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	signpost 23, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	signpost 19, 18, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	signpost 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	db 8 ; bg events
+	bg_event 21, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
+	bg_event 14, 23, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
+	bg_event 2, 5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
+	bg_event 15, 23, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event 18, 23, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event 19, 23, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event 18, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
-	db 6 ; person events
-	person_event SPRITE_PHARMACIST, 10, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
-	person_event SPRITE_PHARMACIST, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
-	itemball_event 4, 6, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE
-	itemball_event 3, 14, ESCAPE_ROPE, 1, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
-	itemball_event 22, 17, PROTEIN, 1, EVENT_POKEMON_MANSION_1F_PROTEIN
-	itemball_event 22, 27, IRON, 1, EVENT_POKEMON_MANSION_1F_IRON
+	db 6 ; object events
+	object_event 9, 10, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
+	object_event 27, 14, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
+	itemball_event 6, 4, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE
+	itemball_event 14, 3, ESCAPE_ROPE, 1, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
+	itemball_event 17, 22, PROTEIN, 1, EVENT_POKEMON_MANSION_1F_PROTEIN
+	itemball_event 27, 22, IRON, 1, EVENT_POKEMON_MANSION_1F_IRON
 
 TrainerBurglarPete:
-	trainer EVENT_BEAT_BURGLAR_PETE, BURGLAR, PETE, BurglarPeteSeenText, BurglarPeteBeatenText, 0, BurglarPeteScript
+	trainer BURGLAR, PETE, EVENT_BEAT_BURGLAR_PETE, BurglarPeteSeenText, BurglarPeteBeatenText, 0, BurglarPeteScript
 
 BurglarPeteScript:
 	end_if_just_battled
 	jumptextfaceplayer BurglarPeteAfterText
 
 TrainerBurglarLouis:
-	trainer EVENT_BEAT_BURGLAR_LOUIS, BURGLAR, LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText, 0, BurglarLouisScript
+	trainer BURGLAR, LOUIS, EVENT_BEAT_BURGLAR_LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText, 0, BurglarLouisScript
 
 BurglarLouisScript:
 	end_if_just_battled

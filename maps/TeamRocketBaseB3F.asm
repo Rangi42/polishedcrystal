@@ -1,50 +1,50 @@
 TeamRocketBaseB3F_MapScriptHeader:
-	db 1 ; map triggers
-	dw TeamRocketBaseB3FTrigger0
+	db 1 ; scene scripts
+	scene_script TeamRocketBaseB3FTrigger0
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, TeamRocketBaseB3FCheckGiovanniDoor
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, TeamRocketBaseB3FCheckGiovanniDoor
 
-	db 4 ; warps
-	warp_def 2, 3, 2, TEAM_ROCKET_BASE_B2F
-	warp_def 2, 27, 3, TEAM_ROCKET_BASE_B2F
-	warp_def 6, 3, 4, TEAM_ROCKET_BASE_B2F
-	warp_def 14, 27, 5, TEAM_ROCKET_BASE_B2F
+	db 4 ; warp events
+	warp_event 3, 2, 2, TEAM_ROCKET_BASE_B2F
+	warp_event 27, 2, 3, TEAM_ROCKET_BASE_B2F
+	warp_event 3, 6, 4, TEAM_ROCKET_BASE_B2F
+	warp_event 27, 14, 5, TEAM_ROCKET_BASE_B2F
 
-	db 3 ; xy triggers
-	xy_trigger 2, 8, 10, UnknownScript_0x6e04b
-	xy_trigger 2, 8, 11, UnknownScript_0x6e052
-	xy_trigger 1, 10, 8, RocketBaseRival
+	db 3 ; coord events
+	coord_event 10, 8, 2, UnknownScript_0x6e04b
+	coord_event 11, 8, 2, UnknownScript_0x6e052
+	coord_event 8, 10, 1, RocketBaseRival
 
-	db 10 ; signposts
-	signpost 9, 10, SIGNPOST_IFNOTSET, BossDoor
-	signpost 9, 11, SIGNPOST_IFNOTSET, BossDoor
-	signpost 1, 10, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 1, 11, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 1, 12, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 1, 13, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 13, 4, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 13, 5, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 13, 6, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 13, 7, SIGNPOST_JUMPSTD, teamrocketoath
+	db 10 ; bg events
+	bg_event 10, 9, SIGNPOST_IFNOTSET, BossDoor
+	bg_event 11, 9, SIGNPOST_IFNOTSET, BossDoor
+	bg_event 10, 1, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 11, 1, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 12, 1, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 13, 1, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 4, 13, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 5, 13, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 6, 13, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 7, 13, SIGNPOST_JUMPSTD, teamrocketoath
 
-	db 14 ; person events
-	person_event SPRITE_LANCE, 14, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceGetPasswordScript, EVENT_TEAM_ROCKET_BASE_B3F_LANCE_PASSWORDS
-	person_event SPRITE_PETREL, 3, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B3F_PETREL
-	person_event SPRITE_MURKROW, 2, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RocketBaseMurkrow, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SILVER, 5, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_TEAM_ROCKET_BASE
-	person_event SPRITE_ROCKET_GIRL, 7, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, SlowpokeTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_ROCKET, 14, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, RaticateTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SCIENTIST, 11, 23, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SCIENTIST, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_ROCKET, 14, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6e235, EVENT_TEAM_ROCKET_BASE_POPULATION
-	itemball_event 12, 1, PROTEIN, 1, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN
-	itemball_event 12, 3, X_SPCL_DEF, 1, EVENT_TEAM_ROCKET_BASE_B3F_X_SPCL_DEF
-	itemball_event 9, 28, FULL_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_FULL_HEAL
-	itemball_event 2, 17, ICE_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ICE_HEAL
-	itemball_event 10, 14, ULTRA_BALL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ULTRA_BALL
+	db 14 ; object events
+	object_event 25, 14, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceGetPasswordScript, EVENT_TEAM_ROCKET_BASE_B3F_LANCE_PASSWORDS
+	object_event 8, 3, SPRITE_PETREL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B3F_PETREL
+	object_event 7, 2, SPRITE_MURKROW, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, RocketBaseMurkrow, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 4, 5, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_TEAM_ROCKET_BASE
+	object_event 21, 7, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, SlowpokeTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 5, 14, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, RaticateTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 23, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 11, 15, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 24, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6e235, EVENT_TEAM_ROCKET_BASE_POPULATION
+	itemball_event 1, 12, PROTEIN, 1, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN
+	itemball_event 3, 12, X_SPCL_DEF, 1, EVENT_TEAM_ROCKET_BASE_B3F_X_SPCL_DEF
+	itemball_event 28, 9, FULL_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_FULL_HEAL
+	itemball_event 17, 2, ICE_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ICE_HEAL
+	itemball_event 14, 10, ULTRA_BALL, 1, EVENT_TEAM_ROCKET_BASE_B3F_ULTRA_BALL
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const TEAMROCKETBASEB3F_LANCE
 	const TEAMROCKETBASEB3F_PETREL
 	const TEAMROCKETBASEB3F_MURKROW
@@ -125,7 +125,7 @@ RocketBaseMurkrow:
 	end
 
 SlowpokeTailGrunt:
-	trainer EVENT_BEAT_ROCKET_GRUNTF_5, GRUNTF, 5, GruntF5SeenText, GruntF5BeatenText, 0, GruntF5Script
+	trainer GRUNTF, 5, EVENT_BEAT_ROCKET_GRUNTF_5, GruntF5SeenText, GruntF5BeatenText, 0, GruntF5Script
 
 GruntF5Script:
 	end_if_just_battled
@@ -134,7 +134,7 @@ GruntF5Script:
 	end
 
 RaticateTailGrunt:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_28, GRUNTM, 28, GruntM28SeenText, GruntM28BeatenText, 0, GruntM28Script
+	trainer GRUNTM, 28, EVENT_BEAT_ROCKET_GRUNTM_28, GruntM28SeenText, GruntM28BeatenText, 0, GruntM28Script
 
 GruntM28Script:
 	end_if_just_battled
@@ -143,14 +143,14 @@ GruntM28Script:
 	end
 
 TrainerRocketScientistRoss:
-	trainer EVENT_BEAT_ROCKET_SCIENTIST_ROSS, ROCKET_SCIENTIST, ROSS, RocketScientistRossSeenText, RocketScientistRossBeatenText, 0, RocketScientistRossScript
+	trainer ROCKET_SCIENTIST, ROSS, EVENT_BEAT_ROCKET_SCIENTIST_ROSS, RocketScientistRossSeenText, RocketScientistRossBeatenText, 0, RocketScientistRossScript
 
 RocketScientistRossScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x6e822
 
 TrainerRocketScientistMitch:
-	trainer EVENT_BEAT_ROCKET_SCIENTIST_MITCH, ROCKET_SCIENTIST, MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
+	trainer ROCKET_SCIENTIST, MITCH, EVENT_BEAT_ROCKET_SCIENTIST_MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
 
 RocketScientistMitchScript:
 	end_if_just_battled

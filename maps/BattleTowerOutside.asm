@@ -1,29 +1,29 @@
 BattleTowerOutside_MapScriptHeader:
-	db 1 ; map triggers
-	dw BattleTowerOutsideStepDownTrigger
+	db 1 ; scene scripts
+	scene_script BattleTowerOutsideStepDownTrigger
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 21, 8, 3, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def 21, 9, 4, ROUTE_40_BATTLE_TOWER_GATE
-	warp_def 9, 8, 1, BATTLE_TOWER_1F ; hole
-	warp_def 9, 9, 2, BATTLE_TOWER_1F ; hole
+	db 4 ; warp events
+	warp_event 8, 21, 3, ROUTE_40_BATTLE_TOWER_GATE
+	warp_event 9, 21, 4, ROUTE_40_BATTLE_TOWER_GATE
+	warp_event 8, 9, 1, BATTLE_TOWER_1F ; hole
+	warp_event 9, 9, 2, BATTLE_TOWER_1F ; hole
 
-	db 2 ; xy triggers
-	xy_trigger 1, 9, 8, BattleTowerOutsidePanUpTrigger1
-	xy_trigger 1, 9, 9, BattleTowerOutsidePanUpTrigger2
+	db 2 ; coord events
+	coord_event 8, 9, 1, BattleTowerOutsidePanUpTrigger1
+	coord_event 9, 9, 1, BattleTowerOutsidePanUpTrigger2
 
-	db 1 ; signposts
-	signpost 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
+	db 1 ; bg events
+	bg_event 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
 
-	db 6 ; person events
-	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
-	person_event SPRITE_BEAUTY, 11, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
-	person_event SPRITE_SAILOR, 18, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED
-	person_event SPRITE_LASS, 24, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_BIG_LAPRAS, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
-	person_event SPRITE_BIG_LAPRAS, 9, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
+	db 6 ; object events
+	object_event 6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
+	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
+	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED
+	object_event 12, 24, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 8, 9, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
+	object_event 9, 9, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
 
 BattleTowerOutsideStepDownTrigger:
 	priorityjump .Script

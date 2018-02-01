@@ -1,26 +1,26 @@
 GoldenrodPokeComCenterOffice_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 0, 3, GOLDENROD_POKECOM_CENTER_1F
-	warp_def 7, 1, 3, GOLDENROD_POKECOM_CENTER_1F
+	db 2 ; warp events
+	warp_event 0, 7, 3, GOLDENROD_POKECOM_CENTER_1F
+	warp_event 1, 7, 3, GOLDENROD_POKECOM_CENTER_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 4 ; signposts
-	signpost 2, 3, SIGNPOST_JUMPTEXT, RangiComputerText
-	signpost 2, 6, SIGNPOST_JUMPTEXT, LunaComputerText
-	signpost 5, 6, SIGNPOST_UP, AizawaComputerScript
-	signpost 2, 4, SIGNPOST_READ, RangiKeyboardScript
+	db 4 ; bg events
+	bg_event 3, 2, SIGNPOST_JUMPTEXT, RangiComputerText
+	bg_event 6, 2, SIGNPOST_JUMPTEXT, LunaComputerText
+	bg_event 6, 5, SIGNPOST_UP, AizawaComputerScript
+	bg_event 4, 2, SIGNPOST_READ, RangiKeyboardScript
 
-	db 3 ; person events
-	person_event SPRITE_SCIENTIST_F, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
-	person_event SPRITE_PHARMACIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
+	db 3 ; object events
+	object_event 4, 4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
+	object_event 7, 3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
+	object_event 7, 6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
 AdminRangiText:

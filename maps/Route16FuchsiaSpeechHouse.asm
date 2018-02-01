@@ -1,20 +1,20 @@
 Route16FuchsiaSpeechHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 1, ROUTE_16_NORTHWEST
-	warp_def 7, 3, 1, ROUTE_16_NORTHWEST
+	db 2 ; warp events
+	warp_event 2, 7, 1, ROUTE_16_NORTHWEST
+	warp_event 3, 7, 1, ROUTE_16_NORTHWEST
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
+	db 1 ; bg events
+	bg_event 7, 1, SIGNPOST_JUMPSTD, picturebookshelf
 
-	db 2 ; person events
-	person_event SPRITE_SUPER_NERD, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x73379, -1
-	person_event SPRITE_LADY, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route16FuchsiaSpeechHouseLadyText, -1
+	db 2 ; object events
+	object_event 2, 3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x73379, -1
+	object_event 5, 4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route16FuchsiaSpeechHouseLadyText, -1
 
 UnknownText_0x73379:
 	text "If you cruise down"

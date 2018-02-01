@@ -1,21 +1,21 @@
 GoldenrodHappinessRater_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 3, GOLDENROD_CITY
-	warp_def 7, 3, 3, GOLDENROD_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 3, GOLDENROD_CITY
+	warp_event 3, 7, 3, GOLDENROD_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 7, SIGNPOST_JUMPSTD, radio2
+	db 1 ; bg events
+	bg_event 7, 1, SIGNPOST_JUMPSTD, radio2
 
-	db 3 ; person events
-	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x54953, -1
-	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x54b04, -1
-	person_event SPRITE_TWIN, 6, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x54b67, -1
+	db 3 ; object events
+	object_event 2, 4, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x54953, -1
+	object_event 5, 3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x54b04, -1
+	object_event 5, 6, SPRITE_TWIN, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x54b67, -1
 
 TeacherScript_0x54953:
 	faceplayer

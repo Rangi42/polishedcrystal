@@ -1,33 +1,33 @@
 SproutTower2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 4, 4, 3, SPROUT_TOWER_1F
-	warp_def 6, 0, 4, SPROUT_TOWER_1F
-	warp_def 3, 15, 5, SPROUT_TOWER_1F
-	warp_def 14, 8, 1, SPROUT_TOWER_3F
+	db 4 ; warp events
+	warp_event 4, 4, 3, SPROUT_TOWER_1F
+	warp_event 0, 6, 4, SPROUT_TOWER_1F
+	warp_event 15, 3, 5, SPROUT_TOWER_1F
+	warp_event 8, 14, 1, SPROUT_TOWER_3F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1848c8
+	db 1 ; bg events
+	bg_event 10, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1848c8
 
-	db 3 ; person events
-	person_event SPRITE_SAGE, 3, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
-	person_event SPRITE_SAGE, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
+	db 3 ; object events
+	object_event 10, 3, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
+	object_event 7, 14, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
 	itemball_event 1, 1, X_ACCURACY, 1, EVENT_SPROUT_TOWER2F_X_ACCURACY
 
 TrainerSageNico:
-	trainer EVENT_BEAT_SAGE_NICO, SAGE, NICO, SageNicoSeenText, SageNicoBeatenText, 0, SageNicoScript
+	trainer SAGE, NICO, EVENT_BEAT_SAGE_NICO, SageNicoSeenText, SageNicoBeatenText, 0, SageNicoScript
 
 SageNicoScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1847ff
 
 TrainerSageEdmond:
-	trainer EVENT_BEAT_SAGE_EDMOND, SAGE, EDMOND, SageEdmondSeenText, SageEdmondBeatenText, 0, SageEdmondScript
+	trainer SAGE, EDMOND, EVENT_BEAT_SAGE_EDMOND, SageEdmondSeenText, SageEdmondBeatenText, 0, SageEdmondScript
 
 SageEdmondScript:
 	end_if_just_battled

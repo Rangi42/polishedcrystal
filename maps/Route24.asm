@@ -1,30 +1,30 @@
 Route24_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, Route24TileScript
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, Route24TileScript
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 10 ; xy triggers
-	xy_trigger 1, 15, 19, Route24BridgeOverheadTrigger
-	xy_trigger 1, 14, 20, Route24BridgeOverheadTrigger
-	xy_trigger 1, 14, 21, Route24BridgeOverheadTrigger
-	xy_trigger 1, 15, 22, Route24BridgeOverheadTrigger
-	xy_trigger 1, 39, 20, Route24BridgeOverheadTrigger
-	xy_trigger 1, 39, 21, Route24BridgeOverheadTrigger
-	xy_trigger 0, 15, 20, Route24BridgeUnderfootTrigger
-	xy_trigger 0, 15, 21, Route24BridgeUnderfootTrigger
-	xy_trigger 0, 38, 20, Route24BridgeUnderfootTrigger
-	xy_trigger 0, 38, 21, Route24BridgeUnderfootTrigger
+	db 10 ; coord events
+	coord_event 19, 15, 1, Route24BridgeOverheadTrigger
+	coord_event 20, 14, 1, Route24BridgeOverheadTrigger
+	coord_event 21, 14, 1, Route24BridgeOverheadTrigger
+	coord_event 22, 15, 1, Route24BridgeOverheadTrigger
+	coord_event 20, 39, 1, Route24BridgeOverheadTrigger
+	coord_event 21, 39, 1, Route24BridgeOverheadTrigger
+	coord_event 20, 15, 0, Route24BridgeUnderfootTrigger
+	coord_event 21, 15, 0, Route24BridgeUnderfootTrigger
+	coord_event 20, 38, 0, Route24BridgeUnderfootTrigger
+	coord_event 21, 38, 0, Route24BridgeUnderfootTrigger
 
-	db 1 ; signposts
-	signpost 5, 16, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
+	db 1 ; bg events
+	bg_event 16, 5, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
-	db 1 ; person events
-	person_event SPRITE_ROCKET, 25, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	db 1 ; object events
+	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE24_ROCKET
 
 Route24TileScript:
@@ -83,7 +83,7 @@ Route24_FinishBridge:
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 TrainerGruntM31:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_31, GRUNTM, 31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa
+	trainer GRUNTM, 31, EVENT_BEAT_ROCKET_GRUNTM_31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa
 
 RocketScript_0x1adbfa:
 	playmusic MUSIC_ROCKET_ENCOUNTER

@@ -1,71 +1,71 @@
 TeamRocketBaseB1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
 
-	db 4 ; warps
-	warp_def 2, 27, 3, MAHOGANY_MART_1F
-	warp_def 14, 3, 1, TEAM_ROCKET_BASE_B2F
-	warp_def 15, 5, 4, TEAM_ROCKET_BASE_B1F
-	warp_def 2, 25, 3, TEAM_ROCKET_BASE_B1F
+	db 4 ; warp events
+	warp_event 27, 2, 3, MAHOGANY_MART_1F
+	warp_event 3, 14, 1, TEAM_ROCKET_BASE_B2F
+	warp_event 5, 15, 4, TEAM_ROCKET_BASE_B1F
+	warp_event 25, 2, 3, TEAM_ROCKET_BASE_B1F
 
-	db 30 ; xy triggers
+	db 30 ; coord events
 	; There are five security cameras in the base.
 	; Walking in front of one triggers two Rocket Grunts.
-	xy_trigger 0, 2, 24, SecurityCamera1a
-	xy_trigger 0, 3, 24, SecurityCamera1b
-	xy_trigger 0, 2, 6, SecurityCamera2a
-	xy_trigger 0, 3, 6, SecurityCamera2b
-	xy_trigger 0, 6, 24, SecurityCamera3a
-	xy_trigger 0, 7, 24, SecurityCamera3b
-	xy_trigger 0, 16, 22, SecurityCamera4
-	xy_trigger 0, 16, 8, SecurityCamera5
+	coord_event 24, 2, 0, SecurityCamera1a
+	coord_event 24, 3, 0, SecurityCamera1b
+	coord_event 6, 2, 0, SecurityCamera2a
+	coord_event 6, 3, 0, SecurityCamera2b
+	coord_event 24, 6, 0, SecurityCamera3a
+	coord_event 24, 7, 0, SecurityCamera3b
+	coord_event 22, 16, 0, SecurityCamera4
+	coord_event 8, 16, 0, SecurityCamera5
 	; There are spots on the floor that trigger a Pokémon battle.
 	; Each Pokémon (Voltorb, Koffing, Geodude) knows Selfdestruct.
-	xy_trigger 0, 7, 2, ExplodingTrap1
-	xy_trigger 0, 7, 3, ExplodingTrap2
-	xy_trigger 0, 7, 4, ExplodingTrap3
-	xy_trigger 0, 8, 1, ExplodingTrap4
-	xy_trigger 0, 8, 3, ExplodingTrap5
-	xy_trigger 0, 8, 5, ExplodingTrap6
-	xy_trigger 0, 9, 3, ExplodingTrap7
-	xy_trigger 0, 9, 4, ExplodingTrap8
-	xy_trigger 0, 10, 1, ExplodingTrap9
-	xy_trigger 0, 10, 2, ExplodingTrap10
-	xy_trigger 0, 10, 3, ExplodingTrap11
-	xy_trigger 0, 10, 5, ExplodingTrap12
-	xy_trigger 0, 11, 2, ExplodingTrap13
-	xy_trigger 0, 11, 4, ExplodingTrap14
-	xy_trigger 0, 12, 1, ExplodingTrap15
-	xy_trigger 0, 12, 2, ExplodingTrap16
-	xy_trigger 0, 12, 4, ExplodingTrap17
-	xy_trigger 0, 12, 5, ExplodingTrap18
-	xy_trigger 0, 13, 1, ExplodingTrap19
-	xy_trigger 0, 13, 3, ExplodingTrap20
-	xy_trigger 0, 13, 4, ExplodingTrap21
-	xy_trigger 0, 13, 5, ExplodingTrap22
+	coord_event 2, 7, 0, ExplodingTrap1
+	coord_event 3, 7, 0, ExplodingTrap2
+	coord_event 4, 7, 0, ExplodingTrap3
+	coord_event 1, 8, 0, ExplodingTrap4
+	coord_event 3, 8, 0, ExplodingTrap5
+	coord_event 5, 8, 0, ExplodingTrap6
+	coord_event 3, 9, 0, ExplodingTrap7
+	coord_event 4, 9, 0, ExplodingTrap8
+	coord_event 1, 10, 0, ExplodingTrap9
+	coord_event 2, 10, 0, ExplodingTrap10
+	coord_event 3, 10, 0, ExplodingTrap11
+	coord_event 5, 10, 0, ExplodingTrap12
+	coord_event 2, 11, 0, ExplodingTrap13
+	coord_event 4, 11, 0, ExplodingTrap14
+	coord_event 1, 12, 0, ExplodingTrap15
+	coord_event 2, 12, 0, ExplodingTrap16
+	coord_event 4, 12, 0, ExplodingTrap17
+	coord_event 5, 12, 0, ExplodingTrap18
+	coord_event 1, 13, 0, ExplodingTrap19
+	coord_event 3, 13, 0, ExplodingTrap20
+	coord_event 4, 13, 0, ExplodingTrap21
+	coord_event 5, 13, 0, ExplodingTrap22
 
-	db 9 ; signposts
-	signpost 11, 19, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost0Script
-	signpost 1, 24, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 1, 6, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 15, 8, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 15, 22, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 5, 24, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	signpost 11, 20, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 11, 21, SIGNPOST_JUMPSTD, teamrocketoath
-	signpost 11, 3, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
+	db 9 ; bg events
+	bg_event 19, 11, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost0Script
+	bg_event 24, 1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 6, 1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 8, 15, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 22, 15, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 24, 5, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 20, 11, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 21, 11, SIGNPOST_JUMPSTD, teamrocketoath
+	bg_event 3, 11, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
-	db 6 ; person events
-	person_event SPRITE_ROCKET, 0, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
-	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
-	person_event SPRITE_SCIENTIST, 12, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
-	itemball_event 6, 27, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
-	itemball_event 15, 14, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
-	itemball_event 12, 21, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
+	db 6 ; object events
+	object_event 0, 0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
+	object_event 2, 4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
+	itemball_event 27, 6, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
+	itemball_event 14, 15, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
+	itemball_event 21, 12, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const TEAMROCKETBASEB1F_ROCKET1
 
 TeamRocketBaseB1FCallback1:
@@ -541,14 +541,14 @@ NoExplodingTrap:
 	end
 
 TrainerRocketScientistJed:
-	trainer EVENT_BEAT_ROCKET_SCIENTIST_JED, ROCKET_SCIENTIST, JED, RocketScientistJedSeenText, RocketScientistJedBeatenText, 0, RocketScientistJedScript
+	trainer ROCKET_SCIENTIST, JED, EVENT_BEAT_ROCKET_SCIENTIST_JED, RocketScientistJedSeenText, RocketScientistJedBeatenText, 0, RocketScientistJedScript
 
 RocketScientistJedScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x6cc16
 
 TrainerGruntM16:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_16, GRUNTM, 16, GruntM16SeenText, GruntM16BeatenText, 0, GruntM16Script
+	trainer GRUNTM, 16, EVENT_BEAT_ROCKET_GRUNTM_16, GruntM16SeenText, GruntM16BeatenText, 0, GruntM16Script
 
 GruntM16Script:
 	end_if_just_battled

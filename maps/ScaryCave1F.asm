@@ -1,38 +1,38 @@
 ScaryCave1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 31, 33, 1, URAGA_CHANNEL_EAST
-	warp_def 31, 11, 1, URAGA_CHANNEL_WEST
-	warp_def 30, 20, 1, SCARY_CAVE_B1F
-	warp_def 10, 34, 2, SCARY_CAVE_B1F
-	warp_def 1, 9, 1, SCARY_CAVE_SHIPWRECK
+	db 5 ; warp events
+	warp_event 33, 31, 1, URAGA_CHANNEL_EAST
+	warp_event 11, 31, 1, URAGA_CHANNEL_WEST
+	warp_event 20, 30, 1, SCARY_CAVE_B1F
+	warp_event 34, 10, 2, SCARY_CAVE_B1F
+	warp_event 9, 1, 1, SCARY_CAVE_SHIPWRECK
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 3, 34, SIGNPOST_ITEM + MAX_ELIXER, EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR
-	signpost 28, 18, SIGNPOST_ITEM + PEARL_STRING, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING
-	signpost 29, 30, SIGNPOST_ITEM + PEARL, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL
+	db 3 ; bg events
+	bg_event 34, 3, SIGNPOST_ITEM + MAX_ELIXER, EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR
+	bg_event 18, 28, SIGNPOST_ITEM + PEARL_STRING, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING
+	bg_event 30, 29, SIGNPOST_ITEM + PEARL, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL
 
-	db 13 ; person events
-	person_event SPRITE_MIRA, 5, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
-	person_event SPRITE_PHARMACIST, 24, 8, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
-	person_event SPRITE_POKEFAN_M, 2, 36, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacSmilte, -1
-	person_event SPRITE_SUPER_NERD, 18, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuper_nerdMako, -1
-	person_event SPRITE_YOUNGSTER, 20, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo1, -1
-	person_event SPRITE_LASS, 20, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo2, -1
-	person_event SPRITE_HEX_MANIAC, 16, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacBethany, -1
-	person_event SPRITE_SCIENTIST, 29, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistPiotr, -1
-	itemball_event 7, 27, X_SPCL_DEF, 1, EVENT_SCARY_CAVE_1F_X_SPCL_DEF
-	itemball_event 9, 4, DUSK_STONE, 1, EVENT_SCARY_CAVE_1F_DUSK_STONE
-	itemball_event 19, 33, HYPER_POTION, 1, EVENT_SCARY_CAVE_1F_HYPER_POTION
-	itemball_event 23, 28, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
-	itemball_event 29, 3, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
+	db 13 ; object events
+	object_event 15, 5, SPRITE_MIRA, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
+	object_event 8, 24, SPRITE_PHARMACIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
+	object_event 36, 2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacSmilte, -1
+	object_event 8, 18, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuper_nerdMako, -1
+	object_event 22, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo1, -1
+	object_event 23, 20, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo2, -1
+	object_event 37, 16, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacBethany, -1
+	object_event 36, 29, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistPiotr, -1
+	itemball_event 27, 7, X_SPCL_DEF, 1, EVENT_SCARY_CAVE_1F_X_SPCL_DEF
+	itemball_event 4, 9, DUSK_STONE, 1, EVENT_SCARY_CAVE_1F_DUSK_STONE
+	itemball_event 33, 19, HYPER_POTION, 1, EVENT_SCARY_CAVE_1F_HYPER_POTION
+	itemball_event 28, 23, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
+	itemball_event 3, 29, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const SCARYCAVE1F_MIRA
 
 ScaryCave1FMiraScript:
@@ -204,7 +204,7 @@ ScaryCave1FPharmacistScript:
 	done
 
 TrainerRuin_maniacSmilte:
-	trainer EVENT_BEAT_RUIN_MANIAC_SMILTE, RUIN_MANIAC, SMILTE, .SeenText, .BeatenText, 0, .Script
+	trainer RUIN_MANIAC, SMILTE, EVENT_BEAT_RUIN_MANIAC_SMILTE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -234,7 +234,7 @@ TrainerRuin_maniacSmilte:
 	done
 
 TrainerSuper_nerdMako:
-	trainer EVENT_BEAT_SUPER_NERD_MAKO, SUPER_NERD, MAKO, .SeenText, .BeatenText, 0, .Script
+	trainer SUPER_NERD, MAKO, EVENT_BEAT_SUPER_NERD_MAKO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -260,7 +260,7 @@ TrainerSuper_nerdMako:
 	done
 
 TrainerCoupleJoeandjo1:
-	trainer EVENT_BEAT_COUPLE_JOE_AND_JO, COUPLE, JOEANDJO1, .SeenText, .BeatenText, 0, .Script
+	trainer COUPLE, JOEANDJO1, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -287,7 +287,7 @@ TrainerCoupleJoeandjo1:
 	done
 
 TrainerCoupleJoeandjo2:
-	trainer EVENT_BEAT_COUPLE_JOE_AND_JO, COUPLE, JOEANDJO2, .SeenText, .BeatenText, 0, .Script
+	trainer COUPLE, JOEANDJO2, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -313,7 +313,7 @@ TrainerCoupleJoeandjo2:
 	done
 
 TrainerHex_maniacBethany:
-	trainer EVENT_BEAT_HEX_MANIAC_BETHANY, HEX_MANIAC, BETHANY, .SeenText, .BeatenText, 0, .Script
+	trainer HEX_MANIAC, BETHANY, EVENT_BEAT_HEX_MANIAC_BETHANY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -335,7 +335,7 @@ TrainerHex_maniacBethany:
 	done
 
 TrainerScientistPiotr:
-	trainer EVENT_BEAT_SCIENTIST_PIOTR, SCIENTIST, PIOTR, .SeenText, .BeatenText, 0, .Script
+	trainer SCIENTIST, PIOTR, EVENT_BEAT_SCIENTIST_PIOTR, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

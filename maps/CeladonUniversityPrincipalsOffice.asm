@@ -1,22 +1,22 @@
 CeladonUniversityPrincipalsOffice_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 5, CELADON_UNIVERSITY_1F
-	warp_def 7, 3, 5, CELADON_UNIVERSITY_1F
+	db 2 ; warp events
+	warp_event 2, 7, 5, CELADON_UNIVERSITY_1F
+	warp_event 3, 7, 5, CELADON_UNIVERSITY_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 4 ; signposts
-	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
-	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
-	signpost 4, 5, SIGNPOST_RIGHT, CeladonUniversityPrincipalsOfficeComputer
-	signpost 1, 1, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
+	db 4 ; bg events
+	bg_event 2, 0, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
+	bg_event 3, 0, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
+	bg_event 5, 4, SIGNPOST_RIGHT, CeladonUniversityPrincipalsOfficeComputer
+	bg_event 1, 1, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
 
-	db 1 ; person events
-	person_event SPRITE_MATSUMOTO, 2, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
+	db 1 ; object events
+	object_event 2, 2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
 
 CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY

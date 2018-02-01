@@ -1,27 +1,27 @@
 LuckyIsland_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 9 ; person events
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
-	person_event SPRITE_FISHER, 6, 29, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_BAKER, 16, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_BAKER, 23, 32, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBakerOlga, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_ARTIST, 21, 20, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerArtistReina, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_ARTIST, 16, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_SIGHTSEER_M, 11, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
-	person_event SPRITE_LADY, 12, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
-	fruittree_event 16, 25, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, EVENT_LUCKY_ISLAND_CIVILIANS
+	db 9 ; object events
+	object_event 27, 18, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
+	object_event 29, 6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 21, 16, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 32, 23, SPRITE_BAKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBakerOlga, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 20, 21, SPRITE_ARTIST, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerArtistReina, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 36, 16, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 23, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 23, 12, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
+	fruittree_event 25, 16, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, EVENT_LUCKY_ISLAND_CIVILIANS
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const LUCKYISLAND_POKE_BALL
 
 Script_ChangeLuckyIslandMap:
@@ -42,7 +42,7 @@ Script_ChangeLuckyIslandMap:
 	return
 
 TrainerFisherHall:
-	trainer EVENT_BEAT_FISHER_HALL, FISHER, HALL, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, HALL, EVENT_BEAT_FISHER_HALL, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -64,7 +64,7 @@ TrainerFisherHall:
 	done
 
 TrainerBakerMargaret:
-	trainer EVENT_BEAT_BAKER_MARGARET, BAKER, MARGARET, .SeenText, .BeatenText, 0, .Script
+	trainer BAKER, MARGARET, EVENT_BEAT_BAKER_MARGARET, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -88,7 +88,7 @@ TrainerBakerMargaret:
 	done
 
 TrainerBakerOlga:
-	trainer EVENT_BEAT_BAKER_OLGA, BAKER, OLGA, .SeenText, .BeatenText, 0, .Script
+	trainer BAKER, OLGA, EVENT_BEAT_BAKER_OLGA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -115,7 +115,7 @@ TrainerBakerOlga:
 	done
 
 TrainerArtistReina:
-	trainer EVENT_BEAT_ARTIST_REINA, ARTIST, REINA, .SeenText, .BeatenText, 0, .Script
+	trainer ARTIST, REINA, EVENT_BEAT_ARTIST_REINA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -138,7 +138,7 @@ TrainerArtistReina:
 	done
 
 TrainerArtistAlina:
-	trainer EVENT_BEAT_ARTIST_ALINA, ARTIST, ALINA, .SeenText, .BeatenText, 0, .Script
+	trainer ARTIST, ALINA, EVENT_BEAT_ARTIST_ALINA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -163,7 +163,7 @@ TrainerArtistAlina:
 	done
 
 TrainerSightseersLiandsu1:
-	trainer EVENT_BEAT_SIGHTSEERS_LI_AND_SU, SIGHTSEERS, LIANDSU1, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERS, LIANDSU1, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -189,7 +189,7 @@ TrainerSightseersLiandsu1:
 	done
 
 TrainerSightseersLiandsu2:
-	trainer EVENT_BEAT_SIGHTSEERS_LI_AND_SU, SIGHTSEERS, LIANDSU2, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERS, LIANDSU2, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

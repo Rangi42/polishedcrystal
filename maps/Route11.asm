@@ -1,34 +1,34 @@
 Route11_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 8, 47, 1, ROUTE_11_GATE
-	warp_def 9, 47, 2, ROUTE_11_GATE
+	db 2 ; warp events
+	warp_event 47, 8, 1, ROUTE_11_GATE
+	warp_event 47, 9, 2, ROUTE_11_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 7, 5, SIGNPOST_JUMPTEXT, Route11SignText
-	signpost 5, 44, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_11_HIDDEN_REVIVE
+	db 2 ; bg events
+	bg_event 5, 7, SIGNPOST_JUMPTEXT, Route11SignText
+	bg_event 44, 5, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_11_HIDDEN_REVIVE
 
-	db 12 ; person events
-	person_event SPRITE_YOUNGSTER, 14, 32, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
-	person_event SPRITE_YOUNGSTER, 4, 30, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
-	person_event SPRITE_YOUNGSTER, 2, 21, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlfie, -1
-	person_event SPRITE_YOUNGSTER, 7, 40, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
-	person_event SPRITE_YOUNGSTER, 6, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
-	person_event SPRITE_YOUNGSTER, 14, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicUri, -1
-	person_event SPRITE_ENGINEER, 15, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerBernie, -1
-	person_event SPRITE_ENGINEER, 14, 38, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
-	person_event SPRITE_ROCKER, 3, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
-	person_event SPRITE_VERMILION_LAWRENCE, 16, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
-	fruittree_event 2, 44, FRUITTREE_ROUTE_11, GANLON_BERRY
-	tmhmball_event 13, 44, TM_VENOSHOCK, EVENT_ROUTE_11_TM_VENOSHOCK
+	db 12 ; object events
+	object_event 32, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
+	object_event 30, 4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
+	object_event 21, 2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlfie, -1
+	object_event 40, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
+	object_event 12, 6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
+	object_event 24, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicUri, -1
+	object_event 7, 15, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerBernie, -1
+	object_event 38, 14, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
+	object_event 9, 3, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
+	object_event 13, 16, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
+	fruittree_event 44, 2, FRUITTREE_ROUTE_11, GANLON_BERRY
+	tmhmball_event 44, 13, TM_VENOSHOCK, EVENT_ROUTE_11_TM_VENOSHOCK
 
 TrainerYoungsterOwen:
-	trainer EVENT_BEAT_YOUNGSTER_OWEN, YOUNGSTER, OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript
+	trainer YOUNGSTER, OWEN, EVENT_BEAT_YOUNGSTER_OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript
 
 YoungsterOwenScript:
 	end_if_just_battled
@@ -56,7 +56,7 @@ UnknownText_0x680b2:
 	done
 
 TrainerYoungsterJason:
-	trainer EVENT_BEAT_YOUNGSTER_JASON, YOUNGSTER, JASON, YoungsterJasonSeenText, YoungsterJasonBeatenText, 0, YoungsterJasonScript
+	trainer YOUNGSTER, JASON, EVENT_BEAT_YOUNGSTER_JASON, YoungsterJasonSeenText, YoungsterJasonBeatenText, 0, YoungsterJasonScript
 
 YoungsterJasonScript:
 	end_if_just_battled
@@ -82,7 +82,7 @@ UnknownText_0x6814a:
 	done
 
 TrainerYoungsterAlfie:
-	trainer EVENT_BEAT_YOUNGSTER_ALFIE, YOUNGSTER, ALFIE, .SeenText, .BeatenText, 0, .Script
+	trainer YOUNGSTER, ALFIE, EVENT_BEAT_YOUNGSTER_ALFIE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -104,7 +104,7 @@ TrainerYoungsterAlfie:
 	done
 
 TrainerPsychicHerman:
-	trainer EVENT_BEAT_PSYCHIC_HERMAN, PSYCHIC_T, HERMAN, PsychicHermanSeenText, PsychicHermanBeatenText, 0, PsychicHermanScript
+	trainer PSYCHIC_T, HERMAN, EVENT_BEAT_PSYCHIC_HERMAN, PsychicHermanSeenText, PsychicHermanBeatenText, 0, PsychicHermanScript
 
 PsychicHermanScript:
 	end_if_just_battled
@@ -126,7 +126,7 @@ UnknownText_0x6817b:
 	done
 
 TrainerPsychicFidel:
-	trainer EVENT_BEAT_PSYCHIC_FIDEL, PSYCHIC_T, FIDEL, PsychicFidelSeenText, PsychicFidelBeatenText, 0, PsychicFidelScript
+	trainer PSYCHIC_T, FIDEL, EVENT_BEAT_PSYCHIC_FIDEL, PsychicFidelSeenText, PsychicFidelBeatenText, 0, PsychicFidelScript
 
 PsychicFidelScript:
 	end_if_just_battled
@@ -154,7 +154,7 @@ UnknownText_0x681ec:
 	done
 
 TrainerPsychicUri:
-	trainer EVENT_BEAT_PSYCHIC_URI, PSYCHIC_T, URI, .SeenText, .BeatenText, 0, .Script
+	trainer PSYCHIC_T, URI, EVENT_BEAT_PSYCHIC_URI, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -181,7 +181,7 @@ TrainerPsychicUri:
 	done
 
 TrainerEngineerBernie:
-	trainer EVENT_BEAT_ENGINEER_BERNIE, ENGINEER, BERNIE, .SeenText, .BeatenText, 0, .Script
+	trainer ENGINEER, BERNIE, EVENT_BEAT_ENGINEER_BERNIE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -204,7 +204,7 @@ TrainerEngineerBernie:
 	done
 
 TrainerEngineerCamden:
-	trainer EVENT_BEAT_ENGINEER_CAMDEN, ENGINEER, CAMDEN, .SeenText, .BeatenText, 0, .Script
+	trainer ENGINEER, CAMDEN, EVENT_BEAT_ENGINEER_CAMDEN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -230,7 +230,7 @@ TrainerEngineerCamden:
 	done
 
 TrainerGuitaristmRoger:
-	trainer EVENT_BEAT_GUITARISTM_ROGER, GUITARISTM, ROGER, .SeenText, .BeatenText, 0, .Script
+	trainer GUITARISTM, ROGER, EVENT_BEAT_GUITARISTM_ROGER, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -256,7 +256,7 @@ TrainerGuitaristmRoger:
 	done
 
 TrainerGuitaristfRitsuko:
-	trainer EVENT_BEAT_GUITARISTF_RITSUKO, GUITARISTF, RITSUKO, .SeenText, .BeatenText, 0, .Script
+	trainer GUITARISTF, RITSUKO, EVENT_BEAT_GUITARISTF_RITSUKO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

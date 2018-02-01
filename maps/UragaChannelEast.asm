@@ -1,30 +1,30 @@
 UragaChannelEast_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 11, 2, 1, SCARY_CAVE_1F
+	db 1 ; warp events
+	warp_event 2, 11, 1, SCARY_CAVE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 6 ; signposts
-	signpost 5, 45, SIGNPOST_JUMPTEXT, UragaChannelSignText
-	signpost 13, 3, SIGNPOST_JUMPTEXT, ScaryCaveEastSignText
-	signpost 4, 33, SIGNPOST_ITEM + NUGGET, EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET
-	signpost 14, 34, SIGNPOST_ITEM + PEARL, EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL
-	signpost 12, 22, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP
-	signpost 11, 9, SIGNPOST_ITEM + STAR_PIECE, EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE
+	db 6 ; bg events
+	bg_event 45, 5, SIGNPOST_JUMPTEXT, UragaChannelSignText
+	bg_event 3, 13, SIGNPOST_JUMPTEXT, ScaryCaveEastSignText
+	bg_event 33, 4, SIGNPOST_ITEM + NUGGET, EVENT_URAGA_CHANNEL_EAST_HIDDEN_NUGGET
+	bg_event 34, 14, SIGNPOST_ITEM + PEARL, EVENT_URAGA_CHANNEL_EAST_HIDDEN_PEARL
+	bg_event 22, 12, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_URAGA_CHANNEL_EAST_HIDDEN_BOTTLE_CAP
+	bg_event 9, 11, SIGNPOST_ITEM + STAR_PIECE, EVENT_URAGA_CHANNEL_EAST_HIDDEN_STAR_PIECE
 
-	db 5 ; person events
-	person_event SPRITE_SWIMMER_GIRL, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 22, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermKieran, -1
-	person_event SPRITE_BIKER, 15, 34, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBikerTyrone, -1
-	itemball_event 2, 9, DIVE_BALL, 1, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
-	itemball_event 8, 20, EVIOLITE, 1, EVENT_URAGA_CHANNEL_EAST_EVIOLITE
+	db 5 ; object events
+	object_event 5, 2, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfWoda, -1
+	object_event 22, 7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermKieran, -1
+	object_event 34, 15, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBikerTyrone, -1
+	itemball_event 9, 2, DIVE_BALL, 1, EVENT_URAGA_CHANNEL_EAST_DIVE_BALL
+	itemball_event 20, 8, EVIOLITE, 1, EVENT_URAGA_CHANNEL_EAST_EVIOLITE
 
 TrainerSwimmerfWoda:
-	trainer EVENT_BEAT_SWIMMERF_WODA, SWIMMERF, WODA, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, WODA, EVENT_BEAT_SWIMMERF_WODA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -48,7 +48,7 @@ TrainerSwimmerfWoda:
 	done
 
 TrainerCooltrainermKieran:
-	trainer EVENT_BEAT_COOLTRAINERM_KIERAN, COOLTRAINERM, KIERAN, .SeenText, .BeatenText, 0, .Script
+	trainer COOLTRAINERM, KIERAN, EVENT_BEAT_COOLTRAINERM_KIERAN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -73,7 +73,7 @@ TrainerCooltrainermKieran:
 	done
 
 TrainerBikerTyrone:
-	trainer EVENT_BEAT_BIKER_TYRONE, BIKER, TYRONE, .SeenText, .BeatenText, 0, .Script
+	trainer BIKER, TYRONE, EVENT_BEAT_BIKER_TYRONE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

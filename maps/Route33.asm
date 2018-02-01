@@ -1,21 +1,21 @@
 Route33_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, Route33RainScript
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, Route33RainScript
 
-	db 1 ; warps
-	warp_def 9, 11, 3, UNION_CAVE_1F
+	db 1 ; warp events
+	warp_event 11, 9, 3, UNION_CAVE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 11, 11, SIGNPOST_JUMPTEXT, Route33SignText
+	db 1 ; bg events
+	bg_event 11, 11, SIGNPOST_JUMPTEXT, Route33SignText
 
-	db 3 ; person events
-	person_event SPRITE_POKEFAN_M, 13, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	person_event SPRITE_TWIN, 17, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
-	fruittree_event 16, 14, FRUITTREE_ROUTE_33, PECHA_BERRY
+	db 3 ; object events
+	object_event 6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
+	object_event 12, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
+	fruittree_event 14, 16, FRUITTREE_ROUTE_33, PECHA_BERRY
 
 Route33RainScript:
 	special Special_GetOvercastIndex
@@ -28,7 +28,7 @@ Route33RainScript:
 	return
 
 TrainerHikerAnthony:
-	trainer EVENT_BEAT_HIKER_ANTHONY, HIKER, ANTHONY1, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
+	trainer HIKER, ANTHONY1, EVENT_BEAT_HIKER_ANTHONY, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
@@ -149,7 +149,7 @@ TrainerHikerAnthony:
 	end
 
 TrainerSchoolgirlImogen:
-	trainer EVENT_BEAT_SCHOOLGIRL_IMOGEN, SCHOOLGIRL, IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText, 0, SchoolgirlImogenScript
+	trainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText, 0, SchoolgirlImogenScript
 
 SchoolgirlImogenScript:
 	end_if_just_battled

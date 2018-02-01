@@ -1,26 +1,26 @@
 Route34Coast_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 8 ; person events
-	person_event SPRITE_SWIMMER_GUY, 45, 7, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermFrank, -1
-	person_event SPRITE_SWIMMER_GUY, 19, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermNadar, -1
-	person_event SPRITE_SWIMMER_GUY, 61, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermConrad, -1
-	person_event SPRITE_GOLDENROD_LYRA, 42, 8, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfCaroline, -1
-	person_event SPRITE_GOLDENROD_LYRA, 6, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNatalia, -1
-	person_event SPRITE_FISHER, 29, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherFrancis, -1
-	person_event SPRITE_YOUNGSTER, 32, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperTony, -1
-	itemball_event 34, 4, PEARL_STRING, 1, EVENT_ROUTE_34_COAST_PEARL_STRING
+	db 8 ; object events
+	object_event 7, 45, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermFrank, -1
+	object_event 9, 19, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermNadar, -1
+	object_event 8, 61, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermConrad, -1
+	object_event 8, 42, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfCaroline, -1
+	object_event 8, 6, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNatalia, -1
+	object_event 8, 29, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherFrancis, -1
+	object_event 6, 32, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperTony, -1
+	itemball_event 4, 34, PEARL_STRING, 1, EVENT_ROUTE_34_COAST_PEARL_STRING
 
 TrainerSwimmermFrank:
-	trainer EVENT_BEAT_SWIMMERM_FRANK, SWIMMERM, FRANK, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, FRANK, EVENT_BEAT_SWIMMERM_FRANK, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -47,7 +47,7 @@ TrainerSwimmermFrank:
 	done
 
 TrainerSwimmermNadar:
-	trainer EVENT_BEAT_SWIMMERM_NADAR, SWIMMERM, NADAR, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, NADAR, EVENT_BEAT_SWIMMERM_NADAR, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -75,7 +75,7 @@ TrainerSwimmermNadar:
 	done
 
 TrainerSwimmermConrad:
-	trainer EVENT_BEAT_SWIMMERM_CONRAD, SWIMMERM, CONRAD, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, CONRAD, EVENT_BEAT_SWIMMERM_CONRAD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -103,7 +103,7 @@ TrainerSwimmermConrad:
 	done
 
 TrainerSwimmerfCaroline:
-	trainer EVENT_BEAT_SWIMMERF_CAROLINE, SWIMMERF, CAROLINE, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, CAROLINE, EVENT_BEAT_SWIMMERF_CAROLINE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -129,7 +129,7 @@ TrainerSwimmerfCaroline:
 	done
 
 TrainerSwimmerfNatalia:
-	trainer EVENT_BEAT_SWIMMERF_NATALIA, SWIMMERF, NATALIA, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, NATALIA, EVENT_BEAT_SWIMMERF_NATALIA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -156,7 +156,7 @@ TrainerSwimmerfNatalia:
 	done
 
 TrainerFisherFrancis:
-	trainer EVENT_BEAT_FISHER_FRANCIS, FISHER, FRANCIS, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, FRANCIS, EVENT_BEAT_FISHER_FRANCIS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -183,7 +183,7 @@ TrainerFisherFrancis:
 	done
 
 TrainerBird_keeperTony:
-	trainer EVENT_BEAT_BIRD_KEEPER_TONY, BIRD_KEEPER, BIRD_KEEPER_TONY, .SeenText, .BeatenText, 0, .Script
+	trainer BIRD_KEEPER, BIRD_KEEPER_TONY, EVENT_BEAT_BIRD_KEEPER_TONY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

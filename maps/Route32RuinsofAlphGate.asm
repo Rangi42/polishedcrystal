@@ -1,22 +1,22 @@
 Route32RuinsofAlphGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 4, 0, 10, RUINS_OF_ALPH_OUTSIDE
-	warp_def 5, 0, 11, RUINS_OF_ALPH_OUTSIDE
-	warp_def 4, 9, 2, ROUTE_32
-	warp_def 5, 9, 3, ROUTE_32
+	db 4 ; warp events
+	warp_event 0, 4, 10, RUINS_OF_ALPH_OUTSIDE
+	warp_event 0, 5, 11, RUINS_OF_ALPH_OUTSIDE
+	warp_event 9, 4, 2, ROUTE_32
+	warp_event 9, 5, 3, ROUTE_32
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69a36, -1
-	person_event SPRITE_POKEFAN_M, 2, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69a81, -1
-	person_event SPRITE_YOUNGSTER, 6, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69abd, -1
+	db 3 ; object events
+	object_event 5, 2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69a36, -1
+	object_event 8, 2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69a81, -1
+	object_event 1, 6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69abd, -1
 
 UnknownText_0x69a36:
 	text "Ruins of Alph"

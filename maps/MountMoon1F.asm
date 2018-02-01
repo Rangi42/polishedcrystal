@@ -1,34 +1,34 @@
 MountMoon1F_MapScriptHeader:
-	db 1 ; map triggers
-	dw MountMoon1FTrigger0
+	db 1 ; scene scripts
+	scene_script MountMoon1FTrigger0
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 23, 11, 1, ROUTE_3
-	warp_def 12, 22, 1, MOUNT_MOON_B1F
-	warp_def 9, 11, 2, MOUNT_MOON_B1F
-	warp_def 4, 4, 3, MOUNT_MOON_B1F
+	db 4 ; warp events
+	warp_event 11, 23, 1, ROUTE_3
+	warp_event 22, 12, 1, MOUNT_MOON_B1F
+	warp_event 11, 9, 2, MOUNT_MOON_B1F
+	warp_event 4, 4, 3, MOUNT_MOON_B1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 17, 2, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
-	signpost 16, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
+	db 2 ; bg events
+	bg_event 2, 17, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
+	bg_event 12, 16, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
 
-	db 10 ; person events
-	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
-	person_event SPRITE_BUG_MANIAC, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
-	person_event SPRITE_LASS, 14, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1
-	person_event SPRITE_SUPER_NERD, 21, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdJovan, -1
-	person_event SPRITE_BUG_MANIAC, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
-	person_event SPRITE_LASS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
-	person_event SPRITE_POKEFAN_M, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1
-	itemball_event 2, 3, REVIVE, 1, EVENT_MOUNT_MOON_1F_REVIVE
-	itemball_event 20, 2, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
-	itemball_event 22, 16, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
+	db 10 ; object events
+	object_event 10, 19, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	object_event 4, 18, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
+	object_event 11, 14, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1
+	object_event 20, 21, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdJovan, -1
+	object_event 27, 14, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
+	object_event 20, 2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
+	object_event 5, 5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1
+	itemball_event 3, 2, REVIVE, 1, EVENT_MOUNT_MOON_1F_REVIVE
+	itemball_event 2, 20, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
+	itemball_event 16, 22, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const MOUNTMOON1F_SILVER
 
 MountMoon1FTrigger0:
@@ -88,42 +88,42 @@ MountMoon1FTrigger0:
 	end
 
 TrainerBugManiacKenta:
-	trainer EVENT_BEAT_BUG_MANIAC_KENTA, BUG_MANIAC, KENTA, BugManiacKentaSeenText, BugManiacKentaBeatenText, 0, BugManiacKentaScript
+	trainer BUG_MANIAC, KENTA, EVENT_BEAT_BUG_MANIAC_KENTA, BugManiacKentaSeenText, BugManiacKentaBeatenText, 0, BugManiacKentaScript
 
 BugManiacKentaScript:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacKentaAfterText
 
 TrainerLassMiriam:
-	trainer EVENT_BEAT_LASS_MIRIAM, LASS, MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
+	trainer LASS, MIRIAM, EVENT_BEAT_LASS_MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
 
 LassMiriamScript:
 	end_if_just_battled
 	jumptextfaceplayer LassMiriamAfterText
 
 TrainerSuperNerdJovan:
-	trainer EVENT_BEAT_SUPER_NERD_JOVAN, SUPER_NERD, JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
+	trainer SUPER_NERD, JOVAN, EVENT_BEAT_SUPER_NERD_JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
 
 SuperNerdJovanScript:
 	end_if_just_battled
 	jumptextfaceplayer SuperNerdJovanAfterText
 
 TrainerBugManiacRobby:
-	trainer EVENT_BEAT_BUG_MANIAC_ROBBY, BUG_MANIAC, ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
+	trainer BUG_MANIAC, ROBBY, EVENT_BEAT_BUG_MANIAC_ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
 
 BugManiacRobbyScript:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacRobbyAfterText
 
 TrainerLassIris:
-	trainer EVENT_BEAT_LASS_IRIS, LASS, IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
+	trainer LASS, IRIS, EVENT_BEAT_LASS_IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
 
 LassIrisScript:
 	end_if_just_battled
 	jumptextfaceplayer LassIrisAfterText
 
 TrainerHikerMarcos:
-	trainer EVENT_BEAT_HIKER_MARCOS, HIKER, MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
+	trainer HIKER, MARCOS, EVENT_BEAT_HIKER_MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
 
 HikerMarcosScript:
 	end_if_just_battled

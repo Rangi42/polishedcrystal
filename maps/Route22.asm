@@ -1,21 +1,21 @@
 Route22_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 5, 3, 1, POKEMON_LEAGUE_GATE
+	db 1 ; warp events
+	warp_event 3, 5, 1, POKEMON_LEAGUE_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 6, 6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
+	db 1 ; bg events
+	bg_event 6, 6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
 
-	db 2 ; person events
-	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
+	db 2 ; object events
+	object_event 14, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
+	object_event 20, 2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE22_KUKUI
 
 KukuiScript:

@@ -1,20 +1,20 @@
 TinTowerRoof_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, TinTowerRoofHoOh
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, TinTowerRoofHoOh
 
-	db 1 ; warps
-	warp_def 13, 7, 2, TIN_TOWER_10F
+	db 1 ; warp events
+	warp_event 7, 13, 2, TIN_TOWER_10F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_HO_OH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
+	db 1 ; object events
+	object_event 7, 3, SPRITE_HO_OH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const TINTOWERROOF_HO_OH
 
 TinTowerRoofHoOh:

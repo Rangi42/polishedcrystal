@@ -1,18 +1,18 @@
 CeladonDeptStoreElevator_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 3, 1, -1, CELADON_DEPT_STORE_1F
-	warp_def 3, 2, -1, CELADON_DEPT_STORE_1F
+	db 2 ; warp events
+	warp_event 1, 3, -1, CELADON_DEPT_STORE_1F
+	warp_event 2, 3, -1, CELADON_DEPT_STORE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 0, 3, SIGNPOST_READ, CeladonDeptStoreElevatorButton
+	db 1 ; bg events
+	bg_event 3, 0, SIGNPOST_READ, CeladonDeptStoreElevatorButton
 
-	db 0 ; person events
+	db 0 ; object events
 
 CeladonDeptStoreElevatorButton:
 	opentext

@@ -1,20 +1,20 @@
 BluesHouse2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 0, 7, 3, BLUES_HOUSE_1F
+	db 1 ; warp events
+	warp_event 7, 0, 3, BLUES_HOUSE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 4 ; signposts
-	signpost 1, 0, SIGNPOST_JUMPTEXT, BluesHouse2FPCText
-	signpost 5, 3, SIGNPOST_JUMPTEXT, BluesHouse2FSNESText
-	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
+	db 4 ; bg events
+	bg_event 0, 1, SIGNPOST_JUMPTEXT, BluesHouse2FPCText
+	bg_event 3, 5, SIGNPOST_JUMPTEXT, BluesHouse2FSNESText
+	bg_event 4, 1, SIGNPOST_READ, PokemonJournalProfOakScript
+	bg_event 5, 1, SIGNPOST_READ, PokemonJournalProfOakScript
 
-	db 0 ; person events
+	db 0 ; object events
 
 BluesHouse2FPCText:
 	text "There's a program"

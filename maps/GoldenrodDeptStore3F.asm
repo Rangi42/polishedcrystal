@@ -1,22 +1,22 @@
 GoldenrodDeptStore3F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 0, 12, 1, GOLDENROD_DEPT_STORE_2F
-	warp_def 0, 15, 2, GOLDENROD_DEPT_STORE_4F
-	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	db 3 ; warp events
+	warp_event 12, 0, 1, GOLDENROD_DEPT_STORE_2F
+	warp_event 15, 0, 2, GOLDENROD_DEPT_STORE_4F
+	warp_event 2, 0, 1, GOLDENROD_DEPT_STORE_ELEVATOR
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore3FDirectoryText
+	db 1 ; bg events
+	bg_event 14, 0, SIGNPOST_JUMPTEXT, GoldenrodDeptStore3FDirectoryText
 
-	db 3 ; person events
-	person_event SPRITE_CLERK, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_GOLDENROD_3F, -1
-	person_event SPRITE_SUPER_NERD, 5, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55dcc, -1
-	person_event SPRITE_ROCKER, 5, 2, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55e15, -1
+	db 3 ; object events
+	object_event 6, 1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_GOLDENROD_3F, -1
+	object_event 12, 5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55dcc, -1
+	object_event 2, 5, SPRITE_ROCKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55e15, -1
 
 UnknownText_0x55dcc:
 	text "I, I, I'm really"

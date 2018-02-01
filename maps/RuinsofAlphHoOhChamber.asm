@@ -1,28 +1,28 @@
 RuinsofAlphHoOhChamber_MapScriptHeader:
-	db 1 ; map triggers
-	dw RuinsofAlphHoOhChamberTrigger0
+	db 1 ; scene scripts
+	scene_script RuinsofAlphHoOhChamberTrigger0
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, UnknownScript_0x5857c
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, UnknownScript_0x5857c
 
-	db 5 ; warps
-	warp_def 9, 3, 1, RUINS_OF_ALPH_OUTSIDE
-	warp_def 9, 4, 1, RUINS_OF_ALPH_OUTSIDE
-	warp_def 3, 3, 2, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 3, 4, 3, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 0, 4, 1, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
+	db 5 ; warp events
+	warp_event 3, 9, 1, RUINS_OF_ALPH_OUTSIDE
+	warp_event 4, 9, 1, RUINS_OF_ALPH_OUTSIDE
+	warp_event 3, 3, 2, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_event 4, 3, 3, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_event 4, 0, 1, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 6 ; signposts
-	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58685
-	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58685
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost5Script
+	db 6 ; bg events
+	bg_event 2, 3, SIGNPOST_JUMPTEXT, UnknownText_0x58685
+	bg_event 5, 3, SIGNPOST_JUMPTEXT, UnknownText_0x58685
+	bg_event 3, 2, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
+	bg_event 4, 2, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost3Script
+	bg_event 3, 0, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
+	bg_event 4, 0, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost5Script
 
-	db 0 ; person events
+	db 0 ; object events
 
 RuinsofAlphHoOhChamberTrigger0:
 	special SpecialHoOhChamber

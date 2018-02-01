@@ -1,28 +1,28 @@
 PokemonLeagueGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 8 ; warps
-	warp_def 7, 19, 1, ROUTE_22
-	warp_def 7, 20, 1, ROUTE_22
-	warp_def 17, 10, 1, ROUTE_26
-	warp_def 17, 11, 1, ROUTE_26
-	warp_def 0, 10, 1, ROUTE_23
-	warp_def 0, 11, 2, ROUTE_23
-	warp_def 7, 1, 2, ROUTE_28
-	warp_def 7, 2, 2, ROUTE_28
+	db 8 ; warp events
+	warp_event 19, 7, 1, ROUTE_22
+	warp_event 20, 7, 1, ROUTE_22
+	warp_event 10, 17, 1, ROUTE_26
+	warp_event 11, 17, 1, ROUTE_26
+	warp_event 10, 0, 1, ROUTE_23
+	warp_event 11, 0, 2, ROUTE_23
+	warp_event 1, 7, 2, ROUTE_28
+	warp_event 2, 7, 2, ROUTE_28
 
-	db 2 ; xy triggers
-	xy_trigger 0, 10, 10, PokemonLeagueGateXYTriggerScript1
-	xy_trigger 0, 10, 11, PokemonLeagueGateXYTriggerScript2
+	db 2 ; coord events
+	coord_event 10, 10, 0, PokemonLeagueGateXYTriggerScript1
+	coord_event 11, 10, 0, PokemonLeagueGateXYTriggerScript2
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_OFFICER, 10, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x9ba03, -1
-	person_event SPRITE_BLACK_BELT, 5, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9baf1, EVENT_OPENED_MT_SILVER
-	person_event SPRITE_BLACK_BELT, 5, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9bb37, EVENT_FOUGHT_SNORLAX
+	db 3 ; object events
+	object_event 8, 10, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x9ba03, -1
+	object_event 7, 5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9baf1, EVENT_OPENED_MT_SILVER
+	object_event 14, 5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9bb37, EVENT_FOUGHT_SNORLAX
 
 PokemonLeagueGateXYTriggerScript2:
 	applyonemovement PLAYER, step_left

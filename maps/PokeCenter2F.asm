@@ -1,28 +1,28 @@
 PokeCenter2F_MapScriptHeader:
-	db 3 ; map triggers
-	dw PokeCenter2FDummyTrigger
-	dw PokeCenter2FLeftTradeCenterTrigger
-	dw PokeCenter2FLeftColosseumTrigger
+	db 3 ; scene scripts
+	scene_script PokeCenter2FDummyTrigger
+	scene_script PokeCenter2FLeftTradeCenterTrigger
+	scene_script PokeCenter2FLeftColosseumTrigger
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, PokeCenter2FTileCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, PokeCenter2FTileCallback
 
-	db 3 ; warps
-	warp_def 7, 0, -1, POKECENTER_2F
-	warp_def 0, 5, 1, TRADE_CENTER
-	warp_def 0, 9, 1, COLOSSEUM
+	db 3 ; warp events
+	warp_event 0, 7, -1, POKECENTER_2F
+	warp_event 5, 0, 1, TRADE_CENTER
+	warp_event 9, 0, 1, COLOSSEUM
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 3, 7, SIGNPOST_READ, PokeCenter2FLinkRecordSign
+	db 1 ; bg events
+	bg_event 7, 3, SIGNPOST_READ, PokeCenter2FLinkRecordSign
 
-	db 3 ; person events
-	person_event SPRITE_LINK_RECEPTIONIST, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 2, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 3, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1
+	db 3 ; object events
+	object_event 5, 2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	object_event 9, 2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	object_event 13, 3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 

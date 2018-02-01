@@ -1,23 +1,23 @@
 VictoryRoad3F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 5, 2, 3, VICTORY_ROAD_2F
-	warp_def 11, 15, 4, VICTORY_ROAD_2F
-	warp_def 13, 19, 5, VICTORY_ROAD_2F
+	db 3 ; warp events
+	warp_event 2, 5, 3, VICTORY_ROAD_2F
+	warp_event 15, 11, 4, VICTORY_ROAD_2F
+	warp_event 19, 13, 5, VICTORY_ROAD_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	person_event SPRITE_VETERAN_M, 8, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmRemy, -1
-	itemball_event 13, 16, RAZOR_FANG, 1, EVENT_VICTORY_ROAD_3F_RAZOR_FANG
+	db 2 ; object events
+	object_event 11, 8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmRemy, -1
+	itemball_event 16, 13, RAZOR_FANG, 1, EVENT_VICTORY_ROAD_3F_RAZOR_FANG
 
 TrainerVeteranmRemy:
-	trainer EVENT_BEAT_VETERANM_REMY, VETERANM, REMY, VeteranmRemySeenText, VeteranmRemyBeatenText, 0, VeteranmRemyScript
+	trainer VETERANM, REMY, EVENT_BEAT_VETERANM_REMY, VeteranmRemySeenText, VeteranmRemyBeatenText, 0, VeteranmRemyScript
 
 VeteranmRemyScript:
 	end_if_just_battled

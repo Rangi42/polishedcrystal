@@ -1,26 +1,26 @@
 RuinsofAlphSinjohChamber_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 9, 5, 12, RUINS_OF_ALPH_OUTSIDE
-	warp_def 9, 4, 12, RUINS_OF_ALPH_OUTSIDE
+	db 2 ; warp events
+	warp_event 5, 9, 12, RUINS_OF_ALPH_OUTSIDE
+	warp_event 4, 9, 12, RUINS_OF_ALPH_OUTSIDE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 2, 5, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
-	signpost 3, 4, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
-	signpost 3, 6, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
+	db 3 ; bg events
+	bg_event 5, 2, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
+	bg_event 4, 3, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
+	bg_event 6, 3, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
 
-	db 4 ; person events
-	person_event SPRITE_WII, 1, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
-	person_event SPRITE_GAMECUBE, 1, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
-	person_event SPRITE_GOLD_TROPHY, 5, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
-	person_event SPRITE_SILVER_TROPHY, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
+	db 4 ; object events
+	object_event 3, 1, SPRITE_WII, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
+	object_event 7, 1, SPRITE_GAMECUBE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
+	object_event 3, 5, SPRITE_GOLD_TROPHY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
+	object_event 7, 5, SPRITE_SILVER_TROPHY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_W
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_A
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_R

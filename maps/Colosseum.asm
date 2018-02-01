@@ -1,26 +1,26 @@
 Colosseum_MapScriptHeader:
-	db 1 ; map triggers
-	dw ColosseumTrigger0
+	db 1 ; scene scripts
+	scene_script ColosseumTrigger0
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
-	dbw MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
+	db 2 ; callbacks
+	callback MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
+	callback MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
 
-	db 2 ; warps
-	warp_def 7, 4, 3, POKECENTER_2F
-	warp_def 7, 5, 3, POKECENTER_2F
+	db 2 ; warp events
+	warp_event 4, 7, 3, POKECENTER_2F
+	warp_event 5, 7, 3, POKECENTER_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 4, 4, SIGNPOST_RIGHT, MapColosseumSignpost1Script
-	signpost 4, 5, SIGNPOST_LEFT, MapColosseumSignpost1Script
+	db 2 ; bg events
+	bg_event 4, 4, SIGNPOST_RIGHT, MapColosseumSignpost1Script
+	bg_event 5, 4, SIGNPOST_LEFT, MapColosseumSignpost1Script
 
-	db 2 ; person events
-	person_event SPRITE_CHRIS, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_CHRIS, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_RECEIVED_BALLS_FROM_KURT
+	db 2 ; object events
+	object_event 3, 4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_GAVE_KURT_APRICORNS
+	object_event 6, 4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_RECEIVED_BALLS_FROM_KURT
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const COLOSSEUM_CHRIS1
 	const COLOSSEUM_CHRIS2
 

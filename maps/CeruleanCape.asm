@@ -1,42 +1,42 @@
 CeruleanCape_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 5, 9, 1, BILLS_HOUSE
-	warp_def 29, 38, 1, DIM_CAVE_2F
-	warp_def 29, 39, 1, DIM_CAVE_2F
+	db 3 ; warp events
+	warp_event 9, 5, 1, BILLS_HOUSE
+	warp_event 38, 29, 1, DIM_CAVE_2F
+	warp_event 39, 29, 1, DIM_CAVE_2F
 
-	db 3 ; xy triggers
-	xy_trigger 1, 6, 4, CeruleanCapeDateInterruptedTrigger1
-	xy_trigger 1, 7, 4, CeruleanCapeDateInterruptedTrigger2
-	xy_trigger 1, 12, 9, CeruleanCapeDateInterruptedTrigger3
+	db 3 ; coord events
+	coord_event 4, 6, 1, CeruleanCapeDateInterruptedTrigger1
+	coord_event 4, 7, 1, CeruleanCapeDateInterruptedTrigger2
+	coord_event 9, 12, 1, CeruleanCapeDateInterruptedTrigger3
 
-	db 3 ; signposts
-	signpost 5, 7, SIGNPOST_JUMPTEXT, BillsHouseSignText
-	signpost 12, 31, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
-	signpost 3, 18, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
+	db 3 ; bg events
+	bg_event 7, 5, SIGNPOST_JUMPTEXT, BillsHouseSignText
+	bg_event 31, 12, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
+	bg_event 18, 3, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-	db 16 ; person events
-	person_event SPRITE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	person_event SPRITE_VERMILION_LAWRENCE, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
-	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	person_event SPRITE_SWIMMER_GUY, 7, 25, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
-	person_event SPRITE_SWIMMER_GUY, 16, 41, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
-	person_event SPRITE_SWIMMER_GUY, 23, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
-	person_event SPRITE_BEAUTY, 13, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
-	person_event SPRITE_BEAUTY, 21, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
-	person_event SPRITE_GENTLEMAN, 27, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
-	person_event SPRITE_GENTLEMAN, 26, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
-	person_event SPRITE_VERMILION_LAWRENCE, 32, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfMorgan, -1
-	person_event SPRITE_LADY, 26, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
-	person_event SPRITE_FISHER, 11, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
-	person_event SPRITE_COOLTRAINER_M, 8, -4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
-	person_event SPRITE_COOLTRAINER_M, 8, -2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
-	itemball_event 12, 31, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
+	db 16 ; object events
+	object_event 8, 9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
+	object_event 8, 9, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
+	object_event 8, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
+	object_event 25, 7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
+	object_event 41, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
+	object_event 21, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
+	object_event 19, 13, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
+	object_event 1, 21, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
+	object_event 0, 27, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
+	object_event 41, 26, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
+	object_event 16, 32, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfMorgan, -1
+	object_event 7, 26, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
+	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
+	object_event -4, 8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
+	object_event -2, 8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
+	itemball_event 31, 12, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_MISTY_WALK
 	const CERULEANCAPE_BOYFRIEND
@@ -146,7 +146,7 @@ CeruleanCapeDateInterruptedTrigger3:
 	step_end
 
 TrainerSwimmermRomeo:
-	trainer EVENT_BEAT_SWIMMERM_ROMEO, SWIMMERM, ROMEO, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, ROMEO, EVENT_BEAT_SWIMMERM_ROMEO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -171,7 +171,7 @@ TrainerSwimmermRomeo:
 	done
 
 TrainerSwimmermMalcolm:
-	trainer EVENT_BEAT_SWIMMERM_MALCOLM, SWIMMERM, MALCOLM, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, MALCOLM, EVENT_BEAT_SWIMMERM_MALCOLM, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -199,7 +199,7 @@ TrainerSwimmermMalcolm:
 	done
 
 TrainerSwimmermArmand:
-	trainer EVENT_BEAT_SWIMMERM_ARMAND, SWIMMERM, ARMAND, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, ARMAND, EVENT_BEAT_SWIMMERM_ARMAND, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -228,7 +228,7 @@ TrainerSwimmermArmand:
 	done
 
 TrainerBeautyBridget:
-	trainer EVENT_BEAT_BEAUTY_BRIDGET, BEAUTY, BRIDGET, .SeenText, .BeatenText, 0, .Script
+	trainer BEAUTY, BRIDGET, EVENT_BEAT_BEAUTY_BRIDGET, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -251,7 +251,7 @@ TrainerBeautyBridget:
 	done
 
 TrainerBeautyVeronica:
-	trainer EVENT_BEAT_BEAUTY_VERONICA, BEAUTY, VERONICA, .SeenText, .BeatenText, 0, .Script
+	trainer BEAUTY, VERONICA, EVENT_BEAT_BEAUTY_VERONICA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -281,7 +281,7 @@ TrainerBeautyVeronica:
 	done
 
 TrainerGentlemanCamus:
-	trainer EVENT_BEAT_GENTLEMAN_CAMUS, GENTLEMAN, CAMUS, .SeenText, .BeatenText, 0, .Script
+	trainer GENTLEMAN, CAMUS, EVENT_BEAT_GENTLEMAN_CAMUS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -310,7 +310,7 @@ TrainerGentlemanCamus:
 	done
 
 TrainerGentlemanGeoffrey:
-	trainer EVENT_BEAT_GENTLEMAN_GEOFFREY, GENTLEMAN, GEOFFREY, .SeenText, .BeatenText, 0, .Script
+	trainer GENTLEMAN, GEOFFREY, EVENT_BEAT_GENTLEMAN_GEOFFREY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -337,7 +337,7 @@ TrainerGentlemanGeoffrey:
 	done
 
 TrainerGuitaristfMorgan:
-	trainer EVENT_BEAT_GUITARISTF_MORGAN, GUITARISTF, MORGAN, .SeenText, .BeatenText, 0, .Script
+	trainer GUITARISTF, MORGAN, EVENT_BEAT_GUITARISTF_MORGAN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -361,7 +361,7 @@ TrainerGuitaristfMorgan:
 	done
 
 TrainerLadyJessica:
-	trainer EVENT_BEAT_LADY_JESSICA, LADY, JESSICA, .SeenText, .BeatenText, 0, .Script
+	trainer LADY, JESSICA, EVENT_BEAT_LADY_JESSICA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -406,7 +406,7 @@ TrainerLadyJessica:
 	done
 
 TrainerFisherLeroy:
-	trainer EVENT_BEAT_FISHER_LEROY, FISHER, LEROY, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, LEROY, EVENT_BEAT_FISHER_LEROY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

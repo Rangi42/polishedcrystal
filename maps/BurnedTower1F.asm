@@ -1,33 +1,33 @@
 BurnedTower1F_MapScriptHeader:
-	db 1 ; map triggers
-	dw BurnedTower1FTrigger0
+	db 1 ; scene scripts
+	scene_script BurnedTower1FTrigger0
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
 
-	db 4 ; warps
-	warp_def 15, 7, 13, ECRUTEAK_CITY
-	warp_def 15, 8, 13, ECRUTEAK_CITY
-	warp_def 9, 8, 1, BURNED_TOWER_B1F
-	warp_def 15, 5, 2, BURNED_TOWER_B1F
+	db 4 ; warp events
+	warp_event 7, 15, 13, ECRUTEAK_CITY
+	warp_event 8, 15, 13, ECRUTEAK_CITY
+	warp_event 8, 9, 1, BURNED_TOWER_B1F
+	warp_event 5, 15, 2, BURNED_TOWER_B1F
 
-	db 1 ; xy triggers
-	xy_trigger 1, 9, 9, BurnedTowerRivalBattleScript
+	db 1 ; coord events
+	coord_event 9, 9, 1, BurnedTowerRivalBattleScript
 
-	db 2 ; signposts
-	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
-	signpost 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
+	db 2 ; bg events
+	bg_event 6, 7, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
+	bg_event 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
-	db 7 ; person events
-	person_event SPRITE_EUSINE, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
-	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
-	smashrock_event 4, 13
-	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
-	itemball_event 1, 13, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
-	person_event SPRITE_HEX_MANIAC, 1, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
-	person_event SPRITE_FISHER, 3, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
+	db 7 ; object events
+	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
+	object_event 6, 9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	smashrock_event 13, 4
+	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
+	itemball_event 13, 1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
+	object_event 1, 1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
+	object_event 11, 3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_SILVER
 
@@ -120,14 +120,14 @@ BurnedTowerRivalBattleScript:
 	end
 
 TrainerHexManiacTamara:
-	trainer EVENT_BEAT_HEX_MANIAC_TAMARA, HEX_MANIAC, TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText, 0, HexManiacTamaraScript
+	trainer HEX_MANIAC, TAMARA, EVENT_BEAT_HEX_MANIAC_TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText, 0, HexManiacTamaraScript
 
 HexManiacTamaraScript:
 	end_if_just_battled
 	jumptextfaceplayer HexManiacTamaraAfterText
 
 TrainerFirebreatherNed:
-	trainer EVENT_BEAT_FIREBREATHER_NED, FIREBREATHER, NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
+	trainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
 
 FirebreatherNedScript:
 	end_if_just_battled

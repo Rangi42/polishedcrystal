@@ -1,58 +1,58 @@
 SaffronGym_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 33 ; warps
-	warp_def 17, 8, 2, SAFFRON_CITY
-	warp_def 17, 9, 2, SAFFRON_CITY
-	warp_def 14, 11, 18, SAFFRON_GYM
-	warp_def 14, 19, 19, SAFFRON_GYM
-	warp_def 10, 19, 20, SAFFRON_GYM
-	warp_def 10, 0, 21, SAFFRON_GYM
-	warp_def 2, 4, 22, SAFFRON_GYM
-	warp_def 4, 11, 23, SAFFRON_GYM
-	warp_def 14, 0, 24, SAFFRON_GYM
-	warp_def 2, 19, 25, SAFFRON_GYM
-	warp_def 16, 15, 26, SAFFRON_GYM
-	warp_def 16, 4, 27, SAFFRON_GYM
-	warp_def 8, 4, 28, SAFFRON_GYM
-	warp_def 2, 8, 29, SAFFRON_GYM
-	warp_def 8, 15, 30, SAFFRON_GYM
-	warp_def 4, 15, 31, SAFFRON_GYM
-	warp_def 4, 0, 32, SAFFRON_GYM
-	warp_def 16, 19, 3, SAFFRON_GYM
-	warp_def 8, 19, 4, SAFFRON_GYM
-	warp_def 8, 0, 5, SAFFRON_GYM
-	warp_def 4, 4, 6, SAFFRON_GYM
-	warp_def 2, 11, 7, SAFFRON_GYM
-	warp_def 16, 0, 8, SAFFRON_GYM
-	warp_def 4, 19, 9, SAFFRON_GYM
-	warp_def 14, 15, 10, SAFFRON_GYM
-	warp_def 14, 4, 11, SAFFRON_GYM
-	warp_def 10, 4, 12, SAFFRON_GYM
-	warp_def 4, 8, 13, SAFFRON_GYM
-	warp_def 10, 15, 14, SAFFRON_GYM
-	warp_def 2, 15, 15, SAFFRON_GYM
-	warp_def 2, 0, 16, SAFFRON_GYM
-	warp_def 10, 11, 17, SAFFRON_GYM
-	warp_def 10, 8, 3, SAFFRON_GYM
+	db 33 ; warp events
+	warp_event 8, 17, 2, SAFFRON_CITY
+	warp_event 9, 17, 2, SAFFRON_CITY
+	warp_event 11, 14, 18, SAFFRON_GYM
+	warp_event 19, 14, 19, SAFFRON_GYM
+	warp_event 19, 10, 20, SAFFRON_GYM
+	warp_event 0, 10, 21, SAFFRON_GYM
+	warp_event 4, 2, 22, SAFFRON_GYM
+	warp_event 11, 4, 23, SAFFRON_GYM
+	warp_event 0, 14, 24, SAFFRON_GYM
+	warp_event 19, 2, 25, SAFFRON_GYM
+	warp_event 15, 16, 26, SAFFRON_GYM
+	warp_event 4, 16, 27, SAFFRON_GYM
+	warp_event 4, 8, 28, SAFFRON_GYM
+	warp_event 8, 2, 29, SAFFRON_GYM
+	warp_event 15, 8, 30, SAFFRON_GYM
+	warp_event 15, 4, 31, SAFFRON_GYM
+	warp_event 0, 4, 32, SAFFRON_GYM
+	warp_event 19, 16, 3, SAFFRON_GYM
+	warp_event 19, 8, 4, SAFFRON_GYM
+	warp_event 0, 8, 5, SAFFRON_GYM
+	warp_event 4, 4, 6, SAFFRON_GYM
+	warp_event 11, 2, 7, SAFFRON_GYM
+	warp_event 0, 16, 8, SAFFRON_GYM
+	warp_event 19, 4, 9, SAFFRON_GYM
+	warp_event 15, 14, 10, SAFFRON_GYM
+	warp_event 4, 14, 11, SAFFRON_GYM
+	warp_event 4, 10, 12, SAFFRON_GYM
+	warp_event 8, 4, 13, SAFFRON_GYM
+	warp_event 15, 10, 14, SAFFRON_GYM
+	warp_event 15, 2, 15, SAFFRON_GYM
+	warp_event 0, 2, 16, SAFFRON_GYM
+	warp_event 11, 10, 17, SAFFRON_GYM
+	warp_event 8, 10, 3, SAFFRON_GYM
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 15, 8, SIGNPOST_READ, SaffronGymStatue
+	db 1 ; bg events
+	bg_event 8, 15, SIGNPOST_READ, SaffronGymStatue
 
-	db 9 ; person events
-	person_event SPRITE_SABRINA, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
-	person_event SPRITE_GRANNY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumDoris, -1
-	person_event SPRITE_YOUNGSTER, 3, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicLeon, -1
-	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicJared, -1
-	person_event SPRITE_HEX_MANIAC, 9, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacLuna, -1
-	person_event SPRITE_HEX_MANIAC, 9, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacNatalie, -1
-	person_event SPRITE_YOUNGSTER, 15, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
-	person_event SPRITE_GRANNY, 15, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumRebecca, -1
-	person_event SPRITE_GYM_GUY, 14, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
+	db 9 ; object events
+	object_event 9, 8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
+	object_event 2, 3, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumDoris, -1
+	object_event 9, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicLeon, -1
+	object_event 17, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicJared, -1
+	object_event 2, 9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacLuna, -1
+	object_event 17, 9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacNatalie, -1
+	object_event 2, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
+	object_event 17, 15, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumRebecca, -1
+	object_event 9, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
 
 SabrinaScript_0x189c2e:
 	faceplayer
@@ -107,49 +107,49 @@ SabrinaAfterTMScript:
 	jumpopenedtext UnknownText_0x189f6c
 
 TrainerMediumDoris:
-	trainer EVENT_BEAT_MEDIUM_DORIS, MEDIUM, DORIS, MediumDorisSeenText, MediumDorisBeatenText, 0, MediumDorisScript
+	trainer MEDIUM, DORIS, EVENT_BEAT_MEDIUM_DORIS, MediumDorisSeenText, MediumDorisBeatenText, 0, MediumDorisScript
 
 MediumDorisScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x18a136
 
 TrainerPsychicLeon:
-	trainer EVENT_BEAT_PSYCHIC_LEON, PSYCHIC_T, LEON, PsychicLeonSeenText, PsychicLeonBeatenText, 0, PsychicLeonScript
+	trainer PSYCHIC_T, LEON, EVENT_BEAT_PSYCHIC_LEON, PsychicLeonSeenText, PsychicLeonBeatenText, 0, PsychicLeonScript
 
 PsychicLeonScript:
 	end_if_just_battled
 	jumptextfaceplayer PsychicLeonAfterText
 
 TrainerPsychicJared:
-	trainer EVENT_BEAT_PSYCHIC_JARED, PSYCHIC_T, JARED, PsychicJaredSeenText, PsychicJaredBeatenText, 0, PsychicJaredScript
+	trainer PSYCHIC_T, JARED, EVENT_BEAT_PSYCHIC_JARED, PsychicJaredSeenText, PsychicJaredBeatenText, 0, PsychicJaredScript
 
 PsychicJaredScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x18a1b3
 
 TrainerHexManiacLuna:
-	trainer EVENT_BEAT_HEX_MANIAC_LUNA, HEX_MANIAC, LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText, 0, HexManiacLunaScript
+	trainer HEX_MANIAC, LUNA, EVENT_BEAT_HEX_MANIAC_LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText, 0, HexManiacLunaScript
 
 HexManiacLunaScript:
 	end_if_just_battled
 	jumptextfaceplayer HexManiacLunaAfterText
 
 TrainerHexManiacNatalie:
-	trainer EVENT_BEAT_HEX_MANIAC_NATALIE, HEX_MANIAC, NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText, 0, HexManiacNatalieScript
+	trainer HEX_MANIAC, NATALIE, EVENT_BEAT_HEX_MANIAC_NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText, 0, HexManiacNatalieScript
 
 HexManiacNatalieScript:
 	end_if_just_battled
 	jumptextfaceplayer HexManiacNatalieAfterText
 
 TrainerPsychicFranklin:
-	trainer EVENT_BEAT_PSYCHIC_FRANKLIN, PSYCHIC_T, FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText, 0, PsychicFranklinScript
+	trainer PSYCHIC_T, FRANKLIN, EVENT_BEAT_PSYCHIC_FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText, 0, PsychicFranklinScript
 
 PsychicFranklinScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x18a0a6
 
 TrainerMediumRebecca:
-	trainer EVENT_BEAT_MEDIUM_REBECCA, MEDIUM, REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, MediumRebeccaScript
+	trainer MEDIUM, REBECCA, EVENT_BEAT_MEDIUM_REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, MediumRebeccaScript
 
 MediumRebeccaScript:
 	end_if_just_battled

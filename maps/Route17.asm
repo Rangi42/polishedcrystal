@@ -1,30 +1,30 @@
 Route17_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 71, 11, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_17_HIDDEN_MAX_ETHER
-	signpost 123, 10, SIGNPOST_ITEM + MAX_ELIXER, EVENT_ROUTE_17_HIDDEN_MAX_ELIXER
+	db 2 ; bg events
+	bg_event 11, 71, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_17_HIDDEN_MAX_ETHER
+	bg_event 10, 123, SIGNPOST_ITEM + MAX_ELIXER, EVENT_ROUTE_17_HIDDEN_MAX_ELIXER
 
-	db 12 ; person events
-	person_event SPRITE_BIKER, 9, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
-	person_event SPRITE_BIKER, 17, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
-	person_event SPRITE_BIKER, 24, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerJacob, -1
-	person_event SPRITE_BIKER, 37, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerDan, -1
-	person_event SPRITE_BIKER, 56, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
-	person_event SPRITE_BIKER, 65, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
-	person_event SPRITE_BIKER, 72, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerAiden, -1
-	person_event SPRITE_BIKER, 86, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerTeddy, -1
-	person_event SPRITE_BIKER, 128, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_ROUGHNECK, 29, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRoughneckBrian, -1
-	person_event SPRITE_ROUGHNECK, 42, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckTheron, -1
-	person_event SPRITE_ROUGHNECK, 91, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckMarkey, -1
+	db 12 ; object events
+	object_event 12, 9, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerDale, -1
+	object_event 4, 17, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerReilly, -1
+	object_event 18, 24, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerJacob, -1
+	object_event 2, 37, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerDan, -1
+	object_event 3, 56, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBikerGlenn, -1
+	object_event 9, 65, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerJoel, -1
+	object_event 13, 72, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerAiden, -1
+	object_event 3, 86, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBikerTeddy, -1
+	object_event 6, 128, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 1, 29, SPRITE_ROUGHNECK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRoughneckBrian, -1
+	object_event 6, 42, SPRITE_ROUGHNECK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckTheron, -1
+	object_event 4, 91, SPRITE_ROUGHNECK, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerRoughneckMarkey, -1
 
 UnknownScript_0x1ad0ab:
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -32,7 +32,7 @@ UnknownScript_0x1ad0ab:
 	return
 
 TrainerBikerReilly:
-	trainer EVENT_BEAT_BIKER_REILLY, BIKER, REILLY, BikerReillySeenText, BikerReillyBeatenText, 0, BikerReillyScript
+	trainer BIKER, REILLY, EVENT_BEAT_BIKER_REILLY, BikerReillySeenText, BikerReillyBeatenText, 0, BikerReillyScript
 
 BikerReillyScript:
 	end_if_just_battled
@@ -53,7 +53,7 @@ UnknownText_0x1ad13b:
 	done
 
 TrainerBikerJoel:
-	trainer EVENT_BEAT_BIKER_JOEL, BIKER, JOEL, BikerJoelSeenText, BikerJoelBeatenText, 0, BikerJoelScript
+	trainer BIKER, JOEL, EVENT_BEAT_BIKER_JOEL, BikerJoelSeenText, BikerJoelBeatenText, 0, BikerJoelScript
 
 BikerJoelScript:
 	end_if_just_battled
@@ -79,7 +79,7 @@ UnknownText_0x1ad196:
 	done
 
 TrainerBikerGlenn:
-	trainer EVENT_BEAT_BIKER_GLENN, BIKER, GLENN, BikerGlennSeenText, BikerGlennBeatenText, 0, BikerGlennScript
+	trainer BIKER, GLENN, EVENT_BEAT_BIKER_GLENN, BikerGlennSeenText, BikerGlennBeatenText, 0, BikerGlennScript
 
 BikerGlennScript:
 	end_if_just_battled
@@ -102,7 +102,7 @@ UnknownText_0x1ad225:
 	done
 
 TrainerBikerDale:
-	trainer EVENT_BEAT_BIKER_DALE, BIKER, DALE, BikerDaleSeenText, BikerDaleBeatenText, 0, BikerDaleScript
+	trainer BIKER, DALE, EVENT_BEAT_BIKER_DALE, BikerDaleSeenText, BikerDaleBeatenText, 0, BikerDaleScript
 
 BikerDaleScript:
 	end_if_just_battled
@@ -125,7 +125,7 @@ BikerDaleAfterText:
 	done
 
 TrainerBikerJacob:
-	trainer EVENT_BEAT_BIKER_JACOB, BIKER, JACOB, BikerJacobSeenText, BikerJacobBeatenText, 0, BikerJacobScript
+	trainer BIKER, JACOB, EVENT_BEAT_BIKER_JACOB, BikerJacobSeenText, BikerJacobBeatenText, 0, BikerJacobScript
 
 BikerJacobScript:
 	end_if_just_battled
@@ -150,7 +150,7 @@ BikerJacobAfterText:
 	done
 
 TrainerBikerAiden:
-	trainer EVENT_BEAT_BIKER_AIDEN, BIKER, AIDEN, BikerAidenSeenText, BikerAidenBeatenText, 0, BikerAidenScript
+	trainer BIKER, AIDEN, EVENT_BEAT_BIKER_AIDEN, BikerAidenSeenText, BikerAidenBeatenText, 0, BikerAidenScript
 
 BikerAidenScript:
 	end_if_just_battled
@@ -180,7 +180,7 @@ BikerAidenAfterText:
 	done
 
 TrainerBikerDan:
-	trainer EVENT_BEAT_BIKER_DAN, BIKER, DAN, BikerDanSeenText, BikerDanBeatenText, 0, BikerDanScript
+	trainer BIKER, DAN, EVENT_BEAT_BIKER_DAN, BikerDanSeenText, BikerDanBeatenText, 0, BikerDanScript
 
 BikerDanScript:
 	end_if_just_battled
@@ -208,7 +208,7 @@ BikerDanAfterText:
 	done
 
 TrainerBikerTeddy:
-	trainer EVENT_BEAT_BIKER_TEDDY, BIKER, TEDDY, BikerTeddySeenText, BikerTeddyBeatenText, 0, BikerTeddyScript
+	trainer BIKER, TEDDY, EVENT_BEAT_BIKER_TEDDY, BikerTeddySeenText, BikerTeddyBeatenText, 0, BikerTeddyScript
 
 BikerTeddyScript:
 	end_if_just_battled
@@ -231,7 +231,7 @@ BikerTeddyAfterText:
 	done
 
 TrainerRoughneckBrian:
-	trainer EVENT_BEAT_ROUGHNECK_BRIAN, ROUGHNECK, BRIAN, RoughneckBrianSeenText, RoughneckBrianBeatenText, 0, RoughneckBrianScript
+	trainer ROUGHNECK, BRIAN, EVENT_BEAT_ROUGHNECK_BRIAN, RoughneckBrianSeenText, RoughneckBrianBeatenText, 0, RoughneckBrianScript
 
 RoughneckBrianScript:
 	end_if_just_battled
@@ -253,7 +253,7 @@ RoughneckBrianAfterText:
 	done
 
 TrainerRoughneckTheron:
-	trainer EVENT_BEAT_ROUGHNECK_THERON, ROUGHNECK, THERON, RoughneckTheronSeenText, RoughneckTheronBeatenText, 0, RoughneckTheronScript
+	trainer ROUGHNECK, THERON, EVENT_BEAT_ROUGHNECK_THERON, RoughneckTheronSeenText, RoughneckTheronBeatenText, 0, RoughneckTheronScript
 
 RoughneckTheronScript:
 	end_if_just_battled
@@ -278,7 +278,7 @@ RoughneckTheronAfterText:
 	done
 
 TrainerRoughneckMarkey:
-	trainer EVENT_BEAT_ROUGHNECK_MARKEY, ROUGHNECK, MARKEY, RoughneckMarkeySeenText, RoughneckMarkeyBeatenText, 0, RoughneckMarkeyScript
+	trainer ROUGHNECK, MARKEY, EVENT_BEAT_ROUGHNECK_MARKEY, RoughneckMarkeySeenText, RoughneckMarkeyBeatenText, 0, RoughneckMarkeyScript
 
 RoughneckMarkeyScript:
 	end_if_just_battled

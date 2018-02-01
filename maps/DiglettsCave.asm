@@ -1,31 +1,31 @@
 DiglettsCave_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 6 ; warps
-	warp_def 15, 37, 10, VERMILION_CITY
-	warp_def 13, 39, 5, DIGLETTS_CAVE
-	warp_def 5, 37, 4, ROUTE_2_NORTH
-	warp_def 3, 39, 6, DIGLETTS_CAVE
-	warp_def 31, 37, 2, DIGLETTS_CAVE
-	warp_def 5, 5, 4, DIGLETTS_CAVE
+	db 6 ; warp events
+	warp_event 37, 15, 10, VERMILION_CITY
+	warp_event 39, 13, 5, DIGLETTS_CAVE
+	warp_event 37, 5, 4, ROUTE_2_NORTH
+	warp_event 39, 3, 6, DIGLETTS_CAVE
+	warp_event 37, 31, 2, DIGLETTS_CAVE
+	warp_event 5, 5, 4, DIGLETTS_CAVE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 15, 8, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
-	signpost 33, 34, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
+	db 2 ; bg events
+	bg_event 8, 15, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
+	bg_event 34, 33, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
 
-	db 8 ; person events
-	person_event SPRITE_SUPER_NERD, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
-	person_event SPRITE_POKEFAN_M, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
-	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
-	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
-	person_event SPRITE_ENGINEER, 20, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
-	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
-	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
-	itemball_event 28, 13, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
+	db 8 ; object events
+	object_event 11, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
+	object_event 5, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
+	object_event 25, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
+	object_event 16, 21, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
+	object_event 9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
+	object_event 37, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
+	object_event 20, 27, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
+	itemball_event 13, 28, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
 
 DiglettsCaveFossilManiacScript:
 	faceplayer
@@ -108,7 +108,7 @@ DiglettsCaveFossilManiacScript:
 	done
 
 TrainerHikerGerard:
-	trainer EVENT_BEAT_HIKER_GERARD, HIKER, GERARD, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, GERARD, EVENT_BEAT_HIKER_GERARD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -134,7 +134,7 @@ TrainerHikerGerard:
 	done
 
 TrainerHikerDent:
-	trainer EVENT_BEAT_HIKER_DENT, HIKER, DENT, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, DENT, EVENT_BEAT_HIKER_DENT, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -162,7 +162,7 @@ TrainerHikerDent:
 	done
 
 TrainerBlackbeltInigo:
-	trainer EVENT_BEAT_BLACKBELT_INIGO, BLACKBELT_T, INIGO, .SeenText, .BeatenText, 0, .Script
+	trainer BLACKBELT_T, INIGO, EVENT_BEAT_BLACKBELT_INIGO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -188,7 +188,7 @@ TrainerBlackbeltInigo:
 	done
 
 TrainerEngineerSmith:
-	trainer EVENT_BEAT_ENGINEER_SMITH, ENGINEER, SMITH, .SeenText, .BeatenText, 0, .Script
+	trainer ENGINEER, SMITH, EVENT_BEAT_ENGINEER_SMITH, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

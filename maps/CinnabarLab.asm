@@ -1,39 +1,39 @@
 CinnabarLab_MapScriptHeader:
-	db 1 ; map triggers
-	dw CinnabarLabTrigger0
+	db 1 ; scene scripts
+	scene_script CinnabarLabTrigger0
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 0 ; warps
+	db 0 ; warp events
 ;	warp_def $9, $e, 3, CINNABAR_LAB
 ;	warp_def $9, $f, 3, CINNABAR_LAB
 ;	warp_def $6, $2, 2, CINNABAR_LAB
 
-	db 1 ; xy triggers
-	xy_trigger 1, 6, 2, CinnabarLabCelebiEventScript
+	db 1 ; coord events
+	coord_event 2, 6, 1, CinnabarLabCelebiEventScript
 
-	db 8 ; signposts
-	signpost 14, 8, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
-	signpost 14, 9, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
-	signpost 14, 16, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
-	signpost 14, 17, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
-	signpost 14, 24, SIGNPOST_JUMPTEXT, CinnabarLabRoom3SignText
-	signpost 14, 25, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
-	signpost 6, 3, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
-	signpost 6, 3, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
+	db 8 ; bg events
+	bg_event 8, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
+	bg_event 9, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	bg_event 16, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
+	bg_event 17, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	bg_event 24, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom3SignText
+	bg_event 25, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
+	bg_event 3, 6, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
+	bg_event 3, 6, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
-	db 9 ; person events
-	person_event SPRITE_GIOVANNI, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_ARMORED_MEWTWO, 4, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_SCIENTIST, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	person_event SPRITE_SCIENTIST, 5, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
-	person_event SPRITE_SCIENTIST, 4, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
-	person_event SPRITE_MEWTWO, 7, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_MEWTWO
-	person_event SPRITE_CELEBI, 8, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
-	person_event SPRITE_CHRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
-	person_event SPRITE_KRIS, 8, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
+	db 9 ; object events
+	object_event 15, 6, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 15, 4, SPRITE_ARMORED_MEWTWO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 11, 6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 20, 5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
+	object_event 11, 4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
+	object_event 15, 7, SPRITE_MEWTWO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_MEWTWO
+	object_event 14, 8, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
+	object_event 15, 8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
+	object_event 15, 8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const CINNABARLAB_GIOVANNI
 	const CINNABARLAB_ARMORED_MEWTWO
 	const CINNABARLAB_SCIENTIST1

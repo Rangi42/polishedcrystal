@@ -1,47 +1,47 @@
 YellowForest_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, YellowForestRebattleBreeder
-	dbw MAPCALLBACK_TILES, YellowForestTileScript
+	db 2 ; callbacks
+	callback MAPCALLBACK_OBJECTS, YellowForestRebattleBreeder
+	callback MAPCALLBACK_TILES, YellowForestTileScript
 
-	db 2 ; warps
-	warp_def 47, 28, 1, YELLOW_FOREST_GATE
-	warp_def 47, 29, 2, YELLOW_FOREST_GATE
+	db 2 ; warp events
+	warp_event 28, 47, 1, YELLOW_FOREST_GATE
+	warp_event 29, 47, 2, YELLOW_FOREST_GATE
 
-	db 8 ; xy triggers
-	xy_trigger 1, 16, 32, YellowForestBridgeOverheadTrigger
-	xy_trigger 1, 17, 32, YellowForestBridgeOverheadTrigger
-	xy_trigger 1, 16, 39, YellowForestBridgeOverheadTrigger
-	xy_trigger 1, 17, 39, YellowForestBridgeOverheadTrigger
-	xy_trigger 0, 16, 33, YellowForestBridgeUnderfootTrigger
-	xy_trigger 0, 17, 33, YellowForestBridgeUnderfootTrigger
-	xy_trigger 0, 16, 38, YellowForestBridgeUnderfootTrigger
-	xy_trigger 0, 17, 38, YellowForestBridgeUnderfootTrigger
+	db 8 ; coord events
+	coord_event 32, 16, 1, YellowForestBridgeOverheadTrigger
+	coord_event 32, 17, 1, YellowForestBridgeOverheadTrigger
+	coord_event 39, 16, 1, YellowForestBridgeOverheadTrigger
+	coord_event 39, 17, 1, YellowForestBridgeOverheadTrigger
+	coord_event 33, 16, 0, YellowForestBridgeUnderfootTrigger
+	coord_event 33, 17, 0, YellowForestBridgeUnderfootTrigger
+	coord_event 38, 16, 0, YellowForestBridgeUnderfootTrigger
+	coord_event 38, 17, 0, YellowForestBridgeUnderfootTrigger
 
-	db 4 ; signposts
-	signpost 14, 39, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
-	signpost 36, 43, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
-	signpost 11, 32, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
-	signpost 40, 9, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
+	db 4 ; bg events
+	bg_event 39, 14, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
+	bg_event 43, 36, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
+	bg_event 32, 11, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
+	bg_event 9, 40, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
 
-	db 14 ; person events
-	person_event SPRITE_WALKER, 24, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
-	person_event SPRITE_SKARMORY, 24, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
-	person_event SPRITE_YELLOW, 6, 47, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
-	person_event SPRITE_BALL_CUT_FRUIT, 26, 49, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
-	person_event SPRITE_SUPER_NERD, 8, 31, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
-	person_event SPRITE_TWIN, 41, 19, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
-	person_event SPRITE_TWIN, 34, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
-	person_event SPRITE_TEACHER, 38, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
-	person_event SPRITE_BREEDER, 42, 43, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
-	tmhmball_event 18, 25, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
-	itemball_event 26, 32, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
-	itemball_event 23, 11, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
-	itemball_event 13, 50, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
+	db 14 ; object events
+	object_event 7, 24, SPRITE_WALKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
+	object_event 8, 24, SPRITE_SKARMORY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
+	object_event 47, 6, SPRITE_YELLOW, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
+	object_event 49, 26, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
+	object_event 31, 8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
+	object_event 19, 41, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
+	object_event 13, 34, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
+	object_event 4, 38, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
+	object_event 43, 42, SPRITE_BREEDER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
+	object_event 15, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
+	tmhmball_event 25, 18, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
+	itemball_event 32, 26, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
+	itemball_event 11, 23, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
+	itemball_event 50, 13, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const YELLOWFOREST_WALKER
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW
@@ -91,28 +91,28 @@ YellowForest_FinishBridge:
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 TrainerSchoolgirlSarah:
-	trainer EVENT_BEAT_SCHOOLGIRL_SARAH, SCHOOLGIRL, SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText, 0, SchoolgirlSarahScript
+	trainer SCHOOLGIRL, SARAH, EVENT_BEAT_SCHOOLGIRL_SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText, 0, SchoolgirlSarahScript
 
 SchoolgirlSarahScript:
 	end_if_just_battled
 	jumptextfaceplayer SchoolgirlSarahAfterText
 
 TrainerSchoolgirlIsabel:
-	trainer EVENT_BEAT_SCHOOLGIRL_ISABEL, SCHOOLGIRL, ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
+	trainer SCHOOLGIRL, ISABEL, EVENT_BEAT_SCHOOLGIRL_ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
 
 SchoolgirlIsabelScript:
 	end_if_just_battled
 	jumptextfaceplayer SchoolgirlIsabelAfterText
 
 TrainerTeacherKathryn:
-	trainer EVENT_BEAT_TEACHER_KATHRYN, TEACHER, KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
+	trainer TEACHER, KATHRYN, EVENT_BEAT_TEACHER_KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
 
 TeacherKathrynScript:
 	end_if_just_battled
 	jumptextfaceplayer TeacherKathrynAfterText
 
 TrainerBreederSophie:
-	trainer EVENT_BEAT_BREEDER_SOPHIE, BREEDER, SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
+	trainer BREEDER, SOPHIE, EVENT_BEAT_BREEDER_SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
 
 BreederSophieScript:
 	end_if_just_battled

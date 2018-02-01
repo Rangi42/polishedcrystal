@@ -1,22 +1,22 @@
 SeagallopFerryShamoutiGate_MapScriptHeader:
-	db 2 ; map triggers
-	dw SeagallopFerryShamoutiGateTrigger0
-	dw SeagallopFerryShamoutiGateTrigger1
+	db 2 ; scene scripts
+	scene_script SeagallopFerryShamoutiGateTrigger0
+	scene_script SeagallopFerryShamoutiGateTrigger1
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 0, 6, 1, BEAUTIFUL_BEACH
+	db 1 ; warp events
+	warp_event 6, 0, 1, BEAUTIFUL_BEACH
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_TWIN, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
+	db 2 ; object events
+	object_event 6, 4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	object_event 4, 1, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 
 SeagallopFerryShamoutiGateTrigger1:

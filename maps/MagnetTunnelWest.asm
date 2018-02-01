@@ -1,15 +1,15 @@
 MagnetTunnelWest_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 15, 12, 1, MAGNET_TUNNEL_INSIDE
+	db 1 ; warp events
+	warp_event 12, 15, 1, MAGNET_TUNNEL_INSIDE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	smashrock_event 8, 9
-	smashrock_event 5, 7
+	db 2 ; object events
+	smashrock_event 9, 8
+	smashrock_event 7, 5

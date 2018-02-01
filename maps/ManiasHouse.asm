@@ -1,20 +1,20 @@
 ManiasHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 1, CIANWOOD_CITY
-	warp_def 7, 3, 1, CIANWOOD_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 1, CIANWOOD_CITY
+	warp_event 3, 7, 1, CIANWOOD_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
-	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
+	db 2 ; bg events
+	bg_event 5, 1, SIGNPOST_JUMPSTD, radio2
+	bg_event 7, 1, SIGNPOST_JUMPSTD, picturebookshelf
 
-	db 1 ; person events
-	person_event SPRITE_ROCKER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
+	db 1 ; object events
+	object_event 2, 4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
 
 ManiaScript:
 	faceplayer

@@ -1,16 +1,16 @@
 Route16Northwest_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 1, 1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
-	warp_def 4, 9, 1, ROUTE_16_GATE
-	warp_def 5, 9, 2, ROUTE_16_GATE
+	db 3 ; warp events
+	warp_event 1, 1, 1, ROUTE_16_FUCHSIA_SPEECH_HOUSE
+	warp_event 9, 4, 1, ROUTE_16_GATE
+	warp_event 9, 5, 2, ROUTE_16_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	cuttree_event 4, 17, EVENT_ROUTE_16_CUT_TREE
+	db 1 ; object events
+	cuttree_event 17, 4, EVENT_ROUTE_16_CUT_TREE

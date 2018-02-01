@@ -1,35 +1,35 @@
 DimCave4F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_TILES, DimCave4FBouldersLand
-	dbw MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
+	db 2 ; callbacks
+	callback MAPCALLBACK_TILES, DimCave4FBouldersLand
+	callback MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
-	db 6 ; warps
-	warp_def 16, 2, 2, DIM_CAVE_5F
-	warp_def 29, 27, 3, DIM_CAVE_5F
-	warp_def 24, 27, 4, DIM_CAVE_5F ; hole
-	warp_def 5, 5, 1, DIM_CAVE_3F
-	warp_def 22, 28, 2, DIM_CAVE_3F
-	warp_def 7, 14, 3, DIM_CAVE_3F
+	db 6 ; warp events
+	warp_event 2, 16, 2, DIM_CAVE_5F
+	warp_event 27, 29, 3, DIM_CAVE_5F
+	warp_event 27, 24, 4, DIM_CAVE_5F ; hole
+	warp_event 5, 5, 1, DIM_CAVE_3F
+	warp_event 28, 22, 2, DIM_CAVE_3F
+	warp_event 14, 7, 3, DIM_CAVE_3F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 23, 25, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
-	signpost 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
+	db 2 ; bg events
+	bg_event 25, 23, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
+	bg_event 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
 
-	db 8 ; person events
-	strengthboulder_event 15, 14, EVENT_BOULDER_IN_DIM_CAVE_4F
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 25, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
-	person_event SPRITE_SCIENTIST, 14, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
-	person_event SPRITE_SCIENTIST, 2, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
-	person_event SPRITE_SUPER_NERD, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
-	itemball_event 2, 17, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
-	itemball_event 8, 27, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
-	itemball_event 23, 6, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
+	db 8 ; object events
+	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
+	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
+	object_event 5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
+	object_event 12, 2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
+	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
+	itemball_event 17, 2, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
+	itemball_event 27, 8, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
+	itemball_event 6, 23, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const DIMCAVE4F_BOULDER
 
 DimCave4FBouldersLand:
@@ -65,7 +65,7 @@ DimCave4FSetUpStoneTable:
 	done
 
 TrainerScientistJoseph:
-	trainer EVENT_BEAT_SCIENTIST_JOSEPH, SCIENTIST, JOSEPH, .SeenText, .BeatenText, 0, .Script
+	trainer SCIENTIST, JOSEPH, EVENT_BEAT_SCIENTIST_JOSEPH, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -97,7 +97,7 @@ TrainerScientistJoseph:
 	done
 
 TrainerScientistNigel:
-	trainer EVENT_BEAT_SCIENTIST_NIGEL, SCIENTIST, NIGEL, .SeenText, .BeatenText, 0, .Script
+	trainer SCIENTIST, NIGEL, EVENT_BEAT_SCIENTIST_NIGEL, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

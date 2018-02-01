@@ -1,38 +1,38 @@
 OlivineLighthouse5F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 7 ; warps
-	warp_def 15, 9, 1, OLIVINE_LIGHTHOUSE_6F
-	warp_def 5, 3, 2, OLIVINE_LIGHTHOUSE_4F
-	warp_def 7, 9, 3, OLIVINE_LIGHTHOUSE_4F
-	warp_def 7, 16, 9, OLIVINE_LIGHTHOUSE_4F
-	warp_def 7, 17, 10, OLIVINE_LIGHTHOUSE_4F
-	warp_def 5, 16, 2, OLIVINE_LIGHTHOUSE_6F
-	warp_def 5, 17, 3, OLIVINE_LIGHTHOUSE_6F
+	db 7 ; warp events
+	warp_event 9, 15, 1, OLIVINE_LIGHTHOUSE_6F
+	warp_event 3, 5, 2, OLIVINE_LIGHTHOUSE_4F
+	warp_event 9, 7, 3, OLIVINE_LIGHTHOUSE_4F
+	warp_event 16, 7, 9, OLIVINE_LIGHTHOUSE_4F
+	warp_event 17, 7, 10, OLIVINE_LIGHTHOUSE_4F
+	warp_event 16, 5, 2, OLIVINE_LIGHTHOUSE_6F
+	warp_event 17, 5, 3, OLIVINE_LIGHTHOUSE_6F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 13, 3, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
+	db 1 ; bg events
+	bg_event 3, 13, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 
-	db 5 ; person events
-	person_event SPRITE_SAILOR, 11, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
-	person_event SPRITE_YOUNGSTER, 3, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperDenis, -1
-	itemball_event 12, 15, RARE_CANDY, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY
-	itemball_event 15, 6, SUPER_REPEL, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
-	tmhmball_event 13, 2, TM_ENERGY_BALL, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_ENERGY_BALL
+	db 5 ; object events
+	object_event 8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
+	object_event 8, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperDenis, -1
+	itemball_event 15, 12, RARE_CANDY, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY
+	itemball_event 6, 15, SUPER_REPEL, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
+	tmhmball_event 2, 13, TM_ENERGY_BALL, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_ENERGY_BALL
 
 TrainerBird_keeperDenis:
-	trainer EVENT_BEAT_BIRD_KEEPER_DENIS, BIRD_KEEPER, DENIS, Bird_keeperDenisSeenText, Bird_keeperDenisBeatenText, 0, Bird_keeperDenisScript
+	trainer BIRD_KEEPER, DENIS, EVENT_BEAT_BIRD_KEEPER_DENIS, Bird_keeperDenisSeenText, Bird_keeperDenisBeatenText, 0, Bird_keeperDenisScript
 
 Bird_keeperDenisScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x60ac3
 
 TrainerSailorErnest:
-	trainer EVENT_BEAT_SAILOR_ERNEST, SAILOR, ERNEST, SailorErnestSeenText, SailorErnestBeatenText, 0, SailorErnestScript
+	trainer SAILOR, ERNEST, EVENT_BEAT_SAILOR_ERNEST, SailorErnestSeenText, SailorErnestBeatenText, 0, SailorErnestScript
 
 SailorErnestScript:
 	end_if_just_battled

@@ -1,27 +1,27 @@
 Route46_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 33, 7, 1, ROUTE_29_46_GATE
-	warp_def 33, 8, 2, ROUTE_29_46_GATE
-	warp_def 5, 14, 3, DARK_CAVE_VIOLET_ENTRANCE
+	db 3 ; warp events
+	warp_event 7, 33, 1, ROUTE_29_46_GATE
+	warp_event 8, 33, 2, ROUTE_29_46_GATE
+	warp_event 14, 5, 3, DARK_CAVE_VIOLET_ENTRANCE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 27, 9, SIGNPOST_JUMPTEXT, Route46SignText
+	db 1 ; bg events
+	bg_event 9, 27, SIGNPOST_JUMPTEXT, Route46SignText
 
-	db 8 ; person events
-	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
-	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
-	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
-	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
-	person_event SPRITE_LASS, 26, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route46LassText, -1
-	fruittree_event 5, 7, FRUITTREE_ROUTE_46_1, CHERI_BERRY
-	fruittree_event 6, 8, FRUITTREE_ROUTE_46_2, CHESTO_BERRY
-	itemball_event 15, 1, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
+	db 8 ; object events
+	object_event 15, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
+	object_event 12, 19, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
+	object_event 4, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
+	object_event 2, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
+	object_event 7, 26, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route46LassText, -1
+	fruittree_event 7, 5, FRUITTREE_ROUTE_46_1, CHERI_BERRY
+	fruittree_event 8, 6, FRUITTREE_ROUTE_46_2, CHESTO_BERRY
+	itemball_event 1, 15, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
 
 Route46HikerScript:
 	faceplayer
@@ -54,14 +54,14 @@ Route46TutorRoute46Script:
 	jumpopenedtext Text_Route46TutorTaught
 
 TrainerCamperTed:
-	trainer EVENT_BEAT_CAMPER_TED, CAMPER, TED, CamperTedSeenText, CamperTedBeatenText, 0, CamperTedScript
+	trainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText, 0, CamperTedScript
 
 CamperTedScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1a9851
 
 TrainerPicnickerErin1:
-	trainer EVENT_BEAT_PICNICKER_ERIN, PICNICKER, ERIN1, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
+	trainer PICNICKER, ERIN1, EVENT_BEAT_PICNICKER_ERIN, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
 
 PicnickerErin1Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_ERIN
@@ -183,7 +183,7 @@ UnknownScript_0x1a9772:
 	end
 
 TrainerHikerBailey:
-	trainer EVENT_BEAT_HIKER_BAILEY, HIKER, BAILEY, HikerBaileySeenText, HikerBaileyBeatenText, 0, HikerBaileyScript
+	trainer HIKER, BAILEY, EVENT_BEAT_HIKER_BAILEY, HikerBaileySeenText, HikerBaileyBeatenText, 0, HikerBaileyScript
 
 HikerBaileyScript:
 	end_if_just_battled

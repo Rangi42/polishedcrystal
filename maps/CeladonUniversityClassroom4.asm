@@ -1,31 +1,31 @@
 CeladonUniversityClassroom4_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 11, 2, 9, CELADON_UNIVERSITY_1F
-	warp_def 11, 3, 9, CELADON_UNIVERSITY_1F
+	db 2 ; warp events
+	warp_event 2, 11, 9, CELADON_UNIVERSITY_1F
+	warp_event 3, 11, 9, CELADON_UNIVERSITY_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 5 ; signposts
-	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
-	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
-	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
-	signpost 1, 6, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf1
-	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4Bookshelf2Text
+	db 5 ; bg events
+	bg_event 2, 0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
+	bg_event 3, 0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
+	bg_event 4, 0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4BlackboardText
+	bg_event 6, 1, SIGNPOST_READ, CeladonUniversityClassroom4Bookshelf1
+	bg_event 7, 1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom4Bookshelf2Text
 
-	db 7 ; person events
-	person_event SPRITE_COOLTRAINER_M, 2, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4RaymondScript, -1
-	person_event SPRITE_CANDELA, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4CandelaText, EVENT_CELADON_UNIVERSITY_CANDELA
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4TeacherText, EVENT_SHAMOUTI_COAST_CANDELA
-	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4Bug_catcherText, -1
-	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4FisherText, -1
-	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4LadyText, -1
-	person_event SPRITE_RICH_BOY, 9, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Rich_boyScript, -1
+	db 7 ; object events
+	object_event 5, 2, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4RaymondScript, -1
+	object_event 2, 1, SPRITE_CANDELA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4CandelaText, EVENT_CELADON_UNIVERSITY_CANDELA
+	object_event 2, 1, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4TeacherText, EVENT_SHAMOUTI_COAST_CANDELA
+	object_event 2, 5, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4Bug_catcherText, -1
+	object_event 3, 7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4FisherText, -1
+	object_event 5, 7, SPRITE_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4LadyText, -1
+	object_event 4, 9, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Rich_boyScript, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const CELADONUNIVERSITYCLASSROOM4_RAYMOND
 
 CeladonUniversityClassroom4RaymondScript:

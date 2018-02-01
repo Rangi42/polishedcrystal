@@ -1,29 +1,29 @@
 BeautifulBeach_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 23, 11, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
-	warp_def 23, 12, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
-	warp_def 18, 27, 1, BEAUTIFUL_BEACH_VILLA
+	db 3 ; warp events
+	warp_event 11, 23, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
+	warp_event 12, 23, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
+	warp_event 27, 18, 1, BEAUTIFUL_BEACH_VILLA
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 21, 14, SIGNPOST_JUMPTEXT, BeautifulBeachWelcomeSignText
-	signpost 19, 29, SIGNPOST_JUMPTEXT, BeautifulBeachVillaSignText
+	db 2 ; bg events
+	bg_event 14, 21, SIGNPOST_JUMPTEXT, BeautifulBeachWelcomeSignText
+	bg_event 29, 19, SIGNPOST_JUMPTEXT, BeautifulBeachVillaSignText
 
-	db 9 ; person events
-	person_event SPRITE_LADY, 18, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyBryony, -1
-	person_event SPRITE_SIGHTSEER_M, 26, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermJaska, -1
-	person_event SPRITE_COOLTRAINER_M, 23, 33, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerVince, -1
-	person_event SPRITE_LADY, 22, 5, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseerfRosie, -1
-	person_event SPRITE_SWIMMER_GIRL, 13, 12, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSwimmerfRachel, -1
-	person_event SPRITE_ARTIST, 13, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerArtistMarlene, -1
-	itemball_event 19, 6, LUXURY_BALL, 1, EVENT_BEAUTIFUL_BEACH_LUXURY_BALL
-	itemball_event 20, 36, FULL_RESTORE, 1, EVENT_BEAUTIFUL_BEACH_FULL_RESTORE
-	person_event SPRITE_BALL_CUT_FRUIT, 13, -2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	db 9 ; object events
+	object_event 11, 18, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyBryony, -1
+	object_event 26, 26, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermJaska, -1
+	object_event 33, 23, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerVince, -1
+	object_event 5, 22, SPRITE_LADY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseerfRosie, -1
+	object_event 12, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSwimmerfRachel, -1
+	object_event 27, 13, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerArtistMarlene, -1
+	itemball_event 6, 19, LUXURY_BALL, 1, EVENT_BEAUTIFUL_BEACH_LUXURY_BALL
+	itemball_event 36, 20, FULL_RESTORE, 1, EVENT_BEAUTIFUL_BEACH_FULL_RESTORE
+	object_event -2, 13, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BeautifulBeachWelcomeSignText:
 	text "Welcome to"
@@ -38,7 +38,7 @@ BeautifulBeachVillaSignText:
 	done
 
 GenericTrainerAromaLadyBryony:
-	generictrainer EVENT_BEAT_AROMA_LADY_BRYONY, AROMA_LADY, BRYONY, .SeenText, .BeatenText
+	generictrainer AROMA_LADY, BRYONY, EVENT_BEAT_AROMA_LADY_BRYONY, .SeenText, .BeatenText
 
 	text "I am always in-"
 	line "vigorated by the"
@@ -61,7 +61,7 @@ GenericTrainerAromaLadyBryony:
 	done
 
 GenericTrainerSightseermJaska:
-	generictrainer EVENT_BEAT_SIGHTSEERM_JASKA, SIGHTSEERM, JASKA, .SeenText, .BeatenText
+	generictrainer SIGHTSEERM, JASKA, EVENT_BEAT_SIGHTSEERM_JASKA, .SeenText, .BeatenText
 
 	text "I know it's silly,"
 	line "but I feel safer"
@@ -82,7 +82,7 @@ GenericTrainerSightseermJaska:
 	done
 
 GenericTrainerTamerVince:
-	generictrainer EVENT_BEAT_TAMER_VINCE, TAMER, VINCE, .SeenText, .BeatenText
+	generictrainer TAMER, VINCE, EVENT_BEAT_TAMER_VINCE, .SeenText, .BeatenText
 
 	text "My #mon are"
 	line "expertly tamed,"
@@ -102,7 +102,7 @@ GenericTrainerTamerVince:
 	done
 
 GenericTrainerSightseerfRosie:
-	generictrainer EVENT_BEAT_SIGHTSEERF_ROSIE, SIGHTSEERF, ROSIE, .SeenText, .BeatenText
+	generictrainer SIGHTSEERF, ROSIE, EVENT_BEAT_SIGHTSEERF_ROSIE, .SeenText, .BeatenText
 
 	text "Shamouti Island"
 	line "has so much"
@@ -126,7 +126,7 @@ GenericTrainerSightseerfRosie:
 	done
 
 GenericTrainerSwimmerfRachel:
-	generictrainer EVENT_BEAT_SWIMMERF_RACHEL, SWIMMERF, RACHEL, .SeenText, .BeatenText
+	generictrainer SWIMMERF, RACHEL, EVENT_BEAT_SWIMMERF_RACHEL, .SeenText, .BeatenText
 
 	text "I could spend all"
 	line "day in this water."
@@ -147,7 +147,7 @@ GenericTrainerSwimmerfRachel:
 	done
 
 GenericTrainerArtistMarlene:
-	generictrainer EVENT_BEAT_ARTIST_MARLENE, ARTIST, MARLENE, .SeenText, .BeatenText
+	generictrainer ARTIST, MARLENE, EVENT_BEAT_ARTIST_MARLENE, .SeenText, .BeatenText
 
 	text "The three primary"
 	line "colors of paint"

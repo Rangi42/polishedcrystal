@@ -1,23 +1,23 @@
 CeladonHotel2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 0, 16, 3, CELADON_HOTEL_1F
-	warp_def 0, 4, 1, CELADON_HOTEL_ROOM_1
-	warp_def 0, 8, 1, CELADON_HOTEL_ROOM_2
-	warp_def 0, 12, 1, CELADON_HOTEL_ROOM_3
+	db 4 ; warp events
+	warp_event 16, 0, 3, CELADON_HOTEL_1F
+	warp_event 4, 0, 1, CELADON_HOTEL_ROOM_1
+	warp_event 8, 0, 1, CELADON_HOTEL_ROOM_2
+	warp_event 12, 0, 1, CELADON_HOTEL_ROOM_3
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 0, 5, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom1Text
-	signpost 0, 9, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom2Text
-	signpost 0, 13, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom3Text
+	db 3 ; bg events
+	bg_event 5, 0, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom1Text
+	bg_event 9, 0, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom2Text
+	bg_event 13, 0, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom3Text
 
-	db 1 ; person events
-	person_event SPRITE_TEACHER, 2, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel2FTeacherText, -1
+	db 1 ; object events
+	object_event 11, 2, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel2FTeacherText, -1
 
 CeladonHotel2FTeacherText:
 	text "I'm on a surprise"

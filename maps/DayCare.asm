@@ -1,27 +1,27 @@
 DayCare_MapScriptHeader:
-	db 1 ; map triggers
-	dw DayCareTrigger0
+	db 1 ; scene scripts
+	scene_script DayCareTrigger0
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, DayCareEggCheckCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, DayCareEggCheckCallback
 
-	db 4 ; warps
-	warp_def 4, 0, 3, ROUTE_34
-	warp_def 5, 0, 4, ROUTE_34
-	warp_def 7, 2, 5, ROUTE_34
-	warp_def 7, 3, 5, ROUTE_34
+	db 4 ; warp events
+	warp_event 0, 4, 3, ROUTE_34
+	warp_event 0, 5, 4, ROUTE_34
+	warp_event 2, 7, 5, ROUTE_34
+	warp_event 3, 7, 5, ROUTE_34
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 5, SIGNPOST_JUMPSTD, difficultbookshelf
+	db 1 ; bg events
+	bg_event 5, 1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 3 ; person events
-	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
-	person_event SPRITE_LYRA, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_DAYCARE
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAYCARE_MAN_IN_DAYCARE
+	db 3 ; object events
+	object_event 5, 3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
+	object_event 0, 5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_DAYCARE
+	object_event 2, 3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAYCARE_MAN_IN_DAYCARE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const DAYCARE_GRANNY
 	const DAYCARE_LYRA
 

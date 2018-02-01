@@ -1,26 +1,26 @@
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const BATTLETOWERHALLWAY_RECEPTIONIST
 
 BattleTowerHallway_MapScriptHeader:
-	db 1 ; map triggers
-	dw BattleTowerHallwayTrigger0
+	db 1 ; scene scripts
+	scene_script BattleTowerHallwayTrigger0
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 6 ; warps
-	warp_def 1, 11, 1, BATTLE_TOWER_ELEVATOR
-	warp_def 0, 5, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def 0, 7, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def 0, 9, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def 0, 13, 1, BATTLE_TOWER_BATTLE_ROOM
-	warp_def 0, 15, 1, BATTLE_TOWER_BATTLE_ROOM
+	db 6 ; warp events
+	warp_event 11, 1, 1, BATTLE_TOWER_ELEVATOR
+	warp_event 5, 0, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_event 7, 0, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_event 9, 0, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_event 13, 0, 1, BATTLE_TOWER_BATTLE_ROOM
+	warp_event 15, 0, 1, BATTLE_TOWER_BATTLE_ROOM
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_RECEPTIONIST, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	db 1 ; object events
+	object_event 11, 2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BattleTowerHallwayTrigger0:
 	priorityjump .ChooseBattleRoom

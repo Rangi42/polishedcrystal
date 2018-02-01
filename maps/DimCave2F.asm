@@ -1,33 +1,33 @@
 DimCave2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, DimCave2FBouldersLand
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, DimCave2FBouldersLand
 
-	db 8 ; warps
-	warp_def 1, 15, 2, CERULEAN_CAPE
-	warp_def 5, 29, 4, DIM_CAVE_3F
-	warp_def 25, 27, 5, DIM_CAVE_3F
-	warp_def 20, 14, 6, DIM_CAVE_3F ; hole
-	warp_def 2, 30, 1, DIM_CAVE_1F
-	warp_def 17, 5, 2, DIM_CAVE_1F
-	warp_def 18, 28, 3, DIM_CAVE_1F
-	warp_def 32, 26, 4, DIM_CAVE_1F
+	db 8 ; warp events
+	warp_event 15, 1, 2, CERULEAN_CAPE
+	warp_event 29, 5, 4, DIM_CAVE_3F
+	warp_event 27, 25, 5, DIM_CAVE_3F
+	warp_event 14, 20, 6, DIM_CAVE_3F ; hole
+	warp_event 30, 2, 1, DIM_CAVE_1F
+	warp_event 5, 17, 2, DIM_CAVE_1F
+	warp_event 28, 18, 3, DIM_CAVE_1F
+	warp_event 26, 32, 4, DIM_CAVE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 4, 6, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
-	signpost 19, 2, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
+	db 2 ; bg events
+	bg_event 6, 4, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
+	bg_event 2, 19, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
-	db 7 ; person events
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
-	person_event SPRITE_ENGINEER, 12, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
-	person_event SPRITE_POKEFAN_M, 16, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
-	itemball_event 12, 28, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
-	itemball_event 15, 2, IRON, 1, EVENT_DIM_CAVE_2F_IRON
-	itemball_event 18, 24, LIGHT_CLAY, 1, EVENT_DIM_CAVE_2F_LIGHT_CLAY
-	tmhmball_event 33, 31, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
+	db 7 ; object events
+	object_event 14, 21, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
+	object_event 15, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
+	object_event 7, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
+	itemball_event 28, 12, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
+	itemball_event 2, 15, IRON, 1, EVENT_DIM_CAVE_2F_IRON
+	itemball_event 24, 18, LIGHT_CLAY, 1, EVENT_DIM_CAVE_2F_LIGHT_CLAY
+	tmhmball_event 31, 33, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
 
 DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
@@ -38,7 +38,7 @@ DimCave2FBouldersLand:
 	return
 
 TrainerEngineerLang:
-	trainer EVENT_BEAT_ENGINEER_LANG, ENGINEER, LANG, .SeenText, .BeatenText, 0, .Script
+	trainer ENGINEER, LANG, EVENT_BEAT_ENGINEER_LANG, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -69,7 +69,7 @@ TrainerEngineerLang:
 	done
 
 TrainerHikerDerrick:
-	trainer EVENT_BEAT_HIKER_DERRICK, HIKER, DERRICK, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, DERRICK, EVENT_BEAT_HIKER_DERRICK, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

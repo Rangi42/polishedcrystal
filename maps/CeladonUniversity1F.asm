@@ -1,46 +1,46 @@
 CeladonUniversity1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 10 ; warps
-	warp_def 19, 14, 13, CELADON_CITY
-	warp_def 19, 15, 13, CELADON_CITY
-	warp_def 12, 25, 1, CELADON_UNIVERSITY_2F
-	warp_def 12, 21, 1, CELADON_UNIVERSITY_LIBRARY_1F
-	warp_def 0, 15, 1, CELADON_UNIVERSITY_PRINCIPALS_OFFICE
-	warp_def 4, 3, 1, CELADON_UNIVERSITY_CLASSROOM_1
-	warp_def 4, 9, 1, CELADON_UNIVERSITY_CLASSROOM_2
-	warp_def 4, 21, 1, CELADON_UNIVERSITY_CLASSROOM_3
-	warp_def 4, 27, 1, CELADON_UNIVERSITY_CLASSROOM_4
-	warp_def 12, 3, 1, CELADON_UNIVERSITY_LOUNGE
+	db 10 ; warp events
+	warp_event 14, 19, 13, CELADON_CITY
+	warp_event 15, 19, 13, CELADON_CITY
+	warp_event 25, 12, 1, CELADON_UNIVERSITY_2F
+	warp_event 21, 12, 1, CELADON_UNIVERSITY_LIBRARY_1F
+	warp_event 15, 0, 1, CELADON_UNIVERSITY_PRINCIPALS_OFFICE
+	warp_event 3, 4, 1, CELADON_UNIVERSITY_CLASSROOM_1
+	warp_event 9, 4, 1, CELADON_UNIVERSITY_CLASSROOM_2
+	warp_event 21, 4, 1, CELADON_UNIVERSITY_CLASSROOM_3
+	warp_event 27, 4, 1, CELADON_UNIVERSITY_CLASSROOM_4
+	warp_event 3, 12, 1, CELADON_UNIVERSITY_LOUNGE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 13 ; signposts
-	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonUniversity1FPrincipalsOfficeSignText
-	signpost 4, 2, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom1SignText
-	signpost 4, 8, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom2SignText
-	signpost 4, 20, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom3SignText
-	signpost 4, 26, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom4SignText
-	signpost 12, 2, SIGNPOST_JUMPTEXT, CeladonUniversity1FStudentLoungeSignText
-	signpost 12, 20, SIGNPOST_JUMPTEXT, CeladonUniversity1FLibrarySignText
-	signpost 5, 22, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	signpost 5, 23, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	signpost 13, 6, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	signpost 13, 7, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
-	signpost 13, 26, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
-	signpost 13, 27, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
+	db 13 ; bg events
+	bg_event 14, 0, SIGNPOST_JUMPTEXT, CeladonUniversity1FPrincipalsOfficeSignText
+	bg_event 2, 4, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom1SignText
+	bg_event 8, 4, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom2SignText
+	bg_event 20, 4, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom3SignText
+	bg_event 26, 4, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom4SignText
+	bg_event 2, 12, SIGNPOST_JUMPTEXT, CeladonUniversity1FStudentLoungeSignText
+	bg_event 20, 12, SIGNPOST_JUMPTEXT, CeladonUniversity1FLibrarySignText
+	bg_event 22, 5, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	bg_event 23, 5, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	bg_event 6, 13, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	bg_event 7, 13, SIGNPOST_JUMPTEXT, CeladonUniversity1FTrophyCaseSignText
+	bg_event 26, 13, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
+	bg_event 27, 13, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
 
-	db 8 ; person events
-	person_event SPRITE_SUPER_NERD, 5, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FSuperNerdText, -1
-	person_event SPRITE_LASS, 4, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FLassText, -1
-	person_event SPRITE_COOLTRAINER_M, 5, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainermText, -1
-	person_event SPRITE_YOUNGSTER, 9, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FYoungsterText, -1
-	person_event SPRITE_CHILD, 15, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FChildText, -1
-	person_event SPRITE_POKEFAN_M, 15, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FPokefanmText, -1
-	person_event SPRITE_RECEPTIONIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FReceptionistText, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainerfText, -1
+	db 8 ; object events
+	object_event 6, 5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FSuperNerdText, -1
+	object_event 16, 4, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FLassText, -1
+	object_event 25, 5, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainermText, -1
+	object_event 13, 9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FYoungsterText, -1
+	object_event 4, 15, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FChildText, -1
+	object_event 6, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FPokefanmText, -1
+	object_event 14, 14, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FReceptionistText, -1
+	object_event 23, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainerfText, -1
 
 CeladonUniversity1FSuperNerdText:
 	text "Some academics be-"

@@ -1,21 +1,21 @@
 Route12Gate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 0, 4, 1, ROUTE_12_NORTH
-	warp_def 0, 5, 2, ROUTE_12_NORTH
-	warp_def 9, 4, 4, ROUTE_12_SOUTH
-	warp_def 9, 5, 4, ROUTE_12_SOUTH
-	warp_def 8, 8, 1, ROUTE_12_GATE_2F
+	db 5 ; warp events
+	warp_event 4, 0, 1, ROUTE_12_NORTH
+	warp_event 5, 0, 2, ROUTE_12_NORTH
+	warp_event 4, 9, 4, ROUTE_12_SOUTH
+	warp_event 5, 9, 4, ROUTE_12_SOUTH
+	warp_event 8, 8, 1, ROUTE_12_GATE_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_OFFICER, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route12GateOfficerText, -1
+	db 1 ; object events
+	object_event 0, 5, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route12GateOfficerText, -1
 
 Route12GateOfficerText:
 	text "Silence Bridge got"

@@ -1,20 +1,20 @@
 Route18West_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
-	db 2 ; warps
-	warp_def 6, 19, 1, ROUTE_18_GATE
-	warp_def 7, 19, 2, ROUTE_18_GATE
+	db 2 ; warp events
+	warp_event 19, 6, 1, ROUTE_18_GATE
+	warp_event 19, 7, 2, ROUTE_18_GATE
 
-	db 1 ; xy triggers
-	xy_trigger 0, 0, 12, Route18WestBikeCheckScript
+	db 1 ; coord events
+	coord_event 12, 0, 0, Route18WestBikeCheckScript
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_BIKER, 2, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
+	db 1 ; object events
+	object_event 6, 2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -34,7 +34,7 @@ Route18WestBikeCheckScript:
 	ret
 
 TrainerBikerCharles:
-	trainer EVENT_BEAT_BIKER_CHARLES, BIKER, CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText, 0, BikerCharlesScript
+	trainer BIKER, CHARLES, EVENT_BEAT_BIKER_CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText, 0, BikerCharlesScript
 
 BikerCharlesScript:
 	end_if_just_battled

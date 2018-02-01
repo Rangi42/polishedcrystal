@@ -1,33 +1,33 @@
 Route21_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 37, 12, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_1
-	signpost 66, 5, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_2
+	db 2 ; bg events
+	bg_event 12, 37, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_1
+	bg_event 5, 66, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_2
 
-	db 13 ; person events
-	person_event SPRITE_SWIMMER_GIRL, 13, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
-	person_event SPRITE_SWIMMER_GIRL, 29, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfChelan, -1
-	person_event SPRITE_SWIMMER_GIRL, 45, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKendra, -1
-	person_event SPRITE_SWIMMER_GUY, 72, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermEsteban, -1
-	person_event SPRITE_SWIMMER_GUY, 85, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermDuane, -1
-	person_event SPRITE_SWIMMER_GUY, 89, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSeth, -1
-	person_event SPRITE_FISHER, 21, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMurphy, -1
-	person_event SPRITE_FISHER, 25, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherArnold, -1
-	person_event SPRITE_FISHER, 36, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLiam, -1
-	person_event SPRITE_FISHER, 56, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
-	person_event SPRITE_YOUNGSTER, 62, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
-	person_event SPRITE_YOUNGSTER, 83, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
-	itemball_event 26, 13, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
+	db 13 ; object events
+	object_event 8, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
+	object_event 3, 29, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfChelan, -1
+	object_event 5, 45, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKendra, -1
+	object_event 16, 72, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermEsteban, -1
+	object_event 15, 85, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermDuane, -1
+	object_event 2, 89, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSeth, -1
+	object_event 5, 21, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMurphy, -1
+	object_event 15, 25, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherArnold, -1
+	object_event 7, 36, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLiam, -1
+	object_event 5, 56, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
+	object_event 15, 62, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
+	object_event 7, 83, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
+	itemball_event 13, 26, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
 
 TrainerSwimmerfNikki:
-	trainer EVENT_BEAT_SWIMMERF_NIKKI, SWIMMERF, NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText, 0, SwimmerfNikkiScript
+	trainer SWIMMERF, NIKKI, EVENT_BEAT_SWIMMERF_NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText, 0, SwimmerfNikkiScript
 
 SwimmerfNikkiScript:
 	end_if_just_battled
@@ -51,7 +51,7 @@ UnknownText_0x1ac8f1:
 	done
 
 TrainerSwimmerfChelan:
-	trainer EVENT_BEAT_SWIMMERF_CHELAN, SWIMMERF, CHELAN, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, CHELAN, EVENT_BEAT_SWIMMERF_CHELAN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -78,7 +78,7 @@ TrainerSwimmerfChelan:
 	done
 
 TrainerSwimmerfKendra:
-	trainer EVENT_BEAT_SWIMMERF_KENDRA, SWIMMERF, KENDRA, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, KENDRA, EVENT_BEAT_SWIMMERF_KENDRA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -103,7 +103,7 @@ TrainerSwimmerfKendra:
 	done
 
 TrainerSwimmermEsteban:
-	trainer EVENT_BEAT_SWIMMERM_ESTEBAN, SWIMMERM, ESTEBAN, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, ESTEBAN, EVENT_BEAT_SWIMMERM_ESTEBAN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -127,7 +127,7 @@ TrainerSwimmermEsteban:
 	done
 
 TrainerSwimmermDuane:
-	trainer EVENT_BEAT_SWIMMERM_DUANE, SWIMMERM, DUANE, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, DUANE, EVENT_BEAT_SWIMMERM_DUANE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -153,7 +153,7 @@ TrainerSwimmermDuane:
 	done
 
 TrainerSwimmermSeth:
-	trainer EVENT_BEAT_SWIMMERM_SETH, SWIMMERM, SETH, SwimmermSethSeenText, SwimmermSethBeatenText, 0, SwimmermSethScript
+	trainer SWIMMERM, SETH, EVENT_BEAT_SWIMMERM_SETH, SwimmermSethSeenText, SwimmermSethBeatenText, 0, SwimmermSethScript
 
 SwimmermSethScript:
 	end_if_just_battled
@@ -175,7 +175,7 @@ UnknownText_0x1ac873:
 	done
 
 TrainerFisherMurphy:
-	trainer EVENT_BEAT_FISHER_MURPHY, FISHER, MURPHY, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, MURPHY, EVENT_BEAT_FISHER_MURPHY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -201,7 +201,7 @@ TrainerFisherMurphy:
 	done
 
 TrainerFisherArnold:
-	trainer EVENT_BEAT_FISHER_ARNOLD, FISHER, ARNOLD, FisherArnoldSeenText, FisherArnoldBeatenText, 0, FisherArnoldScript
+	trainer FISHER, ARNOLD, EVENT_BEAT_FISHER_ARNOLD, FisherArnoldSeenText, FisherArnoldBeatenText, 0, FisherArnoldScript
 
 FisherArnoldScript:
 	end_if_just_battled
@@ -222,7 +222,7 @@ UnknownText_0x1ac95c:
 	done
 
 TrainerFisherLiam:
-	trainer EVENT_BEAT_FISHER_LIAM, FISHER, LIAM, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, LIAM, EVENT_BEAT_FISHER_LIAM, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -254,7 +254,7 @@ TrainerFisherLiam:
 	done
 
 TrainerFisherGideon:
-	trainer EVENT_BEAT_FISHER_GIDEON, FISHER, GIDEON, .SeenText, .BeatenText, 0, .Script
+	trainer FISHER, GIDEON, EVENT_BEAT_FISHER_GIDEON, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -281,7 +281,7 @@ TrainerFisherGideon:
 	done
 
 TrainerBird_keeperKinsley:
-	trainer EVENT_BEAT_BIRD_KEEPER_KINSLEY, BIRD_KEEPER, KINSLEY, .SeenText, .BeatenText, 0, .Script
+	trainer BIRD_KEEPER, KINSLEY, EVENT_BEAT_BIRD_KEEPER_KINSLEY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -304,7 +304,7 @@ TrainerBird_keeperKinsley:
 	done
 
 TrainerBird_keeperEaston:
-	trainer EVENT_BEAT_BIRD_KEEPER_EASTON, BIRD_KEEPER, EASTON, .SeenText, .BeatenText, 0, .Script
+	trainer BIRD_KEEPER, EASTON, EVENT_BEAT_BIRD_KEEPER_EASTON, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

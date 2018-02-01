@@ -1,22 +1,22 @@
 Route40BattleTowerGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 7, 4, 1, ROUTE_40
-	warp_def 7, 5, 1, ROUTE_40
-	warp_def 0, 4, 1, BATTLE_TOWER_OUTSIDE
-	warp_def 0, 5, 2, BATTLE_TOWER_OUTSIDE
+	db 4 ; warp events
+	warp_event 4, 7, 1, ROUTE_40
+	warp_event 5, 7, 1, ROUTE_40
+	warp_event 4, 0, 1, BATTLE_TOWER_OUTSIDE
+	warp_event 5, 0, 2, BATTLE_TOWER_OUTSIDE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OfficerText_0x19ab0b, EVENT_BATTLE_TOWER_CLOSED
-	person_event SPRITE_ROCKER, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RockerScript_0x9f669, -1
-	person_event SPRITE_TWIN, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TwinScript_0x9f66c, -1
+	db 3 ; object events
+	object_event 0, 4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OfficerText_0x19ab0b, EVENT_BATTLE_TOWER_CLOSED
+	object_event 3, 3, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, RockerScript_0x9f669, -1
+	object_event 7, 5, SPRITE_TWIN, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TwinScript_0x9f66c, -1
 
 OfficerText_0x19ab0b:
 	text "Are you going to"

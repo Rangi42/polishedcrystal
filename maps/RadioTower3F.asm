@@ -1,29 +1,29 @@
 RadioTower3F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, CardKeyShutterCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, CardKeyShutterCallback
 
-	db 3 ; warps
-	warp_def 0, 0, 1, RADIO_TOWER_2F
-	warp_def 0, 7, 2, RADIO_TOWER_4F
-	warp_def 0, 17, 4, RADIO_TOWER_4F
+	db 3 ; warp events
+	warp_event 0, 0, 1, RADIO_TOWER_2F
+	warp_event 7, 0, 2, RADIO_TOWER_4F
+	warp_event 17, 0, 4, RADIO_TOWER_4F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
-	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
-	signpost 2, 14, SIGNPOST_UP, MapRadioTower3FSignpost2Script
+	db 3 ; bg events
+	bg_event 3, 0, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
+	bg_event 9, 0, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
+	bg_event 14, 2, SIGNPOST_UP, MapRadioTower3FSignpost2Script
 
-	db 7 ; person events
-	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
-	person_event SPRITE_ROCKET, 1, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 6, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	db 7 ; object events
+	object_event 7, 4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event 3, 4, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
+	object_event 11, 3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
+	object_event 5, 1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 6, 2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 16, 6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 9, 6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
@@ -68,28 +68,28 @@ UnknownScript_0x5e59d:
 	jumpopenedtext UnknownText_0x5e85c
 
 TrainerGruntM7:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_7, GRUNTM, 7, GruntM7SeenText, GruntM7BeatenText, 0, GruntM7Script
+	trainer GRUNTM, 7, EVENT_BEAT_ROCKET_GRUNTM_7, GruntM7SeenText, GruntM7BeatenText, 0, GruntM7Script
 
 GruntM7Script:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x5e8d0
 
 TrainerGruntM8:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_8, GRUNTM, 8, GruntM8SeenText, GruntM8BeatenText, 0, GruntM8Script
+	trainer GRUNTM, 8, EVENT_BEAT_ROCKET_GRUNTM_8, GruntM8SeenText, GruntM8BeatenText, 0, GruntM8Script
 
 GruntM8Script:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x5e944
 
 TrainerGruntM9:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_9, GRUNTM, 9, GruntM9SeenText, GruntM9BeatenText, 0, GruntM9Script
+	trainer GRUNTM, 9, EVENT_BEAT_ROCKET_GRUNTM_9, GruntM9SeenText, GruntM9BeatenText, 0, GruntM9Script
 
 GruntM9Script:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x5e9d0
 
 TrainerRocketScientistMarc:
-	trainer EVENT_BEAT_ROCKET_SCIENTIST_MARC, ROCKET_SCIENTIST, MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText, 0, RocketScientistMarcScript
+	trainer ROCKET_SCIENTIST, MARC, EVENT_BEAT_ROCKET_SCIENTIST_MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText, 0, RocketScientistMarcScript
 
 RocketScientistMarcScript:
 	end_if_just_battled

@@ -1,21 +1,21 @@
 Route38EcruteakGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 4, 0, 1, ROUTE_38
-	warp_def 5, 0, 2, ROUTE_38
-	warp_def 4, 9, 14, ECRUTEAK_CITY
-	warp_def 5, 9, 15, ECRUTEAK_CITY
+	db 4 ; warp events
+	warp_event 0, 4, 1, ROUTE_38
+	warp_event 0, 5, 2, ROUTE_38
+	warp_event 9, 4, 14, ECRUTEAK_CITY
+	warp_event 9, 5, 15, ECRUTEAK_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9cbda, -1
-	person_event SPRITE_SCIENTIST, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide2Script, -1
+	db 2 ; object events
+	object_event 5, 2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9cbda, -1
+	object_event 8, 3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide2Script, -1
 
 ProfOaksAide2Script:
 	faceplayer

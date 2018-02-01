@@ -1,42 +1,42 @@
 MountMortar1FInside_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 6 ; warps
-	warp_def 47, 11, 5, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def 47, 29, 6, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def 39, 5, 8, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def 41, 33, 9, MOUNT_MORTAR_1F_OUTSIDE
-	warp_def 19, 3, 1, MOUNT_MORTAR_B1F
-	warp_def 9, 9, 2, MOUNT_MORTAR_2F_INSIDE
+	db 6 ; warp events
+	warp_event 11, 47, 5, MOUNT_MORTAR_1F_OUTSIDE
+	warp_event 29, 47, 6, MOUNT_MORTAR_1F_OUTSIDE
+	warp_event 5, 39, 8, MOUNT_MORTAR_1F_OUTSIDE
+	warp_event 33, 41, 9, MOUNT_MORTAR_1F_OUTSIDE
+	warp_event 3, 19, 1, MOUNT_MORTAR_B1F
+	warp_event 9, 9, 2, MOUNT_MORTAR_2F_INSIDE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 11, 30, SIGNPOST_ITEM + MAX_REPEL, EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL
+	db 1 ; bg events
+	bg_event 30, 11, SIGNPOST_ITEM + MAX_REPEL, EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL
 
-	db 10 ; person events
-	strengthboulder_event 43, 21
-	itemball_event 38, 35, SMOOTH_ROCK, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_SMOOTH_ROCK
-	itemball_event 10, 16, MAX_REVIVE, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_REVIVE
-	itemball_event 27, 10, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_HYPER_POTION
-	itemball_event 20, 22, MAX_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_POTION
-	itemball_event 19, 35, NUGGET, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_NUGGET
-	person_event SPRITE_SUPER_NERD, 43, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMiller, -1
-	person_event SPRITE_SUPER_NERD, 28, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdMarkus, -1
-	itemball_event 16, 8, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
+	db 10 ; object events
+	strengthboulder_event 21, 43
+	itemball_event 35, 38, SMOOTH_ROCK, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_SMOOTH_ROCK
+	itemball_event 16, 10, MAX_REVIVE, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_REVIVE
+	itemball_event 10, 27, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_HYPER_POTION
+	itemball_event 22, 20, MAX_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_POTION
+	itemball_event 35, 19, NUGGET, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_NUGGET
+	object_event 33, 43, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMiller, -1
+	object_event 24, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdMarkus, -1
+	itemball_event 8, 16, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
 	itemball_event 17, 17, ULTRA_BALL, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_ULTRA_BALL
 
 TrainerPokemaniacMiller:
-	trainer EVENT_BEAT_POKEMANIAC_MILLER, POKEMANIAC, MILLER, PokemaniacMillerSeenText, PokemaniacMillerBeatenText, 0, PokemaniacMillerScript
+	trainer POKEMANIAC, MILLER, EVENT_BEAT_POKEMANIAC_MILLER, PokemaniacMillerSeenText, PokemaniacMillerBeatenText, 0, PokemaniacMillerScript
 
 PokemaniacMillerScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x7debd
 
 TrainerSupernerdMarkus:
-	trainer EVENT_BEAT_SUPER_NERD_MARKUS, SUPER_NERD, MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText, 0, SupernerdMarkusScript
+	trainer SUPER_NERD, MARKUS, EVENT_BEAT_SUPER_NERD_MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText, 0, SupernerdMarkusScript
 
 SupernerdMarkusScript:
 	end_if_just_battled

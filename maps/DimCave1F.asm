@@ -1,28 +1,28 @@
 DimCave1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 2, 30, 5, DIM_CAVE_2F
-	warp_def 17, 5, 6, DIM_CAVE_2F
-	warp_def 18, 28, 7, DIM_CAVE_2F
-	warp_def 32, 24, 8, DIM_CAVE_2F
+	db 4 ; warp events
+	warp_event 30, 2, 5, DIM_CAVE_2F
+	warp_event 5, 17, 6, DIM_CAVE_2F
+	warp_event 28, 18, 7, DIM_CAVE_2F
+	warp_event 24, 32, 8, DIM_CAVE_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 2, 28, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
+	db 1 ; bg events
+	bg_event 28, 2, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
-	db 5 ; person events
-	person_event SPRITE_SUPER_NERD, 7, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
-	person_event SPRITE_SCIENTIST, 18, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
-	person_event SPRITE_ROCKER, 21, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1
-	itemball_event 20, 3, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
-	itemball_event 31, 28, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
+	db 5 ; object events
+	object_event 30, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
+	object_event 12, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
+	object_event 27, 21, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1
+	itemball_event 3, 20, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
+	itemball_event 28, 31, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
 
 TrainerSuper_nerdGregg:
-	trainer EVENT_BEAT_SUPER_NERD_GREGG, SUPER_NERD, GREGG, .SeenText, .BeatenText, 0, .Script
+	trainer SUPER_NERD, GREGG, EVENT_BEAT_SUPER_NERD_GREGG, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -45,7 +45,7 @@ TrainerSuper_nerdGregg:
 	done
 
 TrainerScientistDexter:
-	trainer EVENT_BEAT_SCIENTIST_DEXTER, SCIENTIST, DEXTER, .SeenText, .BeatenText, 0, .Script
+	trainer SCIENTIST, DEXTER, EVENT_BEAT_SCIENTIST_DEXTER, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -73,7 +73,7 @@ TrainerScientistDexter:
 	done
 
 TrainerGuitaristmBiff:
-	trainer EVENT_BEAT_GUITARISTM_BIFF, GUITARISTM, BIFF, .SeenText, .BeatenText, 0, .Script
+	trainer GUITARISTM, BIFF, EVENT_BEAT_GUITARISTM_BIFF, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

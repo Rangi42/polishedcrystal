@@ -1,26 +1,26 @@
 KrissHouse2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
-	dbw MAPCALLBACK_TILES, KrissHouse2FSetSpawn
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
+	callback MAPCALLBACK_TILES, KrissHouse2FSetSpawn
 
-	db 1 ; warps
-	warp_def 0, 7, 3, KRISS_HOUSE_1F
+	db 1 ; warp events
+	warp_event 7, 0, 3, KRISS_HOUSE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 4 ; signposts
-	signpost 1, 2, SIGNPOST_READ, KrissHousePC
-	signpost 1, 3, SIGNPOST_READ, KrissHouseRadio
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfElmScript
-	signpost 0, 6, SIGNPOST_IFSET, KrissHousePoster
+	db 4 ; bg events
+	bg_event 2, 1, SIGNPOST_READ, KrissHousePC
+	bg_event 3, 1, SIGNPOST_READ, KrissHouseRadio
+	bg_event 5, 1, SIGNPOST_READ, PokemonJournalProfElmScript
+	bg_event 6, 0, SIGNPOST_IFSET, KrissHousePoster
 
-	db 4 ; person events
-	person_event SPRITE_CONSOLE, 2, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
-	person_event SPRITE_DOLL_1, 4, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
-	person_event SPRITE_DOLL_2, 4, 5, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
-	person_event SPRITE_BIG_DOLL, 1, 0, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+	db 4 ; object events
+	object_event 4, 2, SPRITE_CONSOLE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
+	object_event 4, 4, SPRITE_DOLL_1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
+	object_event 5, 4, SPRITE_DOLL_2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
+	object_event 0, 1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 
 KrissHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility

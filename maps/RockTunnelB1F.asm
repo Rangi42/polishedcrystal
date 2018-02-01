@@ -1,37 +1,37 @@
 RockTunnelB1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 3, 3, 3, ROCK_TUNNEL_1F
-	warp_def 9, 17, 4, ROCK_TUNNEL_1F
-	warp_def 3, 23, 5, ROCK_TUNNEL_1F
-	warp_def 19, 27, 6, ROCK_TUNNEL_1F
-	warp_def 13, 3, 7, ROCK_TUNNEL_1F
+	db 5 ; warp events
+	warp_event 3, 3, 3, ROCK_TUNNEL_1F
+	warp_event 17, 9, 4, ROCK_TUNNEL_1F
+	warp_event 23, 3, 5, ROCK_TUNNEL_1F
+	warp_event 27, 19, 6, ROCK_TUNNEL_1F
+	warp_event 3, 13, 7, ROCK_TUNNEL_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 18, 3, SIGNPOST_ITEM + MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION
+	db 1 ; bg events
+	bg_event 3, 18, SIGNPOST_ITEM + MAX_POTION, EVENT_ROCK_TUNNEL_B1F_HIDDEN_MAX_POTION
 
-	db 6 ; person events
-	person_event SPRITE_FISHER, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherDick, -1
-	person_event SPRITE_HEX_MANIAC, 24, 24, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacVivian, -1
-	itemball_event 17, 7, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON
-	itemball_event 4, 8, PP_UP, 1, EVENT_ROCK_TUNNEL_B1F_PP_UP
-	itemball_event 2, 15, REVIVE, 1, EVENT_ROCK_TUNNEL_B1F_REVIVE
-	strengthboulder_event 25, 10
+	db 6 ; object events
+	object_event 27, 14, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherDick, -1
+	object_event 24, 24, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacVivian, -1
+	itemball_event 7, 17, IRON, 1, EVENT_ROCK_TUNNEL_B1F_IRON
+	itemball_event 8, 4, PP_UP, 1, EVENT_ROCK_TUNNEL_B1F_PP_UP
+	itemball_event 15, 2, REVIVE, 1, EVENT_ROCK_TUNNEL_B1F_REVIVE
+	strengthboulder_event 10, 25
 
 TrainerFirebreatherDick:
-	trainer EVENT_BEAT_FIREBREATHER_DICK, FIREBREATHER, DICK, FirebreatherDickSeenText, FirebreatherDickBeatenText, 0, FirebreatherDickScript
+	trainer FIREBREATHER, DICK, EVENT_BEAT_FIREBREATHER_DICK, FirebreatherDickSeenText, FirebreatherDickBeatenText, 0, FirebreatherDickScript
 
 FirebreatherDickScript:
 	end_if_just_battled
 	jumptextfaceplayer FirebreatherDickAfterText
 
 TrainerHexManiacVivian:
-	trainer EVENT_BEAT_HEX_MANIAC_VIVIAN, HEX_MANIAC, VIVIAN, HexManiacVivianSeenText, HexManiacVivianBeatenText, 0, HexManiacVivianScript
+	trainer HEX_MANIAC, VIVIAN, EVENT_BEAT_HEX_MANIAC_VIVIAN, HexManiacVivianSeenText, HexManiacVivianBeatenText, 0, HexManiacVivianScript
 
 HexManiacVivianScript:
 	end_if_just_battled

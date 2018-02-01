@@ -1,32 +1,32 @@
 MahoganyTown_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, MahoganyTownFlyPoint
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, MahoganyTownFlyPoint
 
-	db 5 ; warps
-	warp_def 7, 11, 1, MAHOGANY_MART_1F
-	warp_def 7, 17, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
-	warp_def 13, 6, 1, MAHOGANY_GYM
-	warp_def 13, 15, 1, MAHOGANY_POKECENTER_1F
-	warp_def 1, 9, 3, ROUTE_43_MAHOGANY_GATE
+	db 5 ; warp events
+	warp_event 11, 7, 1, MAHOGANY_MART_1F
+	warp_event 17, 7, 1, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE
+	warp_event 6, 13, 1, MAHOGANY_GYM
+	warp_event 15, 13, 1, MAHOGANY_POKECENTER_1F
+	warp_event 9, 1, 3, ROUTE_43_MAHOGANY_GATE
 
-	db 2 ; xy triggers
-	xy_trigger 0, 8, 19, UnknownScript_0x190013
-	xy_trigger 0, 9, 19, UnknownScript_0x190013
+	db 2 ; coord events
+	coord_event 19, 8, 0, UnknownScript_0x190013
+	coord_event 19, 9, 0, UnknownScript_0x190013
 
-	db 3 ; signposts
-	signpost 5, 1, SIGNPOST_JUMPTEXT, MahoganyTownSignText
-	signpost 7, 9, SIGNPOST_READ, MahoganyTownSouvenirShopSign
-	signpost 13, 3, SIGNPOST_JUMPTEXT, MahoganyGymSignText
+	db 3 ; bg events
+	bg_event 1, 5, SIGNPOST_JUMPTEXT, MahoganyTownSignText
+	bg_event 9, 7, SIGNPOST_READ, MahoganyTownSouvenirShopSign
+	bg_event 3, 13, SIGNPOST_JUMPTEXT, MahoganyGymSignText
 
-	db 4 ; person events
-	person_event SPRITE_NEW_BARK_TEACHER, 8, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
-	person_event SPRITE_GRAMPS, 8, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
-	person_event SPRITE_FISHER, 14, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x190276, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	person_event SPRITE_NEW_BARK_LYRA, 8, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1902f2, EVENT_MAHOGANY_MART_OWNERS
+	db 4 ; object events
+	object_event 19, 8, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
+	object_event 5, 8, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
+	object_event 6, 14, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x190276, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
+	object_event 12, 8, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1902f2, EVENT_MAHOGANY_MART_OWNERS
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const MAHOGANYTOWN_POKEFAN_M
 
 MahoganyTownFlyPoint:

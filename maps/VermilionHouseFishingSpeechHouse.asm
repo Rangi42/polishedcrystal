@@ -1,19 +1,19 @@
 VermilionHouseFishingSpeechHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 1, VERMILION_CITY
-	warp_def 7, 3, 1, VERMILION_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 1, VERMILION_CITY
+	warp_event 3, 7, 1, VERMILION_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 0, 3, SIGNPOST_JUMPTEXT, FishingDudesHousePhotoText
+	db 1 ; bg events
+	bg_event 3, 0, SIGNPOST_JUMPTEXT, FishingDudesHousePhotoText
 
-	db 1 ; person events
-	person_event SPRITE_FISHING_GURU, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
+	db 1 ; object events
+	object_event 2, 4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
 
 FishingDudeText:
 	text "I am the Fishing"

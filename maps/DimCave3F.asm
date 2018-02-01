@@ -1,36 +1,36 @@
 DimCave3F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_TILES, DimCave3FBouldersLand
-	dbw MAPCALLBACK_CMDQUEUE, DimCave3FSetUpStoneTable
+	db 2 ; callbacks
+	callback MAPCALLBACK_TILES, DimCave3FBouldersLand
+	callback MAPCALLBACK_CMDQUEUE, DimCave3FSetUpStoneTable
 
-	db 6 ; warps
-	warp_def 5, 5, 4, DIM_CAVE_4F
-	warp_def 22, 28, 5, DIM_CAVE_4F
-	warp_def 10, 15, 6, DIM_CAVE_4F ; hole
-	warp_def 5, 29, 2, DIM_CAVE_2F
-	warp_def 25, 27, 3, DIM_CAVE_2F
-	warp_def 21, 14, 4, DIM_CAVE_2F
+	db 6 ; warp events
+	warp_event 5, 5, 4, DIM_CAVE_4F
+	warp_event 28, 22, 5, DIM_CAVE_4F
+	warp_event 15, 10, 6, DIM_CAVE_4F ; hole
+	warp_event 29, 5, 2, DIM_CAVE_2F
+	warp_event 27, 25, 3, DIM_CAVE_2F
+	warp_event 14, 21, 4, DIM_CAVE_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 5, 2, SIGNPOST_ITEM + STAR_PIECE, EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE
-	signpost 6, 26, SIGNPOST_ITEM + ZINC, EVENT_DIM_CAVE_3F_HIDDEN_ZINC
+	db 2 ; bg events
+	bg_event 2, 5, SIGNPOST_ITEM + STAR_PIECE, EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE
+	bg_event 26, 6, SIGNPOST_ITEM + ZINC, EVENT_DIM_CAVE_3F_HIDDEN_ZINC
 
-	db 9 ; person events
-	strengthboulder_event 17, 3, EVENT_BOULDER_IN_DIM_CAVE_3F
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 8, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
-	person_event SPRITE_ENGINEER, 4, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
-	person_event SPRITE_BLACK_BELT, 11, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
-	person_event SPRITE_POKEFAN_M, 27, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
-	person_event SPRITE_POKEFAN_M, 22, 25, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
-	itemball_event 3, 18, METAL_COAT, 1, EVENT_DIM_CAVE_3F_METAL_COAT
-	itemball_event 29, 10, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
-	tmhmball_event 9, 20, TM_REST, EVENT_DIM_CAVE_3F_TM_REST
+	db 9 ; object events
+	strengthboulder_event 3, 17, EVENT_BOULDER_IN_DIM_CAVE_3F
+	object_event 15, 8, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
+	object_event 14, 4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
+	object_event 22, 11, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
+	object_event 10, 27, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
+	object_event 25, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
+	itemball_event 18, 3, METAL_COAT, 1, EVENT_DIM_CAVE_3F_METAL_COAT
+	itemball_event 10, 29, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
+	tmhmball_event 20, 9, TM_REST, EVENT_DIM_CAVE_3F_TM_REST
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const DIMCAVE3F_BOULDER
 
 DimCave3FBouldersLand:
@@ -66,7 +66,7 @@ DimCave3FSetUpStoneTable:
 	done
 
 TrainerEngineerHugo:
-	trainer EVENT_BEAT_ENGINEER_HUGO, ENGINEER, HUGO, .SeenText, .BeatenText, 0, .Script
+	trainer ENGINEER, HUGO, EVENT_BEAT_ENGINEER_HUGO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -92,7 +92,7 @@ TrainerEngineerHugo:
 	done
 
 TrainerBlackbeltTakeo:
-	trainer EVENT_BEAT_BLACKBELT_TAKEO, BLACKBELT_T, TAKEO, .SeenText, .BeatenText, 0, .Script
+	trainer BLACKBELT_T, TAKEO, EVENT_BEAT_BLACKBELT_TAKEO, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -117,7 +117,7 @@ TrainerBlackbeltTakeo:
 	done
 
 TrainerHikerFloyd:
-	trainer EVENT_BEAT_HIKER_FLOYD, HIKER, FLOYD, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, FLOYD, EVENT_BEAT_HIKER_FLOYD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

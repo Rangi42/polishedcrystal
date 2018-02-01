@@ -1,32 +1,32 @@
 SafariZoneHub_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 9 ; warps
-	warp_def 27, 16, 1, SAFARI_ZONE_FUCHSIA_GATE
-	warp_def 27, 17, 2, SAFARI_ZONE_FUCHSIA_GATE
-	warp_def 12, 31, 1, SAFARI_ZONE_EAST
-	warp_def 13, 31, 2, SAFARI_ZONE_EAST
-	warp_def 12, 2, 5, SAFARI_ZONE_WEST
-	warp_def 13, 2, 6, SAFARI_ZONE_WEST
-	warp_def 2, 16, 5, SAFARI_ZONE_NORTH
-	warp_def 2, 17, 6, SAFARI_ZONE_NORTH
-	warp_def 21, 19, 1, SAFARI_ZONE_HUB_REST_HOUSE
+	db 9 ; warp events
+	warp_event 16, 27, 1, SAFARI_ZONE_FUCHSIA_GATE
+	warp_event 17, 27, 2, SAFARI_ZONE_FUCHSIA_GATE
+	warp_event 31, 12, 1, SAFARI_ZONE_EAST
+	warp_event 31, 13, 2, SAFARI_ZONE_EAST
+	warp_event 2, 12, 5, SAFARI_ZONE_WEST
+	warp_event 2, 13, 6, SAFARI_ZONE_WEST
+	warp_event 16, 2, 5, SAFARI_ZONE_NORTH
+	warp_event 17, 2, 6, SAFARI_ZONE_NORTH
+	warp_event 19, 21, 1, SAFARI_ZONE_HUB_REST_HOUSE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 24, 16, SIGNPOST_JUMPTEXT, SafariZoneHubAreaSignText
-	signpost 22, 20, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
+	db 2 ; bg events
+	bg_event 16, 24, SIGNPOST_JUMPTEXT, SafariZoneHubAreaSignText
+	bg_event 20, 22, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
 
-	db 3 ; person events
-	person_event SPRITE_BUG_MANIAC, 6, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
-	itemball_event 12, 15, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
-	itemball_event 21, 8, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
+	db 3 ; object events
+	object_event 26, 6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
+	itemball_event 15, 12, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
+	itemball_event 8, 21, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
 
 TrainerBug_maniacKai:
-	trainer EVENT_BEAT_BUG_MANIAC_KAI, BUG_MANIAC, KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText, 0, Bug_maniacKaiScript
+	trainer BUG_MANIAC, KAI, EVENT_BEAT_BUG_MANIAC_KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText, 0, Bug_maniacKaiScript
 
 Bug_maniacKaiScript:
 	end_if_just_battled

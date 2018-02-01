@@ -1,35 +1,35 @@
 Route2South_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 3, 15, 3, ROUTE_2_GATE
-	warp_def 7, 5, 3, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	db 2 ; warp events
+	warp_event 15, 3, 3, ROUTE_2_GATE
+	warp_event 5, 7, 3, VIRIDIAN_FOREST_VIRIDIAN_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 29, 5, SIGNPOST_JUMPTEXT, Route2SignText
+	db 1 ; bg events
+	bg_event 5, 29, SIGNPOST_JUMPTEXT, Route2SignText
 
-	db 7 ; person events
-	person_event SPRITE_BUG_MANIAC, 23, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacRob, -1
-	person_event SPRITE_BUG_MANIAC, 16, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacDoug, -1
-	itemball_event 30, 14, ELIXER, 1, EVENT_ROUTE_2_ELIXER
-	cuttree_event 16, 11, EVENT_ROUTE_2_CUT_TREE_3
-	cuttree_event 24, 12, EVENT_ROUTE_2_CUT_TREE_4
-	cuttree_event 30, 12, EVENT_ROUTE_2_CUT_TREE_5
-	person_event SPRITE_BALL_CUT_FRUIT, 23, 23, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_16_WEST_CUT_TREE_1
+	db 7 ; object events
+	object_event 10, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacRob, -1
+	object_event 0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacDoug, -1
+	itemball_event 14, 30, ELIXER, 1, EVENT_ROUTE_2_ELIXER
+	cuttree_event 11, 16, EVENT_ROUTE_2_CUT_TREE_3
+	cuttree_event 12, 24, EVENT_ROUTE_2_CUT_TREE_4
+	cuttree_event 12, 30, EVENT_ROUTE_2_CUT_TREE_5
+	object_event 23, 23, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_16_WEST_CUT_TREE_1
 
 TrainerBug_maniacRob:
-	trainer EVENT_BEAT_BUG_MANIAC_ROB, BUG_MANIAC, ROB, Bug_maniacRobSeenText, Bug_maniacRobBeatenText, 0, Bug_maniacRobScript
+	trainer BUG_MANIAC, ROB, EVENT_BEAT_BUG_MANIAC_ROB, Bug_maniacRobSeenText, Bug_maniacRobBeatenText, 0, Bug_maniacRobScript
 
 Bug_maniacRobScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x1ac34d
 
 TrainerBug_maniacDoug:
-	trainer EVENT_BEAT_BUG_MANIAC_DOUG, BUG_MANIAC, DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText, 0, Bug_maniacDougScript
+	trainer BUG_MANIAC, DOUG, EVENT_BEAT_BUG_MANIAC_DOUG, Bug_maniacDougSeenText, Bug_maniacDougBeatenText, 0, Bug_maniacDougScript
 
 Bug_maniacDougScript:
 	end_if_just_battled

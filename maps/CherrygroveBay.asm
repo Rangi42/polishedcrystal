@@ -1,23 +1,23 @@
 CherrygroveBay_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 8 ; person events
-	person_event SPRITE_POKEFAN_M, 32, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
-	person_event SPRITE_POKEFAN_M, 22, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
-	person_event SPRITE_FISHER, 33, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1
-	person_event SPRITE_GUIDE_GENT, 39, 7, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermThomas, -1
-	person_event SPRITE_SWIMMER_GIRL, 22, 7, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
-	person_event SPRITE_SWIMMER_GIRL, 39, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
-	itemball_event 24, 22, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
-	cuttree_event 8, 3, EVENT_CHERRYGROVE_BAY_CUT_TREE
+	db 8 ; object events
+	object_event 9, 32, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
+	object_event 21, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
+	object_event 15, 33, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1
+	object_event 7, 39, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermThomas, -1
+	object_event 7, 22, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
+	object_event 22, 39, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
+	itemball_event 22, 24, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
+	cuttree_event 3, 8, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 CherrygroveBayHikerScript:
 	faceplayer
@@ -50,7 +50,7 @@ CherrygroveBayTutorEarthPowerScript:
 	jumpopenedtext Text_CherrygroveBayTutorTaught
 
 TrainerSwimmermThomas:
-	trainer EVENT_BEAT_SWIMMERM_THOMAS, SWIMMERM, THOMAS, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, THOMAS, EVENT_BEAT_SWIMMERM_THOMAS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -73,7 +73,7 @@ TrainerSwimmermThomas:
 	done
 
 TrainerSwimmerfSally:
-	trainer EVENT_BEAT_SWIMMERF_SALLY, SWIMMERF, SALLY, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, SALLY, EVENT_BEAT_SWIMMERF_SALLY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -99,7 +99,7 @@ TrainerSwimmerfSally:
 	done
 
 TrainerSwimmerfTara:
-	trainer EVENT_BEAT_SWIMMERF_TARA, SWIMMERF, TARA, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERF, TARA, EVENT_BEAT_SWIMMERF_TARA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -126,7 +126,7 @@ TrainerSwimmerfTara:
 	done
 
 TrainerHikerTony:
-	trainer EVENT_BEAT_HIKER_TONY, HIKER, TONY, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, TONY, EVENT_BEAT_HIKER_TONY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

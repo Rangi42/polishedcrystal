@@ -1,18 +1,18 @@
 CeladonHotelRoom3_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 5, 3, 4, CELADON_HOTEL_2F
-	warp_def 5, 4, 4, CELADON_HOTEL_2F
+	db 2 ; warp events
+	warp_event 3, 5, 4, CELADON_HOTEL_2F
+	warp_event 4, 5, 4, CELADON_HOTEL_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_GRAMPS, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
+	db 1 ; object events
+	object_event 2, 2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
 
 CeladonHotelRoom3GrampsText:
 	text "I've been staying"

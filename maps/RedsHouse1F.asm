@@ -1,20 +1,20 @@
 RedsHouse1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 7, 2, 1, PALLET_TOWN
-	warp_def 7, 3, 1, PALLET_TOWN
-	warp_def 0, 7, 1, REDS_HOUSE_2F
+	db 3 ; warp events
+	warp_event 2, 7, 1, PALLET_TOWN
+	warp_event 3, 7, 1, PALLET_TOWN
+	warp_event 7, 0, 1, REDS_HOUSE_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 5, SIGNPOST_UP, RedsHouse1FTVScript
+	db 1 ; bg events
+	bg_event 5, 1, SIGNPOST_UP, RedsHouse1FTVScript
 
-	db 1 ; person events
-	person_event SPRITE_REDS_MOM, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RedsMom, -1
+	db 1 ; object events
+	object_event 5, 3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RedsMom, -1
 
 RedsMom:
 	checkevent EVENT_MET_REDS_MOM

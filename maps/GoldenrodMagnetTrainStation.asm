@@ -1,25 +1,25 @@
 GoldenrodMagnetTrainStation_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 17, 8, 5, GOLDENROD_CITY
-	warp_def 17, 9, 5, GOLDENROD_CITY
-	warp_def 5, 6, 4, SAFFRON_TRAIN_STATION
-	warp_def 5, 11, 3, SAFFRON_TRAIN_STATION
+	db 4 ; warp events
+	warp_event 8, 17, 5, GOLDENROD_CITY
+	warp_event 9, 17, 5, GOLDENROD_CITY
+	warp_event 6, 5, 4, SAFFRON_TRAIN_STATION
+	warp_event 11, 5, 3, SAFFRON_TRAIN_STATION
 
-	db 1 ; xy triggers
-	xy_trigger 0, 6, 11, Script_ArriveFromSaffron
+	db 1 ; coord events
+	coord_event 11, 6, 0, Script_ArriveFromSaffron
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
-	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
+	db 3 ; object events
+	object_event 9, 9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
+	object_event 11, 14, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
+	object_event 6, 12, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
 
 OfficerScript_0x550ec:

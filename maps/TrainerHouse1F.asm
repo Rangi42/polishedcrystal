@@ -1,26 +1,26 @@
 TrainerHouse1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 11, 4, 3, VIRIDIAN_CITY
-	warp_def 11, 5, 3, VIRIDIAN_CITY
-	warp_def 2, 8, 1, TRAINER_HOUSE_B1F
+	db 3 ; warp events
+	warp_event 4, 11, 3, VIRIDIAN_CITY
+	warp_event 5, 11, 3, VIRIDIAN_CITY
+	warp_event 8, 2, 1, TRAINER_HOUSE_B1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x9b1f4
-	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x9b25d
-	signpost 6, 4, SIGNPOST_JUMPTEXT, UnknownText_0x9b2c1
+	db 3 ; bg events
+	bg_event 7, 0, SIGNPOST_JUMPTEXT, UnknownText_0x9b1f4
+	bg_event 9, 0, SIGNPOST_JUMPTEXT, UnknownText_0x9b25d
+	bg_event 4, 6, SIGNPOST_JUMPTEXT, UnknownText_0x9b2c1
 
-	db 5 ; person events
-	person_event SPRITE_RECEPTIONIST, 10, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9af7f, -1
-	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b025, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b0b5, -1
-	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b11d, -1
-	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b1c9, -1
+	db 5 ; object events
+	object_event 0, 10, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9af7f, -1
+	object_event 8, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b025, -1
+	object_event 6, 2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b0b5, -1
+	object_event 7, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b11d, -1
+	object_event 2, 4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b1c9, -1
 
 UnknownText_0x9af7f:
 	text "Welcome to Trainer"

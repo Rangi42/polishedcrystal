@@ -1,24 +1,24 @@
 ShamoutiPokeCenter1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
-	db 3 ; warps
-	warp_def 7, 5, 1, SHAMOUTI_ISLAND
-	warp_def 7, 6, 1, SHAMOUTI_ISLAND
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 3 ; warp events
+	warp_event 5, 7, 1, SHAMOUTI_ISLAND
+	warp_event 6, 7, 1, SHAMOUTI_ISLAND
+	warp_event 0, 7, 1, POKECENTER_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalLoreleiScript
+	db 1 ; bg events
+	bg_event 10, 1, SIGNPOST_READ, PokemonJournalLoreleiScript
 
-	db 2 ; person events
-	person_event SPRITE_IVY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
-	pc_nurse_event 1, 5
+	db 2 ; object events
+	object_event 6, 3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
+	pc_nurse_event 5, 1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const SHAMOUTIPOKECENTER1F_IVY
 
 ShamoutiPokeCenter1FFixStairScript:

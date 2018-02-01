@@ -1,45 +1,45 @@
 Route3_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, Route3FlyPoint
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route3FlyPoint
 
-	db 2 ; warps
-	warp_def 1, 68, 1, MOUNT_MOON_1F
-	warp_def 3, 61, 1, ROUTE_3_POKECENTER_1F
+	db 2 ; warp events
+	warp_event 68, 1, 1, MOUNT_MOON_1F
+	warp_event 61, 3, 1, ROUTE_3_POKECENTER_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 8 ; signposts
-	signpost 15, 63, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
-	signpost 17, 11, SIGNPOST_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
-	signpost 15, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
-	signpost 17, 8, SIGNPOST_JUMPTEXT, Route3MeteoriteText
-	signpost 17, 9, SIGNPOST_JUMPTEXT, Route3MeteoriteText
-	signpost 15, 14, SIGNPOST_JUMPTEXT, Route3MeteoriteText
-	signpost 16, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
-	signpost 17, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	db 8 ; bg events
+	bg_event 63, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
+	bg_event 11, 17, SIGNPOST_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
+	bg_event 8, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	bg_event 8, 17, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	bg_event 9, 17, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	bg_event 14, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	bg_event 15, 16, SIGNPOST_JUMPTEXT, Route3MeteoriteText
+	bg_event 15, 17, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 
-	db 12 ; person events
-	person_event SPRITE_YOUNGSTER, 7, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterRegis, -1
-	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
-	person_event SPRITE_YOUNGSTER, 3, 25, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterWarren, -1
-	person_event SPRITE_FISHER, 12, 30, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
-	person_event SPRITE_FISHER, 10, 60, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherBurt, -1
-	person_event SPRITE_BLACK_BELT, 8, 44, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBlackbeltManford, -1
-	person_event SPRITE_BLACK_BELT, 18, 52, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltAnder, -1
-	person_event SPRITE_POKEFAN_M, 6, 38, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerBruce, -1
-	person_event SPRITE_POKEFAN_M, 19, 61, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerHikerDwight, -1
-	person_event SPRITE_COOLTRAINER_M, 12, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
-	person_event SPRITE_COOLTRAINER_F, 12, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1
-	itemball_event 14, 36, BIG_ROOT, 1, EVENT_ROUTE_3_BIG_ROOT
+	db 12 ; object events
+	object_event 12, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterRegis, -1
+	object_event 17, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterJimmy, -1
+	object_event 25, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterWarren, -1
+	object_event 30, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherOtis, -1
+	object_event 60, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherBurt, -1
+	object_event 44, 8, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBlackbeltManford, -1
+	object_event 52, 18, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltAnder, -1
+	object_event 38, 6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerBruce, -1
+	object_event 61, 19, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerHikerDwight, -1
+	object_event 14, 12, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen1, -1
+	object_event 15, 12, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoZacandjen2, -1
+	itemball_event 36, 14, BIG_ROOT, 1, EVENT_ROUTE_3_BIG_ROOT
 
 Route3FlyPoint:
 	setflag ENGINE_FLYPOINT_MT_MOON
 	return
 
 TrainerYoungsterRegis:
-	trainer EVENT_BEAT_YOUNGSTER_REGIS, YOUNGSTER, REGIS, .SeenText, .BeatenText, 0, .Script
+	trainer YOUNGSTER, REGIS, EVENT_BEAT_YOUNGSTER_REGIS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -64,7 +64,7 @@ TrainerYoungsterRegis:
 	done
 
 TrainerYoungsterJimmy:
-	trainer EVENT_BEAT_YOUNGSTER_JIMMY, YOUNGSTER, JIMMY, .SeenText, .BeatenText, 0, .Script
+	trainer YOUNGSTER, JIMMY, EVENT_BEAT_YOUNGSTER_JIMMY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -88,7 +88,7 @@ TrainerYoungsterJimmy:
 	done
 
 TrainerYoungsterWarren:
-	trainer EVENT_BEAT_YOUNGSTER_WARREN, YOUNGSTER, WARREN, .SeenText, .BeatenText, 0, .Script
+	trainer YOUNGSTER, WARREN, EVENT_BEAT_YOUNGSTER_WARREN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -111,7 +111,7 @@ TrainerYoungsterWarren:
 	done
 
 TrainerFirebreatherOtis:
-	trainer EVENT_BEAT_FIREBREATHER_OTIS, FIREBREATHER, OTIS, .SeenText, .BeatenText, 0, .Script
+	trainer FIREBREATHER, OTIS, EVENT_BEAT_FIREBREATHER_OTIS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -134,7 +134,7 @@ TrainerFirebreatherOtis:
 	done
 
 TrainerFirebreatherBurt:
-	trainer EVENT_BEAT_FIREBREATHER_BURT, FIREBREATHER, BURT, .SeenText, .BeatenText, 0, .Script
+	trainer FIREBREATHER, BURT, EVENT_BEAT_FIREBREATHER_BURT, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -159,7 +159,7 @@ TrainerFirebreatherBurt:
 	done
 
 TrainerBlackbeltManford:
-	trainer EVENT_BEAT_BLACKBELT_MANFORD, BLACKBELT_T, MANFORD, .SeenText, .BeatenText, 0, .Script
+	trainer BLACKBELT_T, MANFORD, EVENT_BEAT_BLACKBELT_MANFORD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -183,7 +183,7 @@ TrainerBlackbeltManford:
 	done
 
 TrainerBlackbeltAnder:
-	trainer EVENT_BEAT_BLACKBELT_ANDER, BLACKBELT_T, ANDER, .SeenText, .BeatenText, 0, .Script
+	trainer BLACKBELT_T, ANDER, EVENT_BEAT_BLACKBELT_ANDER, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -207,7 +207,7 @@ TrainerBlackbeltAnder:
 	done
 
 TrainerHikerBruce:
-	trainer EVENT_BEAT_HIKER_BRUCE, HIKER, BRUCE, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, BRUCE, EVENT_BEAT_HIKER_BRUCE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -232,7 +232,7 @@ TrainerHikerBruce:
 	done
 
 TrainerHikerDwight:
-	trainer EVENT_BEAT_HIKER_DWIGHT, HIKER, DWIGHT, .SeenText, .BeatenText, 0, .Script
+	trainer HIKER, DWIGHT, EVENT_BEAT_HIKER_DWIGHT, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -264,7 +264,7 @@ TrainerHikerDwight:
 	done
 
 TrainerAceDuoZacandjen1:
-	trainer EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, ACE_DUO, ZACANDJEN1, .SeenText, .BeatenText, 0, .Script
+	trainer ACE_DUO, ZACANDJEN1, EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -290,7 +290,7 @@ TrainerAceDuoZacandjen1:
 	done
 
 TrainerAceDuoZacandjen2:
-	trainer EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, ACE_DUO, ZACANDJEN2, .SeenText, .BeatenText, 0, .Script
+	trainer ACE_DUO, ZACANDJEN2, EVENT_BEAT_ACE_DUO_ZAC_AND_JEN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

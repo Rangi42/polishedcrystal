@@ -1,25 +1,25 @@
 Route7_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, Route7RebattleBreeder
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, Route7RebattleBreeder
 
-	db 2 ; warps
-	warp_def 6, 15, 1, ROUTE_7_SAFFRON_GATE
-	warp_def 7, 15, 2, ROUTE_7_SAFFRON_GATE
+	db 2 ; warp events
+	warp_event 15, 6, 1, ROUTE_7_SAFFRON_GATE
+	warp_event 15, 7, 2, ROUTE_7_SAFFRON_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 13, 5, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
-	signpost 11, 6, SIGNPOST_JUMPTEXT, Route7LockedDoorText
+	db 2 ; bg events
+	bg_event 5, 13, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
+	bg_event 6, 11, SIGNPOST_JUMPTEXT, Route7LockedDoorText
 
-	db 3 ; person events
-	person_event SPRITE_BIG_SNORLAX, 0, 1, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
-	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
-	itemball_event 1, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
+	db 3 ; object events
+	object_event 1, 0, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
+	object_event 15, 11, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
+	itemball_event 16, 1, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE7_BIG_SNORLAX
 
 Route7RebattleBreeder:
@@ -27,7 +27,7 @@ Route7RebattleBreeder:
 	return
 
 TrainerBreederCarlene:
-	trainer EVENT_BEAT_BREEDER_CARLENE, BREEDER, CARLENE, .SeenText, .BeatenText, 0, .Script
+	trainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

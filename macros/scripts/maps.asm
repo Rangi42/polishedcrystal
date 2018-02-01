@@ -3,16 +3,32 @@ map: MACRO
 ENDM
 
 
-warp_def: macro
-	db \1 ; y
-	db \2 ; x
+scene_script: MACRO
+	dw \1 ; script
+ENDM
+
+callback: MACRO
+	db \1 ; type
+	dw \2 ; script
+ENDM
+
+warp_event: MACRO
+	db \2 ; y
+	db \1 ; x
 	db \3 ; warp_to
 	map \4 ; map
-	endm
+ENDM
 
-signpost: macro
-	db \1 ; y
-	db \2 ; x
+coord_event: MACRO
+	db \3 ; scene_id
+	db \2 ; y
+	db \1 ; x
+	dw \4 ; script
+ENDM
+
+bg_event: MACRO
+	db \2 ; y
+	db \1 ; x
 	db \3 ; function
 if \3 == SIGNPOST_JUMPSTD
 if _NARG == 5
@@ -23,20 +39,13 @@ endc
 else
 	dw \4 ; pointer
 endc
-	endm
+ENDM
 
-xy_trigger: macro
-	db \1 ; number
-	db \2 ; y
-	db \3 ; x
-	dw \4 ; script
-	endm
-
-person_event: macro
+object_event: MACRO
 PERSON_EVENT_NARG = _NARG
-	db \1 ; sprite
+	db \3 ; sprite
 	db \2 + 4 ; y
-	db \3 + 4 ; x
+	db \1 + 4 ; x
 	db \4 ; movement function
 	dn \5, \6 ; radius: y, x
 	db \7 ; clock_hour
@@ -60,78 +69,67 @@ else
 endc
 	shift
 	dw \9 ; event flag
-	endm
+ENDM
 
-itemball_event: macro
-	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
-endm
+itemball_event: MACRO
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, \3, \4, \5
+ENDM
 
-tmhmball_event: macro
-	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEBALL, PLAYEREVENT_TMHMBALL, \3, \4
-endm
+tmhmball_event: MACRO
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEBALL, PLAYEREVENT_TMHMBALL, \3, \4
+ENDM
 
-cuttree_event: macro
-	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, cuttree, \3
-endm
+cuttree_event: MACRO
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, cuttree, \3
+ENDM
 
-fruittree_event: macro
+fruittree_event: MACRO
 if _NARG == 4
-	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, fruittree, \3, \4, -1
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, fruittree, \3, \4, -1
 else
-	person_event SPRITE_BALL_CUT_FRUIT, \1, \2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, fruittree, \3, \4, \5
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, fruittree, \3, \4, \5
 endc
-endm
+ENDM
 
-strengthboulder_event: macro
+strengthboulder_event: MACRO
 if _NARG == 2
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
+	object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, -1
 else
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
+	object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, strengthboulder, \3
 endc
-endm
+ENDM
 
-smashrock_event: macro
+smashrock_event: MACRO
 if _NARG == 2
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
+	object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, -1
 else
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, \1, \2, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
+	object_event \1, \2, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, \3
 endc
-endm
+ENDM
 
-pc_nurse_event: macro
-	person_event SPRITE_BOWING_NURSE, \1, \2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
-endm
+pc_nurse_event: MACRO
+	object_event \1, \2, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
+ENDM
 
-mart_clerk_event: macro
-	person_event SPRITE_CLERK, \1, \2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, \3, \4, -1
-endm
+mart_clerk_event: MACRO
+	object_event \1, \2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, \3, \4, -1
+ENDM
 
 
 trainer: MACRO
 	; flag, group, id, seen text, win text, lost text, talk-again text
-	dw \1
-	db \2, \3
+	dw \3
+	db \1, \2
 	dw \4, \5, \6, \7
 ENDM
 
 generictrainer: MACRO
 	; flag, group, id, seen text, win text
-	dw \1
-	db \2, \3
+	dw \3
+	db \1, \2
 	dw \4, \5
 ENDM
 
-itemball: MACRO
-if _NARG == 2
-	db \1, \2
-else
-	db \1, 1
-endc
-endm
-
-tmhmball: MACRO
-	db \1
-endm
 
 elevfloor: MACRO
 	db \1, \2
@@ -141,4 +139,4 @@ ENDM
 stonetable: MACRO
 	db \1, \2
 	dw \3
-endm
+ENDM

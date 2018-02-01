@@ -1,28 +1,28 @@
 GoldenrodDeptStoreB1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_TILES, UnknownScript_0x7d781
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
+	db 2 ; callbacks
+	callback MAPCALLBACK_TILES, UnknownScript_0x7d781
+	callback MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
 
-	db 3 ; warps
-	warp_def 2, 17, 3, UNDERGROUND_WAREHOUSE
-	warp_def 4, 9, 1, GOLDENROD_DEPT_STORE_ELEVATOR
-	warp_def 4, 10, 2, GOLDENROD_DEPT_STORE_ELEVATOR
+	db 3 ; warp events
+	warp_event 17, 2, 3, UNDERGROUND_WAREHOUSE
+	warp_event 9, 4, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	warp_event 10, 4, 2, GOLDENROD_DEPT_STORE_ELEVATOR
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 8 ; person events
-	itemball_event 15, 10, ETHER, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_ETHER
-	itemball_event 2, 14, METAL_COAT, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_METAL_COAT
-	itemball_event 3, 6, BURN_HEAL, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_BURN_HEAL
+	db 8 ; object events
+	itemball_event 10, 15, ETHER, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_ETHER
+	itemball_event 14, 2, METAL_COAT, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_METAL_COAT
+	itemball_event 6, 3, BURN_HEAL, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_BURN_HEAL
 	itemball_event 15, 15, ULTRA_BALL, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_ULTRA_BALL
-	person_event SPRITE_BLACK_BELT, 10, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d7cb, -1
-	person_event SPRITE_BLACK_BELT, 8, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d82c, -1
-	person_event SPRITE_BLACK_BELT, 13, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d875, -1
-	person_event SPRITE_MACHOKE, 7, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, MACHOKE, UnknownText_0x7d8bb, -1
+	object_event 9, 10, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d7cb, -1
+	object_event 4, 8, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d82c, -1
+	object_event 6, 13, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7d875, -1
+	object_event 7, 7, SPRITE_MACHOKE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, MACHOKE, UnknownText_0x7d8bb, -1
 
 UnknownScript_0x7d781:
 	checkevent EVENT_RECEIVED_CARD_KEY

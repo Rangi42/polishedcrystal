@@ -1,21 +1,21 @@
 Route39Farmhouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 2, ROUTE_39
-	warp_def 7, 3, 2, ROUTE_39
+	db 2 ; warp events
+	warp_event 2, 7, 2, ROUTE_39
+	warp_event 3, 7, 2, ROUTE_39
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 1, 6, SIGNPOST_JUMPSTD, picturebookshelf
-	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
+	db 2 ; bg events
+	bg_event 6, 1, SIGNPOST_JUMPSTD, picturebookshelf
+	bg_event 7, 1, SIGNPOST_JUMPSTD, picturebookshelf
 
-	db 2 ; person events
-	person_event SPRITE_POKEFAN_M, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1
+	db 2 ; object events
+	object_event 3, 2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
+	object_event 5, 4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1
 
 PokefanMScript_0x9ceb4:
 	faceplayer

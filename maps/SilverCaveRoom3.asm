@@ -1,20 +1,20 @@
 SilverCaveRoom3_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_SPRITES, SilverCaveRoom3DailyRedRematchCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_SPRITES, SilverCaveRoom3DailyRedRematchCallback
 
-	db 1 ; warps
-	warp_def 29, 9, 2, SILVER_CAVE_ROOM_2
+	db 1 ; warp events
+	warp_event 9, 29, 2, SILVER_CAVE_ROOM_2
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_RED, 6, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
+	db 1 ; object events
+	object_event 10, 6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const SILVERCAVEROOM3_RED
 
 SilverCaveRoom3DailyRedRematchCallback:

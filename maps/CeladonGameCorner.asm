@@ -1,63 +1,63 @@
 CeladonGameCorner_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 13, 14, 6, CELADON_CITY
-	warp_def 13, 15, 6, CELADON_CITY
+	db 2 ; warp events
+	warp_event 14, 13, 6, CELADON_CITY
+	warp_event 15, 13, 6, CELADON_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 38 ; signposts
-	signpost 6, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 7, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 8, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 9, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 10, 1, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 11, 1, SIGNPOST_LEFT, MapCeladonGameCornerSignpost11Script
-	signpost 6, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 7, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 8, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 9, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost9Script
-	signpost 10, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
-	signpost 11, 6, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost11Script
-	signpost 6, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 9, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost16Script
-	signpost 11, 7, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
-	signpost 6, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 9, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 12, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 11, 12, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
-	signpost 6, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 9, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 13, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 11, 13, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
-	signpost 6, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 7, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 8, 18, SIGNPOST_JUMPTEXT, UnknownText_0x7254f
-	signpost 9, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 10, 18, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
-	signpost 11, 18, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
-	signpost 0, 15, SIGNPOST_JUMPTEXT, UnknownText_0x724f3
-	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x72521
+	db 38 ; bg events
+	bg_event 1, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 1, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 1, 8, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 1, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 1, 10, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 1, 11, SIGNPOST_LEFT, MapCeladonGameCornerSignpost11Script
+	bg_event 6, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 6, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 6, 8, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 6, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost9Script
+	bg_event 6, 10, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
+	bg_event 6, 11, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost11Script
+	bg_event 7, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 7, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 7, 8, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 7, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 7, 10, SIGNPOST_READ, MapCeladonGameCornerSignpost16Script
+	bg_event 7, 11, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
+	bg_event 12, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 12, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 12, 8, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 12, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 12, 10, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 12, 11, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
+	bg_event 13, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 13, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 13, 8, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 13, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 13, 10, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 13, 11, SIGNPOST_LEFT, MapCeladonGameCornerSignpost35Script
+	bg_event 18, 6, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 18, 7, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 18, 8, SIGNPOST_JUMPTEXT, UnknownText_0x7254f
+	bg_event 18, 9, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 18, 10, SIGNPOST_READ, MapCeladonGameCornerSignpost35Script
+	bg_event 18, 11, SIGNPOST_RIGHT, MapCeladonGameCornerSignpost35Script
+	bg_event 15, 0, SIGNPOST_JUMPTEXT, UnknownText_0x724f3
+	bg_event 9, 0, SIGNPOST_JUMPTEXT, UnknownText_0x72521
 
-	db 8 ; person events
-	person_event SPRITE_CLERK, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
-	person_event SPRITE_RECEPTIONIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x721d0, -1
-	person_event SPRITE_POKEFAN_M, 10, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
-	person_event SPRITE_TEACHER, 7, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
-	person_event SPRITE_FISHING_GURU, 7, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
-	person_event SPRITE_FISHER, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
-	person_event SPRITE_GYM_GUY, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
-	person_event SPRITE_GRAMPS, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
+	db 8 ; object events
+	object_event 5, 2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
+	object_event 3, 2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x721d0, -1
+	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
+	object_event 17, 7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
+	object_event 11, 7, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
+	object_event 8, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
+	object_event 11, 3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
+	object_event 2, 8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
 
 PokefanMScript_0x72123:
 	showtextfaceplayer UnknownText_0x72215

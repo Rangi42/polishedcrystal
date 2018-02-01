@@ -1,53 +1,53 @@
 SafariZoneNorth_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 9 ; warps
-	warp_def 32, 41, 3, SAFARI_ZONE_EAST
-	warp_def 33, 41, 4, SAFARI_ZONE_EAST
-	warp_def 37, 10, 3, SAFARI_ZONE_WEST
-	warp_def 37, 11, 4, SAFARI_ZONE_WEST
-	warp_def 37, 22, 7, SAFARI_ZONE_HUB
-	warp_def 37, 23, 8, SAFARI_ZONE_HUB
-	warp_def 5, 37, 1, SAFARI_ZONE_NORTH_REST_HOUSE
-	warp_def 37, 4, 1, SAFARI_ZONE_WEST
-	warp_def 37, 5, 2, SAFARI_ZONE_WEST
+	db 9 ; warp events
+	warp_event 41, 32, 3, SAFARI_ZONE_EAST
+	warp_event 41, 33, 4, SAFARI_ZONE_EAST
+	warp_event 10, 37, 3, SAFARI_ZONE_WEST
+	warp_event 11, 37, 4, SAFARI_ZONE_WEST
+	warp_event 22, 37, 7, SAFARI_ZONE_HUB
+	warp_event 23, 37, 8, SAFARI_ZONE_HUB
+	warp_event 37, 5, 1, SAFARI_ZONE_NORTH_REST_HOUSE
+	warp_event 4, 37, 1, SAFARI_ZONE_WEST
+	warp_event 5, 37, 2, SAFARI_ZONE_WEST
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 6 ; signposts
-	signpost 33, 15, SIGNPOST_JUMPTEXT, SafariZoneNorthAreaSignText
-	signpost 6, 38, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
-	signpost 30, 28, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
-	signpost 34, 20, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips2SignText
-	signpost 27, 5, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
-	signpost 19, 31, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
+	db 6 ; bg events
+	bg_event 15, 33, SIGNPOST_JUMPTEXT, SafariZoneNorthAreaSignText
+	bg_event 38, 6, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
+	bg_event 28, 30, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
+	bg_event 20, 34, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips2SignText
+	bg_event 5, 27, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
+	bg_event 31, 19, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
 
-	db 6 ; person events
-	person_event SPRITE_COOLTRAINER_F, 23, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
-	person_event SPRITE_YOUNGSTER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
-	person_event SPRITE_BEAUTY, 9, 36, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
-	person_event SPRITE_COOLTRAINER_F, 14, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
-	itemball_event 18, 24, EVIOLITE, 1, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
-	itemball_event 9, 21, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
+	db 6 ; object events
+	object_event 18, 23, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
+	object_event 7, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
+	object_event 36, 9, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
+	object_event 15, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
+	itemball_event 24, 18, EVIOLITE, 1, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
+	itemball_event 21, 9, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
 
 TrainerBattleGirlPadma:
-	trainer EVENT_BEAT_BATTLE_GIRL_PADMA, BATTLE_GIRL, PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript
+	trainer BATTLE_GIRL, PADMA, EVENT_BEAT_BATTLE_GIRL_PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript
 
 BattleGirlPadmaScript:
 	end_if_just_battled
 	jumptextfaceplayer BattleGirlPadmaAfterText
 
 TrainerYoungsterTyler:
-	trainer EVENT_BEAT_YOUNGSTER_TYLER, YOUNGSTER, TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
+	trainer YOUNGSTER, TYLER, EVENT_BEAT_YOUNGSTER_TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
 
 YoungsterTylerScript:
 	end_if_just_battled
 	jumptextfaceplayer YoungsterTylerAfterText
 
 TrainerBeautyRachael:
-	trainer EVENT_BEAT_BEAUTY_RACHAEL, BEAUTY, RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
+	trainer BEAUTY, RACHAEL, EVENT_BEAT_BEAUTY_RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
 
 BeautyRachaelScript:
 	end_if_just_battled

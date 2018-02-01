@@ -1,27 +1,27 @@
 GoldenrodBikeShop_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 2, GOLDENROD_CITY
-	warp_def 7, 3, 2, GOLDENROD_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 2, GOLDENROD_CITY
+	warp_event 3, 7, 2, GOLDENROD_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 9 ; signposts
-	signpost 2, 1, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 3, 0, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 3, 1, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 5, 0, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 5, 1, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 6, 0, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 6, 1, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 6, 6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	signpost 6, 7, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	db 9 ; bg events
+	bg_event 1, 2, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 1, 3, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 1, 5, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 0, 6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 1, 6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 6, 6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event 7, 6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
 
-	db 1 ; person events
-	person_event SPRITE_CLERK, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
+	db 1 ; object events
+	object_event 7, 2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
 
 ClerkScript_0x54750:
 	faceplayer

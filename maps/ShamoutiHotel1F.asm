@@ -1,26 +1,26 @@
 ShamoutiHotel1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, ShamoutiHotel1FRestaurantTrigger
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, ShamoutiHotel1FRestaurantTrigger
 
-	db 4 ; warps
-	warp_def 7, 8, 2, SHAMOUTI_ISLAND
-	warp_def 7, 9, 2, SHAMOUTI_ISLAND
-	warp_def 0, 2, 1, SHAMOUTI_HOTEL_2F
-	warp_def 0, 14, 1, SHAMOUTI_HOTEL_RESTAURANT
+	db 4 ; warp events
+	warp_event 8, 7, 2, SHAMOUTI_ISLAND
+	warp_event 9, 7, 2, SHAMOUTI_ISLAND
+	warp_event 2, 0, 1, SHAMOUTI_HOTEL_2F
+	warp_event 14, 0, 1, SHAMOUTI_HOTEL_RESTAURANT
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 0, 15, SIGNPOST_JUMPTEXT, ShamoutiHotelRestaurantSignText
+	db 1 ; bg events
+	bg_event 15, 0, SIGNPOST_JUMPTEXT, ShamoutiHotelRestaurantSignText
 
-	db 5 ; person events
-	person_event SPRITE_RECEPTIONIST, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FReceptionistText, -1
-	person_event SPRITE_ARTIST, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FCooltrainermText, -1
-	person_event SPRITE_LADY, 5, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FLadyText, -1
-	person_event SPRITE_YOUNGSTER, 7, 14, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FYoungsterText, -1
+	db 5 ; object events
+	object_event 8, 1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FReceptionistText, -1
+	object_event 2, 4, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiHotel1FArtistScript, -1
+	object_event 5, 4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FCooltrainermText, -1
+	object_event 12, 5, SPRITE_LADY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FLadyText, -1
+	object_event 14, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FYoungsterText, -1
 
 ShamoutiHotel1FRestaurantTrigger:
 	domaptrigger SHAMOUTI_HOTEL_RESTAURANT, $0

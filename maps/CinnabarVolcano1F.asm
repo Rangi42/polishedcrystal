@@ -1,44 +1,44 @@
 CinnabarVolcano1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
+	db 1 ; callbacks
+	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
 
-	db 10 ; warps
-	warp_def 25, 13, 2, CINNABAR_ISLAND
-	warp_def 13, 5, 1, CINNABAR_VOLCANO_B1F
-	warp_def 20, 14, 2, CINNABAR_VOLCANO_B1F
-	warp_def 19, 25, 3, CINNABAR_VOLCANO_B1F
-	warp_def 8, 22, 4, CINNABAR_VOLCANO_B1F
-	warp_def 21, 8, 8, CINNABAR_VOLCANO_B1F
-	warp_def 19, 20, 9, CINNABAR_VOLCANO_B1F
-	warp_def 9, 18, 10, CINNABAR_VOLCANO_B1F
-	warp_def 7, 10, 11, CINNABAR_VOLCANO_B1F
-	warp_def 3, 15, 12, CINNABAR_VOLCANO_B1F
+	db 10 ; warp events
+	warp_event 13, 25, 2, CINNABAR_ISLAND
+	warp_event 5, 13, 1, CINNABAR_VOLCANO_B1F
+	warp_event 14, 20, 2, CINNABAR_VOLCANO_B1F
+	warp_event 25, 19, 3, CINNABAR_VOLCANO_B1F
+	warp_event 22, 8, 4, CINNABAR_VOLCANO_B1F
+	warp_event 8, 21, 8, CINNABAR_VOLCANO_B1F
+	warp_event 20, 19, 9, CINNABAR_VOLCANO_B1F
+	warp_event 18, 9, 10, CINNABAR_VOLCANO_B1F
+	warp_event 10, 7, 11, CINNABAR_VOLCANO_B1F
+	warp_event 15, 3, 12, CINNABAR_VOLCANO_B1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 13, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
+	db 1 ; bg events
+	bg_event 13, 1, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
 
-	db 15 ; person events
-	person_event SPRITE_BUCK, 9, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
-	strengthboulder_event 16, 6, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
-	strengthboulder_event 22, 15, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
-	strengthboulder_event 4, 19, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
-	strengthboulder_event 4, 5, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
-	strengthboulder_event 16, 23
-	person_event SPRITE_SCIENTIST, 19, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistOskar, -1
-	person_event SPRITE_SUPER_NERD, 24, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdLuis, -1
-	smashrock_event 18, 5
-	smashrock_event 21, 11
-	smashrock_event 23, 35
-	smashrock_event 11, 19
-	smashrock_event 12, 25
-	smashrock_event 2, 13
-	smashrock_event 4, 8
+	db 15 ; object events
+	object_event 4, 9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
+	strengthboulder_event 6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
+	strengthboulder_event 15, 22, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
+	strengthboulder_event 19, 4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
+	strengthboulder_event 5, 4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
+	strengthboulder_event 23, 16
+	object_event 2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistOskar, -1
+	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdLuis, -1
+	smashrock_event 5, 18
+	smashrock_event 11, 21
+	smashrock_event 35, 23
+	smashrock_event 19, 11
+	smashrock_event 25, 12
+	smashrock_event 13, 2
+	smashrock_event 8, 4
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const CINNABARVOLCANO1F_BUCK
 	const CINNABARVOLCANO1F_BOULDER1
 	const CINNABARVOLCANO1F_BOULDER2
@@ -187,14 +187,14 @@ CinnabarVolcano1FBuckScript:
 	done
 
 TrainerScientistOskar:
-	trainer EVENT_BEAT_SCIENTIST_OSKAR, SCIENTIST, OSKAR, ScientistOskarSeenText, ScientistOskarBeatenText, 0, ScientistOskarScript
+	trainer SCIENTIST, OSKAR, EVENT_BEAT_SCIENTIST_OSKAR, ScientistOskarSeenText, ScientistOskarBeatenText, 0, ScientistOskarScript
 
 ScientistOskarScript:
 	end_if_just_battled
 	jumptextfaceplayer ScientistOskarAfterText
 
 TrainerSuperNerdLuis:
-	trainer EVENT_BEAT_SUPER_NERD_LUIS, SUPER_NERD, LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText, 0, SuperNerdLuisScript
+	trainer SUPER_NERD, LUIS, EVENT_BEAT_SUPER_NERD_LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText, 0, SuperNerdLuisScript
 
 SuperNerdLuisScript:
 	end_if_just_battled

@@ -1,30 +1,30 @@
 VictoryRoad2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 9, 25, 4, ROUTE_23
-	warp_def 11, 3, 2, VICTORY_ROAD_1F
-	warp_def 4, 3, 1, VICTORY_ROAD_3F
-	warp_def 7, 15, 2, VICTORY_ROAD_3F
-	warp_def 9, 19, 3, VICTORY_ROAD_3F
+	db 5 ; warp events
+	warp_event 25, 9, 4, ROUTE_23
+	warp_event 3, 11, 2, VICTORY_ROAD_1F
+	warp_event 3, 4, 1, VICTORY_ROAD_3F
+	warp_event 15, 7, 2, VICTORY_ROAD_3F
+	warp_event 19, 9, 3, VICTORY_ROAD_3F
 
-	db 1 ; xy triggers
-	xy_trigger 0, 9, 25, UnknownScript_0x74492
+	db 1 ; coord events
+	coord_event 25, 9, 0, UnknownScript_0x74492
 
-	db 1 ; signposts
-	signpost 5, 5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
+	db 1 ; bg events
+	bg_event 5, 5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
-	db 6 ; person events
-	person_event SPRITE_SILVER, 9, 20, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
-	person_event SPRITE_VETERAN_F, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
-	person_event SPRITE_VETERAN_F, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
-	tmhmball_event 4, 8, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
-	itemball_event 5, 20, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
-	itemball_event 14, 9, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
+	db 6 ; object events
+	object_event 20, 9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
+	object_event 5, 3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
+	tmhmball_event 8, 4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
+	itemball_event 20, 5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
+	itemball_event 9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const VICTORYROAD2F_SILVER
 
 UnknownScript_0x74492:
@@ -78,14 +78,14 @@ UnknownScript_0x7451f:
 	end
 
 TrainerVeteranfJoanne:
-	trainer EVENT_BEAT_VETERANF_JOANNE, VETERANF, JOANNE, VeteranfJoanneSeenText, VeteranfJoanneBeatenText, 0, VeteranfJoanneScript
+	trainer VETERANF, JOANNE, EVENT_BEAT_VETERANF_JOANNE, VeteranfJoanneSeenText, VeteranfJoanneBeatenText, 0, VeteranfJoanneScript
 
 VeteranfJoanneScript:
 	end_if_just_battled
 	jumptextfaceplayer VeteranfJoanneAfterText
 
 TrainerVeteranfSylvie:
-	trainer EVENT_BEAT_VETERANF_SYLVIE, VETERANF, SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText, 0, VeteranfSylvieScript
+	trainer VETERANF, SYLVIE, EVENT_BEAT_VETERANF_SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText, 0, VeteranfSylvieScript
 
 VeteranfSylvieScript:
 	end_if_just_battled

@@ -1,26 +1,26 @@
 Route43Gate_MapScriptHeader:
-	db 1 ; map triggers
-	dw Route43GateTrigger0
+	db 1 ; scene scripts
+	scene_script Route43GateTrigger0
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
 
-	db 4 ; warps
-	warp_def 0, 4, 4, ROUTE_43
-	warp_def 0, 5, 5, ROUTE_43
-	warp_def 7, 4, 3, ROUTE_43
-	warp_def 7, 5, 3, ROUTE_43
+	db 4 ; warp events
+	warp_event 4, 0, 4, ROUTE_43
+	warp_event 5, 0, 5, ROUTE_43
+	warp_event 4, 7, 3, ROUTE_43
+	warp_event 5, 7, 3, ROUTE_43
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
-	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
+	db 3 ; object events
+	object_event 2, 4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event 7, 4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event 0, 4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE43GATE_ROCKET1
 	const ROUTE43GATE_ROCKET2
 

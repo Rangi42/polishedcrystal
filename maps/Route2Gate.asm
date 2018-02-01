@@ -1,20 +1,20 @@
 Route2Gate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 0, 4, 2, ROUTE_2_NORTH
-	warp_def 0, 5, 3, ROUTE_2_NORTH
-	warp_def 7, 4, 1, ROUTE_2_SOUTH
-	warp_def 7, 5, 1, ROUTE_2_SOUTH
+	db 4 ; warp events
+	warp_event 4, 0, 2, ROUTE_2_NORTH
+	warp_event 5, 0, 3, ROUTE_2_NORTH
+	warp_event 4, 7, 1, ROUTE_2_SOUTH
+	warp_event 5, 7, 1, ROUTE_2_SOUTH
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_SCIENTIST, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b955, -1
+	db 1 ; object events
+	object_event 6, 4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b955, -1
 
 UnknownText_0x9b955:
 	text "Are you <PLAYER>?"

@@ -1,24 +1,24 @@
 OlivineLighthouse6F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 15, 9, 1, OLIVINE_LIGHTHOUSE_5F
-	warp_def 5, 16, 6, OLIVINE_LIGHTHOUSE_5F
-	warp_def 5, 17, 7, OLIVINE_LIGHTHOUSE_5F
-	warp_def 3, 9, 1, OLIVINE_LIGHTHOUSE_ROOF
+	db 4 ; warp events
+	warp_event 9, 15, 1, OLIVINE_LIGHTHOUSE_5F
+	warp_event 16, 5, 6, OLIVINE_LIGHTHOUSE_5F
+	warp_event 17, 5, 7, OLIVINE_LIGHTHOUSE_5F
+	warp_event 9, 3, 1, OLIVINE_LIGHTHOUSE_ROOF
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_JASMINE, 8, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	person_event SPRITE_AMPHAROS, 8, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
-	itemball_event 4, 3, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
+	db 3 ; object events
+	object_event 8, 8, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event 9, 8, SPRITE_AMPHAROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
+	itemball_event 3, 4, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const OLIVINELIGHTHOUSE6F_JASMINE
 	const OLIVINELIGHTHOUSE6F_AMPHAROS
 

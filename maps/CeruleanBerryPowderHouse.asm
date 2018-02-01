@@ -1,19 +1,19 @@
 CeruleanBerryPowderHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 9, CERULEAN_CITY
-	warp_def 7, 3, 9, CERULEAN_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 9, CERULEAN_CITY
+	warp_event 3, 7, 9, CERULEAN_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	db 1 ; bg events
+	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 1 ; person events
-	person_event SPRITE_GRAMPS, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanBerryPowderHouseGrampsScript, -1
+	db 1 ; object events
+	object_event 5, 4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanBerryPowderHouseGrampsScript, -1
 
 CeruleanBerryPowderHouseGrampsScript:
 	checkevent EVENT_GOT_HP_UP_FROM_CERULEAN

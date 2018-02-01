@@ -1,32 +1,32 @@
 Route31_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, Route31CheckMomCall
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route31CheckMomCall
 
-	db 3 ; warps
-	warp_def 6, 4, 3, ROUTE_31_VIOLET_GATE
-	warp_def 7, 4, 4, ROUTE_31_VIOLET_GATE
-	warp_def 5, 34, 1, DARK_CAVE_VIOLET_ENTRANCE
+	db 3 ; warp events
+	warp_event 4, 6, 3, ROUTE_31_VIOLET_GATE
+	warp_event 4, 7, 4, ROUTE_31_VIOLET_GATE
+	warp_event 34, 5, 1, DARK_CAVE_VIOLET_ENTRANCE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 5, 7, SIGNPOST_JUMPTEXT, Route31SignText
-	signpost 5, 31, SIGNPOST_JUMPTEXT, DarkCaveSignText
+	db 2 ; bg events
+	bg_event 7, 5, SIGNPOST_JUMPTEXT, Route31SignText
+	bg_event 31, 5, SIGNPOST_JUMPTEXT, DarkCaveSignText
 
-	db 9 ; person events
-	person_event SPRITE_COOLTRAINER_M, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
-	person_event SPRITE_FISHER, 7, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
-	person_event SPRITE_YOUNGSTER, 5, 9, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1
-	person_event SPRITE_CHERRYGROVE_RIVAL, 13, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
-	cuttree_event 5, 13, EVENT_ROUTE_31_CUT_TREE_1
-	cuttree_event 10, 25, EVENT_ROUTE_31_CUT_TREE_2
-	fruittree_event 7, 16, FRUITTREE_ROUTE_31, PERSIM_BERRY
-	itemball_event 5, 29, POTION, 1, EVENT_ROUTE_31_POTION
-	itemball_event 15, 19, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
+	db 9 ; object events
+	object_event 28, 7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
+	object_event 17, 7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
+	object_event 9, 5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1
+	object_event 21, 13, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherWade1, -1
+	cuttree_event 13, 5, EVENT_ROUTE_31_CUT_TREE_1
+	cuttree_event 25, 10, EVENT_ROUTE_31_CUT_TREE_2
+	fruittree_event 16, 7, FRUITTREE_ROUTE_31, PERSIM_BERRY
+	itemball_event 29, 5, POTION, 1, EVENT_ROUTE_31_POTION
+	itemball_event 19, 15, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE31_COOLTRAINER_M
 
 Route31CheckMomCall:
@@ -39,7 +39,7 @@ Route31CheckMomCall:
 	return
 
 TrainerCooltrainermFinch:
-	trainer EVENT_INTRODUCED_ROUTE_LEADERS, 0, 0, .IntroText, 0, 0, .Script
+	trainer 0, 0, EVENT_INTRODUCED_ROUTE_LEADERS, .IntroText, 0, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -159,7 +159,7 @@ TrainerCooltrainermFinch:
 	done
 
 TrainerBug_catcherWade1:
-	trainer EVENT_BEAT_BUG_CATCHER_WADE, BUG_CATCHER, WADE1, Bug_catcherWade1SeenText, Bug_catcherWade1BeatenText, 0, .Script
+	trainer BUG_CATCHER, WADE1, EVENT_BEAT_BUG_CATCHER_WADE, Bug_catcherWade1SeenText, Bug_catcherWade1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_BUG_CATCHER_WADE

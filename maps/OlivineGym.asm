@@ -1,23 +1,23 @@
 OlivineGym_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 15, 4, 2, OLIVINE_CITY
-	warp_def 15, 5, 2, OLIVINE_CITY
+	db 2 ; warp events
+	warp_event 4, 15, 2, OLIVINE_CITY
+	warp_event 5, 15, 2, OLIVINE_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 13, 3, SIGNPOST_READ, OlivineGymStatue
-	signpost 13, 6, SIGNPOST_READ, OlivineGymStatue
+	db 2 ; bg events
+	bg_event 3, 13, SIGNPOST_READ, OlivineGymStatue
+	bg_event 6, 13, SIGNPOST_READ, OlivineGymStatue
 
-	db 4 ; person events
-	person_event SPRITE_JASMINE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x9c12f, EVENT_OLIVINE_GYM_JASMINE
-	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
-	person_event SPRITE_GENTLEMAN, 10, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
-	person_event SPRITE_LASS, 7, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
+	db 4 ; object events
+	object_event 5, 3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, JasmineScript_0x9c12f, EVENT_OLIVINE_GYM_JASMINE
+	object_event 7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
+	object_event 3, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
+	object_event 6, 7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
 
 JasmineScript_0x9c12f:
 	faceplayer
@@ -67,7 +67,7 @@ OlivineGymGuyScript:
 	jumptext OlivineGymGuyPreText
 
 OlivineGymLassConnie:
-	trainer EVENT_SPOKE_TO_LASS_CONNIE, 0, 0, OlivineGymLassConnieSeenText, 0, 0, OlivineGymLassConnieScript
+	trainer 0, 0, EVENT_SPOKE_TO_LASS_CONNIE, OlivineGymLassConnieSeenText, 0, 0, OlivineGymLassConnieScript
 
 OlivineGymLassConnieScript:
 	end_if_just_battled
@@ -81,7 +81,7 @@ OlivineGymLassConnieScript:
 	jumpopenedtext OlivineGymLassConnieAfterText
 
 OlivineGymGentlemanPreston:
-	trainer EVENT_SPOKE_TO_GENTLEMAN_PRESTON, 0, 0, OlivineGymGentlemanPrestonSeenText, 0, 0, OlivineGymGentlemanPrestonScript
+	trainer 0, 0, EVENT_SPOKE_TO_GENTLEMAN_PRESTON, OlivineGymGentlemanPrestonSeenText, 0, 0, OlivineGymGentlemanPrestonScript
 
 OlivineGymGentlemanPrestonScript:
 	end_if_just_battled

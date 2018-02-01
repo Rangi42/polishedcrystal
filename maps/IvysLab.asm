@@ -1,35 +1,35 @@
 IvysLab_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 11, 4, 1, VALENCIA_ISLAND
-	warp_def 11, 5, 1, VALENCIA_ISLAND
+	db 2 ; warp events
+	warp_event 4, 11, 1, VALENCIA_ISLAND
+	warp_event 5, 11, 1, VALENCIA_ISLAND
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 13 ; signposts
-	signpost 1, 2, SIGNPOST_READ, IvysLabHealingMachine
-	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 9, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 0, SIGNPOST_READ, PokemonJournalProfIvyScript
-	signpost 7, 1, SIGNPOST_READ, PokemonJournalProfIvyScript
-	signpost 7, 2, SIGNPOST_READ, PokemonJournalProfIvyScript
-	signpost 7, 3, SIGNPOST_READ, PokemonJournalProfIvyScript
-	signpost 7, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 8, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
+	db 13 ; bg events
+	bg_event 2, 1, SIGNPOST_READ, IvysLabHealingMachine
+	bg_event 6, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 8, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 9, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 0, 7, SIGNPOST_READ, PokemonJournalProfIvyScript
+	bg_event 1, 7, SIGNPOST_READ, PokemonJournalProfIvyScript
+	bg_event 2, 7, SIGNPOST_READ, PokemonJournalProfIvyScript
+	bg_event 3, 7, SIGNPOST_READ, PokemonJournalProfIvyScript
+	bg_event 6, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 8, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 9, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 3 ; person events
-	person_event SPRITE_IVY, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
-	person_event SPRITE_NIDORINO, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
-	person_event SPRITE_COOLTRAINER_F, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
+	db 3 ; object events
+	object_event 4, 2, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
+	object_event 5, 2, SPRITE_NIDORINO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
+	object_event 2, 9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const IVYSLAB_IVY
 	const IVYSLAB_NIDORINO
 

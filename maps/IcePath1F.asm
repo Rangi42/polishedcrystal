@@ -1,34 +1,34 @@
 IcePath1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 19, 4, 1, ROUTE_44
-	warp_def 27, 36, 7, BLACKTHORN_CITY
-	warp_def 5, 37, 1, ICE_PATH_B1F
-	warp_def 13, 37, 7, ICE_PATH_B1F
+	db 4 ; warp events
+	warp_event 4, 19, 1, ROUTE_44
+	warp_event 36, 27, 7, BLACKTHORN_CITY
+	warp_event 37, 5, 1, ICE_PATH_B1F
+	warp_event 37, 13, 7, ICE_PATH_B1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 5 ; person events
-	person_event SPRITE_SKIER, 10, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSkierMaria, -1
-	person_event SPRITE_BOARDER, 3, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBoarderStefan, -1
-	tmhmball_event 7, 31, HM_WATERFALL, EVENT_GOT_HM06_WATERFALL
-	itemball_event 23, 32, PP_UP, 1, EVENT_ICE_PATH_1F_PP_UP
-	itemball_event 9, 35, PROTEIN, 1, EVENT_ICE_PATH_1F_PROTEIN
+	db 5 ; object events
+	object_event 29, 10, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSkierMaria, -1
+	object_event 28, 3, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBoarderStefan, -1
+	tmhmball_event 31, 7, HM_WATERFALL, EVENT_GOT_HM06_WATERFALL
+	itemball_event 32, 23, PP_UP, 1, EVENT_ICE_PATH_1F_PP_UP
+	itemball_event 35, 9, PROTEIN, 1, EVENT_ICE_PATH_1F_PROTEIN
 
 TrainerSkierMaria:
-	trainer EVENT_BEAT_SKIER_MARIA, SKIER, MARIA, SkierMariaSeenText, SkierMariaBeatenText, 0, SkierMariaScript
+	trainer SKIER, MARIA, EVENT_BEAT_SKIER_MARIA, SkierMariaSeenText, SkierMariaBeatenText, 0, SkierMariaScript
 
 SkierMariaScript:
 	end_if_just_battled
 	jumptextfaceplayer SkierMariaAfterText
 
 TrainerBoarderStefan:
-	trainer EVENT_BEAT_BOARDER_STEFAN, BOARDER, STEFAN, BoarderStefanSeenText, BoarderStefanBeatenText, 0, BoarderStefanScript
+	trainer BOARDER, STEFAN, EVENT_BEAT_BOARDER_STEFAN, BoarderStefanSeenText, BoarderStefanBeatenText, 0, BoarderStefanScript
 
 BoarderStefanScript:
 	end_if_just_battled

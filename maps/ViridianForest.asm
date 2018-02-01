@@ -1,67 +1,67 @@
 ViridianForest_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 5, 3, 1, VIRIDIAN_FOREST_PEWTER_GATE
-	warp_def 47, 18, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
-	warp_def 47, 19, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	db 3 ; warp events
+	warp_event 3, 5, 1, VIRIDIAN_FOREST_PEWTER_GATE
+	warp_event 18, 47, 1, VIRIDIAN_FOREST_VIRIDIAN_GATE
+	warp_event 19, 47, 2, VIRIDIAN_FOREST_VIRIDIAN_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 11 ; signposts
-	signpost 7, 4, SIGNPOST_JUMPTEXT, ViridianForestSignText1
-	signpost 26, 6, SIGNPOST_JUMPTEXT, ViridianForestSignText2
-	signpost 19, 28, SIGNPOST_JUMPTEXT, ViridianForestSignText3
-	signpost 34, 18, SIGNPOST_JUMPTEXT, ViridianForestSignText4
-	signpost 42, 26, SIGNPOST_JUMPTEXT, ViridianForestSignText5
-	signpost 44, 20, SIGNPOST_JUMPTEXT, ViridianForestSignText6
-	signpost 44, 32, SIGNPOST_ITEM + MAX_ETHER, EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER
-	signpost 43, 18, SIGNPOST_ITEM + FULL_HEAL, EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL
-	signpost 43, 4, SIGNPOST_ITEM + MULCH, EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH
-	signpost 9, 30, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
-	signpost 14, 3, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
+	db 11 ; bg events
+	bg_event 4, 7, SIGNPOST_JUMPTEXT, ViridianForestSignText1
+	bg_event 6, 26, SIGNPOST_JUMPTEXT, ViridianForestSignText2
+	bg_event 28, 19, SIGNPOST_JUMPTEXT, ViridianForestSignText3
+	bg_event 18, 34, SIGNPOST_JUMPTEXT, ViridianForestSignText4
+	bg_event 26, 42, SIGNPOST_JUMPTEXT, ViridianForestSignText5
+	bg_event 20, 44, SIGNPOST_JUMPTEXT, ViridianForestSignText6
+	bg_event 32, 44, SIGNPOST_ITEM + MAX_ETHER, EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER
+	bg_event 18, 43, SIGNPOST_ITEM + FULL_HEAL, EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL
+	bg_event 4, 43, SIGNPOST_ITEM + MULCH, EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH
+	bg_event 30, 9, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
+	bg_event 3, 14, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
-	db 7 ; person events
-	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
-	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
-	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
-	person_event SPRITE_BUG_MANIAC, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
-	person_event SPRITE_BUG_MANIAC, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
-	itemball_event 31, 14, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
-	itemball_event 33, 3, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
+	db 7 ; object events
+	object_event 29, 42, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
+	object_event 33, 35, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
+	object_event 32, 21, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
+	object_event 31, 4, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
+	object_event 5, 24, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
+	itemball_event 14, 31, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
+	itemball_event 3, 33, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
 
 TrainerBug_maniacDane:
-	trainer EVENT_BEAT_BUG_MANIAC_DANE, BUG_MANIAC, DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText, 0, .Script
+	trainer BUG_MANIAC, DANE, EVENT_BEAT_BUG_MANIAC_DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacDaneAfterText
 
 TrainerBug_maniacDion:
-	trainer EVENT_BEAT_BUG_MANIAC_DION, BUG_MANIAC, DION, BugManiacDionSeenText, BugManiacDionBeatenText, 0, .Script
+	trainer BUG_MANIAC, DION, EVENT_BEAT_BUG_MANIAC_DION, BugManiacDionSeenText, BugManiacDionBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacDionAfterText
 
 TrainerBug_maniacStacey:
-	trainer EVENT_BEAT_BUG_MANIAC_STACEY, BUG_MANIAC, STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText, 0, .Script
+	trainer BUG_MANIAC, STACEY, EVENT_BEAT_BUG_MANIAC_STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacStaceyAfterText
 
 TrainerBug_maniacEllis:
-	trainer EVENT_BEAT_BUG_MANIAC_ELLIS, BUG_MANIAC, ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText, 0, .Script
+	trainer BUG_MANIAC, ELLIS, EVENT_BEAT_BUG_MANIAC_ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacEllisAfterText
 
 TrainerBug_maniacAbner:
-	trainer EVENT_BEAT_BUG_MANIAC_ABNER, BUG_MANIAC, ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText, 0, .Script
+	trainer BUG_MANIAC, ABNER, EVENT_BEAT_BUG_MANIAC_ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

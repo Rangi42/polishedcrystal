@@ -1,49 +1,49 @@
 SafariZoneWest_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 8 ; warps
-	warp_def 2, 22, 8, SAFARI_ZONE_NORTH
-	warp_def 2, 23, 9, SAFARI_ZONE_NORTH
-	warp_def 2, 28, 3, SAFARI_ZONE_NORTH
-	warp_def 2, 29, 4, SAFARI_ZONE_NORTH
-	warp_def 24, 31, 5, SAFARI_ZONE_HUB
-	warp_def 25, 31, 6, SAFARI_ZONE_HUB
-	warp_def 13, 13, 1, SAFARI_ZONE_WEST_REST_HOUSE_1
-	warp_def 5, 5, 1, SAFARI_ZONE_WEST_REST_HOUSE_2
+	db 8 ; warp events
+	warp_event 22, 2, 8, SAFARI_ZONE_NORTH
+	warp_event 23, 2, 9, SAFARI_ZONE_NORTH
+	warp_event 28, 2, 3, SAFARI_ZONE_NORTH
+	warp_event 29, 2, 4, SAFARI_ZONE_NORTH
+	warp_event 31, 24, 5, SAFARI_ZONE_HUB
+	warp_event 31, 25, 6, SAFARI_ZONE_HUB
+	warp_event 13, 13, 1, SAFARI_ZONE_WEST_REST_HOUSE_1
+	warp_event 5, 5, 1, SAFARI_ZONE_WEST_REST_HOUSE_2
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 5 ; signposts
-	signpost 24, 26, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
-	signpost 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
-	signpost 6, 28, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
-	signpost 5, 19, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
-	signpost 6, 13, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
+	db 5 ; bg events
+	bg_event 26, 24, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
+	bg_event 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
+	bg_event 28, 6, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
+	bg_event 19, 5, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
+	bg_event 13, 6, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
-	db 4 ; person events
-	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
-	person_event SPRITE_YOUNGSTER, 12, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
-	person_event SPRITE_COOLTRAINER_M, 19, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
-	itemball_event 9, 14, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
+	db 4 ; object events
+	object_event 22, 23, SPRITE_LASS, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
+	object_event 23, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
+	object_event 12, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
+	itemball_event 14, 9, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
 
 TrainerLassDuplica:
-	trainer EVENT_BEAT_LASS_DUPLICA, LASS, DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript
+	trainer LASS, DUPLICA, EVENT_BEAT_LASS_DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript
 
 LassDuplicaScript:
 	end_if_just_battled
 	jumptextfaceplayer LassDuplicaAfterText
 
 TrainerCamperAmos:
-	trainer EVENT_BEAT_CAMPER_AMOS, CAMPER, AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
+	trainer CAMPER, AMOS, EVENT_BEAT_CAMPER_AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
 
 CamperAmosScript:
 	end_if_just_battled
 	jumptextfaceplayer CamperAmosAfterText
 
 TrainerTamerBrett:
-	trainer EVENT_BEAT_TAMER_BRETT, TAMER, BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
+	trainer TAMER, BRETT, EVENT_BEAT_TAMER_BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
 
 TamerBrettScript:
 	end_if_just_battled

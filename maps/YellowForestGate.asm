@@ -1,23 +1,23 @@
 YellowForestGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 0, 4, 1, YELLOW_FOREST
-	warp_def 0, 5, 2, YELLOW_FOREST
-	warp_def 7, 4, 1, ROUTE_48
-	warp_def 7, 5, 1, ROUTE_48
+	db 4 ; warp events
+	warp_event 4, 0, 1, YELLOW_FOREST
+	warp_event 5, 0, 2, YELLOW_FOREST
+	warp_event 4, 7, 1, ROUTE_48
+	warp_event 5, 7, 1, ROUTE_48
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 4 ; person events
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestGateOfficerText, -1
-	person_event SPRITE_NURSE, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestGateNurseScript, -1
-	person_event SPRITE_CHANSEY, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, CHANSEY, YellowForestGateChanseyText, -1
-	person_event SPRITE_CLERK, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_INFORMAL, MART_YELLOW_FOREST, -1
+	db 4 ; object events
+	object_event 0, 4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestGateOfficerText, -1
+	object_event 9, 3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestGateNurseScript, -1
+	object_event 9, 4, SPRITE_CHANSEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, CHANSEY, YellowForestGateChanseyText, -1
+	object_event 6, 4, SPRITE_CLERK, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_INFORMAL, MART_YELLOW_FOREST, -1
 
 YellowForestGateNurseScript:
 	showtextfaceplayer YellowForestGateNurseText

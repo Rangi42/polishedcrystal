@@ -1,27 +1,27 @@
 MountMoonSquare_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x77093
-	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x77097
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, UnknownScript_0x77093
+	callback MAPCALLBACK_OBJECTS, UnknownScript_0x77097
 
-	db 2 ; warps
-	warp_def 11, 21, 2, ROUTE_4
-	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
+	db 2 ; warp events
+	warp_event 21, 11, 2, ROUTE_4
+	warp_event 13, 7, 1, MOUNT_MOON_GIFT_SHOP
 
-	db 1 ; xy triggers
-	xy_trigger 0, 11, 7, ClefairyDance
+	db 1 ; coord events
+	coord_event 7, 11, 0, ClefairyDance
 
-	db 2 ; signposts
-	signpost 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
-	signpost 7, 17, SIGNPOST_JUMPTEXT, DontLitterSignText
+	db 2 ; bg events
+	bg_event 7, 7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
+	bg_event 17, 7, SIGNPOST_JUMPTEXT, DontLitterSignText
 
-	db 3 ; person events
-	person_event SPRITE_CLEFAIRY, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	person_event SPRITE_CLEFAIRY, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	person_event SPRITE_N64, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
+	db 3 ; object events
+	object_event 6, 6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	object_event 7, 6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	object_event 7, 7, SPRITE_N64, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const MOUNTMOONSQUARE_CLEFAIRY1
 	const MOUNTMOONSQUARE_CLEFAIRY2
 	const MOUNTMOONSQUARE_ROCK

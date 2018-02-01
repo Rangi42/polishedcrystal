@@ -1,32 +1,32 @@
 SproutTower3F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 14, 8, 4, SPROUT_TOWER_2F
+	db 1 ; warp events
+	warp_event 8, 14, 4, SPROUT_TOWER_2F
 
-	db 1 ; xy triggers
-	xy_trigger 0, 9, 9, UnknownScript_0x184947
+	db 1 ; coord events
+	coord_event 9, 9, 0, UnknownScript_0x184947
 
-	db 6 ; signposts
-	signpost 1, 6, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	signpost 1, 9, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
-	signpost 0, 8, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
-	signpost 15, 3, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	signpost 15, 12, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	db 6 ; bg events
+	bg_event 6, 1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event 9, 1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event 7, 0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
+	bg_event 8, 0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
+	bg_event 3, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event 12, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 
-	db 7 ; person events
-	person_event SPRITE_SILVER, 4, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
-	person_event SPRITE_SAGE, 13, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
-	person_event SPRITE_SAGE, 8, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
-	person_event SPRITE_SAGE, 11, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
-	person_event SPRITE_ELDER, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
-	itemball_event 14, 4, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
-	itemball_event 1, 12, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
+	db 7 ; object events
+	object_event 8, 4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
+	object_event 6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
+	object_event 6, 8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
+	object_event 9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
+	object_event 8, 2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
+	itemball_event 4, 14, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
+	itemball_event 12, 1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const SPROUTTOWER3F_SILVER
 
 UnknownScript_0x184947:
@@ -88,21 +88,21 @@ UnknownScript_0x1849d1:
 	jumpopenedtext UnknownText_0x184d88
 
 TrainerSageJin:
-	trainer EVENT_BEAT_SAGE_JIN, SAGE, JIN, SageJinSeenText, SageJinBeatenText, 0, SageJinScript
+	trainer SAGE, JIN, EVENT_BEAT_SAGE_JIN, SageJinSeenText, SageJinBeatenText, 0, SageJinScript
 
 SageJinScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x184dfa
 
 TrainerSageTroy:
-	trainer EVENT_BEAT_SAGE_TROY, SAGE, TROY, SageTroySeenText, SageTroyBeatenText, 0, SageTroyScript
+	trainer SAGE, TROY, EVENT_BEAT_SAGE_TROY, SageTroySeenText, SageTroyBeatenText, 0, SageTroyScript
 
 SageTroyScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x184ea4
 
 TrainerSageNeal:
-	trainer EVENT_BEAT_SAGE_NEAL, SAGE, NEAL, SageNealSeenText, SageNealBeatenText, 0, SageNealScript
+	trainer SAGE, NEAL, EVENT_BEAT_SAGE_NEAL, SageNealSeenText, SageNealBeatenText, 0, SageNealScript
 
 SageNealScript:
 	end_if_just_battled

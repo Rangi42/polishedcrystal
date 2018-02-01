@@ -1,34 +1,34 @@
 CherrygroveCity_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
 
-	db 5 ; warps
-	warp_def 3, 23, 2, CHERRYGROVE_MART
-	warp_def 3, 29, 1, CHERRYGROVE_POKECENTER_1F
-	warp_def 7, 17, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
-	warp_def 9, 25, 1, GUIDE_GENTS_HOUSE
-	warp_def 11, 31, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
+	db 5 ; warp events
+	warp_event 23, 3, 2, CHERRYGROVE_MART
+	warp_event 29, 3, 1, CHERRYGROVE_POKECENTER_1F
+	warp_event 17, 7, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
+	warp_event 25, 9, 1, GUIDE_GENTS_HOUSE
+	warp_event 31, 11, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
 
-	db 3 ; xy triggers
-	xy_trigger 0, 7, 33, CherrygroveGuideGentTrigger
-	xy_trigger 1, 6, 33, CherrygroveSilverTriggerNorth
-	xy_trigger 1, 7, 33, CherrygroveSilverTriggerSouth
+	db 3 ; coord events
+	coord_event 33, 7, 0, CherrygroveGuideGentTrigger
+	coord_event 33, 6, 1, CherrygroveSilverTriggerNorth
+	coord_event 33, 7, 1, CherrygroveSilverTriggerSouth
 
-	db 2 ; signposts
-	signpost 8, 30, SIGNPOST_JUMPTEXT, CherrygroveCitySignText
-	signpost 9, 23, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
+	db 2 ; bg events
+	bg_event 30, 8, SIGNPOST_JUMPTEXT, CherrygroveCitySignText
+	bg_event 23, 9, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
 
-	db 6 ; person events
-	person_event SPRITE_GUIDE_GENT, 6, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
-	person_event SPRITE_CHERRYGROVE_RIVAL, 6, 39, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
-	person_event SPRITE_TEACHER, 13, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
-	person_event SPRITE_YOUNGSTER, 7, 23, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
-	person_event SPRITE_FISHER, 12, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
-	person_event SPRITE_PIDGEY, 13, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, PIDGEY, CherrygrovePidgeyText, -1
+	db 6 ; object events
+	object_event 32, 6, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
+	object_event 39, 6, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
+	object_event 25, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
+	object_event 23, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
+	object_event 7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
+	object_event 26, 13, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, PIDGEY, CherrygrovePidgeyText, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const CHERRYGROVECITY_GRAMPS
 	const CHERRYGROVECITY_SILVER
 

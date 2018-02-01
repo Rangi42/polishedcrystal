@@ -1,22 +1,22 @@
 Route12North_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 15, 10, 1, ROUTE_12_GATE
-	warp_def 15, 11, 2, ROUTE_12_GATE
+	db 2 ; warp events
+	warp_event 10, 15, 1, ROUTE_12_GATE
+	warp_event 11, 15, 2, ROUTE_12_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
+	db 1 ; bg events
+	bg_event 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
 
-	db 1 ; person events
-	person_event SPRITE_FISHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherKyle, -1
+	db 1 ; object events
+	object_event 6, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherKyle, -1
 
 TrainerFisherKyle:
-	trainer EVENT_BEAT_FISHER_KYLE, FISHER, KYLE, FisherKyleSeenText, FisherKyleBeatenText, 0, FisherKyleScript
+	trainer FISHER, KYLE, EVENT_BEAT_FISHER_KYLE, FisherKyleSeenText, FisherKyleBeatenText, 0, FisherKyleScript
 
 FisherKyleScript:
 	end_if_just_battled

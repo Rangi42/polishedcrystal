@@ -1,23 +1,23 @@
 SaffronPokeCenter1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 7, 5, 4, SAFFRON_CITY
-	warp_def 7, 6, 4, SAFFRON_CITY
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 3 ; warp events
+	warp_event 5, 7, 4, SAFFRON_CITY
+	warp_event 6, 7, 4, SAFFRON_CITY
+	warp_event 0, 7, 1, POKECENTER_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalSabrinaScript
+	db 1 ; bg events
+	bg_event 10, 1, SIGNPOST_READ, PokemonJournalSabrinaScript
 
-	db 4 ; person events
-	pc_nurse_event 1, 5
-	person_event SPRITE_FISHER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SaffronPokeCenter1FFisherScript, -1
-	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FTeacherText, -1
-	person_event SPRITE_YOUNGSTER, 4, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FYoungsterText, -1
+	db 4 ; object events
+	pc_nurse_event 5, 1
+	object_event 11, 5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SaffronPokeCenter1FFisherScript, -1
+	object_event 2, 4, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FTeacherText, -1
+	object_event 8, 4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FYoungsterText, -1
 
 PokemonJournalSabrinaScript:
 	setflag ENGINE_READ_SABRINA_JOURNAL

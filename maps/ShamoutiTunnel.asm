@@ -1,26 +1,26 @@
 ShamoutiTunnel_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 9, 33, 3, SHAMOUTI_ISLAND
-	warp_def 17, 5, 2, WARM_BEACH
+	db 2 ; warp events
+	warp_event 33, 9, 3, SHAMOUTI_ISLAND
+	warp_event 5, 17, 2, WARM_BEACH
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 5, 21, SIGNPOST_ITEM + NUGGET, EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET
-	signpost 4, 32, SIGNPOST_ITEM + LEAF_STONE, EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE
+	db 2 ; bg events
+	bg_event 21, 5, SIGNPOST_ITEM + NUGGET, EVENT_SHAMOUTI_TUNNEL_HIDDEN_NUGGET
+	bg_event 32, 4, SIGNPOST_ITEM + LEAF_STONE, EVENT_SHAMOUTI_TUNNEL_HIDDEN_LEAF_STONE
 
-	db 7 ; person events
-	person_event SPRITE_SUPER_NERD, 17, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, OreManiacScript, -1
-	person_event SPRITE_COOLTRAINER_M, 14, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerOswald, -1
-	person_event SPRITE_FISHER, 5, 24, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherTala, -1
-	person_event SPRITE_LADY, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSightseerfNoelle, -1
-	person_event SPRITE_SIGHTSEER_M, 16, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermChester, -1
-	itemball_event 4, 3, X_SPEED, 1, EVENT_SHAMOUTI_TUNNEL_X_SPEED
-	itemball_event 17, 12, SMOOTH_ROCK, 1, EVENT_SHAMOUTI_TUNNEL_SMOOTH_ROCK
+	db 7 ; object events
+	object_event 15, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, OreManiacScript, -1
+	object_event 24, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerOswald, -1
+	object_event 24, 5, SPRITE_FISHER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherTala, -1
+	object_event 6, 7, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSightseerfNoelle, -1
+	object_event 3, 16, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermChester, -1
+	itemball_event 3, 4, X_SPEED, 1, EVENT_SHAMOUTI_TUNNEL_X_SPEED
+	itemball_event 12, 17, SMOOTH_ROCK, 1, EVENT_SHAMOUTI_TUNNEL_SMOOTH_ROCK
 
 OreManiacScript:
 	faceplayer
@@ -95,7 +95,7 @@ OreManiacScript:
 	done
 
 TrainerTamerOswald:
-	trainer EVENT_BEAT_TAMER_OSWALD, TAMER, OSWALD, .SeenText, .BeatenText, 0, .Script
+	trainer TAMER, OSWALD, EVENT_BEAT_TAMER_OSWALD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -126,7 +126,7 @@ TrainerTamerOswald:
 	done
 
 TrainerFirebreatherTala:
-	trainer EVENT_BEAT_FIREBREATHER_TALA, FIREBREATHER, TALA, .SeenText, .BeatenText, 0, .Script
+	trainer FIREBREATHER, TALA, EVENT_BEAT_FIREBREATHER_TALA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -156,7 +156,7 @@ TrainerFirebreatherTala:
 	done
 
 TrainerSightseerfNoelle:
-	trainer EVENT_BEAT_SIGHTSEERF_NOELLE, SIGHTSEERF, NOELLE, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERF, NOELLE, EVENT_BEAT_SIGHTSEERF_NOELLE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -191,7 +191,7 @@ TrainerSightseerfNoelle:
 	done
 
 TrainerSightseermChester:
-	trainer EVENT_BEAT_SIGHTSEERM_CHESTER, SIGHTSEERM, CHESTER, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERM, CHESTER, EVENT_BEAT_SIGHTSEERM_CHESTER, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

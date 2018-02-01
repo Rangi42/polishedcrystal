@@ -1,28 +1,28 @@
 SeafoamIslandsB4F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 6 ; warps
-	warp_def 3, 3, 5, SEAFOAM_ISLANDS_B3F
-	warp_def 11, 7, 6, SEAFOAM_ISLANDS_B3F
-	warp_def 7, 25, 7, SEAFOAM_ISLANDS_B3F
-	warp_def 2, 27, 8, SEAFOAM_ISLANDS_B3F
-	warp_def 13, 31, 9, SEAFOAM_ISLANDS_B3F
-	warp_def 13, 37, 10, SEAFOAM_ISLANDS_B3F
+	db 6 ; warp events
+	warp_event 3, 3, 5, SEAFOAM_ISLANDS_B3F
+	warp_event 7, 11, 6, SEAFOAM_ISLANDS_B3F
+	warp_event 25, 7, 7, SEAFOAM_ISLANDS_B3F
+	warp_event 27, 2, 8, SEAFOAM_ISLANDS_B3F
+	warp_event 31, 13, 9, SEAFOAM_ISLANDS_B3F
+	warp_event 37, 13, 10, SEAFOAM_ISLANDS_B3F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 5 ; person events
-	person_event SPRITE_ARTICUNO, 13, 22, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
-	person_event SPRITE_LAPRAS, 16, 16, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD_SURF
-	person_event SPRITE_LAWRENCE, 16, 21, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
-	itemball_event 7, 33, NEVERMELTICE, 1, EVENT_SEAFOAM_ISLANDS_B4F_NEVERMELTICE
-	itemball_event 2, 23, ULTRA_BALL, 1, EVENT_SEAFOAM_ISLANDS_B4F_ULTRA_BALL
+	db 5 ; object events
+	object_event 22, 13, SPRITE_ARTICUNO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	object_event 16, 16, SPRITE_LAPRAS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD_SURF
+	object_event 21, 16, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
+	itemball_event 33, 7, NEVERMELTICE, 1, EVENT_SEAFOAM_ISLANDS_B4F_NEVERMELTICE
+	itemball_event 23, 2, ULTRA_BALL, 1, EVENT_SEAFOAM_ISLANDS_B4F_ULTRA_BALL
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const SEAFOAMISLANDSB4F_ARTICUNO
 	const SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	const SEAFOAMISLANDSB4F_LAWRENCE

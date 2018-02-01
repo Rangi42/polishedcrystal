@@ -1,19 +1,19 @@
 UragaChannelWest_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 9, 8, 2, SCARY_CAVE_1F
+	db 1 ; warp events
+	warp_event 8, 9, 2, SCARY_CAVE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 11, 9, SIGNPOST_JUMPTEXT, ScaryCaveWestSignText
-	signpost 11, 7, SIGNPOST_ITEM + BIG_PEARL, EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL
+	db 2 ; bg events
+	bg_event 9, 11, SIGNPOST_JUMPTEXT, ScaryCaveWestSignText
+	bg_event 7, 11, SIGNPOST_ITEM + BIG_PEARL, EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL
 
-	db 1 ; person events
-	person_event SPRITE_ENGINEER, 9, 5, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
+	db 1 ; object events
+	object_event 5, 9, SPRITE_ENGINEER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
 
 UragaChannelWestEngineerText:
 	text "The currents wash"

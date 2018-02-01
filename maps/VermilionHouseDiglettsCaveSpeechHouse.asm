@@ -1,18 +1,18 @@
 VermilionHouseDiglettsCaveSpeechHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 6, VERMILION_CITY
-	warp_def 7, 3, 6, VERMILION_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 6, VERMILION_CITY
+	warp_event 3, 7, 6, VERMILION_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_GENTLEMAN, 3, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x192034, -1
+	db 1 ; object events
+	object_event 1, 3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x192034, -1
 
 UnknownText_0x192034:
 	text "Over many years,"

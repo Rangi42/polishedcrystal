@@ -1,21 +1,21 @@
 SafariZoneWardensHome_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 5, FUCHSIA_CITY
-	warp_def 7, 3, 5, FUCHSIA_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 5, FUCHSIA_CITY
+	warp_event 3, 7, 5, FUCHSIA_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 1, 0, SIGNPOST_JUMPSTD, picturebookshelf
-	signpost 0, 7, SIGNPOST_JUMPTEXT, WardenPhotoText
-	signpost 0, 9, SIGNPOST_JUMPTEXT, SafariZonePhotoText
+	db 3 ; bg events
+	bg_event 0, 1, SIGNPOST_JUMPSTD, picturebookshelf
+	bg_event 7, 0, SIGNPOST_JUMPTEXT, WardenPhotoText
+	bg_event 9, 0, SIGNPOST_JUMPTEXT, SafariZonePhotoText
 
-	db 1 ; person events
-	person_event SPRITE_LASS, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WardensGranddaughter, -1
+	db 1 ; object events
+	object_event 2, 4, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WardensGranddaughter, -1
 
 WardensGranddaughter:
 	faceplayer

@@ -1,29 +1,29 @@
 EcruteakHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
 
-	db 5 ; warps
-	warp_def 17, 4, 3, ECRUTEAK_CITY
-	warp_def 17, 5, 3, ECRUTEAK_CITY
-	warp_def 3, 5, 4, ECRUTEAK_HOUSE
-	warp_def 15, 17, 3, ECRUTEAK_HOUSE
-	warp_def 3, 17, 3, WISE_TRIOS_ROOM
+	db 5 ; warp events
+	warp_event 4, 17, 3, ECRUTEAK_CITY
+	warp_event 5, 17, 3, ECRUTEAK_CITY
+	warp_event 5, 3, 4, ECRUTEAK_HOUSE
+	warp_event 17, 15, 3, ECRUTEAK_HOUSE
+	warp_event 17, 3, 3, WISE_TRIOS_ROOM
 
-	db 2 ; xy triggers
-	xy_trigger 0, 7, 4, EcruteakHouse_XYTrigger1
-	xy_trigger 0, 7, 5, EcruteakHouse_XYTrigger2
+	db 2 ; coord events
+	coord_event 4, 7, 0, EcruteakHouse_XYTrigger1
+	coord_event 5, 7, 0, EcruteakHouse_XYTrigger2
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 4 ; person events
-	person_event SPRITE_SAGE, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_1
-	person_event SPRITE_SAGE, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_2
-	person_event SPRITE_SAGE, 9, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x980b0, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
-	person_event SPRITE_GRAMPS, 11, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x984ab, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
+	db 4 ; object events
+	object_event 4, 6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_1
+	object_event 5, 6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x98062, EVENT_RANG_CLEAR_BELL_2
+	object_event 6, 9, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x980b0, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
+	object_event 3, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x984ab, EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ECRUTEAKHOUSE_SAGE1
 	const ECRUTEAKHOUSE_SAGE2
 

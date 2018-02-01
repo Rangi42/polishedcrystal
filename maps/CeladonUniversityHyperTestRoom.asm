@@ -1,26 +1,26 @@
 CeladonUniversityHyperTestRoom_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 11, 2, 4, CELADON_UNIVERSITY_2F
-	warp_def 11, 3, 4, CELADON_UNIVERSITY_2F
+	db 2 ; warp events
+	warp_event 2, 11, 4, CELADON_UNIVERSITY_2F
+	warp_event 3, 11, 4, CELADON_UNIVERSITY_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 5 ; signposts
-	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
-	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
-	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
-	signpost 4, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
-	signpost 6, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
+	db 5 ; bg events
+	bg_event 2, 1, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
+	bg_event 6, 1, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
+	bg_event 7, 1, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
+	bg_event 7, 4, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
+	bg_event 7, 6, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 
-	db 4 ; person events
-	person_event SPRITE_WESTWOOD, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
-	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomScientistText, -1
-	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin1Text, -1
-	person_event SPRITE_TWIN, 8, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin2Text, -1
+	db 4 ; object events
+	object_event 4, 2, SPRITE_WESTWOOD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
+	object_event 6, 7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomScientistText, -1
+	object_event 1, 6, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin1Text, -1
+	object_event 1, 8, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin2Text, -1
 
 CeladonUniversityHyperTestRoomWestwoodScript:
 	faceplayer

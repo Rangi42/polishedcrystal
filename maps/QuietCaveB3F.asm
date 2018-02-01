@@ -1,25 +1,25 @@
 QuietCaveB3F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 31, 8, 5, QUIET_CAVE_B2F ; hole
-	warp_def 7, 33, 6, QUIET_CAVE_B2F
-	warp_def 9, 15, 4, QUIET_CAVE_B3F
-	warp_def 11, 5, 3, QUIET_CAVE_B3F
+	db 4 ; warp events
+	warp_event 8, 31, 5, QUIET_CAVE_B2F ; hole
+	warp_event 33, 7, 6, QUIET_CAVE_B2F
+	warp_event 15, 9, 4, QUIET_CAVE_B3F
+	warp_event 5, 11, 3, QUIET_CAVE_B3F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 20, 16, SIGNPOST_ITEM + PP_UP, EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP
-	signpost 22, 12, SIGNPOST_ITEM + MAX_REVIVE, EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE
+	db 2 ; bg events
+	bg_event 16, 20, SIGNPOST_ITEM + PP_UP, EVENT_QUIET_CAVE_B3F_HIDDEN_PP_UP
+	bg_event 12, 22, SIGNPOST_ITEM + MAX_REVIVE, EVENT_QUIET_CAVE_B3F_HIDDEN_MAX_REVIVE
 
-	db 2 ; person events
-	person_event SPRITE_MARLEY, 5, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
-	tmhmball_event 22, 7, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
+	db 2 ; object events
+	object_event 5, 5, SPRITE_MARLEY, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, QuietCaveB3FMarleyScript, EVENT_QUIET_CAVE_MARLEY
+	tmhmball_event 7, 22, TM_FOCUS_BLAST, EVENT_QUIET_CAVE_B3F_TM_FOCUS_BLAST
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const QUIETCAVEB3F_MARLEY
 
 QuietCaveB3FMarleyScript:

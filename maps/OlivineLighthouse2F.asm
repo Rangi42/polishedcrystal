@@ -1,26 +1,26 @@
 OlivineLighthouse2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 6 ; warps
-	warp_def 11, 3, 3, OLIVINE_LIGHTHOUSE_1F
-	warp_def 3, 5, 2, OLIVINE_LIGHTHOUSE_3F
-	warp_def 13, 16, 4, OLIVINE_LIGHTHOUSE_1F
-	warp_def 13, 17, 5, OLIVINE_LIGHTHOUSE_1F
-	warp_def 11, 16, 4, OLIVINE_LIGHTHOUSE_3F
-	warp_def 11, 17, 5, OLIVINE_LIGHTHOUSE_3F
+	db 6 ; warp events
+	warp_event 3, 11, 3, OLIVINE_LIGHTHOUSE_1F
+	warp_event 5, 3, 2, OLIVINE_LIGHTHOUSE_3F
+	warp_event 16, 13, 4, OLIVINE_LIGHTHOUSE_1F
+	warp_event 17, 13, 5, OLIVINE_LIGHTHOUSE_1F
+	warp_event 16, 11, 4, OLIVINE_LIGHTHOUSE_3F
+	warp_event 17, 11, 5, OLIVINE_LIGHTHOUSE_3F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	person_event SPRITE_SAILOR, 3, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
-	person_event SPRITE_GENTLEMAN, 8, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1
+	db 2 ; object events
+	object_event 9, 3, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
+	object_event 17, 8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1
 
 TrainerGentlemanAlfred:
-	trainer EVENT_BEAT_GENTLEMAN_ALFRED, GENTLEMAN, ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, GentlemanAlfredScript
+	trainer GENTLEMAN, ALFRED, EVENT_BEAT_GENTLEMAN_ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, GentlemanAlfredScript
 
 GentlemanAlfredScript:
 	end_if_just_battled
@@ -29,7 +29,7 @@ GentlemanAlfredScript:
 	jumptextfaceplayer UnknownText_0x5b13e
 
 TrainerSailorHuey1:
-	trainer EVENT_BEAT_SAILOR_HUEY, SAILOR, HUEY1, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script
+	trainer SAILOR, HUEY1, EVENT_BEAT_SAILOR_HUEY, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script
 
 SailorHuey1Script:
 	writecode VAR_CALLERID, PHONE_SAILOR_HUEY

@@ -1,39 +1,39 @@
 CinnabarVolcanoB1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_TILES, CinnabarVolcanoB1FBouldersLand
-	dbw MAPCALLBACK_CMDQUEUE, CinnabarVolcanoB1FBouldersFall
+	db 2 ; callbacks
+	callback MAPCALLBACK_TILES, CinnabarVolcanoB1FBouldersLand
+	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcanoB1FBouldersFall
 
-	db 12 ; warps
-	warp_def 17, 9, 2, CINNABAR_VOLCANO_1F
-	warp_def 25, 19, 3, CINNABAR_VOLCANO_1F
-	warp_def 25, 29, 4, CINNABAR_VOLCANO_1F
-	warp_def 13, 27, 5, CINNABAR_VOLCANO_1F
-	warp_def 3, 19, 1, CINNABAR_VOLCANO_B2F
-	warp_def 21, 33, 2, CINNABAR_VOLCANO_B2F
-	warp_def 9, 8, 3, CINNABAR_VOLCANO_B2F
-	warp_def 24, 12, 6, CINNABAR_VOLCANO_1F ; hole
-	warp_def 24, 24, 7, CINNABAR_VOLCANO_1F ; hole
-	warp_def 13, 23, 8, CINNABAR_VOLCANO_1F ; hole
-	warp_def 11, 15, 9, CINNABAR_VOLCANO_1F ; hole
-	warp_def 8, 20, 10, CINNABAR_VOLCANO_1F
+	db 12 ; warp events
+	warp_event 9, 17, 2, CINNABAR_VOLCANO_1F
+	warp_event 19, 25, 3, CINNABAR_VOLCANO_1F
+	warp_event 29, 25, 4, CINNABAR_VOLCANO_1F
+	warp_event 27, 13, 5, CINNABAR_VOLCANO_1F
+	warp_event 19, 3, 1, CINNABAR_VOLCANO_B2F
+	warp_event 33, 21, 2, CINNABAR_VOLCANO_B2F
+	warp_event 8, 9, 3, CINNABAR_VOLCANO_B2F
+	warp_event 12, 24, 6, CINNABAR_VOLCANO_1F ; hole
+	warp_event 24, 24, 7, CINNABAR_VOLCANO_1F ; hole
+	warp_event 23, 13, 8, CINNABAR_VOLCANO_1F ; hole
+	warp_event 15, 11, 9, CINNABAR_VOLCANO_1F ; hole
+	warp_event 20, 8, 10, CINNABAR_VOLCANO_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 5, 28, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE
-	signpost 18, 28, SIGNPOST_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
+	db 2 ; bg events
+	bg_event 28, 5, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE
+	bg_event 28, 18, SIGNPOST_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
 
-	db 6 ; person events
-	strengthboulder_event 5, 6, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
-	smashrock_event 28, 8
-	smashrock_event 17, 28
-	smashrock_event 5, 27
-	itemball_event 18, 2, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
-	itemball_event 29, 4, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
+	db 6 ; object events
+	strengthboulder_event 6, 5, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
+	smashrock_event 8, 28
+	smashrock_event 28, 17
+	smashrock_event 27, 5
+	itemball_event 2, 18, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
+	itemball_event 4, 29, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const CINNABARVOLCANOB1F_BOULDER
 
 CinnabarVolcanoB1FBouldersLand:

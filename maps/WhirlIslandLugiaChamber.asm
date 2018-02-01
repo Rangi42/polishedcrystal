@@ -1,20 +1,20 @@
 WhirlIslandLugiaChamber_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, WhirlIslandLugiaChamberLugia
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, WhirlIslandLugiaChamberLugia
 
-	db 1 ; warps
-	warp_def 13, 9, 3, WHIRL_ISLAND_B2F
+	db 1 ; warp events
+	warp_event 9, 13, 3, WHIRL_ISLAND_B2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_LUGIA, 5, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Lugia, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
+	db 1 ; object events
+	object_event 9, 5, SPRITE_LUGIA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Lugia, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const WHIRLISLANDLUGIACHAMBER_LUGIA
 
 WhirlIslandLugiaChamberLugia:

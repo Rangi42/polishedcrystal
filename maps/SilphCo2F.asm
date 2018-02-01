@@ -1,29 +1,29 @@
 SilphCo2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 0, 13, 3, SILPH_CO_1F
-	warp_def 0, 11, 1, SILPH_CO_3F
+	db 2 ; warp events
+	warp_event 13, 0, 3, SILPH_CO_1F
+	warp_event 11, 0, 1, SILPH_CO_3F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 8 ; signposts
-	signpost 2, 3, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
-	signpost 2, 9, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
-	signpost 0, 5, SIGNPOST_JUMPTEXT, SilphCo2FElevatorText
-	signpost 3, 0, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 3, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 3, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 3, 12, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 3, 13, SIGNPOST_JUMPSTD, difficultbookshelf
+	db 8 ; bg events
+	bg_event 3, 2, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
+	bg_event 9, 2, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
+	bg_event 5, 0, SIGNPOST_JUMPTEXT, SilphCo2FElevatorText
+	bg_event 0, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 6, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 7, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 12, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 13, 3, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 4 ; person events
-	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	person_event SPRITE_SCIENTIST, 4, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
+	db 4 ; object events
+	object_event 4, 5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
+	object_event 14, 4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
+	object_event 8, 5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
+	object_event 2, 5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
 
 SilphCo2FScientist1Script:
 	faceplayer

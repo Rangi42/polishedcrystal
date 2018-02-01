@@ -1,28 +1,28 @@
 UnionCaveB1FNorth_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 3, 3, 7, RUINS_OF_ALPH_OUTSIDE
-	warp_def 11, 3, 8, RUINS_OF_ALPH_OUTSIDE
-	warp_def 23, 15, 1, UNION_CAVE_1F
+	db 3 ; warp events
+	warp_event 3, 3, 7, RUINS_OF_ALPH_OUTSIDE
+	warp_event 3, 11, 8, RUINS_OF_ALPH_OUTSIDE
+	warp_event 15, 23, 1, UNION_CAVE_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 23, 11, SIGNPOST_ITEM + X_SPEED, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED
-	signpost 4, 13, SIGNPOST_ITEM + REVIVE, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE
+	db 2 ; bg events
+	bg_event 11, 23, SIGNPOST_ITEM + X_SPEED, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_X_SPEED
+	bg_event 13, 4, SIGNPOST_ITEM + REVIVE, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE
 
-	db 5 ; person events
-	person_event SPRITE_POKEFAN_M, 4, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
-	person_event SPRITE_POKEFAN_M, 10, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetry, -1
-	tmhmball_event 22, 5, TM_SWIFT, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
-	itemball_event 21, 17, X_DEFEND, 1, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
-	strengthboulder_event 10, 7
+	db 5 ; object events
+	object_event 9, 4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
+	object_event 13, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetry, -1
+	tmhmball_event 5, 22, TM_SWIFT, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
+	itemball_event 17, 21, X_DEFEND, 1, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
+	strengthboulder_event 7, 10
 
 TrainerRuin_maniacLeland:
-	trainer EVENT_BEAT_RUIN_MANIAC_LELAND, RUIN_MANIAC, LELAND, .SeenText, .BeatenText, 0, .Script
+	trainer RUIN_MANIAC, LELAND, EVENT_BEAT_RUIN_MANIAC_LELAND, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -47,7 +47,7 @@ TrainerRuin_maniacLeland:
 	done
 
 TrainerRuin_maniacPetry:
-	trainer EVENT_BEAT_RUIN_MANIAC_PETRY, RUIN_MANIAC, PETRY, .SeenText, .BeatenText, 0, .Script
+	trainer RUIN_MANIAC, PETRY, EVENT_BEAT_RUIN_MANIAC_PETRY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

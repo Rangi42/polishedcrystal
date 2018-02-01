@@ -1,31 +1,31 @@
 DimCave5F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
+	db 1 ; callbacks
+	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
-	db 4 ; warps
-	warp_def 31, 13, 5, ROUTE_10_NORTH
-	warp_def 16, 2, 1, DIM_CAVE_4F
-	warp_def 29, 27, 2, DIM_CAVE_4F
-	warp_def 25, 28, 3, DIM_CAVE_4F
+	db 4 ; warp events
+	warp_event 13, 31, 5, ROUTE_10_NORTH
+	warp_event 2, 16, 1, DIM_CAVE_4F
+	warp_event 27, 29, 2, DIM_CAVE_4F
+	warp_event 28, 25, 3, DIM_CAVE_4F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 28, 12, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
+	db 1 ; bg events
+	bg_event 12, 28, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
-	db 8 ; person events
-	strengthboulder_event 5, 25, EVENT_BOULDER_IN_DIM_CAVE_5F
-	person_event SPRITE_RILEY, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
-	person_event SPRITE_SUPER_NERD, 17, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
-	person_event SPRITE_ENGINEER, 25, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
-	person_event SPRITE_SUPER_NERD, 28, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
+	db 8 ; object events
+	strengthboulder_event 25, 5, EVENT_BOULDER_IN_DIM_CAVE_5F
+	object_event 13, 4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
+	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
+	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
+	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
 	itemball_event 13, 13, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
-	itemball_event 26, 25, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
-	itemball_event 30, 9, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
+	itemball_event 25, 26, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
+	itemball_event 9, 30, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const DIMCAVE5F_BOULDER
 	const DIMCAVE5F_RILEY
 
@@ -164,7 +164,7 @@ DimCave5FRileyScript:
 	done
 
 TrainerSuper_nerdFoote:
-	trainer EVENT_BEAT_SUPER_NERD_FOOTE, SUPER_NERD, FOOTE, .SeenText, .BeatenText, 0, .Script
+	trainer SUPER_NERD, FOOTE, EVENT_BEAT_SUPER_NERD_FOOTE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -199,7 +199,7 @@ TrainerSuper_nerdFoote:
 	done
 
 TrainerEngineerHoward:
-	trainer EVENT_BEAT_ENGINEER_HOWARD, ENGINEER, HOWARD, .SeenText, .BeatenText, 0, .Script
+	trainer ENGINEER, HOWARD, EVENT_BEAT_ENGINEER_HOWARD, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -225,7 +225,7 @@ TrainerEngineerHoward:
 	done
 
 TrainerSuper_nerdDave:
-	trainer EVENT_BEAT_SUPER_NERD_DAVE, SUPER_NERD, DAVE, .SeenText, .BeatenText, 0, .Script
+	trainer SUPER_NERD, DAVE, EVENT_BEAT_SUPER_NERD_DAVE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

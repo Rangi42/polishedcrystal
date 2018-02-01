@@ -1,20 +1,20 @@
 ViridianForestViridianGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 0, 4, 2, VIRIDIAN_FOREST
-	warp_def 0, 5, 3, VIRIDIAN_FOREST
-	warp_def 7, 4, 2, ROUTE_2_SOUTH
-	warp_def 7, 5, 2, ROUTE_2_SOUTH
+	db 4 ; warp events
+	warp_event 4, 0, 2, VIRIDIAN_FOREST
+	warp_event 5, 0, 3, VIRIDIAN_FOREST
+	warp_event 4, 7, 2, ROUTE_2_SOUTH
+	warp_event 5, 7, 2, ROUTE_2_SOUTH
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianForestViridianGateOfficerText, -1
+	db 1 ; object events
+	object_event 0, 4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianForestViridianGateOfficerText, -1
 
 ViridianForestViridianGateOfficerText:
 	text "Be careful,"

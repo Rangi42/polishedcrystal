@@ -1,22 +1,22 @@
 OlivineLighthouse1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 17, 10, 8, OLIVINE_CITY
-	warp_def 17, 11, 8, OLIVINE_CITY
-	warp_def 11, 3, 1, OLIVINE_LIGHTHOUSE_2F
-	warp_def 13, 16, 3, OLIVINE_LIGHTHOUSE_2F
-	warp_def 13, 17, 4, OLIVINE_LIGHTHOUSE_2F
+	db 5 ; warp events
+	warp_event 10, 17, 8, OLIVINE_CITY
+	warp_event 11, 17, 8, OLIVINE_CITY
+	warp_event 3, 11, 1, OLIVINE_LIGHTHOUSE_2F
+	warp_event 16, 13, 3, OLIVINE_LIGHTHOUSE_2F
+	warp_event 17, 13, 4, OLIVINE_LIGHTHOUSE_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	person_event SPRITE_SAILOR, 2, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
-	person_event SPRITE_POKEFAN_F, 9, 16, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
+	db 2 ; object events
+	object_event 8, 2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
+	object_event 16, 9, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
 
 SailorScript_0x5ae67:
 	checkevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE

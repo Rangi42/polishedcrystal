@@ -1,20 +1,20 @@
 LavenderMart_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 5, LAVENDER_TOWN
-	warp_def 7, 3, 5, LAVENDER_TOWN
+	db 2 ; warp events
+	warp_event 2, 7, 5, LAVENDER_TOWN
+	warp_event 3, 7, 5, LAVENDER_TOWN
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_LAVENDER
-	person_event SPRITE_POKEFAN_M, 6, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eb29, -1
-	person_event SPRITE_ROCKER, 2, 9, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ebac, -1
+	db 3 ; object events
+	mart_clerk_event 1, 3, MARTTYPE_STANDARD, MART_LAVENDER
+	object_event 6, 6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eb29, -1
+	object_event 9, 2, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ebac, -1
 
 UnknownText_0x7eb29:
 	text "Repel is a neces-"

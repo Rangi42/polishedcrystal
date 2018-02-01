@@ -1,28 +1,28 @@
 SproutTower1F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 15, 7, 7, VIOLET_CITY
-	warp_def 15, 8, 7, VIOLET_CITY
-	warp_def 4, 4, 1, SPROUT_TOWER_2F
-	warp_def 6, 0, 2, SPROUT_TOWER_2F
-	warp_def 3, 15, 3, SPROUT_TOWER_2F
+	db 5 ; warp events
+	warp_event 7, 15, 7, VIOLET_CITY
+	warp_event 8, 15, 7, VIOLET_CITY
+	warp_event 4, 4, 1, SPROUT_TOWER_2F
+	warp_event 0, 6, 2, SPROUT_TOWER_2F
+	warp_event 15, 3, 3, SPROUT_TOWER_2F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 15, 5, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
-	signpost 15, 10, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
+	db 2 ; bg events
+	bg_event 5, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
+	bg_event 10, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
 
-	db 6 ; person events
-	person_event SPRITE_SAGE, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1845d8, -1
-	person_event SPRITE_SAGE, 7, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18460a, -1
-	person_event SPRITE_GRANNY, 12, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
-	person_event SPRITE_TEACHER, 9, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18469d, -1
-	person_event SPRITE_SAGE, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
-	itemball_event 7, 14, PARLYZ_HEAL, 1, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
+	db 6 ; object events
+	object_event 5, 4, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1845d8, -1
+	object_event 4, 7, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18460a, -1
+	object_event 9, 12, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
+	object_event 7, 9, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18469d, -1
+	object_event 1, 5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
+	itemball_event 14, 7, PARLYZ_HEAL, 1, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
 
 GrannyScript_0x184504:
 	checkunits
@@ -32,7 +32,7 @@ GrannyScript_0x184504:
 	jumptextfaceplayer UnknownText_0x184649_Metric
 
 TrainerSageChow:
-	trainer EVENT_BEAT_SAGE_CHOW, SAGE, CHOW, SageChowSeenText, SageChowBeatenText, 0, SageChowScript
+	trainer SAGE, CHOW, EVENT_BEAT_SAGE_CHOW, SageChowSeenText, SageChowBeatenText, 0, SageChowScript
 
 SageChowScript:
 	end_if_just_battled

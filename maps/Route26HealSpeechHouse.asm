@@ -1,19 +1,19 @@
 Route26HealSpeechHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 2, ROUTE_26
-	warp_def 7, 3, 2, ROUTE_26
+	db 2 ; warp events
+	warp_event 2, 7, 2, ROUTE_26
+	warp_event 3, 7, 2, ROUTE_26
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
+	db 1 ; bg events
+	bg_event 7, 1, SIGNPOST_JUMPSTD, picturebookshelf
 
-	db 1 ; person events
-	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7b125, -1
+	db 1 ; object events
+	object_event 2, 3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7b125, -1
 
 TeacherScript_0x7b125:
 	showtextfaceplayer UnknownText_0x7b14d

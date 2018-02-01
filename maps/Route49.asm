@@ -1,28 +1,28 @@
 Route49_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 5, 7, 1, VALENCIA_PORT
+	db 1 ; warp events
+	warp_event 7, 5, 1, VALENCIA_PORT
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 11, 31, SIGNPOST_JUMPTEXT, Route49SignText
+	db 1 ; bg events
+	bg_event 31, 11, SIGNPOST_JUMPTEXT, Route49SignText
 
-	db 11 ; person events
-	person_event SPRITE_LADY, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49LadyText, -1
-	person_event SPRITE_YOUNGSTER, 17, 31, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49YoungsterText, -1
-	person_event SPRITE_SIGHTSEER_M, 8, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerSightseermHari, -1
-	person_event SPRITE_COOLTRAINER_M, 16, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerJordan, -1
-	person_event SPRITE_LADY, 19, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyPeony, -1
-	person_event SPRITE_ROCKER, 7, 25, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristmGeddy, -1
-	itemball_event 6, 21, WHITE_HERB, 1, EVENT_ROUTE_49_WHITE_HERB
-	itemball_event 20, 18, CALCIUM, 1, EVENT_ROUTE_49_CALCIUM
-	fruittree_event 14, 29, FRUITTREE_ROUTE_49, LUM_BERRY
-	cuttree_event 12, 26, EVENT_ROUTE_49_CUT_TREE_1
-	cuttree_event 15, 20, EVENT_ROUTE_49_CUT_TREE_2
+	db 11 ; object events
+	object_event 5, 12, SPRITE_LADY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49LadyText, -1
+	object_event 31, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49YoungsterText, -1
+	object_event 15, 8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerSightseermHari, -1
+	object_event 12, 16, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerJordan, -1
+	object_event 25, 19, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyPeony, -1
+	object_event 25, 7, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristmGeddy, -1
+	itemball_event 21, 6, WHITE_HERB, 1, EVENT_ROUTE_49_WHITE_HERB
+	itemball_event 18, 20, CALCIUM, 1, EVENT_ROUTE_49_CALCIUM
+	fruittree_event 29, 14, FRUITTREE_ROUTE_49, LUM_BERRY
+	cuttree_event 26, 12, EVENT_ROUTE_49_CUT_TREE_1
+	cuttree_event 20, 15, EVENT_ROUTE_49_CUT_TREE_2
 
 Route49LadyText:
 	text "Look at the grass"
@@ -42,7 +42,7 @@ Route49YoungsterText:
 	done
 
 TrainerSightseermHari:
-	trainer EVENT_BEAT_SIGHTSEERM_HARI, SIGHTSEERM, HARI, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERM, HARI, EVENT_BEAT_SIGHTSEERM_HARI, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -70,7 +70,7 @@ TrainerSightseermHari:
 	done
 
 TrainerTamerJordan:
-	trainer EVENT_BEAT_TAMER_JORDAN, TAMER, JORDAN, .SeenText, .BeatenText, 0, .Script
+	trainer TAMER, JORDAN, EVENT_BEAT_TAMER_JORDAN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -98,7 +98,7 @@ TrainerTamerJordan:
 	done
 
 TrainerAromaLadyPeony:
-	trainer EVENT_BEAT_AROMA_LADY_PEONY, AROMA_LADY, PEONY, .SeenText, .BeatenText, 0, .Script
+	trainer AROMA_LADY, PEONY, EVENT_BEAT_AROMA_LADY_PEONY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -124,7 +124,7 @@ TrainerAromaLadyPeony:
 	done
 
 TrainerGuitaristmGeddy:
-	trainer EVENT_BEAT_GUITARISTM_GEDDY, GUITARISTM, GEDDY, .SeenText, .BeatenText, 0, .Script
+	trainer GUITARISTM, GEDDY, EVENT_BEAT_GUITARISTM_GEDDY, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

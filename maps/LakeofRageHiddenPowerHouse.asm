@@ -1,21 +1,21 @@
 LakeofRageHiddenPowerHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 1, LAKE_OF_RAGE
-	warp_def 7, 3, 1, LAKE_OF_RAGE
+	db 2 ; warp events
+	warp_event 2, 7, 1, LAKE_OF_RAGE
+	warp_event 3, 7, 1, LAKE_OF_RAGE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
-	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	db 3 ; bg events
+	bg_event 5, 1, SIGNPOST_JUMPSTD, radio2
+	bg_event 6, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 1 ; person events
-	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
+	db 1 ; object events
+	object_event 2, 3, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
 
 HiddenPowerGuy:
 	faceplayer

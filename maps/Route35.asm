@@ -1,50 +1,50 @@
 Route35_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, Route35RebattleBreeder
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, Route35RebattleBreeder
 
-	db 4 ; warps
-	warp_def 33, 13, 1, ROUTE_35_GOLDENROD_GATE
-	warp_def 33, 14, 2, ROUTE_35_GOLDENROD_GATE
-	warp_def 5, 7, 3, ROUTE_35_NATIONAL_PARK_GATE
-	warp_def 16, 14, 1, HIDDEN_TREE_GROTTO
+	db 4 ; warp events
+	warp_event 13, 33, 1, ROUTE_35_GOLDENROD_GATE
+	warp_event 14, 33, 2, ROUTE_35_GOLDENROD_GATE
+	warp_event 7, 5, 3, ROUTE_35_NATIONAL_PARK_GATE
+	warp_event 14, 16, 1, HIDDEN_TREE_GROTTO
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 4 ; signposts
-	signpost 7, 5, SIGNPOST_JUMPTEXT, Route35SignText
-	signpost 31, 15, SIGNPOST_JUMPTEXT, Route35SignText
-	signpost 15, 14, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
-	signpost 15, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
+	db 4 ; bg events
+	bg_event 5, 7, SIGNPOST_JUMPTEXT, Route35SignText
+	bg_event 15, 31, SIGNPOST_JUMPTEXT, Route35SignText
+	bg_event 14, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
+	bg_event 15, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 
-	db 12 ; person events
-	person_event SPRITE_YOUNGSTER, 19, 8, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
-	person_event SPRITE_YOUNGSTER, 20, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli1, -1
-	person_event SPRITE_LASS, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli2, -1
-	person_event SPRITE_LASS, 26, 14, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerKim, -1
-	person_event SPRITE_BREEDER, 29, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederTheresa, -1
-	person_event SPRITE_FISHER, 10, 6, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1
-	person_event SPRITE_BUG_CATCHER, 7, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
-	person_event SPRITE_SUPER_NERD, 10, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
-	person_event SPRITE_OFFICER, 6, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
-	cuttree_event 6, 21, EVENT_ROUTE_35_CUT_TREE
-	fruittree_event 25, 6, FRUITTREE_ROUTE_35, LEPPA_BERRY
-	tmhmball_event 16, 17, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
+	db 12 ; object events
+	object_event 8, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
+	object_event 12, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli1, -1
+	object_event 11, 20, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli2, -1
+	object_event 14, 26, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerKim, -1
+	object_event 18, 29, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederTheresa, -1
+	object_event 6, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1
+	object_event 20, 7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
+	object_event 9, 10, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
+	object_event 9, 6, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
+	cuttree_event 21, 6, EVENT_ROUTE_35_CUT_TREE
+	fruittree_event 6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY
+	tmhmball_event 17, 16, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
 
 Route35RebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_THERESA
 	return
 
 TrainerBreederTheresa:
-	trainer EVENT_BEAT_BREEDER_THERESA, BREEDER, THERESA, BreederTheresaSeenText, BreederTheresaBeatenText, 0, BreederTheresaScript
+	trainer BREEDER, THERESA, EVENT_BEAT_BREEDER_THERESA, BreederTheresaSeenText, BreederTheresaBeatenText, 0, BreederTheresaScript
 
 BreederTheresaScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x19cc87
 
 TrainerJugglerIrwin:
-	trainer EVENT_BEAT_JUGGLER_IRWIN, JUGGLER, IRWIN1, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, JugglerIrwin1Script
+	trainer JUGGLER, IRWIN1, EVENT_BEAT_JUGGLER_IRWIN, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, JugglerIrwin1Script
 
 JugglerIrwin1Script:
 	writecode VAR_CALLERID, PHONE_JUGGLER_IRWIN
@@ -98,35 +98,35 @@ UnknownScript_0x19c91b:
 	end
 
 TrainerCamperIvan:
-	trainer EVENT_BEAT_CAMPER_IVAN, CAMPER, IVAN, CamperIvanSeenText, CamperIvanBeatenText, 0, CamperIvanScript
+	trainer CAMPER, IVAN, EVENT_BEAT_CAMPER_IVAN, CamperIvanSeenText, CamperIvanBeatenText, 0, CamperIvanScript
 
 CamperIvanScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x19cac4
 
 TrainerCoupleGailandeli1:
-	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI1, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText, 0, CoupleGailandeli1Script
+	trainer COUPLE, GAILANDELI1, EVENT_BEAT_COUPLE_GAIL_AND_ELI, CoupleGailandeli1SeenText, CoupleGailandeli1BeatenText, 0, CoupleGailandeli1Script
 
 CoupleGailandeli1Script:
 	end_if_just_battled
 	jumptextfaceplayer CoupleGailandeli1AfterText
 
 TrainerCoupleGailandeli2:
-	trainer EVENT_BEAT_COUPLE_GAIL_AND_ELI, COUPLE, GAILANDELI2, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText, 0, CoupleGailandeli2Script
+	trainer COUPLE, GAILANDELI2, EVENT_BEAT_COUPLE_GAIL_AND_ELI, CoupleGailandeli2SeenText, CoupleGailandeli2BeatenText, 0, CoupleGailandeli2Script
 
 CoupleGailandeli2Script:
 	end_if_just_battled
 	jumptextfaceplayer CoupleGailandeli2AfterText
 
 TrainerPicnickerKim:
-	trainer EVENT_BEAT_PICNICKER_KIM, PICNICKER, KIM, PicnickerKimSeenText, PicnickerKimBeatenText, 0, PicnickerKimScript
+	trainer PICNICKER, KIM, EVENT_BEAT_PICNICKER_KIM, PicnickerKimSeenText, PicnickerKimBeatenText, 0, PicnickerKimScript
 
 PicnickerKimScript:
 	end_if_just_battled
 	jumptextfaceplayer UnknownText_0x19cc21
 
 TrainerBug_catcherArnie1:
-	trainer EVENT_BEAT_BUG_CATCHER_ARNIE, BUG_CATCHER, ARNIE1, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, Bug_catcherArnie1Script
+	trainer BUG_CATCHER, ARNIE1, EVENT_BEAT_BUG_CATCHER_ARNIE, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, Bug_catcherArnie1Script
 
 Bug_catcherArnie1Script:
 	writecode VAR_CALLERID, PHONE_BUG_CATCHER_ARNIE
@@ -220,7 +220,7 @@ UnknownScript_0x19ca2f:
 	jumpopenedtext UnknownText_0x19ce38
 
 TrainerFirebreatherWalt:
-	trainer EVENT_BEAT_FIREBREATHER_WALT, FIREBREATHER, WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText, 0, FirebreatherWaltScript
+	trainer FIREBREATHER, WALT, EVENT_BEAT_FIREBREATHER_WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText, 0, FirebreatherWaltScript
 
 FirebreatherWaltScript:
 	end_if_just_battled

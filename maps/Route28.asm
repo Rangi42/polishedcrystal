@@ -1,19 +1,19 @@
 Route28_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 3, 7, 1, ROUTE_28_FAMOUS_SPEECH_HOUSE
-	warp_def 5, 33, 7, POKEMON_LEAGUE_GATE
+	db 2 ; warp events
+	warp_event 7, 3, 1, ROUTE_28_FAMOUS_SPEECH_HOUSE
+	warp_event 33, 5, 7, POKEMON_LEAGUE_GATE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 5, 31, SIGNPOST_JUMPTEXT, Route28SignText
-	signpost 3, 25, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_28_HIDDEN_RARE_CANDY
+	db 2 ; bg events
+	bg_event 31, 5, SIGNPOST_JUMPTEXT, Route28SignText
+	bg_event 25, 3, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_28_HIDDEN_RARE_CANDY
 
-	db 0 ; person events
+	db 0 ; object events
 
 Route28SignText:
 	text "Route 28"

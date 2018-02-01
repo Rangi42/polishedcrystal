@@ -1,58 +1,58 @@
 RuinsofAlphInnerChamber_MapScriptHeader:
-	db 2 ; map triggers
-	dw RuinsofAlphInnerChamberTrigger0
-	dw RuinsofAlphInnerChamberTrigger1
+	db 2 ; scene scripts
+	scene_script RuinsofAlphInnerChamberTrigger0
+	scene_script RuinsofAlphInnerChamberTrigger1
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 9 ; warps
-	warp_def 13, 10, 3, RUINS_OF_ALPH_ENTRANCE_CHAMBER
-	warp_def 15, 3, 3, RUINS_OF_ALPH_HO_OH_CHAMBER
-	warp_def 15, 4, 4, RUINS_OF_ALPH_HO_OH_CHAMBER
-	warp_def 3, 15, 3, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def 3, 16, 4, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_def 21, 3, 3, RUINS_OF_ALPH_OMANYTE_CHAMBER
-	warp_def 21, 4, 4, RUINS_OF_ALPH_OMANYTE_CHAMBER
-	warp_def 24, 15, 3, RUINS_OF_ALPH_AERODACTYL_CHAMBER
-	warp_def 24, 16, 4, RUINS_OF_ALPH_AERODACTYL_CHAMBER
+	db 9 ; warp events
+	warp_event 10, 13, 3, RUINS_OF_ALPH_ENTRANCE_CHAMBER
+	warp_event 3, 15, 3, RUINS_OF_ALPH_HO_OH_CHAMBER
+	warp_event 4, 15, 4, RUINS_OF_ALPH_HO_OH_CHAMBER
+	warp_event 15, 3, 3, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_event 16, 3, 4, RUINS_OF_ALPH_KABUTO_CHAMBER
+	warp_event 3, 21, 3, RUINS_OF_ALPH_OMANYTE_CHAMBER
+	warp_event 4, 21, 4, RUINS_OF_ALPH_OMANYTE_CHAMBER
+	warp_event 15, 24, 3, RUINS_OF_ALPH_AERODACTYL_CHAMBER
+	warp_event 16, 24, 4, RUINS_OF_ALPH_AERODACTYL_CHAMBER
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 28 ; signposts
-	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 3, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 3, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 3, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 3, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 8, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 8, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 8, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 8, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 8, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 8, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 13, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 13, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 13, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 13, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 18, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 18, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 18, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 18, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 18, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 18, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 24, 2, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 24, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 24, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 24, 11, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 24, 14, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	signpost 24, 17, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	db 28 ; bg events
+	bg_event 2, 3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 5, 3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 8, 3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 11, 3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 14, 3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 17, 3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 2, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 5, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 8, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 11, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 14, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 17, 8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 2, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 5, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 14, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 17, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 2, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 5, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 8, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 11, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 17, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 2, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 5, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 8, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 11, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 14, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event 17, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
 
-	db 4 ; person events
-	person_event SPRITE_FISHER, 7, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_TEACHER, 14, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_GRAMPS, 19, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	person_event SPRITE_SCIENTIST, 11, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	db 4 ; object events
+	object_event 3, 7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 14, 14, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 7, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
 RuinsofAlphInnerChamberTrigger1:
 	priorityjump UnknownScript_0x58f6e

@@ -1,21 +1,21 @@
 Route7SaffronGate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 4 ; warps
-	warp_def 4, 0, 1, ROUTE_7
-	warp_def 5, 0, 2, ROUTE_7
-	warp_def 4, 9, 10, SAFFRON_CITY
-	warp_def 5, 9, 11, SAFFRON_CITY
+	db 4 ; warp events
+	warp_event 0, 4, 1, ROUTE_7
+	warp_event 0, 5, 2, ROUTE_7
+	warp_event 9, 4, 10, SAFFRON_CITY
+	warp_event 9, 5, 11, SAFFRON_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 2 ; person events
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x73518, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 3, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
+	db 2 ; object events
+	object_event 5, 1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x73518, -1
+	object_event 3, 3, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
 
 OfficerScript_0x73518:
 	checkevent EVENT_RETURNED_MACHINE_PART

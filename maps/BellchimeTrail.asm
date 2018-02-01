@@ -1,25 +1,25 @@
 BellchimeTrail_MapScriptHeader:
-	db 1 ; map triggers
-	dw BellchimeTrailStepDownTrigger
+	db 1 ; scene scripts
+	scene_script BellchimeTrailStepDownTrigger
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
 
-	db 3 ; warps
-	warp_def 4, 4, 1, WISE_TRIOS_ROOM
-	warp_def 5, 4, 2, WISE_TRIOS_ROOM
-	warp_def 9, 21, 1, TIN_TOWER_1F ; hole
+	db 3 ; warp events
+	warp_event 4, 4, 1, WISE_TRIOS_ROOM
+	warp_event 4, 5, 2, WISE_TRIOS_ROOM
+	warp_event 21, 9, 1, TIN_TOWER_1F ; hole
 
-	db 1 ; xy triggers
-	xy_trigger 1, 9, 21, BellchimeTrailPanUpTrigger
+	db 1 ; coord events
+	coord_event 21, 9, 1, BellchimeTrailPanUpTrigger
 
-	db 1 ; signposts
-	signpost 12, 22, SIGNPOST_JUMPTEXT, TinTowerSignText
+	db 1 ; bg events
+	bg_event 22, 12, SIGNPOST_JUMPTEXT, TinTowerSignText
 
-	db 1 ; person events
-	person_event SPRITE_VALERIE, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
+	db 1 ; object events
+	object_event 16, 6, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const BELLCHIMETRAIL_VALERIE
 
 BellchimeTrailStepDownTrigger:

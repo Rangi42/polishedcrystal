@@ -1,20 +1,20 @@
 CeladonHotelPool_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 10, 4, CELADON_HOTEL_1F
-	warp_def 7, 11, 4, CELADON_HOTEL_1F
+	db 2 ; warp events
+	warp_event 10, 7, 4, CELADON_HOTEL_1F
+	warp_event 11, 7, 4, CELADON_HOTEL_1F
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_POKEFAN_M, 3, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelPoolPokefanMText, -1
-	person_event SPRITE_CHILD, 6, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelPoolChildText, -1
-	person_event SPRITE_SWIMMER_GUY, 3, 5, SPRITEMOVEDATA_SWIM_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonHotelPoolSwimmerMScript, -1
+	db 3 ; object events
+	object_event 10, 3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelPoolPokefanMText, -1
+	object_event 4, 6, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelPoolChildText, -1
+	object_event 5, 3, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SWIM_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonHotelPoolSwimmerMScript, -1
 
 CeladonHotelPoolSwimmerMScript:
 	checkevent EVENT_GOT_SAFE_GOGGLES_FROM_CELADON

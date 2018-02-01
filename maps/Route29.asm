@@ -1,34 +1,34 @@
 Route29_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, Route29Tuscany
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, Route29Tuscany
 
-	db 1 ; warps
-	warp_def 1, 27, 3, ROUTE_29_46_GATE
+	db 1 ; warp events
+	warp_event 27, 1, 3, ROUTE_29_46_GATE
 
-	db 2 ; xy triggers
-	xy_trigger 1, 8, 53, Route29Tutorial1
-	xy_trigger 1, 9, 53, Route29Tutorial2
+	db 2 ; coord events
+	coord_event 53, 8, 1, Route29Tutorial1
+	coord_event 53, 9, 1, Route29Tutorial2
 
-	db 2 ; signposts
-	signpost 7, 51, SIGNPOST_JUMPTEXT, Route29Sign1Text
-	signpost 5, 3, SIGNPOST_JUMPTEXT, Route29Sign2Text
+	db 2 ; bg events
+	bg_event 51, 7, SIGNPOST_JUMPTEXT, Route29Sign1Text
+	bg_event 3, 5, SIGNPOST_JUMPTEXT, Route29Sign2Text
 
-	db 11 ; person events
-	person_event SPRITE_NEW_BARK_LYRA, 12, 50, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
-	person_event SPRITE_TEACHER, 12, 29, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
-	person_event SPRITE_YOUNGSTER, 16, 27, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29YoungsterText, -1
-	person_event SPRITE_NEW_BARK_TEACHER, 11, 15, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, EVENT_SLOWPOKE_WELL_ROCKETS
-	person_event SPRITE_TEACHER, 11, 15, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, EVENT_AZALEA_TOWN_SLOWPOKES
-	cuttree_event 9, 30, EVENT_ROUTE_29_CUT_TREE_1
-	cuttree_event 11, 21, EVENT_ROUTE_29_CUT_TREE_2
-	fruittree_event 2, 12, FRUITTREE_ROUTE_29, ORAN_BERRY
-	person_event SPRITE_FISHER, 3, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29FisherText, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
-	itemball_event 2, 48, POTION, 1, EVENT_ROUTE_29_POTION
+	db 11 ; object events
+	object_event 50, 12, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
+	object_event 29, 12, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
+	object_event 27, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29YoungsterText, -1
+	object_event 15, 11, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event 15, 11, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, EVENT_AZALEA_TOWN_SLOWPOKES
+	cuttree_event 30, 9, EVENT_ROUTE_29_CUT_TREE_1
+	cuttree_event 21, 11, EVENT_ROUTE_29_CUT_TREE_2
+	fruittree_event 12, 2, FRUITTREE_ROUTE_29, ORAN_BERRY
+	object_event 25, 3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29FisherText, -1
+	object_event 13, 4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
+	itemball_event 48, 2, POTION, 1, EVENT_ROUTE_29_POTION
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE29_LYRA
 	const ROUTE29_TUSCANY
 

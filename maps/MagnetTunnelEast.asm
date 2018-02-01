@@ -1,17 +1,17 @@
 MagnetTunnelEast_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 7, 8, 2, MAGNET_TUNNEL_INSIDE
+	db 1 ; warp events
+	warp_event 8, 7, 2, MAGNET_TUNNEL_INSIDE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 4 ; person events
-	cuttree_event 11, 19, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
-	smashrock_event 8, 12
-	smashrock_event 4, 13
-	smashrock_event 5, 12
+	db 4 ; object events
+	cuttree_event 19, 11, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
+	smashrock_event 12, 8
+	smashrock_event 13, 4
+	smashrock_event 12, 5

@@ -1,35 +1,35 @@
 CeladonUniversity2F_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 6 ; warps
-	warp_def 8, 23, 3, CELADON_UNIVERSITY_1F
-	warp_def 0, 7, 1, CELADON_UNIVERSITY_CAFETERIA
-	warp_def 8, 5, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
-	warp_def 0, 13, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
-	warp_def 8, 19, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
-	warp_def 0, 21, 1, CELADON_UNIVERSITY_POOL
+	db 6 ; warp events
+	warp_event 23, 8, 3, CELADON_UNIVERSITY_1F
+	warp_event 7, 0, 1, CELADON_UNIVERSITY_CAFETERIA
+	warp_event 5, 8, 1, CELADON_UNIVERSITY_WILLOWS_OFFICE
+	warp_event 13, 0, 1, CELADON_UNIVERSITY_HYPER_TEST_ROOM
+	warp_event 19, 8, 1, CELADON_UNIVERSITY_WESTWOODS_OFFICE
+	warp_event 21, 0, 1, CELADON_UNIVERSITY_POOL
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 7 ; signposts
-	signpost 0, 6, SIGNPOST_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
-	signpost 0, 12, SIGNPOST_JUMPTEXT, CeladonUniversity2FHyperTestSignText
-	signpost 0, 20, SIGNPOST_JUMPTEXT, CeladonUniversity2FPoolSignText
-	signpost 8, 4, SIGNPOST_JUMPTEXT, CeladonUniversity2FWillowsOfficeSignText
-	signpost 8, 18, SIGNPOST_JUMPTEXT, CeladonUniversity2FWestwoodsOfficeSignText
-	signpost 1, 16, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
-	signpost 1, 24, SIGNPOST_READ, CeladonUniversity2FCuboneSign
+	db 7 ; bg events
+	bg_event 6, 0, SIGNPOST_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
+	bg_event 12, 0, SIGNPOST_JUMPTEXT, CeladonUniversity2FHyperTestSignText
+	bg_event 20, 0, SIGNPOST_JUMPTEXT, CeladonUniversity2FPoolSignText
+	bg_event 4, 8, SIGNPOST_JUMPTEXT, CeladonUniversity2FWillowsOfficeSignText
+	bg_event 18, 8, SIGNPOST_JUMPTEXT, CeladonUniversity2FWestwoodsOfficeSignText
+	bg_event 16, 1, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
+	bg_event 24, 1, SIGNPOST_READ, CeladonUniversity2FCuboneSign
 
-	db 7 ; person events
-	person_event SPRITE_COOLTRAINER_F, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
-	person_event SPRITE_COOLTRAINER_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCooltrainermText, -1
-	person_event SPRITE_YOUNGSTER, 2, 17, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster1Text, -1
-	person_event SPRITE_COWGIRL, 7, 11, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCowgirlText, -1
-	person_event SPRITE_BUG_CATCHER, 9, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FBug_catcherText, -1
-	person_event SPRITE_LASS, 13, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FLassText, -1
-	person_event SPRITE_YOUNGSTER, 11, 21, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster2Text, -1
+	db 7 ; object events
+	object_event 2, 3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
+	object_event 5, 3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCooltrainermText, -1
+	object_event 17, 2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster1Text, -1
+	object_event 11, 7, SPRITE_COWGIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCowgirlText, -1
+	object_event 3, 9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FBug_catcherText, -1
+	object_event 13, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FLassText, -1
+	object_event 21, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster2Text, -1
 
 CeladonUniversity2FCooltrainerfScript:
 	checkevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY

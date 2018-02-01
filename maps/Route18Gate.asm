@@ -1,28 +1,28 @@
 Route18Gate_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 5 ; warps
-	warp_def 5, 0, 1, ROUTE_18_WEST
-	warp_def 6, 0, 2, ROUTE_18_WEST
-	warp_def 5, 9, 1, ROUTE_18_EAST
-	warp_def 6, 9, 2, ROUTE_18_EAST
-	warp_def 8, 8, 1, ROUTE_18_GATE_2F
+	db 5 ; warp events
+	warp_event 0, 5, 1, ROUTE_18_WEST
+	warp_event 0, 6, 2, ROUTE_18_WEST
+	warp_event 9, 5, 1, ROUTE_18_EAST
+	warp_event 9, 6, 2, ROUTE_18_EAST
+	warp_event 8, 8, 1, ROUTE_18_GATE_2F
 
-	db 5 ; xy triggers
-	xy_trigger 0, 3, 5, UnknownScript_0x73611
-	xy_trigger 0, 4, 5, UnknownScript_0x73611
-	xy_trigger 0, 5, 5, Route18GateStepUpOneTrigger
-	xy_trigger 0, 6, 5, Route18GateStepUpTwoTrigger
-	xy_trigger 0, 7, 5, Route18GateStepUpThreeTrigger
+	db 5 ; coord events
+	coord_event 5, 3, 0, UnknownScript_0x73611
+	coord_event 5, 4, 0, UnknownScript_0x73611
+	coord_event 5, 5, 0, Route18GateStepUpOneTrigger
+	coord_event 5, 6, 0, Route18GateStepUpTwoTrigger
+	coord_event 5, 7, 0, Route18GateStepUpThreeTrigger
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
+	db 1 ; object events
+	object_event 5, 1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const ROUTE18GATE_OFFICER
 
 Route18GateStepUpOneTrigger:

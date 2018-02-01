@@ -1,22 +1,22 @@
 ElmsHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 4, 7, 5, NEW_BARK_TOWN
-	warp_def 5, 7, 5, NEW_BARK_TOWN
+	db 2 ; warp events
+	warp_event 7, 4, 5, NEW_BARK_TOWN
+	warp_event 7, 5, 5, NEW_BARK_TOWN
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 3 ; signposts
-	signpost 1, 0, SIGNPOST_JUMPTEXT, ElmsHouseFridgeText
-	signpost 1, 6, SIGNPOST_JUMPTEXT, ElmsHousePCText
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
+	db 3 ; bg events
+	bg_event 0, 1, SIGNPOST_JUMPTEXT, ElmsHouseFridgeText
+	bg_event 6, 1, SIGNPOST_JUMPTEXT, ElmsHousePCText
+	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 2 ; person events
-	person_event SPRITE_TEACHER, 5, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ElmsWifeText, -1
-	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ElmsSonText, -1
+	db 2 ; object events
+	object_event 1, 5, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ElmsWifeText, -1
+	object_event 4, 5, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ElmsSonText, -1
 
 ElmsWifeText:
 	text "Hi, <PLAYER>! My"

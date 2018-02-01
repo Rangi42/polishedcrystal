@@ -1,22 +1,22 @@
 KogasRoom_MapScriptHeader:
-	db 1 ; map triggers
-	dw KogasRoomEntranceTrigger
+	db 1 ; scene scripts
+	scene_script KogasRoomEntranceTrigger
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, KogasRoomDoorCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, KogasRoomDoorCallback
 
-	db 4 ; warps
-	warp_def 17, 4, 2, WILLS_ROOM
-	warp_def 17, 5, 3, WILLS_ROOM
-	warp_def 2, 4, 1, BRUNOS_ROOM
-	warp_def 2, 5, 2, BRUNOS_ROOM
+	db 4 ; warp events
+	warp_event 4, 17, 2, WILLS_ROOM
+	warp_event 5, 17, 3, WILLS_ROOM
+	warp_event 4, 2, 1, BRUNOS_ROOM
+	warp_event 5, 2, 2, BRUNOS_ROOM
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 1 ; person events
-	person_event SPRITE_KOGA, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript, -1
+	db 1 ; object events
+	object_event 5, 7, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript, -1
 
 KogasRoomEntranceTrigger:
 	priorityjump .Script

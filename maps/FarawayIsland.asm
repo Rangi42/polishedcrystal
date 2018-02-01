@@ -1,26 +1,26 @@
 FarawayIsland_MapScriptHeader:
-	db 2 ; map triggers
-	dw FarawayIslandTrigger0
-	dw FarawayIslandTrigger1
+	db 2 ; scene scripts
+	scene_script FarawayIslandTrigger0
+	scene_script FarawayIslandTrigger1
 
-	db 2 ; map callbacks
-	dbw MAPCALLBACK_NEWMAP, FarawayIslandVisited
-	dbw MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, FarawayIslandVisited
+	callback MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
 
-	db 2 ; warps
-	warp_def 8, 22, 1, FARAWAY_JUNGLE
-	warp_def 8, 23, 2, FARAWAY_JUNGLE
+	db 2 ; warp events
+	warp_event 22, 8, 1, FARAWAY_JUNGLE
+	warp_event 23, 8, 2, FARAWAY_JUNGLE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 1 ; signposts
-	signpost 34, 4, SIGNPOST_JUMPTEXT, FarawayIslandSignText
+	db 1 ; bg events
+	bg_event 4, 34, SIGNPOST_JUMPTEXT, FarawayIslandSignText
 
-	db 2 ; person events
-	person_event SPRITE_SAILOR, 42, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_LAWRENCE, 37, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND
+	db 2 ; object events
+	object_event 12, 42, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	object_event 3, 37, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const FARAWAYISLAND_SAILOR
 	const FARAWAYISLAND_LAWRENCE
 

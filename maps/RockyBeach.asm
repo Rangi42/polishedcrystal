@@ -1,32 +1,32 @@
 RockyBeach_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_OBJECTS, RockyBeachRebattleBreeder
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, RockyBeachRebattleBreeder
 
-	db 3 ; warps
-	warp_def 20, 25, 1, ROCKY_BEACH_HOUSE
-	warp_def 10, 29, 1, NOISY_FOREST
-	warp_def 11, 29, 2, NOISY_FOREST
+	db 3 ; warp events
+	warp_event 25, 20, 1, ROCKY_BEACH_HOUSE
+	warp_event 29, 10, 1, NOISY_FOREST
+	warp_event 29, 11, 2, NOISY_FOREST
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 24, 22, SIGNPOST_JUMPTEXT, RockyBeachSign1Text
-	signpost 10, 24, SIGNPOST_JUMPTEXT, RockyBeachSign2Text
+	db 2 ; bg events
+	bg_event 22, 24, SIGNPOST_JUMPTEXT, RockyBeachSign1Text
+	bg_event 24, 10, SIGNPOST_JUMPTEXT, RockyBeachSign2Text
 
-	db 11 ; person events
-	person_event SPRITE_SIGHTSEER_M, 21, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermBlaise, -1
-	person_event SPRITE_BEAUTY, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyIoana, -1
-	person_event SPRITE_LADY, 21, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSightseerfKamila, -1
-	person_event SPRITE_LADY, 18, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyHeather, -1
-	person_event SPRITE_BREEDER, 13, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerBreederBrenda, -1
-	person_event SPRITE_SWIMMER_GUY, 7, 14, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermEzra, -1
-	person_event SPRITE_YOUNGSTER, 10, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, RockyBeachYoungsterScript, EVENT_NOISY_FOREST_PIKABLU
-	itemball_event 5, 21, FULL_HEAL, 1, EVENT_ROCKY_BEACH_FULL_HEAL
-	itemball_event 3, 32, PEARL_STRING, 1, EVENT_ROCKY_BEACH_PEARL_STRING
-	person_event SPRITE_FISHER, 32, 20, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
-	person_event SPRITE_FISHER, 32, 23, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
+	db 11 ; object events
+	object_event 21, 21, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermBlaise, -1
+	object_event 11, 22, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyIoana, -1
+	object_event 2, 21, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSightseerfKamila, -1
+	object_event 15, 18, SPRITE_LADY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyHeather, -1
+	object_event 15, 13, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerBreederBrenda, -1
+	object_event 14, 7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermEzra, -1
+	object_event 23, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, RockyBeachYoungsterScript, EVENT_NOISY_FOREST_PIKABLU
+	itemball_event 21, 5, FULL_HEAL, 1, EVENT_ROCKY_BEACH_FULL_HEAL
+	itemball_event 32, 3, PEARL_STRING, 1, EVENT_ROCKY_BEACH_PEARL_STRING
+	object_event 20, 32, SPRITE_FISHER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
+	object_event 23, 32, SPRITE_FISHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 
 RockyBeachRebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_BRENDA
@@ -45,7 +45,7 @@ RockyBeachSign2Text:
 	done
 
 TrainerSightseermBlaise:
-	trainer EVENT_BEAT_SIGHTSEERM_BLAISE, SIGHTSEERM, BLAISE, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERM, BLAISE, EVENT_BEAT_SIGHTSEERM_BLAISE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -66,7 +66,7 @@ TrainerSightseermBlaise:
 	done
 
 TrainerBeautyIoana:
-	trainer EVENT_BEAT_BEAUTY_IOANA, BEAUTY, IOANA, .SeenText, .BeatenText, 0, .Script
+	trainer BEAUTY, IOANA, EVENT_BEAT_BEAUTY_IOANA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -93,7 +93,7 @@ TrainerBeautyIoana:
 	done
 
 TrainerSightseerfKamila:
-	trainer EVENT_BEAT_SIGHTSEERF_KAMILA, SIGHTSEERF, KAMILA, .SeenText, .BeatenText, 0, .Script
+	trainer SIGHTSEERF, KAMILA, EVENT_BEAT_SIGHTSEERF_KAMILA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -122,7 +122,7 @@ TrainerSightseerfKamila:
 	done
 
 TrainerAromaLadyHeather:
-	trainer EVENT_BEAT_AROMA_LADY_HEATHER, AROMA_LADY, HEATHER, .SeenText, .BeatenText, 0, .Script
+	trainer AROMA_LADY, HEATHER, EVENT_BEAT_AROMA_LADY_HEATHER, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -155,7 +155,7 @@ TrainerAromaLadyHeather:
 	done
 
 TrainerBreederBrenda:
-	trainer EVENT_BEAT_BREEDER_BRENDA, BREEDER, BRENDA, .SeenText, .BeatenText, 0, .Script
+	trainer BREEDER, BRENDA, EVENT_BEAT_BREEDER_BRENDA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -187,7 +187,7 @@ TrainerBreederBrenda:
 	done
 
 TrainerSwimmermEzra:
-	trainer EVENT_BEAT_SWIMMERM_EZRA, SWIMMERM, EZRA, .SeenText, .BeatenText, 0, .Script
+	trainer SWIMMERM, EZRA, EVENT_BEAT_SWIMMERM_EZRA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -215,7 +215,7 @@ TrainerSwimmermEzra:
 	done
 
 RockyBeachYoungsterScript:
-	generictrainer EVENT_TOLD_ABOUT_PIKABLU, 0, 0, .Text1, 0
+	generictrainer 0, 0, EVENT_TOLD_ABOUT_PIKABLU, .Text1, 0
 
 .Text1
 	text "Oh, no. Oh, no…"

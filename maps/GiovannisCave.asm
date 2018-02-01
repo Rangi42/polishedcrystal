@@ -1,27 +1,27 @@
 GiovannisCave_MapScriptHeader:
-	db 2 ; map triggers
-	dw GiovannisCaveTrigger0
-	dw GiovannisCaveTrigger1
+	db 2 ; scene scripts
+	scene_script GiovannisCaveTrigger0
+	scene_script GiovannisCaveTrigger1
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 1 ; warps
-	warp_def 7, 15, 3, TOHJO_FALLS
+	db 1 ; warp events
+	warp_event 15, 7, 3, TOHJO_FALLS
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 2 ; signposts
-	signpost 2, 15, SIGNPOST_READ, GiovannisCaveRadioScript
-	signpost 6, 12, SIGNPOST_ITEM + BERSERK_GENE, EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
+	db 2 ; bg events
+	bg_event 15, 2, SIGNPOST_READ, GiovannisCaveRadioScript
+	bg_event 12, 6, SIGNPOST_ITEM + BERSERK_GENE, EVENT_GIOVANNIS_CAVE_HIDDEN_BERSERK_GENE
 
-	db 5 ; person events
-	person_event SPRITE_CELEBI, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
-	person_event SPRITE_LYRA, 5, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
-	person_event SPRITE_GIOVANNI, 3, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
-	smashrock_event 6, 13
-	smashrock_event 2, 16
+	db 5 ; object events
+	object_event 15, 6, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_CELEBI
+	object_event 14, 5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_LYRA
+	object_event 15, 3, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GIOVANNIS_CAVE_GIOVANNI
+	smashrock_event 13, 6
+	smashrock_event 16, 2
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const GIOVANNISCAVE_CELEBI
 	const GIOVANNISCAVE_LYRA
 	const GIOVANNISCAVE_GIOVANNI

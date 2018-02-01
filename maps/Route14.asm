@@ -1,30 +1,30 @@
 Route14_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 0 ; warps
+	db 0 ; warp events
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 12 ; person events
-	person_event SPRITE_POKEFAN_M, 8, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmTrevor, -1
-	person_event SPRITE_POKEFAN_M, 21, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmCarter, -1
-	person_event SPRITE_YOUNGSTER, 29, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperRoy, -1
-	person_event SPRITE_YOUNGSTER, 14, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperJosh, -1
-	person_event SPRITE_YOUNGSTER, 17, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyConnor, -1
-	person_event SPRITE_YOUNGSTER, 15, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyTorin, -1
-	person_event SPRITE_YOUNGSTER, 13, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyTravis, -1
-	person_event SPRITE_TEACHER, 15, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerTeacherClarice, -1
-	person_event SPRITE_TEACHER, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, trade, TRADE_WITH_KIM_FOR_CHANSEY, -1
-	cuttree_event 10, 5, EVENT_ROUTE_14_CUT_TREE_1
-	cuttree_event 16, 11, EVENT_ROUTE_14_CUT_TREE_2
-	cuttree_event 26, 3, EVENT_ROUTE_14_CUT_TREE_3
+	db 12 ; object events
+	object_event 13, 8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmTrevor, -1
+	object_event 11, 21, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmCarter, -1
+	object_event 11, 29, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperRoy, -1
+	object_event 15, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperJosh, -1
+	object_event 4, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyConnor, -1
+	object_event 4, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyTorin, -1
+	object_event 4, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyTravis, -1
+	object_event 9, 15, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerTeacherClarice, -1
+	object_event 7, 7, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, trade, TRADE_WITH_KIM_FOR_CHANSEY, -1
+	cuttree_event 5, 10, EVENT_ROUTE_14_CUT_TREE_1
+	cuttree_event 11, 16, EVENT_ROUTE_14_CUT_TREE_2
+	cuttree_event 3, 26, EVENT_ROUTE_14_CUT_TREE_3
 
 TrainerPokefanmTrevor:
-	trainer EVENT_BEAT_POKEFANM_TREVOR, POKEFANM, TREVOR, PokefanmTrevorSeenText, PokefanmTrevorBeatenText, 0, PokefanmTrevorScript
+	trainer POKEFANM, TREVOR, EVENT_BEAT_POKEFANM_TREVOR, PokefanmTrevorSeenText, PokefanmTrevorBeatenText, 0, PokefanmTrevorScript
 
 PokefanmTrevorScript:
 	end_if_just_battled
@@ -58,7 +58,7 @@ UnknownText_0x1ad660:
 	done
 
 TrainerPokefanmCarter:
-	trainer EVENT_BEAT_POKEFANM_CARTER, POKEFANM, CARTER, PokefanmCarterSeenText, PokefanmCarterBeatenText, 0, PokefanmCarterScript
+	trainer POKEFANM, CARTER, EVENT_BEAT_POKEFANM_CARTER, PokefanmCarterSeenText, PokefanmCarterBeatenText, 0, PokefanmCarterScript
 
 PokefanmCarterScript:
 	end_if_just_battled
@@ -85,7 +85,7 @@ UnknownText_0x1ad508:
 	done
 
 TrainerBird_keeperRoy:
-	trainer EVENT_BEAT_BIRD_KEEPER_ROY, BIRD_KEEPER, ROY, Bird_keeperRoySeenText, Bird_keeperRoyBeatenText, 0, Bird_keeperRoyScript
+	trainer BIRD_KEEPER, ROY, EVENT_BEAT_BIRD_KEEPER_ROY, Bird_keeperRoySeenText, Bird_keeperRoyBeatenText, 0, Bird_keeperRoyScript
 
 Bird_keeperRoyScript:
 	end_if_just_battled
@@ -111,7 +111,7 @@ UnknownText_0x1ad5a4:
 	done
 
 TrainerBird_keeperJosh:
-	trainer EVENT_BEAT_BIRD_KEEPER_JOSH, BIRD_KEEPER, BIRD_KEEPER_JOSH, .SeenText, .BeatenText, 0, .Script
+	trainer BIRD_KEEPER, BIRD_KEEPER_JOSH, EVENT_BEAT_BIRD_KEEPER_JOSH, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -140,7 +140,7 @@ TrainerBird_keeperJosh:
 	done
 
 TrainerSchoolboyConnor:
-	trainer EVENT_BEAT_SCHOOLBOY_CONNOR, SCHOOLBOY, SCHOOLBOY_CONNOR, .SeenText, .BeatenText, 0, .Script
+	trainer SCHOOLBOY, SCHOOLBOY_CONNOR, EVENT_BEAT_SCHOOLBOY_CONNOR, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -166,7 +166,7 @@ TrainerSchoolboyConnor:
 	done
 
 TrainerSchoolboyTorin:
-	trainer EVENT_BEAT_SCHOOLBOY_TORIN, SCHOOLBOY, TORIN, .SeenText, .BeatenText, 0, .Script
+	trainer SCHOOLBOY, TORIN, EVENT_BEAT_SCHOOLBOY_TORIN, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -189,7 +189,7 @@ TrainerSchoolboyTorin:
 	done
 
 TrainerSchoolboyTravis:
-	trainer EVENT_BEAT_SCHOOLBOY_TRAVIS, SCHOOLBOY, TRAVIS, .SeenText, .BeatenText, 0, .Script
+	trainer SCHOOLBOY, TRAVIS, EVENT_BEAT_SCHOOLBOY_TRAVIS, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
@@ -212,7 +212,7 @@ TrainerSchoolboyTravis:
 	done
 
 TrainerTeacherClarice:
-	trainer EVENT_BEAT_TEACHER_CLARICE, TEACHER, CLARICE, .SeenText, .BeatenText, 0, .Script
+	trainer TEACHER, CLARICE, EVENT_BEAT_TEACHER_CLARICE, .SeenText, .BeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled

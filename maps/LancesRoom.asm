@@ -1,28 +1,28 @@
 LancesRoom_MapScriptHeader:
-	db 1 ; map triggers
-	dw LancesRoomEntranceTrigger
+	db 1 ; scene scripts
+	scene_script LancesRoomEntranceTrigger
 
-	db 1 ; map callbacks
-	dbw MAPCALLBACK_TILES, LancesRoomDoorCallback
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, LancesRoomDoorCallback
 
-	db 4 ; warps
-	warp_def 23, 4, 3, KARENS_ROOM
-	warp_def 23, 5, 4, KARENS_ROOM
-	warp_def 1, 4, 1, HALL_OF_FAME
-	warp_def 1, 5, 2, HALL_OF_FAME
+	db 4 ; warp events
+	warp_event 4, 23, 3, KARENS_ROOM
+	warp_event 5, 23, 4, KARENS_ROOM
+	warp_event 4, 1, 1, HALL_OF_FAME
+	warp_event 5, 1, 2, HALL_OF_FAME
 
-	db 2 ; xy triggers
-	xy_trigger 1, 5, 4, ApproachLanceFromLeftTrigger
-	xy_trigger 1, 5, 5, ApproachLanceFromRightTrigger
+	db 2 ; coord events
+	coord_event 4, 5, 1, ApproachLanceFromLeftTrigger
+	coord_event 5, 5, 1, ApproachLanceFromRightTrigger
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 3 ; person events
-	person_event SPRITE_LANCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript, -1
-	person_event SPRITE_BUENA, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
-	person_event SPRITE_OAK, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+	db 3 ; object events
+	object_event 5, 3, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript, -1
+	object_event 4, 7, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
+	object_event 4, 7, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 
-	const_def 1 ; person constants
+	const_def 1 ; object constants
 	const LANCESROOM_LANCE
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK

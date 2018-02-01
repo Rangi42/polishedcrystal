@@ -1,21 +1,21 @@
 ViridianNicknameSpeechHouse_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 2 ; warps
-	warp_def 7, 2, 2, VIRIDIAN_CITY
-	warp_def 7, 3, 2, VIRIDIAN_CITY
+	db 2 ; warp events
+	warp_event 2, 7, 2, VIRIDIAN_CITY
+	warp_event 3, 7, 2, VIRIDIAN_CITY
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 4 ; person events
-	person_event SPRITE_POKEFAN_M, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9ae54, -1
-	person_event SPRITE_TWIN, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9aecb, -1
-	person_event SPRITE_HOOTHOOT, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, HootyText, -1
-	person_event SPRITE_RATTATA, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_POKEMON, RATTATA, RatteyText, -1
+	db 4 ; object events
+	object_event 2, 4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9ae54, -1
+	object_event 5, 4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9aecb, -1
+	object_event 5, 2, SPRITE_HOOTHOOT, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, HootyText, -1
+	object_event 6, 3, SPRITE_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_POKEMON, RATTATA, RatteyText, -1
 
 UnknownText_0x9ae54:
 	text "Do you put a lot"

@@ -1,15 +1,15 @@
 NavelRockOutside_MapScriptHeader:
-	db 0 ; map triggers
+	db 0 ; scene scripts
 
-	db 0 ; map callbacks
+	db 0 ; callbacks
 
-	db 3 ; warps
-	warp_def 25, 12, 1, SEAGALLOP_FERRY_NAVEL_GATE
-	warp_def 25, 13, 1, SEAGALLOP_FERRY_NAVEL_GATE
-	warp_def 15, 12, 1, NAVEL_ROCK_INSIDE
+	db 3 ; warp events
+	warp_event 12, 25, 1, SEAGALLOP_FERRY_NAVEL_GATE
+	warp_event 13, 25, 1, SEAGALLOP_FERRY_NAVEL_GATE
+	warp_event 12, 15, 1, NAVEL_ROCK_INSIDE
 
-	db 0 ; xy triggers
+	db 0 ; coord events
 
-	db 0 ; signposts
+	db 0 ; bg events
 
-	db 0 ; person events
+	db 0 ; object events
