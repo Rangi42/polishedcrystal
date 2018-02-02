@@ -92,14 +92,14 @@ Text_ABoostedStringBuffer2ExpPoints::
 	text ""
 	line "a boosted"
 	cont "@"
-	deciram StringBuffer2, 2, 4
+	deciram StringBuffer2, 2, 5
 	text " Exp. Points!"
 	prompt
 
 Text_StringBuffer2ExpPoints::
 	text ""
 	line "@"
-	deciram StringBuffer2, 2, 4
+	deciram StringBuffer2, 2, 5
 	text " Exp. Points!"
 	prompt
 

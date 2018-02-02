@@ -6701,27 +6701,27 @@ endr
 	ld bc, PlayerID
 	farcall CalcMagikarpLength
 
-	; We're clear if the length is < 1536
+	; We're clear if the length is < 5'
 	ld a, [wMagikarpLengthMmHi]
-	cp $6 ; $600 = 1536
+	cp 5
 	jr nz, .CheckMagikarpArea
 
 	; 5% chance of skipping size checks
 	call Random
-	cp $0c ; / $100
+	cp 5 percent
 	jr c, .CheckMagikarpArea
-	; Try again if > 1614
+	; Try again if > 3"
 	ld a, [wMagikarpLengthMmLo]
-	cp $50
+	cp 3
 	jp nc, .GenerateDVs
 
 	; 20% chance of skipping this check
 	call Random
-	cp $32 ; / $100
+	cp 20 percent - 1
 	jr c, .CheckMagikarpArea
-	; Try again if > 1598
+	; Try again if > 2"
 	ld a, [wMagikarpLengthMmLo]
-	cp $40
+	cp 2
 	jp nc, .GenerateDVs
 
 .CheckMagikarpArea:

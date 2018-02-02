@@ -331,10 +331,10 @@ CherishBall: ; e8a2
 .room_in_party
 	xor a
 	ld [wWildMon], a
-	ld a, [CurItem]
-	cp PARK_BALL
+	ld a, [BattleType]
+	cp BATTLETYPE_CONTEST
 	jr z, .skipReturnToBattle
-	cp SAFARI_BALL
+	cp BATTLETYPE_SAFARI
 	jr z, .skipReturnToBattle
 	call ReturnToBattle_UseBall
 
@@ -439,24 +439,7 @@ CherishBall: ; e8a2
 	ld a, $ff
 .max_1
 
-	ld d, a
-	push de
-
-	ld a, [BattleMonItem]
-	ld b, a
-	farcall GetItemHeldEffect
-	ld a, b
-	cp HELD_CATCH_CHANCE
-
-	pop de
-	ld a, d
-
-	jr nz, .skip_hp_calc
-	add c
-	jr nc, .skip_hp_calc
-	ld a, $ff
 .skip_hp_calc
-
 	ld b, a
 	ld [Buffer1], a
 	call Random

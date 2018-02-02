@@ -30,12 +30,12 @@ ClerkScript_0x55b65:
 
 UnknownText_0x55c25:
 	text "#gear can store"
-	line "up to twenty"
+	line "up to thirty" ; CONTACT_LIST_SIZE
 	cont "phone numbers."
 
-	para "It's hard to de-"
-	line "cide which numbers"
-	cont "to keep."
+	para "But getting too"
+	line "many phone calls"
+	cont "can be annoying."
 	done
 
 UnknownText_0x55c7b:
