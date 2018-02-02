@@ -16,25 +16,31 @@ Route38_MapScriptHeader:
 	db 7 ; object events
 	object_event  4,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
 	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
-	object_event 12, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
-	object_event 19,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
-	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
+	object_event 12, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperToby, -1
+	object_event 19,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyValencia, -1
+	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSailorHarry, -1
 	fruittree_event 12, 10, FRUITTREE_ROUTE_38, SITRUS_BERRY
-	object_event  5,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
+	object_event  5,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
 
-TrainerBird_keeperToby:
-	trainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText, 0, .script
+GenericTrainerBird_keeperToby:
+	generictrainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a1f86
+	text "I plan to train in"
+	line "Cianwood City to"
 
-TrainerSailorHarry:
-	trainer SAILOR, HARRY, EVENT_BEAT_SAILOR_HARRY, SailorHarrySeenText, SailorHarryBeatenText, 0, .script
+	para "teach my #mon"
+	line "how to Fly."
+	done
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a220c
+GenericTrainerSailorHarry:
+	generictrainer SAILOR, HARRY, EVENT_BEAT_SAILOR_HARRY, SailorHarrySeenText, SailorHarryBeatenText
+
+	text "All kinds of peo-"
+	line "ple around the"
+
+	para "world live happily"
+	line "with #mon."
+	done
 
 TrainerLassDana1:
 	trainer LASS, DANA1, EVENT_BEAT_LASS_DANA, LassDana1SeenText, LassDana1BeatenText, 0, .script
@@ -243,19 +249,25 @@ TrainerSchoolboyChad1:
 .PhoneFull:
 	jumpstd phonefullm
 
-TrainerBeautyValencia:
-	trainer BEAUTY, VALENCIA, EVENT_BEAT_BEAUTY_VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText, 0, .script
+GenericTrainerBeautyValencia:
+	generictrainer BEAUTY, VALENCIA, EVENT_BEAT_BEAUTY_VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a2185
+	text "When I see #-"
+	line "mon, it seems to"
+	cont "soothe my nerves."
+	done
 
-TrainerBeautyOlivia:
-	trainer BEAUTY, OLIVIA, EVENT_BEAT_BEAUTY_OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText, 0, .script
+GenericTrainerBeautyOlivia:
+	generictrainer BEAUTY, OLIVIA, EVENT_BEAT_BEAUTY_OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a229a
+	text "Moomoo Milk is"
+	line "good for beauty"
+	cont "and health."
+
+	para "I like to buy a"
+	line "dozen bottles at"
+	cont "a time!"
+	done
 
 Bird_keeperTobySeenText:
 	text "Fly high into the"
@@ -266,14 +278,6 @@ Bird_keeperTobySeenText:
 Bird_keeperTobyBeatenText:
 	text "I feel like just"
 	line "flying away now."
-	done
-
-UnknownText_0x1a1f86:
-	text "I plan to train in"
-	line "Cianwood City to"
-
-	para "teach my #mon"
-	line "how to Fly."
 	done
 
 SchoolboyChad1SeenText:
@@ -335,12 +339,6 @@ BeautyValenciaBeatenText:
 	line "see your #mon!"
 	done
 
-UnknownText_0x1a2185:
-	text "When I see #-"
-	line "mon, it seems to"
-	cont "soothe my nerves."
-	done
-
 SailorHarrySeenText:
 	text "I've been over-"
 	line "seas, so I know"
@@ -354,14 +352,6 @@ SailorHarryBeatenText:
 	line "world class!"
 	done
 
-UnknownText_0x1a220c:
-	text "All kinds of peo-"
-	line "ple around the"
-
-	para "world live happily"
-	line "with #mon."
-	done
-
 BeautyOliviaSeenText:
 	text "Don't you think my"
 	line "#mon and I are"
@@ -371,16 +361,6 @@ BeautyOliviaSeenText:
 BeautyOliviaBeatenText:
 	text "We drink Moomoo"
 	line "Milk every day."
-	done
-
-UnknownText_0x1a229a:
-	text "Moomoo Milk is"
-	line "good for beauty"
-	cont "and health."
-
-	para "I like to buy a"
-	line "dozen bottles at"
-	cont "a time!"
 	done
 
 Route38SignText:
