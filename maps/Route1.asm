@@ -4,7 +4,7 @@ Route1_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 10, 1, 3, ROUTE_1_VIRIDIAN_GATE
+	warp_event 10, 1, ROUTE_1_VIRIDIAN_GATE, 3
 
 	db 0 ; coord events
 

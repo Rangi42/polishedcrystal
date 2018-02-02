@@ -4,9 +4,9 @@ BluesHouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 7, 2, PALLET_TOWN
-	warp_event 3, 7, 2, PALLET_TOWN
-	warp_event 7, 0, 1, BLUES_HOUSE_2F
+	warp_event 2, 7, PALLET_TOWN, 2
+	warp_event 3, 7, PALLET_TOWN, 2
+	warp_event 7, 0, BLUES_HOUSE_2F, 1
 
 	db 0 ; coord events
 

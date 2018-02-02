@@ -4,9 +4,9 @@ SoulHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 4, 9, 6, LAVENDER_TOWN
-	warp_event 5, 9, 6, LAVENDER_TOWN
-	warp_event 4, 2, 1, SOUL_HOUSE_B1F
+	warp_event 4, 9, LAVENDER_TOWN, 6
+	warp_event 5, 9, LAVENDER_TOWN, 6
+	warp_event 4, 2, SOUL_HOUSE_B1F, 1
 
 	db 0 ; coord events
 

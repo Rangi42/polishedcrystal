@@ -4,10 +4,10 @@ DragonsDen1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 15, 55, 8, BLACKTHORN_CITY
-	warp_event 15, 53, 4, DRAGONS_DEN_1F
-	warp_event 5, 55, 1, DRAGONS_DEN_B1F
-	warp_event 5, 53, 2, DRAGONS_DEN_1F
+	warp_event 15, 55, BLACKTHORN_CITY, 8
+	warp_event 15, 53, DRAGONS_DEN_1F, 4
+	warp_event 5, 55, DRAGONS_DEN_B1F, 1
+	warp_event 5, 53, DRAGONS_DEN_1F, 2
 
 	db 0 ; coord events
 

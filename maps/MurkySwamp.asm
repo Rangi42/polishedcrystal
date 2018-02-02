@@ -4,9 +4,9 @@ MurkySwamp_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 7, 35, 1, STORMY_BEACH
-	warp_event 8, 35, 2, STORMY_BEACH
-	warp_event 36, 5, 3, UNION_CAVE_B1F_SOUTH
+	warp_event 7, 35, STORMY_BEACH, 1
+	warp_event 8, 35, STORMY_BEACH, 2
+	warp_event 36, 5, UNION_CAVE_B1F_SOUTH, 3
 
 	db 0 ; coord events
 

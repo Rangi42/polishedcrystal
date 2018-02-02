@@ -4,7 +4,7 @@ OlivineLighthouseRoof_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 9, 3, 4, OLIVINE_LIGHTHOUSE_6F
+	warp_event 9, 3, OLIVINE_LIGHTHOUSE_6F, 4
 
 	db 0 ; coord events
 

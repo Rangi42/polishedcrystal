@@ -8,11 +8,11 @@ Route10North_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route10NorthZapdos
 
 	db 5 ; warp events
-	warp_event 11, 35, 1, ROUTE_10_POKECENTER_1F
-	warp_event 3, 51, 1, POWER_PLANT
-	warp_event 4, 43, 1, ROCK_TUNNEL_2F
-	warp_event 8, 33, 1, ROCK_TUNNEL_1F
-	warp_event 10, 1, 1, DIM_CAVE_5F
+	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
+	warp_event 3, 51, POWER_PLANT, 1
+	warp_event 4, 43, ROCK_TUNNEL_2F, 1
+	warp_event 8, 33, ROCK_TUNNEL_1F, 1
+	warp_event 10, 1, DIM_CAVE_5F, 1
 
 	db 0 ; coord events
 

@@ -6,7 +6,7 @@ KrissHouse2F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, KrissHouse2FSetSpawn
 
 	db 1 ; warp events
-	warp_event 7, 0, 3, KRISS_HOUSE_1F
+	warp_event 7, 0, KRISS_HOUSE_1F, 3
 
 	db 0 ; coord events
 

@@ -4,14 +4,14 @@ PokemonLeagueGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 8 ; warp events
-	warp_event 19, 7, 1, ROUTE_22
-	warp_event 20, 7, 1, ROUTE_22
-	warp_event 10, 17, 1, ROUTE_26
-	warp_event 11, 17, 1, ROUTE_26
-	warp_event 10, 0, 1, ROUTE_23
-	warp_event 11, 0, 2, ROUTE_23
-	warp_event 1, 7, 2, ROUTE_28
-	warp_event 2, 7, 2, ROUTE_28
+	warp_event 19, 7, ROUTE_22, 1
+	warp_event 20, 7, ROUTE_22, 1
+	warp_event 10, 17, ROUTE_26, 1
+	warp_event 11, 17, ROUTE_26, 1
+	warp_event 10, 0, ROUTE_23, 1
+	warp_event 11, 0, ROUTE_23, 2
+	warp_event 1, 7, ROUTE_28, 2
+	warp_event 2, 7, ROUTE_28, 2
 
 	db 2 ; coord events
 	coord_event 10, 10, 0, PokemonLeagueGateXYTriggerScript1

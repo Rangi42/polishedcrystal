@@ -4,9 +4,9 @@ WarmBeach_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 15, 13, 1, WARM_BEACH_SHACK
-	warp_event 8, 5, 2, SHAMOUTI_TUNNEL
-	warp_event 3, 8, 1, WARM_BEACH_HOUSE
+	warp_event 15, 13, WARM_BEACH_SHACK, 1
+	warp_event 8, 5, SHAMOUTI_TUNNEL, 2
+	warp_event 3, 8, WARM_BEACH_HOUSE, 1
 
 	db 0 ; coord events
 

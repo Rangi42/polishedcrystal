@@ -4,8 +4,8 @@ SlowpokeWellB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 17, 15, 6, AZALEA_TOWN
-	warp_event 7, 11, 1, SLOWPOKE_WELL_B2F
+	warp_event 17, 15, AZALEA_TOWN, 6
+	warp_event 7, 11, SLOWPOKE_WELL_B2F, 1
 
 	db 0 ; coord events
 

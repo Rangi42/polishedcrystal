@@ -4,8 +4,8 @@ EcruteakItemfinderHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, 11, ECRUTEAK_CITY
-	warp_event 4, 7, 11, ECRUTEAK_CITY
+	warp_event 3, 7, ECRUTEAK_CITY, 11
+	warp_event 4, 7, ECRUTEAK_CITY, 11
 
 	db 0 ; coord events
 

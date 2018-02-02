@@ -4,12 +4,12 @@ LightningIsland_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 6 ; warp events
-	warp_event 5, 29, 3, SHAMOUTI_COAST
-	warp_event 19, 29, 1, LIGHTNING_ISLAND_ROOF
-	warp_event 6, 3, 4, LIGHTNING_ISLAND
-	warp_event 19, 3, 3, LIGHTNING_ISLAND
-	warp_event 19, 26, 6, LIGHTNING_ISLAND
-	warp_event 5, 27, 5, LIGHTNING_ISLAND ; hole
+	warp_event 5, 29, SHAMOUTI_COAST, 3
+	warp_event 19, 29, LIGHTNING_ISLAND_ROOF, 1
+	warp_event 6, 3, LIGHTNING_ISLAND, 4
+	warp_event 19, 3, LIGHTNING_ISLAND, 3
+	warp_event 19, 26, LIGHTNING_ISLAND, 6
+	warp_event 5, 27, LIGHTNING_ISLAND, 5 ; hole
 
 	db 0 ; coord events
 

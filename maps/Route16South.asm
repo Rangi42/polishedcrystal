@@ -5,8 +5,8 @@ Route16South_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
 	db 2 ; warp events
-	warp_event 9, 10, 1, ROUTE_16_17_GATE
-	warp_event 9, 11, 2, ROUTE_16_17_GATE
+	warp_event 9, 10, ROUTE_16_17_GATE, 1
+	warp_event 9, 11, ROUTE_16_17_GATE, 2
 
 	db 0 ; coord events
 

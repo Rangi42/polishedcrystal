@@ -4,9 +4,9 @@ RuinsofAlphEntranceChamber_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 3, 7, 5, RUINS_OF_ALPH_OUTSIDE
-	warp_event 4, 7, 5, RUINS_OF_ALPH_OUTSIDE
-	warp_event 4, 3, 1, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_event 3, 7, RUINS_OF_ALPH_OUTSIDE, 5
+	warp_event 4, 7, RUINS_OF_ALPH_OUTSIDE, 5
+	warp_event 4, 3, RUINS_OF_ALPH_INNER_CHAMBER, 1
 
 	db 0 ; coord events
 

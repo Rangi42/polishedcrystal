@@ -5,12 +5,12 @@ Route36_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route36ArthurCallback
 
 	db 6 ; warp events
-	warp_event 22, 8, 3, ROUTE_36_NATIONAL_PARK_GATE
-	warp_event 22, 9, 4, ROUTE_36_NATIONAL_PARK_GATE
-	warp_event 51, 13, 1, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_event 52, 13, 2, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_event 61, 8, 1, ROUTE_36_VIOLET_GATE
-	warp_event 61, 9, 2, ROUTE_36_VIOLET_GATE
+	warp_event 22, 8, ROUTE_36_NATIONAL_PARK_GATE, 3
+	warp_event 22, 9, ROUTE_36_NATIONAL_PARK_GATE, 4
+	warp_event 51, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 1
+	warp_event 52, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 2
+	warp_event 61, 8, ROUTE_36_VIOLET_GATE, 1
+	warp_event 61, 9, ROUTE_36_VIOLET_GATE, 2
 
 	db 2 ; coord events
 	coord_event 24, 7, 1, Route36SuicuneScript

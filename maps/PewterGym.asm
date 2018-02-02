@@ -4,8 +4,8 @@ PewterGym_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 13, 2, PEWTER_CITY
-	warp_event 5, 13, 2, PEWTER_CITY
+	warp_event 4, 13, PEWTER_CITY, 2
+	warp_event 5, 13, PEWTER_CITY, 2
 
 	db 0 ; coord events
 

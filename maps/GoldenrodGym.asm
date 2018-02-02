@@ -4,8 +4,8 @@ GoldenrodGym_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 17, 1, GOLDENROD_CITY
-	warp_event 3, 17, 1, GOLDENROD_CITY
+	warp_event 2, 17, GOLDENROD_CITY, 1
+	warp_event 3, 17, GOLDENROD_CITY, 1
 
 	db 1 ; coord events
 	coord_event 8, 5, 1, WhitneyCriesScript

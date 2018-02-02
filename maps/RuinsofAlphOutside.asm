@@ -7,18 +7,18 @@ RuinsofAlphOutside_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
 	db 12 ; warp events
-	warp_event 4, 23, 1, RUINS_OF_ALPH_HO_OH_CHAMBER
-	warp_event 16, 13, 1, RUINS_OF_ALPH_KABUTO_CHAMBER
-	warp_event 4, 35, 1, RUINS_OF_ALPH_OMANYTE_CHAMBER
-	warp_event 18, 39, 1, RUINS_OF_ALPH_AERODACTYL_CHAMBER
-	warp_event 12, 19, 1, RUINS_OF_ALPH_ENTRANCE_CHAMBER
-	warp_event 19, 17, 1, RUINS_OF_ALPH_RESEARCH_CENTER
-	warp_event 8, 25, 1, UNION_CAVE_B1F_NORTH
-	warp_event 8, 33, 2, UNION_CAVE_B1F_NORTH
-	warp_event 3, 5, 3, ROUTE_36_RUINS_OF_ALPH_GATE
-	warp_event 15, 26, 1, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_event 15, 27, 2, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_event 10, 9, 1, RUINS_OF_ALPH_SINJOH_CHAMBER
+	warp_event 4, 23, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
+	warp_event 16, 13, RUINS_OF_ALPH_KABUTO_CHAMBER, 1
+	warp_event 4, 35, RUINS_OF_ALPH_OMANYTE_CHAMBER, 1
+	warp_event 18, 39, RUINS_OF_ALPH_AERODACTYL_CHAMBER, 1
+	warp_event 12, 19, RUINS_OF_ALPH_ENTRANCE_CHAMBER, 1
+	warp_event 19, 17, RUINS_OF_ALPH_RESEARCH_CENTER, 1
+	warp_event 8, 25, UNION_CAVE_B1F_NORTH, 1
+	warp_event 8, 33, UNION_CAVE_B1F_NORTH, 2
+	warp_event 3, 5, ROUTE_36_RUINS_OF_ALPH_GATE, 3
+	warp_event 15, 26, ROUTE_32_RUINS_OF_ALPH_GATE, 1
+	warp_event 15, 27, ROUTE_32_RUINS_OF_ALPH_GATE, 2
+	warp_event 10, 9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
 
 	db 2 ; coord events
 	coord_event 13, 20, 1, UnknownScript_0x58031

@@ -4,10 +4,10 @@ SproutTower2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 4, 3, SPROUT_TOWER_1F
-	warp_event 0, 6, 4, SPROUT_TOWER_1F
-	warp_event 15, 3, 5, SPROUT_TOWER_1F
-	warp_event 8, 14, 1, SPROUT_TOWER_3F
+	warp_event 4, 4, SPROUT_TOWER_1F, 3
+	warp_event 0, 6, SPROUT_TOWER_1F, 4
+	warp_event 15, 3, SPROUT_TOWER_1F, 5
+	warp_event 8, 14, SPROUT_TOWER_3F, 1
 
 	db 0 ; coord events
 

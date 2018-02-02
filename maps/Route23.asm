@@ -4,10 +4,10 @@ Route23_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 7, 135, 5, POKEMON_LEAGUE_GATE
-	warp_event 8, 135, 6, POKEMON_LEAGUE_GATE
-	warp_event 4, 31, 1, VICTORY_ROAD_1F
-	warp_event 14, 31, 1, VICTORY_ROAD_2F
+	warp_event 7, 135, POKEMON_LEAGUE_GATE, 5
+	warp_event 8, 135, POKEMON_LEAGUE_GATE, 6
+	warp_event 4, 31, VICTORY_ROAD_1F, 1
+	warp_event 14, 31, VICTORY_ROAD_2F, 1
 
 	db 23 ; coord events
 	coord_event 14, 131, 0, Route23ZephyrBadgeTriggerScript

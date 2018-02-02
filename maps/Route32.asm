@@ -6,11 +6,11 @@ Route32_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route32Frieda
 
 	db 5 ; warp events
-	warp_event 11, 73, 1, ROUTE_32_POKECENTER_1F
-	warp_event 4, 2, 3, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_event 4, 3, 4, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_event 6, 79, 4, UNION_CAVE_1F
-	warp_event 4, 24, 1, HIDDEN_TREE_GROTTO
+	warp_event 11, 73, ROUTE_32_POKECENTER_1F, 1
+	warp_event 4, 2, ROUTE_32_RUINS_OF_ALPH_GATE, 3
+	warp_event 4, 3, ROUTE_32_RUINS_OF_ALPH_GATE, 4
+	warp_event 6, 79, UNION_CAVE_1F, 4
+	warp_event 4, 24, HIDDEN_TREE_GROTTO, 1
 
 	db 6 ; coord events
 	coord_event 18, 8, 0, Route32CooltrainerMStopsYou

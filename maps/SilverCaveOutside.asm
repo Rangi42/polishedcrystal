@@ -5,8 +5,8 @@ SilverCaveOutside_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, SilverCaveOutsideFlyPoint
 
 	db 2 ; warp events
-	warp_event 23, 13, 1, SILVER_CAVE_POKECENTER_1F
-	warp_event 18, 5, 1, SILVER_CAVE_ROOM_1
+	warp_event 23, 13, SILVER_CAVE_POKECENTER_1F, 1
+	warp_event 18, 5, SILVER_CAVE_ROOM_1, 1
 
 	db 0 ; coord events
 

@@ -4,9 +4,9 @@ CopycatsHouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 7, 8, SAFFRON_CITY
-	warp_event 3, 7, 8, SAFFRON_CITY
-	warp_event 3, 0, 1, COPYCATS_HOUSE_2F
+	warp_event 2, 7, SAFFRON_CITY, 8
+	warp_event 3, 7, SAFFRON_CITY, 8
+	warp_event 3, 0, COPYCATS_HOUSE_2F, 1
 
 	db 0 ; coord events
 

@@ -7,9 +7,9 @@ TinTower1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, TinTowerStairsCallback
 
 	db 3 ; warp events
-	warp_event 7, 15, 3, BELLCHIME_TRAIL
-	warp_event 8, 15, 3, BELLCHIME_TRAIL
-	warp_event 8, 2, 2, TIN_TOWER_2F
+	warp_event 7, 15, BELLCHIME_TRAIL, 3
+	warp_event 8, 15, BELLCHIME_TRAIL, 3
+	warp_event 8, 2, TIN_TOWER_2F, 2
 
 	db 0 ; coord events
 

@@ -4,7 +4,7 @@ UragaChannelWest_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 8, 9, 2, SCARY_CAVE_1F
+	warp_event 8, 9, SCARY_CAVE_1F, 2
 
 	db 0 ; coord events
 

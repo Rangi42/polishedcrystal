@@ -4,8 +4,8 @@ BeautifulBeachVilla_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 3, BEAUTIFUL_BEACH
-	warp_event 3, 7, 3, BEAUTIFUL_BEACH
+	warp_event 2, 7, BEAUTIFUL_BEACH, 3
+	warp_event 3, 7, BEAUTIFUL_BEACH, 3
 
 	db 0 ; coord events
 

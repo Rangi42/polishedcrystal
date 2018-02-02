@@ -4,8 +4,8 @@ CharcoalKiln_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, 2, AZALEA_TOWN
-	warp_event 4, 7, 2, AZALEA_TOWN
+	warp_event 3, 7, AZALEA_TOWN, 2
+	warp_event 4, 7, AZALEA_TOWN, 2
 
 	db 0 ; coord events
 

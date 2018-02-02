@@ -4,10 +4,10 @@ CeladonHotel2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 16, 0, 3, CELADON_HOTEL_1F
-	warp_event 4, 0, 1, CELADON_HOTEL_ROOM_1
-	warp_event 8, 0, 1, CELADON_HOTEL_ROOM_2
-	warp_event 12, 0, 1, CELADON_HOTEL_ROOM_3
+	warp_event 16, 0, CELADON_HOTEL_1F, 3
+	warp_event 4, 0, CELADON_HOTEL_ROOM_1, 1
+	warp_event 8, 0, CELADON_HOTEL_ROOM_2, 1
+	warp_event 12, 0, CELADON_HOTEL_ROOM_3, 1
 
 	db 0 ; coord events
 

@@ -4,8 +4,8 @@ EarlsPokemonAcademy_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 15, 3, VIOLET_CITY
-	warp_event 4, 15, 3, VIOLET_CITY
+	warp_event 3, 15, VIOLET_CITY, 3
+	warp_event 4, 15, VIOLET_CITY, 3
 
 	db 0 ; coord events
 

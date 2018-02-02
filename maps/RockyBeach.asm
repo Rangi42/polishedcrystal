@@ -5,9 +5,9 @@ RockyBeach_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, RockyBeachRebattleBreeder
 
 	db 3 ; warp events
-	warp_event 25, 20, 1, ROCKY_BEACH_HOUSE
-	warp_event 29, 10, 1, NOISY_FOREST
-	warp_event 29, 11, 2, NOISY_FOREST
+	warp_event 25, 20, ROCKY_BEACH_HOUSE, 1
+	warp_event 29, 10, NOISY_FOREST, 1
+	warp_event 29, 11, NOISY_FOREST, 2
 
 	db 0 ; coord events
 

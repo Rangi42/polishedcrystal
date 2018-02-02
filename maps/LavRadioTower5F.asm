@@ -4,7 +4,7 @@ LavRadioTower5F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 8, 0, 2, LAV_RADIO_TOWER_4F
+	warp_event 8, 0, LAV_RADIO_TOWER_4F, 2
 
 	db 0 ; coord events
 

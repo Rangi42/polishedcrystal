@@ -4,8 +4,8 @@ KrissNeighborsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 3, NEW_BARK_TOWN
-	warp_event 3, 7, 3, NEW_BARK_TOWN
+	warp_event 2, 7, NEW_BARK_TOWN, 3
+	warp_event 3, 7, NEW_BARK_TOWN, 3
 
 	db 0 ; coord events
 

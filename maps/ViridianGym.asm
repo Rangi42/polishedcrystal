@@ -4,8 +4,8 @@ ViridianGym_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 6, 45, 1, VIRIDIAN_CITY
-	warp_event 7, 45, 1, VIRIDIAN_CITY
+	warp_event 6, 45, VIRIDIAN_CITY, 1
+	warp_event 7, 45, VIRIDIAN_CITY, 1
 
 	db 0 ; coord events
 

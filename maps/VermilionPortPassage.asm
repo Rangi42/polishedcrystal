@@ -4,11 +4,11 @@ VermilionPortPassage_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 3, 22, 8, VERMILION_CITY
-	warp_event 4, 22, 9, VERMILION_CITY
-	warp_event 3, 26, 4, VERMILION_PORT_PASSAGE
-	warp_event 3, 2, 3, VERMILION_PORT_PASSAGE
-	warp_event 3, 14, 1, VERMILION_PORT
+	warp_event 3, 22, VERMILION_CITY, 8
+	warp_event 4, 22, VERMILION_CITY, 9
+	warp_event 3, 26, VERMILION_PORT_PASSAGE, 4
+	warp_event 3, 2, VERMILION_PORT_PASSAGE, 3
+	warp_event 3, 14, VERMILION_PORT, 1
 
 	db 0 ; coord events
 

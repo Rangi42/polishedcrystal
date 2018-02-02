@@ -4,8 +4,8 @@ ScaryCaveB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 5, 19, 3, SCARY_CAVE_1F
-	warp_event 19, 3, 4, SCARY_CAVE_1F
+	warp_event 5, 19, SCARY_CAVE_1F, 3
+	warp_event 19, 3, SCARY_CAVE_1F, 4
 
 	db 0 ; coord events
 

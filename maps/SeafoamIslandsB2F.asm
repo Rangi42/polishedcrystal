@@ -4,14 +4,14 @@ SeafoamIslandsB2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 8 ; warp events
-	warp_event 25, 15, 3, SEAFOAM_ISLANDS_B1F
-	warp_event 15, 7, 4, SEAFOAM_ISLANDS_B1F
-	warp_event 13, 13, 5, SEAFOAM_ISLANDS_B1F
-	warp_event 7, 15, 6, SEAFOAM_ISLANDS_B1F
-	warp_event 35, 7, 1, SEAFOAM_ISLANDS_B3F
-	warp_event 28, 9, 2, SEAFOAM_ISLANDS_B3F
-	warp_event 35, 15, 3, SEAFOAM_ISLANDS_B3F
-	warp_event 4, 13, 4, SEAFOAM_ISLANDS_B3F
+	warp_event 25, 15, SEAFOAM_ISLANDS_B1F, 3
+	warp_event 15, 7, SEAFOAM_ISLANDS_B1F, 4
+	warp_event 13, 13, SEAFOAM_ISLANDS_B1F, 5
+	warp_event 7, 15, SEAFOAM_ISLANDS_B1F, 6
+	warp_event 35, 7, SEAFOAM_ISLANDS_B3F, 1
+	warp_event 28, 9, SEAFOAM_ISLANDS_B3F, 2
+	warp_event 35, 15, SEAFOAM_ISLANDS_B3F, 3
+	warp_event 4, 13, SEAFOAM_ISLANDS_B3F, 4
 
 	db 0 ; coord events
 

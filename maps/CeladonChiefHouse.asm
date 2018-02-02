@@ -4,8 +4,8 @@ CeladonChiefHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 10, CELADON_CITY
-	warp_event 3, 7, 10, CELADON_CITY
+	warp_event 2, 7, CELADON_CITY, 10
+	warp_event 3, 7, CELADON_CITY, 10
 
 	db 0 ; coord events
 

@@ -5,18 +5,18 @@ OlivineCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, OlivineCityFlyPoint
 
 	db 12 ; warp events
-	warp_event 13, 17, 1, OLIVINE_POKECENTER_1F
-	warp_event 10, 7, 1, OLIVINE_GYM
-	warp_event 25, 7, 1, OLIVINE_TIMS_HOUSE
-	warp_event 29, 7, 1, OLIVINE_PUNISHMENT_SPEECH_HOUSE
-	warp_event 13, 11, 1, OLIVINE_GOOD_ROD_HOUSE
-	warp_event 7, 17, 1, OLIVINE_CAFE
-	warp_event 19, 13, 2, OLIVINE_MART
-	warp_event 33, 19, 1, OLIVINE_LIGHTHOUSE_1F
-	warp_event 19, 31, 1, OLIVINE_PORT_PASSAGE
-	warp_event 20, 31, 2, OLIVINE_PORT_PASSAGE
-	warp_event 57, 30, 5, ROUTE_35_NATIONAL_PARK_GATE
-	warp_event 57, 31, 6, ROUTE_35_NATIONAL_PARK_GATE
+	warp_event 13, 17, OLIVINE_POKECENTER_1F, 1
+	warp_event 10, 7, OLIVINE_GYM, 1
+	warp_event 25, 7, OLIVINE_TIMS_HOUSE, 1
+	warp_event 29, 7, OLIVINE_PUNISHMENT_SPEECH_HOUSE, 1
+	warp_event 13, 11, OLIVINE_GOOD_ROD_HOUSE, 1
+	warp_event 7, 17, OLIVINE_CAFE, 1
+	warp_event 19, 13, OLIVINE_MART, 2
+	warp_event 33, 19, OLIVINE_LIGHTHOUSE_1F, 1
+	warp_event 19, 31, OLIVINE_PORT_PASSAGE, 1
+	warp_event 20, 31, OLIVINE_PORT_PASSAGE, 2
+	warp_event 57, 30, ROUTE_35_NATIONAL_PARK_GATE, 5
+	warp_event 57, 31, ROUTE_35_NATIONAL_PARK_GATE, 6
 
 	db 2 ; coord events
 	coord_event 10, 8, 0, OlivineCityRivalGymScript

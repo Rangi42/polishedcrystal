@@ -4,8 +4,8 @@ MahoganyGym_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 17, 3, MAHOGANY_TOWN
-	warp_event 5, 17, 3, MAHOGANY_TOWN
+	warp_event 4, 17, MAHOGANY_TOWN, 3
+	warp_event 5, 17, MAHOGANY_TOWN, 3
 
 	db 0 ; coord events
 

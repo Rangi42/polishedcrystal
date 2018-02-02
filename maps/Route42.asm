@@ -4,11 +4,11 @@ Route42_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 0, 8, 3, ROUTE_42_ECRUTEAK_GATE
-	warp_event 0, 9, 4, ROUTE_42_ECRUTEAK_GATE
-	warp_event 10, 5, 1, MOUNT_MORTAR_1F_OUTSIDE
-	warp_event 28, 9, 2, MOUNT_MORTAR_1F_OUTSIDE
-	warp_event 46, 7, 3, MOUNT_MORTAR_1F_OUTSIDE
+	warp_event 0, 8, ROUTE_42_ECRUTEAK_GATE, 3
+	warp_event 0, 9, ROUTE_42_ECRUTEAK_GATE, 4
+	warp_event 10, 5, MOUNT_MORTAR_1F_OUTSIDE, 1
+	warp_event 28, 9, MOUNT_MORTAR_1F_OUTSIDE, 2
+	warp_event 46, 7, MOUNT_MORTAR_1F_OUTSIDE, 3
 
 	db 6 ; coord events
 	coord_event 12, 6, 1, Route42LyraScript1

@@ -5,11 +5,11 @@ TeamRocketBaseB2F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, TransmitterDoorCallback
 
 	db 5 ; warp events
-	warp_event 3, 14, 2, TEAM_ROCKET_BASE_B1F
-	warp_event 3, 2, 1, TEAM_ROCKET_BASE_B3F
-	warp_event 27, 2, 2, TEAM_ROCKET_BASE_B3F
-	warp_event 3, 6, 3, TEAM_ROCKET_BASE_B3F
-	warp_event 27, 14, 4, TEAM_ROCKET_BASE_B3F
+	warp_event 3, 14, TEAM_ROCKET_BASE_B1F, 2
+	warp_event 3, 2, TEAM_ROCKET_BASE_B3F, 1
+	warp_event 27, 2, TEAM_ROCKET_BASE_B3F, 2
+	warp_event 3, 6, TEAM_ROCKET_BASE_B3F, 3
+	warp_event 27, 14, TEAM_ROCKET_BASE_B3F, 4
 
 	db 9 ; coord events
 	coord_event 5, 14, 0, LanceHealsScript

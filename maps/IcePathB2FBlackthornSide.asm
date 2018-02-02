@@ -4,8 +4,8 @@ IcePathB2FBlackthornSide_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 15, 8, ICE_PATH_B1F
-	warp_event 3, 3, 2, ICE_PATH_B3F
+	warp_event 3, 15, ICE_PATH_B1F, 8
+	warp_event 3, 3, ICE_PATH_B3F, 2
 
 	db 0 ; coord events
 

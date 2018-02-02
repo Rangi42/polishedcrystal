@@ -5,7 +5,7 @@ TinTowerRoof_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, TinTowerRoofHoOh
 
 	db 1 ; warp events
-	warp_event 7, 13, 2, TIN_TOWER_10F
+	warp_event 7, 13, TIN_TOWER_10F, 2
 
 	db 0 ; coord events
 

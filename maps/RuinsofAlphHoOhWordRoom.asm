@@ -4,9 +4,9 @@ RuinsofAlphHoOhWordRoom_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 9, 9, 3, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
-	warp_event 10, 9, 4, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
-	warp_event 17, 21, 2, RUINS_OF_ALPH_INNER_CHAMBER
+	warp_event 9, 9, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, 3
+	warp_event 10, 9, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, 4
+	warp_event 17, 21, RUINS_OF_ALPH_INNER_CHAMBER, 2
 
 	db 0 ; coord events
 

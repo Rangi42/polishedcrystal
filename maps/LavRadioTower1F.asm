@@ -5,9 +5,9 @@ LavRadioTower1F_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, LavRadioTower1FUpstairsScript
 
 	db 3 ; warp events
-	warp_event 2, 7, 7, LAVENDER_TOWN
-	warp_event 3, 7, 7, LAVENDER_TOWN
-	warp_event 15, 0, 255, LAV_RADIO_TOWER_2F
+	warp_event 2, 7, LAVENDER_TOWN, 7
+	warp_event 3, 7, LAVENDER_TOWN, 7
+	warp_event 15, 0, LAV_RADIO_TOWER_2F, 255
 
 	db 0 ; coord events
 

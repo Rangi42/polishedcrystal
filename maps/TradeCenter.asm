@@ -6,8 +6,8 @@ TradeCenter_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, TradeCenter_SetWhichChris
 
 	db 2 ; warp events
-	warp_event 4, 7, 2, POKECENTER_2F
-	warp_event 5, 7, 2, POKECENTER_2F
+	warp_event 4, 7, POKECENTER_2F, 2
+	warp_event 5, 7, POKECENTER_2F, 2
 
 	db 0 ; coord events
 

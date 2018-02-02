@@ -4,8 +4,8 @@ CeladonDevelopmentSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 16, CELADON_CITY
-	warp_event 3, 7, 16, CELADON_CITY
+	warp_event 2, 7, CELADON_CITY, 16
+	warp_event 3, 7, CELADON_CITY, 16
 
 	db 0 ; coord events
 

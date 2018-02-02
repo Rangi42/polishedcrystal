@@ -4,9 +4,9 @@ PokemonMansion1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 27, 3, CINNABAR_ISLAND
-	warp_event 6, 27, 3, CINNABAR_ISLAND
-	warp_event 21, 23, 1, POKEMON_MANSION_B1F
+	warp_event 5, 27, CINNABAR_ISLAND, 3
+	warp_event 6, 27, CINNABAR_ISLAND, 3
+	warp_event 21, 23, POKEMON_MANSION_B1F, 1
 
 	db 0 ; coord events
 

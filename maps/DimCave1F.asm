@@ -4,10 +4,10 @@ DimCave1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 30, 2, 5, DIM_CAVE_2F
-	warp_event 5, 17, 6, DIM_CAVE_2F
-	warp_event 28, 18, 7, DIM_CAVE_2F
-	warp_event 24, 32, 8, DIM_CAVE_2F
+	warp_event 30, 2, DIM_CAVE_2F, 5
+	warp_event 5, 17, DIM_CAVE_2F, 6
+	warp_event 28, 18, DIM_CAVE_2F, 7
+	warp_event 24, 32, DIM_CAVE_2F, 8
 
 	db 0 ; coord events
 

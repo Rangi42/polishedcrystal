@@ -4,8 +4,8 @@ ShamoutiTouristCenter_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 4, SHAMOUTI_ISLAND
-	warp_event 3, 7, 4, SHAMOUTI_ISLAND
+	warp_event 2, 7, SHAMOUTI_ISLAND, 4
+	warp_event 3, 7, SHAMOUTI_ISLAND, 4
 
 	db 0 ; coord events
 

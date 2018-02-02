@@ -4,8 +4,8 @@ PokemonTrainerFanClub_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 9, 16, SAFFRON_CITY
-	warp_event 5, 9, 16, SAFFRON_CITY
+	warp_event 4, 9, SAFFRON_CITY, 16
+	warp_event 5, 9, SAFFRON_CITY, 16
 
 	db 0 ; coord events
 

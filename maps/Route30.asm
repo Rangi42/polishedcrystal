@@ -4,8 +4,8 @@ Route30_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 7, 39, 1, ROUTE_30_BERRY_SPEECH_HOUSE
-	warp_event 17, 5, 1, MR_POKEMONS_HOUSE
+	warp_event 7, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
+	warp_event 17, 5, MR_POKEMONS_HOUSE, 1
 
 	db 0 ; coord events
 

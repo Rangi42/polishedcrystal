@@ -4,8 +4,8 @@ CeladonDeptStore6F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 15, 0, 2, CELADON_DEPT_STORE_5F
-	warp_event 2, 0, 1, CELADON_DEPT_STORE_ELEVATOR
+	warp_event 15, 0, CELADON_DEPT_STORE_5F, 2
+	warp_event 2, 0, CELADON_DEPT_STORE_ELEVATOR, 1
 
 	db 0 ; coord events
 

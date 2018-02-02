@@ -4,9 +4,9 @@ VictoryRoad3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 5, 3, VICTORY_ROAD_2F
-	warp_event 15, 11, 4, VICTORY_ROAD_2F
-	warp_event 19, 13, 5, VICTORY_ROAD_2F
+	warp_event 2, 5, VICTORY_ROAD_2F, 3
+	warp_event 15, 11, VICTORY_ROAD_2F, 4
+	warp_event 19, 13, VICTORY_ROAD_2F, 5
 
 	db 0 ; coord events
 

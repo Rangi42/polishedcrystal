@@ -4,7 +4,7 @@ IceIslandRoof_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 3, 7, 2, ICE_ISLAND
+	warp_event 3, 7, ICE_ISLAND, 2
 
 	db 0 ; coord events
 

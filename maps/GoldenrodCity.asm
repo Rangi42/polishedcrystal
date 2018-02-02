@@ -7,27 +7,27 @@ GoldenrodCity_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutorAndRocketScoutAndGymLass
 
 	db 21 ; warp events
-	warp_event 28, 7, 1, GOLDENROD_GYM
-	warp_event 33, 29, 1, GOLDENROD_BIKE_SHOP
-	warp_event 37, 15, 1, GOLDENROD_HAPPINESS_RATER
-	warp_event 9, 25, 1, GOLDENROD_BILLS_HOUSE
-	warp_event 13, 13, 2, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_event 33, 5, 1, GOLDENROD_FLOWER_SHOP
-	warp_event 37, 9, 1, GOLDENROD_PP_SPEECH_HOUSE
-	warp_event 19, 7, 1, GOLDENROD_NAME_RATER
-	warp_event 28, 27, 1, GOLDENROD_DEPT_STORE_1F
-	warp_event 18, 21, 1, GOLDENROD_GAME_CORNER
-	warp_event 9, 15, 1, RADIO_TOWER_1F ; hole
-	warp_event 23, 1, 3, ROUTE_35_GOLDENROD_GATE
-	warp_event 13, 5, 8, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_event 13, 29, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_event 18, 27, 2, GOLDENROD_POKECOM_CENTER_1F
-	warp_event 4, 16, 3, GOLDENROD_HARBOR_GATE
-	warp_event 4, 17, 4, GOLDENROD_HARBOR_GATE
-	warp_event 30, 15, 1, GOLDENROD_SPEECH_HOUSE ; TODO: museum
-	warp_event 37, 19, 1, GOLDENROD_NET_BALL_HOUSE
-	warp_event 33, 23, 1, GOLDENROD_BAND_HOUSE
-	warp_event 13, 21, 1, GOLDENROD_HP_UP_HOUSE
+	warp_event 28, 7, GOLDENROD_GYM, 1
+	warp_event 33, 29, GOLDENROD_BIKE_SHOP, 1
+	warp_event 37, 15, GOLDENROD_HAPPINESS_RATER, 1
+	warp_event 9, 25, GOLDENROD_BILLS_HOUSE, 1
+	warp_event 13, 13, GOLDENROD_MAGNET_TRAIN_STATION, 2
+	warp_event 33, 5, GOLDENROD_FLOWER_SHOP, 1
+	warp_event 37, 9, GOLDENROD_PP_SPEECH_HOUSE, 1
+	warp_event 19, 7, GOLDENROD_NAME_RATER, 1
+	warp_event 28, 27, GOLDENROD_DEPT_STORE_1F, 1
+	warp_event 18, 21, GOLDENROD_GAME_CORNER, 1
+	warp_event 9, 15, RADIO_TOWER_1F, 1 ; hole
+	warp_event 23, 1, ROUTE_35_GOLDENROD_GATE, 3
+	warp_event 13, 5, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 8
+	warp_event 13, 29, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 5
+	warp_event 18, 27, GOLDENROD_POKECOM_CENTER_1F, 2
+	warp_event 4, 16, GOLDENROD_HARBOR_GATE, 3
+	warp_event 4, 17, GOLDENROD_HARBOR_GATE, 4
+	warp_event 30, 15, GOLDENROD_SPEECH_HOUSE, 1 ; TODO: museum
+	warp_event 37, 19, GOLDENROD_NET_BALL_HOUSE, 1
+	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
+	warp_event 13, 21, GOLDENROD_HP_UP_HOUSE, 1
 
 	db 1 ; coord events
 	coord_event 9, 15, 1, GoldenrodCityPanUpScript

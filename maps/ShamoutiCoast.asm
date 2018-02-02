@@ -4,9 +4,9 @@ ShamoutiCoast_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 22, 15, 1, FIRE_ISLAND
-	warp_event 54, 11, 1, ICE_ISLAND
-	warp_event 84, 13, 1, LIGHTNING_ISLAND
+	warp_event 22, 15, FIRE_ISLAND, 1
+	warp_event 54, 11, ICE_ISLAND, 1
+	warp_event 84, 13, LIGHTNING_ISLAND, 1
 
 	db 0 ; coord events
 

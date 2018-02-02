@@ -5,8 +5,8 @@ ValeriesHouse_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
 	db 2 ; warp events
-	warp_event 3, 7, 12, ECRUTEAK_CITY
-	warp_event 4, 7, 12, ECRUTEAK_CITY
+	warp_event 3, 7, ECRUTEAK_CITY, 12
+	warp_event 4, 7, ECRUTEAK_CITY, 12
 
 	db 0 ; coord events
 

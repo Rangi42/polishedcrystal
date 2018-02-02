@@ -5,8 +5,8 @@ HiddenTreeGrotto_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, HiddenGrottoCallback
 
 	db 2 ; warp events
-	warp_event 4, 15, -1, HIDDEN_TREE_GROTTO
-	warp_event 5, 15, -1, HIDDEN_TREE_GROTTO
+	warp_event 4, 15, HIDDEN_TREE_GROTTO, -1
+	warp_event 5, 15, HIDDEN_TREE_GROTTO, -1
 
 	db 0 ; coord events
 

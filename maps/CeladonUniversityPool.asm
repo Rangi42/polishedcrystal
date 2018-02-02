@@ -4,8 +4,8 @@ CeladonUniversityPool_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 6, 9, 6, CELADON_UNIVERSITY_2F
-	warp_event 7, 9, 6, CELADON_UNIVERSITY_2F
+	warp_event 6, 9, CELADON_UNIVERSITY_2F, 6
+	warp_event 7, 9, CELADON_UNIVERSITY_2F, 6
 
 	db 0 ; coord events
 

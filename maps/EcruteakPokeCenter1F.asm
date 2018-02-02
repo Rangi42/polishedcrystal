@@ -5,9 +5,9 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, 6, ECRUTEAK_CITY
-	warp_event 6, 7, 6, ECRUTEAK_CITY
-	warp_event 0, 7, 1, POKECENTER_2F
+	warp_event 5, 7, ECRUTEAK_CITY, 6
+	warp_event 6, 7, ECRUTEAK_CITY, 6
+	warp_event 0, 7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 

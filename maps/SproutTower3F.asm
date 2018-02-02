@@ -4,7 +4,7 @@ SproutTower3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 8, 14, 4, SPROUT_TOWER_2F
+	warp_event 8, 14, SPROUT_TOWER_2F, 4
 
 	db 1 ; coord events
 	coord_event 9, 9, 0, UnknownScript_0x184947

@@ -5,11 +5,11 @@ CherrygroveCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
 
 	db 5 ; warp events
-	warp_event 23, 3, 2, CHERRYGROVE_MART
-	warp_event 29, 3, 1, CHERRYGROVE_POKECENTER_1F
-	warp_event 17, 7, 1, CHERRYGROVE_GYM_SPEECH_HOUSE
-	warp_event 25, 9, 1, GUIDE_GENTS_HOUSE
-	warp_event 31, 11, 1, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE
+	warp_event 23, 3, CHERRYGROVE_MART, 2
+	warp_event 29, 3, CHERRYGROVE_POKECENTER_1F, 1
+	warp_event 17, 7, CHERRYGROVE_GYM_SPEECH_HOUSE, 1
+	warp_event 25, 9, GUIDE_GENTS_HOUSE, 1
+	warp_event 31, 11, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE, 1
 
 	db 3 ; coord events
 	coord_event 33, 7, 0, CherrygroveGuideGentTrigger

@@ -5,11 +5,11 @@ SeafoamIslands1F_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, SeafoamIslands1FClearRocks
 
 	db 5 ; warp events
-	warp_event 15, 33, 1, ROUTE_20
-	warp_event 15, 31, 1, SEAFOAM_GYM
-	warp_event 12, 28, 1, SEAFOAM_ISLANDS_B1F
-	warp_event 5, 5, 2, ROUTE_20
-	warp_event 5, 3, 2, SEAFOAM_ISLANDS_B1F
+	warp_event 15, 33, ROUTE_20, 1
+	warp_event 15, 31, SEAFOAM_GYM, 1
+	warp_event 12, 28, SEAFOAM_ISLANDS_B1F, 1
+	warp_event 5, 5, ROUTE_20, 2
+	warp_event 5, 3, SEAFOAM_ISLANDS_B1F, 2
 
 	db 0 ; coord events
 

@@ -4,10 +4,10 @@ YellowForestGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 0, 1, YELLOW_FOREST
-	warp_event 5, 0, 2, YELLOW_FOREST
-	warp_event 4, 7, 1, ROUTE_48
-	warp_event 5, 7, 1, ROUTE_48
+	warp_event 4, 0, YELLOW_FOREST, 1
+	warp_event 5, 0, YELLOW_FOREST, 2
+	warp_event 4, 7, ROUTE_48, 1
+	warp_event 5, 7, ROUTE_48, 1
 
 	db 0 ; coord events
 

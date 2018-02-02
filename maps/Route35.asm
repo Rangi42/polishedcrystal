@@ -5,10 +5,10 @@ Route35_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route35RebattleBreeder
 
 	db 4 ; warp events
-	warp_event 13, 33, 1, ROUTE_35_GOLDENROD_GATE
-	warp_event 14, 33, 2, ROUTE_35_GOLDENROD_GATE
-	warp_event 7, 5, 3, ROUTE_35_NATIONAL_PARK_GATE
-	warp_event 14, 16, 1, HIDDEN_TREE_GROTTO
+	warp_event 13, 33, ROUTE_35_GOLDENROD_GATE, 1
+	warp_event 14, 33, ROUTE_35_GOLDENROD_GATE, 2
+	warp_event 7, 5, ROUTE_35_NATIONAL_PARK_GATE, 3
+	warp_event 14, 16, HIDDEN_TREE_GROTTO, 1
 
 	db 0 ; coord events
 

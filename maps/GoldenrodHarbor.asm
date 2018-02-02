@@ -4,8 +4,8 @@ GoldenrodHarbor_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 31, 16, 1, GOLDENROD_HARBOR_GATE
-	warp_event 31, 17, 2, GOLDENROD_HARBOR_GATE
+	warp_event 31, 16, GOLDENROD_HARBOR_GATE, 1
+	warp_event 31, 17, GOLDENROD_HARBOR_GATE, 2
 
 	db 0 ; coord events
 

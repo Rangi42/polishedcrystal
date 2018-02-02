@@ -6,7 +6,7 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 6, 0, 1, BEAUTIFUL_BEACH
+	warp_event 6, 0, BEAUTIFUL_BEACH, 1
 
 	db 0 ; coord events
 

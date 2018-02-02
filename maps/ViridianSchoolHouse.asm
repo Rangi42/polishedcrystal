@@ -4,8 +4,8 @@ ViridianSchoolHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 9, 8, VIRIDIAN_CITY
-	warp_event 3, 9, 8, VIRIDIAN_CITY
+	warp_event 2, 9, VIRIDIAN_CITY, 8
+	warp_event 3, 9, VIRIDIAN_CITY, 8
 
 	db 0 ; coord events
 

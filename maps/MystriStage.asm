@@ -4,8 +4,8 @@ MystriStage_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 6, 17, 1, SINJOH_RUINS
-	warp_event 7, 17, 1, SINJOH_RUINS
+	warp_event 6, 17, SINJOH_RUINS, 1
+	warp_event 7, 17, SINJOH_RUINS, 1
 
 	db 2 ; coord events
 	coord_event 6, 9, 1, MystriStageTrigger1Script

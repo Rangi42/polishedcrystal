@@ -5,11 +5,11 @@ NewBarkTown_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
 
 	db 5 ; warp events
-	warp_event 6, 3, 1, ELMS_LAB
-	warp_event 15, 5, 1, KRISS_HOUSE_1F
-	warp_event 3, 11, 1, KRISS_NEIGHBORS_HOUSE
-	warp_event 11, 13, 1, LYRAS_HOUSE_1F
-	warp_event 10, 2, 2, ELMS_HOUSE
+	warp_event 6, 3, ELMS_LAB, 1
+	warp_event 15, 5, KRISS_HOUSE_1F, 1
+	warp_event 3, 11, KRISS_NEIGHBORS_HOUSE, 1
+	warp_event 11, 13, LYRAS_HOUSE_1F, 1
+	warp_event 10, 2, ELMS_HOUSE, 2
 
 	db 7 ; coord events
 	coord_event 1, 8, 0, NewBarkTown_TeacherStopsYouTrigger1

@@ -4,8 +4,8 @@ SafariZoneHubRestHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 9, SAFARI_ZONE_HUB
-	warp_event 3, 7, 9, SAFARI_ZONE_HUB
+	warp_event 2, 7, SAFARI_ZONE_HUB, 9
+	warp_event 3, 7, SAFARI_ZONE_HUB, 9
 
 	db 0 ; coord events
 

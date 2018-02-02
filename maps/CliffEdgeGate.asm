@@ -4,8 +4,8 @@ CliffEdgeGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 17, 19, 8, CIANWOOD_CITY
-	warp_event 3, 19, 1, ROUTE_47
+	warp_event 17, 19, CIANWOOD_CITY, 8
+	warp_event 3, 19, ROUTE_47, 1
 
 	db 0 ; coord events
 

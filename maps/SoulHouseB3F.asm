@@ -4,7 +4,7 @@ SoulHouseB3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 3, 4, 3, SOUL_HOUSE_B2F
+	warp_event 3, 4, SOUL_HOUSE_B2F, 3
 
 	db 0 ; coord events
 

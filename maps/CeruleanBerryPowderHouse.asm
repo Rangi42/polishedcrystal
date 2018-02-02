@@ -4,8 +4,8 @@ CeruleanBerryPowderHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 9, CERULEAN_CITY
-	warp_event 3, 7, 9, CERULEAN_CITY
+	warp_event 2, 7, CERULEAN_CITY, 9
+	warp_event 3, 7, CERULEAN_CITY, 9
 
 	db 0 ; coord events
 

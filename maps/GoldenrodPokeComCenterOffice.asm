@@ -4,8 +4,8 @@ GoldenrodPokeComCenterOffice_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 0, 7, 3, GOLDENROD_POKECOM_CENTER_1F
-	warp_event 1, 7, 3, GOLDENROD_POKECOM_CENTER_1F
+	warp_event 0, 7, GOLDENROD_POKECOM_CENTER_1F, 3
+	warp_event 1, 7, GOLDENROD_POKECOM_CENTER_1F, 3
 
 	db 0 ; coord events
 

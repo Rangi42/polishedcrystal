@@ -6,7 +6,7 @@ GiovannisCave_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 15, 7, 3, TOHJO_FALLS
+	warp_event 15, 7, TOHJO_FALLS, 3
 
 	db 0 ; coord events
 

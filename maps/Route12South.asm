@@ -4,10 +4,10 @@ Route12South_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 11, 57, 1, ROUTE_12_SUPER_ROD_HOUSE
-	warp_event 0, 42, 3, ROUTE_11_GATE
-	warp_event 0, 43, 4, ROUTE_11_GATE
-	warp_event 10, 1, 3, ROUTE_12_GATE
+	warp_event 11, 57, ROUTE_12_SUPER_ROD_HOUSE, 1
+	warp_event 0, 42, ROUTE_11_GATE, 3
+	warp_event 0, 43, ROUTE_11_GATE, 4
+	warp_event 10, 1, ROUTE_12_GATE, 3
 
 	db 0 ; coord events
 

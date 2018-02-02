@@ -5,7 +5,7 @@ HiddenCaveGrotto_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, HiddenGrottoCallback
 
 	db 1 ; warp events
-	warp_event 35, 85, -1, HIDDEN_CAVE_GROTTO
+	warp_event 35, 85, HIDDEN_CAVE_GROTTO, -1
 
 	db 0 ; coord events
 

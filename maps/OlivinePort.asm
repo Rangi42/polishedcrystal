@@ -6,8 +6,8 @@ OlivinePort_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 11, 7, 5, OLIVINE_PORT_PASSAGE
-	warp_event 7, 23, 1, FAST_SHIP_1F
+	warp_event 11, 7, OLIVINE_PORT_PASSAGE, 5
+	warp_event 7, 23, FAST_SHIP_1F, 1
 
 	db 1 ; coord events
 	coord_event 7, 15, 0, UnknownScript_0x7491f

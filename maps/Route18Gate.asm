@@ -4,11 +4,11 @@ Route18Gate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 0, 5, 1, ROUTE_18_WEST
-	warp_event 0, 6, 2, ROUTE_18_WEST
-	warp_event 9, 5, 1, ROUTE_18_EAST
-	warp_event 9, 6, 2, ROUTE_18_EAST
-	warp_event 8, 8, 1, ROUTE_18_GATE_2F
+	warp_event 0, 5, ROUTE_18_WEST, 1
+	warp_event 0, 6, ROUTE_18_WEST, 2
+	warp_event 9, 5, ROUTE_18_EAST, 1
+	warp_event 9, 6, ROUTE_18_EAST, 2
+	warp_event 8, 8, ROUTE_18_GATE_2F, 1
 
 	db 5 ; coord events
 	coord_event 5, 3, 0, UnknownScript_0x73611

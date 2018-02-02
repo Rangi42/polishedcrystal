@@ -4,7 +4,7 @@ PokemonMansionB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 25, 24, 3, POKEMON_MANSION_1F
+	warp_event 25, 24, POKEMON_MANSION_1F, 3
 
 	db 0 ; coord events
 

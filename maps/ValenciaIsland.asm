@@ -4,9 +4,9 @@ ValenciaIsland_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 18, 19, 1, IVYS_LAB
-	warp_event 5, 19, 1, IVYS_HOUSE
-	warp_event 3, 11, 1, VALENCIA_HOUSE
+	warp_event 18, 19, IVYS_LAB, 1
+	warp_event 5, 19, IVYS_HOUSE, 1
+	warp_event 3, 11, VALENCIA_HOUSE, 1
 
 	db 0 ; coord events
 

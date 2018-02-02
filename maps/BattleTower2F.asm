@@ -4,7 +4,7 @@ BattleTower2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 0, 1, 4, BATTLE_TOWER_1F
+	warp_event 0, 1, BATTLE_TOWER_1F, 4
 
 	db 0 ; coord events
 

@@ -5,23 +5,23 @@ EcruteakCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, EcruteakCityFlyPoint
 
 	db 17 ; warp events
-	warp_event 35, 26, 1, ROUTE_42_ECRUTEAK_GATE
-	warp_event 35, 27, 2, ROUTE_42_ECRUTEAK_GATE
-	warp_event 23, 11, 1, ECRUTEAK_HOUSE
-	warp_event 17, 11, 3, ECRUTEAK_SHRINE_OUTSIDE
-	warp_event 18, 11, 4, ECRUTEAK_SHRINE_OUTSIDE
-	warp_event 23, 27, 1, ECRUTEAK_POKECENTER_1F
-	warp_event 5, 21, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
-	warp_event 23, 21, 1, DANCE_THEATRE
-	warp_event 29, 21, 2, ECRUTEAK_MART
-	warp_event 6, 27, 1, ECRUTEAK_GYM
-	warp_event 13, 27, 1, ECRUTEAK_ITEMFINDER_HOUSE
-	warp_event 5, 17, 1, VALERIES_HOUSE
-	warp_event 5, 5, 1, BURNED_TOWER_1F
-	warp_event 0, 18, 3, ROUTE_38_ECRUTEAK_GATE
-	warp_event 0, 19, 4, ROUTE_38_ECRUTEAK_GATE
-	warp_event 29, 27, 1, ECRUTEAK_CHERISH_BALL_HOUSE
-	warp_event 13, 17, 1, ECRUTEAK_DESTINY_KNOT_HOUSE
+	warp_event 35, 26, ROUTE_42_ECRUTEAK_GATE, 1
+	warp_event 35, 27, ROUTE_42_ECRUTEAK_GATE, 2
+	warp_event 23, 11, ECRUTEAK_HOUSE, 1
+	warp_event 17, 11, ECRUTEAK_SHRINE_OUTSIDE, 3
+	warp_event 18, 11, ECRUTEAK_SHRINE_OUTSIDE, 4
+	warp_event 23, 27, ECRUTEAK_POKECENTER_1F, 1
+	warp_event 5, 21, ECRUTEAK_LUGIA_SPEECH_HOUSE, 1
+	warp_event 23, 21, DANCE_THEATRE, 1
+	warp_event 29, 21, ECRUTEAK_MART, 2
+	warp_event 6, 27, ECRUTEAK_GYM, 1
+	warp_event 13, 27, ECRUTEAK_ITEMFINDER_HOUSE, 1
+	warp_event 5, 17, VALERIES_HOUSE, 1
+	warp_event 5, 5, BURNED_TOWER_1F, 1
+	warp_event 0, 18, ROUTE_38_ECRUTEAK_GATE, 3
+	warp_event 0, 19, ROUTE_38_ECRUTEAK_GATE, 4
+	warp_event 29, 27, ECRUTEAK_CHERISH_BALL_HOUSE, 1
+	warp_event 13, 17, ECRUTEAK_DESTINY_KNOT_HOUSE, 1
 
 	db 0 ; coord events
 

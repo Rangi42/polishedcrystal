@@ -5,9 +5,9 @@ SilphCo1F_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, SilphCo1FMoveOfficerCallback
 
 	db 3 ; warp events
-	warp_event 2, 7, 7, SAFFRON_CITY
-	warp_event 3, 7, 7, SAFFRON_CITY
-	warp_event 13, 0, 1, SILPH_CO_2F
+	warp_event 2, 7, SAFFRON_CITY, 7
+	warp_event 3, 7, SAFFRON_CITY, 7
+	warp_event 13, 0, SILPH_CO_2F, 1
 
 	db 0 ; coord events
 

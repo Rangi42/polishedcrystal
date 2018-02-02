@@ -4,8 +4,8 @@ WhirlIslandSE_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 5, 13, 4, ROUTE_41
-	warp_event 5, 3, 6, WHIRL_ISLAND_B1F
+	warp_event 5, 13, ROUTE_41, 4
+	warp_event 5, 3, WHIRL_ISLAND_B1F, 6
 
 	db 0 ; coord events
 

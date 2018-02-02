@@ -4,8 +4,8 @@ SaffronHitmontopKidHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 19, SAFFRON_CITY
-	warp_event 3, 7, 19, SAFFRON_CITY
+	warp_event 2, 7, SAFFRON_CITY, 19
+	warp_event 3, 7, SAFFRON_CITY, 19
 
 	db 0 ; coord events
 

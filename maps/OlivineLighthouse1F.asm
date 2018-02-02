@@ -4,11 +4,11 @@ OlivineLighthouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 10, 17, 8, OLIVINE_CITY
-	warp_event 11, 17, 8, OLIVINE_CITY
-	warp_event 3, 11, 1, OLIVINE_LIGHTHOUSE_2F
-	warp_event 16, 13, 3, OLIVINE_LIGHTHOUSE_2F
-	warp_event 17, 13, 4, OLIVINE_LIGHTHOUSE_2F
+	warp_event 10, 17, OLIVINE_CITY, 8
+	warp_event 11, 17, OLIVINE_CITY, 8
+	warp_event 3, 11, OLIVINE_LIGHTHOUSE_2F, 1
+	warp_event 16, 13, OLIVINE_LIGHTHOUSE_2F, 3
+	warp_event 17, 13, OLIVINE_LIGHTHOUSE_2F, 4
 
 	db 0 ; coord events
 

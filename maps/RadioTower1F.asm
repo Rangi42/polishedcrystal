@@ -4,9 +4,9 @@ RadioTower1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 7, 11, GOLDENROD_CITY
-	warp_event 3, 7, 11, GOLDENROD_CITY
-	warp_event 15, 0, 2, RADIO_TOWER_2F
+	warp_event 2, 7, GOLDENROD_CITY, 11
+	warp_event 3, 7, GOLDENROD_CITY, 11
+	warp_event 15, 0, RADIO_TOWER_2F, 2
 
 	db 0 ; coord events
 

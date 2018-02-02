@@ -5,7 +5,7 @@ UnionCaveB2F_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnionCaveB2FLapras
 
 	db 1 ; warp events
-	warp_event 5, 3, 2, UNION_CAVE_B1F_SOUTH
+	warp_event 5, 3, UNION_CAVE_B1F_SOUTH, 2
 
 	db 0 ; coord events
 

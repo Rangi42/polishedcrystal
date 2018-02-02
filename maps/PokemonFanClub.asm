@@ -4,8 +4,8 @@ PokemonFanClub_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 3, VERMILION_CITY
-	warp_event 3, 7, 3, VERMILION_CITY
+	warp_event 2, 7, VERMILION_CITY, 3
+	warp_event 3, 7, VERMILION_CITY, 3
 
 	db 0 ; coord events
 

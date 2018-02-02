@@ -6,8 +6,8 @@ YellowForest_MapScriptHeader:
 	callback MAPCALLBACK_TILES, YellowForestTileScript
 
 	db 2 ; warp events
-	warp_event 28, 47, 1, YELLOW_FOREST_GATE
-	warp_event 29, 47, 2, YELLOW_FOREST_GATE
+	warp_event 28, 47, YELLOW_FOREST_GATE, 1
+	warp_event 29, 47, YELLOW_FOREST_GATE, 2
 
 	db 8 ; coord events
 	coord_event 32, 16, 1, YellowForestBridgeOverheadTrigger

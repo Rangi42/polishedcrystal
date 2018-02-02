@@ -4,8 +4,8 @@ PewterNidoranSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 1, PEWTER_CITY
-	warp_event 3, 7, 1, PEWTER_CITY
+	warp_event 2, 7, PEWTER_CITY, 1
+	warp_event 3, 7, PEWTER_CITY, 1
 
 	db 0 ; coord events
 

@@ -4,9 +4,9 @@ LyrasHouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 7, 4, NEW_BARK_TOWN
-	warp_event 3, 7, 4, NEW_BARK_TOWN
-	warp_event 0, 0, 1, LYRAS_HOUSE_2F
+	warp_event 2, 7, NEW_BARK_TOWN, 4
+	warp_event 3, 7, NEW_BARK_TOWN, 4
+	warp_event 0, 0, LYRAS_HOUSE_2F, 1
 
 	db 0 ; coord events
 

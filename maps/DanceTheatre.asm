@@ -4,8 +4,8 @@ DanceTheatre_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 5, 13, 8, ECRUTEAK_CITY
-	warp_event 6, 13, 8, ECRUTEAK_CITY
+	warp_event 5, 13, ECRUTEAK_CITY, 8
+	warp_event 6, 13, ECRUTEAK_CITY, 8
 
 	db 0 ; coord events
 

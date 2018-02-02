@@ -5,9 +5,9 @@ UndergroundWarehouse_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, UndergroundWarehouseResetSwitches
 
 	db 3 ; warp events
-	warp_event 2, 12, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_event 3, 12, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_event 17, 2, 1, GOLDENROD_DEPT_STORE_B1F
+	warp_event 2, 12, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 2
+	warp_event 3, 12, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 3
+	warp_event 17, 2, GOLDENROD_DEPT_STORE_B1F, 1
 
 	db 0 ; coord events
 

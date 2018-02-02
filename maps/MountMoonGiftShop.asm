@@ -4,8 +4,8 @@ MountMoonGiftShop_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, 2, MOUNT_MOON_SQUARE
-	warp_event 4, 7, 2, MOUNT_MOON_SQUARE
+	warp_event 3, 7, MOUNT_MOON_SQUARE, 2
+	warp_event 4, 7, MOUNT_MOON_SQUARE, 2
 
 	db 0 ; coord events
 

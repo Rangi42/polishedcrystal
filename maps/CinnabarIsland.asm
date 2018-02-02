@@ -5,9 +5,9 @@ CinnabarIsland_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, CinnabarIslandFlyPoint
 
 	db 3 ; warp events
-	warp_event 11, 15, 1, CINNABAR_POKECENTER_1F
-	warp_event 18, 9, 1, CINNABAR_VOLCANO_1F
-	warp_event 7, 7, 1, POKEMON_MANSION_1F
+	warp_event 11, 15, CINNABAR_POKECENTER_1F, 1
+	warp_event 18, 9, CINNABAR_VOLCANO_1F, 1
+	warp_event 7, 7, POKEMON_MANSION_1F, 1
 
 	db 0 ; coord events
 

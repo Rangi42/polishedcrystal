@@ -4,10 +4,10 @@ Route1ViridianGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 0, 6, VIRIDIAN_CITY
-	warp_event 5, 0, 7, VIRIDIAN_CITY
-	warp_event 4, 7, 1, ROUTE_1
-	warp_event 5, 7, 1, ROUTE_1
+	warp_event 4, 0, VIRIDIAN_CITY, 6
+	warp_event 5, 0, VIRIDIAN_CITY, 7
+	warp_event 4, 7, ROUTE_1, 1
+	warp_event 5, 7, ROUTE_1, 1
 
 	db 0 ; coord events
 

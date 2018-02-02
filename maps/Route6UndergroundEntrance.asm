@@ -4,9 +4,9 @@ Route6UndergroundEntrance_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 3, 7, 1, ROUTE_6
-	warp_event 4, 7, 1, ROUTE_6
-	warp_event 4, 4, 2, UNDERGROUND
+	warp_event 3, 7, ROUTE_6, 1
+	warp_event 4, 7, ROUTE_6, 1
+	warp_event 4, 4, UNDERGROUND, 2
 
 	db 0 ; coord events
 

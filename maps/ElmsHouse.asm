@@ -4,8 +4,8 @@ ElmsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 7, 4, 5, NEW_BARK_TOWN
-	warp_event 7, 5, 5, NEW_BARK_TOWN
+	warp_event 7, 4, NEW_BARK_TOWN, 5
+	warp_event 7, 5, NEW_BARK_TOWN, 5
 
 	db 0 ; coord events
 

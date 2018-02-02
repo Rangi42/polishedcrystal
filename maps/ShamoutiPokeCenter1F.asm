@@ -5,9 +5,9 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
 	db 3 ; warp events
-	warp_event 5, 7, 1, SHAMOUTI_ISLAND
-	warp_event 6, 7, 1, SHAMOUTI_ISLAND
-	warp_event 0, 7, 1, POKECENTER_2F
+	warp_event 5, 7, SHAMOUTI_ISLAND, 1
+	warp_event 6, 7, SHAMOUTI_ISLAND, 1
+	warp_event 0, 7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 

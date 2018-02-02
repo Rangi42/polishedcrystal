@@ -5,10 +5,10 @@ IndigoPlateauPokeCenter1F_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
 
 	db 4 ; warp events
-	warp_event 9, 13, 1, INDIGO_PLATEAU
-	warp_event 10, 13, 2, INDIGO_PLATEAU
-	warp_event 0, 13, 1, POKECENTER_2F
-	warp_event 12, 3, 1, WILLS_ROOM
+	warp_event 9, 13, INDIGO_PLATEAU, 1
+	warp_event 10, 13, INDIGO_PLATEAU, 2
+	warp_event 0, 13, POKECENTER_2F, 1
+	warp_event 12, 3, WILLS_ROOM, 1
 
 	db 2 ; coord events
 	coord_event 14, 4, 0, PlateauRivalBattleTrigger1

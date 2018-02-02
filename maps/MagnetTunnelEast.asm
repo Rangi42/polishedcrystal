@@ -4,7 +4,7 @@ MagnetTunnelEast_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 8, 7, 2, MAGNET_TUNNEL_INSIDE
+	warp_event 8, 7, MAGNET_TUNNEL_INSIDE, 2
 
 	db 0 ; coord events
 

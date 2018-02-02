@@ -4,10 +4,10 @@ Route2Gate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 0, 2, ROUTE_2_NORTH
-	warp_event 5, 0, 3, ROUTE_2_NORTH
-	warp_event 4, 7, 1, ROUTE_2_SOUTH
-	warp_event 5, 7, 1, ROUTE_2_SOUTH
+	warp_event 4, 0, ROUTE_2_NORTH, 2
+	warp_event 5, 0, ROUTE_2_NORTH, 3
+	warp_event 4, 7, ROUTE_2_SOUTH, 1
+	warp_event 5, 7, ROUTE_2_SOUTH, 1
 
 	db 0 ; coord events
 

@@ -4,10 +4,10 @@ SafariZoneFuchsiaGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 0, 1, SAFARI_ZONE_HUB
-	warp_event 5, 0, 2, SAFARI_ZONE_HUB
-	warp_event 4, 7, 6, FUCHSIA_CITY
-	warp_event 5, 7, 6, FUCHSIA_CITY
+	warp_event 4, 0, SAFARI_ZONE_HUB, 1
+	warp_event 5, 0, SAFARI_ZONE_HUB, 2
+	warp_event 4, 7, FUCHSIA_CITY, 6
+	warp_event 5, 7, FUCHSIA_CITY, 6
 
 	db 0 ; coord events
 

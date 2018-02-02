@@ -4,8 +4,8 @@ FarawayJungle_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 12, 18, 1, FARAWAY_ISLAND
-	warp_event 13, 18, 2, FARAWAY_ISLAND
+	warp_event 12, 18, FARAWAY_ISLAND, 1
+	warp_event 13, 18, FARAWAY_ISLAND, 2
 
 	db 0 ; coord events
 

@@ -5,17 +5,17 @@ CeruleanCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
 
 	db 11 ; warp events
-	warp_event 7, 11, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
-	warp_event 28, 13, 1, CERULEAN_POLICE_STATION
-	warp_event 13, 15, 1, CERULEAN_TRADE_SPEECH_HOUSE
-	warp_event 19, 17, 1, CERULEAN_POKECENTER_1F
-	warp_event 30, 19, 1, CERULEAN_GYM
-	warp_event 25, 25, 2, CERULEAN_MART
-	warp_event 2, 9, 1, CERULEAN_CAVE_1F
-	warp_event 14, 25, 1, CERULEAN_BIKE_SHOP
-	warp_event 15, 11, 1, CERULEAN_BERRY_POWDER_HOUSE
-	warp_event 19, 25, 1, CERULEAN_COUPLE_HOUSE
-	warp_event 29, 5, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
+	warp_event 7, 11, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
+	warp_event 28, 13, CERULEAN_POLICE_STATION, 1
+	warp_event 13, 15, CERULEAN_TRADE_SPEECH_HOUSE, 1
+	warp_event 19, 17, CERULEAN_POKECENTER_1F, 1
+	warp_event 30, 19, CERULEAN_GYM, 1
+	warp_event 25, 25, CERULEAN_MART, 2
+	warp_event 2, 9, CERULEAN_CAVE_1F, 1
+	warp_event 14, 25, CERULEAN_BIKE_SHOP, 1
+	warp_event 15, 11, CERULEAN_BERRY_POWDER_HOUSE, 1
+	warp_event 19, 25, CERULEAN_COUPLE_HOUSE, 1
+	warp_event 29, 5, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	db 0 ; coord events
 

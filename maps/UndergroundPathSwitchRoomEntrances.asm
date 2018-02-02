@@ -5,15 +5,15 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	callback MAPCALLBACK_TILES, UndergroundPathSwitchRoomEntrancesUpdateDoorPositions
 
 	db 9 ; warp events
-	warp_event 23, 3, 6, WAREHOUSE_ENTRANCE
-	warp_event 22, 10, 1, UNDERGROUND_WAREHOUSE
-	warp_event 23, 10, 2, UNDERGROUND_WAREHOUSE
-	warp_event 5, 23, 2, WAREHOUSE_ENTRANCE
-	warp_event 4, 27, 14, GOLDENROD_CITY
-	warp_event 5, 27, 14, GOLDENROD_CITY
-	warp_event 21, 23, 1, WAREHOUSE_ENTRANCE
-	warp_event 20, 27, 13, GOLDENROD_CITY
-	warp_event 21, 27, 13, GOLDENROD_CITY
+	warp_event 23, 3, WAREHOUSE_ENTRANCE, 6
+	warp_event 22, 10, UNDERGROUND_WAREHOUSE, 1
+	warp_event 23, 10, UNDERGROUND_WAREHOUSE, 2
+	warp_event 5, 23, WAREHOUSE_ENTRANCE, 2
+	warp_event 4, 27, GOLDENROD_CITY, 14
+	warp_event 5, 27, GOLDENROD_CITY, 14
+	warp_event 21, 23, WAREHOUSE_ENTRANCE, 1
+	warp_event 20, 27, GOLDENROD_CITY, 13
+	warp_event 21, 27, GOLDENROD_CITY, 13
 
 	db 2 ; coord events
 	coord_event 19, 4, 0, UndergroundSilverTrigger1

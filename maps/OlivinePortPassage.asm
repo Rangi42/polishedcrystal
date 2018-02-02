@@ -4,11 +4,11 @@ OlivinePortPassage_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 3, 22, 9, OLIVINE_CITY
-	warp_event 4, 22, 10, OLIVINE_CITY
-	warp_event 3, 26, 4, OLIVINE_PORT_PASSAGE
-	warp_event 3, 2, 3, OLIVINE_PORT_PASSAGE
-	warp_event 3, 14, 1, OLIVINE_PORT
+	warp_event 3, 22, OLIVINE_CITY, 9
+	warp_event 4, 22, OLIVINE_CITY, 10
+	warp_event 3, 26, OLIVINE_PORT_PASSAGE, 4
+	warp_event 3, 2, OLIVINE_PORT_PASSAGE, 3
+	warp_event 3, 14, OLIVINE_PORT, 1
 
 	db 0 ; coord events
 

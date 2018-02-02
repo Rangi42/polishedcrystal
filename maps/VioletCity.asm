@@ -5,17 +5,17 @@ VioletCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, VioletCityFlyPoint
 
 	db 11 ; warp events
-	warp_event 9, 21, 2, VIOLET_MART
-	warp_event 18, 21, 1, VIOLET_GYM
-	warp_event 30, 21, 1, EARLS_POKEMON_ACADEMY
-	warp_event 3, 19, 1, VIOLET_NICKNAME_SPEECH_HOUSE
-	warp_event 31, 29, 1, VIOLET_POKECENTER_1F
-	warp_event 21, 33, 1, VIOLET_ONIX_TRADE_HOUSE
-	warp_event 23, 5, 1, SPROUT_TOWER_1F
-	warp_event 39, 28, 1, ROUTE_31_VIOLET_GATE
-	warp_event 39, 29, 2, ROUTE_31_VIOLET_GATE
-	warp_event 2, 12, 3, ROUTE_36_VIOLET_GATE
-	warp_event 2, 13, 4, ROUTE_36_VIOLET_GATE
+	warp_event 9, 21, VIOLET_MART, 2
+	warp_event 18, 21, VIOLET_GYM, 1
+	warp_event 30, 21, EARLS_POKEMON_ACADEMY, 1
+	warp_event 3, 19, VIOLET_NICKNAME_SPEECH_HOUSE, 1
+	warp_event 31, 29, VIOLET_POKECENTER_1F, 1
+	warp_event 21, 33, VIOLET_ONIX_TRADE_HOUSE, 1
+	warp_event 23, 5, SPROUT_TOWER_1F, 1
+	warp_event 39, 28, ROUTE_31_VIOLET_GATE, 1
+	warp_event 39, 29, ROUTE_31_VIOLET_GATE, 2
+	warp_event 2, 12, ROUTE_36_VIOLET_GATE, 3
+	warp_event 2, 13, ROUTE_36_VIOLET_GATE, 4
 
 	db 0 ; coord events
 

@@ -8,9 +8,9 @@ PokeCenter2F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, PokeCenter2FTileCallback
 
 	db 3 ; warp events
-	warp_event 0, 7, -1, POKECENTER_2F
-	warp_event 5, 0, 1, TRADE_CENTER
-	warp_event 9, 0, 1, COLOSSEUM
+	warp_event 0, 7, POKECENTER_2F, -1
+	warp_event 5, 0, TRADE_CENTER, 1
+	warp_event 9, 0, COLOSSEUM, 1
 
 	db 0 ; coord events
 

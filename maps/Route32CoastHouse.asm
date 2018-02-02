@@ -4,8 +4,8 @@ Route32CoastHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 2, ROUTE_32_COAST
-	warp_event 3, 7, 2, ROUTE_32_COAST
+	warp_event 2, 7, ROUTE_32_COAST, 2
+	warp_event 3, 7, ROUTE_32_COAST, 2
 
 	db 0 ; coord events
 

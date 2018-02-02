@@ -4,7 +4,7 @@ FireIslandRoof_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 3, 7, 2, FIRE_ISLAND
+	warp_event 3, 7, FIRE_ISLAND, 2
 
 	db 0 ; coord events
 

@@ -6,18 +6,18 @@ FastShip1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 12 ; warp events
-	warp_event 25, 1, -1, FAST_SHIP_1F
-	warp_event 27, 8, 1, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_event 23, 8, 2, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_event 19, 8, 3, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_event 15, 8, 1, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_event 15, 15, 2, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_event 19, 15, 4, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_event 23, 15, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_event 27, 15, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_event 3, 15, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_event 6, 14, 1, FAST_SHIP_B1F
-	warp_event 30, 14, 2, FAST_SHIP_B1F
+	warp_event 25, 1, FAST_SHIP_1F, -1
+	warp_event 27, 8, FAST_SHIP_CABINS_NNW_NNE_NE, 1
+	warp_event 23, 8, FAST_SHIP_CABINS_NNW_NNE_NE, 2
+	warp_event 19, 8, FAST_SHIP_CABINS_NNW_NNE_NE, 3
+	warp_event 15, 8, FAST_SHIP_CABINS_SW_SSW_NW, 1
+	warp_event 15, 15, FAST_SHIP_CABINS_SW_SSW_NW, 2
+	warp_event 19, 15, FAST_SHIP_CABINS_SW_SSW_NW, 4
+	warp_event 23, 15, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, 1
+	warp_event 27, 15, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, 3
+	warp_event 3, 15, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, 5
+	warp_event 6, 14, FAST_SHIP_B1F, 1
+	warp_event 30, 14, FAST_SHIP_B1F, 2
 
 	db 2 ; coord events
 	coord_event 24, 6, 2, WorriedGrandpaTriggerLeft

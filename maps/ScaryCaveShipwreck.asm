@@ -4,7 +4,7 @@ ScaryCaveShipwreck_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 5, 9, 5, SCARY_CAVE_1F
+	warp_event 5, 9, SCARY_CAVE_1F, 5
 
 	db 0 ; coord events
 

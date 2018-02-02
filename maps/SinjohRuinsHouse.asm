@@ -4,8 +4,8 @@ SinjohRuinsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 2, SINJOH_RUINS
-	warp_event 3, 7, 2, SINJOH_RUINS
+	warp_event 2, 7, SINJOH_RUINS, 2
+	warp_event 3, 7, SINJOH_RUINS, 2
 
 	db 0 ; coord events
 

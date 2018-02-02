@@ -4,8 +4,8 @@ PsychicInversHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 1, ROUTE_16_WEST
-	warp_event 3, 7, 1, ROUTE_16_WEST
+	warp_event 2, 7, ROUTE_16_WEST, 1
+	warp_event 3, 7, ROUTE_16_WEST, 1
 
 	db 0 ; coord events
 

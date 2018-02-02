@@ -4,8 +4,8 @@ Underground_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 2, 3, ROUTE_5_UNDERGROUND_ENTRANCE
-	warp_event 3, 32, 3, ROUTE_6_UNDERGROUND_ENTRANCE
+	warp_event 3, 2, ROUTE_5_UNDERGROUND_ENTRANCE, 3
+	warp_event 3, 32, ROUTE_6_UNDERGROUND_ENTRANCE, 3
 
 	db 0 ; coord events
 

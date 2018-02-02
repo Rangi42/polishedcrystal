@@ -4,9 +4,9 @@ FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 0, 2, FAST_SHIP_1F
-	warp_event 2, 12, 3, FAST_SHIP_1F
-	warp_event 2, 24, 4, FAST_SHIP_1F
+	warp_event 2, 0, FAST_SHIP_1F, 2
+	warp_event 2, 12, FAST_SHIP_1F, 3
+	warp_event 2, 24, FAST_SHIP_1F, 4
 
 	db 0 ; coord events
 

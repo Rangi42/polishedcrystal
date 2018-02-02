@@ -4,7 +4,7 @@ Route45_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 4, 5, 1, DARK_CAVE_BLACKTHORN_ENTRANCE
+	warp_event 4, 5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
 
 	db 0 ; coord events
 

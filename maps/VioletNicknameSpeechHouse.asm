@@ -4,8 +4,8 @@ VioletNicknameSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, 4, VIOLET_CITY
-	warp_event 4, 7, 4, VIOLET_CITY
+	warp_event 3, 7, VIOLET_CITY, 4
+	warp_event 4, 7, VIOLET_CITY, 4
 
 	db 0 ; coord events
 

@@ -5,10 +5,10 @@ MountMoon1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 11, 23, 1, ROUTE_3
-	warp_event 22, 12, 1, MOUNT_MOON_B1F
-	warp_event 11, 9, 2, MOUNT_MOON_B1F
-	warp_event 4, 4, 3, MOUNT_MOON_B1F
+	warp_event 11, 23, ROUTE_3, 1
+	warp_event 22, 12, MOUNT_MOON_B1F, 1
+	warp_event 11, 9, MOUNT_MOON_B1F, 2
+	warp_event 4, 4, MOUNT_MOON_B1F, 3
 
 	db 0 ; coord events
 

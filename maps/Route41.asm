@@ -4,10 +4,10 @@ Route41_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 13, 17, 1, WHIRL_ISLAND_NW
-	warp_event 37, 19, 1, WHIRL_ISLAND_NE
-	warp_event 13, 37, 1, WHIRL_ISLAND_SW
-	warp_event 37, 45, 1, WHIRL_ISLAND_SE
+	warp_event 13, 17, WHIRL_ISLAND_NW, 1
+	warp_event 37, 19, WHIRL_ISLAND_NE, 1
+	warp_event 13, 37, WHIRL_ISLAND_SW, 1
+	warp_event 37, 45, WHIRL_ISLAND_SE, 1
 
 	db 0 ; coord events
 

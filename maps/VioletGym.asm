@@ -5,8 +5,8 @@ VioletGym_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 15, 2, VIOLET_CITY
-	warp_event 5, 15, 2, VIOLET_CITY
+	warp_event 4, 15, VIOLET_CITY, 2
+	warp_event 5, 15, VIOLET_CITY, 2
 
 	db 0 ; coord events
 

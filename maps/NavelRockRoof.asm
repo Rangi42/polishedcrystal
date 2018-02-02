@@ -5,7 +5,7 @@ NavelRockRoof_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
 
 	db 1 ; warp events
-	warp_event 9, 15, 14, NAVEL_ROCK_INSIDE
+	warp_event 9, 15, NAVEL_ROCK_INSIDE, 14
 
 	db 0 ; coord events
 

@@ -4,10 +4,10 @@ Route2946Gate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 0, 1, ROUTE_46
-	warp_event 5, 0, 2, ROUTE_46
-	warp_event 4, 7, 1, ROUTE_29
-	warp_event 5, 7, 1, ROUTE_29
+	warp_event 4, 0, ROUTE_46, 1
+	warp_event 5, 0, ROUTE_46, 2
+	warp_event 4, 7, ROUTE_29, 1
+	warp_event 5, 7, ROUTE_29, 1
 
 	db 0 ; coord events
 

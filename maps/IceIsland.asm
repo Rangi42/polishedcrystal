@@ -4,12 +4,12 @@ IceIsland_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 6 ; warp events
-	warp_event 6, 29, 2, SHAMOUTI_COAST
-	warp_event 20, 29, 1, ICE_ISLAND_ROOF
-	warp_event 7, 5, 4, ICE_ISLAND
-	warp_event 21, 5, 3, ICE_ISLAND
-	warp_event 21, 26, 6, ICE_ISLAND
-	warp_event 7, 26, 5, ICE_ISLAND ; hole
+	warp_event 6, 29, SHAMOUTI_COAST, 2
+	warp_event 20, 29, ICE_ISLAND_ROOF, 1
+	warp_event 7, 5, ICE_ISLAND, 4
+	warp_event 21, 5, ICE_ISLAND, 3
+	warp_event 21, 26, ICE_ISLAND, 6
+	warp_event 7, 26, ICE_ISLAND, 5 ; hole
 
 	db 0 ; coord events
 

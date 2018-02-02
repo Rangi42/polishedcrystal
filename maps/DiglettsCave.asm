@@ -4,12 +4,12 @@ DiglettsCave_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 6 ; warp events
-	warp_event 37, 15, 10, VERMILION_CITY
-	warp_event 39, 13, 5, DIGLETTS_CAVE
-	warp_event 37, 5, 4, ROUTE_2_NORTH
-	warp_event 39, 3, 6, DIGLETTS_CAVE
-	warp_event 37, 31, 2, DIGLETTS_CAVE
-	warp_event 5, 5, 4, DIGLETTS_CAVE
+	warp_event 37, 15, VERMILION_CITY, 10
+	warp_event 39, 13, DIGLETTS_CAVE, 5
+	warp_event 37, 5, ROUTE_2_NORTH, 4
+	warp_event 39, 3, DIGLETTS_CAVE, 6
+	warp_event 37, 31, DIGLETTS_CAVE, 2
+	warp_event 5, 5, DIGLETTS_CAVE, 4
 
 	db 0 ; coord events
 

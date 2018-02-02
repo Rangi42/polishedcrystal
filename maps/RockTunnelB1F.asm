@@ -4,11 +4,11 @@ RockTunnelB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 3, 3, 3, ROCK_TUNNEL_1F
-	warp_event 17, 9, 4, ROCK_TUNNEL_1F
-	warp_event 23, 3, 5, ROCK_TUNNEL_1F
-	warp_event 27, 19, 6, ROCK_TUNNEL_1F
-	warp_event 3, 13, 7, ROCK_TUNNEL_1F
+	warp_event 3, 3, ROCK_TUNNEL_1F, 3
+	warp_event 17, 9, ROCK_TUNNEL_1F, 4
+	warp_event 23, 3, ROCK_TUNNEL_1F, 5
+	warp_event 27, 19, ROCK_TUNNEL_1F, 6
+	warp_event 3, 13, ROCK_TUNNEL_1F, 7
 
 	db 0 ; coord events
 

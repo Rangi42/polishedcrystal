@@ -5,8 +5,8 @@ MagnetTunnelInside_MapScriptHeader:
 	callback MAPCALLBACK_TILES, MagnetTunnelInsideTileCallback
 
 	db 2 ; warp events
-	warp_event 5, 19, 1, MAGNET_TUNNEL_WEST
-	warp_event 43, 3, 1, MAGNET_TUNNEL_EAST
+	warp_event 5, 19, MAGNET_TUNNEL_WEST, 1
+	warp_event 43, 3, MAGNET_TUNNEL_EAST, 1
 
 	db 0 ; coord events
 

@@ -4,8 +4,8 @@ RadioTower5F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 0, 0, 1, RADIO_TOWER_4F
-	warp_event 12, 0, 3, RADIO_TOWER_4F
+	warp_event 0, 0, RADIO_TOWER_4F, 1
+	warp_event 12, 0, RADIO_TOWER_4F, 3
 
 	db 2 ; coord events
 	coord_event 0, 3, 0, FakeDirectorScript

@@ -4,11 +4,11 @@ VictoryRoad2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 25, 9, 4, ROUTE_23
-	warp_event 3, 11, 2, VICTORY_ROAD_1F
-	warp_event 3, 4, 1, VICTORY_ROAD_3F
-	warp_event 15, 7, 2, VICTORY_ROAD_3F
-	warp_event 19, 9, 3, VICTORY_ROAD_3F
+	warp_event 25, 9, ROUTE_23, 4
+	warp_event 3, 11, VICTORY_ROAD_1F, 2
+	warp_event 3, 4, VICTORY_ROAD_3F, 1
+	warp_event 15, 7, VICTORY_ROAD_3F, 2
+	warp_event 19, 9, VICTORY_ROAD_3F, 3
 
 	db 1 ; coord events
 	coord_event 25, 9, 0, UnknownScript_0x74492

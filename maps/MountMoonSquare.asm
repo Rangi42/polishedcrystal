@@ -6,8 +6,8 @@ MountMoonSquare_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x77097
 
 	db 2 ; warp events
-	warp_event 21, 11, 2, ROUTE_4
-	warp_event 13, 7, 1, MOUNT_MOON_GIFT_SHOP
+	warp_event 21, 11, ROUTE_4, 2
+	warp_event 13, 7, MOUNT_MOON_GIFT_SHOP, 1
 
 	db 1 ; coord events
 	coord_event 7, 11, 0, ClefairyDance

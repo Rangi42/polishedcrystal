@@ -4,8 +4,8 @@ Route4_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 7, 8, MOUNT_MOON_B1F
-	warp_event 19, 5, 1, MOUNT_MOON_SQUARE
+	warp_event 4, 7, MOUNT_MOON_B1F, 8
+	warp_event 19, 5, MOUNT_MOON_SQUARE, 1
 
 	db 0 ; coord events
 

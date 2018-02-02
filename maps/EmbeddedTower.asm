@@ -4,8 +4,8 @@ EmbeddedTower_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 10, 23, 6, ROUTE_47
-	warp_event 11, 23, 6, ROUTE_47
+	warp_event 10, 23, ROUTE_47, 6
+	warp_event 11, 23, ROUTE_47, 6
 
 	db 0 ; coord events
 

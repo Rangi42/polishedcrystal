@@ -6,11 +6,11 @@ RuinsofAlphHoOhChamber_MapScriptHeader:
 	callback MAPCALLBACK_TILES, UnknownScript_0x5857c
 
 	db 5 ; warp events
-	warp_event 3, 9, 1, RUINS_OF_ALPH_OUTSIDE
-	warp_event 4, 9, 1, RUINS_OF_ALPH_OUTSIDE
-	warp_event 3, 3, 2, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_event 4, 3, 3, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_event 4, 0, 1, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
+	warp_event 3, 9, RUINS_OF_ALPH_OUTSIDE, 1
+	warp_event 4, 9, RUINS_OF_ALPH_OUTSIDE, 1
+	warp_event 3, 3, RUINS_OF_ALPH_INNER_CHAMBER, 2
+	warp_event 4, 3, RUINS_OF_ALPH_INNER_CHAMBER, 3
+	warp_event 4, 0, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, 1
 
 	db 0 ; coord events
 

@@ -5,9 +5,9 @@ Route31_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, Route31CheckMomCall
 
 	db 3 ; warp events
-	warp_event 4, 6, 3, ROUTE_31_VIOLET_GATE
-	warp_event 4, 7, 4, ROUTE_31_VIOLET_GATE
-	warp_event 34, 5, 1, DARK_CAVE_VIOLET_ENTRANCE
+	warp_event 4, 6, ROUTE_31_VIOLET_GATE, 3
+	warp_event 4, 7, ROUTE_31_VIOLET_GATE, 4
+	warp_event 34, 5, DARK_CAVE_VIOLET_ENTRANCE, 1
 
 	db 0 ; coord events
 

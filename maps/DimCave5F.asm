@@ -5,10 +5,10 @@ DimCave5F_MapScriptHeader:
 	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
 	db 4 ; warp events
-	warp_event 13, 31, 5, ROUTE_10_NORTH
-	warp_event 2, 16, 1, DIM_CAVE_4F
-	warp_event 27, 29, 2, DIM_CAVE_4F
-	warp_event 28, 25, 3, DIM_CAVE_4F
+	warp_event 13, 31, ROUTE_10_NORTH, 5
+	warp_event 2, 16, DIM_CAVE_4F, 1
+	warp_event 27, 29, DIM_CAVE_4F, 2
+	warp_event 28, 25, DIM_CAVE_4F, 3
 
 	db 0 ; coord events
 

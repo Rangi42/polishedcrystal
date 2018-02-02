@@ -4,7 +4,7 @@ SeafoamGym_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 12, 20, 2, SEAFOAM_ISLANDS_1F
+	warp_event 12, 20, SEAFOAM_ISLANDS_1F, 2
 
 	db 0 ; coord events
 

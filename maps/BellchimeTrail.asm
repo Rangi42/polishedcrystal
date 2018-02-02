@@ -6,9 +6,9 @@ BellchimeTrail_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
 
 	db 3 ; warp events
-	warp_event 4, 4, 1, WISE_TRIOS_ROOM
-	warp_event 4, 5, 2, WISE_TRIOS_ROOM
-	warp_event 21, 9, 1, TIN_TOWER_1F ; hole
+	warp_event 4, 4, WISE_TRIOS_ROOM, 1
+	warp_event 4, 5, WISE_TRIOS_ROOM, 2
+	warp_event 21, 9, TIN_TOWER_1F, 1 ; hole
 
 	db 1 ; coord events
 	coord_event 21, 9, 1, BellchimeTrailPanUpTrigger

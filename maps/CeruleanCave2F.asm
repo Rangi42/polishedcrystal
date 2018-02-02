@@ -4,12 +4,12 @@ CeruleanCave2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 6 ; warp events
-	warp_event 11, 3, 2, CERULEAN_CAVE_1F
-	warp_event 31, 3, 3, CERULEAN_CAVE_1F
-	warp_event 3, 5, 4, CERULEAN_CAVE_1F
-	warp_event 24, 8, 6, CERULEAN_CAVE_1F
-	warp_event 21, 9, 7, CERULEAN_CAVE_1F
-	warp_event 5, 13, 8, CERULEAN_CAVE_1F
+	warp_event 11, 3, CERULEAN_CAVE_1F, 2
+	warp_event 31, 3, CERULEAN_CAVE_1F, 3
+	warp_event 3, 5, CERULEAN_CAVE_1F, 4
+	warp_event 24, 8, CERULEAN_CAVE_1F, 6
+	warp_event 21, 9, CERULEAN_CAVE_1F, 7
+	warp_event 5, 13, CERULEAN_CAVE_1F, 8
 
 	db 0 ; coord events
 

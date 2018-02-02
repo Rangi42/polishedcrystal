@@ -5,14 +5,14 @@ CianwoodCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, CianwoodCityFlyPointAndSuicune
 
 	db 8 ; warp events
-	warp_event 17, 41, 1, MANIAS_HOUSE
-	warp_event 8, 43, 1, CIANWOOD_GYM
-	warp_event 23, 43, 1, CIANWOOD_POKECENTER_1F
-	warp_event 15, 47, 1, CIANWOOD_PHARMACY
-	warp_event 9, 31, 1, CIANWOOD_CITY_PHOTO_STUDIO
-	warp_event 15, 37, 1, CIANWOOD_LUGIA_SPEECH_HOUSE
-	warp_event 5, 17, 1, STATS_JUDGES_HOUSE
-	warp_event 4, 25, 1, CLIFF_EDGE_GATE
+	warp_event 17, 41, MANIAS_HOUSE, 1
+	warp_event 8, 43, CIANWOOD_GYM, 1
+	warp_event 23, 43, CIANWOOD_POKECENTER_1F, 1
+	warp_event 15, 47, CIANWOOD_PHARMACY, 1
+	warp_event 9, 31, CIANWOOD_CITY_PHOTO_STUDIO, 1
+	warp_event 15, 37, CIANWOOD_LUGIA_SPEECH_HOUSE, 1
+	warp_event 5, 17, STATS_JUDGES_HOUSE, 1
+	warp_event 4, 25, CLIFF_EDGE_GATE, 1
 
 	db 1 ; coord events
 	coord_event 11, 16, 1, UnknownScript_0x1a001e

@@ -5,8 +5,8 @@ BurnedTowerB1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, BurnedTowerB1FLadderCallback
 
 	db 2 ; warp events
-	warp_event 10, 9, 3, BURNED_TOWER_1F ; hole
-	warp_event 7, 15, 4, BURNED_TOWER_1F
+	warp_event 10, 9, BURNED_TOWER_1F, 3 ; hole
+	warp_event 7, 15, BURNED_TOWER_1F, 4
 
 	db 1 ; coord events
 	coord_event 10, 6, 0, ReleaseTheBeasts

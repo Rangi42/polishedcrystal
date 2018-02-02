@@ -4,10 +4,10 @@ ViridianForestPewterGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 4, 7, 1, VIRIDIAN_FOREST
-	warp_event 5, 7, 1, VIRIDIAN_FOREST
-	warp_event 4, 0, 5, ROUTE_2_NORTH
-	warp_event 5, 0, 6, ROUTE_2_NORTH
+	warp_event 4, 7, VIRIDIAN_FOREST, 1
+	warp_event 5, 7, VIRIDIAN_FOREST, 1
+	warp_event 4, 0, ROUTE_2_NORTH, 5
+	warp_event 5, 0, ROUTE_2_NORTH, 6
 
 	db 0 ; coord events
 

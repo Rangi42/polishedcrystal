@@ -4,9 +4,9 @@ CianwoodPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, 3, CIANWOOD_CITY
-	warp_event 6, 7, 3, CIANWOOD_CITY
-	warp_event 0, 7, 1, POKECENTER_2F
+	warp_event 5, 7, CIANWOOD_CITY, 3
+	warp_event 6, 7, CIANWOOD_CITY, 3
+	warp_event 0, 7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 

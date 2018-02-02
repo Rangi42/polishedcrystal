@@ -4,9 +4,9 @@ Route26_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 7, 5, 3, POKEMON_LEAGUE_GATE
-	warp_event 15, 57, 1, ROUTE_26_HEAL_SPEECH_HOUSE
-	warp_event 5, 71, 1, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE
+	warp_event 7, 5, POKEMON_LEAGUE_GATE, 3
+	warp_event 15, 57, ROUTE_26_HEAL_SPEECH_HOUSE, 1
+	warp_event 5, 71, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE, 1
 
 	db 0 ; coord events
 

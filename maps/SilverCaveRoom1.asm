@@ -4,8 +4,8 @@ SilverCaveRoom1_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 9, 33, 2, SILVER_CAVE_OUTSIDE
-	warp_event 15, 1, 1, SILVER_CAVE_ROOM_2
+	warp_event 9, 33, SILVER_CAVE_OUTSIDE, 2
+	warp_event 15, 1, SILVER_CAVE_ROOM_2, 1
 
 	db 0 ; coord events
 

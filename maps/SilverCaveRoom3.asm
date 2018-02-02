@@ -5,7 +5,7 @@ SilverCaveRoom3_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, SilverCaveRoom3DailyRedRematchCallback
 
 	db 1 ; warp events
-	warp_event 9, 29, 2, SILVER_CAVE_ROOM_2
+	warp_event 9, 29, SILVER_CAVE_ROOM_2, 2
 
 	db 0 ; coord events
 

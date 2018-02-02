@@ -5,10 +5,10 @@ BattleTower1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 10, 13, 3, BATTLE_TOWER_OUTSIDE
-	warp_event 11, 13, 4, BATTLE_TOWER_OUTSIDE
-	warp_event 10, 0, 1, BATTLE_TOWER_ELEVATOR
-	warp_event 0, 5, 1, BATTLE_TOWER_2F
+	warp_event 10, 13, BATTLE_TOWER_OUTSIDE, 3
+	warp_event 11, 13, BATTLE_TOWER_OUTSIDE, 4
+	warp_event 10, 0, BATTLE_TOWER_ELEVATOR, 1
+	warp_event 0, 5, BATTLE_TOWER_2F, 1
 
 	db 0 ; coord events
 

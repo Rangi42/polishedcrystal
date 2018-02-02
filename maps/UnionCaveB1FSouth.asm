@@ -4,10 +4,10 @@ UnionCaveB1FSouth_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 3, 5, 2, UNION_CAVE_1F
-	warp_event 17, 3, 1, UNION_CAVE_B2F
-	warp_event 5, 33, 3, MURKY_SWAMP
-	warp_event 17, 23, 1, ROUTE_32_COAST
+	warp_event 3, 5, UNION_CAVE_1F, 2
+	warp_event 17, 3, UNION_CAVE_B2F, 1
+	warp_event 5, 33, MURKY_SWAMP, 3
+	warp_event 17, 23, ROUTE_32_COAST, 1
 
 	db 0 ; coord events
 

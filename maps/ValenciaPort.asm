@@ -4,8 +4,8 @@ ValenciaPort_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 10, 17, 1, ROUTE_49
-	warp_event 11, 17, 1, ROUTE_49
+	warp_event 10, 17, ROUTE_49, 1
+	warp_event 11, 17, ROUTE_49, 1
 
 	db 0 ; coord events
 

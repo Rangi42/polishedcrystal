@@ -5,8 +5,8 @@ VermilionGym_MapScriptHeader:
 	callback MAPCALLBACK_TILES, VermilionGymDoorsScript
 
 	db 2 ; warp events
-	warp_event 4, 17, 7, VERMILION_CITY
-	warp_event 5, 17, 7, VERMILION_CITY
+	warp_event 4, 17, VERMILION_CITY, 7
+	warp_event 5, 17, VERMILION_CITY, 7
 
 	db 0 ; coord events
 

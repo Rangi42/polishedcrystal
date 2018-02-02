@@ -4,8 +4,8 @@ Route39Farmhouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 2, ROUTE_39
-	warp_event 3, 7, 2, ROUTE_39
+	warp_event 2, 7, ROUTE_39, 2
+	warp_event 3, 7, ROUTE_39, 2
 
 	db 0 ; coord events
 

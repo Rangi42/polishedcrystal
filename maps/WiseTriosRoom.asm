@@ -5,9 +5,9 @@ WiseTriosRoom_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x98574
 
 	db 3 ; warp events
-	warp_event 7, 4, 1, BELLCHIME_TRAIL
-	warp_event 7, 5, 2, BELLCHIME_TRAIL
-	warp_event 1, 4, 5, ECRUTEAK_HOUSE
+	warp_event 7, 4, BELLCHIME_TRAIL, 1
+	warp_event 7, 5, BELLCHIME_TRAIL, 2
+	warp_event 1, 4, ECRUTEAK_HOUSE, 5
 
 	db 1 ; coord events
 	coord_event 7, 4, 0, UnknownScript_0x985a3

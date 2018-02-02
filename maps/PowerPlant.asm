@@ -4,8 +4,8 @@ PowerPlant_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 17, 2, ROUTE_10_NORTH
-	warp_event 3, 17, 2, ROUTE_10_NORTH
+	warp_event 2, 17, ROUTE_10_NORTH, 2
+	warp_event 3, 17, ROUTE_10_NORTH, 2
 
 	db 1 ; coord events
 	coord_event 5, 12, 1, PowerPlantGuardPhoneScript

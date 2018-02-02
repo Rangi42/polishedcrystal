@@ -5,10 +5,10 @@ ShamoutiHotel1F_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, ShamoutiHotel1FRestaurantTrigger
 
 	db 4 ; warp events
-	warp_event 8, 7, 2, SHAMOUTI_ISLAND
-	warp_event 9, 7, 2, SHAMOUTI_ISLAND
-	warp_event 2, 0, 1, SHAMOUTI_HOTEL_2F
-	warp_event 14, 0, 1, SHAMOUTI_HOTEL_RESTAURANT
+	warp_event 8, 7, SHAMOUTI_ISLAND, 2
+	warp_event 9, 7, SHAMOUTI_ISLAND, 2
+	warp_event 2, 0, SHAMOUTI_HOTEL_2F, 1
+	warp_event 14, 0, SHAMOUTI_HOTEL_RESTAURANT, 1
 
 	db 0 ; coord events
 

@@ -4,8 +4,8 @@ FastShipB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 1, 9, 11, FAST_SHIP_1F
-	warp_event 27, 11, 12, FAST_SHIP_1F
+	warp_event 1, 9, FAST_SHIP_1F, 11
+	warp_event 27, 11, FAST_SHIP_1F, 12
 
 	db 2 ; coord events
 	coord_event 26, 5, 0, UnknownScript_0x7673c

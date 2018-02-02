@@ -4,9 +4,9 @@ Route27_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 33, 7, 1, ROUTE_27_REST_HOUSE
-	warp_event 26, 5, 1, TOHJO_FALLS
-	warp_event 36, 5, 2, TOHJO_FALLS
+	warp_event 33, 7, ROUTE_27_REST_HOUSE, 1
+	warp_event 26, 5, TOHJO_FALLS, 1
+	warp_event 36, 5, TOHJO_FALLS, 2
 
 	db 2 ; coord events
 	coord_event 18, 10, 0, UnknownScript_0x1a0873

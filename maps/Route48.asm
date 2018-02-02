@@ -5,7 +5,7 @@ Route48_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
 	db 1 ; warp events
-	warp_event 11, 5, 3, YELLOW_FOREST_GATE
+	warp_event 11, 5, YELLOW_FOREST_GATE, 3
 
 	db 2 ; coord events
 	coord_event 20, 12, 0, Route48JessieJamesScript1

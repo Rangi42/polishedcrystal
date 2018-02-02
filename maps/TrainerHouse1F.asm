@@ -4,9 +4,9 @@ TrainerHouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 4, 11, 3, VIRIDIAN_CITY
-	warp_event 5, 11, 3, VIRIDIAN_CITY
-	warp_event 8, 2, 1, TRAINER_HOUSE_B1F
+	warp_event 4, 11, VIRIDIAN_CITY, 3
+	warp_event 5, 11, VIRIDIAN_CITY, 3
+	warp_event 8, 2, TRAINER_HOUSE_B1F, 1
 
 	db 0 ; coord events
 

@@ -5,8 +5,8 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 16, 7, 4, SHAMOUTI_HOTEL_1F
-	warp_event 17, 7, 4, SHAMOUTI_HOTEL_1F
+	warp_event 16, 7, SHAMOUTI_HOTEL_1F, 4
+	warp_event 17, 7, SHAMOUTI_HOTEL_1F, 4
 
 	db 2 ; coord events
 	coord_event 16, 6, 1, ShamoutiHotelRestaurantLeavingTrigger1

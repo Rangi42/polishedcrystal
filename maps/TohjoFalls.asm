@@ -4,9 +4,9 @@ TohjoFalls_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 13, 15, 2, ROUTE_27
-	warp_event 25, 15, 3, ROUTE_27
-	warp_event 3, 7, 1, GIOVANNIS_CAVE
+	warp_event 13, 15, ROUTE_27, 2
+	warp_event 25, 15, ROUTE_27, 3
+	warp_event 3, 7, GIOVANNIS_CAVE, 1
 
 	db 0 ; coord events
 

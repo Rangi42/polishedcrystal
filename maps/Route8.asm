@@ -4,8 +4,8 @@ Route8_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 10, 3, ROUTE_8_SAFFRON_GATE
-	warp_event 4, 11, 4, ROUTE_8_SAFFRON_GATE
+	warp_event 4, 10, ROUTE_8_SAFFRON_GATE, 3
+	warp_event 4, 11, ROUTE_8_SAFFRON_GATE, 4
 
 	db 0 ; coord events
 

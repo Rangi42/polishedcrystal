@@ -6,7 +6,7 @@ SeagallopFerryVermilionGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 6, 0, 11, VERMILION_CITY
+	warp_event 6, 0, VERMILION_CITY, 11
 
 	db 0 ; coord events
 

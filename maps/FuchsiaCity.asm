@@ -5,17 +5,17 @@ FuchsiaCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, FuchsiaCityFlyPoint
 
 	db 11 ; warp events
-	warp_event 5, 13, 2, FUCHSIA_MART
-	warp_event 8, 27, 1, FUCHSIA_GYM
-	warp_event 11, 27, 1, FUCHSIA_BILL_SPEECH_HOUSE
-	warp_event 19, 27, 1, FUCHSIA_POKECENTER_1F
-	warp_event 27, 27, 1, SAFARI_ZONE_WARDENS_HOME
-	warp_event 18, 3, 3, SAFARI_ZONE_FUCHSIA_GATE
-	warp_event 37, 22, 1, ROUTE_15_FUCHSIA_GATE
-	warp_event 37, 23, 2, ROUTE_15_FUCHSIA_GATE
-	warp_event 7, 33, 1, ROUTE_19_FUCHSIA_GATE
-	warp_event 8, 33, 2, ROUTE_19_FUCHSIA_GATE
-	warp_event 15, 27, 1, FUCHSIA_SAFARI_BALL_HOUSE
+	warp_event 5, 13, FUCHSIA_MART, 2
+	warp_event 8, 27, FUCHSIA_GYM, 1
+	warp_event 11, 27, FUCHSIA_BILL_SPEECH_HOUSE, 1
+	warp_event 19, 27, FUCHSIA_POKECENTER_1F, 1
+	warp_event 27, 27, SAFARI_ZONE_WARDENS_HOME, 1
+	warp_event 18, 3, SAFARI_ZONE_FUCHSIA_GATE, 3
+	warp_event 37, 22, ROUTE_15_FUCHSIA_GATE, 1
+	warp_event 37, 23, ROUTE_15_FUCHSIA_GATE, 2
+	warp_event 7, 33, ROUTE_19_FUCHSIA_GATE, 1
+	warp_event 8, 33, ROUTE_19_FUCHSIA_GATE, 2
+	warp_event 15, 27, FUCHSIA_SAFARI_BALL_HOUSE, 1
 
 	db 0 ; coord events
 

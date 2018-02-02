@@ -7,8 +7,8 @@ RuinsofAlphResearchCenter_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
 	db 2 ; warp events
-	warp_event 2, 7, 6, RUINS_OF_ALPH_OUTSIDE
-	warp_event 3, 7, 6, RUINS_OF_ALPH_OUTSIDE
+	warp_event 2, 7, RUINS_OF_ALPH_OUTSIDE, 6
+	warp_event 3, 7, RUINS_OF_ALPH_OUTSIDE, 6
 
 	db 0 ; coord events
 

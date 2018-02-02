@@ -5,9 +5,9 @@ CinnabarVolcanoB2F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, CinnabarVolcanoB2FBouldersLand
 
 	db 3 ; warp events
-	warp_event 13, 3, 5, CINNABAR_VOLCANO_B1F
-	warp_event 25, 19, 6, CINNABAR_VOLCANO_B1F
-	warp_event 6, 6, 7, CINNABAR_VOLCANO_B1F ; hole
+	warp_event 13, 3, CINNABAR_VOLCANO_B1F, 5
+	warp_event 25, 19, CINNABAR_VOLCANO_B1F, 6
+	warp_event 6, 6, CINNABAR_VOLCANO_B1F, 7 ; hole
 
 	db 0 ; coord events
 

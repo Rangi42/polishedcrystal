@@ -7,7 +7,7 @@ SeagallopFerryNavelGate_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, SeagallopFerryNavelGateVisited
 
 	db 1 ; warp events
-	warp_event 6, 0, 1, NAVEL_ROCK_OUTSIDE
+	warp_event 6, 0, NAVEL_ROCK_OUTSIDE, 1
 
 	db 0 ; coord events
 

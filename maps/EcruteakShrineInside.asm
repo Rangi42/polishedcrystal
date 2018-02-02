@@ -4,8 +4,8 @@ EcruteakShrineInside_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 5, 11, 1, ECRUTEAK_SHRINE_OUTSIDE
-	warp_event 6, 11, 1, ECRUTEAK_SHRINE_OUTSIDE
+	warp_event 5, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
+	warp_event 6, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
 
 	db 0 ; coord events
 

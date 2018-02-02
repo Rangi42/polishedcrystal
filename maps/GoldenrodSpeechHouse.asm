@@ -4,8 +4,8 @@ GoldenrodSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 18, GOLDENROD_CITY
-	warp_event 3, 7, 18, GOLDENROD_CITY
+	warp_event 2, 7, GOLDENROD_CITY, 18
+	warp_event 3, 7, GOLDENROD_CITY, 18
 
 	db 0 ; coord events
 

@@ -5,14 +5,14 @@ DimCave2F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, DimCave2FBouldersLand
 
 	db 8 ; warp events
-	warp_event 15, 1, 2, CERULEAN_CAPE
-	warp_event 29, 5, 4, DIM_CAVE_3F
-	warp_event 27, 25, 5, DIM_CAVE_3F
-	warp_event 14, 20, 6, DIM_CAVE_3F ; hole
-	warp_event 30, 2, 1, DIM_CAVE_1F
-	warp_event 5, 17, 2, DIM_CAVE_1F
-	warp_event 28, 18, 3, DIM_CAVE_1F
-	warp_event 26, 32, 4, DIM_CAVE_1F
+	warp_event 15, 1, CERULEAN_CAPE, 2
+	warp_event 29, 5, DIM_CAVE_3F, 4
+	warp_event 27, 25, DIM_CAVE_3F, 5
+	warp_event 14, 20, DIM_CAVE_3F, 6 ; hole
+	warp_event 30, 2, DIM_CAVE_1F, 1
+	warp_event 5, 17, DIM_CAVE_1F, 2
+	warp_event 28, 18, DIM_CAVE_1F, 3
+	warp_event 26, 32, DIM_CAVE_1F, 4
 
 	db 0 ; coord events
 

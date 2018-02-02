@@ -8,8 +8,8 @@ FarawayIsland_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
 
 	db 2 ; warp events
-	warp_event 22, 8, 1, FARAWAY_JUNGLE
-	warp_event 23, 8, 2, FARAWAY_JUNGLE
+	warp_event 22, 8, FARAWAY_JUNGLE, 1
+	warp_event 23, 8, FARAWAY_JUNGLE, 2
 
 	db 0 ; coord events
 

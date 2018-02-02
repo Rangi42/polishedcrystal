@@ -15,8 +15,8 @@ ENDM
 warp_event: MACRO
 	db \2 ; y
 	db \1 ; x
-	db \3 ; warp_to
-	map \4 ; map
+	db \4 ; warp_to
+	map \3 ; map
 ENDM
 
 coord_event: MACRO

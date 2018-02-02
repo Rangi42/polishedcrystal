@@ -5,7 +5,7 @@ Route40_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, MonicaCallback
 
 	db 1 ; warp events
-	warp_event 9, 5, 1, ROUTE_40_BATTLE_TOWER_GATE
+	warp_event 9, 5, ROUTE_40_BATTLE_TOWER_GATE, 1
 
 	db 0 ; coord events
 

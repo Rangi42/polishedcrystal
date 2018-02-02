@@ -4,10 +4,10 @@ Route36VioletGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 0, 4, 5, ROUTE_36
-	warp_event 0, 5, 6, ROUTE_36
-	warp_event 9, 4, 10, VIOLET_CITY
-	warp_event 9, 5, 11, VIOLET_CITY
+	warp_event 0, 4, ROUTE_36, 5
+	warp_event 0, 5, ROUTE_36, 6
+	warp_event 9, 4, VIOLET_CITY, 10
+	warp_event 9, 5, VIOLET_CITY, 11
 
 	db 0 ; coord events
 

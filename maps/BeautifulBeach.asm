@@ -4,9 +4,9 @@ BeautifulBeach_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 11, 23, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
-	warp_event 12, 23, 1, SEAGALLOP_FERRY_SHAMOUTI_GATE
-	warp_event 27, 18, 1, BEAUTIFUL_BEACH_VILLA
+	warp_event 11, 23, SEAGALLOP_FERRY_SHAMOUTI_GATE, 1
+	warp_event 12, 23, SEAGALLOP_FERRY_SHAMOUTI_GATE, 1
+	warp_event 27, 18, BEAUTIFUL_BEACH_VILLA, 1
 
 	db 0 ; coord events
 

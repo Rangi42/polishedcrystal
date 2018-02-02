@@ -6,7 +6,7 @@ GoldenrodDeptStoreRoof_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, GoldenrodDeptStoreRoofCheckSaleChangeClerk
 
 	db 1 ; warp events
-	warp_event 13, 1, 3, GOLDENROD_DEPT_STORE_6F
+	warp_event 13, 1, GOLDENROD_DEPT_STORE_6F, 3
 
 	db 0 ; coord events
 

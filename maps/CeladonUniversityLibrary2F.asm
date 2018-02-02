@@ -4,7 +4,7 @@ CeladonUniversityLibrary2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 7, 0, 3, CELADON_UNIVERSITY_LIBRARY_1F
+	warp_event 7, 0, CELADON_UNIVERSITY_LIBRARY_1F, 3
 
 	db 0 ; coord events
 

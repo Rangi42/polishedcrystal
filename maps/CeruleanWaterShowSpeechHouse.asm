@@ -4,8 +4,8 @@ CeruleanWaterShowSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 11, CERULEAN_CITY
-	warp_event 3, 7, 11, CERULEAN_CITY
+	warp_event 2, 7, CERULEAN_CITY, 11
+	warp_event 3, 7, CERULEAN_CITY, 11
 
 	db 0 ; coord events
 

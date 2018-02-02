@@ -4,8 +4,8 @@ GoldenrodGameCorner_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 13, 10, GOLDENROD_CITY
-	warp_event 3, 13, 10, GOLDENROD_CITY
+	warp_event 2, 13, GOLDENROD_CITY, 10
+	warp_event 3, 13, GOLDENROD_CITY, 10
 
 	db 0 ; coord events
 

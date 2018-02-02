@@ -4,8 +4,8 @@ CeladonMansionRoofHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, 3, CELADON_MANSION_ROOF
-	warp_event 3, 7, 3, CELADON_MANSION_ROOF
+	warp_event 2, 7, CELADON_MANSION_ROOF, 3
+	warp_event 3, 7, CELADON_MANSION_ROOF, 3
 
 	db 0 ; coord events
 

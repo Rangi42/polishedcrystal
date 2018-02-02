@@ -4,10 +4,10 @@ Route5_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 17, 27, 1, ROUTE_5_UNDERGROUND_ENTRANCE
-	warp_event 8, 31, 1, ROUTE_5_SAFFRON_CITY_GATE
-	warp_event 9, 31, 2, ROUTE_5_SAFFRON_CITY_GATE
-	warp_event 10, 21, 1, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE
+	warp_event 17, 27, ROUTE_5_UNDERGROUND_ENTRANCE, 1
+	warp_event 8, 31, ROUTE_5_SAFFRON_CITY_GATE, 1
+	warp_event 9, 31, ROUTE_5_SAFFRON_CITY_GATE, 2
+	warp_event 10, 21, ROUTE_5_CLEANSE_TAG_SPEECH_HOUSE, 1
 
 	db 0 ; coord events
 

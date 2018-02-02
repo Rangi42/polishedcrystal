@@ -5,9 +5,9 @@ RadioTower3F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, CardKeyShutterCallback
 
 	db 3 ; warp events
-	warp_event 0, 0, 1, RADIO_TOWER_2F
-	warp_event 7, 0, 2, RADIO_TOWER_4F
-	warp_event 17, 0, 4, RADIO_TOWER_4F
+	warp_event 0, 0, RADIO_TOWER_2F, 1
+	warp_event 7, 0, RADIO_TOWER_4F, 2
+	warp_event 17, 0, RADIO_TOWER_4F, 4
 
 	db 0 ; coord events
 

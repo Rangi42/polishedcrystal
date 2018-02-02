@@ -4,8 +4,8 @@ TinTower3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 8, 14, 1, TIN_TOWER_2F
-	warp_event 14, 2, 2, TIN_TOWER_4F
+	warp_event 8, 14, TIN_TOWER_2F, 1
+	warp_event 14, 2, TIN_TOWER_4F, 2
 
 	db 0 ; coord events
 

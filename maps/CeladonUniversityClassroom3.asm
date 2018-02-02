@@ -4,8 +4,8 @@ CeladonUniversityClassroom3_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 11, 8, CELADON_UNIVERSITY_1F
-	warp_event 3, 11, 8, CELADON_UNIVERSITY_1F
+	warp_event 2, 11, CELADON_UNIVERSITY_1F, 8
+	warp_event 3, 11, CELADON_UNIVERSITY_1F, 8
 
 	db 0 ; coord events
 

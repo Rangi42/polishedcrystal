@@ -6,10 +6,10 @@ BurnedTower1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
 
 	db 4 ; warp events
-	warp_event 7, 15, 13, ECRUTEAK_CITY
-	warp_event 8, 15, 13, ECRUTEAK_CITY
-	warp_event 8, 9, 1, BURNED_TOWER_B1F
-	warp_event 5, 15, 2, BURNED_TOWER_B1F
+	warp_event 7, 15, ECRUTEAK_CITY, 13
+	warp_event 8, 15, ECRUTEAK_CITY, 13
+	warp_event 8, 9, BURNED_TOWER_B1F, 1
+	warp_event 5, 15, BURNED_TOWER_B1F, 2
 
 	db 1 ; coord events
 	coord_event 9, 9, 1, BurnedTowerRivalBattleScript

@@ -4,7 +4,7 @@ CeruleanCaveB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 5, 7, 5, CERULEAN_CAVE_1F
+	warp_event 5, 7, CERULEAN_CAVE_1F, 5
 
 	db 0 ; coord events
 

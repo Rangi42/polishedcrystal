@@ -4,14 +4,14 @@ RockTunnel1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 8 ; warp events
-	warp_event 15, 3, 4, ROUTE_10_NORTH
-	warp_event 11, 25, 1, ROUTE_10_SOUTH
-	warp_event 5, 3, 1, ROCK_TUNNEL_B1F
-	warp_event 15, 9, 2, ROCK_TUNNEL_B1F
-	warp_event 25, 3, 3, ROCK_TUNNEL_B1F
-	warp_event 27, 13, 4, ROCK_TUNNEL_B1F
-	warp_event 4, 13, 5, ROCK_TUNNEL_B1F
-	warp_event 6, 15, 2, ROCK_TUNNEL_2F
+	warp_event 15, 3, ROUTE_10_NORTH, 4
+	warp_event 11, 25, ROUTE_10_SOUTH, 1
+	warp_event 5, 3, ROCK_TUNNEL_B1F, 1
+	warp_event 15, 9, ROCK_TUNNEL_B1F, 2
+	warp_event 25, 3, ROCK_TUNNEL_B1F, 3
+	warp_event 27, 13, ROCK_TUNNEL_B1F, 4
+	warp_event 4, 13, ROCK_TUNNEL_B1F, 5
+	warp_event 6, 15, ROCK_TUNNEL_2F, 2
 
 	db 0 ; coord events
 

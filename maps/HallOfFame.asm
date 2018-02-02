@@ -5,8 +5,8 @@ HallOfFame_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 13, 3, LANCES_ROOM
-	warp_event 5, 13, 4, LANCES_ROOM
+	warp_event 4, 13, LANCES_ROOM, 3
+	warp_event 5, 13, LANCES_ROOM, 4
 
 	db 0 ; coord events
 

@@ -4,8 +4,8 @@ CeladonUniversityCafeteria_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 13, 7, 2, CELADON_UNIVERSITY_2F
-	warp_event 14, 7, 2, CELADON_UNIVERSITY_2F
+	warp_event 13, 7, CELADON_UNIVERSITY_2F, 2
+	warp_event 14, 7, CELADON_UNIVERSITY_2F, 2
 
 	db 0 ; coord events
 

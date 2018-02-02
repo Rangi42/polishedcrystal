@@ -4,8 +4,8 @@ CeladonUniversityHyperTestRoom_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 11, 4, CELADON_UNIVERSITY_2F
-	warp_event 3, 11, 4, CELADON_UNIVERSITY_2F
+	warp_event 2, 11, CELADON_UNIVERSITY_2F, 4
+	warp_event 3, 11, CELADON_UNIVERSITY_2F, 4
 
 	db 0 ; coord events
 

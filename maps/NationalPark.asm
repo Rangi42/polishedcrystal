@@ -4,10 +4,10 @@ NationalPark_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 35, 18, 1, ROUTE_36_NATIONAL_PARK_GATE
-	warp_event 35, 19, 2, ROUTE_36_NATIONAL_PARK_GATE
-	warp_event 12, 47, 1, ROUTE_35_NATIONAL_PARK_GATE
-	warp_event 13, 47, 2, ROUTE_35_NATIONAL_PARK_GATE
+	warp_event 35, 18, ROUTE_36_NATIONAL_PARK_GATE, 1
+	warp_event 35, 19, ROUTE_36_NATIONAL_PARK_GATE, 2
+	warp_event 12, 47, ROUTE_35_NATIONAL_PARK_GATE, 1
+	warp_event 13, 47, ROUTE_35_NATIONAL_PARK_GATE, 2
 
 	db 0 ; coord events
 

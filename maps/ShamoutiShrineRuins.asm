@@ -4,8 +4,8 @@ ShamoutiShrineRuins_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 18, 3, NOISY_FOREST
-	warp_event 2, 19, 4, NOISY_FOREST
+	warp_event 2, 18, NOISY_FOREST, 3
+	warp_event 2, 19, NOISY_FOREST, 4
 
 	db 0 ; coord events
 

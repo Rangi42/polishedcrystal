@@ -4,7 +4,7 @@ Route11Gate2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 7, 7, -1, ROUTE_11_GATE_2F
+	warp_event 7, 7, ROUTE_11_GATE_2F, -1
 
 	db 0 ; coord events
 

@@ -4,9 +4,9 @@ SaffronPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, 4, SAFFRON_CITY
-	warp_event 6, 7, 4, SAFFRON_CITY
-	warp_event 0, 7, 1, POKECENTER_2F
+	warp_event 5, 7, SAFFRON_CITY, 4
+	warp_event 6, 7, SAFFRON_CITY, 4
+	warp_event 0, 7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 

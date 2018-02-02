@@ -4,9 +4,9 @@ UnionCaveB1FNorth_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 3, 3, 7, RUINS_OF_ALPH_OUTSIDE
-	warp_event 3, 11, 8, RUINS_OF_ALPH_OUTSIDE
-	warp_event 15, 23, 1, UNION_CAVE_1F
+	warp_event 3, 3, RUINS_OF_ALPH_OUTSIDE, 7
+	warp_event 3, 11, RUINS_OF_ALPH_OUTSIDE, 8
+	warp_event 15, 23, UNION_CAVE_1F, 1
 
 	db 0 ; coord events
 

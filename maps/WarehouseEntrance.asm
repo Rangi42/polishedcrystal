@@ -7,12 +7,12 @@ WarehouseEntrance_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, WarehouseEntranceCheckDayOfWeek
 
 	db 6 ; warp events
-	warp_event 1, 2, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_event 1, 34, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_event 16, 6, 4, WAREHOUSE_ENTRANCE
-	warp_event 13, 35, 3, WAREHOUSE_ENTRANCE
-	warp_event 14, 35, 3, WAREHOUSE_ENTRANCE
-	warp_event 14, 31, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	warp_event 1, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 7
+	warp_event 1, 34, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 4
+	warp_event 16, 6, WAREHOUSE_ENTRANCE, 4
+	warp_event 13, 35, WAREHOUSE_ENTRANCE, 3
+	warp_event 14, 35, WAREHOUSE_ENTRANCE, 3
+	warp_event 14, 31, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
 
 	db 0 ; coord events
 

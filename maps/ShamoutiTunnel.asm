@@ -4,8 +4,8 @@ ShamoutiTunnel_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 33, 9, 3, SHAMOUTI_ISLAND
-	warp_event 5, 17, 2, WARM_BEACH
+	warp_event 33, 9, SHAMOUTI_ISLAND, 3
+	warp_event 5, 17, WARM_BEACH, 2
 
 	db 0 ; coord events
 

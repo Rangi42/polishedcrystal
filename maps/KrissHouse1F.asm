@@ -4,9 +4,9 @@ KrissHouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 6, 7, 2, NEW_BARK_TOWN
-	warp_event 7, 7, 2, NEW_BARK_TOWN
-	warp_event 9, 0, 1, KRISS_HOUSE_2F
+	warp_event 6, 7, NEW_BARK_TOWN, 2
+	warp_event 7, 7, NEW_BARK_TOWN, 2
+	warp_event 9, 0, KRISS_HOUSE_2F, 1
 
 	db 3 ; coord events
 	coord_event 8, 4, 0, MomTrigger1

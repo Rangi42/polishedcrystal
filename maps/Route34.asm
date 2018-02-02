@@ -5,11 +5,11 @@ Route34_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
 
 	db 5 ; warp events
-	warp_event 13, 37, 1, ROUTE_34_ILEX_FOREST_GATE
-	warp_event 14, 37, 2, ROUTE_34_ILEX_FOREST_GATE
-	warp_event 11, 14, 1, DAYCARE
-	warp_event 11, 15, 2, DAYCARE
-	warp_event 13, 15, 3, DAYCARE
+	warp_event 13, 37, ROUTE_34_ILEX_FOREST_GATE, 1
+	warp_event 14, 37, ROUTE_34_ILEX_FOREST_GATE, 2
+	warp_event 11, 14, DAYCARE, 1
+	warp_event 11, 15, DAYCARE, 2
+	warp_event 13, 15, DAYCARE, 3
 
 	db 3 ; coord events
 	coord_event 8, 17, 1, Route34LyraTrigger1

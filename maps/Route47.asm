@@ -5,12 +5,12 @@ Route47_MapScriptHeader:
 	callback MAPCALLBACK_TILES, Route47TileScript
 
 	db 6 ; warp events
-	warp_event 67, 21, 2, CLIFF_EDGE_GATE
-	warp_event 53, 21, 1, CLIFF_CAVE
-	warp_event 52, 17, 2, CLIFF_CAVE
-	warp_event 53, 29, 3, CLIFF_CAVE
-	warp_event 11, 23, 1, QUIET_CAVE_1F
-	warp_event 7, 23, 1, EMBEDDED_TOWER
+	warp_event 67, 21, CLIFF_EDGE_GATE, 2
+	warp_event 53, 21, CLIFF_CAVE, 1
+	warp_event 52, 17, CLIFF_CAVE, 2
+	warp_event 53, 29, CLIFF_CAVE, 3
+	warp_event 11, 23, QUIET_CAVE_1F, 1
+	warp_event 7, 23, EMBEDDED_TOWER, 1
 
 	db 32 ; coord events
 	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger

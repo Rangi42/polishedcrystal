@@ -5,11 +5,11 @@ EcruteakHouse_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, EcruteakHouseInitializeSages
 
 	db 5 ; warp events
-	warp_event 4, 17, 3, ECRUTEAK_CITY
-	warp_event 5, 17, 3, ECRUTEAK_CITY
-	warp_event 5, 3, 4, ECRUTEAK_HOUSE
-	warp_event 17, 15, 3, ECRUTEAK_HOUSE
-	warp_event 17, 3, 3, WISE_TRIOS_ROOM
+	warp_event 4, 17, ECRUTEAK_CITY, 3
+	warp_event 5, 17, ECRUTEAK_CITY, 3
+	warp_event 5, 3, ECRUTEAK_HOUSE, 4
+	warp_event 17, 15, ECRUTEAK_HOUSE, 3
+	warp_event 17, 3, WISE_TRIOS_ROOM, 3
 
 	db 2 ; coord events
 	coord_event 4, 7, 0, EcruteakHouse_XYTrigger1

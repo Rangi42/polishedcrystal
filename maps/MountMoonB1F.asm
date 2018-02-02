@@ -4,14 +4,14 @@ MountMoonB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 8 ; warp events
-	warp_event 26, 4, 2, MOUNT_MOON_1F
-	warp_event 5, 3, 3, MOUNT_MOON_1F
-	warp_event 3, 11, 4, MOUNT_MOON_1F
-	warp_event 15, 15, 1, MOUNT_MOON_B2F
-	warp_event 13, 3, 2, MOUNT_MOON_B2F
-	warp_event 16, 22, 3, MOUNT_MOON_B2F
-	warp_event 27, 23, 4, MOUNT_MOON_B2F
-	warp_event 27, 25, 1, ROUTE_4
+	warp_event 26, 4, MOUNT_MOON_1F, 2
+	warp_event 5, 3, MOUNT_MOON_1F, 3
+	warp_event 3, 11, MOUNT_MOON_1F, 4
+	warp_event 15, 15, MOUNT_MOON_B2F, 1
+	warp_event 13, 3, MOUNT_MOON_B2F, 2
+	warp_event 16, 22, MOUNT_MOON_B2F, 3
+	warp_event 27, 23, MOUNT_MOON_B2F, 4
+	warp_event 27, 25, ROUTE_4, 1
 
 	db 0 ; coord events
 

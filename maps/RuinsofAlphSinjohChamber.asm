@@ -4,8 +4,8 @@ RuinsofAlphSinjohChamber_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 5, 9, 12, RUINS_OF_ALPH_OUTSIDE
-	warp_event 4, 9, 12, RUINS_OF_ALPH_OUTSIDE
+	warp_event 5, 9, RUINS_OF_ALPH_OUTSIDE, 12
+	warp_event 4, 9, RUINS_OF_ALPH_OUTSIDE, 12
 
 	db 0 ; coord events
 

@@ -4,7 +4,7 @@ Route49_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 7, 5, 1, VALENCIA_PORT
+	warp_event 7, 5, VALENCIA_PORT, 1
 
 	db 0 ; coord events
 

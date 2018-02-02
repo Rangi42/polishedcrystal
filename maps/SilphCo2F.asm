@@ -4,8 +4,8 @@ SilphCo2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 13, 0, 3, SILPH_CO_1F
-	warp_event 11, 0, 1, SILPH_CO_3F
+	warp_event 13, 0, SILPH_CO_1F, 3
+	warp_event 11, 0, SILPH_CO_3F, 1
 
 	db 0 ; coord events
 

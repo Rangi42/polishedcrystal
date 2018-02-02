@@ -4,8 +4,8 @@ Route15_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 4, 3, ROUTE_15_FUCHSIA_GATE
-	warp_event 2, 5, 4, ROUTE_15_FUCHSIA_GATE
+	warp_event 2, 4, ROUTE_15_FUCHSIA_GATE, 3
+	warp_event 2, 5, ROUTE_15_FUCHSIA_GATE, 4
 
 	db 0 ; coord events
 
