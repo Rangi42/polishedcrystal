@@ -13,9 +13,9 @@ UnionCaveB2F_MapScriptHeader:
 
 	db 6 ; object events
 	object_event 11, 31, SPRITE_LAPRAS, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, UnionCaveLapras, EVENT_UNION_CAVE_B2F_LAPRAS
-	object_event 15, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermNick, -1
-	object_event  5, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfGwen, -1
-	object_event  3, 30, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfEmma, -1
+	object_event 15, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermNick, -1
+	object_event  5, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfGwen, -1
+	object_event  3, 30, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfEmma, -1
 	itemball_event 16,  2, ELIXER, 1, EVENT_UNION_CAVE_B2F_ELIXER
 	itemball_event 12, 19, HYPER_POTION, 1, EVENT_UNION_CAVE_B2F_HYPER_POTION
 
@@ -45,26 +45,35 @@ UnionCaveLapras:
 	reloadmapafterbattle
 	end
 
-TrainerCooltrainermNick:
-	trainer COOLTRAINERM, NICK, EVENT_BEAT_COOLTRAINERM_NICK, CooltrainermNickSeenText, CooltrainermNickBeatenText, 0, CooltrainermNickScript
+GenericTrainerCooltrainermNick:
+	generictrainer COOLTRAINERM, NICK, EVENT_BEAT_COOLTRAINERM_NICK, CooltrainermNickSeenText, CooltrainermNickBeatenText
 
-CooltrainermNickScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a3f0
+	text "Your #mon style"
+	line "is stunning and"
+	cont "colorful, I admit."
 
-TrainerCooltrainerfGwen:
-	trainer COOLTRAINERF, GWEN, EVENT_BEAT_COOLTRAINERF_GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText, 0, CooltrainerfGwenScript
+	para "You'll just keep"
+	line "getting better!"
+	done
 
-CooltrainerfGwenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a488
+GenericTrainerCooltrainerfGwen:
+	generictrainer COOLTRAINERF, GWEN, EVENT_BEAT_COOLTRAINERF_GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText
 
-TrainerCooltrainerfEmma:
-	trainer COOLTRAINERF, EMMA, EVENT_BEAT_COOLTRAINERF_EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText, 0, CooltrainerfEmmaScript
+	text "I'm going to train"
+	line "by myself until I"
+	cont "improve."
+	done
 
-CooltrainerfEmmaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a52b
+GenericTrainerCooltrainerfEmma:
+	generictrainer COOLTRAINERF, EMMA, EVENT_BEAT_COOLTRAINERF_EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText
+
+	text "Just once a week,"
+	line "a #mon comes to"
+	cont "the water's edge."
+
+	para "I wanted to see"
+	line "that #mon…"
+	done
 
 CooltrainermNickSeenText:
 	text "There are two"
@@ -83,15 +92,6 @@ CooltrainermNickBeatenText:
 	line "dazzling style!"
 	done
 
-UnknownText_0x5a3f0:
-	text "Your #mon style"
-	line "is stunning and"
-	cont "colorful, I admit."
-
-	para "You'll just keep"
-	line "getting better!"
-	done
-
 CooltrainerfGwenSeenText:
 	text "I'm in training."
 	line "Care for a round?"
@@ -100,12 +100,6 @@ CooltrainerfGwenSeenText:
 CooltrainerfGwenBeatenText:
 	text "Aww, no! You're"
 	line "too good for me."
-	done
-
-UnknownText_0x5a488:
-	text "I'm going to train"
-	line "by myself until I"
-	cont "improve."
 	done
 
 CooltrainerfEmmaSeenText:
@@ -122,11 +116,3 @@ CooltrainerfEmmaBeatenText:
 	line "babies than this!"
 	done
 
-UnknownText_0x5a52b:
-	text "Just once a week,"
-	line "a #mon comes to"
-	cont "the water's edge."
-
-	para "I wanted to see"
-	line "that #mon…"
-	done

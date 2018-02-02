@@ -15,11 +15,11 @@ Route4_MapScriptHeader:
 	bg_event 15,  4, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
 	db 11 ; object events
-	object_event 51,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
-	object_event 38, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
-	object_event 28,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
-	object_event 12, 10, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
-	object_event 35,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
+	object_event 51,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerYoungsterOliver, -1
+	object_event 38, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerLassJennifer, -1
+	object_event 28,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperHank, -1
+	object_event 12, 10, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerPicnickerHope, -1
+	object_event 35,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPicnickerSharon, -1
 	object_event 26, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
 	object_event 29, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
 	object_event 19,  7, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route4EngineerScript, EVENT_MT_MOON_RIVAL
@@ -27,40 +27,57 @@ Route4_MapScriptHeader:
 	itemball_event 42,  5, HP_UP, 1, EVENT_ROUTE_4_HP_UP
 	object_event 68,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
 
-TrainerYoungsterOliver:
-	trainer YOUNGSTER, OLIVER, EVENT_BEAT_YOUNGSTER_OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText, 0, YoungsterOliverScript
+GenericTrainerYoungsterOliver:
+	generictrainer YOUNGSTER, OLIVER, EVENT_BEAT_YOUNGSTER_OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText
 
-YoungsterOliverScript:
-	end_if_just_battled
-	jumptextfaceplayer YoungsterOliverAfterText
+	text "People say that"
+	line "I ask too many"
+	cont "questions, but"
 
-TrainerLassJennifer:
-	trainer LASS, JENNIFER, EVENT_BEAT_LASS_JENNIFER, LassJenniferSeenText, LassJenniferBeatenText, 0, LassJenniferScript
+	para "that's what kids"
+	line "do, right?"
+	done
 
-LassJenniferScript:
-	end_if_just_battled
-	jumptextfaceplayer LassJenniferAfterText
+GenericTrainerLassJennifer:
+	generictrainer LASS, JENNIFER, EVENT_BEAT_LASS_JENNIFER, LassJenniferSeenText, LassJenniferBeatenText
 
-TrainerBird_keeperHank:
-	trainer BIRD_KEEPER, HANK, EVENT_BEAT_BIRD_KEEPER_HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText, 0, Bird_keeperHankScript
+	text "#mon are so"
+	line "much fun."
+	cont "Don't you agree?"
+	done
 
-Bird_keeperHankScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ae258
+GenericTrainerBird_keeperHank:
+	generictrainer BIRD_KEEPER, HANK, EVENT_BEAT_BIRD_KEEPER_HANK, Bird_keeperHankSeenText, Bird_keeperHankBeatenText
 
-TrainerPicnickerHope:
-	trainer PICNICKER, HOPE, EVENT_BEAT_PICNICKER_HOPE, PicnickerHopeSeenText, PicnickerHopeBeatenText, 0, PicnickerHopeScript
+	text "If you have a"
+	line "specific #mon"
 
-PicnickerHopeScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ae320
+	para "that you want to"
+	line "raise, put it out"
 
-TrainerPicnickerSharon:
-	trainer PICNICKER, SHARON, EVENT_BEAT_PICNICKER_SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText, 0, PicnickerSharonScript
+	para "first, then switch"
+	line "it right away."
 
-PicnickerSharonScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ae369
+	para "That's how to do"
+	line "it."
+	done
+
+GenericTrainerPicnickerHope:
+	generictrainer PICNICKER, HOPE, EVENT_BEAT_PICNICKER_HOPE, PicnickerHopeSeenText, PicnickerHopeBeatenText
+
+	text "I heard Clefairy"
+	line "appear at Mt.Moon."
+
+	para "But where could"
+	line "they be?"
+	done
+
+GenericTrainerPicnickerSharon:
+	generictrainer PICNICKER, SHARON, EVENT_BEAT_PICNICKER_SHARON, PicnickerSharonSeenText, PicnickerSharonBeatenText
+
+	text "……I'll go train"
+	line "some more…"
+	done
 
 Route4SuperNerd1Script:
 	faceplayer
@@ -139,15 +156,6 @@ YoungsterOliverBeatenText:
 	line "asking…"
 	done
 
-YoungsterOliverAfterText:
-	text "People say that"
-	line "I ask too many"
-	cont "questions, but"
-
-	para "that's what kids"
-	line "do, right?"
-	done
-
 LassJenniferSeenText:
 	text "I battle every"
 	line "chance I get,"
@@ -160,12 +168,6 @@ LassJenniferBeatenText:
 	text "Wheeee!"
 	done
 
-LassJenniferAfterText:
-	text "#mon are so"
-	line "much fun."
-	cont "Don't you agree?"
-	done
-
 Bird_keeperHankSeenText:
 	text "I'm raising my"
 	line "#mon. Want to"
@@ -175,20 +177,6 @@ Bird_keeperHankSeenText:
 Bird_keeperHankBeatenText:
 	text "Ack! I lost that"
 	line "one…"
-	done
-
-UnknownText_0x1ae258:
-	text "If you have a"
-	line "specific #mon"
-
-	para "that you want to"
-	line "raise, put it out"
-
-	para "first, then switch"
-	line "it right away."
-
-	para "That's how to do"
-	line "it."
 	done
 
 PicnickerHopeSeenText:
@@ -204,14 +192,6 @@ PicnickerHopeBeatenText:
 	line "strong."
 	done
 
-UnknownText_0x1ae320:
-	text "I heard Clefairy"
-	line "appear at Mt.Moon."
-
-	para "But where could"
-	line "they be?"
-	done
-
 PicnickerSharonSeenText:
 	text "Um…"
 	line "I…"
@@ -219,11 +199,6 @@ PicnickerSharonSeenText:
 
 PicnickerSharonBeatenText:
 	text "…"
-	done
-
-UnknownText_0x1ae369:
-	text "……I'll go train"
-	line "some more…"
 	done
 
 Route4SuperNerd1Text:

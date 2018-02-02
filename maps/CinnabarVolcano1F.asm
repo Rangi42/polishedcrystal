@@ -28,8 +28,8 @@ CinnabarVolcano1F_MapScriptHeader:
 	strengthboulder_event 19,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
 	strengthboulder_event  5,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	strengthboulder_event 23, 16
-	object_event  2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistOskar, -1
-	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdLuis, -1
+	object_event  2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerScientistOskar, -1
+	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdLuis, -1
 	smashrock_event  5, 18
 	smashrock_event 11, 21
 	smashrock_event 35, 23
@@ -186,19 +186,27 @@ CinnabarVolcano1FBuckScript:
 	cont "Bye-bye!"
 	done
 
-TrainerScientistOskar:
-	trainer SCIENTIST, OSKAR, EVENT_BEAT_SCIENTIST_OSKAR, ScientistOskarSeenText, ScientistOskarBeatenText, 0, ScientistOskarScript
+GenericTrainerScientistOskar:
+	generictrainer SCIENTIST, OSKAR, EVENT_BEAT_SCIENTIST_OSKAR, ScientistOskarSeenText, ScientistOskarBeatenText
 
-ScientistOskarScript:
-	end_if_just_battled
-	jumptextfaceplayer ScientistOskarAfterText
+	text "It's important to"
+	line "study natural"
+	cont "disasters so we"
 
-TrainerSuperNerdLuis:
-	trainer SUPER_NERD, LUIS, EVENT_BEAT_SUPER_NERD_LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText, 0, SuperNerdLuisScript
+	para "can prepare for"
+	line "the next one."
+	done
 
-SuperNerdLuisScript:
-	end_if_just_battled
-	jumptextfaceplayer SuperNerdLuisAfterText
+GenericTrainerSuperNerdLuis:
+	generictrainer SUPER_NERD, LUIS, EVENT_BEAT_SUPER_NERD_LUIS, SuperNerdLuisSeenText, SuperNerdLuisBeatenText
+
+	text "It's so thrilling"
+	line "to be inside a"
+	cont "volcano!"
+
+	para "But scary at the"
+	line "same time."
+	done
 
 ScientistOskarSeenText:
 	text "I'm studying the"
@@ -209,15 +217,6 @@ ScientistOskarSeenText:
 ScientistOskarBeatenText:
 	text "Better luck next"
 	line "time!"
-	done
-
-ScientistOskarAfterText:
-	text "It's important to"
-	line "study natural"
-	cont "disasters so we"
-
-	para "can prepare for"
-	line "the next one."
 	done
 
 SuperNerdLuisSeenText:
@@ -234,15 +233,6 @@ SuperNerdLuisSeenText:
 SuperNerdLuisBeatenText:
 	text "You just taught"
 	line "me…"
-	done
-
-SuperNerdLuisAfterText:
-	text "It's so thrilling"
-	line "to be inside a"
-	cont "volcano!"
-
-	para "But scary at the"
-	line "same time."
 	done
 
 CinnabarVolcano1FBoulderFellText:

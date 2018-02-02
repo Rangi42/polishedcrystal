@@ -14,25 +14,28 @@ Route11_MapScriptHeader:
 	bg_event 44,  5, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_11_HIDDEN_REVIVE
 
 	db 12 ; object events
-	object_event 32, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterOwen, -1
-	object_event 30,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJason, -1
-	object_event 21,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlfie, -1
-	object_event 40,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicHerman, -1
-	object_event 12,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFidel, -1
-	object_event 24, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicUri, -1
-	object_event  7, 15, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerBernie, -1
-	object_event 38, 14, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerCamden, -1
-	object_event  9,  3, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGuitaristmRoger, -1
-	object_event 13, 16, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfRitsuko, -1
+	object_event 32, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterOwen, -1
+	object_event 30,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterJason, -1
+	object_event 21,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterAlfie, -1
+	object_event 40,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPsychicHerman, -1
+	object_event 12,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicFidel, -1
+	object_event 24, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicUri, -1
+	object_event  7, 15, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerBernie, -1
+	object_event 38, 14, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerCamden, -1
+	object_event  9,  3, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGuitaristmRoger, -1
+	object_event 13, 16, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfRitsuko, -1
 	fruittree_event 44,  2, FRUITTREE_ROUTE_11, GANLON_BERRY
 	tmhmball_event 44, 13, TM_VENOSHOCK, EVENT_ROUTE_11_TM_VENOSHOCK
 
-TrainerYoungsterOwen:
-	trainer YOUNGSTER, OWEN, EVENT_BEAT_YOUNGSTER_OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText, 0, YoungsterOwenScript
+GenericTrainerYoungsterOwen:
+	generictrainer YOUNGSTER, OWEN, EVENT_BEAT_YOUNGSTER_OWEN, YoungsterOwenSeenText, YoungsterOwenBeatenText
 
-YoungsterOwenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x680b2
+	text "I fought fair and"
+	line "square with honor."
+
+	para "I don't regret"
+	line "this at all."
+	done
 
 YoungsterOwenSeenText:
 	text "There's no cheat-"
@@ -47,20 +50,13 @@ YoungsterOwenBeatenText:
 	line "happen?"
 	done
 
-UnknownText_0x680b2:
-	text "I fought fair and"
-	line "square with honor."
+GenericTrainerYoungsterJason:
+	generictrainer YOUNGSTER, JASON, EVENT_BEAT_YOUNGSTER_JASON, YoungsterJasonSeenText, YoungsterJasonBeatenText
 
-	para "I don't regret"
-	line "this at all."
+	text "I'm going to catch"
+	line "more #mon in"
+	cont "the grass."
 	done
-
-TrainerYoungsterJason:
-	trainer YOUNGSTER, JASON, EVENT_BEAT_YOUNGSTER_JASON, YoungsterJasonSeenText, YoungsterJasonBeatenText, 0, YoungsterJasonScript
-
-YoungsterJasonScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6814a
 
 YoungsterJasonSeenText:
 	text "It itches and"
@@ -75,18 +71,13 @@ YoungsterJasonBeatenText:
 	line "I got stomped!"
 	done
 
-UnknownText_0x6814a:
-	text "I'm going to catch"
-	line "more #mon in"
-	cont "the grass."
+GenericTrainerYoungsterAlfie:
+	generictrainer YOUNGSTER, ALFIE, EVENT_BEAT_YOUNGSTER_ALFIE, .SeenText, .BeatenText
+
+	text "Everything's more"
+	line "fun when it's a"
+	cont "competition."
 	done
-
-TrainerYoungsterAlfie:
-	trainer YOUNGSTER, ALFIE, EVENT_BEAT_YOUNGSTER_ALFIE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Three, two, one,"
@@ -97,18 +88,14 @@ TrainerYoungsterAlfie:
 	text "Game, set, match."
 	done
 
-.AfterText:
-	text "Everything's more"
-	line "fun when it's a"
-	cont "competition."
+GenericTrainerPsychicHerman:
+	generictrainer PSYCHIC_T, HERMAN, EVENT_BEAT_PSYCHIC_HERMAN, PsychicHermanSeenText, PsychicHermanBeatenText
+
+	text "…"
+
+	para "I lost while I had"
+	line "my eyes closed…"
 	done
-
-TrainerPsychicHerman:
-	trainer PSYCHIC_T, HERMAN, EVENT_BEAT_PSYCHIC_HERMAN, PsychicHermanSeenText, PsychicHermanBeatenText, 0, PsychicHermanScript
-
-PsychicHermanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6817b
 
 PsychicHermanSeenText:
 	text "…"
@@ -118,19 +105,16 @@ PsychicHermanBeatenText:
 	text "…"
 	done
 
-UnknownText_0x6817b:
-	text "…"
+GenericTrainerPsychicFidel:
+	generictrainer PSYCHIC_T, FIDEL, EVENT_BEAT_PSYCHIC_FIDEL, PsychicFidelSeenText, PsychicFidelBeatenText
 
-	para "I lost while I had"
-	line "my eyes closed…"
+	text "Strength in con-"
+	line "viction…"
+
+	para "You're strong be-"
+	line "cause you believe"
+	cont "in your #mon."
 	done
-
-TrainerPsychicFidel:
-	trainer PSYCHIC_T, FIDEL, EVENT_BEAT_PSYCHIC_FIDEL, PsychicFidelSeenText, PsychicFidelBeatenText, 0, PsychicFidelScript
-
-PsychicFidelScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x681ec
 
 PsychicFidelSeenText:
 	text "I can see it…"
@@ -144,21 +128,13 @@ PsychicFidelBeatenText:
 	line "your power…"
 	done
 
-UnknownText_0x681ec:
-	text "Strength in con-"
-	line "viction…"
+GenericTrainerPsychicUri:
+	generictrainer PSYCHIC_T, URI, EVENT_BEAT_PSYCHIC_URI, .SeenText, .BeatenText
 
-	para "You're strong be-"
-	line "cause you believe"
-	cont "in your #mon."
+	text "Prof.Oak won't"
+	line "give me a #dex."
+	cont "I wonder why?"
 	done
-
-TrainerPsychicUri:
-	trainer PSYCHIC_T, URI, EVENT_BEAT_PSYCHIC_URI, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It happened one"
@@ -174,18 +150,12 @@ TrainerPsychicUri:
 	line "What's that?"
 	done
 
-.AfterText:
-	text "Prof.Oak won't"
-	line "give me a #dex."
-	cont "I wonder why?"
+GenericTrainerEngineerBernie:
+	generictrainer ENGINEER, BERNIE, EVENT_BEAT_ENGINEER_BERNIE, .SeenText, .BeatenText
+
+	text "Spread the word"
+	line "to save energy!"
 	done
-
-TrainerEngineerBernie:
-	trainer ENGINEER, BERNIE, EVENT_BEAT_ENGINEER_BERNIE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Careful!"
@@ -198,17 +168,16 @@ TrainerEngineerBernie:
 	line "electric!"
 	done
 
-.AfterText:
-	text "Spread the word"
-	line "to save energy!"
+GenericTrainerEngineerCamden:
+	generictrainer ENGINEER, CAMDEN, EVENT_BEAT_ENGINEER_CAMDEN, .SeenText, .BeatenText
+
+	text "Building a bridge"
+	line "and building a"
+	cont "team of #mon"
+
+	para "both require know-"
+	line "ledge and skill."
 	done
-
-TrainerEngineerCamden:
-	trainer ENGINEER, CAMDEN, EVENT_BEAT_ENGINEER_CAMDEN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I learned engin-"
@@ -220,21 +189,12 @@ TrainerEngineerCamden:
 	text "Shut down!"
 	done
 
-.AfterText:
-	text "Building a bridge"
-	line "and building a"
-	cont "team of #mon"
+GenericTrainerGuitaristmRoger:
+	generictrainer GUITARISTM, ROGER, EVENT_BEAT_GUITARISTM_ROGER, .SeenText, .BeatenText
 
-	para "both require know-"
-	line "ledge and skill."
+	text "Don't give in"
+	line "without a fight!"
 	done
-
-TrainerGuitaristmRoger:
-	trainer GUITARISTM, ROGER, EVENT_BEAT_GUITARISTM_ROGER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Strangers passing"
@@ -250,17 +210,12 @@ TrainerGuitaristmRoger:
 	line "crazy diamond!"
 	done
 
-.AfterText:
-	text "Don't give in"
-	line "without a fight!"
+GenericTrainerGuitaristfRitsuko:
+	generictrainer GUITARISTF, RITSUKO, EVENT_BEAT_GUITARISTF_RITSUKO, .SeenText, .BeatenText
+
+	text "♪ Rock'n, rock'n'"
+	line "roll radio… ♪"
 	done
-
-TrainerGuitaristfRitsuko:
-	trainer GUITARISTF, RITSUKO, EVENT_BEAT_GUITARISTF_RITSUKO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey ho, let's go!"
@@ -269,11 +224,6 @@ TrainerGuitaristfRitsuko:
 .BeatenText:
 	text "There's no success"
 	line "for me…"
-	done
-
-.AfterText:
-	text "♪ Rock'n, rock'n'"
-	line "roll radio… ♪"
 	done
 
 Route11SignText:

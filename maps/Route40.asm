@@ -15,10 +15,10 @@ Route40_MapScriptHeader:
 
 	db 13 ; object events
 	object_event  8, 10, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MonicaScript, EVENT_ROUTE_40_MONICA_OF_MONDAY
-	object_event 13, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSimon, -1
-	object_event 18, 33, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermRandall, -1
-	object_event  3, 19, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfElaine, -1
-	object_event  9, 25, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfPaula, -1
+	object_event 13, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermSimon, -1
+	object_event 18, 33, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmermRandall, -1
+	object_event  3, 19, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfElaine, -1
+	object_event  9, 25, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfPaula, -1
 	smashrock_event  7, 11
 	smashrock_event  6, 9
 	smashrock_event  7, 8
@@ -41,33 +41,37 @@ MonicaCallback:
 	appear ROUTE40_MONICA
 	return
 
-TrainerSwimmerfElaine:
-	trainer SWIMMERF, ELAINE, EVENT_BEAT_SWIMMERF_ELAINE, SwimmerfElaineSeenText, SwimmerfElaineBeatenText, 0, SwimmerfElaineScript
+GenericTrainerSwimmerfElaine:
+	generictrainer SWIMMERF, ELAINE, EVENT_BEAT_SWIMMERF_ELAINE, SwimmerfElaineSeenText, SwimmerfElaineBeatenText
 
-SwimmerfElaineScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a637b
+	text "I'd say I'm a bet-"
+	line "ter swimmer than"
+	cont "you. Yeah!"
+	done
 
-TrainerSwimmerfPaula:
-	trainer SWIMMERF, PAULA, EVENT_BEAT_SWIMMERF_PAULA, SwimmerfPaulaSeenText, SwimmerfPaulaBeatenText, 0, SwimmerfPaulaScript
+GenericTrainerSwimmerfPaula:
+	generictrainer SWIMMERF, PAULA, EVENT_BEAT_SWIMMERF_PAULA, SwimmerfPaulaSeenText, SwimmerfPaulaBeatenText
 
-SwimmerfPaulaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a63f5
+	text "While I float like"
+	line "this, the waves"
+	cont "carry me along."
+	done
 
-TrainerSwimmermSimon:
-	trainer SWIMMERM, SIMON, EVENT_BEAT_SWIMMERM_SIMON, SwimmermSimonSeenText, SwimmermSimonBeatenText, 0, SwimmermSimonScript
+GenericTrainerSwimmermSimon:
+	generictrainer SWIMMERM, SIMON, EVENT_BEAT_SWIMMERM_SIMON, SwimmermSimonSeenText, SwimmermSimonBeatenText
 
-SwimmermSimonScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a6282
+	text "Cianwood City is"
+	line "a good distance"
+	cont "away from here."
+	done
 
-TrainerSwimmermRandall:
-	trainer SWIMMERM, RANDALL, EVENT_BEAT_SWIMMERM_RANDALL, SwimmermRandallSeenText, SwimmermRandallBeatenText, 0, SwimmermRandallScript
+GenericTrainerSwimmermRandall:
+	generictrainer SWIMMERM, RANDALL, EVENT_BEAT_SWIMMERM_RANDALL, SwimmermRandallSeenText, SwimmermRandallBeatenText
 
-SwimmermRandallScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a62fa
+	text "Swimming exercises"
+	line "your entire body."
+	cont "It's healthy."
+	done
 
 PokefanMScript_0x1a61c7:
 	checkevent EVENT_BATTLE_TOWER_OPEN
@@ -194,12 +198,6 @@ SwimmermSimonBeatenText:
 	text "OK! Uncle! I give!"
 	done
 
-UnknownText_0x1a6282:
-	text "Cianwood City is"
-	line "a good distance"
-	cont "away from here."
-	done
-
 SwimmermRandallSeenText:
 	text "Hey, you're young"
 	line "and fit!"
@@ -210,12 +208,6 @@ SwimmermRandallSeenText:
 
 SwimmermRandallBeatenText:
 	text "Uh-oh. I lost…"
-	done
-
-UnknownText_0x1a62fa:
-	text "Swimming exercises"
-	line "your entire body."
-	cont "It's healthy."
 	done
 
 SwimmerfElaineSeenText:
@@ -230,12 +222,6 @@ SwimmerfElaineBeatenText:
 	text "I lost that one!"
 	done
 
-UnknownText_0x1a637b:
-	text "I'd say I'm a bet-"
-	line "ter swimmer than"
-	cont "you. Yeah!"
-	done
-
 SwimmerfPaulaSeenText:
 	text "No inner tube for"
 	line "me."
@@ -247,12 +233,6 @@ SwimmerfPaulaSeenText:
 SwimmerfPaulaBeatenText:
 	text "Ooh, I'm feeling"
 	line "dizzy!"
-	done
-
-UnknownText_0x1a63f5:
-	text "While I float like"
-	line "this, the waves"
-	cont "carry me along."
 	done
 
 UnknownText_0x1a6429:

@@ -25,33 +25,43 @@ SafariZoneNorth_MapScriptHeader:
 	bg_event 31, 19, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
 
 	db 6 ; object events
-	object_event 18, 23, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
-	object_event  7,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
-	object_event 36,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
+	object_event 18, 23, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBattleGirlPadma, -1
+	object_event  7,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterTyler, -1
+	object_event 36,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyRachael, -1
 	object_event 15, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
 	itemball_event 24, 18, EVIOLITE, 1, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
 	itemball_event 21,  9, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
 
-TrainerBattleGirlPadma:
-	trainer BATTLE_GIRL, PADMA, EVENT_BEAT_BATTLE_GIRL_PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript
+GenericTrainerBattleGirlPadma:
+	generictrainer BATTLE_GIRL, PADMA, EVENT_BEAT_BATTLE_GIRL_PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText
 
-BattleGirlPadmaScript:
-	end_if_just_battled
-	jumptextfaceplayer BattleGirlPadmaAfterText
+	text "If you throw your"
+	line "emotions into"
 
-TrainerYoungsterTyler:
-	trainer YOUNGSTER, TYLER, EVENT_BEAT_YOUNGSTER_TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText, 0, YoungsterTylerScript
+	para "training, you'll"
+	line "become strong!"
+	done
 
-YoungsterTylerScript:
-	end_if_just_battled
-	jumptextfaceplayer YoungsterTylerAfterText
+GenericTrainerYoungsterTyler:
+	generictrainer YOUNGSTER, TYLER, EVENT_BEAT_YOUNGSTER_TYLER, YoungsterTylerSeenText, YoungsterTylerBeatenText
 
-TrainerBeautyRachael:
-	trainer BEAUTY, RACHAEL, EVENT_BEAT_BEAUTY_RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText, 0, BeautyRachaelScript
+	text "#mon leap out"
+	line "when you least"
+	cont "expect it."
+	done
 
-BeautyRachaelScript:
-	end_if_just_battled
-	jumptextfaceplayer BeautyRachaelAfterText
+GenericTrainerBeautyRachael:
+	generictrainer BEAUTY, RACHAEL, EVENT_BEAT_BEAUTY_RACHAEL, BeautyRachaelSeenText, BeautyRachaelBeatenText
+
+	text "I was a Black Belt"
+	line "just one year ago."
+
+	para "The power of med-"
+	line "ical science is"
+
+	para "amazing, wouldn't"
+	line "you say?"
+	done
 
 SafariZoneNorthCooltrainerFScript:
 	faceplayer
@@ -94,14 +104,6 @@ BattleGirlPadmaBeatenText:
 	line "train harder!"
 	done
 
-BattleGirlPadmaAfterText:
-	text "If you throw your"
-	line "emotions into"
-
-	para "training, you'll"
-	line "become strong!"
-	done
-
 YoungsterTylerSeenText:
 	text "You can find #-"
 	line "mon anywhere!"
@@ -115,12 +117,6 @@ YoungsterTylerBeatenText:
 	text "I'm sorry!"
 	done
 
-YoungsterTylerAfterText:
-	text "#mon leap out"
-	line "when you least"
-	cont "expect it."
-	done
-
 BeautyRachaelSeenText:
 	text "My sundress is"
 	line "perfect for a day"
@@ -131,17 +127,6 @@ BeautyRachaelSeenText:
 BeautyRachaelBeatenText:
 	text "It's not great"
 	line "for battling…"
-	done
-
-BeautyRachaelAfterText:
-	text "I was a Black Belt"
-	line "just one year ago."
-
-	para "The power of med-"
-	line "ical science is"
-
-	para "amazing, wouldn't"
-	line "you say?"
 	done
 
 SafariZoneNorthCooltrainerFText:

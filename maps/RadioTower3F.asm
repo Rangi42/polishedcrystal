@@ -20,10 +20,10 @@ RadioTower3F_MapScriptHeader:
 	object_event  7,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
 	object_event 11,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
-	object_event  5,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  6,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 16,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  9,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  5,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  6,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 16,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  9,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
@@ -67,33 +67,45 @@ UnknownScript_0x5e58a:
 UnknownScript_0x5e59d:
 	jumpopenedtext UnknownText_0x5e85c
 
-TrainerGruntM7:
-	trainer GRUNTM, 7, EVENT_BEAT_ROCKET_GRUNTM_7, GruntM7SeenText, GruntM7BeatenText, 0, GruntM7Script
+GenericTrainerGruntM7:
+	generictrainer GRUNTM, 7, EVENT_BEAT_ROCKET_GRUNTM_7, GruntM7SeenText, GruntM7BeatenText
 
-GruntM7Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5e8d0
+	text "I failed in my"
+	line "duties…"
 
-TrainerGruntM8:
-	trainer GRUNTM, 8, EVENT_BEAT_ROCKET_GRUNTM_8, GruntM8SeenText, GruntM8BeatenText, 0, GruntM8Script
+	para "I'll be docked pay"
+	line "for this…"
+	done
 
-GruntM8Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5e944
+GenericTrainerGruntM8:
+	generictrainer GRUNTM, 8, EVENT_BEAT_ROCKET_GRUNTM_8, GruntM8SeenText, GruntM8BeatenText
 
-TrainerGruntM9:
-	trainer GRUNTM, 9, EVENT_BEAT_ROCKET_GRUNTM_9, GruntM9SeenText, GruntM9BeatenText, 0, GruntM9Script
+	text "I feel lousy over"
+	line "losing!"
 
-GruntM9Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5e9d0
+	para "Darn it! I hate"
+	line "useless #mon!"
+	done
 
-TrainerRocketScientistMarc:
-	trainer ROCKET_SCIENTIST, MARC, EVENT_BEAT_ROCKET_SCIENTIST_MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText, 0, RocketScientistMarcScript
+GenericTrainerGruntM9:
+	generictrainer GRUNTM, 9, EVENT_BEAT_ROCKET_GRUNTM_9, GruntM9SeenText, GruntM9BeatenText
 
-RocketScientistMarcScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5ea61
+	text "What?! You made it"
+	line "past our men in"
+	cont "the Underground?"
+
+	para "How could you?"
+	done
+
+GenericTrainerRocketScientistMarc:
+	generictrainer ROCKET_SCIENTIST, MARC, EVENT_BEAT_ROCKET_SCIENTIST_MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText
+
+	text "Bwahahaha…"
+
+	para "I can transmit as"
+	line "strong a signal as"
+	cont "I need from here."
+	done
 
 MapRadioTower3FSignpost2Script::
 	opentext
@@ -205,14 +217,6 @@ GruntM7BeatenText:
 	text "What?!"
 	done
 
-UnknownText_0x5e8d0:
-	text "I failed in my"
-	line "duties…"
-
-	para "I'll be docked pay"
-	line "for this…"
-	done
-
 GruntM8SeenText:
 	text "It feels great"
 	line "ordering #mon"
@@ -221,14 +225,6 @@ GruntM8SeenText:
 
 GruntM8BeatenText:
 	text "You're kidding!"
-	done
-
-UnknownText_0x5e944:
-	text "I feel lousy over"
-	line "losing!"
-
-	para "Darn it! I hate"
-	line "useless #mon!"
 	done
 
 GruntM9SeenText:
@@ -243,14 +239,6 @@ GruntM9BeatenText:
 	text "I'm done for!"
 	done
 
-UnknownText_0x5e9d0:
-	text "What?! You made it"
-	line "past our men in"
-	cont "the Underground?"
-
-	para "How could you?"
-	done
-
 RocketScientistMarcSeenText:
 	text "An unknown child"
 	line "wandering here?"
@@ -261,14 +249,6 @@ RocketScientistMarcSeenText:
 RocketScientistMarcBeatenText:
 	text "Tch! I took you"
 	line "too lightly!"
-	done
-
-UnknownText_0x5ea61:
-	text "Bwahahaha…"
-
-	para "I can transmit as"
-	line "strong a signal as"
-	cont "I need from here."
 	done
 
 UnknownText_0x5eaa4:

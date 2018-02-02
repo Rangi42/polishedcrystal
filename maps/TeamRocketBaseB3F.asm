@@ -35,8 +35,8 @@ TeamRocketBaseB3F_MapScriptHeader:
 	object_event  4,  5, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_TEAM_ROCKET_BASE
 	object_event 21,  7, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, SlowpokeTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event  5, 14, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, RaticateTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 23, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 11, 15, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 23, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 11, 15, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event 24, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6e235, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event  1, 12, PROTEIN, 1, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN
 	itemball_event  3, 12, X_SPCL_DEF, 1, EVENT_TEAM_ROCKET_BASE_B3F_X_SPCL_DEF
@@ -142,19 +142,35 @@ GruntM28Script:
 	setevent EVENT_LEARNED_RATICATE_TAIL
 	end
 
-TrainerRocketScientistRoss:
-	trainer ROCKET_SCIENTIST, ROSS, EVENT_BEAT_ROCKET_SCIENTIST_ROSS, RocketScientistRossSeenText, RocketScientistRossBeatenText, 0, RocketScientistRossScript
+GenericTrainerRocketScientistRoss:
+	generictrainer ROCKET_SCIENTIST, ROSS, EVENT_BEAT_ROCKET_SCIENTIST_ROSS, RocketScientistRossSeenText, RocketScientistRossBeatenText
 
-RocketScientistRossScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6e822
+	text "A radio signal"
+	line "that drives #-"
+	cont "mon mad…"
 
-TrainerRocketScientistMitch:
-	trainer ROCKET_SCIENTIST, MITCH, EVENT_BEAT_ROCKET_SCIENTIST_MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText, 0, RocketScientistMitchScript
+	para "My experiment is a"
+	line "complete success."
 
-RocketScientistMitchScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6e90a
+	para "My promotion is"
+	line "assured. This loss"
+
+	para "means absolutely"
+	line "nothing."
+	done
+
+GenericTrainerRocketScientistMitch:
+	generictrainer ROCKET_SCIENTIST, MITCH, EVENT_BEAT_ROCKET_SCIENTIST_MITCH, RocketScientistMitchSeenText, RocketScientistMitchBeatenText
+
+	text "If we turn up the"
+	line "power of our radio"
+
+	para "signal for broad-"
+	line "cast nationwide…"
+
+	para "The very thought"
+	line "excites me!"
+	done
 
 BossDoor:
 	dw EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
@@ -463,21 +479,6 @@ RocketScientistRossBeatenText:
 	line "error cost me…"
 	done
 
-UnknownText_0x6e822:
-	text "A radio signal"
-	line "that drives #-"
-	cont "mon mad…"
-
-	para "My experiment is a"
-	line "complete success."
-
-	para "My promotion is"
-	line "assured. This loss"
-
-	para "means absolutely"
-	line "nothing."
-	done
-
 RocketScientistMitchSeenText:
 	text "I don't care that"
 	line "#mon are hurt"
@@ -488,17 +489,6 @@ RocketScientistMitchBeatenText:
 	text "Thinking is my"
 	line "strong suit, not"
 	cont "battling."
-	done
-
-UnknownText_0x6e90a:
-	text "If we turn up the"
-	line "power of our radio"
-
-	para "signal for broad-"
-	line "cast nationwide…"
-
-	para "The very thought"
-	line "excites me!"
 	done
 
 UnknownText_0x6e970:

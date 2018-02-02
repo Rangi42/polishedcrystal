@@ -22,8 +22,8 @@ DimCave4F_MapScriptHeader:
 	db 8 ; object events
 	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
 	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
-	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
-	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
+	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerScientistJoseph, -1
+	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerScientistNigel, -1
 	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
 	itemball_event 17,  2, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
 	itemball_event 27,  8, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
@@ -64,12 +64,17 @@ DimCave4FSetUpStoneTable:
 	line "through."
 	done
 
-TrainerScientistJoseph:
-	trainer SCIENTIST, JOSEPH, EVENT_BEAT_SCIENTIST_JOSEPH, .SeenText, .BeatenText, 0, .Script
+GenericTrainerScientistJoseph:
+	generictrainer SCIENTIST, JOSEPH, EVENT_BEAT_SCIENTIST_JOSEPH, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Water underground"
+	line "leaves behind"
+	cont "mineral deposits."
+
+	para "Humans mine for"
+	line "them, and microbes"
+	cont "feed on them."
+	done
 
 .SeenText:
 	text "I'm studying the"
@@ -86,37 +91,9 @@ TrainerScientistJoseph:
 	cont "work."
 	done
 
-.AfterText:
-	text "Water underground"
-	line "leaves behind"
-	cont "mineral deposits."
+GenericTrainerScientistNigel:
+	generictrainer SCIENTIST, NIGEL, EVENT_BEAT_SCIENTIST_NIGEL, .SeenText, .BeatenText
 
-	para "Humans mine for"
-	line "them, and microbes"
-	cont "feed on them."
-	done
-
-TrainerScientistNigel:
-	trainer SCIENTIST, NIGEL, EVENT_BEAT_SCIENTIST_NIGEL, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
-
-.SeenText:
-	text "How do we get pow-"
-	line "er out of water?"
-
-	para "I'll tell you if"
-	line "you can beat me."
-	done
-
-.BeatenText:
-	text "Yikes! OK, I'll"
-	line "tell you."
-	done
-
-.AfterText:
 	text "The flowing water"
 	line "pushes through a"
 	cont "water wheel to"
@@ -130,6 +107,19 @@ TrainerScientistNigel:
 
 	para "Fascinating,"
 	line "right?"
+	done
+
+.SeenText:
+	text "How do we get pow-"
+	line "er out of water?"
+
+	para "I'll tell you if"
+	line "you can beat me."
+	done
+
+.BeatenText:
+	text "Yikes! OK, I'll"
+	line "tell you."
 	done
 
 DimCave4FSuper_nerdText:

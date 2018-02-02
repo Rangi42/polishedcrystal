@@ -21,29 +21,13 @@ SafariZoneHub_MapScriptHeader:
 	bg_event 20, 22, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
 
 	db 3 ; object events
-	object_event 26,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
+	object_event 26,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacKai, -1
 	itemball_event 15, 12, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
 	itemball_event  8, 21, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
 
-TrainerBug_maniacKai:
-	trainer BUG_MANIAC, KAI, EVENT_BEAT_BUG_MANIAC_KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText, 0, Bug_maniacKaiScript
+GenericTrainerBug_maniacKai:
+	generictrainer BUG_MANIAC, KAI, EVENT_BEAT_BUG_MANIAC_KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText
 
-Bug_maniacKaiScript:
-	end_if_just_battled
-	jumptextfaceplayer Bug_maniacKaiAfterText
-
-Bug_maniacKaiSeenText:
-	text "My Venonat evolved"
-	line "into a Venomoth?!"
-	done
-
-Bug_maniacKaiBeatenText:
-	text "I thought it would"
-	line "for sure evolve"
-	cont "into Butterfree!"
-	done
-
-Bug_maniacKaiAfterText:
 	text "Venonat is so"
 	line "similar to"
 	cont "Butterfree!"
@@ -54,6 +38,17 @@ Bug_maniacKaiAfterText:
 
 	para "Evolution is"
 	line "weird sometimes."
+	done
+
+Bug_maniacKaiSeenText:
+	text "My Venonat evolved"
+	line "into a Venomoth?!"
+	done
+
+Bug_maniacKaiBeatenText:
+	text "I thought it would"
+	line "for sure evolve"
+	cont "into Butterfree!"
 	done
 
 SafariZoneHubAreaSignText:

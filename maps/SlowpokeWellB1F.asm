@@ -13,9 +13,9 @@ SlowpokeWellB1F_MapScriptHeader:
 
 	db 9 ; object events
 	object_event  5,  2, SPRITE_PROTON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerProton2, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event 15,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM29, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM2, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event 10,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event 15,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM29, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGruntM2, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event 10,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
 	object_event 16, 14, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5a6b5, EVENT_SLOWPOKE_WELL_KURT
 	object_event  7,  4, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SlowpokeScript_0x5a681, EVENT_SLOWPOKE_WELL_SLOWPOKES
 	object_event  6,  2, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, SLOWPOKE, UnknownText_0x5ac61, EVENT_SLOWPOKE_WELL_SLOWPOKES
@@ -29,12 +29,24 @@ SlowpokeWellB1F_MapScriptHeader:
 	const SLOWPOKEWELLB1F_ROCKET_GIRL
 	const SLOWPOKEWELLB1F_KURT
 
-TrainerGruntM29:
-	trainer GRUNTM, 29, EVENT_BEAT_ROCKET_GRUNTM_29, GruntM29SeenText, GruntM29BeatenText, 0, GruntM29Script
+GenericTrainerGruntM29:
+	generictrainer GRUNTM, 29, EVENT_BEAT_ROCKET_GRUNTM_29, GruntM29SeenText, GruntM29BeatenText
 
-GruntM29Script:
-	end_if_just_battled
-	jumptextfaceplayer TrainerGruntM29SlowpokeProfitText
+	text "Sure, we've been"
+	line "hacking the tails"
+
+	para "off Slowpoke and"
+	line "selling them."
+
+	para "Everything we do"
+	line "is for profit."
+
+	para "That's right!"
+	line "We're Team Rocket,"
+
+	para "and we'll do any-"
+	line "thing for money!"
+	done
 
 TrainerProton2:
 	trainer PROTON, PROTON2, EVENT_BEAT_PROTON_2, Proton2SeenText, Proton2BeatenText, 0, Proton2Script
@@ -74,19 +86,26 @@ Proton2Script:
 	warp KURTS_HOUSE, 3, 3
 	end
 
-TrainerGruntM2:
-	trainer GRUNTM, 2, EVENT_BEAT_ROCKET_GRUNTM_2, GruntM2SeenText, GruntM2BeatenText, 0, GruntM2Script
+GenericTrainerGruntM2:
+	generictrainer GRUNTM, 2, EVENT_BEAT_ROCKET_GRUNTM_2, GruntM2SeenText, GruntM2BeatenText
 
-GruntM2Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5aaf2
+	text "We need the money,"
+	line "but selling Slow-"
+	cont "pokeTails?"
 
-TrainerGruntF1:
-	trainer GRUNTF, 1, EVENT_BEAT_ROCKET_GRUNTF_1, GruntF1SeenText, GruntF1BeatenText, 0, GruntF1Script
+	para "It's tough being a"
+	line "Rocket Grunt!"
+	done
 
-GruntF1Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5ab8d
+GenericTrainerGruntF1:
+	generictrainer GRUNTF, 1, EVENT_BEAT_ROCKET_GRUNTF_1, GruntF1SeenText, GruntF1BeatenText
+
+	text "SlowpokeTails"
+	line "grow back fast!"
+
+	para "What's wrong with"
+	line "selling them?"
+	done
 
 SlowpokeScript_0x5a681:
 	faceplayer
@@ -178,23 +197,6 @@ GruntM29BeatenText:
 	line "my day!"
 	done
 
-TrainerGruntM29SlowpokeProfitText:
-	text "Sure, we've been"
-	line "hacking the tails"
-
-	para "off Slowpoke and"
-	line "selling them."
-
-	para "Everything we do"
-	line "is for profit."
-
-	para "That's right!"
-	line "We're Team Rocket,"
-
-	para "and we'll do any-"
-	line "thing for money!"
-	done
-
 Proton2SeenText:
 	text "What do you want?"
 
@@ -243,15 +245,6 @@ GruntM2BeatenText:
 	line "Too strong…"
 	done
 
-UnknownText_0x5aaf2:
-	text "We need the money,"
-	line "but selling Slow-"
-	cont "pokeTails?"
-
-	para "It's tough being a"
-	line "Rocket Grunt!"
-	done
-
 GruntF1SeenText:
 	text "Stop taking Tails?"
 
@@ -261,14 +254,6 @@ GruntF1SeenText:
 
 GruntF1BeatenText:
 	text "You rotten brat!"
-	done
-
-UnknownText_0x5ab8d:
-	text "SlowpokeTails"
-	line "grow back fast!"
-
-	para "What's wrong with"
-	line "selling them?"
 	done
 
 UnknownText_0x5abcb:

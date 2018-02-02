@@ -28,12 +28,12 @@ WarehouseEntrance_MapScriptHeader:
 	object_event  5, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
 	object_event  5, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
 	object_event  5, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7c132, EVENT_WAREHOUSE_ENTRANCE_GRANNY
-	object_event  3, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdEric, -1
-	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
-	object_event  1, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
-	object_event  0,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacDonald, -1
+	object_event  3, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdEric, -1
+	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdTeru, -1
+	object_event  1, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
+	object_event  0,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
 	itemball_event  4, 25, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
-	object_event  1, 18, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1
+	object_event  1, 18, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCosplayerClara, -1
 
 	const_def 1 ; object constants
 	const WAREHOUSEENTRANCE_GRAMPS
@@ -132,40 +132,56 @@ WarehouseEntranceCheckDayOfWeek:
 	appear WAREHOUSEENTRANCE_GRANNY
 	return
 
-TrainerSupernerdEric:
-	trainer SUPER_NERD, ERIC, EVENT_BEAT_SUPER_NERD_ERIC, SupernerdEricSeenText, SupernerdEricBeatenText, 0, SupernerdEricScript
+GenericTrainerSupernerdEric:
+	generictrainer SUPER_NERD, ERIC, EVENT_BEAT_SUPER_NERD_ERIC, SupernerdEricSeenText, SupernerdEricBeatenText
 
-SupernerdEricScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c36c
+	text "I guess I have to"
+	line "do things fair and"
+	cont "square…"
+	done
 
-TrainerSupernerdTeru:
-	trainer SUPER_NERD, TERU, EVENT_BEAT_SUPER_NERD_TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText, 0, SupernerdTeruScript
+GenericTrainerSupernerdTeru:
+	generictrainer SUPER_NERD, TERU, EVENT_BEAT_SUPER_NERD_TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText
 
-SupernerdTeruScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c410
+	text "I know my #mon"
+	line "type alignments."
 
-TrainerPokemaniacIssac:
-	trainer POKEMANIAC, ISSAC, EVENT_BEAT_POKEMANIAC_ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText, 0, PokemaniacIssacScript
+	para "But I only use one"
+	line "type of #mon."
+	done
 
-PokemaniacIssacScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c498
+GenericTrainerPokemaniacIssac:
+	generictrainer POKEMANIAC, ISSAC, EVENT_BEAT_POKEMANIAC_ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText
 
-TrainerPokemaniacDonald:
-	trainer POKEMANIAC, DONALD, EVENT_BEAT_POKEMANIAC_DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText, 0, PokemaniacDonaldScript
+	text "Your #mon will"
+	line "like you more if"
 
-PokemaniacDonaldScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c52f
+	para "you give them"
+	line "haircuts."
+	done
 
-TrainerCosplayerClara:
-	trainer COSPLAYER, CLARA, EVENT_BEAT_COSPLAYER_CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText, 0, CosplayerClaraScript
+GenericTrainerPokemaniacDonald:
+	generictrainer POKEMANIAC, DONALD, EVENT_BEAT_POKEMANIAC_DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText
 
-CosplayerClaraScript:
-	end_if_just_battled
-	jumptextfaceplayer CosplayerClaraAfterText
+	text "Are you making a"
+	line "#dex? Here's a"
+	cont "hot tip."
+
+	para "The Hiker on Route"
+	line "33, Anthony, is a"
+	cont "good guy."
+
+	para "He'll phone you if"
+	line "he sees any rare"
+	cont "#mon."
+	done
+
+GenericTrainerCosplayerClara:
+	generictrainer COSPLAYER, CLARA, EVENT_BEAT_COSPLAYER_CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText
+
+	text "I made this cos-"
+	line "tume myself!"
+	done
 
 GrannyScript_0x7c132:
 	checkcode VAR_WEEKDAY
@@ -381,12 +397,6 @@ SupernerdEricBeatenText:
 	text "…Grumble…"
 	done
 
-UnknownText_0x7c36c:
-	text "I guess I have to"
-	line "do things fair and"
-	cont "square…"
-	done
-
 SupernerdTeruSeenText:
 	text "Do you consider"
 	line "type alignments in"
@@ -403,14 +413,6 @@ SupernerdTeruBeatenText:
 	text "Ow, ow, ow!"
 	done
 
-UnknownText_0x7c410:
-	text "I know my #mon"
-	line "type alignments."
-
-	para "But I only use one"
-	line "type of #mon."
-	done
-
 PokemaniacIssacSeenText:
 	text "My #mon just"
 	line "got a haircut!"
@@ -421,14 +423,6 @@ PokemaniacIssacSeenText:
 
 PokemaniacIssacBeatenText:
 	text "Aiyeeee!"
-	done
-
-UnknownText_0x7c498:
-	text "Your #mon will"
-	line "like you more if"
-
-	para "you give them"
-	line "haircuts."
 	done
 
 PokemaniacDonaldSeenText:
@@ -444,20 +438,6 @@ PokemaniacDonaldBeatenText:
 	line "That makes me mad!"
 	done
 
-UnknownText_0x7c52f:
-	text "Are you making a"
-	line "#dex? Here's a"
-	cont "hot tip."
-
-	para "The Hiker on Route"
-	line "33, Anthony, is a"
-	cont "good guy."
-
-	para "He'll phone you if"
-	line "he sees any rare"
-	cont "#mon."
-	done
-
 CosplayerClaraSeenText:
 	text "Pix! Vul, pix! ♥"
 	done
@@ -468,11 +448,6 @@ CosplayerClaraBeatenText:
 
 	para "Nope! It's just"
 	line "quality cosplay."
-	done
-
-CosplayerClaraAfterText:
-	text "I made this cos-"
-	line "tume myself!"
 	done
 
 UnknownText_0x7c5b0:

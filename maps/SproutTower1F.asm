@@ -21,7 +21,7 @@ SproutTower1F_MapScriptHeader:
 	object_event  4,  7, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18460a, -1
 	object_event  9, 12, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
 	object_event  7,  9, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18469d, -1
-	object_event  1,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageChow, -1
+	object_event  1,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSageChow, -1
 	itemball_event 14,  7, PARLYZ_HEAL, 1, EVENT_SPROUT_TOWER1F_PARLYZ_HEAL
 
 GrannyScript_0x184504:
@@ -31,12 +31,16 @@ GrannyScript_0x184504:
 .metric
 	jumptextfaceplayer UnknownText_0x184649_Metric
 
-TrainerSageChow:
-	trainer SAGE, CHOW, EVENT_BEAT_SAGE_CHOW, SageChowSeenText, SageChowBeatenText, 0, SageChowScript
+GenericTrainerSageChow:
+	generictrainer SAGE, CHOW, EVENT_BEAT_SAGE_CHOW, SageChowSeenText, SageChowBeatenText
 
-SageChowScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x184583
+	text "All living beings"
+	line "coexist through"
+	cont "cooperation."
+
+	para "We must always be"
+	line "thankful for this."
+	done
 
 SageChowSeenText:
 	text "We stand guard in"
@@ -49,15 +53,6 @@ SageChowSeenText:
 
 SageChowBeatenText:
 	text "Th-Thank you!"
-	done
-
-UnknownText_0x184583:
-	text "All living beings"
-	line "coexist through"
-	cont "cooperation."
-
-	para "We must always be"
-	line "thankful for this."
 	done
 
 UnknownText_0x1845d8:

@@ -18,15 +18,16 @@ CliffCave_MapScriptHeader:
 	bg_event  9,  9, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
 
 	db 2 ; object events
-	object_event  9,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
+	object_event  9,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
 	object_event  5, 33, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
 
-TrainerGruntM22:
-	trainer GRUNTM, 22, EVENT_BEAT_ROCKET_GRUNTM_22, GruntM22SeenText, GruntM22BeatenText, 0, GruntM22Script
+GenericTrainerGruntM22:
+	generictrainer GRUNTM, 22, EVENT_BEAT_ROCKET_GRUNTM_22, GruntM22SeenText, GruntM22BeatenText
 
-GruntM22Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM22AfterText
+	text "No wonder you"
+	line "were able to"
+	cont "reach here."
+	done
 
 GruntM22SeenText:
 	text "Hey! You got past"
@@ -35,12 +36,6 @@ GruntM22SeenText:
 
 GruntM22BeatenText:
 	text "Aieee!"
-	done
-
-GruntM22AfterText:
-	text "No wonder you"
-	line "were able to"
-	cont "reach here."
 	done
 
 CliffCaveRocketText:

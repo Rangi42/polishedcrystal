@@ -18,8 +18,8 @@ VictoryRoad2F_MapScriptHeader:
 
 	db 6 ; object events
 	object_event 20,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
-	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
-	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
+	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerVeteranfJoanne, -1
+	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfSylvie, -1
 	tmhmball_event  8,  4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
 	itemball_event 20,  5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
 	itemball_event  9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
@@ -77,19 +77,21 @@ UnknownScript_0x7451f:
 	playmapmusic
 	end
 
-TrainerVeteranfJoanne:
-	trainer VETERANF, JOANNE, EVENT_BEAT_VETERANF_JOANNE, VeteranfJoanneSeenText, VeteranfJoanneBeatenText, 0, VeteranfJoanneScript
+GenericTrainerVeteranfJoanne:
+	generictrainer VETERANF, JOANNE, EVENT_BEAT_VETERANF_JOANNE, VeteranfJoanneSeenText, VeteranfJoanneBeatenText
 
-VeteranfJoanneScript:
-	end_if_just_battled
-	jumptextfaceplayer VeteranfJoanneAfterText
+	text "You earned the"
+	line "right to be on"
+	cont "Victory Road!"
+	done
 
-TrainerVeteranfSylvie:
-	trainer VETERANF, SYLVIE, EVENT_BEAT_VETERANF_SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText, 0, VeteranfSylvieScript
+GenericTrainerVeteranfSylvie:
+	generictrainer VETERANF, SYLVIE, EVENT_BEAT_VETERANF_SYLVIE, VeteranfSylvieSeenText, VeteranfSylvieBeatenText
 
-VeteranfSylvieScript:
-	end_if_just_battled
-	jumptextfaceplayer VeteranfSylvieAfterText
+	text "Did somebody"
+	line "capture Moltres"
+	cont "already?"
+	done
 
 MovementData_0x74539:
 	step_right
@@ -190,12 +192,6 @@ VeteranfJoanneBeatenText:
 	text "Aiyah!"
 	done
 
-VeteranfJoanneAfterText:
-	text "You earned the"
-	line "right to be on"
-	cont "Victory Road!"
-	done
-
 VeteranfSylvieSeenText:
 	text "There's supposed"
 	line "to be a Moltres"
@@ -211,8 +207,3 @@ VeteranfSylvieBeatenText:
 	cont "#mon…"
 	done
 
-VeteranfSylvieAfterText:
-	text "Did somebody"
-	line "capture Moltres"
-	cont "already?"
-	done

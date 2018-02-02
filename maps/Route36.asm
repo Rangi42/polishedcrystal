@@ -28,12 +28,12 @@ Route36_MapScriptHeader:
 	object_event 37, 12, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
 	object_event 25,  6, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
 	object_event 30,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route36CooltrainerfChiaraScript, -1
-	object_event 24, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicMark, -1
+	object_event 24, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicMark, -1
 	object_event 35, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
 	object_event 57,  9, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
 	object_event 48,  9, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
 	fruittree_event 25,  4, FRUITTREE_ROUTE_36, RAWST_BERRY
-	object_event 50,  5, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
+	object_event 50,  5, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlMolly, -1
 
 	const_def 1 ; object constants
 	const ROUTE36_WEIRD_TREE
@@ -401,19 +401,22 @@ Route36CooltrainerfChiaraScript:
 	line "you!"
 	done
 
-TrainerPsychicMark:
-	trainer PSYCHIC_T, MARK, EVENT_BEAT_PSYCHIC_MARK, PsychicMarkSeenText, PsychicMarkBeatenText, 0, .Script
+GenericTrainerPsychicMark:
+	generictrainer PSYCHIC_T, MARK, EVENT_BEAT_PSYCHIC_MARK, PsychicMarkSeenText, PsychicMarkBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19471e
+	text "I'd be strong if"
+	line "only I could tell"
 
-TrainerSchoolgirlMolly:
-	trainer SCHOOLGIRL, MOLLY, EVENT_BEAT_SCHOOLGIRL_MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText, 0, .Script
+	para "what my opponent"
+	line "was thinking."
+	done
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer SchoolgirlMollyAfterText
+GenericTrainerSchoolgirlMolly:
+	generictrainer SCHOOLGIRL, MOLLY, EVENT_BEAT_SCHOOLGIRL_MOLLY, SchoolgirlMollySeenText, SchoolgirlMollyBeatenText
+
+	text "I still have a"
+	line "lot to learn."
+	done
 
 ArthurScript:
 	faceplayer
@@ -609,14 +612,6 @@ PsychicMarkBeatenText:
 	text "I misread you!"
 	done
 
-UnknownText_0x19471e:
-	text "I'd be strong if"
-	line "only I could tell"
-
-	para "what my opponent"
-	line "was thinking."
-	done
-
 SchoolgirlMollySeenText:
 	text "Mr.Earl taught me"
 	line "how to battle with"
@@ -625,11 +620,6 @@ SchoolgirlMollySeenText:
 
 SchoolgirlMollyBeatenText:
 	text "My studying…"
-	done
-
-SchoolgirlMollyAfterText:
-	text "I still have a"
-	line "lot to learn."
 	done
 
 SchoolboyAlan1SeenText:

@@ -19,24 +19,11 @@ MountMortar2FInside_MapScriptHeader:
 	itemball_event 16,  5, DRAGON_SCALE, 1, EVENT_MOUNT_MORTAR_2F_INSIDE_DRAGON_SCALE
 	itemball_event  9, 11, ELIXER, 1, EVENT_MOUNT_MORTAR_2F_INSIDE_ELIXER
 	itemball_event 28,  5, ESCAPE_ROPE, 1, EVENT_MOUNT_MORTAR_2F_INSIDE_ESCAPE_ROPE
-	object_event 13, 26, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdHugh, -1
+	object_event 13, 26, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdHugh, -1
 
-TrainerSupernerdHugh:
-	trainer SUPER_NERD, HUGH, EVENT_BEAT_SUPER_NERD_HUGH, SupernerdHughSeenText, SupernerdHughBeatenText, 0, SupernerdHughScript
+GenericTrainerSupernerdHugh:
+	generictrainer SUPER_NERD, HUGH, EVENT_BEAT_SUPER_NERD_HUGH, SupernerdHughSeenText, SupernerdHughBeatenText
 
-SupernerdHughScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7e10e
-
-SupernerdHughSeenText:
-	text "Yo! Markus!"
-	done
-
-SupernerdHughBeatenText:
-	text "Sorry, my mistake."
-	done
-
-UnknownText_0x7e10e:
 	text "I'm investigating"
 	line "Mt.Mortar, but my"
 	cont "pal's gone AWOL."
@@ -47,3 +34,12 @@ UnknownText_0x7e10e:
 	para "Slowpoke that can"
 	line "use Strength?"
 	done
+
+SupernerdHughSeenText:
+	text "Yo! Markus!"
+	done
+
+SupernerdHughBeatenText:
+	text "Sorry, my mistake."
+	done
+

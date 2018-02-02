@@ -33,7 +33,7 @@ IlexForest_MapScriptHeader:
 	object_event  9, 25, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestLyraScript, EVENT_ILEX_FOREST_LYRA
 	object_event  9, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalApprenticeScript, EVENT_ILEX_FOREST_APPRENTICE
 	object_event 17, 16, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestHeadbuttGuyScript, -1
-	object_event 14,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 0, TrainerBug_catcherWayne, -1
+	object_event 14,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerBug_catcherWayne, -1
 	cuttree_event 10, 27, EVENT_ILEX_FOREST_CUT_TREE
 	itemball_event 22, 34, REVIVE, 1, EVENT_ILEX_FOREST_REVIVE
 	itemball_event 11, 19, X_ATTACK, 1, EVENT_ILEX_FOREST_X_ATTACK
@@ -397,12 +397,20 @@ IlexForestTutorHeadbuttScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_IlexForestTutorTaught
 
-TrainerBug_catcherWayne:
-	trainer BUG_CATCHER, WAYNE, EVENT_BEAT_BUG_CATCHER_WAYNE, Bug_catcherWayneSeenText, Bug_catcherWayneBeatenText, 0, Bug_catcherWayneScript
+GenericTrainerBug_catcherWayne:
+	generictrainer BUG_CATCHER, WAYNE, EVENT_BEAT_BUG_CATCHER_WAYNE, Bug_catcherWayneSeenText, Bug_catcherWayneBeatenText
 
-Bug_catcherWayneScript:
-	end_if_just_battled
-	jumptextfaceplayer Bug_catcherWayneAfterText
+	text "A #mon I've"
+	line "never seen before"
+
+	para "fell out of the"
+	line "tree when I used"
+	cont "Headbutt."
+
+	para "I ought to use"
+	line "Headbutt in other"
+	cont "places too."
+	done
 
 MapIlexForestSignpost4Script:
 	checkevent EVENT_FOREST_IS_RESTLESS
@@ -1106,15 +1114,3 @@ Bug_catcherWayneBeatenText:
 	line "#mon before…"
 	done
 
-Bug_catcherWayneAfterText:
-	text "A #mon I've"
-	line "never seen before"
-
-	para "fell out of the"
-	line "tree when I used"
-	cont "Headbutt."
-
-	para "I ought to use"
-	line "Headbutt in other"
-	cont "places too."
-	done

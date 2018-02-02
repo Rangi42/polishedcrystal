@@ -58,9 +58,9 @@ TeamRocketBaseB2F_MapScriptHeader:
 	object_event 22,  5, SPRITE_ELECTRODE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
 	object_event 22,  7, SPRITE_ELECTRODE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
 	object_event 22,  9, SPRITE_ELECTRODE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	object_event 25, 13, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM17, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM18, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 21, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM19, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 25, 13, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM17, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGruntM18, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 21, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGruntM19, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event  3, 10, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B2F_HYPER_POTION
 
 	const_def 1 ; object constants
@@ -189,26 +189,45 @@ UnknownScript_0x6d0be:
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
 
-TrainerGruntM17:
-	trainer GRUNTM, 17, EVENT_BEAT_ROCKET_GRUNTM_17, GruntM17SeenText, GruntM17BeatenText, 0, GruntM17Script
+GenericTrainerGruntM17:
+	generictrainer GRUNTM, 17, EVENT_BEAT_ROCKET_GRUNTM_17, GruntM17SeenText, GruntM17BeatenText
 
-GruntM17Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6db88
+	text "Heh, I'm just a"
+	line "Grunt."
 
-TrainerGruntM18:
-	trainer GRUNTM, 18, EVENT_BEAT_ROCKET_GRUNTM_18, GruntM18SeenText, GruntM18BeatenText, 0, GruntM18Script
+	para "I don't know the"
+	line "password. Too bad"
+	cont "for you."
+	done
 
-GruntM18Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6dc1a
+GenericTrainerGruntM18:
+	generictrainer GRUNTM, 18, EVENT_BEAT_ROCKET_GRUNTM_18, GruntM18SeenText, GruntM18BeatenText
 
-TrainerGruntM19:
-	trainer GRUNTM, 19, EVENT_BEAT_ROCKET_GRUNTM_19, GruntM19SeenText, GruntM19BeatenText, 0, GruntM19Script
+	text "I got wiped out on"
+	line "the last mission"
+	cont "by a kid too."
 
-GruntM19Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6dcd1
+	para "When we were ab-"
+	line "ducting #mon,"
+
+	para "this kid with long"
+	line "red hair and mean-"
+
+	para "looking eyes just"
+	line "creamed me…"
+	done
+
+GenericTrainerGruntM19:
+	generictrainer GRUNTM, 19, EVENT_BEAT_ROCKET_GRUNTM_19, GruntM19SeenText, GruntM19BeatenText
+
+	text "Heh, only the boss"
+	line "knows the password"
+	cont "for that door."
+
+	para "Where's the boss?"
+	line "Who knows? Go look"
+	cont "for yourself."
+	done
 
 RocketElectrode1:
 	cry ELECTRODE
@@ -756,15 +775,6 @@ GruntM17BeatenText:
 	text "What? I lost?"
 	done
 
-UnknownText_0x6db88:
-	text "Heh, I'm just a"
-	line "Grunt."
-
-	para "I don't know the"
-	line "password. Too bad"
-	cont "for you."
-	done
-
 GruntM18SeenText:
 	text "Oh, a kid? I don't"
 	line "really like this,"
@@ -777,21 +787,6 @@ GruntM18BeatenText:
 	text "I knew I'd lose…"
 	done
 
-UnknownText_0x6dc1a:
-	text "I got wiped out on"
-	line "the last mission"
-	cont "by a kid too."
-
-	para "When we were ab-"
-	line "ducting #mon,"
-
-	para "this kid with long"
-	line "red hair and mean-"
-
-	para "looking eyes just"
-	line "creamed me…"
-	done
-
 GruntM19SeenText:
 	text "You rotten little"
 	line "pest!"
@@ -799,16 +794,6 @@ GruntM19SeenText:
 
 GruntM19BeatenText:
 	text "Grrrr…"
-	done
-
-UnknownText_0x6dcd1:
-	text "Heh, only the boss"
-	line "knows the password"
-	cont "for that door."
-
-	para "Where's the boss?"
-	line "Who knows? Go look"
-	cont "for yourself."
 	done
 
 UnknownText_0x6dd39:

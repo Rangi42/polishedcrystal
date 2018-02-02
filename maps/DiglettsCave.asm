@@ -19,10 +19,10 @@ DiglettsCave_MapScriptHeader:
 
 	db 8 ; object events
 	object_event 11, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
-	object_event  5, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
-	object_event 25, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
-	object_event 16, 21, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
-	object_event  9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
+	object_event  5, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerGerard, -1
+	object_event 25, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerDent, -1
+	object_event 16, 21, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltInigo, -1
+	object_event  9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerSmith, -1
 	object_event 37, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
 	object_event 20, 27, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
 	itemball_event 13, 28, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
@@ -107,12 +107,16 @@ DiglettsCaveFossilManiacScript:
 	line "next time!"
 	done
 
-TrainerHikerGerard:
-	trainer HIKER, GERARD, EVENT_BEAT_HIKER_GERARD, .SeenText, .BeatenText, 0, .Script
+GenericTrainerHikerGerard:
+	generictrainer HIKER, GERARD, EVENT_BEAT_HIKER_GERARD, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "This place makes"
+	line "me so nervous."
+
+	para "What if a Diglett"
+	line "attacks me out of"
+	cont "nowhere?"
+	done
 
 .SeenText:
 	text "Aah! I think that"
@@ -124,21 +128,13 @@ TrainerHikerGerard:
 	line "my imagination."
 	done
 
-.AfterText:
-	text "This place makes"
-	line "me so nervous."
+GenericTrainerHikerDent:
+	generictrainer HIKER, DENT, EVENT_BEAT_HIKER_DENT, .SeenText, .BeatenText
 
-	para "What if a Diglett"
-	line "attacks me out of"
-	cont "nowhere?"
+	text "I'll fit right in"
+	line "with Pewter Gym's"
+	cont "buff crew. Hohoh!"
 	done
-
-TrainerHikerDent:
-	trainer HIKER, DENT, EVENT_BEAT_HIKER_DENT, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm headed to"
@@ -155,18 +151,16 @@ TrainerHikerDent:
 	cont "than me!"
 	done
 
-.AfterText:
-	text "I'll fit right in"
-	line "with Pewter Gym's"
-	cont "buff crew. Hohoh!"
+GenericTrainerBlackbeltInigo:
+	generictrainer BLACKBELT_T, INIGO, EVENT_BEAT_BLACKBELT_INIGO, .SeenText, .BeatenText
+
+	text "Making noises won't"
+	line "make you a better"
+	cont "fighter, but it"
+
+	para "can intimidate"
+	line "your foes."
 	done
-
-TrainerBlackbeltInigo:
-	trainer BLACKBELT_T, INIGO, EVENT_BEAT_BLACKBELT_INIGO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Prepare for"
@@ -178,21 +172,13 @@ TrainerBlackbeltInigo:
 	text "HIIYAAAH!"
 	done
 
-.AfterText:
-	text "Making noises won't"
-	line "make you a better"
-	cont "fighter, but it"
+GenericTrainerEngineerSmith:
+	generictrainer ENGINEER, SMITH, EVENT_BEAT_ENGINEER_SMITH, .SeenText, .BeatenText
 
-	para "can intimidate"
-	line "your foes."
+	text "Those Diglett are"
+	line "just natural"
+	cont "engineers."
 	done
-
-TrainerEngineerSmith:
-	trainer ENGINEER, SMITH, EVENT_BEAT_ENGINEER_SMITH, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How did Diglett"
@@ -202,12 +188,6 @@ TrainerEngineerSmith:
 
 .BeatenText:
 	text "Amazing!"
-	done
-
-.AfterText:
-	text "Those Diglett are"
-	line "just natural"
-	cont "engineers."
 	done
 
 DiglettsCaveCooltrainerfText:

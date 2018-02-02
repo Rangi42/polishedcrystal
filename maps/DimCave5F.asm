@@ -18,9 +18,9 @@ DimCave5F_MapScriptHeader:
 	db 8 ; object events
 	strengthboulder_event 25,  5, EVENT_BOULDER_IN_DIM_CAVE_5F
 	object_event 13,  4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
-	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
-	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
-	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
+	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSuper_nerdFoote, -1
+	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHoward, -1
+	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSuper_nerdDave, -1
 	itemball_event 13, 13, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
 	itemball_event 25, 26, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
 	itemball_event  9, 30, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
@@ -163,12 +163,18 @@ DimCave5FRileyScript:
 	line "way out."
 	done
 
-TrainerSuper_nerdFoote:
-	trainer SUPER_NERD, FOOTE, EVENT_BEAT_SUPER_NERD_FOOTE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSuper_nerdFoote:
+	generictrainer SUPER_NERD, FOOTE, EVENT_BEAT_SUPER_NERD_FOOTE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Save one life or"
+	line "save five?"
+
+	para "As a #mon"
+	line "trainer, you may"
+
+	para "have the power to"
+	line "save all six!"
+	done
 
 .SeenText:
 	text "I have a conundrum"
@@ -187,23 +193,16 @@ TrainerSuper_nerdFoote:
 	cont "How Zen!"
 	done
 
-.AfterText:
-	text "Save one life or"
-	line "save five?"
+GenericTrainerEngineerHoward:
+	generictrainer ENGINEER, HOWARD, EVENT_BEAT_ENGINEER_HOWARD, .SeenText, .BeatenText
 
-	para "As a #mon"
-	line "trainer, you may"
+	text "Water flows south"
+	line "from Cerulean Cape"
 
-	para "have the power to"
-	line "save all six!"
+	para "and follows a"
+	line "steady course to"
+	cont "the Power Plant."
 	done
-
-TrainerEngineerHoward:
-	trainer ENGINEER, HOWARD, EVENT_BEAT_ENGINEER_HOWARD, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This waterfall"
@@ -215,21 +214,15 @@ TrainerEngineerHoward:
 	text "No! A blackout…"
 	done
 
-.AfterText:
-	text "Water flows south"
-	line "from Cerulean Cape"
+GenericTrainerSuper_nerdDave:
+	generictrainer SUPER_NERD, DAVE, EVENT_BEAT_SUPER_NERD_DAVE, .SeenText, .BeatenText
 
-	para "and follows a"
-	line "steady course to"
-	cont "the Power Plant."
+	text "You need a mining"
+	line "pick to mine."
+
+	para "But you can't get"
+	line "them around here."
 	done
-
-TrainerSuper_nerdDave:
-	trainer SUPER_NERD, DAVE, EVENT_BEAT_SUPER_NERD_DAVE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've maxed out my"
@@ -244,10 +237,3 @@ TrainerSuper_nerdDave:
 	line "battling…"
 	done
 
-.AfterText:
-	text "You need a mining"
-	line "pick to mine."
-
-	para "But you can't get"
-	line "them around here."
-	done

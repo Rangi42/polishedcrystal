@@ -12,39 +12,46 @@ Route1_MapScriptHeader:
 	bg_event  9, 27, SIGNPOST_JUMPTEXT, Route1SignText
 
 	db 5 ; object events
-	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
-	object_event 17, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboySherman, -1
-	object_event 16, 21, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFrench, -1
-	object_event 11, 25, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1
+	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboyDanny, -1
+	object_event 17, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboySherman, -1
+	object_event 16, 21, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermFrench, -1
+	object_event 11, 25, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainerfQuinn, -1
 	fruittree_event  5,  7, FRUITTREE_ROUTE_1, FIGY_BERRY
 
-TrainerSchoolboyDanny:
-	trainer SCHOOLBOY, DANNY, EVENT_BEAT_SCHOOLBOY_DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText, 0, SchoolboyDannyScript
+GenericTrainerSchoolboyDanny:
+	generictrainer SCHOOLBOY, DANNY, EVENT_BEAT_SCHOOLBOY_DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText
 
-SchoolboyDannyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac5d7
+	text "For trainers, it's"
+	line "a given that we'll"
 
-TrainerSchoolboySherman:
-	trainer SCHOOLBOY, SHERMAN, EVENT_BEAT_SCHOOLBOY_SHERMAN, SchoolboyShermanSeenText, SchoolboyShermanBeatenText, 0, SchoolboyShermanScript
+	para "battle whenever we"
+	line "meet."
+	done
 
-SchoolboyShermanScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolboyShermanAfterText
+GenericTrainerSchoolboySherman:
+	generictrainer SCHOOLBOY, SHERMAN, EVENT_BEAT_SCHOOLBOY_SHERMAN, SchoolboyShermanSeenText, SchoolboyShermanBeatenText
 
-TrainerCooltrainermFrench:
-	trainer COOLTRAINERM, FRENCH, EVENT_BEAT_COOLTRAINERM_FRENCH, CooltrainermFrenchSeenText, CooltrainermFrenchBeatenText, 0, CooltrainermFrenchScript
+	text "I should record"
+	line "all of today's"
+	cont "mistakes."
+	done
 
-CooltrainermFrenchScript:
-	end_if_just_battled
-	jumptextfaceplayer CooltrainermFrenchAfterText
+GenericTrainerCooltrainermFrench:
+	generictrainer COOLTRAINERM, FRENCH, EVENT_BEAT_COOLTRAINERM_FRENCH, CooltrainermFrenchSeenText, CooltrainermFrenchBeatenText
 
-TrainerCooltrainerfQuinn:
-	trainer COOLTRAINERF, QUINN, EVENT_BEAT_COOLTRAINERF_QUINN, CooltrainerfQuinnSeenText, CooltrainerfQuinnBeatenText, 0, CooltrainerfQuinnScript
+	text "That was a great"
+	line "fight!"
+	cont "Don't you agree?"
+	done
 
-CooltrainerfQuinnScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac640
+GenericTrainerCooltrainerfQuinn:
+	generictrainer COOLTRAINERF, QUINN, EVENT_BEAT_COOLTRAINERF_QUINN, CooltrainerfQuinnSeenText, CooltrainerfQuinnBeatenText
+
+	text "You're strong."
+
+	para "You obviously must"
+	line "have trained hard."
+	done
 
 SchoolboyDannySeenText:
 	text "If trainers meet,"
@@ -57,14 +64,6 @@ SchoolboyDannyBeatenText:
 	line "losing record…"
 	done
 
-UnknownText_0x1ac5d7:
-	text "For trainers, it's"
-	line "a given that we'll"
-
-	para "battle whenever we"
-	line "meet."
-	done
-
 SchoolboyShermanSeenText:
 	text "Right after class,"
 	line "I head outside to"
@@ -74,12 +73,6 @@ SchoolboyShermanSeenText:
 SchoolboyShermanBeatenText:
 	text "I need to follow"
 	line "the textbook."
-	done
-
-SchoolboyShermanAfterText:
-	text "I should record"
-	line "all of today's"
-	cont "mistakes."
 	done
 
 CooltrainermFrenchSeenText:
@@ -95,12 +88,6 @@ CooltrainermFrenchBeatenText:
 	line "expected!"
 	done
 
-CooltrainermFrenchAfterText:
-	text "That was a great"
-	line "fight!"
-	cont "Don't you agree?"
-	done
-
 CooltrainerfQuinnSeenText:
 	text "You there!"
 	line "Want to battle?"
@@ -108,13 +95,6 @@ CooltrainerfQuinnSeenText:
 
 CooltrainerfQuinnBeatenText:
 	text "Down and out…"
-	done
-
-UnknownText_0x1ac640:
-	text "You're strong."
-
-	para "You obviously must"
-	line "have trained hard."
 	done
 
 Route1SignText:

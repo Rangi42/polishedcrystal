@@ -17,20 +17,23 @@ WarmBeach_MapScriptHeader:
 	bg_event  6, 20, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
 	db 7 ; object events
-	object_event 11,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
-	object_event  4, 12, SPRITE_LADY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
+	object_event 11,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermGareth, -1
+	object_event  4, 12, SPRITE_LADY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerAromaLadyHolly, -1
 	object_event 11, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1
 	object_event 22, 20, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainerfText, -1
 	object_event 17, 21, SPRITE_SLOWKING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
 	object_event 11, 20, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
 	object_event  6, 23, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachLadyText, -1
 
-TrainerSightseermGareth:
-	trainer SIGHTSEERM, GARETH, EVENT_BEAT_SIGHTSEERM_GARETH, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSightseermGareth:
+	generictrainer SIGHTSEERM, GARETH, EVENT_BEAT_SIGHTSEERM_GARETH, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Even outside of"
+	line "battle, these"
+
+	para "items make memor-"
+	line "able souvenirs."
+	done
 
 .SeenText:
 	text "I just picked up"
@@ -45,20 +48,13 @@ TrainerSightseermGareth:
 	line "enough…"
 	done
 
-.AfterText:
-	text "Even outside of"
-	line "battle, these"
+GenericTrainerAromaLadyHolly:
+	generictrainer AROMA_LADY, HOLLY, EVENT_BEAT_AROMA_LADY_HOLLY, .SeenText, .BeatenText
 
-	para "items make memor-"
-	line "able souvenirs."
+	text "The sense of smell"
+	line "is vital to living"
+	cont "in nature."
 	done
-
-TrainerAromaLadyHolly:
-	trainer AROMA_LADY, HOLLY, EVENT_BEAT_AROMA_LADY_HOLLY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I am at one with"
@@ -69,12 +65,6 @@ TrainerAromaLadyHolly:
 .BeatenText:
 	text "Defeat has its"
 	line "own scent…"
-	done
-
-.AfterText:
-	text "The sense of smell"
-	line "is vital to living"
-	cont "in nature."
 	done
 
 WarmBeachCooltrainermText:

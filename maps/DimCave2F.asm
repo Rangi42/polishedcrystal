@@ -22,8 +22,8 @@ DimCave2F_MapScriptHeader:
 
 	db 7 ; object events
 	object_event 14, 21, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
-	object_event 15, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
-	object_event  7, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
+	object_event 15, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerEngineerLang, -1
+	object_event  7, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerDerrick, -1
 	itemball_event 28, 12, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
 	itemball_event  2, 15, IRON, 1, EVENT_DIM_CAVE_2F_IRON
 	itemball_event 24, 18, LIGHT_CLAY, 1, EVENT_DIM_CAVE_2F_LIGHT_CLAY
@@ -37,12 +37,19 @@ DimCave2FBouldersLand:
 .skip
 	return
 
-TrainerEngineerLang:
-	trainer ENGINEER, LANG, EVENT_BEAT_ENGINEER_LANG, .SeenText, .BeatenText, 0, .Script
+GenericTrainerEngineerLang:
+	generictrainer ENGINEER, LANG, EVENT_BEAT_ENGINEER_LANG, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Three years ago"
+	line "the Power Plant"
+	cont "was a wreck."
+
+	para "We got it up and"
+	line "running to power"
+
+	para "the Magnet Train"
+	line "to Johto."
+	done
 
 .SeenText:
 	text "We mined ore from"
@@ -56,24 +63,15 @@ TrainerEngineerLang:
 	text "A power failure!"
 	done
 
-.AfterText:
-	text "Three years ago"
-	line "the Power Plant"
-	cont "was a wreck."
+GenericTrainerHikerDerrick:
+	generictrainer HIKER, DERRICK, EVENT_BEAT_HIKER_DERRICK, .SeenText, .BeatenText
 
-	para "We got it up and"
-	line "running to power"
+	text "It goes without"
+	line "saying, but I love"
 
-	para "the Magnet Train"
-	line "to Johto."
+	para "hiking with my"
+	line "#mon."
 	done
-
-TrainerHikerDerrick:
-	trainer HIKER, DERRICK, EVENT_BEAT_HIKER_DERRICK, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "♪ A-hiking we"
@@ -85,14 +83,6 @@ TrainerHikerDerrick:
 	text "♪ Eee-iiii-ah-"
 	line "dee-oh, a-hiking"
 	cont "we will go! ♪"
-	done
-
-.AfterText:
-	text "It goes without"
-	line "saying, but I love"
-
-	para "hiking with my"
-	line "#mon."
 	done
 
 DimCave2FFallenBoulderScript:

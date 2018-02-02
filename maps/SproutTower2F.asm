@@ -15,23 +15,32 @@ SproutTower2F_MapScriptHeader:
 	bg_event 10, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1848c8
 
 	db 3 ; object events
-	object_event 10,  3, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSageNico, -1
-	object_event  7, 14, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSageEdmond, -1
+	object_event 10,  3, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSageNico, -1
+	object_event  7, 14, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSageEdmond, -1
 	itemball_event  1,  1, X_ACCURACY, 1, EVENT_SPROUT_TOWER2F_X_ACCURACY
 
-TrainerSageNico:
-	trainer SAGE, NICO, EVENT_BEAT_SAGE_NICO, SageNicoSeenText, SageNicoBeatenText, 0, SageNicoScript
+GenericTrainerSageNico:
+	generictrainer SAGE, NICO, EVENT_BEAT_SAGE_NICO, SageNicoSeenText, SageNicoBeatenText
 
-SageNicoScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1847ff
+	text "The flexible pil-"
+	line "lar protects the"
 
-TrainerSageEdmond:
-	trainer SAGE, EDMOND, EVENT_BEAT_SAGE_EDMOND, SageEdmondSeenText, SageEdmondBeatenText, 0, SageEdmondScript
+	para "tower, even from"
+	line "earthquakes."
+	done
 
-SageEdmondScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x18486f
+GenericTrainerSageEdmond:
+	generictrainer SAGE, EDMOND, EVENT_BEAT_SAGE_EDMOND, SageEdmondSeenText, SageEdmondBeatenText
+
+	text "I tried to copy"
+	line "Bellsprout's"
+
+	para "gentle movements"
+	line "for battle…"
+
+	para "But I didn't train"
+	line "well enough."
+	done
 
 SageNicoSeenText:
 	text "However hard we"
@@ -44,14 +53,6 @@ SageNicoBeatenText:
 	line "I'm too weak."
 	done
 
-UnknownText_0x1847ff:
-	text "The flexible pil-"
-	line "lar protects the"
-
-	para "tower, even from"
-	line "earthquakes."
-	done
-
 SageEdmondSeenText:
 	text "…Sway like leaves"
 	line "in the wind…"
@@ -59,17 +60,6 @@ SageEdmondSeenText:
 
 SageEdmondBeatenText:
 	text "Oh, I'm weak!"
-	done
-
-UnknownText_0x18486f:
-	text "I tried to copy"
-	line "Bellsprout's"
-
-	para "gentle movements"
-	line "for battle…"
-
-	para "But I didn't train"
-	line "well enough."
 	done
 
 UnknownText_0x1848c8:

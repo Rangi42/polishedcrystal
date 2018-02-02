@@ -17,58 +17,74 @@ UnionCave1F_MapScriptHeader:
 	bg_event  8, 33, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_UNION_CAVE_1F_HIDDEN_PARLYZ_HEAL
 
 	db 10 ; object events
-	object_event  3, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerDaniel, -1
-	object_event  7, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacLarry, -1
-	object_event 11, 20, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerRussell, -1
-	object_event 15, 39, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherRay, -1
-	object_event 11, 32, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherBill, -1
-	object_event  5,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerRuin_maniacJones, -1
+	object_event  3, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerDaniel, -1
+	object_event  7, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacLarry, -1
+	object_event 11, 20, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerRussell, -1
+	object_event 15, 39, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerFirebreatherRay, -1
+	object_event 11, 32, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerFirebreatherBill, -1
+	object_event  5,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerRuin_maniacJones, -1
 	itemball_event 15, 33, GREAT_BALL, 1, EVENT_UNION_CAVE_1F_GREAT_BALL
 	itemball_event  2,  8, X_ATTACK, 1, EVENT_UNION_CAVE_1F_X_ATTACK
 	itemball_event  3, 28, POTION, 1, EVENT_UNION_CAVE_1F_POTION
 	itemball_event 12, 45, AWAKENING, 1, EVENT_UNION_CAVE_1F_AWAKENING
 
-TrainerPokemaniacLarry:
-	trainer POKEMANIAC, LARRY, EVENT_BEAT_POKEMANIAC_LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText, 0, PokemaniacLarryScript
+GenericTrainerPokemaniacLarry:
+	generictrainer POKEMANIAC, LARRY, EVENT_BEAT_POKEMANIAC_LARRY, PokemaniacLarrySeenText, PokemaniacLarryBeatenText
 
-PokemaniacLarryScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x59d31
+	text "Every Friday, you"
+	line "can hear #mon"
 
-TrainerHikerRussell:
-	trainer HIKER, RUSSELL, EVENT_BEAT_HIKER_RUSSELL, HikerRussellSeenText, HikerRussellBeatenText, 0, HikerRussellScript
+	para "roars from deep"
+	line "inside the cave."
+	done
 
-HikerRussellScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x59c6c
+GenericTrainerHikerRussell:
+	generictrainer HIKER, RUSSELL, EVENT_BEAT_HIKER_RUSSELL, HikerRussellSeenText, HikerRussellBeatenText
 
-TrainerHikerDaniel:
-	trainer HIKER, DANIEL, EVENT_BEAT_HIKER_DANIEL, HikerDanielSeenText, HikerDanielBeatenText, 0, HikerDanielScript
+	text "All right, then!"
+	line "I've decided."
 
-HikerDanielScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x59dc9
+	para "I'm not leaving"
+	line "until my #mon"
+	cont "get tougher!"
+	done
 
-TrainerFirebreatherBill:
-	trainer FIREBREATHER, BILL, EVENT_BEAT_FIREBREATHER_BILL, FirebreatherBillSeenText, FirebreatherBillBeatenText, 0, FirebreatherBillScript
+GenericTrainerHikerDaniel:
+	generictrainer HIKER, DANIEL, EVENT_BEAT_HIKER_DANIEL, HikerDanielSeenText, HikerDanielBeatenText
 
-FirebreatherBillScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x59e6f
+	text "I was conned into"
+	line "buying a Slowpoke-"
+	cont "Tail."
 
-TrainerFirebreatherRay:
-	trainer FIREBREATHER, RAY, EVENT_BEAT_FIREBREATHER_RAY, FirebreatherRaySeenText, FirebreatherRayBeatenText, 0, FirebreatherRayScript
+	para "I feel sorry for"
+	line "the poor #mon."
+	done
 
-FirebreatherRayScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x59efc
+GenericTrainerFirebreatherBill:
+	generictrainer FIREBREATHER, BILL, EVENT_BEAT_FIREBREATHER_BILL, FirebreatherBillSeenText, FirebreatherBillBeatenText
 
-TrainerRuin_maniacJones:
-	trainer RUIN_MANIAC, JONES, EVENT_BEAT_RUIN_MANIAC_JONES, Ruin_maniacJonesSeenText, Ruin_maniacJonesBeatenText, 0, Ruin_maniacJonesScript
+	text "On weekends, you"
+	line "can hear strange"
 
-Ruin_maniacJonesScript:
-	end_if_just_battled
-	jumptextfaceplayer Ruin_maniacJonesAfterText
+	para "roars from deep in"
+	line "the cave."
+	done
+
+GenericTrainerFirebreatherRay:
+	generictrainer FIREBREATHER, RAY, EVENT_BEAT_FIREBREATHER_RAY, FirebreatherRaySeenText, FirebreatherRayBeatenText
+
+	text "It's my #mon's"
+	line "fire that lights"
+	cont "up this cave."
+	done
+
+GenericTrainerRuin_maniacJones:
+	generictrainer RUIN_MANIAC, JONES, EVENT_BEAT_RUIN_MANIAC_JONES, Ruin_maniacJonesSeenText, Ruin_maniacJonesBeatenText
+
+	text "The Ruins are hid-"
+	line "ing something…"
+	cont "I just know it!"
+	done
 
 HikerRussellSeenText:
 	text "You're headed to"
@@ -81,15 +97,6 @@ HikerRussellSeenText:
 
 HikerRussellBeatenText:
 	text "Oh, oh, oh!"
-	done
-
-UnknownText_0x59c6c:
-	text "All right, then!"
-	line "I've decided."
-
-	para "I'm not leaving"
-	line "until my #mon"
-	cont "get tougher!"
 	done
 
 PokemaniacLarrySeenText:
@@ -109,14 +116,6 @@ PokemaniacLarryBeatenText:
 	line "mon…"
 	done
 
-UnknownText_0x59d31:
-	text "Every Friday, you"
-	line "can hear #mon"
-
-	para "roars from deep"
-	line "inside the cave."
-	done
-
 HikerDanielSeenText:
 	text "Whoa! What a"
 	line "surprise!"
@@ -128,15 +127,6 @@ HikerDanielSeenText:
 HikerDanielBeatenText:
 	text "Whoa! I'm beaten"
 	line "big time!"
-	done
-
-UnknownText_0x59dc9:
-	text "I was conned into"
-	line "buying a Slowpoke-"
-	cont "Tail."
-
-	para "I feel sorry for"
-	line "the poor #mon."
 	done
 
 FirebreatherBillSeenText:
@@ -152,14 +142,6 @@ FirebreatherBillBeatenText:
 	text "I flamed out!"
 	done
 
-UnknownText_0x59e6f:
-	text "On weekends, you"
-	line "can hear strange"
-
-	para "roars from deep in"
-	line "the cave."
-	done
-
 FirebreatherRaySeenText:
 	text "If it's light, a"
 	line "cave isn't scary."
@@ -173,12 +155,6 @@ FirebreatherRayBeatenText:
 	text "Flash!"
 	done
 
-UnknownText_0x59efc:
-	text "It's my #mon's"
-	line "fire that lights"
-	cont "up this cave."
-	done
-
 Ruin_maniacJonesSeenText:
 	text "Have you explored"
 	line "the Ruins of Alph?"
@@ -188,8 +164,3 @@ Ruin_maniacJonesBeatenText:
 	text "Gahahah!"
 	done
 
-Ruin_maniacJonesAfterText:
-	text "The Ruins are hid-"
-	line "ing something…"
-	cont "I just know it!"
-	done

@@ -23,31 +23,42 @@ SafariZoneWest_MapScriptHeader:
 	bg_event 13,  6, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
 	db 4 ; object events
-	object_event 22, 23, SPRITE_LASS, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
-	object_event 23, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
-	object_event 12, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
+	object_event 22, 23, SPRITE_LASS, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerLassDuplica, -1
+	object_event 23, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperAmos, -1
+	object_event 12, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerTamerBrett, -1
 	itemball_event 14,  9, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
 
-TrainerLassDuplica:
-	trainer LASS, DUPLICA, EVENT_BEAT_LASS_DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript
+GenericTrainerLassDuplica:
+	generictrainer LASS, DUPLICA, EVENT_BEAT_LASS_DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText
 
-LassDuplicaScript:
-	end_if_just_battled
-	jumptextfaceplayer LassDuplicaAfterText
+	text "I'm really good at"
+	line "impressions!"
 
-TrainerCamperAmos:
-	trainer CAMPER, AMOS, EVENT_BEAT_CAMPER_AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
+	para "Someday I'll become"
+	line "a Fuchsia Gym"
 
-CamperAmosScript:
-	end_if_just_battled
-	jumptextfaceplayer CamperAmosAfterText
+	para "Trainer and mimic"
+	line "Janine."
+	done
 
-TrainerTamerBrett:
-	trainer TAMER, BRETT, EVENT_BEAT_TAMER_BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
+GenericTrainerCamperAmos:
+	generictrainer CAMPER, AMOS, EVENT_BEAT_CAMPER_AMOS, CamperAmosSeenText, CamperAmosBeatenText
 
-TamerBrettScript:
-	end_if_just_battled
-	jumptextfaceplayer TamerBrettAfterText
+	text "I'll search far"
+	line "and wide for new"
+	cont "#mon."
+	done
+
+GenericTrainerTamerBrett:
+	generictrainer TAMER, BRETT, EVENT_BEAT_TAMER_BRETT, TamerBrettSeenText, TamerBrettBeatenText
+
+	text "You have to com-"
+	line "mand #mon with"
+	cont "confidence."
+
+	para "Earning Badges can"
+	line "help with that."
+	done
 
 LassDuplicaSeenText:
 	text "To truly use"
@@ -58,17 +69,6 @@ LassDuplicaSeenText:
 LassDuplicaBeatenText:
 	text "I've got a lot"
 	line "to learn."
-	done
-
-LassDuplicaAfterText:
-	text "I'm really good at"
-	line "impressions!"
-
-	para "Someday I'll become"
-	line "a Fuchsia Gym"
-
-	para "Trainer and mimic"
-	line "Janine."
 	done
 
 CamperAmosSeenText:
@@ -86,12 +86,6 @@ CamperAmosBeatenText:
 	cont "them!"
 	done
 
-CamperAmosAfterText:
-	text "I'll search far"
-	line "and wide for new"
-	cont "#mon."
-	done
-
 TamerBrettSeenText:
 	text "Do you know how to"
 	line "handle aggressive"
@@ -100,15 +94,6 @@ TamerBrettSeenText:
 
 TamerBrettBeatenText:
 	text "Yeah, you do!"
-	done
-
-TamerBrettAfterText:
-	text "You have to com-"
-	line "mand #mon with"
-	cont "confidence."
-
-	para "Earning Badges can"
-	line "help with that."
 	done
 
 SafariZoneWestAreaSignText:

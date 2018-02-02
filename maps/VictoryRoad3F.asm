@@ -13,15 +13,18 @@ VictoryRoad3F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 11,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmRemy, -1
+	object_event 11,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerVeteranmRemy, -1
 	itemball_event 16, 13, RAZOR_FANG, 1, EVENT_VICTORY_ROAD_3F_RAZOR_FANG
 
-TrainerVeteranmRemy:
-	trainer VETERANM, REMY, EVENT_BEAT_VETERANM_REMY, VeteranmRemySeenText, VeteranmRemyBeatenText, 0, VeteranmRemyScript
+GenericTrainerVeteranmRemy:
+	generictrainer VETERANM, REMY, EVENT_BEAT_VETERANM_REMY, VeteranmRemySeenText, VeteranmRemyBeatenText
 
-VeteranmRemyScript:
-	end_if_just_battled
-	jumptextfaceplayer VeteranmRemyAfterText
+	text "I can beat you"
+	line "when it comes to"
+
+	para "knowledge about"
+	line "#mon!"
+	done
 
 VeteranmRemySeenText:
 	text "If you can get"
@@ -36,10 +39,3 @@ VeteranmRemyBeatenText:
 	line "Inconceivable!"
 	done
 
-VeteranmRemyAfterText:
-	text "I can beat you"
-	line "when it comes to"
-
-	para "knowledge about"
-	line "#mon!"
-	done

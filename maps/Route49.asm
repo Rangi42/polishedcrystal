@@ -14,10 +14,10 @@ Route49_MapScriptHeader:
 	db 11 ; object events
 	object_event  5, 12, SPRITE_LADY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49LadyText, -1
 	object_event 31, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49YoungsterText, -1
-	object_event 15,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerSightseermHari, -1
-	object_event 12, 16, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerJordan, -1
-	object_event 25, 19, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyPeony, -1
-	object_event 25,  7, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristmGeddy, -1
+	object_event 15,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSightseermHari, -1
+	object_event 12, 16, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerJordan, -1
+	object_event 25, 19, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyPeony, -1
+	object_event 25,  7, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGuitaristmGeddy, -1
 	itemball_event 21,  6, WHITE_HERB, 1, EVENT_ROUTE_49_WHITE_HERB
 	itemball_event 18, 20, CALCIUM, 1, EVENT_ROUTE_49_CALCIUM
 	fruittree_event 29, 14, FRUITTREE_ROUTE_49, LUM_BERRY
@@ -41,12 +41,18 @@ Route49YoungsterText:
 	cont "jungle!"
 	done
 
-TrainerSightseermHari:
-	trainer SIGHTSEERM, HARI, EVENT_BEAT_SIGHTSEERM_HARI, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSightseermHari:
+	generictrainer SIGHTSEERM, HARI, EVENT_BEAT_SIGHTSEERM_HARI, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "I've been traveling"
+	line "a lot just to meet"
+
+	para "every #mon"
+	line "Prof."
+
+	para "Wanna see the pho-"
+	line "tos I took?"
+	done
 
 .SeenText:
 	text "Hey! I came here"
@@ -58,23 +64,17 @@ TrainerSightseermHari:
 	line "know her?"
 	done
 
-.AfterText:
-	text "I've been traveling"
-	line "a lot just to meet"
+GenericTrainerTamerJordan:
+	generictrainer TAMER, JORDAN, EVENT_BEAT_TAMER_JORDAN, .SeenText, .BeatenText
 
-	para "every #mon"
-	line "Prof."
+	text "How did you tame"
+	line "your #mon so"
+	cont "well?"
 
-	para "Wanna see the pho-"
-	line "tos I took?"
+	para "They're strong,"
+	line "but calm at the"
+	cont "same time."
 	done
-
-TrainerTamerJordan:
-	trainer TAMER, JORDAN, EVENT_BEAT_TAMER_JORDAN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Be careful! #-"
@@ -87,22 +87,15 @@ TrainerTamerJordan:
 	line "yours are wilder."
 	done
 
-.AfterText:
-	text "How did you tame"
-	line "your #mon so"
-	cont "well?"
+GenericTrainerAromaLadyPeony:
+	generictrainer AROMA_LADY, PEONY, EVENT_BEAT_AROMA_LADY_PEONY, .SeenText, .BeatenText
 
-	para "They're strong,"
-	line "but calm at the"
-	cont "same time."
+	text "My Bellossom loves"
+	line "living on this"
+
+	para "peaceful little"
+	line "island."
 	done
-
-TrainerAromaLadyPeony:
-	trainer AROMA_LADY, PEONY, EVENT_BEAT_AROMA_LADY_PEONY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you want to see"
@@ -115,20 +108,16 @@ TrainerAromaLadyPeony:
 	cont "battle…"
 	done
 
-.AfterText:
-	text "My Bellossom loves"
-	line "living on this"
+GenericTrainerGuitaristmGeddy:
+	generictrainer GUITARISTM, GEDDY, EVENT_BEAT_GUITARISTM_GEDDY, .SeenText, .BeatenText
 
-	para "peaceful little"
-	line "island."
+	text "You think that I'm"
+	line "playing a guitar?"
+	cont "Wrong!"
+
+	para "It's a 6-string"
+	line "bass."
 	done
-
-TrainerGuitaristmGeddy:
-	trainer GUITARISTM, GEDDY, EVENT_BEAT_GUITARISTM_GEDDY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It seems to me I"
@@ -148,15 +137,6 @@ TrainerGuitaristmGeddy:
 	text "Good battle!"
 	line "I may write a"
 	cont "song about it."
-	done
-
-.AfterText:
-	text "You think that I'm"
-	line "playing a guitar?"
-	cont "Wrong!"
-
-	para "It's a 6-string"
-	line "bass."
 	done
 
 Route49SignText:

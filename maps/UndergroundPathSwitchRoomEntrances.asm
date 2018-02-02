@@ -29,12 +29,12 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 
 	db 12 ; object events
 	object_event 23,  3, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
-	object_event  9, 12, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  4,  8, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 17,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 11,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM11, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  3,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 19, 12, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGruntF3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  9, 12, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  4,  8, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 17,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM13, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 11,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM11, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  3,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM25, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 19, 12, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGruntF3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  3, 25, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_TeacherText, -1
 	object_event  8, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd1Text, -1
 	object_event 19, 25, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UndergroundPathSwitchRoomEntrances_SuperNerd2Text, -1
@@ -210,47 +210,65 @@ UndergroundSilverBattleScript:
 	playmusic MUSIC_RIVAL_AFTER
 	jumptext UndergroundSilverAfterText
 
-TrainerGruntM11:
-	trainer GRUNTM, 11, EVENT_BEAT_ROCKET_GRUNTM_11, GruntM11SeenText, GruntM11BeatenText, 0, GruntM11Script
+GenericTrainerGruntM11:
+	generictrainer GRUNTM, 11, EVENT_BEAT_ROCKET_GRUNTM_11, GruntM11SeenText, GruntM11BeatenText
 
-GruntM11Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM11AfterText
+	text "I'm confused too…"
+	line "The switch on the"
 
-TrainerGruntM25:
-	trainer GRUNTM, 25, EVENT_BEAT_ROCKET_GRUNTM_25, GruntM25SeenText, GruntM25BeatenText, 0, GruntM25Script
+	para "end is the one to"
+	line "press first, but…"
+	done
 
-GruntM25Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM25AfterText
+GenericTrainerGruntM25:
+	generictrainer GRUNTM, 25, EVENT_BEAT_ROCKET_GRUNTM_25, GruntM25SeenText, GruntM25BeatenText
 
-TrainerBurglarDuncan:
-	trainer BURGLAR, DUNCAN, EVENT_BEAT_BURGLAR_DUNCAN, BurglarDuncanSeenText, BurglarDuncanBeatenText, 0, BurglarDuncanScript
+	text "All right. A hint!"
 
-BurglarDuncanScript:
-	end_if_just_battled
-	jumptextfaceplayer BurglarDuncanAfterText
+	para "Change the order"
+	line "of switching."
 
-TrainerBurglarOrson:
-	trainer BURGLAR, ORSON, EVENT_BEAT_BURGLAR_ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText, 0, BurglarOrsonScript
+	para "That'll change the"
+	line "ways the shutters"
+	cont "open and close."
+	done
 
-BurglarOrsonScript:
-	end_if_just_battled
-	jumptextfaceplayer BurglarOrsonAfterText
+GenericTrainerBurglarDuncan:
+	generictrainer BURGLAR, DUNCAN, EVENT_BEAT_BURGLAR_DUNCAN, BurglarDuncanSeenText, BurglarDuncanBeatenText
 
-TrainerGruntM13:
-	trainer GRUNTM, 13, EVENT_BEAT_ROCKET_GRUNTM_13, GruntM13SeenText, GruntM13BeatenText, 0, GruntM13Script
+	text "Steal and sell!"
+	line "That's basic in"
+	cont "crime, kid!"
+	done
 
-GruntM13Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM13AfterText
+GenericTrainerBurglarOrson:
+	generictrainer BURGLAR, ORSON, EVENT_BEAT_BURGLAR_ORSON, BurglarOrsonSeenText, BurglarOrsonBeatenText
 
-TrainerGruntF3:
-	trainer GRUNTF, 3, EVENT_BEAT_ROCKET_GRUNTF_3, GruntF3SeenText, GruntF3BeatenText, 0, GruntF3Script
+	text "Underground Ware-"
+	line "house?"
 
-GruntF3Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntF3AfterText
+	para "What do you want"
+	line "to go there for?"
+
+	para "There's nothing"
+	line "down there."
+	done
+
+GenericTrainerGruntM13:
+	generictrainer GRUNTM, 13, EVENT_BEAT_ROCKET_GRUNTM_13, GruntM13SeenText, GruntM13BeatenText
+
+	text "You must have ice"
+	line "in your veins to"
+	cont "dis Team Rocket."
+	done
+
+GenericTrainerGruntF3:
+	generictrainer GRUNTF, 3, EVENT_BEAT_ROCKET_GRUNTF_3, GruntF3SeenText, GruntF3BeatenText
+
+	text "Go wherever you'd"
+	line "like! Get lost!"
+	cont "See if I care!"
+	done
 
 Switch1Script:
 	opentext
@@ -757,14 +775,6 @@ GruntM11BeatenText:
 	line "by indecision!"
 	done
 
-GruntM11AfterText:
-	text "I'm confused too…"
-	line "The switch on the"
-
-	para "end is the one to"
-	line "press first, but…"
-	done
-
 GruntM25SeenText:
 	text "Kwahaha!"
 
@@ -781,17 +791,6 @@ GruntM25BeatenText:
 	line "I blew it."
 	done
 
-GruntM25AfterText:
-	text "All right. A hint!"
-
-	para "Change the order"
-	line "of switching."
-
-	para "That'll change the"
-	line "ways the shutters"
-	cont "open and close."
-	done
-
 BurglarDuncanSeenText:
 	text "Fork over your"
 	line "goodies!"
@@ -799,12 +798,6 @@ BurglarDuncanSeenText:
 
 BurglarDuncanBeatenText:
 	text "Mercy!"
-	done
-
-BurglarDuncanAfterText:
-	text "Steal and sell!"
-	line "That's basic in"
-	cont "crime, kid!"
 	done
 
 BurglarOrsonSeenText:
@@ -820,17 +813,6 @@ BurglarOrsonBeatenText:
 	text "Over the top!"
 	done
 
-BurglarOrsonAfterText:
-	text "Underground Ware-"
-	line "house?"
-
-	para "What do you want"
-	line "to go there for?"
-
-	para "There's nothing"
-	line "down there."
-	done
-
 GruntM13SeenText:
 	text "I don't care if"
 	line "you're lost."
@@ -843,12 +825,6 @@ GruntM13SeenText:
 GruntM13BeatenText:
 	text "Urk! Yeah, think"
 	line "you're cool, huh?"
-	done
-
-GruntM13AfterText:
-	text "You must have ice"
-	line "in your veins to"
-	cont "dis Team Rocket."
 	done
 
 SwitchRoomText_Switch1:
@@ -870,12 +846,6 @@ GruntF3SeenText:
 
 GruntF3BeatenText:
 	text "How could you?"
-	done
-
-GruntF3AfterText:
-	text "Go wherever you'd"
-	line "like! Get lost!"
-	cont "See if I care!"
 	done
 
 SwitchRoomText_OffTurnOn:

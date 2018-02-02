@@ -15,8 +15,8 @@ PewterGym_MapScriptHeader:
 
 	db 4 ; object events
 	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrockScript_0x1a2864, -1
-	object_event  2,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperJerry, -1
-	object_event  7,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerEdwin, -1
+	object_event  2,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperJerry, -1
+	object_event  7,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerEdwin, -1
 	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, PewterGymGuyScript, -1
 
 BrockScript_0x1a2864:
@@ -66,19 +66,25 @@ BrockScript_0x1a2864:
 BrockAfterTMScript:
 	jumpopenedtext UnknownText_0x1a2ada
 
-TrainerCamperJerry:
-	trainer CAMPER, JERRY, EVENT_BEAT_CAMPER_JERRY, CamperJerrySeenText, CamperJerryBeatenText, 0, CamperJerryScript
+GenericTrainerCamperJerry:
+	generictrainer CAMPER, JERRY, EVENT_BEAT_CAMPER_JERRY, CamperJerrySeenText, CamperJerryBeatenText
 
-CamperJerryScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a2c0f
+	text "Hey, you! Trainer"
+	line "from Johto! Brock"
 
-TrainerHikerEdwin:
-	trainer HIKER, EDWIN, EVENT_BEAT_HIKER_EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText, 0, HikerEdwinScript
+	para "is tough. He'll"
+	line "punish you if you"
 
-HikerEdwinScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerEdwinAfterText
+	para "don't take him"
+	line "seriously."
+	done
+
+GenericTrainerHikerEdwin:
+	generictrainer HIKER, EDWIN, EVENT_BEAT_HIKER_EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText
+
+	text "Phew… Broken"
+	line "in pieces."
+	done
 
 PewterGymGuyScript:
 	checkevent EVENT_BEAT_BROCK
@@ -188,28 +194,12 @@ CamperJerryBeatenText:
 	line "these battles…"
 	done
 
-UnknownText_0x1a2c0f:
-	text "Hey, you! Trainer"
-	line "from Johto! Brock"
-
-	para "is tough. He'll"
-	line "punish you if you"
-
-	para "don't take him"
-	line "seriously."
-	done
-
 HikerEdwinSeenText:
 	text "R-r-r-R-R--CRASH!"
 	done
 
 HikerEdwinBeatenText:
 	text "BOOM!"
-	done
-
-HikerEdwinAfterText:
-	text "Phew… Broken"
-	line "in pieces."
 	done
 
 PewterGymGuyText:

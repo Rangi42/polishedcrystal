@@ -31,10 +31,10 @@ YellowForest_MapScriptHeader:
 	object_event 47,  6, SPRITE_YELLOW, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
 	object_event 49, 26, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
 	object_event 31,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
-	object_event 19, 41, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlSarah, -1
-	object_event 13, 34, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlIsabel, -1
-	object_event  4, 38, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherKathryn, -1
-	object_event 43, 42, SPRITE_BREEDER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederSophie, -1
+	object_event 19, 41, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlSarah, -1
+	object_event 13, 34, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlIsabel, -1
+	object_event  4, 38, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerTeacherKathryn, -1
+	object_event 43, 42, SPRITE_BREEDER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBreederSophie, -1
 	object_event 15, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
 	tmhmball_event 25, 18, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
 	itemball_event 32, 26, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
@@ -90,33 +90,46 @@ YellowForest_FinishBridge:
 	ld [wYellowForestTrigger], a ; dotrigger a
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
-TrainerSchoolgirlSarah:
-	trainer SCHOOLGIRL, SARAH, EVENT_BEAT_SCHOOLGIRL_SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText, 0, SchoolgirlSarahScript
+GenericTrainerSchoolgirlSarah:
+	generictrainer SCHOOLGIRL, SARAH, EVENT_BEAT_SCHOOLGIRL_SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText
 
-SchoolgirlSarahScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolgirlSarahAfterText
+	text "If we were at my"
+	line "school, I'd have"
+	cont "beaten you!"
+	done
 
-TrainerSchoolgirlIsabel:
-	trainer SCHOOLGIRL, ISABEL, EVENT_BEAT_SCHOOLGIRL_ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText, 0, SchoolgirlIsabelScript
+GenericTrainerSchoolgirlIsabel:
+	generictrainer SCHOOLGIRL, ISABEL, EVENT_BEAT_SCHOOLGIRL_ISABEL, SchoolgirlIsabelSeenText, SchoolgirlIsabelBeatenText
 
-SchoolgirlIsabelScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolgirlIsabelAfterText
+	text "We're learning"
+	line "about how #mon"
 
-TrainerTeacherKathryn:
-	trainer TEACHER, KATHRYN, EVENT_BEAT_TEACHER_KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText, 0, TeacherKathrynScript
+	para "thrive together"
+	line "in the wild."
+	done
 
-TeacherKathrynScript:
-	end_if_just_battled
-	jumptextfaceplayer TeacherKathrynAfterText
+GenericTrainerTeacherKathryn:
+	generictrainer TEACHER, KATHRYN, EVENT_BEAT_TEACHER_KATHRYN, TeacherKathrynSeenText, TeacherKathrynBeatenText
 
-TrainerBreederSophie:
-	trainer BREEDER, SOPHIE, EVENT_BEAT_BREEDER_SOPHIE, BreederSophieSeenText, BreederSophieBeatenText, 0, BreederSophieScript
+	text "Keeping an eye on"
+	line "everyone during a"
 
-BreederSophieScript:
-	end_if_just_battled
-	jumptextfaceplayer BreederSophieAfterText
+	para "field trip is"
+	line "hard work."
+	done
+
+GenericTrainerBreederSophie:
+	generictrainer BREEDER, SOPHIE, EVENT_BEAT_BREEDER_SOPHIE, BreederSophieSeenText, BreederSophieBeatenText
+
+	text "Sometimes Pikachu"
+	line "use their electric"
+
+	para "shocks to revive"
+	line "fainted ones."
+
+	para "That's just the"
+	line "cutest!"
+	done
 
 YellowForestWalkerScript:
 	showtextfaceplayer YellowForestWalkerSeenText
@@ -245,12 +258,6 @@ SchoolgirlSarahBeatenText:
 	line "You made me lose!"
 	done
 
-SchoolgirlSarahAfterText:
-	text "If we were at my"
-	line "school, I'd have"
-	cont "beaten you!"
-	done
-
 SchoolgirlIsabelSeenText:
 	text "Do you have cute"
 	line "#mon like the"
@@ -260,14 +267,6 @@ SchoolgirlIsabelSeenText:
 SchoolgirlIsabelBeatenText:
 	text "You have really"
 	line "strong #mon!"
-	done
-
-SchoolgirlIsabelAfterText:
-	text "We're learning"
-	line "about how #mon"
-
-	para "thrive together"
-	line "in the wild."
 	done
 
 TeacherKathrynSeenText:
@@ -284,14 +283,6 @@ TeacherKathrynBeatenText:
 	line "make me cry…"
 	done
 
-TeacherKathrynAfterText:
-	text "Keeping an eye on"
-	line "everyone during a"
-
-	para "field trip is"
-	line "hard work."
-	done
-
 BreederSophieSeenText:
 	text "Did you know that"
 	line "Pikachu is an"
@@ -300,17 +291,6 @@ BreederSophieSeenText:
 
 BreederSophieBeatenText:
 	text "I thought so!"
-	done
-
-BreederSophieAfterText:
-	text "Sometimes Pikachu"
-	line "use their electric"
-
-	para "shocks to revive"
-	line "fainted ones."
-
-	para "That's just the"
-	line "cutest!"
 	done
 
 YellowForestWalkerSeenText:

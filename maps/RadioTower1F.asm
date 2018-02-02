@@ -20,7 +20,7 @@ RadioTower1F_MapScriptHeader:
 	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
 	object_event 17,  5, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d476, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d4ac, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 12,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
 
 	const_def 1 ; object constants
@@ -202,12 +202,15 @@ UnknownScript_0x5ce42:
 UnknownScript_0x5ce4b:
 	jumpopenedtext UnknownText_0x5d443
 
-TrainerGruntM3:
-	trainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText, 0, GruntM3Script
+GenericTrainerGruntM3:
+	generictrainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText
 
-GruntM3Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5d5a2
+	text "You're too strong."
+
+	para "Our plan could be"
+	line "ruined. I must"
+	cont "warn the others…"
+	done
 
 RadioTower1FWhitneyScript:
 	showtextfaceplayer RadioTower1FWhitney1Text
@@ -485,14 +488,6 @@ GruntM3SeenText:
 GruntM3BeatenText:
 	text "Too strong! We"
 	line "must watch you…"
-	done
-
-UnknownText_0x5d5a2:
-	text "You're too strong."
-
-	para "Our plan could be"
-	line "ruined. I must"
-	cont "warn the others…"
 	done
 
 RadioTower1FWhitney1Text:

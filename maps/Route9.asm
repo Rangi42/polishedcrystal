@@ -13,68 +13,19 @@ Route9_MapScriptHeader:
 	bg_event 42, 12, SIGNPOST_ITEM + SOFT_SAND, EVENT_ROUTE_9_HIDDEN_SOFT_SAND
 
 	db 9 ; object events
-	object_event 25, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
-	object_event 43,  8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerHeidi, -1
-	object_event 15,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1
-	object_event 16, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerEdna, -1
-	object_event 34,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerTim, -1
-	object_event 44, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSidney, -1
+	object_event 25, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperDean, -1
+	object_event 43,  8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPicnickerHeidi, -1
+	object_event 15,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerCamperSid, -1
+	object_event 16, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPicnickerEdna, -1
+	object_event 34,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerTim, -1
+	object_event 44, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerSidney, -1
 	itemball_event 26,  2, MAX_POTION, 1, EVENT_ROUTE_9_MAX_POTION
 	tmhmball_event 45,  2, TM_FLASH_CANNON, EVENT_ROUTE_9_TM_FLASH_CANNON
 	cuttree_event  4,  8, EVENT_ROUTE_9_CUT_TREE
 
-TrainerCamperDean:
-	trainer CAMPER, DEAN, EVENT_BEAT_CAMPER_DEAN, CamperDeanSeenText, CamperDeanBeatenText, 0, CamperDeanScript
+GenericTrainerCamperDean:
+	generictrainer CAMPER, DEAN, EVENT_BEAT_CAMPER_DEAN, CamperDeanSeenText, CamperDeanBeatenText
 
-CamperDeanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1aafd9
-
-TrainerPicnickerHeidi:
-	trainer PICNICKER, HEIDI, EVENT_BEAT_PICNICKER_HEIDI, PicnickerHeidiSeenText, PicnickerHeidiBeatenText, 0, PicnickerHeidiScript
-
-PicnickerHeidiScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ab07c
-
-TrainerCamperSid:
-	trainer CAMPER, SID, EVENT_BEAT_CAMPER_SID, CamperSidSeenText, CamperSidBeatenText, 0, CamperSidScript
-
-CamperSidScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ab0f6
-
-TrainerPicnickerEdna:
-	trainer PICNICKER, EDNA, EVENT_BEAT_PICNICKER_EDNA, PicnickerEdnaSeenText, PicnickerEdnaBeatenText, 0, PicnickerEdnaScript
-
-PicnickerEdnaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ab15f
-
-TrainerHikerTim:
-	trainer HIKER, TIM, EVENT_BEAT_HIKER_TIM, HikerTimSeenText, HikerTimBeatenText, 0, HikerTimScript
-
-HikerTimScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ab210
-
-TrainerHikerSidney:
-	trainer HIKER, SIDNEY, EVENT_BEAT_HIKER_SIDNEY, HikerSidneySeenText, HikerSidneyBeatenText, 0, HikerSidneyScript
-
-HikerSidneyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ab278
-
-CamperDeanSeenText:
-	text "I came to explore"
-	line "Rock Tunnel."
-	done
-
-CamperDeanBeatenText:
-	text "Whoa! Danger, man."
-	done
-
-UnknownText_0x1aafd9:
 	text "My #mon were"
 	line "hurt before even"
 
@@ -84,6 +35,58 @@ UnknownText_0x1aafd9:
 	para "I'd better take"
 	line "them to a #mon"
 	cont "Center right away."
+	done
+
+GenericTrainerPicnickerHeidi:
+	generictrainer PICNICKER, HEIDI, EVENT_BEAT_PICNICKER_HEIDI, PicnickerHeidiSeenText, PicnickerHeidiBeatenText
+
+	text "We bake lots of"
+	line "goodies and share"
+
+	para "them all around."
+	line "They're delicious!"
+	done
+
+GenericTrainerCamperSid:
+	generictrainer CAMPER, SID, EVENT_BEAT_CAMPER_SID, CamperSidSeenText, CamperSidBeatenText
+
+	text "Sorry. You weren't"
+	line "littering. It was"
+	cont "my mistake."
+	done
+
+GenericTrainerPicnickerEdna:
+	generictrainer PICNICKER, EDNA, EVENT_BEAT_PICNICKER_EDNA, PicnickerEdnaSeenText, PicnickerEdnaBeatenText
+
+	text "Conserving energy"
+	line "is important, but"
+
+	para "the environment is"
+	line "even more vital."
+	done
+
+GenericTrainerHikerTim:
+	generictrainer HIKER, TIM, EVENT_BEAT_HIKER_TIM, HikerTimSeenText, HikerTimBeatenText
+
+	text "Battles are about"
+	line "concentration."
+	done
+
+GenericTrainerHikerSidney:
+	generictrainer HIKER, SIDNEY, EVENT_BEAT_HIKER_SIDNEY, HikerSidneySeenText, HikerSidneyBeatenText
+
+	text "The Power Plant is"
+	line "across a small"
+	cont "river."
+	done
+
+CamperDeanSeenText:
+	text "I came to explore"
+	line "Rock Tunnel."
+	done
+
+CamperDeanBeatenText:
+	text "Whoa! Danger, man."
 	done
 
 PicnickerHeidiSeenText:
@@ -98,14 +101,6 @@ PicnickerHeidiBeatenText:
 	text "Ohhhh!"
 	done
 
-UnknownText_0x1ab07c:
-	text "We bake lots of"
-	line "goodies and share"
-
-	para "them all around."
-	line "They're delicious!"
-	done
-
 CamperSidSeenText:
 	text "Hey, you!"
 	line "Don't litter!"
@@ -116,12 +111,6 @@ CamperSidBeatenText:
 	line "ing out…"
 	done
 
-UnknownText_0x1ab0f6:
-	text "Sorry. You weren't"
-	line "littering. It was"
-	cont "my mistake."
-	done
-
 PicnickerEdnaSeenText:
 	text "People shouldn't"
 	line "leave any litter"
@@ -130,14 +119,6 @@ PicnickerEdnaSeenText:
 
 PicnickerEdnaBeatenText:
 	text "Ohh… I lost…"
-	done
-
-UnknownText_0x1ab15f:
-	text "Conserving energy"
-	line "is important, but"
-
-	para "the environment is"
-	line "even more vital."
 	done
 
 HikerTimSeenText:
@@ -154,11 +135,6 @@ HikerTimBeatenText:
 	line "singing…"
 	done
 
-UnknownText_0x1ab210:
-	text "Battles are about"
-	line "concentration."
-	done
-
 HikerSidneySeenText:
 	text "I'll tell you a"
 	line "secret."
@@ -170,12 +146,6 @@ HikerSidneySeenText:
 HikerSidneyBeatenText:
 	text "Oh, dang!"
 	line "I lost that…"
-	done
-
-UnknownText_0x1ab278:
-	text "The Power Plant is"
-	line "across a small"
-	cont "river."
 	done
 
 Route9SignText:

@@ -13,16 +13,16 @@ VictoryRoad1F_MapScriptHeader:
 	bg_event  5, 19, SIGNPOST_ITEM + FULL_HEAL, EVENT_VICTORY_ROAD_1F_HIDDEN_FULL_HEAL
 
 	db 3 ; object events
-	object_event 12,  6, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmMatt, -1
+	object_event 12,  6, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerVeteranmMatt, -1
 	itemball_event 14,  2, MAX_REVIVE, 1, EVENT_VICTORY_ROAD_1F_MAX_REVIVE
 	itemball_event 17,  2, FULL_HEAL, 1, EVENT_VICTORY_ROAD_1F_FULL_HEAL
 
-TrainerVeteranmMatt:
-	trainer VETERANM, MATT, EVENT_BEAT_VETERANM_MATT, VeteranmMattSeenText, VeteranmMattBeatenText, 0, VeteranmMattScript
+GenericTrainerVeteranmMatt:
+	generictrainer VETERANM, MATT, EVENT_BEAT_VETERANM_MATT, VeteranmMattSeenText, VeteranmMattBeatenText
 
-VeteranmMattScript:
-	end_if_just_battled
-	jumptextfaceplayer VeteranmMattAfterText
+	text "I concede, you're"
+	line "better than me!"
+	done
 
 VeteranmMattSeenText:
 	text "I can see you're"
@@ -34,7 +34,3 @@ VeteranmMattBeatenText:
 	text "I had a chance…"
 	done
 
-VeteranmMattAfterText:
-	text "I concede, you're"
-	line "better than me!"
-	done

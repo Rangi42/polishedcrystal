@@ -19,9 +19,9 @@ SproutTower3F_MapScriptHeader:
 
 	db 7 ; object events
 	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
-	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
-	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
-	object_event  9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
+	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSageJin, -1
+	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSageTroy, -1
+	object_event  9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSageNeal, -1
 	object_event  8,  2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
 	itemball_event  4, 14, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
 	itemball_event 12,  1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
@@ -87,26 +87,33 @@ ElderLiScript:
 UnknownScript_0x1849d1:
 	jumpopenedtext UnknownText_0x184d88
 
-TrainerSageJin:
-	trainer SAGE, JIN, EVENT_BEAT_SAGE_JIN, SageJinSeenText, SageJinBeatenText, 0, SageJinScript
+GenericTrainerSageJin:
+	generictrainer SAGE, JIN, EVENT_BEAT_SAGE_JIN, SageJinSeenText, SageJinBeatenText
 
-SageJinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x184dfa
+	text "As #mon grow"
+	line "stronger, so does"
+	cont "the trainer."
 
-TrainerSageTroy:
-	trainer SAGE, TROY, EVENT_BEAT_SAGE_TROY, SageTroySeenText, SageTroyBeatenText, 0, SageTroyScript
+	para "No, wait. As the"
+	line "trainer grows"
 
-SageTroyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x184ea4
+	para "stronger, so do"
+	line "the #mon."
+	done
 
-TrainerSageNeal:
-	trainer SAGE, NEAL, EVENT_BEAT_SAGE_NEAL, SageNealSeenText, SageNealBeatenText, 0, SageNealScript
+GenericTrainerSageTroy:
+	generictrainer SAGE, TROY, EVENT_BEAT_SAGE_TROY, SageTroySeenText, SageTroyBeatenText
 
-SageNealScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x184f12
+	text "It is not far to"
+	line "the Elder."
+	done
+
+GenericTrainerSageNeal:
+	generictrainer SAGE, NEAL, EVENT_BEAT_SAGE_NEAL, SageNealSeenText, SageNealBeatenText
+
+	text "Let there be light"
+	line "on your journey."
+	done
 
 MovementData_0x184a1d:
 	step_up
@@ -233,18 +240,6 @@ SageJinBeatenText:
 	line "incomplete…"
 	done
 
-UnknownText_0x184dfa:
-	text "As #mon grow"
-	line "stronger, so does"
-	cont "the trainer."
-
-	para "No, wait. As the"
-	line "trainer grows"
-
-	para "stronger, so do"
-	line "the #mon."
-	done
-
 SageTroySeenText:
 	text "Let me see how"
 	line "much you trust"
@@ -256,11 +251,6 @@ SageTroyBeatenText:
 	line "real!"
 	done
 
-UnknownText_0x184ea4:
-	text "It is not far to"
-	line "the Elder."
-	done
-
 SageNealSeenText:
 	text "The Elder's TM"
 	line "lights even pitch-"
@@ -270,11 +260,6 @@ SageNealSeenText:
 SageNealBeatenText:
 	text "It is my head that"
 	line "is bright!"
-	done
-
-UnknownText_0x184f12:
-	text "Let there be light"
-	line "on your journey."
 	done
 
 UnknownText_0x184f37:

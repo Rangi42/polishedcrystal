@@ -18,12 +18,12 @@ Route27_MapScriptHeader:
 	db 12 ; object events
 	object_event 48, 12, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
 	object_event 21, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0a71, -1
-	object_event 48,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainermBlake, -1
-	object_event 58,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri1, -1
-	object_event 59,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoJakeandbri2, -1
+	object_event 48,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermBlake, -1
+	object_event 58,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoJakeandbri1, -1
+	object_event 59,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoJakeandbri2, -1
 	object_event 72, 10, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfReena, -1
-	object_event 37,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfMegan, -1
-	object_event 65,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGilbert, -1
+	object_event 37,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainerfMegan, -1
+	object_event 65,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicGilbert, -1
 	object_event 58, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose1, -1
 	itemball_event 53, 12, RARE_CANDY, 1, EVENT_ROUTE_27_RARE_CANDY
 	itemball_event 71,  4, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
@@ -175,12 +175,16 @@ Route27VeteranfScript:
 	line "yourself."
 	done
 
-TrainerPsychicGilbert:
-	trainer PSYCHIC_T, GILBERT, EVENT_BEAT_PSYCHIC_GILBERT, PsychicGilbertSeenText, PsychicGilbertBeatenText, 0, PsychicGilbertScript
+GenericTrainerPsychicGilbert:
+	generictrainer PSYCHIC_T, GILBERT, EVENT_BEAT_PSYCHIC_GILBERT, PsychicGilbertSeenText, PsychicGilbertBeatenText
 
-PsychicGilbertScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a0dd2
+	text "With your skills,"
+	line "you'll do well at"
+	cont "the League."
+
+	para "That's what my"
+	line "premonition says."
+	done
 
 TrainerBird_keeperJose1:
 	trainer BIRD_KEEPER, JOSE1, EVENT_BEAT_BIRD_KEEPER_JOSE, Bird_keeperJose1SeenText, Bird_keeperJose1BeatenText, 0, Bird_keeperJose1Script
@@ -294,26 +298,39 @@ UnknownScript_0x1a0977:
 	jumpstd packfullm
 	end
 
-TrainerCooltrainermBlake:
-	trainer COOLTRAINERM, BLAKE, EVENT_BEAT_COOLTRAINERM_BLAKE, CooltrainermBlakeSeenText, CooltrainermBlakeBeatenText, 0, CooltrainermBlakeScript
+GenericTrainerCooltrainermBlake:
+	generictrainer COOLTRAINERM, BLAKE, EVENT_BEAT_COOLTRAINERM_BLAKE, CooltrainermBlakeSeenText, CooltrainermBlakeBeatenText
 
-CooltrainermBlakeScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a0b0b
+	text "If you prevail on"
+	line "this harsh trek,"
 
-TrainerAceDuoJakeandbri1:
-	trainer ACE_DUO, JAKEANDBRI1, EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, AceDuoJakeandbri1SeenText, AceDuoJakeandbri1BeatenText, 0, AceDuoJakeandbri1Script
+	para "the truth will be"
+	line "revealed!"
 
-AceDuoJakeandbri1Script:
-	end_if_just_battled
-	jumptextfaceplayer AceDuoJakeandbri1AfterText
+	para "Heh, sorry, I just"
+	line "wanted to say"
+	cont "something cool."
+	done
 
-TrainerAceDuoJakeandbri2:
-	trainer ACE_DUO, JAKEANDBRI2, EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, AceDuoJakeandbri2SeenText, AceDuoJakeandbri2BeatenText, 0, AceDuoJakeandbri2Script
+GenericTrainerAceDuoJakeandbri1:
+	generictrainer ACE_DUO, JAKEANDBRI1, EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, AceDuoJakeandbri1SeenText, AceDuoJakeandbri1BeatenText
 
-AceDuoJakeandbri2Script:
-	end_if_just_battled
-	jumptextfaceplayer AceDuoJakeandbri2AfterText
+	text "Jake: A good"
+	line "trainer can recog-"
+
+	para "nize other good"
+	line "trainers."
+	done
+
+GenericTrainerAceDuoJakeandbri2:
+	generictrainer ACE_DUO, JAKEANDBRI2, EVENT_BEAT_ACE_DUO_JAKE_AND_BRI, AceDuoJakeandbri2SeenText, AceDuoJakeandbri2BeatenText
+
+	text "Bri: Good trainers"
+	line "also know how to"
+
+	para "fight alongside"
+	line "each other."
+	done
 
 TrainerCooltrainerfReena:
 	trainer COOLTRAINERF, REENA1, EVENT_BEAT_COOLTRAINERF_REENA, CooltrainerfReena1SeenText, CooltrainerfReena1BeatenText, 0, CooltrainerfReena1Script
@@ -407,12 +424,21 @@ UnknownScript_0x1a0a47:
 	jumpstd rematchf
 	end
 
-TrainerCooltrainerfMegan:
-	trainer COOLTRAINERF, MEGAN, EVENT_BEAT_COOLTRAINERF_MEGAN, CooltrainerfMeganSeenText, CooltrainerfMeganBeatenText, 0, CooltrainerfMeganScript
+GenericTrainerCooltrainerfMegan:
+	generictrainer COOLTRAINERF, MEGAN, EVENT_BEAT_COOLTRAINERF_MEGAN, CooltrainerfMeganSeenText, CooltrainerfMeganBeatenText
 
-CooltrainerfMeganScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a0cce
+	text "I'm checking out"
+	line "pre- and post-"
+	cont "evolution #mon."
+
+	para "Evolution really"
+	line "does make #mon"
+	cont "stronger."
+
+	para "But evolved forms"
+	line "also learn moves"
+	cont "later on."
+	done
 
 MovementData_0x1a0a66:
 	step_left
@@ -445,18 +471,6 @@ CooltrainermBlakeBeatenText:
 	text "Yow!"
 	done
 
-UnknownText_0x1a0b0b:
-	text "If you prevail on"
-	line "this harsh trek,"
-
-	para "the truth will be"
-	line "revealed!"
-
-	para "Heh, sorry, I just"
-	line "wanted to say"
-	cont "something cool."
-	done
-
 AceDuoJakeandbri1SeenText:
 	text "Jake: Hm? You're"
 	line "good, aren't you?"
@@ -465,14 +479,6 @@ AceDuoJakeandbri1SeenText:
 AceDuoJakeandbri1BeatenText:
 	text "Jake: Just as I"
 	line "thought!"
-	done
-
-AceDuoJakeandbri1AfterText:
-	text "Jake: A good"
-	line "trainer can recog-"
-
-	para "nize other good"
-	line "trainers."
 	done
 
 AceDuoJakeandbri2SeenText:
@@ -484,14 +490,6 @@ AceDuoJakeandbri2SeenText:
 AceDuoJakeandbri2BeatenText:
 	text "Bri: Our teamwork"
 	line "wasn't enough…"
-	done
-
-AceDuoJakeandbri2AfterText:
-	text "Bri: Good trainers"
-	line "also know how to"
-
-	para "fight alongside"
-	line "each other."
 	done
 
 CooltrainerfReena1SeenText:
@@ -528,20 +526,6 @@ CooltrainerfMeganBeatenText:
 	line "strong!"
 	done
 
-UnknownText_0x1a0cce:
-	text "I'm checking out"
-	line "pre- and post-"
-	cont "evolution #mon."
-
-	para "Evolution really"
-	line "does make #mon"
-	cont "stronger."
-
-	para "But evolved forms"
-	line "also learn moves"
-	cont "later on."
-	done
-
 PsychicGilbertSeenText:
 	text "Don't say a thing!"
 
@@ -557,15 +541,6 @@ PsychicGilbertSeenText:
 
 PsychicGilbertBeatenText:
 	text "You're too much!"
-	done
-
-UnknownText_0x1a0dd2:
-	text "With your skills,"
-	line "you'll do well at"
-	cont "the League."
-
-	para "That's what my"
-	line "premonition says."
 	done
 
 Bird_keeperJose1SeenText:

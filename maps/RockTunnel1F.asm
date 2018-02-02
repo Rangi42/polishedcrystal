@@ -20,16 +20,17 @@ RockTunnel1F_MapScriptHeader:
 	bg_event  4, 18, SIGNPOST_ITEM + X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
 
 	db 3 ; object events
-	object_event 23, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerSeamus, -1
+	object_event 23, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerSeamus, -1
 	itemball_event 21, 15, ELIXER, 1, EVENT_ROCK_TUNNEL_1F_ELIXER
 	itemball_event 10, 15, HP_UP, 1, EVENT_ROCK_TUNNEL_1F_HP_UP
 
-TrainerHikerSeamus:
-	trainer HIKER, SEAMUS, EVENT_BEAT_HIKER_SEAMUS, HikerSeamusSeenText, HikerSeamusBeatenText, 0, HikerSeamusScript
+GenericTrainerHikerSeamus:
+	generictrainer HIKER, SEAMUS, EVENT_BEAT_HIKER_SEAMUS, HikerSeamusSeenText, HikerSeamusBeatenText
 
-HikerSeamusScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerSeamusAfterText
+	text "Was Rock Tunnel"
+	line "always this much"
+	cont "of a trek?"
+	done
 
 HikerSeamusSeenText:
 	text "Almost…"
@@ -41,8 +42,3 @@ HikerSeamusBeatenText:
 	line "your energy?"
 	done
 
-HikerSeamusAfterText:
-	text "Was Rock Tunnel"
-	line "always this much"
-	cont "of a trek?"
-	done

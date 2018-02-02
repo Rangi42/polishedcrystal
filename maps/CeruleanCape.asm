@@ -22,16 +22,16 @@ CeruleanCape_MapScriptHeader:
 	object_event  8,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
 	object_event  8,  9, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
 	object_event  8, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	object_event 25,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
-	object_event 41, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
-	object_event 21, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
-	object_event 19, 13, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerBeautyBridget, -1
-	object_event  1, 21, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
-	object_event  0, 27, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
-	object_event 41, 26, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
-	object_event 16, 32, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfMorgan, -1
+	object_event 25,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermRomeo, -1
+	object_event 41, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermMalcolm, -1
+	object_event 21, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermArmand, -1
+	object_event 19, 13, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyBridget, -1
+	object_event  1, 21, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyVeronica, -1
+	object_event  0, 27, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanCamus, -1
+	object_event 41, 26, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanGeoffrey, -1
+	object_event 16, 32, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfMorgan, -1
 	object_event  7, 26, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
-	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
+	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherLeroy, -1
 	object_event -4, 8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
 	object_event -2, 8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	itemball_event 31, 12, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
@@ -145,12 +145,15 @@ CeruleanCapeDateInterruptedTrigger3:
 	step_up
 	step_end
 
-TrainerSwimmermRomeo:
-	trainer SWIMMERM, ROMEO, EVENT_BEAT_SWIMMERM_ROMEO, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSwimmermRomeo:
+	generictrainer SWIMMERM, ROMEO, EVENT_BEAT_SWIMMERM_ROMEO, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Being a good"
+	line "Swimmer doesn't"
+
+	para "make me a good"
+	line "trainer…"
+	done
 
 .SeenText:
 	text "Admire my fitness!"
@@ -162,20 +165,15 @@ TrainerSwimmermRomeo:
 	text "Oh! That's it?"
 	done
 
-.AfterText:
-	text "Being a good"
-	line "Swimmer doesn't"
+GenericTrainerSwimmermMalcolm:
+	generictrainer SWIMMERM, MALCOLM, EVENT_BEAT_SWIMMERM_MALCOLM, .SeenText, .BeatenText
 
-	para "make me a good"
-	line "trainer…"
+	text "Don't tell me,"
+	line "you visit lots of"
+
+	para "#mon Gyms,"
+	line "right?"
 	done
-
-TrainerSwimmermMalcolm:
-	trainer SWIMMERM, MALCOLM, EVENT_BEAT_SWIMMERM_MALCOLM, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon and I"
@@ -190,20 +188,16 @@ TrainerSwimmermMalcolm:
 	line "strong as you."
 	done
 
-.AfterText:
-	text "Don't tell me,"
-	line "you visit lots of"
+GenericTrainerSwimmermArmand:
+	generictrainer SWIMMERM, ARMAND, EVENT_BEAT_SWIMMERM_ARMAND, .SeenText, .BeatenText
 
-	para "#mon Gyms,"
-	line "right?"
+	text "That gal on the"
+	line "shore… Her music"
+	cont "is good, but she's"
+
+	para "distracting the"
+	line "#mon!"
 	done
-
-TrainerSwimmermArmand:
-	trainer SWIMMERM, ARMAND, EVENT_BEAT_SWIMMERM_ARMAND, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ugh. Would that"
@@ -218,21 +212,13 @@ TrainerSwimmermArmand:
 	line "off my stride!"
 	done
 
-.AfterText:
-	text "That gal on the"
-	line "shore… Her music"
-	cont "is good, but she's"
+GenericTrainerBeautyBridget:
+	generictrainer BEAUTY, BRIDGET, EVENT_BEAT_BEAUTY_BRIDGET, .SeenText, .BeatenText
 
-	para "distracting the"
-	line "#mon!"
+	text "I think the view"
+	line "here is beautiful."
+	cont "Don't you agree?"
 	done
-
-TrainerBeautyBridget:
-	trainer BEAUTY, BRIDGET, EVENT_BEAT_BEAUTY_BRIDGET, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey! You're block-"
@@ -244,18 +230,16 @@ TrainerBeautyBridget:
 	line "to enjoy the view…"
 	done
 
-.AfterText:
-	text "I think the view"
-	line "here is beautiful."
-	cont "Don't you agree?"
+GenericTrainerBeautyVeronica:
+	generictrainer BEAUTY, VERONICA, EVENT_BEAT_BEAUTY_VERONICA, .SeenText, .BeatenText
+
+	text "Treat me mean and"
+	line "I'll tell you where"
+	cont "to go!"
+
+	para "Must be why I'm"
+	line "single. …Haha!"
 	done
-
-TrainerBeautyVeronica:
-	trainer BEAUTY, VERONICA, EVENT_BEAT_BEAUTY_VERONICA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I don't date much,"
@@ -271,21 +255,18 @@ TrainerBeautyVeronica:
 	cont "right?"
 	done
 
-.AfterText:
-	text "Treat me mean and"
-	line "I'll tell you where"
-	cont "to go!"
+GenericTrainerGentlemanCamus:
+	generictrainer GENTLEMAN, CAMUS, EVENT_BEAT_GENTLEMAN_CAMUS, .SeenText, .BeatenText
 
-	para "Must be why I'm"
-	line "single. …Haha!"
+	text "I was once a ta-"
+	line "lented trainer,"
+
+	para "but now I'm just an"
+	line "old has-been."
+
+	para "Enjoy it while"
+	line "you're still young."
 	done
-
-TrainerGentlemanCamus:
-	trainer GENTLEMAN, CAMUS, EVENT_BEAT_GENTLEMAN_CAMUS, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Seeing you reminds"
@@ -298,23 +279,16 @@ TrainerGentlemanCamus:
 	line "battle!"
 	done
 
-.AfterText:
-	text "I was once a ta-"
-	line "lented trainer,"
+GenericTrainerGentlemanGeoffrey:
+	generictrainer GENTLEMAN, GEOFFREY, EVENT_BEAT_GENTLEMAN_GEOFFREY, .SeenText, .BeatenText
 
-	para "but now I'm just an"
-	line "old has-been."
+	text "Sometimes a change"
+	line "is as good as a"
+	cont "rest."
 
-	para "Enjoy it while"
-	line "you're still young."
+	para "I feel so refresh-"
+	line "ed!"
 	done
-
-TrainerGentlemanGeoffrey:
-	trainer GENTLEMAN, GEOFFREY, EVENT_BEAT_GENTLEMAN_GEOFFREY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I wanted a change,"
@@ -327,21 +301,14 @@ TrainerGentlemanGeoffrey:
 	line "still a beginner."
 	done
 
-.AfterText:
-	text "Sometimes a change"
-	line "is as good as a"
-	cont "rest."
+GenericTrainerGuitaristfMorgan:
+	generictrainer GUITARISTF, MORGAN, EVENT_BEAT_GUITARISTF_MORGAN, .SeenText, .BeatenText
 
-	para "I feel so refresh-"
-	line "ed!"
+	text "The echoing cliffs"
+	line "make the Cape a"
+	cont "perfect sound-"
+	cont "board!"
 	done
-
-TrainerGuitaristfMorgan:
-	trainer GUITARISTF, MORGAN, EVENT_BEAT_GUITARISTF_MORGAN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Listen to that"
@@ -351,13 +318,6 @@ TrainerGuitaristfMorgan:
 .BeatenText:
 	text "What a rockin'"
 	line "battle!"
-	done
-
-.AfterText:
-	text "The echoing cliffs"
-	line "make the Cape a"
-	cont "perfect sound-"
-	cont "board!"
 	done
 
 TrainerLadyJessica:
@@ -405,12 +365,12 @@ TrainerLadyJessica:
 	cont "Creep!"
 	done
 
-TrainerFisherLeroy:
-	trainer FISHER, LEROY, EVENT_BEAT_FISHER_LEROY, .SeenText, .BeatenText, 0, .Script
+GenericTrainerFisherLeroy:
+	generictrainer FISHER, LEROY, EVENT_BEAT_FISHER_LEROY, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "All I ever catch"
+	line "catch is Magikarp…"
+	done
 
 .SeenText:
 	text "I keep catching"
@@ -424,11 +384,6 @@ TrainerFisherLeroy:
 .BeatenText:
 	text "Nothing ever goes"
 	line "right for me now…"
-	done
-
-.AfterText:
-	text "All I ever catch"
-	line "catch is Magikarp…"
 	done
 
 MovementData_0x19efea:

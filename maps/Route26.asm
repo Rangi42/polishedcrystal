@@ -14,24 +14,34 @@ Route26_MapScriptHeader:
 	bg_event  8,  6, SIGNPOST_JUMPTEXT, Route26SignText
 
 	db 11 ; object events
-	object_event  9, 38, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
+	object_event  9, 38, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerKazu, -1
 	object_event 14, 24, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
-	object_event 10, 56, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
+	object_event 10, 56, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfJoyce, -1
 	object_event  5,  8, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
-	object_event 13, 79, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1
-	object_event  2, 82, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
-	object_event  6, 100, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
-	object_event 10, 92, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
+	object_event 13, 79, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPsychicRichard, -1
+	object_event  2, 82, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBattleGirlRonda, -1
+	object_event  6, 100, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherScott, -1
+	object_event 10, 92, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerErick, -1
 	fruittree_event 14, 54, FRUITTREE_ROUTE_26, SITRUS_BERRY
 	itemball_event  9, 15, MAX_ELIXER, 1, EVENT_ROUTE_26_MAX_ELIXER
 	tmhmball_event 13, 34, TM_DRAGON_CLAW, EVENT_ROUTE_26_TM_DRAGON_CLAW
 
-TrainerDragonTamerKazu:
-	trainer DRAGON_TAMER, KAZU, EVENT_BEAT_DRAGON_TAMER_KAZU, DragonTamerKazuSeenText, DragonTamerKazuBeatenText, 0, DragonTamerKazuScript
+GenericTrainerDragonTamerKazu:
+	generictrainer DRAGON_TAMER, KAZU, EVENT_BEAT_DRAGON_TAMER_KAZU, DragonTamerKazuSeenText, DragonTamerKazuBeatenText
 
-DragonTamerKazuScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a4f08
+	text "It's going to be"
+	line "tough to win at"
+	cont "the League."
+
+	para "I need to do some"
+	line "more training."
+
+	para "I hear that the"
+	line "League's Elite"
+
+	para "Four are tougher"
+	line "than Gym Leaders."
+	done
 
 TrainerCooltrainermGaven1:
 	trainer COOLTRAINERM, GAVEN1, EVENT_BEAT_COOLTRAINERM_GAVEN, CooltrainermGaven1SeenText, CooltrainermGaven1BeatenText, 0, CooltrainermGaven1Script
@@ -125,12 +135,18 @@ UnknownScript_0x1a4dd7:
 	jumpstd rematchm
 	end
 
-TrainerCooltrainerfJoyce:
-	trainer COOLTRAINERF, JOYCE, EVENT_BEAT_COOLTRAINERF_JOYCE, CooltrainerfJoyceSeenText, CooltrainerfJoyceBeatenText, 0, CooltrainerfJoyceScript
+GenericTrainerCooltrainerfJoyce:
+	generictrainer COOLTRAINERF, JOYCE, EVENT_BEAT_COOLTRAINERF_JOYCE, CooltrainerfJoyceSeenText, CooltrainerfJoyceBeatenText
 
-CooltrainerfJoyceScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a50d7
+	text "I've defeated"
+	line "eight Gym Leaders,"
+
+	para "so I was feeling"
+	line "confident."
+
+	para "I'll have to try"
+	line "harder next time."
+	done
 
 TrainerCooltrainerfBeth1:
 	trainer COOLTRAINERF, BETH1, EVENT_BEAT_COOLTRAINERF_BETH, CooltrainerfBeth1SeenText, CooltrainerfBeth1BeatenText, 0, CooltrainerfBeth1Script
@@ -224,33 +240,50 @@ UnknownScript_0x1a4e93:
 	jumpstd rematchf
 	end
 
-TrainerPsychicRichard:
-	trainer PSYCHIC_T, RICHARD, EVENT_BEAT_PSYCHIC_RICHARD, PsychicRichardSeenText, PsychicRichardBeatenText, 0, PsychicRichardScript
+GenericTrainerPsychicRichard:
+	generictrainer PSYCHIC_T, RICHARD, EVENT_BEAT_PSYCHIC_RICHARD, PsychicRichardSeenText, PsychicRichardBeatenText
 
-PsychicRichardScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a5278
+	text "People and #mon"
+	line "grow from their"
+	cont "experiences."
 
-TrainerBattleGirlRonda:
-	trainer BATTLE_GIRL, RONDA, EVENT_BEAT_BATTLE_GIRL_RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText, 0, BattleGirlRondaScript
+	para "Don't get lazy and"
+	line "complacent."
+	done
 
-BattleGirlRondaScript:
-	end_if_just_battled
-	jumptextfaceplayer BattleGirlRondaAfterText
+GenericTrainerBattleGirlRonda:
+	generictrainer BATTLE_GIRL, RONDA, EVENT_BEAT_BATTLE_GIRL_RONDA, BattleGirlRondaSeenText, BattleGirlRondaBeatenText
 
-TrainerFisherScott:
-	trainer FISHER, SCOTT, EVENT_BEAT_FISHER_SCOTT, FisherScottSeenText, FisherScottBeatenText, 0, FisherScottScript
+	text "You see some of"
+	line "the world's str-"
 
-FisherScottScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a5326
+	para "ongest trainers"
+	line "come through here."
 
-TrainerDragonTamerErick:
-	trainer DRAGON_TAMER, ERICK, EVENT_BEAT_DRAGON_TAMER_ERICK, DragonTamerErickSeenText, DragonTamerErickBeatenText, 0, DragonTamerErickScript
+	para "And I get to fight"
+	line "them all!"
+	done
 
-DragonTamerErickScript:
-	end_if_just_battled
-	jumptextfaceplayer DragonTamerErickAfterText
+GenericTrainerFisherScott:
+	generictrainer FISHER, SCOTT, EVENT_BEAT_FISHER_SCOTT, FisherScottSeenText, FisherScottBeatenText
+
+	text "Just like in fish-"
+	line "ing, it's all over"
+
+	para "in #mon if you"
+	line "give up."
+	done
+
+GenericTrainerDragonTamerErick:
+	generictrainer DRAGON_TAMER, ERICK, EVENT_BEAT_DRAGON_TAMER_ERICK, DragonTamerErickSeenText, DragonTamerErickBeatenText
+
+	text "Victory Road is"
+	line "harsh."
+
+	para "Every trainer must"
+	line "forge their own"
+	cont "way through it."
+	done
 
 DragonTamerKazuSeenText:
 	text "I'm making my"
@@ -262,21 +295,6 @@ DragonTamerKazuSeenText:
 
 DragonTamerKazuBeatenText:
 	text "I blew it!"
-	done
-
-UnknownText_0x1a4f08:
-	text "It's going to be"
-	line "tough to win at"
-	cont "the League."
-
-	para "I need to do some"
-	line "more training."
-
-	para "I hear that the"
-	line "League's Elite"
-
-	para "Four are tougher"
-	line "than Gym Leaders."
 	done
 
 CooltrainermGaven1SeenText:
@@ -318,17 +336,6 @@ CooltrainerfJoyceSeenText:
 CooltrainerfJoyceBeatenText:
 	text "No! I don't"
 	line "believe this!"
-	done
-
-UnknownText_0x1a50d7:
-	text "I've defeated"
-	line "eight Gym Leaders,"
-
-	para "so I was feeling"
-	line "confident."
-
-	para "I'll have to try"
-	line "harder next time."
 	done
 
 CooltrainerfBeth1SeenText:
@@ -373,15 +380,6 @@ PsychicRichardBeatenText:
 	text "Good battle!"
 	done
 
-UnknownText_0x1a5278:
-	text "People and #mon"
-	line "grow from their"
-	cont "experiences."
-
-	para "Don't get lazy and"
-	line "complacent."
-	done
-
 BattleGirlRondaSeenText:
 	text "Stop! I challenge"
 	line "you to a duel!"
@@ -389,17 +387,6 @@ BattleGirlRondaSeenText:
 
 BattleGirlRondaBeatenText:
 	text "Victory is yours!"
-	done
-
-BattleGirlRondaAfterText:
-	text "You see some of"
-	line "the world's str-"
-
-	para "ongest trainers"
-	line "come through here."
-
-	para "And I get to fight"
-	line "them all!"
 	done
 
 FisherScottSeenText:
@@ -416,14 +403,6 @@ FisherScottBeatenText:
 	line "battle!"
 	done
 
-UnknownText_0x1a5326:
-	text "Just like in fish-"
-	line "ing, it's all over"
-
-	para "in #mon if you"
-	line "give up."
-	done
-
 DragonTamerErickSeenText:
 	text "Here be dragons!"
 	done
@@ -431,15 +410,6 @@ DragonTamerErickSeenText:
 DragonTamerErickBeatenText:
 	text "My dragons were"
 	line "conquered…"
-	done
-
-DragonTamerErickAfterText:
-	text "Victory Road is"
-	line "harsh."
-
-	para "Every trainer must"
-	line "forge their own"
-	cont "way through it."
 	done
 
 Route26SignText:

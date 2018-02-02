@@ -20,8 +20,8 @@ OlivineLighthouse3F_MapScriptHeader:
 
 	db 4 ; object events
 	object_event  9, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
-	object_event  9,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSailorTerrell, -1
-	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event  9,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSailorTerrell, -1
+	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 	object_event  3,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
 	itemball_event  8,  2, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
 
@@ -152,19 +152,27 @@ Bird_keeperTheoScript:
 	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
 	jumptextfaceplayer UnknownText_0x5b2df
 
-TrainerGentlemanPreston:
-	trainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText, 0, GentlemanPrestonScript
+GenericTrainerGentlemanPreston:
+	generictrainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText
 
-GentlemanPrestonScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5b457
+	text "Jasmine used to"
+	line "use Rock #mon"
+	cont "like Onix."
+	done
 
-TrainerSailorTerrell:
-	trainer SAILOR, TERRELL, EVENT_BEAT_SAILOR_TERRELL, SailorTerrellSeenText, SailorTerrellBeatenText, 0, SailorTerrellScript
+GenericTrainerSailorTerrell:
+	generictrainer SAILOR, TERRELL, EVENT_BEAT_SAILOR_TERRELL, SailorTerrellSeenText, SailorTerrellBeatenText
 
-SailorTerrellScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5b384
+	text "Every time I come"
+	line "back to Olivine, I"
+	cont "visit the Gym."
+
+	para "The Gym Leader's"
+	line "#mon type has"
+
+	para "changed without me"
+	line "noticing."
+	done
 
 Bird_keeperTheoSeenText:
 	text "Why are you here?"
@@ -211,18 +219,6 @@ SailorTerrellBeatenText:
 	line "and strong…"
 	done
 
-UnknownText_0x5b384:
-	text "Every time I come"
-	line "back to Olivine, I"
-	cont "visit the Gym."
-
-	para "The Gym Leader's"
-	line "#mon type has"
-
-	para "changed without me"
-	line "noticing."
-	done
-
 GentlemanPrestonSeenText:
 	text "I travel the world"
 	line "to train my #-"
@@ -235,8 +231,3 @@ GentlemanPrestonBeatenText:
 	line "train some more…"
 	done
 
-UnknownText_0x5b457:
-	text "Jasmine used to"
-	line "use Rock #mon"
-	cont "like Onix."
-	done

@@ -14,20 +14,20 @@ Route45_MapScriptHeader:
 
 	db 15 ; object events
 	object_event 19, 75, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
-	object_event  5, 59, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlNozomi, -1
-	object_event 12, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerErik, -1
-	object_event 19, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerMichael, -1
+	object_event  5, 59, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBattleGirlNozomi, -1
+	object_event 12, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerErik, -1
+	object_event 19, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerMichael, -1
 	object_event  7, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerParry, -1
-	object_event 13, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTimothy, -1
+	object_event 13, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerTimothy, -1
 	object_event 16, 50, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
-	object_event 21, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermRyan, -1
-	object_event  6, 33, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKelly, -1
+	object_event 21, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermRyan, -1
+	object_event  6, 33, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfKelly, -1
 	fruittree_event 20, 80, FRUITTREE_ROUTE_45, LEPPA_BERRY
 	itemball_event  8, 51, NUGGET, 1, EVENT_ROUTE_45_NUGGET
 	itemball_event  5, 66, REVIVE, 1, EVENT_ROUTE_45_REVIVE
 	itemball_event  7, 20, ELIXER, 1, EVENT_ROUTE_45_ELIXER
 	itemball_event 15, 32, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
-	object_event  4, 70, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperQuentin, -1
+	object_event  4, 70, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperQuentin, -1
 
 	const_def 1 ; object constants
 	const ROUTE45_DRAGON_TAMER
@@ -145,12 +145,12 @@ Route45Dragon_tamerScript:
 	line "deserve it."
 	done
 
-TrainerBattleGirlNozomi:
-	trainer BATTLE_GIRL, NOZOMI, EVENT_BEAT_BATTLE_GIRL_NOZOMI, BattleGirlNozomiSeenText, BattleGirlNozomiBeatenText, 0, BattleGirlNozomiScript
+GenericTrainerBattleGirlNozomi:
+	generictrainer BATTLE_GIRL, NOZOMI, EVENT_BEAT_BATTLE_GIRL_NOZOMI, BattleGirlNozomiSeenText, BattleGirlNozomiBeatenText
 
-BattleGirlNozomiScript:
-	end_if_just_battled
-	jumptextfaceplayer BattleGirlNozomiAfterText
+	text "Thanks for the"
+	line "workout, <PLAYER>!"
+	done
 
 TrainerBlackbeltKenji:
 	trainer BLACKBELT_T, KENJI1, EVENT_BEAT_BLACKBELT_KENJI, BlackbeltKenji1SeenText, BlackbeltKenji1BeatenText, 0, BlackbeltKenji1Script
@@ -249,19 +249,27 @@ UnknownScript_0x19e146:
 	jumpstd rematchgiftm
 	end
 
-TrainerHikerErik:
-	trainer HIKER, ERIK, EVENT_BEAT_HIKER_ERIK, HikerErikSeenText, HikerErikBeatenText, 0, HikerErikScript
+GenericTrainerHikerErik:
+	generictrainer HIKER, ERIK, EVENT_BEAT_HIKER_ERIK, HikerErikSeenText, HikerErikBeatenText
 
-HikerErikScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19e301
+	text "I'll head back to"
+	line "Blackthorn's Ice"
 
-TrainerHikerMichael:
-	trainer HIKER, MICHAEL, EVENT_BEAT_HIKER_MICHAEL, HikerMichaelSeenText, HikerMichaelBeatenText, 0, HikerMichaelScript
+	para "Path and train"
+	line "some more."
+	done
 
-HikerMichaelScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19e3b1
+GenericTrainerHikerMichael:
+	generictrainer HIKER, MICHAEL, EVENT_BEAT_HIKER_MICHAEL, HikerMichaelSeenText, HikerMichaelBeatenText
+
+	text "Boy, do I love"
+	line "HP Up! Mmmm, yum!"
+
+	para "I keep drinking my"
+	line "#mon's!"
+
+	para "I can't help it!"
+	done
 
 TrainerHikerParry:
 	trainer HIKER, PARRY1, EVENT_BEAT_HIKER_PARRY, HikerParry1SeenText, HikerParry1BeatenText, 0, HikerParry1Script
@@ -348,33 +356,49 @@ UnknownScript_0x19e219:
 	setevent EVENT_GOT_IRON_FROM_PARRY
 	jump UnknownScript_0x19e127
 
-TrainerHikerTimothy:
-	trainer HIKER, TIMOTHY, EVENT_BEAT_HIKER_TIMOTHY, HikerTimothySeenText, HikerTimothyBeatenText, 0, HikerTimothyScript
+GenericTrainerHikerTimothy:
+	generictrainer HIKER, TIMOTHY, EVENT_BEAT_HIKER_TIMOTHY, HikerTimothySeenText, HikerTimothyBeatenText
 
-HikerTimothyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19e4f1
+	text "The best thing to"
+	line "ever happen to me"
 
-TrainerCooltrainermRyan:
-	trainer COOLTRAINERM, RYAN, EVENT_BEAT_COOLTRAINERM_RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText, 0, CooltrainermRyanScript
+	para "was discovering"
+	line "#mon."
+	done
 
-CooltrainermRyanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19e70d
+GenericTrainerCooltrainermRyan:
+	generictrainer COOLTRAINERM, RYAN, EVENT_BEAT_COOLTRAINERM_RYAN, CooltrainermRyanSeenText, CooltrainermRyanBeatenText
 
-TrainerCooltrainerfKelly:
-	trainer COOLTRAINERF, KELLY, EVENT_BEAT_COOLTRAINERF_KELLY, CooltrainerfKellySeenText, CooltrainerfKellyBeatenText, 0, CooltrainerfKellyScript
+	text "I see you're rais-"
+	line "ing your #mon"
+	cont "with care."
 
-CooltrainerfKellyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19e7d1
+	para "The bond you build"
+	line "will save you in"
+	cont "tough situations."
+	done
 
-TrainerCamperQuentin:
-	trainer CAMPER, QUENTIN, EVENT_BEAT_CAMPER_QUENTIN, UnknownText_0x19e87f, UnknownText_0x19e899, 0, CamperQuentinScript
+GenericTrainerCooltrainerfKelly:
+	generictrainer COOLTRAINERF, KELLY, EVENT_BEAT_COOLTRAINERF_KELLY, CooltrainerfKellySeenText, CooltrainerfKellyBeatenText
 
-CamperQuentinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19e8bb
+	text "I'm not in favor"
+	line "of overly power-"
+	cont "ful moves."
+
+	para "I want to win, but"
+	line "I also don't want"
+	cont "to harm #mon."
+	done
+
+GenericTrainerCamperQuentin:
+	generictrainer CAMPER, QUENTIN, EVENT_BEAT_CAMPER_QUENTIN, UnknownText_0x19e87f, UnknownText_0x19e899
+
+	text "Have you been to"
+	line "the Battle Tower?"
+
+	para "I never, ever lose"
+	line "there, but…"
+	done
 
 BattleGirlNozomiSeenText:
 	text "This is no place"
@@ -383,11 +407,6 @@ BattleGirlNozomiSeenText:
 
 BattleGirlNozomiBeatenText:
 	text "What a fight!"
-	done
-
-BattleGirlNozomiAfterText:
-	text "Thanks for the"
-	line "workout, <PLAYER>!"
 	done
 
 HikerErikSeenText:
@@ -403,14 +422,6 @@ HikerErikBeatenText:
 	text "Oh, I lost that!"
 	done
 
-UnknownText_0x19e301:
-	text "I'll head back to"
-	line "Blackthorn's Ice"
-
-	para "Path and train"
-	line "some more."
-	done
-
 HikerMichaelSeenText:
 	text "Yo! You're spunky!"
 	line "But you know what?"
@@ -423,16 +434,6 @@ HikerMichaelSeenText:
 HikerMichaelBeatenText:
 	text "My #mon weren't"
 	line "spunky enough!"
-	done
-
-UnknownText_0x19e3b1:
-	text "Boy, do I love"
-	line "HP Up! Mmmm, yum!"
-
-	para "I keep drinking my"
-	line "#mon's!"
-
-	para "I can't help it!"
 	done
 
 HikerParry1SeenText:
@@ -470,14 +471,6 @@ HikerTimothySeenText:
 HikerTimothyBeatenText:
 	text "Losses…"
 	line "They're there too!"
-	done
-
-UnknownText_0x19e4f1:
-	text "The best thing to"
-	line "ever happen to me"
-
-	para "was discovering"
-	line "#mon."
 	done
 
 UnknownText_0x19e52c:
@@ -542,16 +535,6 @@ CooltrainermRyanBeatenText:
 	line "respect."
 	done
 
-UnknownText_0x19e70d:
-	text "I see you're rais-"
-	line "ing your #mon"
-	cont "with care."
-
-	para "The bond you build"
-	line "will save you in"
-	cont "tough situations."
-	done
-
 CooltrainerfKellySeenText:
 	text "What is your"
 	line "battle strategy?"
@@ -563,16 +546,6 @@ CooltrainerfKellySeenText:
 
 CooltrainerfKellyBeatenText:
 	text "Fine. I lost."
-	done
-
-UnknownText_0x19e7d1:
-	text "I'm not in favor"
-	line "of overly power-"
-	cont "ful moves."
-
-	para "I want to win, but"
-	line "I also don't want"
-	cont "to harm #mon."
 	done
 
 UnknownText_0x19e87f:
@@ -587,14 +560,6 @@ UnknownText_0x19e87f:
 UnknownText_0x19e899:
 	text "I was tough at the"
 	line "Battle Tower…"
-	done
-
-UnknownText_0x19e8bb:
-	text "Have you been to"
-	line "the Battle Tower?"
-
-	para "I never, ever lose"
-	line "there, but…"
 	done
 
 Route45SignText:

@@ -12,13 +12,13 @@ LuckyIsland_MapScriptHeader:
 
 	db 9 ; object events
 	object_event 27, 18, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
-	object_event 29,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 21, 16, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 32, 23, SPRITE_BAKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBakerOlga, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 20, 21, SPRITE_ARTIST, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerArtistReina, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 36, 16, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 23, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 23, 12, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 29,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 21, 16, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 32, 23, SPRITE_BAKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBakerOlga, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 20, 21, SPRITE_ARTIST, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerArtistReina, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 36, 16, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 23, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 23, 12, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
 	fruittree_event 25, 16, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, EVENT_LUCKY_ISLAND_CIVILIANS
 
 	const_def 1 ; object constants
@@ -41,12 +41,13 @@ Script_ChangeLuckyIslandMap:
 	clearevent EVENT_LUCKY_ISLAND_LUCKY_EGG
 	return
 
-TrainerFisherHall:
-	trainer FISHER, HALL, EVENT_BEAT_FISHER_HALL, .SeenText, .BeatenText, 0, .Script
+GenericTrainerFisherHall:
+	generictrainer FISHER, HALL, EVENT_BEAT_FISHER_HALL, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "You just don't"
+	line "appreciate my"
+	cont "sense of humor."
+	done
 
 .SeenText:
 	text "Dopefish lives!"
@@ -57,18 +58,11 @@ TrainerFisherHall:
 	line "swim swim hungry!"
 	done
 
-.AfterText:
-	text "You just don't"
-	line "appreciate my"
-	cont "sense of humor."
+GenericTrainerBakerMargaret:
+	generictrainer BAKER, MARGARET, EVENT_BEAT_BAKER_MARGARET, .SeenText, .BeatenText
+
+	text "I'm eggs-hausted."
 	done
-
-TrainerBakerMargaret:
-	trainer BAKER, MARGARET, EVENT_BEAT_BAKER_MARGARET, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If an egg tumbles"
@@ -83,16 +77,15 @@ TrainerBakerMargaret:
 	line "eggroll now."
 	done
 
-.AfterText:
-	text "I'm eggs-hausted."
+GenericTrainerBakerOlga:
+	generictrainer BAKER, OLGA, EVENT_BEAT_BAKER_OLGA, .SeenText, .BeatenText
+
+	text "The first step to"
+	line "healthy living is"
+
+	para "to eat a good"
+	line "breakfast."
 	done
-
-TrainerBakerOlga:
-	trainer BAKER, OLGA, EVENT_BEAT_BAKER_OLGA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, you!"
@@ -106,20 +99,13 @@ TrainerBakerOlga:
 	line "you do."
 	done
 
-.AfterText:
-	text "The first step to"
-	line "healthy living is"
+GenericTrainerArtistReina:
+	generictrainer ARTIST, REINA, EVENT_BEAT_ARTIST_REINA, .SeenText, .BeatenText
 
-	para "to eat a good"
-	line "breakfast."
+	text "I'll add a happy"
+	line "little tree to"
+	cont "cover that up."
 	done
-
-TrainerArtistReina:
-	trainer ARTIST, REINA, EVENT_BEAT_ARTIST_REINA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This sunny meadow"
@@ -131,18 +117,13 @@ TrainerArtistReina:
 	text "My brush slipped!"
 	done
 
-.AfterText:
-	text "I'll add a happy"
-	line "little tree to"
-	cont "cover that up."
+GenericTrainerArtistAlina:
+	generictrainer ARTIST, ALINA, EVENT_BEAT_ARTIST_ALINA, .SeenText, .BeatenText
+
+	text "I wonder what"
+	line "caused this island"
+	cont "to appear?"
 	done
-
-TrainerArtistAlina:
-	trainer ARTIST, ALINA, EVENT_BEAT_ARTIST_ALINA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This island hardly"
@@ -156,18 +137,13 @@ TrainerArtistAlina:
 	text "My luck ran out…"
 	done
 
-.AfterText:
-	text "I wonder what"
-	line "caused this island"
-	cont "to appear?"
+GenericTrainerSightseersLiandsu1:
+	generictrainer SIGHTSEERS, LIANDSU1, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText
+
+	text "Li: Su and I keep"
+	line "arguing about"
+	cont "this."
 	done
-
-TrainerSightseersLiandsu1:
-	trainer SIGHTSEERS, LIANDSU1, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Li: What came"
@@ -182,18 +158,13 @@ TrainerSightseersLiandsu1:
 	line "#mon!"
 	done
 
-.AfterText:
-	text "Li: Su and I keep"
-	line "arguing about"
-	cont "this."
+GenericTrainerSightseersLiandsu2:
+	generictrainer SIGHTSEERS, LIANDSU2, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText
+
+	text "Su: Are there any"
+	line "#mon that don't"
+	cont "come from Eggs?"
 	done
-
-TrainerSightseersLiandsu2:
-	trainer SIGHTSEERS, LIANDSU2, EVENT_BEAT_SIGHTSEERS_LI_AND_SU, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Su: What came"
@@ -206,12 +177,6 @@ TrainerSightseersLiandsu2:
 .BeatenText:
 	text "Su: I think the"
 	line "Egg came first!"
-	done
-
-.AfterText:
-	text "Su: Are there any"
-	line "#mon that don't"
-	cont "come from Eggs?"
 	done
 
 LuckyIslandLuckyEgg:

@@ -20,40 +20,47 @@ QuietCaveB1F_MapScriptHeader:
 	bg_event 26, 33, SIGNPOST_ITEM + HYPER_POTION, EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION
 
 	db 6 ; object events
-	object_event 25,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
-	object_event 21, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1
-	object_event 33, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSteve, -1
-	object_event  4,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicVirgil, -1
+	object_event 25,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBattleGirlKagami, -1
+	object_event 21, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPokemaniacAidan, -1
+	object_event 33, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerSteve, -1
+	object_event  4,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPsychicVirgil, -1
 	itemball_event  8,  3, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
 	itemball_event 14, 13, ELIXER, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
 
-TrainerBattleGirlKagami:
-	trainer BATTLE_GIRL, KAGAMI, EVENT_BEAT_BATTLE_GIRL_KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText, 0, BattleGirlKagamiScript
+GenericTrainerBattleGirlKagami:
+	generictrainer BATTLE_GIRL, KAGAMI, EVENT_BEAT_BATTLE_GIRL_KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText
 
-BattleGirlKagamiScript:
-	end_if_just_battled
-	jumptextfaceplayer BattleGirlKagamiAfterText
+	text "I come here to"
+	line "train in peace"
+	cont "and solitude."
+	done
 
-TrainerPokemaniacAidan:
-	trainer POKEMANIAC, AIDAN, EVENT_BEAT_POKEMANIAC_AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText, 0, PokemaniacAidanScript
+GenericTrainerPokemaniacAidan:
+	generictrainer POKEMANIAC, AIDAN, EVENT_BEAT_POKEMANIAC_AIDAN, PokemaniacAidanSeenText, PokemaniacAidanBeatenText
 
-PokemaniacAidanScript:
-	end_if_just_battled
-	jumptextfaceplayer PokemaniacAidanAfterText
+	text "Sometimes a"
+	line "#mon in a"
 
-TrainerHikerSteve:
-	trainer HIKER, STEVE, EVENT_BEAT_HIKER_STEVE, HikerSteveSeenText, HikerSteveBeatenText, 0, HikerSteveScript
+	para "certain area will"
+	line "know a rare move."
+	done
 
-HikerSteveScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerSteveAfterText
+GenericTrainerHikerSteve:
+	generictrainer HIKER, STEVE, EVENT_BEAT_HIKER_STEVE, HikerSteveSeenText, HikerSteveBeatenText
 
-TrainerPsychicVirgil:
-	trainer PSYCHIC_T, VIRGIL, EVENT_BEAT_PSYCHIC_VIRGIL, PsychicVirgilSeenText, PsychicVirgilBeatenText, 0, PsychicVirgilScript
+	text "Spelunking is also"
+	line "called caving."
 
-PsychicVirgilScript:
-	end_if_just_battled
-	jumptextfaceplayer PsychicVirgilAfterText
+	para "It means exploring"
+	line "caves!"
+	done
+
+GenericTrainerPsychicVirgil:
+	generictrainer PSYCHIC_T, VIRGIL, EVENT_BEAT_PSYCHIC_VIRGIL, PsychicVirgilSeenText, PsychicVirgilBeatenText
+
+	text "The silence helps"
+	line "focus my ESP."
+	done
 
 BattleGirlKagamiSeenText:
 	text "Don't disturb my"
@@ -62,12 +69,6 @@ BattleGirlKagamiSeenText:
 
 BattleGirlKagamiBeatenText:
 	text "Not good enough…"
-	done
-
-BattleGirlKagamiAfterText:
-	text "I come here to"
-	line "train in peace"
-	cont "and solitude."
 	done
 
 PokemaniacAidanSeenText:
@@ -79,14 +80,6 @@ PokemaniacAidanSeenText:
 
 PokemaniacAidanBeatenText:
 	text "My #mon…"
-	done
-
-PokemaniacAidanAfterText:
-	text "Sometimes a"
-	line "#mon in a"
-
-	para "certain area will"
-	line "know a rare move."
 	done
 
 HikerSteveSeenText:
@@ -102,14 +95,6 @@ HikerSteveBeatenText:
 	line "loser…"
 	done
 
-HikerSteveAfterText:
-	text "Spelunking is also"
-	line "called caving."
-
-	para "It means exploring"
-	line "caves!"
-	done
-
 PsychicVirgilSeenText:
 	text "Shh! Be quiet!"
 	done
@@ -119,7 +104,3 @@ PsychicVirgilBeatenText:
 	line "be so loud?"
 	done
 
-PsychicVirgilAfterText:
-	text "The silence helps"
-	line "focus my ESP."
-	done

@@ -18,10 +18,10 @@ RadioTower2F_MapScriptHeader:
 	object_event 14,  5, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Buena, -1
 	object_event  6,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d924, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 17,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5d701, -1
-	object_event  1,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 10,  5, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  1,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM5, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  4,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGruntM6, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 10,  5, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntF2, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  0,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d9cb, EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
 	object_event  1,  1, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5da44, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event 12,  1, SPRITE_JIGGLYPUFF, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, JIGGLYPUFF, RadioTowerJigglypuffText, -1
@@ -41,33 +41,40 @@ TeacherScript_0x5d701:
 .Rockets:
 	jumpopenedtext UnknownText_0x5d983
 
-TrainerGruntM4:
-	trainer GRUNTM, 4, EVENT_BEAT_ROCKET_GRUNTM_4, GruntM4SeenText, GruntM4BeatenText, 0, GruntM4Script
+GenericTrainerGruntM4:
+	generictrainer GRUNTM, 4, EVENT_BEAT_ROCKET_GRUNTM_4, GruntM4SeenText, GruntM4BeatenText
 
-GruntM4Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5db07
+	text "We won't let you"
+	line "ruin our plans"
+	cont "for our comeback!"
+	done
 
-TrainerGruntM5:
-	trainer GRUNTM, 5, EVENT_BEAT_ROCKET_GRUNTM_5, GruntM5SeenText, GruntM5BeatenText, 0, GruntM5Script
+GenericTrainerGruntM5:
+	generictrainer GRUNTM, 5, EVENT_BEAT_ROCKET_GRUNTM_5, GruntM5SeenText, GruntM5BeatenText
 
-GruntM5Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5db99
+	text "We're not always"
+	line "evil. We just do"
+	cont "whatever we like."
+	done
 
-TrainerGruntM6:
-	trainer GRUNTM, 6, EVENT_BEAT_ROCKET_GRUNTM_6, GruntM6SeenText, GruntM6BeatenText, 0, GruntM6Script
+GenericTrainerGruntM6:
+	generictrainer GRUNTM, 6, EVENT_BEAT_ROCKET_GRUNTM_6, GruntM6SeenText, GruntM6BeatenText
 
-GruntM6Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5dc00
+	text "Our Executives are"
+	line "trying to take"
+	cont "this place over."
 
-TrainerGruntF2:
-	trainer GRUNTF, 2, EVENT_BEAT_ROCKET_GRUNTF_2, GruntF2SeenText, GruntF2BeatenText, 0, GruntF2Script
+	para "They have some big"
+	line "plan. I wonder"
+	cont "what that is?"
+	done
 
-GruntF2Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5dcd0
+GenericTrainerGruntF2:
+	generictrainer GRUNTF, 2, EVENT_BEAT_ROCKET_GRUNTF_2, GruntF2SeenText, GruntF2BeatenText
+
+	text "You beat me, and"
+	line "I won't forget it!"
+	done
 
 Buena:
 	faceplayer
@@ -346,12 +353,6 @@ GruntM4BeatenText:
 	line "cute!"
 	done
 
-UnknownText_0x5db07:
-	text "We won't let you"
-	line "ruin our plans"
-	cont "for our comeback!"
-	done
-
 GruntM5SeenText:
 	text "We're Team Rocket,"
 	line "the exploiters of"
@@ -366,12 +367,6 @@ GruntM5BeatenText:
 	line "hero?"
 	done
 
-UnknownText_0x5db99:
-	text "We're not always"
-	line "evil. We just do"
-	cont "whatever we like."
-	done
-
 GruntM6SeenText:
 	text "Hey, hey! Keep out"
 	line "of our way!"
@@ -379,16 +374,6 @@ GruntM6SeenText:
 
 GruntM6BeatenText:
 	text "Arggh. I give up."
-	done
-
-UnknownText_0x5dc00:
-	text "Our Executives are"
-	line "trying to take"
-	cont "this place over."
-
-	para "They have some big"
-	line "plan. I wonder"
-	cont "what that is?"
 	done
 
 GruntF2SeenText:
@@ -406,11 +391,6 @@ GruntF2SeenText:
 
 GruntF2BeatenText:
 	text "Wh-who are you?"
-	done
-
-UnknownText_0x5dcd0:
-	text "You beat me, and"
-	line "I won't forget it!"
 	done
 
 UnknownText_0x5dcf4:

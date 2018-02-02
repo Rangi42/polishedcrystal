@@ -16,12 +16,12 @@ RockyBeach_MapScriptHeader:
 	bg_event 24, 10, SIGNPOST_JUMPTEXT, RockyBeachSign2Text
 
 	db 11 ; object events
-	object_event 21, 21, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermBlaise, -1
-	object_event 11, 22, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyIoana, -1
-	object_event  2, 21, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSightseerfKamila, -1
-	object_event 15, 18, SPRITE_LADY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyHeather, -1
-	object_event 15, 13, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerBreederBrenda, -1
-	object_event 14,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermEzra, -1
+	object_event 21, 21, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermBlaise, -1
+	object_event 11, 22, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyIoana, -1
+	object_event  2, 21, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSightseerfKamila, -1
+	object_event 15, 18, SPRITE_LADY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyHeather, -1
+	object_event 15, 13, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBreederBrenda, -1
+	object_event 14,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSwimmermEzra, -1
 	object_event 23, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, RockyBeachYoungsterScript, EVENT_NOISY_FOREST_PIKABLU
 	itemball_event 21,  5, FULL_HEAL, 1, EVENT_ROCKY_BEACH_FULL_HEAL
 	itemball_event 32,  3, PEARL_STRING, 1, EVENT_ROCKY_BEACH_PEARL_STRING
@@ -44,12 +44,13 @@ RockyBeachSign2Text:
 	line "Shrine Ruins"
 	done
 
-TrainerSightseermBlaise:
-	trainer SIGHTSEERM, BLAISE, EVENT_BEAT_SIGHTSEERM_BLAISE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSightseermBlaise:
+	generictrainer SIGHTSEERM, BLAISE, EVENT_BEAT_SIGHTSEERM_BLAISE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Je voyage autour"
+	line "du monde avec mon"
+	cont "#mon."
+	done
 
 .SeenText:
 	text "Allons-y!"
@@ -59,18 +60,16 @@ TrainerSightseermBlaise:
 	text "Sacre bleu!"
 	done
 
-.AfterText:
-	text "Je voyage autour"
-	line "du monde avec mon"
-	cont "#mon."
+GenericTrainerBeautyIoana:
+	generictrainer BEAUTY, IOANA, EVENT_BEAT_BEAUTY_IOANA, .SeenText, .BeatenText
+
+	text "I have a naturally"
+	line "pale complexion,"
+
+	para "so I have to be"
+	line "careful in the"
+	cont "sun."
 	done
-
-TrainerBeautyIoana:
-	trainer BEAUTY, IOANA, EVENT_BEAT_BEAUTY_IOANA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I come here every"
@@ -83,21 +82,16 @@ TrainerBeautyIoana:
 	line "burned!"
 	done
 
-.AfterText:
-	text "I have a naturally"
-	line "pale complexion,"
+GenericTrainerSightseerfKamila:
+	generictrainer SIGHTSEERF, KAMILA, EVENT_BEAT_SIGHTSEERF_KAMILA, .SeenText, .BeatenText
 
-	para "so I have to be"
-	line "careful in the"
-	cont "sun."
+	text "Alola is an archi-"
+	line "pelago located far"
+	cont "away from here."
+
+	para "You should visit"
+	line "it someday!"
 	done
-
-TrainerSightseerfKamila:
-	trainer SIGHTSEERF, KAMILA, EVENT_BEAT_SIGHTSEERF_KAMILA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Alola!"
@@ -112,21 +106,19 @@ TrainerSightseerfKamila:
 	line "pretty good!"
 	done
 
-.AfterText:
-	text "Alola is an archi-"
-	line "pelago located far"
-	cont "away from here."
+GenericTrainerAromaLadyHeather:
+	generictrainer AROMA_LADY, HEATHER, EVENT_BEAT_AROMA_LADY_HEATHER, .SeenText, .BeatenText
 
-	para "You should visit"
-	line "it someday!"
+	text "I studied flower"
+	line "arranging with"
+
+	para "Erika at Celadon"
+	line "University."
+
+	para "She praised this"
+	line "island for its"
+	cont "local fauna."
 	done
-
-TrainerAromaLadyHeather:
-	trainer AROMA_LADY, HEATHER, EVENT_BEAT_AROMA_LADY_HEATHER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "A deep red flower"
@@ -142,24 +134,16 @@ TrainerAromaLadyHeather:
 	cont "the flowers?"
 	done
 
-.AfterText:
-	text "I studied flower"
-	line "arranging with"
+GenericTrainerBreederBrenda:
+	generictrainer BREEDER, BRENDA, EVENT_BEAT_BREEDER_BRENDA, .SeenText, .BeatenText
 
-	para "Erika at Celadon"
-	line "University."
+	text "To hatch an Egg,"
+	line "you have to walk"
+	cont "a lot."
 
-	para "She praised this"
-	line "island for its"
-	cont "local fauna."
+	para "Where better than"
+	line "sunny Shamouti?"
 	done
-
-TrainerBreederBrenda:
-	trainer BREEDER, BRENDA, EVENT_BEAT_BREEDER_BRENDA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "The key to good"
@@ -177,21 +161,16 @@ TrainerBreederBrenda:
 	line "well-bred."
 	done
 
-.AfterText:
-	text "To hatch an Egg,"
-	line "you have to walk"
-	cont "a lot."
+GenericTrainerSwimmermEzra:
+	generictrainer SWIMMERM, EZRA, EVENT_BEAT_SWIMMERM_EZRA, .SeenText, .BeatenText
 
-	para "Where better than"
-	line "sunny Shamouti?"
+	text "I like to go scuba"
+	line "diving here."
+
+	para "It's so amazing to"
+	line "breathe while"
+	cont "underwater!"
 	done
-
-TrainerSwimmermEzra:
-	trainer SWIMMERM, EZRA, EVENT_BEAT_SWIMMERM_EZRA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Have you ever won-"
@@ -203,15 +182,6 @@ TrainerSwimmermEzra:
 
 .BeatenText:
 	text "Ran out of air!"
-	done
-
-.AfterText:
-	text "I like to go scuba"
-	line "diving here."
-
-	para "It's so amazing to"
-	line "breathe while"
-	cont "underwater!"
 	done
 
 RockyBeachYoungsterScript:

@@ -29,7 +29,7 @@ Route42_MapScriptHeader:
 	object_event 26, 16, SPRITE_ROUTE_30_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	object_event 10,  5, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
-	object_event 51,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerBenjamin, -1
+	object_event 51,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerBenjamin, -1
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN
 	fruittree_event 28, 16, FRUITTREE_ROUTE_42_2, GRN_APRICORN
@@ -291,12 +291,15 @@ UnknownScript_0x1a9311:
 	jumpstd packfullm
 	end
 
-TrainerHikerBenjamin:
-	trainer HIKER, BENJAMIN, EVENT_BEAT_HIKER_BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText, 0, HikerBenjaminScript
+GenericTrainerHikerBenjamin:
+	generictrainer HIKER, BENJAMIN, EVENT_BEAT_HIKER_BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText
 
-HikerBenjaminScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a943f
+	text "Losing feels in-"
+	line "significant if you"
+
+	para "look up at the big"
+	line "sky!"
+	done
 
 MovementData_Route42LyraApproach4:
 	step_down
@@ -428,14 +431,6 @@ HikerBenjaminSeenText:
 
 HikerBenjaminBeatenText:
 	text "Gahahah!"
-	done
-
-UnknownText_0x1a943f:
-	text "Losing feels in-"
-	line "significant if you"
-
-	para "look up at the big"
-	line "sky!"
 	done
 
 Route42OfficerText:

@@ -59,8 +59,8 @@ TeamRocketBaseB1F_MapScriptHeader:
 
 	db 6 ; object events
 	object_event  0,  0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
-	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event 27,  6, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
 	itemball_event 14, 15, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	itemball_event 21, 12, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
@@ -540,19 +540,35 @@ KoffingExplodingTrap:
 NoExplodingTrap:
 	end
 
-TrainerRocketScientistJed:
-	trainer ROCKET_SCIENTIST, JED, EVENT_BEAT_ROCKET_SCIENTIST_JED, RocketScientistJedSeenText, RocketScientistJedBeatenText, 0, RocketScientistJedScript
+GenericTrainerRocketScientistJed:
+	generictrainer ROCKET_SCIENTIST, JED, EVENT_BEAT_ROCKET_SCIENTIST_JED, RocketScientistJedSeenText, RocketScientistJedBeatenText
 
-RocketScientistJedScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6cc16
+	text "All right. I'll"
+	line "divulge a secret"
+	cont "about our hideout."
 
-TrainerGruntM16:
-	trainer GRUNTM, 16, EVENT_BEAT_ROCKET_GRUNTM_16, GruntM16SeenText, GruntM16BeatenText, 0, GruntM16Script
+	para "That thing on the"
+	line "floor up ahead is"
+	cont "a warp panel."
 
-GruntM16Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6cd1b
+	para "If you step on it,"
+	line "you'll be warped"
+
+	para "back to the en-"
+	line "trance."
+	done
+
+GenericTrainerGruntM16:
+	generictrainer GRUNTM, 16, EVENT_BEAT_ROCKET_GRUNTM_16, GruntM16SeenText, GruntM16BeatenText
+
+	text "I don't even know"
+	line "where the traps"
+	cont "are planted."
+
+	para "You'll just have"
+	line "to collect your"
+	cont "courage and walk."
+	done
 
 MapTeamRocketBaseB1FSignpost5Script:
 	jumptext SecurityCameraText
@@ -701,22 +717,6 @@ RocketScientistJedBeatenText:
 	text "I get it…"
 	done
 
-UnknownText_0x6cc16:
-	text "All right. I'll"
-	line "divulge a secret"
-	cont "about our hideout."
-
-	para "That thing on the"
-	line "floor up ahead is"
-	cont "a warp panel."
-
-	para "If you step on it,"
-	line "you'll be warped"
-
-	para "back to the en-"
-	line "trance."
-	done
-
 GruntM16SeenText:
 	text "Heheh. Feeling"
 	line "lucky, punk?"
@@ -730,16 +730,6 @@ GruntM16SeenText:
 
 GruntM16BeatenText:
 	text "Kaboom!"
-	done
-
-UnknownText_0x6cd1b:
-	text "I don't even know"
-	line "where the traps"
-	cont "are planted."
-
-	para "You'll just have"
-	line "to collect your"
-	cont "courage and walk."
 	done
 
 SecurityCameraText:

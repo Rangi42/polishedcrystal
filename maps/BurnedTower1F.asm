@@ -24,8 +24,8 @@ BurnedTower1F_MapScriptHeader:
 	smashrock_event 13, 4
 	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
 	itemball_event 13,  1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
-	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
-	object_event 11,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
+	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacTamara, -1
+	object_event 11,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherNed, -1
 
 	const_def 1 ; object constants
 	const BURNEDTOWER1F_EUSINE
@@ -119,19 +119,26 @@ BurnedTowerRivalBattleScript:
 	warpcheck
 	end
 
-TrainerHexManiacTamara:
-	trainer HEX_MANIAC, TAMARA, EVENT_BEAT_HEX_MANIAC_TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText, 0, HexManiacTamaraScript
+GenericTrainerHexManiacTamara:
+	generictrainer HEX_MANIAC, TAMARA, EVENT_BEAT_HEX_MANIAC_TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText
 
-HexManiacTamaraScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacTamaraAfterText
+	text "There are powers"
+	line "beyond our under-"
 
-TrainerFirebreatherNed:
-	trainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
+	para "standing in the"
+	line "world…"
+	done
 
-FirebreatherNedScript:
-	end_if_just_battled
-	jumptextfaceplayer FirebreatherNedAfterText
+GenericTrainerFirebreatherNed:
+	generictrainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, FirebreatherNedSeenText, FirebreatherNedBeatenText
+
+	text "We Firebreathers"
+	line "know the true"
+
+	para "power of fire"
+	line "better than"
+	cont "anyone!"
+	done
 
 BurnedTower1FEusineMovement:
 	step_down
@@ -268,14 +275,6 @@ HexManiacTamaraBeatenText:
 	text "I have lost…"
 	done
 
-HexManiacTamaraAfterText:
-	text "There are powers"
-	line "beyond our under-"
-
-	para "standing in the"
-	line "world…"
-	done
-
 FirebreatherNedSeenText:
 	text "My soul is on"
 	line "fire. I'll show"
@@ -289,11 +288,3 @@ FirebreatherNedBeatenText:
 	line "enough…"
 	done
 
-FirebreatherNedAfterText:
-	text "We Firebreathers"
-	line "know the true"
-
-	para "power of fire"
-	line "better than"
-	cont "anyone!"
-	done

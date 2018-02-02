@@ -48,10 +48,10 @@ EcruteakGym_MapScriptHeader:
 	db 7 ; object events
 	object_event  4, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS
 	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MortyScript_0x99d58, -1
-	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSageJeffrey, -1
-	object_event  3, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSagePing, -1
-	object_event  7,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumMartha, -1
-	object_event  7,  9, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumGrace, -1
+	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSageJeffrey, -1
+	object_event  3, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSagePing, -1
+	object_event  7,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerMediumMartha, -1
+	object_event  7,  9, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerMediumGrace, -1
 	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakGymGuyScript, -1
 
 	const_def 1 ; object constants
@@ -111,33 +111,43 @@ UnknownScript_0x99dc6:
 	warp ECRUTEAK_CITY, 6, 27
 	end
 
-TrainerSageJeffrey:
-	trainer SAGE, JEFFREY, EVENT_BEAT_SAGE_JEFFREY, SageJeffreySeenText, SageJeffreyBeatenText, 0, SageJeffreyScript
+GenericTrainerSageJeffrey:
+	generictrainer SAGE, JEFFREY, EVENT_BEAT_SAGE_JEFFREY, SageJeffreySeenText, SageJeffreyBeatenText
 
-SageJeffreyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x9a263
+	text "Where did #mon"
+	line "come from?"
+	done
 
-TrainerSagePing:
-	trainer SAGE, PING, EVENT_BEAT_SAGE_PING, SagePingSeenText, SagePingBeatenText, 0, SagePingScript
+GenericTrainerSagePing:
+	generictrainer SAGE, PING, EVENT_BEAT_SAGE_PING, SagePingSeenText, SagePingBeatenText
 
-SagePingScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x9a2b7
+	text "We use only Ghost-"
+	line "type #mon."
 
-TrainerMediumMartha:
-	trainer MEDIUM, MARTHA, EVENT_BEAT_MEDIUM_MARTHA, MediumMarthaSeenText, MediumMarthaBeatenText, 0, MediumMarthaScript
+	para "No Normal-type"
+	line "attack can harm"
+	cont "them!"
+	done
 
-MediumMarthaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x9a318
+GenericTrainerMediumMartha:
+	generictrainer MEDIUM, MARTHA, EVENT_BEAT_MEDIUM_MARTHA, MediumMarthaSeenText, MediumMarthaBeatenText
 
-TrainerMediumGrace:
-	trainer MEDIUM, GRACE, EVENT_BEAT_MEDIUM_GRACE, MediumGraceSeenText, MediumGraceBeatenText, 0, MediumGraceScript
+	text "The one who wants"
+	line "to win most--will!"
+	done
 
-MediumGraceScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x9a38a
+GenericTrainerMediumGrace:
+	generictrainer MEDIUM, GRACE, EVENT_BEAT_MEDIUM_GRACE, MediumGraceSeenText, MediumGraceBeatenText
+
+	text "Fine. I shall tell"
+	line "you the secret of"
+
+	para "the invisible"
+	line "floor."
+
+	para "The path is right"
+	line "before our eyes!"
+	done
 
 EcruteakGymGuyScript:
 	checkevent EVENT_BEAT_MORTY
@@ -278,11 +288,6 @@ SageJeffreyBeatenText:
 	line "experienced both."
 	done
 
-UnknownText_0x9a263:
-	text "Where did #mon"
-	line "come from?"
-	done
-
 SagePingSeenText:
 	text "Can you inflict"
 	line "any damage on our"
@@ -293,26 +298,12 @@ SagePingBeatenText:
 	text "Ah! Well done!"
 	done
 
-UnknownText_0x9a2b7:
-	text "We use only Ghost-"
-	line "type #mon."
-
-	para "No Normal-type"
-	line "attack can harm"
-	cont "them!"
-	done
-
 MediumMarthaSeenText:
 	text "I shall win!"
 	done
 
 MediumMarthaBeatenText:
 	text "I, I, I lost!"
-	done
-
-UnknownText_0x9a318:
-	text "The one who wants"
-	line "to win most--will!"
 	done
 
 MediumGraceSeenText:
@@ -325,17 +316,6 @@ MediumGraceSeenText:
 
 MediumGraceBeatenText:
 	text "Wha-what?"
-	done
-
-UnknownText_0x9a38a:
-	text "Fine. I shall tell"
-	line "you the secret of"
-
-	para "the invisible"
-	line "floor."
-
-	para "The path is right"
-	line "before our eyes!"
 	done
 
 EcruteakGymGuyText:

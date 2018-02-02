@@ -11,17 +11,21 @@ Route13West_MapScriptHeader:
 	bg_event 17, 13, SIGNPOST_JUMPTEXT, Route13DirectionsSignText
 
 	db 4 ; object events
-	object_event  5,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperClark, -1
-	object_event 16,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerGinger, -1
-	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerHikerKenny, -1
+	object_event  5,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCamperClark, -1
+	object_event 16,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPicnickerGinger, -1
+	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerKenny, -1
 	object_event 25,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-TrainerCamperClark:
-	trainer CAMPER, CLARK, EVENT_BEAT_CAMPER_CLARK, .SeenText, .BeatenText, 0, .Script
+GenericTrainerCamperClark:
+	generictrainer CAMPER, CLARK, EVENT_BEAT_CAMPER_CLARK, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "It doesn't matter"
+	line "what kind of prep"
+	cont "work you've done."
+
+	para "If you lose, you"
+	line "lose."
+	done
 
 .SeenText:
 	text "Collect water!"
@@ -39,21 +43,15 @@ TrainerCamperClark:
 	text "Pfuuuuhh…"
 	done
 
-.AfterText:
-	text "It doesn't matter"
-	line "what kind of prep"
-	cont "work you've done."
+GenericTrainerPicnickerGinger:
+	generictrainer PICNICKER, GINGER, EVENT_BEAT_PICNICKER_GINGER, .SeenText, .BeatenText
 
-	para "If you lose, you"
-	line "lose."
+	text "You can communi-"
+	line "cate with #mon"
+
+	para "through whistling"
+	line "instead of words!"
 	done
-
-TrainerPicnickerGinger:
-	trainer PICNICKER, GINGER, EVENT_BEAT_PICNICKER_GINGER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Why do I always"
@@ -65,20 +63,17 @@ TrainerPicnickerGinger:
 	text "Tweeee!"
 	done
 
-.AfterText:
-	text "You can communi-"
-	line "cate with #mon"
+GenericTrainerHikerKenny:
+	generictrainer HIKER, KENNY, EVENT_BEAT_HIKER_KENNY, HikerKennySeenText, HikerKennyBeatenText
 
-	para "through whistling"
-	line "instead of words!"
+	text "Geological fea-"
+	line "tures don't appear"
+	cont "to change."
+
+	para "But they actually"
+	line "change, little by"
+	cont "little."
 	done
-
-TrainerHikerKenny:
-	trainer HIKER, KENNY, EVENT_BEAT_HIKER_KENNY, HikerKennySeenText, HikerKennyBeatenText, 0, HikerKennyScript
-
-HikerKennyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a26c2
 
 HikerKennySeenText:
 	text "I should go to"
@@ -88,16 +83,6 @@ HikerKennySeenText:
 
 HikerKennyBeatenText:
 	text "I lost…"
-	done
-
-UnknownText_0x1a26c2:
-	text "Geological fea-"
-	line "tures don't appear"
-	cont "to change."
-
-	para "But they actually"
-	line "change, little by"
-	cont "little."
 	done
 
 Route13DirectionsSignText:

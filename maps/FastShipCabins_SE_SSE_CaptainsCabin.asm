@@ -20,13 +20,13 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 	object_event  3, 17, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x75f6d, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
 	object_event  2, 25, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x75ebb, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
 	object_event  3, 25, SPRITE_CAPTAIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CaptainScript_0x75ea7, -1
-	object_event  5,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerPokefanmColin, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	object_event  2,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsMegandpeg1, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	object_event  3,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsMegandpeg2, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	object_event  5,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 5, TrainerPsychicRodney, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJeremy, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	object_event  5,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerPokefanfGeorgia, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	object_event  1, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdShawn, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  5,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerPokefanmColin, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  2,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsMegandpeg1, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  3,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsMegandpeg2, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  5,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerPsychicRodney, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokefanmJeremy, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	object_event  5,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPokefanfGeorgia, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	object_event  1, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdShawn, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 
 	const_def 1 ; object constants
 	const FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN
@@ -117,54 +117,63 @@ TwinScript_0x75f6d:
 	faceplayer
 	jumptext UnknownText_0x7630d
 
-TrainerPokefanmColin:
-	trainer POKEFANM, COLIN, EVENT_BEAT_POKEFANM_COLIN, PokefanmColinSeenText, PokefanmColinBeatenText, 0, PokefanmColinScript
+GenericTrainerPokefanmColin:
+	generictrainer POKEFANM, COLIN, EVENT_BEAT_POKEFANM_COLIN, PokefanmColinSeenText, PokefanmColinBeatenText
 
-PokefanmColinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7635b
+	text "You're traveling"
+	line "all alone?"
 
-TrainerTwinsMegandpeg1:
-	trainer TWINS, MEGANDPEG1, EVENT_BEAT_TWINS_MEG_AND_PEG, TwinsMegandpeg1SeenText, TwinsMegandpeg1BeatenText, 0, TwinsMegandpeg1Script
+	para "Isn't your mom"
+	line "worried?"
+	done
 
-TwinsMegandpeg1Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x763c2
+GenericTrainerTwinsMegandpeg1:
+	generictrainer TWINS, MEGANDPEG1, EVENT_BEAT_TWINS_MEG_AND_PEG, TwinsMegandpeg1SeenText, TwinsMegandpeg1BeatenText
 
-TrainerTwinsMegandpeg2:
-	trainer TWINS, MEGANDPEG2, EVENT_BEAT_TWINS_MEG_AND_PEG, TwinsMegandpeg2SeenText, TwinsMegandpeg2BeatenText, 0, TwinsMegandpeg2Script
+	text "Baby is a rude"
+	line "name to call us"
+	cont "girls!"
+	done
 
-TwinsMegandpeg2Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x76428
+GenericTrainerTwinsMegandpeg2:
+	generictrainer TWINS, MEGANDPEG2, EVENT_BEAT_TWINS_MEG_AND_PEG, TwinsMegandpeg2SeenText, TwinsMegandpeg2BeatenText
 
-TrainerPsychicRodney:
-	trainer PSYCHIC_T, RODNEY, EVENT_BEAT_PSYCHIC_RODNEY, PsychicRodneySeenText, PsychicRodneyBeatenText, 0, PsychicRodneyScript
+	text "Sometimes, kids"
+	line "are smarter than"
+	cont "grown-ups!"
+	done
 
-PsychicRodneyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x76497
+GenericTrainerPsychicRodney:
+	generictrainer PSYCHIC_T, RODNEY, EVENT_BEAT_PSYCHIC_RODNEY, PsychicRodneySeenText, PsychicRodneyBeatenText
 
-TrainerPokefanmJeremy:
-	trainer POKEFANM, JEREMY, EVENT_BEAT_POKEFANM_JEREMY, PokefanmJeremySeenText, PokefanmJeremyBeatenText, 0, PokefanmJeremyScript
+	text "I get it. You can"
+	line "hear Johto's radio"
+	cont "on the Fast Ship."
+	done
 
-PokefanmJeremyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7651c
+GenericTrainerPokefanmJeremy:
+	generictrainer POKEFANM, JEREMY, EVENT_BEAT_POKEFANM_JEREMY, PokefanmJeremySeenText, PokefanmJeremyBeatenText
 
-TrainerPokefanfGeorgia:
-	trainer POKEFANF, GEORGIA, EVENT_BEAT_POKEFANF_GEORGIA, PokefanfGeorgiaSeenText, PokefanfGeorgiaBeatenText, 0, PokefanfGeorgiaScript
+	text "I must go to the"
+	line "#mon Salon and"
+	cont "fix them up nice!"
+	done
 
-PokefanfGeorgiaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x76596
+GenericTrainerPokefanfGeorgia:
+	generictrainer POKEFANF, GEORGIA, EVENT_BEAT_POKEFANF_GEORGIA, PokefanfGeorgiaSeenText, PokefanfGeorgiaBeatenText
 
-TrainerSupernerdShawn:
-	trainer SUPER_NERD, SHAWN, EVENT_BEAT_SUPER_NERD_SHAWN, SupernerdShawnSeenText, SupernerdShawnBeatenText, 0, SupernerdShawnScript
+	text "Oh, yes! I have to"
+	line "get my #mon out"
+	cont "of Day-Care!"
+	done
 
-SupernerdShawnScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7660f
+GenericTrainerSupernerdShawn:
+	generictrainer SUPER_NERD, SHAWN, EVENT_BEAT_SUPER_NERD_SHAWN, SupernerdShawnSeenText, SupernerdShawnBeatenText
+
+	text "You should use the"
+	line "right Balls to fit"
+	cont "the situation."
+	done
 
 MovementData_0x76004:
 	big_step_right
@@ -289,14 +298,6 @@ PokefanmColinBeatenText:
 	text "You're strong!"
 	done
 
-UnknownText_0x7635b:
-	text "You're traveling"
-	line "all alone?"
-
-	para "Isn't your mom"
-	line "worried?"
-	done
-
 TwinsMegandpeg1SeenText:
 	text "You think I'm a"
 	line "baby?"
@@ -305,12 +306,6 @@ TwinsMegandpeg1SeenText:
 
 TwinsMegandpeg1BeatenText:
 	text "Oh! We lost!"
-	done
-
-UnknownText_0x763c2:
-	text "Baby is a rude"
-	line "name to call us"
-	cont "girls!"
 	done
 
 TwinsMegandpeg2SeenText:
@@ -324,12 +319,6 @@ TwinsMegandpeg2BeatenText:
 	text "Oh! We lost!"
 	done
 
-UnknownText_0x76428:
-	text "Sometimes, kids"
-	line "are smarter than"
-	cont "grown-ups!"
-	done
-
 PsychicRodneySeenText:
 	text "Ssh! My brain is"
 	line "picking up radio"
@@ -339,12 +328,6 @@ PsychicRodneySeenText:
 PsychicRodneyBeatenText:
 	text "…I hear some-"
 	line "thing!"
-	done
-
-UnknownText_0x76497:
-	text "I get it. You can"
-	line "hear Johto's radio"
-	cont "on the Fast Ship."
 	done
 
 PokefanmJeremySeenText:
@@ -358,12 +341,6 @@ PokefanmJeremyBeatenText:
 	line "ful #mon!"
 	done
 
-UnknownText_0x7651c:
-	text "I must go to the"
-	line "#mon Salon and"
-	cont "fix them up nice!"
-	done
-
 PokefanfGeorgiaSeenText:
 	text "I'm going to shop"
 	line "at the Dept.Store"
@@ -375,12 +352,6 @@ PokefanfGeorgiaBeatenText:
 	line "to do?"
 	done
 
-UnknownText_0x76596:
-	text "Oh, yes! I have to"
-	line "get my #mon out"
-	cont "of Day-Care!"
-	done
-
 SupernerdShawnSeenText:
 	text "What kinds of #"
 	line "Balls do you have"
@@ -390,12 +361,6 @@ SupernerdShawnSeenText:
 SupernerdShawnBeatenText:
 	text "Wait! Stop! Don't!"
 	line "Please!"
-	done
-
-UnknownText_0x7660f:
-	text "You should use the"
-	line "right Balls to fit"
-	cont "the situation."
 	done
 
 UnknownText_0x76645:

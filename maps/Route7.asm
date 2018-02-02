@@ -16,7 +16,7 @@ Route7_MapScriptHeader:
 
 	db 3 ; object events
 	object_event  1,  0, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
-	object_event 15, 11, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
+	object_event 15, 11, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBreederCarlene, -1
 	itemball_event 16,  1, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
 	const_def 1 ; object constants
@@ -26,12 +26,18 @@ Route7RebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_CARLENE
 	return
 
-TrainerBreederCarlene:
-	trainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerBreederCarlene:
+	generictrainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "I make my Smeargle"
+	line "Sketch a move,"
+
+	para "then breed it"
+	line "to pass the move"
+	cont "down!"
+
+	para "Isn't that smart?"
+	done
 
 .SeenText:
 	text "My team is bred"
@@ -42,17 +48,6 @@ TrainerBreederCarlene:
 .BeatenText:
 	text "We couldn't"
 	line "handle you!"
-	done
-
-.AfterText:
-	text "I make my Smeargle"
-	line "Sketch a move,"
-
-	para "then breed it"
-	line "to pass the move"
-	cont "down!"
-
-	para "Isn't that smart?"
 	done
 
 Route7Snorlax:

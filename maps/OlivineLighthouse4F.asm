@@ -21,14 +21,23 @@ OlivineLighthouse4F_MapScriptHeader:
 
 	db 2 ; object events
 	object_event  7, 14, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
-	object_event 11,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event 11,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 
-TrainerLassConnie:
-	trainer LASS, CONNIE, EVENT_BEAT_LASS_CONNIE, LassConnieSeenText, LassConnieBeatenText, 0, LassConnieScript
+GenericTrainerLassConnie:
+	generictrainer LASS, CONNIE, EVENT_BEAT_LASS_CONNIE, LassConnieSeenText, LassConnieBeatenText
 
-LassConnieScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5b63c
+	text "Right. Anybody"
+	line "would be worried"
+
+	para "if their own #-"
+	line "mon were hurt."
+
+	para "I'll pray for the"
+	line "#mon here, so"
+
+	para "Jasmine can come"
+	line "back to the Gym."
+	done
 
 TrainerSailorKent:
 	trainer SAILOR, KENT, EVENT_BEAT_SAILOR_KENT, SailorKentSeenText, SailorKentBeatenText, 0, SailorKentScript
@@ -85,16 +94,3 @@ LassConnieBeatenText:
 	text "Aaack! My #mon!"
 	done
 
-UnknownText_0x5b63c:
-	text "Right. Anybody"
-	line "would be worried"
-
-	para "if their own #-"
-	line "mon were hurt."
-
-	para "I'll pray for the"
-	line "#mon here, so"
-
-	para "Jasmine can come"
-	line "back to the Gym."
-	done

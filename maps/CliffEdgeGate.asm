@@ -15,7 +15,7 @@ CliffEdgeGate_MapScriptHeader:
 	db 3 ; object events
 	object_event 11, 16, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffEdgeGateReceptionistText, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	object_event  3,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	object_event 17, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST
+	object_event 17, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST
 
 ProfOaksAide3Script:
 	faceplayer
@@ -42,12 +42,16 @@ ProfOaksAide3Script:
 .NoRoom
 	jumpopenedtext ProfOaksAide3NoRoomText
 
-TrainerGruntM12:
-	trainer GRUNTM, 12, EVENT_BEAT_ROCKET_GRUNTM_12, GruntM12SeenText, GruntM12BeatenText, 0, GruntM12Script
+GenericTrainerGruntM12:
+	generictrainer GRUNTM, 12, EVENT_BEAT_ROCKET_GRUNTM_12, GruntM12SeenText, GruntM12BeatenText
 
-GruntM12Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM12AfterText
+	text "Yellow Forest is"
+	line "full of rare"
+	cont "#mon."
+
+	para "We're nabbing them"
+	line "all for ourselves!"
+	done
 
 CliffEdgeGateReceptionistText:
 	text "Yellow Forest is"
@@ -139,11 +143,3 @@ GruntM12BeatenText:
 	line "to lose!"
 	done
 
-GruntM12AfterText:
-	text "Yellow Forest is"
-	line "full of rare"
-	cont "#mon."
-
-	para "We're nabbing them"
-	line "all for ourselves!"
-	done

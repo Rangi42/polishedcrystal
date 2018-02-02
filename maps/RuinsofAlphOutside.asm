@@ -34,8 +34,8 @@ RuinsofAlphOutside_MapScriptHeader:
 	db 13 ; object events
 	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	object_event 18, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
-	object_event  6, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
-	object_event  5, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuperNerdStan, -1
+	object_event  6, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNathan, -1
+	object_event  5, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSuperNerdStan, -1
 	object_event 15, 23, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	object_event 14, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	object_event 16, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
@@ -131,19 +131,31 @@ YoungsterScript_0x5807e:
 	spriteface LAST_TALKED, UP
 	end
 
-TrainerPsychicNathan:
-	trainer PSYCHIC_T, NATHAN, EVENT_BEAT_PSYCHIC_NATHAN, PsychicNathanSeenText, PsychicNathanBeatenText, 0, PsychicNathanScript
+GenericTrainerPsychicNathan:
+	generictrainer PSYCHIC_T, NATHAN, EVENT_BEAT_PSYCHIC_NATHAN, PsychicNathanSeenText, PsychicNathanBeatenText
 
-PsychicNathanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5830e
+	text "I like thinking"
+	line "here."
+	done
 
-TrainerSuperNerdStan:
-	trainer SUPER_NERD, STAN, EVENT_BEAT_SUPER_NERD_STAN, UnknownText_0x581e5, UnknownText_0x58217, 0, UnknownScript_0x580a9
+GenericTrainerSuperNerdStan:
+	generictrainer SUPER_NERD, STAN, EVENT_BEAT_SUPER_NERD_STAN, UnknownText_0x581e5, UnknownText_0x58217
 
-UnknownScript_0x580a9:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x58250
+	text "The ruins are from"
+	line "about 1,500 years"
+	cont "ago."
+
+	para "Nobody knows who"
+	line "built them."
+
+	para "It's also not"
+	line "known if the #-"
+	cont "mon statues have"
+	cont "any meaning."
+
+	para "It's all one big"
+	line "mystery…"
+	done
 
 MovementData_0x580ba:
 	step_right
@@ -232,23 +244,6 @@ UnknownText_0x58217:
 	line "understanding…"
 	done
 
-UnknownText_0x58250:
-	text "The ruins are from"
-	line "about 1,500 years"
-	cont "ago."
-
-	para "Nobody knows who"
-	line "built them."
-
-	para "It's also not"
-	line "known if the #-"
-	cont "mon statues have"
-	cont "any meaning."
-
-	para "It's all one big"
-	line "mystery…"
-	done
-
 PsychicNathanSeenText:
 	text "Hmmm… This is a"
 	line "strange place."
@@ -256,11 +251,6 @@ PsychicNathanSeenText:
 
 PsychicNathanBeatenText:
 	text "…"
-	done
-
-UnknownText_0x5830e:
-	text "I like thinking"
-	line "here."
 	done
 
 UnknownText_0x58325:

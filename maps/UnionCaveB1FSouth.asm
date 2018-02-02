@@ -17,13 +17,13 @@ UnionCaveB1FSouth_MapScriptHeader:
 	bg_event  4, 30, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE
 
 	db 14 ; object events
-	object_event  5,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacAndrew, -1
-	object_event 17,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacCalvin, -1
-	object_event 16, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerPhillip, -1
-	object_event 14, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerLeonard, -1
-	object_event  3, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherJay, -1
-	object_event  7, 30, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuper_nerdRory, -1
-	object_event 12, 17, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacGlyn, -1
+	object_event  5,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacAndrew, -1
+	object_event 17,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacCalvin, -1
+	object_event 16, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerPhillip, -1
+	object_event 14, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerLeonard, -1
+	object_event  3, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerFirebreatherJay, -1
+	object_event  7, 30, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSuper_nerdRory, -1
+	object_event 12, 17, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRuin_maniacGlyn, -1
 	strengthboulder_event 14, 4
 	strengthboulder_event  8, 32
 	smashrock_event 11, 15
@@ -32,12 +32,13 @@ UnionCaveB1FSouth_MapScriptHeader:
 	itemball_event  8, 26, SUPER_REPEL, 1, EVENT_UNION_CAVE_B1F_SOUTH_SUPER_REPEL
 	itemball_event  2, 28, LIGHT_CLAY, 1, EVENT_UNION_CAVE_B1F_SOUTH_LIGHT_CLAY
 
-TrainerPokemaniacAndrew:
-	trainer POKEMANIAC, ANDREW, EVENT_BEAT_POKEMANIAC_ANDREW, PokemaniacAndrewSeenText, PokemaniacAndrewBeatenText, 0, PokemaniacAndrewScript
+GenericTrainerPokemaniacAndrew:
+	generictrainer POKEMANIAC, ANDREW, EVENT_BEAT_POKEMANIAC_ANDREW, PokemaniacAndrewSeenText, PokemaniacAndrewBeatenText
 
-PokemaniacAndrewScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a181
+	text "Just me and my"
+	line "#mon. I'm de-"
+	cont "lirious with joy."
+	done
 
 PokemaniacAndrewSeenText:
 	text "Who's there?"
@@ -51,18 +52,17 @@ PokemaniacAndrewBeatenText:
 	line "Go away!"
 	done
 
-UnknownText_0x5a181:
-	text "Just me and my"
-	line "#mon. I'm de-"
-	cont "lirious with joy."
+GenericTrainerPokemaniacCalvin:
+	generictrainer POKEMANIAC, CALVIN, EVENT_BEAT_POKEMANIAC_CALVIN, PokemaniacCalvinSeenText, PokemaniacCalvinBeatenText
+
+	text "I should compile"
+	line "and announce my"
+	cont "study findings."
+
+	para "I might even be-"
+	line "come famous like"
+	cont "Prof.Elm."
 	done
-
-TrainerPokemaniacCalvin:
-	trainer POKEMANIAC, CALVIN, EVENT_BEAT_POKEMANIAC_CALVIN, PokemaniacCalvinSeenText, PokemaniacCalvinBeatenText, 0, PokemaniacCalvinScript
-
-PokemaniacCalvinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a230
 
 PokemaniacCalvinSeenText:
 	text "I came all the way"
@@ -79,22 +79,16 @@ PokemaniacCalvinBeatenText:
 	line "on me!"
 	done
 
-UnknownText_0x5a230:
-	text "I should compile"
-	line "and announce my"
-	cont "study findings."
+GenericTrainerHikerPhillip:
+	generictrainer HIKER, PHILLIP, EVENT_BEAT_HIKER_PHILLIP, HikerPhillipSeenText, HikerPhillipBeatenText
 
-	para "I might even be-"
-	line "come famous like"
-	cont "Prof.Elm."
+	text "I've been lost for"
+	line "a long time…"
+
+	para "I don't mind it"
+	line "here, but I am"
+	cont "soooo hungry!"
 	done
-
-TrainerHikerPhillip:
-	trainer HIKER, PHILLIP, EVENT_BEAT_HIKER_PHILLIP, HikerPhillipSeenText, HikerPhillipBeatenText, 0, HikerPhillipScript
-
-HikerPhillipScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a073
 
 HikerPhillipSeenText:
 	text "It's been a while"
@@ -109,21 +103,17 @@ HikerPhillipBeatenText:
 	text "Uurggh…"
 	done
 
-UnknownText_0x5a073:
-	text "I've been lost for"
-	line "a long time…"
+GenericTrainerHikerLeonard:
+	generictrainer HIKER, LEONARD, EVENT_BEAT_HIKER_LEONARD, HikerLeonardSeenText, HikerLeonardBeatenText
 
-	para "I don't mind it"
-	line "here, but I am"
-	cont "soooo hungry!"
+	text "I live down here."
+
+	para "You can, too, if"
+	line "you'd like."
+
+	para "There's plenty of"
+	line "room, you see."
 	done
-
-TrainerHikerLeonard:
-	trainer HIKER, LEONARD, EVENT_BEAT_HIKER_LEONARD, HikerLeonardSeenText, HikerLeonardBeatenText, 0, HikerLeonardScript
-
-HikerLeonardScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a0fb
 
 HikerLeonardSeenText:
 	text "What do you know!"
@@ -135,22 +125,16 @@ HikerLeonardBeatenText:
 	line "feisty one!"
 	done
 
-UnknownText_0x5a0fb:
-	text "I live down here."
+GenericTrainerFirebreatherJay:
+	generictrainer FIREBREATHER, JAY, EVENT_BEAT_FIREBREATHER_JAY, .SeenText, .BeatenText
 
-	para "You can, too, if"
-	line "you'd like."
+	text "One time my hat"
+	line "caught on fire."
 
-	para "There's plenty of"
-	line "room, you see."
+	para "It looked kind of"
+	line "like a Magmar… but"
+	cont "it hurt!"
 	done
-
-TrainerFirebreatherJay:
-	trainer FIREBREATHER, JAY, EVENT_BEAT_FIREBREATHER_JAY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I learned how to"
@@ -165,21 +149,15 @@ TrainerFirebreatherJay:
 	line "beat you…"
 	done
 
-.AfterText:
-	text "One time my hat"
-	line "caught on fire."
+GenericTrainerSuper_nerdRory:
+	generictrainer SUPER_NERD, RORY, EVENT_BEAT_SUPER_NERD_RORY, .SeenText, .BeatenText
 
-	para "It looked kind of"
-	line "like a Magmar… but"
-	cont "it hurt!"
+	text "A jiffy is the"
+	line "scientific name"
+
+	para "for 1/100th of a"
+	line "second."
 	done
-
-TrainerSuper_nerdRory:
-	trainer SUPER_NERD, RORY, EVENT_BEAT_SUPER_NERD_RORY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This'll be over"
@@ -191,20 +169,13 @@ TrainerSuper_nerdRory:
 	line "off…"
 	done
 
-.AfterText:
-	text "A jiffy is the"
-	line "scientific name"
+GenericTrainerRuin_maniacGlyn:
+	generictrainer RUIN_MANIAC, GLYN, EVENT_BEAT_RUIN_MANIAC_GLYN, .SeenText, .BeatenText
 
-	para "for 1/100th of a"
-	line "second."
+	text "Rocks hide all"
+	line "sorts of interest-"
+	cont "ing items."
 	done
-
-TrainerRuin_maniacGlyn:
-	trainer RUIN_MANIAC, GLYN, EVENT_BEAT_RUIN_MANIAC_GLYN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon were"
@@ -220,8 +191,3 @@ TrainerRuin_maniacGlyn:
 	cont "too!"
 	done
 
-.AfterText:
-	text "Rocks hide all"
-	line "sorts of interest-"
-	cont "ing items."
-	done

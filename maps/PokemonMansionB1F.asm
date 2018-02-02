@@ -20,19 +20,22 @@ PokemonMansionB1F_MapScriptHeader:
 	bg_event  9, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
 	db 6 ; object events
-	object_event 18,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistBraydon, -1
+	object_event 18,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerScientistBraydon, -1
 	object_event 18, 22, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, PokemonMansionDiaryText, -1
 	itemball_event 13,  5, CARBOS, 1, EVENT_POKEMON_MANSION_B1F_CARBOS
 	itemball_event  7,  6, CALCIUM, 1, EVENT_POKEMON_MANSION_B1F_CALCIUM
 	itemball_event 16, 27, HP_UP, 1, EVENT_POKEMON_MANSION_B1F_HP_UP
 	itemball_event  4, 23, OLD_SEA_MAP, 1, EVENT_POKEMON_MANSION_B1F_OLD_SEA_MAP
 
-TrainerScientistBraydon:
-	trainer SCIENTIST, BRAYDON, EVENT_BEAT_SCIENTIST_BRAYDON, ScientistBraydonSeenText, ScientistBraydonBeatenText, 0, ScientistBraydonScript
+GenericTrainerScientistBraydon:
+	generictrainer SCIENTIST, BRAYDON, EVENT_BEAT_SCIENTIST_BRAYDON, ScientistBraydonSeenText, ScientistBraydonBeatenText
 
-ScientistBraydonScript:
-	end_if_just_battled
-	jumptextfaceplayer ScientistBraydonAfterText
+	text "This place was"
+	line "once the site of"
+
+	para "serious #mon"
+	line "research."
+	done
 
 PokemonMansionB1FHiddenRareCandy:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_RARE_CANDY
@@ -86,14 +89,6 @@ ScientistBraydonSeenText:
 ScientistBraydonBeatenText:
 	text "Whew!"
 	line "Overwhelming!"
-	done
-
-ScientistBraydonAfterText:
-	text "This place was"
-	line "once the site of"
-
-	para "serious #mon"
-	line "research."
 	done
 
 PokemonMansionDiaryText:

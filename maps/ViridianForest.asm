@@ -24,48 +24,64 @@ ViridianForest_MapScriptHeader:
 	bg_event  3, 14, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
 	db 7 ; object events
-	object_event 29, 42, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
-	object_event 33, 35, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
-	object_event 32, 21, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
-	object_event 31,  4, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
-	object_event  5, 24, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
+	object_event 29, 42, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBug_maniacDane, -1
+	object_event 33, 35, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacDion, -1
+	object_event 32, 21, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBug_maniacStacey, -1
+	object_event 31,  4, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacEllis, -1
+	object_event  5, 24, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBug_maniacAbner, -1
 	itemball_event 14, 31, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
 	itemball_event  3, 33, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
 
-TrainerBug_maniacDane:
-	trainer BUG_MANIAC, DANE, EVENT_BEAT_BUG_MANIAC_DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText, 0, .Script
+GenericTrainerBug_maniacDane:
+	generictrainer BUG_MANIAC, DANE, EVENT_BEAT_BUG_MANIAC_DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacDaneAfterText
+	text "Pretty impressive!"
 
-TrainerBug_maniacDion:
-	trainer BUG_MANIAC, DION, EVENT_BEAT_BUG_MANIAC_DION, BugManiacDionSeenText, BugManiacDionBeatenText, 0, .Script
+	para "I'm sure you can"
+	line "go anywhere with"
+	cont "that skill!"
+	done
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacDionAfterText
+GenericTrainerBug_maniacDion:
+	generictrainer BUG_MANIAC, DION, EVENT_BEAT_BUG_MANIAC_DION, BugManiacDionSeenText, BugManiacDionBeatenText
 
-TrainerBug_maniacStacey:
-	trainer BUG_MANIAC, STACEY, EVENT_BEAT_BUG_MANIAC_STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText, 0, .Script
+	text "Bug-type #mon"
+	line "make all kinds of"
+	cont "sounds."
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacStaceyAfterText
+	para "For bug #mon"
+	line "fans, knowing how"
+	cont "to distinguish"
+	cont "them is key!"
+	done
 
-TrainerBug_maniacEllis:
-	trainer BUG_MANIAC, ELLIS, EVENT_BEAT_BUG_MANIAC_ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText, 0, .Script
+GenericTrainerBug_maniacStacey:
+	generictrainer BUG_MANIAC, STACEY, EVENT_BEAT_BUG_MANIAC_STACEY, BugManiacStaceySeenText, BugManiacStaceyBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacEllisAfterText
+	text "Has anyone ever"
+	line "told you that from"
+	cont "behind you look"
+	cont "like a Venonat?"
+	done
 
-TrainerBug_maniacAbner:
-	trainer BUG_MANIAC, ABNER, EVENT_BEAT_BUG_MANIAC_ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText, 0, .Script
+GenericTrainerBug_maniacEllis:
+	generictrainer BUG_MANIAC, ELLIS, EVENT_BEAT_BUG_MANIAC_ELLIS, BugManiacEllisSeenText, BugManiacEllisBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacAbnerAfterText
+	text "If this is it,"
+	line "then I don't mind"
+	cont "losing!"
+	done
+
+GenericTrainerBug_maniacAbner:
+	generictrainer BUG_MANIAC, ABNER, EVENT_BEAT_BUG_MANIAC_ABNER, BugManiacAbnerSeenText, BugManiacAbnerBeatenText
+
+	text "Doesn't matter what"
+	line "kind of #mon--"
+
+	para "as long as you"
+	line "like them, they"
+	cont "all look cute."
+	done
 
 BugManiacDaneSeenText:
 	text "Welcome to"
@@ -78,14 +94,6 @@ BugManiacDaneBeatenText:
 	text "That's wonderful…"
 	done
 
-BugManiacDaneAfterText:
-	text "Pretty impressive!"
-
-	para "I'm sure you can"
-	line "go anywhere with"
-	cont "that skill!"
-	done
-
 BugManiacDionSeenText:
 	text "Shh! Be quiet! The"
 	line "bug #mon will"
@@ -94,17 +102,6 @@ BugManiacDionSeenText:
 
 BugManiacDionBeatenText:
 	text "Phew…"
-	done
-
-BugManiacDionAfterText:
-	text "Bug-type #mon"
-	line "make all kinds of"
-	cont "sounds."
-
-	para "For bug #mon"
-	line "fans, knowing how"
-	cont "to distinguish"
-	cont "them is key!"
 	done
 
 BugManiacStaceySeenText:
@@ -121,13 +118,6 @@ BugManiacStaceyBeatenText:
 	line "it!"
 	done
 
-BugManiacStaceyAfterText:
-	text "Has anyone ever"
-	line "told you that from"
-	cont "behind you look"
-	cont "like a Venonat?"
-	done
-
 BugManiacEllisSeenText:
 	text "There's nothing"
 	line "more efficient and"
@@ -138,12 +128,6 @@ BugManiacEllisSeenText:
 BugManiacEllisBeatenText:
 	text "I lost"
 	line "beautifully!"
-	done
-
-BugManiacEllisAfterText:
-	text "If this is it,"
-	line "then I don't mind"
-	cont "losing!"
 	done
 
 BugManiacAbnerSeenText:
@@ -157,15 +141,6 @@ BugManiacAbnerBeatenText:
 	text "Thanks for your"
 	line "hard work, my"
 	cont "lovely #mon…"
-	done
-
-BugManiacAbnerAfterText:
-	text "Doesn't matter what"
-	line "kind of #mon--"
-
-	para "as long as you"
-	line "like them, they"
-	cont "all look cute."
 	done
 
 ViridianForestSignText1:

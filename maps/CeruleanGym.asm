@@ -19,11 +19,11 @@ CeruleanGym_MapScriptHeader:
 	db 8 ; object events
 	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
 	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
-	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	object_event  8,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfViola, EVENT_TRAINERS_IN_CERULEAN_GYM
-	object_event  0,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
-	object_event  9,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  8,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfViola, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  0,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  9,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  3, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
 
 	const_def 1 ; object constants
@@ -110,40 +110,56 @@ MistyScript_0x188432:
 MistyAfterTMScript:
 	jumpopenedtext UnknownText_0x188782
 
-TrainerSwimmerfDiana:
-	trainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText, 0, SwimmerfDianaScript
+GenericTrainerSwimmerfDiana:
+	generictrainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText
 
-SwimmerfDianaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x188856
+	text "I'll be swimming"
+	line "quietly."
+	done
 
-TrainerSwimmerfViola:
-	trainer SWIMMERF, VIOLA, EVENT_BEAT_SWIMMERF_VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText, 0, SwimmerfViolaScript
+GenericTrainerSwimmerfViola:
+	generictrainer SWIMMERF, VIOLA, EVENT_BEAT_SWIMMERF_VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText
 
-SwimmerfViolaScript:
-	end_if_just_battled
-	jumptextfaceplayer SwimmerfViolaAfterText
+	text "Swimming is good"
+	line "for both beauty"
+	cont "and health!"
 
-TrainerSwimmerfBriana:
-	trainer SWIMMERF, BRIANA, EVENT_BEAT_SWIMMERF_BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
+	para "Just look at"
+	line "Misty, you'll see."
+	done
 
-SwimmerfBrianaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1888c0
+GenericTrainerSwimmerfBriana:
+	generictrainer SWIMMERF, BRIANA, EVENT_BEAT_SWIMMERF_BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText
 
-TrainerSailorParker:
-	trainer SAILOR, PARKER, EVENT_BEAT_SAILOR_PARKER, SailorParkerSeenText, SailorParkerBeatenText, 0, SailorParkerScript
+	text "Don't be too smug"
+	line "about beating me."
 
-SailorParkerScript:
-	end_if_just_battled
-	jumptextfaceplayer SailorParkerAfterText
+	para "Misty will destroy"
+	line "you if you get"
+	cont "complacent."
+	done
 
-TrainerSailorEddie:
-	trainer SAILOR, EDDIE, EVENT_BEAT_SAILOR_EDDIE, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
+GenericTrainerSailorParker:
+	generictrainer SAILOR, PARKER, EVENT_BEAT_SAILOR_PARKER, SailorParkerSeenText, SailorParkerBeatenText
 
-SailorEddieScript:
-	end_if_just_battled
-	jumptextfaceplayer SailorEddieAfterText
+	text "Misty has gotten"
+	line "much better in the"
+	cont "past few years."
+
+	para "Don't let your"
+	line "guard down, or"
+	cont "you'll be crushed!"
+	done
+
+GenericTrainerSailorEddie:
+	generictrainer SAILOR, EDDIE, EVENT_BEAT_SAILOR_EDDIE, SailorEddieSeenText, SailorEddieBeatenText
+
+	text "Hey, let's go for"
+	line "a swim!"
+
+	para "Sailors have to"
+	line "be able to swim!"
+	done
 
 CeruleanGymGuyScript:
 	checkevent EVENT_BEAT_MISTY
@@ -328,11 +344,6 @@ SwimmerfDianaBeatenText:
 	line "the winner!"
 	done
 
-UnknownText_0x188856:
-	text "I'll be swimming"
-	line "quietly."
-	done
-
 SwimmerfViolaSeenText:
 	text "Swimming isn't"
 	line "just about speed!"
@@ -346,15 +357,6 @@ SwimmerfViolaBeatenText:
 	line "beautifully…"
 	done
 
-SwimmerfViolaAfterText:
-	text "Swimming is good"
-	line "for both beauty"
-	cont "and health!"
-
-	para "Just look at"
-	line "Misty, you'll see."
-	done
-
 SwimmerfBrianaSeenText:
 	text "Don't let my ele-"
 	line "gant swimming un-"
@@ -366,15 +368,6 @@ SwimmerfBrianaBeatenText:
 	line "disposed of me…"
 	done
 
-UnknownText_0x1888c0:
-	text "Don't be too smug"
-	line "about beating me."
-
-	para "Misty will destroy"
-	line "you if you get"
-	cont "complacent."
-	done
-
 SailorParkerSeenText:
 	text "Alright! Come"
 	line "and get me!"
@@ -382,16 +375,6 @@ SailorParkerSeenText:
 
 SailorParkerBeatenText:
 	text "This can't be…"
-	done
-
-SailorParkerAfterText:
-	text "Misty has gotten"
-	line "much better in the"
-	cont "past few years."
-
-	para "Don't let your"
-	line "guard down, or"
-	cont "you'll be crushed!"
 	done
 
 SailorEddieSeenText:
@@ -404,14 +387,6 @@ SailorEddieSeenText:
 SailorEddieBeatenText:
 	text "You can't win with"
 	line "strength alone."
-	done
-
-SailorEddieAfterText:
-	text "Hey, let's go for"
-	line "a swim!"
-
-	para "Sailors have to"
-	line "be able to swim!"
 	done
 
 CeruleanGymGuyText:

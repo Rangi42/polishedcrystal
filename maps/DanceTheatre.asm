@@ -14,51 +14,65 @@ DanceTheatre_MapScriptHeader:
 	bg_event  6,  6, SIGNPOST_UP, MapDanceTheatreSignpost1Script
 
 	db 10 ; object events
-	object_event  0,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlNaoko, -1
-	object_event  2,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlSayo, -1
-	object_event  6,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerKimono_girlZuki, -1
-	object_event  9,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerKimono_girlKuni, -1
-	object_event 11,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 0, TrainerKimono_girlMiki, -1
+	object_event  0,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlNaoko, -1
+	object_event  2,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlSayo, -1
+	object_event  6,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlZuki, -1
+	object_event  9,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlKuni, -1
+	object_event 11,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlMiki, -1
 	object_event  7, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x994c6, -1
 	object_event  6,  8, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, RHYDON, UnknownText_0x99a0a, -1
 	object_event 10, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99a24, -1
 	object_event  3,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99aaa, -1
 	object_event  1, 10, SPRITE_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, DanceTheatreLadyText, -1
 
-TrainerKimono_girlNaoko:
-	trainer KIMONO_GIRL, NAOKO, EVENT_BEAT_KIMONO_GIRL_NAOKO, Kimono_girlNaokoSeenText, Kimono_girlNaokoBeatenText, 0, Kimono_girlNaokoScript
+GenericTrainerKimono_girlNaoko:
+	generictrainer KIMONO_GIRL, NAOKO, EVENT_BEAT_KIMONO_GIRL_NAOKO, Kimono_girlNaokoSeenText, Kimono_girlNaokoBeatenText
 
-Kimono_girlNaokoScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x99579
+	text "I enjoyed that"
+	line "bout. I would like"
+	cont "to see you again."
+	done
 
-TrainerKimono_girlSayo:
-	trainer KIMONO_GIRL, SAYO, EVENT_BEAT_KIMONO_GIRL_SAYO, Kimono_girlSayoSeenText, Kimono_girlSayoBeatenText, 0, Kimono_girlSayoScript
+GenericTrainerKimono_girlSayo:
+	generictrainer KIMONO_GIRL, SAYO, EVENT_BEAT_KIMONO_GIRL_SAYO, Kimono_girlSayoSeenText, Kimono_girlSayoBeatenText
 
-Kimono_girlSayoScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x9960b
+	text "Rhythm is impor-"
+	line "tant for both"
 
-TrainerKimono_girlZuki:
-	trainer KIMONO_GIRL, ZUKI, EVENT_BEAT_KIMONO_GIRL_ZUKI, Kimono_girlZukiSeenText, Kimono_girlZukiBeatenText, 0, Kimono_girlZukiScript
+	para "dancing and #-"
+	line "mon."
+	done
 
-Kimono_girlZukiScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x99688
+GenericTrainerKimono_girlZuki:
+	generictrainer KIMONO_GIRL, ZUKI, EVENT_BEAT_KIMONO_GIRL_ZUKI, Kimono_girlZukiSeenText, Kimono_girlZukiBeatenText
 
-TrainerKimono_girlKuni:
-	trainer KIMONO_GIRL, KUNI, EVENT_BEAT_KIMONO_GIRL_KUNI, Kimono_girlKuniSeenText, Kimono_girlKuniBeatenText, 0, Kimono_girlKuniScript
+	text "I put a different"
+	line "flower in my bar-"
+	cont "rette every month."
+	done
 
-Kimono_girlKuniScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x99714
+GenericTrainerKimono_girlKuni:
+	generictrainer KIMONO_GIRL, KUNI, EVENT_BEAT_KIMONO_GIRL_KUNI, Kimono_girlKuniSeenText, Kimono_girlKuniBeatenText
 
-TrainerKimono_girlMiki:
-	trainer KIMONO_GIRL, MIKI, EVENT_BEAT_KIMONO_GIRL_MIKI, Kimono_girlMikiSeenText, Kimono_girlMikiBeatenText, 0, Kimono_girlMikiScript
+	text "I trained a lot,"
+	line "so I thought I was"
 
-Kimono_girlMikiScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x997a8
+	para "a capable trainer."
+	line "I guess I'm not."
+	done
+
+GenericTrainerKimono_girlMiki:
+	generictrainer KIMONO_GIRL, MIKI, EVENT_BEAT_KIMONO_GIRL_MIKI, Kimono_girlMikiSeenText, Kimono_girlMikiBeatenText
+
+	text "I can keep dancing"
+	line "because there are"
+
+	para "people who enjoy"
+	line "what I do."
+
+	para "My #mon keep my"
+	line "spirits up too."
+	done
 
 GentlemanScript_0x994c6:
 	faceplayer
@@ -111,12 +125,6 @@ Kimono_girlNaokoBeatenText:
 	line "strong."
 	done
 
-UnknownText_0x99579:
-	text "I enjoyed that"
-	line "bout. I would like"
-	cont "to see you again."
-	done
-
 Kimono_girlSayoSeenText:
 	text "I always dance"
 	line "with my #mon."
@@ -128,14 +136,6 @@ Kimono_girlSayoSeenText:
 Kimono_girlSayoBeatenText:
 	text "Oh, so close!"
 	line "I almost had you."
-	done
-
-UnknownText_0x9960b:
-	text "Rhythm is impor-"
-	line "tant for both"
-
-	para "dancing and #-"
-	line "mon."
 	done
 
 Kimono_girlZukiSeenText:
@@ -151,12 +151,6 @@ Kimono_girlZukiBeatenText:
 	line "#mon left…"
 	done
 
-UnknownText_0x99688:
-	text "I put a different"
-	line "flower in my bar-"
-	cont "rette every month."
-	done
-
 Kimono_girlKuniSeenText:
 	text "Oh, you're a cute"
 	line "trainer. Would you"
@@ -168,14 +162,6 @@ Kimono_girlKuniBeatenText:
 	line "than you look."
 	done
 
-UnknownText_0x99714:
-	text "I trained a lot,"
-	line "so I thought I was"
-
-	para "a capable trainer."
-	line "I guess I'm not."
-	done
-
 Kimono_girlMikiSeenText:
 	text "Do you like my"
 	line "dancing? I'm good"
@@ -185,17 +171,6 @@ Kimono_girlMikiSeenText:
 Kimono_girlMikiBeatenText:
 	text "Ooh, you're good"
 	line "at #mon too."
-	done
-
-UnknownText_0x997a8:
-	text "I can keep dancing"
-	line "because there are"
-
-	para "people who enjoy"
-	line "what I do."
-
-	para "My #mon keep my"
-	line "spirits up too."
 	done
 
 UnknownText_0x9980a:

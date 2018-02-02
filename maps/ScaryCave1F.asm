@@ -20,12 +20,12 @@ ScaryCave1F_MapScriptHeader:
 	db 13 ; object events
 	object_event 15,  5, SPRITE_MIRA, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
 	object_event  8, 24, SPRITE_PHARMACIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
-	object_event 36,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacSmilte, -1
-	object_event  8, 18, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuper_nerdMako, -1
-	object_event 22, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo1, -1
-	object_event 23, 20, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleJoeandjo2, -1
-	object_event 37, 16, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacBethany, -1
-	object_event 36, 29, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistPiotr, -1
+	object_event 36,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRuin_maniacSmilte, -1
+	object_event  8, 18, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSuper_nerdMako, -1
+	object_event 22, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleJoeandjo1, -1
+	object_event 23, 20, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleJoeandjo2, -1
+	object_event 37, 16, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHex_maniacBethany, -1
+	object_event 36, 29, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerScientistPiotr, -1
 	itemball_event 27,  7, X_SPCL_DEF, 1, EVENT_SCARY_CAVE_1F_X_SPCL_DEF
 	itemball_event  4,  9, DUSK_STONE, 1, EVENT_SCARY_CAVE_1F_DUSK_STONE
 	itemball_event 33, 19, HYPER_POTION, 1, EVENT_SCARY_CAVE_1F_HYPER_POTION
@@ -203,12 +203,17 @@ ScaryCave1FPharmacistScript:
 	cont "hit them first!"
 	done
 
-TrainerRuin_maniacSmilte:
-	trainer RUIN_MANIAC, SMILTE, EVENT_BEAT_RUIN_MANIAC_SMILTE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerRuin_maniacSmilte:
+	generictrainer RUIN_MANIAC, SMILTE, EVENT_BEAT_RUIN_MANIAC_SMILTE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "I hear an echo."
+	line "There's a deeper"
+	cont "cave nearby!"
+
+	para "I wonder if that"
+	line "is where I'll find"
+	cont "my big discovery…"
+	done
 
 .SeenText:
 	text "I'm on the edge of"
@@ -223,22 +228,13 @@ TrainerRuin_maniacSmilte:
 	line "discovery?!"
 	done
 
-.AfterText:
-	text "I hear an echo."
-	line "There's a deeper"
-	cont "cave nearby!"
+GenericTrainerSuper_nerdMako:
+	generictrainer SUPER_NERD, MAKO, EVENT_BEAT_SUPER_NERD_MAKO, .SeenText, .BeatenText
 
-	para "I wonder if that"
-	line "is where I'll find"
-	cont "my big discovery…"
+	text "I guess even the"
+	line "best-laid plans"
+	cont "can be ruined."
 	done
-
-TrainerSuper_nerdMako:
-	trainer SUPER_NERD, MAKO, EVENT_BEAT_SUPER_NERD_MAKO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "You can't beat me!"
@@ -253,18 +249,16 @@ TrainerSuper_nerdMako:
 	line "ing board…"
 	done
 
-.AfterText:
-	text "I guess even the"
-	line "best-laid plans"
-	cont "can be ruined."
+GenericTrainerCoupleJoeandjo1:
+	generictrainer COUPLE, JOEANDJO1, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText
+
+	text "Joe: We're on a"
+	line "ghost hunt, but"
+
+	para "I'm not scared as"
+	line "long as I have my"
+	cont "Jo beside me!"
 	done
-
-TrainerCoupleJoeandjo1:
-	trainer COUPLE, JOEANDJO1, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Joe: A ghost!"
@@ -277,21 +271,16 @@ TrainerCoupleJoeandjo1:
 	line "just a trainer."
 	done
 
-.AfterText:
-	text "Joe: We're on a"
-	line "ghost hunt, but"
+GenericTrainerCoupleJoeandjo2:
+	generictrainer COUPLE, JOEANDJO2, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText
 
-	para "I'm not scared as"
-	line "long as I have my"
-	cont "Jo beside me!"
+	text "Jo: I'm so lucky"
+	line "to have my wonder-"
+	cont "ful Joe to ward"
+
+	para "off any creepy"
+	line "ghosts."
 	done
-
-TrainerCoupleJoeandjo2:
-	trainer COUPLE, JOEANDJO2, EVENT_BEAT_COUPLE_JOE_AND_JO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Jo: Eek! Hold me"
@@ -303,21 +292,14 @@ TrainerCoupleJoeandjo2:
 	line "scared?"
 	done
 
-.AfterText:
-	text "Jo: I'm so lucky"
-	line "to have my wonder-"
-	cont "ful Joe to ward"
+GenericTrainerHex_maniacBethany:
+	generictrainer HEX_MANIAC, BETHANY, EVENT_BEAT_HEX_MANIAC_BETHANY, .SeenText, .BeatenText
 
-	para "off any creepy"
-	line "ghosts."
+	text "The aura of fear"
+	line "in this cave is"
+	cont "delightful…"
+	cont "Fufufufu…"
 	done
-
-TrainerHex_maniacBethany:
-	trainer HEX_MANIAC, BETHANY, EVENT_BEAT_HEX_MANIAC_BETHANY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "BOO!"
@@ -327,19 +309,18 @@ TrainerHex_maniacBethany:
 	text "Did I scare you?"
 	done
 
-.AfterText:
-	text "The aura of fear"
-	line "in this cave is"
-	cont "delightful…"
-	cont "Fufufufu…"
+GenericTrainerScientistPiotr:
+	generictrainer SCIENTIST, PIOTR, EVENT_BEAT_SCIENTIST_PIOTR, .SeenText, .BeatenText
+
+	text "Algae grow here"
+	line "and release a red"
+
+	para "pigment in the"
+	line "water."
+
+	para "It's not blood!"
+	line "…Right?"
 	done
-
-TrainerScientistPiotr:
-	trainer SCIENTIST, PIOTR, EVENT_BEAT_SCIENTIST_PIOTR, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do you know why"
@@ -352,13 +333,3 @@ TrainerScientistPiotr:
 	line "you!"
 	done
 
-.AfterText:
-	text "Algae grow here"
-	line "and release a red"
-
-	para "pigment in the"
-	line "water."
-
-	para "It's not blood!"
-	line "…Right?"
-	done

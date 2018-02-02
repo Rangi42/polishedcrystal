@@ -16,12 +16,12 @@ Route44_MapScriptHeader:
 	db 12 ; object events
 	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
 	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
-	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherEdgar, -1
-	object_event 10,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicPhil, -1
-	object_event 43,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
+	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherEdgar, -1
+	object_event 10,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicPhil, -1
+	object_event 43,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacZach, -1
 	object_event 51,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
-	object_event 41, 15, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
-	object_event 31, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
+	object_event 41, 15, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainermAllen, -1
+	object_event 31, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainerfCybil, -1
 	fruittree_event  9,  5, FRUITTREE_ROUTE_44, ASPEAR_BERRY
 	itemball_event 30,  8, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
 	itemball_event 45,  4, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
@@ -268,12 +268,13 @@ UnknownScript_0x19d90a:
 	jumpstd rematchgiftm
 	end
 
-TrainerPsychicPhil:
-	trainer PSYCHIC_T, PHIL, EVENT_BEAT_PSYCHIC_PHIL, PsychicPhilSeenText, PsychicPhilBeatenText, 0, PsychicPhilScript
+GenericTrainerPsychicPhil:
+	generictrainer PSYCHIC_T, PHIL, EVENT_BEAT_PSYCHIC_PHIL, PsychicPhilSeenText, PsychicPhilBeatenText
 
-PsychicPhilScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19dcfc
+	text "It's important to"
+	line "have conviction"
+	cont "on your side."
+	done
 
 TrainerFisherWilton1:
 	trainer FISHER, WILTON1, EVENT_BEAT_FISHER_WILTON, FisherWilton1SeenText, FisherWilton1BeatenText, 0, FisherWilton1Script
@@ -375,33 +376,59 @@ UnknownScript_0x19d9e1:
 UnknownScript_0x19d9e7:
 	jump UnknownScript_0x19d8ff
 
-TrainerFisherEdgar:
-	trainer FISHER, EDGAR, EVENT_BEAT_FISHER_EDGAR, FisherEdgarSeenText, FisherEdgarBeatenText, 0, FisherEdgarScript
+GenericTrainerFisherEdgar:
+	generictrainer FISHER, EDGAR, EVENT_BEAT_FISHER_EDGAR, FisherEdgarSeenText, FisherEdgarBeatenText
 
-FisherEdgarScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19db6f
+	text "That's 100 wins"
+	line "to 101 losses."
 
-TrainerCooltrainerfCybil:
-	trainer COOLTRAINERF, CYBIL, EVENT_BEAT_COOLTRAINERF_CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText, 0, CooltrainerfCybilScript
+	para "I won't battle"
+	line "again for a while."
+	done
 
-CooltrainerfCybilScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19df4d
+GenericTrainerCooltrainerfCybil:
+	generictrainer COOLTRAINERF, CYBIL, EVENT_BEAT_COOLTRAINERF_CYBIL, CooltrainerfCybilSeenText, CooltrainerfCybilBeatenText
 
-TrainerPokemaniacZach:
-	trainer POKEMANIAC, ZACH, EVENT_BEAT_POKEMANIAC_ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText, 0, PokemaniacZachScript
+	text "We all get better"
+	line "by experiencing"
+	cont "many battles."
 
-PokemaniacZachScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19dd7e
+	para "I battled a lot to"
+	line "become what I am"
+	cont "today--an elite."
+	done
 
-TrainerCooltrainermAllen:
-	trainer COOLTRAINERM, ALLEN, EVENT_BEAT_COOLTRAINERM_ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText, 0, CooltrainermAllenScript
+GenericTrainerPokemaniacZach:
+	generictrainer POKEMANIAC, ZACH, EVENT_BEAT_POKEMANIAC_ZACH, PokemaniacZachSeenText, PokemaniacZachBeatenText
 
-CooltrainermAllenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19de66
+	text "If a #mon has"
+	line "different colors"
+
+	para "from usual, it's"
+	line "more valuable."
+
+	para "What? You mean"
+	line "that's not true?"
+	done
+
+GenericTrainerCooltrainermAllen:
+	generictrainer COOLTRAINERM, ALLEN, EVENT_BEAT_COOLTRAINERM_ALLEN, CooltrainermAllenSeenText, CooltrainermAllenBeatenText
+
+	text "Wow. You have a"
+	line "lot of Badges."
+
+	para "No wonder you're"
+	line "so tough."
+
+	para "I wonder if"
+	line "Ecruteak Gym's"
+
+	para "Morty is still in"
+	line "training?"
+
+	para "He really hammered"
+	line "me."
+	done
 
 FisherWilton1SeenText:
 	text "Aack! You made me"
@@ -452,14 +479,6 @@ FisherEdgarBeatenText:
 	line "This isn't right."
 	done
 
-UnknownText_0x19db6f:
-	text "That's 100 wins"
-	line "to 101 losses."
-
-	para "I won't battle"
-	line "again for a while."
-	done
-
 Bird_keeperVance1SeenText:
 	text "Do you know about"
 	line "the legendary bird"
@@ -504,12 +523,6 @@ PsychicPhilBeatenText:
 	line "shocking loss…"
 	done
 
-UnknownText_0x19dcfc:
-	text "It's important to"
-	line "have conviction"
-	cont "on your side."
-	done
-
 PokemaniacZachSeenText:
 	text "I'll do anything"
 	line "to get my hands on"
@@ -519,17 +532,6 @@ PokemaniacZachSeenText:
 PokemaniacZachBeatenText:
 	text "Oooh, your #mon"
 	line "are so appealing."
-	done
-
-UnknownText_0x19dd7e:
-	text "If a #mon has"
-	line "different colors"
-
-	para "from usual, it's"
-	line "more valuable."
-
-	para "What? You mean"
-	line "that's not true?"
 	done
 
 CooltrainermAllenSeenText:
@@ -547,23 +549,6 @@ CooltrainermAllenBeatenText:
 	line "loss on my part."
 	done
 
-UnknownText_0x19de66:
-	text "Wow. You have a"
-	line "lot of Badges."
-
-	para "No wonder you're"
-	line "so tough."
-
-	para "I wonder if"
-	line "Ecruteak Gym's"
-
-	para "Morty is still in"
-	line "training?"
-
-	para "He really hammered"
-	line "me."
-	done
-
 CooltrainerfCybilSeenText:
 	text "You look strong."
 
@@ -575,16 +560,6 @@ CooltrainerfCybilSeenText:
 CooltrainerfCybilBeatenText:
 	text "Nope! This won't"
 	line "do at all."
-	done
-
-UnknownText_0x19df4d:
-	text "We all get better"
-	line "by experiencing"
-	cont "many battles."
-
-	para "I battled a lot to"
-	line "become what I am"
-	cont "today--an elite."
 	done
 
 Route44Sign1Text:

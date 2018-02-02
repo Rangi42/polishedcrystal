@@ -17,19 +17,20 @@ Route2North_MapScriptHeader:
 	bg_event 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
 
 	db 6 ; object events
-	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
+	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacEd, -1
 	itemball_event 19,  4, CARBOS, 1, EVENT_ROUTE_2_CARBOS
 	fruittree_event  7, 13, FRUITTREE_ROUTE_2, LUM_BERRY
 	cuttree_event  5, 10, EVENT_ROUTE_2_CUT_TREE_1
 	cuttree_event 15, 22, EVENT_ROUTE_2_CUT_TREE_2
 	object_event 12, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route2NorthCooltrainermText, EVENT_VERMILION_CITY_SNORLAX
 
-TrainerBug_maniacEd:
-	trainer BUG_MANIAC, ED, EVENT_BEAT_BUG_MANIAC_ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText, 0, Bug_maniacEdScript
+GenericTrainerBug_maniacEd:
+	generictrainer BUG_MANIAC, ED, EVENT_BEAT_BUG_MANIAC_ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText
 
-Bug_maniacEdScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac3cf
+	text "They'll really"
+	line "sting when you"
+	cont "take a bath."
+	done
 
 Bug_maniacEdSeenText:
 	text "If you walk in"
@@ -41,12 +42,6 @@ Bug_maniacEdSeenText:
 
 Bug_maniacEdBeatenText:
 	text "Ouch, ouch, ouch!"
-	done
-
-UnknownText_0x1ac3cf:
-	text "They'll really"
-	line "sting when you"
-	cont "take a bath."
 	done
 
 Route2NorthCooltrainermText:

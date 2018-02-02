@@ -15,8 +15,8 @@ Route46_MapScriptHeader:
 
 	db 8 ; object events
 	object_event 15, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
-	object_event 12, 19, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
-	object_event  4, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
+	object_event 12, 19, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerBailey, -1
+	object_event  4, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperTed, -1
 	object_event  2, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
 	object_event  7, 26, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route46LassText, -1
 	fruittree_event  7,  5, FRUITTREE_ROUTE_46_1, CHERI_BERRY
@@ -53,12 +53,15 @@ Route46TutorRoute46Script:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_Route46TutorTaught
 
-TrainerCamperTed:
-	trainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText, 0, CamperTedScript
+GenericTrainerCamperTed:
+	generictrainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText
 
-CamperTedScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a9851
+	text "I did my best but"
+	line "came up short."
+
+	para "No excuses--I"
+	line "admit I lost."
+	done
 
 TrainerPicnickerErin1:
 	trainer PICNICKER, ERIN1, EVENT_BEAT_PICNICKER_ERIN, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
@@ -182,12 +185,13 @@ UnknownScript_0x1a9772:
 	jumpstd rematchgiftf
 	end
 
-TrainerHikerBailey:
-	trainer HIKER, BAILEY, EVENT_BEAT_HIKER_BAILEY, HikerBaileySeenText, HikerBaileyBeatenText, 0, HikerBaileyScript
+GenericTrainerHikerBailey:
+	generictrainer HIKER, BAILEY, EVENT_BEAT_HIKER_BAILEY, HikerBaileySeenText, HikerBaileyBeatenText
 
-HikerBaileyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a97e8
+	text "It's over. I don't"
+	line "mind. We Hikers"
+	cont "are like that."
+	done
 
 Route46HikerText:
 	text "A Donphan charged"
@@ -248,12 +252,6 @@ HikerBaileyBeatenText:
 	line "me your power!"
 	done
 
-UnknownText_0x1a97e8:
-	text "It's over. I don't"
-	line "mind. We Hikers"
-	cont "are like that."
-	done
-
 CamperTedSeenText:
 	text "I'm raising #-"
 	line "mon too!"
@@ -264,14 +262,6 @@ CamperTedSeenText:
 
 CamperTedBeatenText:
 	text "Wha…?"
-	done
-
-UnknownText_0x1a9851:
-	text "I did my best but"
-	line "came up short."
-
-	para "No excuses--I"
-	line "admit I lost."
 	done
 
 PicnickerErin1SeenText:

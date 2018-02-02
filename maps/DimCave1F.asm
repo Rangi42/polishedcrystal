@@ -15,18 +15,19 @@ DimCave1F_MapScriptHeader:
 	bg_event 28,  2, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
 	db 5 ; object events
-	object_event 30,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
-	object_event 12, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
-	object_event 27, 21, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1
+	object_event 30,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSuper_nerdGregg, -1
+	object_event 12, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerScientistDexter, -1
+	object_event 27, 21, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGuitaristmBiff, -1
 	itemball_event  3, 20, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
 	itemball_event 28, 31, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
 
-TrainerSuper_nerdGregg:
-	trainer SUPER_NERD, GREGG, EVENT_BEAT_SUPER_NERD_GREGG, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSuper_nerdGregg:
+	generictrainer SUPER_NERD, GREGG, EVENT_BEAT_SUPER_NERD_GREGG, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "The Magnet Train"
+	line "is fast, but it"
+	cont "can't drift."
+	done
 
 .SeenText:
 	text "These carts are"
@@ -38,18 +39,17 @@ TrainerSuper_nerdGregg:
 	text "I don't care!"
 	done
 
-.AfterText:
-	text "The Magnet Train"
-	line "is fast, but it"
-	cont "can't drift."
+GenericTrainerScientistDexter:
+	generictrainer SCIENTIST, DEXTER, EVENT_BEAT_SCIENTIST_DEXTER, .SeenText, .BeatenText
+
+	text "I work for the"
+	line "Power Plant."
+
+	para "We use the water-"
+	line "fall from this"
+	cont "cave for clean,"
+	cont "renewable energy!"
 	done
-
-TrainerScientistDexter:
-	trainer SCIENTIST, DEXTER, EVENT_BEAT_SCIENTIST_DEXTER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm a hydrologist"
@@ -62,22 +62,12 @@ TrainerScientistDexter:
 	line "hydrology…"
 	done
 
-.AfterText:
-	text "I work for the"
-	line "Power Plant."
+GenericTrainerGuitaristmBiff:
+	generictrainer GUITARISTM, BIFF, EVENT_BEAT_GUITARISTM_BIFF, .SeenText, .BeatenText
 
-	para "We use the water-"
-	line "fall from this"
-	cont "cave for clean,"
-	cont "renewable energy!"
+	text "I love heavy metal"
+	line "and heavy metals!"
 	done
-
-TrainerGuitaristmBiff:
-	trainer GUITARISTM, BIFF, EVENT_BEAT_GUITARISTM_BIFF, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I dig rock and"
@@ -89,7 +79,3 @@ TrainerGuitaristmBiff:
 	line "ground!"
 	done
 
-.AfterText:
-	text "I love heavy metal"
-	line "and heavy metals!"
-	done

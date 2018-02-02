@@ -15,18 +15,19 @@ UnionCaveB1FNorth_MapScriptHeader:
 	bg_event 13,  4, SIGNPOST_ITEM + REVIVE, EVENT_UNION_CAVE_B1F_NORTH_HIDDEN_REVIVE
 
 	db 5 ; object events
-	object_event  9,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacLeland, -1
-	object_event 13, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerRuin_maniacPetry, -1
+	object_event  9,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRuin_maniacLeland, -1
+	object_event 13, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerRuin_maniacPetry, -1
 	tmhmball_event  5, 22, TM_SWIFT, EVENT_UNION_CAVE_B1F_NORTH_TM_SWIFT
 	itemball_event 17, 21, X_DEFEND, 1, EVENT_UNION_CAVE_B1F_NORTH_X_DEFEND
 	strengthboulder_event  7, 10
 
-TrainerRuin_maniacLeland:
-	trainer RUIN_MANIAC, LELAND, EVENT_BEAT_RUIN_MANIAC_LELAND, .SeenText, .BeatenText, 0, .Script
+GenericTrainerRuin_maniacLeland:
+	generictrainer RUIN_MANIAC, LELAND, EVENT_BEAT_RUIN_MANIAC_LELAND, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Someday I'll dis-"
+	line "cover a new ruin"
+	cont "and become famous."
+	done
 
 .SeenText:
 	text "I'm on the trail of"
@@ -40,18 +41,16 @@ TrainerRuin_maniacLeland:
 	cont "ancients left."
 	done
 
-.AfterText:
-	text "Someday I'll dis-"
-	line "cover a new ruin"
-	cont "and become famous."
+GenericTrainerRuin_maniacPetry:
+	generictrainer RUIN_MANIAC, PETRY, EVENT_BEAT_RUIN_MANIAC_PETRY, .SeenText, .BeatenText
+
+	text "Ancient history"
+	line "is my passion,"
+
+	para "but to investigate"
+	line "it properly we use"
+	cont "modern technology."
 	done
-
-TrainerRuin_maniacPetry:
-	trainer RUIN_MANIAC, PETRY, EVENT_BEAT_RUIN_MANIAC_PETRY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'll go anywhere"
@@ -65,11 +64,3 @@ TrainerRuin_maniacPetry:
 	line "of your power?"
 	done
 
-.AfterText:
-	text "Ancient history"
-	line "is my passion,"
-
-	para "but to investigate"
-	line "it properly we use"
-	cont "modern technology."
-	done

@@ -25,8 +25,8 @@ IcePathB1F_MapScriptHeader:
 	strengthboulder_event  8,  9, EVENT_BOULDER_IN_ICE_PATH_3
 	strengthboulder_event 17,  7, EVENT_BOULDER_IN_ICE_PATH_4
 	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
-	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
-	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
+	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBoarderMax, -1
+	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
 	itemball_event  5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
 
 	const_def 1 ; object constants
@@ -110,19 +110,18 @@ IcePathB1FTutorIcyWindScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_IcePathB1FTutorTaught
 
-TrainerBoarderMax:
-	trainer BOARDER, MAX, EVENT_BEAT_BOARDER_MAX, BoarderMaxSeenText, BoarderMaxBeatenText, 0, BoarderMaxScript
+GenericTrainerBoarderMax:
+	generictrainer BOARDER, MAX, EVENT_BEAT_BOARDER_MAX, BoarderMaxSeenText, BoarderMaxBeatenText
 
-BoarderMaxScript:
-	end_if_just_battled
-	jumptextfaceplayer BoarderMaxAfterText
+	text "I'm not giving up!"
+	done
 
-TrainerSkierBecky:
-	trainer SKIER, BECKY, EVENT_BEAT_SKIER_BECKY, SkierBeckySeenText, SkierBeckyBeatenText, 0, SkierBeckyScript
+GenericTrainerSkierBecky:
+	generictrainer SKIER, BECKY, EVENT_BEAT_SKIER_BECKY, SkierBeckySeenText, SkierBeckyBeatenText
 
-SkierBeckyScript:
-	end_if_just_battled
-	jumptextfaceplayer SkierBeckyAfterText
+	text "Don't forget to"
+	line "wear a scarf!"
+	done
 
 IcePathB1FSkierText:
 	text "It's really cold"
@@ -185,10 +184,6 @@ BoarderMaxBeatenText:
 	text "Wiped out!"
 	done
 
-BoarderMaxAfterText:
-	text "I'm not giving up!"
-	done
-
 SkierBeckySeenText:
 	text "I can see my"
 	line "breath freezing!"
@@ -196,11 +191,6 @@ SkierBeckySeenText:
 
 SkierBeckyBeatenText:
 	text "Achoo!"
-	done
-
-SkierBeckyAfterText:
-	text "Don't forget to"
-	line "wear a scarf!"
 	done
 
 IcePathBoulderFellThroughText:

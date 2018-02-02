@@ -18,25 +18,34 @@ OlivineLighthouse5F_MapScriptHeader:
 	bg_event  3, 13, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 
 	db 5 ; object events
-	object_event  8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
-	object_event  8,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperDenis, -1
+	object_event  8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorErnest, -1
+	object_event  8,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBird_keeperDenis, -1
 	itemball_event 15, 12, RARE_CANDY, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY
 	itemball_event  6, 15, SUPER_REPEL, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
 	tmhmball_event  2, 13, TM_ENERGY_BALL, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_ENERGY_BALL
 
-TrainerBird_keeperDenis:
-	trainer BIRD_KEEPER, DENIS, EVENT_BEAT_BIRD_KEEPER_DENIS, Bird_keeperDenisSeenText, Bird_keeperDenisBeatenText, 0, Bird_keeperDenisScript
+GenericTrainerBird_keeperDenis:
+	generictrainer BIRD_KEEPER, DENIS, EVENT_BEAT_BIRD_KEEPER_DENIS, Bird_keeperDenisSeenText, Bird_keeperDenisBeatenText
 
-Bird_keeperDenisScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x60ac3
+	text "My #mon learned"
+	line "how to use Fly in"
+	cont "Cianwood."
 
-TrainerSailorErnest:
-	trainer SAILOR, ERNEST, EVENT_BEAT_SAILOR_ERNEST, SailorErnestSeenText, SailorErnestBeatenText, 0, SailorErnestScript
+	para "Well, since I'm a"
+	line "loser, I'll Fly"
+	cont "across the sea…"
+	done
 
-SailorErnestScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x60a1f
+GenericTrainerSailorErnest:
+	generictrainer SAILOR, ERNEST, EVENT_BEAT_SAILOR_ERNEST, SailorErnestSeenText, SailorErnestBeatenText
+
+	text "A Gym Leader isn't"
+	line "just about being"
+
+	para "strong. A Leader"
+	line "also needs to be"
+	cont "compassionate."
+	done
 
 SailorErnestSeenText:
 	text "I wanted to battle"
@@ -51,15 +60,6 @@ SailorErnestBeatenText:
 	line "overwhelming!"
 	done
 
-UnknownText_0x60a1f:
-	text "A Gym Leader isn't"
-	line "just about being"
-
-	para "strong. A Leader"
-	line "also needs to be"
-	cont "compassionate."
-	done
-
 Bird_keeperDenisSeenText:
 	text "We're pretty high"
 	line "up here. My bird"
@@ -72,12 +72,3 @@ Bird_keeperDenisBeatenText:
 	text "Oops…They crashed…"
 	done
 
-UnknownText_0x60ac3:
-	text "My #mon learned"
-	line "how to use Fly in"
-	cont "Cianwood."
-
-	para "Well, since I'm a"
-	line "loser, I'll Fly"
-	cont "across the sea…"
-	done

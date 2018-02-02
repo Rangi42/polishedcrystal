@@ -20,13 +20,13 @@ NoisyForest_MapScriptHeader:
 
 	db 15 ; object events
 	object_event 20, 19, SPRITE_ANABEL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NoisyForestAnabelScript, EVENT_NOISY_FOREST_ANABEL
-	object_event 10, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperTrent, -1
+	object_event 10, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBird_keeperTrent, -1
 	object_event 24, 31, SPRITE_MARILL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, NoisyForestPikabluScript, EVENT_NOISY_FOREST_PIKABLU
-	object_event 20,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacPierre, -1
-	object_event  4, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBug_maniacDylan, -1
-	object_event 31, 17, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristfJaclyn, -1
-	object_event 12, 30, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmEzekiel, -1
-	object_event 20, 34, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerLester, -1
+	object_event 20,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacPierre, -1
+	object_event  4, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBug_maniacDylan, -1
+	object_event 31, 17, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGuitaristfJaclyn, -1
+	object_event 12, 30, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGuitaristmEzekiel, -1
+	object_event 20, 34, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerLester, -1
 	object_event 13,  6, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestTeacherText, -1
 	object_event 40, 15, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestChildText, -1
 	itemball_event 41,  2, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
@@ -122,12 +122,14 @@ NoisyForestAnabelScript:
 	line "time we meet…"
 	done
 
-TrainerBug_maniacPierre:
-	trainer BUG_MANIAC, PIERRE, EVENT_BEAT_BUG_MANIAC_PIERRE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerBug_maniacPierre:
+	generictrainer BUG_MANIAC, PIERRE, EVENT_BEAT_BUG_MANIAC_PIERRE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Bzzz… Bzzz…"
+
+	para "That noise is"
+	line "stuck in my head…"
+	done
 
 .SeenText:
 	text "My #mon love"
@@ -141,19 +143,15 @@ TrainerBug_maniacPierre:
 	text "Bzzz! I lost!"
 	done
 
-.AfterText:
-	text "Bzzz… Bzzz…"
+GenericTrainerBug_maniacDylan:
+	generictrainer BUG_MANIAC, DYLAN, EVENT_BEAT_BUG_MANIAC_DYLAN, .SeenText, .BeatenText
 
-	para "That noise is"
-	line "stuck in my head…"
+	text "There's something"
+	line "about the buzz of"
+
+	para "this forest that"
+	line "bugs just love."
 	done
-
-TrainerBug_maniacDylan:
-	trainer BUG_MANIAC, DYLAN, EVENT_BEAT_BUG_MANIAC_DYLAN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've never seen my"
@@ -165,20 +163,12 @@ TrainerBug_maniacDylan:
 	line "so happy!"
 	done
 
-.AfterText:
-	text "There's something"
-	line "about the buzz of"
+GenericTrainerGuitaristfJaclyn:
+	generictrainer GUITARISTF, JACLYN, EVENT_BEAT_GUITARISTF_JACLYN, .SeenText, .BeatenText
 
-	para "this forest that"
-	line "bugs just love."
+	text "Wait up! I'm not"
+	line "done singing!"
 	done
-
-TrainerGuitaristfJaclyn:
-	trainer GUITARISTF, JACLYN, EVENT_BEAT_GUITARISTF_JACLYN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Let my guitar"
@@ -191,17 +181,15 @@ TrainerGuitaristfJaclyn:
 	text "Giyaaaah!"
 	done
 
-.AfterText:
-	text "Wait up! I'm not"
-	line "done singing!"
+GenericTrainerGuitaristmEzekiel:
+	generictrainer GUITARISTM, EZEKIEL, EVENT_BEAT_GUITARISTM_EZEKIEL, .SeenText, .BeatenText
+
+	text "If you listen"
+	line "carefully, you can"
+
+	para "hear the rhythm of"
+	line "the forest's hum."
 	done
-
-TrainerGuitaristmEzekiel:
-	trainer GUITARISTM, EZEKIEL, EVENT_BEAT_GUITARISTM_EZEKIEL, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Battle? Yeah, I'm"
@@ -212,20 +200,15 @@ TrainerGuitaristmEzekiel:
 	text "Wow. Good stuff."
 	done
 
-.AfterText:
-	text "If you listen"
-	line "carefully, you can"
+GenericTrainerHikerLester:
+	generictrainer HIKER, LESTER, EVENT_BEAT_HIKER_LESTER, .SeenText, .BeatenText
 
-	para "hear the rhythm of"
-	line "the forest's hum."
+	text "What, can't a Hiker"
+	line "explore a forest"
+
+	para "instead of a moun-"
+	line "tain now and then?"
 	done
-
-TrainerHikerLester:
-	trainer HIKER, LESTER, EVENT_BEAT_HIKER_LESTER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Yahoo!"
@@ -238,20 +221,16 @@ TrainerHikerLester:
 	line "me up!"
 	done
 
-.AfterText:
-	text "What, can't a Hiker"
-	line "explore a forest"
+GenericTrainerBird_keeperTrent:
+	generictrainer BIRD_KEEPER, TRENT, EVENT_BEAT_BIRD_KEEPER_TRENT, .SeenText, .BeatenText
 
-	para "instead of a moun-"
-	line "tain now and then?"
+	text "I get up early"
+	line "every day to train"
+	cont "my birds here."
+
+	para "The din is part of"
+	line "our training."
 	done
-
-TrainerBird_keeperTrent:
-	trainer BIRD_KEEPER, TRENT, EVENT_BEAT_BIRD_KEEPER_TRENT, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "The early bird"
@@ -261,15 +240,6 @@ TrainerBird_keeperTrent:
 .BeatenText:
 	text "Looks like I was"
 	line "the worm…"
-	done
-
-.AfterText:
-	text "I get up early"
-	line "every day to train"
-	cont "my birds here."
-
-	para "The din is part of"
-	line "our training."
 	done
 
 NoisyForestTeacherText:

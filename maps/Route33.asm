@@ -14,7 +14,7 @@ Route33_MapScriptHeader:
 
 	db 3 ; object events
 	object_event  6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	object_event 12, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
+	object_event 12, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolgirlImogen, -1
 	fruittree_event 14, 16, FRUITTREE_ROUTE_33, PECHA_BERRY
 
 Route33RainScript:
@@ -148,12 +148,13 @@ TrainerHikerAnthony:
 	jumpstd rematchm
 	end
 
-TrainerSchoolgirlImogen:
-	trainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText, 0, SchoolgirlImogenScript
+GenericTrainerSchoolgirlImogen:
+	generictrainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText
 
-SchoolgirlImogenScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolgirlImogenAfterText
+	text "I'm trying hard so"
+	line "I can be the star"
+	cont "in my class."
+	done
 
 HikerAnthony1SeenText:
 	text "I came through the"
@@ -193,12 +194,6 @@ SchoolgirlImogenSeenText:
 SchoolgirlImogenBeatenText:
 	text "So there are bet-"
 	line "ter trainers…"
-	done
-
-SchoolgirlImogenAfterText:
-	text "I'm trying hard so"
-	line "I can be the star"
-	cont "in my class."
 	done
 
 Route33SignText:

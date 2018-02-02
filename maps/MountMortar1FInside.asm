@@ -23,36 +23,14 @@ MountMortar1FInside_MapScriptHeader:
 	itemball_event 10, 27, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_HYPER_POTION
 	itemball_event 22, 20, MAX_POTION, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_POTION
 	itemball_event 35, 19, NUGGET, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_NUGGET
-	object_event 33, 43, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMiller, -1
-	object_event 24, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdMarkus, -1
+	object_event 33, 43, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacMiller, -1
+	object_event 24, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdMarkus, -1
 	itemball_event  8, 16, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
 	itemball_event 17, 17, ULTRA_BALL, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_ULTRA_BALL
 
-TrainerPokemaniacMiller:
-	trainer POKEMANIAC, MILLER, EVENT_BEAT_POKEMANIAC_MILLER, PokemaniacMillerSeenText, PokemaniacMillerBeatenText, 0, PokemaniacMillerScript
+GenericTrainerPokemaniacMiller:
+	generictrainer POKEMANIAC, MILLER, EVENT_BEAT_POKEMANIAC_MILLER, PokemaniacMillerSeenText, PokemaniacMillerBeatenText
 
-PokemaniacMillerScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7debd
-
-TrainerSupernerdMarkus:
-	trainer SUPER_NERD, MARKUS, EVENT_BEAT_SUPER_NERD_MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText, 0, SupernerdMarkusScript
-
-SupernerdMarkusScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7df97
-
-PokemaniacMillerSeenText:
-	text "I'm not losing"
-	line "this time!"
-	done
-
-PokemaniacMillerBeatenText:
-	text "I lost to some"
-	line "kid…?"
-	done
-
-UnknownText_0x7debd:
 	text "A while back, this"
 	line "karate dude wanted"
 
@@ -69,16 +47,9 @@ UnknownText_0x7debd:
 	line "wonder how he is?"
 	done
 
-SupernerdMarkusSeenText:
-	text "Hey! Hugh!"
-	done
+GenericTrainerSupernerdMarkus:
+	generictrainer SUPER_NERD, MARKUS, EVENT_BEAT_SUPER_NERD_MARKUS, SupernerdMarkusSeenText, SupernerdMarkusBeatenText
 
-SupernerdMarkusBeatenText:
-	text "I mistook you for"
-	line "someone else…"
-	done
-
-UnknownText_0x7df97:
 	text "I came to explore"
 	line "Mt.Mortar, but I"
 
@@ -91,3 +62,23 @@ UnknownText_0x7df97:
 	para "Seadra that knows"
 	line "Waterfall?"
 	done
+
+PokemaniacMillerSeenText:
+	text "I'm not losing"
+	line "this time!"
+	done
+
+PokemaniacMillerBeatenText:
+	text "I lost to some"
+	line "kid…?"
+	done
+
+SupernerdMarkusSeenText:
+	text "Hey! Hugh!"
+	done
+
+SupernerdMarkusBeatenText:
+	text "I mistook you for"
+	line "someone else…"
+	done
+

@@ -16,42 +16,50 @@ QuietCave1F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 7 ; object events
-	object_event  6,  8, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacAshley, -1
-	object_event 13, 17, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermHenri, -1
-	object_event 23, 25, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerGrady, -1
-	object_event 29,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistCarl, -1
+	object_event  6,  8, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacAshley, -1
+	object_event 13, 17, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermHenri, -1
+	object_event 23, 25, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerGrady, -1
+	object_event 29,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerScientistCarl, -1
 	itemball_event 10, 23, NUGGET, 1, EVENT_QUIET_CAVE_1F_NUGGET
 	itemball_event 26,  4, TWISTEDSPOON, 1, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
 	itemball_event 14,  2, DUSK_STONE, 1, EVENT_QUIET_CAVE_1F_DUSK_STONE
 	itemball_event  3,  3, DUSK_BALL, 1, EVENT_QUIET_CAVE_1F_DUSK_BALL
 
-TrainerHexManiacAshley:
-	trainer HEX_MANIAC, ASHLEY, EVENT_BEAT_HEX_MANIAC_ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText, 0, HexManiacAshleyScript
+GenericTrainerHexManiacAshley:
+	generictrainer HEX_MANIAC, ASHLEY, EVENT_BEAT_HEX_MANIAC_ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText
 
-HexManiacAshleyScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacAshleyAfterText
+	text "I see things that"
+	line "others can't see…"
+	done
 
-TrainerCooltrainermHenri:
-	trainer COOLTRAINERM, HENRI, EVENT_BEAT_COOLTRAINERM_HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText, 0, CooltrainermHenriScript
+GenericTrainerCooltrainermHenri:
+	generictrainer COOLTRAINERM, HENRI, EVENT_BEAT_COOLTRAINERM_HENRI, CooltrainermHenriSeenText, CooltrainermHenriBeatenText
 
-CooltrainermHenriScript:
-	end_if_just_battled
-	jumptextfaceplayer CooltrainermHenriAfterText
+	text "Having a diverse"
+	line "team to support"
 
-TrainerHikerGrady:
-	trainer HIKER, GRADY, EVENT_BEAT_HIKER_GRADY, HikerGradySeenText, HikerGradyBeatenText, 0, HikerGradyScript
+	para "each others' weak-"
+	line "nesses is key."
+	done
 
-HikerGradyScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerGradyAfterText
+GenericTrainerHikerGrady:
+	generictrainer HIKER, GRADY, EVENT_BEAT_HIKER_GRADY, HikerGradySeenText, HikerGradyBeatenText
 
-TrainerScientistCarl:
-	trainer SCIENTIST, CARL, EVENT_BEAT_SCIENTIST_CARL, ScientistCarlSeenText, ScientistCarlBeatenText, 0, ScientistCarlScript
+	text "You could hear a"
+	line "pin drop in this"
+	cont "place!"
+	done
 
-ScientistCarlScript:
-	end_if_just_battled
-	jumptextfaceplayer ScientistCarlAfterText
+GenericTrainerScientistCarl:
+	generictrainer SCIENTIST, CARL, EVENT_BEAT_SCIENTIST_CARL, ScientistCarlSeenText, ScientistCarlBeatenText
+
+	text "It's interesting"
+	line "that such a quiet"
+	cont "environment can"
+
+	para "exist right near"
+	line "rushing water."
+	done
 
 HexManiacAshleySeenText:
 	text "The spirits have"
@@ -64,11 +72,6 @@ HexManiacAshleyBeatenText:
 	line "can't be wrong!"
 	done
 
-HexManiacAshleyAfterText:
-	text "I see things that"
-	line "others can't see…"
-	done
-
 CooltrainermHenriSeenText:
 	text "Can you handle my"
 	line "balanced team of"
@@ -79,14 +82,6 @@ CooltrainermHenriBeatenText:
 	text "I guess you can!"
 	done
 
-CooltrainermHenriAfterText:
-	text "Having a diverse"
-	line "team to support"
-
-	para "each others' weak-"
-	line "nesses is key."
-	done
-
 HikerGradySeenText:
 	text "I heard you long"
 	line "before I saw you!"
@@ -94,12 +89,6 @@ HikerGradySeenText:
 
 HikerGradyBeatenText:
 	text "Ach!"
-	done
-
-HikerGradyAfterText:
-	text "You could hear a"
-	line "pin drop in this"
-	cont "place!"
 	done
 
 ScientistCarlSeenText:
@@ -113,11 +102,3 @@ ScientistCarlBeatenText:
 	line "apply to battles!"
 	done
 
-ScientistCarlAfterText:
-	text "It's interesting"
-	line "that such a quiet"
-	cont "environment can"
-
-	para "exist right near"
-	line "rushing water."
-	done

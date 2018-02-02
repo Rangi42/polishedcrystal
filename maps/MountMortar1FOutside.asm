@@ -20,24 +20,24 @@ MountMortar1FOutside_MapScriptHeader:
 	bg_event 25, 22, SIGNPOST_ITEM + HYPER_POTION, EVENT_MOUNT_MORTAR_1F_OUTSIDE_HIDDEN_HYPER_POTION
 
 	db 4 ; object events
-	object_event  9, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBattleGirlSubaru, -1
-	object_event 30, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlDiane, -1
+	object_event  9, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBattleGirlSubaru, -1
+	object_event 30, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBattleGirlDiane, -1
 	itemball_event 13, 15, ETHER, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_ETHER
 	itemball_event 31, 18, REVIVE, 1, EVENT_MOUNT_MORTAR_1F_OUTSIDE_REVIVE
 
-TrainerBattleGirlSubaru:
-	trainer BATTLE_GIRL, SUBARU, EVENT_BEAT_BATTLE_GIRL_SUBARU, BattleGirlSubaruSeenText, BattleGirlSubaruBeatenText, 0, BattleGirlSubaruScript
+GenericTrainerBattleGirlSubaru:
+	generictrainer BATTLE_GIRL, SUBARU, EVENT_BEAT_BATTLE_GIRL_SUBARU, BattleGirlSubaruSeenText, BattleGirlSubaruBeatenText
 
-BattleGirlSubaruScript:
-	end_if_just_battled
-	jumptextfaceplayer BattleGirlSubaruAfterText
+	text "All this climbing"
+	line "and I'm still not"
+	cont "the toughest…"
+	done
 
-TrainerBattleGirlDiane:
-	trainer BATTLE_GIRL, DIANE, EVENT_BEAT_BATTLE_GIRL_DIANE, BattleGirlDianeSeenText, BattleGirlDianeBeatenText, 0, BattleGirlDianeScript
+GenericTrainerBattleGirlDiane:
+	generictrainer BATTLE_GIRL, DIANE, EVENT_BEAT_BATTLE_GIRL_DIANE, BattleGirlDianeSeenText, BattleGirlDianeBeatenText
 
-BattleGirlDianeScript:
-	end_if_just_battled
-	jumptextfaceplayer BattleGirlDianeAfterText
+	text "I bow to you."
+	done
 
 BattleGirlSubaruSeenText:
 	text "Kiyaah!"
@@ -45,12 +45,6 @@ BattleGirlSubaruSeenText:
 
 BattleGirlSubaruBeatenText:
 	text "Ooof!"
-	done
-
-BattleGirlSubaruAfterText:
-	text "All this climbing"
-	line "and I'm still not"
-	cont "the toughest…"
 	done
 
 BattleGirlDianeSeenText:
@@ -62,6 +56,3 @@ BattleGirlDianeBeatenText:
 	line "to you."
 	done
 
-BattleGirlDianeAfterText:
-	text "I bow to you."
-	done

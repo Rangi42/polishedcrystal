@@ -12,26 +12,27 @@ Route21_MapScriptHeader:
 	bg_event  5, 66, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_21_HIDDEN_STARDUST_2
 
 	db 13 ; object events
-	object_event  8, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNikki, -1
-	object_event  3, 29, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfChelan, -1
-	object_event  5, 45, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfKendra, -1
-	object_event 16, 72, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermEsteban, -1
-	object_event 15, 85, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermDuane, -1
-	object_event  2, 89, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermSeth, -1
-	object_event  5, 21, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMurphy, -1
-	object_event 15, 25, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherArnold, -1
-	object_event  7, 36, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLiam, -1
-	object_event  5, 56, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherGideon, -1
-	object_event 15, 62, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperKinsley, -1
-	object_event  7, 83, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperEaston, -1
+	object_event  8, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfNikki, -1
+	object_event  3, 29, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfChelan, -1
+	object_event  5, 45, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfKendra, -1
+	object_event 16, 72, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmermEsteban, -1
+	object_event 15, 85, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermDuane, -1
+	object_event  2, 89, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermSeth, -1
+	object_event  5, 21, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherMurphy, -1
+	object_event 15, 25, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherArnold, -1
+	object_event  7, 36, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherLiam, -1
+	object_event  5, 56, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherGideon, -1
+	object_event 15, 62, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperKinsley, -1
+	object_event  7, 83, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperEaston, -1
 	itemball_event 13, 26, STAR_PIECE, 1, EVENT_ROUTE_21_STAR_PIECE
 
-TrainerSwimmerfNikki:
-	trainer SWIMMERF, NIKKI, EVENT_BEAT_SWIMMERF_NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText, 0, SwimmerfNikkiScript
+GenericTrainerSwimmerfNikki:
+	generictrainer SWIMMERF, NIKKI, EVENT_BEAT_SWIMMERF_NIKKI, SwimmerfNikkiSeenText, SwimmerfNikkiBeatenText
 
-SwimmerfNikkiScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac8f1
+	text "I have to watch"
+	line "out for blemishes"
+	cont "caused by the sun."
+	done
 
 SwimmerfNikkiSeenText:
 	text "If I win, you have"
@@ -44,18 +45,13 @@ SwimmerfNikkiBeatenText:
 	line "sunburn…"
 	done
 
-UnknownText_0x1ac8f1:
-	text "I have to watch"
-	line "out for blemishes"
-	cont "caused by the sun."
+GenericTrainerSwimmerfChelan:
+	generictrainer SWIMMERF, CHELAN, EVENT_BEAT_SWIMMERF_CHELAN, .SeenText, .BeatenText
+
+	text "I suppose an elec-"
+	line "tric bikini would"
+	cont "give you a shock!"
 	done
-
-TrainerSwimmerfChelan:
-	trainer SWIMMERF, CHELAN, EVENT_BEAT_SWIMMERF_CHELAN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I love bikinis!"
@@ -71,18 +67,14 @@ TrainerSwimmerfChelan:
 	text "Awww…"
 	done
 
-.AfterText:
-	text "I suppose an elec-"
-	line "tric bikini would"
-	cont "give you a shock!"
+GenericTrainerSwimmerfKendra:
+	generictrainer SWIMMERF, KENDRA, EVENT_BEAT_SWIMMERF_KENDRA, .SeenText, .BeatenText
+
+	text "I wonder if any"
+	line "place sells swim-"
+	cont "suits for #-"
+	cont "mon?"
 	done
-
-TrainerSwimmerfKendra:
-	trainer SWIMMERF, KENDRA, EVENT_BEAT_SWIMMERF_KENDRA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Hey, trainer!"
@@ -95,19 +87,13 @@ TrainerSwimmerfKendra:
 	line "lose…"
 	done
 
-.AfterText:
-	text "I wonder if any"
-	line "place sells swim-"
-	cont "suits for #-"
-	cont "mon?"
+GenericTrainerSwimmermEsteban:
+	generictrainer SWIMMERM, ESTEBAN, EVENT_BEAT_SWIMMERM_ESTEBAN, .SeenText, .BeatenText
+
+	text "We called our"
+	line "teacher Professor"
+	cont "Poliwhirl!"
 	done
-
-TrainerSwimmermEsteban:
-	trainer SWIMMERM, ESTEBAN, EVENT_BEAT_SWIMMERM_ESTEBAN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My swimming teach-"
@@ -120,18 +106,13 @@ TrainerSwimmermEsteban:
 	line "Teacher…"
 	done
 
-.AfterText:
-	text "We called our"
-	line "teacher Professor"
-	cont "Poliwhirl!"
+GenericTrainerSwimmermDuane:
+	generictrainer SWIMMERM, DUANE, EVENT_BEAT_SWIMMERM_DUANE, .SeenText, .BeatenText
+
+	text "To win more, I"
+	line "need to work on"
+	cont "my stamina!"
 	done
-
-TrainerSwimmermDuane:
-	trainer SWIMMERM, DUANE, EVENT_BEAT_SWIMMERM_DUANE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming is full-"
@@ -146,18 +127,13 @@ TrainerSwimmermDuane:
 	line "have no strength…"
 	done
 
-.AfterText:
-	text "To win more, I"
-	line "need to work on"
-	cont "my stamina!"
+GenericTrainerSwimmermSeth:
+	generictrainer SWIMMERM, SETH, EVENT_BEAT_SWIMMERM_SETH, SwimmermSethSeenText, SwimmermSethBeatenText
+
+	text "This arrogant guy"
+	line "was at Cinnabar's"
+	cont "volcano."
 	done
-
-TrainerSwimmermSeth:
-	trainer SWIMMERM, SETH, EVENT_BEAT_SWIMMERM_SETH, SwimmermSethSeenText, SwimmermSethBeatenText, 0, SwimmermSethScript
-
-SwimmermSethScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac873
 
 SwimmermSethSeenText:
 	text "Land ho! Gotta"
@@ -168,18 +144,15 @@ SwimmermSethBeatenText:
 	text "Glug…"
 	done
 
-UnknownText_0x1ac873:
-	text "This arrogant guy"
-	line "was at Cinnabar's"
-	cont "volcano."
+GenericTrainerFisherMurphy:
+	generictrainer FISHER, MURPHY, EVENT_BEAT_FISHER_MURPHY, .SeenText, .BeatenText
+
+	text "The #mon that"
+	line "escaped me was"
+	cont "huge."
+
+	para "It's the truth!"
 	done
-
-TrainerFisherMurphy:
-	trainer FISHER, MURPHY, EVENT_BEAT_FISHER_MURPHY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Huh? I've caught"
@@ -192,20 +165,12 @@ TrainerFisherMurphy:
 	line "got cut!"
 	done
 
-.AfterText:
-	text "The #mon that"
-	line "escaped me was"
-	cont "huge."
+GenericTrainerFisherArnold:
+	generictrainer FISHER, ARNOLD, EVENT_BEAT_FISHER_ARNOLD, FisherArnoldSeenText, FisherArnoldBeatenText
 
-	para "It's the truth!"
+	text "I'll just go back"
+	line "to fishing…"
 	done
-
-TrainerFisherArnold:
-	trainer FISHER, ARNOLD, EVENT_BEAT_FISHER_ARNOLD, FisherArnoldSeenText, FisherArnoldBeatenText, 0, FisherArnoldScript
-
-FisherArnoldScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac95c
 
 FisherArnoldSeenText:
 	text "I'm bored by fish-"
@@ -216,17 +181,15 @@ FisherArnoldBeatenText:
 	text "Utter failure…"
 	done
 
-UnknownText_0x1ac95c:
-	text "I'll just go back"
-	line "to fishing…"
+GenericTrainerFisherLiam:
+	generictrainer FISHER, LIAM, EVENT_BEAT_FISHER_LIAM, .SeenText, .BeatenText
+
+	text "I should've asked"
+	line "you to wait until"
+
+	para "I reeled that"
+	line "#mon in…"
 	done
-
-TrainerFisherLiam:
-	trainer FISHER, LIAM, EVENT_BEAT_FISHER_LIAM, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Whoa! A nibble!"
@@ -245,20 +208,13 @@ TrainerFisherLiam:
 	line "one!"
 	done
 
-.AfterText:
-	text "I should've asked"
-	line "you to wait until"
+GenericTrainerFisherGideon:
+	generictrainer FISHER, GIDEON, EVENT_BEAT_FISHER_GIDEON, .SeenText, .BeatenText
 
-	para "I reeled that"
-	line "#mon in…"
+	text "What's the reason"
+	line "you became a"
+	cont "#mon trainer?"
 	done
-
-TrainerFisherGideon:
-	trainer FISHER, GIDEON, EVENT_BEAT_FISHER_GIDEON, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did I become a"
@@ -274,18 +230,13 @@ TrainerFisherGideon:
 	text "Ummm… Hmmm…"
 	done
 
-.AfterText:
-	text "What's the reason"
-	line "you became a"
-	cont "#mon trainer?"
+GenericTrainerBird_keeperKinsley:
+	generictrainer BIRD_KEEPER, KINSLEY, EVENT_BEAT_BIRD_KEEPER_KINSLEY, .SeenText, .BeatenText
+
+	text "I just need to"
+	line "practice flapping"
+	cont "my wings more!"
 	done
-
-TrainerBird_keeperKinsley:
-	trainer BIRD_KEEPER, KINSLEY, EVENT_BEAT_BIRD_KEEPER_KINSLEY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Someday I might be"
@@ -297,18 +248,16 @@ TrainerBird_keeperKinsley:
 	text "I couldn't fly…"
 	done
 
-.AfterText:
-	text "I just need to"
-	line "practice flapping"
-	cont "my wings more!"
+GenericTrainerBird_keeperEaston:
+	generictrainer BIRD_KEEPER, EASTON, EVENT_BEAT_BIRD_KEEPER_EASTON, .SeenText, .BeatenText
+
+	text "We think we're"
+	line "using #mon."
+
+	para "But at some point,"
+	line "the #mon start-"
+	cont "ed using us…"
 	done
-
-TrainerBird_keeperEaston:
-	trainer BIRD_KEEPER, EASTON, EVENT_BEAT_BIRD_KEEPER_EASTON, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Bird Keepers are"
@@ -322,11 +271,3 @@ TrainerBird_keeperEaston:
 	line "it…"
 	done
 
-.AfterText:
-	text "We think we're"
-	line "using #mon."
-
-	para "But at some point,"
-	line "the #mon start-"
-	cont "ed using us…"
-	done

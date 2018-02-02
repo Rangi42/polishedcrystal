@@ -22,8 +22,8 @@ Route30_MapScriptHeader:
 	object_event  5, 24, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	object_event  5, 25, SPRITE_ROUTE_30_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	object_event  2, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
-	object_event  5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterMikey, -1
-	object_event  1,  7, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDon, -1
+	object_event  5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerYoungsterMikey, -1
+	object_event  1,  7, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherDon, -1
 	object_event  7, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
 	object_event  2, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
 	cuttree_event  8,  6, EVENT_ROUTE_30_CUT_TREE
@@ -203,19 +203,28 @@ TrainerYoungsterJoey:
 	jumpstd rematchgiftm
 	end
 
-TrainerYoungsterMikey:
-	trainer YOUNGSTER, MIKEY, EVENT_BEAT_YOUNGSTER_MIKEY, YoungsterMikeySeenText, YoungsterMikeyBeatenText, 0, .Script
+GenericTrainerYoungsterMikey:
+	generictrainer YOUNGSTER, MIKEY, EVENT_BEAT_YOUNGSTER_MIKEY, YoungsterMikeySeenText, YoungsterMikeyBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer YoungsterMikeyAfterText
+	text "Becoming a good"
+	line "trainer is really"
+	cont "tough."
 
-TrainerBug_catcherDon:
-	trainer BUG_CATCHER, DON, EVENT_BEAT_BUG_CATCHER_DON, Bug_catcherDonSeenText, Bug_catcherDonBeatenText, 0, .Script
+	para "I'm going to bat-"
+	line "tle other people"
+	cont "to get better."
+	done
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer Bug_catcherDonAfterText
+GenericTrainerBug_catcherDon:
+	generictrainer BUG_CATCHER, DON, EVENT_BEAT_BUG_CATCHER_DON, Bug_catcherDonSeenText, Bug_catcherDonBeatenText
+
+	text "I ran out of #"
+	line "Balls while I was"
+	cont "catching #mon."
+
+	para "I should've bought"
+	line "some more…"
+	done
 
 Route30YoungsterScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -284,16 +293,6 @@ YoungsterMikeyBeatenText:
 	line "I won before."
 	done
 
-YoungsterMikeyAfterText:
-	text "Becoming a good"
-	line "trainer is really"
-	cont "tough."
-
-	para "I'm going to bat-"
-	line "tle other people"
-	cont "to get better."
-	done
-
 Bug_catcherDonSeenText:
 	text "Instead of a bug"
 	line "#mon, I found"
@@ -303,15 +302,6 @@ Bug_catcherDonSeenText:
 Bug_catcherDonBeatenText:
 	text "Argh! You're too"
 	line "strong!"
-	done
-
-Bug_catcherDonAfterText:
-	text "I ran out of #"
-	line "Balls while I was"
-	cont "catching #mon."
-
-	para "I should've bought"
-	line "some more…"
 	done
 
 Route30YoungsterText_DirectionsToMrPokemonsHouse:

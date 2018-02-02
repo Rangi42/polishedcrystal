@@ -21,26 +21,30 @@ PokemonMansion1F_MapScriptHeader:
 	bg_event 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
 	db 6 ; object events
-	object_event  9, 10, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
-	object_event 27, 14, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
+	object_event  9, 10, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBurglarPete, -1
+	object_event 27, 14, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBurglarLouis, -1
 	itemball_event  6,  4, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE
 	itemball_event 14,  3, ESCAPE_ROPE, 1, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
 	itemball_event 17, 22, PROTEIN, 1, EVENT_POKEMON_MANSION_1F_PROTEIN
 	itemball_event 27, 22, IRON, 1, EVENT_POKEMON_MANSION_1F_IRON
 
-TrainerBurglarPete:
-	trainer BURGLAR, PETE, EVENT_BEAT_BURGLAR_PETE, BurglarPeteSeenText, BurglarPeteBeatenText, 0, BurglarPeteScript
+GenericTrainerBurglarPete:
+	generictrainer BURGLAR, PETE, EVENT_BEAT_BURGLAR_PETE, BurglarPeteSeenText, BurglarPeteBeatenText
 
-BurglarPeteScript:
-	end_if_just_battled
-	jumptextfaceplayer BurglarPeteAfterText
+	text "Some valuable"
+	line "items probably"
 
-TrainerBurglarLouis:
-	trainer BURGLAR, LOUIS, EVENT_BEAT_BURGLAR_LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText, 0, BurglarLouisScript
+	para "survived the"
+	line "eruption."
+	done
 
-BurglarLouisScript:
-	end_if_just_battled
-	jumptextfaceplayer BurglarLouisAfterText
+GenericTrainerBurglarLouis:
+	generictrainer BURGLAR, LOUIS, EVENT_BEAT_BURGLAR_LOUIS, BurglarLouisSeenText, BurglarLouisBeatenText
+
+	text "I just want to"
+	line "find some loot"
+	cont "and get out."
+	done
 
 PokemonMansion1FHiddenPPUp:
 	checkevent EVENT_POKEMON_MANSION_1F_HIDDEN_PP_UP
@@ -74,14 +78,6 @@ BurglarPeteBeatenText:
 	text "Ouch!"
 	done
 
-BurglarPeteAfterText:
-	text "Some valuable"
-	line "items probably"
-
-	para "survived the"
-	line "eruption."
-	done
-
 BurglarLouisSeenText:
 	text "This place is"
 	line "creepy!"
@@ -89,12 +85,6 @@ BurglarLouisSeenText:
 
 BurglarLouisBeatenText:
 	text "Ayah!"
-	done
-
-BurglarLouisAfterText:
-	text "I just want to"
-	line "find some loot"
-	cont "and get out."
 	done
 
 PokemonMansion1FFoundItemText:

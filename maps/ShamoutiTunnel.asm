@@ -15,10 +15,10 @@ ShamoutiTunnel_MapScriptHeader:
 
 	db 7 ; object events
 	object_event 15, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, OreManiacScript, -1
-	object_event 24, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerOswald, -1
-	object_event 24,  5, SPRITE_FISHER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherTala, -1
-	object_event  6,  7, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSightseerfNoelle, -1
-	object_event  3, 16, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermChester, -1
+	object_event 24, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerOswald, -1
+	object_event 24,  5, SPRITE_FISHER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherTala, -1
+	object_event  6,  7, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseerfNoelle, -1
+	object_event  3, 16, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermChester, -1
 	itemball_event  3,  4, X_SPEED, 1, EVENT_SHAMOUTI_TUNNEL_X_SPEED
 	itemball_event 12, 17, SMOOTH_ROCK, 1, EVENT_SHAMOUTI_TUNNEL_SMOOTH_ROCK
 
@@ -94,12 +94,18 @@ OreManiacScript:
 	line "one to me someday."
 	done
 
-TrainerTamerOswald:
-	trainer TAMER, OSWALD, EVENT_BEAT_TAMER_OSWALD, .SeenText, .BeatenText, 0, .Script
+GenericTrainerTamerOswald:
+	generictrainer TAMER, OSWALD, EVENT_BEAT_TAMER_OSWALD, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "I'm a Tamer now,"
+	line "but when I first"
+
+	para "started out in"
+	line "the circus I was"
+
+	para "in the #mon"
+	line "trapeze act."
+	done
 
 .SeenText:
 	text "I was born a"
@@ -114,23 +120,18 @@ TrainerTamerOswald:
 	line "your #mon…"
 	done
 
-.AfterText:
-	text "I'm a Tamer now,"
-	line "but when I first"
+GenericTrainerFirebreatherTala:
+	generictrainer FIREBREATHER, TALA, EVENT_BEAT_FIREBREATHER_TALA, .SeenText, .BeatenText
 
-	para "started out in"
-	line "the circus I was"
+	text "My fire-breathing"
+	line "act is really"
 
-	para "in the #mon"
-	line "trapeze act."
+	para "popular with the"
+	line "tourists."
+
+	para "Some even leave"
+	line "donations!"
 	done
-
-TrainerFirebreatherTala:
-	trainer FIREBREATHER, TALA, EVENT_BEAT_FIREBREATHER_TALA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Roll up, roll up,"
@@ -144,23 +145,16 @@ TrainerFirebreatherTala:
 	line "already!"
 	done
 
-.AfterText:
-	text "My fire-breathing"
-	line "act is really"
+GenericTrainerSightseerfNoelle:
+	generictrainer SIGHTSEERF, NOELLE, EVENT_BEAT_SIGHTSEERF_NOELLE, .SeenText, .BeatenText
 
-	para "popular with the"
-	line "tourists."
+	text "I'm making a photo"
+	line "album to show my"
+	cont "parents."
 
-	para "Some even leave"
-	line "donations!"
+	para "Hey, don't look!"
+	line "It's private!"
 	done
-
-TrainerSightseerfNoelle:
-	trainer SIGHTSEERF, NOELLE, EVENT_BEAT_SIGHTSEERF_NOELLE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Oh my gosh!"
@@ -181,21 +175,17 @@ TrainerSightseerfNoelle:
 	line "Click!"
 	done
 
-.AfterText:
-	text "I'm making a photo"
-	line "album to show my"
-	cont "parents."
+GenericTrainerSightseermChester:
+	generictrainer SIGHTSEERM, CHESTER, EVENT_BEAT_SIGHTSEERM_CHESTER, .SeenText, .BeatenText
 
-	para "Hey, don't look!"
-	line "It's private!"
+	text "So you're from"
+	line "Johto? I haven't"
+	cont "been there!"
+
+	para "Maybe I'll see"
+	line "you in the Battle"
+	cont "Tower."
 	done
-
-TrainerSightseermChester:
-	trainer SIGHTSEERM, CHESTER, EVENT_BEAT_SIGHTSEERM_CHESTER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm traveling"
@@ -211,12 +201,3 @@ TrainerSightseermChester:
 	line "experience!"
 	done
 
-.AfterText:
-	text "So you're from"
-	line "Johto? I haven't"
-	cont "been there!"
-
-	para "Maybe I'll see"
-	line "you in the Battle"
-	cont "Tower."
-	done

@@ -18,17 +18,20 @@ SafariZoneEast_MapScriptHeader:
 	bg_event  8,  6, SIGNPOST_JUMPTEXT, SafariZoneEastTrainerTipsSignText
 
 	db 4 ; object events
-	object_event  9, 11, SPRITE_COWGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerCowgirlApril, -1
+	object_event  9, 11, SPRITE_COWGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCowgirlApril, -1
 	itemball_event 22, 15, CARBOS, 1, EVENT_SAFARI_ZONE_EAST_CARBOS
 	itemball_event  7, 13, SILVERPOWDER, 1, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
 	itemball_event  5,  3, FULL_RESTORE, 1, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
 
-TrainerCowgirlApril:
-	trainer COWGIRL, APRIL, EVENT_BEAT_COWGIRL_APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText, 0, CowgirlAprilScript
+GenericTrainerCowgirlApril:
+	generictrainer COWGIRL, APRIL, EVENT_BEAT_COWGIRL_APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText
 
-CowgirlAprilScript:
-	end_if_just_battled
-	jumptextfaceplayer CowgirlAprilAfterText
+	text "Sometimes you'll"
+	line "see 10 of the same"
+
+	para "#mon, all in a"
+	line "row!"
+	done
 
 CowgirlAprilSeenText:
 	text "Yeehaw!"
@@ -39,14 +42,6 @@ CowgirlAprilSeenText:
 
 CowgirlAprilBeatenText:
 	text "Well, shoot!"
-	done
-
-CowgirlAprilAfterText:
-	text "Sometimes you'll"
-	line "see 10 of the same"
-
-	para "#mon, all in a"
-	line "row!"
 	done
 
 SafariZoneEastAreaSignText:

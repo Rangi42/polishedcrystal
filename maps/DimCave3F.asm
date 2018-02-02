@@ -22,9 +22,9 @@ DimCave3F_MapScriptHeader:
 	db 9 ; object events
 	strengthboulder_event  3, 17, EVENT_BOULDER_IN_DIM_CAVE_3F
 	object_event 15,  8, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
-	object_event 14,  4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHugo, -1
-	object_event 22, 11, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBlackbeltTakeo, -1
-	object_event 10, 27, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerFloyd, -1
+	object_event 14,  4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHugo, -1
+	object_event 22, 11, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBlackbeltTakeo, -1
+	object_event 10, 27, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerFloyd, -1
 	object_event 25, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, DimCave3FPokefanmScript, -1
 	itemball_event 18,  3, METAL_COAT, 1, EVENT_DIM_CAVE_3F_METAL_COAT
 	itemball_event 10, 29, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
@@ -65,12 +65,17 @@ DimCave3FSetUpStoneTable:
 	line "through."
 	done
 
-TrainerEngineerHugo:
-	trainer ENGINEER, HUGO, EVENT_BEAT_ENGINEER_HUGO, .SeenText, .BeatenText, 0, .Script
+GenericTrainerEngineerHugo:
+	generictrainer ENGINEER, HUGO, EVENT_BEAT_ENGINEER_HUGO, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "The noise of that"
+	line "mine cart gave me"
+	cont "a scare."
+
+	para "You always have to"
+	line "stay alert for a"
+	cont "cave-in here."
+	done
 
 .SeenText:
 	text "Cave-in!"
@@ -81,22 +86,12 @@ TrainerEngineerHugo:
 	line "pushed a boulder!"
 	done
 
-.AfterText:
-	text "The noise of that"
-	line "mine cart gave me"
-	cont "a scare."
+GenericTrainerBlackbeltTakeo:
+	generictrainer BLACKBELT_T, TAKEO, EVENT_BEAT_BLACKBELT_TAKEO, .SeenText, .BeatenText
 
-	para "You always have to"
-	line "stay alert for a"
-	cont "cave-in here."
+	text "All I want is to"
+	line "train in peace."
 	done
-
-TrainerBlackbeltTakeo:
-	trainer BLACKBELT_T, TAKEO, EVENT_BEAT_BLACKBELT_TAKEO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm training here"
@@ -111,17 +106,15 @@ TrainerBlackbeltTakeo:
 	line "more training…"
 	done
 
-.AfterText:
-	text "All I want is to"
-	line "train in peace."
+GenericTrainerHikerFloyd:
+	generictrainer HIKER, FLOYD, EVENT_BEAT_HIKER_FLOYD, .SeenText, .BeatenText
+
+	text "I am SO lost in"
+	line "here!"
+
+	para "I should stick to"
+	line "hiking outdoors."
 	done
-
-TrainerHikerFloyd:
-	trainer HIKER, FLOYD, EVENT_BEAT_HIKER_FLOYD, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This cave makes me"
@@ -134,14 +127,6 @@ TrainerHikerFloyd:
 .BeatenText:
 	text "I got beat down by"
 	line "a kid!"
-	done
-
-.AfterText:
-	text "I am SO lost in"
-	line "here!"
-
-	para "I should stick to"
-	line "hiking outdoors."
 	done
 
 DimCave3FPokefanmScript:

@@ -22,15 +22,15 @@ NationalPark_MapScriptHeader:
 	object_event 16,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c22e, -1
 	object_event 29, 40, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1
 	object_event 28,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x5c037, -1
-	object_event 13, 41, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 0, TrainerSchoolgirlEliza, -1
-	object_event 12, 41, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerSchoolboyJohnny, -1
+	object_event 13, 41, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerSchoolgirlEliza, -1
+	object_event 12, 41, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerSchoolboyJohnny, -1
 	object_event 19, 41, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c3bc, -1
 	object_event 28, 40, SPRITE_PERSIAN, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, PERSIAN, NationalParkPersianText, -1
 	object_event 29, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
 	object_event 20, 29, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
-	object_event 18,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanmWilliam, -1
-	object_event 10, 14, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassKrise, -1
-	object_event 28, 13, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacLou, -1
+	object_event 18,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPokefanmWilliam, -1
+	object_event 10, 14, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerLassKrise, -1
+	object_event 28, 13, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBugManiacLou, -1
 	object_event  4, 19, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, -1
 	itemball_event 37, 12, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
 	tmhmball_event  3, 43, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
@@ -76,26 +76,31 @@ OfficermKeithScript:
 .NoFight:
 	jumpopenedtext OfficermKeithDaytimeText
 
-TrainerBugManiacLou:
-	trainer BUG_MANIAC, LOU, EVENT_BEAT_BUG_MANIAC_LOU, BugManiacLouSeenText, BugManiacLouBeatenText, 0, BugManiacLouScript
+GenericTrainerBugManiacLou:
+	generictrainer BUG_MANIAC, LOU, EVENT_BEAT_BUG_MANIAC_LOU, BugManiacLouSeenText, BugManiacLouBeatenText
 
-BugManiacLouScript:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacLouAfterText
+	text "I used to be just"
+	line "a Bug Catcher,"
 
-TrainerSchoolgirlEliza:
-	trainer SCHOOLGIRL, ELIZA, EVENT_BEAT_SCHOOLGIRL_ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText, 0, SchoolgirlElizaScript
+	para "but I evolved into"
+	line "a Bug Maniac!"
+	done
 
-SchoolgirlElizaScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolgirlElizaAfterText
+GenericTrainerSchoolgirlEliza:
+	generictrainer SCHOOLGIRL, ELIZA, EVENT_BEAT_SCHOOLGIRL_ELIZA, SchoolgirlElizaSeenText, SchoolgirlElizaBeatenText
 
-TrainerSchoolboyJohnny:
-	trainer SCHOOLBOY, JOHNNY, EVENT_BEAT_SCHOOLBOY_JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText, 0, SchoolboyJohnnyScript
+	text "I don't care!"
+	line "I still love"
+	cont "Oddish."
+	done
 
-SchoolboyJohnnyScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolboyJohnnyAfterText
+GenericTrainerSchoolboyJohnny:
+	generictrainer SCHOOLBOY, JOHNNY, EVENT_BEAT_SCHOOLBOY_JOHNNY, SchoolboyJohnnySeenText, SchoolboyJohnnyBeatenText
+
+	text "Yeah, well, I"
+	line "still prefer"
+	cont "Bellsprout."
+	done
 
 GameboyKidScript_0x5c037:
 	showtextfaceplayer UnknownText_0x5c42a
@@ -218,12 +223,15 @@ UnknownScript_0x5c114:
 	jumpstd rematchm
 	end
 
-TrainerPokefanmWilliam:
-	trainer POKEFANM, WILLIAM, EVENT_BEAT_POKEFANM_WILLIAM, PokefanmWilliamSeenText, PokefanmWilliamBeatenText, 0, PokefanmWilliamScript
+GenericTrainerPokefanmWilliam:
+	generictrainer POKEFANM, WILLIAM, EVENT_BEAT_POKEFANM_WILLIAM, PokefanmWilliamSeenText, PokefanmWilliamBeatenText
 
-PokefanmWilliamScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5c645
+	text "I lost the battle,"
+	line "but my #mon win"
+
+	para "the prize for"
+	line "being most lovely."
+	done
 
 TrainerPokefanfBeverly1:
 	trainer POKEFANF, BEVERLY1, EVENT_BEAT_POKEFANF_BEVERLY, PokefanfBeverly1SeenText, PokefanfBeverly1BeatenText, 0, PokefanfBeverly1Script
@@ -300,12 +308,13 @@ UnknownScript_0x5c1ab:
 	jumpstd packfullf
 	end
 
-TrainerLassKrise:
-	trainer LASS, KRISE, EVENT_BEAT_LASS_KRISE, LassKriseSeenText, LassKriseBeatenText, 0, LassKriseScript
+GenericTrainerLassKrise:
+	generictrainer LASS, KRISE, EVENT_BEAT_LASS_KRISE, LassKriseSeenText, LassKriseBeatenText
 
-LassKriseScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5c71d
+	text "I thought you were"
+	line "staring at me"
+	cont "because I'm cute!"
+	done
 
 UnknownText_0x5c1d3:
 	text "Look! Check out my"
@@ -361,12 +370,6 @@ SchoolgirlElizaBeatenText:
 	text "My poor Oddish…"
 	done
 
-SchoolgirlElizaAfterText:
-	text "I don't care!"
-	line "I still love"
-	cont "Oddish."
-	done
-
 SchoolboyJohnnySeenText:
 	text "Bellsprout is just"
 	line "the coolest!"
@@ -376,12 +379,6 @@ SchoolboyJohnnySeenText:
 
 SchoolboyJohnnyBeatenText:
 	text "Bellsprout, no…"
-	done
-
-SchoolboyJohnnyAfterText:
-	text "Yeah, well, I"
-	line "still prefer"
-	cont "Bellsprout."
 	done
 
 UnknownText_0x5c3bc:
@@ -470,14 +467,6 @@ PokefanmWilliamBeatenText:
 	text "M-my #mon!"
 	done
 
-UnknownText_0x5c645:
-	text "I lost the battle,"
-	line "but my #mon win"
-
-	para "the prize for"
-	line "being most lovely."
-	done
-
 UnknownText_0x5c68a:
 	text "My friend keeps a"
 	line "Marill!"
@@ -500,12 +489,6 @@ LassKriseBeatenText:
 	text "…Hmmm…"
 	done
 
-UnknownText_0x5c71d:
-	text "I thought you were"
-	line "staring at me"
-	cont "because I'm cute!"
-	done
-
 BugManiacLouSeenText:
 	text "Nobody can beat"
 	line "my passion for"
@@ -514,14 +497,6 @@ BugManiacLouSeenText:
 
 BugManiacLouBeatenText:
 	text "How can this be?!"
-	done
-
-BugManiacLouAfterText:
-	text "I used to be just"
-	line "a Bug Catcher,"
-
-	para "but I evolved into"
-	line "a Bug Maniac!"
 	done
 
 OfficermKeithSeenText:

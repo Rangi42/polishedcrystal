@@ -13,88 +13,103 @@ Route15_MapScriptHeader:
 	bg_event 19,  9, SIGNPOST_JUMPTEXT, Route15SignText
 
 	db 12 ; object events
-	object_event 10, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerSchoolboyKipp, -1
-	object_event 15, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyTommy, -1
-	object_event 27, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyBilly, -1
-	object_event 33, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlFaith, -1
-	object_event 30, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerTeacherColette, -1
-	object_event 20, 10, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerTeacherHillary, -1
-	object_event 30,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerPokefanfBoone, -1
-	object_event 14,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfEleanor, -1
-	object_event 19,  5, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia1, -1
-	object_event 20,  5, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsKayandtia2, -1
+	object_event 10, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSchoolboyKipp, -1
+	object_event 15, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboyTommy, -1
+	object_event 27, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboyBilly, -1
+	object_event 33, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolgirlFaith, -1
+	object_event 30, 12, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerTeacherColette, -1
+	object_event 20, 10, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerTeacherHillary, -1
+	object_event 30,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPokefanfBoone, -1
+	object_event 14,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfEleanor, -1
+	object_event 19,  5, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsKayandtia1, -1
+	object_event 20,  5, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsKayandtia2, -1
 	itemball_event 12,  5, PP_UP, 1, EVENT_ROUTE_15_PP_UP
 	object_event 43,  6, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_14_CUT_TREE_3
 
-TrainerTeacherColette:
-	trainer TEACHER, COLETTE, EVENT_BEAT_TEACHER_COLETTE, TeacherColetteSeenText, TeacherColetteBeatenText, 0, TeacherColetteScript
+GenericTrainerTeacherColette:
+	generictrainer TEACHER, COLETTE, EVENT_BEAT_TEACHER_COLETTE, TeacherColetteSeenText, TeacherColetteBeatenText
 
-TeacherColetteScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1aa60d
+	text "Before I became a"
+	line "teacher, I used to"
 
-TrainerTeacherHillary:
-	trainer TEACHER, HILLARY, EVENT_BEAT_TEACHER_HILLARY, TeacherHillarySeenText, TeacherHillaryBeatenText, 0, TeacherHillaryScript
+	para "forget a lot of"
+	line "things."
+	done
 
-TeacherHillaryScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1aa6ca
+GenericTrainerTeacherHillary:
+	generictrainer TEACHER, HILLARY, EVENT_BEAT_TEACHER_HILLARY, TeacherHillarySeenText, TeacherHillaryBeatenText
 
-TrainerSchoolboyKipp:
-	trainer SCHOOLBOY, KIPP, EVENT_BEAT_SCHOOLBOY_KIP, SchoolboyKippSeenText, SchoolboyKippBeatenText, 0, SchoolboyKippScript
+	text "Studying is impor-"
+	line "tant, but exercise"
+	cont "is just as vital."
+	done
 
-SchoolboyKippScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1aa740
+GenericTrainerSchoolboyKipp:
+	generictrainer SCHOOLBOY, KIPP, EVENT_BEAT_SCHOOLBOY_KIP, SchoolboyKippSeenText, SchoolboyKippBeatenText
 
-TrainerSchoolboyTommy:
-	trainer SCHOOLBOY, TOMMY, EVENT_BEAT_SCHOOLBOY_TOMMY, SchoolboyTommySeenText, SchoolboyTommyBeatenText, 0, SchoolboyTommyScript
+	text "My mom worries so"
+	line "much about me, I"
 
-SchoolboyTommyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1aa7bc
+	para "have to phone her"
+	line "all the time."
+	done
 
-TrainerSchoolboyBilly:
-	trainer SCHOOLBOY, BILLY, EVENT_BEAT_SCHOOLBOY_BILLY, SchoolboyBillySeenText, SchoolboyBillyBeatenText, 0, SchoolboyBillyScript
+GenericTrainerSchoolboyTommy:
+	generictrainer SCHOOLBOY, TOMMY, EVENT_BEAT_SCHOOLBOY_TOMMY, SchoolboyTommySeenText, SchoolboyTommyBeatenText
 
-SchoolboyBillyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1aa8b0
+	text "Sayonara! I just"
+	line "learned that in my"
+	cont "Japanese class."
+	done
 
-TrainerSchoolgirlFaith:
-	trainer SCHOOLGIRL, FAITH, EVENT_BEAT_SCHOOLGIRL_FAITH, SchoolgirlFaithSeenText, SchoolgirlFaithBeatenText, 0, SchoolgirlFaithScript
+GenericTrainerSchoolboyBilly:
+	generictrainer SCHOOLBOY, BILLY, EVENT_BEAT_SCHOOLBOY_BILLY, SchoolboyBillySeenText, SchoolboyBillyBeatenText
 
-SchoolgirlFaithScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolgirlFaithAfterText
+	text "If #mon were a"
+	line "subject at school,"
+	cont "I'd be the best!"
+	done
 
-TrainerPokefanfBoone:
-	trainer POKEFANF, BOONE, EVENT_BEAT_POKEFANF_BOONE, PokefanfBooneSeenText, PokefanfBooneBeatenText, 0, PokefanfBooneScript
+GenericTrainerSchoolgirlFaith:
+	generictrainer SCHOOLGIRL, FAITH, EVENT_BEAT_SCHOOLGIRL_FAITH, SchoolgirlFaithSeenText, SchoolgirlFaithBeatenText
 
-PokefanfBooneScript:
-	end_if_just_battled
-	jumptextfaceplayer PokefanfBooneAfterText
+	text "I'm tired of walk-"
+	line "ing. I need to"
+	cont "take a break."
+	done
 
-TrainerPokefanfEleanor:
-	trainer POKEFANF, ELEANOR, EVENT_BEAT_POKEFANF_ELEANOR, PokefanfEleanorSeenText, PokefanfEleanorBeatenText, 0, PokefanfEleanorScript
+GenericTrainerPokefanfBoone:
+	generictrainer POKEFANF, BOONE, EVENT_BEAT_POKEFANF_BOONE, PokefanfBooneSeenText, PokefanfBooneBeatenText
 
-PokefanfEleanorScript:
-	end_if_just_battled
-	jumptextfaceplayer PokefanfEleanorAfterText
+	text "When you battle,"
+	line "you get to see"
+	cont "#mon you've"
+	cont "never seen before."
 
-TrainerTwinsKayandtia1:
-	trainer TWINS, KAYANDTIA1, EVENT_BEAT_TWINS_KAY_AND_TIA, TwinsKayandtia1SeenText, TwinsKayandtia1BeatenText, 0, TwinsKayandtia1Script
+	para "It's so great!"
+	done
 
-TwinsKayandtia1Script:
-	end_if_just_battled
-	jumptextfaceplayer TwinsKayandtia1AfterText
+GenericTrainerPokefanfEleanor:
+	generictrainer POKEFANF, ELEANOR, EVENT_BEAT_POKEFANF_ELEANOR, PokefanfEleanorSeenText, PokefanfEleanorBeatenText
 
-TrainerTwinsKayandtia2:
-	trainer TWINS, KAYANDTIA2, EVENT_BEAT_TWINS_KAY_AND_TIA, TwinsKayandtia2SeenText, TwinsKayandtia2BeatenText, 0, TwinsKayandtia2Script
+	text "My #mon aren't"
+	line "weak! Your #mon"
+	cont "are too strong!"
+	done
 
-TwinsKayandtia2Script:
-	end_if_just_battled
-	jumptextfaceplayer TwinsKayandtia2AfterText
+GenericTrainerTwinsKayandtia1:
+	generictrainer TWINS, KAYANDTIA1, EVENT_BEAT_TWINS_KAY_AND_TIA, TwinsKayandtia1SeenText, TwinsKayandtia1BeatenText
+
+	text "Absolute truth--"
+	line "I'm Kay! Maybe…"
+	done
+
+GenericTrainerTwinsKayandtia2:
+	generictrainer TWINS, KAYANDTIA2, EVENT_BEAT_TWINS_KAY_AND_TIA, TwinsKayandtia2SeenText, TwinsKayandtia2BeatenText
+
+	text "Maybe truth--I'm"
+	line "Tia! Absolutely!"
+	done
 
 TeacherColetteSeenText:
 	text "Have you forgotten"
@@ -103,14 +118,6 @@ TeacherColetteSeenText:
 
 TeacherColetteBeatenText:
 	text "Kyaaah!"
-	done
-
-UnknownText_0x1aa60d:
-	text "Before I became a"
-	line "teacher, I used to"
-
-	para "forget a lot of"
-	line "things."
 	done
 
 TeacherHillarySeenText:
@@ -129,12 +136,6 @@ TeacherHillaryBeatenText:
 	line "lose…"
 	done
 
-UnknownText_0x1aa6ca:
-	text "Studying is impor-"
-	line "tant, but exercise"
-	cont "is just as vital."
-	done
-
 SchoolboyKippSeenText:
 	text "Hang on. I have to"
 	line "phone my mom."
@@ -145,14 +146,6 @@ SchoolboyKippBeatenText:
 	line "I was beaten!"
 	done
 
-UnknownText_0x1aa740:
-	text "My mom worries so"
-	line "much about me, I"
-
-	para "have to phone her"
-	line "all the time."
-	done
-
 SchoolboyTommySeenText:
 	text "Let's battle."
 	line "I won't lose!"
@@ -161,12 +154,6 @@ SchoolboyTommySeenText:
 SchoolboyTommyBeatenText:
 	text "I forgot to do my"
 	line "homework!"
-	done
-
-UnknownText_0x1aa7bc:
-	text "Sayonara! I just"
-	line "learned that in my"
-	cont "Japanese class."
 	done
 
 SchoolgirlFaithSeenText:
@@ -182,12 +169,6 @@ SchoolgirlFaithBeatenText:
 	line "tough!"
 	done
 
-SchoolgirlFaithAfterText:
-	text "I'm tired of walk-"
-	line "ing. I need to"
-	cont "take a break."
-	done
-
 SchoolboyBillySeenText:
 	text "My favorite class"
 	line "is gym!"
@@ -196,12 +177,6 @@ SchoolboyBillySeenText:
 SchoolboyBillyBeatenText:
 	text "Oh, no!"
 	line "How could I lose?"
-	done
-
-UnknownText_0x1aa8b0:
-	text "If #mon were a"
-	line "subject at school,"
-	cont "I'd be the best!"
 	done
 
 PokefanfBooneSeenText:
@@ -217,15 +192,6 @@ PokefanfBooneBeatenText:
 	line "great!"
 	done
 
-PokefanfBooneAfterText:
-	text "When you battle,"
-	line "you get to see"
-	cont "#mon you've"
-	cont "never seen before."
-
-	para "It's so great!"
-	done
-
 PokefanfEleanorSeenText:
 	text "All right,"
 	line "#mon, time for"
@@ -234,12 +200,6 @@ PokefanfEleanorSeenText:
 
 PokefanfEleanorBeatenText:
 	text "Oh, well…"
-	done
-
-PokefanfEleanorAfterText:
-	text "My #mon aren't"
-	line "weak! Your #mon"
-	cont "are too strong!"
 	done
 
 TwinsKayandtia1SeenText:
@@ -255,11 +215,6 @@ TwinsKayandtia1BeatenText:
 	line "lost…"
 	done
 
-TwinsKayandtia1AfterText:
-	text "Absolute truth--"
-	line "I'm Kay! Maybe…"
-	done
-
 TwinsKayandtia2SeenText:
 	text "We're the twins"
 	line "Kay and Tia!"
@@ -271,11 +226,6 @@ TwinsKayandtia2SeenText:
 TwinsKayandtia2BeatenText:
 	text "Tia and Kay both"
 	line "lost…"
-	done
-
-TwinsKayandtia2AfterText:
-	text "Maybe truth--I'm"
-	line "Tia! Absolutely!"
 	done
 
 Route15SignText:

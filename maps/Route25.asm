@@ -12,13 +12,13 @@ Route25_MapScriptHeader:
 	db 13 ; object events
 	object_event 30,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
 	object_event 32,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
-	object_event  7, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDudley, -1
-	object_event 11,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassEllen, -1
-	object_event 14, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyJoe, -1
-	object_event 12,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassLaura, -1
-	object_event 18,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperLloyd, -1
-	object_event 22, 11, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassShannon, -1
-	object_event 25,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdPat, -1
+	object_event  7, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboyDudley, -1
+	object_event 11,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerLassEllen, -1
+	object_event 14, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSchoolboyJoe, -1
+	object_event 12,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerLassLaura, -1
+	object_event 18,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperLloyd, -1
+	object_event 22, 11, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerLassShannon, -1
+	object_event 25,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdPat, -1
 	itemball_event 25,  4, PROTEIN, 1, EVENT_ROUTE_25_PROTEIN
 	cuttree_event 28,  6, EVENT_ROUTE_25_CUT_TREE
 	object_event 20,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route25MewYoungsterText, -1
@@ -28,54 +28,54 @@ Route25_MapScriptHeader:
 	const ROUTE25_COOLTRAINERM_BEFORE
 	const ROUTE25_COOLTRAINERM_AFTER
 
-TrainerSchoolboyDudley:
-	trainer SCHOOLBOY, DUDLEY, EVENT_BEAT_SCHOOLBOY_DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText, 0, SchoolboyDudleyScript
+GenericTrainerSchoolboyDudley:
+	generictrainer SCHOOLBOY, DUDLEY, EVENT_BEAT_SCHOOLBOY_DUDLEY, SchoolboyDudleySeenText, SchoolboyDudleyBeatenText
 
-SchoolboyDudleyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f1b5
+	text "I did my best."
+	line "I have no regrets."
+	done
 
-TrainerLassEllen:
-	trainer LASS, ELLEN, EVENT_BEAT_LASS_ELLEN, LassEllenSeenText, LassEllenBeatenText, 0, LassEllenScript
+GenericTrainerLassEllen:
+	generictrainer LASS, ELLEN, EVENT_BEAT_LASS_ELLEN, LassEllenSeenText, LassEllenBeatenText
 
-LassEllenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f208
+	text "I did my best."
+	line "I have no regrets."
+	done
 
-TrainerSchoolboyJoe:
-	trainer SCHOOLBOY, JOE, EVENT_BEAT_SCHOOLBOY_JOE, SchoolboyJoeSeenText, SchoolboyJoeBeatenText, 0, SchoolboyJoeScript
+GenericTrainerSchoolboyJoe:
+	generictrainer SCHOOLBOY, JOE, EVENT_BEAT_SCHOOLBOY_JOE, SchoolboyJoeSeenText, SchoolboyJoeBeatenText
 
-SchoolboyJoeScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f25c
+	text "I did my best."
+	line "I have no regrets."
+	done
 
-TrainerLassLaura:
-	trainer LASS, LAURA, EVENT_BEAT_LASS_LAURA, LassLauraSeenText, LassLauraBeatenText, 0, LassLauraScript
+GenericTrainerLassLaura:
+	generictrainer LASS, LAURA, EVENT_BEAT_LASS_LAURA, LassLauraSeenText, LassLauraBeatenText
 
-LassLauraScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f2a6
+	text "I did my best."
+	line "I have no regrets."
+	done
 
-TrainerCamperLloyd:
-	trainer CAMPER, LLOYD, EVENT_BEAT_CAMPER_LLOYD, CamperLloydSeenText, CamperLloydBeatenText, 0, CamperLloydScript
+GenericTrainerCamperLloyd:
+	generictrainer CAMPER, LLOYD, EVENT_BEAT_CAMPER_LLOYD, CamperLloydSeenText, CamperLloydBeatenText
 
-CamperLloydScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f2f8
+	text "I did my best."
+	line "I have no regrets."
+	done
 
-TrainerLassShannon:
-	trainer LASS, SHANNON, EVENT_BEAT_LASS_SHANNON, LassShannonSeenText, LassShannonBeatenText, 0, LassShannonScript
+GenericTrainerLassShannon:
+	generictrainer LASS, SHANNON, EVENT_BEAT_LASS_SHANNON, LassShannonSeenText, LassShannonBeatenText
 
-LassShannonScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f35b
+	text "I did my best."
+	line "I have no regrets."
+	done
 
-TrainerSupernerdPat:
-	trainer SUPER_NERD, PAT, EVENT_BEAT_SUPER_NERD_PAT, SupernerdPatSeenText, SupernerdPatBeatenText, 0, SupernerdPatScript
+GenericTrainerSupernerdPat:
+	generictrainer SUPER_NERD, PAT, EVENT_BEAT_SUPER_NERD_PAT, SupernerdPatSeenText, SupernerdPatBeatenText
 
-SupernerdPatScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19f41a
+	text "I'm sorry… I won't"
+	line "cheat anymore…"
+	done
 
 Route25SlowpokeScript:
 	opentext
@@ -132,11 +132,6 @@ SchoolboyDudleyBeatenText:
 	text "Whoo! Good stuff."
 	done
 
-UnknownText_0x19f1b5:
-	text "I did my best."
-	line "I have no regrets."
-	done
-
 LassEllenSeenText:
 	text "I'm second."
 	line "Now it's serious!"
@@ -144,11 +139,6 @@ LassEllenSeenText:
 
 LassEllenBeatenText:
 	text "How could I lose?"
-	done
-
-UnknownText_0x19f208:
-	text "I did my best."
-	line "I have no regrets."
 	done
 
 SchoolboyJoeSeenText:
@@ -160,11 +150,6 @@ SchoolboyJoeBeatenText:
 	text "Ow! Stomped flat!"
 	done
 
-UnknownText_0x19f25c:
-	text "I did my best."
-	line "I have no regrets."
-	done
-
 LassLauraSeenText:
 	text "I'm No. 4!"
 	line "Getting tired?"
@@ -172,11 +157,6 @@ LassLauraSeenText:
 
 LassLauraBeatenText:
 	text "I lost too…"
-	done
-
-UnknownText_0x19f2a6:
-	text "I did my best."
-	line "I have no regrets."
 	done
 
 CamperLloydSeenText:
@@ -188,11 +168,6 @@ CamperLloydBeatenText:
 	text "Whoa! Too much."
 	done
 
-UnknownText_0x19f2f8:
-	text "I did my best."
-	line "I have no regrets."
-	done
-
 LassShannonSeenText:
 	text "I'm the last in"
 	line "line, but I tell"
@@ -201,11 +176,6 @@ LassShannonSeenText:
 
 LassShannonBeatenText:
 	text "You're kidding."
-	done
-
-UnknownText_0x19f35b:
-	text "I did my best."
-	line "I have no regrets."
 	done
 
 SupernerdPatSeenText:
@@ -225,11 +195,6 @@ SupernerdPatSeenText:
 SupernerdPatBeatenText:
 	text "Aren't you tired"
 	line "at all?"
-	done
-
-UnknownText_0x19f41a:
-	text "I'm sorry… I won't"
-	line "cheat anymore…"
 	done
 
 Route25MewYoungsterText:

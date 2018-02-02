@@ -20,7 +20,7 @@ RadioTower5F_MapScriptHeader:
 	object_event  3,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
 	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
 	object_event 13,  5, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 17,  2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 17,  2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 13,  5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	itemball_event  8,  5, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
 
@@ -58,12 +58,21 @@ FakeDirectorScript:
 	setevent EVENT_BEAT_PETREL_1
 	end
 
-TrainerAriana1:
-	trainer ARIANA, ARIANA1, EVENT_BEAT_ARIANA_1, Ariana1SeenText, Ariana1BeatenText, 0, Ariana1Script
+GenericTrainerAriana1:
+	generictrainer ARIANA, ARIANA1, EVENT_BEAT_ARIANA_1, Ariana1SeenText, Ariana1BeatenText
 
-Ariana1Script:
-	end_if_just_battled
-	jumptextfaceplayer Ariana1AfterText
+	text "<PLAYER>, isn't it?"
+
+	para "A brat like you"
+	line "won't appreciate"
+
+	para "the magnificence"
+	line "of Team Rocket."
+
+	para "That's too bad."
+	line "I really admire"
+	cont "your power."
+	done
 
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
@@ -238,20 +247,6 @@ Ariana1BeatenText:
 
 	para "I fought hard, but"
 	line "I still lost…"
-	done
-
-Ariana1AfterText:
-	text "<PLAYER>, isn't it?"
-
-	para "A brat like you"
-	line "won't appreciate"
-
-	para "the magnificence"
-	line "of Team Rocket."
-
-	para "That's too bad."
-	line "I really admire"
-	cont "your power."
 	done
 
 RadioTower5FRocketBossBeforeText:

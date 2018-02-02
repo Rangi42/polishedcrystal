@@ -13,23 +13,24 @@ Route13East_MapScriptHeader:
 	bg_event 12, 13, SIGNPOST_ITEM + CALCIUM, EVENT_ROUTE_13_HIDDEN_CALCIUM
 
 	db 10 ; object events
-	object_event 36, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPerry, -1
-	object_event 40,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBret, -1
-	object_event 10,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerCamperTanner, -1
-	object_event 41,  9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerPiper, -1
-	object_event 28,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleTimandsue1, -1
-	object_event 29,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleTimandsue2, -1
-	object_event 14,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmJoshua, -1
-	object_event  1,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmAlex, -1
+	object_event 36, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBird_keeperPerry, -1
+	object_event 40,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBret, -1
+	object_event 10,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCamperTanner, -1
+	object_event 41,  9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPicnickerPiper, -1
+	object_event 28,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleTimandsue1, -1
+	object_event 29,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleTimandsue2, -1
+	object_event 14,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokefanmJoshua, -1
+	object_event  1,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPokefanmAlex, -1
 	object_event  5, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route13EastGrampsScript, -1
 	cuttree_event 30,  4, EVENT_ROUTE_13_CUT_TREE
 
-TrainerBird_keeperPerry:
-	trainer BIRD_KEEPER, PERRY, EVENT_BEAT_BIRD_KEEPER_PERRY, Bird_keeperPerrySeenText, Bird_keeperPerryBeatenText, 0, Bird_keeperPerryScript
+GenericTrainerBird_keeperPerry:
+	generictrainer BIRD_KEEPER, PERRY, EVENT_BEAT_BIRD_KEEPER_PERRY, Bird_keeperPerrySeenText, Bird_keeperPerryBeatenText
 
-Bird_keeperPerryScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a25db
+	text "Your #mon are"
+	line "remarkably well-"
+	cont "trained."
+	done
 
 Bird_keeperPerrySeenText:
 	text "Agility is the key"
@@ -42,18 +43,12 @@ Bird_keeperPerryBeatenText:
 	line "your speed…"
 	done
 
-UnknownText_0x1a25db:
-	text "Your #mon are"
-	line "remarkably well-"
-	cont "trained."
+GenericTrainerBird_keeperBret:
+	generictrainer BIRD_KEEPER, BRET, EVENT_BEAT_BIRD_KEEPER_BRET, Bird_keeperBretSeenText, Bird_keeperBretBeatenText
+
+	text "If you groom them,"
+	line "#mon get happy."
 	done
-
-TrainerBird_keeperBret:
-	trainer BIRD_KEEPER, BRET, EVENT_BEAT_BIRD_KEEPER_BRET, Bird_keeperBretSeenText, Bird_keeperBretBeatenText, 0, Bird_keeperBretScript
-
-Bird_keeperBretScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a2662
 
 Bird_keeperBretSeenText:
 	text "Check out my #-"
@@ -68,17 +63,13 @@ Bird_keeperBretBeatenText:
 	line "Not good enough!"
 	done
 
-UnknownText_0x1a2662:
-	text "If you groom them,"
-	line "#mon get happy."
+GenericTrainerCamperTanner:
+	generictrainer CAMPER, TANNER, EVENT_BEAT_CAMPER_TANNER, .SeenText, .BeatenText
+
+	text "I figured it would"
+	line "be easy to knock"
+	cont "you out…"
 	done
-
-TrainerCamperTanner:
-	trainer CAMPER, TANNER, EVENT_BEAT_CAMPER_TANNER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can fit in a"
@@ -90,18 +81,13 @@ TrainerCamperTanner:
 	text "Oh, I'm hungry…"
 	done
 
-.AfterText:
-	text "I figured it would"
-	line "be easy to knock"
-	cont "you out…"
+GenericTrainerPicnickerPiper:
+	generictrainer PICNICKER, PIPER, EVENT_BEAT_PICNICKER_PIPER, .SeenText, .BeatenText
+
+	text "The way you were"
+	line "walking made me"
+	cont "think I could win."
 	done
-
-TrainerPicnickerPiper:
-	trainer PICNICKER, PIPER, EVENT_BEAT_PICNICKER_PIPER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How about we bring"
@@ -116,18 +102,13 @@ TrainerPicnickerPiper:
 	line "bad…"
 	done
 
-.AfterText:
-	text "The way you were"
-	line "walking made me"
-	cont "think I could win."
+GenericTrainerCoupleTimandsue1:
+	generictrainer COUPLE, TIMANDSUE1, EVENT_BEAT_COUPLE_TIM_AND_SUE, .SeenText, .BeatenText
+
+	text "Tim: If you've"
+	line "beaten her, you"
+	cont "must be strong!"
 	done
-
-TrainerCoupleTimandsue1:
-	trainer COUPLE, TIMANDSUE1, EVENT_BEAT_COUPLE_TIM_AND_SUE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Tim: I'll give you"
@@ -142,18 +123,15 @@ TrainerCoupleTimandsue1:
 	line "strongest!"
 	done
 
-.AfterText:
-	text "Tim: If you've"
-	line "beaten her, you"
-	cont "must be strong!"
+GenericTrainerCoupleTimandsue2:
+	generictrainer COUPLE, TIMANDSUE2, EVENT_BEAT_COUPLE_TIM_AND_SUE, .SeenText, .BeatenText
+
+	text "Sue: That strength"
+	line "of yours…"
+	cont "I've got it!"
+
+	para "Are you in love?"
 	done
-
-TrainerCoupleTimandsue2:
-	trainer COUPLE, TIMANDSUE2, EVENT_BEAT_COUPLE_TIM_AND_SUE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Sue: Women who"
@@ -167,20 +145,13 @@ TrainerCoupleTimandsue2:
 	text "Sue: Wa ha…"
 	done
 
-.AfterText:
-	text "Sue: That strength"
-	line "of yours…"
-	cont "I've got it!"
+GenericTrainerPokefanmAlex:
+	generictrainer POKEFANM, ALEX, EVENT_BEAT_POKEFANM_ALEX, PokefanmAlexSeenText, PokefanmAlexBeatenText
 
-	para "Are you in love?"
+	text "Doesn't everyone"
+	line "wish to someday be"
+	cont "a king?"
 	done
-
-TrainerPokefanmAlex:
-	trainer POKEFANM, ALEX, EVENT_BEAT_POKEFANM_ALEX, PokefanmAlexSeenText, PokefanmAlexBeatenText, 0, PokefanmAlexScript
-
-PokefanmAlexScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a24e3
 
 PokefanmAlexSeenText:
 	text "Bow down before my"
@@ -192,18 +163,15 @@ PokefanmAlexBeatenText:
 	line "mock royalty!"
 	done
 
-UnknownText_0x1a24e3:
-	text "Doesn't everyone"
-	line "wish to someday be"
-	cont "a king?"
+GenericTrainerPokefanmJoshua:
+	generictrainer POKEFANM, JOSHUA, EVENT_BEAT_POKEFANM_JOSHUA, PokefanmJoshuaSeenText, PokefanmJoshuaBeatenText
+
+	text "You look like you"
+	line "have many #mon,"
+
+	para "but Pikachu is"
+	line "still the best."
 	done
-
-TrainerPokefanmJoshua:
-	trainer POKEFANM, JOSHUA, EVENT_BEAT_POKEFANM_JOSHUA, PokefanmJoshuaSeenText, PokefanmJoshuaBeatenText, 0, PokefanmJoshuaScript
-
-PokefanmJoshuaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a254f
 
 PokefanmJoshuaSeenText:
 	text "Nihihi! Would you"
@@ -213,14 +181,6 @@ PokefanmJoshuaSeenText:
 
 PokefanmJoshuaBeatenText:
 	text "Pi-Pikachu!"
-	done
-
-UnknownText_0x1a254f:
-	text "You look like you"
-	line "have many #mon,"
-
-	para "but Pikachu is"
-	line "still the best."
 	done
 
 Route13EastGrampsScript:
