@@ -53,21 +53,21 @@ TrainerLassDana1:
 	writetext UnknownText_0x1a20ec
 	buttonsound
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1F
+	callstd asknumber1f
 	jump .AskForPhoneNumber
 
 .SecondTimeAsking:
-	scall .AskNumber2F
+	callstd asknumber2f
 .AskForPhoneNumber:
 	askforphonenumber PHONE_LASS_DANA
 	if_equal $1, .PhoneFull
 	if_equal $2, .DeclinedPhoneNumber
 	trainertotext LASS, DANA1, $0
-	scall .RegisteredPhoneNumber
-	jump .NumberAccepted
+	callstd registerednumberf
+	jumpstd numberacceptedf
 
 .DanaRematch:
-	scall .Rematch
+	callstd rematchf
 	winlosstext LassDana1BeatenText, 0
 	copybytetovar wDanaFightCount
 	if_equal 4, .Fight4
@@ -127,51 +127,24 @@ TrainerLassDana1:
 	end
 
 .TryGiveThunderstone:
-	scall .Gift
+	callstd giftf
 	verbosegiveitem THUNDERSTONE
 	iffalse .NoRoomForThunderstone
 	clearflag ENGINE_DANA_HAS_THUNDERSTONE
 	setevent EVENT_DANA_GAVE_THUNDERSTONE
-	jump .NumberAccepted
+	jumpstd numberacceptedf
 
 .NoRoomForThunderstone:
-	jump .PackFull
-
-.AskNumber1F:
-	jumpstd asknumber1f
-	end
-
-.AskNumber2F:
-	jumpstd asknumber2f
-	end
-
-.RegisteredPhoneNumber:
-	jumpstd registerednumberf
-	end
+	jumpstd packfullf
 
 .NumberAccepted:
 	jumpstd numberacceptedf
-	end
 
 .DeclinedPhoneNumber:
 	jumpstd numberdeclinedf
-	end
 
 .PhoneFull:
 	jumpstd phonefullf
-	end
-
-.Rematch:
-	jumpstd rematchf
-	end
-
-.Gift:
-	jumpstd giftf
-	end
-
-.PackFull:
-	jumpstd packfullf
-	end
 
 TrainerSchoolboyChad1:
 	trainer SCHOOLBOY, CHAD1, EVENT_BEAT_SCHOOLBOY_CHAD, SchoolboyChad1SeenText, SchoolboyChad1BeatenText, 0, .script
@@ -188,21 +161,21 @@ TrainerSchoolboyChad1:
 	writetext UnknownText_0x1a200e
 	buttonsound
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
-	scall .AskPhoneNumber1
+	callstd asknumber1m
 	jump .AskToRegisterNumber
 
 .SecondTimeAsking:
-	scall .AskPhoneNumber2
+	callstd asknumber2m
 .AskToRegisterNumber:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
 	if_equal $1, .PhoneFull
 	if_equal $2, .SaidNo
 	trainertotext SCHOOLBOY, CHAD1, $0
-	scall .RegisteredChad
-	jump .HaveChadsNumber
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .ChadRematch:
-	scall .Rematch
+	callstd rematchm
 	winlosstext SchoolboyChad1BeatenText, 0
 	copybytetovar wChadFightCount
 	if_equal 4, .Fight4
@@ -261,33 +234,14 @@ TrainerSchoolboyChad1:
 	clearflag ENGINE_CHAD
 	end
 
-.AskPhoneNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskPhoneNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredChad:
-	jumpstd registerednumberm
-	end
-
 .HaveChadsNumber:
 	jumpstd numberacceptedm
-	end
 
 .SaidNo:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.Rematch:
-	jumpstd rematchm
-	end
 
 TrainerBeautyValencia:
 	trainer BEAUTY, VALENCIA, EVENT_BEAT_BEAUTY_VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText, 0, .script

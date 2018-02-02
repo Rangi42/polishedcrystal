@@ -44,21 +44,21 @@ TrainerHikerAnthony:
 	writetext HikerAnthony1AfterText
 	buttonsound
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1m
 	jump .AskForPhoneNumber
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2m
 .AskForPhoneNumber:
 	askforphonenumber PHONE_HIKER_ANTHONY
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext HIKER, ANTHONY1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchm
 	winlosstext HikerAnthony1BeatenText, 0
 	copybytetovar wAnthonyFightCount
 	if_equal 4, .Fight4
@@ -120,33 +120,14 @@ TrainerHikerAnthony:
 .Swarm:
 	jumpopenedtext HikerAnthonyDunsparceText
 
-.AskNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.RematchStd:
-	jumpstd rematchm
-	end
 
 GenericTrainerSchoolgirlImogen:
 	generictrainer SCHOOLGIRL, IMOGEN, EVENT_BEAT_SCHOOLGIRL_IMOGEN, SchoolgirlImogenSeenText, SchoolgirlImogenBeatenText

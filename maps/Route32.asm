@@ -482,21 +482,21 @@ TrainerFisherRalph1:
 	writetext FisherRalphAfterText
 	buttonsound
 	setevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1m
 	jump .AskForNumber
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2m
 .AskForNumber:
 	askforphonenumber PHONE_FISHER_RALPH
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext FISHER, RALPH1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchm
 	winlosstext FisherRalph1BeatenText, 0
 	copybytetovar wRalphFightCount
 	if_equal 4, .Fight4
@@ -558,33 +558,14 @@ TrainerFisherRalph1:
 .Swarm:
 	jumpopenedtext FisherRalphSwarmText
 
-.AskNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.RematchStd:
-	jumpstd rematchm
-	end
 
 GenericTrainerFisherHenry:
 	generictrainer FISHER, HENRY, EVENT_BEAT_FISHER_HENRY, FisherHenrySeenText, FisherHenryBeatenText
@@ -611,21 +592,21 @@ TrainerPicnickerLiz1:
 	writetext PicnickerLiz1AfterText
 	buttonsound
 	setevent EVENT_LIZ_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1f
 	jump .AskForNumber
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2f
 .AskForNumber:
 	askforphonenumber PHONE_PICNICKER_LIZ
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext PICNICKER, LIZ1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberf
+	jumpstd numberacceptedf
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchf
 	winlosstext PicnickerLiz1BeatenText, 0
 	copybytetovar wLizFightCount
 	if_equal 4, .Fight4
@@ -684,33 +665,14 @@ TrainerPicnickerLiz1:
 	clearflag ENGINE_LIZ
 	end
 
-.AskNumber1:
-	jumpstd asknumber1f
-	end
-
-.AskNumber2:
-	jumpstd asknumber2f
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberf
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedf
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedf
-	end
 
 .PhoneFull:
 	jumpstd phonefullf
-	end
-
-.RematchStd:
-	jumpstd rematchf
-	end
 
 GenericTrainerYoungsterAlbert:
 	generictrainer YOUNGSTER, ALBERT, EVENT_BEAT_YOUNGSTER_ALBERT, YoungsterAlbertSeenText, YoungsterAlbertBeatenText

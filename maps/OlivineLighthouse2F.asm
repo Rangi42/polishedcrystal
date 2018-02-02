@@ -125,31 +125,24 @@ UnknownScript_0x5b03f:
 
 UnknownScript_0x5b053:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x5b057:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x5b05b:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x5b05f:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x5b063:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x5b067:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x5b06b:
 	jumpstd rematchm
-	end
 
 UnknownScript_0x5b06f:
 	setevent EVENT_HUEY_PROTEIN
@@ -158,7 +151,6 @@ UnknownScript_0x5b06f:
 
 UnknownScript_0x5b076:
 	jumpstd rematchgiftm
-	end
 
 SailorHuey1SeenText:
 	text "Men of the sea are"

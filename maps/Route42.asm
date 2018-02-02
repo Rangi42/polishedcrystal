@@ -257,39 +257,30 @@ UnknownScript_0x1a92ee:
 
 UnknownScript_0x1a92f1:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x1a92f5:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x1a92f9:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x1a92fd:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x1a9301:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x1a9305:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x1a9309:
 	jumpstd rematchm
-	end
 
 UnknownScript_0x1a930d:
 	jumpstd giftm
-	end
 
 UnknownScript_0x1a9311:
 	jumpstd packfullm
-	end
 
 GenericTrainerHikerBenjamin:
 	generictrainer HIKER, BENJAMIN, EVENT_BEAT_HIKER_BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText

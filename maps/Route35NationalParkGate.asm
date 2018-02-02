@@ -101,7 +101,7 @@ OfficerScript_0x6a204:
 	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route35NationalParkGate_ContestIsOver
-	scall Route35NationalParkGate_GetDayOfWeek
+	callstd daytotext
 	writetext UnknownText_0x6a2eb
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToParticipate
@@ -189,10 +189,6 @@ OfficerScript_0x6a2ca:
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route35NationalParkGate_ContestIsOver
 	jumpopenedtext UnknownText_0x6a894
-
-Route35NationalParkGate_GetDayOfWeek:
-	jumpstd daytotext
-	end
 
 MovementData_0x6a2e2:
 	step_down

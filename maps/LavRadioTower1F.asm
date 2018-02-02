@@ -45,14 +45,10 @@ GentlemanScript_0x7ee6c:
 	writetext UnknownText_0x7f0a1
 	buttonsound
 	stringtotext .expncardname, $1
-	scall .UnknownScript_0x7ee94
+	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
 .UnknownScript_0x7ee8e:
 	jumpopenedtext UnknownText_0x7f141
-
-.UnknownScript_0x7ee94:
-	jumpstd receiveitem
-	end
 
 .expncardname
 	db "Expn.Card@"

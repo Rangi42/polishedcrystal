@@ -206,39 +206,30 @@ UnknownScript_0x19e118:
 
 UnknownScript_0x19e11b:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x19e11f:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x19e123:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x19e127:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x19e12b:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x19e12f:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x19e133:
 	jumpstd rematchm
-	end
 
 UnknownScript_0x19e137:
 	jumpstd giftm
-	end
 
 UnknownScript_0x19e13b:
 	jumpstd packfullm
-	end
 
 UnknownScript_0x19e13f:
 	setevent EVENT_PARRY_IRON
@@ -247,7 +238,6 @@ UnknownScript_0x19e13f:
 
 UnknownScript_0x19e146:
 	jumpstd rematchgiftm
-	end
 
 GenericTrainerHikerErik:
 	generictrainer HIKER, ERIK, EVENT_BEAT_HIKER_ERIK, HikerErikSeenText, HikerErikBeatenText

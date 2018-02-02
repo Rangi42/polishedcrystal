@@ -197,31 +197,24 @@ UnknownScript_0x5c088:
 
 UnknownScript_0x5c0fc:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x5c100:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x5c104:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x5c108:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x5c10c:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x5c110:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x5c114:
 	jumpstd rematchm
-	end
 
 GenericTrainerPokefanmWilliam:
 	generictrainer POKEFANM, WILLIAM, EVENT_BEAT_POKEFANM_WILLIAM, PokefanmWilliamSeenText, PokefanmWilliamBeatenText
@@ -278,35 +271,27 @@ UnknownScript_0x5c189:
 
 UnknownScript_0x5c18f:
 	jumpstd asknumber1f
-	end
 
 UnknownScript_0x5c193:
 	jumpstd asknumber2f
-	end
 
 UnknownScript_0x5c197:
 	jumpstd registerednumberf
-	end
 
 UnknownScript_0x5c19b:
 	jumpstd numberacceptedf
-	end
 
 UnknownScript_0x5c19f:
 	jumpstd numberdeclinedf
-	end
 
 UnknownScript_0x5c1a3:
 	jumpstd phonefullf
-	end
 
 UnknownScript_0x5c1a7:
 	jumpstd giftf
-	end
 
 UnknownScript_0x5c1ab:
 	jumpstd packfullf
-	end
 
 GenericTrainerLassKrise:
 	generictrainer LASS, KRISE, EVENT_BEAT_LASS_KRISE, LassKriseSeenText, LassKriseBeatenText

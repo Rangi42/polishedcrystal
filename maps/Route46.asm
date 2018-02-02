@@ -150,31 +150,24 @@ UnknownScript_0x1a973b:
 
 UnknownScript_0x1a974f:
 	jumpstd asknumber1f
-	end
 
 UnknownScript_0x1a9753:
 	jumpstd asknumber2f
-	end
 
 UnknownScript_0x1a9757:
 	jumpstd registerednumberf
-	end
 
 UnknownScript_0x1a975b:
 	jumpstd numberacceptedf
-	end
 
 UnknownScript_0x1a975f:
 	jumpstd numberdeclinedf
-	end
 
 UnknownScript_0x1a9763:
 	jumpstd phonefullf
-	end
 
 UnknownScript_0x1a9767:
 	jumpstd rematchf
-	end
 
 UnknownScript_0x1a976b:
 	setevent EVENT_ERIN_CALCIUM
@@ -183,7 +176,6 @@ UnknownScript_0x1a976b:
 
 UnknownScript_0x1a9772:
 	jumpstd rematchgiftf
-	end
 
 GenericTrainerHikerBailey:
 	generictrainer HIKER, BAILEY, EVENT_BEAT_HIKER_BAILEY, HikerBaileySeenText, HikerBaileyBeatenText

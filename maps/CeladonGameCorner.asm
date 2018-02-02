@@ -86,7 +86,7 @@ FisherScript_0x72144:
 	checkcoins 49999
 	if_equal $0, UnknownScript_0x72184
 	stringtotext .coinname, $1
-	scall .UnknownScript_0x72172
+	callstd receiveitem
 	givecoins 18
 	setevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
 .FisherOffer:
@@ -108,10 +108,6 @@ FisherScript_0x72144:
 	waitbutton
 	closetext
 	spriteface LAST_TALKED, LEFT
-	end
-
-.UnknownScript_0x72172:
-	jumpstd receiveitem
 	end
 
 .coinname

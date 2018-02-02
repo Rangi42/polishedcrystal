@@ -175,21 +175,21 @@ TrainerBug_catcherWade1:
 	writetext Bug_catcherWade1AfterText
 	waitbutton
 	setevent EVENT_WADE_ASKED_FOR_PHONE_NUMBER
-	scall .AskPhoneNumberSTD
+	callstd asknumber1m
 	jump .Continue
 
 .AskAgain:
-	scall .AskAgainSTD
+	callstd asknumber2m
 .Continue:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
 	if_equal $1, .PhoneFullSTD
 	if_equal $2, .DeclinedNumberSTD
 	trainertotext BUG_CATCHER, WADE1, $0
-	scall .RegisterNumberSTD
-	jump .AcceptedNumberSTD
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .WadeRematch:
-	scall .RematchSTD
+	callstd rematchm
 	winlosstext Bug_catcherWade1BeatenText, 0
 	copybytetovar wWadeFightCount
 	if_equal 4, .Fight4
@@ -249,7 +249,7 @@ TrainerBug_catcherWade1:
 	end
 
 .WadeItem:
-	scall .ItemSTD
+	callstd giftm
 	checkevent EVENT_WADE_HAS_ORAN_BERRY
 	iftrue .OranBerry
 	checkevent EVENT_WADE_HAS_PECHA_BERRY
@@ -275,45 +275,18 @@ TrainerBug_catcherWade1:
 	iffalse .PackFull
 .Done:
 	clearflag ENGINE_WADE_HAS_ITEM
-	jump .AcceptedNumberSTD
+	jumpstd numberacceptedm
 .PackFull:
-	jump .PackFullSTD
-
-.AskPhoneNumberSTD:
-	jumpstd asknumber1m
-	end
-
-.AskAgainSTD:
-	jumpstd asknumber2m
-	end
-
-.RegisterNumberSTD:
-	jumpstd registerednumberm
-	end
+	jumpstd packfullm
 
 .AcceptedNumberSTD:
 	jumpstd numberacceptedm
-	end
 
 .DeclinedNumberSTD:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFullSTD:
 	jumpstd phonefullm
-	end
-
-.RematchSTD:
-	jumpstd rematchm
-	end
-
-.ItemSTD:
-	jumpstd giftm
-	end
-
-.PackFullSTD:
-	jumpstd packfullm
-	end
 
 Route31MailRecipientScript:
 	faceplayer

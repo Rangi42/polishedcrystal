@@ -78,35 +78,27 @@ UnknownScript_0x1a5b5c:
 
 UnknownScript_0x1a5b62:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x1a5b66:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x1a5b6a:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x1a5b6e:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x1a5b72:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x1a5b76:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x1a5b7a:
 	jumpstd giftm
-	end
 
 UnknownScript_0x1a5b7e:
 	jumpstd packfullm
-	end
 
 GenericTrainerPokefanfRuth:
 	generictrainer POKEFANF, RUTH, EVENT_BEAT_POKEFANF_RUTH, PokefanfRuthSeenText, PokefanfRuthBeatenText

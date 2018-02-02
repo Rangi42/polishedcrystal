@@ -63,7 +63,7 @@ CherrygroveCityGuideGent:
 	writetext GuideGentGiftText
 	buttonsound
 	stringtotext .mapcardname, $1
-	scall .JumpstdReceiveItem
+	callstd receiveitem
 	setflag ENGINE_MAP_CARD
 	writetext GotMapCardText
 	buttonsound
@@ -79,10 +79,6 @@ CherrygroveCityGuideGent:
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
 	dotrigger $2
 	waitsfx
-	end
-
-.JumpstdReceiveItem:
-	jumpstd receiveitem
 	end
 
 .mapcardname

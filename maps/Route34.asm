@@ -218,21 +218,21 @@ TrainerCamperTodd1:
 	writetext CamperTodd1AfterText
 	buttonsound
 	setevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber
+	callstd asknumber1m
 	jump .FinishAsk
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2m
 .FinishAsk:
 	askforphonenumber PHONE_CAMPER_TODD
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext CAMPER, TODD1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchm
 	winlosstext CamperTodd1BeatenText, 0
 	copybytetovar wToddFightCount
 	if_equal 4, .Fight4
@@ -294,33 +294,14 @@ TrainerCamperTodd1:
 .SaleIsOn:
 	jumpopenedtext CamperToddSaleText
 
-.AskNumber:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.RematchStd:
-	jumpstd rematchm
-	end
 
 TrainerPicnickerGina1:
 	trainer PICNICKER, GINA1, EVENT_BEAT_PICNICKER_GINA, PicnickerGina1SeenText, PicnickerGina1BeatenText, 0, .Script
@@ -339,21 +320,21 @@ TrainerPicnickerGina1:
 	writetext PicnickerGina1AfterText
 	buttonsound
 	setevent EVENT_GINA_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1f
 	jump .FinishAsk
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2f
 .FinishAsk:
 	askforphonenumber PHONE_PICNICKER_GINA
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext PICNICKER, GINA1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberf
+	jumpstd numberacceptedf
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchf
 	winlosstext PicnickerGina1BeatenText, 0
 	copybytetovar wGinaFightCount
 	if_equal 4, .Fight4
@@ -413,51 +394,24 @@ TrainerPicnickerGina1:
 	end
 
 .LeafStone:
-	scall .Gift
+	callstd giftf
 	verbosegiveitem LEAF_STONE
 	iffalse .BagFull
 	clearflag ENGINE_GINA_HAS_LEAF_STONE
 	setevent EVENT_GINA_GAVE_LEAF_STONE
-	jump .NumberAccepted
+	jumpstd numberacceptedf
 
 .BagFull:
-	jump .PackFull
-
-.AskNumber1:
-	jumpstd asknumber1f
-	end
-
-.AskNumber2:
-	jumpstd asknumber2f
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberf
-	end
+	jumpstd packfullf
 
 .NumberAccepted:
 	jumpstd numberacceptedf
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedf
-	end
 
 .PhoneFull:
 	jumpstd phonefullf
-	end
-
-.RematchStd:
-	jumpstd rematchf
-	end
-
-.Gift:
-	jumpstd giftf
-	end
-
-.PackFull:
-	jumpstd packfullf
-	end
 
 OfficerfMaraScript:
 	faceplayer

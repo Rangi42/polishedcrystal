@@ -307,31 +307,24 @@ UnknownScript_0x19d0cf:
 
 UnknownScript_0x19d12c:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x19d130:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x19d134:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x19d138:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x19d13c:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x19d140:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x19d144:
 	jumpstd rematchm
-	end
 
 GenericTrainerPokemaniacRon:
 	generictrainer POKEMANIAC, RON, EVENT_BEAT_POKEMANIAC_RON, PokemaniacRonSeenText, PokemaniacRonBeatenText
@@ -455,39 +448,30 @@ UnknownScript_0x19d233:
 
 UnknownScript_0x19d239:
 	jumpstd asknumber1f
-	end
 
 UnknownScript_0x19d23d:
 	jumpstd asknumber2f
-	end
 
 UnknownScript_0x19d241:
 	jumpstd registerednumberf
-	end
 
 UnknownScript_0x19d245:
 	jumpstd numberacceptedf
-	end
 
 UnknownScript_0x19d249:
 	jumpstd numberdeclinedf
-	end
 
 UnknownScript_0x19d24d:
 	jumpstd phonefullf
-	end
 
 UnknownScript_0x19d251:
 	jumpstd rematchf
-	end
 
 UnknownScript_0x19d255:
 	jumpstd giftf
-	end
 
 UnknownScript_0x19d259:
 	jumpstd packfullf
-	end
 
 PokemaniacBenSeenText:
 	text "I love #mon!"

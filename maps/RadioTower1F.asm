@@ -168,7 +168,7 @@ CooltrainerFScript_0x5cdd5:
 	writetext UnknownText_0x5d37b
 	buttonsound
 	stringtotext RadioCardText, $1
-	scall UnknownScript_0x5ce3e
+	callstd receiveitem
 	writetext UnknownText_0x5d3c0
 	buttonsound
 	setflag ENGINE_RADIO_CARD
@@ -190,10 +190,6 @@ UnknownScript_0x5ce2d:
 
 RadioCardText:
 	db "Radio Card@"
-
-UnknownScript_0x5ce3e:
-	jumpstd receiveitem
-	end
 
 UnknownScript_0x5ce42:
 	playsound SFX_WRONG

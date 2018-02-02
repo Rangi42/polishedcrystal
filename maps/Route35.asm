@@ -77,31 +77,24 @@ UnknownScript_0x19c8ef:
 
 UnknownScript_0x19c903:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x19c907:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x19c90b:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x19c90f:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x19c913:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x19c917:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x19c91b:
 	jumpstd rematchm
-	end
 
 GenericTrainerCamperIvan:
 	generictrainer CAMPER, IVAN, EVENT_BEAT_CAMPER_IVAN, CamperIvanSeenText, CamperIvanBeatenText

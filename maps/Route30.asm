@@ -72,21 +72,21 @@ TrainerYoungsterJoey:
 	writetext YoungsterJoey1AfterText
 	buttonsound
 	setevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1m
 	jump .RequestNumber
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2m
 .RequestNumber:
 	askforphonenumber PHONE_YOUNGSTER_JOEY
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext YOUNGSTER, JOEY1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchm
 	winlosstext YoungsterJoey1BeatenText, 0
 	copybytetovar wJoeyFightCount
 	if_equal 4, .Fight4
@@ -147,11 +147,11 @@ TrainerYoungsterJoey:
 	iftrue .GiveHPUp
 	checkevent EVENT_GOT_HP_UP_FROM_JOEY
 	iftrue .done
-	scall .RematchGift
+	callstd rematchgiftm
 	verbosegiveitem HP_UP
 	iffalse .PackFull
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
-	jump .NumberAccepted
+	jumpstd numberacceptedm
 
 .done
 	end
@@ -164,44 +164,20 @@ TrainerYoungsterJoey:
 	iffalse .PackFull
 	clearevent EVENT_JOEY_HP_UP
 	setevent EVENT_GOT_HP_UP_FROM_JOEY
-	jump .NumberAccepted
-
-.AskNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
+	jumpstd numberacceptedm
 
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.RematchStd:
-	jumpstd rematchm
-	end
 
 .PackFull:
 	setevent EVENT_JOEY_HP_UP
 	jumpstd packfullm
-	end
-
-.RematchGift:
-	jumpstd rematchgiftm
-	end
 
 GenericTrainerYoungsterMikey:
 	generictrainer YOUNGSTER, MIKEY, EVENT_BEAT_YOUNGSTER_MIKEY, YoungsterMikeySeenText, YoungsterMikeyBeatenText

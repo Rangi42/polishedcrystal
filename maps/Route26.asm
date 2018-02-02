@@ -109,31 +109,24 @@ UnknownScript_0x1a4d79:
 
 UnknownScript_0x1a4dbf:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x1a4dc3:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x1a4dc7:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x1a4dcb:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x1a4dcf:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x1a4dd3:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x1a4dd7:
 	jumpstd rematchm
-	end
 
 GenericTrainerCooltrainerfJoyce:
 	generictrainer COOLTRAINERF, JOYCE, EVENT_BEAT_COOLTRAINERF_JOYCE, CooltrainerfJoyceSeenText, CooltrainerfJoyceBeatenText
@@ -214,31 +207,24 @@ UnknownScript_0x1a4e35:
 
 UnknownScript_0x1a4e7b:
 	jumpstd asknumber1f
-	end
 
 UnknownScript_0x1a4e7f:
 	jumpstd asknumber2f
-	end
 
 UnknownScript_0x1a4e83:
 	jumpstd registerednumberf
-	end
 
 UnknownScript_0x1a4e87:
 	jumpstd numberacceptedf
-	end
 
 UnknownScript_0x1a4e8b:
 	jumpstd numberdeclinedf
-	end
 
 UnknownScript_0x1a4e8f:
 	jumpstd phonefullf
-	end
 
 UnknownScript_0x1a4e93:
 	jumpstd rematchf
-	end
 
 GenericTrainerPsychicRichard:
 	generictrainer PSYCHIC_T, RICHARD, EVENT_BEAT_PSYCHIC_RICHARD, PsychicRichardSeenText, PsychicRichardBeatenText

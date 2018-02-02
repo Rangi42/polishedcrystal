@@ -166,21 +166,21 @@ TrainerSchoolboyAlan1:
 	writetext UnknownText_0x1947aa
 	buttonsound
 	setevent EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1m
 	jump .ContinueAskForPhoneNumber
 
 .AskAgainForPhoneNumber:
-	scall .AskNumber2
+	callstd asknumber2m
 .ContinueAskForPhoneNumber:
 	askforphonenumber PHONE_SCHOOLBOY_ALAN
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext SCHOOLBOY, ALAN1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .ChooseRematch:
-	scall .Rematch
+	callstd rematchm
 	winlosstext SchoolboyAlan1BeatenText, 0
 	copybytetovar wAlanFightCount
 	if_equal 4, .Fight4
@@ -240,51 +240,24 @@ TrainerSchoolboyAlan1:
 	end
 
 .GiveFireStone:
-	scall .Gift
+	callstd giftm
 	verbosegiveitem FIRE_STONE
 	iffalse .BagFull
 	clearflag ENGINE_ALAN_HAS_FIRE_STONE
 	setevent EVENT_ALAN_GAVE_FIRE_STONE
-	jump .NumberAccepted
+	jumpstd numberacceptedm
 
 .BagFull:
-	jump .PackFull
-
-.AskNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
+	jumpstd packfullm
 
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.Rematch:
-	jumpstd rematchm
-	end
-
-.Gift:
-	jumpstd giftm
-	end
-
-.PackFull:
-	jumpstd packfullm
-	end
 
 Route36CooltrainerfChiaraScript:
 	checkevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER

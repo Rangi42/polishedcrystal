@@ -264,39 +264,30 @@ UnknownScript_0x1a0954:
 
 UnknownScript_0x1a0957:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x1a095b:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x1a095f:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x1a0963:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x1a0967:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x1a096b:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x1a096f:
 	jumpstd rematchm
-	end
 
 UnknownScript_0x1a0973:
 	jumpstd giftm
-	end
 
 UnknownScript_0x1a0977:
 	jumpstd packfullm
-	end
 
 GenericTrainerCooltrainermBlake:
 	generictrainer COOLTRAINERM, BLAKE, EVENT_BEAT_COOLTRAINERM_BLAKE, CooltrainermBlakeSeenText, CooltrainermBlakeBeatenText
@@ -398,31 +389,24 @@ UnknownScript_0x1a09e9:
 
 UnknownScript_0x1a0a2f:
 	jumpstd asknumber1f
-	end
 
 UnknownScript_0x1a0a33:
 	jumpstd asknumber2f
-	end
 
 UnknownScript_0x1a0a37:
 	jumpstd registerednumberf
-	end
 
 UnknownScript_0x1a0a3b:
 	jumpstd numberacceptedf
-	end
 
 UnknownScript_0x1a0a3f:
 	jumpstd numberdeclinedf
-	end
 
 UnknownScript_0x1a0a43:
 	jumpstd phonefullf
-	end
 
 UnknownScript_0x1a0a47:
 	jumpstd rematchf
-	end
 
 GenericTrainerCooltrainerfMegan:
 	generictrainer COOLTRAINERF, MEGAN, EVENT_BEAT_COOLTRAINERF_MEGAN, CooltrainerfMeganSeenText, CooltrainerfMeganBeatenText

@@ -225,39 +225,30 @@ UnknownScript_0x19d8cb:
 
 UnknownScript_0x19d8df:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x19d8e3:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x19d8e7:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x19d8eb:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x19d8ef:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x19d8f3:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x19d8f7:
 	jumpstd rematchm
-	end
 
 UnknownScript_0x19d8fb:
 	jumpstd giftm
-	end
 
 UnknownScript_0x19d8ff:
 	jumpstd packfullm
-	end
 
 UnknownScript_0x19d903:
 	setevent EVENT_VANCE_CARBOS
@@ -266,7 +257,6 @@ UnknownScript_0x19d903:
 
 UnknownScript_0x19d90a:
 	jumpstd rematchgiftm
-	end
 
 GenericTrainerPsychicPhil:
 	generictrainer PSYCHIC_T, PHIL, EVENT_BEAT_PSYCHIC_PHIL, PsychicPhilSeenText, PsychicPhilBeatenText
