@@ -15,10 +15,10 @@ FuchsiaGym_MapScriptHeader:
 
 	db 6 ; object events
 	object_event  5,  7, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineScript_0x195db9, -1
-	object_event  1, 10, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym1Script_0x195e1b, -1
-	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym2Script_0x195e55, -1
-	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym3Script_0x195e8f, -1
-	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuschiaGym4Script_0x195ec9, -1
+	object_event  1, 10, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuchsiaGym1Script_0x195e1b, -1
+	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuchsiaGym2Script_0x195e55, -1
+	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuchsiaGym3Script_0x195e8f, -1
+	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, FuchsiaGym4Script_0x195ec9, -1
 	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaGymGuyScript, -1
 
 	const_def 1 ; object constants
@@ -83,7 +83,7 @@ UnknownScript_0x195e02:
 UnknownScript_0x195e15:
 	jumpopenedtext UnknownText_0x196074
 
-FuschiaGym1Script_0x195e1b:
+FuchsiaGym1Script_0x195e1b:
 	checkevent EVENT_BEAT_LASS_AMANDA
 	iftrue UnknownScript_0x195e2c
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_1, MovementData_0x195f27
@@ -114,7 +114,7 @@ UnknownScript_0x195e4a:
 UnknownScript_0x195e4f:
 	jumpopenedtext UnknownText_0x196139
 
-FuschiaGym2Script_0x195e55:
+FuchsiaGym2Script_0x195e55:
 	checkevent EVENT_BEAT_LASS_LINDA
 	iftrue UnknownScript_0x195e66
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_2, MovementData_0x195f27
@@ -145,7 +145,7 @@ UnknownScript_0x195e84:
 UnknownScript_0x195e89:
 	jumpopenedtext UnknownText_0x196199
 
-FuschiaGym3Script_0x195e8f:
+FuchsiaGym3Script_0x195e8f:
 	checkevent EVENT_BEAT_PICNICKER_CINDY
 	iftrue UnknownScript_0x195ea0
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_3, MovementData_0x195f27
@@ -176,7 +176,7 @@ UnknownScript_0x195ebe:
 UnknownScript_0x195ec3:
 	jumpopenedtext UnknownText_0x19620c
 
-FuschiaGym4Script_0x195ec9:
+FuchsiaGym4Script_0x195ec9:
 	checkevent EVENT_BEAT_CAMPER_BARRY
 	iftrue UnknownScript_0x195eda
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_4, MovementData_0x195f27

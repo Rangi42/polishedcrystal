@@ -65,7 +65,7 @@ LassDuplicaAfterText:
 	line "impressions!"
 
 	para "Someday I'll become"
-	line "a Fuschia Gym"
+	line "a Fuchsia Gym"
 
 	para "Trainer and mimic"
 	line "Janine."
