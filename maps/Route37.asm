@@ -9,19 +9,19 @@ Route37_MapScriptHeader:
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 5, 3, SIGNPOST_JUMPTEXT, Route37SignText
-	bg_event 4, 2, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, Route37SignText
+	bg_event  4,  2, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
 
 	db 9 ; object events
-	object_event 16, 8, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
-	object_event 6, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
-	object_event 7, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
+	object_event 16,  8, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
+	object_event  6, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil1, -1
+	object_event  7, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsToriandtil2, -1
 	object_event 14, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicGreg, -1
-	fruittree_event 13, 5, FRUITTREE_ROUTE_37_1, RED_APRICORN
-	fruittree_event 16, 5, FRUITTREE_ROUTE_37_2, BLU_APRICORN
-	fruittree_event 15, 7, FRUITTREE_ROUTE_37_3, BLK_APRICORN
-	object_event 4, 6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCallie, -1
-	object_event 9, 6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassandra, -1
+	fruittree_event 13,  5, FRUITTREE_ROUTE_37_1, RED_APRICORN
+	fruittree_event 16,  5, FRUITTREE_ROUTE_37_2, BLU_APRICORN
+	fruittree_event 15,  7, FRUITTREE_ROUTE_37_3, BLK_APRICORN
+	object_event  4,  6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCallie, -1
+	object_event  9,  6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassandra, -1
 
 	const_def 1 ; object constants
 	const ROUTE37_SUNNY

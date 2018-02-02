@@ -4,20 +4,20 @@ LavenderPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, LAVENDER_TOWN, 1
-	warp_event 6, 7, LAVENDER_TOWN, 1
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, LAVENDER_TOWN, 1
+	warp_event  6,  7, LAVENDER_TOWN, 1
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalMrFujiScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalMrFujiScript
 
 	db 4 ; object events
-	pc_nurse_event 5, 1
-	object_event 1, 5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LavenderPokeCenter1FYoungsterScript, -1
-	object_event 11, 6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FGentlemanText, -1
-	object_event 6, 3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FTeacherText, -1
+	pc_nurse_event  5, 1
+	object_event  1,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LavenderPokeCenter1FYoungsterScript, -1
+	object_event 11,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FGentlemanText, -1
+	object_event  6,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FTeacherText, -1
 
 PokemonJournalMrFujiScript:
 	setflag ENGINE_READ_MR_FUJI_JOURNAL

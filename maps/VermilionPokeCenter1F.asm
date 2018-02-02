@@ -4,20 +4,20 @@ VermilionPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, VERMILION_CITY, 2
-	warp_event 6, 7, VERMILION_CITY, 2
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, VERMILION_CITY, 2
+	warp_event  6,  7, VERMILION_CITY, 2
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalLtSurgeScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalLtSurgeScript
 
 	db 4 ; object events
-	pc_nurse_event 5, 1
-	object_event 8, 2, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionPokeCenter1FSightseerMScript, -1
-	object_event 2, 5, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionPokeCenter1FSailorText, -1
-	object_event 9, 4, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionPokeCenter1FBugCatcherText, -1
+	pc_nurse_event  5, 1
+	object_event  8,  2, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VermilionPokeCenter1FSightseerMScript, -1
+	object_event  2,  5, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionPokeCenter1FSailorText, -1
+	object_event  9,  4, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionPokeCenter1FBugCatcherText, -1
 
 PokemonJournalLtSurgeScript:
 	setflag ENGINE_READ_LT_SURGE_JOURNAL

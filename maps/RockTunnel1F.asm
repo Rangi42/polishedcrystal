@@ -4,20 +4,20 @@ RockTunnel1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 8 ; warp events
-	warp_event 15, 3, ROUTE_10_NORTH, 4
+	warp_event 15,  3, ROUTE_10_NORTH, 4
 	warp_event 11, 25, ROUTE_10_SOUTH, 1
-	warp_event 5, 3, ROCK_TUNNEL_B1F, 1
-	warp_event 15, 9, ROCK_TUNNEL_B1F, 2
-	warp_event 25, 3, ROCK_TUNNEL_B1F, 3
+	warp_event  5,  3, ROCK_TUNNEL_B1F, 1
+	warp_event 15,  9, ROCK_TUNNEL_B1F, 2
+	warp_event 25,  3, ROCK_TUNNEL_B1F, 3
 	warp_event 27, 13, ROCK_TUNNEL_B1F, 4
-	warp_event 4, 13, ROCK_TUNNEL_B1F, 5
-	warp_event 6, 15, ROCK_TUNNEL_2F, 2
+	warp_event  4, 13, ROCK_TUNNEL_B1F, 5
+	warp_event  6, 15, ROCK_TUNNEL_2F, 2
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 23, 4, SIGNPOST_ITEM + X_ACCURACY, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_ACCURACY
-	bg_event 4, 18, SIGNPOST_ITEM + X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
+	bg_event 23,  4, SIGNPOST_ITEM + X_ACCURACY, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_ACCURACY
+	bg_event  4, 18, SIGNPOST_ITEM + X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
 
 	db 3 ; object events
 	object_event 23, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerSeamus, -1

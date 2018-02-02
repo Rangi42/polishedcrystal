@@ -5,32 +5,32 @@ ViridianCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, ViridianCityFlyPoint
 
 	db 8 ; warp events
-	warp_event 32, 7, VIRIDIAN_GYM, 1
-	warp_event 21, 5, VIRIDIAN_NICKNAME_SPEECH_HOUSE, 1
+	warp_event 32,  7, VIRIDIAN_GYM, 1
+	warp_event 21,  5, VIRIDIAN_NICKNAME_SPEECH_HOUSE, 1
 	warp_event 23, 15, TRAINER_HOUSE_1F, 1
 	warp_event 29, 19, VIRIDIAN_MART, 2
 	warp_event 23, 25, VIRIDIAN_POKECENTER_1F, 1
 	warp_event 28, 33, ROUTE_1_VIRIDIAN_GATE, 1
 	warp_event 29, 33, ROUTE_1_VIRIDIAN_GATE, 2
-	warp_event 21, 9, VIRIDIAN_SCHOOL_HOUSE, 1
+	warp_event 21,  9, VIRIDIAN_SCHOOL_HOUSE, 1
 
 	db 0 ; coord events
 
 	db 4 ; bg events
 	bg_event 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
-	bg_event 27, 7, SIGNPOST_JUMPTEXT, ViridianGymSignText
-	bg_event 19, 1, SIGNPOST_JUMPTEXT, ViridianCityWelcomeSignText
+	bg_event 27,  7, SIGNPOST_JUMPTEXT, ViridianGymSignText
+	bg_event 19,  1, SIGNPOST_JUMPTEXT, ViridianCityWelcomeSignText
 	bg_event 21, 15, SIGNPOST_JUMPTEXT, TrainerHouseSignText
 
 	db 8 ; object events
-	object_event 18, 5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
-	object_event 32, 8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
-	object_event 30, 8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
-	object_event 6, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
+	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
+	object_event 32,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
+	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  6, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
 	object_event 17, 21, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9daa, -1
 	object_event 31, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungsterText, -1
-	cuttree_event 14, 4, EVENT_VIRIDIAN_CITY_CUT_TREE_1
-	cuttree_event 8, 22, EVENT_VIRIDIAN_CITY_CUT_TREE_2
+	cuttree_event 14,  4, EVENT_VIRIDIAN_CITY_CUT_TREE_1
+	cuttree_event  8, 22, EVENT_VIRIDIAN_CITY_CUT_TREE_2
 
 ViridianCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIRIDIAN

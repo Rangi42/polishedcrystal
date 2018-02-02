@@ -4,16 +4,16 @@ Route22_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 3, 5, POKEMON_LEAGUE_GATE, 1
+	warp_event  3,  5, POKEMON_LEAGUE_GATE, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 6, 6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
+	bg_event  6,  6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
 
 	db 2 ; object events
 	object_event 14, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
-	object_event 20, 2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
+	object_event 20,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 
 	const_def 1 ; object constants
 	const ROUTE22_KUKUI

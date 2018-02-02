@@ -6,26 +6,26 @@ BurnedTower1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
 
 	db 4 ; warp events
-	warp_event 7, 15, ECRUTEAK_CITY, 13
-	warp_event 8, 15, ECRUTEAK_CITY, 13
-	warp_event 8, 9, BURNED_TOWER_B1F, 1
-	warp_event 5, 15, BURNED_TOWER_B1F, 2
+	warp_event  7, 15, ECRUTEAK_CITY, 13
+	warp_event  8, 15, ECRUTEAK_CITY, 13
+	warp_event  8,  9, BURNED_TOWER_B1F, 1
+	warp_event  5, 15, BURNED_TOWER_B1F, 2
 
 	db 1 ; coord events
-	coord_event 9, 9, 1, BurnedTowerRivalBattleScript
+	coord_event  9,  9, 1, BurnedTowerRivalBattleScript
 
 	db 2 ; bg events
-	bg_event 6, 7, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
+	bg_event  6,  7, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
 	bg_event 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
 	db 7 ; object events
 	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
-	object_event 6, 9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	object_event  6,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	smashrock_event 13, 4
 	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
-	itemball_event 13, 1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
-	object_event 1, 1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
-	object_event 11, 3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
+	itemball_event 13,  1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
+	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
+	object_event 11,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
 
 	const_def 1 ; object constants
 	const BURNEDTOWER1F_EUSINE

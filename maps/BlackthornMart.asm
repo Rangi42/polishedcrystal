@@ -4,18 +4,18 @@ BlackthornMart_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, BLACKTHORN_CITY, 4
-	warp_event 3, 7, BLACKTHORN_CITY, 4
+	warp_event  2,  7, BLACKTHORN_CITY, 4
+	warp_event  3,  7, BLACKTHORN_CITY, 4
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 4 ; object events
-	mart_clerk_event 1, 3, MARTTYPE_STANDARD, MART_BLACKTHORN
-	object_event 7, 6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartCooltrainermText, -1
-	object_event 5, 2, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartBlackbeltText, -1
-	object_event 11, 3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartSuperNerdText, -1
+	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_BLACKTHORN
+	object_event  7,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartCooltrainermText, -1
+	object_event  5,  2, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartBlackbeltText, -1
+	object_event 11,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornMartSuperNerdText, -1
 
 BlackthornMartCooltrainermText:
 	text "You can't buy Max"

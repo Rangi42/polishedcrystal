@@ -9,26 +9,26 @@ Route10North_MapScriptHeader:
 
 	db 5 ; warp events
 	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
-	warp_event 3, 51, POWER_PLANT, 1
-	warp_event 4, 43, ROCK_TUNNEL_2F, 1
-	warp_event 8, 33, ROCK_TUNNEL_1F, 1
-	warp_event 10, 1, DIM_CAVE_5F, 1
+	warp_event  3, 51, POWER_PLANT, 1
+	warp_event  4, 43, ROCK_TUNNEL_2F, 1
+	warp_event  8, 33, ROCK_TUNNEL_1F, 1
+	warp_event 10,  1, DIM_CAVE_5F, 1
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 5, 53, SIGNPOST_JUMPTEXT, PowerPlantSignText
-	bg_event 7, 35, SIGNPOST_JUMPTEXT, RockTunnelSignText
+	bg_event  5, 53, SIGNPOST_JUMPTEXT, PowerPlantSignText
+	bg_event  7, 35, SIGNPOST_JUMPTEXT, RockTunnelSignText
 
 	db 10 ; object events
 	object_event 13, 44, SPRITE_ZAPDOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	object_event 6, 52, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	object_event  6, 52, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
 	object_event 14, 52, SPRITE_ZAPDOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
 	object_event 12, 52, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
 	object_event 12, 52, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
-	itemball_event 11, 3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
-	cuttree_event 7, 21, EVENT_ROUTE_10_CUT_TREE_1
-	cuttree_event 9, 21, EVENT_ROUTE_10_CUT_TREE_2
+	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
+	cuttree_event  7, 21, EVENT_ROUTE_10_CUT_TREE_1
+	cuttree_event  9, 21, EVENT_ROUTE_10_CUT_TREE_2
 	cuttree_event 11, 21, EVENT_ROUTE_10_CUT_TREE_3
 	cuttree_event 13, 21, EVENT_ROUTE_10_CUT_TREE_4
 

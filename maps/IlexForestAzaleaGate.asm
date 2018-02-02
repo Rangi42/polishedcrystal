@@ -4,19 +4,19 @@ IlexForestAzaleaGate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 0, 4, ILEX_FOREST, 2
-	warp_event 0, 5, ILEX_FOREST, 3
-	warp_event 9, 4, AZALEA_TOWN, 7
-	warp_event 9, 5, AZALEA_TOWN, 8
+	warp_event  0,  4, ILEX_FOREST, 2
+	warp_event  0,  5, ILEX_FOREST, 3
+	warp_event  9,  4, AZALEA_TOWN, 7
+	warp_event  9,  5, AZALEA_TOWN, 8
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 3 ; object events
-	object_event 5, 2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62c80, -1
-	object_event 1, 6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62cb0, -1
-	object_event 8, 3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide1Script, -1
+	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62c80, -1
+	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62cb0, -1
+	object_event  8,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ProfOaksAide1Script, -1
 
 ProfOaksAide1Script:
 	faceplayer

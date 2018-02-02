@@ -4,32 +4,32 @@ Route30_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 7, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
-	warp_event 17, 5, MR_POKEMONS_HOUSE, 1
+	warp_event  7, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
+	warp_event 17,  5, MR_POKEMONS_HOUSE, 1
 
 	db 0 ; coord events
 
 	db 6 ; bg events
-	bg_event 9, 43, SIGNPOST_JUMPTEXT, Route30SignText
+	bg_event  9, 43, SIGNPOST_JUMPTEXT, Route30SignText
 	bg_event 13, 29, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
-	bg_event 15, 5, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
-	bg_event 3, 21, SIGNPOST_JUMPTEXT, Route30TrainerTipsText
-	bg_event 14, 9, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
-	bg_event 5, 39, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
+	bg_event 15,  5, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
+	bg_event  3, 21, SIGNPOST_JUMPTEXT, Route30TrainerTipsText
+	bg_event 14,  9, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
+	bg_event  5, 39, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
 
 	db 12 ; object events
-	object_event 5, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
-	object_event 5, 24, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
-	object_event 5, 25, SPRITE_ROUTE_30_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
-	object_event 2, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
-	object_event 5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterMikey, -1
-	object_event 1, 7, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDon, -1
-	object_event 7, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
-	object_event 2, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
-	cuttree_event 8, 6, EVENT_ROUTE_30_CUT_TREE
+	object_event  5, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
+	object_event  5, 24, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
+	object_event  5, 25, SPRITE_ROUTE_30_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
+	object_event  2, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
+	object_event  5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerYoungsterMikey, -1
+	object_event  1,  7, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherDon, -1
+	object_event  7, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
+	object_event  2, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
+	cuttree_event  8,  6, EVENT_ROUTE_30_CUT_TREE
 	fruittree_event 10, 39, FRUITTREE_ROUTE_30_1, ORAN_BERRY
-	fruittree_event 11, 5, FRUITTREE_ROUTE_30_2, PECHA_BERRY
-	itemball_event 8, 35, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
+	fruittree_event 11,  5, FRUITTREE_ROUTE_30_2, PECHA_BERRY
+	itemball_event  8, 35, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
 	const_def 1 ; object constants
 	const ROUTE30_YOUNGSTER1

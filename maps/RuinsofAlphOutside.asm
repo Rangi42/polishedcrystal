@@ -7,18 +7,18 @@ RuinsofAlphOutside_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
 	db 12 ; warp events
-	warp_event 4, 23, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
+	warp_event  4, 23, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
 	warp_event 16, 13, RUINS_OF_ALPH_KABUTO_CHAMBER, 1
-	warp_event 4, 35, RUINS_OF_ALPH_OMANYTE_CHAMBER, 1
+	warp_event  4, 35, RUINS_OF_ALPH_OMANYTE_CHAMBER, 1
 	warp_event 18, 39, RUINS_OF_ALPH_AERODACTYL_CHAMBER, 1
 	warp_event 12, 19, RUINS_OF_ALPH_ENTRANCE_CHAMBER, 1
 	warp_event 19, 17, RUINS_OF_ALPH_RESEARCH_CENTER, 1
-	warp_event 8, 25, UNION_CAVE_B1F_NORTH, 1
-	warp_event 8, 33, UNION_CAVE_B1F_NORTH, 2
-	warp_event 3, 5, ROUTE_36_RUINS_OF_ALPH_GATE, 3
+	warp_event  8, 25, UNION_CAVE_B1F_NORTH, 1
+	warp_event  8, 33, UNION_CAVE_B1F_NORTH, 2
+	warp_event  3,  5, ROUTE_36_RUINS_OF_ALPH_GATE, 3
 	warp_event 15, 26, ROUTE_32_RUINS_OF_ALPH_GATE, 1
 	warp_event 15, 27, ROUTE_32_RUINS_OF_ALPH_GATE, 2
-	warp_event 10, 9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
+	warp_event 10,  9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
 
 	db 2 ; coord events
 	coord_event 13, 20, 1, UnknownScript_0x58031
@@ -28,23 +28,23 @@ RuinsofAlphOutside_MapScriptHeader:
 	bg_event 18, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58325
 	bg_event 14, 22, SIGNPOST_JUMPTEXT, UnknownText_0x58342
 	bg_event 20, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58362
-	bg_event 10, 9, SIGNPOST_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
-	bg_event 4, 13, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
+	bg_event 10,  9, SIGNPOST_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
+	bg_event  4, 13, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
 	db 13 ; object events
 	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	object_event 18, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
-	object_event 6, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
-	object_event 5, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuperNerdStan, -1
+	object_event  6, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNathan, -1
+	object_event  5, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSuperNerdStan, -1
 	object_event 15, 23, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	object_event 14, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	object_event 16, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	smashrock_event 7, 10
-	smashrock_event 8, 10
-	smashrock_event 4, 12
-	smashrock_event 5, 13
-	smashrock_event 7, 13
-	smashrock_event 8, 15
+	smashrock_event  7, 10
+	smashrock_event  8, 10
+	smashrock_event  4, 12
+	smashrock_event  5, 13
+	smashrock_event  7, 13
+	smashrock_event  8, 15
 
 	const_def 1 ; object constants
 	const RUINSOFALPHOUTSIDE_SCIENTIST1

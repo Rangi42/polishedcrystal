@@ -4,17 +4,17 @@ DarkCaveBlackthornEntrance_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 23, 3, ROUTE_45, 1
-	warp_event 3, 25, DARK_CAVE_VIOLET_ENTRANCE, 2
+	warp_event 23,  3, ROUTE_45, 1
+	warp_event  3, 25, DARK_CAVE_VIOLET_ENTRANCE, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 3 ; object events
-	object_event 7, 3, SPRITE_PHARMACIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
+	object_event  7,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
 	itemball_event 21, 24, REVIVE, 1, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
-	tmhmball_event 7, 22, TM_DARK_PULSE, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE
+	tmhmball_event  7, 22, TM_DARK_PULSE, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE
 
 PharmacistScript_0x18c720:
 	faceplayer

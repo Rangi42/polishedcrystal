@@ -6,10 +6,10 @@ MountMortar1FInside_MapScriptHeader:
 	db 6 ; warp events
 	warp_event 11, 47, MOUNT_MORTAR_1F_OUTSIDE, 5
 	warp_event 29, 47, MOUNT_MORTAR_1F_OUTSIDE, 6
-	warp_event 5, 39, MOUNT_MORTAR_1F_OUTSIDE, 8
+	warp_event  5, 39, MOUNT_MORTAR_1F_OUTSIDE, 8
 	warp_event 33, 41, MOUNT_MORTAR_1F_OUTSIDE, 9
-	warp_event 3, 19, MOUNT_MORTAR_B1F, 1
-	warp_event 9, 9, MOUNT_MORTAR_2F_INSIDE, 2
+	warp_event  3, 19, MOUNT_MORTAR_B1F, 1
+	warp_event  9,  9, MOUNT_MORTAR_2F_INSIDE, 2
 
 	db 0 ; coord events
 
@@ -25,7 +25,7 @@ MountMortar1FInside_MapScriptHeader:
 	itemball_event 35, 19, NUGGET, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_NUGGET
 	object_event 33, 43, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacMiller, -1
 	object_event 24, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdMarkus, -1
-	itemball_event 8, 16, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
+	itemball_event  8, 16, IRON, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_IRON
 	itemball_event 17, 17, ULTRA_BALL, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_ULTRA_BALL
 
 TrainerPokemaniacMiller:

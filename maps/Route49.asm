@@ -4,7 +4,7 @@ Route49_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 7, 5, VALENCIA_PORT, 1
+	warp_event  7,  5, VALENCIA_PORT, 1
 
 	db 0 ; coord events
 
@@ -12,13 +12,13 @@ Route49_MapScriptHeader:
 	bg_event 31, 11, SIGNPOST_JUMPTEXT, Route49SignText
 
 	db 11 ; object events
-	object_event 5, 12, SPRITE_LADY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49LadyText, -1
+	object_event  5, 12, SPRITE_LADY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49LadyText, -1
 	object_event 31, 17, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route49YoungsterText, -1
-	object_event 15, 8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerSightseermHari, -1
+	object_event 15,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerSightseermHari, -1
 	object_event 12, 16, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerTamerJordan, -1
 	object_event 25, 19, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerAromaLadyPeony, -1
-	object_event 25, 7, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristmGeddy, -1
-	itemball_event 21, 6, WHITE_HERB, 1, EVENT_ROUTE_49_WHITE_HERB
+	object_event 25,  7, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristmGeddy, -1
+	itemball_event 21,  6, WHITE_HERB, 1, EVENT_ROUTE_49_WHITE_HERB
 	itemball_event 18, 20, CALCIUM, 1, EVENT_ROUTE_49_CALCIUM
 	fruittree_event 29, 14, FRUITTREE_ROUTE_49, LUM_BERRY
 	cuttree_event 26, 12, EVENT_ROUTE_49_CUT_TREE_1

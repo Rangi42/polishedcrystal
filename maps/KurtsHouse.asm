@@ -5,26 +5,26 @@ KurtsHouse_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
 	db 2 ; warp events
-	warp_event 3, 7, AZALEA_TOWN, 4
-	warp_event 4, 7, AZALEA_TOWN, 4
+	warp_event  3,  7, AZALEA_TOWN, 4
+	warp_event  4,  7, AZALEA_TOWN, 4
 
 	db 0 ; coord events
 
 	db 7 ; bg events
-	bg_event 6, 1, SIGNPOST_JUMPSTD, radio2
-	bg_event 8, 0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
-	bg_event 9, 0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
-	bg_event 5, 1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	bg_event 2, 1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	bg_event 3, 1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	bg_event 4, 1, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
+	bg_event  6,  1, SIGNPOST_JUMPSTD, radio2
+	bg_event  8,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
+	bg_event  9,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
+	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	bg_event  2,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	bg_event  3,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	bg_event  4,  1, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
 
 	db 5 ; object events
-	object_event 3, 2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
-	object_event 5, 3, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
-	object_event 14, 3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
-	object_event 11, 4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	object_event 6, 3, SPRITE_SLOWPOKE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
+	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
+	object_event  5,  3, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
+	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
+	object_event 11,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
+	object_event  6,  3, SPRITE_SLOWPOKE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
 	const_def 1 ; object constants
 	const KURTSHOUSE_KURT1

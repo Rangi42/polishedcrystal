@@ -8,20 +8,20 @@ Route9_MapScriptHeader:
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 21, 7, SIGNPOST_JUMPTEXT, Route9SignText
+	bg_event 21,  7, SIGNPOST_JUMPTEXT, Route9SignText
 	bg_event 51, 15, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_9_HIDDEN_ETHER
 	bg_event 42, 12, SIGNPOST_ITEM + SOFT_SAND, EVENT_ROUTE_9_HIDDEN_SOFT_SAND
 
 	db 9 ; object events
 	object_event 25, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperDean, -1
-	object_event 43, 8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerHeidi, -1
-	object_event 15, 4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1
+	object_event 43,  8, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerHeidi, -1
+	object_event 15,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperSid, -1
 	object_event 16, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerEdna, -1
-	object_event 34, 3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerTim, -1
+	object_event 34,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerTim, -1
 	object_event 44, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSidney, -1
-	itemball_event 26, 2, MAX_POTION, 1, EVENT_ROUTE_9_MAX_POTION
-	tmhmball_event 45, 2, TM_FLASH_CANNON, EVENT_ROUTE_9_TM_FLASH_CANNON
-	cuttree_event 4, 8, EVENT_ROUTE_9_CUT_TREE
+	itemball_event 26,  2, MAX_POTION, 1, EVENT_ROUTE_9_MAX_POTION
+	tmhmball_event 45,  2, TM_FLASH_CANNON, EVENT_ROUTE_9_TM_FLASH_CANNON
+	cuttree_event  4,  8, EVENT_ROUTE_9_CUT_TREE
 
 TrainerCamperDean:
 	trainer CAMPER, DEAN, EVENT_BEAT_CAMPER_DEAN, CamperDeanSeenText, CamperDeanBeatenText, 0, CamperDeanScript

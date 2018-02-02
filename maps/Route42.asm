@@ -4,40 +4,40 @@ Route42_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 0, 8, ROUTE_42_ECRUTEAK_GATE, 3
-	warp_event 0, 9, ROUTE_42_ECRUTEAK_GATE, 4
-	warp_event 10, 5, MOUNT_MORTAR_1F_OUTSIDE, 1
-	warp_event 28, 9, MOUNT_MORTAR_1F_OUTSIDE, 2
-	warp_event 46, 7, MOUNT_MORTAR_1F_OUTSIDE, 3
+	warp_event  0,  8, ROUTE_42_ECRUTEAK_GATE, 3
+	warp_event  0,  9, ROUTE_42_ECRUTEAK_GATE, 4
+	warp_event 10,  5, MOUNT_MORTAR_1F_OUTSIDE, 1
+	warp_event 28,  9, MOUNT_MORTAR_1F_OUTSIDE, 2
+	warp_event 46,  7, MOUNT_MORTAR_1F_OUTSIDE, 3
 
 	db 6 ; coord events
-	coord_event 12, 6, 1, Route42LyraScript1
-	coord_event 12, 7, 1, Route42LyraScript2
-	coord_event 12, 8, 1, Route42LyraScript3
-	coord_event 12, 9, 1, Route42LyraScript4
-	coord_event 10, 6, 1, Route42LyraScript5
+	coord_event 12,  6, 1, Route42LyraScript1
+	coord_event 12,  7, 1, Route42LyraScript2
+	coord_event 12,  8, 1, Route42LyraScript3
+	coord_event 12,  9, 1, Route42LyraScript4
+	coord_event 10,  6, 1, Route42LyraScript5
 	coord_event 24, 14, 2, Route42SuicuneScript
 
 	db 5 ; bg events
-	bg_event 4, 10, SIGNPOST_JUMPTEXT, Route42Sign1Text
-	bg_event 7, 5, SIGNPOST_JUMPTEXT, MtMortarSign1Text
-	bg_event 45, 9, SIGNPOST_JUMPTEXT, MtMortarSign2Text
-	bg_event 54, 8, SIGNPOST_JUMPTEXT, Route42Sign2Text
+	bg_event  4, 10, SIGNPOST_JUMPTEXT, Route42Sign1Text
+	bg_event  7,  5, SIGNPOST_JUMPTEXT, MtMortarSign1Text
+	bg_event 45,  9, SIGNPOST_JUMPTEXT, MtMortarSign2Text
+	bg_event 54,  8, SIGNPOST_JUMPTEXT, Route42Sign2Text
 	bg_event 16, 11, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
 	db 13 ; object events
 	object_event 26, 16, SPRITE_ROUTE_30_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
-	object_event 10, 5, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
+	object_event 10,  5, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
-	object_event 51, 9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerBenjamin, -1
+	object_event 51,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerBenjamin, -1
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN
 	fruittree_event 28, 16, FRUITTREE_ROUTE_42_2, GRN_APRICORN
 	fruittree_event 29, 16, FRUITTREE_ROUTE_42_3, YLW_APRICORN
-	itemball_event 6, 4, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
-	itemball_event 33, 8, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
-	object_event 2, 8, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	object_event 2, 9, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	itemball_event  6,  4, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
+	itemball_event 33,  8, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
+	object_event  2,  8, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	object_event  2,  9, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	object_event 21, 20, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	const_def 1 ; object constants

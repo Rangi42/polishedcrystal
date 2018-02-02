@@ -4,15 +4,15 @@ Route26DayofWeekSiblingsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, ROUTE_26, 3
-	warp_event 3, 7, ROUTE_26, 3
+	warp_event  2,  7, ROUTE_26, 3
+	warp_event  3,  7, ROUTE_26, 3
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 3, 3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1
 
 BookScript_0x7b1e4:
 	opentext

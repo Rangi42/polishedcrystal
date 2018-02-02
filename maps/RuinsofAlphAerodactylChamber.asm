@@ -6,21 +6,21 @@ RuinsofAlphAerodactylChamber_MapScriptHeader:
 	callback MAPCALLBACK_TILES, UnknownScript_0x58db9
 
 	db 5 ; warp events
-	warp_event 3, 9, RUINS_OF_ALPH_OUTSIDE, 4
-	warp_event 4, 9, RUINS_OF_ALPH_OUTSIDE, 4
-	warp_event 3, 3, RUINS_OF_ALPH_INNER_CHAMBER, 8
-	warp_event 4, 3, RUINS_OF_ALPH_INNER_CHAMBER, 9
-	warp_event 4, 0, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 1
+	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 4
+	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 4
+	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 8
+	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 9
+	warp_event  4,  0, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 1
 
 	db 0 ; coord events
 
 	db 6 ; bg events
-	bg_event 2, 3, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
-	bg_event 5, 3, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
-	bg_event 3, 2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
-	bg_event 4, 2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
-	bg_event 3, 0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
-	bg_event 4, 0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
+	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
+	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
+	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
+	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
 
 	db 0 ; object events
 

@@ -4,17 +4,17 @@ EcruteakCherishBallHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, ECRUTEAK_CITY, 16
-	warp_event 4, 7, ECRUTEAK_CITY, 16
+	warp_event  3,  7, ECRUTEAK_CITY, 16
+	warp_event  4,  7, ECRUTEAK_CITY, 16
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 2, 1, SIGNPOST_JUMPSTD, radio2
+	bg_event  2,  1, SIGNPOST_JUMPSTD, radio2
 
 	db 2 ; object events
-	object_event 2, 3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCherishBallHouseGrampsScript, -1
-	object_event 5, 4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCherishBallHouseGrannyText, -1
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakCherishBallHouseGrampsScript, -1
+	object_event  5,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCherishBallHouseGrannyText, -1
 
 EcruteakCherishBallHouseGrampsScript:
 	checkevent EVENT_GOT_CHERISH_BALL_FROM_ECRUTEAK

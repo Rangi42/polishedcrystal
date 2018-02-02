@@ -4,15 +4,15 @@ OlivineGoodRodHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, OLIVINE_CITY, 5
-	warp_event 3, 7, OLIVINE_CITY, 5
+	warp_event  2,  7, OLIVINE_CITY, 5
+	warp_event  3,  7, OLIVINE_CITY, 5
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 2, 3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoodRodGuru, -1
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoodRodGuru, -1
 
 GoodRodGuru:
 	faceplayer

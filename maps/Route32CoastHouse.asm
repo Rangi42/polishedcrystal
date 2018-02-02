@@ -4,15 +4,15 @@ Route32CoastHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, ROUTE_32_COAST, 2
-	warp_event 3, 7, ROUTE_32_COAST, 2
+	warp_event  2,  7, ROUTE_32_COAST, 2
+	warp_event  3,  7, ROUTE_32_COAST, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 2, 2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GourmetManiacScript, -1
+	object_event  2,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GourmetManiacScript, -1
 
 GourmetManiacScript:
 	faceplayer

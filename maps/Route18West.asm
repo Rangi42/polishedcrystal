@@ -5,16 +5,16 @@ Route18West_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
 	db 2 ; warp events
-	warp_event 19, 6, ROUTE_18_GATE, 1
-	warp_event 19, 7, ROUTE_18_GATE, 2
+	warp_event 19,  6, ROUTE_18_GATE, 1
+	warp_event 19,  7, ROUTE_18_GATE, 2
 
 	db 1 ; coord events
-	coord_event 12, 0, 0, Route18WestBikeCheckScript
+	coord_event 12,  0, 0, Route18WestBikeCheckScript
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 6, 2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
+	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE

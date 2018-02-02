@@ -5,14 +5,14 @@ SilverCaveRoom3_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, SilverCaveRoom3DailyRedRematchCallback
 
 	db 1 ; warp events
-	warp_event 9, 29, SILVER_CAVE_ROOM_2, 2
+	warp_event  9, 29, SILVER_CAVE_ROOM_2, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 10, 6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
+	object_event 10,  6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
 
 	const_def 1 ; object constants
 	const SILVERCAVEROOM3_RED

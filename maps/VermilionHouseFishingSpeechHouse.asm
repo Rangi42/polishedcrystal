@@ -4,16 +4,16 @@ VermilionHouseFishingSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, VERMILION_CITY, 1
-	warp_event 3, 7, VERMILION_CITY, 1
+	warp_event  2,  7, VERMILION_CITY, 1
+	warp_event  3,  7, VERMILION_CITY, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 3, 0, SIGNPOST_JUMPTEXT, FishingDudesHousePhotoText
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, FishingDudesHousePhotoText
 
 	db 1 ; object events
-	object_event 2, 4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
+	object_event  2,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
 
 FishingDudeText:
 	text "I am the Fishing"

@@ -6,20 +6,20 @@ CinnabarIsland_MapScriptHeader:
 
 	db 3 ; warp events
 	warp_event 11, 15, CINNABAR_POKECENTER_1F, 1
-	warp_event 18, 9, CINNABAR_VOLCANO_1F, 1
-	warp_event 7, 7, POKEMON_MANSION_1F, 1
+	warp_event 18,  9, CINNABAR_VOLCANO_1F, 1
+	warp_event  7,  7, POKEMON_MANSION_1F, 1
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 9, 15, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
-	bg_event 9, 11, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
+	bg_event  9, 15, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
+	bg_event  9, 11, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
 	bg_event 21, 11, SIGNPOST_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
 	bg_event 11, 12, SIGNPOST_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
 
 	db 2 ; object events
 	object_event 20, 14, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
-	itemball_event 22, 2, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
+	itemball_event 22,  2, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 
 	const_def 1 ; object constants
 	const CINNABARISLAND_BLUE

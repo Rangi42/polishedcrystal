@@ -6,12 +6,12 @@ DimCave4F_MapScriptHeader:
 	callback MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
 	db 6 ; warp events
-	warp_event 2, 16, DIM_CAVE_5F, 2
+	warp_event  2, 16, DIM_CAVE_5F, 2
 	warp_event 27, 29, DIM_CAVE_5F, 3
 	warp_event 27, 24, DIM_CAVE_5F, 4 ; hole
-	warp_event 5, 5, DIM_CAVE_3F, 1
+	warp_event  5,  5, DIM_CAVE_3F, 1
 	warp_event 28, 22, DIM_CAVE_3F, 2
-	warp_event 14, 7, DIM_CAVE_3F, 3
+	warp_event 14,  7, DIM_CAVE_3F, 3
 
 	db 0 ; coord events
 
@@ -22,12 +22,12 @@ DimCave4F_MapScriptHeader:
 	db 8 ; object events
 	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
 	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
-	object_event 5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
-	object_event 12, 2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
+	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 0, TrainerScientistJoseph, -1
+	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistNigel, -1
 	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
-	itemball_event 17, 2, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
-	itemball_event 27, 8, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
-	itemball_event 6, 23, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
+	itemball_event 17,  2, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
+	itemball_event 27,  8, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
+	itemball_event  6, 23, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
 	const_def 1 ; object constants
 	const DIMCAVE4F_BOULDER

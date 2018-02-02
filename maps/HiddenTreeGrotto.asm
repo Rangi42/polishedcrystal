@@ -5,17 +5,17 @@ HiddenTreeGrotto_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, HiddenGrottoCallback
 
 	db 2 ; warp events
-	warp_event 4, 15, HIDDEN_TREE_GROTTO, -1
-	warp_event 5, 15, HIDDEN_TREE_GROTTO, -1
+	warp_event  4, 15, HIDDEN_TREE_GROTTO, -1
+	warp_event  5, 15, HIDDEN_TREE_GROTTO, -1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 4, 4, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
+	bg_event  4,  4, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
 
 	db 2 ; object events
-	object_event 4, 4, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS
-	object_event 4, 4, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_RECEIVED_BALLS_FROM_KURT
+	object_event  4,  4, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS
+	object_event  4,  4, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_RECEIVED_BALLS_FROM_KURT
 
 	const_def 1 ; object constants
 	const HIDDENTREEGROTTO_POKEMON

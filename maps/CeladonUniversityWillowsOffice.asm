@@ -4,21 +4,21 @@ CeladonUniversityWillowsOffice_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 5, CELADON_UNIVERSITY_2F, 3
-	warp_event 4, 5, CELADON_UNIVERSITY_2F, 3
+	warp_event  3,  5, CELADON_UNIVERSITY_2F, 3
+	warp_event  4,  5, CELADON_UNIVERSITY_2F, 3
 
 	db 0 ; coord events
 
 	db 5 ; bg events
-	bg_event 0, 0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
-	bg_event 1, 0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
-	bg_event 2, 1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
-	bg_event 3, 1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
-	bg_event 5, 2, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
+	bg_event  0,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	bg_event  1,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	bg_event  2,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
+	bg_event  3,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
+	bg_event  5,  2, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
 
 	db 2 ; object events
-	object_event 0, 2, SPRITE_WILLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeWillowText, -1
-	object_event 4, 3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
+	object_event  0,  2, SPRITE_WILLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeWillowText, -1
+	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
 
 CeladonUniversityWillowsOfficeWillowText:
 	text "Hello there!"

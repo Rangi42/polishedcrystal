@@ -4,23 +4,23 @@ Route18Gate_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 0, 5, ROUTE_18_WEST, 1
-	warp_event 0, 6, ROUTE_18_WEST, 2
-	warp_event 9, 5, ROUTE_18_EAST, 1
-	warp_event 9, 6, ROUTE_18_EAST, 2
-	warp_event 8, 8, ROUTE_18_GATE_2F, 1
+	warp_event  0,  5, ROUTE_18_WEST, 1
+	warp_event  0,  6, ROUTE_18_WEST, 2
+	warp_event  9,  5, ROUTE_18_EAST, 1
+	warp_event  9,  6, ROUTE_18_EAST, 2
+	warp_event  8,  8, ROUTE_18_GATE_2F, 1
 
 	db 5 ; coord events
-	coord_event 5, 3, 0, UnknownScript_0x73611
-	coord_event 5, 4, 0, UnknownScript_0x73611
-	coord_event 5, 5, 0, Route18GateStepUpOneTrigger
-	coord_event 5, 6, 0, Route18GateStepUpTwoTrigger
-	coord_event 5, 7, 0, Route18GateStepUpThreeTrigger
+	coord_event  5,  3, 0, UnknownScript_0x73611
+	coord_event  5,  4, 0, UnknownScript_0x73611
+	coord_event  5,  5, 0, Route18GateStepUpOneTrigger
+	coord_event  5,  6, 0, Route18GateStepUpTwoTrigger
+	coord_event  5,  7, 0, Route18GateStepUpThreeTrigger
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 5, 1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
 
 	const_def 1 ; object constants
 	const ROUTE18GATE_OFFICER

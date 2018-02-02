@@ -5,7 +5,7 @@ Route48_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
 	db 1 ; warp events
-	warp_event 11, 5, YELLOW_FOREST_GATE, 3
+	warp_event 11,  5, YELLOW_FOREST_GATE, 3
 
 	db 2 ; coord events
 	coord_event 20, 12, 0, Route48JessieJamesScript1
@@ -15,10 +15,10 @@ Route48_MapScriptHeader:
 	bg_event 27, 11, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
 
 	db 4 ; object events
-	object_event 11, 6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
+	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
 	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
 	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
-	itemball_event 4, 13, NUGGET, 1, EVENT_ROUTE_48_NUGGET
+	itemball_event  4, 13, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
 	const_def 1 ; object constants
 	const ROUTE48_ARCHER

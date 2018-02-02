@@ -4,34 +4,34 @@ MurkySwamp_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 7, 35, STORMY_BEACH, 1
-	warp_event 8, 35, STORMY_BEACH, 2
-	warp_event 36, 5, UNION_CAVE_B1F_SOUTH, 3
+	warp_event  7, 35, STORMY_BEACH, 1
+	warp_event  8, 35, STORMY_BEACH, 2
+	warp_event 36,  5, UNION_CAVE_B1F_SOUTH, 3
 
 	db 0 ; coord events
 
 	db 4 ; bg events
 	bg_event 20, 10, SIGNPOST_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
 	bg_event 22, 13, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF
-	bg_event 5, 23, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
+	bg_event  5, 23, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
 	bg_event 40, 33, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
 
 	db 15 ; object events
 	object_event 40, 26, SPRITE_CHERYL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
 	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherOscar, -1
 	object_event 17, 31, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherCallum, -1
-	object_event 25, 7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDavid, -1
+	object_event 25,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDavid, -1
 	object_event 27, 33, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacClive, -1
 	object_event 37, 17, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacMatilda, -1
-	object_event 6, 22, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherOleg, -1
-	object_event 3, 8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDundee, -1
-	object_event 4, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, MurkySwampYoungsterText, -1
-	itemball_event 14, 9, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
+	object_event  6, 22, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherOleg, -1
+	object_event  3,  8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDundee, -1
+	object_event  4, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, MurkySwampYoungsterText, -1
+	itemball_event 14,  9, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
 	itemball_event 10, 11, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
 	itemball_event 43, 23, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
 	itemball_event 14, 34, MULCH, 1, EVENT_MURKY_SWAMP_MULCH
-	cuttree_event 2, 14, EVENT_MURKY_SWAMP_CUT_TREE_1
-	cuttree_event 6, 19, EVENT_MURKY_SWAMP_CUT_TREE_2
+	cuttree_event  2, 14, EVENT_MURKY_SWAMP_CUT_TREE_1
+	cuttree_event  6, 19, EVENT_MURKY_SWAMP_CUT_TREE_2
 
 	const_def 1 ; object constants
 	const MURKYSWAMP_CHERYL

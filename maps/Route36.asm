@@ -5,35 +5,35 @@ Route36_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route36ArthurCallback
 
 	db 6 ; warp events
-	warp_event 22, 8, ROUTE_36_NATIONAL_PARK_GATE, 3
-	warp_event 22, 9, ROUTE_36_NATIONAL_PARK_GATE, 4
+	warp_event 22,  8, ROUTE_36_NATIONAL_PARK_GATE, 3
+	warp_event 22,  9, ROUTE_36_NATIONAL_PARK_GATE, 4
 	warp_event 51, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 1
 	warp_event 52, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 2
-	warp_event 61, 8, ROUTE_36_VIOLET_GATE, 1
-	warp_event 61, 9, ROUTE_36_VIOLET_GATE, 2
+	warp_event 61,  8, ROUTE_36_VIOLET_GATE, 1
+	warp_event 61,  9, ROUTE_36_VIOLET_GATE, 2
 
 	db 2 ; coord events
-	coord_event 24, 7, 1, Route36SuicuneScript
-	coord_event 26, 7, 1, Route36SuicuneScript
+	coord_event 24,  7, 1, Route36SuicuneScript
+	coord_event 26,  7, 1, Route36SuicuneScript
 
 	db 4 ; bg events
-	bg_event 33, 1, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
+	bg_event 33,  1, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
 	bg_event 49, 11, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
-	bg_event 59, 7, SIGNPOST_JUMPTEXT, Route36SignText
-	bg_event 25, 7, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
+	bg_event 59,  7, SIGNPOST_JUMPTEXT, Route36SignText
+	bg_event 25,  7, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
 
 	db 11 ; object events
-	object_event 39, 9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
-	object_event 53, 6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
+	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
+	object_event 53,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
 	object_event 37, 12, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
-	object_event 25, 6, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
-	object_event 30, 6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route36CooltrainerfChiaraScript, -1
+	object_event 25,  6, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
+	object_event 30,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route36CooltrainerfChiaraScript, -1
 	object_event 24, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicMark, -1
 	object_event 35, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
-	object_event 57, 9, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
-	object_event 48, 9, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
-	fruittree_event 25, 4, FRUITTREE_ROUTE_36, RAWST_BERRY
-	object_event 50, 5, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
+	object_event 57,  9, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
+	object_event 48,  9, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
+	fruittree_event 25,  4, FRUITTREE_ROUTE_36, RAWST_BERRY
+	object_event 50,  5, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 
 	const_def 1 ; object constants
 	const ROUTE36_WEIRD_TREE

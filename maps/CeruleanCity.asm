@@ -5,17 +5,17 @@ CeruleanCity_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
 
 	db 11 ; warp events
-	warp_event 7, 11, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
+	warp_event  7, 11, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
 	warp_event 28, 13, CERULEAN_POLICE_STATION, 1
 	warp_event 13, 15, CERULEAN_TRADE_SPEECH_HOUSE, 1
 	warp_event 19, 17, CERULEAN_POKECENTER_1F, 1
 	warp_event 30, 19, CERULEAN_GYM, 1
 	warp_event 25, 25, CERULEAN_MART, 2
-	warp_event 2, 9, CERULEAN_CAVE_1F, 1
+	warp_event  2,  9, CERULEAN_CAVE_1F, 1
 	warp_event 14, 25, CERULEAN_BIKE_SHOP, 1
 	warp_event 15, 11, CERULEAN_BERRY_POWDER_HOUSE, 1
 	warp_event 19, 25, CERULEAN_COUPLE_HOUSE, 1
-	warp_event 29, 5, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
+	warp_event 29,  5, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
 	db 0 ; coord events
 
@@ -24,18 +24,18 @@ CeruleanCity_MapScriptHeader:
 	bg_event 27, 21, SIGNPOST_JUMPTEXT, CeruleanGymSignText
 	bg_event 11, 25, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
 	bg_event 25, 13, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
-	bg_event 23, 4, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
+	bg_event 23,  4, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
 	bg_event 11, 19, SIGNPOST_JUMPTEXT, CeruleanBubblerText
-	bg_event 4, 13, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
+	bg_event  4, 13, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 	db 8 ; object events
 	object_event 21, 20, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
-	object_event 6, 8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
+	object_event  6,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	object_event 30, 22, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
 	object_event 23, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
 	object_event 20, 20, SPRITE_SLOWBRO, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWBRO, CeruleanCitySlowbroText, -1
 	object_event 14, 18, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
-	object_event 2, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
+	object_event  2, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
 
 	const_def 1 ; object constants

@@ -6,37 +6,37 @@ CinnabarVolcano1F_MapScriptHeader:
 
 	db 10 ; warp events
 	warp_event 13, 25, CINNABAR_ISLAND, 2
-	warp_event 5, 13, CINNABAR_VOLCANO_B1F, 1
+	warp_event  5, 13, CINNABAR_VOLCANO_B1F, 1
 	warp_event 14, 20, CINNABAR_VOLCANO_B1F, 2
 	warp_event 25, 19, CINNABAR_VOLCANO_B1F, 3
-	warp_event 22, 8, CINNABAR_VOLCANO_B1F, 4
-	warp_event 8, 21, CINNABAR_VOLCANO_B1F, 8
+	warp_event 22,  8, CINNABAR_VOLCANO_B1F, 4
+	warp_event  8, 21, CINNABAR_VOLCANO_B1F, 8
 	warp_event 20, 19, CINNABAR_VOLCANO_B1F, 9
-	warp_event 18, 9, CINNABAR_VOLCANO_B1F, 10
-	warp_event 10, 7, CINNABAR_VOLCANO_B1F, 11
-	warp_event 15, 3, CINNABAR_VOLCANO_B1F, 12
+	warp_event 18,  9, CINNABAR_VOLCANO_B1F, 10
+	warp_event 10,  7, CINNABAR_VOLCANO_B1F, 11
+	warp_event 15,  3, CINNABAR_VOLCANO_B1F, 12
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 13, 1, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
+	bg_event 13,  1, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
 
 	db 15 ; object events
-	object_event 4, 9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
-	strengthboulder_event 6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
+	object_event  4,  9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
+	strengthboulder_event  6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
 	strengthboulder_event 15, 22, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
-	strengthboulder_event 19, 4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
-	strengthboulder_event 5, 4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
+	strengthboulder_event 19,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
+	strengthboulder_event  5,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	strengthboulder_event 23, 16
-	object_event 2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistOskar, -1
+	object_event  2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistOskar, -1
 	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdLuis, -1
-	smashrock_event 5, 18
+	smashrock_event  5, 18
 	smashrock_event 11, 21
 	smashrock_event 35, 23
 	smashrock_event 19, 11
 	smashrock_event 25, 12
 	smashrock_event 13, 2
-	smashrock_event 8, 4
+	smashrock_event  8, 4
 
 	const_def 1 ; object constants
 	const CINNABARVOLCANO1F_BUCK

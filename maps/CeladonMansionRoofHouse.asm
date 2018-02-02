@@ -4,15 +4,15 @@ CeladonMansionRoofHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, CELADON_MANSION_ROOF, 3
-	warp_event 3, 7, CELADON_MANSION_ROOF, 3
+	warp_event  2,  7, CELADON_MANSION_ROOF, 3
+	warp_event  3,  7, CELADON_MANSION_ROOF, 3
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 3, 2, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
+	object_event  3,  2, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
 
 CeladonMansionRoofHousePharmacistScript:
 	checkevent EVENT_GOT_TM03_CURSE

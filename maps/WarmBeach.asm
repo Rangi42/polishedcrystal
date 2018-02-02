@@ -5,8 +5,8 @@ WarmBeach_MapScriptHeader:
 
 	db 3 ; warp events
 	warp_event 15, 13, WARM_BEACH_SHACK, 1
-	warp_event 8, 5, SHAMOUTI_TUNNEL, 2
-	warp_event 3, 8, WARM_BEACH_HOUSE, 1
+	warp_event  8,  5, SHAMOUTI_TUNNEL, 2
+	warp_event  3,  8, WARM_BEACH_HOUSE, 1
 
 	db 0 ; coord events
 
@@ -14,16 +14,16 @@ WarmBeach_MapScriptHeader:
 	bg_event 17, 14, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
 	bg_event 18, 20, SIGNPOST_JUMPTEXT, WarmBeachShrineText
 	bg_event 19, 20, SIGNPOST_JUMPTEXT, WarmBeachShrineText
-	bg_event 6, 20, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
+	bg_event  6, 20, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
 	db 7 ; object events
-	object_event 11, 8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
-	object_event 4, 12, SPRITE_LADY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
+	object_event 11,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
+	object_event  4, 12, SPRITE_LADY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
 	object_event 11, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1
 	object_event 22, 20, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainerfText, -1
 	object_event 17, 21, SPRITE_SLOWKING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
 	object_event 11, 20, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
-	object_event 6, 23, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachLadyText, -1
+	object_event  6, 23, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachLadyText, -1
 
 TrainerSightseermGareth:
 	trainer SIGHTSEERM, GARETH, EVENT_BEAT_SIGHTSEERM_GARETH, .SeenText, .BeatenText, 0, .Script

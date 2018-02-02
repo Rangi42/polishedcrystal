@@ -4,20 +4,20 @@ Route3PokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, ROUTE_3, 2
-	warp_event 6, 7, ROUTE_3, 2
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, ROUTE_3, 2
+	warp_event  6,  7, ROUTE_3, 2
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalKarenScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalKarenScript
 
 	db 4 ; object events
-	pc_nurse_event 5, 1
-	object_event 9, 4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route3PokeCenter1FPokefanM1Text, -1
-	object_event 2, 5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route3PokeCenter1FPokefanM2Text, -1
-	object_event 11, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route3PokeCenter1FYoungsterText, -1
+	pc_nurse_event  5, 1
+	object_event  9,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route3PokeCenter1FPokefanM1Text, -1
+	object_event  2,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route3PokeCenter1FPokefanM2Text, -1
+	object_event 11,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route3PokeCenter1FYoungsterText, -1
 
 PokemonJournalKarenScript:
 	setflag ENGINE_READ_KAREN_JOURNAL

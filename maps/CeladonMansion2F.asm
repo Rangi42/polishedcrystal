@@ -4,17 +4,17 @@ CeladonMansion2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 0, 0, CELADON_MANSION_1F, 4
-	warp_event 1, 0, CELADON_MANSION_3F, 2
-	warp_event 6, 0, CELADON_MANSION_3F, 3
-	warp_event 7, 0, CELADON_MANSION_1F, 5
+	warp_event  0,  0, CELADON_MANSION_1F, 4
+	warp_event  1,  0, CELADON_MANSION_3F, 2
+	warp_event  6,  0, CELADON_MANSION_3F, 3
+	warp_event  7,  0, CELADON_MANSION_1F, 5
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 0, 3, SIGNPOST_JUMPTEXT, CeladonMansion2FComputerText
-	bg_event 5, 8, SIGNPOST_UP, CeladonMansion2FSign
-	bg_event 2, 3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  0,  3, SIGNPOST_JUMPTEXT, CeladonMansion2FComputerText
+	bg_event  5,  8, SIGNPOST_UP, CeladonMansion2FSign
+	bg_event  2,  3, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 0 ; object events
 

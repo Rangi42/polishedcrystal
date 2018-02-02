@@ -4,8 +4,8 @@ ShamoutiHotelRoom3C_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 5, SHAMOUTI_HOTEL_3F, 3
-	warp_event 4, 5, SHAMOUTI_HOTEL_3F, 3
+	warp_event  3,  5, SHAMOUTI_HOTEL_3F, 3
+	warp_event  4,  5, SHAMOUTI_HOTEL_3F, 3
 
 	db 0 ; coord events
 

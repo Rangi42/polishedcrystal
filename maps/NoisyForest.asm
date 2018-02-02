@@ -4,32 +4,32 @@ NoisyForest_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 6, 4, ROCKY_BEACH, 2
-	warp_event 6, 5, ROCKY_BEACH, 3
+	warp_event  6,  4, ROCKY_BEACH, 2
+	warp_event  6,  5, ROCKY_BEACH, 3
 	warp_event 35, 28, SHAMOUTI_SHRINE_RUINS, 1
 	warp_event 35, 29, SHAMOUTI_SHRINE_RUINS, 2
 
 	db 0 ; coord events
 
 	db 5 ; bg events
-	bg_event 15, 9, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
+	bg_event 15,  9, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	bg_event 25, 31, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
-	bg_event 32, 2, SIGNPOST_ITEM + ULTRA_BALL, EVENT_NOISY_FOREST_HIDDEN_ULTRA_BALL
+	bg_event 32,  2, SIGNPOST_ITEM + ULTRA_BALL, EVENT_NOISY_FOREST_HIDDEN_ULTRA_BALL
 	bg_event 34, 18, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_NOISY_FOREST_HIDDEN_TINYMUSHROOM
-	bg_event 7, 29, SIGNPOST_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
+	bg_event  7, 29, SIGNPOST_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
 
 	db 15 ; object events
 	object_event 20, 19, SPRITE_ANABEL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NoisyForestAnabelScript, EVENT_NOISY_FOREST_ANABEL
 	object_event 10, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperTrent, -1
 	object_event 24, 31, SPRITE_MARILL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, NoisyForestPikabluScript, EVENT_NOISY_FOREST_PIKABLU
-	object_event 20, 4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacPierre, -1
-	object_event 4, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBug_maniacDylan, -1
+	object_event 20,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacPierre, -1
+	object_event  4, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBug_maniacDylan, -1
 	object_event 31, 17, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristfJaclyn, -1
 	object_event 12, 30, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmEzekiel, -1
 	object_event 20, 34, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerLester, -1
-	object_event 13, 6, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestTeacherText, -1
+	object_event 13,  6, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestTeacherText, -1
 	object_event 40, 15, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, NoisyForestChildText, -1
-	itemball_event 41, 2, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
+	itemball_event 41,  2, BALMMUSHROOM, 1, EVENT_NOISY_FOREST_BALMMUSHROOM
 	itemball_event 16, 28, MULCH, 1, EVENT_NOISY_FOREST_MULCH
 	tmhmball_event 17, 23, TM_DRAIN_PUNCH, EVENT_NOISY_FOREST_TM_DRAIN_PUNCH
 	cuttree_event 40, 12, EVENT_NOISY_FOREST_CUT_TREE_1

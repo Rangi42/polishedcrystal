@@ -4,17 +4,17 @@ EcruteakItemfinderHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, ECRUTEAK_CITY, 11
-	warp_event 4, 7, ECRUTEAK_CITY, 11
+	warp_event  3,  7, ECRUTEAK_CITY, 11
+	warp_event  4,  7, ECRUTEAK_CITY, 11
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 2, 1, SIGNPOST_JUMPSTD, radio2
+	bg_event  2,  1, SIGNPOST_JUMPSTD, radio2
 
 	db 2 ; object events
-	object_event 2, 3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9a5fb, -1
-	object_event 3, 3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x9a620, -1
+	object_event  2,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x9a5fb, -1
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x9a620, -1
 
 CooltrainerMScript_0x9a5fb:
 	faceplayer

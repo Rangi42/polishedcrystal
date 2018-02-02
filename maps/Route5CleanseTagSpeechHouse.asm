@@ -4,17 +4,17 @@ Route5CleanseTagSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, ROUTE_5, 4
-	warp_event 3, 7, ROUTE_5, 4
+	warp_event  2,  7, ROUTE_5, 4
+	warp_event  3,  7, ROUTE_5, 4
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 2 ; object events
-	object_event 2, 5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x18b634, -1
-	object_event 5, 3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b6de, -1
+	object_event  2,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x18b634, -1
+	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b6de, -1
 
 GrannyScript_0x18b634:
 	faceplayer

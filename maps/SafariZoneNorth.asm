@@ -10,27 +10,27 @@ SafariZoneNorth_MapScriptHeader:
 	warp_event 11, 37, SAFARI_ZONE_WEST, 4
 	warp_event 22, 37, SAFARI_ZONE_HUB, 7
 	warp_event 23, 37, SAFARI_ZONE_HUB, 8
-	warp_event 37, 5, SAFARI_ZONE_NORTH_REST_HOUSE, 1
-	warp_event 4, 37, SAFARI_ZONE_WEST, 1
-	warp_event 5, 37, SAFARI_ZONE_WEST, 2
+	warp_event 37,  5, SAFARI_ZONE_NORTH_REST_HOUSE, 1
+	warp_event  4, 37, SAFARI_ZONE_WEST, 1
+	warp_event  5, 37, SAFARI_ZONE_WEST, 2
 
 	db 0 ; coord events
 
 	db 6 ; bg events
 	bg_event 15, 33, SIGNPOST_JUMPTEXT, SafariZoneNorthAreaSignText
-	bg_event 38, 6, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
+	bg_event 38,  6, SIGNPOST_JUMPTEXT, SafariZoneNorthRestHouseSignText
 	bg_event 28, 30, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips1SignText
 	bg_event 20, 34, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips2SignText
-	bg_event 5, 27, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
+	bg_event  5, 27, SIGNPOST_JUMPTEXT, SafariZoneNorthTrainerTips3SignText
 	bg_event 31, 19, SIGNPOST_ITEM + LUCKY_PUNCH, EVENT_SAFARI_ZONE_NORTH_HIDDEN_LUCKY_PUNCH
 
 	db 6 ; object events
 	object_event 18, 23, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlPadma, -1
-	object_event 7, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
-	object_event 36, 9, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
+	object_event  7,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterTyler, -1
+	object_event 36,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyRachael, -1
 	object_event 15, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SafariZoneNorthCooltrainerFScript, -1
 	itemball_event 24, 18, EVIOLITE, 1, EVENT_SAFARI_ZONE_NORTH_EVIOLITE
-	itemball_event 21, 9, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
+	itemball_event 21,  9, PROTEIN, 1, EVENT_SAFARI_ZONE_NORTH_PROTEIN
 
 TrainerBattleGirlPadma:
 	trainer BATTLE_GIRL, PADMA, EVENT_BEAT_BATTLE_GIRL_PADMA, BattleGirlPadmaSeenText, BattleGirlPadmaBeatenText, 0, BattleGirlPadmaScript

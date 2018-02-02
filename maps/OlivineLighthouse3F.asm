@@ -4,26 +4,26 @@ OlivineLighthouse3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 9 ; warp events
-	warp_event 13, 3, OLIVINE_LIGHTHOUSE_4F, 1
-	warp_event 5, 3, OLIVINE_LIGHTHOUSE_2F, 2
-	warp_event 9, 5, OLIVINE_LIGHTHOUSE_4F, 4
+	warp_event 13,  3, OLIVINE_LIGHTHOUSE_4F, 1
+	warp_event  5,  3, OLIVINE_LIGHTHOUSE_2F, 2
+	warp_event  9,  5, OLIVINE_LIGHTHOUSE_4F, 4
 	warp_event 16, 11, OLIVINE_LIGHTHOUSE_2F, 5
 	warp_event 17, 11, OLIVINE_LIGHTHOUSE_2F, 6
-	warp_event 16, 9, OLIVINE_LIGHTHOUSE_4F, 5
-	warp_event 17, 9, OLIVINE_LIGHTHOUSE_4F, 6
-	warp_event 8, 3, OLIVINE_LIGHTHOUSE_4F, 7
-	warp_event 9, 3, OLIVINE_LIGHTHOUSE_4F, 8
+	warp_event 16,  9, OLIVINE_LIGHTHOUSE_4F, 5
+	warp_event 17,  9, OLIVINE_LIGHTHOUSE_4F, 6
+	warp_event  8,  3, OLIVINE_LIGHTHOUSE_4F, 7
+	warp_event  9,  3, OLIVINE_LIGHTHOUSE_4F, 8
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 4 ; object events
-	object_event 9, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
-	object_event 9, 2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSailorTerrell, -1
-	object_event 13, 5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	object_event 3, 9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
-	itemball_event 8, 2, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
+	object_event  9, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
+	object_event  9,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSailorTerrell, -1
+	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event  3,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
+	itemball_event  8,  2, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
 
 	const_def 1 ; object constants
 	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F

@@ -4,27 +4,27 @@ SproutTower3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 8, 14, SPROUT_TOWER_2F, 4
+	warp_event  8, 14, SPROUT_TOWER_2F, 4
 
 	db 1 ; coord events
-	coord_event 9, 9, 0, UnknownScript_0x184947
+	coord_event  9,  9, 0, UnknownScript_0x184947
 
 	db 6 ; bg events
-	bg_event 6, 1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	bg_event 9, 1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	bg_event 7, 0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
-	bg_event 8, 0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
-	bg_event 3, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event  6,  1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event  9,  1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
+	bg_event  8,  0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
+	bg_event  3, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	bg_event 12, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 
 	db 7 ; object events
-	object_event 8, 4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
-	object_event 6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
-	object_event 6, 8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
-	object_event 9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
-	object_event 8, 2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
-	itemball_event 4, 14, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
-	itemball_event 12, 1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
+	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
+	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageJin, -1
+	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSageTroy, -1
+	object_event  9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSageNeal, -1
+	object_event  8,  2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
+	itemball_event  4, 14, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
+	itemball_event 12,  1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 
 	const_def 1 ; object constants
 	const SPROUTTOWER3F_SILVER

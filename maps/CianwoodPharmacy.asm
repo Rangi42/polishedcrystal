@@ -4,18 +4,18 @@ CianwoodPharmacy_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 7, CIANWOOD_CITY, 4
-	warp_event 4, 7, CIANWOOD_CITY, 4
+	warp_event  3,  7, CIANWOOD_CITY, 4
+	warp_event  4,  7, CIANWOOD_CITY, 4
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 5, 1, SIGNPOST_JUMPSTD, radio2
-	bg_event 6, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  5,  1, SIGNPOST_JUMPSTD, radio2
+	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 1 ; object events
-	object_event 4, 3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
+	object_event  4,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
 
 CianwoodPharmacist:
 	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY

@@ -4,17 +4,17 @@ Route2South_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 15, 3, ROUTE_2_GATE, 3
-	warp_event 5, 7, VIRIDIAN_FOREST_VIRIDIAN_GATE, 3
+	warp_event 15,  3, ROUTE_2_GATE, 3
+	warp_event  5,  7, VIRIDIAN_FOREST_VIRIDIAN_GATE, 3
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 5, 29, SIGNPOST_JUMPTEXT, Route2SignText
+	bg_event  5, 29, SIGNPOST_JUMPTEXT, Route2SignText
 
 	db 7 ; object events
 	object_event 10, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacRob, -1
-	object_event 0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacDoug, -1
+	object_event  0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacDoug, -1
 	itemball_event 14, 30, ELIXER, 1, EVENT_ROUTE_2_ELIXER
 	cuttree_event 11, 16, EVENT_ROUTE_2_CUT_TREE_3
 	cuttree_event 12, 24, EVENT_ROUTE_2_CUT_TREE_4

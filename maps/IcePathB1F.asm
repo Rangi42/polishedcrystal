@@ -5,13 +5,13 @@ IcePathB1F_MapScriptHeader:
 	callback MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
 
 	db 8 ; warp events
-	warp_event 3, 15, ICE_PATH_1F, 3
-	warp_event 17, 3, ICE_PATH_B2F_MAHOGANY_SIDE, 1
-	warp_event 11, 2, ICE_PATH_B2F_MAHOGANY_SIDE, 3 ; hole
-	warp_event 4, 7, ICE_PATH_B2F_MAHOGANY_SIDE, 4 ; hole
-	warp_event 5, 12, ICE_PATH_B2F_MAHOGANY_SIDE, 5 ; hole
+	warp_event  3, 15, ICE_PATH_1F, 3
+	warp_event 17,  3, ICE_PATH_B2F_MAHOGANY_SIDE, 1
+	warp_event 11,  2, ICE_PATH_B2F_MAHOGANY_SIDE, 3 ; hole
+	warp_event  4,  7, ICE_PATH_B2F_MAHOGANY_SIDE, 4 ; hole
+	warp_event  5, 12, ICE_PATH_B2F_MAHOGANY_SIDE, 5 ; hole
 	warp_event 12, 13, ICE_PATH_B2F_MAHOGANY_SIDE, 6 ; hole
-	warp_event 5, 25, ICE_PATH_1F, 4
+	warp_event  5, 25, ICE_PATH_1F, 4
 	warp_event 11, 27, ICE_PATH_B2F_BLACKTHORN_SIDE, 1
 
 	db 0 ; coord events
@@ -20,14 +20,14 @@ IcePathB1F_MapScriptHeader:
 	bg_event 17, 30, SIGNPOST_ITEM + MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
 
 	db 8 ; object events
-	strengthboulder_event 11, 7, EVENT_BOULDER_IN_ICE_PATH_1
-	strengthboulder_event 7, 8, EVENT_BOULDER_IN_ICE_PATH_2
-	strengthboulder_event 8, 9, EVENT_BOULDER_IN_ICE_PATH_3
-	strengthboulder_event 17, 7, EVENT_BOULDER_IN_ICE_PATH_4
-	object_event 2, 1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
-	object_event 4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
+	strengthboulder_event 11,  7, EVENT_BOULDER_IN_ICE_PATH_1
+	strengthboulder_event  7,  8, EVENT_BOULDER_IN_ICE_PATH_2
+	strengthboulder_event  8,  9, EVENT_BOULDER_IN_ICE_PATH_3
+	strengthboulder_event 17,  7, EVENT_BOULDER_IN_ICE_PATH_4
+	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
+	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBoarderMax, -1
 	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSkierBecky, -1
-	itemball_event 5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
+	itemball_event  5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
 
 	const_def 1 ; object constants
 	const ICEPATHB1F_BOULDER1

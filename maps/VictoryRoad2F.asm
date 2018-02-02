@@ -4,25 +4,25 @@ VictoryRoad2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 25, 9, ROUTE_23, 4
-	warp_event 3, 11, VICTORY_ROAD_1F, 2
-	warp_event 3, 4, VICTORY_ROAD_3F, 1
-	warp_event 15, 7, VICTORY_ROAD_3F, 2
-	warp_event 19, 9, VICTORY_ROAD_3F, 3
+	warp_event 25,  9, ROUTE_23, 4
+	warp_event  3, 11, VICTORY_ROAD_1F, 2
+	warp_event  3,  4, VICTORY_ROAD_3F, 1
+	warp_event 15,  7, VICTORY_ROAD_3F, 2
+	warp_event 19,  9, VICTORY_ROAD_3F, 3
 
 	db 1 ; coord events
-	coord_event 25, 9, 0, UnknownScript_0x74492
+	coord_event 25,  9, 0, UnknownScript_0x74492
 
 	db 1 ; bg events
-	bg_event 5, 5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
+	bg_event  5,  5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
 	db 6 ; object events
-	object_event 20, 9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	object_event 20,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerVeteranfJoanne, -1
-	object_event 5, 3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
-	tmhmball_event 8, 4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
-	itemball_event 20, 5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
-	itemball_event 9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
+	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerVeteranfSylvie, -1
+	tmhmball_event  8,  4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
+	itemball_event 20,  5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
+	itemball_event  9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
 	const_def 1 ; object constants
 	const VICTORYROAD2F_SILVER

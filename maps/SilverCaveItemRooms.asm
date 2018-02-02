@@ -5,7 +5,7 @@ SilverCaveItemRooms_MapScriptHeader:
 
 	db 2 ; warp events
 	warp_event 21, 33, SILVER_CAVE_ROOM_2, 3
-	warp_event 5, 27, SILVER_CAVE_ROOM_2, 4
+	warp_event  5, 27, SILVER_CAVE_ROOM_2, 4
 
 	db 0 ; coord events
 

@@ -6,18 +6,18 @@ BellchimeTrail_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
 
 	db 3 ; warp events
-	warp_event 4, 4, WISE_TRIOS_ROOM, 1
-	warp_event 4, 5, WISE_TRIOS_ROOM, 2
-	warp_event 21, 9, TIN_TOWER_1F, 1 ; hole
+	warp_event  4,  4, WISE_TRIOS_ROOM, 1
+	warp_event  4,  5, WISE_TRIOS_ROOM, 2
+	warp_event 21,  9, TIN_TOWER_1F, 1 ; hole
 
 	db 1 ; coord events
-	coord_event 21, 9, 1, BellchimeTrailPanUpTrigger
+	coord_event 21,  9, 1, BellchimeTrailPanUpTrigger
 
 	db 1 ; bg events
 	bg_event 22, 12, SIGNPOST_JUMPTEXT, TinTowerSignText
 
 	db 1 ; object events
-	object_event 16, 6, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
+	object_event 16,  6, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
 
 	const_def 1 ; object constants
 	const BELLCHIMETRAIL_VALERIE

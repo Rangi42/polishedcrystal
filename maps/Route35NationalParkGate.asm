@@ -9,22 +9,22 @@ Route35NationalParkGate_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, Route35NationalParkGate_CheckIfContestDay
 
 	db 6 ; warp events
-	warp_event 15, 0, NATIONAL_PARK, 3
-	warp_event 16, 0, NATIONAL_PARK, 4
-	warp_event 15, 7, ROUTE_35, 3
-	warp_event 16, 7, ROUTE_35, 3
-	warp_event 0, 4, OLIVINE_CITY, 11
-	warp_event 0, 5, OLIVINE_CITY, 12
+	warp_event 15,  0, NATIONAL_PARK, 3
+	warp_event 16,  0, NATIONAL_PARK, 4
+	warp_event 15,  7, ROUTE_35, 3
+	warp_event 16,  7, ROUTE_35, 3
+	warp_event  0,  4, OLIVINE_CITY, 11
+	warp_event  0,  5, OLIVINE_CITY, 12
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 17, 0, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
+	bg_event 17,  0, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
 	db 3 ; object events
-	object_event 14, 1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	object_event 18, 5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
-	object_event 12, 3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
+	object_event 14,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
+	object_event 18,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
+	object_event 12,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
 	const_def 1 ; object constants
 	const ROUTE35NATIONALPARKGATE_OFFICER1

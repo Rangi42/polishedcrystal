@@ -19,7 +19,7 @@ Route24_MapScriptHeader:
 	coord_event 21, 38, 0, Route24BridgeUnderfootTrigger
 
 	db 1 ; bg events
-	bg_event 16, 5, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
+	bg_event 16,  5, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
 	db 1 ; object events
 	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET

@@ -7,9 +7,9 @@ Route2North_MapScriptHeader:
 	warp_event 15, 19, ROUTE_2_NUGGET_SPEECH_HOUSE, 1
 	warp_event 16, 35, ROUTE_2_GATE, 1
 	warp_event 17, 35, ROUTE_2_GATE, 2
-	warp_event 12, 9, DIGLETTS_CAVE, 3
-	warp_event 1, 11, VIRIDIAN_FOREST_PEWTER_GATE, 3
-	warp_event 2, 11, VIRIDIAN_FOREST_PEWTER_GATE, 4
+	warp_event 12,  9, DIGLETTS_CAVE, 3
+	warp_event  1, 11, VIRIDIAN_FOREST_PEWTER_GATE, 3
+	warp_event  2, 11, VIRIDIAN_FOREST_PEWTER_GATE, 4
 
 	db 0 ; coord events
 
@@ -17,10 +17,10 @@ Route2North_MapScriptHeader:
 	bg_event 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
 
 	db 6 ; object events
-	object_event 6, 6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
-	itemball_event 19, 4, CARBOS, 1, EVENT_ROUTE_2_CARBOS
-	fruittree_event 7, 13, FRUITTREE_ROUTE_2, LUM_BERRY
-	cuttree_event 5, 10, EVENT_ROUTE_2_CUT_TREE_1
+	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
+	itemball_event 19,  4, CARBOS, 1, EVENT_ROUTE_2_CARBOS
+	fruittree_event  7, 13, FRUITTREE_ROUTE_2, LUM_BERRY
+	cuttree_event  5, 10, EVENT_ROUTE_2_CUT_TREE_1
 	cuttree_event 15, 22, EVENT_ROUTE_2_CUT_TREE_2
 	object_event 12, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route2NorthCooltrainermText, EVENT_VERMILION_CITY_SNORLAX
 

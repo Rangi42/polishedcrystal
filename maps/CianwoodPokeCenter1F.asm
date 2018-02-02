@@ -4,21 +4,21 @@ CianwoodPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, CIANWOOD_CITY, 3
-	warp_event 6, 7, CIANWOOD_CITY, 3
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, CIANWOOD_CITY, 3
+	warp_event  6,  7, CIANWOOD_CITY, 3
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalChuckScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalChuckScript
 
 	db 5 ; object events
-	pc_nurse_event 5, 1
-	object_event 6, 3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
-	object_event 1, 5, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FLassText, -1
-	object_event 9, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FSuperNerdText, -1
-	object_event 11, 5, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FRichBoyText, -1
+	pc_nurse_event  5, 1
+	object_event  6,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
+	object_event  1,  5, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FLassText, -1
+	object_event  9,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FSuperNerdText, -1
+	object_event 11,  5, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FRichBoyText, -1
 
 PokemonJournalChuckScript:
 	setflag ENGINE_READ_CHUCK_JOURNAL

@@ -7,21 +7,21 @@ RuinsofAlphResearchCenter_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
 	db 2 ; warp events
-	warp_event 2, 7, RUINS_OF_ALPH_OUTSIDE, 6
-	warp_event 3, 7, RUINS_OF_ALPH_OUTSIDE, 6
+	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
+	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 6
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 6, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59886
-	bg_event 3, 4, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
-	bg_event 7, 1, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
-	bg_event 5, 0, SIGNPOST_JUMPTEXT, UnknownText_0x59848
+	bg_event  6,  5, SIGNPOST_JUMPTEXT, UnknownText_0x59886
+	bg_event  3,  4, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
+	bg_event  5,  0, SIGNPOST_JUMPTEXT, UnknownText_0x59848
 
 	db 3 ; object events
-	object_event 4, 5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
-	object_event 5, 2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
-	object_event 2, 5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
+	object_event  5,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
+	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 
 	const_def 1 ; object constants
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST1

@@ -4,8 +4,8 @@ PokemonMansion1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 27, CINNABAR_ISLAND, 3
-	warp_event 6, 27, CINNABAR_ISLAND, 3
+	warp_event  5, 27, CINNABAR_ISLAND, 3
+	warp_event  6, 27, CINNABAR_ISLAND, 3
 	warp_event 21, 23, POKEMON_MANSION_B1F, 1
 
 	db 0 ; coord events
@@ -13,7 +13,7 @@ PokemonMansion1F_MapScriptHeader:
 	db 8 ; bg events
 	bg_event 21, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
 	bg_event 14, 23, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
-	bg_event 2, 5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
+	bg_event  2,  5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
 	bg_event 15, 23, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 	bg_event 18, 23, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 	bg_event 19, 23, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
@@ -21,10 +21,10 @@ PokemonMansion1F_MapScriptHeader:
 	bg_event 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
 	db 6 ; object events
-	object_event 9, 10, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
+	object_event  9, 10, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarPete, -1
 	object_event 27, 14, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerBurglarLouis, -1
-	itemball_event 6, 4, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE
-	itemball_event 14, 3, ESCAPE_ROPE, 1, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
+	itemball_event  6,  4, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE
+	itemball_event 14,  3, ESCAPE_ROPE, 1, EVENT_POKEMON_MANSION_1F_ESCAPE_ROPE
 	itemball_event 17, 22, PROTEIN, 1, EVENT_POKEMON_MANSION_1F_PROTEIN
 	itemball_event 27, 22, IRON, 1, EVENT_POKEMON_MANSION_1F_IRON
 

@@ -4,25 +4,25 @@ RadioTower5F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 0, 0, RADIO_TOWER_4F, 1
-	warp_event 12, 0, RADIO_TOWER_4F, 3
+	warp_event  0,  0, RADIO_TOWER_4F, 1
+	warp_event 12,  0, RADIO_TOWER_4F, 3
 
 	db 2 ; coord events
-	coord_event 0, 3, 0, FakeDirectorScript
-	coord_event 16, 5, 1, RadioTower5FRocketBossTrigger
+	coord_event  0,  3, 0, FakeDirectorScript
+	coord_event 16,  5, 1, RadioTower5FRocketBossTrigger
 
 	db 3 ; bg events
-	bg_event 3, 0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice
-	bg_event 11, 0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
-	bg_event 15, 0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice
+	bg_event 11,  0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
+	bg_event 15,  0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
 
 	db 6 ; object events
-	object_event 3, 6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
-	object_event 0, 4, SPRITE_PETREL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
-	object_event 13, 5, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 17, 2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 13, 5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	itemball_event 8, 5, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
+	object_event  3,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
+	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
+	object_event 13,  5, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 17,  2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 13,  5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	itemball_event  8,  5, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
 
 	const_def 1 ; object constants
 	const RADIOTOWER5F_DIRECTOR

@@ -5,15 +5,15 @@ BattleTowerElevator_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 1, 3, BATTLE_TOWER_HALLWAY, 1
-	warp_event 2, 3, BATTLE_TOWER_HALLWAY, 1
+	warp_event  1,  3, BATTLE_TOWER_HALLWAY, 1
+	warp_event  2,  3, BATTLE_TOWER_HALLWAY, 1
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 1, 2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  1,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 	const_def 1 ; object constants
 	const BATTLETOWERELEVATOR_RECEPTIONIST

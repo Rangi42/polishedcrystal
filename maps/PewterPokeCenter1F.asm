@@ -4,21 +4,21 @@ PewterPokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, PEWTER_CITY, 4
-	warp_event 6, 7, PEWTER_CITY, 4
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, PEWTER_CITY, 4
+	warp_event  6,  7, PEWTER_CITY, 4
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalBrockScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalBrockScript
 
 	db 5 ; object events
-	pc_nurse_event 5, 1
-	object_event 2, 3, SPRITE_JIGGLYPUFF, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, JIGGLYPUFF, PewterJigglypuffText, -1
-	object_event 8, 2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, trade, TRADE_WITH_CHRIS_FOR_HERACROSS, -1
-	object_event 11, 5, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FTeacherText, -1
-	object_event 3, 3, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FChildText, -1
+	pc_nurse_event  5, 1
+	object_event  2,  3, SPRITE_JIGGLYPUFF, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, JIGGLYPUFF, PewterJigglypuffText, -1
+	object_event  8,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, trade, TRADE_WITH_CHRIS_FOR_HERACROSS, -1
+	object_event 11,  5, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FTeacherText, -1
+	object_event  3,  3, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FChildText, -1
 
 PokemonJournalBrockScript:
 	setflag ENGINE_READ_BROCK_JOURNAL

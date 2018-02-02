@@ -4,24 +4,24 @@ CeladonMansion3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 0, 0, CELADON_MANSION_ROOF, 1
-	warp_event 1, 0, CELADON_MANSION_2F, 2
-	warp_event 6, 0, CELADON_MANSION_2F, 3
-	warp_event 7, 0, CELADON_MANSION_ROOF, 2
+	warp_event  0,  0, CELADON_MANSION_ROOF, 1
+	warp_event  1,  0, CELADON_MANSION_2F, 2
+	warp_event  6,  0, CELADON_MANSION_2F, 3
+	warp_event  7,  0, CELADON_MANSION_ROOF, 2
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 5, 8, SIGNPOST_UP, MapCeladonMansion3FSignpost0Script
-	bg_event 4, 3, SIGNPOST_UP, MapCeladonMansion3FSignpost1Script
-	bg_event 1, 6, SIGNPOST_UP, MapCeladonMansion3FSignpost2Script
-	bg_event 1, 3, SIGNPOST_UP, MapCeladonMansion3FSignpost3Script
+	bg_event  5,  8, SIGNPOST_UP, MapCeladonMansion3FSignpost0Script
+	bg_event  4,  3, SIGNPOST_UP, MapCeladonMansion3FSignpost1Script
+	bg_event  1,  6, SIGNPOST_UP, MapCeladonMansion3FSignpost2Script
+	bg_event  1,  3, SIGNPOST_UP, MapCeladonMansion3FSignpost3Script
 
 	db 4 ; object events
-	object_event 3, 6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
-	object_event 3, 4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x717b4, -1
-	object_event 0, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71895, -1
-	object_event 0, 4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x718ca, -1
+	object_event  3,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
+	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x717b4, -1
+	object_event  0,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71895, -1
+	object_event  0,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x718ca, -1
 
 CooltrainerMScript_0x71670:
 	faceplayer

@@ -4,18 +4,18 @@ BillsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, CERULEAN_CAPE, 1
-	warp_event 3, 7, CERULEAN_CAPE, 1
+	warp_event  2,  7, CERULEAN_CAPE, 1
+	warp_event  3,  7, CERULEAN_CAPE, 1
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 6, 1, SIGNPOST_READ, PokemonJournalBillScript
-	bg_event 7, 1, SIGNPOST_READ, PokemonJournalBillScript
-	bg_event 5, 1, SIGNPOST_JUMPTEXT, BillsHousePCText
+	bg_event  6,  1, SIGNPOST_READ, PokemonJournalBillScript
+	bg_event  7,  1, SIGNPOST_READ, PokemonJournalBillScript
+	bg_event  5,  1, SIGNPOST_JUMPTEXT, BillsHousePCText
 
 	db 1 ; object events
-	object_event 2, 3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsHouseBillScript, EVENT_NEVER_MET_BILL
+	object_event  2,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BillsHouseBillScript, EVENT_NEVER_MET_BILL
 
 PokemonJournalBillScript:
 	setflag ENGINE_READ_BILL_JOURNAL

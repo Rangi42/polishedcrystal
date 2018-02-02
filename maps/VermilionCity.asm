@@ -4,9 +4,9 @@ VermilionCity_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 14 ; warp events
-	warp_event 5, 5, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, 1
-	warp_event 9, 5, VERMILION_POKECENTER_1F, 1
-	warp_event 7, 17, POKEMON_FAN_CLUB, 1
+	warp_event  5,  5, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, 1
+	warp_event  9,  5, VERMILION_POKECENTER_1F, 1
+	warp_event  7, 17, POKEMON_FAN_CLUB, 1
 	warp_event 13, 17, VERMILION_MAGNET_TRAIN_SPEECH_HOUSE, 1
 	warp_event 21, 17, VERMILION_MART, 2
 	warp_event 21, 21, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE, 1
@@ -16,17 +16,17 @@ VermilionCity_MapScriptHeader:
 	warp_event 36, 17, DIGLETTS_CAVE, 1
 	warp_event 29, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
 	warp_event 30, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
-	warp_event 13, 5, VERMILION_POLLUTION_SPEECH_HOUSE, 1
-	warp_event 19, 5, VERMILION_S_S_ANNE_SPEECH_HOUSE, 1
+	warp_event 13,  5, VERMILION_POLLUTION_SPEECH_HOUSE, 1
+	warp_event 19,  5, VERMILION_S_S_ANNE_SPEECH_HOUSE, 1
 
 	db 2 ; coord events
 	coord_event 18, 32, 0, LawrenceLeftIntroScript
 	coord_event 19, 32, 0, LawrenceRightIntroScript
 
 	db 8 ; bg events
-	bg_event 25, 5, SIGNPOST_JUMPTEXT, VermilionCitySignText
-	bg_event 5, 23, SIGNPOST_JUMPTEXT, VermilionGymSignText
-	bg_event 5, 17, SIGNPOST_JUMPTEXT, PokemonFanClubSignText
+	bg_event 25,  5, SIGNPOST_JUMPTEXT, VermilionCitySignText
+	bg_event  5, 23, SIGNPOST_JUMPTEXT, VermilionGymSignText
+	bg_event  5, 17, SIGNPOST_JUMPTEXT, PokemonFanClubSignText
 	bg_event 33, 17, SIGNPOST_JUMPTEXT, VermilionCityDiglettsCaveSignText
 	bg_event 27, 19, SIGNPOST_JUMPTEXT, VermilionCityPortSignText
 	bg_event 28, 13, SIGNPOST_JUMPTEXT, VermilionCityTruckText
@@ -41,7 +41,7 @@ VermilionCity_MapScriptHeader:
 	object_event 26, 11, SPRITE_MACHOKE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachoke, -1
 	object_event 14, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aab1a, -1
 	object_event 25, 16, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
-	object_event 10, 9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
+	object_event 10,  9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
 	object_event 31, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	cuttree_event 13, 23, EVENT_VERMILION_CITY_CUT_TREE
 	smashrock_event 26, 14

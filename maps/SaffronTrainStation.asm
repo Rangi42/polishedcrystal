@@ -4,21 +4,21 @@ SaffronTrainStation_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 8, 17, SAFFRON_CITY, 6
-	warp_event 9, 17, SAFFRON_CITY, 6
-	warp_event 6, 5, GOLDENROD_MAGNET_TRAIN_STATION, 4
-	warp_event 11, 5, GOLDENROD_MAGNET_TRAIN_STATION, 3
+	warp_event  8, 17, SAFFRON_CITY, 6
+	warp_event  9, 17, SAFFRON_CITY, 6
+	warp_event  6,  5, GOLDENROD_MAGNET_TRAIN_STATION, 4
+	warp_event 11,  5, GOLDENROD_MAGNET_TRAIN_STATION, 3
 
 	db 1 ; coord events
-	coord_event 11, 6, 0, Script_ArriveFromGoldenrod
+	coord_event 11,  6, 0, Script_ArriveFromGoldenrod
 
 	db 0 ; bg events
 
 	db 4 ; object events
-	object_event 9, 9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
+	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
 	object_event 10, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
-	object_event 6, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-	object_event 6, 10, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	object_event  6, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	object_event  6, 10, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 
 	const_def 1 ; object constants
 	const SAFFRONTRAINSTATION_OFFICER

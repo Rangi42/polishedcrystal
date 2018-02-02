@@ -6,30 +6,30 @@ CeruleanCave1F_MapScriptHeader:
 
 	db 8 ; warp events
 	warp_event 27, 21, CERULEAN_CITY, 7
-	warp_event 9, 5, CERULEAN_CAVE_2F, 1
-	warp_event 29, 5, CERULEAN_CAVE_2F, 2
-	warp_event 3, 7, CERULEAN_CAVE_2F, 3
-	warp_event 2, 10, CERULEAN_CAVE_B1F, 1
+	warp_event  9,  5, CERULEAN_CAVE_2F, 1
+	warp_event 29,  5, CERULEAN_CAVE_2F, 2
+	warp_event  3,  7, CERULEAN_CAVE_2F, 3
+	warp_event  2, 10, CERULEAN_CAVE_B1F, 1
 	warp_event 25, 11, CERULEAN_CAVE_2F, 4
 	warp_event 20, 13, CERULEAN_CAVE_2F, 5
-	warp_event 5, 15, CERULEAN_CAVE_2F, 6
+	warp_event  5, 15, CERULEAN_CAVE_2F, 6
 
 	db 4 ; coord events
-	coord_event 21, 7, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 22, 7, 1, CeruleanCave1FBridgeOverheadTrigger
-	coord_event 21, 6, 0, CeruleanCave1FBridgeUnderfootTrigger
-	coord_event 22, 6, 0, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 21,  7, 1, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 22,  7, 1, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 21,  6, 0, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 22,  6, 0, CeruleanCave1FBridgeUnderfootTrigger
 
 	db 4 ; bg events
 	bg_event 10, 13, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL
-	bg_event 5, 16, SIGNPOST_ITEM + PP_UP, EVENT_CERULEAN_CAVE_1F_HIDDEN_PP_UP
+	bg_event  5, 16, SIGNPOST_ITEM + PP_UP, EVENT_CERULEAN_CAVE_1F_HIDDEN_PP_UP
 	bg_event 16, 15, SIGNPOST_ITEM + RARE_CANDY, EVENT_CERULEAN_CAVE_1F_HIDDEN_RARE_CANDY
-	bg_event 25, 2, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CERULEAN_CAVE_1F_HIDDEN_BERSERK_GENE
+	bg_event 25,  2, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CERULEAN_CAVE_1F_HIDDEN_BERSERK_GENE
 
 	db 3 ; object events
-	itemball_event 7, 6, BIG_NUGGET, 1, EVENT_CERULEAN_CAVE_1F_BIG_NUGGET
-	itemball_event 9, 17, FULL_RESTORE, 1, EVENT_CERULEAN_CAVE_1F_FULL_RESTORE
-	itemball_event 14, 2, MAX_REVIVE, 1, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE
+	itemball_event  7,  6, BIG_NUGGET, 1, EVENT_CERULEAN_CAVE_1F_BIG_NUGGET
+	itemball_event  9, 17, FULL_RESTORE, 1, EVENT_CERULEAN_CAVE_1F_FULL_RESTORE
+	itemball_event 14,  2, MAX_REVIVE, 1, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE
 
 CeruleanCave1FTileScript:
 	checktriggers

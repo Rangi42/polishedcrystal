@@ -9,23 +9,23 @@ PokemonMansionB1F_MapScriptHeader:
 	db 0 ; coord events
 
 	db 9 ; bg events
-	bg_event 26, 4, SIGNPOST_ITEM + MAX_ELIXER, EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR
-	bg_event 8, 13, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
+	bg_event 26,  4, SIGNPOST_ITEM + MAX_ELIXER, EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR
+	bg_event  8, 13, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
 	bg_event 20, 27, SIGNPOST_READ, PokemonMansionB1FHiddenBerserkGene
-	bg_event 22, 5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
-	bg_event 9, 13, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	bg_event 4, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	bg_event 5, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	bg_event 8, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
-	bg_event 9, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event 22,  5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
+	bg_event  9, 13, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event  4, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event  5, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event  8, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
+	bg_event  9, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
 	db 6 ; object events
-	object_event 18, 5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistBraydon, -1
+	object_event 18,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistBraydon, -1
 	object_event 18, 22, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, PokemonMansionDiaryText, -1
-	itemball_event 13, 5, CARBOS, 1, EVENT_POKEMON_MANSION_B1F_CARBOS
-	itemball_event 7, 6, CALCIUM, 1, EVENT_POKEMON_MANSION_B1F_CALCIUM
+	itemball_event 13,  5, CARBOS, 1, EVENT_POKEMON_MANSION_B1F_CARBOS
+	itemball_event  7,  6, CALCIUM, 1, EVENT_POKEMON_MANSION_B1F_CALCIUM
 	itemball_event 16, 27, HP_UP, 1, EVENT_POKEMON_MANSION_B1F_HP_UP
-	itemball_event 4, 23, OLD_SEA_MAP, 1, EVENT_POKEMON_MANSION_B1F_OLD_SEA_MAP
+	itemball_event  4, 23, OLD_SEA_MAP, 1, EVENT_POKEMON_MANSION_B1F_OLD_SEA_MAP
 
 TrainerScientistBraydon:
 	trainer SCIENTIST, BRAYDON, EVENT_BEAT_SCIENTIST_BRAYDON, ScientistBraydonSeenText, ScientistBraydonBeatenText, 0, ScientistBraydonScript

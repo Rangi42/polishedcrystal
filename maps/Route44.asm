@@ -4,28 +4,28 @@ Route44_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 56, 7, ICE_PATH_1F, 1
+	warp_event 56,  7, ICE_PATH_1F, 1
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 53, 7, SIGNPOST_JUMPTEXT, Route44Sign1Text
-	bg_event 6, 10, SIGNPOST_JUMPTEXT, Route44Sign2Text
-	bg_event 32, 9, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
+	bg_event 53,  7, SIGNPOST_JUMPTEXT, Route44Sign1Text
+	bg_event  6, 10, SIGNPOST_JUMPTEXT, Route44Sign2Text
+	bg_event 32,  9, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
 
 	db 12 ; object events
-	object_event 32, 8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
-	object_event 35, 3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
+	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
+	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherEdgar, -1
-	object_event 10, 9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicPhil, -1
-	object_event 43, 2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
-	object_event 51, 5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
+	object_event 10,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicPhil, -1
+	object_event 43,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacZach, -1
+	object_event 51,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
 	object_event 41, 15, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainermAllen, -1
 	object_event 31, 14, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfCybil, -1
-	fruittree_event 9, 5, FRUITTREE_ROUTE_44, ASPEAR_BERRY
-	itemball_event 30, 8, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
-	itemball_event 45, 4, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
-	itemball_event 14, 9, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
+	fruittree_event  9,  5, FRUITTREE_ROUTE_44, ASPEAR_BERRY
+	itemball_event 30,  8, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
+	itemball_event 45,  4, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
+	itemball_event 14,  9, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 
 	const_def 1 ; object constants
 	const ROUTE44_VETERAN_M

@@ -4,46 +4,46 @@ GoldenrodPokeComCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 6, 15, GOLDENROD_CITY, 15
-	warp_event 7, 15, GOLDENROD_CITY, 15
-	warp_event 1, 6, GOLDENROD_POKECOM_CENTER_OFFICE, 2
-	warp_event 0, 15, POKECENTER_2F, 1
+	warp_event  6, 15, GOLDENROD_CITY, 15
+	warp_event  7, 15, GOLDENROD_CITY, 15
+	warp_event  1,  6, GOLDENROD_POKECOM_CENTER_OFFICE, 2
+	warp_event  0, 15, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 17 ; bg events
-	bg_event 11, 7, SIGNPOST_READ, PokemonJournalWhitneyScript
-	bg_event 24, 5, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24, 6, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24, 7, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24, 9, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 11,  7, SIGNPOST_READ, PokemonJournalWhitneyScript
+	bg_event 24,  5, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24,  6, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24,  7, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24,  9, SIGNPOST_RIGHT, NewsMachineScript
 	bg_event 24, 10, SIGNPOST_RIGHT, NewsMachineScript
 	bg_event 25, 11, SIGNPOST_UP, NewsMachineScript
 	bg_event 26, 11, SIGNPOST_UP, NewsMachineScript
 	bg_event 27, 11, SIGNPOST_UP, NewsMachineScript
 	bg_event 28, 11, SIGNPOST_UP, NewsMachineScript
-	bg_event 29, 5, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29, 6, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29, 7, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29, 8, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29, 9, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  5, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  6, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  7, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  8, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  9, SIGNPOST_LEFT, NewsMachineScript
 	bg_event 29, 10, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 24, 3, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
+	bg_event 24,  3, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
 
 	db 13 ; object events
-	object_event 7, 7, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
-	object_event 0, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
-	object_event 3, 11, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
+	object_event  7,  7, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
+	object_event  0, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
+	object_event  3, 11, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
 	object_event 12, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
-	object_event 16, 8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
-	object_event 8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
-	object_event 23, 8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61efa, -1
+	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
+	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
+	object_event 23,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61efa, -1
 	object_event 27, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
-	object_event 21, 6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
+	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
 	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
-	object_event 18, 9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
-	object_event 3, 9, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
-	object_event 23, 3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
+	object_event 18,  9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
+	object_event  3,  9, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
+	object_event 23,  3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
 
 NurseScript_0x60f91:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER

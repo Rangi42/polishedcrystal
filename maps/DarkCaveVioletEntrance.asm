@@ -4,27 +4,27 @@ DarkCaveVioletEntrance_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 3, 15, ROUTE_31, 3
-	warp_event 17, 1, DARK_CAVE_BLACKTHORN_ENTRANCE, 2
+	warp_event  3, 15, ROUTE_31, 3
+	warp_event 17,  1, DARK_CAVE_BLACKTHORN_ENTRANCE, 2
 	warp_event 35, 33, ROUTE_46, 3
 
 	db 1 ; coord events
-	coord_event 5, 2, 0, DarkCaveVioletEntranceFalknerTrigger
+	coord_event  5,  2, 0, DarkCaveVioletEntranceFalknerTrigger
 
 	db 1 ; bg events
-	bg_event 26, 3, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
+	bg_event 26,  3, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
 
 	db 11 ; object events
-	object_event 10, 2, SPRITE_URSARING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
-	object_event 9, 2, SPRITE_PIDGEOTTO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
-	object_event 8, 2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
-	itemball_event 6, 8, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
+	object_event 10,  2, SPRITE_URSARING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
+	object_event  9,  2, SPRITE_PIDGEOTTO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
+	object_event  8,  2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
+	itemball_event  6,  8, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
 	smashrock_event 16, 14
 	smashrock_event 27, 6
-	smashrock_event 7, 14
+	smashrock_event  7, 14
 	smashrock_event 36, 31
 	itemball_event 36, 22, DUSK_STONE, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DUSK_STONE
-	itemball_event 35, 9, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
+	itemball_event 35,  9, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
 	itemball_event 30, 28, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 
 	const_def 1 ; object constants

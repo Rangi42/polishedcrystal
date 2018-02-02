@@ -6,23 +6,23 @@ DiglettsCave_MapScriptHeader:
 	db 6 ; warp events
 	warp_event 37, 15, VERMILION_CITY, 10
 	warp_event 39, 13, DIGLETTS_CAVE, 5
-	warp_event 37, 5, ROUTE_2_NORTH, 4
-	warp_event 39, 3, DIGLETTS_CAVE, 6
+	warp_event 37,  5, ROUTE_2_NORTH, 4
+	warp_event 39,  3, DIGLETTS_CAVE, 6
 	warp_event 37, 31, DIGLETTS_CAVE, 2
-	warp_event 5, 5, DIGLETTS_CAVE, 4
+	warp_event  5,  5, DIGLETTS_CAVE, 4
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 8, 15, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
+	bg_event  8, 15, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
 	bg_event 34, 33, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
 
 	db 8 ; object events
 	object_event 11, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
-	object_event 5, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
+	object_event  5, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
 	object_event 25, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
 	object_event 16, 21, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
-	object_event 9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
+	object_event  9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
 	object_event 37, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
 	object_event 20, 27, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
 	itemball_event 13, 28, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE

@@ -5,17 +5,17 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 16, 7, SHAMOUTI_HOTEL_1F, 4
-	warp_event 17, 7, SHAMOUTI_HOTEL_1F, 4
+	warp_event 16,  7, SHAMOUTI_HOTEL_1F, 4
+	warp_event 17,  7, SHAMOUTI_HOTEL_1F, 4
 
 	db 2 ; coord events
-	coord_event 16, 6, 1, ShamoutiHotelRestaurantLeavingTrigger1
-	coord_event 16, 7, 1, ShamoutiHotelRestaurantLeavingTrigger2
+	coord_event 16,  6, 1, ShamoutiHotelRestaurantLeavingTrigger1
+	coord_event 16,  7, 1, ShamoutiHotelRestaurantLeavingTrigger2
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 16, 4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
+	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
 
 	const_def 1 ; object constants
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST

@@ -4,13 +4,13 @@ CeladonDeptStoreElevator_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 1, 3, CELADON_DEPT_STORE_1F, -1
-	warp_event 2, 3, CELADON_DEPT_STORE_1F, -1
+	warp_event  1,  3, CELADON_DEPT_STORE_1F, -1
+	warp_event  2,  3, CELADON_DEPT_STORE_1F, -1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 3, 0, SIGNPOST_READ, CeladonDeptStoreElevatorButton
+	bg_event  3,  0, SIGNPOST_READ, CeladonDeptStoreElevatorButton
 
 	db 0 ; object events
 

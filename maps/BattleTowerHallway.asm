@@ -8,19 +8,19 @@ BattleTowerHallway_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 6 ; warp events
-	warp_event 11, 1, BATTLE_TOWER_ELEVATOR, 1
-	warp_event 5, 0, BATTLE_TOWER_BATTLE_ROOM, 1
-	warp_event 7, 0, BATTLE_TOWER_BATTLE_ROOM, 1
-	warp_event 9, 0, BATTLE_TOWER_BATTLE_ROOM, 1
-	warp_event 13, 0, BATTLE_TOWER_BATTLE_ROOM, 1
-	warp_event 15, 0, BATTLE_TOWER_BATTLE_ROOM, 1
+	warp_event 11,  1, BATTLE_TOWER_ELEVATOR, 1
+	warp_event  5,  0, BATTLE_TOWER_BATTLE_ROOM, 1
+	warp_event  7,  0, BATTLE_TOWER_BATTLE_ROOM, 1
+	warp_event  9,  0, BATTLE_TOWER_BATTLE_ROOM, 1
+	warp_event 13,  0, BATTLE_TOWER_BATTLE_ROOM, 1
+	warp_event 15,  0, BATTLE_TOWER_BATTLE_ROOM, 1
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 11, 2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 11,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BattleTowerHallwayTrigger0:
 	priorityjump .ChooseBattleRoom

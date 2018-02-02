@@ -4,25 +4,25 @@ OlivineLighthouse5F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 7 ; warp events
-	warp_event 9, 15, OLIVINE_LIGHTHOUSE_6F, 1
-	warp_event 3, 5, OLIVINE_LIGHTHOUSE_4F, 2
-	warp_event 9, 7, OLIVINE_LIGHTHOUSE_4F, 3
-	warp_event 16, 7, OLIVINE_LIGHTHOUSE_4F, 9
-	warp_event 17, 7, OLIVINE_LIGHTHOUSE_4F, 10
-	warp_event 16, 5, OLIVINE_LIGHTHOUSE_6F, 2
-	warp_event 17, 5, OLIVINE_LIGHTHOUSE_6F, 3
+	warp_event  9, 15, OLIVINE_LIGHTHOUSE_6F, 1
+	warp_event  3,  5, OLIVINE_LIGHTHOUSE_4F, 2
+	warp_event  9,  7, OLIVINE_LIGHTHOUSE_4F, 3
+	warp_event 16,  7, OLIVINE_LIGHTHOUSE_4F, 9
+	warp_event 17,  7, OLIVINE_LIGHTHOUSE_4F, 10
+	warp_event 16,  5, OLIVINE_LIGHTHOUSE_6F, 2
+	warp_event 17,  5, OLIVINE_LIGHTHOUSE_6F, 3
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 3, 13, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
+	bg_event  3, 13, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 
 	db 5 ; object events
-	object_event 8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
-	object_event 8, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperDenis, -1
+	object_event  8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorErnest, -1
+	object_event  8,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBird_keeperDenis, -1
 	itemball_event 15, 12, RARE_CANDY, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY
-	itemball_event 6, 15, SUPER_REPEL, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
-	tmhmball_event 2, 13, TM_ENERGY_BALL, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_ENERGY_BALL
+	itemball_event  6, 15, SUPER_REPEL, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
+	tmhmball_event  2, 13, TM_ENERGY_BALL, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_ENERGY_BALL
 
 TrainerBird_keeperDenis:
 	trainer BIRD_KEEPER, DENIS, EVENT_BEAT_BIRD_KEEPER_DENIS, Bird_keeperDenisSeenText, Bird_keeperDenisBeatenText, 0, Bird_keeperDenisScript

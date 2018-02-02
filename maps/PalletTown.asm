@@ -5,22 +5,22 @@ PalletTown_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, PalletTownFlyPoint
 
 	db 3 ; warp events
-	warp_event 5, 5, REDS_HOUSE_1F, 1
-	warp_event 13, 5, BLUES_HOUSE_1F, 1
+	warp_event  5,  5, REDS_HOUSE_1F, 1
+	warp_event 13,  5, BLUES_HOUSE_1F, 1
 	warp_event 12, 11, OAKS_LAB, 1
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 7, 9, SIGNPOST_JUMPTEXT, PalletTownSignText
-	bg_event 3, 5, SIGNPOST_JUMPTEXT, RedsHouseSignText
+	bg_event  7,  9, SIGNPOST_JUMPTEXT, PalletTownSignText
+	bg_event  3,  5, SIGNPOST_JUMPTEXT, RedsHouseSignText
 	bg_event 13, 13, SIGNPOST_JUMPTEXT, OaksLabSignText
-	bg_event 11, 5, SIGNPOST_JUMPTEXT, BluesHouseSignText
+	bg_event 11,  5, SIGNPOST_JUMPTEXT, BluesHouseSignText
 
 	db 3 ; object events
-	object_event 3, 8, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
+	object_event  3,  8, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
 	object_event 12, 14, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
-	object_event 17, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
+	object_event 17,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
 
 PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET

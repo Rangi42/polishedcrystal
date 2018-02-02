@@ -4,30 +4,30 @@ Route45_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 4, 5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
+	warp_event  4,  5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 17, 5, SIGNPOST_JUMPTEXT, Route45SignText
+	bg_event 17,  5, SIGNPOST_JUMPTEXT, Route45SignText
 	bg_event 17, 78, SIGNPOST_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
 
 	db 15 ; object events
 	object_event 19, 75, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
-	object_event 5, 59, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlNozomi, -1
+	object_event  5, 59, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlNozomi, -1
 	object_event 12, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerErik, -1
 	object_event 19, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerMichael, -1
-	object_event 7, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerParry, -1
+	object_event  7, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerParry, -1
 	object_event 13, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTimothy, -1
 	object_event 16, 50, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
 	object_event 21, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermRyan, -1
-	object_event 6, 33, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKelly, -1
+	object_event  6, 33, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfKelly, -1
 	fruittree_event 20, 80, FRUITTREE_ROUTE_45, LEPPA_BERRY
-	itemball_event 8, 51, NUGGET, 1, EVENT_ROUTE_45_NUGGET
-	itemball_event 5, 66, REVIVE, 1, EVENT_ROUTE_45_REVIVE
-	itemball_event 7, 20, ELIXER, 1, EVENT_ROUTE_45_ELIXER
+	itemball_event  8, 51, NUGGET, 1, EVENT_ROUTE_45_NUGGET
+	itemball_event  5, 66, REVIVE, 1, EVENT_ROUTE_45_REVIVE
+	itemball_event  7, 20, ELIXER, 1, EVENT_ROUTE_45_ELIXER
 	itemball_event 15, 32, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
-	object_event 4, 70, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperQuentin, -1
+	object_event  4, 70, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperQuentin, -1
 
 	const_def 1 ; object constants
 	const ROUTE45_DRAGON_TAMER

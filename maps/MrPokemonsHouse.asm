@@ -5,22 +5,22 @@ MrPokemonsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, ROUTE_30, 2
-	warp_event 3, 7, ROUTE_30, 2
+	warp_event  2,  7, ROUTE_30, 2
+	warp_event  3,  7, ROUTE_30, 2
 
 	db 0 ; coord events
 
 	db 5 ; bg events
-	bg_event 0, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
-	bg_event 1, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
-	bg_event 6, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
-	bg_event 7, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
-	bg_event 6, 4, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
+	bg_event  0,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	bg_event  1,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	bg_event  6,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	bg_event  6,  4, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
 
 	db 3 ; object events
-	object_event 3, 5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
-	object_event 6, 5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	object_event 4, 4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
+	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	object_event  4,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
 
 	const_def 1 ; object constants
 	const MRPOKEMONSHOUSE_GENTLEMAN

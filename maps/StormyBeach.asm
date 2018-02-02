@@ -4,22 +4,22 @@ StormyBeach_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 30, 4, MURKY_SWAMP, 1
-	warp_event 31, 4, MURKY_SWAMP, 2
+	warp_event 30,  4, MURKY_SWAMP, 1
+	warp_event 31,  4, MURKY_SWAMP, 2
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 17, 6, SIGNPOST_ITEM + STARDUST, EVENT_STORMY_BEACH_HIDDEN_STARDUST
+	bg_event 17,  6, SIGNPOST_ITEM + STARDUST, EVENT_STORMY_BEACH_HIDDEN_STARDUST
 
 	db 11 ; object events
-	object_event 5, 13, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfBarbara, -1
-	object_event 14, 8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJulian, -1
-	object_event 28, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerCamperFelix, -1
+	object_event  5, 13, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfBarbara, -1
+	object_event 14,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJulian, -1
+	object_event 28,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerCamperFelix, -1
 	object_event 24, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerLily, -1
 	object_event 26, 17, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, StormyBeachSwimmermText, -1
 	object_event 32, 12, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, StormyBeachGrampsText, -1
-	itemball_event 34, 7, ZINC, 1, EVENT_STORMY_BEACH_ZINC
+	itemball_event 34,  7, ZINC, 1, EVENT_STORMY_BEACH_ZINC
 	smashrock_event 16, 6
 	smashrock_event 17, 7
 	smashrock_event 12, 9

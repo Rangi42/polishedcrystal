@@ -4,21 +4,21 @@ DimCave1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 4 ; warp events
-	warp_event 30, 2, DIM_CAVE_2F, 5
-	warp_event 5, 17, DIM_CAVE_2F, 6
+	warp_event 30,  2, DIM_CAVE_2F, 5
+	warp_event  5, 17, DIM_CAVE_2F, 6
 	warp_event 28, 18, DIM_CAVE_2F, 7
 	warp_event 24, 32, DIM_CAVE_2F, 8
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 28, 2, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
+	bg_event 28,  2, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
 	db 5 ; object events
-	object_event 30, 7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
+	object_event 30,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
 	object_event 12, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
 	object_event 27, 21, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1
-	itemball_event 3, 20, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
+	itemball_event  3, 20, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
 	itemball_event 28, 31, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
 
 TrainerSuper_nerdGregg:

@@ -5,19 +5,19 @@ SilphCo1F_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, SilphCo1FMoveOfficerCallback
 
 	db 3 ; warp events
-	warp_event 2, 7, SAFFRON_CITY, 7
-	warp_event 3, 7, SAFFRON_CITY, 7
-	warp_event 13, 0, SILPH_CO_2F, 1
+	warp_event  2,  7, SAFFRON_CITY, 7
+	warp_event  3,  7, SAFFRON_CITY, 7
+	warp_event 13,  0, SILPH_CO_2F, 1
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 4 ; object events
-	object_event 13, 1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18abe8, -1
-	object_event 4, 2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCoReceptionistText, -1
-	object_event 11, 4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
-	object_event 8, 2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
+	object_event 13,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18abe8, -1
+	object_event  4,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCoReceptionistText, -1
+	object_event 11,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
+	object_event  8,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
 
 	const_def 1 ; object constants
 	const SILPHCO1F_OFFICER

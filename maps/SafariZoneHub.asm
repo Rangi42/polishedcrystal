@@ -8,10 +8,10 @@ SafariZoneHub_MapScriptHeader:
 	warp_event 17, 27, SAFARI_ZONE_FUCHSIA_GATE, 2
 	warp_event 31, 12, SAFARI_ZONE_EAST, 1
 	warp_event 31, 13, SAFARI_ZONE_EAST, 2
-	warp_event 2, 12, SAFARI_ZONE_WEST, 5
-	warp_event 2, 13, SAFARI_ZONE_WEST, 6
-	warp_event 16, 2, SAFARI_ZONE_NORTH, 5
-	warp_event 17, 2, SAFARI_ZONE_NORTH, 6
+	warp_event  2, 12, SAFARI_ZONE_WEST, 5
+	warp_event  2, 13, SAFARI_ZONE_WEST, 6
+	warp_event 16,  2, SAFARI_ZONE_NORTH, 5
+	warp_event 17,  2, SAFARI_ZONE_NORTH, 6
 	warp_event 19, 21, SAFARI_ZONE_HUB_REST_HOUSE, 1
 
 	db 0 ; coord events
@@ -21,9 +21,9 @@ SafariZoneHub_MapScriptHeader:
 	bg_event 20, 22, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
 
 	db 3 ; object events
-	object_event 26, 6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
+	object_event 26,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBug_maniacKai, -1
 	itemball_event 15, 12, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
-	itemball_event 8, 21, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
+	itemball_event  8, 21, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
 
 TrainerBug_maniacKai:
 	trainer BUG_MANIAC, KAI, EVENT_BEAT_BUG_MANIAC_KAI, Bug_maniacKaiSeenText, Bug_maniacKaiBeatenText, 0, Bug_maniacKaiScript

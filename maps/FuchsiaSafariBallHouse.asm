@@ -4,15 +4,15 @@ FuchsiaSafariBallHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, FUCHSIA_CITY, 11
-	warp_event 3, 7, FUCHSIA_CITY, 11
+	warp_event  2,  7, FUCHSIA_CITY, 11
+	warp_event  3,  7, FUCHSIA_CITY, 11
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 2, 4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaSafariBallHouseOfficerScript, -1
+	object_event  2,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaSafariBallHouseOfficerScript, -1
 
 FuchsiaSafariBallHouseOfficerScript:
 	faceplayer

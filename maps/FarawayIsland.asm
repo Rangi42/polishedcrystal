@@ -8,17 +8,17 @@ FarawayIsland_MapScriptHeader:
 	callback MAPCALLBACK_SPRITES, FarawayIslandSetupLawrence
 
 	db 2 ; warp events
-	warp_event 22, 8, FARAWAY_JUNGLE, 1
-	warp_event 23, 8, FARAWAY_JUNGLE, 2
+	warp_event 22,  8, FARAWAY_JUNGLE, 1
+	warp_event 23,  8, FARAWAY_JUNGLE, 2
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 4, 34, SIGNPOST_JUMPTEXT, FarawayIslandSignText
+	bg_event  4, 34, SIGNPOST_JUMPTEXT, FarawayIslandSignText
 
 	db 2 ; object events
 	object_event 12, 42, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	object_event 3, 37, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND
+	object_event  3, 37, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayIslandLawrenceScript, EVENT_LAWRENCE_FARAWAY_ISLAND
 
 	const_def 1 ; object constants
 	const FARAWAYISLAND_SAILOR

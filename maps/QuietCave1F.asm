@@ -5,10 +5,10 @@ QuietCave1F_MapScriptHeader:
 
 	db 6 ; warp events
 	warp_event 19, 33, ROUTE_47, 5
-	warp_event 5, 25, QUIET_CAVE_B1F, 1
+	warp_event  5, 25, QUIET_CAVE_B1F, 1
 	warp_event 27, 23, QUIET_CAVE_B1F, 2
-	warp_event 21, 9, QUIET_CAVE_B1F, 3
-	warp_event 3, 17, QUIET_CAVE_B1F, 4
+	warp_event 21,  9, QUIET_CAVE_B1F, 3
+	warp_event  3, 17, QUIET_CAVE_B1F, 4
 	warp_event 31, 13, QUIET_CAVE_B1F, 5
 
 	db 0 ; coord events
@@ -16,14 +16,14 @@ QuietCave1F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 7 ; object events
-	object_event 6, 8, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacAshley, -1
+	object_event  6,  8, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacAshley, -1
 	object_event 13, 17, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermHenri, -1
 	object_event 23, 25, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerGrady, -1
-	object_event 29, 4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistCarl, -1
+	object_event 29,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerScientistCarl, -1
 	itemball_event 10, 23, NUGGET, 1, EVENT_QUIET_CAVE_1F_NUGGET
-	itemball_event 26, 4, TWISTEDSPOON, 1, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
-	itemball_event 14, 2, DUSK_STONE, 1, EVENT_QUIET_CAVE_1F_DUSK_STONE
-	itemball_event 3, 3, DUSK_BALL, 1, EVENT_QUIET_CAVE_1F_DUSK_BALL
+	itemball_event 26,  4, TWISTEDSPOON, 1, EVENT_QUIET_CAVE_1F_TWISTEDSPOON
+	itemball_event 14,  2, DUSK_STONE, 1, EVENT_QUIET_CAVE_1F_DUSK_STONE
+	itemball_event  3,  3, DUSK_BALL, 1, EVENT_QUIET_CAVE_1F_DUSK_BALL
 
 TrainerHexManiacAshley:
 	trainer HEX_MANIAC, ASHLEY, EVENT_BEAT_HEX_MANIAC_ASHLEY, HexManiacAshleySeenText, HexManiacAshleyBeatenText, 0, HexManiacAshleyScript

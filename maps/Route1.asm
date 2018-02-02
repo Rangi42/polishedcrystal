@@ -4,19 +4,19 @@ Route1_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 10, 1, ROUTE_1_VIRIDIAN_GATE, 3
+	warp_event 10,  1, ROUTE_1_VIRIDIAN_GATE, 3
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 9, 27, SIGNPOST_JUMPTEXT, Route1SignText
+	bg_event  9, 27, SIGNPOST_JUMPTEXT, Route1SignText
 
 	db 5 ; object events
-	object_event 6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
+	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
 	object_event 17, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboySherman, -1
 	object_event 16, 21, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFrench, -1
 	object_event 11, 25, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1
-	fruittree_event 5, 7, FRUITTREE_ROUTE_1, FIGY_BERRY
+	fruittree_event  5,  7, FRUITTREE_ROUTE_1, FIGY_BERRY
 
 TrainerSchoolboyDanny:
 	trainer SCHOOLBOY, DANNY, EVENT_BEAT_SCHOOLBOY_DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText, 0, SchoolboyDannyScript

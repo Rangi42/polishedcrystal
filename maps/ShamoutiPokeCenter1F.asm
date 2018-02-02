@@ -5,18 +5,18 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
 	db 3 ; warp events
-	warp_event 5, 7, SHAMOUTI_ISLAND, 1
-	warp_event 6, 7, SHAMOUTI_ISLAND, 1
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, SHAMOUTI_ISLAND, 1
+	warp_event  6,  7, SHAMOUTI_ISLAND, 1
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalLoreleiScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalLoreleiScript
 
 	db 2 ; object events
-	object_event 6, 3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
-	pc_nurse_event 5, 1
+	object_event  6,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
+	pc_nurse_event  5, 1
 
 	const_def 1 ; object constants
 	const SHAMOUTIPOKECENTER1F_IVY

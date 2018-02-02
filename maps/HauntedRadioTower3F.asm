@@ -4,8 +4,8 @@ HauntedRadioTower3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 0, HAUNTED_RADIO_TOWER_2F, 2
-	warp_event 15, 0, HAUNTED_RADIO_TOWER_4F, 1
+	warp_event  2,  0, HAUNTED_RADIO_TOWER_2F, 2
+	warp_event 15,  0, HAUNTED_RADIO_TOWER_4F, 1
 
 	db 0 ; coord events
 

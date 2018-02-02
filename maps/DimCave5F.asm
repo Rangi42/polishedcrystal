@@ -6,7 +6,7 @@ DimCave5F_MapScriptHeader:
 
 	db 4 ; warp events
 	warp_event 13, 31, ROUTE_10_NORTH, 5
-	warp_event 2, 16, DIM_CAVE_4F, 1
+	warp_event  2, 16, DIM_CAVE_4F, 1
 	warp_event 27, 29, DIM_CAVE_4F, 2
 	warp_event 28, 25, DIM_CAVE_4F, 3
 
@@ -16,14 +16,14 @@ DimCave5F_MapScriptHeader:
 	bg_event 12, 28, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
 	db 8 ; object events
-	strengthboulder_event 25, 5, EVENT_BOULDER_IN_DIM_CAVE_5F
-	object_event 13, 4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
+	strengthboulder_event 25,  5, EVENT_BOULDER_IN_DIM_CAVE_5F
+	object_event 13,  4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
 	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
 	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
 	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
 	itemball_event 13, 13, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
 	itemball_event 25, 26, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
-	itemball_event 9, 30, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
+	itemball_event  9, 30, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
 	const_def 1 ; object constants
 	const DIMCAVE5F_BOULDER

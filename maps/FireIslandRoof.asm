@@ -4,14 +4,14 @@ FireIslandRoof_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 3, 7, FIRE_ISLAND, 2
+	warp_event  3,  7, FIRE_ISLAND, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 5, 5, SPRITE_CANDELA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
+	object_event  5,  5, SPRITE_CANDELA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
 
 	const_def 1 ; object constants
 	const FIREISLANDROOF_CANDELA

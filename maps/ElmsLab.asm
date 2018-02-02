@@ -13,44 +13,44 @@ ElmsLab_MapScriptHeader:
 	callback MAPCALLBACK_OBJECTS, ElmsLabCallback_MoveElm
 
 	db 2 ; warp events
-	warp_event 4, 11, NEW_BARK_TOWN, 1
-	warp_event 5, 11, NEW_BARK_TOWN, 1
+	warp_event  4, 11, NEW_BARK_TOWN, 1
+	warp_event  5, 11, NEW_BARK_TOWN, 1
 
 	db 7 ; coord events
-	coord_event 4, 6, 1, LabTryToLeaveScript
-	coord_event 5, 6, 1, LabTryToLeaveScript
-	coord_event 4, 5, 3, MeetCopScript
-	coord_event 5, 5, 3, MeetCopScript2
-	coord_event 4, 8, 5, AideScript_WalkPotions1
-	coord_event 5, 8, 5, AideScript_WalkPotions2
-	coord_event 4, 6, 6, LyraBattleScript
+	coord_event  4,  6, 1, LabTryToLeaveScript
+	coord_event  5,  6, 1, LabTryToLeaveScript
+	coord_event  4,  5, 3, MeetCopScript
+	coord_event  5,  5, 3, MeetCopScript2
+	coord_event  4,  8, 5, AideScript_WalkPotions1
+	coord_event  5,  8, 5, AideScript_WalkPotions2
+	coord_event  4,  6, 6, LyraBattleScript
 
 	db 16 ; bg events
-	bg_event 2, 1, SIGNPOST_READ, ElmsLabHealingMachine
-	bg_event 6, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 8, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 9, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 0, 7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip1Text
-	bg_event 1, 7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip2Text
-	bg_event 2, 7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip3Text
-	bg_event 3, 7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip4Text
-	bg_event 6, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 8, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 9, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 9, 3, SIGNPOST_JUMPTEXT, ElmsLabTrashcanText
-	bg_event 5, 0, SIGNPOST_READ, ElmsLabWindow
-	bg_event 3, 5, SIGNPOST_DOWN, ElmsLabPC
+	bg_event  2,  1, SIGNPOST_READ, ElmsLabHealingMachine
+	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  8,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  9,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  0,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip1Text
+	bg_event  1,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip2Text
+	bg_event  2,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip3Text
+	bg_event  3,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip4Text
+	bg_event  6,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  8,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  9,  3, SIGNPOST_JUMPTEXT, ElmsLabTrashcanText
+	bg_event  5,  0, SIGNPOST_READ, ElmsLabWindow
+	bg_event  3,  5, SIGNPOST_DOWN, ElmsLabPC
 
 	db 7 ; object events
-	object_event 5, 2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
-	object_event 2, 9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event 6, 3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event 7, 3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event 8, 3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	object_event 5, 3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
-	object_event 5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
+	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
+	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
+	object_event  6,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	object_event  7,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	object_event  8,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
+	object_event  5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
 
 	const_def 1 ; object constants
 	const ELMSLAB_ELM

@@ -5,9 +5,9 @@ CinnabarVolcanoB2F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, CinnabarVolcanoB2FBouldersLand
 
 	db 3 ; warp events
-	warp_event 13, 3, CINNABAR_VOLCANO_B1F, 5
+	warp_event 13,  3, CINNABAR_VOLCANO_B1F, 5
 	warp_event 25, 19, CINNABAR_VOLCANO_B1F, 6
-	warp_event 6, 6, CINNABAR_VOLCANO_B1F, 7 ; hole
+	warp_event  6,  6, CINNABAR_VOLCANO_B1F, 7 ; hole
 
 	db 0 ; coord events
 
@@ -17,7 +17,7 @@ CinnabarVolcanoB2F_MapScriptHeader:
 	object_event 18, 22, SPRITE_MOLTRES, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
 	object_event 12, 24, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
 	smashrock_event 21, 19
-	itemball_event 18, 3, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
+	itemball_event 18,  3, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
 
 	const_def 1 ; object constants
 	const CINNABARVOLCANOB2F_MOLTRES

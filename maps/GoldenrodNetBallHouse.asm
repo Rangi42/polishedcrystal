@@ -4,16 +4,16 @@ GoldenrodNetBallHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, GOLDENROD_CITY, 19
-	warp_event 3, 7, GOLDENROD_CITY, 19
+	warp_event  2,  7, GOLDENROD_CITY, 19
+	warp_event  3,  7, GOLDENROD_CITY, 19
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 2, 4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, GoldenrodNetBallHouseYoungsterScript, -1
-	object_event 6, 3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodNetBallHouseBugCatcherText, -1
+	object_event  2,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, GoldenrodNetBallHouseYoungsterScript, -1
+	object_event  6,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodNetBallHouseBugCatcherText, -1
 
 GoldenrodNetBallHouseYoungsterScript:
 	checkevent EVENT_GOT_NET_BALL_FROM_GOLDENROD

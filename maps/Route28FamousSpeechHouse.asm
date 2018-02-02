@@ -4,16 +4,16 @@ Route28FamousSpeechHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, ROUTE_28, 1
-	warp_event 3, 7, ROUTE_28, 1
+	warp_event  2,  7, ROUTE_28, 1
+	warp_event  3,  7, ROUTE_28, 1
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 2, 3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Celebrity, -1
-	object_event 6, 5, SPRITE_SKARMORY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SKARMORY, CelebritysSkarmoryText, -1
+	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Celebrity, -1
+	object_event  6,  5, SPRITE_SKARMORY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SKARMORY, CelebritysSkarmoryText, -1
 
 Celebrity:
 	faceplayer

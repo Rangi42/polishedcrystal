@@ -4,29 +4,29 @@ SafariZoneWest_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 8 ; warp events
-	warp_event 22, 2, SAFARI_ZONE_NORTH, 8
-	warp_event 23, 2, SAFARI_ZONE_NORTH, 9
-	warp_event 28, 2, SAFARI_ZONE_NORTH, 3
-	warp_event 29, 2, SAFARI_ZONE_NORTH, 4
+	warp_event 22,  2, SAFARI_ZONE_NORTH, 8
+	warp_event 23,  2, SAFARI_ZONE_NORTH, 9
+	warp_event 28,  2, SAFARI_ZONE_NORTH, 3
+	warp_event 29,  2, SAFARI_ZONE_NORTH, 4
 	warp_event 31, 24, SAFARI_ZONE_HUB, 5
 	warp_event 31, 25, SAFARI_ZONE_HUB, 6
 	warp_event 13, 13, SAFARI_ZONE_WEST_REST_HOUSE_1, 1
-	warp_event 5, 5, SAFARI_ZONE_WEST_REST_HOUSE_2, 1
+	warp_event  5,  5, SAFARI_ZONE_WEST_REST_HOUSE_2, 1
 
 	db 0 ; coord events
 
 	db 5 ; bg events
 	bg_event 26, 24, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
 	bg_event 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
-	bg_event 28, 6, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
-	bg_event 19, 5, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
-	bg_event 13, 6, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
+	bg_event 28,  6, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
+	bg_event 19,  5, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
+	bg_event 13,  6, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
 	db 4 ; object events
 	object_event 22, 23, SPRITE_LASS, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
 	object_event 23, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
 	object_event 12, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
-	itemball_event 14, 9, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
+	itemball_event 14,  9, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
 
 TrainerLassDuplica:
 	trainer LASS, DUPLICA, EVENT_BEAT_LASS_DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript

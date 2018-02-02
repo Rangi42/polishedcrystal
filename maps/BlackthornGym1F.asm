@@ -5,26 +5,26 @@ BlackthornGym1F_MapScriptHeader:
 	callback MAPCALLBACK_TILES, BlackthornGym1FBoulderCallback
 
 	db 7 ; warp events
-	warp_event 4, 17, BLACKTHORN_CITY, 1
-	warp_event 5, 17, BLACKTHORN_CITY, 1
-	warp_event 1, 7, BLACKTHORN_GYM_2F, 1
-	warp_event 7, 9, BLACKTHORN_GYM_2F, 2
-	warp_event 2, 6, BLACKTHORN_GYM_2F, 3
-	warp_event 7, 7, BLACKTHORN_GYM_2F, 4
-	warp_event 7, 6, BLACKTHORN_GYM_2F, 5
+	warp_event  4, 17, BLACKTHORN_CITY, 1
+	warp_event  5, 17, BLACKTHORN_CITY, 1
+	warp_event  1,  7, BLACKTHORN_GYM_2F, 1
+	warp_event  7,  9, BLACKTHORN_GYM_2F, 2
+	warp_event  2,  6, BLACKTHORN_GYM_2F, 3
+	warp_event  7,  7, BLACKTHORN_GYM_2F, 4
+	warp_event  7,  6, BLACKTHORN_GYM_2F, 5
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 3, 15, SIGNPOST_READ, BlackthornGymStatue
-	bg_event 6, 15, SIGNPOST_READ, BlackthornGymStatue
+	bg_event  3, 15, SIGNPOST_READ, BlackthornGymStatue
+	bg_event  6, 15, SIGNPOST_READ, BlackthornGymStatue
 
 	db 5 ; object events
-	object_event 5, 3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
-	object_event 7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
-	object_event 1, 14, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerPaul, -1
-	object_event 6, 6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermMike, -1
-	object_event 9, 2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfLola, -1
+	object_event  5,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
+	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
+	object_event  1, 14, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerPaul, -1
+	object_event  6,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermMike, -1
+	object_event  9,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfLola, -1
 
 BlackthornGym1FBoulderCallback:
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_1

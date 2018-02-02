@@ -6,32 +6,32 @@ Route19_MapScriptHeader:
 	callback MAPCALLBACK_TILES, Route19ClearRocks
 
 	db 2 ; warp events
-	warp_event 7, 1, ROUTE_19_FUCHSIA_GATE, 3
-	warp_event 5, 13, ROUTE_19_BEACH_HOUSE, 1
+	warp_event  7,  1, ROUTE_19_FUCHSIA_GATE, 3
+	warp_event  5, 13, ROUTE_19_BEACH_HOUSE, 1
 
 	db 0 ; coord events
 
 	db 6 ; bg events
 	bg_event 11, 15, SIGNPOST_JUMPTEXT, Route19SignText
 	bg_event 11, -1, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
-	bg_event 5, 3, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
-	bg_event 3, 11, SIGNPOST_ITEM + MAX_REVIVE, EVENT_ROUTE_19_HIDDEN_MAX_REVIVE
-	bg_event 5, 15, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL
+	bg_event  5,  3, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
+	bg_event  3, 11, SIGNPOST_ITEM + MAX_REVIVE, EVENT_ROUTE_19_HIDDEN_MAX_REVIVE
+	bg_event  5, 15, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL
 	bg_event 13, 13, SIGNPOST_ITEM + BIG_PEARL, EVENT_ROUTE_19_HIDDEN_BIG_PEARL
 
 	db 13 ; object events
-	smashrock_event 11, 4, EVENT_ROUTE_19_ROCK
-	smashrock_event 6, 3
-	smashrock_event 4, 11
+	smashrock_event 11,  4, EVENT_ROUTE_19_ROCK
+	smashrock_event  6, 3
+	smashrock_event  4, 11
 	smashrock_event 12, 13
 	smashrock_event 13, 14
-	object_event 8, 34, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfDawn, -1
-	object_event 9, 34, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermTucker, -1
+	object_event  8, 34, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfDawn, -1
+	object_event  9, 34, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermTucker, -1
 	object_event 11, 20, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
 	object_event 13, 43, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
 	object_event 13, 51, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerBrooke, -1
-	object_event 9, 3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
-	object_event 11, 3, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
+	object_event  9,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
+	object_event 11,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
 	tmhmball_event 14, 52, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
 
 	const_def 1 ; object constants

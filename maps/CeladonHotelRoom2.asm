@@ -4,15 +4,15 @@ CeladonHotelRoom2_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 5, CELADON_HOTEL_2F, 3
-	warp_event 4, 5, CELADON_HOTEL_2F, 3
+	warp_event  3,  5, CELADON_HOTEL_2F, 3
+	warp_event  4,  5, CELADON_HOTEL_2F, 3
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 3, 2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
+	object_event  3,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
 
 CeladonHotelRoom2SuperNerdScript:
 	faceplayer

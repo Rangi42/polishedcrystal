@@ -7,29 +7,29 @@ Route35_MapScriptHeader:
 	db 4 ; warp events
 	warp_event 13, 33, ROUTE_35_GOLDENROD_GATE, 1
 	warp_event 14, 33, ROUTE_35_GOLDENROD_GATE, 2
-	warp_event 7, 5, ROUTE_35_NATIONAL_PARK_GATE, 3
+	warp_event  7,  5, ROUTE_35_NATIONAL_PARK_GATE, 3
 	warp_event 14, 16, HIDDEN_TREE_GROTTO, 1
 
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event 5, 7, SIGNPOST_JUMPTEXT, Route35SignText
+	bg_event  5,  7, SIGNPOST_JUMPTEXT, Route35SignText
 	bg_event 15, 31, SIGNPOST_JUMPTEXT, Route35SignText
 	bg_event 14, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 	bg_event 15, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 
 	db 12 ; object events
-	object_event 8, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
+	object_event  8, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperIvan, -1
 	object_event 12, 20, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli1, -1
 	object_event 11, 20, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleGailandeli2, -1
 	object_event 14, 26, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerKim, -1
 	object_event 18, 29, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederTheresa, -1
-	object_event 6, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1
-	object_event 20, 7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
-	object_event 9, 10, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
-	object_event 9, 6, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
-	cuttree_event 21, 6, EVENT_ROUTE_35_CUT_TREE
-	fruittree_event 6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY
+	object_event  6, 10, SPRITE_FISHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherWalt, -1
+	object_event 20,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
+	object_event  9, 10, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
+	object_event  9,  6, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
+	cuttree_event 21,  6, EVENT_ROUTE_35_CUT_TREE
+	fruittree_event  6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY
 	tmhmball_event 17, 16, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
 
 Route35RebattleBreeder:

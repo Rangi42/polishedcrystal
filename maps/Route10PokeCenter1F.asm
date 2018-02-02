@@ -4,20 +4,20 @@ Route10PokeCenter1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 5, 7, ROUTE_10_NORTH, 1
-	warp_event 6, 7, ROUTE_10_NORTH, 1
-	warp_event 0, 7, POKECENTER_2F, 1
+	warp_event  5,  7, ROUTE_10_NORTH, 1
+	warp_event  6,  7, ROUTE_10_NORTH, 1
+	warp_event  0,  7, POKECENTER_2F, 1
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 10, 1, SIGNPOST_READ, PokemonJournalAgathaScript
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalAgathaScript
 
 	db 4 ; object events
-	pc_nurse_event 5, 1
-	object_event 8, 2, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route10PokeCenter1FGymGuyScript, -1
-	object_event 9, 4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route10PokeCenter1FGentlemanText, -1
-	object_event 2, 3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route10PokeCenter1FCooltrainerfText, -1
+	pc_nurse_event  5, 1
+	object_event  8,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route10PokeCenter1FGymGuyScript, -1
+	object_event  9,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route10PokeCenter1FGentlemanText, -1
+	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route10PokeCenter1FCooltrainerfText, -1
 
 PokemonJournalAgathaScript:
 	setflag ENGINE_READ_AGATHA_JOURNAL

@@ -4,15 +4,15 @@ OlivineLighthouseRoof_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 9, 3, OLIVINE_LIGHTHOUSE_6F, 4
+	warp_event  9,  3, OLIVINE_LIGHTHOUSE_6F, 4
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 4, 13, SPRITE_SKYLA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
-	itemball_event 16, 8, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
+	object_event  4, 13, SPRITE_SKYLA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
+	itemball_event 16,  8, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
 
 	const_def 1 ; object constants
 	const OLIVINELIGHTHOUSEROOF_SKYLA

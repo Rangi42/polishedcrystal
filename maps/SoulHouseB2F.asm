@@ -5,8 +5,8 @@ SoulHouseB2F_MapScriptHeader:
 
 	db 3 ; warp events
 	warp_event 17, 15, SOUL_HOUSE_B1F, 2
-	warp_event 3, 15, SOUL_HOUSE_B1F, 3
-	warp_event 9, 4, SOUL_HOUSE_B3F, 1
+	warp_event  3, 15, SOUL_HOUSE_B1F, 3
+	warp_event  9,  4, SOUL_HOUSE_B3F, 1
 
 	db 0 ; coord events
 

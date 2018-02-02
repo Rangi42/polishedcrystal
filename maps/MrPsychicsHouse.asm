@@ -4,16 +4,16 @@ MrPsychicsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, SAFFRON_CITY, 5
-	warp_event 3, 7, SAFFRON_CITY, 5
+	warp_event  2,  7, SAFFRON_CITY, 5
+	warp_event  3,  7, SAFFRON_CITY, 5
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 1 ; object events
-	object_event 5, 3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MrPsychic, -1
+	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MrPsychic, -1
 
 MrPsychic:
 	faceplayer

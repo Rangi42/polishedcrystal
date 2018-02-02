@@ -4,16 +4,16 @@ CeruleanBerryPowderHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, CERULEAN_CITY, 9
-	warp_event 3, 7, CERULEAN_CITY, 9
+	warp_event  2,  7, CERULEAN_CITY, 9
+	warp_event  3,  7, CERULEAN_CITY, 9
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 1 ; object events
-	object_event 5, 4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanBerryPowderHouseGrampsScript, -1
+	object_event  5,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanBerryPowderHouseGrampsScript, -1
 
 CeruleanBerryPowderHouseGrampsScript:
 	checkevent EVENT_GOT_HP_UP_FROM_CERULEAN

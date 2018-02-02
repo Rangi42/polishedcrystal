@@ -4,15 +4,15 @@ SlowpokeWellB2F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 1 ; warp events
-	warp_event 9, 11, SLOWPOKE_WELL_B1F, 2
+	warp_event  9, 11, SLOWPOKE_WELL_B1F, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 5, 4, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
-	itemball_event 15, 5, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
+	object_event  5,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
+	itemball_event 15,  5, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
 
 GymGuyScript_0x5ad0b:
 	checkevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL

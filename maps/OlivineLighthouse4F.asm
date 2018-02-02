@@ -4,24 +4,24 @@ OlivineLighthouse4F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 10 ; warp events
-	warp_event 13, 3, OLIVINE_LIGHTHOUSE_3F, 1
-	warp_event 3, 5, OLIVINE_LIGHTHOUSE_5F, 2
-	warp_event 9, 7, OLIVINE_LIGHTHOUSE_5F, 3
-	warp_event 9, 5, OLIVINE_LIGHTHOUSE_3F, 3
-	warp_event 16, 9, OLIVINE_LIGHTHOUSE_3F, 6
-	warp_event 17, 9, OLIVINE_LIGHTHOUSE_3F, 7
-	warp_event 8, 3, OLIVINE_LIGHTHOUSE_3F, 8
-	warp_event 9, 3, OLIVINE_LIGHTHOUSE_3F, 9
-	warp_event 16, 7, OLIVINE_LIGHTHOUSE_5F, 4
-	warp_event 17, 7, OLIVINE_LIGHTHOUSE_5F, 5
+	warp_event 13,  3, OLIVINE_LIGHTHOUSE_3F, 1
+	warp_event  3,  5, OLIVINE_LIGHTHOUSE_5F, 2
+	warp_event  9,  7, OLIVINE_LIGHTHOUSE_5F, 3
+	warp_event  9,  5, OLIVINE_LIGHTHOUSE_3F, 3
+	warp_event 16,  9, OLIVINE_LIGHTHOUSE_3F, 6
+	warp_event 17,  9, OLIVINE_LIGHTHOUSE_3F, 7
+	warp_event  8,  3, OLIVINE_LIGHTHOUSE_3F, 8
+	warp_event  9,  3, OLIVINE_LIGHTHOUSE_3F, 9
+	warp_event 16,  7, OLIVINE_LIGHTHOUSE_5F, 4
+	warp_event 17,  7, OLIVINE_LIGHTHOUSE_5F, 5
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 7, 14, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
-	object_event 11, 2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event  7, 14, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
+	object_event 11,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 
 TrainerLassConnie:
 	trainer LASS, CONNIE, EVENT_BEAT_LASS_CONNIE, LassConnieSeenText, LassConnieBeatenText, 0, LassConnieScript

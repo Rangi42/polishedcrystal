@@ -4,32 +4,32 @@ Route32Coast_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 57, UNION_CAVE_B1F_SOUTH, 4
+	warp_event  4, 57, UNION_CAVE_B1F_SOUTH, 4
 	warp_event 17, 51, ROUTE_32_COAST_HOUSE, 1
 
 	db 0 ; coord events
 
 	db 4 ; bg events
 	bg_event 15, 29, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
-	bg_event 5, 59, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
+	bg_event  5, 59, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
 	bg_event 17, 34, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
-	bg_event 5, 45, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
+	bg_event  5, 45, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
 
 	db 15 ; object events
-	object_event 9, 5, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMichel, -1
+	object_event  9,  5, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMichel, -1
 	object_event 18, 67, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermLucas, -1
-	object_event 20, 8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfAlison, -1
+	object_event 20,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfAlison, -1
 	object_event 23, 17, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfStephanie, -1
 	object_event 18, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPowell, -1
 	object_event 14, 62, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerChloe, -1
 	object_event 24, 62, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherKiley, -1
-	object_event 6, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperCraig, -1
+	object_event  6, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperCraig, -1
 	object_event 11, 45, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerLassLayla, -1
 	object_event 25, 35, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae1, -1
 	object_event 25, 36, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae2, -1
-	object_event 6, 61, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route32CoastLassText, -1
+	object_event  6, 61, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route32CoastLassText, -1
 	fruittree_event 21, 51, FRUITTREE_ROUTE_32_COAST, ASPEAR_BERRY
-	itemball_event 5, 18, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
+	itemball_event  5, 18, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
 	itemball_event 22, 63, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
 
 TrainerSwimmermMichel:

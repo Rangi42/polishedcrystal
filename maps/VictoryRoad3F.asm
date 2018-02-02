@@ -4,7 +4,7 @@ VictoryRoad3F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 2, 5, VICTORY_ROAD_2F, 3
+	warp_event  2,  5, VICTORY_ROAD_2F, 3
 	warp_event 15, 11, VICTORY_ROAD_2F, 4
 	warp_event 19, 13, VICTORY_ROAD_2F, 5
 
@@ -13,7 +13,7 @@ VictoryRoad3F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 11, 8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmRemy, -1
+	object_event 11,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerVeteranmRemy, -1
 	itemball_event 16, 13, RAZOR_FANG, 1, EVENT_VICTORY_ROAD_3F_RAZOR_FANG
 
 TrainerVeteranmRemy:

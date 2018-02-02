@@ -11,5 +11,5 @@ MagnetTunnelWest_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	smashrock_event 9, 8
-	smashrock_event 7, 5
+	smashrock_event  9, 8
+	smashrock_event  7, 5

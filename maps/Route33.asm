@@ -5,7 +5,7 @@ Route33_MapScriptHeader:
 	callback MAPCALLBACK_TILES, Route33RainScript
 
 	db 1 ; warp events
-	warp_event 11, 9, UNION_CAVE_1F, 3
+	warp_event 11,  9, UNION_CAVE_1F, 3
 
 	db 0 ; coord events
 
@@ -13,7 +13,7 @@ Route33_MapScriptHeader:
 	bg_event 11, 11, SIGNPOST_JUMPTEXT, Route33SignText
 
 	db 3 ; object events
-	object_event 6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
+	object_event  6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
 	object_event 12, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSchoolgirlImogen, -1
 	fruittree_event 14, 16, FRUITTREE_ROUTE_33, PECHA_BERRY
 

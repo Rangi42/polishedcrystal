@@ -4,26 +4,26 @@ CeladonUniversityClassroom1_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 11, CELADON_UNIVERSITY_1F, 6
-	warp_event 3, 11, CELADON_UNIVERSITY_1F, 6
+	warp_event  2, 11, CELADON_UNIVERSITY_1F, 6
+	warp_event  3, 11, CELADON_UNIVERSITY_1F, 6
 
 	db 0 ; coord events
 
 	db 5 ; bg events
-	bg_event 2, 0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
-	bg_event 3, 0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
-	bg_event 4, 0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
-	bg_event 6, 1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf1Text
-	bg_event 7, 1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf2Text
+	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
+	bg_event  4,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1BlackboardText
+	bg_event  6,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf1Text
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf2Text
 
 	db 7 ; object events
-	object_event 0, 7, SPRITE_IMAKUNI, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
-	object_event 1, 2, SPRITE_ANDY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1AndyText, -1
-	object_event 5, 2, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Dragon_tamerText, -1
-	object_event 2, 5, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1LadyText, -1
-	object_event 5, 5, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist1Text, -1
-	object_event 4, 7, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist2Text, -1
-	object_event 3, 9, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist3Text, -1
+	object_event  0,  7, SPRITE_IMAKUNI, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
+	object_event  1,  2, SPRITE_ANDY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1AndyText, -1
+	object_event  5,  2, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Dragon_tamerText, -1
+	object_event  2,  5, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1LadyText, -1
+	object_event  5,  5, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist1Text, -1
+	object_event  4,  7, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist2Text, -1
+	object_event  3,  9, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1Artist3Text, -1
 
 	const_def 1 ; object constants
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI

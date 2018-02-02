@@ -4,20 +4,20 @@ SoulHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event 4, 9, LAVENDER_TOWN, 6
-	warp_event 5, 9, LAVENDER_TOWN, 6
-	warp_event 4, 2, SOUL_HOUSE_B1F, 1
+	warp_event  4,  9, LAVENDER_TOWN, 6
+	warp_event  5,  9, LAVENDER_TOWN, 6
+	warp_event  4,  2, SOUL_HOUSE_B1F, 1
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 5 ; object events
-	object_event 9, 7, SPRITE_AGATHA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
-	object_event 5, 2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, MrFujiText, EVENT_SOUL_HOUSE_MR_FUJI
-	object_event 7, 3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ed4d, -1
-	object_event 2, 7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7edb1, -1
-	object_event 1, 5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eddb, -1
+	object_event  9,  7, SPRITE_AGATHA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
+	object_event  5,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, MrFujiText, EVENT_SOUL_HOUSE_MR_FUJI
+	object_event  7,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ed4d, -1
+	object_event  2,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7edb1, -1
+	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eddb, -1
 
 	const_def 1 ; object constants
 	const SOULHOUSE_AGATHA

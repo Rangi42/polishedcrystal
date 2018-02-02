@@ -4,20 +4,20 @@ SinjohRuinsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, SINJOH_RUINS, 2
-	warp_event 3, 7, SINJOH_RUINS, 2
+	warp_event  2,  7, SINJOH_RUINS, 2
+	warp_event  3,  7, SINJOH_RUINS, 2
 
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event 0, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 1, 1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  0,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  1,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 4 ; object events
-	object_event 5, 4, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
-	object_event 5, 3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SinjohRuinsHousePokefanmText, -1
-	object_event 2, 4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseGrampsScript, -1
-	object_event 2, 3, SPRITE_ABRA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, SinjohRuinsHouseAbraText, -1
+	object_event  5,  4, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
+	object_event  5,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SinjohRuinsHousePokefanmText, -1
+	object_event  2,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseGrampsScript, -1
+	object_event  2,  3, SPRITE_ABRA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, SinjohRuinsHouseAbraText, -1
 
 	const_def 1 ; object constants
 	const SINJOHRUINSHOUSE_CYNTHIA

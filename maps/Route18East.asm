@@ -4,17 +4,17 @@ Route18East_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 4, 6, ROUTE_18_GATE, 3
-	warp_event 4, 7, ROUTE_18_GATE, 4
+	warp_event  4,  6, ROUTE_18_GATE, 3
+	warp_event  4,  7, ROUTE_18_GATE, 4
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 11, 5, SIGNPOST_JUMPTEXT, Route18SignText
+	bg_event 11,  5, SIGNPOST_JUMPTEXT, Route18SignText
 
 	db 2 ; object events
 	object_event 11, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBoris, -1
-	object_event 15, 6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBob, -1
+	object_event 15,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBob, -1
 
 TrainerBird_keeperBoris:
 	trainer BIRD_KEEPER, BORIS, EVENT_BEAT_BIRD_KEEPER_BORIS, Bird_keeperBorisSeenText, Bird_keeperBorisBeatenText, 0, Bird_keeperBorisScript

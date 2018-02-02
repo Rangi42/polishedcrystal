@@ -4,22 +4,22 @@ MountMortarB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 3, 3, MOUNT_MORTAR_1F_INSIDE, 5
+	warp_event  3,  3, MOUNT_MORTAR_1F_INSIDE, 5
 	warp_event 19, 29, MOUNT_MORTAR_1F_OUTSIDE, 7
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 4, 6, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
+	bg_event  4,  6, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
 
 	db 8 ; object events
 	object_event 11, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
-	object_event 16, 4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
-	strengthboulder_event 9, 10
+	object_event 16,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
+	strengthboulder_event  9, 10
 	itemball_event 29, 12, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
-	itemball_event 4, 16, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
+	itemball_event  4, 16, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
 	itemball_event 34, 24, PROTECTOR, 1, EVENT_MOUNT_MORTAR_B1F_PROTECTOR
-	itemball_event 32, 3, MAX_ETHER, 1, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
+	itemball_event 32,  3, MAX_ETHER, 1, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
 	itemball_event 21, 26, PP_UP, 1, EVENT_MOUNT_MORTAR_B1F_PP_UP
 
 MountMortarB1FHikerScript:

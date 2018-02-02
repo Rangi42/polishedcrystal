@@ -4,15 +4,15 @@ QuietCaveB1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 9 ; warp events
-	warp_event 5, 25, QUIET_CAVE_1F, 2
+	warp_event  5, 25, QUIET_CAVE_1F, 2
 	warp_event 29, 23, QUIET_CAVE_1F, 3
 	warp_event 19, 11, QUIET_CAVE_1F, 4
-	warp_event 3, 15, QUIET_CAVE_1F, 5
+	warp_event  3, 15, QUIET_CAVE_1F, 5
 	warp_event 31, 15, QUIET_CAVE_1F, 6
-	warp_event 21, 3, QUIET_CAVE_B2F, 1
+	warp_event 21,  3, QUIET_CAVE_B2F, 1
 	warp_event 17, 25, QUIET_CAVE_B2F, 2
 	warp_event 23, 33, QUIET_CAVE_B2F, 3
-	warp_event 32, 2, QUIET_CAVE_B2F, 4
+	warp_event 32,  2, QUIET_CAVE_B2F, 4
 
 	db 0 ; coord events
 
@@ -20,11 +20,11 @@ QuietCaveB1F_MapScriptHeader:
 	bg_event 26, 33, SIGNPOST_ITEM + HYPER_POTION, EVENT_QUIET_CAVE_B1F_HIDDEN_HYPER_POTION
 
 	db 6 ; object events
-	object_event 25, 4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
+	object_event 25,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBattleGirlKagami, -1
 	object_event 21, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerPokemaniacAidan, -1
 	object_event 33, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerHikerSteve, -1
-	object_event 4, 7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicVirgil, -1
-	itemball_event 8, 3, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
+	object_event  4,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicVirgil, -1
+	itemball_event  8,  3, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
 	itemball_event 14, 13, ELIXER, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
 
 TrainerBattleGirlKagami:

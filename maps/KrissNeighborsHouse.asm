@@ -4,18 +4,18 @@ KrissNeighborsHouse_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event 2, 7, NEW_BARK_TOWN, 3
-	warp_event 3, 7, NEW_BARK_TOWN, 3
+	warp_event  2,  7, NEW_BARK_TOWN, 3
+	warp_event  3,  7, NEW_BARK_TOWN, 3
 
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event 5, 1, SIGNPOST_READ, KrissNeighborsHouseRadio
+	bg_event  5,  1, SIGNPOST_READ, KrissNeighborsHouseRadio
 
 	db 3 ; object events
-	object_event 5, 3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborText, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
-	object_event 2, 3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsDaughterText, -1
-	object_event 5, 4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsHusbandText, -1
+	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborText, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
+	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsDaughterText, -1
+	object_event  5,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsHusbandText, -1
 
 KrissNeighborsHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM

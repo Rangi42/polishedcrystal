@@ -6,17 +6,17 @@ KarensRoom_MapScriptHeader:
 	callback MAPCALLBACK_TILES, KarensRoomDoorCallback
 
 	db 4 ; warp events
-	warp_event 4, 17, BRUNOS_ROOM, 3
-	warp_event 5, 17, BRUNOS_ROOM, 4
-	warp_event 4, 2, LANCES_ROOM, 1
-	warp_event 5, 2, LANCES_ROOM, 2
+	warp_event  4, 17, BRUNOS_ROOM, 3
+	warp_event  5, 17, BRUNOS_ROOM, 4
+	warp_event  4,  2, LANCES_ROOM, 1
+	warp_event  5,  2, LANCES_ROOM, 2
 
 	db 0 ; coord events
 
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 5, 7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript, -1
+	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript, -1
 
 KarensRoomEntranceTrigger:
 	priorityjump .Script

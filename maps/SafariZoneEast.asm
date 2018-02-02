@@ -4,24 +4,24 @@ SafariZoneEast_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 5 ; warp events
-	warp_event 2, 24, SAFARI_ZONE_HUB, 3
-	warp_event 2, 25, SAFARI_ZONE_HUB, 4
-	warp_event 2, 6, SAFARI_ZONE_NORTH, 1
-	warp_event 2, 7, SAFARI_ZONE_NORTH, 2
+	warp_event  2, 24, SAFARI_ZONE_HUB, 3
+	warp_event  2, 25, SAFARI_ZONE_HUB, 4
+	warp_event  2,  6, SAFARI_ZONE_NORTH, 1
+	warp_event  2,  7, SAFARI_ZONE_NORTH, 2
 	warp_event 27, 11, SAFARI_ZONE_EAST_REST_HOUSE, 1
 
 	db 0 ; coord events
 
 	db 3 ; bg events
-	bg_event 6, 24, SIGNPOST_JUMPTEXT, SafariZoneEastAreaSignText
+	bg_event  6, 24, SIGNPOST_JUMPTEXT, SafariZoneEastAreaSignText
 	bg_event 28, 12, SIGNPOST_JUMPTEXT, SafariZoneEastRestHouseSignText
-	bg_event 8, 6, SIGNPOST_JUMPTEXT, SafariZoneEastTrainerTipsSignText
+	bg_event  8,  6, SIGNPOST_JUMPTEXT, SafariZoneEastTrainerTipsSignText
 
 	db 4 ; object events
-	object_event 9, 11, SPRITE_COWGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerCowgirlApril, -1
+	object_event  9, 11, SPRITE_COWGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerCowgirlApril, -1
 	itemball_event 22, 15, CARBOS, 1, EVENT_SAFARI_ZONE_EAST_CARBOS
-	itemball_event 7, 13, SILVERPOWDER, 1, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
-	itemball_event 5, 3, FULL_RESTORE, 1, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
+	itemball_event  7, 13, SILVERPOWDER, 1, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
+	itemball_event  5,  3, FULL_RESTORE, 1, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
 
 TrainerCowgirlApril:
 	trainer COWGIRL, APRIL, EVENT_BEAT_COWGIRL_APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText, 0, CowgirlAprilScript
