@@ -13,7 +13,7 @@ CeruleanBerryPowderHouse_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 1 ; object events
-	object_event  5,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanBerryPowderHouseGrampsScript, -1
+	object_event  5,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CeruleanBerryPowderHouseGrampsScript, -1
 
 CeruleanBerryPowderHouseGrampsScript:
 	checkevent EVENT_GOT_HP_UP_FROM_CERULEAN

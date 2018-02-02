@@ -12,7 +12,7 @@ CeruleanBikeShop_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  1,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeruleanBikeShopClerkScript, -1
+	object_event  1,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CeruleanBikeShopClerkScript, -1
 
 CeruleanBikeShopClerkScript:
 	showtextfaceplayer CeruleanBikeShopClerkText

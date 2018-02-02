@@ -11,7 +11,7 @@ SoulHouseB3F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  4, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SoulHouseB3FMrFujiScript, EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
+	object_event  4, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SoulHouseB3FMrFujiScript, EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
 	itemball_event  6,  9, ESCAPE_ROPE, 1, EVENT_SOUL_HOUSE_B3F_ESCAPE_ROPE
 
 	const_def 1 ; object constants

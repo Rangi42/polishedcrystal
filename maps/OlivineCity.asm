@@ -35,18 +35,18 @@ OlivineCity_MapScriptHeader:
 
 	db 15 ; object events
 	object_event 10,  7, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
-	object_event 20,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster1Script, -1
+	object_event 20,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster1Script, -1
 	object_event 26, 22, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor1Text, -1
 	object_event 15, 21, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor2Text, -1
-	object_event 31, 17, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityFisherText, -1
+	object_event 31, 17, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityFisherText, -1
 	object_event 31, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor3Text, -1
 	object_event 18, 26, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityPokefanFText, -1
 	object_event 21, 27, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN) | (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityPokefanMText, -1
 	object_event 23, 16, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor4Text, -1
 	object_event 23, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor5Text, -1
-	object_event 26, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass1Text, -1
-	object_event 28, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityYoungster2Text, -1
-	object_event  8, 21, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass2Text, -1
+	object_event 26, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << MORN), PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass1Text, -1
+	object_event 28, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityYoungster2Text, -1
+	object_event  8, 21, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass2Text, -1
 	smashrock_event 52, 23
 	smashrock_event 55, 26
 

@@ -12,7 +12,7 @@ SilverCaveRoom3_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 10,  6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
+	object_event 10,  6, SPRITE_RED, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Red, EVENT_RED_IN_MT_SILVER
 
 	const_def 1 ; object constants
 	const SILVERCAVEROOM3_RED

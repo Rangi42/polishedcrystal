@@ -14,7 +14,7 @@ Route16South_MapScriptHeader:
 	bg_event  5,  9, SIGNPOST_JUMPTEXT, CyclingRoadSignText
 
 	db 1 ; object events
-	object_event  6, 11, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1
+	object_event  6, 11, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 UnknownScript_0x1ad318:
 	setflag ENGINE_ALWAYS_ON_BIKE

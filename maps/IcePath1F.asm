@@ -14,8 +14,8 @@ IcePath1F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 5 ; object events
-	object_event 29, 10, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSkierMaria, -1
-	object_event 28,  3, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBoarderStefan, -1
+	object_event 29, 10, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSkierMaria, -1
+	object_event 28,  3, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBoarderStefan, -1
 	tmhmball_event 31,  7, HM_WATERFALL, EVENT_GOT_HM06_WATERFALL
 	itemball_event 32, 23, PP_UP, 1, EVENT_ICE_PATH_1F_PP_UP
 	itemball_event 35,  9, PROTEIN, 1, EVENT_ICE_PATH_1F_PROTEIN

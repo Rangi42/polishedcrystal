@@ -13,8 +13,8 @@ PsychicInversHouse_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 2 ; object events
-	object_event  2,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
-	object_event  6,  3, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
+	object_event  2,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
+	object_event  6,  3, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
 
 	const_def 1 ; object constants
 	const PSYCHICINVERSHOUSE_INVER

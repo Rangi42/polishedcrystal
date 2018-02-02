@@ -13,7 +13,7 @@ MrPsychicsHouse_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 1 ; object events
-	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MrPsychic, -1
+	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, MrPsychic, -1
 
 MrPsychic:
 	faceplayer

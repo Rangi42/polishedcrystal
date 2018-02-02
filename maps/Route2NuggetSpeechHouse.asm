@@ -12,7 +12,7 @@ Route2NuggetSpeechHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  1,  4, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route2NuggetSpeechHouseFisherScript, -1
+	object_event  1,  4, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Route2NuggetSpeechHouseFisherScript, -1
 
 Route2NuggetSpeechHouseFisherScript:
 	checkevent EVENT_GOT_NUGGET_FROM_GUY

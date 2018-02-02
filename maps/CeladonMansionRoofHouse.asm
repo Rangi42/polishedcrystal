@@ -12,7 +12,7 @@ CeladonMansionRoofHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  3,  2, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
+	object_event  3,  2, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
 
 CeladonMansionRoofHousePharmacistScript:
 	checkevent EVENT_GOT_TM03_CURSE

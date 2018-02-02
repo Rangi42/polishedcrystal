@@ -15,7 +15,7 @@ Route5_MapScriptHeader:
 	bg_event 17, 29, SIGNPOST_JUMPTEXT, Route5UndergroundPathSignText
 
 	db 1 ; object events
-	object_event 17, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x1adb19Text, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 17, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x1adb19Text, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 
 PokefanMScript_0x1adb19Text:
 	text "The road is closed"

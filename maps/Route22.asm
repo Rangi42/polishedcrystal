@@ -12,8 +12,8 @@ Route22_MapScriptHeader:
 	bg_event  6,  6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
 
 	db 2 ; object events
-	object_event 14, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
-	object_event 20,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
+	object_event 14, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
+	object_event 20,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 
 	const_def 1 ; object constants
 	const ROUTE22_KUKUI

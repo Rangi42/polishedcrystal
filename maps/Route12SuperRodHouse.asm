@@ -12,7 +12,7 @@ Route12SuperRodHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x7f484, -1
+	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x7f484, -1
 
 FishingGuruScript_0x7f484:
 	faceplayer

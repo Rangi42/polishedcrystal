@@ -26,8 +26,8 @@ IvysLab_MapScriptHeader:
 
 	db 3 ; object events
 	object_event  4,  2, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
-	object_event  5,  2, SPRITE_NIDORINO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
-	object_event  2,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
+	object_event  5,  2, SPRITE_NIDORINO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
+	object_event  2,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
 	const_def 1 ; object constants
 	const IVYSLAB_IVY

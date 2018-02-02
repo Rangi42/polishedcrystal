@@ -21,7 +21,7 @@ GoldenrodBikeShop_MapScriptHeader:
 	bg_event  7,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
 
 	db 1 ; object events
-	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
+	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
 
 ClerkScript_0x54750:
 	faceplayer

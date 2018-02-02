@@ -13,7 +13,7 @@ VermilionHouseFishingSpeechHouse_MapScriptHeader:
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, FishingDudesHousePhotoText
 
 	db 1 ; object events
-	object_event  2,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
+	object_event  2,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, FishingDudeText, -1
 
 FishingDudeText:
 	text "I am the Fishing"

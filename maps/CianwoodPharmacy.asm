@@ -15,7 +15,7 @@ CianwoodPharmacy_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 1 ; object events
-	object_event  4,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
+	object_event  4,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CianwoodPharmacist, -1
 
 CianwoodPharmacist:
 	checkevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY

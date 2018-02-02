@@ -12,8 +12,8 @@ Route19BeachHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event  2,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
-	object_event  6,  4, SPRITE_SURFING_PIKACHU, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1
+	object_event  2,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
+	object_event  6,  4, SPRITE_SURFING_PIKACHU, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1
 
 	const_def 1 ; object constants
 	const ROUTE19BEACHHOUSE_VICTOR

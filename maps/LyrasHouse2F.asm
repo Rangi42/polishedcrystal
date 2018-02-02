@@ -14,9 +14,9 @@ LyrasHouse2F_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_READ, PokemonJournalProfElmScript
 
 	db 3 ; object events
-	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
-	object_event  3,  3, SPRITE_AMPHAROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, AMPHAROS, LyrasHouseAmpharosText, EVENT_LYRA_IN_HER_ROOM
-	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
+	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
+	object_event  3,  3, SPRITE_AMPHAROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_POKEMON, AMPHAROS, LyrasHouseAmpharosText, EVENT_LYRA_IN_HER_ROOM
+	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
 
 LyrasHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM

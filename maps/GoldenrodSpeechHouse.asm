@@ -12,8 +12,8 @@ GoldenrodSpeechHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event  2,  3, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseLadyText, -1
-	object_event  7,  2, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseTeacherText, -1
+	object_event  2,  3, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseLadyText, -1
+	object_event  7,  2, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseTeacherText, -1
 
 GoldenrodSpeechHouseLadyText:
 	text "The Underground is"

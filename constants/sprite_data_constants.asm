@@ -27,6 +27,17 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 	const PAL_OW_TREE   ; 6
 	const PAL_OW_ROCK   ; 7
 
+; for object_events
+	const_def (1 << 3)
+	const PAL_NPC_RED    ; 8
+	const PAL_NPC_BLUE   ; 9
+	const PAL_NPC_GREEN  ; a
+	const PAL_NPC_BROWN  ; b
+	const PAL_NPC_PURPLE ; c
+	const PAL_NPC_SILVER ; d
+	const PAL_NPC_TREE   ; e
+	const PAL_NPC_ROCK   ; f
+
 ; for party menu icons
 	const_def PAL_OW_SILVER
 	const PAL_OW_GRAY   ; 5

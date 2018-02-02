@@ -14,7 +14,7 @@ ValenciaPort_MapScriptHeader:
 
 	db 2 ; object events
 	object_event 11,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ValenciaPortSailorScript, -1
-	object_event 13, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaPortFisherText, -1
+	object_event 13, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaPortFisherText, -1
 
 	const_def 1 ; object constants
 	const VALENCIAPORT_SAILOR

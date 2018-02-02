@@ -12,8 +12,8 @@ CeladonOldManSpeechHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonOldManSpeechHouseGrampsText, -1
-	object_event  5,  4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonOldManSpeechHouseLadyText, -1
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonOldManSpeechHouseGrampsText, -1
+	object_event  5,  4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonOldManSpeechHouseLadyText, -1
 
 CeladonOldManSpeechHouseGrampsText:
 	text "Whashat?"

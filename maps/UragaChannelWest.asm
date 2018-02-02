@@ -13,7 +13,7 @@ UragaChannelWest_MapScriptHeader:
 	bg_event  7, 11, SIGNPOST_ITEM + BIG_PEARL, EVENT_URAGA_CHANNEL_WEST_HIDDEN_BIG_PEARL
 
 	db 1 ; object events
-	object_event  5,  9, SPRITE_ENGINEER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
+	object_event  5,  9, SPRITE_ENGINEER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UragaChannelWestEngineerText, -1
 
 UragaChannelWestEngineerText:
 	text "The currents wash"

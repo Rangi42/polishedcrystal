@@ -13,8 +13,8 @@ KrissNeighborsHouse_MapScriptHeader:
 	bg_event  5,  1, SIGNPOST_READ, KrissNeighborsHouseRadio
 
 	db 3 ; object events
-	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborText, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
-	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsDaughterText, -1
+	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborText, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
+	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsDaughterText, -1
 	object_event  5,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsHusbandText, -1
 
 KrissNeighborsHouseRadio:

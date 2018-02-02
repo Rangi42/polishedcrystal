@@ -16,7 +16,7 @@ KogasRoom_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  5,  7, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript, -1
+	object_event  5,  7, SPRITE_KOGA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, KogaScript, -1
 
 KogasRoomEntranceTrigger:
 	priorityjump .Script

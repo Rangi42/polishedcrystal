@@ -17,7 +17,7 @@ CeladonHotel2F_MapScriptHeader:
 	bg_event 13,  0, SIGNPOST_JUMPTEXT, CeladonHotel2FRoom3Text
 
 	db 1 ; object events
-	object_event 11,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel2FTeacherText, -1
+	object_event 11,  2, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotel2FTeacherText, -1
 
 CeladonHotel2FTeacherText:
 	text "I'm on a surprise"

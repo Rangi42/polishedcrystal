@@ -13,12 +13,12 @@ StormyBeach_MapScriptHeader:
 	bg_event 17,  6, SIGNPOST_ITEM + STARDUST, EVENT_STORMY_BEACH_HIDDEN_STARDUST
 
 	db 11 ; object events
-	object_event  5, 13, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfBarbara, -1
-	object_event 14,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperJulian, -1
-	object_event 28,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerCamperFelix, -1
-	object_event 24, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPicnickerLily, -1
-	object_event 26, 17, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, StormyBeachSwimmermText, -1
-	object_event 32, 12, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, StormyBeachGrampsText, -1
+	object_event  5, 13, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfBarbara, -1
+	object_event 14,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperJulian, -1
+	object_event 28,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerCamperFelix, -1
+	object_event 24, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPicnickerLily, -1
+	object_event 26, 17, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, StormyBeachSwimmermText, -1
+	object_event 32, 12, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, StormyBeachGrampsText, -1
 	itemball_event 34,  7, ZINC, 1, EVENT_STORMY_BEACH_ZINC
 	smashrock_event 16, 6
 	smashrock_event 17, 7

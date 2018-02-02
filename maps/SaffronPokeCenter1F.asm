@@ -15,9 +15,9 @@ SaffronPokeCenter1F_MapScriptHeader:
 
 	db 4 ; object events
 	pc_nurse_event  5, 1
-	object_event 11,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SaffronPokeCenter1FFisherScript, -1
-	object_event  2,  4, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FTeacherText, -1
-	object_event  8,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FYoungsterText, -1
+	object_event 11,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, SaffronPokeCenter1FFisherScript, -1
+	object_event  2,  4, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FTeacherText, -1
+	object_event  8,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronPokeCenter1FYoungsterText, -1
 
 PokemonJournalSabrinaScript:
 	setflag ENGINE_READ_SABRINA_JOURNAL

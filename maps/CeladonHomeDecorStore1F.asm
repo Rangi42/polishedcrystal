@@ -14,12 +14,12 @@ CeladonHomeDecorStore1F_MapScriptHeader:
 	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore1FDirectoryText
 
 	db 6 ; object events
-	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
-	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
-	object_event  7,  5, SPRITE_BULBASAUR, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
-	object_event  8,  5, SPRITE_CHARMANDER, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
-	object_event  9,  5, SPRITE_SQUIRTLE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
-	object_event  0,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
+	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
+	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
+	object_event  7,  5, SPRITE_BULBASAUR, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
+	object_event  8,  5, SPRITE_CHARMANDER, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
+	object_event  9,  5, SPRITE_SQUIRTLE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
+	object_event  0,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
 
 CeladonHomeDecorStore1FClerkScript:
 	faceplayer

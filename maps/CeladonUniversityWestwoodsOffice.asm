@@ -16,7 +16,7 @@ CeladonUniversityWestwoodsOffice_MapScriptHeader:
 	bg_event  5,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 
 	db 2 ; object events
-	object_event  4,  3, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
+	object_event  4,  3, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
 	object_event  1,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, CeladonUniversityWestwoodsOfficeBookText, -1
 
 CeladonUniversityWestwoodsOfficeChildScript:

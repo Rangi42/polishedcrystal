@@ -14,7 +14,7 @@ Route18West_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
+	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE

@@ -12,7 +12,7 @@ LavenderTownSpeechHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ea4d, -1
+	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ea4d, -1
 
 UnknownText_0x7ea4d:
 	text "Lavender is a"

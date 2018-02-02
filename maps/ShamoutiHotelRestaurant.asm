@@ -15,7 +15,7 @@ ShamoutiHotelRestaurant_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
+	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
 
 	const_def 1 ; object constants
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST

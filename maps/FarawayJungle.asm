@@ -12,7 +12,7 @@ FarawayJungle_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event 12, 10, SPRITE_MEW, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
+	object_event 12, 10, SPRITE_MEW, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
 
 	const_def 1 ; object constants
 	const FARAWAYJUNGLE_MEW

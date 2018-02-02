@@ -19,7 +19,7 @@ ValenciaIsland_MapScriptHeader:
 
 	db 2 ; object events
 	object_event  7,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaIslandCooltrainermText, -1
-	object_event 10, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
+	object_event 10, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 
 ValenciaIslandCooltrainermText:
 	text "A couple of strong"
