@@ -20,9 +20,9 @@ GrampsScript_0x189538:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue .JustShowedSomething
+	iftrue_jumpopenedtext BillsGrandpaComeAgainText
 	checkevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
-	iftrue .GotShinyStone
+	iftrue_jumpopenedtext BillsGrandpaShownAllThePokemonText
 	checkevent EVENT_MET_BILLS_GRANDPA
 	iftrue .MetGrandpa
 	writetext BillsGrandpaIntroText
@@ -51,10 +51,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal SNUBBULL, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_SNUBBULL_TO_BILLS_GRANDPA
@@ -65,10 +65,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal BELLSPROUT, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_BELLSPROUT_TO_BILLS_GRANDPA
@@ -79,10 +79,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal STARYU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
@@ -93,10 +93,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal GROWLITHE, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
@@ -107,10 +107,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal PICHU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
@@ -121,10 +121,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal JIGGLYPUFF, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_JIGGLYPUFF_TO_BILLS_GRANDPA
@@ -135,10 +135,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal ODDISH, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
@@ -149,10 +149,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal MURKROW, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_MURKROW_TO_BILLS_GRANDPA
@@ -163,10 +163,10 @@ GrampsScript_0x189538:
 	buttonsound
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
-	iffalse .SaidNo
+	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
 	if_not_equal TOGEPI, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
@@ -177,7 +177,7 @@ GrampsScript_0x189538:
 	iftrue .GotEverstone
 	scall .ReceiveItem
 	verbosegiveitem EVERSTONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -187,7 +187,7 @@ GrampsScript_0x189538:
 	iftrue .GotLeafStone
 	scall .ReceiveItem
 	verbosegiveitem LEAF_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -197,7 +197,7 @@ GrampsScript_0x189538:
 	iftrue .GotWaterStone
 	scall .ReceiveItem
 	verbosegiveitem WATER_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -207,7 +207,7 @@ GrampsScript_0x189538:
 	iftrue .GotFireStone
 	scall .ReceiveItem
 	verbosegiveitem FIRE_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -217,7 +217,7 @@ GrampsScript_0x189538:
 	iftrue .GotThunderstone
 	scall .ReceiveItem
 	verbosegiveitem THUNDERSTONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -227,7 +227,7 @@ GrampsScript_0x189538:
 	iftrue .GotMoonStone
 	scall .ReceiveItem
 	verbosegiveitem MOON_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -237,7 +237,7 @@ GrampsScript_0x189538:
 	iftrue .GotSunStone
 	scall .ReceiveItem
 	verbosegiveitem SUN_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -247,7 +247,7 @@ GrampsScript_0x189538:
 	iftrue .GotDuskStone
 	scall .ReceiveItem
 	verbosegiveitem DUSK_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
 	setevent EVENT_GAVE_KURT_APRICORNS
 	endtext
@@ -255,7 +255,7 @@ GrampsScript_0x189538:
 .ShowedTogepi:
 	scall .ReceiveItem
 	verbosegiveitem SHINY_STONE
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
 	endtext
 
@@ -263,9 +263,6 @@ GrampsScript_0x189538:
 	writetext BillsGrandpaExcitedToSeeText
 	buttonsound
 	end
-
-.SaidNo:
-	jumpopenedtext BillsGrandpaYouDontHaveItTextText
 
 .CorrectPokemon:
 	writetext BillsGrandpaShownPokemonText
@@ -277,17 +274,15 @@ GrampsScript_0x189538:
 	buttonsound
 	end
 
-.JustShowedSomething:
-	jumpopenedtext BillsGrandpaComeAgainText
-
-.GotShinyStone:
-	jumpopenedtext BillsGrandpaShownAllThePokemonText
-
 .WrongPokemon:
-	jumpopenedtext BillsGrandpaWrongPokemonText
+	thisopenedtext
 
-.BagFull:
-	endtext
+	text "Hm?"
+
+	para "That's not the"
+	line "#mon that I was"
+	cont "told about."
+	done
 
 BillsMom:
 	checkevent EVENT_NEVER_MET_BILL
@@ -312,13 +307,20 @@ BillsSister:
 UnknownScript_0x54c58: ;0x54c58
 	jumpopenedtext UnknownText_0x55069
 
-UnknownScript_0x54c5e:
-	jumpopenedtext UnknownText_0x54ff3
-
 UnknownScript_0x54c64:
 	writetext UnknownText_0x55046
 	buttonsound
-	jump UnknownScript_0x54c5e
+UnknownScript_0x54c5e:
+	thisopenedtext
+
+	text "My brother made"
+	line "the PC #mon"
+	cont "storage system."
+
+	para "I was going to"
+	line "give you Bill's"
+	cont "number…"
+	done
 
 BillsGrandpaIntroText:
 	text "Hm? You know Bill?"
@@ -380,14 +382,6 @@ BillsGrandpaShownAllThePokemonText:
 
 	para "I've lived such a"
 	line "long life."
-	done
-
-BillsGrandpaWrongPokemonText:
-	text "Hm?"
-
-	para "That's not the"
-	line "#mon that I was"
-	cont "told about."
 	done
 
 BillsGrandpaSnubbullText:
@@ -543,16 +537,6 @@ UnknownText_0x54f9e:
 UnknownText_0x54fd9:
 	text "<PLAYER> recorded"
 	line "Bill's number."
-	done
-
-UnknownText_0x54ff3:
-	text "My brother made"
-	line "the PC #mon"
-	cont "storage system."
-
-	para "I was going to"
-	line "give you Bill's"
-	cont "number…"
 	done
 
 UnknownText_0x55046:

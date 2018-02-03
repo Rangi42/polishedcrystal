@@ -196,8 +196,19 @@ VermilionGymBadgeGuy:
 	verbosegiveitem BOTTLE_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
-.AlreadyGotItem:
-	jumpopenedtext UnknownText_0x1aad4a
+	thisopenedtext
+
+UnknownText_0x1aad4a:
+	text "Having a variety"
+	line "of #mon types"
+
+	para "should give you an"
+	line "edge in battle."
+
+	para "I'm sure the Kanto"
+	line "Gym Badges will"
+	cont "help you."
+	done
 
 LawrenceOverheardText:
 	text "…So the legendary"
@@ -366,18 +377,6 @@ UnknownText_0x1aacf3:
 
 	para "I've got a reward"
 	line "for your efforts."
-	done
-
-UnknownText_0x1aad4a:
-	text "Having a variety"
-	line "of #mon types"
-
-	para "should give you an"
-	line "edge in battle."
-
-	para "I'm sure the Kanto"
-	line "Gym Badges will"
-	cont "help you."
 	done
 
 VermilionCitySignText:

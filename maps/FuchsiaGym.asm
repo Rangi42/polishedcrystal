@@ -73,15 +73,20 @@ JanineScript_0x195db9:
 	opentext
 UnknownScript_0x195e02:
 	checkevent EVENT_GOT_TM66_POISON_JAB
-	iftrue UnknownScript_0x195e15
+	iftrue_jumpopenedtext UnknownText_0x196074
 	writetext UnknownText_0x196002
 	buttonsound
 	verbosegivetmhm TM_POISON_JAB
 	setevent EVENT_GOT_TM66_POISON_JAB
-	jumpopenedtext JanineOutroText
+	thisopenedtext
 
-UnknownScript_0x195e15:
-	jumpopenedtext UnknownText_0x196074
+	text "It's Poison Jab,"
+	line "a powerful Poison-"
+
+	para "type move that"
+	line "may poison its"
+	cont "victim."
+	done
 
 FuchsiaGym1Script_0x195e1b:
 	checkevent EVENT_BEAT_LASS_AMANDA
@@ -94,7 +99,7 @@ UnknownScript_0x195e2c:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_LASS_AMANDA
-	iftrue UnknownScript_0x195e4f
+	iftrue_jumpopenedtext UnknownText_0x196139
 	writetext UnknownText_0x1960e6
 	waitbutton
 	closetext
@@ -111,9 +116,6 @@ UnknownScript_0x195e4a:
 	reloadmapafterbattle
 	end
 
-UnknownScript_0x195e4f:
-	jumpopenedtext UnknownText_0x196139
-
 FuchsiaGym2Script_0x195e55:
 	checkevent EVENT_BEAT_LASS_LINDA
 	iftrue UnknownScript_0x195e66
@@ -125,7 +127,7 @@ UnknownScript_0x195e66:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_LASS_LINDA
-	iftrue UnknownScript_0x195e89
+	iftrue_jumpopenedtext UnknownText_0x196199
 	writetext UnknownText_0x196166
 	waitbutton
 	closetext
@@ -142,9 +144,6 @@ UnknownScript_0x195e84:
 	reloadmapafterbattle
 	end
 
-UnknownScript_0x195e89:
-	jumpopenedtext UnknownText_0x196199
-
 FuchsiaGym3Script_0x195e8f:
 	checkevent EVENT_BEAT_PICNICKER_CINDY
 	iftrue UnknownScript_0x195ea0
@@ -156,7 +155,7 @@ UnknownScript_0x195ea0:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_PICNICKER_CINDY
-	iftrue UnknownScript_0x195ec3
+	iftrue_jumpopenedtext UnknownText_0x19620c
 	writetext UnknownText_0x1961bb
 	waitbutton
 	closetext
@@ -173,9 +172,6 @@ UnknownScript_0x195ebe:
 	reloadmapafterbattle
 	end
 
-UnknownScript_0x195ec3:
-	jumpopenedtext UnknownText_0x19620c
-
 FuchsiaGym4Script_0x195ec9:
 	checkevent EVENT_BEAT_CAMPER_BARRY
 	iftrue UnknownScript_0x195eda
@@ -187,7 +183,7 @@ UnknownScript_0x195eda:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CAMPER_BARRY
-	iftrue UnknownScript_0x195efd
+	iftrue_jumpopenedtext UnknownText_0x19626b
 	writetext UnknownText_0x196228
 	waitbutton
 	closetext
@@ -203,9 +199,6 @@ UnknownScript_0x195ef8:
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_JANINE
 	reloadmapafterbattle
 	end
-
-UnknownScript_0x195efd:
-	jumpopenedtext UnknownText_0x19626b
 
 FuchsiaGymGuyScript:
 	checkevent EVENT_BEAT_JANINE
@@ -276,15 +269,6 @@ UnknownText_0x196002:
 	text "Janine: You're so"
 	line "tough! I have a"
 	cont "special gift!"
-	done
-
-JanineOutroText:
-	text "It's Poison Jab,"
-	line "a powerful Poison-"
-
-	para "type move that"
-	line "may poison its"
-	cont "victim."
 	done
 
 UnknownText_0x196074:

@@ -15,8 +15,8 @@ DragonShrine_MapScriptHeader:
 	db 4 ; object events
 	object_event  5,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d1a5, EVENT_GAVE_KURT_APRICORNS
 	object_event  4,  8, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
-	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d205, EVENT_GAVE_KURT_APRICORNS
-	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ElderScript_0x18d20d, EVENT_GAVE_KURT_APRICORNS
+	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18d840, EVENT_GAVE_KURT_APRICORNS
+	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18d8b1, EVENT_GAVE_KURT_APRICORNS
 
 	const_def 1 ; object constants
 	const DRAGONSHRINE_ELDER1
@@ -174,13 +174,13 @@ ElderScript_0x18d1a5:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue .DontGiveDratiniYet
+	iftrue_jumpopenedtext UnknownText_0x18d5e5
 	checkevent EVENT_JUST_RECEIVED_DRATINI
-	iftrue .ReceivedDratini
+	iftrue_jumpopenedtext UnknownText_0x18d6ca
 	checkevent EVENT_GOT_DRATINI
 	iffalse .GiveDratini
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iftrue .BeatRivalInMtMoon
+	iftrue_jumpopenedtext UnknownText_0x18d782
 	jumpopenedtext UnknownText_0x18d724
 
 .GiveDratini:
@@ -204,23 +204,6 @@ ElderScript_0x18d1a5:
 
 .PartyFull:
 	jumpopenedtext UnknownText_0x18d6ac
-
-.BeatRivalInMtMoon:
-	jumpopenedtext UnknownText_0x18d782
-
-.DontGiveDratiniYet:
-	jumpopenedtext UnknownText_0x18d5e5
-
-.ReceivedDratini:
-	jumpopenedtext UnknownText_0x18d6ca
-
-ElderScript_0x18d205:
-	faceplayer
-	jumptext UnknownText_0x18d840
-
-ElderScript_0x18d20d:
-	faceplayer
-	jumptext UnknownText_0x18d8b1
 
 MenuDataHeader_0x18d215:
 	db $40 ; flags

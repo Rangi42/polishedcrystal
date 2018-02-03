@@ -36,7 +36,7 @@ GentlemanScript_0x7ee6c:
 	faceplayer
 	opentext
 	checkflag ENGINE_EXPN_CARD
-	iftrue .UnknownScript_0x7ee8e
+	iftrue_jumpopenedtext .UnknownText_0x7f141
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .UnknownScript_0x7ee80
 	jumpopenedtext UnknownText_0x7effb
@@ -47,24 +47,43 @@ GentlemanScript_0x7ee6c:
 	stringtotext .expncardname, $1
 	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
-.UnknownScript_0x7ee8e:
-	jumpopenedtext UnknownText_0x7f141
+	thisopenedtext
+
+.UnknownText_0x7f141:
+	text "With that thing,"
+	line "you can tune into"
+
+	para "the radio programs"
+	line "here in Kanto."
+
+	para "Gahahahaha!"
+	done
 
 .expncardname
 	db "Expn.Card@"
 
 SuperNerdScript_0x7eea2:
-	faceplayer
-	opentext
 	checkflag ENGINE_EXPN_CARD
-	iftrue UnknownScript_0x7eeb0
-	jumpopenedtext UnknownText_0x7f193
+	iftrue_jumptextfaceplayer UnknownText_0x7f248
+	thistextfaceplayer
 
-UnknownScript_0x7eeb0:
-	jumpopenedtext UnknownText_0x7f248
+	text "Hey there!"
 
-UnknownScript_0x7eebc:
-	jumptext UnknownText_0x7f36b
+	para "I am the super"
+	line "Music Director!"
+
+	para "Huh? Your #gear"
+	line "can't tune into my"
+
+	para "music programs."
+	line "How unfortunate!"
+
+	para "If you get a Expn."
+	line "Card upgrade, you"
+
+	para "can tune in. You'd"
+	line "better get one!"
+	done
 
 UnknownText_0x7eebf:
 	text "Welcome!"
@@ -134,35 +153,6 @@ UnknownText_0x7f0a1:
 
 	para "Please take this"
 	line "as my thanks."
-	done
-
-UnknownText_0x7f141:
-	text "With that thing,"
-	line "you can tune into"
-
-	para "the radio programs"
-	line "here in Kanto."
-
-	para "Gahahahaha!"
-	done
-
-UnknownText_0x7f193:
-	text "Hey there!"
-
-	para "I am the super"
-	line "Music Director!"
-
-	para "Huh? Your #gear"
-	line "can't tune into my"
-
-	para "music programs."
-	line "How unfortunate!"
-
-	para "If you get a Expn."
-	line "Card upgrade, you"
-
-	para "can tune in. You'd"
-	line "better get one!"
 	done
 
 UnknownText_0x7f248:

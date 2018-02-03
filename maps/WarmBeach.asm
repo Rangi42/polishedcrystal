@@ -103,33 +103,32 @@ WarmBeachLassScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_SEASHORE_SHELL_BELL
-	iftrue .BoughtShellBell
+	iftrue_jumpopenedtext .Text3
 	writetext .Text1
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoBuy
+	iffalse_jumpopenedtext .Text4
 	checkmoney $0, 4000
 	if_equal $2, .NotEnoughMoney
 	giveitem SHELL_BELL
-	iffalse .NoRoom
+	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_SEASHORE_SHELL_BELL
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	jumpopenedtext .Text2
+	thisopenedtext
 
-.BoughtShellBell:
-	jumpopenedtext .Text3
-
-.NoBuy:
-	jumpopenedtext .Text4
+	text "One Shell Bell,"
+	line "just for you!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext .Text5
+	thisopenedtext
 
-.NoRoom:
-	jumpopenedtext .Text6
+	text "You don't have"
+	line "enough money…"
+	done
 
 .Text1:
 	text "I collect shells"
@@ -145,11 +144,6 @@ WarmBeachLassScript:
 	line "each. Want one?"
 	done
 
-.Text2:
-	text "One Shell Bell,"
-	line "just for you!"
-	done
-
 .Text3:
 	text "I only made one"
 	line "Shell Bell today…"
@@ -157,11 +151,6 @@ WarmBeachLassScript:
 
 .Text4:
 	text "That's OK!"
-	done
-
-.Text5:
-	text "You don't have"
-	line "enough money…"
 	done
 
 .Text6:

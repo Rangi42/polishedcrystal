@@ -17,7 +17,7 @@ FastShipCabins_SE_SSE_CaptainsCabin_MapScriptHeader:
 
 	db 11 ; object events
 	object_event  2, 17, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x75f1f, EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
-	object_event  3, 17, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x75f6d, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
+	object_event  3, 17, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7630d, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
 	object_event  2, 25, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x75ebb, EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
 	object_event  3, 25, SPRITE_CAPTAIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CaptainScript_0x75ea7, -1
 	object_event  5,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerPokefanmColin, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
@@ -76,7 +76,7 @@ GentlemanScript_0x75f1f:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
-	iftrue UnknownScript_0x75f67
+	iftrue_jumpopenedtext UnknownText_0x761be
 	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
 	iftrue UnknownScript_0x75f58
 	writetext UnknownText_0x760ae
@@ -105,17 +105,9 @@ UnknownScript_0x75f58:
 	writetext UnknownText_0x7619b
 	buttonsound
 	verbosegiveitem MACHO_BRACE
-	iffalse UnknownScript_0x75f65
+	iffalse_endtext
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
-UnknownScript_0x75f65:
 	endtext
-
-UnknownScript_0x75f67:
-	jumpopenedtext UnknownText_0x761be
-
-TwinScript_0x75f6d:
-	faceplayer
-	jumptext UnknownText_0x7630d
 
 GenericTrainerPokefanmColin:
 	generictrainer POKEFANM, COLIN, EVENT_BEAT_POKEFANM_COLIN, PokefanmColinSeenText, PokefanmColinBeatenText

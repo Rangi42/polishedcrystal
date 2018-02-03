@@ -50,7 +50,7 @@ WhitneyScript_0x5400c:
 
 .StoppedCrying:
 	checkevent EVENT_GOT_TM45_ATTRACT
-	iftrue UnknownScript_0x54077
+	iftrue_jumpopenedtext UnknownText_0x54360
 	checkflag ENGINE_PLAINBADGE
 	iftrue UnknownScript_0x54064
 	writetext UnknownText_0x54222
@@ -65,10 +65,18 @@ UnknownScript_0x54064:
 	buttonsound
 	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
-	jumpopenedtext UnknownText_0x54302
+	thisopenedtext
 
-UnknownScript_0x54077:
-	jumpopenedtext UnknownText_0x54360
+	text "It's Attract!"
+	line "It makes full use"
+
+	para "of a #mon's"
+	line "charm."
+
+	para "Isn't it just per-"
+	line "fect for a cutie"
+	cont "like me? ♥"
+	done
 
 GenericTrainerLassCathy:
 	generictrainer LASS, CATHY, EVENT_BEAT_LASS_CATHY, LassCathySeenText, LassCathyBeatenText
@@ -129,13 +137,30 @@ GenericTrainerBeautySamantha:
 	done
 
 GoldenrodGymGuyScript:
-	faceplayer
 	checkevent EVENT_BEAT_WHITNEY
-	iftrue .GoldenrodGymGuyWinScript
-	jumptext GoldenrodGymGuyText
+	iftrue_jumptextfaceplayer GoldenrodGymGuyWinText
+	thistextfaceplayer
 
-.GoldenrodGymGuyWinScript:
-	jumptext GoldenrodGymGuyWinText
+	text "Yo! Champ in"
+	line "making!"
+
+	para "This Gym is home"
+	line "to Normal-type"
+	cont "#mon trainers."
+
+	para "I recommend you"
+	line "use Fighting-type"
+	cont "#mon."
+
+	para "But be careful--"
+	line "Fairy #mon"
+
+	para "resist Fighting-"
+	line "type moves,"
+
+	para "and they're used"
+	line "here too!"
+	done
 
 GoldenrodGymStatue:
 	trainertotext WHITNEY, 1, $1
@@ -219,18 +244,6 @@ UnknownText_0x5428b:
 
 	para "Oh, you can have"
 	line "this too!"
-	done
-
-UnknownText_0x54302:
-	text "It's Attract!"
-	line "It makes full use"
-
-	para "of a #mon's"
-	line "charm."
-
-	para "Isn't it just per-"
-	line "fect for a cutie"
-	cont "like me? ♥"
 	done
 
 UnknownText_0x54360:
@@ -317,28 +330,6 @@ BeautySamanthaSeenText:
 BeautySamanthaBeatenText:
 	text "No! Oh, Meowth,"
 	line "I'm so sorry!"
-	done
-
-GoldenrodGymGuyText:
-	text "Yo! Champ in"
-	line "making!"
-
-	para "This Gym is home"
-	line "to Normal-type"
-	cont "#mon trainers."
-
-	para "I recommend you"
-	line "use Fighting-type"
-	cont "#mon."
-
-	para "But be careful--"
-	line "Fairy #mon"
-
-	para "resist Fighting-"
-	line "type moves,"
-
-	para "and they're used"
-	line "here too!"
 	done
 
 GoldenrodGymGuyWinText:

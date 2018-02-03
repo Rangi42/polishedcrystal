@@ -59,23 +59,17 @@ CooltrainerFScript_0x18402a:
 	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x184058
+	iftrue_jumptextfaceplayer UnknownText_0x18424e
 	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
-	iftrue UnknownScript_0x18405e
-UnknownScript_0x184058:
-	jumpopenedtext UnknownText_0x18424e
-
-UnknownScript_0x18405e:
-	jumpopenedtext UnknownText_0x184275
+	iftrue_jumptextfaceplayer UnknownText_0x184275
+	jumptextfaceplayer UnknownText_0x18424e
 
 YoungsterScript_0x184064:
+	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
+	iftrue_jumptextfaceplayer CeruleanCityYoungsterText
 	faceplayer
 	opentext
-	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
-	iftrue .FoundBerserkGene
 	writetext UnknownText_0x1842a9
 	waitbutton
 	closetext
@@ -99,9 +93,6 @@ YoungsterScript_0x184064:
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	spriteface CERULEANCITY_YOUNGSTER, LEFT
 	jumptext UnknownText_0x1842ee
-
-.FoundBerserkGene:
-	jumpopenedtext CeruleanCityYoungsterText
 
 UnknownText_0x1840bc:
 	text "Kanto's Power"

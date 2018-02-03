@@ -96,15 +96,23 @@ SabrinaScript_0x189c2e:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
-	iftrue SabrinaAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x189f6c
 	writetext UnknownText_0x189ead
 	buttonsound
 	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
-	jumpopenedtext SabrinaOutroText
+	thisopenedtext
 
-SabrinaAfterTMScript:
-	jumpopenedtext UnknownText_0x189f6c
+	text "TM29 is Psychic."
+
+	para "It may lower the"
+	line "target's Spcl.Def."
+
+	para "You will become a"
+	line "celebrated and"
+
+	para "beloved Champion!"
+	done
 
 GenericTrainerMediumDoris:
 	generictrainer MEDIUM, DORIS, EVENT_BEAT_MEDIUM_DORIS, MediumDorisSeenText, MediumDorisBeatenText
@@ -248,18 +256,6 @@ UnknownText_0x189ead:
 
 	para "You deserve this"
 	line "TM, too!"
-	done
-
-SabrinaOutroText:
-	text "TM29 is Psychic."
-
-	para "It may lower the"
-	line "target's Spcl.Def."
-
-	para "You will become a"
-	line "celebrated and"
-
-	para "beloved Champion!"
 	done
 
 UnknownText_0x189f6c:

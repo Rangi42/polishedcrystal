@@ -131,7 +131,26 @@ AcademyNotebook:
 
 PokemonJournalWillScript:
 	setflag ENGINE_READ_WILL_JOURNAL
-	jumptext PokemonJournalWillText
+	thistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Elite Four Will!"
+
+	para "Will does not talk"
+	line "about his past"
+
+	para "before joining the"
+	line "Elite Four."
+
+	para "Some say he worked"
+	line "for Team Rocket."
+
+	para "#mon Journal"
+	line "refuses to specu-"
+	cont "late."
+	done
 
 MovementData_0x68b2d:
 	turn_head_down
@@ -383,24 +402,4 @@ AcademyNotebookText3:
 
 	para "I haven't written"
 	line "any more…"
-	done
-
-PokemonJournalWillText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "Elite Four Will!"
-
-	para "Will does not talk"
-	line "about his past"
-
-	para "before joining the"
-	line "Elite Four."
-
-	para "Some say he worked"
-	line "for Team Rocket."
-
-	para "#mon Journal"
-	line "refuses to specu-"
-	cont "late."
 	done

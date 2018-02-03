@@ -67,16 +67,13 @@ MrPokemonsHouse_MrPokemonScript:
 	checkitem RED_SCALE
 	iftrue .RedScale
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .AlwaysNewDiscoveries
+	iftrue_jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 	jumpopenedtext MrPokemonText_ImDependingOnYou
-
-.AlwaysNewDiscoveries:
-	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 
 .RedScale:
 	writetext MrPokemonText_GimmeTheScale
 	yesorno
-	iffalse .refused
+	iffalse_jumpopenedtext MrPokemonText_Disappointed
 	checkcode VAR_PARTYCOUNT
 	if_equal PARTY_LENGTH, .party_full
 	special SpecialGiveShinyDitto
@@ -85,10 +82,7 @@ MrPokemonsHouse_MrPokemonScript:
 	playsound SFX_KEY_ITEM
 	waitsfx
 	takeitem RED_SCALE
-	jump .AlwaysNewDiscoveries
-
-.refused
-	jumpopenedtext MrPokemonText_Disappointed
+	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 
 .party_full
 	jumpopenedtext MrPokemonText_PartyFull

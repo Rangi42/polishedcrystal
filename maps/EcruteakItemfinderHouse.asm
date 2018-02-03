@@ -20,59 +20,15 @@ CooltrainerMScript_0x9a5fb:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_ITEMFINDER
-	iftrue UnknownScript_0x9a614
+	iftrue_jumpopenedtext UnknownText_0x9a70e
 	writetext UnknownText_0x9a63c
 	yesorno
-	iffalse UnknownScript_0x9a61a
+	iffalse_jumpopenedtext UnknownText_0x9a805
 	writetext UnknownText_0x9a6b5
 	buttonsound
 	verbosegiveitem ITEMFINDER
 	setevent EVENT_GOT_ITEMFINDER
-UnknownScript_0x9a614:
-	jumpopenedtext UnknownText_0x9a70e
-
-UnknownScript_0x9a61a:
-	jumpopenedtext UnknownText_0x9a805
-
-BookScript_0x9a620:
-	opentext
-	writetext UnknownText_0x9a826
-	yesorno
-	iftrue UnknownScript_0x9a62a
-	endtext
-
-UnknownScript_0x9a62a:
-	writetext UnknownText_0x9a84c
-	yesorno
-	iftrue UnknownScript_0x9a633
-	endtext
-
-UnknownScript_0x9a633:
-	jumpopenedtext UnknownText_0x9a902
-
-UnknownText_0x9a63c:
-	text "Ah. You're on an"
-	line "adventure with"
-	cont "your #mon?"
-
-	para "Well, what's an"
-	line "adventure without"
-	cont "treasure hunting?"
-
-	para "Am I right, or am"
-	line "I right?"
-	done
-
-UnknownText_0x9a6b5:
-	text "Good! You under-"
-	line "stand the true"
-
-	para "spirit of adven-"
-	line "ture."
-
-	para "I like that! Take"
-	line "this with you."
-	done
+	thisopenedtext
 
 UnknownText_0x9a70e:
 	text "There are many"
@@ -98,6 +54,63 @@ UnknownText_0x9a70e:
 
 	para "in Ecruteak's"
 	line "Burned Tower."
+	done
+
+BookScript_0x9a620:
+	opentext
+	writetext UnknownText_0x9a826
+	yesorno
+	iffalse_endtext
+	writetext UnknownText_0x9a84c
+	yesorno
+	iffalse_endtext
+	thisopenedtext
+
+	text "Ecruteak was also"
+	line "home to three"
+
+	para "#mon that raced"
+	line "around the town."
+
+	para "They were said to"
+	line "have been born of"
+
+	para "water, lightning"
+	line "and fire."
+
+	para "But they could not"
+	line "contain their"
+	cont "excessive power."
+
+	para "So they say the"
+	line "three ran like the"
+
+	para "wind off into the"
+	line "grassland."
+	done
+
+UnknownText_0x9a63c:
+	text "Ah. You're on an"
+	line "adventure with"
+	cont "your #mon?"
+
+	para "Well, what's an"
+	line "adventure without"
+	cont "treasure hunting?"
+
+	para "Am I right, or am"
+	line "I right?"
+	done
+
+UnknownText_0x9a6b5:
+	text "Good! You under-"
+	line "stand the true"
+
+	para "spirit of adven-"
+	line "ture."
+
+	para "I like that! Take"
+	line "this with you."
 	done
 
 UnknownText_0x9a805:
@@ -129,28 +142,4 @@ UnknownText_0x9a84c:
 	cont "since…"
 
 	para "Keep reading?"
-	done
-
-UnknownText_0x9a902:
-	text "Ecruteak was also"
-	line "home to three"
-
-	para "#mon that raced"
-	line "around the town."
-
-	para "They were said to"
-	line "have been born of"
-
-	para "water, lightning"
-	line "and fire."
-
-	para "But they could not"
-	line "contain their"
-	cont "excessive power."
-
-	para "So they say the"
-	line "three ran like the"
-
-	para "wind off into the"
-	line "grassland."
 	done

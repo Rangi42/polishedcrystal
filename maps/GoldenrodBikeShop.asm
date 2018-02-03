@@ -24,13 +24,13 @@ GoldenrodBikeShop_MapScriptHeader:
 	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
 
 ClerkScript_0x54750:
+	checkevent EVENT_GOT_BICYCLE
+	iftrue_jumptextfaceplayer UnknownText_0x5485f
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_BICYCLE
-	iftrue UnknownScript_0x54775
 	writetext UnknownText_0x54787
 	yesorno
-	iffalse UnknownScript_0x5477b
+	iffalse_jumpopenedtext UnknownText_0x54898
 	writetext UnknownText_0x547f8
 	buttonsound
 	waitsfx
@@ -41,11 +41,15 @@ ClerkScript_0x54750:
 	itemnotify
 	setflag ENGINE_BIKE_SHOP_CALL_ENABLED
 	setevent EVENT_GOT_BICYCLE
-UnknownScript_0x54775:
-	jumpopenedtext UnknownText_0x5485f
+	thisopenedtext
 
-UnknownScript_0x5477b:
-	jumpopenedtext UnknownText_0x54898
+UnknownText_0x5485f:
+	text "My Bicycles are"
+	line "first-rate! You"
+
+	para "can ride them"
+	line "anywhere."
+	done
 
 UnknownText_0x54787:
 	text "…sigh… I opened"
@@ -73,14 +77,6 @@ UnknownText_0x547f8:
 UnknownText_0x54848:
 	text "<PLAYER> borrowed a"
 	line "Bicycle."
-	done
-
-UnknownText_0x5485f:
-	text "My Bicycles are"
-	line "first-rate! You"
-
-	para "can ride them"
-	line "anywhere."
 	done
 
 UnknownText_0x54898:

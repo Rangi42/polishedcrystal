@@ -65,10 +65,10 @@ UnknownScript_0x184947:
 	end
 
 ElderLiScript:
+	checkevent EVENT_GOT_TM70_FLASH
+	iftrue_jumptextfaceplayer UnknownText_0x184d88
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM70_FLASH
-	iftrue UnknownScript_0x1849d1
 	writetext SageLiSeenText
 	waitbutton
 	closetext
@@ -82,10 +82,12 @@ ElderLiScript:
 	verbosegivetmhm TM_FLASH
 	setevent EVENT_GOT_TM70_FLASH
 	setevent EVENT_BEAT_ELDER_LI
-	jumpopenedtext UnknownText_0x184d13
+	thisopenedtext
 
-UnknownScript_0x1849d1:
-	jumpopenedtext UnknownText_0x184d88
+	text "Flash illuminates"
+	line "even the darkest"
+	cont "of all places."
+	done
 
 GenericTrainerSageJin:
 	generictrainer SAGE, JIN, EVENT_BEAT_SAGE_JIN, SageJinSeenText, SageJinBeatenText
@@ -215,12 +217,6 @@ UnknownText_0x184cc2:
 
 	para "Take this Flash"
 	line "TM."
-	done
-
-UnknownText_0x184d13:
-	text "Flash illuminates"
-	line "even the darkest"
-	cont "of all places."
 	done
 
 UnknownText_0x184d88:

@@ -48,7 +48,7 @@ ReceptionistScript_0x560ce:
 	writetext UnknownText_0x56143
 	buttonsound
 	if_greater_than $95, .VeryHappy
-	jump .SomewhatHappy
+	jumpopenedtext UnknownText_0x561a6
 
 .VeryHappy:
 	writetext UnknownText_0x5615a
@@ -57,31 +57,37 @@ ReceptionistScript_0x560ce:
 	setflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
 	endtext
 
-.SomewhatHappy:
-	jumpopenedtext UnknownText_0x561a6
-
 .EventIsOver:
-	jumpopenedtext UnknownText_0x56202
+	thisopenedtext
+
+	text "There are sure to"
+	line "be TMs that are"
+
+	para "just perfect for"
+	line "your #mon."
+	done
 
 GoldenrodDeptStore5FTwinScript:
+	checkflag ENGINE_DAILY_MYSTERY_GIFT
+	iftrue_jumptextfaceplayer .ComeBackText
 	faceplayer
 	opentext
-	checkflag ENGINE_DAILY_MYSTERY_GIFT
-	iftrue .GotDailyBerry
 	writetext UnknownText_0x56279
 	buttonsound
 	callasm .PickRandomMysteryGift
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM
-	iffalse .NoRoom
+	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText
 	writetext MysteryGiftGirl_GiveItemText
 	itemnotify
 	setflag ENGINE_DAILY_MYSTERY_GIFT
-.GotDailyBerry
-	jumpopenedtext MysteryGiftGirl_ComeBackText
+	thisopenedtext
 
-.NoRoom:
-	jumpopenedtext MysteryGiftGirl_NoRoomText
+.ComeBackText:
+	text "You can have"
+	line "another Berry"
+	cont "tomorrow."
+	done
 
 .PickRandomMysteryGift:
 	ld a, APICOT_BERRY - ORAN_BERRY + 1
@@ -111,14 +117,6 @@ UnknownText_0x561a6:
 	line "it good TM moves."
 	done
 
-UnknownText_0x56202:
-	text "There are sure to"
-	line "be TMs that are"
-
-	para "just perfect for"
-	line "your #mon."
-	done
-
 UnknownText_0x56279:
 	text "Looking at the"
 	line "ground while I was"
@@ -138,12 +136,6 @@ MysteryGiftGirl_GiveItemText:
 	sound_item
 	text_waitbutton
 	db "@"
-
-MysteryGiftGirl_ComeBackText:
-	text "You can have"
-	line "another Berry"
-	cont "tomorrow."
-	done
 
 MysteryGiftGirl_NoRoomText:
 	text "But you can't"

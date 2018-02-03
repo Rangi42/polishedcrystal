@@ -113,29 +113,56 @@ BlaineScript_0x1ab4fb:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
-	iftrue BlaineAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x1ab71c
 	writetext UnknownText_0x1ab69d
 	buttonsound
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
-	jumpopenedtext BlaineOutroText
+	thisopenedtext
 
-BlaineAfterTMScript:
-	jumpopenedtext UnknownText_0x1ab71c
+	text "It's called Will-"
+	line "O-Wisp!"
+
+	para "It weakens your"
+	line "foe by inflicting"
+	cont "a burn."
+
+	para "I did lose this"
+	line "time, but I'm going"
+	cont "to win next time."
+
+	para "When I rebuild my"
+	line "Cinnabar Gym,"
+
+	para "we'll have to have"
+	line "a rematch."
+	done
 
 SeafoamGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
-	iftrue .TalkedToSeafoamGymGuyScript
-	writetext SeafoamGymGuyWinText
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer SeafoamGymGuyWinText2
 	setevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
-	end
+	thistextfaceplayer
 
-.TalkedToSeafoamGymGuyScript:
-	jumpopenedtext SeafoamGymGuyWinText2
+	text "Yo!"
+
+	para "…Huh? It's over"
+	line "already?"
+
+	para "Sorry, sorry!"
+
+	para "Cinnabar Gym was"
+	line "gone, so I didn't"
+
+	para "know where to find"
+	line "you."
+
+	para "But, hey, you're"
+	line "plenty strong even"
+
+	para "without my advice."
+	line "I knew you'd win!"
+	done
 
 ScientistLowellSeenText:
 	text "This lab coat"
@@ -253,52 +280,12 @@ UnknownText_0x1ab69d:
 	line "this, too."
 	done
 
-BlaineOutroText:
-	text "It's called Will-"
-	line "O-Wisp!"
-
-	para "It weakens your"
-	line "foe by inflicting"
-	cont "a burn."
-
-	para "I did lose this"
-	line "time, but I'm going"
-	cont "to win next time."
-
-	para "When I rebuild my"
-	line "Cinnabar Gym,"
-
-	para "we'll have to have"
-	line "a rematch."
-	done
-
 UnknownText_0x1ab71c:
 	text "Blaine: My fire"
 	line "#mon will be"
 
 	para "even stronger."
 	line "Just you watch!"
-	done
-
-SeafoamGymGuyWinText:
-	text "Yo!"
-
-	para "…Huh? It's over"
-	line "already?"
-
-	para "Sorry, sorry!"
-
-	para "Cinnabar Gym was"
-	line "gone, so I didn't"
-
-	para "know where to find"
-	line "you."
-
-	para "But, hey, you're"
-	line "plenty strong even"
-
-	para "without my advice."
-	line "I knew you'd win!"
 	done
 
 SeafoamGymGuyWinText2:

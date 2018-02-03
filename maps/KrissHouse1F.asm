@@ -132,20 +132,20 @@ MomScript:
 	iffalse .MomEvent
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-	iftrue .DoIt
+	iftrue_jumpopenedtext MomDoItText
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iftrue .BankOfMom
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .Errand
-	jumpopenedtext MomHurryUpText
+	iftrue_jumpopenedtext MomErrandText
+	thisopenedtext
 
-.Errand:
-	jumpopenedtext MomErrandText
+	text "Prof.Elm is wait-"
+	line "ing for you."
 
-.DoIt:
-	jumpopenedtext MomDoItText
+	para "Hurry up, baby!"
+	done
 
 .FirstTimeBanking:
 	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM
@@ -236,13 +236,6 @@ MomInstructionsText:
 MomOutroText:
 	text "Gee, aren't they"
 	line "convenient?"
-	done
-
-MomHurryUpText:
-	text "Prof.Elm is wait-"
-	line "ing for you."
-
-	para "Hurry up, baby!"
 	done
 
 MomErrandText:

@@ -79,17 +79,14 @@ SageScript_0x98062:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .CheckForClearBell
 	checkflag ENGINE_FOGBADGE
-	iftrue .BlockPassage_GotFogBadge
+	iftrue_jumpopenedtext UnknownText_0x98131
 	jumpopenedtext UnknownText_0x980d1
-
-.BlockPassage_GotFogBadge:
-	jumpopenedtext UnknownText_0x98131
 
 .CheckForClearBell:
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue .AllowedThrough
+	iftrue_jumpopenedtext UnknownText_0x9837e
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue .Event000
+	iftrue_jumpopenedtext UnknownText_0x98391
 	checkitem CLEAR_BELL
 	iftrue .RingClearBell
 	jumpopenedtext UnknownText_0x981a4
@@ -103,12 +100,6 @@ SageScript_0x98062:
 	clearevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_GAVE_KURT_APRICORNS
 	end
-
-.AllowedThrough:
-	jumpopenedtext UnknownText_0x9837e
-
-.Event000:
-	jumpopenedtext UnknownText_0x98391
 
 SageScript_0x980b0:
 	checkevent EVENT_GOT_CLEAR_BELL

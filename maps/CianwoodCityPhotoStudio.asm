@@ -18,10 +18,10 @@ FishingGuruScript_0x9e0e0:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_PHOTOGRAPH
-	iftrue .AlreadyTookPhoto
+	iftrue_jumpopenedtext PhotoStudioAlreadyDoneText
 	writetext PhotoStudioGreetingText
 	yesorno
-	iffalse .RefusedPhoto
+	iffalse_jumpopenedtext PhotoStudioRefusedText
 	writetext PhotoStudioWhichMonText
 	buttonsound
 	special Special_CianwoodPhotograph
@@ -46,13 +46,10 @@ FishingGuruScript_0x9e0e0:
 	writetext PhotoStudioPrestoText
 	special PlayCurMonCry
 	waitbutton
-	jumpopenedtext PhotoStudioComeAgainText
+	thisopenedtext
 
-.AlreadyTookPhoto:
-	jumpopenedtext PhotoStudioAlreadyDoneText
-
-.RefusedPhoto:
-	jumpopenedtext PhotoStudioRefusedText
+	text "Come again, OK?"
+	done
 
 .NoPicture:
 	jumpopenedtext PhotoStudioNoPictureText
@@ -92,10 +89,6 @@ PhotoStudioPrestoText:
 	text_from_ram StringBuffer3
 	text ""
 	line "looks happier!"
-	done
-
-PhotoStudioComeAgainText:
-	text "Come again, OK?"
 	done
 
 PhotoStudioAlreadyDoneText:

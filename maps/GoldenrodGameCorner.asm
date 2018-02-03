@@ -96,7 +96,7 @@ GoldenrodGameCornerTMVendorScript:
 	writetext GoldenrodGameCornerPrizeVendorIntroText
 	waitbutton
 	checkitem COIN_CASE
-	iffalse GoldenrodGameCornerPrizeVendor_NoCoinCaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoCoinCaseText
 	writetext GoldenrodGameCornerPrizeVendorWhichPrizeText
 GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	special Special_DisplayCoinCaseBalance
@@ -106,7 +106,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	if_equal $1, .flamethrower
 	if_equal $2, .thunderbolt
 	if_equal $3, .ice_beam
-	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
 .flamethrower:
 	checktmhm TM_FLAMETHROWER
@@ -115,7 +115,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	tmhmtotext TM_FLAMETHROWER, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_FLAMETHROWER
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
@@ -127,7 +127,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	tmhmtotext TM_THUNDERBOLT, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_THUNDERBOLT
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
@@ -139,7 +139,7 @@ GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	if_equal $2, GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript
 	tmhmtotext TM_ICE_BEAM, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	givetmhm TM_ICE_BEAM
 	takecoins 4000
 	jump GoldenrodGameCornerTMVendor_FinishScript
@@ -167,12 +167,6 @@ GoldenrodGameCornerPrizeVendor_NotEnoughCoinsScript:
 GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript:
 	jumpopenedtext GoldenrodGameCornerPrizeVendorNoMoreRoomText
 
-GoldenrodGameCornerPrizeVendor_CancelPurchaseScript:
-	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
-
-GoldenrodGameCornerPrizeVendor_NoCoinCaseScript:
-	jumpopenedtext GoldenrodGameCornerPrizeVendorNoCoinCaseText
-
 GoldenrodGameCornerTMVendorMenuData:
 	db $40 ; flags
 	db 02, 00 ; start coords
@@ -194,7 +188,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	writetext GoldenrodGameCornerPrizeVendorIntroText
 	waitbutton
 	checkitem COIN_CASE
-	iffalse GoldenrodGameCornerPrizeVendor_NoCoinCaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoCoinCaseText
 .loop
 	writetext GoldenrodGameCornerPrizeVendorWhichPrizeText
 	special Special_DisplayCoinCaseBalance
@@ -204,7 +198,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	if_equal $1, .abra
 	if_equal $2, .cubone
 	if_equal $3, .clefairy
-	jump GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 
 .abra
 	checkcoins 200
@@ -213,7 +207,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	pokenamemem ABRA, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
@@ -231,7 +225,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	pokenamemem CUBONE, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText
@@ -249,7 +243,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	if_equal $6, GoldenrodGameCornerPrizeMonVendor_NoRoomForPrizeScript
 	pokenamemem CLEFAIRY, $0
 	scall GoldenrodGameCornerPrizeVendor_ConfirmPurchaseScript
-	iffalse GoldenrodGameCornerPrizeVendor_CancelPurchaseScript
+	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorQuitText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext GoldenrodGameCornerPrizeVendorHereYouGoText

@@ -23,13 +23,13 @@ FlowerShopTeacherScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .SellMulch
 	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue .GotSquirtbottle
+	iftrue_jumptextfaceplayer UnknownText_0x5550d
 	checkevent EVENT_MET_FLORIA
-	iffalse .HaventMetFloria
+	iffalse_jumptextfaceplayer UnknownText_0x553d4
 	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
 	iffalse .Lalala
 	checkflag ENGINE_PLAINBADGE
-	iffalse .NoPlainBadge
+	iffalse_jumptextfaceplayer UnknownText_0x55463
 	faceplayer
 	opentext
 	writetext UnknownText_0x554c2
@@ -45,15 +45,6 @@ FlowerShopTeacherScript:
 	spriteface GOLDENRODFLOWERSHOP_TEACHER, LEFT
 	jumptext UnknownText_0x5552e
 
-.GotSquirtbottle:
-	jumptextfaceplayer UnknownText_0x5550d
-
-.NoPlainBadge:
-	jumptextfaceplayer UnknownText_0x55463
-
-.HaventMetFloria:
-	jumptextfaceplayer UnknownText_0x553d4
-
 .SellMulch:
 	faceplayer
 	opentext
@@ -64,13 +55,13 @@ FlowerShopTeacherScript:
 	closewindow
 	if_equal $1, .Buy1
 	if_equal $2, .Buy10
-	jump .Cancel
+	jumpopenedtext DontBuyMulchText
 
 .Buy1:
 	checkmoney $0, 200
 	if_equal $2, .NotEnoughMoney
 	giveitem MULCH
-	iffalse .BagFull
+	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
 	jump .Done
 
@@ -78,7 +69,7 @@ FlowerShopTeacherScript:
 	checkmoney $0, 2000
 	if_equal $2, .NotEnoughMoney
 	giveitem MULCH, 10
-	iffalse .BagFull
+	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 2000
 
 .Done:
@@ -88,14 +79,8 @@ FlowerShopTeacherScript:
 	itemnotify
 	jumpopenedtext BoughtMulchText
 
-.Cancel:
-	jumpopenedtext DontBuyMulchText
-
 .NotEnoughMoney:
 	jumpopenedtext NotEnoughMulchMoneyText
-
-.BagFull:
-	jumpopenedtext NoRoomForMulchText
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -117,7 +102,7 @@ FlowerShopFloriaScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .FoughtSudowoodo
 	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue .GotSquirtbottle
+	iftrue_jumpopenedtext UnknownText_0x555e6
 	writetext UnknownText_0x55561
 	waitbutton
 	closetext
@@ -126,16 +111,10 @@ FlowerShopFloriaScript:
 	clearevent EVENT_FLORIA_AT_SUDOWOODO
 	end
 
-.GotSquirtbottle:
-	jumpopenedtext UnknownText_0x555e6
-
 .FoughtSudowoodo:
 	checkitem MULCH
-	iftrue .DescribeMulch
+	iftrue_jumpopenedtext DescribeMulchText
 	jumpopenedtext UnknownText_0x55604
-
-.DescribeMulch:
-	jumpopenedtext DescribeMulchText
 
 UnknownText_0x553d4:
 	text "Have you seen that"

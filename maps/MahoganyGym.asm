@@ -43,7 +43,7 @@ PryceScript_0x199a9e:
 	callstd radiotowerrockets
 .FightDone:
 	checkevent EVENT_GOT_TM67_AVALANCHE
-	iftrue UnknownScript_0x199af0
+	iftrue_jumpopenedtext UnknownText_0x199e59
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
 	setevent EVENT_BEAT_BOARDER_RONALD
@@ -53,10 +53,19 @@ PryceScript_0x199a9e:
 	buttonsound
 	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM67_AVALANCHE
-	jumpopenedtext UnknownText_0x199def
+	thisopenedtext
 
-UnknownScript_0x199af0:
-	jumpopenedtext UnknownText_0x199e59
+	text "That TM contains"
+	line "Avalanche."
+
+	para "It deals more"
+	line "damage if the user"
+	cont "was hurt first."
+
+	para "It demonstrates"
+	line "the harshness of"
+	cont "winter."
+	done
 
 GenericTrainerSkierRoxanne:
 	generictrainer SKIER, ROXANNE, EVENT_BEAT_SKIER_ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText
@@ -183,19 +192,6 @@ UnknownText_0x199d55:
 
 	para "And this… This is"
 	line "a gift from me!"
-	done
-
-UnknownText_0x199def:
-	text "That TM contains"
-	line "Avalanche."
-
-	para "It deals more"
-	line "damage if the user"
-	cont "was hurt first."
-
-	para "It demonstrates"
-	line "the harshness of"
-	cont "winter."
 	done
 
 UnknownText_0x199e59:

@@ -21,7 +21,7 @@ DimCave4F_MapScriptHeader:
 
 	db 8 ; object events
 	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
-	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave4FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
+	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerScientistJoseph, -1
 	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerScientistNigel, -1
 	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
@@ -134,11 +134,4 @@ DimCave4FSuper_nerdText:
 
 	para "…This isn't fun"
 	line "anymore."
-	done
-
-DimCave4FFallenBoulderScript:
-	thistext
-
-	text "It's stuck on the"
-	line "button."
 	done

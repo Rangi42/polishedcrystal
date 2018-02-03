@@ -73,7 +73,21 @@ UnknownScript_0x191844:
 
 PokemonJournalGreenScript:
 	setflag ENGINE_READ_GREEN_JOURNAL
-	jumptext PokemonJournalGreenText
+	thistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "<PK><MN> Trainer Green!"
+
+	para "In addition to"
+	line "being a powerful"
+	cont "trainer, Green is"
+
+	para "said to be fascin-"
+	line "ated by legendary"
+	cont "#mon."
+	done
 
 UnknownText_0x191881:
 	text "I'm the Chairman"
@@ -249,19 +263,4 @@ UnknownText_0x191dfc:
 UnknownText_0x191e29:
 	text "If someone brags,"
 	line "brag right back!"
-	done
-
-PokemonJournalGreenText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "<PK><MN> Trainer Green!"
-
-	para "In addition to"
-	line "being a powerful"
-	cont "trainer, Green is"
-
-	para "said to be fascin-"
-	line "ated by legendary"
-	cont "#mon."
 	done

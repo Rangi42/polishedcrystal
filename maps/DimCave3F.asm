@@ -21,7 +21,7 @@ DimCave3F_MapScriptHeader:
 
 	db 9 ; object events
 	strengthboulder_event  3, 17, EVENT_BOULDER_IN_DIM_CAVE_3F
-	object_event 15,  8, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave3FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
+	object_event 15,  8, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
 	object_event 14,  4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHugo, -1
 	object_event 22, 11, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBlackbeltTakeo, -1
 	object_event 10, 27, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerFloyd, -1
@@ -134,11 +134,12 @@ DimCave3FPokefanmScript:
 	opentext
 	writetext .QuestionText
 	yesorno
-	iftrue .Yes
-	jumpopenedtext .NoText
+	iftrue_jumpopenedtext .YesText
+	thisopenedtext
 
-.Yes:
-	jumpopenedtext .YesText
+	text "What?! Do you"
+	line "have a map?"
+	done
 
 .QuestionText:
 	text "Are you lost?"
@@ -152,16 +153,4 @@ DimCave3FPokefanmScript:
 
 	para "compass, and I"
 	line "don't have a map."
-	done
-
-.NoText:
-	text "What?! Do you"
-	line "have a map?"
-	done
-
-DimCave3FFallenBoulderScript:
-	thistext
-
-	text "It's stuck on the"
-	line "button."
 	done

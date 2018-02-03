@@ -43,7 +43,7 @@ GoldenrodCity_MapScriptHeader:
 	bg_event 16,  7, SIGNPOST_JUMPTEXT, GoldenrodCityNameRaterSignText
 	bg_event 12,  6, SIGNPOST_JUMPTEXT, GoldenrodCityUndergroundSignNorthText
 	bg_event 14, 30, SIGNPOST_JUMPTEXT, GoldenrodCityUndergroundSignSouthText
-	bg_event 20, 27, SIGNPOST_UP, GoldenrodCityPokeCenterSign
+	bg_event 20, 27, SIGNPOST_JUMPTEXT, PokeComCenterSignText
 	bg_event 34,  6, SIGNPOST_JUMPTEXT, GoldenrodCityFlowerShopSignText
 	bg_event 27, 15, SIGNPOST_JUMPTEXT, GoldenrodMuseumSignText
 
@@ -133,11 +133,11 @@ MoveTutor:
 	opentext
 	writetext UnknownText_0x199042
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext UnknownText_0x1990b4
 	special Special_DisplayCoinCaseBalance
 	writetext UnknownText_0x199090
 	yesorno
-	iffalse .Refused2
+	iffalse_jumpopenedtext UnknownText_0x199107
 	checkcoins 200
 	if_equal $2, .NotEnoughMoney
 	writetext UnknownText_0x1990ce
@@ -147,28 +147,28 @@ MoveTutor:
 	if_equal $1, .FirePunch
 	if_equal $2, .ThunderPunch
 	if_equal $3, .IcePunch
-	jump .Incompatible
+	jumpopenedtext UnknownText_0x1991a4
 
 .FirePunch:
 	writebyte FIRE_PUNCH
 	writetext UnknownText_0x1991cf
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
-	jump .Incompatible
+	jumpopenedtext UnknownText_0x1991a4
 
 .ThunderPunch:
 	writebyte THUNDERPUNCH
 	writetext UnknownText_0x1991cf
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
-	jump .Incompatible
+	jumpopenedtext UnknownText_0x1991a4
 
 .IcePunch:
 	writebyte ICE_PUNCH
 	writetext UnknownText_0x1991cf
 	special Special_MoveTutor
 	if_equal $0, .TeachMove
-	jump .Incompatible
+	jumpopenedtext UnknownText_0x1991a4
 
 .MoveMenuDataHeader:
 	db $40 ; flags
@@ -185,12 +185,6 @@ MoveTutor:
 	db "Ice Punch@"
 	db "Cancel@"
 
-.Refused:
-	jumpopenedtext UnknownText_0x1990b4
-
-.Refused2:
-	jumpopenedtext UnknownText_0x199107
-
 .TeachMove:
 	writetext UnknownText_0x19913a
 	buttonsound
@@ -199,9 +193,6 @@ MoveTutor:
 	playsound SFX_TRANSACTION
 	special Special_DisplayCoinCaseBalance
 	jumpopenedtext UnknownText_0x19918b
-
-.Incompatible:
-	jumpopenedtext UnknownText_0x1991a4
 
 .NotEnoughMoney:
 	jumpopenedtext UnknownText_0x1991ac
@@ -251,9 +242,6 @@ GoldenrodCityGymLassScript:
 
 .GymLass
 	jumptextfaceplayer GoldenrodCityGymLassText
-
-GoldenrodCityPokeCenterSign:
-	jumptext PokeComCenterSignText
 
 GoldenrodCityPanUpMovementData:
 	step_up

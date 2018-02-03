@@ -39,15 +39,28 @@ HiddenPowerGuy:
 	writetext .Text5
 	buttonsound
 	special Special_HiddenPowerGuru
-	if_equal $0, .Cancel
+	iffalse_jumpopenedtext .Text4
 	if_equal $1, .Egg
-	jumpopenedtext .Text6
+	thisopenedtext
 
-.Cancel:
-	jumpopenedtext .Text4
+	text "I can sense it…"
+
+	para "Your @"
+	text_from_ram StringBuffer3
+	text ""
+	line "has a Hidden Power"
+	cont "of @"
+	text_from_ram StringBuffer1
+	text "!"
+	done
 
 .Egg:
-	jumpopenedtext .Text8
+	thisopenedtext
+
+	text "An Egg has not yet"
+	line "developed a Hidden"
+	cont "Power…"
+	done
 
 .Text1:
 	text "…You have strayed"
@@ -96,24 +109,6 @@ HiddenPowerGuy:
 	cont "should I find?"
 	done
 
-.Text6:
-	text "I can sense it…"
-
-	para "Your @"
-	text_from_ram StringBuffer3
-	text ""
-	line "has a Hidden Power"
-	cont "of @"
-	text_from_ram StringBuffer1
-	text "!"
-	done
-
 .Text7:
 	text "…Very well…"
-	done
-
-.Text8:
-	text "An Egg has not yet"
-	line "developed a Hidden"
-	cont "Power…"
 	done

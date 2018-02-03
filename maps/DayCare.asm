@@ -117,7 +117,7 @@ DayCareLadyScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
-	iftrue .HusbandWasLookingForYou
+	iftrue_jumpopenedtext Text_GrampsLookingForYou
 	checkevent EVENT_LYRA_GAVE_AWAY_EGG
 	iffalse .NoLyrasEgg
 	checkevent EVENT_GOT_LYRAS_EGG
@@ -153,9 +153,6 @@ DayCareLadyScript:
 .NoLyrasEgg:
 	special Special_DayCareLady
 	waitendtext
-
-.HusbandWasLookingForYou:
-	jumpopenedtext Text_GrampsLookingForYou
 
 DayCareMovementData_LyraApproachesGrandma:
 	step_right

@@ -84,7 +84,7 @@ MortyScript_0x99d58:
 	setevent EVENT_RANG_CLEAR_BELL_2
 .FightDone:
 	checkevent EVENT_GOT_TM30_SHADOW_BALL
-	iftrue UnknownScript_0x99db1
+	iftrue_jumpopenedtext UnknownText_0x9a145
 	setevent EVENT_BEAT_SAGE_JEFFREY
 	setevent EVENT_BEAT_SAGE_PING
 	setevent EVENT_BEAT_MEDIUM_MARTHA
@@ -94,9 +94,6 @@ MortyScript_0x99d58:
 	verbosegivetmhm TM_SHADOW_BALL
 	setevent EVENT_GOT_TM30_SHADOW_BALL
 	jumpopenedtext UnknownText_0x9a0ec
-
-UnknownScript_0x99db1:
-	jumpopenedtext UnknownText_0x9a145
 
 UnknownScript_0x99dc6:
 	applyonemovement PLAYER, step_up

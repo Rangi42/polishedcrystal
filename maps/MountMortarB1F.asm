@@ -56,7 +56,7 @@ KiyoScript_0x7e1f6:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
-	iftrue UnknownScript_0x7e231
+	iftrue_jumpopenedtext UnknownText_0x7e36a
 	checkevent EVENT_BEAT_KIYO
 	iftrue UnknownScript_0x7e217
 	writetext UnknownText_0x7e24d
@@ -81,8 +81,21 @@ UnknownScript_0x7e217:
 	writebyte PREMIER_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
-UnknownScript_0x7e231:
-	jumpopenedtext UnknownText_0x7e36a
+	thisopenedtext
+
+UnknownText_0x7e36a:
+	text "Tyrogue is a"
+	line "Fighting-type."
+
+	para "It evolves into a"
+	line "tougher #mon."
+
+	para "Keep up the hard"
+	line "work. I'll keep"
+	cont "training too."
+
+	para "Farewell!"
+	done
 
 UnknownScript_0x7e237:
 	jumpopenedtext UnknownText_0x7e3df
@@ -173,20 +186,6 @@ UnknownText_0x7e2c0:
 UnknownText_0x7e355:
 	text "<PLAYER> received"
 	line "Tyrogue."
-	done
-
-UnknownText_0x7e36a:
-	text "Tyrogue is a"
-	line "Fighting-type."
-
-	para "It evolves into a"
-	line "tougher #mon."
-
-	para "Keep up the hard"
-	line "work. I'll keep"
-	cont "training too."
-
-	para "Farewell!"
 	done
 
 UnknownText_0x7e3df:

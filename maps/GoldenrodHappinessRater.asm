@@ -28,25 +28,50 @@ TeacherScript_0x54953:
 	if_greater_than $95, UnknownScript_0x5497f
 	if_greater_than $63, UnknownScript_0x54985
 	if_greater_than $31, UnknownScript_0x5498b
-	jump UnknownScript_0x54991
+	thisopenedtext
+
+	text "It doesn't seem to"
+	line "like you at all."
+	cont "It looks mean."
+	done
 
 UnknownScript_0x54973:
-	jumpopenedtext UnknownText_0x549fc
+	thisopenedtext
+
+	text "It looks really"
+	line "happy! It must"
+	cont "love you a lot."
+	done
 
 UnknownScript_0x54979:
-	jumpopenedtext UnknownText_0x54a2c
+	thisopenedtext
+
+	text "I get the feeling"
+	line "that it really"
+	cont "trusts you."
+	done
 
 UnknownScript_0x5497f:
-	jumpopenedtext UnknownText_0x54a5a
+	thisopenedtext
+
+	text "It's friendly to-"
+	line "ward you. It looks"
+	cont "sort of happy."
+	done
 
 UnknownScript_0x54985:
-	jumpopenedtext UnknownText_0x54a8e
+	thisopenedtext
+
+	text "It's quite cute."
+	done
 
 UnknownScript_0x5498b:
-	jumpopenedtext UnknownText_0x54a9f
+	thisopenedtext
 
-UnknownScript_0x54991:
-	jumpopenedtext UnknownText_0x54ad1
+	text "You should treat"
+	line "it better. It's"
+	cont "not used to you."
+	done
 
 UnknownText_0x549a3:
 	text "If you treat your"
@@ -59,40 +84,6 @@ UnknownText_0x549a3:
 	line "your @"
 	text_from_ram StringBuffer3
 	text "…"
-	done
-
-UnknownText_0x549fc:
-	text "It looks really"
-	line "happy! It must"
-	cont "love you a lot."
-	done
-
-UnknownText_0x54a2c:
-	text "I get the feeling"
-	line "that it really"
-	cont "trusts you."
-	done
-
-UnknownText_0x54a5a:
-	text "It's friendly to-"
-	line "ward you. It looks"
-	cont "sort of happy."
-	done
-
-UnknownText_0x54a8e:
-	text "It's quite cute."
-	done
-
-UnknownText_0x54a9f:
-	text "You should treat"
-	line "it better. It's"
-	cont "not used to you."
-	done
-
-UnknownText_0x54ad1:
-	text "It doesn't seem to"
-	line "like you at all."
-	cont "It looks mean."
 	done
 
 UnknownText_0x54b04:

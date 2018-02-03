@@ -80,7 +80,7 @@ GentlemanScript_0x994c6:
 	writetext UnknownText_0x9980a
 	buttonsound
 	checkevent EVENT_GOT_HM03_SURF
-	iftrue UnknownScript_0x99515
+	iftrue_jumpopenedtext UnknownText_0x999d5
 	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
 	iffalse UnknownScript_0x994f3
 	checkevent EVENT_BEAT_KIMONO_GIRL_SAYO
@@ -91,25 +91,31 @@ GentlemanScript_0x994c6:
 	iffalse UnknownScript_0x994f3
 	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
 	iffalse UnknownScript_0x994f3
-	jump UnknownScript_0x99505
-
-UnknownScript_0x994f3:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue UnknownScript_0x994ff
-	jumpopenedtext UnknownText_0x99891
-
-UnknownScript_0x994ff:
-	jumpopenedtext UnknownText_0x998d4
-
-UnknownScript_0x99505:
 	writetext UnknownText_0x9991a
 	buttonsound
 	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
-	jumpopenedtext UnknownText_0x9999b
+	thisopenedtext
 
-UnknownScript_0x99515:
-	jumpopenedtext UnknownText_0x999d5
+	text "That's Surf."
+
+	para "It's a move that"
+	line "lets #mon swim"
+	cont "across water."
+	done
+
+UnknownScript_0x994f3:
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue_jumpopenedtext UnknownText_0x998d4
+	thisopenedtext
+
+UnknownText_0x99891:
+	text "Lad! If you can"
+	line "defeat all the"
+
+	para "Kimono Girls, I'll"
+	line "give you a gift."
+	done
 
 MapDanceTheatreSignpost1Script:
 	jumptext UnknownText_0x99b79
@@ -188,14 +194,6 @@ UnknownText_0x9980a:
 	line "scratch…"
 	done
 
-UnknownText_0x99891:
-	text "Lad! If you can"
-	line "defeat all the"
-
-	para "Kimono Girls, I'll"
-	line "give you a gift."
-	done
-
 UnknownText_0x998d4:
 	text "Lassie, if you can"
 	line "defeat all the"
@@ -215,14 +213,6 @@ UnknownText_0x9991a:
 	para "I want you to have"
 	line "this. Don't worry"
 	cont "--take it!"
-	done
-
-UnknownText_0x9999b:
-	text "That's Surf."
-
-	para "It's a move that"
-	line "lets #mon swim"
-	cont "across water."
 	done
 
 UnknownText_0x999d5:

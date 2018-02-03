@@ -23,7 +23,7 @@ CherrygroveCity_MapScriptHeader:
 	db 6 ; object events
 	object_event 32,  6, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	object_event 39,  6, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
-	object_event 25, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CherrygroveTeacherScript, -1
+	object_event 25, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveTeacherText_HaveMapCard, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
 	object_event 26, 13, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, PIDGEY, CherrygrovePidgeyText, -1
@@ -151,41 +151,32 @@ CherrygroveSilverTriggerNorth:
 	playmusic MUSIC_CHERRYGROVE_CITY
 	end
 
-CherrygroveTeacherScript:
-	faceplayer
-	opentext
-	checkflag ENGINE_MAP_CARD
-	iftrue .HaveMapCard
-	jumpopenedtext CherrygroveTeacherText_NoMapCard
-
-.HaveMapCard:
-	jumpopenedtext CherrygroveTeacherText_HaveMapCard
-
 CherrygroveYoungsterScript:
-	faceplayer
-	opentext
 	checkflag ENGINE_POKEDEX
-	iftrue .HavePokedex
-	jumpopenedtext CherrygroveYoungsterText_NoPokedex
+	iftrue_jumptextfaceplayer CherrygroveYoungsterText_HavePokedex
+	thistextfaceplayer
 
-.HavePokedex:
-	jumpopenedtext CherrygroveYoungsterText_HavePokedex
+	text "Mr.#mon's house"
+	line "is still farther"
+	cont "up ahead."
+	done
 
 MysticWaterGuy:
+	checkevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE
+	iftrue_jumptextfaceplayer MysticWaterGuyTextAfter
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE
-	iftrue .After
 	writetext MysticWaterGuyTextBefore
 	buttonsound
 	verbosegiveitem MYSTIC_WATER
-	iffalse .Exit
+	iffalse_endtext
 	setevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE
-.After:
-	writetext MysticWaterGuyTextAfter
-	waitbutton
-.Exit:
-	endtext
+	thisopenedtext
+
+MysticWaterGuyTextAfter:
+	text "Back to fishing"
+	line "for me, then."
+	done
 
 GuideGentPlayerMovement:
 	step_left
@@ -420,26 +411,10 @@ CherrygroveRivalTextAfter2:
 	line "my name…"
 	done
 
-CherrygroveTeacherText_NoMapCard:
-	text "Did you talk to"
-	line "the old man by the"
-	cont "#mon Center?"
-
-	para "He'll put a Map of"
-	line "Johto on your"
-	cont "#gear."
-	done
-
 CherrygroveTeacherText_HaveMapCard:
 	text "When you're with"
 	line "#mon, going"
 	cont "anywhere is fun."
-	done
-
-CherrygroveYoungsterText_NoPokedex:
-	text "Mr.#mon's house"
-	line "is still farther"
-	cont "up ahead."
 	done
 
 CherrygroveYoungsterText_HavePokedex:
@@ -463,11 +438,6 @@ MysticWaterGuyTextBefore:
 
 	para "I don't need it,"
 	line "so do you want it?"
-	done
-
-MysticWaterGuyTextAfter:
-	text "Back to fishing"
-	line "for me, then."
 	done
 
 CherrygrovePidgeyText:

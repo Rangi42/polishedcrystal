@@ -64,11 +64,17 @@ SailorScript_0x75160:
 	checkevent EVENT_FAST_SHIP_HAS_ARRIVED
 	iftrue .Arrived
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
-	iftrue .Olivine
-	jumpopenedtext UnknownText_0x7523b
+	iftrue_jumpopenedtext UnknownText_0x7529b
+	thisopenedtext
 
-.Olivine:
-	jumpopenedtext UnknownText_0x7529b
+	text "Fast Ship S.S.Aqua"
+	line "is en route to"
+	cont "Vermilion City."
+
+	para "We will make an"
+	line "announcement when"
+	cont "we arrive."
+	done
 
 .Arrived:
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
@@ -186,16 +192,6 @@ MovementData_0x75238:
 	step_right
 	step_up
 	step_end
-
-UnknownText_0x7523b:
-	text "Fast Ship S.S.Aqua"
-	line "is en route to"
-	cont "Vermilion City."
-
-	para "We will make an"
-	line "announcement when"
-	cont "we arrive."
-	done
 
 UnknownText_0x7529b:
 	text "Fast Ship S.S.Aqua"

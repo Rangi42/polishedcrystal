@@ -100,15 +100,12 @@ MistyScript_0x188432:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM63_WATER_PULSE
-	iftrue MistyAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x188782
 	writetext MistyGiveTMText
 	buttonsound
 	verbosegivetmhm TM_WATER_PULSE
 	setevent EVENT_GOT_TM63_WATER_PULSE
 	jumpopenedtext MistyOutroText
-
-MistyAfterTMScript:
-	jumpopenedtext UnknownText_0x188782
 
 GenericTrainerSwimmerfDiana:
 	generictrainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText

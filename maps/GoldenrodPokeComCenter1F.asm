@@ -78,17 +78,17 @@ UnknownText_0x62260:
 	done
 
 PokefanFScript_0x61024:
+	checkevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
+	iftrue_jumptextfaceplayer GoldenrodPokeComCenter1FPokefanFGotEvioliteText
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	iftrue .GotEviolite
 	writetext UnknownText_0x623fb
 	waitbutton
 	checkitem EON_MAIL
-	iffalse .NoEviolite
+	iffalse_jumpopenedtext UnknownText_0x62509
 	writetext UnknownText_0x6248c
 	yesorno
-	iffalse .NoEviolite
+	iffalse_jumpopenedtext UnknownText_0x62509
 	takeitem EON_MAIL
 	writetext UnknownText_0x62549
 	waitbutton
@@ -97,17 +97,19 @@ PokefanFScript_0x61024:
 	verbosegiveitem EVIOLITE
 	iffalse .NoRoomForEviolite
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	jumpopenedtext UnknownText_0x624e9
+	thisopenedtext
 
-.NoEviolite:
-	jumpopenedtext UnknownText_0x62509
+	text "My daughter will"
+	line "be delighted!"
+	done
 
 .NoRoomForEviolite:
 	giveitem EON_MAIL
-	jumpopenedtext UnknownText_0x6252a
+	thisopenedtext
 
-.GotEviolite:
-	jumpopenedtext GoldenrodPokeComCenter1FPokefanFGotEvioliteText
+	text "Oh… Well, another"
+	line "time, then."
+	done
 
 UnknownText_0x623fb:
 	text "Oh my, your bag"
@@ -137,19 +139,9 @@ UnknownText_0x624a4:
 	line "you in return!"
 	done
 
-UnknownText_0x624e9:
-	text "My daughter will"
-	line "be delighted!"
-	done
-
 UnknownText_0x62509:
 	text "Oh? You don't have"
 	line "one? Too bad."
-	done
-
-UnknownText_0x6252a:
-	text "Oh… Well, another"
-	line "time, then."
 	done
 
 UnknownText_0x62549:

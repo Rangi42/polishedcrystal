@@ -28,26 +28,25 @@ OreManiacScript:
 	writetext .GreetingText
 	buttonsound
 	special Special_ChooseItem
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	special GetOreManiacPrice
-	iffalse .WrongItem
+	iffalse_jumpopenedtext .WrongItemText
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	copybytetovar CurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	jumpopenedtext .ThankYouText
+	thisopenedtext
 
-.NoItem:
-	jumpopenedtext .NoItemText
-
-.WrongItem:
-	jumpopenedtext .WrongItemText
+	text "The deal is done!"
+	line "I've scored an ore"
+	cont "I can adore!"
+	done
 
 .GreetingText:
 	text "Ore, ore, ore…"
@@ -69,12 +68,6 @@ OreManiacScript:
 	line "for ¥@"
 	deciram hMoneyTemp, 3, 7
 	text "?"
-	done
-
-.ThankYouText:
-	text "The deal is done!"
-	line "I've scored an ore"
-	cont "I can adore!"
 	done
 
 .WrongItemText:

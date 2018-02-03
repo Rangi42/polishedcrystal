@@ -38,7 +38,7 @@ OlivineLighthouseRoofSkylaScript:
 	writetext .ChallengeText
 .Battle
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -69,15 +69,26 @@ OlivineLighthouseRoofSkylaScript:
 
 .Waiting:
 	checkevent EVENT_INTRODUCED_SKYLA
-	iftrue .Introduced2
+	iftrue_jumpopenedtext .WaitingText
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_INTRODUCED_SKYLA
-.Introduced2
-	jumpopenedtext .WaitingText
+	thisopenedtext
 
-.Refused:
-	jumpopenedtext .RefusedText
+.WaitingText:
+	text "I saw a hurt #-"
+	line "mon from my plane,"
+
+	para "but I don't have"
+	line "anything that can"
+	cont "help it…"
+
+	para "So even if you"
+	line "want to battle,"
+
+	para "I'm not in the"
+	line "mood right now."
+	done
 
 .IntroText:
 	text "Skyla: Who are"
@@ -99,21 +110,6 @@ OlivineLighthouseRoofSkylaScript:
 
 	para "Lighthouse is even"
 	line "taller."
-	done
-
-.WaitingText:
-	text "I saw a hurt #-"
-	line "mon from my plane,"
-
-	para "but I don't have"
-	line "anything that can"
-	cont "help it…"
-
-	para "So even if you"
-	line "want to battle,"
-
-	para "I'm not in the"
-	line "mood right now."
 	done
 
 .ChallengeText:

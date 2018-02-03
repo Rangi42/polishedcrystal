@@ -334,7 +334,21 @@ endc
 
 PokemonJournalProfElmScript:
 	setflag ENGINE_READ_PROF_ELM_JOURNAL
-	jumptext PokemonJournalProfElmText
+	thistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "#mon Prof.Elm!"
+
+	para "Prof.Elm was the"
+	line "top student of"
+	cont "Prof.Oak."
+
+	para "They're said to"
+	line "often argue about"
+	cont "research."
+	done
 
 KrissHousePC:
 	opentext
@@ -363,19 +377,4 @@ KrisRadioText3:
 KrisRadioText4:
 	text "#mon!"
 	line "#mon Channel…"
-	done
-
-PokemonJournalProfElmText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "#mon Prof.Elm!"
-
-	para "Prof.Elm was the"
-	line "top student of"
-	cont "Prof.Oak."
-
-	para "They're said to"
-	line "often argue about"
-	cont "research."
 	done

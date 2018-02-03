@@ -33,26 +33,31 @@ DiglettsCaveFossilManiacScript:
 	writetext .GreetingText
 	buttonsound
 	special Special_ChooseItem
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	special GetFossilManiacPrice
-	iffalse .WrongItem
+	iffalse_jumpopenedtext .WrongItemText
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	copybytetovar CurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	jumpopenedtext .ThankYouText
+	thisopenedtext
 
-.NoItem:
-	jumpopenedtext .NoItemText
+	text "Hey, thanks!"
 
-.WrongItem:
-	jumpopenedtext .WrongItemText
+	para "I bet I can sell"
+	line "this for way more"
+	cont "than I just gave"
+	cont "you. Ha!"
+
+	para "That's business"
+	line "for ya!"
+	done
 
 .GreetingText:
 	text "Hey, check it out."
@@ -79,18 +84,6 @@ DiglettsCaveFossilManiacScript:
 	deciram hMoneyTemp, 3, 7
 	text " for it."
 	cont "Whaddaya say?"
-	done
-
-.ThankYouText:
-	text "Hey, thanks!"
-
-	para "I bet I can sell"
-	line "this for way more"
-	cont "than I just gave"
-	cont "you. Ha!"
-
-	para "That's business"
-	line "for ya!"
 	done
 
 .WrongItemText:

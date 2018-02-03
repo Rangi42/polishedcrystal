@@ -21,7 +21,7 @@ DimCave2F_MapScriptHeader:
 	bg_event  2, 19, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
 	db 7 ; object events
-	object_event 14, 21, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
+	object_event 14, 21, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
 	object_event 15, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerEngineerLang, -1
 	object_event  7, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerDerrick, -1
 	itemball_event 28, 12, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
@@ -85,9 +85,7 @@ GenericTrainerHikerDerrick:
 	cont "we will go! ♪"
 	done
 
-DimCave2FFallenBoulderScript:
-	thistext
-
+DimCaveFallenBoulderText:
 	text "It's stuck on the"
 	line "button."
 	done

@@ -40,9 +40,9 @@ ProfIvyScript:
 	iftrue .GetItem
 	writetext .RequestText
 	yesorno
-	iffalse .NoBerry
+	iffalse_jumpopenedtext .NoBerryText
 	checkitem LIECHI_BERRY
-	iffalse .NoBerry
+	iffalse_jumpopenedtext .NoBerryText
 	takeitem LIECHI_BERRY
 	checkitem LIECHI_BERRY
 	iffalse .Return1
@@ -82,7 +82,7 @@ ProfIvyScript:
 	iftrue_jumpopenedtext .AfterText
 	writetext .ChallengeText
 	yesorno
-	iffalse .NoBattle
+	iffalse_jumpopenedtext .NoText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -98,11 +98,16 @@ ProfIvyScript:
 	giveitem LIECHI_BERRY
 .Return1:
 	giveitem LIECHI_BERRY
-.NoBerry:
-	jumpopenedtext .NoBerryText
+	thisopenedtext
 
-.NoBattle:
-	jumpopenedtext .NoText
+.NoBerryText:
+	text "Ivy: I under-"
+	line "stand…"
+
+	para "You don't have"
+	line "three Liechi"
+	cont "Berries to spare."
+	done
 
 .RequestText:
 	text "Ivy: Hello again,"
@@ -120,15 +125,6 @@ ProfIvyScript:
 	para "Can you please"
 	line "find three Liechi"
 	cont "Berries for it?"
-	done
-
-.NoBerryText:
-	text "Ivy: I under-"
-	line "stand…"
-
-	para "You don't have"
-	line "three Liechi"
-	cont "Berries to spare."
 	done
 
 .OkayText:

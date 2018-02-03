@@ -90,7 +90,7 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e615
 	buttonsound
 	verbosegiveitem LEVEL_BALL
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	setevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
 .GotLevelBall:
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
@@ -132,20 +132,17 @@ KurtScript_0x18e178:
 	checkitem PNK_APRICORN
 	iftrue .AskApricorn
 	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
-	iftrue .ThatTurnedOutGreat
+	iftrue_jumpopenedtext UnknownText_0x18e82a
 	checkevent EVENT_DRAGON_SHRINE_QUESTION_2
-	iftrue .IMakeBallsFromApricorns
+	iftrue_jumpopenedtext UnknownText_0x18e6c9
 	endtext
-
-.IMakeBallsFromApricorns:
-	jumpopenedtext UnknownText_0x18e6c9
 
 .AskApricorn:
 	writetext UnknownText_0x18e736
 	buttonsound
 	setevent EVENT_DRAGON_SHRINE_QUESTION_2
 	special Special_SelectApricornForKurt
-	if_equal $0, .Cancel
+	iffalse_jumpopenedtext UnknownText_0x18e7bc
 	if_equal BLU_APRICORN, .Blu
 	if_equal YLW_APRICORN, .Ylw
 	if_equal GRN_APRICORN, .Grn
@@ -198,16 +195,9 @@ KurtScript_0x18e178:
 	warpfacing UP, KURTS_HOUSE, 3, 3
 	jump KurtScript_0x18e178
 
-.Cancel:
-	jumpopenedtext UnknownText_0x18e7bc
-
-._ThatTurnedOutGreat:
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
 .ThatTurnedOutGreat:
-	writetext UnknownText_0x18e82a
-	waitbutton
-.NoRoomForBall:
-	endtext
+	setevent EVENT_RECEIVED_BALLS_FROM_KURT
+	jumpopenedtext UnknownText_0x18e82a
 
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -215,9 +205,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 LEVEL_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_RED_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveLureBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -225,9 +215,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 LURE_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLU_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveMoonBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -235,9 +225,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 MOON_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_YLW_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveFriendBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -245,9 +235,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 FRIEND_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_GRN_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveFastBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -255,9 +245,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 FAST_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_WHT_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveHeavyBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -265,9 +255,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 HEAVY_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLK_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveLoveBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -275,9 +265,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 LOVE_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_PNK_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .CanGiveGSBallToKurt:
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
@@ -362,25 +352,16 @@ KurtsGranddaughter1:
 	checkevent EVENT_GAVE_KURT_APRICORNS
 	iftrue KurtsGranddaughter2Subscript
 	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
-	iftrue KurtsGranddaughterFunScript
+	iftrue_jumptext KurtsGranddaughterFunText
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue .Lonely
+	iftrue_jumptext KurtsGranddaughterLonelyText
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue .Dad
+	iftrue_jumptext KurtsGranddaughterDadText
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iftrue .SlowpokeBack
+	iftrue_jumptext KurtsGranddaughterSlowpokeBackText
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
-	iftrue .Lonely
+	iftrue_jumptext KurtsGranddaughterLonelyText
 	jumptext KurtsGranddaughterSlowpokeGoneText
-
-.SlowpokeBack:
-	jumptext KurtsGranddaughterSlowpokeBackText
-
-.Lonely:
-	jumptext KurtsGranddaughterLonelyText
-
-.Dad:
-	jumptext KurtsGranddaughterDadText
 
 KurtsGranddaughter2:
 	faceplayer
@@ -401,12 +382,26 @@ KurtsGranddaughter2Subscript:
 	spriteface LAST_TALKED, RIGHT
 	end
 
-KurtsGranddaughterFunScript:
-	jumptext KurtsGranddaughterFunText
-
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
-	jumptext PokemonJournalProfWestwoodText
+	thistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Prof.Westwood!"
+
+	para "Prof.Westwood V"
+	line "teaches at Celadon"
+	cont "University."
+
+	para "His ancestor's re-"
+	line "search in 1925 led"
+
+	para "to the development"
+	line "of modern #"
+	cont "Balls."
+	done
 
 MovementData_0x18e46c:
 	big_step_right
@@ -672,22 +667,4 @@ KurtsHouseCelebiStatueText:
 	text "It's a statue of"
 	line "the forest's pro-"
 	cont "tector."
-	done
-
-PokemonJournalProfWestwoodText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "Prof.Westwood!"
-
-	para "Prof.Westwood V"
-	line "teaches at Celadon"
-	cont "University."
-
-	para "His ancestor's re-"
-	line "search in 1925 led"
-
-	para "to the development"
-	line "of modern #"
-	cont "Balls."
 	done

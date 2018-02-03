@@ -26,7 +26,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
-	iftrue .TestComplete
+	iftrue_jumpopenedtext .TestOverText
 	checkevent EVENT_PASSED_CELADON_HYPER_TEST
 	iftrue .GiveMagikarp
 	writetext .GreetingText
@@ -39,9 +39,9 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 .HeardIntro
 	writetext .QuestionText
 	yesorno
-	iffalse .NoHyperTest
+	iffalse_jumpopenedtext .RefusedText
 	checkflag ENGINE_TOOK_HYPER_TEST
-	iftrue .TookHyperTestToday
+	iftrue_jumpopenedtext .AlreadyTookText
 	setflag ENGINE_TOOK_HYPER_TEST
 	writetext .BeginText
 	waitbutton
@@ -143,15 +143,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writebyte ULTRA_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
-
-.TestComplete:
 	jumpopenedtext .TestOverText
-
-.NoHyperTest:
-	jumpopenedtext .RefusedText
-
-.TookHyperTestToday:
-	jumpopenedtext .AlreadyTookText
 
 .WrongAnswer:
 	waitsfx

@@ -27,7 +27,7 @@ SinjohRuinsHouseGrampsScript:
 	opentext
 	writetext SinjohRuinsHouseGrampsText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext SinjohRuinsHouseGrampsNoText
 	writetext SinjohRuinsHouseGrampsYesText
 	waitbutton
 	closetext
@@ -37,17 +37,14 @@ SinjohRuinsHouseGrampsScript:
 	warp NEW_BARK_TOWN, 15, 6
 	end
 
-.No:
-	jumpopenedtext SinjohRuinsHouseGrampsNoText
-
 SinjohRuinsHouseCynthiaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CYNTHIA
-	iftrue .Beat
+	iftrue_jumpopenedtext SinjohRuinsHouseCynthiaAfterText
 	writetext SinjohRuinsHouseCynthiaChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext SinjohRuinsHouseCynthiaNoText
 	writetext SinjohRuinsHouseCynthiaYesText
 	waitbutton
 	closetext
@@ -57,12 +54,19 @@ SinjohRuinsHouseCynthiaScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CYNTHIA
-	opentext
-.Beat:
-	jumpopenedtext SinjohRuinsHouseCynthiaAfterText
+	thistext
 
-.Refused:
-	jumpopenedtext SinjohRuinsHouseCynthiaNoText
+SinjohRuinsHouseCynthiaAfterText:
+	text "Cynthia: What an"
+	line "incredible battle!"
+
+	para "You're a great"
+	line "trainer, and it"
+
+	para "would make me"
+	line "happy to see you"
+	cont "again sometime."
+	done
 
 SinjohRuinsHousePokefanmText:
 	text "A long time ago,"
@@ -157,16 +161,4 @@ SinjohRuinsHouseCynthiaWinText:
 
 	para "was outclassed"
 	line "like this!"
-	done
-
-SinjohRuinsHouseCynthiaAfterText:
-	text "Cynthia: What an"
-	line "incredible battle!"
-
-	para "You're a great"
-	line "trainer, and it"
-
-	para "would make me"
-	line "happy to see you"
-	cont "again sometime."
 	done
