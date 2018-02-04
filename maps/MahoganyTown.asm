@@ -48,37 +48,31 @@ PokefanMScript_0x19002e:
 	faceplayer
 UnknownScript_0x19002f:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x190039
-	scall UnknownScript_0x190040
-	end
-
-UnknownScript_0x190039:
-	jumptext UnknownText_0x1901a6
-
-UnknownScript_0x190040:
+	iftrue_jumptext UnknownText_0x1901a6
 	opentext
 	writetext UnknownText_0x1900b0
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse UnknownScript_0x190072
+	iffalse_jumpopenedtext UnknownText_0x190178
 	checkmoney $0, 300
 	if_equal $2, UnknownScript_0x19006c
 	giveitem RAGECANDYBAR
-	iffalse UnknownScript_0x190078
+	iffalse_jumpopenedtext UnknownText_0x190188
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney $0, 300
 	special PlaceMoneyTopRight
-	jumpopenedtext UnknownText_0x19014a
+	thisopenedtext
+
+	text "Good! Savor it!"
+	done
 
 UnknownScript_0x19006c:
-	jumpopenedtext UnknownText_0x19015b
+	thisopenedtext
 
-UnknownScript_0x190072:
-	jumpopenedtext UnknownText_0x190178
-
-UnknownScript_0x190078:
-	jumpopenedtext UnknownText_0x190188
+	text "You don't have"
+	line "enough money."
+	done
 
 GrampsScript_0x19007e:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
@@ -87,11 +81,12 @@ GrampsScript_0x19007e:
 
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS
-	iftrue .rockets
-	jumptext MahoganyTownSouvenirShopSignText2
+	iftrue_jumptext MahoganyTownSouvenirShopSignText1
+	thistext
 
-.rockets
-	jumptext MahoganyTownSouvenirShopSignText1
+	text "Grandma's"
+	line "Souvenir Shop"
+	done
 
 MovementData_0x1900a9:
 	step_right
@@ -124,15 +119,6 @@ endc
 	para "Right now, it can"
 	line "be yours for just"
 	cont "¥300! Want one?"
-	done
-
-UnknownText_0x19014a:
-	text "Good! Savor it!"
-	done
-
-UnknownText_0x19015b:
-	text "You don't have"
-	line "enough money."
 	done
 
 UnknownText_0x190178:
@@ -211,11 +197,6 @@ MahoganyTownSouvenirShopSignText1:
 
 	para "No Need to Be"
 	line "Alarmed"
-	done
-
-MahoganyTownSouvenirShopSignText2:
-	text "Grandma's"
-	line "Souvenir Shop"
 	done
 
 MahoganyGymSignText:

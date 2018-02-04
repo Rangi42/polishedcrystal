@@ -96,13 +96,10 @@ FuchsiaGym1Script_0x195e1b:
 	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195e2c:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_LASS_AMANDA
-	iftrue_jumpopenedtext UnknownText_0x196139
-	writetext UnknownText_0x1960e6
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer UnknownText_0x196139
+	faceplayer
+	showtext UnknownText_0x1960e6
 	winlosstext UnknownText_0x196126, 0
 	loadtrainer LASS, AMANDA
 	startbattle
@@ -124,13 +121,10 @@ FuchsiaGym2Script_0x195e55:
 	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195e66:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_LASS_LINDA
-	iftrue_jumpopenedtext UnknownText_0x196199
-	writetext UnknownText_0x196166
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer UnknownText_0x196199
+	faceplayer
+	showtext UnknownText_0x196166
 	winlosstext UnknownText_0x19617b, 0
 	loadtrainer LASS, LINDA
 	startbattle
@@ -152,13 +146,10 @@ FuchsiaGym3Script_0x195e8f:
 	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195ea0:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_PICNICKER_CINDY
-	iftrue_jumpopenedtext UnknownText_0x19620c
-	writetext UnknownText_0x1961bb
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer UnknownText_0x19620c
+	faceplayer
+	showtext UnknownText_0x1961bb
 	winlosstext UnknownText_0x1961f1, 0
 	loadtrainer PICNICKER, CINDY
 	startbattle
@@ -180,13 +171,10 @@ FuchsiaGym4Script_0x195ec9:
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_YOUNGSTER
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195eda:
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_CAMPER_BARRY
-	iftrue_jumpopenedtext UnknownText_0x19626b
-	writetext UnknownText_0x196228
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer UnknownText_0x19626b
+	faceplayer
+	showtext UnknownText_0x196228
 	winlosstext UnknownText_0x19624a, 0
 	loadtrainer CAMPER, BARRY
 	startbattle

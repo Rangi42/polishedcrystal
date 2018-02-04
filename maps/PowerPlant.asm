@@ -46,19 +46,11 @@ PowerPlantGuardPhoneScript:
 	end
 
 OfficerScript_0x188df5:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188e0f
+	iftrue_jumptextfaceplayer UnknownText_0x188fa2
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
-	iftrue UnknownScript_0x188e09
-	jumpopenedtext UnknownText_0x188ee0
-
-UnknownScript_0x188e09:
-	jumpopenedtext UnknownText_0x188f7f
-
-UnknownScript_0x188e0f:
-	jumpopenedtext UnknownText_0x188fa2
+	iftrue_jumptextfaceplayer UnknownText_0x188f7f
+	jumptextfaceplayer UnknownText_0x188ee0
 
 GymGuyScript_0x188e15:
 	checkevent EVENT_RETURNED_MACHINE_PART
@@ -88,7 +80,7 @@ PowerPlantManager:
 	checkitem MACHINE_PART
 	iftrue UnknownScript_0x188e93
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
-	iftrue UnknownScript_0x188e8d
+	iftrue_jumpopenedtext UnknownText_0x189308
 	writetext UnknownText_0x189264
 	waitbutton
 	closetext
@@ -97,9 +89,6 @@ PowerPlantManager:
 	domaptrigger CERULEAN_GYM, $1
 	dotrigger $1
 	end
-
-UnknownScript_0x188e8d:
-	jumpopenedtext UnknownText_0x189308
 
 UnknownScript_0x188e93:
 	writetext UnknownText_0x18936e

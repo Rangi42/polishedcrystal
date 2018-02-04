@@ -42,57 +42,97 @@ JasmineScript_0x9c12f:
 	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_POKEFAN_M
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
-	iftrue UnknownScript_0x9c172
+	iftrue_jumpopenedtext UnknownText_0x9c3d1
 	writetext UnknownText_0x9c354
 	buttonsound
 	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
-	jumpopenedtext UnknownText_0x9c3a5
+	thisopenedtext
 
-UnknownScript_0x9c172:
-	jumpopenedtext UnknownText_0x9c3d1
+	text "…You could use"
+	line "that TM to teach"
+	cont "Iron Tail."
+	done
 
 OlivineGymGuyScript:
-	faceplayer
 	checkevent EVENT_BEAT_JASMINE
-	iftrue .OlivineGymGuyWinScript
+	iftrue_jumptextfaceplayer OlivineGymGuyWinText
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iffalse .OlivineGymGuyPreScript
-	jumptext OlivineGymGuyText
+	iffalse_jumptextfaceplayer OlivineGymGuyPreText
+	thistextfaceplayer
 
-.OlivineGymGuyWinScript:
-	jumptext OlivineGymGuyWinText
+	text "Jasmine uses the"
+	line "newly discovered"
+	cont "Steel-type."
 
-.OlivineGymGuyPreScript:
-	jumptext OlivineGymGuyPreText
+	para "I don't know very"
+	line "much about it."
+	done
 
 OlivineGymLassConnie:
-	trainer 0, 0, EVENT_SPOKE_TO_LASS_CONNIE, OlivineGymLassConnieSeenText, 0, 0, OlivineGymLassConnieScript
+	trainer 0, 0, EVENT_SPOKE_TO_LASS_CONNIE, .SeenText, 0, 0, .Script
 
-OlivineGymLassConnieScript:
+.Script:
 	end_if_just_battled
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_JASMINE
-	iftrue .BeatJasmine
-	jumpopenedtext OlivineGymLassConnieSeenText
+	iftrue_jumptextfaceplayer .AfterText
+	thistextfaceplayer
 
-.BeatJasmine
-	jumpopenedtext OlivineGymLassConnieAfterText
+.SeenText:
+	text "Giggle… I know"
+	line "how capable you"
+
+	para "are from the"
+	line "Lighthouse."
+
+	para "It's time you"
+	line "showed that to"
+	cont "Jasmine!"
+
+	para "Good luck!"
+	done
+
+.AfterText:
+	text "You are amazing…"
+	line "You should aim"
+
+	para "even higher, with"
+	line "such potential."
+
+	para "Have you been to"
+	line "Mahogany Town?"
+	done
 
 OlivineGymGentlemanPreston:
-	trainer 0, 0, EVENT_SPOKE_TO_GENTLEMAN_PRESTON, OlivineGymGentlemanPrestonSeenText, 0, 0, OlivineGymGentlemanPrestonScript
+	trainer 0, 0, EVENT_SPOKE_TO_GENTLEMAN_PRESTON, .SeenText, 0, 0, .Script
 
-OlivineGymGentlemanPrestonScript:
+.Script:
 	end_if_just_battled
-	faceplayer
-	opentext
 	checkevent EVENT_BEAT_JASMINE
-	iftrue .BeatJasmine
-	jumpopenedtext OlivineGymGentlemanPrestonSeenText
+	iftrue_jumptextfaceplayer .AfterText
+	thistextfaceplayer
 
-.BeatJasmine
-	jumpopenedtext OlivineGymGentlemanPrestonAfterText
+.SeenText:
+	text "I knew you'd"
+	line "come here."
+
+	para "Thank you for"
+	line "helping the"
+	cont "Gym Leader,"
+
+	para "but battle is a"
+	line "separate matter."
+
+	para "Go for it!"
+	done
+
+.AfterText:
+	text "Impressive!"
+	line "You should earn"
+
+	para "more badges with"
+	line "that much skill."
+	done
 
 OlivineGymStatue:
 	trainertotext JASMINE, 1, $1
@@ -168,25 +208,10 @@ UnknownText_0x9c354:
 	line "this too…"
 	done
 
-UnknownText_0x9c3a5:
-	text "…You could use"
-	line "that TM to teach"
-	cont "Iron Tail."
-	done
-
 UnknownText_0x9c3d1:
 	text "Um… I don't know"
 	line "how to say this,"
 	cont "but good luck…"
-	done
-
-OlivineGymGuyText:
-	text "Jasmine uses the"
-	line "newly discovered"
-	cont "Steel-type."
-
-	para "I don't know very"
-	line "much about it."
 	done
 
 OlivineGymGuyWinText:
@@ -211,51 +236,4 @@ OlivineGymGuyPreText:
 	para "A strong trainer"
 	line "has to be compas-"
 	cont "sionate."
-	done
-
-OlivineGymGentlemanPrestonSeenText:
-	text "I knew you'd"
-	line "come here."
-
-	para "Thank you for"
-	line "helping the"
-	cont "Gym Leader,"
-
-	para "but battle is a"
-	line "separate matter."
-
-	para "Go for it!"
-	done
-
-OlivineGymGentlemanPrestonAfterText:
-	text "Impressive!"
-	line "You should earn"
-
-	para "more badges with"
-	line "that much skill."
-	done
-
-OlivineGymLassConnieSeenText:
-	text "Giggle… I know"
-	line "how capable you"
-
-	para "are from the"
-	line "Lighthouse."
-
-	para "It's time you"
-	line "showed that to"
-	cont "Jasmine!"
-
-	para "Good luck!"
-	done
-
-OlivineGymLassConnieAfterText:
-	text "You are amazing…"
-	line "You should aim"
-
-	para "even higher, with"
-	line "such potential."
-
-	para "Have you been to"
-	line "Mahogany Town?"
 	done

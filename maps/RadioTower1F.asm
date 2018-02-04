@@ -28,14 +28,9 @@ RadioTower1F_MapScriptHeader:
 	const RADIOTOWER1F_WHITNEY
 
 ReceptionistScript_0x5cd29:
-	faceplayer
-	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue UnknownScript_0x5cd37
-	jumpopenedtext UnknownText_0x5ce77
-
-UnknownScript_0x5cd37:
-	jumpopenedtext UnknownText_0x5ce81
+	iftrue_jumptextfaceplayer UnknownText_0x5ce81
+	jumptextfaceplayer UnknownText_0x5ce77
 
 ReceptionistScript_0x5cd3d:
 	faceplayer
@@ -56,7 +51,7 @@ ReceptionistScript_0x5cd3d:
 .skip
 	special Special_PrintTodaysLuckyNumber
 	checkflag ENGINE_LUCKY_NUMBER_SHOW
-	iftrue .GameOver
+	iftrue_jumpopenedtext UnknownText_0x5cf7e
 	writetext UnknownText_0x5cf3a
 	buttonsound
 	closetext
@@ -77,10 +72,7 @@ ReceptionistScript_0x5cd3d:
 	if_equal 2, .SecondPlace
 	if_equal 3, .ThirdPlace
 	if_equal 4, .FourthPlace
-	jump .NoPrize
-
-.GameOver:
-	jumpopenedtext UnknownText_0x5cf7e
+	jumpopenedtext UnknownText_0x5d0c0
 
 .FirstPlace:
 	writetext WonFirstPlaceText
@@ -88,10 +80,10 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem MASTER_BALL
-	iffalse .BagFull
+	iffalse_jumpopenedtext UnknownText_0x5d0e6
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jump .GameOver
+	jumpopenedtext UnknownText_0x5cf7e
 
 .SecondPlace:
 	writetext WonSecondPlaceText
@@ -99,10 +91,10 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem BOTTLE_CAP
-	iffalse .BagFull
+	iffalse_jumpopenedtext UnknownText_0x5d0e6
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jump .GameOver
+	jumpopenedtext UnknownText_0x5cf7e
 
 .ThirdPlace:
 	writetext WonThirdPlaceText
@@ -110,10 +102,10 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem PP_MAX
-	iffalse .BagFull
+	iffalse_jumpopenedtext UnknownText_0x5d0e6
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jump .GameOver
+	jumpopenedtext UnknownText_0x5cf7e
 
 .FourthPlace:
 	writetext WonFourthPlaceText
@@ -121,25 +113,25 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem PP_UP
-	iffalse .BagFull
+	iffalse_jumpopenedtext UnknownText_0x5d0e6
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jump .GameOver
+	thisopenedtext
 
-.NoPrize:
-	jumpopenedtext UnknownText_0x5d0c0
-
-.BagFull:
-	jumpopenedtext UnknownText_0x5d0e6
+UnknownText_0x5cf7e:
+	text "Please come back"
+	line "next week for the"
+	cont "next Lucky Number."
+	done
 
 CooltrainerFScript_0x5cdd5:
+	checkevent EVENT_GOLDENROD_GYM_WHITNEY
+	iftrue_jumptextfaceplayer UnknownText_0x5d3e5
 	faceplayer
 	opentext
-	checkevent EVENT_GOLDENROD_GYM_WHITNEY
-	iftrue UnknownScript_0x5ce2d
 	writetext UnknownText_0x5d12d
 	yesorno
-	iffalse UnknownScript_0x5ce4b
+	iffalse_jumpopenedtext UnknownText_0x5d443
 	writetext UnknownText_0x5d1f2
 	yesorno
 	iffalse UnknownScript_0x5ce42
@@ -185,18 +177,12 @@ CooltrainerFScript_0x5cdd5:
 	disappear RADIOTOWER1F_WHITNEY
 	end
 
-UnknownScript_0x5ce2d:
-	jumpopenedtext UnknownText_0x5d3e5
-
 RadioCardText:
 	db "Radio Card@"
 
 UnknownScript_0x5ce42:
 	playsound SFX_WRONG
 	jumpopenedtext UnknownText_0x5d409
-
-UnknownScript_0x5ce4b:
-	jumpopenedtext UnknownText_0x5d443
 
 GenericTrainerGruntM3:
 	generictrainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText
@@ -289,12 +275,6 @@ UnknownText_0x5cf5a:
 UnknownText_0x5cf79:
 	text "……"
 	line "……"
-	done
-
-UnknownText_0x5cf7e:
-	text "Please come back"
-	line "next week for the"
-	cont "next Lucky Number."
 	done
 
 WonFirstPlaceText:

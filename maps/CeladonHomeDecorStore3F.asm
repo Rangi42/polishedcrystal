@@ -100,10 +100,10 @@ CeladonHomeDecorStore3FClerk1Script:
 	db "Cancel@"
 
 CeladonHomeDecorStore3FClerk2Script:
+	checkevent EVENT_DECO_CARPET_2
+	iftrue_jumptextfaceplayer CeladonHomeDecorStore3FClerk2Text
 	faceplayer
 	opentext
-	checkevent EVENT_DECO_CARPET_2
-	iftrue_jumpopenedtext CeladonHomeDecorStore3FClerk2Text
 	special PlaceMoneyTopRight
 	writetext CeladonHomeDecorStore3FClerk2SaleText
 	yesorno

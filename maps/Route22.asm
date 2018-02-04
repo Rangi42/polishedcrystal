@@ -19,10 +19,10 @@ Route22_MapScriptHeader:
 	const ROUTE22_KUKUI
 
 KukuiScript:
+	checkevent EVENT_BEAT_KUKUI
+	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_KUKUI
-	iftrue .Beaten
 	checkevent EVENT_INTRODUCED_KUKUI
 	iftrue .Introduced
 	writetext .IntroText
@@ -31,7 +31,7 @@ KukuiScript:
 	writetext .RematchText
 .Question
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -48,12 +48,26 @@ KukuiScript:
 	reloadmapafterbattle
 	setevent EVENT_INTRODUCED_KUKUI
 	setevent EVENT_BEAT_KUKUI
-	opentext
-.Beaten:
-	jumpopenedtext .AfterText
+	thistext
 
-.Refused:
-	jumpopenedtext .RefusedText
+.AfterText:
+	text "Amazing! I went"
+	line "right at you, and"
+	cont "you still won!"
+
+	para "No wonder you're"
+	line "the Champion!"
+
+	para "I need to train"
+	line "harder before I'm"
+
+	para "ready for the"
+	line "League."
+
+	para "And when I do,"
+	line "I'll battle you"
+	cont "again! Woo!"
+	done
 
 .IntroText:
 	text "Hey there!"
@@ -113,25 +127,6 @@ KukuiScript:
 	text "I couldn't win"
 	line "even though I"
 	cont "went all out…"
-	done
-
-.AfterText:
-	text "Amazing! I went"
-	line "right at you, and"
-	cont "you still won!"
-
-	para "No wonder you're"
-	line "the Champion!"
-
-	para "I need to train"
-	line "harder before I'm"
-
-	para "ready for the"
-	line "League."
-
-	para "And when I do,"
-	line "I'll battle you"
-	cont "again! Woo!"
 	done
 
 .RefusedText:

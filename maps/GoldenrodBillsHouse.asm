@@ -17,12 +17,12 @@ GoldenrodBillsHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, BillsSister, -1
 
 GrampsScript_0x189538:
+	checkevent EVENT_GAVE_KURT_APRICORNS
+	iftrue_jumptextfaceplayer BillsGrandpaComeAgainText
+	checkevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
+	iftrue_jumptextfaceplayer BillsGrandpaShownAllThePokemonText
 	faceplayer
 	opentext
-	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue_jumpopenedtext BillsGrandpaComeAgainText
-	checkevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
-	iftrue_jumpopenedtext BillsGrandpaShownAllThePokemonText
 	checkevent EVENT_MET_BILLS_GRANDPA
 	iftrue .MetGrandpa
 	writetext BillsGrandpaIntroText

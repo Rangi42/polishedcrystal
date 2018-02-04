@@ -17,10 +17,10 @@ EcruteakItemfinderHouse_MapScriptHeader:
 	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x9a620, -1
 
 CooltrainerMScript_0x9a5fb:
+	checkevent EVENT_GOT_ITEMFINDER
+	iftrue_jumptextfaceplayer UnknownText_0x9a70e
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_ITEMFINDER
-	iftrue_jumpopenedtext UnknownText_0x9a70e
 	writetext UnknownText_0x9a63c
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x9a805

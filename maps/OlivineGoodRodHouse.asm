@@ -18,10 +18,10 @@ GoodRodGuru:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_GOOD_ROD
-	iftrue .AlreadyGotItem
+	iftrue_jumpopenedtext HaveGoodRodText
 	writetext OfferGoodRodText
 	yesorno
-	iffalse .DontWantIt
+	iffalse_jumpopenedtext DontWantGoodRodText
 	writetext GiveGoodRodText
 	buttonsound
 	verbosegiveitem GOOD_ROD
@@ -30,12 +30,6 @@ GoodRodGuru:
 	closetext
 	setevent EVENT_GOT_GOOD_ROD
 	end
-
-.DontWantIt:
-	jumpopenedtext DontWantGoodRodText
-
-.AlreadyGotItem:
-	jumpopenedtext HaveGoodRodText
 
 OfferGoodRodText:
 	text "Olivine is on the"

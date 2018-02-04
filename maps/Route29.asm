@@ -116,10 +116,10 @@ CooltrainerMScript_0x1a1031:
 	jumptextfaceplayer Text_WaitingForNight
 
 TuscanyScript:
+	checkevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
+	iftrue_jumptextfaceplayer TuscanyTuesdayText
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY
-	iftrue_jumpopenedtext TuscanyTuesdayText
 	checkcode VAR_WEEKDAY
 	if_not_equal TUESDAY, TuscanyNotTuesdayScript
 	checkevent EVENT_MET_TUSCANY_OF_TUESDAY

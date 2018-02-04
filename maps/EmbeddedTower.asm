@@ -59,10 +59,10 @@ EmbeddedTowerSteven1Script:
 	jumpopenedtext EmbeddedTowerSteven1AfterText
 
 EmbeddedTowerSteven2Script:
+	checkevent EVENT_BEAT_STEVEN
+	iftrue_jumptextfaceplayer EmbeddedTowerSteven2AfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_STEVEN
-	iftrue_jumpopenedtext EmbeddedTowerSteven2AfterText
 	writetext EmbeddedTowerSteven2ChallengeText
 	yesorno
 	iffalse_jumpopenedtext EmbeddedTowerSteven2NoText

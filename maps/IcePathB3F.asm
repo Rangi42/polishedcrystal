@@ -26,7 +26,7 @@ LoreleiScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue LoreleiRematchScript
 	checkevent EVENT_BEAT_LORELEI
-	iftrue LoreleiAfterScript
+	iftrue_jumpopenedtext LoreleiAfterText
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftrue LoreleiAfterIntroScript
 	writetext LoreleiIntroText
@@ -35,7 +35,7 @@ LoreleiScript:
 LoreleiAfterIntroScript:
 	writetext LoreleiAfterIntroText
 	yesorno
-	iffalse LoreleiNoBattleScript
+	iffalse_jumpopenedtext LoreleiNoBattleText
 	writetext LoreleiSeenText
 	waitbutton
 	closetext
@@ -50,15 +50,24 @@ LoreleiAfterIntroScript:
 	buttonsound
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-LoreleiAfterScript:
-	jumpopenedtext LoreleiAfterText
+	thisopenedtext
 
-LoreleiNoBattleScript:
-	jumpopenedtext LoreleiNoBattleText
+LoreleiAfterText:
+	text "Go on ahead. You"
+	line "can challenge the"
+
+	para "#mon League"
+	line "with one more"
+	cont "Badge."
+
+	para "If you do beat"
+	line "them, meet me here"
+	cont "for a rematch."
+	done
 
 LoreleiRematchScript:
 	checkevent EVENT_BEAT_LORELEI_AGAIN
-	iftrue LoreleiRematchAfterScript
+	iftrue_jumpopenedtext LoreleiRematchAfterText
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftrue LoreleiReintroductionScript
 	writetext LoreleiIntroText
@@ -76,13 +85,31 @@ LoreleiAfterRematchIntroScript:
 	setevent EVENT_BEAT_LORELEI_AGAIN
 	opentext
 	checkevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-	iftrue LoreleiRematchAfterScript
+	iftrue_jumpopenedtext LoreleiRematchAfterText
 	writetext LoreleiRewardText
 	buttonsound
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-LoreleiRematchAfterScript:
-	jumpopenedtext LoreleiRematchAfterText
+	thisopenedtext
+
+LoreleiRematchAfterText:
+	text "Your journey isn't"
+	line "over, you know."
+
+	para "You can earn more"
+	line "badges in Kanto,"
+
+	para "catch new species"
+	line "of #mon,"
+
+	para "improve yourself"
+	line "and your team."
+
+	para "Becoming a"
+	line "#mon master is"
+	cont "a life's work."
+	done
+
 
 LoreleiReintroductionScript:
 	writetext LoreleiRematchIntroAgainText
@@ -158,19 +185,6 @@ LoreleiRewardText:
 	line "this item."
 	done
 
-LoreleiAfterText:
-	text "Go on ahead. You"
-	line "can challenge the"
-
-	para "#mon League"
-	line "with one more"
-	cont "Badge."
-
-	para "If you do beat"
-	line "them, meet me here"
-	cont "for a rematch."
-	done
-
 LoreleiRematchIntroAgainText:
 	text "Lorelei: Hello"
 	line "again, <PLAYER>."
@@ -194,22 +208,4 @@ LoreleiRematchSeenText:
 LoreleiRematchBeatenText:
 	text "As expected of"
 	line "the Champion!"
-	done
-
-LoreleiRematchAfterText:
-	text "Your journey isn't"
-	line "over, you know."
-
-	para "You can earn more"
-	line "badges in Kanto,"
-
-	para "catch new species"
-	line "of #mon,"
-
-	para "improve yourself"
-	line "and your team."
-
-	para "Becoming a"
-	line "#mon master is"
-	cont "a life's work."
 	done

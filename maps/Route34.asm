@@ -210,7 +210,7 @@ TrainerCamperTodd1:
 	checkflag ENGINE_TODD
 	iftrue .Rematch
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
-	iftrue .SaleIsOn
+	iftrue_jumpopenedtext CamperToddSaleText
 	checkcellnum PHONE_CAMPER_TODD
 	iftrue .NumberAccepted
 	checkevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
@@ -290,9 +290,6 @@ TrainerCamperTodd1:
 	reloadmapafterbattle
 	clearflag ENGINE_TODD
 	end
-
-.SaleIsOn:
-	jumpopenedtext CamperToddSaleText
 
 .NumberAccepted:
 	jumpstd numberacceptedm
@@ -414,12 +411,12 @@ TrainerPicnickerGina1:
 	jumpstd phonefullf
 
 OfficerfMaraScript:
+	checknite
+	iffalse_jumptextfaceplayer OfficerfMaraDaytimeText
+	checkevent EVENT_BEAT_OFFICERF_MARA
+	iftrue_jumptextfaceplayer OfficerfMaraAfterText
 	faceplayer
 	opentext
-	checknite
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERF_MARA
-	iftrue .AfterScript
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerfMaraSeenText
@@ -431,12 +428,6 @@ OfficerfMaraScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_MARA
 	endtext
-
-.AfterScript:
-	jumpopenedtext OfficerfMaraAfterText
-
-.NoFight:
-	jumpopenedtext OfficerfMaraDaytimeText
 
 TrainerBreederJulie:
 	trainer BREEDER, JULIE, EVENT_BEAT_BREEDER_JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
@@ -564,45 +555,54 @@ TrainerCooltrainerfIrene:
 
 .Script:
 	end_if_just_battled
-	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
-	iftrue .GotPowerHerb
-	jumpopenedtext CooltrainerfIreneAfterText1
+	iftrue_jumptext CooltrainerfIreneAfterText2
+	thistext
 
-.GotPowerHerb:
-	jumpopenedtext CooltrainerfIreneAfterText2
+	text "Irene: My sister"
+	line "Kate will get you"
+	cont "for this!"
+	done
 
 TrainerCooltrainerfJenn:
 	trainer COOLTRAINERF, JENN, EVENT_BEAT_COOLTRAINERF_JENN, CooltrainerfJennSeenText, CooltrainerfJennBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
-	iftrue .GotPowerHerb
-	jumpopenedtext CooltrainerfJennAfterText1
+	iftrue_jumptext CooltrainerfJennAfterText2
+	thistext
 
-.GotPowerHerb:
-	jumpopenedtext CooltrainerfJennAfterText2
+	text "Jenn: Don't get"
+	line "cocky! My sister"
+	cont "Kate is tough!"
+	done
 
 TrainerCooltrainerfKate:
 	trainer COOLTRAINERF, KATE, EVENT_BEAT_COOLTRAINERF_KATE, CooltrainerfKateSeenText, CooltrainerfKateBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
-	iftrue .GotPowerHerb
+	iftrue_jumptext CooltrainerfKateAfterText
+	opentext
 	writetext CooltrainerfKateOfferPowerHerbText
 	buttonsound
 	verbosegiveitem POWER_HERB
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_POWER_HERB_FROM_KATE
-.GotPowerHerb:
-	writetext CooltrainerfKateAfterText
-	waitbutton
-.BagFull:
-	endtext
+	thisopenedtext
+
+CooltrainerfKateAfterText:
+	text "Kate: I'm sorry we"
+	line "jumped you."
+
+	para "We never expected"
+	line "anyone to find us"
+
+	para "here. You sure"
+	line "startled us."
+	done
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up
@@ -804,12 +804,6 @@ CooltrainerfIreneBeatenText:
 	line "Too strong!"
 	done
 
-CooltrainerfIreneAfterText1:
-	text "Irene: My sister"
-	line "Kate will get you"
-	cont "for this!"
-	done
-
 CooltrainerfIreneAfterText2:
 	text "Irene: Isn't this"
 	line "beach great?"
@@ -827,12 +821,6 @@ CooltrainerfJennSeenText:
 CooltrainerfJennBeatenText:
 	text "Jenn: So sorry,"
 	line "Kate! Sis!"
-	done
-
-CooltrainerfJennAfterText1:
-	text "Jenn: Don't get"
-	line "cocky! My sister"
-	cont "Kate is tough!"
 	done
 
 CooltrainerfJennAfterText2:
@@ -859,17 +847,6 @@ CooltrainerfKateOfferPowerHerbText:
 
 	para "Here. You deserve"
 	line "this."
-	done
-
-CooltrainerfKateAfterText:
-	text "Kate: I'm sorry we"
-	line "jumped you."
-
-	para "We never expected"
-	line "anyone to find us"
-
-	para "here. You sure"
-	line "startled us."
 	done
 
 Route34SignText:

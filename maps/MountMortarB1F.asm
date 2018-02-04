@@ -53,22 +53,19 @@ MountMortarB1FTutorDefenseCurlScript:
 	jumpopenedtext Text_MountMortarB1FTutorTaught
 
 KiyoScript_0x7e1f6:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
-	iftrue_jumpopenedtext UnknownText_0x7e36a
+	iftrue_jumptextfaceplayer UnknownText_0x7e36a
+	faceplayer
 	checkevent EVENT_BEAT_KIYO
 	iftrue UnknownScript_0x7e217
-	writetext UnknownText_0x7e24d
-	waitbutton
-	closetext
+	showtext UnknownText_0x7e24d
 	winlosstext UnknownText_0x7e2a9, 0
 	loadtrainer KARATE_KING, KIYO
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIYO
-	opentext
 UnknownScript_0x7e217:
+	opentext
 	writetext UnknownText_0x7e2c0
 	buttonsound
 	waitsfx

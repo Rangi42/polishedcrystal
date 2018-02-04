@@ -105,14 +105,15 @@ OlivineCityRivalLighthouseScript:
 	end
 
 OlivineCityYoungster1Script:
-	faceplayer
-	opentext
-	random $2
-	if_equal $0, UnknownScript_0x1a88b4
-	jumpopenedtext UnknownText_0x1a8b04
+	random 2
+	iffalse_jumptextfaceplayer UnknownText_0x1a8b41
+	thistextfaceplayer
 
-UnknownScript_0x1a88b4:
-	jumpopenedtext UnknownText_0x1a8b41
+	text "That thing you"
+	line "have--it's a #-"
+	cont "gear, right? Wow,"
+	cont "that's cool."
+	done
 
 OlivineCityMovementData_ShovePlayerDown:
 	turn_head_up
@@ -229,13 +230,6 @@ OlivineCityRivalLighthouseText:
 	para "Who knows. It may"
 	line "make you a bit"
 	cont "less weak!"
-	done
-
-UnknownText_0x1a8b04:
-	text "That thing you"
-	line "have--it's a #-"
-	cont "gear, right? Wow,"
-	cont "that's cool."
 	done
 
 UnknownText_0x1a8b41:

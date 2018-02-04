@@ -112,18 +112,15 @@ UnknownScript_0x19ac72:
 	end
 
 OfficerScript_0x19ac85:
+	checkevent EVENT_GOT_TM36_SLUDGE_BOMB
+	iftrue_jumptextfaceplayer UnknownText_0x19ae2d
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM36_SLUDGE_BOMB
-	iftrue UnknownScript_0x19ac9c
 	writetext UnknownText_0x19ad9b
 	buttonsound
 	verbosegivetmhm TM_SLUDGE_BOMB
 	setevent EVENT_GOT_TM36_SLUDGE_BOMB
 	endtext
-
-UnknownScript_0x19ac9c:
-	jumpopenedtext UnknownText_0x19ae2d
 
 MovementData_0x19aca4:
 	big_step_up

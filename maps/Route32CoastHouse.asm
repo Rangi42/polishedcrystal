@@ -20,26 +20,27 @@ GourmetManiacScript:
 	writetext .GreetingText
 	buttonsound
 	special Special_ChooseItem
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	special GetGourmetManiacPrice
-	iffalse .WrongItem
+	iffalse_jumpopenedtext .WrongItemText
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	copybytetovar CurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	jumpopenedtext .ThankYouText
+	thisopenedtext
 
-.NoItem:
-	jumpopenedtext .NoItemText
+	text "Merci! Thank you!"
 
-.WrongItem:
-	jumpopenedtext .WrongItemText
+	para "With this, I can"
+	line "create something"
+	cont "superb."
+	done
 
 .GreetingText:
 	text "Hi there! I am"
@@ -63,14 +64,6 @@ GourmetManiacScript:
 	line "¥@"
 	deciram hMoneyTemp, 3, 7
 	text " for it?"
-	done
-
-.ThankYouText:
-	text "Merci! Thank you!"
-
-	para "With this, I can"
-	line "create something"
-	cont "superb."
 	done
 
 .WrongItemText:

@@ -32,14 +32,14 @@ RadioTower2F_MapScriptHeader:
 	const RADIOTOWER2F_BUENA
 
 TeacherScript_0x5d701:
-	faceplayer
-	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue .Rockets
-	jumpopenedtext UnknownText_0x5d956
+	iftrue_jumptextfaceplayer UnknownText_0x5d983
+	thistextfaceplayer
 
-.Rockets:
-	jumpopenedtext UnknownText_0x5d983
+	text "Lullabies on the"
+	line "radio may make"
+	cont "#mon sleep."
+	done
 
 GenericTrainerGruntM4:
 	generictrainer GRUNTM, 4, EVENT_BEAT_ROCKET_GRUNTM_4, GruntM4SeenText, GruntM4BeatenText
@@ -77,10 +77,10 @@ GenericTrainerGruntF2:
 	done
 
 Buena:
+	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
+	iftrue_jumptextfaceplayer UnknownText_0x5e0c2
 	faceplayer
 	opentext
-	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue UnknownScript_0x5d865
 	checkevent EVENT_MET_BUENA
 	iffalse UnknownScript_0x5d800
 	checkflag ENGINE_BUENAS_PASSWORD_2
@@ -180,9 +180,6 @@ UnknownScript_0x5d845:
 	pause 20
 	special RestartMapMusic
 	end
-
-UnknownScript_0x5d865:
-	jumpopenedtext UnknownText_0x5e0c2
 
 UnknownScript_0x5d86b:
 	writetext UnknownText_0x5e192
@@ -298,12 +295,6 @@ RadioTower2FRockerText:
 
 	para "but boy am I"
 	line "nervous."
-	done
-
-UnknownText_0x5d956:
-	text "Lullabies on the"
-	line "radio may make"
-	cont "#mon sleep."
 	done
 
 UnknownText_0x5d983:

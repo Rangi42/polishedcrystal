@@ -69,7 +69,7 @@ MooMoo:
 	buttonsound
 	writetext Text_AskGiveBerry
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext Text_RefusedToGiveBerry
 	checkitem ORAN_BERRY
 	iffalse .MaybeSitrusBerry
 	takeitem ORAN_BERRY
@@ -83,7 +83,7 @@ MooMoo:
 
 .MaybeSitrusBerry:
 	checkitem SITRUS_BERRY
-	iffalse .NoBerriesInBag
+	iffalse_jumpopenedtext Text_NoBerries
 	takeitem SITRUS_BERRY
 	copybytetovar MooMooBerries
 	addvar 2
@@ -130,12 +130,6 @@ MooMoo:
 	special RestartMapMusic
 	setevent EVENT_HEALED_MOOMOO
 	jumpopenedtext Text_TotallyHealthy
-
-.NoBerriesInBag:
-	jumpopenedtext Text_NoBerries
-
-.Refused:
-	jumpopenedtext Text_RefusedToGiveBerry
 
 .HappyCow:
 	showcrytext UnknownText_0x9cd92, MILTANK

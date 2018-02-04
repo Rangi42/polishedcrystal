@@ -171,19 +171,19 @@ DragonShrineTestScript:
 	end
 
 ElderScript_0x18d1a5:
-	faceplayer
-	opentext
 	checkevent EVENT_GAVE_KURT_APRICORNS
-	iftrue_jumpopenedtext UnknownText_0x18d5e5
+	iftrue_jumptextfaceplayer UnknownText_0x18d5e5
 	checkevent EVENT_JUST_RECEIVED_DRATINI
-	iftrue_jumpopenedtext UnknownText_0x18d6ca
+	iftrue_jumptextfaceplayer UnknownText_0x18d6ca
 	checkevent EVENT_GOT_DRATINI
 	iffalse .GiveDratini
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iftrue_jumpopenedtext UnknownText_0x18d782
-	jumpopenedtext UnknownText_0x18d724
+	iftrue_jumptextfaceplayer UnknownText_0x18d782
+	jumptextfaceplayer UnknownText_0x18d724
 
 .GiveDratini:
+	faceplayer
+	opentext
 	writetext UnknownText_0x18d604
 	waitbutton
 	checkcode VAR_PARTYCOUNT

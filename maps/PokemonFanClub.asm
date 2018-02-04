@@ -46,12 +46,12 @@ UnknownScript_0x191802:
 	jumpopenedtext UnknownText_0x191a72
 
 FisherScript_0x191824:
+	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
+	iftrue_jumptextfaceplayer UnknownText_0x191d1e
+	checkevent EVENT_RETURNED_MACHINE_PART
+	iffalse_jumptextfaceplayer UnknownText_0x191ba0
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
-	iftrue_jumpopenedtext UnknownText_0x191d1e
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iffalse_jumpopenedtext UnknownText_0x191ba0
 	writetext UnknownText_0x191bff
 	checkevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	iftrue UnknownScript_0x191844

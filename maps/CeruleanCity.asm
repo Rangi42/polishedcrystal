@@ -69,10 +69,7 @@ YoungsterScript_0x184064:
 	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 	iftrue_jumptextfaceplayer CeruleanCityYoungsterText
 	faceplayer
-	opentext
-	writetext UnknownText_0x1842a9
-	waitbutton
-	closetext
+	showtext UnknownText_0x1842a9
 	waitsfx
 	playsound SFX_SECOND_PART_OF_ITEMFINDER
 	waitsfx

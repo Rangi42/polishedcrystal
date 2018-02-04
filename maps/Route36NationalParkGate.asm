@@ -206,10 +206,10 @@ Route36OfficerScriptContest:
 	checkcode VAR_PARTYCOUNT
 	if_less_than $6, .ContinueLeavingMons
 	checkcode VAR_BOXSPACE
-	if_equal $0, .BoxFull
+	iffalse_jumpopenedtext UnknownText_0x6a67c
 .ContinueLeavingMons:
 	special CheckFirstMonIsEgg
-	if_equal $1, .FirstMonIsEgg
+	iftrue_jumpopenedtext UnknownText_0x6a71f
 	writetext UnknownText_0x6a4c6
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x6a597
@@ -223,12 +223,6 @@ Route36OfficerScriptContest:
 	waitsfx
 	buttonsound
 	jump .ResumeStartingContest
-
-.BoxFull:
-	jumpopenedtext UnknownText_0x6a67c
-
-.FirstMonIsEgg:
-	jumpopenedtext UnknownText_0x6a71f
 
 Route36Officer_ContestHasConcluded:
 	checkevent EVENT_CONTEST_OFFICER_HAS_PRIZE

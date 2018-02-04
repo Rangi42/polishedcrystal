@@ -54,10 +54,10 @@ UnknownScript_0x76766:
 	end
 
 SailorScript_0x76767:
+	checkevent EVENT_FAST_SHIP_FIRST_TIME
+	iftrue_jumptextfaceplayer UnknownText_0x7699d
 	faceplayer
 	opentext
-	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue_jumpopenedtext UnknownText_0x7699d
 	checkevent EVENT_FAST_SHIP_LAZY_SAILOR
 	iftrue UnknownScript_0x7678d
 	checkevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR

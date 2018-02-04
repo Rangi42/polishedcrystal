@@ -41,31 +41,39 @@ GymGuyScript_0x5e556:
 	jumptextfaceplayer UnknownText_0x5e682
 
 CooltrainerFScript_0x5e56a:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
-	iftrue UnknownScript_0x5e59d
+	iftrue_jumptextfaceplayer UnknownText_0x5e85c
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue UnknownScript_0x5e58a
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	iftrue UnknownScript_0x5e584
-	jumpopenedtext UnknownText_0x5e754
+	iftrue_jumptextfaceplayer UnknownText_0x5e7cb
+	thistextfaceplayer
 
-UnknownScript_0x5e584:
-	jumpopenedtext UnknownText_0x5e7cb
+	text "The Team Rocket"
+	line "boss has locked"
+	cont "himself in."
+
+	para "But the Director"
+	line "can open it."
+
+	para "He's up on the"
+	line "fifth floor."
+
+	para "Please save him!"
+	done
 
 UnknownScript_0x5e58a:
+	faceplayer
+	opentext
 	writetext UnknownText_0x5e7e2
 	buttonsound
 	verbosegiveitem HEAT_ROCK
+	iffalse_endtext
 	writetext UnknownText_0x5e821
 	waitbutton
 	closetext
 	setevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
 	end
-
-UnknownScript_0x5e59d:
-	jumpopenedtext UnknownText_0x5e85c
 
 GenericTrainerGruntM7:
 	generictrainer GRUNTM, 7, EVENT_BEAT_ROCKET_GRUNTM_7, GruntM7SeenText, GruntM7BeatenText
@@ -163,20 +171,6 @@ UnknownText_0x5e6eb:
 	para "I'll do my best to"
 	line "run around the"
 	cont "clock too!"
-	done
-
-UnknownText_0x5e754:
-	text "The Team Rocket"
-	line "boss has locked"
-	cont "himself in."
-
-	para "But the Director"
-	line "can open it."
-
-	para "He's up on the"
-	line "fifth floor."
-
-	para "Please save him!"
 	done
 
 UnknownText_0x5e7cb:

@@ -15,10 +15,10 @@ Route12SuperRodHouse_MapScriptHeader:
 	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x7f484, -1
 
 FishingGuruScript_0x7f484:
+	checkevent EVENT_GOT_SUPER_ROD
+	iftrue_jumptextfaceplayer UnknownText_0x7f57c
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SUPER_ROD
-	iftrue UnknownScript_0x7f4a0
 	writetext UnknownText_0x7f4af
 	yesorno
 	iffalse UnknownScript_0x7f4a6
@@ -27,8 +27,19 @@ FishingGuruScript_0x7f484:
 	verbosegiveitem SUPER_ROD
 	iffalse UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD
-UnknownScript_0x7f4a0:
-	jumpopenedtext UnknownText_0x7f57c
+	thisopenedtext
+
+UnknownText_0x7f57c:
+	text "Try your hand at"
+	line "fishing wherever"
+	cont "there is water."
+
+	para "Remember--you can"
+	line "catch different"
+
+	para "#mon using"
+	line "different Rods."
+	done
 
 UnknownScript_0x7f4a6:
 	writetext UnknownText_0x7f5ec
@@ -58,18 +69,6 @@ UnknownText_0x7f52f:
 	para "Here, fishing fan!"
 	line "Take this--it's a"
 	cont "Super Rod."
-	done
-
-UnknownText_0x7f57c:
-	text "Try your hand at"
-	line "fishing wherever"
-	cont "there is water."
-
-	para "Remember--you can"
-	line "catch different"
-
-	para "#mon using"
-	line "different Rods."
 	done
 
 UnknownText_0x7f5ec:

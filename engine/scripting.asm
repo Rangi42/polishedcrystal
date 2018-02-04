@@ -129,7 +129,7 @@ ScriptCommandTable:
 	dw Script_stringtotext               ; 42
 	dw Script_itemnotify                 ; 43
 	dw Script_pocketisfull               ; 44
-	dw Script_textbox                    ; 45
+	dw Script_opentext                    ; 45
 	dw Script_refreshscreen              ; 46
 	dw Script_closetext                  ; 47
 	dw Script_farwritetext               ; 48
@@ -730,7 +730,7 @@ Script_pokemart:
 ;     dialog_id (SingleByteParam)
 ;     mart_id (SingleByteParam)
 	call Script_faceplayer
-	call Script_textbox
+	call Script_opentext
 	call GetScriptByte
 	ld c, a
 	call GetScriptByte
@@ -762,7 +762,7 @@ Script_trade:
 ; parameters:
 ;     trade_id (SingleByteParam)
 	call Script_faceplayer
-	call Script_textbox
+	call Script_opentext
 	call GetScriptByte
 	ld e, a
 	farcall NPCTrade
@@ -2569,7 +2569,7 @@ Script_reloadandreturn:
 	call Script_newloadmap
 	jp Script_end
 
-Script_textbox:
+Script_opentext:
 	jp OpenText
 
 Script_refreshscreen:
@@ -2584,7 +2584,7 @@ Script_showtextfaceplayer:
 Script_showtext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
-	call Script_textbox
+	call Script_opentext
 	call Script_writetext
 	call Script_waitbutton
 ; fallthrough
@@ -2895,7 +2895,7 @@ Script_showcrytext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 ;     cry_id (SingleByteParam)
-	call Script_textbox
+	call Script_opentext
 	call Script_writetext
 	call Script_cry
 	call Script_waitbutton

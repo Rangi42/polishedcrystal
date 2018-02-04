@@ -56,15 +56,17 @@ BrockScript_0x1a2864:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
-	iftrue BrockAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x1a2ada
 	writetext UnknownText_0x1a2a57
 	buttonsound
 	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
-	jumpopenedtext BrockOutroText
+	thisopenedtext
 
-BrockAfterTMScript:
-	jumpopenedtext UnknownText_0x1a2ada
+	text "It can sometimes"
+	line "cause your foe to"
+	cont "flinch."
+	done
 
 GenericTrainerCamperJerry:
 	generictrainer CAMPER, JERRY, EVENT_BEAT_CAMPER_JERRY, CamperJerrySeenText, CamperJerryBeatenText
@@ -153,12 +155,6 @@ UnknownText_0x1a2a57:
 	para "I'll give you the"
 	line "TM for Rock Slide,"
 	cont "too."
-	done
-
-BrockOutroText:
-	text "It can sometimes"
-	line "cause your foe to"
-	cont "flinch."
 	done
 
 UnknownText_0x1a2ada:

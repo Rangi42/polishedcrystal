@@ -20,15 +20,13 @@ PsychicInversHouse_MapScriptHeader:
 	const PSYCHICINVERSHOUSE_INVER
 
 PsychicInverScript:
+	checkflag ENGINE_FOUGHT_PSYCHIC_INVER
+	iftrue_jumptextfaceplayer PsychicInverTomorrowText
 	faceplayer
 	opentext
-	checkflag ENGINE_FOUGHT_PSYCHIC_INVER
-	iftrue .Tomorrow
 	writetext PsychicInverGreetingText
-	waitbutton
-	writetext PsychicInverChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext PsychicInverNoText
 	writetext PsychicInverYesText
 	waitbutton
 	closetext
@@ -79,12 +77,6 @@ PsychicInverScript:
 	callasm .RandomStone
 	jump .Reward
 
-.No
-	jumpopenedtext PsychicInverNoText
-
-.Tomorrow:
-	jumpopenedtext PsychicInverTomorrowText
-
 .RandomBerry:
 	ld a, APICOT_BERRY - LUM_BERRY + 1
 	call RandomRange
@@ -110,10 +102,8 @@ PsychicInverGreetingText:
 
 	para "I call this an"
 	line "Inverse Battle!"
-	done
 
-PsychicInverChallengeText:
-	text "What do you think?"
+	para "What do you think?"
 	line "Would you care to"
 	cont "try an Inverse"
 	cont "Battle?"

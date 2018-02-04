@@ -52,12 +52,12 @@ UnknownScript_0x5c021:
 	endtext
 
 OfficermKeithScript:
+	checknite
+	iffalse_jumptextfaceplayer OfficermKeithDaytimeText
+	checkevent EVENT_BEAT_OFFICERM_KEITH
+	iftrue_jumptextfaceplayer OfficermKeithAfterText
 	faceplayer
 	opentext
-	checknite
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERM_KEITH
-	iftrue .AfterScript
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficermKeithSeenText
@@ -69,12 +69,6 @@ OfficermKeithScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERM_KEITH
 	endtext
-
-.AfterScript:
-	jumpopenedtext OfficermKeithAfterText
-
-.NoFight:
-	jumpopenedtext OfficermKeithDaytimeText
 
 GenericTrainerBugManiacLou:
 	generictrainer BUG_MANIAC, LOU, EVENT_BEAT_BUG_MANIAC_LOU, BugManiacLouSeenText, BugManiacLouBeatenText

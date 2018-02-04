@@ -21,12 +21,12 @@ UnknownScript_0x1ad318:
 	return
 
 OfficerfJamieScript:
+	checknite
+	iffalse_jumptextfaceplayer OfficerfJamieDaytimeText
+	checkevent EVENT_BEAT_OFFICERF_JAMIE
+	iftrue_jumptextfaceplayer OfficerfJamieAfterText
 	faceplayer
 	opentext
-	checknite
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERF_JAMIE
-	iftrue .AfterScript
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerfJamieSeenText
@@ -38,12 +38,6 @@ OfficerfJamieScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_OFFICERF_JAMIE
 	endtext
-
-.AfterScript:
-	jumpopenedtext OfficerfJamieAfterText
-
-.NoFight:
-	jumpopenedtext OfficerfJamieDaytimeText
 
 OfficerfJamieSeenText:
 	text "Hey you! Are you"

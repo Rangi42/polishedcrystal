@@ -53,23 +53,24 @@ UnknownScript_0x62d62:
 	end
 
 TeacherScript_0x62d63:
+	checkevent EVENT_FOREST_IS_RESTLESS
+	iftrue_jumptextfaceplayer UnknownText_0x62e41
+	checkevent EVENT_GOT_TM54_FALSE_SWIPE
+	iftrue_jumptextfaceplayer UnknownText_0x62df6
 	faceplayer
 	opentext
-	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue UnknownScript_0x62d84
-	checkevent EVENT_GOT_TM54_FALSE_SWIPE
-	iftrue UnknownScript_0x62d7e
 	writetext UnknownText_0x62d9d
 	buttonsound
 	verbosegivetmhm TM_FALSE_SWIPE
 	setevent EVENT_GOT_TM54_FALSE_SWIPE
-UnknownScript_0x62d7e:
-	jumpopenedtext UnknownText_0x62df6
+	thisopenedtext
 
-UnknownScript_0x62d84:
-	writetext UnknownText_0x62e41
-	buttonsound
-	endtext
+UnknownText_0x62df6:
+	text "It's False Swipe."
+
+	para "Teach it to a"
+	line "special #mon."
+	done
 
 MovementData_0x62d97:
 	step_up
@@ -91,13 +92,6 @@ UnknownText_0x62d9d:
 
 	para "Here, take this"
 	line "TM."
-	done
-
-UnknownText_0x62df6:
-	text "It's False Swipe."
-
-	para "Teach it to a"
-	line "special #mon."
 	done
 
 UnknownText_0x62e41:

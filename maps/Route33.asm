@@ -36,7 +36,7 @@ TrainerHikerAnthony:
 	checkflag ENGINE_ANTHONY
 	iftrue .Rematch
 	checkflag ENGINE_DUNSPARCE_SWARM
-	iftrue .Swarm
+	iftrue_jumpopenedtext HikerAnthonyDunsparceText
 	checkcellnum PHONE_HIKER_ANTHONY
 	iftrue .NumberAccepted
 	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
@@ -116,9 +116,6 @@ TrainerHikerAnthony:
 	reloadmapafterbattle
 	clearflag ENGINE_ANTHONY
 	end
-
-.Swarm:
-	jumpopenedtext HikerAnthonyDunsparceText
 
 .NumberAccepted:
 	jumpstd numberacceptedm

@@ -68,10 +68,7 @@ ElderLiScript:
 	checkevent EVENT_GOT_TM70_FLASH
 	iftrue_jumptextfaceplayer UnknownText_0x184d88
 	faceplayer
-	opentext
-	writetext SageLiSeenText
-	waitbutton
-	closetext
+	showtext SageLiSeenText
 	winlosstext SageLiBeatenText, 0
 	loadtrainer ELDER, LI
 	startbattle

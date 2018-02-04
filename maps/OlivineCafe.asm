@@ -28,10 +28,10 @@ BakerScript_0x9c8c1:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_BAKER_CHELSIE
-	iftrue BakerChelsieAfterScript
+	iftrue_jumpopenedtext BakerChelsieAfterText
 	writetext BakerChelsieGreetingText
 	yesorno
-	iffalse BakerChelsieNoBattleScript
+	iffalse_jumpopenedtext BakerChelsieNoBattleText
 	writetext BakerChelsieSeenText
 	waitbutton
 	closetext
@@ -42,11 +42,15 @@ BakerScript_0x9c8c1:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BAKER_CHELSIE
 	opentext
-BakerChelsieAfterScript:
-	jumpopenedtext BakerChelsieAfterText
+	thisopenedtext
 
-BakerChelsieNoBattleScript:
-	jumpopenedtext BakerChelsieNoBattleText
+BakerChelsieAfterText:
+	text "I always add vita-"
+	line "mins to my bread."
+
+	para "They make my #-"
+	line "mon stronger."
+	done
 
 OlivineCafeLyraScript:
 	faceplayer
@@ -119,14 +123,6 @@ BakerChelsieBeatenText:
 	text "You are strong."
 	line "Are you eating my"
 	cont "special bread?"
-	done
-
-BakerChelsieAfterText:
-	text "I always add vita-"
-	line "mins to my bread."
-
-	para "They make my #-"
-	line "mon stronger."
 	done
 
 BakerChelsieNoBattleText:

@@ -97,10 +97,10 @@ OfficerScript_0x6a204:
 	if_equal MONDAY, Route35NationalParkGate_NoContestToday
 	if_equal WEDNESDAY, Route35NationalParkGate_NoContestToday
 	if_equal FRIDAY, Route35NationalParkGate_NoContestToday
+	checkflag ENGINE_DAILY_BUG_CONTEST
+	iftrue_jumptextfaceplayer UnknownText_0x6a84f
 	faceplayer
 	opentext
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route35NationalParkGate_ContestIsOver
 	callstd daytotext
 	writetext UnknownText_0x6a2eb
 	yesorno
@@ -143,11 +143,10 @@ Route35NationalParkGate_LeaveTheRestBehind:
 	checkcode VAR_PARTYCOUNT
 	if_less_than 6, Route35NationalParkGate_LessThanFullParty
 	checkcode VAR_BOXSPACE
-	if_equal 0, Route35NationalParkGate_NoRoomInBox
-
+	iffalse_jumpopenedtext UnknownText_0x6a67c
 Route35NationalParkGate_LessThanFullParty: ; 6a27d
 	special CheckFirstMonIsEgg
-	if_equal $1, Route35NationalParkGate_FirstMonIsEgg
+	iftrue_jumpopenedtext UnknownText_0x6a71f
 	writetext UnknownText_0x6a4c6
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToLeaveMonsBehind
@@ -171,24 +170,18 @@ Route35NationalParkGate_DeclinedToLeaveMonsBehind:
 Route35NationalParkGate_FirstMonIsFainted:
 	jumpopenedtext UnknownText_0x6a608
 
-Route35NationalParkGate_NoRoomInBox:
-	jumpopenedtext UnknownText_0x6a67c
-
-Route35NationalParkGate_FirstMonIsEgg:
-	jumpopenedtext UnknownText_0x6a71f
-
-Route35NationalParkGate_ContestIsOver:
-	jumpopenedtext UnknownText_0x6a84f
-
-Route35NationalParkGate_NoContestToday:
-	jumptextfaceplayer UnknownText_0x6a894
-
 OfficerScript_0x6a2ca:
-	faceplayer
-	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route35NationalParkGate_ContestIsOver
-	jumpopenedtext UnknownText_0x6a894
+	iftrue_jumptextfaceplayer UnknownText_0x6a84f
+Route35NationalParkGate_NoContestToday:
+	thistextfaceplayer
+
+	text "We hold Contests"
+	line "regularly in the"
+
+	para "park. You should"
+	line "give it a shot."
+	done
 
 MovementData_0x6a2e2:
 	step_down
@@ -382,14 +375,6 @@ UnknownText_0x6a84f:
 
 	para "will participate"
 	line "in the future."
-	done
-
-UnknownText_0x6a894:
-	text "We hold Contests"
-	line "regularly in the"
-
-	para "park. You should"
-	line "give it a shot."
 	done
 
 UnknownText_0x6a8d8:

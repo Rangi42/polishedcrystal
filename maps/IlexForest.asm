@@ -345,10 +345,10 @@ IlexForestApprenticeTrigger:
 	jump IlexForestCharcoalApprenticeScript
 
 IlexForestCharcoalMasterScript:
+	checkevent EVENT_GOT_HM01_CUT
+	iftrue_jumptextfaceplayer Text_CharcoalMasterTalkAfter
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_HM01_CUT
-	iftrue .AlreadyGotCut
 	writetext Text_CharcoalMasterIntro
 	buttonsound
 	verbosegivetmhm HM_CUT
@@ -363,9 +363,6 @@ IlexForestCharcoalMasterScript:
 	clearevent EVENT_CHARCOAL_KILN_APPRENTICE
 	clearevent EVENT_CHARCOAL_KILN_BOSS
 	end
-
-.AlreadyGotCut:
-	jumpopenedtext Text_CharcoalMasterTalkAfter
 
 IlexForestHeadbuttGuyScript:
 	faceplayer

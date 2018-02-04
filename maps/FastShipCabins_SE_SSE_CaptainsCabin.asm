@@ -73,10 +73,10 @@ UnknownScript_0x75f09:
 	jump UnknownScript_0x75f37
 
 GentlemanScript_0x75f1f:
+	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
+	iftrue_jumptextfaceplayer UnknownText_0x761be
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
-	iftrue_jumpopenedtext UnknownText_0x761be
 	checkevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_2
 	iftrue UnknownScript_0x75f58
 	writetext UnknownText_0x760ae

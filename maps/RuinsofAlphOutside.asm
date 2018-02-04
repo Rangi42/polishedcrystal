@@ -115,12 +115,18 @@ FisherScript_0x58061:
 	faceplayer
 	opentext
 	checkevent EVENT_TALKED_TO_RUINS_COWARD
-	iftrue .Next
+	iftrue_jumpopenedtext UnknownText_0x58420
 	setevent EVENT_TALKED_TO_RUINS_COWARD
 	writetext UnknownText_0x583a4
 	buttonsound
-.Next:
-	jumpopenedtext UnknownText_0x58420
+	thisopenedtext
+
+UnknownText_0x58420:
+	text "The ruins hide a"
+	line "huge secret!"
+
+	para "…I think…"
+	done
 
 YoungsterScript_0x58076:
 	faceplayer
@@ -292,13 +298,6 @@ UnknownText_0x583a4:
 
 	para "You should be"
 	line "careful too."
-	done
-
-UnknownText_0x58420:
-	text "The ruins hide a"
-	line "huge secret!"
-
-	para "…I think…"
 	done
 
 UnknownText_0x58449:

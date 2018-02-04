@@ -38,10 +38,10 @@ SinjohRuinsHouseGrampsScript:
 	end
 
 SinjohRuinsHouseCynthiaScript:
+	checkevent EVENT_BEAT_CYNTHIA
+	iftrue_jumptextfaceplayer SinjohRuinsHouseCynthiaAfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_CYNTHIA
-	iftrue_jumpopenedtext SinjohRuinsHouseCynthiaAfterText
 	writetext SinjohRuinsHouseCynthiaChallengeText
 	yesorno
 	iffalse_jumpopenedtext SinjohRuinsHouseCynthiaNoText

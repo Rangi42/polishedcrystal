@@ -16,17 +16,15 @@ Route28FamousSpeechHouse_MapScriptHeader:
 	object_event  6,  5, SPRITE_SKARMORY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, SKARMORY, CelebritysSkarmoryText, -1
 
 Celebrity:
+	checkevent EVENT_GOT_TM47_STEEL_WING
+	iftrue_jumptextfaceplayer CelebrityText2
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM47_STEEL_WING
-	iftrue .AlreadyGotItem
 	writetext CelebrityText1
 	buttonsound
 	verbosegivetmhm TM_STEEL_WING
 	setevent EVENT_GOT_TM47_STEEL_WING
 	endtext
-.AlreadyGotItem:
-	jumpopenedtext CelebrityText2
 
 CelebrityText1:
 	text "Oh, dear."

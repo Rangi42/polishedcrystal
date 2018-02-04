@@ -187,21 +187,21 @@ GrannyScript_0x7c132:
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .Open
 	if_equal SATURDAY, .Open
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .Open:
 	pokemart MARTTYPE_BITTER, MART_UNDERGROUND
 
 GrampsScript_0x7c146:
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
-	iftrue WarehouseEntranceScript_ShopClosed
+	iftrue_jumptext UnknownText_0x7c904
 	checkcode VAR_WEEKDAY
 	if_equal MONDAY, .CheckMorn
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .CheckMorn:
 	checkmorn
-	iffalse WarehouseEntranceScript_ShopClosed
+	iffalse_jumptext UnknownText_0x7c904
 	pokemart MARTTYPE_BARGAIN, 0
 
 OlderHaircutBrotherScript:
@@ -209,7 +209,7 @@ OlderHaircutBrotherScript:
 	if_equal TUESDAY, .DoHaircut
 	if_equal THURSDAY, .DoHaircut
 	if_equal SATURDAY, .DoHaircut
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .DoHaircut:
 	opentext
@@ -283,7 +283,7 @@ YoungerHaircutBrotherScript:
 	if_equal SUNDAY, .DoHaircut
 	if_equal WEDNESDAY, .DoHaircut
 	if_equal FRIDAY, .DoHaircut
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .DoHaircut:
 	opentext
@@ -379,9 +379,6 @@ BasementDoorScript::
 	reloadmappart
 	setevent EVENT_USED_BASEMENT_KEY
 	endtext
-
-WarehouseEntranceScript_ShopClosed:
-	jumptext UnknownText_0x7c904
 
 SupernerdEricSeenText:
 	text "I got booted out"
