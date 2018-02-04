@@ -120,7 +120,7 @@ NUM_PERSONTYPES EQU const_value
 EMOTE_MEM EQU -1
 
 ; fruit trees
-; see engine/fruit_trees.asm:FruitTreeItems
+; see engine/events/fruit_trees.asm
 	const_def 1
 	const FRUITTREE_ROUTE_29        ; 01
 	const FRUITTREE_ROUTE_30_1      ; 02

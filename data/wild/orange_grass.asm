@@ -1,6 +1,6 @@
 ; Orange Pokémon in grass
 
-	map NAVEL_ROCK_INSIDE
+	map_id NAVEL_ROCK_INSIDE
 	db 1 percent, 1 percent, 1 percent ; encounter rates: morn/day/nite
 	; morn
 	db 1, 0

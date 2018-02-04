@@ -67,7 +67,7 @@ audio/musicplayer.o \
 data/pokemon/dex_entries.o \
 data/pokemon/egg_moves.o \
 data/pokemon/evos_attacks.o \
-data/maps/maps.o \
+data/maps/map_data.o \
 data/text/common.o \
 data/tileset_data.o \
 engine/credits.o \

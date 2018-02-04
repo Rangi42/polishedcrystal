@@ -106,7 +106,7 @@ ChangeHappiness: ; 71c2
 	ld [BattleMonHappiness], a
 	ret
 
-INCLUDE "data/happiness_changes.asm"
+INCLUDE "data/events/happiness_changes.asm"
 
 GetExtraHappiness:
 ; Increase happiness in 'a' based on ther factors

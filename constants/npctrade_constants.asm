@@ -1,4 +1,4 @@
-; see engine/npctrade.asm:NPCTrades
+; see data/events/npc_trades.asm:NPCTrades
 	const_def
 	const TRADE_WITH_MIKE_FOR_MACHOP     ; 0
 	const TRADE_WITH_KYLE_FOR_VOLTORB    ; 1

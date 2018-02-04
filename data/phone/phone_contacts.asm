@@ -1,6 +1,6 @@
 phone: MACRO
 	db  \1, \2 ; trainer
-	map \3     ; map
+	map_id \3 ; map
 	db  \4
 	dba \5 ; script 1
 	db  \6

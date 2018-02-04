@@ -321,7 +321,7 @@ CheckOverworldTileArrays: ; c840
 	xor a
 	ret
 
-INCLUDE "data/field_move_blocks.asm"
+INCLUDE "data/events/field_move_blocks.asm"
 
 Script_CutTree:
 	callasm PrepareOverworldMove

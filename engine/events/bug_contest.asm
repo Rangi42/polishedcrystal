@@ -232,7 +232,7 @@ LoadContestantName: ; 13730
 	jp CopyBytes
 ; 13783
 
-INCLUDE "data/bug_contest_winners.asm"
+INCLUDE "data/events/bug_contest_winners.asm"
 
 BugContest_GetPlayersResult: ; 13807
 	ld hl, wBugContestThirdPlacePersonID
@@ -573,4 +573,4 @@ Special_CheckBugContestContestantFlag: ; 139ed
 	jp EventFlagAction
 ; 139fe
 
-INCLUDE "data/bug_contest_flags.asm"
+INCLUDE "data/events/bug_contest_flags.asm"

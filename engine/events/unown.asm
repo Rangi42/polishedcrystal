@@ -191,4 +191,4 @@ Special_DisplayUnownWords: ; 8ae68
 	ret
 ; 8af6b
 
-INCLUDE "data/unown_walls.asm"
+INCLUDE "data/events/unown_walls.asm"

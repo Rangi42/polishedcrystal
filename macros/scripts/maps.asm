@@ -1,4 +1,4 @@
-map: MACRO
+map_id: MACRO
 	db GROUP_\1, MAP_\1
 ENDM
 
@@ -16,7 +16,7 @@ warp_event: MACRO
 	db \2 ; y
 	db \1 ; x
 	db \4 ; warp_to
-	map \3 ; map
+	map_id \3 ; map
 ENDM
 
 coord_event: MACRO
@@ -133,7 +133,7 @@ ENDM
 
 elevfloor: MACRO
 	db \1, \2
-	map \3
+	map_id \3
 ENDM
 
 stonetable: MACRO

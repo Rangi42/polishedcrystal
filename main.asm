@@ -167,7 +167,7 @@ INCLUDE "engine/learn.asm"
 INCLUDE "engine/math.asm"
 INCLUDE "engine/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
-INCLUDE "engine/events/special.asm"
+INCLUDE "engine/events/specials_2.asm"
 INCLUDE "data/items/attributes.asm"
 
 
@@ -182,7 +182,7 @@ INCLUDE "engine/trainer_scripts.asm"
 
 SECTION "Code 3", ROMX
 
-INCLUDE "engine/specials.asm"
+INCLUDE "engine/events/specials.asm"
 INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
 INCLUDE "engine/events/overworld.asm"
@@ -386,7 +386,7 @@ INCLUDE "engine/time.asm"
 INCLUDE "engine/tmhm.asm"
 INCLUDE "engine/naming_screen.asm"
 INCLUDE "engine/events/itemball.asm"
-INCLUDE "engine/healmachineanim.asm"
+INCLUDE "engine/events/heal_machine_anim.asm"
 INCLUDE "engine/events/whiteout.asm"
 INCLUDE "engine/events/forced_movement.asm"
 INCLUDE "engine/events/itemfinder.asm"
@@ -428,7 +428,7 @@ INCLUDE "engine/events/move_reminder.asm"
 
 SECTION "Code 7", ROMX
 
-INCLUDE "engine/pokepic.asm"
+INCLUDE "engine/events/pokepic.asm"
 INCLUDE "engine/scrolling_menu.asm"
 INCLUDE "engine/switch_items.asm"
 INCLUDE "engine/menu.asm"
@@ -436,7 +436,7 @@ INCLUDE "engine/mon_menu.asm"
 INCLUDE "engine/battle/menu.asm"
 INCLUDE "engine/buy_sell_toss.asm"
 INCLUDE "engine/trainer_card.asm"
-INCLUDE "engine/prof_oaks_pc.asm"
+INCLUDE "engine/events/prof_oaks_pc.asm"
 INCLUDE "engine/decorations.asm"
 INCLUDE "data/trainers/dvs.asm"
 
@@ -1004,8 +1004,8 @@ PlaceGraphic: ; 2ef6e
 SECTION "Code 10", ROMX
 
 INCLUDE "engine/mail.asm"
-INCLUDE "engine/fruit_trees.asm"
-INCLUDE "engine/hidden_grottoes.asm"
+INCLUDE "engine/events/fruit_trees.asm"
+INCLUDE "engine/events/hidden_grottoes.asm"
 INCLUDE "engine/battle/ai/move.asm"
 
 AnimateDexSearchSlowpoke: ; 441cf
@@ -3959,7 +3959,7 @@ SECTION "Code 18", ROMX
 INCLUDE "engine/phone.asm"
 INCLUDE "engine/timeset.asm"
 INCLUDE "engine/pokegear.asm"
-INCLUDE "engine/fish.asm"
+INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/slot_machine.asm"
 
 
@@ -3972,7 +3972,7 @@ INCLUDE "gfx/mail.asm"
 
 SECTION "Code 20", ROMX
 
-INCLUDE "engine/std_scripts.asm"
+INCLUDE "engine/events/std_scripts.asm"
 INCLUDE "engine/phone_scripts.asm"
 
 
@@ -4003,8 +4003,8 @@ INCLUDE "audio/distorted_cries.asm"
 SECTION "Code 24", ROMX
 
 INCLUDE "engine/tileset_anims.asm"
-INCLUDE "engine/npctrade.asm"
-INCLUDE "engine/wonder_trade.asm"
+INCLUDE "engine/events/npc_trade.asm"
+INCLUDE "engine/events/wonder_trade.asm"
 INCLUDE "engine/events/mom_phone.asm"
 
 
@@ -4364,4 +4364,4 @@ INCLUDE "data/battle_tower/trainer_text.asm"
 SECTION "Crystal Data", ROMX
 
 INCLUDE "engine/events/battle_tower/load_trainer.asm"
-INCLUDE "data/odd_eggs.asm"
+INCLUDE "data/events/odd_eggs.asm"

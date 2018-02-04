@@ -26,4 +26,4 @@ CheckFacingTileForStd:: ; 1365b
 .JumpStdFromRAMScript: ; 0x1369a
 	jump wJumpStdScriptBuffer
 
-INCLUDE "data/collision_std_scripts.asm"
+INCLUDE "data/events/collision_std_scripts.asm"

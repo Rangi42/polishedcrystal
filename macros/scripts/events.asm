@@ -109,13 +109,13 @@ ptcallasm: macro
 	enum checkmaptriggers_command
 checkmaptriggers: macro
 	db checkmaptriggers_command
-	map \1 ; map
+	map_id \1 ; map
 	endm
 
 	enum domaptrigger_command
 domaptrigger: macro
 	db domaptrigger_command
-	map \1 ; map
+	map_id \1 ; map
 	db \2 ; trigger_id
 	endm
 
@@ -377,19 +377,19 @@ wildoff: macro
 warpmod: macro
 	db warpmod_command
 	db \1 ; warp_id
-	map \2 ; map
+	map_id \2 ; map
 	endm
 
 	enum blackoutmod_command
 blackoutmod: macro
 	db blackoutmod_command
-	map \1 ; map
+	map_id \1 ; map
 	endm
 
 	enum warp_command
 warp: macro
 	db warp_command
-	map \1 ; map
+	map_id \1 ; map
 	db \2 ; x
 	db \3 ; y
 	endm
@@ -981,7 +981,7 @@ verbosegiveitem2: macro
 swarm: macro
 	db swarm_command
 	db \1 ; flag
-	map \2 ; map
+	map_id \2 ; map
 	endm
 
 	enum halloffame_command
@@ -998,7 +998,7 @@ credits: macro
 warpfacing: macro
 	db warpfacing_command
 	db \1 ; facing
-	map \2 ; map
+	map_id \2 ; map
 	db \3 ; x
 	db \4 ; y
 	endm
