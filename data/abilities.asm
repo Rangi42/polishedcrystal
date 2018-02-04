@@ -1,36 +1,3 @@
-PrintAbility:
-; Print ability b at hl.
-	ld l, b
-	ld h, 0
-	ld bc, AbilityNames
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	hlcoord 3, 13
-	jp PlaceString
-
-BufferAbility:
-; Buffer name for b into StringBuffer1
-	ld l, b
-	ld h, 0
-	ld bc, AbilityNames
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, StringBuffer1
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	cp "@"
-	ret z
-	jr .loop
-
-
 AbilityNames:
 	dw NoAbility
 	dw Stench
@@ -298,44 +265,6 @@ Competitive:   db "Competitive@"
 Pixilate:      db "Pixilate@"
 TanglingHair:  db "Tangling Hair@"
 
-
-PrintAbilityDescription:
-; Print ability description for b
-; we can't use PlaceString, because it would linebreak with an empty line inbetween
-	ld l, b
-	ld h, 0
-	ld bc, AbilityDescriptions
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	decoord 1, 15
-	push de
-.loop
-	ld a, [hli]
-	cp "@"
-	jr z, .done
-	cp $4e
-	jr z, .line
-	ld [de], a
-	inc de
-	jr .loop
-
-.line
-	pop de
-	push hl
-	ld hl, $0014
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	push de
-	jr .loop
-
-.done
-	pop de
-	ret
 
 AbilityDescriptions:
 	dw NoAbilityDescription

@@ -541,7 +541,7 @@ GetWonderTradeOTName:
 	lb bc, 0, PLAYER_NAME_LENGTH
 	jp AddNTimes
 
-INCLUDE "data/wonder_trade/ot_names.asm"
+INCLUDE "data/events/wonder_trade/ot_names.asm"
 
 GetWonderTradeOTGender:
 ; pick from .WonderTradeOTGenders1 if [wOTTrademonID] is even,
@@ -566,7 +566,7 @@ GetWonderTradeOTGender:
 	ld a, [hl]
 	ret
 
-INCLUDE "data/wonder_trade/ot_genders.asm"
+INCLUDE "data/events/wonder_trade/ot_genders.asm"
 
 GetWonderTradeHeldItem:
 	ld hl, WonderTradeHeldItems
@@ -585,7 +585,7 @@ GetWonderTradeHeldItem:
 	ld a, [hli]
 	ret
 
-INCLUDE "data/wonder_trade/held_items.asm"
+INCLUDE "data/events/wonder_trade/held_items.asm"
 
 CheckValidLevel:
 ; Don't receive Pokémon outside a valid level range.

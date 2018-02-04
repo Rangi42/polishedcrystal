@@ -1,22 +1,3 @@
-PrintNature:
-; Print nature b at hl.
-
-	ld a, b
-
-	push hl
-	add a
-	ld hl, NatureNames
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	pop hl
-
-	jp PlaceString
-
-
 NatureNames:
 	dw Hardy, Lonely, Brave, Adamant, Naughty
 	dw Bold, Docile, Relaxed, Impish, Lax
@@ -51,25 +32,6 @@ Sassy:    db "Sassy@"
 Careful:  db "Careful@"
 Quirky:   db "Quirky@"
 NoNature: db "---@"
-
-
-PrintNatureIndicators:
-; Print indicators for nature b at hl.
-
-	ld a, b
-
-	push hl
-	add a
-	ld hl, NatureIndicators
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	pop hl
-
-	jp PlaceString
 
 
 NatureIndicators:

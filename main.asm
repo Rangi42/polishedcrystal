@@ -2984,7 +2984,30 @@ GetPkmnSpecies: ; 508d5
 
 INCLUDE "data/types/names.asm"
 
-INCLUDE "data/battle/natures.asm"
+PrintNature:
+; Print nature b at hl.
+	ld a, b
+	push hl
+	ld hl, NatureNames
+	jr _PrintNatureProperty
+
+PrintNatureIndicators:
+; Print indicators for nature b at hl.
+	ld a, b
+	push hl
+	ld hl, NatureIndicators
+_PrintNatureProperty:
+	add a
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
+	pop hl
+	jp PlaceString
+
+INCLUDE "data/natures.asm"
 
 DrawPlayerHP: ; 50b0a
 	ld a, $1
@@ -3927,7 +3950,78 @@ SECTION "Code 15", ROMX
 
 INCLUDE "engine/battle/anim_gfx.asm"
 INCLUDE "engine/events/halloffame.asm"
-INCLUDE "data/battle/abilities.asm"
+
+PrintAbility:
+; Print ability b at hl.
+	ld l, b
+	ld h, 0
+	ld bc, AbilityNames
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	hlcoord 3, 13
+	jp PlaceString
+
+BufferAbility:
+; Buffer name for b into StringBuffer1
+	ld l, b
+	ld h, 0
+	ld bc, AbilityNames
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, StringBuffer1
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp "@"
+	ret z
+	jr .loop
+
+PrintAbilityDescription:
+; Print ability description for b
+; we can't use PlaceString, because it would linebreak with an empty line inbetween
+	ld l, b
+	ld h, 0
+	ld bc, AbilityDescriptions
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	decoord 1, 15
+	push de
+.loop
+	ld a, [hli]
+	cp "@"
+	jr z, .done
+	cp $4e
+	jr z, .line
+	ld [de], a
+	inc de
+	jr .loop
+
+.line
+	pop de
+	push hl
+	ld hl, $0014
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	push de
+	jr .loop
+
+.done
+	pop de
+	ret
+
+INCLUDE "data/abilities.asm"
 
 
 SECTION "Code 16", ROMX

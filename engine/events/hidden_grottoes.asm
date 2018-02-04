@@ -83,7 +83,7 @@ InitializeHiddenGrotto::
 	ld [ScriptVar], a
 	ret
 
-INCLUDE "data/hidden_grottoes/probabilities.asm"
+INCLUDE "data/events/hidden_grottoes/probabilities.asm"
 
 GetHiddenGrottoTableEntry:
 	ld a, [hli]
@@ -144,4 +144,4 @@ GetCurHiddenGrottoLevel::
 	ld a, [hl]
 	ret
 
-INCLUDE "data/hidden_grottoes/grottoes.asm"
+INCLUDE "data/events/hidden_grottoes/grottoes.asm"
