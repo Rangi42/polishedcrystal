@@ -134,7 +134,7 @@ ItemIconPointers:
 	dw NoItemIcon
 	dw NoItemIcon
 	dw NoItemIcon
-	dw NoItemIcon
+	dw BerryJuiceIcon
 	dw SilkScarfIcon
 	dw BlackBeltIcon
 	dw SharpBeakIcon

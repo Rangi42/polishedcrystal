@@ -148,7 +148,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; ITEM_84
 	dw NoEffect         ; ITEM_85
 	dw NoEffect         ; ITEM_86
-	dw NoEffect         ; ITEM_87
+	dw RestoreHPEffect  ; BERRY_JUICE
 	dw NoEffect         ; SILK_SCARF
 	dw NoEffect         ; BLACK_BELT
 	dw NoEffect         ; SHARP_BEAK

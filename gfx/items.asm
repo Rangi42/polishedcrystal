@@ -191,6 +191,7 @@ GanlonBerryIcon:  INCBIN "gfx/items/ganlon_berry.2bpp.lz"
 SalacBerryIcon:   INCBIN "gfx/items/salac_berry.2bpp.lz"
 PetayaBerryIcon:  INCBIN "gfx/items/petaya_berry.2bpp.lz"
 ApicotBerryIcon:  INCBIN "gfx/items/apicot_berry.2bpp.lz"
+BerryJuiceIcon:   INCBIN "gfx/items/berry_juice.2bpp.lz"
 SilkScarfIcon:
 ChoiceScarfIcon:  INCBIN "gfx/items/scarf.2bpp.lz"
 BlackBeltIcon:    INCBIN "gfx/items/black_belt.2bpp.lz"

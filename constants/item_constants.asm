@@ -153,7 +153,8 @@
 	const ITEM_84      ; 84
 	const ITEM_85      ; 85
 	const ITEM_86      ; 86
-	const ITEM_87      ; 87
+
+	const BERRY_JUICE  ; 87
 
 	const SILK_SCARF   ; 88
 	const BLACK_BELT   ; 89

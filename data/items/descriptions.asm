@@ -133,7 +133,7 @@ ItemDescriptions:
 	dw TeruSamaDesc
 	dw TeruSamaDesc
 	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw BerryJuiceDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc
@@ -743,6 +743,10 @@ PetayaBerryDesc:
 ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
+
+BerryJuiceDesc:
+	db   "A self-restore"
+	next "item. (20HP, Hold)@"
 
 SilkScarfDesc:
 	db   "Powers up Normal-"
