@@ -56,8 +56,8 @@ UnknownScript_0x18e177:
 KurtScript_0x18e178:
 	faceplayer
 	opentext
-	checkevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
-	iftrue .GotLevelBall
+	checkevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
+	iftrue .GotApricornBox
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue .ClearedSlowpokeWell
 	writetext UnknownText_0x18e473
@@ -89,10 +89,9 @@ KurtScript_0x18e178:
 .ClearedSlowpokeWell:
 	writetext UnknownText_0x18e615
 	buttonsound
-	verbosegiveitem LEVEL_BALL
-	iffalse_endtext
-	setevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
-.GotLevelBall:
+	verbosegiveitem APRICORN_BOX
+	setevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
+.GotApricornBox:
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
 	iftrue .GiveLevelBall
 	checkevent EVENT_GAVE_KURT_BLU_APRICORN
@@ -117,25 +116,24 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e6c9
 	waitbutton
 .CheckApricorns:
-	checkitem RED_APRICORN
-	iftrue .AskApricorn
-	checkitem BLU_APRICORN
-	iftrue .AskApricorn
-	checkitem YLW_APRICORN
-	iftrue .AskApricorn
-	checkitem GRN_APRICORN
-	iftrue .AskApricorn
-	checkitem WHT_APRICORN
-	iftrue .AskApricorn
-	checkitem BLK_APRICORN
-	iftrue .AskApricorn
-	checkitem PNK_APRICORN
+	callasm .CheckHaveAnyApricorns
 	iftrue .AskApricorn
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue_jumpopenedtext UnknownText_0x18e82a
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	iftrue_jumpopenedtext UnknownText_0x18e6c9
 	endtext
+
+.CheckHaveAnyApricorns:
+	xor a
+	ld hl, Apricorns
+	or [hl]
+rept NUM_APRICORNS +- 1
+	inc hl
+	or [hl]
+endr
+	ld [ScriptVar], a
+	ret
 
 .AskApricorn:
 	writetext UnknownText_0x18e736
@@ -494,8 +492,11 @@ UnknownText_0x18e615:
 	para "a trainer like"
 	line "you."
 
-	para "This is all I have"
-	line "now, but take it."
+	para "But first, you'll"
+	line "need Apricorns."
+
+	para "Here, take this"
+	line "Apricorn Box!"
 	done
 
 UnknownText_0x18e6c9:

@@ -881,6 +881,8 @@ KeyItemsEnd::
 PCItems:: ds MAX_PC_ITEMS * 2 + 1
 PCItemsEnd::
 
+Apricorns:: ds NUM_APRICORNS
+
 wPokegearFlags::
 ; bit 0: map
 ; bit 1: radio

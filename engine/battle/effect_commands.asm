@@ -9205,11 +9205,11 @@ GetItemHeldEffect: ; 37dd0
 	ret z
 
 	push hl
-	ld hl, ItemAttributes + 2
+	ld hl, ItemAttributes + ITEMATTR_EFFECT
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, Item2Attributes - Item1Attributes
+	ld a, NUM_ITEMATTRS
 	call AddNTimes
 	ld a, BANK(ItemAttributes)
 	call GetFarHalfword

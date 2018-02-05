@@ -65,9 +65,9 @@ ItemIconPointers:
 	dw XSpeedIcon
 	dw XSpclAtkIcon
 	dw XSpclDefIcon
+	dw XAccuracyIcon
 	dw DireHitIcon
 	dw GuardSpecIcon
-	dw XAccuracyIcon
 	dw RepelIcon
 	dw SuperRepelIcon
 	dw MaxRepelIcon
@@ -112,6 +112,7 @@ ItemIconPointers:
 	dw ShinyCharmIcon
 	dw OvalCharmIcon
 	dw SilphScope2Icon
+	dw ApricornBoxIcon
 	dw CheriBerryIcon
 	dw ChestoBerryIcon
 	dw PechaBerryIcon
@@ -128,13 +129,12 @@ ItemIconPointers:
 	dw SalacBerryIcon
 	dw PetayaBerryIcon
 	dw ApicotBerryIcon
-	dw RedApricornIcon
-	dw BluApricornIcon
-	dw YlwApricornIcon
-	dw GrnApricornIcon
-	dw WhtApricornIcon
-	dw BlkApricornIcon
-	dw PnkApricornIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
 	dw SilkScarfIcon
 	dw BlackBeltIcon
 	dw SharpBeakIcon

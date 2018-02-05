@@ -257,6 +257,7 @@ ScriptCommandTable:
 	dw Script_iftrue_endtext             ; c2
 	dw Script_iffalse_endtext            ; c3
 	dw Script_loadgrottomon              ; c4
+	dw Script_giveapricorn               ; c5
 
 StartScript:
 	ld hl, ScriptFlags
@@ -2909,4 +2910,37 @@ Script_loadgrottomon:
 	ld [wBattleScriptFlags], a
 	farcall GetCurHiddenGrottoLevel
 	ld [CurPartyLevel], a
+	ret
+
+Script_giveapricorn:
+; parameters:
+;     apricorn (SingleByteParam)
+;     quantity (SingleByteParam)
+	call GetScriptByte
+	cp ITEM_FROM_MEM
+	jr nz, .ok
+	ld a, [ScriptVar]
+.ok
+	ld [CurItem], a
+	call GetScriptByte
+	ld [wItemQuantityChangeBuffer], a
+
+	ld hl, Apricorns
+	ld a, [CurItem]
+	dec a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [wItemQuantityChangeBuffer]
+	add [hl]
+	cp 100
+	jr nc, .full
+	ld [hl], a
+	ld a, TRUE
+	ld [ScriptVar], a
+	ret
+
+.full
+	xor a
+	ld [ScriptVar], a
 	ret

@@ -267,7 +267,7 @@ Some of these may never be added; they're just suggestions.
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
-* Replace the Apricorns with an Apricorn Box and add more Berries
+* Add more Berries
 * Restore Berry Juice, and make it heal full HP but cause confusion (in non-Faithful)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
    * Madoka:

@@ -36,6 +36,24 @@ _FruitPackIsFullText::
 	line "full…"
 	done
 
+_NoApricornBoxText::
+	text "But there's nothing"
+	line "to put it in…"
+	done
+
+_ApricornBoxIsFullText::
+	text "But the Apricorn"
+	line "Box is full…"
+	done
+
+_PutAwayTheApricornText::
+	text "<PLAYER> put the"
+	line "@"
+	text_from_ram StringBuffer3
+	text " in"
+	cont "the Apricorn Box."
+	done
+
 _NothingHereText::
 	text "There's nothing"
 	line "here…"

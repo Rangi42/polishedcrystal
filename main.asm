@@ -528,6 +528,15 @@ PlaceMenuTMHMName:
 	pop hl
 	jp PlaceString
 
+PlaceMenuApricornQuantity:
+	ld a, [MenuSelection]
+	ld [CurItem], a
+	and a
+	ret nz
+	ld l, e
+	ld h, d
+	jr _PlaceMenuQuantity
+
 PlaceMenuItemQuantity: ; 0x24ac3
 	push de
 	ld a, [MenuSelection]
@@ -537,6 +546,7 @@ PlaceMenuItemQuantity: ; 0x24ac3
 	pop hl
 	and a
 	ret nz
+_PlaceMenuQuantity:
 	ld de, $15
 	add hl, de
 	ld [hl], "×"
@@ -705,53 +715,6 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	db "None@"
 .Level: ; 24c5e
 	db "Level@"
-
-FindApricornsInBag: ; 24c64
-; Checks the bag for Apricorns.
-	ld hl, Buffer1
-	xor a
-	ld [hli], a
-	dec a
-	ld bc, 10
-	call ByteFill
-
-	ld hl, ApricornBalls
-.loop
-	ld a, [hl]
-	cp -1
-	jr z, .done
-	push hl
-	ld [CurItem], a
-	ld hl, NumItems
-	call CheckItem
-	pop hl
-	jr nc, .nope
-	ld a, [hl]
-	call .addtobuffer
-.nope
-	inc hl
-	inc hl
-	jr .loop
-
-.done
-	ld a, [Buffer1]
-	and a
-	ret nz
-	scf
-	ret
-
-.addtobuffer ; 24c94
-	push hl
-	ld hl, Buffer1
-	inc [hl]
-	ld e, [hl]
-	ld d, 0
-	add hl, de
-	ld [hl], a
-	pop hl
-	ret
-
-INCLUDE "data/items/apricorn_balls.asm"
 
 PadCoords_de: ; 27092
 	ld a, d
@@ -4441,6 +4404,7 @@ PrintTMHMDescription:
 	ret
 
 INCLUDE "data/items/descriptions.asm"
+INCLUDE "data/items/apricorn_names.asm"
 
 
 SECTION "Move and Landmark Text", ROMX

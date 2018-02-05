@@ -1217,6 +1217,17 @@ loadgrottomon: macro
 	db loadgrottomon_command
 	endm
 
+	enum giveapricorn_command
+giveapricorn: macro
+	db giveapricorn_command
+	db \1 ; apricorn
+if _NARG == 2
+	db \2 ; quantity
+else
+	db 1
+endc
+	endm
+
 thisasm: macro
 	callasm .asm\@
 	end

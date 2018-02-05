@@ -1,12 +1,11 @@
 FruitTreeScript:: ; 44000
 	opentext
-	copybytetovar CurFruit
-	itemtotext $0, $0
 	writetext FruitBearingTreeText
 	buttonsound
 	callasm TryResetFruitTrees
+	copybytetovar CurFruit
 	callasm CheckFruitTree
-	iffalse .fruit
+	iffalse PickBerryScript
 	writetext NothingHereText
 	buttonsound
 	checkitem MULCH
@@ -19,7 +18,10 @@ FruitTreeScript:: ; 44000
 	callasm FertilizedFruitTree
 	jumpopenedtext UsedMulchText
 
-.fruit
+PickBerryScript:
+	copybytetovar CurFruit
+	if_less_than NUM_APRICORNS+1, PickApricornScript
+	itemtotext $0, $0
 	writetext HeyItsFruitText
 	callasm GetFruitTreeCount
 	if_equal $1, .try_one
@@ -54,6 +56,51 @@ FruitTreeScript:: ; 44000
 	buttonsound
 	jumpopenedtext FruitPackIsFullText
 ; 44041
+
+PickApricornScript:
+	checkitem APRICORN_BOX
+	iffalse_jumpopenedtext NoApricornBoxText
+	copybytetovar CurFruit
+	callasm .get_name
+	writetext HeyItsFruitText
+	callasm GetFruitTreeCount
+	if_equal $1, .try_one
+	if_equal $2, .try_two
+	copybytetovar CurFruit
+	giveapricorn ITEM_FROM_MEM, 3
+	iffalse .try_two
+	buttonsound
+	writetext ObtainedThreeFruitText
+	jump .continue
+.try_two
+	copybytetovar CurFruit
+	giveapricorn ITEM_FROM_MEM, 2
+	iffalse .try_one
+	buttonsound
+	writetext ObtainedTwoFruitText
+	jump .continue
+.try_one
+	copybytetovar CurFruit
+	giveapricorn ITEM_FROM_MEM
+	iffalse .packisfull
+	buttonsound
+	writetext ObtainedOneFruitText
+.continue
+	callasm PickedFruitTree
+	specialsound
+	jumpopenedtext PutAwayTheApricornText
+
+.packisfull
+	buttonsound
+	jumpopenedtext FruitPackIsFullText
+
+.get_name:
+	ld a, [ScriptVar]
+	ld [wd265], a
+	call GetApricornName
+	ld de, StringBuffer1
+	ld hl, StringBuffer3
+	jp CopyName2
 
 TryResetFruitTrees: ; 4404c
 	ld hl, DailyFlags
@@ -133,6 +180,18 @@ FruitPackIsFullText: ; 440c4
 	text_jump _FruitPackIsFullText
 	db "@"
 ; 440c9
+
+NoApricornBoxText:
+	text_jump _NoApricornBoxText
+	db "@"
+
+ApricornBoxIsFullText:
+	text_jump _ApricornBoxIsFullText
+	db "@"
+
+PutAwayTheApricornText:
+	text_jump _PutAwayTheApricornText
+	db "@"
 
 NothingHereText: ; 440c9
 	text_jump _NothingHereText

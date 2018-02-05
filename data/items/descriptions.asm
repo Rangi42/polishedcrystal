@@ -64,9 +64,9 @@ ItemDescriptions:
 	dw XSpeedDesc
 	dw XSpclAtkDesc
 	dw XSpclDefDesc
+	dw XAccuracyDesc
 	dw DireHitDesc
 	dw GuardSpecDesc
-	dw XAccuracyDesc
 	dw RepelDesc
 	dw SuperRepelDesc
 	dw MaxRepelDesc
@@ -111,6 +111,7 @@ ItemDescriptions:
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
 	dw SilphScope2Desc
+	dw ApricornBoxDesc
 	dw CheriBerryDesc
 	dw ChestoBerryDesc
 	dw PechaBerryDesc
@@ -127,13 +128,12 @@ ItemDescriptions:
 	dw SalacBerryDesc
 	dw PetayaBerryDesc
 	dw ApicotBerryDesc
-	dw RedApricornDesc
-	dw BluApricornDesc
-	dw YlwApricornDesc
-	dw GrnApricornDesc
-	dw WhtApricornDesc
-	dw BlkApricornDesc
-	dw PnkApricornDesc
+	dw TeruSamaDesc
+	dw TeruSamaDesc
+	dw TeruSamaDesc
+	dw TeruSamaDesc
+	dw TeruSamaDesc
+	dw TeruSamaDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc
@@ -676,6 +676,10 @@ SilphScope2Desc:
 	db   "A scope to see in-"
 	next "visible #mon.@"
 
+ApricornBoxDesc:
+	db   "Holds up to 99 of"
+	next "each Apricorn.@"
+
 CheriBerryDesc:
 	db   "A self-cure for"
 	next "paralysis. (Hold)@"
@@ -739,29 +743,6 @@ PetayaBerryDesc:
 ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
-
-RedApricornDesc:
-	db   "A red Apricorn.@"
-
-BluApricornDesc:
-	db   "A blue Apricorn.@"
-
-YlwApricornDesc:
-	db   "A yellow Apricorn.@"
-
-GrnApricornDesc:
-	db   "A green Apricorn.@"
-
-WhtApricornDesc:
-	db   "A white Apricorn.@"
-
-BlkApricornDesc:
-	db   "A black Apricorn."
-	next "@"
-
-PnkApricornDesc:
-	db   "A pink Apricorn."
-	next "@"
 
 SilkScarfDesc:
 	db   "Powers up Normal-"
