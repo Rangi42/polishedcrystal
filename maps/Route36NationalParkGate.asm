@@ -243,52 +243,52 @@ OfficerScript_0x6acf4:
 	jumptextfaceplayer UnknownText_0x6b370
 
 BugCatcherScript_0x6ad06:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b3c4
 	jumptextfaceplayer UnknownText_0x6b399
 
 BugManiacScript_0x6ad1a:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b440
 	jumptextfaceplayer UnknownText_0x6b40f
 
 CooltrainerMScript_0x6ad2e:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b496
 	jumptextfaceplayer UnknownText_0x6b462
 
 PokefanMScript_0x6ad42:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b50a
 	jumptextfaceplayer UnknownText_0x6b4da
 
 BugCatcherScript_0x6ad56:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b57c
 	jumptextfaceplayer UnknownText_0x6b54e
 
 YoungsterScript_0x6ad6a:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b5dd
 	jumptextfaceplayer UnknownText_0x6b5b0
 
 LassScript_0x6ad7e:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b698
 	jumptextfaceplayer UnknownText_0x6b64b
 
 BugCatcherScript_0x6ad92:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b6e9
 	jumptextfaceplayer UnknownText_0x6b6b8
 
 YoungsterScript_0x6ada6:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b740
 	jumptextfaceplayer UnknownText_0x6b71b
 
 YoungsterScript_0x6adba:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b7af
 	jumptextfaceplayer UnknownText_0x6b76f
 

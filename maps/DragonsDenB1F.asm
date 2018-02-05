@@ -131,7 +131,7 @@ DragonsDenB1FSilverScript:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	faceplayer
 	opentext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .SilverTalkAgain
 	checkevent EVENT_GOT_RIVALS_EGG
 	iftrue .SilverTalk
@@ -162,7 +162,7 @@ DragonsDenB1FSilverScript:
 	waitbutton
 	closetext
 	setevent EVENT_GOT_RIVALS_EGG
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	domaptrigger ELMS_LAB, $7
 	special RestartMapMusic
 	end
@@ -178,7 +178,7 @@ DragonsDenB1FSilverScript:
 	writetext .Training1Text
 	waitbutton
 	closetext
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	special RestartMapMusic
 	end
 

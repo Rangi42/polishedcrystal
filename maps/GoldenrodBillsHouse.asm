@@ -17,7 +17,7 @@ GoldenrodBillsHouse_MapScriptHeader:
 	object_event  5,  4, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, BillsSister, -1
 
 GrampsScript_0x189538:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue_jumptextfaceplayer BillsGrandpaComeAgainText
 	checkevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
 	iftrue_jumptextfaceplayer BillsGrandpaShownAllThePokemonText
@@ -179,7 +179,7 @@ GrampsScript_0x189538:
 	verbosegiveitem EVERSTONE
 	iffalse_endtext
 	setevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedBellsprout:
@@ -189,7 +189,7 @@ GrampsScript_0x189538:
 	verbosegiveitem LEAF_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_LEAF_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedStaryu:
@@ -199,7 +199,7 @@ GrampsScript_0x189538:
 	verbosegiveitem WATER_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_WATER_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedGrowlithe:
@@ -209,7 +209,7 @@ GrampsScript_0x189538:
 	verbosegiveitem FIRE_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_FIRE_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedPichu:
@@ -219,7 +219,7 @@ GrampsScript_0x189538:
 	verbosegiveitem THUNDERSTONE
 	iffalse_endtext
 	setevent EVENT_GOT_THUNDERSTONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedJigglypuff:
@@ -229,7 +229,7 @@ GrampsScript_0x189538:
 	verbosegiveitem MOON_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedOddish:
@@ -239,7 +239,7 @@ GrampsScript_0x189538:
 	verbosegiveitem SUN_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_SUN_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedMurkrow:
@@ -249,7 +249,7 @@ GrampsScript_0x189538:
 	verbosegiveitem DUSK_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_DUSK_STONE_FROM_BILLS_GRANDPA
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	endtext
 
 .ShowedTogepi:

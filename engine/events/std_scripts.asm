@@ -393,7 +393,7 @@ BugContestResultsScript:
 	jump .FinishUp
 
 .FirstPlace
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 .SecondPlace
 .ThirdPlace
 	copybytetovar wBugContestOfficerPrize

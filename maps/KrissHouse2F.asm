@@ -24,7 +24,7 @@ KrissHouse2F_MapScriptHeader:
 
 KrissHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
-	setevent EVENT_IN_YOUR_ROOM
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	checkevent EVENT_INITIALIZED_EVENTS
 	iftrue .SkipInizialization
 	jumpstd initializeevents

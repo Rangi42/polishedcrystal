@@ -14,17 +14,17 @@ HiddenTreeGrotto_MapScriptHeader:
 	bg_event  4,  4, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
 
 	db 2 ; object events
-	object_event  4,  4, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS
-	object_event  4,  4, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_RECEIVED_BALLS_FROM_KURT
+	object_event  4,  4, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  4,  4, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
 	const_def 1 ; object constants
 	const HIDDENTREEGROTTO_POKEMON
 	const HIDDENTREEGROTTO_ITEM
 
 HiddenGrottoCallback:
-	setevent EVENT_GAVE_KURT_APRICORNS
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special InitializeHiddenGrotto
 	if_equal GROTTO_POKEMON, .pokemon
 	if_equal GROTTO_ITEM, .item
@@ -32,15 +32,15 @@ HiddenGrottoCallback:
 	return
 
 .pokemon
-	clearevent EVENT_GAVE_KURT_APRICORNS
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	return
 
 .item
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	return
 
 .hidden_item
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	return
 
 HiddenGrottoPokemonScript:
@@ -53,14 +53,14 @@ HiddenGrottoPokemonScript:
 	end
 
 HiddenGrottoHiddenItemScript:
-	dw EVENT_DRAGON_SHRINE_QUESTION_2
+	dw EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 HiddenGrottoItemScript:
 	special GetHiddenGrottoContents
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM
 	iffalse .PackFull
 	disappear HIDDENTREEGROTTO_ITEM
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	opentext
 	writetext .ItemText
 	playsound SFX_ITEM

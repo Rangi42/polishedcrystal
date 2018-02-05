@@ -232,21 +232,21 @@ OlderHaircutBrotherScript:
 	jump .else
 
 .two
-	setevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .three
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .else
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .then
@@ -263,9 +263,9 @@ OlderHaircutBrotherScript:
 	opentext
 	writetext UnknownText_0x7c6d8
 	waitbutton
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x7c2bb
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x7c2c4
 	jump UnknownScript_0x7c2cd
 
@@ -306,21 +306,21 @@ YoungerHaircutBrotherScript:
 	jump .else
 
 .two
-	setevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .three
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .else
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 .then
 	takemoney $0, 300
 	special PlaceMoneyTopRight
@@ -335,9 +335,9 @@ YoungerHaircutBrotherScript:
 	opentext
 	writetext UnknownText_0x7c82a
 	waitbutton
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x7c2bb
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x7c2c4
 	jump UnknownScript_0x7c2cd
 
