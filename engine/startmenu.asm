@@ -768,10 +768,8 @@ TryGiveItemToPartymon: ; 12bd9
 	and a
 	jr z, .give_item_to_mon
 
-	push hl
 	ld d, a
-	farcall ItemIsMail
-	pop hl
+	call ItemIsMail
 	jr c, .please_remove_mail
 	ld a, [hl]
 	jr .already_holding_item
@@ -824,7 +822,7 @@ GivePartyItem: ; 12c4c
 	ld a, [CurItem]
 	ld [hl], a
 	ld d, a
-	farcall ItemIsMail
+	call ItemIsMail
 	ret nc
 	jp ComposeMailMessage
 ; 12c60
@@ -842,7 +840,7 @@ TakePartyItem: ; 12c60
 	call ReceiveItemFromPokemon
 	jr nc, .asm_12c94
 
-	farcall ItemIsMail
+	call ItemIsMail
 	call GetPartyItemLocation
 	ld a, [hl]
 	ld [wd265], a

@@ -2,7 +2,7 @@ SendMailToPC: ; 4456e
 	ld a, MON_ITEM
 	call GetPartyParamLocation
 	ld d, [hl]
-	farcall ItemIsMail
+	call ItemIsMail
 	jr nc, .full
 	call GetMailboxCount
 	cp MAILBOX_CAPACITY
@@ -135,7 +135,7 @@ CheckPokeItem:: ; 44654
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld d, [hl]
-	farcall ItemIsMail
+	call ItemIsMail
 	ld a, $3
 	jr nc, .pop_return
 
@@ -293,11 +293,7 @@ IsAnyMonHoldingMail: ; 44781
 	ld hl, PartyMon1Item
 .loop
 	ld d, [hl]
-	push hl
-	push de
-	farcall ItemIsMail
-	pop de
-	pop hl
+	call ItemIsMail
 	ret c
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc

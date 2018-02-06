@@ -1027,13 +1027,3 @@ INCBIN "gfx/mail/0b9e26.1bpp"
 
 PortraitMailBorderGFX: ; b9e4e
 INCBIN "gfx/mail/0b9e4e.1bpp"
-
-
-ItemIsMail: ; b9e76
-	ld a, d
-	ld hl, MailItems
-	ld de, 1
-	jp IsInArray
-; b9e80
-
-INCLUDE "data/items/mail_items.asm"

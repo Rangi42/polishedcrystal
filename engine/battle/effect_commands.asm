@@ -7543,9 +7543,7 @@ BattleCommand_KnockOff:
 
 	; Mail can't be knocked off
 	ld d, a
-	push hl
-	farcall ItemIsMail
-	pop hl
+	call ItemIsMail
 	ret c
 
 	ld [wNamedObjectIndexBuffer], a

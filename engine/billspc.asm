@@ -1097,7 +1097,7 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	ret z
 
 	ld d, a
-	farcall ItemIsMail
+	call ItemIsMail
 	jr c, .mail
 	ld a, $5d ; item icon
 	jr .printitem

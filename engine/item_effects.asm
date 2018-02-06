@@ -82,9 +82,9 @@ ItemEffects: ; e73c
 	dw XItemEffect      ; X_ACCURACY
 	dw DireHit          ; DIRE_HIT
 	dw GuardSpec        ; GUARD_SPEC
-	dw Repel            ; REPEL
-	dw SuperRepel       ; SUPER_REPEL
-	dw MaxRepel         ; MAX_REPEL
+	dw RepelEffect      ; REPEL
+	dw RepelEffect      ; SUPER_REPEL
+	dw RepelEffect      ; MAX_REPEL
 	dw EscapeRope       ; ESCAPE_ROPE
 	dw PokeDoll         ; POKE_DOLL
 	dw AbilityCap       ; ABILITY_CAP
@@ -1533,29 +1533,11 @@ StatStrings: ; eeab
 
 GetEVRelativePointer: ; eed9
 	ld a, [CurItem]
-	ld hl, Table_EVByVitamin
-.next
-	cp [hl]
-	inc hl
-	jr z, .got_it
-	inc hl
-	jr .next
-
-.got_it
-	ld a, [hl]
+	farcall CheckItemParam
 	ld c, a
 	ld b, 0
 	ret
 ; eeeb
-
-Table_EVByVitamin: ; eeeb
-	db HP_UP,    MON_HP_EV - MON_EVS
-	db PROTEIN, MON_ATK_EV - MON_EVS
-	db IRON,    MON_DEF_EV - MON_EVS
-	db CARBOS,  MON_SPD_EV - MON_EVS
-	db CALCIUM, MON_SAT_EV - MON_EVS
-	db ZINC,    MON_SDF_EV - MON_EVS
-; eef5
 
 
 RareCandy_StatBooster_GetParameters: ; eef5
@@ -2275,32 +2257,20 @@ GetHealingItemAmount: ; f395 (3:7395)
 	jr z, .sitrus_berry
 	cp FIGY_BERRY
 	jr z, .figy_berry
-	push hl
-	ld hl, HealingHPAmounts
-	ld d, a
-.next
-	ld a, [hli]
-	cp -1
-	jr z, .NotFound
-	cp d
-	jr z, .done
-	inc hl
-	inc hl
-	jr .next
 
-.NotFound:
-	scf
-.done
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	pop hl
+	farcall CheckItemParam
+	ld e, a
+	ld d, 0
+	cp -1
+	ret nz
+	ld de, 999
 	ret
 ; f3af (3:73af)
 
 .figy_berry
 	call .set_de_to_hp
 	jr .half_hp
+
 .sitrus_berry
 	call .set_de_to_hp
 	srl d
@@ -2321,8 +2291,6 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ld d, a
 	ld e, [hl]
 	ret
-
-INCLUDE "data/items/heal_hp.asm"
 
 Softboiled_MilkDrinkFunction: ; f3df (3:73df)
 ; Softboiled/Milk Drink in the field
@@ -2408,34 +2376,19 @@ EscapeRope: ; f44f
 ; f462
 
 
-SuperRepel: ; f462
-	ld b, 200
-	jr UseRepel
-; f466
-
-MaxRepel: ; f466
-	ld b, 250
-	jr UseRepel
-; f466
-
-Repel: ; f46a
-	ld b, 100
-; f46c
-
-UseRepel: ; f46c
+RepelEffect: ; f46c
 	ld a, [wRepelEffect]
 	and a
 	ld hl, TextJump_RepelUsedEarlierIsStillInEffect
 	jp nz, PrintText
 
-	ld a, b
+	farcall CheckItemParam
 	ld [wRepelEffect], a
 
 	ld a, [CurItem]
 	ld [wRepelType], a
 
 	jp UseItemText
-
 
 TextJump_RepelUsedEarlierIsStillInEffect: ; 0xf47d
 	; The REPEL used earlier is still in effect.
@@ -2484,19 +2437,9 @@ DireHit: ; f4b8
 XItemEffect: ; f4c5
 	call UseItemText
 
-	ld a, [CurItem]
-	ld hl, XItemStats
+	farcall CheckItemParam
+	ld b, a
 
-.loop
-	cp [hl]
-	jr z, .got_it
-	inc hl
-	inc hl
-	jr .loop
-
-.got_it
-	inc hl
-	ld b, [hl]
 	xor a
 	ld [hBattleTurn], a
 	ld [AttackMissed], a
@@ -2512,8 +2455,6 @@ XItemEffect: ; f4c5
 	ld c, HAPPINESS_USEDXITEM
 	farjp ChangeHappiness
 ; f504
-
-INCLUDE "data/items/x_stats.asm"
 
 
 BlueCard: ; f58f
