@@ -280,6 +280,10 @@ PokeBallEffect: ; e8a2
 	dec a
 	jp nz, UseBallInTrainerBattle
 
+	ld a, [BattleType]
+	cp BATTLETYPE_GHOST
+	jp z, Ball_MonCantBeCaughtMessage
+
 	ld a, [EnemySubStatus3] ; BATTLE_VARS_SUBSTATUS3_OPP
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jp nz, Ball_MonIsHiddenMessage
@@ -2971,39 +2975,38 @@ UseBallInTrainerBattle: ; f7a0
 	jr UseDisposableItem
 ; f7ca
 
-WontHaveAnyEffect_NotUsedMessage: ; f7ca
-	ld hl, WontHaveAnyEffectText
-	call PrintText
-
-	; Item wasn't used.
-	ld a, $2
-	ld [wItemEffectSucceeded], a
-	ret
-; f7d6
-
 LooksBitterMessage: ; f7d6
 	ld hl, LooksBitterText
 	jp PrintText
 ; f7dc
 
+WontHaveAnyEffect_NotUsedMessage: ; f7ca
+	ld hl, WontHaveAnyEffectText
+	jr ItemWasntUsedMessage
+; f7d6
+
 Ball_BoxIsFullMessage: ; f7dc
 	ld hl, Ball_BoxIsFullText
-	call PrintText
-
-	; Item wasn't used.
-	ld a, $2
-	ld [wItemEffectSucceeded], a
-	ret
-; f7e8
+	jr ItemWasntUsedMessage
 
 Ball_MonIsHiddenMessage:
 	ld hl, Ball_MonIsHiddenText
-	call PrintText
+	jr ItemWasntUsedMessage
 
+Ball_MonCantBeCaughtMessage:
+	ld hl, Ball_MonCantBeCaughtText
+	jr ItemWasntUsedMessage
+
+Revive_NuzlockeFailureMessage:
+	ld hl, Revive_NuzlockeFailureText
+	; fallthrough
+
+ItemWasntUsedMessage:
 	; Item wasn't used.
 	ld a, $2
 	ld [wItemEffectSucceeded], a
-	ret
+	jp PrintText
+; f7e8
 
 Ball_NuzlockeFailureMessage:
 	ld hl, Ball_NuzlockeFailureText
@@ -3018,17 +3021,7 @@ Ball_NuzlockeFailureMessage:
 	; Item wasn't used.
 	ld a, $2
 	ld [wItemEffectSucceeded], a
-	ret
-
-Revive_NuzlockeFailureMessage:
-	ld hl, Revive_NuzlockeFailureText
-	call PrintText
-
-	; Item wasn't used.
-	ld a, $2
-	ld [wItemEffectSucceeded], a
-	ret
-; f7e8
+	jp PrintText
 
 CantUseOnEggMessage: ; f7e8
 	ld hl, CantUseOnEggText
@@ -3040,6 +3033,7 @@ IsntTheTimeMessage: ; f7ed
 
 WontHaveAnyEffectMessage: ; f7f2
 	ld hl, WontHaveAnyEffectText
+	; fallthrough
 
 CantUseItemMessage: ; f804
 ; Item couldn't be used.
@@ -3093,6 +3087,11 @@ Ball_BoxIsFullText: ; 0xf838
 Ball_MonIsHiddenText:
 	; The #MON can't be seen!
 	text_jump Text_MonIsHiddenFromBall
+	db "@"
+
+Ball_MonCantBeCaughtText:
+	; The #MON can't be caught!
+	text_jump Text_MonCantBeCaught
 	db "@"
 
 Ball_NuzlockeFailureText:

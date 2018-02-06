@@ -878,6 +878,11 @@ Text_MonIsHiddenFromBall::
 	line "be seen!"
 	prompt
 
+Text_MonCantBeCaught::
+	text "The #mon can't"
+	line "be caught!"
+	prompt
+
 Text_NuzlockeBallFailure::
 	text "You already"
 	line "encountered a"
