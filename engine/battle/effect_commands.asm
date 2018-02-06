@@ -3771,7 +3771,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp GUTS
-	ld a, $12
+	ld a, $12 ; 1/2 = 50%
 	call nz, ApplyPhysicalAttackDamageMod
 
 .burn_done
@@ -3783,7 +3783,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
-	ld a, $32
+	ld a, $32 ; 3/2 = 150%
 	call z, ApplyDamageMod
 
 .no_flash_fire
@@ -3795,9 +3795,9 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SNIPER
-	ld a, $94
+	ld a, $94 ; 9/4 = 225%
 	jr z, .got_crit_mod
-	ld a, $32
+	ld a, $32 ; 3/2 = 150%
 .got_crit_mod
 	call ApplyDamageMod
 
@@ -3818,14 +3818,14 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .metronome_item
 
 	cp HELD_LIFE_ORB
-	ld a, $da
+	ld a, $da ; 13/10 = 130%
 	jr z, .life_orb
 	jr .done_attacker_item
 .type_boost
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp c
-	ld a, $65
+	ld a, $65 ; 6/5 = 120%
 .life_orb
 	call z, ApplyDamageMod
 	jr .done_attacker_item
@@ -3833,7 +3833,7 @@ BattleCommand_DamageCalc: ; 35612
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp c
-	ld a, $ba
+	ld a, $ba ; 11/10 = 110%
 	call z, ApplyDamageMod
 	jr .done_attacker_item
 .choice
@@ -3842,15 +3842,15 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .choice_sat
 	and a ; cp ATTACK
 	jr nz, .done_attacker_item
-	ld a, $32
+	ld a, $32 ; 3/2 = 150%
 	call ApplyPhysicalAttackDamageMod
 	jr .done_attacker_item
 .choice_sat
-	ld a, $32
+	ld a, $32 ; 3/2 = 150%
 	call ApplySpecialAttackDamageMod
 	jr .done_attacker_item
 .metronome_item
-	ld b, $55
+	ld b, $55 ; (5+n)/5 = 100% + 20% * n
 	ld a, [hBattleTurn]
 	and a
 	ld a, [PlayerMetronomeCount]
@@ -3864,7 +3864,7 @@ BattleCommand_DamageCalc: ; 35612
 .expert_belt
 	ld a, [TypeModifier]
 	cp $11
-	ld a, $65
+	ld a, $65 ; 6/5 = 120%
 	call nc, ApplyDamageMod
 	; fallthrough
 .done_attacker_item
@@ -3875,7 +3875,7 @@ BattleCommand_DamageCalc: ; 35612
 	jr z, .assault_vest
 	jr .done_defender_item
 .assault_vest
-	ld a, $23
+	ld a, $23 ; 2/3 = 67%
 	call ApplySpecialDefenseDamageMod
 	; fallthrough
 .done_defender_item
@@ -9199,7 +9199,7 @@ NoItem:
 
 
 GetItemHeldEffect: ; 37dd0
-; Return the effect of item b in bc.
+; Return the effect of item b in b and the param in c.
 	ld a, b
 	and a
 	ret z
