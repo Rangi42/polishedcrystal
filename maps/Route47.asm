@@ -10,7 +10,7 @@ Route47_MapScriptHeader:
 	warp_event 52, 17, CLIFF_CAVE, 2
 	warp_event 53, 29, CLIFF_CAVE, 3
 	warp_event 11, 23, QUIET_CAVE_1F, 1
-	warp_event  7, 23, EMBEDDED_TOWER, 1
+	warp_event  8, 23, EMBEDDED_TOWER, 1
 
 	db 32 ; coord events
 	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger

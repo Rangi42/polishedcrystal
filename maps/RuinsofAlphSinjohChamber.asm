@@ -82,7 +82,7 @@ RuinsofAlphSinjohChamberSignpost:
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
 .HeardIntro
-	warp MYSTRI_STAGE, 6, 13
+	warp MYSTRI_STAGE, 6, 15
 	end
 
 .PlayUnownSound1:
