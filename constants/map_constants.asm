@@ -698,7 +698,7 @@ MAP_NONE   EQU 0
 	mapconst SINJOH_RUINS,                               13,  9 ;  1
 	mapconst SINJOH_RUINS_HOUSE,                           4, 4 ;  2
 	mapconst MYSTRI_STAGE,                                9,  7 ;  3
-	mapconst EMBEDDED_TOWER,                             12, 11 ;  4
+	mapconst EMBEDDED_TOWER,                             12,  7 ;  4
 
 	newgroup                                                    ; 35
 
