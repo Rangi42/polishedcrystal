@@ -1739,7 +1739,7 @@ HealStatus: ; f030 (3:7030)
 	ld [BattleMonStatus], a
 	call GetItemHealingAction
 	ld a, c
-	cp %11111111
+	cp -1
 	ret nz
 	ld hl, PlayerSubStatus3
 	res SUBSTATUS_CONFUSED, [hl]
@@ -1748,26 +1748,31 @@ HealStatus: ; f030 (3:7030)
 GetItemHealingAction: ; f058 (3:7058)
 	push hl
 	ld a, [CurItem]
-	ld hl, StatusHealingActions
-	ld bc, 3
+	farcall CheckItemParam
+	ld c, a
+	ld hl, .StatusHealingActionTexts
 .next
 	cp [hl]
 	jr z, .found_it
-	add hl, bc
+	inc hl
+	inc hl
 	jr .next
-
 .found_it
 	inc hl
 	ld b, [hl]
-	inc hl
-	ld a, [hl]
-	ld c, a
-	cp %11111111
 	pop hl
 	ret
 ; f071 (3:7071)
 
-INCLUDE "data/items/heal_status.asm"
+.StatusHealingActionTexts:
+; status param, party menu action text
+	db 1 << PSN, PARTYMENUTEXT_HEAL_PSN
+	db 1 << BRN, PARTYMENUTEXT_HEAL_BRN
+	db 1 << PAR, PARTYMENUTEXT_HEAL_PAR
+	db 1 << FRZ, PARTYMENUTEXT_HEAL_FRZ
+	db SLP,      PARTYMENUTEXT_HEAL_SLP
+	db -1,       PARTYMENUTEXT_HEAL_ALL
+
 
 StatusHealer_Jumptable: ; f09e (3:709e)
 	ld hl, .dw
