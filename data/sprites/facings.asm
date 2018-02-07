@@ -351,18 +351,18 @@ FacingPokecomNews:
 
 FacingArchTreeDown:
 	db 2 ; #
-	db 12, 0, 0, $04
-	db 12, 8, 0, $07
+	db 12, 0, 0, $08
+	db 12, 8, 0, $0b
 
 FacingArchTreeUp:
 	db 2 ; #
-	db 12, 0, 0, $06
-	db 12, 8, 0, $05
+	db 12, 0, 0, $0a
+	db 12, 8, 0, $09
 
 FacingArchTreeLeft:
 	db 1 ; #
-	db 12, 8, 0, $05
+	db 12, 8, 0, $09
 
 FacingArchTreeRight:
 	db 1 ; #
-	db 12, 0, 0, $04
+	db 12, 0, 0, $08
