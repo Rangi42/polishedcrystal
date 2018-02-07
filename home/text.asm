@@ -204,7 +204,7 @@ endm
 	dict "<FAR>",    TextFar
 	dict "<LNBRK>",  LineBreak
 	dict "<NEXT>",   NextChar
-	dict "<LINK2>",  LinkButtonSound
+	dict "<_CONT>",  LinkButtonSound
 	dict "<SCRL2>",  ScrollText
 	dict "<NL>",     NextLineChar
 	dict "<LINE>",   LineChar
@@ -219,6 +219,10 @@ endm
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
+	dict "the",      PlaceThe
+	dict "you",      PlaceYou
+	dict "#mon",     PlacePokemon
+	dict "to",       PlaceTo
 	dict2 "¯", " "
 
 	ld [hli], a
@@ -235,10 +239,21 @@ endm
 PrintPlayerName:   print_name PlayerName   ; 118d
 PrintRivalName:    print_name RivalName    ; 1194
 PrintTrendyPhrase: print_name TrendyPhrase ; 119b
-PlacePoke:         print_name .PokeText    ; 11c5
 
-.PokeText:
-	db "Poké@" ; 1288
+PlacePoke: print_name .PokeText
+.PokeText: db "Poké@"
+
+PlaceThe: print_name .TheText
+.TheText: db "t", "h", "e", "@"
+
+PlaceYou: print_name .YouText
+.YouText: db "y", "o", "u", "@"
+
+PlacePokemon: print_name .PokemonText
+.PokemonText: db "Pokémon@"
+
+PlaceTo: print_name .ToText
+.ToText: db "t", "o", "@"
 
 PlaceMoveTargetsName:: ; 11fd
 	ld a, [hBattleTurn]
@@ -443,7 +458,7 @@ ContText:: ; 1345
 	pop de
 	jp NextChar
 
-.cont	db $4b, "@"
+.cont	db "<_CONT>@"
 ; 1356
 
 PromptText:: ; 135a

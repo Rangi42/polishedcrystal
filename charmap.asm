@@ -27,7 +27,7 @@
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
-	charmap "<LINK2>",  $4b
+	charmap "<_CONT>",  $4b
 	charmap "<SCRL2>",  $4c
 	charmap "<NL>",     $4e
 	charmap "<LINE>",   $4f
@@ -45,7 +45,10 @@
 	charmap "<USER>",   $5a
 	charmap "<ENEMY>",  $5b
 
-; unused: 5c-5f
+	charmap "the",      $5c
+	charmap "you",      $5d
+	charmap "#mon",     $5e
+	charmap "to",       $5f
 
 ; Actual characters
 
