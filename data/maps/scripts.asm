@@ -127,13 +127,13 @@ SECTION "Ruins of Alph Scripts", ROMX
 
 INCLUDE "maps/RuinsofAlphOutside.asm"
 INCLUDE "maps/RuinsofAlphResearchCenter.asm"
-INCLUDE "maps/RuinsofAlphEntranceChamber.asm"
-INCLUDE "maps/RuinsofAlphInnerChamber.asm"
-INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
 
 
 SECTION "Ruins of Alph Scripts 2", ROMX
 
+INCLUDE "maps/RuinsofAlphEntranceChamber.asm"
+INCLUDE "maps/RuinsofAlphInnerChamber.asm"
+INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
 INCLUDE "maps/RuinsofAlphAerodactylChamber.asm"
 INCLUDE "maps/RuinsofAlphHoOhChamber.asm"
 INCLUDE "maps/RuinsofAlphKabutoChamber.asm"

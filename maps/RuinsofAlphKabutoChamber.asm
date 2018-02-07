@@ -15,8 +15,8 @@ RuinsofAlphKabutoChamber_MapScriptHeader:
 	db 0 ; coord events
 
 	db 6 ; bg events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
 	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
 	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
@@ -116,10 +116,10 @@ MapRuinsofAlphKabutoChamberSignpost3Script:
 
 MapRuinsofAlphKabutoChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue_jumptext UnknownText_0x58afa
+	iftrue_jumptext UnknownText_0x58ea2
 MapRuinsofAlphKabutoChamberSignpost4Script:
 	opentext
-	writetext UnknownText_0x58aa7
+	writetext UnknownText_0x58e4f
 	writebyte $0
 	special Special_DisplayUnownWords
 	endtext
@@ -177,22 +177,6 @@ UnknownText_0x589b8:
 	para "But I'm more"
 	line "concerned about"
 	cont "this wall here…"
-	done
-
-UnknownText_0x58aa7:
-	text "Patterns appeared"
-	line "on the walls…"
-	done
-
-UnknownText_0x58afa:
-	text "There's a big hole"
-	line "in the wall!"
-	done
-
-UnknownText_0x58b1a:
-	text "It's a replica of"
-	line "an ancient #-"
-	cont "mon."
 	done
 
 UnknownText_0x58b3f:

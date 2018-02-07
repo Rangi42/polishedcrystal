@@ -19,34 +19,34 @@ RuinsofAlphInnerChamber_MapScriptHeader:
 	db 0 ; coord events
 
 	db 28 ; bg events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  8,  3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 11,  3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 14,  3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 17,  3, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  2,  8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  5,  8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  8,  8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 11,  8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 14,  8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 17,  8, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  2, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  5, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 14, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 17, 13, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  2, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  5, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  8, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 11, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 14, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 17, 18, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  2, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  5, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event  8, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 11, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 14, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
-	bg_event 17, 24, SIGNPOST_JUMPTEXT, UnknownText_0x59072
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 
 	db 4 ; object events
 	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
@@ -113,10 +113,4 @@ UnknownText_0x58a03:
 
 	para "but it's not clear"
 	line "yet…"
-	done
-
-UnknownText_0x59072:
-	text "It's a replica of"
-	line "an ancient #-"
-	cont "mon."
 	done

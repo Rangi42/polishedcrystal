@@ -11,11 +11,11 @@ RuinsofAlphEntranceChamber_MapScriptHeader:
 	db 0 ; coord events
 
 	db 1 ; bg events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphEntranceChamberStatueText
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 
 	db 0 ; object events
 
-RuinsofAlphEntranceChamberStatueText:
+RuinsofAlphStatueText:
 	text "It's a replica of"
 	line "an ancient #-"
 	cont "mon."

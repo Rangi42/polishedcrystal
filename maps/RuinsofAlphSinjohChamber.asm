@@ -11,8 +11,8 @@ RuinsofAlphSinjohChamber_MapScriptHeader:
 
 	db 3 ; bg events
 	bg_event  5,  2, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
-	bg_event  4,  3, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
-	bg_event  6,  3, SIGNPOST_JUMPTEXT, RuinsofAlphSinjohChamberStatueText
+	bg_event  4,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  6,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 
 	db 4 ; object events
 	object_event  3,  1, SPRITE_WII, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
@@ -113,10 +113,4 @@ RuinsofAlphSinjohChamberMystriText:
 
 RuinsofAlphSinjohChamberSurpriseText
 	text "…!"
-	done
-
-RuinsofAlphSinjohChamberStatueText:
-	text "It's a replica of"
-	line "an ancient #-"
-	cont "mon."
 	done

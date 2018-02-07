@@ -15,8 +15,8 @@ RuinsofAlphHoOhChamber_MapScriptHeader:
 	db 0 ; coord events
 
 	db 6 ; bg events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58685
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58685
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
 	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost3Script
 	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
@@ -93,29 +93,13 @@ MapRuinsofAlphHoOhChamberSignpost3Script:
 
 MapRuinsofAlphHoOhChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	iftrue_jumptext UnknownText_0x58665
+	iftrue_jumptext UnknownText_0x58ea2
 MapRuinsofAlphHoOhChamberSignpost4Script:
 	opentext
-	writetext UnknownText_0x58612
+	writetext UnknownText_0x58e4f
 	writebyte $3
 	special Special_DisplayUnownWords
 	endtext
-
-UnknownText_0x58612:
-	text "Patterns appeared"
-	line "on the walls…"
-	done
-
-UnknownText_0x58665:
-	text "There's a big hole"
-	line "in the wall!"
-	done
-
-UnknownText_0x58685:
-	text "It's a replica of"
-	line "an ancient #-"
-	cont "mon."
-	done
 
 UnknownText_0x586aa:
 	text "A #mon that"
