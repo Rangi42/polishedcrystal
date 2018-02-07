@@ -27,6 +27,14 @@
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
+
+	charmap "have",     $38
+	charmap "that",     $39
+	charmap "for",      $3a
+	charmap "with",     $3b
+	charmap "and",      $3c
+	charmap "this",     $3d
+
 	charmap "<_CONT>",  $4b
 	charmap "<SCRL2>",  $4c
 	charmap "<NL>",     $4e

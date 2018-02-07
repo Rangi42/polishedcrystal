@@ -140,7 +140,7 @@ BattleArmor:   db "Battle Armor@"
 Sturdy:        db "Sturdy@"
 Damp:          db "Damp@"
 Limber:        db "Limber@"
-SandVeil:      db "Sand Veil@"
+SandVeil:      db "San", "d Veil@"
 Static:        db "Static@"
 VoltAbsorb:    db "Volt Absorb@"
 WaterAbsorb:   db "Water Absorb@"
@@ -174,7 +174,7 @@ WaterVeil:     db "Water Veil@"
 MagnetPull:    db "Magnet Pull@"
 Soundproof:    db "Soundproof@"
 RainDish:      db "Rain Dish@"
-SandStream:    db "Sand Stream@"
+SandStream:    db "San", "d Stream@"
 Pressure:      db "Pressure@"
 ThickFat:      db "Thick Fat@"
 EarlyBird:     db "Early Bird@"
@@ -200,11 +200,11 @@ ArenaTrap:     db "Arena Trap@"
 VitalSpirit:   db "Vital Spirit@"
 ShellArmor:    db "Shell Armor@"
 TangledFeet:   db "Tangled Feet@"
-MotorDrive:    db "Motor Drive@"
+MotorDrive:    db "Mot", "or Drive@"
 Rivalry:       db "Rivalry@"
 Steadfast:     db "Steadfast@"
 SnowCloak:     db "Snow Cloak@"
-Gluttony:      db "Gluttony@"
+Gluttony:      db "Glutt", "ony@"
 AngerPoint:    db "Anger Point@"
 Unburden:      db "Unburden@"
 DrySkin:       db "Dry Skin@"
@@ -246,20 +246,20 @@ Harvest:       db "Harvest@"
 Moody:         db "Moody@"
 Overcoat:      db "Overcoat@"
 PoisonTouch:   db "Poison Touch@"
-Regenerator:   db "Regenerator@"
+Regenerator:   db "Regenerat", "or@"
 BigPecks:      db "Big Pecks@"
-SandRush:      db "Sand Rush@"
+SandRush:      db "San", "d Rush@"
 WonderSkin:    db "Wonder Skin@"
 Analytic:      db "Analytic@"
 Imposter:      db "Imposter@"
-Infiltrator:   db "Infiltrator@"
+Infiltrator:   db "Infiltrat", "or@"
 Moxie:         db "Moxie@"
 Justified:     db "Justified@"
 Rattled:       db "Rattled@"
 MagicBounce:   db "Magic Bounce@"
 SapSipper:     db "Sap Sipper@"
 Prankster:     db "Prankster@"
-SandForce:     db "Sand Force@"
+SandForce:     db "San", "d Force@"
 FurCoat:       db "Fur Coat@"
 Competitive:   db "Competitive@"
 Pixilate:      db "Pixilate@"
@@ -405,8 +405,8 @@ NoAbilityDescription:
 	next "disabled.@"
 
 StenchDescription:
-	db   "May cause the foe"
-	next "to flinch.@"
+	db   "May cause th", "e foe"
+	next "t", "o flinch.@"
 
 DrizzleDescription:
 	db   "Summons rain when"
@@ -423,7 +423,7 @@ ShellArmorDescription:
 
 SturdyDescription:
 	db   "Cannot be knocked"
-	next "out with one hit.@"
+	next "out wi", "th one hit.@"
 
 DampDescription:
 	db   "Prevents self-"
@@ -435,18 +435,18 @@ LimberDescription:
 
 SandVeilDescription:
 	db   "Boosts evasion in"
-	next "a sandstorm.@"
+	next "a san", "dst", "orm.@"
 
 StaticDescription:
 	db   "Contact may cause"
 	next "paralysis.@"
 
 VoltAbsorbDescription:
-	db   "Restores HP if hit"
+	db   "Rest", "ores HP if hit"
 	next "by Electric moves.@"
 
 WaterAbsorbDescription:
-	db   "Restores HP if hit"
+	db   "Rest", "ores HP if hit"
 	next "by Water moves.@"
 
 ObliviousDescription:
@@ -455,10 +455,10 @@ ObliviousDescription:
 
 CloudNineDescription:
 	db   "Eliminates effects"
-	next "of weather. @"
+	next "of weath", "er. @"
 
 CompoundEyesDescription:
-	db   "Boosts the Poké-"
+	db   "Boosts th", "e Poké-"
 	next "mon's accuracy.@"
 
 InsomniaDescription:
@@ -483,19 +483,19 @@ OwnTempoDescription:
 	next "becoming confused.@"
 
 SuctionCupsDescription:
-	db   "Negates forced"
+	db   "Negates fo", "rced"
 	next "switch-outs.@"
 
 IntimidateDescription:
-	db   "Lowers the foe's"
+	db   "Lowers th", "e foe's"
 	next "Attack stat.@"
 
 ShadowTagDescription:
-	db   "Prevents the foe"
+	db   "Prevents th", "e foe"
 	next "from escaping.@"
 
 LevitateDescription:
-	db   "Gives immunity to"
+	db   "Gives immunity t", "o"
 	next "Ground-type moves.@"
 
 EffectSporeDescription:
@@ -504,7 +504,7 @@ EffectSporeDescription:
 
 SynchronizeDescription:
 	db   "Passes Psn, Par,"
-	next "or Brn to foes.@"
+	next "or Brn t", "o foes.@"
 
 ClearBodyDescription:
 	db   "Prevents foes from"
@@ -519,7 +519,7 @@ LightningRodDescription:
 	next "boost Spcl.Atk.@"
 
 SereneGraceDescription:
-	db   "Boosts the rate of"
+	db   "Boosts th", "e rate of"
 	next "added effects.@"
 
 SwiftSwimDescription:
@@ -531,11 +531,11 @@ ChlorophyllDescription:
 	next "in sunshine.@"
 
 IlluminateDescription:
-	db   "Raises the rate"
+	db   "Raises th", "e rate"
 	next "of wild Pokémon.@"
 
 TraceDescription:
-	db   "Copies the foe's"
+	db   "Copies th", "e foe's"
 	next "Ability.@"
 
 HugePowerDescription:
@@ -544,7 +544,7 @@ HugePowerDescription:
 
 PoisonPointDescription:
 	db   "Contact may poison"
-	next "the foe.@"
+	next "th", "e foe.@"
 
 InnerFocusDescription:
 	db   "Protects it from"
@@ -563,7 +563,7 @@ MagnetPullDescription:
 	next "Steel-type foes.@"
 
 SoundproofDescription:
-	db   "Gives immunity to"
+	db   "Gives immunity t", "o"
 	next "sound-based moves.@"
 
 RainDishDescription:
@@ -571,16 +571,16 @@ RainDishDescription:
 	next "HP in rain.@"
 
 SandStreamDescription:
-	db   "Summons sandstorm"
+	db   "Summons san", "dst", "orm"
 	next "when switched in.@"
 
 PressureDescription:
-	db   "Raises the foe's"
+	db   "Raises th", "e foe's"
 	next "PP usage.@"
 
 ThickFatDescription:
-	db   "Ups resistance to"
-	next "Fire and Ice.@"
+	db   "Ups resistance t", "o"
+	next "Fire an", "d Ice.@"
 
 EarlyBirdDescription:
 	db   "Awakens quickly"
@@ -588,7 +588,7 @@ EarlyBirdDescription:
 
 FlameBodyDescription:
 	db   "Contact may burn"
-	next "the foe.@"
+	next "th", "e foe.@"
 
 RunAwayDescription:
 	db   "Sure getaway from"
@@ -616,7 +616,7 @@ CuteCharmDescription:
 
 StickyHoldDescription:
 	db   "Protects it from"
-	next "item theft.@"
+	next "item th", "eft.@"
 
 ShedSkinDescription:
 	db   "May heal its own"
@@ -659,7 +659,7 @@ DroughtDescription:
 	next "when switched in.@"
 
 ArenaTrapDescription:
-	db   "Prevents the foe"
+	db   "Prevents th", "e foe"
 	next "from fleeing.@"
 
 TangledFeetDescription:
@@ -671,7 +671,7 @@ MotorDriveDescription:
 	next "boost Speed.@"
 
 RivalryDescription:
-	db   "Boosts damage to"
+	db   "Boosts damage t", "o"
 	next "same-gender foes.@"
 
 SteadfastDescription:
@@ -680,7 +680,7 @@ SteadfastDescription:
 
 SnowCloakDescription:
 	db   "Boosts evasion in"
-	next "hailstorms.@"
+	next "hailst", "orms.@"
 
 GluttonyDescription:
 	db   "Encourages early"
@@ -696,7 +696,7 @@ UnburdenDescription:
 
 DrySkinDescription:
 	db   "Reduces HP in sun."
-	next "Water restores HP.@"
+	next "Water rest", "ores HP.@"
 
 DownloadDescription:
 	db   "Adjusts stats based"
@@ -707,7 +707,7 @@ IronFistDescription:
 	next "punching moves.@"
 
 PoisonHealDescription:
-	db   "Restores HP if"
+	db   "Rest", "ores HP if"
 	next "it is poisoned.@"
 
 AdaptabilityDescription:
@@ -727,7 +727,7 @@ SolarPowerDescription:
 	next "lowers HP in sun.@"
 
 QuickFeetDescription:
-	db   "Boosts Speed with"
+	db   "Boosts Speed wi", "th"
 	next "status problems.@"
 
 SniperDescription:
@@ -752,26 +752,26 @@ LeafGuardDescription:
 
 MoldBreakerDescription:
 	db   "Moves disregard"
-	next "the foe's ability.@"
+	next "th", "e foe's ability.@"
 
 SuperLuckDescription:
-	db   "Boosts the rate"
+	db   "Boosts th", "e rate"
 	next "of critical hits.@"
 
 AftermathDescription:
-	db   "Damages the foe on"
+	db   "Damages th", "e foe on"
 	next "fainting.@"
 
 AnticipationDescription:
-	db   "Senses the foe's"
+	db   "Senses th", "e foe's"
 	next "dangerous moves.@"
 
 ForewarnDescription:
-	db   "Determines the"
+	db   "Determines th", "e"
 	next "foe's moves.@"
 
 UnawareDescription:
-	db   "Ignores the foe's"
+	db   "Ignores th", "e foe's"
 	next "stat changes.@"
 
 TintedLensDescription:
@@ -784,7 +784,7 @@ SolidRockDescription:
 	next "effective damage.@"
 
 ScrappyDescription:
-	db   "Enables moves to"
+	db   "Enables moves t", "o"
 	next "hit Ghost-types.@"
 
 IceBodyDescription:
@@ -792,23 +792,23 @@ IceBodyDescription:
 	next "HP in hail.@"
 
 SnowWarningDescription:
-	db   "Summons hailstorm"
+	db   "Summons hailst", "orm"
 	next "when switched in.@"
 
 FriskDescription:
-	db   "Checks the foe's"
+	db   "Checks th", "e foe's"
 	next "held item.@"
 
 RecklessDescription:
 	db   "Powers up moves"
-	next "that recoil.@"
+	next "th", "at recoil.@"
 
 PickpocketDescription:
 	db   "Steals foe's item"
 	next "when contacted.@"
 
 SheerForceDescription:
-	db   "Removes effects to"
+	db   "Removes effects t", "o"
 	next "increase damage.@"
 
 UnnerveDescription:
@@ -825,7 +825,7 @@ CursedBodyDescription:
 
 WeakArmorDescription:
 	db   "Physical attacks"
-	next "trade Def for Spd.@"
+	next "trade Def fo", "r Spd.@"
 
 MultiscaleDescription:
 	db   "Reduces damage"
@@ -836,20 +836,20 @@ HarvestDescription:
 	next "Berry after use.@"
 
 MoodyDescription:
-	db   "Raises a stat and"
-	next "lowers another.@"
+	db   "Raises a stat an", "d"
+	next "lowers anoth", "er.@"
 
 OvercoatDescription:
 	db   "Protects it from"
-	next "weather damage.@"
+	next "weath", "er damage.@"
 
 PoisonTouchDescription:
-	db   "May poison the foe"
+	db   "May poison th", "e foe"
 	next "on contact.@"
 
 RegeneratorDescription:
-	db   "Restores HP when"
-	next "withdrawn.@"
+	db   "Rest", "ores HP when"
+	next "wi", "thdrawn.@"
 
 BigPecksDescription:
 	db   "Prevents foes from"
@@ -857,7 +857,7 @@ BigPecksDescription:
 
 SandRushDescription:
 	db   "Boosts Speed in"
-	next "a sandstorm.@"
+	next "a san", "dst", "orm.@"
 
 WonderSkinDescription:
 	db   "Makes status moves"
@@ -868,11 +868,11 @@ AnalyticDescription:
 	next "when moving last.@"
 
 ImposterDescription:
-	db   "Transforms itself"
-	next "into the foe.@"
+	db   "Transfo", "rms itself"
+	next "int", "o th", "e foe.@"
 
 InfiltratorDescription:
-	db   "Attacks bypass the"
+	db   "Attacks bypass th", "e"
 	next "foe's barriers.@"
 
 MoxieDescription:
@@ -896,12 +896,12 @@ SapSipperDescription:
 	next "hit by Grass.@"
 
 PranksterDescription:
-	db   "Gives priority to"
+	db   "Gives priority t", "o"
 	next "a status move.@"
 
 SandForceDescription:
 	db   "Boosts some moves"
-	next "in a sandstorm.@"
+	next "in a san", "dst", "orm.@"
 
 FurCoatDescription:
 	db   "Halves damage from"
@@ -917,4 +917,4 @@ PixilateDescription:
 
 TanglingHairDescription:
 	db   "Contact may lower"
-	next "the foe's Speed.@"
+	next "th", "e foe's Speed.@"

@@ -211,7 +211,6 @@ endm
 	dict "<PARA>",   Paragraph
 	dict "<PLAYER>", PrintPlayerName
 	dict "<RIVAL>",  PrintRivalName
-	dict "#",        PlacePoke
 	dict "<CONT>",   ContText
 	dict "<TRENDY>", PrintTrendyPhrase
 	dict "<DONE>",   DoneText
@@ -219,10 +218,17 @@ endm
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
+	dict "#",        PlacePoke
 	dict "the",      PlaceThe
 	dict "you",      PlaceYou
 	dict "#mon",     PlacePokemon
 	dict "to",       PlaceTo
+	dict "have",     PlaceHave
+	dict "that",     PlaceThat
+	dict "for",      PlaceFor
+	dict "with",     PlaceWith
+	dict "and",      PlaceAnd
+	dict "this",     PlaceThis
 	dict2 "¯", " "
 
 	ld [hli], a
@@ -254,6 +260,24 @@ PlacePokemon: print_name .PokemonText
 
 PlaceTo: print_name .ToText
 .ToText: db "t", "o", "@"
+
+PlaceHave: print_name .HaveText
+.HaveText: db "h", "a", "v", "e", "@"
+
+PlaceThat: print_name .ThatText
+.ThatText: db "t", "h", "a", "t", "@"
+
+PlaceFor: print_name .ForText
+.ForText: db "f", "o", "r", "@"
+
+PlaceWith: print_name .WithText
+.WithText: db "w", "i", "t", "h", "@"
+
+PlaceAnd: print_name .AndText
+.AndText: db "a", "n", "d", "@"
+
+PlaceThis: print_name .ThisText
+.ThisText: db "t", "h", "i", "s", "@"
 
 PlaceMoveTargetsName:: ; 11fd
 	ld a, [hBattleTurn]
