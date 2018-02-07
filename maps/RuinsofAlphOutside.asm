@@ -62,6 +62,7 @@ RuinsofAlphOutsideTrigger0:
 	showtext RuinsofAlphScientistClimax2Text
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
+	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	clearevent EVENT_DO_RUINS_OF_ALPH_CLIMAX
 	setevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 .End

@@ -107,7 +107,6 @@ CianwoodCityPhotoStudio_BlockData:
 CherrygroveGymSpeechHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
 Route32CoastHouse_BlockData:
-SinjohRuinsHouse_BlockData:
 ShamoutiHotel_BlockData:
 ShamoutiTouristCenter_BlockData:
 ShamoutiMerchant_BlockData:
@@ -311,6 +310,9 @@ SinjohRuins_BlockData:
 
 MystriStage_BlockData:
 	INCBIN "maps/MystriStage.blk"
+
+SinjohRuinsHouse_BlockData:
+	INCBIN "maps/SinjohRuinsHouse.blk"
 
 UnionCave1F_BlockData:
 GiovannisCave_BlockData:

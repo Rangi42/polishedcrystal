@@ -1851,11 +1851,8 @@ StevenFinalPkmnText:
 	prompt
 
 CynthiaFinalPkmnText:
-	text "I can't remember"
-	line "the last time I"
-
-	para "was put in a"
-	line "corner like this!"
+	text "I won't let this"
+	line "end yet!"
 	prompt
 
 InverFinalPkmnText:
