@@ -214,15 +214,14 @@ ButterfreeEvosAttacks:
 	db 1, GUST
 	db 11, CONFUSION
 	db 13, POISONPOWDER
-	db 13, STUN_SPORE
-	db 13, SLEEP_POWDER
-	db 17, PSYBEAM
-	db 19, STRUGGLE ; Silver Wind → TODO
+	db 15, STUN_SPORE
+	db 17, SLEEP_POWDER ; Psybeam → Sleep Powder
+	db 19, PSYBEAM ; Silver Wind → Psybeam
 	db 23, SUPERSONIC
 	db 25, SAFEGUARD
 	db 29, HYPNOSIS ; Whirlwind → new move
 	db 31, BUG_BUZZ
-	db 35, STRUGGLE ; Rage Powder → TODO
+	db 35, REFLECT ; Rage Powder → RBY TM move
 	db 37, AGILITY ; Captivate → new move
 	db 41, HEALINGLIGHT ; Tailwind → new move
 	db 43, AIR_SLASH
@@ -1621,7 +1620,7 @@ SeelEvosAttacks:
 	db 31, AQUA_JET
 	db 33, BUBBLE_BEAM ; Brine → RBY TM move
 	db 37, TAKE_DOWN
-	db 41, STRUGGLE ; Dive → TODO
+	db 41, PERISH_SONG ; Dive →  new move
 	db 43, AQUA_TAIL
 	db 47, ICE_BEAM
 	db 51, SAFEGUARD
@@ -1643,7 +1642,7 @@ DewgongEvosAttacks:
 	db 31, AQUA_JET
 	db 33, BUBBLE_BEAM ; Brine → RBY TM move
 	db 39, TAKE_DOWN
-	db 45, STRUGGLE ; Dive → TODO
+	db 45, PERISH_SONG ; Dive → new move
 	db 49, AQUA_TAIL
 	db 55, ICE_BEAM
 	db 61, SAFEGUARD

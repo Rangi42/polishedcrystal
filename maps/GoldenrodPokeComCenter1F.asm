@@ -42,7 +42,7 @@ GoldenrodPokeComCenter1F_MapScriptHeader:
 	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
 	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
 	object_event 18,  9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
-	object_event  3,  9, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
+	object_event  3,  9, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
 	object_event 23,  3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
 
 NurseScript_0x60f91:

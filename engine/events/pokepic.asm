@@ -81,7 +81,7 @@ ClosePokepic:: ; 24528
 PokepicMenuDataHeader: ; 0x24547
 	db $40 ; flags
 	db 04, 06 ; start coords
-	db 13, 14 ; end coords
+	db 12, 14 ; end coords
 	dw NULL
 	db 1 ; default option
 
