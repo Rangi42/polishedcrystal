@@ -122,7 +122,7 @@ else
 endc
 
 .BGTile:
-INCBIN "gfx/misc/init_bg.2bpp"
+INCBIN "gfx/new_game/init_bg.2bpp"
 
 .InitialOptionsString:
 	db "Natures<LNBRK>"

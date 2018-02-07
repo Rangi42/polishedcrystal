@@ -2587,7 +2587,7 @@ PokedexSlowpokeLZ: ; 416b0
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 
 QuestionMarkLZ: ; 1de0e1
-INCBIN "gfx/pics/questionmark/front.2bpp.lz"
+INCBIN "gfx/pokedex/question_mark.2bpp.lz"
 
 Footprints: ; f9434
 INCBIN "gfx/pokedex/footprints.w128.1bpp"

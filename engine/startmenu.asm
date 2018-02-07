@@ -1661,13 +1661,13 @@ PlaceMoveData: ; 13256
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld hl, TypeIconGFX
-	ld bc, 4 tiles
+	ld bc, 4 * LEN_1BPP_TILE
 	call AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
-	call Request2bpp
+	call Request1bpp
 	hlcoord 3, 12
 	ld [hl], $5b
 	inc hl

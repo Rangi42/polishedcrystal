@@ -28,10 +28,10 @@ INCBIN "gfx/frames/9.1bpp"
 ; Various misc graphics here.
 
 BattleExtrasGFX:
-INCBIN "gfx/battle/extras.2bpp"
+INCBIN "gfx/battle/hpexpbars.2bpp"
 
 BattleNoCaptureGFX:
-INCBIN "gfx/battle/nocapture.2bpp"
+INCBIN "gfx/battle/nocapture.1bpp"
 
 GFX_Stats: ; f89b0
 INCBIN "gfx/stats/stats.2bpp"
@@ -44,7 +44,7 @@ EnemyStatusIconGFX:
 INCBIN "gfx/battle/status-enemy.2bpp"
 
 TypeIconGFX:
-INCBIN "gfx/battle/types.2bpp"
+INCBIN "gfx/battle/types.1bpp"
 
 CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
@@ -107,7 +107,7 @@ _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleNoCaptureGFX
 	ld hl, VTiles0 tile "<NONO>"
 	lb bc, BANK(BattleNoCaptureGFX), 1
-	call Get2bpp_2
+	call Get1bpp_2
 ; fb4cc
 
 LoadFrame:: ; fb4cc

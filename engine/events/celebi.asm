@@ -94,13 +94,13 @@ CelebiEvent_CountDown: ; 49935
 ; 49944
 
 SpecialCelebiLeafGFX: ; 49962
-INCBIN "gfx/special/celebi/leaf.2bpp"
+INCBIN "gfx/overworld/celebi/leaf.2bpp"
 
 SpecialCelebiGFX: ; 499a2
-INCBIN "gfx/special/celebi/1.2bpp"
-INCBIN "gfx/special/celebi/2.2bpp"
-INCBIN "gfx/special/celebi/3.2bpp"
-INCBIN "gfx/special/celebi/4.2bpp"
+INCBIN "gfx/overworld/celebi/1.2bpp"
+INCBIN "gfx/overworld/celebi/2.2bpp"
+INCBIN "gfx/overworld/celebi/3.2bpp"
+INCBIN "gfx/overworld/celebi/4.2bpp"
 
 UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	ld hl, SPRITEANIMSTRUCT_XOFFSET

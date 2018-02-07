@@ -602,7 +602,7 @@ DummyGame_InterpretJoypad_AnimateCursor: ; e21a1 (38:61a1)
 ; e2221 (38:6221)
 
 DummyGameGFX: ; e2221
-INCBIN "gfx/misc/dummy_game.w16.2bpp.lz"
+INCBIN "gfx/dummy_game/dummy_game.w16.2bpp.lz"
 
 MissingDummyGameGFX:
 ; Graphics for an unused Game Corner

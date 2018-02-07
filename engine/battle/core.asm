@@ -5978,14 +5978,14 @@ MoveInfoBox: ; 3e6c8
 	ld [hl], $5a
 
 	ld hl, TypeIconGFX
-	ld bc, 4 tiles
+	ld bc, 4 * LEN_1BPP_TILE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	call AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
-	call Request2bpp
+	call Request1bpp
 	hlcoord 3, 9
 	ld [hl], $5b
 	inc hl
