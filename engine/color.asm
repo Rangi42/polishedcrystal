@@ -507,6 +507,16 @@ GetTrainerPalettePointer:
 	add hl, bc
 	ret
 
+GetPaintingPalettePointer:
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld bc, PaintingPalettes
+	add hl, bc
+	ret
+
 GetMonPalettePointer:
 	ld l, a
 	ld h, $0
@@ -578,6 +588,17 @@ LoadTrainerPalette:
 	ld a, $5
 	ld de, UnknBGPals palette PAL_BG_TEXT + 2
 	ld bc, 4
+	jp FarCopyWRAM
+
+LoadPaintingPalette:
+	; a = class
+	ld a, [TrainerClass]
+	; hl = palette
+	call GetPaintingPalettePointer
+	; load palette in BG 7
+	ld a, $5
+	ld de, UnknBGPals palette PAL_BG_TEXT
+	ld bc, 8
 	jp FarCopyWRAM
 
 InitCGBPals::
@@ -841,5 +862,7 @@ endc
 INCLUDE "data/pokemon/palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
+
+INCLUDE "data/events/paintings/palettes.asm"
 
 INCLUDE "engine/palettes.asm"

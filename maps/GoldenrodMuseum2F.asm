@@ -21,7 +21,7 @@ GoldenrodMuseum2F_MapScriptHeader:
 
 HoOhPaintingScript:
 	refreshscreen
-	trainerpic HO_OH_PAINTING
+	paintingpic HO_OH_PAINTING
 	waitbutton
 	closepokepic
 	thistext
@@ -32,7 +32,7 @@ HoOhPaintingScript:
 
 LugiaPaintingScript:
 	refreshscreen
-	trainerpic LUGIA_PAINTING
+	paintingpic LUGIA_PAINTING
 	waitbutton
 	closepokepic
 	thistext
@@ -43,7 +43,7 @@ LugiaPaintingScript:
 
 BellTowerPaintingScript:
 	refreshscreen
-	trainerpic BELL_TOWER_PAINTING
+	paintingpic BELL_TOWER_PAINTING
 	waitbutton
 	closepokepic
 	thistext

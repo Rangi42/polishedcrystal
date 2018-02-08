@@ -366,6 +366,7 @@ GetTrainerPic: ; 5120d
 	ld a, BANK(TrainerPicPointers)
 	call GetFarHalfword
 	pop af
+_Decompress7x7Pic:
 	ld de, wDecompressScratch
 	call FarDecompress
 	pop hl
@@ -380,6 +381,29 @@ GetTrainerPic: ; 5120d
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
+
+GetPaintingPic:
+	ld a, [TrainerClass]
+	call WaitBGMap
+	xor a
+	ld [hBGMapMode], a
+	ld hl, PaintingPicPointers
+	ld a, [TrainerClass]
+	ld bc, 3
+	call AddNTimes
+	ld a, [rSVBK]
+	push af
+	ld a, $6
+	ld [rSVBK], a
+	push de
+	ld a, BANK(PaintingPicPointers)
+	call GetFarByte
+	push af
+	inc hl
+	ld a, BANK(PaintingPicPointers)
+	call GetFarHalfword
+	pop af
+	jr _Decompress7x7Pic
 
 DecompressPredef: ; 5125d
 ; Decompress lz data from b:hl to scratch space at 6:d000, then copy it to address de.

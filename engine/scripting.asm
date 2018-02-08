@@ -258,6 +258,7 @@ ScriptCommandTable:
 	dw Script_iffalse_endtext            ; c3
 	dw Script_loadgrottomon              ; c4
 	dw Script_giveapricorn               ; c5
+	dw Script_paintingpic                ; c6
 
 StartScript:
 	ld hl, ScriptFlags
@@ -2944,3 +2945,14 @@ Script_giveapricorn:
 	xor a
 	ld [ScriptVar], a
 	ret
+
+Script_paintingpic:
+; parameters:
+;     painting (PaintingParam)
+	call GetScriptByte
+	and a
+	jr nz, .ok
+	ld a, [ScriptVar]
+.ok
+	ld [TrainerClass], a
+	farjp Paintingpic

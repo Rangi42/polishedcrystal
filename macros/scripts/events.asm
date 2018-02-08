@@ -1228,6 +1228,12 @@ else
 endc
 	endm
 
+	enum paintingpic_command
+paintingpic: macro
+	db paintingpic_command
+	db \1 ; painting
+	endm
+
 thisasm: macro
 	callasm .asm\@
 	end

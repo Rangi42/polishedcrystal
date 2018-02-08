@@ -16,6 +16,11 @@ SECTION "Trainer Pic Pointers", ROMX
 INCLUDE "data/trainers/pic_pointers.asm"
 
 
+SECTION "Painting Pic Pointers", ROMX
+
+INCLUDE "data/events/paintings/pic_pointers.asm"
+
+
 SECTION "Pokemon Pics 1", ROMX
 
 BulbasaurFrontpic:        INCBIN "gfx/pokemon/bulbasaur/front.2bpp.lz"
@@ -975,6 +980,10 @@ AerodactylFossilPic:      INCBIN "gfx/trainers/aerodactyl_fossil.2bpp.lz"
 CuboneArmorPic:           INCBIN "gfx/trainers/cubone_armor.2bpp.lz"
 MeteoritePic:             INCBIN "gfx/trainers/meteorite.2bpp.lz"
 SilhouettePic:            INCBIN "gfx/trainers/silhouette.2bpp.lz"
-HoOhPaintingPic:          INCBIN "gfx/trainers/ho_oh_painting.2bpp.lz"
-LugiaPaintingPic:         INCBIN "gfx/trainers/lugia_painting.2bpp.lz"
-BellTowerPaintingPic:     INCBIN "gfx/trainers/bell_tower_painting.2bpp.lz"
+
+
+SECTION "Painting Pics", ROMX
+
+HoOhPaintingPic:          INCBIN "gfx/paintings/ho_oh_painting.2bpp.lz"
+LugiaPaintingPic:         INCBIN "gfx/paintings/lugia_painting.2bpp.lz"
+BellTowerPaintingPic:     INCBIN "gfx/paintings/bell_tower_painting.2bpp.lz"

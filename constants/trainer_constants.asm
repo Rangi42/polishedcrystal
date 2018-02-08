@@ -1085,10 +1085,4 @@ KRIS EQU __enum__
 
 	trainerclass SILHOUETTE ; 92
 
-	trainerclass HO_OH_PAINTING ; 93
-
-	trainerclass LUGIA_PAINTING ; 94
-
-	trainerclass BELL_TOWER_PAINTING ; 95
-
 NUM_TRAINER_CLASSES EQU __enum__
