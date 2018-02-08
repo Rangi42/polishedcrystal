@@ -119,7 +119,6 @@ IvysHouse_BlockData:
 GoldenrodHappinessRater_BlockData:
 GoldenrodPPSpeechHouse_BlockData:
 GoldenrodHPUpHouse_BlockData:
-GoldenrodSpeechHouse_BlockData:
 GuideGentsHouse_BlockData:
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
@@ -440,6 +439,12 @@ UndergroundWarehouse_BlockData:
 
 UndergroundPathSwitchRoomEntrances_BlockData:
 	INCBIN "maps/UndergroundPathSwitchRoomEntrances.blk"
+
+GoldenrodMuseum1F_BlockData:
+	INCBIN "maps/GoldenrodMuseum1F.blk"
+
+GoldenrodMuseum2F_BlockData:
+	INCBIN "maps/GoldenrodMuseum2F.blk"
 
 WarehouseEntrance_BlockData:
 	INCBIN "maps/WarehouseEntrance.blk"

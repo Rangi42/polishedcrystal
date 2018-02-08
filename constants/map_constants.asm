@@ -277,9 +277,10 @@ MAP_NONE   EQU 0
 	mapconst GOLDENROD_HP_UP_HOUSE,                       4,  4 ; 28
 	mapconst GOLDENROD_NET_BALL_HOUSE,                    4,  4 ; 29
 	mapconst GOLDENROD_BAND_HOUSE,                        4,  4 ; 30
-	mapconst GOLDENROD_SPEECH_HOUSE,                      4,  4 ; 31
-	mapconst MAGNET_TUNNEL_WEST,                         11, 10 ; 32
-	mapconst MAGNET_TUNNEL_INSIDE,                       13, 23 ; 33
+	mapconst GOLDENROD_MUSEUM_1F,                         4,  7 ; 31
+	mapconst GOLDENROD_MUSEUM_2F,                         4,  7 ; 32
+	mapconst MAGNET_TUNNEL_WEST,                         11, 10 ; 33
+	mapconst MAGNET_TUNNEL_INSIDE,                       13, 23 ; 34
 
 	newgroup                                                    ; 12
 

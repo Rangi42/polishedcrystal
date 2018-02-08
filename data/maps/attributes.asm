@@ -673,7 +673,8 @@ ENDM
 	map_attributes GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
 	map_attributes GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
 	map_attributes GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0
-	map_attributes GoldenrodSpeechHouse, GOLDENROD_SPEECH_HOUSE, $0, 0
+	map_attributes GoldenrodMuseum1F, GOLDENROD_MUSEUM_1F, $0, 0
+	map_attributes GoldenrodMuseum2F, GOLDENROD_MUSEUM_2F, $0, 0
 	map_attributes VermilionHouseFishingSpeechHouse, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, $0, 0
 	map_attributes VermilionPokeCenter1F, VERMILION_POKECENTER_1F, $0, 0
 	map_attributes PokemonFanClub, POKEMON_FAN_CLUB, $0, 0

@@ -24,7 +24,7 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 18, 27, GOLDENROD_POKECOM_CENTER_1F, 2
 	warp_event  4, 16, GOLDENROD_HARBOR_GATE, 3
 	warp_event  4, 17, GOLDENROD_HARBOR_GATE, 4
-	warp_event 30, 15, GOLDENROD_SPEECH_HOUSE, 1 ; TODO: museum
+	warp_event 30, 15, GOLDENROD_MUSEUM_1F, 2
 	warp_event 37, 19, GOLDENROD_NET_BALL_HOUSE, 1
 	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
 	warp_event 13, 21, GOLDENROD_HP_UP_HOUSE, 1

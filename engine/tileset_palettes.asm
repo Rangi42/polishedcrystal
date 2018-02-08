@@ -87,9 +87,10 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_lightning_island_or_magnet_tunnel
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
-	ld hl, CinnabarLabPalette
 	cp TILESET_POKEMON_MANSION
 	jp z, .maybe_cinnabar_lab
+	cp TILESET_MUSEUM
+	jp z, .maybe_goldenrod_museum
 	cp TILESET_CELADON_MANSION
 	jp z, .maybe_celadon_mansion_roof
 	cp TILESET_MART
@@ -358,6 +359,18 @@ LoadSpecialMapPalette: ; 494ac
 	jp nz, .do_nothing
 	ld hl, CinnabarLabPalette
 	jp .load_eight_bg_palettes
+
+.maybe_goldenrod_museum
+	ld a, [MapGroup]
+	cp GROUP_GOLDENROD_MUSEUM_1F
+	jp nz, .do_nothing
+	ld a, [MapNumber]
+	cp MAP_GOLDENROD_MUSEUM_1F
+	ld hl, GoldenrodMuseumPalette
+	jp z, .load_eight_bg_palettes
+	cp MAP_GOLDENROD_MUSEUM_2F
+	jp z, .load_eight_bg_palettes
+	jp .do_nothing
 
 .maybe_celadon_mansion_roof
 	ld a, [MapGroup]
@@ -1205,6 +1218,19 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+GoldenrodMuseumPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/palettes/goldenrod_museum.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 CeladonMansionRoofPalette:
 if !DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/palettes/celadon_mansion_roof.pal"
@@ -1804,8 +1830,9 @@ LoadSpecialMapOBPalette:
 .load_tree_palette:
 	ld de, UnknOBPals palette PAL_OW_TREE
 .load_single_palette:
-	ld a, $5
 	ld bc, 1 palettes
+.load_ob_palettes:
+	ld a, $5
 	jp FarCopyWRAM
 
 .not_shamouti_or_safari:
@@ -1864,8 +1891,8 @@ LoadSpecialMapOBPalette:
 
 .not_lyras_house_2f:
 	ld a, [MapGroup]
-	cp GROUP_GOLDENROD_POKECOM_CENTER_1F ; GROUP_GOLDENROD_POKECOM_CENTER_OFFICE
-	jr nz, .not_pokecom_center
+	cp GROUP_GOLDENROD_POKECOM_CENTER_1F ; GROUP_GOLDENROD_POKECOM_CENTER_OFFICE, GROUP_GOLDENROD_MUSEUM_1F, GROUP_GOLDENROD_MUSEUM_2F
+	jr nz, .not_goldenrod
 	ld a, [MapNumber]
 	cp MAP_GOLDENROD_POKECOM_CENTER_1F
 	jr nz, .not_pokecom_center_1f
@@ -1873,12 +1900,20 @@ LoadSpecialMapOBPalette:
 	jr .load_rock_palette
 .not_pokecom_center_1f
 	cp MAP_GOLDENROD_POKECOM_CENTER_OFFICE
-	jr nz, .not_pokecom_center
+	jr nz, .not_pokecom_center_office
 	ld hl, PokecomCenterOfficeOBPalette_Purple
 	ld de, UnknOBPals palette PAL_OW_PURPLE
 	jp .load_single_palette
+.not_pokecom_center_office
+	ld a, [wTileset]
+	cp TILESET_MUSEUM
+	jr nz, .not_goldenrod
+	ld hl, GoldenrodMuseumOBPalettes_TreeRock
+	ld de, UnknOBPals palette PAL_OW_TREE
+	ld bc, 2 palettes
+	jp .load_ob_palettes
 
-.not_pokecom_center
+.not_goldenrod
 	ld a, [MapGroup]
 	cp GROUP_MOUNT_MOON_SQUARE
 	jr nz, .not_mount_moon_square
@@ -1978,4 +2013,27 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 else
 	MONOCHROME_RGB_FOUR_OW
+endc
+
+GoldenrodMuseumOBPalettes_TreeRock:
+if !DEF(MONOCHROME)
+	RGB 30, 28, 26
+	RGB 30, 28, 26
+	RGB 13, 13, 13
+	RGB 07, 07, 07
+
+	RGB 30, 28, 26
+	RGB 31, 28, 28
+	RGB 22, 27, 26
+	RGB 09, 10, 10
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
 endc
