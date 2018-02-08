@@ -195,8 +195,6 @@
 	charmap "▶",        $ee
 
 ; common font:
-COMMON_FONT_START EQU $6f
-
 	charmap "▷",        $ef
 
 	charmap "…",        $f0
@@ -212,8 +210,6 @@ COMMON_FONT_START EQU $6f
 	charmap "<UPDN>",   $f9
 
 ; frame:
-FRAME_START EQU $fa
-
 	charmap "┌",        $fa
 	charmap "─",        $fb
 	charmap "┐",        $fc

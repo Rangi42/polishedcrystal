@@ -61,15 +61,18 @@ MapEntryFrameGFX: ; f9344
 INCBIN "gfx/frames/map_entry_sign.2bpp"
 ; f9424
 
+PaintingFrameGFX:
+INCBIN "gfx/frames/painting.2bpp"
+
 _LoadStandardFont:: ; fb449
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, VTiles1
+	ld hl, VTiles0 tile "A"
 	lb bc, BANK(FontNormal), 111
 	call Get1bpp_2
 	ld de, FontCommon
-	ld hl, VTiles1 tile COMMON_FONT_START
+	ld hl, VTiles0 tile "▷"
 	lb bc, BANK(FontCommon), 11
 	jp Get1bpp_2
 ; fb48a
@@ -117,7 +120,7 @@ LoadFrame:: ; fb4cc
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles1 tile (FRAME_START - $80)
+	ld hl, VTiles0 tile "┌"
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp_2
 	ld hl, VTiles2 tile " "

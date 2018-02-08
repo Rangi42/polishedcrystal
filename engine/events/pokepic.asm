@@ -56,19 +56,23 @@ Trainerpic::
 	jr _Displaypic
 
 Paintingpic::
+	farcall LoadPaintingPalette
+	call UpdateTimePals
+	ld de, PaintingFrameGFX
+	ld hl, VTiles0 tile "┌"
+	lb bc, BANK(PaintingFrameGFX), 6
+	call Get2bpp
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
-	farcall LoadPaintingPalette
-	call UpdateTimePals
 	xor a
 	ld [hBGMapMode], a
 	ld a, [TrainerClass]
 	ld de, VTiles1
 	farcall GetPaintingPic
-	jr _Displaypic
+	jp _Displaypic
 
 ClosePokepic:: ; 24528
 	ld hl, PokepicMenuDataHeader
