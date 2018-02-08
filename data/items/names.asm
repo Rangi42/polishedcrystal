@@ -68,13 +68,13 @@ endc
 	db "X Speed@"
 	db "X Spcl.Atk@"
 	db "X Spcl.Def@"
+	db "X Accuracy@"
 	db "Dire Hit@"
 if DEF(FAITHFUL)
 	db "Guard Spec.@"
 else
 	db "Guard Stats@"
 endc
-	db "X Accuracy@"
 	db "Repel@"
 	db "Super Repel@"
 	db "Max Repel@"
