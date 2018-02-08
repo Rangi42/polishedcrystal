@@ -31,14 +31,14 @@ BattleTowerOutsideStepDownTrigger:
 
 .Script:
 	checkcode VAR_YCOORD
-	if_not_equal $9, .Done
+	ifnotequal $9, .Done
 	checkcode VAR_XCOORD
-	if_equal $8, .Down
-	if_not_equal $9, .Done
+	ifequal $8, .Down
+	ifnotequal $9, .Done
 .Down
 	applyonemovement PLAYER, step_down
 .Done
-	dotrigger $1
+	setscene $1
 	end
 
 BattleTowerOutsidePanUpTrigger1:
@@ -61,7 +61,7 @@ BattleTowerOutsidePanUpHelperScript:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	dotrigger $0
+	setscene $0
 	end
 
 .PanUpMovement:

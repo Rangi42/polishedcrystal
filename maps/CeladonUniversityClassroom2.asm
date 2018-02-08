@@ -81,7 +81,7 @@ CeladonUniversityClassroom2LadyText:
 CeladonUniversityClassroom2CooltrainermScript:
 	showtext .Text1
 	showtextfaceplayer .Text2
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 .Text1:

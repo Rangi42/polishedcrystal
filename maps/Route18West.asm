@@ -23,7 +23,7 @@ Route18WestAlwaysOnBike:
 
 Route18WestBikeCheckScript:
 	callasm .CheckPlayerState
-	if_equal PLAYER_BIKE, .done
+	ifequal PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
 	applyonemovement PLAYER, step_down
 .done

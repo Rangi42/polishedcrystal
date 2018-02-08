@@ -33,12 +33,12 @@ IndigoPlateauPokeCenter1F_MapScriptHeader:
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW
 
 PrepareEliteFourCallback:
-	domaptrigger WILLS_ROOM, $0
-	domaptrigger KOGAS_ROOM, $0
-	domaptrigger BRUNOS_ROOM, $0
-	domaptrigger KARENS_ROOM, $0
-	domaptrigger LANCES_ROOM, $0
-	domaptrigger HALL_OF_FAME, $0
+	setmapscene WILLS_ROOM, $0
+	setmapscene KOGAS_ROOM, $0
+	setmapscene BRUNOS_ROOM, $0
+	setmapscene KARENS_ROOM, $0
+	setmapscene LANCES_ROOM, $0
+	setmapscene HALL_OF_FAME, $0
 	clearevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
 	clearevent EVENT_WILLS_ROOM_EXIT_OPEN
 	clearevent EVENT_KOGAS_ROOM_ENTRANCE_CLOSED
@@ -58,18 +58,18 @@ PrepareEliteFourCallback:
 	return
 
 PlateauRivalBattleTrigger1:
-	moveperson INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
-	moveperson INDIGOPLATEAUPOKECENTER1F_LYRA, 15, 9
+	moveobject INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
+	moveobject INDIGOPLATEAUPOKECENTER1F_LYRA, 15, 9
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
 	iftrue .LyraFight
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .MaybeRivalFight
-	if_equal TUESDAY, .MaybeLyraFight
-	if_equal WEDNESDAY, .MaybeRivalFight
-	if_equal THURSDAY, .MaybeLyraFight
-	if_equal FRIDAY, .MaybeRivalFight
-	if_equal SATURDAY, .MaybeLyraFight
+	ifequal MONDAY, .MaybeRivalFight
+	ifequal TUESDAY, .MaybeLyraFight
+	ifequal WEDNESDAY, .MaybeRivalFight
+	ifequal THURSDAY, .MaybeLyraFight
+	ifequal FRIDAY, .MaybeRivalFight
+	ifequal SATURDAY, .MaybeLyraFight
 	jump .Done
 
 .MaybeRivalFight:
@@ -78,14 +78,14 @@ PlateauRivalBattleTrigger2:
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue .Done
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalApproachesMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	faceperson INDIGOPLATEAUPOKECENTER1F_SILVER, PLAYER
-	faceperson PLAYER, INDIGOPLATEAUPOKECENTER1F_SILVER
+	faceobject INDIGOPLATEAUPOKECENTER1F_SILVER, PLAYER
+	faceobject PLAYER, INDIGOPLATEAUPOKECENTER1F_SILVER
 	showtext PlateauRivalText1
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -121,10 +121,10 @@ PlateauRivalBattleTrigger2:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext PlateauRivalText2
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_SILVER
-	dotrigger $0
+	setscene $0
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	end
@@ -136,13 +136,13 @@ PlateauRivalBattleTrigger2:
 	iftrue .Done
 .LyraFight:
 	appear INDIGOPLATEAUPOKECENTER1F_LYRA
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalApproachesMovement
-	faceperson INDIGOPLATEAUPOKECENTER1F_LYRA, PLAYER
-	faceperson PLAYER, INDIGOPLATEAUPOKECENTER1F_LYRA
+	faceobject INDIGOPLATEAUPOKECENTER1F_LYRA, PLAYER
+	faceobject PLAYER, INDIGOPLATEAUPOKECENTER1F_LYRA
 	opentext
 	writetext PlateauLyraText1
 	waitbutton
@@ -184,10 +184,10 @@ PlateauRivalBattleTrigger2:
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	showtext PlateauLyraText3
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
-	dotrigger $0
+	setscene $0
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
 	clearevent EVENT_FINAL_BATTLE_WITH_LYRA
@@ -360,7 +360,7 @@ IndigoPlateauYellowScript:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .PartyFull
+	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Squirtle
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
@@ -394,8 +394,8 @@ IndigoPlateauYellowScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	spriteface PLAYER, DOWN
-	if_not_equal UP, .noleftstep
+	objectface PLAYER, DOWN
+	ifnotequal UP, .noleftstep
 	applyonemovement INDIGOPLATEAUPOKECENTER1F_YELLOW, step_left
 .noleftstep
 	applymovement INDIGOPLATEAUPOKECENTER1F_YELLOW, .DownMovement

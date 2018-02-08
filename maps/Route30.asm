@@ -50,7 +50,7 @@ YoungsterJoey_ImportantBattleScript:
 	faceplayer
 	writetext Text_ThisIsABigBattle
 	waitbutton
-	spriteface ROUTE30_YOUNGSTER1, UP
+	objectface ROUTE30_YOUNGSTER1, UP
 	closetext
 	playsound SFX_TACKLE
 	applymovement ROUTE30_PIDGEY, Route30_MikeysPidgeyAttacksMovement
@@ -79,8 +79,8 @@ TrainerYoungsterJoey:
 	callstd asknumber2m
 .RequestNumber:
 	askforphonenumber PHONE_YOUNGSTER_JOEY
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext YOUNGSTER, JOEY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -89,11 +89,11 @@ TrainerYoungsterJoey:
 	callstd rematchm
 	winlosstext YoungsterJoey1BeatenText, 0
 	copybytetovar wJoeyFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight4

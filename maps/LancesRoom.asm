@@ -39,7 +39,7 @@ LancesRoomEntranceTrigger:
 	changeblock 4, 22, $34
 	reloadmappart
 	closetext
-	dotrigger $1
+	setscene $1
 	setevent EVENT_LANCES_ROOM_ENTRANCE_CLOSED
 	end
 
@@ -70,9 +70,9 @@ ApproachLanceFromRightTrigger:
 	special Special_FadeOutMusic
 	applymovement PLAYER, ApproachLanceFromRightMovement
 LanceScript:
-	spriteface LANCESROOM_LANCE, LEFT
+	objectface LANCESROOM_LANCE, LEFT
 	checkcode VAR_BADGES
-	if_equal 16, .Rematch
+	ifequal 16, .Rematch
 	showtext .SeenText
 	winlosstext .BeatenText, 0
 	setlasttalked LANCESROOM_LANCE
@@ -102,9 +102,9 @@ LanceScript:
 	musicfadeout MUSIC_BEAUTY_ENCOUNTER, $10
 	pause 30
 	showemote EMOTE_SHOCK, LANCESROOM_LANCE, 15
-	spriteface LANCESROOM_LANCE, DOWN
+	objectface LANCESROOM_LANCE, DOWN
 	pause 10
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	appear LANCESROOM_MARY
 	applymovement LANCESROOM_MARY, .RushInMovement
 	showtext .MaryText1
@@ -113,18 +113,18 @@ LanceScript:
 	follow LANCESROOM_MARY, LANCESROOM_OAK
 	applymovement LANCESROOM_MARY, .StepAsideMovement
 	stopfollow
-	spriteface LANCESROOM_OAK, UP
-	spriteface LANCESROOM_LANCE, LEFT
+	objectface LANCESROOM_OAK, UP
+	objectface LANCESROOM_LANCE, LEFT
 	showtext .OakSpeechText
 	applymovement LANCESROOM_MARY, .ApproachPlayerMovement
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showtext .MaryText2
 	applymovement LANCESROOM_LANCE, .WalkTowardExitMovement
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showtext .LanceLeavingText
 	follow LANCESROOM_LANCE, PLAYER
-	spriteface LANCESROOM_MARY, UP
-	spriteface LANCESROOM_OAK, UP
+	objectface LANCESROOM_MARY, UP
+	objectface LANCESROOM_OAK, UP
 	applyonemovement LANCESROOM_LANCE, step_up
 	stopfollow
 	playsound SFX_EXIT_BUILDING

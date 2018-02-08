@@ -70,8 +70,8 @@ Museum1FFossilScientistScript:
 	loadmenudata HelixDomeMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectHelixFossil
-	if_equal $2, ResurrectDomeFossil
+	ifequal $1, ResurrectHelixFossil
+	ifequal $2, ResurrectDomeFossil
 	jump .maybe_later
 
 .ask_old_amber
@@ -84,25 +84,25 @@ Museum1FFossilScientistScript:
 	loadmenudata HelixAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectHelixFossil
-	if_equal $2, ResurrectOldAmber
+	ifequal $1, ResurrectHelixFossil
+	ifequal $2, ResurrectOldAmber
 	jump .maybe_later
 
 .ask_dome_amber
 	loadmenudata DomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectDomeFossil
-	if_equal $2, ResurrectOldAmber
+	ifequal $1, ResurrectDomeFossil
+	ifequal $2, ResurrectOldAmber
 	jump .maybe_later
 
 .ask_helix_dome_amber
 	loadmenudata HelixDomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectHelixFossil
-	if_equal $2, ResurrectDomeFossil
-	if_equal $3, ResurrectOldAmber
+	ifequal $1, ResurrectHelixFossil
+	ifequal $2, ResurrectDomeFossil
+	ifequal $3, ResurrectOldAmber
 .maybe_later:
 	jumpopenedtext MaybeLaterText
 
@@ -165,7 +165,7 @@ HelixDomeAmberMenuDataHeader:
 
 ResurrectHelixFossil:
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, NoRoomForFossilPokemon
+	ifequal $6, NoRoomForFossilPokemon
 	takeitem HELIX_FOSSIL
 	scall ResurrectAFossilScript
 	writetext GotOmanyteText
@@ -176,7 +176,7 @@ ResurrectHelixFossil:
 
 ResurrectDomeFossil:
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, NoRoomForFossilPokemon
+	ifequal $6, NoRoomForFossilPokemon
 	takeitem DOME_FOSSIL
 	scall ResurrectAFossilScript
 	writetext GotKabutoText
@@ -187,7 +187,7 @@ ResurrectDomeFossil:
 
 ResurrectOldAmber:
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, NoRoomForFossilPokemon
+	ifequal $6, NoRoomForFossilPokemon
 	takeitem OLD_AMBER
 	scall ResurrectAFossilScript
 	writetext GotAerodactylText
@@ -200,7 +200,7 @@ ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
 	waitbutton
 	closetext
-	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
+	objectface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
 	pause 15
 	playsound SFX_BOOT_PC
 	waitsfx
@@ -222,8 +222,8 @@ NoRoomForFossilPokemon:
 
 Museum1FReceptionistScript:
 	checkcode VAR_FACING
-	if_equal DOWN, .Sneak
-	if_equal LEFT, .Sneak
+	ifequal DOWN, .Sneak
+	ifequal LEFT, .Sneak
 	thistextfaceplayer
 
 	text "Welcome!"

@@ -74,7 +74,7 @@ CeladonCityTutorSwaggerScript:
 	writebyte SWAGGER
 	writetext Text_CeladonCityTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CeladonCityTutorRefused
 

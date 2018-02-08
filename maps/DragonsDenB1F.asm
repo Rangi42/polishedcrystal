@@ -42,9 +42,9 @@ DragonsDenB1FSilverCallback:
 
 .CheckDay:
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, .AppearSilver
-	if_equal THURSDAY, .AppearSilver
-	if_equal SATURDAY, .AppearSilver
+	ifequal TUESDAY, .AppearSilver
+	ifequal THURSDAY, .AppearSilver
+	ifequal SATURDAY, .AppearSilver
 	disappear DRAGONSDENB1F_SILVER
 	return
 
@@ -59,7 +59,7 @@ DragonsDenB1FClairTrigger:
 	pause 30
 	closetext
 	showemote EMOTE_SHOCK, PLAYER, 15
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	playmusic MUSIC_CLAIR
 	applymovement DRAGONSDENB1F_CLAIR, .WalksToYouMovement
 	opentext
@@ -77,8 +77,8 @@ DragonsDenB1FClairTrigger:
 	pause 30
 	special RestartMapMusic
 	disappear DRAGONSDENB1F_CLAIR
-	dotrigger $0
-	domaptrigger NEW_BARK_TOWN, $1
+	setscene $0
+	setmapscene NEW_BARK_TOWN, $1
 	clearevent EVENT_LYRA_IN_HER_ROOM
 	end
 
@@ -140,7 +140,7 @@ DragonsDenB1FSilverScript:
 	writetext .GiveEggText
 	buttonsound
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .PartyFull
+	ifequal PARTY_LENGTH, .PartyFull
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .GiveChikoritaEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -163,7 +163,7 @@ DragonsDenB1FSilverScript:
 	closetext
 	setevent EVENT_GOT_RIVALS_EGG
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	domaptrigger ELMS_LAB, $7
+	setmapscene ELMS_LAB, $7
 	special RestartMapMusic
 	end
 

@@ -53,7 +53,7 @@ AzaleaTownFlypointCallback:
 
 AzaleaTownRainScript:
 	special Special_GetOvercastIndex
-	if_equal AZALEA_OVERCAST, .rain
+	ifequal AZALEA_OVERCAST, .rain
 	changemap AzaleaTown_BlockData
 	return
 
@@ -62,16 +62,16 @@ AzaleaTownRainScript:
 	return
 
 AzaleaTownRivalBattleTrigger1:
-	moveperson AZALEATOWN_SILVER, 11, 11
+	moveobject AZALEATOWN_SILVER, 11, 11
 AzaleaTownRivalBattleTrigger2:
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	appear AZALEATOWN_SILVER
 	applymovement AZALEATOWN_SILVER, .ApproachMovement
-	faceperson AZALEATOWN_SILVER, PLAYER
-	faceperson PLAYER, AZALEATOWN_SILVER
+	faceobject AZALEATOWN_SILVER, PLAYER
+	faceobject PLAYER, AZALEATOWN_SILVER
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext .SeenText
 	setevent EVENT_RIVAL_AZALEA_TOWN
@@ -109,12 +109,12 @@ AzaleaTownRivalBattleTrigger2:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext .AfterText
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	applymovement AZALEATOWN_SILVER, .ExitMovement
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_SILVER
-	domaptrigger ROUTE_34, $1
-	dotrigger $0
+	setmapscene ROUTE_34, $1
+	setscene $0
 	waitsfx
 	playmapmusic
 	end
@@ -202,17 +202,17 @@ AzaleaTown_CelebiTrigger:
 	opentext
 	writetext .Text1
 	buttonsound
-	spriteface AZALEATOWN_KURT, RIGHT
+	objectface AZALEATOWN_KURT, RIGHT
 	writetext .Text2
 	buttonsound
 	writetext AzaleaTownKurtText
 	waitbutton
 	verbosegiveitem GS_BALL
-	spriteface AZALEATOWN_KURT, LEFT
+	objectface AZALEATOWN_KURT, LEFT
 	setflag ENGINE_HAVE_EXAMINED_GS_BALL
 	clearevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
-	dotrigger $0
+	setscene $0
 	endtext
 
 .Text1:
@@ -372,7 +372,7 @@ AzaleaTownSlowpokeScript:
 
 AzaleaTownKurtScript:
 	showtextfaceplayer AzaleaTownKurtText
-	spriteface LAST_TALKED, LEFT
+	objectface LAST_TALKED, LEFT
 	end
 
 AzaleaTownKurtText:

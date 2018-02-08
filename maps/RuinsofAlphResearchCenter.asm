@@ -34,12 +34,12 @@ RuinsofAlphResearchCenterTrigger0:
 	end
 
 UnknownScript_0x59185:
-	checktriggers
-	if_equal $1, UnknownScript_0x5918b
+	checkscene
+	ifequal $1, UnknownScript_0x5918b
 	return
 
 UnknownScript_0x5918b:
-	moveperson RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
+	moveobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 	return
 
@@ -53,7 +53,7 @@ UnknownScript_0x59192:
 	pause 30
 	playsound SFX_TRANSACTION
 	pause 30
-	spriteface RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
+	objectface RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
 	showtext UnknownText_0x59278
 	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	opentext
@@ -65,7 +65,7 @@ UnknownScript_0x59192:
 	waitbutton
 	closetext
 	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_up
-	dotrigger $0
+	setscene $0
 	special RestartMapMusic
 	end
 
@@ -75,7 +75,7 @@ ScientistScript_0x591d1:
 	checkevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	iftrue .Conclusion
 	checkcode VAR_UNOWNCOUNT
-	if_equal NUM_UNOWN, UnknownScript_0x591df
+	ifequal NUM_UNOWN, UnknownScript_0x591df
 	jumpopenedtext UnknownText_0x59311
 
 .Conclusion:
@@ -107,7 +107,7 @@ UnknownScript_0x591df:
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST2, 15
 	showtext RuinsofAlphResearchCenterScientistShockedText
 	checkcode VAR_FACING
-	if_equal UP, .GoAround
+	ifequal UP, .GoAround
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave2MovementData
 	stopfollow
@@ -146,7 +146,7 @@ ScientistScript_0x591e5:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	if_equal NUM_UNOWN, UnknownScript_0x5920b
+	ifequal NUM_UNOWN, UnknownScript_0x5920b
 	checkflag ENGINE_UNOWN_DEX
 	iftrue UnknownScript_0x59205
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
@@ -170,7 +170,7 @@ ScientistScript_0x59214:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	if_greater_than 3, UnknownScript_0x5922e
+	ifgreater 3, UnknownScript_0x5922e
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue UnknownScript_0x59228
 	jumpopenedtext UnknownText_0x5954f
@@ -180,9 +180,9 @@ UnknownScript_0x59228:
 
 UnknownScript_0x5922e:
 	checkcode VAR_UNOWNCOUNT
-	if_equal NUM_UNOWN, ResearchCompleteScript_0x596d3
+	ifequal NUM_UNOWN, ResearchCompleteScript_0x596d3
 	checkcode VAR_UNOWNCOUNT
-	if_greater_than 10, ResearchOngoingScript_0x59669
+	ifgreater 10, ResearchOngoingScript_0x59669
 	jumpopenedtext UnknownText_0x59769
 
 ResearchCompleteScript_0x596d3:

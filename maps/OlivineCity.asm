@@ -58,7 +58,7 @@ OlivineCityFlyPoint:
 	return
 
 OlivineCityRivalGymScript:
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
@@ -71,9 +71,9 @@ OlivineCityRivalGymScript:
 	applyonemovement OLIVINECITY_OLIVINE_RIVAL, step_down
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext OlivineCityRivalGymText
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesGym
-	dotrigger $1
+	setscene $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
@@ -81,10 +81,10 @@ OlivineCityRivalGymScript:
 	end
 
 OlivineCityRivalLighthouseScript:
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	moveperson OLIVINECITY_OLIVINE_RIVAL, 33, 19
+	moveobject OLIVINECITY_OLIVINE_RIVAL, 33, 19
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
@@ -95,9 +95,9 @@ OlivineCityRivalLighthouseScript:
 	showtext OlivineCityRivalLighthouseText
 	playsound SFX_TACKLE
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown2
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesLighthouse
-	dotrigger $1
+	setscene $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL

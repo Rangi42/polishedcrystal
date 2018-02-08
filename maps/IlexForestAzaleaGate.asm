@@ -27,7 +27,7 @@ ProfOaksAide1Script:
 	waitbutton
 	count_seen_caught
 	checkcode VAR_DEXCAUGHT
-	if_greater_than 14, .HereYouGo
+	ifgreater 14, .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide1UhOhText
 

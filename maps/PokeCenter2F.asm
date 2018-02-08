@@ -37,8 +37,8 @@ PokeCenter2FLeftColosseumTrigger:
 
 PokeCenter2FTileCallback:
 	callasm .CheckPokeCenter2FRegion
-	if_equal $0, .done
-	if_equal $2, .shamouti2f
+	ifequal $0, .done
+	ifequal $2, .shamouti2f
 	changemap KantoPokeCenter2F_BlockData
 .done
 	return
@@ -71,15 +71,15 @@ PokeCenter2FTileCallback:
 Script_LeftCableTradeCenter:
 	special WaitForOtherPlayerToExit
 	scall Script_WalkOutOfLinkRoom
-	dotrigger $0
-	domaptrigger TRADE_CENTER, $0
+	setscene $0
+	setmapscene TRADE_CENTER, $0
 	end
 
 Script_LeftCableColosseum:
 	special WaitForOtherPlayerToExit
 	scall Script_WalkOutOfLinkRoom
-	dotrigger $0
-	domaptrigger COLOSSEUM, $0
+	setscene $0
+	setmapscene COLOSSEUM, $0
 	end
 
 Script_WalkOutOfLinkRoom:
@@ -255,7 +255,7 @@ PokeCenter2F_CheckGender:
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
 	showtext Text_OhPleaseWait
 	applymovement2 PokeCenter2FMovementData_ReceptionistLooksRight
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight

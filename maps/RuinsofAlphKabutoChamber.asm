@@ -56,7 +56,7 @@ UnknownScript_0x58751:
 	changeblock 4, 0, $25
 	reloadmappart
 	earthquake 50
-	dotrigger $1
+	setscene $1
 	endtext
 
 MapRuinsofAlphKabutoChamberSignpost2Script:
@@ -72,7 +72,7 @@ UnknownScript_0x58778:
 	setevent EVENT_SOLVED_KABUTO_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_1
 	setevent EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	domaptrigger RUINS_OF_ALPH_INNER_CHAMBER, $1
+	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
 	changeblock 2, 2, $14
@@ -89,7 +89,7 @@ UnknownScript_0x58778:
 
 ScientistScript_0x587a8:
 	checkcode VAR_UNOWNCOUNT
-	if_equal NUM_UNOWN, UnknownScript_0x587cf
+	ifequal NUM_UNOWN, UnknownScript_0x587cf
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iftrue_jumptextfaceplayer UnknownText_0x5897c
 	faceplayer
@@ -102,7 +102,7 @@ UnknownScript_0x587c0:
 	writetext UnknownText_0x588f5
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 UnknownScript_0x587cf:

@@ -45,8 +45,8 @@ DayCare_MeetGrandma:
 	follow DAYCARE_LYRA, PLAYER
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraApproachesGrandma
 	stopfollow
-	spriteface PLAYER, UP
-	spriteface DAYCARE_GRANNY, DOWN
+	objectface PLAYER, UP
+	objectface DAYCARE_GRANNY, DOWN
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
@@ -68,12 +68,12 @@ DayCare_MeetGrandma:
 .Continue2:
 	waitbutton
 	closetext
-	spriteface DAYCARE_LYRA, DOWN
+	objectface DAYCARE_LYRA, DOWN
 	showtext DayCareLyraGoodbyeText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraStartsToLeave
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
-	spriteface DAYCARE_LYRA, LEFT
-	spriteface PLAYER, RIGHT
+	objectface DAYCARE_LYRA, LEFT
+	objectface PLAYER, RIGHT
 	showtext DayCareLyraForgotText
 	addcellnum PHONE_LYRA
 	opentext
@@ -82,11 +82,11 @@ DayCare_MeetGrandma:
 	waitsfx
 	waitbutton
 	closetext
-	spriteface DAYCARE_LYRA, UP
+	objectface DAYCARE_LYRA, UP
 	showtext DayCareLyraEmbarassedText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraLeaves
 	disappear DAYCARE_LYRA
-	dotrigger $1
+	setscene $1
 	end
 
 DayCareManScript_Inside:
@@ -97,7 +97,7 @@ DayCareManScript_Inside:
 	writetext DayCareManText_GiveOddEgg
 	buttonsound
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .PartyFull
+	ifequal PARTY_LENGTH, .PartyFull
 	special GiveOddEgg
 	writetext DayCareText_GotOddEgg
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
@@ -125,7 +125,7 @@ DayCareLadyScript:
 	writetext DayCareLadyText_GiveLyrasEgg
 	buttonsound
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .PartyFull
+	ifequal PARTY_LENGTH, .PartyFull
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .GiveCyndaquilEgg
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM

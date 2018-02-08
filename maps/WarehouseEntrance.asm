@@ -72,12 +72,12 @@ WarehouseEntranceCheckBasementKey:
 
 WarehouseEntranceCheckDayOfWeek:
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .Monday
-	if_equal TUESDAY, .Tuesday
-	if_equal WEDNESDAY, .Wednesday
-	if_equal THURSDAY, .Thursday
-	if_equal FRIDAY, .Friday
-	if_equal SATURDAY, .Saturday
+	ifequal MONDAY, .Monday
+	ifequal TUESDAY, .Tuesday
+	ifequal WEDNESDAY, .Wednesday
+	ifequal THURSDAY, .Thursday
+	ifequal FRIDAY, .Friday
+	ifequal SATURDAY, .Saturday
 
 .Sunday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
@@ -88,7 +88,7 @@ WarehouseEntranceCheckDayOfWeek:
 
 .Monday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
-	checkmorn
+	checktime 1 << MORN
 	iffalse .NotMondayMorning
 	appear WAREHOUSEENTRANCE_GRAMPS
 .NotMondayMorning:
@@ -185,8 +185,8 @@ GenericTrainerCosplayerClara:
 
 GrannyScript_0x7c132:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, .Open
-	if_equal SATURDAY, .Open
+	ifequal SUNDAY, .Open
+	ifequal SATURDAY, .Open
 	jumptext UnknownText_0x7c904
 
 .Open:
@@ -196,19 +196,19 @@ GrampsScript_0x7c146:
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
 	iftrue_jumptext UnknownText_0x7c904
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .CheckMorn
+	ifequal MONDAY, .CheckMorn
 	jumptext UnknownText_0x7c904
 
 .CheckMorn:
-	checkmorn
+	checktime 1 << MORN
 	iffalse_jumptext UnknownText_0x7c904
 	pokemart MARTTYPE_BARGAIN, 0
 
 OlderHaircutBrotherScript:
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, .DoHaircut
-	if_equal THURSDAY, .DoHaircut
-	if_equal SATURDAY, .DoHaircut
+	ifequal TUESDAY, .DoHaircut
+	ifequal THURSDAY, .DoHaircut
+	ifequal SATURDAY, .DoHaircut
 	jumptext UnknownText_0x7c904
 
 .DoHaircut:
@@ -220,15 +220,15 @@ OlderHaircutBrotherScript:
 	yesorno
 	iffalse .Refused
 	checkmoney $0, 500
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	writetext UnknownText_0x7c69a
 	buttonsound
 	special Special_YoungerHaircutBrother
-	if_equal $0, .Refused
-	if_equal $1, .Refused
+	ifequal $0, .Refused
+	ifequal $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
-	if_equal $2, .two
-	if_equal $3, .three
+	ifequal $2, .two
+	ifequal $3, .three
 	jump .else
 
 .two
@@ -280,9 +280,9 @@ OlderHaircutBrotherScript:
 
 YoungerHaircutBrotherScript:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, .DoHaircut
-	if_equal WEDNESDAY, .DoHaircut
-	if_equal FRIDAY, .DoHaircut
+	ifequal SUNDAY, .DoHaircut
+	ifequal WEDNESDAY, .DoHaircut
+	ifequal FRIDAY, .DoHaircut
 	jumptext UnknownText_0x7c904
 
 .DoHaircut:
@@ -294,15 +294,15 @@ YoungerHaircutBrotherScript:
 	yesorno
 	iffalse .Refused
 	checkmoney $0, 300
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	writetext UnknownText_0x7c7f1
 	buttonsound
 	special Special_OlderHaircutBrother
-	if_equal $0, .Refused
-	if_equal $1, .Refused
+	ifequal $0, .Refused
+	ifequal $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
-	if_equal $2, .two
-	if_equal $3, .three
+	ifequal $2, .two
+	ifequal $3, .three
 	jump .else
 
 .two

@@ -74,7 +74,7 @@ Route47TileScript:
 	iffalse .locked
 	changeblock 8, 22, $9b
 .locked
-	checktriggers
+	checkscene
 	iftrue .underfoot
 	callasm .overhead_asm
 	return
@@ -137,7 +137,7 @@ Route47_FinishUnderfootBridge:
 	ld a, $1
 Route47_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wRoute47Trigger], a ; dotrigger a
+	ld [wRoute47Trigger], a ; setscene a
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 Route47Bridge1OverheadTrigger:

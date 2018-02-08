@@ -61,7 +61,7 @@ RuinsofAlphInnerChamberTrigger0:
 
 UnknownScript_0x58f6e:
 	showtext UnknownText_0x58f89
-	dotrigger $0
+	setscene $0
 	setevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	end

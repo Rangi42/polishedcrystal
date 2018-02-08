@@ -67,7 +67,7 @@ GuitaristmClydeScript:
 	end_if_just_battled
 	opentext
 	checkcode VAR_BATTLEPOINTS
-	if_greater_than 0, .BattleTower
+	ifgreater 0, .BattleTower
 	jumpopenedtext UnknownText_0x75d65
 
 .BattleTower:

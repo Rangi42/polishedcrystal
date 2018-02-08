@@ -16,7 +16,7 @@ CeruleanBikeShop_MapScriptHeader:
 
 CeruleanBikeShopClerkScript:
 	showtextfaceplayer CeruleanBikeShopClerkText
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 CeruleanBikeShopClerkText:

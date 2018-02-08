@@ -45,7 +45,7 @@ UnknownScript_0x60bab:
 	writetext UnknownText_0x60dea
 	waitbutton
 	closetext
-	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
+	objectface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
 	opentext
 	playmusic MUSIC_HEAL
@@ -64,8 +64,8 @@ UnknownScript_0x60bab:
 	setevent EVENT_JASMINE_RETURNED_TO_GYM
 	clearevent EVENT_OLIVINE_GYM_JASMINE
 	checkcode VAR_FACING
-	if_equal DOWN, UnknownScript_0x60c17
-	if_equal RIGHT, UnknownScript_0x60c1e
+	ifequal DOWN, UnknownScript_0x60c17
+	ifequal RIGHT, UnknownScript_0x60c1e
 	applymovement OLIVINELIGHTHOUSE6F_JASMINE, MovementData_0x60c68
 	disappear OLIVINELIGHTHOUSE6F_JASMINE
 	end
@@ -84,7 +84,7 @@ UnknownScript_0x60c25:
 	writetext UnknownText_0x60edf
 	waitbutton
 	closetext
-	spriteface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
+	objectface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
 	jumptext UnknownText_0x60ef1
 

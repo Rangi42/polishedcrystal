@@ -47,8 +47,8 @@ UnknownScript_0x19a6e0:
 	waitbutton
 	special Special_CheckMagikarpLength
 	iffalse_jumpopenedtext UnknownText_0x19aa5c
-	if_equal $1, UnknownScript_0x19a722
-	if_equal $2, UnknownScript_0x19a716
+	ifequal $1, UnknownScript_0x19a722
+	ifequal $2, UnknownScript_0x19a716
 	jump UnknownScript_0x19a6fe
 
 UnknownScript_0x19a6fe:

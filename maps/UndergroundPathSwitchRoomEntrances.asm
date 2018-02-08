@@ -129,7 +129,7 @@ UndergroundPathSwitchRoomEntrancesUpdateDoorPositions:
 	return
 
 UndergroundSilverTrigger1:
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -137,18 +137,18 @@ UndergroundSilverTrigger1:
 	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 	waitsfx
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverApproachMovement1
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	scall UndergroundSilverBattleScript
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverRetreatMovement1
 	playsound SFX_EXIT_BUILDING
 	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
-	dotrigger 1
+	setscene 1
 	waitsfx
 	playmapmusic
 	end
 
 UndergroundSilverTrigger2:
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -156,12 +156,12 @@ UndergroundSilverTrigger2:
 	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 	waitsfx
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverApproachMovement2
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	scall UndergroundSilverBattleScript
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverRetreatMovement2
 	playsound SFX_EXIT_BUILDING
 	disappear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
-	dotrigger 1
+	setscene 1
 	waitsfx
 	playmapmusic
 	end
@@ -170,7 +170,7 @@ UndergroundSilverBattleScript:
 	checkevent EVENT_RIVAL_BURNED_TOWER
 	iftrue .Continue
 	setevent EVENT_RIVAL_BURNED_TOWER
-	domaptrigger BURNED_TOWER_1F, 1
+	setmapscene BURNED_TOWER_1F, 1
 .Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UndergroundSilverBeforeText
@@ -379,14 +379,14 @@ UndergroundPathSwitchRoomEntrances_DontToggle:
 
 UndergroundPathSwitchRoomEntrances_UpdateDoors:
 	copybytetovar UndergroundSwitchPositions
-	if_equal 0, .Position0
-	if_equal 1, .Position1
-	if_equal 2, .Position2
-	if_equal 3, .Position3
-	if_equal 4, .Position4
-	if_equal 5, .Position5
-	if_equal 6, .Position6
-	if_equal 7, .EmergencyPosition
+	ifequal 0, .Position0
+	ifequal 1, .Position1
+	ifequal 2, .Position2
+	ifequal 3, .Position3
+	ifequal 4, .Position4
+	ifequal 5, .Position5
+	ifequal 6, .Position6
+	ifequal 7, .EmergencyPosition
 .Position0:
 	playsound SFX_ENTER_DOOR
 	scall .Clear4

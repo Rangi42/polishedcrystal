@@ -40,7 +40,7 @@ MountMoon1FTrigger0:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementBefore
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext MountMoonSilverTextBefore
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -82,7 +82,7 @@ MountMoon1FTrigger0:
 	disappear MOUNTMOON1F_SILVER
 	playsound SFX_EXIT_BUILDING
 	waitsfx
-	dotrigger $1
+	setscene $1
 	setevent EVENT_BEAT_RIVAL_IN_MT_MOON
 	playmapmusic
 	end

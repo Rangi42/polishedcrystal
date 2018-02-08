@@ -32,7 +32,7 @@ VermilionPortTrigger0:
 UnknownScript_0x74da6:
 	applyonemovement PLAYER, step_up
 	appear VERMILIONPORT_SAILOR1
-	dotrigger $0
+	setscene $0
 	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
 	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_GENTLEMAN
 	setevent EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
@@ -50,7 +50,7 @@ SailorScript_0x74dc4:
 	writetext UnknownText_0x74f06
 	waitbutton
 	closetext
-	spriteface VERMILIONPORT_SAILOR1, DOWN
+	objectface VERMILIONPORT_SAILOR1, DOWN
 	pause 10
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONPORT_SAILOR1
@@ -73,7 +73,7 @@ SailorScript_0x74dc4:
 	clearevent EVENT_BEAT_SCHOOLBOY_RICKY
 	setevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear VERMILIONPORT_SAILOR1
-	domaptrigger FAST_SHIP_1F, $1
+	setmapscene FAST_SHIP_1F, $1
 	warp FAST_SHIP_1F, 25, 1
 	end
 
@@ -81,19 +81,19 @@ UnknownScript_0x74e1a:
 	jumpopenedtext UnknownText_0x74f31
 
 UnknownScript_0x74e20:
-	spriteface VERMILIONPORT_SAILOR2, RIGHT
+	objectface VERMILIONPORT_SAILOR2, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x74e86
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x74e86
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	opentext
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, UnknownScript_0x74e72
-	if_equal TUESDAY, UnknownScript_0x74e72
-	if_equal THURSDAY, UnknownScript_0x74e7c
-	if_equal FRIDAY, UnknownScript_0x74e7c
-	if_equal SATURDAY, UnknownScript_0x74e7c
+	ifequal MONDAY, UnknownScript_0x74e72
+	ifequal TUESDAY, UnknownScript_0x74e72
+	ifequal THURSDAY, UnknownScript_0x74e7c
+	ifequal FRIDAY, UnknownScript_0x74e7c
+	ifequal SATURDAY, UnknownScript_0x74e7c
 	writetext UnknownText_0x74f4d
 	yesorno
 	iffalse UnknownScript_0x74e8d
@@ -148,11 +148,11 @@ SailorScript_0x74e97:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x74e1a
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, UnknownScript_0x74eda
-	if_equal TUESDAY, UnknownScript_0x74eda
-	if_equal THURSDAY, UnknownScript_0x74ee0
-	if_equal FRIDAY, UnknownScript_0x74ee0
-	if_equal SATURDAY, UnknownScript_0x74ee0
+	ifequal MONDAY, UnknownScript_0x74eda
+	ifequal TUESDAY, UnknownScript_0x74eda
+	ifequal THURSDAY, UnknownScript_0x74ee0
+	ifequal FRIDAY, UnknownScript_0x74ee0
+	ifequal SATURDAY, UnknownScript_0x74ee0
 	writetext UnknownText_0x74f4d
 	yesorno
 	iffalse UnknownScript_0x74e87

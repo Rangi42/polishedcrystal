@@ -40,7 +40,7 @@ CinnabarIslandBlue:
 	writetext CinnabarIslandBlueBattleText
 	waitbutton
 	checkcode VAR_BADGES
-	if_greater_than 14, .Ready
+	ifgreater 14, .Ready
 	jumpopenedtext CinnabarIslandBlueNotReadyText
 
 .Ready

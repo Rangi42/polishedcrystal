@@ -30,16 +30,16 @@ CeladonPrizeRoom_tmcounterloop:
 	loadmenudata CeladonPrizeRoom_TMMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .doubleteam
-	if_equal $2, .toxic
-	if_equal $3, .gigaimpact
+	ifequal $1, .doubleteam
+	ifequal $2, .toxic
+	ifequal $3, .gigaimpact
 	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 .doubleteam
 	checktmhm TM_DOUBLE_TEAM
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 3500
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	ifequal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_DOUBLE_TEAM, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -51,7 +51,7 @@ CeladonPrizeRoom_tmcounterloop:
 	checktmhm TM_TOXIC
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 5500
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	ifequal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -63,7 +63,7 @@ CeladonPrizeRoom_tmcounterloop:
 	checktmhm TM_GIGA_IMPACT
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 7500
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	ifequal $2, CeladonPrizeRoom_notenoughcoins
 	tmhmtotext TM_GIGA_IMPACT, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -127,16 +127,16 @@ CeladonGameCornerPokemonVendor:
 	loadmenudata .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .mr__mime
-	if_equal $2, .eevee
-	if_equal $3, .porygon
+	ifequal $1, .mr__mime
+	ifequal $2, .eevee
+	ifequal $3, .porygon
 	jumpopenedtext CeladonPrizeRoom_ComeAgainText
 
 .mr__mime
 	checkcoins 3333
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	ifequal $2, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, CeladonPrizeRoom_notenoughroom
+	ifequal $6, CeladonPrizeRoom_notenoughroom
 	pokenamemem MR__MIME, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -152,9 +152,9 @@ CeladonGameCornerPokemonVendor:
 
 .eevee
 	checkcoins 6666
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	ifequal $2, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, CeladonPrizeRoom_notenoughroom
+	ifequal $6, CeladonPrizeRoom_notenoughroom
 	pokenamemem EEVEE, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
@@ -170,9 +170,9 @@ CeladonGameCornerPokemonVendor:
 
 .porygon
 	checkcoins 9999
-	if_equal $2, CeladonPrizeRoom_notenoughcoins
+	ifequal $2, CeladonPrizeRoom_notenoughcoins
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, CeladonPrizeRoom_notenoughroom
+	ifequal $6, CeladonPrizeRoom_notenoughroom
 	pokenamemem PORYGON, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText

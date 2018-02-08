@@ -28,7 +28,7 @@ CooltrainerMScript_0x71670:
 	opentext
 	writetext UnknownText_0x716ce
 	checkcode VAR_DEXCAUGHT
-	if_greater_than 252, UnknownScript_0x7167e
+	ifgreater 252, UnknownScript_0x7167e
 	waitendtext
 
 UnknownScript_0x7167e:

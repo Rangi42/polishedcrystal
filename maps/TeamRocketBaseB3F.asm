@@ -64,31 +64,31 @@ TeamRocketBaseB3FCheckGiovanniDoor:
 	return
 
 LanceGetPasswordScript:
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	pause 5
-	spriteface TEAMROCKETBASEB3F_MURKROW, RIGHT
+	objectface TEAMROCKETBASEB3F_MURKROW, RIGHT
 	pause 20
 	applyonemovement TEAMROCKETBASEB3F_LANCE, step_right
 	showtext LanceGetPasswordText
 	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12c
 	disappear TEAMROCKETBASEB3F_LANCE
-	dotrigger $1
+	setscene $1
 	end
 
 RocketBaseRival:
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	appear TEAMROCKETBASEB3F_SILVER
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalEnterMovement
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext RocketBaseRivalText
 	playsound SFX_TACKLE
 	applymovement PLAYER, RocketBaseRivalShovesPlayerMovement
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalLeaveMovement
 	disappear TEAMROCKETBASEB3F_SILVER
-	dotrigger $2
+	setscene $2
 	special RestartMapMusic
 	end
 
@@ -102,7 +102,7 @@ UnknownScript_0x6e056:
 	pause 30
 	showemote EMOTE_SHOCK, TEAMROCKETBASEB3F_PETREL, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	spriteface TEAMROCKETBASEB3F_PETREL, DOWN
+	objectface TEAMROCKETBASEB3F_PETREL, DOWN
 	showtext UnknownText_0x6e400
 	applyonemovement TEAMROCKETBASEB3F_PETREL, step_down
 	winlosstext UnknownText_0x6e511, 0
@@ -116,7 +116,7 @@ UnknownScript_0x6e056:
 	playsound SFX_TACKLE
 	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e147
 	disappear TEAMROCKETBASEB3F_PETREL
-	dotrigger $3
+	setscene $3
 	end
 
 RocketBaseMurkrow:

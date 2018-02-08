@@ -88,29 +88,29 @@ TransmitterDoorCallback:
 	return
 
 UnknownScript_0x6cf95:
-	moveperson TEAMROCKETBASEB2F_LANCE, 9, 13
+	moveobject TEAMROCKETBASEB2F_LANCE, 9, 13
 	jump UnknownScript_0x6cfac
 
 UnknownScript_0x6cf9c:
-	moveperson TEAMROCKETBASEB2F_ARIANA, 21, 16
-	moveperson TEAMROCKETBASEB2F_PETREL, 21, 16
-	moveperson TEAMROCKETBASEB2F_DRAGONITE, 10, 13
-	moveperson TEAMROCKETBASEB2F_LANCE, 10, 13
+	moveobject TEAMROCKETBASEB2F_ARIANA, 21, 16
+	moveobject TEAMROCKETBASEB2F_PETREL, 21, 16
+	moveobject TEAMROCKETBASEB2F_DRAGONITE, 10, 13
+	moveobject TEAMROCKETBASEB2F_LANCE, 10, 13
 UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_PETREL
 	showtext UnknownText_0x6d2ad
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, MovementData_0x6d21f
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d224
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	applymovement TEAMROCKETBASEB2F_PETREL, MovementData_0x6d22f
 	showtext UnknownText_0x6d2c3
 	cry DRAGONITE
-	spriteface TEAMROCKETBASEB2F_ARIANA, LEFT
-	spriteface PLAYER, LEFT
+	objectface TEAMROCKETBASEB2F_ARIANA, LEFT
+	objectface PLAYER, LEFT
 	appear TEAMROCKETBASEB2F_DRAGONITE
 	applymovement TEAMROCKETBASEB2F_DRAGONITE, MovementData_0x6d236
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d23b
@@ -118,7 +118,7 @@ UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d244
 	showtext UnknownText_0x6d38c
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
 	showtext UnknownText_0x6d3bd
 	applyonemovement TEAMROCKETBASEB2F_PETREL, big_step_left
@@ -143,12 +143,12 @@ UnknownScript_0x6cfac:
 	disappear TEAMROCKETBASEB2F_ROCKET3
 	pause 15
 	special Special_FadeInQuickly
-	dotrigger $2
+	setscene $2
 	clearevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
-	spriteface TEAMROCKETBASEB2F_LANCE, DOWN
+	objectface TEAMROCKETBASEB2F_LANCE, DOWN
 	showtext UnknownText_0x6d5d8
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d250
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showtext UnknownText_0x6d64e
 	follow TEAMROCKETBASEB2F_LANCE, PLAYER
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d254
@@ -168,18 +168,18 @@ UnknownScript_0x6d07a:
 	end
 
 LanceHealsScript:
-	faceperson PLAYER, TEAMROCKETBASEB2F_LANCE
-	faceperson TEAMROCKETBASEB2F_LANCE, PLAYER
+	faceobject PLAYER, TEAMROCKETBASEB2F_LANCE
+	faceobject TEAMROCKETBASEB2F_LANCE, PLAYER
 	showtext LanceHealsText1
 	special FadeOutPalettes
 	playsound SFX_FULL_HEAL
 	special HealParty
 	special FadeInPalettes
 	showtext LanceHealsText2
-	dotrigger $1
+	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
 	checkcode VAR_FACING
-	if_equal RIGHT, UnknownScript_0x6d0be
+	ifequal RIGHT, UnknownScript_0x6d0be
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d212
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
@@ -288,10 +288,10 @@ UnknownScript_0x6d182:
 	end
 
 UnknownScript_0x6d184:
-	moveperson TEAMROCKETBASEB2F_LANCE, 18, 6
+	moveobject TEAMROCKETBASEB2F_LANCE, 18, 6
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d27a
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	opentext
 	writetext UnknownText_0x6d809
 	buttonsound
@@ -300,16 +300,16 @@ UnknownScript_0x6d184:
 	writetext UnknownText_0x6d8f8
 	waitbutton
 	closetext
-	spriteface TEAMROCKETBASEB2F_LANCE, DOWN
+	objectface TEAMROCKETBASEB2F_LANCE, DOWN
 	showtext UnknownText_0x6d994
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d283
 	disappear TEAMROCKETBASEB2F_LANCE
 	setevent EVENT_CLEARED_ROCKET_HIDEOUT
 	clearflag ENGINE_ROCKET_SIGNAL_ON_CH20
 	setevent EVENT_ROUTE_43_GATE_ROCKETS
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
-	dotrigger $3
+	setscene $3
 	clearevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	clearevent EVENT_LAKE_OF_RAGE_LANCE
 	variablesprite SPRITE_LAKE_OF_RAGE_LANCE, SPRITE_ENGINEER

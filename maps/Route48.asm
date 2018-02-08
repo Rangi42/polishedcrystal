@@ -31,8 +31,8 @@ Route48JessieJamesCallback:
 	return
 
 Route48JessieJamesScript2:
-	moveperson ROUTE48_JESSIE, 15, 13
-	moveperson ROUTE48_JAMES, 26, 13
+	moveobject ROUTE48_JESSIE, 15, 13
+	moveobject ROUTE48_JAMES, 26, 13
 Route48JessieJamesScript1:
 	appear ROUTE48_JESSIE
 	appear ROUTE48_JAMES
@@ -43,7 +43,7 @@ Route48JessieJamesScript1:
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
 	applymovement ROUTE48_JAMES, JamesEnterMovementData
 	showtext Route48JessieJamesSeenText
-	dotrigger $1
+	setscene $1
 	setevent EVENT_BEAT_JESSIE_AND_JAMES
 	winlosstext Route48JessieJamesBeatenText, 0
 	setlasttalked ROUTE48_JESSIE

@@ -29,7 +29,7 @@ WillsRoomEntranceTrigger:
 	changeblock 4, 14, $2a
 	reloadmappart
 	closetext
-	dotrigger $1
+	setscene $1
 	setevent EVENT_WILLS_ROOM_ENTRANCE_CLOSED
 	waitsfx
 	end
@@ -47,7 +47,7 @@ WillsRoomDoorCallback:
 
 WillScript:
 	checkcode VAR_BADGES
-	if_equal 16, .Rematch
+	ifequal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue_jumptextfaceplayer .AfterText
 	showtextfaceplayer .SeenText

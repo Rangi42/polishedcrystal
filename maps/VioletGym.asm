@@ -32,7 +32,7 @@ VioletGymFalknerAwayScript:
 	showemote EMOTE_SHOCK, VIOLETGYM_GYM_GUY2, 15
 	applyonemovement VIOLETGYM_GYM_GUY2, step_down
 	showtext VioletGymGuyFalknerAwayText
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	pause 10
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
@@ -63,7 +63,7 @@ FalknerScript_0x683c2:
 	iftrue_jumpopenedtext UnknownText_0x68735
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
-	domaptrigger ELMS_LAB, $2
+	setmapscene ELMS_LAB, $2
 	specialphonecall SPECIALCALL_ASSISTANT
 	writetext UnknownText_0x685c8
 	buttonsound
@@ -102,7 +102,7 @@ VioletGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 8, .LyraToo
+	ifgreater 8, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

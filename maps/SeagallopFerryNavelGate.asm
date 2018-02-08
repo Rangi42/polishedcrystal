@@ -33,7 +33,7 @@ SeagallopFerryNavelGate_PlayerArrives:
 	applymovement PLAYER, SeagallopFerryNavelGatePlayerArriveMovementData
 	showtext SeagallopFerryNavelRockRefusedText
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive2MovementData
-	dotrigger $0
+	setscene $0
 	end
 
 SeagallopFerryNavelGateSailorScript:
@@ -45,7 +45,7 @@ SeagallopFerryNavelGateSailorScript:
 	writetext SeagallopFerryNavelToVermilionText
 	waitbutton
 	closetext
-	spriteface SEAGALLOPFERRYNAVELGATE_SAILOR, DOWN
+	objectface SEAGALLOPFERRYNAVELGATE_SAILOR, DOWN
 	pause 10
 	applyonemovement SEAGALLOPFERRYNAVELGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING
@@ -56,7 +56,7 @@ SeagallopFerryNavelGateSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear SEAGALLOPFERRYNAVELGATE_SAILOR
-	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
+	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1
 	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 

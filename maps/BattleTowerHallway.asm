@@ -24,7 +24,7 @@ BattleTowerHallway_MapScriptHeader:
 
 BattleTowerHallwayTrigger0:
 	priorityjump .ChooseBattleRoom
-	dotrigger $1
+	setscene $1
 	end
 
 .ChooseBattleRoom:
@@ -49,14 +49,14 @@ BattleTowerHallwayTrigger0:
 ; at least it should look like that
 ; because all warps lead to the same room
 .WalkToChosenBattleRoom: ; 0x9f5dc
-	if_equal 3, .L30L40
-	if_equal 4, .L30L40
-	if_equal 5, .L50L60
-	if_equal 6, .L50L60
-	if_equal 7, .L70L80
-	if_equal 8, .L70L80
-	if_equal 9, .L90L100
-	if_equal 10, .L90L100
+	ifequal 3, .L30L40
+	ifequal 4, .L30L40
+	ifequal 5, .L50L60
+	ifequal 6, .L50L60
+	ifequal 7, .L70L80
+	ifequal 8, .L70L80
+	ifequal 9, .L90L100
+	ifequal 10, .L90L100
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo1020Room
 	jump .EnterBattleRoom
 
@@ -77,7 +77,7 @@ BattleTowerHallwayTrigger0:
 	jump .EnterBattleRoom
 
 .EnterBattleRoom: ; 0x9f61f
-	faceperson PLAYER, BATTLETOWERHALLWAY_RECEPTIONIST
+	faceobject PLAYER, BATTLETOWERHALLWAY_RECEPTIONIST
 	showtext Text_PleaseStepThisWay
 	stopfollow
 	applyonemovement PLAYER, step_up

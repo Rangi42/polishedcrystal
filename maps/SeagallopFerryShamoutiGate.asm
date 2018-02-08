@@ -30,7 +30,7 @@ SeagallopFerryShamoutiGate_PlayerArrives:
 	applymovement PLAYER, SeagallopFerryShamoutiGatePlayerArriveMovementData
 	showtext SeagallopFerryShamoutiIslandRefusedText
 	applymovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, SeagallopFerryShamoutiGateSailorArrive2MovementData
-	dotrigger $0
+	setscene $0
 	end
 
 SeagallopFerryShamoutiGateSailorScript:
@@ -42,8 +42,8 @@ SeagallopFerryShamoutiGateSailorScript:
 	loadmenudata VermilionValenciaMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .ToVermilion
-	if_equal $2, .ToValencia
+	ifequal $1, .ToVermilion
+	ifequal $2, .ToValencia
 	jump .RefuseFerry
 
 .OnlyVermilion
@@ -52,7 +52,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	iffalse .RefuseFerry
 .ToVermilion
 	scall SeagallopFerryShamoutiDepartureScript
-	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
+	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1
 	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 
@@ -68,7 +68,7 @@ SeagallopFerryShamoutiDepartureScript:
 	writetext SeagallopFerryShamoutiDepartureText
 	waitbutton
 	closetext
-	spriteface SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
+	objectface SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
 	pause 10
 	applyonemovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING

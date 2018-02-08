@@ -68,14 +68,14 @@ FisherScript_0x56749:
 	writetext GoldenrodDeptStoreRoofFisherCatchEmAllText
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 SuperNerdScript_0x56757:
 	showtext UnknownText_0x56867
 	faceplayer
 	showtext UnknownText_0x56871
-	spriteface LAST_TALKED, RIGHT
+	objectface LAST_TALKED, RIGHT
 	end
 
 Binoculars1:
@@ -95,14 +95,14 @@ PokeDollVendingMachine:
 	loadmenudata .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .JigglypuffDoll
-	if_equal $2, .DittoDoll
-	if_equal $3, .MeowthDoll
+	ifequal $1, .JigglypuffDoll
+	ifequal $2, .DittoDoll
+	ifequal $3, .MeowthDoll
 	endtext
 
 .JigglypuffDoll:
 	checkmoney $0, 2400
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_JIGGLYPUFF_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 2400
@@ -116,7 +116,7 @@ PokeDollVendingMachine:
 
 .DittoDoll:
 	checkmoney $0, 2400
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_DITTO_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 2400
@@ -130,7 +130,7 @@ PokeDollVendingMachine:
 
 .MeowthDoll:
 	checkmoney $0, 2400
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MEOWTH_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 2400

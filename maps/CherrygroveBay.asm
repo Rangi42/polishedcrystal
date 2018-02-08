@@ -38,7 +38,7 @@ CherrygroveBayTutorEarthPowerScript:
 	writebyte EARTH_POWER
 	writetext Text_CherrygroveBayTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CherrygroveBayTutorRefused
 

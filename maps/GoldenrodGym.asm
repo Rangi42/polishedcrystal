@@ -37,7 +37,7 @@ WhitneyScript_0x5400c:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_WHITNEY
 	setevent EVENT_MADE_WHITNEY_CRY
-	dotrigger $1
+	setscene $1
 	setevent EVENT_BEAT_BEAUTY_VICTORIA
 	setevent EVENT_BEAT_BEAUTY_SAMANTHA
 	setevent EVENT_BEAT_LASS_CATHY
@@ -88,10 +88,10 @@ GenericTrainerLassCathy:
 WhitneyCriesScript:
 	showemote EMOTE_SHOCK, GOLDENRODGYM_LASS2, 15
 	applymovement GOLDENRODGYM_LASS2, JoWalksUpMovement
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	showtext JoWhitneyCriesText
 	applymovement GOLDENRODGYM_LASS2, JoWalksAwayMovement
-	dotrigger $0
+	setscene $0
 	clearevent EVENT_MADE_WHITNEY_CRY
 	end
 
@@ -169,7 +169,7 @@ GoldenrodGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 10, .LyraToo
+	ifgreater 10, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

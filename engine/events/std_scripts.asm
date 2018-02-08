@@ -63,11 +63,11 @@ PokeCenterNurseScript:
 	opentext
 	checkevent EVENT_NURSE_SAW_FOUR_TRAINER_STARS
 	iftrue .four_star_center
-	checkmorn
+	checktime 1 << MORN
 	iftrue .morn
-	checkday
+	checktime 1 << DAY
 	iftrue .day
-	checknite
+	checktime 1 << NITE
 	iftrue .nite
 	jump .ok
 
@@ -115,7 +115,7 @@ PokeCenterNurseScript:
 
 .ok
 	checkcode VAR_TRAINER_STARS
-	if_not_equal 4, .ask_heal
+	ifnotequal 4, .ask_heal
 	farwritetext NurseFourTrainerStarsText
 	setevent EVENT_NURSE_SAW_FOUR_TRAINER_STARS
 	jump .answer_heal
@@ -134,7 +134,7 @@ PokeCenterNurseScript:
 .heal_pokemon
 	farwritetext NurseTakePokemonText
 	pause 20
-	spriteface LAST_TALKED, LEFT
+	objectface LAST_TALKED, LEFT
 	pause 10
 	special HealParty
 	special SaveMusic
@@ -143,7 +143,7 @@ PokeCenterNurseScript:
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic
-	spriteface LAST_TALKED, DOWN
+	objectface LAST_TALKED, DOWN
 	pause 10
 
 	checkphonecall ; elm already called about pokerus
@@ -160,9 +160,9 @@ PokeCenterNurseScript:
 .done
 	farwritetext NurseGoodbyeText
 
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	pause 10
-	spriteface LAST_TALKED, DOWN
+	objectface LAST_TALKED, DOWN
 	pause 10
 
 	waitendtext
@@ -225,7 +225,7 @@ WindowScript:
 
 TVScript:
 	checkcode VAR_FACING
-	if_not_equal UP, WrongSideScript
+	ifnotequal UP, WrongSideScript
 	farjumptext TVText
 
 WrongSideScript:
@@ -271,7 +271,7 @@ TrashCanScript: ; 0xbc1a5
 
 PCScript:
 	checkcode VAR_FACING
-	if_not_equal UP, WrongSideScript
+	ifnotequal UP, WrongSideScript
 	opentext
 	special PokemonCenterPC
 	endtext
@@ -296,12 +296,12 @@ MartSignScript
 
 DayToTextScript:
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .Monday
-	if_equal TUESDAY, .Tuesday
-	if_equal WEDNESDAY, .Wednesday
-	if_equal THURSDAY, .Thursday
-	if_equal FRIDAY, .Friday
-	if_equal SATURDAY, .Saturday
+	ifequal MONDAY, .Monday
+	ifequal TUESDAY, .Tuesday
+	ifequal WEDNESDAY, .Wednesday
+	ifequal THURSDAY, .Thursday
+	ifequal FRIDAY, .Friday
+	ifequal SATURDAY, .Saturday
 	stringtotext .SundayText, 0
 	end
 .Monday:
@@ -351,7 +351,7 @@ RadioTowerRocketsScript:
 	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_DRAGON_TAMER
 	specialphonecall SPECIALCALL_WEIRDBROADCAST
-	domaptrigger MAHOGANY_TOWN, $1
+	setmapscene MAHOGANY_TOWN, $1
 	end
 
 BugContestResultsWarpScript:
@@ -373,9 +373,9 @@ BugContestResultsScript:
 	waitbutton
 	special BugContestJudging
 	RAM2MEM $0
-	if_equal 1, .FirstPlace
-	if_equal 2, .SecondPlace
-	if_equal 3, .ThirdPlace
+	ifequal 1, .FirstPlace
+	ifequal 2, .SecondPlace
+	ifequal 3, .ThirdPlace
 	copybytetovar wBugContestOfficerPrize
 	itemtotext $0, $1
 	farwritetext ContestResults_ConsolationPrizeText
@@ -417,14 +417,14 @@ BugContestResultsScript:
 	special ContestReturnMons
 .DidNotLeaveMons
 	special CheckPartyFullAfterContest
-	if_equal $0, .CleanUp
-	if_equal $2, .CleanUp
+	ifequal $0, .CleanUp
+	ifequal $2, .CleanUp
 	farwritetext ContestResults_PartyFullText
 	waitbutton
 .CleanUp
 	closetext
-	dotrigger $0
-	domaptrigger ROUTE_35_NATIONAL_PARK_GATE, $0
+	setscene $0
+	setmapscene ROUTE_35_NATIONAL_PARK_GATE, $0
 	setevent EVENT_BUG_CATCHING_CONTESTANT_1A
 	setevent EVENT_BUG_CATCHING_CONTESTANT_2A
 	setevent EVENT_BUG_CATCHING_CONTESTANT_3A
@@ -694,26 +694,26 @@ InitializeEventsScript:
 AskNumber1MScript:
 	special RandomPhoneMon
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext JackAskNumber1Text
@@ -779,26 +779,26 @@ AskNumber1MScript:
 AskNumber2MScript:
 	special RandomPhoneMon
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext JackAskNumber2Text
@@ -870,26 +870,26 @@ RegisteredNumberMScript:
 
 NumberAcceptedMScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext JackNumberAcceptedText
@@ -973,26 +973,26 @@ NumberAcceptedMScript:
 
 NumberDeclinedMScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext JackNumberDeclinedText
@@ -1076,26 +1076,26 @@ NumberDeclinedMScript:
 
 PhoneFullMScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext JackPhoneFullText
@@ -1179,23 +1179,23 @@ PhoneFullMScript:
 
 RematchMScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext JackRematchText
@@ -1267,13 +1267,13 @@ RematchMScript:
 
 GiftMScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 
 .Jose:
 	farwritetext JoseGiftText
@@ -1306,17 +1306,17 @@ GiftMScript:
 
 PackFullMScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Huey:
 	farwritetext HueyPackFullText
@@ -1365,10 +1365,10 @@ PackFullMScript:
 RematchGiftMScript:
 	opentext
 	checkcode VAR_CALLERID
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Huey:
 	farwritetext HueyRematchGiftText
@@ -1389,14 +1389,14 @@ RematchGiftMScript:
 
 AskNumber1FScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext BeverlyAskNumber1Text
@@ -1425,14 +1425,14 @@ AskNumber1FScript:
 
 AskNumber2FScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext BeverlyAskNumber2Text
@@ -1468,14 +1468,14 @@ RegisteredNumberFScript:
 
 NumberAcceptedFScript: ; 0xbcbd3
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext BeverlyNumberAcceptedText
@@ -1511,14 +1511,14 @@ NumberAcceptedFScript: ; 0xbcbd3
 
 NumberDeclinedFScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext BeverlyNumberDeclinedText
@@ -1554,14 +1554,14 @@ NumberDeclinedFScript:
 
 PhoneFullFScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext BeverlyPhoneFullText
@@ -1597,13 +1597,13 @@ PhoneFullFScript:
 
 RematchFScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beth:
 	farwritetext BethRematchText
@@ -1635,10 +1635,10 @@ RematchFScript:
 
 GiftFScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 
 .Beverly:
 	farwritetext BeverlyGiftText
@@ -1659,11 +1659,11 @@ GiftFScript:
 
 PackFullFScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext BeverlyPackFullText
@@ -1687,7 +1687,7 @@ PackFullFScript:
 
 RematchGiftFScript:
 	checkcode VAR_CALLERID
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Erin:
 	opentext
@@ -1752,16 +1752,16 @@ CoinVendor_IntroScript: ; 0xbcde0
 	loadmenudata .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .Buy50
-	if_equal $2, .Buy500
+	ifequal $1, .Buy50
+	ifequal $2, .Buy500
 	jump .Cancel
 ; 0xbcdf7
 
 .Buy50: ; 0xbcdf7
 	checkcoins 49950
-	if_equal $0, .CoinCaseFull
+	ifequal $0, .CoinCaseFull
 	checkmoney $0, 1000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	givecoins 50
 	takemoney $0, 1000
 	waitsfx
@@ -1773,9 +1773,9 @@ CoinVendor_IntroScript: ; 0xbcde0
 
 .Buy500: ; 0xbce1b
 	checkcoins 49500
-	if_equal $0, .CoinCaseFull
+	ifequal $0, .CoinCaseFull
 	checkmoney $0, 10000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	givecoins 500
 	takemoney $0, 10000
 	waitsfx
@@ -1820,8 +1820,8 @@ HappinessCheckScript:
 	faceplayer
 	opentext
 	special GetFirstPokemonHappiness
-	if_less_than 50, .Unhappy
-	if_less_than 150, .KindaHappy
+	ifless 50, .Unhappy
+	ifless 150, .KindaHappy
 	farwritetext HappinessText3
 	waitendtext
 
@@ -1851,21 +1851,21 @@ VendingMachineScript:
 	loadmenudata .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .FreshWater
-	if_equal $2, .SodaPop
-	if_equal $3, .Lemonade
+	ifequal $1, .FreshWater
+	ifequal $2, .SodaPop
+	ifequal $3, .Lemonade
 	endtext
 
 .FreshWater:
 	checkmoney $0, 200
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem FRESH_WATER
 	iffalse .NotEnoughSpace
 	takemoney $0, 200
 	itemtotext FRESH_WATER, $0
 	scall .VendItem
 	random $20
-	if_not_equal $0, .Start
+	ifnotequal $0, .Start
 	giveitem FRESH_WATER
 	iffalse .Start
 	itemtotext FRESH_WATER, $0
@@ -1873,14 +1873,14 @@ VendingMachineScript:
 
 .SodaPop:
 	checkmoney $0, 300
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem SODA_POP
 	iffalse .NotEnoughSpace
 	takemoney $0, 300
 	itemtotext SODA_POP, $0
 	scall .VendItem
 	random $20
-	if_not_equal $0, .Start
+	ifnotequal $0, .Start
 	giveitem SODA_POP
 	iffalse .Start
 	itemtotext SODA_POP, $0
@@ -1888,14 +1888,14 @@ VendingMachineScript:
 
 .Lemonade:
 	checkmoney $0, 350
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem LEMONADE
 	iffalse .NotEnoughSpace
 	takemoney $0, 350
 	itemtotext LEMONADE, $0
 	scall .VendItem
 	random $20
-	if_not_equal $0, .Start
+	ifnotequal $0, .Start
 	giveitem LEMONADE
 	iffalse .Start
 	itemtotext LEMONADE, $0

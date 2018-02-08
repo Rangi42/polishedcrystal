@@ -44,7 +44,7 @@ Route36_MapScriptHeader:
 
 Route36ArthurCallback:
 	checkcode VAR_WEEKDAY
-	if_equal THURSDAY, .ArthurAppears
+	ifequal THURSDAY, .ArthurAppears
 	disappear ROUTE36_ARTHUR
 	return
 
@@ -56,14 +56,14 @@ Route36SuicuneScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	pause 15
 	playsound SFX_WARP_FROM
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	applymovement ROUTE36_SUICUNE, Route36SuicuneMovement
 	disappear ROUTE36_SUICUNE
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	pause 10
-	dotrigger $0
+	setscene $0
 	clearevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	domaptrigger CIANWOOD_CITY, $1
+	setmapscene CIANWOOD_CITY, $1
 	end
 
 SudowoodoScript:
@@ -90,7 +90,7 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO
-	if_equal $2, DidntCatchSudowoodo
+	ifequal $2, DidntCatchSudowoodo
 	disappear ROUTE36_WEIRD_TREE
 	reloadmapafterbattle
 	end
@@ -114,7 +114,7 @@ Route36FloriaScript:
 	closetext
 	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
 	checkcode VAR_FACING
-	if_equal UP, .Up
+	ifequal UP, .Up
 	applymovement ROUTE36_FLORIA, FloriaMovement1
 	disappear ROUTE36_FLORIA
 	end
@@ -173,8 +173,8 @@ TrainerSchoolboyAlan1:
 	callstd asknumber2m
 .ContinueAskForPhoneNumber:
 	askforphonenumber PHONE_SCHOOLBOY_ALAN
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext SCHOOLBOY, ALAN1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -183,11 +183,11 @@ TrainerSchoolboyAlan1:
 	callstd rematchm
 	winlosstext SchoolboyAlan1BeatenText, 0
 	copybytetovar wAlanFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -397,7 +397,7 @@ ArthurScript:
 	checkevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
 	iftrue .AlreadyGotStone
 	checkcode VAR_WEEKDAY
-	if_not_equal THURSDAY, ArthurNotThursdayScript
+	ifnotequal THURSDAY, ArthurNotThursdayScript
 	checkevent EVENT_MET_ARTHUR_OF_THURSDAY
 	iftrue .MetArthur
 	writetext MeetArthurText

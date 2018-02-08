@@ -66,8 +66,8 @@ TrainerLassDana1:
 	callstd asknumber2f
 .AskForPhoneNumber:
 	askforphonenumber PHONE_LASS_DANA
-	if_equal $1, .PhoneFull
-	if_equal $2, .DeclinedPhoneNumber
+	ifequal $1, .PhoneFull
+	ifequal $2, .DeclinedPhoneNumber
 	trainertotext LASS, DANA1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
@@ -76,11 +76,11 @@ TrainerLassDana1:
 	callstd rematchf
 	winlosstext LassDana1BeatenText, 0
 	copybytetovar wDanaFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -174,8 +174,8 @@ TrainerSchoolboyChad1:
 	callstd asknumber2m
 .AskToRegisterNumber:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
-	if_equal $1, .PhoneFull
-	if_equal $2, .SaidNo
+	ifequal $1, .PhoneFull
+	ifequal $2, .SaidNo
 	trainertotext SCHOOLBOY, CHAD1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -184,11 +184,11 @@ TrainerSchoolboyChad1:
 	callstd rematchm
 	winlosstext SchoolboyChad1BeatenText, 0
 	copybytetovar wChadFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4

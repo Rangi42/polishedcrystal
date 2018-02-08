@@ -23,11 +23,11 @@ TeacherScript_0x54953:
 	special GetFirstPokemonHappiness
 	writetext UnknownText_0x549a3
 	buttonsound
-	if_greater_than $f9, UnknownScript_0x54973
-	if_greater_than $c7, UnknownScript_0x54979
-	if_greater_than $95, UnknownScript_0x5497f
-	if_greater_than $63, UnknownScript_0x54985
-	if_greater_than $31, UnknownScript_0x5498b
+	ifgreater $f9, UnknownScript_0x54973
+	ifgreater $c7, UnknownScript_0x54979
+	ifgreater $95, UnknownScript_0x5497f
+	ifgreater $63, UnknownScript_0x54985
+	ifgreater $31, UnknownScript_0x5498b
 	thisopenedtext
 
 	text "It doesn't seem to"

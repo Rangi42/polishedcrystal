@@ -41,12 +41,12 @@ UnknownScript_0x62d3d:
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iffalse UnknownScript_0x62d62
 	showemote EMOTE_SHOCK, ROUTE34ILEXFORESTGATE_TEACHER2, 20
-	spriteface ROUTE34ILEXFORESTGATE_TEACHER2, LEFT
-	spriteface PLAYER, RIGHT
+	objectface ROUTE34ILEXFORESTGATE_TEACHER2, LEFT
+	objectface PLAYER, RIGHT
 	follow PLAYER, ROUTE34ILEXFORESTGATE_TEACHER2
 	applymovement PLAYER, MovementData_0x62d97
 	stopfollow
-	spriteface PLAYER, DOWN
+	objectface PLAYER, DOWN
 	showtext UnknownText_0x62e41
 	applymovement ROUTE34ILEXFORESTGATE_TEACHER2, MovementData_0x62d9a
 UnknownScript_0x62d62:

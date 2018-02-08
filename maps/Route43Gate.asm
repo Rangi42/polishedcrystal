@@ -30,23 +30,23 @@ Route43GateTrigger0:
 UnknownScript_0x19abda:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	checkcode VAR_FACING
-	if_equal DOWN, UnknownScript_0x19abea
-	if_equal UP, UnknownScript_0x19ac38
-	dotrigger $1
+	ifequal DOWN, UnknownScript_0x19abea
+	ifequal UP, UnknownScript_0x19ac38
+	setscene $1
 	end
 
 UnknownScript_0x19abea:
 	applyonemovement PLAYER, step_down
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acbb
-	spriteface ROUTE43GATE_ROCKET1, UP
+	objectface ROUTE43GATE_ROCKET1, UP
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET1, 15
 	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19aca4
 	opentext
 	writetext UnknownText_0x19acd2
 	buttonsound
 	checkmoney $0, 999
-	if_equal $0, UnknownScript_0x19ac12
+	ifequal $0, UnknownScript_0x19ac12
 	jump UnknownScript_0x19ac1d
 
 UnknownScript_0x19ac12:
@@ -64,21 +64,21 @@ UnknownScript_0x19ac28:
 	closetext
 	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acaa
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acc1
-	dotrigger $1
+	setscene $1
 	special RestartMapMusic
 	end
 
 UnknownScript_0x19ac38:
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET1, 15
 	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acaf
-	spriteface ROUTE43GATE_ROCKET2, DOWN
+	objectface ROUTE43GATE_ROCKET2, DOWN
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acc7
 	opentext
 	writetext UnknownText_0x19acd2
 	buttonsound
 	checkmoney $0, 999
-	if_equal $0, UnknownScript_0x19ac5c
+	ifequal $0, UnknownScript_0x19ac5c
 	jump UnknownScript_0x19ac67
 
 UnknownScript_0x19ac5c:
@@ -96,7 +96,7 @@ UnknownScript_0x19ac72:
 	closetext
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19accd
 	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acb5
-	dotrigger $1
+	setscene $1
 	special RestartMapMusic
 	end
 

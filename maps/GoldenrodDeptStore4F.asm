@@ -21,7 +21,7 @@ GoldenrodDeptStore4F_MapScriptHeader:
 
 GameboyKidScript_0x55ef7:
 	showtextfaceplayer UnknownText_0x55f74
-	spriteface LAST_TALKED, DOWN
+	objectface LAST_TALKED, DOWN
 	end
 
 UnknownText_0x55f08:

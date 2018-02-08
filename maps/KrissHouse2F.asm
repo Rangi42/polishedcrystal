@@ -208,7 +208,7 @@ if DEF(DEBUG)
 	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
-	domaptrigger KRISS_HOUSE_1F, $1
+	setmapscene KRISS_HOUSE_1F, $1
 	setevent EVENT_KRISS_HOUSE_MOM_1
 	clearevent EVENT_KRISS_HOUSE_MOM_2
 ;	; prof.elm events
@@ -219,8 +219,8 @@ if DEF(DEBUG)
 ;	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 ;	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 ;	setevent EVENT_LYRA_IN_ELMS_LAB
-;	domaptrigger ELMS_LAB, $5
-;	domaptrigger NEW_BARK_TOWN, $2
+;	setmapscene ELMS_LAB, $5
+;	setmapscene NEW_BARK_TOWN, $2
 	closetext
 	end
 

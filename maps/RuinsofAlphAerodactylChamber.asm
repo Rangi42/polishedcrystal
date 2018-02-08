@@ -54,7 +54,7 @@ UnknownScript_0x58dd3:
 	changeblock 4, 0, $25
 	reloadmappart
 	earthquake 50
-	dotrigger $1
+	setscene $1
 	endtext
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
@@ -69,7 +69,7 @@ UnknownScript_0x58df7:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_3
-	domaptrigger RUINS_OF_ALPH_INNER_CHAMBER, $1
+	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
 	changeblock 2, 2, $14

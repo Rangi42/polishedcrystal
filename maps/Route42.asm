@@ -45,7 +45,7 @@ Route42_MapScriptHeader:
 	const ROUTE42_LYRA
 
 Route42LyraScript1:
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -58,7 +58,7 @@ Route42LyraScript1:
 	jump Route42LyraScript
 
 Route42LyraScript2:
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -71,7 +71,7 @@ Route42LyraScript2:
 	jump Route42LyraScript
 
 Route42LyraScript3:
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -84,7 +84,7 @@ Route42LyraScript3:
 	jump Route42LyraScript
 
 Route42LyraScript4:
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -95,7 +95,7 @@ Route42LyraScript4:
 	jump Route42LyraScript
 
 Route42LyraScript5:
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -144,10 +144,10 @@ Route42LyraScript:
 	disappear ROUTE42_LYRA
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	iftrue .NoSuicune
-	dotrigger $2
+	setscene $2
 	jump .Finish
 .NoSuicune
-	dotrigger $0
+	setscene $0
 .Finish
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -161,9 +161,9 @@ Route42SuicuneScript:
 	applymovement ROUTE42_SUICUNE, MovementData_0x1a9356
 	disappear ROUTE42_SUICUNE
 	pause 10
-	dotrigger $0
+	setscene $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	domaptrigger ROUTE_36, $1
+	setmapscene ROUTE_36, $1
 	end
 
 TrainerFisherTully1:
@@ -190,8 +190,8 @@ UnknownScript_0x1a9268:
 	scall UnknownScript_0x1a92f5
 UnknownScript_0x1a926b:
 	askforphonenumber PHONE_FISHER_TULLY
-	if_equal $1, UnknownScript_0x1a9305
-	if_equal $2, UnknownScript_0x1a9301
+	ifequal $1, UnknownScript_0x1a9305
+	ifequal $2, UnknownScript_0x1a9301
 	trainertotext FISHER, TULLY1, $0
 	scall UnknownScript_0x1a92f9
 	jump UnknownScript_0x1a92fd
@@ -200,10 +200,10 @@ UnknownScript_0x1a927f:
 	scall UnknownScript_0x1a9309
 	winlosstext FisherTully1BeatenText, 0
 	copybytetovar wTullyFightCount
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight3:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight3

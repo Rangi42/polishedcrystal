@@ -46,19 +46,19 @@ CherrygroveCityGuideGent:
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement1
 	showtext GuideGentPokeCenterText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement2
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showtext GuideGentMartText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement3
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showtext GuideGentRoute30Text
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement4
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	showtext GuideGentSeaText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement5
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	pause 60
-	spriteface CHERRYGROVECITY_GRAMPS, LEFT
-	spriteface PLAYER, RIGHT
+	objectface CHERRYGROVECITY_GRAMPS, LEFT
+	objectface PLAYER, RIGHT
 	opentext
 	writetext GuideGentGiftText
 	buttonsound
@@ -72,12 +72,12 @@ CherrygroveCityGuideGent:
 	closetext
 	stopfollow
 	special RestartMapMusic
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement6
 	playsound SFX_ENTER_DOOR
 	disappear CHERRYGROVECITY_GRAMPS
 	clearevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	dotrigger $2
+	setscene $2
 	waitsfx
 	end
 
@@ -85,15 +85,15 @@ CherrygroveCityGuideGent:
 	db "Map Card@"
 
 CherrygroveSilverTriggerSouth:
-	moveperson CHERRYGROVECITY_SILVER, 39, 7
+	moveobject CHERRYGROVECITY_SILVER, 39, 7
 CherrygroveSilverTriggerNorth:
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	appear CHERRYGROVECITY_SILVER
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalWalksToYou
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UnknownText_0x19c4e2
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
@@ -141,13 +141,13 @@ CherrygroveSilverTriggerNorth:
 	showtext CherrygroveRivalTextAfter2
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	special HealPartyEvenForNuzlocke
-	dotrigger $2
+	setscene $2
 	playmusic MUSIC_CHERRYGROVE_CITY
 	end
 

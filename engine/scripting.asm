@@ -66,21 +66,21 @@ ScriptCommandTable:
 	dw Script_jump                       ; 03
 	dw Script_farjump                    ; 04
 	dw Script_ptjump                     ; 05
-	dw Script_if_equal                   ; 06
-	dw Script_if_not_equal               ; 07
+	dw Script_ifequal                    ; 06
+	dw Script_ifnotequal                 ; 07
 	dw Script_iffalse                    ; 08
 	dw Script_iftrue                     ; 09
-	dw Script_if_greater_than            ; 0a
-	dw Script_if_less_than               ; 0b
+	dw Script_ifgreater                  ; 0a
+	dw Script_ifless                     ; 0b
 	dw Script_jumpstd                    ; 0c
 	dw Script_callstd                    ; 0d
 	dw Script_callasm                    ; 0e
 	dw Script_special                    ; 0f
 	dw Script_ptcallasm                  ; 10
-	dw Script_checkmaptriggers           ; 11
-	dw Script_domaptrigger               ; 12
-	dw Script_checktriggers              ; 13
-	dw Script_dotrigger                  ; 14
+	dw Script_checkmapscene              ; 11
+	dw Script_setmapscene                ; 12
+	dw Script_checkscene                 ; 13
+	dw Script_setscene                   ; 14
 	dw Script_writebyte                  ; 15
 	dw Script_addvar                     ; 16
 	dw Script_random                     ; 17
@@ -129,7 +129,7 @@ ScriptCommandTable:
 	dw Script_stringtotext               ; 42
 	dw Script_itemnotify                 ; 43
 	dw Script_pocketisfull               ; 44
-	dw Script_opentext                    ; 45
+	dw Script_opentext                   ; 45
 	dw Script_refreshscreen              ; 46
 	dw Script_closetext                  ; 47
 	dw Script_farwritetext               ; 48
@@ -164,17 +164,17 @@ ScriptCommandTable:
 	dw Script_applymovement              ; 65
 	dw Script_applymovement2             ; 66
 	dw Script_faceplayer                 ; 67
-	dw Script_faceperson                 ; 68
+	dw Script_faceobject                 ; 68
 	dw Script_variablesprite             ; 69
 	dw Script_disappear                  ; 6a
 	dw Script_appear                     ; 6b
 	dw Script_follow                     ; 6c
 	dw Script_stopfollow                 ; 6d
-	dw Script_moveperson                 ; 6e
+	dw Script_moveobject                 ; 6e
 	dw Script_writepersonxy              ; 6f
 	dw Script_loademote                  ; 70
 	dw Script_showemote                  ; 71
-	dw Script_spriteface                 ; 72
+	dw Script_objectface                 ; 72
 	dw Script_follownotexact             ; 73
 	dw Script_earthquake                 ; 74
 	dw Script_changemap                  ; 75
@@ -203,7 +203,7 @@ ScriptCommandTable:
 	dw Script_return                     ; 8c
 	dw Script_end                        ; 8d
 	dw Script_reloadandreturn            ; 8e
-	dw Script_end_all                    ; 8f
+	dw Script_endall                     ; 8f
 	dw Script_pokemart                   ; 90
 	dw Script_elevator                   ; 91
 	dw Script_trade                      ; 92
@@ -1074,7 +1074,7 @@ Script_faceplayer:
 	ld d, a
 	jr ApplyPersonFacing
 
-Script_faceperson:
+Script_faceobject:
 ; parameters:
 ;     person1 (SingleByteParam)
 ;     person2 (SingleByteParam)
@@ -1101,7 +1101,7 @@ Script_faceperson:
 	ld d, c
 	jr ApplyPersonFacing
 
-Script_spriteface:
+Script_objectface:
 ; parameters:
 ;     person (SingleByteParam)
 ;     facing (SingleByteParam)
@@ -1229,7 +1229,7 @@ Script_follow:
 Script_stopfollow:
 	farjp StopFollow
 
-Script_moveperson:
+Script_moveobject:
 ; parameters:
 ;     person (SingleByteParam)
 ;     x (SingleByteParam)
@@ -1570,7 +1570,7 @@ Script_iftrue:
 	jp nz, Script_jump
 	jp SkipTwoScriptBytes
 
-Script_if_equal:
+Script_ifequal:
 ; parameters:
 ;     byte (SingleByteParam)
 ;     pointer (ScriptPointerLabelParam)
@@ -1580,7 +1580,7 @@ Script_if_equal:
 	jr z, Script_jump
 	jr SkipTwoScriptBytes
 
-Script_if_not_equal:
+Script_ifnotequal:
 ; parameters:
 ;     byte (SingleByteParam)
 ;     pointer (ScriptPointerLabelParam)
@@ -1590,7 +1590,7 @@ Script_if_not_equal:
 	jr nz, Script_jump
 	jr SkipTwoScriptBytes
 
-Script_if_greater_than:
+Script_ifgreater:
 ; parameters:
 ;     byte (SingleByteParam)
 ;     pointer (ScriptPointerLabelParam)
@@ -1601,7 +1601,7 @@ Script_if_greater_than:
 	jr c, Script_jump
 	jr SkipTwoScriptBytes
 
-Script_if_less_than:
+Script_ifless:
 ; parameters:
 ;     byte (SingleByteParam)
 ;     pointer (ScriptPointerLabelParam)
@@ -1667,7 +1667,7 @@ Script_priorityjump:
 	set 3, [hl]
 	ret
 
-Script_checktriggers:
+Script_checkscene:
 	call CheckTriggers
 	jr z, .no_triggers
 	ld [ScriptVar], a
@@ -1678,7 +1678,7 @@ Script_checktriggers:
 	ld [ScriptVar], a
 	ret
 
-Script_checkmaptriggers:
+Script_checkmapscene:
 ; parameters:
 ;     map_group (SingleByteParam)
 ;     map_id (SingleByteParam)
@@ -1699,7 +1699,7 @@ Script_checkmaptriggers:
 	ld [ScriptVar], a
 	ret
 
-Script_dotrigger:
+Script_setscene:
 ; parameters:
 ;     trigger_id (SingleByteParam)
 	ld a, [MapGroup]
@@ -1708,7 +1708,7 @@ Script_dotrigger:
 	ld c, a
 	jr DoTrigger
 
-Script_domaptrigger:
+Script_setmapscene:
 ; parameters:
 ;     map_group (MapGroupParam)
 ;     map_id (MapIdParam)
@@ -2687,7 +2687,7 @@ ExitScriptSubroutine:
 	scf
 	ret
 
-Script_end_all:
+Script_endall:
 	xor a
 	ld [wScriptStackSize], a
 	ld [ScriptRunning], a
@@ -2708,7 +2708,7 @@ Script_halloffame:
 Script_credits:
 	farcall LeafCredits
 ReturnFromCredits:
-	call Script_end_all
+	call Script_endall
 	ld a, $3
 	call LoadMapStatus
 	jp StopScript

@@ -42,18 +42,18 @@ Route29Tuscany:
 
 .DoesTuscanyAppear:
 	checkcode VAR_WEEKDAY
-	if_not_equal TUESDAY, .TuscanyDisappears
+	ifnotequal TUESDAY, .TuscanyDisappears
 	appear ROUTE29_TUSCANY
 	return
 
 Route29Tutorial1:
-	spriteface ROUTE29_LYRA, UP
+	objectface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData1a
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	opentext
 	writetext CatchingTutorialIntroText
 	yesorno
@@ -64,13 +64,13 @@ Route29Tutorial1:
 	jump Route29TutorialScript
 
 Route29Tutorial2:
-	spriteface ROUTE29_LYRA, UP
+	objectface ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData2a
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	opentext
 	writetext CatchingTutorialIntroText
 	yesorno
@@ -84,7 +84,7 @@ Route29TutorialScript:
 	catchtutorial BATTLETYPE_TUTORIAL
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	spriteface ROUTE29_LYRA, UP
+	objectface ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
 Route29FinishTutorial:
@@ -98,7 +98,7 @@ Route29FinishTutorial:
 	closetext
 	applymovement ROUTE29_LYRA, LyraMovementData3
 	disappear ROUTE29_LYRA
-	dotrigger $0
+	setscene $0
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
@@ -111,7 +111,7 @@ Route29RefusedTutorial:
 	jump Route29FinishTutorial
 
 CooltrainerMScript_0x1a1031:
-	checknite
+	checktime 1 << NITE
 	iftrue_jumptextfaceplayer Text_WaitingForMorning
 	jumptextfaceplayer Text_WaitingForNight
 
@@ -121,7 +121,7 @@ TuscanyScript:
 	faceplayer
 	opentext
 	checkcode VAR_WEEKDAY
-	if_not_equal TUESDAY, TuscanyNotTuesdayScript
+	ifnotequal TUESDAY, TuscanyNotTuesdayScript
 	checkevent EVENT_MET_TUSCANY_OF_TUESDAY
 	iftrue .MetTuscany
 	writetext MeetTuscanyText

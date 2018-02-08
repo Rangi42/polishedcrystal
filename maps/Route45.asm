@@ -173,18 +173,18 @@ UnknownScript_0x19e0cd:
 	scall UnknownScript_0x19e11f
 UnknownScript_0x19e0d0:
 	askforphonenumber PHONE_BLACKBELT_KENJI
-	if_equal $1, UnknownScript_0x19e12f
-	if_equal $2, UnknownScript_0x19e12b
+	ifequal $1, UnknownScript_0x19e12f
+	ifequal $2, UnknownScript_0x19e12b
 	trainertotext BLACKBELT_T, KENJI1, $0
 	scall UnknownScript_0x19e123
 	jump UnknownScript_0x19e127
 
 UnknownScript_0x19e0e4:
 	checkcode VAR_KENJI_BREAK
-	if_not_equal $1, UnknownScript_0x19e127
-	checkmorn
+	ifnotequal $1, UnknownScript_0x19e127
+	checktime 1 << MORN
 	iftrue UnknownScript_0x19e10c
-	checknite
+	checktime 1 << NITE
 	iftrue UnknownScript_0x19e112
 	checkevent EVENT_KENJI_ON_BREAK
 	iffalse UnknownScript_0x19e127
@@ -283,8 +283,8 @@ UnknownScript_0x19e1a1:
 	scall UnknownScript_0x19e11f
 UnknownScript_0x19e1a4:
 	askforphonenumber PHONE_HIKER_PARRY
-	if_equal $1, UnknownScript_0x19e12f
-	if_equal $2, UnknownScript_0x19e12b
+	ifequal $1, UnknownScript_0x19e12f
+	ifequal $2, UnknownScript_0x19e12b
 	trainertotext HIKER, PARRY1, $0
 	scall UnknownScript_0x19e123
 	jump UnknownScript_0x19e127
@@ -293,9 +293,9 @@ UnknownScript_0x19e1b8:
 	scall UnknownScript_0x19e133
 	winlosstext HikerParry1BeatenText, 0
 	copybytetovar wParryFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2

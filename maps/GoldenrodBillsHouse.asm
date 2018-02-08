@@ -55,7 +55,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal SNUBBULL, .WrongPokemon
+	ifnotequal SNUBBULL, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_SNUBBULL_TO_BILLS_GRANDPA
 	jump .ShowedSnubbull
@@ -69,7 +69,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal BELLSPROUT, .WrongPokemon
+	ifnotequal BELLSPROUT, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_BELLSPROUT_TO_BILLS_GRANDPA
 	jump .ShowedBellsprout
@@ -83,7 +83,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal STARYU, .WrongPokemon
+	ifnotequal STARYU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
 	jump .ShowedStaryu
@@ -97,7 +97,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal GROWLITHE, .WrongPokemon
+	ifnotequal GROWLITHE, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
 	jump .ShowedGrowlithe
@@ -111,7 +111,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal PICHU, .WrongPokemon
+	ifnotequal PICHU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
 	jump .ShowedPichu
@@ -125,7 +125,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal JIGGLYPUFF, .WrongPokemon
+	ifnotequal JIGGLYPUFF, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_JIGGLYPUFF_TO_BILLS_GRANDPA
 	jump .ShowedJigglypuff
@@ -139,7 +139,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal ODDISH, .WrongPokemon
+	ifnotequal ODDISH, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
 	jump .ShowedOddish
@@ -153,7 +153,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal MURKROW, .WrongPokemon
+	ifnotequal MURKROW, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_MURKROW_TO_BILLS_GRANDPA
 	jump .ShowedMurkrow
@@ -167,7 +167,7 @@ GrampsScript_0x189538:
 	scall .ExcitedToSee
 	special Special_BillsGrandfather
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
-	if_not_equal TOGEPI, .WrongPokemon
+	ifnotequal TOGEPI, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
 	jump .ShowedTogepi
@@ -296,8 +296,8 @@ BillsSister:
 	iftrue UnknownScript_0x54c58
 	writetext UnknownText_0x54f9e
 	askforphonenumber PHONE_BILL
-	if_equal $1, UnknownScript_0x54c64
-	if_equal $2, UnknownScript_0x54c5e
+	ifequal $1, UnknownScript_0x54c64
+	ifequal $2, UnknownScript_0x54c5e
 	waitsfx
 	addcellnum PHONE_BILL
 	writetext UnknownText_0x54fd9

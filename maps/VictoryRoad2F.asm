@@ -29,7 +29,7 @@ VictoryRoad2F_MapScriptHeader:
 
 UnknownScript_0x74492:
 	showemote EMOTE_SHOCK, PLAYER, 15
-	spriteface PLAYER, LEFT
+	objectface PLAYER, LEFT
 	special Special_FadeOutMusic
 	pause 15
 	appear VICTORYROAD2F_SILVER
@@ -73,7 +73,7 @@ UnknownScript_0x7451f:
 	showtext UnknownText_0x746ce
 	applymovement VICTORYROAD2F_SILVER, MovementData_0x7454c
 	disappear VICTORYROAD2F_SILVER
-	dotrigger $1
+	setscene $1
 	playmapmusic
 	end
 

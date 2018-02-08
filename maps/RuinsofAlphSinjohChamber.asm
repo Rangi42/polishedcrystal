@@ -35,36 +35,36 @@ RuinsofAlphSinjohChamberSignpost:
 	pause 30
 	playsound SFX_INTRO_UNOWN_3
 	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_W
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, LEFT
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, LEFT
 	waitsfx
 	pause 7
 	playsound SFX_INTRO_UNOWN_2
 	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_A
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, LEFT
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, LEFT
 	waitsfx
 	pause 7
 	playsound SFX_INTRO_UNOWN_1
 	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_R
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, LEFT
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, LEFT
 	waitsfx
 	pause 7
 	playsound SFX_INTRO_UNOWN_2
 	appear RUINSOFALPHSINJOHCHAMBER_UNOWN_P
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, LEFT
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, LEFT
 	waitsfx
 	pause 7
 	; Call assembly so the fourth sound will play
 	callasm .PlayUnownSound3 ; playsound SFX_INTRO_UNOWN_3
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, UP
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_W, UP
 	pause 10
 	callasm .PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, UP
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_A, UP
 	pause 10
 	callasm .PlayUnownSound1 ; playsound SFX_INTRO_UNOWN_1
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, UP
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_R, UP
 	pause 10
 	callasm .PlayUnownSound2 ; playsound SFX_INTRO_UNOWN_2
-	spriteface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, UP
+	objectface RUINSOFALPHSINJOHCHAMBER_UNOWN_P, UP
 	waitsfx
 	pause 30
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -78,7 +78,7 @@ RuinsofAlphSinjohChamberSignpost:
 	disappear RUINSOFALPHSINJOHCHAMBER_UNOWN_P
 	checkevent EVENT_LISTENED_TO_CYNTHIA_INTRO
 	iftrue .HeardIntro
-	domaptrigger MYSTRI_STAGE, $1
+	setmapscene MYSTRI_STAGE, $1
 	setevent EVENT_MYSTRI_STAGE_CYNTHIA
 	setevent EVENT_MYSTRI_STAGE_EGG
 .HeardIntro

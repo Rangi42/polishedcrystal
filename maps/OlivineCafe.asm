@@ -63,7 +63,7 @@ OlivineCafeLyraScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	if_not_equal UP, .GoStraightDown
+	ifnotequal UP, .GoStraightDown
 	applyonemovement OLIVINECAFE_LYRA, step_right
 .GoStraightDown
 	applymovement OLIVINECAFE_LYRA, OlivineCafeMovementData_LyraLeaves

@@ -41,7 +41,7 @@ MountMortarB1FTutorDefenseCurlScript:
 	writebyte DEFENSE_CURL
 	writetext Text_MountMortarB1FTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_MountMortarB1FTutorRefused
 
@@ -70,7 +70,7 @@ UnknownScript_0x7e217:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, UnknownScript_0x7e237
+	ifequal $6, UnknownScript_0x7e237
 	writetext UnknownText_0x7e355
 	playsound SFX_CAUGHT_MON
 	waitsfx

@@ -91,12 +91,12 @@ GoldenrodCityMoveTutorAndRocketScoutAndGymLass:
 ; Rocket scout
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	iftrue .RocketScoutDone
-	moveperson GOLDENRODCITY_ROCKET1, 29, 17
+	moveobject GOLDENRODCITY_ROCKET1, 29, 17
 .RocketScoutDone
 ; Gym Lass
 	checkevent EVENT_GOLDENROD_GYM_WHITNEY
 	iffalse .GymLassDone
-	moveperson GOLDENRODCITY_LASS2, 38, 24
+	moveobject GOLDENRODCITY_LASS2, 38, 24
 .GymLassDone
 	return
 
@@ -106,12 +106,12 @@ GoldenrodCityTrigger0:
 
 GoldenrodCityStepDownScript:
 	checkcode VAR_YCOORD
-	if_not_equal $f, .Done
+	ifnotequal $f, .Done
 	checkcode VAR_XCOORD
-	if_not_equal $9, .Done
+	ifnotequal $9, .Done
 	applyonemovement PLAYER, step_down
 .Done
-	dotrigger $1
+	setscene $1
 	end
 
 GoldenrodCityPanUpScript:
@@ -124,7 +124,7 @@ GoldenrodCityPanUpScript:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	dotrigger $0
+	setscene $0
 	warpfacing UP, RADIO_TOWER_1F, 2, 7
 	end
 
@@ -139,35 +139,35 @@ MoveTutor:
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x199107
 	checkcoins 200
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	writetext UnknownText_0x1990ce
 	loadmenudata .MoveMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .FirePunch
-	if_equal $2, .ThunderPunch
-	if_equal $3, .IcePunch
+	ifequal $1, .FirePunch
+	ifequal $2, .ThunderPunch
+	ifequal $3, .IcePunch
 	jumpopenedtext UnknownText_0x1991a4
 
 .FirePunch:
 	writebyte FIRE_PUNCH
 	writetext UnknownText_0x1991cf
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 	jumpopenedtext UnknownText_0x1991a4
 
 .ThunderPunch:
 	writebyte THUNDERPUNCH
 	writetext UnknownText_0x1991cf
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 	jumpopenedtext UnknownText_0x1991a4
 
 .IcePunch:
 	writebyte ICE_PUNCH
 	writetext UnknownText_0x1991cf
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 	jumpopenedtext UnknownText_0x1991a4
 
 .MoveMenuDataHeader:
@@ -212,7 +212,7 @@ CooltrainerFScript_0x1989fd:
 YoungsterScript_0x198a11:
 	faceplayer
 	opentext
-	checknite
+	checktime 1 << NITE
 	iftrue .nite
 	jumpopenedtext GoldenrodCityYoungsterDayText
 
@@ -232,7 +232,7 @@ RocketScript_0x198a1a:
 	writetext UnknownText_0x198d2a
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 GoldenrodCityGymLassScript:

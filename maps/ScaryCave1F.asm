@@ -151,7 +151,7 @@ ScaryCave1FPharmacistScript:
 	writebyte SUCKER_PUNCH
 	writetext .ClearText
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	thisopenedtext
 

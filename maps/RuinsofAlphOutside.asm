@@ -58,7 +58,7 @@ RuinsofAlphOutsideTrigger0:
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
 	stopfollow
 	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
-	spriteface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
+	objectface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
 	showtext RuinsofAlphScientistClimax2Text
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
@@ -84,22 +84,22 @@ UnknownScript_0x5800f:
 
 UnknownScript_0x5801e:
 	checkcode VAR_UNOWNCOUNT
-	if_greater_than $0, UnknownScript_0x58027
+	ifgreater $0, UnknownScript_0x58027
 	jump UnknownScript_0x5802c
 
 UnknownScript_0x58027:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1
-	dotrigger $1
+	setscene $1
 	return
 
 UnknownScript_0x5802c:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
-	dotrigger $0
+	setscene $0
 	return
 
 UnknownScript_0x58031:
-	faceperson RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
-	faceperson PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
+	faceobject RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
+	faceobject PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
 ScientistScript_0x58043:
 	showtext UnknownText_0x580c7
 	playmusic MUSIC_SHOW_ME_AROUND
@@ -108,7 +108,7 @@ ScientistScript_0x58043:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	stopfollow
 	applyonemovement PLAYER, step_up
-	domaptrigger RUINS_OF_ALPH_RESEARCH_CENTER, $1
+	setmapscene RUINS_OF_ALPH_RESEARCH_CENTER, $1
 	warpcheck
 	end
 
@@ -135,7 +135,7 @@ YoungsterScript_0x58076:
 
 YoungsterScript_0x5807e:
 	showtextfaceplayer UnknownText_0x5848e
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 GenericTrainerPsychicNathan:

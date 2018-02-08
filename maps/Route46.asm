@@ -42,7 +42,7 @@ Route46TutorRoute46Script:
 	writebyte ROLLOUT
 	writetext Text_Route46TutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route46TutorRefused
 
@@ -85,8 +85,8 @@ UnknownScript_0x1a96c3:
 	scall UnknownScript_0x1a9753
 UnknownScript_0x1a96c6:
 	askforphonenumber PHONE_PICNICKER_ERIN
-	if_equal $1, UnknownScript_0x1a9763
-	if_equal $2, UnknownScript_0x1a975f
+	ifequal $1, UnknownScript_0x1a9763
+	ifequal $2, UnknownScript_0x1a975f
 	trainertotext PICNICKER, ERIN1, $0
 	scall UnknownScript_0x1a9757
 	jump UnknownScript_0x1a975b
@@ -95,9 +95,9 @@ UnknownScript_0x1a96da:
 	scall UnknownScript_0x1a9767
 	winlosstext PicnickerErin1BeatenText, 0
 	copybytetovar wErinFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2

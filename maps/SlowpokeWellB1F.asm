@@ -62,13 +62,13 @@ Proton2Script:
 	pause 15
 	special Special_FadeInQuickly
 	disappear SLOWPOKEWELLB1F_KURT
-	moveperson SLOWPOKEWELLB1F_KURT, 11, 6
+	moveobject SLOWPOKEWELLB1F_KURT, 11, 6
 	appear SLOWPOKEWELLB1F_KURT
 	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	showtext KurtLeaveSlowpokeWellText
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
-	domaptrigger ILEX_FOREST, $2
+	setmapscene ILEX_FOREST, $2
 	clearevent EVENT_ILEX_FOREST_APPRENTICE
 	clearevent EVENT_ILEX_FOREST_FARFETCHD
 	setevent EVENT_CHARCOAL_KILN_FARFETCH_D

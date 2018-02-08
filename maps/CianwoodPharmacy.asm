@@ -35,12 +35,12 @@ CianwoodPharmacist:
 	writetext PharmacistDescribeSecretpotionText
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 .Mart:
 	scall .PokeMart
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 .PokeMart:

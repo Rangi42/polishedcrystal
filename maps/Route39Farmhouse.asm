@@ -36,13 +36,13 @@ UnknownScript_0x9cec5:
 	loadmenudata .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .Buy1
-	if_equal $2, .Buy12
+	ifequal $1, .Buy1
+	ifequal $2, .Buy12
 	jump .Cancel
 
 .Buy1:
 	checkmoney $0, 500
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK
 	iffalse .BagFull
 	takemoney $0, 500
@@ -50,7 +50,7 @@ UnknownScript_0x9cec5:
 
 .Buy12:
 	checkmoney $0, 6000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem MOOMOO_MILK, 12
 	iffalse .BagFull
 	takemoney $0, 6000

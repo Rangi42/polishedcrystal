@@ -98,7 +98,7 @@ Route4TutorIronHeadScript:
 	writebyte IRON_HEAD
 	writetext Text_Route4TutorsClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route4Tutor1Refused
 
@@ -128,7 +128,7 @@ Route4TutorAquaTailScript:
 	writebyte AQUA_TAIL
 	writetext Text_Route4TutorsClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route4Tutor2Refused
 
@@ -142,7 +142,7 @@ Route4TutorAquaTailScript:
 Route4EngineerScript:
 	showtext Route4EngineerText1
 	showtextfaceplayer Route4EngineerText2
-	spriteface LAST_TALKED, UP
+	objectface LAST_TALKED, UP
 	end
 
 YoungsterOliverSeenText:

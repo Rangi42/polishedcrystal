@@ -39,7 +39,7 @@ UnknownScript_0x190013:
 	follow PLAYER, MAHOGANYTOWN_POKEFAN_M
 	applyonemovement PLAYER, step_left
 	stopfollow
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	scall UnknownScript_0x19002f
 	applymovement MAHOGANYTOWN_POKEFAN_M, MovementData_0x1900ad
 	end
@@ -55,7 +55,7 @@ UnknownScript_0x19002f:
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x190178
 	checkmoney $0, 300
-	if_equal $2, UnknownScript_0x19006c
+	ifequal $2, UnknownScript_0x19006c
 	giveitem RAGECANDYBAR
 	iffalse_jumpopenedtext UnknownText_0x190188
 	waitsfx

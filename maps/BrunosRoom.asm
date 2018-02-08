@@ -30,7 +30,7 @@ BrunosRoomEntranceTrigger:
 	changeblock 4, 14, $2a
 	reloadmappart
 	closetext
-	dotrigger $1
+	setscene $1
 	setevent EVENT_BRUNOS_ROOM_ENTRANCE_CLOSED
 	waitsfx
 	end
@@ -48,7 +48,7 @@ BrunosRoomDoorCallback:
 
 BrunoScript:
 	checkcode VAR_BADGES
-	if_equal 16, .Rematch
+	ifequal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue_jumptextfaceplayer .AfterText
 	showtextfaceplayer .SeenText

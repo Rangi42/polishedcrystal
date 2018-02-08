@@ -68,7 +68,7 @@ ViridianCityTutorDreamEaterScript:
 	writebyte DREAM_EATER
 	writetext Text_ViridianCityTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_ViridianCityTutorRefused
 

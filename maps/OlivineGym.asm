@@ -38,7 +38,7 @@ JasmineScript_0x9c12f:
 	waitsfx
 	setflag ENGINE_MINERALBADGE
 	callstd goldenrodrockets
-	domaptrigger ROUTE_42, $1
+	setmapscene ROUTE_42, $1
 	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_POKEFAN_M
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
@@ -145,7 +145,7 @@ OlivineGymStatue:
 	jumpstd gymstatue1
 .Beaten
 	checkcode VAR_BADGES
-	if_greater_than 13, .LyraToo
+	ifgreater 13, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

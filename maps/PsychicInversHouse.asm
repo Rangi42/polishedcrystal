@@ -40,11 +40,11 @@ PsychicInverScript:
 	reloadmapafterbattle
 	opentext
 	copybytetovar InverseBattleScore
-	if_equal 0, .Score0
-	if_greater_than 127, .Score0 ; negative
-	if_less_than 4, .Score1_3
-	if_less_than 7, .Score4_6
-	if_less_than 10, .Score7_9
+	ifequal 0, .Score0
+	ifgreater 127, .Score0 ; negative
+	ifless 4, .Score1_3
+	ifless 7, .Score4_6
+	ifless 10, .Score7_9
 	writetext InverseBattle10PointRewardText
 	writebyte RARE_CANDY
 .Reward

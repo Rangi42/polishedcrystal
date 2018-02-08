@@ -25,7 +25,7 @@ SilphCo1F_MapScriptHeader:
 SilphCo1FMoveOfficerCallback:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iffalse .Nothing
-	moveperson SILPHCO1F_OFFICER, 14, 1
+	moveobject SILPHCO1F_OFFICER, 14, 1
 .Nothing
 	return
 

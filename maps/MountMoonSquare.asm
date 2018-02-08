@@ -38,15 +38,15 @@ ClefairyDance:
 	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
 	iftrue .NoDancing
 	checkcode VAR_WEEKDAY
-	if_not_equal MONDAY, .NoDancing
-	checknite
+	ifnotequal MONDAY, .NoDancing
+	checktime 1 << NITE
 	iffalse .NoDancing
 	appear MOUNTMOONSQUARE_CLEFAIRY1
 	appear MOUNTMOONSQUARE_CLEFAIRY2
 	applyonemovement PLAYER, step_up
 	pause 15
 	appear MOUNTMOONSQUARE_ROCK
-	spriteface MOUNTMOONSQUARE_CLEFAIRY1, RIGHT
+	objectface MOUNTMOONSQUARE_CLEFAIRY1, RIGHT
 	cry CLEFAIRY
 	waitsfx
 	pause 30
@@ -66,10 +66,10 @@ ClefairyDance:
 	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2
 	applyonemovement MOUNTMOONSQUARE_CLEFAIRY1, slow_step_right
 	stopfollow
-	spriteface MOUNTMOONSQUARE_CLEFAIRY1, DOWN
+	objectface MOUNTMOONSQUARE_CLEFAIRY1, DOWN
 	pause 10
 	showemote EMOTE_SHOCK, MOUNTMOONSQUARE_CLEFAIRY1, 15
-	spriteface MOUNTMOONSQUARE_CLEFAIRY1, DOWN
+	objectface MOUNTMOONSQUARE_CLEFAIRY1, DOWN
 	cry CLEFAIRY
 	pause 15
 	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2

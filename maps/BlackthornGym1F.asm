@@ -48,7 +48,7 @@ BlackthornGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 15, .LyraToo
+	ifgreater 15, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

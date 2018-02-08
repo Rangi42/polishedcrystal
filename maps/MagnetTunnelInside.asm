@@ -198,7 +198,7 @@ MagnetTunnelInsideMachine4:
 	playsound SFX_GLASS_TING
 	changeblock 34, 8, $65
 	reloadmappart
-	moveperson MAGNETTUNNELINSIDE_STONE_4, 34, 8
+	moveobject MAGNETTUNNELINSIDE_STONE_4, 34, 8
 	appear MAGNETTUNNELINSIDE_STONE_4
 	writetext MagnetTunnelInsideMachineText5
 	waitbutton

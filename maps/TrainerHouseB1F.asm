@@ -21,7 +21,7 @@ TrainerHouseB1F_MapScriptHeader:
 	const TRAINERHOUSEB1F_CARRIE
 
 TrainerHouseReceptionistScript:
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	opentext
 	checkflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
 	iftrue .FoughtTooManyTimes
@@ -64,7 +64,7 @@ TrainerHouseReceptionistScript:
 .End:
 	opentext
 	checkcode VAR_BATTLEPOINTS
-	if_equal 255, .MaxPoints
+	ifequal 255, .MaxPoints
 	addvar 1
 	writevarcode VAR_BATTLEPOINTS
 .MaxPoints:

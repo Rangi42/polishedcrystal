@@ -160,8 +160,8 @@ UnknownScript_0x19d853:
 	scall UnknownScript_0x19d8e3
 UnknownScript_0x19d856:
 	askforphonenumber PHONE_BIRDKEEPER_VANCE
-	if_equal $1, UnknownScript_0x19d8f3
-	if_equal $2, UnknownScript_0x19d8ef
+	ifequal $1, UnknownScript_0x19d8f3
+	ifequal $2, UnknownScript_0x19d8ef
 	trainertotext BIRD_KEEPER, VANCE1, $0
 	scall UnknownScript_0x19d8e7
 	jump UnknownScript_0x19d8eb
@@ -170,9 +170,9 @@ UnknownScript_0x19d86a:
 	scall UnknownScript_0x19d8f7
 	winlosstext Bird_keeperVance1BeatenText, 0
 	copybytetovar wVanceFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2
@@ -296,8 +296,8 @@ UnknownScript_0x19d957:
 	scall UnknownScript_0x19d8e3
 UnknownScript_0x19d95a:
 	askforphonenumber PHONE_FISHER_WILTON
-	if_equal $1, UnknownScript_0x19d8f3
-	if_equal $2, UnknownScript_0x19d8ef
+	ifequal $1, UnknownScript_0x19d8f3
+	ifequal $2, UnknownScript_0x19d8ef
 	trainertotext FISHER, WILTON1, $0
 	scall UnknownScript_0x19d8e7
 	jump UnknownScript_0x19d8eb
@@ -306,9 +306,9 @@ UnknownScript_0x19d96e:
 	scall UnknownScript_0x19d8f7
 	winlosstext FisherWilton1BeatenText, 0
 	copybytetovar wWiltonFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2

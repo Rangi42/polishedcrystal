@@ -69,8 +69,8 @@ UnknownScript_0x19c8ec:
 	scall UnknownScript_0x19c907
 UnknownScript_0x19c8ef:
 	askforphonenumber PHONE_JUGGLER_IRWIN
-	if_equal $1, UnknownScript_0x19c917
-	if_equal $2, UnknownScript_0x19c913
+	ifequal $1, UnknownScript_0x19c917
+	ifequal $2, UnknownScript_0x19c913
 	trainertotext JUGGLER, IRWIN1, $0
 	scall UnknownScript_0x19c90b
 	jump UnknownScript_0x19c90f
@@ -153,8 +153,8 @@ UnknownScript_0x19c9a4:
 	scall UnknownScript_0x19c907
 UnknownScript_0x19c9a7:
 	askforphonenumber PHONE_BUG_CATCHER_ARNIE
-	if_equal $1, UnknownScript_0x19c917
-	if_equal $2, UnknownScript_0x19c913
+	ifequal $1, UnknownScript_0x19c917
+	ifequal $2, UnknownScript_0x19c913
 	trainertotext BUG_CATCHER, ARNIE1, $0
 	scall UnknownScript_0x19c90b
 	jump UnknownScript_0x19c90f
@@ -163,11 +163,11 @@ UnknownScript_0x19c9bb:
 	scall UnknownScript_0x19c91b
 	winlosstext Bug_catcherArnie1BeatenText, 0
 	copybytetovar wArnieFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -233,7 +233,7 @@ GenericTrainerFirebreatherWalt:
 OfficermScript_0x19ca49:
 	faceplayer
 	opentext
-	checknite
+	checktime 1 << NITE
 	iffalse UnknownScript_0x19ca73
 	checkevent EVENT_BEAT_OFFICERM_DIRK
 	iftrue UnknownScript_0x19ca6d

@@ -27,14 +27,14 @@ CeladonHomeDecorStore3FClerk1Script:
 	loadmenudata .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .RedCarpet
-	if_equal $2, .YellowCarpet
-	if_equal $3, .GreenCarpet
+	ifequal $1, .RedCarpet
+	ifequal $2, .YellowCarpet
+	ifequal $3, .GreenCarpet
 	endtext
 
 .RedCarpet:
 	checkmoney $0, 45000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_1
 	iftrue .AlreadyBought
 	takemoney $0, 45000
@@ -48,7 +48,7 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .YellowCarpet:
 	checkmoney $0, 45000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_3
 	iftrue .AlreadyBought
 	takemoney $0, 45000
@@ -62,7 +62,7 @@ CeladonHomeDecorStore3FClerk1Script:
 
 .GreenCarpet:
 	checkmoney $0, 45000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CARPET_4
 	iftrue .AlreadyBought
 	takemoney $0, 45000
@@ -109,7 +109,7 @@ CeladonHomeDecorStore3FClerk2Script:
 	yesorno
 	iffalse_jumpopenedtext CeladonHomeDecorStore3FClerk2NoText
 	checkmoney $0, 35000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	takemoney $0, 35000
 	setevent EVENT_DECO_CARPET_2
 	writetext BoughtBlueCarpetText

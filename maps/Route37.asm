@@ -28,7 +28,7 @@ Route37_MapScriptHeader:
 
 SunnyCallback:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, .SunnyAppears
+	ifequal SUNDAY, .SunnyAppears
 	disappear ROUTE37_SUNNY
 	return
 
@@ -69,7 +69,7 @@ SunnyScript:
 	checkevent EVENT_GOT_MAGNET_FROM_SUNNY
 	iftrue SunnySundayScript
 	checkcode VAR_WEEKDAY
-	if_not_equal SUNDAY, SunnyNotSundayScript
+	ifnotequal SUNDAY, SunnyNotSundayScript
 	checkevent EVENT_MET_SUNNY_OF_SUNDAY
 	iftrue .MetSunny
 	writetext MeetSunnyText

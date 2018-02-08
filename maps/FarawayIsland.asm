@@ -48,7 +48,7 @@ FarawayIsland_PlayerArrives:
 	applymovement PLAYER, FarawayIslandPlayerArriveMovementData
 	showtext SeagallopFerryFarawayIslandRefusedText
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive2MovementData
-	dotrigger $0
+	setscene $0
 	end
 
 FarawayIslandSailorScript:
@@ -60,7 +60,7 @@ FarawayIslandSailorScript:
 	writetext SeagallopFerryFarawayToVermilionText
 	waitbutton
 	closetext
-	spriteface FARAWAYISLAND_SAILOR, DOWN
+	objectface FARAWAYISLAND_SAILOR, DOWN
 	pause 10
 	applyonemovement FARAWAYISLAND_SAILOR, turn_head_down
 	playsound SFX_EXIT_BUILDING
@@ -71,7 +71,7 @@ FarawayIslandSailorScript:
 	special FadeOutPalettes
 	waitsfx
 	appear FARAWAYISLAND_SAILOR
-	domaptrigger SEAGALLOP_FERRY_VERMILION_GATE, $1
+	setmapscene SEAGALLOP_FERRY_VERMILION_GATE, $1
 	warp SEAGALLOP_FERRY_VERMILION_GATE, 6, 5
 	end
 
@@ -116,7 +116,7 @@ FarawayIslandLawrenceScript:
 	writetext FarawayIslandLawrenceNoText
 	waitbutton
 	closetext
-	spriteface FARAWAYISLAND_LAWRENCE, DOWN
+	objectface FARAWAYISLAND_LAWRENCE, DOWN
 	playmapmusic
 	end
 

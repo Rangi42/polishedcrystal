@@ -32,7 +32,7 @@ CeruleanCave1F_MapScriptHeader:
 	itemball_event 14,  2, MAX_REVIVE, 1, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE
 
 CeruleanCave1FTileScript:
-	checktriggers
+	checkscene
 	iftrue .underfoot
 	callasm CeruleanCave1F_OverheadBridgeAsm
 	return
@@ -71,5 +71,5 @@ CeruleanCave1FBridgeUnderfootTrigger:
 	ld a, $1
 CeruleanCave1F_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wCeruleanCave1FTrigger], a ; dotrigger a
+	ld [wCeruleanCave1FTrigger], a ; setscene a
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)

@@ -45,8 +45,8 @@ FightingDojoSetupRematchesCallback:
 
 rematch: MACRO
 	; rematch person, varsprite, sprite, y, x, face
-	moveperson \1, \5, \4
-	spriteface \1, \6
+	moveobject \1, \5, \4
+	objectface \1, \6
 	appear \1
 	variablesprite \2, \3
 ENDM
@@ -63,15 +63,15 @@ ENDM
 
 .SetupDailyRematches:
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .Monday
-	if_equal TUESDAY, .Tuesday
-	if_equal WEDNESDAY, .Wednesday
-	if_equal THURSDAY, .Thursday
-	if_equal FRIDAY, .Friday
-	if_equal SATURDAY, .Saturday
+	ifequal MONDAY, .Monday
+	ifequal TUESDAY, .Tuesday
+	ifequal WEDNESDAY, .Wednesday
+	ifequal THURSDAY, .Thursday
+	ifequal FRIDAY, .Friday
+	ifequal SATURDAY, .Saturday
 
 .Sunday
-	checknite
+	checktime 1 << NITE
 	iftrue .SundayNight
 .SundayMorningAndDay
 	rematch_left REMATCH_RED_1, SPRITE_DOLL_1, SPRITE_JASMINE
@@ -82,7 +82,7 @@ ENDM
 	return
 
 .Monday
-	checknite
+	checktime 1 << NITE
 	iftrue .MondayNight
 .MondayMorningAndDay
 	rematch_left REMATCH_BLUE_2, SPRITE_DOLL_2, SPRITE_FALKNER
@@ -96,7 +96,7 @@ ENDM
 	return
 
 .Tuesday
-	checknite
+	checktime 1 << NITE
 	iftrue .TuesdayNight
 .TuesdayMorningAndDay
 	rematch_left REMATCH_BROWN_2, SPRITE_DOLL_2, SPRITE_PRYCE
@@ -110,9 +110,9 @@ ENDM
 	return
 
 .Wednesday
-	checkmorn
+	checktime 1 << MORN
 	iftrue .WednesdayMorning
-	checknite
+	checktime 1 << NITE
 	iftrue .WednesdayNight
 .WednesdayDay
 	rematch_left REMATCH_BROWN_2, SPRITE_DOLL_2, SPRITE_BROCK
@@ -128,9 +128,9 @@ ENDM
 	return
 
 .Thursday
-	checkmorn
+	checktime 1 << MORN
 	iftrue .ThursdayMorning
-	checknite
+	checktime 1 << NITE
 	iftrue .ThursdayNight
 .ThursdayDay
 	checkevent EVENT_BEAT_PALMER
@@ -146,9 +146,9 @@ ENDM
 	return
 
 .Friday
-	checkmorn
+	checktime 1 << MORN
 	iftrue .FridayMorning
-	checknite
+	checktime 1 << NITE
 	iftrue .FridayNight
 .FridayDay
 	checkevent EVENT_BEAT_YELLOW
@@ -164,9 +164,9 @@ ENDM
 	return
 
 .Saturday
-	checkmorn
+	checktime 1 << MORN
 	iftrue .SaturdayMorning
-	checknite
+	checktime 1 << NITE
 	iftrue .SaturdayNight
 .SaturdayDay
 	rematch_left REMATCH_RED_1, SPRITE_DOLL_1, SPRITE_WHITNEY
@@ -245,11 +245,11 @@ MapFightingDojoSignpost2Script:
 
 RematchRed0Script:
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, .Red0TuesdayNight
-	if_equal WEDNESDAY, .Red0Wednesday
-	if_equal FRIDAY, .Red0Friday
-	if_equal SATURDAY, .Red0Saturday
-	checknite
+	ifequal TUESDAY, .Red0TuesdayNight
+	ifequal WEDNESDAY, .Red0Wednesday
+	ifequal FRIDAY, .Red0Friday
+	ifequal SATURDAY, .Red0Saturday
+	checktime 1 << NITE
 	iftrue .Red0SundayNight
 	jump RematchJasmineScript
 .Red0SundayNight
@@ -265,11 +265,11 @@ RematchRed0Script:
 
 RematchGreen1Script:
 	checkcode VAR_WEEKDAY
-	if_equal THURSDAY, .Green1Thursday
+	ifequal THURSDAY, .Green1Thursday
 .Green1Sunday
 	jump RematchErikaScript
 .Green1Thursday
-	checkmorn
+	checktime 1 << MORN
 	iftrue .Green1ThursdayMorning
 .Green1ThursdayDay
 	jump RematchPalmerScript
@@ -278,7 +278,7 @@ RematchGreen1Script:
 
 RematchBlue1Script:
 	checkcode VAR_WEEKDAY
-	if_equal FRIDAY, .Blue1Friday
+	ifequal FRIDAY, .Blue1Friday
 .Blue1Monday
 	jump RematchFalknerScript
 .Blue1Friday
@@ -286,11 +286,11 @@ RematchBlue1Script:
 
 RematchBlue2Script:
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .Blue2Monday
+	ifequal MONDAY, .Blue2Monday
 .Blue2Wednesday
 	jump RematchBlueScript
 .Blue2Monday
-	checknite
+	checktime 1 << NITE
 	iftrue .Blue2MondayNight
 .Blue2MondayMorningDay
 	jump RematchJanineScript
@@ -299,9 +299,9 @@ RematchBlue2Script:
 
 RematchBrown1Script:
 	checkcode VAR_WEEKDAY
-	if_equal WEDNESDAY, .Brown1Wednesday
-	if_equal FRIDAY, .Brown1Friday
-	if_equal SATURDAY, .Brown1Saturday
+	ifequal WEDNESDAY, .Brown1Wednesday
+	ifequal FRIDAY, .Brown1Friday
+	ifequal SATURDAY, .Brown1Saturday
 .Brown1Tuesday
 	jump RematchPryceScript
 .Brown1Wednesday
@@ -313,8 +313,8 @@ RematchBrown1Script:
 
 RematchBrown2Script:
 	checkcode VAR_WEEKDAY
-	if_equal THURSDAY, .Brown2Thursday
-	if_equal SATURDAY, .Brown2SaturdayNight
+	ifequal THURSDAY, .Brown2Thursday
+	ifequal SATURDAY, .Brown2SaturdayNight
 .Brown2Tuesday
 	jump RematchBlaineScript
 .Brown2Thursday

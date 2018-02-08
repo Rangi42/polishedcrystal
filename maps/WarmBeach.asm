@@ -109,7 +109,7 @@ WarmBeachLassScript:
 	yesorno
 	iffalse_jumpopenedtext .Text4
 	checkmoney $0, 4000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem SHELL_BELL
 	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_SEASHORE_SHELL_BELL

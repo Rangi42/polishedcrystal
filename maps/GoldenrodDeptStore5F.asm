@@ -27,7 +27,7 @@ GoldenrodDeptStore5F_MapScriptHeader:
 
 GoldenrodDeptStore5FCheckIfSunday:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, .yes
+	ifequal SUNDAY, .yes
 	disappear GOLDENRODDEPTSTORE5F_RECEPTIONIST
 	return
 
@@ -39,7 +39,7 @@ ReceptionistScript_0x560ce:
 	faceplayer
 	opentext
 	checkcode VAR_WEEKDAY
-	if_not_equal SUNDAY, .EventIsOver
+	ifnotequal SUNDAY, .EventIsOver
 	checktmhm TM_RETURN
 	iftrue .EventIsOver
 	checkflag ENGINE_GOLDENROD_MALL_5F_HAPPINESS_EVENT
@@ -47,7 +47,7 @@ ReceptionistScript_0x560ce:
 	special GetFirstPokemonHappiness
 	writetext UnknownText_0x56143
 	buttonsound
-	if_greater_than $95, .VeryHappy
+	ifgreater $95, .VeryHappy
 	jumpopenedtext UnknownText_0x561a6
 
 .VeryHappy:

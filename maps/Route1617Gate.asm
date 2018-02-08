@@ -48,7 +48,7 @@ UnknownScript_0x733ed:
 	iftrue Route1617GateDoNothingScript
 UnknownScript_0x733f3:
 	showemote EMOTE_SHOCK, ROUTE1617GATE_OFFICER, 15
-	spriteface PLAYER, UP
+	objectface PLAYER, UP
 	showtext UnknownText_0x73496
 	applymovement PLAYER, MovementData_0x73405
 Route1617GateDoNothingScript:

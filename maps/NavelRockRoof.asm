@@ -51,7 +51,7 @@ Leaf:
 	pause 30
 	special HealParty
 	refreshscreen
-	checknite
+	checktime 1 << NITE
 	iffalse .Sun
 	changeblock 6, 0, $76
 	changeblock 8, 0, $77
@@ -61,9 +61,9 @@ Leaf:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemaleEndingSequence
 	checkcode VAR_FACING
-	if_equal UP, .RightMaleEndingSequence
-	spriteface PLAYER, UP
-	moveperson NAVELROCKROOF_CHRIS, 7, 8
+	ifequal UP, .RightMaleEndingSequence
+	objectface PLAYER, UP
+	moveobject NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
 	jump .EndingSequence
 
@@ -74,9 +74,9 @@ Leaf:
 
 .FemaleEndingSequence:
 	checkcode VAR_FACING
-	if_equal UP, .RightFemaleEndingSequence
-	spriteface PLAYER, UP
-	moveperson NAVELROCKROOF_KRIS, 7, 8
+	ifequal UP, .RightFemaleEndingSequence
+	objectface PLAYER, UP
+	moveobject NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS
 	jump .EndingSequence
 

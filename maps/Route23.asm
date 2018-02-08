@@ -60,9 +60,9 @@ Route23ZephyrBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_ZEPHYRBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $0, Route23OfficerHaveBadgeScript
-	dotrigger $1
+	checkscene
+	ifgreater $0, Route23OfficerHaveBadgeScript
+	setscene $1
 	jump Route23OfficerHaveBadgeScript
 
 .ZephyrBadgeText:
@@ -77,9 +77,9 @@ Route23HiveBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_HIVEBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $1, Route23OfficerHaveBadgeScript
-	dotrigger $2
+	checkscene
+	ifgreater $1, Route23OfficerHaveBadgeScript
+	setscene $2
 	jump Route23OfficerHaveBadgeScript
 
 .HiveBadgeText:
@@ -94,9 +94,9 @@ Route23PlainBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_PLAINBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $2, Route23OfficerHaveBadgeScript
-	dotrigger $3
+	checkscene
+	ifgreater $2, Route23OfficerHaveBadgeScript
+	setscene $3
 	jump Route23OfficerHaveBadgeScript
 
 .PlainBadgeText:
@@ -111,9 +111,9 @@ Route23FogBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_FOGBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $3, Route23OfficerHaveBadgeScript
-	dotrigger $4
+	checkscene
+	ifgreater $3, Route23OfficerHaveBadgeScript
+	setscene $4
 	jump Route23OfficerHaveBadgeScript
 
 .FogBadgeText:
@@ -128,9 +128,9 @@ Route23StormBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_STORMBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $4, Route23OfficerHaveBadgeScript
-	dotrigger $5
+	checkscene
+	ifgreater $4, Route23OfficerHaveBadgeScript
+	setscene $5
 	jump Route23OfficerHaveBadgeScript
 
 .StormBadgeText:
@@ -145,9 +145,9 @@ Route23MineralBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_MINERALBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $5, Route23OfficerHaveBadgeScript
-	dotrigger $6
+	checkscene
+	ifgreater $5, Route23OfficerHaveBadgeScript
+	setscene $6
 	jump Route23OfficerHaveBadgeScript
 
 .MineralBadgeText:
@@ -162,9 +162,9 @@ Route23GlacierBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_GLACIERBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $6, Route23OfficerHaveBadgeScript
-	dotrigger $7
+	checkscene
+	ifgreater $6, Route23OfficerHaveBadgeScript
+	setscene $7
 	jump Route23OfficerHaveBadgeScript
 
 .GlacierBadgeText:
@@ -179,9 +179,9 @@ Route23RisingBadgeTriggerScript:
 	waitbutton
 	checkflag ENGINE_RISINGBADGE
 	iffalse_jumpopenedtext Route23OfficerNoBadgeText
-	checktriggers
-	if_greater_than $7, Route23OfficerHaveBadgeScript
-	dotrigger $8
+	checkscene
+	ifgreater $7, Route23OfficerHaveBadgeScript
+	setscene $8
 	jump Route23OfficerHaveBadgeScript
 
 .RisingBadgeText:

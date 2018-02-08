@@ -40,7 +40,7 @@ HiddenPowerGuy:
 	buttonsound
 	special Special_HiddenPowerGuru
 	iffalse_jumpopenedtext .Text4
-	if_equal $1, .Egg
+	ifequal $1, .Egg
 	thisopenedtext
 
 	text "I can sense it…"

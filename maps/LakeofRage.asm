@@ -53,10 +53,10 @@ LakeofRageFlyPoint:
 LakeofRageWesleyAndEngineer:
 	checkevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	iftrue .NoEngineer
-	moveperson LAKEOFRAGE_LANCE, 18, 29
+	moveobject LAKEOFRAGE_LANCE, 18, 29
 .NoEngineer
 	checkcode VAR_WEEKDAY
-	if_equal WEDNESDAY, .WesleyAppears
+	ifequal WEDNESDAY, .WesleyAppears
 	disappear LAKEOFRAGE_WESLEY
 	return
 
@@ -66,7 +66,7 @@ LakeofRageWesleyAndEngineer:
 
 LakeofRageFloodScript:
 	special Special_GetOvercastIndex
-	if_equal LAKE_OF_RAGE_OVERCAST, .flood
+	ifequal LAKE_OF_RAGE_OVERCAST, .flood
 	changemap LakeofRage_BlockData
 	return
 
@@ -118,7 +118,7 @@ LakeOfRageLanceScript:
 	disappear LAKEOFRAGE_LANCE
 	clearevent EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	setevent EVENT_DECIDED_TO_HELP_LANCE
-	domaptrigger MAHOGANY_MART_1F, $1
+	setmapscene MAHOGANY_MART_1F, $1
 	end
 
 .Refused:
@@ -223,7 +223,7 @@ LakeOfRageRedGyaradosScript:
 	loadwildmon GYARADOS, 35
 	writecode VAR_BATTLETYPE, BATTLETYPE_RED_GYARADOS
 	startbattle
-	if_equal $1, .Continue
+	ifequal $1, .Continue
 	disappear LAKEOFRAGE_RED_GYARADOS
 .Continue:
 	reloadmapafterbattle
@@ -251,7 +251,7 @@ WesleyScript:
 	checkevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	iftrue_jumptextfaceplayer .WednesdayText
 	checkcode VAR_WEEKDAY
-	if_not_equal WEDNESDAY, .NotWednesday
+	ifnotequal WEDNESDAY, .NotWednesday
 	faceplayer
 	opentext
 	checkevent EVENT_MET_WESLEY_OF_WEDNESDAY

@@ -26,18 +26,18 @@ MystriStage_MapScriptHeader:
 MystriStageTrigger2Script:
 	applyonemovement PLAYER, step_up
 MystriStageTrigger1Script:
-	faceperson PLAYER, MYSTRISTAGE_CYNTHIA1
+	faceobject PLAYER, MYSTRISTAGE_CYNTHIA1
 	pause 10
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	pause 10
-	faceperson MYSTRISTAGE_CYNTHIA1, PLAYER
+	faceobject MYSTRISTAGE_CYNTHIA1, PLAYER
 MystriStageCynthiaSafeguardScript:
 	showtext MystriStageCynthiaIntroText
 	follow MYSTRISTAGE_CYNTHIA1, PLAYER
 	applymovement MYSTRISTAGE_CYNTHIA1, MystriStageMovementData_CynthiaStepsUp
 	stopfollow
-	spriteface MYSTRISTAGE_CYNTHIA1, LEFT
-	spriteface PLAYER, RIGHT
+	objectface MYSTRISTAGE_CYNTHIA1, LEFT
+	objectface PLAYER, RIGHT
 	showtext MystriStageCynthiaSpeechText
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	opentext
@@ -46,7 +46,7 @@ MystriStageCynthiaSafeguardScript:
 	appear MYSTRISTAGE_CYNTHIA2
 	disappear MYSTRISTAGE_CYNTHIA1
 	setevent EVENT_LISTENED_TO_CYNTHIA_INTRO
-	dotrigger $0
+	setscene $0
 	jump MystriStageCynthiaContinueScript
 
 MystriStageCynthiaScript:
@@ -114,13 +114,13 @@ MystriStageBeatCynthiaScript:
 	special RestartMapMusic
 	special Special_FadeInQuickly
 	pause 20
-	spriteface MYSTRISTAGE_CYNTHIA2, DOWN
+	objectface MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
 	jumptextfaceplayer MystriStageCynthiaEggText
 
 MystriStageEggScript:
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .PartyFull
+	ifequal PARTY_LENGTH, .PartyFull
 	special GiveMystriEgg
 	disappear MYSTRISTAGE_EGG
 	opentext

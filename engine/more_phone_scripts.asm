@@ -1,7 +1,7 @@
 UnknownScript_0xa0000:
 	special RandomPhoneMon
 	farscall PhoneScript_Random2
-	if_equal 0, UnknownScript_0xa0013
+	ifequal 0, UnknownScript_0xa0013
 	farscall PhoneScript_Generic_Male
 	farjump UnknownScript_0xa003e
 
@@ -11,7 +11,7 @@ UnknownScript_0xa0013:
 UnknownScript_0xa0017:
 	special RandomPhoneMon
 	farscall PhoneScript_Random2
-	if_equal 0, UnknownScript_0xa002a
+	ifequal 0, UnknownScript_0xa002a
 	farscall PhoneScript_Generic_Female
 	farjump UnknownScript_0xa0055
 
@@ -29,7 +29,7 @@ UnknownScript_0xa0036:
 UnknownScript_0xa003e:
 	special RandomPhoneWildMon
 	farscall PhoneScript_Random2
-	if_equal 0, UnknownScript_0xa0051
+	ifequal 0, UnknownScript_0xa0051
 	farscall UnknownScript_0xa017a
 	farjump PhoneScript_HangupText_Male
 
@@ -39,7 +39,7 @@ UnknownScript_0xa0051:
 UnknownScript_0xa0055:
 	special RandomPhoneWildMon
 	farscall PhoneScript_Random2
-	if_equal 0, UnknownScript_0xa0068
+	ifequal 0, UnknownScript_0xa0068
 	farscall UnknownScript_0xa0226
 	farjump PhoneScript_HangupText_Female
 
@@ -56,23 +56,23 @@ UnknownScript_0xa0074:
 
 UnknownScript_0xa007c:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1740c0
@@ -161,14 +161,14 @@ UnknownScript_0xa007c:
 
 UnknownScript_0xa0128:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x174688
@@ -212,23 +212,23 @@ UnknownScript_0xa0128:
 
 UnknownScript_0xa017a:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x174106
@@ -317,14 +317,14 @@ UnknownScript_0xa017a:
 
 UnknownScript_0xa0226:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1746c3
@@ -368,23 +368,23 @@ UnknownScript_0xa0226:
 
 UnknownScript_0xa0278:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x174165
@@ -473,14 +473,14 @@ UnknownScript_0xa0278:
 
 UnknownScript_0xa0324:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x174734
@@ -532,23 +532,23 @@ UnknownScript_0xa037e:
 
 PhoneScript_RematchText_Male:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1741e1
@@ -637,13 +637,13 @@ PhoneScript_RematchText_Male:
 
 PhoneScript_RematchText_Female:
 	checkcode VAR_CALLERID
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beth:
 	farwritetext UnknownText_0x174e4e
@@ -690,26 +690,26 @@ UnknownScript_0xa047f:
 
 PhoneScript_HangupText_Male:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x174251
@@ -793,14 +793,14 @@ PhoneScript_HangupText_Male:
 
 PhoneScript_HangupText_Female:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1747ac
@@ -856,8 +856,8 @@ UnknownScript_0xa05a0:
 
 UnknownScript_0xa05a4:
 	checkcode VAR_CALLERID
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_POKEFANM_DEREK, .Derek
 
 .Wade:
 	farwritetext UnknownText_0x1759f7
@@ -896,12 +896,12 @@ UnknownScript_0xa05de:
 
 UnknownScript_0xa05e6:
 	checkcode VAR_CALLERID
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_FISHER_WILTON, .Wilton
 
 .Jose:
 	farwritetext UnknownText_0x175116
@@ -929,10 +929,10 @@ UnknownScript_0xa05e6:
 
 UnknownScript_0xa061e:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
 
 .Beverly:
 	farwritetext UnknownText_0x1747cc
@@ -962,17 +962,17 @@ UnknownScript_0xa064c:
 
 UnknownScript_0xa0654:
 	random 11
-	if_equal  0, UnknownScript_0xa0682
-	if_equal  1, UnknownScript_0xa068a
-	if_equal  2, UnknownScript_0xa0692
-	if_equal  3, UnknownScript_0xa069a
-	if_equal  4, UnknownScript_0xa06a2
-	if_equal  5, UnknownScript_0xa06aa
-	if_equal  6, UnknownScript_0xa06b2
-	if_equal  7, UnknownScript_0xa06ba
-	if_equal  8, UnknownScript_0xa06c2
-	if_equal  9, UnknownScript_0xa06ca
-	if_equal 10, UnknownScript_0xa06d2
+	ifequal  0, UnknownScript_0xa0682
+	ifequal  1, UnknownScript_0xa068a
+	ifequal  2, UnknownScript_0xa0692
+	ifequal  3, UnknownScript_0xa069a
+	ifequal  4, UnknownScript_0xa06a2
+	ifequal  5, UnknownScript_0xa06aa
+	ifequal  6, UnknownScript_0xa06b2
+	ifequal  7, UnknownScript_0xa06ba
+	ifequal  8, UnknownScript_0xa06c2
+	ifequal  9, UnknownScript_0xa06ca
+	ifequal 10, UnknownScript_0xa06d2
 
 UnknownScript_0xa0682:
 	farwritetext UnknownText_0x174261
@@ -1031,16 +1031,16 @@ UnknownScript_0xa06d2:
 
 UnknownScript_0xa06da:
 	random 10
-	if_equal 0, UnknownScript_0xa0704
-	if_equal 1, UnknownScript_0xa070c
-	if_equal 2, UnknownScript_0xa0714
-	if_equal 3, UnknownScript_0xa071c
-	if_equal 4, UnknownScript_0xa0724
-	if_equal 5, UnknownScript_0xa072c
-	if_equal 6, UnknownScript_0xa0734
-	if_equal 7, UnknownScript_0xa073c
-	if_equal 8, UnknownScript_0xa0744
-	if_equal 9, UnknownScript_0xa074c
+	ifequal 0, UnknownScript_0xa0704
+	ifequal 1, UnknownScript_0xa070c
+	ifequal 2, UnknownScript_0xa0714
+	ifequal 3, UnknownScript_0xa071c
+	ifequal 4, UnknownScript_0xa0724
+	ifequal 5, UnknownScript_0xa072c
+	ifequal 6, UnknownScript_0xa0734
+	ifequal 7, UnknownScript_0xa073c
+	ifequal 8, UnknownScript_0xa0744
+	ifequal 9, UnknownScript_0xa074c
 
 UnknownScript_0xa0704:
 	farwritetext UnknownText_0x176223
@@ -1094,16 +1094,16 @@ UnknownScript_0xa074c:
 
 UnknownScript_0xa0754:
 	random 10
-	if_equal 0, UnknownScript_0xa077e
-	if_equal 1, UnknownScript_0xa0786
-	if_equal 2, UnknownScript_0xa078e
-	if_equal 3, UnknownScript_0xa0796
-	if_equal 4, UnknownScript_0xa079e
-	if_equal 5, UnknownScript_0xa07a6
-	if_equal 6, UnknownScript_0xa07ae
-	if_equal 7, UnknownScript_0xa07b6
-	if_equal 8, UnknownScript_0xa07be
-	if_equal 9, UnknownScript_0xa07c6
+	ifequal 0, UnknownScript_0xa077e
+	ifequal 1, UnknownScript_0xa0786
+	ifequal 2, UnknownScript_0xa078e
+	ifequal 3, UnknownScript_0xa0796
+	ifequal 4, UnknownScript_0xa079e
+	ifequal 5, UnknownScript_0xa07a6
+	ifequal 6, UnknownScript_0xa07ae
+	ifequal 7, UnknownScript_0xa07b6
+	ifequal 8, UnknownScript_0xa07be
+	ifequal 9, UnknownScript_0xa07c6
 
 UnknownScript_0xa077e:
 	farwritetext UnknownText_0x65481
@@ -1157,16 +1157,16 @@ UnknownScript_0xa07c6:
 
 UnknownScript_0xa07ce:
 	random 10
-	if_equal 0, UnknownScript_0xa07f8
-	if_equal 1, UnknownScript_0xa0800
-	if_equal 2, UnknownScript_0xa0808
-	if_equal 3, UnknownScript_0xa0810
-	if_equal 4, UnknownScript_0xa0818
-	if_equal 5, UnknownScript_0xa0820
-	if_equal 6, UnknownScript_0xa0828
-	if_equal 7, UnknownScript_0xa0830
-	if_equal 8, UnknownScript_0xa0838
-	if_equal 9, UnknownScript_0xa0840
+	ifequal 0, UnknownScript_0xa07f8
+	ifequal 1, UnknownScript_0xa0800
+	ifequal 2, UnknownScript_0xa0808
+	ifequal 3, UnknownScript_0xa0810
+	ifequal 4, UnknownScript_0xa0818
+	ifequal 5, UnknownScript_0xa0820
+	ifequal 6, UnknownScript_0xa0828
+	ifequal 7, UnknownScript_0xa0830
+	ifequal 8, UnknownScript_0xa0838
+	ifequal 9, UnknownScript_0xa0840
 
 UnknownScript_0xa07f8:
 	farwritetext UnknownText_0x662bc
@@ -1439,9 +1439,9 @@ UnknownScript_0xa09c0:
 
 UnknownScript_0xa09c8:
 	random 3
-	if_equal 0, UnknownScript_0xa09d6
-	if_equal 1, UnknownScript_0xa09de
-	if_equal 2, UnknownScript_0xa09e6
+	ifequal 0, UnknownScript_0xa09d6
+	ifequal 1, UnknownScript_0xa09de
+	ifequal 2, UnknownScript_0xa09e6
 
 UnknownScript_0xa09d6:
 	farwritetext UnknownText_0x64846
@@ -1460,8 +1460,8 @@ UnknownScript_0xa09e6:
 
 UnknownScript_0xa09ee:
 	checkcode VAR_KENJI_BREAK
-	if_equal 2, UnknownScript_0xa0a00
-	if_equal 1, UnknownScript_0xa0a08
+	ifequal 2, UnknownScript_0xa0a00
+	ifequal 1, UnknownScript_0xa0a08
 	farwritetext UnknownText_0x66e17
 	buttonsound
 	jump PhoneScript_HangupText_Male
@@ -1472,9 +1472,9 @@ UnknownScript_0xa0a00:
 	jump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0a08:
-	checkmorn
+	checktime 1 << MORN
 	iftrue UnknownScript_0xa0a1d
-	checknite
+	checktime 1 << NITE
 	iftrue UnknownScript_0xa0a25
 	setevent EVENT_KENJI_ON_BREAK
 	farwritetext UnknownText_0x66f11

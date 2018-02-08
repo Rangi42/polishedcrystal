@@ -40,9 +40,9 @@ BrockScript_0x1a2864:
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
 	checkcode VAR_BADGES
-	if_equal 9, .FirstBadge
-	if_equal 10, .SecondBadge
-	if_equal 12, .LyrasEgg
+	ifequal 9, .FirstBadge
+	ifequal 10, .SecondBadge
+	ifequal 12, .LyrasEgg
 	jump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE

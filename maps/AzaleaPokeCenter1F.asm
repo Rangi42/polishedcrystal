@@ -40,7 +40,7 @@ PokemonJournalBugsyScript:
 	done
 
 AzaleaPokeCenter1FCooltrainermScript:
-	checknite
+	checktime 1 << NITE
 	iftrue_jumptextfaceplayer .NiteText
 	thistextfaceplayer
 

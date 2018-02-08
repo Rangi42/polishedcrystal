@@ -58,7 +58,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	loadmenudata .Question1MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $2, .WrongAnswer
+	ifnotequal $2, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -74,7 +74,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	loadmenudata .Question2MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $3, .WrongAnswer
+	ifnotequal $3, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -86,7 +86,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	loadmenudata .Question3MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $4, .WrongAnswer
+	ifnotequal $4, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -98,7 +98,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	loadmenudata .Question4MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $1, .WrongAnswer
+	ifnotequal $1, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -110,7 +110,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	loadmenudata .Question5MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $3, .WrongAnswer
+	ifnotequal $3, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -122,7 +122,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	loadmenudata .Question6MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $4, .WrongAnswer
+	ifnotequal $4, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -134,7 +134,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitbutton
 
 	checkcode VAR_PARTYCOUNT
-	if_equal 6, .PartyFull
+	ifequal 6, .PartyFull
 	writetext .ReceivedMagikarpText
 	playsound SFX_CAUGHT_MON
 	waitsfx

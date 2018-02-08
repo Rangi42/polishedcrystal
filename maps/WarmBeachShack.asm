@@ -32,7 +32,7 @@ WarmBeachShackTutorBodySlamScript:
 	writebyte BODY_SLAM
 	writetext Text_WarmBeachShackTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_WarmBeachShackTutorRefused
 

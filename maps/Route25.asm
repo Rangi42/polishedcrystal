@@ -104,7 +104,7 @@ UnknownScript_0x19efc7:
 	follow ROUTE25_COOLTRAINERM_BEFORE, PLAYER
 	applymovement ROUTE25_COOLTRAINERM_BEFORE, Route25CooltrainerMovementData
 	stopfollow
-	spriteface ROUTE25_COOLTRAINERM_BEFORE, LEFT
+	objectface ROUTE25_COOLTRAINERM_BEFORE, LEFT
 	winlosstext UnknownText_0x19f4fd, 0
 	loadtrainer COOLTRAINERM, KEVIN
 	startbattle

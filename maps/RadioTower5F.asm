@@ -31,7 +31,7 @@ RadioTower5F_MapScriptHeader:
 	const RADIOTOWER5F_ARIANA
 
 FakeDirectorScript:
-	spriteface RADIOTOWER5F_DIRECTOR, UP
+	objectface RADIOTOWER5F_DIRECTOR, UP
 	showemote EMOTE_SHOCK, RADIOTOWER5F_DIRECTOR, 15
 	showtext FakeDirectorTextBefore1
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorMovement
@@ -41,7 +41,7 @@ FakeDirectorScript:
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorSpinMovement
 	appear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
-	spriteface RADIOTOWER5F_PETREL, UP
+	objectface RADIOTOWER5F_PETREL, UP
 	pause 10
 	showtext FakeDirectorTextBefore3
 	winlosstext FakeDirectorWinText, 0
@@ -54,7 +54,7 @@ FakeDirectorScript:
 	buttonsound
 	verbosegiveitem BASEMENT_KEY
 	closetext
-	dotrigger $1
+	setscene $1
 	setevent EVENT_BEAT_PETREL_1
 	end
 
@@ -77,7 +77,7 @@ GenericTrainerAriana1:
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	spriteface RADIOTOWER5F_ARCHER, RIGHT
+	objectface RADIOTOWER5F_ARCHER, RIGHT
 	showtext RadioTower5FRocketBossBeforeText
 	winlosstext RadioTower5FRocketBossWinText, 0
 	setlasttalked RADIOTOWER5F_ARCHER
@@ -106,10 +106,10 @@ RadioTower5FRocketBossTrigger:
 	special PlayMapMusic
 	disappear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
-	moveperson RADIOTOWER5F_DIRECTOR, 12, 0
+	moveobject RADIOTOWER5F_DIRECTOR, 12, 0
 	appear RADIOTOWER5F_DIRECTOR
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksIn
-	spriteface PLAYER, RIGHT
+	objectface PLAYER, RIGHT
 	opentext
 	writetext RadioTower5FDirectorThankYouText
 	buttonsound
@@ -117,14 +117,14 @@ RadioTower5FRocketBossTrigger:
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton
 	closetext
-	dotrigger $2
-	domaptrigger ECRUTEAK_HOUSE, $0
+	setscene $2
+	setmapscene ECRUTEAK_HOUSE, $0
 	setevent EVENT_GOT_CLEAR_BELL
 	setevent EVENT_TEAM_ROCKET_DISBANDED
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksOut
 	playsound SFX_EXIT_BUILDING
 	disappear RADIOTOWER5F_DIRECTOR
-	moveperson RADIOTOWER5F_DIRECTOR, 3, 6
+	moveobject RADIOTOWER5F_DIRECTOR, 3, 6
 	appear RADIOTOWER5F_DIRECTOR
 	end
 

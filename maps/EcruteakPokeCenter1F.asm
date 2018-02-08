@@ -31,15 +31,15 @@ EcruteakPokeCenter1FBillWalksUpTrigger:
 
 .Script:
 	pause 30
-	moveperson ECRUTEAKPOKECENTER1F_BILL, 0, 7
+	moveobject ECRUTEAKPOKECENTER1F_BILL, 0, 7
 	playsound SFX_EXIT_BUILDING
 	appear ECRUTEAKPOKECENTER1F_BILL
-	spriteface ECRUTEAKPOKECENTER1F_BILL, RIGHT
+	objectface ECRUTEAKPOKECENTER1F_BILL, RIGHT
 	waitsfx
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement1
 	pause 60
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement2
-	dotrigger $1
+	setscene $1
 	end
 
 .Movement1:
@@ -103,7 +103,7 @@ EcruteakPokeCenter1FBillScript:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .NoRoom
+	ifequal $6, .NoRoom
 	writetext .GotEeveeText
 	playsound SFX_CAUGHT_MON
 	waitsfx
@@ -116,8 +116,8 @@ EcruteakPokeCenter1FBillScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	spriteface PLAYER, DOWN
-	if_not_equal UP, .noleftstep
+	objectface PLAYER, DOWN
+	ifnotequal UP, .noleftstep
 	applyonemovement ECRUTEAKPOKECENTER1F_BILL, step_left
 .noleftstep
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .LeaveMovement

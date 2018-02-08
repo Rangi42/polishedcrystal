@@ -65,8 +65,8 @@ UnknownScript_0x1a4d62:
 	scall UnknownScript_0x1a4dc3
 UnknownScript_0x1a4d65:
 	askforphonenumber PHONE_COOLTRAINERM_GAVEN
-	if_equal $1, UnknownScript_0x1a4dd3
-	if_equal $2, UnknownScript_0x1a4dcf
+	ifequal $1, UnknownScript_0x1a4dd3
+	ifequal $2, UnknownScript_0x1a4dcf
 	trainertotext COOLTRAINERM, GAVEN1, $0
 	scall UnknownScript_0x1a4dc7
 	jump UnknownScript_0x1a4dcb
@@ -75,9 +75,9 @@ UnknownScript_0x1a4d79:
 	scall UnknownScript_0x1a4dd7
 	winlosstext CooltrainermGaven1BeatenText, 0
 	copybytetovar wGavenFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2
@@ -163,8 +163,8 @@ UnknownScript_0x1a4e1e:
 	scall UnknownScript_0x1a4e7f
 UnknownScript_0x1a4e21:
 	askforphonenumber PHONE_COOLTRAINERF_BETH
-	if_equal $1, UnknownScript_0x1a4e8f
-	if_equal $2, UnknownScript_0x1a4e8b
+	ifequal $1, UnknownScript_0x1a4e8f
+	ifequal $2, UnknownScript_0x1a4e8b
 	trainertotext COOLTRAINERF, BETH1, $0
 	scall UnknownScript_0x1a4e83
 	jump UnknownScript_0x1a4e87
@@ -173,9 +173,9 @@ UnknownScript_0x1a4e35:
 	scall UnknownScript_0x1a4e93
 	winlosstext CooltrainerfBeth1BeatenText, 0
 	copybytetovar wBethFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2

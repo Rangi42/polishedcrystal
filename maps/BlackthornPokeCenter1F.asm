@@ -46,7 +46,7 @@ ProfOaksAide4Script:
 	waitbutton
 	count_seen_caught
 	checkcode VAR_DEXCAUGHT
-	if_greater_than 59, .HereYouGo
+	ifgreater 59, .HereYouGo
 	thisopenedtext
 
 	text "Let's see…"

@@ -40,8 +40,8 @@ TradeCenter_SetWhichChris:
 	return
 
 TradeCenter_Initialize:
-	dotrigger $1
-	domaptrigger POKECENTER_2F, $1
+	setscene $1
+	setmapscene POKECENTER_2F, $1
 	end
 
 MapTradeCenterSignpost1Script:
