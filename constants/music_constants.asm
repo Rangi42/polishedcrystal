@@ -123,65 +123,66 @@
 	const MUSIC_CINNABAR_ISLAND_HGSS           ; 79
 	const MUSIC_CINNABAR_MANSION_RBY           ; 7a
 	const MUSIC_TRAINER_BATTLE_DPPT            ; 7b
-	const MUSIC_ETERNA_FOREST_DPPT             ; 7c
-	const MUSIC_MOUNT_CHIMNEY_RSE              ; 7d
-	const MUSIC_MOUNT_PYRE_RSE                 ; 7e
-	const MUSIC_BATTLE_TOWER_THEME             ; 7f
-	const MUSIC_BATTLE_TOWER_LOBBY             ; 80
-	const MUSIC_TRAINER_BATTLE_BW              ; 81
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE      ; 82
-	const MUSIC_ZINNIA_ENCOUNTER_ORAS          ; 83
-	const MUSIC_ROUTE_205_DPPT                 ; 84
-	const MUSIC_WILD_BATTLE_SM                 ; 85
-	const MUSIC_SUNYSHORE_CITY_DPPT            ; 86
-	const MUSIC_TRAINER_BATTLE_SM              ; 87
-	const MUSIC_ROUTE_203_DPPT                 ; 88
-	const MUSIC_WHITE_TREEHOLLOW_W2            ; 89
-	const MUSIC_LAVERRE_CITY_XY                ; 8a
-	const MUSIC_ROUTE_101_RSE                  ; 8b
-	const MUSIC_EVER_GRANDE_CITY_RSE           ; 8c
-	const MUSIC_OREBURGH_GATE_DPPT             ; 8d
-	const MUSIC_ROUTE_12_BW                    ; 8e
-	const MUSIC_ROAD_TO_REVERSAL_MOUNTAIN_B2W2 ; 8f
-	const MUSIC_ZINNIA_BATTLE_ORAS             ; 90
-	const MUSIC_WALLY_ENCOUNTER_ORAS           ; 91
-	const MUSIC_WALLY_BATTLE_ORAS              ; 92
-	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; 93
-	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; 94
-	const MUSIC_FROST_CAVERN_XY                ; 95
-	const MUSIC_POWER_PLANT_XY                 ; 96
-	const MUSIC_REVERSAL_MOUNTAIN_W2           ; 97
-	const MUSIC_METEOR_FALLS_RSE               ; 98
-	const MUSIC_LUGIAS_SONG_2000               ; 99
-	const MUSIC_LUGIA_BATTLE_HGSS              ; 9a
-	const MUSIC_SUMMONING_DANCE_HGSS           ; 9b
-	const MUSIC_HO_OH_BATTLE_HGSS              ; 9c
-	const MUSIC_CERULEAN_CAVE_RBY              ; 9d
-	const MUSIC_MEWTWO_BATTLE_STADIUM          ; 9e
-	const MUSIC_ABANDONED_SHIP_RSE             ; 9f
-	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; a0
-	const MUSIC_GYM_LEADER_BATTLE_RSE          ; a1
-	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a2
-	const MUSIC_GYM_LEADER_BATTLE_BW           ; a3
-	const MUSIC_GYM_LEADER_BATTLE_XY           ; a4
-	const MUSIC_GYM_LEADER_BATTLE_GO           ; a5
-	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a6
-	const MUSIC_CELESTIAL_TOWER_BW             ; a7
-	const MUSIC_CHAMPION_BATTLE_RSE            ; a8
-	const MUSIC_MOUNT_CORONET_DPPT             ; a9
-	const MUSIC_CHAMPION_BATTLE_DPPT           ; aa
-	const MUSIC_WCS_BATTLE_BW                  ; ab
-	const MUSIC_CHAMPION_BATTLE_B2W2           ; ac
-	const MUSIC_CREDITS                        ; ad
-	const MUSIC_POST_CREDITS                   ; ae
-	const MUSIC_TITLE_XY                       ; af
-	const MUSIC_DEWFORD_TOWN_RSE               ; b0 ; unused
-	const MUSIC_MARINE_TUBE_B2W2               ; b1 ; unused
-	const MUSIC_LEGENDARY_BATTLE_XY            ; b2 ; unused
-	const MUSIC_WILD_BATTLE_PRISM              ; b3 ; unused
-	const MUSIC_TRAINER_BATTLE_PRISM           ; b4 ; unused
-	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b5 ; unused
-	const MUSIC_PALETTE_BATTLE_PRISM           ; b6 ; unused
+	const MUSIC_SCARY_HOUSE_XY                 ; 7c
+	const MUSIC_ETERNA_FOREST_DPPT             ; 7d
+	const MUSIC_MOUNT_CHIMNEY_RSE              ; 7e
+	const MUSIC_MOUNT_PYRE_RSE                 ; 7f
+	const MUSIC_BATTLE_TOWER_THEME             ; 80
+	const MUSIC_BATTLE_TOWER_LOBBY             ; 81
+	const MUSIC_TRAINER_BATTLE_BW              ; 82
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE      ; 83
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS          ; 84
+	const MUSIC_ROUTE_205_DPPT                 ; 85
+	const MUSIC_WILD_BATTLE_SM                 ; 86
+	const MUSIC_SUNYSHORE_CITY_DPPT            ; 87
+	const MUSIC_TRAINER_BATTLE_SM              ; 88
+	const MUSIC_ROUTE_203_DPPT                 ; 89
+	const MUSIC_WHITE_TREEHOLLOW_W2            ; 8a
+	const MUSIC_LAVERRE_CITY_XY                ; 8b
+	const MUSIC_ROUTE_101_RSE                  ; 8c
+	const MUSIC_EVER_GRANDE_CITY_RSE           ; 8d
+	const MUSIC_OREBURGH_GATE_DPPT             ; 8e
+	const MUSIC_ROUTE_12_BW                    ; 8f
+	const MUSIC_ROAD_TO_REVERSAL_MOUNTAIN_B2W2 ; 90
+	const MUSIC_ZINNIA_BATTLE_ORAS             ; 91
+	const MUSIC_WALLY_ENCOUNTER_ORAS           ; 92
+	const MUSIC_WALLY_BATTLE_ORAS              ; 93
+	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; 94
+	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; 95
+	const MUSIC_FROST_CAVERN_XY                ; 96
+	const MUSIC_POWER_PLANT_XY                 ; 97
+	const MUSIC_REVERSAL_MOUNTAIN_W2           ; 98
+	const MUSIC_METEOR_FALLS_RSE               ; 99
+	const MUSIC_LUGIAS_SONG_2000               ; 9a
+	const MUSIC_LUGIA_BATTLE_HGSS              ; 9b
+	const MUSIC_SUMMONING_DANCE_HGSS           ; 9c
+	const MUSIC_HO_OH_BATTLE_HGSS              ; 9d
+	const MUSIC_CERULEAN_CAVE_RBY              ; 9e
+	const MUSIC_MEWTWO_BATTLE_STADIUM          ; 9f
+	const MUSIC_ABANDONED_SHIP_RSE             ; a0
+	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; a1
+	const MUSIC_GYM_LEADER_BATTLE_RSE          ; a2
+	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a3
+	const MUSIC_GYM_LEADER_BATTLE_BW           ; a4
+	const MUSIC_GYM_LEADER_BATTLE_XY           ; a5
+	const MUSIC_GYM_LEADER_BATTLE_GO           ; a6
+	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a7
+	const MUSIC_CELESTIAL_TOWER_BW             ; a8
+	const MUSIC_CHAMPION_BATTLE_RSE            ; a9
+	const MUSIC_MOUNT_CORONET_DPPT             ; aa
+	const MUSIC_CHAMPION_BATTLE_DPPT           ; ab
+	const MUSIC_WCS_BATTLE_BW                  ; ac
+	const MUSIC_CHAMPION_BATTLE_B2W2           ; ad
+	const MUSIC_CREDITS                        ; ae
+	const MUSIC_POST_CREDITS                   ; af
+	const MUSIC_TITLE_XY                       ; b0
+	const MUSIC_DEWFORD_TOWN_RSE               ; b1 ; unused
+	const MUSIC_MARINE_TUBE_B2W2               ; b2 ; unused
+	const MUSIC_LEGENDARY_BATTLE_XY            ; b3 ; unused
+	const MUSIC_WILD_BATTLE_PRISM              ; b4 ; unused
+	const MUSIC_TRAINER_BATTLE_PRISM           ; b5 ; unused
+	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b6 ; unused
+	const MUSIC_PALETTE_BATTLE_PRISM           ; b7 ; unused
 NUM_SONGS EQU const_value
 
 ; special

@@ -295,6 +295,7 @@ INCLUDE "audio/music/xy/titlescreen.asm"
 
 SECTION "XY Music 3", ROMX
 
+INCLUDE "audio/music/xy/scaryhouse.asm"
 INCLUDE "audio/music/xy/legendarybattle.asm"
 
 

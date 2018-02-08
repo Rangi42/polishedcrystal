@@ -123,6 +123,7 @@ Music:
 	dba Music_CinnabarIslandHGSS
 	dba Music_CinnabarMansionRBY
 	dba Music_TrainerBattleDPPt
+	dba Music_ScaryHouseXY
 	dba Music_EternaForestDPPt
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
