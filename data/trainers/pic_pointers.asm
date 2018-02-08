@@ -145,3 +145,6 @@ TrainerPicPointers::
 	dba CuboneArmorPic
 	dba MeteoritePic
 	dba SilhouettePic
+	dba HoOhPaintingPic
+	dba LugiaPaintingPic
+	dba BellTowerPaintingPic

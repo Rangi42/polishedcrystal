@@ -221,38 +221,11 @@ NoRoomForFossilPokemon:
 	jumpopenedtext NoRoomForFossilPokemonText
 
 Museum1FReceptionistScript:
-	faceplayer
-	opentext
 	checkcode VAR_FACING
 	if_equal DOWN, .Sneak
 	if_equal LEFT, .Sneak
-	jumpopenedtext Museum1FReceptionistText1
+	thistextfaceplayer
 
-.Sneak:
-	jumpopenedtext Museum1FReceptionistText2
-
-KabutopsFossilSignpostScript:
-	refreshscreen
-	trainerpic KABUTOPS_FOSSIL
-	waitbutton
-	closepokepic
-	jumptext KabutopsFossilSignpostText
-
-OmastarFossilSignpostScript:
-	refreshscreen
-	trainerpic OMASTAR_FOSSIL
-	waitbutton
-	closepokepic
-	jumptext OmastarFossilSignpostText
-
-AerodactylFossilSignpostScript:
-	refreshscreen
-	trainerpic AERODACTYL_FOSSIL
-	waitbutton
-	closepokepic
-	jumptext AerodactylFossilSignpostText
-
-Museum1FReceptionistText1:
 	text "Welcome!"
 
 	para "Thanks to a gene-"
@@ -265,9 +238,52 @@ Museum1FReceptionistText1:
 	para "Please go ahead."
 	done
 
-Museum1FReceptionistText2:
+.Sneak:
+	thistextfaceplayer
+
 	text "You can't sneak"
 	line "in the back way!"
+	done
+
+KabutopsFossilSignpostScript:
+	refreshscreen
+	trainerpic KABUTOPS_FOSSIL
+	waitbutton
+	closepokepic
+	thistext
+
+	text "Kabutops Fossil"
+	line "(Dome)"
+
+	para "A primitive and"
+	line "rare Pokémon."
+	done
+
+OmastarFossilSignpostScript:
+	refreshscreen
+	trainerpic OMASTAR_FOSSIL
+	waitbutton
+	closepokepic
+	thistext
+
+	text "Omastar Fossil"
+	line "(Helix)"
+
+	para "A primitive and"
+	line "rare Pokémon."
+	done
+
+AerodactylFossilSignpostScript:
+	refreshscreen
+	trainerpic AERODACTYL_FOSSIL
+	waitbutton
+	closepokepic
+	thistext
+
+	text "Aerodactyl Fossil"
+
+	para "A primitive and"
+	line "rare Pokémon."
 	done
 
 Museum1FScientistText:
@@ -313,29 +329,6 @@ Museum1FYoungsterText:
 	para "I get a sense of"
 	line "history from both"
 	cont "of them."
-	done
-
-KabutopsFossilSignpostText:
-	text "Kabutops Fossil"
-	line "(Dome)"
-
-	para "A primitive and"
-	line "rare Pokémon."
-	done
-
-OmastarFossilSignpostText:
-	text "Omastar Fossil"
-	line "(Helix)"
-
-	para "A primitive and"
-	line "rare Pokémon."
-	done
-
-AerodactylFossilSignpostText:
-	text "Aerodactyl Fossil"
-
-	para "A primitive and"
-	line "rare Pokémon."
 	done
 
 Museum1FBookshelfSignpostText:
