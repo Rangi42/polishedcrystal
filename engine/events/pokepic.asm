@@ -59,12 +59,19 @@ Paintingpic::
 	farcall LoadPaintingPalette
 	call UpdateTimePals
 	ld de, PaintingFrameGFX
-	ld hl, VTiles0 tile "┌"
-	lb bc, BANK(PaintingFrameGFX), 6
+	ld hl, VTiles0 tile ("┌" - 3)
+	lb bc, BANK(PaintingFrameGFX), 9
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuDataHeader
 	call MenuBox
+	hlcoord 9, 12
+	ld a, "┌" - 3
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
 	call UpdateSprites
 	call ApplyTilemap
 	xor a
