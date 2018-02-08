@@ -11,7 +11,8 @@ Route18West_MapScriptHeader:
 	db 1 ; coord events
 	coord_event 12,  0, 0, Route18WestBikeCheckScript
 
-	db 0 ; bg events
+	db 1 ; bg events
+	bg_event -1,  5, SIGNPOST_JUMPTEXT, UragaChannelSignText
 
 	db 1 ; object events
 	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1

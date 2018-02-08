@@ -235,7 +235,6 @@ LakeOfRageRedGyaradosScript:
 	waitsfx
 	itemnotify
 	closetext
-	dotrigger $0
 	appear LAKEOFRAGE_LANCE
 	end
 

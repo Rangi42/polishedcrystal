@@ -2,8 +2,7 @@ Route43Gate_MapScriptHeader:
 	db 1 ; scene scripts
 	scene_script Route43GateTrigger0
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
+	db 0 ; callbacks
 
 	db 4 ; warp events
 	warp_event  4,  0, ROUTE_43, 4
@@ -27,16 +26,6 @@ Route43Gate_MapScriptHeader:
 Route43GateTrigger0:
 	priorityjump UnknownScript_0x19abda
 	end
-
-UnknownScript_0x19abca:
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x19abd5
-	domaptrigger ROUTE_43, $0
-	return
-
-UnknownScript_0x19abd5:
-	domaptrigger ROUTE_43, $1
-	return
 
 UnknownScript_0x19abda:
 	playmusic MUSIC_ROCKET_ENCOUNTER

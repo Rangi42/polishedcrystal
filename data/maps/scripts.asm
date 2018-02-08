@@ -763,6 +763,7 @@ SECTION "Uraga Channel Scripts", ROMX
 
 INCLUDE "maps/UragaChannelEast.asm"
 INCLUDE "maps/UragaChannelWest.asm"
+INCLUDE "maps/Route18West.asm" ; shares text with UragaChannelEast.asm
 
 
 SECTION "Scary Cave Scripts", ROMX
@@ -956,7 +957,6 @@ INCLUDE "maps/Route17.asm"
 SECTION "Routes 18-20 Scripts", ROMX
 
 INCLUDE "maps/Route18East.asm"
-INCLUDE "maps/Route18West.asm"
 INCLUDE "maps/Route18Gate.asm"
 INCLUDE "maps/Route18Gate2F.asm"
 INCLUDE "maps/Route19.asm"
