@@ -554,7 +554,7 @@ LoadPartyMonPalette:
 	call GetMonNormalOrShinyPalettePointer
 	; load palette in BG 7
 	ld a, $5
-	ld de, UnknBGPals palette 7 + 2
+	ld de, UnknBGPals palette PAL_BG_TEXT + 2
 	ld bc, 4
 	call FarCopyWRAM
 	; hl = DVs
@@ -566,8 +566,19 @@ LoadPartyMonPalette:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, UnknBGPals palette 7 + 2
+	ld hl, UnknBGPals palette PAL_BG_TEXT + 2
 	jp VaryColorsByDVs
+
+LoadTrainerPalette:
+	; a = class
+	ld a, [TrainerClass]
+	; hl = palette
+	call GetTrainerPalettePointer
+	; load palette in BG 7
+	ld a, $5
+	ld de, UnknBGPals palette PAL_BG_TEXT + 2
+	ld bc, 4
+	jp FarCopyWRAM
 
 InitCGBPals::
 	ld a, $1

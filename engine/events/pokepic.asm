@@ -45,7 +45,7 @@ Trainerpic::
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
-	call LoadGrayscalePalette
+	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a
 	ld [hBGMapMode], a
@@ -84,19 +84,3 @@ PokepicMenuDataHeader: ; 0x24547
 	db 12, 14 ; end coords
 	dw NULL
 	db 1 ; default option
-
-LoadGrayscalePalette:
-	ld a, $5
-	ld de, UnknBGPals palette 7 + 2
-	ld hl, GrayscalePalette
-	ld bc, 4
-	jp FarCopyWRAM
-; 49418
-
-GrayscalePalette:
-if !DEF(MONOCHROME)
-	RGB 20, 20, 20
-	RGB 10, 10, 10
-else
-	MONOCHROME_RGB_TWO
-endc
