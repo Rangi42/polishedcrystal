@@ -1836,7 +1836,7 @@ DrowzeeEvosAttacks:
 	db 17, LOW_KICK ; Poison Gas → HGSS tutor move
 	db 21, CALM_MIND ; Meditate → TM move
 	db 25, PSYBEAM
-	db 29, HEADBUTT
+	db 29, TRI_ATTACK ; Wake-Up Slap → RBY TM move
 	db 33, BARRIER ; Psych Up → egg move
 	db 37, BELLY_DRUM ; Synchronoise → event move
 	db 41, ZEN_HEADBUTT
@@ -1857,7 +1857,7 @@ HypnoEvosAttacks:
 	db 17, LOW_KICK ; Poison Gas → HGSS tutor move
 	db 21, CALM_MIND ; Meditate → TM move
 	db 25, PSYBEAM
-	db 29, HEADBUTT
+	db 29, TRI_ATTACK ; Wake-Up Slap → RBY TM move
 	db 33, BARRIER ; Psych Up → egg move
 	db 37, BELLY_DRUM ; Synchronoise → event move
 	db 41, ZEN_HEADBUTT

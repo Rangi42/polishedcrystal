@@ -10,7 +10,6 @@ Munchlax: Pursuit
 Misdreavus: Screech
 Whirlpool: Sandshrew/Sandslash, Geodude/Graveler/Golem, Pineco/Forretress, Donphan, Hitmontop (Whirlpool users)
 
-Drowzee/Hypno: Tri Attack (RBY TM), Baton Pass (purified)
 Eevee: Focus Energy (RBY learnset), Charm (purified)
 Girafarig: Mirror Coat (Dream World), Sucker Punch (HGSS tutor)
 Growlithe/Arcanine: Dragon Rage (RBY TM), Charm (purified)
@@ -51,6 +50,7 @@ Drowzee/Hypno: Drain Punch
 Kangaskhan: Drain Punch
 
 Purified:
+Drowzee/Hypno: Baton Pass
 Ponyta/Rapidash: Baton Pass
 Swinub/Piloswine/Mamoswine: Charm
 Weedle/Kakuna/Beedrill: Baton Pass
