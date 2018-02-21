@@ -153,7 +153,7 @@ Music:
 	dba Music_PowerPlantXY
 	dba Music_ReversalMountainWhite2
 	dba Music_MeteorFallsRSE
-	dba Music_LugiasSong2000
+	dba Music_LugiasSong2000_NoIntro
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS
 	dba Music_HoOhBattleHGSS
