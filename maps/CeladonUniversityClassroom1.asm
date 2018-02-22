@@ -17,7 +17,7 @@ CeladonUniversityClassroom1_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom1Bookshelf2Text
 
 	db 7 ; object events
-	object_event  0,  7, SPRITE_IMAKUNI, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
+	object_event  0,  6, SPRITE_IMAKUNI, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom1ImakuniScript, -1
 	object_event  1,  2, SPRITE_ANDY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1AndyText, -1
 	object_event  5,  2, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CeladonUniversityClassroom1Dragon_tamerText, -1
 	object_event  2,  5, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom1LadyText, -1
@@ -29,7 +29,24 @@ CeladonUniversityClassroom1_MapScriptHeader:
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI
 
 CeladonUniversityClassroom1ImakuniScript:
-	faceplayer
+	checkcode VAR_FACING
+	ifequal UP, .Up
+	ifequal DOWN, .Down
+	ifequal LEFT, .Left
+	objectface CELADONUNIVERSITYCLASSROOM1_IMAKUNI, RIGHT
+	jump .Continue
+
+.Up:
+	objectface CELADONUNIVERSITYCLASSROOM1_IMAKUNI, UP
+	jump .Continue
+
+.Down:
+	objectface CELADONUNIVERSITYCLASSROOM1_IMAKUNI, DOWN
+	jump .Continue
+
+.Left:
+	objectface CELADONUNIVERSITYCLASSROOM1_IMAKUNI, LEFT
+.Continue:
 	checkevent EVENT_BEAT_IMAKUNI
 	iftrue .Beaten
 	opentext
