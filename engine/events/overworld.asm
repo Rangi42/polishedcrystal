@@ -304,16 +304,13 @@ CheckOverworldTileArrays: ; c840
 	ld h, [hl]
 	ld l, a
 	; Look up the tile you're facing
-	ld de, 3
+	ld de, 2
 	ld a, c
 	call IsInArray
 	jr nc, .nope
 	; Load the replacement to b
 	inc hl
 	ld b, [hl]
-	; Load the animation type parameter to c
-	inc hl
-	ld c, [hl]
 	scf
 	ret
 
@@ -1261,9 +1258,8 @@ TryWhirlpoolMenu: ; cdde
 	ld [Buffer4], a
 	ld a, b
 	ld [Buffer5], a
-	ld a, c
-	ld [Buffer6], a
 	xor a
+	ld [Buffer6], a
 	ret
 
 .failed
@@ -1884,6 +1880,8 @@ BikeFunction: ; d0b3
 	cp CAVE
 	jr z, .ok
 	cp GATE
+	jr z, .ok
+	cp PERM_5
 	jr z, .ok
 	jr .nope
 
