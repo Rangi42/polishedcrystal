@@ -46,7 +46,7 @@ FightingDojoSetupRematchesCallback:
 rematch: MACRO
 	; rematch person, varsprite, sprite, y, x, face
 	moveobject \1, \5, \4
-	objectface \1, \6
+	turnobject \1, \6
 	appear \1
 	variablesprite \2, \3
 ENDM

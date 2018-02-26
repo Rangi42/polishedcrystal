@@ -21,7 +21,7 @@ TrainerHouseB1F_MapScriptHeader:
 	const TRAINERHOUSEB1F_CARRIE
 
 TrainerHouseReceptionistScript:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	opentext
 	checkflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
 	iftrue .FoughtTooManyTimes

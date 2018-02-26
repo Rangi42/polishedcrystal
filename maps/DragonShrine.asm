@@ -36,7 +36,7 @@ DragonShrineTestScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	writetext UnknownText_0x18d3bc
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d215
+	loadmenu MenuDataHeader_0x18d215
 	verticalmenu
 	closewindow
 	ifequal $1, .RightAnswer
@@ -48,7 +48,7 @@ DragonShrineTestScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	writetext UnknownText_0x18d3d3
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d234
+	loadmenu MenuDataHeader_0x18d234
 	verticalmenu
 	closewindow
 	ifequal $1, .RightAnswer
@@ -58,7 +58,7 @@ DragonShrineTestScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
 	writetext UnknownText_0x18d3f3
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d258
+	loadmenu MenuDataHeader_0x18d258
 	verticalmenu
 	closewindow
 	ifequal $1, .WrongAnswer
@@ -68,7 +68,7 @@ DragonShrineTestScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
 	writetext UnknownText_0x18d420
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d283
+	loadmenu MenuDataHeader_0x18d283
 	verticalmenu
 	closewindow
 	ifequal $1, .RightAnswer
@@ -78,7 +78,7 @@ DragonShrineTestScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
 	writetext UnknownText_0x18d44a
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d2a5
+	loadmenu MenuDataHeader_0x18d2a5
 	verticalmenu
 	closewindow
 	ifequal $1, .WrongAnswer
@@ -99,9 +99,9 @@ DragonShrineTestScript:
 	iftrue .Question2
 .WrongAnswer:
 	closetext
-	objectface DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_ELDER1, LEFT
 	showtext UnknownText_0x18d7f6
-	objectface DRAGONSHRINE_ELDER1, DOWN
+	turnobject DRAGONSHRINE_ELDER1, DOWN
 	showtext UnknownText_0x18d816
 	setevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	opentext
@@ -124,12 +124,12 @@ DragonShrineTestScript:
 	playmusic MUSIC_CLAIR
 	appear DRAGONSHRINE_CLAIR
 	waitsfx
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 30
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2d4
-	objectface DRAGONSHRINE_CLAIR, RIGHT
-	objectface PLAYER, LEFT
-	objectface DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_CLAIR, RIGHT
+	turnobject PLAYER, LEFT
+	turnobject DRAGONSHRINE_ELDER1, LEFT
 	showtext UnknownText_0x18d916
 	special Special_FadeOutMusic
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2da
@@ -137,7 +137,7 @@ DragonShrineTestScript:
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2dd
 	showtext UnknownText_0x18d983
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2c9
-	objectface DRAGONSHRINE_CLAIR, UP
+	turnobject DRAGONSHRINE_CLAIR, UP
 	showtext UnknownText_0x18d520
 	showemote EMOTE_SHOCK, DRAGONSHRINE_CLAIR, 15
 	showtext UnknownText_0x18d9ae
@@ -158,9 +158,9 @@ DragonShrineTestScript:
 	waitbutton
 	closetext
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2ce
-	objectface DRAGONSHRINE_CLAIR, UP
+	turnobject DRAGONSHRINE_CLAIR, UP
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2d1
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext UnknownText_0x18d5a3
 	showtext UnknownText_0x18dab4
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2e3

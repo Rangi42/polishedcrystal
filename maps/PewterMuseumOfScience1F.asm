@@ -67,7 +67,7 @@ Museum1FFossilScientistScript:
 .own_helix_and_dome
 	checkitem OLD_AMBER
 	iftrue .ask_helix_dome_amber
-	loadmenudata HelixDomeMenuDataHeader
+	loadmenu HelixDomeMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, ResurrectHelixFossil
@@ -81,7 +81,7 @@ Museum1FFossilScientistScript:
 	jump .maybe_later
 
 .ask_helix_amber
-	loadmenudata HelixAmberMenuDataHeader
+	loadmenu HelixAmberMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, ResurrectHelixFossil
@@ -89,7 +89,7 @@ Museum1FFossilScientistScript:
 	jump .maybe_later
 
 .ask_dome_amber
-	loadmenudata DomeAmberMenuDataHeader
+	loadmenu DomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, ResurrectDomeFossil
@@ -97,7 +97,7 @@ Museum1FFossilScientistScript:
 	jump .maybe_later
 
 .ask_helix_dome_amber
-	loadmenudata HelixDomeAmberMenuDataHeader
+	loadmenu HelixDomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, ResurrectHelixFossil
@@ -200,7 +200,7 @@ ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
 	waitbutton
 	closetext
-	objectface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
+	turnobject PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
 	pause 15
 	playsound SFX_BOOT_PC
 	waitsfx

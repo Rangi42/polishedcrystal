@@ -45,7 +45,7 @@ SeagallopFerryNavelGateSailorScript:
 	writetext SeagallopFerryNavelToVermilionText
 	waitbutton
 	closetext
-	objectface SEAGALLOPFERRYNAVELGATE_SAILOR, DOWN
+	turnobject SEAGALLOPFERRYNAVELGATE_SAILOR, DOWN
 	pause 10
 	applyonemovement SEAGALLOPFERRYNAVELGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING

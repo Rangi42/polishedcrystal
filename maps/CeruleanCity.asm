@@ -53,7 +53,7 @@ CooltrainerMScript_0x184009:
 
 CooltrainerFScript_0x18402a:
 	showtextfaceplayer UnknownText_0x1841fa
-	objectface CERULEANCITY_COOLTRAINER_F, LEFT
+	turnobject CERULEANCITY_COOLTRAINER_F, LEFT
 	showtext UnknownText_0x184229
 	showcrytext CeruleanCitySlowbroText, SLOWBRO
 	jumptext UnknownText_0x18424b
@@ -88,7 +88,7 @@ YoungsterScript_0x184064:
 	playsound SFX_TRANSACTION
 	waitsfx
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
-	objectface CERULEANCITY_YOUNGSTER, LEFT
+	turnobject CERULEANCITY_YOUNGSTER, LEFT
 	jumptext UnknownText_0x1842ee
 
 UnknownText_0x1840bc:

@@ -33,7 +33,7 @@ MrPokemonsHouseTrigger0:
 
 .MrPokemonEvent:
 	showemote EMOTE_SHOCK, MRPOKEMONSHOUSE_GENTLEMAN, 15
-	objectface MRPOKEMONSHOUSE_GENTLEMAN, DOWN
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
 	showtext MrPokemonIntroText1
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
@@ -50,11 +50,11 @@ MrPokemonsHouseTrigger0:
 if !DEF(DEBUG)
 	writetext MrPokemonIntroText3
 	buttonsound
-	objectface MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
 	writetext MrPokemonIntroText4
 	buttonsound
-	objectface MRPOKEMONSHOUSE_GENTLEMAN, DOWN
-	objectface MRPOKEMONSHOUSE_OAK, LEFT
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
+	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	writetext MrPokemonIntroText5
 	waitbutton
 endc
@@ -90,14 +90,14 @@ MrPokemonsHouse_MrPokemonScript:
 MrPokemonsHouse_OakScript:
 	playmusic MUSIC_PROF_OAK
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakWalksToPlayer
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext MrPokemonsHouse_OakText1
-	objectface MRPOKEMONSHOUSE_OAK, UP
+	turnobject MRPOKEMONSHOUSE_OAK, UP
 	pause 10
 	applymovement MRPOKEMONSHOUSE_POKEDEX, MrPokemonsHouse_OakTakesPokedex
 	disappear MRPOKEMONSHOUSE_POKEDEX
 	pause 10
-	objectface MRPOKEMONSHOUSE_OAK, LEFT
+	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	pause 10
 	opentext
 	writetext MrPokemonsHouse_GetDexText
@@ -107,14 +107,14 @@ MrPokemonsHouse_OakScript:
 	writetext MrPokemonsHouse_OakText2
 	waitbutton
 	closetext
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakExits
 	playsound SFX_EXIT_BUILDING
 	disappear MRPOKEMONSHOUSE_OAK
 	waitsfx
 	special RestartMapMusic
 	pause 15
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext MrPokemonsHouse_MrPokemonHealText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes

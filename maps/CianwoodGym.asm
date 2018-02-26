@@ -37,7 +37,7 @@ ChuckScript_0x9d60f:
 	writetext ChuckIntroText1
 	waitbutton
 	closetext
-	objectface CIANWOODGYM_CHUCK, RIGHT
+	turnobject CIANWOODGYM_CHUCK, RIGHT
 	showtext ChuckIntroText2
 	applymovement CIANWOODGYM_BOULDER1, CianwoodGymMovement_ChuckChucksBoulder
 	playsound SFX_STRENGTH

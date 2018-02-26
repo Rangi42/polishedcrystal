@@ -45,7 +45,7 @@ Route42_MapScriptHeader:
 	const ROUTE42_LYRA
 
 Route42LyraScript1:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -58,7 +58,7 @@ Route42LyraScript1:
 	jump Route42LyraScript
 
 Route42LyraScript2:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -71,7 +71,7 @@ Route42LyraScript2:
 	jump Route42LyraScript
 
 Route42LyraScript3:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -84,7 +84,7 @@ Route42LyraScript3:
 	jump Route42LyraScript
 
 Route42LyraScript4:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -95,7 +95,7 @@ Route42LyraScript4:
 	jump Route42LyraScript
 
 Route42LyraScript5:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX

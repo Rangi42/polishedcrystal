@@ -255,7 +255,7 @@ PokeCenter2F_CheckGender:
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
 	showtext Text_OhPleaseWait
 	applymovement2 PokeCenter2FMovementData_ReceptionistLooksRight
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight

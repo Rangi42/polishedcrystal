@@ -66,7 +66,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	follow PLAYER, DARKCAVEVIOLETENTRANCE_FALKNER
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAside
 	stopfollow
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerLeave
 	disappear DARKCAVEVIOLETENTRANCE_FALKNER
 	pause 15

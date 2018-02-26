@@ -39,7 +39,7 @@ UnknownScript_0x19abea:
 	applyonemovement PLAYER, step_down
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acbb
-	objectface ROUTE43GATE_ROCKET1, UP
+	turnobject ROUTE43GATE_ROCKET1, UP
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET1, 15
 	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19aca4
 	opentext
@@ -71,7 +71,7 @@ UnknownScript_0x19ac28:
 UnknownScript_0x19ac38:
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET1, 15
 	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acaf
-	objectface ROUTE43GATE_ROCKET2, DOWN
+	turnobject ROUTE43GATE_ROCKET2, DOWN
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
 	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acc7
 	opentext

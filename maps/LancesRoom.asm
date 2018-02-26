@@ -70,7 +70,7 @@ ApproachLanceFromRightTrigger:
 	special Special_FadeOutMusic
 	applymovement PLAYER, ApproachLanceFromRightMovement
 LanceScript:
-	objectface LANCESROOM_LANCE, LEFT
+	turnobject LANCESROOM_LANCE, LEFT
 	checkcode VAR_BADGES
 	ifequal 16, .Rematch
 	showtext .SeenText
@@ -102,9 +102,9 @@ LanceScript:
 	musicfadeout MUSIC_BEAUTY_ENCOUNTER, $10
 	pause 30
 	showemote EMOTE_SHOCK, LANCESROOM_LANCE, 15
-	objectface LANCESROOM_LANCE, DOWN
+	turnobject LANCESROOM_LANCE, DOWN
 	pause 10
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	appear LANCESROOM_MARY
 	applymovement LANCESROOM_MARY, .RushInMovement
 	showtext .MaryText1
@@ -113,18 +113,18 @@ LanceScript:
 	follow LANCESROOM_MARY, LANCESROOM_OAK
 	applymovement LANCESROOM_MARY, .StepAsideMovement
 	stopfollow
-	objectface LANCESROOM_OAK, UP
-	objectface LANCESROOM_LANCE, LEFT
+	turnobject LANCESROOM_OAK, UP
+	turnobject LANCESROOM_LANCE, LEFT
 	showtext .OakSpeechText
 	applymovement LANCESROOM_MARY, .ApproachPlayerMovement
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext .MaryText2
 	applymovement LANCESROOM_LANCE, .WalkTowardExitMovement
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext .LanceLeavingText
 	follow LANCESROOM_LANCE, PLAYER
-	objectface LANCESROOM_MARY, UP
-	objectface LANCESROOM_OAK, UP
+	turnobject LANCESROOM_MARY, UP
+	turnobject LANCESROOM_OAK, UP
 	applyonemovement LANCESROOM_LANCE, step_up
 	stopfollow
 	playsound SFX_EXIT_BUILDING

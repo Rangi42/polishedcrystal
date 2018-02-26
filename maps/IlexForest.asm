@@ -302,8 +302,8 @@ IlexForestFinishCelebiEventScript:
 	pause 30
 	showemote EMOTE_SHOCK, ILEXFOREST_LYRA, 15
 	applyonemovement ILEXFOREST_LYRA, slow_step_down
-	objectface ILEXFOREST_LYRA, RIGHT
-	objectface PLAYER, LEFT
+	turnobject ILEXFOREST_LYRA, RIGHT
+	turnobject PLAYER, LEFT
 	opentext
 	writetext Text_IlexForestLyraWorried
 	waitbutton
@@ -313,8 +313,8 @@ IlexForestFinishCelebiEventScript:
 	follow ILEXFOREST_LYRA, PLAYER
 	applyonemovement ILEXFOREST_LYRA, slow_step_up
 	stopfollow
-	objectface PLAYER, UP
-	objectface ILEXFOREST_LYRA, DOWN
+	turnobject PLAYER, UP
+	turnobject ILEXFOREST_LYRA, DOWN
 	setlasttalked ILEXFOREST_LYRA
 	opentext
 	jump IlexForestLyraContinueScript
@@ -341,7 +341,7 @@ IlexForestLyraContinueScript:
 
 IlexForestApprenticeTrigger:
 	showemote EMOTE_SHOCK, ILEXFOREST_YOUNGSTER, 15
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	jump IlexForestCharcoalApprenticeScript
 
 IlexForestCharcoalMasterScript:
@@ -443,7 +443,7 @@ MapIlexForestSignpost4Script:
 	special Special_FadeOutMusic
 	applymovement PLAYER, MovementData_0x6ef58
 	pause 30
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 20
 	clearflag ENGINE_HAVE_EXAMINED_GS_BALL
 	special Special_CelebiShrineEvent
@@ -466,7 +466,7 @@ MapIlexForestSignpost4Script:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	appear ILEXFOREST_CELEBI
 	playsound SFX_BALL_POOF
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	waitsfx
 	pause 15
 	cry CELEBI
@@ -484,24 +484,24 @@ MapIlexForestSignpost4Script:
 	moveobject ILEXFOREST_LYRA, 5, 26
 	appear ILEXFOREST_LYRA
 	applymovement ILEXFOREST_LYRA, MovementData_IlexForestLyraApproaches
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext Text_IlexForestLyraHello
 	special RestartMapMusic
 	pause 30
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
-	objectface ILEXFOREST_CELEBI, DOWN
+	turnobject ILEXFOREST_CELEBI, DOWN
 	pause 30
 	special FadeInPalettes
 	waitsfx
 	showemote EMOTE_SHOCK, PLAYER, 15
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 15
-	objectface ILEXFOREST_LYRA, UP
-	objectface PLAYER, DOWN
+	turnobject ILEXFOREST_LYRA, UP
+	turnobject PLAYER, DOWN
 	pause 15
-	objectface ILEXFOREST_LYRA, RIGHT
-	objectface PLAYER, LEFT
+	turnobject ILEXFOREST_LYRA, RIGHT
+	turnobject PLAYER, LEFT
 	showtext Text_IlexForestLyraWhatWasThat
 	cry CELEBI
 	showemote EMOTE_SHOCK, PLAYER, 15

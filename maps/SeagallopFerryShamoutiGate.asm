@@ -39,7 +39,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
 	iffalse .OnlyVermilion
 	writetext SeagallopFerryShamoutiWhichIslandText
-	loadmenudata VermilionValenciaMenuDataHeader
+	loadmenu VermilionValenciaMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .ToVermilion
@@ -68,7 +68,7 @@ SeagallopFerryShamoutiDepartureScript:
 	writetext SeagallopFerryShamoutiDepartureText
 	waitbutton
 	closetext
-	objectface SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
+	turnobject SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, DOWN
 	pause 10
 	applyonemovement SEAGALLOPFERRYSHAMOUTIGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING

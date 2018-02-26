@@ -80,7 +80,7 @@ UnknownScript_0x6c38f:
 	reloadmappart
 	closetext
 	setevent EVENT_UNCOVERED_STAIRCASE_IN_MAHOGANY_MART
-	objectface MAHOGANYMART1F_LANCE, LEFT
+	turnobject MAHOGANYMART1F_LANCE, LEFT
 	showtext UnknownText_0x6c5ba
 	applyonemovement MAHOGANYMART1F_LANCE, slow_step_right
 	playsound SFX_EXIT_BUILDING

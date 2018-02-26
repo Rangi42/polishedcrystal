@@ -55,7 +55,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	closepokepic
 	opentext
 	writetext .Question1QuestionText
-	loadmenudata .Question1MenuData
+	loadmenu .Question1MenuData
 	verticalmenu
 	closewindow
 	ifnotequal $2, .WrongAnswer
@@ -71,7 +71,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	opentext
 	writetext .Question2QuestionText
-	loadmenudata .Question2MenuData
+	loadmenu .Question2MenuData
 	verticalmenu
 	closewindow
 	ifnotequal $3, .WrongAnswer
@@ -83,7 +83,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question3IntroText
 	waitbutton
 	writetext .Question3QuestionText
-	loadmenudata .Question3MenuData
+	loadmenu .Question3MenuData
 	verticalmenu
 	closewindow
 	ifnotequal $4, .WrongAnswer
@@ -95,7 +95,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question4IntroText
 	waitbutton
 	writetext .Question4QuestionText
-	loadmenudata .Question4MenuData
+	loadmenu .Question4MenuData
 	verticalmenu
 	closewindow
 	ifnotequal $1, .WrongAnswer
@@ -107,7 +107,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question5IntroText
 	waitbutton
 	writetext .Question5QuestionText
-	loadmenudata .Question5MenuData
+	loadmenu .Question5MenuData
 	verticalmenu
 	closewindow
 	ifnotequal $3, .WrongAnswer
@@ -119,7 +119,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question6IntroText
 	waitbutton
 	writetext .Question6QuestionText
-	loadmenudata .Question6MenuData
+	loadmenu .Question6MenuData
 	verticalmenu
 	closewindow
 	ifnotequal $4, .WrongAnswer

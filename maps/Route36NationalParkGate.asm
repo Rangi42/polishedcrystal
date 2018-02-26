@@ -83,7 +83,7 @@ Route36NationalParkGateCheckIfContestAvailable:
 	return
 
 Route36NationalParkGateLeftTheContestEarly:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	opentext
 	checkcode VAR_CONTESTMINUTES
 	addvar $1
@@ -108,7 +108,7 @@ Route36NationalParkGateLeftTheContestEarly:
 	writetext UnknownText_0x6a823
 	waitbutton
 	closetext
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -191,7 +191,7 @@ Route36OfficerScriptContest:
 	closetext
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special Special_GiveParkBalls
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx

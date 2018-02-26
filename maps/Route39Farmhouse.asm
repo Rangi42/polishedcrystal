@@ -33,7 +33,7 @@ UnknownScript_0x9cec5:
 	iftrue UnknownScript_0x9cf08
 	writetext UnknownText_0x9cfe1
 	special PlaceMoneyTopRight
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .Buy1

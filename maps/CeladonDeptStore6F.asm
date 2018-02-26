@@ -20,12 +20,12 @@ CeladonDeptStore6F_MapScriptHeader:
 
 GameboyKidScript_0x70d34:
 	showtextfaceplayer UnknownText_0x70d86
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 GameboyKidScript_0x70d3f:
 	showtextfaceplayer UnknownText_0x70dc7
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 UnknownText_0x712c7:

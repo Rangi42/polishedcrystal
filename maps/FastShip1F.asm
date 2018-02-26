@@ -130,7 +130,7 @@ WorriedGrandpaTriggerLeft:
 	applymovement PLAYER, MovementData_0x7522e
 	applyonemovement FASTSHIP1F_GENTLEMAN, step_right
 	showtext UnknownText_0x75412
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
 	disappear FASTSHIP1F_GENTLEMAN
 	setscene $0

@@ -141,7 +141,7 @@ MoveTutor:
 	checkcoins 200
 	ifequal $2, .NotEnoughMoney
 	writetext UnknownText_0x1990ce
-	loadmenudata .MoveMenuDataHeader
+	loadmenu .MoveMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .FirePunch
@@ -232,7 +232,7 @@ RocketScript_0x198a1a:
 	writetext UnknownText_0x198d2a
 	waitbutton
 	closetext
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 GoldenrodCityGymLassScript:

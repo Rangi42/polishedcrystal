@@ -68,14 +68,14 @@ FisherScript_0x56749:
 	writetext GoldenrodDeptStoreRoofFisherCatchEmAllText
 	waitbutton
 	closetext
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 SuperNerdScript_0x56757:
 	showtext UnknownText_0x56867
 	faceplayer
 	showtext UnknownText_0x56871
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 Binoculars1:
@@ -92,7 +92,7 @@ PokeDollVendingMachine:
 	writetext PokeDollVendingMachineText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .JigglypuffDoll

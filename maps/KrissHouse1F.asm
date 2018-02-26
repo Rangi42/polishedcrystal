@@ -32,21 +32,21 @@ KrissHouse1F_MapScriptHeader:
 MomTrigger1:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	objectface KRISSHOUSE1F_MOM1, RIGHT
-	objectface PLAYER, LEFT
+	turnobject KRISSHOUSE1F_MOM1, RIGHT
+	turnobject PLAYER, LEFT
 	jump MomEventScript
 
 MomTrigger2:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	objectface KRISSHOUSE1F_MOM1, RIGHT
+	turnobject KRISSHOUSE1F_MOM1, RIGHT
 	applyonemovement PLAYER, slow_step_left
 	jump MomEventScript
 
 MomTrigger3:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	objectface KRISSHOUSE1F_MOM1, UP
+	turnobject KRISSHOUSE1F_MOM1, UP
 	applyonemovement PLAYER, slow_step_down
 MomEventScript:
 	opentext
@@ -85,7 +85,7 @@ MomEventScript:
 	writetext MomOutroText
 	waitbutton
 	closetext
-	objectface KRISSHOUSE1F_MOM1, LEFT
+	turnobject KRISSHOUSE1F_MOM1, LEFT
 	special RestartMapMusic
 	end
 
@@ -288,7 +288,7 @@ NeighborScript:
 	writetext .NeighborText
 	waitbutton
 	closetext
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .MornIntroText:

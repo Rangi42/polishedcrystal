@@ -27,7 +27,7 @@ PokemonLeagueGate_MapScriptHeader:
 PokemonLeagueGateXYTriggerScript2:
 	applyonemovement PLAYER, step_left
 PokemonLeagueGateXYTriggerScript1:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	jump UnknownScript_0x9ba04
 
 OfficerScript_0x9ba03:

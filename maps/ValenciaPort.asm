@@ -28,7 +28,7 @@ ValenciaPortSailorScript:
 	writetext .DepartText
 	waitbutton
 	closetext
-	objectface VALENCIAPORT_SAILOR, UP
+	turnobject VALENCIAPORT_SAILOR, UP
 	pause 10
 	playsound SFX_EXIT_BUILDING
 	disappear VALENCIAPORT_SAILOR

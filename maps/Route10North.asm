@@ -69,14 +69,14 @@ Route10NorthLawrenceEncounter1Script:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach1
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext Route10NorthLawrenceGreetingText
 	follow ROUTE10_LAWRENCE, PLAYER
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceShowZapdos
 	stopfollow
-	objectface ROUTE10_LAWRENCE, UP
-	objectface PLAYER, UP
+	turnobject ROUTE10_LAWRENCE, UP
+	turnobject PLAYER, UP
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemalePan
 	appear ROUTE10_CHRIS
@@ -102,17 +102,17 @@ Route10NorthLawrenceEncounter1Script:
 	applyonemovement PLAYER, show_person
 	disappear ROUTE10_KRIS
 .Finish
-	objectface ROUTE10_LAWRENCE, LEFT
-	objectface PLAYER, RIGHT
+	turnobject ROUTE10_LAWRENCE, LEFT
+	turnobject PLAYER, RIGHT
 	showtext Route10NorthLawrenceZapdosText
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
-	objectface ROUTE10_LAWRENCE, RIGHT
+	turnobject ROUTE10_LAWRENCE, RIGHT
 	waitsfx
 	pause 15
 	cry ZAPDOS
 	waitsfx
-	objectface ROUTE10_LAWRENCE, DOWN
+	turnobject ROUTE10_LAWRENCE, DOWN
 	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
@@ -143,21 +143,21 @@ Route10NorthLawrenceEncounter2Script:
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 10, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	jump .continue
 .up
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
-	objectface ROUTE10_LAWRENCE, DOWN
+	turnobject ROUTE10_LAWRENCE, DOWN
 	jump .continue
 .down
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
-	objectface ROUTE10_LAWRENCE, UP
+	turnobject ROUTE10_LAWRENCE, UP
 	jump .continue
 .left
 	moveobject ROUTE10_LAWRENCE, 9, 44
@@ -170,12 +170,12 @@ Route10NorthLawrenceEncounter2Script:
 	pause 15
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
-	objectface ROUTE10_LAWRENCE, LEFT
+	turnobject ROUTE10_LAWRENCE, LEFT
 	waitsfx
 	pause 15
 	cry ZAPDOS
 	waitsfx
-	objectface ROUTE10_LAWRENCE, DOWN
+	turnobject ROUTE10_LAWRENCE, DOWN
 	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly

@@ -76,7 +76,7 @@ ViridianSchoolHouseYoungsterScript:
 
 ViridianSchoolHouseGameBoyKidScript:
 	showtextfaceplayer ViridianSchoolHouseGameBoyKidText
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 ViridianSchoolHouseGameBoyKidText:

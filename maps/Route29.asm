@@ -47,13 +47,13 @@ Route29Tuscany:
 	return
 
 Route29Tutorial1:
-	objectface ROUTE29_LYRA, UP
+	turnobject ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData1a
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	opentext
 	writetext CatchingTutorialIntroText
 	yesorno
@@ -64,13 +64,13 @@ Route29Tutorial1:
 	jump Route29TutorialScript
 
 Route29Tutorial2:
-	objectface ROUTE29_LYRA, UP
+	turnobject ROUTE29_LYRA, UP
 	showemote EMOTE_SHOCK, ROUTE29_LYRA, 15
 	special Special_FadeOutMusic
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	pause 15
 	applymovement ROUTE29_LYRA, LyraMovementData2a
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	opentext
 	writetext CatchingTutorialIntroText
 	yesorno
@@ -84,7 +84,7 @@ Route29TutorialScript:
 	catchtutorial BATTLETYPE_TUTORIAL
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	objectface ROUTE29_LYRA, UP
+	turnobject ROUTE29_LYRA, UP
 	opentext
 	writetext CatchingTutorialDebriefText
 Route29FinishTutorial:

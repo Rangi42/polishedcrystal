@@ -169,10 +169,10 @@ CooltrainerFScript_0x5cdd5:
 	closetext
 	showemote EMOTE_SHOCK, RADIOTOWER1F_WHITNEY, 15
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyApproachesMovementData
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext RadioTower1FWhitney2Text
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves1MovementData
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
 	disappear RADIOTOWER1F_WHITNEY
 	end
@@ -196,7 +196,7 @@ GenericTrainerGruntM3:
 
 RadioTower1FWhitneyScript:
 	showtextfaceplayer RadioTower1FWhitney1Text
-	objectface RADIOTOWER1F_WHITNEY, LEFT
+	turnobject RADIOTOWER1F_WHITNEY, LEFT
 	end
 
 MovementData_0x5ce71:

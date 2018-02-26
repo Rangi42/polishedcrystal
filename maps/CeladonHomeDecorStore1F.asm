@@ -27,7 +27,7 @@ CeladonHomeDecorStore1FClerkScript:
 	writetext CeladonHomeDecorStore1FClerkText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .BulbasaurDoll

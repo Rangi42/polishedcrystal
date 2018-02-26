@@ -40,7 +40,7 @@ MountMoon1FTrigger0:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement MOUNTMOON1F_SILVER, MountMoon1FSilverMovementBefore
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext MountMoonSilverTextBefore
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM

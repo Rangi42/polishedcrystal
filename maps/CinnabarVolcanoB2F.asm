@@ -41,14 +41,14 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 .right
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	jump .continue
 .up
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachUp
-	objectface CINNABARVOLCANOB2F_LAWRENCE, UP
-	objectface PLAYER, DOWN
+	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
+	turnobject PLAYER, DOWN
 	jump .continue
 .down
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
@@ -59,12 +59,12 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 14, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
-	objectface CINNABARVOLCANOB2F_LAWRENCE, UP
-	objectface PLAYER, DOWN
+	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
+	turnobject PLAYER, DOWN
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext CinnabarVolcanoB2FLawrenceSpeechText
-	objectface CINNABARVOLCANOB2F_LAWRENCE, UP
+	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
 	opentext
 	writetext CinnabarVolcanoB2FLawrenceEscapeRopeText
 	pause 15

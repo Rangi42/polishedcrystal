@@ -93,7 +93,7 @@ GoldenrodHarborPokefanmScript:
 	writetext GoldenrodHarborDollVendorText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .MagikarpDoll
@@ -174,7 +174,7 @@ GoldenrodHarborYoungsterScript:
 	writetext GoldenrodHarborPlantVendorText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .MagnaPlant

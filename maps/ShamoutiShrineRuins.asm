@@ -46,16 +46,16 @@ ShamoutiShrineRuinsLawrenceScript:
 	ifequal DOWN, .down
 	ifequal LEFT, .left
 .right
-	objectface SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
 	jump .continue
 .up
-	objectface SHAMOUTISHRINERUINS_LAWRENCE, UP
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, UP
 	jump .continue
 .down
-	objectface SHAMOUTISHRINERUINS_LAWRENCE, DOWN
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, DOWN
 	jump .continue
 .left
-	objectface SHAMOUTISHRINERUINS_LAWRENCE, LEFT
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue
 	pause 40
 	showtextfaceplayer .GoodbyeText

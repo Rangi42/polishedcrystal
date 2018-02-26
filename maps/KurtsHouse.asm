@@ -67,7 +67,7 @@ KurtScript_0x18e178:
 	setevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	checkcode VAR_FACING
 	ifequal UP, .RunAround
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e466
 	playsound SFX_EXIT_BUILDING
@@ -77,7 +77,7 @@ KurtScript_0x18e178:
 	end
 
 .RunAround:
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e46c
 	playsound SFX_EXIT_BUILDING
@@ -182,7 +182,7 @@ endr
 	applymovement KURTSHOUSE_KURT1, KurtsHouseFollowKurt_MovementData
 	stopfollow
 	pause 15
-	objectface KURTSHOUSE_KURT1, DOWN
+	turnobject KURTSHOUSE_KURT1, DOWN
 	showtext UnknownText_0x18e779
 	applymovement PLAYER, KurtsHouseStepAwayFromKurt_MovementData
 	special Special_FadeBlackQuickly
@@ -299,13 +299,13 @@ endr
 	showemote EMOTE_SHOCK, KURTSHOUSE_KURT1, 30
 	checkcode VAR_FACING
 	ifequal UP, .GSBallRunAround
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e466
 	jump .KurtHasLeftTheBuilding
 
 .GSBallRunAround:
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e46c
 .KurtHasLeftTheBuilding:
@@ -328,21 +328,21 @@ KurtMakingBallsScript:
 	writetext UnknownText_0x18e7d8
 	waitbutton
 	closetext
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 Script_FirstTimeBuggingKurt:
 	writetext UnknownText_0x18e863
 	waitbutton
 	closetext
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	setevent EVENT_BUGGING_KURT_TOO_MUCH
 	end
 
 KurtScript_ImCheckingItNow:
 	writetext UnknownText_0x18e934
 	waitbutton
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	jumpopenedtext UnknownText_0x18e949
 
 KurtsGranddaughter1:
@@ -370,14 +370,14 @@ KurtsGranddaughter2Subscript:
 	writetext KurtsGranddaughterHelpText
 	waitbutton
 	closetext
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .GSBall:
 	writetext KurtsGranddaughterGSBallText
 	waitbutton
 	closetext
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 PokemonJournalProfWestwoodScript:

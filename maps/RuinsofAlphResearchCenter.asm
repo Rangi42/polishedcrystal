@@ -53,7 +53,7 @@ UnknownScript_0x59192:
 	pause 30
 	playsound SFX_TRANSACTION
 	pause 30
-	objectface RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
+	turnobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
 	showtext UnknownText_0x59278
 	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	opentext

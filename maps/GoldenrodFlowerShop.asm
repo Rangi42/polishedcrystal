@@ -42,7 +42,7 @@ FlowerShopTeacherScript:
 	end
 
 .Lalala:
-	objectface GOLDENRODFLOWERSHOP_TEACHER, LEFT
+	turnobject GOLDENRODFLOWERSHOP_TEACHER, LEFT
 	jumptext UnknownText_0x5552e
 
 .SellMulch:
@@ -50,7 +50,7 @@ FlowerShopTeacherScript:
 	opentext
 	writetext WoukdYouLikeMulchText
 	special PlaceMoneyTopRight
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .Buy1

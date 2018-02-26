@@ -32,7 +32,7 @@ VioletGymFalknerAwayScript:
 	showemote EMOTE_SHOCK, VIOLETGYM_GYM_GUY2, 15
 	applyonemovement VIOLETGYM_GYM_GUY2, step_down
 	showtext VioletGymGuyFalknerAwayText
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 10
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR

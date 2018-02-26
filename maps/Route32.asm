@@ -198,16 +198,16 @@ Route32CooltrainerMTrigger:
 	done
 
 Route32CooltrainerMStopsYou:
-	objectface ROUTE32_COOLTRAINER_M, LEFT
-	objectface PLAYER, RIGHT
+	turnobject ROUTE32_COOLTRAINER_M, LEFT
+	turnobject PLAYER, RIGHT
 	showtext Route32CooltrainerMText_WhatsTheHurry
 	follow PLAYER, ROUTE32_COOLTRAINER_M
 	applymovement PLAYER, Movement_Route32CooltrainerMPushesYouBackToViolet
 	stopfollow
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	scall Route32CooltrainerMTrigger
 	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset
-	objectface ROUTE32_COOLTRAINER_M, LEFT
+	turnobject ROUTE32_COOLTRAINER_M, LEFT
 	end
 
 Route32LyraIntroducesHiddenGrottoes1:
@@ -273,7 +273,7 @@ Route32LyraIntroducesHiddenGrottoesIntroScript:
 	step_end
 
 Route32LyraIntroducesHiddenGrottoesMainScript:
-	objectface ROUTE32_FRIEDA, UP
+	turnobject ROUTE32_FRIEDA, UP
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext .GreetingText
@@ -347,18 +347,18 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 
 Route32LyraIntroducesHiddenGrottoesOutroScript:
 	stopfollow
-	objectface ROUTE32_FRIEDA, UP
+	turnobject ROUTE32_FRIEDA, UP
 	showemote EMOTE_SHOCK, ROUTE32_FRIEDA, 15
 	pause 7
 	follow ROUTE32_FRIEDA, PLAYER
 	applyonemovement ROUTE32_FRIEDA, slow_step_up
 	stopfollow
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 15
-	objectface ROUTE32_FRIEDA, DOWN
+	turnobject ROUTE32_FRIEDA, DOWN
 	showtext .GrottoText
 	applymovement ROUTE32_FRIEDA, .LeaveMovement1
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement ROUTE32_FRIEDA, .LeaveMovement2
 	disappear ROUTE32_FRIEDA
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
@@ -418,8 +418,8 @@ Route32LyraIntroducesHiddenGrottoesOutroScript:
 	step_end
 
 Route32WannaBuyASlowpokeTailScript:
-	objectface ROUTE32_FISHER4, DOWN
-	objectface PLAYER, UP
+	turnobject ROUTE32_FISHER4, DOWN
+	turnobject PLAYER, UP
 	jump _OfferToSellSlowpokeTail
 
 SlowpokeTailSalesmanScript:

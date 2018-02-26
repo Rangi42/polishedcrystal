@@ -36,8 +36,8 @@ MystriStageCynthiaSafeguardScript:
 	follow MYSTRISTAGE_CYNTHIA1, PLAYER
 	applymovement MYSTRISTAGE_CYNTHIA1, MystriStageMovementData_CynthiaStepsUp
 	stopfollow
-	objectface MYSTRISTAGE_CYNTHIA1, LEFT
-	objectface PLAYER, RIGHT
+	turnobject MYSTRISTAGE_CYNTHIA1, LEFT
+	turnobject PLAYER, RIGHT
 	showtext MystriStageCynthiaSpeechText
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	opentext
@@ -114,7 +114,7 @@ MystriStageBeatCynthiaScript:
 	special RestartMapMusic
 	special Special_FadeInQuickly
 	pause 20
-	objectface MYSTRISTAGE_CYNTHIA2, DOWN
+	turnobject MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
 	jumptextfaceplayer MystriStageCynthiaEggText
 

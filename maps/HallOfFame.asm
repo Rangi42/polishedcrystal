@@ -26,7 +26,7 @@ HallOfFameEntranceTrigger:
 	follow HALLOFFAME_LANCE, PLAYER
 	applymovement HALLOFFAME_LANCE, .WalkUpMovement
 	stopfollow
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	opentext
 	writetext .LanceText1
 	waitbutton
@@ -65,7 +65,7 @@ HallOfFameEntranceTrigger:
 	writetext .LanceText2
 	waitbutton
 	closetext
-	objectface HALLOFFAME_LANCE, UP
+	turnobject HALLOFFAME_LANCE, UP
 	applyonemovement PLAYER, slow_step_up
 	setscene $1
 	pause 15

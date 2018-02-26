@@ -45,8 +45,8 @@ DayCare_MeetGrandma:
 	follow DAYCARE_LYRA, PLAYER
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraApproachesGrandma
 	stopfollow
-	objectface PLAYER, UP
-	objectface DAYCARE_GRANNY, DOWN
+	turnobject PLAYER, UP
+	turnobject DAYCARE_GRANNY, DOWN
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
@@ -68,12 +68,12 @@ DayCare_MeetGrandma:
 .Continue2:
 	waitbutton
 	closetext
-	objectface DAYCARE_LYRA, DOWN
+	turnobject DAYCARE_LYRA, DOWN
 	showtext DayCareLyraGoodbyeText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraStartsToLeave
 	showemote EMOTE_SHOCK, DAYCARE_LYRA, 15
-	objectface DAYCARE_LYRA, LEFT
-	objectface PLAYER, RIGHT
+	turnobject DAYCARE_LYRA, LEFT
+	turnobject PLAYER, RIGHT
 	showtext DayCareLyraForgotText
 	addcellnum PHONE_LYRA
 	opentext
@@ -82,7 +82,7 @@ DayCare_MeetGrandma:
 	waitsfx
 	waitbutton
 	closetext
-	objectface DAYCARE_LYRA, UP
+	turnobject DAYCARE_LYRA, UP
 	showtext DayCareLyraEmbarassedText
 	applymovement DAYCARE_LYRA, DayCareMovementData_LyraLeaves
 	disappear DAYCARE_LYRA

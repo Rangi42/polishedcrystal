@@ -53,7 +53,7 @@ ProfIvyScript:
 	writetext .OkayText
 	waitbutton
 	closetext
-	objectface IVYSLAB_IVY, RIGHT
+	turnobject IVYSLAB_IVY, RIGHT
 	pause 15
 	playmusic MUSIC_HEAL
 	pause 60

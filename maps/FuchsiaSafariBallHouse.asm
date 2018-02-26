@@ -19,7 +19,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	opentext
 	writetext .IntroText
 	special PlaceMoneyTopRight
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .Buy1

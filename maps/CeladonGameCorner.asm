@@ -61,17 +61,17 @@ CeladonGameCorner_MapScriptHeader:
 
 PokefanMScript_0x72123:
 	showtextfaceplayer UnknownText_0x72215
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 TeacherScript_0x7212e:
 	showtextfaceplayer UnknownText_0x72242
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 FishingGuruScript_0x72139:
 	showtextfaceplayer UnknownText_0x72295
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 FisherScript_0x72144:
@@ -107,7 +107,7 @@ FisherScript_0x72144:
 .FisherEnd:
 	waitbutton
 	closetext
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 .coinname
@@ -117,19 +117,19 @@ UnknownScript_0x7217b:
 	writetext UnknownText_0x7238a
 	waitbutton
 	closetext
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 UnknownScript_0x72184:
 	writetext UnknownText_0x723d9
 	waitbutton
 	closetext
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 GrampsScript_0x72190:
 	showtextfaceplayer UnknownText_0x724ad
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 MapCeladonGameCornerSignpost35Script:

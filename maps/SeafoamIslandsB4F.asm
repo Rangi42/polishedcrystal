@@ -38,40 +38,40 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 .right
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach1
-	objectface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	jump .continue
 .up
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach2
-	objectface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
-	objectface SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
-	objectface PLAYER, LEFT
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
+	turnobject PLAYER, LEFT
 	jump .continue
 .down
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach2
-	objectface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueDown
-	objectface SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
-	objectface PLAYER, LEFT
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
+	turnobject PLAYER, LEFT
 	jump .continue
 .left
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach3
-	objectface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
@@ -79,7 +79,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext SeafoamIslandsB4FLawrenceSpeechText
-	objectface SEAFOAMISLANDSB4F_LAWRENCE, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE, UP
 	opentext
 	writetext SeafoamIslandsB4FLawrenceEscapeRopeText
 	pause 15

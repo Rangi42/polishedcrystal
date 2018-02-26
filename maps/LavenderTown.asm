@@ -140,7 +140,7 @@ LavenderTownSharedExpositionScript:
 	step_end
 
 LavenderTownFinishExpositionScript:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement LAVENDERTOWN_YOUNGSTER1, .LeaveMovement
 	disappear LAVENDERTOWN_YOUNGSTER1
 	setevent EVENT_ROUTE_8_PROTESTORS

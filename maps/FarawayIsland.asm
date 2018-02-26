@@ -60,7 +60,7 @@ FarawayIslandSailorScript:
 	writetext SeagallopFerryFarawayToVermilionText
 	waitbutton
 	closetext
-	objectface FARAWAYISLAND_SAILOR, DOWN
+	turnobject FARAWAYISLAND_SAILOR, DOWN
 	pause 10
 	applyonemovement FARAWAYISLAND_SAILOR, turn_head_down
 	playsound SFX_EXIT_BUILDING
@@ -116,7 +116,7 @@ FarawayIslandLawrenceScript:
 	writetext FarawayIslandLawrenceNoText
 	waitbutton
 	closetext
-	objectface FARAWAYISLAND_LAWRENCE, DOWN
+	turnobject FARAWAYISLAND_LAWRENCE, DOWN
 	playmapmusic
 	end
 

@@ -58,7 +58,7 @@ RuinsofAlphOutsideTrigger0:
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxApproachMovementData
 	stopfollow
 	showemote EMOTE_SHOCK, RUINSOFALPHOUTSIDE_SCIENTIST2, 15
-	objectface RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
+	turnobject RUINSOFALPHOUTSIDE_SCIENTIST2, DOWN
 	showtext RuinsofAlphScientistClimax2Text
 	applymovement RUINSOFALPHOUTSIDE_SCIENTIST2, RuinsofAlphScientistClimaxLeaveMovementData
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST2
@@ -135,7 +135,7 @@ YoungsterScript_0x58076:
 
 YoungsterScript_0x5807e:
 	showtextfaceplayer UnknownText_0x5848e
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 GenericTrainerPsychicNathan:

@@ -262,7 +262,7 @@ NoisyForestPikabluScript:
 	moveobject NOISYFOREST_YOUNGSTER, 19, 36
 	appear NOISYFOREST_YOUNGSTER
 	applymovement NOISYFOREST_YOUNGSTER, .WalkToYou
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	showtext .OwnerText1
 	disappear NOISYFOREST_MARILL
 	opentext

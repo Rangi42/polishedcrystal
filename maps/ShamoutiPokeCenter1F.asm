@@ -51,7 +51,7 @@ ShamoutiPokeCenter1FIvyScript:
 	setevent EVENT_LISTENED_TO_IVY_INTRO
 .HeardIntro
 	writetext .OfferText
-	loadmenudata .KantoStarterMenuData
+	loadmenu .KantoStarterMenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .Bulbasaur
@@ -114,7 +114,7 @@ ShamoutiPokeCenter1FIvyScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement SHAMOUTIPOKECENTER1F_IVY, step_left
 .noleftstep

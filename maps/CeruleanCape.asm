@@ -45,16 +45,16 @@ CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
-	objectface CERULEANCAPE_MISTY, DOWN
+	turnobject CERULEANCAPE_MISTY, DOWN
 	applyonemovement CERULEANCAPE_BOYFRIEND, big_step_down
 	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
-	objectface CERULEANCAPE_MISTY, UP
+	turnobject CERULEANCAPE_MISTY, UP
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear CERULEANCAPE_MISTY_WALK
-	objectface CERULEANCAPE_MISTY_WALK, UP
+	turnobject CERULEANCAPE_MISTY_WALK, UP
 	disappear CERULEANCAPE_MISTY
 	pause 5
 	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19efed
@@ -66,23 +66,23 @@ CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
-	objectface CERULEANCAPE_MISTY, DOWN
+	turnobject CERULEANCAPE_MISTY, DOWN
 	applymovement CERULEANCAPE_BOYFRIEND, MovementData_0x19efea
 	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
-	objectface CERULEANCAPE_MISTY, UP
+	turnobject CERULEANCAPE_MISTY, UP
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear CERULEANCAPE_MISTY_WALK
-	objectface CERULEANCAPE_MISTY_WALK, UP
+	turnobject CERULEANCAPE_MISTY_WALK, UP
 	disappear CERULEANCAPE_MISTY
 	pause 5
 	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19eff4
 	showtext UnknownText_0x19f006
 	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19effd
 CeruleanCapeDateFinishScript:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19f000
 	disappear CERULEANCAPE_MISTY_WALK
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -95,20 +95,20 @@ CeruleanCapeDateFinishScript:
 CeruleanCapeDateInterruptedTrigger3:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
-	objectface CERULEANCAPE_BOYFRIEND, DOWN
+	turnobject CERULEANCAPE_BOYFRIEND, DOWN
 	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
-	objectface CERULEANCAPE_MISTY, DOWN
+	turnobject CERULEANCAPE_MISTY, DOWN
 	applymovement CERULEANCAPE_BOYFRIEND, .RunAwayMovement1
-	objectface CERULEANCAPE_MISTY, UP
+	turnobject CERULEANCAPE_MISTY, UP
 	applymovement CERULEANCAPE_BOYFRIEND, .RunAwayMovement2
 	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
-	objectface CERULEANCAPE_MISTY, DOWN
+	turnobject CERULEANCAPE_MISTY, DOWN
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear CERULEANCAPE_MISTY_WALK
-	objectface CERULEANCAPE_MISTY_WALK, DOWN
+	turnobject CERULEANCAPE_MISTY_WALK, DOWN
 	disappear CERULEANCAPE_MISTY
 	pause 5
 	applymovement CERULEANCAPE_MISTY_WALK, .ApproachMovement

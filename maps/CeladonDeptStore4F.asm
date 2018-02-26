@@ -25,7 +25,7 @@ PosterClerkScript:
 	writetext PosterClerkText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .MarillPoster

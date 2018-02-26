@@ -27,7 +27,7 @@ CeladonGameCornerTMVendor:
 	writetext CeladonPrizeRoom_AskWhichPrizeText
 CeladonPrizeRoom_tmcounterloop:
 	special Special_DisplayCoinCaseBalance
-	loadmenudata CeladonPrizeRoom_TMMenuDataHeader
+	loadmenu CeladonPrizeRoom_TMMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .doubleteam
@@ -124,7 +124,7 @@ CeladonGameCornerPokemonVendor:
 .loop
 	writetext CeladonPrizeRoom_AskWhichPrizeText
 	special Special_DisplayCoinCaseBalance
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .mr__mime

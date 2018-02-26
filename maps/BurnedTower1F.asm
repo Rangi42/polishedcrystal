@@ -47,7 +47,7 @@ BurnedTower1FHoleAndLadder:
 	return
 
 BurnedTower1FEusineTriggerScript:
-	objectface BURNEDTOWER1F_EUSINE, DOWN
+	turnobject BURNEDTOWER1F_EUSINE, DOWN
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_EUSINE, 15
 	applymovement BURNEDTOWER1F_EUSINE, BurnedTower1FEusineMovement
 	showtext BurnedTower1FEusineIntroText
@@ -59,7 +59,7 @@ BurnedTowerRivalBattleScript:
 	showemote EMOTE_SHOCK, BURNEDTOWER1F_SILVER, 15
 	special Special_FadeOutMusic
 	pause 15
-	objectface BURNEDTOWER1F_SILVER, RIGHT
+	turnobject BURNEDTOWER1F_SILVER, RIGHT
 	pause 15
 	applyonemovement PLAYER, step_left
 	applyonemovement BURNEDTOWER1F_SILVER, step_right

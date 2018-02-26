@@ -149,12 +149,12 @@ YellowForestWalkerScript:
 	closetext
 	appear YELLOWFOREST_SKARMORY
 	playsound SFX_BALL_POOF
-	objectface YELLOWFOREST_WALKER, RIGHT
+	turnobject YELLOWFOREST_WALKER, RIGHT
 	waitsfx
 	pause 15
 	cry SKARMORY
 	waitsfx
-	objectface YELLOWFOREST_WALKER, DOWN
+	turnobject YELLOWFOREST_WALKER, DOWN
 	showtext YellowForestWalkerFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly

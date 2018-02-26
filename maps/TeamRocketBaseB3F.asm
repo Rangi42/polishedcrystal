@@ -64,9 +64,9 @@ TeamRocketBaseB3FCheckGiovanniDoor:
 	return
 
 LanceGetPasswordScript:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	pause 5
-	objectface TEAMROCKETBASEB3F_MURKROW, RIGHT
+	turnobject TEAMROCKETBASEB3F_MURKROW, RIGHT
 	pause 20
 	applyonemovement TEAMROCKETBASEB3F_LANCE, step_right
 	showtext LanceGetPasswordText
@@ -76,12 +76,12 @@ LanceGetPasswordScript:
 	end
 
 RocketBaseRival:
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	appear TEAMROCKETBASEB3F_SILVER
 	applymovement TEAMROCKETBASEB3F_SILVER, RocketBaseRivalEnterMovement
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext RocketBaseRivalText
 	playsound SFX_TACKLE
@@ -102,7 +102,7 @@ UnknownScript_0x6e056:
 	pause 30
 	showemote EMOTE_SHOCK, TEAMROCKETBASEB3F_PETREL, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	objectface TEAMROCKETBASEB3F_PETREL, DOWN
+	turnobject TEAMROCKETBASEB3F_PETREL, DOWN
 	showtext UnknownText_0x6e400
 	applyonemovement TEAMROCKETBASEB3F_PETREL, step_down
 	winlosstext UnknownText_0x6e511, 0

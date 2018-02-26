@@ -48,12 +48,12 @@ NewBarkTownFlyPoint:
 
 NewBarkTown_TeacherStopsYouTrigger1:
 	playmusic MUSIC_MOM
-	objectface NEWBARKTOWN_STILL_TEACHER, LEFT
+	turnobject NEWBARKTOWN_STILL_TEACHER, LEFT
 	appear NEWBARKTOWN_TEACHER
-	objectface NEWBARKTOWN_STILL_TEACHER, LEFT
+	turnobject NEWBARKTOWN_STILL_TEACHER, LEFT
 	disappear NEWBARKTOWN_STILL_TEACHER
 	showtext Text_WaitPlayer
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou1_NBT
 	showtext Text_WhatDoYouThinkYoureDoing
 	follow NEWBARKTOWN_TEACHER, PLAYER
@@ -61,28 +61,28 @@ NewBarkTown_TeacherStopsYouTrigger1:
 	stopfollow
 	showtext Text_ItsDangerousToGoAlone
 	appear NEWBARKTOWN_STILL_TEACHER
-	objectface NEWBARKTOWN_TEACHER, LEFT
+	turnobject NEWBARKTOWN_TEACHER, LEFT
 	disappear NEWBARKTOWN_TEACHER
 	special RestartMapMusic
 	end
 
 NewBarkTown_TeacherStopsYouTrigger2:
 	playmusic MUSIC_MOM
-	objectface NEWBARKTOWN_TEACHER, LEFT
+	turnobject NEWBARKTOWN_TEACHER, LEFT
 	appear NEWBARKTOWN_TEACHER
-	objectface NEWBARKTOWN_STILL_TEACHER, LEFT
+	turnobject NEWBARKTOWN_STILL_TEACHER, LEFT
 	disappear NEWBARKTOWN_STILL_TEACHER
 	showtext Text_WaitPlayer
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou2_NBT
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext Text_WhatDoYouThinkYoureDoing
 	follow NEWBARKTOWN_TEACHER, PLAYER
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack2_NBT
 	stopfollow
 	showtext Text_ItsDangerousToGoAlone
 	appear NEWBARKTOWN_STILL_TEACHER
-	objectface NEWBARKTOWN_TEACHER, LEFT
+	turnobject NEWBARKTOWN_TEACHER, LEFT
 	disappear NEWBARKTOWN_TEACHER
 	special RestartMapMusic
 	end
@@ -94,7 +94,7 @@ NewBarkTown_LyraIntroTrigger:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraApproaches_NBT
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext Text_LyraIntro
 	follow PLAYER, NEWBARKTOWN_LYRA
 	applyonemovement PLAYER, step_up
@@ -133,7 +133,7 @@ NewBarkTown_LyraFinalTrigger:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye2_NBT
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext Text_LyraGoodbye1
 	setevent EVENT_LYRA_NEW_BARK_TOWN
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
@@ -179,13 +179,13 @@ NewBarkTownTeacherScript:
 
 NewBarkTownSilverScript:
 	showtext NewBarkTownRivalText1
-	objectface NEWBARKTOWN_SILVER, LEFT
+	turnobject NEWBARKTOWN_SILVER, LEFT
 	showtext NewBarkTownRivalText2
 	follow PLAYER, NEWBARKTOWN_SILVER
 	applymovement PLAYER, Movement_SilverPushesYouAway_NBT
 	stopfollow
 	pause 5
-	objectface NEWBARKTOWN_SILVER, DOWN
+	turnobject NEWBARKTOWN_SILVER, DOWN
 	pause 5
 	playsound SFX_TACKLE
 	applymovement PLAYER, Movement_SilverShovesYouOut_NBT

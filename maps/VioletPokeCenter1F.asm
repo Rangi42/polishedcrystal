@@ -67,12 +67,12 @@ VioletPokeCenter1FElmsAideScript:
 	closetext
 	checkcode VAR_FACING
 	ifequal UP, .AideWalksAroundPlayer
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
 	jump .Finish
 .AideWalksAroundPlayer:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkDownMovement
 .Finish:
 	playsound SFX_EXIT_BUILDING

@@ -88,7 +88,7 @@ GenericTrainerLassCathy:
 WhitneyCriesScript:
 	showemote EMOTE_SHOCK, GOLDENRODGYM_LASS2, 15
 	applymovement GOLDENRODGYM_LASS2, JoWalksUpMovement
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	showtext JoWhitneyCriesText
 	applymovement GOLDENRODGYM_LASS2, JoWalksAwayMovement
 	setscene $0

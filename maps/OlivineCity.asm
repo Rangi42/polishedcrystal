@@ -58,7 +58,7 @@ OlivineCityFlyPoint:
 	return
 
 OlivineCityRivalGymScript:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
@@ -71,7 +71,7 @@ OlivineCityRivalGymScript:
 	applyonemovement OLIVINECITY_OLIVINE_RIVAL, step_down
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext OlivineCityRivalGymText
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesGym
 	setscene $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
@@ -81,7 +81,7 @@ OlivineCityRivalGymScript:
 	end
 
 OlivineCityRivalLighthouseScript:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	moveobject OLIVINECITY_OLIVINE_RIVAL, 33, 19
@@ -95,7 +95,7 @@ OlivineCityRivalLighthouseScript:
 	showtext OlivineCityRivalLighthouseText
 	playsound SFX_TACKLE
 	applymovement PLAYER, OlivineCityMovementData_ShovePlayerDown2
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement OLIVINECITY_OLIVINE_RIVAL, OlivineCityMovementData_RivalLeavesLighthouse
 	setscene $1
 	disappear OLIVINECITY_OLIVINE_RIVAL

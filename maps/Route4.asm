@@ -142,7 +142,7 @@ Route4TutorAquaTailScript:
 Route4EngineerScript:
 	showtext Route4EngineerText1
 	showtextfaceplayer Route4EngineerText2
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 YoungsterOliverSeenText:

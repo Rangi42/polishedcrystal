@@ -81,7 +81,7 @@ SeagallopFerryVermilionGateSailorScript:
 	checkitem OLD_SEA_MAP
 	iftrue .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
-	loadmenudata OrangeMysticMenuDataHeader
+	loadmenu OrangeMysticMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .use_orangeticket
@@ -99,7 +99,7 @@ SeagallopFerryVermilionGateSailorScript:
 
 .use_mysticticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
-	loadmenudata MysticOldSeaMapMenuDataHeader
+	loadmenu MysticOldSeaMapMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .use_mysticticket
@@ -108,7 +108,7 @@ SeagallopFerryVermilionGateSailorScript:
 
 .use_orangeticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
-	loadmenudata OrangeOldSeaMapMenuDataHeader
+	loadmenu OrangeOldSeaMapMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .use_orangeticket
@@ -117,7 +117,7 @@ SeagallopFerryVermilionGateSailorScript:
 
 .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
-	loadmenudata ThreeTicketsMenuDataHeader
+	loadmenu ThreeTicketsMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .use_orangeticket
@@ -187,7 +187,7 @@ SeagallopFerryDepartureScript:
 	writetext SeagallopFerryDepartureText
 	waitbutton
 	closetext
-	objectface SEAGALLOPFERRYVERMILIONGATE_SAILOR, DOWN
+	turnobject SEAGALLOPFERRYVERMILIONGATE_SAILOR, DOWN
 	pause 10
 	applyonemovement SEAGALLOPFERRYVERMILIONGATE_SAILOR, step_down
 	playsound SFX_EXIT_BUILDING

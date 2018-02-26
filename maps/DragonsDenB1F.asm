@@ -59,7 +59,7 @@ DragonsDenB1FClairTrigger:
 	pause 30
 	closetext
 	showemote EMOTE_SHOCK, PLAYER, 15
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playmusic MUSIC_CLAIR
 	applymovement DRAGONSDENB1F_CLAIR, .WalksToYouMovement
 	opentext

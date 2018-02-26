@@ -33,22 +33,22 @@ GiovannisCaveTrigger0:
 
 GiovannisCaveCelebiEventScript:
 	pause 30
-	objectface PLAYER, UP
-	objectface GIOVANNISCAVE_LYRA, UP
+	turnobject PLAYER, UP
+	turnobject GIOVANNISCAVE_LYRA, UP
 	showemote EMOTE_SHOCK, GIOVANNISCAVE_GIOVANNI, 15
-	objectface GIOVANNISCAVE_GIOVANNI, DOWN
+	turnobject GIOVANNISCAVE_GIOVANNI, DOWN
 	showtext GiovannisCaveGiovanniIntroText
 	applyonemovement GIOVANNISCAVE_GIOVANNI, slow_step_down
 	showtext GiovannisCaveGiovanniMemoriesText
-	objectface GIOVANNISCAVE_LYRA, RIGHT
+	turnobject GIOVANNISCAVE_LYRA, RIGHT
 	showtext GiovannisCaveLyraQuestionsText
 	showemote EMOTE_SHOCK, GIOVANNISCAVE_LYRA, 15
 	showtext GiovannisCaveLyraRecognizesGiovanniText
 	playmusic MUSIC_ROCKET_OVERTURE
-	objectface GIOVANNISCAVE_LYRA, UP
-	objectface GIOVANNISCAVE_GIOVANNI, UP
+	turnobject GIOVANNISCAVE_LYRA, UP
+	turnobject GIOVANNISCAVE_GIOVANNI, UP
 	showtext GiovannisCaveBroadcastText
-	objectface GIOVANNISCAVE_GIOVANNI, DOWN
+	turnobject GIOVANNISCAVE_GIOVANNI, DOWN
 	showtext GiovannisCaveGiovanniIMustGoText
 	setmapscene GIOVANNIS_CAVE, $0
 	clearevent EVENT_TIME_TRAVELING
@@ -64,8 +64,8 @@ GiovannisCaveCelebiEventScript:
 	playsound SFX_ENTER_DOOR
 	disappear GIOVANNISCAVE_GIOVANNI
 	waitsfx
-	objectface PLAYER, DOWN
-	objectface GIOVANNISCAVE_LYRA, DOWN
+	turnobject PLAYER, DOWN
+	turnobject GIOVANNISCAVE_LYRA, DOWN
 	showtext GiovannisCaveBroadcastAfterText
 	applyonemovement GIOVANNISCAVE_LYRA, slow_step_down
 	showtext GiovannisCaveLyraFeelsSorryText

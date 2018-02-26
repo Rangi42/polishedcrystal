@@ -64,7 +64,7 @@ AzaleaTownRainScript:
 AzaleaTownRivalBattleTrigger1:
 	moveobject AZALEATOWN_SILVER, 11, 11
 AzaleaTownRivalBattleTrigger2:
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -109,7 +109,7 @@ AzaleaTownRivalBattleTrigger2:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext .AfterText
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement AZALEATOWN_SILVER, .ExitMovement
 	playsound SFX_EXIT_BUILDING
 	disappear AZALEATOWN_SILVER
@@ -202,13 +202,13 @@ AzaleaTown_CelebiTrigger:
 	opentext
 	writetext .Text1
 	buttonsound
-	objectface AZALEATOWN_KURT, RIGHT
+	turnobject AZALEATOWN_KURT, RIGHT
 	writetext .Text2
 	buttonsound
 	writetext AzaleaTownKurtText
 	waitbutton
 	verbosegiveitem GS_BALL
-	objectface AZALEATOWN_KURT, LEFT
+	turnobject AZALEATOWN_KURT, LEFT
 	setflag ENGINE_HAVE_EXAMINED_GS_BALL
 	clearevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
@@ -372,7 +372,7 @@ AzaleaTownSlowpokeScript:
 
 AzaleaTownKurtScript:
 	showtextfaceplayer AzaleaTownKurtText
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 AzaleaTownKurtText:

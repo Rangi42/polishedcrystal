@@ -175,7 +175,7 @@ Oak:
 	jump .CheckPokedex
 
 EeveeDollScript:
-	objectface OAKSLAB_OAK, RIGHT
+	turnobject OAKSLAB_OAK, RIGHT
 	opentext
 	writetext ProfOakEeveeDollTradeText
 	waitbutton

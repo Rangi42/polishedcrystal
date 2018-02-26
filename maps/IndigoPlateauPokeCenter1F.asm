@@ -78,7 +78,7 @@ PlateauRivalBattleTrigger2:
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
 	iftrue .Done
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -121,7 +121,7 @@ PlateauRivalBattleTrigger2:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
 	showtext PlateauRivalText2
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_SILVER, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_SILVER
 	setscene $0
@@ -136,7 +136,7 @@ PlateauRivalBattleTrigger2:
 	iftrue .Done
 .LyraFight:
 	appear INDIGOPLATEAUPOKECENTER1F_LYRA
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -184,7 +184,7 @@ PlateauRivalBattleTrigger2:
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	showtext PlateauLyraText3
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement INDIGOPLATEAUPOKECENTER1F_LYRA, PlateauRivalLeavesMovement
 	disappear INDIGOPLATEAUPOKECENTER1F_LYRA
 	setscene $0
@@ -394,7 +394,7 @@ IndigoPlateauYellowScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement INDIGOPLATEAUPOKECENTER1F_YELLOW, step_left
 .noleftstep

@@ -100,17 +100,17 @@ UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_PETREL
 	showtext UnknownText_0x6d2ad
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, MovementData_0x6d21f
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d224
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement TEAMROCKETBASEB2F_PETREL, MovementData_0x6d22f
 	showtext UnknownText_0x6d2c3
 	cry DRAGONITE
-	objectface TEAMROCKETBASEB2F_ARIANA, LEFT
-	objectface PLAYER, LEFT
+	turnobject TEAMROCKETBASEB2F_ARIANA, LEFT
+	turnobject PLAYER, LEFT
 	appear TEAMROCKETBASEB2F_DRAGONITE
 	applymovement TEAMROCKETBASEB2F_DRAGONITE, MovementData_0x6d236
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d23b
@@ -118,7 +118,7 @@ UnknownScript_0x6cfac:
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d244
 	showtext UnknownText_0x6d38c
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
 	showtext UnknownText_0x6d3bd
 	applyonemovement TEAMROCKETBASEB2F_PETREL, big_step_left
@@ -145,10 +145,10 @@ UnknownScript_0x6cfac:
 	special Special_FadeInQuickly
 	setscene $2
 	clearevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
-	objectface TEAMROCKETBASEB2F_LANCE, DOWN
+	turnobject TEAMROCKETBASEB2F_LANCE, DOWN
 	showtext UnknownText_0x6d5d8
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d250
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext UnknownText_0x6d64e
 	follow TEAMROCKETBASEB2F_LANCE, PLAYER
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d254
@@ -291,7 +291,7 @@ UnknownScript_0x6d184:
 	moveobject TEAMROCKETBASEB2F_LANCE, 18, 6
 	appear TEAMROCKETBASEB2F_LANCE
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d27a
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	opentext
 	writetext UnknownText_0x6d809
 	buttonsound
@@ -300,9 +300,9 @@ UnknownScript_0x6d184:
 	writetext UnknownText_0x6d8f8
 	waitbutton
 	closetext
-	objectface TEAMROCKETBASEB2F_LANCE, DOWN
+	turnobject TEAMROCKETBASEB2F_LANCE, DOWN
 	showtext UnknownText_0x6d994
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d283
 	disappear TEAMROCKETBASEB2F_LANCE
 	setevent EVENT_CLEARED_ROCKET_HIDEOUT

@@ -34,7 +34,7 @@ SoulHouseB3FMrFujiScript:
 	jump .Finish
 .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement1
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement2
 .Finish
 	disappear SOULHOUSEB3F_MRFUJI

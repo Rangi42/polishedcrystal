@@ -102,7 +102,7 @@ SuicuneBattle:
 	special SpecialMonCheck
 	iftrue .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	cry RAIKOU
 	pause 10
 	playsound SFX_WARP_FROM
@@ -115,7 +115,7 @@ SuicuneBattle:
 	special SpecialMonCheck
 	iftrue .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	cry ENTEI
 	pause 10
 	playsound SFX_WARP_FROM
@@ -124,7 +124,7 @@ SuicuneBattle:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next2:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 10
 	applymovement PLAYER, TinTowerPlayerMovement2
 	applymovement TINTOWER1F_SUICUNE, TinTowerSuicuneMovement
@@ -145,7 +145,7 @@ SuicuneBattle:
 	setscene $1
 	clearevent EVENT_SET_WHEN_FOUGHT_HO_OH
 	reloadmapafterbattle
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 20
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	playsound SFX_ENTER_DOOR
@@ -167,7 +167,7 @@ SuicuneBattle:
 	moveobject TINTOWER1F_SAGE1, 5, 13
 	moveobject TINTOWER1F_SAGE2, 7, 13
 	moveobject TINTOWER1F_SAGE3, 9, 13
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext TinTowerEusineSuicuneText
 	applymovement TINTOWER1F_EUSINE, MovementData_0x1851f1
 	playsound SFX_EXIT_BUILDING

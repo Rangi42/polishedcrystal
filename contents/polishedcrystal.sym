@@ -26960,7 +26960,7 @@
 2E:5FED Script_waitbutton
 2E:5FF0 Script_buttonsound
 2E:6001 Script_yesorno
-2E:600E Script_loadmenudata
+2E:600E Script_loadmenu
 2E:6022 Script_closewindow
 2E:6028 Script_pokepic
 2E:603E Script_closepokepic
@@ -27018,7 +27018,7 @@
 2E:6351 Script_applymovement2
 2E:6379 Script_faceplayer
 2E:638F Script_faceobject
-2E:63B1 Script_objectface
+2E:63B1 Script_turnobject
 2E:63F1 ApplyPersonFacing.DisableTextTiles
 2E:6403 Script_variablesprite
 2E:6412 Script_appear

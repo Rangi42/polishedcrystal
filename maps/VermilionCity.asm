@@ -54,7 +54,7 @@ VermilionCity_MapScriptHeader:
 	const VERMILIONCITY_LAWRENCE
 
 LawrenceLeftIntroScript:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -65,10 +65,10 @@ LawrenceLeftIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext LawrenceIntroText
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
@@ -80,7 +80,7 @@ LawrenceLeftIntroScript:
 	end
 
 LawrenceRightIntroScript:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -91,10 +91,10 @@ LawrenceRightIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext LawrenceIntroText
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE

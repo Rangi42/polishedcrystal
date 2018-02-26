@@ -29,7 +29,7 @@ EcruteakShrineInsideReiScript:
 	checkflag ENGINE_DAILY_SHRINE_VISIT
 	iftrue .ReiDone
 	writetext EcruteakShrineInsideReiGreetingText
-	loadmenudata .ReiMenuDataHeader
+	loadmenu .ReiMenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .ReiBless

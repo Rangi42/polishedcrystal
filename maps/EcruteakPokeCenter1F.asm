@@ -34,7 +34,7 @@ EcruteakPokeCenter1FBillWalksUpTrigger:
 	moveobject ECRUTEAKPOKECENTER1F_BILL, 0, 7
 	playsound SFX_EXIT_BUILDING
 	appear ECRUTEAKPOKECENTER1F_BILL
-	objectface ECRUTEAKPOKECENTER1F_BILL, RIGHT
+	turnobject ECRUTEAKPOKECENTER1F_BILL, RIGHT
 	waitsfx
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement1
 	pause 60
@@ -116,7 +116,7 @@ EcruteakPokeCenter1FBillScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement ECRUTEAKPOKECENTER1F_BILL, step_left
 .noleftstep

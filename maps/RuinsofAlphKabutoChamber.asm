@@ -102,7 +102,7 @@ UnknownScript_0x587c0:
 	writetext UnknownText_0x588f5
 	waitbutton
 	closetext
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 UnknownScript_0x587cf:

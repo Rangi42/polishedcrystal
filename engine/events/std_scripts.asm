@@ -134,7 +134,7 @@ PokeCenterNurseScript:
 .heal_pokemon
 	farwritetext NurseTakePokemonText
 	pause 20
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	pause 10
 	special HealParty
 	special SaveMusic
@@ -143,7 +143,7 @@ PokeCenterNurseScript:
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	pause 10
 
 	checkphonecall ; elm already called about pokerus
@@ -160,9 +160,9 @@ PokeCenterNurseScript:
 .done
 	farwritetext NurseGoodbyeText
 
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	pause 10
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	pause 10
 
 	waitendtext
@@ -1749,7 +1749,7 @@ CoinVendor_IntroScript: ; 0xbcde0
 
 .loop ; 0xbcde4
 	special Special_DisplayMoneyAndCoinBalance
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .Buy50
@@ -1848,7 +1848,7 @@ VendingMachineScript:
 	farwritetext VendingMachineText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .FreshWater

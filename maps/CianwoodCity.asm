@@ -58,12 +58,12 @@ CianwoodCityFlyPointAndSuicune:
 	return
 
 UnknownScript_0x1a001e:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	pause 15
 	playsound SFX_WARP_FROM
 	applymovement CIANWOODCITY_SUICUNE, MovementData_0x1a00da
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 15
 	playsound SFX_WARP_FROM
 	applymovement CIANWOODCITY_SUICUNE, MovementData_0x1a00e0

@@ -29,7 +29,7 @@ VictoryRoad2F_MapScriptHeader:
 
 UnknownScript_0x74492:
 	showemote EMOTE_SHOCK, PLAYER, 15
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	special Special_FadeOutMusic
 	pause 15
 	appear VICTORYROAD2F_SILVER

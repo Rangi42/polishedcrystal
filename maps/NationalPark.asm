@@ -98,7 +98,7 @@ GenericTrainerSchoolboyJohnny:
 
 GameboyKidScript_0x5c037:
 	showtextfaceplayer UnknownText_0x5c42a
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 TrainerSchoolboyJack1:

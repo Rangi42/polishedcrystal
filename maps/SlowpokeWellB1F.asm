@@ -65,7 +65,7 @@ Proton2Script:
 	moveobject SLOWPOKEWELLB1F_KURT, 11, 6
 	appear SLOWPOKEWELLB1F_KURT
 	applymovement SLOWPOKEWELLB1F_KURT, KurtSlowpokeWellVictoryMovementData
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext KurtLeaveSlowpokeWellText
 	setevent EVENT_CLEARED_SLOWPOKE_WELL
 	setmapscene ILEX_FOREST, $2

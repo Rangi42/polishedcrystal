@@ -24,14 +24,14 @@ TwinScript_0x9cc76:
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .FeedingMooMoo:
 	writetext Text_WereFeedingMoomoo
 	waitbutton
 	closetext
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 TwinScript_0x9cc90:
@@ -42,14 +42,14 @@ TwinScript_0x9cc90:
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 .FeedingMooMoo:
 	writetext Text_WereFeedingMoomoo
 	waitbutton
 	closetext
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 MooMoo:

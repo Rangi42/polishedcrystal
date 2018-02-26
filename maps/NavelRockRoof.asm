@@ -62,7 +62,7 @@ Leaf:
 	iftrue .FemaleEndingSequence
 	checkcode VAR_FACING
 	ifequal UP, .RightMaleEndingSequence
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
 	jump .EndingSequence
@@ -75,7 +75,7 @@ Leaf:
 .FemaleEndingSequence:
 	checkcode VAR_FACING
 	ifequal UP, .RightFemaleEndingSequence
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS
 	jump .EndingSequence

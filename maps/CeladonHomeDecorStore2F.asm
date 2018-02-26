@@ -22,7 +22,7 @@ CeladonHomeDecorStore2FClerkScript:
 	writetext CeladonHomeDecorStore2FClerkText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .PinkBed

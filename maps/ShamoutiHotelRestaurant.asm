@@ -100,8 +100,8 @@ ShamoutiHotelRestaurantChallengeScript:
 ShamoutiHotelRestaurantLeavingTrigger2:
 	applyonemovement PLAYER, step_up
 ShamoutiHotelRestaurantLeavingTrigger1:
-	objectface PLAYER, UP
-	objectface SHAMOUTIHOTELRESTAURANT_RECEPTIONIST, DOWN
+	turnobject PLAYER, UP
+	turnobject SHAMOUTIHOTELRESTAURANT_RECEPTIONIST, DOWN
 	opentext
 	writetext .LeavingText
 	yesorno

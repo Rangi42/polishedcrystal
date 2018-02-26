@@ -129,7 +129,7 @@ UndergroundPathSwitchRoomEntrancesUpdateDoorPositions:
 	return
 
 UndergroundSilverTrigger1:
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -137,7 +137,7 @@ UndergroundSilverTrigger1:
 	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 	waitsfx
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverApproachMovement1
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	scall UndergroundSilverBattleScript
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverRetreatMovement1
 	playsound SFX_EXIT_BUILDING
@@ -148,7 +148,7 @@ UndergroundSilverTrigger1:
 	end
 
 UndergroundSilverTrigger2:
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -156,7 +156,7 @@ UndergroundSilverTrigger2:
 	appear UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 	waitsfx
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverApproachMovement2
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	scall UndergroundSilverBattleScript
 	applymovement UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER, UndergroundSilverRetreatMovement2
 	playsound SFX_EXIT_BUILDING

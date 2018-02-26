@@ -49,7 +49,7 @@ SailorScript_0x748c0:
 	writetext UnknownText_0x74a55
 	waitbutton
 	closetext
-	objectface OLIVINEPORT_SAILOR1, DOWN
+	turnobject OLIVINEPORT_SAILOR1, DOWN
 	pause 10
 	playsound SFX_EXIT_BUILDING
 	disappear OLIVINEPORT_SAILOR1
@@ -83,12 +83,12 @@ UnknownScript_0x74919:
 	jumpopenedtext UnknownText_0x74a80
 
 UnknownScript_0x7491f:
-	objectface OLIVINEPORT_SAILOR3, RIGHT
+	turnobject OLIVINEPORT_SAILOR3, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x7498b
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x7498b
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse UnknownScript_0x7494e
@@ -192,22 +192,22 @@ UnknownScript_0x749f8:
 
 FishingGuruScript_0x74a01:
 	showtextfaceplayer UnknownText_0x74bf4
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 FishingGuruScript_0x74a0c:
 	showtextfaceplayer UnknownText_0x74c35
-	objectface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 YoungsterScript_0x74a17:
 	showtextfaceplayer UnknownText_0x74c76
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 CooltrainerFScript_0x74a22:
 	showtextfaceplayer UnknownText_0x74ca2
-	objectface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 MovementData_0x74a34:

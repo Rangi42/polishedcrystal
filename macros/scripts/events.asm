@@ -493,9 +493,9 @@ yesorno: macro
 	db yesorno_command
 	endm
 
-	enum loadmenudata_command
-loadmenudata: macro
-	db loadmenudata_command
+	enum loadmenu_command
+loadmenu: macro
+	db loadmenu_command
 	dw \1 ; data
 	endm
 
@@ -722,9 +722,9 @@ showemote: macro
 	db \3 ; time
 	endm
 
-	enum objectface_command
-objectface: macro
-	db objectface_command
+	enum turnobject_command
+turnobject: macro
+	db turnobject_command
 	db \1 ; person
 	db \2 ; facing
 	endm

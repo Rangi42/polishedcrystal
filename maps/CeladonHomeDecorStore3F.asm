@@ -24,7 +24,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	writetext CeladonHomeDecorStore3FClerk1Text
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .RedCarpet

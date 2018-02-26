@@ -86,23 +86,23 @@ Route34LyraTrigger1:
 Route34LyraTrigger3:
 	applyonemovement PLAYER, step_left
 Route34LyraTrigger2:
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	special Special_FadeOutMusic
 	showtext Route34LyraText_Grandpa
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ROUTE34_LYRA
-	objectface ROUTE34_GRAMPS, UP
+	turnobject ROUTE34_GRAMPS, UP
 	pause 10
 	applymovement ROUTE34_LYRA, Route34MovementData_LyraComesDown
-	objectface ROUTE34_GRAMPS, LEFT
+	turnobject ROUTE34_GRAMPS, LEFT
 	showtext Route34LyraGoodWorkText
 	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
 	pause 15
-	objectface ROUTE34_LYRA, DOWN
+	turnobject ROUTE34_LYRA, DOWN
 	showtext Route34LyraGreetingText
 	applyonemovement PLAYER, step_up
 	pause 10
-	objectface ROUTE34_LYRA, RIGHT
+	turnobject ROUTE34_LYRA, RIGHT
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
@@ -113,7 +113,7 @@ Route34LyraTrigger2:
 .Continue:
 	waitbutton
 	closetext
-	objectface ROUTE34_LYRA, DOWN
+	turnobject ROUTE34_LYRA, DOWN
 	pause 10
 	showtext Route34LyraChallengeText
 	setevent EVENT_LYRA_ROUTE_34

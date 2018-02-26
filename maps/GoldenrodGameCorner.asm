@@ -58,7 +58,7 @@ GoldenrodGameCorner_MapScriptHeader:
 
 GoldenrodGameCornerPokefanM3Script:
 	showtextfaceplayer GoldenrodGameCornerPokefanM3Text
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 GoldenrodGameCornerFisherScript:
@@ -100,7 +100,7 @@ GoldenrodGameCornerTMVendorScript:
 	writetext GoldenrodGameCornerPrizeVendorWhichPrizeText
 GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
 	special Special_DisplayCoinCaseBalance
-	loadmenudata GoldenrodGameCornerTMVendorMenuData
+	loadmenu GoldenrodGameCornerTMVendorMenuData
 	verticalmenu
 	closewindow
 	ifequal $1, .flamethrower
@@ -192,7 +192,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 .loop
 	writetext GoldenrodGameCornerPrizeVendorWhichPrizeText
 	special Special_DisplayCoinCaseBalance
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .abra
@@ -271,27 +271,27 @@ GoldenrodGameCornerPrizeMonVendorScript:
 
 GoldenrodGameCornerPharmacistScript:
 	showtextfaceplayer GoldenrodGameCornerPharmacistText
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 GoldenrodGameCornerPokefanM1Script:
 	showtextfaceplayer GoldenrodGameCornerPokefanM1Text
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 GoldenrodGameCornerCooltrainerMScript:
 	showtextfaceplayer GoldenrodGameCornerCooltrainerMText
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 GoldenrodGameCornerPokefanFScript:
 	showtextfaceplayer GoldenrodGameCornerPokefanFText
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 GoldenrodGameCornerGentlemanScript:
 	showtextfaceplayer GoldenrodGameCornerGentlemanText
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 GoldenrodGameCornerLeftTheirDrinkScript:

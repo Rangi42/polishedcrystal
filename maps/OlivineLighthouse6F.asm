@@ -45,7 +45,7 @@ UnknownScript_0x60bab:
 	writetext UnknownText_0x60dea
 	waitbutton
 	closetext
-	objectface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
+	turnobject OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
 	opentext
 	playmusic MUSIC_HEAL
@@ -84,7 +84,7 @@ UnknownScript_0x60c25:
 	writetext UnknownText_0x60edf
 	waitbutton
 	closetext
-	objectface OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
+	turnobject OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
 	pause 15
 	jumptext UnknownText_0x60ef1
 

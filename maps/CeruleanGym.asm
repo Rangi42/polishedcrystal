@@ -56,7 +56,7 @@ UnknownScript_0x1883de:
 	waitsfx
 	special RestartMapMusic
 	pause 15
-	objectface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 15
 	end
 

@@ -46,19 +46,19 @@ CherrygroveCityGuideGent:
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement1
 	showtext GuideGentPokeCenterText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement2
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext GuideGentMartText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement3
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext GuideGentRoute30Text
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement4
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext GuideGentSeaText
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement5
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 60
-	objectface CHERRYGROVECITY_GRAMPS, LEFT
-	objectface PLAYER, RIGHT
+	turnobject CHERRYGROVECITY_GRAMPS, LEFT
+	turnobject PLAYER, RIGHT
 	opentext
 	writetext GuideGentGiftText
 	buttonsound
@@ -72,7 +72,7 @@ CherrygroveCityGuideGent:
 	closetext
 	stopfollow
 	special RestartMapMusic
-	objectface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement6
 	playsound SFX_ENTER_DOOR
 	disappear CHERRYGROVECITY_GRAMPS
@@ -87,13 +87,13 @@ CherrygroveCityGuideGent:
 CherrygroveSilverTriggerSouth:
 	moveobject CHERRYGROVECITY_SILVER, 39, 7
 CherrygroveSilverTriggerNorth:
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	appear CHERRYGROVECITY_SILVER
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalWalksToYou
-	objectface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UnknownText_0x19c4e2
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
@@ -141,7 +141,7 @@ CherrygroveSilverTriggerNorth:
 	showtext CherrygroveRivalTextAfter2
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
-	objectface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_SILVER
 	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER

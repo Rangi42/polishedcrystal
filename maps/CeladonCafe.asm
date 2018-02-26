@@ -57,14 +57,14 @@ MayleneScript:
 	waitbutton
 .Done
 	closetext
-	objectface CELADONCAFE_MAYLENE, RIGHT
+	turnobject CELADONCAFE_MAYLENE, RIGHT
 	end
 
 .Refused
 	writetext MayleneRefusedText
 	waitbutton
 	closetext
-	objectface CELADONCAFE_MAYLENE, RIGHT
+	turnobject CELADONCAFE_MAYLENE, RIGHT
 	end
 
 TeacherScript_0x73084:
@@ -72,32 +72,32 @@ TeacherScript_0x73084:
 	iftrue .NoCoinCase
 	showtext UnknownText_0x73201
 	showtextfaceplayer UnknownText_0x73212
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 .NoCoinCase:
 	showtext UnknownText_0x73254
-	objectface CELADONCAFE_TEACHER, RIGHT
+	turnobject CELADONCAFE_TEACHER, RIGHT
 	showtext UnknownText_0x73278
-	objectface CELADONCAFE_TEACHER, LEFT
+	turnobject CELADONCAFE_TEACHER, LEFT
 	end
 
 FisherScript_0x73051:
 	showtext UnknownText_0x73129
 	showtextfaceplayer UnknownText_0x7313a
-	objectface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 FisherScript_0x73062:
 	showtext UnknownText_0x7316a
 	showtextfaceplayer UnknownText_0x73178
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 FisherScript_0x73073:
 	showtext UnknownText_0x731ae
 	showtextfaceplayer UnknownText_0x731bd
-	objectface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 UnknownText_0x730de:

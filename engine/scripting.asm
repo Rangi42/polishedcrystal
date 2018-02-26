@@ -136,7 +136,7 @@ ScriptCommandTable:
 	dw Script_writetext                  ; 49
 	dw Script_repeattext                 ; 4a
 	dw Script_yesorno                    ; 4b
-	dw Script_loadmenudata               ; 4c
+	dw Script_loadmenu                   ; 4c
 	dw Script_closewindow                ; 4d
 	dw Script_jumptextfaceplayer         ; 4e
 	dw Script_farjumptext                ; 4f
@@ -174,7 +174,7 @@ ScriptCommandTable:
 	dw Script_writepersonxy              ; 6f
 	dw Script_loademote                  ; 70
 	dw Script_showemote                  ; 71
-	dw Script_objectface                 ; 72
+	dw Script_turnobject                 ; 72
 	dw Script_follownotexact             ; 73
 	dw Script_earthquake                 ; 74
 	dw Script_changemap                  ; 75
@@ -513,7 +513,7 @@ Script_yesorno:
 	ld [ScriptVar], a
 	ret
 
-Script_loadmenudata:
+Script_loadmenu:
 ; parameters:
 ;     data (MenuDataPointerParam)
 	call GetScriptByte
@@ -1101,7 +1101,7 @@ Script_faceobject:
 	ld d, c
 	jr ApplyPersonFacing
 
-Script_objectface:
+Script_turnobject:
 ; parameters:
 ;     person (SingleByteParam)
 ;     facing (SingleByteParam)
