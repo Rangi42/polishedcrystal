@@ -18,7 +18,7 @@ HallOfFame:: ; 0x8640e
 
 	ld hl, wHallOfFameCount
 	ld a, [hl]
-	cp 200
+	cp 201
 	jr nc, .ok
 	inc [hl]
 .ok
@@ -352,7 +352,7 @@ _HallOfFamePC: ; 86650
 
 .DisplayMonAndStrings:
 ; Print the number of times the player has entered the Hall of Fame.
-; If that number is above 200, print "HOF Master!" instead.
+; If that number is above 201, print "HOF Master!" instead.
 	ld a, [wcf64]
 	cp PARTY_LENGTH
 	jr nc, .fail
@@ -373,7 +373,7 @@ _HallOfFamePC: ; 86650
 	pop hl
 	call DisplayHOFMon
 	ld a, [wHallOfFameTempWinCount]
-	cp 200 + 1
+	cp 201
 	jr c, .print_num_hof
 	ld de, .HOFMaster
 	hlcoord 1, 2
