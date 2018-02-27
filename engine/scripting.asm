@@ -666,7 +666,7 @@ GetPocketName:
 	farcall CheckItemPocket
 	ld a, [wItemAttributeParamBuffer]
 	dec a
-	ld hl, .Pockets
+	ld hl, ItemPocketNames
 	and $7
 	add a
 	ld e, a
@@ -678,26 +678,7 @@ GetPocketName:
 	ld hl, StringBuffer3
 	jp CopyName2
 
-.Pockets:
-	dw .Item
-	dw .Medicine
-	dw .Ball
-	dw .TM ; impossible
-	dw .Berry
-	dw .Key
-
-.Item:
-	db "Item Pocket@"
-.Medicine:
-	db "Med.Pocket@"
-.Ball:
-	db "Ball Pocket@"
-.TM:
-	db "TM Pocket@"
-.Berry:
-	db "Berry Pocket@"
-.Key:
-	db "Key Pocket@"
+INCLUDE "data/items/pocket_names.asm"
 
 GetTMHMPocketName:
 	ld hl, .TMHMPocket
