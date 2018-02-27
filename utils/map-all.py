@@ -29,8 +29,8 @@ tileset_names = ['johto1', 'johto2', 'johto3', 'johto4', 'kanto1', 'kanto2',
 
 # {'TILESET_JOHTO_1': 1, ...}
 tileset_ids = {}
-# {'NEW_BARK_TOWN': 9, ...}
-map_heights = OrderedDict()
+# {'NEW_BARK_TOWN': 10, ...}
+map_widths = OrderedDict()
 # {'NewBarkTown': 'TILESET_JOHTO_1', ...}
 map_tilesets = OrderedDict()
 # {'NewBarkTown': 'NewBarkTown.blk', ...}
@@ -52,15 +52,15 @@ def read_tileset_ids():
 			elif line.startswith('const_def'):
 				break
 
-def read_map_heights():
+def read_map_widths():
 	with open(code_directory + maps_filename, 'r') as f:
 		for line in f:
 			line = line.strip()
-			if line.startswith('mapconst '):
-				parts = line[9:].split(',')
+			if line.startswith('map_const '):
+				parts = line[10:].split(',')
 				map_const = parts[0].strip()
-				map_height = int(parts[1])
-				map_heights[map_const] = map_height
+				map_width = int(parts[1])
+				map_widths[map_const] = map_width
 
 def read_map_tilesets():
 	with open(code_directory + map_headers_filename, 'r') as f:
@@ -88,14 +88,14 @@ def read_map_block_data():
 
 def render_map_images(valid_tilesets):
 	rendered = set()
-	for map_const, map_name in sorted(zip(map_heights, map_tilesets)):
-		map_height = map_heights[map_const]
+	for map_const, map_name in sorted(zip(map_widths, map_tilesets)):
+		map_width = map_widths[map_const]
 		tileset_name = tileset_names[tileset_ids[map_tilesets[map_name]] - 1]
 		if not valid_tilesets or tileset_name in valid_tilesets:
 			block_data_name = map_block_data_exceptions.get(map_name, map_name)
 			if block_data_name in rendered:
 				continue
-			command = 'python utils/map.py %s h%d %s' % (block_filename_fmt % block_data_name, map_height, tileset_name)
+			command = 'python utils/map.py %s %d %s' % (block_filename_fmt % block_data_name, map_width, tileset_name)
 			print()
 			print(command)
 			os.system(command)
@@ -105,8 +105,8 @@ def main():
 	valid_tilesets = sys.argv[1:]
 	print('Reading tileset IDs from %s...' % tileset_filename, file=sys.stderr)
 	read_tileset_ids()
-	print('Reading map heights from %s...' % maps_filename, file=sys.stderr)
-	read_map_heights()
+	print('Reading map widths from %s...' % maps_filename, file=sys.stderr)
+	read_map_widths()
 	print('Reading map tilesets from %s...' % map_headers_filename, file=sys.stderr)
 	read_map_tilesets()
 	print('Reading map block data from %s...' % block_data_filename, file=sys.stderr)
