@@ -12,7 +12,7 @@
 	tilecoll WALL, WALL, LADDER, LADDER
 	tilecoll WALL, WALL, FLOOR, FLOOR
 	tilecoll WALL, WALL, WALL, WALL
-	tilecoll FLOOR, WALL, FLOOR, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, WALL
 	tilecoll WALL, WALL, FLOOR, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll WALL, WALL, WALL, FLOOR

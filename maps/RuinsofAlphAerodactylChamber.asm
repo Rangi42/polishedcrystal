@@ -95,7 +95,13 @@ MapRuinsofAlphAerodactylChamberSignpost5Script:
 	iftrue_jumptext UnknownText_0x58ea2
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext
+	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	iftrue .unsolved
+	writetext UnusedText_0x58e70
+	jump .unownwords
+.unsolved
 	writetext UnknownText_0x58e4f
+.unownwords
 	writebyte $1
 	special Special_DisplayUnownWords
 	endtext
@@ -103,6 +109,10 @@ MapRuinsofAlphAerodactylChamberSignpost4Script:
 UnknownText_0x58e4f:
 	text "Patterns appeared"
 	line "on the walls…"
+	done
+
+UnusedText_0x58e70:
+	text "It's Unown text!"
 	done
 
 UnknownText_0x58ea2:

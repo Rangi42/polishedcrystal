@@ -68,6 +68,7 @@ if DEF(DEBUG)
 	setflag ENGINE_EXPN_CARD
 	; pokedex
 	setflag ENGINE_POKEDEX
+	setflag ENGINE_UNOWN_DEX
 	; all hms
 	givetmhm HM_CUT
 	givetmhm HM_FLY
@@ -199,12 +200,46 @@ if DEF(DEBUG)
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
 	givepoke MEWTWO, 100, ARMOR_SUIT
+	loadvar PartyMon1EVs+0, 252
+	loadvar PartyMon1EVs+1, 252
+	loadvar PartyMon1EVs+2, 252
+	loadvar PartyMon1EVs+3, 252
+	loadvar PartyMon1EVs+4, 252
+	loadvar PartyMon1EVs+5, 252
+	loadvar PartyMon1DVs+0, $ff
+	loadvar PartyMon1DVs+1, $ff
+	loadvar PartyMon1DVs+2, $ff
+	loadvar PartyMon1Personality, ABILITY_2 | MODEST
+	loadvar PartyMon1Stats+0, 999 / $100
+	loadvar PartyMon1Stats+1, 999 % $100
+	loadvar PartyMon1Stats+2, 999 / $100
+	loadvar PartyMon1Stats+3, 999 % $100
+	loadvar PartyMon1Stats+4, 999 / $100
+	loadvar PartyMon1Stats+5, 999 % $100
+	loadvar PartyMon1Stats+6, 999 / $100
+	loadvar PartyMon1Stats+7, 999 % $100
+	loadvar PartyMon1Stats+8, 999 / $100
+	loadvar PartyMon1Stats+9, 999 % $100
 	; hm slaves
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS
-	callasm TeachHMSlaveMoves
-	callasm MaxMewtwoStats
-	; pokedex
+	loadvar PartyMon2Moves+0, FLY
+	loadvar PartyMon2Moves+1, SURF
+	loadvar PartyMon2Moves+2, STRENGTH
+	loadvar PartyMon2Moves+3, CUT
+	loadvar PartyMon2PP+0, 15
+	loadvar PartyMon2PP+1, 15
+	loadvar PartyMon2PP+2, 15
+	loadvar PartyMon2PP+3, 30
+	loadvar PartyMon3Moves+0, FLASH
+	loadvar PartyMon3Moves+1, ROCK_SMASH
+	loadvar PartyMon3Moves+2, WHIRLPOOL
+	loadvar PartyMon3Moves+3, WATERFALL
+	loadvar PartyMon2PP+0, 20
+	loadvar PartyMon2PP+1, 15
+	loadvar PartyMon2PP+2, 15
+	loadvar PartyMon2PP+3, 15
+	; fill pokedex
 	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
@@ -224,71 +259,17 @@ if DEF(DEBUG)
 	closetext
 	end
 
-TeachHMSlaveMoves:
-	ld hl, PartyMon2Moves
-	ld a, FLY
-	ld [hli], a
-	ld a, SURF
-	ld [hli], a
-	ld a, STRENGTH
-	ld [hli], a
-	ld a, CUT
-	ld [hl], a
-	ld hl, PartyMon2PP
-	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hli], a
-	ld a, 30
-	ld [hl], a
-	ld hl, PartyMon3Moves
-	ld a, FLASH
-	ld [hli], a
-	ld a, ROCK_SMASH
-	ld [hli], a
-	ld a, WHIRLPOOL
-	ld [hli], a
-	ld a, WATERFALL
-	ld [hl], a
-	ld hl, PartyMon3PP
-	ld a, 20
-	ld [hli], a
-	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hl], a
-	ret
-
-MaxMewtwoStats:
-	ld hl, PartyMon1EVs
-	ld a, 252
-rept 6
-	ld [hli], a
-endr
-;	ld hl, PartyMon1DVs
-	ld a, $ff
-rept 3
-	ld [hli], a
-endr
-;	ld hl, PartyMon1Personality
-	ld [hl], ABILITY_2 | MODEST
-	ld hl, PartyMon1Stats
-rept 5
-	ld a, 999 / $100
-	ld [hli], a
-	ld a, 999 % $100
-	ld [hli], a
-endr
-	ret
-
 FillPokedex:
 	ld a, 1
+	ld [wUnlockedUnownMode], a
 	ld [wFirstUnownSeen], a
 	ld [wFirstMagikarpSeen], a
+	ld hl, UnownDex
+	ld a, 1
+rept NUM_UNOWN
+	ld [hli], a
+	inc a
+endr
 	ld hl, PokedexSeen
 	call .Fill
 	ld hl, PokedexCaught

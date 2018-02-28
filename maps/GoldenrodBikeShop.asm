@@ -9,7 +9,7 @@ GoldenrodBikeShop_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 9 ; bg events
+	db 10 ; bg events
 	bg_event  1,  2, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
 	bg_event  0,  3, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
 	bg_event  1,  3, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
@@ -19,6 +19,7 @@ GoldenrodBikeShop_MapScriptHeader:
 	bg_event  1,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
 	bg_event  6,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
 	bg_event  7,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, UnknownText_0x548c0
 
 	db 1 ; object events
 	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
@@ -88,4 +89,11 @@ UnknownText_0x54898:
 UnknownText_0x548ed:
 	text "It's a shiny new"
 	line "Bicycle!"
+	done
+
+UnknownText_0x548c0:
+	text "Just released!"
+
+	para "First-rate compact"
+	line "Bicycles!"
 	done
