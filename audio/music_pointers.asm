@@ -26,6 +26,7 @@ Music:
 	dba Music_SproutTower
 	dba Music_LookSage
 	dba Music_MartHGSS
+	dba Music_HiddenGrottoB2W2
 	dba Music_UnionCave
 	dba Music_RuinsOfAlphInterior
 	dba Music_RuinsOfAlphRadio
