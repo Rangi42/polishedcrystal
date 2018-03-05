@@ -6,15 +6,16 @@ IlexForest_MapScriptHeader:
 	db 1 ; callbacks
 	callback MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
 
-	db 3 ; warp events
+	db 4 ; warp events
 	warp_event  3,  7, ROUTE_34_ILEX_FOREST_GATE, 3
 	warp_event  5, 44, ILEX_FOREST_AZALEA_GATE, 1
 	warp_event  5, 45, ILEX_FOREST_AZALEA_GATE, 2
+	warp_event 25, 24, HIDDEN_TREE_GROTTO, 1
 
 	db 1 ; coord events
 	coord_event  9, 31, 2, IlexForestApprenticeTrigger
 
-	db 8 ; bg events
+	db 10 ; bg events
 	bg_event  5, 19, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
 	bg_event 13,  9, SIGNPOST_ITEM + ETHER, EVENT_ILEX_FOREST_HIDDEN_ETHER
 	bg_event 24, 16, SIGNPOST_ITEM + SUPER_POTION, EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION
@@ -23,6 +24,8 @@ IlexForest_MapScriptHeader:
 	bg_event 10, 24, SIGNPOST_UP, MapIlexForestSignpost4Script
 	bg_event 25, 24, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_1
 	bg_event 19,  8, SIGNPOST_ITEM + SILVER_LEAF, EVENT_ILEX_FOREST_HIDDEN_SILVER_LEAF_2
+	bg_event 25, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ILEX_FOREST
+	bg_event 26, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ILEX_FOREST
 
 	db 14 ; object events
 	object_event 16, 33, SPRITE_FARFETCH_D, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD

@@ -173,9 +173,9 @@ NUM_FRUIT_TREES EQU const_value +- 1
 ; see engine/hidden_grottoes.asm:HiddenGrottoData
 	const_def 1
 	const HIDDENGROTTO_ROUTE_32           ; 01
-	const HIDDENGROTTO_ROUTE_35           ; 02
-	const HIDDENGROTTO_LAKE_OF_RAGE       ; 03
-	const HIDDENGROTTO_04                 ; 04
+	const HIDDENGROTTO_ILEX_FOREST        ; 02
+	const HIDDENGROTTO_ROUTE_35           ; 03
+	const HIDDENGROTTO_LAKE_OF_RAGE       ; 04
 	const HIDDENGROTTO_05                 ; 05
 	const HIDDENGROTTO_06                 ; 06
 	const HIDDENGROTTO_07                 ; 07
