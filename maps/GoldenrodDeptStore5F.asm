@@ -74,7 +74,8 @@ GoldenrodDeptStore5FTwinScript:
 	opentext
 	writetext UnknownText_0x56279
 	buttonsound
-	callasm .PickRandomMysteryGift
+	random APICOT_BERRY - ORAN_BERRY + 1
+	addvar ORAN_BERRY
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText
@@ -88,13 +89,6 @@ GoldenrodDeptStore5FTwinScript:
 	line "another Berry"
 	cont "tomorrow."
 	done
-
-.PickRandomMysteryGift:
-	ld a, APICOT_BERRY - ORAN_BERRY + 1
-	call RandomRange
-	add ORAN_BERRY
-	ld [ScriptVar], a
-	ret
 
 UnknownText_0x56143:
 	text "Hello. Oh, your"

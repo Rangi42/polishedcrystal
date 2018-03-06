@@ -22,17 +22,12 @@ Route18WestAlwaysOnBike:
 	return
 
 Route18WestBikeCheckScript:
-	callasm .CheckPlayerState
+	copybytetovar PlayerState
 	ifequal PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
 	applyonemovement PLAYER, step_down
 .done
 	end
-
-.CheckPlayerState:
-	ld a, [PlayerState]
-	ld [ScriptVar], a
-	ret
 
 GenericTrainerBikerCharles:
 	generictrainer BIKER, CHARLES, EVENT_BEAT_BIKER_CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText

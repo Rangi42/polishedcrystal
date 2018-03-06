@@ -69,27 +69,15 @@ PsychicInverScript:
 
 .Score4_6
 	writetext InverseBattle4_6PointRewardText
-	callasm .RandomBerry
+	random APICOT_BERRY - LUM_BERRY + 1
+	addvar LUM_BERRY
 	jump .Reward
 
 .Score7_9
 	writetext InverseBattle7_9PointRewardText
-	callasm .RandomStone
+	random EVERSTONE - LEAF_STONE + 1
+	addvar LEAF_STONE
 	jump .Reward
-
-.RandomBerry:
-	ld a, APICOT_BERRY - LUM_BERRY + 1
-	call RandomRange
-	add LUM_BERRY
-	ld [ScriptVar], a
-	ret
-
-.RandomStone:
-	ld a, EVERSTONE - LEAF_STONE + 1
-	call RandomRange
-	add LEAF_STONE
-	ld [ScriptVar], a
-	ret
 
 PsychicInverGreetingText:
 	text "Oh. I wasn't ex-"
