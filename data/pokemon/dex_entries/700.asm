@@ -1,5 +1,5 @@
 ; SylveonPokedexEntry:
-	db "Intertwine@" ; species name
+	db "Intertwined@" ; species name
 	dw 303, 518 ; height, width
 
 	db   "It sends a"

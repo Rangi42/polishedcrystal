@@ -4615,7 +4615,7 @@ ElekidEvosAttacks:
 
 ElectivireEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, CROSS_CHOP ; evolution move
+	db 1, CLOSE_COMBAT ; evolution move
 	db 1, FIRE_PUNCH
 	db 1, QUICK_ATTACK
 	db 1, LEER
