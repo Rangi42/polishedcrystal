@@ -235,10 +235,10 @@ if DEF(DEBUG)
 	loadvar PartyMon3Moves+1, ROCK_SMASH
 	loadvar PartyMon3Moves+2, WHIRLPOOL
 	loadvar PartyMon3Moves+3, WATERFALL
-	loadvar PartyMon2PP+0, 20
-	loadvar PartyMon2PP+1, 15
-	loadvar PartyMon2PP+2, 15
-	loadvar PartyMon2PP+3, 15
+	loadvar PartyMon3PP+0, 20
+	loadvar PartyMon3PP+1, 15
+	loadvar PartyMon3PP+2, 15
+	loadvar PartyMon3PP+3, 15
 	; fill pokedex
 	callasm FillPokedex
 	; intro events
