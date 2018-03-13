@@ -69,7 +69,7 @@ PsychicInverScript:
 
 .Score4_6
 	writetext InverseBattle4_6PointRewardText
-	random APICOT_BERRY - LUM_BERRY + 1
+	random MARANGABERRY - LUM_BERRY + 1
 	addvar LUM_BERRY
 	jump .Reward
 

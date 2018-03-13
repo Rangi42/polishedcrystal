@@ -74,7 +74,7 @@ GoldenrodDeptStore5FTwinScript:
 	opentext
 	writetext UnknownText_0x56279
 	buttonsound
-	random APICOT_BERRY - ORAN_BERRY + 1
+	random MARANGABERRY - ORAN_BERRY + 1
 	addvar ORAN_BERRY
 	itemtotext $0, $1
 	giveitem ITEM_FROM_MEM

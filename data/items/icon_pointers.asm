@@ -113,6 +113,7 @@ ItemIconPointers:
 	dw OvalCharmIcon
 	dw SilphScope2Icon
 	dw ApricornBoxIcon
+	dw NoItemIcon
 	dw CheriBerryIcon
 	dw ChestoBerryIcon
 	dw PechaBerryIcon
@@ -129,11 +130,10 @@ ItemIconPointers:
 	dw SalacBerryIcon
 	dw PetayaBerryIcon
 	dw ApicotBerryIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
+	dw JabocaBerryIcon
+	dw RowapBerryIcon
+	dw KeeBerryIcon
+	dw MarangaBerryIcon
 	dw BerryJuiceIcon
 	dw SilkScarfIcon
 	dw BlackBeltIcon

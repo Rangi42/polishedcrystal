@@ -82,6 +82,12 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
+### Item effects
+
+* Jaboca/Rowap Berry damages the foe if they hit you with a physical/special move
+* Kee/Maranga Berry raises Defense/Special Defense if hit with a physical/special move
+
+
 ### Move effects
 
 * Bug Bite eats and uses the foe's held Berry

@@ -127,6 +127,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; OVAL_CHARM
 	dw NoEffect         ; SILPHSCOPE2
 	dw ApricornBox      ; APRICORN_BOX
+	dw NoEffect         ; TERU_SAMA
 	dw HealStatusEffect ; CHERI_BERRY
 	dw HealStatusEffect ; CHESTO_BERRY
 	dw HealStatusEffect ; PECHA_BERRY
@@ -143,11 +144,10 @@ ItemEffects: ; e73c
 	dw NoEffect         ; SALAC_BERRY
 	dw NoEffect         ; PETAYA_BERRY
 	dw NoEffect         ; APICOT_BERRY
-	dw NoEffect         ; ITEM_82
-	dw NoEffect         ; ITEM_83
-	dw NoEffect         ; ITEM_84
-	dw NoEffect         ; ITEM_85
-	dw NoEffect         ; ITEM_86
+	dw NoEffect         ; JABOCA_BERRY
+	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; MARANGABERRY
 	dw RestoreHPEffect  ; BERRY_JUICE
 	dw NoEffect         ; SILK_SCARF
 	dw NoEffect         ; BLACK_BELT

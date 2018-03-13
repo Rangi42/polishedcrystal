@@ -112,6 +112,7 @@ ItemDescriptions:
 	dw OvalCharmDesc
 	dw SilphScope2Desc
 	dw ApricornBoxDesc
+	dw TeruSamaDesc
 	dw CheriBerryDesc
 	dw ChestoBerryDesc
 	dw PechaBerryDesc
@@ -128,11 +129,10 @@ ItemDescriptions:
 	dw SalacBerryDesc
 	dw PetayaBerryDesc
 	dw ApicotBerryDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
+	dw JabocaBerryDesc
+	dw RowapBerryDesc
+	dw KeeBerryDesc
+	dw MarangaBerryDesc
 	dw BerryJuiceDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
@@ -743,6 +743,22 @@ PetayaBerryDesc:
 ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
+
+JabocaBerryDesc:
+	db   "Damages foe on"
+	next "a physical hit.@"
+
+RowapBerryDesc:
+	db   "Damages foe on"
+	next "a special hit.@"
+
+KeeBerryDesc:
+	db   "Raises Defense on"
+	next "a physical hit.@"
+
+MarangaBerryDesc:
+	db   "Raises Spcl.Def on"
+	next "a special hit.@"
 
 BerryJuiceDesc:
 	db   "A self-restore"
