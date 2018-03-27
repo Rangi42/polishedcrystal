@@ -11,7 +11,7 @@ KrissHouse2F_MapScriptHeader:
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event  2,  1, SIGNPOST_READ, KrissHousePC
+	bg_event  2,  1, SIGNPOST_UP, KrissHousePC
 	bg_event  3,  1, SIGNPOST_READ, KrissHouseRadio
 	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfElmScript
 	bg_event  6,  0, SIGNPOST_IFSET, KrissHousePoster

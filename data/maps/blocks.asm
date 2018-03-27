@@ -189,7 +189,6 @@ PewterSnoozeSpeechHouse_BlockData:
 Route12SuperRodHouse_BlockData:
 Route16FuchsiaSpeechHouse_BlockData:
 Route2NuggetSpeechHouse_BlockData:
-Route26HealSpeechHouse_BlockData:
 Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 EusinesHouse_BlockData:
@@ -1388,6 +1387,9 @@ Route25_BlockData:
 
 Route26_BlockData:
 	INCBIN "maps/Route26.blk"
+
+Route26HealSpeechHouse_BlockData:
+	INCBIN "maps/Route26HealSpeechHouse.blk"
 
 Route27_BlockData:
 	INCBIN "maps/Route27.blk"

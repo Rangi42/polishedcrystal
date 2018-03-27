@@ -570,7 +570,7 @@ endr
 	ld hl, MAPOBJECT_RANGE
 	add hl, bc
 	ld de, wTemporaryScriptBuffer
-rept 2
+rept 3
 	ld a, [hli]
 	ld [de], a
 	inc de
