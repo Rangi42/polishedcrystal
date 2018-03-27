@@ -17,12 +17,6 @@ Get1bpp_2:: ; ddc
 	ret
 ; def
 
-FarCopyBytesDouble_DoubleBankSwitch:: ; def
-	ld [hBuffer], a
-	homecall FarCopyBytesDouble, [hBuffer]
-	ret
-; dfd
-
 ReplaceKrisSprite:: ; e4a
 	farjp _ReplaceKrisSprite
 ; e51
@@ -298,3 +292,77 @@ Copy1bpp:: ; fa4
 	pop hl
 	jp FarCopyBytesDouble
 ; fb6
+
+
+GetOpaque1bpp_2::
+; Two bytes in VRAM define eight pixels (2 bits/pixel)
+; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
+; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
+; %00 = white, %11 = black, %10 = light, %01 = dark
+	ld a, [rLCDC]
+	bit 7, a ; lcd on?
+	jr z, .CopyOpaque1bpp
+	homecall _GetOpaque1bpp
+	ret
+
+.CopyOpaque1bpp:
+; copy c 1bpp tiles from b:de to hl
+
+	push de
+	ld d, h
+	ld e, l
+
+; bank
+	ld a, b
+
+; bc = c * $10 / 2
+	push af
+	ld h, 0
+	ld l, c
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld b, h
+	ld c, l
+	pop af
+
+	pop hl
+	; fallthrough
+
+FarCopyOpaqueBytesDouble::
+; Copy bc bytes from a:hl to bc*2 bytes at de,
+; writing $ff before each byte in the process.
+
+	ld [hBuffer], a
+	ld a, [hROMBank]
+	push af
+	ld a, [hBuffer]
+	rst Bankswitch
+
+; switcheroo, de <> hl
+	ld a, h
+	ld h, d
+	ld d, a
+	ld a, l
+	ld l, e
+	ld e, a
+
+	inc b
+	inc c
+	jr .dec
+
+.loop
+	ld a, [de]
+	inc de
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+.dec
+	dec c
+	jr nz, .loop
+	dec b
+	jr nz, .loop
+
+	pop af
+	rst Bankswitch
+	ret

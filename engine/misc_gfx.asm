@@ -393,7 +393,7 @@ _Get1bpp:: ; 1042b2
 	ld h, d
 	ld l, e
 	ld de, wScratchTileMap
-	call FarCopyBytesDouble_DoubleBankSwitch
+	call FarCopyBytesDouble
 
 	pop hl
 	pop bc
@@ -411,6 +411,71 @@ _Get1bpp:: ; 1042b2
 	ld [rSVBK], a
 	ret
 ; 104303
+
+_GetOpaque1bpp::
+	; opaque 1bpp when bit 7 of [rLCDC]
+.loop
+	ld a, c
+	cp $10
+	jp c, .bankswitch
+	jp z, .bankswitch
+	push bc
+	push hl
+	push de
+	ld c, $10
+	call .bankswitch
+	pop de
+	ld hl, $80
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	lb bc, 1, 0
+	add hl, bc
+	pop bc
+	ld a, c
+	sub $10
+	ld c, a
+	jr .loop
+; 1042d6
+
+.bankswitch ; 1042d6
+	ld a, [rSVBK]
+	push af
+	ld a, $6
+	ld [rSVBK], a
+
+	push bc
+	push hl
+
+	ld a, b
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	ld h, d
+	ld l, e
+	ld de, wScratchTileMap
+	call FarCopyOpaqueBytesDouble
+
+	pop hl
+	pop bc
+
+	push bc
+	call DelayFrame
+	pop bc
+
+	ld d, h
+	ld e, l
+	ld hl, wScratchTileMap
+	call HDMATransfer_Wait127Scanlines
+
+	pop af
+	ld [rSVBK], a
+	ret
 
 HDMATransfer_OnlyTopFourRows: ; 104303
 	ld hl, .Function
