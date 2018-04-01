@@ -420,11 +420,15 @@ ENDM
 	connection north, Route42, ROUTE_42, -3, 2, 20
 	connection south, VioletCity, VIOLET_CITY, 0, 0, 20
 
+	map_attributes RuinsofAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, SOUTH
+	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2, 0, 10
+
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, Route35Coast, ROUTE_35_COAST, 0, 0, 24
 	connection west, Route41, ROUTE_41, -3, 0, 20
 
-	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, EAST
+	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST
+	connection north, RuinsofAlphOutside, RUINS_OF_ALPH_OUTSIDE, 2, 0, 11
 	connection east, Route32, ROUTE_32, -1, 8, 13
 
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
@@ -483,7 +487,6 @@ ENDM
 	map_attributes RadioTower3F, RADIO_TOWER_3F, $0, 0
 	map_attributes RadioTower4F, RADIO_TOWER_4F, $0, 0
 	map_attributes RadioTower5F, RADIO_TOWER_5F, $0, 0
-	map_attributes RuinsofAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, 0
 	map_attributes RuinsofAlphHoOhChamber, RUINS_OF_ALPH_HO_OH_CHAMBER, $0, 0
 	map_attributes RuinsofAlphKabutoChamber, RUINS_OF_ALPH_KABUTO_CHAMBER, $0, 0
 	map_attributes RuinsofAlphOmanyteChamber, RUINS_OF_ALPH_OMANYTE_CHAMBER, $0, 0
