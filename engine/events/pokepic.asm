@@ -92,7 +92,7 @@ ClosePokepic:: ; 24528
 	call OverworldTextModeSwitch
 	call ApplyTilemap
 	call UpdateSprites
-	jp LoadStandardFont
+	farjp LoadOverworldFont
 
 PokepicMenuDataHeader: ; 0x24547
 	db $40 ; flags
