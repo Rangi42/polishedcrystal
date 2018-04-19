@@ -24,7 +24,7 @@ CeladonCity_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 9 ; bg events
+	db 11 ; bg events
 	bg_event  9, 18, SIGNPOST_JUMPTEXT, CeladonCitySignText
 	bg_event 15, 31, SIGNPOST_JUMPTEXT, CeladonGymSignText
 	bg_event  3, 31, SIGNPOST_JUMPTEXT, CeladonUniversitySignText
@@ -32,7 +32,9 @@ CeladonCity_MapScriptHeader:
 	bg_event 14,  9, SIGNPOST_JUMPTEXT, CeladonCityHomeDecorStoreSignText
 	bg_event 17,  9, SIGNPOST_JUMPTEXT, CeladonCityMansionSignText
 	bg_event 21, 21, SIGNPOST_JUMPTEXT, CeladonCityGameCornerSignText
-	bg_event 33, 21, SIGNPOST_JUMPTEXT, CeladonCityTrainerTipsText
+	bg_event 27, 21, SIGNPOST_JUMPTEXT, CeladonCityPrizeExchangeSignText
+	bg_event 33, 21, SIGNPOST_JUMPTEXT, CeladonCityTrainerTips1Text
+	bg_event 21, 15, SIGNPOST_JUMPTEXT, CeladonCityTrainerTips2Text
 	bg_event 41, 21, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
 	db 14 ; object events
@@ -291,7 +293,13 @@ CeladonCityGameCornerSignText:
 	cont "Game Corner"
 	done
 
-CeladonCityTrainerTipsText:
+CeladonCityPrizeExchangeSignText:
+	text "Coins exchanged"
+	line "for prizes!"
+	cont "Prize Exchange"
+	done
+
+CeladonCityTrainerTips1Text:
 	text "Trainer Tips"
 
 if DEF(FAITHFUL)
@@ -307,4 +315,17 @@ endc
 	para "Get your items at"
 	line "Celadon Dept."
 	cont "Store!"
+	done
+
+CeladonCityTrainerTips2Text:
+	text "Trainer Tips"
+
+	para "Eevee is a #mon"
+	line "full of potential."
+
+	para "Try exposing it to"
+	line "many different"
+	cont "locations, times"
+	cont "of day, and"
+	cont "Evolution stones."
 	done

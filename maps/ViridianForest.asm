@@ -20,7 +20,7 @@ ViridianForest_MapScriptHeader:
 	bg_event 32, 44, SIGNPOST_ITEM + MAX_ETHER, EVENT_VIRIDIAN_FOREST_HIDDEN_MAX_ETHER
 	bg_event 18, 43, SIGNPOST_ITEM + FULL_HEAL, EVENT_VIRIDIAN_FOREST_HIDDEN_FULL_HEAL
 	bg_event  4, 43, SIGNPOST_ITEM + MULCH, EVENT_VIRIDIAN_FOREST_HIDDEN_MULCH
-	bg_event 30,  9, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
+	bg_event 30,  9, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_VIRIDIAN_FOREST_HIDDEN_BIG_MUSHROOM
 	bg_event  3, 14, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
 	db 7 ; object events
@@ -152,20 +152,22 @@ ViridianForestSignText1:
 ViridianForestSignText2:
 	text "Trainer Tips"
 
-	para "No stealing of"
-	line "#mon from"
-	cont "other trainers!"
-	cont "Catch only wild"
-	cont "#mon!"
+	para "Hold on to that"
+	line "Big Mushroom!"
+
+	para "Some maniacs will"
+	line "pay lots of money"
+	cont "for useless items!"
 	done
 
 ViridianForestSignText3:
 	text "Trainer Tips"
 
-	para "Contact Prof.Oak"
-	line "via PC to get"
-	cont "your #dex"
-	cont "evaluated!"
+	para "Grass-type #mon"
+	line "are unaffected by"
+
+	para "powder and spore"
+	line "moves!"
 	done
 
 ViridianForestSignText4:
@@ -177,10 +179,9 @@ ViridianForestSignText4:
 ViridianForestSignText5:
 	text "Trainer Tips"
 
-	para "If you want to"
-	line "avoid battles,"
-	cont "stay away from"
-	cont "grassy areas!"
+	para "Poison-type #-"
+	line "mon can't be poi-"
+	cont "soned themselves!"
 	done
 
 ViridianForestSignText6:

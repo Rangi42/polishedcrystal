@@ -494,6 +494,9 @@ BugContestResults_CopyContestantsToResults ; 0xbc380
 	end
 
 InitializeEventsScript:
+	setmapscene GOLDENROD_CITY, $1
+	setmapscene BATTLE_TOWER_OUTSIDE, $1
+	setmapscene BELLCHIME_TRAIL, $1
 	setevent EVENT_EARLS_ACADEMY_EARL
 	setevent EVENT_VIOLET_GYM_FALKNER
 	setevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER

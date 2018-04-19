@@ -19,16 +19,17 @@ CeruleanCity_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 7 ; bg events
+	db 8 ; bg events
 	bg_event 23, 19, SIGNPOST_JUMPTEXT, CeruleanCitySignText
 	bg_event 27, 21, SIGNPOST_JUMPTEXT, CeruleanGymSignText
 	bg_event 11, 25, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
 	bg_event 25, 13, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
 	bg_event 23,  4, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
 	bg_event 11, 19, SIGNPOST_JUMPTEXT, CeruleanBubblerText
+	bg_event 17, 27, SIGNPOST_JUMPTEXT, CeruleanTrainerTipsText
 	bg_event  4, 13, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
-	db 8 ; object events
+	db 9 ; object events
 	object_event 21, 20, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
 	object_event  6,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
 	object_event 30, 22, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
@@ -37,6 +38,7 @@ CeruleanCity_MapScriptHeader:
 	object_event 14, 18, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
 	object_event  2, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
+	cuttree_event 20, 27, EVENT_CERULEAN_CITY_CUT_TREE
 
 	const_def 1 ; object constants
 	const CERULEANCITY_COOLTRAINER_F
@@ -239,4 +241,17 @@ CeruleanCapeSignText:
 CeruleanBubblerText:
 	text "The water"
 	line "tastes good!"
+	done
+
+CeruleanTrainerTipsText:
+	text "Trainer Tips"
+
+	para "Even without an"
+	line "ItemFinder, you"
+
+	para "can find useful"
+	line "items in trees,"
+
+	para "beneath rocks,"
+	line "or under water."
 	done

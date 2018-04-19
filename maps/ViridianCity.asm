@@ -16,10 +16,11 @@ ViridianCity_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 4 ; bg events
+	db 5 ; bg events
 	bg_event 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
 	bg_event 27,  7, SIGNPOST_JUMPTEXT, ViridianGymSignText
-	bg_event 19,  1, SIGNPOST_JUMPTEXT, ViridianCityWelcomeSignText
+	bg_event 19,  1, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips1Text
+	bg_event 29, 29, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips2Text
 	bg_event 21, 15, SIGNPOST_JUMPTEXT, TrainerHouseSignText
 
 	db 8 ; object events
@@ -233,12 +234,30 @@ ViridianGymSignText:
 	line "text is illegible…"
 	done
 
-ViridianCityWelcomeSignText:
-	text "Welcome to"
-	line "Viridian City,"
+ViridianCityTrainerTips1Text:
+	text "Trainer Tips"
 
-	para "The Gateway to"
-	line "Indigo Plateau"
+	para "Catch #mon"
+	line "and expand your"
+	cont "collection!"
+
+	para "The more you have,"
+	line "the easier it is"
+	cont "to fight!"
+	done
+
+ViridianCityTrainerTips2Text:
+	text "Trainer Tips"
+
+	para "The world is a"
+	line "big place!"
+
+	para "Don't just run or"
+	line "Fly everywhere--"
+	cont "look around you!"
+
+	para "You'll find new and"
+	line "exciting things!"
 	done
 
 TrainerHouseSignText:

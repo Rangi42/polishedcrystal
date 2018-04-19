@@ -20,7 +20,7 @@ PewterCity_MapScriptHeader:
 	bg_event 11, 17, SIGNPOST_JUMPTEXT, PewterGymSignText
 	bg_event 15,  9, SIGNPOST_JUMPTEXT, PewterMuseumOfScienceSignText
 	bg_event 33, 19, SIGNPOST_JUMPTEXT, PewterCityMtMoonGiftShopSignText
-	bg_event 19, 29, SIGNPOST_JUMPTEXT, PewterCityWelcomeSignText
+	bg_event 19, 29, SIGNPOST_JUMPTEXT, PewterCityTrainerTipsText
 
 	db 7 ; object events
 	object_event 22, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c042, -1
@@ -170,7 +170,12 @@ PewterCityMtMoonGiftShopSignText:
 	line "Now open!"
 	done
 
-PewterCityWelcomeSignText:
-	text "Welcome to"
-	line "Pewter City!"
+PewterCityTrainerTipsText:
+	text "Trainer Tips"
+
+	para "A Pokemon holding"
+	line "an Ability Cap"
+	cont "is more likely to"
+	cont "have a baby with"
+	cont "a rare ability."
 	done

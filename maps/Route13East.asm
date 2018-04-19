@@ -7,8 +7,9 @@ Route13East_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 3 ; bg events
-	bg_event 11, 13, SIGNPOST_JUMPTEXT, Route13TrainerTipsText
+	db 4 ; bg events
+	bg_event 11, 13, SIGNPOST_JUMPTEXT, Route13TrainerTips1Text
+	bg_event 29,  5, SIGNPOST_JUMPTEXT, Route13TrainerTips2Text
 	bg_event 27, 11, SIGNPOST_JUMPTEXT, Route13SignText
 	bg_event 12, 13, SIGNPOST_ITEM + CALCIUM, EVENT_ROUTE_13_HIDDEN_CALCIUM
 
@@ -205,12 +206,26 @@ Route13EastGrampsText2:
 	cont "What a spectacle!"
 	done
 
-Route13TrainerTipsText:
+Route13TrainerTips1Text:
 	text "Trainer Tips"
 
 	para "Look! Right there,"
 	line "at the left side"
 	cont "of the post."
+	done
+
+Route13TrainerTips2Text:
+	text "Trainer Tips"
+
+	para "Some Pokemon need"
+	line "items to evolve."
+
+	para "If you're lucky,"
+	line "a wild #mon can"
+
+	para "be found holding"
+	line "its own evolution"
+	cont "item!"
 	done
 
 Route13SignText:

@@ -44,14 +44,18 @@ UnknownText_0x9b025:
 	line "town closest to"
 	cont "Indigo Plateau."
 
+	para "It's known as the"
+	line "gateway to Indigo"
+	cont "Plateau!"
+
 	para "They built this"
 	line "place because so"
 
 	para "many trainers pass"
 	line "through on their"
 
-	para "way up to Indigo"
-	line "Plateau."
+	para "way up to the"
+	line "#mon League."
 	done
 
 UnknownText_0x9b0b5:
