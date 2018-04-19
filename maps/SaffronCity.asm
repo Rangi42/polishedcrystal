@@ -321,5 +321,5 @@ SaffronTrainerTips2Text:
 	line "than # Balls,"
 
 	para "but they're more"
-	cont "convenient."
+	line "convenient."
 	done
