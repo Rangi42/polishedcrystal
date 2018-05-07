@@ -232,6 +232,7 @@ Some of these may never be added; they're just suggestions.
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
 * More music
+   * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
