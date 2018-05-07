@@ -22,7 +22,7 @@ LakeofRage_MapScriptHeader:
 	bg_event 10, 27, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE
 	bg_event 11, 27, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE
 
-	db 17 ; object events
+	db 18 ; object events
 	object_event 21, 28, SPRITE_LAKE_OF_RAGE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeOfRageLanceScript, EVENT_LAKE_OF_RAGE_LANCE
 	object_event 18, 22, SPRITE_BIG_GYARADOS, SPRITEMOVEDATA_BIG_GYARADOS, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LakeOfRageRedGyaradosScript, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	object_event  4,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
@@ -40,6 +40,7 @@ LakeofRage_MapScriptHeader:
 	cuttree_event 11, 12, EVENT_LAKE_OF_RAGE_CUT_TREE_2
 	cuttree_event  5, 14, EVENT_LAKE_OF_RAGE_CUT_TREE_3
 	cuttree_event  6, 21, EVENT_LAKE_OF_RAGE_CUT_TREE_4
+	cuttree_event 23,  4, EVENT_LAKE_OF_RAGE_CUT_TREE_5
 
 	const_def 1 ; object constants
 	const LAKEOFRAGE_LANCE
