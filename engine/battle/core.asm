@@ -9205,16 +9205,11 @@ InitBattleDisplay: ; 3fb6c
 	hlcoord 2, 6
 	lb bc, 6, 6
 	predef PlaceGraphic
-	xor a
-	ld [hWY], a
-	ld [rWY], a
 	call WaitBGMap
 	call HideSprites
 	ld b, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
-	ld a, $90
-	ld [hWY], a
 	xor a
 	ld [hSCX], a
 	ret
