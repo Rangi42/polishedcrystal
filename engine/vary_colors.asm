@@ -46,7 +46,7 @@ CopyDVsToColorVaryDVs:
 
 GetColorChannelVariedByDV:
 ; d = color, e = DV
-; a <- d + (e & %11) - (e & %1100 >> 2), clamped to [0, 31]
+; a <- d + (e & %11) - (e & %1100 >> 2), ±5 if not in [0, 31]
 	ld a, e
 	cp %0010 ; override a +2
 	jr z, .plus4
@@ -58,15 +58,15 @@ GetColorChannelVariedByDV:
 	srl e
 	sub e
 .floor
-	jr c, .zero
+	jr c, .up
 .ceil
 	cp 32
 	ret c
-	ld a, 31
+	sub 5
 	ret
 
-.zero
-	xor a
+.up
+	add 5
 	ret
 
 .plus4

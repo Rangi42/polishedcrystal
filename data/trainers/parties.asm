@@ -9340,6 +9340,7 @@ ArtistGroup:
 	db "Marlene@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_DVS | TRAINERTYPE_MOVES
 	; party
+	; TODO: fix DVs to appropriately color Smeargles
 	db 55, SMEARGLE, CHARCOAL, DVS_HP_FIRE ; red
 		db FIRE_BLAST, FLAMETHROWER, EARTH_POWER, WILL_O_WISP
 	db 55, SMEARGLE, MAGNET, DVS_HP_ELECTRIC ; yellow
