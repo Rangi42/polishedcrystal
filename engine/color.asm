@@ -133,7 +133,7 @@ LoadItemIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld de, UnknBGPals palette 4 + 2
+	ld de, UnknBGPals palette 7 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -158,7 +158,7 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, UnknBGPals palette 4 + 2
+	ld de, UnknBGPals palette 7 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -169,7 +169,7 @@ endr
 
 .cancel:
 	ld hl, TMHMCancelPalette
-	ld de, UnknBGPals palette 4 + 2
+	ld de, UnknBGPals palette 7 + 2
 	ld bc, 6
 	ld a, $5
 	jp FarCopyWRAM

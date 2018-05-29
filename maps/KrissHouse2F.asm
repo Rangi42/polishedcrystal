@@ -175,6 +175,7 @@ if DEF(DEBUG)
 	giveitem BICYCLE
 	; useful items
 	giveitem ITEMFINDER
+	giveitem APRICORN_BOX
 	giveitem SQUIRTBOTTLE
 	giveitem MYSTICTICKET
 	giveitem OLD_SEA_MAP

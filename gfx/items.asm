@@ -19,14 +19,14 @@ UpdateItemIcon::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, VTiles2 tile $17
+	ld de, VTiles2 tile $1e
 	call GetItemIconBank
 	call DecompressRequest2bpp
 	farcall LoadItemIconPalette
 	jp SetPalettes
 
 GetItemIconBank:
-	lb bc, BANK(ItemIcons1), $9
+	lb bc, BANK(ItemIcons1), 9
 	ld a, [CurSpecies]
 	cp SCOPE_LENS ; first icon in ItemIcons2
 	ret c
@@ -40,13 +40,13 @@ GetItemIconBank:
 	ret z
 	cp ITEM_FROM_MEM
 	ret z
-	lb bc, BANK(ItemIcons2), $9
+	lb bc, BANK(ItemIcons2), 9
 	ret
 
 LoadTMHMIcon::
 	ld hl, TMHMIcon
-	ld de, VTiles2 tile $17
-	lb bc, BANK(TMHMIcon), $9
+	ld de, VTiles2 tile $1e
+	lb bc, BANK(TMHMIcon), 9
 	jp DecompressRequest2bpp
 
 INCLUDE "data/items/icon_pointers.asm"
