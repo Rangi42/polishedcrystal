@@ -2042,7 +2042,8 @@ BugCatcherGroup:
 	db "Josh@"
 	db TRAINERTYPE_NORMAL
 	; party
-	db 13, PARAS
+	db 12, PARAS
+	db 12, VENONAT
 	db -1 ; end
 
 ; ================

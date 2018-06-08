@@ -16,7 +16,7 @@ PokemonTrainerFanClub_MapScriptHeader:
 	db 0 ; object events
 
 PokemonJournalBrunoScript:
-	setflag ENGINE_READ_BROCK_JOURNAL
+	setflag ENGINE_READ_BRUNO_JOURNAL
 	thistext
 
 	text "#mon Journal"

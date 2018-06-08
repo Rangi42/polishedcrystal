@@ -188,7 +188,7 @@ UnknownText_0x1aa115:
 	text "Want to know a"
 	line "secret?"
 
-	para "Celadon Mansion"
+	para "Celadon Condo"
 	line "has a hidden back"
 	cont "door."
 	done
@@ -284,7 +284,8 @@ CeladonCityHomeDecorStoreSignText:
 	done
 
 CeladonCityMansionSignText:
-	text "Celadon Mansion"
+	text "Celadon"
+	line "Condominium"
 	done
 
 CeladonCityGameCornerSignText:

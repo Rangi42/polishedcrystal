@@ -27,7 +27,7 @@ CeruleanWaterShowSpeechHouseCooltrainerMText:
 CeruleanWaterShowSpeechHouseSuperNerdText:
 	text "I drew some graff-"
 	line "iti on the roof of"
-	cont "Celadon Mansion."
+	cont "Celadon Condo."
 
 	para "Have you seen it?"
 	line "It's a bit hidden,"
