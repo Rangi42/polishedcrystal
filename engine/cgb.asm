@@ -681,7 +681,7 @@ endr
 
 	hlcoord 1, 8, AttrMap
 	lb bc, 3, 3
-	ld a, $4
+	ld a, $7
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
