@@ -8,6 +8,9 @@ Qwilfish: Astonish
 Heracross: Rock Blast
 Munchlax: Pursuit
 
+Houndoom: Bonemerang
+Qwilfish: Selfdestruct
+
 Slowbro: Metronome
 Lanturn: Earthquake
 Blissey: Reflect

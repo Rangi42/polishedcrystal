@@ -132,7 +132,7 @@ UnknownText_0xa0fcf: ; 0xa0fcf
 	line "receptionist at"
 	cont "the Radio Tower?"
 
-	para "'Welcome,' is all"
+	para "“Welcome,” is all"
 	line "she ever says."
 
 	para "But she's really"
@@ -282,7 +282,7 @@ UnknownText_0xa1488: ; 0xa1488
 	line "came in out in"
 
 	para "droves, shouting"
-	line "'Pikachu!' over"
+	line "“Pikachu!” over"
 
 	para "and over. I mean,"
 	line "they were loud."
