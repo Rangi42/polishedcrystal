@@ -99,7 +99,7 @@ HailHitsText:
 	prompt
 
 PerishCountText: ; 0x80864
-	text "<USER> is"
+	text "<USER>'s"
 	line "Perish count is @"
 	deciram wd265, 1, 1
 	text "!"
