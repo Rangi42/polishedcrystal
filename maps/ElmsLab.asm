@@ -1171,7 +1171,7 @@ ElmAideHasEggText:
 	cont "assistant?"
 
 	para "He should have met"
-	line "you with the Elm"
+	line "you with the Egg"
 
 	para "at Violet City's"
 	line "#mon Center."
