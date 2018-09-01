@@ -46,7 +46,15 @@ endr
 	ld a, MALE
 	ld [hl], a
 
-; BUG: stats are not recalculated after changing DVs and nature.
+; Recalculate stats after changing DVs and Nature
+	ld hl, PartyMon1MaxHP
+	call _GetLastPartyMonAttribute
+	ld d, h
+	ld e, l
+	ld hl, PartyMon1EVs - 1
+	call _GetLastPartyMonAttribute
+	ld b, TRUE
+	predef CalcPkmnStats
 
 ; Nickname.
 	ld a, [PartyCount]
