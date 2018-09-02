@@ -47,14 +47,15 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
-* Mateo for some sprites and tiles.
+* isamuakai01 for sprites of Steven and Cynthia.
+* Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
+* Paps for Twins' sprite.
 * coraldev for rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
@@ -67,7 +68,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 ## Content
 
-* Mateo for the shared universe of Red++ and Pokémon Christmas, including Shamouti Island and Ecruteak Shrine.
+* Luna for the shared universe of Red++ and Pokémon Christmas, including Shamouti Island and Ecruteak Shrine.
 * Pia Carrot for Valencia Island and Route 49 from Pokémon Orange.
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 * ShockSlayer for Eusine's losing text.
@@ -77,7 +78,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Special Thanks
 
 * yenatch, kanzure, Pikalax, iimarckus, and everyone else who's contributed to disassembling Pokémon Crystal.
-* Mateo for his inspiring Red++ ROM hack, and help on Skeetendo.
+* Luna for her inspiring Red++ ROM hack, and help on Skeetendo.
 * Crystal_ for his in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks.
 * Tauwasser, comet, and other members of Skeetendo for help and advice.
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place.

@@ -133,8 +133,7 @@ $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
 
-%.pal: %.2bpp
-gfx/pokemon/%/normal.pal gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
+gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
 
 %.lz: % ; $(LZ) $< $@
 
