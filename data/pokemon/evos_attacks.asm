@@ -251,7 +251,7 @@ BeedrillEvosAttacks:
 	db 1, FURY_STRIKES ; Fury Attack → similar move
 	db 1, U_TURN ; evolution move
 	db 14, RAGE
-	db 27, PURSUIT
+	db 17, PURSUIT
 	db 20, FOCUS_ENERGY
 	db 23, VENOSHOCK
 	db 26, FEINT_ATTACK ; Assurance → similar move
