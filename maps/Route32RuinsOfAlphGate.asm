@@ -1,4 +1,4 @@
-Route32RuinsofAlphGate_MapScriptHeader:
+Route32RuinsOfAlphGate_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks

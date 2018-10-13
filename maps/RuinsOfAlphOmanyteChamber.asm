@@ -1,4 +1,4 @@
-RuinsofAlphOmanyteChamber_MapScriptHeader:
+RuinsOfAlphOmanyteChamber_MapScriptHeader:
 	db 1 ; scene scripts
 	scene_script RuinsofAlphOmanyteChamberTrigger0
 

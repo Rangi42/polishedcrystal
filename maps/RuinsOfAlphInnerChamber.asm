@@ -1,4 +1,4 @@
-RuinsofAlphInnerChamber_MapScriptHeader:
+RuinsOfAlphInnerChamber_MapScriptHeader:
 	db 2 ; scene scripts
 	scene_script RuinsofAlphInnerChamberTrigger0
 	scene_script RuinsofAlphInnerChamberTrigger1

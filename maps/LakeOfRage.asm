@@ -1,10 +1,10 @@
-LakeofRage_MapScriptHeader:
+LakeOfRage_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 3 ; callbacks
-	callback MAPCALLBACK_NEWMAP, LakeofRageFlyPoint
-	callback MAPCALLBACK_OBJECTS, LakeofRageWesleyAndEngineer
-	callback MAPCALLBACK_TILES, LakeofRageFloodScript
+	callback MAPCALLBACK_NEWMAP, LakeOfRageFlyPoint
+	callback MAPCALLBACK_OBJECTS, LakeOfRageWesleyAndEngineer
+	callback MAPCALLBACK_TILES, LakeOfRageFloodScript
 
 	db 3 ; warp events
 	warp_event  7,  3, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE, 1
@@ -47,11 +47,11 @@ LakeofRage_MapScriptHeader:
 	const LAKEOFRAGE_RED_GYARADOS
 	const LAKEOFRAGE_WESLEY
 
-LakeofRageFlyPoint:
+LakeOfRageFlyPoint:
 	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
 	return
 
-LakeofRageWesleyAndEngineer:
+LakeOfRageWesleyAndEngineer:
 	checkevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	iftrue .NoEngineer
 	moveobject LAKEOFRAGE_LANCE, 18, 29
@@ -65,14 +65,14 @@ LakeofRageWesleyAndEngineer:
 	appear LAKEOFRAGE_WESLEY
 	return
 
-LakeofRageFloodScript:
+LakeOfRageFloodScript:
 	special Special_GetOvercastIndex
 	ifequal LAKE_OF_RAGE_OVERCAST, .flood
-	changemap LakeofRage_BlockData
+	changemap LakeOfRage_BlockData
 	return
 
 .flood
-	changemap LakeofRageFlooded_BlockData
+	changemap LakeOfRageFlooded_BlockData
 	return
 
 LakeOfRageSignText:

@@ -1,4 +1,4 @@
-RuinsofAlphResearchCenter_MapScriptHeader:
+RuinsOfAlphResearchCenter_MapScriptHeader:
 	db 2 ; scene scripts
 	scene_script RuinsofAlphResearchCenterTrigger0
 	scene_script RuinsofAlphResearchCenterTrigger1

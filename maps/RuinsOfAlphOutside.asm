@@ -1,4 +1,4 @@
-RuinsofAlphOutside_MapScriptHeader:
+RuinsOfAlphOutside_MapScriptHeader:
 	db 1 ; scene scripts
 	scene_script RuinsofAlphOutsideTrigger0
 

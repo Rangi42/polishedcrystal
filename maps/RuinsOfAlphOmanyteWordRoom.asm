@@ -1,4 +1,4 @@
-RuinsofAlphOmanyteWordRoom_MapScriptHeader:
+RuinsOfAlphOmanyteWordRoom_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks

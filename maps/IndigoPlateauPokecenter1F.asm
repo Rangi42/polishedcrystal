@@ -1,4 +1,4 @@
-IndigoPlateauPokeCenter1F_MapScriptHeader:
+IndigoPlateauPokecenter1F_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks

@@ -1,4 +1,4 @@
-LakeofRageHiddenPowerHouse_MapScriptHeader:
+LakeOfRageHiddenPowerHouse_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks

@@ -1,4 +1,4 @@
-RuinsofAlphAerodactylChamber_MapScriptHeader:
+RuinsOfAlphAerodactylChamber_MapScriptHeader:
 	db 1 ; scene scripts
 	scene_script RuinsofAlphAerodactylChamberTrigger0
 

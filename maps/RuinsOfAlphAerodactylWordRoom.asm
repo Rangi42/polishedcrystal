@@ -1,4 +1,4 @@
-RuinsofAlphAerodactylWordRoom_MapScriptHeader:
+RuinsOfAlphAerodactylWordRoom_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks

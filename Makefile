@@ -137,8 +137,9 @@ gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
 
 %.lz: % ; $(LZ) $< $@
 
-%.png: ; $(error ERROR: No rule to make '$@')
-%.asm: ; $(error ERROR: No rule to make '$@')
-%.bin: ; $(error ERROR: No rule to make '$@')
-%.blk: ; $(error ERROR: No rule to make '$@')
-%.tilemap: ; $(error ERROR: No rule to make '$@')
+%.pal: ; $(error ERROR: Cannot find '$@')
+%.png: ; $(error ERROR: Cannot find '$@')
+%.asm: ; $(error ERROR: Cannot find '$@')
+%.bin: ; $(error ERROR: Cannot find '$@')
+%.blk: ; $(error ERROR: Cannot find '$@')
+%.tilemap: ; $(error ERROR: Cannot find '$@')

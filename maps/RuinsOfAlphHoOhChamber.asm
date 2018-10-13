@@ -1,4 +1,4 @@
-RuinsofAlphHoOhChamber_MapScriptHeader:
+RuinsOfAlphHoOhChamber_MapScriptHeader:
 	db 1 ; scene scripts
 	scene_script RuinsofAlphHoOhChamberTrigger0
 

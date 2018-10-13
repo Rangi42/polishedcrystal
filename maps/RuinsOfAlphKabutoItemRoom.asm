@@ -1,4 +1,4 @@
-RuinsofAlphKabutoItemRoom_MapScriptHeader:
+RuinsOfAlphKabutoItemRoom_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks

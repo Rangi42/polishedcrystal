@@ -1,4 +1,4 @@
-DayCare_MapScriptHeader:
+Daycare_MapScriptHeader:
 	db 1 ; scene scripts
 	scene_script DayCareTrigger0
 

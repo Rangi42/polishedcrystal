@@ -1,4 +1,4 @@
-GoldenrodPokeComCenter1F_MapScriptHeader:
+GoldenrodPokecomCenter1F_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 0 ; callbacks
