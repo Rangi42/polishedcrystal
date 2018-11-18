@@ -13,4 +13,5 @@ MovePriorities:
 	db COUNTER,      -5
 	db MIRROR_COAT,  -5
 	db ROAR,         -6
+	db TELEPORT,     -6
 	db -1

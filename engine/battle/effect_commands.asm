@@ -6340,10 +6340,11 @@ BattleCommand_Teleport: ; 36778
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jr nc, .failed
 
-; Can't teleport from a trainer battle
+; Switch, don't run, in trainer battles
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .failed
+	jr nz, .trainer_battle
+
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp RUN_AWAY
@@ -6371,6 +6372,12 @@ BattleCommand_Teleport: ; 36778
 
 	ld hl, FledFromBattleText
 	jp StdBattleTextBox
+
+.trainer_battle
+	call CheckAnyOtherAliveMons
+	jr z, .failed
+	jp BattleCommand_SwitchOut
+
 .failed
 	call AnimateFailedMove
 	jp PrintButItFailed

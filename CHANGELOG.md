@@ -81,11 +81,13 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Give in-game trades good natures.
 * Add: TM prices from OR/AS.
 * Add: Show quantity in Bag in marts.
+* Add: Fancier Bag interface with color-coded pockets.
 * Add: Get a free Premier Ball with every 10 Balls bought.
 * Add: Show Pokémon portraits when using field moves (thanks to TPP:AC).
 * Add: Time boundaries from HG/SS (day lasts until 8 PM, not 6 PM).
 * Add: Use DVs to vary Pokémon colors like in Stadium.
 * Add: Update random Wonder Trade OT names.
+* Add: Teleport switches in trainer battles, like Let's Go.
 * Add: Rock Smash has 60 power (non-Faithful).
 * Add: Strength is Fighting-type (non-Faithful).
 * Add: Submission has 120 power (non-Faithful).
