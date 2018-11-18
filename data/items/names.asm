@@ -141,7 +141,7 @@ endc
 	db "Rowap Berry@"
 	db "Kee Berry@"
 	db "MarangaBerry@"
-	db "Berry Juice@"
+	db "PewterCrunch@"
 	db "Silk Scarf@"
 	db "Black Belt@"
 	db "Sharp Beak@"

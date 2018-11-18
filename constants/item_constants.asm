@@ -154,7 +154,7 @@
 	const KEE_BERRY    ; 85
 	const MARANGABERRY ; 86
 
-	const BERRY_JUICE  ; 87
+	const PEWTERCRUNCH ; 87
 
 	const SILK_SCARF   ; 88
 	const BLACK_BELT   ; 89

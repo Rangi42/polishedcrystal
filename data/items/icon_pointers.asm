@@ -134,7 +134,7 @@ ItemIconPointers:
 	dw RowapBerryIcon
 	dw KeeBerryIcon
 	dw MarangaBerryIcon
-	dw BerryJuiceIcon
+	dw PewterCrunchIcon
 	dw SilkScarfIcon
 	dw BlackBeltIcon
 	dw SharpBeakIcon

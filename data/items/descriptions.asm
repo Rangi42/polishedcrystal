@@ -133,7 +133,7 @@ ItemDescriptions:
 	dw RowapBerryDesc
 	dw KeeBerryDesc
 	dw MarangaBerryDesc
-	dw BerryJuiceDesc
+	dw PewterCrunchDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc
@@ -389,6 +389,8 @@ IceHealDesc:
 	next "#mon.@"
 
 FullHealDesc:
+RageCandyBarDesc:
+PewterCrunchDesc:
 	db   "Eliminates all"
 	next "status problems.@"
 
@@ -471,10 +473,6 @@ LemonadeDesc:
 MoomooMilkDesc:
 	db   "Restores #mon"
 	next "HP by 100.@"
-
-RageCandyBarDesc:
-	db   "Restores #mon"
-	next "HP by 20.@"
 
 SacredAshDesc:
 	db   "Fully revives all"

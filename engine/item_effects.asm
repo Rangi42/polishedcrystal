@@ -68,7 +68,7 @@ ItemEffects: ; e73c
 	dw RestoreHPEffect  ; SODA_POP
 	dw RestoreHPEffect  ; LEMONADE
 	dw RestoreHPEffect  ; MOOMOO_MILK
-	dw RestoreHPEffect  ; RAGECANDYBAR
+	dw HealStatusEffect ; RAGECANDYBAR
 	dw SacredAsh        ; SACRED_ASH
 	dw EnergyPowder     ; ENERGYPOWDER
 	dw EnergyRoot       ; ENERGY_ROOT
@@ -148,7 +148,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; MARANGABERRY
-	dw RestoreHPEffect  ; BERRY_JUICE
+	dw HealStatusEffect ; PEWTERCRUNCH
 	dw NoEffect         ; SILK_SCARF
 	dw NoEffect         ; BLACK_BELT
 	dw NoEffect         ; SHARP_BEAK
