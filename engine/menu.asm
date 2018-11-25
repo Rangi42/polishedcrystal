@@ -6,26 +6,6 @@ _2DMenu_:: ; 2400e
 	call Draw2DMenu
 	call UpdateSprites
 	call ApplyTilemap
-	jp Get2DMenuSelection
-; 24022
-
-_InterpretBattleMenu:: ; 24022
-	ld hl, CopyMenuData2
-	ld a, [wMenuData2_2DMenuItemStringsBank]
-	call FarCall_hl
-
-	call Draw2DMenu
-	call UpdateSprites
-	call ApplyTilemap
-	jp Get2DMenuSelection
-; 2403c
-
-Draw2DMenu: ; 24085
-	xor a
-	ld [hBGMapMode], a
-	call MenuBox
-	jp Place2DMenuItemStrings
-; 2408f
 
 Get2DMenuSelection: ; 2408f
 	call Init2DMenuCursorPosition
@@ -36,7 +16,7 @@ Get2DMenuSelection: ; 2408f
 	jr z, .skip
 	call GetMenuJoypad
 	bit SELECT_F, a
-	jr nz, .quit1
+	jr nz, .quit
 
 .skip
 	ld a, [wMenuData2Flags]
@@ -44,7 +24,7 @@ Get2DMenuSelection: ; 2408f
 	jr nz, .skip2
 	call GetMenuJoypad
 	bit B_BUTTON_F, a
-	jr nz, .quit2
+	jr nz, .quit
 
 .skip2
 	ld a, [w2DMenuNumCols]
@@ -59,11 +39,7 @@ Get2DMenuSelection: ; 2408f
 	and a
 	ret
 
-.quit1
-	scf
-	ret
-
-.quit2
+.quit
 	scf
 	ret
 ; 240cd
@@ -80,6 +56,11 @@ GetMenuNumberOfRows: ; 240d3
 	and $f
 	ret
 ; 240db
+
+Draw2DMenu: ; 24085
+	xor a
+	ld [hBGMapMode], a
+	call MenuBox
 
 Place2DMenuItemStrings:
 	ld hl, wMenuData2_2DMenuItemStringsAddr
@@ -291,13 +272,13 @@ Menu_WasButtonPressed: ; 24259
 _2DMenuInterpretJoypad: ; 24270
 	call GetMenuJoypad
 	bit A_BUTTON_F, a
-	jp nz, .a_b_start_select
+	jp nz, .a_start_select
 	bit B_BUTTON_F, a
-	jp nz, .a_b_start_select
+	jp nz, .b_button
 	bit SELECT_F, a
-	jp nz, .a_b_start_select
+	jp nz, .a_start_select
 	bit START_F, a
-	jp nz, .a_b_start_select
+	jp nz, .a_start_select
 	bit D_RIGHT_F, a
 	jr nz, .d_right
 	bit D_LEFT_F, a
@@ -410,10 +391,22 @@ _2DMenuInterpretJoypad: ; 24270
 	ret
 ; 24318
 
-.a_b_start_select ; 24318
+.a_start_select ; 24318
 	xor a
 	ret
 ; 2431a
+
+.b_button
+	ld a, [wMenuData2Flags]
+	bit 4, a ; should B move to Run?
+	jr z, .no_b_run
+	; Run is the bottom-right item
+	ld a, $2
+	ld [wMenuCursorX], a
+	ld [wMenuCursorY], a
+.no_b_run
+	xor a
+	ret
 
 Move2DMenuCursor: ; 2431a
 	ld hl, wCursorCurrentTile

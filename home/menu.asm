@@ -510,11 +510,3 @@ _2DMenu:: ; 202a
 	ld a, [wMenuCursorBuffer]
 	ret
 ; 2039
-
-InterpretBattleMenu:: ; 2039
-	ld a, [hROMBank]
-	ld [wMenuData2_2DMenuItemStringsBank], a
-	farcall _InterpretBattleMenu
-	ld a, [wMenuCursorBuffer]
-	ret
-; 2048
