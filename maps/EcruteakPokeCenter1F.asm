@@ -109,6 +109,7 @@ EcruteakPokeCenter1FBillScript:
 	waitsfx
 	givepoke EEVEE, 5
 	givepokeitem .GiftEeveeMail
+	callasm .SetEeveeMailOT
 	writebyte GREAT_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_EEVEE
@@ -218,9 +219,28 @@ EcruteakPokeCenter1FBillScript:
 
 .GiftEeveeMail:
 	db   EON_MAIL
-	db   "Greetings from"
-	next "Kanto! -- Oak@"
-	db 0
+	db   "Please keep this"
+	next "#mon safe!@@@@@@"
+
+.SetEeveeMailOT:
+	ld hl, sPartyMon1MailAuthor
+	ld a, [PartyCount]
+	dec a
+	ld bc, MAIL_STRUCT_LENGTH
+	call AddNTimes
+	push hl
+	pop de
+	ld hl, .EeveeMailOTID
+	ld bc, .EeveeMailOTIDEnd - .EeveeMailOTID
+	ld a, BANK(sPartyMail)
+	call GetSRAMBank
+	call CopyBytes
+	jp CloseSRAM
+
+.EeveeMailOTID:
+	db "Prof.Oak@@"
+	bigdw 00001
+.EeveeMailOTIDEnd
 
 EcruteakPokeCenter1FPokefanMScript:
 	checkevent EVENT_GOT_HM03_SURF
