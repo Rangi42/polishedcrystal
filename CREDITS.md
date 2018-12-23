@@ -27,8 +27,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Music
 
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.
-* FroggestSpirit for ported and demixed music from RBY, HGSS, DPPt, and BW.
-* Pum for the Hoenn, Sinnoh, and Kalos Gym Leader battle music.
+* FroggestSpirit for many music covers from RBY, HGSS, DPPt, and BW.
+* Pum for the BW and XY Gym Leader battle music.
 * ShantyTown for the XY Power Plant and Bicycle music.
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
 * ShockSlayer for some Pokémon Go and Pokémon Stadium battle music.
