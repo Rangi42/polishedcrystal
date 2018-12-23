@@ -18,7 +18,7 @@ RadioTower5F_MapScriptHeader:
 
 	db 6 ; object events
 	object_event  3,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
-	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
+	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Petrel1Script, EVENT_RADIO_TOWER_PETREL
 	object_event 13,  5, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 17,  2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 13,  5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
@@ -43,6 +43,11 @@ FakeDirectorScript:
 	disappear RADIOTOWER5F_DIRECTOR
 	turnobject RADIOTOWER5F_PETREL, UP
 	pause 10
+Petrel1Script:
+	checkevent EVENT_BEAT_PETREL_1
+	iftrue_jumptextfaceplayer FakeDirectorTextAfter
+	setscene $1
+	faceplayer
 	showtext FakeDirectorTextBefore3
 	winlosstext FakeDirectorWinText, 0
 	setlasttalked RADIOTOWER5F_PETREL
@@ -54,7 +59,6 @@ FakeDirectorScript:
 	buttonsound
 	verbosegiveitem BASEMENT_KEY
 	closetext
-	setscene $1
 	setevent EVENT_BEAT_PETREL_1
 	end
 
@@ -137,19 +141,19 @@ FakeDirectorMovement:
 	step_end
 
 FakeDirectorSpinMovement:
-	turn_head_down
 	turn_head_left
-	turn_head_up
-	turn_head_right
 	turn_head_down
+	turn_head_right
+	turn_head_up
 	turn_head_left
-	turn_head_up
-	turn_head_right
 	turn_head_down
+	turn_head_right
+	turn_head_up
 	turn_head_left
-	turn_head_up
-	turn_head_right
 	turn_head_down
+	turn_head_right
+	turn_head_up
+	step_sleep 8
 	step_end
 
 RadioTower5FDirectorWalksIn:

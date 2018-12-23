@@ -45,6 +45,8 @@ Route48JessieJamesScript1:
 	showtext Route48JessieJamesSeenText
 	setscene $1
 	setevent EVENT_BEAT_JESSIE_AND_JAMES
+	setevent EVENT_ROUTE_48_JESSIE
+	setevent EVENT_ROUTE_48_JAMES
 	winlosstext Route48JessieJamesBeatenText, 0
 	setlasttalked ROUTE48_JESSIE
 	loadtrainer JESSIE_JAMES, 1
