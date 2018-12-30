@@ -8002,7 +8002,6 @@ GetItemBoostedDuration:
 	ld a, b
 	pop bc
 	cp c
-	cp b
 	ld a, 5
 	jr nz, .got_duration
 	ld a, 8
