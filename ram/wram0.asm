@@ -524,7 +524,7 @@ PlayerTurnsTaken:: ds 1
 PlayerSubstituteHP:: ds 2
 EnemySubstituteHP:: ds 2
 
-	ds 1
+wBackupEnemyMonBaseExp:: ds 1
 
 CurPlayerMove:: ds 1
 CurEnemyMove:: ds 1

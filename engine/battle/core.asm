@@ -2068,6 +2068,13 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 ; fallthrough
 
 GiveExperiencePointsAfterCatch:
+	call IsAnyMonHoldingExpShare
+	ld a, [EnemyMonBaseExp]
+	jr z, .skip_exp_halving
+	srl a
+	ld [EnemyMonBaseExp], a
+.skip_exp_halving
+	ld [wBackupEnemyMonBaseExp], a
 ; give experience to participants
 	xor a
 	ld [wGivingExperienceToExpShareHolders], a
@@ -2079,6 +2086,8 @@ GiveExperiencePointsAfterCatch:
 	push af
 	ld a, d
 	ld [wBattleParticipantsNotFainted], a
+	ld a, [wBackupEnemyMonBaseExp]
+	ld [EnemyMonBaseExp], a
 	ld a, $1
 	ld [wGivingExperienceToExpShareHolders], a
 	call GiveExperiencePoints
@@ -7543,23 +7552,12 @@ GiveExperiencePoints: ; 3ee3b
 	jr nz, .count_loop
 	cp 2
 	ret c
-
 	ld [wd265], a
-	ld hl, EnemyMonBaseStats
-	ld c, EnemyMonEnd - EnemyMonBaseStats
-.count_loop2
-	xor a
-	ld [hDividend + 0], a
-	ld a, [hl]
-	ld [hDividend + 1], a
-	ld a, [wd265]
-	ld [hDivisor], a
-	ld b, 2
-	call Divide
-	ld a, [hQuotient + 2]
-	ld [hli], a
-	dec c
-	jr nz, .count_loop2
+	ld c, a
+	ld a, [EnemyMonBaseExp]
+	call SimpleDivide
+	ld a, b
+	ld [EnemyMonBaseExp], a
 	ret
 ; 3f106
 
