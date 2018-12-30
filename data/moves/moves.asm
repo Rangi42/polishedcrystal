@@ -38,7 +38,7 @@ else
 	move FLY,          EFFECT_FLY,                90, FLYING,    100, 15,   0, PHYSICAL
 endc
 	move DAZZLINGLEAM, EFFECT_NORMAL_HIT,         80, FAIRY,     100, 10,   0, SPECIAL
-	move VOLT_SWITCH,  EFFECT_SWITCH_HIT,         70, ELECTRIC,   70, 20,   0, SPECIAL
+	move VOLT_SWITCH,  EFFECT_SWITCH_HIT,         70, ELECTRIC,  100, 20,   0, SPECIAL
 	move VINE_WHIP,    EFFECT_NORMAL_HIT,         45, GRASS,     100, 25,   0, PHYSICAL
 	move STOMP,        EFFECT_STOMP,              65, NORMAL,    100, 20,  30, PHYSICAL
 	move DOUBLE_KICK,  EFFECT_DOUBLE_HIT,         30, FIGHTING,  100, 30,   0, PHYSICAL
