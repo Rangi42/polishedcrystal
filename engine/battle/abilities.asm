@@ -932,8 +932,10 @@ FlashFireAbility:
 	ld hl, FirePoweredUpText
 	jp StdBattleTextBox
 .already_fired_up
+	call SwitchTurn
 	ld hl, DoesntAffectText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp SwitchTurn
 
 DrySkinAbility:
 VoltAbsorbAbility:
