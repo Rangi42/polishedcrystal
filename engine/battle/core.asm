@@ -5865,8 +5865,16 @@ MoveInfoBox: ; 3e6c8
 	ld [hBGMapMode], a
 
 	hlcoord 0, 8
+	; Check if we've already created the move info textbox.
+	; If we haven't, run TextBox, and (after writing out all data),
+	; WaitBGMap. Not needed for disabled moves since there's no icons.
+	ld a, [hl]
+	cp "┌"
+	push af
+	jr z, .textbox_ok
 	lb bc, 3, 9
 	call TextBox
+.textbox_ok
 
 	ld a, [PlayerDisableCount]
 	and a
@@ -5881,6 +5889,7 @@ MoveInfoBox: ; 3e6c8
 
 	hlcoord 1, 10
 	ld de, .Disabled
+	pop af
 	jp PlaceString
 
 .not_disabled
@@ -5972,6 +5981,7 @@ MoveInfoBox: ; 3e6c8
 	call PlaceString
 
 .icons
+	farcall LoadBattleCategoryAndTypePals
 	ld hl, CategoryIconGFX
 	ld bc, 2 tiles
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
@@ -6003,11 +6013,9 @@ MoveInfoBox: ; 3e6c8
 	ld [hl], $5d
 	inc hl
 	ld [hl], $5e
-
-	farcall LoadBattleCategoryAndTypePals
-	call WaitBGMap
+	pop af
+	call nz, WaitBGMap
 	jp SetPalettes
-; 3e74f
 
 .Disabled:
 	db "Disabled!@"
