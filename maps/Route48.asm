@@ -40,11 +40,17 @@ Route48JessieJamesScript:
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
 	applymovement ROUTE48_JAMES, JamesEnterMovementData
 	showtext Route48JessieJamesSeenText
+	dotrigger $0
+	setevent EVENT_BEAT_JESSIE_AND_JAMES
 	winlosstext Route48JessieJamesBeatenText, 0
 	setlasttalked ROUTE48_JESSIE
 	loadtrainer JESSIE_JAMES, 1
+	setevent EVENT_ROUTE_48_JESSIE
+	setevent EVENT_ROUTE_48_JAMES
 	startbattle
 	dontrestartmapmusic
+	clearevent EVENT_ROUTE_48_JESSIE
+	clearevent EVENT_ROUTE_48_JAMES
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
@@ -53,8 +59,6 @@ Route48JessieJamesScript:
 	applymovement ROUTE48_JAMES, JamesLeaveMovementData
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
-	dotrigger $0
-	setevent EVENT_BEAT_JESSIE_AND_JAMES
 	playmapmusic
 .End
 	end

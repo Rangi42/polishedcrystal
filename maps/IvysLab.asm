@@ -12,9 +12,8 @@ IvysLab_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 14
+.Signposts: db 13
 	signpost 1, 2, SIGNPOST_READ, IvysLabHealingMachine
-	signpost 0, 5, SIGNPOST_JUMPTEXT, IvysLabWindowText
 	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
 	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -29,8 +28,8 @@ IvysLab_MapEventHeader:
 	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
 
 .PersonEvents: db 3
-	person_event SPRITE_IVY, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
-	person_event SPRITE_NIDORINO, 2, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
+	person_event SPRITE_IVY, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
+	person_event SPRITE_NIDORINO, 2, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
 	person_event SPRITE_COOLTRAINER_F, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
 const_value set 2
@@ -251,13 +250,6 @@ IvysLabHealingMachine:
 .Text:
 	text "Would you like to"
 	line "heal your #mon?"
-	done
-
-IvysLabWindowText:
-	text "The window's open."
-
-	para "An ocean breeze"
-	line "is blowing in."
 	done
 
 PokemonJournalProfIvyScript:

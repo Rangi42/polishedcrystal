@@ -109,6 +109,7 @@ CharizardEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WING_ATTACK ; evolution move
 	db 1, FLARE_BLITZ
+	db 1, DRAGONBREATH
 	db 1, DRAGON_CLAW
 	db 1, SHADOW_CLAW
 	db 1, AIR_SLASH
@@ -2479,7 +2480,7 @@ GyaradosEvosAttacks:
 	db 27, DRAGON_RAGE ; Ice Fang → Dragon Rage
 	db 30, AQUA_TAIL
 	db 33, SCARY_FACE
-	db 36, DRAGONBREATH ; Dragon Rage → TM move
+	db 36, DRAGONBREATH ; Dragon Rage → GSC TM move
 	db 39, CRUNCH
 	db 42, HYDRO_PUMP
 	db 45, DRAGON_DANCE
@@ -2493,6 +2494,7 @@ LaprasEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ANCIENTPOWER ; HGSS tutor move
 	db 1, DRAGON_RAGE ; RBY TM move
+	db 1, DRAGONBREATH ; GSC TM move
 	db 1, SING
 	db 1, GROWL
 	db 1, WATER_GUN
@@ -2693,6 +2695,7 @@ KabutopsEvosAttacks:
 AerodactylEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, DRAGON_RAGE ; RBY TM move
+	db 1, DRAGONBREATH ; GSC TM move
 	db 1, WING_ATTACK
 	db 1, SUPERSONIC
 	db 1, BITE
@@ -2798,7 +2801,7 @@ DratiniEvosAttacks:
 	db 15, DRAGON_RAGE
 	db 21, HEADBUTT ; Slam → tutor move
 	db 25, AGILITY
-	db 31, DRAGON_PULSE ; Dragon Tail → TM move
+	db 31, DRAGONBREATH ; Dragon Tail → GSC TM move
 	db 35, AQUA_TAIL
 	db 41, BARRIER ; Dragon Rush → event move
 	db 45, SAFEGUARD
@@ -2817,7 +2820,7 @@ DragonairEvosAttacks:
 	db 15, DRAGON_RAGE
 	db 21, HEADBUTT ; Slam → tutor move
 	db 25, AGILITY
-	db 33, DRAGON_PULSE ; Dragon Tail → TM move
+	db 33, DRAGONBREATH ; Dragon Tail → GSC TM move
 	db 39, AQUA_TAIL
 	db 47, BARRIER ; Dragon Rush → event move
 	db 53, SAFEGUARD
@@ -2842,7 +2845,7 @@ DragoniteEvosAttacks:
 	db 15, DRAGON_RAGE
 	db 21, HEADBUTT ; Slam → tutor move
 	db 25, AGILITY
-	db 33, DRAGON_PULSE ; Dragon Tail → TM move
+	db 33, DRAGONBREATH ; Dragon Tail → GSC TM move
 	db 39, AQUA_TAIL
 	db 47, BARRIER ; Dragon Rush → event move
 	db 53, SAFEGUARD
@@ -3654,7 +3657,7 @@ endc
 
 YanmegaEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, DRAGON_PULSE ; evolution move
+	db 1, DRAGONBREATH ; evolution move
 	db 1, NIGHT_SLASH
 	db 1, TACKLE
 	db 1, FORESIGHT
@@ -4815,6 +4818,7 @@ TyranitarEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, STOMP ; evolution move
 	db 1, LOW_KICK ; HGSS tutor move
+	db 1, DRAGONBREATH ; GSC TM move
 	db 1, BITE
 	db 1, LEER
 	db 5, SANDSTORM
@@ -4837,7 +4841,7 @@ LugiaEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ROAR ; Whirlwind → similar move
 	db 9, GUST
-	db 15, DRAGON_RAGE ; Dragon Rush → new move
+	db 15, DRAGONBREATH ; Dragon Rush → GSC TM move
 	db 23, EXTRASENSORY
 	db 29, RAIN_DANCE
 	db 37, HYDRO_PUMP
@@ -4856,7 +4860,7 @@ HoOhEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, ROAR ; Whirlwind → similar move
 	db 9, GUST
-	db 15, DRAGON_RAGE ; Brave Bird → new move
+	db 15, DRAGONBREATH ; Brave Bird → GSC TM move
 	db 23, EXTRASENSORY
 	db 29, SUNNY_DAY
 	db 37, FIRE_BLAST

@@ -156,24 +156,12 @@ endr
 .CountTrainerStars:
 	ld b, 0
 	; star for beating the Elite Four
-	push bc
-	ld de, EVENT_BEAT_ELITE_FOUR
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	pop bc
-	and a
+	eventflagcheck EVENT_BEAT_ELITE_FOUR
 	jr z, .nostar1
 	inc b
 .nostar1
 	; star for beating Leaf
-	push bc
-	ld de, EVENT_BEAT_LEAF
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	pop bc
-	and a
+	eventflagcheck EVENT_BEAT_LEAF
 	jr z, .nostar2
 	inc b
 .nostar2

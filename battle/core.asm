@@ -3540,15 +3540,15 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 	ld a, [wBattleHasJustStarted]
 	and a
 	jr nz, .finish_fail
-	ld hl, wPartySpecies
+
 	ld a, [wCurPartyMon]
-	ld c, a
-	ld b, 0
-	add hl, bc
+	ld hl, wPartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
 	ld a, [hl]
-	cp EGG
+	or IS_EGG_MASK
 	ld hl, BattleText_AnEGGCantBattle
-	jr z, .print_textbox
+	jr nz, .print_textbox
 
 	ld hl, BattleText_TheresNoWillToBattle
 
@@ -8490,11 +8490,7 @@ HandleNuzlockeFlags:
 	ret nz
 
 	; Only flag landmarks for Nuzlocke runs after getting Poké Balls
-	ld de, EVENT_LEARNED_TO_CATCH_POKEMON
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_LEARNED_TO_CATCH_POKEMON
 	ret z
 
 	; Get current landmark

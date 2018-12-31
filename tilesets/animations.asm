@@ -169,10 +169,10 @@ Tileset40Anim:
 	dw VTiles2 tile $25, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
-	dw VTiles2 tile $4a, ScrollTileUp
-	dw VTiles2 tile $4b, ScrollTileDown
-	dw VTiles2 tile $5a, ScrollTileLeft
-	dw VTiles2 tile $5b, ScrollTileRight
+	dw VTiles2 tile $4e, ScrollTileUp
+	dw VTiles2 tile $4f, ScrollTileDown
+	dw VTiles2 tile $5e, ScrollTileLeft
+	dw VTiles2 tile $5f, ScrollTileRight
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $25, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
@@ -184,10 +184,10 @@ Tileset40Anim:
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw VTiles2 tile $4a, ScrollTileUp
-	dw VTiles2 tile $4b, ScrollTileDown
-	dw VTiles2 tile $5a, ScrollTileLeft
-	dw VTiles2 tile $5b, ScrollTileRight
+	dw VTiles2 tile $4e, ScrollTileUp
+	dw VTiles2 tile $4f, ScrollTileDown
+	dw VTiles2 tile $5e, ScrollTileLeft
+	dw VTiles2 tile $5f, ScrollTileRight
 	dw wTileAnimBuffer, ScrollTileDown
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw VTiles2 tile $26, WriteTileFromBuffer
@@ -208,11 +208,11 @@ Tileset25Anim:
 	dw NULL,  DoneTileAnimation
 
 Tileset29Anim:
-	dw VTiles2 tile $44, WriteTileToBuffer
+	dw VTiles2 tile $10, WriteTileToBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw wTileAnimBuffer, ScrollTileRightLeft
 	dw NULL,  FlickeringCaveEntrancePalette
-	dw VTiles2 tile $44, WriteTileFromBuffer
+	dw VTiles2 tile $10, WriteTileFromBuffer
 	dw NULL,  FlickeringCaveEntrancePalette
 	dw NULL,  WaitTileAnimation
 	dw NULL,  FlickeringCaveEntrancePalette
@@ -655,7 +655,7 @@ endr
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $5a
+	ld hl, VTiles2 tile $50
 	jp WriteTile
 ; fc484
 
@@ -683,7 +683,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $5b
+	ld hl, VTiles2 tile $53
 	jp WriteTile
 ; fc4f2
 
@@ -709,7 +709,7 @@ endr
 	adc ForestTreeLeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $5a
+	ld hl, VTiles2 tile $50
 	jp WriteTile
 ; fc51c
 
@@ -739,7 +739,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $5b
+	ld hl, VTiles2 tile $53
 	jp WriteTile
 ; fc54c
 
@@ -773,7 +773,7 @@ endr
 	adc ForestTree2LeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $60
+	ld hl, VTiles2 tile $5c
 	jp WriteTile
 
 ForestTree2RightAnimation:
@@ -800,7 +800,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $63
+	ld hl, VTiles2 tile $5f
 	jp WriteTile
 
 
@@ -825,7 +825,7 @@ endr
 	adc ForestTree2LeftFrames / $100
 	ld h, a
 	ld sp, hl
-	ld hl, VTiles2 tile $60
+	ld hl, VTiles2 tile $5c
 	jp WriteTile
 
 
@@ -854,7 +854,7 @@ endr
 	add hl, bc
 	pop bc
 	ld sp, hl
-	ld hl, VTiles2 tile $63
+	ld hl, VTiles2 tile $5f
 	jp WriteTile
 
 ForestTree2LeftFrames:
@@ -1147,7 +1147,7 @@ AnimateLCDTile:
 	add hl, de
 	ld sp, hl
 
-	ld hl, VTiles2 tile $6d
+	ld hl, VTiles2 tile $6f
 
 	jp WriteTile
 

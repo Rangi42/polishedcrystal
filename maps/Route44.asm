@@ -146,7 +146,6 @@ TrainerBird_keeperVance1:
 
 Bird_keeperVance1Script:
 	writecode VAR_CALLERID, PHONE_BIRDKEEPER_VANCE
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_VANCE
 	iftrue UnknownScript_0x19d86a
@@ -284,7 +283,6 @@ TrainerFisherWilton1:
 
 FisherWilton1Script:
 	writecode VAR_CALLERID, PHONE_FISHER_WILTON
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_WILTON
 	iftrue UnknownScript_0x19d96e

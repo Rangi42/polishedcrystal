@@ -50,9 +50,6 @@ TownMapGFX: ; f8ba0
 INCBIN "gfx/pokegear/town_map.2bpp.lz"
 ; f8ea4
 
-JohtoKantoGFX:
-INCBIN "gfx/pokegear/johto-kanto.2bpp"
-
 TextBoxSpaceGFX: ; f9204
 INCBIN "gfx/frames/space.1bpp"
 ; f9214
@@ -117,7 +114,7 @@ LoadFrame:: ; fb4cc
 	ld hl, VTiles1 tile ("┌" - $80)
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp
-	ld hl, VTiles2 tile $7f
+	ld hl, VTiles2 tile " "
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
 	jp Get1bpp

@@ -68,9 +68,9 @@ DragonsDenB1FClairTrigger:
 	opentext
 	writetext .GiveTMText
 	buttonsound
-	verbosegivetmhm TM_DRAGONBREATH
-	setevent EVENT_GOT_TM21_DRAGONBREATH
-	writetext .DescribeDragonBreathText
+	verbosegivetmhm TM_DRAGON_PULSE
+	setevent EVENT_GOT_TM59_DRAGON_PULSE
+	writetext .DescribeDragonPulseText
 	buttonsound
 	writetext ClairPokemonLeagueDirectionsText ; in BlackthornGym1F.asm
 	waitbutton
@@ -97,13 +97,9 @@ DragonsDenB1FClairTrigger:
 	line "my apology."
 	done
 
-.DescribeDragonBreathText:
+.DescribeDragonPulseText:
 	text "That contains"
-	line "DragonBreath."
-
-	para "No, it doesn't"
-	line "have anything to"
-	cont "do with my breath."
+	line "Dragon Pulse."
 
 	para "If you don't want"
 	line "it, you don't have"

@@ -1,10 +1,10 @@
-Route35Goldenrodgate_MapScriptHeader:
+Route35GoldenrodGate_MapScriptHeader:
 
 .MapTriggers: db 0
 
 .MapCallbacks: db 0
 
-Route35Goldenrodgate_MapEventHeader:
+Route35GoldenrodGate_MapEventHeader:
 
 .Warps: db 4
 	warp_def 0, 4, 1, ROUTE_35

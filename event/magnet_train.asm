@@ -182,7 +182,7 @@ DrawMagnetTrain: ; 8cd27
 	hlbgcoord 0, 9
 	ld de, MagnetTrainTilemap4
 	ld c, 20
-	jp .FillLine
+	; fallthrough
 ; 8cd65
 
 .FillLine: ; 8cd65
@@ -222,24 +222,24 @@ endr
 MagnetTrainBGTiles: ; 8cd82
 ; Alternating tiles for each line
 ; of the Magnet Train tilemap.
-	db $4c, $4d ; bush
-	db $5c, $5d ; bush
-	db $4c, $4d ; bush
-	db $5c, $5d ; bush
-	db $08, $08 ; fence
-	db $18, $18 ; fence
+	db $4a, $4b ; tree
+	db $5a, $5b ; tree
+	db $4a, $4b ; tree
+	db $5a, $5b ; tree
+	db $0e, $0e ; fence
+	db $3f, $3f ; fence
+	db $36, $36 ; track
+	db $00, $00 ; track
+	db $3a, $3a ; track
+	db $3a, $3a ; track
+	db $0f, $0f ; track
 	db $1f, $1f ; track
-	db $31, $31 ; track
-	db $11, $11 ; track
-	db $11, $11 ; track
-	db $34, $34 ; track
-	db $56, $56 ; track
-	db $04, $04 ; fence
-	db $18, $18 ; fence
-	db $4c, $4d ; bush
-	db $5c, $5d ; bush
-	db $4c, $4d ; bush
-	db $5c, $5d ; bush
+	db $2f, $2f ; fence
+	db $3f, $3f ; fence
+	db $4a, $4b ; tree
+	db $5a, $5b ; tree
+	db $4a, $4b ; tree
+	db $5a, $5b ; tree
 ; 8cda6
 
 MagnetTrain_InitLYOverrides: ; 8cda6
@@ -260,28 +260,28 @@ SetMagnetTrainPals: ; 8cdc3
 	ld a, $1
 	ld [rVBK], a
 
-	; bushes
+	; trees
 	hlbgcoord 0, 0
 	ld bc, 4 bgrows
-	ld a, $2
+	ld a, PAL_BG_GREEN
 	call ByteFill
 
 	; train
 	hlbgcoord 0, 4
 	ld bc, 10 bgrows
-	xor a
+	xor a ; PAL_BG_GRAY
 	call ByteFill
 
-	; more bushes
+	; more trees
 	hlbgcoord 0, 14
 	ld bc, 4 bgrows
-	ld a, $2
+	ld a, PAL_BG_GREEN
 	call ByteFill
 
 	; train window
 	hlbgcoord 7, 8
 	ld bc, 6
-	ld a, $4
+	ld a, PAL_BG_YELLOW
 	call ByteFill
 
 	xor a
@@ -376,43 +376,33 @@ endr
 	ld hl, wcf66
 	ld a, [hl]
 	and a
-	jr z, .DoneWaiting
+	jp z, .Next
 	dec [hl]
 	ret
-
-.DoneWaiting:
-	jp .Next
 ; 8ce7a
 
 .MoveTrain2: ; 8ce7a
 	ld hl, wMagnetTrainFinalPosition
 	ld a, [wcf65]
 	cp [hl]
-	jr z, .PrepareToFinishAnim
+	jp z, .Next
 	ld e, a
 	ld a, [wMagnetTrainDirection]
 	cpl
 	inc a
 	ld d, a
 	ld a, e
-rept 2
 	add d
-endr
+	add d
 	ld [wcf65], a
 	ld hl, wGlobalAnimXOffset
 	ld a, [wMagnetTrainDirection]
 	ld d, a
 	ld a, [hl]
-rept 2
 	add d
-endr
+	add d
 	ld [hl], a
 	ret
-
-	ret
-
-.PrepareToFinishAnim:
-	jp .Next
 ; 8cea2
 
 .TrainArrived: ; 8cea2
@@ -460,23 +450,15 @@ MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
 ; 8ceff
 
 MagnetTrainTilemap1:
-	db $1f, $05, $06, $0a, $0a
-	db $0a, $09, $0a, $0a, $0a
-	db $0a, $0a, $0a, $09, $0a
-	db $0a, $0a, $0b, $0c, $1f
+	db $36, $06, $07, $0b, $0b, $0b, $0a, $0b, $0b, $0b
+	db $0b, $0b, $0b, $0a, $0b, $0b, $0b, $0c, $0d, $36
 MagnetTrainTilemap2:
-	db $14, $15, $16, $1a, $1a
-	db $1a, $19, $1a, $1a, $1a
-	db $1a, $1a, $1a, $19, $1a
-	db $1a, $1a, $1b, $1c, $1d
+	db $15, $16, $17, $1b, $1b, $1b, $1a, $1b, $1b, $1b
+	db $1b, $1b, $1b, $1a, $1b, $1b, $1b, $1c, $1d, $1e
 MagnetTrainTilemap3:
-	db $24, $25, $26, $27, $07
-	db $2f, $29, $28, $28, $28
-	db $28, $28, $28, $29, $07
-	db $2f, $2a, $2b, $2c, $2d
+	db $25, $26, $27, $28, $08, $09, $2a, $29, $29, $29
+	db $29, $29, $29, $2a, $08, $09, $2b, $2c, $2d, $2e
 MagnetTrainTilemap4:
-	db $20, $1f, $2e, $1f, $17
-	db $00, $2e, $1f, $1f, $1f
-	db $1f, $1f, $1f, $2e, $17
-	db $00, $1f, $2e, $1f, $0f
+	db $35, $36, $37, $36, $18, $19, $37, $36, $36, $36
+	db $36, $36, $36, $37, $18, $19, $36, $37, $36, $3e
 ; 8cf4f

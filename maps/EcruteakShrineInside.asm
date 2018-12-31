@@ -49,6 +49,8 @@ EcruteakShrineInsideReiScript:
 	writetext EcruteakShrineInsideReiBlessingText
 	special PlayCurMonCry
 	waitbutton
+	writetext EcruteakShrineInsideHappinessText
+	waitbutton
 	jump .ReiDone
 
 .ReiBattle
@@ -128,6 +130,12 @@ EcruteakShrineInsideReiBlessingText:
 	text "Rei: May you be"
 	line "at ease, and find"
 	cont "peace."
+	done
+
+EcruteakShrineInsideHappinessText:
+	text_from_ram wStringBuffer3
+	text " looks"
+	line "content."
 	done
 
 EcruteakShrineInsideReiBlessEggText:

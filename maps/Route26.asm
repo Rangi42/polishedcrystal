@@ -28,7 +28,7 @@ Route26_MapEventHeader:
 	person_event SPRITE_GUIDE_GENT, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
 	fruittree_event 54, 14, FRUITTREE_ROUTE_26, SITRUS_BERRY
 	itemball_event 15, 9, MAX_ELIXER, 1, EVENT_ROUTE_26_MAX_ELIXER
-	tmhmball_event 34, 13, TM_DRAGON_PULSE, EVENT_ROUTE_26_TM_DRAGON_PULSE
+	tmhmball_event 34, 13, TM_DRAGON_CLAW, EVENT_ROUTE_26_TM_DRAGON_CLAW
 
 Route26DragonTamerSprite:
 	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
@@ -46,7 +46,6 @@ TrainerCooltrainermGaven1:
 
 CooltrainermGaven1Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_GAVEN
 	iftrue UnknownScript_0x1a4d79
@@ -146,7 +145,6 @@ TrainerCooltrainerfBeth1:
 
 CooltrainerfBeth1Script:
 	writecode VAR_CALLERID, PHONE_COOLTRAINERF_BETH
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_BETH
 	iftrue UnknownScript_0x1a4e35

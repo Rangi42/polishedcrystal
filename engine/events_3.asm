@@ -36,11 +36,7 @@ ReturnFromMapSetupScript:: ; b8000
 	ld a, [wCurrentLandmark]
 	cp LUCKY_ISLAND
 	jr nz, .not_lucky_island
-	ld de, EVENT_LUCKY_ISLAND_CIVILIANS
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_LUCKY_ISLAND_CIVILIANS
 	jr nz, .dont_do_map_sign
 .not_lucky_island
 

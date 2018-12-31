@@ -270,6 +270,8 @@ TrashCanScript: ; 0xbc1a5
 	farjumptext TrashCanText
 
 PCScript:
+	checkcode VAR_FACING
+	if_not_equal UP, WrongSideScript
 	opentext
 	special PokemonCenterPC
 	endtext
@@ -1957,7 +1959,7 @@ CaveGrottoScript:
 	special FadeOutPalettes
 	pause 15
 	callasm _HiddenGrottoBackupMap
-	warpfacing UP, HIDDEN_CAVE_GROTTO, 5, 15
+	warpfacing UP, HIDDEN_CAVE_GROTTO, 35, 85
 	end
 
 _HiddenGrottoInitScript:

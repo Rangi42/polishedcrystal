@@ -13,17 +13,12 @@ SpecialHoOhChamber: ; 0x8addb
 
 .open
 	call GetSecondaryMapHeaderPointer
-	ld de, EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	ld b, SET_FLAG
-	jp EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
+	ret
 ; 0x8adef
 
 SpecialOmanyteChamber: ; 8adef
-	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret nz
 
 	ld a, WATER_STONE
@@ -51,9 +46,8 @@ SpecialOmanyteChamber: ; 8adef
 
 .open
 	call GetSecondaryMapHeaderPointer
-	ld de, EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	ld b, SET_FLAG
-	jp EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
+	ret
 ; 8ae30
 
 SpecialAerodactylChamber: ; 8ae30
@@ -65,9 +59,7 @@ SpecialAerodactylChamber: ; 8ae30
 	cp RuinsofAlphAerodactylChamber_SecondMapHeader % $100
 	jr nz, .nope
 
-	ld de, EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	ld b, SET_FLAG
-	call EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	scf
 	ret
 
@@ -85,9 +77,8 @@ SpecialKabutoChamber: ; 8ae4e
 	cp RuinsofAlphKabutoChamber_SecondMapHeader % $100
 	ret nz
 
-	ld de, EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	ld b, SET_FLAG
-	jp EventFlagAction
+	eventflagset EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
+	ret
 ; 8ae68
 
 Special_DisplayUnownWords: ; 8ae68
@@ -143,7 +134,7 @@ endr
 	db $08, $44, $04, $00, $2e, $08, $ff ; E, S, C, A, P, E
 	db $26, $20, $0c, $0e, $46, $ff ; L, I, G, H, T
 	db $4c, $00, $46, $08, $42, $ff ; W, A, T, E, R
-	db $0a, $00, $20, $42, $4e, $ff ; F, A, I, R, Y
+	db $0a, $00, $20, $42, $60, $ff ; F, A, I, R, Y
 ; 8aed5
 
 .UnownMenuDataHeaders: ; 0x8aed5
@@ -169,16 +160,10 @@ endr
 	ld a, [de]
 	cp $ff
 	ret z
-	cp $60
-	ld a, (1 << 3) | PAL_BG_BROWN
-	jr c, .got_pal
-	ld a, PAL_BG_BROWN
-
-.got_pal
+	ld a, TILE_BANK | PAL_BG_BROWN
 	call .PlaceSquare
-rept 2
 	inc hl
-endr
+	inc hl
 	inc de
 	jr .FillAttr
 ; 8aefd
@@ -204,9 +189,8 @@ endr
 	jr z, .word_done
 	ld c, a
 	call .ConvertChar
-rept 2
 	inc hl
-endr
+	inc hl
 	inc de
 	jr .word_loop
 
@@ -219,12 +203,6 @@ endr
 .ConvertChar: ; 8af1c
 	push hl
 	ld a, c
-	cp $60
-	jr z, .Tile60
-	cp $62
-	jr z, .Tile62
-	cp $64
-	jr z, .Tile64
 	ld [hli], a
 	inc a
 	ld [hld], a
@@ -236,42 +214,6 @@ endr
 	ld [hli], a
 	inc a
 	ld [hl], a
-	pop hl
-	ret
-
-.Tile60:
-	ld [hl], $5b
-	inc hl
-	ld [hl], $5c
-	ld bc, SCREEN_WIDTH - 1
-	add hl, bc
-	ld [hl], $4d
-	inc hl
-	ld [hl], $5d
-	pop hl
-	ret
-
-.Tile62:
-	ld [hl], $4e
-	inc hl
-	ld [hl], $4f
-	ld bc, SCREEN_WIDTH - 1
-	add hl, bc
-	ld [hl], $5e
-	inc hl
-	ld [hl], $5f
-	pop hl
-	ret
-
-.Tile64:
-	ld [hl], $2
-	inc hl
-	ld [hl], $3
-	ld bc, SCREEN_WIDTH - 1
-	add hl, bc
-	ld [hl], $3
-	inc hl
-	ld [hl], $2
 	pop hl
 	ret
 ; 8af6b

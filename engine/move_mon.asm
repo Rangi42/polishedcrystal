@@ -1286,8 +1286,8 @@ GiveEgg:: ; df8c
 	ld bc, wPartyCount
 	ld a, [bc]
 	dec a
-	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	pop bc
 	ld a, [hl]

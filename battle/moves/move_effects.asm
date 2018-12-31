@@ -681,7 +681,6 @@ CloseCombat:
 	closecombat
 	checkdestinybond
 	buildopponentrage
-	statdownmessage
 	pickpocket
 	endmove
 

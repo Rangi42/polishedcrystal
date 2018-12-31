@@ -56,7 +56,7 @@ A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
 
 You can post questions or comments on any of these sites. But please read the [FAQ](FAQ.md) first if you have a question.
 
-* [Discord](https://discord.gg/wpJjTp)
+* [Discord](https://discord.gg/ZK5pqK8)
 * [Skeetendo](https://hax.iimarck.us/topic/6874/)
 * [PokéCommunity](http://www.pokecommunity.com/showthread.php?t=373172)
 * [Romhack.me](http://www.romhack.me/polishedcrystal/wall/)

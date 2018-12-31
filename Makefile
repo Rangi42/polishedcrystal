@@ -22,6 +22,9 @@ endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 RGBASM_FLAGS += -DMONOCHROME
 endif
+ifeq ($(filter hgss,$(MAKECMDGOALS)),hgss)
+RGBASM_FLAGS += -DHGSS
+endif
 ifeq ($(filter debug,$(MAKECMDGOALS)),debug)
 RGBASM_FLAGS += -DDEBUG
 endif
@@ -74,6 +77,7 @@ crystal: $(NAME)-$(VERSION).gbc
 faithful: crystal
 nortc: crystal
 monochrome: crystal
+hgss: crystal
 debug: crystal
 
 bankfree: FILLER = 0xff

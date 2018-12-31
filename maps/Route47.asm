@@ -13,7 +13,7 @@ Route47_MapEventHeader:
 	warp_def 17, 52, 2, CLIFF_CAVE
 	warp_def 29, 53, 3, CLIFF_CAVE
 	warp_def 23, 11, 1, QUIET_CAVE_1F
-	warp_def 23, 8, 1, EMBEDDED_TOWER
+	warp_def 23, 7, 1, EMBEDDED_TOWER
 
 .XYTriggers: db 0
 
@@ -43,7 +43,7 @@ Route47_MapEventHeader:
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock 8, 22, $2b
+	changeblock 6, 22, $73
 .locked
 	return
 

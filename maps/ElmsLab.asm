@@ -1108,6 +1108,7 @@ ElmAfterTheftText4:
 ElmAfterTheftText5:
 	text "Elm: What?!"
 
+if !DEF(DEBUG)
 	para "Prof.Oak gave you"
 	line "a #dex?"
 
@@ -1137,6 +1138,7 @@ ElmAfterTheftText5:
 	para "The closest Gym"
 	line "would be the one"
 	cont "in Violet City."
+endc
 	done
 
 ElmAfterTheftText6:

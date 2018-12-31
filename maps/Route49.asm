@@ -113,7 +113,7 @@ TrainerAromaLadyPeony:
 	done
 
 .BeatenText:
-	text "Aw… Bellossom"
+	text "Aww… Bellossom"
 	line "didn't want to"
 	cont "battle…"
 	done

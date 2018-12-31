@@ -688,6 +688,23 @@ CheckIfSomeoneIsSomeType
 	cp b
 	ret
 
+GetHiddenPowerType::
+; return hidden power type in a from DVs at hl
+	; (Atk & 3) << 2
+	ld a, [hli]
+	and 3
+	sla a
+	sla a
+	ld b, a
+	; + Def & 3
+	ld a, [hl]
+	and 3 << 4
+	swap a
+	or b
+; Skip Normal
+	inc a
+	ret
+
 CheckPinch::
 ; return z if we are in a pinch (HP<=1/3)
 	push hl

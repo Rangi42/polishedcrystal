@@ -91,7 +91,9 @@ PhotoStudioHoldStillText:
 PhotoStudioPrestoText:
 	text "Presto! All done."
 
-	para "Your #mon"
+	para "Your @"
+	text_from_ram wStringBuffer3
+	text ""
 	line "looks happier!"
 	done
 

@@ -23,6 +23,7 @@ CharmanderEggMoves:
 	db BITE
 	db CRUNCH
 	db DRAGON_DANCE
+	db DRAGONBREATH
 	db FLARE_BLITZ
 	db OUTRAGE
 	db $ff
@@ -426,6 +427,7 @@ HorseaEggMoves:
 	db AURORA_BEAM
 	db DISABLE
 	db DRAGON_RAGE
+	db DRAGONBREATH
 	db OCTAZOOKA
 	db SPLASH
 	db HAZE

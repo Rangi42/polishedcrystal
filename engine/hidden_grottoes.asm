@@ -24,10 +24,7 @@ InitializeHiddenGrotto::
 	jr nz, .Done
 
 ; first grotto always has a Pokémon
-	ld de, EVENT_SAW_FIRST_HIDDEN_GROTTO
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	and a
+	eventflagcheck EVENT_SAW_FIRST_HIDDEN_GROTTO
 	jr z, .RandomPokemon
 
 ; choose random grotto contents
@@ -46,9 +43,7 @@ InitializeHiddenGrotto::
 	jr .StoreContent
 
 .RandomPokemon:
-	ld de, EVENT_SAW_FIRST_HIDDEN_GROTTO
-	ld b, SET_FLAG
-	call EventFlagAction
+	eventflagset EVENT_SAW_FIRST_HIDDEN_GROTTO
 	ld hl, .PokemonIndexes
 	call GetHiddenGrottoTableEntry
 	ld hl, HiddenGrottoData + GROTTODATA_MON1

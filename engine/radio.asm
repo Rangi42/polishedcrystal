@@ -634,7 +634,7 @@ OaksPkmnTalk14:
 	ld hl, wRadioTextDelay
 	dec [hl]
 	ret nz
-	ld de, $1d
+	ld de, MUSIC_POKEMON_TALK
 	farcall RadioMusicRestartDE
 	ld hl, .terminator
 	call PrintText

@@ -793,7 +793,8 @@ wPokegearMapPlayerIconLandmark:: ds 1
 wPokegearRadioChannelBank:: ds 1
 wPokegearRadioChannelAddr:: ds 2
 wPokegearRadioMusicPlaying:: ds 1
-NEXTU
+wPokegearNumberBuffer:: ds 1
+	ds wc6d0 - @
 
 wSlots::
 ; Slot Machine

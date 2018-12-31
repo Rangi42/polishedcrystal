@@ -7,7 +7,7 @@ OlivineCity_MapScriptHeader:
 
 OlivineCity_MapEventHeader:
 
-.Warps: db 10
+.Warps: db 12
 	warp_def 17, 13, 1, OLIVINE_POKECENTER_1F
 	warp_def 7, 10, 1, OLIVINE_GYM
 	warp_def 7, 25, 1, OLIVINE_TIMS_HOUSE
@@ -18,17 +18,20 @@ OlivineCity_MapEventHeader:
 	warp_def 19, 33, 1, OLIVINE_LIGHTHOUSE_1F
 	warp_def 31, 19, 1, OLIVINE_PORT_PASSAGE
 	warp_def 31, 20, 2, OLIVINE_PORT_PASSAGE
+	warp_def 30, 57, 5, ROUTE_35_NATIONAL_PARK_GATE
+	warp_def 31, 57, 6, ROUTE_35_NATIONAL_PARK_GATE
 
 .XYTriggers: db 2
 	xy_trigger 0, 8, 10, OlivineCityRivalGymScript
 	xy_trigger 0, 23, 33, OlivineCityRivalLighthouseScript
 
-.Signposts: db 8
+.Signposts: db 9
 	signpost 7, 17, SIGNPOST_JUMPTEXT, OlivineCitySignText
 	signpost 22, 20, SIGNPOST_JUMPTEXT, OlivineCityPortSignText
 	signpost 7, 7, SIGNPOST_JUMPTEXT, OlivineGymSignText
 	signpost 20, 34, SIGNPOST_JUMPTEXT, OlivineLighthouseSignText
 	signpost 21, 1, SIGNPOST_JUMPTEXT, OlivineCityBattleTowerSignText
+	signpost 27, 50, SIGNPOST_JUMPTEXT, OlivineCityPokeathlonDomeSignText
 	signpost 14, 36, SIGNPOST_ITEM + RARE_CANDY, EVENT_OLIVINE_CITY_HIDDEN_RARE_CANDY
 	signpost 14, 47, SIGNPOST_ITEM + BIG_PEARL, EVENT_OLIVINE_CITY_HIDDEN_BIG_PEARL
 	signpost 29, 49, SIGNPOST_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
@@ -47,8 +50,8 @@ OlivineCity_MapEventHeader:
 	person_event SPRITE_LASS, 11, 26, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass1Text, -1
 	person_event SPRITE_YOUNGSTER, 11, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityYoungster2Text, -1
 	person_event SPRITE_LASS, 21, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCityLass2Text, -1
-	person_event SPRITE_SAILOR, 19, 49, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerSailorHarvey, -1
-	person_event SPRITE_LASS, 26, 52, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassRose, -1
+	smashrock_event 23, 52
+	smashrock_event 26, 55
 
 const_value set 2
 	const OLIVINECITY_OLIVINE_RIVAL
@@ -103,20 +106,6 @@ OlivineCityRivalLighthouseScript:
 	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
-
-TrainerSailorHarvey:
-	trainer EVENT_BEAT_SAILOR_HARVEY, SAILOR, HARVEY, SailorHarveySeenText, SailorHarveyBeatenText, 0, TrainerSailorHarveyScript
-
-TrainerSailorHarveyScript:
-	end_if_just_battled
-	jumptextfaceplayer SailorHarveyAfterText
-
-TrainerLassRose:
-	trainer EVENT_BEAT_LASS_ROSE, LASS, ROSE, LassRoseSeenText, LassRoseBeatenText, 0, TrainerLassRoseScript
-
-TrainerLassRoseScript:
-	end_if_just_battled
-	jumptextfaceplayer LassRoseAfterText
 
 OlivineCityYoungster1Script:
 	faceplayer
@@ -243,52 +232,6 @@ OlivineCityRivalLighthouseText:
 	para "Who knows. It may"
 	line "make you a bit"
 	cont "less weak!"
-	done
-
-SailorHarveySeenText:
-	text "Hah! Your #mon"
-	line "sure look like"
-	cont "lightweights!"
-	done
-
-SailorHarveyBeatenText:
-	text "What power!"
-	line "How would you like"
-
-	para "to sail the seas"
-	line "with me?"
-	done
-
-SailorHarveyAfterText:
-	text "On the sea, the"
-	line "only thing you can"
-
-	para "count on is your"
-	line "own good self!"
-
-	para "I'm so proud of my"
-	line "buff bod!"
-	done
-
-LassRoseSeenText:
-	text "I collected these"
-	line "#mon from all"
-	cont "around the world!"
-	done
-
-LassRoseBeatenText:
-	text "Oh no!"
-	line "I went around the"
-	cont "world for these!"
-	done
-
-LassRoseAfterText:
-	text "You hurt my poor"
-	line "worldly #mon!"
-
-	para "I demand that you"
-	line "heal them at a"
-	cont "#mon Center!"
 	done
 
 UnknownText_0x1a8b04:
@@ -461,4 +404,10 @@ OlivineLighthouseSignText:
 OlivineCityBattleTowerSignText:
 	text "Battle Tower Ahead"
 	line "Opening Now!"
+	done
+
+OlivineCityPokeathlonDomeSignText:
+	text "The #athlon"
+	line "Project Has"
+	cont "Started!"
 	done

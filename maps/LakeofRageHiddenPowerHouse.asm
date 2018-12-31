@@ -25,15 +25,34 @@ HiddenPowerGuy:
 	opentext
 	checkevent EVENT_GOT_TM10_HIDDEN_POWER
 	iftrue .AlreadyGotItem
-	writetext HiddenPowerGuyText1
+	writetext .Text1
 	buttonsound
 	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
-	jumpopenedtext HiddenPowerGuyText2
+	writetext .Text2
+	waitbutton
+	jump .CheckHiddenPower
 .AlreadyGotItem:
-	jumpopenedtext HiddenPowerGuyText3
+	writetext .Text4
+	waitbutton
+.CheckHiddenPower
+	writetext .Text3
+	yesorno
+	iffalse_jumpopenedtext .Text7
+	writetext .Text5
+	buttonsound
+	special Special_HiddenPowerGuru
+	if_equal $0, .Cancel
+	if_equal $1, .Egg
+	jumpopenedtext .Text6
 
-HiddenPowerGuyText1:
+.Cancel:
+	jumpopenedtext .Text4
+
+.Egg:
+	jumpopenedtext .Text8
+
+.Text1:
 	text "…You have strayed"
 	line "far…"
 
@@ -45,12 +64,12 @@ HiddenPowerGuyText1:
 
 	para "Let me share my"
 	line "power with your"
+	cont "#mon."
 
-	para "#mon."
-	line "Take this, child."
+	para "Take this, child."
 	done
 
-HiddenPowerGuyText2:
+.Text2:
 	text "Do you see it? It"
 	line "is Hidden Power!"
 
@@ -64,6 +83,40 @@ HiddenPowerGuyText2:
 	cont "using it."
 	done
 
-HiddenPowerGuyText3:
+.Text3:
+	text "Shall I divine"
+	line "the Hidden Power"
+	cont "of your #mon?"
+	done
+
+.Text4:
 	text "I am meditating…"
+	done
+
+.Text5:
+	text "Which #mon's"
+	line "Hidden Power"
+	cont "should I find?"
+	done
+
+.Text6:
+	text "I can sense it…"
+
+	para "Your @"
+	text_from_ram wStringBuffer3
+	text ""
+	line "has a Hidden Power"
+	cont "of @"
+	text_from_ram wStringBuffer1
+	text "!"
+	done
+
+.Text7:
+	text "…Very well…"
+	done
+
+.Text8:
+	text "An Egg has not yet"
+	line "developed a Hidden"
+	cont "Power…"
 	done

@@ -14,7 +14,8 @@ IlexForest_MapEventHeader:
 	warp_def 44, 5, 1, ILEX_FOREST_AZALEA_GATE
 	warp_def 45, 5, 2, ILEX_FOREST_AZALEA_GATE
 
-.XYTriggers: db 0
+.XYTriggers: db 1
+	xy_trigger 2, 31, 9, IlexForestApprenticeTrigger
 
 .Signposts: db 8
 	signpost 19, 5, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
@@ -49,6 +50,7 @@ const_value set 2
 	const ILEXFOREST_LASS
 	const ILEXFOREST_CELEBI
 	const ILEXFOREST_LYRA
+	const ILEXFOREST_YOUNGSTER
 
 IlexForestTrigger1:
 	priorityjump IlexForestFinishCelebiEventScript
@@ -125,6 +127,7 @@ IlexForestFarfetchdCallback:
 IlexForestCharcoalApprenticeScript:
 	checkevent EVENT_HERDED_FARFETCHD
 	iftrue_jumptextfaceplayer UnknownText_0x6f019
+	dotrigger $0
 	jumptextfaceplayer UnknownText_0x6ef5c
 
 IlexForestFarfetchdScript:
@@ -326,7 +329,7 @@ IlexForestLyraScript:
 	buttonsound
 IlexForestLyraContinueScript:
 	verbosegiveitem ARMOR_SUIT
-	iffalse .NoRoom
+	iffalse_endtext
 	setevent EVENT_GOT_ARMOR_SUIT
 	writetext Text_IlexForestLyraGoodbye
 	waitbutton
@@ -339,8 +342,10 @@ IlexForestLyraContinueScript:
 	disappear ILEXFOREST_LYRA
 	end
 
-.NoRoom:
-	endtext
+IlexForestApprenticeTrigger:
+	showemote EMOTE_SHOCK, ILEXFOREST_YOUNGSTER, 15
+	spriteface PLAYER, UP
+	jump IlexForestCharcoalApprenticeScript
 
 IlexForestCharcoalMasterScript:
 	faceplayer

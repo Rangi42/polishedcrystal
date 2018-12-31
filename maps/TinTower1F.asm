@@ -357,7 +357,11 @@ UnknownText_0x185386:
 	done
 
 UnknownText_0x185433:
+if DEF(FAITHFUL)
+	text "When the Brass"
+else
 	text "When the Gong"
+endc
 	line "Tower burned down,"
 
 	para "three nameless"

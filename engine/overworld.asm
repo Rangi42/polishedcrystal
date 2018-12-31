@@ -804,6 +804,7 @@ OutdoorSprites: ; 144b8
 	dw Group33Sprites
 	dw Group34Sprites
 	dw Group35Sprites
+	dw Group36Sprites
 
 
 ; OlivineCity connects to Route40
@@ -883,11 +884,13 @@ Group3Sprites:
 	db 0
 
 
+; EcruteakCity connects to Route36
 Group4Sprites:
 ; EcruteakCity
+; Route37
+Group36Sprites:
 ; Route35
 ; Route36
-; Route37
 	db SPRITE_BREEDER
 	db SPRITE_BEAUTY
 	db SPRITE_BUG_CATCHER

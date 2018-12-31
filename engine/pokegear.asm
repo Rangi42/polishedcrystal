@@ -93,13 +93,9 @@ Pokegear_LoadGFX: ; 90c4e
 	ld a, BANK(TownMapGFX)
 	call FarDecompress
 	ld hl, PokegearGFX
-	ld de, VTiles2 tile $30
+	ld de, VTiles2 tile $40
 	ld a, BANK(PokegearGFX)
 	call FarDecompress
-	ld de, JohtoKantoGFX
-	ld hl, VTiles2 tile $5c
-	lb bc, BANK(JohtoKantoGFX), 5
-	call Get2bpp
 	ld hl, PokegearSpritesGFX
 	ld de, VTiles0
 	ld a, BANK(PokegearSpritesGFX)
@@ -327,7 +323,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 
 .PlacePhoneBars: ; 90e98 (24:4e98)
 	hlcoord 17, 1
-	ld a, $3c
+	ld a, $58
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -338,7 +334,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	and a
 	ret nz
 	hlcoord 18, 2
-	ld [hl], $3f
+	ld [hl], $5b
 	ret
 
 Pokegear_FinishTilemap: ; 90eb0 (24:4eb0)
@@ -646,21 +642,18 @@ CheckSkipNavelRock:
 	ld a, [hl]
 	cp NAVEL_ROCK
 	ret nz
-	ld de, EVENT_VISITED_NAVEL_ROCK
-	jr CheckSkipLocation
+	push hl
+	eventflagcheck EVENT_VISITED_NAVEL_ROCK
+	pop hl
+	ret
 
 CheckSkipFarawayIsland:
 	ld a, [hl]
 	cp FARAWAY_ISLAND
 	ret nz
-	ld de, EVENT_VISITED_FARAWAY_ISLAND
-CheckSkipLocation:
-	ld b, CHECK_FLAG
 	push hl
-	call EventFlagAction
+	eventflagcheck EVENT_VISITED_FARAWAY_ISLAND
 	pop hl
-	ld a, c
-	and a
 	ret
 
 PokegearMap_InitPlayerIcon: ; 9106a
@@ -1074,7 +1067,7 @@ PokegearPhone_UpdateDisplayList: ; 912d8 (24:52d8)
 	ld a, [wPokegearPhoneLoadNameBuffer]
 	inc a
 	ld [wPokegearPhoneLoadNameBuffer], a
-	cp $4
+	cp $4 ; 4 entries fit on the screen
 	jr c, .loop
 	jp PokegearPhone_UpdateCursor
 
@@ -2065,10 +2058,6 @@ _FlyMap: ; 91af3
 	ld [hBGMapMode], a
 	farcall ClearSpriteAnims
 	call LoadTownMapGFX
-	ld de, FlyMapLabelBorderGFX
-	ld hl, VTiles2 tile $30
-	lb bc, BANK(FlyMapLabelBorderGFX), 6
-	call Request1bpp
 	call FlyMap
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
@@ -2537,7 +2526,7 @@ _Area: ; 91d11
 	jr z, .OrangeGFX
 	call FillJohtoMap
 	call .PlaceString_MonsNest
-	call TownMapAreaPals
+	call TownMapPals
 	call TownMapJohtoFlips
 .FinishGFX
 	hlbgcoord 0, 0
@@ -2552,14 +2541,14 @@ _Area: ; 91d11
 .KantoGFX:
 	call FillKantoMap
 	call .PlaceString_MonsNest
-	call TownMapAreaPals
+	call TownMapPals
 	call TownMapKantoFlips
 	jr .FinishGFX
 
 .OrangeGFX:
 	call FillOrangeMap
 	call .PlaceString_MonsNest
-	call TownMapAreaPals
+	call TownMapPals
 	call TownMapOrangeFlips
 	jr .FinishGFX
 
@@ -2789,32 +2778,28 @@ FillJohtoMap: ; 91eff
 	ld de, JohtoMap
 	call FillTownMap
 	hlcoord 16, 16
-	ld [hl], $5c ; Jo...
+	ld [hl], $35 ; Jo...
 	inc hl
-	ld [hl], $5d ; ...oh...
+	ld [hl], $36 ; ...oh...
 	inc hl
-	ld [hl], $5e ; ...to
+	ld [hl], $37 ; ...to
 	ret
 
 FillKantoMap: ; 91f04
 	ld de, KantoMap
 	call FillTownMap
 	hlcoord 16, 16
-	ld [hl], $5f ; Ka...
+	ld [hl], $38 ; Ka...
 	inc hl
-	ld [hl], $60 ; ...nt...
+	ld [hl], $39 ; ...nt...
 	inc hl
-	ld [hl], $5e ; ...to
+	ld [hl], $37 ; ...to
 	ret
 
 FillOrangeMap:
 	ld de, OrangeMap
 	call FillTownMap
-	ld de, EVENT_VISITED_FARAWAY_ISLAND
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	eventflagcheck EVENT_VISITED_FARAWAY_ISLAND
 	ret nz
 	ld a, $a
 	hlcoord 1, 12
@@ -2863,12 +2848,12 @@ TownMapPals: ; 91f13
 .loop
 	ld a, [hli]
 	push hl
-	cp $60
-	jr nc, .pal0
+	cp $40 ; tiles after TownMapGFX use palette 3
+	jr nc, .pal3
 	call GetNextTownMapTilePalette
 	jr .update
-.pal0
-	xor a ; HP/borders use palette 0
+.pal3
+	ld a, $3
 .update
 	pop hl
 	ld [de], a
@@ -2879,30 +2864,6 @@ TownMapPals: ; 91f13
 	jr nz, .loop
 	ret
 ; 91f7b
-
-TownMapAreaPals:
-; Assign palettes based on tile ids
-	hlcoord 0, 0
-	decoord 0, 0, wAttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-.loop
-	ld a, [hli]
-	push hl
-	cp $61 ; tile $60 needs to use palette 3
-	jr nc, .pal3
-	call GetNextTownMapTilePalette
-	jr .update
-.pal3
-	ld a, $3 ; heading uses palette 3
-.update
-	pop hl
-	ld [de], a
-	inc de
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop
-	ret
 
 GetNextTownMapTilePalette:
 ; The palette data is condensed to nybbles, least-significant first.
@@ -2942,10 +2903,10 @@ endm
 	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 5, 6, 7, 7, 6
 	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 6, 4, 4, 7, 7
 	townmappals 1, 1, 1, 6, 6, 6, 0, 0, 4, 4, 4, 7, 1, 4, 7, 7
-	townmappals 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0
-	townmappals 0, 0
+	townmappals 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0
+	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
+	townmappals 3, 3, 3, 3, 3, 3, 3, 3
 
 TownMapJohtoFlips:
 	decoord 0, 0, JohtoMap
@@ -3050,12 +3011,8 @@ TownMapPlayerIcon: ; 91fa6
 LoadTownMapGFX: ; 91ff2
 	ld hl, TownMapGFX
 	ld de, VTiles2
-	lb bc, BANK(TownMapGFX), $30
-	call DecompressRequest2bpp
-	ld de, JohtoKantoGFX
-	ld hl, VTiles2 tile $5c
-	lb bc, BANK(JohtoKantoGFX), 5
-	jp Request2bpp
+	lb bc, BANK(TownMapGFX), $3a
+	jp DecompressRequest2bpp
 
 ; 91fff
 
@@ -3072,5 +3029,3 @@ INCBIN "gfx/pokegear/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
 INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"
-FlyMapLabelBorderGFX: ; 922e1
-INCBIN "gfx/pokegear/flymap_label_border.2bpp"

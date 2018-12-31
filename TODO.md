@@ -28,8 +28,6 @@ The final, non-beta 3.0 release should include all of these.
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
 * Add the improved PRNG from Prism
-* Hidden Power Guru says your lead Pokémon's Hidden Power type (wife of the Stats Judge?)
-* Evolution Guru says how your lead Pokémon can evolve
 * Get better Wonder Trade items at higher levels
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Use RBY's Surf and Bike themes in Kanto
@@ -39,12 +37,10 @@ The final, non-beta 3.0 release should include all of these.
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Allow trading Eggs
 
 
 ### Aesthetics
 
-* Add a sprite for DJ Mary
 * Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 * "make hgss" to use HGSS-based palettes
@@ -284,6 +280,7 @@ Some of these may never be added; they're just suggestions.
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
 * Replace the Apricorns with an Apricorn Box and add more Berries
+* Restore Berry Juice, and make it heal full HP but cause confusion (in non-Faithful)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu

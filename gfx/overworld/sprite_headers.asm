@@ -244,9 +244,6 @@ BuenaSprite:
 CaptainSprite:
 	sprite_header CaptainSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
-MarySprite:
-	sprite_header MarySpriteGFX, 3, WALKING_SPRITE, PAL_OW_RED
-
 MatsumotoSprite:
 	sprite_header MatsumotoSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
@@ -466,6 +463,9 @@ BigLaprasSprite:
 BigOnixSprite:
 	sprite_header BigOnixSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
+SlowpoketailSprite:
+	sprite_header SlowpoketailSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+
 WeirdTreeSprite:
 	sprite_header WeirdTreeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_GREEN
 
@@ -487,17 +487,14 @@ BallCutFruitSprite:
 BoulderRockFossilSprite:
 	sprite_header BoulderRockFossilSpriteGFX, 3, STANDING_SPRITE, PAL_OW_ROCK
 
-PaperUnownWSprite:
-	sprite_header PaperUnownWSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+PaperSprite:
+	sprite_header PaperSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
-PokedexUnownASprite:
-	sprite_header PokedexUnownASpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+PokedexSprite:
+	sprite_header PokedexSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
-BookUnownRSprite:
-	sprite_header BookUnownRSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
-SignUnownPSprite:
-	sprite_header SignUnownPSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+BookSprite:
+	sprite_header BookSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
 ElectricFenceLeftSprite:
 	sprite_header ElectricFenceLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
@@ -512,7 +509,7 @@ N64Sprite:
 	sprite_header N64SpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
 GameCubeSprite:
-	sprite_header GameCubeSpriteGFX, 1, STILL_SPRITE, PAL_OW_PURPLE
+	sprite_header GameCubeSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
 
 WiiSprite:
 	sprite_header WiiSpriteGFX, 1, STILL_SPRITE, PAL_OW_BLUE

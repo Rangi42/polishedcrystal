@@ -1,15 +1,15 @@
-Route36NationalParkgate_MapScriptHeader:
+Route36NationalParkGate_MapScriptHeader:
 
 .MapTriggers: db 3
-	dw Route36NationalParkgateTrigger0
-	dw Route36NationalParkgateTrigger1
-	dw Route36NationalParkgateTrigger2
+	dw Route36NationalParkGateTrigger0
+	dw Route36NationalParkGateTrigger1
+	dw Route36NationalParkGateTrigger2
 
 .MapCallbacks: db 2
-	dbw MAPCALLBACK_NEWMAP, Route36NationalParkgateCheckIfContestRunning
-	dbw MAPCALLBACK_OBJECTS, Route36NationalParkgateCheckIfContestAvailable
+	dbw MAPCALLBACK_NEWMAP, Route36NationalParkGateCheckIfContestRunning
+	dbw MAPCALLBACK_OBJECTS, Route36NationalParkGateCheckIfContestAvailable
 
-Route36NationalParkgate_MapEventHeader:
+Route36NationalParkGate_MapEventHeader:
 
 .Warps: db 4
 	warp_def 4, 0, 1, NATIONAL_PARK
@@ -50,13 +50,13 @@ const_value set 2
 	const ROUTE36NATIONALPARKGATE_YOUNGSTER3
 	const ROUTE36NATIONALPARKGATE_OFFICER2
 
-Route36NationalParkgateTrigger2:
-	priorityjump Route36NationalParkgateLeftTheContestEarly
-Route36NationalParkgateTrigger0:
-Route36NationalParkgateTrigger1:
+Route36NationalParkGateTrigger2:
+	priorityjump Route36NationalParkGateLeftTheContestEarly
+Route36NationalParkGateTrigger0:
+Route36NationalParkGateTrigger1:
 	end
 
-Route36NationalParkgateCheckIfContestRunning:
+Route36NationalParkGateCheckIfContestRunning:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .BugContestIsRunning
 	dotrigger $0
@@ -66,7 +66,7 @@ Route36NationalParkgateCheckIfContestRunning:
 	dotrigger $2
 	return
 
-Route36NationalParkgateCheckIfContestAvailable:
+Route36NationalParkGateCheckIfContestAvailable:
 	checkevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	iftrue .Return
 	checkcode VAR_WEEKDAY
@@ -85,7 +85,7 @@ Route36NationalParkgateCheckIfContestAvailable:
 .Return:
 	return
 
-Route36NationalParkgateLeftTheContestEarly:
+Route36NationalParkGateLeftTheContestEarly:
 	spriteface PLAYER, UP
 	opentext
 	checkcode VAR_CONTESTMINUTES

@@ -8,12 +8,11 @@ WonderTradePromptText::
 	line "you want to trade?"
 	prompt
 
-WonderTradeCantTradeEggText::
-	text "Sorry. We can't"
-	line "accept an Egg."
-	prompt
+;WonderTradeCantTradeEggText::
+;	text "Sorry. We can't"
+;	line "accept an Egg."
+;	prompt
 
-; unused
 ;UnknownText_0x613c8::
 ;	text "Sorry, but your"
 ;	line "#mon appears to"

@@ -998,15 +998,15 @@ INCLUDE "maps/Route33.asm"
 INCLUDE "maps/Route34.asm"
 INCLUDE "maps/Route35.asm"
 INCLUDE "maps/Route35Coast.asm"
-INCLUDE "maps/Route35Goldenrodgate.asm"
-INCLUDE "maps/Route35NationalParkgate.asm"
-INCLUDE "maps/Route36NationalParkgate.asm" ; shares text with Route35NationalParkgate.asm
+INCLUDE "maps/Route35GoldenrodGate.asm"
+INCLUDE "maps/Route35NationalParkGate.asm"
+INCLUDE "maps/Route36NationalParkGate.asm" ; shares text with Route35NationalParkGate.asm
 
 
 SECTION "Routes 36-38 Scripts", ROMX
 
 INCLUDE "maps/Route36.asm"
-INCLUDE "maps/Route36RuinsofAlphgate.asm"
+INCLUDE "maps/Route36RuinsofAlphGate.asm"
 INCLUDE "maps/Route36VioletGate.asm"
 INCLUDE "maps/Route37.asm"
 INCLUDE "maps/Route38.asm"

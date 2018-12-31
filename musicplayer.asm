@@ -249,7 +249,7 @@ MusicPlayerLoop:
 	ld [hBGMapHalf], a
 	jr MusicPlayerLoop
 
-.up:
+.left:
 ; previous song
 	ld a, [wSongSelection]
 	dec a
@@ -257,7 +257,7 @@ MusicPlayerLoop:
 	ld a, NUM_SONGS - 1
 	jp _RedrawMusicPlayer
 
-.down:
+.right:
 ; next song
 	ld a, [wSongSelection]
 	inc a
@@ -266,7 +266,7 @@ MusicPlayerLoop:
 	ld a, 1
 	jp _RedrawMusicPlayer
 
-.left:
+.down:
 ; 10 songs back
 	ld a, [wSongSelection]
 	sub MP_LIST_PAGE_SKIP
@@ -277,7 +277,7 @@ MusicPlayerLoop:
 	ld a, NUM_SONGS - 1
 	jp _RedrawMusicPlayer
 
-.right:
+.up:
 ; 10 songs ahead
 	ld a, [wSongSelection]
 	add MP_LIST_PAGE_SKIP
@@ -1955,8 +1955,8 @@ SongInfo:
 	db "Mt.Pyre@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Battle Tower@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
 	db "Battle Tower Lobby@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
-	db "Vs.Trainer@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "Vs.Frontier Brain@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Vs.Trainer@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Frontier Brain@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Zinnia Appears@", ORIGIN_ORAS, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
 	db "Route 205@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
 	db "Vs.Wild@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM

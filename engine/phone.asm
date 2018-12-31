@@ -648,18 +648,38 @@ GetCallerName: ; 903a9 (24:43a9)
 	jp PlaceString
 
 .NotTrainer:
+	ld a, b
+	and a
+	jr z, .Blank
 	push hl
 	ld c, b
 	ld b, 0
 	ld hl, NonTrainerCallerNames
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
 	pop hl
 	jp PlaceString
+
+.Blank:
+	ld a, "<SHARP>"
+	ld [hli], a
+	ld a, [wPokegearPhoneScrollPosition]
+	ld b, a
+	ld a, [wPokegearPhoneLoadNameBuffer]
+	add b
+	inc a
+	ld de, wPokegearNumberBuffer
+	ld [de], a
+	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	call PrintNum
+	ld de, .filler
+	jp PlaceString
+
+.filler
+	db " -------@"
 ; 903d6 (24:43d6)
 
 NonTrainerCallerNames: ; 903d6
@@ -671,7 +691,7 @@ NonTrainerCallerNames: ; 903d6
 	dw .lyra
 	dw .buena
 
-.none db "----------@"
+.none db "@"
 .mom db "Mom:@"
 .bill db "Bill:<LNBRK>   #maniac@"
 .elm db "Prof.Elm:<LNBRK>   #mon Prof.@"

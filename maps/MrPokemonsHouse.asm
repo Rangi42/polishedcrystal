@@ -23,7 +23,7 @@ MrPokemonsHouse_MapEventHeader:
 .PersonEvents: db 3
 	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
 	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	person_event SPRITE_POKEDEX_UNOWN_A, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+	person_event SPRITE_POKEDEX, 4, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
 
 const_value set 2
 	const MRPOKEMONSHOUSE_GENTLEMAN
@@ -50,6 +50,7 @@ MrPokemonsHouseTrigger0:
 	itemnotify
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
+if !DEF(DEBUG)
 	writetext MrPokemonIntroText3
 	buttonsound
 	spriteface MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
@@ -59,6 +60,7 @@ MrPokemonsHouseTrigger0:
 	spriteface MRPOKEMONSHOUSE_OAK, LEFT
 	writetext MrPokemonIntroText5
 	waitbutton
+endc
 	closetext
 	jump MrPokemonsHouse_OakScript
 
@@ -251,6 +253,7 @@ MrPokemonsHouse_OakText1:
 	text "Oak: Aha! So"
 	line "you're <PLAYER>!"
 
+if !DEF(DEBUG)
 	para "I'm Oak! A #mon"
 	line "researcher."
 
@@ -309,6 +312,7 @@ MrPokemonsHouse_OakText1:
 
 	para "It's a hi-tech"
 	line "encyclopedia!"
+endc
 	done
 
 MrPokemonsHouse_GetDexText:
@@ -323,6 +327,7 @@ MrPokemonsHouse_OakText2:
 	para "complete that"
 	line "#dex!"
 
+if !DEF(DEBUG)
 	para "But I've stayed"
 	line "too long."
 
@@ -332,6 +337,7 @@ MrPokemonsHouse_OakText2:
 
 	para "<PLAYER>, I'm"
 	line "counting on you!"
+endc
 	done
 
 MrPokemonText_GimmeTheScale:

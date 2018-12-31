@@ -153,7 +153,7 @@ FacingFishLeft:
 	db  0,  8, 0, $09
 	db  8,  0, 2, $0a
 	db  8,  8, 2, $0b
-	db  5, -8, 4 | X_FLIP, $fd
+	db  5, -8, 4 | X_FLIP, $7d
 ; 4174
 
 FacingFishRight:
@@ -162,7 +162,7 @@ FacingFishRight:
 	db  0,  0, 0 | X_FLIP, $09
 	db  8,  8, 2 | X_FLIP, $0a
 	db  8,  0, 2 | X_FLIP, $0b
-	db  5, 16, 4, $fd
+	db  5, 16, 4, $7d
 ; 4189
 
 FacingEmote:

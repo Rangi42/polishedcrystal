@@ -1427,10 +1427,10 @@ UnknownText_0x1bdd96::
 	text ""
 	line "has grown a lot."
 
-	para "It's gained @"
+	para "Its level grew"
+	line "by @"
 	deciram wStringBuffer2 + 1, 1, 3
-	text ""
-	line "levels."
+	text "."
 
 	para "If you want your"
 	line "#mon back, it"

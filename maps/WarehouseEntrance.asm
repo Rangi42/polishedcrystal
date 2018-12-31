@@ -308,8 +308,6 @@ YoungerHaircutBrotherScript:
 	clearevent EVENT_GAVE_KURT_APRICORNS
 	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
 	setevent EVENT_DRAGON_SHRINE_QUESTION_2
-	jump .then
-
 .then
 	takemoney $0, 300
 	special PlaceMoneyTopRight

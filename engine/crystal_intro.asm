@@ -2043,57 +2043,30 @@ endc
 	call DelayFrame
 	jp DelayFrame
 
+Intro_DecompressRequest2bpp_64Tiles: ; e54fa (39:54fa)
+	lb bc, 1, 64
+	jr Intro_DecompressRequest2bpp
+
 Intro_DecompressRequest2bpp_128Tiles: ; e54c2 (39:54c2)
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-
-	push de
-	ld de, wDecompressScratch
-	call Decompress
-	pop hl
-
-	ld de, wDecompressScratch
-	lb bc, $01, $80
-	call Request2bpp
-
-	pop af
-	ld [rSVBK], a
-	ret
+	lb bc, 1, 128
+	jr Intro_DecompressRequest2bpp
 
 Intro_DecompressRequest2bpp_255Tiles: ; e54de (39:54de)
+	lb bc, 1, 255
+Intro_DecompressRequest2bpp:
 	ld a, [rSVBK]
 	push af
 	ld a, $6
 	ld [rSVBK], a
 
+	push bc
 	push de
 	ld de, wDecompressScratch
 	call Decompress
 	pop hl
+	pop bc
 
 	ld de, wDecompressScratch
-	lb bc, $01, $ff
-	call Request2bpp
-
-	pop af
-	ld [rSVBK], a
-	ret
-
-Intro_DecompressRequest2bpp_64Tiles: ; e54fa (39:54fa)
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-
-	push de
-	ld de, wDecompressScratch
-	call Decompress
-	pop hl
-
-	ld de, wDecompressScratch
-	lb bc, $01, $40
 	call Request2bpp
 
 	pop af

@@ -15,7 +15,7 @@ GoldenrodHarbor_MapEventHeader:
 .Signposts: db 3
 	signpost 19, 29, SIGNPOST_JUMPTEXT, GoldenrodHarborSignText
 	signpost 15, 28, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
-	signpost 21, 22, SIGNPOST_ITEM, GoldenrodHarborHiddenRevive
+	signpost 21, 22, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
 .PersonEvents: db 12
 	person_event SPRITE_FISHER, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
@@ -243,9 +243,6 @@ GoldenrodHarborYoungsterScript:
 	db "Tropic P.   ¥8600@"
 	db "Jumbo P.   ¥10800@"
 	db "Cancel@"
-
-GoldenrodHarborHiddenRevive:
-	dw EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE, REVIVE
 
 GoldenrodHarborFisherText:
 	text "If you're fishing,"

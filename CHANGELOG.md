@@ -33,7 +33,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Raikou, Entei, and Suicune have the hidden ability Inner Focus. (Faithful only.)
    * New item: Protect Pads (abbreviated "Protective Pads"). "Protect the holder from effects caused by making direct contact with the target."
    * Paralysis halves Speed.
-   * Timer Ball catch rate multiplier is 1 + (turns passed * 3) / 10.
+   * Timer Ball catch rate multiplier is 1 + (turns passed × 3) / 10.
    * Nest Ball catch rate multiplier is (41 − enemy mon level) / 5.
 * Add: Flash is required to return Falkner to the Gym.
 * Add: Replace Spike Cannon with Icicle Spear.
@@ -138,6 +138,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: In-battle symbol to show that Nuzlocke mode prevents capture.
 * Add: More Grass-type Pokémon can learn Earth Power and Earthquake.
 * Add: Status icons in battle.
+* Add: You can Wonder Trade Eggs.
+* Add: Hidden Power guru finds your Pokémon's Hidden Power.
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
@@ -146,6 +148,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
 * Add: Item icons in the Bag.
+* Add: Phone call trainers ask automatically for your number.
 * Add: Replace Jigglypuff Poster with Marill Poster.
 * Add: Briefly beep to warn of low HP.
 * Add: Play B/W final Pokémon music for Gym Leaders and Elite 4.
@@ -161,6 +164,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Rename RageCandyBar to Cake of Rage.
 * Add: Rename Guard Spec. to Guard Stats.
 * Add: Rename Kay to Carrie (from Pokémon Stadium 2).
+* Add: Rename Slowbro to the Squatter Pokémon. <https://lparchive.org/Pokemon-Blue/code.html>
 
 * Fix: Lt. Surge's electric fence color does not override speech bubbles.
 * Fix: Zap Cannon has 120 power.
