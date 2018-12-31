@@ -14,7 +14,11 @@ _BattleMenuCommon:
 	call LoadMenuDataHeader
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
+	ld a, 1
+	ld [wIsBattleMenu], a
 	call _2DMenu
+	xor a
+	ld [wIsBattleMenu], a
 	ld a, [wMenuCursorBuffer]
 	ld [wBattleMenuCursorBuffer], a
 	jp ExitMenu
@@ -28,7 +32,7 @@ BattleMenuDataHeader: ; 24f2c
 ; 24f34
 
 .MenuData2: ; 0x24f34
-	db $91 ; flags
+	db $81 ; flags
 	dn 2, 2 ; rows, columns
 	db 6 ; spacing
 	dba .Strings
@@ -51,7 +55,7 @@ ContestBattleMenuDataHeader: ; 24f89
 ; 24f91
 
 .MenuData2: ; 24f91
-	db $91 ; flags
+	db $81 ; flags
 	dn 2, 2 ; rows, columns
 	db 12 ; spacing
 	dba .Strings
@@ -80,7 +84,7 @@ SafariBattleMenuDataHeader:
 	db 1 ; default option
 
 .MenuData2:
-	db $91 ; flags
+	db $81 ; flags
 	dn 2, 2 ; rows, columns
 	db 12 ; spacing
 	dba .Strings

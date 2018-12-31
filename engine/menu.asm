@@ -397,8 +397,8 @@ _2DMenuInterpretJoypad: ; 24270
 ; 2431a
 
 .b_button
-	ld a, [wMenuData2Flags]
-	bit 4, a ; should B move to Run?
+	ld a, [wIsBattleMenu]
+	and a ; should B move to Run?
 	jr z, .no_b_run
 	; Run is the bottom-right item
 	ld a, $2

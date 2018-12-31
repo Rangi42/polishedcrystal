@@ -1071,7 +1071,7 @@ InputFlags::
 
 InBattleTowerBattle:: ds 1
 
-	ds 1
+wIsBattleMenu:: ds 1
 
 FXAnimID::
 FXAnimIDLo:: ds 1
