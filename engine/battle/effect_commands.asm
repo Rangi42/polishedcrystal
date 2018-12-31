@@ -5160,8 +5160,10 @@ BattleCommand_PoisonTarget:
 
 	jp PostStatusWithSynchronize
 
-
-BattleCommand_Poison:
+CanPoisonTargetVerbose:
+	; different from CanPoisonTarget: common function for BC_(Poison|Toxic)
+	; which does move animations, prints text, etc, on failure.
+	; Returns nz on failure
 	ld hl, DoesntAffectText
 	ld a, [TypeModifier]
 	and a
@@ -5179,27 +5181,8 @@ BattleCommand_Poison:
 	call CanPoisonTarget
 	jr c, .ability_ok
 	jr nz, .failed
-
-	call .check_toxic
-	jr z, .toxic
-
-	call .apply_poison
-	ld hl, WasPoisonedText
-	call StdBattleTextBox
-	jr .finished
-
-.toxic
-	set TOX, [hl]
 	xor a
-	ld [de], a
-	call .apply_poison
-
-	ld hl, BadlyPoisonedText
-	call StdBattleTextBox
-
-.finished
-	jp PostStatusWithSynchronize
-
+	ret
 .ability_ok
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
@@ -5207,43 +5190,47 @@ BattleCommand_Poison:
 	push hl
 	call AnimateFailedMove
 	pop hl
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	or a
+	ret
 
-; 35fc0
-
-
-.apply_poison ; 35fc0
-	call AnimateCurrentMove
-	call PoisonOpponent
-	jp RefreshBattleHuds
-
-; 35fc9
-
-
-.check_toxic ; 35fc9
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
+BattleCommand_Toxic:
+	call CanPoisonTargetVerbose
+	ret nz
 	ld a, [hBattleTurn]
 	and a
 	ld de, EnemyToxicCount
 	jr z, .ok
 	ld de, PlayerToxicCount
 .ok
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_TOXIC
-	ret
+	xor a
+	ld [de], a
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set TOX, [hl]
+	jr ApplyPoison
+BattleCommand_Poison:
+	call CanPoisonTargetVerbose
+	ret nz
+ApplyPoison:
+	call AnimateCurrentMove
+	call PoisonOpponent
+	call RefreshBattleHuds
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	bit TOX, [hl]
+	ld hl, WasPoisonedText
+	jr z, .text_ok
+	ld hl, BadlyPoisonedText
+.text_ok
+	call StdBattleTextBox
+	jp PostStatusWithSynchronize
 
-; 35fe1
-
-
-PoisonOpponent: ; 35ff5
+PoisonOpponent:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	set PSN, [hl]
 	jp UpdateOpponentInParty
-
-; 35fff
 
 
 BattleCommand_DrainTarget: ; 35fff
@@ -8082,21 +8069,16 @@ PrintParalyze: ; 37372
 
 ; 37378
 
-CheckSubstituteOpp_b:
-; stores result in b rather than zero flag (ld a, b; and a for equavilent result),
-; used for farcalls
-	call CheckSubstituteOpp
-	ld b, 0
-	ret z
-	ld b, 1
-	ret
-
 CheckSubstituteOpp: ; 37378
 ; returns z when not behind a sub (or if overridden by Infiltrator or sound)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR
 	ret z
+	; don't let move effects impact ability processing
+	ld a, [AnimationsDisabled]
+	and a
+	jr nz, .no_sound_move
 	push bc
 	push de
 	push hl

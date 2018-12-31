@@ -175,6 +175,7 @@ endm
 	command trick                   ; a8
 	command knockoff                ; a9
 	command bugbite                 ; aa
+	command toxic                   ; ab
 
 	enum_start -1, -1
 	command endmove

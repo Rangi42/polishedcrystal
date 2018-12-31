@@ -2943,9 +2943,7 @@ AI_Status: ; 39453
 
 .no_leaf_guard
 	; Check Substitute
-	farcall CheckSubstituteOpp_b
-	ld a, b
-	and a
+	farcall CheckSubstituteOpp
 	jr nz, .pop_and_discourage
 
 	pop hl

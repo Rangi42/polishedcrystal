@@ -169,3 +169,4 @@ BattleCommandPointers:
 	dw BattleCommand_Trick
 	dw BattleCommand_KnockOff
 	dw BattleCommand_BugBite
+	dw BattleCommand_Toxic
