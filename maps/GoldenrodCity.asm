@@ -213,11 +213,8 @@ YoungsterScript_0x198a11:
 	faceplayer
 	opentext
 	checktime 1 << NITE
-	iftrue .nite
+	iftrue_jumpopenedtext UnknownText_0x198c36
 	jumpopenedtext GoldenrodCityYoungsterDayText
-
-.nite
-	jumpopenedtext UnknownText_0x198c36
 
 RocketScript_0x198a1a:
 	checkevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -325,11 +322,18 @@ UnknownText_0x198c14:
 	done
 
 GoldenrodCityYoungsterDayText:
-	text "Have you been to"
-	line "the Museum?"
+;	text "Have you been to"
+;	line "the Museum?"
+;
+;	para "It's full of cool"
+;	line "exhibits!"
+	text "I can't wait to"
+	line "visit the Museum"
+	cont "once it's open!"
 
-	para "It's full of cool"
-	line "exhibits!"
+	para "I heard they have"
+	line "some beautiful"
+	cont "paintings."
 	done
 
 UnknownText_0x198c36:
@@ -511,6 +515,7 @@ GoldenrodCityFlowerShopSignText:
 
 GoldenrodMuseumSignText:
 	text "Goldenrod Museum"
+	line "Opening Soon!"
 	done
 
 UnknownText_0x199042:
