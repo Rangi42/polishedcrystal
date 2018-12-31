@@ -33,7 +33,7 @@ Route32_MapEventHeader:
 	signpost 23, 4, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 	signpost 23, 5, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 
-.PersonEvents: db 15
+.PersonEvents: db 17
 	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
 	person_event SPRITE_FISHER, 70, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
 	person_event SPRITE_NEW_BARK_LYRA, 67, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
@@ -49,8 +49,10 @@ Route32_MapEventHeader:
 	person_event SPRITE_FISHER, 13, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32RoarTMGuyScript, -1
 	itemball_event 32, 6, REPEL, 1, EVENT_ROUTE_32_REPEL
 	cuttree_event 19, 10, EVENT_ROUTE_32_CUT_TREE
+	cuttree_event 29, -1, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
+	cuttree_event 32, 23, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
-const_value set 2
+const_value set 1
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA

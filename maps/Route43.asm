@@ -2,8 +2,9 @@ Route43_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 2
+.MapCallbacks: db 3
 	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
+	dbw MAPCALLBACK_TILES, Route43RainScript
 	dbw MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 
 Route43_MapEventHeader:
@@ -37,7 +38,7 @@ Route43_MapEventHeader:
 	fruittree_event 26, 1, FRUITTREE_ROUTE_43, PERSIM_BERRY
 	itemball_event 32, 12, MAX_ETHER, 1, EVENT_ROUTE_43_MAX_ETHER
 
-const_value set 2
+const_value set 1
 	const ROUTE43_SIGHTSEER_F
 
 Route43RebattleBreederScript:
@@ -48,6 +49,16 @@ UnknownScript_0x19d051:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19d05c
 	domaptrigger ROUTE_43_GATE, $0
+	return
+
+Route43RainScript:
+	special Special_GetOvercastIndex
+	if_equal LAKE_OF_RAGE_OVERCAST, .flood
+	changemap Route43_BlockData
+	return
+
+.flood
+	changemap Route43Raining_BlockData
 	return
 
 UnknownScript_0x19d05c:

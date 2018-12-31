@@ -23,7 +23,7 @@ Copyright_GFPresents: ; e4579
 	ld c, 100
 	call DelayFrames
 	call ClearTileMap
-	farcall GBCOnlyScreen
+	farcall BSOD
 	call .GetGFLogoGFX
 .joy_loop
 	call JoyTextDelay
@@ -1919,7 +1919,7 @@ Intro_LoadTilemap: ; e541b (39:541b)
 	ld a, $6
 	ld [rSVBK], a
 
-	ld hl, wDecompressScratch
+	ld hl, wScratchTileMap
 	decoord 0, 0
 	ld b, SCREEN_HEIGHT
 .row

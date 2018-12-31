@@ -22,7 +22,7 @@ GoldenrodMagnetTrainStation_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 14, 11, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	person_event SPRITE_COOLTRAINER_F, 12, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
-const_value set 2
+const_value set 1
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
 
 OfficerScript_0x550ec:

@@ -59,45 +59,38 @@ CheckFacingTileEvent:: ; 97c5f
 
 	ld a, [wEngineBuffer1]
 	cp COLL_WHIRLPOOL
-	jr nz, .waterfall
-	farcall TryWhirlpoolOW
-	jr .done
-
-.waterfall
-	ld a, [wEngineBuffer1]
+	jr z, .whirlpool
 	cp COLL_WATERFALL
-	jr nz, .headbutt
-	farcall TryWaterfallOW
-	jr .done
-
-.headbutt
-	ld a, [wEngineBuffer1]
+	jr z, .waterfall
 	cp COLL_HEADBUTT_TREE
-	jr nz, .surf
-	farcall TryHeadbuttOW
-	jr c, .done
-	jr .noevent
-
-.surf
+	jr z, .headbutt
 	farcall TrySurfOW
 	jr nc, .noevent
-	jr .done
-
-.noevent
-	xor a
-	ret
-
 .done
 	call PlayClickSFX
 	ld a, $ff
 	scf
+	ret
+
+.whirlpool
+	farcall TryWhirlpoolOW
+	jr .done
+
+.waterfall
+	farcall TryWaterfallOW
+	jr .done
+
+.headbutt
+	farcall TryHeadbuttOW
+	jr c, .done
+.noevent
+	xor a
 	ret
 ; 97cc0
 
 
 RandomEncounter:: ; 97cc0
 ; Random encounter
-
 	call CheckWildEncounterCooldown
 	jr c, .nope
 	call CanUseSweetScent
@@ -107,31 +100,24 @@ RandomEncounter:: ; 97cc0
 	jr nz, .bug_contest
 	farcall TryWildEncounter
 	jr nz, .nope
-	jr .ok
+.ok
+	ld a, BANK(WildBattleScript)
+	ld hl, WildBattleScript
+.done
+	call CallScript
+	scf
+	ret
 
 .bug_contest
 	call _TryWildEncounter_BugContest
 	jr nc, .nope
-	jr .ok_bug_contest
-
-.nope
-	ld a, 1
-	and a
-	ret
-
-.ok
-	ld a, BANK(WildBattleScript)
-	ld hl, WildBattleScript
-	jr .done
-
-.ok_bug_contest
 	ld a, BANK(BugCatchingContestBattleScript)
 	ld hl, BugCatchingContestBattleScript
 	jr .done
 
-.done
-	call CallScript
-	scf
+.nope
+	ld a, 1
+	and a
 	ret
 ; 97cf9
 
@@ -329,8 +315,8 @@ DoBikeStep:: ; 97db3
 
 ClearCmdQueue:: ; 97df9
 	ld hl, wCmdQueue
-	ld de, 6
-	ld c, 4
+	ld de, CMDQUEUE_ENTRY_SIZE
+	ld c, CMDQUEUE_CAPACITY
 	xor a
 .loop
 	ld [hl], a
@@ -434,7 +420,7 @@ HandleQueuedCommand:
 	ld hl, CMDQUEUE_TYPE
 	add hl, bc
 	ld a, [hl]
-	cp 5
+	cp NUM_CMDQUEUE_TYPES
 	jr c, .okay
 	xor a
 

@@ -109,8 +109,14 @@ class Tileset(object):
 			writer.write(file, chunk(rgb_bytes(self.data), self.w * 3))
 
 class PaletteMap(object):
-	color_constants = {'GRAY': 0, 'RED': 1, 'GREEN': 2, 'WATER': 3,
-		'YELLOW': 4, 'BROWN': 5, 'ROOF': 6, 'TEXT': 7}
+	color_constants = {
+		'GRAY': 0, 'RED': 1, 'GREEN': 2, 'WATER': 3,
+		'YELLOW': 4, 'BROWN': 5, 'ROOF': 6, 'TEXT': 7,
+		'PRIORITY_GRAY': 0, 'PRIORITY_RED': 1,
+		'PRIORITY_GREEN': 2, 'PRIORITY_WATER': 3,
+		'PRIORITY_YELLOW': 4, 'PRIORITY_BROWN': 5,
+		'PRIORITY_ROOF': 6, 'PRIORITY_TEXT': 7
+	}
 
 	day_palette = staticmethod(lambda:
 		(lambda x=load_palette('tilesets/palettes/bg.pal'): x[8:11]+[x[0x29]]+x[12:16])())
@@ -197,6 +203,7 @@ class PaletteMap(object):
 		'johto1': lambda: PaletteMap.day_palette(),
 		'johto2': lambda: PaletteMap.day_palette(),
 		'johto3': lambda: PaletteMap.day_palette(),
+		'johto4': lambda: PaletteMap.day_palette(),
 		'kanto1': lambda: PaletteMap.day_palette(),
 		'kanto2': lambda: PaletteMap.day_palette(),
 		'park': lambda: PaletteMap.day_palette(),

@@ -65,6 +65,7 @@ ENDM
 	landmark 104,  76, Route31Name
 	landmark  92,  76, VioletCityName
 	landmark  94,  74, SproutTowerName
+	landmark  92,  68, VioletOutskirtsName
 	landmark  92, 108, Route32Name
 	landmark 100, 128, Route32CoastName
 	landmark  84,  92, RuinsOfAlphName
@@ -213,6 +214,7 @@ BlackthornCityName:    db "Blackthorn¯City@"
 LakeOfRageName:        db "Lake of¯Rage@"
 SilverCaveName:        db "Silver Cave@"
 SproutTowerName:       db "Sprout¯Tower@"
+VioletOutskirtsName:   db "Violet¯Outskirts@"
 RuinsOfAlphName:       db "Ruins¯of Alph@"
 UnionCaveName:         db "Union Cave@"
 SlowpokeWellName:      db "Slowpoke¯Well@"

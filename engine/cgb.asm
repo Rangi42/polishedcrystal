@@ -87,7 +87,7 @@ _CGB_BattleColors: ; 8ddb
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wUnknBGPals palette 0 + 2
+	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER + 2
 	call VaryColorsByDVs
 	pop de
 .player_backsprite
@@ -105,7 +105,7 @@ _CGB_BattleColors: ; 8ddb
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wUnknBGPals palette 1 + 2
+	ld hl, wUnknBGPals palette PAL_BATTLE_BG_ENEMY + 2
 	call VaryColorsByDVs
 	pop de
 .trainer_sprite
@@ -134,20 +134,20 @@ _CGB_BattleColors: ; 8ddb
 	call LoadPlayerStatusIconPalette
 	call LoadEnemyStatusIconPalette
 
-	ld hl, wUnknBGPals
-	ld de, wUnknBGPals palette 6
+	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 
-	ld hl, wUnknBGPals palette 1
-	ld de, wUnknOBPals
+	ld hl, wUnknBGPals palette PAL_BATTLE_BG_ENEMY
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_ENEMY
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
 
-	ld hl, wUnknBGPals
-	ld de, wUnknOBPals palette 1
+	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_PLAYER
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -216,7 +216,7 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	call ByteFill
 
 	ld hl, BattleObjectPals
-	ld de, wUnknOBPals palette 2
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY
 	ld bc, 6 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -236,7 +236,7 @@ _CGB_PokegearPals: ; 8eb9
 	bit 0, a
 	jr z, .male
 	ld hl, FemalePokegearInterfacePalette
-	ld de, wUnknBGPals palette 3
+	ld de, wUnknBGPals palette 0
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -369,7 +369,8 @@ _CGB_Pokedex: ; 8f70
 	call LoadHLPaletteIntoDE
 	jr .got_palette
 .is_pokemon
-	call GetMonPalettePointer
+	ld bc, wDexMonShiny
+	call GetMonNormalOrShinyPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 .got_palette
 

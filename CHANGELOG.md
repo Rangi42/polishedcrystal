@@ -140,6 +140,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Status icons in battle.
 * Add: You can Wonder Trade Eggs.
 * Add: Hidden Power guru finds your Pokémon's Hidden Power.
+* Add: Hidden Power can be Fairy-type in non-Faithful.
 * Add: Reset initial options by pressing Left+B at the title screen.
 * Add: Music resumes where it left off after a battle (from TPP).
 * Add: Use a proper menu for resurrecting Fossils.
@@ -148,6 +149,8 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
 * Add: Item icons in the Bag.
+* Add: Pokédex shows shiny palettes after getting the Shiny Charm.
+* Add: New Game+ preserves your money, Battle Points, and PC Pokémon.
 * Add: Phone call trainers ask automatically for your number.
 * Add: Replace Jigglypuff Poster with Marill Poster.
 * Add: Briefly beep to warn of low HP.

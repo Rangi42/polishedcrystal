@@ -35,7 +35,7 @@ Route10North_MapEventHeader:
 	cuttree_event 21, 11, EVENT_ROUTE_10_CUT_TREE_3
 	cuttree_event 21, 13, EVENT_ROUTE_10_CUT_TREE_4
 
-const_value set 2
+const_value set 1
 	const ROUTE10_ZAPDOS
 	const ROUTE10_LAWRENCE
 	const ROUTE10_LAWRENCES_ZAPDOS

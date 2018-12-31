@@ -2323,20 +2323,20 @@ BGEffects_LoadBGPal0_OBPal1: ; c8e52 (32:4e52)
 	ld a, h
 	push bc
 	push af
-	ld hl, wBGPals palette 0
-	ld de, wUnknBGPals palette 0
+	ld hl, wBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
 	ld b, a
 	ld c, $1
 	call CopyPals
-	ld hl, wBGPals palette 6
-	ld de, wUnknBGPals palette 6
+	ld hl, wBGPals palette PAL_BATTLE_BG_TYPE_CAT
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	pop af
 	ld b, a
 	push af
 	ld c, $1
 	call CopyPals
-	ld hl, wOBPals palette PAL_BATTLE_PLAYER
-	ld de, wUnknOBPals palette PAL_BATTLE_PLAYER
+	ld hl, wOBPals palette PAL_BATTLE_OB_PLAYER
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_PLAYER
 	pop af
 	ld b, a
 	ld c, $1
@@ -2357,13 +2357,13 @@ BGEffects_LoadBGPal1_OBPal0: ; c8e7f (32:4e7f)
 	ld a, h
 	push bc
 	push af
-	ld hl, wBGPals palette 1
-	ld de, wUnknBGPals palette 1
+	ld hl, wBGPals palette PAL_BATTLE_BG_ENEMY
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_ENEMY
 	ld b, a
 	ld c, $1
 	call CopyPals
-	ld hl, wOBPals palette PAL_BATTLE_ENEMY
-	ld de, wUnknOBPals palette PAL_BATTLE_ENEMY
+	ld hl, wOBPals palette PAL_BATTLE_OB_ENEMY
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_ENEMY
 	pop af
 	ld b, a
 	ld c, $1

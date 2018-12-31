@@ -48,8 +48,6 @@ PushOAM: ; 403f
 	ret
 PushOAMEnd
 
-INCLUDE "home/restore_music.asm"
-
 INCLUDE "engine/map_objects.asm"
 
 INCLUDE "engine/intro_menu.asm"
@@ -58,6 +56,7 @@ INCLUDE "engine/init_options.asm"
 
 ReanchorBGMap_NoOAMUpdate:: ; 6454
 	call DelayFrame
+ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld a, [hOAMUpdate]
 	push af
 
@@ -65,10 +64,39 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hOAMUpdate], a
 	ld a, [hBGMapMode]
 	push af
+
 	xor a
 	ld [hBGMapMode], a
+	ld [hLCDCPointer], a
+	ld a, $90
+	ld [hWY], a
+	call OverworldTextModeSwitch
 
-	call .ReanchorBGMap
+	ld a, VBGMap1 / $100
+	ld [hBGMapAddress + 1], a
+	xor a
+	ld [hBGMapAddress], a
+	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
+
+	farcall LoadBlindingFlashPalette
+	farcall ApplyPals
+
+	xor a
+	ld [hBGMapMode], a
+	ld [hWY], a
+	inc a
+	ld [hCGBPalUpdate], a
+	call HDMATransfer_FillBGMap0WithTile60
+
+	ld a, VBGMap0 / $100
+	ld [hBGMapAddress + 1], a
+	ld [wBGMapAnchor + 1], a
+	xor a
+	ld [hBGMapAddress], a
+	ld [wBGMapAnchor], a
+	ld [hSCX], a
+	ld [hSCY], a
+	call ApplyBGMapAnchorToObjects
 
 	pop af
 	ld [hBGMapMode], a
@@ -78,59 +106,21 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	set 6, [hl]
 	ret
 
-.ReanchorBGMap:
-	xor a
-	ld [hLCDCPointer], a
-	ld [hBGMapMode], a
-	ld a, $90
-	ld [hWY], a
-	call OverworldTextModeSwitch
-	ld a, VBGMap1 / $100
-	call .LoadBGMapAddrIntoHRAM
-	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
-	farcall LoadBlindingFlashPalette
-	farcall ApplyPals
-	ld a, $1
-	ld [hCGBPalUpdate], a
-	xor a
-	ld [hBGMapMode], a
-	ld [hWY], a
-	call HDMATransfer_FillBGMap0WithTile60
-	ld a, VBGMap0 / $100
-	call .LoadBGMapAddrIntoHRAM
-	xor a
-	ld [wBGMapAnchor], a
-	ld a, VBGMap0 / $100
-	ld [wBGMapAnchor + 1], a
-	xor a
-	ld [hSCX], a
-	ld [hSCY], a
-	jp ApplyBGMapAnchorToObjects
-
-.LoadBGMapAddrIntoHRAM: ; 64b9
-	ld [hBGMapAddress + 1], a
-	xor a
-	ld [hBGMapAddress], a
-	ret
-
 LoadFonts_NoOAMUpdate:: ; 64bf
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1
 	ld [hOAMUpdate], a
 
-	call .LoadGFX
-
-	pop af
-	ld [hOAMUpdate], a
-	ret
-
-.LoadGFX:
 	call LoadFontsExtra
 	ld a, $90
 	ld [hWY], a
 	call SafeUpdateSprites
-	jp LoadStandardFont
+	call LoadStandardFont
+
+	pop af
+	ld [hOAMUpdate], a
+	ret
 
 HDMATransfer_FillBGMap0WithTile60: ; 64db
 	ld a, [rSVBK]
@@ -139,12 +129,12 @@ HDMATransfer_FillBGMap0WithTile60: ; 64db
 	ld [rSVBK], a
 
 	ld a, $60
-	ld hl, wDecompressScratch
-	ld bc, wScratchAttrMap - wDecompressScratch
+	ld hl, wScratchTileMap
+	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	call ByteFill
-	ld a, wDecompressScratch / $100
+	ld a, wScratchTileMap / $100
 	ld [rHDMA1], a
-	ld a, wDecompressScratch % $100
+	ld a, wScratchTileMap % $100
 	ld [rHDMA2], a
 	ld a, (VBGMap0 % $8000) / $100
 	ld [rHDMA3], a
@@ -1444,7 +1434,7 @@ PlayBattleMusic: ; 2ee6c
 	push de
 	push bc
 
-	farcall SaveMusic
+	call SaveMusic
 	xor a
 	ld [wMusicFade], a
 	ld de, MUSIC_NONE
@@ -1588,6 +1578,9 @@ PlayBattleMusic: ; 2ee6c
 	dbw MAYLENE,          MUSIC_GYM_LEADER_BATTLE_DPPT
 	dbw SKYLA,            MUSIC_GYM_LEADER_BATTLE_BW
 	dbw VALERIE,          MUSIC_GYM_LEADER_BATTLE_XY
+	dbw CANDELA,          MUSIC_GYM_LEADER_BATTLE_GO
+	dbw BLANCHE,          MUSIC_GYM_LEADER_BATTLE_GO
+	dbw SPARK_T,          MUSIC_GYM_LEADER_BATTLE_GO
 	dbw LAWRENCE,         MUSIC_ZINNIA_BATTLE_ORAS
 	db -1
 
@@ -2412,7 +2405,7 @@ Buena_ExitMenu: ; 4ae5e
 	ret
 
 
-SECTION "bank13", ROMX
+SECTION "Palette Maps", ROMX
 
 SwapTextboxPalettes:: ; 4c000
 	hlcoord 0, 0
@@ -2438,10 +2431,6 @@ GetBGMapTilePalettes::
 .loop
 	ld a, [hl]
 	push hl
-	srl a
-	jr c, .UpperNybble
-
-; .LowerNybble
 	ld hl, wTilesetPalettes
 	add [hl]
 	ld l, a
@@ -2449,21 +2438,6 @@ GetBGMapTilePalettes::
 	adc $0
 	ld h, a
 	ld a, [hl]
-	and $f
-	jr .next
-
-.UpperNybble:
-	ld hl, wTilesetPalettes
-	add [hl]
-	ld l, a
-	ld a, [wTilesetPalettes + 1]
-	adc $0
-	ld h, a
-	ld a, [hl]
-	swap a
-	and $f
-
-.next
 	pop hl
 	ld [de], a
 	res 7, [hl]
@@ -2477,6 +2451,9 @@ INCLUDE "tilesets/palette_maps.asm"
 
 TileCollisionTable:: ; 4ce1f
 INCLUDE "tilesets/collision.asm"
+
+
+SECTION "bank13", ROMX
 
 EmptyAllSRAMBanks: ; 4cf1f
 	xor a
@@ -3845,12 +3822,12 @@ ResetDisplayBetweenHallOfFameMons: ; 4e906
 	push af
 	ld a, $6
 	ld [rSVBK], a
-	ld hl, wDecompressScratch
-	ld bc, wScratchAttrMap - wDecompressScratch
+	ld hl, wScratchTileMap
+	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
 	call ByteFill
 	hlbgcoord 0, 0
-	ld de, wDecompressScratch
+	ld de, wScratchTileMap
 	lb bc, $0, $40
 	call Request2bpp
 	pop af
@@ -3870,7 +3847,7 @@ CheckBattleEffects: ; 4ea44
 	scf
 	ret
 
-INCLUDE "engine/gbc_only.asm"
+INCLUDE "engine/bsod.asm"
 
 INCLUDE "event/stats_judge.asm"
 

@@ -36,7 +36,7 @@ YellowForest_MapEventHeader:
 	itemball_event 21, 11, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
 	itemball_event 24, 49, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
 
-const_value set 2
+const_value set 1
 	const YELLOWFOREST_WALKER
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW

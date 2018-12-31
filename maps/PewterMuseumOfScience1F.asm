@@ -33,7 +33,7 @@ PewterMuseumOfScience1F_MapEventHeader:
 	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FGrampsText, -1
 	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FYoungsterText, -1
 
-const_value set 2
+const_value set 1
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
 
 Museum1FFossilScientistScript:
@@ -204,16 +204,18 @@ ResurrectAFossilScript:
 	waitbutton
 	closetext
 	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
-	pause 30
+	pause 15
 	playsound SFX_BOOT_PC
 	waitsfx
 	pause 30
-	playsound SFX_PROTECT
+	playsound SFX_4_NOTE_DITTY
+	waitsfx
+	pause 5
 	waitsfx
 	pause 30
 	playsound SFX_SHUT_DOWN_PC
 	waitsfx
-	pause 30
+	pause 15
 	faceplayer
 	opentext
 	end

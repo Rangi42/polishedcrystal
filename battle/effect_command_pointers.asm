@@ -25,20 +25,15 @@ BattleCommandPointers:
 	dw BattleCommand_FreezeTarget
 	dw BattleCommand_ParalyzeTarget
 	dw BattleCommand_SelfDestruct
-	dw BattleCommand_MirrorMove
 	dw BattleCommand_StatUp
 	dw BattleCommand_StatDown
 	dw BattleCommand_PayDay
 	dw BattleCommand_Conversion
 	dw BattleCommand_ResetStats
-	dw BattleCommand_StoreEnergy
-	dw BattleCommand_UnleashEnergy
 	dw BattleCommand_ForceSwitch
 	dw BattleCommand_EndLoop
 	dw BattleCommand_FlinchTarget
-	dw BattleCommand_OHKO
 	dw BattleCommand_Recoil
-	dw BattleCommand_Mist
 	dw BattleCommand_FocusEnergy
 	dw BattleCommand_Confuse
 	dw BattleCommand_ConfuseTarget
@@ -49,7 +44,6 @@ BattleCommandPointers:
 	dw BattleCommand_Paralyze
 	dw BattleCommand_Substitute
 	dw BattleCommand_RechargeNextTurn
-	dw BattleCommand_Mimic
 	dw BattleCommand_Metronome
 	dw BattleCommand_LeechSeed
 	dw BattleCommand_Splash
@@ -65,14 +59,9 @@ BattleCommandPointers:
 	dw BattleCommand_Counter
 	dw BattleCommand_Encore
 	dw BattleCommand_PainSplit
-	dw BattleCommand_Snore
-	dw BattleCommand_Conversion2
-	dw BattleCommand_LockOn
 	dw BattleCommand_Sketch
-	dw BattleCommand_DefrostOpponent
 	dw BattleCommand_SleepTalk
 	dw BattleCommand_DestinyBond
-	dw BattleCommand_Spite
 	dw BattleCommand_FalseSwipe
 	dw BattleCommand_HealBell
 	dw BattleCommand_Pressure
@@ -80,7 +69,6 @@ BattleCommandPointers:
 	dw BattleCommand_KickCounter
 	dw BattleCommand_Thief
 	dw BattleCommand_ArenaTrap
-	dw BattleCommand_Nightmare
 	dw BattleCommand_Defrost
 	dw BattleCommand_Curse
 	dw BattleCommand_Protect
@@ -96,9 +84,7 @@ BattleCommandPointers:
 	dw BattleCommand_ConditionalBoost
 	dw BattleCommand_Attract
 	dw BattleCommand_HappinessPower
-	dw BattleCommand_Present
 	dw BattleCommand_DamageCalc
-	dw BattleCommand_FrustrationPower
 	dw BattleCommand_Safeguard
 	dw BattleCommand_CheckSafeguard
 	dw BattleCommand_GetMagnitude
@@ -146,7 +132,6 @@ BattleCommandPointers:
 	dw BattleCommand_StatUpAnim
 	dw BattleCommand_SwitchTurn
 	dw BattleCommand_BellyDrum
-	dw BattleCommand_PsychUp
 	dw BattleCommand_Rage
 	dw BattleCommand_DoubleFlyingDamage
 	dw BattleCommand_DoubleUndergroundDamage

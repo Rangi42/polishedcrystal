@@ -24,7 +24,7 @@ CinnabarIsland_MapEventHeader:
 	person_event SPRITE_BLUE, 14, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
 	itemball_event 2, 22, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 
-const_value set 2
+const_value set 1
 	const CINNABARISLAND_BLUE
 
 CinnabarIslandFlyPoint:

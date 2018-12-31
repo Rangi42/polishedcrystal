@@ -22,7 +22,7 @@ CinnabarVolcanoB2F_MapEventHeader:
 	smashrock_event 19, 21
 	itemball_event 3, 18, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
 
-const_value set 2
+const_value set 1
 	const CINNABARVOLCANOB2F_MOLTRES
 	const CINNABARVOLCANOB2F_LAWRENCE
 

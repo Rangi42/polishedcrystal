@@ -17,7 +17,7 @@ OlivineLighthouseRoof_MapEventHeader:
 	person_event SPRITE_SKYLA, 13, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
 	itemball_event 8, 16, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
 
-const_value set 2
+const_value set 1
 	const OLIVINELIGHTHOUSEROOF_SKYLA
 
 OlivineLighthouseRoofSkylaScript:

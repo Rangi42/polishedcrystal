@@ -1012,12 +1012,9 @@ BattleCommand_DoTurn:
 	jp EndMoveEffect
 
 .continuousmoves ; 34602
-	db EFFECT_RAZOR_WIND
-	db EFFECT_SKULL_BASH
 	db EFFECT_SOLAR_BEAM
 	db EFFECT_FLY
 	db EFFECT_ROLLOUT
-	db EFFECT_BIDE
 	db EFFECT_RAMPAGE
 	db $ff
 ; 3460b
@@ -2107,10 +2104,6 @@ BattleCommand_LowerSub: ; 34eee
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_RAZOR_WIND
-	jr z, .charge_turn
-	cp EFFECT_SKULL_BASH
-	jr z, .charge_turn
 	cp EFFECT_SOLAR_BEAM
 	jr z, .charge_turn
 	cp EFFECT_FLY
@@ -3004,8 +2997,7 @@ BattleCommand_PostHitEffects:
 	call z, .flinch_up
 	jp .checkfaint
 .flinch_up
-	; Ensure that the move doesn't already have a flinch
-	; rate. TODO: consolidate these effects maybe
+	; Ensure that the move doesn't already have a flinch rate.
 	call HasEnemyFainted
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -3013,8 +3005,6 @@ BattleCommand_PostHitEffects:
 	cp EFFECT_FLINCH_HIT
 	ret z
 	cp EFFECT_STOMP
-	ret z
-	cp EFFECT_SNORE
 	ret z
 
 	; Flinch items procs even after Rocky Helmet fainting
@@ -3269,7 +3259,7 @@ endc
 
 	call SandstormSpDefBoost
 
-	jp .lightscreen
+	jr .lightscreen
 
 .psystrike
 	ld hl, wEnemyMonDefense
@@ -3468,7 +3458,6 @@ ThickClubOrLightBallBoost: ; 353b5
 ; it's holding a Light Ball, double it.
 	push bc
 	push de
-
 	push hl
 	ld a, MON_SPECIES
 	call BattlePartyAttr
@@ -3480,19 +3469,13 @@ ThickClubOrLightBallBoost: ; 353b5
 .checkpikachu:
 	pop hl
 	cp PIKACHU
-	jr z, .lightball
-
-	lb bc, CUBONE, MAROWAK
-	ld d, THICK_CLUB
-	call SpeciesItemBoost
-	jp .done
-
-.lightball
 	lb bc, PIKACHU, PIKACHU
 	ld d, LIGHT_BALL
+	jr z, .ok
+	lb bc, CUBONE, MAROWAK
+	ld d, THICK_CLUB
+.ok
 	call SpeciesItemBoost
-
-.done
 	pop de
 	pop bc
 	ret
@@ -3588,23 +3571,6 @@ WeatherDefenseBoost:
 	ld b, h
 	ld c, l
 	pop hl
-	ret
-
-; Unused, but kept for now to avoid random bugs
-BattleCommand_StoreEnergy:
-BattleCommand_UnleashEnergy:
-	jp EndMoveEffect
-BattleCommand_PsychUp:
-BattleCommand_FrustrationPower:
-BattleCommand_Present:
-BattleCommand_Spite:
-BattleCommand_DefrostOpponent:
-BattleCommand_Conversion2:
-BattleCommand_Snore:
-BattleCommand_OHKO:
-BattleCommand_MirrorMove:
-BattleCommand_Mimic:
-BattleCommand_Nightmare:
 	ret
 
 
@@ -4027,9 +3993,6 @@ BattleCommand_ConstantDamage: ; 35726
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_PSYWAVE
-	jr z, .psywave
-
 	cp EFFECT_SUPER_FANG
 	jr z, .super_fang
 
@@ -4038,21 +4001,6 @@ BattleCommand_ConstantDamage: ; 35726
 
 	ld a, BATTLE_VARS_MOVE_POWER
 	call GetBattleVar
-	ld b, a
-	xor a
-	jr .got_power
-
-.psywave
-	ld a, b
-	srl a
-	add b
-	ld b, a
-.psywave_loop
-	call BattleRandom
-	and a
-	jr z, .psywave_loop
-	cp b
-	jr nc, .psywave_loop
 	ld b, a
 	xor a
 	jr .got_power
@@ -4437,30 +4385,6 @@ BattleCommand_PainSplit:
 	call AnimateFailedMove
 	jp PrintButItFailed
 
-BattleCommand_LockOn: ; 35a53
-; lockon
-
-	call CheckSubstituteOpp
-	jr nz, .fail
-
-	ld a, [wAttackMissed]
-	and a
-	jr nz, .fail
-
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVarAddr
-	set SUBSTATUS_LOCK_ON, [hl]
-	call AnimateCurrentMove
-
-	ld hl, TookAimText
-	jp StdBattleTextBox
-
-.fail
-	call AnimateFailedMove
-	jp PrintDidntAffect
-
-; 35a74
-
 
 BattleCommand_Sketch: ; 35a74
 ; sketch
@@ -4719,15 +4643,9 @@ BattleCommand_SleepTalk: ; 35b33
 	pop de
 	pop hl
 
-	cp EFFECT_SKULL_BASH
-	ret z
-	cp EFFECT_RAZOR_WIND
-	ret z
 	cp EFFECT_SOLAR_BEAM
 	ret z
 	cp EFFECT_FLY
-	ret z
-	cp EFFECT_BIDE
 	ret
 
 ; 35bff
@@ -7091,25 +7009,6 @@ BattleCommand_TrapTarget: ; 36c2d
 ; 36c7e
 
 
-BattleCommand_Mist: ; 36c7e
-; mist
-
-	ld a, BATTLE_VARS_SUBSTATUS4
-	call GetBattleVarAddr
-	bit SUBSTATUS_MIST, [hl]
-	jr nz, .already_mist
-	set SUBSTATUS_MIST, [hl]
-	call AnimateCurrentMove
-	ld hl, MistText
-	jp StdBattleTextBox
-
-.already_mist
-	call AnimateFailedMove
-	jp PrintButItFailed
-
-; 36c98
-
-
 BattleCommand_FocusEnergy: ; 36c98
 ; focusenergy
 
@@ -7303,10 +7202,10 @@ BattleCommand_Confuse: ; 36d3b
 
 .not_already_confused
 	call CheckSubstituteOpp
-	jr nz, BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit
+	jr nz, BattleCommand_Confuse_CheckSwagger_ConfuseHit
 	ld a, [wAttackMissed]
 	and a
-	jr nz, BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit
+	jr nz, BattleCommand_Confuse_CheckSwagger_ConfuseHit
 BattleCommand_FinishConfusingTarget: ; 36d70
 	ld bc, wEnemyConfuseCount
 	ld a, [hBattleTurn]
@@ -7326,8 +7225,6 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	call GetBattleVar
 	cp EFFECT_CONFUSE_HIT
 	jr z, .got_effect
-	cp EFFECT_SNORE
-	jr z, .got_effect
 	cp EFFECT_SWAGGER
 	jr z, .got_effect
 	call AnimateCurrentMove
@@ -7344,12 +7241,10 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 
 ; 36db6
 
-BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit: ; 36db6
+BattleCommand_Confuse_CheckSwagger_ConfuseHit: ; 36db6
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_CONFUSE_HIT
-	ret z
-	cp EFFECT_SNORE
 	ret z
 	cp EFFECT_SWAGGER
 	ret z

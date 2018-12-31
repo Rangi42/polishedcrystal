@@ -38,7 +38,7 @@ Route36_MapEventHeader:
 	fruittree_event 4, 25, FRUITTREE_ROUTE_36, RAWST_BERRY
 	person_event SPRITE_TWIN, 5, 50, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSchoolgirlMolly, -1
 
-const_value set 2
+const_value set 1
 	const ROUTE36_WEIRD_TREE
 	const ROUTE36_ARTHUR
 	const ROUTE36_FLORIA
@@ -89,6 +89,7 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	playsound SFX_SANDSTORM
 	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	showtext SudowoodoAttackedText
+	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO

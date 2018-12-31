@@ -16,7 +16,7 @@ IceIslandRoof_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_BLANCHE, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
 
-const_value set 2
+const_value set 1
 	const ICEISLANDROOF_BLANCHE
 
 IceIslandRoofBlancheScript:

@@ -22,7 +22,7 @@ Route7_MapEventHeader:
 	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
 	itemball_event 1, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
-const_value set 2
+const_value set 1
 	const ROUTE7_BIG_SNORLAX
 
 Route7RebattleBreeder:

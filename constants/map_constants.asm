@@ -214,8 +214,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_43_MAHOGANY_GATE,                      4,  5 ;  3
 	mapgroup ROUTE_43_GATE,                               4,  5 ;  4
 	mapgroup ROUTE_43,                                   27, 10 ;  5
-	mapgroup LAKE_OF_RAGE_NORTH,                          8, 20 ;  6
-	mapgroup LAKE_OF_RAGE_SOUTH,                         10, 20 ;  7
+	mapgroup LAKE_OF_RAGE,                               18, 20 ;  6
 
 	newgroup                                                    ; 10
 
@@ -232,6 +231,7 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_32_POKECENTER_1F,                      4,  6 ; 11
 	mapgroup ROUTE_32_COAST_HOUSE,                        4,  4 ; 12
 	mapgroup MAGNET_TUNNEL_EAST,                         11, 10 ; 13
+	mapgroup VIOLET_OUTSKIRTS,                            8, 20 ; 14
 
 	newgroup                                                    ; 11
 
@@ -569,7 +569,7 @@ MAP_NONE   EQU 0
 
 	mapgroup ROUTE_30,                                   27, 10 ;  1
 	mapgroup ROUTE_31,                                    9, 20 ;  2
-	mapgroup CHERRYGROVE_BAY,                            19, 15 ;  3
+	mapgroup CHERRYGROVE_BAY,                            25, 15 ;  3
 	mapgroup CHERRYGROVE_CITY,                           10, 20 ;  4
 	mapgroup CHERRYGROVE_MART,                            4,  6 ;  5
 	mapgroup CHERRYGROVE_POKECENTER_1F,                   4,  6 ;  6
@@ -583,7 +583,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 27
 
 	mapgroup CLIFF_EDGE_GATE,                            11, 10 ;  1
-	mapgroup CLIFF_CAVE,                                 18,  7 ;  2
+	mapgroup CLIFF_CAVE,                                 18,  6 ;  2
 	mapgroup ROUTE_47,                                   19, 39 ;  3
 	mapgroup ROUTE_48,                                   11, 18 ;  4
 	mapgroup QUIET_CAVE_1F,                              18, 18 ;  5
@@ -782,7 +782,6 @@ const_value SET 1
 	const OBJECT_30
 	const OBJECT_31
 	const OBJECT_RANGE
-; 33-39 are not used
 
 ; map object struct
 	const_def
@@ -800,8 +799,6 @@ const_value SET 1
 	const MAPOBJECT_POINTER_HI ; b
 	const MAPOBJECT_EVENT_FLAG ; c
 	const MAPOBJECT_FLAG_HI ; d
-	const MAPOBJECT_E ; unused
-	const MAPOBJECT_F ; unused
 OBJECT_LENGTH EQU const_value
 
 MAPOBJECT_SCREEN_HEIGHT EQU 11
@@ -826,6 +823,7 @@ OW_RIGHT EQU RIGHT << 2
 	const EMOTE_ROD ; 9
 	const EMOTE_BOULDER_DUST ; 10
 	const EMOTE_SHAKING_GRASS ; 11
+	const EMOTE_PUDDLE_SPLASH ; 12
 EMOTE_MEM EQU -1
 
 ; see engine/events.asm:TryReadSign.signs
@@ -890,10 +888,13 @@ NUM_SPAWNS EQU const_value
 	const PALETTE_MORN
 	const PALETTE_DARK
 
-INVISIBLE    EQU 0
+; ObjectFlags1
 FIXED_FACING EQU 2
 SLIDING      EQU 3
 EMOTE_OBJECT EQU 7
+; ObjectFlags2
+INVISIBLE    EQU 0
+OVERHEAD     EQU 3
 
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
@@ -950,7 +951,7 @@ NUM_FRUIT_TREES EQU const_value +- 1
 const_value SET 1
 	const HIDDENGROTTO_ROUTE_32           ; 01
 	const HIDDENGROTTO_ROUTE_35           ; 02
-	const HIDDENGROTTO_LAKE_OF_RAGE_SOUTH ; 03
+	const HIDDENGROTTO_LAKE_OF_RAGE       ; 03
 	const HIDDENGROTTO_04                 ; 04
 	const HIDDENGROTTO_05                 ; 05
 	const HIDDENGROTTO_06                 ; 06
@@ -979,6 +980,13 @@ CMDQUEUE_03    EQU 3
 CMDQUEUE_04    EQU 4
 CMDQUEUE_05    EQU 5
 CMDQUEUE_ENTRY_SIZE EQU 6
+
 CMDQUEUE_CAPACITY EQU 4
 
-CMDQUEUE_STONETABLE EQU 2
+	const_def
+	const CMDQUEUE_NONE       ; 0
+	const CMDQUEUE_TYPE_1     ; 1
+	const CMDQUEUE_STONETABLE ; 2
+	const CMDQUEUE_TYPE_3     ; 3
+	const CMDQUEUE_TYPE_4     ; 4
+NUM_CMDQUEUE_TYPES EQU const_value

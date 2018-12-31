@@ -323,10 +323,11 @@ CheckOverworldTileArrays: ; c840
 
 CutGrassBlockPointers: ; c862
 ; Which tileset are we in?
-	dbw TILESET_JOHTO_1, .johto1
-	dbw TILESET_JOHTO_2, .johto2
-	dbw TILESET_KANTO_1, .kanto1
-	dbw TILESET_KANTO_2, .kanto2
+	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
+	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_OVERCAST, .johto_overcast
+	dbw TILESET_KANTO, .kanto
+	dbw TILESET_INDIGO_PLATEAU, .indigo_plateau
 	dbw TILESET_PARK, .park
 	dbw TILESET_FOREST, .forest
 	dbw TILESET_SAFARI_ZONE, .safari_zone
@@ -337,15 +338,16 @@ CutGrassBlockPointers: ; c862
 
 ; Which meta tile are we facing, which should we replace it with, and which animation?
 
-.shamouti_island ; Shamouti Island
+.shamouti_island
 	db $95, $4c, $01
-.johto1 ; Johto OW
-.johto2 ; Goldenrod area
-.valencia_island ; Valencia Island
+.johto_traditional
+.johto_modern
+.johto_overcast
+.valencia_island
 	db $03, $02, $01
 	db -1
 
-.kanto1 ; Kanto OW
+.kanto
 	db $94, $0a, $01
 	db $95, $0a, $01
 	db $96, $0a, $01
@@ -356,16 +358,16 @@ CutGrassBlockPointers: ; c862
 	db $9d, $0a, $01
 	db $a0, $0a, $01
 	db $a1, $0a, $01
-.kanto2 ; Route 23
+.indigo_plateau
 	db $0b, $0a, $01
 	db -1
 
-.park ; National Park
+.park
 	db $03, $04, $01
 	db $13, $03, $01
 	db -1
 
-.forest ; Ilex Forest + Yellow Forest
+.forest
 	db $03, $01, $01
 	db $07, $05, $01
 	db $13, $11, $01
@@ -375,7 +377,7 @@ CutGrassBlockPointers: ; c862
 	db $57, $0b, $01
 	db -1
 
-.safari_zone ; Safari Zone
+.safari_zone
 	db $03, $01, $01
 	db $07, $03, $01
 	db $24, $20, $01
@@ -393,7 +395,7 @@ CutGrassBlockPointers: ; c862
 	db $4b, $27, $01
 	db -1
 
-.faraway_island ; Faraway Island
+.faraway_island
 	db $03, $02, $01
 	db $08, $74, $01
 	db $09, $75, $01
@@ -406,24 +408,25 @@ CutGrassBlockPointers: ; c862
 	db -1
 
 WhirlpoolBlockPointers: ; c8a4
-	dbw TILESET_JOHTO_1, .johto1
-	dbw TILESET_JOHTO_2, .johto2
+	dbw TILESET_JOHTO_TRADITIONAL, .johto_traditional
+	dbw TILESET_JOHTO_MODERN, .johto_modern
+	dbw TILESET_JOHTO_OVERCAST, .johto_overcast
 	db -1
 
-.johto1
-	db $07, $36, $00
-	db $9f, $31, $00
+.johto_traditional
+.johto_overcast
+	db $07, $07, $00
 	db -1
 
-.johto2
-	db $83, $36, $00
+.johto_modern
+	db $83, $83, $00
 	db -1
 
 Script_CutTree:
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
 	closetext
-	special WaitSFX
+	waitsfx
 	scall FieldMovePokepicScript
 	disappear -2
 	callasm CutDownTree
@@ -660,7 +663,7 @@ TrySurfOW:: ; c9e7
 ; Must be facing water.
 	ld a, [wEngineBuffer1]
 	call GetTileCollision
-	cp 1 ; surfable
+	cp WATERTILE ; surfable
 	jr nz, .quit
 
 ; Check tile permissions.
@@ -861,8 +864,11 @@ WaterfallFunction: ; cade
 
 CheckMapCanWaterfall: ; cb07
 	ld a, [wPlayerDirection]
-	and $c
+	and FACE_UP | FACE_DOWN
 	cp FACE_UP
+	jr nz, .failed
+	ld a, [wTilePermissions]
+	and FACE_UP
 	jr nz, .failed
 	ld a, [wTileUp]
 	cp COLL_WATERFALL
@@ -1594,7 +1600,7 @@ RockSmashScript: ; cf32
 	callasm PrepareOverworldMove
 	writetext UnknownText_0xcf58
 	closetext
-	special WaitSFX
+	waitsfx
 	scall FieldMovePokepicScript
 	playsound SFX_STRENGTH
 	earthquake 84
@@ -1986,7 +1992,7 @@ BikeFunction: ; d0b3
 
 .ok
 	call GetPlayerStandingTile
-	and $f ; can't use our bike in a wall or on water
+	and $f ; cp LANDTILE ; can't use our bike in a wall or on water
 	jr nz, .nope
 	xor a
 	ret

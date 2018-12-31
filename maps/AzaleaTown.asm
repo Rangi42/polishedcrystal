@@ -2,8 +2,9 @@ AzaleaTown_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
+.MapCallbacks: db 2
 	dbw MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
+	dbw MAPCALLBACK_TILES, AzaleaTownRainScript
 
 AzaleaTown_MapEventHeader:
 
@@ -45,12 +46,22 @@ AzaleaTown_MapEventHeader:
 	person_event SPRITE_SLOWPOKE, 15, 15, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	fruittree_event 2, 8, FRUITTREE_AZALEA_TOWN, WHT_APRICORN
 
-const_value set 2
+const_value set 1
 	const AZALEATOWN_SILVER
 	const AZALEATOWN_KURT
 
 AzaleaTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_AZALEA
+	return
+
+AzaleaTownRainScript:
+	special Special_GetOvercastIndex
+	if_equal AZALEA_OVERCAST, .rain
+	changemap AzaleaTown_BlockData
+	return
+
+.rain
+	changemap AzaleaTownRaining_BlockData
 	return
 
 AzaleaTownRivalBattleTrigger1:

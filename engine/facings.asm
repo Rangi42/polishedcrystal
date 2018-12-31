@@ -31,6 +31,12 @@ Facings: ; 4049
 	dw FacingBoulderDust2 ; FACING_BOULDER_DUST_2
 	dw FacingGrass1       ; FACING_GRASS_1
 	dw FacingGrass2       ; FACING_GRASS_2
+	dw FacingSplash1      ; FACING_SPLASH_1
+	dw FacingSplash2      ; FACING_SPLASH_2
+	dw FacingBigGyarados1 ; FACING_BIG_GYARADOS_1
+	dw FacingBigGyarados2 ; FACING_BIG_GYARADOS_2
+	dw FacingStepDownFlip ; FACING_STEP_DOWN_FLIP
+	dw FacingStepUpFlip   ; FACING_STEP_UP_FLIP
 FacingsEnd: dw 0
 
 NUM_FACINGS EQU (FacingsEnd - Facings) / 2
@@ -260,3 +266,65 @@ FacingGrass2:
 	db  9, -1, 4, $7e
 	db  9,  9, 4 | X_FLIP, $7e
 ; 4273
+
+FacingSplash1:
+	db 2 ; #
+	db  8,  0, 4, $7f
+	db  8,  8, 4 | X_FLIP, $7f
+
+FacingSplash2:
+	db 2 ; #
+	db  9, -1, 4, $7f
+	db  9,  9, 4 | X_FLIP, $7f
+
+FacingBigGyarados1:
+	db 16 ; #
+	db  0,  0, 0, $00
+	db  0,  8, 0, $01
+	db  8,  0, 0, $02
+	db  8,  8, 0, $03
+	db  0, 16, 0, $04
+	db  0, 24, 0, $05
+	db  8, 16, 0, $06
+	db  8, 24, 0, $07
+	db 16,  0, 0, $08
+	db 16,  8, 0, $09
+	db 24,  0, 0, $0a
+	db 24,  8, 0, $0b
+	db 16, 16, 0, $0c
+	db 16, 24, 0, $0d
+	db 24, 16, 0, $0e
+	db 24, 24, 0, $80
+
+FacingBigGyarados2:
+	db 16 ; #
+	db  0,  0, 0, $00
+	db  0,  8, 0, $01
+	db  8,  0, 0, $81
+	db  8,  8, 0, $82
+	db  0, 16, 0, $83
+	db  0, 24, 0, $84
+	db  8, 16, 0, $85
+	db  8, 24, 0, $86
+	db 16,  0, 0, $87
+	db 16,  8, 0, $88
+	db 24,  0, 0, $89
+	db 24,  8, 0, $8a
+	db 16, 16, 0, $8b
+	db 16, 24, 0, $8c
+	db 24, 16, 0, $8d
+	db 24, 24, 0, $8e
+
+FacingStepDownFlip:
+	db 4 ; #
+	db  0,  0, 0 | X_FLIP, $01
+	db  0,  8, 0 | X_FLIP, $00
+	db  8,  0, 2 | X_FLIP, $03
+	db  8,  8, 2 | X_FLIP, $02
+
+FacingStepUpFlip:
+	db 4 ; #
+	db  0,  0, 0 | X_FLIP, $05
+	db  0,  8, 0 | X_FLIP, $04
+	db  8,  0, 2 | X_FLIP, $07
+	db  8,  8, 2 | X_FLIP, $06

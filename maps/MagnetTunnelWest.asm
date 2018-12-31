@@ -13,4 +13,6 @@ MagnetTunnelWest_MapEventHeader:
 
 .Signposts: db 0
 
-.PersonEvents: db 0
+.PersonEvents: db 2
+	smashrock_event 8, 9
+	smashrock_event 5, 7

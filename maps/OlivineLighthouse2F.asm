@@ -27,6 +27,8 @@ TrainerGentlemanAlfred:
 
 GentlemanAlfredScript:
 	end_if_just_battled
+	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	iftrue_jumptextfaceplayer GentlemanAlfredFinalText
 	jumptextfaceplayer UnknownText_0x5b13e
 
 TrainerSailorHuey1:
@@ -192,6 +194,18 @@ UnknownText_0x5b13e:
 
 	para "can't be cured by"
 	line "ordinary medicine."
+	done
+
+GentlemanAlfredFinalText:
+	text "Up top is a #-"
+	line "mon that keeps the"
+	cont "Lighthouse lit."
+
+	para "You helped cure"
+	line "its sickness?"
+
+	para "You've done us a"
+	line "real service!"
 	done
 
 UnknownText_0x5b1b6:

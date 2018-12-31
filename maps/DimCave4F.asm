@@ -32,7 +32,7 @@ DimCave4F_MapEventHeader:
 	itemball_event 8, 27, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
 	itemball_event 23, 6, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
-const_value set 2
+const_value set 1
 	const DIMCAVE4F_BOULDER
 
 DimCave4FBouldersLand:

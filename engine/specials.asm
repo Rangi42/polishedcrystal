@@ -189,6 +189,7 @@ SpecialsPointers:: ; c029
 	add_special GetHiddenGrottoContents
 	add_special EmptiedHiddenGrotto
 	add_special Special_HiddenPowerGuru
+	add_special Special_GetOvercastIndex
 
 	add_special SpecialNone
 ; c224
@@ -529,6 +530,11 @@ Diploma: ; c49f
 	jp ExitAllMenus
 ; c4ac
 
+Special_GetOvercastIndex::
+	call GetOvercastIndex
+	ld [wScriptVar], a
+	ret
+
 CheckIfTrendyPhraseIsLucky:
 	xor a
 	ld [wScriptVar], a
@@ -720,16 +726,19 @@ BillBoxSwitchCheck:
 	ret
 
 BillBoxSwitch:
-	ld hl, wc608
+	; back up wMisc to wDecompressScratch
+	ld hl, wMisc
 	ld de, wDecompressScratch
-	ld bc, $1e0
-	ld a, $6
+	ld bc, (wMiscEnd - wMisc)
+	ld a, BANK(wDecompressScratch)
 	call FarCopyWRAM
+	; change boxes (overwrites wMisc)
 	ld a, [wEngineBuffer1]
 	ld e, a
 	farcall ChangeBoxSaveGameNoConfirm
-	ld de, wc608
+	; restore wMisc from wDecompressScratch
 	ld hl, wDecompressScratch
-	ld bc, $1e0
-	ld a, $6
+	ld de, wMisc
+	ld bc, (wMiscEnd - wMisc)
+	ld a, BANK(wDecompressScratch)
 	jp FarCopyWRAM

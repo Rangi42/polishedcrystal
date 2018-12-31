@@ -152,114 +152,112 @@
 	const SPRITE_BIG_SNORLAX ; $95
 	const SPRITE_BIG_LAPRAS ; $96
 	const SPRITE_BIG_ONIX ; $97
-	const SPRITE_SLOWPOKETAIL ; $98
-	const SPRITE_WEIRD_TREE ; $99
-	const SPRITE_GYARADOS_TOP_LEFT ; $9a
-	const SPRITE_GYARADOS_TOP_RIGHT ; $9b
-	const SPRITE_GYARADOS_BOTTOM_LEFT ; $9c
-	const SPRITE_GYARADOS_BOTTOM_RIGHT ; $9d
-	const SPRITE_BALL_CUT_FRUIT ; $9e
-	const SPRITE_BOULDER_ROCK_FOSSIL ; $9f
-	const SPRITE_PAPER ; $a0
-	const SPRITE_POKEDEX ; $a1
-	const SPRITE_BOOK ; $a2
-	const SPRITE_ELECTRIC_FENCE_LEFT ; $a3
-	const SPRITE_ELECTRIC_FENCE_RIGHT ; $a4
-	const SPRITE_SNES ; $a5
-	const SPRITE_N64 ; $a6
-	const SPRITE_GAMECUBE ; $a7
-	const SPRITE_WII ; $a8
-	const SPRITE_SILVER_TROPHY ; $a9
-	const SPRITE_GOLD_TROPHY ; $aa
-	const SPRITE_UNUSED ; $ab
+	const SPRITE_BIG_GYARADOS ; $98
+	const SPRITE_SLOWPOKETAIL ; $99
+	const SPRITE_WEIRD_TREE ; $9a
+	const SPRITE_BALL_CUT_FRUIT ; $9b
+	const SPRITE_BOULDER_ROCK_FOSSIL ; $9c
+	const SPRITE_PAPER ; $9d
+	const SPRITE_POKEDEX ; $9e
+	const SPRITE_BOOK ; $9f
+	const SPRITE_ELECTRIC_FENCE_LEFT ; $a0
+	const SPRITE_ELECTRIC_FENCE_RIGHT ; $a1
+	const SPRITE_SNES ; $a2
+	const SPRITE_N64 ; $a3
+	const SPRITE_GAMECUBE ; $a4
+	const SPRITE_WII ; $a5
+	const SPRITE_SILVER_TROPHY ; $a6
+	const SPRITE_GOLD_TROPHY ; $a7
 
+const_value set $ab
 SPRITE_POKEMON EQU const_value
-	const SPRITE_BULBASAUR ; $ac
-	const SPRITE_CHARMANDER ; $ad
-	const SPRITE_SQUIRTLE ; $ae
-	const SPRITE_WEEDLE ; $af
-	const SPRITE_PIDGEY ; $b0
-	const SPRITE_PIDGEOTTO ; $b1
-	const SPRITE_RATTATA ; $b2
-	const SPRITE_PIKACHU ; $b3
-	const SPRITE_NIDORAN_F ; $b4
-	const SPRITE_NIDORAN_M ; $b5
-	const SPRITE_NIDORINO ; $b6
-	const SPRITE_CLEFAIRY ; $b7
-	const SPRITE_JIGGLYPUFF ; $b8
-	const SPRITE_ODDISH ; $b9
-	const SPRITE_VILEPLUME ; $ba
-	const SPRITE_DIGLETT ; $bb
-	const SPRITE_MEOWTH ; $bc
-	const SPRITE_PERSIAN ; $bd
-	const SPRITE_PSYDUCK ; $be
-	const SPRITE_POLIWAG ; $bf
-	const SPRITE_POLIWRATH ; $c0
-	const SPRITE_ABRA ; $c1
-	const SPRITE_MACHOP ; $c2
-	const SPRITE_MACHOKE ; $c3
-	const SPRITE_TENTACOOL ; $c4
-	const SPRITE_GEODUDE ; $c5
-	const SPRITE_SLOWPOKE ; $c6
-	const SPRITE_SLOWBRO ; $c7
-	const SPRITE_DODRIO ; $c8
-	const SPRITE_GRIMER ; $c9
-	const SPRITE_SHELLDER ; $ca
-	const SPRITE_GENGAR ; $cb
-	const SPRITE_VOLTORB ; $cc
-	const SPRITE_ELECTRODE ; $cd
-	const SPRITE_RHYDON ; $ce
-	const SPRITE_CHANSEY ; $cf
-	const SPRITE_STARYU ; $d0
-	const SPRITE_MAGIKARP ; $d1
-	const SPRITE_ARTICUNO ; $d2
-	const SPRITE_ZAPDOS ; $d3
-	const SPRITE_MOLTRES ; $d4
-	const SPRITE_DRATINI ; $d5
-	const SPRITE_MEWTWO ; $d6
-	const SPRITE_FURRET ; $d7
-	const SPRITE_HOOTHOOT ; $d8
-	const SPRITE_AMPHAROS ; $d9
-	const SPRITE_MARILL ; $da
-	const SPRITE_MURKROW ; $db
+	const SPRITE_BULBASAUR ; $ab
+	const SPRITE_CHARMANDER ; $ac
+	const SPRITE_SQUIRTLE ; $ad
+	const SPRITE_WEEDLE ; $ae
+	const SPRITE_PIDGEY ; $af
+	const SPRITE_PIDGEOTTO ; $b0
+	const SPRITE_RATTATA ; $b1
+	const SPRITE_PIKACHU ; $b2
+	const SPRITE_NIDORAN_F ; $b3
+	const SPRITE_NIDORAN_M ; $b4
+	const SPRITE_NIDORINO ; $b5
+	const SPRITE_CLEFAIRY ; $b6
+	const SPRITE_JIGGLYPUFF ; $b7
+	const SPRITE_ODDISH ; $b8
+	const SPRITE_VILEPLUME ; $b9
+	const SPRITE_DIGLETT ; $ba
+	const SPRITE_MEOWTH ; $bb
+	const SPRITE_PERSIAN ; $bc
+	const SPRITE_PSYDUCK ; $bd
+	const SPRITE_POLIWAG ; $be
+	const SPRITE_POLIWRATH ; $bf
+	const SPRITE_ABRA ; $c0
+	const SPRITE_MACHOP ; $c1
+	const SPRITE_MACHOKE ; $c2
+	const SPRITE_TENTACOOL ; $c3
+	const SPRITE_GEODUDE ; $c4
+	const SPRITE_SLOWPOKE ; $c5
+	const SPRITE_SLOWBRO ; $c6
+	const SPRITE_DODRIO ; $c7
+	const SPRITE_GRIMER ; $c8
+	const SPRITE_SHELLDER ; $c9
+	const SPRITE_GENGAR ; $ca
+	const SPRITE_VOLTORB ; $cb
+	const SPRITE_ELECTRODE ; $cc
+	const SPRITE_RHYDON ; $cd
+	const SPRITE_CHANSEY ; $ce
+	const SPRITE_STARYU ; $cf
+	const SPRITE_MAGIKARP ; $d0
+	const SPRITE_ARTICUNO ; $d1
+	const SPRITE_ZAPDOS ; $d2
+	const SPRITE_MOLTRES ; $d3
+	const SPRITE_DRATINI ; $d4
+	const SPRITE_MEWTWO ; $d5
+	const SPRITE_FURRET ; $d6
+	const SPRITE_HOOTHOOT ; $d7
+	const SPRITE_AMPHAROS ; $d8
+	const SPRITE_MARILL ; $d9
+	const SPRITE_MURKROW ; $da
 	const SPRITE_SLOWKING ; da$db
-	const SPRITE_UNOWN ; $dd
-	const SPRITE_HERACROSS ; $de
-	const SPRITE_WEAVILE ; $df
-	const SPRITE_URSARING ; $e0
-	const SPRITE_SKARMORY ; $e1
-	const SPRITE_SMEARGLE ; $e2
-	const SPRITE_MILTANK ; $e3
-	const SPRITE_BLISSEY ; $e4
-	const SPRITE_RAIKOU ; $e5
-	const SPRITE_ENTEI ; $e6
-	const SPRITE_SUICUNE ; $e7
-	const SPRITE_LUGIA ; $e8
-	const SPRITE_HO_OH ; $e9
-	const SPRITE_EGG ; $ea
+	const SPRITE_UNOWN ; $dc
+	const SPRITE_HERACROSS ; $dd
+	const SPRITE_WEAVILE ; $de
+	const SPRITE_URSARING ; $df
+	const SPRITE_SKARMORY ; $e0
+	const SPRITE_SMEARGLE ; $e1
+	const SPRITE_MILTANK ; $e2
+	const SPRITE_BLISSEY ; $e3
+	const SPRITE_RAIKOU ; $e4
+	const SPRITE_ENTEI ; $e5
+	const SPRITE_SUICUNE ; $e6
+	const SPRITE_LUGIA ; $e7
+	const SPRITE_HO_OH ; $e8
+	const SPRITE_EGG ; $e9
 
-	const SPRITE_DAYCARE_MON_1 ; $eb
-	const SPRITE_DAYCARE_MON_2 ; $ec
-	const SPRITE_GROTTO_MON    ; $ed
+	const SPRITE_DAYCARE_MON_1 ; $ea
+	const SPRITE_DAYCARE_MON_2 ; $eb
+	const SPRITE_GROTTO_MON    ; $ec
 
 SPRITE_VARS EQU const_value
-	const SPRITE_CONSOLE ; $ee
-	const SPRITE_DOLL_1 ; $ef
-	const SPRITE_DOLL_2 ; $f0
-	const SPRITE_BIG_DOLL ; $f1
-	const SPRITE_FUCHSIA_GYM_1 ; $f2
-	const SPRITE_FUCHSIA_GYM_2 ; $f3
-	const SPRITE_FUCHSIA_GYM_3 ; $f4
-	const SPRITE_FUCHSIA_GYM_4 ; $f5
-	const SPRITE_COPYCAT ; $f6
-	const SPRITE_JANINE_IMPERSONATOR ; $f7
-	const SPRITE_REMATCH_GYM_LEADER_1 ; $f8
-	const SPRITE_REMATCH_GYM_LEADER_2 ; $f9
-	const SPRITE_GUIDE_GENT ; $fa
-	const SPRITE_NEW_BARK_LYRA ; $fb
-	const SPRITE_GOLDENROD_LYRA ; $fc
-	const SPRITE_CHERRYGROVE_RIVAL ; $fd
-	const SPRITE_OLIVINE_RIVAL ; $fe
+	const SPRITE_CONSOLE ; $ed
+	const SPRITE_DOLL_1 ; $ee
+	const SPRITE_DOLL_2 ; $ef
+	const SPRITE_BIG_DOLL ; $f0
+	const SPRITE_FUCHSIA_GYM_1 ; $f1
+	const SPRITE_FUCHSIA_GYM_2 ; $f2
+	const SPRITE_FUCHSIA_GYM_3 ; $f3
+	const SPRITE_FUCHSIA_GYM_4 ; $f4
+	const SPRITE_COPYCAT ; $f5
+	const SPRITE_JANINE_IMPERSONATOR ; $f6
+	const SPRITE_REMATCH_GYM_LEADER_1 ; $f7
+	const SPRITE_REMATCH_GYM_LEADER_2 ; $f8
+	const SPRITE_GUIDE_GENT ; $f9
+	const SPRITE_NEW_BARK_LYRA ; $fa
+	const SPRITE_GOLDENROD_LYRA ; $fb
+	const SPRITE_CHERRYGROVE_RIVAL ; $fc
+	const SPRITE_OLIVINE_RIVAL ; $fd
+	const SPRITE_LAKE_OF_RAGE_LANCE ; $fe
 	const SPRITE_CERULEAN_CAPE_MISTY ; $ff
 
 
@@ -269,6 +267,7 @@ const_value SET 1
 	const STANDING_SPRITE
 	const STILL_SPRITE
 	const MON_SPRITE
+	const BIG_GYARADOS_SPRITE
 
 ; sprite header fields
 	const_def
@@ -282,20 +281,20 @@ NUM_SPRITEHEADER_FIELDS EQU const_value
 
 ; sprite palettes
 	const_def
-	const PAL_OW_RED    ; 00
-	const PAL_OW_BLUE   ; 01
-	const PAL_OW_GREEN  ; 02
-	const PAL_OW_BROWN  ; 03
-	const PAL_OW_PURPLE ; 04
-	const PAL_OW_SILVER ; 05
-	const PAL_OW_TREE   ; 06
-	const PAL_OW_ROCK   ; 07
+	const PAL_OW_RED    ; 0
+	const PAL_OW_BLUE   ; 1
+	const PAL_OW_GREEN  ; 2
+	const PAL_OW_BROWN  ; 3
+	const PAL_OW_PURPLE ; 4
+	const PAL_OW_SILVER ; 5
+	const PAL_OW_TREE   ; 6
+	const PAL_OW_ROCK   ; 7
 
 ; for party menu icons
 const_value SET PAL_OW_SILVER
-	const PAL_OW_GRAY   ; $05
-	const PAL_OW_YELLOW ; $06
-	const PAL_OW_TEAL   ; $07
+	const PAL_OW_GRAY   ; 5
+	const PAL_OW_PINK   ; 6
+	const PAL_OW_TEAL   ; 7
 
 ; sprite movement data table indices
 ; see data/map_objects.asm
@@ -329,9 +328,13 @@ const_value SET PAL_OW_SILVER
 	const SPRITEMOVEDATA_BIGDOLL              ; 1a
 	const SPRITEMOVEDATA_BOULDERDUST          ; 1b
 	const SPRITEMOVEDATA_GRASS                ; 1c
-	const SPRITEMOVEDATA_SWIM_AROUND          ; 1d
-	const SPRITEMOVEDATA_SWIM_UP_DOWN         ; 1e
-	const SPRITEMOVEDATA_SWIM_LEFT_RIGHT      ; 1f
+	const SPRITEMOVEDATA_PUDDLE               ; 1d
+	const SPRITEMOVEDATA_SWIM_AROUND          ; 1e
+	const SPRITEMOVEDATA_SWIM_UP_DOWN         ; 1f
+	const SPRITEMOVEDATA_SWIM_LEFT_RIGHT      ; 20
+	const SPRITEMOVEDATA_BIG_GYARADOS         ; 21
+	const SPRITEMOVEDATA_STANDING_DOWN_FLIP   ; 22
+	const SPRITEMOVEDATA_STANDING_UP_FLIP     ; 23
 NUM_SPRITEMOVEDATA EQU const_value
 SPRITEMOVEDATA_FIELDS EQU 6
 
@@ -359,6 +362,9 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE ; 12
 	const SPRITEMOVEFN_BOULDERDUST           ; 13
 	const SPRITEMOVEFN_GRASS                 ; 14
+	const SPRITEMOVEFN_PUDDLE                ; 15
+	const SPRITEMOVEFN_BIG_GYARADOS          ; 16
+	const SPRITEMOVEFN_STANDING_FLIP         ; 17
 
 ; sprite step types
 ; see engine/map_objects.asm:StepTypesJumptable
@@ -388,22 +394,25 @@ SPRITEMOVEDATA_FIELDS EQU 6
 
 ; see engine/map_object_action.asm:Pointers445f
 	const_def
-	const PERSON_ACTION_00           ; 00
-	const PERSON_ACTION_STAND        ; 01
-	const PERSON_ACTION_STEP         ; 02
-	const PERSON_ACTION_BUMP         ; 03
-	const PERSON_ACTION_SPIN         ; 04
-	const PERSON_ACTION_SPIN_FLICKER ; 05
-	const PERSON_ACTION_FISHING      ; 06
-	const PERSON_ACTION_SHADOW       ; 07
-	const PERSON_ACTION_EMOTE        ; 08
-	const PERSON_ACTION_BIG_SNORLAX  ; 09
-	const PERSON_ACTION_BOUNCE       ; 0a
-	const PERSON_ACTION_WEIRD_TREE   ; 0b
-	const PERSON_ACTION_BIG_DOLL     ; 0c
-	const PERSON_ACTION_BOULDER_DUST ; 0d
-	const PERSON_ACTION_GRASS_SHAKE  ; 0e
-	const PERSON_ACTION_SKYFALL      ; 0f
+	const PERSON_ACTION_00            ; 00
+	const PERSON_ACTION_STAND         ; 01
+	const PERSON_ACTION_STEP          ; 02
+	const PERSON_ACTION_BUMP          ; 03
+	const PERSON_ACTION_SPIN          ; 04
+	const PERSON_ACTION_SPIN_FLICKER  ; 05
+	const PERSON_ACTION_FISHING       ; 06
+	const PERSON_ACTION_SHADOW        ; 07
+	const PERSON_ACTION_EMOTE         ; 08
+	const PERSON_ACTION_BIG_SNORLAX   ; 09
+	const PERSON_ACTION_BOUNCE        ; 0a
+	const PERSON_ACTION_WEIRD_TREE    ; 0b
+	const PERSON_ACTION_BIG_DOLL      ; 0c
+	const PERSON_ACTION_BOULDER_DUST  ; 0d
+	const PERSON_ACTION_GRASS_SHAKE   ; 0e
+	const PERSON_ACTION_PUDDLE_SPLASH ; 0f
+	const PERSON_ACTION_SKYFALL       ; 10
+	const PERSON_ACTION_BIG_GYARADOS  ; 11
+	const PERSON_ACTION_STAND_FLIP    ; 12
 	const PERSON_ACTION_RUN
 
 ; see engine/facings.asm:Facings
@@ -440,6 +449,12 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_BOULDER_DUST_2 ; 1d
 	const FACING_GRASS_1        ; 1e
 	const FACING_GRASS_2        ; 1f
+	const FACING_SPLASH_1       ; 20
+	const FACING_SPLASH_2       ; 21
+	const FACING_BIG_GYARADOS_1 ; 22
+	const FACING_BIG_GYARADOS_2 ; 23
+	const FACING_STEP_DOWN_FLIP ; 24
+	const FACING_STEP_UP_FLIP   ; 25
 
 	const_def
 	const SPRITEANIMSTRUCT_INDEX           ; 0

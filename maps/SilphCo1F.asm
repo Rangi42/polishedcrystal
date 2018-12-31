@@ -22,7 +22,7 @@ SilphCo1F_MapEventHeader:
 	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
 	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
 
-const_value set 2
+const_value set 1
 	const SILPHCO1F_OFFICER
 
 SilphCo1FMoveOfficerCallback:

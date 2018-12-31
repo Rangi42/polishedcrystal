@@ -38,7 +38,7 @@ NewBarkTown_MapEventHeader:
 	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
 	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
 
-const_value set 2
+const_value set 1
 	const NEWBARKTOWN_TEACHER
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
@@ -126,7 +126,6 @@ NewBarkTown_LyraFinalTrigger:
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
-	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
 	special Special_FadeOutMusic
 	pause 15

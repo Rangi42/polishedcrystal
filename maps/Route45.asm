@@ -32,7 +32,7 @@ Route45_MapEventHeader:
 	itemball_event 32, 15, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
 	person_event SPRITE_YOUNGSTER, 70, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperQuentin, -1
 
-const_value set 2
+const_value set 1
 	const ROUTE45_DRAGON_TAMER
 
 Route45Dragon_tamerScript:

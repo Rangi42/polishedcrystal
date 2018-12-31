@@ -1,3 +1,6 @@
+TRADEANIM_RIGHT_ARROW EQU $f3
+TRADEANIM_LEFT_ARROW EQU $f4
+
 TradeAnimation: ; 28f24
 	xor a
 	ld [wcf66], a
@@ -159,13 +162,13 @@ RunTradeAnimSequence: ; 28fa1
 	ld de, VTiles2 tile $31
 	call Decompress
 	ld hl, TradeArrowGFX
-	ld de, VTiles1 tile $6d
-	ld bc, $10
+	ld de, VTiles1 tile (TRADEANIM_RIGHT_ARROW - $80)
+	ld bc, 1 tiles
 	ld a, BANK(TradeArrowGFX)
 	call FarCopyBytes
-	ld hl, TradeArrowGFX + $10
-	ld de, VTiles1 tile $6e
-	ld bc, $10
+	ld hl, TradeArrowGFX + 1 tiles
+	ld de, VTiles1 tile (TRADEANIM_LEFT_ARROW - $80)
+	ld bc, 1 tiles
 	ld a, BANK(TradeArrowGFX)
 	call FarCopyBytes
 	xor a
@@ -305,7 +308,7 @@ TradeAnim_End: ; 29123
 ; 29129
 
 TradeAnim_TubeToOT1: ; 29129
-	ld a, $ed ; >>>>>>>>
+	ld a, TRADEANIM_RIGHT_ARROW
 	call TradeAnim_PlaceTrademonStatsOnTubeAnim
 	ld a, [wLinkTradeSendmonSpecies]
 	ld [wd265], a
@@ -315,7 +318,7 @@ TradeAnim_TubeToOT1: ; 29129
 	jr TradeAnim_InitTubeAnim
 
 TradeAnim_TubeToPlayer1: ; 2913c
-	ld a, $ee ; <<<<<<<<
+	ld a, TRADEANIM_LEFT_ARROW
 	call TradeAnim_PlaceTrademonStatsOnTubeAnim
 	ld a, [wLinkTradeGetmonSpecies]
 	ld [wd265], a

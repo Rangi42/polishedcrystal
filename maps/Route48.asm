@@ -2,15 +2,17 @@ Route48_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 0
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
 Route48_MapEventHeader:
 
 .Warps: db 1
 	warp_def 5, 11, 3, YELLOW_FOREST_GATE
 
-.XYTriggers: db 1
-	xy_trigger 0, 12, 20, Route48JessieJamesScript
+.XYTriggers: db 2
+	xy_trigger 0, 12, 20, Route48JessieJamesScript1
+	xy_trigger 0, 13, 20, Route48JessieJamesScript2
 
 .Signposts: db 1
 	signpost 11, 27, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
@@ -21,16 +23,20 @@ Route48_MapEventHeader:
 	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
 	itemball_event 13, 4, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
-const_value set 2
+const_value set 1
 	const ROUTE48_ARCHER
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES
 
-Route48JessieJamesScript:
-	checkevent EVENT_BEAT_JESSIE_AND_JAMES
-	iftrue .End
+Route48JessieJamesCallback:
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
+	return
+
+Route48JessieJamesScript2:
+	moveperson ROUTE48_JESSIE, 15, 13
+	moveperson ROUTE48_JAMES, 26, 13
+Route48JessieJamesScript1:
 	appear ROUTE48_JESSIE
 	appear ROUTE48_JAMES
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -40,17 +46,13 @@ Route48JessieJamesScript:
 	applymovement ROUTE48_JESSIE, JessieEnterMovementData
 	applymovement ROUTE48_JAMES, JamesEnterMovementData
 	showtext Route48JessieJamesSeenText
-	dotrigger $0
+	dotrigger $1
 	setevent EVENT_BEAT_JESSIE_AND_JAMES
 	winlosstext Route48JessieJamesBeatenText, 0
 	setlasttalked ROUTE48_JESSIE
 	loadtrainer JESSIE_JAMES, 1
-	setevent EVENT_ROUTE_48_JESSIE
-	setevent EVENT_ROUTE_48_JAMES
 	startbattle
 	dontrestartmapmusic
-	clearevent EVENT_ROUTE_48_JESSIE
-	clearevent EVENT_ROUTE_48_JAMES
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
@@ -60,7 +62,7 @@ Route48JessieJamesScript:
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
 	playmapmusic
-.End
+Route48JessieJamesScript_End:
 	end
 
 JessieEnterMovementData:

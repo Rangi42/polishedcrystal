@@ -137,7 +137,7 @@
 	dba Music_WhiteTreehollowWhite2
 	dba Music_LaverreCityXY
 	dba Music_Route101RSE
-	dba Music_DewfordTownRSE
+	dba Music_EverGrandeCityRSE
 	dba Music_OreburghGateDPPt
 	dba Music_Route12BW
 	dba Music_RoadToReversalMountainB2W2
@@ -161,6 +161,7 @@
 	dba Music_GymLeaderBattleDPPt
 	dba Music_GymLeaderBattleBW
 	dba Music_GymLeaderBattleXY
+	dba Music_GymLeaderBattleGo
 	dba Music_EliteFourBattleBW
 	dba Music_CelestialTowerBW_NoIntro
 	dba Music_ChampionBattleRSE
@@ -171,6 +172,7 @@
 	dba Music_Credits
 	dba Music_PostCredits
 	dba Music_TitleScreenXY
+	dba Music_DewfordTownRSE
 	dba Music_MarineTubeB2W2
 	dba Music_LegendaryBattleXY
 	dba Music_WildBattlePrism

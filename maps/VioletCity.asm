@@ -42,10 +42,10 @@ VioletCity_MapEventHeader:
 	cuttree_event 23, 36, EVENT_VIOLET_CITY_CUT_TREE
 	fruittree_event 33, 14, FRUITTREE_VIOLET_CITY, CHERI_BERRY
 	itemball_event 6, 10, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
-	itemball_event 11, 35, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
+	itemball_event 12, 35, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
 	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM2Text, -1
 
-const_value set 2
+const_value set 1
 	const VIOLETCITY_EARL
 
 VioletCityFlyPoint:

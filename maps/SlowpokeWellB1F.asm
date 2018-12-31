@@ -25,7 +25,7 @@ SlowpokeWellB1F_MapEventHeader:
 	strengthboulder_event 2, 3
 	itemball_event 3, 10, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
-const_value set 2
+const_value set 1
 	const SLOWPOKEWELLB1F_PROTON
 	const SLOWPOKEWELLB1F_ROCKET1
 	const SLOWPOKEWELLB1F_ROCKET2

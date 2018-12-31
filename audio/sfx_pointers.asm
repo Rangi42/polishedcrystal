@@ -209,4 +209,9 @@
 	dba Sfx_TwoPcBeeps
 	dba Sfx_4NoteDitty
 	dba Sfx_Twinkle
+
+; Polished Crystal adds the following SFX:
+
+	dba Sfx_Puddle
+
 ; e94e9

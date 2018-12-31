@@ -862,12 +862,6 @@ SwappedItemsText:
 	line "swapped items!"
 	prompt
 
-TookAimText: ; 0x81136
-	text "<USER>"
-	line "took aim!"
-	prompt
-; 0x81143
-
 SketchedText: ; 0x81143
 	text "<USER>"
 	line "sketched"
@@ -998,12 +992,6 @@ EnemyHitTimesText: ; 0x812f8
 	text " times!"
 	prompt
 ; 0x8130b
-
-MistText: ; 0x8130b
-	text "<USER> is"
-	line "shrouded in mist!"
-	prompt
-; 0x81321
 
 ProtectedByMistText: ; 0x81321
 	text "<TARGET> is"

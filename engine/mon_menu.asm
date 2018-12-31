@@ -137,7 +137,7 @@ GetMonMenuString: ; 24db0
 	call IsInArray
 	dec hl
 	ld a, [hli]
-	cp 1
+	cp MONMENU_MENUOPTION
 	jr z, .NotMove
 	inc hl
 	ld a, [hl]

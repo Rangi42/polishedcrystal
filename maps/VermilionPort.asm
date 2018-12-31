@@ -23,7 +23,7 @@ VermilionPort_MapEventHeader:
 	person_event SPRITE_SAILOR, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
 	person_event SPRITE_SUPER_NERD, 11, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x74ee6, -1
 
-const_value set 2
+const_value set 1
 	const VERMILIONPORT_SAILOR1
 	const VERMILIONPORT_SAILOR2
 

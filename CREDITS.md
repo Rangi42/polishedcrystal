@@ -17,6 +17,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
+* ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
@@ -29,6 +30,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pum for the Flannery, Maylene, and Valerie battle and Lugia theme music.
 * ShantyTown for the Rock Tunnel (XY Power Plant) and Cycling Road (XY Bicycle) music.
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
+* ShockSlayer for the Pokémon Go Gym Leader battle music.
 * LevusBevus, GRonnoc, Cat333Pokemon, and KoolBoyMan for some music from Pokémon Prism (available in the music player).
 
 
@@ -36,13 +38,13 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
+* JaceDeane for Pokémon and trainer sprites, as well as Ecruteak's lantern tiles.
 * bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, Pikachu, Diglett, and Dugtrio.
+* Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
-* JaceDeane for animations of Magikarp and Red's Pikachu; sprites of Kukui, Victor, and Nurse; and the Ecruteak lantern tiles.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
-* Kuroko Aizawa for sprites of Cheryl, Aroma Lady, and Artist.
 * Mateo for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
@@ -65,6 +67,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pia Carrot for Valencia Island and Route 49 from Pokémon Orange.
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 * ShockSlayer for Eusine's losing text.
+* Hello for correcting composers in the music player.
 
 
 ## Special Thanks

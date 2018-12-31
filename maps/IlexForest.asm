@@ -43,7 +43,7 @@ IlexForest_MapEventHeader:
 	itemball_event 17, 25, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
 	itemball_event 3, 29, MULCH, 1, EVENT_ILEX_FOREST_MULCH
 
-const_value set 2
+const_value set 1
 	const ILEXFOREST_FARFETCHD
 	const ILEXFOREST_BLACK_BELT
 	const ILEXFOREST_KURT

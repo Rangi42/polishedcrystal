@@ -26,7 +26,7 @@ EarlsPokemonAcademy_MapEventHeader:
 	person_event SPRITE_GAMEBOY_KID, 11, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a86, -1
 	person_event SPRITE_GAMEBOY_KID, 11, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a91, -1
 
-const_value set 2
+const_value set 1
 	const EARLSPOKEMONACADEMY_EARL
 
 AcademyEarl:

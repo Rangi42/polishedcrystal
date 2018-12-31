@@ -27,7 +27,7 @@ VictoryRoad2F_MapEventHeader:
 	itemball_event 5, 20, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
 	itemball_event 14, 9, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
-const_value set 2
+const_value set 1
 	const VICTORYROAD2F_SILVER
 
 UnknownScript_0x74492:

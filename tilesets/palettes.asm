@@ -1,6 +1,6 @@
 LoadBlindingFlashPalette:: ; 49409
 	ld a, $5
-	ld de, wUnknBGPals palette 7
+	ld de, wUnknBGPals palette PAL_BG_TEXT
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
 	jp FarCopyWRAM
@@ -33,7 +33,7 @@ LoadSpecialMapPalette: ; 494ac
 	cp TILESET_POKECOM_CENTER
 	jp z, .load_eight_bg_palettes
 	ld hl, BattleTowerPalette
-	cp TILESET_BATTLE_TOWER_IN
+	cp TILESET_BATTLE_TOWER_INSIDE
 	jp z, .load_eight_bg_palettes
 	ld hl, GatePalette
 	cp TILESET_GATE
@@ -69,11 +69,11 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .ice_path_or_hall_of_fame
 	cp TILESET_RADIO_TOWER
 	jp z, .radio_towers
-	cp TILESET_GYM_1
+	cp TILESET_GYM
 	jp z, .maybe_elite_room
-	cp TILESET_GYM_2
+	cp TILESET_MAGNET_TRAIN
 	jp z, .maybe_viridian_gym
-	cp TILESET_OLIVINE_GYM
+	cp TILESET_CHAMPIONS_ROOM
 	jp z, .maybe_lances_room
 	cp TILESET_PORT
 	jp z, .maybe_cerulean_gym
@@ -81,12 +81,12 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_saffron_gym
 	cp TILESET_UNDERGROUND
 	jp z, .maybe_fuchsia_gym
-	cp TILESET_TRADITIONAL
+	cp TILESET_TRADITIONAL_HOUSE
 	jp z, .maybe_charcoal_kiln
 	cp TILESET_LAB
 	jp z, .maybe_lab_or_dragon_shrine
 	cp TILESET_TUNNEL
-	jp z, .maybe_lightning_island
+	jp z, .maybe_lightning_island_or_magnet_tunnel
 	cp TILESET_SPROUT_TOWER
 	jp z, .maybe_mystri_or_tower
 	ld hl, CinnabarLabPalette
@@ -100,14 +100,18 @@ LoadSpecialMapPalette: ; 494ac
 	jp z, .maybe_olivine_lighthouse_roof
 	cp TILESET_HOME_DECOR_STORE
 	jp z, .maybe_celadon_home_decor_store_4f
-	cp TILESET_JOHTO_3
-	jp z, .maybe_sinjoh_ruins
-	cp TILESET_JOHTO_1
+	cp TILESET_JOHTO_TRADITIONAL
 	jp z, .maybe_special_johto_1
 	cp TILESET_FOREST
 	jp z, .maybe_special_forest
 	cp TILESET_CAVE
 	jp z, .maybe_special_cave
+
+	call GetOvercastIndex
+	and a
+	jp z, .maybe_sinjoh_ruins
+	ld hl, OvercastBGPalette
+	jp .load_eight_time_of_day_bg_palettes
 
 .do_nothing
 	and a
@@ -159,7 +163,7 @@ LoadSpecialMapPalette: ; 494ac
 	jr nz, .not_mart
 	ld hl, MartBluePalette
 	ld a, $5
-	ld de, wUnknBGPals palette 2
+	ld de, wUnknBGPals palette PAL_BG_GREEN
 	ld bc, 1 palettes
 	call FarCopyWRAM
 .not_mart
@@ -297,14 +301,24 @@ LoadSpecialMapPalette: ; 494ac
 	ld hl, DragonShrinePalette
 	jp .load_eight_bg_palettes
 
-.maybe_lightning_island
+.maybe_lightning_island_or_magnet_tunnel
 	ld a, [wMapGroup]
 	cp GROUP_LIGHTNING_ISLAND
-	jp nz, .do_nothing
+	jr nz, .not_lightning_island
 	ld a, [wMapNumber]
 	cp MAP_LIGHTNING_ISLAND
-	jp nz, .do_nothing
+	jr nz, .not_lightning_island
 	ld hl, LightningIslandPalette
+	jp .load_eight_bg_palettes
+
+.not_lightning_island
+	ld a, [wMapGroup]
+	cp GROUP_MAGNET_TUNNEL_INSIDE
+	jp nz, .do_nothing
+	ld a, [wMapNumber]
+	cp MAP_MAGNET_TUNNEL_INSIDE
+	jp nz, .do_nothing
+	ld hl, MagnetTunnelPalette
 	jp .load_eight_bg_palettes
 
 .maybe_viridian_gym
@@ -1111,6 +1125,31 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+MagnetTunnelPalette:
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/magnet_tunnel.pal"
+else
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR_NIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
 MystriStagePalette:
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/mystri_stage.pal"
@@ -1680,6 +1719,94 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+OvercastBGPalette:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/ob.pal"
+else
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/bg_overcast.pal"
+else
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 7
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 4
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+endc
+
+OvercastOBPalette:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/ob_overcast.pal"
+else
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/ob_overcast.pal"
+else
+rept 5
+	MONOCHROME_RGB_FOUR_OW
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+rept 5
+	MONOCHROME_RGB_FOUR_OW
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+rept 5
+	MONOCHROME_RGB_FOUR_OW_NIGHT
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR
+rept 5
+	MONOCHROME_RGB_FOUR_OW_DARKNESS
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+endr
+endc
+endc
+
 MartBluePalette:
 if !DEF(MONOCHROME)
 	RGB 20, 27, 28
@@ -1784,15 +1911,29 @@ InitLinkTradePalMap: ; 49856
 ; 4985a
 
 LoadSpecialMapOBPalette:
+	call GetOvercastIndex
+	and a
+	jr z, .not_overcast
+	ld hl, OvercastOBPalette
+	ld a, [wTimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	call AddNTimes
+	ld a, $5
+	ld de, wUnknOBPals
+	ld bc, 8 palettes
+	jp FarCopyWRAM
+
+.not_overcast
 	ld a, [wTileset]
 	cp TILESET_SHAMOUTI_ISLAND
 	jr z, .load_bg_tree_palette
 	cp TILESET_SAFARI_ZONE
 	jr nz, .not_shamouti_or_safari
 .load_bg_tree_palette
-	ld hl, wUnknBGPals palette 2
+	ld hl, wUnknBGPals palette PAL_BG_GREEN
 .load_tree_palette:
-	ld de, wUnknOBPals palette 6
+	ld de, wUnknOBPals palette PAL_OW_TREE
 .load_single_palette:
 	ld a, $5
 	ld bc, 1 palettes
@@ -1801,12 +1942,7 @@ LoadSpecialMapOBPalette:
 .not_shamouti_or_safari:
 	cp TILESET_FARAWAY_ISLAND
 	jr nz, .not_faraway
-	ld a, [wMapNumber]
-	cp MAP_FARAWAY_JUNGLE
 	ld hl, wUnknBGPals palette 1 ; grass
-	jr z, .load_tree_palette
-	; MAP_FARAWAY_ISLAND
-	ld hl, wUnknBGPals palette 6 ; puddle
 	jr .load_tree_palette
 
 .not_faraway:
@@ -1864,10 +2000,20 @@ LoadSpecialMapOBPalette:
 	ld a, [wMapNumber]
 	cp MAP_MOUNT_MOON_SQUARE
 	jr nz, .not_mount_moon_square
-	ld hl, wUnknBGPals palette 0
+	ld hl, wUnknBGPals palette PAL_BG_GRAY
 	jr .load_rock_palette
 
 .not_mount_moon_square:
+	ld a, [wMapGroup]
+	cp GROUP_MAGNET_TUNNEL_INSIDE
+	jr nz, .not_magnet_tunnel
+	ld a, [wMapNumber]
+	cp MAP_MAGNET_TUNNEL_INSIDE
+	jr nz, .not_magnet_tunnel
+	ld hl, wUnknBGPals palette PAL_BG_GRAY
+	jr .load_rock_palette
+
+.not_magnet_tunnel
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
@@ -1882,11 +2028,11 @@ LoadSpecialMapOBPalette:
 	cp SEAFOAM_ISLANDS
 	jr z, .load_bg_rock_palette
 	cp WHIRL_ISLANDS
-	ret nz
+	ret z
 .load_bg_rock_palette
-	ld hl, wUnknBGPals palette 5
+	ld hl, wUnknBGPals palette PAL_BG_BROWN
 .load_rock_palette
-	ld de, wUnknOBPals palette 7
+	ld de, wUnknOBPals palette PAL_OW_ROCK
 	jp .load_single_palette
 
 VermilionGymOBPalette_Tree:

@@ -29,7 +29,7 @@ KrissHouse1F_MapEventHeader:
 	person_event SPRITE_MOM, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	person_event SPRITE_POKEFAN_F, 4, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
 
-const_value set 2
+const_value set 1
 	const KRISSHOUSE1F_MOM1
 
 MomTrigger1:
@@ -189,7 +189,10 @@ if DEF(DEBUG)
 	giveitem CALCIUM, 99
 	giveitem ZINC, 99
 	giveitem MASTER_BALL, 99
-	callasm SetHallOfFameFlag
+	giveitem EXP_SHARE, 2
+	setflag ENGINE_CREDITS_SKIP
+	giveitem SHINY_CHARM
+	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
 	givepoke MEWTWO, 100, LEFTOVERS
 	givepoke LUGIA, 100, WISE_GLASSES
@@ -255,12 +258,6 @@ endc
 	end
 
 if DEF(DEBUG)
-
-SetHallOfFameFlag:
-	; Enable the Pokégear map to cycle through all of Kanto
-	ld hl, wStatusFlags
-	set 6, [hl] ; hall of fame
-	ret
 
 TeachHMSlaveMoves:
 	ld hl, wPartyMon4Moves

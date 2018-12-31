@@ -304,7 +304,6 @@ object_struct: MACRO
 \1Object30:: ds 1
 \1Object31:: ds 1
 \1Range:: ds 1
-	ds 7
 \1StructEnd::
 ENDM
 
@@ -322,7 +321,6 @@ map_object: MACRO
 \1ObjectRange::     ds 1
 \1ObjectScript::    ds 2
 \1ObjectEventFlag:: ds 2
-	ds 2
 endm
 
 sprite_anim_struct: MACRO

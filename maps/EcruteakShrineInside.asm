@@ -23,7 +23,7 @@ EcruteakShrineInside_MapEventHeader:
 	person_event SPRITE_GRANNY, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
 	person_event SPRITE_FURRET, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-const_value set 2
+const_value set 1
 	const ECRUTEAKSHRINEINSIDE_REI
 
 EcruteakShrineInsideReiScript:

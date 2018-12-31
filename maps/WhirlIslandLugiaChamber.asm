@@ -17,7 +17,7 @@ WhirlIslandLugiaChamber_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_LUGIA, 5, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Lugia, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 
-const_value set 2
+const_value set 1
 	const WHIRLISLANDLUGIACHAMBER_LUGIA
 
 WhirlIslandLugiaChamberLugia:

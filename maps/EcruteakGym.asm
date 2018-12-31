@@ -57,7 +57,7 @@ EcruteakGym_MapEventHeader:
 	person_event SPRITE_GRANNY, 9, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerMediumGrace, -1
 	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, EcruteakGymGuyScript, -1
 
-const_value set 2
+const_value set 1
 	const ECRUTEAKGYM_GRAMPS
 
 EcruteakGymTrigger0:

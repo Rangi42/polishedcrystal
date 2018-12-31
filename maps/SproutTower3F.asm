@@ -29,7 +29,7 @@ SproutTower3F_MapEventHeader:
 	itemball_event 14, 4, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
 	itemball_event 1, 12, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 
-const_value set 2
+const_value set 1
 	const SPROUTTOWER3F_SILVER
 
 UnknownScript_0x184947:

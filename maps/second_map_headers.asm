@@ -4,10 +4,11 @@
 
 	map_header_2 CherrygroveCity, CHERRYGROVE_CITY, $35, NORTH | WEST | EAST
 	connection north, ROUTE_30, Route30, 5, 0, 10
-	connection west, CHERRYGROVE_BAY, CherrygroveBay, -1, 8, 10
+	connection west, CHERRYGROVE_BAY, CherrygroveBay, -1, 14, 10
 	connection east, ROUTE_29, Route29, 0, 0, 9
 
-	map_header_2 VioletCity, VIOLET_CITY, $5, SOUTH | WEST | EAST
+	map_header_2 VioletCity, VIOLET_CITY, $5, NORTH | SOUTH | WEST | EAST
+	connection north, VIOLET_OUTSKIRTS, VioletOutskirts, 0, 0, 20
 	connection south, ROUTE_32, Route32, 0, 0, 10
 	connection west, ROUTE_36, Route36, 0, -2, 9
 	connection east, ROUTE_31, Route31, 11, 0, 9
@@ -39,11 +40,7 @@
 	connection west, ROUTE_42, Route42, 0, 0, 9
 	connection east, ROUTE_44, Route44, 0, 0, 9
 
-	map_header_2 LakeofRageNorth, LAKE_OF_RAGE_NORTH, $5, SOUTH
-	connection south, LAKE_OF_RAGE_SOUTH, LakeofRageSouth, 0, 0, 20
-
-	map_header_2 LakeofRageSouth, LAKE_OF_RAGE_SOUTH, $5, NORTH | SOUTH
-	connection north, LAKE_OF_RAGE_NORTH, LakeofRageNorth, 0, 0, 20
+	map_header_2 LakeofRage, LAKE_OF_RAGE, $5, SOUTH
 	connection south, ROUTE_43, Route43, 5, 0, 10
 
 	map_header_2 BlackthornCity, BLACKTHORN_CITY, $71, SOUTH
@@ -79,7 +76,7 @@
 	connection north, VIOLET_CITY, VioletCity, 0, 0, 13
 	connection south, ROUTE_33, Route33, 0, 0, 10
 	connection west, MAGNET_TUNNEL_EAST, MagnetTunnelEast, 9, 0, 11
-	connection east, CHERRYGROVE_BAY, CherrygroveBay, 18, 0, 20
+	connection east, CHERRYGROVE_BAY, CherrygroveBay, 12, 0, 26
 
 	map_header_2 Route33, ROUTE_33, $5, NORTH | WEST
 	connection north, ROUTE_32, Route32, 0, 0, 10
@@ -131,12 +128,13 @@
 	connection west, CIANWOOD_CITY, CianwoodCity, 0, 0, 27
 	connection east, GOLDENROD_HARBOR, GoldenrodHarbor, 3, 0, 20
 
-	map_header_2 Route42, ROUTE_42, $5, WEST | EAST
+	map_header_2 Route42, ROUTE_42, $5, SOUTH | WEST | EAST
+	connection south, VIOLET_OUTSKIRTS, VioletOutskirts, 5, 0, 14
 	connection west, ECRUTEAK_CITY, EcruteakCity, -3, 6, 12
 	connection east, MAHOGANY_TOWN, MahoganyTown, 0, 0, 9
 
 	map_header_2 Route43, ROUTE_43, $5, NORTH | SOUTH
-	connection north, LAKE_OF_RAGE_SOUTH, LakeofRageSouth, -3, 2, 16
+	connection north, LAKE_OF_RAGE, LakeofRage, -3, 2, 16
 	connection south, MAHOGANY_TOWN, MahoganyTown, 0, 0, 10
 
 	map_header_2 Route44, ROUTE_44, $71, WEST
@@ -350,11 +348,15 @@
 
 	map_header_2 CherrygroveBay, CHERRYGROVE_BAY, $35, SOUTH | WEST | EAST
 	connection south, ROUTE_32_COAST, Route32Coast, 0, 0, 15
-	connection west, ROUTE_32, Route32, -2, 16, 20
-	connection east, CHERRYGROVE_CITY, CherrygroveCity, 9, 0, 10
+	connection west, ROUTE_32, Route32, -2, 10, 26
+	connection east, CHERRYGROVE_CITY, CherrygroveCity, 15, 0, 10
 
 	map_header_2 Route32Coast, ROUTE_32_COAST, $35, NORTH
 	connection north, CHERRYGROVE_BAY, CherrygroveBay, 0, 0, 15
+
+	map_header_2 VioletOutskirts, VIOLET_OUTSKIRTS, $5, NORTH | SOUTH
+	connection north, ROUTE_42, Route42, -3, 2, 20
+	connection south, VIOLET_CITY, VioletCity, 0, 0, 20
 
 	map_header_2 GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, ROUTE_35_COAST, Route35Coast, 0, 0, 24
@@ -562,7 +564,7 @@
 	map_header_2 LakeofRageMagikarpHouse, LAKE_OF_RAGE_MAGIKARP_HOUSE, $0, 0
 	map_header_2 Route43MahoganyGate, ROUTE_43_MAHOGANY_GATE, $0, 0
 	map_header_2 Route43Gate, ROUTE_43_GATE, $0, 0
-	map_header_2 SinjohRuins, SINJOH_RUINS, $2d, 0
+	map_header_2 SinjohRuins, SINJOH_RUINS, $d9, 0
 	map_header_2 SinjohRuinsHouse, SINJOH_RUINS_HOUSE, $0, 0
 	map_header_2 MystriStage, MYSTRI_STAGE, $0, 0
 	map_header_2 EmbeddedTower, EMBEDDED_TOWER, $0, 0

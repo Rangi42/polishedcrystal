@@ -13,6 +13,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	push af
 	ld a, $1
 	ld [hInMenu], a
+	ld [wInPokegear], a
 	ld a, [wVramState]
 	push af
 	xor a
@@ -43,6 +44,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	call ClearBGPalettes
 	xor a
 	ld [hBGMapAddress], a
+	ld [wInPokegear], a
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	ld a, $90
@@ -144,7 +146,7 @@ Pokegear_LoadGFX: ; 90c4e
 ; 90cb2
 
 FastShipGFX: ; 90cb2
-INCBIN "gfx/pokegear/fast_ship.2bpp"
+INCBIN "gfx/town_map/fast_ship.2bpp"
 ; 90d32
 
 SinjohRuinsArrowGFX:
@@ -716,7 +718,7 @@ PokegearMap_UpdateLandmarkName: ; 910b4
 	pop de
 	farcall TownMap_ConvertLineBreakCharacters
 	hlcoord 8, 0
-	ld [hl], $34
+	ld [hl], "<UPDN>"
 	ret
 
 ; 910d4
@@ -815,6 +817,11 @@ PokegearPhone_Init: ; 91156 (24:5156)
 	ld [wPokegearPhoneScrollPosition], a
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
+
+	ld b, SCGB_POKEGEAR_PALS
+	call GetSGBLayout
+	call SetPalettes
+
 	call InitPokegearTilemap
 	call ExitPokegearRadio_HandleMusic
 	ld hl, PokegearText_WhomToCall
@@ -2160,14 +2167,14 @@ TownMapBubble: ; 91bb5
 
 ; Top-left corner
 	hlcoord 1, 0
-	ld a, $30
+	ld a, $37
 	ld [hli], a
 ; Top row
 	ld bc, 16
 	ld a, " "
 	call ByteFill
 ; Top-right corner
-	ld a, $31
+	ld a, $38
 	ld [hl], a
 	hlcoord 1, 1
 
@@ -2178,14 +2185,14 @@ TownMapBubble: ; 91bb5
 
 ; Bottom-left corner
 	hlcoord 1, 2
-	ld a, $32
+	ld a, $39
 	ld [hli], a
 ; Bottom row
 	ld bc, 16
 	ld a, " "
 	call ByteFill
 ; Bottom-right corner
-	ld a, $33
+	ld a, $3a
 	ld [hl], a
 
 ; Print "Where?"
@@ -2196,7 +2203,7 @@ TownMapBubble: ; 91bb5
 	call .Name
 ; Up/down arrows
 	hlcoord 18, 1
-	ld [hl], $34
+	ld [hl], "<UPDN>"
 	ret
 
 .Where:
@@ -2776,25 +2783,7 @@ TownMapBGUpdate: ; 91ee4
 
 FillJohtoMap: ; 91eff
 	ld de, JohtoMap
-	call FillTownMap
-	hlcoord 16, 16
-	ld [hl], $35 ; Jo...
-	inc hl
-	ld [hl], $36 ; ...oh...
-	inc hl
-	ld [hl], $37 ; ...to
-	ret
-
-FillKantoMap: ; 91f04
-	ld de, KantoMap
-	call FillTownMap
-	hlcoord 16, 16
-	ld [hl], $38 ; Ka...
-	inc hl
-	ld [hl], $39 ; ...nt...
-	inc hl
-	ld [hl], $37 ; ...to
-	ret
+	jr FillTownMap
 
 FillOrangeMap:
 	ld de, OrangeMap
@@ -2824,6 +2813,8 @@ FillOrangeMap:
 	ld [hl], a
 	ret
 
+FillKantoMap: ; 91f04
+	ld de, KantoMap
 FillTownMap: ; 91f07
 	hlcoord 0, 0
 .loop
@@ -2848,12 +2839,12 @@ TownMapPals: ; 91f13
 .loop
 	ld a, [hli]
 	push hl
-	cp $40 ; tiles after TownMapGFX use palette 3
-	jr nc, .pal3
+	cp $40 ; tiles after TownMapGFX use palette 0
+	jr nc, .pal0
 	call GetNextTownMapTilePalette
 	jr .update
-.pal3
-	ld a, $3
+.pal0
+	xor a
 .update
 	pop hl
 	ld [de], a
@@ -2900,13 +2891,10 @@ rept _NARG / 2
 	shift
 endr
 endm
-	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 5, 6, 7, 7, 6
-	townmappals 1, 1, 1, 2, 2, 6, 0, 0, 4, 4, 4, 6, 4, 4, 7, 7
-	townmappals 1, 1, 1, 6, 6, 6, 0, 0, 4, 4, 4, 7, 1, 4, 7, 7
-	townmappals 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
-	townmappals 3, 3, 3, 3, 3, 3, 3, 3
+	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 5, 6, 7, 7, 6
+	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 6, 4, 4, 1, 1
+	townmappals 2, 2, 2, 6, 6, 6, 1, 1, 4, 4, 4, 7, 2, 4, 1, 1
+	townmappals 2, 2, 2, 2, 4, 4, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0
 
 TownMapJohtoFlips:
 	decoord 0, 0, JohtoMap
@@ -3011,21 +2999,21 @@ TownMapPlayerIcon: ; 91fa6
 LoadTownMapGFX: ; 91ff2
 	ld hl, TownMapGFX
 	ld de, VTiles2
-	lb bc, BANK(TownMapGFX), $3a
+	lb bc, BANK(TownMapGFX), $40
 	jp DecompressRequest2bpp
 
 ; 91fff
 
 JohtoMap: ; 91fff
-INCBIN "gfx/pokegear/johto.bin"
+INCBIN "gfx/town_map/johto.bin"
 ; 92168
 
 KantoMap: ; 92168
-INCBIN "gfx/pokegear/kanto.bin"
+INCBIN "gfx/town_map/kanto.bin"
 ; 922d1
 
 OrangeMap:
-INCBIN "gfx/pokegear/orange.bin"
+INCBIN "gfx/town_map/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
-INCBIN "gfx/pokegear/dexmap_nest_icon.2bpp"
+INCBIN "gfx/town_map/dexmap_nest_icon.2bpp"

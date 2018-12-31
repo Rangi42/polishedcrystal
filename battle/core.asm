@@ -112,11 +112,13 @@ DoBattle: ; 3c000
 	call EnemySwitch
 	call SetEnemyTurn
 	call HandleFirstAirBalloon
+	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
 
 .not_linked_2
 	call HandleFirstAirBalloon
+	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
 
@@ -574,8 +576,8 @@ ParsePlayerAction: ; 3c434
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 
-	ld hl, wUnknBGPals palette 0 ; back sprite
-	ld de, wUnknBGPals palette 6 ; move type+category
+	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
 	ld a, $5
 	call FarCopyWRAM
@@ -2092,14 +2094,21 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 	ld a, [wBattleResult]
 	and $c0
 	ld [wBattleResult], a
+; fallthrough
 
 GiveExperiencePointsAfterCatch:
+; give experience to participants
+	xor a
+	ld [wGivingExperienceToExpShareHolders], a
+	call GiveExperiencePoints
 	call IsAnyMonHoldingExpShare
+	ret z
+; give experience to Exp.Share holders
 	ld a, [wBattleParticipantsNotFainted]
 	push af
-	or d
+	ld a, d
 	ld [wBattleParticipantsNotFainted], a
-	xor a
+	ld a, $1
 	ld [wGivingExperienceToExpShareHolders], a
 	call GiveExperiencePoints
 	pop af
@@ -3546,7 +3555,7 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld a, [hl]
-	or IS_EGG_MASK
+	and IS_EGG_MASK
 	ld hl, BattleText_AnEGGCantBattle
 	jr nz, .print_textbox
 
@@ -6417,6 +6426,8 @@ endc
 	call BattleRandom
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny
+	ld a, [wCurItem]
+	push af
 	ld a, SHINY_CHARM
 	ld [wCurItem], a
 	push hl
@@ -6428,7 +6439,8 @@ endc
 	pop bc
 	pop hl
 	jr c, .shiny_charm
-.no_shiny_charm
+	pop af
+	ld [wCurItem], a
 	call BattleRandom
 	cp $10
 	jr nc, .not_shiny ; 240/256 still not shiny
@@ -6436,6 +6448,8 @@ endc
 	ld a, SHINY_MASK
 	jr .got_shininess
 .shiny_charm
+	pop af
+	ld [wCurItem], a
 	call BattleRandom
 	cp $30
 	jr c, .shiny ; 208/256 still not shiny
@@ -6600,12 +6614,10 @@ endr
 
 .CheckMagikarpArea:
 	ld a, [wMapGroup]
-	cp GROUP_LAKE_OF_RAGE_NORTH ; GROUP_LAKE_OF_RAGE_SOUTH
+	cp GROUP_LAKE_OF_RAGE
 	jr nz, .Happiness
 	ld a, [wMapNumber]
-	cp MAP_LAKE_OF_RAGE_NORTH
-	jr z, .LakeOfRageMagikarp
-	cp MAP_LAKE_OF_RAGE_SOUTH
+	cp MAP_LAKE_OF_RAGE
 	jr nz, .Happiness
 .LakeOfRageMagikarp
 	; 40% chance of not flooring
@@ -6884,13 +6896,13 @@ CheckUnownLetter: ; 3eb75
 FinalPkmnSlideInEnemyMonFrontpic:
 	call FinishBattleAnim
 	call GetMonFrontpic
-	hlcoord 18, 0
+	hlcoord 19, 0
 	ld c, 0
 
 .outer_loop
 	inc c
 	ld a, c
-	cp 8
+	cp 9
 	ret z
 	xor a
 	ld [hBGMapMode], a
@@ -6924,7 +6936,12 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	ld e, 7
 
 .loop
-	ld [hl], d
+	ld a, d
+	cp 7 * 7
+	jr c, .ok
+	ld a, " "
+.ok
+	ld [hl], a
 	ld bc, SCREEN_WIDTH
 	add hl, bc
 	inc d
@@ -9143,12 +9160,12 @@ InitBattleDisplay: ; 3fb6c
 	ld a, $6
 	ld [rSVBK], a
 
-	ld hl, wDecompressScratch
-	ld bc, wScratchAttrMap - wDecompressScratch
+	ld hl, wScratchTileMap
+	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
 	call ByteFill
 
-	ld de, wDecompressScratch
+	ld de, wScratchTileMap
 	hlbgcoord 0, 0
 	lb bc, BANK(.BlankBGMap), $40
 	call Request2bpp
@@ -9349,6 +9366,20 @@ CheckPluralTrainer:
 	ld a, 1
 	and a
 	ret
+
+AutomaticRainWhenOvercast:
+	call GetOvercastIndex
+	and a
+	ret z
+	ld a, WEATHER_RAIN
+	ld [wWeather], a
+	ld a, 255
+	ld [wWeatherCount], a
+	ld de, RAIN_DANCE
+	call Call_PlayBattleAnim
+	ld hl, DownpourText
+	call StdBattleTextBox
+	jp EmptyBattleTextBox
 
 CheckUniqueWildMove:
 	ld a, [wMapGroup]

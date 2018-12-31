@@ -33,7 +33,7 @@ DimCave3F_MapEventHeader:
 	itemball_event 29, 10, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
 	tmhmball_event 9, 20, TM_REST, EVENT_DIM_CAVE_3F_TM_REST
 
-const_value set 2
+const_value set 1
 	const DIMCAVE3F_BOULDER
 
 DimCave3FBouldersLand:

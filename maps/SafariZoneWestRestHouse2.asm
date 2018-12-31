@@ -21,7 +21,7 @@ SafariZoneWestRestHouse2_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_FLANNERY, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
 
-const_value set 2
+const_value set 1
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY
 
 SafariZoneWestRestHouse2FlanneryScript:

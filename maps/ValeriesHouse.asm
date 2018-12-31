@@ -26,7 +26,7 @@ ValeriesHouse_MapEventHeader:
 	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
 	person_event SPRITE_BOOK, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
 
-const_value set 2
+const_value set 1
 	const VALERIESHOUSE_VALERIE
 	const VALERIESHOUSE_RED_FAIRY_BOOK
 	const VALERIESHOUSE_BLUE_FAIRY_BOOK

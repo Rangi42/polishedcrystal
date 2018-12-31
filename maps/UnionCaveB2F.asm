@@ -22,7 +22,7 @@ UnionCaveB2F_MapEventHeader:
 	itemball_event 2, 16, ELIXER, 1, EVENT_UNION_CAVE_B2F_ELIXER
 	itemball_event 19, 12, HYPER_POTION, 1, EVENT_UNION_CAVE_B2F_HYPER_POTION
 
-const_value set 2
+const_value set 1
 	const UNIONCAVEB2F_LAPRAS
 
 UnionCaveB2FLapras:

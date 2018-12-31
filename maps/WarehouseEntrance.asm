@@ -38,7 +38,7 @@ WarehouseEntrance_MapEventHeader:
 	itemball_event 25, 4, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 	person_event SPRITE_COSPLAYER, 18, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1
 
-const_value set 2
+const_value set 1
 	const WAREHOUSEENTRANCE_GRAMPS
 	const WAREHOUSEENTRANCE_SUPER_NERD5
 	const WAREHOUSEENTRANCE_SUPER_NERD6

@@ -16,7 +16,7 @@ LightningIslandRoof_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_SPARK, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LightningIslandRoofSparkScript, EVENT_SHAMOUTI_COAST_SPARK
 
-const_value set 2
+const_value set 1
 	const LIGHTNINGISLANDROOF_SPARK
 
 LightningIslandRoofSparkScript:

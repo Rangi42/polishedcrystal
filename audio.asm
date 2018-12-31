@@ -192,6 +192,7 @@ SECTION "RSE Music 1", ROMX
 
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/championbattle.asm"
+INCLUDE "audio/music/rse/evergrandecity.asm"
 INCLUDE "audio/music/rse/dewfordtown.asm"
 INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
@@ -332,9 +333,14 @@ INCLUDE "audio/music/prism/gymleaderbattle.asm"
 INCLUDE "audio/music/prism/palettebattle.asm"
 
 
-SECTION "Music Custom", ROMX
+SECTION "Go Music", ROMX
 
-INCLUDE "audio/music/custom/lugiassong.asm"
+INCLUDE "audio/music/go/gymbattle.asm"
+
+
+SECTION "Movie 2000 Music", ROMX
+
+INCLUDE "audio/music/m02/lugiassong.asm"
 
 
 SECTION "Sound Effects", ROMX

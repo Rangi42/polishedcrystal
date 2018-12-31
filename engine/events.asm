@@ -97,7 +97,7 @@ EnterMap: ; 9673e
 	ld [hMapEntryMethod], a
 	ld a, 2 ; HandleMap
 	ld [wMapStatus], a
-	farjp DeleteSavedMusic
+	jp DeleteSavedMusic
 ; 9676d
 
 HandleMap:

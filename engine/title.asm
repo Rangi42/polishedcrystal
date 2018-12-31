@@ -10,10 +10,10 @@ _TitleScreen: ; 10ed67
 
 ; Reset timing variables
 	ld hl, wJumptableIndex
-	ld [hli], a ; cf63 ; Scene?
-	ld [hli], a ; cf64
-	ld [hli], a ; cf65 ; Timer lo
-	ld [hl], a  ; cf66 ; Timer hi
+	ld [hli], a ; wJumptableIndex
+	ld [hli], a ; wIntroSceneFrameCounter
+	ld [hli], a ; wTitleScreenTimerLo
+	ld [hl], a  ; wTitleScreenTimerHi
 
 ; Turn LCD off
 	call DisableLCD
@@ -32,7 +32,7 @@ _TitleScreen: ; 10ed67
 
 ; Clear screen palettes
 	hlbgcoord 0, 0
-	ld bc, 20 bgrows
+	ld bc, SCREEN_WIDTH bgrows
 	xor a
 	call ByteFill
 
@@ -116,20 +116,20 @@ _TitleScreen: ; 10ed67
 
 ; Draw Pokemon logo
 	hlcoord 0, 3
-	lb bc, 7, 20
-	lb de, $80, $14
+	lb bc, 7, SCREEN_WIDTH
+	lb de, $80, SCREEN_WIDTH
 	call DrawTitleGraphic
 
 ; Draw copyright text
 	hlbgcoord 4, 0, VBGMap1
 	lb bc, 1, 13
-	lb de, $c, $10
+	lb de, $0c, 0
 	call DrawTitleGraphic
 
 IF DEF(FAITHFUL)
 	hlbgcoord 17, 0, VBGMap1
 	lb bc, 1, 1
-	lb de, $19, $10
+	lb de, $19, 0
 	call DrawTitleGraphic
 endc
 
@@ -150,12 +150,12 @@ endc
 ; Update palette colors
 	ld hl, TitleScreenPalettes
 	ld de, wUnknBGPals
-	ld bc, 4 * 32
+	ld bc, 16 palettes
 	call CopyBytes
 
 	ld hl, TitleScreenPalettes
 	ld de, wBGPals
-	ld bc, 4 * 32
+	ld bc, 16 palettes
 	call CopyBytes
 
 ; Restore WRAM bank
@@ -170,26 +170,10 @@ endc
 	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
 
-; Make alternating lines come in from opposite sides
-
-; ( This part is actually totally pointless, you can't
-;   see anything until these values are overwritten!  )
-
-	ld b, 80 / 2 ; alternate for 80 lines
+; Make sure the LYOverrides buffer is empty
 	ld hl, wLYOverrides
-.loop
-; $00 is the middle position
-	ld [hl], +112 ; coming from the left
-	inc hl
-	ld [hl], -112 ; coming from the right
-	inc hl
-	dec b
-	jr nz, .loop
-
-; Make sure the rest of the buffer is empty
-	ld hl, wLYOverrides + 80
 	xor a
-	ld bc, wLYOverridesEnd - (wLYOverrides + 80)
+	ld bc, wLYOverridesEnd - wLYOverrides
 	call ByteFill
 
 ; Let LCD Stat know we're messing around with SCX
@@ -286,7 +270,7 @@ LoadSuicuneFrame: ; 10eed2
 	ld a, SCREEN_WIDTH - 8
 	add l
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0 ; not xor a; preserve carry flag
 	adc h
 	ld h, a
 	ld a, 8

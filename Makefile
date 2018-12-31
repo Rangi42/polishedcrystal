@@ -7,6 +7,12 @@ ROMVERSION := 0x30
 
 FILLER = 0x00
 
+ifneq ($(wildcard rgbds/.*),)
+RGBDS_DIR = rgbds/
+else
+RGBDS_DIR =
+endif
+
 RGBASM_FLAGS =
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l contents/contents.link -p $(FILLER)
 RGBFIX_FLAGS = -Cjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
@@ -116,13 +122,12 @@ $(roms_md5): crystal
 
 %.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
-	rgbasm $(RGBASM_FLAGS) -o $@ $<
+	$(RGBDS_DIR)rgbasm $(RGBASM_FLAGS) -o $@ $<
 
 .gbc: ;
 %.gbc: $(crystal_obj)
-	rgblink $(RGBLINK_FLAGS) -o $@ $^
-	rgbfix $(RGBFIX_FLAGS) $@
-	sort $(ROM_NAME).sym -o $(ROM_NAME).sym
+	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
+	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<

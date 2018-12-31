@@ -1,119 +1,122 @@
 Tileset00PalMap:
-Tileset01PalMap:
+TilesetJohto1PalMap:
 INCLUDE "tilesets/johto1_palette_map.asm"
 
-Tileset02PalMap:
+TilesetJohto2PalMap:
 INCLUDE "tilesets/johto2_palette_map.asm"
 
-Tileset03PalMap:
+TilesetKanto1PalMap:
 INCLUDE "tilesets/kanto1_palette_map.asm"
 
-Tileset04PalMap:
+TilesetJohto3PalMap:
 INCLUDE "tilesets/johto3_palette_map.asm"
 
-Tileset05PalMap:
+TilesetHouse1PalMap:
 INCLUDE "tilesets/house1_palette_map.asm"
 
-Tileset06PalMap:
+TilesetHouse2PalMap:
 INCLUDE "tilesets/house2_palette_map.asm"
 
-Tileset07PalMap:
+TilesetPokeCenterPalMap:
 INCLUDE "tilesets/pokecenter_palette_map.asm"
 
-Tileset08PalMap:
+TilesetGatePalMap:
 INCLUDE "tilesets/gate_palette_map.asm"
 
-Tileset09PalMap:
+TilesetPortPalMap:
 INCLUDE "tilesets/port_palette_map.asm"
 
-Tileset10PalMap:
+TilesetLabPalMap:
 INCLUDE "tilesets/lab_palette_map.asm"
 
-Tileset11PalMap:
+TilesetFacilityPalMap:
 INCLUDE "tilesets/facility_palette_map.asm"
 
-Tileset12PalMap:
+TilesetMartPalMap:
 INCLUDE "tilesets/mart_palette_map.asm"
 
-Tileset13PalMap:
+TilesetMansionPalMap:
 INCLUDE "tilesets/mansion_palette_map.asm"
 
-Tileset14PalMap:
+TilesetGameCornerPalMap:
 INCLUDE "tilesets/game_corner_palette_map.asm"
 
-Tileset15PalMap:
+TilesetGym1PalMap:
 INCLUDE "tilesets/gym1_palette_map.asm"
 
-Tileset16PalMap:
+TilesetHouse3PalMap:
 INCLUDE "tilesets/house3_palette_map.asm"
 
-Tileset17PalMap:
+TilesetGym2PalMap:
 INCLUDE "tilesets/gym2_palette_map.asm"
 
-Tileset18PalMap:
+TilesetGym3PalMap:
 INCLUDE "tilesets/gym3_palette_map.asm"
 
-Tileset19PalMap:
+TilesetLighthousePalMap:
 INCLUDE "tilesets/lighthouse_palette_map.asm"
 
-Tileset20PalMap:
+TilesetKanto2PalMap:
 INCLUDE "tilesets/kanto2_palette_map.asm"
 
-Tileset21PalMap:
+TilesetPokeComPalMap:
 INCLUDE "tilesets/pokecom_palette_map.asm"
 
-Tileset22PalMap:
+TilesetBattleTowerPalMap:
 INCLUDE "tilesets/battle_tower_palette_map.asm"
 
-Tileset23PalMap:
+TilesetTowerPalMap:
 INCLUDE "tilesets/tower_palette_map.asm"
 
-Tileset24PalMap:
-Tileset40PalMap:
+TilesetCavePalMap:
+TilesetQuietCavePalMap:
 INCLUDE "tilesets/cave_palette_map.asm"
 
-Tileset25PalMap:
+TilesetParkPalMap:
 INCLUDE "tilesets/park_palette_map.asm"
 
-Tileset26PalMap:
-Tileset32PalMap:
+TilesetRuinsPalMap:
+TilesetAlphPalMap:
 INCLUDE "tilesets/ruins_palette_map.asm"
 
-Tileset27PalMap:
+TilesetRadioTowerPalMap:
 INCLUDE "tilesets/radio_tower_palette_map.asm"
 
-Tileset28PalMap:
+TilesetWarehousePalMap:
 INCLUDE "tilesets/warehouse_palette_map.asm"
 
-Tileset29PalMap:
+TilesetIcePathPalMap:
 INCLUDE "tilesets/ice_path_palette_map.asm"
 
-Tileset30PalMap:
+TilesetForestPalMap:
 INCLUDE "tilesets/forest_palette_map.asm"
 
-Tileset31PalMap:
+TilesetSafariPalMap:
 INCLUDE "tilesets/safari_palette_map.asm"
 
-Tileset33PalMap:
+TilesetPokemonMansionPalMap:
 INCLUDE "tilesets/pokemon_mansion_palette_map.asm"
 
-Tileset34PalMap:
+TilesetFarawayPalMap:
 INCLUDE "tilesets/faraway_palette_map.asm"
 
-Tileset35PalMap:
+TilesetTunnelPalMap:
 INCLUDE "tilesets/tunnel_palette_map.asm"
 
-Tileset36PalMap:
+TilesetDecorPalMap:
 INCLUDE "tilesets/decor_palette_map.asm"
 
-Tileset37PalMap:
+TilesetShamoutiPalMap:
 INCLUDE "tilesets/shamouti_palette_map.asm"
 
-Tileset38PalMap:
+TilesetMuseumPalMap:
 INCLUDE "tilesets/museum_palette_map.asm"
 
-Tileset39PalMap:
+TilesetHotelPalMap:
 INCLUDE "tilesets/hotel_palette_map.asm"
 
-Tileset41PalMap:
+TilesetValenciaPalMap:
 INCLUDE "tilesets/valencia_palette_map.asm"
+
+TilesetJohto4PalMap:
+INCLUDE "tilesets/johto4_palette_map.asm"

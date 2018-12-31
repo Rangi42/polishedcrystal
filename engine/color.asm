@@ -35,11 +35,11 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, wBGPals palette 2 + 2
+	ld de, wBGPals palette PAL_BATTLE_BG_PLAYER_HP + 2
 	jr .okay
 
 .Player:
-	ld de, wBGPals palette 3 + 2
+	ld de, wBGPals palette PAL_BATTLE_BG_ENEMY_HP + 2
 
 .okay
 	ld l, c
@@ -83,7 +83,7 @@ LoadPlayerStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, wUnknBGPals palette 5 + 2
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS + 2
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -98,7 +98,7 @@ LoadEnemyStatusIconPalette:
 rept 2
 	add hl, bc
 endr
-	ld de, wUnknBGPals palette 5 + 4
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -111,7 +111,7 @@ LoadBattleCategoryAndTypePals:
 rept 4
 	add hl, bc
 endr
-	ld de, wUnknBGPals palette 6 + 2
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -123,7 +123,7 @@ endr
 rept 2
 	add hl, bc
 endr
-	ld de, wUnknBGPals palette 6 + 6
+	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 6
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM
@@ -744,6 +744,21 @@ LoadMapPals:
 	ld a, [wTileset]
 	cp TILESET_FOREST ; for Yellow Forest
 	ret z
+
+	; overcast maps have their own roof color table
+	call GetOvercastIndex
+	and a
+	jr z, .not_overcast
+	dec a
+	ld l, a
+	ld h, 0
+rept 3
+	add hl, hl
+endr
+	ld de, .OvercastRoofPals
+	jr .get_roof_color
+
+.not_overcast
 	ld a, [wPermission]
 	cp TOWN
 	jr z, .outside
@@ -759,6 +774,7 @@ rept 3
 	add hl, hl
 endr
 	ld de, .RoofPals
+.get_roof_color
 	add hl, de
 	ld a, [wTimeOfDayPal]
 	and 3
@@ -771,9 +787,7 @@ endr
 	ld de, wUnknBGPals palette 6 + 2
 	ld bc, 4
 	ld a, $5
-	call FarCopyWRAM
-
-	ret
+	jp FarCopyWRAM
 
 .TilesetColorsPointers:
 	dw .OutdoorColors ; unused
@@ -930,7 +944,21 @@ else
 if !DEF(MONOCHROME)
 INCLUDE "tilesets/palettes/roof.pal"
 else
-rept 35
+rept 36
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO_NIGHT
+endr
+endc
+endc
+
+.OvercastRoofPals:
+if DEF(HGSS)
+INCLUDE "tilesets/palettes/hgss/roof_overcast.pal"
+else
+if !DEF(MONOCHROME)
+INCLUDE "tilesets/palettes/roof_overcast.pal"
+else
+rept 3
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO_NIGHT
 endr

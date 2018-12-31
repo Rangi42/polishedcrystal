@@ -23,7 +23,7 @@ OlivineCafe_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 4, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCafeYoungsterText, -1
 	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCafeFisherText, -1
 
-const_value set 2
+const_value set 1
 	const OLIVINECAFE_BAKER
 	const OLIVINECAFE_LYRA
 

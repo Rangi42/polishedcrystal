@@ -690,7 +690,6 @@ DragonRage:
 NightShade:
 SeismicToss:
 SuperFang:
-Psywave:
 	checkobedience
 	usedmovetext
 	doturn
@@ -1233,13 +1232,6 @@ Haze:
 	resetstats
 	endmove
 
-Mist:
-	checkobedience
-	usedmovetext
-	doturn
-	mist
-	endmove
-
 Safeguard:
 	checkobedience
 	usedmovetext
@@ -1597,15 +1589,6 @@ PainSplit:
 	pressure
 	checkhit
 	painsplit
-	endmove
-
-LockOn:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	checkhit
-	lockon
 	endmove
 
 Sketch:
@@ -2296,207 +2279,5 @@ FlareBlitz:
 	checkdestinybond
 	buildopponentrage
 	burntarget
-	pickpocket
-	endmove
-
-OHKOHit:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	stab
-	ohko
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	pickpocket
-	endmove
-
-Bide:
-	storeenergy
-	checkobedience
-	doturn
-	usedmovetext
-	unleashenergy
-	resettypematchup
-	checkhit
-	hittarget
-	failuretext
-	checkfaint
-	checkdestinybond
-	buildopponentrage
-	pickpocket
-	endmove
-
-RazorWind:
-	checkcharge
-	checkobedience
-	doturn
-	pressure
-	charge
-	usedmovetext
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	pickpocket
-	endmove
-
-Mimic:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	checkhit
-	mimic
-	endmove
-
-Snore:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	effectchance
-	snore
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	flinchtarget
-	pickpocket
-	endmove
-
-DefrostOpponent:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	defrostopponent
-	endmove
-
-Spite:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	checkhit
-	bounceback
-	spite
-	endmove
-
-Present:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	checkhit
-	critical
-	damagestats
-	present
-	damagecalc
-	stab
-	damagevariation
-	clearmissdamage
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	pickpocket
-	endmove
-
-Frustration:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	critical
-	damagestats
-	frustrationpower
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	pickpocket
-	endmove
-
-PsychUp:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	psychup
-	endmove
-
-Conversion2:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	checkhit
-	conversion2
-	endmove
-
-MirrorMove:
-	checkobedience
-	usedmovetext
-	doturn
-	pressure
-	mirrormove
-	endmove
-
-SkullBash:
-	checkcharge
-	checkobedience
-	doturn
-	pressure
-	charge
-	usedmovetext
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	hittarget
-	failuretext
-	checkfaint
-	criticaltext
-	supereffectivetext
-	checkdestinybond
-	buildopponentrage
-	endturn
-	defenseup
-	statupmessage
 	pickpocket
 	endmove

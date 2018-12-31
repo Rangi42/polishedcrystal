@@ -27,7 +27,7 @@ RadioTower5F_MapEventHeader:
 	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	itemball_event 5, 8, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
 
-const_value set 2
+const_value set 1
 	const RADIOTOWER5F_DIRECTOR
 	const RADIOTOWER5F_PETREL
 	const RADIOTOWER5F_ARCHER

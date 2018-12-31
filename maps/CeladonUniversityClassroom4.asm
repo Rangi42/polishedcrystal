@@ -28,7 +28,7 @@ CeladonUniversityClassroom4_MapEventHeader:
 	person_event SPRITE_LADY, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom4LadyText, -1
 	person_event SPRITE_RICH_BOY, 9, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityClassroom4Rich_boyScript, -1
 
-const_value set 2
+const_value set 1
 	const CELADONUNIVERSITYCLASSROOM4_RAYMOND
 
 CeladonUniversityClassroom4RaymondScript:

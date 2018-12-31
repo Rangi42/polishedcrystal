@@ -34,7 +34,7 @@ Route30_MapEventHeader:
 	fruittree_event 5, 11, FRUITTREE_ROUTE_30_2, PECHA_BERRY
 	itemball_event 35, 8, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
-const_value set 2
+const_value set 1
 	const ROUTE30_YOUNGSTER1
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA

@@ -23,7 +23,9 @@ RefreshSprites:: ; 14168
 	call ByteFill
 	call GetPlayerSprite
 	call AddMapSprites
-	call LoadAndSortSprites
+	call LoadSpriteGFX
+	call SortUsedSprites
+	call ArrangeUsedSprites
 	jp MapCallbackSprites_LoadUsedSpritesGFX
 ; 1416f
 
@@ -144,11 +146,15 @@ MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld c, EMOTE_SHADOW
 	farcall LoadEmote
 	call GetMapPermission
-	call CheckOutdoorMap
-	ld c, EMOTE_SHAKING_GRASS
+	call CheckOutdoorMapOrPerm5
 	jr z, .outdoor
 	ld c, EMOTE_BOULDER_DUST
+	farjp LoadEmote
+
 .outdoor
+	ld c, EMOTE_SHAKING_GRASS
+	farcall LoadEmote
+	ld c, EMOTE_PUDDLE_SPLASH
 	farjp LoadEmote
 ; 14236
 
@@ -306,13 +312,6 @@ _GetSpritePalette:: ; 142c4
 ; 142db
 
 
-LoadAndSortSprites: ; 142db
-	call LoadSpriteGFX
-	call SortUsedSprites
-	jp ArrangeUsedSprites
-; 142e5
-
-
 AddSpriteGFX: ; 142e5
 ; Add any new sprite ids to a list of graphics to be loaded.
 ; Return carry if the list is full.
@@ -380,8 +379,12 @@ LoadSpriteGFX: ; 14306
 
 SortUsedSprites: ; 1431e
 ; Bubble-sort sprites by type.
-; TODO: verify whether this is necessary; remove it otherwise.
-; Note that overworld sprite sets are already manually sorted.
+
+; Overworld map sprite sets are assumed to be manually sorted.
+
+	call GetMapPermission
+	call CheckOutdoorMap
+	ret z
 
 ; Run backwards through wUsedSprites to find the last one.
 
@@ -391,9 +394,8 @@ SortUsedSprites: ; 1431e
 	ld a, [de]
 	and a
 	jr nz, .FoundLastSprite
-rept 2
 	dec de
-endr
+	dec de
 	dec c
 	jr nz, .FindLastSprite
 .FoundLastSprite:
@@ -435,16 +437,14 @@ endr
 ; Keep doing this until everything's in order.
 
 .loop
-rept 2
 	dec de
-endr
+	dec de
 	dec c
 	jr nz, .CheckFollowing
 
 	pop hl
-rept 2
 	inc hl
-endr
+	inc hl
 	pop de
 	pop bc
 	dec c
@@ -519,6 +519,8 @@ GetSpriteLength: ; 14386
 	jr z, .AnyDirection
 	cp STILL_SPRITE
 	jr z, .OneDirection
+	cp BIG_GYARADOS_SPRITE
+	jr z, .BigGyarados
 ; MON_SPRITE
 	ld a, 8
 	ret
@@ -529,6 +531,10 @@ GetSpriteLength: ; 14386
 
 .OneDirection:
 	ld a, 4
+	ret
+
+.BigGyarados:
+	ld a, 16
 	ret
 ; 1439b
 
@@ -683,18 +689,19 @@ EmotesPointers: ; 144d
 ; dw source address
 ; db length, bank
 ; dw dest address
-	emote_header ShockEmote,      4, $78
-	emote_header QuestionEmote,   4, $78
-	emote_header HappyEmote,      4, $78
-	emote_header SadEmote,        4, $78
-	emote_header HeartEmote,      4, $78
-	emote_header BoltEmote,       4, $78
-	emote_header SleepEmote,      4, $78
-	emote_header FishEmote,       4, $78
-	emote_header JumpShadowGFX,   1, $7c
-	emote_header FishingRodGFX2,  2, $7c
-	emote_header BoulderDustGFX,  2, $7e
-	emote_header ShakingGrassGFX, 1, $7e
+	emote_header ShockEmote,      4, $78 ; EMOTE_SHOCK
+	emote_header QuestionEmote,   4, $78 ; EMOTE_QUESTION
+	emote_header HappyEmote,      4, $78 ; EMOTE_HAPPY
+	emote_header SadEmote,        4, $78 ; EMOTE_SAD
+	emote_header HeartEmote,      4, $78 ; EMOTE_HEART
+	emote_header BoltEmote,       4, $78 ; EMOTE_HEART
+	emote_header SleepEmote,      4, $78 ; EMOTE_SLEEP
+	emote_header FishEmote,       4, $78 ; EMOTE_FISH
+	emote_header JumpShadowGFX,   1, $7c ; EMOTE_SHADOW
+	emote_header FishingRodGFX,   2, $7c ; EMOTE_ROD
+	emote_header BoulderDustGFX,  2, $7e ; EMOTE_BOULDER_DUST
+	emote_header ShakingGrassGFX, 1, $7e ; EMOTE_SHAKING_GRASS
+	emote_header PuddleSplashGFX, 1, $7f ; EMOTE_PUDDLE_SPLASH
 ; 14495
 
 
@@ -842,25 +849,52 @@ Group29Sprites:
 	db 0
 
 
+; Route42 connects to VioletOutskirts
+; Route32 connects to CherrygroveBay
+; Route29 connects to CherrygroveCity
 Group2Sprites:
 ; Route42
 ; Route44
 ; MahoganyTown
+Group10Sprites:
+; Route32
+; VioletCity
+; MagnetTunnelEast
+; VioletOutskirts
+Group24Sprites:
+; Route26
+; Route27
+; Route29
+; NewBarkTown
+Group26Sprites:
+; Route30
+; Route31
+; CherrygroveBay
+; CherrygroveCity
+	db SPRITE_CHERRYGROVE_RIVAL ; SPRITE_SILVER, SPRITE_BUG_CATCHER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GRAMPS
+	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
 	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
-	db SPRITE_POKEFAN_M
+	db SPRITE_SWIMMER_GIRL
+	db SPRITE_TEACHER
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_OFFICER ; doesn't walk
 	db SPRITE_OFFICER_F ; doesn't walk
 	db SPRITE_VETERAN_M ; doesn't walk
-	; 11 walking sprites (9 that walk)
+	db SPRITE_VETERAN_F ; doesn't walk
+	db SPRITE_GRAMPS ; doesn't walk
+	db SPRITE_COSPLAYER ; doesn't walk
+	db SPRITE_POKEFAN_M ; doesn't walk (TODO: walks in Route 42)
+	; 17 walking sprites (10 that walk) (TODO: only 9 can walk)
 	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_SUICUNE
-	; 13 total sprites
+	db SPRITE_PIDGEY
+	db SPRITE_RATTATA
+	; 22 total sprites (TODO: too many)
 	db 0
 
 
@@ -1018,60 +1052,20 @@ Group8Sprites:
 Group9Sprites:
 ; Route43
 ; LakeofRage
+	db SPRITE_BIG_GYARADOS
 	db SPRITE_BREEDER
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GRAMPS
-	db SPRITE_LANCE
-	db SPRITE_LASS
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	db SPRITE_LADY ; doesn't walk
-	db SPRITE_ENGINEER ; doesn't walk
-	; 11 walking sprites (9 that walk)
-	db SPRITE_GYARADOS_TOP_LEFT
-	db SPRITE_GYARADOS_TOP_RIGHT
-	db SPRITE_GYARADOS_BOTTOM_LEFT
-	db SPRITE_GYARADOS_BOTTOM_RIGHT
-	db SPRITE_BALL_CUT_FRUIT
-	; 16 total sprites
-	db 0
-
-
-; Route32 connects to CherrygroveBay
-; CherrygroveCity connects to Route29
-Group10Sprites:
-; Route32
-; VioletCity
-Group24Sprites:
-; Route26
-; Route27
-; Route29
-; NewBarkTown
-Group26Sprites:
-; Route30
-; Route31
-; CherrygroveBay
-; CherrygroveCity
-	db SPRITE_CHERRYGROVE_RIVAL ; SPRITE_SILVER, SPRITE_BUG_CATCHER
-	db SPRITE_COOLTRAINER_F
-	db SPRITE_COOLTRAINER_M
-	db SPRITE_FISHER
-	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
-	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
-	db SPRITE_SWIMMER_GIRL
-	db SPRITE_TEACHER
-	db SPRITE_YOUNGSTER
-	db SPRITE_COSPLAYER ; doesn't walk
+	db SPRITE_LASS
+	db SPRITE_LAKE_OF_RAGE_LANCE ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
-	db SPRITE_POKEFAN_M ; doesn't walk
-	db SPRITE_VETERAN_F ; doesn't walk
-	; 13 walking sprites (9 that walk)
+	db SPRITE_COOLTRAINER_M ; doesn't walk
+	db SPRITE_LADY ; doesn't walk
+	; 11/14 walking sprites (7/10 that walk) (SPRITE_BIG_GYARADOS counts as 4)
 	db SPRITE_BALL_CUT_FRUIT
-	db SPRITE_PIDGEY
-	db SPRITE_RATTATA
-	; 16 total sprites
+	; 12/15 total sprites
 	db 0
 
 
@@ -1080,6 +1074,7 @@ Group11Sprites:
 ; Route34Coast
 ; StormyBeach
 ; GoldenrodCity
+; MagnetTunnelWest
 	db SPRITE_BREEDER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_GOLDENROD_LYRA ; SPRITE_LYRA, SPRITE_SWIMMER_GIRL

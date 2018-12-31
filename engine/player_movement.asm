@@ -778,7 +778,7 @@ DoPlayerMovement:: ; 80000
 ; Return 0 if tile a is land. Otherwise, return carry.
 
 	call GetTileCollision
-	and a ; land
+	and a ; cp LANDTILE
 	ret z
 	scf
 	ret
@@ -789,11 +789,11 @@ DoPlayerMovement:: ; 80000
 ; Otherwise, return carry.
 
 	call GetTileCollision
-	cp 1
+	cp WATERTILE
 	jr z, .Water
 
 ; Can walk back onto land from water.
-	and a
+	and a ; cp LANDTILE
 	jr z, .Land
 
 	jr .Neither

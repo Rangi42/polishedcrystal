@@ -5,12 +5,12 @@ InitIntroGradient::
 	ld a, $70
 	call ByteFill
 	; middle stripe
-	hlcoord 0, 1
+	; hlcoord 0, 1
 	ld bc, SCREEN_WIDTH
 	ld a, $71
 	call ByteFill
 	; bottom stripe
-	hlcoord 0, 2
+	; hlcoord 0, 2
 	ld bc, SCREEN_WIDTH
 	ld a, $72
 	call ByteFill
@@ -77,9 +77,18 @@ OptionsMenu: ; 5b64
 	farjp _OptionsMenu
 ; 5b6b
 
+NewGamePlus:
+	xor a
+	ld [hBGMapMode], a
+	farcall TryLoadSaveFile
+	ret c
+	jr _NewGame_FinishSetup
+
 NewGame: ; 5b6b
 	xor a
-	ld [wMonStatusFlags], a
+	ld [hBGMapMode], a
+	call ResetWRAM_NotPlus
+_NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
 	call SetInitialOptions
@@ -96,14 +105,33 @@ NewGame: ; 5b6b
 	jp FinishContinueFunction
 ; 5b8f
 
-ResetWRAM: ; 5ba7
+ResetWRAM_NotPlus:
 	xor a
-	ld [hBGMapMode], a
-	jp _ResetWRAM
-; 5bae
+	ld [wSaveFileExists], a
+	ld [wSavedAtLeastOnce], a
 
-_ResetWRAM: ; 5bae
+	ld [wBattlePoints], a
 
+	ld [wCurBox], a
+
+	call SetDefaultBoxNames
+
+	ld a, BANK(sBoxCount)
+	call GetSRAMBank
+	ld hl, sBoxCount
+	call _ResetWRAM_InitList
+	call CloseSRAM
+
+START_MONEY EQU 3000
+	ld hl, wMoney
+	ld [hl], START_MONEY / $10000
+	inc hl
+	ld [hl], START_MONEY / $100 % $100
+	inc hl
+	ld [hl], START_MONEY % $100
+	ret
+
+ResetWRAM: ; 5ba7
 	ld hl, wSprites
 	ld bc, wOptions1 - wSprites
 	xor a
@@ -114,8 +142,21 @@ _ResetWRAM: ; 5bae
 	xor a
 	call ByteFill
 
+	; erase wGameData, but keep Money, wCurBox, wBoxNames, and wBattlePoints
 	ld hl, wGameData
-	ld bc, wGameDataEnd - wGameData
+	ld bc, wMoney - wGameData
+	xor a
+	call ByteFill
+	ld hl, MoneyEnd
+	ld bc, wCurBox - MoneyEnd
+	xor a
+	call ByteFill
+	ld hl, wBoxNamesEnd
+	ld bc, wBattlePoints - wBoxNamesEnd
+	xor a
+	call ByteFill
+	ld hl, wBattlePoints + 1
+	ld bc, wGameDataEnd - (wBattlePoints + 1)
 	xor a
 	call ByteFill
 
@@ -138,38 +179,30 @@ _ResetWRAM: ; 5bae
 	ld [wSecretID + 1], a
 
 	ld hl, wPartyCount
-	call .InitList
+	call _ResetWRAM_InitList
 
 	xor a
-	ld [wCurBox], a
-	ld [wSavedAtLeastOnce], a
+	ld [wMonStatusFlags], a
+
 	ld [wPlayerGender], a
 
-	call SetDefaultBoxNames
-
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld hl, sBoxCount
-	call .InitList
-	call CloseSRAM
-
 	ld hl, wNumItems
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, wNumMedicine
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, wNumBalls
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, wNumBerries
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, wNumKeyItems
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, wPCItems
-	call .InitList
+	call _ResetWRAM_InitList
 
 	ld hl, wTMsHMs
 	xor a
@@ -201,30 +234,17 @@ endr
 	ld [wCoins], a
 	ld [wCoins + 1], a
 
-	ld [wBattlePoints], a
-
 	ld [wRegisteredItem], a
 
-START_MONEY EQU 3000
-
-IF START_MONEY / $10000
-	ld a, START_MONEY / $10000
-ENDC
-	ld [wMoney], a
-	ld a, START_MONEY / $100 % $100
-	ld [wMoney + 1], a
-	ld a, START_MONEY % $100
-	ld [wMoney + 2], a
-
-	xor a
 	ld [wWhichMomItem], a
 
+START_ITEM_TRIGGER_BALANCE EQU 2300
 	ld hl, wMomItemTriggerBalance
-	ld [hl], 2300 / $10000
+	ld [hl], START_ITEM_TRIGGER_BALANCE / $10000
 	inc hl
-	ld [hl], 2300 / $100 % $100
+	ld [hl], START_ITEM_TRIGGER_BALANCE / $100 % $100
 	inc hl
-	ld [hl], 2300 % $100
+	ld [hl], START_ITEM_TRIGGER_BALANCE % $100
 
 	call InitializeNPCNames
 
@@ -235,7 +255,7 @@ ENDC
 	jp ResetGameTime
 ; 5ca1
 
-.InitList: ; 5ca1
+_ResetWRAM_InitList: ; 5ca1
 ; Loads 0 in the count and -1 in the first item or mon slot.
 	xor a
 	ld [hli], a
@@ -1012,7 +1032,7 @@ StartTitleScreen: ; 6219
 	ld a, $5
 	ld [rSVBK], a
 
-	call .TitleScreen
+	farcall _TitleScreen
 	call DelayFrame
 .loop
 	call RunTitleScreen
@@ -1039,7 +1059,7 @@ StartTitleScreen: ; 6219
 	ld b, SCGB_DIPLOMA
 	call GetSGBLayout
 	call UpdateTimePals
-	ld a, [wcf64]
+	ld a, [wIntroSceneFrameCounter]
 	cp $6
 	jr c, .ok
 	xor a
@@ -1064,10 +1084,6 @@ StartTitleScreen: ; 6219
 	dw ResetInitialOptions
 ; 6274
 
-
-.TitleScreen: ; 6274
-	farjp _TitleScreen
-; 627b
 
 RunTitleScreen: ; 627b
 	ld a, [wJumptableIndex]
@@ -1246,7 +1262,7 @@ TitleScreenMain: ; 6304
 	ret
 
 .done
-	ld [wcf64], a
+	ld [wIntroSceneFrameCounter], a
 ; Return to the intro sequence.
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -1298,7 +1314,7 @@ TitleScreenEnd: ; 6375
 	ret nz
 
 	ld a, 2
-	ld [wcf64], a
+	ld [wIntroSceneFrameCounter], a
 
 ; Back to the intro.
 	ld hl, wJumptableIndex

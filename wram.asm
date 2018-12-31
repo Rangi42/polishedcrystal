@@ -728,9 +728,7 @@ wLastEnemyMove::
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
 wGivingExperienceToExpShareHolders:: ds 1
-wBackupEnemyMonBaseStats:: ds 5
-wBackupEnemyMonCatchRate:: db
-wBackupEnemyMonBaseExp:: db
+	ds 7
 wPlayerFutureSightDamage:: ds 2
 wEnemyFutureSightDamage:: ds 2
 ; rage counters unused, Rage is now attack stage boosts again
@@ -880,14 +878,14 @@ wDexListingCursorBackup:: ds 1
 wBackupDexListingCursor:: ds 1
 wBackupDexListingPage:: ds 1
 wDexCurrentLocation:: ds 1
-wPokedexStatus::
-	ds 1
+wPokedexStatus:: ds 1
+wDexMonShiny:: ds 1
 wPokedexDataEnd::
-	ds 2
+	ds 3
 
 wMiscEnd::
 
-	ds 15
+	ds 13
 
 ENDU
 
@@ -2091,7 +2089,6 @@ wObjectStructs::
 wObjectStructsEnd::
 
 wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
-	ds $28
 
 wMapObjects::
 	map_object wPlayer
@@ -2110,6 +2107,8 @@ wMapObjects::
 	map_object wMap13
 	map_object wMap14
 	map_object wMap15
+	map_object wMap16
+	map_object wMap17
 wMapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS
@@ -2146,15 +2145,15 @@ wStatusFlags2::
 	; 3 - seen shamouti island
 	; 4 - bike shop call
 	; 5 - pokerus
-	; 6 - unused
+	; 6 - exorcised lav radio tower
 	; 7 - rockets in mahogany
 	ds 1
 
 wMoney::
 	ds 3
-
 wMomsMoney::
 	ds 3
+MoneyEnd::
 wMomSavingMoney::
 	ds 1
 
@@ -2320,6 +2319,7 @@ wSeagallopFerryVermilionGateTrigger:: ds 1
 wSeagallopFerryNavelGateTrigger:: ds 1
 wSeagallopFerryShamoutiGateTrigger:: ds 1
 wFarawayIslandTrigger:: ds 1
+wRoute47Trigger:: ds 1
 wRoute48Trigger:: ds 1
 wDayCareTrigger:: ds 1
 wDarkCaveVioletEntranceTrigger:: ds 1
@@ -2376,9 +2376,8 @@ wEventFlags::
 
 wCurBox::
 	ds 1
-
-; 8 chars + $50
 wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
+wBoxNamesEnd::
 
 wCelebiEvent:: ds 1
 	ds 1
@@ -2460,7 +2459,8 @@ wLastPocket:: ds 1
 wBuenasPassword:: ds 1
 wBlueCardBalance:: ds 1
 wBugContestOfficerPrize:: ds 1
-	ds 2
+wInPokegear:: ds 1
+	ds 1
 
 wDailyRematchFlags:: ds 4
 wDailyPhoneItemFlags:: ds 4
@@ -2807,7 +2807,7 @@ wDecompressScratch::
 wScratchTileMap::
 	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap::
-	ds $400
+	ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 w6_d800::
 
 

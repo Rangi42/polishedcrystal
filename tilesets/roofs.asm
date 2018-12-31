@@ -14,26 +14,28 @@ LoadMapGroupRoof:: ; 1c000
 	ld de, VTiles2 tile $0a
 	ld bc, 9 tiles
 	call CopyBytes
-; Terrible hack to load some tiles only visible in Olivine City instead of
-; some only visible in Goldenrod City
+; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
 	ld a, [wTileset]
-	cp TILESET_JOHTO_2
+	cp TILESET_JOHTO_MODERN
 	ret nz
 	ld a, [wMapGroup]
-	cp GROUP_GOLDENROD_CITY ; GROUP_ROUTE_34
-	ret z
-	ld hl, NationalParkGateRoofGFX
-	ld de, VTiles2 tile $64
+	cp GROUP_STORMY_BEACH
+	ret nz
+	ld a, [rVBK]
+	push af
+	ld a, $1
+	ld [rVBK], a
+	ld hl, StormyBeachPuddleGFX
+	ld de, VTiles4 tile $c6
 	ld bc, 6 tiles
 	call CopyBytes
-	ld hl, FlowerBoxGFX
-	ld de, VTiles2 tile $74
-	ld bc, 4 tiles
+	ld hl, StormyBeachPuddleGFX + 6 tiles
+	ld de, VTiles4 tile $d6
+	ld bc, 6 tiles
 	call CopyBytes
-	ld hl, LedgeUpGFX
-	ld de, VTiles2 tile $06
-	ld bc, 1 tiles
-	jp CopyBytes
+	pop af
+	ld [rVBK], a
+	ret
 ; 1c021
 
 MapGroupRoofs: ; 1c021i
@@ -42,11 +44,11 @@ MapGroupRoofs: ; 1c021i
 	db  2 ; group 2 (Mahogany Town)
 	db -1 ; group 3
 	db  4 ; group 4 (Ecruteak City)
-	db  2 ; group 5 (Blackthorn City)
+	db -1 ; group 5 (Blackthorn City)
 	db -1 ; group 6
 	db -1 ; group 7
-	db  2 ; group 8 (Azalea Town)
-	db  2 ; group 9 (Lake of Rage)
+	db -1 ; group 8 (Azalea Town)
+	db -1 ; group 9 (Lake of Rage)
 	db  1 ; group 10 (Violet City)
 	db  5 ; group 11 (Goldenrod City)
 	db -1 ; group 12
@@ -57,7 +59,7 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 17
 	db -1 ; group 18
 	db -1 ; group 19
-	db  6 ; group 20 (Ecruteak Shrine)
+	db -1 ; group 20 (Ecruteak Shrine)
 	db -1 ; group 21
 	db  3 ; group 22 (Cianwood City)
 	db -1 ; group 23
@@ -67,7 +69,7 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 27
 	db -1 ; group 28
 	db  3 ; group 29 (Goldenrod Harbor)
-	db  7 ; group 30 (Ruins of Alph)
+	db -1 ; group 30 (Ruins of Alph)
 	db -1 ; group 31
 	db -1 ; group 32
 	db -1 ; group 33
@@ -83,15 +85,7 @@ INCBIN "gfx/tilesets/roofs/2.2bpp"
 INCBIN "gfx/tilesets/roofs/3.2bpp"
 INCBIN "gfx/tilesets/roofs/4.2bpp"
 INCBIN "gfx/tilesets/roofs/5.2bpp"
-INCBIN "gfx/tilesets/roofs/6.2bpp"
-INCBIN "gfx/tilesets/roofs/7.2bpp"
 ; 1c30c
 
-NationalParkGateRoofGFX:
-INCBIN "gfx/tilesets/roofs/park_gate.2bpp"
-
-LedgeUpGFX:
-INCBIN "gfx/tilesets/roofs/ledge_up.2bpp"
-
-FlowerBoxGFX:
-INCBIN "gfx/tilesets/roofs/flower_box.2bpp"
+StormyBeachPuddleGFX:
+INCBIN "gfx/tilesets/roofs/puddle.2bpp"

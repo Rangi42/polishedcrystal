@@ -31,7 +31,7 @@ CherrygroveCity_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 7, 23, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	person_event SPRITE_FISHER, 12, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
 
-const_value set 2
+const_value set 1
 	const CHERRYGROVECITY_GRAMPS
 	const CHERRYGROVECITY_SILVER
 

@@ -425,12 +425,11 @@ BeautyOliviaBeatenText:
 UnknownText_0x1a229a:
 	text "Moomoo Milk is"
 	line "good for beauty"
+	cont "and health."
 
-	para "and health, but"
-	line "inconveniently,"
-
-	para "they only sell a"
-	line "bottle at a time."
+	para "I like to buy a"
+	line "dozen bottles at"
+	cont "a time!"
 	done
 
 Route38SignText:

@@ -826,11 +826,21 @@ const_value SET 1
 	const BG_EFFECT_STRUCT_03
 
 	const_def
-	const PAL_BATTLE_ENEMY
-	const PAL_BATTLE_PLAYER
-	const PAL_BATTLE_GRAY
-	const PAL_BATTLE_YELLOW
-	const PAL_BATTLE_RED
-	const PAL_BATTLE_GREEN
-	const PAL_BATTLE_BLUE
-	const PAL_BATTLE_BROWN
+	const PAL_BATTLE_BG_PLAYER     ; 0
+	const PAL_BATTLE_BG_ENEMY      ; 1
+	const PAL_BATTLE_BG_PLAYER_HP  ; 2
+	const PAL_BATTLE_BG_ENEMY_HP   ; 3
+	const PAL_BATTLE_BG_EXP_GENDER ; 4
+	const PAL_BATTLE_BG_STATUS     ; 5
+	const PAL_BATTLE_BG_TYPE_CAT   ; 6
+	const PAL_BATTLE_BG_TEXT       ; 7
+
+	const_def
+	const PAL_BATTLE_OB_ENEMY  ; 0
+	const PAL_BATTLE_OB_PLAYER ; 1
+	const PAL_BATTLE_OB_GRAY   ; 2
+	const PAL_BATTLE_OB_YELLOW ; 3
+	const PAL_BATTLE_OB_RED    ; 4
+	const PAL_BATTLE_OB_GREEN  ; 5
+	const PAL_BATTLE_OB_BLUE   ; 6
+	const PAL_BATTLE_OB_BROWN  ; 7

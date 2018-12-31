@@ -232,7 +232,7 @@ CopyCurCoordsToNextCoords:
 UpdateTallGrassFlags:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 3, [hl] ; is current tile grass?
+	bit OVERHEAD, [hl]
 	jr z, .ok
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
@@ -244,21 +244,20 @@ UpdateTallGrassFlags:
 	ld a, [hl]
 	ret
 
-SetTallGrassFlags:
+SetTallGrassFlags: ; 4661
+	ld hl, OBJECT_FLAGS2
+	add hl, bc
+	cp COLL_OVERHEAD
+	jr z, .set
 	cp COLL_LONG_GRASS
 	jr z, .set
 	cp COLL_TALL_GRASS
-	jr nz, .reset
-.set
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	set 3, [hl]
+	jr z, .set
+	res OVERHEAD, [hl]
 	ret
 
-.reset
-	ld hl, OBJECT_FLAGS2
-	add hl, bc
-	res 3, [hl]
+.set
+	set OVERHEAD, [hl]
 	ret
 
 EndSpriteMovement:
@@ -535,6 +534,9 @@ MapObjectMovementPattern:
 	dw .MovementSpinCounterclockwise ; SPRITEMOVEFN_SPIN_COUNTERCLOCKWISE
 	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
+	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
+	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
+	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 
 .RandomWalkY:
 	call Random
@@ -716,26 +718,26 @@ MapObjectMovementPattern:
 	ret
 
 .MovementBigStanding:
-	call EndSpriteMovement
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
-	ld hl, OBJECT_ACTION
-	add hl, bc
-	ld [hl], PERSON_ACTION_BIG_SNORLAX
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_04
-	ret
+	ld a, PERSON_ACTION_BIG_SNORLAX
+	jr ._ActionA_StepType04
 
 .MovementBouncing:
+	ld a, PERSON_ACTION_BOUNCE
+	jr ._ActionA_StepType04
+
+.MovementBigGyarados:
+	ld a, PERSON_ACTION_BIG_GYARADOS
+	jr ._ActionA_StepType04
+
+.StandingFlip:
+	ld a, PERSON_ACTION_STAND_FLIP
+._ActionA_StepType04
+	push af
 	call EndSpriteMovement
-	ld hl, OBJECT_DIRECTION_WALKING
-	add hl, bc
-	ld [hl], STANDING
+	pop af
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_BOUNCE
+	ld [hl], a
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_04
@@ -805,7 +807,7 @@ MapObjectMovementPattern:
 	jp DecrementObjectMovementByteIndex
 
 .MovementShadow:
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_SHADOW
@@ -842,7 +844,7 @@ MapObjectMovementPattern:
 
 .MovementEmote:
 	call EndSpriteMovement
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_EMOTE
@@ -862,7 +864,7 @@ MapObjectMovementPattern:
 
 .MovementBoulderDust:
 	call EndSpriteMovement
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_BOULDER_DUST
@@ -906,10 +908,19 @@ MapObjectMovementPattern:
 
 .MovementShakingGrass:
 	call EndSpriteMovement
-	call ._MovementShadow_Grass_Emote_BoulderDust
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_GRASS_SHAKE
+	jr ._MovementGrass_Puddle_End
+
+.MovementSplashingPuddle:
+	call EndSpriteMovement
+	call ._MovementShadow_Grass_Puddle_Dust_Emote
+	ld hl, OBJECT_ACTION
+	add hl, bc
+	ld [hl], PERSON_ACTION_PUDDLE_SPLASH
+._MovementGrass_Puddle_End:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, de
 	ld a, [hl]
@@ -922,7 +933,7 @@ MapObjectMovementPattern:
 	ld [hl], STEP_TYPE_TRACKING_OBJECT
 	ret
 
-._MovementShadow_Grass_Emote_BoulderDust:
+._MovementShadow_Grass_Puddle_Dust_Emote:
 	ld hl, OBJECT_RANGE
 	add hl, bc
 	ld a, [hl]
@@ -1082,7 +1093,7 @@ NPCJump: ; 4b86
 	call GetNextTile
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 3, [hl]
+	res OVERHEAD, [hl]
 	jp IncrementObjectStructField28
 
 .Land:
@@ -1121,7 +1132,7 @@ PlayerJump: ; 4bbf
 	call CopyNextCoordsTileToStandingCoordsTile
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 3, [hl]
+	res OVERHEAD, [hl]
 	ld hl, wPlayerStepFlags
 	set 6, [hl]
 	set 4, [hl]
@@ -1187,7 +1198,7 @@ TeleportFrom: ; 4c18
 	ld [hl], 16
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 3, [hl]
+	res OVERHEAD, [hl]
 	call IncrementObjectStructField28
 .DoSpinRise:
 	ld hl, OBJECT_ACTION
@@ -1933,6 +1944,7 @@ SpawnStrengthBoulderDust: ; 5538
 .BoulderDustObject:
 	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_BOULDERDUST
 ; 5547
+
 SpawnEmote: ; 5547
 	push bc
 	ld de, .EmoteObject
@@ -1944,6 +1956,7 @@ SpawnEmote: ; 5547
 .EmoteObject:
 	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
 ; 5556
+
 ShakeGrass: ; 5556
 	push bc
 	ld de, .data_5562
@@ -1955,6 +1968,20 @@ ShakeGrass: ; 5556
 .data_5562
 	db $00, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
 ; 5565
+
+SplashPuddle:
+	push bc
+	ld de, .puddle_data
+	call CopyTempObjectData
+	call InitTempObject
+	pop bc
+	ld de, SFX_PUDDLE
+	jp PlaySFX
+
+.puddle_data
+	db $00, PAL_OW_BLUE, SPRITEMOVEDATA_PUDDLE
+; 5565
+
 ShakeScreen: ; 5565
 	push bc
 	push af
@@ -1969,6 +1996,7 @@ ShakeScreen: ; 5565
 .ScreenShakeObject:
 	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_SCREENSHAKE
 ; 5579
+
 DespawnEmote: ; 5579
 	push bc
 	ld a, [hMapObjectIndexBuffer]
@@ -2425,17 +2453,6 @@ SetLeaderIfVisible: ; 5815
 	ret
 ; 581f
 
-StopFollow:: ; 581f
-	call ResetLeader
-	jp ResetFollower
-; 5826
-
-ResetLeader: ; 5826
-	ld a, -1
-	ld [wObjectFollow_Leader], a
-	ret
-; 582c
-
 SetFollowerIfVisible: ; 582c
 	push af
 	call ResetFollower
@@ -2453,12 +2470,16 @@ SetFollowerIfVisible: ; 582c
 	ret
 ; 5847
 
+StopFollow:: ; 581f
+	ld a, -1
+	ld [wObjectFollow_Leader], a
+	; fallthrough
 ResetFollower: ; 5847
 	ld a, [wObjectFollow_Follower]
 	cp -1
 	ret z
 	call GetObjectStruct
-	farcall Function58e3 ; no need to bankswitch
+	call Function58e3
 	ld a, -1
 	ld [wObjectFollow_Follower], a
 	ret
@@ -2551,7 +2572,7 @@ Function58e3: ; 58e3
 	add hl, bc
 	ld a, [hl]
 	cp -1
-	jp z, Function5903 ; a jr would have been appropriate here
+	jr z, Function5903
 	push bc
 	call GetMapObject
 	ld hl, MAPOBJECT_MOVEMENT
@@ -2784,7 +2805,7 @@ PRIORITY_HIGH EQU $30
 	or d
 	ld d, a
 	xor a
-	bit 3, e
+	bit OVERHEAD, e
 	jr z, .skip4
 	or %10000000
 .skip4

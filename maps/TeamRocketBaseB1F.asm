@@ -68,7 +68,7 @@ TeamRocketBaseB1F_MapEventHeader:
 	itemball_event 15, 14, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	itemball_event 12, 21, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
 
-const_value set 2
+const_value set 1
 	const TEAMROCKETBASEB1F_ROCKET1
 
 TeamRocketBaseB1FCallback1:

@@ -89,6 +89,7 @@ ENDM
 	trigger_def SEAGALLOP_FERRY_NAVEL_GATE,             wSeagallopFerryNavelGateTrigger
 	trigger_def SEAGALLOP_FERRY_SHAMOUTI_GATE,          wSeagallopFerryShamoutiGateTrigger
 	trigger_def FARAWAY_ISLAND,                         wFarawayIslandTrigger
+	trigger_def ROUTE_47,                               wRoute47Trigger
 	trigger_def ROUTE_48,                               wRoute48Trigger
 	trigger_def DAYCARE,                                wDayCareTrigger
 	trigger_def DARK_CAVE_VIOLET_ENTRANCE,              wDarkCaveVioletEntranceTrigger

@@ -17,7 +17,7 @@ TinTowerRoof_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_HO_OH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
 
-const_value set 2
+const_value set 1
 	const TINTOWERROOF_HO_OH
 
 TinTowerRoofHoOh:

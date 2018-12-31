@@ -1,3 +1,5 @@
+TRAINERCARD_BORDERGFX_START EQU $f4
+
 TrainerCard: ; 25105
 	ld a, [wVramState]
 	push af
@@ -37,7 +39,7 @@ TrainerCard: ; 25105
 	farcall GetCardPic
 
 	ld hl, CardBorderGFX
-	ld de, VTiles1 tile ("″" - $80) ; top-left corner
+	ld de, VTiles1 tile TRAINERCARD_BORDERGFX_START
 	ld bc, 12 tiles
 	ld a, BANK(CardBorderGFX)
 	call FarCopyBytes
@@ -241,7 +243,7 @@ TrainerCard_LoadHeaderGFX:
 TrainerCard_PrintBorder: ; 253b0 (9:53b0)
 	hlcoord 0, 0
 
-	ld a, "″" ; top-left corner
+	ld a, TRAINERCARD_BORDERGFX_START
 	ld [hli], a
 	ld e, SCREEN_WIDTH - 2
 	inc a ; top border

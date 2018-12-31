@@ -52,7 +52,7 @@ VermilionCity_MapEventHeader:
 	smashrock_event 7, 28
 	smashrock_event 9, 29
 
-const_value set 2
+const_value set 1
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_LAWRENCE
 

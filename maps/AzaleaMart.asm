@@ -68,7 +68,7 @@ AzaleaMartRockerText:
 	cont "gender #mon,"
 
 	para "and Fast Balls"
-	cont "only worked for"
+	line "only worked for"
 
 	para "three different"
 	line "#mon species."

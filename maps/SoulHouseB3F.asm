@@ -17,7 +17,7 @@ SoulHouseB3F_MapEventHeader:
 	person_event SPRITE_GRAMPS, 13, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SoulHouseB3FMrFujiScript, EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
 	itemball_event 9, 6, ESCAPE_ROPE, 1, EVENT_SOUL_HOUSE_B3F_ESCAPE_ROPE
 
-const_value set 2
+const_value set 1
 	const SOULHOUSEB3F_MRFUJI
 
 SoulHouseB3FMrFujiScript:
@@ -26,6 +26,7 @@ SoulHouseB3FMrFujiScript:
 	writetext .Text1
 	buttonsound
 	verbosegiveitem SILPHSCOPE2
+	setflag ENGINE_HAVE_SILPHSCOPE2
 	setevent EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
 	writetext .Text2
 	waitbutton

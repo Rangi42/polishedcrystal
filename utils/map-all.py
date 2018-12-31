@@ -17,14 +17,14 @@ map_headers_filename = 'maps/map_headers.asm'
 block_data_filename  = 'maps/block_data.asm'
 block_filename_fmt   = 'maps/%s.blk'
 
-tileset_names = ['johto1', 'johto2', 'kanto1', 'johto3', 'house1', 'house2',
-                 'pokecenter', 'gate', 'port', 'lab', 'facility', 'mart',
-                 'mansion', 'game_corner', 'gym1', 'house3', 'gym2', 'gym3',
-                 'lighthouse', 'kanto2', 'pokecom', 'battle_tower', 'tower',
-                 'cave', 'park', 'ruins', 'radio_tower', 'warehouse',
-                 'ice_path', 'forest', 'safari', 'alph', 'pokemon_mansion',
-                 'faraway', 'tunnel', 'decor', 'shamouti', 'museum', 'hotel',
-                 'quiet_cave', 'valencia']
+tileset_names = ['johto1', 'johto2', 'johto3', 'johto4', 'kanto1', 'kanto2',
+                 'shamouti', 'valencia', 'faraway', 'house1', 'house2', 'house3',
+                 'pokecenter', 'pokecom', 'mart', 'gate', 'gym1', 'gym2', 'gym3',
+                 'port', 'lab', 'facility', 'mansion', 'game_corner', 'decor',
+                 'museum', 'hotel', 'tower', 'battle_tower', 'radio_tower',
+                 'lighthouse', 'warehouse', 'cave', 'quiet_cave', 'ice_path',
+                 'tunnel', 'forest', 'park', 'safari', 'ruins', 'alph',
+                 'pokemon_mansion']
 
 # {'TILESET_JOHTO_1': 1, ...}
 tileset_ids = {}

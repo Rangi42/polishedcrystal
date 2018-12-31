@@ -37,7 +37,7 @@ _Squirtbottle: ; 50730
 	jr c, .nope
 
 	ld a, d
-	cp $17
+	cp SPRITEMOVEDATA_SUDOWOODO
 	jr nz, .nope
 
 	ld a, $1

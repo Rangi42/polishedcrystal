@@ -118,6 +118,11 @@ INCLUDE "maps/SproutTower2F.asm"
 INCLUDE "maps/SproutTower3F.asm"
 
 
+SECTION "Violet Outskirts Scripts", ROMX
+
+INCLUDE "maps/VioletOutskirts.asm"
+
+
 SECTION "Ruins of Alph Scripts", ROMX
 
 INCLUDE "maps/RuinsofAlphOutside.asm"
@@ -379,8 +384,7 @@ INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 
 SECTION "Lake of Rage Scripts", ROMX
 
-INCLUDE "maps/LakeofRageNorth.asm"
-INCLUDE "maps/LakeofRageSouth.asm" ; shares text with LakeofRageNorth.asm
+INCLUDE "maps/LakeofRage.asm"
 INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
 INCLUDE "maps/LakeofRageMagikarpHouse.asm"
 

@@ -28,7 +28,7 @@ OlivineLighthouse3F_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
 	itemball_event 2, 8, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
 
-const_value set 2
+const_value set 1
 	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
 
 OlivineLighthouse3FBattleGirlEmy:
@@ -151,6 +151,8 @@ TrainerBird_keeperTheo:
 
 Bird_keeperTheoScript:
 	end_if_just_battled
+	checkevent EVENT_JASMINE_RETURNED_TO_GYM
+	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
 	jumptextfaceplayer UnknownText_0x5b2df
 
 TrainerGentlemanPreston:
@@ -189,6 +191,16 @@ UnknownText_0x5b2df:
 
 	para "but I can't get up"
 	line "there…"
+	done
+
+Bird_keeperTheoFinalText:
+	text "How the heck do"
+	line "you go up?"
+
+	para "I heard the sick"
+	line "#mon is better"
+	cont "now, but I can't"
+	cont "get up there…"
 	done
 
 SailorTerrellSeenText:

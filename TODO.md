@@ -236,8 +236,8 @@ Some of these may never be added; they're just suggestions.
    * Make Double Kick hit 2–5 times with 20 power
    * Add Rock Blast (for Cloyster's Skill Link)
 * More music
-   * Pokémon Go Battle! Gym Leader (for Candela, Blanche, and Spark)
-   * Pokemon Go Battle! Legendary Raid (for Mewtwo)
+   * PGo Battle! Wild Pokémon (for Safari Game)
+   * PGo Battle! Legendary Raid (for Mewtwo)
    * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
    * R/S/E Route 120

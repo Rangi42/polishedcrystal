@@ -49,7 +49,7 @@ RuinsofAlphOutside_MapEventHeader:
 	smashrock_event 13, 7
 	smashrock_event 15, 8
 
-const_value set 2
+const_value set 1
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 
@@ -73,7 +73,7 @@ RuinsofAlphOutsideTrigger0:
 RuinsofAlphOutsideTileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
 	iffalse .locked
-	changeblock 10, 8, $bb
+	changeblock 10, 8, $9f
 .locked
 	return
 

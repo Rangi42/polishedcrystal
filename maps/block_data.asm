@@ -264,6 +264,9 @@ SproutTower2F_BlockData:
 SproutTower3F_BlockData:
 	INCBIN "maps/SproutTower3F.blk"
 
+VioletOutskirts_BlockData:
+	INCBIN "maps/VioletOutskirts.blk"
+
 RuinsofAlphOutside_BlockData:
 	INCBIN "maps/RuinsofAlphOutside.blk"
 
@@ -330,6 +333,9 @@ AzaleaGym_BlockData:
 
 AzaleaTown_BlockData:
 	INCBIN "maps/AzaleaTown.blk"
+
+AzaleaTownRaining_BlockData:
+	INCBIN "maps/AzaleaTownRaining.blk"
 
 CharcoalKiln_BlockData:
 	INCBIN "maps/CharcoalKiln.blk"
@@ -646,11 +652,11 @@ MahoganyGym_BlockData:
 MahoganyTown_BlockData:
 	INCBIN "maps/MahoganyTown.blk"
 
-LakeofRageNorth_BlockData:
-	INCBIN "maps/LakeofRageNorth.blk"
+LakeofRage_BlockData:
+	INCBIN "maps/LakeofRage.blk"
 
-LakeofRageSouth_BlockData:
-	INCBIN "maps/LakeofRageSouth.blk"
+LakeofRageFlooded_BlockData:
+	INCBIN "maps/LakeofRageFlooded.blk"
 
 TeamRocketBaseB1F_BlockData:
 	INCBIN "maps/TeamRocketBaseB1F.blk"
@@ -1394,6 +1400,9 @@ Route32_BlockData:
 Route33_BlockData:
 	INCBIN "maps/Route33.blk"
 
+Route33Raining_BlockData:
+	INCBIN "maps/Route33Raining.blk"
+
 Route34_BlockData:
 	INCBIN "maps/Route34.blk"
 
@@ -1438,6 +1447,9 @@ Route42_BlockData:
 
 Route43_BlockData:
 	INCBIN "maps/Route43.blk"
+
+Route43Raining_BlockData:
+	INCBIN "maps/Route43Raining.blk"
 
 Route44_BlockData:
 	INCBIN "maps/Route44.blk"

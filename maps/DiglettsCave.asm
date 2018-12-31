@@ -31,7 +31,7 @@ DiglettsCave_MapEventHeader:
 	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
 	itemball_event 28, 13, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
 
-const_value set 2
+const_value set 1
 	const DIGLETTSCAVE_POKE_BALL2
 
 DiglettsCaveFossilManiacScript:

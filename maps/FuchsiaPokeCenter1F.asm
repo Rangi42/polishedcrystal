@@ -17,10 +17,13 @@ FuchsiaPokeCenter1F_MapEventHeader:
 	signpost 1, 10, SIGNPOST_READ, PokemonJournalJanineScript
 
 .PersonEvents: db 4
-	pc_nurse_event 1, 5
 	person_event SPRITE_JANINE_IMPERSONATOR, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, JanineImpersonatorScript, -1
+	pc_nurse_event 1, 5
 	person_event SPRITE_COOLTRAINER_M, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerMText, -1
 	person_event SPRITE_COOLTRAINER_F, 4, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerFText, -1
+
+const_value set 1
+	const FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR
 
 PokemonJournalJanineScript:
 	setflag ENGINE_READ_JANINE_JOURNAL
@@ -41,12 +44,12 @@ PokemonJournalJanineScript:
 
 JanineImpersonatorScript:
 	showtextfaceplayer .Text1
-	applymovement LAST_TALKED, .SpinMovement
+	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_JANINE
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	showtext .Text2
-	applymovement LAST_TALKED, .SpinMovement
+	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
 	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX

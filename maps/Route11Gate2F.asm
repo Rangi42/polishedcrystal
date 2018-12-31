@@ -7,7 +7,7 @@ Route11Gate2F_MapScriptHeader:
 Route11Gate2F_MapEventHeader:
 
 .Warps: db 1
-	warp_def 7, 7, 5, ROUTE_11_GATE
+	warp_def 7, 7, -1, ROUTE_11_GATE_2F
 
 .XYTriggers: db 0
 

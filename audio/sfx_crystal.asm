@@ -301,3 +301,13 @@ Sfx_Twinkle_Ch5: ; 1799ce
 	note G_, 6
 	endchannel
 ; 1799ef
+
+Sfx_Puddle:
+	musicheader 1, 5, Sfx_Puddle_Ch5
+
+Sfx_Puddle_Ch5:
+	dutycycle $1
+	soundinput $97
+	sound __, 16, $98, $0700
+	soundinput $8
+	endchannel

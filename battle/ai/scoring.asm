@@ -326,18 +326,14 @@ AI_Smart: ; 386be
 	dbw EFFECT_LEECH_HIT,         AI_Smart_LeechHit
 	dbw EFFECT_EXPLOSION,         AI_Smart_Explosion
 	dbw EFFECT_DREAM_EATER,       AI_Smart_DreamEater
-	dbw EFFECT_MIRROR_MOVE,       AI_Smart_MirrorMove
 	dbw EFFECT_EVASION_UP,        AI_Smart_EvasionUp
 	dbw EFFECT_ALWAYS_HIT,        AI_Smart_AlwaysHit
 	dbw EFFECT_ACCURACY_DOWN,     AI_Smart_AccuracyDown
 	dbw EFFECT_HAZE,              AI_Smart_Haze
-	dbw EFFECT_BIDE,              AI_Smart_Bide
 	dbw EFFECT_ROAR,              AI_Smart_Roar
 	dbw EFFECT_HEAL,              AI_Smart_Heal
 	dbw EFFECT_TOXIC,             AI_Smart_Toxic
 	dbw EFFECT_LIGHT_SCREEN,      AI_Smart_LightScreen
-	dbw EFFECT_OHKO,              AI_Smart_Ohko
-	dbw EFFECT_RAZOR_WIND,        AI_Smart_RazorWind
 	dbw EFFECT_SUPER_FANG,        AI_Smart_SuperFang
 	dbw EFFECT_TRAP,              AI_Smart_Bind
 	dbw EFFECT_CONFUSE,           AI_Smart_Confuse
@@ -348,19 +344,14 @@ AI_Smart: ; 386be
 	dbw EFFECT_SUBSTITUTE,        AI_Smart_Substitute
 	dbw EFFECT_HYPER_BEAM,        AI_Smart_HyperBeam
 	dbw EFFECT_RAGE,              AI_Smart_Rage
-	dbw EFFECT_MIMIC,             AI_Smart_Mimic
 	dbw EFFECT_LEECH_SEED,        AI_Smart_LeechSeed
 	dbw EFFECT_DISABLE,           AI_Smart_Disable
 	dbw EFFECT_COUNTER,           AI_Smart_Counter
 	dbw EFFECT_ENCORE,            AI_Smart_Encore
 	dbw EFFECT_PAIN_SPLIT,        AI_Smart_PainSplit
-	dbw EFFECT_SNORE,             AI_Smart_Snore
-	dbw EFFECT_LOCK_ON,           AI_Smart_LockOn
-	dbw EFFECT_DEFROST_OPPONENT,  AI_Smart_DefrostOpponent
 	dbw EFFECT_SLEEP_TALK,        AI_Smart_SleepTalk
 	dbw EFFECT_DESTINY_BOND,      AI_Smart_DestinyBond
 	dbw EFFECT_REVERSAL,          AI_Smart_Reversal
-	dbw EFFECT_SPITE,             AI_Smart_Spite
 	dbw EFFECT_HEAL_BELL,         AI_Smart_HealBell
 	dbw EFFECT_PRIORITY_HIT,      AI_Smart_PriorityHit
 	dbw EFFECT_THIEF,             AI_Smart_Thief
@@ -387,9 +378,7 @@ AI_Smart: ; 386be
 	dbw EFFECT_RAIN_DANCE,        AI_Smart_RainDance
 	dbw EFFECT_SUNNY_DAY,         AI_Smart_SunnyDay
 	dbw EFFECT_BELLY_DRUM,        AI_Smart_BellyDrum
-	dbw EFFECT_PSYCH_UP,          AI_Smart_PsychUp
 	dbw EFFECT_MIRROR_COAT,       AI_Smart_MirrorCoat
-	dbw EFFECT_SKULL_BASH,        AI_Smart_SkullBash
 	dbw EFFECT_EARTHQUAKE,        AI_Smart_Earthquake
 	dbw EFFECT_FUTURE_SIGHT,      AI_Smart_FutureSight
 	dbw EFFECT_GUST,              AI_Smart_Gust
@@ -452,114 +441,6 @@ AI_Smart_LeechHit: ; 387f7
 	inc [hl]
 	ret
 ; 3881d
-
-
-AI_Smart_LockOn: ; 3881d
-	ld a, [wPlayerSubStatus2]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .asm_38882
-
-	push hl
-	call AICheckEnemyQuarterHP
-	jr nc, .asm_38877
-
-	call AICheckEnemyHalfHP
-	jr c, .asm_38834
-
-	call AICompareSpeed
-	jr nc, .asm_38877
-
-.asm_38834
-	ld a, [wPlayerEvaLevel]
-	cp $a
-	jr nc, .asm_3887a
-	cp $8
-	jr nc, .asm_38875
-
-	ld a, [wEnemyAccLevel]
-	cp $5
-	jr c, .asm_3887a
-	cp $7
-	jr c, .asm_38875
-
-	ld hl, wEnemyMonMoves
-	ld c, NUM_MOVES + 1
-.asm_3884f
-	dec c
-	jr z, .asm_38877
-
-	ld a, [hli]
-	and a
-	jr z, .asm_38877
-
-	call AIGetEnemyMove
-
-	ld a, [wEnemyMoveStruct + MOVE_ACC]
-	cp 180
-	jr nc, .asm_3884f
-
-	ld a, $1
-	ld [hBattleTurn], a
-
-	push hl
-	push bc
-	farcall BattleCheckTypeMatchup
-	ld a, [wd265]
-	cp $a
-	pop bc
-	pop hl
-	jr c, .asm_3884f
-
-.asm_38875
-	pop hl
-	ret
-
-.asm_38877
-	pop hl
-	inc [hl]
-	ret
-
-.asm_3887a
-	pop hl
-	call AI_50_50
-	ret c
-
-rept 2
-	dec [hl]
-endr
-	ret
-
-.asm_38882
-	push hl
-	ld hl, wBuffer1 - 1
-	ld de, wEnemyMonMoves
-	ld c, NUM_MOVES + 1
-
-.asm_3888b
-	inc hl
-	dec c
-	jr z, .asm_388a2
-
-	ld a, [de]
-	and a
-	jr z, .asm_388a2
-
-	inc de
-	call AIGetEnemyMove
-
-	ld a, [wEnemyMoveStruct + MOVE_ACC]
-	cp 180
-	jr nc, .asm_3888b
-
-rept 2
-	dec [hl]
-endr
-	jr .asm_3888b
-
-.asm_388a2
-	pop hl
-	jp AIDiscourageMove
-; 388a6
 
 
 AI_Smart_Explosion:
@@ -746,50 +627,6 @@ endr
 ; 3895b
 
 
-AI_Smart_MirrorMove: ; 3895b
-
-; If the player did not use any move last turn...
-	ld a, [wPlayerSelectedMove]
-	and a
-	jr nz, .asm_38968
-
-; ...do nothing if enemy is slower than player
-	call AICompareSpeed
-	ret nc
-
-; ...or dismiss this move if enemy is faster than player.
-	jp AIDiscourageMove
-
-; If the player did use a move last turn...
-.asm_38968
-	push hl
-	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
-	pop hl
-
-; ...do nothing if he didn't use a useful move.
-	ret nc
-
-; If he did, 50% chance to encourage this move...
-	call AI_50_50
-	ret c
-
-	dec [hl]
-
-; ...and 90% chance to encourage this move again if the enemy is faster.
-	call AICompareSpeed
-	ret nc
-
-	call Random
-	cp $19
-	ret c
-
-	dec [hl]
-	ret
-; 38985
-
-
 AI_Smart_AccuracyDown: ; 38985
 
 ; If player's HP is full...
@@ -939,19 +776,6 @@ AI_Smart_Haze: ; 389f5
 ; 38a1e
 
 
-AI_Smart_Bide: ; 38a1e
-; 90% chance to discourage this move unless enemy's HP is full.
-
-	call AICheckEnemyMaxHP
-	ret c
-	call Random
-	cp $19
-	ret c
-	inc [hl]
-	ret
-; 38a2a
-
-
 AI_Smart_Roar: ; 38a2a
 ; Discourage this move if the player has not shown
 ; a super-effective move against the enemy.
@@ -1017,22 +841,6 @@ AI_Smart_Reflect: ; 38a54
 ; 38a60
 
 
-AI_Smart_Ohko: ; 38a60
-; Dismiss this move if player's level is higher than enemy's level.
-; Else, discourage this move is player's HP is below 50%.
-
-	ld a, [wBattleMonLevel]
-	ld b, a
-	ld a, [wEnemyMonLevel]
-	cp b
-	jp c, AIDiscourageMove
-	call AICheckPlayerHalfHP
-	ret c
-	inc [hl]
-	ret
-; 38a71
-
-
 AI_Smart_Bind: ; 38a71
 ; Wrap, Fire Spin, Whirlpool
 
@@ -1073,60 +881,6 @@ rept 2
 endr
 	ret
 ; 38a9c
-
-
-AI_Smart_RazorWind: ; 38a9c
-	ld a, [wEnemySubStatus1]
-	bit SUBSTATUS_PERISH, a
-	jr z, .asm_38aaa
-
-	ld a, [wEnemyPerishCount]
-	cp 3
-	jr c, .asm_38ad3
-
-.asm_38aaa
-	push hl
-	ld hl, wPlayerUsedMoves
-	ld c, 4
-
-.asm_38ab0
-	ld a, [hli]
-	and a
-	jr z, .asm_38ac1
-
-	call AIGetEnemyMove
-
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_PROTECT
-	jr z, .asm_38ad5
-	dec c
-	jr nz, .asm_38ab0
-
-.asm_38ac1
-	pop hl
-	ld a, [wEnemySubStatus3]
-	bit SUBSTATUS_CONFUSED, a
-	jr nz, .asm_38acd
-
-	call AICheckEnemyHalfHP
-	ret c
-
-.asm_38acd
-	call Random
-	cp $c8
-	ret c
-
-.asm_38ad3
-	inc [hl]
-	ret
-
-.asm_38ad5
-	pop hl
-	ld a, [hl]
-	add 6
-	ld [hl], a
-	ret
-; 38adb
 
 
 AI_Smart_Confuse: ; 38adb
@@ -1337,57 +1091,6 @@ AI_Smart_Rage: ; 38b7f
 ; 38ba8
 
 
-AI_Smart_Mimic: ; 38ba8
-	ld a, [wPlayerSelectedMove]
-	and a
-	jr z, .asm_38be9
-
-	call AICheckEnemyHalfHP
-	jr nc, .asm_38bef
-
-	push hl
-	ld a, [wPlayerSelectedMove]
-	call AIGetEnemyMove
-
-	ld a, $1
-	ld [hBattleTurn], a
-	farcall BattleCheckTypeMatchup
-
-	ld a, [wd265]
-	cp $a
-	pop hl
-	jr c, .asm_38bef
-	jr z, .asm_38bd4
-
-	call AI_50_50
-	jr c, .asm_38bd4
-
-	dec [hl]
-
-.asm_38bd4
-	ld a, [wPlayerSelectedMove]
-	push hl
-	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
-
-	pop hl
-	ret nc
-	call AI_50_50
-	ret c
-	dec [hl]
-	ret
-
-.asm_38be9
-	call AICompareSpeed
-	jp c, AIDiscourageMove
-
-.asm_38bef
-	inc [hl]
-	ret
-; 38bf1
-
-
 AI_Smart_Counter: ; 38bf1
 	push hl
 	ld hl, wPlayerUsedMoves
@@ -1551,7 +1254,6 @@ AI_Smart_PainSplit: ; 38ca4
 ; 38cba
 
 
-AI_Smart_Snore:
 AI_Smart_SleepTalk: ; 38cba
 ; Greatly encourage this move if enemy is fast asleep.
 ; Greatly discourage this move otherwise.
@@ -1574,87 +1276,8 @@ endr
 ; 38ccb
 
 
-AI_Smart_DefrostOpponent: ; 38ccb
-; Greatly encourage this move if enemy is frozen.
-; No move has EFFECT_DEFROST_OPPONENT, so this layer is unused.
-
-	ld a, [wEnemyMonStatus]
-	and $20
-	ret z
-rept 3
-	dec [hl]
-endr
-	ret
-; 38cd5
-
-
-AI_Smart_Spite: ; 38cd5
-	ld a, [wPlayerSelectedMove]
-	and a
-	jr nz, .asm_38ce7
-
-	call AICompareSpeed
-	jp c, AIDiscourageMove
-
-	call AI_50_50
-	ret c
-	inc [hl]
-	ret
-
-.asm_38ce7
-	push hl
-	ld b, a
-	ld c, 4
-	ld hl, wBattleMonMoves
-	ld de, wBattleMonPP
-
-.asm_38cf1
-	ld a, [hli]
-	cp b
-	jr z, .asm_38cfb
-
-	inc de
-	dec c
-	jr nz, .asm_38cf1
-
-	pop hl
-	ret
-
-.asm_38cfb
-	pop hl
-	ld a, [de]
-	cp $6
-	jr c, .asm_38d0d
-	cp $f
-	jr nc, .asm_38d0b
-
-	call Random
-	cp $64
-	ret nc
-
-.asm_38d0b
-	inc [hl]
-	ret
-
-.asm_38d0d
-	call Random
-	cp $64
-	ret c
-rept 2
-	dec [hl]
-endr
-	ret
-; 38d16
-
-
-Function_0x38d16; 38d16
-	jp AIDiscourageMove
-; 38d19
-
-
 AI_Smart_DestinyBond:
-AI_Smart_Reversal:
-AI_Smart_SkullBash: ; 38d19
+AI_Smart_Reversal: ; 38d19
 ; Discourage this move if enemy's HP is above 25%.
 
 	call AICheckEnemyQuarterHP
@@ -2555,65 +2178,6 @@ AI_Smart_BellyDrum: ; 3913d
 ; 39152
 
 
-AI_Smart_PsychUp: ; 39152
-	push hl
-	ld hl, wEnemyAtkLevel
-	lb bc, $8, 100
-
-; Calculate the sum of all enemy's stat level modifiers. Add 100 first to prevent underflow.
-; Put the result in c. c will range between 58 and 142.
-.asm_3915a
-	ld a, [hli]
-	sub $7
-	add c
-	ld c, a
-	dec b
-	jr nz, .asm_3915a
-
-; Calculate the sum of all player's stat level modifiers. Add 100 first to prevent underflow.
-; Put the result in d. d will range between 58 and 142.
-	ld hl, wPlayerAtkLevel
-	ld b, $8
-	ld d, 100
-
-.asm_39169
-	ld a, [hli]
-	sub $7
-	add d
-	ld d, a
-	dec b
-	jr nz, .asm_39169
-
-; Greatly discourage this move if enemy's stat levels are higher than player's (if c>=d).
-	ld a, c
-	sub d
-	pop hl
-	jr nc, .asm_39188
-
-; Else, 80% chance to encourage this move unless player's accuracy level is lower than -1...
-	ld a, [wPlayerAccLevel]
-	cp $6
-	ret c
-
-; ...or enemy's evasion level is higher than +0.
-	ld a, [wEnemyEvaLevel]
-	cp $8
-	ret nc
-
-	call AI_80_20
-	ret c
-
-	dec [hl]
-	ret
-
-.asm_39188
-rept 2
-	inc [hl]
-endr
-	ret
-; 3918b
-
-
 AI_Smart_MirrorCoat: ; 3918b
 	push hl
 	ld hl, wPlayerUsedMoves
@@ -3253,7 +2817,6 @@ AIDamageCalc: ; 393e7
 	db EFFECT_SUPER_FANG
 	db EFFECT_STATIC_DAMAGE
 	db EFFECT_LEVEL_DAMAGE
-	db EFFECT_PSYWAVE
 	db $ff
 
 AI_Cautious: ; 39418
@@ -3523,7 +3086,6 @@ endr
 
 .RiskyMoves:
 	db EFFECT_EXPLOSION
-	db EFFECT_OHKO
 	db $ff
 ; 39502
 

@@ -183,6 +183,7 @@
 	charmap "▶",        $ee
 
 ; common font:
+COMMON_FONT_START EQU $6f
 
 	charmap "▷",        $ef
 
@@ -196,9 +197,10 @@
 	charmap "<_>",      $f6
 	charmap "↑",        $f7
 	charmap "↓",        $f8
-	charmap "<NONO>",   $f9
+	charmap "<UPDN>",   $f9
 
 ; frame:
+FRAME_START EQU $fa
 
 	charmap "┌",        $fa
 	charmap "─",        $fb
@@ -208,6 +210,7 @@
 	charmap "┘",        $ff
 
 ; battle extra:
+BATTLEEXTRA_GFX_START EQU $5f
 
 	charmap "<BALL>",   $5f
 	charmap "<MALE>",   $60
@@ -230,3 +233,5 @@
 	charmap "<NOXP>",   $75
 	charmap "<FULLXP>", $7d
 	charmap "<XPEND>",  $7e
+
+	charmap "<NONO>",   $f2 ; overwrites <PHONE> in battle

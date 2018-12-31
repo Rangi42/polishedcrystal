@@ -498,9 +498,8 @@ endr
 	ld c, a
 	ld b, 0
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
 .loop3

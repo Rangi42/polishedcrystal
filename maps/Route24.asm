@@ -15,7 +15,7 @@ Route24_MapEventHeader:
 .PersonEvents: db 1
 	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
-const_value set 2
+const_value set 1
 	const ROUTE24_ROCKET
 
 TrainerGruntM31:

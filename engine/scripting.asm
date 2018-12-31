@@ -980,19 +980,10 @@ Script_cry:
 .ok
 	jp PlayCry
 
-GetScriptPerson:
-	and a
-	ret z
-	cp LAST_TALKED
-	ret z
-	dec a
-	ret
-
 Script_setlasttalked:
 ; parameters:
 ;     person (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	ld [hLastTalked], a
 	ret
 
@@ -1001,7 +992,6 @@ Script_applyonemovement:
 ;     person (SingleByteParam)
 ;     data (MovementDataParam)
 	call GetScriptByte
-	call GetScriptPerson
 	ld c, a
 
 	push bc
@@ -1032,7 +1022,6 @@ Script_applymovement:
 ;     person (SingleByteParam)
 ;     data (MovementPointerLabelParam)
 	call GetScriptByte
-	call GetScriptPerson
 	ld c, a
 	jr ApplyMovement
 
@@ -1088,14 +1077,12 @@ Script_faceperson:
 ;     person1 (SingleByteParam)
 ;     person2 (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	cp LAST_TALKED
 	jr c, .ok
 	ld a, [hLastTalked]
 .ok
 	ld e, a
 	call GetScriptByte
-	call GetScriptPerson
 	cp LAST_TALKED
 	jr nz, .ok2
 	ld a, [hLastTalked]
@@ -1117,7 +1104,6 @@ Script_spriteface:
 ;     person (SingleByteParam)
 ;     facing (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	cp LAST_TALKED
 	jr nz, .ok
 	ld a, [hLastTalked]
@@ -1190,7 +1176,6 @@ Script_appear:
 ; parameters:
 ;     person (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	call _CopyObjectStruct
 	ld a, [hMapObjectIndexBuffer]
 	ld b, 0 ; clear
@@ -1200,7 +1185,6 @@ Script_disappear:
 ; parameters:
 ;     person (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	cp LAST_TALKED
 	jr nz, .ok
 	ld a, [hLastTalked]
@@ -1235,10 +1219,8 @@ Script_follow:
 ;     person2 (SingleByteParam)
 ;     person1 (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	ld b, a
 	call GetScriptByte
-	call GetScriptPerson
 	ld c, a
 	farjp StartFollow
 
@@ -1251,7 +1233,6 @@ Script_moveperson:
 ;     x (SingleByteParam)
 ;     y (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	ld b, a
 	call GetScriptByte
 	add 4
@@ -1265,7 +1246,6 @@ Script_writepersonxy:
 ; parameters:
 ;     person (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	cp LAST_TALKED
 	jr nz, .ok
 	ld a, [hLastTalked]
@@ -1278,10 +1258,8 @@ Script_follownotexact:
 ;     person2 (SingleByteParam)
 ;     person1 (SingleByteParam)
 	call GetScriptByte
-	call GetScriptPerson
 	ld b, a
 	call GetScriptByte
-	call GetScriptPerson
 	ld c, a
 	farjp FollowNotExact
 
@@ -1304,7 +1282,6 @@ Script_showemote:
 	call GetScriptByte
 	ld [wScriptVar], a
 	call GetScriptByte
-	call GetScriptPerson
 	cp LAST_TALKED
 	jr z, .ok
 	ld [hLastTalked], a

@@ -125,7 +125,6 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	call GiveFontOpaqueBackground
 	farcall HDMATransfer_OnlyTopFourRows
 .skip2
-	ld a, $80
 	ld a, $70
 	ld [rWY], a
 	ld [hWY], a
@@ -581,8 +580,7 @@ endm
 	treemon_map OLIVINE_CITY, 0
 	treemon_map ECRUTEAK_CITY, 0
 	treemon_map MAHOGANY_TOWN, 0
-	treemon_map LAKE_OF_RAGE_NORTH, 5
-	treemon_map LAKE_OF_RAGE_SOUTH, 5
+	treemon_map LAKE_OF_RAGE, 5
 	treemon_map BLACKTHORN_CITY, 0
 	treemon_map SILVER_CAVE_OUTSIDE, 1
 	treemon_map ILEX_FOREST, 6

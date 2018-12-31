@@ -30,7 +30,7 @@ Route44_MapEventHeader:
 	itemball_event 4, 45, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
 	itemball_event 9, 14, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 
-const_value set 2
+const_value set 1
 	const ROUTE44_VETERAN_M
 
 Route44VeteranmScript:

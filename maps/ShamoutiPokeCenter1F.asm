@@ -21,7 +21,7 @@ ShamoutiPokeCenter1F_MapEventHeader:
 	person_event SPRITE_IVY, 3, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
 	pc_nurse_event 1, 5
 
-const_value set 2
+const_value set 1
 	const SHAMOUTIPOKECENTER1F_IVY
 
 ShamoutiPokeCenter1FFixStairScript:

@@ -20,7 +20,7 @@ CeruleanCaveB1F_MapEventHeader:
 	itemball_event 9, 26, MAX_ELIXER, 1, EVENT_CERULEAN_CAVE_B1F_MAX_ELIXER
 	itemball_event 3, 26, ULTRA_BALL, 1, EVENT_CERULEAN_CAVE_B1F_ULTRA_BALL
 
-const_value set 2
+const_value set 1
 	const CERULEANCAVEB1F_MEWTWO
 
 CeruleanCaveMewtwo:
