@@ -3037,17 +3037,20 @@ BattleCommand_PostHitEffects:
 .life_orb
 	call .checkfaint
 	ret z
-
-	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect was suppressed)
-	ld a, [EffectFailed]
-	and a
-	jr z, .no_suppressed_effect
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	cp SHEER_FORCE
+	cp MAGIC_GUARD
 	ret z
 
-.no_suppressed_effect
+	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect
+	; was suppressed)
+	cp SHEER_FORCE
+	jr nz, .no_sheer_force
+	ld a, [EffectFailed]
+	and a
+	ret z
+
+.no_sheer_force
 	xor a
 	farcall GetMaxHP
 	ld a, b
