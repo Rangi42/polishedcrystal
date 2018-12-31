@@ -7581,6 +7581,7 @@ GiveBattleEVs:
 	; check held item
 	push bc
 	ld hl, BattleMonItem
+	ld b, [hl]
 	farcall GetItemHeldEffect
 	ld a, b
 	cp HELD_EV_DOUBLE
