@@ -1010,8 +1010,8 @@ CheckSpeed::
 	jr c, .player_first
 	jr nz, .enemy_first
 	; Speed is equal, so randomize. Account for linking.
-	ld a, [hLinkPlayerNumber]
-	cp 2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	ld b, 0
 	jr z, .secondary_player
 	ld b, 1

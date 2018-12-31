@@ -7,19 +7,19 @@ Route1_MapScriptHeader:
 Route1_MapEventHeader:
 
 .Warps: db 1
-	warp_def 1, 8, 3, ROUTE_1_VIRIDIAN_GATE
+	warp_def 1, 10, 3, ROUTE_1_VIRIDIAN_GATE
 
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 27, 7, SIGNPOST_JUMPTEXT, Route1SignText
+	signpost 27, 9, SIGNPOST_JUMPTEXT, Route1SignText
 
 .PersonEvents: db 5
-	person_event SPRITE_YOUNGSTER, 12, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
-	person_event SPRITE_YOUNGSTER, 14, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboySherman, -1
-	person_event SPRITE_COOLTRAINER_M, 21, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFrench, -1
-	person_event SPRITE_COOLTRAINER_F, 25, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1
-	fruittree_event 7, 3, FRUITTREE_ROUTE_1, FIGY_BERRY
+	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
+	person_event SPRITE_YOUNGSTER, 14, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboySherman, -1
+	person_event SPRITE_COOLTRAINER_M, 21, 16, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFrench, -1
+	person_event SPRITE_COOLTRAINER_F, 25, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1
+	fruittree_event 7, 5, FRUITTREE_ROUTE_1, FIGY_BERRY
 
 TrainerSchoolboyDanny:
 	trainer EVENT_BEAT_SCHOOLBOY_DANNY, SCHOOLBOY, DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText, 0, SchoolboyDannyScript

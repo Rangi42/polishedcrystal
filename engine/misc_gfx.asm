@@ -90,6 +90,34 @@ OpenAndCloseMenu_HDMATransferTileMapAndAttrMap:: ; 104110
 	ret
 ; 104148
 
+BridgeTransition_HDMATransferTileMapAndAttrMap::
+	ld hl, .Function
+	jp CallInSafeGFXMode
+
+.Function:
+	decoord 0, 0, wAttrMap
+	ld hl, wScratchAttrMap
+	call CutAndPasteAttrMap
+	decoord 0, 0
+	ld hl, wScratchTileMap
+	call CutAndPasteTilemap
+
+	di
+	ld a, [rVBK]
+	push af
+	ld a, $1
+	ld [rVBK], a
+	ld hl, wScratchAttrMap
+	call HDMATransfer_Wait123Scanlines_toBGMap
+	ld a, $0
+	ld [rVBK], a
+	ld hl, wScratchTileMap
+	call HDMATransfer_Wait123Scanlines_toBGMap
+	pop af
+	ld [rVBK], a
+	ei
+	ret
+
 CallInSafeGFXMode: ; 104177
 	ld a, [hBGMapMode]
 	push af

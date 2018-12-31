@@ -41,7 +41,6 @@ The final, non-beta 3.0 release should include all of these.
 
 ### Aesthetics
 
-* Animation frames of Magikarp variants need their patterns
 * Play a shiny flash when Pokémon are caught (from Prism)
 * "make hgss" to use HGSS-based palettes
 
@@ -231,12 +230,8 @@ Some of these may never be added; they're just suggestions.
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
 * More moves
    * Triple Kick is replacable (learned by Hitmontop, Hitmonlee, and Dodrio)
-   * Lock-On is replacable
-   * Harden is replacable (merge with Defense Curl)
    * Make Double Kick hit 2–5 times with 20 power
-   * Add Rock Blast (for Cloyster's Skill Link)
 * More music
-   * PGo Battle! Wild Pokémon (for Safari Game)
    * PGo Battle! Legendary Raid (for Mewtwo)
    * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
@@ -245,7 +240,6 @@ Some of these may never be added; they're just suggestions.
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
 * 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/doublespeed) mode
 * Port optimizations from Prism that improve overall speed of graphics loading, menu scrolling, etc
-* Move textbox frames into the font, allowing 256 map tiles
 * Load the font graphics only when textboxes are open, and otherwise load sprites' walking frames like G/S (popup location signs would have to be handled specially)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
@@ -257,8 +251,8 @@ Some of these may never be added; they're just suggestions.
 * Something like Habitat Lists or DexNav via the Town Map
 * Something like Poké Radar or Pokéwalker
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
+* Use the [Japanese GS Ball event quiz](https://www.pokecommunity.com/showthread.php?p=9739072#post9739072) ([original](http://www.geocities.co.jp/Playtown-Darts/9915/serebi.htm))
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
-* Restore the Safari Game (some functionality, like HandleSafariAngerEatingStatus, already exists)
 * Restore the Pikachu's beach minigame
 * Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
@@ -282,12 +276,21 @@ Some of these may never be added; they're just suggestions.
 * Replace the Apricorns with an Apricorn Box and add more Berries
 * Restore Berry Juice, and make it heal full HP but cause confusion (in non-Faithful)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
+   * Madoka:
+   * She entered this tournament with new Pokémon! Which Pokémon wil she use?
+   * "I knew this Pokémon was strong! I didn't spend days and days to find and catch it for nothing."
+   * "What? Why did this Pokémon lose?"
+   * "I'll come back after raising Pokémon more seriously."
+   * En:
+   * He wants to battle strong opponents! That is his only wish!
+   * "Being able to battle with you, the best Trainer, in the best stage... Ah! I'm really happy right now!"
+   * "Oh! This is my first time battling against such a strong opponent!"
+   * "Your attack was great! Let's battle again sometime!"
 * Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
 * Use Mart interface for selling decorations, with a red sidebar
 * Add separate throwing animation graphics for more Poké Ball designs
 * Make Eggs use their Pokémon's palette
-* Add umbrellas to Olivine City benches
 
 There are some features that I do *not* ever plan to add to Polished Crystal:
 
@@ -298,3 +301,4 @@ There are some features that I do *not* ever plan to add to Polished Crystal:
 * Ash-Greninja
 * Ash Ketchum
 * Gen VI Exp. Share
+* Levels above 100

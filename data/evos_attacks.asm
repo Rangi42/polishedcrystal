@@ -837,11 +837,7 @@ ParasectEvosAttacks:
 	db 37, GROWTH
 	db 44, GIGA_DRAIN
 	db 51, LEECH_LIFE ; Aromatherapy → TM move
-if DEF(FAITHFUL)
 	db 59, HEALINGLIGHT ; Rage Powder → new move
-else
-	db 59, HEX ; Rage Powder → new move
-endc
 	db 66, X_SCISSOR
 	db 0 ; no more level-up moves
 
@@ -1501,20 +1497,21 @@ SlowbroEvosAttacks:
 MagnemiteEvosAttacks:
 	db EVOLVE_LEVEL, 30, MAGNETON
 	db 0 ; no more evolutions
+	db 1, SUPERSONIC
 	db 1, TACKLE
-	db 5, SUPERSONIC
-	db 7, THUNDERSHOCK
-	db 11, SONIC_BOOM
-	db 13, THUNDER_WAVE
-	db 17, SWIFT ; Magnet Bomb → TM move
+	db 5, THUNDERSHOCK
+	db 7, THUNDER_WAVE
+	db 11, QUICK_ATTACK ; Magnet Bomb → TCG move
+	db 13, LIGHT_SCREEN
+	db 17, SONIC_BOOM
 	db 19, SPARK
-	db 23, AGILITY ; Mirror Shot → event move
+	db 23, SWIFT ; Mirror Shot → TM move
 	db 25, SELFDESTRUCT ; Metal Sound → TCG move
 	db 29, THUNDERBOLT ; Electro Ball → TM move
 	db 31, FLASH_CANNON
 	db 35, SCREECH
 	db 37, HIDDEN_POWER ; Discharge → TM move
-	db 41, LIGHT_SCREEN ; Lock-On → TM move
+	db 41, AGILITY ; Lock-On → event move
 	db 43, GYRO_BALL ; Magnet Rise → Gyro Ball
 	db 47, THUNDER ; Gyro Ball → TM move
 	db 49, ZAP_CANNON
@@ -1524,20 +1521,21 @@ MagnetonEvosAttacks:
 	db EVOLVE_LOCATION, MAGNET_TUNNEL, MAGNEZONE
 	db 0 ; no more evolutions
 	db 1, TRI_ATTACK ; evolution move
+	db 1, SUPERSONIC
 	db 1, TACKLE
-	db 5, SUPERSONIC
-	db 7, THUNDERSHOCK
-	db 11, SONIC_BOOM
-	db 13, THUNDER_WAVE
-	db 17, SWIFT ; Magnet Bomb → TM move
+	db 5, THUNDERSHOCK
+	db 7, THUNDER_WAVE
+	db 11, QUICK_ATTACK ; Magnet Bomb → TCG move
+	db 13, LIGHT_SCREEN
+	db 17, SONIC_BOOM
 	db 19, SPARK
-	db 23, AGILITY ; Mirror Shot → event move
+	db 23, SWIFT ; Mirror Shot → TM move
 	db 25, SELFDESTRUCT ; Metal Sound → TCG move
 	db 29, THUNDERBOLT ; Electro Ball → TM move
 	db 33, FLASH_CANNON
 	db 39, SCREECH
 	db 43, HIDDEN_POWER ; Discharge → TM move
-	db 49, LIGHT_SCREEN ; Lock-On → TM move
+	db 49, AGILITY ; Lock-On → event move
 	db 53, GYRO_BALL ; Magnet Rise → Gyro Ball
 	db 59, THUNDER ; Gyro Ball → TM move
 	db 63, ZAP_CANNON
@@ -2156,12 +2154,12 @@ ChanseyEvosAttacks:
 	db 23, MINIMIZE
 	db 27, TAKE_DOWN
 	db 31, SING
-	db 34, CHARM ; Fling → Happiny move
-	db 38, HEAL_BELL ; Heal Pulse → HGSS tutor move
-	db 42, BODY_SLAM ; Egg Bomb → TM move
-	db 46, LIGHT_SCREEN
-	db 50, SUBSTITUTE ; Healing Wish → TM move
-	db 54, DOUBLE_EDGE
+	db 35, CHARM ; Fling → Happiny move
+	db 39, HEAL_BELL ; Heal Pulse → HGSS tutor move
+	db 44, BODY_SLAM ; Egg Bomb → TM move
+	db 50, LIGHT_SCREEN
+	db 57, SUBSTITUTE ; Healing Wish → TM move
+	db 65, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 TangelaEvosAttacks:
@@ -2454,12 +2452,13 @@ TaurosEvosAttacks:
 	db 19, REST
 	db 24, QUICK_ATTACK ; Payback → event move
 	db 29, BULK_UP ; Work Up → TM move
-	db 35, ZEN_HEADBUTT
-	db 41, TAKE_DOWN
+	db 35, TAKE_DOWN
+	db 41, ZEN_HEADBUTT
 	db 48, SWAGGER
 	db 55, THRASH
-	db 63, GIGA_IMPACT
-	db 72, OUTRAGE ; HGSS tutor move
+	db 63, DOUBLE_EDGE
+	db 71, GIGA_IMPACT
+	db 80, OUTRAGE ; HGSS tutor move
 	db 0 ; no more level-up moves
 
 MagikarpEvosAttacks:
@@ -3358,20 +3357,21 @@ MagnezoneEvosAttacks:
 	db 1, TRI_ATTACK ; evolution move
 	db 1, MIRROR_COAT
 	db 1, BARRIER
+	db 1, SUPERSONIC
 	db 1, TACKLE
-	db 5, SUPERSONIC
-	db 7, THUNDERSHOCK
-	db 11, SONIC_BOOM
-	db 13, THUNDER_WAVE
-	db 17, SWIFT ; Magnet Bomb → TM move
+	db 5, THUNDERSHOCK
+	db 7, THUNDER_WAVE
+	db 11, QUICK_ATTACK ; Magnet Bomb → TCG move
+	db 13, LIGHT_SCREEN
+	db 17, SONIC_BOOM
 	db 19, SPARK
-	db 23, AGILITY ; Mirror Shot → event move
+	db 23, SWIFT ; Mirror Shot → TM move
 	db 25, SELFDESTRUCT ; Metal Sound → TCG move
 	db 29, THUNDERBOLT ; Electro Ball → TM move
 	db 33, FLASH_CANNON
 	db 39, SCREECH
 	db 43, HIDDEN_POWER ; Discharge → TM move
-	db 49, LIGHT_SCREEN ; Lock-On → TM move
+	db 49, AGILITY ; Lock-On → event move
 	db 53, GYRO_BALL ; Magnet Rise → Gyro Ball
 	db 59, THUNDER ; Gyro Ball → TM move
 	db 63, ZAP_CANNON
@@ -3965,21 +3965,22 @@ DunsparceEvosAttacks:
 	db 6, ASTONISH ; Spite → egg move
 	db 8, PURSUIT
 	db 11, SCREECH
-	db 13, FURY_STRIKES ; Yawn → event move (Fury Attack)
-	db 16, ANCIENTPOWER
-	db 18, BODY_SLAM
-	db 21, DRAGON_RAGE ; Drill Run → new move
-	db 23, ROOST
-	db 26, TAKE_DOWN
-	db 28, DRAGON_DANCE ; Coil → new move
-	db 31, DIG
-	db 33, GLARE
-	db 36, DOUBLE_EDGE
-	db 38, EARTHQUAKE ; Endeavor → TM move
-	db 41, AIR_SLASH
-	db 43, HEX ; Dragon Rush → egg move
-	db 46, ENDURE
-	db 48, REVERSAL ; Flail → similar move
+	db 13, MUD_SLAP
+	db 16, FURY_STRIKES ; Yawn → event move (Fury Attack)
+	db 18, ANCIENTPOWER
+	db 21, BODY_SLAM
+	db 23, DRAGON_RAGE ; Drill Run → new move
+	db 26, ROOST
+	db 28, TAKE_DOWN
+	db 31, DRAGON_DANCE ; Coil → new move
+	db 33, DIG
+	db 36, GLARE
+	db 38, DOUBLE_EDGE
+	db 41, EARTHQUAKE ; Endeavor → TM move
+	db 43, AIR_SLASH
+	db 46, HEX ; Dragon Rush → egg move
+	db 48, ENDURE
+	db 51, REVERSAL ; Flail → similar move
 	db 0 ; no more level-up moves
 
 GligarEvosAttacks:
@@ -4703,12 +4704,12 @@ BlisseyEvosAttacks:
 	db 23, MINIMIZE
 	db 27, TAKE_DOWN
 	db 31, SING
-	db 34, CHARM ; Fling → Happiny move
-	db 38, HEAL_BELL ; Heal Pulse → HGSS tutor move
-	db 42, BODY_SLAM ; Egg Bomb → TM move
-	db 46, LIGHT_SCREEN
-	db 50, SUBSTITUTE ; Healing Wish → TM move
-	db 54, DOUBLE_EDGE
+	db 35, CHARM ; Fling → Happiny move
+	db 39, HEAL_BELL ; Heal Pulse → HGSS tutor move
+	db 44, BODY_SLAM ; Egg Bomb → TM move
+	db 50, LIGHT_SCREEN
+	db 57, SUBSTITUTE ; Healing Wish → TM move
+	db 65, DOUBLE_EDGE
 	db 0 ; no more level-up moves
 
 RaikouEvosAttacks:

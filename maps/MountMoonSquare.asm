@@ -9,7 +9,7 @@ MountMoonSquare_MapScriptHeader:
 MountMoonSquare_MapEventHeader:
 
 .Warps: db 2
-	warp_def 11, 22, 10, MOUNT_MOON_B1F
+	warp_def 11, 21, 2, ROUTE_4
 	warp_def 7, 13, 1, MOUNT_MOON_GIFT_SHOP
 
 .XYTriggers: db 1
@@ -20,8 +20,8 @@ MountMoonSquare_MapEventHeader:
 	signpost 7, 17, SIGNPOST_JUMPTEXT, DontLitterSignText
 
 .PersonEvents: db 3
-	person_event SPRITE_CLEFAIRY_WALK, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
-	person_event SPRITE_CLEFAIRY_WALK, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	person_event SPRITE_CLEFAIRY, 6, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
+	person_event SPRITE_CLEFAIRY, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	person_event SPRITE_N64, 7, 7, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
 
 const_value set 1

@@ -1,5 +1,5 @@
 CalcMagikarpLength: ; fbbfc
-; Return Magikarp's length (in mm) at wMagikarpLength (big endian).
+; Return Magikarp's length (in mm) at wMagikarpLengthMm (big endian).
 ;
 ; input:
 ;   de: wEnemyMonDVs
@@ -16,9 +16,9 @@ CalcMagikarpLength: ; fbbfc
 
 ; bc = rrc(dv[0]) ++ rrc(dv[1]) ^ rrc(id)
 
-; if bc < 10:     [wMagikarpLength] = c + 190
-; if bc >= $ff00: [wMagikarpLength] = c + 1370
-; else:           [wMagikarpLength] = z * 100 + (bc - x) / y
+; if bc < 10:     [wMagikarpLengthMm] = c + 190
+; if bc >= $ff00: [wMagikarpLengthMm] = c + 1370
+; else:           [wMagikarpLengthMm] = z * 100 + (bc - x) / y
 
 ; X, Y, and Z depend on the value of b as follows:
 
@@ -166,7 +166,7 @@ endr
 .ok
 	ld e, a
 
-	ld hl, wMagikarpLength
+	ld hl, wMagikarpLengthMm
 	ld [hl], d
 	inc hl
 	ld [hl], e

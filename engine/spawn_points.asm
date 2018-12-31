@@ -13,7 +13,7 @@ ENDM
 	spawn VIRIDIAN_CITY,              23, 26
 	spawn PEWTER_CITY,                13, 26
 	spawn ROUTE_3,                    61,  4
-	spawn CERULEAN_CITY,              19, 22
+	spawn CERULEAN_CITY,              19, 18
 	spawn ROUTE_10_NORTH,             11, 36
 	spawn VERMILION_CITY,              9,  6
 	spawn LAVENDER_TOWN,               5,  8
@@ -42,17 +42,15 @@ ENDM
 
 
 LoadSpawnPoint: ; 1531f
-	; loads the spawn point in wd001
 	push hl
 	push de
-	ld a, [wd001]
+	ld a, [wDefaultSpawnpoint]
 	cp SPAWN_N_A
 	jr z, .spawn_n_a
 	ld l, a
 	ld h, 0
-rept 2 ; multiply hl by 4
 	add hl, hl
-endr
+	add hl, hl
 	ld de, SpawnPoints
 	add hl, de
 	ld a, [hli]

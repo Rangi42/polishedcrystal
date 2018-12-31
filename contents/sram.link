@@ -1,7 +1,6 @@
 SRAM $0
 	org $a000
 	"Scratch"
-	org $a600
 	"SRAM Bank 0"
 	org $b200
 	"Backup Save"

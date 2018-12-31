@@ -224,7 +224,7 @@ LakeOfRageRedGyaradosScript:
 	pause 15
 	closetext
 	loadwildmon GYARADOS, 35
-	writecode VAR_BATTLETYPE, BATTLETYPE_SHINY
+	writecode VAR_BATTLETYPE, BATTLETYPE_RED_GYARADOS
 	startbattle
 	if_equal $1, .Continue
 	disappear LAKEOFRAGE_RED_GYARADOS

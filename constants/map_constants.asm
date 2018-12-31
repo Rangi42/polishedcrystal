@@ -184,12 +184,12 @@ MAP_NONE   EQU 0
 	mapgroup ROUTE_10_POKECENTER_1F,                      4,  6 ;  8
 	mapgroup POWER_PLANT,                                 9, 10 ; 10
 	mapgroup BILLS_HOUSE,                                 4,  4 ; 11
-	mapgroup ROUTE_4,                                     9, 32 ; 12
-	mapgroup ROUTE_24,                                    9, 10 ; 13
-	mapgroup ROUTE_25,                                    9, 23 ; 14
-	mapgroup CERULEAN_CAPE,                              19, 27 ; 15
-	mapgroup CERULEAN_CITY,                              18, 20 ; 16
-	mapgroup CERULEAN_CAVE_1F,                           11, 17 ; 17
+	mapgroup ROUTE_4,                                    10, 33 ; 12
+	mapgroup ROUTE_24,                                   20, 14 ; 13
+	mapgroup ROUTE_25,                                   21, 17 ; 14
+	mapgroup CERULEAN_CAPE,                              19, 25 ; 15
+	mapgroup CERULEAN_CITY,                              16, 20 ; 16
+	mapgroup CERULEAN_CAVE_1F,                           12, 17 ; 17
 	mapgroup CERULEAN_CAVE_2F,                           11, 17 ; 18
 	mapgroup CERULEAN_CAVE_B1F,                          11, 17 ; 19
 	mapgroup CERULEAN_BIKE_SHOP,                          4,  4 ; 20
@@ -271,7 +271,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 12
 
-	mapgroup ROUTE_6,                                    16, 10 ;  1
+	mapgroup ROUTE_6,                                    16, 15 ;  1
 	mapgroup ROUTE_11,                                    9, 26 ;  2
 	mapgroup VERMILION_CITY,                             20, 20 ;  3
 	mapgroup VERMILION_HOUSE_FISHING_SPEECH_HOUSE,        4,  4 ;  4
@@ -290,7 +290,7 @@ MAP_NONE   EQU 0
 
 	newgroup                                                    ; 13
 
-	mapgroup ROUTE_1,                                    18, 10 ;  1
+	mapgroup ROUTE_1,                                    18, 12 ;  1
 	mapgroup PALLET_TOWN,                                 9, 10 ;  2
 	mapgroup REDS_HOUSE_1F,                               4,  4 ;  3
 	mapgroup REDS_HOUSE_2F,                               4,  4 ;  4
@@ -414,8 +414,8 @@ MAP_NONE   EQU 0
 	mapgroup HIDDEN_TREE_GROTTO,                          9,  5 ;  4
 	mapgroup HIDDEN_CAVE_GROTTO,                         45, 20 ;  5
 	mapgroup YELLOW_FOREST_GATE,                          4,  5 ;  6
-	mapgroup YELLOW_FOREST,                              25, 29 ;  7
-	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     8,  6 ;  8
+	mapgroup YELLOW_FOREST,                              26, 29 ;  7
+	mapgroup ECRUTEAK_SHRINE_OUTSIDE,                     9,  6 ;  8
 	mapgroup ECRUTEAK_SHRINE_INSIDE,                      6,  6 ;  9
 
 	newgroup                                                    ; 21
@@ -481,6 +481,7 @@ MAP_NONE   EQU 0
 	mapgroup CELADON_UNIVERSITY_CLASSROOM_4,              6,  4 ; 59
 	mapgroup CELADON_OLD_MAN_SPEECH_HOUSE,                4,  4 ; 60
 	mapgroup CELADON_DEVELOPMENT_SPEECH_HOUSE,            4,  4 ; 61
+	mapgroup CELADON_OUTSKIRTS,                           6, 10 ; 62
 
 	newgroup                                                    ; 22
 
@@ -568,7 +569,7 @@ MAP_NONE   EQU 0
 	newgroup                                                    ; 26
 
 	mapgroup ROUTE_30,                                   27, 10 ;  1
-	mapgroup ROUTE_31,                                    9, 20 ;  2
+	mapgroup ROUTE_31,                                    9, 22 ;  2
 	mapgroup CHERRYGROVE_BAY,                            25, 15 ;  3
 	mapgroup CHERRYGROVE_CITY,                           10, 20 ;  4
 	mapgroup CHERRYGROVE_MART,                            4,  6 ;  5
@@ -974,19 +975,7 @@ const_value SET 1
 	const HIDDENGROTTO_17                 ; 17
 NUM_HIDDEN_GROTTOES EQU const_value +- 1
 
-CMDQUEUE_TYPE  EQU 0
-CMDQUEUE_ADDR  EQU 1
-CMDQUEUE_03    EQU 3
-CMDQUEUE_04    EQU 4
-CMDQUEUE_05    EQU 5
 CMDQUEUE_ENTRY_SIZE EQU 6
-
 CMDQUEUE_CAPACITY EQU 4
-
-	const_def
-	const CMDQUEUE_NONE       ; 0
-	const CMDQUEUE_TYPE_1     ; 1
-	const CMDQUEUE_STONETABLE ; 2
-	const CMDQUEUE_TYPE_3     ; 3
-	const CMDQUEUE_TYPE_4     ; 4
-NUM_CMDQUEUE_TYPES EQU const_value
+CMDQUEUE_ADDR EQU 1 ; offsets 0, 3, 4, and 5 are unused
+CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused

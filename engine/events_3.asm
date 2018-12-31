@@ -308,13 +308,13 @@ CheckForHiddenItems: ; b8172
 ; Checks to see if there are hidden items on the screen that have not yet been found.  If it finds one, returns carry.
 	ld a, [wMapScriptHeaderBank]
 	ld [wBuffer1], a
-; Get the coordinate of the bottom right corner of the screen, and load it in wd1ec/wd1ed.
+; Get the coordinate of the bottom right corner of the screen.
 	ld a, [wXCoord]
 	add SCREEN_WIDTH / 4
-	ld [wd1ed], a
+	ld [wBuffer4], a
 	ld a, [wYCoord]
 	add SCREEN_HEIGHT / 4
-	ld [wd1ec], a
+	ld [wBuffer3], a
 ; Get the pointer for the first signpost header in the map...
 	ld hl, wCurrentMapSignpostHeaderPointer
 	ld a, [hli]
@@ -333,7 +333,7 @@ CheckForHiddenItems: ; b8172
 	call .GetFarByte
 	ld e, a
 ; Is the Y coordinate of the signpost on the screen?  If not, go to the next signpost.
-	ld a, [wd1ec]
+	ld a, [wBuffer3]
 	sub e
 	jr c, .next
 	cp SCREEN_HEIGHT / 2
@@ -341,7 +341,7 @@ CheckForHiddenItems: ; b8172
 ; Is the X coordinate of the signpost on the screen?  If not, go to the next signpost.
 	call .GetFarByte
 	ld d, a
-	ld a, [wd1ed]
+	ld a, [wBuffer4]
 	sub d
 	jr c, .next
 	cp SCREEN_WIDTH / 2
@@ -660,7 +660,7 @@ TreeMons1: ; b82fa
 	db  5, MEOWTH,     10
 	db  5, MEOWTH,     10
 	db -1
-
+	; rare
 	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
@@ -677,7 +677,7 @@ TreeMons2: ; b8320
 	db  5, MEOWTH,     10
 	db  5, MEOWTH,     10
 	db -1
-
+	; rare
 	db 50, PIDGEY,     10
 	db 15, HERACROSS,  10
 	db 15, HERACROSS,  10
@@ -694,7 +694,7 @@ TreeMons3: ; b8346
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db -1
-
+	; rare
 	db 40, MURKROW,    10
 	db 20, PINECO,     10
 	db 20, PINECO,     10
@@ -711,7 +711,7 @@ TreeMons4: ; b836c
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db -1
-
+	; rare
 	db 40, MURKROW,    10
 	db 20, PINECO,     10
 	db 20, PINECO,     10
@@ -728,7 +728,7 @@ TreeMons5: ; b8392
 	db  5, EXEGGCUTE,  10
 	db  5, EXEGGCUTE,  10
 	db -1
-
+	; rare
 	db 50, HOOTHOOT,   10
 	db 15, PINECO,     10
 	db 15, PINECO,     10
@@ -745,7 +745,7 @@ TreeMons6: ; b83b8
 	db  5, BUTTERFREE, 10
 	db  5, BEEDRILL,   10
 	db -1
-
+	; rare
 	db 50, HOOTHOOT,   10
 	db 15, CATERPIE,   10
 	db 15, WEEDLE,     10
@@ -791,17 +791,14 @@ GetTreeMon: ; b83e5
 	call RandomRange
 	cp 8
 	jr nc, NoTreeMon
-	jr .skip
 .skip
 	ld a, [hli]
 	cp -1
 	jr nz, .skip
-	jp SelectTreeMon
-; b841f
+	; fallthrough
 
 SelectTreeMon: ; b841f
 ; Read a TreeMons table and pick one monster at random.
-
 	ld a, 100
 	call RandomRange
 .loop

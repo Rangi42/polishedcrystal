@@ -46,13 +46,13 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
-	tilecoll FLOOR, FLOOR, WALL, WALL
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
-	tilecoll FLOOR, FLOOR, WALL, WALL
+	tilecoll ICE, ICE, ICE, ICE
+	tilecoll ICE, ICE, ICE, ICE
+	tilecoll ICE, ICE, ICE, ICE
 	tilecoll WALL, WALL, WALL, LADDER
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll ICE, ICE, ICE, ICE
+	tilecoll ICE, ICE, ICE, ICE
+	tilecoll ICE, ICE, ICE, ICE
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll WATER, WATER, WATER, WATER
 	tilecoll WATER, WATER, WATER, WATER
@@ -62,14 +62,14 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
+	tilecoll TOP_WALL, TOP_WALL, FLOOR, WARP_CARPET_DOWN
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll WALL, WALL, WALL, WALL
+	tilecoll FLOOR, FLOOR, LEFT_WALL, RIGHT_WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll LEFT_WALL, RIGHT_WALL, LEFT_WALL, RIGHT_WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
@@ -83,7 +83,7 @@
 	tilecoll TOP_WALL, WALL, FLOOR, WALL
 	tilecoll TOP_WALL, TOP_WALL, WALL, WALL
 	tilecoll WALL, FLOOR, WALL, FLOOR
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll FLOOR, FLOOR, LEFT_WALL, RIGHT_WALL
 	tilecoll FLOOR, WALL, FLOOR, WALL
 	tilecoll TOP_WALL, TOP_WALL, FLOOR, WALL
 	tilecoll WALL, FLOOR, WALL, WALL
@@ -92,12 +92,8 @@
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, FLOOR, WALL, WALL
 	tilecoll FLOOR, FLOOR, WALL, FLOOR
-	tilecoll FLOOR, WALL, FLOOR, WALL
-	tilecoll WALL, FLOOR, WALL, FLOOR
-	tilecoll FLOOR, FLOOR, WALL, WALL
-	tilecoll FLOOR, FLOOR, WALL, WALL
-	tilecoll FLOOR, WALL, FLOOR, WALL
-	tilecoll WALL, FLOOR, WALL, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR
 	tilecoll WALL, WALL, HOLE, FLOOR
 	tilecoll LEDGE_DOWN, FLOOR, WALL, FLOOR
 	tilecoll WALL, LEDGE_LEFT, WALL, LEDGE_LEFT
@@ -114,4 +110,3 @@
 	tilecoll FLOOR, FLOOR, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
-	tilecoll TOP_WALL, TOP_WALL, FLOOR, WARP_CARPET_DOWN

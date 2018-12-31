@@ -26,18 +26,14 @@ ViridianForest_MapEventHeader:
 	signpost 9, 30, SIGNPOST_ITEM + REVIVE, EVENT_VIRIDIAN_FOREST_HIDDEN_REVIVE
 	signpost 14, 3, SIGNPOST_ITEM + LEAF_STONE, EVENT_VIRIDIAN_FOREST_HIDDEN_LEAF_STONE
 
-.PersonEvents: db 8
-	person_event SPRITE_BALL_CUT_FRUIT, 18, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ViridianForestWeedleDoll, EVENT_DECO_WEEDLE_DOLL
-	itemball_event 31, 14, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
-	itemball_event 33, 3, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
+.PersonEvents: db 7
 	person_event SPRITE_BUG_MANIAC, 42, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBug_maniacDane, -1
 	person_event SPRITE_BUG_MANIAC, 35, 33, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerBug_maniacDion, -1
 	person_event SPRITE_BUG_MANIAC, 21, 32, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacStacey, -1
 	person_event SPRITE_BUG_MANIAC, 4, 31, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEllis, -1
 	person_event SPRITE_BUG_MANIAC, 24, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBug_maniacAbner, -1
-
-const_value set 1
-	const VIRIDIAN_FOREST_POKE_BALL3
+	itemball_event 31, 14, DIRE_HIT, 1, EVENT_ROUTE_2_DIRE_HIT
+	itemball_event 33, 3, MAX_POTION, 1, EVENT_ROUTE_2_MAX_POTION
 
 TrainerBug_maniacDane:
 	trainer EVENT_BEAT_BUG_MANIAC_DANE, BUG_MANIAC, DANE, BugManiacDaneSeenText, BugManiacDaneBeatenText, 0, .Script
@@ -73,16 +69,6 @@ TrainerBug_maniacAbner:
 .Script:
 	end_if_just_battled
 	jumptextfaceplayer BugManiacAbnerAfterText
-
-ViridianForestWeedleDoll:
-	disappear VIRIDIAN_FOREST_POKE_BALL3
-	setevent EVENT_DECO_WEEDLE_DOLL
-	opentext
-	writetext ViridianForestWeedleDollText
-	playsound SFX_ITEM
-	pause 60
-	waitbutton
-	jumpopenedtext ViridianForestWeedleSentText
 
 BugManiacDaneSeenText:
 	text "Welcome to"
@@ -183,16 +169,6 @@ BugManiacAbnerAfterText:
 	para "as long as you"
 	line "like them, they"
 	cont "all look cute."
-	done
-
-ViridianForestWeedleDollText:
-	text "<PLAYER> found"
-	line "Weedle Doll."
-	done
-
-ViridianForestWeedleSentText:
-	text "Weedle Doll"
-	line "was sent home."
 	done
 
 ViridianForestSignText1:

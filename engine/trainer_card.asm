@@ -39,7 +39,7 @@ TrainerCard: ; 25105
 	farcall GetCardPic
 
 	ld hl, CardBorderGFX
-	ld de, VTiles1 tile TRAINERCARD_BORDERGFX_START
+	ld de, VTiles1 tile (TRAINERCARD_BORDERGFX_START - $80)
 	ld bc, 12 tiles
 	ld a, BANK(CardBorderGFX)
 	call FarCopyBytes

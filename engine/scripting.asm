@@ -868,7 +868,7 @@ Script_trainerflagaction:
 ;     action (SingleByteParam)
 	xor a
 	ld [wScriptVar], a
-	ld hl, wd041
+	ld hl, wTempTrainerEventFlagLo
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -1070,7 +1070,7 @@ Script_faceplayer:
 	ld e, a
 	ld a, [hLastTalked]
 	ld d, a
-	jp ApplyPersonFacing
+	jr ApplyPersonFacing
 
 Script_faceperson:
 ; parameters:
@@ -1097,7 +1097,7 @@ Script_faceperson:
 	add a
 	ld e, a
 	ld d, c
-	jp ApplyPersonFacing
+	jr ApplyPersonFacing
 
 Script_spriteface:
 ; parameters:
@@ -1113,7 +1113,7 @@ Script_spriteface:
 	add a
 	add a
 	ld e, a
-	jp ApplyPersonFacing
+	; fallthrough
 
 ApplyPersonFacing:
 	ld a, d
@@ -1313,19 +1313,19 @@ Script_earthquake:
 ; parameters:
 ;     param (DecimalParam)
 	ld hl, EarthquakeMovement
-	ld de, wd002
+	ld de, wEarthquakeMovementDataBuffer
 	ld bc, EarthquakeMovementEnd - EarthquakeMovement
 	call CopyBytes
 	call GetScriptByte
-	ld [wd003], a
-	and (1 << 6) - 1
-	ld [wd005], a
+	ld [wEarthquakeMovementDataBuffer + 1], a
+	and %111111
+	ld [wEarthquakeMovementDataBuffer + 3], a
 	ld b, BANK(.script)
 	ld de, .script
 	jp ScriptCall
 
 .script
-	applymovement PLAYER, wd002
+	applymovement PLAYER, wEarthquakeMovementDataBuffer
 	end
 
 EarthquakeMovement:
@@ -2444,7 +2444,7 @@ Script_warp:
 	call GetScriptByte
 	ld [wYCoord], a
 	ld a, -1
-	ld [wd001], a
+	ld [wDefaultSpawnpoint], a
 	ld a, MAPSETUP_WARP
 	ld [hMapEntryMethod], a
 	ld a, 1
@@ -2456,7 +2456,7 @@ Script_warp:
 	call GetScriptByte
 	call GetScriptByte
 	ld a, -1
-	ld [wd001], a
+	ld [wDefaultSpawnpoint], a
 	ld a, MAPSETUP_BADWARP
 	ld [hMapEntryMethod], a
 	ld a, 1
@@ -2640,10 +2640,7 @@ Script_ptpriorityjump:
 
 Script_end:
 	call ExitScriptSubroutine
-	jr c, .resume
-	ret
-
-.resume
+	ret nc
 	xor a
 	ld [wScriptRunning], a
 	ld a, SCRIPT_OFF
@@ -2654,8 +2651,6 @@ Script_end:
 
 Script_return:
 	call ExitScriptSubroutine
-	jr c, .dummy
-.dummy
 	ld hl, wScriptFlags
 	res 0, [hl]
 	jp StopScript

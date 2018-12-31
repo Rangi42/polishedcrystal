@@ -2,15 +2,7 @@
 
 FarCopyBytesDouble_DoubleBankSwitch:: ; def
 	ld [hBuffer], a
-	ld a, [hROMBank]
-	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-
-	call FarCopyBytesDouble
-
-	pop af
-	rst Bankswitch
+	homecall FarCopyBytesDouble, [hBuffer]
 	ret
 ; dfd
 
@@ -52,17 +44,8 @@ DecompressRequest2bpp:: ; e73
 
 FarCopyBytes:: ; e8d
 ; copy bc bytes from a:hl to de
-
 	ld [hBuffer], a
-	ld a, [hROMBank]
-	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-
-	call CopyBytes
-
-	pop af
-	rst Bankswitch
+	homecall CopyBytes, [hBuffer]
 	ret
 ; 0xe9b
 

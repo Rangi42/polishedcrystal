@@ -29,7 +29,11 @@ NextCallReceiveDelay: ; 113e9
 ; 113fd
 
 .ReceiveCallDelays:
+if DEF(NO_RTC)
+	db 20 * NO_RTC_SPEEDUP, 10 * NO_RTC_SPEEDUP, 5 * NO_RTC_SPEEDUP, 3 * NO_RTC_SPEEDUP
+else
 	db 20, 10, 5, 3
+endc
 ; 11401
 
 CheckReceiveCallTimer: ; 11401

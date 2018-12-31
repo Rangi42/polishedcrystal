@@ -7,13 +7,15 @@ LoadMapGroupRoof:: ; 1c000
 	add hl, de
 	ld a, [hl]
 	cp -1
-	ret z
+	jr z, .extra_tiles
 	ld hl, Roofs
 	ld bc, 9 tiles
 	call AddNTimes
 	ld de, VTiles2 tile $0a
 	ld bc, 9 tiles
 	call CopyBytes
+
+.extra_tiles
 ; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
 	ld a, [wTileset]
 	cp TILESET_JOHTO_MODERN
@@ -58,8 +60,8 @@ MapGroupRoofs: ; 1c021i
 	db -1 ; group 16
 	db -1 ; group 17
 	db -1 ; group 18
-	db -1 ; group 19
-	db -1 ; group 20 (Ecruteak Shrine)
+	db  4 ; group 19 (Route 28)
+	db  6 ; group 20 (Ecruteak Shrine)
 	db -1 ; group 21
 	db  3 ; group 22 (Cianwood City)
 	db -1 ; group 23
@@ -85,6 +87,7 @@ INCBIN "gfx/tilesets/roofs/2.2bpp"
 INCBIN "gfx/tilesets/roofs/3.2bpp"
 INCBIN "gfx/tilesets/roofs/4.2bpp"
 INCBIN "gfx/tilesets/roofs/5.2bpp"
+INCBIN "gfx/tilesets/roofs/6.2bpp"
 ; 1c30c
 
 StormyBeachPuddleGFX:

@@ -11,7 +11,6 @@ DoPlayerTurn: ; 34000
 
 	ld hl, ScaredText
 	jp StdBattleTextBox
-
 ; 3400a
 
 
@@ -1137,7 +1136,7 @@ BattleCommand_Critical: ; 34631
 
 ; +2 critical level
 	ld c, 2
-	jr .FocusEnergy
+	; fallthrough
 
 .FocusEnergy:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -3155,16 +3154,14 @@ UnevolvedEviolite:
 	dec a
 	push hl
 	push bc
-	ld b, 0
 	ld c, a
+	ld b, 0
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [hli]
+	add hl, bc
+	call GetFarHalfword
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
 	and a
 	pop bc
 	pop hl
@@ -4026,7 +4023,7 @@ BattleCommand_ConstantDamage: ; 35726
 	ld a, 0 ; not xor a; preserve carry flag?
 	jr nz, .got_power
 	ld b, $1
-	jr .got_power
+	; fallthrough
 
 .got_power
 	ld hl, wCurDamage
@@ -5632,7 +5629,7 @@ BattleCommand_AccuracyUp2: ; 361dc
 BattleCommand_EvasionUp2: ; 361e0
 ; evasionup2
 	ld b, $10 | EVASION
-	;jr BattleCommand_StatUp
+	; fallthrough
 
 BattleCommand_StatUp: ; 361e4
 ; statup
@@ -6343,7 +6340,7 @@ BattleCommand_Teleport: ; 36778
 ; teleport
 
 	ld a, [wBattleType]
-	cp BATTLETYPE_SHINY
+	cp BATTLETYPE_RED_GYARADOS
 	jr z, .failed
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
 	jr nc, .failed
@@ -6454,7 +6451,7 @@ BattleCommand_ForceSwitch: ; 3680f
 ; forceswitch
 
 	ld a, [wBattleType]
-	cp BATTLETYPE_SHINY
+	cp BATTLETYPE_RED_GYARADOS
 	jp z, .fail
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
 	jp nc, .fail
@@ -8682,8 +8679,7 @@ DoEnemyBatonPass:
 
 	ld hl, RunActivationAbilities
 	call CallBattleCore
-
-	jr ResetBatonPassStatus
+	; fallthrough
 
 ResetBatonPassStatus:
 ; Reset status changes that aren't passed by Baton Pass.

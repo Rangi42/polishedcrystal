@@ -13,6 +13,7 @@ PikachuPicPointers::  INCLUDE "gfx/pics/pikachu_pic_pointers.asm"
 PichuPicPointers::    INCLUDE "gfx/pics/pichu_pic_pointers.asm"
 ArbokPicPointers::    INCLUDE "gfx/pics/arbok_pic_pointers.asm"
 MagikarpPicPointers:: INCLUDE "gfx/pics/magikarp_pic_pointers.asm"
+GyaradosPicPointers:: INCLUDE "gfx/pics/gyarados_pic_pointers.asm"
 MewtwoPicPointers::   INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
 
 
@@ -342,8 +343,6 @@ PinsirFrontpic:           INCBIN "gfx/pics/pinsir/front.2bpp.lz"
 PinsirBackpic:            INCBIN "gfx/pics/pinsir/back.2bpp.lz"
 TaurosFrontpic:           INCBIN "gfx/pics/tauros/front.2bpp.lz"
 TaurosBackpic:            INCBIN "gfx/pics/tauros/back.2bpp.lz"
-GyaradosFrontpic:         INCBIN "gfx/pics/gyarados/front.2bpp.lz"
-GyaradosBackpic:          INCBIN "gfx/pics/gyarados/back.2bpp.lz"
 LaprasFrontpic:           INCBIN "gfx/pics/lapras/front.2bpp.lz"
 LaprasBackpic:            INCBIN "gfx/pics/lapras/back.2bpp.lz"
 
@@ -722,15 +721,15 @@ UnownQuestionBackpic:     INCBIN "gfx/pics/unown_question/back.2bpp.lz"
 SECTION "Pikachu Pics", ROMX
 
 PikachuPlainFrontpic:     INCBIN "gfx/pics/pikachu_plain/front.2bpp.lz"
-PikachuPlainBackpic:
-PikachuSurfBackpic:
-PikachuPikaBackpic:
-PikachuChuchuBackpic:     INCBIN "gfx/pics/pikachu/back.2bpp.lz"
 PikachuFlyFrontpic:       INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:        INCBIN "gfx/pics/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:      INCBIN "gfx/pics/pikachu_surf/front.2bpp.lz"
 PikachuPikaFrontpic:      INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
 PikachuChuchuFrontpic:    INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
+PikachuPlainBackpic:
+PikachuSurfBackpic:
+PikachuPikaBackpic:
+PikachuChuchuBackpic:     INCBIN "gfx/pics/pikachu/back.2bpp.lz"
 
 
 SECTION "Pichu Pics", ROMX
@@ -744,15 +743,15 @@ PichuSpikyBackpic:        INCBIN "gfx/pics/pichu_spiky/back.2bpp.lz"
 SECTION "Arbok Pics", ROMX
 
 ArbokJohtoFrontpic:       INCBIN "gfx/pics/arbok_johto/front.2bpp.lz"
+ArbokKantoFrontpic:       INCBIN "gfx/pics/arbok_kanto/front.2bpp.lz"
+ArbokKogaFrontpic:        INCBIN "gfx/pics/arbok_koga/front.2bpp.lz"
+ArbokAgathaFrontpic:      INCBIN "gfx/pics/arbok_agatha/front.2bpp.lz"
+ArbokArianaFrontpic:      INCBIN "gfx/pics/arbok_ariana/front.2bpp.lz"
 ArbokJohtoBackpic:
 ArbokKantoBackpic:
 ArbokKogaBackpic:
 ArbokAgathaBackpic:
 ArbokArianaBackpic:       INCBIN "gfx/pics/arbok/back.2bpp.lz"
-ArbokKantoFrontpic:       INCBIN "gfx/pics/arbok_kanto/front.2bpp.lz"
-ArbokKogaFrontpic:        INCBIN "gfx/pics/arbok_koga/front.2bpp.lz"
-ArbokAgathaFrontpic:      INCBIN "gfx/pics/arbok_agatha/front.2bpp.lz"
-ArbokArianaFrontpic:      INCBIN "gfx/pics/arbok_ariana/front.2bpp.lz"
 
 
 SECTION "Magikarp Pics 1", ROMX
@@ -777,9 +776,22 @@ MagikarpTigerFrontpic:    INCBIN "gfx/pics/magikarp_tiger/front.2bpp.lz"
 MagikarpTigerBackpic:     INCBIN "gfx/pics/magikarp_tiger/back.2bpp.lz"
 MagikarpZebraFrontpic:    INCBIN "gfx/pics/magikarp_zebra/front.2bpp.lz"
 MagikarpZebraBackpic:     INCBIN "gfx/pics/magikarp_zebra/back.2bpp.lz"
-MagikarpStripeBackpic:    INCBIN "gfx/pics/magikarp_stripe/back.2bpp.lz"
 MagikarpStripeFrontpic:   INCBIN "gfx/pics/magikarp_stripe/front.2bpp.lz"
+MagikarpStripeBackpic:    INCBIN "gfx/pics/magikarp_stripe/back.2bpp.lz"
+MagikarpBubblesFrontpic:  INCBIN "gfx/pics/magikarp_bubbles/front.2bpp.lz"
+MagikarpBubblesBackpic:   INCBIN "gfx/pics/magikarp_bubbles/back.2bpp.lz"
+MagikarpForeheadFrontpic: INCBIN "gfx/pics/magikarp_forehead/front.2bpp.lz"
+MagikarpForeheadBackpic:  INCBIN "gfx/pics/magikarp_forehead/back.2bpp.lz"
+MagikarpMaskFrontpic:     INCBIN "gfx/pics/magikarp_mask/front.2bpp.lz"
+MagikarpMaskBackpic:      INCBIN "gfx/pics/magikarp_mask/back.2bpp.lz"
 
+
+SECTION "Gyarados Pics", ROMX
+
+GyaradosPlainFrontpic:    INCBIN "gfx/pics/gyarados_plain/front.2bpp.lz"
+GyaradosRedFrontpic:      INCBIN "gfx/pics/gyarados_red/front.2bpp.lz"
+GyaradosPlainBackpic:
+GyaradosRedBackpic:       INCBIN "gfx/pics/gyarados/back.2bpp.lz"
 
 SECTION "Mewtwo Pics", ROMX
 

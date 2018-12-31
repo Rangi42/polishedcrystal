@@ -14,7 +14,7 @@ BluesHouse1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 5, SIGNPOST_READ, BluesHouse1FTV
+	signpost 1, 5, SIGNPOST_UP, RedsHouse1FTVScript
 
 .PersonEvents: db 1
 	person_event SPRITE_DAISY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaisyScript, -1
@@ -134,16 +134,4 @@ DaisyScript:
 	text "Daisy: Oh, sorry."
 	line "I honestly can't"
 	cont "groom an Egg."
-	done
-
-BluesHouse1FTV:
-	checkcode VAR_FACING
-	if_equal UP, .rightside
-	jumpstd tv
-.rightside
-	thistext
-
-	text "They have programs"
-	line "that aren't shown"
-	cont "in Johto…"
 	done

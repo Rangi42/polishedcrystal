@@ -323,29 +323,13 @@ CopyDataUntil:: ; 318c
 ; 0x3198
 
 PrintNum:: ; 3198
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_PrintNum)
-	rst Bankswitch
-
-	call _PrintNum
-
-	pop af
-	rst Bankswitch
+	homecall _PrintNum
 	ret
 ; 31a4
 
 FarPrintText:: ; 31b0
 	ld [hBuffer], a
-	ld a, [hROMBank]
-	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-
-	call PrintText
-
-	pop af
-	rst Bankswitch
+	homecall PrintText, [hBuffer]
 	ret
 ; 31be
 
@@ -597,10 +581,10 @@ GetHPPal:: ; 3353
 
 	ld d, HP_GREEN
 	ld a, e
-	cp 24
+	cp (50 * 48 / 100)
 	ret nc
 	inc d ; yellow
-	cp 10
+	cp (21 * 48 / 100)
 	ret nc
 	inc d ; red
 	ret
@@ -1517,8 +1501,7 @@ PrintLevel:: ; 382d
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
-	jr Print8BitNumRightAlign
-; 383d
+	; fallthrough
 
 Print8BitNumRightAlign:: ; 3842
 	ld [wd265], a

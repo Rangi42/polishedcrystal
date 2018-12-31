@@ -549,7 +549,7 @@ SurfFunction: ; c909
 
 .DoSurf: ; c95f (3:495f)
 	call GetSurfType
-	ld [wMovementType], a
+	ld [wBuffer2], a
 	call GetPartyNick
 	ld hl, SurfFromMenuScript
 	call QueueScript
@@ -683,7 +683,7 @@ TrySurfOW:: ; c9e7
 	jr nz, .quit
 
 	call GetSurfType
-	ld [wMovementType], a
+	ld [wBuffer2], a
 	call GetPartyNick
 
 	ld a, BANK(AskSurfScript)
@@ -785,7 +785,7 @@ FlyFunction: ; ca3b
 	cp NUM_SPAWNS
 	jr nc, .illegal
 
-	ld [wd001], a
+	ld [wDefaultSpawnpoint], a
 	call CloseWindow
 	ld a, $1
 	ret
@@ -1118,7 +1118,7 @@ TeleportFunction: ; cc61
 	farcall IsSpawnPoint
 	jr nc, .nope
 	ld a, c
-	ld [wd001], a
+	ld [wDefaultSpawnpoint], a
 	ld a, $1
 	ret
 
@@ -1288,7 +1288,7 @@ TryStrengthOW: ; cd78
 
 .already_using
 	xor a
-	jr .done
+	; fallthrough
 
 .done
 	ld [wScriptVar], a
@@ -1657,13 +1657,9 @@ UnknownText_0xcf77: ; 0xcf77
 HasRockSmash: ; cf7c
 	ld d, ROCK_SMASH
 	call CheckPartyMove
-	jr nc, .yes
-.no
 	ld a, 1
-	jr .done
-.yes
+	jr c, .done
 	xor a
-	jr .done
 .done
 	ld [wScriptVar], a
 	ret

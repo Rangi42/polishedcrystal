@@ -34,7 +34,7 @@ if !DEF(DEBUG)
 	ld hl, Text_WokeUpOak
 	call PrintText
 endc
-	ld hl, wc608
+	ld hl, wTimesetBuffer
 	ld bc, 50
 	xor a
 	call ByteFill
@@ -91,7 +91,7 @@ endc
 	call SetMinutes
 	jr nc, .SetMinutesLoop
 
-	ld a, [wBattleMonNick + 5]
+	ld a, [wInitMinuteBuffer]
 	ld [wStringBuffer2 + 2], a
 	call .ClearScreen
 	ld hl, Text_WhoaMins
@@ -203,7 +203,7 @@ SetMinutes: ; 90810 (24:4810)
 	ret
 
 .d_down
-	ld hl, wBattleMonNick + 5
+	ld hl, wInitMinuteBuffer
 	ld a, [hl]
 	and a
 	jr nz, .decrease
@@ -214,7 +214,7 @@ SetMinutes: ; 90810 (24:4810)
 	jr .finish_dpad
 
 .d_up
-	ld hl, wBattleMonNick + 5
+	ld hl, wInitMinuteBuffer
 	ld a, [hl]
 	cp 59
 	jr c, .increase
@@ -237,7 +237,7 @@ SetMinutes: ; 90810 (24:4810)
 	ret
 
 DisplayMinutesWithMinString: ; 90859 (24:4859)
-	ld de, wBattleMonNick + 5
+	ld de, wInitMinuteBuffer
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
@@ -319,7 +319,7 @@ OakText_ResponseToSetTime: ; 0x908b8
 	call PrintHour
 	ld [hl], ":"
 	inc hl
-	ld de, wBattleMonNick + 5
+	ld de, wInitMinuteBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	ld b, h
@@ -537,7 +537,7 @@ Special_InitialSetDSTFlag: ; 90a54
 	ld a, [hMinutes]
 	ld c, a
 	decoord 1, 14
-	farcall PrintHoursMins
+	call PrintHoursMins
 	ld hl, .DSTIsThatOK
 	ret
 ; 90a83 (24:4a83)
@@ -567,7 +567,7 @@ Special_InitialClearDSTFlag: ; 90a88
 	ld a, [hMinutes]
 	ld c, a
 	decoord 1, 14
-	farcall PrintHoursMins
+	call PrintHoursMins
 	ld hl, .IsThatOK
 	ret
 ; 90ab7
@@ -634,3 +634,58 @@ AdjustHourForAMorPM:
 .midnight
 	ld a, 12
 	ret
+
+PrintHoursMins ; 1dd6bb (77:56bb)
+; Hours in b, minutes in c
+	ld a, [wOptions2]
+	bit CLOCK_FORMAT, a
+	ld a, b
+	jr nz, .h24
+	cp 12
+	push af
+	jr c, .AM
+	jr z, .PM
+	sub 12
+	jr .PM
+.AM:
+	or a
+	jr nz, .PM
+	ld a, 12
+.PM:
+	ld b, a
+.h24:
+; Crazy stuff happening with the stack
+	push bc
+	ld hl, sp+$1
+	push de
+	push hl
+	pop de
+	pop hl
+	ld [hl], " "
+	lb bc, 1, 2
+	call PrintNum
+	ld [hl], ":"
+	inc hl
+	ld d, h
+	ld e, l
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	call PrintNum
+	pop bc
+	ld a, [wOptions2]
+	bit CLOCK_FORMAT, a
+	ret nz
+	ld de, .String_AM
+	pop af
+	jr c, .place_am_pm
+	ld de, .String_PM
+.place_am_pm
+	inc hl
+	jp PlaceString
+
+.String_AM: db "AM@" ; 1dd6fc
+.String_PM: db "PM@" ; 1dd6ff

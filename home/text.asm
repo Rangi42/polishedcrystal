@@ -929,19 +929,26 @@ Text_StringBuffer:: ; 156a
 	push hl
 	ld e, a
 	ld d, 0
-	ld hl, StringBufferPointers
-rept 2
+	ld hl, .StringBufferPointers
 	add hl, de
-endr
-	ld a, BANK(StringBufferPointers)
-	call GetFarHalfword
-	ld d, h
-	ld e, l
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
 	ld h, b
 	ld l, c
 	call PlaceString
 	pop hl
 	ret
+
+.StringBufferPointers:: ; 24000
+	dw wStringBuffer3
+	dw wStringBuffer4
+	dw wStringBuffer5
+	dw wStringBuffer2
+	dw wStringBuffer1
+	dw wEnemyMonNick
+	dw wBattleMonNick
 ; 1582
 
 Text_WeekDay:: ; 1582

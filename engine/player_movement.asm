@@ -3,8 +3,6 @@ DoPlayerMovement:: ; 80000
 	call .GetDPad
 	ld a, movement_step_sleep_1
 	ld [wMovementAnimation], a
-	xor a
-	ld [wd041], a
 	call .TranslateIntoMovement
 	ld c, a
 	ld a, [wMovementAnimation]
@@ -154,6 +152,8 @@ DoPlayerMovement:: ; 80000
 
 .warps
 	ld a, c
+	cp COLL_AWNING
+	jr z, .up
 	cp COLL_DOOR
 	jr z, .down
 	cp COLL_STAIRCASE
@@ -162,7 +162,11 @@ DoPlayerMovement:: ; 80000
 	jr nz, .no_walk
 
 .down
-	ld a, DOWN
+	xor a ; DOWN
+	jr .set_direction
+.up
+	ld a, UP
+.set_direction
 	ld [wWalkingDirection], a
 	jr .continue_walk
 
@@ -313,18 +317,15 @@ DoPlayerMovement:: ; 80000
 
 .TrySurf: ; 801c0
 
-	call .CheckSurfPerms
-	ld [wd040], a
-	jr c, .surf_bump
-
 	call .CheckNPC
-	ld [wd03f], a
 	and a
 	jr z, .surf_bump
 	cp 2
 	jr z, .surf_bump
 
-	ld a, [wd040]
+	call .CheckSurfPerms
+	jr c, .surf_bump
+
 	and a
 	jr nz, .ExitWater
 
@@ -400,8 +401,6 @@ DoPlayerMovement:: ; 80000
 	cp [hl]
 	jr nz, .not_warp
 
-	ld a, 1
-	ld [wd041], a
 	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .not_warp

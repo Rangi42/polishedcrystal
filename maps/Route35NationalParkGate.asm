@@ -16,8 +16,8 @@ Route35NationalParkGate_MapEventHeader:
 	warp_def 0, 16, 4, NATIONAL_PARK
 	warp_def 7, 15, 3, ROUTE_35
 	warp_def 7, 16, 3, ROUTE_35
-	warp_def 2, 0, 11, OLIVINE_CITY
-	warp_def 3, 0, 12, OLIVINE_CITY
+	warp_def 4, 0, 11, OLIVINE_CITY
+	warp_def 5, 0, 12, OLIVINE_CITY
 
 .XYTriggers: db 0
 

@@ -933,6 +933,9 @@ CeladonGym_BlockData:
 CeladonCity_BlockData:
 	INCBIN "maps/CeladonCity.blk"
 
+CeladonOutskirts_BlockData:
+	INCBIN "maps/CeladonOutskirts.blk"
+
 CeladonGameCorner_BlockData:
 	INCBIN "maps/CeladonGameCorner.blk"
 

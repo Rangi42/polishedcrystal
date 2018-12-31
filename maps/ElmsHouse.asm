@@ -53,7 +53,7 @@ ElmsHouseFridgeText:
 
 ElmsHousePCText:
 	text "#mon. Where do"
-	line "they come from? "
+	line "they come from?"
 
 	para "Where are they"
 	line "going?"

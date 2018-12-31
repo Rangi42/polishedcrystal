@@ -571,7 +571,7 @@ UnknownText_0x7c82a:
 	done
 
 UnknownText_0x7c842:
-	text "No? "
+	text "No?"
 	line "How disappointing!"
 	done
 

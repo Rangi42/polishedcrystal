@@ -92,16 +92,16 @@ GoldenrodHarborPokefanmScript:
 	verticalmenu
 	closewindow
 	if_equal $1, .MagikarpDoll
-	if_equal $2, .TentacoolDoll
-	if_equal $3, .ShellderDoll
+	if_equal $2, .MarillDoll
+	if_equal $3, .OctilleryDoll
 	endtext
 
 .MagikarpDoll:
-	checkmoney $0, 1200
+	checkmoney $0, 1400
 	if_equal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MAGIKARP_DOLL
 	iftrue .AlreadyBought
-	takemoney $0, 1200
+	takemoney $0, 1400
 	setevent EVENT_DECO_MAGIKARP_DOLL
 	writetext GoldenrodHarborMagikarpDollText
 	playsound SFX_TRANSACTION
@@ -110,31 +110,31 @@ GoldenrodHarborPokefanmScript:
 	waitbutton
 	jump .Start
 
-.TentacoolDoll:
-	checkmoney $0, 2400
+.MarillDoll:
+	checkmoney $0, 5600
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_TENTACOOL_DOLL
+	checkevent EVENT_DECO_MARILL_DOLL
 	iftrue .AlreadyBought
-	takemoney $0, 2400
-	setevent EVENT_DECO_TENTACOOL_DOLL
-	writetext GoldenrodHarborTentacoolDollText
+	takemoney $0, 5600
+	setevent EVENT_DECO_MARILL_DOLL
+	writetext GoldenrodHarborMarillDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext GoldenrodHarborTentacoolDollSentText
+	writetext GoldenrodHarborMarillDollSentText
 	waitbutton
 	jump .Start
 
-.ShellderDoll:
-	checkmoney $0, 3600
+.OctilleryDoll:
+	checkmoney $0, 11200
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_SHELLDER_DOLL
+	checkevent EVENT_DECO_OCTILLERY_DOLL
 	iftrue .AlreadyBought
-	takemoney $0, 3600
-	setevent EVENT_DECO_SHELLDER_DOLL
-	writetext GoldenrodHarborShellderDollText
+	takemoney $0, 11200
+	setevent EVENT_DECO_OCTILLERY_DOLL
+	writetext GoldenrodHarborOctilleryDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext GoldenrodHarborShellderDollSentText
+	writetext GoldenrodHarborOctilleryDollSentText
 	waitbutton
 	jump .Start
 
@@ -158,9 +158,9 @@ GoldenrodHarborPokefanmScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Magikarp    ¥1200@"
-	db "Tentacool   ¥2400@"
-	db "Shellder    ¥3600@"
+	db "Magikarp    ¥1400@"
+	db "Marill      ¥5600@"
+	db "Octillery  ¥11200@"
 	db "Cancel@"
 
 GoldenrodHarborYoungsterScript:
@@ -178,11 +178,11 @@ GoldenrodHarborYoungsterScript:
 	endtext
 
 .MagnaPlant:
-	checkmoney $0, 5400
+	checkmoney $0, 6400
 	if_equal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_1
 	iftrue .AlreadyBought
-	takemoney $0, 5400
+	takemoney $0, 6400
 	setevent EVENT_DECO_PLANT_1
 	writetext GoldenrodHarborMagnaPlantText
 	playsound SFX_TRANSACTION
@@ -192,11 +192,11 @@ GoldenrodHarborYoungsterScript:
 	jump .Start
 
 .TropicPlant:
-	checkmoney $0, 8600
+	checkmoney $0, 9600
 	if_equal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_2
 	iftrue .AlreadyBought
-	takemoney $0, 8600
+	takemoney $0, 9600
 	setevent EVENT_DECO_PLANT_2
 	writetext GoldenrodHarborTropicPlantText
 	playsound SFX_TRANSACTION
@@ -206,11 +206,11 @@ GoldenrodHarborYoungsterScript:
 	jump .Start
 
 .JumboPlant:
-	checkmoney $0, 10800
+	checkmoney $0, 12800
 	if_equal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_3
 	iftrue .AlreadyBought
-	takemoney $0, 10800
+	takemoney $0, 12800
 	setevent EVENT_DECO_PLANT_3
 	writetext GoldenrodHarborJumboPlantText
 	playsound SFX_TRANSACTION
@@ -239,9 +239,9 @@ GoldenrodHarborYoungsterScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Magna P.    ¥5400@"
-	db "Tropic P.   ¥8600@"
-	db "Jumbo P.   ¥10800@"
+	db "Magna P.    ¥6400@"
+	db "Tropic P.   ¥9600@"
+	db "Jumbo P.   ¥12800@"
 	db "Cancel@"
 
 GoldenrodHarborFisherText:
@@ -369,23 +369,23 @@ GoldenrodHarborMagikarpDollSentText:
 	line "was sent home."
 	done
 
-GoldenrodHarborTentacoolDollText:
+GoldenrodHarborMarillDollText:
 	text "<PLAYER> bought"
-	line "Tentacool Doll."
+	line "Marill Doll."
 	done
 
-GoldenrodHarborTentacoolDollSentText:
-	text "Tentacool Doll"
+GoldenrodHarborMarillDollSentText:
+	text "Marill Doll"
 	line "was sent home."
 	done
 
-GoldenrodHarborShellderDollText:
+GoldenrodHarborOctilleryDollText:
 	text "<PLAYER> bought"
-	line "Shellder Doll."
+	line "Octillery Doll."
 	done
 
-GoldenrodHarborShellderDollSentText:
-	text "Shellder Doll"
+GoldenrodHarborOctilleryDollSentText:
+	text "Octillery Doll"
 	line "was sent home."
 	done
 

@@ -89,7 +89,7 @@ NidoranFEggMoves:
 	db DISABLE
 	db FOCUS_ENERGY
 	db PURSUIT
-	db SUPERSONIC
+	db SUPERSONIC ; requires Lickitung
 	db TAKE_DOWN
 	db $ff
 
@@ -97,7 +97,7 @@ NidoranMEggMoves:
 	db AMNESIA
 	db CONFUSION
 	db DISABLE
-	db SUPERSONIC
+	db SUPERSONIC ; requires Lickitung
 	db TAKE_DOWN
 	db CALM_MIND
 	db COUNTER
@@ -108,7 +108,7 @@ ClefairyEggMoves:
 	db BELLY_DRUM
 	db METRONOME
 	db AMNESIA
-	db SPLASH
+	db SPLASH ; requires Hoppip
 	db SOFTBOILED
 	db $ff
 
@@ -124,10 +124,8 @@ VulpixEggMoves:
 	db $ff
 
 JigglypuffEggMoves:
-	db THIEF
 	db FEINT_ATTACK
 	db PERISH_SONG
-	db SLEEP_TALK
 	db MOONBLAST
 	db $ff
 
@@ -247,7 +245,7 @@ MachopEggMoves:
 	db $ff
 
 BellsproutEggMoves:
-	db ENCORE
+	db ENCORE ; requires Hoppip
 	db LEECH_LIFE
 	db SWORDS_DANCE
 	db REFLECT
@@ -324,7 +322,6 @@ GrimerEggMoves:
 	db $ff
 
 ShellderEggMoves:
-	db AVALANCHE
 	db BARRIER
 	db BUBBLE_BEAM
 	db RAPID_SPIN
@@ -391,7 +388,6 @@ KoffingEggMoves:
 	db SCREECH
 	db DESTINY_BOND
 	db PAIN_SPLIT
-	db TOXIC_SPIKES
 	db $ff
 
 RhyhornEggMoves:
@@ -411,7 +407,7 @@ ChanseyEggMoves:
 
 TangelaEggMoves:
 	db CONFUSION
-	db AMNESIA
+	db AMNESIA ; requires Hoppip
 	db LEECH_SEED
 	db $ff
 
@@ -516,7 +512,7 @@ AerodactylEggMoves:
 	db $ff
 
 DratiniEggMoves:
-	db EXTREMESPEED
+	db EXTREMESPEED ; requires Dragon Shrine Dratini
 	db HAZE
 	db SUPERSONIC
 	db WATER_PULSE
@@ -574,12 +570,11 @@ HoothootEggMoves:
 	db SUPERSONIC
 	db WING_ATTACK
 	db BRAVE_BIRD
-	db HEALINGLIGHT
 	db $ff
 
 LedybaEggMoves:
 	db DIZZY_PUNCH
-	db ENCORE
+	db ENCORE ; requires Shuckle
 	db PSYBEAM
 	db SCREECH
 	db LIGHT_SCREEN
@@ -600,7 +595,7 @@ SpinarakEggMoves:
 	db $ff
 
 ChinchouEggMoves:
-	db AGILITY
+	db AGILITY ; requires Goldeen
 	db HAZE
 	db PSYBEAM
 	db SCREECH
@@ -620,7 +615,6 @@ MunchlaxEggMoves:
 	db COUNTER
 	db CURSE
 	db DOUBLE_EDGE
-	db PURSUIT
 	db LICK
 	db GUNK_SHOT
 	db $ff
@@ -741,19 +735,16 @@ SnubbullEggMoves:
 	db $ff
 
 QwilfishEggMoves:
-	db ASTONISH
 	db BUBBLE_BEAM
 	db HAZE
 	db SUPERSONIC
 	db POISON_JAB
 	db WATER_PULSE
-	db AQUA_JET
 	db $ff
 
 HeracrossEggMoves:
 	db DEFENSE_CURL
 	db PURSUIT
-	db ROCK_BLAST
 	db $ff
 
 SneaselEggMoves:
@@ -811,6 +802,7 @@ CorsolaEggMoves:
 	db $ff
 
 RemoraidEggMoves:
+	db SPLASH
 	db HAZE
 	db OCTAZOOKA
 	db ROCK_BLAST

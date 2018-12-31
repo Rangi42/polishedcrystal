@@ -24,7 +24,7 @@ PokemonMansionB1F_MapEventHeader:
 
 .PersonEvents: db 6
 	person_event SPRITE_SCIENTIST, 5, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerScientistBraydon, -1
-	person_event SPRITE_PAPER, 22, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokemonMansionDiaryScript, -1
+	person_event SPRITE_BOOK_PAPER_POKEDEX, 22, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, PokemonMansionDiaryText, -1
 	itemball_event 5, 13, CARBOS, 1, EVENT_POKEMON_MANSION_B1F_CARBOS
 	itemball_event 6, 7, CALCIUM, 1, EVENT_POKEMON_MANSION_B1F_CALCIUM
 	itemball_event 27, 16, HP_UP, 1, EVENT_POKEMON_MANSION_B1F_HP_UP
@@ -36,9 +36,6 @@ TrainerScientistBraydon:
 ScientistBraydonScript:
 	end_if_just_battled
 	jumptextfaceplayer ScientistBraydonAfterText
-
-PokemonMansionDiaryScript:
-	jumptext PokemonMansionDiaryText
 
 PokemonMansionB1FHiddenRareCandy:
 	checkevent EVENT_POKEMON_MANSION_B1F_HIDDEN_RARE_CANDY

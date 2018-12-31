@@ -2366,13 +2366,22 @@ BillsPC_PrintBoxCountAndCapacityInsideBox:
 .out_of_20
 	; db "/20@"
 	db "/"
+if MONS_PER_BOX < 10
+	db " "
+else
 	db "0" + MONS_PER_BOX / 10 ; "2"
+endc
 	db "0" + MONS_PER_BOX % 10 ; "0"
 	db "@"
 
 .out_of_6
 	; db "/ 6@"
-	db "/ "
+	db "/"
+if PARTY_LENGTH < 10
+	db " "
+else
+	db "0" + PARTY_LENGTH / 10 ; "0"
+endc
 	db "0" + PARTY_LENGTH % 10 ; "6"
 	db "@"
 

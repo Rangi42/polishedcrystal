@@ -58,6 +58,13 @@ MagikarpAnimationExtraPointers:
 	dw MagikarpTigerAnimationExtra
 	dw MagikarpZebraAnimationExtra
 	dw MagikarpStripeAnimationExtra
+	dw MagikarpBubblesAnimationExtra
+	dw MagikarpForeheadAnimationExtra
+	dw MagikarpMaskAnimationExtra
+
+GyaradosAnimationExtraPointers:
+	dw GyaradosPlainAnimationExtra
+	dw GyaradosRedAnimationExtra
 
 MewtwoAnimationExtraPointers:
 	dw MewtwoPlainAnimationExtra

@@ -353,7 +353,7 @@ ReceiveKeyItem: ; d35a
 	ret
 
 TossKeyItem: ; d374
-	ld a, [wd107]
+	ld a, [wCurItemQuantity]
 	ld e, a
 	ld d, 0
 	ld hl, wNumKeyItems
@@ -529,19 +529,19 @@ _CountItem::
 
 .Item:
 	ld hl, wNumItems
-	jp CountItemInPocket
+	jr CountItemInPocket
 
 .Medicine:
 	ld hl, wNumMedicine
-	jp CountItemInPocket
+	jr CountItemInPocket
 
 .Ball: ; d1fb
 	ld hl, wNumBalls
-	jp CountItemInPocket
+	jr CountItemInPocket
 
 .Berry:
 	ld hl, wNumBerries
-	jp CountItemInPocket
+	; fallthrough
 
 CountItemInPocket:
 	inc hl

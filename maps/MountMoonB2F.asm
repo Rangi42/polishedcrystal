@@ -6,12 +6,11 @@ MountMoonB2F_MapScriptHeader:
 
 MountMoonB2F_MapEventHeader:
 
-.Warps: db 5
+.Warps: db 4
 	warp_def 24, 10, 4, MOUNT_MOON_B1F
 	warp_def 7, 21, 5, MOUNT_MOON_B1F
 	warp_def 15, 17, 6, MOUNT_MOON_B1F
 	warp_def 9, 3, 7, MOUNT_MOON_B1F
-	warp_def 21, 18, 9, MOUNT_MOON_B1F
 
 .XYTriggers: db 0
 
@@ -22,14 +21,14 @@ MountMoonB2F_MapEventHeader:
 
 .PersonEvents: db 11
 	person_event SPRITE_YOUNGSTER, 9, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerYoungsterJosh, -1
-	person_event SPRITE_YOUNGSTER, 22, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerBird_keeperMick, -1
+	person_event SPRITE_YOUNGSTER, 21, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBird_keeperMick, -1
 	person_event SPRITE_HEX_MANIAC, 18, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHexManiacEsther, -1
 	person_event SPRITE_COOLTRAINER_M, 15, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerCooltrainermConnor, -1
 	person_event SPRITE_SUPER_NERD, 8, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdMiguel, -1
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 6, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, HELIX_FOSSIL, 1, EVENT_MOUNT_MOON_B2F_HELIX_FOSSIL
 	person_event SPRITE_BOULDER_ROCK_FOSSIL, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, DOME_FOSSIL, 1, EVENT_MOUNT_MOON_B2F_DOME_FOSSIL
 	itemball_event 14, 11, MOON_STONE, 1, EVENT_MOUNT_MOON_B2F_MOON_STONE
-	itemball_event 20, 10, DUSK_STONE, 1, EVENT_MOUNT_MOON_B2F_DUSK_STONE
+	itemball_event 21, 18, DUSK_STONE, 1, EVENT_MOUNT_MOON_B2F_DUSK_STONE
 	itemball_event 3, 22, SHINY_STONE, 1, EVENT_MOUNT_MOON_B2F_SHINY_STONE
 	itemball_event 11, 26, BIG_MUSHROOM, 1, EVENT_MOUNT_MOON_B2F_BIG_MUSHROOM
 
@@ -97,6 +96,7 @@ YoungsterJoshAfterText:
 Bird_keeperMickSeenText:
 	text "I'm not sure why"
 	line "I came here."
+
 	para "My birds can't fly"
 	line "in this cave!"
 	done

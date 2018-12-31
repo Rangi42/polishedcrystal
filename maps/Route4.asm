@@ -6,25 +6,29 @@ Route4_MapScriptHeader:
 
 Route4_MapEventHeader:
 
-.Warps: db 1
-	warp_def 5, 2, 8, MOUNT_MOON_B1F
+.Warps: db 2
+	warp_def 7, 4, 8, MOUNT_MOON_B1F
+	warp_def 5, 19, 1, MOUNT_MOON_SQUARE
 
 .XYTriggers: db 0
 
-.Signposts: db 2
-	signpost 7, 5, SIGNPOST_JUMPTEXT, MtMoonSignText
-	signpost 3, 18, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
+.Signposts: db 3
+	signpost 9, 7, SIGNPOST_JUMPTEXT, MtMoonSignText
+	signpost 9, 17, SIGNPOST_JUMPTEXT, CableCarSignText
+	signpost 4, 15, SIGNPOST_ITEM + ULTRA_BALL, EVENT_ROUTE_4_HIDDEN_ULTRA_BALL
 
-.PersonEvents: db 9
-	person_event SPRITE_YOUNGSTER, 3, 49, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
-	person_event SPRITE_LASS, 11, 36, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
-	person_event SPRITE_YOUNGSTER, 9, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
-	person_event SPRITE_LASS, 8, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
-	person_event SPRITE_LASS, 6, 33, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
-	itemball_event 3, 40, HP_UP, 1, EVENT_ROUTE_4_HP_UP
-	person_event SPRITE_SUPER_NERD, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
-	person_event SPRITE_SUPER_NERD, 3, 20, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
-	person_event SPRITE_COOLTRAINER_M, 4, 66, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
+.PersonEvents: db 11
+	person_event SPRITE_YOUNGSTER, 5, 51, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerYoungsterOliver, -1
+	person_event SPRITE_LASS, 13, 38, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerLassJennifer, -1
+	person_event SPRITE_YOUNGSTER, 6, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperHank, -1
+	person_event SPRITE_LASS, 10, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerPicnickerHope, -1
+	person_event SPRITE_LASS, 8, 35, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerPicnickerSharon, -1
+	person_event SPRITE_SUPER_NERD, 13, 26, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route4SuperNerd1Script, -1
+	person_event SPRITE_SUPER_NERD, 13, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route4SuperNerd2Script, -1
+	person_event SPRITE_ENGINEER, 7, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route4EngineerScript, EVENT_MT_MOON_RIVAL
+	person_event SPRITE_ENGINEER, 5, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	itemball_event 5, 42, HP_UP, 1, EVENT_ROUTE_4_HP_UP
+	person_event SPRITE_COOLTRAINER_M, 6, 68, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BEAT_BLUE
 
 TrainerYoungsterOliver:
 	trainer EVENT_BEAT_YOUNGSTER_OLIVER, YOUNGSTER, OLIVER, YoungsterOliverSeenText, YoungsterOliverBeatenText, 0, YoungsterOliverScript
@@ -120,6 +124,12 @@ Route4TutorAquaTailScript:
 .TeachMove
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_Route4Tutor2Taught
+
+Route4EngineerScript:
+	showtext Route4EngineerText1
+	showtextfaceplayer Route4EngineerText2
+	spriteface LAST_TALKED, UP
+	end
 
 YoungsterOliverSeenText:
 	text "Hi! What's your"
@@ -223,8 +233,8 @@ Route4SuperNerd1Text:
 	text "#mon with tough"
 	line "heads are best!"
 
-	para "Rhydon, Marowak,"
-	line "Golem!"
+	para "Arcanine, Golem,"
+	line "Snorlax!"
 
 	para "Don't you agree?"
 	done
@@ -233,8 +243,8 @@ Route4SuperNerd2Text:
 	text "#mon with long"
 	line "tails are best!"
 
-	para "Gyarados, Golduck,"
-	line "Blastoise!"
+	para "Slowbro, Golduck,"
+	line "Feraligatr!"
 
 	para "Don't you agree?"
 	done
@@ -298,7 +308,27 @@ Text_Route4Tutor2Taught:
 	cont "Aqua Tail!"
 	done
 
+Route4EngineerText1:
+	text "Get those bolts"
+	line "tighter!"
+	done
+
+Route4EngineerText2:
+	text "The cable car's"
+	line "out right now."
+
+	para "Until we're done"
+	line "fixing it,"
+
+	para "Mt.Moon Square"
+	line "is closed."
+	done
+
 MtMoonSignText:
-	text "Mt.Moon"
-	line "Tunnel Entrance"
+	text "Mt.Moon Tunnel"
+	done
+
+CableCarSignText:
+	text "Cable Car to"
+	line "Mt.Moon Square"
 	done

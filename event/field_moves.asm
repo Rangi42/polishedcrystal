@@ -380,9 +380,6 @@ FlyToAnim: ; 8cb33
 .exit
 	pop af
 	ld [wVramState], a
-	jp .RestorePlayerSprite_DespawnLeaves
-
-.RestorePlayerSprite_DespawnLeaves: ; 8cb82 (23:4b82)
 	ld hl, wSprites + 2 ; Tile ID
 	xor a
 	ld c, $4

@@ -13,4 +13,4 @@
 	tilepal 0, RED, RED, RED, RED, RED, RED, RED, YELLOW
 	tilepal 0, YELLOW, RED, RED, RED, RED, RED, RED, RED
 	tilepal 0, RED, RED, RED, RED, RED, RED, RED, YELLOW
-	tilepal 0, YELLOW, TEXT
+	tilepal 0, YELLOW

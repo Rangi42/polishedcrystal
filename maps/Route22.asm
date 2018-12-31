@@ -12,7 +12,7 @@ Route22_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 7, 5, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
+	signpost 6, 6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
 
 .PersonEvents: db 2
 	person_event SPRITE_KUKUI, 11, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, KukuiScript, -1

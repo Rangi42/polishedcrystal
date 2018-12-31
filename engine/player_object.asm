@@ -508,17 +508,12 @@ TrainerWalkToPlayer: ; 831e
 	call InitMovementBuffer
 	ld a, movement_step_sleep_1
 	call AppendToMovementBuffer
-	ld a, [wd03f]
-	dec a
-	jr z, .TerminateStep
 	ld a, [hLastTalked]
 	ld b, a
 	ld c, PLAYER
 	ld d, 1
 	call .GetPathToPlayer
 	call DecrementMovementBufferCount
-
-.TerminateStep:
 	ld a, movement_step_end
 	jp AppendToMovementBuffer
 

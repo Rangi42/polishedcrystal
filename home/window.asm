@@ -1,17 +1,3 @@
-RefreshScreen_BridgeUpdate::
-	call ClearWindowData
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(ReanchorBGMap_NoOAMUpdate_NoDelay) ; BANK(LoadFonts_NoOAMUpdate)
-	rst Bankswitch
-
-	call ReanchorBGMap_NoOAMUpdate_NoDelay
-	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
-
-	pop af
-	rst Bankswitch
-	ret
-
 RefreshScreen:: ; 2dba
 	call ClearWindowData
 	ld a, [hROMBank]
@@ -28,6 +14,10 @@ RefreshScreen:: ; 2dba
 	ret
 ; 2dcf
 
+RefreshScreen_BridgeUpdate::
+	call GetMovementPermissions
+	call ClearWindowData
+	farjp ReanchorBGMap_NoOAMUpdate_NoDelay
 
 CloseText:: ; 2dcf
 	ld a, [hOAMUpdate]

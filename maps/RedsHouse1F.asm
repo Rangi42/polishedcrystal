@@ -14,7 +14,7 @@ RedsHouse1F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 1
-	signpost 1, 5, SIGNPOST_READ, RedsHouse1FTV
+	signpost 1, 5, SIGNPOST_UP, RedsHouse1FTVScript
 
 .PersonEvents: db 1
 	person_event SPRITE_REDS_MOM, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RedsMom, -1
@@ -58,11 +58,7 @@ RedsMom:
 	para "do."
 	done
 
-RedsHouse1FTV:
-	checkcode VAR_FACING
-	if_equal UP, .rightside
-	jumpstd tv
-.rightside
+RedsHouse1FTVScript:
 	thistext
 
 	text "They have programs"

@@ -143,7 +143,7 @@ Credits:: ; 109847
 
 	ld hl, wCreditsFaux2bpp
 	ld c, $80
-	ld de, $ff00
+	lb de, %11111111, %00000000 ; solid light gray hue
 
 .load_loop
 	ld a, e
@@ -203,7 +203,7 @@ Credits:: ; 109847
 	xor a
 	ld [hBGMapMode], a
 	ld [wCreditsPos], a
-	ld [wcd21], a
+	ld [wCreditsPos+1], a
 	ld [wCreditsTimer], a
 
 .execution_loop
@@ -319,7 +319,7 @@ Credits_UpdateGFXRequestPath: ; 109964 (42:5964)
 	ld [hRequestedVTileDest], a
 	ld a, VTiles2 / $100
 	ld [hRequestedVTileDest + 1], a
-	jr Credits_RequestGFX
+	; fallthrough
 
 Credits_RequestGFX: ; 10997b (42:597b)
 	xor a
@@ -968,6 +968,8 @@ CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
 CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
 CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 
+TheEndGFX::          INCBIN "gfx/credits/theend.2bpp"
+
 
 CreditsScript: ; 10acb4
 
@@ -1421,7 +1423,7 @@ CreditsStrings:
 .GakuziNomoto:        db "   Gakuzi Nomoto@"
 .AiMashima:           db "     Ai Mashima@"
 .MikihiroIshikawa:    db " Mikihiro Ishikawa@"
-.HideyukiHashimoto:   db " Hideyuki hHashimoto@"
+.HideyukiHashimoto:   db " Hideyuki Hashimoto@"
 .SatoshiYamato:       db "   Satoshi Yamato@"
 .ShigeruMiyamoto:     db "  Shigeru Miyamoto@"
 .End:                 db "        End@"

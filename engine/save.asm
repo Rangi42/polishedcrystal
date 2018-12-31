@@ -349,12 +349,12 @@ HallOfFame_InitSaveIfNeeded: ; 14da0
 ; 14da9
 
 ValidateSave: ; 14da9
-	ld a, BANK(s1_a008)
+	ld a, BANK(sCheckValue1)
 	call GetSRAMBank
-	ld a, 99
-	ld [s1_a008], a
-	ld a, " "
-	ld [s1_ad0f], a
+	ld a, SAVE_CHECK_VALUE_1
+	ld [sCheckValue1], a
+	ld a, SAVE_CHECK_VALUE_2
+	ld [sCheckValue2], a
 	jp CloseSRAM
 ; 14dbb
 
@@ -414,12 +414,12 @@ SaveChecksum: ; 14e13
 ; 14e2d
 
 ValidateBackupSave: ; 14e2d
-	ld a, BANK(s0_b208)
+	ld a, BANK(sBackupCheckValue1)
 	call GetSRAMBank
-	ld a, 99
-	ld [s0_b208], a
-	ld a, " "
-	ld [s0_bf0f], a
+	ld a, SAVE_CHECK_VALUE_1
+	ld [sBackupCheckValue1], a
+	ld a, SAVE_CHECK_VALUE_2
+	ld [sBackupCheckValue2], a
 	jp CloseSRAM
 ; 14e40
 
@@ -575,13 +575,13 @@ DefaultOptions: ; 14f7c
 ; 14f84
 
 CheckPrimarySaveFile: ; 14f84
-	ld a, BANK(s1_a008)
+	ld a, BANK(sCheckValue1)
 	call GetSRAMBank
-	ld a, [s1_a008]
-	cp 99
+	ld a, [sCheckValue1]
+	cp SAVE_CHECK_VALUE_1
 	jr nz, .nope
-	ld a, [s1_ad0f]
-	cp " "
+	ld a, [sCheckValue2]
+	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
 	ld hl, sOptions
 	ld de, wOptions1
@@ -596,13 +596,13 @@ CheckPrimarySaveFile: ; 14f84
 ; 14faf
 
 CheckBackupSaveFile: ; 14faf
-	ld a, BANK(s0_b208)
+	ld a, BANK(sBackupCheckValue1)
 	call GetSRAMBank
-	ld a, [s0_b208]
-	cp 99
+	ld a, [sBackupCheckValue1]
+	cp SAVE_CHECK_VALUE_1
 	jr nz, .nope
-	ld a, [s0_bf0f]
-	cp " "
+	ld a, [sBackupCheckValue2]
+	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
 	ld hl, sBackupOptions
 	ld de, wOptions1

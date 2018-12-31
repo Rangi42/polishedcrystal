@@ -1,5 +1,5 @@
 AddPhoneNumber:: ; 90000
-	call _CheckCellNum
+	call CheckCellNum
 	jr c, .cant_add
 	call Phone_FindOpenSlot
 	jr nc, .cant_add
@@ -14,7 +14,7 @@ AddPhoneNumber:: ; 90000
 
 
 DelCellNum:: ; 9000f
-	call _CheckCellNum
+	call CheckCellNum
 	jr nc, .not_in_list
 	xor a
 	ld [hl], a
@@ -26,10 +26,6 @@ DelCellNum:: ; 9000f
 ; 90019
 
 CheckCellNum:: ; 90019
-	jp _CheckCellNum ; wtf
-; 9001c
-
-_CheckCellNum: ; 9001c
 	ld hl, wPhoneList
 	ld b, CONTACT_LIST_SIZE
 .loop
@@ -79,7 +75,7 @@ GetRemainingSpaceInPhoneList: ; 90040
 	push bc
 	push hl
 	ld c, a
-	call _CheckCellNum
+	call CheckCellNum
 	jr c, .elm_or_mom_in_list
 	ld hl, wBuffer1
 	inc [hl]
@@ -453,9 +449,6 @@ Script_SpecialBillCall:: ; 0x90255
 
 RingTwice_StartCall: ; 9026f
 	call .Ring
-	;jp .Ring
-; 9027c
-
 .Ring: ; 9027c (24:427c)
 	call Phone_StartRinging
 	call Phone_Wait20Frames
@@ -463,8 +456,6 @@ RingTwice_StartCall: ; 9026f
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	;jp Phone_CallerTextboxWithName
-
 Phone_CallerTextboxWithName: ; 90292 (24:4292)
 	ld a, [wCurrentCaller]
 	ld b, a
@@ -478,9 +469,6 @@ PhoneCall:: ; 9029a
 	ld a, d
 	ld [wPhoneCallerHi], a
 	call Phone_FirstOfTwoRings
-	;jp Phone_FirstOfTwoRings
-; 902b3
-
 Phone_FirstOfTwoRings: ; 902b3
 	call Phone_StartRinging
 	call Phone_Wait20Frames
@@ -488,9 +476,6 @@ Phone_FirstOfTwoRings: ; 902b3
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-	;jp Phone_CallerTextboxWithName2
-; 902c9
-
 Phone_CallerTextboxWithName2: ; 902c9
 	call Phone_CallerTextbox
 	hlcoord 1, 2

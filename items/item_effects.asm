@@ -333,8 +333,12 @@ CherishBall: ; e8a2
 	ld [wWildMon], a
 	ld a, [wCurItem]
 	cp PARK_BALL
-	call nz, ReturnToBattle_UseBall
+	jr z, .skipReturnToBattle
+	cp SAFARI_BALL
+	jr z, .skipReturnToBattle
+	call ReturnToBattle_UseBall
 
+.skipReturnToBattle
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, UsedItemText
@@ -775,6 +779,8 @@ endr
 	ret z
 	cp BATTLETYPE_CONTEST
 	jr z, .used_park_ball
+	cp BATTLETYPE_SAFARI
+	jr z, .used_safari_ball
 
 	ld a, [wWildMon]
 	and a
@@ -791,6 +797,11 @@ endr
 
 .used_park_ball
 	ld hl, wParkBallsRemaining
+	dec [hl]
+	ret
+
+.used_safari_ball
+	ld hl, wSafariBallsRemaining
 	dec [hl]
 	ret
 ; ec0a
@@ -819,6 +830,7 @@ BallMultiplierFunctionTable:
 	db $ff
 
 UltraBallMultiplier:
+SafariBallMultiplier:
 ; multiply catch rate by 2
 	sla b
 	ret nc
@@ -826,7 +838,6 @@ UltraBallMultiplier:
 	ret
 
 GreatBallMultiplier:
-SafariBallMultiplier:
 ParkBallMultiplier:
 ; multiply catch rate by 1.5
 	ld a, b
@@ -2113,7 +2124,7 @@ UseItem_SelectMon: ; f1f9 (3:71f9)
 	pop bc
 	pop de
 	pop hl
-	;jr UseItem_DoSelectMon
+	; fallthrough
 
 UseItem_DoSelectMon:
 	ret c
@@ -2657,8 +2668,7 @@ GoodRod: ; f5a9
 
 SuperRod: ; f5ad
 	ld e, $2
-	jr UseRod
-; f5b1
+	; fallthrough
 
 UseRod: ; f5b1
 	farjp FishFunction
@@ -3138,7 +3148,7 @@ Play_SFX_FULL_HEAL: ; f780
 	ret
 ; f789
 
-UseItemText ; f789
+UseItemText: ; f789
 	ld hl, UsedItemText
 	call PrintText
 	call Play_SFX_FULL_HEAL
@@ -3209,6 +3219,8 @@ Ball_NuzlockeFailureMessage:
 
 	ld a, [wCurItem]
 	cp PARK_BALL
+	ret z
+	cp SAFARI_BALL
 	ret z
 
 	; Item wasn't used.

@@ -28,7 +28,7 @@ Joypad:: ; 935
 ; hJoypadSum: pressed so far
 
 ; Any of these three bits can be used to disable input.
-	ld a, [wcfbe]
+	ld a, [InputFlags]
 	and %11010000
 	ret nz
 
@@ -387,7 +387,9 @@ ButtonSound:: ; aaf
 	ld a, [wInputType]
 	or a
 	jr z, .input_wait_loop
-	farcall _DudeAutoInput_A
+	ld hl, .autoinput_a
+	ld a, BANK(.autoinput_a)
+	call StartAutoInput
 
 .input_wait_loop
 	call .blink_cursor
@@ -405,6 +407,11 @@ ButtonSound:: ; aaf
 	pop af
 	ld [hOAMUpdate], a
 	ret
+
+.autoinput_a
+	db NO_INPUT, $50
+	db A_BUTTON, $00
+	db NO_INPUT, $ff ; end
 ; af5
 
 .blink_cursor ; af5

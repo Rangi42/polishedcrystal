@@ -34,12 +34,9 @@ Special_BattleTower_FindChallengeLevel: ; 1700b0
 	ld [rSVBK], a
 	ld a, b
 	ld [wBTChoiceOfLvlGroup], a
-	ld [wBTChoiceOfLvlGroupBackup], a ; save here to store in wScriptVar later
+	ld [wScriptVar], a
 	pop af
 	ld [rSVBK], a
-
-	ld a, [wBTChoiceOfLvlGroupBackup] ; saved value of wBTChoiceOfLvlGroup
-	ld [wScriptVar], a
 	ret
 ; 1700ba
 
@@ -706,8 +703,11 @@ Function_PartyCountEq3: ; 8b2da
 
 Function_PartySpeciesAreUnique: ; 8b2e2
 	ld hl, wPartyMon1Species
-	jp VerifyUniqueness
-; 8b2e9
+	jr VerifyUniqueness
+
+Function_PartyItemsAreUnique: ; 8b32a
+	ld hl, wPartyMon1Item
+	; fallthrough
 
 VerifyUniqueness: ; 8b2e9
 	ld de, wPartyCount
@@ -772,11 +772,6 @@ VerifyUniqueness: ; 8b2e9
 	pop bc
 	ret
 ; 8b32a
-
-Function_PartyItemsAreUnique: ; 8b32a
-	ld hl, wPartyMon1Item
-	jp VerifyUniqueness
-; 8b331
 
 Function_HasPartyAnEgg: ; 8b331
 	ld hl, wPartyCount

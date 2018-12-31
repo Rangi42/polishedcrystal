@@ -50,11 +50,11 @@ CianwoodPharmacist:
 	pokemart MARTTYPE_PHARMACY, MART_CIANWOOD
 
 PharmacistGiveSecretpotionText:
-	text "Your #mon ap-"
-	line "pear to be fine."
+	text "Your #mon"
+	line "appear to be fine."
 
-	para "Is something wor- "
-	line "rying you?"
+	para "Is something"
+	line "worrying you?"
 
 	para "…"
 

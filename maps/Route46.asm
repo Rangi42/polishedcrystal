@@ -16,11 +16,12 @@ Route46_MapEventHeader:
 .Signposts: db 1
 	signpost 27, 9, SIGNPOST_JUMPTEXT, Route46SignText
 
-.PersonEvents: db 7
+.PersonEvents: db 8
 	person_event SPRITE_POKEFAN_M, 13, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
 	person_event SPRITE_POKEFAN_M, 19, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerBailey, -1
 	person_event SPRITE_YOUNGSTER, 14, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperTed, -1
 	person_event SPRITE_LASS, 13, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
+	person_event SPRITE_LASS, 26, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route46LassText, -1
 	fruittree_event 5, 7, FRUITTREE_ROUTE_46_1, CHERI_BERRY
 	fruittree_event 6, 8, FRUITTREE_ROUTE_46_2, CHESTO_BERRY
 	itemball_event 15, 1, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
@@ -317,4 +318,14 @@ UnknownText_0x1a9927:
 Route46SignText:
 	text "Route 46"
 	line "Mountain Rd. Ahead"
+	done
+
+Route46LassText:
+	text "A dead end…?"
+
+	para "Did I take the"
+	line "wrong path?"
+
+	para "I didn't know this"
+	line "was only one way."
 	done

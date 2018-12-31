@@ -31,9 +31,9 @@ hJoyDown           EQU $ffa8
 hJoyLast           EQU $ffa9
 hInMenu            EQU $ffaa
 
-hGraphicStartTile  EQU $ffad
-hMoveMon           EQU $ffae
-hMapObjectIndexBuffer EQU $ffaf
+hGraphicStartTile        EQU $ffad
+hMoveMon                 EQU $ffae
+hMapObjectIndexBuffer    EQU $ffaf
 hObjectStructIndexBuffer EQU $ffb0
 
 hConnectionStripLength EQU $ffaf
@@ -94,11 +94,11 @@ hLCDCPointer       EQU $ffc6
 hLYOverrideStart   EQU $ffc7
 hLYOverrideEnd     EQU $ffc8
 
-hFFCA              EQU $ffca
-hLinkPlayerNumber  EQU $ffcb
-hFFCC              EQU $ffcc
-hSerialSend        EQU $ffcd
-hSerialReceive     EQU $ffce
+hSerialReceivedNewData     EQU $ffca
+hSerialConnectionStatus    EQU $ffcb
+hSerialIgnoringInitialData EQU $ffcc
+hSerialSend                EQU $ffcd
+hSerialReceive             EQU $ffce
 
 hSCX               EQU $ffcf
 hSCY               EQU $ffd0

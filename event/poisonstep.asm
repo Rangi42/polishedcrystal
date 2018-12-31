@@ -126,7 +126,7 @@ DoPoisonStep:: ; 505da
 	ld de, SFX_POISON
 	call PlaySFX
 	ld b, $2
-	predef LoadPoisonBGPals
+	call LoadPoisonBGPals
 	jp DelayFrame
 ; 50669
 
@@ -176,3 +176,33 @@ DoPoisonStep:: ; 505da
 	text_jump UnknownText_0x1c0acc
 	db "@"
 ; 506b7
+
+LoadPoisonBGPals: ; cbcdd
+	ld a, [rSVBK]
+	push af
+	ld a, $5
+	ld [rSVBK], a
+	ld hl, wBGPals
+	ld c, 8 * 4
+.loop
+if !DEF(MONOCHROME)
+; RGB 28, 21, 31
+	ld a, (palred 28 + palgreen 21 + palblue 31) % $100
+	ld [hli], a
+	ld a, (palred 28 + palgreen 21 + palblue 31) / $100
+	ld [hli], a
+else
+	ld a, PAL_MONOCHROME_WHITE % $100
+	ld [hli], a
+	ld a, PAL_MONOCHROME_WHITE / $100
+	ld [hli], a
+endc
+	dec c
+	jr nz, .loop
+	pop af
+	ld [rSVBK], a
+	ld a, $1
+	ld [hCGBPalUpdate], a
+	ld c, 4
+	call DelayFrames
+	farjp _UpdateTimePals

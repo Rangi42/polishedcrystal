@@ -28,8 +28,8 @@ DoBattle: ; 3c000
 	and a
 	jr z, .not_linked
 
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	jr z, .player_2
 
 .not_linked
@@ -63,7 +63,9 @@ DoBattle: ; 3c000
 	call Call_LoadTempTileMapToTileMap
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jp z, .tutorial_debug
+	jp z, BattleMenu ; No real turns in a tutorial
+	cp BATTLETYPE_SAFARI
+	jp z, SafariBattleTurn ; do not send out a player mon in a Safari Battle
 	xor a
 	ld [wCurPartyMon], a
 .loop2
@@ -101,8 +103,8 @@ DoBattle: ; 3c000
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked_2
-	ld a, [hLinkPlayerNumber]
-	cp $2
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
 	jr nz, .not_linked_2
 	xor a
 	ld [wEnemySwitchMonIndex], a
@@ -121,9 +123,6 @@ DoBattle: ; 3c000
 	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
-
-.tutorial_debug
-	jp BattleMenu
 ; 3c0e5
 
 WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
@@ -221,6 +220,28 @@ BattleTurn: ; 3c12f
 	jp .loop
 ; 3c1bf
 
+SafariBattleTurn:
+.loop
+	call CheckSafariBattleOver
+	ret c
+
+	call BattleMenu
+	ret c
+
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	call HandleSafariAngerEatingStatus
+
+	call CheckSafariMonRan
+	ret c
+
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	jr .loop
 
 HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
@@ -256,8 +277,8 @@ HandleBetweenTurnEffects: ; 3c1d6
 	jp HandleEncore
 
 CheckFaint:
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .enemy_first
 	call .check_player
 	call nc, .check_enemy
@@ -294,8 +315,8 @@ CheckFaint:
 	ret
 
 HandleBerserkGene: ; 3c27c
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .reverse
 
 	call .player
@@ -520,6 +541,17 @@ CheckContestBattleOver: ; 3c3f5
 	ret
 ; 3c410
 
+CheckSafariBattleOver:
+	ld a, [wSafariBallsRemaining]
+	and a
+	ret nz
+	ld a, [wBattleResult]
+	and $c0
+	add $2
+	ld [wBattleResult], a
+	scf
+	ret
+
 CheckPlayerLockedIn: ; 3c410
 	ld a, [wPlayerSubStatus4]
 	and 1 << SUBSTATUS_RECHARGE
@@ -605,8 +637,6 @@ ParsePlayerAction: ; 3c434
 	jr z, .continue_rage
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
-	xor a
-	ld [wPlayerRageCounter], a
 
 .continue_rage
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
@@ -624,7 +654,6 @@ ParsePlayerAction: ; 3c434
 .locked_in
 	xor a
 	ld [wPlayerProtectCount], a
-	ld [wPlayerRageCounter], a
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 
@@ -636,7 +665,6 @@ ParsePlayerAction: ; 3c434
 .reset_rage
 	xor a
 	ld [wPlayerProtectCount], a
-	ld [wPlayerRageCounter], a
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 .lavender_ghost
@@ -646,8 +674,8 @@ ParsePlayerAction: ; 3c434
 ; 3c4df
 
 HandleEncore: ; 3c4df
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call .do_player
 	jr .do_enemy
@@ -983,15 +1011,13 @@ PlayerTurn_EndOpponentProtectEndureDestinyBond: ; 3c6cf
 	call SetPlayerTurn
 	call EndUserDestinyBond
 	farcall DoPlayerTurn
-	jp EndOpponentProtectEndureDestinyBond
-; 3c6de
+	jr EndOpponentProtectEndureDestinyBond
 
 EnemyTurn_EndOpponentProtectEndureDestinyBond: ; 3c6de
 	call SetEnemyTurn
 	call EndUserDestinyBond
 	farcall DoEnemyTurn
-	jp EndOpponentProtectEndureDestinyBond
-; 3c6ed
+	; fallthrough
 
 EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
@@ -1746,9 +1772,8 @@ HandleWeatherEffects:
 
 	ld hl, SandstormHitsText
 	call StdBattleTextBox
-
 	call GetSixteenthMaxHP
-	jp SubtractHPFromUser
+	jr SubtractHPFromUser
 
 .HandleHail
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1768,11 +1793,11 @@ HandleWeatherEffects:
 
 	call CheckIfUserIsIceType
 	ret z
-	ld hl, HailHitsText
-	jp StdBattleTextBox
 
+	ld hl, HailHitsText
+	call StdBattleTextBox
 	call GetSixteenthMaxHP
-	jp SubtractHPFromUser
+	; fallthrough
 
 SubtractHPFromUser:
 	call SubtractHP
@@ -2011,8 +2036,8 @@ HandleEnemyMonFaint: ; 3cd55
 ; 3cdca
 
 DoubleSwitch: ; 3cdca
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call ClearSprites
 	hlcoord 0, 0
@@ -2958,20 +2983,19 @@ LostBattle: ; 3d38e
 EnemyMonFaintedAnimation: ; 3d432
 	hlcoord 12, 5
 	decoord 12, 6
-	jp MonFaintedAnimation
+	jr MonFaintedAnimation
 ; 3d43b
 
 PlayerMonFaintedAnimation: ; 3d43b
 	hlcoord 1, 10
 	decoord 1, 11
-	jp MonFaintedAnimation
-; 3d444
+	; fallthrough
 
 MonFaintedAnimation: ; 3d444
-	ld a, [wcfbe]
+	ld a, [InputFlags]
 	push af
 	set 6, a
-	ld [wcfbe], a
+	ld [InputFlags], a
 	ld b, 7
 
 .OuterLoop:
@@ -3014,7 +3038,7 @@ MonFaintedAnimation: ; 3d444
 	jr nz, .OuterLoop
 
 	pop af
-	ld [wcfbe], a
+	ld [InputFlags], a
 	ret
 ; 3d488
 
@@ -3475,7 +3499,6 @@ endr
 	ld [wEnemyDisableCount], a
 	ld [wEnemyProtectCount], a
 	ld [wEnemyToxicCount], a
-	ld [wEnemyRageCounter], a
 	ld [wEnemyDisabledMove], a
 	ld [wEnemyMinimized], a
 	ld [wPlayerWrapCount], a
@@ -3781,7 +3804,7 @@ SendOutPlayerMon: ; 3db5f
 	call GetMonBackpic
 	xor a
 	ld [hGraphicStartTile], a
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	ld [wCurMoveNum], a
 	ld [wTypeModifier], a
 	ld [wPlayerMoveStruct + MOVE_ANIM], a
@@ -3844,7 +3867,6 @@ endr
 	ld [wPlayerDisableCount], a
 	ld [wPlayerProtectCount], a
 	ld [wPlayerToxicCount], a
-	ld [wPlayerRageCounter], a
 	ld [wDisabledMove], a
 	ld [wPlayerMinimized], a
 	ld [wEnemyWrapCount], a
@@ -4565,11 +4587,6 @@ DrawPlayerHUD: ; 3df58
 	farjp InstantReloadPaletteHack
 ; 3df98
 
-UpdatePlayerHPPal: ; 3df98
-	ld hl, wPlayerHPPal
-	jp UpdateHPPal
-; 3df9e
-
 CheckDanger: ; 3df9e
 	ld hl, wBattleMonHP
 	ld a, [hli]
@@ -4801,11 +4818,13 @@ endr
 	farjp InstantReloadPaletteHack
 ; 3e127
 
+UpdatePlayerHPPal: ; 3df98
+	ld hl, wPlayerHPPal
+	jr UpdateHPPal
+
 UpdateEnemyHPPal: ; 3e127
 	ld hl, wEnemyHPPal
-	jp UpdateHPPal
-; 3e12e
-
+	; fallthrough
 UpdateHPPal: ; 3e12e
 	ld b, [hl]
 	call SetHPPal
@@ -4823,6 +4842,8 @@ BattleMenu: ; 3e139
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .ok
+	cp BATTLETYPE_SAFARI
+	jr z, .ok
 	call EmptyBattleTextBox
 	call UpdateBattleHuds
 	call EmptyBattleTextBox
@@ -4831,9 +4852,14 @@ BattleMenu: ; 3e139
 
 .loop
 	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	jr z, .safari_game
 	cp BATTLETYPE_CONTEST
 	jr nz, .not_contest
 	farcall ContestBattleMenu
+	jr .next
+.safari_game
+	farcall SafariBattleMenu
 	jr .next
 .not_contest
 
@@ -4841,7 +4867,9 @@ BattleMenu: ; 3e139
 	ld a, [wInputType]
 	or a
 	jr z, .skip_lyra_pack_select
-	farcall _DudeAutoInput_DownA
+	ld hl, .autoinput_down_a
+	ld a, BANK(.autoinput_down_a)
+	call StartAutoInput
 .skip_lyra_pack_select
 
 	call LoadBattleMenu2
@@ -4850,25 +4878,120 @@ BattleMenu: ; 3e139
 .next
 	ld a, $1
 	ld [hBGMapMode], a
-	ld a, [wd0d2]
-	cp $1
-	jp z, BattleMenu_Fight
-	cp $3
-	jp z, BattleMenu_Pack
-	cp $2
-	jp z, BattleMenu_PKMN
-	cp $4
-	jp z, BattleMenu_Run
+	ld a, [wBattleMenuCursorBuffer]
+	dec a
+	jp z, BattleMenu_Fight ; $1
+	dec a
+	jp z, BattleMenu_PKMN ; $2
+	dec a
+	jp z, BattleMenu_Pack ; $3
+	dec a
+	jp z, BattleMenu_Run ; $4
 	jr .loop
+
+.autoinput_down_a
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db D_DOWN,   $00
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db NO_INPUT, $fe
+	db A_BUTTON, $00
+	db NO_INPUT, $ff ; end
 ; 3e192
 
 BattleMenu_Fight: ; 3e192
+	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	jp z, BattleMenu_SafariBall
+
 	xor a
 	ld [wNumFleeAttempts], a
 	call Call_LoadTempTileMapToTileMap
 	and a
 	ret
-; 3e19b
+
+BattleMenu_Bait:
+	ld hl, BattleText_ThrewBait
+	call StdBattleTextBox
+	ld hl, wEnemyMonCatchRate
+	srl [hl] ; halve catch rate
+	; TODO: Play bait animation
+	ld hl, wSafariMonEating
+	ld de, wSafariMonAngerCount
+	jr BattleMenu_BaitRock_Common
+
+BattleMenu_Rock:
+	ld hl, BattleText_ThrewRock
+	call StdBattleTextBox
+	ld hl, wEnemyMonCatchRate
+	ld a, [hl]
+	add a ; double catch rate
+	jr nc, .noCarry
+	ld a, $ff
+.noCarry
+	ld [hl], a
+	; TODO: Play the rock animation
+	ld hl, wSafariMonAngerCount
+	ld de, wSafariMonEating
+	; fallthrough
+
+BattleMenu_BaitRock_Common:
+	xor a
+	ld [de], a ; zero the Eating counter (rock) or the Anger counter (bait)
+.randomLoop ; loop until a number less than 5 is generated
+	call BattleRandom
+	and 7
+	cp 5
+	jr nc, .randomLoop
+	inc a ; increment the random number, giving a range from 1 to 5 inclusive
+	ld b, a
+	ld a, [hl]
+	add b ; increase Eating or Anger counter appropriately
+	jr nc, .noCarry
+	ld a, $ff
+.noCarry
+	ld [hl], a
+	and a
+	ret
+
+CheckSafariMonRan:
+; Wildmon always runs when you are out of Safari Balls
+	ld a, [wSafariBallsRemaining]
+	and a
+	jp z, WildFled_EnemyFled_LinkBattleCanceled
+; otherwise, check its speed, bait, and rock factors
+; this probably could stand to be cleaned up or rewritten later
+; it is basically taken directly from Gen 1
+	ld a, [wEnemyMonSpeed + 1]
+	add a
+	ld b, a ; init b (which is later compared with random value) to (enemy speed % 256) * 2
+	jp c, WildFled_EnemyFled_LinkBattleCanceled ; if (enemy speed % 256) > 127, the enemy runs
+	ld a, [wSafariMonEating]
+	and a ; is bait factor 0?
+	jr z, .checkEscapeFactor
+; bait factor is not 0
+; divide b by 4 (making the mon less likely to run)
+	srl b
+	srl b
+.checkEscapeFactor
+	ld a, [wSafariMonAngerCount]
+	and a ; is escape factor 0?
+	jr z, .compareWithRandomValue
+; escape factor is not 0
+; multiply b by 2 (making the mon more likely to run)
+	sla b
+	jr nc, .compareWithRandomValue
+; cap b at 255
+	ld b, $ff
+.compareWithRandomValue
+	call BattleRandom
+	cp b
+	ret nc
+	jp WildFled_EnemyFled_LinkBattleCanceled ; if b was greater than the random value, the enemy runs
 
 LoadBattleMenu2: ; 3e19b
 	farcall LoadBattleMenu
@@ -4877,6 +5000,12 @@ LoadBattleMenu2: ; 3e19b
 ; 3e1c7
 
 BattleMenu_Pack: ; 3e1c7
+	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	jp z, BattleMenu_Rock
+	; fallthrough
+
+BattleMenu_SafariBall:
 	ld a, [wLinkMode]
 	and a
 	jp nz, .ItemsCantBeUsed
@@ -4892,6 +5021,8 @@ BattleMenu_Pack: ; 3e1c7
 	jr z, .tutorial
 	cp BATTLETYPE_CONTEST
 	jr z, .contest
+	cp BATTLETYPE_SAFARI
+	jr z, .safari
 
 	farcall BattlePack
 	ld a, [wBattlePlayerAction]
@@ -4902,6 +5033,12 @@ BattleMenu_Pack: ; 3e1c7
 .tutorial
 	farcall TutorialPack
 	ld a, POKE_BALL
+	ld [wCurItem], a
+	call DoItemEffect
+	jr .got_item
+
+.safari
+	ld a, SAFARI_BALL
 	ld [wCurItem], a
 	call DoItemEffect
 	jr .got_item
@@ -4951,6 +5088,8 @@ BattleMenu_Pack: ; 3e1c7
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .tutorial2
+	cp BATTLETYPE_SAFARI
+	jr z, .tutorial2
 	call GetMonBackpic
 
 .tutorial2
@@ -4958,7 +5097,9 @@ BattleMenu_Pack: ; 3e1c7
 	ld a, $1
 	ld [wMenuCursorY], a
 	call ExitMenu
-	call UpdateBattleHUDs
+	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	call nz, UpdateBattleHUDs
 	call WaitBGMap
 	call LoadTileMapToTempTileMap
 	call ClearWindowData
@@ -4979,6 +5120,10 @@ BattleMenu_Pack: ; 3e1c7
 ; 3e28d
 
 BattleMenu_PKMN: ; 3e28d
+	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	jp z, BattleMenu_Bait ; "PKMN" is replaced with "Bait" in that mode
+
 	call LoadStandardMenuDataHeader
 BattleMenuPKMN_ReturnFromStats:
 	call ExitMenu
@@ -5145,8 +5290,8 @@ PlayerSwitch: ; 3e3ad
 	jp WildFled_EnemyFled_LinkBattleCanceled
 
 .dont_run
-	ld a, [hLinkPlayerNumber]
-	cp $1
+	ld a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
 	jr z, .player_1
 	call BattleMonEntrance
 	call EnemyMonEntrance
@@ -5243,6 +5388,11 @@ BattleMenu_Run: ; 3e489
 ; 3e4a8
 
 CheckRunSpeed:
+; In a safari battle, most of the battle engine is ignored, you have no active Pokemon, and can always run
+	ld a, [wBattleType]
+	cp BATTLETYPE_SAFARI
+	jp z, .can_escape
+
 ; Sets up speed stats properly and attempts to flee.
 	ld a, [hBattleTurn]
 	push af
@@ -6156,8 +6306,6 @@ ParseEnemyAction: ; 3e7c1
 	jr z, .no_rage
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
-	xor a
-	ld [wEnemyRageCounter], a
 
 .no_rage
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
@@ -6178,7 +6326,6 @@ ParseEnemyAction: ; 3e7c1
 ResetVarsForSubstatusRage: ; 3e8c1
 	xor a
 	ld [wEnemyProtectCount], a
-	ld [wEnemyRageCounter], a
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	ret
@@ -6200,9 +6347,64 @@ CheckEnemyLockedIn: ; 3e8d1
 ; 3e8e4
 
 LinkBattleSendReceiveAction: ; 3e8e4
-	farjp _LinkBattleSendReceiveAction
-; 3e8eb
+; Note that only the lower 4 bits is usable. The higher 4 determines what kind of
+; linking we are performing.
+	call .StageForSend
+	ld [wLinkBattleSentAction], a
+	farcall PlaceWaitingText
+	ld a, [wLinkBattleSentAction]
+	ld [wPlayerLinkAction], a
+	ld a, $ff
+	ld [wOtherPlayerLinkAction], a
 
+.waiting
+	call LinkTransfer
+	call DelayFrame
+	ld a, [wOtherPlayerLinkAction]
+	inc a
+	jr z, .waiting
+
+	ld b, 10
+.receive
+	call DelayFrame
+	call LinkTransfer
+	dec b
+	jr nz, .receive
+
+	ld b, 10
+.acknowledge
+	call DelayFrame
+	call LinkDataReceived
+	dec b
+	jr nz, .acknowledge
+
+	ld a, [wOtherPlayerLinkAction]
+	ld [wBattleAction], a
+	ret
+; 100a2e
+
+.StageForSend: ; 100a2e
+	ld a, [wBattlePlayerAction]
+	and a
+	jr nz, .switch
+	ld a, [wCurPlayerMove]
+	ld b, BATTLEACTION_STRUGGLE
+	cp STRUGGLE
+	jr z, .struggle
+	ld a, [wCurMoveNum]
+	jr .use_move
+
+.switch
+	ld a, [wCurPartyMon]
+	add BATTLEACTION_SWITCH1
+	jr .use_move
+
+.struggle
+	ld a, b
+.use_move
+	and $0f
+	ret
+; 3e8eb
 
 LoadEnemyMon: ; 3e8eb
 ; Initialize enemy monster parameters
@@ -6419,7 +6621,7 @@ endc
 	; Random shininess
 	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [wBattleType]
-	cp BATTLETYPE_SHINY
+	cp BATTLETYPE_RED_GYARADOS
 	jr z, .shiny
 	cp BATTLETYPE_GROTTO
 	jr z, .not_shiny
@@ -6507,8 +6709,13 @@ endc
 .Female
 	ld b, a
 
-	; Form 1
-	ld a, 1
+	; Form
+	ld a, [wBattleType]
+	cp BATTLETYPE_RED_GYARADOS
+	ld a, GYARADOS_RED_FORM
+	jr z, .red_form
+	ld a, 1 ; default form 1
+.red_form
 	add b
 	ld [hl], a
 
@@ -6558,10 +6765,10 @@ endr
 .yes_ekans
 	farcall RegionCheck
 	ld a, e
-	ld d, 1
+	ld d, ARBOK_JOHTO_FORM
 	and a
 	jr z, .johto_form
-	ld d, 2
+	ld d, ARBOK_KANTO_FORM
 .johto_form
 	ld a, [wEnemyMonForm]
 	and $ff - FORM_MASK
@@ -6590,8 +6797,8 @@ endr
 	farcall CalcMagikarpLength
 
 	; We're clear if the length is < 1536
-	ld a, [wMagikarpLength]
-	cp $06 ; $600 = 1536
+	ld a, [wMagikarpLengthMmHi]
+	cp $6 ; $600 = 1536
 	jr nz, .CheckMagikarpArea
 
 	; 5% chance of skipping size checks
@@ -6599,7 +6806,7 @@ endr
 	cp $0c ; / $100
 	jr c, .CheckMagikarpArea
 	; Try again if > 1614
-	ld a, [wMagikarpLength + 1]
+	ld a, [wMagikarpLengthMmLo]
 	cp $50
 	jp nc, .GenerateDVs
 
@@ -6608,7 +6815,7 @@ endr
 	cp $32 ; / $100
 	jr c, .CheckMagikarpArea
 	; Try again if > 1598
-	ld a, [wMagikarpLength + 1]
+	ld a, [wMagikarpLengthMmLo]
 	cp $40
 	jp nc, .GenerateDVs
 
@@ -6625,7 +6832,7 @@ endr
 	cp $64 ; / $100
 	jr c, .Happiness
 	; Floor at length 1024
-	ld a, [wMagikarpLength]
+	ld a, [wMagikarpLengthMmHi]
 	cp 1024 >> 8
 	jp c, .GenerateDVs ; try again
 
@@ -6721,7 +6928,7 @@ rept 3
 endr
 	ld [hl], a
 	; Make sure the predef knows this isn't a partymon
-	ld [wMagikarpLength], a
+	ld [wEvolutionOldSpecies], a
 	; Fill moves based on level
 	predef FillMoves
 
@@ -8019,36 +8226,37 @@ TextJump_ComeBack: ; 3f35b
 ; 3f360
 
 
-;HandleSafariAngerEatingStatus: ; unreferenced
-;	ld hl, wSafariMonEating
-;	ld a, [hl]
-;	and a
-;	jr z, .angry
-;	dec [hl]
-;	ld hl, BattleText_WildPkmnIsEating
-;	jr .finish
-;
-;.angry
-;	dec hl ; wSafariMonAngerCount
-;	ld a, [hl]
-;	and a
-;	ret z
-;	dec [hl]
-;	ld hl, BattleText_WildPkmnIsAngry
-;	jr nz, .finish
-;	push hl
-;	ld a, [wEnemyMonSpecies]
-;	ld [wCurSpecies], a
-;	call GetBaseData
-;	ld a, [wBaseCatchRate]
-;	ld [wEnemyMonCatchRate], a
-;	pop hl
-;
-;.finish
-;	push hl
-;	call Call_LoadTempTileMapToTileMap
-;	pop hl
-;	jp StdBattleTextBox
+HandleSafariAngerEatingStatus:
+	ld hl, wSafariMonEating
+	ld a, [hl]
+	and a
+	jr z, .angry
+	dec [hl]
+	ld hl, BattleText_WildPkmnIsEating
+	jr .finish
+
+.angry
+	dec hl ; wSafariMonAngerCount
+	ld a, [hl]
+	and a
+	ret z
+	dec [hl]
+	ld hl, BattleText_WildPkmnIsAngry
+	jr nz, .finish
+	push hl
+	; reset the catch rate to normal if bait/rock effects have worn off
+	ld a, [wEnemyMonSpecies]
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, [wBaseCatchRate]
+	ld [wEnemyMonCatchRate], a
+	pop hl
+
+.finish
+	push hl
+	call Call_LoadTempTileMapToTileMap
+	pop hl
+	jp StdBattleTextBox
 ;; 3f390
 
 
@@ -8289,7 +8497,7 @@ BattleIntro: ; 3f4dd
 	call LoadTrainerOrWildMonPic
 	xor a
 	ld [wTempBattleMonSpecies], a
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	xor a
 	ld [hMapAnims], a
 	ld a, [wOtherTrainerClass]
@@ -8538,7 +8746,7 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wPartyMenuCursor], a
 	ld [wKeyItemsPocketCursor], a
 	ld [wItemsPocketCursor], a
-	ld [wd0d2], a
+	ld [wBattleMenuCursorBuffer], a
 	ld [wCurMoveNum], a
 	ld [wBallsPocketCursor], a
 	ld [wMenuScrollPosition], a
@@ -8616,7 +8824,7 @@ ShowLinkBattleResult: ; 3f77c
 
 .loss
 	ld de, .Lose
-	jr .store_result
+	; fallthrough
 
 .store_result
 	hlcoord 6, 8
@@ -8688,7 +8896,7 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	ld h, d
 	ld l, e
 	ld de, wd002
-	ld bc, 10
+	ld bc, NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
@@ -8702,20 +8910,20 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	ld de, 26
 	add hl, de
 	push hl
-	ld de, wd00d
+	ld de, wd002 + 11 ; win
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
 	push hl
-	ld de, wd00f
+	ld de, wd002 + 13 ; lose
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
-	ld de, wd011
+	ld de, wd002 + 15 ; draw
 	lb bc, 2, 4
 	call PrintNum
 	jr .next
@@ -9336,6 +9544,8 @@ BattleStartMessage: ; 3fc8b
 	cp BATTLETYPE_ROAMING
 	jr z, .PlaceBattleStartText
 	cp BATTLETYPE_LEGENDARY
+	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_RED_GYARADOS
 	jr z, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 

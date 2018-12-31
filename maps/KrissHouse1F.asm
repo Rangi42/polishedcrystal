@@ -20,7 +20,7 @@ KrissHouse1F_MapEventHeader:
 	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
 	signpost 1, 1, SIGNPOST_JUMPTEXT, SinkText
 	signpost 1, 2, SIGNPOST_JUMPTEXT, StoveText
-	signpost 1, 7, SIGNPOST_READ, TVScript
+	signpost 1, 7, SIGNPOST_UP, TVScript
 
 .PersonEvents: db 5
 	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
@@ -136,6 +136,8 @@ if DEF(DEBUG)
 	setevent EVENT_BEAT_BLUE
 	setevent EVENT_BEAT_ELITE_FOUR
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
+	setevent EVENT_BATTLE_TOWER_OPEN
+	clearevent EVENT_BATTLE_TOWER_CLOSED
 	; fly anywhere
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
@@ -201,8 +203,11 @@ if DEF(DEBUG)
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS
 	callasm TeachHMSlaveMoves
+	; pokedex
+	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
+;	; prof.elm events
 ;	addcellnum PHONE_ELM
 ;	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
 ;	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
@@ -298,6 +303,21 @@ TeachHMSlaveMoves:
 	ld [hl], a
 	ret
 
+FillPokedex:
+	ld a, 1
+	ld [wFirstUnownSeen], a
+	ld [wFirstMagikarpSeen], a
+	ld hl, PokedexSeen
+	call .Fill
+	ld hl, PokedexCaught
+.Fill:
+	ld a, %11111111
+	ld bc, 31 ; 001-248
+	call ByteFill
+	ld a, %00011111
+	ld [hl], a ; 249-253
+	ret
+
 else
 
 GearName:
@@ -327,10 +347,6 @@ StoveText:
 	done
 
 TVScript:
-	checkcode VAR_FACING
-	if_equal UP, .rightside
-	jumpstd tv
-.rightside
 	thistext
 
 	text "There's a movie on"

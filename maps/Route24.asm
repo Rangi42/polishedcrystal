@@ -2,21 +2,88 @@ Route24_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 0
+.MapCallbacks: db 1
+	dbw MAPCALLBACK_TILES, Route24TileScript
 
 Route24_MapEventHeader:
 
 .Warps: db 0
 
-.XYTriggers: db 0
+.XYTriggers: db 10
+	xy_trigger 1, 15, 19, Route24BridgeOverheadTrigger
+	xy_trigger 1, 14, 20, Route24BridgeOverheadTrigger
+	xy_trigger 1, 14, 21, Route24BridgeOverheadTrigger
+	xy_trigger 1, 15, 22, Route24BridgeOverheadTrigger
+	xy_trigger 1, 39, 20, Route24BridgeOverheadTrigger
+	xy_trigger 1, 39, 21, Route24BridgeOverheadTrigger
+	xy_trigger 0, 15, 20, Route24BridgeUnderfootTrigger
+	xy_trigger 0, 15, 21, Route24BridgeUnderfootTrigger
+	xy_trigger 0, 38, 20, Route24BridgeUnderfootTrigger
+	xy_trigger 0, 38, 21, Route24BridgeUnderfootTrigger
 
-.Signposts: db 0
+.Signposts: db 1
+	signpost 5, 16, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
 .PersonEvents: db 1
-	person_event SPRITE_ROCKET, 7, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	person_event SPRITE_ROCKET, 25, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
 const_value set 1
 	const ROUTE24_ROCKET
+
+Route24TileScript:
+	checktriggers
+	iftrue .underfoot
+	callasm Route24_OverheadBridgeAsm
+	return
+
+.underfoot:
+	callasm Route24_UnderfootBridgeAsm
+	return
+
+Route24_OverheadBridgeAsm:
+	changebridgeblock 20, 16, $ee, ROUTE_24
+	changebridgeblock 20, 18, $ec, ROUTE_24
+	changebridgeblock 20, 20, $ec, ROUTE_24
+	changebridgeblock 20, 22, $ec, ROUTE_24
+	changebridgeblock 20, 24, $ec, ROUTE_24
+	changebridgeblock 20, 26, $ec, ROUTE_24
+	changebridgeblock 20, 28, $ec, ROUTE_24
+	changebridgeblock 20, 30, $ec, ROUTE_24
+	changebridgeblock 20, 32, $ec, ROUTE_24
+	changebridgeblock 20, 34, $ec, ROUTE_24
+	changebridgeblock 20, 36, $ec, ROUTE_24
+	changebridgeblock 20, 38, $ed, ROUTE_24
+	jp BufferScreen
+
+Route24_UnderfootBridgeAsm:
+	changebridgeblock 20, 16, $d2, ROUTE_24
+	changebridgeblock 20, 18, $d2, ROUTE_24
+	changebridgeblock 20, 20, $d2, ROUTE_24
+	changebridgeblock 20, 22, $d2, ROUTE_24
+	changebridgeblock 20, 24, $d2, ROUTE_24
+	changebridgeblock 20, 26, $d2, ROUTE_24
+	changebridgeblock 20, 28, $d2, ROUTE_24
+	changebridgeblock 20, 30, $d2, ROUTE_24
+	changebridgeblock 20, 32, $d2, ROUTE_24
+	changebridgeblock 20, 34, $d2, ROUTE_24
+	changebridgeblock 20, 36, $d2, ROUTE_24
+	changebridgeblock 20, 38, $b1, ROUTE_24
+	jp BufferScreen
+
+Route24BridgeOverheadTrigger:
+	callasm Route24_OverheadBridgeAsm
+	thisasm
+	xor a
+	jr Route24_FinishBridge
+
+Route24BridgeUnderfootTrigger:
+	callasm Route24_UnderfootBridgeAsm
+	thisasm
+	ld a, $1
+Route24_FinishBridge:
+	ld [wWalkingOnBridge], a
+	ld [wRoute24Trigger], a ; dotrigger a
+	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 TrainerGruntM31:
 	trainer EVENT_BEAT_ROCKET_GRUNTM_31, GRUNTM, 31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa
@@ -35,7 +102,6 @@ RocketScript_0x1adbfa:
 	disappear ROUTE24_ROCKET
 	setevent EVENT_LEARNED_ABOUT_MACHINE_PART
 	clearevent EVENT_ROUTE_25_MISTY_BOYFRIEND
-	variablesprite SPRITE_CERULEAN_CAPE_MISTY, SPRITE_MISTY
 	domaptrigger CERULEAN_CAPE, $1
 	pause 25
 	special Special_FadeInQuickly

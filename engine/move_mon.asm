@@ -924,7 +924,7 @@ RetrievePokemonFromDaycareMan: ; dd21
 	ld [wCurPartyLevel], a
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	jp Functiondd64
+	jr Functiondd64
 ; dd42
 
 RetrievePokemonFromDaycareLady: ; dd42
@@ -940,7 +940,7 @@ RetrievePokemonFromDaycareLady: ; dd42
 	ld [wCurPartyLevel], a
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
-	jp Functiondd64
+	; fallthrough
 ; dd64
 
 Functiondd64: ; dd64

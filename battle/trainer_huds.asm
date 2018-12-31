@@ -88,7 +88,7 @@ endr
 	and a
 	ld b, $32 ; statused
 	jr nz, .load
-	dec b ; normal
+	dec b ; $31 ; normal
 	jr .load
 
 .fainted
@@ -206,8 +206,7 @@ LinkBattle_TrainerHuds: ; 2c10d
 	ld [hli], a
 	ld [hl], 13 * 8
 	ld hl, wSprites + PARTY_LENGTH * 4
-	jp LoadTrainerHudOAM
-; 2c143
+	; fallthrough
 
 LoadTrainerHudOAM: ; 2c143
 	ld de, wBuffer1
@@ -219,7 +218,7 @@ LoadTrainerHudOAM: ; 2c143
 	ld [hli], a
 	ld a, [de]
 	ld [hli], a
-	ld a, $3
+	ld a, PAL_BATTLE_OB_YELLOW
 	ld [hli], a
 	ld a, [wPlaceBallsX]
 	ld b, a

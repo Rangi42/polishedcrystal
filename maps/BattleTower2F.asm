@@ -11,10 +11,10 @@ BattleTower2F_MapEventHeader:
 .XYTriggers: db 0
 
 .Signposts: db 4
-	signpost 3, 4, SIGNPOST_READ, BattleTower2FTVScript
-	signpost 3, 5, SIGNPOST_READ, BattleTower2FTVScript
-	signpost 3, 16, SIGNPOST_READ, BattleTower2FTVScript
-	signpost 3, 17, SIGNPOST_READ, BattleTower2FTVScript
+	signpost 3, 4, SIGNPOST_UP, BattleTower2FTVScript
+	signpost 3, 5, SIGNPOST_UP, BattleTower2FTVScript
+	signpost 3, 16, SIGNPOST_UP, BattleTower2FTVScript
+	signpost 3, 17, SIGNPOST_UP, BattleTower2FTVScript
 
 .PersonEvents: db 13
 	person_event SPRITE_RILEY, 7, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
@@ -43,10 +43,6 @@ const_value set 1
 	const BATTLETOWER2F_ANABEL
 
 BattleTower2FTVScript:
-	checkcode VAR_FACING
-	if_equal UP, .rightside
-	jumpstd tv
-.rightside
 	thistext
 
 	text "There's an intense"

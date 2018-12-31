@@ -140,7 +140,7 @@
 	const SPRITE_SILPH_EMPLOYEE ; $89
 	const SPRITE_SWIMMING_OFFICER ; $8a
 	const SPRITE_SWIMMING_OFFICER_F ; $8b
-	const SPRITE_CLEFAIRY_WALK ; $8c
+	const SPRITE_CLEFAIRY ; $8c
 	const SPRITE_FARFETCH_D ; $8d
 	const SPRITE_LAPRAS ; $8e
 	const SPRITE_EEVEE ; $8f
@@ -157,108 +157,111 @@
 	const SPRITE_WEIRD_TREE ; $9a
 	const SPRITE_BALL_CUT_FRUIT ; $9b
 	const SPRITE_BOULDER_ROCK_FOSSIL ; $9c
-	const SPRITE_PAPER ; $9d
-	const SPRITE_POKEDEX ; $9e
-	const SPRITE_BOOK ; $9f
-	const SPRITE_ELECTRIC_FENCE_LEFT ; $a0
-	const SPRITE_ELECTRIC_FENCE_RIGHT ; $a1
-	const SPRITE_SNES ; $a2
-	const SPRITE_N64 ; $a3
-	const SPRITE_GAMECUBE ; $a4
-	const SPRITE_WII ; $a5
-	const SPRITE_SILVER_TROPHY ; $a6
-	const SPRITE_GOLD_TROPHY ; $a7
+	const SPRITE_BOOK_PAPER_POKEDEX ; $9d
+	const SPRITE_ELECTRIC_FENCE_LEFT ; $9e
+	const SPRITE_ELECTRIC_FENCE_RIGHT ; $9f
+	const SPRITE_SNES ; $a0
+	const SPRITE_N64 ; $a1
+	const SPRITE_GAMECUBE ; $a2
+	const SPRITE_WII ; $a3
+	const SPRITE_SILVER_TROPHY ; $a4
+	const SPRITE_GOLD_TROPHY ; $a5
+	const SPRITE_BLANK ; $a6
 
-const_value set $ab
+	const SPRITE_UNUSED ; $a7
+
 SPRITE_POKEMON EQU const_value
-	const SPRITE_BULBASAUR ; $ab
-	const SPRITE_CHARMANDER ; $ac
-	const SPRITE_SQUIRTLE ; $ad
-	const SPRITE_WEEDLE ; $ae
-	const SPRITE_PIDGEY ; $af
-	const SPRITE_PIDGEOTTO ; $b0
-	const SPRITE_RATTATA ; $b1
-	const SPRITE_PIKACHU ; $b2
-	const SPRITE_NIDORAN_F ; $b3
-	const SPRITE_NIDORAN_M ; $b4
-	const SPRITE_NIDORINO ; $b5
-	const SPRITE_CLEFAIRY ; $b6
-	const SPRITE_JIGGLYPUFF ; $b7
-	const SPRITE_ODDISH ; $b8
-	const SPRITE_VILEPLUME ; $b9
-	const SPRITE_DIGLETT ; $ba
-	const SPRITE_MEOWTH ; $bb
-	const SPRITE_PERSIAN ; $bc
-	const SPRITE_PSYDUCK ; $bd
-	const SPRITE_POLIWAG ; $be
-	const SPRITE_POLIWRATH ; $bf
-	const SPRITE_ABRA ; $c0
-	const SPRITE_MACHOP ; $c1
-	const SPRITE_MACHOKE ; $c2
-	const SPRITE_TENTACOOL ; $c3
-	const SPRITE_GEODUDE ; $c4
-	const SPRITE_SLOWPOKE ; $c5
-	const SPRITE_SLOWBRO ; $c6
-	const SPRITE_DODRIO ; $c7
-	const SPRITE_GRIMER ; $c8
-	const SPRITE_SHELLDER ; $c9
-	const SPRITE_GENGAR ; $ca
-	const SPRITE_VOLTORB ; $cb
-	const SPRITE_ELECTRODE ; $cc
-	const SPRITE_RHYDON ; $cd
-	const SPRITE_CHANSEY ; $ce
-	const SPRITE_STARYU ; $cf
-	const SPRITE_MAGIKARP ; $d0
-	const SPRITE_ARTICUNO ; $d1
-	const SPRITE_ZAPDOS ; $d2
-	const SPRITE_MOLTRES ; $d3
-	const SPRITE_DRATINI ; $d4
-	const SPRITE_MEWTWO ; $d5
-	const SPRITE_FURRET ; $d6
-	const SPRITE_HOOTHOOT ; $d7
-	const SPRITE_AMPHAROS ; $d8
-	const SPRITE_MARILL ; $d9
-	const SPRITE_MURKROW ; $da
-	const SPRITE_SLOWKING ; da$db
-	const SPRITE_UNOWN ; $dc
+	const SPRITE_BULBASAUR ; $a8
+	const SPRITE_CHARMANDER ; $a9
+	const SPRITE_SQUIRTLE ; $aa
+	const SPRITE_PIDGEY ; $ab
+	const SPRITE_PIDGEOTTO ; $ac
+	const SPRITE_RATTATA ; $ad
+	const SPRITE_PIKACHU ; $ae
+	const SPRITE_RAICHU ; $af
+	const SPRITE_NIDORAN_F ; $b0
+	const SPRITE_NIDORAN_M ; $b1
+	const SPRITE_NIDORINO ; $b2
+	const SPRITE_VULPIX ; $b3
+	const SPRITE_JIGGLYPUFF ; $b4
+	const SPRITE_ODDISH ; $b5
+	const SPRITE_VILEPLUME ; $b6
+	const SPRITE_DIGLETT ; $b7
+	const SPRITE_MEOWTH ; $b8
+	const SPRITE_PERSIAN ; $b9
+	const SPRITE_PSYDUCK ; $ba
+	const SPRITE_GROWLITHE ; $bb
+	const SPRITE_POLIWAG ; $bc
+	const SPRITE_POLIWRATH ; $bd
+	const SPRITE_ABRA ; $be
+	const SPRITE_MACHOKE ; $bf
+	const SPRITE_GEODUDE ; $c0
+	const SPRITE_SLOWPOKE ; $c1
+	const SPRITE_SLOWBRO ; $c2
+	const SPRITE_DODRIO ; $c3
+	const SPRITE_GENGAR ; $c4
+	const SPRITE_VOLTORB ; $c5
+	const SPRITE_ELECTRODE ; $c6
+	const SPRITE_RHYDON ; $c7
+	const SPRITE_CHANSEY ; $c8
+	const SPRITE_TOGEPI ; $c9
+	const SPRITE_MAGIKARP ; $ca
+	const SPRITE_DITTO ; $cb
+	const SPRITE_ARTICUNO ; $cc
+	const SPRITE_ZAPDOS ; $cd
+	const SPRITE_MOLTRES ; $ce
+	const SPRITE_DRATINI ; $cf
+	const SPRITE_MEWTWO ; $d0
+	const SPRITE_CHIKORITA ; $d1
+	const SPRITE_CYNDAQUIL ; $d2
+	const SPRITE_TOTODILE ; $d3
+	const SPRITE_FURRET ; $d4
+	const SPRITE_HOOTHOOT ; $d5
+	const SPRITE_MAREEP ; $d6
+	const SPRITE_AMPHAROS ; $d7
+	const SPRITE_MARILL ; $d8
+	const SPRITE_MURKROW ; $d9
+	const SPRITE_SLOWKING ; $da
+	const SPRITE_UNOWN ; $db
+	const SPRITE_PINECO ; $dc
 	const SPRITE_HERACROSS ; $dd
 	const SPRITE_WEAVILE ; $de
-	const SPRITE_URSARING ; $df
-	const SPRITE_SKARMORY ; $e0
-	const SPRITE_SMEARGLE ; $e1
-	const SPRITE_MILTANK ; $e2
-	const SPRITE_BLISSEY ; $e3
-	const SPRITE_RAIKOU ; $e4
-	const SPRITE_ENTEI ; $e5
-	const SPRITE_SUICUNE ; $e6
-	const SPRITE_LUGIA ; $e7
-	const SPRITE_HO_OH ; $e8
-	const SPRITE_EGG ; $e9
+	const SPRITE_TEDDIURSA ; $df
+	const SPRITE_URSARING ; $e0
+	const SPRITE_OCTILLERY ; $e1
+	const SPRITE_SKARMORY ; $e2
+	const SPRITE_SMEARGLE ; $e3
+	const SPRITE_MILTANK ; $e4
+	const SPRITE_BLISSEY ; $e5
+	const SPRITE_RAIKOU ; $e6
+	const SPRITE_ENTEI ; $e7
+	const SPRITE_SUICUNE ; $e8
+	const SPRITE_LUGIA ; $e9
+	const SPRITE_HO_OH ; $ea
+	const SPRITE_EGG ; $eb
 
-	const SPRITE_DAYCARE_MON_1 ; $ea
-	const SPRITE_DAYCARE_MON_2 ; $eb
-	const SPRITE_GROTTO_MON    ; $ec
+	const SPRITE_DAYCARE_MON_1 ; $ec
+	const SPRITE_DAYCARE_MON_2 ; $ed
+	const SPRITE_GROTTO_MON ; $ee
 
 SPRITE_VARS EQU const_value
-	const SPRITE_CONSOLE ; $ed
-	const SPRITE_DOLL_1 ; $ee
-	const SPRITE_DOLL_2 ; $ef
-	const SPRITE_BIG_DOLL ; $f0
-	const SPRITE_FUCHSIA_GYM_1 ; $f1
-	const SPRITE_FUCHSIA_GYM_2 ; $f2
-	const SPRITE_FUCHSIA_GYM_3 ; $f3
-	const SPRITE_FUCHSIA_GYM_4 ; $f4
-	const SPRITE_COPYCAT ; $f5
-	const SPRITE_JANINE_IMPERSONATOR ; $f6
-	const SPRITE_REMATCH_GYM_LEADER_1 ; $f7
-	const SPRITE_REMATCH_GYM_LEADER_2 ; $f8
-	const SPRITE_GUIDE_GENT ; $f9
-	const SPRITE_NEW_BARK_LYRA ; $fa
-	const SPRITE_GOLDENROD_LYRA ; $fb
-	const SPRITE_CHERRYGROVE_RIVAL ; $fc
-	const SPRITE_OLIVINE_RIVAL ; $fd
-	const SPRITE_LAKE_OF_RAGE_LANCE ; $fe
-	const SPRITE_CERULEAN_CAPE_MISTY ; $ff
+	const SPRITE_CONSOLE ; $ef
+	const SPRITE_DOLL_1 ; $f0
+	const SPRITE_DOLL_2 ; $f1
+	const SPRITE_BIG_DOLL ; $f2
+	const SPRITE_FUCHSIA_GYM_1 ; $f3 ; permanent SPRITE_LASS
+	const SPRITE_FUCHSIA_GYM_2 ; $f4 ; permanent SPRITE_LASS
+	const SPRITE_FUCHSIA_GYM_3 ; $f5 ; permanent SPRITE_LASS
+	const SPRITE_FUCHSIA_GYM_4 ; $f6 ; permanent SPRITE_YOUNGSTER
+	const SPRITE_COPYCAT ; $f7 ; permanent SPRITE_LASS
+	const SPRITE_GUIDE_GENT ; $f8 ; permanent  SPRITE_SWIMMER_GUY/SPRITE_DRAGON_TAMER
+	const SPRITE_NEW_BARK_LYRA ; $f9 ; permanent SPRITE_LASS
+	const SPRITE_GOLDENROD_LYRA ; $fa ; permanent SPRITE_SWIMMER_GIRL
+	const SPRITE_ROUTE_30_RATTATA ; $fb ; permanent SPRITE_SUICUNE
+	const SPRITE_CHERRYGROVE_RIVAL ; $fc ; permanent SPRITE_BUG_CATCHER
+	const SPRITE_OLIVINE_RIVAL ; $fd ; permanent SPRITE_COWGIRL
+	const SPRITE_LAKE_OF_RAGE_LANCE ; $fe ; permanent SPRITE_ENGINEER
+	const SPRITE_CERULEAN_CAPE_MISTY ; $ff ; permanent SPRITE_MISTY
 
 
 ; sprite types

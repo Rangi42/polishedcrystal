@@ -19,9 +19,9 @@ CeladonHomeDecorStore1F_MapEventHeader:
 .PersonEvents: db 6
 	person_event SPRITE_RECEPTIONIST, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
 	person_event SPRITE_CLERK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
-	person_event SPRITE_GRIMER, 5, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FGrimerDollText, -1
-	person_event SPRITE_MACHOP, 5, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FMachopDollText, -1
-	person_event SPRITE_STARYU, 5, 9, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FStaryuDollText, -1
+	person_event SPRITE_BULBASAUR, 5, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
+	person_event SPRITE_CHARMANDER, 5, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
+	person_event SPRITE_SQUIRTLE, 5, 9, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
 	person_event SPRITE_COOLTRAINER_F, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
 
 CeladonHomeDecorStore1FClerkScript:
@@ -33,50 +33,50 @@ CeladonHomeDecorStore1FClerkScript:
 	loadmenudata .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .GrimerDoll
-	if_equal $2, .MachopDoll
-	if_equal $3, .StaryuDoll
+	if_equal $1, .BulbasaurDoll
+	if_equal $2, .CharmanderDoll
+	if_equal $3, .SquirtleDoll
 	endtext
 
-.GrimerDoll:
-	checkmoney $0, 4800
+.BulbasaurDoll:
+	checkmoney $0, 16000
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_GRIMER_DOLL
+	checkevent EVENT_DECO_BULBASAUR_DOLL
 	iftrue .AlreadyBought
-	takemoney $0, 4800
-	setevent EVENT_DECO_GRIMER_DOLL
-	writetext BoughtGrimerDollText
+	takemoney $0, 16000
+	setevent EVENT_DECO_BULBASAUR_DOLL
+	writetext BoughtBulbasaurDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext GrimerDollSentText
+	writetext BulbasaurDollSentText
 	waitbutton
 	jump .Start
 
-.MachopDoll:
-	checkmoney $0, 6400
+.CharmanderDoll:
+	checkmoney $0, 16000
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_MACHOP_DOLL
+	checkevent EVENT_DECO_CHARMANDER_DOLL
 	iftrue .AlreadyBought
-	takemoney $0, 6400
-	setevent EVENT_DECO_MACHOP_DOLL
-	writetext BoughtMachopDollText
+	takemoney $0, 16000
+	setevent EVENT_DECO_CHARMANDER_DOLL
+	writetext BoughtCharmanderDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext MachopDollSentText
+	writetext CharmanderDollSentText
 	waitbutton
 	jump .Start
 
-.StaryuDoll:
-	checkmoney $0, 8000
+.SquirtleDoll:
+	checkmoney $0, 16000
 	if_equal $2, .NotEnoughMoney
-	checkevent EVENT_DECO_STARYU_DOLL
+	checkevent EVENT_DECO_SQUIRTLE_DOLL
 	iftrue .AlreadyBought
-	takemoney $0, 8000
-	setevent EVENT_DECO_STARYU_DOLL
-	writetext BoughtStaryuDollText
+	takemoney $0, 16000
+	setevent EVENT_DECO_SQUIRTLE_DOLL
+	writetext BoughtSquirtleDollText
 	playsound SFX_TRANSACTION
 	waitbutton
-	writetext StaryuDollSentText
+	writetext SquirtleDollSentText
 	waitbutton
 	jump .Start
 
@@ -100,9 +100,9 @@ CeladonHomeDecorStore1FClerkScript:
 .MenuData2:
 	db $80 ; flags
 	db 4 ; items
-	db "Grimer      ¥4800@"
-	db "Machop      ¥6400@"
-	db "Staryu      ¥8000@"
+	db "Bulbasaur  ¥16000@"
+	db "Charmander ¥16000@"
+	db "Squirtle   ¥16000@"
 	db "Cancel@"
 
 CeladonHomeDecorStore1FReceptionistText:
@@ -120,33 +120,33 @@ CeladonHomeDecorStore1FClerkText:
 	cont "Celadon souvenir?"
 	done
 
-BoughtGrimerDollText:
+BoughtBulbasaurDollText:
 	text "<PLAYER> bought"
-	line "Grimer Doll."
+	line "Bulbasaur Doll."
 	done
 
-GrimerDollSentText:
-	text "Grimer Doll"
+BulbasaurDollSentText:
+	text "Bulbasaur Doll"
 	line "was sent home."
 	done
 
-BoughtMachopDollText:
+BoughtCharmanderDollText:
 	text "<PLAYER> bought"
-	line "Machop Doll."
+	line "Charmander Doll."
 	done
 
-MachopDollSentText:
-	text "Machop Doll"
+CharmanderDollSentText:
+	text "Charmander Doll"
 	line "was sent home."
 	done
 
-BoughtStaryuDollText:
+BoughtSquirtleDollText:
 	text "<PLAYER> bought"
-	line "Staryu Doll."
+	line "Squirtle Doll."
 	done
 
-StaryuDollSentText:
-	text "Staryu Doll"
+SquirtleDollSentText:
+	text "Squirtle Doll"
 	line "was sent home."
 	done
 
@@ -160,19 +160,19 @@ CeladonHomeDecorStore1FAlreadyBoughtText:
 	line "that!"
 	done
 
-CeladonHomeDecorStore1FGrimerDollText:
-	text "It's a quirky"
-	line "Grimer doll!"
+CeladonHomeDecorStore1FBulbasaurDollText:
+	text "It's a cute"
+	line "Bulbasaur doll!"
 	done
 
-CeladonHomeDecorStore1FMachopDollText:
+CeladonHomeDecorStore1FCharmanderDollText:
 	text "It's a tough"
-	line "Machop doll!"
+	line "Charmander doll!"
 	done
 
-CeladonHomeDecorStore1FStaryuDollText:
-	text "It's a pretty"
-	line "Staryu doll!"
+CeladonHomeDecorStore1FSquirtleDollText:
+	text "It's a cool"
+	line "Squirtle doll!"
 	done
 
 CeladonHomeDecorStore1FCooltrainerfText:

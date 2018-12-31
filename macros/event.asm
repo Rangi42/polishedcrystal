@@ -1216,3 +1216,9 @@ iffalse_endtext: macro
 loadgrottomon: macro
 	db loadgrottomon_command
 	endm
+
+thisasm: macro
+	callasm .asm\@
+	end
+.asm\@
+endm

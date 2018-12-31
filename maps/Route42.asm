@@ -29,11 +29,10 @@ Route42_MapEventHeader:
 	signpost 11, 16, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
 .PersonEvents: db 14
-	person_event SPRITE_SUICUNE, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	person_event SPRITE_ROUTE_30_RATTATA, 16, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	person_event SPRITE_NEW_BARK_LYRA, 5, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	person_event SPRITE_FISHER, 10, 40, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
-	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
-	person_event SPRITE_SUPER_NERD, 8, 47, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
+	person_event SPRITE_POKEFAN_M, 9, 51, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerBenjamin, -1
 	cuttree_event 13, 24, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 16, 27, FRUITTREE_ROUTE_42_1, PNK_APRICORN
 	fruittree_event 16, 28, FRUITTREE_ROUTE_42_2, GRN_APRICORN
@@ -41,8 +40,9 @@ Route42_MapEventHeader:
 	itemball_event 4, 6, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	itemball_event 8, 33, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
 	person_event SPRITE_OFFICER, 8, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	person_event SPRITE_OFFICER_F, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	person_event SPRITE_OFFICER, 9, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	person_event SPRITE_OFFICER, 6, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficermKeithScript, EVENT_ROUTE_42_OFFICER
+	person_event SPRITE_SUPER_NERD, 20, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 const_value set 1
 	const ROUTE42_SUICUNE
@@ -295,13 +295,6 @@ UnknownScript_0x1a9311:
 	jumpstd packfullm
 	end
 
-TrainerPokemaniacShane:
-	trainer EVENT_BEAT_POKEMANIAC_SHANE, POKEMANIAC, SHANE, PokemaniacShaneSeenText, PokemaniacShaneBeatenText, 0, PokemaniacShaneScript
-
-PokemaniacShaneScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a94d6
-
 TrainerHikerBenjamin:
 	trainer EVENT_BEAT_HIKER_BENJAMIN, HIKER, BENJAMIN, HikerBenjaminSeenText, HikerBenjaminBeatenText, 0, HikerBenjaminScript
 
@@ -498,31 +491,6 @@ UnknownText_0x1a943f:
 
 	para "look up at the big"
 	line "sky!"
-	done
-
-PokemaniacShaneSeenText:
-	text "HEY!"
-
-	para "This is my secret"
-	line "place! Get lost,"
-	cont "you outsider!"
-	done
-
-PokemaniacShaneBeatenText:
-	text "I should have used"
-	line "my Moon Stone…"
-	done
-
-UnknownText_0x1a94d6:
-	text "You're working on"
-	line "a #dex?"
-
-	para "Wow, you must know"
-	line "some pretty rare"
-	cont "#mon!"
-
-	para "May I please see"
-	line "it. Please?"
 	done
 
 Route42OfficerText:

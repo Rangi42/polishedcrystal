@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 Generate images of all the maps. Takes an optional whitelist of tilesets.

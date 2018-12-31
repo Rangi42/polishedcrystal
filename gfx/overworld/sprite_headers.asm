@@ -481,14 +481,8 @@ BallCutFruitSprite:
 BoulderRockFossilSprite:
 	sprite_header BoulderRockFossilSpriteGFX, 3, STANDING_SPRITE, PAL_OW_ROCK
 
-PaperSprite:
-	sprite_header PaperSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
-PokedexSprite:
-	sprite_header PokedexSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
-
-BookSprite:
-	sprite_header BookSpriteGFX, 3, STANDING_SPRITE, PAL_OW_PURPLE
+BookPaperPokedexSprite:
+	sprite_header BookPaperPokedexSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
 
 ElectricFenceLeftSprite:
 	sprite_header ElectricFenceLeftSpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
@@ -509,7 +503,10 @@ WiiSprite:
 	sprite_header WiiSpriteGFX, 3, STANDING_SPRITE, PAL_OW_BLUE
 
 SilverTrophySprite:
-	sprite_header SilverTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_SILVER
+	sprite_header SilverTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_SILVER
 
 GoldTrophySprite:
-	sprite_header GoldTrophySpriteGFX, 1, STILL_SPRITE, PAL_OW_BROWN
+	sprite_header GoldTrophySpriteGFX, 3, STANDING_SPRITE, PAL_OW_BROWN
+
+BlankSprite:
+	sprite_header BlankSpriteGFX, 1, STILL_SPRITE, PAL_OW_RED

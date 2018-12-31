@@ -39,11 +39,12 @@ endif
 .SUFFIXES:
 .PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace compare tools
 .SECONDEXPANSION:
-.PRECIOUS: %.2bpp %.1bpp
+.PRECIOUS: %.2bpp %.1bpp %.lz %.o
 
 
 roms_md5      = roms.md5
 bank_ends_txt = contents/bank_ends.txt
+sorted_sym    = contents/$(NAME).sym
 
 PYTHON = python
 CC     = gcc
@@ -71,7 +72,8 @@ data/egg_moves.o \
 data/evos_attacks.o \
 data/pokedex/entries.o \
 text/common_text.o \
-gfx/pics.o
+gfx/pics.o \
+gfx/sprites.o
 
 
 all: crystal
@@ -90,12 +92,12 @@ bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-freespace: $(bank_ends_txt) $(roms_md5)
+freespace: $(bank_ends_txt) $(roms_md5) $(sorted_sym)
 
 
 # Build tools when building the rom
 ifeq ($(filter clean tools,$(MAKECMDGOALS)),)
-Makefile: tools ;
+Makefile: tools
 endif
 
 tools: $(LZ) $(SCAN_INCLUDES)
@@ -115,16 +117,15 @@ compare: crystal
 
 
 $(bank_ends_txt): crystal bankfree ; $(bank_ends) > $@
-
-$(roms_md5): crystal
-	$(MD5) $(NAME)-$(VERSION).gbc > $@
+$(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
+$(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 
 
 %.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
 	$(RGBDS_DIR)rgbasm $(RGBASM_FLAGS) -o $@ $<
 
-.gbc: ;
+.gbc:
 %.gbc: $(crystal_obj)
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
@@ -132,8 +133,8 @@ $(roms_md5): crystal
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
 
-%.pal: %.2bpp ;
-gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp ;
+%.pal: %.2bpp
+gfx/pics/%/normal.pal gfx/pics/%/bitmask.asm gfx/pics/%/frames.asm: gfx/pics/%/front.2bpp
 
 %.lz: % ; $(LZ) $< $@
 

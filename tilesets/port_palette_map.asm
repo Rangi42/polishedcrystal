@@ -24,4 +24,4 @@
 	tilepal 1, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF
 	tilepal 1, GRAY, GRAY, GRAY, RED, RED, GRAY, GRAY, GRAY
 	tilepal 1, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF, ROOF
-	tilepal 1, ROOF, TEXT
+	tilepal 1, ROOF

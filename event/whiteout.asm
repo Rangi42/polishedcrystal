@@ -174,6 +174,6 @@ GetWhiteoutSpawn: ; 12527
 	xor a ; SPAWN_HOME
 
 .yes
-	ld [wd001], a
+	ld [wDefaultSpawnpoint], a
 	ret
 ; 1253d

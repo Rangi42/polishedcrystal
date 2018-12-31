@@ -24,10 +24,6 @@ Elevator:: ; 1342d
 	ld [wElevatorPointerLo], a
 	ld a, d
 	ld [wElevatorPointerHi], a
-	jp .LoadFloors
-; 1345a
-
-.LoadFloors: ; 1345a
 	ld de, wCurElevator
 	ld bc, 4
 	ld hl, wElevatorPointerLo

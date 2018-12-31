@@ -18,9 +18,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
+* pfero for the improved GetAnimatedFrontpic routine.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
-* jpmac26 for editing the Pokémon Center signs and fixing a typo.
 
 
 ## Music
@@ -42,6 +42,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
+* Acrozz for sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
@@ -54,11 +55,13 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * coraldev for rowboat and sakura petal tiles.
+* lilbluedemon for some bridge tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
+* jpmac26 for editing the Pokémon Center signs and fixing a typo.
 
 
 ## Content

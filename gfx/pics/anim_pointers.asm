@@ -22,8 +22,8 @@ AnimationPointers:
 	dw MarillAnimation
 	dw AzumarillAnimation
 	dw EkansAnimation
-	dw ArbokAnimation
-	dw PikachuAnimation
+	dw -1 ; see ArbokAnimationPointers
+	dw -1 ; see PikachuAnimationPointers
 	dw RaichuAnimation
 	dw SandshrewAnimation
 	dw SandslashAnimation
@@ -127,8 +127,8 @@ AnimationPointers:
 	dw MagmarAnimation
 	dw PinsirAnimation
 	dw TaurosAnimation
-	dw MagikarpAnimation
-	dw GyaradosAnimation
+	dw -1 ; see MagikarpAnimationPointers
+	dw -1 ; see GyaradosAnimationPointers
 	dw LaprasAnimation
 	dw DittoAnimation
 	dw EeveeAnimation
@@ -148,7 +148,7 @@ AnimationPointers:
 	dw DratiniAnimation
 	dw DragonairAnimation
 	dw DragoniteAnimation
-	dw MewtwoAnimation
+	dw -1 ; see MewtwoAnimationPointers
 	dw MewAnimation
 	dw ChikoritaAnimation
 	dw BayleefAnimation
@@ -170,7 +170,7 @@ AnimationPointers:
 	dw CrobatAnimation
 	dw ChinchouAnimation
 	dw LanturnAnimation
-	dw PichuAnimation
+	dw -1 ; see PichuAnimationPointers
 	dw MunchlaxAnimation
 	dw MagnezoneAnimation
 	dw TangrowthAnimation
@@ -198,7 +198,7 @@ AnimationPointers:
 	dw SlowkingAnimation
 	dw MisdreavusAnimation
 	dw MismagiusAnimation
-	dw UnownAnimation
+	dw -1 ; see UnownAnimationPointers
 	dw WobbuffetAnimation
 	dw GirafarigAnimation
 	dw PinecoAnimation
@@ -252,3 +252,5 @@ AnimationPointers:
 	dw CelebiAnimation
 	dw SylveonAnimation
 	dw PorygonZAnimation
+	dw EggAnimation
+	dw -1 ; unused

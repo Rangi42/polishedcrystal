@@ -20,8 +20,8 @@ SaveMusic::
 	call DelayFrame
 
 	di
-	ld bc, wMapMusic - wMusicPlaying
-	ld hl, wMusicPlaying
+	ld bc, wChannelsEnd - wMusic
+	ld hl, wMusic
 	call CopyBytes
 	ei
 
@@ -62,8 +62,8 @@ RestoreMusic::
 
 	di
 	ld hl, wSoundEngineBackup
-	ld bc, wMapMusic - wMusicPlaying
-	ld de, wMusicPlaying
+	ld bc, wChannelsEnd - wMusic
+	ld de, wMusic
 	call CopyBytes
 	ei
 

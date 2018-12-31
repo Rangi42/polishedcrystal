@@ -105,17 +105,17 @@ _AnimateHPBar: ; d627
 	ld d, a
 	jr c, .negative
 	ld a, [wBuffer3]
-	ld [wd1f5], a
+	ld [wCurHPAnimLowHP], a
 	ld a, [wBuffer5]
-	ld [wd1f6], a
+	ld [wCurHPAnimHighHP], a
 	ld bc, 1
 	jr .got_direction
 
 .negative
 	ld a, [wBuffer3]
-	ld [wd1f6], a
+	ld [wCurHPAnimHighHP], a
 	ld a, [wBuffer5]
-	ld [wd1f5], a
+	ld [wCurHPAnimLowHP], a
 	ld a, e
 	cpl
 	inc a
@@ -126,9 +126,9 @@ _AnimateHPBar: ; d627
 	ld bc, -1
 .got_direction
 	ld a, d
-	ld [wd1f3], a
+	ld [wCurHPAnimDeltaHP], a
 	ld a, e
-	ld [wd1f4], a
+	ld [wCurHPAnimDeltaHP+1], a
 	ret
 ; d6e2
 
@@ -281,9 +281,9 @@ endr
 ; d7b4
 
 HPBarAnim_PaletteUpdate: ; d7b4
-	ld hl, wd1f0
+	ld hl, wCurHPAnimPal
 	call SetHPPal
-	ld a, [wd1f0]
+	ld a, [wCurHPAnimPal]
 	ld c, a
 	farjp ApplyHPBarPals
 ; d7c9
@@ -389,10 +389,10 @@ ShortHPBar_CalcPixelFrame: ; d839
 	jr c, .no_carry
 	inc b
 .no_carry
-	ld a, [wd1f5]
+	ld a, [wCurHPAnimLowHP]
 	cp b
 	jr nc, .finish
-	ld a, [wd1f6]
+	ld a, [wCurHPAnimHighHP]
 	cp b
 	jr c, .finish
 	ld a, b

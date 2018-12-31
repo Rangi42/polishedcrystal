@@ -10,9 +10,9 @@ EcruteakCity_MapEventHeader:
 .Warps: db 17
 	warp_def 26, 35, 1, ROUTE_42_ECRUTEAK_GATE
 	warp_def 27, 35, 2, ROUTE_42_ECRUTEAK_GATE
-	warp_def 11, 21, 1, ECRUTEAK_HOUSE
-	warp_def 11, 15, 3, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def 11, 16, 4, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def 11, 23, 1, ECRUTEAK_HOUSE
+	warp_def 11, 17, 3, ECRUTEAK_SHRINE_OUTSIDE
+	warp_def 11, 18, 4, ECRUTEAK_SHRINE_OUTSIDE
 	warp_def 27, 23, 1, ECRUTEAK_POKECENTER_1F
 	warp_def 21, 5, 1, ECRUTEAK_LUGIA_SPEECH_HOUSE
 	warp_def 21, 23, 1, DANCE_THEATRE
@@ -34,10 +34,10 @@ EcruteakCity_MapEventHeader:
 	signpost 21, 21, SIGNPOST_JUMPTEXT, EcruteakDanceTheaterSignText
 	signpost 10, 2, SIGNPOST_JUMPTEXT, BurnedTowerSignText
 	signpost 14, 25, SIGNPOST_ITEM + HYPER_POTION, EVENT_ECRUTEAK_CITY_HIDDEN_HYPER_POTION
-	signpost 11, 18, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
+	signpost 11, 20, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
 
 .PersonEvents: db 10
-	person_event SPRITE_GRAMPS, 15, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
+	person_event SPRITE_GRAMPS, 15, 20, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
 	person_event SPRITE_GRAMPS, 21, 20, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4147, -1
 	person_event SPRITE_LASS, 26, 19, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a41db, -1
 	person_event SPRITE_LASS, 9, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LassScript_0x1a4015, -1
@@ -45,8 +45,8 @@ EcruteakCity_MapEventHeader:
 	person_event SPRITE_YOUNGSTER, 16, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4386, -1
 	person_event SPRITE_GRAMPS, 7, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a43cb, EVENT_ECRUTEAK_CITY_GRAMPS
 	person_event SPRITE_HEX_MANIAC, 11, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCityHexManiacText, -1
-	person_event SPRITE_SIGHTSEER_M, 15, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
-	person_event SPRITE_SMEARGLE, 15, 23, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SMEARGLE, EcruteakCitySmeargleText, -1
+	person_event SPRITE_SIGHTSEER_M, 15, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
+	person_event SPRITE_SMEARGLE, 15, 24, SPRITEMOVEDATA_POKEMON, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, SMEARGLE, EcruteakCitySmeargleText, -1
 
 EcruteakCityFlyPoint:
 	setflag ENGINE_FLYPOINT_ECRUTEAK

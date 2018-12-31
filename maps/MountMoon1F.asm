@@ -179,7 +179,7 @@ MountMoonSilverTextWin:
 	para "the best they"
 	line "could be…"
 
-	para "…But it still "
+	para "…But it still"
 	line "wasn't enough…"
 	done
 

@@ -413,7 +413,7 @@ VermilionGymElectricFenceText:
 SampleVermilionGymTrashCan:
 	ld a, [rSVBK]
 	push af
-	ld a, 3
+	ld a, $1
 	ld [rSVBK], a
 .loop
 	call Random

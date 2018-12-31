@@ -216,7 +216,7 @@ Pack: ; 10000
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	jr .ItemBallsKey_LoadSubmenu
 
 .InitKeyItemsPocket: ; 10094 (4:4094)
 	ld a, KEY_ITEM - 1
@@ -240,7 +240,7 @@ Pack: ; 10000
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	; fallthrough
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
 	farcall _CheckTossableItem
@@ -785,7 +785,7 @@ BattlePack: ; 10493
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	jr ItemSubmenu
 
 .InitKeyItemsPocket: ; 10527 (4:4527)
 	ld a, KEY_ITEM - 1
@@ -809,7 +809,7 @@ BattlePack: ; 10493
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	jp ItemSubmenu
+	; fallthrough
 
 ItemSubmenu: ; 105d3 (4:45d3)
 	farcall CheckItemContext
@@ -1152,7 +1152,9 @@ TutorialPack: ; 107bb
 	ld a, [wInputType]
 	or a
 	jr z, .loop
-	farcall _DudeAutoInput_RightRightA
+	ld hl, .autoinput_right_right_a
+	ld a, BANK(.autoinput_right_right_a)
+	call StartAutoInput
 .loop
 	call .RunJumptable
 	call DepositSellTutorial_InterpretJoypad
@@ -1160,6 +1162,15 @@ TutorialPack: ; 107bb
 	xor a
 	ld [wcf66], a
 	ret
+
+.autoinput_right_right_a
+	db NO_INPUT, $08
+	db D_RIGHT,  $00
+	db NO_INPUT, $08
+	db D_RIGHT,  $00
+	db NO_INPUT, $08
+	db A_BUTTON, $00
+	db NO_INPUT, $ff ; end
 ; 107d7
 
 .RunJumptable: ; 107d7

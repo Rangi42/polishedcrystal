@@ -1834,7 +1834,7 @@ LinkTrade_Layout_FillBox: ; 49336
 	ret
 ; 49346
 
-_InitLinkTradePalMap: ; 49797
+InitLinkTradePalMap: ; 49856
 	hlcoord 0, 0, wAttrMap
 	lb bc, 16, 2
 	ld a, $4
@@ -1905,10 +1905,6 @@ rept 8
 	RGB_MONOCHROME_WHITE
 endr
 endc
-
-InitLinkTradePalMap: ; 49856
-	jp _InitLinkTradePalMap
-; 4985a
 
 LoadSpecialMapOBPalette:
 	call GetOvercastIndex

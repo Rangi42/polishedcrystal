@@ -21,4 +21,4 @@
 	tilepal 1, BROWN, BROWN, RED, RED, RED, RED, RED, RED
 	tilepal 1, GRAY, RED, RED, RED, RED, WATER, WATER, WATER
 	tilepal 1, BROWN, BROWN, RED, RED, RED, RED, RED, RED
-	tilepal 1, RED, RED, RED, RED, RED, TEXT
+	tilepal 1, RED, RED, RED, RED, RED

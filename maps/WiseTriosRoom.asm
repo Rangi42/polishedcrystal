@@ -307,7 +307,7 @@ UnknownText_0x98cac:
 	text "I see…"
 
 	para "We, the Wise Trio,"
-	line "have been given "
+	line "have been given"
 
 	para "the responsibility"
 	line "of protecting the"

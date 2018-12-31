@@ -85,13 +85,8 @@ GetPlayerSprite: ; 14183
 AddMapSprites: ; 141c9
 	call GetMapPermission
 	call CheckOutdoorMap
-	jr z, .outdoor
-	jp AddIndoorSprites
-
-.outdoor
-	jp AddOutdoorSprites
-; 141d9
-
+	jr z, AddOutdoorSprites
+	; fallthrough
 
 AddIndoorSprites: ; 141d9
 	ld hl, wMap1ObjectSprite
@@ -108,7 +103,6 @@ AddIndoorSprites: ; 141d9
 	jr nz, .loop
 	ret
 ; 141ee
-
 
 AddOutdoorSprites: ; 141ee
 	ld a, [wMapGroup]
@@ -135,10 +129,7 @@ MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
 	call GetUsedSprites
-	jp .LoadMiscTiles
-; 14215
 
-.LoadMiscTiles: ; 14215
 	ld a, [wSpriteFlags]
 	bit 6, a
 	ret nz
@@ -327,9 +318,8 @@ AddSpriteGFX: ; 142e5
 	jr z, .exists
 	and a
 	jr z, .new
-rept 2
 	inc hl
-endr
+	inc hl
 	dec c
 	jr nz, .loop
 
@@ -709,15 +699,15 @@ SpriteMons: ; 14495
 	db BULBASAUR
 	db CHARMANDER
 	db SQUIRTLE
-	db WEEDLE
 	db PIDGEY
 	db PIDGEOTTO
 	db RATTATA
 	db PIKACHU
+	db RAICHU
 	db NIDORAN_F
 	db NIDORAN_M
 	db NIDORINO
-	db CLEFAIRY
+	db VULPIX
 	db JIGGLYPUFF
 	db ODDISH
 	db VILEPLUME
@@ -725,40 +715,45 @@ SpriteMons: ; 14495
 	db MEOWTH
 	db PERSIAN
 	db PSYDUCK
+	db GROWLITHE
 	db POLIWAG
 	db POLIWRATH
 	db ABRA
-	db MACHOP
 	db MACHOKE
-	db TENTACOOL
 	db GEODUDE
 	db SLOWPOKE
 	db SLOWBRO
 	db DODRIO
-	db GRIMER
-	db SHELLDER
 	db GENGAR
 	db VOLTORB
 	db ELECTRODE
 	db RHYDON
 	db CHANSEY
-	db STARYU
+	db TOGEPI
 	db MAGIKARP
+	db DITTO
 	db ARTICUNO
 	db ZAPDOS
 	db MOLTRES
 	db DRATINI
 	db MEWTWO
+	db CHIKORITA
+	db CYNDAQUIL
+	db TOTODILE
 	db FURRET
 	db HOOTHOOT
+	db MAREEP
 	db AMPHAROS
 	db MARILL
 	db MURKROW
 	db SLOWKING
 	db UNOWN
+	db PINECO
 	db HERACROSS
 	db WEAVILE
+	db TEDDIURSA
 	db URSARING
+	db OCTILLERY
 	db SKARMORY
 	db SMEARGLE
 	db MILTANK
@@ -844,7 +839,7 @@ Group29Sprites:
 	db SPRITE_MAGIKARP
 	db SPRITE_MILTANK
 	db SPRITE_SUICUNE
-	db SPRITE_N64
+	db SPRITE_BLANK
 	; 17 total sprites
 	db 0
 
@@ -871,30 +866,28 @@ Group26Sprites:
 ; Route31
 ; CherrygroveBay
 ; CherrygroveCity
+	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
 	db SPRITE_CHERRYGROVE_RIVAL ; SPRITE_SILVER, SPRITE_BUG_CATCHER
+	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
 	db SPRITE_COOLTRAINER_F
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_FISHER
-	db SPRITE_GUIDE_GENT ; SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY, SPRITE_DRAGON_TAMER
-	db SPRITE_NEW_BARK_LYRA ; SPRITE_LYRA, SPRITE_LASS
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_TEACHER
-	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
-	db SPRITE_OFFICER ; doesn't walk
-	db SPRITE_OFFICER_F ; doesn't walk
-	db SPRITE_VETERAN_M ; doesn't walk
-	db SPRITE_VETERAN_F ; doesn't walk
 	db SPRITE_GRAMPS ; doesn't walk
+	db SPRITE_OFFICER ; doesn't walk
+	db SPRITE_POKEFAN_M ; doesn't walk
+	db SPRITE_SUPER_NERD ; doesn't walk
+	db SPRITE_VETERAN_F ; doesn't walk
+	db SPRITE_VETERAN_M ; doesn't walk
 	db SPRITE_COSPLAYER ; doesn't walk
-	db SPRITE_POKEFAN_M ; doesn't walk (TODO: walks in Route 42)
-	; 17 walking sprites (10 that walk) (TODO: only 9 can walk)
+	; 16 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BOULDER_ROCK_FOSSIL
-	db SPRITE_SUICUNE
+	db SPRITE_ROUTE_30_RATTATA ; SPRITE_RATTATA, SPRITE_SUICUNE
 	db SPRITE_PIDGEY
-	db SPRITE_RATTATA
-	; 22 total sprites (TODO: too many)
+	; 21 total sprites
 	db 0
 
 
@@ -1007,20 +1000,20 @@ Group25Sprites:
 Group28Sprites:
 ; Route9
 ; Route10North
-	db SPRITE_CERULEAN_CAPE_MISTY ; SPRITE_MISTY, SPRITE_LAWRENCE, SPRITE_BEAUTY
-	db SPRITE_COOLTRAINER_F
+	db SPRITE_CERULEAN_CAPE_MISTY ; SPRITE_MISTY, SPRITE_LAWRENCE
 	db SPRITE_COOLTRAINER_M
+	db SPRITE_BEAUTY
 	db SPRITE_GENTLEMAN
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_M
 	db SPRITE_SUPER_NERD
 	db SPRITE_YOUNGSTER
 	db SPRITE_SWIMMER_GUY
+	db SPRITE_COOLTRAINER_F ; doesn't walk
+	db SPRITE_ENGINEER ; doesn't walk
 	db SPRITE_FISHER ; doesn't walk
 	db SPRITE_LADY ; doesn't walk
 	db SPRITE_ROCKET ; doesn't walk
-	db SPRITE_CHRIS ; doesn't walk
-	db SPRITE_KRIS ; doesn't walk
 	; 14 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_SLOWPOKE
@@ -1115,7 +1108,7 @@ Group12Sprites:
 	db SPRITE_BALL_CUT_FRUIT
 	db SPRITE_BOULDER_ROCK_FOSSIL
 	db SPRITE_BIG_SNORLAX
-	db SPRITE_MACHOP
+	db SPRITE_MACHOKE
 	; 15 total sprites
 	db 0
 
@@ -1145,7 +1138,7 @@ Group15Sprites:
 ; MountMoonSquare
 ; TinTowerRoof
 	db SPRITE_COOLTRAINER_F
-	db SPRITE_CLEFAIRY_WALK
+	db SPRITE_CLEFAIRY
 	db SPRITE_FISHING_GURU
 	db SPRITE_SAILOR
 	db SPRITE_SUPER_NERD

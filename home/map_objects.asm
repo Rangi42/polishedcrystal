@@ -22,15 +22,14 @@ GetSpriteVTile:: ; 180e
 	ld c, SPRITE_GFX_LIST_CAPACITY - 1
 	ld b, a
 	ld a, [hMapObjectIndexBuffer]
-	cp 0
+	and a
 	jr z, .nope
 	ld a, b
 .loop
 	cp [hl]
 	jr z, .found
-rept 2
 	inc hl
-endr
+	inc hl
 	dec c
 	jr nz, .loop
 	ld a, [wUsedSprites + 1]

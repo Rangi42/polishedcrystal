@@ -111,3 +111,5 @@ NUM_HMS = const_value - HM01
 	add_mt TRICK        ; $68
 	add_mt ZAP_CANNON   ; $69
 	add_mt ZEN_HEADBUTT ; $6a
+
+NUM_TMHMS EQU ZEN_HEADBUTT_TMNUM

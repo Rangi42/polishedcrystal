@@ -451,7 +451,7 @@ FisherEdgarSeenText:
 	done
 
 FisherEdgarBeatenText:
-	text "Hmmmm… "
+	text "Hmmmm…"
 	line "This isn't right."
 	done
 

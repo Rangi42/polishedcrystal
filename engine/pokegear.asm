@@ -97,7 +97,7 @@ Pokegear_LoadGFX: ; 90c4e
 	ld hl, PokegearGFX
 	ld de, VTiles2 tile $40
 	ld a, BANK(PokegearGFX)
-	call FarDecompress
+	call Decompress
 	ld hl, PokegearSpritesGFX
 	ld de, VTiles0
 	ld a, BANK(PokegearSpritesGFX)
@@ -481,7 +481,7 @@ Pokegear_UpdateClock: ; 90f86 (24:4f86)
 	jr z, .h12
 	decoord 8, 8
 .h12
-	farcall PrintHoursMins
+	call PrintHoursMins
 	ld hl, .DayText
 	bccoord 6, 6
 	jp PlaceWholeStringInBoxAtOnce
@@ -716,7 +716,7 @@ PokegearMap_UpdateLandmarkName: ; 910b4
 	push de
 	farcall GetLandmarkName
 	pop de
-	farcall TownMap_ConvertLineBreakCharacters
+	call TownMap_ConvertLineBreakCharacters
 	hlcoord 8, 0
 	ld [hl], "<UPDN>"
 	ret
@@ -735,8 +735,28 @@ PokegearMap_UpdateCursorPosition: ; 910d4
 	add hl, bc
 	ld [hl], d
 	ret
-
 ; 910e8
+
+TownMap_ConvertLineBreakCharacters: ; 1de2c5
+	ld hl, wStringBuffer1
+.loop
+	ld a, [hl]
+	cp "@"
+	jr z, .end
+	cp "<NEXT>"
+	jr z, .line_break
+	cp "¯"
+	jr z, .line_break
+	inc hl
+	jr .loop
+
+.line_break
+	ld [hl], "<LNBRK>"
+
+.end
+	ld de, wStringBuffer1
+	hlcoord 9, 0
+	jp PlaceString
 
 TownMap_GetJohtoLandmarkLimits:
 	lb de, SILVER_CAVE, NEW_BARK_TOWN
@@ -1583,136 +1603,77 @@ RadioChannels:
 
 LoadStation_OaksPokemonTalk: ; 91753 (24:5753)
 	xor a ; OAKS_POKEMON_TALK
-	ld [wd002], a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, OaksPkmnTalkName
+LoadRadioStation:
+	ld [wd002], a
+	xor a
+	ld [wNumRadioLinesPrinted], a
+	ld hl, wPokegearRadioChannelBank
+	ld a, BANK(PlayRadioShow)
+	ld [hli], a
+	ld a, PlayRadioShow % $100
+	ld [hli], a
+	ld a, PlayRadioShow / $100
+	ld [hli], a
 	ret
 
 LoadStation_PokedexShow: ; 91766 (24:5766)
 	ld a, POKEDEX_SHOW
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PokedexShowName
-	ret
+	jr LoadRadioStation
 
 LoadStation_PokemonMusic: ; 9177b (24:577b)
 	ld a, POKEMON_MUSIC
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PokemonMusicName
-	ret
+	jr LoadRadioStation
 
 LoadStation_LuckyChannel: ; 91790 (24:5790)
 	ld a, LUCKY_CHANNEL
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, LuckyChannelName
-	ret
+	jr LoadRadioStation
 
 LoadStation_BuenasPassword: ; 917a5 (24:57a5)
-	ld a, BUENAS_PASSWORD
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, NotBuenasPasswordName
 	ld a, [wStatusFlags2]
 	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
-	ret z
+	jr z, .ok
 	ld de, BuenasPasswordName
-	ret
-
-; 917c3 (24:57c3)
+.ok
+	ld a, BUENAS_PASSWORD
+	jr LoadRadioStation
 
 BuenasPasswordName:    db "Buena's Password@"
 NotBuenasPasswordName: db "@"
 
 LoadStation_UnownRadio: ; 917d5 (24:57d5)
 	ld a, UNOWN_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, UnknownStationName
-	ret
+	jr LoadRadioStation
 
 LoadStation_PlacesAndPeople: ; 917ea (24:57ea)
 	ld a, PLACES_AND_PEOPLE
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PlacesAndPeopleName
-	ret
+	jr LoadRadioStation
 
 LoadStation_LetsAllSing: ; 917ff (24:57ff)
 	ld a, LETS_ALL_SING
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, LetsAllSingName
-	ret
-
-; 91814 (24:5814)
+	jr LoadRadioStation
 
 LoadStation_RocketRadio: ; 91814
 	ld a, ROCKET_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, LetsAllSingName
-	ret
-
-; 91829
+	jr LoadRadioStation
 
 LoadStation_PokeFluteRadio: ; 91829 (24:5829)
 	ld a, POKE_FLUTE_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, PokeFluteStationName
-	ret
+	jr LoadRadioStation
 
 LoadStation_EvolutionRadio: ; 9183e (24:583e)
 	ld a, EVOLUTION_RADIO
-	ld [wd002], a
-	xor a
-	ld [wd005], a
-	ld a, BANK(PlayRadioShow)
-	ld hl, PlayRadioShow
-	call Radio_BackUpFarCallParams
 	ld de, UnknownStationName
-	ret
+	jr LoadRadioStation
 
 ; 91853 (24:5853)
 
@@ -1736,14 +1697,6 @@ RadioMusicRestartPokemonChannel: ; 91868 (24:5868)
 	pop de
 	ld de, MUSIC_POKEMON_CHANNEL
 	jp PlayMusic
-
-Radio_BackUpFarCallParams: ; 9187c (24:587c)
-	ld [wPokegearRadioChannelBank], a
-	ld a, l
-	ld [wPokegearRadioChannelAddr], a
-	ld a, h
-	ld [wPokegearRadioChannelAddr + 1], a
-	ret
 
 NoRadioStation: ; 91888 (24:5888)
 	call NoRadioMusic
@@ -1823,10 +1776,6 @@ _TownMap: ; 9191c
 	call PokegearMap_InitPlayerIcon
 	ld a, [wd003]
 	call PokegearMap_InitCursor
-	ld a, c
-	ld [wd004], a
-	ld a, b
-	ld [wd005], a
 	ld b, SCGB_POKEGEAR_PALS
 	call GetSGBLayout
 	call SetPalettes
@@ -1911,10 +1860,6 @@ _TownMap: ; 9191c
 .next
 	ld a, [wd003]
 	call PokegearMap_UpdateLandmarkName
-	ld a, [wd004]
-	ld c, a
-	ld a, [wd005]
-	ld b, a
 	ld a, [wd003]
 	call PokegearMap_UpdateCursorPosition
 	pop de
@@ -3017,3 +2962,6 @@ INCBIN "gfx/town_map/orange.bin"
 
 PokedexNestIconGFX: ; 922d1
 INCBIN "gfx/town_map/dexmap_nest_icon.2bpp"
+
+PokegearGFX: ; 1de2e4
+INCBIN "gfx/pokegear/pokegear.2bpp.lz"

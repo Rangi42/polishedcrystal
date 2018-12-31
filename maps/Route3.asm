@@ -330,8 +330,5 @@ Route3MeteoriteText:
 	done
 
 UnknownText_0x1ae163:
-	text "Mt.Moon Ahead"
-
-	para "Mt.Moon Square"
-	line "is en route!"
+	text "Mt.Moon Tunnel"
 	done
