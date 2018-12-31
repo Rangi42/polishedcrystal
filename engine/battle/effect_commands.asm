@@ -6287,10 +6287,11 @@ BattleCommand_CheckRampage: ; 3671a
 	res SUBSTATUS_RAMPAGE, [hl]
 	call SwitchTurn
 	call SafeCheckSafeguard
-	push af
-	call SwitchTurn
-	pop af
-	jr nz, .continue_rampage
+	jr nz, .switchturn_continue_rampage
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OWN_TEMPO
+	jr z, .switchturn_continue_rampage
 
 	set SUBSTATUS_CONFUSED, [hl]
 	call BattleRandom
@@ -6299,6 +6300,8 @@ BattleCommand_CheckRampage: ; 3671a
 	inc a
 	inc de ; ConfuseCount
 	ld [de], a
+.switchturn_continue_rampage
+	call SwitchTurn
 .continue_rampage
 	ld b, rampage_command
 	jp SkipToBattleCommandAfter

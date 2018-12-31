@@ -429,6 +429,7 @@ EnemySubStatus4::
 ; see PlayerSubStatus4
 	ds 1
 
+; Some code depend on the order of these
 PlayerAbility:: ds 1
 PlayerRolloutCount:: ds 1
 PlayerConfuseCount:: ds 1
