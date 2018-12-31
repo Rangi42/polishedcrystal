@@ -5991,11 +5991,6 @@ MoveInfoBox: ; 3e6c8
 	ld hl, VTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
-	hlcoord 1, 9
-	ld [hl], $59
-	inc hl
-	ld [hl], $5a
-
 	ld hl, TypeIconGFX
 	ld bc, 4 * LEN_1BPP_TILE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
@@ -6005,14 +6000,14 @@ MoveInfoBox: ; 3e6c8
 	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
 	call Request1bpp
-	hlcoord 3, 9
-	ld [hl], $5b
-	inc hl
-	ld [hl], $5c
-	inc hl
-	ld [hl], $5d
-	inc hl
-	ld [hl], $5e
+	hlcoord 1, 9
+	ld b, 6
+	ld a, $59
+.loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .loop
 	pop af
 	call nz, WaitBGMap
 	jp SetPalettes
