@@ -2873,14 +2873,17 @@ TownMapPlayerIcon: ; 91fa6
 ; Standing icon
 	ld hl, VTiles0 tile $10
 	ld c, 4 ; # tiles
+	push bc
+	push de
 	call Request2bpp
+	pop de
+	pop bc
 ; Walking icon
 	ld hl, $c0
 	add hl, de
 	ld d, h
 	ld e, l
 	ld hl, VTiles0 tile $14
-	ld c, 4 ; # tiles
 	call Request2bpp
 ; Animation/palette
 	depixel 0, 0
