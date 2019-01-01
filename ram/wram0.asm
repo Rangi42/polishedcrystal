@@ -432,6 +432,7 @@ wEnemySubStatus4::
 ; see wPlayerSubStatus4
 	ds 1
 
+; Some code depend on the order of these
 wPlayerAbility:: ds 1
 wPlayerRolloutCount:: ds 1
 wPlayerConfuseCount:: ds 1
@@ -527,7 +528,7 @@ wPlayerTurnsTaken:: ds 1
 wPlayerSubstituteHP:: ds 2
 wEnemySubstituteHP:: ds 2
 
-	ds 1
+wBackupEnemyMonBaseExp:: ds 1
 
 wCurPlayerMove:: ds 1
 wCurEnemyMove:: ds 1
@@ -1061,7 +1062,7 @@ InputFlags::
 
 wInBattleTowerBattle:: ds 1
 
-	ds 1
+wIsBattleMenu:: ds 1
 
 wFXAnimID::
 wFXAnimIDLo:: ds 1

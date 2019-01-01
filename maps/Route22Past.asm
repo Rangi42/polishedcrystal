@@ -34,25 +34,25 @@ Route22PastCelebiEventScript:
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraLooksAroundMovementData
 	showtext Route22PastLyraIlexForestDisappearedText
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraStepDownMovementData
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showtext Route22PastLyraExplainsTimeTravelText
 	showemote EMOTE_SHOCK, ROUTE22PAST_LYRA, 15
-	spriteface ROUTE22PAST_LYRA, UP
+	turnobject ROUTE22PAST_LYRA, UP
 	showtext Route22PastLyraHearsSomeoneText
 	follow ROUTE22PAST_LYRA, PLAYER
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraApproachesSilverMovementData
-	spriteface ROUTE22PAST_LYRA, UP
-	spriteface PLAYER, UP
+	turnobject ROUTE22PAST_LYRA, UP
+	turnobject PLAYER, UP
 	stopfollow
 	applyonemovement ROUTE22PAST_CELEBI, step_up
 	special Special_FadeOutMusic
 	applyonemovement ROUTE22PAST_SILVER, slow_step_left
 	showtext Route22PastSilverQuestionsGiovanniText
-	spriteface ROUTE22PAST_GIOVANNI, RIGHT
+	turnobject ROUTE22PAST_GIOVANNI, RIGHT
 	showtext Route22PastGiovanniSilverArgumentText
 	applyonemovement ROUTE22PAST_SILVER, slow_step_left
 	showtext Route22PastSilverProtestsText
-	spriteface ROUTE22PAST_GIOVANNI, LEFT
+	turnobject ROUTE22PAST_GIOVANNI, LEFT
 	showtext Route22PastGiovanniGoodbyeText
 	applymovement ROUTE22PAST_GIOVANNI, Route22Past_GiovanniLeavesMovementData
 	pause 15
@@ -65,7 +65,7 @@ Route22PastCelebiEventScript:
 	showtext Route22PastSilverInsultText
 	playsound SFX_TACKLE
 	applymovement PLAYER, Route22Past_SilverShovesPlayerDownMovementData
-	spriteface ROUTE22PAST_LYRA, DOWN
+	turnobject ROUTE22PAST_LYRA, DOWN
 	applymovement ROUTE22PAST_SILVER, Route22Past_SilverLeavesMovementData
 	special RestartMapMusic
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraMeetsPlayerMovementData
@@ -80,7 +80,7 @@ Route22PastCelebiEventScript:
 	waitsfx
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement ROUTE22PAST_LYRA, Route22Past_LyraLooksAroundAgainMovementData
-	spriteface ROUTE22PAST_LYRA, DOWN
+	turnobject ROUTE22PAST_LYRA, DOWN
 	showtext Route22PastLyraOhNoText
 	playsound SFX_PROTECT
 	applymovement ROUTE22PAST_CELEBI, Route22Past_CelebiFloatsMovementData
@@ -92,7 +92,7 @@ Route22PastCelebiEventScript:
 	clearevent EVENT_GIOVANNIS_CAVE_CELEBI
 	clearevent EVENT_GIOVANNIS_CAVE_LYRA
 	clearevent EVENT_GIOVANNIS_CAVE_GIOVANNI
-	domaptrigger GIOVANNIS_CAVE, $1
+	setmapscene GIOVANNIS_CAVE, $1
 	warp GIOVANNIS_CAVE, 15, 5
 	end
 

@@ -12,7 +12,7 @@ SECTION "Pokemon Center Scripts 2", ROMX
 
 INCLUDE "maps/MahoganyPokeCenter1F.asm"
 INCLUDE "maps/BlackthornPokeCenter1F.asm"
-INCLUDE "maps/IndigoPlateauPokeCenter1F.asm"
+INCLUDE "maps/IndigoPlateauPokecenter1F.asm"
 INCLUDE "maps/ViridianPokeCenter1F.asm"
 INCLUDE "maps/PewterPokeCenter1F.asm"
 INCLUDE "maps/CeruleanPokeCenter1F.asm"
@@ -35,8 +35,8 @@ INCLUDE "maps/ShamoutiPokeCenter1F.asm"
 INCLUDE "maps/Route3PokeCenter1F.asm"
 INCLUDE "maps/Route10PokeCenter1F.asm"
 INCLUDE "maps/Route32PokeCenter1F.asm"
-INCLUDE "maps/GoldenrodPokeComCenter1F.asm"
-INCLUDE "maps/GoldenrodPokeComCenterOffice.asm"
+INCLUDE "maps/GoldenrodPokecomCenter1F.asm"
+INCLUDE "maps/GoldenrodPokecomCenterOffice.asm"
 
 
 SECTION "Special Map Scripts", ROMX
@@ -125,27 +125,27 @@ INCLUDE "maps/VioletOutskirts.asm"
 
 SECTION "Ruins of Alph Scripts", ROMX
 
-INCLUDE "maps/RuinsofAlphOutside.asm"
-INCLUDE "maps/RuinsofAlphResearchCenter.asm"
-INCLUDE "maps/RuinsofAlphEntranceChamber.asm"
-INCLUDE "maps/RuinsofAlphInnerChamber.asm"
-INCLUDE "maps/RuinsofAlphSinjohChamber.asm"
+INCLUDE "maps/RuinsOfAlphOutside.asm"
+INCLUDE "maps/RuinsOfAlphResearchCenter.asm"
 
 
 SECTION "Ruins of Alph Scripts 2", ROMX
 
-INCLUDE "maps/RuinsofAlphAerodactylChamber.asm"
-INCLUDE "maps/RuinsofAlphHoOhChamber.asm"
-INCLUDE "maps/RuinsofAlphKabutoChamber.asm"
-INCLUDE "maps/RuinsofAlphOmanyteChamber.asm"
-INCLUDE "maps/RuinsofAlphAerodactylItemRoom.asm"
-INCLUDE "maps/RuinsofAlphHoOhItemRoom.asm"
-INCLUDE "maps/RuinsofAlphKabutoItemRoom.asm"
-INCLUDE "maps/RuinsofAlphOmanyteItemRoom.asm"
-INCLUDE "maps/RuinsofAlphAerodactylWordRoom.asm"
-INCLUDE "maps/RuinsofAlphHoOhWordRoom.asm"
-INCLUDE "maps/RuinsofAlphKabutoWordRoom.asm"
-INCLUDE "maps/RuinsofAlphOmanyteWordRoom.asm"
+INCLUDE "maps/RuinsOfAlphEntranceChamber.asm"
+INCLUDE "maps/RuinsOfAlphInnerChamber.asm"
+INCLUDE "maps/RuinsOfAlphSinjohChamber.asm"
+INCLUDE "maps/RuinsOfAlphAerodactylChamber.asm"
+INCLUDE "maps/RuinsOfAlphHoOhChamber.asm"
+INCLUDE "maps/RuinsOfAlphKabutoChamber.asm"
+INCLUDE "maps/RuinsOfAlphOmanyteChamber.asm"
+INCLUDE "maps/RuinsOfAlphAerodactylItemRoom.asm"
+INCLUDE "maps/RuinsOfAlphHoOhItemRoom.asm"
+INCLUDE "maps/RuinsOfAlphKabutoItemRoom.asm"
+INCLUDE "maps/RuinsOfAlphOmanyteItemRoom.asm"
+INCLUDE "maps/RuinsOfAlphAerodactylWordRoom.asm"
+INCLUDE "maps/RuinsOfAlphHoOhWordRoom.asm"
+INCLUDE "maps/RuinsOfAlphKabutoWordRoom.asm"
+INCLUDE "maps/RuinsOfAlphOmanyteWordRoom.asm"
 
 
 SECTION "Sinjoh Ruins Scripts", ROMX
@@ -197,7 +197,7 @@ SECTION "Goldenrod Scripts", ROMX
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/GoldenrodGym.asm"
 INCLUDE "maps/GoldenrodGameCorner.asm"
-INCLUDE "maps/DayCare.asm"
+INCLUDE "maps/Daycare.asm"
 
 
 SECTION "Goldenrod Scripts 2", ROMX
@@ -215,10 +215,11 @@ SECTION "Goldenrod Scripts 3", ROMX
 
 INCLUDE "maps/GoldenrodHarbor.asm"
 INCLUDE "maps/GoldenrodHarborGate.asm"
+INCLUDE "maps/GoldenrodMuseum1F.asm"
+INCLUDE "maps/GoldenrodMuseum2F.asm"
 INCLUDE "maps/GoldenrodBandHouse.asm"
 INCLUDE "maps/GoldenrodNetBallHouse.asm"
 INCLUDE "maps/GoldenrodPPSpeechHouse.asm"
-INCLUDE "maps/GoldenrodSpeechHouse.asm"
 
 
 SECTION "Goldenrod Dept Store Scripts", ROMX
@@ -384,9 +385,9 @@ INCLUDE "maps/MahoganyRedGyaradosSpeechHouse.asm"
 
 SECTION "Lake of Rage Scripts", ROMX
 
-INCLUDE "maps/LakeofRage.asm"
-INCLUDE "maps/LakeofRageHiddenPowerHouse.asm"
-INCLUDE "maps/LakeofRageMagikarpHouse.asm"
+INCLUDE "maps/LakeOfRage.asm"
+INCLUDE "maps/LakeOfRageHiddenPowerHouse.asm"
+INCLUDE "maps/LakeOfRageMagikarpHouse.asm"
 
 
 SECTION "Team Rocket Base Scripts", ROMX
@@ -762,6 +763,7 @@ SECTION "Uraga Channel Scripts", ROMX
 
 INCLUDE "maps/UragaChannelEast.asm"
 INCLUDE "maps/UragaChannelWest.asm"
+INCLUDE "maps/Route18West.asm" ; shares text with UragaChannelEast.asm
 
 
 SECTION "Scary Cave Scripts", ROMX
@@ -955,7 +957,6 @@ INCLUDE "maps/Route17.asm"
 SECTION "Routes 18-20 Scripts", ROMX
 
 INCLUDE "maps/Route18East.asm"
-INCLUDE "maps/Route18West.asm"
 INCLUDE "maps/Route18Gate.asm"
 INCLUDE "maps/Route18Gate2F.asm"
 INCLUDE "maps/Route19.asm"
@@ -998,7 +999,7 @@ INCLUDE "maps/Route30BerrySpeechHouse.asm"
 INCLUDE "maps/Route31.asm"
 INCLUDE "maps/Route31VioletGate.asm"
 INCLUDE "maps/Route32.asm"
-INCLUDE "maps/Route32RuinsofAlphGate.asm"
+INCLUDE "maps/Route32RuinsOfAlphGate.asm"
 
 
 SECTION "Routes 33-35 Scripts", ROMX
@@ -1015,7 +1016,7 @@ INCLUDE "maps/Route36NationalParkGate.asm" ; shares text with Route35NationalPar
 SECTION "Routes 36-38 Scripts", ROMX
 
 INCLUDE "maps/Route36.asm"
-INCLUDE "maps/Route36RuinsofAlphGate.asm"
+INCLUDE "maps/Route36RuinsOfAlphGate.asm"
 INCLUDE "maps/Route36VioletGate.asm"
 INCLUDE "maps/Route37.asm"
 INCLUDE "maps/Route38.asm"

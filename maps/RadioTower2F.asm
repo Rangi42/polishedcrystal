@@ -86,13 +86,13 @@ Buena:
 	checkflag ENGINE_BUENAS_PASSWORD_2
 	iftrue UnknownScript_0x5d82f
 	checkcode VAR_HOUR
-	if_less_than 18, UnknownScript_0x5d893
+	ifless 18, UnknownScript_0x5d893
 	checkflag ENGINE_BUENAS_PASSWORD
 	iffalse UnknownScript_0x5d80a
 	checkitem BLUE_CARD
 	iffalse UnknownScript_0x5d86b
 	checkcode VAR_BLUECARDBALANCE
-	if_equal 30, UnknownScript_0x5d87f
+	ifequal 30, UnknownScript_0x5d87f
 	playmusic MUSIC_BUENAS_PASSWORD
 	writetext UnknownText_0x5de35
 	special AskRememberPassword
@@ -100,14 +100,14 @@ Buena:
 	writetext UnknownText_0x5de84
 	waitbutton
 	closetext
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	checkcode VAR_FACING
-	if_not_equal RIGHT, UnknownScript_0x5d7be
+	ifnotequal RIGHT, UnknownScript_0x5d7be
 	applymovement PLAYER, MovementData_0x5d921
 UnknownScript_0x5d7be:
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext UnknownText_0x5dedd
-	spriteface RADIOTOWER2F_BUENA, DOWN
+	turnobject RADIOTOWER2F_BUENA, DOWN
 	refreshscreen
 	special SpecialBuenasPassword
 	closetext
@@ -120,13 +120,13 @@ UnknownScript_0x5d7be:
 	playsound SFX_TRANSACTION
 	setflag ENGINE_BUENAS_PASSWORD_2
 	pause 20
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	showtext UnknownText_0x5e054
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
 	checkcode VAR_BLUECARDBALANCE
-	if_equal $1e, UnknownScript_0x5d8a4
+	ifequal $1e, UnknownScript_0x5d8a4
 	end
 
 UnknownScript_0x5d800:
@@ -143,14 +143,14 @@ UnknownScript_0x5d80a:
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	iftrue UnknownScript_0x5d8cc
 UnknownScript_0x5d81a:
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
 UnknownScript_0x5d81e:
 	writetext UnknownText_0x5df29
 	waitbutton
 	closetext
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
@@ -165,17 +165,17 @@ UnknownScript_0x5d82f:
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	iftrue UnknownScript_0x5d8cc
 UnknownScript_0x5d83f:
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	pause 10
 	end
 
 UnknownScript_0x5d845:
 	setflag ENGINE_BUENAS_PASSWORD_2
 	showtext UnknownText_0x5e01c
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	pause 20
 	showtext UnknownText_0x5e054
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
@@ -190,7 +190,7 @@ UnknownScript_0x5d86b:
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
 	iftrue UnknownScript_0x5d8cc
 UnknownScript_0x5d87b:
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
 UnknownScript_0x5d87f:
@@ -202,7 +202,7 @@ UnknownScript_0x5d87f:
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
 	iftrue UnknownScript_0x5d8cc
 UnknownScript_0x5d88f:
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
 UnknownScript_0x5d893:
@@ -220,9 +220,9 @@ UnknownScript_0x5d8a4:
 	checkcellnum PHONE_BUENA
 	iftrue UnknownScript_0x5d8fe
 	pause 20
-	spriteface RADIOTOWER2F_BUENA, DOWN
+	turnobject RADIOTOWER2F_BUENA, DOWN
 	pause 15
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 15
 	checkevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER_NO_BLUE_CARD
 	iftrue UnknownScript_0x5d8cc
@@ -238,8 +238,8 @@ UnknownScript_0x5d8cc:
 	writetext UnknownText_0x5e2bf
 UnknownScript_0x5d8d0:
 	askforphonenumber PHONE_BUENA
-	if_equal $1, UnknownScript_0x5d8f6
-	if_equal $2, UnknownScript_0x5d8ed
+	ifequal $1, UnknownScript_0x5d8f6
+	ifequal $2, UnknownScript_0x5d8ed
 	writetext UnknownText_0x5e2f3
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
@@ -247,7 +247,7 @@ UnknownScript_0x5d8d0:
 	writetext UnknownText_0x5e310
 	waitbutton
 	closetext
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	addcellnum PHONE_BUENA
 	end
 
@@ -255,14 +255,14 @@ UnknownScript_0x5d8ed:
 	writetext UnknownText_0x5e33c
 	waitbutton
 	closetext
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 	end
 
 UnknownScript_0x5d8f6:
 	writetext UnknownText_0x5e35e
 	waitbutton
 	closetext
-	spriteface RADIOTOWER2F_BUENA, RIGHT
+	turnobject RADIOTOWER2F_BUENA, RIGHT
 UnknownScript_0x5d8fe:
 	end
 

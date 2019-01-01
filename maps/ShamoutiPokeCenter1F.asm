@@ -51,12 +51,12 @@ ShamoutiPokeCenter1FIvyScript:
 	setevent EVENT_LISTENED_TO_IVY_INTRO
 .HeardIntro
 	writetext .OfferText
-	loadmenudata .KantoStarterMenuData
+	loadmenu .KantoStarterMenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .Bulbasaur
-	if_equal $2, .Charmander
-	if_equal $3, .Squirtle
+	ifequal $1, .Bulbasaur
+	ifequal $2, .Charmander
+	ifequal $3, .Squirtle
 	thisopenedtext
 
 	text "Ivy: Hm, I thought"
@@ -72,7 +72,7 @@ ShamoutiPokeCenter1FIvyScript:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .NoRoom
+	ifequal $6, .NoRoom
 	pokenamemem BULBASAUR, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
@@ -87,7 +87,7 @@ ShamoutiPokeCenter1FIvyScript:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .NoRoom
+	ifequal $6, .NoRoom
 	pokenamemem CHARMANDER, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
@@ -102,7 +102,7 @@ ShamoutiPokeCenter1FIvyScript:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .NoRoom
+	ifequal $6, .NoRoom
 	pokenamemem SQUIRTLE, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
@@ -114,8 +114,8 @@ ShamoutiPokeCenter1FIvyScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	spriteface PLAYER, DOWN
-	if_not_equal UP, .noleftstep
+	turnobject PLAYER, DOWN
+	ifnotequal UP, .noleftstep
 	applyonemovement SHAMOUTIPOKECENTER1F_IVY, step_left
 .noleftstep
 	applymovement SHAMOUTIPOKECENTER1F_IVY, .DownMovement

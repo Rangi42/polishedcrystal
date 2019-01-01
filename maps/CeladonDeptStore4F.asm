@@ -25,17 +25,17 @@ PosterClerkScript:
 	writetext PosterClerkText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .MarillPoster
-	if_equal $2, .ClefairyPoster
-	if_equal $3, .PikachuPoster
+	ifequal $1, .MarillPoster
+	ifequal $2, .ClefairyPoster
+	ifequal $3, .PikachuPoster
 	endtext
 
 .MarillPoster:
 	checkmoney $0, 3200
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_3
 	iftrue .AlreadyBought
 	takemoney $0, 3200
@@ -49,7 +49,7 @@ PosterClerkScript:
 
 .ClefairyPoster:
 	checkmoney $0, 4800
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_2
 	iftrue .AlreadyBought
 	takemoney $0, 4800
@@ -63,7 +63,7 @@ PosterClerkScript:
 
 .PikachuPoster:
 	checkmoney $0, 6400
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_POSTER_1
 	iftrue .AlreadyBought
 	takemoney $0, 6400

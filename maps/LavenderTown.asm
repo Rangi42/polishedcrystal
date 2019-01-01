@@ -37,7 +37,7 @@ LavenderTown_MapScriptHeader:
 	const LAVENDERTOWN_YOUNGSTER1
 
 LavenderTownExpositionTrigger1:
-	moveperson LAVENDERTOWN_YOUNGSTER1, 14, 8
+	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8
 	showemote EMOTE_SHOCK, PLAYER, 15
 	appear LAVENDERTOWN_YOUNGSTER1
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
@@ -140,13 +140,13 @@ LavenderTownSharedExpositionScript:
 	step_end
 
 LavenderTownFinishExpositionScript:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement LAVENDERTOWN_YOUNGSTER1, .LeaveMovement
 	disappear LAVENDERTOWN_YOUNGSTER1
 	setevent EVENT_ROUTE_8_PROTESTORS
 	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setflag ENGINE_FLYPOINT_LAVENDER
-	dotrigger $1
+	setscene $1
 	end
 
 .LeaveMovement:

@@ -47,7 +47,7 @@ GoldenrodHarborTutorHyperVoiceScript:
 	writebyte HYPER_VOICE
 	writetext Text_GoldenrodHarborTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_GoldenrodHarborTutorRefused
 
@@ -93,17 +93,17 @@ GoldenrodHarborPokefanmScript:
 	writetext GoldenrodHarborDollVendorText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .MagikarpDoll
-	if_equal $2, .MarillDoll
-	if_equal $3, .OctilleryDoll
+	ifequal $1, .MagikarpDoll
+	ifequal $2, .MarillDoll
+	ifequal $3, .OctilleryDoll
 	endtext
 
 .MagikarpDoll:
 	checkmoney $0, 1400
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MAGIKARP_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 1400
@@ -117,7 +117,7 @@ GoldenrodHarborPokefanmScript:
 
 .MarillDoll:
 	checkmoney $0, 5600
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_MARILL_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 5600
@@ -131,7 +131,7 @@ GoldenrodHarborPokefanmScript:
 
 .OctilleryDoll:
 	checkmoney $0, 11200
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_OCTILLERY_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 11200
@@ -174,17 +174,17 @@ GoldenrodHarborYoungsterScript:
 	writetext GoldenrodHarborPlantVendorText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .MagnaPlant
-	if_equal $2, .TropicPlant
-	if_equal $3, .JumboPlant
+	ifequal $1, .MagnaPlant
+	ifequal $2, .TropicPlant
+	ifequal $3, .JumboPlant
 	endtext
 
 .MagnaPlant:
 	checkmoney $0, 6400
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_1
 	iftrue .AlreadyBought
 	takemoney $0, 6400
@@ -198,7 +198,7 @@ GoldenrodHarborYoungsterScript:
 
 .TropicPlant:
 	checkmoney $0, 9600
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_2
 	iftrue .AlreadyBought
 	takemoney $0, 9600
@@ -212,7 +212,7 @@ GoldenrodHarborYoungsterScript:
 
 .JumboPlant:
 	checkmoney $0, 12800
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_PLANT_3
 	iftrue .AlreadyBought
 	takemoney $0, 12800

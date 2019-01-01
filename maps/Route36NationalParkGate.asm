@@ -56,20 +56,20 @@ Route36NationalParkGateTrigger1:
 Route36NationalParkGateCheckIfContestRunning:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .BugContestIsRunning
-	dotrigger $0
+	setscene $0
 	return
 
 .BugContestIsRunning:
-	dotrigger $2
+	setscene $2
 	return
 
 Route36NationalParkGateCheckIfContestAvailable:
 	checkevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	iftrue .Return
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, .SetContestOfficer
-	if_equal THURSDAY, .SetContestOfficer
-	if_equal SATURDAY, .SetContestOfficer
+	ifequal TUESDAY, .SetContestOfficer
+	ifequal THURSDAY, .SetContestOfficer
+	ifequal SATURDAY, .SetContestOfficer
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .SetContestOfficer
 	disappear ROUTE36NATIONALPARKGATE_OFFICER1
@@ -83,7 +83,7 @@ Route36NationalParkGateCheckIfContestAvailable:
 	return
 
 Route36NationalParkGateLeftTheContestEarly:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	opentext
 	checkcode VAR_CONTESTMINUTES
 	addvar $1
@@ -108,7 +108,7 @@ Route36NationalParkGateLeftTheContestEarly:
 	writetext UnknownText_0x6a823
 	waitbutton
 	closetext
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -161,10 +161,10 @@ Route36NationalParkGateLeftTheContestEarly:
 
 Route36OfficerScriptContest:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, .ContestNotOn
-	if_equal MONDAY, .ContestNotOn
-	if_equal WEDNESDAY, .ContestNotOn
-	if_equal FRIDAY, .ContestNotOn
+	ifequal SUNDAY, .ContestNotOn
+	ifequal MONDAY, .ContestNotOn
+	ifequal WEDNESDAY, .ContestNotOn
+	ifequal FRIDAY, .ContestNotOn
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue Route36Officer_ContestHasConcluded
 	faceplayer
@@ -174,7 +174,7 @@ Route36OfficerScriptContest:
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x6a5dc
 	checkcode VAR_PARTYCOUNT
-	if_greater_than $1, .LeaveMonsWithOfficer
+	ifgreater $1, .LeaveMonsWithOfficer
 	special ContestDropOffMons
 	clearevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 .ResumeStartingContest:
@@ -191,7 +191,7 @@ Route36OfficerScriptContest:
 	closetext
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special Special_GiveParkBalls
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
@@ -204,7 +204,7 @@ Route36OfficerScriptContest:
 
 .LeaveMonsWithOfficer:
 	checkcode VAR_PARTYCOUNT
-	if_less_than $6, .ContinueLeavingMons
+	ifless $6, .ContinueLeavingMons
 	checkcode VAR_BOXSPACE
 	iffalse_jumpopenedtext UnknownText_0x6a67c
 .ContinueLeavingMons:

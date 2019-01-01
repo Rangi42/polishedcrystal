@@ -29,12 +29,12 @@ SoulHouseB3FMrFujiScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	if_equal RIGHT, .GoAround
+	ifequal RIGHT, .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .LeaveMovement
 	jump .Finish
 .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement1
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement2
 .Finish
 	disappear SOULHOUSEB3F_MRFUJI

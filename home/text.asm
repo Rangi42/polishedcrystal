@@ -204,14 +204,13 @@ endm
 	dict "<FAR>",    TextFar
 	dict "<LNBRK>",  LineBreak
 	dict "<NEXT>",   NextChar
-	dict "<LINK2>",  LinkButtonSound
+	dict "<_CONT>",  LinkButtonSound
 	dict "<SCRL2>",  ScrollText
 	dict "<NL>",     NextLineChar
 	dict "<LINE>",   LineChar
 	dict "<PARA>",   Paragraph
 	dict "<PLAYER>", PrintPlayerName
 	dict "<RIVAL>",  PrintRivalName
-	dict "#",        PlacePoke
 	dict "<CONT>",   ContText
 	dict "<TRENDY>", PrintTrendyPhrase
 	dict "<DONE>",   DoneText
@@ -219,6 +218,17 @@ endm
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
+	dict "#",        PlacePoke
+	dict "the",      PlaceThe
+	dict "you",      PlaceYou
+	dict "#mon",     PlacePokemon
+	dict "to",       PlaceTo
+	dict "have",     PlaceHave
+	dict "that",     PlaceThat
+	dict "for",      PlaceFor
+	dict "with",     PlaceWith
+	dict "and",      PlaceAnd
+	dict "this",     PlaceThis
 	dict2 "¯", " "
 
 	ld [hli], a
@@ -235,10 +245,39 @@ endm
 PrintPlayerName:   print_name wPlayerName   ; 118d
 PrintRivalName:    print_name wRivalName    ; 1194
 PrintTrendyPhrase: print_name wTrendyPhrase ; 119b
-PlacePoke:         print_name .PokeText    ; 11c5
 
-.PokeText:
-	db "Poké@" ; 1288
+PlacePoke: print_name .PokeText
+.PokeText: db "Poké@"
+
+PlaceThe: print_name .TheText
+.TheText: db "t", "h", "e", "@"
+
+PlaceYou: print_name .YouText
+.YouText: db "y", "o", "u", "@"
+
+PlacePokemon: print_name .PokemonText
+.PokemonText: db "Pokémon@"
+
+PlaceTo: print_name .ToText
+.ToText: db "t", "o", "@"
+
+PlaceHave: print_name .HaveText
+.HaveText: db "h", "a", "v", "e", "@"
+
+PlaceThat: print_name .ThatText
+.ThatText: db "t", "h", "a", "t", "@"
+
+PlaceFor: print_name .ForText
+.ForText: db "f", "o", "r", "@"
+
+PlaceWith: print_name .WithText
+.WithText: db "w", "i", "t", "h", "@"
+
+PlaceAnd: print_name .AndText
+.AndText: db "a", "n", "d", "@"
+
+PlaceThis: print_name .ThisText
+.ThisText: db "t", "h", "i", "s", "@"
 
 PlaceMoveTargetsName:: ; 11fd
 	ld a, [hBattleTurn]
@@ -443,7 +482,7 @@ ContText:: ; 1345
 	pop de
 	jp NextChar
 
-.cont	db $4b, "@"
+.cont	db "<_CONT>@"
 ; 1356
 
 PromptText:: ; 135a

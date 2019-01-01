@@ -68,10 +68,10 @@ ReceptionistScript_0x5cd3d:
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, MovementData_0x5ce74
 	opentext
-	if_equal 1, .FirstPlace
-	if_equal 2, .SecondPlace
-	if_equal 3, .ThirdPlace
-	if_equal 4, .FourthPlace
+	ifequal 1, .FirstPlace
+	ifequal 2, .SecondPlace
+	ifequal 3, .ThirdPlace
+	ifequal 4, .FourthPlace
 	jumpopenedtext UnknownText_0x5d0c0
 
 .FirstPlace:
@@ -169,10 +169,10 @@ CooltrainerFScript_0x5cdd5:
 	closetext
 	showemote EMOTE_SHOCK, RADIOTOWER1F_WHITNEY, 15
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyApproachesMovementData
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext RadioTower1FWhitney2Text
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves1MovementData
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement RADIOTOWER1F_WHITNEY, RadioTower1FWhitneyLeaves2MovementData
 	disappear RADIOTOWER1F_WHITNEY
 	end
@@ -196,7 +196,7 @@ GenericTrainerGruntM3:
 
 RadioTower1FWhitneyScript:
 	showtextfaceplayer RadioTower1FWhitney1Text
-	spriteface RADIOTOWER1F_WHITNEY, LEFT
+	turnobject RADIOTOWER1F_WHITNEY, LEFT
 	end
 
 MovementData_0x5ce71:

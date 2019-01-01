@@ -153,7 +153,7 @@ else
 wPlayerPalette:
 KrisPalette:
 Lyra1Palette:
-rept 144
+rept NUM_TRAINER_CLASSES
 	MONOCHROME_RGB_TWO
 endr
 endc

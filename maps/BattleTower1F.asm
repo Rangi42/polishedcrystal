@@ -33,8 +33,8 @@ BattleTower1FTrigger0:
 	special Special_BattleTower_CheckSaveFileExistsAndIsYours
 	iffalse .Done
 	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
-	if_equal BATTLETOWER_CHALLENGE_IN_PROGESS, .ContinueChallenge
-	if_equal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
+	ifequal BATTLETOWER_CHALLENGE_IN_PROGESS, .ContinueChallenge
+	ifequal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
 	jump .Done
 
 .ResumeChallenge
@@ -47,7 +47,7 @@ BattleTower1FTrigger0:
 	writebyte BATTLETOWER_NO_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 .Done
-	dotrigger $1
+	setscene $1
 	end
 
 MapBattleTower1FSignpost0Script:
@@ -59,25 +59,25 @@ MapBattleTower1FSignpost0Script:
 
 ReceptionistScript_0x9e3e2:
 	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
-	if_equal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
+	ifequal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
 	opentext
 	writetext Text_BattleTowerWelcomesYou
 	buttonsound
 	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
-	if_not_equal $0, Script_Menu_ChallengeExplanationCancel
+	ifnotequal $0, Script_Menu_ChallengeExplanationCancel
 	jump Script_BattleTowerIntroductionYesNo
 
 Script_Menu_ChallengeExplanationCancel:
 	writetext Text_WantToGoIntoABattleRoom
 	special Special_BattleTower_MainMenu
-	if_equal $1, Script_ChoseChallenge
-	if_equal $2, Script_BattleTowerExplanation
+	ifequal $1, Script_ChoseChallenge
+	ifequal $2, Script_BattleTowerExplanation
 	jumpopenedtext Text_WeHopeToServeYouAgain
 
 Script_ChoseChallenge:
 	special Special_BattleTower_ResetTrainersSRAM
 	special Special_BattleTower_CheckForRules
-	if_not_equal $0, Script_WaitButton
+	ifnotequal $0, Script_WaitButton
 	special Special_BattleTower_FindChallengeLevel
 	writetext Text_ConfirmBattleRoomLevel
 	yesorno
@@ -85,10 +85,10 @@ Script_ChoseChallenge:
 	writetext Text_SaveBeforeEnteringBattleRoom
 	yesorno
 	iffalse Script_Menu_ChallengeExplanationCancel
-	dotrigger $0
+	setscene $0
 	special Special_TryQuickSave
 	iffalse Script_Menu_ChallengeExplanationCancel
-	dotrigger $1
+	setscene $1
 	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerNewSaveFile]
 	special Special_BattleTower_BeginChallenge
 	writetext Text_RightThisWayToYourBattleRoom
@@ -101,9 +101,9 @@ Script_ResumeBattleTowerChallenge:
 	special Special_BattleTower_LoadLevelGroup
 Script_WalkToBattleTowerElevator:
 	musicfadeout MUSIC_NONE, 8
-	domaptrigger BATTLE_TOWER_BATTLE_ROOM, $0
-	domaptrigger BATTLE_TOWER_ELEVATOR, $0
-	domaptrigger BATTLE_TOWER_HALLWAY, $0
+	setmapscene BATTLE_TOWER_BATTLE_ROOM, $0
+	setmapscene BATTLE_TOWER_ELEVATOR, $0
+	setmapscene BATTLE_TOWER_HALLWAY, $0
 	follow BATTLETOWER1F_RECEPTIONIST, PLAYER
 	applymovement BATTLETOWER1F_RECEPTIONIST, MovementData_BattleTower1FWalkToElevator
 	special Special_BattleTower_MaxVolume
@@ -118,7 +118,7 @@ Script_GivePlayerHisPrize:
 	writebyte BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	checkcode VAR_BATTLEPOINTS
-	if_greater_than 252, .MaxPoints
+	ifgreater 252, .MaxPoints
 	addvar 3
 	writevarcode VAR_BATTLEPOINTS
 .Finish:
@@ -169,7 +169,7 @@ BattleTowerTutorTrickScript:
 	writebyte TRICK
 	writetext Text_BattleTowerTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_BattleTowerTutorRefused
 

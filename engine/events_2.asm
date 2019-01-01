@@ -122,7 +122,6 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	jr nz, .skip2
 	call InitMapNameFrame
 	call PlaceMapNameCenterAlign
-	call GiveFontOpaqueBackground
 	farcall HDMATransfer_OnlyTopFourRows
 .skip2
 	ld a, $70
@@ -273,34 +272,6 @@ PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
 	jr .loop
 .stop
 	pop hl
-	ret
-
-GiveFontOpaqueBackground:
-; Two bytes in VRAM define eight pixels (2 bits/pixel)
-; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
-; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
-; %00 = white, %11 = black, %10 = light, %01 = dark
-	;call DisableLCD
-	ld hl, VTiles1
-	ld bc, (106 tiles) / 2 ; only from "A" to "9"
-.loop1
-	ld a, $ff
-	ld [hli], a
-	inc hl
-	dec bc
-	ld a, b
-	or c
-	jr nz, .loop1
-	ld hl, VTiles1 tile $ff
-	ld a, (1 tiles) / 2
-.loop2
-	ld [hl], $ff
-	inc hl
-	ld [hl], $0
-	inc hl
-	dec a
-	jr nz, .loop2
-	;call EnableLCD
 	ret
 
 

@@ -267,6 +267,7 @@ INCLUDE "audio/music/bw/wcsbattle.asm"
 SECTION "B2W2 Music 1", ROMX
 
 INCLUDE "audio/music/b2w2/championbattle.asm"
+INCLUDE "audio/music/b2w2/hiddengrotto.asm"
 
 
 SECTION "B2W2 Music 2", ROMX
@@ -295,6 +296,7 @@ INCLUDE "audio/music/xy/titlescreen.asm"
 
 SECTION "XY Music 3", ROMX
 
+INCLUDE "audio/music/xy/scaryhouse.asm"
 INCLUDE "audio/music/xy/legendarybattle.asm"
 
 

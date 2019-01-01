@@ -361,7 +361,7 @@ OakText_ResponseToSetTime: ; 0x908b8
 ; 0x908fb
 
 TimesetBackgroundGFX: ; 908fb
-INCBIN "gfx/misc/timeset_bg.1bpp"
+INCBIN "gfx/new_game/timeset_bg.1bpp"
 
 Special_SetDayOfWeek: ; 90913
 	ld a, [hInMenu]

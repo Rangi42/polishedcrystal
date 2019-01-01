@@ -36,54 +36,54 @@ DragonShrineTestScript:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	writetext UnknownText_0x18d3bc
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d215
+	loadmenu MenuDataHeader_0x18d215
 	verticalmenu
 	closewindow
-	if_equal $1, .RightAnswer
-	if_equal $2, .WrongAnswer
-	if_equal $3, .RightAnswer
+	ifequal $1, .RightAnswer
+	ifequal $2, .WrongAnswer
+	ifequal $3, .RightAnswer
 	end
 
 .Question2:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	writetext UnknownText_0x18d3d3
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d234
+	loadmenu MenuDataHeader_0x18d234
 	verticalmenu
 	closewindow
-	if_equal $1, .RightAnswer
-	if_equal $2, .RightAnswer
-	if_equal $3, .WrongAnswer
+	ifequal $1, .RightAnswer
+	ifequal $2, .RightAnswer
+	ifequal $3, .WrongAnswer
 .Question3:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
 	writetext UnknownText_0x18d3f3
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d258
+	loadmenu MenuDataHeader_0x18d258
 	verticalmenu
 	closewindow
-	if_equal $1, .WrongAnswer
-	if_equal $2, .RightAnswer
-	if_equal $3, .RightAnswer
+	ifequal $1, .WrongAnswer
+	ifequal $2, .RightAnswer
+	ifequal $3, .RightAnswer
 .Question4:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
 	writetext UnknownText_0x18d420
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d283
+	loadmenu MenuDataHeader_0x18d283
 	verticalmenu
 	closewindow
-	if_equal $1, .RightAnswer
-	if_equal $2, .WrongAnswer
-	if_equal $3, .RightAnswer
+	ifequal $1, .RightAnswer
+	ifequal $2, .WrongAnswer
+	ifequal $3, .RightAnswer
 .Question5:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
 	writetext UnknownText_0x18d44a
 	buttonsound
-	loadmenudata MenuDataHeader_0x18d2a5
+	loadmenu MenuDataHeader_0x18d2a5
 	verticalmenu
 	closewindow
-	if_equal $1, .WrongAnswer
-	if_equal $2, .WrongAnswer
-	if_equal $3, .RightAnswer
+	ifequal $1, .WrongAnswer
+	ifequal $2, .WrongAnswer
+	ifequal $3, .RightAnswer
 .RightAnswer:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
 	iftrue .PassedTheTest
@@ -99,9 +99,9 @@ DragonShrineTestScript:
 	iftrue .Question2
 .WrongAnswer:
 	closetext
-	spriteface DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_ELDER1, LEFT
 	showtext UnknownText_0x18d7f6
-	spriteface DRAGONSHRINE_ELDER1, DOWN
+	turnobject DRAGONSHRINE_ELDER1, DOWN
 	showtext UnknownText_0x18d816
 	setevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	opentext
@@ -124,12 +124,12 @@ DragonShrineTestScript:
 	playmusic MUSIC_CLAIR
 	appear DRAGONSHRINE_CLAIR
 	waitsfx
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 30
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2d4
-	spriteface DRAGONSHRINE_CLAIR, RIGHT
-	spriteface PLAYER, LEFT
-	spriteface DRAGONSHRINE_ELDER1, LEFT
+	turnobject DRAGONSHRINE_CLAIR, RIGHT
+	turnobject PLAYER, LEFT
+	turnobject DRAGONSHRINE_ELDER1, LEFT
 	showtext UnknownText_0x18d916
 	special Special_FadeOutMusic
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2da
@@ -137,7 +137,7 @@ DragonShrineTestScript:
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2dd
 	showtext UnknownText_0x18d983
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2c9
-	spriteface DRAGONSHRINE_CLAIR, UP
+	turnobject DRAGONSHRINE_CLAIR, UP
 	showtext UnknownText_0x18d520
 	showemote EMOTE_SHOCK, DRAGONSHRINE_CLAIR, 15
 	showtext UnknownText_0x18d9ae
@@ -150,17 +150,17 @@ DragonShrineTestScript:
 	waitsfx
 	special RestartMapMusic
 	specialphonecall SPECIALCALL_MASTERBALL
-	dotrigger $1
-	domaptrigger DRAGONS_DEN_B1F, $1
+	setscene $1
+	setmapscene DRAGONS_DEN_B1F, $1
 	writetext UnknownText_0x18d9f2
 	buttonsound
 	writetext UnknownText_0x18da0b
 	waitbutton
 	closetext
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2ce
-	spriteface DRAGONSHRINE_CLAIR, UP
+	turnobject DRAGONSHRINE_CLAIR, UP
 	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2d1
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext UnknownText_0x18d5a3
 	showtext UnknownText_0x18dab4
 	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2e3
@@ -187,7 +187,7 @@ ElderScript_0x18d1a5:
 	writetext UnknownText_0x18d604
 	waitbutton
 	checkcode VAR_PARTYCOUNT
-	if_equal 6, .PartyFull
+	ifequal 6, .PartyFull
 	writetext UnknownText_0x18d697
 	playsound SFX_CAUGHT_MON
 	waitsfx

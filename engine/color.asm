@@ -133,7 +133,7 @@ LoadItemIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld de, wUnknBGPals palette 4 + 2
+	ld de, wUnknBGPals palette 7 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -158,7 +158,7 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, wUnknBGPals palette 4 + 2
+	ld de, wUnknBGPals palette 7 + 2
 	ld bc, 4
 	ld a, $5
 	call FarCopyWRAM
@@ -169,7 +169,7 @@ endr
 
 .cancel:
 	ld hl, TMHMCancelPalette
-	ld de, wUnknBGPals palette 4 + 2
+	ld de, wUnknBGPals palette 7 + 2
 	ld bc, 6
 	ld a, $5
 	jp FarCopyWRAM
@@ -507,6 +507,16 @@ GetTrainerPalettePointer:
 	add hl, bc
 	ret
 
+GetPaintingPalettePointer:
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld bc, PaintingPalettes
+	add hl, bc
+	ret
+
 GetMonPalettePointer:
 	ld l, a
 	ld h, $0
@@ -554,7 +564,7 @@ LoadPartyMonPalette:
 	call GetMonNormalOrShinyPalettePointer
 	; load palette in BG 7
 	ld a, $5
-	ld de, wUnknBGPals palette 7 + 2
+	ld de, wUnknBGPals palette PAL_BG_TEXT + 2
 	ld bc, 4
 	call FarCopyWRAM
 	; hl = DVs
@@ -566,8 +576,30 @@ LoadPartyMonPalette:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wUnknBGPals palette 7 + 2
+	ld hl, wUnknBGPals palette PAL_BG_TEXT + 2
 	jp VaryColorsByDVs
+
+LoadTrainerPalette:
+	; a = class
+	ld a, [wTrainerClass]
+	; hl = palette
+	call GetTrainerPalettePointer
+	; load palette in BG 7
+	ld a, $5
+	ld de, wUnknBGPals palette PAL_BG_TEXT + 2
+	ld bc, 4
+	jp FarCopyWRAM
+
+LoadPaintingPalette:
+	; a = class
+	ld a, [wTrainerClass]
+	; hl = palette
+	call GetPaintingPalettePointer
+	; load palette in BG 7
+	ld a, $5
+	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld bc, 8
+	jp FarCopyWRAM
 
 InitCGBPals::
 	ld a, $1
@@ -796,7 +828,7 @@ INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
 elif DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
 else
-INCLUDE "gfx/tilesets/palettes/bg.pal"
+INCLUDE "gfx/tilesets/bg_tiles.pal"
 endc
 
 MapObjectPals:
@@ -805,7 +837,7 @@ INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
 elif DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
 else
-INCLUDE "gfx/tilesets/palettes/ob.pal"
+INCLUDE "gfx/overworld/npc_sprites.pal"
 endc
 
 RoofPals:
@@ -814,7 +846,7 @@ INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
 elif DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
 else
-INCLUDE "gfx/tilesets/palettes/roof.pal"
+INCLUDE "gfx/tilesets/roofs.pal"
 endc
 
 OvercastRoofPals:
@@ -823,12 +855,14 @@ INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
 elif DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
 else
-INCLUDE "gfx/tilesets/palettes/roof_overcast.pal"
+INCLUDE "gfx/tilesets/roofs_overcast.pal"
 endc
 
 
 INCLUDE "data/pokemon/palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
+
+INCLUDE "data/events/paintings/palettes.asm"
 
 INCLUDE "engine/palettes.asm"

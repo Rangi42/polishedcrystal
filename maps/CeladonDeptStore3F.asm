@@ -47,7 +47,7 @@ CeladonDeptStore3FTutorCounterScript:
 	writebyte COUNTER
 	writetext Text_CeladonDeptStore3FTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_CeladonDeptStore3FTutorRefused
 
@@ -70,7 +70,7 @@ CeladonDeptStore3FSnesScript:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 20000
-	if_equal $2, VideoGameClerkNoMoneyScript
+	ifequal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 20000
 	setevent EVENT_DECO_SNES
 	writetext BoughtSnesText
@@ -87,7 +87,7 @@ CeladonDeptStore3FN64Script:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 25000
-	if_equal $2, VideoGameClerkNoMoneyScript
+	ifequal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 25000
 	setevent EVENT_DECO_N64
 	writetext BoughtN64Text
@@ -104,7 +104,7 @@ CeladonDeptStore3FGameCubeScript:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 30000
-	if_equal $2, VideoGameClerkNoMoneyScript
+	ifequal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 30000
 	setevent EVENT_DECO_GAMECUBE
 	writetext BoughtGameCubeText
@@ -121,7 +121,7 @@ CeladonDeptStore3FWiiScript:
 	yesorno
 	iffalse_jumpopenedtext VideoGameClerkNoSaleText
 	checkmoney $0, 40000
-	if_equal $2, VideoGameClerkNoMoneyScript
+	ifequal $2, VideoGameClerkNoMoneyScript
 	takemoney $0, 40000
 	setevent EVENT_DECO_WII
 	writetext BoughtWiiText

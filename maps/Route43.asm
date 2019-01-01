@@ -45,12 +45,12 @@ Route43RebattleBreederScript:
 UnknownScript_0x19d051:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19d05c
-	domaptrigger ROUTE_43_GATE, $0
+	setmapscene ROUTE_43_GATE, $0
 	return
 
 Route43RainScript:
 	special Special_GetOvercastIndex
-	if_equal LAKE_OF_RAGE_OVERCAST, .flood
+	ifequal LAKE_OF_RAGE_OVERCAST, .flood
 	changemap Route43_BlockData
 	return
 
@@ -59,7 +59,7 @@ Route43RainScript:
 	return
 
 UnknownScript_0x19d05c:
-	domaptrigger ROUTE_43_GATE, $1
+	setmapscene ROUTE_43_GATE, $1
 	return
 
 Route43SightseerfScript:
@@ -251,8 +251,8 @@ UnknownScript_0x19d0b8:
 	scall UnknownScript_0x19d130
 UnknownScript_0x19d0bb:
 	askforphonenumber PHONE_POKEMANIAC_BRENT
-	if_equal $1, UnknownScript_0x19d140
-	if_equal $2, UnknownScript_0x19d13c
+	ifequal $1, UnknownScript_0x19d140
+	ifequal $2, UnknownScript_0x19d13c
 	trainertotext POKEMANIAC, BRENT1, $0
 	scall UnknownScript_0x19d134
 	jump UnknownScript_0x19d138
@@ -261,10 +261,10 @@ UnknownScript_0x19d0cf:
 	scall UnknownScript_0x19d144
 	winlosstext PokemaniacBrent1BeatenText, 0
 	copybytetovar wBrentFightCount
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight3:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight3
@@ -378,8 +378,8 @@ UnknownScript_0x19d1aa:
 	scall UnknownScript_0x19d23d
 UnknownScript_0x19d1ad:
 	askforphonenumber PHONE_PICNICKER_TIFFANY
-	if_equal $1, UnknownScript_0x19d24d
-	if_equal $2, UnknownScript_0x19d249
+	ifequal $1, UnknownScript_0x19d24d
+	ifequal $2, UnknownScript_0x19d249
 	trainertotext PICNICKER, TIFFANY1, $0
 	scall UnknownScript_0x19d241
 	jump UnknownScript_0x19d245
@@ -388,10 +388,10 @@ UnknownScript_0x19d1c1:
 	scall UnknownScript_0x19d251
 	winlosstext PicnickerTiffany1BeatenText, 0
 	copybytetovar wTiffanyFightCount
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight3:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight3

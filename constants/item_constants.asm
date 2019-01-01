@@ -131,30 +131,30 @@
 	const SILPHSCOPE2  ; 70
 	const APRICORN_BOX ; 71
 
-	const CHERI_BERRY  ; 72
-	const CHESTO_BERRY ; 73
-	const PECHA_BERRY  ; 74
-	const RAWST_BERRY  ; 75
-	const ASPEAR_BERRY ; 76
-	const LEPPA_BERRY  ; 77
-	const ORAN_BERRY   ; 78
-	const PERSIM_BERRY ; 79
-	const LUM_BERRY    ; 7a
-	const SITRUS_BERRY ; 7b
-	const FIGY_BERRY   ; 7c
-	const LIECHI_BERRY ; 7d
-	const GANLON_BERRY ; 7e
-	const SALAC_BERRY  ; 7f
-	const PETAYA_BERRY ; 80
-	const APICOT_BERRY ; 81
+	const TERU_SAMA    ; 72
 
-	const ITEM_82      ; 82
-	const ITEM_83      ; 83
-	const ITEM_84      ; 84
-	const ITEM_85      ; 85
-	const ITEM_86      ; 86
+	const CHERI_BERRY  ; 73
+	const CHESTO_BERRY ; 74
+	const PECHA_BERRY  ; 75
+	const RAWST_BERRY  ; 76
+	const ASPEAR_BERRY ; 77
+	const LEPPA_BERRY  ; 78
+	const ORAN_BERRY   ; 79
+	const PERSIM_BERRY ; 7a
+	const LUM_BERRY    ; 7b
+	const SITRUS_BERRY ; 7c
+	const FIGY_BERRY   ; 7d
+	const LIECHI_BERRY ; 7e
+	const GANLON_BERRY ; 7f
+	const SALAC_BERRY  ; 80
+	const PETAYA_BERRY ; 81
+	const APICOT_BERRY ; 82
+	const JABOCA_BERRY ; 83
+	const ROWAP_BERRY  ; 84
+	const KEE_BERRY    ; 85
+	const MARANGABERRY ; 86
 
-	const BERRY_JUICE  ; 87
+	const PEWTERCRUNCH ; 87
 
 	const SILK_SCARF   ; 88
 	const BLACK_BELT   ; 89

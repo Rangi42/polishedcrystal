@@ -11,7 +11,7 @@ KrissHouse2F_MapScriptHeader:
 	db 0 ; coord events
 
 	db 4 ; bg events
-	bg_event  2,  1, SIGNPOST_READ, KrissHousePC
+	bg_event  2,  1, SIGNPOST_UP, KrissHousePC
 	bg_event  3,  1, SIGNPOST_READ, KrissHouseRadio
 	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfElmScript
 	bg_event  6,  0, SIGNPOST_IFSET, KrissHousePoster
@@ -68,6 +68,7 @@ if DEF(DEBUG)
 	setflag ENGINE_EXPN_CARD
 	; pokedex
 	setflag ENGINE_POKEDEX
+	setflag ENGINE_UNOWN_DEX
 	; all hms
 	givetmhm HM_CUT
 	givetmhm HM_FLY
@@ -174,6 +175,7 @@ if DEF(DEBUG)
 	giveitem BICYCLE
 	; useful items
 	giveitem ITEMFINDER
+	giveitem APRICORN_BOX
 	giveitem SQUIRTBOTTLE
 	giveitem MYSTICTICKET
 	giveitem OLD_SEA_MAP
@@ -199,16 +201,50 @@ if DEF(DEBUG)
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
 	givepoke MEWTWO, 100, ARMOR_SUIT
+	loadvar wPartyMon1EVs+0, 252
+	loadvar wPartyMon1EVs+1, 252
+	loadvar wPartyMon1EVs+2, 252
+	loadvar wPartyMon1EVs+3, 252
+	loadvar wPartyMon1EVs+4, 252
+	loadvar wPartyMon1EVs+5, 252
+	loadvar wPartyMon1DVs+0, $ff
+	loadvar wPartyMon1DVs+1, $ff
+	loadvar wPartyMon1DVs+2, $ff
+	loadvar wPartyMon1Personality, ABILITY_2 | MODEST
+	loadvar wPartyMon1Stats+0, 999 / $100
+	loadvar wPartyMon1Stats+1, 999 % $100
+	loadvar wPartyMon1Stats+2, 999 / $100
+	loadvar wPartyMon1Stats+3, 999 % $100
+	loadvar wPartyMon1Stats+4, 999 / $100
+	loadvar wPartyMon1Stats+5, 999 % $100
+	loadvar wPartyMon1Stats+6, 999 / $100
+	loadvar wPartyMon1Stats+7, 999 % $100
+	loadvar wPartyMon1Stats+8, 999 / $100
+	loadvar wPartyMon1Stats+9, 999 % $100
 	; hm slaves
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS
-	callasm TeachHMSlaveMoves
-	callasm MaxMewtwoStats
-	; pokedex
+	loadvar wPartyMon2Moves+0, FLY
+	loadvar wPartyMon2Moves+1, SURF
+	loadvar wPartyMon2Moves+2, STRENGTH
+	loadvar wPartyMon2Moves+3, CUT
+	loadvar wPartyMon2PP+0, 15
+	loadvar wPartyMon2PP+1, 15
+	loadvar wPartyMon2PP+2, 15
+	loadvar wPartyMon2PP+3, 30
+	loadvar wPartyMon3Moves+0, FLASH
+	loadvar wPartyMon3Moves+1, ROCK_SMASH
+	loadvar wPartyMon3Moves+2, WHIRLPOOL
+	loadvar wPartyMon3Moves+3, WATERFALL
+	loadvar wPartyMon3PP+0, 20
+	loadvar wPartyMon3PP+1, 15
+	loadvar wPartyMon3PP+2, 15
+	loadvar wPartyMon3PP+3, 15
+	; fill pokedex
 	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
-	domaptrigger KRISS_HOUSE_1F, $1
+	setmapscene KRISS_HOUSE_1F, $1
 	setevent EVENT_KRISS_HOUSE_MOM_1
 	clearevent EVENT_KRISS_HOUSE_MOM_2
 ;	; prof.elm events
@@ -219,76 +255,22 @@ if DEF(DEBUG)
 ;	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 ;	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 ;	setevent EVENT_LYRA_IN_ELMS_LAB
-;	domaptrigger ELMS_LAB, $5
-;	domaptrigger NEW_BARK_TOWN, $2
+;	setmapscene ELMS_LAB, $5
+;	setmapscene NEW_BARK_TOWN, $2
 	closetext
 	end
 
-TeachHMSlaveMoves:
-	ld hl, wPartyMon2Moves
-	ld a, FLY
-	ld [hli], a
-	ld a, SURF
-	ld [hli], a
-	ld a, STRENGTH
-	ld [hli], a
-	ld a, CUT
-	ld [hl], a
-	ld hl, wPartyMon2PP
-	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hli], a
-	ld a, 30
-	ld [hl], a
-	ld hl, wPartyMon3Moves
-	ld a, FLASH
-	ld [hli], a
-	ld a, ROCK_SMASH
-	ld [hli], a
-	ld a, WHIRLPOOL
-	ld [hli], a
-	ld a, WATERFALL
-	ld [hl], a
-	ld hl, wPartyMon3PP
-	ld a, 20
-	ld [hli], a
-	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hli], a
-;	ld a, 15
-	ld [hl], a
-	ret
-
-MaxMewtwoStats:
-	ld hl, wPartyMon1EVs
-	ld a, 252
-rept 6
-	ld [hli], a
-endr
-;	ld hl, wPartyMon1DVs
-	ld a, $ff
-rept 3
-	ld [hli], a
-endr
-;	ld hl, wPartyMon1Personality
-	ld [hl], ABILITY_2 | MODEST
-	ld hl, wPartyMon1Stats
-rept 5
-	ld a, 999 / $100
-	ld [hli], a
-	ld a, 999 % $100
-	ld [hli], a
-endr
-	ret
-
 FillPokedex:
 	ld a, 1
+	ld [wUnlockedUnownMode], a
 	ld [wFirstUnownSeen], a
 	ld [wFirstMagikarpSeen], a
+	ld hl, wUnownDex
+	ld a, 1
+rept NUM_UNOWN
+	ld [hli], a
+	inc a
+endr
 	ld hl, wPokedexSeen
 	call .Fill
 	ld hl, wPokedexCaught

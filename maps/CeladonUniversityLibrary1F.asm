@@ -66,7 +66,7 @@ CeladonUniversityLibrary1FCooltrainerfText:
 
 CeladonUniversityLibrary1FGameboyKidScript:
 	showtextfaceplayer .Text
-	spriteface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 .Text:

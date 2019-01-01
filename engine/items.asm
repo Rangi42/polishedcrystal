@@ -463,6 +463,13 @@ CheckItemMenu: ; d453
 	ld [wItemAttributeParamBuffer], a
 	ret
 
+CheckItemParam:
+; Return the param for CurItem in wItemAttributeParamBuffer.
+	ld a, ITEMATTR_PARAM
+	call GetItemAttr
+	ld [wItemAttributeParamBuffer], a
+	ret
+
 GetItemAttr: ; d460
 ; Get attribute a of wCurItem.
 

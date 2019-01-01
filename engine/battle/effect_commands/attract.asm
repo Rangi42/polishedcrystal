@@ -66,7 +66,7 @@ BattleCommand_Attract: ; 377ce
 	call StdBattleTextBox
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	bit SUBSTATUS_IN_LOVE, [hl]
+	set SUBSTATUS_IN_LOVE, [hl]
 
 .destiny_knot_done
 	; Speed check to see whose side is cured first, in case both

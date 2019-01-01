@@ -250,7 +250,7 @@ Script_CutFromMenu: ; c7fe
 	reloadmappart
 	special UpdateTimePals
 	callasm GetBuffer6
-	if_equal $0, Script_CutTree
+	ifequal $0, Script_CutTree
 ;Script_CutGrass:
 	callasm PrepareOverworldMove
 	writetext Text_UsedCut
@@ -283,7 +283,7 @@ CutDownGrass: ; c810
 	call GetMovementPermissions
 	call UpdateSprites
 	call DelayFrame
-	jp LoadStandardFont
+	farjp LoadOverworldFont
 
 CheckOverworldTileArrays: ; c840
 	; Input: c contains the tile you're facing
@@ -304,16 +304,13 @@ CheckOverworldTileArrays: ; c840
 	ld h, [hl]
 	ld l, a
 	; Look up the tile you're facing
-	ld de, 3
+	ld de, 2
 	ld a, c
 	call IsInArray
 	jr nc, .nope
 	; Load the replacement to b
 	inc hl
 	ld b, [hl]
-	; Load the animation type parameter to c
-	inc hl
-	ld c, [hl]
 	scf
 	ret
 
@@ -737,7 +734,7 @@ FlyFunction: ; ca3b
 	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
 	call ReplaceKrisSprite
-	jp LoadStandardFont
+	farjp LoadOverworldFont
 
 WaterfallFunction: ; cade
 	call .TryWaterfall
@@ -1136,7 +1133,7 @@ Script_UsedStrength: ; 0xcd2d
 AskStrengthScript:
 	callasm TryStrengthOW
 	iffalse .AskStrength
-	if_equal $1, .DontMeetRequirements
+	ifequal $1, .DontMeetRequirements
 	jump .AlreadyUsedStrength
 
 .DontMeetRequirements: ; 0xcd59
@@ -1261,9 +1258,8 @@ TryWhirlpoolMenu: ; cdde
 	ld [wBuffer4], a
 	ld a, b
 	ld [wBuffer5], a
-	ld a, c
-	ld [wBuffer6], a
 	xor a
+	ld [wBuffer6], a
 	ret
 
 .failed
@@ -1283,9 +1279,9 @@ Script_UsedWhirlpool: ; 0xce0f
 	waitsfx
 	playsound SFX_SURF
 	checkcode VAR_FACING
-	if_equal UP, .Up
-	if_equal DOWN, .Down
-	if_equal RIGHT, .Right
+	ifequal UP, .Up
+	ifequal DOWN, .Down
+	ifequal RIGHT, .Right
 	applymovement PLAYER, .LeftMovementData
 	end
 
@@ -1535,7 +1531,7 @@ UnknownText_0xcf58: ; 0xcf58
 
 AskRockSmashScript: ; 0xcf5d
 	callasm HasRockSmash
-	if_equal 1, .no
+	ifequal 1, .no
 
 	opentext
 	writetext UnknownText_0xcf77
@@ -1885,6 +1881,8 @@ BikeFunction: ; d0b3
 	jr z, .ok
 	cp GATE
 	jr z, .ok
+	cp PERM_5
+	jr z, .ok
 	jr .nope
 
 .ok
@@ -1998,7 +1996,7 @@ HasCutAvailable:: ; d186
 
 AskCutTreeScript: ; 0xd1a9
 	callasm HasCutAvailable
-	if_equal 1, .no
+	ifequal 1, .no
 
 	opentext
 	writetext UnknownText_0xd1c8

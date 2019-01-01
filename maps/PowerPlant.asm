@@ -34,15 +34,15 @@ PowerPlantGuardPhoneScript:
 	waitsfx
 	pause 30
 	applymovement POWERPLANT_OFFICER1, MovementData_0x188ed5
-	spriteface POWERPLANT_GYM_GUY1, DOWN
-	spriteface POWERPLANT_GYM_GUY2, DOWN
+	turnobject POWERPLANT_GYM_GUY1, DOWN
+	turnobject POWERPLANT_GYM_GUY2, DOWN
 	showtext UnknownText_0x188f22
-	spriteface POWERPLANT_OFFICER1, LEFT
-	spriteface PLAYER, RIGHT
+	turnobject POWERPLANT_OFFICER1, LEFT
+	turnobject PLAYER, RIGHT
 	showtext UnknownText_0x188f7f
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement POWERPLANT_OFFICER1, MovementData_0x188eda
-	dotrigger $0
+	setscene $0
 	end
 
 OfficerScript_0x188df5:
@@ -86,8 +86,8 @@ PowerPlantManager:
 	closetext
 	setevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	clearevent EVENT_CERULEAN_GYM_ROCKET
-	domaptrigger CERULEAN_GYM, $1
-	dotrigger $1
+	setmapscene CERULEAN_GYM, $1
+	setscene $1
 	end
 
 UnknownScript_0x188e93:
@@ -100,7 +100,7 @@ UnknownScript_0x188e93:
 	setevent EVENT_ROUTE_24_ROCKET
 	setevent EVENT_RESTORED_POWER_TO_KANTO
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-	domaptrigger ROUTE_10_NORTH, $1
+	setmapscene ROUTE_10_NORTH, $1
 	clearevent EVENT_LAWRENCE_ROUTE_10
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_LAWRENCE
 	writetext UnknownText_0x1893c4
@@ -116,7 +116,7 @@ PowerPlantTutorZapCannonScript:
 	writebyte ZAP_CANNON
 	writetext Text_PowerPlantTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_PowerPlantTutorRefused
 

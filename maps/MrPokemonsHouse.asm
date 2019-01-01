@@ -33,7 +33,7 @@ MrPokemonsHouseTrigger0:
 
 .MrPokemonEvent:
 	showemote EMOTE_SHOCK, MRPOKEMONSHOUSE_GENTLEMAN, 15
-	spriteface MRPOKEMONSHOUSE_GENTLEMAN, DOWN
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
 	showtext MrPokemonIntroText1
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
@@ -50,11 +50,11 @@ MrPokemonsHouseTrigger0:
 if !DEF(DEBUG)
 	writetext MrPokemonIntroText3
 	buttonsound
-	spriteface MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
 	writetext MrPokemonIntroText4
 	buttonsound
-	spriteface MRPOKEMONSHOUSE_GENTLEMAN, DOWN
-	spriteface MRPOKEMONSHOUSE_OAK, LEFT
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
+	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	writetext MrPokemonIntroText5
 	waitbutton
 endc
@@ -75,7 +75,7 @@ MrPokemonsHouse_MrPokemonScript:
 	yesorno
 	iffalse_jumpopenedtext MrPokemonText_Disappointed
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .party_full
+	ifequal PARTY_LENGTH, .party_full
 	special SpecialGiveShinyDitto
 	opentext
 	writetext MrPokemonText_GotShinyDittoEgg
@@ -90,14 +90,14 @@ MrPokemonsHouse_MrPokemonScript:
 MrPokemonsHouse_OakScript:
 	playmusic MUSIC_PROF_OAK
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakWalksToPlayer
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext MrPokemonsHouse_OakText1
-	spriteface MRPOKEMONSHOUSE_OAK, UP
+	turnobject MRPOKEMONSHOUSE_OAK, UP
 	pause 10
 	applymovement MRPOKEMONSHOUSE_POKEDEX, MrPokemonsHouse_OakTakesPokedex
 	disappear MRPOKEMONSHOUSE_POKEDEX
 	pause 10
-	spriteface MRPOKEMONSHOUSE_OAK, LEFT
+	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	pause 10
 	opentext
 	writetext MrPokemonsHouse_GetDexText
@@ -107,14 +107,14 @@ MrPokemonsHouse_OakScript:
 	writetext MrPokemonsHouse_OakText2
 	waitbutton
 	closetext
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakExits
 	playsound SFX_EXIT_BUILDING
 	disappear MRPOKEMONSHOUSE_OAK
 	waitsfx
 	special RestartMapMusic
 	pause 15
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext MrPokemonsHouse_MrPokemonHealText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -127,9 +127,9 @@ MrPokemonsHouse_OakScript:
 	setevent EVENT_RIVAL_NEW_BARK_TOWN
 	setevent EVENT_KRISS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
-	dotrigger $1
-	domaptrigger CHERRYGROVE_CITY, $1
-	domaptrigger ELMS_LAB, $3
+	setscene $1
+	setmapscene CHERRYGROVE_CITY, $1
+	setmapscene ELMS_LAB, $3
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM

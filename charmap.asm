@@ -27,7 +27,15 @@
 	charmap "¯",        $1f
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
-	charmap "<LINK2>",  $4b
+
+	charmap "have",     $38
+	charmap "that",     $39
+	charmap "for",      $3a
+	charmap "with",     $3b
+	charmap "and",      $3c
+	charmap "this",     $3d
+
+	charmap "<_CONT>",  $4b
 	charmap "<SCRL2>",  $4c
 	charmap "<NL>",     $4e
 	charmap "<LINE>",   $4f
@@ -45,7 +53,10 @@
 	charmap "<USER>",   $5a
 	charmap "<ENEMY>",  $5b
 
-; unused: 5c-5f
+	charmap "the",      $5c
+	charmap "you",      $5d
+	charmap "#mon",     $5e
+	charmap "to",       $5f
 
 ; Actual characters
 
@@ -184,8 +195,6 @@
 	charmap "▶",        $ee
 
 ; common font:
-COMMON_FONT_START EQU $6f
-
 	charmap "▷",        $ef
 
 	charmap "…",        $f0
@@ -201,8 +210,6 @@ COMMON_FONT_START EQU $6f
 	charmap "<UPDN>",   $f9
 
 ; frame:
-FRAME_START EQU $fa
-
 	charmap "┌",        $fa
 	charmap "─",        $fb
 	charmap "┐",        $fc

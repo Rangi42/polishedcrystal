@@ -53,7 +53,7 @@ VioletPokeCenter1FElmsAideScript:
 	yesorno
 	iffalse .RefusedEgg
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .PartyFull
+	ifequal PARTY_LENGTH, .PartyFull
 	giveegg TOGEPI, EGG_LEVEL
 	farwritetext UnknownText_0x1bdfa5
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
@@ -61,18 +61,18 @@ VioletPokeCenter1FElmsAideScript:
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	clearevent EVENT_ELMS_AIDE_IN_LAB
 	clearevent EVENT_TOGEPI_HATCHED
-	domaptrigger ROUTE_32, $1
+	setmapscene ROUTE_32, $1
 	writetext .GoodbyeText
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	if_equal UP, .AideWalksAroundPlayer
-	spriteface PLAYER, DOWN
+	ifequal UP, .AideWalksAroundPlayer
+	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
 	jump .Finish
 .AideWalksAroundPlayer:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkDownMovement
 .Finish:
 	playsound SFX_EXIT_BUILDING

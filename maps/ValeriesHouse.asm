@@ -40,7 +40,7 @@ SetupValerieAfterMorningWalkScript:
 	iffalse .Disappear
 	checkflag ENGINE_VALERIE_MORNING_WALK
 	iftrue .Appear
-	checkmorn
+	checktime 1 << MORN
 	iffalse .Appear
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
@@ -59,12 +59,12 @@ SetupFairyBookScript:
 	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
 	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .Monday
-	if_equal TUESDAY, .Tuesday
-	if_equal WEDNESDAY, .Wednesday
-	if_equal THURSDAY, .Thursday
-	if_equal FRIDAY, .Friday
-	if_equal SATURDAY, .Saturday
+	ifequal MONDAY, .Monday
+	ifequal TUESDAY, .Tuesday
+	ifequal WEDNESDAY, .Wednesday
+	ifequal THURSDAY, .Thursday
+	ifequal FRIDAY, .Friday
+	ifequal SATURDAY, .Saturday
 .Sunday
 	appear VALERIESHOUSE_PINK_FAIRY_BOOK
 	return

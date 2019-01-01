@@ -58,25 +58,25 @@ CianwoodCityFlyPointAndSuicune:
 	return
 
 UnknownScript_0x1a001e:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	pause 15
 	playsound SFX_WARP_FROM
 	applymovement CIANWOODCITY_SUICUNE, MovementData_0x1a00da
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 15
 	playsound SFX_WARP_FROM
 	applymovement CIANWOODCITY_SUICUNE, MovementData_0x1a00e0
 	disappear CIANWOODCITY_SUICUNE
 	pause 10
-	dotrigger $0
+	setscene $0
 	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftrue .NoLyra
-	domaptrigger ROUTE_42, $1
+	setmapscene ROUTE_42, $1
 	jump .Continue
 .NoLyra
-	domaptrigger ROUTE_42, $2
+	setmapscene ROUTE_42, $2
 .Continue
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done

@@ -55,10 +55,10 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	closepokepic
 	opentext
 	writetext .Question1QuestionText
-	loadmenudata .Question1MenuData
+	loadmenu .Question1MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $2, .WrongAnswer
+	ifnotequal $2, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -71,10 +71,10 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitsfx
 	opentext
 	writetext .Question2QuestionText
-	loadmenudata .Question2MenuData
+	loadmenu .Question2MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $3, .WrongAnswer
+	ifnotequal $3, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -83,10 +83,10 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question3IntroText
 	waitbutton
 	writetext .Question3QuestionText
-	loadmenudata .Question3MenuData
+	loadmenu .Question3MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $4, .WrongAnswer
+	ifnotequal $4, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -95,10 +95,10 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question4IntroText
 	waitbutton
 	writetext .Question4QuestionText
-	loadmenudata .Question4MenuData
+	loadmenu .Question4MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $1, .WrongAnswer
+	ifnotequal $1, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -107,10 +107,10 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question5IntroText
 	waitbutton
 	writetext .Question5QuestionText
-	loadmenudata .Question5MenuData
+	loadmenu .Question5MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $3, .WrongAnswer
+	ifnotequal $3, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -119,10 +119,10 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .Question6IntroText
 	waitbutton
 	writetext .Question6QuestionText
-	loadmenudata .Question6MenuData
+	loadmenu .Question6MenuData
 	verticalmenu
 	closewindow
-	if_not_equal $4, .WrongAnswer
+	ifnotequal $4, .WrongAnswer
 	waitsfx
 	playsound SFX_ELEVATOR_END
 	writetext .CorrectText
@@ -134,7 +134,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	waitbutton
 
 	checkcode VAR_PARTYCOUNT
-	if_equal 6, .PartyFull
+	ifequal 6, .PartyFull
 	writetext .ReceivedMagikarpText
 	playsound SFX_CAUGHT_MON
 	waitsfx

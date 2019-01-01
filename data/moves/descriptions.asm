@@ -925,8 +925,8 @@ ReversalDescription:
 	next "user's HP is low.@"
 
 SeedBombDescription:
-	db   "Slams a barrage"
-	next "of seeds at foe.@"
+	db   "Slams a barrage of"
+	next "seeds at the foe.@"
 
 ProtectDescription:
 	db   "Foils attack that"

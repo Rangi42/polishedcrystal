@@ -858,11 +858,11 @@ LoadNamingScreenGFX: ; 11c51
 ; 11cb7
 
 NamingScreenGFX_Border: ; 11cb7
-INCBIN "gfx/misc/naming_border.2bpp"
+INCBIN "gfx/naming_screen/naming_border.2bpp"
 ; 11cc7
 
 NamingScreenGFX_Cursor: ; 11cc7
-INCBIN "gfx/misc/naming_cursor.2bpp"
+INCBIN "gfx/naming_screen/naming_cursor.2bpp"
 ; 11ce7
 
 INCLUDE "data/text/input_chars.asm"

@@ -40,18 +40,18 @@ Route35NationalParkGateTrigger1:
 Route35NationalParkGate_CheckIfStillInContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue Route35NationalParkGate_Yes
-	dotrigger $0
+	setscene $0
 	return
 
 Route35NationalParkGate_Yes:
-	dotrigger $2
+	setscene $2
 	return
 
 Route35NationalParkGate_CheckIfContestDay:
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, Route35NationalParkGate_IsContestDay
-	if_equal THURSDAY, Route35NationalParkGate_IsContestDay
-	if_equal SATURDAY, Route35NationalParkGate_IsContestDay
+	ifequal TUESDAY, Route35NationalParkGate_IsContestDay
+	ifequal THURSDAY, Route35NationalParkGate_IsContestDay
+	ifequal SATURDAY, Route35NationalParkGate_IsContestDay
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue Route35NationalParkGate_Yes
 	disappear ROUTE35NATIONALPARKGATE_OFFICER1
@@ -67,7 +67,7 @@ Route35NationalParkGate_IsContestDay:
 
 Route35NationalParkGate_LeavingContestEarly:
 	applymovement PLAYER, MovementData_0x6a2e2
-	spriteface ROUTE35NATIONALPARKGATE_OFFICER1, RIGHT
+	turnobject ROUTE35NATIONALPARKGATE_OFFICER1, RIGHT
 	opentext
 	checkcode VAR_CONTESTMINUTES
 	addvar $1
@@ -93,10 +93,10 @@ Route35NationalParkGate_GoBackIn:
 
 OfficerScript_0x6a204:
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, Route35NationalParkGate_NoContestToday
-	if_equal MONDAY, Route35NationalParkGate_NoContestToday
-	if_equal WEDNESDAY, Route35NationalParkGate_NoContestToday
-	if_equal FRIDAY, Route35NationalParkGate_NoContestToday
+	ifequal SUNDAY, Route35NationalParkGate_NoContestToday
+	ifequal MONDAY, Route35NationalParkGate_NoContestToday
+	ifequal WEDNESDAY, Route35NationalParkGate_NoContestToday
+	ifequal FRIDAY, Route35NationalParkGate_NoContestToday
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue_jumptextfaceplayer UnknownText_0x6a84f
 	faceplayer
@@ -106,7 +106,7 @@ OfficerScript_0x6a204:
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToParticipate
 	checkcode VAR_PARTYCOUNT
-	if_greater_than $1, Route35NationalParkGate_LeaveTheRestBehind
+	ifgreater $1, Route35NationalParkGate_LeaveTheRestBehind
 	special ContestDropOffMons
 	clearevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 Route35NationalParkGate_OkayToProceed:
@@ -131,7 +131,7 @@ Route35NationalParkGate_OkayToProceed:
 
 Route35NationalParkGate_EnterContest:
 	checkcode VAR_FACING
-	if_equal LEFT, Route35NationalParkGate_FacingLeft
+	ifequal LEFT, Route35NationalParkGate_FacingLeft
 	applymovement PLAYER, MovementData_0x6a2e5
 	end
 
@@ -141,7 +141,7 @@ Route35NationalParkGate_FacingLeft:
 
 Route35NationalParkGate_LeaveTheRestBehind:
 	checkcode VAR_PARTYCOUNT
-	if_less_than 6, Route35NationalParkGate_LessThanFullParty
+	ifless 6, Route35NationalParkGate_LessThanFullParty
 	checkcode VAR_BOXSPACE
 	iffalse_jumpopenedtext UnknownText_0x6a67c
 Route35NationalParkGate_LessThanFullParty: ; 6a27d

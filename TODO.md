@@ -82,6 +82,12 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
+### Item effects
+
+* Jaboca/Rowap Berry damages the foe if they hit you with a physical/special move
+* Kee/Maranga Berry raises Defense/Special Defense if hit with a physical/special move
+
+
 ### Move effects
 
 * Bug Bite eats and uses the foe's held Berry
@@ -226,6 +232,7 @@ Some of these may never be added; they're just suggestions.
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
 * More music
+   * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119

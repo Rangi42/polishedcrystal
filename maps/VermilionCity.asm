@@ -54,7 +54,7 @@ VermilionCity_MapScriptHeader:
 	const VERMILIONCITY_LAWRENCE
 
 LawrenceLeftIntroScript:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -65,22 +65,22 @@ LawrenceLeftIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext LawrenceIntroText
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	dotrigger $1
+	setscene $1
 	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic
 	end
 
 LawrenceRightIntroScript:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
@@ -91,16 +91,16 @@ LawrenceRightIntroScript:
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext LawrenceIntroText
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	dotrigger $1
+	setscene $1
 	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic
 	end
@@ -177,9 +177,9 @@ VermilionGymBadgeGuy:
 	checkevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	iftrue_jumptextfaceplayer UnknownText_0x1aad4a
 	checkcode VAR_BADGES
-	if_equal 16, .AllBadges
-	if_greater_than 13, .MostBadges
-	if_greater_than 9, .SomeBadges
+	ifequal 16, .AllBadges
+	ifgreater 13, .MostBadges
+	ifgreater 9, .SomeBadges
 	jumptextfaceplayer UnknownText_0x1aabc8
 
 .SomeBadges:

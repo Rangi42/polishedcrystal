@@ -75,13 +75,7 @@ CanStealItem:
 
 	; Mail can't be stolen
 	ld d, a
-	push bc
-	push de
-	push hl
-	farcall ItemIsMail
-	pop hl
-	pop de
-	pop bc
+	call ItemIsMail
 	jr c, .cant
 	xor a
 	ret

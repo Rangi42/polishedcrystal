@@ -51,7 +51,7 @@ GenericMart_BlockData:: ; used by tilesets/palettes.asm:LoadSpecialMapPalette
 Route2946Gate_BlockData:
 Route34IlexForestGate_BlockData:
 Route35GoldenrodGate_BlockData:
-Route36RuinsofAlphGate_BlockData:
+Route36RuinsOfAlphGate_BlockData:
 Route40BattleTowerGate_BlockData:
 YellowForestGate_BlockData:
 Route43Gate_BlockData:
@@ -73,7 +73,7 @@ Route12Gate_BlockData:
 
 Route31VioletGate_BlockData:
 Route36VioletGate_BlockData:
-Route32RuinsofAlphGate_BlockData:
+Route32RuinsOfAlphGate_BlockData:
 IlexForestAzaleaGate_BlockData:
 GoldenrodHarborGate_BlockData:
 Route38EcruteakGate_BlockData:
@@ -107,7 +107,6 @@ CianwoodCityPhotoStudio_BlockData:
 CherrygroveGymSpeechHouse_BlockData:
 CherrygroveEvolutionSpeechHouse_BlockData:
 Route32CoastHouse_BlockData:
-SinjohRuinsHouse_BlockData:
 ShamoutiHotel_BlockData:
 ShamoutiTouristCenter_BlockData:
 ShamoutiMerchant_BlockData:
@@ -120,7 +119,6 @@ IvysHouse_BlockData:
 GoldenrodHappinessRater_BlockData:
 GoldenrodPPSpeechHouse_BlockData:
 GoldenrodHPUpHouse_BlockData:
-GoldenrodSpeechHouse_BlockData:
 GuideGentsHouse_BlockData:
 CeruleanGymBadgeSpeechHouse_BlockData:
 CeruleanTradeSpeechHouse_BlockData:
@@ -138,7 +136,7 @@ MahoganyRedGyaradosSpeechHouse_BlockData:
 BlackthornDragonSpeechHouse_BlockData:
 BlackthornEmysHouse_BlockData:
 MoveDeletersHouse_BlockData:
-LakeofRageMagikarpHouse_BlockData:
+LakeOfRageMagikarpHouse_BlockData:
 GoldenrodNameRater_BlockData:
 GoldenrodBandHouse_BlockData:
 ManiasHouse_BlockData:
@@ -147,7 +145,7 @@ StatsJudgesHouse_BlockData:
 	INCBIN "maps/JohtoHouse3.blk"
 
 Route39Farmhouse_BlockData:
-LakeofRageHiddenPowerHouse_BlockData:
+LakeOfRageHiddenPowerHouse_BlockData:
 Route28FamousSpeechHouse_BlockData:
 KrissNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
@@ -191,7 +189,6 @@ PewterSnoozeSpeechHouse_BlockData:
 Route12SuperRodHouse_BlockData:
 Route16FuchsiaSpeechHouse_BlockData:
 Route2NuggetSpeechHouse_BlockData:
-Route26HealSpeechHouse_BlockData:
 Route27RestHouse_BlockData:
 Route5CleanseTagSpeechHouse_BlockData:
 EusinesHouse_BlockData:
@@ -267,50 +264,53 @@ SproutTower3F_BlockData:
 VioletOutskirts_BlockData:
 	INCBIN "maps/VioletOutskirts.blk"
 
-RuinsofAlphOutside_BlockData:
-	INCBIN "maps/RuinsofAlphOutside.blk"
+RuinsOfAlphOutside_BlockData:
+	INCBIN "maps/RuinsOfAlphOutside.blk"
 
-RuinsofAlphResearchCenter_BlockData:
-	INCBIN "maps/RuinsofAlphResearchCenter.blk"
+RuinsOfAlphResearchCenter_BlockData:
+	INCBIN "maps/RuinsOfAlphResearchCenter.blk"
 
-RuinsofAlphEntranceChamber_BlockData:
-	INCBIN "maps/RuinsofAlphEntranceChamber.blk"
+RuinsOfAlphEntranceChamber_BlockData:
+	INCBIN "maps/RuinsOfAlphEntranceChamber.blk"
 
-RuinsofAlphInnerChamber_BlockData:
-	INCBIN "maps/RuinsofAlphInnerChamber.blk"
+RuinsOfAlphInnerChamber_BlockData:
+	INCBIN "maps/RuinsOfAlphInnerChamber.blk"
 
-RuinsofAlphSinjohChamber_BlockData:
-	INCBIN "maps/RuinsofAlphSinjohChamber.blk"
+RuinsOfAlphSinjohChamber_BlockData:
+	INCBIN "maps/RuinsOfAlphSinjohChamber.blk"
 
-RuinsofAlphAerodactylChamber_BlockData:
-RuinsofAlphHoOhChamber_BlockData:
-RuinsofAlphKabutoChamber_BlockData:
-RuinsofAlphOmanyteChamber_BlockData:
-	INCBIN "maps/RuinsofAlphPuzzleChamber.blk"
+RuinsOfAlphAerodactylChamber_BlockData:
+RuinsOfAlphHoOhChamber_BlockData:
+RuinsOfAlphKabutoChamber_BlockData:
+RuinsOfAlphOmanyteChamber_BlockData:
+	INCBIN "maps/RuinsOfAlphPuzzleChamber.blk"
 
-RuinsofAlphAerodactylItemRoom_BlockData:
-RuinsofAlphHoOhItemRoom_BlockData:
-RuinsofAlphKabutoItemRoom_BlockData:
-RuinsofAlphOmanyteItemRoom_BlockData:
-	INCBIN "maps/RuinsofAlphItemRoom.blk"
+RuinsOfAlphAerodactylItemRoom_BlockData:
+RuinsOfAlphHoOhItemRoom_BlockData:
+RuinsOfAlphKabutoItemRoom_BlockData:
+RuinsOfAlphOmanyteItemRoom_BlockData:
+	INCBIN "maps/RuinsOfAlphItemRoom.blk"
 
-RuinsofAlphAerodactylWordRoom_BlockData:
-	INCBIN "maps/RuinsofAlphAerodactylWordRoom.blk"
+RuinsOfAlphAerodactylWordRoom_BlockData:
+	INCBIN "maps/RuinsOfAlphAerodactylWordRoom.blk"
 
-RuinsofAlphHoOhWordRoom_BlockData:
-	INCBIN "maps/RuinsofAlphHoOhWordRoom.blk"
+RuinsOfAlphHoOhWordRoom_BlockData:
+	INCBIN "maps/RuinsOfAlphHoOhWordRoom.blk"
 
-RuinsofAlphKabutoWordRoom_BlockData:
-	INCBIN "maps/RuinsofAlphKabutoWordRoom.blk"
+RuinsOfAlphKabutoWordRoom_BlockData:
+	INCBIN "maps/RuinsOfAlphKabutoWordRoom.blk"
 
-RuinsofAlphOmanyteWordRoom_BlockData:
-	INCBIN "maps/RuinsofAlphOmanyteWordRoom.blk"
+RuinsOfAlphOmanyteWordRoom_BlockData:
+	INCBIN "maps/RuinsOfAlphOmanyteWordRoom.blk"
 
 SinjohRuins_BlockData:
 	INCBIN "maps/SinjohRuins.blk"
 
 MystriStage_BlockData:
 	INCBIN "maps/MystriStage.blk"
+
+SinjohRuinsHouse_BlockData:
+	INCBIN "maps/SinjohRuinsHouse.blk"
 
 UnionCave1F_BlockData:
 GiovannisCave_BlockData:
@@ -361,11 +361,11 @@ StormyBeach_BlockData:
 Route34Coast_BlockData:
 	INCBIN "maps/Route34Coast.blk"
 
-GoldenrodPokeComCenter1F_BlockData:
-	INCBIN "maps/GoldenrodPokeComCenter1F.blk"
+GoldenrodPokecomCenter1F_BlockData:
+	INCBIN "maps/GoldenrodPokecomCenter1F.blk"
 
-GoldenrodPokeComCenterOffice_BlockData:
-	INCBIN "maps/GoldenrodPokeComCenterOffice.blk"
+GoldenrodPokecomCenterOffice_BlockData:
+	INCBIN "maps/GoldenrodPokecomCenterOffice.blk"
 
 GoldenrodGym_BlockData:
 	INCBIN "maps/GoldenrodGym.blk"
@@ -385,8 +385,8 @@ GoldenrodGameCorner_BlockData:
 GoldenrodMagnetTrainStation_BlockData:
 	INCBIN "maps/GoldenrodMagnetTrainStation.blk"
 
-DayCare_BlockData:
-	INCBIN "maps/DayCare.blk"
+Daycare_BlockData:
+	INCBIN "maps/Daycare.blk"
 
 GoldenrodHarbor_BlockData:
 	INCBIN "maps/GoldenrodHarbor.blk"
@@ -438,6 +438,12 @@ UndergroundWarehouse_BlockData:
 
 UndergroundPathSwitchRoomEntrances_BlockData:
 	INCBIN "maps/UndergroundPathSwitchRoomEntrances.blk"
+
+GoldenrodMuseum1F_BlockData:
+	INCBIN "maps/GoldenrodMuseum1F.blk"
+
+GoldenrodMuseum2F_BlockData:
+	INCBIN "maps/GoldenrodMuseum2F.blk"
 
 WarehouseEntrance_BlockData:
 	INCBIN "maps/WarehouseEntrance.blk"
@@ -652,11 +658,11 @@ MahoganyGym_BlockData:
 MahoganyTown_BlockData:
 	INCBIN "maps/MahoganyTown.blk"
 
-LakeofRage_BlockData:
-	INCBIN "maps/LakeofRage.blk"
+LakeOfRage_BlockData:
+	INCBIN "maps/LakeOfRage.blk"
 
-LakeofRageFlooded_BlockData:
-	INCBIN "maps/LakeofRageFlooded.blk"
+LakeOfRageFlooded_BlockData:
+	INCBIN "maps/LakeOfRageFlooded.blk"
 
 TeamRocketBaseB1F_BlockData:
 	INCBIN "maps/TeamRocketBaseB1F.blk"
@@ -712,8 +718,8 @@ TohjoFalls_BlockData:
 IndigoPlateau_BlockData:
 	INCBIN "maps/IndigoPlateau.blk"
 
-IndigoPlateauPokeCenter1F_BlockData:
-	INCBIN "maps/IndigoPlateauPokeCenter1F.blk"
+IndigoPlateauPokecenter1F_BlockData:
+	INCBIN "maps/IndigoPlateauPokecenter1F.blk"
 
 WillsRoom_BlockData:
 	INCBIN "maps/WillsRoom.blk"
@@ -1381,6 +1387,9 @@ Route25_BlockData:
 
 Route26_BlockData:
 	INCBIN "maps/Route26.blk"
+
+Route26HealSpeechHouse_BlockData:
+	INCBIN "maps/Route26HealSpeechHouse.blk"
 
 Route27_BlockData:
 	INCBIN "maps/Route27.blk"

@@ -52,16 +52,16 @@ UnknownScript_0x98593:
 	return
 
 UnknownScript_0x985a3:
-	spriteface WISETRIOSROOM_ELDER3, UP
-	spriteface PLAYER, DOWN
+	turnobject WISETRIOSROOM_ELDER3, UP
+	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, WISETRIOSROOM_ELDER3, 20
 	follow PLAYER, WISETRIOSROOM_ELDER3
 	applymovement PLAYER, MovementData_0x98622
 	stopfollow
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	showtext UnknownText_0x98712
 	applymovement WISETRIOSROOM_ELDER3, MovementData_0x98625
-	spriteface WISETRIOSROOM_ELDER3, LEFT
+	turnobject WISETRIOSROOM_ELDER3, LEFT
 	end
 
 TrainerElderGaku:
@@ -91,9 +91,9 @@ ElderKojiScript:
 	waitbutton
 	closetext
 	applymovement WISETRIOSROOM_ELDER6, MovementData_0x98628
-	spriteface WISETRIOSROOM_ELDER6, UP
+	turnobject WISETRIOSROOM_ELDER6, UP
 	setevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	dotrigger $1
+	setscene $1
 	end
 
 MovementData_0x98622:

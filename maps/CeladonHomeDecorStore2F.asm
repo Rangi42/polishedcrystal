@@ -22,17 +22,17 @@ CeladonHomeDecorStore2FClerkScript:
 	writetext CeladonHomeDecorStore2FClerkText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .PinkBed
-	if_equal $2, .PolkaDotBed
-	if_equal $3, .PikachuBed
+	ifequal $1, .PinkBed
+	ifequal $2, .PolkaDotBed
+	ifequal $3, .PikachuBed
 	endtext
 
 .PinkBed:
 	checkmoney $0, 62000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_2
 	iftrue .AlreadyBought
 	takemoney $0, 62000
@@ -46,7 +46,7 @@ CeladonHomeDecorStore2FClerkScript:
 
 .PolkaDotBed:
 	checkmoney $0, 94000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_3
 	iftrue .AlreadyBought
 	takemoney $0, 94000
@@ -60,7 +60,7 @@ CeladonHomeDecorStore2FClerkScript:
 
 .PikachuBed:
 	checkmoney $0, 126000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BED_4
 	iftrue .AlreadyBought
 	takemoney $0, 126000

@@ -112,6 +112,7 @@ ItemDescriptions:
 	dw OvalCharmDesc
 	dw SilphScope2Desc
 	dw ApricornBoxDesc
+	dw TeruSamaDesc
 	dw CheriBerryDesc
 	dw ChestoBerryDesc
 	dw PechaBerryDesc
@@ -128,12 +129,11 @@ ItemDescriptions:
 	dw SalacBerryDesc
 	dw PetayaBerryDesc
 	dw ApicotBerryDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw BerryJuiceDesc
+	dw JabocaBerryDesc
+	dw RowapBerryDesc
+	dw KeeBerryDesc
+	dw MarangaBerryDesc
+	dw PewterCrunchDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc
@@ -389,6 +389,8 @@ IceHealDesc:
 	next "#mon.@"
 
 FullHealDesc:
+RageCandyBarDesc:
+PewterCrunchDesc:
 	db   "Eliminates all"
 	next "status problems.@"
 
@@ -471,10 +473,6 @@ LemonadeDesc:
 MoomooMilkDesc:
 	db   "Restores #mon"
 	next "HP by 100.@"
-
-RageCandyBarDesc:
-	db   "Restores #mon"
-	next "HP by 20.@"
 
 SacredAshDesc:
 	db   "Fully revives all"
@@ -743,6 +741,22 @@ PetayaBerryDesc:
 ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
+
+JabocaBerryDesc:
+	db   "Damages foe on"
+	next "a physical hit.@"
+
+RowapBerryDesc:
+	db   "Damages foe on"
+	next "a special hit.@"
+
+KeeBerryDesc:
+	db   "Raises Defense on"
+	next "a physical hit.@"
+
+MarangaBerryDesc:
+	db   "Raises Spcl.Def on"
+	next "a special hit.@"
 
 BerryJuiceDesc:
 	db   "A self-restore"

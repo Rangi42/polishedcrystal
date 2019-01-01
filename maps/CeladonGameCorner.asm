@@ -55,23 +55,23 @@ CeladonGameCorner_MapScriptHeader:
 	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
 	object_event 17,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
 	object_event 11,  7, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
-	object_event  8, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
+	object_event  8, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x72144, -1
 	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
 	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
 
 PokefanMScript_0x72123:
 	showtextfaceplayer UnknownText_0x72215
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 TeacherScript_0x7212e:
 	showtextfaceplayer UnknownText_0x72242
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 FishingGuruScript_0x72139:
 	showtextfaceplayer UnknownText_0x72295
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 FisherScript_0x72144:
@@ -84,7 +84,7 @@ FisherScript_0x72144:
 	checkitem COIN_CASE
 	iffalse UnknownScript_0x7217b
 	checkcoins 49999
-	if_equal $0, UnknownScript_0x72184
+	ifequal $0, UnknownScript_0x72184
 	stringtotext .coinname, $1
 	callstd receiveitem
 	givecoins 18
@@ -94,7 +94,7 @@ FisherScript_0x72144:
 	yesorno
 	iffalse .UnknownScript_0x72169
 	checkcoins 50
-	if_equal $2, .FisherNotEnough
+	ifequal $2, .FisherNotEnough
 	takecoins 50
 	playsound SFX_TRANSACTION
 	scall MapCeladonGameCornerSignpost16Script
@@ -107,7 +107,7 @@ FisherScript_0x72144:
 .FisherEnd:
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 .coinname
@@ -117,24 +117,24 @@ UnknownScript_0x7217b:
 	writetext UnknownText_0x7238a
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 UnknownScript_0x72184:
 	writetext UnknownText_0x723d9
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 GrampsScript_0x72190:
 	showtextfaceplayer UnknownText_0x724ad
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 MapCeladonGameCornerSignpost35Script:
 	random $6
-	if_equal $0, MapCeladonGameCornerSignpost16Script
+	ifequal $0, MapCeladonGameCornerSignpost16Script
 	refreshscreen
 	writebyte $0
 	special Special_SlotMachine

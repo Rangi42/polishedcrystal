@@ -47,7 +47,7 @@ BlackthornCityFlypointCallback:
 
 BlackthornCitySantosCallback:
 	checkcode VAR_WEEKDAY
-	if_equal SATURDAY, .SantosAppears
+	ifequal SATURDAY, .SantosAppears
 	disappear BLACKTHORNCITY_SANTOS
 	return
 
@@ -97,7 +97,7 @@ SantosScript:
 	checkevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
 	iftrue_jumptextfaceplayer .SaturdayText
 	checkcode VAR_WEEKDAY
-	if_not_equal SATURDAY, .NotSaturday
+	ifnotequal SATURDAY, .NotSaturday
 	faceplayer
 	opentext
 	checkevent EVENT_MET_SANTOS_OF_SATURDAY

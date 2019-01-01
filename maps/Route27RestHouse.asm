@@ -28,7 +28,7 @@ Route27RestHouseGranny:
 .Continue
 	buttonsound
 	special GetFirstPokemonHappiness
-	if_greater_than $95, .Loyal
+	ifgreater $95, .Loyal
 	thisopenedtext
 
 	text "If it doesn't come"
@@ -51,7 +51,7 @@ Route27RestHouseGranny:
 	writebyte SKILL_SWAP
 	writetext .ClearText
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext .RefusedText
 

@@ -1738,10 +1738,10 @@ endr
 	ret
 
 Shrink1Pic: ; 4d249
-INCBIN "gfx/shrink/shrink1.2bpp.lz"
+INCBIN "gfx/new_game/shrink1.2bpp.lz"
 
 Shrink2Pic: ; 4d2d9
-INCBIN "gfx/shrink/shrink2.2bpp.lz"
+INCBIN "gfx/new_game/shrink2.2bpp.lz"
 
 _ResetClock: ; 4d3b1
 	farcall BlankScreen
@@ -3911,7 +3911,7 @@ INCLUDE "data/text/battle.asm"
 
 SECTION "Code 15", ROMX
 
-INCLUDE "engine/battle/anim_gfx.asm"
+INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
 
 PrintAbility:
@@ -4079,7 +4079,7 @@ INCLUDE "engine/options_menu.asm"
 INCLUDE "engine/crystal_intro.asm"
 
 CopyrightGFX:: ; e4000
-INCBIN "gfx/misc/copyright.2bpp"
+INCBIN "gfx/splash/copyright.2bpp"
 
 
 SECTION "Title Screen", ROMX
@@ -4263,41 +4263,41 @@ INCLUDE "engine/pic_animation.asm"
 ;	following bytes are tile ids mapped to each bit in the mask
 
 ; Main animations (played everywhere)
-INCLUDE "data/pokemon/anims/anim_pointers.asm"
-INCLUDE "data/pokemon/anims/anims.asm"
+INCLUDE "gfx/pokemon/anim_pointers.asm"
+INCLUDE "gfx/pokemon/anims.asm"
 
 ; Extra animations, appended to the main animation
 ; Used in the status screen (blinking, tail wags etc.)
-INCLUDE "data/pokemon/anims/extra_pointers.asm"
-INCLUDE "data/pokemon/anims/extras.asm"
+INCLUDE "gfx/pokemon/extra_pointers.asm"
+INCLUDE "gfx/pokemon/extras.asm"
 
 ; Variants have their own animation data despite having entries in the main tables
-INCLUDE "data/pokemon/anims/variant_anim_pointers.asm"
-INCLUDE "data/pokemon/anims/variant_anims.asm"
-INCLUDE "data/pokemon/anims/variant_extra_pointers.asm"
-INCLUDE "data/pokemon/anims/variant_extras.asm"
+INCLUDE "gfx/pokemon/variant_anim_pointers.asm"
+INCLUDE "gfx/pokemon/variant_anims.asm"
+INCLUDE "gfx/pokemon/variant_extra_pointers.asm"
+INCLUDE "gfx/pokemon/variant_extras.asm"
 
 
 SECTION "Pic Animations Frames 1", ROMX
 
-INCLUDE "data/pokemon/anims/frame_pointers.asm"
-INCLUDE "data/pokemon/anims/kanto_frames.asm"
+INCLUDE "gfx/pokemon/frame_pointers.asm"
+INCLUDE "gfx/pokemon/kanto_frames.asm"
 
 
 SECTION "Pic Animations Frames 2", ROMX
 
-INCLUDE "data/pokemon/anims/johto_frames.asm"
-INCLUDE "data/pokemon/anims/variant_frame_pointers.asm"
-INCLUDE "data/pokemon/anims/variant_frames.asm"
+INCLUDE "gfx/pokemon/johto_frames.asm"
+INCLUDE "gfx/pokemon/variant_frame_pointers.asm"
+INCLUDE "gfx/pokemon/variant_frames.asm"
 
 
 SECTION "Pic Animations Bitmasks", ROMX
 
 ; Bitmasks
-INCLUDE "data/pokemon/anims/bitmask_pointers.asm"
-INCLUDE "data/pokemon/anims/bitmasks.asm"
-INCLUDE "data/pokemon/anims/variant_bitmask_pointers.asm"
-INCLUDE "data/pokemon/anims/variant_bitmasks.asm"
+INCLUDE "gfx/pokemon/bitmask_pointers.asm"
+INCLUDE "gfx/pokemon/bitmasks.asm"
+INCLUDE "gfx/pokemon/variant_bitmask_pointers.asm"
+INCLUDE "gfx/pokemon/variant_bitmasks.asm"
 
 
 SECTION "Standard Text", ROMX

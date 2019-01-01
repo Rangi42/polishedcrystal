@@ -67,11 +67,11 @@ Museum1FFossilScientistScript:
 .own_helix_and_dome
 	checkitem OLD_AMBER
 	iftrue .ask_helix_dome_amber
-	loadmenudata HelixDomeMenuDataHeader
+	loadmenu HelixDomeMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectHelixFossil
-	if_equal $2, ResurrectDomeFossil
+	ifequal $1, ResurrectHelixFossil
+	ifequal $2, ResurrectDomeFossil
 	jump .maybe_later
 
 .ask_old_amber
@@ -81,28 +81,28 @@ Museum1FFossilScientistScript:
 	jump .maybe_later
 
 .ask_helix_amber
-	loadmenudata HelixAmberMenuDataHeader
+	loadmenu HelixAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectHelixFossil
-	if_equal $2, ResurrectOldAmber
+	ifequal $1, ResurrectHelixFossil
+	ifequal $2, ResurrectOldAmber
 	jump .maybe_later
 
 .ask_dome_amber
-	loadmenudata DomeAmberMenuDataHeader
+	loadmenu DomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectDomeFossil
-	if_equal $2, ResurrectOldAmber
+	ifequal $1, ResurrectDomeFossil
+	ifequal $2, ResurrectOldAmber
 	jump .maybe_later
 
 .ask_helix_dome_amber
-	loadmenudata HelixDomeAmberMenuDataHeader
+	loadmenu HelixDomeAmberMenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, ResurrectHelixFossil
-	if_equal $2, ResurrectDomeFossil
-	if_equal $3, ResurrectOldAmber
+	ifequal $1, ResurrectHelixFossil
+	ifequal $2, ResurrectDomeFossil
+	ifequal $3, ResurrectOldAmber
 .maybe_later:
 	jumpopenedtext MaybeLaterText
 
@@ -165,7 +165,7 @@ HelixDomeAmberMenuDataHeader:
 
 ResurrectHelixFossil:
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, NoRoomForFossilPokemon
+	ifequal $6, NoRoomForFossilPokemon
 	takeitem HELIX_FOSSIL
 	scall ResurrectAFossilScript
 	writetext GotOmanyteText
@@ -176,7 +176,7 @@ ResurrectHelixFossil:
 
 ResurrectDomeFossil:
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, NoRoomForFossilPokemon
+	ifequal $6, NoRoomForFossilPokemon
 	takeitem DOME_FOSSIL
 	scall ResurrectAFossilScript
 	writetext GotKabutoText
@@ -187,7 +187,7 @@ ResurrectDomeFossil:
 
 ResurrectOldAmber:
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, NoRoomForFossilPokemon
+	ifequal $6, NoRoomForFossilPokemon
 	takeitem OLD_AMBER
 	scall ResurrectAFossilScript
 	writetext GotAerodactylText
@@ -200,7 +200,7 @@ ResurrectAFossilScript:
 	writetext ResurrectingPokemonText
 	waitbutton
 	closetext
-	spriteface PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
+	turnobject PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2, RIGHT
 	pause 15
 	playsound SFX_BOOT_PC
 	waitsfx
@@ -221,38 +221,11 @@ NoRoomForFossilPokemon:
 	jumpopenedtext NoRoomForFossilPokemonText
 
 Museum1FReceptionistScript:
-	faceplayer
-	opentext
 	checkcode VAR_FACING
-	if_equal DOWN, .Sneak
-	if_equal LEFT, .Sneak
-	jumpopenedtext Museum1FReceptionistText1
+	ifequal DOWN, .Sneak
+	ifequal LEFT, .Sneak
+	thistextfaceplayer
 
-.Sneak:
-	jumpopenedtext Museum1FReceptionistText2
-
-KabutopsFossilSignpostScript:
-	refreshscreen
-	trainerpic KABUTOPS_FOSSIL
-	waitbutton
-	closepokepic
-	jumptext KabutopsFossilSignpostText
-
-OmastarFossilSignpostScript:
-	refreshscreen
-	trainerpic OMASTAR_FOSSIL
-	waitbutton
-	closepokepic
-	jumptext OmastarFossilSignpostText
-
-AerodactylFossilSignpostScript:
-	refreshscreen
-	trainerpic AERODACTYL_FOSSIL
-	waitbutton
-	closepokepic
-	jumptext AerodactylFossilSignpostText
-
-Museum1FReceptionistText1:
 	text "Welcome!"
 
 	para "Thanks to a gene-"
@@ -265,9 +238,52 @@ Museum1FReceptionistText1:
 	para "Please go ahead."
 	done
 
-Museum1FReceptionistText2:
+.Sneak:
+	thistextfaceplayer
+
 	text "You can't sneak"
 	line "in the back way!"
+	done
+
+KabutopsFossilSignpostScript:
+	refreshscreen
+	trainerpic KABUTOPS_FOSSIL
+	waitbutton
+	closepokepic
+	thistext
+
+	text "Kabutops Fossil"
+	line "(Dome)"
+
+	para "A primitive and"
+	line "rare Pokémon."
+	done
+
+OmastarFossilSignpostScript:
+	refreshscreen
+	trainerpic OMASTAR_FOSSIL
+	waitbutton
+	closepokepic
+	thistext
+
+	text "Omastar Fossil"
+	line "(Helix)"
+
+	para "A primitive and"
+	line "rare Pokémon."
+	done
+
+AerodactylFossilSignpostScript:
+	refreshscreen
+	trainerpic AERODACTYL_FOSSIL
+	waitbutton
+	closepokepic
+	thistext
+
+	text "Aerodactyl Fossil"
+
+	para "A primitive and"
+	line "rare Pokémon."
 	done
 
 Museum1FScientistText:
@@ -313,29 +329,6 @@ Museum1FYoungsterText:
 	para "I get a sense of"
 	line "history from both"
 	cont "of them."
-	done
-
-KabutopsFossilSignpostText:
-	text "Kabutops Fossil"
-	line "(Dome)"
-
-	para "A primitive and"
-	line "rare Pokémon."
-	done
-
-OmastarFossilSignpostText:
-	text "Omastar Fossil"
-	line "(Helix)"
-
-	para "A primitive and"
-	line "rare Pokémon."
-	done
-
-AerodactylFossilSignpostText:
-	text "Aerodactyl Fossil"
-
-	para "A primitive and"
-	line "rare Pokémon."
 	done
 
 Museum1FBookshelfSignpostText:

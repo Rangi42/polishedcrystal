@@ -259,10 +259,10 @@ NoisyForestChildText:
 NoisyForestPikabluScript:
 	showcrytext .PikabluText, MARILL
 	disappear NOISYFOREST_YOUNGSTER
-	moveperson NOISYFOREST_YOUNGSTER, 19, 36
+	moveobject NOISYFOREST_YOUNGSTER, 19, 36
 	appear NOISYFOREST_YOUNGSTER
 	applymovement NOISYFOREST_YOUNGSTER, .WalkToYou
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	showtext .OwnerText1
 	disappear NOISYFOREST_MARILL
 	opentext
@@ -277,7 +277,7 @@ NoisyForestPikabluScript:
 	closetext
 	applymovement NOISYFOREST_YOUNGSTER, .WalkAway
 	disappear NOISYFOREST_YOUNGSTER
-	moveperson NOISYFOREST_YOUNGSTER, 10, 15
+	moveobject NOISYFOREST_YOUNGSTER, 10, 15
 	appear NOISYFOREST_YOUNGSTER
 	clearevent EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
 	end

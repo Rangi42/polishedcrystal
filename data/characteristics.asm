@@ -7,7 +7,7 @@ Characteristics:
 	dw Chara_SPE0, Chara_SPE1, Chara_SPE2, Chara_SPE3, Chara_SPE4
 
 Chara_HP0:
-	db   "Loves to"
+	db   "Loves t", "o"
 	next "eat@"
 Chara_HP1:
 	db   "Takes"
@@ -21,14 +21,14 @@ Chara_HP3:
 	next "things"
 	next "often@"
 Chara_HP4:
-	db   "Likes to"
+	db   "Likes t", "o"
 	next "relax@"
 
 Chara_ATK0:
 	db   "Proud of"
 	next "its power@"
 Chara_ATK1:
-	db   "Likes to"
+	db   "Likes t", "o"
 	next "thrash"
 	next "about@"
 Chara_ATK2:
@@ -36,7 +36,7 @@ Chara_ATK2:
 	next "quick"
 	next "tempered@"
 Chara_ATK3:
-	db   "Likes to"
+	db   "Likes t", "o"
 	next "fight@"
 Chara_ATK4:
 	db   "Quick"
@@ -86,24 +86,24 @@ Chara_SPD2:
 	db   "Strongly"
 	next "defiant@"
 Chara_SPD3:
-	db   "Hates to"
+	db   "Hates t", "o"
 	next "lose@"
 Chara_SPD4:
 	db   "Somewhat"
 	next "stubborn@"
 
 Chara_SPE0:
-	db   "Likes to"
+	db   "Likes t", "o"
 	next "run@"
 Chara_SPE1:
-	db   "Alert to"
+	db   "Alert t", "o"
 	next "sounds@"
 Chara_SPE2:
 	db   "Impetuous"
-	next "and silly@"
+	next "an", "d silly@"
 Chara_SPE3:
 	db   "Somewhat"
 	next "of a clown@"
 Chara_SPE4:
-	db   "Quick to"
+	db   "Quick t", "o"
 	next "flee@"

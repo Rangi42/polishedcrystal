@@ -28,10 +28,10 @@ INCBIN "gfx/frames/9.1bpp"
 ; Various misc graphics here.
 
 BattleExtrasGFX:
-INCBIN "gfx/battle/extras.2bpp"
+INCBIN "gfx/battle/hpexpbars.2bpp"
 
 BattleNoCaptureGFX:
-INCBIN "gfx/battle/nocapture.2bpp"
+INCBIN "gfx/battle/nocapture.1bpp"
 
 GFX_Stats: ; f89b0
 INCBIN "gfx/stats/stats.2bpp"
@@ -44,7 +44,7 @@ EnemyStatusIconGFX:
 INCBIN "gfx/battle/status-enemy.2bpp"
 
 TypeIconGFX:
-INCBIN "gfx/battle/types.2bpp"
+INCBIN "gfx/battle/types.1bpp"
 
 CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
@@ -61,18 +61,33 @@ MapEntryFrameGFX: ; f9344
 INCBIN "gfx/frames/map_entry_sign.2bpp"
 ; f9424
 
+PaintingFrameGFX:
+INCBIN "gfx/frames/painting.2bpp"
+
 _LoadStandardFont:: ; fb449
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, VTiles1
+	ld hl, VTiles0 tile "A"
 	lb bc, BANK(FontNormal), 111
 	call Get1bpp
 	ld de, FontCommon
-	ld hl, VTiles1 tile COMMON_FONT_START
+	ld hl, VTiles0 tile "▷"
 	lb bc, BANK(FontCommon), 11
 	jp Get1bpp
 ; fb48a
+
+LoadOverworldFont::
+	call LoadStandardFontPointer
+	ld d, h
+	ld e, l
+	ld hl, VTiles0 tile "A"
+	lb bc, BANK(FontNormal), 111
+	call GetOpaque1bpp_2
+	ld hl, VTiles2 tile " "
+	ld de, TextBoxSpaceGFX
+	lb bc, BANK(TextBoxSpaceGFX), 1
+	jp GetOpaque1bpp_2
 
 LoadStandardFontPointer::
 	ld hl, .FontPointers
@@ -107,7 +122,7 @@ _LoadFontsBattleExtra:: ; fb4be
 	ld de, BattleNoCaptureGFX
 	ld hl, VTiles0 tile "<NONO>"
 	lb bc, BANK(BattleNoCaptureGFX), 1
-	call Get2bpp
+	call Get1bpp
 ; fb4cc
 
 LoadFrame:: ; fb4cc
@@ -117,7 +132,7 @@ LoadFrame:: ; fb4cc
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles1 tile (FRAME_START - $80)
+	ld hl, VTiles0 tile "┌"
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp
 	ld hl, VTiles2 tile " "

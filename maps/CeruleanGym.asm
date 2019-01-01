@@ -51,12 +51,12 @@ UnknownScript_0x1883de:
 	setevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
 	clearevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	clearevent EVENT_ROUTE_24_ROCKET
-	dotrigger $0
-	domaptrigger POWER_PLANT, $0
+	setscene $0
+	setmapscene POWER_PLANT, $0
 	waitsfx
 	special RestartMapMusic
 	pause 15
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	pause 15
 	end
 
@@ -84,9 +84,9 @@ MistyScript_0x188432:
 	waitsfx
 	setflag ENGINE_CASCADEBADGE
 	checkcode VAR_BADGES
-	if_equal 9, .FirstBadge
-	if_equal 10, .SecondBadge
-	if_equal 12, .LyrasEgg
+	ifequal 9, .FirstBadge
+	ifequal 10, .SecondBadge
+	ifequal 12, .LyrasEgg
 	jump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE

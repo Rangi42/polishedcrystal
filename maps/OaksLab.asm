@@ -58,7 +58,7 @@ Oak:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .PartyFull
+	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
@@ -101,8 +101,8 @@ Oak:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .BattleOak
 	checkcode VAR_BADGES
-	if_equal 16, .Complain1
-	if_equal  8, .Complain2
+	ifequal 16, .Complain1
+	ifequal  8, .Complain2
 	writetext OakYesKantoBadgesText
 	buttonsound
 .CheckPokedex:
@@ -112,7 +112,7 @@ Oak:
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
 	checkcode VAR_DEXSEEN
-	if_less_than NUM_POKEMON, .NoOvalCharm
+	ifless NUM_POKEMON, .NoOvalCharm
 	writetext OakLabSeenAllText
 	buttonsound
 	verbosegiveitem OVAL_CHARM
@@ -123,7 +123,7 @@ Oak:
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
 	checkcode VAR_DEXCAUGHT
-	if_less_than NUM_POKEMON, .NoShinyCharm
+	ifless NUM_POKEMON, .NoShinyCharm
 	writetext OakLabCaughtAllText
 	buttonsound
 	verbosegiveitem SHINY_CHARM
@@ -175,7 +175,7 @@ Oak:
 	jump .CheckPokedex
 
 EeveeDollScript:
-	spriteface OAKSLAB_OAK, RIGHT
+	turnobject OAKSLAB_OAK, RIGHT
 	opentext
 	writetext ProfOakEeveeDollTradeText
 	waitbutton

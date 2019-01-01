@@ -44,56 +44,56 @@ ReleaseTheBeasts:
 	playmusic MUSIC_NONE
 	pause 30
 	appear BURNEDTOWERB1F_RAIKOU1
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 5
 	disappear BURNEDTOWERB1F_RAIKOU2
 	pause 15
 	cry RAIKOU
 	appear BURNEDTOWERB1F_ENTEI1
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 5
 	disappear BURNEDTOWERB1F_ENTEI2
 	pause 15
 	cry ENTEI
 	appear BURNEDTOWERB1F_SUICUNE1
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 5
 	disappear BURNEDTOWERB1F_SUICUNE2
 	pause 15
 	cry SUICUNE
 	pause 15
 	playsound SFX_WARP_FROM
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	applymovement BURNEDTOWERB1F_RAIKOU1, BurnedTowerRaikouMovement
 	disappear BURNEDTOWERB1F_RAIKOU1
 	waitsfx
 	playsound SFX_WARP_FROM
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement BURNEDTOWERB1F_ENTEI1, BurnedTowerEnteiMovement
 	disappear BURNEDTOWERB1F_ENTEI1
 	waitsfx
 	pause 15
 	playsound SFX_WARP_FROM
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	applymovement BURNEDTOWERB1F_SUICUNE1, BurnedTowerSuicuneMovement1
 	playsound SFX_WARP_FROM
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement BURNEDTOWERB1F_SUICUNE1, BurnedTowerSuicuneMovement2
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 20
 	cry SUICUNE
 	pause 30
 	playsound SFX_WARP_FROM
 	applymovement BURNEDTOWERB1F_SUICUNE1, BurnedTowerSuicuneMovement3
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	disappear BURNEDTOWERB1F_SUICUNE1
 	waitsfx
 	special RestartMapMusic
-	dotrigger $1
+	setscene $1
 	setevent EVENT_RELEASED_THE_BEASTS
 	special InitRoamMons
-	domaptrigger ECRUTEAK_GYM, $1
-	domaptrigger CIANWOOD_CITY, $1
+	setmapscene ECRUTEAK_GYM, $1
+	setmapscene CIANWOOD_CITY, $1
 	clearevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	setevent EVENT_ECRUTEAK_GYM_GRAMPS
 	clearevent EVENT_ECRUTEAK_CITY_GRAMPS
@@ -104,13 +104,13 @@ ReleaseTheBeasts:
 	changeblock 6, 14, $1b
 	reloadmappart
 	closetext
-	dotrigger $1
+	setscene $1
 	end
 
 BurnedTowerB1FEusine:
 	showtextfaceplayer BurnedTowerB1FEusineText
 	checkcode VAR_FACING
-	if_equal $1, .Movement
+	ifequal $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
 	jump UnknownScript_0x18622a
 

@@ -99,7 +99,7 @@ IcePathB1FTutorIcyWindScript:
 	writebyte ICY_WIND
 	writetext Text_IcePathB1FTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_IcePathB1FTutorRefused
 

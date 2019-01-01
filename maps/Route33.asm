@@ -19,7 +19,7 @@ Route33_MapScriptHeader:
 
 Route33RainScript:
 	special Special_GetOvercastIndex
-	if_equal AZALEA_OVERCAST, .rain
+	ifequal AZALEA_OVERCAST, .rain
 	changemap Route33_BlockData
 	return
 
@@ -51,8 +51,8 @@ TrainerHikerAnthony:
 	callstd asknumber2m
 .AskForPhoneNumber:
 	askforphonenumber PHONE_HIKER_ANTHONY
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext HIKER, ANTHONY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -61,11 +61,11 @@ TrainerHikerAnthony:
 	callstd rematchm
 	winlosstext HikerAnthony1BeatenText, 0
 	copybytetovar wAnthonyFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4

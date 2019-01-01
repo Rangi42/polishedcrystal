@@ -32,46 +32,46 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	special Special_FadeOutMusic
 	pause 15
 	checkcode VAR_FACING
-	if_equal UP, .up
-	if_equal DOWN, .down
-	if_equal LEFT, .left
+	ifequal UP, .up
+	ifequal DOWN, .down
+	ifequal LEFT, .left
 .right
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach1
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	jump .continue
 .up
-	moveperson SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
+	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach2
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
-	spriteface PLAYER, LEFT
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
+	turnobject PLAYER, LEFT
 	jump .continue
 .down
-	moveperson SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
+	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach2
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueDown
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
-	spriteface PLAYER, LEFT
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
+	turnobject PLAYER, LEFT
 	jump .continue
 .left
-	moveperson SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
+	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE_SURF, SeafoamIslandsB4FMovementData_LawrenceSurfApproach3
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, UP
 	disappear SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
@@ -79,7 +79,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext SeafoamIslandsB4FLawrenceSpeechText
-	spriteface SEAFOAMISLANDSB4F_LAWRENCE, UP
+	turnobject SEAFOAMISLANDSB4F_LAWRENCE, UP
 	opentext
 	writetext SeafoamIslandsB4FLawrenceEscapeRopeText
 	pause 15

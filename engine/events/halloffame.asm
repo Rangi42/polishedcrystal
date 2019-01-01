@@ -1,3 +1,5 @@
+HOF_MASTER_COUNT EQU 200
+
 HallOfFame:: ; 0x8640e
 	call HallOfFame_FadeOutMusic
 	ld a, [wStatusFlags]
@@ -18,7 +20,7 @@ HallOfFame:: ; 0x8640e
 
 	ld hl, wHallOfFameCount
 	ld a, [hl]
-	cp 200
+	cp HOF_MASTER_COUNT
 	jr nc, .ok
 	inc [hl]
 .ok
@@ -352,7 +354,7 @@ _HallOfFamePC: ; 86650
 
 .DisplayMonAndStrings:
 ; Print the number of times the player has entered the Hall of Fame.
-; If that number is above 200, print "HOF Master!" instead.
+; If that number is at least HOF_MASTER_COUNT, print "HOF Master!" instead.
 	ld a, [wcf64]
 	cp PARTY_LENGTH
 	jr nc, .fail
@@ -373,7 +375,7 @@ _HallOfFamePC: ; 86650
 	pop hl
 	call DisplayHOFMon
 	ld a, [wHallOfFameTempWinCount]
-	cp 200 + 1
+	cp HOF_MASTER_COUNT
 	jr c, .print_num_hof
 	ld de, .HOFMaster
 	hlcoord 1, 2

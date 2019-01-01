@@ -20,7 +20,7 @@ BattleTowerElevator_MapScriptHeader:
 
 BattleTowerElevatorTrigger0:
 	priorityjump .RideElevator
-	dotrigger $1
+	setscene $1
 	end
 
 .RideElevator:

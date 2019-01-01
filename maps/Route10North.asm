@@ -69,14 +69,14 @@ Route10NorthLawrenceEncounter1Script:
 	special Special_FadeOutMusic
 	pause 15
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach1
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext Route10NorthLawrenceGreetingText
 	follow ROUTE10_LAWRENCE, PLAYER
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceShowZapdos
 	stopfollow
-	spriteface ROUTE10_LAWRENCE, UP
-	spriteface PLAYER, UP
+	turnobject ROUTE10_LAWRENCE, UP
+	turnobject PLAYER, UP
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemalePan
 	appear ROUTE10_CHRIS
@@ -84,7 +84,7 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
 	disappear ROUTE10_LAWRENCE
-	moveperson ROUTE10_LAWRENCE, 13, 52
+	moveobject ROUTE10_LAWRENCE, 13, 52
 	appear ROUTE10_LAWRENCE
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applyonemovement PLAYER, show_person
@@ -96,23 +96,23 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
 	disappear ROUTE10_LAWRENCE
-	moveperson ROUTE10_LAWRENCE, 13, 52
+	moveobject ROUTE10_LAWRENCE, 13, 52
 	appear ROUTE10_LAWRENCE
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applyonemovement PLAYER, show_person
 	disappear ROUTE10_KRIS
 .Finish
-	spriteface ROUTE10_LAWRENCE, LEFT
-	spriteface PLAYER, RIGHT
+	turnobject ROUTE10_LAWRENCE, LEFT
+	turnobject PLAYER, RIGHT
 	showtext Route10NorthLawrenceZapdosText
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
-	spriteface ROUTE10_LAWRENCE, RIGHT
+	turnobject ROUTE10_LAWRENCE, RIGHT
 	waitsfx
 	pause 15
 	cry ZAPDOS
 	waitsfx
-	spriteface ROUTE10_LAWRENCE, DOWN
+	turnobject ROUTE10_LAWRENCE, DOWN
 	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
@@ -124,7 +124,7 @@ Route10NorthLawrenceEncounter1Script:
 	special Special_FadeInQuickly
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	dotrigger $0
+	setscene $0
 	special RestartMapMusic
 	end
 
@@ -135,33 +135,33 @@ Route10NorthLawrenceEncounter2Script:
 	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_LAWRENCE
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkcode VAR_FACING
-	if_equal UP, .up
-	if_equal DOWN, .down
-	if_equal LEFT, .left
+	ifequal UP, .up
+	ifequal DOWN, .down
+	ifequal LEFT, .left
 .right
-	moveperson ROUTE10_LAWRENCE, 7, 44
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 10, 44
+	moveobject ROUTE10_LAWRENCE, 7, 44
+	moveobject ROUTE10_LAWRENCES_ZAPDOS, 10, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	jump .continue
 .up
-	moveperson ROUTE10_LAWRENCE, 8, 44
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 44
+	moveobject ROUTE10_LAWRENCE, 8, 44
+	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
-	spriteface ROUTE10_LAWRENCE, DOWN
+	turnobject ROUTE10_LAWRENCE, DOWN
 	jump .continue
 .down
-	moveperson ROUTE10_LAWRENCE, 8, 44
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 44
+	moveobject ROUTE10_LAWRENCE, 8, 44
+	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
-	spriteface ROUTE10_LAWRENCE, UP
+	turnobject ROUTE10_LAWRENCE, UP
 	jump .continue
 .left
-	moveperson ROUTE10_LAWRENCE, 9, 44
-	moveperson ROUTE10_LAWRENCES_ZAPDOS, 12, 44
+	moveobject ROUTE10_LAWRENCE, 9, 44
+	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 .continue
@@ -170,12 +170,12 @@ Route10NorthLawrenceEncounter2Script:
 	pause 15
 	appear ROUTE10_LAWRENCES_ZAPDOS
 	playsound SFX_BALL_POOF
-	spriteface ROUTE10_LAWRENCE, LEFT
+	turnobject ROUTE10_LAWRENCE, LEFT
 	waitsfx
 	pause 15
 	cry ZAPDOS
 	waitsfx
-	spriteface ROUTE10_LAWRENCE, DOWN
+	turnobject ROUTE10_LAWRENCE, DOWN
 	showtext Route10NorthLawrenceFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly

@@ -31,15 +31,15 @@ EcruteakPokeCenter1FBillWalksUpTrigger:
 
 .Script:
 	pause 30
-	moveperson ECRUTEAKPOKECENTER1F_BILL, 0, 7
+	moveobject ECRUTEAKPOKECENTER1F_BILL, 0, 7
 	playsound SFX_EXIT_BUILDING
 	appear ECRUTEAKPOKECENTER1F_BILL
-	spriteface ECRUTEAKPOKECENTER1F_BILL, RIGHT
+	turnobject ECRUTEAKPOKECENTER1F_BILL, RIGHT
 	waitsfx
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement1
 	pause 60
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .Movement2
-	dotrigger $1
+	setscene $1
 	end
 
 .Movement1:
@@ -103,12 +103,13 @@ EcruteakPokeCenter1FBillScript:
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
-	if_equal $6, .NoRoom
+	ifequal $6, .NoRoom
 	writetext .GotEeveeText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke EEVEE, 5
 	givepokeitem .GiftEeveeMail
+	callasm .SetEeveeMailOT
 	writebyte GREAT_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_EEVEE
@@ -116,8 +117,8 @@ EcruteakPokeCenter1FBillScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	spriteface PLAYER, DOWN
-	if_not_equal UP, .noleftstep
+	turnobject PLAYER, DOWN
+	ifnotequal UP, .noleftstep
 	applyonemovement ECRUTEAKPOKECENTER1F_BILL, step_left
 .noleftstep
 	applymovement ECRUTEAKPOKECENTER1F_BILL, .LeaveMovement
@@ -218,9 +219,28 @@ EcruteakPokeCenter1FBillScript:
 
 .GiftEeveeMail:
 	db   EON_MAIL
-	db   "Greetings from"
-	next "Kanto! -- Oak@"
-	db 0
+	db   "Please keep this"
+	next "#mon safe!@@@@@@"
+
+.SetEeveeMailOT:
+	ld hl, sPartyMon1MailAuthor
+	ld a, [wPartyCount]
+	dec a
+	ld bc, MAIL_STRUCT_LENGTH
+	call AddNTimes
+	push hl
+	pop de
+	ld hl, .EeveeMailOTID
+	ld bc, .EeveeMailOTIDEnd - .EeveeMailOTID
+	ld a, BANK(sPartyMail)
+	call GetSRAMBank
+	call CopyBytes
+	jp CloseSRAM
+
+.EeveeMailOTID:
+	db "Prof.Oak@@"
+	bigdw 00001
+.EeveeMailOTIDEnd
 
 EcruteakPokeCenter1FPokefanMScript:
 	checkevent EVENT_GOT_HM03_SURF

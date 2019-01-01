@@ -79,7 +79,7 @@ MortyScript_0x99d58:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_FOGBADGE
-	domaptrigger ECRUTEAK_HOUSE, $1
+	setmapscene ECRUTEAK_HOUSE, $1
 	setevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_RANG_CLEAR_BELL_2
 .FightDone:
@@ -158,7 +158,7 @@ EcruteakGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 11, .LyraToo
+	ifgreater 11, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

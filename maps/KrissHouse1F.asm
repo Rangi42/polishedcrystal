@@ -32,21 +32,21 @@ KrissHouse1F_MapScriptHeader:
 MomTrigger1:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	spriteface KRISSHOUSE1F_MOM1, RIGHT
-	spriteface PLAYER, LEFT
+	turnobject KRISSHOUSE1F_MOM1, RIGHT
+	turnobject PLAYER, LEFT
 	jump MomEventScript
 
 MomTrigger2:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	spriteface KRISSHOUSE1F_MOM1, RIGHT
+	turnobject KRISSHOUSE1F_MOM1, RIGHT
 	applyonemovement PLAYER, slow_step_left
 	jump MomEventScript
 
 MomTrigger3:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	spriteface KRISSHOUSE1F_MOM1, UP
+	turnobject KRISSHOUSE1F_MOM1, UP
 	applyonemovement PLAYER, slow_step_down
 MomEventScript:
 	opentext
@@ -57,7 +57,7 @@ MomEventScript:
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	addcellnum PHONE_MOM
-	dotrigger $1
+	setscene $1
 	setevent EVENT_KRISS_HOUSE_MOM_1
 	clearevent EVENT_KRISS_HOUSE_MOM_2
 	writetext MomPokegearText
@@ -85,7 +85,7 @@ MomEventScript:
 	writetext MomOutroText
 	waitbutton
 	closetext
-	spriteface KRISSHOUSE1F_MOM1, LEFT
+	turnobject KRISSHOUSE1F_MOM1, LEFT
 	special RestartMapMusic
 	end
 
@@ -128,7 +128,7 @@ TVScript:
 
 MomScript:
 	faceplayer
-	checktriggers
+	checkscene
 	iffalse .MomEvent
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
@@ -262,11 +262,11 @@ MomDoItText:
 NeighborScript:
 	faceplayer
 	opentext
-	checkmorn
+	checktime 1 << MORN
 	iftrue .MornScript
-	checkday
+	checktime 1 << DAY
 	iftrue .DayScript
-	checknite
+	checktime 1 << NITE
 	iftrue .NiteScript
 
 .MornScript:
@@ -288,7 +288,7 @@ NeighborScript:
 	writetext .NeighborText
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .MornIntroText:

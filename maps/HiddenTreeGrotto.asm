@@ -26,9 +26,9 @@ HiddenGrottoCallback:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special InitializeHiddenGrotto
-	if_equal GROTTO_POKEMON, .pokemon
-	if_equal GROTTO_ITEM, .item
-	if_equal GROTTO_HIDDEN_ITEM, .hidden_item
+	ifequal GROTTO_POKEMON, .pokemon
+	ifequal GROTTO_ITEM, .item
+	ifequal GROTTO_HIDDEN_ITEM, .hidden_item
 	return
 
 .pokemon

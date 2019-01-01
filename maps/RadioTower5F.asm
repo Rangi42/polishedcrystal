@@ -18,7 +18,7 @@ RadioTower5F_MapScriptHeader:
 
 	db 6 ; object events
 	object_event  3,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
-	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
+	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Petrel1Script, EVENT_RADIO_TOWER_PETREL
 	object_event 13,  5, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 17,  2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 13,  5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
@@ -31,7 +31,7 @@ RadioTower5F_MapScriptHeader:
 	const RADIOTOWER5F_ARIANA
 
 FakeDirectorScript:
-	spriteface RADIOTOWER5F_DIRECTOR, UP
+	turnobject RADIOTOWER5F_DIRECTOR, UP
 	showemote EMOTE_SHOCK, RADIOTOWER5F_DIRECTOR, 15
 	showtext FakeDirectorTextBefore1
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorMovement
@@ -41,8 +41,13 @@ FakeDirectorScript:
 	applymovement RADIOTOWER5F_DIRECTOR, FakeDirectorSpinMovement
 	appear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
-	spriteface RADIOTOWER5F_PETREL, UP
+	turnobject RADIOTOWER5F_PETREL, UP
 	pause 10
+Petrel1Script:
+	checkevent EVENT_BEAT_PETREL_1
+	iftrue_jumptextfaceplayer FakeDirectorTextAfter
+	setscene $1
+	faceplayer
 	showtext FakeDirectorTextBefore3
 	winlosstext FakeDirectorWinText, 0
 	setlasttalked RADIOTOWER5F_PETREL
@@ -54,7 +59,6 @@ FakeDirectorScript:
 	buttonsound
 	verbosegiveitem BASEMENT_KEY
 	closetext
-	dotrigger $1
 	setevent EVENT_BEAT_PETREL_1
 	end
 
@@ -77,7 +81,7 @@ GenericTrainerAriana1:
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	spriteface RADIOTOWER5F_ARCHER, RIGHT
+	turnobject RADIOTOWER5F_ARCHER, RIGHT
 	showtext RadioTower5FRocketBossBeforeText
 	winlosstext RadioTower5FRocketBossWinText, 0
 	setlasttalked RADIOTOWER5F_ARCHER
@@ -106,10 +110,10 @@ RadioTower5FRocketBossTrigger:
 	special PlayMapMusic
 	disappear RADIOTOWER5F_PETREL
 	disappear RADIOTOWER5F_DIRECTOR
-	moveperson RADIOTOWER5F_DIRECTOR, 12, 0
+	moveobject RADIOTOWER5F_DIRECTOR, 12, 0
 	appear RADIOTOWER5F_DIRECTOR
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksIn
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	opentext
 	writetext RadioTower5FDirectorThankYouText
 	buttonsound
@@ -117,14 +121,14 @@ RadioTower5FRocketBossTrigger:
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton
 	closetext
-	dotrigger $2
-	domaptrigger ECRUTEAK_HOUSE, $0
+	setscene $2
+	setmapscene ECRUTEAK_HOUSE, $0
 	setevent EVENT_GOT_CLEAR_BELL
 	setevent EVENT_TEAM_ROCKET_DISBANDED
 	applymovement RADIOTOWER5F_DIRECTOR, RadioTower5FDirectorWalksOut
 	playsound SFX_EXIT_BUILDING
 	disappear RADIOTOWER5F_DIRECTOR
-	moveperson RADIOTOWER5F_DIRECTOR, 3, 6
+	moveobject RADIOTOWER5F_DIRECTOR, 3, 6
 	appear RADIOTOWER5F_DIRECTOR
 	end
 
@@ -137,19 +141,19 @@ FakeDirectorMovement:
 	step_end
 
 FakeDirectorSpinMovement:
-	turn_head_down
 	turn_head_left
-	turn_head_up
-	turn_head_right
 	turn_head_down
+	turn_head_right
+	turn_head_up
 	turn_head_left
-	turn_head_up
-	turn_head_right
 	turn_head_down
+	turn_head_right
+	turn_head_up
 	turn_head_left
-	turn_head_up
-	turn_head_right
 	turn_head_down
+	turn_head_right
+	turn_head_up
+	step_sleep 8
 	step_end
 
 RadioTower5FDirectorWalksIn:

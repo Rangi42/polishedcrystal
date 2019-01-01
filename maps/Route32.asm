@@ -60,7 +60,7 @@ Route32FlyPoint:
 
 Route32Frieda:
 	checkcode VAR_WEEKDAY
-	if_equal FRIDAY, .FriedaAppears
+	ifequal FRIDAY, .FriedaAppears
 	disappear ROUTE32_FRIEDA
 	return
 
@@ -198,16 +198,16 @@ Route32CooltrainerMTrigger:
 	done
 
 Route32CooltrainerMStopsYou:
-	spriteface ROUTE32_COOLTRAINER_M, LEFT
-	spriteface PLAYER, RIGHT
+	turnobject ROUTE32_COOLTRAINER_M, LEFT
+	turnobject PLAYER, RIGHT
 	showtext Route32CooltrainerMText_WhatsTheHurry
 	follow PLAYER, ROUTE32_COOLTRAINER_M
 	applymovement PLAYER, Movement_Route32CooltrainerMPushesYouBackToViolet
 	stopfollow
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	scall Route32CooltrainerMTrigger
 	applymovement ROUTE32_COOLTRAINER_M, Movement_Route32CooltrainerMReset
-	spriteface ROUTE32_COOLTRAINER_M, LEFT
+	turnobject ROUTE32_COOLTRAINER_M, LEFT
 	end
 
 Route32LyraIntroducesHiddenGrottoes1:
@@ -258,7 +258,7 @@ Route32LyraIntroducesHiddenGrottoesIntroScript:
 	disappear ROUTE32_FRIEDA
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	moveperson ROUTE32_FRIEDA, 13, 29
+	moveobject ROUTE32_FRIEDA, 13, 29
 	appear ROUTE32_FRIEDA
 	applymovement ROUTE32_FRIEDA, .StepUpMovement
 	showemote EMOTE_SHOCK, ROUTE32_FRIEDA, 15
@@ -273,7 +273,7 @@ Route32LyraIntroducesHiddenGrottoesIntroScript:
 	step_end
 
 Route32LyraIntroducesHiddenGrottoesMainScript:
-	spriteface ROUTE32_FRIEDA, UP
+	turnobject ROUTE32_FRIEDA, UP
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext .GreetingText
@@ -347,29 +347,29 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 
 Route32LyraIntroducesHiddenGrottoesOutroScript:
 	stopfollow
-	spriteface ROUTE32_FRIEDA, UP
+	turnobject ROUTE32_FRIEDA, UP
 	showemote EMOTE_SHOCK, ROUTE32_FRIEDA, 15
 	pause 7
 	follow ROUTE32_FRIEDA, PLAYER
 	applyonemovement ROUTE32_FRIEDA, slow_step_up
 	stopfollow
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	pause 15
-	spriteface ROUTE32_FRIEDA, DOWN
+	turnobject ROUTE32_FRIEDA, DOWN
 	showtext .GrottoText
 	applymovement ROUTE32_FRIEDA, .LeaveMovement1
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement ROUTE32_FRIEDA, .LeaveMovement2
 	disappear ROUTE32_FRIEDA
 	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	moveperson ROUTE32_FRIEDA, 12, 67
+	moveobject ROUTE32_FRIEDA, 12, 67
 	checkcode VAR_WEEKDAY
-	if_not_equal FRIDAY, .Done
+	ifnotequal FRIDAY, .Done
 	appear ROUTE32_FRIEDA
 .Done
 	appear ROUTE32_LASS
-	dotrigger $2
+	setscene $2
 	playmusic MUSIC_ROUTE_30
 	end
 
@@ -418,14 +418,14 @@ Route32LyraIntroducesHiddenGrottoesOutroScript:
 	step_end
 
 Route32WannaBuyASlowpokeTailScript:
-	spriteface ROUTE32_FISHER4, DOWN
-	spriteface PLAYER, UP
+	turnobject ROUTE32_FISHER4, DOWN
+	turnobject PLAYER, UP
 	jump _OfferToSellSlowpokeTail
 
 SlowpokeTailSalesmanScript:
 	faceplayer
 _OfferToSellSlowpokeTail:
-	dotrigger $3
+	setscene $3
 	opentext
 	writetext Text_MillionDollarSlowpokeTail
 	yesorno
@@ -489,8 +489,8 @@ TrainerFisherRalph1:
 	callstd asknumber2m
 .AskForNumber:
 	askforphonenumber PHONE_FISHER_RALPH
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext FISHER, RALPH1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -499,11 +499,11 @@ TrainerFisherRalph1:
 	callstd rematchm
 	winlosstext FisherRalph1BeatenText, 0
 	copybytetovar wRalphFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -599,8 +599,8 @@ TrainerPicnickerLiz1:
 	callstd asknumber2f
 .AskForNumber:
 	askforphonenumber PHONE_PICNICKER_LIZ
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext PICNICKER, LIZ1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
@@ -609,11 +609,11 @@ TrainerPicnickerLiz1:
 	callstd rematchf
 	winlosstext PicnickerLiz1BeatenText, 0
 	copybytetovar wLizFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight4
@@ -705,7 +705,7 @@ FriedaScript:
 	checkevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
 	iftrue_jumptextfaceplayer FriedaFridayText
 	checkcode VAR_WEEKDAY
-	if_not_equal FRIDAY, .NotFriday
+	ifnotequal FRIDAY, .NotFriday
 	faceplayer
 	opentext
 	checkevent EVENT_MET_FRIEDA_OF_FRIDAY

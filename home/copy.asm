@@ -1,11 +1,3 @@
-; Functions to copy data from ROM.
-
-FarCopyBytesDouble_DoubleBankSwitch:: ; def
-	ld [hBuffer], a
-	homecall FarCopyBytesDouble, [hBuffer]
-	ret
-; dfd
-
 ReplaceKrisSprite:: ; e4a
 	farjp _ReplaceKrisSprite
 ; e51

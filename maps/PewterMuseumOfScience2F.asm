@@ -44,7 +44,7 @@ Museum2FTutorSeismicTossScript:
 	writebyte SEISMIC_TOSS
 	writetext Text_Museum2FTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Museum2FTutorRefused
 

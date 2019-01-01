@@ -1018,4 +1018,4 @@ HOF_AnimateFrontpic: ; d066e
 	ret
 ; d0695
 
-INCLUDE "data/pokemon/anims/variant_anim_data_tables.asm"
+INCLUDE "gfx/pokemon/variant_anim_data_tables.asm"

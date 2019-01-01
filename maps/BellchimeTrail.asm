@@ -28,12 +28,12 @@ BellchimeTrailStepDownTrigger:
 
 .Script:
 	checkcode VAR_YCOORD
-	if_not_equal $9, .Done
+	ifnotequal $9, .Done
 	checkcode VAR_XCOORD
-	if_not_equal $15, .Done
+	ifnotequal $15, .Done
 	applyonemovement PLAYER, step_down
 .Done
-	dotrigger $1
+	setscene $1
 	end
 
 SetupValerieMorningWalkCallback:
@@ -43,7 +43,7 @@ SetupValerieMorningWalkCallback:
 	iffalse .Appear
 	checkflag ENGINE_VALERIE_MORNING_WALK
 	iftrue .Disappear
-	checkmorn
+	checktime 1 << MORN
 	iffalse .Disappear
 .Appear:
 	appear BELLCHIMETRAIL_VALERIE
@@ -63,7 +63,7 @@ BellchimeTrailPanUpTrigger:
 	special Special_FadeOutMusic
 	special FadeOutPalettes
 	pause 15
-	dotrigger $0
+	setscene $0
 	warpfacing UP, TIN_TOWER_1F, 7, 15
 	end
 
@@ -116,7 +116,7 @@ BellchimeTrailValerieScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	if_not_equal RIGHT, .SkipGoAround
+	ifnotequal RIGHT, .SkipGoAround
 	applymovement BELLCHIMETRAIL_VALERIE, .ValerieGoesAroundMovement
 .SkipGoAround
 	applymovement BELLCHIMETRAIL_VALERIE, .ValerieDepartsMovement
@@ -132,7 +132,7 @@ BellchimeTrailValerieScript:
 	winlosstext .RematchBeatenText, 0
 	setlasttalked BELLCHIMETRAIL_VALERIE
 	checkcode VAR_BADGES
-	if_equal 16, .Battle3
+	ifequal 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Battle2
 	loadtrainer VALERIE, 1

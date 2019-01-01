@@ -23,7 +23,7 @@ BattleTowerBattleRoom_MapScriptHeader:
 BattleTowerBattleRoomEnterBattleRoom:
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	priorityjump Script_BattleRoom
-	dotrigger $1
+	setscene $1
 	end
 
 Script_BattleRoom:
@@ -42,9 +42,9 @@ Script_BattleRoomLoop:
 	special Special_BattleTower_Battle ; calls predef startbattle
 	special FadeOutPalettes
 	reloadmap
-	if_not_equal $0, Script_FailedBattleTowerChallenge
+	ifnotequal $0, Script_FailedBattleTowerChallenge
 	copybytetovar wNrOfBeatenBattleTowerTrainers ; wcf64
-	if_equal BATTLETOWER_NROFTRAINERS, Script_BeatenAllTrainers
+	ifequal BATTLETOWER_NROFTRAINERS, Script_BeatenAllTrainers
 	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksOut
 	warpsound
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
@@ -60,7 +60,7 @@ Script_BattleRoomLoop:
 	special RestoreMusic
 	opentext
 	copybytetovar wNrOfBeatenBattleTowerTrainers
-	if_equal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
+	ifequal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
 	writetext Text_NextUpOpponentNo
 	jump .ShownText
 .WarnAboutTycoon

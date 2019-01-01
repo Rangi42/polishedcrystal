@@ -709,7 +709,6 @@ SuperFang:
 
 DoPoison:
 Poisonpowder:
-Toxic:
 	checkobedience
 	usedmovetext
 	doturn
@@ -719,6 +718,18 @@ Toxic:
 	stab
 	checksafeguard
 	poison
+	endmove
+
+Toxic:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	checkhit
+	bounceback
+	stab
+	checksafeguard
+	toxic
 	endmove
 
 DoBurn:

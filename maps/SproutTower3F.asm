@@ -30,7 +30,7 @@ SproutTower3F_MapScriptHeader:
 	const SPROUTTOWER3F_SILVER
 
 UnknownScript_0x184947:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	playsound SFX_TACKLE
@@ -44,12 +44,12 @@ UnknownScript_0x184947:
 	applyonemovement SPROUTTOWER3F_SILVER, step_up
 	showtext UnknownText_0x184a27
 	showemote EMOTE_SHOCK, SPROUTTOWER3F_SILVER, 15
-	spriteface SPROUTTOWER3F_SILVER, DOWN
+	turnobject SPROUTTOWER3F_SILVER, DOWN
 	pause 15
 	applymovement SPROUTTOWER3F_SILVER, MovementData_0x184a24
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UnknownText_0x184aec
-	spriteface SPROUTTOWER3F_SILVER, UP
+	turnobject SPROUTTOWER3F_SILVER, UP
 	opentext
 	writetext UnknownText_0x184bc8
 	pause 15
@@ -60,7 +60,7 @@ UnknownScript_0x184947:
 	disappear SPROUTTOWER3F_SILVER
 	waitsfx
 	special Special_FadeInQuickly
-	dotrigger $1
+	setscene $1
 	special RestartMapMusic
 	end
 

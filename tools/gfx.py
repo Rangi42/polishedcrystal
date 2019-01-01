@@ -396,7 +396,7 @@ def export_2bpp_to_png(filein, fileout=None, pal_file=None, height=0, width=0, t
             arguments['pal_file'] = os.path.splitext(fileout)[0]+'.pal'
 
     arguments['is_tileset'] = 'tilesets' in filein
-    arguments['is_overworld'] = 'overworld' in filein
+    arguments['is_overworld'] = 'sprites' in filein
     result = convert_2bpp_to_png(image, **arguments)
     width, height, palette, greyscale, bitdepth, px_map = result
 

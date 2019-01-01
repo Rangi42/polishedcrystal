@@ -36,7 +36,7 @@ OlivinePortTrigger0:
 UnknownScript_0x748b1:
 	applyonemovement PLAYER, step_up
 	appear OLIVINEPORT_SAILOR1
-	dotrigger $0
+	setscene $0
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	blackoutmod OLIVINE_CITY
 	end
@@ -49,7 +49,7 @@ SailorScript_0x748c0:
 	writetext UnknownText_0x74a55
 	waitbutton
 	closetext
-	spriteface OLIVINEPORT_SAILOR1, DOWN
+	turnobject OLIVINEPORT_SAILOR1, DOWN
 	pause 10
 	playsound SFX_EXIT_BUILDING
 	disappear OLIVINEPORT_SAILOR1
@@ -75,7 +75,7 @@ SailorScript_0x748c0:
 UnknownScript_0x7490a:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
-	domaptrigger FAST_SHIP_1F, $1
+	setmapscene FAST_SHIP_1F, $1
 	warp FAST_SHIP_1F, 25, 1
 	end
 
@@ -83,21 +83,21 @@ UnknownScript_0x74919:
 	jumpopenedtext UnknownText_0x74a80
 
 UnknownScript_0x7491f:
-	spriteface OLIVINEPORT_SAILOR3, RIGHT
+	turnobject OLIVINEPORT_SAILOR3, RIGHT
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x7498b
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x7498b
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse UnknownScript_0x7494e
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, UnknownScript_0x74977
-	if_equal SATURDAY, UnknownScript_0x74977
-	if_equal TUESDAY, UnknownScript_0x74981
-	if_equal WEDNESDAY, UnknownScript_0x74981
-	if_equal THURSDAY, UnknownScript_0x74981
+	ifequal SUNDAY, UnknownScript_0x74977
+	ifequal SATURDAY, UnknownScript_0x74977
+	ifequal TUESDAY, UnknownScript_0x74981
+	ifequal WEDNESDAY, UnknownScript_0x74981
+	ifequal THURSDAY, UnknownScript_0x74981
 UnknownScript_0x7494e:
 	writetext UnknownText_0x74a9c
 	yesorno
@@ -155,11 +155,11 @@ SailorScript_0x7499c:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse UnknownScript_0x749c0
 	checkcode VAR_WEEKDAY
-	if_equal SUNDAY, UnknownScript_0x749f2
-	if_equal SATURDAY, UnknownScript_0x749f2
-	if_equal TUESDAY, UnknownScript_0x749f8
-	if_equal WEDNESDAY, UnknownScript_0x749f8
-	if_equal THURSDAY, UnknownScript_0x749f8
+	ifequal SUNDAY, UnknownScript_0x749f2
+	ifequal SATURDAY, UnknownScript_0x749f2
+	ifequal TUESDAY, UnknownScript_0x749f8
+	ifequal WEDNESDAY, UnknownScript_0x749f8
+	ifequal THURSDAY, UnknownScript_0x749f8
 UnknownScript_0x749c0:
 	writetext UnknownText_0x74a9c
 	yesorno
@@ -173,7 +173,7 @@ UnknownScript_0x749c0:
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	checkcode VAR_FACING
-	if_equal RIGHT, UnknownScript_0x749e5
+	ifequal RIGHT, UnknownScript_0x749e5
 	applymovement PLAYER, MovementData_0x74a3f
 	jump SailorScript_0x748c0
 
@@ -192,22 +192,22 @@ UnknownScript_0x749f8:
 
 FishingGuruScript_0x74a01:
 	showtextfaceplayer UnknownText_0x74bf4
-	spriteface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 FishingGuruScript_0x74a0c:
 	showtextfaceplayer UnknownText_0x74c35
-	spriteface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 YoungsterScript_0x74a17:
 	showtextfaceplayer UnknownText_0x74c76
-	spriteface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 CooltrainerFScript_0x74a22:
 	showtextfaceplayer UnknownText_0x74ca2
-	spriteface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 MovementData_0x74a34:

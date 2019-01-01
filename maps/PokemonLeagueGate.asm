@@ -27,14 +27,14 @@ PokemonLeagueGate_MapScriptHeader:
 PokemonLeagueGateXYTriggerScript2:
 	applyonemovement PLAYER, step_left
 PokemonLeagueGateXYTriggerScript1:
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	jump UnknownScript_0x9ba04
 
 OfficerScript_0x9ba03:
 	faceplayer
 UnknownScript_0x9ba04:
 	showtext UnknownText_0x9ba29
-	dotrigger $1
+	setscene $1
 	end
 
 UnknownText_0x9ba29:

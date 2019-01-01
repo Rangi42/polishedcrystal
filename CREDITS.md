@@ -18,7 +18,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
-* ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
+* ShockSlayer for fixing the InitBattleDisplay and FinalPkmnSlideInEnemyMonFrontpic routines.
 * pfero for the improved GetAnimatedFrontpic routine and the BGMap0 fill-tile bug.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
@@ -27,9 +27,9 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Music
 
 * Mmmmmm for many music covers from RSE, DPPt, HGSS, BW, B2W2, and XY.
-* FroggestSpirit for ported and demixed music from RBY, HGSS, DPPt, and BW.
-* Pum for the Flannery, Maylene, and Valerie battle and Lugia theme music.
-* ShantyTown for the Rock Tunnel (XY Power Plant) and Cycling Road (XY Bicycle) music.
+* FroggestSpirit for many music covers from RBY, HGSS, DPPt, and BW.
+* Pum for the BW and XY Gym Leader battle music.
+* ShantyTown for the XY Power Plant and Bicycle music.
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
 * ShockSlayer for some Pokémon Go and Pokémon Stadium battle music.
 * LevusBevus, GRonnoc, Cat333Pokemon, and KoolBoyMan for some music from Pokémon Prism (available in the music player).
@@ -39,7 +39,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
-* JaceDeane for Pokémon and trainer sprites, as well as some tiles.
+* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, and some tiles.
 * bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
@@ -47,14 +47,15 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.
-* Mateo for some sprites and tiles.
+* isamuakai01 for sprites of Steven and Cynthia.
+* Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* isamuakai01 for Steven's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
+* Paps for Twins' sprite.
 * coraldev for rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
@@ -67,7 +68,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 ## Content
 
-* Mateo for the shared universe of Red++ and Pokémon Christmas, including Shamouti Island and Ecruteak Shrine.
+* Luna for the shared universe of Red++ and Pokémon Christmas, including Shamouti Island and Ecruteak Shrine.
 * Pia Carrot for Valencia Island and Route 49 from Pokémon Orange.
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 * ShockSlayer for Eusine's losing text.
@@ -77,7 +78,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 ## Special Thanks
 
 * yenatch, kanzure, Pikalax, iimarckus, and everyone else who's contributed to disassembling Pokémon Crystal.
-* Mateo for his inspiring Red++ ROM hack, and help on Skeetendo.
+* Luna for her inspiring Red++ ROM hack, and help on Skeetendo.
 * Crystal_ for his in-depth RBY/GSC mechanics research, and help on /r/PokemonROMhacks.
 * Tauwasser, comet, and other members of Skeetendo for help and advice.
 * Satoshi Tajiri, Game Freak, and Nintendo for creating Pokémon Crystal in the first place.

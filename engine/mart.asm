@@ -492,7 +492,7 @@ BuyMenu_InitGFX:
 	call DisableSpriteUpdates
 	call DisableLCD
 	ld hl, PackLeftColumnGFX
-	ld de, VTiles2 tile $0e
+	ld de, VTiles2 tile $15
 	ld bc, 18 tiles
 	ld a, BANK(PackLeftColumnGFX)
 	call FarCopyBytes
@@ -539,15 +539,15 @@ BuyMenu_InitGFX:
 	jp DelayFrame
 
 .BuyLeftColumnTilemapString:
-	db $0e, $0e, $0e, $0e, $0e, $00
-	db $0e, $0e, $0e, $0e, $0e, $00
-	db $0e, $0e, $0e, $0e, $0e, $00
-	db $0e, $0e, $0e, $0e, $0e, $00
-	db $0f, $10, $10, $10, $11, $00
-	db $12, $17, $18, $19, $13, $00
-	db $12, $1a, $1b, $1c, $13, $00
-	db $12, $1d, $1e, $1f, $13, $00
-	db $14, $15, $15, $15, $16, $ff
+	db $15, $15, $15, $15, $15, 0
+	db $15, $15, $15, $15, $15, 0
+	db $15, $15, $15, $15, $15, 0
+	db $15, $15, $15, $15, $15, 0
+	db $16, $17, $17, $17, $18, 0
+	db $19, $1e, $1f, $20, $1a, 0
+	db $19, $21, $22, $23, $1a, 0
+	db $19, $24, $25, $26, $1a, 0
+	db $1b, $1c, $1c, $1c, $1d, -1
 
 LoadBuyMenuText: ; 15c7d
 ; load text from a nested table

@@ -26,12 +26,12 @@ HallOfFameEntranceTrigger:
 	follow HALLOFFAME_LANCE, PLAYER
 	applymovement HALLOFFAME_LANCE, .WalkUpMovement
 	stopfollow
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	opentext
 	writetext .LanceText1
 	waitbutton
 	checkcode VAR_BADGES
-	if_equal 16, .CheckGoldTrophy
+	ifequal 16, .CheckGoldTrophy
 	checkevent EVENT_DECO_SILVER_TROPHY
 	iftrue .NoTrophy
 	jump .SilverTrophy
@@ -65,14 +65,14 @@ HallOfFameEntranceTrigger:
 	writetext .LanceText2
 	waitbutton
 	closetext
-	spriteface HALLOFFAME_LANCE, UP
+	turnobject HALLOFFAME_LANCE, UP
 	applyonemovement PLAYER, slow_step_up
-	dotrigger $1
+	setscene $1
 	pause 15
 	writebyte 2 ; Machine is in the Hall of Fame
 	special HealMachineAnim
 	checkcode VAR_BADGES
-	if_less_than 16, .NotATrueRematch
+	ifless 16, .NotATrueRematch
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
 .NotATrueRematch
 	setevent EVENT_BEAT_ELITE_FOUR
@@ -81,7 +81,7 @@ HallOfFameEntranceTrigger:
 	setevent EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	clearevent EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	special RespawnOneOffs
-	domaptrigger SPROUT_TOWER_3F, $1
+	setmapscene SPROUT_TOWER_3F, $1
 	special HealParty
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftrue .SkipPhoneCall

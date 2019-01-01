@@ -51,11 +51,11 @@ FastShip1FPriorityJump2:
 	clearevent EVENT_FAST_SHIP_HAS_ARRIVED
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iftrue .SkipGrandpa
-	dotrigger $2
+	setscene $2
 	end
 
 .SkipGrandpa:
-	dotrigger $0
+	setscene $0
 	end
 
 SailorScript_0x75160:
@@ -87,7 +87,7 @@ SailorScript_0x75160:
 	special FadeOutPalettes
 	waitsfx
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	domaptrigger VERMILION_PORT, $1
+	setmapscene VERMILION_PORT, $1
 	warp VERMILION_PORT, 7, 17
 	end
 
@@ -100,13 +100,13 @@ SailorScript_0x75160:
 	special FadeOutPalettes
 	waitsfx
 	setevent EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	domaptrigger OLIVINE_PORT, $1
+	setmapscene OLIVINE_PORT, $1
 	warp OLIVINE_PORT, 7, 23
 	end
 
 .LetThePlayerOut:
 	checkcode VAR_FACING
-	if_equal RIGHT, .YouAreFacingRight
+	ifequal RIGHT, .YouAreFacingRight
 	applymovement FASTSHIP1F_SAILOR1, MovementData_0x7520e
 	applymovement PLAYER, MovementData_0x75235
 	end
@@ -122,7 +122,7 @@ SailorScript_0x751d0:
 	jumptextfaceplayer UnknownText_0x752f9
 
 WorriedGrandpaTriggerRight:
-	moveperson FASTSHIP1F_GENTLEMAN, 20, 6
+	moveobject FASTSHIP1F_GENTLEMAN, 20, 6
 WorriedGrandpaTriggerLeft:
 	appear FASTSHIP1F_GENTLEMAN
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b
@@ -130,10 +130,10 @@ WorriedGrandpaTriggerLeft:
 	applymovement PLAYER, MovementData_0x7522e
 	applyonemovement FASTSHIP1F_GENTLEMAN, step_right
 	showtext UnknownText_0x75412
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
 	disappear FASTSHIP1F_GENTLEMAN
-	dotrigger $0
+	setscene $0
 	end
 
 MovementData_0x7520e:

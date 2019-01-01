@@ -47,13 +47,13 @@ GetPlayerBackpic: ; 88825
 	ret
 
 ChrisBackpic: ; 2ba1a
-INCBIN "gfx/backs/chris_back.6x6.2bpp.lz"
+INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
 
 KrisBackpic: ; 88ed6
-INCBIN "gfx/backs/kris_back.6x6.2bpp.lz"
+INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
 
 LyraBackpic: ; 2bbaa
-INCBIN "gfx/backs/lyra_back.6x6.2bpp.lz"
+INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
 
 
 HOF_LoadTrainerFrontpic: ; 88840

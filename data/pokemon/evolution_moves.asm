@@ -184,7 +184,11 @@ EvolutionMoves::
 	db NO_MOVE      ; SUDOWOODO
 	db GIGA_DRAIN   ; POLITOED
 	db NO_MOVE      ; SUNKERN
+if DEF(FAITHFUL)
+	db NO_MOVE      ; SUNFLORA
+else
 	db EMBER        ; SUNFLORA
+endc
 	db NO_MOVE      ; YANMA
 	db DRAGONBREATH ; YANMEGA
 	db NO_MOVE      ; WOOPER

@@ -28,7 +28,7 @@ ValenciaPortSailorScript:
 	writetext .DepartText
 	waitbutton
 	closetext
-	spriteface VALENCIAPORT_SAILOR, UP
+	turnobject VALENCIAPORT_SAILOR, UP
 	pause 10
 	playsound SFX_EXIT_BUILDING
 	disappear VALENCIAPORT_SAILOR
@@ -37,7 +37,7 @@ ValenciaPortSailorScript:
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
-	domaptrigger SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
+	setmapscene SEAGALLOP_FERRY_SHAMOUTI_GATE, $1
 	warp SEAGALLOP_FERRY_SHAMOUTI_GATE, 6, 5
 	end
 

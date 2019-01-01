@@ -21,7 +21,7 @@ UnknownScript_0x1ad318:
 	return
 
 OfficerfJamieScript:
-	checknite
+	checktime 1 << NITE
 	iffalse_jumptextfaceplayer OfficerfJamieDaytimeText
 	checkevent EVENT_BEAT_OFFICERF_JAMIE
 	iftrue_jumptextfaceplayer OfficerfJamieAfterText

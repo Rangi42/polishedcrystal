@@ -9,7 +9,8 @@ IvysLab_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 13 ; bg events
+	db 14 ; bg events
+	bg_event  5,  0, SIGNPOST_JUMPTEXT, IvysLabWindowText
 	bg_event  2,  1, SIGNPOST_READ, IvysLabHealingMachine
 	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -25,8 +26,8 @@ IvysLab_MapScriptHeader:
 	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 3 ; object events
-	object_event  4,  2, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
-	object_event  5,  2, SPRITE_NIDORINO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
+	object_event  4,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
+	object_event  5,  3, SPRITE_NIDORINO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
 	object_event  2,  9, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
 	const_def 1 ; object constants
@@ -53,7 +54,7 @@ ProfIvyScript:
 	writetext .OkayText
 	waitbutton
 	closetext
-	spriteface IVYSLAB_IVY, RIGHT
+	turnobject IVYSLAB_IVY, RIGHT
 	pause 15
 	playmusic MUSIC_HEAL
 	pause 60
@@ -221,6 +222,13 @@ IvysLabNidorinoScript:
 
 IvysLabNidorinoText:
 	text "Nidorino: Gyun!"
+	done
+
+IvysLabWindowText:
+	text "The window's open."
+
+	para "An ocean breeze"
+	line "is blowing in."
 	done
 
 IvysLabHealingMachine:

@@ -42,7 +42,7 @@ EcruteakHouseInitializeSages:
 	setevent EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
 	checkitem CLEAR_BELL
 	iftrue .NoClearBell
-	dotrigger $0
+	setscene $0
 .NoClearBell:
 	return
 
@@ -54,7 +54,7 @@ EcruteakHouse_XYTrigger1:
 	checkevent EVENT_RANG_CLEAR_BELL_2
 	iftrue EcruteakHouse_XYTrigger_DontMove
 	applymovement ECRUTEAKHOUSE_SAGE2, MovementData_0x980c7
-	moveperson ECRUTEAKHOUSE_SAGE1, 4, 6
+	moveobject ECRUTEAKHOUSE_SAGE1, 4, 6
 	appear ECRUTEAKHOUSE_SAGE1
 	pause 5
 	disappear ECRUTEAKHOUSE_SAGE2
@@ -64,7 +64,7 @@ EcruteakHouse_XYTrigger2:
 	checkevent EVENT_RANG_CLEAR_BELL_1
 	iftrue EcruteakHouse_XYTrigger_DontMove
 	applymovement ECRUTEAKHOUSE_SAGE1, MovementData_0x980cc
-	moveperson ECRUTEAKHOUSE_SAGE2, 5, 6
+	moveobject ECRUTEAKHOUSE_SAGE2, 5, 6
 	appear ECRUTEAKHOUSE_SAGE2
 	pause 5
 	disappear ECRUTEAKHOUSE_SAGE1
@@ -95,7 +95,7 @@ SageScript_0x98062:
 	writetext UnknownText_0x98250
 	waitbutton
 	closetext
-	dotrigger $1
+	setscene $1
 	setevent EVENT_RANG_CLEAR_BELL_2
 	clearevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1

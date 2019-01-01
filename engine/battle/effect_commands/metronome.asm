@@ -16,6 +16,8 @@ BattleCommand_Metronome: ; 37418
 
 .GetMove:
 	call BattleRandom
+	cp STRUGGLE
+	jr z, .GetMove
 
 ; None of the moves in MetronomeExcepts.
 	push af
@@ -49,7 +51,6 @@ MetronomeExcepts: ; 37454
 	db PROTECT
 	db SKETCH
 	db SLEEP_TALK
-	db STRUGGLE
 	db THIEF
 	db TRANSFORM
 	db -1

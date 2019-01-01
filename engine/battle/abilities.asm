@@ -454,14 +454,19 @@ SynchronizeAbility:
 	call DisableAnimations
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	cp 1 << PSN
-	jr z, .is_psn
+	cp 1 << PAR
+	jr z, .is_par
 	cp 1 << BRN
 	jr z, .is_brn
-	farcall BattleCommand_Paralyze
+	cp 1 << PSN
+	jr z, .is_psn
+	farcall BattleCommand_Toxic
 	jp EnableAnimations
 .is_psn
 	farcall BattleCommand_Poison
+	jp EnableAnimations
+.is_par
+	farcall BattleCommand_Paralyze
 	jp EnableAnimations
 .is_brn
 	farcall BattleCommand_Burn
@@ -634,6 +639,9 @@ FlameBodyAbility:
 PoisonTouchAbility:
 	; Poison Touch is the same as an opposing Poison Point, and since
 	; abilities always run from the ability user's POV...
+	; Doesn't apply when opponent has a Substitute up...
+	farcall CheckSubstituteOpp
+	ret nz
 PoisonPointAbility:
 	call CheckIfTargetIsPoisonType
 	ret z
@@ -932,8 +940,10 @@ FlashFireAbility:
 	ld hl, FirePoweredUpText
 	jp StdBattleTextBox
 .already_fired_up
+	call SwitchTurn
 	ld hl, DoesntAffectText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp SwitchTurn
 
 DrySkinAbility:
 VoltAbsorbAbility:

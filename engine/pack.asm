@@ -1309,6 +1309,22 @@ Pack_PrintTextNoScroll: ; 10889 (4:4889)
 WaitBGMap_DrawPackGFX: ; 1089a (4:489a)
 	call WaitBGMap
 DrawPackGFX: ; 1089d
+	; place top row
+	ld hl, PackTopRowStrings
+	ld bc, 20
+	ld a, [wCurrPocket]
+	and $7
+	call AddNTimes
+	decoord 0, 0
+	ld b, 20
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .loop
+
+	; place pack gfx
 	ld a, [wCurrPocket]
 	and $7
 	ld e, a
@@ -1325,7 +1341,7 @@ DrawPackGFX: ; 1089d
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld hl, VTiles2 tile $20
+	ld hl, VTiles2 tile $27
 	lb bc, BANK(PackGFX), 25
 	jp Request2bpp
 
@@ -1336,10 +1352,18 @@ DrawPackGFX: ; 1089d
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	ld hl, VTiles2 tile $20
+	ld hl, VTiles2 tile $27
 	lb bc, BANK(PackFGFX), 25
 	jp Request2bpp
 ; 108cc
+
+PackTopRowStrings:
+	db $01, $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; Items
+	db $02, $03, $04, $01, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; Medicine
+	db $02, $03, $04, $05, $06, $07, $01, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; Balls
+	db $02, $03, $04, $05, $06, $07, $08, $09, $0a, $01, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; TM/HM
+	db $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $01, $0f, $10, $11, $12, $13, $14 ; Berries
+	db $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $01, $13, $14 ; Key Items
 
 PackGFXPointers: ; 108cc
 	dw PackGFX + (25 tiles) * 0 ; Items
@@ -1447,18 +1471,18 @@ Pack_InitGFX: ; 10955
 	call ClearTileMap
 	call ClearSprites
 	call DisableLCD
-	ld hl, PackMenuGFX
+	ld hl, PackMenuGFX ; PackLeftColumnGFX is after it
 	ld de, VTiles2 tile $01
-	ld bc, 31 tiles
+	ld bc, (20 + 18) tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
 	lb bc, 11, 15
 	call ClearBox
-; Place the top row and left column
-	hlcoord 0, 0
-	ld de, .PackTilemapString
+; Place the left column
+	hlcoord 0, 1
+	ld de, .PackLeftColumnTilemapString
 	ld bc, SCREEN_WIDTH - 5
 .loop
 	ld a, [de]
@@ -1482,24 +1506,18 @@ Pack_InitGFX: ; 10955
 	jp DrawPackGFX
 ; 109a5
 
-.PackTilemapString:
-	; Top row
-	db $02, $03, $04, $05, $06, $07 ; ◀▶ POCKET
-	db $01, $01, $01, $01
-	db $08, $09, $0a, $0b, $0c, $0d ; ▼▲ ITEMS
-	db $01, $01, $01, $01
-	; Left column
-	db $0e, $0e, $0e, $0e, $0e, $00 ; Background (blue if male, pink if female)
-	db $20, $21, $22, $23, $24, $00 ; Pack image
-	db $25, $26, $27, $28, $29, $00
-	db $2a, $2b, $2c, $2d, $2e, $00
-	db $2f, $30, $31, $32, $33, $00
-	db $34, $35, $36, $37, $38, $00
-	db $0f, $10, $10, $10, $11, $00 ; Item icon
-	db $12, $17, $18, $19, $13, $00
-	db $12, $1a, $1b, $1c, $13, $00
-	db $12, $1d, $1e, $1f, $13, $00
-	db $14, $15, $15, $15, $16, $ff
+.PackLeftColumnTilemapString:
+	db $15, $15, $15, $15, $15, 0 ; Background (blue if male, pink if female)
+	db $27, $28, $29, $2a, $2b, 0 ; Pack image
+	db $2c, $2d, $2e, $2f, $30, 0
+	db $31, $32, $33, $34, $35, 0
+	db $36, $37, $38, $39, $3a, 0
+	db $3b, $3c, $3d, $3e, $3f, 0
+	db $16, $17, $17, $17, $18, 0 ; Item icon
+	db $19, $1e, $1f, $20, $1a, 0
+	db $19, $21, $22, $23, $1a, 0
+	db $19, $24, $25, $26, $1a, 0
+	db $1b, $1c, $1c, $1c, $1d, -1
 
 Pack_GetItemName: ; 10a1d
 	ld a, [wCurItem]

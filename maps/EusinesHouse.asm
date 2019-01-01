@@ -71,7 +71,7 @@ CeladonEusine:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	if_not_equal UP, .PathClear
+	ifnotequal UP, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
 .PathClear:
 	applymovement EUSINESHOUSE_EUSINE, .EusineLeavesMovement

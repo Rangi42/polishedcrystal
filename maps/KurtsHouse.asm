@@ -66,8 +66,8 @@ KurtScript_0x18e178:
 	special Special_FadeOutMusic
 	setevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
 	checkcode VAR_FACING
-	if_equal UP, .RunAround
-	spriteface PLAYER, DOWN
+	ifequal UP, .RunAround
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e466
 	playsound SFX_EXIT_BUILDING
@@ -77,7 +77,7 @@ KurtScript_0x18e178:
 	end
 
 .RunAround:
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e46c
 	playsound SFX_EXIT_BUILDING
@@ -141,12 +141,12 @@ endr
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special Special_SelectApricornForKurt
 	iffalse_jumpopenedtext UnknownText_0x18e7bc
-	if_equal BLU_APRICORN, .Blu
-	if_equal YLW_APRICORN, .Ylw
-	if_equal GRN_APRICORN, .Grn
-	if_equal WHT_APRICORN, .Wht
-	if_equal BLK_APRICORN, .Blk
-	if_equal PNK_APRICORN, .Pnk
+	ifequal BLU_APRICORN, .Blu
+	ifequal YLW_APRICORN, .Ylw
+	ifequal GRN_APRICORN, .Grn
+	ifequal WHT_APRICORN, .Wht
+	ifequal BLK_APRICORN, .Blk
+	ifequal PNK_APRICORN, .Pnk
 ; .Red
 	setevent EVENT_GAVE_KURT_RED_APRICORN
 	jump .GaveKurtApricorns
@@ -182,7 +182,7 @@ endr
 	applymovement KURTSHOUSE_KURT1, KurtsHouseFollowKurt_MovementData
 	stopfollow
 	pause 15
-	spriteface KURTSHOUSE_KURT1, DOWN
+	turnobject KURTSHOUSE_KURT1, DOWN
 	showtext UnknownText_0x18e779
 	applymovement PLAYER, KurtsHouseStepAwayFromKurt_MovementData
 	special Special_FadeBlackQuickly
@@ -298,14 +298,14 @@ endr
 	pause 20
 	showemote EMOTE_SHOCK, KURTSHOUSE_KURT1, 30
 	checkcode VAR_FACING
-	if_equal UP, .GSBallRunAround
-	spriteface PLAYER, DOWN
+	ifequal UP, .GSBallRunAround
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e466
 	jump .KurtHasLeftTheBuilding
 
 .GSBallRunAround:
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, MovementData_0x18e46c
 .KurtHasLeftTheBuilding:
@@ -314,7 +314,7 @@ endr
 	clearevent EVENT_AZALEA_TOWN_KURT
 	waitsfx
 	special RestartMapMusic
-	domaptrigger AZALEA_TOWN, $2
+	setmapscene AZALEA_TOWN, $2
 	end
 
 KurtScript_0x18e3bd:
@@ -328,21 +328,21 @@ KurtMakingBallsScript:
 	writetext UnknownText_0x18e7d8
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	end
 
 Script_FirstTimeBuggingKurt:
 	writetext UnknownText_0x18e863
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	setevent EVENT_BUGGING_KURT_TOO_MUCH
 	end
 
 KurtScript_ImCheckingItNow:
 	writetext UnknownText_0x18e934
 	waitbutton
-	spriteface LAST_TALKED, UP
+	turnobject LAST_TALKED, UP
 	jumpopenedtext UnknownText_0x18e949
 
 KurtsGranddaughter1:
@@ -370,14 +370,14 @@ KurtsGranddaughter2Subscript:
 	writetext KurtsGranddaughterHelpText
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .GSBall:
 	writetext KurtsGranddaughterGSBallText
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 PokemonJournalProfWestwoodScript:

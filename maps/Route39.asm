@@ -57,8 +57,8 @@ UnknownScript_0x1a5b33:
 	scall UnknownScript_0x1a5b66
 UnknownScript_0x1a5b36:
 	askforphonenumber PHONE_POKEFANM_DEREK
-	if_equal $1, UnknownScript_0x1a5b76
-	if_equal $2, UnknownScript_0x1a5b72
+	ifequal $1, UnknownScript_0x1a5b76
+	ifequal $2, UnknownScript_0x1a5b72
 	trainertotext POKEFANM, DEREK1, $0
 	scall UnknownScript_0x1a5b6a
 	jump UnknownScript_0x1a5b6e
@@ -255,7 +255,7 @@ GenericTrainerPsychicNorman:
 PokefanFScript_0x1a5bbe:
 	faceplayer
 	opentext
-	checknite
+	checktime 1 << NITE
 	iffalse UnknownScript_0x1a5be5
 	checkevent EVENT_BEAT_POKEFANF_JAIME
 	iftrue UnknownScript_0x1a5bdf

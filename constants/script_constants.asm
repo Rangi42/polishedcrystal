@@ -2,6 +2,7 @@
 PLAYER      EQU  0
 LAST_TALKED EQU -2
 
+
 	const_def
 	const VAR_STRINGBUFFER2    ; 00
 	const VAR_PARTYCOUNT       ; 01
@@ -39,6 +40,7 @@ RETVAR_STRBUF2 EQU (0 << 6)
 RETVAR_ADDR_DE EQU (1 << 6)
 RETVAR_EXECUTE EQU (2 << 6)
 
+
 ; see engine/events.asm:PlayerEventScriptPointers
 	const_def -1
 	const PLAYEREVENT_MAPSCRIPT
@@ -54,6 +56,7 @@ RETVAR_EXECUTE EQU (2 << 6)
 	const PLAYEREVENT_JOYCHANGEFACING
 	const PLAYEREVENT_TMHMBALL
 NUM_PLAYER_EVENTS EQU const_value
+
 
 ; see engine/events.asm:TryReadSign.signs
 	const_def
@@ -82,6 +85,13 @@ SIGNPOST_ITEM EQU const_value
 	const PERSONTYPE_POKEMON        ; 4
 	const PERSONTYPE_COMMAND        ; 5
 NUM_PERSONTYPES EQU const_value
+
+
+CMDQUEUE_ENTRY_SIZE EQU 6
+CMDQUEUE_CAPACITY EQU 4
+CMDQUEUE_ADDR EQU 1 ; offsets 0, 3, 4, and 5 are unused
+CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
+
 
 ; elevator floors
 	const_def
@@ -163,9 +173,9 @@ NUM_FRUIT_TREES EQU const_value +- 1
 ; see engine/hidden_grottoes.asm:HiddenGrottoData
 	const_def 1
 	const HIDDENGROTTO_ROUTE_32           ; 01
-	const HIDDENGROTTO_ROUTE_35           ; 02
-	const HIDDENGROTTO_LAKE_OF_RAGE       ; 03
-	const HIDDENGROTTO_04                 ; 04
+	const HIDDENGROTTO_ILEX_FOREST        ; 02
+	const HIDDENGROTTO_ROUTE_35           ; 03
+	const HIDDENGROTTO_LAKE_OF_RAGE       ; 04
 	const HIDDENGROTTO_05                 ; 05
 	const HIDDENGROTTO_06                 ; 06
 	const HIDDENGROTTO_07                 ; 07
@@ -187,14 +197,26 @@ NUM_FRUIT_TREES EQU const_value +- 1
 	const HIDDENGROTTO_17                 ; 17
 NUM_HIDDEN_GROTTOES EQU const_value +- 1
 
-CMDQUEUE_ENTRY_SIZE EQU 6
-CMDQUEUE_CAPACITY EQU 4
-CMDQUEUE_ADDR EQU 1 ; offsets 0, 3, 4, and 5 are unused
-CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
+; swarm arguments
+; StoreSwarmMapIndices arguments
+	const_def
+	const SWARM_DUNSPARCE ; 0
+	const SWARM_YANMA     ; 1
 
 
-SWARM_DUNSPARCE EQU 0
-SWARM_YANMA     EQU 1
+; ActivateFishingSwarm writebyte arguments
+	const_def
+	const FISHSWARM_NONE     ; 0
+	const FISHSWARM_QWILFISH ; 1
+	const FISHSWARM_REMORAID ; 2
 
-FISHSWARM_QWILFISH EQU 1
-FISHSWARM_REMORAID EQU 2
+; paintings
+	const_def
+	const HO_OH_PAINTING
+	const LUGIA_PAINTING
+	const BELL_TOWER_PAINTING
+	const KABUTO_PUZZLE
+	const OMANYTE_PUZZLE
+	const AERODACTYL_PUZZLE
+	const HO_OH_PUZZLE
+NUM_PAINTINGS EQU const_value

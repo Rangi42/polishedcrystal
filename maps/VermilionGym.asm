@@ -82,9 +82,9 @@ SurgeScript_0x1920a5:
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
 	checkcode VAR_BADGES
-	if_equal 9, .FirstBadge
-	if_equal 10, .SecondBadge
-	if_equal 12, .LyrasEgg
+	ifequal 9, .FirstBadge
+	ifequal 10, .SecondBadge
+	ifequal 12, .LyrasEgg
 	jump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE

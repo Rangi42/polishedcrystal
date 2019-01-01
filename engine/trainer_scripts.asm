@@ -13,7 +13,7 @@ SeenByTrainerScript:: ; 0xbe675
 	callasm TrainerWalkToPlayer
 	applymovement2 wMovementBuffer
 	writepersonxy LAST_TALKED
-	faceperson PLAYER, LAST_TALKED
+	faceobject PLAYER, LAST_TALKED
 	jump StartBattleWithMapTrainerScript
 
 StartBattleWithMapTrainerScript: ; 0xbe68a

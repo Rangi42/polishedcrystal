@@ -28,7 +28,7 @@ SaffronCity_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 7 ; bg events
+	db 9 ; bg events
 	bg_event 21,  5, SIGNPOST_JUMPTEXT, SaffronCitySignText
 	bg_event 33,  5, SIGNPOST_JUMPTEXT, SaffronGymSignText
 	bg_event 25,  5, SIGNPOST_JUMPTEXT, FightingDojoSignText
@@ -36,6 +36,8 @@ SaffronCity_MapScriptHeader:
 	bg_event 25, 29, SIGNPOST_JUMPTEXT, MrPsychicsHouseSignText
 	bg_event 11,  5, SIGNPOST_JUMPTEXT, SaffronCityMagnetTrainStationSignText
 	bg_event 32, 12, SIGNPOST_JUMPTEXT, PokemonTrainerFanClubSignText
+	bg_event  5, 21, SIGNPOST_JUMPTEXT, SaffronTrainerTips1Text
+	bg_event 35, 21, SIGNPOST_JUMPTEXT, SaffronTrainerTips2Text
 
 	db 13 ; object events
 	object_event  7, 14, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
@@ -295,4 +297,29 @@ PokemonTrainerFanClubSignText:
 	para "Many trainers have"
 	line "scribbled their"
 	cont "names here…"
+	done
+
+SaffronTrainerTips1Text:
+	text "Trainer Tips"
+
+	para "New SilphScope2"
+	line "identifies even"
+
+	para "the most well-"
+	line "disguised #mon!"
+	done
+
+SaffronTrainerTips2Text:
+	text "Trainer Tips"
+
+	para "Use Quick Balls"
+	line "early during a"
+	cont "battle. Later,"
+	cont "use Timer Balls."
+
+	para "They cost more"
+	line "than # Balls,"
+
+	para "but they're more"
+	line "convenient."
 	done

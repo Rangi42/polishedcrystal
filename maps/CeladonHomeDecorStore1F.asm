@@ -27,17 +27,17 @@ CeladonHomeDecorStore1FClerkScript:
 	writetext CeladonHomeDecorStore1FClerkText
 .Start:
 	special PlaceMoneyTopRight
-	loadmenudata .MenuData
+	loadmenu .MenuData
 	verticalmenu
 	closewindow
-	if_equal $1, .BulbasaurDoll
-	if_equal $2, .CharmanderDoll
-	if_equal $3, .SquirtleDoll
+	ifequal $1, .BulbasaurDoll
+	ifequal $2, .CharmanderDoll
+	ifequal $3, .SquirtleDoll
 	endtext
 
 .BulbasaurDoll:
 	checkmoney $0, 16000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_BULBASAUR_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 16000
@@ -51,7 +51,7 @@ CeladonHomeDecorStore1FClerkScript:
 
 .CharmanderDoll:
 	checkmoney $0, 16000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_CHARMANDER_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 16000
@@ -65,7 +65,7 @@ CeladonHomeDecorStore1FClerkScript:
 
 .SquirtleDoll:
 	checkmoney $0, 16000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	checkevent EVENT_DECO_SQUIRTLE_DOLL
 	iftrue .AlreadyBought
 	takemoney $0, 16000

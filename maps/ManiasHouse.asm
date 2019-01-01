@@ -54,10 +54,10 @@ ManiaScript:
 	yesorno
 	iffalse .refused
 	special SpecialReturnWobbuffet
-	if_equal $0, .wrong
-	if_equal $1, .refused
-	if_equal $3, .superhappy
-	if_equal $4, .default_postevent
+	ifequal $0, .wrong
+	ifequal $1, .refused
+	ifequal $3, .superhappy
+	ifequal $4, .default_postevent
 	writetext ManiaText_ThankYou
 	waitbutton
 	closetext

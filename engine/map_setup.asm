@@ -243,8 +243,6 @@ CheckReplaceKrisSprite: ; 154f7
 	call GetMapPermission
 	cp INDOOR
 	jr z, .checkbiking
-	cp PERM_5
-	jr z, .checkbiking
 	cp DUNGEON
 	jr z, .checkbiking
 	jr .nope

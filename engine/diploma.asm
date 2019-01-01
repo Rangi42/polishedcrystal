@@ -42,7 +42,7 @@ _Diploma: ; 1dd702
 ; 1dd7ae
 
 DiplomaGFX: ; 1dd805
-INCBIN "gfx/misc/diploma.2bpp.lz"
+INCBIN "gfx/diploma/diploma.2bpp.lz"
 
 DiplomaTilemap: ; 1ddc4b
-INCBIN "gfx/misc/diploma.tilemap"
+INCBIN "gfx/diploma/diploma.tilemap"

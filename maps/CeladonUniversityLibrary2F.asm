@@ -72,7 +72,7 @@ CeladonUniversityLibrary2FLassText:
 CeladonUniversityLibrary2FArtistScript:
 	showtext .Text1
 	showtextfaceplayer .Text2
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .Text1:

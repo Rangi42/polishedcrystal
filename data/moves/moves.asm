@@ -38,7 +38,7 @@ else
 	move FLY,          EFFECT_FLY,                90, FLYING,    100, 15,   0, PHYSICAL
 endc
 	move DAZZLINGLEAM, EFFECT_NORMAL_HIT,         80, FAIRY,     100, 10,   0, SPECIAL
-	move VOLT_SWITCH,  EFFECT_SWITCH_HIT,         70, ELECTRIC,   70, 20,   0, SPECIAL
+	move VOLT_SWITCH,  EFFECT_SWITCH_HIT,         70, ELECTRIC,  100, 20,   0, SPECIAL
 	move VINE_WHIP,    EFFECT_NORMAL_HIT,         45, GRASS,     100, 25,   0, PHYSICAL
 	move STOMP,        EFFECT_STOMP,              65, NORMAL,    100, 20,  30, PHYSICAL
 	move DOUBLE_KICK,  EFFECT_DOUBLE_HIT,         30, FIGHTING,  100, 30,   0, PHYSICAL
@@ -132,7 +132,7 @@ else
 endc
 	move TOXIC,        EFFECT_TOXIC,               0, POISON,     90, 10,   0, STATUS
 	move CONFUSION,    EFFECT_CONFUSE_HIT,        50, PSYCHIC,   100, 25,  10, SPECIAL
-	move PSYCHIC_M,    EFFECT_SP_DEF_DOWN_HIT,    90, PSYCHIC,   100, 15,   0, SPECIAL
+	move PSYCHIC_M,    EFFECT_SP_DEF_DOWN_HIT,    90, PSYCHIC,   100, 15,  10, SPECIAL
 	move HYPNOSIS,     EFFECT_SLEEP,               0, PSYCHIC,    60, 20,   0, STATUS
 	move HONE_CLAWS,   EFFECT_HONE_CLAWS,          0, DARK,      100, 40,   0, STATUS
 	move AGILITY,      EFFECT_SPEED_UP_2,          0, PSYCHIC,   100, 30,   0, STATUS

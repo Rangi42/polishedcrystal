@@ -42,7 +42,7 @@ FlowerShopTeacherScript:
 	end
 
 .Lalala:
-	spriteface GOLDENRODFLOWERSHOP_TEACHER, LEFT
+	turnobject GOLDENRODFLOWERSHOP_TEACHER, LEFT
 	jumptext UnknownText_0x5552e
 
 .SellMulch:
@@ -50,16 +50,16 @@ FlowerShopTeacherScript:
 	opentext
 	writetext WoukdYouLikeMulchText
 	special PlaceMoneyTopRight
-	loadmenudata .MenuDataHeader
+	loadmenu .MenuDataHeader
 	verticalmenu
 	closewindow
-	if_equal $1, .Buy1
-	if_equal $2, .Buy10
+	ifequal $1, .Buy1
+	ifequal $2, .Buy10
 	jumpopenedtext DontBuyMulchText
 
 .Buy1:
 	checkmoney $0, 200
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem MULCH
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
@@ -67,7 +67,7 @@ FlowerShopTeacherScript:
 
 .Buy10:
 	checkmoney $0, 2000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	giveitem MULCH, 10
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 2000

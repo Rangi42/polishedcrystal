@@ -33,7 +33,7 @@ Route40_MapScriptHeader:
 
 MonicaCallback:
 	checkcode VAR_WEEKDAY
-	if_equal MONDAY, .MonicaAppears
+	ifequal MONDAY, .MonicaAppears
 	disappear ROUTE40_MONICA
 	return
 
@@ -100,7 +100,7 @@ Route40FisherScript:
 	writebyte KNOCK_OFF
 	writetext .ClearText
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	thisopenedtext
 
@@ -164,7 +164,7 @@ MonicaScript:
 	checkevent EVENT_GOT_SHARP_BEAK_FROM_MONICA
 	iftrue_jumptextfaceplayer MonicaMondayText
 	checkcode VAR_WEEKDAY
-	if_not_equal MONDAY, MonicaNotMondayScript
+	ifnotequal MONDAY, MonicaNotMondayScript
 	faceplayer
 	opentext
 	checkevent EVENT_MET_MONICA_OF_MONDAY

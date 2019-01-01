@@ -52,7 +52,7 @@ YellowForestRebattleBreeder:
 	return
 
 YellowForestTileScript:
-	checktriggers
+	checkscene
 	iftrue .underfoot
 	callasm YellowForest_OverheadBridgeAsm
 	return
@@ -87,7 +87,7 @@ YellowForestBridgeUnderfootTrigger:
 	ld a, $1
 YellowForest_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wYellowForestTrigger], a ; dotrigger a
+	ld [wYellowForestTrigger], a ; setscene a
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 GenericTrainerSchoolgirlSarah:
@@ -149,12 +149,12 @@ YellowForestWalkerScript:
 	closetext
 	appear YELLOWFOREST_SKARMORY
 	playsound SFX_BALL_POOF
-	spriteface YELLOWFOREST_WALKER, RIGHT
+	turnobject YELLOWFOREST_WALKER, RIGHT
 	waitsfx
 	pause 15
 	cry SKARMORY
 	waitsfx
-	spriteface YELLOWFOREST_WALKER, DOWN
+	turnobject YELLOWFOREST_WALKER, DOWN
 	showtext YellowForestWalkerFlyText
 	playsound SFX_FLY
 	special Special_FadeBlackQuickly
@@ -227,7 +227,7 @@ YellowForestTutorSeedBombScript:
 	writebyte SEED_BOMB
 	writetext Text_YellowForestTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_YellowForestTutorRefused
 

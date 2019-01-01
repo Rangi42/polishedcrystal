@@ -681,7 +681,7 @@ endr
 
 	hlcoord 1, 8, wAttrMap
 	lb bc, 3, 3
-	ld a, $4
+	ld a, $7
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
@@ -703,23 +703,34 @@ _CGB_PackPals: ; 93d3
 	ld hl, MalePackPals
 .got_gender
 	ld de, wUnknBGPals
-	ld bc, 5 palettes
+	ld bc, 8 palettes
 	ld a, $5
 	call FarCopyWRAM
 
 	call WipeAttrMap
 
 	hlcoord 0, 0, wAttrMap
-	lb bc, 1, 10
-	ld a, $0
-	call FillBoxCGB
-
-	hlcoord 10, 0, wAttrMap
-	lb bc, 1, 10
-	ld a, $1
-	call FillBoxCGB
-
 	ld a, $2
+rept 6
+	ld [hli], a
+endr
+	inc a
+rept 3
+	ld [hli], a
+endr
+	inc a
+rept 4
+	ld [hli], a
+endr
+	inc a
+rept 5
+	ld [hli], a
+endr
+	inc a
+	ld [hli], a
+	ld [hl], a
+
+	ld a, $1
 	hlcoord 7, 2, wAttrMap
 	ld [hl], a
 	hlcoord 7, 4, wAttrMap
@@ -730,15 +741,13 @@ _CGB_PackPals: ; 93d3
 	ld [hl], a
 	hlcoord 7, 10, wAttrMap
 	ld [hl], a
-
 	hlcoord 0, 2, wAttrMap
 	lb bc, 5, 5
-	ld a, $3
 	call FillBoxCGB
 
 	hlcoord 1, 8, wAttrMap
 	lb bc, 3, 3
-	ld a, $4
+	ld a, $7
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout

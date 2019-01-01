@@ -37,7 +37,7 @@ ChuckScript_0x9d60f:
 	writetext ChuckIntroText1
 	waitbutton
 	closetext
-	spriteface CIANWOODGYM_CHUCK, RIGHT
+	turnobject CIANWOODGYM_CHUCK, RIGHT
 	showtext ChuckIntroText2
 	applymovement CIANWOODGYM_BOULDER1, CianwoodGymMovement_ChuckChucksBoulder
 	playsound SFX_STRENGTH
@@ -107,7 +107,7 @@ CianwoodGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 12, .LyraToo
+	ifgreater 12, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

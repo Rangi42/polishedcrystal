@@ -26,7 +26,7 @@ UnionCaveB2FLapras:
 	checkflag ENGINE_UNION_CAVE_LAPRAS
 	iftrue .NoAppear
 	checkcode VAR_WEEKDAY
-	if_equal FRIDAY, .Appear
+	ifequal FRIDAY, .Appear
 .NoAppear:
 	disappear UNIONCAVEB2F_LAPRAS
 	return

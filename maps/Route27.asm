@@ -34,24 +34,24 @@ Route27_MapScriptHeader:
 	const ROUTE27_FISHER
 
 UnknownScript_0x1a0873:
-	spriteface ROUTE27_FISHER, LEFT
+	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
 	applymovement ROUTE27_FISHER, MovementData_0x1a0a66
 	jump UnknownScript_0x1a088c
 
 UnknownScript_0x1a0881:
-	spriteface ROUTE27_FISHER, LEFT
+	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
 	applyonemovement ROUTE27_FISHER, step_left
 UnknownScript_0x1a088c:
-	spriteface PLAYER, RIGHT
+	turnobject PLAYER, RIGHT
 	opentext
 	writetext UnknownText_0x1a0a6b
 	buttonsound
 	writetext UnknownText_0x1a0a71
 	waitbutton
 	closetext
-	dotrigger $1
+	setscene $1
 	end
 
 Route27VeteranfScript:
@@ -210,8 +210,8 @@ UnknownScript_0x1a08e8:
 	scall UnknownScript_0x1a095b
 UnknownScript_0x1a08eb:
 	askforphonenumber PHONE_BIRDKEEPER_JOSE
-	if_equal $1, UnknownScript_0x1a096b
-	if_equal $2, UnknownScript_0x1a0967
+	ifequal $1, UnknownScript_0x1a096b
+	ifequal $2, UnknownScript_0x1a0967
 	trainertotext BIRD_KEEPER, JOSE1, $0
 	scall UnknownScript_0x1a095f
 	jump UnknownScript_0x1a0963
@@ -220,9 +220,9 @@ UnknownScript_0x1a08ff:
 	scall UnknownScript_0x1a096f
 	winlosstext Bird_keeperJose1BeatenText, 0
 	copybytetovar wJoseFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2
@@ -345,8 +345,8 @@ UnknownScript_0x1a09d2:
 	scall UnknownScript_0x1a0a33
 UnknownScript_0x1a09d5:
 	askforphonenumber PHONE_COOLTRAINERF_REENA
-	if_equal $1, UnknownScript_0x1a0a43
-	if_equal $2, UnknownScript_0x1a0a3f
+	ifequal $1, UnknownScript_0x1a0a43
+	ifequal $2, UnknownScript_0x1a0a3f
 	trainertotext COOLTRAINERF, REENA1, $0
 	scall UnknownScript_0x1a0a37
 	jump UnknownScript_0x1a0a3b
@@ -355,9 +355,9 @@ UnknownScript_0x1a09e9:
 	scall UnknownScript_0x1a0a47
 	winlosstext CooltrainerfReena1BeatenText, 0
 	copybytetovar wReenaFightCount
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight2:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight2

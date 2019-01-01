@@ -24,14 +24,14 @@ TwinScript_0x9cc76:
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 .FeedingMooMoo:
 	writetext Text_WereFeedingMoomoo
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, RIGHT
+	turnobject LAST_TALKED, RIGHT
 	end
 
 TwinScript_0x9cc90:
@@ -42,14 +42,14 @@ TwinScript_0x9cc90:
 	writetext Text_MoomooIsSick
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 .FeedingMooMoo:
 	writetext Text_WereFeedingMoomoo
 	waitbutton
 	closetext
-	spriteface LAST_TALKED, LEFT
+	turnobject LAST_TALKED, LEFT
 	end
 
 MooMoo:
@@ -76,9 +76,9 @@ MooMoo:
 	copybytetovar wMooMooBerries
 	addvar 1
 	copyvartobyte wMooMooBerries
-	if_equal 3, .ThreeOranBerries
-	if_equal 5, .FiveOranBerries
-	if_equal 7, .SevenOranBerries
+	ifequal 3, .ThreeOranBerries
+	ifequal 5, .FiveOranBerries
+	ifequal 7, .SevenOranBerries
 	jumpopenedtext Text_GaveOranBerry
 
 .MaybeSitrusBerry:
@@ -88,9 +88,9 @@ MooMoo:
 	copybytetovar wMooMooBerries
 	addvar 2
 	copyvartobyte wMooMooBerries
-	if_greater_than 6, .SevenSitrusBerries
-	if_greater_than 4, .FiveSitrusBerries
-	if_greater_than 2, .ThreeSitrusBerries
+	ifgreater 6, .SevenSitrusBerries
+	ifgreater 4, .FiveSitrusBerries
+	ifgreater 2, .ThreeSitrusBerries
 	jumpopenedtext Text_GaveSitrusBerry
 
 .ThreeOranBerries:

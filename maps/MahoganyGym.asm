@@ -128,7 +128,7 @@ MahoganyGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 14, .LyraToo
+	ifgreater 14, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3

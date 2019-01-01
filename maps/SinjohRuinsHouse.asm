@@ -10,8 +10,8 @@ SinjohRuinsHouse_MapScriptHeader:
 	db 0 ; coord events
 
 	db 2 ; bg events
-	bg_event  0,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  1,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  2,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
 	db 4 ; object events
 	object_event  5,  4, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA

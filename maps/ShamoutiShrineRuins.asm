@@ -42,20 +42,20 @@ ShamoutiShrineRuinsLawrenceScript:
 	waitbutton
 	closetext
 	checkcode VAR_FACING
-	if_equal UP, .up
-	if_equal DOWN, .down
-	if_equal LEFT, .left
+	ifequal UP, .up
+	ifequal DOWN, .down
+	ifequal LEFT, .left
 .right
-	spriteface SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
 	jump .continue
 .up
-	spriteface SHAMOUTISHRINERUINS_LAWRENCE, UP
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, UP
 	jump .continue
 .down
-	spriteface SHAMOUTISHRINERUINS_LAWRENCE, DOWN
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, DOWN
 	jump .continue
 .left
-	spriteface SHAMOUTISHRINERUINS_LAWRENCE, LEFT
+	turnobject SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue
 	pause 40
 	showtextfaceplayer .GoodbyeText

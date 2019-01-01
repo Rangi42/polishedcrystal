@@ -36,16 +36,16 @@ ptjump: macro
 	dw \1 ; pointer
 	endm
 
-	enum if_equal_command
-if_equal: macro
-	db if_equal_command
+	enum ifequal_command
+ifequal: macro
+	db ifequal_command
 	db \1 ; byte
 	dw \2 ; pointer
 	endm
 
-	enum if_not_equal_command
-if_not_equal: macro
-	db if_not_equal_command
+	enum ifnotequal_command
+ifnotequal: macro
+	db ifnotequal_command
 	db \1 ; byte
 	dw \2 ; pointer
 	endm
@@ -62,16 +62,16 @@ iftrue: macro
 	dw \1 ; pointer
 	endm
 
-	enum if_greater_than_command
-if_greater_than: macro
-	db if_greater_than_command
+	enum ifgreater_command
+ifgreater: macro
+	db ifgreater_command
 	db \1 ; byte
 	dw \2 ; pointer
 	endm
 
-	enum if_less_than_command
-if_less_than: macro
-	db if_less_than_command
+	enum ifless_command
+ifless: macro
+	db ifless_command
 	db \1 ; byte
 	dw \2 ; pointer
 	endm
@@ -106,27 +106,27 @@ ptcallasm: macro
 	dw \1 ; asm
 	endm
 
-	enum checkmaptriggers_command
-checkmaptriggers: macro
-	db checkmaptriggers_command
+	enum checkmapscene_command
+checkmapscene: macro
+	db checkmapscene_command
 	map_id \1 ; map
 	endm
 
-	enum domaptrigger_command
-domaptrigger: macro
-	db domaptrigger_command
+	enum setmapscene_command
+setmapscene: macro
+	db setmapscene_command
 	map_id \1 ; map
 	db \2 ; trigger_id
 	endm
 
-	enum checktriggers_command
-checktriggers: macro
-	db checktriggers_command
+	enum checkscene_command
+checkscene: macro
+	db checkscene_command
 	endm
 
-	enum dotrigger_command
-dotrigger: macro
-	db dotrigger_command
+	enum setscene_command
+setscene: macro
+	db setscene_command
 	db \1 ; trigger_id
 	endm
 
@@ -276,10 +276,6 @@ checktime: macro
 	db checktime_command
 	db \1 ; time
 	endm
-
-checkmorn EQUS "checktime 1 << MORN"
-checkday  EQUS "checktime 1 << DAY"
-checknite EQUS "checktime 1 << NITE"
 
 	enum checkpoke_command
 checkpoke: macro
@@ -497,9 +493,9 @@ yesorno: macro
 	db yesorno_command
 	endm
 
-	enum loadmenudata_command
-loadmenudata: macro
-	db loadmenudata_command
+	enum loadmenu_command
+loadmenu: macro
+	db loadmenu_command
 	dw \1 ; data
 	endm
 
@@ -660,9 +656,9 @@ faceplayer: macro
 	db faceplayer_command
 	endm
 
-	enum faceperson_command
-faceperson: macro
-	db faceperson_command
+	enum faceobject_command
+faceobject: macro
+	db faceobject_command
 	db \1 ; person1
 	db \2 ; person2
 	endm
@@ -698,9 +694,9 @@ stopfollow: macro
 	db stopfollow_command
 	endm
 
-	enum moveperson_command
-moveperson: macro
-	db moveperson_command
+	enum moveobject_command
+moveobject: macro
+	db moveobject_command
 	db \1 ; person
 	db \2 ; x
 	db \3 ; y
@@ -726,9 +722,9 @@ showemote: macro
 	db \3 ; time
 	endm
 
-	enum spriteface_command
-spriteface: macro
-	db spriteface_command
+	enum turnobject_command
+turnobject: macro
+	db turnobject_command
 	db \1 ; person
 	db \2 ; facing
 	endm
@@ -894,9 +890,9 @@ reloadandreturn: macro
 	db \1 ; which_method
 	endm
 
-	enum end_all_command
-end_all: macro
-	db end_all_command
+	enum endall_command
+endall: macro
+	db endall_command
 	endm
 
 	enum pokemart_command
@@ -1226,6 +1222,12 @@ if _NARG == 2
 else
 	db 1
 endc
+	endm
+
+	enum paintingpic_command
+paintingpic: macro
+	db paintingpic_command
+	db \1 ; painting
 	endm
 
 thisasm: macro

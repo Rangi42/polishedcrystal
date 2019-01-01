@@ -296,7 +296,7 @@ LoadGraphics: ; 1047cf
 	ld [hTileAnimFrame], a
 	farcall RefreshSprites
 	call LoadFontsExtra
-	jp LoadStandardFont
+	farjp LoadOverworldFont
 
 LoadMapPalettes: ; 1047eb
 	ld b, CGB_MAPPALS

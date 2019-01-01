@@ -26,7 +26,7 @@ CeladonMansion1F_MapScriptHeader:
 CeladonMansionManagersSuiteSign:
 	thistext
 
-	text "Celadon Mansion"
+	text "Celadon Condo"
 	line "Manager's Suite"
 	done
 

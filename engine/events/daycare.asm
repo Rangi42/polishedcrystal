@@ -125,7 +125,7 @@ DayCareAskDepositPokemon: ; 16798
 	ld a, [wCurPartyMon]
 	call AddNTimes
 	ld d, [hl]
-	farcall ItemIsMail
+	call ItemIsMail
 	jr c, .HoldingMail
 	ld hl, wPartyMonNicknames
 	ld a, [wCurPartyMon]

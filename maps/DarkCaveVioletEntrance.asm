@@ -66,13 +66,13 @@ DarkCaveVioletEntranceFalknerTrigger:
 	follow PLAYER, DARKCAVEVIOLETENTRANCE_FALKNER
 	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAside
 	stopfollow
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerLeave
 	disappear DARKCAVEVIOLETENTRANCE_FALKNER
 	pause 15
 	clearevent EVENT_VIOLET_GYM_FALKNER
-	domaptrigger VIOLET_GYM, $1
-	dotrigger $1
+	setmapscene VIOLET_GYM, $1
+	setscene $1
 	end
 
 .Darkness:

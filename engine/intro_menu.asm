@@ -21,7 +21,7 @@ InitIntroGradient::
 	jp Get2bpp
 
 .IntroGradientGFX:
-INCBIN "gfx/misc/intro_gradient.2bpp"
+INCBIN "gfx/new_game/intro_gradient.2bpp"
 
 _MainMenu: ; 5ae8
 	ld de, MUSIC_NONE

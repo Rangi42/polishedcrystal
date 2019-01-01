@@ -68,7 +68,7 @@ ItemEffects: ; e73c
 	dw RestoreHPEffect  ; SODA_POP
 	dw RestoreHPEffect  ; LEMONADE
 	dw RestoreHPEffect  ; MOOMOO_MILK
-	dw RestoreHPEffect  ; RAGECANDYBAR
+	dw HealStatusEffect ; RAGECANDYBAR
 	dw SacredAsh        ; SACRED_ASH
 	dw EnergyPowder     ; ENERGYPOWDER
 	dw EnergyRoot       ; ENERGY_ROOT
@@ -82,9 +82,9 @@ ItemEffects: ; e73c
 	dw XItemEffect      ; X_ACCURACY
 	dw DireHit          ; DIRE_HIT
 	dw GuardSpec        ; GUARD_SPEC
-	dw Repel            ; REPEL
-	dw SuperRepel       ; SUPER_REPEL
-	dw MaxRepel         ; MAX_REPEL
+	dw RepelEffect      ; REPEL
+	dw RepelEffect      ; SUPER_REPEL
+	dw RepelEffect      ; MAX_REPEL
 	dw EscapeRope       ; ESCAPE_ROPE
 	dw PokeDoll         ; POKE_DOLL
 	dw AbilityCap       ; ABILITY_CAP
@@ -118,8 +118,8 @@ ItemEffects: ; e73c
 	dw NoEffect         ; RAINBOW_WING
 	dw NoEffect         ; SILVER_WING
 	dw NoEffect         ; CLEAR_BELL
-	dw BlueCard         ; GS_BALL
-	dw NoEffect         ; BLUE_CARD
+	dw NoEffect         ; GS_BALL
+	dw BlueCard         ; BLUE_CARD
 	dw NoEffect         ; ORANGETICKET
 	dw NoEffect         ; MYSTICTICKET
 	dw NoEffect         ; OLD_SEA_MAP
@@ -127,6 +127,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; OVAL_CHARM
 	dw NoEffect         ; SILPHSCOPE2
 	dw ApricornBox      ; APRICORN_BOX
+	dw NoEffect         ; TERU_SAMA
 	dw HealStatusEffect ; CHERI_BERRY
 	dw HealStatusEffect ; CHESTO_BERRY
 	dw HealStatusEffect ; PECHA_BERRY
@@ -143,12 +144,11 @@ ItemEffects: ; e73c
 	dw NoEffect         ; SALAC_BERRY
 	dw NoEffect         ; PETAYA_BERRY
 	dw NoEffect         ; APICOT_BERRY
-	dw NoEffect         ; ITEM_82
-	dw NoEffect         ; ITEM_83
-	dw NoEffect         ; ITEM_84
-	dw NoEffect         ; ITEM_85
-	dw NoEffect         ; ITEM_86
-	dw RestoreHPEffect  ; BERRY_JUICE
+	dw NoEffect         ; JABOCA_BERRY
+	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; MARANGABERRY
+	dw HealStatusEffect ; PEWTERCRUNCH
 	dw NoEffect         ; SILK_SCARF
 	dw NoEffect         ; BLACK_BELT
 	dw NoEffect         ; SHARP_BEAK
@@ -1533,29 +1533,11 @@ StatStrings: ; eeab
 
 GetEVRelativePointer: ; eed9
 	ld a, [wCurItem]
-	ld hl, Table_EVByVitamin
-.next
-	cp [hl]
-	inc hl
-	jr z, .got_it
-	inc hl
-	jr .next
-
-.got_it
-	ld a, [hl]
+	farcall CheckItemParam
 	ld c, a
 	ld b, 0
 	ret
 ; eeeb
-
-Table_EVByVitamin: ; eeeb
-	db HP_UP,    MON_HP_EV - MON_EVS
-	db PROTEIN, MON_ATK_EV - MON_EVS
-	db IRON,    MON_DEF_EV - MON_EVS
-	db CARBOS,  MON_SPD_EV - MON_EVS
-	db CALCIUM, MON_SAT_EV - MON_EVS
-	db ZINC,    MON_SDF_EV - MON_EVS
-; eef5
 
 
 RareCandy_StatBooster_GetParameters: ; eef5
@@ -1757,7 +1739,7 @@ HealStatus: ; f030 (3:7030)
 	ld [wBattleMonStatus], a
 	call GetItemHealingAction
 	ld a, c
-	cp %11111111
+	cp -1
 	ret nz
 	ld hl, wPlayerSubStatus3
 	res SUBSTATUS_CONFUSED, [hl]
@@ -1766,26 +1748,31 @@ HealStatus: ; f030 (3:7030)
 GetItemHealingAction: ; f058 (3:7058)
 	push hl
 	ld a, [wCurItem]
-	ld hl, StatusHealingActions
-	ld bc, 3
+	farcall CheckItemParam
+	ld c, a
+	ld hl, .StatusHealingActionTexts
 .next
 	cp [hl]
 	jr z, .found_it
-	add hl, bc
+	inc hl
+	inc hl
 	jr .next
-
 .found_it
 	inc hl
 	ld b, [hl]
-	inc hl
-	ld a, [hl]
-	ld c, a
-	cp %11111111
 	pop hl
 	ret
 ; f071 (3:7071)
 
-INCLUDE "data/items/heal_status.asm"
+.StatusHealingActionTexts:
+; status param, party menu action text
+	db 1 << PSN, PARTYMENUTEXT_HEAL_PSN
+	db 1 << BRN, PARTYMENUTEXT_HEAL_BRN
+	db 1 << PAR, PARTYMENUTEXT_HEAL_PAR
+	db 1 << FRZ, PARTYMENUTEXT_HEAL_FRZ
+	db SLP,      PARTYMENUTEXT_HEAL_SLP
+	db -1,       PARTYMENUTEXT_HEAL_ALL
+
 
 StatusHealer_Jumptable: ; f09e (3:709e)
 	ld hl, .dw
@@ -2275,32 +2262,20 @@ GetHealingItemAmount: ; f395 (3:7395)
 	jr z, .sitrus_berry
 	cp FIGY_BERRY
 	jr z, .figy_berry
-	push hl
-	ld hl, HealingHPAmounts
-	ld d, a
-.next
-	ld a, [hli]
-	cp -1
-	jr z, .NotFound
-	cp d
-	jr z, .done
-	inc hl
-	inc hl
-	jr .next
 
-.NotFound:
-	scf
-.done
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	pop hl
+	farcall CheckItemParam
+	ld e, a
+	ld d, 0
+	cp -1
+	ret nz
+	ld de, 999
 	ret
 ; f3af (3:73af)
 
 .figy_berry
 	call .set_de_to_hp
 	jr .half_hp
+
 .sitrus_berry
 	call .set_de_to_hp
 	srl d
@@ -2321,8 +2296,6 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ld d, a
 	ld e, [hl]
 	ret
-
-INCLUDE "data/items/heal_hp.asm"
 
 Softboiled_MilkDrinkFunction: ; f3df (3:73df)
 ; Softboiled/Milk Drink in the field
@@ -2408,34 +2381,19 @@ EscapeRope: ; f44f
 ; f462
 
 
-SuperRepel: ; f462
-	ld b, 200
-	jr UseRepel
-; f466
-
-MaxRepel: ; f466
-	ld b, 250
-	jr UseRepel
-; f466
-
-Repel: ; f46a
-	ld b, 100
-; f46c
-
-UseRepel: ; f46c
+RepelEffect: ; f46c
 	ld a, [wRepelEffect]
 	and a
 	ld hl, TextJump_RepelUsedEarlierIsStillInEffect
 	jp nz, PrintText
 
-	ld a, b
+	farcall CheckItemParam
 	ld [wRepelEffect], a
 
 	ld a, [wCurItem]
 	ld [wRepelType], a
 
 	jp UseItemText
-
 
 TextJump_RepelUsedEarlierIsStillInEffect: ; 0xf47d
 	; The REPEL used earlier is still in effect.
@@ -2484,19 +2442,9 @@ DireHit: ; f4b8
 XItemEffect: ; f4c5
 	call UseItemText
 
-	ld a, [wCurItem]
-	ld hl, XItemStats
+	farcall CheckItemParam
+	ld b, a
 
-.loop
-	cp [hl]
-	jr z, .got_it
-	inc hl
-	inc hl
-	jr .loop
-
-.got_it
-	inc hl
-	ld b, [hl]
 	xor a
 	ld [hBattleTurn], a
 	ld [wAttackMissed], a
@@ -2512,8 +2460,6 @@ XItemEffect: ; f4c5
 	ld c, HAPPINESS_USEDXITEM
 	farjp ChangeHappiness
 ; f504
-
-INCLUDE "data/items/x_stats.asm"
 
 
 BlueCard: ; f58f

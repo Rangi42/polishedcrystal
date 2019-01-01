@@ -1,4 +1,5 @@
 https://bulbapedia.bulbagarden.net/wiki/List_of_Gotta_Catch_%27Em_All_event_Pokémon
+https://bulbapedia.bulbagarden.net/wiki/Game_move_errors
 https://www.pokecommunity.com/showthread.php?t=184717
 
 Hoothoot: Healing Light
@@ -7,10 +8,26 @@ Qwilfish: Astonish
 Heracross: Rock Blast
 Munchlax: Pursuit
 
+Houndoom: Bonemerang
+Qwilfish: Selfdestruct
+
+Slowbro: Metronome
+Lanturn: Earthquake
+Blissey: Reflect
+Drowzee: Strength
+Machamp: Swords Dance
+Skarmory: Hyper Beam
+Celebi: Fly
+Gengar: Quick Attack
+Togepi: Drain Kiss
+Jigglypuff: Play Rough
+Chansey: Psybeam
+Staryu: Quick Attack
+Staryu: Psybeam
+
 Misdreavus: Screech
 Whirlpool: Sandshrew/Sandslash, Geodude/Graveler/Golem, Pineco/Forretress, Donphan, Hitmontop (Whirlpool users)
 
-Drowzee/Hypno: Tri Attack (RBY TM), Baton Pass (purified)
 Eevee: Focus Energy (RBY learnset), Charm (purified)
 Girafarig: Mirror Coat (Dream World), Sucker Punch (HGSS tutor)
 Growlithe/Arcanine: Dragon Rage (RBY TM), Charm (purified)
@@ -51,6 +68,7 @@ Drowzee/Hypno: Drain Punch
 Kangaskhan: Drain Punch
 
 Purified:
+Drowzee/Hypno: Baton Pass
 Ponyta/Rapidash: Baton Pass
 Swinub/Piloswine/Mamoswine: Charm
 Weedle/Kakuna/Beedrill: Baton Pass

@@ -3037,17 +3037,20 @@ BattleCommand_PostHitEffects:
 .life_orb
 	call .checkfaint
 	ret z
-
-	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect was suppressed)
-	ld a, [wEffectFailed]
-	and a
-	jr z, .no_suppressed_effect
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	cp SHEER_FORCE
+	cp MAGIC_GUARD
 	ret z
 
-.no_suppressed_effect
+	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect
+	; was suppressed)
+	cp SHEER_FORCE
+	jr nz, .no_sheer_force
+	ld a, [wEffectFailed]
+	and a
+	ret z
+
+.no_sheer_force
 	xor a
 	farcall GetMaxHP
 	ld a, b
@@ -5157,8 +5160,10 @@ BattleCommand_PoisonTarget:
 
 	jp PostStatusWithSynchronize
 
-
-BattleCommand_Poison:
+CanPoisonTargetVerbose:
+	; different from CanPoisonTarget: common function for BC_(Poison|Toxic)
+	; which does move animations, prints text, etc, on failure.
+	; Returns nz on failure
 	ld hl, DoesntAffectText
 	ld a, [wTypeModifier]
 	and a
@@ -5176,27 +5181,8 @@ BattleCommand_Poison:
 	call CanPoisonTarget
 	jr c, .ability_ok
 	jr nz, .failed
-
-	call .check_toxic
-	jr z, .toxic
-
-	call .apply_poison
-	ld hl, WasPoisonedText
-	call StdBattleTextBox
-	jr .finished
-
-.toxic
-	set TOX, [hl]
 	xor a
-	ld [de], a
-	call .apply_poison
-
-	ld hl, BadlyPoisonedText
-	call StdBattleTextBox
-
-.finished
-	jp PostStatusWithSynchronize
-
+	ret
 .ability_ok
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
@@ -5204,43 +5190,47 @@ BattleCommand_Poison:
 	push hl
 	call AnimateFailedMove
 	pop hl
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	or a
+	ret
 
-; 35fc0
-
-
-.apply_poison ; 35fc0
-	call AnimateCurrentMove
-	call PoisonOpponent
-	jp RefreshBattleHuds
-
-; 35fc9
-
-
-.check_toxic ; 35fc9
-	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVarAddr
+BattleCommand_Toxic:
+	call CanPoisonTargetVerbose
+	ret nz
 	ld a, [hBattleTurn]
 	and a
 	ld de, wEnemyToxicCount
 	jr z, .ok
 	ld de, wPlayerToxicCount
 .ok
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_TOXIC
-	ret
+	xor a
+	ld [de], a
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	set TOX, [hl]
+	jr ApplyPoison
+BattleCommand_Poison:
+	call CanPoisonTargetVerbose
+	ret nz
+ApplyPoison:
+	call AnimateCurrentMove
+	call PoisonOpponent
+	call RefreshBattleHuds
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVarAddr
+	bit TOX, [hl]
+	ld hl, WasPoisonedText
+	jr z, .text_ok
+	ld hl, BadlyPoisonedText
+.text_ok
+	call StdBattleTextBox
+	jp PostStatusWithSynchronize
 
-; 35fe1
-
-
-PoisonOpponent: ; 35ff5
+PoisonOpponent:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	set PSN, [hl]
 	jp UpdateOpponentInParty
-
-; 35fff
 
 
 BattleCommand_DrainTarget: ; 35fff
@@ -6284,10 +6274,11 @@ BattleCommand_CheckRampage: ; 3671a
 	res SUBSTATUS_RAMPAGE, [hl]
 	call SwitchTurn
 	call SafeCheckSafeguard
-	push af
-	call SwitchTurn
-	pop af
-	jr nz, .continue_rampage
+	jr nz, .switchturn_continue_rampage
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp OWN_TEMPO
+	jr z, .switchturn_continue_rampage
 
 	set SUBSTATUS_CONFUSED, [hl]
 	call BattleRandom
@@ -6296,6 +6287,8 @@ BattleCommand_CheckRampage: ; 3671a
 	inc a
 	inc de ; ConfuseCount
 	ld [de], a
+.switchturn_continue_rampage
+	call SwitchTurn
 .continue_rampage
 	ld b, rampage_command
 	jp SkipToBattleCommandAfter
@@ -6340,10 +6333,11 @@ BattleCommand_Teleport: ; 36778
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jr nc, .failed
 
-; Can't teleport from a trainer battle
+; Switch, don't run, in trainer battles
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .failed
+	jr nz, .trainer_battle
+
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp RUN_AWAY
@@ -6371,6 +6365,11 @@ BattleCommand_Teleport: ; 36778
 
 	ld hl, FledFromBattleText
 	jp StdBattleTextBox
+
+.trainer_battle
+	call CheckAnyOtherAliveMons
+	jp nz, ContinueToSwitchOut
+
 .failed
 	call AnimateFailedMove
 	jp PrintButItFailed
@@ -7543,9 +7542,7 @@ BattleCommand_KnockOff:
 
 	; Mail can't be knocked off
 	ld d, a
-	push hl
-	farcall ItemIsMail
-	pop hl
+	call ItemIsMail
 	ret c
 
 	ld [wNamedObjectIndexBuffer], a
@@ -7998,7 +7995,6 @@ GetItemBoostedDuration:
 	ld a, b
 	pop bc
 	cp c
-	cp b
 	ld a, 5
 	jr nz, .got_duration
 	ld a, 8
@@ -8073,21 +8069,16 @@ PrintParalyze: ; 37372
 
 ; 37378
 
-CheckSubstituteOpp_b:
-; stores result in b rather than zero flag (ld a, b; and a for equavilent result),
-; used for farcalls
-	call CheckSubstituteOpp
-	ld b, 0
-	ret z
-	ld b, 1
-	ret
-
 CheckSubstituteOpp: ; 37378
 ; returns z when not behind a sub (or if overridden by Infiltrator or sound)
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp INFILTRATOR
 	ret z
+	; don't let move effects impact ability processing
+	ld a, [wAnimationsDisabled]
+	and a
+	jr nz, .no_sound_move
 	push bc
 	push de
 	push hl
@@ -8301,7 +8292,8 @@ DoAcrobatics:
 .got_item
 	ld a, [hl]
 	and a
-	jr DoubleDamageIfNZ
+	ret nz
+	jr DoubleDamage
 
 DoFacade:
 	ld a, BATTLE_VARS_STATUS
@@ -8574,6 +8566,7 @@ DoCheckAnyOtherAliveMons:
 BattleCommand_SwitchOut:
 	call CheckAnyOtherAliveMons
 	ret z
+ContinueToSwitchOut:
 	call UpdateUserInParty
 	ld a, [hBattleTurn]
 	and a

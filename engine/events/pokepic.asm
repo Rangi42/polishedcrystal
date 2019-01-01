@@ -26,6 +26,7 @@ Pokepic:: ; 244e3
 	call GetBaseData
 	ld de, VTiles1
 	predef GetFrontpic
+_Displaypic:
 	ld a, [wMenuBorderTopCoord]
 	inc a
 	ld b, a
@@ -45,25 +46,40 @@ Trainerpic::
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
-	call LoadGrayscalePalette
+	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, VTiles1
 	farcall GetTrainerPic
-	ld a, [wMenuBorderTopCoord]
+	jr _Displaypic
+
+Paintingpic::
+	farcall LoadPaintingPalette
+	call UpdateTimePals
+	ld de, PaintingFrameGFX
+	ld hl, VTiles0 tile ("┌" - 3)
+	lb bc, BANK(PaintingFrameGFX), 9
+	call Get2bpp
+	ld hl, PokepicMenuDataHeader
+	call CopyMenuDataHeader
+	call MenuBox
+	hlcoord 9, 12
+	ld a, "┌" - 3
+	ld [hli], a
 	inc a
-	ld b, a
-	ld a, [wMenuBorderLeftCoord]
+	ld [hli], a
 	inc a
-	ld c, a
-	call Coord2Tile
-	ld a, $80
-	ld [hGraphicStartTile], a
-	lb bc, 7, 7
-	predef PlaceGraphic
-	jp WaitBGMap
+	ld [hl], a
+	call UpdateSprites
+	call ApplyTilemap
+	xor a
+	ld [hBGMapMode], a
+	ld a, [wTrainerClass]
+	ld de, VTiles1
+	farcall GetPaintingPic
+	jp _Displaypic
 
 ClosePokepic:: ; 24528
 	ld hl, PokepicMenuDataHeader
@@ -76,27 +92,11 @@ ClosePokepic:: ; 24528
 	call OverworldTextModeSwitch
 	call ApplyTilemap
 	call UpdateSprites
-	jp LoadStandardFont
+	farjp LoadOverworldFont
 
 PokepicMenuDataHeader: ; 0x24547
 	db $40 ; flags
 	db 04, 06 ; start coords
-	db 13, 14 ; end coords
+	db 12, 14 ; end coords
 	dw NULL
 	db 1 ; default option
-
-LoadGrayscalePalette:
-	ld a, $5
-	ld de, wUnknBGPals palette 7 + 2
-	ld hl, GrayscalePalette
-	ld bc, 4
-	jp FarCopyWRAM
-; 49418
-
-GrayscalePalette:
-if !DEF(MONOCHROME)
-	RGB 20, 20, 20
-	RGB 10, 10, 10
-else
-	MONOCHROME_RGB_TWO
-endc

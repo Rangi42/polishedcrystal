@@ -23,7 +23,7 @@ ShamoutiHotel1F_MapScriptHeader:
 	object_event 14,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotel1FYoungsterText, -1
 
 ShamoutiHotel1FRestaurantTrigger:
-	domaptrigger SHAMOUTI_HOTEL_RESTAURANT, $0
+	setmapscene SHAMOUTI_HOTEL_RESTAURANT, $0
 	return
 
 ShamoutiHotel1FReceptionistText:

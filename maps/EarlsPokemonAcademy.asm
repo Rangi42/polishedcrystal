@@ -44,26 +44,26 @@ AcademyEarl:
 
 GameboyKidScript_0x68a86:
 	showtextfaceplayer UnknownText_0x68dda
-	spriteface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 GameboyKidScript_0x68a91:
 	showtextfaceplayer UnknownText_0x68e07
-	spriteface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 AcademyBlackboard:
 	opentext
 	writetext AcademyBlackboardText
 .Loop:
-	loadmenudata .MenuHeader
+	loadmenu .MenuHeader
 	_2dmenu
 	closewindow
-	if_equal $1, .Poison
-	if_equal $2, .Paralysis
-	if_equal $3, .Sleep
-	if_equal $4, .Burn
-	if_equal $5, .Freeze
+	ifequal $1, .Poison
+	ifequal $2, .Paralysis
+	ifequal $3, .Sleep
+	ifequal $4, .Burn
+	ifequal $5, .Freeze
 	endtext
 
 .Poison:

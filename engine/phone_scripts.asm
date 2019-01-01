@@ -22,8 +22,8 @@ MomPhoneScript: ; 0xbceaa
 	buttonsound
 	mapnametotext $0
 	checkcode VAR_ROOFPALETTE
-	if_equal $1, UnknownScript_0xbcee7
-	if_equal $2, UnknownScript_0xbcf27
+	ifequal $1, UnknownScript_0xbcee7
+	ifequal $2, UnknownScript_0xbcf27
 	jump UnknownScript_0xbcf2f
 
 UnknownScript_0xbcedf: ; 0xbcedf
@@ -33,11 +33,11 @@ UnknownScript_0xbcedf: ; 0xbcedf
 
 UnknownScript_0xbcee7: ; 0xbcee7
 	checkcode VAR_MAPGROUP
-	if_equal GROUP_NEW_BARK_TOWN, .newbark
-	if_equal GROUP_CHERRYGROVE_CITY, .cherrygrove
-	if_equal GROUP_VIOLET_CITY, .violet
-	if_equal GROUP_AZALEA_TOWN, .azalea
-	if_equal GROUP_GOLDENROD_CITY, .goldenrod
+	ifequal GROUP_NEW_BARK_TOWN, .newbark
+	ifequal GROUP_CHERRYGROVE_CITY, .cherrygrove
+	ifequal GROUP_VIOLET_CITY, .violet
+	ifequal GROUP_AZALEA_TOWN, .azalea
+	ifequal GROUP_GOLDENROD_CITY, .goldenrod
 	farwritetext MomPhoneGenericAreaText
 	buttonsound
 	jump UnknownScript_0xbcf37
@@ -76,12 +76,12 @@ UnknownScript_0xbcf37: ; 0xbcf37
 	checkflag ENGINE_MOM_SAVING_MONEY
 	iffalse UnknownScript_0xbcf49
 	checkmoney $1, 0
-	if_equal $0, UnknownScript_0xbcf55
+	ifequal $0, UnknownScript_0xbcf55
 	jump UnknownScript_0xbcf63
 
 UnknownScript_0xbcf49: ; 0xbcf49
 	checkmoney $1, 0
-	if_equal $0, UnknownScript_0xbcf79
+	ifequal $0, UnknownScript_0xbcf79
 	jump UnknownScript_0xbcf6e
 
 UnknownScript_0xbcf55: ; 0xbcf55
@@ -150,9 +150,9 @@ MomPhoneLectureScript: ; 0xbcfb1
 ; Bill
 
 BillPhoneScript1: ; 0xbcfc5
-	checkday
+	checktime 1 << DAY
 	iftrue .daygreet
-	checknite
+	checktime 1 << NITE
 	iftrue .nitegreet
 	farwritetext BillPhoneMornGreetingText
 	buttonsound
@@ -173,8 +173,8 @@ BillPhoneScript1: ; 0xbcfc5
 	buttonsound
 	checkcode VAR_BOXSPACE
 	RAM2MEM $0
-	if_equal $0, .full
-	if_less_than $6, .nearlyfull
+	ifequal $0, .full
+	ifless $6, .nearlyfull
 	farwritetext BillPhoneNotFullText
 	end
 
@@ -188,11 +188,11 @@ BillPhoneScript1: ; 0xbcfc5
 
 BillPhoneScript2: ; 0xbd007
 	checkcode VAR_SPECIALPHONECALL
-	if_equal SPECIALCALL_SECONDBADGE, BillPhoneScriptSecondBadge
+	ifequal SPECIALCALL_SECONDBADGE, BillPhoneScriptSecondBadge
 	farwritetext BillPhoneNewlyFullText
 BillPhoneScriptCheckForBoxes:
 	special BillBoxSwitchCheck
-	if_equal 0, BillPhoneWholePCFull
+	ifequal 0, BillPhoneWholePCFull
 	farwritetext BillWantNextBox
 	farwritetext UnknownText_0x1c462a
 	yesorno
@@ -220,7 +220,7 @@ BillPhoneWholePCFull:
 
 ElmPhoneScript1: ; 0xbd00d
 	checkcode VAR_SPECIALPHONECALL
-	if_equal SPECIALCALL_POKERUS, .pokerus
+	ifequal SPECIALCALL_POKERUS, .pokerus
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue .discovery
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -268,7 +268,7 @@ ElmPhoneScript1: ; 0xbd00d
 
 .discovery ; 0xbd069
 	random $2
-	if_equal $0, .nextdiscovery
+	ifequal $0, .nextdiscovery
 	farwritetext ElmPhoneDiscovery1Text
 	end
 
@@ -283,11 +283,11 @@ ElmPhoneScript1: ; 0xbd00d
 
 ElmPhoneScript2: ; 0xbd081
 	checkcode VAR_SPECIALPHONECALL
-	if_equal SPECIALCALL_ROBBED, .disaster
-	if_equal SPECIALCALL_ASSISTANT, .assistant
-	if_equal SPECIALCALL_WEIRDBROADCAST, .rocket
-	if_equal SPECIALCALL_SSTICKET, .gift
-	if_equal SPECIALCALL_MASTERBALL, .gift
+	ifequal SPECIALCALL_ROBBED, .disaster
+	ifequal SPECIALCALL_ASSISTANT, .assistant
+	ifequal SPECIALCALL_WEIRDBROADCAST, .rocket
+	ifequal SPECIALCALL_SSTICKET, .gift
+	ifequal SPECIALCALL_MASTERBALL, .gift
 	farwritetext ElmPhonePokerusText
 	specialphonecall SPECIALCALL_NONE
 	end
@@ -318,9 +318,9 @@ ElmPhoneScript2: ; 0xbd081
 ; Lyra
 
 LyraPhoneScript:
-	checkday
+	checktime 1 << DAY
 	iftrue .daygreet
-	checknite
+	checktime 1 << NITE
 	iftrue .nitegreet
 	farwritetext LyraPhoneMornGreetingText
 	buttonsound
@@ -342,9 +342,9 @@ LyraPhoneScript:
 
 LyraPhoneScript2:
 	checkcode VAR_SPECIALPHONECALL
-	if_equal SPECIALCALL_YELLOWFOREST, .yellowforest
-	if_equal SPECIALCALL_FIRSTBADGE, .firstbadge
-	if_equal SPECIALCALL_LYRASEGG, .lyrasegg
+	ifequal SPECIALCALL_YELLOWFOREST, .yellowforest
+	ifequal SPECIALCALL_FIRSTBADGE, .firstbadge
+	ifequal SPECIALCALL_LYRASEGG, .lyrasegg
 	specialphonecall SPECIALCALL_NONE
 	jump LyraPhoneScript
 
@@ -391,8 +391,8 @@ JackPhoneScript1:
 	checkflag ENGINE_JACK_MONDAY_MORNING
 	iftrue UnknownScript_0xbd0ef
 	checkcode VAR_WEEKDAY
-	if_not_equal MONDAY, UnknownScript_0xbd0ef
-	checkmorn
+	ifnotequal MONDAY, UnknownScript_0xbd0ef
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbd12a
 
 UnknownScript_0xbd0ef:
@@ -406,17 +406,17 @@ JackPhoneScript2:
 	trainertotext SCHOOLBOY, JACK1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd13b
+	ifequal $0, UnknownScript_0xbd13b
 	checkflag ENGINE_JACK
 	iftrue UnknownScript_0xbd11e
 	checkflag ENGINE_JACK_MONDAY_MORNING
 	iftrue UnknownScript_0xbd11e
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd12d
+	ifequal $0, UnknownScript_0xbd12d
 
 UnknownScript_0xbd11e:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd137
+	ifequal $0, UnknownScript_0xbd137
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd12a:
@@ -452,7 +452,7 @@ BeverlyPhoneScript2:
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
 	iftrue UnknownScript_0xbd16e
 	farscall PhoneScript_Random4
-	if_equal $0, UnknownScript_0xbd172
+	ifequal $0, UnknownScript_0xbd172
 
 UnknownScript_0xbd16e:
 	farjump UnknownScript_0xa0017
@@ -472,8 +472,8 @@ HueyPhoneScript1:
 	checkflag ENGINE_HUEY_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbd19b
 	checkcode VAR_WEEKDAY
-	if_not_equal WEDNESDAY, UnknownScript_0xbd19b
-	checknite
+	ifnotequal WEDNESDAY, UnknownScript_0xbd19b
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbd1cd
 
 UnknownScript_0xbd19b:
@@ -492,8 +492,8 @@ HueyPhoneScript2:
 	checkflag ENGINE_HUEY_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbd1c9
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd1d0
-	if_equal $1, UnknownScript_0xbd1d0
+	ifequal $0, UnknownScript_0xbd1d0
+	ifequal $1, UnknownScript_0xbd1d0
 
 UnknownScript_0xbd1c9:
 	farjump PhoneScript_MonFlavorText
@@ -516,8 +516,8 @@ GavenPhoneScript1:
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
 	iftrue UnknownScript_0xbd1f9
 	checkcode VAR_WEEKDAY
-	if_not_equal THURSDAY, UnknownScript_0xbd1f9
-	checkmorn
+	ifnotequal THURSDAY, UnknownScript_0xbd1f9
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbd22c
 
 UnknownScript_0xbd1f9:
@@ -535,11 +535,11 @@ GavenPhoneScript2:
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
 	iftrue UnknownScript_0xbd220
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd22f
+	ifequal $0, UnknownScript_0xbd22f
 
 UnknownScript_0xbd220:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd239
+	ifequal $0, UnknownScript_0xbd239
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd22c:
@@ -563,8 +563,8 @@ BethPhoneScript1:
 	checkflag ENGINE_BETH_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbd25c
 	checkcode VAR_WEEKDAY
-	if_not_equal FRIDAY, UnknownScript_0xbd25c
-	checkday
+	ifnotequal FRIDAY, UnknownScript_0xbd25c
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbd287
 
 UnknownScript_0xbd25c:
@@ -582,7 +582,7 @@ BethPhoneScript2:
 	checkflag ENGINE_BETH_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbd283
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd28a
+	ifequal $0, UnknownScript_0xbd28a
 
 UnknownScript_0xbd283:
 	farjump UnknownScript_0xa0017
@@ -607,8 +607,8 @@ JosePhoneScript1:
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
 	iftrue UnknownScript_0xbd2c4
 	checkcode VAR_WEEKDAY
-	if_not_equal SATURDAY, UnknownScript_0xbd2b9
-	checknite
+	ifnotequal SATURDAY, UnknownScript_0xbd2b9
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbd301
 
 UnknownScript_0xbd2b9:
@@ -632,13 +632,13 @@ JosePhoneScript2:
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
 	iftrue UnknownScript_0xbd2f5
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd304
+	ifequal $0, UnknownScript_0xbd304
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd312
+	ifequal $0, UnknownScript_0xbd312
 
 UnknownScript_0xbd2f5:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd30e
+	ifequal $0, UnknownScript_0xbd30e
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd301:
@@ -667,8 +667,8 @@ ReenaPhoneScript1:
 	checkflag ENGINE_REENA_SUNDAY_MORNING
 	iftrue UnknownScript_0xbd33b
 	checkcode VAR_WEEKDAY
-	if_not_equal SUNDAY, UnknownScript_0xbd33b
-	checkmorn
+	ifnotequal SUNDAY, UnknownScript_0xbd33b
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbd366
 
 UnknownScript_0xbd33b:
@@ -686,7 +686,7 @@ ReenaPhoneScript2:
 	checkflag ENGINE_REENA_SUNDAY_MORNING
 	iftrue UnknownScript_0xbd362
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd369
+	ifequal $0, UnknownScript_0xbd369
 
 UnknownScript_0xbd362:
 	farjump UnknownScript_0xa0017
@@ -709,8 +709,8 @@ JoeyPhoneScript1:
 	checkflag ENGINE_JOEY_MONDAY_AFTERNOON
 	iftrue UnknownScript_0xbd392
 	checkcode VAR_WEEKDAY
-	if_not_equal MONDAY, UnknownScript_0xbd392
-	checkday
+	ifnotequal MONDAY, UnknownScript_0xbd392
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbd3c4
 
 UnknownScript_0xbd392:
@@ -731,8 +731,8 @@ JoeyPhoneScript2:
 	checkflag ENGINE_JOEY_MONDAY_AFTERNOON
 	iftrue UnknownScript_0xbd3c0
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd3c7
-	if_equal $1, UnknownScript_0xbd3c7
+	ifequal $0, UnknownScript_0xbd3c7
+	ifequal $1, UnknownScript_0xbd3c7
 
 UnknownScript_0xbd3c0:
 	farjump UnknownScript_0xa0000
@@ -757,19 +757,19 @@ WadePhoneScript1:
 	checkflag ENGINE_WADE_HAS_ITEM
 	iftrue UnknownScript_0xbd421
 	checkcode VAR_WEEKDAY
-	if_not_equal TUESDAY, UnknownScript_0xbd3f6
-	checknite
+	ifnotequal TUESDAY, UnknownScript_0xbd3f6
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbd484
 
 UnknownScript_0xbd3f6:
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd412
+	ifequal $0, UnknownScript_0xbd412
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbd412
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, UnknownScript_0xbd416
-	if_equal THURSDAY, UnknownScript_0xbd416
-	if_equal SATURDAY, UnknownScript_0xbd416
+	ifequal TUESDAY, UnknownScript_0xbd416
+	ifequal THURSDAY, UnknownScript_0xbd416
+	ifequal SATURDAY, UnknownScript_0xbd416
 
 UnknownScript_0xbd412:
 	farjump UnknownScript_0xa0938
@@ -789,13 +789,13 @@ WadePhoneScript2:
 	trainertotext BUG_CATCHER, WADE1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd44c
+	ifequal $0, UnknownScript_0xbd44c
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbd44c
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, UnknownScript_0xbd480
-	if_equal THURSDAY, UnknownScript_0xbd480
-	if_equal SATURDAY, UnknownScript_0xbd480
+	ifequal TUESDAY, UnknownScript_0xbd480
+	ifequal THURSDAY, UnknownScript_0xbd480
+	ifequal SATURDAY, UnknownScript_0xbd480
 
 UnknownScript_0xbd44c:
 	checkflag ENGINE_WADE
@@ -805,15 +805,15 @@ UnknownScript_0xbd44c:
 	checkflag ENGINE_WADE_HAS_ITEM
 	iftrue UnknownScript_0xbd474
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd495
+	ifequal $0, UnknownScript_0xbd495
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd474
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd487
+	ifequal $0, UnknownScript_0xbd487
 
 UnknownScript_0xbd474:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd491
+	ifequal $0, UnknownScript_0xbd491
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd480:
@@ -838,10 +838,10 @@ UnknownScript_0xbd495:
 	clearevent EVENT_WADE_HAS_CHERI_BERRY
 	clearevent EVENT_WADE_HAS_PERSIM_BERRY
 	random $4
-	if_equal $0, UnknownScript_0xbd4b9
-	if_equal $1, UnknownScript_0xbd4bf
-	if_equal $2, UnknownScript_0xbd4c5
-	if_equal $3, UnknownScript_0xbd4cb
+	ifequal $0, UnknownScript_0xbd4b9
+	ifequal $1, UnknownScript_0xbd4bf
+	ifequal $2, UnknownScript_0xbd4c5
+	ifequal $3, UnknownScript_0xbd4cb
 
 UnknownScript_0xbd4b9:
 	setevent EVENT_WADE_HAS_ORAN_BERRY
@@ -871,8 +871,8 @@ RalphPhoneScript1:
 	checkflag ENGINE_RALPH_WEDNESDAY_MORNING
 	iftrue Ralph_CheckSwarm
 	checkcode VAR_WEEKDAY
-	if_not_equal WEDNESDAY, Ralph_CheckSwarm
-	checkmorn
+	ifnotequal WEDNESDAY, Ralph_CheckSwarm
+	checktime 1 << MORN
 	iftrue Ralph_WednesdayMorning
 Ralph_CheckSwarm:
 	checkflag ENGINE_SPECIAL_WILDDATA
@@ -897,10 +897,10 @@ RalphPhoneScript2:
 	checkflag ENGINE_RALPH_WEDNESDAY_MORNING
 	iftrue Ralph_CheckSwarm2
 	farscall PhoneScript_Random2
-	if_equal $0, Ralph_FightMe
+	ifequal $0, Ralph_FightMe
 Ralph_CheckSwarm2:
 	farscall PhoneScript_Random5
-	if_equal $0, Ralph_SetUpSwarm
+	ifequal $0, Ralph_SetUpSwarm
 	farjump UnknownScript_0xa0000
 
 Ralph_WednesdayMorning:
@@ -933,8 +933,8 @@ LizPhoneScript1:
 	checkflag ENGINE_LIZ_THURSDAY_AFTERNOON
 	iftrue UnknownScript_0xbd57f
 	checkcode VAR_WEEKDAY
-	if_not_equal THURSDAY, UnknownScript_0xbd57f
-	checkday
+	ifnotequal THURSDAY, UnknownScript_0xbd57f
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbd5c3
 
 UnknownScript_0xbd57f:
@@ -948,7 +948,7 @@ UnknownScript_0xbd586:
 LizPhoneScript2:
 	trainertotext PICNICKER, LIZ1, $0
 	farscall PhoneScript_Random4
-	if_equal $0, UnknownScript_0xbd5d0
+	ifequal $0, UnknownScript_0xbd5d0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_LIZ
 	iftrue UnknownScript_0xbd5a9
@@ -957,11 +957,11 @@ LizPhoneScript2:
 
 UnknownScript_0xbd5a9:
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd5d4
+	ifequal $0, UnknownScript_0xbd5d4
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd5bf
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd5c6
+	ifequal $0, UnknownScript_0xbd5c6
 
 UnknownScript_0xbd5bf:
 	farjump UnknownScript_0xa0017
@@ -979,15 +979,15 @@ UnknownScript_0xbd5d0:
 
 UnknownScript_0xbd5d4:
 	random $9
-	if_equal $0, UnknownScript_0xbd5fa
-	if_equal $1, UnknownScript_0xbd600
-	if_equal $2, UnknownScript_0xbd606
-	if_equal $3, UnknownScript_0xbd60c
-	if_equal $4, UnknownScript_0xbd612
-	if_equal $5, UnknownScript_0xbd618
-	if_equal $6, UnknownScript_0xbd61e
-	if_equal $7, UnknownScript_0xbd624
-	if_equal $8, UnknownScript_0xbd62a
+	ifequal $0, UnknownScript_0xbd5fa
+	ifequal $1, UnknownScript_0xbd600
+	ifequal $2, UnknownScript_0xbd606
+	ifequal $3, UnknownScript_0xbd60c
+	ifequal $4, UnknownScript_0xbd612
+	ifequal $5, UnknownScript_0xbd618
+	ifequal $6, UnknownScript_0xbd61e
+	ifequal $7, UnknownScript_0xbd624
+	ifequal $8, UnknownScript_0xbd62a
 
 UnknownScript_0xbd5fa:
 	trainerclassname COOLTRAINERM, $1
@@ -1038,8 +1038,8 @@ AnthonyPhoneScript1:
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
 	iftrue UnknownScript_0xbd653
 	checkcode VAR_WEEKDAY
-	if_not_equal FRIDAY, UnknownScript_0xbd653
-	checknite
+	ifnotequal FRIDAY, UnknownScript_0xbd653
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbd699
 
 UnknownScript_0xbd653:
@@ -1065,11 +1065,11 @@ AnthonyPhoneScript2:
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
 	iftrue UnknownScript_0xbd68d
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd69c
+	ifequal $0, UnknownScript_0xbd69c
 
 UnknownScript_0xbd68d:
 	farscall PhoneScript_Random5
-	if_equal $0, UnknownScript_0xbd6a6
+	ifequal $0, UnknownScript_0xbd6a6
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd699:
@@ -1102,8 +1102,8 @@ ToddPhoneScript1:
 	checkflag ENGINE_TODD_SATURDAY_MORNING
 	iftrue UnknownScript_0xbd6e0
 	checkcode VAR_WEEKDAY
-	if_not_equal SATURDAY, UnknownScript_0xbd6e0
-	checkmorn
+	ifnotequal SATURDAY, UnknownScript_0xbd6e0
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbd72b
 
 UnknownScript_0xbd6e0:
@@ -1128,15 +1128,15 @@ ToddPhoneScript2:
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd71f
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd72e
+	ifequal $0, UnknownScript_0xbd72e
 
 UnknownScript_0xbd717:
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd73c
+	ifequal $0, UnknownScript_0xbd73c
 
 UnknownScript_0xbd71f:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd738
+	ifequal $0, UnknownScript_0xbd738
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd72b:
@@ -1166,8 +1166,8 @@ GinaPhoneScript1:
 	checkflag ENGINE_GINA_HAS_LEAF_STONE
 	iftrue UnknownScript_0xbd77d
 	checkcode VAR_WEEKDAY
-	if_not_equal SUNDAY, UnknownScript_0xbd768
-	checkday
+	ifnotequal SUNDAY, UnknownScript_0xbd768
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbd7cc
 
 UnknownScript_0xbd768:
@@ -1200,15 +1200,15 @@ GinaPhoneScript2:
 	checkevent EVENT_GINA_GAVE_LEAF_STONE
 	iftrue UnknownScript_0xbd7b2
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd7dd
+	ifequal $0, UnknownScript_0xbd7dd
 
 UnknownScript_0xbd7b2:
 	farscall PhoneScript_Random11
-	if_equal $0, UnknownScript_0xbd7dd
+	ifequal $0, UnknownScript_0xbd7dd
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd7c8
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd7cf
+	ifequal $0, UnknownScript_0xbd7cf
 
 UnknownScript_0xbd7c8:
 	farjump UnknownScript_0xa0017
@@ -1261,8 +1261,8 @@ ArniePhoneScript1:
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
 	iftrue UnknownScript_0xbd832
 	checkcode VAR_WEEKDAY
-	if_not_equal TUESDAY, UnknownScript_0xbd832
-	checkmorn
+	ifnotequal TUESDAY, UnknownScript_0xbd832
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbd87a
 
 UnknownScript_0xbd832:
@@ -1286,13 +1286,13 @@ ArniePhoneScript2:
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
 	iftrue UnknownScript_0xbd866
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd87d
+	ifequal $0, UnknownScript_0xbd87d
 
 UnknownScript_0xbd866:
 	farscall PhoneScript_Random5
-	if_equal $0, UnknownScript_0xbd887
+	ifequal $0, UnknownScript_0xbd887
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd89e
+	ifequal $0, UnknownScript_0xbd89e
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbd87a:
@@ -1330,8 +1330,8 @@ AlanPhoneScript1:
 	checkflag ENGINE_ALAN_HAS_FIRE_STONE
 	iftrue UnknownScript_0xbd8d6
 	checkcode VAR_WEEKDAY
-	if_not_equal WEDNESDAY, UnknownScript_0xbd8cb
-	checkday
+	ifnotequal WEDNESDAY, UnknownScript_0xbd8cb
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbd919
 
 UnknownScript_0xbd8cb:
@@ -1355,15 +1355,15 @@ AlanPhoneScript2:
 	checkflag ENGINE_ALAN_HAS_FIRE_STONE
 	iftrue UnknownScript_0xbd915
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd91c
+	ifequal $0, UnknownScript_0xbd91c
 	checkevent EVENT_ALAN_GAVE_FIRE_STONE
 	iftrue UnknownScript_0xbd90d
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd926
+	ifequal $0, UnknownScript_0xbd926
 
 UnknownScript_0xbd90d:
 	farscall PhoneScript_Random11
-	if_equal $0, UnknownScript_0xbd926
+	ifequal $0, UnknownScript_0xbd926
 
 UnknownScript_0xbd915:
 	farjump UnknownScript_0xa0000
@@ -1393,8 +1393,8 @@ DanaPhoneScript1:
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
 	iftrue UnknownScript_0xbd960
 	checkcode VAR_WEEKDAY
-	if_not_equal THURSDAY, UnknownScript_0xbd955
-	checknite
+	ifnotequal THURSDAY, UnknownScript_0xbd955
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbd9ab
 
 UnknownScript_0xbd955:
@@ -1418,19 +1418,19 @@ DanaPhoneScript2:
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
 	iftrue UnknownScript_0xbd99f
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd9ae
+	ifequal $0, UnknownScript_0xbd9ae
 	checkevent EVENT_DANA_GAVE_THUNDERSTONE
 	iftrue UnknownScript_0xbd997
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbd9bc
+	ifequal $0, UnknownScript_0xbd9bc
 
 UnknownScript_0xbd997:
 	farscall PhoneScript_Random11
-	if_equal $0, UnknownScript_0xbd9bc
+	ifequal $0, UnknownScript_0xbd9bc
 
 UnknownScript_0xbd99f:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbd9b8
+	ifequal $0, UnknownScript_0xbd9b8
 	farjump UnknownScript_0xa0017
 
 UnknownScript_0xbd9ab:
@@ -1459,8 +1459,8 @@ ChadPhoneScript1:
 	checkflag ENGINE_CHAD_FRIDAY_MORNING
 	iftrue UnknownScript_0xbd9e5
 	checkcode VAR_WEEKDAY
-	if_not_equal FRIDAY, UnknownScript_0xbd9e5
-	checkmorn
+	ifnotequal FRIDAY, UnknownScript_0xbd9e5
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbda20
 
 UnknownScript_0xbd9e5:
@@ -1474,17 +1474,17 @@ ChadPhoneScript2:
 	trainertotext SCHOOLBOY, CHAD1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbda31
+	ifequal $0, UnknownScript_0xbda31
 	checkflag ENGINE_CHAD
 	iftrue UnknownScript_0xbda14
 	checkflag ENGINE_CHAD_FRIDAY_MORNING
 	iftrue UnknownScript_0xbda14
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbda23
+	ifequal $0, UnknownScript_0xbda23
 
 UnknownScript_0xbda14:
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbda2d
+	ifequal $0, UnknownScript_0xbda2d
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbda20:
@@ -1507,13 +1507,13 @@ DerekPhoneScript1:
 	checkflag ENGINE_DEREK_HAS_NUGGET
 	iftrue UnknownScript_0xbda67
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbda5f
+	ifequal $0, UnknownScript_0xbda5f
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbda5f
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, UnknownScript_0xbda63
-	if_equal THURSDAY, UnknownScript_0xbda63
-	if_equal SATURDAY, UnknownScript_0xbda63
+	ifequal TUESDAY, UnknownScript_0xbda63
+	ifequal THURSDAY, UnknownScript_0xbda63
+	ifequal SATURDAY, UnknownScript_0xbda63
 
 UnknownScript_0xbda5f:
 	farjump UnknownScript_0xa0988
@@ -1529,17 +1529,17 @@ DerekPhoneScript2:
 	trainertotext POKEFANM, DEREK1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbda92
+	ifequal $0, UnknownScript_0xbda92
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbda92
 	checkcode VAR_WEEKDAY
-	if_equal TUESDAY, UnknownScript_0xbda9e
-	if_equal THURSDAY, UnknownScript_0xbda9e
-	if_equal SATURDAY, UnknownScript_0xbda9e
+	ifequal TUESDAY, UnknownScript_0xbda9e
+	ifequal THURSDAY, UnknownScript_0xbda9e
+	ifequal SATURDAY, UnknownScript_0xbda9e
 
 UnknownScript_0xbda92:
 	farscall PhoneScript_Random4
-	if_equal $0, UnknownScript_0xbdaa2
+	ifequal $0, UnknownScript_0xbdaa2
 	farjump UnknownScript_0xa0000
 
 UnknownScript_0xbda9e:
@@ -1560,8 +1560,8 @@ TullyPhoneScript1:
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
 	iftrue UnknownScript_0xbdadc
 	checkcode VAR_WEEKDAY
-	if_not_equal SUNDAY, UnknownScript_0xbdad1
-	checknite
+	ifnotequal SUNDAY, UnknownScript_0xbdad1
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbdb1f
 
 UnknownScript_0xbdad1:
@@ -1585,15 +1585,15 @@ TullyPhoneScript2:
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
 	iftrue UnknownScript_0xbdb1b
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbdb22
+	ifequal $0, UnknownScript_0xbdb22
 	checkevent EVENT_TULLY_GAVE_WATER_STONE
 	iftrue UnknownScript_0xbdb13
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbdb2c
+	ifequal $0, UnknownScript_0xbdb2c
 
 UnknownScript_0xbdb13:
 	farscall PhoneScript_Random11
-	if_equal $0, UnknownScript_0xbdb2c
+	ifequal $0, UnknownScript_0xbdb2c
 
 UnknownScript_0xbdb1b:
 	farjump UnknownScript_0xa0000
@@ -1619,8 +1619,8 @@ BrentPhoneScript1:
 	checkflag ENGINE_BRENT_MONDAY_MORNING
 	iftrue UnknownScript_0xbdb55
 	checkcode VAR_WEEKDAY
-	if_not_equal MONDAY, UnknownScript_0xbdb55
-	checkmorn
+	ifnotequal MONDAY, UnknownScript_0xbdb55
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbdb88
 
 UnknownScript_0xbdb55:
@@ -1634,13 +1634,13 @@ BrentPhoneScript2:
 	trainertotext POKEMANIAC, BRENT1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbdb95
+	ifequal $0, UnknownScript_0xbdb95
 	checkflag ENGINE_BRENT
 	iftrue UnknownScript_0xbdb84
 	checkflag ENGINE_BRENT_MONDAY_MORNING
 	iftrue UnknownScript_0xbdb84
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbdb8b
+	ifequal $0, UnknownScript_0xbdb8b
 
 UnknownScript_0xbdb84:
 	farjump UnknownScript_0xa0000
@@ -1666,8 +1666,8 @@ TiffanyPhoneScript1:
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
 	iftrue UnknownScript_0xbdbc9
 	checkcode VAR_WEEKDAY
-	if_not_equal TUESDAY, UnknownScript_0xbdbbe
-	checkday
+	ifnotequal TUESDAY, UnknownScript_0xbdbbe
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbdc14
 
 UnknownScript_0xbdbbe:
@@ -1684,7 +1684,7 @@ UnknownScript_0xbdbc9:
 TiffanyPhoneScript2:
 	trainertotext PICNICKER, TIFFANY1, $0
 	farscall PhoneScript_Random4
-	if_equal $0, UnknownScript_0xbdc21
+	ifequal $0, UnknownScript_0xbdc21
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_TIFFANY
 	iftrue UnknownScript_0xbdc10
@@ -1693,15 +1693,15 @@ TiffanyPhoneScript2:
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
 	iftrue UnknownScript_0xbdc10
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbdc17
+	ifequal $0, UnknownScript_0xbdc17
 	checkevent EVENT_TIFFANY_GAVE_PINK_BOW
 	iftrue UnknownScript_0xbdc08
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbdc69
+	ifequal $0, UnknownScript_0xbdc69
 
 UnknownScript_0xbdc08:
 	farscall PhoneScript_Random11
-	if_equal $0, UnknownScript_0xbdc69
+	ifequal $0, UnknownScript_0xbdc69
 
 UnknownScript_0xbdc10:
 	farjump UnknownScript_0xa0017
@@ -1716,12 +1716,12 @@ UnknownScript_0xbdc17:
 
 UnknownScript_0xbdc21:
 	random $6
-	if_equal $0, UnknownScript_0xbdc3b
-	if_equal $1, UnknownScript_0xbdc42
-	if_equal $2, UnknownScript_0xbdc49
-	if_equal $3, UnknownScript_0xbdc50
-	if_equal $4, UnknownScript_0xbdc57
-	if_equal $5, UnknownScript_0xbdc5e
+	ifequal $0, UnknownScript_0xbdc3b
+	ifequal $1, UnknownScript_0xbdc42
+	ifequal $2, UnknownScript_0xbdc49
+	ifequal $3, UnknownScript_0xbdc50
+	ifequal $4, UnknownScript_0xbdc57
+	ifequal $5, UnknownScript_0xbdc5e
 
 UnknownScript_0xbdc3b:
 	stringtotext Phone_GrandmaString, $1
@@ -1765,8 +1765,8 @@ VancePhoneScript1:
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbdc92
 	checkcode VAR_WEEKDAY
-	if_not_equal WEDNESDAY, UnknownScript_0xbdc92
-	checknite
+	ifnotequal WEDNESDAY, UnknownScript_0xbdc92
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbdcc1
 
 UnknownScript_0xbdc92:
@@ -1784,8 +1784,8 @@ VancePhoneScript2:
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbdcbd
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbdcc4
-	if_equal $1, UnknownScript_0xbdcc4
+	ifequal $0, UnknownScript_0xbdcc4
+	ifequal $1, UnknownScript_0xbdcc4
 
 UnknownScript_0xbdcbd:
 	farjump UnknownScript_0xa0000
@@ -1808,8 +1808,8 @@ WiltonPhoneScript1:
 	checkflag ENGINE_WILTON_HAS_ITEM
 	iftrue UnknownScript_0xbdcfe
 	checkcode VAR_WEEKDAY
-	if_not_equal THURSDAY, UnknownScript_0xbdcf3
-	checkmorn
+	ifnotequal THURSDAY, UnknownScript_0xbdcf3
+	checktime 1 << MORN
 	iftrue UnknownScript_0xbdd33
 
 UnknownScript_0xbdcf3:
@@ -1833,9 +1833,9 @@ WiltonPhoneScript2:
 	checkflag ENGINE_WILTON_HAS_ITEM
 	iftrue UnknownScript_0xbdd2f
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbdd36
+	ifequal $0, UnknownScript_0xbdd36
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbdd40
+	ifequal $0, UnknownScript_0xbdd40
 
 UnknownScript_0xbdd2f:
 	farjump UnknownScript_0xa0000
@@ -1855,9 +1855,9 @@ UnknownScript_0xbdd40:
 	clearevent EVENT_WILTON_HAS_GREAT_BALL
 	clearevent EVENT_WILTON_HAS_POKE_BALL
 	random $5
-	if_equal $0, UnknownScript_0xbdd5e
+	ifequal $0, UnknownScript_0xbdd5e
 	random $3
-	if_equal $0, UnknownScript_0xbdd64
+	ifequal $0, UnknownScript_0xbdd64
 	jump UnknownScript_0xbdd6a
 
 UnknownScript_0xbdd5e:
@@ -1896,8 +1896,8 @@ ParryPhoneScript1:
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbdda8
 	checkcode VAR_WEEKDAY
-	if_not_equal FRIDAY, UnknownScript_0xbdda8
-	checkday
+	ifnotequal FRIDAY, UnknownScript_0xbdda8
+	checktime 1 << DAY
 	iftrue UnknownScript_0xbddd7
 
 UnknownScript_0xbdda8:
@@ -1915,8 +1915,8 @@ ParryPhoneScript2:
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbddd3
 	farscall PhoneScript_Random2
-	if_equal $0, UnknownScript_0xbddda
-	if_equal $1, UnknownScript_0xbddda
+	ifequal $0, UnknownScript_0xbddda
+	ifequal $1, UnknownScript_0xbddda
 
 UnknownScript_0xbddd3:
 	farjump UnknownScript_0xa0000
@@ -1939,8 +1939,8 @@ ErinPhoneScript1:
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
 	iftrue UnknownScript_0xbde03
 	checkcode VAR_WEEKDAY
-	if_not_equal SATURDAY, UnknownScript_0xbde03
-	checknite
+	ifnotequal SATURDAY, UnknownScript_0xbde03
+	checktime 1 << NITE
 	iftrue UnknownScript_0xbde32
 
 UnknownScript_0xbde03:
@@ -1958,8 +1958,8 @@ ErinPhoneScript2:
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
 	iftrue UnknownScript_0xbde2e
 	farscall PhoneScript_Random3
-	if_equal $0, UnknownScript_0xbde35
-	if_equal $1, UnknownScript_0xbde35
+	ifequal $0, UnknownScript_0xbde35
+	ifequal $1, UnknownScript_0xbde35
 
 UnknownScript_0xbde2e:
 	farjump UnknownScript_0xa0017
@@ -1993,31 +1993,31 @@ PhoneScript_Random11:
 	end
 
 PhoneScript_AnswerPhone_Male:
-	checkday
+	checktime 1 << DAY
 	iftrue PhoneScript_AnswerPhone_Male_Day
-	checknite
+	checktime 1 << NITE
 	iftrue PhoneScript_AnswerPhone_Male_Nite
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4dc5
@@ -2121,26 +2121,26 @@ PhoneScript_AnswerPhone_Male:
 
 PhoneScript_AnswerPhone_Male_Day:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4ded
@@ -2244,26 +2244,26 @@ PhoneScript_AnswerPhone_Male_Day:
 
 PhoneScript_AnswerPhone_Male_Nite:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4e16
@@ -2366,19 +2366,19 @@ PhoneScript_AnswerPhone_Male_Nite:
 	end
 
 PhoneScript_AnswerPhone_Female:
-	checkday
+	checktime 1 << DAY
 	iftrue PhoneScript_AnswerPhone_Female_Day
-	checknite
+	checktime 1 << NITE
 	iftrue PhoneScript_AnswerPhone_Female_Nite
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b4f21
@@ -2422,14 +2422,14 @@ PhoneScript_AnswerPhone_Female:
 
 PhoneScript_AnswerPhone_Female_Day:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b4f4d
@@ -2473,14 +2473,14 @@ PhoneScript_AnswerPhone_Female_Day:
 
 PhoneScript_AnswerPhone_Female_Nite:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b4f75
@@ -2523,31 +2523,31 @@ PhoneScript_AnswerPhone_Female_Nite:
 	end
 
 PhoneScript_GreetPhone_Male:
-	checkday
+	checktime 1 << DAY
 	iftrue PhoneScript_GreetPhone_Male_Day
-	checknite
+	checktime 1 << NITE
 	iftrue PhoneScript_GreetPhone_Male_Nite
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4e3e
@@ -2651,26 +2651,26 @@ PhoneScript_GreetPhone_Male:
 
 PhoneScript_GreetPhone_Male_Day:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4e72
@@ -2774,26 +2774,26 @@ PhoneScript_GreetPhone_Male_Day:
 
 PhoneScript_GreetPhone_Male_Nite:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_SAILOR_HUEY, .Huey
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_JUGGLER_IRWIN, .Irwin
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_BLACKBELT_KENJI, .Kenji
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_SAILOR_HUEY, .Huey
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_JUGGLER_IRWIN, .Irwin
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_BLACKBELT_KENJI, .Kenji
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4e9e
@@ -2896,19 +2896,19 @@ PhoneScript_GreetPhone_Male_Nite:
 	end
 
 PhoneScript_GreetPhone_Female:
-	checkday
+	checktime 1 << DAY
 	iftrue PhoneScript_GreetPhone_Female_Day
-	checknite
+	checktime 1 << NITE
 	iftrue PhoneScript_GreetPhone_Female_Nite
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b4fa1
@@ -2952,14 +2952,14 @@ PhoneScript_GreetPhone_Female:
 
 PhoneScript_GreetPhone_Female_Day:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b4fda
@@ -3003,14 +3003,14 @@ PhoneScript_GreetPhone_Female_Day:
 
 PhoneScript_GreetPhone_Female_Nite:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b5004
@@ -3054,23 +3054,23 @@ PhoneScript_GreetPhone_Female_Nite:
 
 PhoneScript_Generic_Male:
 	checkcode VAR_CALLERID
-	if_equal PHONE_SCHOOLBOY_JACK, .Jack
-	if_equal PHONE_COOLTRAINERM_GAVEN, .Gaven
-	if_equal PHONE_BIRDKEEPER_JOSE, .Jose
-	if_equal PHONE_YOUNGSTER_JOEY, .Joey
-	if_equal PHONE_BUG_CATCHER_WADE, .Wade
-	if_equal PHONE_FISHER_RALPH, .Ralph
-	if_equal PHONE_HIKER_ANTHONY, .Anthony
-	if_equal PHONE_CAMPER_TODD, .Todd
-	if_equal PHONE_BUG_CATCHER_ARNIE, .Arnie
-	if_equal PHONE_SCHOOLBOY_ALAN, .Alan
-	if_equal PHONE_SCHOOLBOY_CHAD, .Chad
-	if_equal PHONE_POKEFANM_DEREK, .Derek
-	if_equal PHONE_FISHER_TULLY, .Tully
-	if_equal PHONE_POKEMANIAC_BRENT, .Brent
-	if_equal PHONE_BIRDKEEPER_VANCE, .Vance
-	if_equal PHONE_FISHER_WILTON, .Wilton
-	if_equal PHONE_HIKER_PARRY, .Parry
+	ifequal PHONE_SCHOOLBOY_JACK, .Jack
+	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
+	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
+	ifequal PHONE_YOUNGSTER_JOEY, .Joey
+	ifequal PHONE_BUG_CATCHER_WADE, .Wade
+	ifequal PHONE_FISHER_RALPH, .Ralph
+	ifequal PHONE_HIKER_ANTHONY, .Anthony
+	ifequal PHONE_CAMPER_TODD, .Todd
+	ifequal PHONE_BUG_CATCHER_ARNIE, .Arnie
+	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
+	ifequal PHONE_SCHOOLBOY_CHAD, .Chad
+	ifequal PHONE_POKEFANM_DEREK, .Derek
+	ifequal PHONE_FISHER_TULLY, .Tully
+	ifequal PHONE_POKEMANIAC_BRENT, .Brent
+	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
+	ifequal PHONE_FISHER_WILTON, .Wilton
+	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
 	farwritetext UnknownText_0x1b4ecd
@@ -3164,14 +3164,14 @@ PhoneScript_Generic_Male:
 
 PhoneScript_Generic_Female:
 	checkcode VAR_CALLERID
-	if_equal PHONE_POKEFAN_BEVERLY, .Beverly
-	if_equal PHONE_COOLTRAINERF_BETH, .Beth
-	if_equal PHONE_COOLTRAINERF_REENA, .Reena
-	if_equal PHONE_PICNICKER_LIZ, .Liz
-	if_equal PHONE_PICNICKER_GINA, .Gina
-	if_equal PHONE_LASS_DANA, .Dana
-	if_equal PHONE_PICNICKER_TIFFANY, .Tiffany
-	if_equal PHONE_PICNICKER_ERIN, .Erin
+	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
+	ifequal PHONE_COOLTRAINERF_BETH, .Beth
+	ifequal PHONE_COOLTRAINERF_REENA, .Reena
+	ifequal PHONE_PICNICKER_LIZ, .Liz
+	ifequal PHONE_PICNICKER_GINA, .Gina
+	ifequal PHONE_LASS_DANA, .Dana
+	ifequal PHONE_PICNICKER_TIFFANY, .Tiffany
+	ifequal PHONE_PICNICKER_ERIN, .Erin
 
 .Beverly:
 	farwritetext UnknownText_0x1b502b
@@ -3216,7 +3216,7 @@ PhoneScript_Generic_Female:
 PhoneScript_MonFlavorText:
 	special RandomPhoneMon
 	farscall PhoneScript_Random2
-	if_equal $0, .TooEnergetic
+	ifequal $0, .TooEnergetic
 	farwritetext UnknownText_0x1b518b
 	buttonsound
 	farjump PhoneScript_HangupText_Male

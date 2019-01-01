@@ -184,73 +184,73 @@ TrainerClassAttributes: ; 3959c
 	db 0, 0 ; items
 	db 4 ; base reward
 	dw AI_BASIC + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Bug Catcher
 	db 0, 0 ; items
 	db 4 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Camper
 	db 0, 0 ; items
 	db 5 ; base reward
 	dw AI_BASIC + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Picnicker
 	db 0, 0 ; items
 	db 5 ; base reward
 	dw AI_BASIC + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Twins
 	db 0, 0 ; items
 	db 5 ; base reward
 	dw NO_AI
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_OFTEN
 
 ; Fisher
 	db 0, 0 ; items
 	db 6 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Bird Keeper
 	db 0, 0 ; items
 	db 6 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OFFENSIVE + AI_OPPORTUNIST + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Hiker
 	db 0, 0 ; items
 	db 8 ; base reward
 	dw AI_BASIC + AI_OFFENSIVE + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Gruntm
 	db 0, 0 ; items
 	db 10 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Gruntf
 	db 0, 0 ; items
 	db 10 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS + AI_RISKY
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Pokefanm
 	db 0, 0 ; items
 	db 15 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_SMART + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Pokefanf
 	db 0, 0 ; items
 	db 15 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_SMART + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Officerm
 	db FRESH_WATER, 0 ; items
@@ -292,7 +292,7 @@ TrainerClassAttributes: ; 3959c
 	db 0, 0 ; items
 	db 15 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Beauty
 	db 0, 0 ; items
@@ -376,13 +376,13 @@ TrainerClassAttributes: ; 3959c
 	db LEMONADE, 0 ; items
 	db 16 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_OFTEN
 
 ; Couple
 	db LEMONADE, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_TYPES + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_OFTEN
 
 ; Gentleman
 	db 0, 0 ; items
@@ -406,7 +406,7 @@ TrainerClassAttributes: ; 3959c
 	db SUPER_POTION, 0 ; items
 	db 16 ; base reward
 	dw AI_BASIC + AI_SETUP + AI_TYPES + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Baker
 	db MOOMOO_MILK, 0 ; items
@@ -442,7 +442,7 @@ TrainerClassAttributes: ; 3959c
 	db 0, 0 ; items
 	db 20 ; base reward
 	dw AI_BASIC + AI_OFFENSIVE + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; PI
 	db 0, 0 ; items
@@ -538,37 +538,37 @@ TrainerClassAttributes: ; 3959c
 	db 0, 0 ; items
 	db 14 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Aroma Lady
 	db 0, 0 ; items
 	db 14 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Waitress
 	db 0, 0 ; items
 	db 12 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Sightseerm
 	db 0, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Sightseerf
 	db 0, 0 ; items
 	db 18 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Sightseers
 	db 0, 0 ; items
 	db 20 ; base reward
 	dw AI_BASIC + AI_OPPORTUNIST + AI_AGGRESSIVE + AI_STATUS
-	dw CONTEXT_USE + SWITCH_SOMETIMES
+	dw CONTEXT_USE + SWITCH_RARELY
 
 ; Cooltrainerm
 	db FULL_HEAL, MAX_POTION ; items

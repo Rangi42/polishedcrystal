@@ -182,8 +182,8 @@ TrainerBug_catcherWade1:
 	callstd asknumber2m
 .Continue:
 	askforphonenumber PHONE_BUG_CATCHER_WADE
-	if_equal $1, .PhoneFullSTD
-	if_equal $2, .DeclinedNumberSTD
+	ifequal $1, .PhoneFullSTD
+	ifequal $2, .DeclinedNumberSTD
 	trainertotext BUG_CATCHER, WADE1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -192,11 +192,11 @@ TrainerBug_catcherWade1:
 	callstd rematchm
 	winlosstext Bug_catcherWade1BeatenText, 0
 	copybytetovar wWadeFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .LoadFight4
@@ -301,10 +301,10 @@ Route31MailRecipientScript:
 	writetext Text_Route31SleepyManGotMail
 	buttonsound
 	checkpokeitem ReceivedFarfetch_dMailText
-	if_equal $0, .WrongMail
-	if_equal $2, .Refused
-	if_equal $3, .NoMail
-	if_equal $4, .LastMon
+	ifequal $0, .WrongMail
+	ifequal $2, .Refused
+	ifequal $3, .NoMail
+	ifequal $4, .LastMon
 	writetext Text_Route31HandOverMailMon
 	buttonsound
 	writetext Text_Route31ReadingMail
@@ -321,7 +321,7 @@ Route31MailRecipientScript:
 	writebyte SLEEP_TALK
 	writetext Text_Route31TutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_Route31TutorRefused
 

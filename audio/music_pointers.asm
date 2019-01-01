@@ -26,6 +26,7 @@ Music:
 	dba Music_SproutTower
 	dba Music_LookSage
 	dba Music_MartHGSS
+	dba Music_HiddenGrottoB2W2
 	dba Music_UnionCave
 	dba Music_RuinsOfAlphInterior
 	dba Music_RuinsOfAlphRadio
@@ -123,6 +124,7 @@ Music:
 	dba Music_CinnabarIslandHGSS
 	dba Music_CinnabarMansionRBY
 	dba Music_TrainerBattleDPPt
+	dba Music_ScaryHouseXY
 	dba Music_EternaForestDPPt
 	dba Music_MountChimneyRSE
 	dba Music_MountPyreRSE
@@ -152,7 +154,7 @@ Music:
 	dba Music_PowerPlantXY
 	dba Music_ReversalMountainWhite2
 	dba Music_MeteorFallsRSE
-	dba Music_LugiasSong2000
+	dba Music_LugiasSong2000_NoIntro
 	dba Music_LugiaBattleHGSS
 	dba Music_SummoningDanceHGSS
 	dba Music_HoOhBattleHGSS

@@ -34,7 +34,7 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	writebyte ZEN_HEADBUTT
 	writetext Text_MrPsychicsHouseTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_MrPsychicsHouseTutorRefused
 

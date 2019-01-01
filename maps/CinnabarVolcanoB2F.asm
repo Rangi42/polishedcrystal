@@ -35,36 +35,36 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	special Special_FadeOutMusic
 	pause 15
 	checkcode VAR_FACING
-	if_equal UP, .up
-	if_equal DOWN, .down
-	if_equal LEFT, .left
+	ifequal UP, .up
+	ifequal DOWN, .down
+	ifequal LEFT, .left
 .right
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
-	spriteface PLAYER, DOWN
+	turnobject PLAYER, DOWN
 	jump .continue
 .up
-	moveperson CINNABARVOLCANOB2F_LAWRENCE, 13, 24
+	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachUp
-	spriteface CINNABARVOLCANOB2F_LAWRENCE, UP
-	spriteface PLAYER, DOWN
+	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
+	turnobject PLAYER, DOWN
 	jump .continue
 .down
-	moveperson CINNABARVOLCANOB2F_LAWRENCE, 13, 24
+	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachDown
 	jump .continue
 .left
-	moveperson CINNABARVOLCANOB2F_LAWRENCE, 14, 24
+	moveobject CINNABARVOLCANOB2F_LAWRENCE, 14, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
-	spriteface CINNABARVOLCANOB2F_LAWRENCE, UP
-	spriteface PLAYER, DOWN
+	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
+	turnobject PLAYER, DOWN
 .continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext CinnabarVolcanoB2FLawrenceSpeechText
-	spriteface CINNABARVOLCANOB2F_LAWRENCE, UP
+	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
 	opentext
 	writetext CinnabarVolcanoB2FLawrenceEscapeRopeText
 	pause 15

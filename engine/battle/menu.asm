@@ -1,26 +1,24 @@
 LoadBattleMenu: ; 24ef2
 	ld hl, BattleMenuDataHeader
-	call LoadMenuDataHeader
-	ld a, [wBattleMenuCursorBuffer]
-	ld [wMenuCursorBuffer], a
-	call InterpretBattleMenu
-	ld a, [wMenuCursorBuffer]
-	ld [wBattleMenuCursorBuffer], a
-	jp ExitMenu
+	jr _BattleMenuCommon
 ; 24f0b
 
 ContestBattleMenu: ; 24f13
 	ld hl, ContestBattleMenuDataHeader
-	jr ContestSafariBattleMenuCommon
+	jr _BattleMenuCommon
 ; 24f19
 
 SafariBattleMenu:
 	ld hl, SafariBattleMenuDataHeader
-ContestSafariBattleMenuCommon:
+_BattleMenuCommon:
 	call LoadMenuDataHeader
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
+	ld a, 1
+	ld [wIsBattleMenu], a
 	call _2DMenu
+	xor a
+	ld [wIsBattleMenu], a
 	ld a, [wMenuCursorBuffer]
 	ld [wBattleMenuCursorBuffer], a
 	jp ExitMenu

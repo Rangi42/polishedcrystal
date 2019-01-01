@@ -136,12 +136,8 @@ LoadPartyMenuMonIcon:
 	ld a, [hl]
 	and a
 	ret z
-	push hl
-	push bc
 	ld d, a
-	farcall ItemIsMail
-	pop bc
-	pop hl
+	call ItemIsMail
 	jr c, .mail
 	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
 	jr .okay

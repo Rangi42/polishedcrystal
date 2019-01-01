@@ -28,7 +28,7 @@ Route24_MapScriptHeader:
 	const ROUTE24_ROCKET
 
 Route24TileScript:
-	checktriggers
+	checkscene
 	iftrue .underfoot
 	callasm Route24_OverheadBridgeAsm
 	return
@@ -79,7 +79,7 @@ Route24BridgeUnderfootTrigger:
 	ld a, $1
 Route24_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wRoute24Trigger], a ; dotrigger a
+	ld [wRoute24Trigger], a ; setscene a
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 TrainerGruntM31:
@@ -99,7 +99,7 @@ RocketScript_0x1adbfa:
 	disappear ROUTE24_ROCKET
 	setevent EVENT_LEARNED_ABOUT_MACHINE_PART
 	clearevent EVENT_CERULEAN_CAPE_BOYFRIEND
-	domaptrigger CERULEAN_CAPE, $1
+	setmapscene CERULEAN_CAPE, $1
 	pause 25
 	special Special_FadeInQuickly
 	playmusic MUSIC_NUGGET_BRIDGE_HGSS

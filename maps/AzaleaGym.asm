@@ -29,7 +29,7 @@ AzaleaGymStatue:
 	jumpstd gymstatue1
 .Beaten:
 	checkcode VAR_BADGES
-	if_greater_than 9, .LyraToo
+	ifgreater 9, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3
@@ -48,7 +48,7 @@ AzaleaGymBugsyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_HIVEBADGE
-	domaptrigger AZALEA_TOWN, $1
+	setmapscene AZALEA_TOWN, $1
 	setevent EVENT_BEAT_TWINS_AMY_AND_MAY
 	setevent EVENT_BEAT_BUG_CATCHER_BENNY
 	setevent EVENT_BEAT_BUG_CATCHER_AL

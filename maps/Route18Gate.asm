@@ -48,7 +48,7 @@ UnknownScript_0x73611:
 	iftrue Route18GateDoNothingScript
 UnknownScript_0x73617:
 	showemote EMOTE_SHOCK, ROUTE18GATE_OFFICER, 15
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	showtext UnknownText_0x7364d
 	applymovement PLAYER, MovementData_0x73629
 Route18GateDoNothingScript

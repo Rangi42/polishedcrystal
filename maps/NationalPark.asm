@@ -52,7 +52,7 @@ UnknownScript_0x5c021:
 	endtext
 
 OfficermKeithScript:
-	checknite
+	checktime 1 << NITE
 	iffalse_jumptextfaceplayer OfficermKeithDaytimeText
 	checkevent EVENT_BEAT_OFFICERM_KEITH
 	iftrue_jumptextfaceplayer OfficermKeithAfterText
@@ -98,7 +98,7 @@ GenericTrainerSchoolboyJohnny:
 
 GameboyKidScript_0x5c037:
 	showtextfaceplayer UnknownText_0x5c42a
-	spriteface LAST_TALKED, DOWN
+	turnobject LAST_TALKED, DOWN
 	end
 
 TrainerSchoolboyJack1:
@@ -123,8 +123,8 @@ UnknownScript_0x5c071:
 	scall UnknownScript_0x5c100
 UnknownScript_0x5c074:
 	askforphonenumber PHONE_SCHOOLBOY_JACK
-	if_equal $1, UnknownScript_0x5c110
-	if_equal $2, UnknownScript_0x5c10c
+	ifequal $1, UnknownScript_0x5c110
+	ifequal $2, UnknownScript_0x5c10c
 	trainertotext SCHOOLBOY, JACK1, $0
 	scall UnknownScript_0x5c104
 	jump UnknownScript_0x5c108
@@ -133,11 +133,11 @@ UnknownScript_0x5c088:
 	scall UnknownScript_0x5c114
 	winlosstext SchoolboyJack1BeatenText, 0
 	copybytetovar wJackFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -244,8 +244,8 @@ UnknownScript_0x5c160:
 	scall UnknownScript_0x5c193
 UnknownScript_0x5c163:
 	askforphonenumber PHONE_POKEFAN_BEVERLY
-	if_equal $1, UnknownScript_0x5c1a3
-	if_equal $2, UnknownScript_0x5c19f
+	ifequal $1, UnknownScript_0x5c1a3
+	ifequal $2, UnknownScript_0x5c19f
 	trainertotext POKEFANF, BEVERLY1, $0
 	scall UnknownScript_0x5c197
 	jump UnknownScript_0x5c19b

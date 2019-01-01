@@ -37,26 +37,30 @@ def load_palette(filename):
 	try:
 		palette = []
 		with open(filename, 'r') as f:
-			hue = []
+			channels = []
 			for line in f:
-				line = line.strip()
+				line = line.split(';')[0].strip()
 				if line.startswith('RGB '):
-					rgb = [RGBC(int(b)) for b in line[4:].split(',')]
-					assert len(rgb) == 3
-					hue.append(rgb)
-					if len(hue) == 4:
-						palette.append(hue)
-						hue = []
+					rgbs = [RGBC(int(b)) for b in line[4:].split(',')]
+					assert len(rgbs) % 3 == 0
+					channels.extend(rgbs)
+			hue = []
+			while len(channels) >= 3:
+				rgb, channels = channels[:3], channels[3:]
+				hue.append(rgb)
+				if len(hue) == 4:
+					palette.append(hue)
+					hue = []
 	except:
 		palette = [
-			[RGB5(30,28,26), RGB5(19,19,19), RGB5(13,13,13), RGBC( 7, 7, 7)],
-			[RGB5(30,28,26), RGB5(31,19,24), RGB5(30,10, 6), RGBC( 7, 7, 7)],
-			[RGB5(18,24, 9), RGB5(15,20, 1), RGB5( 9,13, 0), RGBC( 7, 7, 7)],
-			[RGB5(30,28,26), RGB5(15,16,31), RGB5( 9, 9,31), RGBC( 7, 7, 7)],
-			[RGB5(30,28,26), RGB5(31,31, 7), RGB5(31,16, 1), RGBC( 7, 7, 7)],
-			[RGB5(26,24,17), RGB5(21,17, 7), RGB5(16,13, 3), RGBC( 7, 7, 7)],
-			[RGB5(30,28,26), RGB5(17,19,31), RGB5(14,16,31), RGBC( 7, 7, 7)],
-			[RGB5(31,31,16), RGB5(31,31,16), RGB5(14, 9, 0), RGBC( 0, 0, 0)]
+			[RGB5(30,28,26), RGB5(19,19,19), RGB5(13,13,13), RGB5( 7, 7, 7)],
+			[RGB5(30,28,26), RGB5(31,19,24), RGB5(30,10, 6), RGB5( 7, 7, 7)],
+			[RGB5(18,24, 9), RGB5(15,20, 1), RGB5( 9,13, 0), RGB5( 7, 7, 7)],
+			[RGB5(30,28,26), RGB5(15,16,31), RGB5( 9, 9,31), RGB5( 7, 7, 7)],
+			[RGB5(30,28,26), RGB5(31,31, 7), RGB5(31,16, 1), RGB5( 7, 7, 7)],
+			[RGB5(26,24,17), RGB5(21,17, 7), RGB5(16,13, 3), RGB5( 7, 7, 7)],
+			[RGB5(30,28,26), RGB5(17,19,31), RGB5(14,16,31), RGB5( 7, 7, 7)],
+			[RGB5(31,31,16), RGB5(31,31,16), RGB5(14, 9, 0), RGB5( 0, 0, 0)]
 		]
 	assert len(palette) >= 8
 	return palette

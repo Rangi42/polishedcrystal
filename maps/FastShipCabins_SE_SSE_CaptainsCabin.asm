@@ -39,22 +39,22 @@ CaptainScript_0x75ea7:
 	jumptextfaceplayer UnknownText_0x76012
 
 TwinScript_0x75ebb:
-	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
+	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, RIGHT
 	showtext UnknownText_0x761e0
 	showtextfaceplayer UnknownText_0x7621f
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2
 	applymovement PLAYER, MovementData_0x76004
-	moveperson FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, 3, 19
+	moveobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, 3, 19
 	appear FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1
-	spriteface PLAYER, UP
-	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, UP
+	turnobject PLAYER, UP
+	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, UP
 	special Special_FadeInQuickly
-	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, DOWN
+	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, DOWN
 	showemote EMOTE_SHOCK, FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, 15
 	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, MovementData_0x7600c
-	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
+	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue UnknownScript_0x75f03
 	showtext UnknownText_0x76284
@@ -63,13 +63,13 @@ TwinScript_0x75ebb:
 UnknownScript_0x75f03:
 	showtext UnknownText_0x762c6
 UnknownScript_0x75f09:
-	spriteface FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
+	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
 	applyonemovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, step_down
 	opentext
 	writetext UnknownText_0x76143
 	buttonsound
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	domaptrigger FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, $0
 	jump UnknownScript_0x75f37
 
 GentlemanScript_0x75f1f:
@@ -82,7 +82,7 @@ GentlemanScript_0x75f1f:
 	writetext UnknownText_0x760ae
 	waitbutton
 	closetext
-	domaptrigger FAST_SHIP_1F, $0
+	setmapscene FAST_SHIP_1F, $0
 	end
 
 UnknownScript_0x75f37:

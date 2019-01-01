@@ -40,11 +40,11 @@ PsychicInverScript:
 	reloadmapafterbattle
 	opentext
 	copybytetovar wInverseBattleScore
-	if_equal 0, .Score0
-	if_greater_than 127, .Score0 ; negative
-	if_less_than 4, .Score1_3
-	if_less_than 7, .Score4_6
-	if_less_than 10, .Score7_9
+	ifequal 0, .Score0
+	ifgreater 127, .Score0 ; negative
+	ifless 4, .Score1_3
+	ifless 7, .Score4_6
+	ifless 10, .Score7_9
 	writetext InverseBattle10PointRewardText
 	writebyte RARE_CANDY
 .Reward
@@ -69,27 +69,15 @@ PsychicInverScript:
 
 .Score4_6
 	writetext InverseBattle4_6PointRewardText
-	callasm .RandomBerry
+	random MARANGABERRY - LUM_BERRY + 1
+	addvar LUM_BERRY
 	jump .Reward
 
 .Score7_9
 	writetext InverseBattle7_9PointRewardText
-	callasm .RandomStone
+	random EVERSTONE - LEAF_STONE + 1
+	addvar LEAF_STONE
 	jump .Reward
-
-.RandomBerry:
-	ld a, APICOT_BERRY - LUM_BERRY + 1
-	call RandomRange
-	add LUM_BERRY
-	ld [wScriptVar], a
-	ret
-
-.RandomStone:
-	ld a, EVERSTONE - LEAF_STONE + 1
-	call RandomRange
-	add LEAF_STONE
-	ld [wScriptVar], a
-	ret
 
 PsychicInverGreetingText:
 	text "Oh. I wasn't ex-"

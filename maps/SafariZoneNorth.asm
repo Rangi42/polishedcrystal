@@ -82,7 +82,7 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	writebyte DOUBLE_EDGE
 	writetext Text_SafariZoneNorthTutorClear
 	special Special_MoveTutor
-	if_equal $0, .TeachMove
+	ifequal $0, .TeachMove
 .TutorRefused
 	jumpopenedtext Text_SafariZoneNorthTutorRefused
 

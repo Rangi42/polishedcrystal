@@ -42,8 +42,8 @@ SilverCavePokeCenterGrampsScript:
 	writetext .GreetingText
 	waitbutton
 	checkcode VAR_PKMN_JOURNALS
-	if_equal 0, .ReadNone
-	if_equal NUM_POKEMON_JOURNALS, .ReadThemAll
+	ifequal 0, .ReadNone
+	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
 	thisopenedtext
 
 	text "Oh, you've read @"

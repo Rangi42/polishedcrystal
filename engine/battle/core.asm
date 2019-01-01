@@ -2068,6 +2068,13 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 ; fallthrough
 
 GiveExperiencePointsAfterCatch:
+	call IsAnyMonHoldingExpShare
+	ld a, [wEnemyMonBaseExp]
+	jr z, .skip_exp_halving
+	srl a
+	ld [wEnemyMonBaseExp], a
+.skip_exp_halving
+	ld [wBackupEnemyMonBaseExp], a
 ; give experience to participants
 	xor a
 	ld [wGivingExperienceToExpShareHolders], a
@@ -2079,6 +2086,8 @@ GiveExperiencePointsAfterCatch:
 	push af
 	ld a, d
 	ld [wBattleParticipantsNotFainted], a
+	ld a, [wBackupEnemyMonBaseExp]
+	ld [wEnemyMonBaseExp], a
 	ld a, $1
 	ld [wGivingExperienceToExpShareHolders], a
 	call GiveExperiencePoints
@@ -5859,8 +5868,16 @@ MoveInfoBox: ; 3e6c8
 	ld [hBGMapMode], a
 
 	hlcoord 0, 8
+	; Check if we've already created the move info textbox.
+	; If we haven't, run TextBox, and (after writing out all data),
+	; WaitBGMap. Not needed for disabled moves since there's no icons.
+	ld a, [hl]
+	cp "┌"
+	push af
+	jr z, .textbox_ok
 	lb bc, 3, 9
 	call TextBox
+.textbox_ok
 
 	ld a, [wPlayerDisableCount]
 	and a
@@ -5875,6 +5892,7 @@ MoveInfoBox: ; 3e6c8
 
 	hlcoord 1, 10
 	ld de, .Disabled
+	pop af
 	jp PlaceString
 
 .not_disabled
@@ -5966,6 +5984,7 @@ MoveInfoBox: ; 3e6c8
 	call PlaceString
 
 .icons
+	farcall LoadBattleCategoryAndTypePals
 	ld hl, CategoryIconGFX
 	ld bc, 2 tiles
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
@@ -5975,33 +5994,26 @@ MoveInfoBox: ; 3e6c8
 	ld hl, VTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
-	hlcoord 1, 9
-	ld [hl], $59
-	inc hl
-	ld [hl], $5a
-
 	ld hl, TypeIconGFX
-	ld bc, 4 tiles
+	ld bc, 4 * LEN_1BPP_TILE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	call AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
-	call Request2bpp
-	hlcoord 3, 9
-	ld [hl], $5b
-	inc hl
-	ld [hl], $5c
-	inc hl
-	ld [hl], $5d
-	inc hl
-	ld [hl], $5e
-
-	farcall LoadBattleCategoryAndTypePals
-	call WaitBGMap
+	call Request1bpp
+	hlcoord 1, 9
+	ld b, 6
+	ld a, $59
+.loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .loop
+	pop af
+	call nz, WaitBGMap
 	jp SetPalettes
-; 3e74f
 
 .Disabled:
 	db "Disabled!@"
@@ -7546,23 +7558,12 @@ GiveExperiencePoints: ; 3ee3b
 	jr nz, .count_loop
 	cp 2
 	ret c
-
 	ld [wd265], a
-	ld hl, wEnemyMonBaseStats
-	ld c, wEnemyMonEnd - wEnemyMonBaseStats
-.count_loop2
-	xor a
-	ld [hDividend + 0], a
-	ld a, [hl]
-	ld [hDividend + 1], a
-	ld a, [wd265]
-	ld [hDivisor], a
-	ld b, 2
-	call Divide
-	ld a, [hQuotient + 2]
-	ld [hli], a
-	dec c
-	jr nz, .count_loop2
+	ld c, a
+	ld a, [wEnemyMonBaseExp]
+	call SimpleDivide
+	ld a, b
+	ld [wEnemyMonBaseExp], a
 	ret
 ; 3f106
 
@@ -7586,6 +7587,7 @@ GiveBattleEVs:
 	; check held item
 	push bc
 	ld hl, wBattleMonItem
+	ld b, [hl]
 	farcall GetItemHeldEffect
 	ld a, b
 	cp HELD_EV_DOUBLE
@@ -9208,16 +9210,11 @@ InitBattleDisplay: ; 3fb6c
 	hlcoord 2, 6
 	lb bc, 6, 6
 	predef PlaceGraphic
-	xor a
-	ld [hWY], a
-	ld [rWY], a
 	call WaitBGMap
 	call HideSprites
 	ld b, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
-	ld a, $90
-	ld [hWY], a
 	xor a
 	ld [hSCX], a
 	ret

@@ -50,12 +50,12 @@ CinnabarLabTrigger0:
 
 CinnabarLabStepDownScript:
 	checkcode VAR_YCOORD
-	if_not_equal $6, .Done
+	ifnotequal $6, .Done
 	checkcode VAR_XCOORD
-	if_not_equal $2, .Done
+	ifnotequal $2, .Done
 	applyonemovement PLAYER, step_down
 .Done
-	dotrigger $1
+	setscene $1
 	end
 
 CinnabarLabCelebiEventScript:
@@ -68,14 +68,14 @@ CinnabarLabCelebiEventScript:
 	setevent EVENT_CINNABAR_LAB_KRIS
 	clearevent EVENT_CINNABAR_LAB_SCIENTIST1
 	setevent EVENT_CINNABAR_LAB_SCIENTIST2
-	dotrigger $0
+	setscene $0
 	warpfacing UP, CINNABAR_LAB, 15, 9
 	special Special_FadeOutMusic
 	pause 30
 	showtext CinnabarLabContinueTestingText
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 15
 	playmusic MUSIC_ROCKET_OVERTURE
-	spriteface CINNABARLAB_GIOVANNI, DOWN
+	turnobject CINNABARLAB_GIOVANNI, DOWN
 	showtext CinnabarLabGiovanniWhoAreYouText
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniStepAsideMovementData
 	applymovement PLAYER, CinnabarLabPlayerStepsUpMovementData
@@ -134,20 +134,20 @@ CinnabarLabCelebiEventScript:
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 10
 	cry MEWTWO
 	waitsfx
-	spriteface CINNABARLAB_ARMORED_MEWTWO, LEFT
+	turnobject CINNABARLAB_ARMORED_MEWTWO, LEFT
 	applymovement PLAYER, CinnabarLabPan1MovementData
 	playsound SFX_PSYCHIC
-	spriteface CINNABARLAB_SCIENTIST1, RIGHT
+	turnobject CINNABARLAB_SCIENTIST1, RIGHT
 	showemote EMOTE_SHOCK, CINNABARLAB_SCIENTIST1, 10
 	applymovement CINNABARLAB_SCIENTIST1, CinnabarLabScientist1Thrown1MovementData
 	playsound SFX_TACKLE
 	applymovement CINNABARLAB_SCIENTIST1, CinnabarLabScientist1Thrown2MovementData
 	disappear CINNABARLAB_SCIENTIST1
 	appear CINNABARLAB_SCIENTIST3
-	spriteface CINNABARLAB_ARMORED_MEWTWO, RIGHT
+	turnobject CINNABARLAB_ARMORED_MEWTWO, RIGHT
 	applymovement PLAYER, CinnabarLabPan2MovementData
 	playsound SFX_PSYCHIC
-	spriteface CINNABARLAB_SCIENTIST2, LEFT
+	turnobject CINNABARLAB_SCIENTIST2, LEFT
 	showemote EMOTE_SHOCK, CINNABARLAB_SCIENTIST2, 10
 	applymovement CINNABARLAB_SCIENTIST2, CinnabarLabScientist2Thrown1MovementData
 	playsound SFX_TACKLE
@@ -159,7 +159,7 @@ CinnabarLabCelebiEventScript:
 	closetext
 	playsound SFX_PSYCHIC
 	applymovement CINNABARLAB_GIOVANNI, CinnabarLabGiovanniThrown1MovementData
-	spriteface CINNABARLAB_ARMORED_MEWTWO, UP
+	turnobject CINNABARLAB_ARMORED_MEWTWO, UP
 	applymovement PLAYER, CinnabarLabPan3MovementData
 	waitsfx
 	playsound SFX_TACKLE
@@ -168,7 +168,7 @@ CinnabarLabCelebiEventScript:
 	applymovement PLAYER, CinnabarLabPan4MovementData
 	disappear CINNABARLAB_CHRIS
 	disappear CINNABARLAB_KRIS
-	spriteface CINNABARLAB_ARMORED_MEWTWO, DOWN
+	turnobject CINNABARLAB_ARMORED_MEWTWO, DOWN
 	pause 30
 	applyonemovement CINNABARLAB_ARMORED_MEWTWO, slow_step_down
 	playsound SFX_KINESIS
@@ -194,7 +194,7 @@ CinnabarLabCelebiEventScript:
 	cry CELEBI
 	waitsfx
 	closetext
-	spriteface PLAYER, LEFT
+	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
 	playsound SFX_PROTECT
 	applymovement CINNABARLAB_CELEBI, CinnabarLabCelebiFloatsMovementData
@@ -203,7 +203,7 @@ CinnabarLabCelebiEventScript:
 	special FadeOutPalettes
 	pause 30
 	waitsfx
-	domaptrigger ILEX_FOREST, $1
+	setmapscene ILEX_FOREST, $1
 	warp ILEX_FOREST, 10, 26
 	end
 

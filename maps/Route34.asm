@@ -48,7 +48,7 @@ Route34RebattleBreederAndEggCheckCallback:
 	clearevent EVENT_BEAT_BREEDER_JULIE
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
 	iftrue .PutDaycareManOutside
-	checktriggers
+	checkscene
 	iftrue .PutDaycareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
@@ -86,23 +86,23 @@ Route34LyraTrigger1:
 Route34LyraTrigger3:
 	applyonemovement PLAYER, step_left
 Route34LyraTrigger2:
-	spriteface PLAYER, UP
+	turnobject PLAYER, UP
 	special Special_FadeOutMusic
 	showtext Route34LyraText_Grandpa
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	appear ROUTE34_LYRA
-	spriteface ROUTE34_GRAMPS, UP
+	turnobject ROUTE34_GRAMPS, UP
 	pause 10
 	applymovement ROUTE34_LYRA, Route34MovementData_LyraComesDown
-	spriteface ROUTE34_GRAMPS, LEFT
+	turnobject ROUTE34_GRAMPS, LEFT
 	showtext Route34LyraGoodWorkText
 	showemote EMOTE_SHOCK, ROUTE34_LYRA, 15
 	pause 15
-	spriteface ROUTE34_LYRA, DOWN
+	turnobject ROUTE34_LYRA, DOWN
 	showtext Route34LyraGreetingText
 	applyonemovement PLAYER, step_up
 	pause 10
-	spriteface ROUTE34_LYRA, RIGHT
+	turnobject ROUTE34_LYRA, RIGHT
 	opentext
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .IntroduceFemale
@@ -113,7 +113,7 @@ Route34LyraTrigger2:
 .Continue:
 	waitbutton
 	closetext
-	spriteface ROUTE34_LYRA, DOWN
+	turnobject ROUTE34_LYRA, DOWN
 	pause 10
 	showtext Route34LyraChallengeText
 	setevent EVENT_LYRA_ROUTE_34
@@ -162,7 +162,7 @@ Route34LyraTrigger2:
 	applyonemovement PLAYER, step_right
 	playsound SFX_EXIT_BUILDING
 	disappear PLAYER
-	dotrigger $0
+	setscene $0
 	special FadeOutPalettes
 	pause 15
 	variablesprite SPRITE_GOLDENROD_LYRA, SPRITE_SWIMMER_GIRL
@@ -175,10 +175,10 @@ DayCareManScript_Outside:
 	special Special_DayCareManOutside
 	waitbutton
 	closetext
-	if_equal $1, .end_fail
+	ifequal $1, .end_fail
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
 	checkcode VAR_FACING
-	if_equal LEFT, .walk_around_player
+	ifequal LEFT, .walk_around_player
 	applyonemovement ROUTE34_GRAMPS, slow_step_right
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE34_GRAMPS
@@ -225,8 +225,8 @@ TrainerCamperTodd1:
 	callstd asknumber2m
 .FinishAsk:
 	askforphonenumber PHONE_CAMPER_TODD
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext CAMPER, TODD1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
@@ -235,11 +235,11 @@ TrainerCamperTodd1:
 	callstd rematchm
 	winlosstext CamperTodd1BeatenText, 0
 	copybytetovar wToddFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -324,8 +324,8 @@ TrainerPicnickerGina1:
 	callstd asknumber2f
 .FinishAsk:
 	askforphonenumber PHONE_PICNICKER_GINA
-	if_equal $1, .PhoneFull
-	if_equal $2, .NumberDeclined
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
 	trainertotext PICNICKER, GINA1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
@@ -334,11 +334,11 @@ TrainerPicnickerGina1:
 	callstd rematchf
 	winlosstext PicnickerGina1BeatenText, 0
 	copybytetovar wGinaFightCount
-	if_equal 4, .Fight4
-	if_equal 3, .Fight3
-	if_equal 2, .Fight2
-	if_equal 1, .Fight1
-	if_equal 0, .LoadFight0
+	ifequal 4, .Fight4
+	ifequal 3, .Fight3
+	ifequal 2, .Fight2
+	ifequal 1, .Fight1
+	ifequal 0, .LoadFight0
 .Fight4:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .LoadFight4
@@ -411,7 +411,7 @@ TrainerPicnickerGina1:
 	jumpstd phonefullf
 
 OfficerfMaraScript:
-	checknite
+	checktime 1 << NITE
 	iffalse_jumptextfaceplayer OfficerfMaraDaytimeText
 	checkevent EVENT_BEAT_OFFICERF_MARA
 	iftrue_jumptextfaceplayer OfficerfMaraAfterText

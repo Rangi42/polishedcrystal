@@ -10,7 +10,7 @@ Route47_MapScriptHeader:
 	warp_event 52, 17, CLIFF_CAVE, 2
 	warp_event 53, 29, CLIFF_CAVE, 3
 	warp_event 11, 23, QUIET_CAVE_1F, 1
-	warp_event  7, 23, EMBEDDED_TOWER, 1
+	warp_event  8, 23, EMBEDDED_TOWER, 1
 
 	db 32 ; coord events
 	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger
@@ -52,7 +52,7 @@ Route47_MapScriptHeader:
 	bg_event 34, 33, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	bg_event  5, 32, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
-	db 15 ; object events
+	db 16 ; object events
 	object_event 59, 26, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	object_event 40, 24, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	object_event 38, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoThomandkae1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
@@ -64,6 +64,7 @@ Route47_MapScriptHeader:
 	object_event 36, 20, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
 	object_event 28, 12, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
 	object_event 40, 25, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketGirlText, EVENT_CLEARED_YELLOW_FOREST
+	object_event 25, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketText, EVENT_CLEARED_YELLOW_FOREST
 	itemball_event 39, 28, REVIVE, 1, EVENT_ROUTE_47_REVIVE
 	itemball_event  7, 32, MYSTIC_WATER, 1, EVENT_ROUTE_47_MYSTIC_WATER
 	itemball_event 31, 20, QUICK_CLAW, 1, EVENT_ROUTE_47_QUICK_CLAW
@@ -74,7 +75,7 @@ Route47TileScript:
 	iffalse .locked
 	changeblock 8, 22, $9b
 .locked
-	checktriggers
+	checkscene
 	iftrue .underfoot
 	callasm .overhead_asm
 	return
@@ -137,7 +138,7 @@ Route47_FinishUnderfootBridge:
 	ld a, $1
 Route47_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wRoute47Trigger], a ; dotrigger a
+	ld [wRoute47Trigger], a ; setscene a
 	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
 
 Route47Bridge1OverheadTrigger:
@@ -406,6 +407,11 @@ Route47RocketGirlText:
 	text "What are you head-"
 	line "ing this way for,"
 	cont "you brat?"
+	done
+
+Route47RocketText:
+	text "Nothing to see"
+	line "here. Move along!"
 	done
 
 Route47SealedCaveSign:

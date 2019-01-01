@@ -25,8 +25,8 @@ FishingGuruScript_0x9e0e0:
 	writetext PhotoStudioWhichMonText
 	buttonsound
 	special Special_CianwoodPhotograph
-	if_equal $0, .NoPicture
-	if_equal $1, .EggPicture
+	ifequal $0, .NoPicture
+	ifequal $1, .EggPicture
 	setflag ENGINE_DAILY_PHOTOGRAPH
 	writetext PhotoStudioHoldStillText
 	waitbutton

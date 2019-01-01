@@ -99,7 +99,7 @@ HailHitsText:
 	prompt
 
 PerishCountText: ; 0x80864
-	text "<USER> is"
+	text "<USER>'s"
 	line "Perish count is @"
 	deciram wd265, 1, 1
 	text "!"
@@ -1851,11 +1851,8 @@ StevenFinalPkmnText:
 	prompt
 
 CynthiaFinalPkmnText:
-	text "I can't remember"
-	line "the last time I"
-
-	para "was put in a"
-	line "corner like this!"
+	text "I won't let this"
+	line "end yet!"
 	prompt
 
 InverFinalPkmnText:

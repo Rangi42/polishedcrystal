@@ -20,12 +20,12 @@ FruitTreeScript:: ; 44000
 
 PickBerryScript:
 	copybytetovar wCurFruit
-	if_less_than NUM_APRICORNS+1, PickApricornScript
+	ifless NUM_APRICORNS+1, PickApricornScript
 	itemtotext $0, $0
 	writetext HeyItsFruitText
 	callasm GetFruitTreeCount
-	if_equal $1, .try_one
-	if_equal $2, .try_two
+	ifequal $1, .try_one
+	ifequal $2, .try_two
 	copybytetovar wCurFruit
 	giveitem ITEM_FROM_MEM, 3
 	iffalse .try_two
@@ -64,8 +64,8 @@ PickApricornScript:
 	callasm .get_name
 	writetext HeyItsFruitText
 	callasm GetFruitTreeCount
-	if_equal $1, .try_one
-	if_equal $2, .try_two
+	ifequal $1, .try_one
+	ifequal $2, .try_two
 	copybytetovar wCurFruit
 	giveapricorn ITEM_FROM_MEM, 3
 	iffalse .try_two

@@ -34,7 +34,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	yesorno
 	iffalse .NeverMind
 	checkmoney $0, 5000
-	if_equal $2, .NotEnoughMoney
+	ifequal $2, .NotEnoughMoney
 	setflag ENGINE_SHAMOUTI_RESTAURANT_CHALLENGE
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -44,7 +44,7 @@ ShamoutiHotelRestaurantChallengeScript:
 	waitbutton
 	closetext
 	applyonemovement PLAYER, step_left
-	dotrigger $1
+	setscene $1
 	end
 
 .AlreadyAte:
@@ -100,8 +100,8 @@ ShamoutiHotelRestaurantChallengeScript:
 ShamoutiHotelRestaurantLeavingTrigger2:
 	applyonemovement PLAYER, step_up
 ShamoutiHotelRestaurantLeavingTrigger1:
-	spriteface PLAYER, UP
-	spriteface SHAMOUTIHOTELRESTAURANT_RECEPTIONIST, DOWN
+	turnobject PLAYER, UP
+	turnobject SHAMOUTIHOTELRESTAURANT_RECEPTIONIST, DOWN
 	opentext
 	writetext .LeavingText
 	yesorno

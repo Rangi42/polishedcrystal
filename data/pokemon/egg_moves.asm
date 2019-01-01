@@ -570,6 +570,7 @@ HoothootEggMoves:
 	db SUPERSONIC
 	db WING_ATTACK
 	db BRAVE_BIRD
+	db HURRICANE
 	db $ff
 
 LedybaEggMoves:

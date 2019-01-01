@@ -4,19 +4,19 @@ MystriStage_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 2 ; warp events
-	warp_event  6, 17, SINJOH_RUINS, 1
-	warp_event  7, 17, SINJOH_RUINS, 1
+	warp_event  6, 19, SINJOH_RUINS, 1
+	warp_event  7, 19, SINJOH_RUINS, 1
 
 	db 2 ; coord events
-	coord_event  6,  9, 1, MystriStageTrigger1Script
-	coord_event  7,  9, 1, MystriStageTrigger2Script
+	coord_event  6, 11, 1, MystriStageTrigger1Script
+	coord_event  7, 11, 1, MystriStageTrigger2Script
 
 	db 0 ; bg events
 
 	db 3 ; object events
-	object_event  6,  8, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
-	object_event  7,  5, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
-	object_event  6,  6, SPRITE_EGG, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
+	object_event  6, 10, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
+	object_event  7,  7, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
+	object_event  6,  8, SPRITE_EGG, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
 
 	const_def 1 ; object constants
 	const MYSTRISTAGE_CYNTHIA1
@@ -26,18 +26,18 @@ MystriStage_MapScriptHeader:
 MystriStageTrigger2Script:
 	applyonemovement PLAYER, step_up
 MystriStageTrigger1Script:
-	faceperson PLAYER, MYSTRISTAGE_CYNTHIA1
+	faceobject PLAYER, MYSTRISTAGE_CYNTHIA1
 	pause 10
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	pause 10
-	faceperson MYSTRISTAGE_CYNTHIA1, PLAYER
+	faceobject MYSTRISTAGE_CYNTHIA1, PLAYER
 MystriStageCynthiaSafeguardScript:
 	showtext MystriStageCynthiaIntroText
 	follow MYSTRISTAGE_CYNTHIA1, PLAYER
 	applymovement MYSTRISTAGE_CYNTHIA1, MystriStageMovementData_CynthiaStepsUp
 	stopfollow
-	spriteface MYSTRISTAGE_CYNTHIA1, LEFT
-	spriteface PLAYER, RIGHT
+	turnobject MYSTRISTAGE_CYNTHIA1, LEFT
+	turnobject PLAYER, RIGHT
 	showtext MystriStageCynthiaSpeechText
 	showemote EMOTE_SHOCK, MYSTRISTAGE_CYNTHIA1, 15
 	opentext
@@ -46,7 +46,7 @@ MystriStageCynthiaSafeguardScript:
 	appear MYSTRISTAGE_CYNTHIA2
 	disappear MYSTRISTAGE_CYNTHIA1
 	setevent EVENT_LISTENED_TO_CYNTHIA_INTRO
-	dotrigger $0
+	setscene $0
 	jump MystriStageCynthiaContinueScript
 
 MystriStageCynthiaScript:
@@ -114,13 +114,13 @@ MystriStageBeatCynthiaScript:
 	special RestartMapMusic
 	special Special_FadeInQuickly
 	pause 20
-	spriteface MYSTRISTAGE_CYNTHIA2, DOWN
+	turnobject MYSTRISTAGE_CYNTHIA2, DOWN
 	pause 40
 	jumptextfaceplayer MystriStageCynthiaEggText
 
 MystriStageEggScript:
 	checkcode VAR_PARTYCOUNT
-	if_equal PARTY_LENGTH, .PartyFull
+	ifequal PARTY_LENGTH, .PartyFull
 	special GiveMystriEgg
 	disappear MYSTRISTAGE_EGG
 	opentext
