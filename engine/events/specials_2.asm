@@ -254,7 +254,7 @@ Special_HiddenPowerGuru:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1DVs
 	call GetPartyLocation
-	call GetHiddenPowerType
+	farcall GetHiddenPowerType
 	ld [wNamedObjectIndexBuffer], a
 	farcall GetTypeName
 	ld a, $2
