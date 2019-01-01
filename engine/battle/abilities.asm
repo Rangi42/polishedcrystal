@@ -286,6 +286,7 @@ AnticipationAbility:
 	call FarCopyBytes
 	; Ignore status moves. Don't ignore Counter/Mirror Coat (counterintuitive)
 	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
 	cp STATUS
 	jr z, .end_of_loop
 	; If the move is super effective, shudder
